@@ -1,7 +1,7 @@
 ---
 id: 2026-09-28-localize-short-video-and-influencer-guides
 title: Localize short video and influencer guides in five languages (Batch037 Pair B)
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-batch037-pair-b
@@ -31,7 +31,7 @@ complete, reviewable translations without changing the published originals.
 - [x] Both packs have complete, validated zh-CN, en, ja, and ko documents.
 - [x] Both text-bearing images have localized SVGs and rendered hero covers for every target locale.
 - [x] Source facts, publication-aware article links, responsive previews, and asset hashes are reviewed.
-- [ ] A scoped evidence record and draft PR are ready for editorial review; publication remains a separate gate.
+- [x] A scoped evidence record and draft PR are ready for editorial review; publication remains a separate gate.
 
 ## Steps
 
@@ -39,7 +39,7 @@ complete, reviewable translations without changing the published originals.
 - [x] Translate and review all document fields and image text in four target locales.
 - [x] Render and inspect all target artwork and article previews.
 - [x] Run focused lint, tests, and task checks; seal content/asset hashes.
-- [ ] Open and attach a draft PR after validation.
+- [x] Open a draft PR after validation; attach the evidence record in the PR.
 
 ## How to verify
 
@@ -52,3 +52,4 @@ complete, reviewable translations without changing the published originals.
 - Fresh four-lock, repeatable-read, read-only production capture for all four Batch037 slugs passed at `2026-09-28T11:00:27Z`. External receipt: `C:/Users/x8120/.codex/article-localization-release/batch037-social-content-preflight-20260928/receipt-20260928T110024Z.json`, SHA-256 `575c4ec04629900421c106f6c58f81e3e6ce2ccd0a28f97b76515c59ad1ad669`; all source published hashes match, and no target locale rows exist.
 - Eight localized documents retain the 33-block structures, four source URLs/check dates, and article target slugs. Twenty-four new locale assets are sealed in `docs/article-localization/batch037-pair-b-evidence.md` with browser layout reports: 16 art cases and 16 article desktop/mobile cases, zero issues.
 - API content/link/ingest tests: 67 passed, 5 skipped. Targeted web renderer suites: 57 tests passed across an initial two-suite run and an isolated article-suite rerun; Windows worker-start timeouts prevented a clean combined invocation. Scoped pack lint, web typecheck, task check, and content/asset hash audit pass.
+- Draft PR [#914](https://github.com/x812033727/travel_scanner/pull/914) contains the scoped implementation and evidence. Review and a separate live preflight/release authorization remain pending.
