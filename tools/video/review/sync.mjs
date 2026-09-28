@@ -565,7 +565,35 @@ async function lookSubmissions({ request, project, workdir }) {
   return bodies;
 }
 
-/** The storyboard gate: every keyframe and the contact sheet, with the judge's verdicts; bound to keyframes/manifest.json. */
+// Mirrors MAX_REVIEW_FILES in apps/api/app/video_reviews/schemas.py: the most files one review takes.
+export const MAX_REVIEW_FILES = 48;
+// The shots on a page of the storyboard's contact sheet (docs/videos/STORY.md); read only when a
+// manifest lists its pages without the shots on each.
+const SHEET_PAGE_SHOTS = 24;
+
+/**
+ * The storyboard's contact sheets as [{ file, shots }] in page order, each file there: the pages
+ * the keyframes manifest lists in contact_sheets ({ file, shots }, or a bare file holding the next
+ * 24 shots), else the one sheet of every shot. `ids` are the drawn shots, in order.
+ */
+export function storyboardSheets(manifest, ids, workdir) {
+  const pages = Array.isArray(manifest.contact_sheets) && manifest.contact_sheets.length
+    ? manifest.contact_sheets.map((page, index) => ({
+        file: typeof page === "string" ? page : page?.file,
+        shots: Array.isArray(page?.shots) ? page.shots : ids.slice(index * SHEET_PAGE_SHOTS, (index + 1) * SHEET_PAGE_SHOTS),
+      }))
+    : [{ file: "keyframes/contact-sheet.png", shots: ids }];
+  return pages.filter((page) => typeof page.file === "string" && existsSync(path.join(workdir, page.file))).slice(0, MAX_REVIEW_FILES);
+}
+
+/**
+ * The storyboard gate, bound to keyframes/manifest.json: every keyframe and the contact sheet,
+ * with the judge's verdicts. When that is more files than a review takes (a brand story has 85 to
+ * 100 shots, docs/videos/STORY.md), the contact sheets go up instead, then the keyframes of the
+ * shots left for a prompt fix, as many as fit. The payload still lists every shot, `file_role`
+ * null for one whose keyframe stayed home; `sheets` names each sheet's role and shots, and
+ * `omitted` counts the keyframes that stayed home.
+ */
 async function storyboardSubmission({ request, project, workdir }) {
   const { doc } = project;
   const file = path.join(workdir, ARTIFACTS.keyframes);
@@ -573,36 +601,54 @@ async function storyboardSubmission({ request, project, workdir }) {
   if (!manifest?.shots) throw new ReviewError("keyframes/manifest.json is missing; run keyframes first", { who: "owner" });
   const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
   const seconds = new Map((timeline?.scenes ?? []).map((scene) => [scene.id, Math.round(((scene.end_frame - scene.start_frame) / (timeline.fps || 30)) * 10) / 10]));
+  // A shot's role is its place in the video (shot_07) whichever keyframes go up.
+  const drawn = [...shotScenes(doc).entries()].filter(([, scene]) => manifest.shots[scene.id]?.file);
+  const sheets = storyboardSheets(manifest, drawn.map(([, scene]) => scene.id), workdir)
+    .map((sheet, index, all) => ({ ...sheet, role: all.length === 1 ? "contact_sheet" : `contact_sheet_${String(index + 1).padStart(2, "0")}` }));
+  const whole = drawn.length + sheets.length <= MAX_REVIEW_FILES;
   const files = [];
+  const sendSheets = async () => {
+    for (const sheet of sheets) files.push(await upload(request, doc.slug, path.join(workdir, sheet.file), sheet.role, imageType(sheet.file)));
+  };
+  if (!whole) await sendSheets();
   const shots = [];
-  for (const [index, scene] of shotScenes(doc).entries()) {
+  for (const [index, scene] of drawn) {
     const shot = manifest.shots[scene.id];
-    if (!shot?.file) continue;
     const role = `shot_${String(index + 1).padStart(2, "0")}`;
-    files.push(await upload(request, doc.slug, path.join(workdir, shot.file), role, imageType(shot.file)));
+    const sent = whole || (Boolean(shot.needs_review) && files.length < MAX_REVIEW_FILES);
+    if (sent) files.push(await upload(request, doc.slug, path.join(workdir, shot.file), role, imageType(shot.file)));
     shots.push({
       id: scene.id,
       chapter: scene.chapter ?? null,
       prompt: scene.data?.prompt ?? "",
       seconds: seconds.get(scene.id) ?? null,
-      file_role: role,
+      file_role: sent ? role : null,
       needs_review: Boolean(shot.needs_review),
       judge: { overall: shot.judge?.overall ?? null, problems: shot.judge?.problems ?? [] },
     });
   }
-  const sheet = path.join(workdir, "keyframes", "contact-sheet.png");
-  if (existsSync(sheet) && files.length < 48) files.push(await upload(request, doc.slug, sheet, "contact_sheet", "image/png"));
+  if (whole) await sendSheets();
   const scores = shots.map((shot) => shot.judge.overall).filter((score) => typeof score === "number");
   const lowest = scores.length ? Math.min(...scores) : null;
   const waiting = shots.filter((shot) => shot.needs_review);
   // Only the shots left for a prompt fix carry problems here: a board the judge passed whole
   // may be approved automatically when the owner allows it.
   const problems = [...new Set(waiting.flatMap((shot) => shot.judge.problems))];
+  // Every keyframe with at most one sheet is the review as it always was; any other names its
+  // sheets, so the card can point to the page of a shot listed without its keyframe.
+  const asBefore = whole && sheets.length <= 1;
+  const unshown = waiting.filter((shot) => !shot.file_role).length;
+  const board = asBefore ? "" : `（${sheets.length ? `聯絡表 ${sheets.length} 頁` : "沒有聯絡表"}）`;
   return {
     gate: "storyboard",
     content_sha256: await sha256File(file),
-    summary: `分鏡 ${shots.length} 鏡${lowest === null ? "" : `，judge 最低 ${lowest}/10`}${waiting.length ? `，${waiting.length} 鏡待修` : ""}`,
-    payload: { shots, judge: { overall: lowest, problems }, duplicates: manifest.duplicates ?? [] },
+    summary: `分鏡 ${shots.length} 鏡${board}${lowest === null ? "" : `，judge 最低 ${lowest}/10`}${waiting.length ? `，${waiting.length} 鏡待修` : ""}${unshown ? `，其中 ${unshown} 鏡沒附單張圖` : ""}`,
+    payload: {
+      shots,
+      judge: { overall: lowest, problems },
+      duplicates: manifest.duplicates ?? [],
+      ...(asBefore ? {} : { sheets: sheets.map((sheet) => ({ role: sheet.role, shots: sheet.shots })), omitted: shots.filter((shot) => !shot.file_role).length }),
+    },
     files,
   };
 }
