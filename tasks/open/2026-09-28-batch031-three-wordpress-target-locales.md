@@ -1,7 +1,7 @@
 ---
 id: 2026-09-28-batch031-three-wordpress-target-locales
 title: Batch031 three WordPress target language drafts
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-batch031-content-draft
@@ -32,10 +32,10 @@ draft code PR while preserving the existing zh-TW source and public state.
 
 ## Definition of done
 
-- [ ] Each of the three packs contains the existing zh-TW document unchanged
+- [x] Each of the three packs contains the existing zh-TW document unchanged
       plus four complete target-language documents.
-- [ ] Exactly 36 localized assets are added; original assets remain unchanged.
-- [ ] A draft PR records exact source and asset hashes, checks, and publication
+- [x] Exactly 36 localized assets are added; original assets remain unchanged.
+- [x] A draft PR records exact source and asset hashes, checks, and publication
       gates. No deployment, database import, or publication occurs.
 
 ## Steps
@@ -45,7 +45,7 @@ draft code PR while preserving the existing zh-TW source and public state.
 - [x] Recheck the 12 target documents and 36 assets against Pair commits and
       inspect native-size visual renders.
 - [x] Run pack lint, focused API checks, task checks, and exact diff review.
-- [ ] Open a draft PR and keep the source-publication gate explicit.
+- [x] Open draft PR #879 and keep the source-publication gate explicit.
 
 ## How to verify
 
