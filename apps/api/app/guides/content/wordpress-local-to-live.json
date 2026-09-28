@@ -263,6 +263,1014 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "Move a Local WordPress Site Online: Files, Database, and URL Replacement",
+      "description": "After building a WordPress site on your computer, you still need to move its files, database, and settings to a live host. This guide compares content export, full-site migration, and supported host synchronization. It covers exporting from Local, preparing the live environment, replacing URLs, checking media, and testing email, accounts, and launch readiness so a personal portfolio moves from a local preview to a publicly usable site.",
+      "hero": {
+        "src": "/guides/wordpress-local-to-live/hero-en.jpg",
+        "alt": "Original illustration of a screen, folder, and host, showing a site exported from a local computer to a live server.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Your portfolio opens on your own computer, and the text, images, and contact form all seem fine. But a friend cannot open the URL you share. The site is not necessarily broken: localhost or a custom local domain only works in your environment. To publish the site, another computer that visitors can reach must serve it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Three handoffs matter most: transfer the right data, change the settings for the live environment, and confirm that pages no longer depend on your computer. This guide assumes the first launch of a single WordPress site. If people already use the live site, its existing data needs separate handling; do not simply overwrite it with an older local database."
+        },
+        {
+          "type": "heading",
+          "text": "Decide what you need to move",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "If you only want to move a few posts to another site with an existing design, use WordPress Tools → Export to create a WXR-format XML file, then import it at the destination. This is suitable for handing over content. It does not package the host configuration, all program files, and physical media files into one archive."
+        },
+        {
+          "type": "paragraph",
+          "text": "To preserve an entire portfolio site, including its theme, plugins, uploaded images, and database settings, choose a full-site migration process. Another option is a local tool's synchronization feature for specific hosts. The official Local Connect feature currently supports Flywheel and WP Engine; do not assume every host offers the same one-click push."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Check whether the destination is a new, empty site or already holds content that must be kept.",
+            "Choose one route: content import, full-site migration, or synchronization with a compatible host.",
+            "Save a local copy before making changes; if the destination has data, save its current state too."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Export a complete site from Local",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "According to Local's documentation, open and start the site you want to export, right-click it in the site list, select Export, and choose a location you can find later. The archive includes wp-content and a database export. wp-content contains media, plugins, and themes, but the archive is not a full image of your computer or live host."
+        },
+        {
+          "type": "paragraph",
+          "text": "Record the export time, filename, and site version, and confirm that the file was saved. Keep one untouched original instead of changing your only copy. For another local development tool, follow its documentation to locate the site files and SQL export. Copying the visible image folder alone does not replace a database export."
+        },
+        {
+          "type": "paragraph",
+          "text": "How the destination uses these files depends on its supported import process. A generic host may not recognize a Local archive. Read the host's migration instructions or the chosen plugin's documentation first, checking the required format, upload limits, and permissions. Two ZIP files are not necessarily interchangeable backup formats."
+        },
+        {
+          "type": "heading",
+          "text": "Compare the local and live environments",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "List the WordPress, PHP, and database versions and required extensions for the local and live environments side by side. Consult current WordPress hosting requirements and plugin requirements when selecting versions. Running locally does not guarantee compatibility with a host using different versions, especially with older plugins or custom code."
+        },
+        {
+          "type": "paragraph",
+          "text": "Database hostnames, accounts, passwords, and file paths usually differ. After importing the data, configure the connection using the live host's settings; do not retain the local database password or disk paths. Keep filename capitalization consistent, too: paths that appear to work in one local operating system may fail in another."
+        },
+        {
+          "type": "paragraph",
+          "text": "Prepare DNS and HTTPS for the live domain and use appropriate access restrictions during testing. Do not leave the entire site's permissions relaxed for the sake of an easy import. If an upload hits a limit, locate its source first, then use the host's supported method for splitting or transferring the data and adjust the relevant setting."
+        },
+        {
+          "type": "heading",
+          "text": "Check content against the live URL after import",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Import the site files and database, then use the migration tool's URL replacement feature to change local addresses to the live address. A technician using WP-CLI can run search-replace with --dry-run first to inspect the proposed changes without writing them. Use a method that handles WordPress serialized data correctly; ordinary text replacement can corrupt settings."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep the content paths you need, while checking the home page, menus, post images, and background images for localhost, a local domain, or disk paths. A page builder's generated style files and caches may need regeneration according to its instructions. Changing the URL only under Settings → General does not update every location."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Sign in at the live URL and confirm the editor can open and save a test draft.",
+            "Check the real links for images, galleries, downloaded attachments, and filenames containing Chinese characters.",
+            "Clear any relevant site caches, then open the main pages on another device."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Retest email and external integrations",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Local's Mailpit captures test mail sent through the PHP mail() path so you can inspect it during development. That does not prove a real recipient receives email on the live site, nor does it mean every message sent through an external API is captured. Recheck the live email service's settings and test with an inbox you control."
+        },
+        {
+          "type": "paragraph",
+          "text": "Make a table of contact forms, subscriptions, payments, and third-party sign-in, recording their test and live modes separately. Confirm callback URLs, account permissions, and sender identity before controlled tests. Do not call a simulated payment success screen a completed real transaction. If the form stores inquiries, check both the saved record and notification delivery."
+        },
+        {
+          "type": "paragraph",
+          "text": "Local sites often use short test passwords or temporary administrators. Replace them and review account permissions before launch. Remove unneeded test content, sample users, and development tools, after confirming live pages do not depend on them. Keep secrets in an appropriate managed location, not in a publicly downloadable export or website post."
+        },
+        {
+          "type": "heading",
+          "text": "Stop the local site and test public access again",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Stop the local web service, then open the live domain using mobile data or another device without local configuration. If images disappear, links return to the local site, or forms fail, something still depends on your computer. This test catches what 'it works on my machine' misses, but you still need page sampling and functional tests."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before making the site public, remove test-only noindex settings that should not remain, and confirm the main navigation, contact details, and error pages work. Make a fresh backup on the live host and record the host, domain, plugin licenses, and maintenance owner. Document which environment will receive routine updates to prevent the two sites from diverging."
+        },
+        {
+          "type": "paragraph",
+          "text": "Once the live site has received real data, do not treat another full-site push from your computer as a routine update. Decide whether the change concerns code, layout, or content, and choose a method that preserves new live data. First launch and ongoing maintenance are different jobs; agree on the rules at handoff."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-local-to-live/diagram-1-en.svg",
+          "alt": "Original four-stage diagram: export files and database, configure the live host, replace URLs, and verify the public site after stopping the local one.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Visitors should be able to use the site's key features even when your computer is off.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Method",
+            "Suitable need",
+            "Check before transfer"
+          ],
+          "rows": [
+            [
+              "WordPress XML export",
+              "Hand selected content to another site",
+              "Check media, layout, and settings separately"
+            ],
+            [
+              "Complete file and database migration",
+              "Publish the whole local site for the first time",
+              "Destination data, tool format, and environment settings"
+            ],
+            [
+              "Local Connect",
+              "Synchronize with an officially supported host",
+              "Currently supported hosts and what a push overwrites"
+            ],
+            [
+              "Later partial updates",
+              "The live site has begun receiving real data",
+              "Sync only the parts that need to change"
+            ]
+          ],
+          "caption": "Choose by the scope of the transfer and destination environment, not by a tool ranking."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "The public URL must work independently of your computer",
+          "text": "After your computer is turned off, the live host should still serve pages and images. A temporary sharing link or local preview is useful for discussing the design, but it does not prove a live launch is complete."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Set up a local WordPress development environment",
+              "kind": "life",
+              "slug": "wordpress-local-development"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "How to back up files and the database",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "HTTPS certificates for a live website",
+              "kind": "life",
+              "slug": "https-certificate-setup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Local: Importing and exporting sites",
+          "url": "https://localwp.com/help-docs/getting-started/how-to-import-a-wordpress-site-into-local/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Local: Connect support and synchronization",
+          "url": "https://localwp.com/help-docs/local-features/local-connect/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Local: Testing email with Mailpit",
+          "url": "https://localwp.com/help-docs/local-features/mailpit/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Tools Export",
+          "url": "https://wordpress.org/documentation/article/tools-export-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP-CLI: search-replace",
+          "url": "https://developer.wordpress.org/cli/commands/search-replace/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Hosting compatibility requirements",
+          "url": "https://make.wordpress.org/hosting/handbook/compatibility/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "ローカルのWordPressサイトを公開する：ファイル、データベース、URLの置換",
+      "description": "自分のパソコンでWordPressサイトを完成させても、公開するにはファイル、データベース、設定を本番サーバーへ移す必要があります。本記事ではコンテンツのエクスポート、サイト全体の移行、対応ホストとの同期を比較します。Localからの書き出し、本番環境の準備、URL置換、メディアの確認、メール、アカウント、公開前の検証を整理し、個人の作品サイトをローカルのプレビューから実際に使える公開サイトへ移します。",
+      "hero": {
+        "src": "/guides/wordpress-local-to-live/hero-ja.jpg",
+        "alt": "ローカル環境からサイトを書き出し、本番サーバーへ渡す様子を表した、画面、フォルダー、サーバーのオリジナルイラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "自分のパソコンでは作品サイトの文章、画像、問い合わせフォームが正常に見えるのに、URLを友人に送ると開けないことがあります。サイトが急に壊れたとは限りません。localhostやローカル専用のドメインは、自分の環境でしか意味を持たないためです。公開するには、訪問者が接続できる別のサーバーからコンテンツを提供する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ローカルサイトを公開する際に重要なのは、正しいデータを移すこと、本番用の設定に変えること、ページが自分のパソコンに依存しないと確認することの三つです。ここでは一つのWordPressサイトを初めて公開する場合を扱います。すでに利用者がいる本番サイトでは既存データを別途扱い、古いローカルデータベースでそのまま上書きしてはいけません。"
+        },
+        {
+          "type": "heading",
+          "text": "今回移すものを先に決める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "すでにデザインが整った別のサイトへ数本の記事だけを移すなら、WordPressの「ツール → エクスポート」でWXR形式のXMLを作り、移行先でインポートできます。これはコンテンツの受け渡しに適した方法です。サーバー設定、すべてのプログラムファイル、実際のメディアファイルが一つの圧縮ファイルにまとまるわけではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "テーマ、プラグイン、アップロード済み画像、データベース設定を含む作品サイト全体を残したいなら、サイト全体の移行手順を選びます。特定のホストに対応したローカルツールの同期機能を使う方法もあります。公式のLocal Connectが現在対応する接続先はFlywheelとWP Engineです。どのホストでも同じボタンで転送できるとは考えないでください。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "移行先が空の新規サイトか、残すべきコンテンツのある既存サイトかを確認する。",
+            "コンテンツのインポート、サイト全体の移行、対応ホストとの同期から一つの方法を選ぶ。",
+            "作業前にローカルのコピーを保存し、移行先にデータがあればその現状も保存する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Localからサイト全体のデータを書き出す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Localの公式文書に従い、対象サイトを開いて起動し、サイト一覧で右クリックして「Export」を選び、見つけやすい保存先を指定します。生成される圧縮ファイルにはwp-contentとデータベースの書き出しが含まれます。wp-contentにはメディア、プラグイン、テーマが含まれますが、このファイルはパソコンや本番サーバー全体の環境イメージではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "書き出した日時、ファイル名、サイトのバージョンを記録し、保存が完了したことを確かめます。唯一のコピーを直接編集せず、元のエクスポートを一つ残します。別のローカルツールを使う場合は、その文書に従ってサイトファイルとSQLの書き出し場所を調べます。目に見える画像フォルダーをコピーするだけではデータベースの代わりになりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "移行先でデータをどう使えるかは、対応するインポート方法次第です。一般的なホストがLocalの圧縮ファイルをそのまま認識するとは限りません。ホストの移行手順または使うプラグインの文書を先に読み、必要な形式、アップロード制限、権限を確認します。拡張子がどちらもZIPでも、バックアップ形式を交換できるとは限りません。"
+        },
+        {
+          "type": "heading",
+          "text": "ローカル環境と本番環境の違いを表にする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ローカルと本番のWordPress、PHP、データベースのバージョン、必要な拡張機能を左右に並べます。現在のWordPressの公式要件とプラグインの要件を参照してバージョンを選びます。ローカルで動くことは、バージョンの異なるホストでも動く保証にはなりません。特に古いプラグインや独自コードでは互換性に注意が必要です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "データベースのホスト名、アカウント、パスワード、ファイルパスは通常異なります。データを移したら本番ホストの設定に合わせて接続し、ローカルのデータベースパスワードやディスク上のパスを残さないようにします。ファイル名の大文字と小文字も統一します。ローカルでは動くパスが、別のOSでは見つからないことがあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本番ドメインのDNSとHTTPSを準備し、テスト中は適切なアクセス制限を設けます。インポートを簡単にするため、サイト全体の権限を長期間緩めたままにしないでください。アップロード制限に達したら、まず原因を調べ、ホストがサポートする分割・転送方法を使い、該当する設定を調整します。"
+        },
+        {
+          "type": "heading",
+          "text": "移行後は本番URLでコンテンツを確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "サイトのファイルとデータベースを移した後、移行ツールのURL置換機能でローカルのアドレスを本番のアドレスに変えます。技術担当者がWP-CLIを使うなら、search-replaceの--dry-runで書き込み前に変更予定を確認できます。WordPressのシリアライズされたデータを適切に扱う方法を選び、通常の文字列置換で設定を壊さないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "必要なコンテンツのパスを維持しながら、トップ、メニュー、投稿画像、背景画像にlocalhost、ローカルドメイン、パソコンのディスクパスが残っていないか確認します。ページビルダーが生成したスタイルファイルやキャッシュは、そのツールの説明に従って再生成が必要な場合があります。「設定 → 一般」のURLを変えるだけでは、すべての場所が更新されません。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "本番URLからログインし、エディターでテスト用の下書きを開いて保存できることを確認する。",
+            "画像、ギャラリー、添付ファイルのダウンロード、中国語の文字を含むファイル名の実際のリンクを一つずつ調べる。",
+            "該当するサイトのキャッシュを削除し、別の端末で主なページを開き直す。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "メール送信と外部サービス連携を再検証する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "LocalのMailpitは、PHPのmail()経由で送られるテストメールを受け止め、開発中に内容を確認できるようにします。これは本番の受信者にメールが届く証拠ではなく、外部API経由のすべてのメールを捕捉するという意味でもありません。公開時には本番のメールサービスの設定を確認し、自分で管理できる宛先でテストします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "問い合わせフォーム、購読、決済、外部サービスでのログインを一覧にし、それぞれのテストモードと本番モードを記録します。コールバックURL、アカウント権限、送信元を確かめてから、管理されたテストを行います。模擬決済の成功画面を実際の決済完了と記載してはいけません。フォームが問い合わせを保存するなら、保存結果と通知の到着を両方確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ローカル環境では短いテスト用パスワードや一時的な管理者を使いがちです。公開前に変更し、アカウント権限を整理します。不要なテストコンテンツ、サンプルユーザー、開発用ツールは、本番ページで参照されていないことを確認してから削除します。秘密情報は適切な管理場所に置き、公開ダウンロードできるエクスポートや記事には入れません。"
+        },
+        {
+          "type": "heading",
+          "text": "ローカルサイトを止めて公開状態をもう一度検証する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ローカルのサイトサービスを停止し、モバイル回線またはローカル設定のない別の端末から本番ドメインを開きます。画像が消えたり、リンクがローカルへ戻ったり、フォームが動かなくなったりするなら、まだ依存関係が残っています。この確認は「自分のパソコンでは正常」に潜む見落としを補いますが、ページの抜き取り確認と機能テストも必要です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公開前に、残すべきでないテスト用のnoindex設定を外し、主なナビゲーション、連絡先、エラーページが使えることを確認します。最後に本番ホストで新しいバックアップを作成し、ホスト、ドメイン、プラグインのライセンス、日常保守の担当者を記録します。今後どの環境で日常的な更新を行うかも明記し、二つのサイトが別々に変わらないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本番サイトが実際のデータを受け取った後は、ローカルから再びサイト全体を転送することを通常の更新として扱わないでください。今回の変更がコード、レイアウト、コンテンツのどれかを見極め、新しいデータを上書きしない方法を選びます。初回公開と継続的な保守は別の作業です。引き継ぎ時にルールを決めておきましょう。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-local-to-live/diagram-1-ja.svg",
+          "alt": "ファイルとデータベースの書き出し、本番ホストの設定、URLの置換、ローカル停止後の公開サイト確認を示すオリジナルの四段階図解。",
+          "width": 1600,
+          "height": 900,
+          "caption": "自分のパソコンが動いていなくても、訪問者がサイトの主な操作を行えるようにします。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "適した用途",
+            "移行前の確認事項"
+          ],
+          "rows": [
+            [
+              "WordPressのXMLエクスポート",
+              "選んだコンテンツを別のサイトへ渡す",
+              "メディア、レイアウト、設定は別途確認する"
+            ],
+            [
+              "ファイルとデータベースの全体移行",
+              "ローカルサイト全体を初めて公開する",
+              "移行先のデータ、ツール形式、環境設定"
+            ],
+            [
+              "Local Connect",
+              "公式対応ホストと同期する",
+              "現在の対応ホストと転送時の上書き範囲"
+            ],
+            [
+              "公開後の部分更新",
+              "本番サイトが実際のデータを受け始めた",
+              "変更が必要な部分だけを同期する"
+            ]
+          ],
+          "caption": "方法はツールの順位ではなく、移行範囲と移行先の環境で選びます。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "公開URLはローカル環境から独立して動かす",
+          "text": "パソコンの電源を切っても、本番ホストからページと画像が配信される必要があります。一時共有リンクやローカルのプレビューはデザインの相談には使えますが、本番公開の完了を示す証拠にはなりません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ローカルのWordPress開発環境を作る",
+              "kind": "life",
+              "slug": "wordpress-local-development"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ファイルとデータベースのバックアップ方法",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "本番サイトのHTTPS証明書",
+              "kind": "life",
+              "slug": "https-certificate-setup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Local：サイトのインポートとエクスポート",
+          "url": "https://localwp.com/help-docs/getting-started/how-to-import-a-wordpress-site-into-local/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Local：Connectの対応先と同期",
+          "url": "https://localwp.com/help-docs/local-features/local-connect/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Local：Mailpitによるテストメール",
+          "url": "https://localwp.com/help-docs/local-features/mailpit/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：ツールのエクスポート",
+          "url": "https://wordpress.org/documentation/article/tools-export-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP-CLI：search-replace",
+          "url": "https://developer.wordpress.org/cli/commands/search-replace/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：ホスティング環境の要件",
+          "url": "https://make.wordpress.org/hosting/handbook/compatibility/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "로컬 WordPress 사이트 공개하기: 파일, 데이터베이스, URL 변경",
+      "description": "컴퓨터에서 WordPress 사이트를 완성한 뒤에도 파일, 데이터베이스, 설정을 운영 서버로 옮겨야 합니다. 이 글은 콘텐츠 내보내기, 사이트 전체 이전, 지원되는 호스트와의 동기화를 비교합니다. Local에서 내보내는 방법, 운영 환경 준비, URL 변경, 미디어 확인과 이메일, 계정, 공개 전 검수를 정리해 개인 포트폴리오를 로컬 미리보기에서 실제로 접속 가능한 웹사이트로 옮기는 과정을 설명합니다.",
+      "hero": {
+        "src": "/guides/wordpress-local-to-live/hero-ko.jpg",
+        "alt": "로컬 컴퓨터에서 사이트를 내보내 운영 서버로 전달하는 모습을 화면, 폴더, 서버로 표현한 창작 일러스트.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "자신의 컴퓨터에서는 포트폴리오의 글, 이미지, 연락 양식이 모두 잘 보이는데 친구에게 URL을 보내면 전혀 열리지 않을 수 있습니다. 사이트가 갑자기 고장 난 것은 아닐 수 있습니다. localhost나 로컬 전용 도메인은 자신의 환경에서만 의미가 있기 때문입니다. 공개하려면 방문자가 연결할 수 있는 다른 서버가 콘텐츠를 제공해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "로컬 사이트를 공개할 때 중요한 인계는 세 가지입니다. 올바른 데이터를 옮기고, 운영 환경 설정으로 바꾸고, 페이지가 더 이상 자신의 컴퓨터에 의존하지 않는지 확인해야 합니다. 여기서는 WordPress 사이트 하나를 처음 공개하는 경우를 다룹니다. 운영 사이트에 이미 사용자가 있다면 기존 데이터를 별도로 처리해야 하며 오래된 로컬 데이터베이스로 곧바로 덮어쓰면 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "이번에 옮길 범위부터 정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "디자인이 이미 갖춰진 다른 사이트에 글 몇 개만 넣으려면 WordPress의 '도구 → 내보내기'에서 WXR 형식의 XML을 만들고 대상 사이트에서 가져올 수 있습니다. 이는 콘텐츠를 전달하는 데 적합합니다. 서버 설정, 모든 프로그램 파일, 실제 미디어 파일을 하나의 압축 파일에 모두 담는 방법은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "테마, 플러그인, 업로드한 이미지, 데이터베이스 설정까지 포트폴리오 전체를 유지하려면 사이트 전체 이전 절차를 선택합니다. 특정 호스트를 지원하는 로컬 도구의 동기화 기능도 사용할 수 있습니다. 공식 Local Connect가 현재 연결을 지원하는 곳은 Flywheel과 WP Engine입니다. 모든 호스트에서 같은 버튼으로 바로 전송할 수 있다고 가정하지 마세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "대상 호스트가 비어 있는 새 사이트인지, 보존할 콘텐츠가 있는 기존 사이트인지 확인합니다.",
+            "콘텐츠 가져오기, 사이트 전체 이전, 호환 호스트와의 동기화 중 한 가지 절차를 선택합니다.",
+            "작업 전에 로컬 사본을 보관하고, 대상 사이트에 데이터가 있다면 그 현재 상태도 보관합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Local에서 사이트 전체 데이터 내보내기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Local 공식 문서에 따라 내보낼 사이트를 열어 실행한 뒤 사이트 목록에서 마우스 오른쪽 버튼을 눌러 Export를 선택하고 찾기 쉬운 저장 위치를 고릅니다. 만들어진 압축 파일에는 wp-content와 데이터베이스 내보내기가 포함됩니다. wp-content에는 미디어, 플러그인, 테마가 있지만, 이 파일이 컴퓨터나 운영 서버 전체의 환경 이미지인 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "내보낸 시간, 파일 이름, 사이트 버전을 기록하고 파일 저장이 완료됐는지 확인합니다. 유일한 사본을 직접 수정하지 말고 원본 내보내기 파일을 하나 보관하세요. 다른 로컬 도구를 쓴다면 해당 문서에서 사이트 파일과 SQL 내보내기 위치를 찾습니다. 눈에 보이는 이미지 폴더만 복사해서는 데이터베이스를 대신할 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "대상 호스트가 이 데이터를 사용하는 방식은 지원하는 가져오기 절차에 달려 있습니다. 일반 호스트가 Local의 압축 파일을 바로 인식하지는 않을 수 있습니다. 호스트의 사이트 이전 안내나 선택한 플러그인 문서를 먼저 읽고 필요한 형식, 업로드 제한, 권한을 확인하세요. 확장자가 모두 ZIP이라고 해서 백업 형식을 서로 바꿔 쓸 수 있는 것은 아닙니다."
+        },
+        {
+          "type": "heading",
+          "text": "로컬과 운영 환경의 차이를 비교하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "로컬과 운영 환경의 WordPress, PHP, 데이터베이스 버전 및 필요한 확장 기능을 나란히 적습니다. 현재 WordPress의 공식 요구 사항과 플러그인 요구 사항을 참고해 버전을 선택하세요. 로컬에서 실행된다고 해서 다른 버전의 호스트에서도 정상 작동하는 것은 아닙니다. 오래된 플러그인이나 사용자 지정 코드에서는 특히 호환성 문제가 생길 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "데이터베이스 호스트명, 계정, 비밀번호, 파일 경로는 보통 다릅니다. 데이터를 옮긴 후 운영 호스트가 제공한 설정으로 연결하고 로컬 데이터베이스 비밀번호나 디스크 경로를 남기지 마세요. 파일 이름의 대소문자도 일관되게 사용해야 합니다. 한 로컬 운영체제에서 잘 되던 경로가 다른 운영체제에서는 검색되지 않을 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "운영 도메인의 DNS와 HTTPS를 준비하고 테스트 단계에는 적절한 접근 제한을 둡니다. 가져오기를 쉽게 하려고 사이트 전체 권한을 장기간 느슨하게 유지하지 마세요. 업로드 한도에 걸리면 원인부터 파악한 뒤 호스트가 지원하는 분할 또는 전송 방법을 사용하고 해당 설정을 조정합니다."
+        },
+        {
+          "type": "heading",
+          "text": "이전한 뒤 운영 URL로 콘텐츠 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "사이트 파일과 데이터베이스를 가져온 다음 이전 도구의 URL 변경 기능으로 로컬 주소를 운영 주소로 바꿉니다. 기술 담당자가 WP-CLI를 쓴다면 search-replace의 --dry-run을 먼저 실행해 쓰기 없이 예정된 변경을 볼 수 있습니다. WordPress의 직렬화된 데이터를 올바르게 처리하는 방법을 선택하세요. 일반 문자열 치환은 설정을 손상시킬 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "필요한 콘텐츠 경로는 유지하면서 홈, 메뉴, 글 이미지, 배경 이미지에 localhost, 로컬 도메인, 컴퓨터의 디스크 경로가 남아 있는지 확인합니다. 페이지 빌더가 만든 스타일 파일과 캐시는 해당 도구의 안내에 따라 다시 생성해야 할 수 있습니다. '설정 → 일반'의 URL만 바꾼다고 모든 위치가 업데이트되는 것은 아닙니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "운영 URL에서 로그인하고 편집기에서 시험용 초안을 열어 저장할 수 있는지 확인합니다.",
+            "이미지, 갤러리, 첨부 파일 다운로드, 중국어 문자가 포함된 파일 이름의 실제 링크를 하나씩 확인합니다.",
+            "관련 사이트 캐시를 비운 뒤 다른 기기에서 주요 페이지를 다시 엽니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "이메일 발송과 외부 연동 다시 검증하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Local의 Mailpit은 PHP mail() 경로로 보낸 시험 메일을 받아 개발 중 내용을 확인하게 해 줍니다. 이것이 운영 사이트의 실제 수신자에게 메일이 도착했다는 뜻은 아니며, 외부 API를 통해 보낸 모든 메일을 가로챈다는 뜻도 아닙니다. 공개할 때는 운영 이메일 서비스의 설정을 다시 확인하고 자신이 관리하는 수신 주소로 시험하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "연락 양식, 구독, 결제, 제삼자 로그인을 표로 정리하고 각각의 시험 모드와 운영 모드를 기록합니다. 콜백 URL, 계정 권한, 발신자 신원을 확인한 뒤 통제된 시험을 진행하세요. 모의 결제 성공 화면을 실제 결제 완료로 적어서는 안 됩니다. 양식이 문의를 저장한다면 저장 결과와 알림 수신도 함께 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "로컬에서는 짧은 시험 비밀번호나 일회성 관리자 계정을 쓰는 경우가 많습니다. 공개 전에 바꾸고 계정 권한을 정리하세요. 필요 없는 시험 콘텐츠, 예시 사용자, 개발 도구는 운영 페이지에서 참조하지 않는지 확인한 뒤 제거합니다. 비밀 설정은 적절한 관리 위치에 두고 공개 다운로드가 가능한 내보내기 파일이나 웹사이트 글에 넣지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "로컬 사이트를 끄고 공개 접속 다시 검수하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "로컬 사이트 서비스를 중지하고 모바일 데이터나 로컬 설정이 없는 다른 기기에서 운영 도메인을 엽니다. 이미지가 사라지거나 링크가 로컬로 돌아가거나 양식이 작동하지 않으면 컴퓨터에 대한 의존성이 남아 있다는 뜻입니다. 이 검사는 '내 컴퓨터에서는 된다'는 판단의 허점을 메우지만 페이지별 표본 확인과 기능 시험도 필요합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공개 전에는 남겨서는 안 되는 시험용 검색 색인 차단 설정을 제거하고 주요 메뉴, 연락처, 오류 페이지가 잘 작동하는지 확인합니다. 마지막으로 운영 호스트에서 새 백업을 만들고 호스트, 도메인, 플러그인 라이선스, 일상 유지 관리 책임자를 기록합니다. 이후 어느 환경에서 일상적인 업데이트를 할지도 적어 두어 두 사이트가 서로 다르게 변하지 않도록 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "운영 사이트가 실제 데이터를 받기 시작했다면 로컬에서 다시 사이트 전체를 전송하는 일을 일반적인 업데이트로 여기지 마세요. 이번 변경이 코드, 레이아웃, 콘텐츠 중 무엇인지 구분하고 새 데이터를 덮어쓰지 않는 방법을 고릅니다. 첫 공개와 이후 유지 관리는 서로 다른 작업이므로 인계할 때 규칙을 정해 두는 편이 좋습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-local-to-live/diagram-1-ko.svg",
+          "alt": "파일과 데이터베이스 내보내기, 운영 호스트 설정, URL 변경, 로컬 중지 후 공개 사이트 검증을 보여 주는 창작 4단계 도해.",
+          "width": 1600,
+          "height": 900,
+          "caption": "자신의 컴퓨터를 꺼도 방문자가 웹사이트의 주요 기능을 사용할 수 있어야 합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "방법",
+            "적합한 상황",
+            "이전 전 확인할 점"
+          ],
+          "rows": [
+            [
+              "WordPress XML 내보내기",
+              "선택한 콘텐츠를 다른 사이트에 전달",
+              "미디어, 레이아웃, 설정은 별도로 확인"
+            ],
+            [
+              "파일과 데이터베이스 전체 이전",
+              "로컬 사이트 전체를 처음 공개",
+              "대상 사이트 데이터, 도구 형식, 환경 설정"
+            ],
+            [
+              "Local Connect",
+              "공식 지원 호스트와 동기화",
+              "현재 지원 호스트와 전송 시 덮어쓰는 범위"
+            ],
+            [
+              "이후 부분 업데이트",
+              "운영 사이트가 실제 데이터를 받기 시작함",
+              "변경이 필요한 부분만 동기화"
+            ]
+          ],
+          "caption": "도구 순위가 아니라 이전 범위와 대상 환경을 기준으로 방법을 선택합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "공개 URL은 로컬 컴퓨터와 독립적으로 작동해야 합니다",
+          "text": "컴퓨터 전원을 꺼도 운영 호스트가 페이지와 이미지를 제공해야 합니다. 임시 공유 링크나 로컬 미리보기는 디자인을 논의하는 데 유용하지만 운영 사이트 공개가 완료됐다는 증거는 아닙니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "로컬 WordPress 개발 환경 만들기",
+              "kind": "life",
+              "slug": "wordpress-local-development"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "파일과 데이터베이스 백업 방법",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "운영 웹사이트의 HTTPS 인증서",
+              "kind": "life",
+              "slug": "https-certificate-setup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Local: 사이트 가져오기와 내보내기",
+          "url": "https://localwp.com/help-docs/getting-started/how-to-import-a-wordpress-site-into-local/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Local: Connect 지원 대상과 동기화",
+          "url": "https://localwp.com/help-docs/local-features/local-connect/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Local: Mailpit 시험 메일",
+          "url": "https://localwp.com/help-docs/local-features/mailpit/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 도구 내보내기",
+          "url": "https://wordpress.org/documentation/article/tools-export-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP-CLI: search-replace",
+          "url": "https://developer.wordpress.org/cli/commands/search-replace/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 호스팅 환경 요구 사항",
+          "url": "https://make.wordpress.org/hosting/handbook/compatibility/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "把本地 WordPress 网站搬到线上：文件、数据库与网址替换",
+      "description": "在电脑里完成 WordPress 网站后，还要把文件、数据库与设置带到正式服务器。本篇比较内容导出、整站迁移与支持的主机同步的差异，整理 Local 导出方式、正式环境准备、网址替换与媒体检查，并说明邮件发送、账号及上线验收，让个人作品网站从本地预览走到真正可公开使用。",
+      "hero": {
+        "src": "/guides/wordpress-local-to-live/hero-zh-cn.jpg",
+        "alt": "原创屏幕、文件夹与服务器插图，表达从本地导出网站并交付正式服务器。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "在自己的电脑打开作品网站，文字、图片与联系表单都很顺利，分享网址给朋友却完全连不上。这通常不是网站突然坏掉，而是 localhost 或本地自定义域名只在你的环境有意义。要公开使用，需要让另一台可被访客连接的服务器提供内容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本地上线最重要的交接有三件：迁移正确的数据、换成正式环境设置、确认页面不再依赖自己的电脑。以下以第一次发布的单一 WordPress 网站为例；如果正式站早已有人使用，就要另外处理现有数据，不能直接把较旧的本地数据库覆盖上去。"
+        },
+        {
+          "type": "heading",
+          "text": "先选择这次要带走哪些东西",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "只想把几篇文章放到另一个已经做好版面的网站，可以使用 WordPress 的「工具 → 导出」，取得 WXR 格式 XML，再于目的站导入。这种方法适合内容交接，并不等于把服务器设置、全部程序及实际媒体文件一起装进同一个压缩包。"
+        },
+        {
+          "type": "paragraph",
+          "text": "想保留整个作品网站的主题、插件、上传图片与数据库设置，则要选整站迁移流程。另一种做法是使用本地工具对特定服务器提供的同步功能。Local Connect 官方目前支持连接 Flywheel 与 WP Engine，不能假设所有服务器都能直接按同一个推送按钮。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "确认目标服务器是空白新站，还是已有需要保留的内容。",
+            "选定内容导入、整站迁移或兼容服务器同步其中一条流程。",
+            "在操作前保存本地副本；目的站已有数据时，也保存其目前状态。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "从 Local 导出完整网站数据",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "依 Local 官方文档，先打开并启动要导出的网站，在网站清单按右键选 Export，再选择容易找到的保存位置。产生的压缩文件包含 wp-content 与数据库导出；其中 wp-content 涵盖媒体、插件及主题，但不应把它描述成整台电脑或正式服务器的完整环境映像。"
+        },
+        {
+          "type": "paragraph",
+          "text": "导出后记录时间、文件名与网站版本，确认文件已保存完成。可以保留一份原始导出，不直接在唯一副本里修改内容。若使用其他本地工具，依其文档找出网站文件与 SQL 导出位置，特别注意数据库不能只靠复制看得到的图片文件夹来代替。"
+        },
+        {
+          "type": "paragraph",
+          "text": "目标服务器如何使用这份数据，取决于它支持的导入方式。一般服务器不一定认得 Local 的压缩文件；先读该服务器的搬站入口或所选插件文档，确认需要的格式、上传限制与权限。看到扩展名都是 ZIP，不代表不同工具的备份格式能互换。"
+        },
+        {
+          "type": "heading",
+          "text": "准备正式服务器的环境差异表",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把本地与正式环境的 WordPress、PHP、数据库及必要扩展功能列在左右两栏，参考目前 WordPress 官方需求和插件要求选择版本。能在本地运行不保证在不同版本的服务器正常，尤其旧插件或定制程序可能有兼容性问题。"
+        },
+        {
+          "type": "paragraph",
+          "text": "数据库服务器、账号、密码与文件路径通常不同。移入数据后依正式服务器提供的设置创建连接，不要保留本地的数据库密码或硬盘路径。文件名也使用一致大小写；在某些本地环境看似正常的路径，到不同操作系统可能找不到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "正式域名先完成 DNS 与 HTTPS 准备，测试阶段设置适当的访问限制。不要为了导入方便而长期放宽整个网站权限。若工具显示上传超限，依服务器提供的方法分段或改用受支持的传输方式，先找出限制来源，再调整对应设置。"
+        },
+        {
+          "type": "heading",
+          "text": "移入后，以正式网址核对内容",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先移入网站文件与数据库，再依工具的迁移功能把本地网址换成正式网址。若有技术人员操作 WP-CLI，可先用 search-replace 的 --dry-run 查看预计变更，而不直接写入。要选能正确处理 WordPress 序列化数据的方法，避免用一般文本取代破坏设置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保留需要的内容路径，同时检查首页、站内菜单、文章图片及背景图是否还含 localhost、本地域名或电脑硬盘路径。页面编辑器产生的样式文件与缓存可能需要依该工具说明重新产生；只改「设置 → 一般」中的网址，不代表所有位置都已更新。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "从正式网址登录，确认编辑器可打开并保存一篇测试草稿。",
+            "逐一检查图片、图库、附件下载及中文文件名的实际链接。",
+            "清除适用的网站缓存后，用另一台设备重新打开主要页面。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "重新验证邮件发送与对外集成",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Local 的 Mailpit 会截收使用 PHP mail() 路径发出的测试邮件，方便开发时检查内容。这不等于正式收件人真的收到信，也不能推论所有通过外部 API 发送的邮件都被拦下。上线时应依正式邮件服务重新确认设置，并使用自己能管理的收件邮箱测试。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把联系表单、订阅、支付及第三方登录列成表，分别记录测试模式与生产模式。先确认回调网址、账号权限和发件身份，再进行受控测试；不要把模拟付款成功画面写成已完成真正收款。表单若会保存咨询，也要同时检查保存结果与通知收件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本地常用简短测试密码或一次性管理员，上线前更换并整理账号权限。移除不需要的测试内容、示例用户及开发用工具，但先确认它们没有被正式页面引用。把机密设置留在适合的管理位置，不放在可公开下载的导出包或网站文章里。"
+        },
+        {
+          "type": "heading",
+          "text": "关闭本地，再做一次公开验收",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "停止本地网站服务，用移动网络或另一台没有本地设置的设备打开正式域名。若图片突然消失、链接跳回本地或表单失效，表示还有依赖未移走。这项测试能补足「我自己的电脑看起来正常」的盲点，但仍需要逐页抽查和功能测试。"
+        },
+        {
+          "type": "paragraph",
+          "text": "准备公开时移除不应保留的测试用禁止索引设置，确认主要导航、联系方式及错误页清楚可用。最后在正式服务器创建一份新的备份，记下服务器、域名、插件授权及日常维护负责人。以后日常更新在哪个环境进行，也要写明，避免两份网站各自改动而失去一致性。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若新站后续已收到真实数据，不要把本地再按一次整站推送当成一般更新。先辨识这次只要更新程序、版面还是内容，选择不会覆盖新数据的方式。第一次上线与往后维护是不同任务，交接时就订好规则会省去很多补救工作。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-local-to-live/diagram-1-zh-cn.svg",
+          "alt": "原创四阶段图解，从导出文件与数据库、配置正式服务器、替换网址，到关闭本地后验证公开网站。",
+          "width": 1600,
+          "height": 900,
+          "caption": "自己的电脑不用开着，访客也能完成网站的主要操作。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "适用需求",
+            "迁移前要确认"
+          ],
+          "rows": [
+            [
+              "WordPress XML 导出",
+              "把选定内容交给另一个网站",
+              "媒体、版面与设置需另行检查"
+            ],
+            [
+              "完整文件与数据库迁移",
+              "首次发布整个本地网站",
+              "目的站数据、工具格式与环境设置"
+            ],
+            [
+              "Local Connect",
+              "与官方支持的主机同步",
+              "目前支持的主机与推送覆盖范围"
+            ],
+            [
+              "后续局部更新",
+              "正式站已开始接收真实数据",
+              "只同步需要改动的部分"
+            ]
+          ],
+          "caption": "选择依据是迁移范围与目的环境，并非工具排名。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "公开网址要独立于本地运作",
+          "text": "把电脑关机后，正式网站仍应由服务器提供页面与图片。临时分享链接或本地预览可以用来讨论设计，不能直接当成已完成正式上线的证据。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先创建本地 WordPress 开发环境",
+              "kind": "life",
+              "slug": "wordpress-local-development"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文件与数据库备份方法",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "正式网站的 HTTPS 凭证",
+              "kind": "life",
+              "slug": "https-certificate-setup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Local：导入与导出网站",
+          "url": "https://localwp.com/help-docs/getting-started/how-to-import-a-wordpress-site-into-local/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Local：Connect 支持与同步",
+          "url": "https://localwp.com/help-docs/local-features/local-connect/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Local：Mailpit 测试邮件",
+          "url": "https://localwp.com/help-docs/local-features/mailpit/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：Tools Export",
+          "url": "https://wordpress.org/documentation/article/tools-export-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP-CLI：search-replace",
+          "url": "https://developer.wordpress.org/cli/commands/search-replace/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：服务器兼容性参考",
+          "url": "https://make.wordpress.org/hosting/handbook/compatibility/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }

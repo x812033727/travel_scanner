@@ -263,6 +263,1006 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "Build a personal blog with WordPress: from categories to your first post",
+      "description": "To start a personal blog, decide what questions you want to answer over time, then plan the homepage, post list and basic pages. Using WordPress as an example, this guide develops a writing workflow from content categories and reading layouts through the first post and later updates. It also covers checks for post cards, pagination and comments. It is for readers in Taiwan who want to turn their notes into public content: finish a small but complete site first, then add features as needed.",
+      "hero": {
+        "src": "/guides/wordpress-blog-build/hero-en.jpg",
+        "alt": "Original illustration connecting topic folders, a writing document and a blog website.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The hardest part of a personal blog is often not installing WordPress. It is knowing what to write next month and whether readers can find older posts. If you spend all your time on animations and layouts at the start, you may have a beautiful site with only an introduction. Establish a rhythm for content first, then use site features to support it."
+        },
+        {
+          "type": "paragraph",
+          "text": "This guide uses a fictional weekend crafts journal to plan material notes, making steps and project retrospectives. It is an original site-building scenario and makes no claim about traffic or income. WordPress settings are drawn from official documentation. Other site-building guides cover hosting and domain installation; this article focuses on content structure and everyday writing."
+        },
+        {
+          "type": "heading",
+          "text": "Define the blog's purpose in one sentence",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Write down whom you hope to help, what type of problem you address and what you can offer. A weekend crafts journal might help beginners understand material choices and the making process instead of trying to cover every lifestyle subject. Your focus need not be permanent, but it should help you decide whether the next topic belongs on this site."
+        },
+        {
+          "type": "paragraph",
+          "text": "List ten questions you actually want to answer, then group them into a small number of themes. How to store materials, choose tools and adjust a failed project are different reader questions. If all ten topics really answer the same question, combine them into one complete post first rather than splitting them into thin posts just to increase the count."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "For each topic, "
+            },
+            {
+              "type": "text",
+              "text": "mark"
+            },
+            {
+              "type": "text",
+              "text": " the materials you already have, information you still need to verify and photos you still need to take. For a tool you have not used yourself, you can summarize official instructions and selection criteria, but do not present them as your own hands-on review. Distinguish facts, inferences and preferences in everyday notes too, so readers know where your advice applies."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Build the smallest useful site structure first",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "At the outset, a homepage, post list, About page, contact method and a few categories may be enough. Explain the author's background and content scope on the About page and provide a contact channel that works. If you are not accepting collaborations or consultations, say so plainly; do not create a service entry point you cannot answer just to make the site look complete."
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress Reading settings let the homepage show the latest posts or a selected page. If you want the homepage to introduce the site before guiding readers into topics, use a static homepage with a posts page. If the site is primarily an ongoing journal, a post list can be the homepage. Choose based on what readers need to find; a more elaborate setup is not automatically more professional."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep the main menu to primary entry points and connect related posts within the content. A guide to organizing craft materials can link to a tool-selection post, and a finished-project review can link back to the making steps. Let content needs define those relationships. Do not put every post in the main menu or paste the same long list of links at the end of each article."
+        },
+        {
+          "type": "heading",
+          "text": "Test the reading layout with a real post",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Add a post near the length you expect to publish, with section headings, steps, images and links, then inspect the layout. One line of sample text cannot reveal line-spacing problems, long-title wrapping or cropped images. On phones, check type size, contrast and button dimensions; do not choose a theme solely because it looks attractive on a large screen."
+        },
+        {
+          "type": "paragraph",
+          "text": "A Query Loop block can build the post list, define which content appears in repeated cards and add pagination. Official documentation notes that card titles and featured images do not link to the post automatically in every layout; check the link settings. During acceptance testing, actually click both title and image instead of merely checking that they appear."
+        },
+        {
+          "type": "paragraph",
+          "text": "The list must also cope with no posts, very long titles and different image ratios. With few posts at the beginning, pagination problems are easy to miss. Use enough sample content in a test environment to check that the next page works. Do not publish large amounts of low-value test content to fill the layout; remove the sample data after testing."
+        },
+        {
+          "type": "heading",
+          "text": "Let the first post solve one complete problem",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Choose a topic you can explain clearly without making it too broad, such as how to sort frequently used craft materials on a small desk. Describe the reader's problem first, then give steps, trade-offs and a way to check the outcome. A concrete scenario helps readers judge whether it applies more than a broad statement that organization matters."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finish the substance before fine-tuning every paragraph's appearance. Use your own data and photos for firsthand examples. When citing product features, versions or rules, check official sources and record the date. Describe failures and limits honestly when they matter; do not frame every attempt as a success or invent test data to make the post look complete."
+        },
+        {
+          "type": "paragraph",
+          "text": "After the first draft, look for repeated passages, unanswered questions and steps with missing prerequisites. The title should match what the body delivers; the summary should explain how the post helps. If readers may begin from two different conditions, use a comparison table or separate short sections so they know which path applies before starting."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Choose a specific problem and list the reader's starting conditions and intended outcome.",
+            "Gather your own materials and primary sources; flag claims still awaiting verification.",
+            "Write complete steps, limits and original examples, then add suitable images and related links.",
+            "Preview, proofread and check the published post; record what needs updating next time."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Plan a publishing rhythm you can sustain",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Instead of setting a weekly post quota alone, estimate the time needed for topic selection, fact-checking, writing, images and proofreading. During busy periods, fewer complete updates may be more sustainable, and you still need time to revise older posts. In a draft list, record a specific next action, such as taking one photo, rather than only writing 'finish when free.'"
+        },
+        {
+          "type": "paragraph",
+          "text": "Track posts as in preparation, awaiting verification, awaiting proofreading or published, with a clear condition for each transition. Before scheduling a post, confirm the site's time zone and that the content is finished; do not use scheduling only to force a rushed deadline. Review fast-changing tool features sooner. Preserve the original context of personal records rather than pretending every post applies forever."
+        },
+        {
+          "type": "paragraph",
+          "text": "Schedule basic maintenance as well: updates, backups, link checks and billing reminders. Writing posts and maintaining a website are different jobs. New content does not compensate for a contact form that cannot deliver messages. Each month, follow a path from the homepage to a post and then related content; this can reveal breaks that readers would encounter."
+        },
+        {
+          "type": "heading",
+          "text": "Set a manageable scope for comments and feedback",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress comments can be opened and moderated through settings. Whether to use them depends on your available time. If you open comments, decide how to handle spam, personal information and off-topic content, and tell readers replies may not be immediate. Comment count is not the only measure of post quality; you need not keep meaningless content just to make a page look busy."
+        },
+        {
+          "type": "paragraph",
+          "text": "When a reader asks a question, determine whether the original post is unclear, the information has changed or a new need deserves its own post. Correct the existing article where appropriate and retain necessary context; create and cross-link a new article for a different task. The blog can become more complete in response to readers' questions rather than only growing in total post count."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-blog-build/diagram-1-en.svg",
+          "alt": "Original diagram of a personal blog steadily building content through four stages: topic selection, writing, publishing and updating.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Steadily adding useful content is easier to sustain than enabling every website feature at once.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Task",
+            "Smallest workable approach",
+            "What to check at completion"
+          ],
+          "rows": [
+            [
+              "Focus",
+              "One sentence and ten reader questions",
+              "Whether topics stay focused"
+            ],
+            [
+              "Structure",
+              "Homepage, posts, About and contact",
+              "Primary entry points are easy to find"
+            ],
+            [
+              "Layout",
+              "Test with a realistically long post",
+              "Phone display and card links"
+            ],
+            [
+              "Writing",
+              "One complete problem per post",
+              "Steps, examples and sources"
+            ],
+            [
+              "Maintenance",
+              "Check old posts and the site regularly",
+              "Links, backups and updates"
+            ],
+            [
+              "Feedback",
+              "Moderate comments within your capacity",
+              "Questions lead to content improvements"
+            ]
+          ],
+          "caption": "Establish a sustainable workflow before adding features you actually need."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Do not finish the site's appearance with empty content",
+          "text": "Write one complete post before deciding on categories, cards and layouts. Use sample content for testing only; remove it or replace it with useful, verifiable material before making the site public."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Choosing between posts and pages",
+              "kind": "life",
+              "slug": "wordpress-posts-pages"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Organizing categories and menus",
+              "kind": "life",
+              "slug": "wordpress-taxonomy-navigation"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: Reading settings",
+          "url": "https://wordpress.org/documentation/article/settings-reading-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Query Loop block",
+          "url": "https://wordpress.org/documentation/article/query-loop-block/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Managing comments",
+          "url": "https://wordpress.org/documentation/article/comments-in-wordpress/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: Creating helpful, reliable content for people",
+          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "用 WordPress 创建个人博客：从分类到第一篇文章",
+      "description": "创建个人博客，先决定想长期回答什么问题，再安排首页、文章列表与基本页面。本文以 WordPress 为例，从内容分类、阅读版式、第一篇文章到发布后更新，整理可以持续运行的写作流程，也说明文章卡片、分页与留言的检查。适合希望把笔记整理成公开内容的台湾读者，先完成小而完整的网站，再依实际需求增加功能。",
+      "hero": {
+        "src": "/guides/wordpress-blog-build/hero-zh-cn.jpg",
+        "alt": "题材文件夹、写作文档与文章网站串连的原创插图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "个人博客最难的地方，常常不是装好 WordPress，而是下个月还知道要写什么、读者找不找得到以前的文章。如果一开始把时间都花在挑选动画与版面，网站可能很漂亮，却只有一篇自我介绍。先建立内容节奏，再用网站功能支持它，会比较容易持续。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下以虚构的周末手工笔记为例，规划材料整理、制作步骤与作品回顾。这是原创建站情境，没有宣称任何流量或收入成果。WordPress 设置依官方文档整理；服务器与域名安装可参考相关建站文章，本篇聚焦内容架构及日常写作。"
+        },
+        {
+          "type": "heading",
+          "text": "用一句话界定博客的用途",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先写下希望帮助谁、处理哪一类问题，以及自己能提供什么。周末手工笔记可以定位为帮助初学者理解材料选择与制作过程，而不是同时包办所有生活话题。定位不必永久不变，但要足以帮你判断下一篇题目是否属于这个网站。"
+        },
+        {
+          "type": "paragraph",
+          "text": "列出十个真的想回答的问题，再将它们分成少量主题。像材料怎么收、工具怎么选、失败作品如何调整，都是不同的读者问题。若十个题目其实都在回答同一件事，可以先合成一篇完整内容，避免为了让文章数量增加而拆成多篇薄弱短文。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "为每个题目"
+            },
+            {
+              "type": "text",
+              "text": "标记"
+            },
+            {
+              "type": "text",
+              "text": "自己已有的材料、仍需查证的信息与需要补拍的图片。没有亲自使用的工具，可以整理官方说明与选择方法，但不要写成自己的实测心得。日常记录也要分清事实、推测与个人偏好，让读者知道建议适用到哪里。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "先创建最小的网站架构",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "初期可以先有首页、文章列表、关于与联系方式，再加上少量分类。关于页说明作者背景与内容范围，联系信息提供可使用的管道；如果暂时不接受合作或咨询，直接写清楚，不需要为了看起来完整而创建没有回复能力的服务入口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 阅读设置可选择首页显示最新文章或指定页面。若想让首页先介绍网站，再引导到不同主题，可用固定首页搭配文章页；若以持续更新的日志为主，也可以直接显示文章列表。先依读者要找什么决定，不必把更复杂的配置当成更专业。"
+        },
+        {
+          "type": "paragraph",
+          "text": "菜单只放主要入口，文章间再用相关链接串起来。手工材料整理文可以连到工具选择，完成作品的回顾则连回制作步骤。这种关系应由内容需要决定，不要把所有文章都放进主菜单，也不要在每篇结尾粘贴完全相同的冗长的链接列表。"
+        },
+        {
+          "type": "heading",
+          "text": "用真实文章验收阅读版式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先放入一篇接近未来长度的文章，包含段落标题、步骤、图片及链接，再查看版式。短短一句示例文本很难看出行距、长标题换行或图片裁切的问题。手机上尤其要确认字体、对比与按钮大小，避免只在大屏幕挑选看起来漂亮的主题。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若使用查询循环区块创建文章列表，可设置显示内容及重复的文章卡片结构，并安排分页。官方文档提醒，卡片中的标题与特色图片并非所有版式都自动连到文章，需确认链接设置。因此验收时要真的点击标题和图片，不只看它们有没有出现。"
+        },
+        {
+          "type": "paragraph",
+          "text": "列表也要能处理没有文章、标题很长或图片比例不同的情况。初期文章少，分页问题不容易发现，可在测试环境用足够的示例内容确认下一页能运作。不要直接公开大量没有价值的测试文章来填满版面，验收后应移除示范数据。"
+        },
+        {
+          "type": "heading",
+          "text": "第一篇文章先解决一个完整问题",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "选择自己能清楚说明、范围又不过大的题目，例如小桌面如何分类收纳常用手工材料。先描述读者遇到的问题，再提供步骤、取舍与检查结果的方法。具体情境比泛泛谈「收纳很重要」更容易让读者判断是否适用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "写作时先完成内容，不急着每段都调整视觉。实际例子使用自己的数据与照片；引用产品功能、版本或规则时，查官方来源并记录日期。需要展示失败与限制时如实说明，不用把每次尝试都包装成成功经验，也不要捏造测试数据让文章看起来更完整。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成初稿后，找出重复段落、没有回答的问题及缺少条件的步骤。标题要和正文承诺一致，摘要则说明文章能帮到什么。若需要两种不同前提，使用比较表或分开的小节，让读者在开始前就知道应走哪条路。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "选一个具体问题，列出读者条件与预期完成的事情。",
+            "整理自己的材料与一手来源，标记仍未确认的主张。",
+            "写出完整步骤、限制及原创例子，再补上合适图片与相关链接。",
+            "预览、校对与发布验收后，记录下次需要更新的信息。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "安排能维持的更新节奏",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "不要只设置每周一定要发布几篇，先估算选题、查证、写作、配图及校对各需多少时间。若工作忙碌，可以维持较少但完整的更新，并留出修改旧文的时间。草稿清单记录下一个具体动作，例如补一张照片，比只写「有空完成」更容易接续。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把文章分成准备中、待查证、待校对及已发布，并设置每次切换状态的条件。定时发布前确认网站时区与内容已完成，不把调度当成逼自己赶稿的唯一方法。涉及持续变动的工具功能，可设置较早复查；个人记录则保留当时情境，不用假装每篇都永远适用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同时安排基本维护：更新、备份、链接检查与账务提醒。文章写作与网站维护是两种工作，不能只顾添加内容却忽略无法收信的联系表单。每月抽查一条从首页到文章、再到相关内容的路径，能及早发现读者会遇到的断点。"
+        },
+        {
+          "type": "heading",
+          "text": "留言与反馈先设置能负责的范围",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 留言可以依设置开放及审核，是否使用应看你有没有管理时间。若开放留言，先决定如何处理垃圾消息、个人信息与不相关内容，也让读者知道回复不一定即时。留言数量不是文章质量的唯一指标，不必为了热闹而保留无意义的内容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "收到读者问题时，先判断是原文不清楚、信息已变动，还是值得另写的新需求。能在原文修正的就更新并保留必要说明；不同任务再创建新文章，互相链接。这样博客会随读者问题逐步变完整，而不是只有文章总数持续增加。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-blog-build/diagram-1-zh-cn.svg",
+          "alt": "个人博客以选题、撰写、发布及更新四个阶段持续累积内容的原创图解。",
+          "width": 1600,
+          "height": 900,
+          "caption": "稳定累积有用内容，比一次加入所有网站功能更容易持续。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "工作",
+            "最小可行做法",
+            "完成时看什么"
+          ],
+          "rows": [
+            [
+              "定位",
+              "一句话与十个读者问题",
+              "题目是否聚焦"
+            ],
+            [
+              "架构",
+              "首页、文章、关于与联系",
+              "主要入口可找到"
+            ],
+            [
+              "版式",
+              "用真实长度文章测试",
+              "手机与卡片链接"
+            ],
+            [
+              "写作",
+              "一篇解决一个问题",
+              "步骤、例子与来源"
+            ],
+            [
+              "维护",
+              "固定检查旧文与网站",
+              "链接、备份与更新"
+            ],
+            [
+              "反馈",
+              "依能力管理留言",
+              "问题能带回内容改善"
+            ]
+          ],
+          "caption": "先建立可持续的工作流，再增加确实需要的功能。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "别用空白内容完成网站外观",
+          "text": "先写出一篇完整文章，再决定分类、卡片与版式。示例内容仅用于测试，公开前删除或换成可查证、具有用途的数据。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文章与页面的选择",
+              "kind": "life",
+              "slug": "wordpress-posts-pages"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "分类与菜单怎么整理",
+              "kind": "life",
+              "slug": "wordpress-taxonomy-navigation"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：阅读设置",
+          "url": "https://wordpress.org/documentation/article/settings-reading-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：查询循环区块",
+          "url": "https://wordpress.org/documentation/article/query-loop-block/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：留言管理",
+          "url": "https://wordpress.org/documentation/article/comments-in-wordpress/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：以读者为主的可靠内容",
+          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPressで個人ブログを作る：カテゴリーから最初の記事まで",
+      "description": "個人ブログを始めるなら、長く答えていきたい問いを決め、トップページ、記事一覧、基本ページを整えます。WordPressを例に、内容の分類、読みやすいレイアウト、最初の記事、公開後の更新まで、続けられる執筆の流れを紹介します。記事カード、ページ送り、コメントの確認点も扱います。メモを公開コンテンツにまとめたい台湾の読者を対象に、まず小さくても完成したサイトを作り、必要に応じて機能を増やす方法です。",
+      "hero": {
+        "src": "/guides/wordpress-blog-build/hero-ja.jpg",
+        "alt": "テーマ別フォルダー、執筆文書、記事サイトをつないだオリジナルのイラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "個人ブログで難しいのはWordPressの設置そのものより、来月も書くことがあるか、読者が過去の記事を見つけられるかという点かもしれません。最初からアニメーションやレイアウト選びに時間を使い切ると、見た目はきれいでも自己紹介しかないサイトになりがちです。先に内容を作るリズムを定め、サイトの機能でそれを支えるほうが続けやすくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下では架空の週末手作りノートを例に、材料の整理、制作手順、作品の振り返りを計画します。独自に設定したサイト制作の場面であり、アクセス数や収益の実績を示すものではありません。WordPressの設定は公式文書に基づいています。ホスティングやドメインの設置は関連するサイト制作記事に譲り、ここでは内容の構成と日々の執筆に焦点を当てます。"
+        },
+        {
+          "type": "heading",
+          "text": "ブログの目的を一文で定める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "誰を助けたいか、どんな問題に応えるか、自分には何を提供できるかを書き出します。週末手作りノートなら、あらゆる生活の話題を扱うより、初心者が材料の選び方と制作過程を理解する手助けに絞れます。方向性は永久に固定する必要はありませんが、次の記事がこのサイトに合うか判断できる程度には明確にしましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本当に答えたい問いを十個挙げ、少数のテーマに分けます。材料のしまい方、道具の選び方、失敗した作品の直し方は別々の読者の悩みです。十個の題材が実は同じ問いに答えているなら、記事数を増やすために薄い短文に分けず、まず一つの充実した記事にまとめられます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "各題材について、"
+            },
+            {
+              "type": "text",
+              "text": "印を付けて"
+            },
+            {
+              "type": "text",
+              "text": "手元にある材料、まだ確かめるべき情報、撮り直す必要がある写真を整理します。自分で使っていない道具は公式説明や選び方をまとめても構いませんが、実際に試した感想として書かないでください。日々の記録でも事実、推測、個人の好みを分け、助言がどこまで当てはまるか読者に伝えます。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "まず最小限のサイト構成を作る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "初めはトップページ、記事一覧、運営者紹介、連絡方法と少数のカテゴリーがあれば十分です。紹介ページには書き手の背景と扱う範囲を書き、連絡先には実際に使える手段を示します。協業や相談をまだ受け付けないなら明記し、見た目を整えるためだけに返信できないサービス窓口を作る必要はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPressの表示設定では、トップページに最新記事を出すか、指定したページを使うか選べます。最初にサイトを紹介してから各テーマへ案内したいなら、固定のトップページと記事ページを組み合わせます。継続して更新する日誌が中心なら、記事一覧をそのまま表示しても構いません。読者が何を探すかで決め、複雑な設定のほうが専門的だと思う必要はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "メニューには主要な入口だけを置き、記事同士は関連リンクでつなぎます。手作り材料の整理記事から道具選びへ、完成作品の振り返りから制作手順へリンクできます。この関係は内容上の必要性で決め、すべての記事を主メニューに入れたり、各記事の末尾に同じ長いリンク一覧を貼ったりしないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "実際の記事で読みやすいレイアウトを検証する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "将来の記事に近い長さで、見出し、手順、画像、リンクを含む一編を先に入れてレイアウトを見ます。一行だけの仮の文章では行間、長いタイトルの改行、画像の切り抜きの問題が分かりません。特にスマートフォンでは文字の大きさ、コントラスト、ボタンの大きさを確かめ、大画面での見た目だけでテーマを選ばないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "クエリーループブロックで記事一覧を作る場合は、表示内容、繰り返す記事カードの構成、ページ送りを設定できます。公式文書によると、カード内のタイトルやアイキャッチ画像がすべてのレイアウトで自動的に記事へリンクするわけではないため、リンク設定を確認します。検証では表示を見るだけでなく、タイトルと画像を実際にクリックしてください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一覧は記事がない状態、長いタイトル、比率の異なる画像にも対応する必要があります。記事が少ない初期はページ送りの問題に気づきにくいため、テスト環境で十分なサンプルを使って次ページが機能するか確かめます。レイアウトを埋めるために価値のないテスト記事を大量公開せず、検証後はサンプルデータを削除します。"
+        },
+        {
+          "type": "heading",
+          "text": "最初の記事は一つの問題を最後まで解決する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "説明できる範囲で、広すぎない題材を選びます。例えば小さな机でよく使う手作り材料をどう分類して収納するかです。読者の困りごとを説明してから、手順、選択の理由、結果を確かめる方法を示します。「収納は大切」と一般論を述べるより、具体的な状況のほうが読者は自分に合うか判断できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "執筆中は各段落の見た目を急いで調整せず、まず内容を完成させます。実例には自分の資料や写真を使い、製品の機能、バージョン、ルールを引用するときは公式情報を確認して日付を残します。失敗や限界を示す必要があれば正直に書き、すべての試みを成功談に見せたり、記事を充実させるためにテスト数値を作ったりしないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "初稿後は重複する段落、答えていない問い、前提条件が抜けた手順を探します。タイトルは本文が提供する内容と一致させ、概要では記事が何に役立つかを説明します。異なる二つの前提がある場合は比較表や別の短い節を使い、着手前に自分がどの道を進むべきか分かるようにします。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "具体的な問題を一つ選び、読者の条件と達成したいことを挙げる。",
+            "自分の材料と一次情報を整理し、未確認の主張に印を付ける。",
+            "手順、限界、独自の実例をそろえ、適切な画像と関連リンクを加える。",
+            "プレビュー、校正、公開後の確認を行い、次回更新すべき情報を記録する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "続けられる更新ペースを決める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "毎週何本出すかだけを先に決めず、題材選び、確認、執筆、画像作成、校正にかかる時間を見積もります。忙しいときは少なくても完成度の高い更新を続け、古い記事を直す時間も確保します。下書き一覧には「時間があるときに完成」ではなく「写真を一枚追加する」のような具体的な次の行動を残すと再開しやすくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "記事を準備中、確認待ち、校正待ち、公開済みに分け、各状態へ移る条件を決めます。予約投稿の前にサイトのタイムゾーンと内容の完成を確認し、締め切りに追われて書くためだけに予約機能を使わないでください。変化の速いツールの機能は早めに見直し、個人的な記録には当時の状況を残して、すべての記事が永久に通用するかのように扱わないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "更新、バックアップ、リンク確認、支払いの通知など基本の保守も予定します。執筆とサイトの保守は別の仕事です。新しい記事を書いていても、連絡フォームでメールを受け取れなければ困ります。月に一度、トップページから記事、さらに関連する内容へ進む経路を一つたどると、読者が遭遇する切れ目を早く見つけられます。"
+        },
+        {
+          "type": "heading",
+          "text": "コメントと意見は管理できる範囲を先に決める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPressのコメントは設定に応じて受け付け、審査できます。使うかどうかは管理に割ける時間で決めてください。開くならスパム、個人情報、無関係な内容の扱いを決め、返信がすぐには届かない可能性も伝えます。コメント数だけが記事の質ではありません。にぎわいを演出するために意味のない投稿を残す必要はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "読者から質問が来たら、元の記事が分かりにくいのか、情報が変わったのか、それとも別の記事にすべき新しい需要なのか判断します。元の記事で直せることは必要な説明を残しながら更新し、別の作業なら新しい記事を作って相互にリンクします。記事数を増やすだけでなく、読者の問いに応じてブログを少しずつ充実させられます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-blog-build/diagram-1-ja.svg",
+          "alt": "題材選び、執筆、公開、更新の四段階で個人ブログの内容を着実に増やすオリジナル図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "サイトの全機能を一度に追加するより、役立つ内容を着実に積み重ねるほうが続けやすい。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "作業",
+            "最小限の実行方法",
+            "完了時の確認"
+          ],
+          "rows": [
+            [
+              "方向性",
+              "一文と読者の問い十個",
+              "題材が絞れているか"
+            ],
+            [
+              "構成",
+              "トップ、記事、紹介、連絡",
+              "主要な入口が見つかるか"
+            ],
+            [
+              "レイアウト",
+              "実際に近い長さの記事で試す",
+              "スマートフォンとカードのリンク"
+            ],
+            [
+              "執筆",
+              "一記事で一つの問題を解く",
+              "手順、実例、情報源"
+            ],
+            [
+              "保守",
+              "古い記事とサイトを定期確認",
+              "リンク、バックアップ、更新"
+            ],
+            [
+              "意見",
+              "対応できる範囲でコメントを管理",
+              "質問が内容改善につながるか"
+            ]
+          ],
+          "caption": "本当に必要な機能を増やす前に、続けられる作業の流れを作る。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "空の内容でサイトの見た目を完成させない",
+          "text": "カテゴリー、カード、レイアウトを決める前に、記事を一編完成させます。サンプルはテストだけに使い、公開前に削除するか、確認可能で役立つ資料に差し替えてください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "投稿と固定ページの選び方",
+              "kind": "life",
+              "slug": "wordpress-posts-pages"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "カテゴリーとメニューの整理方法",
+              "kind": "life",
+              "slug": "wordpress-taxonomy-navigation"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：表示設定",
+          "url": "https://wordpress.org/documentation/article/settings-reading-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：クエリーループブロック",
+          "url": "https://wordpress.org/documentation/article/query-loop-block/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：コメントの管理",
+          "url": "https://wordpress.org/documentation/article/comments-in-wordpress/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：読者を優先した信頼できるコンテンツ",
+          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress로 개인 블로그 만들기: 분류부터 첫 글까지",
+      "description": "개인 블로그를 시작할 때는 오래 답하고 싶은 질문을 먼저 정한 뒤 홈 화면, 글 목록, 기본 페이지를 구성합니다. WordPress를 예로 내용 분류와 읽기 레이아웃, 첫 글, 게시 후 수정까지 이어지는 글쓰기 흐름을 정리하고 글 카드, 페이지 이동, 댓글을 확인하는 방법도 설명합니다. 메모를 공개 콘텐츠로 정리하려는 대만 독자를 대상으로, 작지만 완결된 사이트를 먼저 만든 다음 실제 필요에 따라 기능을 더하는 방법을 다룹니다.",
+      "hero": {
+        "src": "/guides/wordpress-blog-build/hero-ko.jpg",
+        "alt": "주제별 폴더, 글쓰기 문서, 블로그 사이트가 이어진 자체 제작 그림.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "개인 블로그에서 가장 어려운 일은 WordPress 설치보다 다음 달에도 쓸 주제가 있고 독자가 예전 글을 찾을 수 있게 하는 일일 수 있습니다. 처음부터 애니메이션과 디자인을 고르는 데 시간을 다 쓰면 사이트는 멋져도 자기소개 글 하나뿐일 수 있습니다. 콘텐츠를 만드는 리듬부터 정하고 사이트 기능으로 이를 받쳐 주는 편이 지속하기 쉽습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "아래에서는 가상의 주말 공예 기록을 예로 재료 정리, 제작 단계, 완성작 되돌아보기를 계획합니다. 자체 제작한 사이트 사례일 뿐 방문자 수나 수익 성과를 주장하지 않습니다. WordPress 설정은 공식 문서를 바탕으로 정리했습니다. 호스팅과 도메인 설치는 관련 사이트 제작 글을 참고하고, 여기서는 콘텐츠 구조와 일상적인 글쓰기에 집중합니다."
+        },
+        {
+          "type": "heading",
+          "text": "블로그의 목적을 한 문장으로 정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "누구를 돕고 싶은지, 어떤 문제를 다루는지, 무엇을 제공할 수 있는지 적어 보세요. 주말 공예 기록이라면 모든 생활 주제를 아우르기보다 초보자가 재료를 고르고 만드는 과정을 이해하도록 돕는 데 초점을 맞출 수 있습니다. 방향을 영원히 고정할 필요는 없지만, 다음 주제가 이 사이트에 어울리는지 판단할 만큼은 분명해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "실제로 답하고 싶은 질문 열 개를 적고 적은 수의 주제로 묶으세요. 재료 보관, 도구 선택, 실패한 작품의 수정 방법은 각기 다른 독자의 고민입니다. 열 가지가 사실 같은 질문에 답한다면 글 수를 늘리려고 얇은 글로 나누기보다 먼저 하나의 완결된 글로 합칠 수 있습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "각 주제에 대해 "
+            },
+            {
+              "type": "text",
+              "text": "표시하여"
+            },
+            {
+              "type": "text",
+              "text": " 이미 가지고 있는 재료, 아직 확인해야 할 정보, 추가로 촬영할 사진을 구분하세요. 직접 쓰지 않은 도구라면 공식 설명과 선택 기준을 정리할 수 있지만 자신의 사용 후기처럼 써서는 안 됩니다. 일상 기록에서도 사실, 추정, 개인 취향을 구분해 조언이 어디에 적용되는지 독자가 알 수 있게 하세요."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "먼저 가장 작은 사이트 구조 만들기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "초기에는 홈 화면, 글 목록, 소개, 연락 방법과 소수의 분류만 있어도 됩니다. 소개 페이지에 작성자의 배경과 다루는 범위를 설명하고 실제로 사용할 수 있는 연락 수단을 적으세요. 아직 협업이나 상담을 받지 않는다면 명확히 밝히고, 완성되어 보이기 위해 답할 수 없는 서비스 창구를 만들 필요는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 읽기 설정에서는 홈 화면에 최신 글 또는 지정한 페이지를 표시할 수 있습니다. 홈에서 사이트를 먼저 소개하고 여러 주제로 안내하고 싶다면 고정 홈과 글 페이지를 함께 사용하세요. 꾸준히 쓰는 일지가 중심이라면 글 목록을 바로 보여 줄 수도 있습니다. 독자가 찾는 것에 따라 고르고, 복잡한 구성이 더 전문적이라고 생각할 필요는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "메뉴에는 주요 입구만 두고 글 사이에는 관련 링크를 추가하세요. 공예 재료 정리 글은 도구 선택 글로, 완성작 회고는 제작 단계 글로 연결할 수 있습니다. 이런 관계는 콘텐츠에 필요한지를 기준으로 정해야 합니다. 모든 글을 주 메뉴에 넣거나 글마다 같은 긴 링크 목록을 붙이지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "실제 길이의 글로 읽기 레이아웃 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "앞으로 올릴 글과 비슷한 길이의 글을 먼저 넣고 소제목, 단계, 이미지, 링크를 포함해 레이아웃을 살펴보세요. 한 줄짜리 예시 문장만으로는 줄 간격, 긴 제목의 줄바꿈, 이미지 잘림을 알기 어렵습니다. 특히 휴대전화에서 글자 크기, 대비, 버튼 크기를 확인하고 큰 화면에서 예뻐 보인다는 이유만으로 테마를 고르지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "Query Loop 블록으로 글 목록을 만들면 표시할 내용과 반복되는 글 카드 구조를 정하고 페이지 이동도 넣을 수 있습니다. 공식 문서에 따르면 카드 제목과 대표 이미지가 모든 레이아웃에서 자동으로 글에 연결되지는 않으므로 링크 설정을 확인해야 합니다. 검수할 때는 표시 여부만 보지 말고 제목과 이미지를 실제로 눌러 보세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "목록은 글이 없는 상태, 긴 제목, 서로 다른 이미지 비율도 처리해야 합니다. 초기에는 글이 적어 페이지 이동 문제를 발견하기 어렵습니다. 테스트 환경에 충분한 예시 콘텐츠를 넣어 다음 페이지가 작동하는지 확인하세요. 화면을 채우려고 가치 없는 테스트 글을 대량 공개하지 말고 검수가 끝나면 예시 데이터를 지우세요."
+        },
+        {
+          "type": "heading",
+          "text": "첫 글은 하나의 문제를 끝까지 해결하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "명확히 설명할 수 있으면서 너무 넓지 않은 주제를 고르세요. 예를 들면 작은 책상에서 자주 쓰는 공예 재료를 어떻게 나누어 보관할지입니다. 독자의 문제를 먼저 설명하고 단계, 선택의 득실, 결과를 확인하는 방법을 제시하세요. '정리가 중요하다'는 일반론보다 구체적인 상황이 독자에게 맞는지 판단하기 쉽습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "글을 쓸 때는 문단마다 시각적 모양을 고치기 전에 내용을 완성하세요. 직접 겪은 예시는 자신의 자료와 사진을 사용하고, 제품 기능이나 버전, 규칙을 인용할 때는 공식 출처를 확인해 날짜를 적습니다. 실패와 한계를 보여 줘야 한다면 사실대로 설명하세요. 모든 시도를 성공담으로 포장하거나 글을 풍성하게 보이게 하려고 시험 수치를 꾸며서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "초안을 마친 뒤 반복된 문단, 답하지 못한 질문, 전제 조건이 빠진 단계를 찾아보세요. 제목은 본문이 실제로 제공하는 내용과 맞아야 하고 요약은 글이 무엇에 도움이 되는지 설명해야 합니다. 서로 다른 출발 조건이 두 가지라면 비교표나 별도의 짧은 절로 나누어 독자가 시작 전에 자신의 경로를 알게 하세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "구체적인 문제 하나를 정하고 독자의 조건과 기대하는 결과를 적는다.",
+            "자신의 재료와 1차 출처를 모으고 아직 확인하지 못한 주장을 표시한다.",
+            "완전한 단계, 제한, 자체 제작 사례를 쓰고 알맞은 이미지와 관련 링크를 더한다.",
+            "미리보기와 교정, 게시 후 검수를 마치고 다음에 갱신할 정보를 기록한다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "지속할 수 있는 업데이트 리듬 정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "매주 글을 몇 편 내겠다는 목표만 세우지 말고 주제 선택, 사실 확인, 집필, 이미지 준비, 교정에 필요한 시간을 먼저 계산하세요. 일이 바쁘다면 횟수는 줄이되 완결된 글을 올리고 옛 글을 고칠 시간도 남겨 둘 수 있습니다. 초안 목록에는 '시간 나면 완성'보다 '사진 한 장 추가'처럼 구체적인 다음 행동을 적어야 이어서 하기 쉽습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "글을 준비 중, 확인 대기, 교정 대기, 게시 완료로 나누고 상태를 옮기는 조건을 정합니다. 예약 게시 전에 사이트 시간대와 내용의 완성을 확인하고, 예약을 자신을 몰아붙이는 유일한 방법으로 삼지 마세요. 계속 달라지는 도구 기능은 더 빨리 다시 확인하고 개인 기록은 당시 상황을 남겨 모든 글이 영원히 통용되는 것처럼 보이지 않게 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "업데이트, 백업, 링크 점검, 결제 알림 같은 기본 유지 관리도 계획하세요. 글쓰기와 웹사이트 관리는 다른 일입니다. 새 글만 쓰느라 연락 양식에서 메일을 받지 못하는 문제를 놓쳐서는 안 됩니다. 매달 홈에서 글로, 다시 관련 콘텐츠로 이어지는 경로 하나를 확인하면 독자가 겪을 끊어진 지점을 일찍 찾을 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "댓글과 피드백의 관리 범위를 먼저 정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 댓글은 설정에 따라 열고 검토할 수 있습니다. 사용할지는 관리할 시간이 있는지에 따라 결정하세요. 댓글을 열면 스팸, 개인정보, 주제와 무관한 내용을 어떻게 처리할지 정하고 답변이 곧바로 오지 않을 수도 있다고 알리세요. 댓글 수만이 글의 품질 기준은 아닙니다. 활기 있어 보이려고 의미 없는 내용을 남겨 둘 필요는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "독자의 질문이 오면 원문이 불명확한지, 정보가 바뀌었는지, 아니면 새 글로 다룰 만한 다른 요구인지 구분하세요. 원문에서 고칠 수 있다면 필요한 설명을 남기며 업데이트하고, 다른 작업이라면 새 글을 만들어 서로 연결합니다. 이렇게 하면 글 수만 늘리는 대신 독자의 질문에 따라 블로그를 차츰 완성할 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-blog-build/diagram-1-ko.svg",
+          "alt": "주제 선택, 집필, 게시, 업데이트의 네 단계로 개인 블로그의 콘텐츠를 꾸준히 쌓아 가는 자체 제작 도해.",
+          "width": 1600,
+          "height": 900,
+          "caption": "사이트 기능을 한꺼번에 모두 추가하기보다 유용한 내용을 꾸준히 쌓는 편이 지속하기 쉽다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "작업",
+            "최소한의 실행 방법",
+            "완료할 때 볼 것"
+          ],
+          "rows": [
+            [
+              "방향",
+              "한 문장과 독자 질문 열 개",
+              "주제가 집중되어 있는가"
+            ],
+            [
+              "구조",
+              "홈, 글, 소개, 연락",
+              "주요 입구를 찾을 수 있는가"
+            ],
+            [
+              "레이아웃",
+              "실제 길이의 글로 시험",
+              "휴대전화와 카드 링크"
+            ],
+            [
+              "글쓰기",
+              "한 글에서 한 문제 해결",
+              "단계, 사례, 출처"
+            ],
+            [
+              "관리",
+              "옛 글과 사이트를 정기 점검",
+              "링크, 백업, 업데이트"
+            ],
+            [
+              "피드백",
+              "할 수 있는 범위에서 댓글 관리",
+              "질문이 콘텐츠 개선으로 이어지는가"
+            ]
+          ],
+          "caption": "실제로 필요한 기능을 늘리기 전에 지속 가능한 작업 흐름부터 만든다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "빈 콘텐츠로 사이트 외관을 완성하지 않기",
+          "text": "글 한 편을 완성한 뒤 분류, 카드, 레이아웃을 결정하세요. 예시 콘텐츠는 테스트에만 쓰고 공개 전에 삭제하거나 확인할 수 있고 쓸모 있는 자료로 바꾸세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "글과 페이지 중 선택하는 방법",
+              "kind": "life",
+              "slug": "wordpress-posts-pages"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "분류와 메뉴 정리하기",
+              "kind": "life",
+              "slug": "wordpress-taxonomy-navigation"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: 읽기 설정",
+          "url": "https://wordpress.org/documentation/article/settings-reading-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Query Loop 블록",
+          "url": "https://wordpress.org/documentation/article/query-loop-block/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 댓글 관리",
+          "url": "https://wordpress.org/documentation/article/comments-in-wordpress/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: 독자를 위한 신뢰할 수 있는 콘텐츠",
+          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }

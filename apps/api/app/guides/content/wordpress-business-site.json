@@ -259,6 +259,998 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "How to Build a Small Business Website: Service Pages, Trust Signals, and Inquiries",
+      "description": "A small business website should help visitors understand the services, decide whether they are a good fit, and send an inquiry. Using WordPress and a fictional local design studio, this guide plans the home, service, portfolio, about, and contact pages. It provides a practical content checklist and acceptance criteria, including form fields, error messages, notification delivery, and ownership after handoff, so the site becomes a usable entry point for clients.",
+      "hero": {
+        "src": "/guides/wordpress-business-site/hero-en.jpg",
+        "alt": "Original illustration connecting service documents, a business website screen, and an inquiry folder.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A small business website does not need to be large at launch, but it should answer a few basic questions: What do you offer, who is it for, how do you work together, and what can a visitor do next? Attractive photos and animation can express a style, but they cannot replace a clear service scope and a way to get in touch. Explain these essentials first so the site can reduce the team's need to repeat itself."
+        },
+        {
+          "type": "paragraph",
+          "text": "This guide uses a fictional local design studio to map the path from exploring services to submitting an inquiry. WordPress is one implementation tool; the content structure and acceptance criteria also apply to other platforms. The client examples and conversion figures here are not invented business results. Example wording illustrates planning, not actual operating outcomes."
+        },
+        {
+          "type": "heading",
+          "text": "Choose the visitor's most important task first",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not ask visitors to subscribe, follow, download, book, and buy at the same time without identifying the primary action. For a first version, the design studio could invite suitable clients to send a project inquiry, which the team then reviews. If instant booking is not available, the button should not claim that a booking is immediately confirmed."
+        },
+        {
+          "type": "paragraph",
+          "text": "List the main audiences and their common questions. A small shop may need a menu update, a brand may need campaign graphics, and a team may need a presentation. Different requests may call for different details. Identify the shared information before organizing the service pages. Internal department names do not necessarily make useful navigation labels; use language visitors understand."
+        },
+        {
+          "type": "paragraph",
+          "text": "Write down concrete conditions for completion: visitors can find a suitable service, understand the scope of work, and provide essential details; the team can receive and answer the inquiry. Test each condition before launch. Visitor counts are another metric, but they cannot tell you whether the inquiry process actually works."
+        },
+        {
+          "type": "heading",
+          "text": "Explain scope and terms on each service page",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Start each main service page with the problem it addresses, suitable situations, deliverables, and work that is excluded. A menu design page might state that layout design and production files are included, then separately explain whether photography, copywriting, or printing is included. A vague promise of 'full-service solutions' forces visitors to email just to discover the basic scope."
+        },
+        {
+          "type": "paragraph",
+          "text": "Describe the collaboration in clear steps, such as confirming requirements, preparing materials, discussing a first draft, and delivery. If timing depends on complete materials or the number of revisions, explain those factors instead of guaranteeing an arbitrary number of days. If each project needs a custom quote, list what affects the price rather than using a starting price that rarely applies."
+        },
+        {
+          "type": "paragraph",
+          "text": "Frequently asked questions should address genuine points of uncertainty. The first version can draw on the team's existing service rules. Do not turn every answer into a sales slogan: required files, whether one item can be commissioned, and how later revisions work are usually more useful than repeating how professional the team is."
+        },
+        {
+          "type": "heading",
+          "text": "Make brand and portfolio information verifiable",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The about page should identify the actual team or person responsible, the service area, and a working contact method. Keep the name consistent with other public channels, or explain differences between the website, social accounts, and email signature. If there is no public-facing office, say that work is by appointment or remote rather than posting an address that suggests walk-in visits."
+        },
+        {
+          "type": "paragraph",
+          "text": "A portfolio entry can describe the client's need, the part the team handled, constraints, and deliverables, using images for which the necessary rights have been secured. Label a practice piece or concept proposal clearly; do not present it as a completed commercial engagement. Performance figures need supporting data. Without measurement, describe the deliverables and design choices instead."
+        },
+        {
+          "type": "paragraph",
+          "text": "Confirm permission to publish client names, logos, testimonials, and photos before posting. Creating the work does not automatically grant permission to display every part of the collaboration. If anonymity is needed, retain useful details about the method while removing identifying information; do not invent another client to fill the page."
+        },
+        {
+          "type": "heading",
+          "text": "Build clear pages and entry points in WordPress",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Create the home, main service, portfolio or work, about, and contact pages, then organize the navigation. Pages suit relatively stable service information; posts can hold regularly published insights and updates. Keep the homepage introduction and links to key services brief, and place detailed terms on the relevant service pages so visitors can scan easily."
+        },
+        {
+          "type": "paragraph",
+          "text": "Give each service page a next step that fits its context, such as 'Tell us what you need' linking to the inquiry form. Make button labels match their destinations; 'View projects' should not open a subscription dialog. On mobile, show the service essentials first and make contact easy to find rather than letting a large hero image occupy the entire initial screen."
+        },
+        {
+          "type": "paragraph",
+          "text": "Test the layout with service names and content of realistic length, checking title wrapping, portfolio images, and footer details. After changing a menu, header, or shared block, check several pages. Reviewing only the homepage may miss a service page without a contact button or broken mobile navigation."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Choose the primary visitor task and list the services, terms of collaboration, and essential information.",
+            "Prepare brand and portfolio material that can be published; label practice work and anonymized examples.",
+            "Create the main pages and navigation, linking each service page to an appropriate inquiry route.",
+            "Complete an inquiry on a phone while signed out, and confirm the team receives it and can follow up."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Make the form easy to finish and the inquiry easy to handle",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Collect only what is needed to understand the request initially, such as a name, reply method, service type, and description. Give every field a clear label, distinguish required from optional fields, and do not rely only on faint placeholder text. W3C's forms guidance also emphasizes instructions, validation, and feedback after an action."
+        },
+        {
+          "type": "paragraph",
+          "text": "An error should identify what needs fixing, such as an invalid reply email address, rather than simply saying 'Submission failed.' Preserve completed fields where possible so one correction does not mean starting over. After submission, say what was received and what happens next. If a response time cannot be guaranteed, explain the likely process and offer another contact route."
+        },
+        {
+          "type": "paragraph",
+          "text": "Test that form notifications reach the right recipients and check whether suitable submission records and a fallback process exist. Review spam handling, reply addresses, and team coverage so inquiries do not remain in a former colleague's inbox. For attachments, decide whether they are necessary, which formats are acceptable, and how they will be stored; do not enable uploads merely because the tool offers them."
+        },
+        {
+          "type": "heading",
+          "text": "Document handoff and update responsibilities",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Assign an owner to each important page and record how to update service changes, new portfolio items, contact details, and form routing. At handoff, have the actual site manager edit some text, replace an image, and process a test inquiry. This checks permissions and instructions more meaningfully than merely passing over a password."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep observing whether visitors find a service, where they get stuck in the form, and whether the inquiries the team receives contain the needed details. Use these specific questions to improve the content and form instead of immediately attributing every result to the visual design. Check backups, updates, and renewals regularly so content and technical maintenance both have accountable owners."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-business-site/diagram-1-en.svg",
+          "alt": "Four-step illustration of a small business website: understand services, verify trust information, submit requirements, and have the team follow up.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Promises on the website need a team process that can deliver on them.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Page or feature",
+            "Question to answer",
+            "Acceptance check"
+          ],
+          "rows": [
+            [
+              "Home",
+              "What do you do, and for whom?",
+              "Main services are quick to find"
+            ],
+            [
+              "Service page",
+              "What is included, and how do we work?",
+              "Terms and next step are clear"
+            ],
+            [
+              "Portfolio",
+              "What have you done, and what was your role?",
+              "Work is genuine, publishable, and explained"
+            ],
+            [
+              "About and contact",
+              "Who provides the service, and how can I reach them?",
+              "Information is consistent and usable"
+            ],
+            [
+              "Inquiry form",
+              "How do I describe my needs?",
+              "Visitors can finish it; the team receives and answers it"
+            ],
+            [
+              "Site handoff",
+              "Who handles updates?",
+              "The incoming owner completes a real task"
+            ]
+          ],
+          "caption": "Accepting a business website requires checking that visitors understand the content and inquiries arrive, as well as reviewing the layout."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "There is a process after the success message",
+          "text": "Confirm that the team received the details, knows who will respond, and has a plan when a notification goes missing. A success screen alone does not prove the inquiry process is complete."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "How to organize posts and pages",
+              "kind": "life",
+              "slug": "wordpress-posts-pages"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Categories and site navigation",
+              "kind": "life",
+              "slug": "wordpress-taxonomy-navigation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Planning ongoing website maintenance",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "W3C: Forms that are easy to use and accessible",
+          "url": "https://www.w3.org/WAI/tutorials/forms/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Create a page",
+          "url": "https://wordpress.org/documentation/article/create-pages/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Navigation block",
+          "url": "https://wordpress.org/documentation/article/navigation-block/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: Helpful, reliable content",
+          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "小規模事業者のWebサイトの作り方：サービスページ、信頼情報、問い合わせ導線",
+      "description": "小規模事業者のWebサイトは、訪問者がサービスを理解し、自分に合うか判断し、無理なく問い合わせできることが大切です。WordPressと架空の地域デザイン事務所を例に、トップ、サービス、実績、事業者紹介、連絡先の各ページを計画します。実用的なコンテンツ一覧と確認方法に加え、フォーム項目、エラー表示、通知の受信、引き継ぎ責任を整理し、サイトを実際に使える相談窓口にします。",
+      "hero": {
+        "src": "/guides/wordpress-business-site/hero-ja.jpg",
+        "alt": "サービス資料、企業サイトの画面、問い合わせフォルダーをつなぐオリジナルのイラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "小さな会社のサイトは、最初から大規模である必要はありません。ただし、何を提供し、誰に向けたサービスで、どう進め、訪問者が次に何をできるのかは答えるべきです。きれいな写真やアニメーションは雰囲気を伝えますが、サービス範囲や連絡方法の代わりにはなりません。まず基本情報を明確にすれば、チームが同じ説明を繰り返す手間を減らせます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事では架空の地域デザイン事務所を例に、サービス閲覧から問い合わせ送信までの道筋を考えます。WordPressは実装手段の一つであり、コンテンツ構成と確認方法はほかのプラットフォームにも応用できます。架空の顧客実績や成約率を成果として示すものではありません。例文は計画方法の説明であり、実際の運営結果ではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "訪問者にしてほしい最優先の行動を決める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "主な行動を示さないまま、登録、フォロー、ダウンロード、予約、購入を同時に求めないようにします。デザイン事務所の初版なら、適した顧客から案件の相談を受け、チームが内容を確認する流れにできます。即時予約に対応していないなら、ボタンに「今すぐ予約確定」と書くべきではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "主な顧客層とよくある質問を挙げます。たとえば小さな店のメニュー更新、ブランドのキャンペーン用ビジュアル、チームの紹介資料制作などです。必要な情報は依頼ごとに異なるため、共通項を見つけてからサービスページを組み立てます。社内の部門名がナビゲーションに適しているとは限りません。訪問者に伝わる言葉を使います。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成の条件を具体的に書き出します。訪問者が適切なサービスを見つけ、対応範囲を理解し、必要事項を伝えられ、チームが受信して返信できることです。公開前に一つずつ確認できます。訪問数は別の指標であり、問い合わせの流れが実際に動くかどうかの代わりにはなりません。"
+        },
+        {
+          "type": "heading",
+          "text": "サービスページで範囲と取引条件を説明する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "主要なサービスページには、解決する課題、適した場面、納品物、対象外の作業を示します。メニューデザインなら、レイアウトと印刷用データの提供を明記し、撮影、文章作成、印刷を含むかは別に説明できます。「何でも対応」とだけ書いて、基本的な範囲を知るためにメールが必要な状態は避けます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要件確認、資料の準備、初稿の相談、納品など、進め方を段階で示します。日程が資料のそろい具合や修正範囲に左右されるなら、その条件を説明し、根拠のない日数を保証しません。案件ごとに見積もる場合は、ほとんどの案件に当てはまらない最低価格を示すより、価格を左右する項目を挙げます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "よくある質問には、実際に確認が必要なことを取り上げます。初版ではチームがすでに持つサービス規則を整理しても構いません。回答をすべて宣伝文句にせず、必要なファイル、単品での依頼の可否、後からの修正方法を説明する方が、「専門的なチームです」と繰り返すより役立ちます。"
+        },
+        {
+          "type": "heading",
+          "text": "事業者情報と実績を検証できるようにする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "事業者紹介ページには、実際のチームまたは責任者、対応地域、利用できる連絡方法を載せます。サイト、SNS、メール署名で名前が異なる場合は説明し、公開チャネル間の表記をそろえます。来訪を受け付ける場所がないなら、予約制または遠隔対応と明記し、自由に訪問できると誤解される住所を載せません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "実績では、顧客の課題、チームが担当した部分、制約、納品物を説明し、必要な権利を確保した画像を使います。練習作品やコンセプト提案には明確な表示を付け、完了した商業案件として見せません。成果の数値には裏付けが必要です。測定していないなら、納品物と設計上の判断を説明します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "顧客名、ロゴ、推薦文、写真を公開できるか、掲載前に確認します。制作を担当しただけで、協業のすべての資料を公開できるとは限りません。匿名にする場合は、手法を説明できる詳細を残しながら識別情報を取り除きます。ページを埋めるために別の顧客を作り上げてはいけません。"
+        },
+        {
+          "type": "heading",
+          "text": "WordPressで分かりやすいページと導線を作る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "トップ、主なサービス、実績または作品、事業者紹介、問い合わせの各ページを作ってから、ナビゲーションを整えます。変化の少ないサービス情報には固定ページ、継続的に発信する考えやニュースには投稿が向いています。トップには短い紹介と主要サービスへの入口を置き、詳細条件は対応するサービスページにまとめて、読み流しやすくします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "各サービスページには、状況に合った次の行動を設けます。たとえば「要件を伝えて相談する」から問い合わせフォームへ進めます。ボタンの文言と行き先を一致させ、「実績を見る」が購読登録画面を開かないようにします。スマートフォンではサービスの要点を先に示し、連絡先を見つけやすくします。大きなメイン画像で最初の画面を埋めないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "実際にありそうな長さのサービス名と文章でレイアウトを試し、見出しの折り返し、実績画像、フッターを確認します。メニュー、ヘッダー、共通ブロックを変更したら、複数のページで確認します。トップだけを見ていると、サービスページの問い合わせボタンの欠落やモバイルナビゲーションの不具合を見逃します。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "訪問者の主な目的を決め、サービス内容、取引条件、必要情報を列挙する。",
+            "公開可能な事業者情報と実績資料を用意し、練習作品や匿名の事例には表示を付ける。",
+            "主要ページとナビゲーションを作り、サービスページを適切な問い合わせ先につなぐ。",
+            "ログアウトした状態でスマートフォンから問い合わせを送り、チームが受信し対応を続けられることを確かめる。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "フォームは入力しやすく、チームが対応できる形にする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "最初に依頼を理解するのに必要な情報だけを集めます。名前、返信方法、サービスの種類、要件の説明などです。各項目に明確なラベルを付け、必須と任意を区別し、薄いプレースホルダーだけで用途を説明しないようにします。W3Cのフォームガイドでも、説明、入力値の検証、操作後のフィードバックが重視されています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "エラーは単に「送信失敗」とするのではなく、返信先メールの形式など、直す場所を示します。できるだけ入力済みの内容を保持し、一項目の修正で最初からやり直さずに済むようにします。送信後には、何を受け付け、次にどう対応するかを伝えます。返信時間を保証できない場合は、見込まれる流れと別の連絡方法を示します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "フォームの通知が正しい担当者に届くか試し、送信記録と代替の対応方法も確認します。迷惑メール、返信先、複数人での引き継ぎを調べ、退職した担当者の受信箱に相談が残らないようにします。添付ファイルは必要性、許可する形式、保存方法を先に決めます。ツールにアップロード欄があるだけで有効にしないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "引き継ぎと更新の責任を文書に残す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "重要なページごとに担当者を決め、サービスの変更、実績の追加、連絡先、フォームの受信先をどう更新するか記録します。引き渡し時には実際の管理者に文章の修正、画像の差し替え、テスト問い合わせの処理をしてもらいます。単にパスワードを渡すより、権限と手順が十分か確認できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "訪問者がサービスを見つけられるか、フォームのどこで詰まるか、届く相談に必要な情報が含まれるかを継続して見ます。まず具体的な問題に沿って内容とフォームを改善し、結果をすぐにサイトの見た目だけに結び付けないようにします。バックアップ、更新、契約更新も定期的に点検し、内容と技術の保守に責任者を設けます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-business-site/diagram-1-ja.svg",
+          "alt": "小規模事業者のサイトにおける四段階の図解。サービスを理解し、信頼情報を確認し、要件を伝え、チームが対応を続ける。",
+          "width": 1600,
+          "height": 900,
+          "caption": "サイト上の約束には、チームが実行できる業務の流れが必要です。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "ページ・機能",
+            "答えるべき疑問",
+            "確認方法"
+          ],
+          "rows": [
+            [
+              "トップ",
+              "何を誰に提供するか",
+              "主なサービスをすぐ見つけられる"
+            ],
+            [
+              "サービスページ",
+              "何が含まれ、どう進めるか",
+              "条件と次の行動が明確"
+            ],
+            [
+              "実績",
+              "何を行い、どこを担当したか",
+              "実例であり、公開可能で、説明がある"
+            ],
+            [
+              "事業者紹介・連絡先",
+              "誰が提供し、どう連絡するか",
+              "情報が一致し、実際に使える"
+            ],
+            [
+              "問い合わせフォーム",
+              "要件をどう伝えるか",
+              "入力を完了でき、受信して返信できる"
+            ],
+            [
+              "運用の引き継ぎ",
+              "誰が更新するか",
+              "新しい担当者が実際に操作する"
+            ]
+          ],
+          "caption": "事業者サイトの確認には、見た目だけでなく、内容が伝わるかと問い合わせを受け取れるかも含めます。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "送信成功の表示後にも作業がある",
+          "text": "チームが実際に内容を受信し、返信担当者が決まり、通知が見つからない場合の対応方法があるか確かめます。フォームの成功画面だけで問い合わせ機能の完成を判断しません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "投稿と固定ページの使い分け",
+              "kind": "life",
+              "slug": "wordpress-posts-pages"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "カテゴリーとサイトのナビゲーション",
+              "kind": "life",
+              "slug": "wordpress-taxonomy-navigation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイト保守の進め方",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "W3C：使いやすくアクセシブルなフォーム",
+          "url": "https://www.w3.org/WAI/tutorials/forms/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：固定ページの作成",
+          "url": "https://wordpress.org/documentation/article/create-pages/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：ナビゲーションブロック",
+          "url": "https://wordpress.org/documentation/article/navigation-block/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：有用で信頼できるコンテンツ",
+          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "소규모 기업 웹사이트 만들기: 서비스 페이지, 신뢰 정보, 문의 절차",
+      "description": "소규모 기업 웹사이트는 방문자가 서비스를 이해하고 자신에게 맞는지 판단한 뒤 쉽게 문의할 수 있어야 합니다. WordPress와 가상의 지역 디자인 스튜디오를 예로 들어 홈, 서비스, 작업 사례, 소개, 연락처 페이지를 구성합니다. 바로 활용할 수 있는 콘텐츠 목록과 검수 기준을 제시하고, 양식 필드, 오류 안내, 알림 수신, 인수인계 책임까지 정리해 실제로 이용할 수 있는 서비스 창구를 만드는 방법을 설명합니다.",
+      "hero": {
+        "src": "/guides/wordpress-business-site/hero-ko.jpg",
+        "alt": "서비스 문서와 회사 웹사이트 화면, 문의 폴더를 연결한 창작 일러스트.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "소규모 기업 웹사이트를 처음부터 크게 만들 필요는 없습니다. 다만 무엇을 제공하는지, 누구에게 적합한지, 어떻게 협업하는지, 방문자가 다음에 무엇을 할 수 있는지는 답해야 합니다. 멋진 사진과 애니메이션은 분위기를 보여줄 수 있지만 서비스 범위와 연락 방법을 대신하지는 못합니다. 이런 내용을 먼저 명확히 해야 팀이 같은 설명을 반복하는 시간을 줄일 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 가상의 지역 디자인 스튜디오를 예로 들어 서비스 탐색부터 문의 제출까지의 경로를 설계합니다. WordPress는 구현 도구 중 하나일 뿐이며 콘텐츠 구조와 검수 방법은 다른 플랫폼에도 적용할 수 있습니다. 가상의 고객 사례나 전환율을 실제 성과처럼 제시하지 않습니다. 예시 문구는 계획 방법을 설명하기 위한 것이지 실제 운영 결과가 아닙니다."
+        },
+        {
+          "type": "heading",
+          "text": "방문자에게 가장 중요한 행동 하나를 정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "주요 행동이 무엇인지 설명하지 않은 채 구독, 팔로우, 다운로드, 예약, 구매를 한꺼번에 요구하지 마세요. 디자인 스튜디오의 첫 버전에서는 적합한 고객이 프로젝트 문의를 보내고 팀이 요구 사항을 검토하도록 할 수 있습니다. 즉시 예약 기능이 없다면 버튼에 '지금 예약 확정'이라고 쓰면 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "주요 고객층과 자주 묻는 질문을 적어 보세요. 작은 가게의 메뉴 개편, 브랜드의 행사 이미지, 팀 소개 자료 제작 등이 예가 될 수 있습니다. 요청마다 필요한 정보가 다르므로 공통 항목부터 파악하고 서비스 페이지를 구성합니다. 회사 내부의 부서명이 방문자에게도 좋은 메뉴 이름인 것은 아닙니다. 방문자가 이해하는 표현을 사용하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "웹사이트가 완성되었다고 판단할 구체적인 조건을 적습니다. 방문자가 알맞은 서비스를 찾고 협업 범위를 이해하며 필요한 정보를 제공하고, 팀이 문의를 받아 답할 수 있어야 합니다. 공개 전에 각 조건을 검증할 수 있습니다. 방문자 수는 별도의 관찰 지표이며 문의 절차가 실제로 작동하는지를 대신 판단해 주지 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "서비스 페이지에서 범위와 협업 조건 설명하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "주요 서비스 페이지마다 해결하는 문제, 적합한 상황, 제공 결과물, 포함되지 않는 작업을 먼저 설명합니다. 메뉴 디자인이라면 레이아웃과 출력용 파일을 제공한다고 쓰고, 촬영, 문구 작성, 인쇄가 포함되는지는 따로 밝힐 수 있습니다. '종합 서비스'라는 말만 써서 기본 범위를 알려면 먼저 이메일을 보내야 하는 상황을 만들지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "요구 사항 확인, 자료 준비, 초안 논의, 납품처럼 협업 과정을 명확한 단계로 설명합니다. 일정이 자료의 완성도나 수정 범위에 달려 있다면 영향을 주는 조건을 밝히고 근거 없이 일정한 기간을 보장하지 마세요. 프로젝트별 견적이 필요하다면 대부분의 의뢰에 맞지 않는 시작 가격으로 잘못된 기대를 만들기보다 가격에 영향을 주는 항목을 제시합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "자주 묻는 질문은 실제로 설명이 필요한 내용을 다뤄야 합니다. 첫 버전에서는 팀이 이미 정한 서비스 규칙을 정리해도 좋습니다. 모든 답을 홍보 문구로 채우지 마세요. 준비할 파일, 한 품목만 의뢰할 수 있는지, 추후 수정은 어떻게 하는지 설명하는 편이 팀의 전문성을 반복해서 주장하는 것보다 유용합니다."
+        },
+        {
+          "type": "heading",
+          "text": "브랜드와 작업 사례 정보를 확인할 수 있게 하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "소개 페이지에는 실제 팀 또는 책임자 정보, 서비스 지역, 이용 가능한 연락 방법을 제공합니다. 웹사이트, 소셜 계정, 회신 이메일의 이름이 서로 다르다면 이유를 설명하고 공개 채널의 표기를 일관되게 유지합니다. 방문객을 맞는 공간이 없다면 예약 방문이나 원격 협업 방식이라고 밝히고, 그냥 찾아가도 되는 곳처럼 보이는 주소는 올리지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "작업 사례에는 고객의 요구, 팀이 맡은 부분, 제약 사항, 결과물을 설명하고 필요한 사용 권리를 확보한 이미지를 씁니다. 연습 작품이나 콘셉트 제안이라면 분명히 표시하고 완료된 상업 프로젝트처럼 소개하지 마세요. 성과 수치를 쓰려면 뒷받침할 자료가 필요합니다. 측정하지 않았다면 결과물과 디자인 판단을 설명합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "고객 이름, 로고, 후기, 사진을 공개할 수 있는지 게시 전에 확인합니다. 작업을 직접 했더라도 협업 자료를 모두 전시할 수 있다고 가정하면 안 됩니다. 익명이 필요하다면 방법을 설명할 수 있는 세부 내용은 남기고 식별 정보는 제거하세요. 페이지를 채우려고 다른 고객을 꾸며 내지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "WordPress에서 명확한 페이지와 진입 경로 만들기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "홈, 주요 서비스, 작업 사례 또는 포트폴리오, 소개, 연락처 페이지를 만든 뒤 탐색 메뉴를 정리합니다. 비교적 고정된 서비스 정보는 페이지로 관리하고, 계속 발행하는 의견과 소식은 글을 활용할 수 있습니다. 홈에는 짧은 소개와 주요 서비스로 가는 경로를 놓고 자세한 조건은 해당 서비스 페이지에 두어 훑어보기 쉽게 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "각 서비스 페이지에 상황에 맞는 다음 행동을 마련합니다. 예를 들어 '필요한 내용을 알려 주고 협업 문의하기'를 문의 양식에 연결합니다. 버튼 문구와 실제 도착지를 일치시켜 '사례 보기'를 누르면 구독 창이 뜨는 일이 없게 합니다. 모바일에서는 서비스의 핵심을 먼저 보여주고 연락 경로를 쉽게 찾게 하며, 큰 대표 이미지가 첫 화면 전체를 차지하지 않도록 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "실제 길이의 서비스 이름과 내용으로 레이아웃을 시험하고 제목 줄바꿈, 사례 이미지, 바닥글 정보를 확인합니다. 메뉴, 헤더, 공통 블록을 수정했다면 여러 페이지를 확인하세요. 홈만 검수하면 서비스 페이지에 연락 버튼이 없거나 모바일 탐색 메뉴가 작동하지 않는 문제를 놓칠 수 있습니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "방문자의 주요 행동을 정하고 서비스 내용, 협업 조건, 필요한 정보를 나열합니다.",
+            "공개할 수 있는 브랜드와 작업 사례 자료를 준비하고 연습 작품이나 익명 사례를 명시합니다.",
+            "주요 페이지와 탐색 메뉴를 만들고 서비스 페이지를 적절한 문의 경로에 연결합니다.",
+            "로그아웃한 상태에서 휴대전화로 문의를 제출하고 팀이 수신해 후속 대응을 할 수 있는지 확인합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "작성하기 쉽고 팀이 처리할 수 있는 문의 양식 만들기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "처음 요구 사항을 이해하는 데 필요한 정보만 받습니다. 이름, 회신 방법, 서비스 유형, 요구 사항 설명 등이 예입니다. 각 필드에 명확한 레이블을 붙이고 필수와 선택 항목을 구분하며, 흐릿한 입력칸 안내문에만 용도 설명을 맡기지 마세요. W3C의 양식 안내에서도 설명, 입력값 검사, 작업 후 피드백을 강조합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "오류 메시지는 단순히 '제출 실패'라고 하지 말고 회신 이메일 형식처럼 무엇을 고쳐야 하는지 알려 줘야 합니다. 가능하면 이미 입력한 내용은 유지해 필드 하나를 수정하려고 처음부터 다시 작성하지 않게 합니다. 제출 후에는 무엇을 받았고 다음에는 어떻게 처리하는지 알립니다. 회신 시간을 보장할 수 없다면 예상 처리 과정과 다른 연락 방법을 제공합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "양식 알림이 올바른 담당자에게 도착하는지 시험하고 적절한 제출 기록과 대체 처리 방법이 있는지도 확인합니다. 스팸함, 회신 주소, 여러 사람의 인수인계 방법을 점검해 퇴사자의 메일함에만 문의가 남지 않게 합니다. 첨부 파일은 정말 필요한지, 허용 형식과 보관 방법을 먼저 정하세요. 도구에 업로드 필드가 있다고 무조건 켜지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "인수인계와 업데이트 책임을 문서로 남기기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "중요한 페이지마다 담당자를 정하고 서비스 변경, 사례 추가, 연락처, 양식 수신 설정을 어떻게 업데이트할지 기록합니다. 웹사이트를 넘길 때 실제 관리자가 글을 수정하고 이미지를 교체하며 시험 문의를 처리해 보게 합니다. 비밀번호만 전달하는 것보다 권한과 사용 안내가 충분한지 확인할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "방문자가 서비스를 찾는지, 양식의 어느 부분에서 막히는지, 팀이 받은 문의에 필요한 정보가 있는지 계속 살핍니다. 모든 결과를 곧바로 웹사이트 외관 탓으로 돌리기보다 이런 구체적인 문제를 바탕으로 내용과 양식을 개선합니다. 백업, 업데이트, 계약 갱신도 정기적으로 확인해 콘텐츠와 기술 유지 관리의 책임자를 명확히 합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-business-site/diagram-1-ko.svg",
+          "alt": "소규모 기업 웹사이트의 네 단계 도해: 서비스 이해, 신뢰 정보 확인, 요구 사항 전달, 팀의 후속 처리.",
+          "width": 1600,
+          "height": 900,
+          "caption": "웹사이트에서 약속한 일은 팀이 수행할 수 있는 업무 절차로 뒷받침해야 합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "페이지 또는 기능",
+            "답해야 할 질문",
+            "검수 방법"
+          ],
+          "rows": [
+            [
+              "홈",
+              "무엇을 누구에게 제공하나요?",
+              "주요 서비스를 빨리 찾을 수 있음"
+            ],
+            [
+              "서비스 페이지",
+              "무엇이 포함되고 어떻게 협업하나요?",
+              "조건과 다음 단계가 분명함"
+            ],
+            [
+              "작업 사례",
+              "무엇을 했고 어떤 부분을 맡았나요?",
+              "실제 사례이며 공개 가능하고 설명이 있음"
+            ],
+            [
+              "소개와 연락처",
+              "누가 제공하고 어떻게 연락하나요?",
+              "정보가 일관되고 실제로 사용할 수 있음"
+            ],
+            [
+              "문의 양식",
+              "요구 사항을 어떻게 전달하나요?",
+              "작성 완료, 수신, 회신이 가능함"
+            ],
+            [
+              "운영 인수인계",
+              "누가 업데이트하나요?",
+              "인수자가 실제로 한 번 작업함"
+            ]
+          ],
+          "caption": "기업 웹사이트 검수에는 디자인뿐 아니라 내용의 이해도와 문의 수신 여부도 포함해야 합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "제출 성공 메시지 뒤에도 절차가 이어집니다",
+          "text": "팀이 실제로 자료를 받았고 누가 답할지 알고 있으며 알림이 보이지 않을 때의 대처 방법도 있는지 확인합니다. 양식에 성공 화면이 떴다는 이유만으로 문의 기능이 완료되었다고 판단하지 마세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "글과 페이지 구성 방법",
+              "kind": "life",
+              "slug": "wordpress-posts-pages"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "분류와 사이트 탐색",
+              "kind": "life",
+              "slug": "wordpress-taxonomy-navigation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹사이트 유지 관리 업무 계획",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "W3C: 사용하기 쉽고 접근성 있는 양식",
+          "url": "https://www.w3.org/WAI/tutorials/forms/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 페이지 만들기",
+          "url": "https://wordpress.org/documentation/article/create-pages/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 탐색 블록",
+          "url": "https://wordpress.org/documentation/article/navigation-block/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: 유용하고 신뢰할 수 있는 콘텐츠",
+          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "小型企业网站怎么做：服务页、信任信息与咨询流程",
+      "description": "小型企业网站的关键，是让访客理解服务、确认是否适合，并顺利提出咨询。本文以 WordPress 与虚构的本地设计工作室为例，规划首页、服务页、案例、品牌信息和联系流程，提供可直接使用的内容清单与验收方式。也整理表单字段、错误提示、通知接收及交接责任，帮助网站从外观展示走向真正可使用的服务入口。",
+      "hero": {
+        "src": "/guides/wordpress-business-site/hero-zh-cn.jpg",
+        "alt": "服务文档、公司网站画面与咨询文件夹串联的原创插图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "小公司的网站不必一开始就很大，但应回答几个基本问题：你提供什么、适合谁、如何合作，以及访客下一步可以做什么。漂亮照片和动画能呈现风格，却不能代替服务范围与联系方式。先把这些内容讲清楚，网站才有机会帮团队减少反复解释的时间。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文以虚构的本地设计工作室为例，安排从浏览服务到提交咨询的路径。WordPress 只是一种建站工具，内容结构与验收方法也可用于其他平台。本篇没有虚构客户案例或转化率数据；案例文字用来说明如何规划，不是实际运营成果。"
+        },
+        {
+          "type": "heading",
+          "text": "先选一个最重要的访客任务",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "不要同时要求访客订阅、追踪、下载、预约与购买，却没有说明哪个是主要行动。设计工作室的第一版可以先让适合的客户提出项目咨询，再由团队评估需求。若目前没有实时预约功能，就不应把按钮写成「立即预约成功」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "列出主要客群与常见问题，例如小店要更新菜单、品牌需要活动视觉，或团队想制作简介。不同需求可能需要不同资料，先找出共同信息，再安排服务页。公司内部使用的部门名称未必适合当导航名称，应使用访客看得懂的语言。"
+        },
+        {
+          "type": "paragraph",
+          "text": "写下网站完成的具体条件：访客能找到适合服务、理解合作范围、提供必要信息，团队能收到并回复。这些条件可以在上线前逐一验证。网站访问量是另一个观察项目，不能用它代替咨询流程是否真正运作的判断。"
+        },
+        {
+          "type": "heading",
+          "text": "服务页要说明范围与合作条件",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "每个主要服务页先说明解决什么问题、适用情境、交付内容与不包含的工作。像菜单设计可以写明提供版面设计及输出文件，是否包含摄影、文案或印刷则另行说明。不要只写「全方位服务」，让访客必须发邮件后才知道基本范围。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用清楚的步骤说明合作方式，例如需求确认、资料准备、初稿讨论与交付。若时程取决于资料是否齐全或修改范围，就说明影响条件，不任意保证固定天数。价格若需依案件估算，可以列出影响报价的项目，避免用不适用大多数案件的起价制造错误期待。"
+        },
+        {
+          "type": "paragraph",
+          "text": "常见问题应来自真实需要澄清的事项，第一版也可以先整理团队已有的服务规则。不要把每个问题都写成推销口号；像需要准备哪些文件、能否只做单项服务、后续如何修改，通常比重复说明团队很专业更有帮助。"
+        },
+        {
+          "type": "heading",
+          "text": "品牌与案例信息要能被核对",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "关于页提供实际团队或负责人信息、服务地区及可使用的联系方式。名称与其他公开管道保持一致，避免网站、社交媒体与回信署名各用不同身份却没有解释。若没有对外接待场所，就说明采用预约制或远程合作，不放一个让访客误以为能直接到访的地址。"
+        },
+        {
+          "type": "paragraph",
+          "text": "案例可以交代客户需求、团队负责部分、限制与交付内容，并使用已取得适当权利的图片。若是练习作品或概念提案，就清楚标示，不能把它写成已完成的商业合作。成效数字需要有可支持的数据；没有测量就描述交付内容与设计考量。"
+        },
+        {
+          "type": "paragraph",
+          "text": "客户名称、商标、客户评价与照片是否能公开，应在发布前确认。即使作品由你制作，也不应自行假设所有合作资料都能展示。若需要匿名，可以保留能说明方法的细节，移除不宜公开的身份信息，不用捏造另一位客户来填补版面。"
+        },
+        {
+          "type": "heading",
+          "text": "在 WordPress 创建清楚的页面与入口",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先创建首页、主要服务、案例或作品、关于及联系页，再安排导航。固定的服务信息适合用页面维护，持续发布的观点与消息则可使用文章。首页提供简短介绍与主要服务入口，详细条件放在对应服务页，避免一页塞满所有资料却难以扫读。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每个服务页都应有符合情境的下一步，例如「提供需求，咨询合作」连到咨询表单。按钮文字和目的地一致，别让「查看案例」实际跳到订阅窗口。手机上先呈现服务重点，再让访客容易找到联系入口，不让大型封面图占去整个初始画面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用真实长度的服务名称与内容测试版型，检查标题换行、案例图片与页脚信息。菜单、页眉或共用区块变更后，要到多个页面确认；只检查首页，可能漏掉服务页没有联系按钮或手机导航失效的问题。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "选定主要访客任务，列出服务内容、合作条件与必要信息。",
+            "准备可公开的品牌与案例资料，标明练习作品或匿名情境。",
+            "创建主要页面与导航，让服务页连到合适的咨询入口。",
+            "以手机与未登录状态完成一次咨询，确认团队收到并能继续处理。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "表单要让人填得完，也让团队接得住",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先收足以初步理解需求的数据，例如称呼、回复方式、服务类型与需求描述。每个字段都有清楚标签，必填与选填容易辨认，不只靠输入框中的浅色提示文字说明用途。W3C 的表单指南也强调说明、验证及操作后反馈的重要性。"
+        },
+        {
+          "type": "paragraph",
+          "text": "错误提示应指出哪里需要修改，例如回复邮箱格式有误，而不是只显示「提交失败」。尽量保留用户已填的内容，避免修正一个字段就全部重来。提交后告知已收到什么、接下来如何处理；回复时间若无法保证，就提供合理的处理说明与替代联系方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "测试表单时要确认通知抵达正确收件人，也查看是否有适合的提交记录与备用处理流程。检查垃圾邮件、回复地址及多人接手方式，避免咨询只留在离职同事的信箱。对于附件，先决定是否真的需要、可接受格式与保存方式，不要因为工具提供上传字段就一律启用。"
+        },
+        {
+          "type": "heading",
+          "text": "交接与更新责任要留在文档里",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "为每个重要页面指定负责人，记录服务变动、案例添加、联系方式与表单接收如何更新。网站交付时，让实际管理者修改一段文字、替换一张图片及处理一笔测试咨询，确认账号权限和操作说明足够，而不只是收到一组密码。"
+        },
+        {
+          "type": "paragraph",
+          "text": "持续观察访客是否找到服务、在哪个字段容易卡住，以及团队收到的咨询是否具备必要信息。先用这些具体问题改善内容与表单，不急着把每个结果都归因于网站外观。定期检查备份、更新及续约，让内容与技术维护都有可追踪的责任。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-business-site/diagram-1-zh-cn.svg",
+          "alt": "小公司网站依理解服务、核对信任信息、提出需求与团队继续处理的四步图解。",
+          "width": 1600,
+          "height": 900,
+          "caption": "网站上的承诺，要有团队接得住的工作流程。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "页面或功能",
+            "要回答的问题",
+            "验收方法"
+          ],
+          "rows": [
+            [
+              "首页",
+              "你做什么、适合谁",
+              "短时间能找到主要服务"
+            ],
+            [
+              "服务页",
+              "包含什么、如何合作",
+              "条件与下一步清楚"
+            ],
+            [
+              "案例",
+              "做过什么、负责哪部分",
+              "真实、可公开且有说明"
+            ],
+            [
+              "关于与联系",
+              "谁提供服务、如何联系",
+              "信息一致且可使用"
+            ],
+            [
+              "咨询表单",
+              "如何提供需求",
+              "能填完、收到及回复"
+            ],
+            [
+              "管理交接",
+              "谁负责更新",
+              "接手者实际操作一次"
+            ]
+          ],
+          "caption": "形象网站的验收应涵盖内容理解与咨询接收，而不只有版面。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "提交成功消息之后还有一段流程",
+          "text": "确认团队确实收到信息、知道谁回复，并有找不到通知时的处理方式。不要只以表单画面显示成功就宣布咨询功能完成。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文章与页面怎么安排",
+              "kind": "life",
+              "slug": "wordpress-posts-pages"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "分类与网站导航",
+              "kind": "life",
+              "slug": "wordpress-taxonomy-navigation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "网站维护的工作安排",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "W3C：易用且无障碍的表单",
+          "url": "https://www.w3.org/WAI/tutorials/forms/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：创建页面",
+          "url": "https://wordpress.org/documentation/article/create-pages/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：导航区块",
+          "url": "https://wordpress.org/documentation/article/navigation-block/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：有帮助且可靠的内容",
+          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
