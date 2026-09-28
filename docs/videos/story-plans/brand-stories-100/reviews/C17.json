@@ -1,0 +1,23 @@
+{
+  "id": "C17",
+  "reviewed": "2026-09-28",
+  "reviewer": "Claude Opus 5.5 (independent fact check)",
+  "story_sha256": "296a3a4fed3063a2ca7d57949a6b84da3bf376a523f9d7076b777f7ba8b6aa15",
+  "verdict": "fixed",
+  "sources_opened": 16,
+  "changes": [
+    "標題由「Excel 裡有一個微軟不打算修的錯誤」改成「Excel 至今把 1900 年當閏年，微軟說改掉弊大於利」，對齊微軟支援文件的原意：技術上可以改正，但壞處多於好處，是為了相容而做的選擇。",
+    "logline 刪掉支援文件沒有的「公開表示不會修正」，改成文件的說法；question 刪掉沒有來源的「全世界最多人用的試算表軟體」。",
+    "hook 補上微軟判斷閏年的文件說明為什麼 1900 年不是閏年，並把「知道是錯的而且不打算修正」改成「技術上可以改正，只是改正的壞處比好處多」。",
+    "VisiCalc 的上市月份刪掉、只留 1979 年，因為維基百科寫 10 月 17 日、Low End Mac 寫 11 月；作者的網站 bricklin.com 再試仍是憑證不符、danbricklin.com 是憑證過期、Frankston 的網站只載入空殼，改用美國電腦歷史博物館 1979 年年表（archive）與 Low End Mac。",
+    "「全世界第一套個人電腦試算表」改成「一般認為是第一套」，「靠著它 Apple II 賣出大量銷量」改成電腦歷史博物館寫的「帶動了 Apple II 的銷售」。",
+    "移除 History-Computer（內容農場性質、作者只署名 Heather），Lotus 1-2-3 於 1983 年推出並很快賣贏 VisiCalc 改由 Low End Mac 與維基百科支撐。",
+    "Lotus 1-2-3「隔年 1 月推出」改成「1983 年推出」，因為 1 月只有維基百科寫。",
+    "刪掉沒有來源的「為了節省記憶體、這是刻意的簡化不是算錯」，改成微軟的說法（比較容易處理閏年）與 Joel Spolsky 轉述同事 Ed Fries 的說法（「大概是故意的」、要塞進 640K），標為轉述。",
+    "engine 段改正：1985 年的第一版 Excel 是麥金塔版，早期麥金塔版預設用 1904 日期系統，不能說 1985 年的 Excel 照抄了 Lotus 的日期；Multiplan 不再說成「更早先這樣做過」，因為 Multiplan 1982 年推出、早於 Lotus 1-2-3。",
+    "turn 段逐項改成支援文件的原文：「技術上不難」改成「技術上可以」，「多到難以估計」改成「很花時間」，補上 WEEKDAY 結果改變與日期序號不再相容兩項後果，以及不改只影響 1900 年 3 月 1 日以前的 WEEKDAY。",
+    "now 段刪掉沒有來源的「全世界幾億份試算表」；takeaway 改成觀察，不再是價值判斷。",
+    "names 補上 Microsoft Excel、Lotus Development、Apple、Apple II、Macintosh、IBM、IBM PC、Windows、Harvard Business School、Joel Spolsky、Ed Fries、Low End Mac、Computer History Museum；image_notes 把「哈佛教室」改成一般的商學院教室，並補上不畫可讀數字、不畫電腦品牌標誌。"
+  ],
+  "notes": "微軟支援文件說 Multiplan 與 Excel 推出時都假設 1900 年是閏年、以便用 Lotus 1-2-3 的日期序號，但 Multiplan 1982 年推出、早於 Lotus 1-2-3，早期麥金塔版 Excel 又預設 1904 系統；旁白照微軟的說法講，不要自己補先後順序或說成 1985 年版就有這個問題。Ed Fries 的話只來自 Joel Spolsky 2006 年的部落格回憶，文中沒寫 Ed Fries 的職稱，旁白只說同事。VisiCalc 上市月份有 10 月與 11 月兩說。Excel 1985 年推出、第一版是麥金塔版只靠維基百科。Dan Bricklin 本人的網站因憑證問題讀不到，VisiCalc 的起源是靠電腦歷史博物館、維基百科與 Low End Mac 互相印證。"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "C07",
+  "reviewed": "2026-09-28",
+  "reviewer": "Claude Opus 5.5 (independent fact check); sources read as the worker reads them, readable pages added and the review bound again by Claude Sonnet 5",
+  "story_sha256": "8bbe0cb5d28514b66771926ae9389e84f3f9eb8630df881602ddac4b957b0326",
+  "verdict": "fixed",
+  "sources_opened": 12,
+  "changes": [
+    "標題「叫你定期換密碼的人，後來道歉了」改成「密碼要加符號？寫規則的人後悔了」：三家媒體引的都是「後悔」（Much of what I did I now regret），沒有道歉；NIST 原文也沒有定期換密碼的 90 天規定。縮圖標題同步改成「寫規則的人後悔了」。",
+    "打開 SP 800-63 1.0.2 版全文，附錄 A（第 46–53 頁）沒有「每 90 天換一次」，舉的例子是兩年與十年換一次；故事改成「大家轉述說有 90 天，其實原文沒有」，logline 與各段同步修改。",
+    "補上官方來源：NIST CSRC 的 SP 800-63 1.0 版頁面（2004 年 6 月發布、三位作者、寫給聯邦機關）與 1.0.2 版全文，「2003 年寫成」標明是《華爾街日報》的說法。",
+    "起點段「只能參考 1980 年代的論文」「個人電腦都還不普及」沒有來源，改成附錄 A 自己寫的：缺乏真實密碼資料，拿 Shannon 1948、1951 年對英文文字的研究粗估。",
+    "生意段「照抄就能對主管機關交代」「多年來沒人再驗證」是推測，改成原文的「訂密碼強度標準的一些依據」與「非常粗略的經驗法則」，採用範圍改成來源寫的政府機關、企業與大學。",
+    "反轉段「a 換成 @」沒有來源，改成附錄 A 自己寫到的「大寫放開頭、符號放結尾、用 $ 代替 s」，以及 FTC 文章引述的北卡羅來納大學研究（17% 的帳號不到 5 次猜中新密碼）。",
+    "Burr 的引述統一譯成「我做過的很多事，現在都後悔」，claim 註明 BizTech 與 Engadget 一字不差、Consumer Reports 引的是同一次訪問的另一句。",
+    "拿掉只有 Engadget 一家提到的「72 歲」。",
+    "現況改用現行的 SP 800-63B-4（2025 年 8 月 1 日起取代 2017 年版）第 3.1.1.2 節：不得強加組合規則、不得要求定期更換、單獨使用的密碼至少 15 字元、要比對封鎖清單；2017 年版標明是第 5.1.1.2 節的 SHOULD NOT。",
+    "拿掉不成立的「他也是第一個說這些規定該改的人」（FTC 在 2016 年就先提出），takeaway 同步改寫。",
+    "FTC 的說法改標為首席技術專家 Lorrie Cranor 的文章，不寫成機關的正式立場。",
+    "names 補上 William Burr、Donna Dodson、W. Timothy Polk、Claude Shannon、Lorrie Cranor、FTC、華爾街日報、Consumer Reports、BizTech、Engadget、北卡羅來納大學。",
+    "人物年紀改成五十多歲以符合 2003 年的年代；縮圖拿掉「尷尬摀臉」這種揶揄真人的構圖；image_notes 改成密碼欄只畫圓點、不寫任何字元與文件內容。",
+    "must_verify[2]、[4] 原本只靠附錄 A 的 PDF 全文（sources[6]）：NIST 現行的兩個 HTML 版本（sources[3]、[7]）只有新規則，沒有複述舊附錄 A 的細節，NIST 站內搜尋也讀不到結果；must_verify[2] 改連新增的維基百科 Password policy 條目（sources[8]，指名 2004 年 SP 800-63 附錄 A 要求不規則大小寫、特殊符號與數字）；must_verify[4] 改連已有的 Consumer Reports 報導（sources[0]，當中已有『沒有多少真實密碼資料』一句），兩者都是工人讀得到的頁面，供對應事實查核。"
+  ],
+  "notes": "《華爾街日報》原文（2017 年 8 月 7 日）有付費牆打不開；三家轉述媒體都說指引要求每 90 天換一次，跟 NIST 原文不一致，可能是把各機關自訂的 90 天規定算到這份文件上，但無法用原文確認記者的根據。「2003 年寫成」只有媒體轉述，NIST 的發布日期是 2004 年 6 月。1.0 版的 PDF 連結回 404，附錄 A 是從 1.0.2 版讀的，兩版相同是靠勘誤清單推定。Burr 在 2003 年的年紀只從 Engadget 的「2017 年 72 歲」推算，只用在人物外觀，不進旁白。must_verify[2] 的 6 位元加分與「至少 8 字元」的例子、must_verify[4] 的「大寫放開頭、符號放結尾、用 $ 代替 s」與 Shannon 這幾個較技術性的細節，找過維基百科 Password strength、Password policy、NIST 新舊兩版 HTML 指引、FTC 文章都沒有找到複述的頁面，目前仍只有附錄 A 的 PDF（sources[6]）記載。"
+}
