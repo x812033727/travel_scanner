@@ -268,8 +268,8 @@
         "title": "The file it wrote",
         "columns": [
           "Model",
-          "Input per million",
-          "Output per million",
+          "Input / M",
+          "Output / M",
           "Source"
         ],
         "rows": [
@@ -277,25 +277,25 @@
             "Claude Opus 5.5",
             "$4",
             "$20",
-            "Anthropic's announcement"
+            "Anthropic's page"
           ],
           [
             "GPT-6 Astra",
             "—",
             "—",
-            "Page returned 403; not read"
+            "403, not read"
           ],
           [
             "Grok 4.7, under 200k",
             "$2.00",
             "$6.00",
-            "xAI model docs"
+            "xAI docs"
           ],
           [
             "Grok 4.7, 200k and over",
             "$4.00",
             "$12.00",
-            "xAI model docs"
+            "xAI docs"
           ]
         ],
         "highlight": 1
@@ -309,7 +309,7 @@
       "lines": [
         {
           "id": "qpg5",
-          "text": "Here is the file. Three rows filled, with the page each number came from and the date. One row honest about being empty."
+          "text": "Here is the file. Three rows filled, each with the page its numbers came from. One row honest about being empty."
         },
         {
           "id": "6zh7",
