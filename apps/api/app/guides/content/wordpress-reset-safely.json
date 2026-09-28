@@ -275,6 +275,1062 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "Before Resetting WordPress: Separate Content, Theme Settings, and Full Restore",
+      "description": "Starting over in WordPress does not always require wiping the site. This guide compares style resets, content revisions, database resets, and full restores; explains the scope of WP Reset and the limits of its snapshots; and walks through a test site, backup checks, and acceptance after a reset. It helps ordinary users in Taiwan identify the actual problem and choose a suitably narrow action with a recovery plan.",
+      "hero": {
+        "src": "/guides/wordpress-reset-safely/hero-en.jpg",
+        "alt": "Original illustration encouraging site owners to define the scope before resetting WordPress.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "After applying several templates, colors may be inconsistent and the homepage may contain duplicates. A “start over” button sounds tempting. Yet different resets in WordPress may change only a font or clear posts, accounts, and plugin data from the database. First define the state you need to return to."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keeping posts while restoring the old colors is a different task from clearing a practice site. This guide uses a personal site under construction to start with the smallest affected scope, then explains preparation and checks when a database reset really is needed. If people still use the live site, rehearse on an isolated copy first."
+        },
+        {
+          "type": "heading",
+          "text": "Turn “start over” into a specific outcome",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Write down the actual problem: incorrect text, unattractive styling, an unsuitable template layout, or practice data no longer needed. Then list everything that must survive, such as posts, media, accounts, form inquiries, and domain settings. These two lists determine the level of reset required."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the homepage text is too large, changing one block may be enough. Wrong site-wide colors may call for style revisions; a deleted paragraph may call for a post revision. Restoring the whole site for every small issue may restore its appearance while overwriting content that others added in the meantime."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Record the affected pages, the last known good time, and recent edits.",
+            "List the content, accounts, and external-service settings that must be kept.",
+            "State the expected result, such as keeping posts while restoring default theme styles."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Try content revisions or a style reset first",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "When a post or page is wrong, review available revisions and compare changes before choosing the version to restore. What revisions retain depends on site settings and content type. They are not a backup of every plugin record or uploaded file. If no suitable revision exists, assess another recovery method."
+        },
+        {
+          "type": "paragraph",
+          "text": "With a block theme, the site editor’s Styles panel can show style revisions or reset styles to their defaults. WordPress also documents resets of individual style settings. Preview typography, colors, and spacing, then confirm what will be saved. A style reset does not mean posts will be deleted, nor does it restore every customized template and plugin setting."
+        },
+        {
+          "type": "paragraph",
+          "text": "Classic themes, third-party page builders, and plugins may store settings separately. Do not assume that every button labeled Reset does the same thing. Read the specific tool’s instructions to learn whether it affects the current page, shared site settings, or other data, then test on a copy. Save the earlier values or screenshots for precise comparison."
+        },
+        {
+          "type": "heading",
+          "text": "Understand what a database reset actually affects",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "According to the official WP Reset plugin page, a basic reset affects posts, pages, comments, media database records, and related tables. Physical uploads may remain on disk but disappear from the Media Library. The plugin also offers other partial-deletion tools, so the basic reset’s treatment of files cannot be assumed for every operation."
+        },
+        {
+          "type": "paragraph",
+          "text": "WP Reset database snapshots exclude files and are mainly intended for development tests. If you retain only a snapshot and then delete images or theme files, restoring the database will not bring those files back. The developer also lists multisite compatibility cautions; this single-site workflow cannot be applied directly to a Multisite main site."
+        },
+        {
+          "type": "paragraph",
+          "text": "Resetting a database or reinstalling core code is not the same as resolving a security incident. Unknown accounts, suspicious code, or compromised external accounts require preserving evidence, determining impact, and fixing access rights. Clearing visible posts cannot prove that other problems are gone."
+        },
+        {
+          "type": "heading",
+          "text": "Create an isolated test site and complete recovery data",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Make accessible file and database backups, store copies away from the original site, and make sure you know how to restore them. Also record the host version, connection settings, and important external integrations. Snapshots can help repeated experiments, but recovery preparation for live data must cover the full scope actually needed."
+        },
+        {
+          "type": "paragraph",
+          "text": "Set up a restricted test site, label it clearly, and confirm it has separate database and file locations. Changing only the URL while retaining the production database would still affect production. Cross-check the environment name, URL, and database mapping; the page title alone does not prove isolation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use controlled payment, notification, subscription, and synchronization settings on the test site. A plugin reactivated around the reset must not send test messages to real customers. Record which integrations were paused, which accounts can log in, and how they will be restored after rehearsal."
+        },
+        {
+          "type": "heading",
+          "text": "Run the operation on the test site and check each result",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Open the verified tool page and read what this operation removes, what it keeps, and what will be enabled afterward. If using WP Reset, open its administration page from the Tools menu and follow the confirmation procedure shown by the current version. Do not skip confirmations or assume that an option shown in a tutorial is a default in every version."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Before running it, confirm that your backup can be read and record current content counts and test "
+            },
+            {
+              "type": "text",
+              "text": "markers"
+            },
+            {
+              "type": "text",
+              "text": ". After the reset, sign in again and inspect posts, media records, physical files, theme, and plugin states against expectations. If the goal was merely to clear practice content but data that must be kept still appears, stop further cleanup and return to the recovery plan."
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            "Verify the test environment, operation type, retained scope, and usable backup.",
+            "Complete the tool’s required confirmation; wait for the outcome and note errors or messages.",
+            "Compare kept and removed items with the pre-reset list, then test login and primary functions."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Verify a restore before deciding what to do with production",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Rehearse a restore in an isolated environment and confirm that the backup brings back the expected posts, images, and settings. If files or permissions are missing, fill the gap before considering production. A successful reset alone does not show that the overall plan is safe; recovery ability is part of acceptance."
+        },
+        {
+          "type": "paragraph",
+          "text": "If production really needs the same change, schedule a maintenance window and preserve the latest data. Tell other administrators which updates must pause. Do not simply push an entire test database from several days ago onto production: new inquiries, memberships, or content added since the test need a fresh inventory first."
+        },
+        {
+          "type": "paragraph",
+          "text": "Accept the result against the original goal: posts that should remain are present, styles that should return are right, and necessary functions work. Then remove unneeded test copies and tool permissions while retaining the operation record and necessary backups. A reset is useful when it returns the site to a comprehensible, maintainable state, not when the dashboard merely looks empty."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you are only learning a theme or plugin, make separate copies for future exercises and keep a clean starting point. Add one change at a time and record the result. This makes the cause of a visual change easier to find and reduces the need to reset all your work."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-reset-safely/diagram-1-en.svg",
+          "alt": "Original flowchart: define the problem and items to keep, choose a reset scope, rehearse on an isolated copy, then compare results and test recovery.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Know the state you need to return to before choosing what to change.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Method",
+            "Typical scope",
+            "Do not assume"
+          ],
+          "rows": [
+            [
+              "Content revision",
+              "Available history of a post or page",
+              "All plugin data and files can be restored"
+            ],
+            [
+              "Style reset",
+              "The relevant block or site-wide style settings",
+              "All content, templates, and plugins start over"
+            ],
+            [
+              "Database reset",
+              "Tables and records explicitly named by the tool",
+              "All disk files are deleted or recoverable"
+            ],
+            [
+              "Database snapshot",
+              "Database state captured in the snapshot",
+              "Images and program files were backed up"
+            ],
+            [
+              "Full backup restore",
+              "Files, database, and settings included in the backup",
+              "New data since the backup is merged automatically"
+            ]
+          ],
+          "caption": "The actual scope depends on the tool, version, and options used."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Confirm the environment before confirming the action",
+          "text": "A test URL does not guarantee a test database. Before acting, verify the URL, file location, and database mapping; ensure the rehearsal copy is separate and an accessible, restorable backup is available."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Verify that your WordPress backup can really be restored",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Set up a local WordPress test site",
+              "kind": "life",
+              "slug": "wordpress-local-development"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Choose a suitable WordPress theme",
+              "kind": "life",
+              "slug": "wordpress-theme-selection"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: content revisions",
+          "url": "https://wordpress.org/documentation/article/revisions/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Styles and resets",
+          "url": "https://wordpress.org/documentation/article/styles-overview/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Reset: developer description of action scope and snapshot limits",
+          "url": "https://wordpress.org/plugins/wp-reset/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: site backups",
+          "url": "https://developer.wordpress.org/advanced-administration/security/backup/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPressをリセットする前に：内容、テーマ設定、サイト全体の復元を分けて考える",
+      "description": "WordPressでやり直したいとき、サイト全体を消す必要があるとは限りません。スタイルのリセット、コンテンツのリビジョン、データベースのリセット、完全な復元の違いを比較し、WP Resetの影響範囲とスナップショットの限界を説明します。テストサイトでの操作、バックアップ確認、リセット後の検収を通して、台湾の一般利用者が問題を特定し、復元の準備をした上で適切な範囲を選べるようにします。",
+      "hero": {
+        "src": "/guides/wordpress-reset-safely/hero-ja.jpg",
+        "alt": "WordPressのリセット前に影響範囲を決めるよう促すオリジナルイラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "いくつかのテンプレートを適用したら色がばらばらになり、トップページの内容も重複した。「全部やり直す」ボタンを押したくなるかもしれません。しかしWordPressのリセットは、文字の設定だけを変える場合も、データベースの投稿、アカウント、プラグインデータを消す場合もあります。先に戻したい状態を定義しましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "投稿を残して元の配色に戻すことと、練習サイトを空にすることは別の作業です。構築を練習中の個人サイトを例に、影響の小さい方法から始め、本当にデータベースのリセットが必要な場合の準備と検収を説明します。利用者がいる本番サイトでは、先に分離したコピーで練習してください。"
+        },
+        {
+          "type": "heading",
+          "text": "「やり直す」を具体的な結果に置き換える",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "困っている内容をまず書き出します。文字の誤り、見栄えの悪いスタイル、合わないテンプレート、不要になった練習データのどれでしょうか。次に投稿、メディア、アカウント、フォームの問い合わせ、ドメイン設定など、必ず残す項目を挙げます。この二つのリストから必要なリセットの階層を決めます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "トップページの文字が大きすぎるなら一つのブロックの調整で十分かもしれません。全体の配色が違うならスタイルのリビジョン、投稿の段落を誤って消したなら投稿のリビジョンを先に見ます。小さな問題のたびに全体を復元すると外見は戻っても、その間に別の人が追加した内容を上書きする可能性があります。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "問題のページ、最後に正常だった時刻、直近の変更を記録する。",
+            "残すべき内容、アカウント、外部サービス設定を列挙する。",
+            "投稿は残してテーマの標準スタイルに戻す、など期待する結果を明示する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "コンテンツのリビジョンやスタイルのリセットから試す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "投稿やページの内容が間違っているなら、利用可能なリビジョンを見比べ、必要な版を選んで戻します。保存される範囲はサイト設定やコンテンツの種類によって異なります。すべてのプラグインデータやアップロードファイルのバックアップとは考えられません。適切な版がなければ別の保存方法を検討します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ブロックテーマではサイトエディターのStylesパネルからスタイルのリビジョンを確認し、標準に戻せます。WordPressの公式資料には特定のスタイル設定のリセットもあります。字体、色、余白を先にプレビューし、保存範囲を確認します。スタイルのリセットは投稿の削除を意味せず、すべての独自テンプレートやプラグイン設定の復元でもありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "従来型テーマ、外部のページビルダー、プラグインは設定を別々に保持することがあります。どれもResetと表示されるからといって同じ効果とは限りません。操作資料を読み、現在のページ、サイト共通の設定、その他の項目のどこに作用するか調べ、コピーで確かめます。以前の値や画面を保存して正確に比べましょう。"
+        },
+        {
+          "type": "heading",
+          "text": "データベースのリセットが実際に触れるものを知る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WP Resetの公式プラグインページにある基本リセットの説明では、投稿、ページ、コメント、メディアのデータベース記録と関連テーブルを扱います。実体のアップロードファイルはディスクに残っても、メディアライブラリには表示されなくなる場合があります。他の部分削除ツールもあるため、基本リセットの「ファイルは残る」という特徴をすべての操作へ当てはめてはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WP Resetのデータベーススナップショットにはファイルが含まれず、主に開発テスト向けです。スナップショットだけ保存してから画像やテーマのファイルを消しても、データベースを戻しただけではファイルは戻りません。公式資料はMultisiteの互換性にも注意を示しています。この単一サイト向け手順をMultisiteのメインサイトへ直接使わないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "データベースのリセットやWordPress本体の再インストールは、セキュリティ事故の対処完了とは異なります。不明なアカウント、異常なコード、外部アカウントの侵害があるなら、証拠を残し、影響範囲を調べ、アクセス権を修正する必要があります。見える投稿を消しても他の場所に問題がない証明にはなりません。"
+        },
+        {
+          "type": "heading",
+          "text": "分離したテストサイトと完全な復元データを用意する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "取り出せるファイルとデータベースのバックアップを作り、元サイトとは別の場所へコピーを置き、復元方法を確認します。バックアップ以外にもホストのバージョン、接続設定、重要な外部連携を記録します。スナップショットは反復試験に役立ちますが、本番データの復元準備には実際に必要な全範囲を含めてください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "アクセスを制限したテストサイトを作り、テスト環境と明示し、データベースとファイルの場所が独立していることを確かめます。URLだけ変えて本番データベースにつながっていれば、本番への影響は残ります。環境名、URL、データベースの対応を照合し、ページの題名だけで分離済みと判断しないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "テストサイトの決済、通知、購読、同期には管理された設定を使います。リセットの前後にプラグインが再有効化されても、実際の顧客へテストメッセージを送らないためです。停止した連携、ログイン可能なアカウント、演習後の復旧方法を記録し、作業範囲を追跡可能にします。"
+        },
+        {
+          "type": "heading",
+          "text": "テストサイトで実行し、結果を一つずつ確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "確認済みのツール画面で、今回削除する範囲、残る項目、終了後に有効になる機能を読みます。WP Resetを使うならツールメニューから管理画面へ進み、現在の版に表示された確認手順に従います。確認を飛ばさず、記事にある選択肢をすべての版の初期値と思わないでください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "実行前にバックアップを読めることを再確認し、現在のコンテンツ数とテスト用の"
+            },
+            {
+              "type": "text",
+              "text": "目印"
+            },
+            {
+              "type": "text",
+              "text": "を記録します。リセット後に再ログインし、投稿、メディア記録、実体ファイル、テーマ、プラグインの状態が予想どおりか調べます。練習内容だけを消すつもりで残すべきデータが見つかったら、追加の削除を止めて復元計画に戻ります。"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            "テスト環境、操作の種類、保存範囲、使えるバックアップを照合する。",
+            "ツールの確認手順を完了し、結果を待ってエラーや通知を記録する。",
+            "事前のリストと残った項目・削除された項目を比べ、ログインと主な機能を試す。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "復元を検証してから本番の扱いを決める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "分離した環境で復元を演習し、バックアップから期待する投稿、画像、設定が戻るか確かめます。ファイルや権限の不足が見つかったら補ってから本番を検討します。リセットが成功しただけで計画全体が使えるとは判断できません。復元能力も検収の一部です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本番サイトにも同じ変更が必要なら、保守時間を設け、最新データを保存し、他の管理者に更新停止の範囲を知らせます。数日前のテストサイトのデータベースをそのまま本番へ戻さないでください。テスト後に増えた問い合わせ、会員、コンテンツを本番作業前に再調査します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最初に決めた結果に沿って検収します。残す投稿があり、戻すスタイルが正しく、必要な機能が動いているかです。その後不要なテストコピーやツール権限を整理し、操作記録と必要なバックアップを保持します。リセットの価値は管理画面を空に見せることではなく、理解し保守できる状態へ戻すことにあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "テーマやプラグインの学習だけなら、今後は練習ごとに別のコピーを作り、きれいな開始点を残す方法もあります。一度に一種類の変更を行い結果を記録すれば、画面へ影響した設定を見つけやすくなり、成果全体をリセットする必要も減ります。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-reset-safely/diagram-1-ja.svg",
+          "alt": "問題と残す項目の確認、リセット範囲の選択、分離コピーでの演習、結果比較と復元確認を示すオリジナル図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "戻したい状態を先に決めてから、変更する範囲を選ぶ。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "通常の対象",
+            "推測してはいけないこと"
+          ],
+          "rows": [
+            [
+              "コンテンツのリビジョン",
+              "投稿・ページの利用可能な履歴",
+              "すべてのプラグインデータとファイルも復元できる"
+            ],
+            [
+              "スタイルのリセット",
+              "該当ブロックまたはサイト全体のスタイル設定",
+              "内容、テンプレート、プラグインがすべてやり直しになる"
+            ],
+            [
+              "データベースのリセット",
+              "ツールが明示するテーブルと記録",
+              "ディスクのファイルもすべて削除または復元できる"
+            ],
+            [
+              "データベーススナップショット",
+              "保存時のデータベース状態",
+              "画像とプログラムファイルもバックアップ済み"
+            ],
+            [
+              "完全バックアップの復元",
+              "バックアップに含まれるファイル、データベース、設定",
+              "バックアップ後の新規データが自動で統合される"
+            ]
+          ],
+          "caption": "実際の範囲は使用ツール、版、選択肢によって異なる。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "確認ボタンの前に環境を確認",
+          "text": "テスト用URLだけではテスト用データベースとは限りません。URL、ファイルの場所、データベースの対応を調べ、演習コピーの分離と取り出して復元できるバックアップを確保します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイトのバックアップから実際に復元できるか確認する",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ローカルのWordPressテストサイトを作る",
+              "kind": "life",
+              "slug": "wordpress-local-development"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "適切なWordPressテーマを選ぶ",
+              "kind": "life",
+              "slug": "wordpress-theme-selection"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：コンテンツのリビジョン",
+          "url": "https://wordpress.org/documentation/article/revisions/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：Stylesとリセット",
+          "url": "https://wordpress.org/documentation/article/styles-overview/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Reset：開発者による操作範囲とスナップショットの制限",
+          "url": "https://wordpress.org/plugins/wp-reset/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：サイトのバックアップ",
+          "url": "https://developer.wordpress.org/advanced-administration/security/backup/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 초기화 전 구분하기: 콘텐츠, 테마 설정, 전체 복원",
+      "description": "WordPress에서 다시 시작하려고 사이트 전체를 지울 필요는 없습니다. 스타일 초기화, 콘텐츠 수정 기록, 데이터베이스 초기화, 전체 복원의 차이를 비교하고 WP Reset의 영향 범위와 스냅샷 한계를 설명합니다. 테스트 사이트 작업, 백업 확인, 초기화 후 검수를 통해 대만의 일반 사용자가 실제 문제를 먼저 파악하고 복구 준비를 갖춘 적절한 범위를 선택하도록 돕습니다.",
+      "hero": {
+        "src": "/guides/wordpress-reset-safely/hero-ko.jpg",
+        "alt": "WordPress 초기화 전에 영향 범위를 정하도록 안내하는 자체 제작 그림.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "템플릿 몇 개를 적용한 뒤 사이트 색이 뒤섞이고 홈페이지 내용이 중복되면 “모두 다시 시작” 버튼을 찾고 싶을 수 있습니다. 하지만 WordPress에서 초기화 위치에 따라 글꼴만 바꾸기도 하고 데이터베이스의 글, 계정, 플러그인 자료를 지우기도 합니다. 작업 전 돌아가려는 상태부터 명확히 하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "글은 남기고 예전 색으로 되돌리는 일과 연습 사이트를 비우는 일은 전혀 다릅니다. 구축 연습 중인 개인 사이트를 예로 들어 영향이 가장 작은 방법부터 살펴보고 정말 데이터베이스 초기화가 필요할 때의 준비와 검수를 설명합니다. 운영 사이트에 이용자가 있다면 분리된 복제본에서 먼저 연습하세요."
+        },
+        {
+          "type": "heading",
+          "text": "“다시 시작”을 구체적인 결과로 바꾸기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "무엇이 문제인지 먼저 적습니다. 글자가 잘못됐는지, 스타일이 마음에 들지 않는지, 템플릿 배치가 맞지 않는지, 연습 자료가 더는 필요 없는지 구분하세요. 다음으로 글, 미디어, 계정, 양식 문의, 도메인 설정처럼 반드시 남길 항목을 나열합니다. 이 두 목록이 필요한 초기화 수준을 결정합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "홈페이지 글자가 너무 크다면 블록 하나만 조정해도 될 수 있습니다. 전체 색이 틀렸다면 스타일 수정 기록을, 글의 문단을 잘못 삭제했다면 글 수정 기록을 먼저 살펴봅니다. 작은 문제마다 사이트 전체를 복원하면 화면은 돌아오더라도 그 사이 다른 사람이 추가한 콘텐츠를 덮어쓸 수 있습니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "문제가 생긴 페이지, 마지막 정상 시각, 최근 수정을 기록합니다.",
+            "꼭 남길 콘텐츠, 계정, 외부 서비스 설정을 나열합니다.",
+            "글은 유지하고 테마 기본 스타일로 복귀하는 식으로 원하는 결과를 지정합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "콘텐츠 수정 기록이나 스타일 초기화부터 시도하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "글이나 페이지 내용이 잘못됐다면 사용 가능한 수정 기록을 비교하고 되돌릴 버전을 고릅니다. 보존 범위는 사이트 설정과 콘텐츠 종류에 따라 다르므로 모든 플러그인 자료나 업로드 파일의 백업으로 여겨서는 안 됩니다. 알맞은 버전이 없을 때 다른 보존 방법을 검토하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "블록 테마에서는 사이트 편집기의 Styles 패널에서 스타일 수정 기록을 보거나 기본값으로 되돌릴 수 있습니다. WordPress 공식 문서에는 특정 스타일 설정의 초기화도 설명되어 있습니다. 글꼴, 색, 간격을 미리 보고 저장 범위를 확인하세요. 스타일 초기화는 글 삭제를 뜻하지도, 모든 맞춤 템플릿과 플러그인 설정을 복원하지도 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "기존 방식의 테마, 외부 페이지 빌더, 플러그인은 각자 설정을 저장할 수 있습니다. 모두 Reset이라고 표시된다고 같은 효과라고 생각하지 마세요. 해당 도구의 설명을 읽어 현재 페이지, 사이트 공통 설정, 다른 항목 중 어디에 영향을 주는지 확인한 뒤 복제본에서 검증합니다. 이전 값이나 화면을 남겨 정확히 비교하세요."
+        },
+        {
+          "type": "heading",
+          "text": "데이터베이스 초기화의 실제 영향 이해하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WP Reset 공식 플러그인 페이지가 설명하는 기본 초기화는 글, 페이지, 댓글, 미디어 데이터베이스 기록과 관련 테이블을 처리합니다. 실제 업로드 파일은 디스크에 남아도 미디어 라이브러리에서 보이지 않을 수 있습니다. 별도의 부분 삭제 도구도 있으므로 기본 초기화에서 파일이 남는다는 특성을 모든 작업에 적용하면 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "WP Reset 데이터베이스 스냅샷에는 파일이 없고 주로 개발 시험에 쓰입니다. 스냅샷만 저장한 뒤 이미지나 테마 파일을 지우면 데이터베이스를 복원해도 파일은 돌아오지 않습니다. 공식 자료에는 Multisite 호환성 주의도 있습니다. 이 단일 사이트 절차를 Multisite 주 사이트에 곧바로 쓰지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "데이터베이스 초기화나 핵심 프로그램 재설치는 보안 사고 해결과 같지 않습니다. 모르는 계정, 의심스러운 코드, 외부 계정 침해가 있다면 증거를 보존하고 영향 범위를 조사하며 접근 권한을 처리해야 합니다. 보이는 글을 비운다고 다른 위치에 문제가 없다는 증거가 되지는 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "분리된 테스트 사이트와 완전한 복구 자료 준비하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "접근 가능한 파일과 데이터베이스 백업을 만들고 원래 사이트 밖에 사본을 보관하며 복원 방법을 확인합니다. 호스트 버전, 연결 설정, 중요한 외부 연동도 기록합니다. 스냅샷은 반복 시험에 유용하지만 운영 자료의 복구 준비에는 실제로 필요한 전체 범위가 포함되어야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "접근을 제한한 테스트 사이트를 만들고 시험 환경임을 표시하며 독립된 데이터베이스와 파일 위치를 쓰는지 확인합니다. URL만 바꾸고 운영 데이터베이스에 연결되어 있다면 작업은 여전히 운영 사이트에 영향을 줍니다. 환경 이름, URL, 데이터베이스 연결을 교차 확인하고 페이지 제목만 보고 분리됐다고 판단하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "테스트 사이트의 결제, 알림, 구독, 동기화에는 통제된 설정을 사용하세요. 초기화 전후 플러그인이 다시 켜져 실제 고객에게 시험 메시지를 보내지 않도록 하기 위함입니다. 중단한 연동, 로그인 가능한 계정, 연습 뒤 복원할 방법을 기록해 작업 범위를 추적하세요."
+        },
+        {
+          "type": "heading",
+          "text": "테스트 사이트에서 실행하고 결과를 항목별로 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "확인된 도구 화면에서 이번 작업의 삭제 범위, 유지 항목, 완료 후 활성화될 기능을 읽습니다. WP Reset을 선택했다면 도구 메뉴에서 관리 화면으로 가서 현재 버전에 나타난 확인 절차를 따르세요. 확인을 건너뛰거나 글에 나온 선택지를 모든 버전의 기본값이라고 여기지 마세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "실행 전에 백업을 읽을 수 있는지 다시 확인하고 현재 콘텐츠 수와 시험용 "
+            },
+            {
+              "type": "text",
+              "text": "표식"
+            },
+            {
+              "type": "text",
+              "text": "을 기록합니다. 초기화 후 다시 로그인해 글, 미디어 기록, 실제 파일, 테마와 플러그인 상태가 예상과 같은지 봅니다. 연습 콘텐츠만 비우려는데 남겨야 할 자료가 발견되면 추가 정리를 멈추고 복구 계획으로 돌아갑니다."
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            "테스트 환경, 작업 종류, 보존 범위, 사용 가능한 백업을 확인합니다.",
+            "도구의 확인 절차를 완료하고 결과를 기다리며 오류나 안내를 기록합니다.",
+            "초기화 전 목록과 남은 항목·제거된 항목을 대조하고 로그인 및 주요 기능을 시험합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "복원을 검증한 다음 운영 사이트의 처리 결정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "분리된 환경에서 복원을 한 번 연습하고 백업으로 기대한 글, 이미지, 설정이 돌아오는지 확인합니다. 파일이나 권한이 부족하면 보완한 뒤 운영 사이트 작업을 검토하세요. 초기화 성공만으로 전체 계획이 유효하다고 볼 수 없으며 복구 능력도 이번 검수에 포함됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "운영 사이트에 같은 변경이 필요하다면 점검 시간을 정하고 최신 자료를 보존하며 다른 관리자에게 업데이트 중지 범위를 알립니다. 며칠 전 테스트 사이트의 데이터베이스 전체를 운영에 그대로 밀어 넣지 마세요. 시험 후 추가된 문의, 회원, 콘텐츠를 실제 작업 전 다시 조사해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "처음 정한 목표에 따라 검수합니다. 남길 글이 그대로 있고, 복구할 스타일이 정확하며, 필요한 기능이 작동해야 합니다. 이후 불필요한 테스트 복제본과 도구 권한을 정리하고 작업 기록과 필요한 백업을 보관하세요. 초기화의 가치는 관리자 화면을 텅 비게 하는 게 아니라 이해하고 관리할 수 있는 상태로 되돌리는 데 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "테마나 플러그인을 배우는 목적이었다면 앞으로는 연습마다 별도 복제본을 만들고 깨끗한 시작점을 남길 수 있습니다. 한 번에 한 종류의 변경을 추가하고 결과를 적으면 어떤 설정이 화면에 영향을 줬는지 찾기 쉬워지고 작업 전체를 초기화할 필요도 줄어듭니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-reset-safely/diagram-1-ko.svg",
+          "alt": "문제와 보존할 항목 확인, 초기화 범위 선택, 분리된 복제본에서 연습, 결과 비교와 복원 검증을 나타내는 자체 제작 흐름도.",
+          "width": 1600,
+          "height": 900,
+          "caption": "돌아갈 상태를 먼저 정한 뒤 바꿀 범위를 선택하세요.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "방법",
+            "일반적인 범위",
+            "단정할 수 없는 것"
+          ],
+          "rows": [
+            [
+              "콘텐츠 수정 기록",
+              "글이나 페이지의 사용 가능한 과거 버전",
+              "모든 플러그인 자료와 파일도 복원 가능"
+            ],
+            [
+              "스타일 초기화",
+              "해당 블록 또는 사이트 전체 스타일 설정",
+              "모든 콘텐츠와 템플릿, 플러그인이 처음으로 복귀"
+            ],
+            [
+              "데이터베이스 초기화",
+              "도구가 명시한 테이블과 기록",
+              "디스크 파일도 모두 삭제되거나 복구 가능"
+            ],
+            [
+              "데이터베이스 스냅샷",
+              "스냅샷에 보존된 데이터베이스 상태",
+              "이미지와 프로그램 파일도 백업 완료"
+            ],
+            [
+              "전체 백업 복원",
+              "백업에 포함된 파일, 데이터베이스, 설정",
+              "백업 이후 새 자료가 자동으로 병합"
+            ]
+          ],
+          "caption": "실제 범위는 사용하는 도구, 버전, 옵션에 따라 달라집니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "확인 버튼 전에 환경부터 확인",
+          "text": "테스트 URL이라고 테스트 데이터베이스를 쓴다는 보장은 없습니다. URL, 파일 위치, 데이터베이스 연결을 확인해 연습 복제본을 분리하고 접근 및 복원이 가능한 백업을 확보하세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 백업으로 실제 복원이 가능한지 확인하기",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "로컬 WordPress 테스트 사이트 만들기",
+              "kind": "life",
+              "slug": "wordpress-local-development"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "알맞은 WordPress 테마 선택하기",
+              "kind": "life",
+              "slug": "wordpress-theme-selection"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: 콘텐츠 수정 기록",
+          "url": "https://wordpress.org/documentation/article/revisions/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Styles와 초기화",
+          "url": "https://wordpress.org/documentation/article/styles-overview/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Reset: 개발자가 공개한 작업 범위와 스냅샷 한계",
+          "url": "https://wordpress.org/plugins/wp-reset/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 사이트 백업",
+          "url": "https://developer.wordpress.org/advanced-administration/security/backup/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "重置 WordPress 前先分清：内容、主题设置与整站恢复",
+      "description": "想在 WordPress 重新开始，不一定要清空整个网站。本文比较样式重置、内容修订、数据库重置与完整恢复的差异，说明 WP Reset 的影响范围及快照限制，并提供测试站操作、备份确认和重置后验收步骤，帮助台湾普通用户先找准问题，再选择范围恰当、备好恢复方案的处理方式。",
+      "hero": {
+        "src": "/guides/wordpress-reset-safely/hero-zh-cn.jpg",
+        "alt": "原创图解，提醒站长在重置 WordPress 前先确认影响范围。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "套用几个模板后，网站颜色混乱、首页内容重复，很容易想找一个“全部重来”的按钮。但 WordPress 不同位置的重置，有的只改字体，有的会清除数据库中的文章、账户和插件数据。操作前先说清楚想回到什么状态。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保留文章却恢复原有配色，与把练习站清成空白，是两种截然不同的任务。下文以正在练习建站的个人网站为例，从影响最小的方法开始，再说明真正需要数据库重置时的准备和验收。正式站仍有人使用时，应先在隔离副本演练。"
+        },
+        {
+          "type": "heading",
+          "text": "把“想重来”改成具体结果",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先写下实际问题：文字改错、样式不好看、模板版面不合适，还是练习数据已不需要。再列出必须保留的项目，如文章、媒体、账户、表单询问和域名设置。这两份清单决定需要重置哪个层级。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如首页字体太大，也许只需调整一个区块；全站配色错误，可以先看样式修订；文章段落误删，应先查文章修订。若每个小问题都整站恢复，虽然外观可能回来，同一时期别人新增的内容也可能被覆盖。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "记录问题页面、最后正常时间及最近修改。",
+            "列出必须保留的内容、账户和外部服务设置。",
+            "指定预期结果，例如保留文章但恢复主题默认样式。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "先试内容修订或样式重置",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "文章或页面内容有误时，查看可用修订版本并比较差异，选出真正要恢复的版本。修订的保存范围受网站设置和内容类型影响，不能将其当作所有插件数据或上传文件的备份。没有合适版本时，再评估其他保存方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用区块主题时，可从网站编辑器的 Styles 面板查看样式修订，或恢复默认样式。WordPress 官方也说明可重置特定样式设置。先预览字体、颜色和间距，再确认保存范围；重置样式不意味着删除文章，也不意味着所有自定义模板和插件设置一并恢复。"
+        },
+        {
+          "type": "paragraph",
+          "text": "传统主题、第三方页面编辑器或插件可能各自保存设置。不要看到 Reset 就认为效果相同。先阅读相应工具的说明，确认它影响当前页面、全站共用设置还是其他项目，再到副本验证。保存重置前的数值或截图，以便准确比较。"
+        },
+        {
+          "type": "heading",
+          "text": "弄清数据库重置会影响什么",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以 WP Reset 官方插件页所述的基本重置为例，它会处理文章、页面、评论、媒体数据库记录及对应数据表；实体上传文件可能仍留在磁盘，却不再显示于媒体库。它还提供其他局部删除工具，不能把基本重置“不动文件”的特性套到每项操作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WP Reset 的数据库快照不包含文件，主要供开发测试。如果只保存快照，之后又删除图片或主题文件，恢复数据库不会找回那些文件。官方也列出 Multisite 多站网络的兼容注意事项，本文的单站流程不能直接用于 Multisite 主站。"
+        },
+        {
+          "type": "paragraph",
+          "text": "数据库重置或重新安装核心程序也不等于完成安全事件清理。如果问题涉及陌生账户、异常程序或外部账户被入侵，应先保留证据、查清影响范围并处理访问权限。清空看得见的文章，不能证明其他地方没有问题。"
+        },
+        {
+          "type": "heading",
+          "text": "建立隔离测试站和完整恢复资料",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先制作可取得的文件和数据库备份，将副本放在原站以外，并确认知道如何恢复。除了备份文件，还要记录主机版本、连接设置及重要外部集成。快照有助于反复试验，但正式数据的恢复准备必须覆盖实际需要的完整范围。"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立限制访问的测试站，明确标注测试环境，并确认它有独立的数据库和文件位置。如果只是换网址，却仍连接正式数据库，操作仍会影响正式站。交叉核对环境名称、网址和数据库映射，不要只看页面标题就认为已经隔离。"
+        },
+        {
+          "type": "paragraph",
+          "text": "测试站的付款、通知、订阅和同步应先采用受控设置，避免重置前后插件重新启用，向真实客户发送测试消息。记录暂停了哪些集成、哪些账户能登录，以及演练结束后如何恢复，以便追踪操作范围。"
+        },
+        {
+          "type": "heading",
+          "text": "在测试站执行，逐项核对结果",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "进入已确认的工具页面，阅读本次操作的删除范围、保留项目和完成后会启用的功能。若选择 WP Reset，可以从工具菜单进入管理页；依当前版本显示的确认程序操作，不跳过确认，也不把教程里的选项当成所有版本的默认值。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "执行前再次确认备份可读取，并记录当前内容数量和测试"
+            },
+            {
+              "type": "text",
+              "text": "标记"
+            },
+            {
+              "type": "text",
+              "text": "。重置后重新登录，检查文章、媒体记录、实体文件、主题及插件状态是否符合预期。若只是想清空练习内容，却发现仍有要保留的数据，先停止后续清理，回到恢复计划。"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            "核对测试环境、操作种类、保留范围及可用备份。",
+            "完成工具要求的确认，等待结果并记下错误或提示。",
+            "对照重置前清单核对保留与移除项目，再测试登录和主要功能。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "先验证恢复，再决定正式站如何处理",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在隔离环境演练一次恢复，确认备份能找回预期的文章、图片和设置。若发现文件或权限缺失，补齐后再评估正式站。不能因为重置成功就断定整体方案可行，恢复能力也是本次操作的一部分。"
+        },
+        {
+          "type": "paragraph",
+          "text": "正式站若真的需要同样更改，应安排维护时段并保存最新数据，让其他管理员知道哪些更新暂时停止。不要直接把几天前的测试站数据库整库推回正式站；测试之后新增的询问、会员或内容，在正式执行前需要重新盘点。"
+        },
+        {
+          "type": "paragraph",
+          "text": "按最初写下的预期结果验收：该保留的文章仍在、要恢复的样式正确、必要功能可用。之后清理不需要的测试副本和工具权限，保留操作记录及必要备份。重置的价值在于让网站回到能理解、易维护的状态，而不是追求后台看起来完全空白。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果只是为了学习主题或插件，以后可以为不同练习建立独立副本，保留一份干净起点。每次只做一种更改并记录结果，更容易判断哪个设置改变了画面，也可减少重置全部成果的需要。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-reset-safely/diagram-1-zh-cn.svg",
+          "alt": "原创流程图：确认问题和保留项目、选择重置范围、在隔离副本演练，再比较结果并验证恢复。",
+          "width": 1600,
+          "height": 900,
+          "caption": "先知道要回到哪种状态，再选择需要更改的范围。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "通常处理的范围",
+            "不能直接推断"
+          ],
+          "rows": [
+            [
+              "内容修订",
+              "文章或页面的可用历史版本",
+              "所有插件数据和文件都能恢复"
+            ],
+            [
+              "样式重置",
+              "对应区块或全站样式设置",
+              "全部内容、模板和插件一并重来"
+            ],
+            [
+              "数据库重置",
+              "工具明示的数据表与记录",
+              "磁盘文件也全部删除或可恢复"
+            ],
+            [
+              "数据库快照",
+              "快照保存的数据库状态",
+              "图片和程序文件已备份"
+            ],
+            [
+              "完整备份恢复",
+              "备份涵盖的文件、数据库与设置",
+              "备份后新增数据会自动合并"
+            ]
+          ],
+          "caption": "实际范围取决于所用工具、版本和选项。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先确认环境，再按确认",
+          "text": "测试网址不保证使用测试数据库。操作前核对网址、文件位置和数据库映射，确保演练副本独立，且备份可以取得和恢复。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "确认网站备份确实能够恢复",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立本地 WordPress 测试站",
+              "kind": "life",
+              "slug": "wordpress-local-development"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "选择合适的 WordPress 主题",
+              "kind": "life",
+              "slug": "wordpress-theme-selection"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：内容修订",
+          "url": "https://wordpress.org/documentation/article/revisions/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：Styles 与重置",
+          "url": "https://wordpress.org/documentation/article/styles-overview/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Reset：开发者说明的操作范围与快照限制",
+          "url": "https://wordpress.org/plugins/wp-reset/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：网站备份",
+          "url": "https://developer.wordpress.org/advanced-administration/security/backup/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
