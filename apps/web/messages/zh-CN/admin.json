@@ -581,18 +581,10 @@
     },
     "anthropic_connection": {
       "label": "Claude 连接方式",
-      "help": "选“订阅账号”时，攻略搜索、景点介绍、介绍审查、简体名称与 AI 新闻的 Claude 调用都改由主机上“AI 账号”登录的 Claude 订阅账号执行，不用 API 密钥。账号按 A、B、C… 的顺序轮流，一个账号的 5 小时或每周额度用满才换下一个，最后一个用满再回到 A；每个账号都用满时改用 MiniMax。行程规划与行程文字解析仍只用 API 密钥。只有站主能切换。",
+      "help": "选“订阅账号”时，攻略搜索、景点介绍、介绍审查、简体名称与 AI 新闻的 Claude 调用都改由主机上“AI 账号”登录的 Claude 订阅账号执行，不用 API 密钥。账号按 A、B、C… 的顺序轮流，一个账号的 5 小时或每周额度用满才换下一个，最后一个用满再回到 A；每个账号都用满时等额度重置，不会改用其他供应商或模型。行程规划与行程文字解析仍只用 API 密钥。只有站主能切换。",
       "options": {
         "api_key": "API 密钥",
         "subscription": "订阅账号（主机 Claude Code）"
-      }
-    },
-    "ai_subscription_fallback": {
-      "label": "订阅账号都满时",
-      "help": "每个 Claude 账号都到上限时怎么办。“等账号恢复”：新闻先放回队列，每 30 分钟再试一次，其他功能这次调用会失败；“改用 MiniMax”：立刻改用 MiniMax 运行，速度快但质量较差。只有站长能改。",
-      "options": {
-        "wait": "等账号恢复",
-        "minimax": "改用 MiniMax"
       }
     }
   },
@@ -1095,7 +1087,6 @@
       "connection": {
         "apiKey": "API 密钥",
         "subscription": "订阅账号",
-        "subscriptionFallback": "订阅账号（额度用完改用 MiniMax）",
         "none": "不调用 AI"
       },
       "support": {

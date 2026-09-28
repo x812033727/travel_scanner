@@ -20,7 +20,15 @@ from ai_accounts_agent.claude import ClaudeAccounts, mark_onboarding_done
 from ai_accounts_agent.codex import CodexAccounts
 from ai_accounts_agent.config import SLOTS, TOOLS, AgentConfig
 from ai_accounts_agent.runner import CliError
-from ai_accounts_agent.runs import RunRefused, RunRequest, pick_slot, run_claude, run_codex
+from ai_accounts_agent.runs import (
+    ANY_MODEL,
+    RunRefused,
+    RunRequest,
+    model_family,
+    pick_slot,
+    run_claude,
+    run_codex,
+)
 from ai_accounts_agent.security import (
     NONCE_HEADER,
     SIGNATURE_HEADER,
@@ -158,8 +166,10 @@ class AgentApplication:
         # 2026-09-26). Whoever needs both locks takes _runs_changed first, then _usage_lock.
         self._runs_changed = threading.Condition()
         self._runs_busy: set[tuple[str, str]] = set()
-        # Accounts whose run hit the limit, until when: the usage snapshot lags behind.
-        self._runs_resting: dict[tuple[str, str], float] = {}
+        # Accounts whose run hit the limit, until when: the usage snapshot lags behind. Keyed
+        # by tool, slot and the model family the limit covers (ANY_MODEL for the account's
+        # 5-hour or weekly window), so an Opus limit leaves the account to Fable and Sonnet.
+        self._runs_resting: dict[tuple[str, str, str], float] = {}
         self._prepare_state()
 
     def _prepare_state(self) -> None:
@@ -461,9 +471,10 @@ class AgentApplication:
             slots = self.overview(False)["slots"]
             with self._runs_changed:
                 now = self.clock()
+                family = model_family(request.model)
                 resting = {
-                    slot for (name, slot), until in self._runs_resting.items()
-                    if name == tool and until > now
+                    slot for (name, slot, limited), until in self._runs_resting.items()
+                    if name == tool and until > now and limited in (ANY_MODEL, family)
                 }
                 current = self.current_slot(tool)
                 with self._usage_lock:
@@ -507,11 +518,13 @@ class AgentApplication:
                 self._runs_busy.add((tool, slot))
                 return slot
 
-    def _release_run_slot(self, slot: str, *, spent: bool, tool: str = "claude") -> None:
+    def _release_run_slot(
+        self, slot: str, *, spent: bool, tool: str = "claude", family: str = ANY_MODEL
+    ) -> None:
         with self._runs_changed:
             self._runs_busy.discard((tool, slot))
             if spent:
-                self._runs_resting[(tool, slot)] = self.clock() + RUN_REST_SECONDS
+                self._runs_resting[(tool, slot, family)] = self.clock() + RUN_REST_SECONDS
             self._runs_changed.notify_all()
         if spent and tool == "claude":
             # Probe it now, so the picks after the rest see the spent window in its usage.
@@ -523,6 +536,7 @@ class AgentApplication:
             while True:
                 slot = self._claim_run_slot(request)
                 spent = False
+                family = ANY_MODEL
                 try:
                     result = (
                         run_codex(self.config, slot, request)
@@ -534,9 +548,10 @@ class AgentApplication:
                     spent = exc.code == "subscription_quota_paused"
                     if not spent:
                         raise
+                    family = exc.family
                     continue
                 finally:
-                    self._release_run_slot(slot, spent=spent, tool=request.tool)
+                    self._release_run_slot(slot, spent=spent, tool=request.tool, family=family)
                 return HTTPStatus.OK, result
         except RunRefused as exc:
             return exc.status, {"code": exc.code, "detail": exc.detail, **exc.extra}

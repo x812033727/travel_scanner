@@ -358,18 +358,6 @@ def research_provider(
             chosen_model,
             chosen_timeout,
             vendor=cast(Literal["anthropic", "openai"], name),
-            # MiniMax uses its own model, never the selected vendor's model name.
-            fallback=(
-                lambda: research_provider(
-                    settings,
-                    "minimax",
-                    client,
-                    timeout_seconds=timeout_seconds,
-                    max_output_tokens=max_output_tokens,
-                )
-            )
-            if settings.minimax_api_key and settings.ai_subscription_fallback == "minimax"
-            else None,
         )
     if name == "openai" and settings.openai_api_key:
         return ResponsesResearchProvider(
