@@ -191,7 +191,9 @@
       "lines": [
         {
           "id": "c752",
-          "text": "128 GB 的 RTX Spark 筆電，裝得下哪些模型？"
+          "text": "128 GB 的 RTX Spark 筆電，裝得下哪些模型？",
+          "say": "一百二十八 GB 的 RTX Spark 筆電，裝得下哪些模型？",
+          "say_for": "289832a2d6b5"
         }
       ]
     },
@@ -226,7 +228,7 @@
         {
           "id": "piku",
           "text": "可是 700 億參數的 Llama 3.3，原版 141 GB，裝不下。",
-          "say": "可是七百億參數的 Llama 三點三，原版 141 GB，裝不下。",
+          "say": "可是七百億參數的 Llama 三點三，原版一百四十一 GB，裝不下。",
           "say_for": "92added42b26",
           "reveal": 1
         }
@@ -276,12 +278,12 @@
       "lines": [
         {
           "id": "xbwf",
-          "text": "這集就用它，算出這台筆電裝得下什麼。",
+          "text": "這集用它算出裝得下什麼。",
           "reveal": 1
         },
         {
           "id": "prq6",
-          "text": "再看決定速度的數字，和它能不能取代訂閱。",
+          "text": "再看決定速度的數字，還有能不能取代訂閱。",
           "reveal": 2
         }
       ]
@@ -347,6 +349,8 @@
         {
           "id": "ey2n",
           "text": "記憶體最多 128 GB，另一級筆電最多 64 GB。",
+          "say": "記憶體最多一百二十八 GB，另一級筆電最多六十四 GB。",
+          "say_for": "e7e7625aa7bb",
           "reveal": 1
         },
         {
@@ -418,12 +422,12 @@
         },
         {
           "id": "td4z",
-          "text": "RTX Spark 是統一記憶體，處理器和顯示晶片共用。"
+          "text": "RTX Spark 是統一記憶體，處理器和顯示晶片共用。",
+          "reveal": 1
         },
         {
           "id": "bmxq",
-          "text": "顯示晶片能用多少，Windows 設了上限，五月的公告沒寫數字。",
-          "reveal": 1
+          "text": "顯示晶片能用多少，Windows 設了上限，五月的公告沒寫數字。"
         }
       ]
     },
@@ -502,7 +506,7 @@
         {
           "id": "62hr",
           "text": "Llama 3.3 70B 乘 2 是 141 GB，乘 0.5 大約 35 GB。",
-          "say": "Llama 三點三 70B 乘 2 是 141 GB，乘 0.5 大約 35 GB。",
+          "say": "Llama 三點三的七十 B，乘二是一百四十一 GB，乘 0.5 大約三十五 GB。",
           "say_for": "8851486ba8fd"
         }
       ]
@@ -548,16 +552,22 @@
         {
           "id": "q7tw",
           "text": "16 位元的檔案 141 GB，跟算式一樣。",
+          "say": "十六位元的檔案一百四十一 GB，跟算式一樣。",
+          "say_for": "7992f3d1c007",
           "reveal": 1
         },
         {
           "id": "4zmj",
           "text": "8 位元是 75 GB，多了一點。",
+          "say": "八位元是七十五 GB，多了一點。",
+          "say_for": "2eaec2f4b3f5",
           "reveal": 1
         },
         {
           "id": "tj2j",
           "text": "4 位元是 40 到 43 GB，比算式多出一成多到兩成多。",
+          "say": "四位元是四十到四十三 GB，比算式多出一成多到兩成多。",
+          "say_for": "45e6447e3766",
           "reveal": 1
         },
         {
@@ -612,11 +622,15 @@
         {
           "id": "rxkq",
           "text": "回到開場：1200 億參數用 4 位元存，大約 60 GB，放得進 128 GB。",
+          "say": "回到開場：1200 億參數用 4 位元存，大約六十 GB，放得進一百二十八 GB。",
+          "say_for": "bcc95701c279",
           "reveal": 1
         },
         {
           "id": "p9rk",
           "text": "Llama 70B 用原版的 16 位元，要 141 GB，就放不下。",
+          "say": "Llama 七十 B 用原版的 16 位元，要一百四十一 GB，就放不下。",
+          "say_for": "dee8722ace7e",
           "reveal": 1
         },
         {
@@ -646,11 +660,15 @@
       "lines": [
         {
           "id": "c8mw",
-          "text": "那 16、64、128 GB，各裝得下哪些模型？"
+          "text": "那 16、64、128 GB，各裝得下哪些模型？",
+          "say": "那十六、六十四、一百二十八 GB，各裝得下哪些模型？",
+          "say_for": "c2b6bd86bfcb"
         },
         {
           "id": "gzmm",
           "text": "判斷方法是，先扣掉 Windows 11 最低要的 4 GB。",
+          "say": "判斷方法是，先扣掉 Windows 十一最低要的四 GB。",
+          "say_for": "9779ab63a79b",
           "reveal": 1
         },
         {
@@ -739,31 +757,43 @@
         {
           "id": "i3ft",
           "text": "OpenAI 的 gpt-oss-20b 檔案 13.8 GB，16 太擠，64 以上放得下。",
+          "say": "OpenAI 的 gpt-oss-20b 檔案十三點八 GB，十六太擠，六十四以上放得下。",
+          "say_for": "07d8dd151abe",
           "reveal": 1
         },
         {
           "id": "67f3",
           "text": "Llama 70B 的 4 位元版 43 GB，要 64 GB 才放得下。",
+          "say": "Llama 七十 B 的 4 位元版，四十三 GB，要六十四 GB 才放得下。",
+          "say_for": "9d5e3d541894",
           "reveal": 1
         },
         {
           "id": "jxzc",
           "text": "gpt-oss-120b 是 65.2 GB，64 GB 那級太擠，128 放得下。",
+          "say": "gpt-oss-120b 是六十五點二 GB，六十四 GB 那級太擠，一百二十八放得下。",
+          "say_for": "13c9d74c2a99",
           "reveal": 1
         },
         {
           "id": "8jvg",
           "text": "8 位元的 Llama 75 GB，只有 128 GB 放得下。",
+          "say": "8 位元的 Llama，七十五 GB，只有一百二十八 GB 放得下。",
+          "say_for": "e7687c0dcb8a",
           "reveal": 1
         },
         {
           "id": "r2ah",
           "text": "原版的 Llama 141 GB，128 也放不下。",
+          "say": "原版的 Llama，一百四十一 GB，一百二十八也放不下。",
+          "say_for": "a75466c23d6d",
           "reveal": 1
         },
         {
           "id": "cwn7",
           "text": "DeepSeek-V4-Flash 將近 160 GB，三種都放不下。",
+          "say": "DeepSeek 的 V 四 Flash，將近一百六十 GB，三種都放不下。",
+          "say_for": "3f98b64591e8",
           "reveal": 1
         }
       ]
@@ -793,6 +823,8 @@
         {
           "id": "pt7g",
           "text": "你可能聽過：128 GB 連 4050 億參數的模型都跑得動？",
+          "say": "你可能聽過：一百二十八 GB 連 4050 億參數的模型都跑得動？",
+          "say_for": "c6b0832a83ff",
           "reveal": 1
         },
         {
@@ -817,7 +849,9 @@
       "lines": [
         {
           "id": "2y24",
-          "text": "那家裡兩台 128 GB 的電腦，能不能合成 256 GB？"
+          "text": "那家裡兩台 128 GB 的電腦，能不能合成 256 GB？",
+          "say": "那家裡兩台一百二十八 GB 的電腦，能不能合成兩百五十六 GB？",
+          "say_for": "772bc686233d"
         },
         {
           "id": "5cse",
@@ -854,7 +888,9 @@
         },
         {
           "id": "pii9",
-          "text": "gpt-oss-120b 讀到最長，要再多 4.8 GB，合計大約 70 GB。"
+          "text": "gpt-oss-120b 讀到最長，要再多 4.8 GB，合計大約 70 GB。",
+          "say": "gpt-oss-120b 讀到最長，要再多四點八 GB，合計大約七十 GB。",
+          "say_for": "3153bdaf9a44"
         }
       ]
     },
@@ -889,21 +925,29 @@
       "lines": [
         {
           "id": "dym6",
-          "text": "OpenAI 說，gpt-oss-20b 在 16 GB 記憶體內就能跑。"
+          "text": "OpenAI 說，gpt-oss-20b 在 16 GB 記憶體內就能跑。",
+          "say": "OpenAI 說，gpt-oss-20b 在十六 GB 記憶體內就能跑。",
+          "say_for": "99ddf8398cc5"
         },
         {
           "id": "ttk7",
           "text": "可是 16 GB 的電腦放下它，只剩不到 4 GB。",
+          "say": "可是十六 GB 的電腦放下它，只剩不到四 GB。",
+          "say_for": "e186c2216cb9",
           "reveal": 1
         },
         {
           "id": "dqk7",
           "text": "64 GB 那級放 gpt-oss-120b，也只剩不到 4 GB。",
+          "say": "六十四 GB 那級放 gpt-oss-120b，也只剩不到四 GB。",
+          "say_for": "8d0edad7eaa9",
           "reveal": 1
         },
         {
           "id": "wyya",
           "text": "Windows 11 自己最少就要 4 GB，所以這兩格算太擠。",
+          "say": "Windows 十一自己最少就要四 GB，所以這兩格算太擠。",
+          "say_for": "d3131a3696bd",
           "reveal": 1
         }
       ]
@@ -980,6 +1024,8 @@
         {
           "id": "3xvu",
           "text": "有公布的：算力、記憶體容量、功耗，還有記憶體頻寬，每秒 300 GB。",
+          "say": "有公布的：算力、記憶體容量、功耗，還有記憶體頻寬，每秒三百 GB。",
+          "say_for": "f788ce73c3b5",
           "reveal": 1
         },
         {
@@ -1077,11 +1123,17 @@
         {
           "id": "uc8u",
           "text": "Llama 70B 每產生一個 token，要動到全部 700 多億個參數。",
+          "say": "Llama 七十 B 每產生一個 token，要動到全部 700 多億個參數。",
+          "say_for": "77482e632448",
           "reveal": 1
         },
         {
           "id": "wm6a",
-          "text": "gpt-oss-120b 是混合專家模型，總共 1170 億，每次只動 51 億。",
+          "text": "gpt-oss-120b 是混合專家模型。"
+        },
+        {
+          "id": "k3zx",
+          "text": "總共 1170 億，每次只動 51 億。",
           "reveal": 1
         },
         {
@@ -1111,7 +1163,13 @@
       "lines": [
         {
           "id": "j4w5",
-          "text": "gpt-oss-120b 原版每次大約讀 5 GB：專家 4 位元多，其他是 16 位元。"
+          "text": "gpt-oss-120b 原版每次大約讀 5 GB。",
+          "say": "gpt-oss-120b 原版每次大約讀五 GB。",
+          "say_for": "575f59010d59"
+        },
+        {
+          "id": "ujr7",
+          "text": "專家是 4 位元多，其他是 16 位元。"
         }
       ]
     },
@@ -1142,8 +1200,14 @@
       ],
       "lines": [
         {
+          "id": "3s2v",
+          "text": "接下來兩個數字，都是每步一個 token 的理論上限。"
+        },
+        {
           "id": "wxrv",
           "text": "每秒 300 GB 除以 35 GB，Llama 最多每秒八個多 token。",
+          "say": "每秒三百 GB 除以三十五 GB，Llama 最多每秒八個多 token。",
+          "say_for": "6c6c847279f2",
           "reveal": 1
         },
         {
@@ -1152,8 +1216,8 @@
           "reveal": 1
         },
         {
-          "id": "3s2v",
-          "text": "這是每步一個 token 的理論上限：上下文和其他程式也要搶頻寬，實際只會更慢。"
+          "id": "a5ye",
+          "text": "上下文和其他程式也要搶頻寬，實際只會更慢。"
         }
       ]
     },
@@ -1246,7 +1310,7 @@
       "lines": [
         {
           "id": "uzk6",
-          "text": "把代理關起來的三道牆，代理闖進政府網站那一集，有真的示範。"
+          "text": "把代理關起來的三道牆，在代理闖進政府網站那一集，有真的示範。"
         }
       ]
     },
@@ -1282,21 +1346,25 @@
       "lines": [
         {
           "id": "k76b",
-          "text": "再來算錢：雲端訂閱按月付，像 Claude 的 Pro 方案，九月底是月繳 20 美元。"
+          "text": "再來算錢：雲端訂閱按月付。",
+          "reveal": 1
+        },
+        {
+          "id": "85b5",
+          "text": "像 Claude 的 Pro 方案，九月底是月繳 20 美元。"
         },
         {
           "id": "45uq",
-          "text": "用量每五小時重置，另外還有每週上限。",
-          "reveal": 1
+          "text": "用量每五小時重置，另外還有每週上限。"
         },
         {
           "id": "e55p",
-          "text": "自己的機器一次付清，只是另外要付電費。"
+          "text": "自己的機器一次付清，只是另外要付電費。",
+          "reveal": 1
         },
         {
           "id": "hh47",
-          "text": "RTX Spark 的價格，九月底 NVIDIA 產品頁還沒有列。",
-          "reveal": 1
+          "text": "RTX Spark 的價格，九月底 NVIDIA 產品頁還沒有列。"
         }
       ]
     },

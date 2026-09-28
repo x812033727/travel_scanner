@@ -3,7 +3,10 @@
   "slug": "why-openai-killed-sora",
   "format": "slides",
   "source_guide": "ai-video-tools-compared",
-  "target_minutes": [8, 10],
+  "target_minutes": [
+    8,
+    10
+  ],
   "voice": {
     "provider": "gemini",
     "name": "Sulafat",
@@ -36,38 +39,140 @@
     ],
     "video_id": null
   },
-  "thumbnail": { "template": "thumb", "data": { "tag": "Sora 已停止服務", "headline": "為什麼**收掉**\nSora？", "sub": "官方原話 vs 720p 一秒 $0.05–$0.40" } },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "Sora 已停止服務",
+      "headline": "為什麼**收掉**\nSora？",
+      "sub": "官方原話 vs 720p 一秒 $0.05–$0.40"
+    }
+  },
   "sources": [
-    { "title": "OpenAI API deprecations (Sora 2, Videos API)", "url": "https://developers.openai.com/api/docs/deprecations", "checked_on": "2026-09-28" },
-    { "title": "OpenAI API pricing, archived 2026-08-02 (sora-2)", "url": "https://web.archive.org/web/20260802044220/https://developers.openai.com/api/docs/pricing", "checked_on": "2026-09-28" },
-    { "title": "OpenAI video generation guide, archived 2026-07-27", "url": "https://web.archive.org/web/20260727175148/https://developers.openai.com/api/docs/guides/video-generation", "checked_on": "2026-09-28" },
-    { "title": "OpenAI Help: Sora discontinuation, archived 2026-09-19", "url": "https://web.archive.org/web/20260919081042/https://help.openai.com/en/articles/20001152-what-to-know-about-the-sora-discontinuation", "checked_on": "2026-09-28" },
-    { "title": "Gemini API pricing (Veo 3.1, Gemini Omni Flash)", "url": "https://ai.google.dev/gemini-api/docs/pricing", "checked_on": "2026-09-28" },
-    { "title": "Gemini API: Veo", "url": "https://ai.google.dev/gemini-api/docs/veo", "checked_on": "2026-09-28" },
-    { "title": "Gemini API deprecations", "url": "https://ai.google.dev/gemini-api/docs/deprecations", "checked_on": "2026-09-28" },
-    { "title": "Google Cloud generative AI pricing (Omni tokens/s)", "url": "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing", "checked_on": "2026-09-28" },
-    { "title": "Kling AI API pricing", "url": "https://kling.ai/dev/pricing", "checked_on": "2026-09-28" },
-    { "title": "BytePlus ModelArk pricing (Seedance 2.0)", "url": "https://docs.byteplus.com/en/docs/ModelArk/1544106", "checked_on": "2026-09-28" },
-    { "title": "xAI API pricing (Grok Imagine Video 1.5)", "url": "https://docs.x.ai/developers/pricing", "checked_on": "2026-09-28" },
-    { "title": "xAI video generation", "url": "https://docs.x.ai/developers/model-capabilities/video/generation", "checked_on": "2026-09-28" },
-    { "title": "MiniMax pay-as-you-go pricing (MiniMax-H3)", "url": "https://platform.minimax.io/docs/guides/pricing-paygo", "checked_on": "2026-09-28" },
-    { "title": "Runway API pricing", "url": "https://docs.dev.runwayml.com/guides/pricing/", "checked_on": "2026-09-28" },
-    { "title": "Runway API reference", "url": "https://docs.dev.runwayml.com/api/", "checked_on": "2026-09-28" },
-    { "title": "Higgsfield pricing", "url": "https://higgsfield.ai/pricing", "checked_on": "2026-09-28" },
-    { "title": "報導：The Verge, 2026-03-24", "url": "https://www.theverge.com/ai-artificial-intelligence/899850/openai-sora-ai-chatgpt", "checked_on": "2026-09-28" },
-    { "title": "報導：CBS News, 2026-03-24", "url": "https://www.cbsnews.com/news/sora-ai-openai-discontinues/", "checked_on": "2026-09-28" },
-    { "title": "報導：TechCrunch, 2026-03-24", "url": "https://techcrunch.com/2026/03/24/openais-sora-was-the-creepiest-app-on-your-phone-now-its-shutting-down/", "checked_on": "2026-09-28" },
-    { "title": "報導：TechCrunch, 2026-03-29", "url": "https://techcrunch.com/2026/03/29/why-openai-really-shut-down-sora/", "checked_on": "2026-09-28" },
-    { "title": "報導：Business Insider, 2026-04-02", "url": "https://www.businessinsider.com/openai-cfo-says-compute-crunch-is-forcing-tough-trade-offs-2026-4", "checked_on": "2026-09-28" }
+    {
+      "title": "OpenAI API deprecations (Sora 2, Videos API)",
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "OpenAI API pricing, archived 2026-08-02 (sora-2)",
+      "url": "https://web.archive.org/web/20260802044220/https://developers.openai.com/api/docs/pricing",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "OpenAI video generation guide, archived 2026-07-27",
+      "url": "https://web.archive.org/web/20260727175148/https://developers.openai.com/api/docs/guides/video-generation",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "OpenAI Help: Sora discontinuation, archived 2026-09-19",
+      "url": "https://web.archive.org/web/20260919081042/https://help.openai.com/en/articles/20001152-what-to-know-about-the-sora-discontinuation",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Gemini API pricing (Veo 3.1, Gemini Omni Flash)",
+      "url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Gemini API: Veo",
+      "url": "https://ai.google.dev/gemini-api/docs/veo",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Gemini API deprecations",
+      "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Google Cloud generative AI pricing (Omni tokens/s)",
+      "url": "https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Kling AI API pricing",
+      "url": "https://kling.ai/dev/pricing",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "BytePlus ModelArk pricing (Seedance 2.0)",
+      "url": "https://docs.byteplus.com/en/docs/ModelArk/1544106",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "xAI API pricing (Grok Imagine Video 1.5)",
+      "url": "https://docs.x.ai/developers/pricing",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "xAI video generation",
+      "url": "https://docs.x.ai/developers/model-capabilities/video/generation",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "MiniMax pay-as-you-go pricing (MiniMax-H3)",
+      "url": "https://platform.minimax.io/docs/guides/pricing-paygo",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Runway API pricing",
+      "url": "https://docs.dev.runwayml.com/guides/pricing/",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Runway API reference",
+      "url": "https://docs.dev.runwayml.com/api/",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Higgsfield pricing",
+      "url": "https://higgsfield.ai/pricing",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "報導：The Verge, 2026-03-24",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/899850/openai-sora-ai-chatgpt",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "報導：CBS News, 2026-03-24",
+      "url": "https://www.cbsnews.com/news/sora-ai-openai-discontinues/",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "報導：TechCrunch, 2026-03-24",
+      "url": "https://techcrunch.com/2026/03/24/openais-sora-was-the-creepiest-app-on-your-phone-now-its-shutting-down/",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "報導：TechCrunch, 2026-03-29",
+      "url": "https://techcrunch.com/2026/03/29/why-openai-really-shut-down-sora/",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "報導：Business Insider, 2026-04-02",
+      "url": "https://www.businessinsider.com/openai-cfo-says-compute-crunch-is-forcing-tough-trade-offs-2026-4",
+      "checked_on": "2026-09-28"
+    }
   ],
   "scenes": [
     {
       "id": "hook-title",
       "chapter": "OpenAI 為什麼收掉 Sora？官方公告只給一句理由",
       "template": "title",
-      "data": { "tag": "Sora 已停止服務", "title": "OpenAI 為什麼\n收掉 **Sora**？", "subtitle": "官方公告只給一句理由，價目表說了其他的" },
-      "claims": ["c1"],
-      "lines": [{ "id": "4dcx", "text": "OpenAI 到底為什麼收掉 Sora？" }]
+      "data": {
+        "tag": "Sora 已停止服務",
+        "title": "OpenAI 為什麼\n收掉 **Sora**？",
+        "subtitle": "官方公告只給一句理由，價目表說了其他的"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "4dcx",
+          "text": "OpenAI 到底為什麼收掉 Sora？"
+        }
+      ]
     },
     {
       "id": "hook-quote",
@@ -78,10 +183,19 @@
         "translation": "……經過內部對更廣的研究優先順序仔細討論，我們做了困難的決定……",
         "source": "OpenAI，2026 年 3 月 24 日｜經 The Verge 引述"
       },
-      "claims": ["c1"],
+      "claims": [
+        "c1"
+      ],
       "lines": [
-        { "id": "tt9u", "text": "官方公告只給了一句理由。" },
-        { "id": "tbe8", "text": "考量更廣的研究優先順序，停掉 Sora。", "reveal": 1 }
+        {
+          "id": "tt9u",
+          "text": "官方公告只給了一句理由。"
+        },
+        {
+          "id": "tbe8",
+          "text": "考量更廣的研究優先順序，停掉 Sora。",
+          "reveal": 1
+        }
       ]
     },
     {
@@ -90,22 +204,56 @@
       "data": {
         "title": "可是價目表上",
         "stats": [
-          { "value": "$0.10", "label": "Sora 2 一秒", "note": "720p，Standard 價｜OpenAI 官方價目頁\n2026 年 8 月存檔" },
-          { "value": "$0.05", "label": "Veo 3.1 Lite 一秒", "note": "720p 有聲｜Google\n2026 年 9 月 28 日官方價" }
+          {
+            "value": "$0.10",
+            "label": "Sora 2 一秒",
+            "note": "720p，Standard 價｜OpenAI 官方價目頁\n2026 年 8 月存檔"
+          },
+          {
+            "value": "$0.05",
+            "label": "Veo 3.1 Lite 一秒",
+            "note": "720p 有聲｜Google\n2026 年 9 月 28 日官方價"
+          }
         ]
       },
-      "claims": ["c4", "c5"],
+      "claims": [
+        "c4",
+        "c5"
+      ],
       "lines": [
-        { "id": "2bmt", "text": "可是 Sora 關門前，一秒影片只標零點一美元。", "reveal": 1 },
-        { "id": "5kjd", "text": "九月底，Google 的 Veo 3.1 Lite 一秒只要零點零五。", "say": "九月底，Google 的 Veo 三點一 Lite 一秒只要零點零五。", "say_for": "23de0f6a47b6", "reveal": 1 }
+        {
+          "id": "2bmt",
+          "text": "可是 Sora 關門前，一秒影片只標零點一美元。",
+          "reveal": 1
+        },
+        {
+          "id": "5kjd",
+          "text": "九月底，Google 的 Veo 3.1 Lite 一秒只要零點零五。",
+          "say": "九月底，Google 的 Veo 三點一 Lite 一秒只要零點零五。",
+          "say_for": "23de0f6a47b6",
+          "reveal": 1
+        }
       ]
     },
     {
       "id": "hook-range",
       "template": "big",
-      "data": { "kicker": "各家 720p 一秒的價錢", "text": "**$0.05** 到 $0.40", "sub": "OpenAI 的原話｜各家每秒價｜付錢前要查的兩個頁面" },
-      "claims": ["c19"],
-      "lines": [{ "id": "jbpw", "text": "這集攤開 OpenAI 的原話、各家一秒的價錢，和付錢前要查的兩個頁面。", "say": "這集攤開 OpenAI 的原話、各家一秒的價錢，和付款前要查的兩個頁面。", "say_for": "c650b3d933a5" }]
+      "data": {
+        "kicker": "各家 720p 一秒的價錢",
+        "text": "**$0.05** 到 $0.40",
+        "sub": "OpenAI 的原話｜各家每秒價｜付錢前要查的兩個頁面"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "jbpw",
+          "text": "這集攤開 OpenAI 的原話、各家一秒的價錢，和付錢前要查的兩個頁面。",
+          "say": "這集攤開 OpenAI 的原話、各家一秒的價錢，和付款前要查的兩個頁面。",
+          "say_for": "c650b3d933a5"
+        }
+      ]
     },
     {
       "id": "timeline",
@@ -114,18 +262,49 @@
       "data": {
         "title": "2026 年，Sora 的最後六個月",
         "steps": [
-          { "title": "3/24\n宣布停止", "detail": "App 與 API\n同一天宣布" },
-          { "title": "4/26\nApp 停止", "detail": "網頁與 App\n離宣布 33 天" },
-          { "title": "9/24\nAPI 關閉", "detail": "開發者用的\nVideos API" },
-          { "title": "匯出期過後", "detail": "資料永久刪除" }
+          {
+            "title": "3/24\n宣布停止",
+            "detail": "App 與 API\n同一天宣布"
+          },
+          {
+            "title": "4/26\nApp 停止",
+            "detail": "網頁與 App\n離宣布 33 天"
+          },
+          {
+            "title": "9/24\nAPI 關閉",
+            "detail": "開發者用的\nVideos API"
+          },
+          {
+            "title": "匯出期過後",
+            "detail": "資料永久刪除"
+          }
         ]
       },
-      "claims": ["c2", "c7"],
+      "claims": [
+        "c2",
+        "c7"
+      ],
       "lines": [
-        { "id": "whhz", "text": "先把日期排出來：三月二十四號，OpenAI 宣布 App 和 API 都要停。", "reveal": 1 },
-        { "id": "tn22", "text": "四月二十六號，網頁和 App 先停，離宣布只有三十三天。", "reveal": 1 },
-        { "id": "tvf2", "text": "九月二十四號，開發者用的 API 也關了。", "reveal": 1 },
-        { "id": "h8a6", "text": "停止之後，資料會永久刪除；如果有最後的匯出期，就等它結束再刪。", "reveal": 1 }
+        {
+          "id": "whhz",
+          "text": "先把日期排出來：三月二十四號，OpenAI 宣布 App 和 API 都要停。",
+          "reveal": 1
+        },
+        {
+          "id": "tn22",
+          "text": "四月二十六號，網頁和 App 先停，離宣布只有三十三天。",
+          "reveal": 1
+        },
+        {
+          "id": "tvf2",
+          "text": "九月二十四號，開發者用的 API 也關了。",
+          "reveal": 1
+        },
+        {
+          "id": "h8a6",
+          "text": "停止之後，資料會永久刪除；如果有最後的匯出期，就等它結束再刪。",
+          "reveal": 1
+        }
       ]
     },
     {
@@ -133,20 +312,57 @@
       "template": "table",
       "data": {
         "title": "OpenAI 棄用頁：Sora 這一段",
-        "columns": ["關閉日", "模型或系統", "建議替代"],
+        "columns": [
+          "關閉日",
+          "模型或系統",
+          "建議替代"
+        ],
         "rows": [
-          ["2026-09-24", "Videos API", "—"],
-          ["2026-09-24", "sora-2", "—"],
-          ["2026-09-24", "sora-2-pro", "—"],
-          ["2026-09-24", "另外 3 個日期版本", "—"]
+          [
+            "2026-09-24",
+            "Videos API",
+            "—"
+          ],
+          [
+            "2026-09-24",
+            "sora-2",
+            "—"
+          ],
+          [
+            "2026-09-24",
+            "sora-2-pro",
+            "—"
+          ],
+          [
+            "2026-09-24",
+            "另外 3 個日期版本",
+            "—"
+          ]
         ]
       },
-      "claims": ["c8"],
+      "claims": [
+        "c8"
+      ],
       "lines": [
-        { "id": "qm8a", "text": "OpenAI 的棄用頁，把 Sora 的 API 和各個版本排在一起。", "reveal": 2 },
-        { "id": "p4jh", "text": "關閉日全都是同一天：九月二十四號。", "reveal": 1 },
-        { "id": "p7mt", "text": "最右邊的建議替代，每一列都只有一條橫線。", "reveal": 1 },
-        { "id": "xvcc", "text": "也就是說，官方沒有指定任何替代。" }
+        {
+          "id": "qm8a",
+          "text": "OpenAI 的棄用頁，把 Sora 的 API 和各個版本排在一起。",
+          "reveal": 2
+        },
+        {
+          "id": "p4jh",
+          "text": "關閉日全都是同一天：九月二十四號。",
+          "reveal": 1
+        },
+        {
+          "id": "p7mt",
+          "text": "最右邊的建議替代，每一列都只有一條橫線。",
+          "reveal": 1
+        },
+        {
+          "id": "xvcc",
+          "text": "也就是說，官方沒有指定任何替代。"
+        }
       ]
     },
     {
@@ -159,12 +375,27 @@
         "translation": "隨著我們聚焦、算力需求成長，Sora 研究團隊會繼續做世界模擬研究，以推進機器人技術……",
         "source": "CBS News，2026 年 3 月 24 日"
       },
-      "claims": ["c2"],
+      "claims": [
+        "c2"
+      ],
       "lines": [
-        { "id": "crbf", "text": "那 OpenAI 自己還說了什麼？" },
-        { "id": "p8yy", "text": "發言人給 CBS News 的聲明，多講了一點。" },
-        { "id": "s884", "text": "隨著公司聚焦，算力需求也在成長。", "reveal": 1 },
-        { "id": "3x7m", "text": "Sora 的研究團隊，會繼續做世界模擬研究，推進機器人技術。" }
+        {
+          "id": "crbf",
+          "text": "那 OpenAI 自己還說了什麼？"
+        },
+        {
+          "id": "p8yy",
+          "text": "發言人給 CBS News 的聲明，多講了一點。"
+        },
+        {
+          "id": "s884",
+          "text": "隨著公司聚焦，算力需求也在成長。",
+          "reveal": 1
+        },
+        {
+          "id": "3x7m",
+          "text": "Sora 的研究團隊，會繼續做世界模擬研究，推進機器人技術。"
+        }
       ]
     },
     {
@@ -173,19 +404,46 @@
       "data": {
         "left": {
           "heading": "OpenAI 自己說的",
-          "points": ["研究的優先順序\nApp 停止公告", "聚焦，算力需求成長\n發言人給 CBS News", "算力先給價值最高的用途\n給 CBS News 的聲明"]
+          "points": [
+            "研究的優先順序\nApp 停止公告",
+            "聚焦，算力需求成長\n發言人給 CBS News",
+            "算力先給價值最高的用途\n給 CBS News 的聲明"
+          ]
         },
         "right": {
           "heading": "媒體報導",
-          "points": ["很吃算力，別的團隊分得少\n路透社，經 The Verge 轉述", "算力不夠，有些事先不做\n財務長受訪，Business Insider", "使用人數從高峰大幅下滑\n華爾街日報，經 TechCrunch"]
+          "points": [
+            "很吃算力，別的團隊分得少\n路透社，經 The Verge 轉述",
+            "算力不夠，有些事先不做\n財務長受訪，Business Insider",
+            "使用人數從高峰大幅下滑\n華爾街日報，經 TechCrunch"
+          ]
         }
       },
-      "claims": ["c1", "c2", "c3", "c9"],
+      "claims": [
+        "c1",
+        "c2",
+        "c3",
+        "c9"
+      ],
       "lines": [
-        { "id": "pcc8", "text": "左邊是 OpenAI 自己說的：研究優先順序、聚焦，和算力的分配。", "reveal": 1 },
-        { "id": "hv6h", "text": "它還說，算力每天都在取捨，優先給價值最高的用途。" },
-        { "id": "ufsf", "text": "右邊是媒體報的：路透社說它很吃算力，別的團隊分得少。", "reveal": 1 },
-        { "id": "5n89", "text": "OpenAI 財務長受訪說算力不夠；華爾街日報說，用的人大幅變少。" }
+        {
+          "id": "pcc8",
+          "text": "左邊是 OpenAI 自己說的：研究優先順序、聚焦，和算力的分配。",
+          "reveal": 1
+        },
+        {
+          "id": "hv6h",
+          "text": "它還說，算力每天都在取捨，優先給價值最高的用途。"
+        },
+        {
+          "id": "ufsf",
+          "text": "右邊是媒體報的：路透社說它很吃算力，別的團隊分得少。",
+          "reveal": 1
+        },
+        {
+          "id": "5n89",
+          "text": "OpenAI 財務長受訪說算力不夠；華爾街日報說，用的人大幅變少。"
+        }
       ]
     },
     {
@@ -193,15 +451,37 @@
       "template": "bullets",
       "data": {
         "title": "官方沒公布的三件事",
-        "items": ["一秒影片的成本", "還有多少人在用", "為什麼不指定替代"],
+        "items": [
+          "一秒影片的成本",
+          "還有多少人在用",
+          "為什麼不指定替代"
+        ],
         "note": "報導裡的成本與人數，這集一個都不引用"
       },
-      "claims": ["c8", "c10"],
+      "claims": [
+        "c8",
+        "c10"
+      ],
       "lines": [
-        { "id": "m4uq", "text": "官方沒公布的有三件事：第一，是一秒影片的成本。", "reveal": 1 },
-        { "id": "xftc", "text": "第二，到底還有多少人在用。", "reveal": 1 },
-        { "id": "r26r", "text": "第三，為什麼不指定一個替代。", "reveal": 1 },
-        { "id": "hr36", "text": "報導裡的成本和人數，我一個都不引用。" }
+        {
+          "id": "m4uq",
+          "text": "官方沒公布的有三件事：第一，是一秒影片的成本。",
+          "reveal": 1
+        },
+        {
+          "id": "xftc",
+          "text": "第二，到底還有多少人在用。",
+          "reveal": 1
+        },
+        {
+          "id": "r26r",
+          "text": "第三，為什麼不指定一個替代。",
+          "reveal": 1
+        },
+        {
+          "id": "hr36",
+          "text": "報導裡的成本和人數，我一個都不引用。"
+        }
       ]
     },
     {
@@ -210,25 +490,60 @@
       "data": {
         "title": "所以是太貴嗎？",
         "messages": [
-          { "side": "right", "name": "你", "text": "所以 Sora 是因為太貴，才被收掉的？" },
-          { "side": "left", "name": "站主", "text": "官方沒這樣說。官方說的是研究優先順序和算力。" }
+          {
+            "side": "right",
+            "name": "你",
+            "text": "所以 Sora 是因為太貴，才被收掉的？"
+          },
+          {
+            "side": "left",
+            "name": "站主",
+            "text": "官方沒這樣說。官方說的是研究優先順序和算力。"
+          }
         ]
       },
-      "claims": ["c1", "c2", "c10"],
+      "claims": [
+        "c1",
+        "c2",
+        "c10"
+      ],
       "lines": [
-        { "id": "xrtu", "text": "你可能會問：所以 Sora 是太貴，才被收掉的嗎？", "reveal": 1 },
-        { "id": "fmz4", "text": "官方沒這樣說；官方講的，是研究優先順序和算力。", "reveal": 1 }
+        {
+          "id": "xrtu",
+          "text": "你可能會問：所以 Sora 是太貴，才被收掉的嗎？",
+          "reveal": 1
+        },
+        {
+          "id": "fmz4",
+          "text": "官方沒這樣說；官方講的，是研究優先順序和算力。",
+          "reveal": 1
+        }
       ]
     },
     {
       "id": "my-reading",
       "template": "big",
-      "data": { "kicker": "我的讀法，不是 OpenAI 說的", "text": "影片每一秒\n都在**燒算力**", "sub": "所以接下來，先看一秒多少錢" },
-      "claims": ["c11"],
+      "data": {
+        "kicker": "我的讀法，不是 OpenAI 說的",
+        "text": "影片每一秒\n都在**燒算力**",
+        "sub": "所以接下來，先看一秒多少錢"
+      },
+      "claims": [
+        "c11"
+      ],
       "lines": [
-        { "id": "hzcz", "text": "接下來是我的讀法，不是 OpenAI 說的。" },
-        { "id": "n7bn", "text": "影片這門生意，每生成一秒，都要付一次算力。" },
-        { "id": "r2my", "text": "那一秒到底多少錢？" }
+        {
+          "id": "hzcz",
+          "text": "接下來是我的讀法，不是 OpenAI 說的。"
+        },
+        {
+          "id": "n7bn",
+          "text": "影片這門生意，每生成一秒，都要付一次算力。"
+        },
+        {
+          "id": "r2my",
+          "text": "那一秒到底多少錢？"
+        }
       ]
     },
     {
@@ -239,13 +554,26 @@
         "title": "四種寫法，換成同一個數字",
         "language": "算式",
         "code": "直接標每秒：Veo 3.1 Lite（720p 有聲）= $0.05\ntoken：Gemini Omni Flash（720p）\n  5,792 token × $17.50 ÷ 100 萬 ≈ $0.10\n點數：Runway Gen-4.5（1280:720）\n  12 點 × $0.01 = $0.12\n單位：Kling 3.0（720p 有聲）\n  0.9 單位 × $0.14 = $0.126\n一支 8 秒 = 每秒 × 8",
-        "highlight": [8],
+        "highlight": [
+          8
+        ],
         "caption": "每秒美元｜2026 年 9 月 28 日官方價"
       },
-      "claims": ["c5", "c12", "c13", "c14"],
+      "claims": [
+        "c5",
+        "c12",
+        "c13",
+        "c14"
+      ],
       "lines": [
-        { "id": "jvfw", "text": "價目表有四種寫法：直接標每秒、用 token、用點數、用單位。" },
-        { "id": "k98p", "text": "全部換成一秒幾美元，再乘以八，就是一支八秒的價錢。" }
+        {
+          "id": "jvfw",
+          "text": "價目表有四種寫法：直接標每秒、用 token、用點數、用單位。"
+        },
+        {
+          "id": "k98p",
+          "text": "全部換成一秒幾美元，再乘以八，就是一支八秒的價錢。"
+        }
       ]
     },
     {
@@ -253,47 +581,184 @@
       "template": "table",
       "data": {
         "title": "Google｜2026 年 9 月 28 日官方價",
-        "columns": ["模型", "條件", "每秒", "一支 8 秒"],
+        "columns": [
+          "模型",
+          "條件",
+          "每秒",
+          "一支 8 秒"
+        ],
         "rows": [
-          ["Sora 2（已停）", "720p，Standard 價｜OpenAI 官方價目頁\n2026 年 8 月存檔", "$0.10", "$0.80"],
-          ["Veo 3.1", "720p 或 1080p，有聲", "$0.40", "$3.20"],
-          ["Veo 3.1 Fast", "720p，有聲", "$0.10", "$0.80"],
-          ["Veo 3.1 Lite", "720p，有聲", "$0.05", "$0.40"],
-          ["Gemini Omni Flash", "720p，token 換算", "≈ $0.10", "≈ $0.81"]
+          [
+            "Sora 2（已停）",
+            "720p，Standard 價｜OpenAI 官方價目頁\n2026 年 8 月存檔",
+            "$0.10",
+            "$0.80"
+          ],
+          [
+            "Veo 3.1",
+            "720p 或 1080p，有聲",
+            "$0.40",
+            "$3.20"
+          ],
+          [
+            "Veo 3.1 Fast",
+            "720p，有聲",
+            "$0.10",
+            "$0.80"
+          ],
+          [
+            "Veo 3.1 Lite",
+            "720p，有聲",
+            "$0.05",
+            "$0.40"
+          ],
+          [
+            "Gemini Omni Flash",
+            "720p，token 換算",
+            "≈ $0.10",
+            "≈ $0.81"
+          ]
         ],
         "highlight": 0
       },
-      "claims": ["c4", "c5", "c6", "c12"],
+      "claims": [
+        "c4",
+        "c5",
+        "c6",
+        "c12"
+      ],
       "lines": [
-        { "id": "7crj", "text": "先放 Sora 當年的價：720p 一秒零點一美元。", "say": "先放 Sora 當年的價：七二零 P 一秒零點一美元。", "say_for": "ce6516078634", "reveal": 1 },
-        { "id": "46dv", "text": "Google 的 Veo 3.1，一秒零點四美元，一支八秒要三點二美元。", "say": "Google 的 Veo 三點一，一秒零點四美元，一支八秒要三點二美元。", "say_for": "0636b8f8bbf6", "reveal": 1 },
-        { "id": "qhzt", "text": "Veo 3.1 Fast 一秒零點一，和 Sora 一樣。", "say": "Veo 三點一 Fast 一秒零點一，和 Sora 一樣。", "say_for": "b69f9609cc24", "reveal": 1 },
-        { "id": "ftpn", "text": "Veo 3.1 Lite 一秒零點零五，一支八秒才零點四美元。", "say": "Veo 三點一 Lite 一秒零點零五，一支八秒才零點四美元。", "say_for": "a3f9ec47223c", "reveal": 1 },
-        { "id": "r4w6", "text": "Gemini Omni Flash 用 token 計價，換算下來一秒大約零點一。", "say": "Gemini 的 Omni Flash，用 token 計價，換算下來一秒大約零點一。", "say_for": "5c9abf9a1e6e", "reveal": 1 }
+        {
+          "id": "7crj",
+          "text": "先放 Sora 當年的價：720p 一秒零點一美元。",
+          "say": "先放 Sora 當年的價：七二零 P 一秒零點一美元。",
+          "say_for": "ce6516078634",
+          "reveal": 1
+        },
+        {
+          "id": "46dv",
+          "text": "Google 的 Veo 3.1，一秒零點四美元，一支八秒要三點二美元。",
+          "say": "Google 的 Veo 三點一，一秒零點四美元，一支八秒要三點二美元。",
+          "say_for": "0636b8f8bbf6",
+          "reveal": 1
+        },
+        {
+          "id": "qhzt",
+          "text": "Veo 3.1 Fast 一秒零點一，和 Sora 一樣。",
+          "say": "Veo 三點一 Fast 一秒零點一，和 Sora 一樣。",
+          "say_for": "b69f9609cc24",
+          "reveal": 1
+        },
+        {
+          "id": "ftpn",
+          "text": "Veo 3.1 Lite 一秒零點零五，一支八秒才零點四美元。",
+          "say": "Veo 三點一 Lite 一秒零點零五，一支八秒才零點四美元。",
+          "say_for": "a3f9ec47223c",
+          "reveal": 1
+        },
+        {
+          "id": "r4w6",
+          "text": "Gemini Omni Flash 用 token 計價，換算下來一秒大約零點一。",
+          "say": "Gemini 的 Omni Flash，用 token 計價，換算下來一秒大約零點一。",
+          "say_for": "5c9abf9a1e6e",
+          "reveal": 1
+        }
       ]
     },
     {
       "id": "table-others",
       "template": "table",
       "data": {
-        "columns": ["其他家｜2026 年 9 月 28 日官方價", "條件", "每秒", "一支 8 秒"],
+        "columns": [
+          "其他家｜2026 年 9 月 28 日官方價",
+          "條件",
+          "每秒",
+          "一支 8 秒"
+        ],
         "rows": [
-          ["Kling 3.0", "720p，原生音訊", "$0.126", "≈ $1.01"],
-          ["Seedance 2.0", "720p 16:9，token 換算", "≈ $0.15", "≈ $1.21"],
-          ["Grok Imagine Video 1.5", "720p，預設有聲", "$0.14", "$1.12"],
-          ["MiniMax-H3", "768P", "$0.08", "$0.64"],
-          ["Runway Gen-4.5", "1280:720，每秒 12 點", "$0.12", "$0.96"],
-          ["Higgsfield", "數字由程式載入，讀不到", "以官網為準", "—"]
+          [
+            "Kling 3.0",
+            "720p，原生音訊",
+            "$0.126",
+            "≈ $1.01"
+          ],
+          [
+            "Seedance 2.0",
+            "720p 16:9，token 換算",
+            "≈ $0.15",
+            "≈ $1.21"
+          ],
+          [
+            "Grok Imagine Video 1.5",
+            "720p，預設有聲",
+            "$0.14",
+            "$1.12"
+          ],
+          [
+            "MiniMax-H3",
+            "768P",
+            "$0.08",
+            "$0.64"
+          ],
+          [
+            "Runway Gen-4.5",
+            "1280:720，每秒 12 點",
+            "$0.12",
+            "$0.96"
+          ],
+          [
+            "Higgsfield",
+            "數字由程式載入，讀不到",
+            "以官網為準",
+            "—"
+          ]
         ]
       },
-      "claims": ["c13", "c14", "c15", "c16", "c17", "c18"],
+      "claims": [
+        "c13",
+        "c14",
+        "c15",
+        "c16",
+        "c17",
+        "c18"
+      ],
       "lines": [
-        { "id": "pnnk", "text": "其他家一樣換算：Kling 3.0 有聲，一秒大約零點一三美元。", "say": "其他家一樣換算：Kling 三點零有聲，一秒大約零點一三美元。", "say_for": "6aed5db57db3", "reveal": 1 },
-        { "id": "m6en", "text": "BytePlus 賣的 Seedance 2.0，用 token 算，一秒大約零點一五。", "say": "BytePlus 賣的 Seedance 二點零，用 token 算，一秒大約零點一五。", "say_for": "dbb9391aa65f", "reveal": 1 },
-        { "id": "ctak", "text": "xAI 的 Grok Imagine 1.5，720p 一秒零點一四美元。", "say": "xAI 的 Grok Imagine 一點五，七二零 P 一秒零點一四美元。", "say_for": "2bf00e6c4557", "reveal": 1 },
-        { "id": "gkn6", "text": "MiniMax 的 H3，一秒零點零八美元。", "reveal": 1 },
-        { "id": "uxum", "text": "Runway 自家的模型用點數算，一秒零點一二美元。", "reveal": 1 },
-        { "id": "bhxq", "text": "Higgsfield 的價目頁讀不到數字，我就寫以官網為準，不猜。", "reveal": 1 }
+        {
+          "id": "pnnk",
+          "text": "其他家一樣換算：Kling 3.0 有聲，一秒大約零點一三美元。",
+          "say": "其他家一樣換算：Kling 三點零有聲，一秒大約零點一三美元。",
+          "say_for": "6aed5db57db3",
+          "reveal": 1
+        },
+        {
+          "id": "m6en",
+          "text": "BytePlus 賣的 Seedance 2.0，用 token 算，一秒大約零點一五。",
+          "say": "BytePlus 賣的 Seedance 二點零，用 token 算，一秒大約零點一五。",
+          "say_for": "dbb9391aa65f",
+          "reveal": 1
+        },
+        {
+          "id": "ctak",
+          "text": "xAI 的 Grok Imagine 1.5，720p 一秒零點一四美元。",
+          "say": "xAI 的 Grok Imagine 一點五，七二零 P 一秒零點一四美元。",
+          "say_for": "2bf00e6c4557",
+          "reveal": 1
+        },
+        {
+          "id": "gkn6",
+          "text": "MiniMax 的 H3，一秒零點零八美元。",
+          "reveal": 1
+        },
+        {
+          "id": "uxum",
+          "text": "Runway 自家的模型用點數算，一秒零點一二美元。",
+          "reveal": 1
+        },
+        {
+          "id": "bhxq",
+          "text": "Higgsfield 的價目頁讀不到數字，我就寫以官網為準，不猜。",
+          "reveal": 1
+        }
       ]
     },
     {
@@ -302,19 +767,62 @@
       "data": {
         "title": "表上的一秒，差多少",
         "stats": [
-          { "value": "$0.05", "label": "最便宜", "note": "Veo 3.1 Lite\n720p 有聲" },
-          { "value": "$0.10", "label": "Sora 2 當年", "note": "720p，Standard 價\n已停止" },
-          { "value": "$0.40", "label": "最貴", "note": "Veo 3.1\n720p 或 1080p 有聲" },
-          { "value": "8 倍", "label": "差距", "note": "同樣 720p 有聲" }
+          {
+            "value": "$0.05",
+            "label": "最便宜",
+            "note": "Veo 3.1 Lite\n720p 有聲"
+          },
+          {
+            "value": "$0.10",
+            "label": "Sora 2 當年",
+            "note": "720p，Standard 價\n已停止"
+          },
+          {
+            "value": "$0.40",
+            "label": "最貴",
+            "note": "Veo 3.1\n720p 或 1080p 有聲"
+          },
+          {
+            "value": "8 倍",
+            "label": "差距",
+            "note": "同樣 720p 有聲"
+          }
         ],
         "source": "每秒美元｜2026 年 9 月 28 日官方價；Sora 2 為 OpenAI 官方價目頁、2026 年 8 月存檔"
       },
-      "claims": ["c4", "c5", "c6", "c19"],
+      "claims": [
+        "c4",
+        "c5",
+        "c6",
+        "c19"
+      ],
       "lines": [
-        { "id": "qn2a", "text": "整理一下：表上最便宜的，是 Veo 3.1 Lite 的零點零五美元。", "say": "整理一下：表上最便宜的，是 Veo 三點一 Lite 的零點零五美元。", "say_for": "d67407bf3dc2", "reveal": 1 },
-        { "id": "r5wh", "text": "Sora 當年的零點一，落在中間；以我來看，並不貴。", "reveal": 1 },
-        { "id": "7iae", "text": "最貴的是 Veo 3.1，一秒零點四美元。", "say": "最貴的是 Veo 三點一，一秒零點四美元。", "say_for": "6cd97585f77c", "reveal": 1 },
-        { "id": "u9xn", "text": "同樣 720p 有聲，差了八倍。", "say": "同樣七二零 P 有聲，差了八倍。", "say_for": "ccca91895a7c", "reveal": 1 }
+        {
+          "id": "qn2a",
+          "text": "整理一下：表上最便宜的，是 Veo 3.1 Lite 的零點零五美元。",
+          "say": "整理一下：表上最便宜的，是 Veo 三點一 Lite 的零點零五美元。",
+          "say_for": "d67407bf3dc2",
+          "reveal": 1
+        },
+        {
+          "id": "r5wh",
+          "text": "Sora 當年的零點一，落在中間；以我來看，並不貴。",
+          "reveal": 1
+        },
+        {
+          "id": "7iae",
+          "text": "最貴的是 Veo 3.1，一秒零點四美元。",
+          "say": "最貴的是 Veo 三點一，一秒零點四美元。",
+          "say_for": "6cd97585f77c",
+          "reveal": 1
+        },
+        {
+          "id": "u9xn",
+          "text": "同樣 720p 有聲，差了八倍。",
+          "say": "同樣七二零 P 有聲，差了八倍。",
+          "say_for": "ccca91895a7c",
+          "reveal": 1
+        }
       ]
     },
     {
@@ -323,18 +831,56 @@
       "data": {
         "title": "條件一換，一秒就變價",
         "stats": [
-          { "value": "$0.10\n→ $0.30", "label": "Veo 3.1 Fast", "note": "720p → 4k，都有聲" },
-          { "value": "$0.084\n→ $0.126", "label": "Kling 3.0，720p", "note": "無聲 → 原生音訊" },
-          { "value": "$0.05\n→ $0.08", "label": "Veo 3.1 Lite", "note": "720p → 1080p\n1080p 只能選 8 秒" }
+          {
+            "value": "$0.10\n→ $0.30",
+            "label": "Veo 3.1 Fast",
+            "note": "720p → 4k，都有聲"
+          },
+          {
+            "value": "$0.084\n→ $0.126",
+            "label": "Kling 3.0，720p",
+            "note": "無聲 → 原生音訊"
+          },
+          {
+            "value": "$0.05\n→ $0.08",
+            "label": "Veo 3.1 Lite",
+            "note": "720p → 1080p\n1080p 只能選 8 秒"
+          }
         ],
         "source": "每秒美元｜2026 年 9 月 28 日官方價"
       },
-      "claims": ["c5", "c6", "c14", "c24"],
+      "claims": [
+        "c5",
+        "c6",
+        "c14",
+        "c24"
+      ],
       "lines": [
-        { "id": "pu77", "text": "條件一換，價錢就變：Veo 3.1 Fast 換成 4k，一秒變零點三美元。", "say": "條件一換，價錢就變：Veo 三點一 Fast 換成四 K，一秒變零點三美元。", "say_for": "150665d1e014", "reveal": 1 },
-        { "id": "cesc", "text": "Kling 3.0 關掉聲音，一秒便宜三分之一。", "say": "Kling 三點零關掉聲音，一秒便宜三分之一。", "say_for": "0a00c40cdca5", "reveal": 1 },
-        { "id": "rhah", "text": "Veo 3.1 Lite 拉到 1080p，一秒零點零八，而且只能選八秒。", "say": "Veo 三點一 Lite 拉到一零八零 P，一秒零點零八，而且只能選八秒。", "say_for": "8e3d2dcdb7c3", "reveal": 1 },
-        { "id": "r7yj", "text": "所以價錢旁邊，都要寫下解析度、聲音和秒數。" }
+        {
+          "id": "pu77",
+          "text": "條件一換，價錢就變：Veo 3.1 Fast 換成 4k，一秒變零點三美元。",
+          "say": "條件一換，價錢就變：Veo 三點一 Fast 換成四 K，一秒變零點三美元。",
+          "say_for": "150665d1e014",
+          "reveal": 1
+        },
+        {
+          "id": "cesc",
+          "text": "Kling 3.0 關掉聲音，一秒便宜三分之一。",
+          "say": "Kling 三點零關掉聲音，一秒便宜三分之一。",
+          "say_for": "0a00c40cdca5",
+          "reveal": 1
+        },
+        {
+          "id": "rhah",
+          "text": "Veo 3.1 Lite 拉到 1080p，一秒零點零八，而且只能選八秒。",
+          "say": "Veo 三點一 Lite 拉到一零八零 P，一秒零點零八，而且只能選八秒。",
+          "say_for": "8e3d2dcdb7c3",
+          "reveal": 1
+        },
+        {
+          "id": "r7yj",
+          "text": "所以價錢旁邊，都要寫下解析度、聲音和秒數。"
+        }
       ]
     },
     {
@@ -342,14 +888,45 @@
       "template": "bullets",
       "data": {
         "title": "一支 8 秒，只是比較用的長度",
-        "items": ["Veo 3.1：4、6、8 秒；1080p 起只能 8 秒", "Grok Imagine 1.5：1 到 15 秒", "Runway Gen-4.5：2 到 10 秒", "其他幾家：以原廠官網為準"]
+        "items": [
+          "Veo 3.1：4、6、8 秒；1080p 起只能 8 秒",
+          "Grok Imagine 1.5：1 到 15 秒",
+          "Runway Gen-4.5：2 到 10 秒",
+          "Seedance 2.0：4 到 15 秒；\n其他以官網為準"
+        ]
       },
-      "claims": ["c13", "c16", "c24"],
+      "claims": [
+        "c13",
+        "c16",
+        "c24"
+      ],
       "lines": [
-        { "id": "wcet", "text": "一支八秒只是拿來比較的長度；Veo 3.1 可以選四、六、八秒。", "say": "一支八秒只是拿來比較的長度；Veo 三點一，可以選四、六、八秒。", "say_for": "9098bd29d52c", "reveal": 1 },
-        { "id": "32i6", "text": "Grok Imagine 1.5 可以選一到十五秒。", "say": "Grok Imagine 一點五，可以選一到十五秒。", "say_for": "b85310b1f839", "reveal": 1 },
-        { "id": "p956", "text": "Runway 自家的模型，是二到十秒。", "reveal": 1 },
-        { "id": "ux5y", "text": "其他家的秒數，我在原廠頁沒讀到，就以官網為準。", "reveal": 1 }
+        {
+          "id": "wcet",
+          "text": "一支八秒只是拿來比較的長度；Veo 3.1 可以選四、六、八秒。",
+          "say": "一支八秒只是拿來比較的長度；Veo 三點一，可以選四、六、八秒。",
+          "say_for": "9098bd29d52c",
+          "reveal": 1
+        },
+        {
+          "id": "32i6",
+          "text": "Grok Imagine 1.5 可以選一到十五秒。",
+          "say": "Grok Imagine 一點五，可以選一到十五秒。",
+          "say_for": "b85310b1f839",
+          "reveal": 1
+        },
+        {
+          "id": "p956",
+          "text": "Runway 自家的模型，是二到十秒。",
+          "reveal": 1
+        },
+        {
+          "id": "ux5y",
+          "text": "Seedance 2.0 是四到十五秒；其他家，就以官網為準。",
+          "reveal": 1,
+          "say": "Seedance 二點零是四到十五秒；其他家，就以官網為準。",
+          "say_for": "4b837c9d47d9"
+        }
       ]
     },
     {
@@ -357,26 +934,71 @@
       "template": "compare",
       "data": {
         "title": "同一個模型，在哪買差很多",
-        "left": { "heading": "原廠，每秒", "points": ["Seedance 2.0：約 $0.15\n720p，BytePlus", "Veo 3.1 Fast 有聲：$0.10\n720p，Gemini API"] },
-        "right": { "heading": "Runway 轉售，每秒", "points": ["Seedance 2.0：36 點＝$0.36\n480p 或 720p", "Veo 3.1 Fast 有聲：15 點＝$0.15\n頁面沒寫解析度"] },
+        "left": {
+          "heading": "原廠，每秒",
+          "points": [
+            "Seedance 2.0：約 $0.15\n720p，BytePlus",
+            "Veo 3.1 Fast 有聲：$0.10\n720p，Gemini API"
+          ]
+        },
+        "right": {
+          "heading": "Runway 轉售，每秒",
+          "points": [
+            "Seedance 2.0：36 點＝$0.36\n480p 或 720p",
+            "Veo 3.1 Fast 有聲：15 點＝$0.15\n頁面沒寫解析度"
+          ]
+        },
         "verdict": "Runway 1 點 $0.01｜2026 年 9 月 28 日官方價"
       },
-      "claims": ["c6", "c13", "c15", "c20"],
+      "claims": [
+        "c6",
+        "c13",
+        "c15",
+        "c20"
+      ],
       "lines": [
-        { "id": "8zb5", "text": "同一個模型，在哪裡買，價錢也有差。" },
-        { "id": "cddp", "text": "原廠的 Seedance 一秒約零點一五美元，Veo 3.1 Fast 零點一。", "say": "原廠的 Seedance 一秒約零點一五美元，Veo 三點一 Fast 零點一。", "say_for": "1e24cf1dd0fd", "reveal": 1 },
-        { "id": "stcw", "text": "放到 Runway 上轉售，變成零點三六和零點一五。", "reveal": 1 },
-        { "id": "abiv", "text": "轉售的好處，是一個帳號就能接很多家；我只比標價，不評好壞。" }
+        {
+          "id": "8zb5",
+          "text": "同一個模型，在哪裡買，價錢也有差。"
+        },
+        {
+          "id": "cddp",
+          "text": "原廠的 Seedance 一秒約零點一五美元，Veo 3.1 Fast 零點一。",
+          "say": "原廠的 Seedance 一秒約零點一五美元，Veo 三點一 Fast 零點一。",
+          "say_for": "1e24cf1dd0fd",
+          "reveal": 1
+        },
+        {
+          "id": "stcw",
+          "text": "放到 Runway 上轉售，變成零點三六和零點一五。",
+          "reveal": 1
+        },
+        {
+          "id": "abiv",
+          "text": "轉售的好處，是一個帳號就能接很多家；我只比標價，不評好壞。"
+        }
       ]
     },
     {
       "id": "article-cta",
       "template": "cta",
-      "data": { "kicker": "只打算訂閱的話", "title": "AI 影片工具比較", "sub": "各家訂閱方案每月能生幾秒｜連結在說明欄第一行" },
-      "claims": ["c21"],
+      "data": {
+        "kicker": "只打算訂閱的話",
+        "title": "AI 影片工具比較",
+        "sub": "各家訂閱方案每月能生幾秒｜連結在說明欄第一行"
+      },
+      "claims": [
+        "c21"
+      ],
       "lines": [
-        { "id": "yhr3", "text": "只想訂閱的話，每月額度能生成幾秒，各家差很多。" },
-        { "id": "nkc3", "text": "我整理成一篇 AI 影片工具比較，連結在說明欄第一行。" }
+        {
+          "id": "yhr3",
+          "text": "只想訂閱的話，每月額度能生成幾秒，各家差很多。"
+        },
+        {
+          "id": "nkc3",
+          "text": "我整理成一篇 AI 影片工具比較，連結在說明欄第一行。"
+        }
       ]
     },
     {
@@ -386,18 +1008,48 @@
       "data": {
         "title": "一支 60 秒短片，要生成幾次",
         "steps": [
-          { "title": "60 秒", "detail": "一支短片" },
-          { "title": "8 支", "detail": "每支 8 秒\n60 ÷ 8 = 7.5" },
-          { "title": "三支留一支", "detail": "假設\n換成你自己的比例" },
-          { "title": "生成 24 次", "detail": "8 支 × 3" }
+          {
+            "title": "60 秒",
+            "detail": "一支短片"
+          },
+          {
+            "title": "8 支",
+            "detail": "每支 8 秒\n60 ÷ 8 = 7.5"
+          },
+          {
+            "title": "三支留一支",
+            "detail": "假設\n換成你自己的比例"
+          },
+          {
+            "title": "生成 24 次",
+            "detail": "8 支 × 3"
+          }
         ]
       },
-      "claims": ["c22"],
+      "claims": [
+        "c22"
+      ],
       "lines": [
-        { "id": "76zs", "text": "換個問法：做一支六十秒的短片，素材要花多少？", "reveal": 1 },
-        { "id": "d23s", "text": "六十除以八是七點五，所以要八支素材，每支八秒。", "reveal": 1 },
-        { "id": "dsic", "text": "再假設三支留一支；這是假設，請換成你自己的比例。", "reveal": 1 },
-        { "id": "vv6q", "text": "八支乘以三，一共要生成二十四次。", "reveal": 1 }
+        {
+          "id": "76zs",
+          "text": "換個問法：做一支六十秒的短片，素材要花多少？",
+          "reveal": 1
+        },
+        {
+          "id": "d23s",
+          "text": "六十除以八是七點五，所以要八支素材，每支八秒。",
+          "reveal": 1
+        },
+        {
+          "id": "dsic",
+          "text": "再假設三支留一支；這是假設，請換成你自己的比例。",
+          "reveal": 1
+        },
+        {
+          "id": "vv6q",
+          "text": "八支乘以三，一共要生成二十四次。",
+          "reveal": 1
+        }
       ]
     },
     {
@@ -409,12 +1061,29 @@
         "translation": "只有影片成功生成，才會收費。",
         "source": "Gemini API 官方價目頁，2026 年 9 月 28 日"
       },
-      "claims": ["c14", "c15", "c23"],
+      "claims": [
+        "c14",
+        "c15",
+        "c23"
+      ],
       "lines": [
-        { "id": "7dbu", "text": "為什麼二十四次都要付錢？" },
-        { "id": "tuki", "text": "Google、Kling 和 BytePlus 的價目頁，寫法都差不多。" },
-        { "id": "dp63", "text": "只有成功生成的影片，才收費。", "reveal": 1 },
-        { "id": "en7w", "text": "所以成功生成、但你不想用的那兩支，照樣算錢。" }
+        {
+          "id": "7dbu",
+          "text": "為什麼二十四次都要付錢？"
+        },
+        {
+          "id": "tuki",
+          "text": "Google、Kling 和 BytePlus 的價目頁，寫法都差不多。"
+        },
+        {
+          "id": "dp63",
+          "text": "只有成功生成的影片，才收費。",
+          "reveal": 1
+        },
+        {
+          "id": "en7w",
+          "text": "所以成功生成、但你不想用的那兩支，照樣算錢。"
+        }
       ]
     },
     {
@@ -422,21 +1091,83 @@
       "template": "table",
       "data": {
         "title": "素材費｜2026 年 9 月 28 日官方價",
-        "columns": ["模型", "條件", "一支 8 秒", "× 24 次", "每秒能用的素材"],
+        "columns": [
+          "模型",
+          "條件",
+          "一支 8 秒",
+          "× 24 次",
+          "每秒能用的素材"
+        ],
         "rows": [
-          ["Veo 3.1 Lite", "720p 有聲", "$0.40", "$9.60", "$0.15"],
-          ["Veo 3.1 Fast", "720p 有聲", "$0.80", "$19.20", "$0.30"],
-          ["Kling 3.0", "720p 原生音訊", "≈ $1.01", "≈ $24.19", "≈ $0.38"],
-          ["Veo 3.1", "720p 或 1080p 有聲", "$3.20", "$76.80", "$1.20"]
+          [
+            "Veo 3.1 Lite",
+            "720p 有聲",
+            "$0.40",
+            "$9.60",
+            "$0.15"
+          ],
+          [
+            "Veo 3.1 Fast",
+            "720p 有聲",
+            "$0.80",
+            "$19.20",
+            "$0.30"
+          ],
+          [
+            "Kling 3.0",
+            "720p 原生音訊",
+            "≈ $1.01",
+            "≈ $24.19",
+            "≈ $0.38"
+          ],
+          [
+            "Veo 3.1",
+            "720p 或 1080p 有聲",
+            "$3.20",
+            "$76.80",
+            "$1.20"
+          ]
         ]
       },
-      "claims": ["c5", "c6", "c14", "c22"],
+      "claims": [
+        "c5",
+        "c6",
+        "c14",
+        "c22"
+      ],
       "lines": [
-        { "id": "ykna", "text": "照官方價，Veo 3.1 Lite 生成二十四次，不到十美元。", "say": "照官方價，Veo 三點一 Lite 生成二十四次，不到十美元。", "say_for": "bd38d921f56f", "reveal": 1 },
-        { "id": "h3mi", "text": "Veo 3.1 Fast 大約十九美元。", "say": "Veo 三點一 Fast 大約十九美元。", "say_for": "8d54c13d4e02", "reveal": 1 },
-        { "id": "na3m", "text": "Kling 3.0 有聲，大約二十四美元。", "say": "Kling 三點零有聲，大約二十四美元。", "say_for": "3fb5adb0146e", "reveal": 1 },
-        { "id": "84pm", "text": "最貴的 Veo 3.1，將近七十七美元。", "say": "最貴的 Veo 三點一，將近七十七美元。", "say_for": "4ed9e2eb843b", "reveal": 1 },
-        { "id": "fwd5", "text": "同一支六十秒的短片，素材費差了八倍，差在你選哪個模型。" }
+        {
+          "id": "ykna",
+          "text": "照官方價，Veo 3.1 Lite 生成二十四次，不到十美元。",
+          "say": "照官方價，Veo 三點一 Lite 生成二十四次，不到十美元。",
+          "say_for": "bd38d921f56f",
+          "reveal": 1
+        },
+        {
+          "id": "h3mi",
+          "text": "Veo 3.1 Fast 大約十九美元。",
+          "say": "Veo 三點一 Fast 大約十九美元。",
+          "say_for": "8d54c13d4e02",
+          "reveal": 1
+        },
+        {
+          "id": "na3m",
+          "text": "Kling 3.0 有聲，大約二十四美元。",
+          "say": "Kling 三點零有聲，大約二十四美元。",
+          "say_for": "3fb5adb0146e",
+          "reveal": 1
+        },
+        {
+          "id": "84pm",
+          "text": "最貴的 Veo 3.1，將近七十七美元。",
+          "say": "最貴的 Veo 三點一，將近七十七美元。",
+          "say_for": "4ed9e2eb843b",
+          "reveal": 1
+        },
+        {
+          "id": "fwd5",
+          "text": "同一支六十秒的短片，素材費差了八倍，差在你選哪個模型。"
+        }
       ]
     },
     {
@@ -445,16 +1176,41 @@
       "data": {
         "title": "每一秒能用的素材，多少錢",
         "stats": [
-          { "value": "$0.15", "label": "Veo 3.1 Lite", "note": "$0.05 × 3" },
-          { "value": "$1.20", "label": "Veo 3.1", "note": "$0.40 × 3" }
+          {
+            "value": "$0.15",
+            "label": "Veo 3.1 Lite",
+            "note": "$0.05 × 3"
+          },
+          {
+            "value": "$1.20",
+            "label": "Veo 3.1",
+            "note": "$0.40 × 3"
+          }
         ],
         "source": "三支留一支是假設，換成你自己的比例｜2026 年 9 月 28 日官方價"
       },
-      "claims": ["c5", "c6", "c22"],
+      "claims": [
+        "c5",
+        "c6",
+        "c22"
+      ],
       "lines": [
-        { "id": "vrhs", "text": "換成每一秒能用的素材，Lite 是零點一五美元。", "reveal": 1 },
-        { "id": "6bey", "text": "Veo 3.1 則是一點二美元，因為三支留一支，等於價錢乘以三。", "say": "Veo 三點一則是一點二美元，因為三支留一支，等於價錢乘以三。", "say_for": "4364389b4aab", "reveal": 1 },
-        { "id": "hmnm", "text": "如果你十支才留一支，就乘以十。" }
+        {
+          "id": "vrhs",
+          "text": "換成每一秒能用的素材，Lite 是零點一五美元。",
+          "reveal": 1
+        },
+        {
+          "id": "6bey",
+          "text": "Veo 3.1 則是一點二美元，因為三支留一支，等於價錢乘以三。",
+          "say": "Veo 三點一則是一點二美元，因為三支留一支，等於價錢乘以三。",
+          "say_for": "4364389b4aab",
+          "reveal": 1
+        },
+        {
+          "id": "hmnm",
+          "text": "如果你十支才留一支，就乘以十。"
+        }
       ]
     },
     {
@@ -464,19 +1220,54 @@
       "data": {
         "title": "付錢前：兩個頁面，一個提醒",
         "steps": [
-          { "title": "價目表", "detail": "換成每秒、一支 8 秒\n寫下解析度、聲音、秒數" },
-          { "title": "棄用頁", "detail": "最短通知期\n有沒有指定替代\nApp 看說明中心" },
-          { "title": "匯出提醒", "detail": "存到自己的硬碟\n行事曆每季一次" }
+          {
+            "title": "價目表",
+            "detail": "換成每秒、一支 8 秒\n寫下解析度、聲音、秒數"
+          },
+          {
+            "title": "棄用頁",
+            "detail": "最短通知期\n有沒有指定替代\nApp 看說明中心"
+          },
+          {
+            "title": "匯出提醒",
+            "detail": "存到自己的硬碟\n行事曆每季一次"
+          }
         ]
       },
-      "claims": ["c11", "c26"],
+      "claims": [
+        "c11",
+        "c26"
+      ],
       "lines": [
-        { "id": "ivpu", "text": "那付錢之前，該先打開哪兩個頁面？", "say": "那付款之前，該先打開哪兩個頁面？", "say_for": "6c1679b30dee" },
-        { "id": "gcva", "text": "我第一個打開的，是價目表。", "reveal": 1 },
-        { "id": "iysq", "text": "換成一秒多少、一支八秒多少，旁邊寫下解析度、聲音和秒數。" },
-        { "id": "nfcf", "text": "第二個是棄用頁；用 App 的人，就看說明中心講停止服務的那一篇。", "reveal": 1 },
-        { "id": "5zif", "text": "記下最短給多久通知，有沒有指定替代。" },
-        { "id": "833q", "text": "最後在行事曆設個提醒，每一季把素材匯出到自己的硬碟。", "reveal": 1 }
+        {
+          "id": "ivpu",
+          "text": "那付錢之前，該先打開哪兩個頁面？",
+          "say": "那付款之前，該先打開哪兩個頁面？",
+          "say_for": "6c1679b30dee"
+        },
+        {
+          "id": "gcva",
+          "text": "我第一個打開的，是價目表。",
+          "reveal": 1
+        },
+        {
+          "id": "iysq",
+          "text": "換成一秒多少、一支八秒多少，旁邊寫下解析度、聲音和秒數。"
+        },
+        {
+          "id": "nfcf",
+          "text": "第二個是棄用頁；用 App 的人，就看說明中心講停止服務的那一篇。",
+          "reveal": 1
+        },
+        {
+          "id": "5zif",
+          "text": "記下最短給多久通知，有沒有指定替代。"
+        },
+        {
+          "id": "833q",
+          "text": "最後在行事曆設個提醒，每一季把素材匯出到自己的硬碟。",
+          "reveal": 1
+        }
       ]
     },
     {
@@ -484,20 +1275,71 @@
       "template": "table",
       "data": {
         "title": "官方棄用頁｜2026 年 9 月 28 日",
-        "columns": ["模型", "通知或上線", "關閉日", "建議替代"],
+        "columns": [
+          "模型",
+          "通知或上線",
+          "關閉日",
+          "建議替代"
+        ],
         "rows": [
-          ["Sora 2 與 Videos API", "2026-03-24 通知", "2026-09-24", "—"],
-          ["Veo 3.0", "2025-09-09 上線", "2026-06-30", "Veo 3.1 預覽版\n或雲端正式版"],
-          ["Gemini Omni Flash\n預覽版", "2026-06-30 上線", "2026-09-30", "Gemini Omni 1.1 Flash\n正式版"],
-          ["Veo 3.1、Fast、Lite\n都是預覽版", "上線中", "尚未公布", "還沒棄用"]
+          [
+            "Sora 2 與 Videos API",
+            "2026-03-24 通知",
+            "2026-09-24",
+            "—"
+          ],
+          [
+            "Veo 3.0",
+            "2025-09-09 上線",
+            "2026-06-30",
+            "Veo 3.1 預覽版\n或雲端正式版"
+          ],
+          [
+            "Gemini Omni Flash\n預覽版",
+            "2026-06-30 上線",
+            "2026-09-30",
+            "Gemini Omni 1.1 Flash\n正式版"
+          ],
+          [
+            "Veo 3.1、Fast、Lite\n都是預覽版",
+            "上線中",
+            "尚未公布",
+            "還沒棄用"
+          ]
         ]
       },
-      "claims": ["c8", "c24", "c25"],
+      "claims": [
+        "c8",
+        "c24",
+        "c25"
+      ],
       "lines": [
-        { "id": "gxbt", "text": "拿官方棄用頁比一比：Sora 的替代欄是空的。", "reveal": 1 },
-        { "id": "6sz5", "text": "Google 的 Veo 3.0，關閉日寫六月三十號，替代寫的是 Veo 3.1。", "say": "Google 的 Veo 三點零，關閉日寫六月三十號，替代寫的是 Veo 三點一。", "say_for": "4587fce5ef4d", "reveal": 1 },
-        { "id": "9udt", "text": "Gemini Omni Flash 的預覽版，從上線到關閉日只有三個月，替代是正式版。", "say": "Gemini 的 Omni Flash 預覽版，從上線到關閉日只有三個月，替代是正式版。", "say_for": "77166dda97fc", "reveal": 1 },
-        { "id": "fxq5", "text": "到九月底，Veo 3.1 Lite 在 Gemini API 上還是預覽版，也還沒有關閉日。", "say": "到九月底，Veo 三點一 Lite 在 Gemini API 上還是預覽版，也還沒有關閉日。", "say_for": "5ffed9895500", "reveal": 1 }
+        {
+          "id": "gxbt",
+          "text": "拿官方棄用頁比一比：Sora 的替代欄是空的。",
+          "reveal": 1
+        },
+        {
+          "id": "6sz5",
+          "text": "Google 的 Veo 3.0，關閉日寫六月三十號，替代寫的是 Veo 3.1。",
+          "say": "Google 的 Veo 三點零，關閉日寫六月三十號，替代寫的是 Veo 三點一。",
+          "say_for": "4587fce5ef4d",
+          "reveal": 1
+        },
+        {
+          "id": "9udt",
+          "text": "Gemini Omni Flash 的預覽版，從上線到關閉日只有三個月，替代是正式版。",
+          "say": "Gemini 的 Omni Flash 預覽版，從上線到關閉日只有三個月，替代是正式版。",
+          "say_for": "77166dda97fc",
+          "reveal": 1
+        },
+        {
+          "id": "fxq5",
+          "text": "到九月底，Veo 3.1 Lite 在 Gemini API 上還是預覽版，也還沒有關閉日。",
+          "say": "到九月底，Veo 三點一 Lite 在 Gemini API 上還是預覽版，也還沒有關閉日。",
+          "say_for": "5ffed9895500",
+          "reveal": 1
+        }
       ]
     },
     {
@@ -506,18 +1348,48 @@
       "data": {
         "title": "從通知到關閉，給了多久",
         "stats": [
-          { "value": "184 天", "label": "Sora API", "note": "3/24 通知 → 9/24 關閉" },
-          { "value": "33 天", "label": "Sora App", "note": "3/24 宣布 → 4/26 停止" },
-          { "value": "2 週", "label": "預覽版可能只有", "note": "OpenAI 棄用頁舉的例子" }
+          {
+            "value": "184 天",
+            "label": "Sora API",
+            "note": "3/24 通知 → 9/24 關閉"
+          },
+          {
+            "value": "33 天",
+            "label": "Sora App",
+            "note": "3/24 宣布 → 4/26 停止"
+          },
+          {
+            "value": "2 週",
+            "label": "預覽版可能只有",
+            "note": "OpenAI 棄用頁舉的例子"
+          }
         ],
         "source": "OpenAI 棄用頁：正式版至少 6 個月；預覽版可能短到 2 週"
       },
-      "claims": ["c7", "c26"],
+      "claims": [
+        "c7",
+        "c26"
+      ],
       "lines": [
-        { "id": "quc9", "text": "Sora 的 API，從通知到關閉是一百八十四天，大約六個月。", "reveal": 1 },
-        { "id": "489v", "text": "這和 OpenAI 寫給正式版的最短通知期一樣。" },
-        { "id": "gewa", "text": "App 從宣布到停止，只有三十三天。", "reveal": 1 },
-        { "id": "cj7s", "text": "OpenAI 的棄用頁還寫，預覽版可能只給兩週通知。", "reveal": 1 }
+        {
+          "id": "quc9",
+          "text": "Sora 的 API，從通知到關閉是一百八十四天，大約六個月。",
+          "reveal": 1
+        },
+        {
+          "id": "489v",
+          "text": "這和 OpenAI 寫給正式版的最短通知期一樣。"
+        },
+        {
+          "id": "gewa",
+          "text": "App 從宣布到停止，只有三十三天。",
+          "reveal": 1
+        },
+        {
+          "id": "cj7s",
+          "text": "OpenAI 的棄用頁還寫，預覽版可能只給兩週通知。",
+          "reveal": 1
+        }
       ]
     },
     {
@@ -527,15 +1399,38 @@
       "data": {
         "title": "一句話回答",
         "messages": [
-          { "side": "right", "name": "你", "text": "一句話：OpenAI 到底為什麼收掉 Sora？" },
-          { "side": "left", "name": "站主", "text": "官方說研究優先順序和算力；我的讀法是，一秒影片的帳排不到前面。" }
+          {
+            "side": "right",
+            "name": "你",
+            "text": "一句話：OpenAI 到底為什麼收掉 Sora？"
+          },
+          {
+            "side": "left",
+            "name": "站主",
+            "text": "官方說研究優先順序和算力；我的讀法是，一秒影片的帳排不到前面。"
+          }
         ]
       },
-      "claims": ["c1", "c2", "c11"],
+      "claims": [
+        "c1",
+        "c2",
+        "c11"
+      ],
       "lines": [
-        { "id": "scnw", "text": "回到開頭：一句話，OpenAI 到底為什麼收掉 Sora？", "reveal": 1 },
-        { "id": "q8iy", "text": "官方說的是研究優先順序和算力。" },
-        { "id": "zcjd", "text": "我的讀法是：它輸的不是標價，是在算力的排隊裡排不到前面。", "reveal": 1 }
+        {
+          "id": "scnw",
+          "text": "回到開頭：一句話，OpenAI 到底為什麼收掉 Sora？",
+          "reveal": 1
+        },
+        {
+          "id": "q8iy",
+          "text": "官方說的是研究優先順序和算力。"
+        },
+        {
+          "id": "zcjd",
+          "text": "我的讀法是：它輸的不是標價，是在算力的排隊裡排不到前面。",
+          "reveal": 1
+        }
       ]
     },
     {
@@ -543,23 +1438,53 @@
       "template": "bullets",
       "data": {
         "title": "付錢前，先寫三行",
-        "items": ["一秒多少、一支 8 秒多少", "價錢假設的解析度、聲音、秒數", "棄用頁的通知期，加每季匯出提醒"]
+        "items": [
+          "一秒多少、一支 8 秒多少",
+          "價錢假設的解析度、聲音、秒數",
+          "棄用頁的通知期，加每季匯出提醒"
+        ]
       },
-      "claims": ["c11"],
+      "claims": [
+        "c11"
+      ],
       "lines": [
-        { "id": "itjj", "text": "付錢給任何一家之前，先寫三行：一秒多少、一支八秒多少。", "reveal": 1 },
-        { "id": "hc3t", "text": "第二行，這個價錢假設的解析度、聲音和秒數。", "reveal": 1 },
-        { "id": "iayh", "text": "第三行，棄用頁的通知期，再加一個每季匯出的提醒。", "reveal": 1 }
+        {
+          "id": "itjj",
+          "text": "付錢給任何一家之前，先寫三行：一秒多少、一支八秒多少。",
+          "reveal": 1
+        },
+        {
+          "id": "hc3t",
+          "text": "第二行，這個價錢假設的解析度、聲音和秒數。",
+          "reveal": 1
+        },
+        {
+          "id": "iayh",
+          "text": "第三行，棄用頁的通知期，再加一個每季匯出的提醒。",
+          "reveal": 1
+        }
       ]
     },
     {
       "id": "pay-reason",
       "template": "big",
-      "data": { "kicker": "我付錢的理由", "text": "用得到、付得起\n**搬得走**", "sub": "不是 demo 最驚豔的那一個" },
-      "claims": ["c11"],
+      "data": {
+        "kicker": "我付錢的理由",
+        "text": "用得到、付得起\n**搬得走**",
+        "sub": "不是 demo 最驚豔的那一個"
+      },
+      "claims": [
+        "c11"
+      ],
       "lines": [
-        { "id": "jdg4", "text": "新出的、展示影片最驚豔的那一個，不是我付錢的理由。" },
-        { "id": "7pcx", "text": "用得到、付得起、哪天被收掉時搬得走，才是。" }
+        {
+          "id": "jdg4",
+          "text": "新出的、展示影片最驚豔的那一個，不是我付錢的理由。"
+        },
+        {
+          "id": "7pcx",
+          "text": "用得到、付得起、哪天被收掉時搬得走，才是。"
+        }
       ]
     },
     {
@@ -568,10 +1493,22 @@
       "data": {
         "title": "先算一秒，再看 demo",
         "cta": "留言告訴我：一支能用的 8 秒素材，你平均生成幾次？",
-        "lines": ["價格：各家官方價目頁，2026 年 9 月 28 日", "Sora 2：OpenAI 官方價目頁，2026 年 8 月存檔", "報導標明媒體；「我的讀法」是站主觀點"]
+        "lines": [
+          "價格：各家官方價目頁，2026 年 9 月 28 日",
+          "Sora 2：OpenAI 官方價目頁，2026 年 8 月存檔",
+          "報導標明媒體；「我的讀法」是站主觀點"
+        ]
       },
-      "claims": ["c4", "c11"],
-      "lines": [{ "id": "wn39", "text": "留言告訴我：你做一支能用的八秒素材，平均要生成幾次？" }]
+      "claims": [
+        "c4",
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "wn39",
+          "text": "留言告訴我：你做一支能用的八秒素材，平均要生成幾次？"
+        }
+      ]
     }
   ]
 }
