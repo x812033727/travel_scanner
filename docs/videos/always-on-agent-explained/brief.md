@@ -23,11 +23,11 @@ A real agent run on a harmless, checkable task, recorded on writing day and show
 
 ## 大綱
 
-### 選項 A：一次真實執行，拆成五拍（建議）
+### 選項 A：一次真實執行，拆成五拍（推薦）
 
-Angle: one real run carries the whole explanation; the DevDay news frames why it matters now. Differs from B, which starts from the news and explains later.
+一行說明：one real run carries the whole explanation; the DevDay news frames why it matters now. Differs from B, which starts from the news and explains later.
 
-Hook: "This week OpenAI showed an assistant that keeps working after you close the window, and every lab is building the same thing. Most explanations stop at 'it can use tools'. So I gave one agent a boring task, recorded every step it took, and I'm going to show you the five moves that turn a chatbot into an agent, plus the one in four tasks where, by the makers' own numbers, it still gets it wrong."
+開場鉤子（口播，≤30 秒）："Every AI company is now selling you an agent. Next, they want to sell you one that never logs off. Most explanations stop at one line: it can use tools. That tells you nothing about what happens after you press enter. So I gave one agent a boring task and recorded every step. I'll show you the five moves that turn a chatbot into an agent. Plus the tasks that still go wrong, by the makers' own numbers, and what to do about it."
 
 | # | Chapter | s | Scenes |
 | --- | --- | --- | --- |
@@ -43,9 +43,9 @@ Total ≈ 600 s. Worked example: chapters 2–3.
 
 ### 選項 B：從 DevDay 開始講
 
-Angle: news first (what was announced, what it costs, who gets it), then the explanation. Better if DevDay lands something big; risk of aging faster.
+一行說明：news first (what was announced, what it costs, who gets it), then the explanation. Better if DevDay lands something big; risk of aging faster.
 
-Hook: "OpenAI just announced an assistant that never logs off. Here's what it can do while you sleep, what it can't, and how to know the difference."
+開場鉤子（口播，≤30 秒）："OpenAI just announced an assistant that never logs off. Here's what it can do while you sleep, what it can't, and how to know the difference."
 
 Chapters: What DevDay actually announced (90 s: `quote`, `table`) → How an agent works in five moves (120 s: `steps`, `chat`) → The failure rate nobody puts on the poster (90 s: `stats`) → A real run (120 s) → Three questions (90 s) → `outro` (40 s).
 

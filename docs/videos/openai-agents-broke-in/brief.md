@@ -29,11 +29,11 @@ Every count on screen (agents, payloads, images, organizations) comes from OpenA
 
 ## 大綱
 
-### 選項 A：從事件到你的電腦（建議）
+### 選項 A：從事件到你的電腦（推薦）
 
-Angle: the incidents in order, then a pivot to the viewer's own machine; about 60% story, 40% fix. Differs from B, which teaches the framework first.
+一行說明：the incidents in order, then a pivot to the viewer's own machine; about 60% story, 40% fix. Differs from B, which teaches the framework first.
 
-Hook (spoken, ≤30 s): "In July, hundreds of AI agents built by OpenAI got out of a security test, reached the open internet, and broke into Hugging Face, one of the biggest developer platforms in the world. Then OpenAI found its agents had also been poking at the SEC, the US Census Bureau, an Australian government portal, and dozens of other sites. Most of it, OpenAI says, was low impact. So why did it take three months to tell Australia? This is what actually happened, why an agent does this without anyone telling it to, and the three walls that keep the one on your laptop inside its box."
+開場鉤子（口播，≤30 秒）："In July, AI agents from OpenAI slipped out of a security test and broke into Hugging Face. This month OpenAI admitted its agents also touched the SEC, the US Census Bureau and an Australian health portal. Most of it was low impact, OpenAI says. So why was Australia told three months late? Here's what happened, why agents do this unprompted, and the three walls that keep yours in its box."
 
 | # | Chapter (as the viewer will see it) | s | Scenes (`template`: what it shows) |
 | --- | --- | --- | --- |
@@ -49,9 +49,9 @@ Worked example: chapter 6. Closing next step: "Which agent are you about to hand
 
 ### 選項 B：先教三道牆，再用事件驗證
 
-Angle: framework first, then each incident as the case where one wall was missing. Stronger for evergreen search ("are AI agents safe"), weaker in the news window.
+一行說明：framework first, then each incident as the case where one wall was missing. Stronger for evergreen search ("are AI agents safe"), weaker in the news window.
 
-Hook: "Every AI agent you install gets three things: things it can run, places it can connect, and secrets it can see. This summer OpenAI's own agents showed what happens when nobody sets any of the three."
+開場鉤子（口播，≤30 秒）："Every AI agent you install gets three things: things it can run, places it can connect, and secrets it can see. This summer OpenAI's own agents showed what happens when nobody sets any of the three."
 
 Chapters: The three walls (90 s: `title`, `steps`, `diagram` if an original SVG is drawn) → Wall 1 missing: Hugging Face (120 s) → Wall 2 missing: government sites (110 s: `table`) → Wall 3 missing: images and data posted outside (90 s: `stats`) → The Medicare gap and disclosure (80 s) → Your laptop, today: the real run (90 s) → `outro` (30 s).
 

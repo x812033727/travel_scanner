@@ -31,11 +31,11 @@ The formula is on a `code` slide so viewers can repeat it. Chapter 5 adds the tw
 
 ## 大綱
 
-### 選項 A：三個價目表，三件工作，一個測試（建議）
+### 選項 A：三個價目表，三件工作，一個測試（推薦）
 
-Angle: price-sheet arithmetic first, benchmark talk last. Differs from B, which starts from the benchmarks that the news led with.
+一行說明：price-sheet arithmetic first, benchmark talk last. Differs from B, which starts from the benchmarks that the news led with.
 
-Hook: "GPT-6 Astra costs fifty dollars per million output tokens. Claude Opus 5.5 costs twenty. Grok 4.7 costs six. If you pick by benchmark you'll overpay; if you pick by price you'll underdeliver. So I took three jobs people actually do every month, priced each one on each model with the official rates as of today, and the winner is not the smartest model. Here's the math."
+開場鉤子（口播，≤30 秒）："GPT-6 Astra costs fifty dollars per million output tokens. Claude Opus 5.5 costs twenty. Gemini 3.8 Flash costs under four. Pick by benchmark and you overpay. Pick by price and you get work you have to redo. So I priced three jobs people actually run every month, on every model, at today's official rates. The winner isn't the smartest model. Here's the math, and the three questions that make it your math."
 
 | # | Chapter | s | Scenes |
 | --- | --- | --- | --- |
@@ -51,9 +51,9 @@ Total ≈ 580 s (English runs slightly longer with numbers; aim 1,450 words).
 
 ### 選項 B：先拆排行榜，再算錢
 
-Angle: start with the benchmark claims the launches led with (FrontierMath, Terminal-Bench, OSWorld), show what each measures and does not, then price the jobs.
+一行說明：start with the benchmark claims the launches led with (FrontierMath, Terminal-Bench, OSWorld), show what each measures and does not, then price the jobs.
 
-Hook: "GPT-6 Astra scores 99.9% on ARC-AGI-3, if you read the footnote. Claude Opus 5.5 beats it on computer use at less than half the price. Benchmarks are true and useless at the same time, and here's how to read them before you pay."
+開場鉤子（口播，≤30 秒）："GPT-6 Astra scores 99.9% on ARC-AGI-3, if you read the footnote. Claude Opus 5.5 beats it on computer use at less than half the price. Benchmarks are true and useless at the same time, and here's how to read them before you pay."
 
 Chapters: What the launch numbers measure (120 s: `table`, `quote` with the harness caveat) → The price sheets (80 s) → Three jobs priced (200 s) → Retries (80 s) → The test and picks (80 s) → `outro` (40 s).
 
