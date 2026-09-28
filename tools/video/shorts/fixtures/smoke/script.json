@@ -1,0 +1,79 @@
+{
+  "schema_version": 2,
+  "slug": "shorts-smoke-receipt",
+  "format": "shorts",
+  "locale": "zh-TW",
+  "line": "lab",
+  "series": "daily",
+  "titles": [
+    "AI 算得出這張發票的總額嗎？",
+    "一張發票，兩個 AI，誰算對？"
+  ],
+  "description": "工具的煙霧測試用腳本：畫面與旁白都是替身，沒有問過任何模型。",
+  "experiment_summary": "同一題算式各問一次，對照先寫好的答案。",
+  "limitations": "只測一題、各一次，不能代表模型整體的能力。",
+  "hashtags": [
+    "AI",
+    "實測"
+  ],
+  "tags": [
+    "AI 實測"
+  ],
+  "evidence": [
+    {
+      "path": "evidence/result.json",
+      "sha256": "c595307754eec273764161ef1dac84a1ed33aeea3e985e4f2231408649ee95d6"
+    }
+  ],
+  "scenes": [
+    {
+      "headline": "AI 算得出總額嗎？",
+      "kicker": "台灣日常",
+      "narration": [
+        "一張手寫的發票",
+        "兩個品項加上一張折價券",
+        "我們請兩個 AI 各算一次"
+      ]
+    },
+    {
+      "headline": "題目長這樣",
+      "body": [
+        "咖啡 85 元 × 2",
+        "蛋糕 45 元 × 3",
+        "折價券 30 元"
+      ],
+      "narration": [
+        "咖啡兩杯，蛋糕三塊",
+        "再扣掉三十元的折價券"
+      ]
+    },
+    {
+      "headline": "先寫好的答案",
+      "big": "275",
+      "note": "85×2＋45×3−30",
+      "narration": [
+        "我們先自己算好",
+        "答案是兩百七十五元"
+      ]
+    },
+    {
+      "headline": "兩個都算對",
+      "body": [
+        "A：275 元",
+        "B：275 元"
+      ],
+      "narration": [
+        "兩個 AI 都回答兩百七十五",
+        "這一題打成平手"
+      ]
+    },
+    {
+      "headline": "這個結果能說什麼",
+      "note": "只測一題、各一次",
+      "narration": [
+        "一題不能代表全部",
+        "下一支換更難的題目"
+      ]
+    }
+  ]
+}
