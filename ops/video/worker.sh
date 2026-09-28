@@ -21,6 +21,11 @@ while :; do
       continue
     fi
   fi
+  # The Shorts calendar keeps its own time (docs/videos/SHORTS.md): the knock lets the site lock
+  # the slots that are due, send what is due to YouTube and read the numbers, whatever the draft
+  # settings below say. A knock that fails is a line in the log and nothing more.
+  MOKAAIR_SITE="${VIDEO_INTERNAL_SITE:-}" node tools/video/shorts/cli.mjs tick > /dev/null \
+    || echo "video-worker: the Shorts knock failed"
   # Inside compose, calls go straight to the web container instead of out through nginx.
   MOKAAIR_SITE="${VIDEO_INTERNAL_SITE:-}" node tools/video/cli.mjs auto
   status=$?

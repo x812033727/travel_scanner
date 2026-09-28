@@ -9,10 +9,15 @@ import httpx
 from sqlalchemy import or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.news_automation.feeds import extract_article, parse_entries
+from app.news_automation.feeds import parse_entries, read_article
 from app.news_automation.fetch import SafeNewsFetcher
 from app.news_automation.models import NewsCandidate, NewsEvidence, NewsSource
-from app.news_automation.policy import content_fingerprint, evidence_site, normalized_title
+from app.news_automation.policy import (
+    body_fingerprint,
+    content_fingerprint,
+    evidence_site,
+    normalized_title,
+)
 from app.news_automation.schemas import Vertical
 from app.news_automation.service import settings_row
 
@@ -227,15 +232,17 @@ async def scan_source(
             if detail.url != entry.url and await _already_seen(session, detail.url):
                 continue
             detail_source = by_host.get(_host(detail.url), source)
-            page_title, article_text, links = extract_article(
-                detail.body, detail.url, detail_source.config_json
-            )
+            page = read_article(detail.body, detail.url, detail_source.config_json)
+            page_title, article_text, links = page.title, page.text, page.links
             body_text = article_text or entry.summary
             title = page_title or entry.title
             if not body_text.strip():
                 continue
             canonical = detail.url
             body_hash = content_fingerprint(body_text)
+            # The story alone, None when the page had too little of it (a feed summary
+            # never gets one): the same story behind a second URL or re-rendered chrome.
+            story_hash = body_fingerprint(page) if article_text else None
             idempotency = content_fingerprint(canonical, body_hash)
             if await session.scalar(
                 select(NewsCandidate.id).where(NewsCandidate.idempotency_key == idempotency)
@@ -249,6 +256,11 @@ async def scan_source(
                         NewsCandidate.canonical_url == canonical,
                         NewsCandidate.content_hash == body_hash,
                         NewsCandidate.normalized_title == normalized,
+                        *(
+                            [NewsCandidate.body_hash == story_hash]
+                            if story_hash is not None
+                            else []
+                        ),
                     )
                 )
                 .order_by(NewsCandidate.created_at.desc())
@@ -283,9 +295,10 @@ async def scan_source(
                             deferred = True
                             break
                         continue
-                    linked_title, linked_text, _ = extract_article(
+                    linked_page = read_article(
                         linked.body, linked.url, linked_source.config_json
                     )
+                    linked_title, linked_text = linked_page.title, linked_page.text
                     # Two links that redirect to one page would repeat an evidence URL,
                     # and a redirect can land back on the primary page's own site.
                     if (
@@ -304,6 +317,7 @@ async def scan_source(
                             etag=linked.etag,
                             last_modified=linked.last_modified,
                             content_hash=content_fingerprint(linked_text),
+                            body_hash=body_fingerprint(linked_page),
                             excerpt=linked_text[:8000],
                         )
                     )
@@ -323,6 +337,7 @@ async def scan_source(
                 normalized_title=normalized,
                 source_published_at=entry.published_at,
                 content_hash=body_hash,
+                body_hash=story_hash,
                 idempotency_key=idempotency,
                 prompt_version=settings.prompt_version,
                 policy_version=settings.policy_version,
@@ -346,6 +361,7 @@ async def scan_source(
                     etag=detail.etag,
                     last_modified=detail.last_modified,
                     content_hash=body_hash,
+                    body_hash=story_hash,
                     excerpt=body_text[:8000],
                 )
             )
