@@ -107,8 +107,8 @@
 
 ## 製作怎麼接現有產線
 
-1. 每集一個工作目錄 `docs/videos/sothatswhy-<id 小寫>/`（例：`sothatswhy-b08`），`video.json` 用 `format: "drama"`、全部 `visual: "still"`、只有旁白角色；`brief.md` 從 `episodes.json` 那一列生成，不走選大綱關卡。
-2. 之後照 `youtube-video` skill 的漫劇路線：劇本 → 查核 → 旁白 → 關鍵影格 → 合成 → 五語字幕 → 配音 → 上架包。
+1. 在 `/admin/videos` 發起一支漫劇：故事前提填 `episodes.json` 那一列的題目（可附 `hook`、`answer` 當備註），風格選**扁平插畫解說**（`flat-explainer`，migration 0105）。工人會用解說版的企劃、撰稿、查核提示詞，產出 `format: "drama"`、`look.preset: "flat-explainer"`、`characters: []`、全部 `visual: "still"` 的 `video.json`；沒有角色就沒有設定圖關卡，直接畫關鍵影格。規格見 `youtube-video` skill 的 `references/drama.md`，範例 `tools/video/core/fixtures/explainer/`。
+2. 之後照漫劇路線：選大綱 → 劇本 → 查核 → 旁白 → 關鍵影格 → 合成 → 五語字幕 → 配音 → 上架包。
 3. Shorts 用同一集的關鍵影格與稿子切出兩份 Shorts JSON。
 
 要先補的產線工作是 `tasks/open/` 裡 `sothatswhy-*` 的四張票：解說版型預設、從長片切 Shorts、畫面識別與片頭、前三集試片。

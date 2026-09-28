@@ -26,7 +26,7 @@ type ModelOption = { value: string; label: string; description: string | null; s
 type Voice = { provider: "azure" | "gemini"; name: string; style: string | null; model: string | null; rate: string };
 // The AI drama route (docs/videos/DRAMA.md): apps/api/app/video_automation/schemas.py DramaSettings.
 export const MEDIA_PROVIDERS = ["gemini", "minimax"] as const;
-export const STYLE_PRESETS = ["cinematic-3d", "anime-2d", "ink-wash", "custom"] as const;
+export const STYLE_PRESETS = ["cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "custom"] as const;
 export type MediaProvider = (typeof MEDIA_PROVIDERS)[number];
 export type MediaOption = ModelOption & { resolutions: string[]; durations: number[]; reference_images: number; native_audio: boolean; usd_per_second: number | null; usd_per_image: number | null; usd_per_track: number | null };
 export type MediaOptions = { images: Partial<Record<MediaProvider, MediaOption[]>>; clips: Partial<Record<MediaProvider, MediaOption[]>>; music: Partial<Record<MediaProvider, MediaOption[]>> };

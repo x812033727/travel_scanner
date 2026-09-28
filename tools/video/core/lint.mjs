@@ -3,7 +3,7 @@
 // Errors block the pipeline (the CLI exits 1); warnings are for the writer and reviewer to judge.
 // The written-language list is the one the recorded route's video_kit.py uses, so a script that
 // passes one route's check does not fail the other's.
-import { emotionProblems, isDrama, shotProblems, visualTierProblems } from "./drama.mjs";
+import { emotionProblems, EXPLAINER_PRESET, isDrama, shotProblems, visualTierProblems } from "./drama.mjs";
 import { unknownTerms, validateLexicon } from "./lexicon.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription } from "./metadata.mjs";
 import { DEFAULT_TARGET_MINUTES, LOCALES, NARRATION_LOCALE, eachLine, spokenText, textHash, validateVideo } from "./schema.mjs";
@@ -18,6 +18,9 @@ export const PROCESS_TALK = ["本影片", "經查證", "根據官方文件", "�
 export const BRIEF_SECTIONS = ["站主觀點", "觀眾看完能做到的事"];
 // A drama's brief is a story bible instead (docs/videos/DRAMA.md); the owner's stance stays.
 export const BRIEF_SECTIONS_DRAMA = ["故事前提", "角色", "站主觀點"];
+// An explainer (docs/videos/so-thats-why/) answers one question with no cast: the question, the
+// one-sentence answer, and the owner's stance.
+export const BRIEF_SECTIONS_EXPLAINER = ["問題", "一句答案", "站主觀點"];
 export const SENTENCE_WARN = 40;
 export const HOOK_SECONDS = 30;
 export const SIMILARITY_WARN = 0.8;
@@ -43,10 +46,16 @@ export function briefSections(markdown) {
   return sections;
 }
 
-export function checkBrief(markdown, format = "slides") {
+/** The brief sections a video must fill: `preset` is a drama's look preset. */
+export function briefSectionsFor(format = "slides", preset = null) {
+  if (format !== "drama") return BRIEF_SECTIONS;
+  return preset === EXPLAINER_PRESET ? BRIEF_SECTIONS_EXPLAINER : BRIEF_SECTIONS_DRAMA;
+}
+
+export function checkBrief(markdown, format = "slides", preset = null) {
   if (markdown === null || markdown === undefined) return ["brief.md is missing: the planner writes it before the script"];
   const sections = briefSections(markdown);
-  return (format === "drama" ? BRIEF_SECTIONS_DRAMA : BRIEF_SECTIONS).filter((name) => {
+  return briefSectionsFor(format, preset).filter((name) => {
     const body = (sections[name] ?? "").replace(/待填|TODO|TBD/gi, "").replace(/[\s\p{P}\p{S}]/gu, "");
     return body.length === 0;
   }).map((name) => `brief.md needs a non-empty "## ${name}" section`);
@@ -192,7 +201,7 @@ export function lintVideo(doc, context = {}) {
 
   const lexicon = context.lexicon ?? { schema_version: 1, terms: {} };
   for (const problem of validateLexicon(lexicon)) error(`lexicon.${problem.path}`, problem.message);
-  for (const problem of checkBrief(context.brief, doc.format)) error("brief.md", problem);
+  for (const problem of checkBrief(context.brief, doc.format, doc.look?.preset ?? null)) error("brief.md", problem);
   const drama = isDrama(doc);
   if (!drama && doc.music) warn("music", "the channel spec puts no music under slides videos (docs/videos/README.md); a drama may");
   if (doc.source_guide && context.pack === null) error("source_guide", `no content pack named ${doc.source_guide}`);

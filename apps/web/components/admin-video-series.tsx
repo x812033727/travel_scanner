@@ -56,6 +56,9 @@ export const SERIES_SLUG = /^[a-z0-9][a-z0-9-]{1,39}$/;
 const ASPECTS = ["world", "bonds", "structure", "mood"] as const;
 const TONES = ["dual-male-leads-subtext", "dual-male-leads-explicit", "hetero-leads", "no-romance"] as const;
 const PRESETS = ["cinematic-3d", "anime-2d", "ink-wash", "custom"] as const;
+// A one-off episode may also be an illustrated explainer (narrator only, all stills); a series
+// runs the story prompts, which need a cast, so its forms keep the story presets.
+const REQUEST_PRESETS = ["cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "custom"] as const;
 const GUIDE_SLUG = /^[a-z0-9][a-z0-9-]{0,118}[a-z0-9]$/;
 const GENRES: readonly SeriesGenre[] = ["xianxia-bonds", "rebirth-revenge", "system-game", "urban-return", "empress-rise", "custom"];
 const LEADS: readonly SeriesLead[] = ["female", "male", "dual-male"];
@@ -283,7 +286,7 @@ function NewDramaForm({ onFiled }: { onFiled: () => void }) {
   const [premise, setPremise] = useState("");
   const [title, setTitle] = useState("");
   const [guide, setGuide] = useState("");
-  const [preset, setPreset] = useState<(typeof PRESETS)[number]>("cinematic-3d");
+  const [preset, setPreset] = useState<(typeof REQUEST_PRESETS)[number]>("cinematic-3d");
   const [minutes, setMinutes] = useState(3);
   const [note, setNote] = useState("");
   const [busy, setBusy] = useState(false);
@@ -316,8 +319,8 @@ function NewDramaForm({ onFiled }: { onFiled: () => void }) {
         <label className="grid gap-2 text-sm font-semibold">{t("workingTitle")}<input className={control} value={title} disabled={busy} maxLength={200} onChange={(event) => setTitle(event.target.value)} /></label>
         <label className="grid gap-2 text-sm font-semibold">{t("sourceGuide")}<input className={control} value={guide} disabled={busy} placeholder={t("sourceGuidePlaceholder")} aria-invalid={!guideOk} onChange={(event) => setGuide(event.target.value)} /></label>
         <label className="grid gap-2 text-sm font-semibold">{t("stylePreset")}
-          <select className={control} value={preset} disabled={busy} onChange={(event) => setPreset(event.target.value as (typeof PRESETS)[number])}>
-            {PRESETS.map((each) => <option key={each} value={each}>{t(`presets.${each}`)}</option>)}
+          <select className={control} value={preset} disabled={busy} onChange={(event) => setPreset(event.target.value as (typeof REQUEST_PRESETS)[number])}>
+            {REQUEST_PRESETS.map((each) => <option key={each} value={each}>{t(`presets.${each}`)}</option>)}
           </select>
         </label>
         <label className="grid gap-2 text-sm font-semibold">{t("targetMinutes")}<input className={control} type="number" min={1} max={8} value={minutes} disabled={busy} onChange={(event) => setMinutes(Number(event.target.value))} /></label>

@@ -28,7 +28,7 @@ PromptFormat = Literal["slides", "drama"]
 # The drama format's media settings (docs/videos/DRAMA.md); the vendors are the site's keys.
 MediaProvider = Literal["gemini", "minimax"]
 ClipResolution = Literal["720p", "768p", "1080p", "2k", "4k"]
-StylePreset = Literal["cinematic-3d", "anime-2d", "ink-wash", "custom"]
+StylePreset = Literal["cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "custom"]
 DramaAspect = Literal["16:9", "9:16"]
 MediaKindName = Literal["image", "clip", "music"]
 

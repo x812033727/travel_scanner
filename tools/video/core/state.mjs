@@ -9,7 +9,7 @@ import path from "node:path";
 
 import { approvalState, readApprovals } from "./approvals.mjs";
 import { COMPILATION_HEADLINE_PLACEHOLDER, COMPILATION_STEPS, compilationChecksCurrent, isCompilation, lintCompilation, PLACEHOLDER_TITLE } from "./compilation.mjs";
-import { burnIn, isDrama, lookHash, mixHash, subtitlesHash } from "./drama.mjs";
+import { burnIn, hasCast, isDrama, lookHash, mixHash, subtitlesHash } from "./drama.mjs";
 import { emptyLexicon } from "./lexicon.mjs";
 import { lintVideo } from "./lint.mjs";
 import { DUB_LOCALES, dubScript, translationHash } from "../dubs/plan.mjs";
@@ -116,13 +116,16 @@ export const DRAMA_STEPS = [
  */
 export { COMPILATION_STEPS };
 
+const LOOK_STEPS = new Set(["look generated", "look approved"]);
+
 export function stepsFor(doc) {
   if (isCompilation(doc)) return COMPILATION_STEPS;
   if (!isDrama(doc)) return SLIDES_STEPS;
   // The script gate belongs to an episode of a series (docs/videos/SERIES.md); a one-off drama
   // keeps the owner's outline pick as its only reading before the sheets. Music is skipped when
-  // the script has none.
-  return DRAMA_STEPS.filter((id) => (id !== "music generated" || doc.music) && (id !== "script approved" || doc.series));
+  // the script has none; a drama with no characters (a narrator-only explainer) has no sheets to
+  // draw or pick, so no look steps.
+  return DRAMA_STEPS.filter((id) => (id !== "music generated" || doc.music) && (id !== "script approved" || doc.series) && (!LOOK_STEPS.has(id) || hasCast(doc)));
 }
 
 /**

@@ -8,7 +8,7 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 
 import { approvalState } from "../core/approvals.mjs";
-import { isDrama, lookHash, resolveLook, shotScenes } from "../core/drama.mjs";
+import { hasCast, isDrama, lookHash, resolveLook, shotScenes } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, lintProject, loadProject, lookChosen, recordStage } from "../core/state.mjs";
 import { visualHash } from "../core/timeline.mjs";
@@ -95,9 +95,11 @@ export async function run(command, args, ctx) {
   const cast = (scene) => (scene.data.characters ?? []).map((id) => byId.get(id)).filter(Boolean);
 
   // The look must be approved as it stands, with a sheet chosen (or suggested) for every character.
-  const lookManifest = readJson(path.join(workdir, ARTIFACTS.characters), null);
-  const chosen = lookChosen(lookManifest, readJson(path.join(workdir, ARTIFACTS.characterChoice), null), hash);
-  const approval = await approvalState({ gate: "look", docDir: project.dir, workdir });
+  // A drama with no characters (a narrator-only explainer) has no sheets and no look gate.
+  const withCast = hasCast(doc);
+  const lookManifest = withCast ? readJson(path.join(workdir, ARTIFACTS.characters), null) : null;
+  const chosen = withCast ? lookChosen(lookManifest, readJson(path.join(workdir, ARTIFACTS.characterChoice), null), hash) : {};
+  const approval = withCast ? await approvalState({ gate: "look", docDir: project.dir, workdir }) : { status: "approved" };
   if (approval.status !== "approved" || chosen === null) {
     const why = approval.status === "stale" ? "changed since it was approved" : approval.status === "absent" ? "not generated yet (run look)" : chosen === null ? "approved but a character has no chosen sheet" : "not approved yet";
     throw new MediaError(`the look is ${why}: run review-push --gate look and wait for the owner on /admin/videos, then review-pull`, { who: "owner" });

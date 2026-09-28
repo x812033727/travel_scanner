@@ -14,8 +14,11 @@ export const fixtureLexicon = () => JSON.parse(readFileSync(path.join(FIXTURES, 
 export const fixtureBrief = () => readFileSync(path.join(FIXTURES, "minimal", "brief.md"), "utf8");
 export const dramaFixture = () => JSON.parse(readFileSync(DRAMA_FIXTURE_FILE, "utf8"));
 export const dramaBrief = () => readFileSync(path.join(FIXTURES, "drama", "brief.md"), "utf8");
+// A narrator-only explainer in the flat-explainer preset (docs/videos/so-thats-why/).
+export const explainerFixture = () => JSON.parse(readFileSync(path.join(FIXTURES, "explainer", "video.json"), "utf8"));
+export const explainerBrief = () => readFileSync(path.join(FIXTURES, "explainer", "brief.md"), "utf8");
 
-/** A fake repository holding a fixture (minimal or drama) as docs/videos/<slug>/, and a work base beside it. */
+/** A fake repository holding a fixture (minimal, drama or explainer) as docs/videos/<slug>/, and a work base beside it. */
 export function sandbox(slug = "fixture-minimal", name = "minimal") {
   const base = mkdtempSync(path.join(tmpdir(), "video-core-"));
   const root = path.join(base, "repo");

@@ -60,7 +60,11 @@ DEFAULT_CAPTION_LOCALES = ["en", "ja", "ko", "zh-CN"]
 # The AI drama route (docs/videos/DRAMA.md). The owner chose on 2026-09-26 to start without a
 # spending cap, so the budgets open wide and are lowered after the pilot; migration 0095 carries
 # the same values as server defaults, and the settings tab shows them.
-STYLE_PRESETS = ("cinematic-3d", "anime-2d", "ink-wash", "custom")
+# flat-explainer (migration 0105) is the illustrated "why" explainer: narrator only, all stills.
+STYLE_PRESETS = ("cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "custom")
+STYLE_PRESET_CHECK = "style_preset IN ({})".format(
+    ", ".join(f"'{preset}'" for preset in STYLE_PRESETS)
+)
 CLIP_RESOLUTIONS = ("720p", "768p", "1080p", "2k", "4k")
 DEFAULT_DRAMA_TOPIC_SCOPE = ["山海經", "民間傳說", "原創玄幻"]
 DEFAULT_DRAMA: dict[str, Any] = {
@@ -160,7 +164,7 @@ class VideoAutomationSettings(Base):
         CheckConstraint("max_usd_per_video BETWEEN 0 AND 10000", name="ck_video_drama_usd"),
         CheckConstraint("judge_min_score BETWEEN 0 AND 10", name="ck_video_drama_judge"),
         CheckConstraint(
-            "style_preset IN ('cinematic-3d', 'anime-2d', 'ink-wash', 'custom')",
+            STYLE_PRESET_CHECK,
             name="ck_video_drama_preset",
         ),
         # The series columns; migration 0099 creates the same constraints under the same names.
@@ -360,7 +364,7 @@ class VideoDramaRequest(Base):
             name="ck_video_drama_request_status",
         ),
         CheckConstraint(
-            "style_preset IN ('cinematic-3d', 'anime-2d', 'ink-wash', 'custom')",
+            STYLE_PRESET_CHECK,
             name="ck_video_drama_request_style",
         ),
         Index("ix_video_drama_requests_status_created", "status", "created_at"),
@@ -436,7 +440,7 @@ class VideoDramaSeries(Base):
             name="ck_video_drama_series_numbers",
         ),
         CheckConstraint(
-            "style_preset IN ('cinematic-3d', 'anime-2d', 'ink-wash', 'custom')",
+            STYLE_PRESET_CHECK,
             name="ck_video_drama_series_style",
         ),
         CheckConstraint(

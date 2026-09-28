@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "slug": "fixture-explainer",
+  "format": "drama",
+  "target_minutes": [
+    0.3,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "輕鬆、跟朋友解釋，台灣國語，中等偏快"
+  },
+  "look": {
+    "preset": "flat-explainer"
+  },
+  "characters": [],
+  "subtitles": {
+    "burn_in": true
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "為什麼雷聲總比閃電晚到？｜原來如此事務所",
+    "description": "同一道雷，為什麼先看到閃電、後聽到雷聲？數幾秒就能算出雷打在多遠。",
+    "tags": [
+      "原來如此事務所",
+      "為什麼",
+      "雷聲"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "雷聲為什麼晚到",
+      "tag": "原來如此",
+      "shot": "flash"
+    }
+  },
+  "sources": [
+    {
+      "title": "Speed of sound (Wikipedia)",
+      "url": "https://en.wikipedia.org/wiki/Speed_of_sound",
+      "checked_on": "2026-09-28"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "flash",
+      "chapter": "先看到光",
+      "template": "shot",
+      "data": {
+        "prompt": "flat illustration of a dark night sky over a small town, one bright zigzag of lightning, rooftops as simple shapes",
+        "camera": "slow push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "q1ex",
+          "text": "閃電亮了，你數到幾，雷聲才來？"
+        }
+      ]
+    },
+    {
+      "id": "window",
+      "template": "shot",
+      "data": {
+        "prompt": "flat illustration of an anonymous figure silhouette at a window, counting on one raised hand, night storm outside",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "q2ex",
+          "text": "很多人以為，雷聲是比較晚才發出來的。"
+        },
+        {
+          "id": "q9ex",
+          "text": "真的是這樣嗎？我們來看看。"
+        }
+      ]
+    },
+    {
+      "id": "race",
+      "chapter": "光和聲音賽跑",
+      "template": "shot",
+      "data": {
+        "prompt": "flat illustration of two runners as simple arrows on a track, a long yellow arrow far ahead of a short red arrow",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "q3ex",
+          "text": "其實閃電和雷聲，是同一瞬間發生的。"
+        }
+      ]
+    },
+    {
+      "id": "speeds",
+      "template": "stats",
+      "data": {
+        "title": "誰跑得快",
+        "stats": [
+          {
+            "value": "30 萬公里",
+            "label": "光每秒"
+          },
+          {
+            "value": "340 公尺",
+            "label": "聲音每秒"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "q4ex",
+          "text": "光每秒跑三十萬公里，聲音只跑三百四十公尺。",
+          "reveal": 1
+        },
+        {
+          "id": "q5ex",
+          "text": "差了將近一百萬倍。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "count",
+      "chapter": "用秒數算距離",
+      "template": "shot",
+      "data": {
+        "prompt": "flat illustration of a simple map with a storm cloud on one side and a house on the other, a dotted line between them",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "q6ex",
+          "text": "所以數到三秒，雷大約打在一公里外。"
+        }
+      ]
+    },
+    {
+      "id": "answer",
+      "template": "big",
+      "data": {
+        "kicker": "原來如此",
+        "text": "光先到，聲音後到"
+      },
+      "lines": [
+        {
+          "id": "q7ex",
+          "text": "光跑得比聲音快太多，所以你總是先看到閃電。"
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "template": "outro",
+      "data": {
+        "title": "下一題：為什麼彩虹是彎的？"
+      },
+      "lines": [
+        {
+          "id": "q8ex",
+          "text": "下一集，我們來看彩虹為什麼是彎的。"
+        }
+      ]
+    }
+  ]
+}

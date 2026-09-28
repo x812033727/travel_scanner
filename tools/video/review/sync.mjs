@@ -17,7 +17,7 @@ import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { AutomationError, automationClient } from "../automation/client.mjs";
 import { GATES, approvalState, approve, readApprovals, sha256File } from "../core/approvals.mjs";
 import { isCompilation } from "../core/compilation.mjs";
-import { isDrama, shotScenes } from "../core/drama.mjs";
+import { hasCast, isDrama, shotScenes } from "../core/drama.mjs";
 import { atomicWrite, docDir, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { dubRole, dubsForUpload } from "../core/stages.mjs";
 import { ARTIFACTS, loadProject, pipelineStatus } from "../core/state.mjs";
@@ -327,11 +327,12 @@ const imageType = (file) => IMAGE_TYPES[path.extname(file).toLowerCase()] ?? "ap
 
 /**
  * The next gate whose content exists and is not approved as it stands; null when none. A drama
- * (docs/videos/DRAMA.md) puts the look before the narration and the storyboard before the cut.
+ * (docs/videos/DRAMA.md) puts the look before the narration and the storyboard before the cut; a
+ * drama with no characters has no look to approve.
  */
 async function nextGate(places, workdir, doc) {
   // A compilation's episodes went through every gate; the owner sees its cut, then its package.
-  const order = isCompilation(doc) ? ["final"] : isDrama(doc) ? ["outline", ...(doc.series ? ["script"] : []), "look", "audio", "storyboard", "final"] : ["outline", "audio", "final"];
+  const order = isCompilation(doc) ? ["final"] : isDrama(doc) ? ["outline", ...(doc.series ? ["script"] : []), ...(hasCast(doc) ? ["look"] : []), "audio", "storyboard", "final"] : ["outline", "audio", "final"];
   for (const gate of order) {
     const state = await approvalState({ gate, ...places });
     if (state.status === "missing" || state.status === "stale") return gate;

@@ -530,6 +530,59 @@ test("a drama is settled with the settings tab's preset, subtitles and music, an
 
 const sha = (file) => createHash("sha256").update(readFileSync(file)).digest("hex");
 
+test("an explainer request plans, writes and checks with the explainer prompts, and is settled with no characters", async () => {
+  const brief = [
+    "# 為什麼雷聲總比閃電晚到？",
+    "## 問題",
+    "為什麼先看到閃電才聽到雷？",
+    "## 一句答案",
+    "光比聲音快太多。",
+    "## 站主觀點",
+    "（提案）數秒數就能算距離。",
+    "## 原因",
+    "- 光速與聲速",
+    "## 大綱",
+    "### 選項 A：從數秒數講起",
+    "一行說明：先數秒。",
+    "開場鉤子：「閃電亮了，你數到幾？」",
+    "### 選項 B：從賽跑講起",
+    "一行說明：先賽跑。",
+    "開場鉤子：「光和聲音賽跑，誰贏？」",
+    "",
+  ].join("\n");
+  assert.equal(planProblem({ slug: "thunder", brief, source_urls: [] }, new Set(), new Set(), "drama", "", "flat-explainer"), null);
+  assert.match(planProblem({ slug: "thunder", brief, source_urls: [] }, new Set(), new Set(), "drama"), /故事前提/, "a story drama still wants its bible");
+  assert.match(planProblem({ slug: "thunder", brief: brief.replace("## 一句答案", "## 答案"), source_urls: [] }, new Set(), new Set(), "drama", "", "flat-explainer"), /一句答案/);
+
+  for (const stage of ["planner", "writer", "verifier"]) assert.match(instructionsFor(stage, "drama", "", "explainer"), /illustrated "why" explainer/, stage);
+  assert.match(instructionsFor("writer", "drama", "", "explainer"), /"characters": \[\] \(always empty\)/);
+  assert.match(instructionsFor("planner", "drama", "", "explainer"), /## 一句答案/);
+  assert.equal(instructionsFor("listener", "drama", "", "explainer"), instructionsFor("listener", "drama"), "the listener has no explainer text of its own");
+
+  const settings = { voice: { provider: "gemini", name: "Sulafat", style: "s", model: null, rate: "+0%" }, drama: DRAMA_SETTINGS };
+  const written = { ...dramaFixture(), slug: "x" };
+  const settled = settle(written, { slug: "thunder", settings, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "flat-explainer" });
+  assert.equal(settled.look.preset, "flat-explainer", "the request's explainer preset beats the writer's");
+  assert.deepEqual(settled.characters, []);
+  assert.equal(settle(written, { slug: "y", settings, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "anime-2d" }).look.preset, "cinematic-3d", "any other request preset still yields to the writer's");
+
+  const box = sandbox();
+  const request = { id: "8b2e3d4c-5b6a-4f7e-9b8c-0d1e2f3a4b5c", premise: "為什麼雷聲總比閃電晚到？", title: null, source_guide: null, style_preset: "flat-explainer", target_minutes: 8, note: null };
+  const site = fakeSite({ answers: { planner: () => ({ slug: "why-thunder-is-late", title: "為什麼雷聲總比閃電晚到？", source_guide: null, source_urls: ["https://en.wikipedia.org/wiki/Speed_of_sound"], brief }) }, settings: { drama: DRAMA_SETTINGS, max_waiting_drafts: 1 }, dramaRequests: [request] });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-09-28T10:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = { ...smallRefs, drama: "the drama route", drama_example: dramaFixture(), drama_brief: brief };
+  assert.match(await automation.step(), /drama: why-thunder-is-late planned from the owner's request; outline sent/);
+  const planner = site.calls.run[0];
+  assert.equal(planner.variant, "explainer");
+  assert.match(planner.instructions, /illustrated "why" explainer/);
+  assert.equal(planner.payload.drama_settings.style_preset, "flat-explainer");
+  const state = automatedVideos(box.work).find((each) => each.slug === "why-thunder-is-late");
+  assert.equal(automation.variantOf(state), "explainer");
+  assert.equal(automation.variantOf({ ...state, style_preset: "ink-wash" }), null);
+  assert.equal(automation.variantOf({ ...state, series: { slug: "s", episode: 1 } }), "episode", "a series episode keeps its own variant");
+});
+
 test("an owner's drama request is planned first, its failed sheets go back to the writer, the gates wait for the owner, and a spent cap blocks the clips", async () => {
   const box = sandbox();
   const slug = "jingwei-fills-the-sea";
