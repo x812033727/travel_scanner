@@ -38,7 +38,9 @@ preserving the original document and publication state.
 - [x] Confirmed the read-only production v4 baseline and source SHA.
 - [x] Installed the re-audited four-locale candidate after correcting two
       rich-paragraph block types in external staging.
-- [ ] Complete peer review, tests and PR with the paired artwork.
+- [x] Independent peer review and local desktop/mobile previews passed.
+- [x] Focused pack lint, content-link API tests, i18n, task and diff checks
+      passed; open the paired draft PR next.
 
 ## How to verify
 
@@ -59,4 +61,8 @@ The corrected external combined candidate SHA-256:
 `7532179b8bcc2124bfdfb6f49ce4a480fc165dd1f8516b555a1f8e81567e496e`.
 It is staged in
 `C:\Users\x8120\.codex\article-localization-release\batch041-pair-b\onpage-draft`.
+The peer-reviewed installed pack SHA-256 is
+`f3c0bb3813c790509c8109222aba048378a45c23458c80c1a9a53a0ac7cc2f1b`.
+Final peer report SHA-256:
+`bf2c0098aca43ead8a04edb366d61e28415501e4e6c2384f98fd43d40933a70f`.
 No deployment, import or publication occurred.

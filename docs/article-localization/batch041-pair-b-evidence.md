@@ -39,16 +39,39 @@ all 32 block types/order, six H2s, four list items, six table rows, six
 original source URLs and checked dates. The two related-reading labels use
 `rich_paragraph` blocks with translated text-only inlines: neither target
 locale publication state is confirmed, so there is no premature public link.
-The pack diff adds locale documents only. Independent editorial and
-desktop/mobile page review are still pending.
+The pack diff adds locale documents only. After installation, two zh-CN
+wording fixes were made in the repository copy; the exact installed pack
+SHA-256 reviewed by the peer is
+`f3c0bb3813c790509c8109222aba048378a45c23458c80c1a9a53a0ac7cc2f1b`.
+Independent editorial and desktop/mobile review passed for this document and
+the corrected image SEO candidate. The final peer report SHA-256 is
+`bf2c0098aca43ead8a04edb366d61e28415501e4e6c2384f98fd43d40933a70f`;
+its eight-page gallery SHA-256 is
+`336e763cdaa481cabea6ee7096539aeed9724bb3d1d39659bc94af3314d24eae`.
+All 16 desktop/mobile renders passed without overflow, broken images or
+receipt hash mismatches. This is standalone local preview, not public-site QA.
 
 ## Remaining
 
-The image SEO four-language documents must be installed and reviewed after
+The corrected image SEO four-language candidate is staged outside the
+repository at
+`C:\Users\x8120\.codex\article-localization-release\batch041-pair-b\image-draft\image-seo-workflow.all-locales.candidate.json`
+with SHA-256 `4b6e1e3fc25c2ca2c5f0e796b5a999daae8e467f9bee7b1a1ecf28e207d54605`.
+The peer reviewed those exact bytes and verified the zh-CN diagram alt,
+keyword/record wording, and Taiwan website-editor scope in en/ja/ko. Its
+English length warning is advisory; the full source examples and cautions
+remain translated. The image SEO documents must be installed after
 #934 releases its source scope. The on-page source SHA-256 was
 `2f27bcb83a1e327b29ed7584d2bbfa3208954251c72aaf0e13192f07f813b9a7`.
 Image SEO source must use the corrected pack from #934, whose SHA-256 is
 `b10f6e1f633cff9a13ef0470af157fdd4d0b5616b560141c6e17819fda7c0357`.
 The current live zh-TW v4 predates that correction, so a guarded live source
-revision is required before four-language publication. Pack/link/asset/API/Web
-checks, CI, dry-run import, release and public visual verification are pending.
+revision is required before four-language publication. The source-shaped
+no-summary and unpublished-link warnings are expected.
+Local on-page pack lint passed with zero errors, content-link API tests passed
+3/3, `npm run check:i18n` validated five locales across 25 namespaces,
+`npm run check:tasks` validated 1,052 task files, and `git diff --check`
+passed. The English body-length warning is advisory; retaining all source
+examples and cautions takes priority over cutting content solely for the
+length guideline. CI, dry-run import, release and public visual verification
+are pending.

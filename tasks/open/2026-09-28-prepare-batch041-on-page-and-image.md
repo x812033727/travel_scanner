@@ -39,7 +39,8 @@ This task prepares the assets; article JSON is separately claimed.
 - [x] Translated title, description and every visible SVG text node.
 - [x] Rendered 16 SVGs in Edge 154, exported eight JPEG covers and reviewed
       the four-locale contact sheets.
-- [ ] Commit artwork and evidence; coordinate the focused content PR.
+- [x] Committed artwork and evidence; the paired documents are peer-reviewed
+      and a focused content PR is being prepared.
 
 ## How to verify
 
@@ -57,4 +58,6 @@ The read-only production baseline is
 Both articles are active/published, with zh-TW v4 matching the pre-correction
 repository source and four target locales absent. #934 proposes a one-inline
 zh-TW source-link correction for image SEO; this artwork task does not edit it.
+Independent local article-page review passed 16 desktop/mobile renders with
+gallery SHA-256 `336e763cdaa481cabea6ee7096539aeed9724bb3d1d39659bc94af3314d24eae`.
 No deployment, import, publication or public browser verification occurred.
