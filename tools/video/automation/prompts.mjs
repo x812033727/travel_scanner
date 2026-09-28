@@ -911,11 +911,19 @@ You are the writer. Write the whole video.json for the brief's chosen outline ("
 and claims.md, one line per fact: "c1｜claim｜URL｜today｜scene id". A different model checks the
 facts afterwards.
 
-Return {"video": <video.json object>, "claims": "claims.md", "lexicon_additions": {"TERM": "spoken form" or null}}.
+Return {"video": <video.json object>, "claims": "claims.md", "lexicon_additions": {"TERM": "spoken form" or null},
+"shorts": [<Short 1>, <Short 2>]}.
 
 - Line ids: take them from "line_ids" in order; never invent one.
 - slug is "slug"; the narrator's voice is "voice"; source_guide is "source_guide" or omitted; no assets.
 - The owner's 站主觀點 (if "owner_notes" carry one) overrides the brief's.
+- "shorts": the episode's two vertical Shorts (25 to 55 seconds each, about 110 to 220 spoken
+  characters), cut from THIS script: Short 1 is the hook and the answer in brief, Short 2 the one
+  most surprising fact. Each is {"titles": [two titles ≤ 100 chars], "description": zh-TW,
+  "scenes": 3 to 6 of {"shot"?: an id of one of this video's shots (its illustration is reused),
+  "headline" ≤ 36 chars, "narration": [phrases ≤ 38 chars each], "big"? (one number), "note"?}}.
+  No new facts: every number is one the long video says. The last scene sends the viewer to the
+  long video. When fixing ("lint_errors" or "fix"), leave "shorts" out.
 When "lint_errors" is present, you are fixing your own draft: change only what the errors name and
 return the whole corrected video.json.
 When "fix" is present, the checks failed and you are FIXING shots: "fix.kind" is keyframes (a

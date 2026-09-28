@@ -11,6 +11,7 @@ import { EXIT, main } from "../cli.mjs";
 import { readApprovals } from "../core/approvals.mjs";
 import { lookHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
 import { dramaFixture, fixture, sandbox } from "../core/fixtures/load.mjs";
+import { shortsFile } from "../shorts/episode.mjs";
 import { atomicWrite, readJson, ROOT } from "../core/paths.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { pipelineStatus } from "../core/state.mjs";
@@ -529,6 +530,25 @@ test("a drama is settled with the settings tab's preset, subtitles and music, an
 });
 
 const sha = (file) => createHash("sha256").update(readFileSync(file)).digest("hex");
+
+test("an explainer's drafted Shorts are saved with the fields the tool decides, and a bad draft is only noted", () => {
+  const box = sandbox("fixture-explainer", "explainer");
+  const drafted = JSON.parse(readFileSync(shortsFile(box.slug, box.root), "utf8")).map(({ slug: _slug, series: _series, episode: _episode, format: _format, locale: _locale, schema_version: _version, ...rest }) => rest);
+  const site = fakeSite({ settings: { drama: DRAMA_SETTINGS } });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-09-28T10:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  const state = { slug: box.slug, notes: [] };
+  assert.equal(automation.saveShorts(state, drafted), "2 Shorts drafted");
+  const saved = JSON.parse(readFileSync(shortsFile(box.slug, box.root), "utf8"));
+  assert.deepEqual(saved.map((doc) => [doc.slug, doc.series, doc.episode, doc.format]), [["fixture-explainer-short-1", "sothatswhy", "fixture-explainer", "shorts"], ["fixture-explainer-short-2", "sothatswhy", "fixture-explainer", "shorts"]]);
+  const before = readFileSync(shortsFile(box.slug, box.root), "utf8");
+  drafted[0].scenes[0].shot = "no-such-shot";
+  assert.equal(automation.saveShorts(state, drafted), "Shorts not saved (see notes)");
+  assert.match(state.notes[0], /"no-such-shot" is not a shot of fixture-explainer/);
+  assert.equal(automation.saveShorts(state, undefined), "Shorts not saved (see notes)");
+  assert.equal(readFileSync(shortsFile(box.slug, box.root), "utf8"), before, "a bad draft leaves the saved Shorts alone");
+  assert.match(instructionsFor("writer", "drama", "", "explainer"), /"shorts": the episode's two vertical Shorts/);
+});
 
 test("an explainer request plans, writes and checks with the explainer prompts, and is settled with no characters", async () => {
   const brief = [

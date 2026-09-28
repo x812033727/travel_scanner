@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-sothatswhy-explainer-preset
 title: So That's Why: flat-illustration explainer preset for the drama route (narrator only, all still shots)
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus
 claimed_at: 2026-09-28T07:40:48Z
 created_at: 2026-09-28T06:00:00Z
-completed_at:
+completed_at: 2026-09-28T09:34:48Z
 branch: claude/knowledge-series-planning-v84n79
 depends_on: []
 scope:
@@ -54,7 +54,7 @@ scope:
 - [x] API：`STYLE_PRESETS`、`StylePreset`、migration 0105 與整合測試、請求 API 測試。
 - [x] 後台：發起漫劇表單與設定頁的選單、五語標籤。
 - [x] 文件：`docs/videos/DRAMA.md`、skill 的 `references/drama.md`、系列 README。
-- [ ] 部署後在後台發起第一集（票 `2026-09-28-sothatswhy-pilot-3`）。
+- [x] 部署後在後台發起第一集：交給票 `2026-09-28-sothatswhy-pilot-3`。
 
 ## How to verify
 

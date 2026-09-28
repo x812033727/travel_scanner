@@ -7,7 +7,7 @@ import { fontDir, parseUnicodeRanges, covers } from '../render/fonts.mjs';
 import { locateFfmpeg, runTool } from '../assemble/ffmpeg.mjs';
 import { encodeWav, parseWav, requireNarrationFormat } from '../tts/wav.mjs';
 import { ROOT, isInside, resolveWorkBase, stopRequested } from '../core/paths.mjs';
-import { PROFILE, buildTimeline, esc, sceneHtml, sha256, srt, validate, verifyEvidence } from './core.mjs';
+import { EPISODE_SERIES, PROFILE, SERIES_BRAND, buildTimeline, esc, sceneHtml, sha256, srt, validate, verifyEvidence } from './core.mjs';
 
 const exec = promisify(execFile);
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -69,7 +69,7 @@ async function renderFrames(doc, timeline, evidence, directory, channel) {
   };
   const assets = new Map();
   const layout = [];
-  const fontCss = embeddedFont(JSON.stringify(doc) + evidence.filter(e=>e.file.endsWith('.html')).map(e=>e.bytes.toString('utf8')).join('') + 'MOKAAIR AI 真的可以？實測紀錄原創實測0123456789');
+  const fontCss = embeddedFont(JSON.stringify(doc) + evidence.filter(e=>e.file.endsWith('.html')).map(e=>e.bytes.toString('utf8')).join('') + JSON.stringify(SERIES_BRAND) + '0123456789');
   try {
     for (const item of evidence.filter(e => doc.scenes.some(s=>s.asset===e.path))) {
       let bytes;
@@ -162,9 +162,15 @@ async function speech(doc, directory, voice, ffmpeg, externalAudio) {
   return wavs;
 }
 
-export async function build({ file, sourceBase, workdir, voice='Microsoft Hanhan Desktop', channel=process.platform==='win32'?'msedge':undefined, audioDir }) {
-  const documentBytes = readFileSync(file);
-  const doc = JSON.parse(documentBytes);
+/**
+ * Build one Short. `document` (with `file` unset) is a script already resolved in memory, such
+ * as an episode's Short with its shots turned into keyframe evidence; `wavs` are its phrases'
+ * WAVs already synthesized (the channel voice), `narrator` how the manifest names them, and
+ * `longVideoId` the long episode's YouTube id for the description.
+ */
+export async function build({ file, document, sourceBase, workdir, voice='Microsoft Hanhan Desktop', channel=process.platform==='win32'?'msedge':undefined, audioDir, wavs: givenWavs, narrator, longVideoId }) {
+  const documentBytes = document ? Buffer.from(JSON.stringify(document)) : readFileSync(file);
+  const doc = document ?? JSON.parse(documentBytes);
   const errors = validate(doc);
   if (errors.length) throw new Error(errors.join('\n'));
   const evidence = verifyEvidence(doc,sourceBase);
@@ -173,7 +179,10 @@ export async function build({ file, sourceBase, workdir, voice='Microsoft Hanhan
   while (!existsSync(ancestor)) ancestor = path.dirname(ancestor);
   if (isInside(path.resolve(realpathSync(ancestor),path.relative(ancestor,base)),realpathSync(ROOT))) throw new Error('output symlink points inside repository');
   const codeHash = sha256(['build.mjs','core.mjs','speech.ps1'].map(f=>readFileSync(path.join(HERE,f),'utf8')).join('\n'));
-  const externalAudio = audioDir ? doc.scenes.flatMap(s=>s.narration).map((_s,i)=>readFileSync(path.join(audioDir,`${number(i)}.wav`))) : null;
+  const externalAudio = givenWavs ?? (audioDir ? doc.scenes.flatMap(s=>s.narration).map((_s,i)=>readFileSync(path.join(audioDir,`${number(i)}.wav`))) : null);
+  if (externalAudio && externalAudio.length !== doc.scenes.flatMap(s=>s.narration).length) throw new Error('one WAV per narration phrase required');
+  const external = Boolean(externalAudio);
+  const narratorLabel = narrator ?? (external ? 'external' : voice);
   const audioHash = externalAudio ? sha256(externalAudio.map(bytes=>sha256(bytes)).join('')) : null;
   const buildId = sha256(JSON.stringify({document:sha256(documentBytes),codeHash,voice,channel,audioHash})).slice(0,16);
   // Every attempt is separate: a failed rerun must never leave an old successful manifest next to new bytes.
@@ -210,14 +219,20 @@ export async function build({ file, sourceBase, workdir, voice='Microsoft Hanhan
   if (Math.abs(Number(finalLoud.input_i)+14)>1 || Number(finalLoud.input_tp)>-.8) throw new Error(`final loudness failed: ${finalLoud.input_i} LUFS, ${finalLoud.input_tp} dBTP`);
   writeFileSync(path.join(directory,'upload','zh-TW.srt'),srt(timeline));
   writeFileSync(path.join(directory,'upload','cover.png'),readFileSync(path.join(directory,'frames','000.png')));
-  const description = `${doc.titles[0]}\n\n${doc.description}\n\n實測範圍：${doc.experiment_summary}\n限制：${doc.limitations}\n旁白：${audioDir ? '外部提供旁白（需聽審）' : `${voice} 本機合成（試片）`}\n\n#AI #實測 #Shorts\n`;
+  const episode = doc.series === EPISODE_SERIES;
+  const narration = narrator ? `${narrator}（需聽審）` : external ? '外部提供旁白（需聽審）' : `${voice} 本機合成（試片）`;
+  const longLink = longVideoId ? `https://youtu.be/${longVideoId}` : null;
+  const description = episode
+    ? `完整版：${longLink ?? '長片上架後補上連結'}\n\n${doc.titles[0]}\n\n${doc.description}\n\n#原來如此事務所 #為什麼 #Shorts\n`
+    : `${doc.titles[0]}\n\n${doc.description}\n\n實測範圍：${doc.experiment_summary}\n限制：${doc.limitations}\n旁白：${narration}\n\n#AI #實測 #Shorts\n`;
   writeFileSync(path.join(directory,'upload','description.zh-TW.txt'),description);
   saveJson(path.join(directory,'upload','titles.json'),doc.titles);
   saveJson(path.join(directory,'timeline.json'),timeline);
   saveJson(path.join(directory,'checks.json'),{ok:true,profile:PROFILE,seconds:timeline.seconds,frames:timeline.frames,layout,loudness:finalLoud,video:{codec:video.codec_name,width:video.width,height:video.height,fps:video.r_frame_rate},audio:{codec:audio.codec_name,sample_rate:audio.sample_rate},evidence_verified:true,checked_at:new Date().toISOString()});
   const uploadFiles = ['final.mp4','zh-TW.srt','cover.png','description.zh-TW.txt','titles.json'];
-  const manifest = {schema_version:1,slug:doc.slug,build_id:buildId,status:'owner-review-required',created_at:new Date().toISOString(),document_sha256:sha256(documentBytes),code_sha256:codeHash,ffmpeg:version,narrator:audioDir?'external':voice,incremental_api_cost_ntd:audioDir?null:0,evidence:evidence.map(({file:_file,bytes:_bytes,...e})=>e),files:uploadFiles.map(name=>({name,sha256:sha256(readFileSync(path.join(directory,'upload',name)))}))};
+  const manifest = {schema_version:1,slug:doc.slug,build_id:buildId,status:'owner-review-required',created_at:new Date().toISOString(),document_sha256:sha256(documentBytes),code_sha256:codeHash,ffmpeg:version,narrator:narratorLabel,incremental_api_cost_ntd:external?null:0,...(episode?{episode:doc.episode,long_video_id:longVideoId??null}:{}),evidence:evidence.map(({file:_file,bytes:_bytes,...e})=>e),files:uploadFiles.map(name=>({name,sha256:sha256(readFileSync(path.join(directory,'upload',name)))}))};
   saveJson(path.join(directory,'upload','manifest.json'),manifest);
-  writeFileSync(path.join(directory,'upload','UPLOAD.md'),`# ${doc.titles[0]}\n\n狀態：試片完成，待站主審片。尚未上傳、發布或排程。\n\n1. 播放 final.mp4，核對台灣中文旁白、字幕、每次揭曉和手機介面遮擋。\n2. 使用 titles.json 的標題與 description.zh-TW.txt；在 Studio 上傳成私人。\n3. 上傳 zh-TW.srt，使用 cover.png 作封面參考。Shorts 封面能否選取，以手機版 Studio／YouTube 的實際介面為準。\n4. 由站主決定合成內容揭露、兒童與付費宣傳欄位、公開時間。影片為工具測試與原創圖形，海報活動為虛構。\n5. 公開後記錄影片 ID 和時間，24h／72h／7d 匯出 Studio 指標。\n\n${doc.limitations}\n\nSHA-256 見 manifest.json。技術檢查通過不等於真人聽審或發布成功。\n`);
+  const episodeSteps = episode ? `\n長片：${doc.episode}。${longLink ? `說明欄第一行已連到 ${longLink}；上傳後在 Studio 的「相關影片」也選這支長片。` : '長片還沒有 YouTube id：長片上架後把說明欄第一行換成它的網址，並在「相關影片」選它，再公開這支 Short。'}\n` : '';
+  writeFileSync(path.join(directory,'upload','UPLOAD.md'),`# ${doc.titles[0]}\n\n狀態：試片完成，待站主審片。尚未上傳、發布或排程。\n${episodeSteps}\n1. 播放 final.mp4，核對台灣中文旁白、字幕、每次揭曉和手機介面遮擋。\n2. 使用 titles.json 的標題與 description.zh-TW.txt；在 Studio 上傳成私人。\n3. 上傳 zh-TW.srt，使用 cover.png 作封面參考。Shorts 封面能否選取，以手機版 Studio／YouTube 的實際介面為準。\n4. 由站主決定合成內容揭露、兒童與付費宣傳欄位、公開時間。${episode ? '畫面是長片的 AI 生成插圖，要勾合成內容揭露。' : '影片為工具測試與原創圖形，海報活動為虛構。'}\n5. 公開後記錄影片 ID 和時間，24h／72h／7d 匯出 Studio 指標。\n\n${doc.limitations ?? ''}\n\nSHA-256 見 manifest.json。技術檢查通過不等於真人聽審或發布成功。\n`);
   return {directory,final,seconds:timeline.seconds,buildId,status:manifest.status};
 }

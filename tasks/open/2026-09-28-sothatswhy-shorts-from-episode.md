@@ -1,17 +1,23 @@
 ---
 id: 2026-09-28-sothatswhy-shorts-from-episode
 title: So That's Why: cut two Shorts from each long episode's keyframes and script
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus
+claimed_at: 2026-09-28T09:34:49Z
 created_at: 2026-09-28T06:00:00Z
 completed_at:
-branch:
+branch: claude/knowledge-series-planning-v84n79
 depends_on: []
 scope:
   - tools/video/shorts/
+  - tools/video/core/fixtures/explainer/shorts.json
+  - tools/video/automation/prompts.mjs
+  - tools/video/automation/flow.mjs
+  - tools/video/automation/automation.test.mjs
+  - docs/videos/so-thats-why/README.md
+  - docs/videos/ai-shorts/README.md
 ---
 
 # So That's Why: cut two Shorts from each long episode's keyframes and script
@@ -22,16 +28,27 @@ scope:
 
 ## Definition of done
 
-- [ ] Shorts 規格接受 `series: "sothatswhy"`，場景可以引用長片的關鍵影格（直式重新構圖）。
-- [ ] 旁白可以用正式頻道聲音（伺服器 TTS）或長片已錄好的句子。
-- [ ] 最後一格固定導回長片；說明欄第一行留長片連結的位置。
-- [ ] 測試涵蓋新 series 與關鍵影格引用。
+- [x] Shorts 規格接受 `series: "sothatswhy"`（要 `episode`，不要實驗欄位與 evidence），場景用 `shot` 引用長片的關鍵影格；建片時轉成綁雜湊的 evidence（`core.mjs` 的 `episodeShort`）。
+- [x] 旁白可以用正式頻道聲音：`--voice server` 用長片的 `voice` 經旁白伺服器逐句合成（`voice.mjs`），也可以給 Windows 聲音或 `--audio-dir`。
+- [x] 最後一格固定「完整版在長片 ▶」；說明欄第一行是長片連結（沒有 YouTube id 時寫待補，`UPLOAD.md` 提醒）。
+- [x] 解說版撰稿順手寫 `docs/videos/<slug>/shorts.json`；寫壞只記 notes，不擋長片。
+- [x] 測試涵蓋新 series、關鍵影格引用與雜湊、品牌、伺服器聲音、工人存檔。
+- [ ] 在有 ffmpeg 的機器對一集真的跑 `from-episode` 出片（併在試片票 `2026-09-28-sothatswhy-pilot-3`）。
 
 ## Steps
 
-- [ ] 讀 `tools/video/shorts/core.mjs` 的 schema 與 `docs/videos/ai-shorts/README.md`。
-- [ ] 加欄位、構圖、聲音來源；補測試。
+- [x] 讀 `tools/video/shorts/core.mjs` 的 schema 與 `docs/videos/ai-shorts/README.md`。
+- [x] `core.mjs`：series 分支驗證、`SERIES_BRAND`、`episodeShort`；`episode.mjs`：讀 shorts.json 與關鍵影格；`voice.mjs`；`build.mjs`：記憶體中的腳本與音檔、依 series 的說明欄與上傳說明；`cli.mjs`：`from-episode`。
+- [x] 工人與提示詞：`writer:explainer` 回傳 `shorts`，`Automation.saveShorts` 存檔。
+- [x] 文件：系列 README 的 Shorts 一節、ai-shorts README。
 
 ## How to verify
 
-`node --test tools/video/shorts/*.test.mjs`；對一支試片跑 `validate` 與 `build`。
+- `node --test tools/video/shorts/*.test.mjs tools/video/automation/automation.test.mjs`，`npm run test:tools`。
+- 有 ffmpeg 與 Chromium、長片已畫好關鍵影格時：`node tools/video/shorts/cli.mjs from-episode --slug <slug> --check`，再加 `--workdir <repo 外>` 出兩支；看 `upload/final.mp4` 與 `UPLOAD.md`。
+
+## Notes
+
+- 2026-09-28 的開發容器沒有 ffmpeg，完整 `build` 沒跑過；驗證、雜湊綁定、品牌 HTML、伺服器聲音（假 fetch）、工人存檔都有測試。第一次真的出片放在試片票。
+- 直式構圖沿用既有 `.asset` 版位（橫式關鍵影格等比縮進內容區、置中），沒有另外裁切；站主看過第一支再決定要不要改成裁 4:5。
+- `--voice server` 每句一個請求，量得到每句的真實長度；計費照旁白伺服器的字數。

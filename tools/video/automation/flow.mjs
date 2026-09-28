@@ -29,6 +29,7 @@ import { instructionsFor, parseAnswer, references } from "./prompts.mjs";
 import { rewriteProblems } from "./rewrite.mjs";
 import { advanceCompilation, startCompilation } from "./compilation.mjs";
 import { castFrom, episodeBrief, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
+import { episodeShortsProblems, shortsFile } from "../shorts/episode.mjs";
 
 export const STATE_FILE = "auto.json";
 const GLOBAL_FILE = "auto-state.json";
@@ -1249,9 +1250,30 @@ export class Automation {
     saveState(this.workdir(state.slug), state);
     if (problem) return this.retryLater(state, "writer", `the script ${problem}`);
     this.cleared(state, "writer");
+    const shorts = this.variantOf(state) === "explainer" ? this.saveShorts(state, answer.shorts) : null;
     saveState(this.workdir(state.slug), state);
     await report(this.ctx, this.api, state, "fact-checked");
-    return `${state.slug}: script drafted and passes lint`;
+    return `${state.slug}: script drafted and passes lint${shorts ? `; ${shorts}` : ""}`;
+  }
+
+  /**
+   * An explainer's two Shorts (docs/videos/so-thats-why/), drafted with its script: the fields the
+   * tool decides are set here, and shorts.json is written only when both Shorts fit this video.
+   * A bad draft is noted and never holds the long video back; the Shorts can be written later.
+   */
+  saveShorts(state, drafted) {
+    const dir = docDir(state.slug, this.ctx.root);
+    const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    const shorts = Array.isArray(drafted)
+      ? drafted.map((doc, index) => ({ ...doc, schema_version: 1, slug: `${state.slug}-short-${index + 1}`, format: "shorts", locale: "zh-TW", series: "sothatswhy", episode: state.slug }))
+      : drafted;
+    const problems = episodeShortsProblems(shorts, video);
+    if (problems.length) {
+      state.notes.push(`the drafted Shorts were not saved: ${problems.slice(0, 3).join("; ")}`);
+      return "Shorts not saved (see notes)";
+    }
+    writeFileSync(shortsFile(state.slug, this.ctx.root), `${JSON.stringify(shorts, null, 2)}\n`);
+    return "2 Shorts drafted";
   }
 
   async verify(state) {
