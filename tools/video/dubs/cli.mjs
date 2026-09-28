@@ -40,6 +40,7 @@ function options(args) {
       "dry-run": { type: "boolean" },
       redo: { type: "string" },
       force: { type: "boolean" },
+      "line-by-line": { type: "boolean" },
       style: { type: "string" },
     },
     strict: true,
@@ -128,9 +129,12 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
   const redo = values.redo ? flaggedLines(readJson(path.resolve(values.redo))) : new Set();
   const clipCurrent = (request, line) => !values.force && [line.key, request.key].includes(cache.lines[line.id]) && existsSync(path.join(files.audio, `${line.id}.wav`));
   const current = (request) => !request.lines.some((line) => redo.has(line.id)) && request.lines.every((line) => clipCurrent(request, line));
+  // A whole scene goes as one request and is cut at its silences, unless only some of its lines
+  // are stale or --line-by-line asks for one request a line: a split that fails is paid twice, and
+  // one that passes by mistake leaves a neighbouring line inside a clip.
   const retakes = (request) => {
     const stale = request.lines.filter((line) => redo.has(line.id) || !clipCurrent(request, line));
-    return stale.length && stale.length < request.lines.length ? stale : null;
+    return stale.length && (values["line-by-line"] || stale.length < request.lines.length) ? stale : null;
   };
   const estimateFor = (request) => {
     const lines = retakes(request);

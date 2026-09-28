@@ -62,7 +62,7 @@
 
 ### 檔案與指令
 
-新指令 `node tools/video/cli.mjs dub --slug <slug> --locale en,ja,ko,zh-CN [--format m4a|mp3|wav] [--dry-run] [--redo <flags>]`，在工作區寫：
+新指令 `node tools/video/cli.mjs dub --slug <slug> --locale en,ja,ko,zh-CN [--format m4a|mp3|wav] [--dry-run] [--redo <flags>] [--line-by-line]`，在工作區寫：
 
 | 檔案 | 內容 |
 | --- | --- |
@@ -70,6 +70,8 @@
 | `dubs/<locale>/timeline.json` | 這條配音每句的開始與結束格、加速倍率、`speech_hash`、翻譯檔的雜湊 |
 | `dubs/<locale>/fit.json` | 每個視窗的餘裕或超出、量到的語速、塞不下的句子與預算 |
 | `dubs/<locale>.m4a` | 上傳的音軌：兩段式 loudnorm 到 −14 LUFS／−1 dBTP，AAC-LC 立體聲 48 kHz 384 kbps，與 `final.mp4` 的聲音同一條編碼鏈；Studio 不收再用 `--format mp3`（libmp3lame 320 kbps）或 `wav` |
+
+預設一個場景送一個請求，再從停頓切成每句；切不出和文字對得上的段落時，那個場景會逐句重錄，兩次都計費，而切錯卻剛好通過的段落會把鄰句夾進同一段音檔。`--line-by-line` 讓還沒錄的句子一句一個請求，字元只算一次：2026-09-28 的英文配音 13 個場景有 7 個切不開，整條花了劇本字數的 1.5 倍，另外有 5 段音檔夾了鄰句。
 
 `check-audio --locale <locale>` 對配音做和 zh-TW 旁白一樣的檢查：伺服器逐句轉寫（要帶語言，轉寫提示不再寫死「台灣國語、繁體字」），文字一樣的直接過，其餘交給 Jev。拼音「同音」規則與語助詞規則只在中文語系用。被標的句子 `dub --redo` 重錄，最多兩輪。
 

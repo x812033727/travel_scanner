@@ -292,6 +292,28 @@ test("dub writes a track per locale, speeds up a tight window, and reports a win
   assert.match(redo.out.stdout, /ko: 1 requests synthesized/);
 });
 
+test("--line-by-line sends one request a line, so a scene is never paid for twice", async () => {
+  const box = sandbox();
+  const doc = geminiDoc(fixture());
+  writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify(doc, null, 2)}\n`);
+  mkdirSync(path.join(box.dir, "i18n"), { recursive: true });
+  writeFileSync(path.join(box.dir, "i18n", "en.json"), JSON.stringify(translationFor(doc, (line) => `EN ${line.id}`)));
+  const server = fakeServer();
+  const ffmpeg = fakeFfmpeg();
+  assert.equal(await main(["tts", "--slug", box.slug], capture(box, server, ffmpeg).ctx), EXIT.ok);
+
+  const before = server.calls.length;
+  const run = capture(box, server, ffmpeg);
+  assert.equal(await main(["dub", "--slug", box.slug, "--locale", "en", "--line-by-line"], run.ctx), EXIT.ok);
+  const bodies = server.calls.slice(before).filter((call) => !call.url.endsWith("/status")).map((call) => JSON.parse(call.init.body));
+  const lines = [...eachLine(doc)].length;
+  assert.ok(lines > [...new Set([...eachLine(doc)].map(({ scene }) => scene.id))].length, "the fixture has scenes of more than one line");
+  assert.equal(bodies.length, lines, "one request for each line");
+  assert.ok(bodies.every((body) => body.segments.length === 1), "each request carries a single line");
+  assert.doesNotMatch(run.out.stdout, /fallback/);
+  assert.ok(existsSync(dubArtifacts(box.workdir, "en").track("m4a")));
+});
+
 test("dub refuses what it cannot do: an Azure voice, a missing timeline, a bad locale or format", async () => {
   const box = sandbox();
   const server = fakeServer();
