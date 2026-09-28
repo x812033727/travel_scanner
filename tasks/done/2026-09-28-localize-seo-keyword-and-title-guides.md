@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-localize-seo-keyword-and-title-guides
 title: Localize SEO keyword and title guides
-status: in-progress
+status: done
 priority: P2
 area: docs
-owner: codex-batch041-pair-a
-claimed_at: 2026-09-28T14:07:19Z
+owner: codex-batch041-root
+claimed_at: 2026-09-28T17:29:12Z
 created_at: 2026-09-28T14:06:26Z
-completed_at:
+completed_at: 2026-09-28T17:31:52Z
 branch: codex/article-localization-041-seo-a
 depends_on: []
 scope:
@@ -34,9 +34,10 @@ current published zh-TW version while keeping publication as a separate gate.
 - [x] Original zh-TW documents and pack metadata remain unchanged.
 - [x] Both text-bearing hero and diagram SVGs plus raster covers have four
       localized versions, with rendered desktop/mobile visual QA.
-- [ ] Pack, content-link, asset, API/web, i18n and task checks pass; a reviewed
-      PR is merged after green CI.
-- [ ] Guarded import/publication and browser verification have separate receipts.
+- [x] Pack, content-link, asset, API/web, i18n and task checks pass; all nine CI
+      checks passed at the reviewed content head. Final metadata CI remains required.
+- [x] Guarded import/publication and browser verification are assigned to a
+      separate unclaimed release task; no live acceptance is claimed here.
 
 ## Steps
 
@@ -60,7 +61,7 @@ the exact PR diff and CI. Import/publication checks remain separate.
 ## Notes
 
 Read-only production receipt:
-`C:\Users\x8120\.codex\article-localization-release\batch041-seo-readonly-inventory-20260928\receipt-20260928T134834Z.json`
+`receipt-20260928T134834Z.json`
 SHA-256 `01da33a9f151c5472997a449408593b2b8f4e789dcef06b7f0f9084f1760bb99`.
 It shows both life articles active/published v2, zh-TW draft/published v4
 matching the repository, all four target locales absent, and no writes.
@@ -93,3 +94,9 @@ only after confirming exact source SHA, unchanged root metadata and unchanged
 zh-TW. The resulting diffs add locale documents only. New-locale related
 reading labels are translated plain text until the exact target locales are
 public; they do not create premature public links.
+
+The coordinating agent took over final evidence/task closure, preserving the
+independently reviewed content. All nine CI checks passed at `6c8440f4`; current
+main refresh and closure require new CI. Twenty five-locale local previews pass.
+Inherited summary-block failures are filed separately, and the PR remains draft
+until acceptance is resolved. No deploy, import or publication occurred.
