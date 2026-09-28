@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-require-complete-story-coverage-for-legacy
 title: Require complete story coverage for legacy news evidence hashes
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: codex-pr-merge-watch
 claimed_at: 2026-09-28T05:17:00Z
 created_at: 2026-09-28T05:16:42Z
-completed_at:
+completed_at: 2026-09-28T06:51:38Z
 branch: codex/pr892-evidence-guard
 depends_on: []
 scope:
@@ -33,7 +33,7 @@ The merge watch reproduced this on exact head a82d08d7 with synthetic HTML.
 - [x] Existing complete legacy text plus removed chrome remains compatible.
 - [x] Changed-body, truncated-body and partial-line cases fail closed in regression tests.
 - [x] Focused tests, lint and typing pass.
-- [ ] Current-head CI passes after the fix is pushed.
+- [x] Current-head CI passes after the fix is pushed.
 
 ## Steps
 
@@ -62,10 +62,14 @@ Run ruff on changed Python files and mypy on news automation and its test module
   Receipts: test-results/pr892-before-guard.log and pr892-after-guard.log.
 - Rebased only this fix onto the author's rewritten head 812004c0, preserving the additional
   trusted-source configuration. The same 30 tests pass again on that base
-  (test-results/pr892-rebased-guard.log). The fix is not pushed yet: the author's current CI
-  is still running. Wait for it to finish and recheck the remote head before a fast-forward push.
+  (test-results/pr892-rebased-guard.log). Waited for the author's CI and rechecked their
+  subsequent heads before pushing, preserving all intervening author commits.
 - The author's 18bfc9bd run passed, then their branch was rebased again onto main9081d0a2
   as 8b3640ac. The news source/test files are identical across these bases; only main's CI
   evidence fix and season review package changed. Rebased only our guard onto 8b3640ac.
-  Apply one corrective fast-forward push and let its full CI finish, avoiding further
-  updates while that run is active. The PR remains draft until current-head validation passes.
+  Pushed the guard safely as da9bd6bbc151b65a99e04faf652468469a4f62e5. All nine relevant checks
+  on that head passed, including CI run 36386153434 (full API, web, containers and smoke).
+  Its exact API tree d232030dfa030740e1ee771c8c08e174252df844 matches the locally tested tree.
+- Main subsequently advanced to 79e26fcd. The completed guard still needs the normal base
+  update and latest-head CI before PR merge; this task closes only the implemented and
+  validated evidence-coverage bug, not production backfill or the broader hash migration.
