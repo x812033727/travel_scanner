@@ -2780,6 +2780,182 @@
     "compile": "做合集",
     "docNote": "备注："
   },
+  "videoStories": {
+    "title": "品牌故事",
+    "intro": "一部作品、一个故事一集，按企划清单免关卡制作：工人在每日数量内依次开始，每支什么时候上架由你决定。",
+    "loadError": "品牌故事读取失败：{message}",
+    "kind": "品牌故事",
+    "quota": {
+      "title": "工人现在能不能开始新故事",
+      "todayLabel": "今天已开始",
+      "inFlightLabel": "同时进行",
+      "awaitingLabel": "可以上架、还没上传",
+      "monthLabel": "本月已开始",
+      "readyLabel": "待做",
+      "today": "{count}／{limit} 支（台北 {day}）",
+      "todayNoLimit": "{count} 支，不限数量（台北 {day}）",
+      "of": "{count}／{limit}",
+      "count": "{count} 个",
+      "holdTitle": "现在不开始新故事：",
+      "go": "工人下一轮会开始下一个故事。",
+      "line": "今天 {today} · 同时进行 {inFlight}／{maxInFlight} · 可以上架 {awaiting}／{buffer} · 待做 {ready}"
+    },
+    "holds": {
+      "paused": "作品已暂停；按“继续”之后，工人才会开始下一个故事。",
+      "notActive": "作品不在进行中。",
+      "per_day": "今天（台北 {day}）已经开始 {started} 支，达到每日上限 {perDay} 支；台北时间过了午夜才开始下一个。",
+      "in_flight": "正在制作的故事有 {inFlight} 支，达到同时进行的上限 {maxInFlight} 支（在设置标签页调整）。",
+      "per_month": "本月已经开始 {month} 集，达到每月上限 {perMonth} 集（在设置标签页调整）。",
+      "upload_buffer": "可以上架、还没上传的故事已有 {awaiting} 支；满 {buffer} 支就先不开始新的。上传并粘贴 YouTube 链接后会继续。",
+      "none_ready": "没有待做的故事：清单里的故事都开始过了，或还没导入。"
+    },
+    "permission": {
+      "title": "你可以查看故事，但不能修改。",
+      "needs": "修改每日数量、暂停、跳过或恢复故事，以及写入导入，都需要 {capability} 权限，“{content}”和“{owner}”角色拥有该权限。导入的试运行你仍然可以使用。",
+      "roles": "你当前的角色：{roles}。",
+      "noRoles": "你的账号没有后台角色。"
+    },
+    "perDay": {
+      "label": "每天几支",
+      "none": "不限每日数量",
+      "option": "每天 {count} 支",
+      "save": "修改每日数量",
+      "help": "按台北时间的日期计算。企划的排程是每天两支（中午与晚上八点）；前几支还在检查时，先设少一点。"
+    },
+    "chapters": {
+      "hook": "钩子",
+      "origin": "起点与人物",
+      "idea": "关键点子",
+      "engine": "生意怎么运作",
+      "turn": "代价或反转",
+      "now": "现况与一句观察"
+    },
+    "sourceKinds": {
+      "official": "官方",
+      "court": "法院文件",
+      "academic": "学术",
+      "archive": "档案馆藏",
+      "reference": "参考资料",
+      "news": "新闻",
+      "book": "书籍"
+    },
+    "plan": {
+      "title": "{id} 的企划",
+      "question": "开场要回答的问题",
+      "chapters": "六段要点",
+      "takeaway": "留给观众的一句观察",
+      "facts": "必查事实（{count} 条）",
+      "cites": "来源 {sources}",
+      "core": "标题依靠这条",
+      "attributed": "要说明是谁的说法",
+      "reviewerOnly": "只有核查者读得到证据",
+      "sources": "来源（{count} 个）",
+      "checked": "{date} 查过",
+      "caveats": "核查者的提醒"
+    },
+    "list": {
+      "title": "故事清单",
+      "category": "分类",
+      "state": "状态",
+      "all": "全部（{count}）",
+      "option": "{label}（{count}）",
+      "none": "还没有故事：用下方的表单导入企划清单。",
+      "noMatch": "没有符合筛选条件的故事。",
+      "slot": "第 {day} 天 {slot}",
+      "number": "第 {number} 个",
+      "openPlan": "看企划",
+      "closePlan": "收起企划",
+      "openVideo": "打开视频",
+      "youtube": "YouTube",
+      "skip": "跳过",
+      "restore": "恢复",
+      "startedSkipped": "开始制作过、视频已放弃，不能恢复",
+      "skipConfirm": "要跳过 {id}“{title}”吗？工人不会制作它；还没开始的故事之后可以恢复。"
+    },
+    "categories": {
+      "everyday": "日常用品与隐形标准",
+      "asia-brand": "日韩台旅途品牌",
+      "tech": "科技与软件"
+    },
+    "regions": {
+      "global": "全球",
+      "jp": "日本",
+      "kr": "韩国",
+      "tw": "台湾"
+    },
+    "states": {
+      "waiting": "待做",
+      "making": "制作中",
+      "ready": "可以上架",
+      "scheduled": "已排程",
+      "published": "已上架",
+      "done": "完成",
+      "skipped": "已跳过",
+      "dropped": "视频已放弃"
+    },
+    "ready": {
+      "title": "可以上架",
+      "help": "每个故事都预先填好下一个空的上架时段：按它在企划里的时段（中午 12:00 或晚上 8:00，台北时间），排在已经排定的视频之后；需要的话可以修改。",
+      "slot": "下一个空的时段：{time}（台北时间）",
+      "planned": "企划排在第 {day} 天 {slot}。",
+      "loading": "正在读取上传包…"
+    },
+    "import": {
+      "title": "导入企划清单",
+      "again": "再导入一次企划清单",
+      "help": "选择或粘贴编译好的 stories.json。第一次提交一律是试运行，什么都不写入；文件没有问题，才能确认写入。文件里写着是哪一部作品，作品还没有就按文件创建。",
+      "helpSeries": "文件必须是 {slug} 的。还没开始的故事会更新、新的会补上，已经开始的保持原样。",
+      "file": "stories.json 文件",
+      "fileChosen": "已选 {name}（{size} MB）",
+      "paste": "或粘贴文件内容",
+      "pastePlaceholder": "把 stories.json 的内容粘贴在这里",
+      "invalidJson": "这不是有效的 JSON：{message}",
+      "noStories": "文件里没有故事清单（stories）。",
+      "parsed": "{count} 个故事，作品 {slug}。",
+      "noSlug": "文件没有写是哪一部作品（series.slug），不能导入。",
+      "otherSeries": "文件是 {file} 的，不是 {series}：试运行会拒绝。",
+      "limit": "只导入前几个故事",
+      "limitPlaceholder": "全部",
+      "perDay": "创建作品时的每日数量",
+      "perDayFile": "按文件",
+      "limitHelp": "按制作顺序取前几个；试做导入 2 个，之后不填数字再导入一次，就会补上其余的。",
+      "perDayHelp": "每日数量只在这次导入创建作品时使用；作品创建之后，到作品页修改。",
+      "checking": "试运行中…",
+      "check": "试运行",
+      "writing": "写入中…",
+      "apply": "确认写入（新增 {create}、更新 {update}）",
+      "applyNeedsRole": "写入需要 {capability} 权限（“{content}”或“{owner}”角色）。",
+      "nothingToWrite": "试运行的结果没有要写入的变更。",
+      "readError": "文件读取失败：{message}",
+      "tooLarge": "这次要发送 {size} MB，导入最多 {max} MB。",
+      "error": "没有导入：{message}",
+      "reportTitle": "导入结果",
+      "dryRunTitle": "试运行结果：什么都没有写入",
+      "writtenTitle": "已写入",
+      "unchangedTitle": "没有变更：作品里已经是这些故事",
+      "stale": "试运行之后，文件或选项改过了：写入前请再试运行一次。",
+      "seriesExists": "作品 {slug} 已经存在；导入不会修改作品本身。",
+      "seriesWouldBeCreated": "会按文件创建作品 {slug}。",
+      "seriesCreated": "已按文件创建作品 {slug}。",
+      "counts": "文件有 {inFile} 个故事，这次导入 {imported} 个：新增 {create}、更新 {update}、不动 {leave}、拒绝 {refuse}。",
+      "rows": {
+        "create": "新增（{count}）",
+        "update": "更新（{count}）",
+        "renumbered": "改了顺序（{count}）",
+        "unchanged": "没有变（{count}）",
+        "started": "已开始、保持原样（{count}）",
+        "refused": "拒绝（{count}）"
+      },
+      "differsTitle": "作品与文件不同的字段（导入不会修改）：",
+      "differs": "文件 {file}，作品 {series}",
+      "problemsTitle": "问题（{count} 个）：什么都没有写入",
+      "notesTitle": "附注"
+    },
+    "page": {
+      "facts": "{stories} 个故事 · 完成 {done} · 每支约 {minutes} 分钟 · 媒体 US${usd}",
+      "imageModel": "图片模型 {model}"
+    }
+  },
   "videoYoutube": {
     "vps": {
       "open": "VPS 独立上传",
