@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-shorts-youtube-auto
 title: Video shorts Y1: the site schedules Shorts on YouTube by itself under the owner's standing consent
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-fable-5-1-shorts
 claimed_at: 2026-09-28T06:55:57Z
 created_at: 2026-09-28T03:30:00Z
-completed_at:
+completed_at: 2026-09-28T10:12:57Z
 branch: claude/video-shorts-youtube-auto
 depends_on:
   - 2026-09-28-video-shorts-api
