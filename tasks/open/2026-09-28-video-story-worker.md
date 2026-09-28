@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-video-story-worker
 title: 工人的故事流程：逐章撰稿、查核、審稿與提示詞
-status: open
+status: in-progress
 priority: P1
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-video-story-worker
+claimed_at: 2026-09-28T11:54:26Z
 created_at: 2026-09-28T03:31:14Z
 completed_at:
-branch:
+branch: claude/video-story-worker
 depends_on:
   - 2026-09-28-video-story-api-series-kind
   - 2026-09-28-video-story-core-narrator-only
@@ -71,3 +71,4 @@ npm run test:tools
 - 票 `core-narrator-only`（PR #897）留下的合約：`series.json` 要有頂層的 `kind: "story"` 與 `names`；`video.json` 有 `series` 時要有對得上的 `slug`／`episode`、`characters`、`visual_tier: "stills"`。PR #870 之後每支漫劇都有 `script approved` 這一步，故事由工人在本機核准。`review-push` 要明確帶 `--gate`。
 - 票 `check-audio-batching`（PR #896）之後，一個故事的旁白檢查最多 3 次 Jev 呼叫；Jev 額度用完時 `check-audio` 以 4 結束，已經付過的判定會留著。
 - 票 `storyboard-sheets`（PR #895）之後，超過 47 鏡的分鏡送審只送聯絡表與待修的鏡頭；聯絡表的頁是 `keyframes/manifest.json` 的 `contact_sheets`。
+- 2026-09-28 認領（claude-opus-5-5-video-story-worker）用了 `--force`：相依的 `video-story-api-series-kind` 的 PR #910 已在 2026-09-28T11:49Z 合併（main 的 `3156370b8`），只是票還沒跑 `done`；scope 與 PR #870 的三張 `review` 票（`video-dubs-worker`、`video-drama-room-worker`、`video-split-settings-worker`）重疊，#870 早已合併。那幾張票沒有動。
