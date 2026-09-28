@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-shorts-admin-tab
 title: Video shorts W1: the Shorts tab on /admin/videos with the calendar, the library, the 9:16 preview and the numbers
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: claude-fable-5-1-shorts
 claimed_at: 2026-09-28T10:21:21Z
 created_at: 2026-09-28T03:25:00Z
-completed_at:
+completed_at: 2026-09-28T11:26:26Z
 branch: claude/video-shorts-admin-tab
 depends_on:
   - 2026-09-28-video-shorts-api
