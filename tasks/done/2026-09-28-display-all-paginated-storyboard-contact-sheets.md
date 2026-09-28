@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-display-all-paginated-storyboard-contact-sheets
 title: Display all paginated storyboard contact sheets in review
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: codex-pr-merge-watch
 claimed_at: 2026-09-28T07:31:27Z
 created_at: 2026-09-28T07:28:37Z
-completed_at:
+completed_at: 2026-09-28T07:45:19Z
 branch: codex/pr895-storyboard-pages
 depends_on: []
 scope:
@@ -25,16 +25,16 @@ can therefore reach its approval screen with almost every image invisible.
 
 ## Definition of done
 
-- [ ] Every uploaded contact sheet can be inspected in page order before deciding.
-- [ ] A shot without its individual image points to its sheet when that mapping exists.
-- [ ] Legacy one-sheet reviews and existing decisions keep working; malformed metadata
+- [x] Every uploaded contact sheet can be inspected in page order before deciding.
+- [x] A shot without its individual image points to its sheet when that mapping exists.
+- [x] Legacy one-sheet reviews and existing decisions keep working; malformed metadata
       cannot render an unuploaded file or duplicate a page.
 
 ## Steps
 
-- [ ] Add failing review-card coverage for the paged tool payload and legacy payload.
-- [ ] Render uploaded sheets and shot-to-page navigation with existing translated labels.
-- [ ] Verify scoped tests, lint, task integrity and the final PR CI.
+- [x] Add failing review-card coverage for the paged tool payload and legacy payload.
+- [x] Render uploaded sheets and shot-to-page navigation with existing translated labels.
+- [x] Verify scoped tests, lint, translations and diff integrity; require latest PR CI before merge.
 
 ## How to verify
 
@@ -42,6 +42,18 @@ Run the new storyboard page component tests with admin-video-reviews.test.tsx,
 scoped ESLint, npm run check:i18n, npm run check:tasks and git diff --check.
 
 ## Notes
+
+- Before the fix: three paged-file cases failed because there were no displayed page
+  images; the legacy single-sheet case passed. After the fix: all four pass, plus all
+  25 existing review-page tests (29 total). The 95-shot fixture verifies four sheets
+  in page order, the retained individual keyframe, all 23 final-page links and read-only
+  approval permissions. Other cases cover missing metadata, missing files and duplicates.
+- Scoped ESLint, five-locale i18n validation and diff checks passed. Logs are retained
+  under test-results/pr895-ui-before-forks.log, pr895-ui-after.log and pr895-i18n.log.
+  The first threads run timed out starting its worker, before any tests; local fork
+  workers then executed both the negative and corrected runs. No timeout, assertion,
+  retry or repository runner setting was weakened. Full typecheck/browser CI and the
+  synchronized final head remain merge gates, not claims made by these component tests.
 
 - The collision survey found no open PR touching this component and no checked-out
   video-review-manga-workflow/video-languages branch. The claim tool still sees the

@@ -22,17 +22,17 @@ describe("storyboard contact sheets", () => {
     const { container } = show(review({ shots, sheets, omitted: 94 }, [...pages].reverse().concat(keyframe)));
     expect(Array.from(container.querySelectorAll("details img")).map(img => img.getAttribute("src"))).toEqual(pages.map(url));
     expect(screen.getByRole("img", { name: "shot-1" }).getAttribute("src")).toBe(url(keyframe));
-    expect(screen.getAllByRole("link", { name: "聯絡表 4 / 4" })).toHaveLength(23);
-    for (const link of screen.getAllByRole("link", { name: "聯絡表 4 / 4" })) expect(link.getAttribute("href")).toBe(url(pages[3]));
+    expect(screen.getAllByRole("link", { name: "所有畫面 4 / 4" })).toHaveLength(23);
+    for (const link of screen.getAllByRole("link", { name: "所有畫面 4 / 4" })) expect(link.getAttribute("href")).toBe(url(pages[3]));
     expect(container.querySelectorAll("li")).toHaveLength(95);
-    expect(screen.getByRole("button", { name: "分鏡可以，做片段" }).hasAttribute("disabled")).toBe(true);
+    expect(screen.getByRole("button", { name: "核准分鏡" }).hasAttribute("disabled")).toBe(true);
   });
 
   it("keeps the legacy single-sheet review and individual keyframe", () => {
     const sheet = image("contact_sheet", 1);
     const shot = image("shot_01", 2);
     const { container } = show(review({ shots: [{ id: "one", file_role: shot.role }] }, [shot, sheet]));
-    expect(container.querySelector("details summary")?.textContent).toBe("聯絡表");
+    expect(container.querySelector("details summary")?.textContent).toBe("所有畫面");
     expect(container.querySelector("details img")?.getAttribute("src")).toBe(url(sheet));
     expect(screen.getByRole("img", { name: "one" }).getAttribute("src")).toBe(url(shot));
     expect(screen.queryByRole("link")).toBeNull();
@@ -53,7 +53,7 @@ describe("storyboard contact sheets", () => {
       { role: sheet.role, shots: ["one"] }, { role: sheet.role, shots: ["one"] },
     ] }, [other, sheet, sheet]));
     expect(container.querySelectorAll("details img")).toHaveLength(1);
-    expect(screen.getByRole("link", { name: "聯絡表" }).getAttribute("href")).toBe(url(sheet));
+    expect(screen.getByRole("link", { name: "所有畫面" }).getAttribute("href")).toBe(url(sheet));
     expect(container.querySelector(`img[src="${url(other)}"]`)).toBeNull();
   });
 });
