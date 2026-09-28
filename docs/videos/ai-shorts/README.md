@@ -24,6 +24,8 @@ node --test tools/video/shorts/*.test.mjs
 
 ## 格式與驗證
 
+「原來如此事務所」從長片切出的 Shorts（第 2 版的 `line: "cut"`、`series: "sothatswhy"`，圖是長片的關鍵影格）走 `from-episode` 指令，說明在 [`../so-thats-why/README.md`](../so-thats-why/README.md) 的 Shorts 一節。
+
 新腳本沿用 pilots 三份 JSON 的 schema_version 1：slug、series（daily/blind/prompts）、兩個 titles、description、experiment_summary、limitations、evidence、scenes。每場景有 headline、narration 短句陣列；可加 body、big、note、asset。asset 必須在 evidence 列表，路徑相對於本資料夾；每項 evidence 必須綁 SHA-256。
 
 - 固定 1080×1920、30 fps、25–55 秒、H.264/AAC。聲音超時就修改稿子，不裁掉旁白。
