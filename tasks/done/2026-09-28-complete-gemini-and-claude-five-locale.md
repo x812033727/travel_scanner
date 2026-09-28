@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-complete-gemini-and-claude-five-locale
 title: Complete Gemini and Claude five-locale series catalogues
-status: review
+status: done
 priority: P2
 area: api
 owner: codex-series-five-locale
 claimed_at: 2026-09-28T15:10:41Z
 created_at: 2026-09-28T15:10:36Z
-completed_at:
+completed_at: 2026-09-28T17:22:57Z
 branch: codex/article-series-five-language-completion
 depends_on: []
 scope:
@@ -50,7 +50,7 @@ previous/next navigation must use that locale's published lessons and copy.
       withdrawn lesson cannot remain in the directory or previous/next links.
 - [x] Gemini has language-specific directory and search labels, including an
       accurate zh-CN beginner level.
-- [ ] Focused API/web tests and CI pass before merge. Production import and
+- [x] Focused API/web tests and CI pass before merge. Production import and
       public browser verification remain separate.
 
 ## Steps
@@ -67,7 +67,7 @@ previous/next navigation must use that locale's published lessons and copy.
       series, matching the new release boundary; its old null mock caused Web CI
       to hide the directory even when the fixture expected published lessons.
 - [x] Opened focused draft PR #947.
-- [ ] Wait for full CI and review before merge.
+- [x] Complete implementation review and full CI at the verified implementation head.
 
 ## How to verify
 
@@ -91,4 +91,10 @@ publication-aware. No production write occurred.
 Draft PR: https://github.com/x812033727/travel_scanner/pull/947
 The first Web CI run failed in `gemini-page.test.tsx` because its API series
 mock still returned null. The updated fixture keeps the publication guard in
-place and locally passes all seven integration cases; the PR needs a new CI run.
+place and locally passes all seven integration cases.
+
+All nine checks passed at `f8ca81dc9f10b158ff89538d8940bd395ebce2bc`, including
+API, Web and article-localization release-safety. This closes implementation work;
+the task-only closure commit must pass its own CI before the authorized ordinary
+merge. Deployment, imports and public browser acceptance remain in the guarded
+localization release work and are not claimed complete here.
