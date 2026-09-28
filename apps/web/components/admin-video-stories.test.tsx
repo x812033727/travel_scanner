@@ -50,7 +50,7 @@ function video(slug: string, number: number, extra: Row = {}): Row {
 const cleared = (slug: string, number: number) => video(slug, number, { publish_approved_at: "2026-09-28T02:00:00Z", locales_decided_at: "2026-09-28T01:00:00Z", ready_to_upload: true });
 
 function story(number: number, id: string, category: string, region: string, day: number, slot: string, status: string, extra: Row = {}) {
-  return { number, chapter_number: 1, title: `${id} 的故事`, logline: `${id} 一句話說完`, beats: plan(id, category, region, day, slot), status, slug: `story-${id.toLowerCase()}`, recap: null, started_at: null, finished_at: null, video: null, ...extra };
+  return { number, chapter_number: 1, title: `${id} 的故事`, logline: `${id} 一句話說完`, beats: plan(id, category, region, day, slot), status, slug: `story-${id.toLowerCase()}`, recap: null, started_at: null as string | null, finished_at: null, video: null as Row | null, ...extra };
 }
 
 const stories = [
@@ -116,7 +116,7 @@ function stubFetch(options: { series?: Row; listed?: unknown[]; linked?: boolean
     }
     if (url.endsWith("/admin/video-youtube")) return json(connection(Boolean(options.linked)));
     const detail = /\/admin\/videos\/(story-[a-z0-9]+)$/.exec(url);
-    if (detail && method === "GET") return json({ ...stories.find((each) => each.slug === detail[1])?.video, reviews: [confirmation] });
+    if (detail && method === "GET") return json({ ...(stories.find((each) => each.slug === detail[1])?.video ?? {}), reviews: [confirmation] });
     if (/\/admin\/videos\/story-[a-z0-9]+\/youtube$/.test(url) && method === "POST") return json({ slug: url.split("/").at(-2) });
     return json([]);
   }));
