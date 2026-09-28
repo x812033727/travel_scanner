@@ -161,12 +161,13 @@ export async function push({ directory, client, log = () => {} }) {
   const metadata = readJson(metadataFile, null);
   if (!metadata || !report) return { slug, final: sent, publish: null, waits: 'the upload package is not made yet: run package, then push again' };
   if (metadata.final_sha256 !== finalSha256) return { slug, final: sent, publish: null, waits: 'the upload package is of another cut: run package, then push again' };
+  // No thumbnail goes with the package: the site sets on YouTube what the package holds, and
+  // a Short's cover is its first frame. The cover the tab shows is the final review's.
   const packaged = [
     await upload(client, slug, metadataFile, 'metadata'),
     await upload(client, slug, final, 'final'),
     await upload(client, slug, path.join(directory, 'upload', CAPTIONS_FILE), 'captions_zh-TW'),
     await upload(client, slug, path.join(directory, 'upload', DESCRIPTION_FILE), 'description_zh-TW'),
-    await upload(client, slug, path.join(directory, 'upload', 'cover.png'), 'thumbnail'),
   ];
   await client.report(slug, projectBody({ doc, qa, check: readJson(path.join(directory, CHECK_FILE), null), report, stage: 'publish' }));
   const confirmed = await client.submit(slug, { ...publishReview({ metadata, report, metadataSha256: packaged[0].sha256 }), files: packaged });

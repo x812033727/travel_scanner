@@ -439,8 +439,8 @@ test('a Short whose cut is approved goes on to its upload package', async (t) =>
   assert.match(final.summary, /^Shorts 35\.\d 秒，Shorts 自動品管 12 項全過$/);
   const metadataSha = sha256(readFileSync(path.join(directory, 'upload', 'metadata.json')));
   assert.deepEqual([publish.gate, publish.content_sha256, publish.payload.package.final_sha256, publish.payload.package.kind], ['publish', metadataSha, metadataSha, 'shorts']);
-  assert.deepEqual(publish.files.map((file) => file.role), ['metadata', 'final', 'captions_zh-TW', 'description_zh-TW', 'thumbnail']);
-  assert.deepEqual(publish.files.map((file) => file.content_type), ['application/json', 'video/mp4', 'application/x-subrip', 'text/plain', 'image/png']);
+  assert.deepEqual(publish.files.map((file) => file.role), ['metadata', 'final', 'captions_zh-TW', 'description_zh-TW'], 'no thumbnail: the site would set it on YouTube');
+  assert.deepEqual(publish.files.map((file) => file.content_type), ['application/json', 'video/mp4', 'application/x-subrip', 'text/plain']);
   assert.equal(publish.summary, 'Shorts 上傳包 4 項齊全：照月曆上架');
   assert.deepEqual(publish.payload.disclosure, { synthetic: false, reason: '字卡、實測紀錄與合成旁白，沒有擬真的生成或變造內容' });
   assert.ok(calls.filter(([kind]) => kind === 'part').every(([, , length, query]) => length <= PART_BYTES && query.parts === '1'));
