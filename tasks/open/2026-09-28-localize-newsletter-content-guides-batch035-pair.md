@@ -1,7 +1,7 @@
 ---
 id: 2026-09-28-localize-newsletter-content-guides-batch035-pair
 title: Localize Kit and content marketing guides (batch 035 pair B)
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-root
@@ -38,7 +38,7 @@ assets to Batch035. See the SHA-pinned read-only inventory under
 - [x] Eight localized hero SVGs, eight raster hero JPGs and eight diagram SVGs
       pass layout and visual review.
 - [x] Unpublished target-locale article destinations remain non-clickable.
-- [ ] Scoped pack lint and repository task checks pass; open a reviewable PR.
+- [x] Scoped pack lint and repository task checks pass; open a reviewable PR.
 
 ## Steps
 
@@ -46,7 +46,7 @@ assets to Batch035. See the SHA-pinned read-only inventory under
 - [x] Claim exact pair scope in an isolated worktree.
 - [x] Translate and review eight locale documents.
 - [x] Render and inspect 24 localized assets.
-- [ ] Validate, commit, push and open the pair PR.
+- [x] Validate, commit, push and open the pair PR.
 
 ## How to verify
 
@@ -66,3 +66,5 @@ The API resolves only same-locale published targets, and the web component
 renders unresolved references as plain text.
 Independent editorial reviews of both articles have passed after diagram-copy
 corrections. Receipts and canonical hashes are in the scoped evidence document.
+Draft PR: https://github.com/x812033727/travel_scanner/pull/900 .
+The content is not deployed, imported or published; live browser/device QA is pending.
