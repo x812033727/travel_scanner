@@ -1,7 +1,7 @@
 ---
 id: 2026-09-28-correct-unrelated-ai-term-links-in
 title: Correct unrelated AI term links in two WordPress source guides
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-batch034-source-fix
@@ -35,7 +35,7 @@ carried into the next four-language localization batch.
 - [x] Change only `wordpress-map-form-embeds` block 3 inline 1.
 - [x] Change only `wordpress-multilingual-site` block 16 inline 1.
 - [x] Review the exact document-model diff and run scoped checks.
-- [ ] Open a draft PR; database publication is a separate guarded release.
+- [x] Open a draft PR; database publication is a separate guarded release.
 
 ## How to verify
 
@@ -63,3 +63,6 @@ for `wordpress-multilingual-site`. Each scoped pack lint checked one entry
 with only the existing `no_summary` advisory. Focused guide-pack/link tests:
 12 passed, 5 skipped. `npm run check:tasks` passed with pre-existing stale
 claim/overlap warnings; `git diff --check` passed.
+
+Draft PR: https://github.com/x812033727/travel_scanner/pull/887 . It remains
+in review; this task is not done until the source correction is merged.
