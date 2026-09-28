@@ -17,7 +17,7 @@
     "made_for_kids": false,
     "default_language": "en",
     "title": "Chatbots Are Over. Here's How an AI Agent Actually Works (and Fails).",
-    "description": "What actually happens between 'just handle it' and the result? This video records one real AI agent run, step by step, and turns it into the five moves that make an agent different from a chatbot, then shows where agents still fail by the makers' own numbers.\n\nThe run is a coding agent asked to read three official pricing pages and write a table; every tool call, the one page that refused, and the file it wrote are shown as they happened on 2026-09-28. The computer-use score on screen is Anthropic's own for Claude Opus 5.5; OpenAI's score for GPT-6 Astra is on its launch page, linked below. Reports about OpenAI's next assistant are labelled as reports.\n\nRecorded 2026-09-28.",
+    "description": "What actually happens between 'just handle it' and the result? This video records one real AI agent run, step by step, and turns it into the five moves that make an agent different from a chatbot, then shows where agents still fail by the makers' own numbers.\n\nThe run is a coding agent asked to read three official pricing pages and write a table; every tool call, the one page that refused, and the file it wrote are shown as they happened on 2026-09-28. The computer-use score on screen is Anthropic's own for Claude Opus 5.5; OpenAI's own GPT-6 Astra page is linked below. Reports about OpenAI's next assistant are labelled as reports.\n\nRecorded 2026-09-28.",
     "tags": [
       "AI agents explained",
       "what is an AI agent",
@@ -50,7 +50,7 @@
       "checked_on": "2026-09-28"
     },
     {
-      "title": "OpenAI: GPT-6 Astra launch page (its OSWorld 2.0 score)",
+      "title": "OpenAI: GPT-6 Astra launch page",
       "url": "https://openai.com/index/gpt-6-astra/",
       "checked_on": "2026-09-28"
     },
@@ -65,8 +65,8 @@
       "checked_on": "2026-09-28"
     },
     {
-      "title": "OpenAI: Announcing DevDay 2026",
-      "url": "https://openai.com/index/devday-2026/",
+      "title": "OpenAI DevDay 2026 (date and venue)",
+      "url": "https://devday.openai.com/",
       "checked_on": "2026-09-28"
     },
     {
@@ -290,6 +290,12 @@
             "$2.00",
             "$6.00",
             "xAI model docs"
+          ],
+          [
+            "Grok 4.7, 200k and over",
+            "$4.00",
+            "$12.00",
+            "xAI model docs"
           ]
         ],
         "highlight": 1
@@ -303,7 +309,7 @@
       "lines": [
         {
           "id": "qpg5",
-          "text": "Here is the file. Two rows filled, with the page each number came from and the date. One row honest about being empty."
+          "text": "Here is the file. Three rows filled, with the page each number came from and the date. One row honest about being empty."
         },
         {
           "id": "6zh7",
@@ -325,7 +331,7 @@
           {
             "side": "right",
             "name": "Agent",
-            "text": "The third page returned 403, so I left it blank."
+            "text": "The third page said 403. I left it blank."
           }
         ]
       },
@@ -374,7 +380,7 @@
             "label": "start to finish"
           }
         ],
-        "source": "Recorded 2026-09-28 with two tools allowed; the log is linked in the description"
+        "source": "Recorded 2026-09-28 with two tools allowed: one to fetch pages, one to write files"
       },
       "claims": [
         "c1"
@@ -445,7 +451,7 @@
             "note": "at that score"
           }
         ],
-        "source": "anthropic.com, 2026-09-22; OpenAI's GPT-6 Astra score is on its launch page"
+        "source": "anthropic.com, 2026-09-22; OpenAI's GPT-6 Astra page is in the description"
       },
       "claims": [
         "c2",
@@ -463,7 +469,7 @@
         },
         {
           "id": "u5vx",
-          "text": "OpenAI publishes a score for GPT-6 Astra on its launch page too, and it is lower. Both pages are linked in the description."
+          "text": "For GPT-6 Astra, OpenAI's own launch page is linked in the description. Read its computer-use claim there and compare."
         }
       ]
     },
@@ -515,7 +521,7 @@
         "items": [
           "It acts while you are away",
           "It keeps state across chats",
-          "It runs in the background under the operating system's control, NVIDIA and Microsoft say",
+          "It runs in the background under the operating system's control, NVIDIA says of the new Windows agent framework",
           "A persistent OpenAI assistant: reported, not announced, as we record"
         ]
       },
@@ -540,7 +546,7 @@
         },
         {
           "id": "txqe",
-          "text": "NVIDIA and Microsoft say their new Windows agent framework runs such agents in the background, under the operating system's control.",
+          "text": "NVIDIA says the new Windows agent framework, part of its work with Microsoft, runs such agents in the background, under the operating system's control.",
           "reveal": 1
         },
         {
@@ -671,7 +677,7 @@
         },
         {
           "id": "p8zt",
-          "text": "Next time, the same agent priced three models for us. I will show you which one is actually worth paying for."
+          "text": "Next time, we start from the prices this agent found and I will show you which model is actually worth paying for."
         }
       ]
     }
