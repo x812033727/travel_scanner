@@ -1,6 +1,6 @@
 # 英文 AI 影片第一季：六支衝百萬點閱的企劃（Claude 版）
 
-**狀態（2026-09-28，第二輪）**：站主決定做英文旁白路線、先做第 1、4、3 支。`narration_locale` 已在分支落地（票 `2026-09-28-video-english-narration-locale`）。三支的 `brief.md`、`video.json`、`claims.md`、示範紀錄與兩輪查核報告（`verify-1.md`、`verify-2.md`）在 `docs/videos/openai-agents-broke-in/`、`docs/videos/always-on-agent-explained/`、`docs/videos/gpt6-vs-opus55-worth-paying/`；三支 lint 零錯誤、投影片渲染零版面問題、聽眾審稿完成。下一步是產線的旁白階段，要站主的影片工具權杖（`review-push --gate outline` → `tts`），在站主的電腦或主機工人上跑。還等站主決定：英文頻道開不開、頻道立場存進設定。這份和 Codex 的 [`docs/ai-video-season-01/`](../ai-video-season-01/README.md) 是同一場比賽的兩份參賽作品：那份是中文旁白的六集常青解說，這份是**英文旁白、綁著本週新聞、每支帶一個實算**的六支。
+**狀態（2026-09-28，第三輪）**：站主決定這一季的影片是**繁體中文影片**：繁中旁白（頻道聲音 Sulafat）、繁中投影片與繁中標題，英文以英文字幕加英文配音音軌提供（`docs/videos/DUBS.md` 的多語言音軌）。所以第 5 節「另開英文頻道」的建議取消，影片放在現有的中文頻道，英語觀眾由 YouTube 依語言自動切到英文配音。已完成的英文稿經兩輪查核，直接成為英文字幕與英文配音的底稿；繁中旁白逐句由查核過的英文翻成，句子 id 不變。四支（第 1、2、3、4 支）的進度記在各自的票；第 2 支的前提已更新為 Remote Labor Index 的曲線（見下表）。
 
 一句話：英文 YouTube 上真的會破百萬的 AI 影片，幾乎都是「**大家已經在害怕或爭論的事** ＋ **一個講得比新聞更清楚的答案**」。這一季每支都照這個公式：新聞當鉤子，常青問題當標題，一段站主能自己複算的實算當骨幹，結尾給觀眾一個看完就能做的動作。
 

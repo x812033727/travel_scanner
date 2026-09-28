@@ -24,7 +24,8 @@ scope:
 
 - [x] `docs/ai-video-en-season-01/` 有 `README.md`（目標與數學、選題規律、六支總表、排程、製作路線、包裝規則、比賽規則、風險、下一步）、六份 `briefs/`、`packaging.csv`、`schedule.csv`、`scoreboard.csv`、`sources.json`。
 - [x] 站主決定（2026-09-28）：英文旁白路線做下去；先做 1、4、3（`openai-agents-broke-in`、`always-on-agent-explained`、`gpt6-vs-opus55-worth-paying`）。
-- [ ] 站主決定：英文頻道開不開；頻道立場存進 `/admin/videos` 設定（存了 Jev 才會替英文影片挑大綱）。
+- [x] 站主決定（2026-09-28）：影片是繁體中文影片，英文用英文字幕與英文配音音軌；不另開英文頻道。
+- [ ] 站主決定：頻道立場存進 `/admin/videos` 設定（存了 Jev 才會替影片挑大綱）。
 - [x] 三支製作票已開並認領：`2026-09-28-en-video-01-openai-agents-broke`、`2026-09-28-en-video-04-always-on-agent`、`2026-09-28-en-video-03-gpt6-vs-opus55`。
 
 ## Steps
