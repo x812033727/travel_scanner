@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { type FormEvent, useCallback, useEffect, useState } from "react";
 import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { AdminStatusPill } from "@/components/admin-ui";
+import { YoutubeManualUpload } from "@/components/admin-video-manual-upload";
 import { control, record, type Review, text, useWhen, type YoutubeSync, type YoutubeSyncStep, youtubeVideoId } from "@/components/admin-video-review-card";
 import { Button, fieldClass, panelClass } from "@/components/community/ui";
 import { ApiError, api } from "@/lib/api";
@@ -254,7 +255,7 @@ export function YoutubePublishForm({ slug, review, connection, canUpload, videoI
       setBusy(false);
     }
   };
-  return <form onSubmit={(event) => void submit(event)} className="grid gap-3 rounded-2xl border border-[var(--teal)] p-4" aria-label={t("publishTitle")}>
+  return <YoutubeManualUpload slug={slug} disabled={busy} draft={{ title, description, video_id: videoId ?? id }}><form onSubmit={(event) => void submit(event)} className="grid gap-3 rounded-2xl border border-[var(--teal)] p-4" aria-label={t("publishTitle")}>
     <p className="font-bold">{t("publishTitle")}</p>
     <p className="text-sm leading-6 text-[var(--muted)]">{t("publishHelp", { channel: connection.channel_title || connection.channel_id || "" })}</p>
     {uploadAllowed && <fieldset className="grid gap-2"><legend className="text-sm font-semibold">{t("source")}</legend>
@@ -294,7 +295,7 @@ export function YoutubePublishForm({ slug, review, connection, canUpload, videoI
     <p className="text-xs leading-5 text-[var(--muted)]">{t("neverPublic")}</p>
     {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
     <div><Button type="submit" disabled={!ready}>{busy ? t("sending") : t("send")}</Button></div>
-  </form>;
+  </form></YoutubeManualUpload>;
 }
 
 const STEP_ICONS: Record<YoutubeSyncStep["state"], typeof Circle> = { pending: Circle, running: LoaderCircle, done: CheckCircle2, failed: XCircle, skipped: MinusCircle };
@@ -357,6 +358,7 @@ export function YoutubeSyncPanel({ slug, sync, canManage, onChange }: { slug: st
     {sync.error && <p role="alert" className="text-sm text-red-800">{sync.error}</p>}
     {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
     {canManage && (sync.status === "failed" || sync.interrupted) && <div><Button disabled={busy} onClick={() => void retry()}><RotateCcw aria-hidden size={16} />{busy ? t("sending") : t("retry")}</Button></div>}
+    {canManage && !going && !busy && <YoutubeManualUpload slug={slug} />}
   </section>;
 }
 
