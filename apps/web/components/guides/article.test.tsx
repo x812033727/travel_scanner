@@ -2,6 +2,8 @@ import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { GuideArticle, type GuideArticleLabels } from "./article";
 import { AD_CLEARANCE_BLOCKS, MIN_BLOCKS_BETWEEN, type AdsenseConfig } from "@/lib/adsense";
+import { fixtureSeries } from "@/components/gemini-series/fixture.test-data";
+import type { VisibleGeminiSeries } from "@/lib/gemini-series-projection";
 
 vi.mock("@/components/ads/article-ad-slot", () => ({
   ArticleAdSlot: (props: { publisherId: string; slotId: string; label: string; cmpEnabled: boolean; lazy?: boolean }) => (
@@ -43,13 +45,14 @@ const document = {
 
 function draw(
   overrides: Record<string, unknown> = {},
-  extra: { readingTime?: string; adsense?: AdsenseConfig; labels?: Partial<GuideArticleLabels> } = {},
+  extra: { readingTime?: string; adsense?: AdsenseConfig; labels?: Partial<GuideArticleLabels>; geminiSeries?: VisibleGeminiSeries | null } = {},
 ) {
   return render(
     <GuideArticle
       labels={{ ...labels, ...extra.labels }}
       readingTime={extra.readingTime}
       adsense={extra.adsense}
+      geminiSeries={extra.geminiSeries}
       state={{
         slug: "tokyo-esim", kind: "howto", locale: "zh-TW", status: "published",
         destination_id: "tokyo", destination_label: "東京",
@@ -60,6 +63,30 @@ function draw(
     />,
   );
 }
+
+describe("GuideArticle Gemini navigation", () => {
+  it("uses the existing Gemini navigation once in zh-TW and the API navigation in another locale", () => {
+    const gemini = fixtureSeries();
+    const first = gemini.articles[0];
+    const series = {
+      slug: "gemini",
+      hub: { kind: "life" as const, slug: gemini.hubSlug, title: "API hub" },
+      current: {
+        kind: "life" as const, slug: first.slug, title: first.title,
+        number: first.number, group: first.group, level: first.level,
+        platforms: [...first.platforms], aliases: [], description: first.purpose,
+        minutes: first.minutes,
+      },
+      previous: null, next: null, prerequisites: [], related: [],
+    };
+    const article = { slug: first.slug, kind: "life", destination_id: null, destination_label: null, series };
+    const result = draw(article, { geminiSeries: gemini });
+    expect(screen.queryByRole("link", { name: /API hub/ })).toBeNull();
+    result.unmount();
+    draw({ ...article, locale: "en" });
+    expect(screen.getByRole("link", { name: /API hub/ })).toBeTruthy();
+  });
+});
 
 describe("GuideArticle partner buttons", () => {
   it("ends a destination article with the modules its topics point at, labelled as the guide surface", () => {

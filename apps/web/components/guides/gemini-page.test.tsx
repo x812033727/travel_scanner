@@ -7,7 +7,7 @@ import { renderGuideArticle } from "./article-page";
 import LifePage from "@/app/[locale]/life/page";
 import { siteUrl } from "@/lib/seo";
 
-const mocks = vi.hoisted(() => ({ article: vi.fn(), list: vi.fn() }));
+const mocks = vi.hoisted(() => ({ article: vi.fn(), list: vi.fn(), series: vi.fn() }));
 vi.mock("@/lib/guide-series.json", async () => {
   const base = (await vi.importActual<{ default: typeof import("@/lib/guide-series.json") }>("@/lib/guide-series.json")).default;
   const plan = (await import("@/lib/gemini-series-docs.test-data")).loadGeminiCurriculum();
@@ -21,7 +21,7 @@ vi.mock("@/lib/adsense.server", () => ({ getAdsenseSlot: async () => ({ enabled:
 // the article page still reuses the hub article's own state.
 vi.mock("@/lib/guides.server", async (original) => ({
   ...await original<typeof import("@/lib/guides.server")>(),
-  getGuideArticle: mocks.article, getGuideList: mocks.list, getGuideTopics: async () => [], getGuideSeries: async () => null,
+  getGuideArticle: mocks.article, getGuideList: mocks.list, getGuideTopics: async () => [], getGuideSeries: mocks.series,
   hubIsEmpty: () => false,
   getSeriesIndex: async () => [
     { slug: "claude-code", section: "life", hub: { kind: "life", slug: "claude-code-tutorials", title: "Claude Code 教學中心" }, source: "api-series", topic: "claude-code", entries: 96 },
@@ -40,6 +40,14 @@ beforeEach(() => {
   vi.clearAllMocks();
   mocks.article.mockImplementation(async (_kind, slug) => state(slug));
   mocks.list.mockResolvedValue({ articles: [], next_cursor: null });
+  mocks.series.mockImplementation(async slug => slug === "gemini" ? {
+    slug: "gemini", locale: "zh-TW", hub: { kind: "life", slug: catalogue.hubSlug, title: catalogue.title },
+    groups: [], paths: [], entries: catalogue.articles.map(article => ({
+      kind: "life", slug: article.slug, number: article.number, group: article.group,
+      title: article.title, level: article.level, platforms: [...article.platforms],
+      aliases: [...article.keywords], description: article.purpose, minutes: article.minutes,
+    })),
+  } : null);
 });
 afterEach(() => { cleanup(); vi.unstubAllEnvs(); });
 describe("Gemini actual page integration", () => {
