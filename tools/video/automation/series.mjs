@@ -9,6 +9,7 @@
 // episode whose only document is its story bible (docs/videos/DRAMA-FLOW.md, section 2).
 import path from "node:path";
 
+import { EXPLAINER_PRESET } from "../core/drama.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { estimateTimeline, framesFor, frameToSeconds } from "../core/timeline.mjs";
 import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
@@ -39,6 +40,13 @@ const isText = (value) => typeof value === "string" && value.trim().length > 0;
 
 /** Whether a series is a one-off drama: one episode, one story bible (docs/videos/DRAMA-FLOW.md, section 2). */
 export const isOneOff = (series) => series?.kind === "one-off";
+/**
+ * Whether a one-off is an illustrated explainer (docs/videos/so-thats-why/): the owner picked the
+ * flat-explainer preset, so its bible is a question's, with no cast.
+ */
+export const isExplainerOneOff = (series) => isOneOff(series) && series?.style_preset === EXPLAINER_PRESET;
+/** The planner prompt of a document: its kind, or the explainer's bible. */
+export const documentVariant = (kind, series) => (kind === "bible" && isExplainerOneOff(series) ? "bible-explainer" : kind);
 /** Whether a series' genre carries the retention rules (the classic xianxia series does not). */
 export const retentionRequired = (series) => Boolean(GENRE_SPECS[series?.genre]?.retention);
 
@@ -62,6 +70,18 @@ export function documentProblem(kind, answer, job) {
   if (!isObject(answer.body_json)) return "body_json (the structured document) is missing";
   const body = answer.body_json;
   const series = job.series;
+  if (kind === "bible" && isExplainerOneOff(series)) {
+    // An explainer's bible (apps/api/app/video_automation/series.py doc_problem): no cast, the
+    // question, its answer and reasons, and the one outline the episode is written from.
+    if (!Array.isArray(body.characters) || body.characters.length) return "body_json.characters must be empty: an explainer has no cast";
+    for (const key of BIBLE_LISTS) if (!Array.isArray(body[key]) || !body[key].length) return `body_json.${key} must list the ${key}`;
+    const outline = body.outline;
+    if (!isObject(outline)) return "body_json.outline must be the one outline (an object)";
+    for (const key of ["question", "answer", "hook"]) if (!isText(outline[key])) return `body_json.outline.${key} is missing`;
+    if (!Array.isArray(outline.reasons) || outline.reasons.length < 2 || !outline.reasons.every(isText)) return "body_json.outline.reasons must list the reasons";
+    if (!Array.isArray(outline.sources) || !outline.sources.length || !outline.sources.every((url) => /^https:\/\//.test(url))) return "body_json.outline.sources must list the https pages the facts rest on";
+    return null;
+  }
   if (kind === "setting" || kind === "bible") {
     if (!Array.isArray(body.characters) || !body.characters.length) return "body_json.characters must list the cast";
     for (const character of body.characters) {
@@ -251,7 +271,42 @@ export function castFrom(setting) {
  * An episode's brief.md, written from the chapter's row: the sections lint wants, and one outline
  * option, since the owner approved the chapter (no outline to pick).
  */
+/**
+ * An explainer's brief (docs/videos/so-thats-why/), from its approved bible's outline: the
+ * sections lint wants for the flat-explainer preset, and the one outline as option A.
+ */
+function explainerBrief(series, episode, beats) {
+  const reasons = Array.isArray(beats.reasons) ? beats.reasons : [];
+  return [
+    `# ${beats.question || episode.title || series.title}`,
+    "",
+    "## 問題",
+    beats.question || series.premise,
+    "",
+    "## 一句答案",
+    beats.answer || episode.logline || "",
+    "",
+    "## 站主觀點",
+    series.note || "依頻道立場；沒有站主的親身經驗。",
+    "",
+    "## 原因",
+    ...reasons.map((reason) => `- ${reason}`),
+    "",
+    "## 大綱",
+    "",
+    `### 選項 A：${episode.title || beats.question || series.title}`,
+    `一行說明：${beats.answer || episode.logline || ""}`,
+    `開場鉤子：「${beats.hook ?? ""}」`,
+    ...(beats.closing ? [`結尾：${beats.closing}`] : []),
+    "",
+    "## 素材",
+    ...(Array.isArray(beats.sources) ? beats.sources.map((url) => `- ${url}`) : []),
+    "",
+  ].join("\n");
+}
+
 export function episodeBrief(series, episode, cast, beats) {
+  if (isExplainerOneOff(series)) return explainerBrief(series, episode, beats);
   const cliff = beats.cliffhanger && typeof beats.cliffhanger === "object" ? `${beats.cliffhanger.text ?? ""}（${beats.cliffhanger.type ?? ""}）` : String(beats.cliffhanger ?? "");
   const listed = (value) => (Array.isArray(value) && value.length ? value.join("、") : "無");
   const inFrame = Array.isArray(beats.characters) && beats.characters.length ? cast.filter((character) => beats.characters.includes(character.id)) : cast;
@@ -392,7 +447,7 @@ export async function planDocument(automation, job) {
   for (let attempt = 0; attempt < ANSWER_ATTEMPTS; attempt++) {
     let answer;
     try {
-      answer = await automation.stage("planner", slug, documentPayload(automation, job, problem), 32_000, "drama", job.kind, series);
+      answer = await automation.stage("planner", slug, documentPayload(automation, job, problem), 32_000, "drama", documentVariant(job.kind, series), series);
     } catch (error) {
       if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) throw error;
       problem = error.message;

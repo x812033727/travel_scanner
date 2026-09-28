@@ -47,6 +47,8 @@ function sceneErrors(doc, errors) {
     if (!Array.isArray(scene.narration) || !scene.narration.length || scene.narration.some(t => typeof t !== 'string' || !t.trim() || [...t].length > 38)) errors.push(`scene ${i}: narration phrases 1–38 characters`);
     if (scene.body && (!Array.isArray(scene.body) || scene.body.length > 5 || scene.body.some(t => typeof t !== 'string' || t.length > 85))) errors.push(`scene ${i}: up to five body rows of 85 characters`);
     if (scene.asset && !evidence.some(e => e?.path === scene.asset)) errors.push(`scene ${i}: asset must be evidence-bound`);
+    if (scene.shot !== undefined && !(doc.schema_version === 2 && doc.line === 'cut' && text(scene.shot))) errors.push(`scene ${i}: shot names a keyframe of the video a cut comes from (line cut only)`);
+    if (scene.shot !== undefined && scene.asset) errors.push(`scene ${i}: a scene shows a shot or an asset, not both`);
   }
 }
 
@@ -107,6 +109,28 @@ export function validate(doc) {
   if (doc?.schema_version === 1) return validateV1(doc);
   if (doc?.schema_version === 2) return validateV2(doc);
   return ['schema_version must be 1 or 2'];
+}
+
+/**
+ * A cut from a drama-format video whose scenes name its shots (an explainer's Shorts,
+ * docs/videos/so-thats-why/): each scene's `shot` becomes the asset of that shot's keyframe
+ * (`keyframes/manifest.json` in the video's work directory), listed as evidence with its hash, so
+ * verifyEvidence, with that work directory as the source base, binds the Short to the very
+ * pictures the long video used. No picture is generated twice.
+ */
+export function episodeShort(doc, keyframes) {
+  const shots = keyframes?.shots ?? {};
+  const evidence = new Map();
+  const scenes = doc.scenes.map((scene, i) => {
+    if (scene.shot === undefined) return scene;
+    const frame = shots[scene.shot];
+    if (!frame?.file || !/^[a-f0-9]{64}$/.test(frame.sha256 ?? '')) throw new Error(`scene ${i}: shot "${scene.shot}" has no keyframe in keyframes/manifest.json`);
+    if (frame.needs_review) throw new Error(`scene ${i}: shot "${scene.shot}" still needs a prompt fix (needs_review)`);
+    evidence.set(frame.file, { path: frame.file, sha256: frame.sha256 });
+    const { shot: _shot, ...rest } = scene;
+    return { ...rest, asset: frame.file };
+  });
+  return { ...doc, scenes, evidence: [...(doc.evidence ?? []), ...evidence.values()] };
 }
 
 // Resolve real paths too: a symlink must not allow an artifact to read outside its source tree.
