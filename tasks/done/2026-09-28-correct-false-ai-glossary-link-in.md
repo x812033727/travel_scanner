@@ -1,17 +1,19 @@
 ---
 id: 2026-09-28-correct-false-ai-glossary-link-in
 title: Correct false AI glossary link in image SEO source
-status: review
+status: done
 priority: P2
 area: docs
-owner: codex-batch041-source-fix
-claimed_at: 2026-09-28T13:47:32Z
+owner: codex-source-pr-pipeline
+claimed_at: 2026-09-28T16:15:12Z
 created_at: 2026-09-28T13:47:14Z
-completed_at:
-branch: codex/article-localization-041-seo-links
+completed_at: 2026-09-28T16:16:40Z
+branch: codex/article-localization-040-source-task-close
 depends_on: []
 scope:
   - apps/api/app/guides/content/image-seo-workflow.json
+  - tasks/open/2026-09-28-correct-false-ai-glossary-link-in.md
+  - tasks/done/2026-09-28-correct-false-ai-glossary-link-in.md
 ---
 
 # Correct false AI glossary link in image SEO source
@@ -28,15 +30,17 @@ missing language documents unless corrected first.
 
 - [x] The misleading article link becomes plain text with the same visible word.
 - [x] Every other source field, block, source citation and image reference is unchanged.
-- [ ] Pack lint, content-link tests, task checks and PR CI pass (local checks passed; CI pending).
-- [ ] The source correction is reviewed and merged before Batch041 translations use it.
+- [x] Pack lint, content-link tests, task checks and all nine PR CI jobs pass.
+- [x] The source correction is reviewed and merged before Batch041 translations use it.
+- [x] The still-pending guarded live zh-TW source revision is tracked separately
+      in `2026-09-28-batch041-live-source-reconciliation`.
 
 ## Steps
 
 - [x] Checked the link against the surrounding crop and file-size paragraph.
 - [x] Changed only block 16's inline object from `article` to `text`.
 - [x] Compared full parsed JSON against the pinned original with that one expected change.
-- [x] Recorded local checks and opened focused draft PR #934.
+- [x] Recorded local checks and merged focused PR #934 after full CI passed.
 
 ## How to verify
 
@@ -68,5 +72,10 @@ absent. The changed zh-TW source will therefore need a guarded live revision
 before target-language publication; its published v4 is not the corrected
 source. This PR does not import, deploy, revise, or publish anything.
 
-Review: https://github.com/x812033727/travel_scanner/pull/934 is draft;
-CI and merge remain pending.
+PR https://github.com/x812033727/travel_scanner/pull/934 merged at
+`2026-09-28T16:13:58Z` as `7654e7b5ed14f3e3a118d7a271c887d4c9b1e977`.
+All nine GitHub checks passed on head
+`5c7a9b384fb3246e6ce524b3adfbe5ea1a7fb957`. This task closes only
+the repository source correction. The published zh-TW v4 has not been changed,
+and no translation has been imported or published. A guarded release must
+reconcile the live source version under the separate task first.
