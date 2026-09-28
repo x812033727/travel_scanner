@@ -1,6 +1,6 @@
 # 開服第一天，她的天賦叫讀檔｜設定集
 
-> 全城覺醒職業，只有她的天賦叫讀檔：死三十次拿下首殺，每一次讀檔都在吃掉她記得阿嬤的方式。
+> 全城覺醒職業，只有她的天賦叫讀檔：死三次拿下首殺，每一次讀檔都在吃掉她記得阿嬤的方式。
 
 > 製作企劃，尚未生成任何圖片、聲音或影片；聲音是擬定的 casting，開拍前先試聽。
 
@@ -14,7 +14,7 @@
 | basement-gate | 安養院地下室的第一道梯門 | 水泥樓梯往下十二級，備用發電機、配電箱、堆著輪椅零件；牆上一道冷藍色發光的門框，門內是黑的，門框上浮著「梯門・一」。第 39 集這裡變成一扇普通的木門，門牌寫「帳房」。 |
 | xinggui-hq | 星軌據點 | 港邊玻璃大樓的頂樓，整面落地窗看得到天梯與鐘塔；牆上一條銀色的軌道形徽記；一張長桌、一面螢幕牆、一張永遠空著的分析師座位，桌角貼著已經褪色的名牌。 |
 | iron-warehouse | 鐵幕的港區倉庫 | 鐵皮倉庫、紅色捲門、門口一排灰色廂型車與疊高的貨櫃；裡面一盞吊燈下一張長桌，桌面釘著紅框名單與市區地圖；一台發電機用鐵鍊鎖在角落。 |
-| floor-nine | 第九層（鏡面大廳） | 四面牆、地板、天花板全是鏡子，無限反射；正中央一道細細的直立光縫；進門處浮著石碑字「存檔無效，唯一命」；沒有怪物，只有映像。門內第一級台階是唯一不反光的黑石。 |
+| floor-nine | 第九層（鏡面大廳） | 四面牆、地板、天花板全是鏡子，無限反射；正中央一道細細的直立光縫；進門處浮著石碑字「存檔無效，唯一命」；門外站著守關者，一個比門還高的影人輪廓；沒有怪物，只有映像。門內第一級台階是唯一不反光的黑石。 |
 | clock-tower | 港口鐘塔 | 港口盡頭一座白色石造鐘塔，四面圓鐘、夜裡鐘面亮黃色；塔頂就是天梯最底下那一階落地的地方；塔下一片水泥廣場與寬階梯，西側牆上有一道冷藍門框。 |
 | name-wall | 第八層檔案室與名牆 | 一條看不到盡頭的檔案走廊，鐵灰色檔案櫃一格一座城；盡頭一面黑石牆刻滿名字，每個名字發著微弱的白光；牆前一盞老式綠罩檯燈。第 39 集帳房的門後就是這面牆。 |
 | harbor-street | 臨港市區（安養院外的坡道與海港大道） | 從山坡往港口的長坡道、電線桿、路口一家便利商店、老招牌；遠處天梯的冷藍光倒映在海面。門開時路面與牆面浮出冷藍門框，影犬沿著坡道往上湧。 |
@@ -22,7 +22,7 @@
 
 | 勢力 | 想要什麼 | 隱瞞什麼 |
 | --- | --- | --- |
-| 星軌（邵擎的公會，前身是電競戰隊） | 三十日內登頂，把全城最強的人收進來，讓「天梯第一人」帶所有人活過總結算。 | 隊長重開過六次世界，所有戰術都是前六次的答案；他每次都死在第九層，這一次需要晚照當「唯一命」裡被留下的那一個。 |
+| 星軌（邵擎的公會，前身是電競戰隊） | 三十日內登頂，把全城最強的人收進來，讓「天梯第一人」帶所有人活過總結算。 | 隊長重開過六次世界，所有戰術都是前六次的答案；他六次都死在第九層門口的守關者手上，這一次需要晚照先進門，再在「唯一命」裡只留下他自己。 |
 | 鐵幕（杜承業的保全集團公會） | 用徵用與人數控制物資、門與發電機，靠名單活過每一次結算。 | 名單是邵擎給的前六次死亡名單，最後一行是杜承業自己，他六次都死在第二十八天。 |
 | 暖冬安養院隊（晚照、周嶼、小樹、老鄧） | 讓全院三十位老人活過三十天，讓阿嬤活到三月十二日。 | 隊長每一次讀檔都在付掉自己的記憶，她只寫在手臂與筆記本裡，沒有告訴任何人代價有多大。 |
 | 天梯（系統） | 收回這筆帳：以全城的記憶付息，第七次存檔違約就全額刪除。 | 它是一本帳，不是遊戲；它派了一雙稽核之眼在城裡走動；被見證的事它抹不掉；沒有持有者它就得回收自己。 |
@@ -34,10 +34,10 @@
 - 【讀檔】（林晚照）：存檔點只能在她靜止五秒時設；讀檔時世界回到存檔點、只有她保有記憶；每次讀檔抹去她一段「與讀檔動機最相關」的記憶（第 12 集面板才寫明），所以為救阿嬤讀檔就會忘阿嬤。她把不能忘的事寫在左手臂與筆記本「不能忘的事」。第九層的「存檔無效」管不到讀檔；第七層的地形會吃掉存檔點。第 36 集通關第九層後多出「可選存檔點」。
 - 【存檔】（邵擎）：把整個世界此刻的狀態寫進天梯的帳本，每存一次多一頁，面板計數「存檔：n/7」。持有者死亡時，世界自動重讀到最後一頁：全城的記憶回到那一刻、只有持有者記得。存檔只能在天梯的整點做：降臨前一分鐘的 05:59，或結算夜與最後一夜的 00:00；寫入時全城面板閃「存檔中」三秒。他三年前大停電那晚第一次存（那天全城停電一夜、沒有人記得那天發生什麼），之後第一到第五次週期的 05:59 各存一次，共六次；第五次看到「6/7」之後不敢再存。第七次存檔＝帳戶違約、全額刪除——他的面板不給他看這一行。
 - 05:59 存檔點：晚照的讀檔預設回到的 02/11 05:59，是邵擎的世界存檔頁（面板顯示「非持有者」）。活在別人存檔裡的讀檔者被帳本登記為「備援持有者」：持有者不列入刪除、記憶不列入索引，所以她記得被刪除的人。
-- 讀檔的帳：讀檔的代價記在「所讀存檔點的持有者」名下；她自己設的存檔點帳記在她身上。「存檔中」的那幾秒帳本對持有者開放，此時任何讀檔的帳全部記在他名下——這是第 38 集反殺的規則。
+- 讀檔的帳：平常讀檔的代價一律記在讀檔的人身上，不管讀的是誰的存檔點——所以第 1 集她讀邵擎的 05:59，失憶的還是她。只有「存檔中」那三秒帳本對持有者開放，那三秒內任何讀檔的帳都記在持有者名下。上一週期的她把這條寫進筆記本（第 24 集阿嬤交出），第二個聲音在第 36 集確認，第 38 集反殺照用。
 - 見證：蘇醒是天梯的稽核之眼。他的直播全城面板看得到、永不掉線、訊號斷了也在播；被他見證的事記錄在存檔之外，重讀抹不掉，被刪除的人若曾被見證，帳結清時從「帳房」回來。他在鏡子與錄影裡看不到自己。
-- 失智者：記憶不在索引裡，世界重讀抹不掉。阿嬤保有前幾次週期的碎片，清醒片刻會說出跨週期的話；枕頭下藏著上一週期晚照的筆記本。
-- 第九層：鏡面大廳，規則「存檔無效，唯一命」——世界存檔在這裡失效，死一次就是結束；持有者對持有者，只留一人。讀檔不是存檔，門內第一級台階可以設存檔點。
+- 失智者：記憶不在索引裡，世界重讀抹不掉。阿嬤保有前幾次週期的碎片，清醒片刻會說出跨週期的話；枕頭下藏著上一週期晚照的筆記本。她不在索引裡，她手上收著的東西也跟著她：世界重讀時，阿嬤收著的東西重來也在；其他人身上的東西、晚照手臂上的字，都回到存檔那一刻。第 22 集阿嬤自己說出這條，第 34 集晚照把老鄧的鑰匙交給她收著。
+- 第九層：鏡面大廳，規則「存檔無效，唯一命」——世界存檔在這裡失效，死一次就是結束；持有者對持有者，只留一人。讀檔不是存檔，門內第一級台階可以設存檔點。唯一命只管門內：門外站著守關者，只攔第一個走向門的人；死在門外還不算進唯一命，持有者死了照樣觸發重讀。邵擎六次都死在門口，每死一次世界就讀回 05:59、重來一整個月，他學不會守關者；她讀檔只要退回幾步，所以他需要她先進門。
 - 其他天賦：【承擔】（周嶼）替視線內的人承受傷害，面板寫「承擔上限：n」、歸零昏迷，第 32 集起變成「∞（代價：記憶）」；【聆聽】（小樹）聽得到系統沒播出的隱藏廣播與「第二個聲音」；【開鎖】（老鄧）能提早開任何有鎖的門，含梯門與封死的門；【鑑定】（賀嵐）看得到別人的面板含隱藏欄；【徵用】（杜承業）指定視線內一件物品，三十秒內它只聽他的，對人與天梯的東西無效。
 
 ## 人物
@@ -53,7 +53,7 @@
 | 秘密 | 她其實記得三年前拒絕過邵擎——那段記憶在第 9、10 集的讀檔裡被抹掉了。 |
 | 說話習慣 | 口頭禪「先確認一件事」；不說「我覺得」，只說「我看過」。 |
 | 聲音（擬定，未試聽） | gemini / Kore / 冷靜、偏低、句子短的台灣國語，不帶語助詞；說「先確認一件事」時放慢；讀檔後第一句總是比平常小聲。 |
-| 外觀提示詞（每集逐字沿用） | 24-year-old Taiwanese woman, slim and straight-backed, 165 cm, pale oval face with steady dark eyes and faint shadows under them from night shifts, no makeup, thin lips pressed flat; black hair in a low ponytail with loose strands at the temples; pale mint-green care-worker scrub top over a dark grey long-sleeve shirt, left sleeve pushed up to the elbow, black trousers, white sneakers, a staff lanyard at her chest; her left forearm covered in short lines of black marker handwriting; a small black notebook with a rubber band in her hand or thigh pocket; a faint translucent cold-blue system panel hovers at her right shoulder. |
+| 外觀提示詞（每集逐字沿用） | 24-year-old Taiwanese woman, slim and straight-backed, 165 cm, pale oval face with steady dark eyes and faint shadows under them from night shifts, no makeup, thin lips pressed flat; black hair in a low ponytail with loose strands at the temples; pale mint-green care-worker scrub top over a dark grey long-sleeve shirt, left sleeve pushed up to the elbow, black trousers, white sneakers, a staff lanyard at her chest; black marker handwriting on her left forearm; a small black notebook with a rubber band in her hand or thigh pocket; a faint translucent cold-blue system panel hovers at her right shoulder. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -113,7 +113,7 @@
 | 秘密 | 她記得前幾次週期的碎片，枕頭下藏著上一週期晚照寫的筆記本。 |
 | 說話習慣 | 「妳上次也這樣說。」 |
 | 聲音（擬定，未試聽） | gemini / Gacrux / 慢、輕、帶一點台語腔的台灣國語；失智時叫人「小姐」語氣客氣，清醒時叫「小照」語氣忽然變得很準。 |
-| 外觀提示詞（每集逐字沿用） | 80-year-old Taiwanese woman, small and thin, 150 cm, deeply lined soft face with cloudy gentle eyes, sparse white hair combed back and held with a jade-green plastic clip; pale pink knitted cardigan over a floral cotton blouse, grey trousers, brown cloth slippers; sits in a grey wheelchair with a hand-crocheted orange blanket over her knees; a battered black notebook peeks from under the pillow behind her; hands folded, one thumb rubbing the other; a faint cold-blue system panel at her right shoulder. |
+| 外觀提示詞（每集逐字沿用） | 80-year-old Taiwanese woman, small and thin, 150 cm, deeply lined soft face with cloudy gentle eyes, sparse white hair combed back and held with a jade-green plastic clip; pale pink knitted cardigan over a floral cotton blouse, grey trousers, brown cloth slippers; sits in a grey wheelchair with a hand-crocheted orange blanket over her knees; hands folded, one thumb rubbing the other; a faint cold-blue system panel at her right shoulder. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -132,7 +132,7 @@
 | 秘密 | 他留了一張三年前大停電那晚的照片，一直沒說為什麼。 |
 | 說話習慣 | 「有鎖的都算。」 |
 | 聲音（擬定，未試聽） | gemini / Algenib / 沙啞、慢、話少的台灣國語，帶一點台語尾音；說「有鎖的都算」時像在講常識。 |
-| 外觀提示詞（每集逐字沿用） | 60-year-old Taiwanese man, wiry and slightly stooped, 170 cm, tanned lined face with grey stubble and narrow sharp eyes, grey hair cut short under a faded blue cap; olive work jacket with many pockets over a white undershirt, dark brown trousers, black rubber boots; a heavy ring of brass keys on a chain at his belt, one long antique brass key with a bent bow standing out; a screwdriver in the chest pocket; hands scarred and oil-stained; a faint cold-blue system panel at his right shoulder. |
+| 外觀提示詞（每集逐字沿用） | 60-year-old Taiwanese man, wiry and slightly stooped, 170 cm, tanned lined face with grey stubble and narrow sharp eyes, grey hair cut short under a faded blue cap; olive work jacket with many pockets over a white undershirt, dark brown trousers, black rubber boots; a heavy ring of brass keys on a chain at his belt; a screwdriver in the chest pocket; hands scarred and oil-stained; a faint cold-blue system panel at his right shoulder. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -167,10 +167,10 @@
 | 性格 | 溫和、有魅力、永遠早知道；把六次週期說得像別人的故事，把人命算成路線。 |
 | 想要 | 第七次登頂，帶登了梯的人走，重開一個乾淨的第八次。 |
 | 害怕 | 一個他不知道答案的問題。 |
-| 秘密 | 他每次都死在第九層，所以需要晚照當唯一命裡被留下的那一個；他的面板不給他看「第七次：結清」。 |
+| 秘密 | 他六次都死在第九層門口的守關者手上，所以需要晚照先進門，再在唯一命裡只留下他自己；他的面板不給他看「第七次：結清」。 |
 | 說話習慣 | 說話溫和、句尾常常帶她的名字：「晚照。」 |
 | 聲音（擬定，未試聽） | gemini / Algieba / 溫和、有磁性、永遠不急的台灣國語，像在跟老朋友聊天；只有在第九層與 00:00 那三秒，聲音會突然乾掉。 |
-| 外觀提示詞（每集逐字沿用） | 28-year-old Taiwanese man, lean athletic build, 180 cm, handsome symmetrical face with a warm easy smile and cool unreadable eyes, black hair swept back neatly; black tailored bomber jacket with a small silver orbit-track emblem on the chest over a white shirt with both cuffs always buttoned, charcoal trousers, black leather sneakers; a thin silver ring on his right thumb; hands relaxed in his pockets, never hurried; a faint cold-blue system panel at his right shoulder. |
+| 外觀提示詞（每集逐字沿用） | 28-year-old Taiwanese man, lean athletic build, 180 cm, handsome symmetrical face with a warm easy smile and cool unreadable eyes, black hair swept back neatly; black tailored bomber jacket with a small silver orbit-track emblem on the chest over a white shirt, charcoal trousers, black leather sneakers; a thin silver ring on his right thumb; hands relaxed in his pockets, never hurried; a faint cold-blue system panel at his right shoulder. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -189,7 +189,7 @@
 | 秘密 | 第一天她就鑑定到晚照的天賦與讀檔計數回報邵擎；第五層那天開始複製老鄧的鑰匙、抄邵擎的面板。 |
 | 說話習慣 | 說話先講數字：「三分鐘」「六比七」「不到一成」。 |
 | 聲音（擬定，未試聽） | gemini / Despina / 清楚、俐落、公關式的台灣國語，說謊時語速不變只是更順；對晚照說話會忽然掉回三年前的語氣。 |
-| 外觀提示詞（每集逐字沿用） | 26-year-old Taiwanese woman, tall and poised, 170 cm, striking angular face with sharp dark eyes, precise winged eyeliner and red lipstick, glossy black hair in a sleek high ponytail; fitted black blazer with a small silver orbit-track pin on the lapel over a white silk top, black tapered trousers, black heeled boots; a slim silver tablet under her left arm; a thin gold chain bracelet on her right wrist that she turns between her fingers; a faint cold-blue system panel at her right shoulder with a second smaller pane at its edge. |
+| 外觀提示詞（每集逐字沿用） | 26-year-old Taiwanese woman, tall and poised, 170 cm, striking angular face with sharp dark eyes, precise winged eyeliner and red lipstick, glossy black hair in a sleek high ponytail; fitted black blazer over a white silk top, black tapered trousers, black heeled boots; a slim silver tablet under her left arm; a thin gold chain bracelet on her right wrist that she turns between her fingers; a faint cold-blue system panel at her right shoulder with a second smaller pane at its edge. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -208,7 +208,7 @@
 | 秘密 | 他的「系統名單」是邵擎手寫的前六次死亡名單，背面「第 28 天」是邵擎的字。 |
 | 說話習慣 | 「我不談判，我徵用。」 |
 | 聲音（擬定，未試聽） | gemini / Orus / 粗、重、不耐煩的台灣國語，命令句多；第 31 集之後句子變短、變慢，像第一次聽人講話。 |
-| 外觀提示詞（每集逐字沿用） | 52-year-old Taiwanese man, heavyset and thick-necked, 176 cm, broad jowly face with small hard eyes, a flat nose and a permanent frown, thin greying hair combed straight back; dark grey security-company windbreaker with a red shield patch on the shoulder over a black polo, black trousers, polished black boots; a folded sheet of paper with a red border always in his breast pocket, its corner showing; a heavy gold ring on his right hand; chest out, followed by men in matching grey; a faint cold-blue system panel at his right shoulder. |
+| 外觀提示詞（每集逐字沿用） | 52-year-old Taiwanese man, heavyset and thick-necked, 176 cm, broad jowly face with small hard eyes, a flat nose and a permanent frown, thin greying hair combed straight back; dark grey security-company windbreaker with a red shield patch on the shoulder over a black polo, black trousers, polished black boots; chest out, followed by men in matching grey; a faint cold-blue system panel at his right shoulder. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -223,14 +223,14 @@
 | m01 | 讀檔抹掉的是什麼記憶？ | 與讀檔動機最相關的那一段：為救阿嬤讀檔就忘阿嬤，為周嶼讀檔就忘周嶼。 | 1 | 4、8 | 12 |
 | m02 | 邵擎為什麼總是「早知道」？ | 他記得前六次週期：每一道門的位置、每一層的規律、每個人死在哪一天。 | 2 | 7、9、15、19 | 20 |
 | m03 | 全城為什麼不記得三年前的大停電？ | 那天是邵擎第一次世界存檔，全城停電一夜、那一天被寫進帳本索引；之後每次重讀都抹掉全城記憶。 | 3 | 11、19 | 20 |
-| m04 | 第九層的規則是什麼？ | 存檔無效、唯一命；持有者對持有者只留一人；但讀檔可用，門內第一級台階可以設存檔點。 | 6 | 17、26、29 | 30 |
-| m05 | 阿嬤說「妳上次也這樣說」是什麼意思？ | 失智者的記憶不在索引裡，重讀抹不掉；她記得前幾次週期的碎片，枕頭下還有上一週期晚照的筆記本。 | 3 | 13、18 | 24 |
+| m04 | 第九層的規則是什麼？ | 存檔無效、唯一命；持有者對持有者只留一人；但讀檔可用，門內第一級台階可以設存檔點；唯一命只管門內，門外的守關者只攔第一個走向門的人，邵擎六次都死在門口。 | 6 | 17、26、29 | 30 |
+| m05 | 阿嬤說「妳上次也這樣說」是什麼意思？ | 失智者的記憶不在索引裡，重讀抹不掉；她記得前幾次週期的碎片，枕頭下還有上一週期晚照的筆記本——她收著的東西重來也在。 | 3 | 13、18 | 24 |
 | m06 | 誰把晚照的天賦告訴星軌？ | 賀嵐——第一天在安養院門口就用【鑑定】看到她的天賦與讀檔計數，回報邵擎。 | 5 | 8 | 10 |
 | m07 | 天梯到底是什麼？ | 世界存檔的帳：每次存檔以全城記憶付息，第七次存檔＝違約、全額刪除；帳結清、沒有持有者時，天梯回收消失。 | 7 | 20、27、28、33 | 38 |
 | m08 | 晚照 05:59 的存檔點是誰設的？ | 邵擎的世界存檔點；她從第一天起就活在他的存檔裡，因此被帳本登記為「備援持有者」——持有者不列入刪除、記憶不列入索引，所以她記得被刪除的人。 | 4 | 15、16、20 | 28 |
 | m09 | 周嶼為什麼對安養院這麼熟？ | 母親周淑芬曾住 302 房，上一週期被刪除；他只記得習慣（看門牌、壓三秒的燈），不記得人。 | 6 | 14、16 | 22 |
 | m10 | 蘇醒的直播為什麼永不掉線？ | 他是天梯的稽核之眼：所見即記錄、存於帳外；被見證的事重讀抹不掉。他在鏡子與錄影裡看不到自己。 | 8 | 21、33 | 35 |
-| m11 | 小樹聽到的「第二個聲音」是誰？ | 晚照被抹掉的記憶進了系統，成了她自己的聲音；它知道系統知道的事，所以念得出通關順序。 | 9 | 17、23、35 | 36 |
+| m11 | 小樹聽到的「第二個聲音」是誰？ | 晚照被抹掉的記憶進了系統，成了她自己的聲音；它知道系統知道的事，所以念得出通關順序；那些記憶只是寄放在系統裡，系統消失時還給她。 | 9 | 17、23、35 | 36 |
 | m12 | 杜承業的刪除名單怎麼來的？ | 邵擎手寫給他的前六次死亡名單；最後一行是杜承業自己，他每次都死在第二十八天。 | 13 | 25 | 31 |
 
 ## 語氣與畫面
@@ -317,4 +317,4 @@
 
 ## 確定的結局
 
-第三十日 00:00，邵擎在鐘塔頂做第七次存檔，天梯之聲透過蘇醒向全城宣告「第七次存檔即全額刪除」；周嶼數到三，晚照在 00:00:03 讓自己死一次，用「可選存檔點」讀他的檔——讀檔的帳記在存檔點持有者身上，帳本在全城面前翻過一頁：「帳記於持有者：邵擎。全額。」世界回到 2 月 11 日 05:59，這次全城都記得三十天（被直播見證的事抹不掉），只有邵擎不記得任何一次週期：他付了全部的帳，「天梯第一人」變成一個看著自己空白手臂、不知道自己是誰的路人，賀嵐鑑定他的面板「存檔：0/7」，留在他身邊。帳已結清、沒有持有者，天梯灰掉、三十天裡一階一階回收；安養院地下室出現「帳房」的門，老鄧的鑰匙打開它，本週期被見證過的刪除者一個一個回來，老鄧站在門口；上一週期被刪除的周嶼母親沒有回來，名字留在牆上。第三十天日出——3 月 12 日——天梯最後一階碎成光、面板消失，晚照被抹掉的記憶隨系統消失回到她身上，她在筆記本寫下最後一行「今天，阿嬤生日」，說「阿嬤，生日快樂」；阿嬤清醒地看著她：「妳記得啊。」最後一個畫面：水塔下兩個人，手臂上的字被太陽曬得發白。
+第三十日 00:00，邵擎在鐘塔頂做第七次存檔，天梯之聲透過蘇醒向全城宣告「第七次存檔即全額刪除」；周嶼數到三，晚照在 00:00:03 踏上非持有者一踏就出局的天梯第一階，用「可選存檔點」讀他的檔——「存檔中」三秒內讀檔的帳記在持有者名下，帳本在全城面前翻過一頁：「帳記於持有者：邵擎。全額。」世界回到 2 月 11 日 05:59，這次全城都記得三十天（被直播見證的事抹不掉），只有邵擎不記得任何一次週期：他付了全部的帳，「天梯第一人」變成一個看著自己空白手臂、不知道自己是誰的路人，賀嵐鑑定他的面板「存檔：0/7」，留在他身邊。帳已結清、沒有持有者，天梯灰掉、三十天裡一階一階回收；安養院地下室出現「帳房」的門，阿嬤收著的老鄧鑰匙重來也在，打開它，本週期被見證過的刪除者一個一個回來，老鄧站在門口；上一週期被刪除的周嶼母親沒有回來，名字留在牆上。第三十天日出——3 月 12 日——天梯最後一階碎成光、面板消失，晚照被抹掉的記憶隨系統消失回到她身上，她在筆記本寫下最後一行「今天，阿嬤生日」，說「阿嬤，生日快樂」；阿嬤清醒地看著她：「妳記得啊。」最後一個畫面：水塔下兩個人，手臂上的字被太陽曬得發白。
