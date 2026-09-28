@@ -121,8 +121,13 @@
       "is_first_party": false,
       "enabled": true,
       "scan_interval_minutes": 60,
-      "config": {"max_entries_per_scan": 10, "auto_publish_alone": true},
-      "note": "Press; roughly 15 stories a day."
+      "config": {
+        "max_entries_per_scan": 10,
+        "auto_publish_alone": true,
+        "article_tags": [],
+        "article_classes": ["entry-content"]
+      },
+      "note": "Press; roughly 15 stories a day. The story is div.entry-content: <main> also holds the Related and Latest in AI cards with relative times and a rotating event promo, which re-render every half hour."
     },
     {
       "name": "Ars Technica AI",
@@ -145,8 +150,12 @@
       "is_first_party": false,
       "enabled": true,
       "scan_interval_minutes": 60,
-      "config": {"max_entries_per_scan": 10, "auto_publish_alone": true},
-      "note": "Press; the feed only carries the latest ten stories."
+      "config": {
+        "max_entries_per_scan": 10,
+        "auto_publish_alone": true,
+        "exclude_classes": ["duet--layout--rail", "duet--layout--article-recirc"]
+      },
+      "note": "Press; the feed only carries the latest ten stories. The traffic-ranked Most Popular rail sits inside <article> (duet--layout--rail) and reorders several times an hour; More in AI and Top Stories are duet--layout--article-recirc."
     },
     {
       "name": "CoinDesk",
@@ -157,8 +166,14 @@
       "is_first_party": false,
       "enabled": true,
       "scan_interval_minutes": 60,
-      "config": {"max_entries_per_scan": 10, "auto_publish_alone": true},
-      "note": "Press; much of it is market commentary, which the writer declines."
+      "config": {
+        "max_entries_per_scan": 10,
+        "auto_publish_alone": true,
+        "article_tags": [],
+        "article_classes": ["document-body"],
+        "exclude_classes": ["premium-hide"]
+      },
+      "note": "Press; much of it is market commentary, which the writer declines. The story is div.document-body: <main> also holds Latest Crypto News with relative ages and, now and then, Russian UI labels. premium-hide drops the live price chips inside paragraphs (BTC$83,034.73, sometimes in Russian number format), captions and the video slot."
     },
     {
       "name": "The Block",

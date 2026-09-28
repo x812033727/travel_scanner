@@ -10,6 +10,7 @@ import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
 
+import { tidiedNote } from "./automation/tidy.mjs";
 import { approve, GATES } from "./core/approvals.mjs";
 import { docDir, resolveWorkdir, ROOT, UsageError } from "./core/paths.mjs";
 import { eachLine, LINE_ID } from "./core/schema.mjs";
@@ -39,6 +40,7 @@ export const AREAS = {
   "youtube-sync": ["youtube", "2026-09-24-video-youtube-sync"],
   qa: ["qa", "2026-09-26-video-hands-off-qa"],
   auto: ["automation", "2026-09-25-video-auto-orchestrator-one-command-that"],
+  tidy: ["automation", "2026-09-28-video-story-tidy-finished"],
   // The drama format's media stages (docs/videos/DRAMA.md).
   look: ["media", "2026-09-26-video-drama-look-keyframes"],
   keyframes: ["media", "2026-09-26-video-drama-look-keyframes"],
@@ -66,6 +68,8 @@ Usage: node tools/video/cli.mjs <command> [options]
   i18n-merge --slug S [--locale L,L]               write i18n/<locale>.json from filled worksheets, hashes included
   qa       --slug S [--workdir D]                  the eleven checks of the finished cut, written to review/qa.json (docs/videos/HANDS-OFF.md)
   auto [--once]                                    run the pipeline from the settings on /admin/videos (docs/videos/AUTOMATION.md)
+  tidy [--dry-run] [--workdir D]                   clear the work files of the oldest video finished $VIDEO_TIDY_DAYS (7) days ago;
+                                                   auto does this once a round, --dry-run only lists what would go
 
   login [--name N] [--paste | --token-file F]     pair with the site: allow the printed code on the admin card
   check-audio --slug S [--threshold 0.5] [--force]  transcribe every line; Jev judges the ones that differ
@@ -125,7 +129,10 @@ async function cmdStatus(args, ctx) {
   // Dubs are optional (the owner picks each video's languages), so they are shown only once one exists.
   const dubs = Object.entries(status.dubs ?? {}).filter(([, dub]) => dub.status !== "missing");
   if (dubs.length) ctx.stdout.write(`  dubs: ${dubs.map(([locale, dub]) => `${locale} ${dub.status}${dub.note ? ` (${dub.note})` : ""}`).join("; ")}\n`);
-  ctx.stdout.write(status.next ? `\nNext: ${status.next.todo}\n` : "\nDone: the video is on YouTube.\n");
+  // A finished video whose work files the tidy cleared has no next step, whatever the files say.
+  const tidied = tidiedNote(workdir);
+  if (tidied) ctx.stdout.write(`\n${tidied}\n`);
+  else ctx.stdout.write(status.next ? `\nNext: ${status.next.todo}\n` : "\nDone: the video is on YouTube.\n");
   return EXIT.ok;
 }
 

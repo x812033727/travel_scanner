@@ -162,6 +162,36 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 2. **劇本本機裁決**：查核（`verifier:episode`）多回 `coverage.satisfaction` 與 `retention` 指名的句子 id，工人用估計時間軸算秒數（`retentionNumbers`），再用與伺服器同一套規則自己判一次（`scriptVerdict`：四個節拍沒有「無」、「弱」≤ 1、沒有連貫性與雷同問題、鉤子 ≤ 8 秒、第一個爽點 ≤ 30 秒、爽點 ≥ 2、懸念是最後一句）；不過就交撰稿 FIX 模式（最多 `MAX_PROMPT_FIX_ROUNDS` 輪）再查核、再聽眾審稿，過了才 `review-push --gate script`，伺服器依 `script_check_passed` 當場核准。設定圖與分鏡在免關卡作品上視為自動開關開著。每集的 `series.json` 帶 `visual_tier` 與 `compilation`：lint 擋超過等級上限的片段數，合集模式的第一個場景不能是片頭卡；`clips` 只買 `visual: "clip"` 的鏡頭，`assemble` 把 `still` 鏡頭的關鍵影格做成運鏡段。
 3. **合集**：全部集數完成後 `GET …/series/next` 回 `{kind: "compilation"}`，工人 `POST …/series/{slug}/compilation/start`（`{slug: "<作品>-full"}`）拿到每集與脈絡，建 `docs/videos/<作品>-full/video.json`（`compilation` 區塊、章節卡、outro、佔位標題）與 `compilation.json`，之後照 `COMPILATION_STEPS` 走：企劃寫標題／說明／標籤／縮圖（variant `planner:compilation`，縮圖底圖從前三集的關鍵影格挑一張複製到 `keyframes/thumb-source.png`）→ `render` 章節卡與縮圖 → `compile`（`-c copy` 串接每集成片、音訊重編一次、合併五語字幕、寫章節；結束碼 4 下一輪再試，其餘非 0 卡住）→ 翻譯四語標題與說明（variant `translator:compilation`）→ `qa`（6 項）→ 成片與上架確認照 HANDS-OFF 自動核准 → 站主貼網址後 `POST …/compilation/done`。合集的 1080p 成片不進審核檔案區（只送 720p 預覽），站主從後台下載。
 
+## 清理工作區（2026-09-28 加）
+
+工作區（volume `video_work`）原本什麼都不刪，一支品牌故事就留下 1.3–2 GB（`STORY.md` §上限與成本）。工人每一輪做完手上的工作之後清一次（`tools/video/automation/tidy.mjs`）：
+
+- **哪些影片**：`auto.json` 說已經結束的——`status: done` 而且記下了 YouTube id，或站主放棄（`dropped`）——而且結束滿保留天數（預設 7 天，跟審核檔案區刪 mp4 的 `PREVIEW_RETENTION` 一樣）。
+- **從哪天算**：放棄的從 `dropped.at` 算。上了 YouTube 的，`auto.json` 沒有記日期（`recordVideoId` 只寫 `status` 與 `youtube_video_id`），所以照網站刪 mp4 的規則（`prune_published_previews`）：上架確認核准的時間（工作區 `approvals.json` 的 `publish` 項，與每輪影片清單的 `publish_approved_at`，取較晚的）和站主設的公開時間（`youtube_publish_at`），再取較晚的。沒有可用的日期就不清，那一輪印一行說明。
+- **先留著**：還在做、卡住、等站主的影片，不管多舊都不動。已上 YouTube 但語言還沒決定或還在做（影片清單的 `locales_decided_at`、`languages`）、開了合集的作品裡合集還沒上 YouTube 的集數（合集要接每一集的成片與字幕，縮圖取前三集的關鍵影格）、工作區裡有 `STOP` 檔的，也先留著。
+- **刪什麼**：`final.mp4`、`upload/final.mp4`（上傳包的副本；合集是硬連結）、`upload/dubs/`、`segments/`、`build/`、`audio/`、`narration.wav`、`frames/`、`keyframes/`、`clips/`、配音的 `dubs/<語系>/audio/`、`dubs/<語系>/narration.wav`、`dubs/<語系>.<格式>`，以及 `review/` 裡送審用的預覽（`preview-<雜湊>.mp4`、`narration-<雜湊>.m4a`）。
+- **一定留**：`auto.json`、`state.json`、`checks.json`、`approvals.json`、`timeline.json`、`captions/`、`i18n/`、`languages.json`、`media/`（帳本、快取、工作）、`answers/`、`review/` 的 JSON 與頁面、上傳包的文字檔（`metadata.json`、`UPLOAD.md`、說明、字幕）與縮圖、`characters/`、`music/`、`thumbnail.jpg`、`contact-sheet.png`。工作區根目錄的 `_series/`、`_music/` 與任何 `_` 開頭的資料夾從不讀、從不刪。
+- **拒絕**：工作區根目錄是空白、相對路徑、磁碟根目錄、在 repo 裡或包住 repo，整個不跑。要刪的路徑一定在那支影片自己的資料夾裡，而那個資料夾直接在工作區根目錄底下。路上遇到連結（symbolic link、Windows junction）就不穿過；連結本身當成一個名字刪掉，它指到的東西不動。
+- **一輪一支**，最早結束的先清。印一行：哪一支、刪了什麼、釋放多少位元組。刪不掉的檔案（Windows 上被鎖住）與已經不見的，列在同一行，這一輪照常結束。清完在 `auto.json` 原子寫入 `tidied_at` 與 `tidied`（刪了什麼、多少位元組、哪些刪不掉），之後不再看這一支。
+- **什麼時候跑**：每一輪 `auto` 在工作之後跑一次，不管這一輪有沒有進度；設定裡自動草稿關著、或找到 `STOP` 檔，就不跑。
+- **清完之後**：`status` 不再寫「Next: …assemble」，改寫檔案哪天清掉、上面讀那些檔案的步驟會顯示沒做完、不會再做。工人也不會重做：`done` 的影片不再 `advance`，語言那一步要成片核准（`final.mp4`）還在才動。
+
+只在工人設定，網站（API、資料庫、後台設定）不用改：
+
+| 環境變數 | 預設 | 意思 |
+| --- | --- | --- |
+| `VIDEO_TIDY_DAYS` | `7` | 結束幾天後清，1–3650；`off` 關掉。填錯（例如 `7d`）時那一輪不清，印一行說明 |
+
+工人容器只收 compose 列出的環境變數：在 `docker-compose.prod.yml` 的 `video-worker.environment` 加一行，重建工人容器就生效。
+
+手動跑：`node tools/video/cli.mjs tidy --dry-run` 列出下一輪會清哪一支、刪什麼、多少位元組，以及哪些影片還在等、為什麼留著；不加 `--dry-run` 就真的清一支。它要讀站上的影片清單，所以要先 `login`。主機上是 `docker compose -f docker-compose.prod.yml exec -T video-worker node tools/video/cli.mjs tidy --dry-run`。
+
+清完之後就做不到的事：
+
+- 清理之後才勾的語言做不出來（成片與旁白都不在了），站上那一格會一直是「製作中」。
+- 合集的 1080p 成片（`upload/final.mp4`）在上 YouTube 滿保留天數後一起清掉，後台的下載按鈕就沒有檔案可下載——跟審核檔案區刪 mp4 的規則一致。
+- 從長片關鍵影格剪 Shorts（`shorts/cli.mjs from-episode`，#904）要在長片清掉之前做。
+
 ## 安全與成本
 
 - `/video/automation/run` 只接受設定裡列出的階段名稱，模型由伺服器依設定決定，工人不能指定。每次呼叫都記下階段、模型、token 數與影片代號。上限有兩個，超過都回 429：
