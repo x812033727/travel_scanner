@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from collections.abc import Iterator
 from contextlib import contextmanager
-from typing import Annotated
+from typing import Annotated, Any
 
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -24,7 +24,7 @@ from app.models import User
 from app.problems import AppError
 from app.video_reviews.admin_service import review_store
 from app.video_reviews.schemas import ProjectOut
-from app.video_youtube import connection, sync
+from app.video_youtube import connection, sync, vps
 from app.video_youtube.errors import Refused
 from app.video_youtube.schemas import (
     ClientIn,
@@ -111,3 +111,40 @@ async def publish(
 async def retry(slug: str, user: ContentManager, session: Session) -> ProjectOut:
     with answered():
         return await sync.retry_sync(session, slug, user)
+
+
+@publish_router.get("/{slug}/youtube/vps")
+async def vps_status(slug: str, user: ContentReader, session: Session) -> dict[str, Any]:
+    _ = user
+    with answered():
+        return await vps.status(session, slug)
+
+
+@publish_router.post("/{slug}/youtube/vps", status_code=202)
+async def vps_start(
+    slug: str,
+    payload: vps.StartIn,
+    user: ContentManager,
+    session: Session,
+) -> dict[str, Any]:
+    with answered():
+        return await vps.start(session, slug, user, payload)
+
+
+@publish_router.post("/{slug}/youtube/vps/stage")
+async def vps_stage(slug: str, user: ContentManager, session: Session) -> dict[str, Any]:
+    _ = user
+    with answered():
+        return await vps.stage(session, slug)
+
+
+@publish_router.post("/{slug}/youtube/vps/{action}")
+async def vps_action(
+    slug: str,
+    action: str,
+    payload: vps.ResumeIn,
+    user: ContentManager,
+    session: Session,
+) -> dict[str, Any]:
+    with answered():
+        return await vps.action(session, slug, user, action, payload)
