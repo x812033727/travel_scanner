@@ -115,7 +115,7 @@
 
 ## 製作怎麼接現有產線
 
-1. 在 `/admin/videos` 發起一支漫劇：故事前提填 `episodes.json` 那一列的題目（可附 `hook`、`answer` 當備註），風格選**扁平插畫解說**（`flat-explainer`，migration 0105）。工人會用解說版的企劃、撰稿、查核提示詞，產出 `format: "drama"`、`look.preset: "flat-explainer"`、`characters: []`、全部 `visual: "still"` 的 `video.json`；沒有角色就沒有設定圖關卡，直接畫關鍵影格。規格見 `youtube-video` skill 的 `references/drama.md`，範例 `tools/video/core/fixtures/explainer/`。
+1. 在 `/admin/videos` 發起一支漫劇：故事前提填 `episodes.json` 那一列的題目（可附 `hook`、`answer` 當備註），風格選**扁平插畫解說**（`flat-explainer`，migration 0109）。這會建一部單集作品（one-off，`docs/videos/DRAMA-FLOW.md`）：工人先寫一份解說版的「故事聖經」（問題、一句答案、原因、大綱、來源網址，沒有角色）給你核准，核准後用解說版的撰稿、查核提示詞，產出 `format: "drama"`、`look.preset: "flat-explainer"`、`characters: []`、全部 `visual: "still"` 的 `video.json`；沒有角色就沒有設定圖關卡，直接畫關鍵影格。規格見 `youtube-video` skill 的 `references/drama.md`，範例 `tools/video/core/fixtures/explainer/`。
 2. 之後照漫劇路線：選大綱 → 劇本 → 查核 → 旁白 → 關鍵影格 → 合成 → 五語字幕 → 配音 → 上架包。
 3. Shorts：`shorts/cli.mjs from-episode`（見上面 Shorts 一節），用同一集的關鍵影格與 `shorts.json`。
 

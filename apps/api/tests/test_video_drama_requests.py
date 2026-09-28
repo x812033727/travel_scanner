@@ -20,8 +20,14 @@ from app.models import AdminAuditLog, User, VideoProject, VideoToolToken
 from app.problems import AppError, app_error_handler
 from app.video_automation import admin_api
 from app.video_automation import requests as service
+from app.video_automation import series as drama_series
 from app.video_automation import settings as settings_service
-from app.video_automation.models import VideoAutomationSettings, VideoDramaRequest
+from app.video_automation.models import (
+    VideoAutomationSettings,
+    VideoDramaEpisode,
+    VideoDramaRequest,
+    VideoDramaSeries,
+)
 from app.video_automation.schemas import DramaRequestIn, DramaRequestOut
 from app.video_media.meter import SlugSpend, spend_by_slug
 from app.video_reviews import admin_service as reviews
@@ -66,6 +72,9 @@ class FakeSession:
 
     def add(self, row: Any) -> None:
         self.added.append(row)
+
+    async def flush(self) -> None:
+        pass
 
     async def commit(self) -> None:
         self.commits += 1
@@ -125,27 +134,55 @@ def test_the_view_says_done_once_the_started_video_is_on_youtube() -> None:
 
 
 @pytest.mark.asyncio
-async def test_creating_a_request_queues_it_and_writes_an_audit_entry() -> None:
-    session = FakeSession()
+async def test_a_new_request_is_a_one_off_series_with_its_episode_and_an_audit_entry() -> None:
+    """The form is unchanged; what it files is a one-episode series whose story bible the
+    worker plans next (docs/videos/DRAMA-FLOW.md §二)."""
+    session = FakeSession(None)  # no series holds the slug yet
     owner = _owner()
-    out = await service.create_request(
+    out = await drama_series.create_one_off(
         session,  # type: ignore[arg-type]
         owner,
-        DramaRequestIn(premise="精衛填海", source_guide="shanhaijing-birds", target_minutes=2),
+        DramaRequestIn(
+            premise="精衛填海", source_guide="shanhaijing-birds", target_minutes=2, note="慢一點"
+        ),
     )
     assert out.status == "queued" and out.created_by_user_id == owner.id and out.slug is None
-    assert isinstance(out.id, UUID)
-    row, audit = session.added
+    assert isinstance(out.id, UUID) and out.episode_number == 1
+    assert out.series_slug == f"one-off-{out.id.hex[:8]}"
+    series, episode, row, audit = session.added
+    assert isinstance(series, VideoDramaSeries) and series.slug == out.series_slug
+    assert (series.kind, series.status, series.planned_episodes, series.episodes_per_chapter) == (
+        "one-off",
+        "setting",
+        1,
+        1,
+    )
+    assert series.title == "精衛填海" and series.open_ended is False and series.note == "慢一點"
+    assert (series.style_preset, series.target_minutes) == ("cinematic-3d", 2)
+    assert isinstance(episode, VideoDramaEpisode)
+    assert (episode.series_id, episode.number, episode.status) == (series.id, 1, "planned")
     assert isinstance(row, VideoDramaRequest) and row.id == out.id and row.status == "queued"
+    assert (row.series_id, row.episode_number, row.source_guide) == (
+        series.id,
+        1,
+        "shanhaijing-birds",
+    )
     assert isinstance(audit, AdminAuditLog)
     assert audit.action == "video_drama_request_created"
     assert audit.target == f"video-drama-request:{out.id}"
     assert audit.metadata_json == {
+        "series_slug": out.series_slug,
         "style_preset": "cinematic-3d",
         "target_minutes": 2,
         "source_guide": "shanhaijing-birds",
     }
     assert session.commits == 1
+    titled = await drama_series.create_one_off(
+        FakeSession(None),  # type: ignore[arg-type]
+        owner,
+        DramaRequestIn(premise="p", title="第一次去東京"),
+    )
+    assert titled.title == "第一次去東京" and titled.series_slug is not None
 
 
 @pytest.mark.asyncio
@@ -198,23 +235,29 @@ async def test_only_a_queued_request_can_be_cancelled_or_started() -> None:
 
 
 @pytest.mark.asyncio
-async def test_next_is_the_oldest_queued_request_or_none() -> None:
+async def test_next_is_the_oldest_queued_request_from_before_one_offs_or_none() -> None:
     oldest = _row()
-    assert (await service.next_request(FakeSession(oldest))).id == oldest.id  # type: ignore[arg-type, union-attr]
+    session = AsyncMock()
+    session.scalar = AsyncMock(return_value=oldest)
+    assert (await service.next_request(session)).id == oldest.id  # type: ignore[union-attr]
+    statement = str(session.scalar.await_args.args[0]).lower()
+    assert "series_id is null" in statement, "an episode's request starts through its series"
     assert await service.next_request(FakeSession(None)) is None  # type: ignore[arg-type]
 
 
 @pytest.mark.asyncio
-async def test_listing_joins_each_request_with_its_video() -> None:
+async def test_listing_joins_each_request_with_its_video_and_its_series() -> None:
     started = _row(status="started", slug="v")
     rows = MagicMock()
-    rows.all.return_value = [(started, "dQw4w9WgXcQ"), (_row(), None)]
+    rows.all.return_value = [(started, "dQw4w9WgXcQ", None), (_row(), None, "one-off-1a2b3c4d")]
     session = AsyncMock()
     session.execute = AsyncMock(return_value=rows)
     listed = await service.list_requests(session)
     assert [item.status for item in listed] == ["done", "queued"]
+    assert [item.series_slug for item in listed] == [None, "one-off-1a2b3c4d"]
     statement = str(session.execute.await_args.args[0]).lower()
-    assert "video_projects" in statement and "desc" in statement
+    assert "video_projects" in statement and "video_drama_series" in statement
+    assert "desc" in statement
     await service.list_requests(session, active_only=True)
     active = str(session.execute.await_args.args[0]).lower()
     assert "asc" in active and "status" in active
@@ -251,7 +294,7 @@ async def test_a_viewer_reads_the_queue_and_only_a_content_manager_files_or_canc
     create = AsyncMock()
     cancel = AsyncMock()
     monkeypatch.setattr(service, "list_requests", listed)
-    monkeypatch.setattr(service, "create_request", create)
+    monkeypatch.setattr(drama_series, "create_one_off", create)
     monkeypatch.setattr(service, "cancel_request", cancel)
     async with AsyncClient(
         transport=ASGITransport(app=_app(viewer)), base_url="http://t"
@@ -274,8 +317,9 @@ async def test_the_owner_files_a_request_only_while_the_drama_route_is_on(
     owner = _owner()
     settings_row = AsyncMock(return_value=VideoAutomationSettings(id=1, drama_enabled=False))
     monkeypatch.setattr(settings_service, "settings_row", settings_row)
-    create = AsyncMock(return_value=service.request_view(_row(created_by_user_id=owner.id)))
-    monkeypatch.setattr(service, "create_request", create)
+    filed_row = _row(created_by_user_id=owner.id, episode_number=1)
+    create = AsyncMock(return_value=service.request_view(filed_row, series_slug="one-off-1a2b3c4d"))
+    monkeypatch.setattr(drama_series, "create_one_off", create)
     cancel = AsyncMock(
         side_effect=service.RequestRefused(
             409, "video_drama_request_not_queued", "工人已經開始做這支了"
@@ -298,6 +342,7 @@ async def test_the_owner_files_a_request_only_while_the_drama_route_is_on(
     assert create.await_count == 2
     assert filed.status_code == 201, filed.text
     assert filed.json()["status"] == "queued"
+    assert filed.json()["series_slug"] == "one-off-1a2b3c4d"
     payload = create.await_args_list[0].args[2]
     assert (payload.style_preset, payload.target_minutes) == ("ink-wash", 2)
     assert explainer.status_code == 201, explainer.text

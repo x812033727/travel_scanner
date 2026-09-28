@@ -8,6 +8,12 @@ previous is done (cleared for upload) or skipped, while fewer than ``series_max_
 in the making. Every rule about "what next" is a pure function over the loaded rows
 (``next_job_for``), so it can be tested without a database.
 
+A one-off drama is a series of ``kind = "one-off"`` (docs/videos/DRAMA-FLOW.md §二): one
+episode, and one document, the story bible, whose approval makes the episode ready; from there
+it walks the same road as an episode of a long series. The owner's drama request form makes one
+(``create_one_off``), and the request row is the episode's, filed when the bible is approved
+and the worker starts it.
+
 The router turns ``SeriesRefused`` into the API's problem response; nothing here raises
 ``AppError``.
 """
@@ -33,13 +39,17 @@ from app.video_automation.models import (
     VideoAutomationSettings,
     VideoDramaDoc,
     VideoDramaEpisode,
+    VideoDramaMessage,
     VideoDramaRequest,
     VideoDramaSeries,
 )
 from app.video_automation.requests import request_view
 from app.video_automation.schemas import (
+    ONE_OFF_EPISODES,
     BingeQuoteOut,
     BudgetLine,
+    DramaRequestIn,
+    DramaRequestOut,
     SeriesCompilationStartOut,
     SeriesContextOut,
     SeriesDocEditIn,
@@ -55,6 +65,7 @@ from app.video_automation.schemas import (
     SeriesOut,
     SeriesPatch,
     SeriesSummary,
+    SeriesWithdrawnOut,
 )
 from app.video_media.catalog import JUDGE_USD_PER_CALL, find_model
 from app.video_media.meter import spend_by_slug
@@ -66,6 +77,16 @@ BEAT_FIELDS = ("hook", "conflict", "turn", "cliffhanger")
 RECENT_RECAPS = 3
 ACTIVE_STATUSES = ("setting", "outline", "active")
 EPISODE_OPEN = ("planned", "ready", "queued", "started")
+# The episodes a drama may be withdrawn with: none of them has been handed to the worker.
+WITHDRAWABLE = ("planned", "ready")
+# The story bible of a one-off (docs/videos/DRAMA-FLOW.md §二): the cast as in a setting book,
+# the acts, and the one outline the episode is written from; music, not_doing and lexicon are
+# the planner's to fill and nothing here reads them.
+BIBLE_LISTS = ("acts",)
+ONE_OFF_PREFIX = "one-off-"
+# The note on a version the discussion replaced (docs/videos/DRAMA-FLOW.md §三): such a version
+# is not one of the owner's rewrites, so it does not count against ``series_doc_rewrites``.
+DISCUSSION_NOTE = "討論後出了新版本"
 
 # A binge series (docs/videos/BINGE.md). The genre presets the planner writes from: the
 # classic xianxia series keeps today's prompts and rules; the others carry the retention
@@ -131,6 +152,51 @@ def _now() -> datetime:
 
 def chapter_count(planned_episodes: int, episodes_per_chapter: int) -> int:
     return max(1, -(-planned_episodes // episodes_per_chapter))
+
+
+def is_one_off(series: VideoDramaSeries) -> bool:
+    return series.kind == "one-off"
+
+
+# An illustrated explainer (docs/videos/so-thats-why/) is a one-off in this preset: its bible is a
+# question's, with no cast, and its outline carries the answer, the reasons and the sources.
+EXPLAINER_PRESET = "flat-explainer"
+
+
+def is_explainer(series: VideoDramaSeries) -> bool:
+    return is_one_off(series) and series.style_preset == EXPLAINER_PRESET
+
+
+def _explainer_bible_problem(body: dict[str, Any]) -> str | None:
+    """The explainer's bible: no cast, the acts, and an outline with the question, the answer,
+    the reasons and the https pages the facts rest on (tools/video/automation/series.mjs)."""
+    if body.get("characters") != []:
+        return "an explainer's bible has no characters"
+    for key in BIBLE_LISTS:
+        if not isinstance(body.get(key), list) or not body[key]:
+            return f"a story bible needs an {key} list"
+    outline = body.get("outline")
+    if not isinstance(outline, dict):
+        return "a story bible needs one outline (an object)"
+    for key in ("question", "answer", "hook"):
+        if not isinstance(outline.get(key), str) or not outline[key].strip():
+            return f"an explainer's outline needs its {key}"
+    reasons = outline.get("reasons")
+    if not isinstance(reasons, list) or len(reasons) < 2 or not all(
+        isinstance(reason, str) and reason.strip() for reason in reasons
+    ):
+        return "an explainer's outline lists its reasons"
+    sources = outline.get("sources")
+    if not isinstance(sources, list) or not sources or not all(
+        isinstance(url, str) and url.startswith("https://") for url in sources
+    ):
+        return "an explainer's outline lists the https pages its facts rest on"
+    return None
+
+
+def setting_kind(series: VideoDramaSeries) -> str:
+    """The document that holds a series' cast: the setting book, or a one-off's story bible."""
+    return "bible" if is_one_off(series) else "setting"
 
 
 def chapter_range(series: VideoDramaSeries, chapter: int) -> tuple[int, int]:
@@ -256,16 +322,29 @@ def doc_problem(series: VideoDramaSeries, payload: SeriesDocSubmitIn) -> str | N
     every episode of its range the beats the owner reads.
     """
     body = payload.body_json
-    if payload.kind == "setting":
+    if is_one_off(series) and payload.kind != "bible":
+        return "a one-off drama has one document, its story bible"
+    if payload.kind == "bible" and not is_one_off(series):
+        return "a story bible belongs to a one-off drama; a series has a setting book"
+    if payload.kind == "bible" and is_explainer(series):
+        return _explainer_bible_problem(body)
+    if payload.kind in ("setting", "bible"):
+        name = "story bible" if payload.kind == "bible" else "setting book"
         characters = body.get("characters")
         if not isinstance(characters, list) or not characters:
-            return "a setting book needs a characters list"
+            return f"a {name} needs a characters list"
         for character in characters:
             if not isinstance(character, dict) or not all(
                 isinstance(character.get(key), str) and character.get(key)
                 for key in ("id", "name", "appearance")
             ):
                 return "every character needs an id, a name and an appearance"
+        if payload.kind == "bible":
+            for key in BIBLE_LISTS:
+                if not isinstance(body.get(key), list) or not body[key]:
+                    return f"a story bible needs an {key} list"
+            if not isinstance(body.get("outline"), dict):
+                return "a story bible needs one outline (an object)"
         return None
     if payload.kind == "outline":
         chapters = body.get("chapters")
@@ -322,8 +401,14 @@ def _rewrite_job(
         return NextJob(kind=kind, chapter_number=chapter, rewrites_left=rewrites)
     if latest.status != "rejected":
         return None
-    # The first version was not a rewrite: version 2 is the first rewrite.
-    left = rewrites - (latest.version - 1)
+    # The first version was not a rewrite: version 2 is the first rewrite. A version the
+    # discussion replaced was not the owner sending it back, so it is not counted.
+    discussed = sum(
+        1
+        for doc in docs
+        if doc.kind == kind and doc.chapter_number == chapter and doc.note == DISCUSSION_NOTE
+    )
+    left = rewrites - (latest.version - 1 - discussed)
     if left <= 0:
         return None
     return NextJob(kind=kind, chapter_number=chapter, previous=latest, rewrites_left=left)
@@ -344,7 +429,7 @@ def next_job_for(
     """
     rewrites = settings.series_doc_rewrites
     if series.status == "setting":
-        return _rewrite_job("setting", 0, docs, rewrites)
+        return _rewrite_job(setting_kind(series), 0, docs, rewrites)
     if series.status == "outline":
         return _rewrite_job("outline", 0, docs, rewrites)
     if series.status == "finished":
@@ -365,7 +450,12 @@ def next_job_for(
     latest = latest_docs(docs)
     started_numbers = [e.number for e in episodes if e.status in ("started", "done", "skipped")]
     reached = max(started_numbers, default=0)
-    total = chapter_count(series.planned_episodes, series.episodes_per_chapter)
+    # A one-off has no chapter outlines: its bible made the episode ready.
+    total = (
+        0
+        if is_one_off(series)
+        else chapter_count(series.planned_episodes, series.episodes_per_chapter)
+    )
     for chapter in range(1, total + 1):
         current = latest.get(("chapter", chapter))
         if current is not None and current.status in ("review", "generating"):
@@ -444,7 +534,12 @@ def beats_from_chapter(body: dict[str, Any]) -> dict[int, dict[str, Any]]:
 # --- views ----------------------------------------------------------------------------------
 
 
-def doc_view(doc: VideoDramaDoc) -> SeriesDocOut:
+def doc_subject(kind: str, chapter: int) -> str:
+    """The discussion thread's subject for a document (docs/videos/DRAMA-FLOW.md §三)."""
+    return f"chapter:{chapter}" if kind == "chapter" else kind
+
+
+def doc_view(doc: VideoDramaDoc, unanswered: int = 0) -> SeriesDocOut:
     return SeriesDocOut(
         id=doc.id,
         kind=cast(Any, doc.kind),
@@ -456,6 +551,7 @@ def doc_view(doc: VideoDramaDoc) -> SeriesDocOut:
         note=doc.note,
         decided_at=doc.decided_at,
         created_at=doc.created_at,
+        unanswered=unanswered,
     )
 
 
@@ -484,11 +580,13 @@ def summary_view(
     *,
     media_usd: float = 0.0,
     clip_seconds: int = 0,
+    messages_pending: int = 0,
 ) -> SeriesSummary:
     latest = latest_docs(docs)
     return SeriesSummary(
         id=series.id,
         slug=series.slug,
+        kind=cast(Any, series.kind or "series"),
         title=series.title,
         premise=series.premise,
         aspects=cast(Any, list(series.aspects or [])),
@@ -507,6 +605,7 @@ def summary_view(
         episodes_started=sum(1 for e in episodes if e.status == "started"),
         episodes_ready=sum(1 for e in episodes if e.status == "ready"),
         docs_pending=sum(1 for doc in latest.values() if doc.status == "review"),
+        messages_pending=messages_pending,
         media_usd=media_usd,
         clip_seconds=clip_seconds,
         genre=cast(Any, series.genre or "xianxia-bonds"),
@@ -536,6 +635,18 @@ async def _series(session: AsyncSession, slug: str, *, lock: bool = False) -> Vi
     return row
 
 
+async def _series_by_id(
+    session: AsyncSession, series_id: Any, *, lock: bool = True
+) -> VideoDramaSeries:
+    statement = select(VideoDramaSeries).where(VideoDramaSeries.id == series_id)
+    if lock:
+        statement = statement.with_for_update()
+    row = await session.scalar(statement)
+    if row is None:
+        raise SeriesRefused(404, "video_series_not_found", "找不到這部作品")
+    return row
+
+
 async def _docs(session: AsyncSession, series: VideoDramaSeries) -> list[VideoDramaDoc]:
     rows = await session.scalars(
         select(VideoDramaDoc)
@@ -552,6 +663,20 @@ async def _episodes(session: AsyncSession, series: VideoDramaSeries) -> list[Vid
         .order_by(VideoDramaEpisode.number)
     )
     return list(rows.all())
+
+
+async def _unanswered(session: AsyncSession, series: VideoDramaSeries) -> dict[str, int]:
+    """The owner's lines still waiting for the model, by thread subject."""
+    rows = await session.execute(
+        select(VideoDramaMessage.subject, func.count())
+        .where(
+            VideoDramaMessage.series_id == series.id,
+            VideoDramaMessage.author == "owner",
+            VideoDramaMessage.answered_at.is_(None),
+        )
+        .group_by(VideoDramaMessage.subject)
+    )
+    return {str(subject): int(count) for subject, count in rows.all()}
 
 
 async def _started_this_month(session: AsyncSession, series: VideoDramaSeries) -> int:
@@ -616,12 +741,18 @@ async def create_series(session: AsyncSession, actor: User, payload: SeriesIn) -
         updated_at=now,
     )
     session.add(row)
+    if is_one_off(row):
+        # The one episode exists from the start; the bible's approval makes it ready. Nothing
+        # tells the unit of work to write the series first: flush it before the episode.
+        await session.flush()
+        session.add(_new_episode(row, 1, row.title, ""))
     session.add(
         AdminAuditLog(
             actor_user_id=actor.id,
             action="video_series_created",
             target=f"video-series:{row.slug}",
             metadata_json={
+                "kind": row.kind,
                 "planned_episodes": values["planned_episodes"],
                 "episodes_per_chapter": values["episodes_per_chapter"],
                 "tone": payload.tone,
@@ -638,20 +769,99 @@ async def create_series(session: AsyncSession, actor: User, payload: SeriesIn) -
     return await series_view(session, row.slug)
 
 
-async def list_series(session: AsyncSession) -> list[SeriesSummary]:
-    rows = list(
-        (
-            await session.scalars(
-                select(VideoDramaSeries).order_by(VideoDramaSeries.created_at.desc()).limit(50)
-            )
-        ).all()
+def one_off_slug(request_id: Any) -> str:
+    return f"{ONE_OFF_PREFIX}{str(request_id).replace('-', '')[:8]}"
+
+
+async def create_one_off(
+    session: AsyncSession, actor: User, payload: DramaRequestIn
+) -> DramaRequestOut:
+    """The owner's drama request form: a one-off series with its episode 1 planned and the
+    request row that episode will travel as, pointing at the series
+    (docs/videos/DRAMA-FLOW.md §二). The worker plans the story bible on its next round."""
+    now = _now()
+    request_id = uuid4()
+    slug = one_off_slug(request_id)
+    taken = await session.scalar(select(VideoDramaSeries.id).where(VideoDramaSeries.slug == slug))
+    if taken is not None:
+        raise SeriesRefused(409, "video_series_slug_taken", f"{slug} 已經是另一部作品")
+    series = VideoDramaSeries(
+        id=uuid4(),
+        slug=slug,
+        kind="one-off",
+        title=(payload.title or payload.premise)[:200],
+        premise=payload.premise,
+        aspects=[],
+        style_preset=payload.style_preset,
+        target_minutes=payload.target_minutes,
+        planned_episodes=ONE_OFF_EPISODES,
+        episodes_per_chapter=ONE_OFF_EPISODES,
+        open_ended=False,
+        status="setting",
+        note=payload.note,
+        created_by_user_id=actor.id,
+        created_at=now,
+        updated_at=now,
     )
+    session.add(series)
+    # The episode and the request point at the series, and nothing tells the unit of work to
+    # write the series first: flush it before they carry its id.
+    await session.flush()
+    session.add(_new_episode(series, 1, series.title, ""))
+    request = VideoDramaRequest(
+        id=request_id,
+        premise=payload.premise,
+        title=payload.title,
+        source_guide=payload.source_guide,
+        style_preset=payload.style_preset,
+        target_minutes=payload.target_minutes,
+        note=payload.note,
+        status="queued",
+        series_id=series.id,
+        episode_number=1,
+        created_by_user_id=actor.id,
+        created_at=now,
+        updated_at=now,
+    )
+    session.add(request)
+    session.add(
+        AdminAuditLog(
+            actor_user_id=actor.id,
+            action="video_drama_request_created",
+            target=f"video-drama-request:{request.id}",
+            metadata_json={
+                "series_slug": slug,
+                "style_preset": payload.style_preset,
+                "target_minutes": payload.target_minutes,
+                "source_guide": payload.source_guide,
+            },
+        )
+    )
+    await session.commit()
+    return request_view(request, series_slug=slug)
+
+
+async def list_series(session: AsyncSession, *, kind: str | None = None) -> list[SeriesSummary]:
+    statement = select(VideoDramaSeries).order_by(VideoDramaSeries.created_at.desc()).limit(50)
+    if kind is not None:
+        statement = statement.where(VideoDramaSeries.kind == kind)
+    rows = list((await session.scalars(statement)).all())
     out: list[SeriesSummary] = []
     for series in rows:
         docs = await _docs(session, series)
         episodes = await _episodes(session, series)
         usd, seconds = await _spend(session, episodes)
-        out.append(summary_view(series, docs, episodes, media_usd=usd, clip_seconds=seconds))
+        waiting = await _unanswered(session, series)
+        out.append(
+            summary_view(
+                series,
+                docs,
+                episodes,
+                media_usd=usd,
+                clip_seconds=seconds,
+                messages_pending=sum(waiting.values()),
+            )
+        )
     return out
 
 
@@ -660,13 +870,24 @@ async def series_view(session: AsyncSession, slug: str) -> SeriesOut:
     docs = await _docs(session, series)
     episodes = await _episodes(session, series)
     usd, seconds = await _spend(session, episodes)
+    waiting = await _unanswered(session, series)
     videos = {
         project.slug: project.model_dump(mode="json")
         for project in await list_projects(session, series_slug=series.slug, limit=1000)
     }
     return SeriesOut(
-        **summary_view(series, docs, episodes, media_usd=usd, clip_seconds=seconds).model_dump(),
-        docs=[doc_view(doc) for doc in latest_docs(docs).values()],
+        **summary_view(
+            series,
+            docs,
+            episodes,
+            media_usd=usd,
+            clip_seconds=seconds,
+            messages_pending=sum(waiting.values()),
+        ).model_dump(),
+        docs=[
+            doc_view(doc, waiting.get(doc_subject(doc.kind, doc.chapter_number), 0))
+            for doc in latest_docs(docs).values()
+        ],
         episodes=[episode_view(episode, videos.get(episode.slug or "")) for episode in episodes],
     )
 
@@ -680,6 +901,8 @@ async def patch_series(
         raise SeriesRefused(
             409, "video_series_not_planned", "設定集與總綱核准之後，作品才能暫停、繼續或完結"
         )
+    if is_one_off(series) and {"planned_episodes", "episodes_per_chapter"} & set(changes):
+        raise SeriesRefused(409, "video_series_one_off_fixed", "單集漫劇只有一集，集數不能改")
     episodes = await _episodes(session, series)
     reached = max((e.number for e in episodes if e.status != "planned"), default=0)
     if "planned_episodes" in changes and changes["planned_episodes"] < reached:
@@ -712,6 +935,56 @@ async def patch_series(
     )
     await session.commit()
     return await series_view(session, slug)
+
+
+async def withdraw_series(session: AsyncSession, actor: User, slug: str) -> SeriesWithdrawnOut:
+    """The owner takes back a drama no episode of which has started: a one-off still at its
+    story bible, or a series still at its documents. The series goes with its documents,
+    threads and episode rows; the requests still queued for it stay as cancelled rows, so the
+    request list keeps the record. Once an episode is in the making it is dropped as a video."""
+    series = await _series(session, slug, lock=True)
+    begun = [e.number for e in await _episodes(session, series) if e.status not in WITHDRAWABLE]
+    if begun:
+        raise SeriesRefused(
+            409,
+            "video_series_started",
+            f"第 {min(begun)} 集已經開始做了，不能撤回；要停就到影片清單放棄那支影片",
+        )
+    now = _now()
+    requests = list(
+        (
+            await session.scalars(
+                select(VideoDramaRequest)
+                .where(
+                    VideoDramaRequest.series_id == series.id,
+                    VideoDramaRequest.status == "queued",
+                )
+                .with_for_update()
+            )
+        ).all()
+    )
+    for request in requests:
+        request.status = "cancelled"
+        request.cancelled_at = now
+        request.updated_at = now
+    session.add(
+        AdminAuditLog(
+            actor_user_id=actor.id,
+            action="video_series_withdrawn",
+            target=f"video-series:{series.slug}",
+            metadata_json={
+                "kind": series.kind,
+                "status": series.status,
+                "requests_cancelled": [str(request.id) for request in requests],
+            },
+        )
+    )
+    # The requests keep their row and lose the series (ON DELETE SET NULL); write their new
+    # status before the series goes.
+    await session.flush()
+    await session.delete(series)
+    await session.commit()
+    return SeriesWithdrawnOut(slug=slug, requests_cancelled=len(requests))
 
 
 def _new_episode(
@@ -757,7 +1030,25 @@ async def _apply_approval(
 ) -> None:
     """What an approved document changes: the series moves on, the episode table fills in."""
     body = doc.body_json or {}
-    if doc.kind == "setting":
+    if doc.kind == "bible":
+        # The one-off's only document: its episode is ready, with the bible's outline as its
+        # beats, and the series is active at once (no outline, no chapter to plan).
+        episodes = {episode.number: episode for episode in await _episodes(session, series)}
+        episode = episodes.get(1)
+        if episode is None:
+            episode = _new_episode(series, 1, series.title, "")
+            session.add(episode)
+        raw_outline = body.get("outline")
+        outline: dict[str, Any] = dict(raw_outline) if isinstance(raw_outline, dict) else {}
+        if episode.status in ("planned", "ready"):
+            episode.title = str(outline.get("title") or series.title)[:200]
+            episode.logline = str(outline.get("logline") or series.premise)
+            episode.beats = {key: value for key, value in outline.items() if key != "number"}
+            episode.status = "ready"
+            episode.updated_at = _now()
+        if series.status in ("setting", "outline"):
+            series.status = "active"
+    elif doc.kind == "setting":
         if series.status == "setting":
             series.status = "outline"
         # The one-button form left the title to the planner: the setting book names it.
@@ -936,8 +1227,14 @@ async def act(session: AsyncSession, actor: User, slug: str, action: str) -> tup
     series = await _series(session, slug, lock=True)
     docs = await _docs(session, series)
     latest = latest_docs(docs)
-    total = chapter_count(series.planned_episodes, series.episodes_per_chapter)
+    total = (
+        0
+        if is_one_off(series)
+        else chapter_count(series.planned_episodes, series.episodes_per_chapter)
+    )
     if action == "compile":
+        if is_one_off(series):
+            raise SeriesRefused(409, "video_series_one_off_single", "單集漫劇只有一集，沒有合集")
         # The owner asks for the compilation of a finished series that was not set up to
         # make one (docs/videos/BINGE.md). A series keeps the one compilation it has: the
         # worker names the video <series>-full, that slug is the first compilation's, and
@@ -1024,7 +1321,9 @@ async def context_view(
     episodes = await _episodes(session, series)
     chapter = chapter_of(series, episode_number) if episode_number else None
     episode = next((e for e in episodes if e.number == episode_number), None)
-    setting = approved_doc(docs, "setting")
+    # A one-off's story bible stands where a series' setting book does: the cast, the mysteries
+    # and the document the writer reads (docs/videos/DRAMA-FLOW.md §二).
+    setting = approved_doc(docs, setting_kind(series))
     done = [e for e in episodes if e.status == "done" and e.recap]
     recaps = [
         {"number": e.number, "title": e.title, "recap": e.recap, "state": e.state_json or {}}
@@ -1038,7 +1337,9 @@ async def context_view(
         outline=(doc_view(found) if (found := approved_doc(docs, "outline")) else None),
         chapter=(
             doc_view(found)
-            if chapter and (found := approved_doc(docs, "chapter", chapter))
+            if chapter
+            and not is_one_off(series)
+            and (found := approved_doc(docs, "chapter", chapter))
             else None
         ),
         chapter_number=chapter,
@@ -1195,40 +1496,63 @@ async def start_episode(
     series = await _series(session, slug, lock=True)
     episode = await _episode(session, series, number)
     if episode.status != "ready":
-        raise SeriesRefused(409, "video_series_episode_not_ready", "這一集的篇章細綱還沒核准")
+        raise SeriesRefused(
+            409,
+            "video_series_episode_not_ready",
+            "故事聖經還沒核准" if is_one_off(series) else "這一集的篇章細綱還沒核准",
+        )
     taken = await session.scalar(
         select(VideoDramaRequest.id).where(VideoDramaRequest.slug == video_slug)
     )
     if taken is not None:
         raise SeriesRefused(409, "video_drama_request_slug_taken", f"{video_slug} 已經是另一支影片")
     now = _now()
-    beats = episode.beats or {}
-    premise = "\n".join(
-        part
-        for part in (
-            f"{series.title} 第 {number} 集：{episode.title}",
-            episode.logline,
-            *(f"{key}: {beats[key]}" for key in BEAT_FIELDS if isinstance(beats.get(key), str)),
+    # A one-off's request row was filed with the series (or by migration 0107): the episode
+    # travels as that row, so the owner's queue shows it started rather than a second request.
+    queued = await session.scalar(
+        select(VideoDramaRequest)
+        .where(
+            VideoDramaRequest.series_id == series.id,
+            VideoDramaRequest.episode_number == number,
+            VideoDramaRequest.status == "queued",
         )
-        if part
-    )[:4000]
-    request = VideoDramaRequest(
-        id=uuid4(),
-        premise=premise or episode.title,
-        title=f"{series.title} 第 {number} 集 {episode.title}"[:200],
-        style_preset=series.style_preset,
-        target_minutes=series.target_minutes,
-        note=series.note,
-        status="started",
-        slug=video_slug,
-        series_id=series.id,
-        episode_number=number,
-        started_by_token_id=token.id,
-        created_at=now,
-        updated_at=now,
-        started_at=now,
+        .with_for_update()
     )
-    session.add(request)
+    if queued is not None:
+        request = queued
+        request.status = "started"
+        request.slug = video_slug
+        request.started_by_token_id = token.id
+        request.started_at = now
+        request.updated_at = now
+    else:
+        beats = episode.beats or {}
+        premise = "\n".join(
+            part
+            for part in (
+                f"{series.title} 第 {number} 集：{episode.title}",
+                episode.logline,
+                *(f"{key}: {beats[key]}" for key in BEAT_FIELDS if isinstance(beats.get(key), str)),
+            )
+            if part
+        )[:4000]
+        request = VideoDramaRequest(
+            id=uuid4(),
+            premise=premise or episode.title,
+            title=f"{series.title} 第 {number} 集 {episode.title}"[:200],
+            style_preset=series.style_preset,
+            target_minutes=series.target_minutes,
+            note=series.note,
+            status="started",
+            slug=video_slug,
+            series_id=series.id,
+            episode_number=number,
+            started_by_token_id=token.id,
+            created_at=now,
+            updated_at=now,
+            started_at=now,
+        )
+        session.add(request)
     # The episode points at the request, and nothing tells the unit of work which of the two
     # to write first: flush the request before the episode carries its id.
     await session.flush()
@@ -1245,7 +1569,7 @@ async def start_episode(
         project.episode_number = number
     await session.commit()
     return SeriesEpisodeStartOut(
-        request=request_view(request),
+        request=request_view(request, series_slug=series.slug),
         episode=episode_view(episode),
         context=await context_view(session, series, number),
     )

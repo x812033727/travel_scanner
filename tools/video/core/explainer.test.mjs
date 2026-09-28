@@ -8,6 +8,7 @@ import { EXPLAINER_CARD_TEMPLATES, EXPLAINER_PRESET, hasCast, isExplainer, PRESE
 import { dramaFixture, explainerBrief, explainerFixture, fixtureLexicon, sandbox } from "./fixtures/load.mjs";
 import { BRIEF_SECTIONS_DRAMA, BRIEF_SECTIONS_EXPLAINER, briefSectionsFor, lintVideo } from "./lint.mjs";
 import { validateVideo } from "./schema.mjs";
+import { writeScreenplay } from "./screenplay.mjs";
 import { DRAMA_STEPS, pipelineStatus, stepsFor } from "./state.mjs";
 
 const paths = (errors) => errors.map((error) => error.path).sort();
@@ -50,13 +51,15 @@ test("an explainer's brief answers a question instead of carrying a story bible"
   assert.deepEqual(result.errors.map((error) => error.message), ['brief.md needs a non-empty "## 問題" section', 'brief.md needs a non-empty "## 一句答案" section']);
 });
 
-test("a drama with no characters skips the look: after the outline and the check comes the narration", async () => {
-  assert.deepEqual(stepsFor(explainerFixture()), DRAMA_STEPS.filter((id) => !["script approved", "look generated", "look approved", "music generated"].includes(id)));
+test("a drama with no characters skips the look: after the script gate comes the narration", async () => {
+  assert.deepEqual(stepsFor(explainerFixture()), DRAMA_STEPS.filter((id) => !["look generated", "look approved", "music generated"].includes(id)));
   const box = sandbox("fixture-explainer", "explainer");
   const status = () => pipelineStatus({ slug: box.slug, root: box.root, workdir: box.workdir });
   mkdirSync(box.workdir, { recursive: true });
   await approve({ gate: "outline", docDir: box.dir, workdir: box.workdir });
   writeFileSync(path.join(box.dir, "verify-1.md"), "# ok\n");
-  const next = (await status()).next;
-  assert.equal(next.id, "narration synthesized");
+  assert.equal((await status()).next.id, "script approved");
+  writeScreenplay(box.dir, explainerFixture());
+  await approve({ gate: "script", docDir: box.dir, workdir: box.workdir });
+  assert.equal((await status()).next.id, "narration synthesized");
 });

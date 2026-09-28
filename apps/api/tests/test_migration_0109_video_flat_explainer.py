@@ -1,4 +1,4 @@
-"""0105 adds the ``flat-explainer`` style preset to the three checks that list the presets.
+"""0109 adds the ``flat-explainer`` style preset to the three checks that list the presets.
 
 ``0001_initial`` builds a fresh database from the current models, so CI never sees the narrow
 checks; this test puts them back on a real PostgreSQL, runs the migration through a real alembic
@@ -30,7 +30,7 @@ pytestmark = pytest.mark.skipif(
 )
 
 VERSIONS = Path(__file__).resolve().parents[1] / "migrations" / "versions"
-MIGRATION = "0105_video_flat_explainer"
+MIGRATION = "0109_video_flat_explainer"
 CHECKS = (
     ("video_automation_settings", "ck_video_drama_preset"),
     ("video_drama_requests", "ck_video_drama_request_style"),
