@@ -18,6 +18,8 @@ scope:
   - apps/web/components/admin-video-stories.test.tsx
   - apps/web/app/api/admin
   - apps/web/messages
+  - apps/web/components/admin-video-review-card.tsx
+  - apps/web/components/admin-video-reviews.test.tsx
 ---
 
 # 後台的故事清單、匯入表單、每日支數與上架時段
@@ -33,6 +35,7 @@ scope:
 - [ ] 有 `settings.manage` 的帳號可以改每日支數、暫停作品、略過或恢復一個還沒開始的故事；沒有權限時看得到但不能改，並說明需要什麼角色。
 - [ ] 匯入表單：貼上或上傳 `stories.json`，先顯示試跑結果（新增、更新、略過的列數與問題），確認後才寫入。
 - [ ] 「可以上架」卡片對故事預填下一個空的上架時段（12:00 或 20:00，台北時間）。
+- [ ] 分鏡審核卡片顯示分頁的聯絡表：超過 47 鏡的分鏡送審，檔案的 role 是 `contact_sheet_01`、`contact_sheet_02`…（PR #895），卡片現在只找 `contact_sheet` 這一個 role，分頁的一張都不會顯示。
 - [ ] 五個語系的文字都有；`npm run check:i18n` 通過。
 
 ## Steps
@@ -53,3 +56,5 @@ npm run lint:web && npm run check:i18n && npm run typecheck:web && npm run test:
 
 - PR #870 大改了 `admin-video-series.tsx` 與設定元件，Shorts 那條線也要在 `/admin/videos` 加分頁（`docs/videos/SHORTS.md`）；開工前先查誰在動同一批檔案。
 - 新的後台頁或分頁要做的登記見 skill `backend-conventions`。
+- 聯絡表分頁是做票 `storyboard-sheets` 時發現的（2026-09-28）：`admin-video-review-card.tsx` 有兩處 `fileFor(review, "contact_sheet")`。故事是免關卡的，平常分鏡自動核准、站主不會看這張卡片；檢查沒過、落回站主時才會用到，所以優先序低於清單與每日支數。
+- 匯入指令多了 `--limit` 與 `--episodes-per-day`，作品多了 `look` 欄位（票 `api-series-kind`）；匯入表單要能選只匯入前幾個。
