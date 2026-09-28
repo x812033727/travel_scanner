@@ -6,6 +6,7 @@ import test from "node:test";
 
 import { ROOT } from "../core/paths.mjs";
 import { STATE_FILE as FLOW_STATE_FILE } from "./flow.mjs";
+import { STORY_CHAPTERS_DIR, STORY_PAGES_DIR } from "./story.mjs";
 import { DEFAULT_DAYS, PREVIEW, retentionFrom, roundLines, STATE_FILE, TARGETS, targetRefusal, tidiedNote, tidyBase, tidyRound } from "./tidy.mjs";
 
 const NOW = new Date("2026-10-20T12:00:00Z");
@@ -429,6 +430,73 @@ test("a locked or missing file is reported and the round ends normally", async (
   const state = autoJson(dir);
   assert.equal(state.tidied_at, NOW.toISOString(), "the video is not looked at again");
   assert.deepEqual(state.tidied.failed, [{ path: "segments/s1-0a1b.mp4", error: "EBUSY" }]);  assert.match(roundLines(result)[0], /; could not remove 1: segments\/s1-0a1b\.mp4 \(EBUSY\); already gone: audio\/k7p2\.wav$/);
+});
+
+// A brand story (story.mjs) also keeps the pages its sources gave, whole, and its chapters.
+const PAGES = slashed(STORY_PAGES_DIR);
+const CHAPTERS = slashed(STORY_CHAPTERS_DIR);
+function slashed(relative) {
+  return relative.split(path.sep).join("/");
+}
+const STORY_PAGES = { [`${PAGES}/0a1b2c3d4e5f6a7b.json`]: 3000, [`${PAGES}/1b2c3d4e5f6a7b8c.json`]: 2000 };
+const STORY_CHAPTERS = [`${CHAPTERS}/hook.json`, `${CHAPTERS}/engine.json`];
+
+/** A brand story the worker finished: a video's media and records, the pages it read and its chapters. */
+function finishedStory(work, slug, extra = {}) {
+  const dir = finishedVideo(work, slug, { ...extra, media: { ...MEDIA, ...STORY_PAGES }, state: { format: "drama", series: { slug: "brand-stories", episode: 1, chapter: 1, kind: "story", visual_tier: "stills", compilation: false, hands_off: true }, story: { id: "A90" }, ...(extra.state ?? {}) } });
+  for (const name of STORY_CHAPTERS) put(dir, name, `${slug} ${name}\n`);
+  return dir;
+}
+
+test("a finished story loses the pages its sources gave with the other media, and keeps its chapters", () => {
+  assert.ok(TARGETS.includes(STORY_PAGES_DIR), "the name comes from story.mjs");
+  assert.ok(!TARGETS.includes(STORY_CHAPTERS_DIR) && !TARGETS.includes(path.dirname(STORY_PAGES_DIR)), "story/ and story/chapters/ are no targets");
+  const where = place();
+  const dir = finishedStory(where.work, "story-folding-umbrella");
+  const result = round(where, { site: [listing("story-folding-umbrella")] });
+  assert.equal(result.cleared.slug, "story-folding-umbrella");
+  for (const name of Object.keys(STORY_PAGES)) assert.ok(!exists(dir, name), `${name} is removed`);
+  assert.ok(!exists(dir, PAGES), "story/pages/ itself goes");
+  for (const name of STORY_CHAPTERS) assert.equal(readFileSync(path.join(dir, ...name.split("/")), "utf8"), `story-folding-umbrella ${name}\n`, `${name} stays as it was`);
+  for (const name of RECORDS) assert.ok(exists(dir, name), `${name} stays`);
+  assert.equal(result.cleared.bytes, MEDIA_BYTES + 5000);
+  assert.ok(result.cleared.removed.some((entry) => entry.path === PAGES && entry.folder && entry.files === 2 && entry.bytes === 5000));
+  assert.deepEqual(result.cleared.failed, []);
+  assert.ok(autoJson(dir).tidied.removed.includes(PAGES));
+  assert.match(roundLines(result)[0], new RegExp(`${PAGES}/ \\(2 files\\)`));
+  // A video that is no story has no story/ folder: nothing is missing, nothing fails, nothing else changes.
+  const plain = finishedVideo(where.work, "not-a-story");
+  const other = round(where, { site: [listing("not-a-story")] });
+  assert.equal(other.cleared.slug, "not-a-story");
+  assert.deepEqual([other.cleared.failed, other.cleared.gone], [[], []]);
+  assert.equal(other.cleared.bytes, MEDIA_BYTES);
+  assert.ok(!other.cleared.removed.some((entry) => entry.path.startsWith("story")));
+  assert.ok(!exists(plain, "story"));
+});
+
+test("a story's pages folder that is a link is removed as a link, and a story/ link is not gone through", () => {
+  const where = place();
+  const outside = path.join(where.top, "outside");
+  put(outside, "pages/kept.json", "a page kept elsewhere");
+  put(outside, "whole/pages/also-kept.json", "another");
+  const linked = finishedStory(where.work, "story-linked-pages");
+  rmSync(path.join(linked, ...PAGES.split("/")), { recursive: true });
+  symlinkSync(path.join(outside, "pages"), path.join(linked, ...PAGES.split("/")), "junction");
+  const result = round(where, { site: [listing("story-linked-pages")] });
+  assert.equal(result.cleared.slug, "story-linked-pages");
+  assert.equal(lstatSync(path.join(linked, ...PAGES.split("/")), { throwIfNoEntry: false }), undefined, "the story/pages link itself is gone");
+  assert.equal(readFileSync(path.join(outside, "pages", "kept.json"), "utf8"), "a page kept elsewhere", "what it pointed at is untouched");
+  for (const name of STORY_CHAPTERS) assert.ok(exists(linked, name), `${name} stays`);
+  // story/ itself a link out of the work directory: nothing is removed through it.
+  const through = finishedStory(where.work, "story-linked-folder", { published: daysAgo(9) });
+  rmSync(path.join(through, "story"), { recursive: true });
+  symlinkSync(path.join(outside, "whole"), path.join(through, "story"), "junction");
+  const next = round(where, { site: [listing("story-linked-folder", { publish_approved_at: daysAgo(9) })] });
+  assert.equal(next.cleared.slug, "story-linked-folder");
+  assert.equal(readFileSync(path.join(outside, "whole", "pages", "also-kept.json"), "utf8"), "another");
+  assert.ok(lstatSync(path.join(through, "story")).isSymbolicLink(), "the story/ link is no target and stays");
+  assert.ok(next.cleared.failed.some((entry) => entry.path === PAGES && /link or a file, not a folder/.test(entry.error)));
+  assert.ok(!exists(through, "final.mp4"), "the rest of the media went as usual");
 });
 
 test("status reads a tidied video as cleared, not as a next step", () => {
