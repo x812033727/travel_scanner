@@ -1,0 +1,42 @@
+---
+id: 2026-09-28-release-reviewed-batch043-search-results-and
+title: Release reviewed Batch043 search results and Semrush locales
+status: open
+priority: P2
+area: ops
+owner:
+claimed_at:
+created_at: 2026-09-28T17:04:23Z
+completed_at:
+branch:
+depends_on:
+  - 2026-09-28-localize-batch043-search-results-and-semrush
+scope:
+  - docs/article-localization/releases/batch043-pair-b
+---
+
+# Release reviewed Batch043 search results and Semrush locales
+
+## Why
+
+The reviewed repository packs for `search-results-clickthrough` and `semrush-research-workflow` add zh-CN, en, ja and ko, but those language documents have not been imported or published. Keep the eight article/locale targets explicit and preserve the existing zh-TW content and live status.
+
+## Definition of done
+
+- [ ] The eight reviewed target locales are safely imported and published, or remain unchanged if a source/visibility/target-draft conflict is detected.
+- [ ] Record exact source, target and asset hashes, dry-run results, idempotent rerun and five-language public desktop/mobile acceptance.
+
+## Steps
+
+- [ ] Complete the required same-image nonproduction Docker rehearsal; the owner currently has no available environment.
+- [ ] Confirm merged CI-green content and deployed images, fresh read-only live versions and hashes, verified backup, writer coordination and applicable production authorization.
+- [ ] Use the existing guarded release with the explicit two-slug/four-locale list; dry-run before writes and preserve withdrawals, expiry and existing drafts.
+- [ ] Verify each public body, images, canonical, reciprocal hreflang and same-language links, then rerun dry-run to confirm unchanged results.
+
+## How to verify
+
+Follow `ops/release/README.md` and the article-localization release workflow. Bind all acceptance to `docs/article-localization/batch043-pair-b-evidence.md` and its exact candidate hashes, then store the sanitized release record under this task's scope.
+
+## Notes
+
+This ticket is intentionally unclaimed. Content authoring and independent review are complete; no production write, draft import, public publication or public-browser acceptance has occurred. Local standalone previews do not replace production acceptance. The required isolated rehearsal remains a release blocker; do not substitute CI smoke for it.
