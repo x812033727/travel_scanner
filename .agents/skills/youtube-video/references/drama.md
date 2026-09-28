@@ -75,7 +75,9 @@ node tools/video/assemble/smoke.mjs --fixture drama [--channel msedge]          
 ## video.json 的重點
 
 - `format: "drama"`；範例 `tools/video/core/fixtures/drama/video.json`（精衛填海，兩個角色、四個鏡頭、一張結尾卡）。規則在 `tools/video/core/drama.mjs`（`validateDrama`、`shotProblems`）。
-- `look`：`preset`（`cinematic-3d`／`anime-2d`／`ink-wash`／`custom`）加可覆寫的 `style`、`negative`、`motion`（英文，給圖片與影片模型）、`candidates`（每角色幾張設定圖）、`style_frames`（`<VIDEO_DOCS>` 裡的參考圖）。
+- **解說片（`flat-explainer`）**：「原來如此事務所」那種一集回答一個「為什麼」的插畫解說（`docs/videos/so-thats-why/`）。後台發起漫劇時風格選「扁平插畫解說」：單集作品的故事聖經改用解說版（`planner:bible-explainer`，`characters` 為空、`outline` 有 question／answer／reasons／hook／sources，API 與工人都照這個形狀擋），brief 由聖經寫成解說版章節，撰稿與查核用 `writer:explainer`／`verifier:explainer`，撰稿順手寫 `shorts.json`（`tools/video/automation/prompts.mjs` 的 `EXPLAINER_INSTRUCTIONS`）。lint 要求 `characters: []`、每個鏡頭都是 `visual: "still"`，卡片多了 `big`、`stats`、`compare` 可放數字與對比；brief 的必填章節是「問題」「一句答案」「站主觀點」。範例 `tools/video/core/fixtures/explainer/`。
+- **沒有角色的漫劇沒有 look**：`characters` 是空陣列時，`status` 不列「look generated／look approved」，審核順序跳過 look 關卡，`keyframes` 不等設定圖，直接畫；`look` 指令會拒絕並叫你跑 `keyframes`。
+- `look`：`preset`（`cinematic-3d`／`anime-2d`／`ink-wash`／`flat-explainer`／`custom`）加可覆寫的 `style`、`negative`、`motion`（英文，給圖片與影片模型）、`candidates`（每角色幾張設定圖）、`style_frames`（`<VIDEO_DOCS>` 裡的參考圖）。
 - `characters[]`：`id`（小寫，不可是 `narrator`）、`name`（字幕與審核頁用）、`appearance`（英文 ≤ 800 字，設定圖與每個鏡頭都用它）、`voice`（同 `voice` 的物件；Gemini 聲音才有 `style`）、`sheet_prompt`（可選）。
 - 鏡頭場景 `template: "shot"`，`data`：`prompt`（英文 ≤ 1000 字，畫面本身）、`camera`、`motion`（給圖生影片）、`characters`（≤ 3 個 id，決定參考圖與 judge 的 identity 題）、`fit`（`auto`／`freeze`／`slow`／`trim`，片段比句子短或長時怎麼對齊）、`transition`（`cut`／`dissolve`）、`start_frame: { shot, at: "last" }`（接續更早的鏡頭；目前是把上一鏡最後一格當參考圖，片段仍從自己的關鍵影格開始）、`end_frame: { prompt }`（另出一張當片段的末格）、`visual`（`clip` 預設／`still`：見下一點）。卡片場景（`title`／`chapter`／`outro`）照投影片版型。
 - **`visual: "still"`**（長篇作品的畫面等級，設計在 `docs/videos/BINGE.md`）：這一鏡不買片段，`clips` 在 manifest 記 `{ still: true }` 指向它的關鍵影格，`assemble` 把關鍵影格做成一段慢運鏡（`zoompan`，編碼參數與片段段相同，仍 `-c copy` 串接）。運鏡由 `camera`（其次 `motion`）的關鍵字決定（`tools/video/assemble/drama.mjs` 的 `motionMove`），以**畫面看起來怎麼動**命名，所以 pan 跟攝影機用語相反：

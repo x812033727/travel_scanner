@@ -24,6 +24,17 @@ DUPLICATE_WINDOW = timedelta(days=30)
 HUMAN_PROVIDER = "human"
 # The hold for a check Jev could not settle; the only one an editor can answer.
 DUPLICATE_UNCERTAIN = "news_duplicate_uncertain"
+# Candidates whose titles a new candidate is compared with. The first four are
+# pipeline.ACTIVE_STATUSES (a test keeps them equal; pipeline imports this module).
+KNOWN_STATUSES = (
+    "drafting",
+    "verifying",
+    "locale_review",
+    "jev_review",
+    "manual_review",
+    "shadow_review",
+    "published",
+)
 
 
 async def known_titles(session: AsyncSession, candidate: NewsCandidate) -> list[str]:
@@ -55,7 +66,9 @@ async def known_titles(session: AsyncSession, candidate: NewsCandidate) -> list[
         .where(
             NewsCandidate.id != candidate.id,
             NewsCandidate.vertical == candidate.vertical,
-            NewsCandidate.status.in_(("manual_review", "shadow_review", "published")),
+            # In flight counts too: with several news workers, two outlets' versions of
+            # one story could otherwise be drafted side by side.
+            NewsCandidate.status.in_(KNOWN_STATUSES),
         )
         .order_by(NewsCandidate.created_at.desc())
         .limit(30)
