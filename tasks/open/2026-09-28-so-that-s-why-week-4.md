@@ -11,6 +11,10 @@ completed_at:
 branch:
 depends_on: []
 scope:
+  - docs/videos/so-thats-why/week4
+  - docs/videos/so-thats-why/episodes.json
+  - docs/videos/so-thats-why/titles.json
+  - docs/videos/so-thats-why/schedule.csv
   - docs/videos/so-thats-why/playlists.md
 ---
 

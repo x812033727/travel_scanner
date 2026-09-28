@@ -10,7 +10,13 @@ created_at: 2026-09-28T16:19:32Z
 completed_at: 2026-09-28T16:27:24Z
 branch:
 depends_on: []
-scope: []
+scope:
+  - docs/videos/so-thats-why/week3
+  - docs/videos/so-thats-why/episodes.json
+  - docs/videos/so-thats-why/titles.json
+  - docs/videos/so-thats-why/schedule.csv
+  - docs/videos/so-thats-why/playlists.md
+  - docs/videos/so-thats-why/week2/A02.md
 ---
 
 # So That's Why: week 3 fact-checked episode packages
@@ -44,3 +50,4 @@ Every claim row has a source URL; `npm run check:tasks`; the JSON files parse.
 - 2026-09-28 claude-opus: seven packages written by one fact-check agent each, then checked mechanically (every claim row has a URL, 同上 or 查無出處; Shorts headlines ≤ 36, phrases ≤ 38, 25–55 s at about 4.2 characters a second).
 - Titles changed by the check: B02 「日本人」→「日本公司」 (the 1991 buyer was IYG Holding, a company); T04 「不能」→「不要」 (etiquette, not law); T06 「歐洲上廁所」→「歐洲很多廁所」 (Network Rail stations free since 2019, Paris street toilets since 2006). Carried into titles.json (all locales for T06), schedule.csv, playlists.md and the previews in week2/A02.md, week3/S04.md and week3/S05.md, which is why those three paths joined the scope.
 - Things the next check must not bring back: the banknote-stepping jail story (T04, no source); "Roman toilets charged entry" (T06, Vespasian taxed urine from urinals); "only two people know half the formula each" (B03); "cats test gravity" (S04); contagious yawning presented as proven empathy (S05).
+- 2026-09-28: `tasks new` takes one comma-separated `--scope a,b,c`; passing `--scope` several times keeps only the last, which left this task with an empty scope (CI `check:tasks` failed on PR #950). Scope restored by hand.
