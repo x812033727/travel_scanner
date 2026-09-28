@@ -1,0 +1,952 @@
+{
+  "schema_version": 1,
+  "slug": "siri-ai-ios-27-how-to-get-it",
+  "format": "slides",
+  "source_guide": "ai-news-siri-ai-ios-27-20260914",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "台灣國語、台灣腔，輕鬆、像在跟朋友解釋，有起伏、中等偏快",
+    "model": "gemini-3.8-flash-tts"
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Siri 終於換腦：iOS 27 的 Siri AI 能做什麼、誰用得到、怎麼打開",
+    "description": "iOS 27 的 Siri AI 換成新一代 Apple Intelligence，這支照 Apple 官方頁講清楚：你的 iPhone 能不能用、怎麼打開、它會讀你哪些資料。\n給看到「Siri 換成 Gemini」新聞、想知道自己用不用得到的人。\n\n涵蓋四種能力、支援機型清單、目前只有英文與等候名單、歐盟與中國大陸的例外、私密雲端運算的說法，以及台灣使用者要不要把手機改成英文的取捨。本站沒有 Siri AI 帳號，所有功能描述都是 Apple 的說法。",
+    "tags": [
+      "Siri AI",
+      "iOS 27",
+      "Apple Intelligence",
+      "Siri Gemini",
+      "how to get Siri AI",
+      "Siri AI waitlist",
+      "Siri AI 機型",
+      "Apple Siri"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "iOS 27",
+      "headline": "New Siri.\n**Can you get it?**",
+      "sub": "waitlist · devices · privacy"
+    }
+  },
+  "sources": [
+    {
+      "title": "Apple Newsroom：Siri AI is here",
+      "url": "https://www.apple.com/newsroom/2026/09/siri-ai-a-profoundly-more-capable-and-personal-assistant-is-here/",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Apple Support：How to get Siri AI",
+      "url": "https://support.apple.com/en-us/127893",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Apple 台灣：iOS 功能特色適用範圍",
+      "url": "https://www.apple.com/tw/ios/feature-availability/",
+      "checked_on": "2026-09-28"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook",
+      "chapter": "你的 iPhone 用得到嗎",
+      "template": "title",
+      "data": {
+        "tag": "iOS 27",
+        "title": "Siri 終於換腦，**你的 iPhone 用得到嗎**？",
+        "subtitle": "能不能用、怎麼打開、它會讀你什麼"
+      },
+      "lines": [
+        {
+          "id": "u2x5",
+          "text": "Siri 終於換了新的腦袋，但你的 iPhone 可能還排在等候名單裡。"
+        },
+        {
+          "id": "3een",
+          "text": "這支影片講三件事：能不能用、怎麼打開、它會讀你哪些東西。"
+        },
+        {
+          "id": "h3cj",
+          "text": "全部照 Apple 官方頁面，我們沒有帳號、沒有實測。"
+        }
+      ]
+    },
+    {
+      "id": "what-changed",
+      "chapter": "這次到底換了什麼",
+      "template": "quote",
+      "data": {
+        "kicker": "Apple 新聞稿原文",
+        "quote": "Siri AI begins rolling out today in beta in English",
+        "translation": "Siri AI 今天開始以英文 beta 推出",
+        "source": "Apple Newsroom, 2026-09-14"
+      },
+      "claims": [
+        "c1",
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "i8f9",
+          "text": "先看 Apple 怎麼說：Siri AI 從九月十四號開始推出。"
+        },
+        {
+          "id": "qcyr",
+          "text": "但它是 beta、而且目前只有英文，這兩個字很關鍵。",
+          "reveal": 1
+        },
+        {
+          "id": "6dn4",
+          "text": "法文、日文、韓文、葡萄牙文和西班牙文，Apple 說下個月才加。"
+        },
+        {
+          "id": "29ek",
+          "text": "一句話說，這是重寫過、更會聊天的 Siri。"
+        },
+        {
+          "id": "88ay",
+          "text": "先把這兩個限制記住，後面就不會誤會。"
+        }
+      ]
+    },
+    {
+      "id": "four-abilities",
+      "template": "bullets",
+      "data": {
+        "title": "新 Siri 的四種能力",
+        "items": [
+          "個人情境：讀你的訊息郵件",
+          "世界知識：上網回答問題",
+          "螢幕感知：看你螢幕上的東西",
+          "App 動作：跨 App 幫你做事"
+        ]
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "2pmv",
+          "text": "Apple 把新 Siri 的能力分成四塊。",
+          "reveal": 1
+        },
+        {
+          "id": "w5h2",
+          "text": "第一是個人情境，它能讀你的訊息、郵件、行事曆。",
+          "reveal": 1
+        },
+        {
+          "id": "stzg",
+          "text": "第二是世界知識，第三是看得懂你螢幕上的內容。",
+          "reveal": 1
+        },
+        {
+          "id": "xmir",
+          "text": "第四是跨 App 幫你做事，例如直接幫你起一封信。",
+          "reveal": 1
+        },
+        {
+          "id": "wrxf",
+          "text": "這四種能力，是後面所有功能的基礎。"
+        },
+        {
+          "id": "jbfr",
+          "text": "它不再只是設鬧鐘、報天氣的那個 Siri 了。"
+        }
+      ]
+    },
+    {
+      "id": "siri-app",
+      "template": "bullets",
+      "data": {
+        "title": "還多了一個獨立 App",
+        "items": [
+          "獨立的 Siri App",
+          "用 iCloud 同步對話",
+          "手機接著在 Mac 上繼續"
+        ]
+      },
+      "lines": [
+        {
+          "id": "nfk4",
+          "text": "這次還多了一個獨立的 Siri App。",
+          "reveal": 1
+        },
+        {
+          "id": "upkw",
+          "text": "它用 iCloud 把對話同步，像聊天紀錄一樣。",
+          "reveal": 1
+        },
+        {
+          "id": "kk46",
+          "text": "你在手機上開的頭，可以在別的裝置接著問。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "invoke-ways",
+      "template": "steps",
+      "data": {
+        "title": "三種喚醒方式",
+        "steps": [
+          {
+            "title": "說 Hey Siri",
+            "detail": "老方法還在"
+          },
+          {
+            "title": "按側邊按鈕",
+            "detail": "長按叫出來"
+          },
+          {
+            "title": "動態島下滑",
+            "detail": "滑一下開始對話"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "cmby",
+          "text": "叫出新 Siri 的方法有三種。",
+          "reveal": 1
+        },
+        {
+          "id": "emx3",
+          "text": "除了說 Hey Siri，還能長按側邊按鈕。",
+          "reveal": 1
+        },
+        {
+          "id": "5ctn",
+          "text": "或者從動態島往下滑，直接開始對話。",
+          "reveal": 1
+        },
+        {
+          "id": "2h9b",
+          "text": "三種方式都通到同一個新的 Siri。"
+        }
+      ]
+    },
+    {
+      "id": "devices",
+      "chapter": "誰用得到：機型、語言、地區",
+      "template": "table",
+      "data": {
+        "title": "哪些裝置用得到",
+        "columns": [
+          "裝置",
+          "條件"
+        ],
+        "rows": [
+          [
+            "iPhone",
+            "15 Pro 系列、16 系列以後、iPhone Air"
+          ],
+          [
+            "iPad",
+            "iPad mini A17 Pro、M1 以後"
+          ],
+          [
+            "Mac",
+            "M1 以後、MacBook Neo"
+          ],
+          [
+            "Apple Watch",
+            "Series 9、Ultra 2、SE 3 以後"
+          ],
+          [
+            "Vision Pro",
+            "全部機型"
+          ]
+        ]
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "w293",
+          "text": "先看你的裝置行不行，Apple 列了一張清單。"
+        },
+        {
+          "id": "gw7d",
+          "text": "iPhone 要 15 Pro 系列、16 系列以後，或 iPhone Air。"
+        },
+        {
+          "id": "fbft",
+          "text": "iPad、Mac、Apple Watch 也各有門檻，Vision Pro 則全部可用。"
+        },
+        {
+          "id": "mvhm",
+          "text": "Apple Watch 還要搭配一支已經開了 Siri AI 的 iPhone。"
+        },
+        {
+          "id": "n4yd",
+          "text": "不在清單上的舊機型，這次就不會有 Siri AI。"
+        },
+        {
+          "id": "cqa3",
+          "text": "買新機之前，先確認它在不在這張清單上。"
+        }
+      ]
+    },
+    {
+      "id": "language-region",
+      "template": "stats",
+      "data": {
+        "title": "語言與年齡",
+        "stats": [
+          {
+            "value": "英文",
+            "label": "目前唯一支援的語言"
+          },
+          {
+            "value": "下個月",
+            "label": "法、日、韓、葡、西"
+          },
+          {
+            "value": "13 歲以上",
+            "label": "未滿不提供"
+          }
+        ],
+        "source": "Apple 支援文件，2026-09"
+      },
+      "claims": [
+        "c2",
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "jedh",
+          "text": "再來是語言，這是台灣使用者最大的取捨。",
+          "reveal": 1
+        },
+        {
+          "id": "y9n9",
+          "text": "Siri AI 目前只支援英文，其他語言下個月才加。",
+          "reveal": 1
+        },
+        {
+          "id": "6jei",
+          "text": "而且未滿十三歲不提供，這點 Apple 也寫明了。",
+          "reveal": 1
+        },
+        {
+          "id": "b74t",
+          "text": "這張機型表就是能不能用的第一道門。"
+        }
+      ]
+    },
+    {
+      "id": "update-free",
+      "template": "big",
+      "data": {
+        "kicker": "就算現在用不到",
+        "text": "免費更新",
+        "sub": "繁中設定也能用到部分 Apple Intelligence"
+      },
+      "lines": [
+        {
+          "id": "bd98",
+          "text": "就算你還用不到 Siri AI，iOS 27 本身是免費更新。"
+        },
+        {
+          "id": "jsev",
+          "text": "在支援的 iPhone 上，繁中設定也能用到部分 Apple Intelligence 功能。"
+        },
+        {
+          "id": "9knw",
+          "text": "像照片的清理、Safari 的整理，這些不必改成英文。"
+        }
+      ]
+    },
+    {
+      "id": "eu-china",
+      "template": "compare",
+      "data": {
+        "title": "兩個地區的例外",
+        "left": {
+          "heading": "歐盟",
+          "points": [
+            "iOS、iPadOS、watchOS 不提供",
+            "Mac 與 Vision Pro 英文可用"
+          ]
+        },
+        "right": {
+          "heading": "中國大陸帳號",
+          "points": [
+            "目前無法運作",
+            "開通後出國仍可用"
+          ]
+        }
+      },
+      "claims": [
+        "c6",
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "h52v",
+          "text": "地區也有兩個例外要記住。",
+          "reveal": 1
+        },
+        {
+          "id": "qwig",
+          "text": "歐盟的 iPhone、iPad、手錶不提供，只有 Mac 和 Vision Pro 可以。",
+          "reveal": 1
+        },
+        {
+          "id": "3ssf",
+          "text": "Apple 帳號地區在中國大陸的，目前無法運作。"
+        },
+        {
+          "id": "xqaw",
+          "text": "台灣沒有被列為排除地區，但 Apple 也沒說台灣一定符合資格。"
+        }
+      ]
+    },
+    {
+      "id": "eligible-region",
+      "template": "big",
+      "data": {
+        "kicker": "還有一個沒明說的條件",
+        "text": "符合資格的地區",
+        "sub": "Apple 沒列清單，也沒說台灣在不在內"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "gihf",
+          "text": "除了語言，Apple 還要求帳號在符合資格的地區。"
+        },
+        {
+          "id": "rske",
+          "text": "但支援文件沒有列出清單，也沒有說台灣在不在裡面。"
+        },
+        {
+          "id": "8ujk",
+          "text": "最準的做法，是更新後自己點點看能不能申請。"
+        },
+        {
+          "id": "cxcn",
+          "text": "這一條沒明說，是很多人卡住的原因。"
+        }
+      ]
+    },
+    {
+      "id": "how-to-enable",
+      "chapter": "怎麼打開：五步加等候名單",
+      "template": "steps",
+      "data": {
+        "title": "怎麼打開 Siri AI",
+        "steps": [
+          {
+            "title": "更新到 iOS 27",
+            "detail": "先把系統更新"
+          },
+          {
+            "title": "設定 → Siri",
+            "detail": "Siri 關著要先開"
+          },
+          {
+            "title": "Try Siri AI (Beta)",
+            "detail": "點下去開始申請"
+          },
+          {
+            "title": "選聲音、讀隱私",
+            "detail": "完成語音登錄"
+          }
+        ]
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "mzk3",
+          "text": "接下來是怎麼打開，照 Apple 的支援文件走。",
+          "reveal": 1
+        },
+        {
+          "id": "tedt",
+          "text": "先更新到 iOS 27，再到設定裡點 Siri。",
+          "reveal": 1
+        },
+        {
+          "id": "evuh",
+          "text": "如果 Siri 是關的，要先把它打開。",
+          "reveal": 1
+        },
+        {
+          "id": "jgkc",
+          "text": "然後點 Try Siri AI beta，選聲音、完成語音登錄、讀過隱私設定。",
+          "reveal": 1
+        },
+        {
+          "id": "wam6",
+          "text": "整個流程不難，難的是後面的等待。"
+        },
+        {
+          "id": "wt4t",
+          "text": "這幾步做完，接下來就是等。"
+        }
+      ]
+    },
+    {
+      "id": "waitlist",
+      "template": "big",
+      "data": {
+        "kicker": "按下去之後",
+        "text": "等候名單",
+        "sub": "輪到你，Siri AI 才會自動下載"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "kj9e",
+          "text": "這裡最容易誤會：按下去不代表當下就能用。"
+        },
+        {
+          "id": "cz4u",
+          "text": "Apple 會把你加進等候名單，等待時間不一定。"
+        },
+        {
+          "id": "89ef",
+          "text": "輪到你之後，Siri AI 才會自動下載。"
+        },
+        {
+          "id": "48zx",
+          "text": "所以看到別人已經在用，你的不一定馬上有。"
+        }
+      ]
+    },
+    {
+      "id": "language-tradeoff",
+      "template": "bullets",
+      "data": {
+        "title": "台灣使用者的取捨",
+        "items": [
+          "裝置語言和 Siri 語言要一致",
+          "想用就得整台改英文",
+          "中文訊息能不能處理，Apple 沒說"
+        ]
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "yn3w",
+          "text": "因為裝置語言和 Siri 語言必須一致。",
+          "reveal": 1
+        },
+        {
+          "id": "f32x",
+          "text": "想用 Siri AI，現在就得把整台 iPhone 改成英文。",
+          "reveal": 1
+        },
+        {
+          "id": "a8gr",
+          "text": "英文設定能不能好好處理你的中文訊息，Apple 沒有明說。",
+          "reveal": 1
+        },
+        {
+          "id": "i3yj",
+          "text": "主要用中文的人，這一步先想清楚再決定。"
+        },
+        {
+          "id": "8tfp",
+          "text": "語言這一關，比機型更容易讓人放棄。"
+        }
+      ]
+    },
+    {
+      "id": "what-it-reads",
+      "chapter": "它會讀你什麼、在哪裡處理",
+      "template": "bullets",
+      "data": {
+        "title": "它會讀你什麼",
+        "items": [
+          "訊息、郵件、行事曆",
+          "備忘錄、提醒事項",
+          "你螢幕上的內容"
+        ]
+      },
+      "lines": [
+        {
+          "id": "qxih",
+          "text": "便利來自它讀得到你的個人資料，所以先看它讀什麼。",
+          "reveal": 1
+        },
+        {
+          "id": "ar63",
+          "text": "訊息、郵件、行事曆、備忘錄、提醒事項都在裡面。",
+          "reveal": 1
+        },
+        {
+          "id": "riw5",
+          "text": "加上你當下螢幕上的內容，它也看得到。",
+          "reveal": 1
+        },
+        {
+          "id": "s6yu",
+          "text": "能做到這些，都是因為它讀得到你的個人資料。"
+        },
+        {
+          "id": "jamr",
+          "text": "讀得越多越方便，也代表你要越清楚它讀了什麼。"
+        }
+      ]
+    },
+    {
+      "id": "recipe-demo",
+      "template": "chat",
+      "data": {
+        "title": "Apple 自己舉的例子",
+        "messages": [
+          {
+            "side": "right",
+            "name": "你",
+            "text": "家人上次說來訪要一起做什麼？"
+          },
+          {
+            "side": "left",
+            "name": "Siri",
+            "text": "從訊息找到想一起烤家傳食譜，再把材料加進提醒事項。"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "xpfc",
+          "text": "Apple 自己舉的例子是這樣。",
+          "reveal": 1
+        },
+        {
+          "id": "vtb4",
+          "text": "你問家人上次說來訪要做什麼，它從訊息找到答案。",
+          "reveal": 1
+        },
+        {
+          "id": "e5m8",
+          "text": "再從郵件把食譜調出來，把材料加進提醒事項的清單。"
+        },
+        {
+          "id": "79iq",
+          "text": "這是 Apple 的示範，不是我們實測的結果。"
+        },
+        {
+          "id": "swqa",
+          "text": "這種跨 App 找資料，就是它最想秀的能力。"
+        }
+      ]
+    },
+    {
+      "id": "onscreen-example",
+      "template": "chat",
+      "data": {
+        "title": "螢幕感知的例子",
+        "messages": [
+          {
+            "side": "right",
+            "name": "你",
+            "text": "看球隊網頁時說：把主場比賽加進行事曆"
+          },
+          {
+            "side": "left",
+            "name": "Siri",
+            "text": "讀出畫面上的賽程，把主場那幾場直接排進行事曆。"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "cxd3",
+          "text": "螢幕感知也有例子。",
+          "reveal": 1
+        },
+        {
+          "id": "kb2a",
+          "text": "你看著球隊網頁，說把主場比賽加進行事曆。",
+          "reveal": 1
+        },
+        {
+          "id": "ej7r",
+          "text": "它讀出畫面上的賽程，把那幾場直接排進去。"
+        }
+      ]
+    },
+    {
+      "id": "private-cloud",
+      "template": "quote",
+      "data": {
+        "kicker": "Apple 對隱私的說法",
+        "quote": "Private Cloud Compute",
+        "translation": "私密雲端運算：個人資料不儲存、Apple 也無法存取",
+        "source": "Apple Newsroom, 2026-09-14"
+      },
+      "claims": [
+        "c11",
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "4azm",
+          "text": "資料在哪裡處理？Apple 說用裝置端加上私密雲端運算。"
+        },
+        {
+          "id": "hu63",
+          "text": "它說處理時個人資料不會被儲存，Apple 也無法存取。",
+          "reveal": 1
+        },
+        {
+          "id": "h83z",
+          "text": "新的模型是和 Google 及它的 Gemini 一起打造的。"
+        },
+        {
+          "id": "4pyb",
+          "text": "以上都是 Apple 的說法，我們無法獨立驗證。"
+        },
+        {
+          "id": "3vq9",
+          "text": "隱私這段，值得你自己去官方頁再看一次。"
+        }
+      ]
+    },
+    {
+      "id": "read-privacy-cta",
+      "template": "cta",
+      "data": {
+        "kicker": "開通前",
+        "title": "開通流程裡就要讀隱私設定",
+        "sub": "別一路按下一步，說明欄有完整整理"
+      },
+      "lines": [
+        {
+          "id": "9z2v",
+          "text": "所以開通那一步，實際把隱私設定讀過，別一路按下一步。"
+        },
+        {
+          "id": "96fq",
+          "text": "完整整理放在說明欄第一行的文章裡。"
+        }
+      ]
+    },
+    {
+      "id": "daily-limits",
+      "chapter": "每日上限與 beta 的界線",
+      "template": "bullets",
+      "data": {
+        "title": "每日上限與 beta 的界線",
+        "items": [
+          "伺服器功能有每日上限",
+          "之後會有付費用量",
+          "beta 會出錯、規則會變"
+        ]
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "wyze",
+          "text": "還有兩件事要先知道。",
+          "reveal": 1
+        },
+        {
+          "id": "4bj2",
+          "text": "Apple 說仰賴伺服器的功能有每日使用上限，Siri AI 就在其中。",
+          "reveal": 1
+        },
+        {
+          "id": "9gfn",
+          "text": "而且它是 beta，回答可能出錯、規則之後也會改。",
+          "reveal": 1
+        },
+        {
+          "id": "7i8m",
+          "text": "把它當成還在測試的功能，期待就會比較準。"
+        }
+      ]
+    },
+    {
+      "id": "third-party",
+      "template": "bullets",
+      "data": {
+        "title": "第三方 App 分兩種",
+        "items": [
+          "現在可以：WhatsApp、Audible",
+          "即將支援：Outlook、Notability、Tripsy",
+          "「即將」代表現在還不能用"
+        ]
+      },
+      "lines": [
+        {
+          "id": "bm8h",
+          "text": "第三方 App 分兩種狀態。",
+          "reveal": 1
+        },
+        {
+          "id": "beaw",
+          "text": "現在能用的像用 WhatsApp 傳訊息、在 Audible 播有聲書。",
+          "reveal": 1
+        },
+        {
+          "id": "2wkj",
+          "text": "Outlook 這些，Apple 只寫即將支援。",
+          "reveal": 1
+        },
+        {
+          "id": "3kyx",
+          "text": "看到即將兩個字，就代表推出當下還不能用。"
+        },
+        {
+          "id": "f8tm",
+          "text": "常用的 App 有沒有支援，值得先查一下。"
+        }
+      ]
+    },
+    {
+      "id": "expect-or-not",
+      "template": "compare",
+      "data": {
+        "title": "可以期待、先別期待",
+        "left": {
+          "heading": "可以期待",
+          "points": [
+            "找自己的資料",
+            "對螢幕提問",
+            "跨 App 動作"
+          ]
+        },
+        "right": {
+          "heading": "先別期待",
+          "points": [
+            "中文介面",
+            "第三方 App 全支援",
+            "無限次數"
+          ]
+        }
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "v5nv",
+          "text": "最後把期待放在對的地方。",
+          "reveal": 1
+        },
+        {
+          "id": "6yaf",
+          "text": "可以期待它找你的資料、對螢幕提問、跨 App 幫忙。",
+          "reveal": 1
+        },
+        {
+          "id": "8e26",
+          "text": "先別期待中文、第三方 App 全支援，或無限次數用。"
+        },
+        {
+          "id": "mebf",
+          "text": "像 Outlook 這些第三方 App 的動作，Apple 也只寫「即將」支援。"
+        },
+        {
+          "id": "abyy",
+          "text": "把期待放對地方，用起來才不會失望。"
+        }
+      ]
+    },
+    {
+      "id": "recap",
+      "template": "stats",
+      "data": {
+        "title": "三個重點，記這樣就好",
+        "stats": [
+          {
+            "value": "英文",
+            "label": "現在只有英文，要整台改"
+          },
+          {
+            "value": "等候名單",
+            "label": "申請後排隊才下載"
+          },
+          {
+            "value": "讀隱私",
+            "label": "開通時實際讀過設定"
+          }
+        ],
+        "source": "照 Apple 官方頁整理"
+      },
+      "lines": [
+        {
+          "id": "rdvv",
+          "text": "快結束前，把三個重點收一次。",
+          "reveal": 1
+        },
+        {
+          "id": "hpfb",
+          "text": "第一，現在只有英文，想用要把整台改成英文。",
+          "reveal": 1
+        },
+        {
+          "id": "kku8",
+          "text": "第二，申請後要排等候名單；第三，開通時實際讀過隱私設定。",
+          "reveal": 1
+        },
+        {
+          "id": "ibk4",
+          "text": "這三點記住，你就知道自己現在要不要試。"
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "chapter": "值不值得為它改英文",
+      "template": "outro",
+      "data": {
+        "title": "先看你會用到哪一種能力",
+        "cta": "完整的機型、語言與隱私整理在說明欄的文章裡",
+        "lines": [
+          "能不能用：對照機型與英文設定",
+          "怎麼打開：申請後排等候名單",
+          "它讀什麼：開通時讀過隱私設定"
+        ]
+      },
+      "lines": [
+        {
+          "id": "434i",
+          "text": "回到最開始的問題：值不值得為它把手機改成英文？"
+        },
+        {
+          "id": "2zay",
+          "text": "先看你每天真的會用到哪一種能力，再決定要不要現在就試。"
+        },
+        {
+          "id": "sd8s",
+          "text": "能不能用、怎麼打開、它讀什麼，都整理在說明欄的文章裡。"
+        },
+        {
+          "id": "qtgs",
+          "text": "這支照 Apple 官方頁整理，我們沒有實測，下一支影片見。"
+        },
+        {
+          "id": "xp2b",
+          "text": "用中文為主的人，也可以先等繁中版再說。"
+        }
+      ]
+    }
+  ]
+}
