@@ -1,6 +1,6 @@
 # 作者契約：一部作品的 `source.mjs`
 
-每部作品一個目錄，只編輯 `source.mjs`（`export default` 一個可 JSON 序列化的物件）；其餘檔案由 `node build.mjs <slug>` 產生，不要手改。寫完跑 `node validate.mjs <slug> --source-only`，零錯誤才算完成；警告要看過，能改就改。所有中文用台灣的繁體與用語；人名讀起來要像台灣國語裡自然的名字。
+每部作品一個目錄，只編輯 `source.mjs`（`export default` 一個可 JSON 序列化的物件）；其餘檔案由 `node build.mjs <slug>` 產生，不要手改。一部的來源太長時可以拆成幾個模組（例如 `setting.mjs`、`chapter-1.mjs`…`chapter-4.mjs`、`packaging.mjs`），由 `source.mjs` 匯入後組成同一個物件；一次寫入的量控制在一篇十集以內，免得撞到單次輸出上限。寫完跑 `node validate.mjs <slug> --source-only`，零錯誤才算完成；警告要看過，能改就改。所有中文用台灣的繁體與用語；人名讀起來要像台灣國語裡自然的名字。
 
 ## 結構
 
