@@ -1,0 +1,13 @@
+# Add after compose.yml when deployed on the same host as mokaair.com.
+# Deploy the site's production Compose first; it owns the internal network.
+services:
+  uploader:
+    networks:
+      default:
+      site_rpc:
+        aliases: [mokaair-studio-uploader]
+networks:
+  default:
+  site_rpc:
+    external: true
+    name: ${UPLOADER_API_NETWORK:-travel_scanner_uploader_rpc}
