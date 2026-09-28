@@ -66,7 +66,7 @@
 | 5 | 2026-11-03 | `ai-real-jobs-chart` | 常青偏新聞：排行榜每月會動，錄製當天重讀；已寫好稿子，可以提前 |
 | 6 | 2026-11-10 | `why-openai-killed-sora` | 常青偏多，收尾 |
 
-`schedule.csv` 是同一張表的機器可讀版，狀態全部是 `PROPOSED_NOT_SCHEDULED`。前提是第 5 節的英文旁白路線先落地；落地日期延後，整列平移，不跳過第 1 支（它的常青章節夠撐）。每支長片之後可以剪兩支 Shorts（縮圖大字那一段），但 Shorts 的觀看**不算進**單支百萬目標。
+`schedule.csv` 是同一張表的機器可讀版。第 1 支由站主在 2026-09-28 定為 10/1 上架（`OWNER_SET_DATE`；表上的 11:00 UTC 是台灣晚上七點，實際時間站主在「可以上架」卡片上選），其餘仍是 `PROPOSED_NOT_SCHEDULED`。前提是第 5 節的英文旁白路線先落地；落地日期延後，整列平移，不跳過第 1 支（它的常青章節夠撐）。每支長片之後可以剪兩支 Shorts（縮圖大字那一段），但 Shorts 的觀看**不算進**單支百萬目標。
 
 ## 5. 製作路線與前提
 
@@ -159,7 +159,7 @@
 | `README.md` | 這份企劃 |
 | `briefs/0N-<slug>.md` | 每支的簡報：觀眾、能做的事、站主觀點、破百萬的理由、標題與縮圖 A/B/C、開場 30 秒逐字、章節秒數與版型、實算、會過期的事實、素材、不做的事 |
 | `packaging.csv` | 六支的標題三案與縮圖兩案，方便一次看完 |
-| `schedule.csv` | 建議上架日；狀態全部是 `PROPOSED_NOT_SCHEDULED` |
+| `schedule.csv` | 上架日：第 1 支站主已定（`OWNER_SET_DATE`），其餘是建議（`PROPOSED_NOT_SCHEDULED`） |
 | `scoreboard.csv` | 與 Codex 版比賽的量測表；只填真實值 |
 | `sources.json` | 2026-09-28 查到的來源，每筆寫能支持什麼與限制 |
 
