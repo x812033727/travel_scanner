@@ -30,8 +30,10 @@ Season video 5 (`docs/ai-video-en-season-01/README.md`, brief `briefs/04-rtx-spa
 ## Steps
 
 - [x] Planner writes `docs/videos/rtx-spark-local-ai/brief.md` from the season brief, re-reading every changeable fact on its official page.
-- [ ] `review-push --gate outline`; then writer, two verifiers, listener review.
-- [ ] Narration and dubs wait for the Gemini month to reset on 2026-10-01 (8,106 characters left on 2026-09-28).
+- [x] `review-push --gate outline`; then writer, two verifiers, listener review.
+- [ ] Narration and dubs. They were to wait for the Gemini month to reset on 2026-10-01 (8,106 characters left on
+      2026-09-28), but the site's Gemini limit went from 300,000 to 2,000,000 and then 5,000,000 characters a month
+      around 15:00 UTC on 2026-09-28, so narration started the same day.
 
 ## How to verify
 
@@ -46,3 +48,4 @@ node tools/video/cli.mjs status --slug rtx-spark-local-ai --workdir <VIDEO_WORKD
 - Schedule slot: 2026-10-27 15:00 UTC in `schedule.csv` (after shipping, so real reviews exist to compare with).
 - 2026-09-28: brief written (three outlines, A recommended) and sent for the owner's pick as outline review `786f8faa-d5d1-4ebf-ac04-15e695827413`. `review-push` needs a video.json, so the outline went up through the automation client's calls instead (report, judge — the stance is blank, so it waits for the owner — then submit), the same steps `flow.mjs` `submitOutline` takes.
 - 2026-09-28 10:57 UTC: the owner picked outline A (recorded by `review-pull`; bound to brief.md's hash, so the brief is frozen). Writer dispatched with the season's lessons (pace, `say` for versions/years/percents, date-proof wording, dictionary additions through a locked append script).
+- 2026-09-28 evening: script done and verified three times (the owner kept the theoretical speed ceilings, labelled 理論上限／不是實測／每步一個 token; see `claims.md`), listener pass done. Translations: zh-CN (reviewed; one fix, ujr7 专家的参数是 4 位多) and en (review running); ja and ko in progress. Narration started at about 15:25 UTC after the Gemini limit was raised (see Steps).
