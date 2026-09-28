@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-shorts-tab-browser-fixes
 title: Video shorts tab: fix what a real browser showed after W1 merged
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-fable-5-1-shorts
 claimed_at: 2026-09-28T13:24:00Z
 created_at: 2026-09-28T13:19:57Z
-completed_at:
+completed_at: 2026-09-28T14:10:26Z
 branch: claude/video-shorts-tab-browser-fixes
 depends_on: []
 scope:
