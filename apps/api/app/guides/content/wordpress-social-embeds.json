@@ -246,6 +246,946 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "WordPress social embeds: what to do when Instagram or Facebook content stops displaying",
+      "description": "When an Instagram or Facebook post suddenly disappears from a WordPress site, the cause may be the embedding method, account connection, source visibility, or visitor-side loading. This guide distinguishes single embeds from feeds, walks through plugin connection checks, and tests mobile and privacy settings. It helps site owners keep useful social entry points without leaving essential information inside fragile external blocks.",
+      "hero": {
+        "src": "/guides/wordpress-social-embeds/hero-en.jpg",
+        "alt": "Original illustration of a screen, shield, and document representing embed display, account authorization, and fallback information.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A studio's social photo feed had always worked on its homepage, but one day it showed only an empty frame. In another article, pasting a Facebook URL no longer produced a post card. The symptoms look alike, but the two blocks may rely on different features. Identify the source and connection method before troubleshooting."
+        },
+        {
+          "type": "paragraph",
+          "text": "Social posts can add recent updates and examples, but event dates, registration steps, and service details should still appear in the site's own text. This guide takes a site maintainer's view and builds a process for finding failures, keeping fallback links, and handing over account access."
+        },
+        {
+          "type": "heading",
+          "text": "First distinguish a single embedded post from a full feed",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A single embed places one particular post inside an article, usually preserving its author, text, and a way to interact on the platform. A feed continuously loads multiple posts from an account or filter and adds settings for order, caching, account source, and refresh frequency. Showing images does not mean the two use the same authorization or plugin."
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress core documentation records that native Facebook and Instagram oEmbed support was removed. An older tutorial's “paste a URL and it converts automatically” is therefore not a general method today. If it still works on an existing site, a theme, plugin, or other integration may supply the feature; identify the actual provider first."
+        },
+        {
+          "type": "paragraph",
+          "text": "Make a short inventory: the page containing the block, original social URL, display method, responsible plugin, connected account, and last date it worked. If only one block fails, start with that source. If everything from one platform fails across the site, inspect the shared connection or loading script before rebuilding anything."
+        },
+        {
+          "type": "heading",
+          "text": "Choose an integration you can maintain",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "If readers only need the source, a clear text link is often enough. If they need to view the post on the page, check the embedding methods currently supported by the platform or integration. Do not put an ordinary share URL into an arbitrary iframe or copy embed code containing tracking data or keys from an unknown site."
+        },
+        {
+          "type": "paragraph",
+          "text": "Smash Balloon's documentation describes using Social Photo Feed and Social Post Feed for Instagram and Facebook oEmbed. The process connects an account through the plugin, and the site owner must still authorize it as instructed. This differs from building a full photo feed; decide which feature you need to repair first."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you use your own developer app, you must separately manage account eligibility, permissions, app review, and credentials. Most site owners can begin with a maintained integration and test one representative post. Installing a free edition does not guarantee support for every media type, account source, or advanced layout."
+        },
+        {
+          "type": "heading",
+          "text": "Reconnect only what is necessary",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For the oEmbed flow in Smash Balloon's documentation, install or update the relevant platform plugin, select Connect on its oEmbeds page, choose the correct account on the authorization screen, and complete the return to your site. Check the site and account names, especially when several brand accounts are signed in."
+        },
+        {
+          "type": "paragraph",
+          "text": "To build a feed instead, follow that plugin's Feed creation flow: add a source, choose a layout, and place the supplied block or shortcode on the page. Start with a few posts. Check images, text, links to original posts, and the Load More button before expanding the feed."
+        },
+        {
+          "type": "paragraph",
+          "text": "Save the existing settings and error messages before reconnecting. Have someone authorized to manage the brand account complete the authorization; do not ask a colleague to paste a social password into a general form. For handover, record who can reauthorize and who takes over when staff or permissions change."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Identify the platform, plugin, and embedding method used by the failed block.",
+            "Update or rebuild the necessary connection on the relevant feature page, checking the selected account.",
+            "Test one post on a test page before repairing other pages that share the connection."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Trace the source, connection, and visitor page in stages",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Open the original social URL directly. Check whether the content still exists and what a signed-out visitor can see. If it was deleted, its visibility changed, or the platform no longer offers a suitable embed, pasting the same code again usually will not help. Ask the content owner to verify the settings or choose suitable replacement content."
+        },
+        {
+          "type": "paragraph",
+          "text": "Next check the plugin dashboard for permission, source, or connection errors. If its preview also cannot retrieve the post, fix the connection first. If the dashboard works but visitors see a blank area, inspect caching, lazy loading, cookie consent, and script conflicts. Change one thing at a time and record the result."
+        },
+        {
+          "type": "paragraph",
+          "text": "Clear relevant caches after repairing the source. Avoid disabling every cache and security feature at the outset. Give support the plugin version, page URL, time of failure, and an error report with sensitive data removed. Never publish access tokens, full debug dumps, or private user messages."
+        },
+        {
+          "type": "heading",
+          "text": "Keep external content from blocking the site",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The first screen does not need many feed posts. Make the main heading, service introduction, and contact route readable before loading supplementary social content. On a phone, check image proportions, clipped text, horizontal overflow, and button size; floating controls must not cover the action to open a post."
+        },
+        {
+          "type": "paragraph",
+          "text": "A social integration may fetch content from an external service, cache it locally, or connect to a consent tool. Test both the not-consented and consented states with your actual settings. Tell readers clearly how to load the content or visit its source. A plugin's privacy feature listing does not mean your site is configured correctly."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the plugin temporarily fails, retain direct links to the account or posts and the essential explanation you wrote yourself. When images are needed, use originals you have the rights to use or obtain separate permission. An image visible on social media is not automatically licensed for permanent reuse on your site."
+        },
+        {
+          "type": "heading",
+          "text": "Make embed checks part of content maintenance",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "After changing social account permissions, plugins, or site cache settings, sample the homepage feed and several older articles. Test signed out so you know visitors can see them too. Check each embedding method separately; one working block does not prove the entire site has recovered."
+        },
+        {
+          "type": "paragraph",
+          "text": "For important articles, record why each social reference is there: a work example, event highlight, or information source. If the source disappears, choose a replacement link, add the necessary text, use licensed replacement media, or remove the block. Do not leave an unexplained empty frame or keep presenting an expired post as a current event."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before disabling a plugin, locate every related block and shortcode, arrange replacement content, and then remove the connection. Keep essential text and the original URL so readers can still understand the page when a platform policy or tool changes."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-social-embeds/diagram-1-en.svg",
+          "alt": "Four-panel diagram checking the social source, account connection, visitor-side loading, and fallback content in order.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Let social content add context while keeping the site itself readable and usable.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Situation",
+            "Check first",
+            "Possible response"
+          ],
+          "rows": [
+            [
+              "Only one post fails",
+              "Original content and visibility",
+              "Update the source or keep a link to it"
+            ],
+            [
+              "Everything from one platform fails",
+              "Shared connection and plugin status",
+              "Reauthorize or update the integration according to the error"
+            ],
+            [
+              "Dashboard works, visitor page is blank",
+              "Cache, consent flow, and scripts",
+              "Test visitor-side loading conditions one at a time"
+            ],
+            [
+              "The tool is no longer suitable",
+              "Where it is used and replacement content",
+              "Replace blocks before removing the dependency"
+            ]
+          ],
+          "caption": "Narrow down the cause by impact before changing the entire site."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Keep essential information in your site's own text",
+          "text": "Event times, service areas, and contact details should not live only in a social embed. Even when the external block fails, readers should understand the page and find a working next step."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Check external map and form embeds",
+              "kind": "life",
+              "slug": "wordpress-map-form-embeds"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Plan plugin installation and updates",
+              "kind": "life",
+              "slug": "wordpress-themes-plugins-install"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: WP_oEmbed implementation",
+          "url": "https://developer.wordpress.org/reference/classes/wp_oembed/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Embeds documentation",
+          "url": "https://wordpress.org/documentation/article/embeds/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Smash Balloon: Fixing broken Facebook and Instagram oEmbed",
+          "url": "https://smashballoon.com/doc/how-to-fix-the-broken-facebook-and-instagram-oembed-issue-in-wordpress/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Social Photo Feed public plugin page",
+          "url": "https://wordpress.org/plugins/instagram-feed/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Social Post Feed public plugin page",
+          "url": "https://wordpress.org/plugins/custom-facebook-feed/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WordPress 社交内容嵌入：Instagram 和 Facebook 无法显示时怎么办",
+      "description": "WordPress 网站上的 Instagram 或 Facebook 帖子突然无法显示，可能与嵌入方式、账号连接、来源公开范围或访客端加载有关。本文梳理单条嵌入与动态信息流的区别、插件连接的排查步骤，以及手机和隐私设置的验收方法，帮助站点管理员保留可用的社交入口，同时避免重要信息只存在于容易失效的外部区块。",
+      "hero": {
+        "src": "/guides/wordpress-social-embeds/hero-zh-cn.jpg",
+        "alt": "原创屏幕、盾牌与文档插画，象征嵌入显示、账号授权和备用信息。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "工作室首页的社交媒体照片墙一直正常，某天却只剩下空白框；另一篇文章贴上 Facebook 链接后，也没有自动变成帖子卡片。这两个现象看起来相似，却可能由不同功能造成。排查前先确认原帖和连接方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "社交媒体内容可以补充近况和作品，但活动日期、报名方式和服务说明仍应写在网站正文中。本文从网站维护者的角度，梳理定位故障原因、保留备用链接和交接账号权限的操作流程。"
+        },
+        {
+          "type": "heading",
+          "text": "先区分单条嵌入与整个动态信息流",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "单条嵌入会把特定帖子放进文章，通常保留作者、正文和平台互动入口。动态信息流则根据账号或筛选条件持续读取多条内容，另有排序、缓存、账号来源和更新频率等设置。两者都会显示图片，但未必使用同一种授权方式或插件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 核心文档记录了 Facebook 和 Instagram 原生 oEmbed 支持已被移除，因此不能把旧教程中“粘贴链接即可自动转换”的做法当成目前通用的方法。如果现有网站仍能使用，可能是主题、插件或其他集成提供了这一功能，应先确认实际提供者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "列出简短清单：所在页面、社交平台原帖链接、显示方式、负责的插件、连接的账号，以及最后一次正常显示的日期。如果只有一个区块出问题，就从那条内容查起；如果全站同一平台的内容都失效，再检查共享连接或加载脚本，避免直接重做整个网站。"
+        },
+        {
+          "type": "heading",
+          "text": "选择可以维护的整合方式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "如果只需提供出处，清晰的文字链接通常就足够了；如果希望访客在页面内阅读，应确认平台或集成工具目前支持的嵌入方式。不要把普通分享链接随意放进 iframe，也不要从不明网站复制带有跟踪信息或密钥的嵌入代码。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Smash Balloon 的现行文档介绍了使用 Social Photo Feed 和 Social Post Feed 处理 Instagram、Facebook oEmbed 的方法。它通过插件流程连接账号，网站管理员仍需按指示完成授权。这与建立整个照片墙不同，应先确定本次要修复的是哪项功能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果使用自己的开发者应用，还要单独管理账号资格、权限、审核和凭证。一般网站管理员可以先选用持续维护的集成工具，用一条代表性内容进行验证。安装免费版并不意味着所有媒体类型、账号来源和高级布局都已包含。"
+        },
+        {
+          "type": "heading",
+          "text": "以最小范围重新建立连接",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以 Smash Balloon 文档中的 oEmbed 流程为例，先安装或更新对应平台的插件，在其 oEmbeds 页面点击连接，按授权页面的指引选中正确账号，并完成返回网站的步骤。过程中核对网站和账号名称，避免同时登录多个品牌账号时连错来源。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果要建立动态信息流，就按照插件的 Feed 创建流程添加来源、选择布局，再把提供的区块或短代码放到页面中。先显示少量内容，检查图片、文字、原帖链接和“加载更多”按钮，再扩大显示范围。"
+        },
+        {
+          "type": "paragraph",
+          "text": "重新连接前，先保存原有设置和错误信息。由有权管理品牌账号的人完成授权，不要要求同事把社交账号密码填入普通表单。交接时记录谁能重新授权，以及人员离职或权限变更后由谁接手。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "确认失效区块使用哪个平台、哪款插件及哪种嵌入方式。",
+            "在对应功能页面更新或重建必要连接，并核对选中的账号。",
+            "先在测试页面用一条内容验收，再处理其他使用同一连接的页面。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "从来源、连接与访客端分段找原因",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先直接开启社交媒体原始网址，观察内容是否还存在，以及未登录者能看到什么。若来源已删除、公开范围改变或不再提供适用的嵌入选项，重新贴同一段程序通常无法解决；应由内容拥有者确认设置，或改用其他合适内容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再查看插件管理后台是否有权限、来源或连接错误。如果后台预览也无法获取内容，先修复连接；如果后台正常、只有访客看到空白，就检查缓存、延迟加载、Cookie 同意设置或脚本冲突。每次只改一项并记录结果，才能找到实际原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "修复来源后，再清除相关缓存；不要一开始就关闭全部缓存和安全功能。向支持团队提供插件版本、页面链接、故障发生时间和已遮盖敏感信息的错误报告。不要公开 access token、完整调试资料或用户的私人消息。"
+        },
+        {
+          "type": "heading",
+          "text": "让外部内容不妨碍网站阅读",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "照片墙首屏不必显示很多条内容。先确保主标题、服务介绍和联系入口可读，再加载补充性的社交媒体内容。在手机上检查图片比例、文字截断、横向溢出和按钮大小，别让浮动控件遮挡打开帖子的操作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "社交媒体集成可能从外部服务获取内容，也可能使用本地缓存或与同意管理工具集成。根据实际设置，分别测试未同意和已同意两种状态，并清楚告知读者如何加载内容或前往原帖。不能只因为插件介绍了隐私功能，就认定网站已完成全部配置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果插件暂时无法工作，就保留账号或原帖的直接链接，以及自己撰写的必要说明。如需图片，请使用有权使用的原始文件或另行取得授权；不能把社交媒体上能看到的图片直接下载并当作永久替代素材。"
+        },
+        {
+          "type": "heading",
+          "text": "把失效处理放进内容维护",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "每次变更社交媒体账号权限、插件或网站缓存设置后，都要抽查首页动态信息流和几篇旧文章。使用未登录窗口测试，确认访客也能看到。不同嵌入方式应分别验证，不能因为一个区块正常就推断全站都已恢复。"
+        },
+        {
+          "type": "paragraph",
+          "text": "重要文章可以记录引用社交媒体内容的目的：作品案例、活动花絮或信息出处。如果原帖失效，就根据用途决定是更换链接、补充正文、替换素材，还是移除区块。不要留下没有说明的空白框，也不要继续把过期帖子当作当前活动信息。"
+        },
+        {
+          "type": "paragraph",
+          "text": "停用插件前，先找出所有相关区块和短代码，安排替代内容，再移除连接。保留必要文字和原帖链接，平台政策或工具发生变化时，读者仍能理解网站内容。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-social-embeds/diagram-1-zh-cn.svg",
+          "alt": "四格图解依次检查社交内容来源、账号连接、访客端加载和备用内容。",
+          "width": 1600,
+          "height": 900,
+          "caption": "让社交内容提供补充，同时保持网站本身可读、可用。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "情况",
+            "先检查",
+            "可采取的处理"
+          ],
+          "rows": [
+            [
+              "只有一条帖子失效",
+              "原帖及公开范围",
+              "更新来源或保留原帖链接"
+            ],
+            [
+              "同一平台的内容全部失效",
+              "共享连接和插件状态",
+              "根据错误重新授权或更新集成"
+            ],
+            [
+              "管理后台正常、访客看到空白",
+              "缓存、同意流程和脚本",
+              "逐项测试访客端的加载条件"
+            ],
+            [
+              "工具不再适用",
+              "使用范围及替代内容",
+              "先替换区块，再移除依赖"
+            ]
+          ],
+          "caption": "按影响范围缩小排查范围，避免一次修改整个网站。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "把必要信息写在网站正文中",
+          "text": "活动时间、服务范围与联系方式不应只藏在社交媒体嵌入里。即使外部区块失效，读者仍应能理解内容并找到可用入口。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "检查地图与表单的外部嵌入",
+              "kind": "life",
+              "slug": "wordpress-map-form-embeds"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安排网站插件安装与更新",
+              "kind": "life",
+              "slug": "wordpress-themes-plugins-install"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：oEmbed 支持实现",
+          "url": "https://developer.wordpress.org/reference/classes/wp_oembed/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：嵌入内容说明",
+          "url": "https://wordpress.org/documentation/article/embeds/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Smash Balloon：修复 Facebook 和 Instagram oEmbed",
+          "url": "https://smashballoon.com/doc/how-to-fix-the-broken-facebook-and-instagram-oembed-issue-in-wordpress/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Social Photo Feed 插件公开页面",
+          "url": "https://wordpress.org/plugins/instagram-feed/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Social Post Feed 插件公开页面",
+          "url": "https://wordpress.org/plugins/custom-facebook-feed/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPressのSNS埋め込み：InstagramやFacebookの投稿が表示されないときの対処法",
+      "description": "WordPressサイトでInstagramやFacebookの投稿が突然表示されなくなった場合、埋め込み方法、アカウント接続、元の投稿の公開範囲、閲覧側での読み込みなどが原因として考えられます。この記事では単一投稿の埋め込みとフィードの違い、プラグイン接続の確認手順、スマートフォンとプライバシー設定での検証方法を整理します。重要な情報を不安定な外部ブロックだけに置かず、使えるSNSへの導線を保つためのガイドです。",
+      "hero": {
+        "src": "/guides/wordpress-social-embeds/hero-ja.jpg",
+        "alt": "画面、盾、文書を描いたオリジナルのイラスト。埋め込み表示、アカウント認証、代替情報を表す。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "スタジオのトップページにあるSNSの写真フィードは正常に動いていたのに、ある日、空白の枠だけになりました。別の記事ではFacebookのURLを貼っても投稿カードに変わりません。症状は似ていますが、使われている機能は異なる場合があります。調査を始める前に、元のコンテンツと接続方法を特定しましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "SNSの投稿は近況や制作事例を補えますが、イベントの日付、申込方法、サービスの説明はサイト本文にも載せるべきです。ここではサイト管理者の視点から、表示不良の原因を突き止め、代替リンクを残し、アカウントの管理を引き継ぐ手順をまとめます。"
+        },
+        {
+          "type": "heading",
+          "text": "単一投稿の埋め込みとフィードをまず区別する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "単一投稿の埋め込みは、特定の投稿を記事内に表示し、通常は投稿者、文章、プラットフォームでの操作への入口を残します。一方、フィードはアカウントや絞り込み条件に基づいて複数の投稿を継続的に読み込み、表示順、キャッシュ、参照アカウント、更新頻度などを設定します。どちらも画像を表示するからといって、同じ認証やプラグインを使うとは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress本体の資料には、FacebookとInstagramに対する標準のoEmbed対応が削除されたと記されています。そのため、古い解説にある「URLを貼るだけで自動変換される」方法を、現在どのサイトでも使える手順と考えてはいけません。既存サイトで動いている場合は、テーマ、プラグイン、別の連携機能が補っている可能性があります。まず提供元を確認してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "対象ページ、元のSNS投稿のURL、表示方式、担当するプラグイン、接続中のアカウント、最後に正常表示を確認した日を簡単に一覧にします。1つのブロックだけが壊れたなら、その投稿から調べます。同じプラットフォームのコンテンツがサイト全体で失敗するなら、共通の接続や読み込み用スクリプトを確認してから、作り直しを検討します。"
+        },
+        {
+          "type": "heading",
+          "text": "管理し続けられる連携方法を選ぶ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "出典を示すだけなら、分かりやすいテキストリンクで十分なことも多いでしょう。ページ内で投稿を読ませたい場合は、プラットフォームまたは連携ツールが現在対応している埋め込み方式を確認します。通常の共有URLを適当なiframeに入れたり、出所不明のサイトから追跡情報やキーを含む埋め込みコードをコピーしたりしないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Smash Balloonの現行資料では、Social Photo FeedとSocial Post Feedを使ってInstagramとFacebookのoEmbedを扱う方法が説明されています。プラグインの接続手順を使いますが、サイト管理者は指示に従ってアカウントを認証する必要があります。これは写真フィード全体を作る操作とは別なので、今回修復したい機能を先に決めましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "独自の開発者アプリを使う場合は、アカウントの利用資格、権限、審査、認証情報の維持を別途管理する必要があります。一般的なサイト管理者は、まず保守されている連携ツールを選び、代表的な1件の投稿で動作を確認できます。無料版をインストールしただけで、すべてのメディア形式、アカウントの種類、高度なレイアウトが含まれると考えないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "必要な接続だけを再設定する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Smash Balloonの資料にあるoEmbed手順を例にすると、対象プラットフォームのプラグインをインストールまたは更新し、oEmbeds画面で接続を選びます。認証画面で正しいアカウントを選択し、サイトに戻るまで完了させます。複数のブランドアカウントにログインしている場合は、サイト名とアカウント名を特に注意して照合してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "フィードを作る場合は、そのプラグインのFeed作成手順に従って参照元を追加し、レイアウトを選び、提供されたブロックまたはショートコードをページに配置します。最初は少数の投稿だけを表示し、画像、文章、元の投稿へのリンク、「もっと読み込む」ボタンを確認してから範囲を広げましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再接続する前に、既存の設定とエラーメッセージを保存します。ブランドアカウントの管理権限を持つ人が認証を完了させ、同僚のSNSパスワードを一般のフォームに貼り付けるよう求めないでください。引き継ぎ時には、再認証できる人と、担当者の退職や権限変更時の後任を記録します。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "失敗したブロックのプラットフォーム、プラグイン、埋め込み方式を確認する。",
+            "該当する機能の画面で必要な接続を更新または再設定し、選択したアカウントを照合する。",
+            "同じ接続を使う別のページに広げる前に、テストページの1件の投稿で検証する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "元の投稿、接続、閲覧ページの順に原因を探る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず元のSNS投稿のURLを直接開き、コンテンツが残っているか、ログアウトした人には何が見えるかを確認します。削除済み、公開範囲の変更、または適切な埋め込み方法が提供されなくなった場合、同じコードを貼り直しても通常は解決しません。コンテンツの所有者に設定を確認してもらうか、別の適切な内容に差し替えます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "次にプラグインの管理画面で権限、参照元、接続のエラーを確認します。管理画面のプレビューでも取得できないなら、先に接続を修復します。管理画面では正常なのに訪問者側だけ空白なら、キャッシュ、遅延読み込み、Cookie同意設定、スクリプトの競合を調べます。一度に1項目だけ変更し、結果を記録して実際の原因を絞り込みましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "参照元を修復してから関連するキャッシュを消去します。最初からすべてのキャッシュ機能やセキュリティ機能を無効にするのは避けてください。サポートにはプラグインのバージョン、ページURL、発生日時、機密情報を取り除いたエラーを伝えます。access token、完全なデバッグ出力、利用者の私的なメッセージを公開しないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "外部コンテンツでサイトの閲覧を妨げない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "最初の画面に多数のフィード投稿を置く必要はありません。主見出し、サービスの説明、問い合わせ先を先に読めるようにし、その後に補足のSNSコンテンツを読み込みます。スマートフォンでは画像の比率、文章の切れ、横方向のはみ出し、ボタンの大きさを確認し、投稿を開く操作が浮遊表示の部品に隠れないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "SNS連携は外部サービスからコンテンツを取得し、ローカルにキャッシュし、同意管理ツールと連携する場合があります。実際の設定で、同意前と同意後の両方を検証します。コンテンツの読み込み方や元の投稿への行き方を読者に明確に示してください。プラグインの紹介にプライバシー機能が載っているだけで、自サイトの設定が完了したとは判断できません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "プラグインが一時的に動かない場合は、アカウントや投稿への直接リンクと、自分で書いた必要な説明を残します。画像が必要なら、使用権のある元画像を使うか別途許可を得てください。SNS上で見える画像を、そのままダウンロードして恒久的な代替素材にする権利があるとは限りません。"
+        },
+        {
+          "type": "heading",
+          "text": "表示不良の確認をコンテンツ保守に組み込む",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "SNSアカウントの権限、プラグイン、サイトのキャッシュ設定を変更した後は、トップページのフィードと古い記事を数件抜き出して確認します。管理者だけに見えている状態を見逃さないよう、ログアウトした画面で試してください。埋め込み方式ごとに別々に検証し、1つのブロックが動いたからサイト全体が復旧したとは判断しないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "重要な記事では、SNSの引用目的を記録しておくと便利です。制作事例、イベントの様子、情報の出典などです。元のコンテンツが使えなくなった場合は、目的に応じてリンクを差し替え、本文を補い、利用権のある素材に替え、またはブロックを削除します。説明のない空白枠を残したり、期限切れの投稿を現在のイベント情報として扱い続けたりしないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "プラグインを停止する前に、関連するブロックとショートコードをすべて探し、代替内容を用意してから接続を解除します。必要な文章と元のURLを残せば、プラットフォームの方針やツールが変わっても読者はページを理解できます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-social-embeds/diagram-1-ja.svg",
+          "alt": "SNS投稿の元データ、アカウント接続、閲覧側の読み込み、代替コンテンツを順に確認する4コマ図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "SNSの内容で情報を補いながら、サイト自体を読みやすく使いやすい状態に保つ。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "状況",
+            "最初に確認すること",
+            "対応の例"
+          ],
+          "rows": [
+            [
+              "1件の投稿だけ表示されない",
+              "元の投稿と公開範囲",
+              "参照元を更新するか、元の投稿へのリンクを残す"
+            ],
+            [
+              "同じプラットフォームの投稿がすべて表示されない",
+              "共通の接続とプラグインの状態",
+              "エラーに従って再認証するか連携機能を更新する"
+            ],
+            [
+              "管理画面は正常だが訪問者には空白",
+              "キャッシュ、同意の流れ、スクリプト",
+              "訪問者側の読み込み条件を1つずつ試す"
+            ],
+            [
+              "ツールが用途に合わなくなった",
+              "使用箇所と代替コンテンツ",
+              "依存関係を削除する前にブロックを差し替える"
+            ]
+          ],
+          "caption": "サイト全体を変更する前に、影響範囲から原因を絞り込む。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "必要な情報はサイト本文に載せる",
+          "text": "イベントの時間、サービスの対象地域、連絡先をSNSの埋め込み内だけに置かないでください。外部ブロックが失敗しても、読者が内容を理解し、使える次の入口を見つけられるようにします。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "地図とフォームの外部埋め込みを確認する",
+              "kind": "life",
+              "slug": "wordpress-map-form-embeds"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "プラグインのインストールと更新を計画する",
+              "kind": "life",
+              "slug": "wordpress-themes-plugins-install"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：WP_oEmbedの実装",
+          "url": "https://developer.wordpress.org/reference/classes/wp_oembed/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：埋め込みの説明",
+          "url": "https://wordpress.org/documentation/article/embeds/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Smash Balloon：FacebookとInstagramのoEmbed表示不良の修復",
+          "url": "https://smashballoon.com/doc/how-to-fix-the-broken-facebook-and-instagram-oembed-issue-in-wordpress/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Social Photo Feedの公開プラグインページ",
+          "url": "https://wordpress.org/plugins/instagram-feed/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Social Post Feedの公開プラグインページ",
+          "url": "https://wordpress.org/plugins/custom-facebook-feed/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 소셜 콘텐츠 임베드: Instagram과 Facebook 게시물이 표시되지 않을 때",
+      "description": "WordPress 사이트에서 Instagram 또는 Facebook 게시물이 갑자기 사라졌다면 임베드 방식, 계정 연결, 원본 게시물의 공개 범위, 방문자 쪽 로딩 상태를 살펴봐야 합니다. 이 글은 게시물 하나를 임베드하는 방식과 피드의 차이, 플러그인 연결 점검 순서, 모바일 및 개인정보 설정 확인 방법을 설명합니다. 중요한 정보를 불안정한 외부 블록에만 두지 않으면서 유용한 소셜 링크를 유지하도록 돕습니다.",
+      "hero": {
+        "src": "/guides/wordpress-social-embeds/hero-ko.jpg",
+        "alt": "화면, 방패, 문서를 그린 자체 제작 삽화. 임베드 표시, 계정 승인, 대체 정보를 상징한다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "스튜디오 홈페이지의 소셜 사진 피드는 계속 잘 작동했지만 어느 날 빈 틀만 남았습니다. 다른 글에서는 Facebook URL을 붙여 넣어도 게시물 카드로 바뀌지 않습니다. 두 증상은 비슷해 보여도 사용하는 기능이 다를 수 있습니다. 문제를 해결하기 전에 원본과 연결 방식을 먼저 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "소셜 게시물은 근황과 작업 사례를 보충할 수 있습니다. 하지만 행사 날짜, 신청 방법, 서비스 설명은 웹사이트 본문에도 적어야 합니다. 이 글은 사이트 관리자의 관점에서 표시 오류의 원인을 찾고, 대체 링크를 남기며, 계정 관리 권한을 인계하는 절차를 정리합니다."
+        },
+        {
+          "type": "heading",
+          "text": "단일 게시물 임베드와 전체 피드를 먼저 구분하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "단일 임베드는 특정 게시물을 글 안에 표시하며 보통 작성자, 본문, 플랫폼에서 상호작용할 수 있는 경로를 유지합니다. 피드는 계정이나 필터 조건에 따라 여러 게시물을 계속 가져오고, 순서, 캐시, 원본 계정, 갱신 주기 설정이 추가됩니다. 둘 다 이미지를 보여 준다는 이유로 같은 승인 방식이나 플러그인을 쓴다고 가정하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 코어 문서에는 Facebook과 Instagram의 기본 oEmbed 지원이 제거되었다고 기록되어 있습니다. 따라서 예전 안내서의 ‘URL을 붙이면 자동으로 변환된다’는 설명을 현재의 일반적인 방법으로 받아들이면 안 됩니다. 기존 사이트에서 여전히 작동한다면 테마, 플러그인 또는 다른 연동 기능이 제공하는 것일 수 있으므로 실제 제공자를 먼저 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "해당 페이지, 원본 소셜 URL, 표시 방식, 담당 플러그인, 연결된 계정, 마지막으로 정상 표시된 날짜를 간단히 목록으로 만드세요. 블록 하나만 실패한다면 그 원본부터 살핍니다. 같은 플랫폼의 콘텐츠가 사이트 전체에서 실패한다면 공통 연결이나 로딩 스크립트를 점검한 뒤 재구성을 검토하세요."
+        },
+        {
+          "type": "heading",
+          "text": "계속 관리할 수 있는 연동 방식 선택하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "출처만 제공하면 된다면 명확한 텍스트 링크만으로도 충분한 경우가 많습니다. 페이지 안에서 게시물을 읽게 하려면 플랫폼이나 연동 도구가 현재 지원하는 임베드 방식을 확인하세요. 일반 공유 URL을 아무 iframe에나 넣거나, 출처가 불분명한 사이트에서 추적 정보나 키가 포함된 임베드 코드를 복사하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "Smash Balloon의 현재 문서는 Social Photo Feed와 Social Post Feed를 사용하여 Instagram 및 Facebook oEmbed를 처리하는 방법을 안내합니다. 플러그인의 연결 절차를 사용하지만 사이트 소유자는 안내에 따라 계정을 승인해야 합니다. 이는 전체 사진 피드를 만드는 작업과 다르므로 이번에 복구할 기능부터 정하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "자체 개발자 앱을 사용한다면 계정 자격, 권한, 앱 심사, 인증 정보 유지를 따로 관리해야 합니다. 일반적인 사이트 관리자는 유지보수 중인 연동 도구를 선택하고 대표 게시물 하나로 먼저 검증할 수 있습니다. 무료 버전을 설치했다고 모든 미디어 유형, 계정 원본, 고급 레이아웃이 제공된다고 가정하지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "필요한 연결만 다시 설정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Smash Balloon 문서의 oEmbed 절차를 예로 들면, 해당 플랫폼 플러그인을 설치하거나 업데이트한 뒤 oEmbeds 화면에서 연결을 선택합니다. 승인 화면에서 올바른 계정을 선택하고 사이트로 돌아오는 과정까지 완료하세요. 특히 여러 브랜드 계정에 로그인한 경우 사이트 이름과 계정 이름을 대조해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "피드를 만들려면 해당 플러그인의 Feed 생성 절차에 따라 원본을 추가하고 레이아웃을 선택한 다음 제공된 블록이나 쇼트코드를 페이지에 놓습니다. 우선 적은 수의 게시물만 표시하세요. 이미지, 텍스트, 원본 게시물 링크, 더 보기 버튼을 확인한 뒤 표시 범위를 늘립니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "다시 연결하기 전에 기존 설정과 오류 메시지를 저장하세요. 브랜드 계정 관리 권한이 있는 사람이 승인을 완료해야 하며, 동료에게 소셜 계정 비밀번호를 일반 양식에 붙여 넣으라고 요구해서는 안 됩니다. 인계할 때는 재승인 가능한 담당자와 퇴사 또는 권한 변경 시 이어받을 사람을 기록하세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "표시되지 않는 블록이 사용하는 플랫폼, 플러그인, 임베드 방식을 확인합니다.",
+            "해당 기능 화면에서 필요한 연결을 업데이트하거나 다시 만들고 선택한 계정을 대조합니다.",
+            "같은 연결을 사용하는 다른 페이지를 고치기 전에 테스트 페이지의 게시물 하나로 검증합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "원본, 연결, 방문자 페이지 순서로 원인 찾기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 원본 소셜 URL을 직접 열어 콘텐츠가 아직 존재하는지, 로그아웃한 방문자에게 무엇이 보이는지 확인하세요. 원본이 삭제되거나 공개 범위가 바뀌었거나 적절한 임베드 방식이 더 이상 제공되지 않는다면 같은 코드를 다시 붙여도 보통 해결되지 않습니다. 콘텐츠 소유자에게 설정 확인을 요청하거나 적합한 대체 콘텐츠를 고르세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "다음으로 플러그인 관리자 화면에서 권한, 원본, 연결 오류를 확인하세요. 관리자 미리보기에서도 콘텐츠를 가져오지 못하면 연결을 먼저 복구합니다. 관리자 화면은 정상인데 방문자에게만 빈 공간이 보인다면 캐시, 지연 로딩, 쿠키 동의 설정, 스크립트 충돌을 살핍니다. 한 번에 하나씩만 변경하고 결과를 기록해야 실제 원인을 찾을 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "원본 문제를 해결한 뒤 관련 캐시를 지우세요. 처음부터 모든 캐시와 보안 기능을 끄지 마세요. 지원팀에는 플러그인 버전, 페이지 URL, 발생 시각, 민감 정보를 가린 오류를 제공하세요. access token, 전체 디버그 자료, 이용자의 사적인 메시지를 공개하지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "외부 콘텐츠가 웹사이트 이용을 방해하지 않도록 하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "첫 화면에 피드 게시물을 많이 둘 필요는 없습니다. 주요 제목, 서비스 소개, 연락 경로가 먼저 읽히도록 한 뒤 보충용 소셜 콘텐츠를 불러오세요. 휴대전화에서는 이미지 비율, 잘린 글자, 가로 넘침, 버튼 크기를 확인하고, 떠 있는 UI가 게시물 열기 동작을 가리지 않게 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "소셜 연동은 외부 서비스에서 콘텐츠를 가져오거나 로컬에 캐시하고 동의 관리 도구와 연결될 수 있습니다. 실제 설정에서 동의 전과 동의 후를 모두 시험하세요. 콘텐츠를 불러오거나 원본으로 이동하는 방법을 독자에게 분명히 알려야 합니다. 플러그인 소개에 개인정보 기능이 있다는 이유만으로 사이트 설정이 완료되었다고 판단하면 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "플러그인이 일시적으로 작동하지 않는다면 계정이나 게시물로 가는 직접 링크와 직접 작성한 필수 설명을 남기세요. 이미지가 필요할 때는 사용 권한이 있는 원본을 쓰거나 별도로 허락을 받으세요. 소셜 미디어에서 볼 수 있는 이미지를 내려받아 영구적인 대체 자료로 쓸 권리가 자동으로 생기지는 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "표시 오류 점검을 콘텐츠 관리에 포함하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "소셜 계정 권한, 플러그인, 사이트 캐시 설정을 바꿀 때마다 홈페이지 피드와 오래된 글 몇 편을 표본 점검하세요. 관리자만 볼 수 있는 상태를 놓치지 않도록 로그아웃한 창에서 시험합니다. 임베드 방식마다 따로 확인해야 하며, 블록 하나가 정상이라고 사이트 전체가 복구되었다고 단정하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "중요한 글에는 소셜 인용의 용도를 기록해 둘 수 있습니다. 작업 사례, 행사 현장, 정보 출처 등이 있습니다. 원본이 사라지면 용도에 따라 링크를 바꾸거나 본문을 보완하고, 권리를 확보한 자료로 교체하거나 블록을 제거하세요. 설명 없는 빈 틀을 남기거나 기간이 지난 게시물을 현재 행사 정보처럼 계속 보여 주지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "플러그인을 비활성화하기 전에 관련 블록과 쇼트코드를 모두 찾아 대체 콘텐츠를 마련하고 연결을 제거하세요. 필수 문장과 원본 URL을 보존하면 플랫폼 정책이나 도구가 바뀌어도 독자가 페이지를 이해할 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-social-embeds/diagram-1-ko.svg",
+          "alt": "소셜 원본, 계정 연결, 방문자 화면의 로딩, 대체 콘텐츠를 순서대로 점검하는 네 칸 도식.",
+          "width": 1600,
+          "height": 900,
+          "caption": "소셜 콘텐츠로 맥락을 보충하되 웹사이트 자체는 읽고 사용할 수 있게 유지합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "상황",
+            "먼저 확인할 내용",
+            "가능한 조치"
+          ],
+          "rows": [
+            [
+              "게시물 하나만 표시되지 않음",
+              "원본 콘텐츠와 공개 범위",
+              "원본을 업데이트하거나 원본으로 가는 링크를 남김"
+            ],
+            [
+              "한 플랫폼의 콘텐츠가 모두 실패함",
+              "공통 연결과 플러그인 상태",
+              "오류에 맞춰 재승인하거나 연동 기능을 업데이트함"
+            ],
+            [
+              "관리자 화면은 정상, 방문자 화면은 비어 있음",
+              "캐시, 동의 흐름, 스크립트",
+              "방문자 쪽 로딩 조건을 하나씩 시험함"
+            ],
+            [
+              "도구가 더 이상 적합하지 않음",
+              "사용 위치와 대체 콘텐츠",
+              "의존성을 제거하기 전에 블록을 교체함"
+            ]
+          ],
+          "caption": "사이트 전체를 바꾸기 전에 영향 범위로 원인을 좁힙니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "필수 정보는 웹사이트 본문에 넣기",
+          "text": "행사 시간, 서비스 지역, 연락처를 소셜 임베드 안에만 두지 마세요. 외부 블록이 실패해도 독자는 내용을 이해하고 사용할 수 있는 다음 경로를 찾아야 합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "외부 지도와 양식 임베드 점검하기",
+              "kind": "life",
+              "slug": "wordpress-map-form-embeds"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "플러그인 설치와 업데이트 계획하기",
+              "kind": "life",
+              "slug": "wordpress-themes-plugins-install"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: WP_oEmbed 구현",
+          "url": "https://developer.wordpress.org/reference/classes/wp_oembed/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 임베드 안내",
+          "url": "https://wordpress.org/documentation/article/embeds/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Smash Balloon: Facebook과 Instagram oEmbed 표시 오류 해결",
+          "url": "https://smashballoon.com/doc/how-to-fix-the-broken-facebook-and-instagram-oembed-issue-in-wordpress/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Social Photo Feed 공개 플러그인 페이지",
+          "url": "https://wordpress.org/plugins/instagram-feed/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Social Post Feed 공개 플러그인 페이지",
+          "url": "https://wordpress.org/plugins/custom-facebook-feed/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
