@@ -151,7 +151,9 @@ export function zonedInstant(local: string, zone: string): Date | null {
     // The zone's offset at the reading taken as UTC, then again at the instant that gives: the
     // second pass is what a change of clocks between the two needs.
     const first = reading - (wallClock(new Date(reading), zone) - reading);
-    return new Date(reading - (wallClock(new Date(first), zone) - first));
+    const instant = new Date(reading - (wallClock(new Date(first), zone) - first));
+    // A spring-forward gap has no matching instant; never silently move the chosen wall time.
+    return localInput(instant.toISOString(), zone) === local ? instant : null;
   } catch {
     return null;
   }
