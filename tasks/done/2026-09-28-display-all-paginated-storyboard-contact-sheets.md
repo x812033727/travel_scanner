@@ -13,6 +13,7 @@ depends_on: []
 scope:
   - apps/web/components/admin-video-review-card.tsx
   - apps/web/components/admin-video-storyboard-pages.test.tsx
+  - tasks/open/2026-09-28-video-story-storyboard-sheets.md
 ---
 
 # Display all paginated storyboard contact sheets in review
@@ -66,5 +67,8 @@ scoped ESLint, npm run check:i18n, npm run check:tasks and git diff --check.
   check of the component, new tests and their imported dependencies passed using the
   repository's strict compiler options; the integrated task check validated 1,016 files.
   Evidence: test-results/pr895-typecheck.log and pr895-main55-tasks.log. The full-project
-  CI checks still gate merge. Remote push waits for a slot in the three-PR CI batch and
-  the parent design PR #888 to land.
+  CI checks still gate merge.
+- Parent #888 landed as main d8d6363f. Synchronizing that squash commit reintroduced
+  its original unclaimed open storyboard ticket beside the author's completed copy.
+  Confirmed the done copy is byte-identical to author head 0e799f60 and removed only
+  the duplicated open copy, preserving the author's completion and intended PR diff.
