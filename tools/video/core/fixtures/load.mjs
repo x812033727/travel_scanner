@@ -8,14 +8,19 @@ import { fileURLToPath } from "node:url";
 export const FIXTURES = path.dirname(fileURLToPath(import.meta.url));
 export const FIXTURE_FILE = path.join(FIXTURES, "minimal", "video.json");
 export const DRAMA_FIXTURE_FILE = path.join(FIXTURES, "drama", "video.json");
+// A brand story (docs/videos/STORY.md): a narrator-only drama whose series.json says kind "story".
+export const STORY_FIXTURE_FILE = path.join(FIXTURES, "story", "video.json");
 
 export const fixture = () => JSON.parse(readFileSync(FIXTURE_FILE, "utf8"));
 export const fixtureLexicon = () => JSON.parse(readFileSync(path.join(FIXTURES, "lexicon.json"), "utf8"));
 export const fixtureBrief = () => readFileSync(path.join(FIXTURES, "minimal", "brief.md"), "utf8");
 export const dramaFixture = () => JSON.parse(readFileSync(DRAMA_FIXTURE_FILE, "utf8"));
 export const dramaBrief = () => readFileSync(path.join(FIXTURES, "drama", "brief.md"), "utf8");
+export const storyFixture = () => JSON.parse(readFileSync(STORY_FIXTURE_FILE, "utf8"));
+export const storyBrief = () => readFileSync(path.join(FIXTURES, "story", "brief.md"), "utf8");
+export const storySeries = () => JSON.parse(readFileSync(path.join(FIXTURES, "story", "series.json"), "utf8"));
 
-/** A fake repository holding a fixture (minimal or drama) as docs/videos/<slug>/, and a work base beside it. */
+/** A fake repository holding a fixture (minimal, drama or story) as docs/videos/<slug>/, and a work base beside it. */
 export function sandbox(slug = "fixture-minimal", name = "minimal") {
   const base = mkdtempSync(path.join(tmpdir(), "video-core-"));
   const root = path.join(base, "repo");

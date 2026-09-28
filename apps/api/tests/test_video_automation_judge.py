@@ -430,3 +430,41 @@ def test_a_compilation_s_final_cut_is_held_to_its_own_items() -> None:
     assert judging.retention_required_for("custom")
     assert not judging.retention_required_for("xianxia-bonds")
     assert not judging.retention_required_for(None)
+
+
+def test_a_short_is_held_to_its_own_twelve_and_a_long_video_s_report_never_passes_it() -> None:
+    sha = "f" * 64
+    report = _report(judging.SHORTS_QA_ITEMS, sha, kind="shorts", line="lab")
+    assert len(judging.SHORTS_QA_ITEMS) == 12
+    assert judging.shorts_qa_passed({"qa": report}, sha)
+    assert not judging.shorts_qa_passed({"qa": report}, "0" * 64), "another cut"
+    assert not judging.shorts_qa_passed(
+        {"qa": _report(judging.SHORTS_QA_ITEMS[:-1], sha, kind="shorts")}, sha
+    ), "an item is missing"
+    failed = _report(judging.SHORTS_QA_ITEMS, sha, kind="shorts")
+    failed["items"][5]["ok"] = False
+    assert not judging.shorts_qa_passed({"qa": failed}, sha)
+    assert judging.failed_items(failed) == ["facts"]
+    assert not judging.shorts_qa_passed(
+        {"qa": _report(judging.SHORTS_QA_ITEMS, sha)}, sha
+    ), "a report that does not say it is a Short's is not one"
+    assert not judging.shorts_qa_passed(
+        {"qa": _report(judging.QA_ITEMS, sha, kind="shorts")}, sha
+    ), "the eleven of a long video are not the twelve"
+    assert not judging.shorts_qa_passed({}, sha)
+    # The long video's rules are what they were: a Short's report does not pass them either.
+    assert not final_qa_passed({"qa": report}, sha)
+    assert final_qa_passed({"qa": _report(judging.QA_ITEMS, sha)}, sha)
+
+
+def test_a_short_s_upload_package_needs_its_four_items_and_to_say_it_is_a_short_s() -> None:
+    sha = "f" * 64
+    package = _report(judging.SHORTS_PACKAGE_ITEMS, sha, kind="shorts")
+    assert judging.shorts_package_passed({"package": package}, sha)
+    assert not judging.shorts_package_passed(
+        {"package": _report(judging.SHORTS_PACKAGE_ITEMS, sha)}, sha
+    )
+    assert not judging.shorts_package_passed(
+        {"package": _report(("files", "captions"), sha, kind="shorts")}, sha
+    )
+    assert not judging.shorts_package_passed({"package": package}, "0" * 64)

@@ -1,0 +1,27 @@
+{
+  "id": "A25",
+  "reviewed": "2026-09-28",
+  "reviewer": "Claude Opus 5.5 (independent fact check); sources read as the worker reads them, readable pages added and the review bound again by Claude Sonnet 5",
+  "story_sha256": "b95d1a55e4138031bd4fcecfee36b5103ca35591b329f6081aae619d68dfaafc",
+  "verdict": "fixed",
+  "sources_opened": 16,
+  "changes": [
+    "must_verify[2]（AMC 10-K的片租政策）原本只有sources[5]，該檔6.2MB超過工人讀者的3MB上限；補上sources[6]，是同一份10-K申報案（accession 0001411579-26-000016）裡XBRL Viewer產生的「重大會計政策」附註頁（R10.htm，遠小於3MB），逐字含「Film exhibition costs are accrued based on the applicable box office receipts and estimates of the final settlement to the film licensors」，供查核。",
+    "must_verify[0]、[1]（Orbach與Einav論文的85%/45%加成、片商分成遞減）找過工人讀得到的第二個網頁未果，兩者都列進reviewer_only，詳見notes。",
+    "點心約 85%、票約 45% 的加成在開場、logline、engine 與 must_verify 都註明是 2007 年論文、而且論文引用的是 2003 年《金融時報》的估計，不是今天的數字；「學者研究發現」改成論文的原話（點心的一塊錢比票的一塊錢好）。",
+    "1945 年的「超過一半」兩個來源不一致（History 寫美國種的爆米花將近一半，《史密森尼》寫吃掉的超過一半），改成並列兩種說法。",
+    "1949 年 86% 只有 History 網站寫，原本也引用《史密森尼》但該文沒有這個數字，改成只引 History 並標 attributed。",
+    "「根據戲院歷史學會的統計，點心約占獲利一半左右」改成網站寫的「最多可占一半」（網頁沒有出處與年份），並補上《史密森尼》2013 年引述的 46%；戲院歷史學會這頁是沒有出處的文章，kind 從 archive 改成 news。",
+    "拿掉沒有來源的「戲院刻意把動線設計成繞過點心櫃檯」，結尾改成請觀眾自己留意。",
+    "新增 AMC 2025 會計年度 10-K 為來源，證明片租是按票房收入的比例計算；「點心收入完全不必跟片商拆分」原本在論文裡只是隱含，現在有年報的依據。",
+    "大蕭條段的「看電影成為少數人還負擔得起的娛樂」改成《史密森尼》寫的觀眾想找便宜消遣；補上小販付約 1 美元取得大廳擺攤權、衣帽間寄放爆米花的告示與 1927 年有聲電影。",
+    "turn 段補上二戰糖配給讓爆米花更受歡迎（兩個來源）。",
+    "美國農業部的產地說法拿掉「至今」（展覽頁沒有日期），改成照頁面寫的「幾乎全世界的爆米花都產自美國」。",
+    "names 補上 Andrew Smith、Popped Culture、AMC、Regal、Smithsonian、Financial Times 與戲院歷史學會（image_notes 已提到 AMC 與 Regal）。"
+  ],
+  "notes": "論文的 85% 與 45% 是轉引 2003 年《金融時報》的文章，原文沒有打開（付費牆），也不知道是哪一年的哪些戲院；《史密森尼》的 85% 與 46% 是轉引 2012 年《時代》雜誌的估計。AMC 10-K正文6.2MB超過工人讀者的3MB上限，改引同一份申報案的XBRL附註頁核對過片租政策的原文，見sources[6]與changes。達拉斯連鎖戲院的例子只有《史密森尼》轉述 Andrew Smith 的書，沒有年份，旁白要說是誰的說法。美國農業部的展覽頁沒有日期，產地比例可能是舊資料。must_verify[0]、[1]這兩條的85%/45%加成與片商分成遞減，只有Orbach與Einav 2007年論文（sources[3]，PDF）撐著；找過Wikipedia（Movie theater、Concession stand、Price discrimination、Film distributor等條目）、RePEc/IDEAS、SSRN、ScienceDirect（論文本身的出版頁）、Springer、Barak Orbach的學校頁、Priceonomics、Freakonomics、NPR、Investopedia，都是403、404或沒有這兩個數字，沒找到工人讀得到的第二個網頁，列進reviewer_only。搜尋時Wikipedia的Film distributor條目寫「percentage...taken by theaters declines each week」，字面上跟企劃的「片商分成隨時間遞減」方向相反；核對論文PDF原文，寫的是distributor的revenue share遞減，跟企劃一致，企劃不必改，只是那句Wikipedia容易讀反，沒有採用它。",
+  "reviewer_only": [
+    0,
+    1
+  ]
+}

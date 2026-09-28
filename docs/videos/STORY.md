@@ -54,16 +54,35 @@
 | 配樂 | 沿用漫劇的 `music`；設定關掉時沒有 |
 | YouTube | 分類 27（教育）；合成內容揭露照漫劇的規則一律勾 |
 
+### lint 與工具怎麼認出故事
+
+`video.json` 沒有「這是故事」的欄位；`lint` 看旁邊的 `series.json`，工人開始一集時寫它：
+
+| `series.json` 的鍵 | 用途 |
+| --- | --- |
+| `kind: "story"` | 有它，`lint` 才套用故事的規則（`tools/video/core/story.mjs`） |
+| `names` | 字串陣列：這個故事的品牌名、產品名、真人姓名，從企劃的 `names` 抄過來 |
+| `slug`、`episode`、`characters`、`visual_tier` | `video.json` 有 `series`（作品的一集）時照漫劇的規則核對：同一個 `slug` 與 `episode`、主角照抄（沒有主角是空陣列）、`visual_tier: "stills"` |
+
+故事的規則是 `story.mjs` 的 `STORY_RULES`，工人照抄給撰稿模型：
+
+- 錯誤：每個鏡頭 `visual: "still"`；每一句都是 `narrator`；`sources` 至少 3 個、都是 https 網址；章節 5–7 個；鏡頭的 `prompt`、`camera`、`negative` 與角色的 `name`、`appearance`、`sheet_prompt` 不含 `names` 裡的任何一個（整個詞、不分大小寫，拉丁字母的名字不比對到更長的字裡）。
+- 警告：估計的時間軸上，平均每鏡短於 5 秒或長於 11 秒。
+- 不數鏡頭：長度由 `target_minutes` 管，單鏡上限仍是漫劇的 `MAX_SHOT_SECONDS`（超過 12 秒錯誤、10 秒警告）。
+
+沒有主角（`characters` 是空陣列）的漫劇，`status` 沒有 `look generated`、`look approved` 兩步（`tools/video/core/state.mjs` 的 `narratorOnly`），`keyframes` 不等設定圖關卡，參考圖只有 `look.style_frames`，judge 也沒有 identity 題。`script approved` 仍在（`video.json` 有 `series` 的一集都有，PR #870 之後每支漫劇都有）：故事不送劇本關卡，由工人在本機核准，寫法同大綱。`clips` 遇到全靜態圖只寫 manifest、不花錢，但仍向伺服器問一次狀態，片段供應商要是設定好的。`keyframes` 的聯絡表超過 24 鏡就分頁（`keyframes/contact-sheet-01.png`、`-02.png`…），全部依序列在 `keyframes/manifest.json` 的 `contact_sheets`，`contact_sheet` 指第一頁；24 鏡以內仍是一張 `keyframes/contact-sheet.png`。範例在 `tools/video/core/fixtures/story/`，`node tools/video/assemble/smoke.mjs --fixture story` 用替身素材把它做到成片。
+
 ## 企劃清單與集數列（合約）
 
 企劃清單在 repo 的 `docs/videos/story-plans/brand-stories-100/stories.json`（票 `2026-09-28-video-story-backlog`）。工人的文件 volume 不會隨部署更新（票 `2026-09-25-the-video-worker-s-docs-volume`），所以清單**匯入資料庫**，工人從 API 拿，不讀檔案。
 
-**作品列**（`video_drama_series`）：`kind: "story"`、`hands_off: true`、`visual_tier: "stills"`、`compilation: false`、`target_minutes: 13`、`style_preset: "custom"`，建立時就是 `active`，沒有任何文件（設定集、總綱、細綱、前情都不寫）。新增兩個欄位：
+**作品列**（`video_drama_series`）：`kind: "story"`、`hands_off: true`、`visual_tier: "stills"`、`compilation: false`、`target_minutes: 13`、`style_preset: "custom"`，建立時就是 `active`，沒有任何文件（設定集、總綱、細綱、前情都不寫）。新增三個欄位：
 
 | 欄位 | 內容 |
 | --- | --- |
 | `episodes_per_day` | 每天最多開始幾集，1–12，NULL 表示不限；以 Asia/Taipei 的日期計算 |
 | `image_model` | 這部作品用的圖片模型，NULL 表示照設定分頁；故事填 `gemini-3.1-flash-image`，不動到漫劇預設的 Pro |
+| `look` | 每個故事共用的畫風：`{style, negative, motion?}`。故事沒有設定集，畫風沒有別的地方可以放；其他類型的作品是 NULL |
 
 **集數列**（`video_drama_episodes`）：一個故事一列，匯入時就是 `ready`。`number` 是製作順序（也就是排程順序），`chapter_number` 一律 1，`title` 是暫定標題，`logline` 是一句話說明，`slug` 是預先定好的影片代號，`beats` 是這個故事的企劃：
 
@@ -75,16 +94,20 @@
 | `question` | 開場要回答的那個問題 |
 | `chapters` | 六段，各一個 `{key, point}`：`hook`、`origin`、`idea`、`engine`、`turn`、`now` |
 | `takeaway` | 留給觀眾的一句觀察 |
-| `must_verify` | 查核一定要對到來源的事實（年份、數字、引述） |
-| `sources` | 至少 3 個 `{url, publisher, supports}`，https，企劃時確認抓得到 |
+| `must_verify` | 查核一定要對到來源的事實（年份、數字、引述），各是 `{claim, sources, core?, attributed?, reviewer_only?}`：`sources` 是 `sources` 的索引；`core` 是標題靠的那一條；`attributed` 表示旁白要說是誰的說法；`reviewer_only` 表示這一條只有工人讀不到的文件可以佐證，工人查核時以企劃為準 |
+| `sources` | 至少 3 個 `{url, publisher, kind, supports, checked}`，https。企劃時照工人的方式讀過：每個都有回應，每個必查事實至少有一頁是工人讀得到文字的 |
 | `names` | 這個故事的品牌名、產品名、真人姓名；圖像提示詞不得出現 |
 | `cast` | 0–3 個 `{id, role, appearance}`；`appearance` 是英文、一般化的卡通人物，不像任何真人 |
 | `image_notes` | 這個題目的圖像注意事項（例如不可畫出版權角色） |
 | `sensitivity` | `none` 或 `care`（空難、抗爭、官司） |
 | `related_guide` | 對應的 Mokaair 文章 slug，沒有就 null |
+| `thumbnail` | `{headline, idea}`：縮圖上的字（最多 12 字）與畫面構想 |
+| `caveats` | 查核的人留給撰稿的注意事項（查核紀錄的 `notes`，最多 800 字）：哪個軼事查不到出處不要講、哪個數字各來源說法不一、哪句話要說是誰的說法 |
 | `publish` | `{day, slot}`：排程第幾天、`12:00` 或 `20:00` |
 
-匯入指令（票 `2026-09-28-video-story-api-series-kind`）：`python -m app.cli video-story-import --series <slug> [--apply]`，檔案從 stdin 讀，預設是試跑。同一個 `id` 再匯入一次只更新還沒開始的列，不會重複建立。
+匯入指令（票 `2026-09-28-video-story-api-series-kind`）：`python -m app.cli video-story-import --series <slug> [--apply] [--limit N] [--episodes-per-day N]`，檔案從 stdin 讀，預設是試跑。同一個 `id` 再匯入一次只更新還沒開始的列，不會重複建立。作品不存在時照檔案裡的 `series` 建立；已經存在時不改作品列，因為站主可能在後台改過。`--limit` 只匯入排程的前 N 個（試作用 2），`--episodes-per-day` 是建立作品時的每日支數（從 1 開始）。
+
+企劃清單的每個故事都有一份查核紀錄（`reviews/<代號>.json`），綁著故事內容的雜湊：另一個人或代理打開來源、逐條對過 `must_verify`。清單的檢查要求 100 個故事都有對得上內容的紀錄，所以匯入的每一列都是查核過的。
 
 ## 產線與關卡
 
@@ -128,6 +151,24 @@
 - 傳說與事實分開講：大家愛講但查無實據的版本，可以講，要說它是傳說。
 - 說明欄列出參考資料；`related_guide` 有值時放 Mokaair 文章連結。
 
+**工人讀得到什麼。** 工人的讀取程式（`tools/video/automation/fetch.mjs`）只讀文字頁面：PDF 不讀，超過 3 MB 的頁面不讀，一頁只留前 40,000 個字，20 秒內抓不完就放棄。2026-09-28 把企劃清單的 965 個來源照這個方式讀了一遍：
+
+| 結果 | 數量 |
+| --- | --- |
+| 工人讀得到文字 | 915 |
+| 網頁在，但工人讀不到文字 | 50（38 個 PDF、10 個超過 3 MB、2 個時限內抓不完） |
+| 讀得到的頁面裡，比 40,000 字長的 | 103 |
+| 必查事實 | 939 條，其中 8 條只有查核的人讀得到證據（`reviewer_only`） |
+
+粗略量過工人找得到多少：有數字、又有讀得到的頁面的事實有 773 條，其中 660 條的每個數字都出現在工人留下的文字裡，96 條只找到一部分，17 條一個都沒找到。沒找到的多半是寫法不同：日本與台灣的官方頁面用昭和、民國紀年，外文頁面寫 200 billion、企劃寫 2,000 億；少數是那句話在 40,000 字之後。所以：
+
+- 企劃清單的規則是每個必查事實至少有一頁工人讀得到；PDF 與太大的文件留著當證據，人打得開，說明欄也會列。
+- 企劃裡 `must_verify` 的事實是查核過的。工人的查核要確認的是**稿子說的跟企劃一樣**，以及撰稿模型自己加進去的數字、年份、人名在來源頁面裡找得到；找不到的拿掉。
+- 很長的頁面，那句話可能在 40,000 字之後。工人要用事實裡的年份、數字、名字在整頁文字裡找到那一段，把那一段交給查核模型，不是只交頁面的開頭（票 `2026-09-28-video-story-worker`）。
+- 工人讀不到的來源（PDF），交給查核模型的是企劃裡那個來源的 `supports`，並註明這是企劃查核時讀到的，不是這次讀到的。
+- 官方頁面常用昭和、平成、民國紀年，外文頁面的數字單位也不同（billion 與億）。查核模型要自己換算，不能因為字面上找不到 1969 就說查不到。
+- 找不到任何讀得到的頁面的事實，企劃會標 `reviewer_only`（查核的人讀過文件、也找過別的頁面）。工人對這幾條不去找來源，只確認稿子說的跟企劃一樣。
+
 ## 圖像規則
 
 - 提示詞不出現品牌名、產品名、真人姓名、角色名（企劃的 `names`）；lint 擋。旁白可以講品牌名，圖裡不能有商標。
@@ -140,7 +181,7 @@
 
 | 改動 | 位置 |
 | --- | --- |
-| 遷移：`ck_video_drama_series_kind` 加 `story`；`target_minutes` 放寬到 1–20；新增 `episodes_per_day`、`image_model` | 接在 PR #870 的 `0108` 之後 |
+| 遷移：`ck_video_drama_series_kind` 加 `story`；`target_minutes` 放寬到 1–20；新增 `episodes_per_day`、`image_model`、`look` | 接在 main 目前的 head 之後（Shorts 的 PR #898 用了 `0109`） |
 | `create_series`：故事作品一建立就是 `active`；`doc_problem` 拒絕故事作品的文件 | `apps/api/app/video_automation/series.py` |
 | `next_job_for` 的故事分支：不看文件、不等前一集完成；看每日上限（台北日期）、`series_max_in_flight`、`series_episodes_per_month`，以及「可以上架」還沒上傳的集數是否已達 6 支 | 同上 |
 | 匯入：`import_story_rows` 驗證每一列並寫進 `beats` | 同上，指令在 `story_cli.py` |
@@ -212,7 +253,7 @@
 | --- | --- | --- | --- |
 | `video-story-design-docs` | 這份文件與 12 張票 | `docs/videos/STORY.md`、`tasks/open` | — |
 | `video-story-backlog` | 100 個故事的完整企劃與驗證腳本 | `docs/videos/story-plans/brand-stories-100` | design-docs |
-| `video-story-core-narrator-only` | 沒有角色時跳過設定圖、故事的 lint 規則、範例與煙霧測試 | `tools/video/core`、`tools/video/media/keyframes.mjs`、`tools/video/assemble/smoke.mjs` | design-docs |
+| `video-story-core-narrator-only` | 沒有角色時跳過設定圖、故事的 lint 規則、聯絡表分頁、範例與煙霧測試 | `tools/video/core`、`tools/video/media/keyframes.mjs`、`tools/video/assemble/smoke.mjs`、`.github/workflows/video-tooling.yml`、這份文件 | design-docs |
 | `video-story-storyboard-sheets` | 分鏡送審改送聯絡表 | `tools/video/review` | design-docs |
 | `video-story-check-audio-batching` | 旁白檢查跨場景合併 Jev 呼叫 | `tools/video/tts` | design-docs |
 | `video-story-api-series-kind` | 遷移、故事分支、上限、圖片模型覆寫、匯入指令 | `apps/api/app/video_automation`、`apps/api/app/cli.py`、遷移 | PR #870 |
