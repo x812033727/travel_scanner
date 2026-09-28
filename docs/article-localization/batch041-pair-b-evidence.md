@@ -27,10 +27,25 @@ has SHA-256 `fb7c933f2f66254f590c5a3549022e43c3b67b14d64d0f563f28ce4caa0e37a6`:
 16/16 zero overflow, text overlap or card-boundary issues. Both four-locale
 contact sheets were visually reviewed, with no missing glyphs or clipping.
 
+## On-page document stage
+
+The four missing on-page SEO documents were copied from the re-audited
+external candidate
+`C:\Users\x8120\.codex\article-localization-release\batch041-pair-b\onpage-draft\on-page-seo-workflow.all-locales.candidate.json`
+(SHA-256 `7532179b8bcc2124bfdfb6f49ce4a480fc165dd1f8516b555a1f8e81567e496e`).
+The current repository source file matched the pinned SHA before copying;
+root metadata and zh-TW remain parsed-identical. Each new document retains
+all 32 block types/order, six H2s, four list items, six table rows, six
+original source URLs and checked dates. The two related-reading labels use
+`rich_paragraph` blocks with translated text-only inlines: neither target
+locale publication state is confirmed, so there is no premature public link.
+The pack diff adds locale documents only. Independent editorial and
+desktop/mobile page review are still pending.
+
 ## Remaining
 
-The four-language article documents must be installed and reviewed separately.
-The on-page pack source SHA-256 is
+The image SEO four-language documents must be installed and reviewed after
+#934 releases its source scope. The on-page source SHA-256 was
 `2f27bcb83a1e327b29ed7584d2bbfa3208954251c72aaf0e13192f07f813b9a7`.
 Image SEO source must use the corrected pack from #934, whose SHA-256 is
 `b10f6e1f633cff9a13ef0470af157fdd4d0b5616b560141c6e17819fda7c0357`.
