@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-correct-batch042-seo-glossary-links-before
 title: Correct Batch042 SEO glossary links before localization
-status: review
+status: done
 priority: P1
 area: docs
-owner: codex-batch042-source-links
-claimed_at: 2026-09-28T14:59:06Z
+owner: codex-source-pipeline-root
+claimed_at: 2026-09-28T17:16:56Z
 created_at: 2026-09-28T14:58:49Z
-completed_at:
+completed_at: 2026-09-28T17:17:35Z
 branch: codex/article-localization-042-source-links
 depends_on: []
 scope:
@@ -42,3 +42,5 @@ From `apps/api`, run `uv run python -m app.guides.pack_cli lint --kind life --sl
 ## Notes
 
 Base commit: `0d30e604c52f5e8abb55c4fc567e8699573010a8`. Draft PR: https://github.com/x812033727/travel_scanner/pull/942. This PR changes repository source packs only. Current live revisions have not been asserted here; compare them again under the guarded release process before any source correction or translated-locale import.
+
+The coordinating agent took over after the source-pipeline subagent stopped at quota. All nine CI checks passed for `da2ced8283e644f530f78644e79aef22d7169773`; latest-main synchronization and this task closure require a fresh green head before merge. Source authoring is complete; the separate unclaimed task `2026-09-28-batch042-live-source-reconciliation` retains all unfinished live correction work.
