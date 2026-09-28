@@ -1,16 +1,18 @@
 // `keyframes`: one 1920x1080 picture per shot, generated from the shot's prompt with the chosen
 // character sheets as references, scored by the judge and retaken with another seed when it
 // fails (docs/videos/DRAMA.md). Needs the look gate approved: the sheets are what keep every
-// character the same from shot to shot. Writes keyframes/manifest.json (the storyboard gate
-// binds to it), keyframes/<shot>-<seed>.png and a contact sheet.
-import { mkdirSync, existsSync } from "node:fs";
+// character the same from shot to shot. A drama with no characters (a narrator-only story,
+// docs/videos/STORY.md) has no sheets and no look gate, and its keyframes take the look's style
+// frames as their only references. Writes keyframes/manifest.json (the storyboard gate binds to
+// it), keyframes/<shot>-<seed>.png and a contact sheet, in pages when there are many shots.
+import { existsSync, mkdirSync, readdirSync, rmSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
 
 import { approvalState } from "../core/approvals.mjs";
 import { isDrama, lookHash, resolveLook, shotScenes } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
-import { ARTIFACTS, lintProject, loadProject, lookChosen, recordStage } from "../core/state.mjs";
+import { ARTIFACTS, lintProject, loadProject, lookChosen, narratorOnly, recordStage } from "../core/state.mjs";
 import { visualHash } from "../core/timeline.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { MediaError, mediaStatus } from "./client.mjs";
@@ -22,6 +24,23 @@ import { drawContactSheet, imagePrice, JUDGE_USD_PER_CALL, pictureHashes, retake
 export const MAX_KEYFRAME_TAKES = 3;
 // The server takes at most four reference pictures per image.
 export const MAX_REFERENCES = 4;
+// Shots per contact sheet page, six rows of four: the ninety shots of a story on one sheet would
+// make an image over twenty rows tall, too long to look over and too heavy to send as one file.
+export const CONTACT_SHEET_TILES = 24;
+const CONTACT_SHEET = /^contact-sheet(?:-\d+)?\.png$/;
+
+/**
+ * How a storyboard's tiles are laid over contact sheets: one keyframes/contact-sheet.png while
+ * they fit on a page, else pages of at most CONTACT_SHEET_TILES in shot order,
+ * keyframes/contact-sheet-01.png, -02.png and so on. Returns [{ file, tiles }].
+ */
+export function contactSheetPages(tiles, perPage = CONTACT_SHEET_TILES) {
+  if (tiles.length <= perPage) return [{ file: "keyframes/contact-sheet.png", tiles }];
+  return Array.from({ length: Math.ceil(tiles.length / perPage) }, (_, index) => ({
+    file: `keyframes/contact-sheet-${String(index + 1).padStart(2, "0")}.png`,
+    tiles: tiles.slice(index * perPage, (index + 1) * perPage),
+  }));
+}
 
 /** What the judge scores a keyframe on: one identity question per character in the shot, then the picture itself. */
 export function keyframeRubric(characters) {
@@ -94,15 +113,20 @@ export async function run(command, args, ctx) {
   const byId = new Map((doc.characters ?? []).map((character) => [character.id, character]));
   const cast = (scene) => (scene.data.characters ?? []).map((id) => byId.get(id)).filter(Boolean);
 
-  // The look must be approved as it stands, with a sheet chosen (or suggested) for every character.
-  const lookManifest = readJson(path.join(workdir, ARTIFACTS.characters), null);
-  const chosen = lookChosen(lookManifest, readJson(path.join(workdir, ARTIFACTS.characterChoice), null), hash);
-  const approval = await approvalState({ gate: "look", docDir: project.dir, workdir });
-  if (approval.status !== "approved" || chosen === null) {
-    const why = approval.status === "stale" ? "changed since it was approved" : approval.status === "absent" ? "not generated yet (run look)" : chosen === null ? "approved but a character has no chosen sheet" : "not approved yet";
-    throw new MediaError(`the look is ${why}: run review-push --gate look and wait for the owner on /admin/videos, then review-pull`, { who: "owner" });
+  // The look must be approved as it stands, with a sheet chosen (or suggested) for every
+  // character. A narrator-only drama has no character, so no sheet to wait for.
+  let chosen = {};
+  let sheets = {};
+  if (!narratorOnly(doc)) {
+    const lookManifest = readJson(path.join(workdir, ARTIFACTS.characters), null);
+    chosen = lookChosen(lookManifest, readJson(path.join(workdir, ARTIFACTS.characterChoice), null), hash);
+    const approval = await approvalState({ gate: "look", docDir: project.dir, workdir });
+    if (approval.status !== "approved" || chosen === null) {
+      const why = approval.status === "stale" ? "changed since it was approved" : approval.status === "absent" ? "not generated yet (run look)" : chosen === null ? "approved but a character has no chosen sheet" : "not approved yet";
+      throw new MediaError(`the look is ${why}: run review-push --gate look and wait for the owner on /admin/videos, then review-pull`, { who: "owner" });
+    }
+    sheets = chosenSheets(lookManifest, chosen);
   }
-  const sheets = chosenSheets(lookManifest, chosen);
   const endFrames = shots.filter((scene) => scene.data.end_frame?.prompt).length;
 
   if (values["dry-run"]) {
@@ -236,9 +260,25 @@ export async function run(command, args, ctx) {
   const thumbnailShot = doc.thumbnail?.data?.shot;
   manifest.thumbnail_source = thumbnailShot && manifest.shots[thumbnailShot] ? manifest.shots[thumbnailShot].file : null;
   const tiles = drawn.map((shot) => ({ file: shot.file, label: `${shot.id} · ${manifest.shots[shot.id].judge?.overall ?? "?"}/10${manifest.shots[shot.id].needs_review ? " · 待修" : ""}` }));
-  const sheet = await drawContactSheet(ctx, { workdir, channel: values.channel ?? ctx.env.VIDEO_BROWSER_CHANNEL, title: `${doc.slug}：分鏡 ${drawn.length} 鏡`, tiles, file: "keyframes/contact-sheet.png" });
-  if (sheet.note) ctx.stdout.write(`${sheet.note}\n`);
-  manifest.contact_sheet = sheet.file;
+  // contact_sheets lists every page in order; contact_sheet stays the first, for the readers
+  // written before there were pages.
+  const pages = contactSheetPages(tiles);
+  const contactSheets = [];
+  for (const [index, page] of pages.entries()) {
+    const title = `${doc.slug}：分鏡 ${drawn.length} 鏡${pages.length > 1 ? `（第 ${index + 1}／${pages.length} 頁）` : ""}`;
+    const sheet = await drawContactSheet(ctx, { workdir, channel: values.channel ?? ctx.env.VIDEO_BROWSER_CHANNEL, title, tiles: page.tiles, file: page.file });
+    if (sheet.note) {
+      ctx.stdout.write(`${sheet.note}\n`);
+      break;
+    }
+    contactSheets.push(sheet.file);
+  }
+  // A sheet left by an earlier run with another number of shots shows a storyboard that is gone.
+  for (const name of readdirSync(path.join(workdir, "keyframes"))) {
+    if (CONTACT_SHEET.test(name) && !contactSheets.includes(`keyframes/${name}`)) rmSync(path.join(workdir, "keyframes", name), { force: true });
+  }
+  manifest.contact_sheet = contactSheets[0] ?? null;
+  manifest.contact_sheets = contactSheets;
   manifest.generated_at = ctx.now().toISOString();
   writeManifest(workdir, manifest);
   const seconds = Math.round((Date.now() - started) / 1000);

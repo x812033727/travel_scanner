@@ -20,7 +20,11 @@ Payload contracts the worker writes (tools/video, ticket video-hands-off-worker)
 - a final review's ``payload.qa``: ``{"ok": bool, "final_sha256": sha, "items": [{"id", "ok",
   "detail"}]}`` from ``node tools/video/cli.mjs qa``, with every id in ``QA_ITEMS``;
 - a publish review's ``payload.package``: the same shape over ``PACKAGE_ITEMS`` (the upload
-  package's files, the five descriptions, the captions and the disclosure answer).
+  package's files, the five descriptions, the captions and the disclosure answer);
+- a Short's two reports (docs/videos/SHORTS.md, ``node tools/video/shorts/cli.mjs qa`` and
+  ``package``): the same shape with ``"kind": "shorts"``, over ``SHORTS_QA_ITEMS`` and
+  ``SHORTS_PACKAGE_ITEMS``. Whether they approve is the Shorts settings' switch
+  (app.video_shorts.settings), not the tutorial's or the drama's.
 """
 
 from __future__ import annotations
@@ -81,6 +85,25 @@ COMPILATION_QA_ITEMS: tuple[str, ...] = (
     "disclosure",
 )
 PACKAGE_ITEMS: tuple[str, ...] = ("files", "descriptions", "captions", "disclosure")
+# A Short (docs/videos/SHORTS.md §自動品管) is a 25 to 55 second vertical cut, and is held to
+# what such a cut can be checked for; its reports say ``kind: "shorts"``. Its upload package
+# has the same four items by name, over its own files (the mp4, the captions, the cover and
+# metadata.json).
+SHORTS_QA_ITEMS: tuple[str, ...] = (
+    "profile",
+    "loudness",
+    "layout",
+    "narration",
+    "evidence",
+    "facts",
+    "policy",
+    "metadata",
+    "captions",
+    "links",
+    "variety",
+    "disclosure",
+)
+SHORTS_PACKAGE_ITEMS: tuple[str, ...] = ("files", "descriptions", "captions", "disclosure")
 
 # The hands-off rules of a binge series (docs/videos/BINGE.md §自動核准). A planned document
 # and an episode's screenplay are judged in the checker's own words: 有 (delivered), 弱 (there
@@ -522,6 +545,22 @@ def publish_package_passed(payload: dict[str, Any], sha: str) -> bool:
     return _items_passed(payload.get("package"), sha, PACKAGE_ITEMS)
 
 
+def _shorts_report(report: Any) -> Any:
+    """The report when it says it is a Short's, else nothing: a long video's report, or one
+    from a tool that predates Shorts, never approves a Short."""
+    return report if isinstance(report, dict) and report.get("kind") == "shorts" else None
+
+
+def shorts_qa_passed(payload: dict[str, Any], sha: str) -> bool:
+    """Whether a Short's final review passed all twelve checks for exactly this cut."""
+    return _items_passed(_shorts_report(payload.get("qa")), sha, SHORTS_QA_ITEMS)
+
+
+def shorts_package_passed(payload: dict[str, Any], sha: str) -> bool:
+    """Whether a Short's publish review says its upload package is complete."""
+    return _items_passed(_shorts_report(payload.get("package")), sha, SHORTS_PACKAGE_ITEMS)
+
+
 def failed_items(report: Any) -> list[str]:
     """The ids that did not pass, for a summary like 「自動品管 2 項沒過：pace、links」."""
     if not isinstance(report, dict) or not isinstance(report.get("items"), list):
@@ -535,6 +574,10 @@ def failed_items(report: Any) -> list[str]:
 
 QA_AUTO_APPROVED_NOTE = f"自動品管 {len(QA_ITEMS)} 項全過，依設定自動核准"
 PACKAGE_AUTO_APPROVED_NOTE = f"上傳包 {len(PACKAGE_ITEMS)} 項齊全，依設定自動核准"
+SHORTS_QA_AUTO_APPROVED_NOTE = f"Shorts 自動品管 {len(SHORTS_QA_ITEMS)} 項全過，依設定自動核准"
+SHORTS_PACKAGE_AUTO_APPROVED_NOTE = (
+    f"Shorts 上傳包 {len(SHORTS_PACKAGE_ITEMS)} 項齊全，依設定自動核准"
+)
 
 
 # --- the hands-off rules of a binge series (docs/videos/BINGE.md) --------------------------------

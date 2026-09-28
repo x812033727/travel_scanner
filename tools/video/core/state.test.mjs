@@ -5,12 +5,13 @@ import test from "node:test";
 
 import { approvalState, approve } from "./approvals.mjs";
 import { parseSrt } from "./captions.mjs";
-import { sandbox } from "./fixtures/load.mjs";
+import { lookHash, subtitlesHash } from "./drama.mjs";
+import { dramaFixture, fixture, sandbox, storyFixture } from "./fixtures/load.mjs";
 import { atomicWrite, isInside, resolveWorkdir, stopRequested, UsageError } from "./paths.mjs";
 import { eachLine, textHash } from "./schema.mjs";
 import { localeTexts, runCaptions, StageError } from "./stages.mjs";
 import { compilationHash } from "./compilation.mjs";
-import { approvedEpisodes, COMPILATION_STEPS, lintProject, loadProject, pipelineStatus, recordStage, stepsFor, translationComplete } from "./state.mjs";
+import { approvedEpisodes, COMPILATION_STEPS, lintProject, loadProject, LOOK_STEPS, narratorOnly, pipelineStatus, recordStage, stepsFor, translationComplete } from "./state.mjs";
 import { estimateTimeline, speechHash, visualHash } from "./timeline.mjs";
 import { compilationSandbox, EPISODES, sha, writeEpisode, writeTranslations } from "../compile/fixture.mjs";
 
@@ -122,6 +123,44 @@ test("localeTexts leaves out translations older than their line", () => {
   const { texts, skipped } = localeTexts(doc, { ko: { lines: { k7p2: { source_hash: textHash(doc.scenes[0].lines[0].text), text: "안녕" } } } });
   assert.equal(texts.ko.k7p2, "안녕");
   assert.equal(skipped.ko.length, 6);
+});
+
+test("a drama with no characters walks no look steps, and its status never reads the character files", async () => {
+  const doc = storyFixture();
+  assert.equal(narratorOnly(doc), true);
+  assert.equal(narratorOnly(dramaFixture()), false);
+  assert.equal(narratorOnly(fixture()), false, "a slides video has no look at all");
+  const cast = { ...doc, characters: dramaFixture().characters.slice(0, 1) };
+  assert.deepEqual(stepsFor(doc), stepsFor(cast).filter((id) => !LOOK_STEPS.includes(id)), "only the look steps go");
+  for (const drama of [cast, dramaFixture()]) assert.ok(LOOK_STEPS.every((id) => stepsFor(drama).includes(id)), "a drama with characters keeps its look steps");
+
+  const box = sandbox("fixture-story", "story");
+  const status = async () => pipelineStatus({ slug: box.slug, root: box.root, workdir: box.workdir });
+  assert.deepEqual((await status()).steps.map((step) => step.id), stepsFor(doc));
+  // Character files nobody can parse: a status that read them would throw.
+  mkdirSync(path.join(box.workdir, "characters"), { recursive: true });
+  writeFileSync(path.join(box.workdir, "characters", "manifest.json"), "{ not json");
+  writeFileSync(path.join(box.workdir, "characters", "choice.json"), "{ not json");
+  const places = { docDir: box.dir, workdir: box.workdir };
+  await approve({ gate: "outline", ...places });
+  writeFileSync(path.join(box.dir, "verify-1.md"), "# 查核\n");
+  // The script gate, which an episode of a series has, is settled whatever the look does.
+  writeFileSync(path.join(box.dir, "script.md"), "# 劇本\n");
+  await approve({ gate: "script", ...places });
+  assert.equal((await status()).next.id, "narration synthesized", "nothing to draw or choose before the narration");
+  writeTimeline(box);
+  await approve({ gate: "audio", ...places });
+  assert.equal((await status()).next.id, "keyframes drawn");
+
+  const project = loadProject({ slug: box.slug, root: box.root });
+  const visual = visualHash(project.doc);
+  const shots = Object.fromEntries(project.doc.scenes.filter((scene) => scene.template === "shot").map((scene) => [scene.id, { file: `keyframes/${scene.id}-1.png` }]));
+  atomicWrite(path.join(box.workdir, "keyframes", "manifest.json"), JSON.stringify({ look_hash: lookHash(project.doc), visual_hash: visual, shots }));
+  assert.equal((await status()).next.id, "storyboard approved");
+  await approve({ gate: "storyboard", ...places });
+  assert.equal((await status()).next.id, "frames rendered");
+  atomicWrite(path.join(box.workdir, "frames", "manifest.json"), JSON.stringify({ visual_hash: visual, speech_hash: speechHash(project.doc, project.lexicon), subtitles_hash: subtitlesHash(project.doc) }));
+  assert.equal((await status()).next.id, "clips generated");
 });
 
 test("recordStage appends runs for the handover", () => {

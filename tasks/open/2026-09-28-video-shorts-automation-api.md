@@ -19,7 +19,7 @@ scope:
   - apps/api/app/video_shorts/jobs.py
   - apps/api/app/video_shorts/plan.py
   - apps/api/app/video_shorts/reports.py
-  - apps/api/app/video_shorts/automation_api.py
+  - apps/api/app/video_shorts/admin_automation_api.py
   - apps/api/app/video_automation/ai.py
   - apps/api/app/video_automation/schemas.py
   - apps/api/app/video_automation/models.py
@@ -55,7 +55,7 @@ scope:
 - [ ] models、遷移、schemas。
 - [ ] `topics.py`、`assets.py`、`plan.py`、`jobs.py`、`reports.py`。
 - [ ] `ai.py` 與 `schemas.py` 的 `subject` 階段。
-- [ ] `automation_api.py`（A1 已經把這個空的路由檔掛進 `main.py`）。
+- [ ] `admin_automation_api.py`（A1 已經把這個空的路由檔掛進 `main.py`；檔名帶 `admin` 是為了 `tests/test_error_localization.py`）。
 - [ ] 測試。
 
 ## How to verify

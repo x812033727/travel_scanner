@@ -16,6 +16,7 @@ import {
   dubLines,
   GIVE_UP_AFTER,
   hintTerms,
+  judgeBatches,
   lexiconFor,
   matchKind,
   matches,
@@ -165,6 +166,17 @@ test("downsampling keeps what 16 kHz can carry and removes what it cannot", () =
   assert.ok(rms(aliased, 100, aliased.length - 100) < 0.02 * rms(sine(48_000, 12_000, 0.1)));
 });
 
+test("Jev's questions go out 40 to a call, each once and in order", () => {
+  // A brand story: 90 one-line shot scenes, every line in doubt.
+  const questions = Array.from({ length: 90 }, (_, index) => ({ id: `ln${String(index + 1).padStart(3, "0")}` }));
+  const batches = judgeBatches(questions);
+  assert.deepEqual(batches.map((batch) => batch.length), [40, 40, 10], "three calls, not 90");
+  assert.deepEqual(batches.flat(), questions, "every question once, in order");
+  assert.deepEqual(judgeBatches([]), [], "no questions, no call");
+  assert.deepEqual(judgeBatches(questions.slice(0, 40)), [questions.slice(0, 40)], "exactly 40 is one call");
+  assert.throws(() => judgeBatches(questions, 0), RangeError, "calls of no lines would never end");
+});
+
 /** A site that synthesizes tones, transcribes clips in narration order, and judges with Jev. */
 function site({ heardFor, noul, fails = () => false }) {
   const calls = { speech: 0, transcribe: [], hints: [], languages: [], judge: [], judgeLanguages: [], failed: 0 };
@@ -241,7 +253,7 @@ test("check-audio flags only the line Jev doubts, writes a redo file, and reuses
   assert.equal(await main(["check-audio", "--slug", box.slug], first.ctx), EXIT.lint, first.out.stderr);
   assert.equal(server.calls.transcribe.length, lines.length);
   assert.ok(server.calls.languages.every((language) => language === undefined), "the narration's requests carry no language field");
-  assert.equal(server.calls.judge.length, 1, "one Jev call for the one scene with a difference");
+  assert.equal(server.calls.judge.length, 1, "one Jev call for the one line with a difference");
   assert.deepEqual(server.calls.judge[0].map((line) => line.id), [wrong]);
   assert.deepEqual(server.calls.judgeLanguages, [undefined]);
   const flags = JSON.parse(readFileSync(path.join(box.workdir, "review", "check-flags.json"), "utf8"));
@@ -386,7 +398,8 @@ test("check-audio --locale checks a dub against its translation, in its language
   assert.equal(server.calls.transcribe.length, ids.length);
   assert.deepEqual([...new Set(server.calls.languages)], ["en"], "every clip is transcribed as English");
   ids.forEach((id, index) => assert.deepEqual(server.calls.hints[index], texts[id].includes("AI") ? ["AI"] : undefined, `${id} hints only dictionary terms`));
-  assert.deepEqual(server.calls.judgeLanguages, ["en", "en"], "one Jev call per scene with a difference, in English");
+  assert.deepEqual(server.calls.judgeLanguages, ["en"], "one Jev call for the two lines with a difference, in English");
+  assert.deepEqual(server.calls.judge.map((batch) => batch.map((line) => line.id)), [[wrong, long]], "lines of two scenes share the call, in narration order");
   const judged = server.calls.judge.flat();
   assert.deepEqual(judged.map((line) => line.id).sort(), [wrong, long].sort());
   assert.equal([...judged.find((line) => line.id === long).intended].length, MAX_INTENDED_CHARACTERS, "an over-long line is cut to what Jev takes");
@@ -411,7 +424,7 @@ test("check-audio --locale checks a dub against its translation, in its language
   const again = context(box, server.fetchImpl);
   assert.equal(await main(["check-audio", "--slug", box.slug, "--locale", "en"], again.ctx), EXIT.lint);
   assert.equal(server.calls.transcribe.length, ids.length, "unchanged clips are not transcribed again");
-  assert.equal(server.calls.judge.length, 2, "judged lines are not asked again");
+  assert.equal(server.calls.judge.length, 1, "judged lines are not asked again");
 });
 
 test("check-audio --locale asks for dub first when there is no dub, with the usage exit code", async () => {

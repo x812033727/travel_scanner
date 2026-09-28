@@ -1,0 +1,226 @@
+{
+  "id": "C02",
+  "slug": "story-sqlite-public-domain",
+  "category": "tech",
+  "region": "global",
+  "subject": "SQLite",
+  "title": "幾乎每支智慧型手機都有的資料庫，作者為什麼放棄著作權？",
+  "logline": "SQLite 2000 年誕生在一位替美國海軍軍艦寫軟體的工程師手上，第一版其實用 GPL 授權；2001 年作者放棄著作權、把它送進公共領域，如今幾乎每支智慧型手機裡都有它。",
+  "question": "一套幾乎每支智慧型手機都裝了的資料庫軟體，作者為什麼放棄著作權，任由所有人免費拿去用、甚至拿去賣？",
+  "chapters": [
+    {
+      "key": "hook",
+      "point": "你的手機裡很可能有好幾百個用同一套軟體做成的資料庫檔案，這套資料庫（替 App 存放與查詢資料的軟體）叫 SQLite。官方說，每支 Android 手機與 iPhone、每台 Mac 與 Windows 10、11 電腦裡都有它。作者在 2001 年放棄了著作權，任何人都能免費拿去用、改，甚至放進要賣錢的產品，不必付錢也不必取得同意。一個工程師為什麼要放掉看起來最值錢的那部分？他又靠什麼過活？這支影片要回答這兩個問題。"
+    },
+    {
+      "key": "origin",
+      "point": "2000 年，D. Richard Hipp 以承包商身分，替美國海軍飛彈驅逐艦的損害管制系統寫軟體：船上水管破了，系統要告訴船員該關哪些閥門。資料放在船上既有的 Informix 資料庫伺服器（另一套要一直開著、專門管資料的程式）裡，照他的說法，伺服器偶爾當掉，他寫的程式就跟著動不了，接到抱怨電話的卻是他。他想：為什麼不直接從硬碟讀資料、根本不要伺服器？這個專案在 2000 年 5 月開始，8 月 17 日釋出 1.0 版。"
+    },
+    {
+      "key": "idea",
+      "point": "SQLite 其實不是一開始就屬於公共領域（沒有人擁有著作權、誰都能自由使用）。第一版用了一套採 GPL 授權的儲存程式 GDBM，GPL 要求用到它的軟體也得用同樣的授權公開原始碼，所以照 Hipp 的說法，SQLite 1.0 也只能用 GPL，原始碼開頭寫著 Hipp 的著作權。後來 Hipp 自己重寫了存放資料的核心，程式碼全都是他寫的；他想過 BSD、MIT 這類比較寬鬆的授權，最後覺得何必，乾脆放棄：2001 年 9 月，他把原始碼開頭改成「作者放棄這份原始碼的著作權」，再附上一段祝福，準備推出 2.0 版。"
+    },
+    {
+      "key": "engine",
+      "point": "不收授權費，錢從哪裡來？照 Hipp 的說法，軟體放出去沒多久，Motorola、AOL 這些當時的大公司就打電話來，問能不能付錢請他支援，他才發現「支援開源軟體也能賺錢」。Motorola 約在 2001、2002 年說要把 SQLite 放進新的手機作業系統，他報價「大概八萬美元左右」，「對我來說那就是一切」，於是找了三個以前的同事一起做。2007 年 12 月，Mozilla 與 Symbian 成為付費的「SQLite 聯盟」創始會員，會員每年可得 23 個人天（一個工程師 23 天的工作量）的專屬支援；聯盟的目的，是讓 SQLite 保持獨立、不被任何一家公司掌控。"
+    },
+    {
+      "key": "turn",
+      "point": "放棄著作權也有代價。照 Hipp 的說法，他後來才知道，直接把作品放進公共領域的做法主要是英美法系國家承認，有些國家的法律不允許作者放棄權利；公司的律師也會擔心，萬一有人把偷來的程式碼說成公共領域呢？所以 SQLite 對「進來的程式碼」管得很嚴：每位作者和他任職的公司都簽了宣誓書，把貢獻交給公共領域，正本鎖在 Hipp 的公司 Hwaci 總部的防火保險箱裡。Hwaci 還賣一張「所有權保證書」，保證作者真的有權這麼做、有人挑戰時由公司出面，這筆錢也拿來資助開發。"
+    },
+    {
+      "key": "now",
+      "point": "今天 SQLite 官方估計，全球使用中的智慧型手機超過 40 億支，每支裡有好幾百個 SQLite 資料庫檔案，加起來使用中的 SQLite 資料庫可能超過一兆個。回到開場的問題：Hipp 放棄的是收授權費的權利，換來的是任何公司都能放心拿去用；他和同事則靠支援合約、聯盟會費與保證書過活。下次手機裡的 App 一打開就讀出你的資料，背後很可能就是這套沒有著作權的程式。"
+    }
+  ],
+  "takeaway": "把東西徹底放手給所有人，有時候比緊緊握住著作權，更能讓它變成離不開的標準。",
+  "must_verify": [
+    {
+      "claim": "SQLite 1.0（2000 年）因為連結了 GPL 授權的 GDBM，只能用 GPL，最早的原始碼開頭是 Hipp 的著作權與 GPL 條款；2001 年 9 月 16 日的修改寫著「放棄著作權，準備 2.0 版」，此後原始碼開頭改成作者放棄著作權的聲明與祝福",
+      "sources": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "core": true
+    },
+    {
+      "claim": "SQLite 的程式碼與文件已全數放入公共領域，商業或私人用途都可免費使用；所有程式作者及其任職公司都簽了宣誓書，正本存放在 Hwaci 總部的防火保險箱",
+      "sources": [
+        0,
+        1
+      ],
+      "core": true
+    },
+    {
+      "claim": "SQLite 官方說它是部署最廣的資料庫引擎：每支 Android 手機與 iPhone、每台 Mac 與 Windows 10／11 都有；以超過 40 億支使用中的智慧型手機、每支數百個資料庫檔案估算，使用中的 SQLite 資料庫可能超過一兆個",
+      "sources": [
+        2
+      ]
+    },
+    {
+      "claim": "2000 年春天，Hipp 以承包商身分替美國海軍飛彈驅逐艦的損害管制系統寫軟體；系統原本用 Informix 資料庫，伺服器當掉時他的程式就無法執行，他因此想做不需要伺服器的資料庫",
+      "sources": [
+        5,
+        6,
+        10
+      ]
+    },
+    {
+      "claim": "SQLite 專案 2000 年 5 月 9 日啟動，1.0 版 2000 年 8 月 17 日釋出，2.0.0 版 2001 年 9 月 28 日釋出",
+      "sources": [
+        1,
+        11
+      ]
+    },
+    {
+      "claim": "照 Hipp 的說法，Motorola、AOL 等大公司打電話請他付費支援；Motorola 約在 2001、2002 年為了新的手機作業系統找上他，金額「大概八萬美元左右」，「對我來說那就是一切」",
+      "sources": [
+        6,
+        10
+      ],
+      "attributed": true
+    },
+    {
+      "claim": "2007 年 12 月 12 日，Mozilla 與 Symbian 以創始會員身分加入 SQLite Consortium；會員每年可得 23 個人天的專屬開發支援，聯盟宗旨是確保 SQLite 的活力與獨立",
+      "sources": [
+        3,
+        4
+      ]
+    },
+    {
+      "claim": "照 Hipp 的說法，是 Symbian 主動要求他成立聯盟，降低專案只靠少數人的風險",
+      "sources": [
+        6
+      ],
+      "attributed": true
+    },
+    {
+      "claim": "Hipp 說，把作品放進公共領域主要是英美法系國家承認的做法，有些國家不允許作者放棄權利，也有公司擔心程式碼來源，所以 Hwaci 出售「所有權保證書」並用這筆錢資助開發",
+      "sources": [
+        10,
+        0
+      ],
+      "attributed": true
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.sqlite.org/copyright.html",
+      "publisher": "SQLite 官方網站",
+      "kind": "official",
+      "supports": "SQLite 程式碼與文件全數放入公共領域；所有作者與其任職公司都簽了宣誓書、正本存放在 Hwaci 總部的防火保險箱；Hwaci 出售所有權保證書",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.sqlite.org/about.html",
+      "publisher": "SQLite 官方網站",
+      "kind": "official",
+      "supports": "專案 2000-05-09 啟動、自稱全世界部署最廣的資料庫、公共領域可做任何商業或私人用途",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.sqlite.org/mostdeployed.html",
+      "publisher": "SQLite 官方網站",
+      "kind": "official",
+      "supports": "每支 Android 與 iPhone、每台 Mac 與 Windows 10／11 都有 SQLite；超過 40 億支智慧型手機、每支數百個資料庫檔案、使用中的資料庫可能超過一兆個（頁面 2026-04-21 更新）",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://sqlite.org/consortium.html",
+      "publisher": "SQLite 官方網站",
+      "kind": "official",
+      "supports": "SQLite Consortium 的宗旨是確保 SQLite 的活力與獨立；會員每年可得 23 個人天的專屬開發支援",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.sqlite.org/pressrelease-20071212.html",
+      "publisher": "SQLite 官方網站",
+      "kind": "official",
+      "supports": "2007 年 12 月 12 日 Mozilla 與 Symbian 以創始會員身分加入 SQLite Consortium 的官方新聞稿",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/SQLite",
+      "publisher": "Wikipedia",
+      "kind": "reference",
+      "supports": "Hipp 2000 年春天在美國海軍合約下設計 SQLite、原系統用 Informix、2000 年 8 月 1.0 版以 GDBM 儲存、2001 年 9 月 2.0 版改用自己寫的 B-tree",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://corecursive.com/066-sqlite-with-richard-hipp/",
+      "publisher": "CoRecursive Podcast",
+      "kind": "news",
+      "supports": "2021 年 7 月 2 日的 Hipp 專訪文字稿：替 DDG-79 驅逐艦寫損管軟體、Informix 伺服器當掉、想直接從硬碟讀資料；Motorola 約八萬美元的支援合約；Symbian 要求成立聯盟",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/sqlite/sqlite/75897234bea58127dd00d961ebfe823dd8a253fb/src/main.c",
+      "publisher": "SQLite 原始碼庫（GitHub 官方鏡像）",
+      "kind": "official",
+      "supports": "2000 年 5 月 29 日第一次提交的 src/main.c：開頭是 Hipp 1999、2000 年的著作權聲明與 GNU GPL 第 2 版授權條款",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://github.com/sqlite/sqlite/commit/b19a2bc6036e680d4e7d995049be5dcba96cae7f",
+      "publisher": "SQLite 原始碼庫（GitHub 官方鏡像）",
+      "kind": "official",
+      "supports": "2001 年 9 月 16 日的提交，說明是「Disclaimed copyright. Preparing for release 2.0.」",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/sqlite/sqlite/b19a2bc6036e680d4e7d995049be5dcba96cae7f/src/main.c",
+      "publisher": "SQLite 原始碼庫（GitHub 官方鏡像）",
+      "kind": "official",
+      "supports": "放棄著作權那次提交後的 src/main.c 開頭：作者放棄著作權的聲明與祝福，日期寫 2001 年 9 月 15 日",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://sigmodrecord.org/publications/sigmodRecord/1906/pdfs/06_Profiles_Hipp.pdf",
+      "publisher": "ACM SIGMOD Record",
+      "kind": "academic",
+      "supports": "2019 年 6 月號的 Hipp 專訪：Informix 伺服器當掉的起因、1.0 版因連結 GDBM 而用 GPL、自己寫 B-tree 後改成公共領域、Motorola 與 AOL 來電付費支援、公共領域在部分國家不被承認、出售所有權保證書",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.sqlite.org/chronology.html",
+      "publisher": "SQLite 官方網站",
+      "kind": "official",
+      "supports": "SQLite 各版本釋出日期：1.0 版 2000-08-17、2.0.0 版 2001-09-28",
+      "checked": "2026-09-28"
+    }
+  ],
+  "names": [
+    "SQLite",
+    "D. Richard Hipp",
+    "Hipp",
+    "General Dynamics",
+    "Informix",
+    "GDBM",
+    "Motorola",
+    "AOL",
+    "Mozilla",
+    "Symbian",
+    "SQLite Consortium",
+    "Hwaci",
+    "Android",
+    "iPhone",
+    "Mac",
+    "Windows"
+  ],
+  "cast": [
+    {
+      "id": "engineer",
+      "role": "設計 SQLite 並放棄著作權的工程師",
+      "appearance": "a man in his 40s, medium build, short brown hair, wearing a plain checked short-sleeve shirt and glasses, standing next to a large grey server cabinet, holding a single small hard drive, practical unglamorous demeanor"
+    }
+  ],
+  "image_notes": "全部畫面是卡通插畫，不寫任何文字。不畫任何公司或機構的商標；軍艦只畫一般化的灰色軍艦剪影，不出現美國海軍或特定艦艇的徽章與舷號；工程師畫成一般化的軟體工程師，不對應任何真人的長相；手機與電腦畫成一般化的外型，不出現品牌標誌或作業系統畫面；資料庫用檔案櫃或箱子表示，不呈現真實程式碼；著作權與公共領域用沒有刻字的印章、敞開的箱子與很多隻手表示，不畫著作權符號。",
+  "sensitivity": "none",
+  "related_guide": null,
+  "thumbnail": {
+    "headline": "他放棄了著作權",
+    "idea": "一個工程師把一枚沒有刻字的印章推到一旁，很多隻手從四面八方伸來，拿走同一個敞開的資料庫箱子"
+  }
+}

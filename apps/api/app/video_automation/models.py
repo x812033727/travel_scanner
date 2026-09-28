@@ -440,8 +440,10 @@ class VideoDramaRequest(Base):
 # A long drama series (docs/videos/SERIES.md; migration 0099): the series the owner planned, the
 # documents the owner approves (the setting book, the whole-series outline, each chapter's
 # detailed outline, one row per version), and the episode table. A one-off drama is a series of
-# one episode whose only document is its story bible (docs/videos/DRAMA-FLOW.md §二; 0107).
-SERIES_KINDS = ("series", "one-off")
+# one episode whose only document is its story bible (docs/videos/DRAMA-FLOW.md §二; 0107). A
+# brand-story series (docs/videos/STORY.md; 0111) has no documents at all: its episodes are the
+# stories of a planned backlog, imported ready to make.
+SERIES_KINDS = ("series", "one-off", "story")
 SERIES_STATUSES = ("setting", "outline", "active", "paused", "finished")
 # A binge series (docs/videos/BINGE.md; migration 0103): the genre preset the planner writes
 # from, who leads, how many shots may be image-to-video clips, and the compilation of every
@@ -470,16 +472,24 @@ class VideoDramaSeries(Base):
             "status IN ('setting', 'outline', 'active', 'paused', 'finished')",
             name="ck_video_drama_series_status",
         ),
+        # A story runs 12 to 15 minutes (migration 0111); the schemas still hold the other kinds
+        # to 8.
         CheckConstraint(
             "planned_episodes BETWEEN 1 AND 500 AND episodes_per_chapter BETWEEN 1 AND 20 "
-            "AND target_minutes BETWEEN 1 AND 8",
+            "AND target_minutes BETWEEN 1 AND 20",
             name="ck_video_drama_series_numbers",
         ),
         CheckConstraint(
             "style_preset IN ('cinematic-3d', 'anime-2d', 'ink-wash', 'custom')",
             name="ck_video_drama_series_style",
         ),
-        CheckConstraint("kind IN ('series', 'one-off')", name="ck_video_drama_series_kind"),
+        CheckConstraint(
+            "kind IN ('series', 'one-off', 'story')", name="ck_video_drama_series_kind"
+        ),
+        CheckConstraint(
+            "episodes_per_day IS NULL OR episodes_per_day BETWEEN 1 AND 12",
+            name="ck_video_drama_series_per_day",
+        ),
         CheckConstraint(
             "genre IN ('xianxia-bonds', 'rebirth-revenge', 'system-game', 'urban-return', "
             "'empress-rise', 'custom')",
@@ -503,7 +513,8 @@ class VideoDramaSeries(Base):
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     slug: Mapped[str] = mapped_column(String(40), unique=True)
     # "series": the documents are the setting book, the outline and the chapters' outlines;
-    # "one-off": one episode, one story bible (docs/videos/DRAMA-FLOW.md §二).
+    # "one-off": one episode, one story bible (docs/videos/DRAMA-FLOW.md §二); "story": no
+    # documents, the episodes are imported from a planned backlog (docs/videos/STORY.md).
     kind: Mapped[str] = mapped_column(String(12), default="series", server_default="series")
     title: Mapped[str] = mapped_column(String(200))
     # The story in the owner's words; the setting book is planned from it.
@@ -553,6 +564,14 @@ class VideoDramaSeries(Base):
     compilation_finished_at: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True), nullable=True
     )
+    # The brand-story columns (docs/videos/STORY.md; migration 0111). How many episodes may start
+    # on one Asia/Taipei calendar day (NULL: no daily limit); the image model this series' media
+    # jobs use (NULL: the settings tab's); and the look every story of the series shares,
+    # {"style", "negative", "motion"?}, which a story series keeps here because it has no
+    # setting book. The other kinds leave the daily count and the look NULL.
+    episodes_per_day: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    image_model: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    look: Mapped[dict[str, Any] | None] = mapped_column(JSON, nullable=True)
     created_by_user_id: Mapped[UUID | None] = mapped_column(
         ForeignKey("users.id", ondelete="SET NULL"), nullable=True
     )
