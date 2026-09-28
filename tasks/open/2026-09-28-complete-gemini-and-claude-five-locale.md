@@ -18,6 +18,7 @@ scope:
   - apps/web/components/guides/article.tsx
   - apps/web/components/guides/article.test.tsx
   - apps/web/components/guides/article-page.tsx
+  - apps/web/components/guides/gemini-page.test.tsx
   - apps/web/components/guides/series-hub.tsx
   - apps/web/components/guides/series.test.tsx
   - apps/web/lib/guide-series-copy.ts
@@ -62,6 +63,9 @@ previous/next navigation must use that locale's published lessons and copy.
 - [x] Added web duplication and withdrawal guard tests, kept the existing
       zh-TW Gemini renderer and let the other locales use API navigation.
 - [x] Focused API and Web tests passed, plus Web lint, typecheck, i18n and task checks.
+- [x] Updated the existing Gemini page integration fixture to return a published API
+      series, matching the new release boundary; its old null mock caused Web CI
+      to hide the directory even when the fixture expected published lessons.
 - [x] Opened focused draft PR #947.
 - [ ] Wait for full CI and review before merge.
 
@@ -85,3 +89,6 @@ documents for public titles/descriptions; API series links remain locale- and
 publication-aware. No production write occurred.
 
 Draft PR: https://github.com/x812033727/travel_scanner/pull/947
+The first Web CI run failed in `gemini-page.test.tsx` because its API series
+mock still returned null. The updated fixture keeps the publication guard in
+place and locally passes all seven integration cases; the PR needs a new CI run.
