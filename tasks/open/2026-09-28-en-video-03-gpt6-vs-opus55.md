@@ -19,21 +19,29 @@ scope:
 
 ## Why
 
-Describe the problem in the terms someone who has never seen it would need.
+Third of the three English videos the owner chose on 2026-09-28 (season plan `docs/ai-video-en-season-01/README.md`, brief `briefs/03-gpt6-vs-opus55-worth-paying.md`): the same three monthly jobs priced on GPT-6 Astra, GPT-6 Sol, Claude Opus 5.5, Grok 4.7 and Gemini 3.8 Flash from the vendors' own pages, then the three-question test. Prices expire: the title carries the month and every line is re-checked on recording day.
 
 ## Definition of done
 
-- [ ] The observable outcome, not the implementation.
+- [x] `docs/videos/gpt6-vs-opus55-worth-paying/` has `brief.md` (eight sections, `套用立場：1、2、6`), `video.json` (`narration_locale: en`), `claims.md` with every calculation spelled out; lint 0 errors.
+- [ ] `verify-1.md` by an independent agent confirms each price on the vendor page and redoes the arithmetic; the OpenAI table's $12.50 column is confirmed as the cache-write price or the job-2 rows are recomputed.
+- [ ] Listener review applied; gates approved; owner uploads private; `scoreboard.csv` rows filled.
 
 ## Steps
 
-- [ ] First sub-task.
-- [ ] Second sub-task.
+- [x] Prices read 2026-09-28: platform.openai.com/docs/pricing and the GPT-6 Astra model page (200 with the editorial user agent), anthropic.com, docs.x.ai, ai.google.dev.
+- [x] Script written (49 lines, about 8.1 min estimated); verifier round 1 dispatched.
+- [ ] Re-open every price on recording day; then the pipeline steps on the owner's machine or the host worker.
 
 ## How to verify
 
-The exact commands or clicks that prove it works.
+```bash
+node tools/video/cli.mjs lint --slug gpt6-vs-opus55-worth-paying
+node tools/video/cli.mjs status --slug gpt6-vs-opus55-worth-paying --workdir <VIDEO_WORKDIR>
+```
 
 ## Notes
 
-Findings, decisions and dead ends, so the next agent does not repeat them.
+- openai.com/api/pricing/ and the Astra launch page answer HTTP 403 to the editorial user agent; platform.openai.com/docs/pricing does not, and its table rows are embedded as JSON (["gpt-6-astra"],[10],[1],[12.5],[50]).
+- Google's page lists no Pro model of the 3.8 generation on 2026-09-28; Gemini is represented by 3.8 Flash and the narration says so.
+- Gemini 3.8 Flash's price doubles on 2027-01-01 per the page; the video must be re-checked before any re-upload after that date.

@@ -1,6 +1,6 @@
 # 英文 AI 影片第一季：六支衝百萬點閱的企劃（Claude 版）
 
-**狀態（2026-09-28）**：企劃完成，六支影片的簡報、包裝、排程與量測表都在這個資料夾；還沒有任何一支開始撰稿。等站主決定三件事（見最後一節）就能開工。這份和 Codex 的 [`docs/ai-video-season-01/`](../ai-video-season-01/README.md) 是同一場比賽的兩份參賽作品：那份是中文旁白的六集常青解說，這份是**英文旁白、綁著本週新聞、每支帶一個實算**的六支。
+**狀態（2026-09-28，第二輪）**：站主決定做英文旁白路線、先做第 1、4、3 支。`narration_locale` 已在分支落地（票 `2026-09-28-video-english-narration-locale`），三支的 `brief.md`、`video.json`、`claims.md` 與示範紀錄在 `docs/videos/openai-agents-broke-in/`、`docs/videos/always-on-agent-explained/`、`docs/videos/gpt6-vs-opus55-worth-paying/`，lint 零錯誤，查核由獨立代理進行中。還等站主決定：英文頻道開不開、頻道立場存進設定。這份和 Codex 的 [`docs/ai-video-season-01/`](../ai-video-season-01/README.md) 是同一場比賽的兩份參賽作品：那份是中文旁白的六集常青解說，這份是**英文旁白、綁著本週新聞、每支帶一個實算**的六支。
 
 一句話：英文 YouTube 上真的會破百萬的 AI 影片，幾乎都是「**大家已經在害怕或爭論的事** ＋ **一個講得比新聞更清楚的答案**」。這一季每支都照這個公式：新聞當鉤子，常青問題當標題，一段站主能自己複算的實算當骨幹，結尾給觀眾一個看完就能做的動作。
 

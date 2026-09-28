@@ -23,15 +23,16 @@ scope:
 ## Definition of done
 
 - [x] `docs/ai-video-en-season-01/` 有 `README.md`（目標與數學、選題規律、六支總表、排程、製作路線、包裝規則、比賽規則、風險、下一步）、六份 `briefs/`、`packaging.csv`、`schedule.csv`、`scoreboard.csv`、`sources.json`。
-- [ ] 站主決定三件事：要不要做英文旁白路線（票 `2026-09-28-video-english-narration-locale`）、先做哪三支、英文頻道開不開與頻道立場存進設定。
-- [ ] 決定之後，替選中的其餘影片各開一張製作票（第 1 支已開：`2026-09-28-en-video-01-openai-agents-broke`）。
+- [x] 站主決定（2026-09-28）：英文旁白路線做下去；先做 1、4、3（`openai-agents-broke-in`、`always-on-agent-explained`、`gpt6-vs-opus55-worth-paying`）。
+- [ ] 站主決定：英文頻道開不開；頻道立場存進 `/admin/videos` 設定（存了 Jev 才會替英文影片挑大綱）。
+- [x] 三支製作票已開並認領：`2026-09-28-en-video-01-openai-agents-broke`、`2026-09-28-en-video-04-always-on-agent`、`2026-09-28-en-video-03-gpt6-vs-opus55`。
 
 ## Steps
 
 - [x] 讀 `youtube-video` skill、`docs/videos/*.md`、Codex 的四條影片分支，確認題目不重複。
 - [x] 查 2026-09 的新聞鉤子與英文 AI 影片的對照點閱（`sources.json`）。
 - [x] 寫企劃與六份簡報；每份有觀眾、能做的事、站主觀點（套用立場條號）、實算、兩個大綱、會過期的事實、素材、不做的事、包裝。
-- [ ] 站主回覆三個決定 → 更新 README 的狀態行與排程。
+- [x] 站主回覆兩個決定（路線、順序）→ README 狀態行更新；頻道與立場仍待決定。
 
 ## How to verify
 
@@ -49,3 +50,4 @@ npm run check:tasks
 - 產線寫死 zh-TW：`tools/video/core/schema.mjs` 的 `NARRATION_LOCALE`、lint 的字典規則、`apps/api/app/video_speech/checking.py` 的轉寫提示、`youtube.default_language`。多語言音軌（`docs/videos/DUBS.md`）畫面仍是中文，只當替代路線。
 - 對照點閱都是搜尋索引的快照：ColdFusion「AI Fails at 96% of Jobs」約 90 萬、3Blue1Brown LLM 解說約 760 萬、MKBHD AI 影片約 920 萬。YouTube 影片頁對 fetcher 只回頁尾，openai.com 的兩頁回 403，撰稿當天要有人開官方頁。
 - 沒有找到頻道現在的訂閱數或已上架影片數；README 第 1 節的曝光假設以新頻道為前提。
+- 2026-09-28（claude-fable-5-1，第二輪）：站主決定做英文路線、先做 1、4、3。工具票的程式已在同一分支落地（`narration_locale`），三支的 brief、video.json、claims 與示範紀錄寫在 `docs/videos/<slug>/`，lint 零錯誤；查核交給三個獨立代理寫 `verify-1.md`。
