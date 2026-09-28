@@ -32,7 +32,7 @@ current published zh-TW version while keeping publication as a separate gate.
 - [x] Both packs include complete zh-TW, zh-CN, en, ja and ko documents with
       the same block structure, numbers, cautions, sources and relevant links.
 - [x] Original zh-TW documents and pack metadata remain unchanged.
-- [ ] Both text-bearing hero and diagram SVGs plus raster covers have four
+- [x] Both text-bearing hero and diagram SVGs plus raster covers have four
       localized versions, with rendered desktop/mobile visual QA.
 - [ ] Pack, content-link, asset, API/web, i18n and task checks pass; a reviewed
       PR is merged after green CI.
@@ -46,7 +46,8 @@ current published zh-TW version while keeping publication as a separate gate.
       root metadata and zh-TW against pinned sources; peer review is in progress.
 - [x] Localized both text-bearing hero/diagram sets into four languages;
       Edge rendered all 16 SVGs with zero layout issues and exported eight JPGs.
-- [ ] Validate, peer-review and open a focused PR.
+- [x] Independent peer review and final standalone desktop/mobile preview
+      passed; focused draft PR #940 is open. CI and merge remain pending.
 
 ## How to verify
 
@@ -77,8 +78,9 @@ translations. Internal article targets require locale publication checks.
 
 Artwork render receipt SHA-256:
 `cd7fe39256484f6ae95d0e6676d53a85b41e8bdab111490bfb4825422794f363`.
-The independent 4×2 contact sheets were visually reviewed; desktop/mobile
-article-page previews remain pending until the translated documents exist.
+The independent 4×2 contact sheets were visually reviewed. Final standalone
+desktop/mobile article previews passed with receipt SHA-256
+`3fe8ced2491249a07e484acaa8c8f828e42294342d665ae91fc05a665dfcd9a5`.
 
 The combined keyword candidate outside the repository has SHA-256
 `1dd67c76d9b9f8de1960a1628c01317846d250abfba9d1b7a9a38a32131ece74`,

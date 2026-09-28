@@ -83,15 +83,38 @@ zh-CN related-reading label uses `可执行`, and its diagram alt uses
 zh-TW remain unchanged. The keyword diagram's en/ja/ko subtitle and footer
 now preserve the source's idea that a group of related reader questions forms
 one article topic. All 16 SVGs were rerendered after this change; the current
-receipt above reports zero layout issues. The desktop/mobile standalone article preview
-receipt is being finalized; it is not public-site verification.
+receipt above reports zero layout issues. Independent final peer QA passed
+for both guides: the structural/asset audit SHA-256 is
+`1c03de612b9e890770eb29d2c574d5f3f57c271be8e768ea77bcbafa684014f1`.
+Its standalone Edge gallery is
+`C:\Users\x8120\.codex\article-localization-release\batch041-pair-a\peer-qa\gallery.html`;
+the preview receipt SHA-256 is
+`3fe8ced2491249a07e484acaa8c8f828e42294342d665ae91fc05a665dfcd9a5`.
+All eight documents rendered at desktop 1365px and mobile 375px, with both
+images loaded and zero page overflow or browser errors. This remains local
+draft preview, not public-site verification.
+
+On 2026-09-28, current official
+[Google title-link guidance](https://developers.google.com/search/docs/appearance/title-link),
+[Discover guidance](https://developers.google.com/search/docs/appearance/google-discover)
+and [WordPress heading-block documentation](https://wordpress.org/documentation/article/heading-block/)
+were checked against the title guide's title-length, display, clickbait and
+heading claims. They remain aligned. As above, the original source citation
+dates are kept for provenance.
+
+Local checks after the locale documents were installed: both pack lints
+passed with the recorded warnings; `tests/test_guides_content_links.py`
+passed 3/3; `npm run check:i18n` validated five locales across 25
+namespaces; `npm run check:tasks`, `npm run lint:web`,
+`npm run typecheck:web`, and `git diff --check` passed. The CI web job on
+content commit `120377fbdece6254b3d474732b2c42d7df9ad0a0` also passed;
+it runs Web tests, tools tests, build and isolated browser tests. A separate
+local `npm run test:web` session was interrupted after more than 20 minutes
+without output; it is not counted as a pass. The PR's API and Lighthouse
+checks remain pending at this stage.
 
 ## Outstanding acceptance
 
-- Finish independent editorial and desktop/mobile rendered-page review of all
-  eight locale documents, including tables, warnings, alt text and captions.
-- Recheck title-link, Discover and WordPress interface claims against current
-  official sources before publication.
-- Run focused pack/API/Web/i18n/task checks, CI, guarded import dry-run and
+- Complete CI, guarded import dry-run and
   later production/browser verification. This document does not count any of
   those pending steps as passed.
