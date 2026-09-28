@@ -1,11 +1,11 @@
 ---
 id: 2026-09-28-vps-independent-youtube-upload-service-mode
 title: VPS independent YouTube upload service mode
-status: open
+status: in-progress
 priority: P1
 area: tools
-owner:
-claimed_at:
+owner: codex-vps-upload
+claimed_at: 2026-09-28T04:55:21Z
 created_at: 2026-09-28T04:50:52Z
 completed_at:
 branch: codex/youtube-vps-uploader
@@ -17,6 +17,8 @@ scope:
   - docs/videos/VPS-UPLOADER.md
   - apps/api/app/video_youtube/vps.py
   - apps/api/app/video_youtube/admin_api.py
+  - apps/api/app/video_youtube/sync.py
+  - .github/workflows/youtube-uploader.yml
   - apps/api/tests/test_video_youtube_vps.py
   - apps/web/components/admin-video-vps-upload.tsx
   - apps/web/components/admin-video-vps-upload.test.tsx
@@ -38,7 +40,7 @@ quota exhaustion; moving an API client to another host alone does not increase i
 
 ## Definition of done
 
-- [ ] The owner selects the upload engine: official YouTube API or browser-operated Studio.
+- [x] The owner selects the upload engine: browser-operated Studio.
 - [ ] The website can submit an approved package to the independent service and show progress.
 - [ ] Jobs survive service restarts and retries do not duplicate already uploaded videos.
 - [ ] Files, title, full description, captions and thumbnail stay bound to the approved package.
@@ -48,7 +50,7 @@ quota exhaustion; moving an API client to another host alone does not increase i
 ## Steps
 
 - [x] Inspect current upload lifecycle, review-store contracts and concurrent work.
-- [ ] Resolve the engine question already sent to the owner; then claim and finalize scope.
+- [x] Resolve the engine question already sent to the owner; then claim and finalize scope.
 - [ ] Implement the selected service, website integration and tests.
 - [ ] Prepare a draft PR with verified results and explicit deployment requirements.
 
@@ -63,8 +65,10 @@ real videos. Record exact commands once the engine and runtime are selected.
 
 - Worktree: youtube-manual-upload, reused after finishing manual-mode implementation.
   Branch starts at b85f85c4 and includes manual mode from draft PR #890; keep its PR separate.
-- No service implementation or deployment has happened yet. The architecture question is
-  pending, because API quota behavior and Studio login/maintenance differ materially.
+- The owner confirmed Studio browser mode. Build a separately deployed service, private uploads,
+  durable jobs, owner-assisted login and explicit recovery after an uncertain upload.
+  Site-to-VPS asset transfer is resumable; once queued, Studio work runs independently.
+  No production deployment or real test upload is authorized by this implementation request.
 - Existing sync.py runs an asyncio task in the API process because only that container
   mounts the review store. It leases video_projects.youtube_sync, checkpoints resumable
   upload state and skips captions already uploaded. Reuse these contracts where applicable.

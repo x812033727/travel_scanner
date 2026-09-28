@@ -1,0 +1,38 @@
+name: mokaair-studio-uploader
+services:
+  uploader:
+    build:
+      context: ../..
+      dockerfile: ops/youtube-uploader/Dockerfile
+    init: true
+    restart: unless-stopped
+    shm_size: 1gb
+    mem_limit: 3g
+    pids_limit: 256
+    stop_grace_period: 45s
+    security_opt:
+      - no-new-privileges:true
+    cap_drop: [ALL]
+    environment:
+      UPLOADER_CHANNEL_ID: ${UPLOADER_CHANNEL_ID:?Set the exact YouTube channel ID}
+      UPLOADER_SECRET_FILE: /run/secrets/uploader
+    ports:
+      - "${UPLOADER_PRIVATE_BIND_IP:-127.0.0.1}:8789:8789"
+      - "127.0.0.1:6080:6080"
+    volumes:
+      - uploader-data:/var/lib/mokaair-uploader
+    secrets:
+      - uploader
+      - vnc_password
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:8789/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+volumes:
+  uploader-data:
+secrets:
+  uploader:
+    file: ${UPLOADER_SECRET_PATH:?Set the secret file path}
+  vnc_password:
+    file: ${UPLOADER_VNC_PASSWORD_PATH:?Set the VNC password file path}

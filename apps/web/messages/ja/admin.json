@@ -2688,6 +2688,63 @@
     "docNote": "備考："
   },
   "videoYoutube": {
+    "vps": {
+      "open": "VPS から独立アップロード",
+      "close": "他のアップロード方法に戻る",
+      "title": "VPS · YouTube Studio",
+      "help": "承認済みファイルを VPS に転送し、専用ブラウザーで非公開動画としてアップロードします。既存の動画には情報を追加します。YouTube Data API は呼び出しません。",
+      "loading": "VPS の状態を読み込み中…",
+      "notConfigured": "VPS サービスが未設定です。サービスの配置とチャンネルへのログイン後に有効化してください。",
+      "failed": "操作に失敗しました。進捗を更新して再試行してください。",
+      "existingUrl": "既存動画の URL（新規アップロードなら空欄）",
+      "send": "VPS に送信（非公開）",
+      "sending": "転送中…",
+      "transfer": "VPS への転送状況",
+      "transferProgress": "転送済み {received} / {total} MB",
+      "stagingHelp": "転送中はこの画面を開いたままにしてください。閉じても保存済みの位置から再開できます。",
+      "continueTransfer": "VPS への転送を再開",
+      "independent": "ファイルを VPS に渡しました。このページを閉じても VPS が独立して処理を続けます。",
+      "desktopHelp": "設定済みの安全な接続で VPS デスクトップを開き、Studio の画面を確認してから再開してください。ログインと認証はご自身で行います。",
+      "reconcileUrl": "Studio で確認した動画の URL",
+      "resume": "対応済み・再開",
+      "restart": "再びキューに入れる",
+      "captionStep": "字幕 · {language}",
+      "translationStep": "タイトルと説明 · {language}",
+      "openVideo": "Studio で動画を確認",
+      "recorded": "非公開動画のリンクをサイトに記録しました。公開設定や予約は Studio で行ってください。",
+      "recordHelp": "VPS の処理は完了しましたが、リンクは未記録です。更新または記録してください。",
+      "record": "動画リンクを記録",
+      "cancel": "待機中のジョブをキャンセル",
+      "refresh": "進捗を更新",
+      "chooseVideo": "承認済みアップロードパッケージのある動画を選択",
+      "states": {
+        "staging": "ファイル準備・転送中",
+        "queued": "VPS で待機中",
+        "running": "VPS が Studio を操作中",
+        "needs_action": "操作が必要です",
+        "done": "非公開アップロード完了",
+        "cancelled": "キャンセル済み"
+      },
+      "steps": {
+        "video": "動画",
+        "details": "詳細",
+        "thumbnail": "サムネイル",
+        "verify": "保存と非公開設定の確認"
+      },
+      "problems": {
+        "login_required": "VPS のブラウザーで YouTube にログインしてから再開してください。",
+        "verification_required": "YouTube の認証を VPS ブラウザーでご自身で完了してください。",
+        "interrupted": "サービスが中断しました。VPS の Studio 画面を確認してから再開してください。",
+        "video_id_required": "動画がすでに作成された可能性があります。Studio で探し、URL を貼り付けて重複を防いでください。",
+        "studio_changed": "Studio の画面が想定と異なるため停止しました。画面とセレクター設定を確認してください。",
+        "channel_unconfirmed": "ログイン中のチャンネルを確認できません。設定済みチャンネルに切り替えてください。",
+        "private_required": "非公開であることを確認できません。Studio の公開設定を確認してください。",
+        "save_unconfirmed": "Studio の保存を確認できません。画面を確認してから再開してください。",
+        "file_hash_mismatch": "ファイルが承認済みハッシュと一致しません。素材を確認してください。",
+        "tags_need_review": "タグを安全に置き換えられません。VPS の画面で確認してください。",
+        "category_need_review": "カテゴリーを確認できません。Studio と操作設定を確認してください。"
+      }
+    },
     "manual": {
       "open": "手動モード：ダウンロードとコピー",
       "backToAutomatic": "API アップロードに戻る",

@@ -2688,6 +2688,63 @@
     "docNote": "备注："
   },
   "videoYoutube": {
+    "vps": {
+      "open": "VPS 独立上传",
+      "close": "返回其他上传模式",
+      "title": "VPS · YouTube Studio",
+      "help": "将已批准的文件发送到 VPS，由其独立浏览器上传为私人视频。已有视频时补充资料；不调用 YouTube Data API。",
+      "loading": "正在读取 VPS 状态…",
+      "notConfigured": "VPS 服务尚未配置。请先部署独立服务并登录频道，再启用此模式。",
+      "failed": "操作失败，请刷新进度后重试。",
+      "existingUrl": "已有视频网址（尚未上传可留空）",
+      "send": "发送到 VPS（私人）",
+      "sending": "正在传送…",
+      "transfer": "传送到 VPS 的进度",
+      "transferProgress": "已传送 {received} / {total} MB",
+      "stagingHelp": "传送素材时请保留此页面；离开后可从已传送的位置继续。",
+      "continueTransfer": "继续传送到 VPS",
+      "independent": "素材已交给 VPS，现在可以关闭此页面。VPS 将独立执行，稍后可回来查看进度。",
+      "desktopHelp": "请通过已配置的安全连接打开 VPS 远程桌面，处理 Studio 页面后回来继续。登录与验证由你完成。",
+      "reconcileUrl": "核对后的 YouTube 视频网址",
+      "resume": "已处理，继续任务",
+      "restart": "重新排入 VPS",
+      "captionStep": "字幕 · {language}",
+      "translationStep": "标题与说明 · {language}",
+      "openVideo": "在 Studio 查看视频",
+      "recorded": "私人视频链接已记录到网站；公开或排期请在 Studio 设置。",
+      "recordHelp": "VPS 已完成，但尚未记录到网站。请刷新或点击记录。",
+      "record": "记录视频链接",
+      "cancel": "取消等待中的任务",
+      "refresh": "刷新进度",
+      "chooseVideo": "选择视频（需已有批准的上传包）",
+      "states": {
+        "staging": "准备／传送素材",
+        "queued": "VPS 已排入队列",
+        "running": "VPS 正在操作 Studio",
+        "needs_action": "需要你接手",
+        "done": "已完成私人上传",
+        "cancelled": "已取消"
+      },
+      "steps": {
+        "video": "视频",
+        "details": "详细资料",
+        "thumbnail": "缩略图",
+        "verify": "确认保存与私人状态"
+      },
+      "problems": {
+        "login_required": "请到 VPS 浏览器登录 YouTube，然后回来继续。",
+        "verification_required": "YouTube 要求验证，请在 VPS 浏览器自行完成后继续。",
+        "interrupted": "服务曾中断。请先核对 VPS 的 Studio 页面，再继续原任务。",
+        "video_id_required": "上次可能已创建视频。请在 Studio 找到它并粘贴网址，避免重复上传。",
+        "studio_changed": "Studio 页面与预期不同，服务已暂停。请核对页面及操作配置后继续。",
+        "channel_unconfirmed": "无法确认当前登录的频道，请切换到指定频道。",
+        "private_required": "这支视频尚未确认为私人，请在 Studio 核对浏览权限。",
+        "save_unconfirmed": "Studio 尚未确认保存成功，请检查页面后继续。",
+        "file_hash_mismatch": "文件与批准的哈希不符，请检查素材。",
+        "tags_need_review": "无法安全替换标签，请在 VPS 页面核对。",
+        "category_need_review": "无法确认视频类别，请核对 Studio 与操作配置。"
+      }
+    },
     "manual": {
       "open": "手动模式：下载文件与复制文字",
       "backToAutomatic": "返回 API 上传",
