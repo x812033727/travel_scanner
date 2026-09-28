@@ -478,3 +478,67 @@ class OverviewOut(BaseModel):
     campaign: CampaignView
     needs: list[NeedOut]
     needs_count: int
+
+
+# --- sending to YouTube -------------------------------------------------------------------------
+
+ClaimResult = Literal["matched", "not_found", "not_private", "length_differs", "duplicate"]
+
+
+class UploadWaiting(BaseModel):
+    """A Short the owner uploads to YouTube Studio themselves, until the API audit passes."""
+
+    slug: str
+    title: str
+    line: ShortsLine | None = None
+    slot_at: datetime
+    file_name: str
+    size: int | None = None
+    seconds: float | None = None
+
+
+class UploadsOut(BaseModel):
+    ahead_days: int
+    items: list[UploadWaiting]
+
+
+class ClaimItem(BaseModel):
+    slug: str
+    file_name: str
+    result: ClaimResult
+    detail: str
+    youtube_video_id: str | None = None
+
+
+class ClaimOut(BaseModel):
+    claimed: int
+    items: list[ClaimItem]
+
+
+class RecallItem(BaseModel):
+    slug: str
+    youtube_video_id: str
+    recalled: bool
+    detail: str
+
+
+class RecallOut(BaseModel):
+    recalled: int
+    items: list[RecallItem]
+
+
+class TickOut(BaseModel):
+    """What one knock of the worker did. Counts only: no address, token or content."""
+
+    ran: bool
+    skipped: str | None = None
+    locked: int = 0
+    missed: int = 0
+    sent: int = 0
+    held: int = 0
+    scheduled: int = 0
+    published: int = 0
+    snapshots: int = 0
+    removed: int = 0
+    verified: bool = False
+    quota_units: int = 0
