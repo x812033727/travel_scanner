@@ -2,7 +2,7 @@
 id: 2026-09-28-admin-video-review-the-owner-s
 title: Admin video review: the owner's final-cut approvals did not register on 2026-09-28
 status: open
-priority: P2
+priority: P3
 area: web
 owner:
 claimed_at:
@@ -31,13 +31,22 @@ told the producing session so. Both times the site kept all three reviews `pendi
 The same endpoint (`POST /admin/videos/{slug}/reviews/{id}/decision`) had recorded the owner's
 outline and audio decisions on the same projects hours earlier, and `decision_problem` only
 refuses non-pending reviews, a reject without a note, or a missing outline choice, none of which
-applies. The owner chose to record the approval from the chat instead (`approve --gate final`, with
-a note saying so), so these three cards stay `pending` on the site until someone decides them.
+applies.
+
+Update, same day: after the session sent the owner the three exact titles to look for, the site
+recorded all three approvals at 09:45:12, 09:45:37 and 09:46:24 UTC (in page order, no note), so
+the endpoint works. What is still unexplained is the two earlier rounds (reported at about 09:35
+and 09:42 UTC) that left nothing. The likeliest reading is that those clicks went to other final
+cards on the same page (another pipeline had videos in review that day), which would mean other
+videos were approved by mistake; the other is a failed POST whose error line went unnoticed.
+The session had also recorded the approval locally from the chat (`approve --gate final`, same
+hashes), so nothing downstream waited on this.
 
 ## Definition of done
 
-- [ ] The cause is known, and an owner's approve on a final card either lands (`decided_at` set)
-      or shows an error the owner cannot miss.
+- [ ] The audit log shows which reviews the owner approved between 09:00 and 09:45 UTC on
+      2026-09-28; any approved by mistake are reported to the owner.
+- [ ] If a POST failed there, a failed decision shows an error the owner cannot miss.
 
 ## Steps
 
@@ -48,7 +57,6 @@ a note saying so), so these three cards stay `pending` on the site until someone
       review the same day) and the owner approving those instead.
 - [ ] If the POST failed, see why the card's error line (`decideError`) went unnoticed; a failed
       decision might deserve a toast or a banner, not a line under the buttons.
-- [ ] Once understood, decide the three stale cards (approve, since the owner approved in chat).
 
 ## How to verify
 
