@@ -54,6 +54,24 @@
 | 配樂 | 沿用漫劇的 `music`；設定關掉時沒有 |
 | YouTube | 分類 27（教育）；合成內容揭露照漫劇的規則一律勾 |
 
+### lint 與工具怎麼認出故事
+
+`video.json` 沒有「這是故事」的欄位；`lint` 看旁邊的 `series.json`，工人開始一集時寫它：
+
+| `series.json` 的鍵 | 用途 |
+| --- | --- |
+| `kind: "story"` | 有它，`lint` 才套用故事的規則（`tools/video/core/story.mjs`） |
+| `names` | 字串陣列：這個故事的品牌名、產品名、真人姓名，從企劃的 `names` 抄過來 |
+| `slug`、`episode`、`characters`、`visual_tier` | `video.json` 有 `series`（作品的一集）時照漫劇的規則核對：同一個 `slug` 與 `episode`、主角照抄（沒有主角是空陣列）、`visual_tier: "stills"` |
+
+故事的規則是 `story.mjs` 的 `STORY_RULES`，工人照抄給撰稿模型：
+
+- 錯誤：每個鏡頭 `visual: "still"`；每一句都是 `narrator`；`sources` 至少 3 個、都是 https 網址；章節 5–7 個；鏡頭的 `prompt`、`camera`、`negative` 與角色的 `name`、`appearance`、`sheet_prompt` 不含 `names` 裡的任何一個（整個詞、不分大小寫，拉丁字母的名字不比對到更長的字裡）。
+- 警告：估計的時間軸上，平均每鏡短於 5 秒或長於 11 秒。
+- 不數鏡頭：長度由 `target_minutes` 管，單鏡上限仍是漫劇的 `MAX_SHOT_SECONDS`（超過 12 秒錯誤、10 秒警告）。
+
+沒有主角（`characters` 是空陣列）的漫劇，`status` 沒有 `look generated`、`look approved` 兩步（`tools/video/core/state.mjs` 的 `narratorOnly`），`keyframes` 不等設定圖關卡，參考圖只有 `look.style_frames`，judge 也沒有 identity 題。`script approved` 仍在（`video.json` 有 `series` 的一集都有，PR #870 之後每支漫劇都有）：故事不送劇本關卡，由工人在本機核准，寫法同大綱。`clips` 遇到全靜態圖只寫 manifest、不花錢，但仍向伺服器問一次狀態，片段供應商要是設定好的。`keyframes` 的聯絡表超過 24 鏡就分頁（`keyframes/contact-sheet-01.png`、`-02.png`…），全部依序列在 `keyframes/manifest.json` 的 `contact_sheets`，`contact_sheet` 指第一頁；24 鏡以內仍是一張 `keyframes/contact-sheet.png`。範例在 `tools/video/core/fixtures/story/`，`node tools/video/assemble/smoke.mjs --fixture story` 用替身素材把它做到成片。
+
 ## 企劃清單與集數列（合約）
 
 企劃清單在 repo 的 `docs/videos/story-plans/brand-stories-100/stories.json`（票 `2026-09-28-video-story-backlog`）。工人的文件 volume 不會隨部署更新（票 `2026-09-25-the-video-worker-s-docs-volume`），所以清單**匯入資料庫**，工人從 API 拿，不讀檔案。
@@ -235,7 +253,7 @@
 | --- | --- | --- | --- |
 | `video-story-design-docs` | 這份文件與 12 張票 | `docs/videos/STORY.md`、`tasks/open` | — |
 | `video-story-backlog` | 100 個故事的完整企劃與驗證腳本 | `docs/videos/story-plans/brand-stories-100` | design-docs |
-| `video-story-core-narrator-only` | 沒有角色時跳過設定圖、故事的 lint 規則、範例與煙霧測試 | `tools/video/core`、`tools/video/media/keyframes.mjs`、`tools/video/assemble/smoke.mjs` | design-docs |
+| `video-story-core-narrator-only` | 沒有角色時跳過設定圖、故事的 lint 規則、聯絡表分頁、範例與煙霧測試 | `tools/video/core`、`tools/video/media/keyframes.mjs`、`tools/video/assemble/smoke.mjs`、`.github/workflows/video-tooling.yml`、這份文件 | design-docs |
 | `video-story-storyboard-sheets` | 分鏡送審改送聯絡表 | `tools/video/review` | design-docs |
 | `video-story-check-audio-batching` | 旁白檢查跨場景合併 Jev 呼叫 | `tools/video/tts` | design-docs |
 | `video-story-api-series-kind` | 遷移、故事分支、上限、圖片模型覆寫、匯入指令 | `apps/api/app/video_automation`、`apps/api/app/cli.py`、遷移 | PR #870 |
