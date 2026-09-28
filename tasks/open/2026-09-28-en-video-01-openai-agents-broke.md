@@ -37,7 +37,7 @@ First video of the English season (`docs/ai-video-en-season-01/README.md`): the 
 - [x] Brief moved and script written; lint 0 errors (9.4 min estimated). `review-push --gate outline` needs the owner's video-tool token and is the next step on the owner's machine or the host worker.
 - [x] Writer done (claude-fable-5-1, 61 lines, about 9.3 min estimated); two independent verification rounds; listener review done.
 - [x] zh-TW narration (Sulafat, 7:33) → `check-audio` 0 flagged after `say` fixes → audio gate (Jev) → re-paced to 28 scenes (longest state 12.8 s) → `render` → `assemble` → caption reviews applied in en, ja, ko, zh-CN → dubs en/ja/ko fit and checked → `captions` → `qa` 10/11 → `review-push --gate final` (pending the owner, 2026-09-28).
-- [ ] `package` → `review-push --gate publish` → dubs gate; the owner uploads the three dub tracks in Studio's Languages page.
+- [x] `package` (4/4) → publish gate (auto-approved) → dubs gate sent (waiting for the owner).
 - [ ] Owner uploads private, pastes the URL on /admin/videos, schedules 2026-10-06 15:00 UTC (or the next Tuesday after the tooling lands).
 
 ## How to verify
@@ -61,3 +61,4 @@ node tools/video/cli.mjs status --slug openai-agents-broke-in --workdir <VIDEO_W
   - Scene-whole dub requests mis-split without falling back: clips shifted by one line (heard as lines "spoken" at 0.4–0.6x the track's rate). Dub with `--line-by-line` (added the same day).
   - Slides were re-paced so no state stays over 15 s (QA `pace`); line ids and texts did not change, so narration and translations stayed valid.
   - QA: `policy` fails until the channel stance is filled in on the site; the openai.com incident link answers 403 to the checker now and then (opens for a person).
+- 2026-09-28 09:47 UTC: final approved by the owner on /admin/videos (and recorded from the chat, same hash); `package` 4/4; publish gate auto-approved (「可以上架」); dubs gate sent with en, ja, ko and waiting for the owner to upload the tracks in Studio's Languages page and approve it. Left for the owner: upload private per `upload/UPLOAD.md`, paste the YouTube URL and publish time on the card, then fill `scoreboard.csv` at 48 h, 7 d and 28 d.
