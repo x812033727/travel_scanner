@@ -39,6 +39,7 @@ from app.news_automation.policy import (
     hard_policy_problems,
     normalized_title,
     transition_allowed,
+    trusted_alone_sites,
 )
 from app.news_automation.scanner import claim_due_sources, classify_vertical, scan_source
 from app.news_automation.schemas import FetchResult
@@ -462,6 +463,95 @@ async def test_evidence_is_refetched_and_changed_content_fails_closed() -> None:
     assert reasons == [f"source_content_changed:{evidence.url}"]
 
 
+def test_extractor_keeps_the_story_past_self_closing_tags_and_skips_page_chrome() -> None:
+    # SEC: the first "<.../>" in <main> used to end the capture after the side navigation.
+    _, text, _ = extract_article(
+        b'<main><nav><a href="/news">Newsroom</a></nav><img src="seal.png"/>'
+        b"<p>The Commission adopted the rule.<br/>It takes effect in May.</p></main>",
+        "https://www.sec.gov/newsroom/press-releases/1",
+    )
+    assert text == "The Commission adopted the rule.\nIt takes effect in May."
+    # Cloudflare: a tag list and a player script ahead of the story; Meta: a <style> block.
+    _, text, links = extract_article(
+        b'<article><div class="tags"><button>Show 5 tags</button>'
+        b'<aside><a href="/tag/ai">AI</a></aside></div>'
+        b"<style>.x{color:red}</style><script>jwplayer('id-66f7')</script>"
+        b'<p>Workers now start in 2 ms. <a href="https://other.example/a">Source</a></p>'
+        b"<footer>Share</footer></article>",
+        "https://blog.cloudflare.com/post",
+    )
+    assert text == "Workers now start in 2 ms.\nSource"
+    assert links == ["https://other.example/a"], "no links from skipped chrome"
+    # An unclosed <li> or <p> neither ends the region nor keeps it open past </main>.
+    _, text, _ = extract_article(
+        b"<main><ul><li>One<li>Two</ul><p>Three</main><div>Site footer text</div>",
+        "https://example.com/story",
+    )
+    assert text == "One\nTwo\nThree"
+    # Per-source regions and exclusions (Chainalysis keeps its story outside <article>).
+    _, text, _ = extract_article(
+        b'<article class="card">Related post</article>'
+        b'<div class="single-post__content"><p>Hack traced.</p>'
+        b'<div id="newsletter">Subscribe</div></div>',
+        "https://www.chainalysis.com/blog/x/",
+        {
+            "article_tags": [],
+            "article_classes": ["single-post__content"],
+            "exclude_ids": ["newsletter"],
+        },
+    )
+    assert text == "Hack traced."
+
+
+@pytest.mark.asyncio
+async def test_evidence_stored_by_the_old_extractor_still_matches_until_the_story_changes() -> (
+    None
+):
+    source = NewsSource(
+        name="Official",
+        url="https://example.com/feed",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        is_first_party=True,
+        enabled=True,
+    )
+    body = (
+        b"<html><main><script>player('a1')</script>"
+        b"<p>Official product update with API availability details.</p></main></html>"
+    )
+    _, legacy_text, _ = extract_article(body, "https://example.com/release", legacy=True)
+    _, text, _ = extract_article(body, "https://example.com/release")
+    assert content_fingerprint(legacy_text) != content_fingerprint(text)
+    evidence = NewsEvidence(
+        candidate_id=uuid4(),
+        role="evidence",
+        is_first_party=True,
+        url="https://example.com/release",
+        title="Official product update",
+        content_hash=content_fingerprint(legacy_text),
+        excerpt=legacy_text,
+    )
+    session = AsyncMock()
+    session.scalars.return_value = [source]
+    fetcher = AsyncMock()
+    fetcher.fetch.return_value = FetchResult(
+        url=evidence.url, status_code=200, content_type="text/html", body=body
+    )
+    assert await revalidate_evidence(session, [evidence], fetcher=fetcher) == (True, [])
+
+    fetcher.fetch.return_value = FetchResult(
+        url=evidence.url,
+        status_code=200,
+        content_type="text/html",
+        body=body.replace(b"API availability", b"no API"),
+    )
+    assert await revalidate_evidence(session, [evidence], fetcher=fetcher) == (
+        False,
+        [f"source_content_changed:{evidence.url}"],
+    )
+
+
 @pytest.mark.asyncio
 async def test_scanner_skips_unreachable_pages_and_never_refetches_seen_entries() -> None:
     engine = create_async_engine("sqlite+aiosqlite://")
@@ -750,6 +840,22 @@ def test_pages_of_one_website_are_one_source() -> None:
     )
     assert not auto_evidence_ok([row("https://www.theverge.com/story")])
     assert not auto_evidence_ok([row("https://openai.com/index/a", True, role="lead_only")])
+    # A newsroom the owner trusts to stand alone (2026-09-28), set per source in its config.
+    sources = [
+        NewsSource(
+            url="https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
+            config_json={"auto_publish_alone": True},
+            allowed_redirect_hosts_json=["www.theverge-cdn.example"],
+        ),
+        NewsSource(url="https://decrypt.co/feed", config_json={}),
+    ]
+    trusted = trusted_alone_sites(sources)
+    assert trusted == {"theverge.com", "theverge-cdn.example"}
+    assert auto_evidence_ok([row("https://www.theverge.com/story")], trusted)
+    assert not auto_evidence_ok([row("https://decrypt.co/story")], trusted)
+    assert not auto_evidence_ok(
+        [row("https://www.theverge.com/story", role="lead_only")], trusted
+    ), "a lead-only page is never evidence"
 
 
 def test_one_evidence_page_is_enough_to_draft_and_to_pass_the_source_check() -> None:

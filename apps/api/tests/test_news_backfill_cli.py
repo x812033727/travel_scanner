@@ -218,3 +218,119 @@ async def test_jev_quota_holds_are_reopened_paused_and_not_queued(
     assert rows[uncertain_id].status == "manual_review", (
         "a real uncertain check stays for an editor"
     )
+
+
+@pytest.mark.asyncio
+async def test_refetch_source_rereads_not_newsworthy_stories_and_queues_the_readable_ones(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """2026-09-28: the extractor kept only tag lists, so the writer rejected real stories."""
+    engine = create_async_engine(f"sqlite+aiosqlite:///{tmp_path / 'news.db'}")
+    tables = cast(
+        list[Table],
+        [
+            User.__table__,
+            NewsSource.__table__,
+            NewsCandidate.__table__,
+            NewsEvidence.__table__,
+            AdminAuditLog.__table__,
+        ],
+    )
+    async with engine.begin() as connection:
+        await connection.run_sync(lambda sync: Base.metadata.create_all(sync, tables=tables))
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    published = datetime(2026, 9, 25, tzinfo=UTC)
+    async with factory() as session:
+        session.add(User(email="owner@example.com", password_hash="unused", is_admin=True))
+        blog = NewsSource(
+            name="Blog",
+            url="https://blog.example/rss",
+            format="rss",
+            role="evidence",
+            vertical="tech",
+            is_first_party=True,
+            enabled=True,
+        )
+        other = NewsSource(
+            name="Other",
+            url="https://other.example/rss",
+            format="rss",
+            role="evidence",
+            vertical="tech",
+            enabled=True,
+        )
+        session.add_all([blog, other])
+        await session.flush()
+        readable = _candidate(blog, "rejected", "news_not_eligible", published)
+        gone = _candidate(blog, "rejected", "news_not_eligible", published)
+        by_person = _candidate(blog, "rejected", "news_not_eligible", published)
+        elsewhere = _candidate(other, "rejected", "news_not_eligible", published)
+        for row in (readable, gone, elsewhere):
+            row.human_decision = None
+        session.add_all([readable, gone, by_person, elsewhere])
+        await session.flush()
+        for row, path in ((readable, "ok"), (gone, "gone")):
+            session.add(
+                NewsEvidence(
+                    candidate_id=row.id,
+                    role="evidence",
+                    is_first_party=True,
+                    url=f"https://blog.example/{path}",
+                    title="Post",
+                    content_hash="h" * 64,
+                    excerpt="AI | Security | All tags",
+                )
+            )
+        await session.commit()
+        readable_id, gone_id = readable.id, gone.id
+
+    async def refresh(
+        session: Any, evidence: list[NewsEvidence], **_kwargs: Any
+    ) -> tuple[list[str], list[str]]:
+        if any(row.url.endswith("/gone") for row in evidence):
+            return [], ["source_refetch_failed:https://blog.example/gone:HTTPStatusError"]
+        for row in evidence:
+            row.excerpt = "The story body."
+        return [row.url for row in evidence], []
+
+    queued: list[UUID] = []
+    monkeypatch.setattr(backfill_cli, "SessionFactory", factory)
+    monkeypatch.setattr(backfill_cli, "engine", engine)
+    monkeypatch.setattr(backfill_cli, "refresh_evidence", refresh)
+    monkeypatch.setattr(backfill_cli, "get_redis", lambda: None)
+    monkeypatch.setattr(
+        jobs,
+        "enqueue_candidate",
+        lambda candidate_id, retry_count=0: queued.append(candidate_id) or "job",
+    )
+
+    listed = await backfill_cli.run(
+        since=date(2026, 9, 20),
+        limit=None,
+        apply=False,
+        actor_email=None,
+        reason="Refetch",
+        refetch_sources=["Blog"],
+    )
+    assert listed["candidates"] == 2, "the person's rejection and the other source stay out"
+
+    applied = await backfill_cli.run(
+        since=date(2026, 9, 20),
+        limit=None,
+        apply=True,
+        actor_email="owner@example.com",
+        reason="Refetch",
+        refetch_sources=["Blog"],
+    )
+    assert queued == [readable_id]
+    assert applied["queued"] == 1
+    assert list(applied["refetch_problems"]) == [str(gone_id)]
+    async with factory() as session:
+        rows = {row.id: row for row in await session.scalars(select(NewsCandidate))}
+        excerpt = await session.scalar(
+            select(NewsEvidence.excerpt).where(NewsEvidence.candidate_id == readable_id)
+        )
+    await engine.dispose()
+    assert (rows[readable_id].status, rows[readable_id].error_code) == ("discovered", None)
+    assert (rows[gone_id].status, rows[gone_id].error_code) == ("rejected", "news_not_eligible")
+    assert excerpt == "The story body."

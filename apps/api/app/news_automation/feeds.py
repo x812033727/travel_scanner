@@ -148,7 +148,17 @@ class _AnchorParser(HTMLParser):
             self._text = []
 
 
-class _ArticleParser(HTMLParser):
+class _LegacyArticleParser(HTMLParser):
+    """The extractor every evidence hash stored before 2026-09-28 was computed with.
+
+    It ends the capture at the first self-closing tag (``<img/>``, ``<br/>``) and pops end
+    tags by depth without checking the name, so on Cloudflare, Chainalysis and SEC pages it
+    kept a tag list or site navigation instead of the story. The publish revalidation
+    (``validation._legacy_match``) still compares against it when its authenticated text
+    covers the entire current story. Truncated legacy captures require fresh evidence.
+    Once no such candidate waits (retention clears them after 90 days) this class can go.
+    """
+
     _void_tags = {
         "area",
         "base",
@@ -224,6 +234,119 @@ class _ArticleParser(HTMLParser):
                 self.text.append(value)
 
 
+# Subtrees that are never the story: scripts carry per-render ids, and navigation, tag
+# lists, share buttons and "most popular" rails change between renders or crowd the
+# story out of the 8,000-character excerpt.
+SKIPPED_TAGS = frozenset(
+    {
+        "script",
+        "style",
+        "noscript",
+        "template",
+        "svg",
+        "iframe",
+        "nav",
+        "aside",
+        "footer",
+        "form",
+        "button",
+        "select",
+    }
+)
+
+
+class _ArticleParser(HTMLParser):
+    _void_tags = _LegacyArticleParser._void_tags
+
+    def __init__(self, config: dict[str, object]) -> None:
+        super().__init__(convert_charrefs=True)
+        self.tags = _names(config.get("article_tags", ["article", "main"]), {"article", "main"})
+        self.ids = _values(config.get("article_ids", []))
+        self.classes = _values(config.get("article_classes", []))
+        self.skip_tags = SKIPPED_TAGS | _names(config.get("exclude_tags", []), set())
+        self.skip_ids = _values(config.get("exclude_ids", []))
+        self.skip_classes = _values(config.get("exclude_classes", []))
+        # Open elements by name. An end tag closes up to its nearest open namesake, so an
+        # unclosed <p> or <li> neither ends the region early nor keeps it open past its end.
+        self.stack: list[str] = []
+        self.capture_depths: list[int] = []
+        self.skip_depths: list[int] = []
+        self.text: list[str] = []
+        self.links: list[str] = []
+        self.title = ""
+        self._title = False
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        self._start(tag, attrs, closed=False)
+
+    def handle_startendtag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        # "<br/>" or "<img/>": an element with nothing inside, never an end of the region.
+        self._start(tag, attrs, closed=True)
+
+    def _start(self, tag: str, attrs: list[tuple[str, str | None]], *, closed: bool) -> None:
+        lowered = tag.casefold()
+        values = dict(attrs)
+        element_id = values.get("id") or ""
+        element_classes = set((values.get("class") or "").split())
+        if lowered == "title":
+            self._title = not closed
+        if closed or lowered in self._void_tags:
+            if lowered == "a":
+                self._link(values)
+            return
+        self.stack.append(lowered)
+        depth = len(self.stack)
+        if (
+            lowered in self.skip_tags
+            or element_id in self.skip_ids
+            or bool(element_classes & self.skip_classes)
+        ):
+            self.skip_depths.append(depth)
+        elif (
+            lowered in self.tags or element_id in self.ids or bool(element_classes & self.classes)
+        ):
+            self.capture_depths.append(depth)
+        if lowered == "a":
+            self._link(values)
+
+    def _link(self, values: dict[str, str | None]) -> None:
+        href = values.get("href")
+        if href and self.capture_depths and not self.skip_depths:
+            self.links.append(href)
+
+    def handle_endtag(self, tag: str) -> None:
+        lowered = tag.casefold()
+        if lowered == "title":
+            self._title = False
+        if lowered not in self.stack:
+            return
+        while self.stack:
+            closed = self.stack.pop()
+            depth = len(self.stack) + 1
+            while self.capture_depths and self.capture_depths[-1] >= depth:
+                self.capture_depths.pop()
+            while self.skip_depths and self.skip_depths[-1] >= depth:
+                self.skip_depths.pop()
+            if closed == lowered:
+                break
+
+    def handle_data(self, data: str) -> None:
+        if self._title and not self.title:
+            self.title = _plain(data)
+        if self.capture_depths and not self.skip_depths:
+            value = _plain(data)
+            if value:
+                self.text.append(value)
+
+
+def _names(raw: object, default: set[str]) -> set[str]:
+    return {str(value).casefold() for value in raw} if isinstance(raw, list) else default
+
+
+def _values(raw: object) -> set[str]:
+    return {str(value) for value in raw} if isinstance(raw, list) else set()
+
+
 def _plain(value: str) -> str:
     return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", value)).strip()
 
@@ -260,9 +383,21 @@ def parse_html_listing(body: bytes, base_url: str, config: dict[str, object]) ->
 
 
 def extract_article(
-    body: bytes, base_url: str, config: dict[str, object] | None = None
+    body: bytes,
+    base_url: str,
+    config: dict[str, object] | None = None,
+    *,
+    legacy: bool = False,
 ) -> tuple[str, str, list[str]]:
-    parser = _ArticleParser(config or {})
+    """Title, story text and in-story links of one page.
+
+    ``legacy`` reproduces the pre-2026-09-28 extractor, only so evidence stored with it can
+    still be compared (see ``_LegacyArticleParser``).
+    """
+
+    parser: _ArticleParser | _LegacyArticleParser = (
+        _LegacyArticleParser(config or {}) if legacy else _ArticleParser(config or {})
+    )
     parser.feed(body.decode("utf-8", errors="replace"))
     text = "\n".join(parser.text)
     links = [url for url in (_join(base_url, href) for href in parser.links) if url]

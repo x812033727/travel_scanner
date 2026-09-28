@@ -83,6 +83,7 @@ adminCapabilities.owner = [...new Set(Object.values(adminCapabilities).flat()), 
 const adminNavigation = [
   ["dashboard", "overview", "/admin", "dashboard.read"],
   ["guides", "content", "/admin/guides", "content.read"],
+  ["videos", "content", "/admin/videos", "content.read", "video_reviews_pending"],
   ["hotspots", "content", "/admin/hotspots", "content.read", "hotspots_pending"],
   ["foods", "content", "/admin/foods", "content.read", "foods_pending"],
   ["hotels", "content", "/admin/hotels", "content.read", "hotels_pending"],
@@ -129,7 +130,7 @@ function adminBootstrap(request) {
     },
     environment: "e2e-isolated",
     navigation: adminNavigation.filter((item) => capabilitySet.has(item.capability)),
-    pending: { users: 3, hotspots_pending: 2, foods_pending: 1, hotels_pending: 1, community_jobs_pending: 0 },
+    pending: { users: 3, hotspots_pending: 2, foods_pending: 1, hotels_pending: 1, community_jobs_pending: 0, video_reviews_pending: 0 },
     system: {
       database: { status: "healthy", detail: "fixture schema current" },
       redis: { status: "healthy" },
@@ -144,9 +145,29 @@ function adminBootstrap(request) {
   };
 }
 
+// Browser <a download> requests bypass Playwright route interception. Serve these
+// synthetic bytes over HTTP so manual-upload cases exercise the real streaming BFF.
+const manualUploadFiles = new Map([
+  [2, "final"], [3, "thumbnail"], [5, "captions_zh_tw"], [6, "captions_zh-CN"],
+  [7, "captions_en"], [8, "captions_ja"], [9, "captions_ko"],
+].map(([value, role]) => [value.toString(16).padStart(2, "0").repeat(32), `Synthetic download fixture: ${role}\n`]));
+const manualUploadFilePrefix = "/api/v1/admin/videos/manual-upload-fixture/files/";
+
 const server = createServer((request, response) => {
   response.setHeader("Cache-Control", "no-store");
   response.setHeader("Content-Type", "application/json");
+  if (request.method === "GET" && request.url?.startsWith(manualUploadFilePrefix)) {
+    const body = manualUploadFiles.get(request.url.slice(manualUploadFilePrefix.length));
+    if (!body) {
+      response.statusCode = 404;
+      response.end(JSON.stringify({ detail: "Unknown synthetic file" }));
+      return;
+    }
+    response.setHeader("Content-Type", "application/octet-stream");
+    response.setHeader("Content-Length", Buffer.byteLength(body));
+    response.end(body);
+    return;
+  }
   // Match the default production switch explicitly; homepage SSR tests must not
   // accidentally rely on an unimplemented endpoint returning 404.
   if (request.method === "GET" && request.url === "/api/v1/discovery/status") {
