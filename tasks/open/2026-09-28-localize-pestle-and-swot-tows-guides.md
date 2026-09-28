@@ -1,7 +1,7 @@
 ---
 id: 2026-09-28-localize-pestle-and-swot-tows-guides
 title: Localize PESTLE and SWOT/TOWS guides in five languages (Batch039 Pair B)
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-batch039-pair-b
@@ -33,7 +33,7 @@ without altering the published originals.
 - [x] Both packs contain complete zh-CN, en, ja and ko title, description, body, table, alt, caption and source-title translations.
 - [x] Each target locale has a translated hero SVG/JPG and diagram SVG with browser-checked text fit.
 - [x] Pinned source facts, qualifiers, URLs/dates, exact ArticleInline targets, and zh-TW/root metadata survive structural and hash audit.
-- [ ] A scoped evidence record and draft PR are ready for editorial review; live release remains a separate gate.
+- [x] A scoped evidence record and draft PR are ready for editorial review; live release remains a separate gate.
 
 ## Steps
 
@@ -41,7 +41,7 @@ without altering the published originals.
 - [x] Translate and review all four target documents for both articles.
 - [x] Render and inspect localized SVGs and hero JPGs across all target locales.
 - [x] Run scoped lint, API/web tests, task check, browser layout QA and final content/asset hash audit.
-- [ ] Open draft PR only after content QA and record any external CI blocker.
+- [x] Open draft PR only after content QA and record any external CI blocker.
 
 ## How to verify
 
@@ -53,3 +53,4 @@ Run `uv run python -m app.guides.pack_cli lint --kind life --slug pestle-busines
 - Pinned candidate inventory SHA-256 `3ce92eeeb90f1793988308dacf1d93729b5a0ee61d8e0e98a9a769e68c7d666f`; guarded four-lock read-only receipt `C:/Users/x8120/.codex/article-localization-release/batch039-strategy-readonly-inventory-20260928/receipt-20260928T115126Z.json` SHA-256 `e156935e618b5233d63a5c8981db2dda0837f9cfceefded365fdd75d9485024f`. Both source packs and six original assets still match inventory on current main; receipt captured published zh-TW v4 with no target locales at 2026-09-28T11:51:28Z.
 - The earlier two Alembic migration heads were joined by main PR #918. This branch merged `origin/main` `ebde813d6a7fa9cdd8282bfa2400d002c0a6add8`; `uv run alembic heads` reports one head, `0111_video_story_series`. PR CI remains an independent check.
 - Final audit: 26 content/asset files, zero issues; 16 final SVG browser cases and 16 desktop/mobile article preview cases, zero issues. API guide tests: 67 passed, 5 skipped; pack lint, web typecheck, task check, and diff check pass. Local Windows Vitest stopped at thread-worker startup for all three targeted guide suites and did not execute assertions; PR CI must validate them. Details and hashes: `docs/article-localization/batch039-pair-b-evidence.md`.
+- Draft PR [#928](https://github.com/x812033727/travel_scanner/pull/928) was opened with `isDraft: true` and no auto-merge request. CI is pending; no import, deployment, or publication occurred.
