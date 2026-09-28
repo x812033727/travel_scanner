@@ -1,0 +1,991 @@
+{
+  "schema_version": 1,
+  "slug": "ai-price-war-gpt-6-sol-vs-opus-5-5",
+  "format": "slides",
+  "source_guide": "ai-news-gpt-6-sol-luna-20260923",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "台灣國語、台灣腔，輕鬆、像在跟朋友解釋，有起伏、中等偏快",
+    "model": "gemini-3.8-flash-tts"
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "GPT-6 Sol、Luna 和 Claude Opus 5.5 同一天降價，你的 AI 帳單會少多少？",
+    "description": "OpenAI 和 Anthropic 同一天降價，這支用你的實際用量，算出換模型後每月真正省多少。\n給用 API 或訂閱 AI、想搞懂「便宜五成」到底跟自己帳單有沒有關係的人。\n\n三個百分比比的不是同一件事：五成比的是促銷價，四成是廠商自估的成本，只有兩成是牌價。影片用聊天型、代理型、批次型三種用量，把 GPT-6 Sol、Luna、Claude Opus 5.5、Sonnet 5、Gemini 3.8 Flash 的每月帳單算給你看，並告訴你什麼時候該換、什麼時候先別動。",
+    "tags": [
+      "GPT-6 Sol",
+      "GPT-6 Luna",
+      "Claude Opus 5.5",
+      "AI API 價格",
+      "OpenAI 降價",
+      "Anthropic",
+      "Gemini 3.8 Flash",
+      "AI 帳單",
+      "token 成本",
+      "AI 模型比較"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "PRICE WAR",
+      "headline": "50% off?\n**先看清楚**",
+      "sub": "GPT-6 Sol · Luna · Opus 5.5"
+    }
+  },
+  "sources": [
+    {
+      "title": "OpenAI：Introducing GPT-6 Sol and Luna",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "OpenAI API Pricing",
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Anthropic：Introducing Claude Opus 5.5",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Anthropic Pricing",
+      "url": "https://www.anthropic.com/pricing",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Gemini API Pricing",
+      "url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "checked_on": "2026-09-28"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "two-price-cuts",
+      "chapter": "你的 AI 帳單會少多少",
+      "template": "title",
+      "data": {
+        "tag": "AI 帳單",
+        "title": "三家同一天降價，**你的帳單會少多少**？",
+        "subtitle": "三個「便宜多少」，其實比的不是同一件事"
+      },
+      "lines": [
+        {
+          "id": "ayvr",
+          "text": "OpenAI 說便宜五成，Anthropic 說便宜四成，就在同一天。"
+        },
+        {
+          "id": "2xba",
+          "text": "但這兩個數字比的不是同一件事，換了之後有時一毛都不會少。"
+        },
+        {
+          "id": "nnq8",
+          "text": "這支用三種常見用量，把每一家的月帳單算給你看。"
+        }
+      ]
+    },
+    {
+      "id": "three-list-prices",
+      "chapter": "三家的牌價先擺出來",
+      "template": "stats",
+      "data": {
+        "title": "三家的牌價，先擺出來",
+        "stats": [
+          {
+            "value": "$2 / $10",
+            "label": "GPT-6 Sol 每百萬輸入／輸出"
+          },
+          {
+            "value": "$0.10 / $0.50",
+            "label": "GPT-6 Luna 每百萬輸入／輸出"
+          },
+          {
+            "value": "$4 / $20",
+            "label": "Claude Opus 5.5 每百萬輸入／輸出"
+          }
+        ],
+        "source": "每百萬 token、短脈絡，2026 年 9 月官方價目表"
+      },
+      "claims": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "x53m",
+          "text": "先把三家的牌價擺出來，看的是每百萬 token 的輸入和輸出。",
+          "reveal": 1
+        },
+        {
+          "id": "a4jn",
+          "text": "GPT-6 Luna 最便宜，輸入一角、輸出五角美元。",
+          "reveal": 1
+        },
+        {
+          "id": "u6u7",
+          "text": "Claude Opus 5.5 最貴，輸入四塊、輸出二十塊美元。",
+          "reveal": 1
+        },
+        {
+          "id": "u5h2",
+          "text": "光看這幾個數字，你還看不出換了會不會比較省。"
+        },
+        {
+          "id": "efbw",
+          "text": "因為真正的帳單，要看你每個月送進去和吐出來多少字。"
+        }
+      ]
+    },
+    {
+      "id": "openai-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "OpenAI 公告原文",
+        "quote": "reducing API prices for Sol and Luna by 50%",
+        "translation": "把 Sol 與 Luna 的 API 價格降一半",
+        "source": "OpenAI：Introducing GPT-6 Sol and Luna"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "s4nh",
+          "text": "先看 OpenAI 這次怎麼說，它說把價格砍一半。"
+        },
+        {
+          "id": "myq6",
+          "text": "但關鍵在後面那句：砍的是 GPT-5.6 的促銷價，不是原價。",
+          "reveal": 1
+        },
+        {
+          "id": "bg95",
+          "text": "跟促銷價比的降幅，最容易讓人誤會省很多。"
+        }
+      ]
+    },
+    {
+      "id": "anthropic-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "Anthropic 公告原文",
+        "quote": "40% less to run than Opus 5",
+        "translation": "執行成本比 Opus 5 少四成",
+        "source": "Anthropic：Introducing Claude Opus 5.5"
+      },
+      "claims": [
+        "c5",
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "dz5g",
+          "text": "Anthropic 這邊的四成，用的字是「執行成本」，不是價格。"
+        },
+        {
+          "id": "vnit",
+          "text": "它自己也寫，這是在預設設定、一般工作負載下估出來的。",
+          "reveal": 1
+        },
+        {
+          "id": "hcrz",
+          "text": "換句話說，這四成裡有一部分，是它假設你用的字變少。"
+        }
+      ]
+    },
+    {
+      "id": "what-percent-means",
+      "chapter": "三個百分比，各比各的",
+      "template": "compare",
+      "data": {
+        "title": "三個「便宜」，各比各的",
+        "left": {
+          "heading": "OpenAI 的五成",
+          "points": [
+            "跟 GPT-5.6 促銷價比",
+            "不是跟原價比"
+          ]
+        },
+        "right": {
+          "heading": "Anthropic 的四成",
+          "points": [
+            "是自己估的執行成本",
+            "含每個任務用的 token 變少"
+          ]
+        },
+        "verdict": "三個數字裡，只有一個是價目表上的牌價"
+      },
+      "lines": [
+        {
+          "id": "ptxw",
+          "text": "把兩家的數字分清楚。第一個，OpenAI 的便宜五成。",
+          "reveal": 1
+        },
+        {
+          "id": "h4mb",
+          "text": "第二個，Anthropic 的少四成，那是它自己估的成本，不是牌價。",
+          "reveal": 1
+        },
+        {
+          "id": "c5si",
+          "text": "成本估計會把「你用的字變少」也算進去，跟單價無關。"
+        },
+        {
+          "id": "j9p9",
+          "text": "所以這兩個數字，都不能直接當成你會少付的錢。"
+        },
+        {
+          "id": "qdfn",
+          "text": "很多人看到五成就直接換，這一步最容易白忙。"
+        }
+      ]
+    },
+    {
+      "id": "real-list-cut",
+      "template": "big",
+      "data": {
+        "kicker": "真正的牌價降幅",
+        "text": "20%",
+        "sub": "Opus 5.5 的輸入和輸出，比 Opus 5 少兩成"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "ybzn",
+          "text": "那哪一個數字，是你一定會付到的？"
+        },
+        {
+          "id": "5te6",
+          "text": "真正印在價目表上的牌價降幅，是這個兩成。"
+        },
+        {
+          "id": "v2sd",
+          "text": "Opus 5.5 的輸入和輸出，比前一代少兩成。"
+        },
+        {
+          "id": "9m3t",
+          "text": "剩下多出來的省錢，是廠商假設你用的字變少才湊出來的。"
+        }
+      ]
+    },
+    {
+      "id": "three-words",
+      "template": "bullets",
+      "data": {
+        "title": "三個詞，別混在一起",
+        "items": [
+          "促銷價：有期限的暫時價",
+          "牌價：價目表上的公定價",
+          "成本估計：廠商自己算出來的"
+        ]
+      },
+      "lines": [
+        {
+          "id": "t9dp",
+          "text": "所以看到便宜多少，先問一句話：跟什麼比。",
+          "reveal": 1
+        },
+        {
+          "id": "8nd2",
+          "text": "促銷價會到期，牌價才是你長期真的會付的價。",
+          "reveal": 1
+        },
+        {
+          "id": "bu8a",
+          "text": "成本估計是廠商自己算的，跟你的帳單是兩回事。",
+          "reveal": 1
+        },
+        {
+          "id": "daj9",
+          "text": "把這三個詞分開，你就不會被標題騙。"
+        }
+      ]
+    },
+    {
+      "id": "three-tokens",
+      "chapter": "帳單上的三種 token",
+      "template": "steps",
+      "data": {
+        "title": "你的帳單，三種 token",
+        "steps": [
+          {
+            "title": "輸入",
+            "detail": "你送進去的字"
+          },
+          {
+            "title": "輸出",
+            "detail": "模型回你的字"
+          },
+          {
+            "title": "快取讀取",
+            "detail": "重複用到的內容，最便宜"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "exph",
+          "text": "要算帳，先認得帳單上的三種 token。",
+          "reveal": 1
+        },
+        {
+          "id": "jeuh",
+          "text": "輸入是你送進去的字，輸出是模型回給你的字。",
+          "reveal": 1
+        },
+        {
+          "id": "qh23",
+          "text": "第三種叫快取讀取，是重複用到的舊內容，價格最低。",
+          "reveal": 1
+        },
+        {
+          "id": "f87w",
+          "text": "這三種的單價都不一樣，混在一起你就算不準。"
+        }
+      ]
+    },
+    {
+      "id": "cache-example",
+      "template": "chat",
+      "data": {
+        "title": "快取讀取是什麼",
+        "messages": [
+          {
+            "side": "right",
+            "name": "你",
+            "text": "我把同一份長文件問了十次，這樣很貴嗎？"
+          },
+          {
+            "side": "left",
+            "name": "算帳",
+            "text": "文件第一次是輸入，後面九次多半算快取讀取，便宜很多。"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "quvt",
+          "text": "舉個例子，你把同一份長文件問了十次。",
+          "reveal": 1
+        },
+        {
+          "id": "nzmd",
+          "text": "第一次整份算輸入，後面重複的部分多半算快取讀取。",
+          "reveal": 1
+        },
+        {
+          "id": "8avf",
+          "text": "這也是為什麼一直來回的代理型工作，快取讀取會佔一部分。"
+        }
+      ]
+    },
+    {
+      "id": "why-agent-costs",
+      "template": "steps",
+      "data": {
+        "title": "代理型為什麼特別貴",
+        "steps": [
+          {
+            "title": "每一輪都重讀",
+            "detail": "把前面的內容再送一次"
+          },
+          {
+            "title": "來回很多輪",
+            "detail": "一件事做好幾步"
+          },
+          {
+            "title": "輸出堆起來",
+            "detail": "每一步都吐字"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "b2ms",
+          "text": "這裡先解釋，為什麼代理型的帳單特別可怕。",
+          "reveal": 1
+        },
+        {
+          "id": "ixba",
+          "text": "它每做一步，都會把前面的內容再送一次，所以輸入不斷累積。",
+          "reveal": 1
+        },
+        {
+          "id": "wka7",
+          "text": "加上來回很多輪、每一步都吐字，輸出就堆起來了。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "output-is-the-gap",
+      "template": "bullets",
+      "data": {
+        "title": "差最多的是輸出",
+        "items": [
+          "快取讀取，兩家都是兩角美元",
+          "輸出價，三家差最多",
+          "聊天型看輸入，代理型看輸出"
+        ]
+      },
+      "lines": [
+        {
+          "id": "tpzs",
+          "text": "有意思的是，快取讀取兩家一樣，都是兩角美元。",
+          "reveal": 1
+        },
+        {
+          "id": "vkkv",
+          "text": "真正把三家拉開差距的，是輸出的價格。",
+          "reveal": 1
+        },
+        {
+          "id": "j9h8",
+          "text": "所以聊天型的工作看輸入，代理型的工作要看輸出。",
+          "reveal": 1
+        },
+        {
+          "id": "vrqe",
+          "text": "記住這一點，下面的帳單你就看得懂。"
+        }
+      ]
+    },
+    {
+      "id": "monthly-bill",
+      "chapter": "三種用量的每月帳單",
+      "template": "table",
+      "data": {
+        "title": "三種用量，五個模型",
+        "columns": [
+          "每月",
+          "聊天型",
+          "代理型",
+          "批次型"
+        ],
+        "rows": [
+          [
+            "GPT-6 Sol",
+            "$20",
+            "$74",
+            "$500"
+          ],
+          [
+            "GPT-6 Luna",
+            "$1",
+            "$3.7",
+            "$25"
+          ],
+          [
+            "Opus 5.5",
+            "$40",
+            "$138",
+            "$1000"
+          ],
+          [
+            "Sonnet 5",
+            "$20",
+            "$74",
+            "$500"
+          ],
+          [
+            "Gemini 3.8 Flash",
+            "$7.5",
+            "$28",
+            "$188"
+          ]
+        ],
+        "highlight": 1
+      },
+      "claims": [
+        "c1",
+        "c2",
+        "c3",
+        "c6",
+        "c7",
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "85qy",
+          "text": "把三種每月用量，套進五個模型，帳單長這樣。"
+        },
+        {
+          "id": "ba4p",
+          "text": "聊天型是小量問答，代理型會一直來回，批次型是大量整理。"
+        },
+        {
+          "id": "f8ui",
+          "text": "先看聊天型這欄，最便宜和最貴之間差了幾十倍。"
+        },
+        {
+          "id": "de7v",
+          "text": "再看代理型，因為來回多，每一家的金額都跳上去。"
+        },
+        {
+          "id": "4txq",
+          "text": "最便宜的是 GPT-6 Luna，但它不是每種工作都夠聰明。"
+        },
+        {
+          "id": "229i",
+          "text": "Gemini 3.8 Flash 這一列是促銷價，年底之後會漲。"
+        },
+        {
+          "id": "gcyy",
+          "text": "同一個模型，在不同用量下的排名也會不一樣。"
+        }
+      ]
+    },
+    {
+      "id": "luna-enough",
+      "template": "chat",
+      "data": {
+        "title": "最便宜的夠用嗎",
+        "messages": [
+          {
+            "side": "right",
+            "name": "你",
+            "text": "那我全部都用最便宜的 Luna 就好了？"
+          },
+          {
+            "side": "left",
+            "name": "算帳",
+            "text": "簡單工作可以，難題和長任務常常還是要用貴的。"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "q6r7",
+          "text": "看到最便宜的，你可能想全部都用它就好。",
+          "reveal": 1
+        },
+        {
+          "id": "7x9b",
+          "text": "但便宜的模型，難題和長任務常常還是撐不住。",
+          "reveal": 1
+        },
+        {
+          "id": "q8a9",
+          "text": "常見的做法是簡單的用便宜的，難的才丟給貴的。"
+        }
+      ]
+    },
+    {
+      "id": "scenario-walk",
+      "template": "steps",
+      "data": {
+        "title": "帳單是怎麼算出來的",
+        "steps": [
+          {
+            "title": "聊天型",
+            "detail": "五百萬輸入、一百萬輸出"
+          },
+          {
+            "title": "代理型",
+            "detail": "來回很多，輸出佔大頭"
+          },
+          {
+            "title": "批次型",
+            "detail": "兩億輸入、大量整理"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "2p28",
+          "text": "這些金額不是我喊的，是照官方單價乘出來的。",
+          "reveal": 1
+        },
+        {
+          "id": "kpte",
+          "text": "聊天型假設每月五百萬字輸入、一百萬字輸出。",
+          "reveal": 1
+        },
+        {
+          "id": "hq7m",
+          "text": "代理型會一直來回，輸出佔了帳單的大頭。",
+          "reveal": 1
+        },
+        {
+          "id": "4dsr",
+          "text": "你只要換成自己的字數，用同一個算法就能算自己的。"
+        },
+        {
+          "id": "hbbh",
+          "text": "這三種用量，涵蓋了大部分人真正的用法。"
+        }
+      ]
+    },
+    {
+      "id": "compare-to-last-gen",
+      "template": "stats",
+      "data": {
+        "title": "跟前一代比，才看得出降多少",
+        "stats": [
+          {
+            "value": "$40 → $20",
+            "label": "GPT-5.6 Sol 到 GPT-6 Sol",
+            "note": "聊天型，剛好一半"
+          },
+          {
+            "value": "$184 → $138",
+            "label": "Opus 5 到 Opus 5.5",
+            "note": "代理型，少約兩成五"
+          }
+        ],
+        "source": "情境金額為官方牌價實算，2026 年 9 月"
+      },
+      "claims": [
+        "c5",
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "fpax",
+          "text": "把新舊兩代放在一起，降價的意義才看得出來。",
+          "reveal": 1
+        },
+        {
+          "id": "qiu7",
+          "text": "聊天型從四十掉到二十，剛好一半，對得上五成。",
+          "reveal": 1
+        },
+        {
+          "id": "68yw",
+          "text": "但代理型從一百八掉到一百三十八，只少約兩成五。",
+          "reveal": 1
+        },
+        {
+          "id": "kczt",
+          "text": "同一次降價，換算到不同用量，感受差很多。"
+        }
+      ]
+    },
+    {
+      "id": "short-context-note",
+      "template": "big",
+      "data": {
+        "kicker": "這裡都算短脈絡",
+        "text": "還有長脈絡",
+        "sub": "文件很長時，單價會更高，另外算"
+      },
+      "lines": [
+        {
+          "id": "6td8",
+          "text": "提醒一下，這支算的都是短脈絡的價格。"
+        },
+        {
+          "id": "fukm",
+          "text": "如果你的文件很長，會進到長脈絡，單價更高、要另外算。"
+        },
+        {
+          "id": "a5rw",
+          "text": "還有寫入快取也要錢，這支為了簡單都沒有算進去。"
+        }
+      ]
+    },
+    {
+      "id": "output-share",
+      "template": "big",
+      "data": {
+        "kicker": "代理型帳單裡",
+        "text": "54%",
+        "sub": "是輸出，快取讀取只佔一成三"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "u5c2",
+          "text": "再回頭看代理型的帳單，超過一半是輸出。"
+        },
+        {
+          "id": "up9m",
+          "text": "新聞最愛強調的快取讀取，其實只佔一成多。"
+        },
+        {
+          "id": "xb4h",
+          "text": "所以要省代理型的錢，先盯著輸出價，不是快取。"
+        }
+      ]
+    },
+    {
+      "id": "batch-note",
+      "template": "big",
+      "data": {
+        "kicker": "批次型的省法不同",
+        "text": "看輸入",
+        "sub": "大量整理時，輸入才是帳單的大頭"
+      },
+      "lines": [
+        {
+          "id": "j56y",
+          "text": "批次型又不一樣，它是大量整理，輸入才是大頭。"
+        },
+        {
+          "id": "sju7",
+          "text": "這種工作用便宜的小模型，常常就夠划算。"
+        },
+        {
+          "id": "6mvh",
+          "text": "所以沒有一個模型在三種用量都最省，要看你做哪一種。"
+        }
+      ]
+    },
+    {
+      "id": "article-cta",
+      "template": "cta",
+      "data": {
+        "kicker": "完整價目表",
+        "title": "五個模型的每月帳單怎麼算",
+        "sub": "說明欄第一行就是文章連結"
+      },
+      "lines": [
+        {
+          "id": "uats",
+          "text": "每一格是怎麼乘出來的，完整價目表放在說明欄第一行的文章。"
+        },
+        {
+          "id": "3rsz",
+          "text": "你可以照著把自己的字數帶進去，算出自己的帳單。"
+        }
+      ]
+    },
+    {
+      "id": "switch-or-not",
+      "chapter": "什麼時候該換模型",
+      "template": "compare",
+      "data": {
+        "title": "該換，還是先別動",
+        "left": {
+          "heading": "值得算一次",
+          "points": [
+            "每月帳單超過五十美元",
+            "輸出很多",
+            "已經在用貴的舊模型"
+          ]
+        },
+        "right": {
+          "heading": "先別動",
+          "points": [
+            "聊天型小用量",
+            "用訂閱、不是用 API",
+            "還沒量過自己的用量"
+          ]
+        }
+      },
+      "lines": [
+        {
+          "id": "q6sw",
+          "text": "那到底該不該換？先看你落在哪一邊。",
+          "reveal": 1
+        },
+        {
+          "id": "gxdk",
+          "text": "帳單很小、又還沒量過自己用量的，先別急著換。",
+          "reveal": 1
+        },
+        {
+          "id": "fsvr",
+          "text": "每月帳單上看、輸出又多的，才真的值得算一次。"
+        },
+        {
+          "id": "9eru",
+          "text": "換模型也有成本，不是每次降價都要跟著動。"
+        },
+        {
+          "id": "7pvy",
+          "text": "先分清楚自己是哪一種，再決定要不要花時間。"
+        }
+      ]
+    },
+    {
+      "id": "thirty-dollar-case",
+      "template": "chat",
+      "data": {
+        "title": "每月 30 美元要換嗎",
+        "messages": [
+          {
+            "side": "right",
+            "name": "你",
+            "text": "我每月 API 帳單 30 美元，要換到便宜的嗎？"
+          },
+          {
+            "side": "left",
+            "name": "先算帳",
+            "text": "先看是輸入多還是輸出多，小用量換了每月可能只省幾塊。"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "prcs",
+          "text": "有人問，我每月帳單三十美元，要不要換到便宜的模型。",
+          "reveal": 1
+        },
+        {
+          "id": "e7hw",
+          "text": "先看你是輸入多還是輸出多，這決定換了有沒有感。",
+          "reveal": 1
+        },
+        {
+          "id": "9xug",
+          "text": "小用量換了每月可能只省幾塊，卻要重測一輪。"
+        },
+        {
+          "id": "tkkc",
+          "text": "省下的錢，不一定夠補你花的時間。"
+        },
+        {
+          "id": "bbpu",
+          "text": "帳單越小，換模型越不划算，這點常被忽略。"
+        }
+      ]
+    },
+    {
+      "id": "gemini-flash-note",
+      "template": "big",
+      "data": {
+        "kicker": "別忘了看期限",
+        "text": "促銷價",
+        "sub": "Gemini 3.8 Flash 的低價，只到年底"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "m3e9",
+          "text": "還有一個容易忽略的地方：促銷價有期限。"
+        },
+        {
+          "id": "7p4x",
+          "text": "Gemini 3.8 Flash 現在很便宜，但那是促銷價，只到年底。"
+        },
+        {
+          "id": "bp7s",
+          "text": "挑模型時，順手看一眼這個價會維持多久。"
+        },
+        {
+          "id": "t46v",
+          "text": "很多降價新聞不提期限，看的時候要自己補上。"
+        }
+      ]
+    },
+    {
+      "id": "two-things-first",
+      "template": "bullets",
+      "data": {
+        "title": "換模型前，先做兩件事",
+        "items": [
+          "打開用量頁，看三種 token 各多少",
+          "拿自己的題目，跑一次比較"
+        ]
+      },
+      "lines": [
+        {
+          "id": "5snu",
+          "text": "真的要換，先做兩件事，別憑感覺。",
+          "reveal": 1
+        },
+        {
+          "id": "gkup",
+          "text": "第一，打開自己的用量頁，看三種 token 各花多少。",
+          "reveal": 1
+        },
+        {
+          "id": "za36",
+          "text": "第二，拿自己的真實題目，在兩個模型上各跑一次比較。"
+        },
+        {
+          "id": "gvft",
+          "text": "這兩件事做完，換不換就很清楚了。"
+        }
+      ]
+    },
+    {
+      "id": "recap-three",
+      "template": "stats",
+      "data": {
+        "title": "三個數字，記這樣就好",
+        "stats": [
+          {
+            "value": "五成",
+            "label": "比促銷價，最會唬人"
+          },
+          {
+            "value": "四成",
+            "label": "廠商自估的成本"
+          },
+          {
+            "value": "兩成",
+            "label": "真正的牌價降幅"
+          }
+        ],
+        "source": "看到降價，先對號到這三種"
+      },
+      "lines": [
+        {
+          "id": "czny",
+          "text": "快結束前，把三個數字再收一次。",
+          "reveal": 1
+        },
+        {
+          "id": "qexc",
+          "text": "五成是比促銷價、最會唬人，四成是廠商自估的成本。",
+          "reveal": 1
+        },
+        {
+          "id": "aqna",
+          "text": "只有兩成，是你一定會付到的牌價降幅。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "chapter": "先算帳，再換模型",
+      "template": "outro",
+      "data": {
+        "title": "先算帳，再換模型",
+        "cta": "完整價目表與算法在說明欄的文章裡",
+        "lines": [
+          "聊天型小用量：不用急著換",
+          "代理型、輸出多：值得算一次",
+          "看牌價，不看新聞的百分比"
+        ]
+      },
+      "lines": [
+        {
+          "id": "a3zg",
+          "text": "最後記住一句話：降價不是換工具的理由，帳要自己算。"
+        },
+        {
+          "id": "88b9",
+          "text": "先分清楚促銷價、牌價和成本估計，再看自己是哪一種用量。"
+        },
+        {
+          "id": "jh4u",
+          "text": "輸出多、帳單大的值得算一次；小用量的，先別動。"
+        },
+        {
+          "id": "v6i2",
+          "text": "看牌價，別被新聞的百分比帶著走，我們下一支影片見。"
+        }
+      ]
+    }
+  ]
+}

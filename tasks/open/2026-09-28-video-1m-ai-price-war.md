@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-video-1m-ai-price-war
 title: Million-views batch 1: GPT-6 Sol and Luna vs Claude Opus 5.5 price war, what your bill looks like now
-status: open
+status: in-progress
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-4-8
+claimed_at: 2026-09-28T03:21:48Z
 created_at: 2026-09-28T02:30:45Z
 completed_at:
-branch:
+branch: claude/bold-noether-unopy8
 depends_on: []
 scope:
   - docs/videos/ai-price-war-gpt-6-sol-vs-opus-5-5
@@ -53,3 +53,22 @@ node tools/video/cli.mjs status --slug ai-price-war-gpt-6-sol-vs-opus-5-5 --work
 - 官方數字都以撰稿當天重查為準，brief 的「會過期的事實」列了每個要重查的網址。
 - 時效題：新聞 9/22，越早上架越好；標題用「帳單怎麼算」常青角度。
 - 實算的兩個對照組是這支的記憶點：GPT-5.6 Sol 促銷價 40→GPT-6 Sol 20（剛好一半）、Opus 5 184→Opus 5.5 137.6（少 25% 不是 40%）。
+
+## Progress (2026-09-28, claude-opus-4-8)
+
+Pipeline stages 1–4 done in-repo and committed:
+
+- `video.json` written from brief option A (推薦): 25 scenes, 96 lines, 7 chapters, hook at 0:17.
+- `node tools/video/cli.mjs lint` → 0 errors, 0 warnings; ~8.2 min estimated; Azure billable ~6,880 chars.
+- `docs/videos/lexicon.json` created (this batch's first video builds it): AI, GPT, API, OpenAI, ChatGPT, token, Sol, Luna, Claude, Opus, Sonnet, Gemini, Anthropic, Flash.
+- `claims.md` (c1–c11) and `verify-1.md`: every price and every scenario bill re-checked against official pages fetched 2026-09-28; all confirmed. Opus 5 comparison values derived from Anthropic's stated 20%/60% cuts and noted.
+- `status --slug` shows brief / script-lint / fact-checked all ticked.
+
+Blocked on the owner's one-time setup (credentials never pass through the agent):
+
+1. Outline gate: store the channel stance in `/admin/videos` settings so Jev can pick, or pick option A. The script already follows option A, so this is a formality.
+2. Narration (`tts`): needs the video-tool token paired (`node tools/video/cli.mjs login` → owner clicks 允許 in the admin card) and the Gemini voice key set in the backend.
+3. `render` needs Chromium (present in cloud) but `assemble` needs real ffmpeg (only Playwright's VP8 build is here); run the render→assemble→captions→qa→package stages on the host worker or a machine with ffmpeg.
+
+Next command once the token is paired and stance stored:
+`node tools/video/cli.mjs review-push --slug ai-price-war-gpt-6-sol-vs-opus-5-5 --gate outline`
