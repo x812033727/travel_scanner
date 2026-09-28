@@ -15,6 +15,8 @@ scope:
   - docs/videos/MANUAL-UPLOAD.md
   - apps/web/e2e/admin-video-manual-upload.spec.ts
   - .github/workflows/ci.yml
+  - tools/e2e-runtime-api.mjs
+  - apps/web/e2e/admin-operations.spec.ts
 ---
 
 # Verify manual YouTube upload guide on desktop and mobile
@@ -47,6 +49,15 @@ and the existing-video Studio link. Resize to a narrow mobile viewport and check
 
 ## Notes
 
+- The first CI browser run reached the real server-side forbidden screen in all 20 cases:
+  the isolated bootstrap omitted `/admin/videos`, so `canAccessAdminPath` correctly rejected it.
+  Extend this task to the mock navigation and its owner/role matrix (no active claims on either
+  exact path); preserve the real authorization guard. Add synthetic video/channel GET responses
+  to the navigation matrix, and assert the actual project heading before testing manual controls.
+- CI run 36380784676 passed typecheck; its browser failure is retained in artifact 10953421941.
+- A local request probe exercised the real `canAccessAdminPath` against both bootstrap versions:
+  old fixture denied owner/content video access, the corrected fixture allows them, and the
+  operations role remains denied. Receipt: test-results/pr890-bootstrap-probe.json.
 - Merge watcher claimed this unowned follow-up on a separate branch from PR #890.
   No other active local task owns these exact paths. Local free memory is still
   below 0.5 GiB, so browser validation will use the existing CI production build

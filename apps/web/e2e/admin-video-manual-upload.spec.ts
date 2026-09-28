@@ -100,6 +100,7 @@ for (const locale of locales) {
       const errors: string[] = [];
       page.on("pageerror", (error) => errors.push(error.message));
       await page.goto(`/${locale}/admin/videos?video=${slug}`);
+      await expect(page.getByRole("heading", { name: "Synthetic manual-upload validation", exact: true })).toBeVisible();
       if (!existing) {
         const form = page.getByRole("form", { name: copy.publishTitle });
         await form.getByRole("textbox", { name: copy.videoTitle, exact: true }).fill("Synthetic unsent title");

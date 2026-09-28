@@ -4,6 +4,7 @@ import type { SitePageDetail } from "../lib/site-pages";
 const ADMIN_PAGES = [
   "/admin",
   "/admin/guides",
+  "/admin/videos",
   "/admin/hotspots",
   "/admin/foods",
   "/admin/hotels",
@@ -29,7 +30,7 @@ const ADMIN_PAGES = [
 const ROLE_NAVIGATION = {
   viewer: ADMIN_PAGES.filter((path) => !["/admin/database", "/admin/deployments"].includes(path)),
   support: ["/admin", "/admin/community", "/admin/pet-friendly", "/admin/users", "/admin/audit"],
-  content: ["/admin", "/admin/guides", "/admin/hotspots", "/admin/foods", "/admin/hotels", "/admin/travel-services", "/admin/catalog-review", "/admin/community", "/admin/pet-friendly", "/admin/partners", "/admin/audit"],
+  content: ["/admin", "/admin/guides", "/admin/videos", "/admin/hotspots", "/admin/foods", "/admin/hotels", "/admin/travel-services", "/admin/catalog-review", "/admin/community", "/admin/pet-friendly", "/admin/partners", "/admin/audit"],
   operations: ["/admin", "/admin/analytics", "/admin/settings", "/admin/usage-settings", "/admin/layout-settings", "/admin/ui-text", "/admin/site-pages", "/admin/system-settings", "/admin/audit", "/admin/ai-accounts"],
   database_operator: ["/admin", "/admin/database", "/admin/audit"],
   deployer: ["/admin", "/admin/deployments", "/admin/audit"],
@@ -216,6 +217,10 @@ async function isolateAdmin(page: Page, role = "owner") {
       response = { articles: [], total: 0, page: 1, pages: 0, facets: { status: [], kind: [] } };
     } else if (path === "/admin/guides/topics") {
       response = { topics: [] };
+    } else if (path === "/admin/videos") {
+      response = [];
+    } else if (path === "/admin/video-youtube") {
+      response = { configured: false, linked: false, audited: false };
     } else if (path === "/admin/catalog-review") {
       response = { pending_counts: { hotspot: 0, food: 0, merchant: 0, total: 0 }, runs: [], active_run: null, can_discover: false, settings: { enabled: false, configured: false }, providers: {}, usage: {} };
     } else if (path.startsWith("/runtime/")) {
