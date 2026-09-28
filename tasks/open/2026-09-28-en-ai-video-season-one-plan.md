@@ -50,4 +50,4 @@ npm run check:tasks
 - 產線寫死 zh-TW：`tools/video/core/schema.mjs` 的 `NARRATION_LOCALE`、lint 的字典規則、`apps/api/app/video_speech/checking.py` 的轉寫提示、`youtube.default_language`。多語言音軌（`docs/videos/DUBS.md`）畫面仍是中文，只當替代路線。
 - 對照點閱都是搜尋索引的快照：ColdFusion「AI Fails at 96% of Jobs」約 90 萬、3Blue1Brown LLM 解說約 760 萬、MKBHD AI 影片約 920 萬。YouTube 影片頁對 fetcher 只回頁尾，openai.com 的兩頁回 403，撰稿當天要有人開官方頁。
 - 沒有找到頻道現在的訂閱數或已上架影片數；README 第 1 節的曝光假設以新頻道為前提。
-- 2026-09-28（claude-fable-5-1，第二輪）：站主決定做英文路線、先做 1、4、3。工具票的程式已在同一分支落地（`narration_locale`），三支的 brief、video.json、claims 與示範紀錄寫在 `docs/videos/<slug>/`，lint 零錯誤；查核交給三個獨立代理寫 `verify-1.md`。
+- 2026-09-28（claude-fable-5-1，第二輪）：站主決定做英文路線、先做 1、4、3。工具票的程式已在同一分支落地（`narration_locale`），三支的 brief、video.json、claims 與示範紀錄寫在 `docs/videos/<slug>/`。每支都經過兩輪獨立查核（第一輪各改 5、4、8 個事實：第 1 支把教育部那段歸給發現它的研究團隊、依研究者的重建改寫 Hugging Face 的細節、標題改成一次入侵加探查；第 4 支補上代理實際寫的第四列、把背景執行那句歸給 NVIDIA；第 3 支發現快取寫入不是加收而是取代輸入價，job 2 三個總額全改），第二輪各 2、0、0 個，不需第三輪；聽眾審稿各改十幾行口語。三支 lint 零錯誤，投影片渲染零版面問題（容器裡 Playwright 的 Chromium 版本不合，用既有的 1194 版接上）。旁白以後的階段需要站主的影片工具權杖，不在這個 session 做。

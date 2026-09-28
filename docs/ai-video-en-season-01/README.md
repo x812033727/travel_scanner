@@ -1,6 +1,6 @@
 # 英文 AI 影片第一季：六支衝百萬點閱的企劃（Claude 版）
 
-**狀態（2026-09-28，第二輪）**：站主決定做英文旁白路線、先做第 1、4、3 支。`narration_locale` 已在分支落地（票 `2026-09-28-video-english-narration-locale`），三支的 `brief.md`、`video.json`、`claims.md` 與示範紀錄在 `docs/videos/openai-agents-broke-in/`、`docs/videos/always-on-agent-explained/`、`docs/videos/gpt6-vs-opus55-worth-paying/`，lint 零錯誤，查核由獨立代理進行中。還等站主決定：英文頻道開不開、頻道立場存進設定。這份和 Codex 的 [`docs/ai-video-season-01/`](../ai-video-season-01/README.md) 是同一場比賽的兩份參賽作品：那份是中文旁白的六集常青解說，這份是**英文旁白、綁著本週新聞、每支帶一個實算**的六支。
+**狀態（2026-09-28，第二輪）**：站主決定做英文旁白路線、先做第 1、4、3 支。`narration_locale` 已在分支落地（票 `2026-09-28-video-english-narration-locale`）。三支的 `brief.md`、`video.json`、`claims.md`、示範紀錄與兩輪查核報告（`verify-1.md`、`verify-2.md`）在 `docs/videos/openai-agents-broke-in/`、`docs/videos/always-on-agent-explained/`、`docs/videos/gpt6-vs-opus55-worth-paying/`；三支 lint 零錯誤、投影片渲染零版面問題、聽眾審稿完成。下一步是產線的旁白階段，要站主的影片工具權杖（`review-push --gate outline` → `tts`），在站主的電腦或主機工人上跑。還等站主決定：英文頻道開不開、頻道立場存進設定。這份和 Codex 的 [`docs/ai-video-season-01/`](../ai-video-season-01/README.md) 是同一場比賽的兩份參賽作品：那份是中文旁白的六集常青解說，這份是**英文旁白、綁著本週新聞、每支帶一個實算**的六支。
 
 一句話：英文 YouTube 上真的會破百萬的 AI 影片，幾乎都是「**大家已經在害怕或爭論的事** ＋ **一個講得比新聞更清楚的答案**」。這一季每支都照這個公式：新聞當鉤子，常青問題當標題，一段站主能自己複算的實算當骨幹，結尾給觀眾一個看完就能做的動作。
 
@@ -148,7 +148,7 @@
 2. **先做哪三支**。建議 1、4、3（代理入侵、代理解說、模型比價），因為它們互相引流：第 1 支的結尾指向第 4 支（代理解說），第 4 支的示範（代理去查三家的價目表）指向第 3 支（比價）。
 3. **英文頻道**開不開，以及**頻道立場**存進設定。
 
-之後的順序：工具票 → 第 1 支的製作票 [`2026-09-28-en-video-01-openai-agents-broke`](../../tasks/open/2026-09-28-en-video-01-openai-agents-broke.md)（把 `briefs/01-openai-agents-broke-in.md` 搬成 `docs/videos/openai-agents-broke-in/brief.md`，走 `review-push --gate outline`）→ 每支上架後 48 小時填一次 `scoreboard.csv`。
+已做完（2026-09-28）：工具票的程式、三支的企劃搬入 `docs/videos/<slug>/brief.md`、稿子、兩輪獨立查核、聽眾審稿、版面檢查。接下來每支的順序：`review-push --gate outline`（Jev 或站主選大綱）→ `tts --dry-run`、`tts`、`check-audio`（第一次英文旁白先用 `audition` 聽 Sulafat 的英文 style）→ `render`、`assemble` → 字幕翻譯（`i18n-sheet` 以英文為原文翻 zh-TW、ja、ko、zh-CN）→ `qa`、`review-push --gate final` → `package`、`review-push --gate publish` → 站主上傳成私人、貼網址、排時間。第 4 支在 DevDay（9/29）之後、合成旁白之前要重看 `always-on` 那一段；第 3 支在錄製當天重開每一個價目頁。上架後 48 小時、7 天、28 天填 `scoreboard.csv`。
 
 ## 10. 檔案位置
 
