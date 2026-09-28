@@ -1,7 +1,7 @@
 """A brand-story series: its kind, its length, a daily count, an image model and a shared look.
 
 Revision ID: 0111_video_story_series
-Revises: 0108_video_drama_messages
+Revises: 0109_video_shorts
 
 A brand story (docs/videos/STORY.md) is an episode of a drama series of ``kind = 'story'``: the
 series has no documents, its episodes are the stories of a planned backlog imported ready to
@@ -18,7 +18,8 @@ make, and each runs 12 to 15 minutes. So:
 
 The number skips 0109 and 0110 on purpose. Two open pull requests add a 0109 on top of 0108 as
 well, #898 (``0109_video_shorts``) and #904 (``0109_video_flat_explainer``), and whichever of
-them merges second takes the next number. ``down_revision`` names the head main had when this
+them merges second takes the next number. (#912 merged 0109_video_shorts first; this now revises
+it, 2026-09-28.) ``down_revision`` names the head main had when this
 branch was last pushed: when the pull request leaves draft, set it again to the head main has
 then, and the number too if a merged migration took it (skill backend-conventions, "編號會撞").
 
@@ -34,7 +35,7 @@ import sqlalchemy as sa
 from alembic import op
 
 revision: str = "0111_video_story_series"
-down_revision: str | None = "0108_video_drama_messages"
+down_revision: str | None = "0109_video_shorts"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 
