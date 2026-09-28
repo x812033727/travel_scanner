@@ -26,6 +26,7 @@ scope:
   - apps/web/components/admin-video-series.test.tsx
   - apps/web/components/admin-video-thread.tsx
   - apps/web/components/admin-video-thread.test.tsx
+  - apps/web/components/admin-video-reviews.test.tsx
   - apps/web/messages/en/admin.json
   - apps/web/messages/ja/admin.json
   - apps/web/messages/ko/admin.json
@@ -179,3 +180,13 @@ asyncio.run(main())
 - Revision race protections also bind AI replies to target/parent snapshots
   and owner decisions to the displayed expected_version. Stale operations cannot
   overwrite a newer draft or approve an unseen version.
+
+## Review follow-up, 2026-09-29
+
+- A review of the branch ran the whole web suite, which the focused 27 UI tests
+  had not: `admin-video-reviews.test.tsx` still expected the decision request
+  without `expected_version`, so `npm run test:web` failed on this branch and
+  passed on main. The expectation now names the version; the file joins this
+  task's scope. Reviewer: claude-fable-5-1.
+- Run `npm run test:web` as a whole before the pull request, not only the files
+  the change touched: `DocPanel` is also rendered by the video page.

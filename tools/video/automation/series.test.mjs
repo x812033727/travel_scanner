@@ -1042,3 +1042,99 @@ for (const [name, edit, recheck] of [
     assert.ok(scriptCheckMatches(readJson(checkFile), video));
   });
 }
+
+/** An episode on disk as the worker left it after the writer: the script, its series and a worker to move it. */
+function checkedEpisode(slug) {
+  const box = sandbox(slug, "drama");
+  const series = { slug: slug.replace(/-e001$/, ""), episode: 1, chapter: 1, hands_off: false };
+  const settings = { voice: { provider: "gemini", name: "Sulafat", style: "Taiwan Mandarin" }, max_verify_rounds: 3, drama: { style_preset: "cinematic-3d", subtitle_burn_in: true, music_enabled: false, character_voice_pool: [] } };
+  let video = dramaFixture();
+  video.sources = [];
+  video = settle(video, { slug, settings, root: box.root, format: "drama", series, cast: video.characters });
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(video));
+  writeFileSync(path.join(box.dir, "series.json"), JSON.stringify({ slug: series.slug, episode: 1, chapter: 1, series, characters: video.characters, beats: {}, setting_md: "World", chapter_md: "Chapter", recaps: [] }));
+  mkdirSync(path.join(box.workdir, "review"), { recursive: true });
+  const ctx = { root: box.root, env: { VIDEO_WORKDIR: box.work }, home: box.base, now: () => new Date("2026-09-28T12:00:00Z"), stdout: { write() {} }, fetch: async () => { throw new Error("unexpected network"); } };
+  const automation = new Automation(ctx, {}, settings);
+  automation.refs = smallRefs;
+  const state = { slug, format: "drama", status: "active", series, notes: [], source_urls: [], verify_rounds: 0, verified: false, listener_done: false, prompt_fixes: {} };
+  return { box, video, automation, state, checkFile: path.join(box.workdir, "review", "script-check.json") };
+}
+
+for (const [name, reshape] of [
+  ["the voice's keys in another order", (doc) => { doc.voice = Object.fromEntries(Object.entries(doc.voice).reverse()); }],
+  ["the cast in another order", (doc) => { doc.characters.reverse(); }],
+  ["no voice", (doc) => { delete doc.voice; }],
+]) {
+  test(`a checker's answer with ${name} is the script that was saved: its report is bound, not refused`, async () => {
+    const { box, video, automation, state, checkFile } = checkedEpisode("checker-echo-e001");
+    const candidate = structuredClone(video);
+    candidate.scenes.at(-1).lines.at(-1).text = "結局已變。";
+    reshape(candidate);
+    automation.stage = async (stage) => {
+      assert.equal(stage, "verifier", "lint has nothing to repair");
+      return { report: "# Verification", changed_facts: 1, video: candidate };
+    };
+    const line = await automation.verify(state);
+    assert.match(line, /fact-check round 1, 1 facts changed/);
+    assert.equal(state.verified, true);
+    assert.equal(state.failures?.verifier, undefined, "the round did not count as a failure");
+    const saved = readJson(path.join(box.dir, "video.json"));
+    assert.equal(saved.scenes.at(-1).lines.at(-1).text, "結局已變。");
+    assert.deepEqual(saved.voice, video.voice, "the owner's voice is what is saved");
+    assert.deepEqual(saved.characters.map((character) => character.id), video.characters.map((character) => character.id));
+    assert.ok(scriptCheckMatches(readJson(checkFile), saved));
+  });
+}
+
+test("a checker's answer lint had to repair is not the script that was saved: its report is refused", async () => {
+  const { box, video, automation, state, checkFile } = checkedEpisode("checker-repair-e001");
+  const candidate = structuredClone(video);
+  candidate.scenes[0].lines[0].text = "";
+  const stages = [];
+  automation.stage = async (stage, _slug, payload) => {
+    stages.push(stage);
+    if (stage === "verifier") return { report: "# Verification", changed_facts: 1, video: candidate };
+    assert.ok(payload.lint_errors.length > 0);
+    const repaired = structuredClone(candidate);
+    repaired.scenes[0].lines[0].text = "她回來了。";
+    return { video: repaired };
+  };
+  const line = await automation.verify(state);
+  assert.match(line, /the lint repair changed the checked script/);
+  assert.deepEqual(stages, ["verifier", "writer"]);
+  assert.equal(state.verified, false);
+  assert.equal(state.failures.verifier, 1);
+  assert.equal(readJson(path.join(box.dir, "video.json")).scenes[0].lines[0].text, "她回來了。");
+  assert.equal(existsSync(checkFile), false, "no report is written for a script the checker did not read");
+});
+
+for (const [name, gates, expected] of [
+  ["past the script gate goes on without another check", ["outline", "script"], ["media:look"]],
+  ["ahead of the script gate is checked again", ["outline"], ["verifier"]],
+]) {
+  test(`an episode whose report was written before reports named their script, ${name}`, async () => {
+    const { approve } = await import("../core/approvals.mjs");
+    const { writeScreenplay } = await import("../core/screenplay.mjs");
+    const { box, video, automation, state, checkFile } = checkedEpisode("unbound-check-e001");
+    writeFileSync(path.join(box.dir, "verify-1.md"), "# Previous verification");
+    writeScreenplay(box.dir, video);
+    const unbound = { round: 1, coverage: { hook: "有" }, problems: [], similar_works: [], retention: { passed: true } };
+    writeFileSync(checkFile, JSON.stringify(unbound));
+    for (const gate of gates) await approve({ gate, docDir: box.dir, workdir: box.workdir });
+    const calls = [];
+    automation.stage = async (stage) => {
+      calls.push(stage);
+      assert.equal(stage, "verifier");
+      return { report: "# Current verification", changed_facts: 0 };
+    };
+    automation.media = async (_state, command) => { calls.push(`media:${command}`); return "media"; };
+    Object.assign(state, { verify_rounds: 1, verified: true, listener_done: true });
+    await automation.advance(state);
+    assert.deepEqual(calls, expected);
+    assert.equal(state.verified, true);
+    const report = readJson(checkFile);
+    if (gates.includes("script")) assert.deepEqual(report, unbound, "the old report is left as it was");
+    else assert.ok(scriptCheckMatches(report, video), "the new report names the script it read");
+  });
+}

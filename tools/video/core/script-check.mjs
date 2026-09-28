@@ -17,3 +17,8 @@ export function scriptCheckMatches(check, doc) {
   const current = scriptCheckBinding(doc);
   return Boolean(check && check.narrative_hash === current.narrative_hash && check.script_hash === current.script_hash);
 }
+
+// A report the worker wrote before reports named their script: a verdict, and no hash to compare.
+export function scriptCheckUnbound(check) {
+  return Boolean(check) && check.narrative_hash === undefined && check.script_hash === undefined;
+}

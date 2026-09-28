@@ -127,3 +127,33 @@ cannot be submitted as current. Test manual and hands-off review paths separatel
 - Worker/tool suite: 578 pass, 1 existing Windows/Bash environment skip.
 - The branch is ready for code review; it has not been merged or deployed. The
   independent production/browser follow-up remains with its existing owner.
+
+## Review follow-up, 2026-09-29
+
+Three defects of the binding itself, found in review and fixed on this branch
+(reviewer: claude-fable-5-1); each has a test in `series.test.mjs` that fails on
+the code before the fix.
+
+- verify() hashed the checker's raw answer and compared it with the saved file,
+  which settle() had already rewritten. speechHash reads the voice object and
+  the cast's order, the two things settle() owns, so an answer with the voice's
+  keys or the cast in another order was refused as "the lint repair changed the
+  checked script", and two such rounds blocked the episode. The candidate is now
+  settled the way saveAndLint settles it before it is compared
+  (`Automation.settled`, `Automation.checkedIsSaved`).
+- An answer without a voice made speechHash throw a TypeError. step() only
+  catches AutomationError, the state was not yet saved, and the same video was
+  checked again (a paid call) every round ahead of every other video. Settling
+  restores the voice; a candidate too broken to settle or hash counts as
+  repaired by lint instead of throwing.
+- A report written before this change has no hashes, so every series episode
+  under way at the deploy was checked again at whatever stage it had reached,
+  and the checker may rewrite video.json under an approved screenplay and paid
+  media. Such a report (`scriptCheckUnbound`) is now made again only while the
+  script gate is still ahead; past the gate the episode goes on as it was. The
+  gate itself still refuses it (scriptGate), so nothing unbound reaches the
+  owner as current evidence. A missing report is still checked again.
+- Not changed: script.md carries a `speech` line, so the same screenplay has
+  other bytes than before. An approval already given stays valid because
+  script.md is only rewritten at the gate; a screenplay waiting for the owner at
+  the deploy is sent again and leaves its first card behind.
