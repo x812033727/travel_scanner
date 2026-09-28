@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-story-admin-import-api
 title: 故事企劃清單的後台 API：從頁面匯入、恢復略過的故事
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-video-story-admin-api
 claimed_at: 2026-09-28T12:05:07Z
 created_at: 2026-09-28T10:56:09Z
-completed_at:
+completed_at: 2026-09-28T14:19:05Z
 branch: claude/video-story-admin-import-api
 depends_on:
   - 2026-09-28-video-story-api-series-kind
@@ -31,7 +31,7 @@ scope:
 - [x] `POST /admin/video-automation/series/{slug}/stories/import`：內文是編譯好的 `stories.json` 加 `apply`、`limit`、`episodes_per_day`，回傳 `StoryImportReport.as_dict()` 同樣的欄位；預設試跑；`apply` 要 `content.manage`（建立作品的權限），有問題時不寫入並回 422 帶報告。檔案大小上限寫成常數（100 個故事約 1.3 MB）。
 - [x] 恢復略過的故事：`skipped` 且從沒開始過（`started_at` 是 NULL）的集數回到 `ready`；開始過的拒絕並說明；只限故事作品或也給一般作品，實作時決定並寫進 Notes。
 - [x] 測試照 `tests/test_video_story.py` 的 SQLite 做法，本機就能跑。
-- [ ] `ruff`、`mypy app`、`mypy tests`、`pytest` 通過。
+- [x] `ruff`、`mypy app`、`mypy tests`、`pytest` 通過（`mypy tests` 用 CI 的 `--platform linux`；整套 `pytest` 在這台 Windows 只有既有的 `tests/test_guides_autolink.py` 編碼問題紅，見 Notes 最後一條）。
 
 ## Steps
 
@@ -70,3 +70,7 @@ cd apps/api && uv run ruff check . && uv run mypy app && uv run mypy tests && uv
   - 恢復後集數是 `ready`。略過它讓作品變成 `finished` 的（略過的是最後一個還開著的故事），作品回到 `active`；暫停的作品維持暫停。稽核 `video_series_episode_restored`：`{number, story, reopened}`。
   - 每日上限與工人：`story_quota` 與 `next_job_for` 都讀資料列，恢復當下就看得到：`quota.ready` 加一，原因從 `none_ready` 或 `not_active` 消失；今天的名額用完時仍是 `per_day`，台北午夜後它是最小的待做號碼就先開始，而且 `start_episode` 開得起來（測試都走過）。PR #918 在 `start_episode` 加的配額重查，恢復的故事一樣要過，測試裡的開始在那個檢查下也成立。
 - 驗證：新的 `tests/test_video_story_admin.py` 8 個測試，全部在記憶體 SQLite 上，本機可跑。反向驗證：讓路由一律寫入（`apply=True`）時，試跑的測試在數列數那行變紅。權限與大小上限沒有做反向驗證；它們的測試各自同時測了兩邊：同一個寫入請求 viewer 403、content 200，上限減一 413、剛好等於上限 200。另外用 main 上真實的 `stories.json` 在記憶體 SQLite 上走過端點：試跑 200、問題 0、create 100；`apply`、`limit 2`、每天 1 支建立作品與 2 集；同樣再送一次 `written: false`；不帶 `limit` 補 98 集；再試跑 `leave_alone 100`；稽核三筆（`video_series_created` 與兩筆 `video_story_imported`，`limit` 各是 2 與 null）。
+- 檢查（2026-09-28，這台 Windows，記憶體吃緊，一次 mypy 要 15–20 分鐘）：
+  - 併 main 之前（`765e14e39`，main `22c86ec81` 加這張票）：`uv run ruff check .` exit 0；`uv run mypy app` exit 0（438 個檔案）；`uv run mypy tests --platform linux` exit 0（323 個檔案）；`uv run pytest tests/test_video_story_admin.py` exit 0（8 passed）。改動之前的基準 `uv run pytest tests/test_video_story.py tests/test_video_series.py` exit 0（32 passed、3 skipped）。
+  - #918 合併後把 main（`27755064e`）併進來（`d02fce9b0`，沒有衝突）再跑：`uv run ruff check .` exit 0；`uv run alembic heads` 只有 `0111_video_story_series`；`uv run pytest tests/test_video_story_admin.py tests/test_video_story.py tests/test_video_series.py tests/test_schema.py` exit 0（51 passed、3 skipped，跳過的是要 PostgreSQL 的整合測試；#918 的新測試也在裡面）；`uv run mypy app` exit 0（438）；`uv run mypy tests --platform linux` exit 0（323）；整套 `uv run pytest` exit 1（35 分鐘：4800 passed、415 skipped、1 failed、3 errors），失敗與錯誤全在 `tests/test_guides_autolink.py`，是 Windows 預設的 cp1252 編碼讀寫沒指定 `encoding` 的檔案（`UnicodeEncodeError`／`UnicodeDecodeError`），與這張票無關，已有票 `2026-09-26-guides-autolink-tests-windows-encoding`，CI 的 Linux 不會遇到；`node tools/tasks.mjs check` exit 0。
+  - `uv run mypy tests`（Windows 平台）沒有跑：它在 Windows 一定因為與這張票無關的 `tests/support/e2e_deploy_agent.py`（`socketserver.UnixStreamServer`）報錯，CI 查的是 Linux 平台，所以跑 `--platform linux`。`RUN_INTEGRATION_TESTS=1` 的測試要 PostgreSQL，只在 CI 跑；這張票沒有遷移。
