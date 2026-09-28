@@ -1,18 +1,20 @@
 ---
 id: 2026-09-28-youtube-manual-browser-validation
 title: Verify manual YouTube upload guide on desktop and mobile
-status: open
+status: in-progress
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: codex-pr-merge-watch
+claimed_at: 2026-09-28T04:54:04Z
 created_at: 2026-09-28T04:23:22Z
 completed_at:
-branch:
+branch: codex/pr890-browser-validation
 depends_on:
   - 2026-09-28-youtube-manual-upload
 scope:
   - docs/videos/MANUAL-UPLOAD.md
+  - apps/web/e2e/admin-video-manual-upload.spec.ts
+  - .github/workflows/ci.yml
 ---
 
 # Verify manual YouTube upload guide on desktop and mobile
@@ -44,6 +46,20 @@ the description. Verify the retained chapters, each caption's language and file 
 and the existing-video Studio link. Resize to a narrow mobile viewport and check each step.
 
 ## Notes
+
+- Merge watcher claimed this unowned follow-up on a separate branch from PR #890.
+  No other active local task owns these exact paths. Local free memory is still
+  below 0.5 GiB, so browser validation will use the existing CI production build
+  and Chromium projects, with synthetic API fixtures and a small screenshot artifact.
+  Screenshots and successful browser execution are still pending; adding tests alone
+  is not a visual-validation receipt.
+- Added 20 isolated Chromium cases (five UI languages, new/existing video, desktop/mobile)
+  with real clipboard reads and download events, preserved form edits, no site writes or
+  external requests, light/dark overflow checks and eight small Traditional Chinese screenshots.
+- Scoped ESLint, Playwright `--list` (20 cases), task validation (958 files), workflow YAML
+  and `git diff --check` pass. Full local TypeScript checking exhausted its 768 MiB heap
+  while the host had about 0.5 GiB free. It did not pass; full typecheck and browser execution
+  must be verified in CI before this task can close.
 
 - The temporary local fixture generator is outside Git in this chat's visualization directory
   as manual-preview-server.mjs. It serves synthetic data on 127.0.0.1:18943; web used 18944.
