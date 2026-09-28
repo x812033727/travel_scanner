@@ -4,7 +4,7 @@
 import { existsSync, rmSync } from "node:fs";
 import path from "node:path";
 
-import { DUB_LOCALES, dubScript, translationHash } from "../dubs/plan.mjs";
+import { DEFAULT_DUB_LOCALES, dubScript, translationHash } from "../dubs/plan.mjs";
 import { buildCues, checkCues, toSrt, toVtt } from "./captions.mjs";
 import { atomicWrite, readJson } from "./paths.mjs";
 import { eachLine, LOCALES, NARRATION_LOCALE, textHash } from "./schema.mjs";
@@ -100,11 +100,11 @@ export function currentDub(project, workdir, locale, speech) {
 export const dubRole = (locale) => `dub_${locale.toLowerCase().replace(/-/g, "_")}`;
 
 /**
- * The current dub track of every locale asked for (the owner's dub choice, or every locale
- * without one), and the locales the worker gave up on with its reason. A locale the worker gave
- * up on stays skipped even when an older track of it exists: the reason is the last word.
+ * The current dub track of every locale asked for (the owner's dub choice, or every locale but
+ * zh-CN without one), and the locales the worker gave up on with its reason. A locale the worker
+ * gave up on stays skipped even when an older track of it exists: the reason is the last word.
  */
-export function dubsForUpload(project, workdir, speech, locales = DUB_LOCALES) {
+export function dubsForUpload(project, workdir, speech, locales = DEFAULT_DUB_LOCALES) {
   const dubs = [];
   const skipped = {};
   for (const locale of locales) {
@@ -153,7 +153,7 @@ export function runCaptions({ slug, file, root, workdir, now = new Date() }) {
 
   const languages = readLanguages(workdir);
   const wanted = new Set(captionLocalesOf(languages));
-  const dubLocales = chosenLocales(languages, "dub") ?? DUB_LOCALES;
+  const dubLocales = chosenLocales(languages, "dub") ?? DEFAULT_DUB_LOCALES;
   const { texts, skipped } = localeTexts(project.doc, project.translations);
   const manifest = { speech_hash: speech, chapters: checkChapters(timeline), locales: {}, skipped: {} };
   for (const [locale, byLine] of Object.entries(texts)) {

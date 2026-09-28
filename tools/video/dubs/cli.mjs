@@ -21,7 +21,7 @@ import { flaggedLines, lineBody, synthesizeLines, synthesizeRequest } from "../t
 import { encodeWav, parseWav, requireNarrationFormat } from "../tts/wav.mjs";
 import { encodeArgs, measureLoudnessArgs, parseLoudnorm, stretchArgs } from "./encode.mjs";
 import {
-  DEFAULT_FORMAT, DUB_FORMATS, DUB_LOCALES, GUARD_MS, MAX_TEMPO,
+  DEFAULT_DUB_LOCALES, DEFAULT_FORMAT, DUB_FORMATS, DUB_LOCALES, GUARD_MS, MAX_TEMPO,
   assembleTrack, defaultRate, dubLexicon, dubScript, estimatedLengths, layoutDub, measureRate, placeLines, shrinkBudgets, translationHash,
 } from "./plan.mjs";
 
@@ -45,7 +45,7 @@ function options(args) {
     strict: true,
   }).values;
   if (!values.slug && !values.file) throw new UsageError("dub needs --slug (or --file for an example outside docs/videos)");
-  const locales = values.locale ? values.locale.split(",").map((locale) => locale.trim()).filter(Boolean) : DUB_LOCALES;
+  const locales = values.locale ? values.locale.split(",").map((locale) => locale.trim()).filter(Boolean) : DEFAULT_DUB_LOCALES;
   for (const locale of locales) if (!DUB_LOCALES.includes(locale)) throw new UsageError(`--locale must be among ${DUB_LOCALES.join(", ")}`);
   if (!DUB_FORMATS.includes(values.format)) throw new UsageError(`--format must be one of ${DUB_FORMATS.join(", ")}`);
   return { ...values, locales };
