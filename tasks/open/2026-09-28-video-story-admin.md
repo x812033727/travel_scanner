@@ -53,3 +53,5 @@ npm run lint:web && npm run check:i18n && npm run typecheck:web && npm run test:
 
 - PR #870 大改了 `admin-video-series.tsx` 與設定元件，Shorts 那條線也要在 `/admin/videos` 加分頁（`docs/videos/SHORTS.md`）；開工前先查誰在動同一批檔案。
 - 新的後台頁或分頁要做的登記見 skill `backend-conventions`。
+- 分鏡審核卡片的分頁聯絡表不用這張票做：PR #895 合併時已經一起做了（`admin-video-review-card.tsx` 的 `StoryboardBody`，測試在 `admin-video-storyboard-pages.test.tsx`）。
+- 匯入指令多了 `--limit` 與 `--episodes-per-day`，作品多了 `look` 欄位（票 `api-series-kind`）；匯入表單要能選只匯入前幾個。

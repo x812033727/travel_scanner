@@ -1,0 +1,258 @@
+{
+  "id": "C03",
+  "slug": "story-open-source-maintainers",
+  "category": "tech",
+  "region": "global",
+  "subject": "開源維護者",
+  "title": "許多加密網站靠的軟體，2014 年只有一名全職成員",
+  "logline": "2014 年的心臟出血漏洞，出在只有一名全職成員、一年捐款約兩千美元的 OpenSSL；2024 年的 xz 後門，出在維護者自稱「沒有報酬的業餘專案」上。相隔十年，是同一個問題的兩種樣子。",
+  "question": "許多加密網站和許多 Linux 系統都用到的免費軟體，為什麼多年來只有極少數人在顧？",
+  "chapters": [
+    {
+      "key": "hook",
+      "point": "許多網站用來加密連線的免費軟體 OpenSSL，2014 年只有一名全職成員，一年收到的捐款約兩千美元；許多 Linux 系統都有的壓縮工具 xz，維護者自己說那是「沒有報酬的業餘專案」。這兩套軟體各出過一次大事：2014 年的「心臟出血」漏洞，讓伺服器的記憶體可能被人偷看；2024 年，xz 差點被人裝進後門（讓特定的人偷偷進入系統的暗道）。這支影片要問：這麼多人的網路安全，為什麼壓在這麼少人身上？"
+    },
+    {
+      "key": "origin",
+      "point": "2014 年 4 月 7 日，OpenSSL 公布一個嚴重漏洞並同時推出修正版，編號 CVE-2014-0160，後來被稱為「心臟出血」（Heartbleed）。發現者之一是 Google 資安團隊的 Neel Mehta。問題出在連線時用來確認對方還在的「心跳」功能少了一道檢查，攻擊者每次可以讀走伺服器最多 64KB（約六萬多個英文字母）的記憶體內容。這段程式是 2011 年 12 月 31 日加進原始碼、2012 年 3 月隨 1.0.1 版發布的，兩年多都沒人發現。照網路調查公司 Netcraft 的估計，當時使用受信任憑證（網站證明自己身分的數位證件）的加密網站伺服器約有 17% 受影響。"
+    },
+    {
+      "key": "idea",
+      "point": "這麼重要的軟體，當時是誰在顧？照 ProPublica 的報導，OpenSSL 的核心程式設計師只有四個人，只有一人把它當全職工作，他們得靠接顧問案來支付自己的工作；支持 OpenSSL 的基金會一年通常只收到約兩千美元捐款。基金會負責人 Steve Marquess 說，應該要有至少六名全職成員，「而不是只有一個」，而且不必為了生計去接商業案子。照他的說法，消息傳開後，基金會收到的捐款也只有將近九千美元。"
+    },
+    {
+      "key": "engine",
+      "point": "開源軟體（公開原始碼、誰都能參與修改的軟體）靠信任運作：任何人都能送來修改，維護者覺得可靠就收下。十年後，有人利用了這一點。壓縮工具 xz 多年來由 Lasse Collin 一人維護。2021 年 10 月，化名「Jia Tan」的帳號開始送來無害的小修改；2022 年，幾個後來被認為是分身的陌生帳號在郵件論壇上接連抱怨進度太慢、要求換人。Collin 回信說，他沒有太多時間與心力投入，也提醒大家這是沒有報酬的業餘專案，並提到 Jia Tan 之後可能扮演更重要的角色。2022 年底，Jia Tan 開始直接把程式合併進專案，2023 年 3 月以維護者身分發布第一個版本。"
+    },
+    {
+      "key": "turn",
+      "point": "2024 年 2 月與 3 月，Jia Tan 發布的 5.6.0 與 5.6.1 版被藏進後門，美國網路安全暨基礎設施安全署（CISA）說它可能讓人未經授權進入受影響的系統。3 月 29 日，在微軟任職的工程師 Andres Freund 在資安郵件論壇上公開這件事：他在測試版的 Debian 系統上注意到 SSH（遠端登入伺服器用的程式）登入時異常吃電腦的運算資源，一路追出原因。這個漏洞編號 CVE-2024-3094，通報的 Red Hat 給了最高的 10 分；CISA 當天發出警示，建議退回沒被動過手腳的版本。這兩個版本主要只進了各家 Linux 系統的測試版與開發版。"
+    },
+    {
+      "key": "now",
+      "point": "心臟出血之後，Linux 基金會找來 Google、微軟、Facebook 等公司出資成立「核心基礎設施計畫」，2014 年 5 月宣布第一批資助的專案，其中 OpenSSL 可以請兩名全職核心開發者。十年後的 xz 事件提醒大家，同樣的問題還在：很多人每天都在用的軟體，背後可能只有一個人。回到開場的問題：這些軟體不是沒有人用，而是用的人太多、付錢和幫忙的人太少，往往要等到出事，才有人想起該分擔一點。"
+    }
+  ],
+  "takeaway": "許多人每天都在用的軟體，背後常常只有極少數人在顧；出事之前，很少人想過他們是誰。",
+  "must_verify": [
+    {
+      "claim": "OpenSSL 在 2014 年 4 月 7 日公布 CVE-2014-0160（心臟出血）並推出 1.0.1g：心跳功能少了邊界檢查，可讀走最多 64KB 記憶體；影響 1.0.1 到 1.0.1f，發現者是 Google 資安團隊的 Neel Mehta（Codenomicon 的工程師也幾乎同時獨立發現）",
+      "sources": [
+        0,
+        1
+      ]
+    },
+    {
+      "claim": "出問題的心跳功能由 Robin Seggelmann 提交、Stephen Henson 審核，2011 年 12 月 31 日加進原始碼，2012 年 3 月 14 日隨 OpenSSL 1.0.1 發布",
+      "sources": [
+        7,
+        8,
+        1
+      ]
+    },
+    {
+      "claim": "照 Netcraft 的估計，公布當時使用受信任憑證的 SSL 網站伺服器約 17% 受影響，約合 50 萬張由受信任機構簽發的憑證",
+      "sources": [
+        9,
+        1
+      ],
+      "attributed": true
+    },
+    {
+      "claim": "心臟出血公開時，OpenSSL 核心程式設計師只有四人，只有一人以此為全職工作，開發者靠顧問案維生，基金會一年捐款通常約兩千美元；基金會負責人 Steve Marquess 說應該要有至少六名全職成員「而不是只有一個」",
+      "sources": [
+        10,
+        1,
+        2
+      ],
+      "core": true
+    },
+    {
+      "claim": "照 Marquess 的公開信，心臟出血消息傳開後，OpenSSL 基金會收到將近九千美元的捐款",
+      "sources": [
+        2
+      ],
+      "attributed": true
+    },
+    {
+      "claim": "2014 年 5 月 29 日，Linux 基金會的核心基礎設施計畫宣布第一批資助的專案，OpenSSL 可請兩名全職核心開發者；出資者包括 Google、微軟、Facebook 等公司",
+      "sources": [
+        11,
+        2
+      ]
+    },
+    {
+      "claim": "xz 多年來由 Lasse Collin 一人維護；他在 2022 年 6 月 8 日回信說自己能投入的心力有限，也說這是「沒有報酬的業餘專案」，並提到 Jia Tan 之後可能扮演更重要的角色",
+      "sources": [
+        12,
+        5
+      ],
+      "attributed": true
+    },
+    {
+      "claim": "化名 Jia Tan 的帳號 2021 年 10 月 29 日送出第一個修改；2022 年 4、5 月起有帳號在郵件論壇施壓要求換人；2022 年 12 月 30 日開始直接合併程式，2023 年 3 月 18 日發布第一個版本 5.4.2",
+      "sources": [
+        5,
+        6
+      ]
+    },
+    {
+      "claim": "藏有後門的 xz 5.6.0 與 5.6.1 分別在 2024 年 2 月 24 日、3 月 9 日發布；編號 CVE-2024-3094，Red Hat 評為最高的 10 分；CISA 3 月 29 日發出警示，說可能讓人未經授權進入系統，建議退回舊版",
+      "sources": [
+        3,
+        5,
+        13,
+        6
+      ]
+    },
+    {
+      "claim": "2024 年 3 月 29 日，任職於微軟的 Andres Freund 在 oss-security 郵件論壇公開後門：他在 Debian sid 上注意到 SSH 登入異常耗用 CPU 與 valgrind 錯誤；受影響版本主要只進了測試版與開發版",
+      "sources": [
+        4,
+        13,
+        6
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://openssl-library.org/news/secadv/20140407.txt",
+      "publisher": "OpenSSL Project",
+      "kind": "official",
+      "supports": "心臟出血的官方資安公告：CVE 編號、心跳功能少了邊界檢查可讀走最多 64KB 記憶體、受影響版本、修正版 1.0.1g、發現者 Neel Mehta、公告日期",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Heartbleed",
+      "publisher": "Wikipedia",
+      "kind": "reference",
+      "supports": "程式碼 2011 年 12 月 31 日加入、2012 年 3 月 14 日隨 1.0.1 發布、Codenomicon 同時發現；Netcraft 的 17% 估計；OpenSSL 由少數志工維護、只有一人全職、年捐款約兩千美元",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.bankinfosecurity.com/openssl-gets-funding-after-heartbleed-a-6893",
+      "publisher": "BankInfoSecurity",
+      "kind": "news",
+      "supports": "2014 年 5 月 30 日報導：Marquess 在公開信說基金會平常一年約兩千美元捐款、消息傳開後收到將近九千美元；核心基礎設施計畫資助 OpenSSL 請兩名全職核心開發者",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.cisa.gov/news-events/alerts/2024/03/29/reported-supply-chain-compromise-affecting-xz-utils-data-compression-library-cve-2024-3094",
+      "publisher": "CISA（美國網路安全暨基礎設施安全署）",
+      "kind": "official",
+      "supports": "2024 年 3 月 29 日的警示：xz 5.6.0 與 5.6.1 被植入惡意程式、可能讓人未經授權進入系統、建議退回 5.4.6 等未受影響的版本；警示本身沒有給風險分數",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.openwall.com/lists/oss-security/2024/03/29/4",
+      "publisher": "Openwall oss-security 郵件論壇",
+      "kind": "news",
+      "supports": "Andres Freund 2024 年 3 月 29 日的原始貼文：在 Debian sid 上觀察到 SSH 登入耗用大量 CPU 與 valgrind 錯誤，查出上游 xz 被植入後門",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://research.swtch.com/xz-timeline",
+      "publisher": "research.swtch.com（Russ Cox）",
+      "kind": "news",
+      "supports": "xz 事件的逐日時間線：Jia Tan 第一個修改、施壓郵件、Collin 2022 年 6 月的回信、Jia Tan 直接合併程式與第一次發版的日期、5.6.0 與 5.6.1 的發布日期、Freund 發現的日期",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/XZ_Utils_backdoor",
+      "publisher": "Wikipedia",
+      "kind": "reference",
+      "supports": "Jia Tan 從 2021 年起用分身帳號施壓、超過兩年的布局；CVSS 10.0；Freund 是微軟員工；受影響版本主要在各大發行版的開發版；xz 常見於多數 Linux 發行版",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://github.com/openssl/openssl/commit/4817504d069b4c5082161b02a22116ad75f822b1.patch",
+      "publisher": "OpenSSL 原始碼庫（GitHub）",
+      "kind": "official",
+      "supports": "加入心跳功能的提交：日期 2011 年 12 月 31 日，由 Stephen Henson 提交，註明 Robin Seggelmann 提出、steve 審核",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://lwn.net/Articles/486426/",
+      "publisher": "LWN.net",
+      "kind": "news",
+      "supports": "OpenSSL 團隊 2012 年 3 月 14 日發布 1.0.1 版的公告，重大變更第一項就是 TLS/DTLS 心跳功能",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.netcraft.com/blog/half-a-million-widely-trusted-websites-vulnerable-to-heartbleed-bug",
+      "publisher": "Netcraft",
+      "kind": "news",
+      "supports": "2014 年 4 月的調查：心臟出血影響約 17% 使用受信任憑證的 SSL 網站伺服器，心跳功能在 17.5% 的 SSL 網站開啟，約合 50 萬張受信任憑證",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.propublica.org/article/the-u.s.-government-paying-to-undermine-internet-security-not-to-fix-it",
+      "publisher": "ProPublica",
+      "kind": "news",
+      "supports": "2014 年 4 月 15 日報導：OpenSSL 核心程式設計師四人、只有一人全職、靠顧問案維生、基金會一年通常約兩千美元捐款；引述 Marquess「至少六名全職成員，而不是只有一個」",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.linuxfoundation.org/press/press-release/the-linux-foundations-core-infrastructure-initiative-announces-new-backers-first-projects-to-receive-support-and-advisory-board-members",
+      "publisher": "Linux Foundation",
+      "kind": "official",
+      "supports": "2014 年 5 月 29 日新聞稿：核心基礎設施計畫的出資者名單，OpenSSL 將獲資助請兩名全職核心開發者",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.mail-archive.com/xz-devel@tukaani.org/msg00567.html",
+      "publisher": "xz-devel 郵件論壇存檔（The Mail Archive）",
+      "kind": "archive",
+      "supports": "Lasse Collin 2022 年 6 月 8 日的回信原文：能投入的心力有限、這是沒有報酬的業餘專案、Jia Tan 之後可能扮演更重要的角色",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.infosecurity-magazine.com/news/backdoor-xz-utils-linux-open-source/",
+      "publisher": "Infosecurity Magazine",
+      "kind": "news",
+      "supports": "2024 年 4 月 2 日報導：Freund 是微軟的首席軟體工程師、SSH 登入耗用大量 CPU；Red Hat 登記 CVE-2024-3094 並評為最高風險 10 分；受影響的是 Fedora 41、Debian 測試版與不穩定版等",
+      "checked": "2026-09-28"
+    }
+  ],
+  "names": [
+    "OpenSSL",
+    "Heartbleed",
+    "Neel Mehta",
+    "Google",
+    "Codenomicon",
+    "Robin Seggelmann",
+    "Stephen Henson",
+    "Steve Marquess",
+    "ProPublica",
+    "Netcraft",
+    "Linux Foundation",
+    "Facebook",
+    "Microsoft",
+    "xz",
+    "XZ Utils",
+    "liblzma",
+    "Lasse Collin",
+    "Jia Tan",
+    "Jigar Kumar",
+    "Dennis Ens",
+    "Andres Freund",
+    "Debian",
+    "Red Hat",
+    "CISA",
+    "Linux"
+  ],
+  "cast": [
+    {
+      "id": "maintainer",
+      "role": "長年獨自維護重要開源軟體的開發者",
+      "appearance": "a person in their 30s, calm focused expression, short tidy hair, wearing a plain grey sweatshirt, sitting alone at a desk in a small room lit by a laptop screen, a single coffee mug on the desk, no visible text on any screen"
+    }
+  ],
+  "image_notes": "全部畫面是卡通插畫，不寫任何文字。不畫任何公司、政府機關或軟體的商標；漏洞與後門畫成鎖頭、暗門、隱藏機關等意象，不呈現真實螢幕或程式碼文字；提到的真實人物都畫成不對應本人長相的一般化工程師；維護者只畫一般工作中的樣子，不畫成生病、崩潰或哭泣；化名者身分不明，畫成看不清臉的剪影，不暗示任何國籍或族裔。",
+  "sensitivity": "none",
+  "related_guide": null,
+  "thumbnail": {
+    "headline": "只有一名全職成員",
+    "idea": "一個人形剪影用肩膀撐著畫面上方一整片像網路節點連線的星空，旁邊還空著好幾個沒有人的位置"
+  }
+}

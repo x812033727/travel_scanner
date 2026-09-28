@@ -1,0 +1,23 @@
+{
+  "id": "A34",
+  "reviewed": "2026-09-28",
+  "reviewer": "Claude Opus 5.5 (independent fact check); sources read as the worker reads them, readable pages added and the review bound again by Claude Sonnet 5",
+  "story_sha256": "d90cdb5ac4adb85e7c13cb8e865313d304ef159d2f1ba1be767a2481008f554e",
+  "verdict": "fixed",
+  "sources_opened": 16,
+  "changes": [
+    "從京都大學學術資訊典藏庫打開了安岡孝一與安岡素子的原論文〈On the Prehistory of QWERTY〉（ZINBUN 42，2011 年 3 月），新增為 academic 來源，電報起源的說法改以論文為準，不再只靠雜誌與維基百科轉述。",
+    "作者單位照論文更正：安岡孝一在京都大學人文科學研究所，安岡素子在京都外國語大學，不是兩人都在京都大學。",
+    "新增論文裡直接回答標題的事實：1868 年 11 月第一台打字機賣給芝加哥一所電報學校的校長，當時的鍵盤像鋼琴、照字母順序排（A 到 N 由左往右、O 到 Z 由右往左）。",
+    "「這才是排列背後真正的邏輯」原本講成定論，改成學者之間的爭論：論文反駁的是東京大學山田教授 1980 年的說法（把常見字母組合的字桿分在兩側），並寫出論文的證據（TH 分在兩側、ER 卻相鄰，早期使用者是電報員），S 放在 Z 與 E 之間註明是他們的推論。",
+    "「1873 年雷明頓開始量產」依國會圖書館保留，並註明論文說 1873 年 3 月 1 日是簽約日、1874 年 4 月上市；補上 1882 年為避開專利改成今天的排列、1893 年聯合打字機公司與 1898 年成為事實標準、1910 年代電傳打字機的沿用。",
+    "拿掉沒有來源的「修斯申請專利時完全沒有解釋排列」「流傳超過一百年」「最常聽到」，設計者從修斯一人改成國會圖書館寫的 Sholes、Glidden 與 Soule，「最早的打字機」限縮成 QWERTY 前身的那一台。",
+    "「雖然動聽，但也是錯的」出自 Liebowitz 與 Margolis 1996 年在《Reason》的文章，不是 1990 年的論文，改正出處並新增《Reason》原文為來源；「測試多由德弗札克本人出資」是《史密森尼》的說法，不是兩位經濟學者的發現，改成他們在《Reason》寫的：德弗札克持有專利、一位教授說 1944 年海軍實驗由他主持、總務署實驗的打字員要練超過 25 天才追回原速。",
+    "補上反方：Freakonomics 記下德弗札克鍵盤支持者投書反駁，《史密森尼》也說其他研究認為它沒有更有效率，德弗札克那段改成雙方各有說法，不講成定論。",
+    "現況段刪掉錯誤的「提款機的鍵盤也是 QWERTY」與沒有來源的「德弗札克只是可手動切換的選項」，改用論文（日本、美國、英國的電腦鍵盤沿用至今）與國會圖書館的說法；takeaway 改成觀察。",
+    "縮圖畫面原本有發光的字母與字母表，違反不畫文字的規則，改成按鍵全空白的打字機與電報發報鍵；image_notes 補上鍵盤按鍵一律空白；半形標點改成全形；names 補上 Carlos Glidden、Samuel W. Soule、Hisao Yamada、Earle Strong、Randy Cassingham、Teletype 等。",
+    "must_verify[1] 補上工人讀得到的來源：安岡孝一部落格 The Truth of QWERTY 轉錄的 1868 年 11 月 21 日 Porter's Telegraph College 招生廣告原文（sources[6]），確認 1868 年、芝加哥、電報學校、28 鍵、像鋼琴都在工人保留的文字範圍內。",
+    "must_verify[5] 原本只靠論文 PDF（sources[4]），改連已有的維基百科 QWERTY 條目（sources[0]，補上 Teletype 成為電腦終端機一段）與《史密森尼》報導（sources[1]，補上 1893 年聯合打字機公司成立、QWERTY 成事實標準一段），兩者同步更新 supports；1882 年把 M 移到 N 旁、C 與 X 對調以避開專利的細節仍只有論文 PDF 記載，找不到工人讀得到的頁面複述這個技術性細節。"
+  ],
+  "notes": "論文原本的 dspace 連結已改成要跑腳本的新介面，來源網址用的是典藏庫 API 的 PDF 下載位址（對工人回 200），DOI 是 10.14989/139379。國會圖書館說 1873 年 3 月 1 日「開始生產」，論文說這天是簽約、1874 年 4 月才上市，稿子兩者都交代。電報起源是兩位安岡的研究結論，山田 1980 年的字桿說並沒有被正式撤回，旁白要講成學者之間的不同看法。Liebowitz 與 Margolis 的〈The Fable of the Keys〉本文沒有打開，只讀了他們 1996 年在《Reason》的文章；支持方的反駁只經 Freakonomics 轉述，其中對 Strong 的指控（銷毀資料等）沒有第二個來源，不要用。山田教授的漢字全名沒有出現在打開的頁面上，稿子寫「東京大學的山田教授」即可。must_verify[5] 的 1882 年 Wyckoff, Seamans & Benedict 為避開專利把 M 移到 N 旁、C 與 X 對調一節，翻過安岡的部落格與維基百科 QWERTY、Sholes and Glidden typewriter、Typewriter 條目都沒有找到複述這個細節的頁面，目前只有論文 PDF（sources[4]）記載，1893 年聯合打字機公司與 1910 年代 Teletype 兩段已有維基百科與《史密森尼》佐證。"
+}

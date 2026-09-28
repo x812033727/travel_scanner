@@ -1,0 +1,21 @@
+{
+  "id": "C03",
+  "reviewed": "2026-09-28",
+  "reviewer": "Claude Opus 5.5 (independent fact check)",
+  "story_sha256": "e20f813b8e8abec28872d570c1beb498ff263a60f683c29dae81da1f159ff5a6",
+  "verdict": "fixed",
+  "sources_opened": 16,
+  "changes": [
+    "標題「全世界的加密網路，曾經只靠一個沒有支薪的人撐著」與當事人說法不符：OpenSSL 基金會負責人 Steve Marquess 說應該要有至少六名全職成員「而不是只有一個」，那一人靠接商業案子維生並非沒有支薪，ProPublica 也寫四名核心程式設計師中只有一人全職，因此標題改成「許多加密網站靠的軟體，2014 年只有一名全職成員」，縮圖字「沒領薪水撐起網路」改成「只有一名全職成員」。",
+    "刪掉 Lasse Collin 的心理健康說法（章節、must_verify 與來源說明都拿掉），只用中性說法「他沒有太多時間與心力投入，也提醒大家這是沒有報酬的業餘專案」，並新增他 2022 年 6 月 8 日原信的郵件存檔為一手來源。",
+    "cast 的疲憊、凌亂、滿桌空咖啡杯改成一般工作中的樣子，image_notes 補上維護者不畫成生病、崩潰或哭泣，化名者的剪影不暗示任何國籍或族裔。",
+    "17% 的統計原本只靠維基百科，補上 Netcraft 2014 年 4 月的調查原文，並寫清楚範圍是使用受信任憑證的 SSL 網站伺服器、約 50 萬張憑證，標為 Netcraft 的估計。",
+    "「2014 年 4 月 7 日 Neel Mehta 發現」改成當天公布並推出修正版、Mehta 是發現者之一（Codenomicon 也幾乎同時發現），程式寫入與發布日期補上 OpenSSL 原始碼庫的提交紀錄與 LWN 轉載的 1.0.1 發布公告作第二來源。",
+    "CVE-2024-3094 的 10 分是通報的 Red Hat 評的，CISA 的警示沒有評分，原本「被 CISA 評為最高的十分」已改正，並新增 Infosecurity Magazine 作為評分與 Freund 任職微軟的第二來源。",
+    "「2023 年 3 月以維護者身分發布第一個藏有後門雛形的版本」錯誤，5.4.2 只是 Jia Tan 的第一個版本，後門在 2024 年 2 月的 5.6.0 與 3 月的 5.6.1，已改正並補上日期。",
+    "「一路往回追查了好幾週」「如果不是 Freund 多問一句，後門很可能已流進全世界的伺服器」改成 Freund 原文的「過去幾週注意到怪現象」與來源寫的「受影響版本主要只進了測試版與開發版」，開場的「全世界的網站被看光記憶體」「大多數電腦」也改成有來源的範圍。",
+    "「事件後幾天捐款只跳到約九千美元」標成 Marquess 公開信的說法，並新增 ProPublica 與 Linux 基金會 2014 年 5 月 29 日的新聞稿，作為人力、捐款與資助兩名全職開發者的來源。",
+    "開源軟體、後門、憑證、64KB、SSH 加上白話解釋，names 補上 Google、Codenomicon、Stephen Henson、ProPublica、Netcraft、Linux Foundation、Facebook、Microsoft、Debian、Red Hat、CISA、Linux。"
+  ],
+  "notes": "Marquess 2014 年 4 月的部落格原文（veridicalsystems.com）憑證錯誤打不開，Wayback Machine 也無法擷取，他的原話只能靠 ProPublica 的引述；維基百科引的「真正的謎不是幾個過勞的志工漏看了錯誤」沒有找到第二來源，稿子不要用。九千美元只有 BankInfoSecurity 轉述他的公開信。NVD 的 CVE 頁擷取不到內容，Red Hat 評 10 分是根據 Infosecurity Magazine，維基百科也寫 10.0。Jia Tan 的真實身分沒有定論，稿子不要暗示任何國家或組織；施壓帳號是不是同一夥人，也只說「後來被認為是分身」。openwall 的貼文是 Freund 的原文，分類沿用 news。"
+}

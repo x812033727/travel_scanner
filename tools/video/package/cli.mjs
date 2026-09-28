@@ -11,7 +11,7 @@ import { compilationChecksCurrent, isCompilation } from "../core/compilation.mjs
 import { isDrama, lookHash, mixHash, subtitlesHash } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { LOCALES } from "../core/schema.mjs";
-import { DUB_LOCALES } from "../dubs/plan.mjs";
+import { DEFAULT_DUB_LOCALES } from "../dubs/plan.mjs";
 import { captionLocalesOf, chosenLocales, dubsForUpload, readLanguages, runCaptions } from "../core/stages.mjs";
 import { approvedEpisodes, ARTIFACTS, loadProject, recordStage } from "../core/state.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
@@ -102,7 +102,7 @@ export async function run(command, args, ctx) {
   const languages = readLanguages(workdir);
   const captionLocales = captionLocalesOf(languages);
   const metadataLocales = chosenLocales(languages, "metadata");
-  const dubLocales = chosenLocales(languages, "dub") ?? DUB_LOCALES;
+  const dubLocales = chosenLocales(languages, "dub") ?? DEFAULT_DUB_LOCALES;
   const timeline = readJson(path.join(workdir, ARTIFACTS.timeline));
   const captionsManifest = readJson(path.join(workdir, ARTIFACTS.captions), null);
   let captions;
