@@ -1,7 +1,7 @@
 ---
 id: 2026-09-28-correct-misleading-ai-links-before-batch038
 title: Correct misleading AI links before Batch038 translation
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-root
@@ -65,6 +65,9 @@ published zh-TW version 4 documents equal to the repository baseline. The
 five-change exact diff receipt is documented in
 `docs/article-localization/batch038-source-link-corrections.md`. No live
 revision was written.
+
+Draft PR #913 is open; full CI is pending. The task remains in review until
+that check completes and the PR merges.
 
 Four focused pack lints passed with inherited `no_summary` advisories. API
 content/link tests passed (12 passed, 5 environment skips); `npm run

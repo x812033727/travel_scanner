@@ -5,6 +5,8 @@ articles. The corrected packs retain those exact words as plain text. They are
 the source candidates for the next five-language batch; this PR does not update
 published database revisions.
 
+Review: [draft PR #913](https://github.com/x812033727/travel_scanner/pull/913).
+
 | Guide | zh-TW block | Word | Incorrect destination |
 | --- | ---: | --- | --- |
 | `customer-journey-funnel` | 7 | 標記 | `ai-term-token` |
