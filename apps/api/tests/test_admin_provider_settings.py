@@ -1998,16 +1998,24 @@ async def test_the_connection_test_asks_the_agent_about_claude_instead_of_the_ap
 
 
 @pytest.mark.asyncio
-async def test_waiting_for_an_account_instead_of_minimax_is_the_owners_choice(
+async def test_the_minimax_fallback_setting_is_gone_and_connections_stay_owner_only(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    with pytest.raises(AppError):
+    # Removed on 2026-09-28: a full account hands over to the next one, never to MiniMax.
+    with pytest.raises(AppError) as unknown:
         _validate_provider_values(
-            "ai_vendors", {}, ProviderSettingsUpdate(config={"ai_subscription_fallback": "gemini"})
+            "ai_vendors", {}, ProviderSettingsUpdate(config={"ai_subscription_fallback": "wait"})
         )
-    assert _validate_provider_values(
-        "ai_vendors", {}, ProviderSettingsUpdate(config={"ai_subscription_fallback": "wait"})
-    ) == {"ai_subscription_fallback": "wait"}
+    assert unknown.value.code == "provider_setting_unknown"
+    # The production row still holds the old value; loading settings ignores it.
+    row = ProviderConfig(
+        provider="ai_vendors",
+        enabled=True,
+        config={"ai_subscription_fallback": "minimax", "anthropic_connection": "subscription"},
+        secret_config_encrypted=None,
+    )
+    base = Settings(app_secret_key="test-app-secret-at-least-thirty-two-characters")
+    assert apply_runtime_overrides(base, [row]).anthropic_connection == "subscription"
 
     async def fake_snapshot(*_args: object) -> object:
         return "snapshot"
@@ -2019,7 +2027,7 @@ async def test_waiting_for_an_account_instead_of_minimax_is_the_owners_choice(
         await update_provider_settings(
             UpdateSession(),  # type: ignore[arg-type]
             "ai_vendors",
-            ProviderSettingsUpdate(config={"ai_subscription_fallback": "wait"}),
+            ProviderSettingsUpdate(config={"anthropic_connection": "subscription"}),
             operator,
             object(),  # type: ignore[arg-type]
         )
