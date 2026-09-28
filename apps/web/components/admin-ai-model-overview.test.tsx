@@ -52,8 +52,8 @@ describe("overviewRows", () => {
 
   it("shows Claude on the subscription once the site can and the owner switched it on", () => {
     const sources = { providers: providers({ anthropic_connection: "subscription" }), news };
-    expect(row(sources, "guideSearch")).toMatchObject({ support: "claudeSubscription", connection: "subscriptionFallback" });
-    expect(row(sources, "news-writer")).toMatchObject({ connection: "subscriptionFallback" });
+    expect(row(sources, "guideSearch")).toMatchObject({ support: "claudeSubscription", connection: "subscription" });
+    expect(row(sources, "news-writer")).toMatchObject({ connection: "subscription" });
     // Not Claude, so still the API key; the planner never takes the subscription.
     expect(row(sources, "intros")).toMatchObject({ support: "apiKeyOnly", connection: "apiKey" });
     expect(row(sources, "planner")).toMatchObject({ support: "apiKeyOnly", connection: "apiKey" });
@@ -62,7 +62,7 @@ describe("overviewRows", () => {
 
   it("shows Codex subscription routing for OpenAI features and video stages", () => {
     const configured = providers({ openai_connection: "subscription" });
-    expect(row({ providers: configured }, "intros")).toMatchObject({ support: "codexSubscription", connection: "subscriptionFallback" });
+    expect(row({ providers: configured }, "intros")).toMatchObject({ support: "codexSubscription", connection: "subscription" });
     expect(row({ providers: configured }, "planner").connection).toBe("apiKey");
     const codexVideo = { ...video, stage_models: { ...video.stage_models, writer: { provider: "codex", model: "gpt-6-sol" } } } as VideoSettingsView;
     expect(row({ video: codexVideo }, "video-writer")).toMatchObject({ vendor: "Codex", support: "codex", connection: "subscription" });
