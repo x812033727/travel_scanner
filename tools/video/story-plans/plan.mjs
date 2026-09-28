@@ -74,7 +74,7 @@ export const originalUrl = (url) => ARCHIVED.exec(String(url))?.[1] ?? url;
 export const hostOf = (url) => {
   try {
     const host = new URL(originalUrl(url)).hostname.replace(/^www\./, "").toLowerCase();
-    return ONE_VOICE.find((site) => host === site || host.endsWith(`.${site}`)) ?? host;
+    return ONE_VOICE.some((site) => host === site || host.endsWith(`.${site}`)) ? "wikipedia.org" : host;
   } catch {
     return "";
   }

@@ -128,6 +128,24 @@ test("a claim needs a primary source, two independent ones, or to be told as som
   assert.match(storyProblems(outOfRange).join("\n"), /must_verify\[0\]\.sources must list indexes into sources/);
 });
 
+test("encyclopedia mirrors cannot independently corroborate the original or each other", () => {
+  const encyclopedia = { url: "https://en.wikipedia.org/wiki/Example", publisher: "Wikipedia", kind: "reference" };
+  const newspaper = { url: "https://news.example.org/a", publisher: "Independent News", kind: "news" };
+  const mirrors = [
+    "https://www.wikiwand.com/en/articles/Example",
+    "https://www.wikimili.com/en/Example",
+    "https://commons.wikimedia.org/wiki/Example",
+    "https://web.archive.org/web/20251226124930/http://m.wikiwand.com/en/Example",
+  ].map((url, index) => ({ url, publisher: `Mirror ${index}`, kind: "reference" }));
+  for (const mirror of mirrors) {
+    assert.equal(hostOf(mirror.url), "wikipedia.org");
+    assert.equal(claimSupported({ sources: [0, 1] }, [encyclopedia, mirror]), false);
+    assert.equal(claimSupported({ sources: [0, 1] }, [newspaper, mirror]), true);
+  }
+  assert.equal(claimSupported({ sources: [0, 1] }, mirrors), false);
+  assert.equal(hostOf("https://wikiwand.com.example.org/a"), "wikiwand.com.example.org", "only the actual domain and its subdomains belong to the family");
+});
+
 test("a figure is generic: English, and never named after a real person or brand", () => {
   const named = story();
   named.cast[0].appearance = "John Example in a grey suit";
