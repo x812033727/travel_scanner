@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-let-trusted-newsrooms-publish-alone-and
 title: Let trusted newsrooms publish alone and rerun stories rejected for empty excerpts
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5
 claimed_at: 2026-09-28T05:17:16Z
 created_at: 2026-09-28T05:17:00Z
-completed_at:
+completed_at: 2026-09-28T11:38:55Z
 branch: claude/ai-hourly-news-efficiency-b1c0d2
 depends_on:
   - 2026-09-28-news-extractor-keeps-tag-lists-and
@@ -44,7 +44,7 @@ follow-ups to the extractor fix (`2026-09-28-news-extractor-keeps-tag-lists-and`
 - [x] `backfill_cli --refetch-source NAME` refetches the evidence of that source's
       `news_not_eligible` rejections that no person made, then reopens and queues each
       readable one. An unreadable page stays rejected and is reported.
-- [ ] Production: the flag is set on the three newsrooms, and the three backfills are run.
+- [x] Production: the flag is set on the three newsrooms, and the backfills are run.
 
 ## Steps
 
@@ -53,8 +53,8 @@ follow-ups to the extractor fix (`2026-09-28-news-extractor-keeps-tag-lists-and`
 - [x] Tests.
 - [x] `sources.json`: `auto_publish_alone` on TechCrunch AI, The Verge AI and CoinDesk (the
       owner confirmed it again after the auto-mode classifier blocked the first edit).
-- [ ] After deploy: `sources_cli --apply` pushes the flag to production.
-- [ ] After deploy, on the host:
+- [x] After deploy: `sources_cli --apply` pushes the flag to production.
+- [x] After deploy, on the host:
       `backfill_cli --since 2026-09-01 --jev-quota-holds --apply` and
       `backfill_cli --since 2026-09-15 --refetch-source ... --apply` for Cloudflare blog,
       Chainalysis blog, SEC press releases, Meta Newsroom, Ethereum Foundation blog and Google
@@ -72,3 +72,17 @@ cd apps/api && uv run pytest tests/test_news_backfill_cli.py tests/test_news_aut
   can add or remove a newsroom through `sources.json` and `sources_cli --apply`.
 - The flag does not reach drafts already waiting as `news_zh_draft_ready`. Those were
   assessed before it existed, so they still need the owner's button, or a separate decision.
+- 2026-09-28 11:09Z, production (`045afc1e` was already live, deployed by another session):
+  - `sources_cli` ran with `--file`, pointing at a copy of `sources.json` that holds only
+    Chainalysis, TechCrunch AI, The Verge AI and CoinDesk. All four were updated. A full run
+    would also have re-recorded OpenAI News, Ars Technica and The Block, which fail validation
+    from the host and stay disabled.
+  - `--jev-quota-holds` found nothing with `--since 2026-09-01`. The remaining 15 holds are
+    August stories, so it ran with `--since 2026-01-01`, and all 15 were paused and released.
+  - `--refetch-source` covered 18 candidates from Cloudflare (8), Meta (7), Chainalysis (2)
+    and SEC (1). Every page could be read, the excerpts are now the story, and all 18 were
+    queued.
+- Half an hour later, 2 were rejected again as not newsworthy and 2 held as
+  `news_evidence_changed`. The rest were still queued.
+- The throughput limit once there is supply is the single `news-worker`. It runs one
+  candidate at a time, about 25 model calls each, so about 3 to 5 candidates finish per hour.

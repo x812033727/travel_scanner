@@ -234,7 +234,7 @@ describe("the ready card and the list with a linked channel", () => {
     const stuck = { ...ready, slug: "stuck-sync", title: "送到一半的影片", youtube_video_id: "dQw4w9WgXcQ", youtube_sync: failedSync };
     stub((url) => {
       if (url.endsWith("/admin/video-youtube")) return linked;
-      if (url.endsWith("/admin/videos")) return [ready, stuck];
+      if (url.endsWith("/admin/videos?shorts=exclude")) return [ready, stuck];
       if (url.endsWith("/admin/videos/upload-ready")) return { ...ready, reviews: [confirmation] };
       return { ...stuck, reviews: [] };
     });
@@ -254,7 +254,7 @@ describe("the ready card and the list with a linked channel", () => {
     const ready = { slug: "upload-ready", title: "上傳包影片", stage: "done", checklist: [], youtube_video_id: null, last_synced_at: "2026-09-27T05:00:00Z", pending: 0, publish_approved_at: "2026-09-27T05:00:00Z" };
     stub((url) => {
       if (url.endsWith("/admin/video-youtube")) return empty;
-      if (url.endsWith("/admin/videos")) return [ready];
+      if (url.endsWith("/admin/videos?shorts=exclude")) return [ready];
       // The settings tab's own form is not what this test reads.
       if (url.includes("/admin/video-automation/")) return new Response(null, { status: 404 });
       return { ...ready, reviews: [confirmation] };

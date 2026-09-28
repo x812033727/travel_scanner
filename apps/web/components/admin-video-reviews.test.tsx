@@ -36,7 +36,7 @@ function stubFetch() {
       posts.push({ url, body: JSON.parse(String(init.body)) });
       return Promise.resolve(Response.json({ ...outline, status: "approved" }));
     }
-    const body = url.endsWith("/admin/videos") ? [summary] : { ...summary, reviews: [outline, final] };
+    const body = url.endsWith("/admin/videos?shorts=exclude") ? [summary] : { ...summary, reviews: [outline, final] };
     return Promise.resolve(Response.json(body));
   });
   vi.stubGlobal("fetch", fetchMock);
@@ -100,7 +100,7 @@ describe("AdminVideoReviews", () => {
       const url = String(input);
       if (init?.method === "POST") { posts.push(url); pending = true; }
       const value = { ...blocked, retry_request_id: pending ? request : null, retry_acknowledged_id: null };
-      return Promise.resolve(Response.json(url.endsWith("/admin/videos") ? [value] : { ...value, reviews: [] }));
+      return Promise.resolve(Response.json(url.endsWith("/admin/videos?shorts=exclude") ? [value] : { ...value, reviews: [] }));
     }));
     window.history.replaceState(null, "", "/?video=ai-model-choice");
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
@@ -112,7 +112,7 @@ describe("AdminVideoReviews", () => {
 
   it("shows a blocked video's reason to a reader without the retry action", async () => {
     const blocked = { ...summary, stage: "blocked", pending: 0, checklist: [{ key: "blocked", label: "卡住，需要人處理：缺金鑰", done: false }] };
-    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => Promise.resolve(Response.json(String(input).endsWith("/admin/videos") ? [blocked] : { ...blocked, reviews: [] }))));
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => Promise.resolve(Response.json(String(input).endsWith("/admin/videos?shorts=exclude") ? [blocked] : { ...blocked, reviews: [] }))));
     window.history.replaceState(null, "", "/?video=ai-model-choice");
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
     expect(await screen.findByText("卡住，需要人處理：缺金鑰")).toBeTruthy();
@@ -129,7 +129,7 @@ describe("AdminVideoReviews", () => {
         posts.push({ url, body: JSON.parse(String(init.body)) });
         dropped = true;
       }
-      if (url.endsWith("/admin/videos")) return Promise.resolve(Response.json([{ ...summary, ...droppedFields() }]));
+      if (url.endsWith("/admin/videos?shorts=exclude")) return Promise.resolve(Response.json([{ ...summary, ...droppedFields() }]));
       const reviews = dropped ? [{ ...outline, status: "superseded" }] : [outline];
       return Promise.resolve(Response.json({ ...summary, ...droppedFields(), reviews }));
     }));
@@ -170,7 +170,7 @@ describe("AdminVideoReviews", () => {
         posts.push({ url, body: JSON.parse(String(init.body)) });
         return Promise.resolve(Response.json({ ...look, status: "approved", choice: "B" }));
       }
-      if (url.endsWith("/admin/videos")) return Promise.resolve(Response.json([{ ...summary, format: "drama", media_usd: 12.5, clip_seconds: 96 }]));
+      if (url.endsWith("/admin/videos?shorts=exclude")) return Promise.resolve(Response.json([{ ...summary, format: "drama", media_usd: 12.5, clip_seconds: 96 }]));
       return Promise.resolve(Response.json({ ...summary, format: "drama", reviews: [look, board] }));
     }));
     window.history.replaceState(null, "", "/?video=ai-model-choice");
@@ -280,7 +280,7 @@ describe("AdminVideoReviews", () => {
         posts.push({ url, body: JSON.parse(String(init.body)) });
         return Promise.resolve(Response.json({ ...languages, status: "approved" }));
       }
-      if (url.endsWith("/admin/videos")) return Promise.resolve(Response.json([summary]));
+      if (url.endsWith("/admin/videos?shorts=exclude")) return Promise.resolve(Response.json([summary]));
       return Promise.resolve(Response.json({ ...summary, ready_to_upload: false, locales_decided_at: "2026-09-27T04:30:00Z", locales: { en: { metadata: true, captions: true, dub: true }, ja: { metadata: true, captions: true, dub: true } }, reviews: [languages] }));
     }));
     window.history.replaceState(null, "", "/?video=ai-model-choice");
@@ -317,7 +317,7 @@ describe("AdminVideoReviews", () => {
     };
     vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
       const url = String(input);
-      if (url.endsWith("/admin/videos")) return Promise.resolve(Response.json([summary]));
+      if (url.endsWith("/admin/videos?shorts=exclude")) return Promise.resolve(Response.json([summary]));
       return Promise.resolve(Response.json({ ...summary, pending: 0, reviews: [dubs] }));
     }));
     window.history.replaceState(null, "", "/?video=ai-model-choice");
@@ -341,7 +341,7 @@ describe("AdminVideoReviews", () => {
         return Promise.resolve(Response.json({ ...summary, locales, reviews: [] }));
       }
       if (url.includes("/admin/video-automation/settings")) return Promise.resolve(Response.json({ caption_locales: ["ja", "zh-CN"], drama: { drama_caption_locales: ["en"] } }));
-      if (url.endsWith("/admin/videos")) return Promise.resolve(Response.json([summary]));
+      if (url.endsWith("/admin/videos?shorts=exclude")) return Promise.resolve(Response.json([summary]));
       return Promise.resolve(Response.json({
         ...summary, ready_to_upload: false, locales, locales_decided_at: "2026-09-27T04:30:00Z",
         languages: { en: { metadata: { state: "ready" }, captions: { state: "working" } } }, reviews: [{ ...final, status: "approved", decided_at: "2026-09-27T04:00:00Z" }],
@@ -389,7 +389,7 @@ describe("AdminVideoReviews", () => {
   });
 
   it("waits for the final cut before offering languages, greys out a drama's dub, and lets a reader only look", async () => {
-    const detail = (fields: Record<string, unknown>) => vi.fn((input: RequestInfo | URL) => Promise.resolve(Response.json(String(input).endsWith("/admin/videos") ? [summary] : { ...summary, ready_to_upload: false, ...fields })));
+    const detail = (fields: Record<string, unknown>) => vi.fn((input: RequestInfo | URL) => Promise.resolve(Response.json(String(input).endsWith("/admin/videos?shorts=exclude") ? [summary] : { ...summary, ready_to_upload: false, ...fields })));
     window.history.replaceState(null, "", "/?video=ai-model-choice");
     vi.stubGlobal("fetch", detail({ reviews: [outline] }));
     const first = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
@@ -430,7 +430,7 @@ describe("AdminVideoReviews", () => {
     const all = [deciding, making, ready, scheduled, published];
     vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
       const url = String(input);
-      if (url.endsWith("/admin/videos")) return Promise.resolve(Response.json(all));
+      if (url.endsWith("/admin/videos?shorts=exclude")) return Promise.resolve(Response.json(all));
       const project = all.find((each) => url.endsWith(`/admin/videos/${each.slug}`)) ?? making;
       return Promise.resolve(Response.json({ ...project, reviews: [] }));
     }));
@@ -759,7 +759,7 @@ describe("AdminVideoReviews", () => {
         return Promise.resolve(Response.json({ ...ready, youtube_video_id: "dQw4w9WgXcQ", reviews: [confirmation] }));
       }
       const current = linked ? { ...ready, youtube_video_id: "dQw4w9WgXcQ" } : ready;
-      if (url.endsWith("/admin/videos")) return Promise.resolve(Response.json([published, current, blocked, summary]));
+      if (url.endsWith("/admin/videos?shorts=exclude")) return Promise.resolve(Response.json([published, current, blocked, summary]));
       if (url.endsWith("/admin/videos/upload-ready")) return Promise.resolve(Response.json({ ...current, reviews: [confirmation] }));
       return Promise.resolve(Response.json({ ...summary, reviews: [] }));
     }));
@@ -813,7 +813,7 @@ describe("AdminVideoReviews", () => {
     const projects = [ready, compilation, cutting];
     vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
       const url = String(input);
-      if (url.endsWith("/admin/videos")) return Promise.resolve(Response.json(projects));
+      if (url.endsWith("/admin/videos?shorts=exclude")) return Promise.resolve(Response.json(projects));
       const project = projects.find((each) => url.endsWith(`/admin/videos/${each.slug}`)) ?? ready;
       return Promise.resolve(Response.json({ ...project, reviews: [] }));
     }));
