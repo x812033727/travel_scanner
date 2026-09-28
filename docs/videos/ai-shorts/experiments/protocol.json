@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "local_date": "2026-09-28",
+  "timezone": "Asia/Taipei",
+  "protocol": "Two fresh-context Codex subagents, fork_turns=none, inherited same session model. One response each, no tools during response, no retries or selection. Arithmetic and poster tasks were bundled in each request.",
+  "model": {
+    "provider": "Codex session",
+    "exact_model_id": null,
+    "reason": "The collaboration tool did not return the resolved backend model ID; no cross-brand comparison is claimed."
+  },
+  "conditions": [
+    {
+      "id": "plain",
+      "agent": "/root/experiment_plain",
+      "input": "你正在參加一個可公開的 AI 輸出實驗。請不要使用任何工具或網路，也不要修改檔案。這次只回答一次；只輸出一個 JSON 物件（不要 Markdown 圍欄）。欄位 receipt_answer（中文字串）、quiz_answers（依題序三個字串）、poster_html（完整獨立 HTML 字串）。任務：\n1. 幫我核對這張自製文字收據，告訴我總額對不對：湯品 85 元×2，茶飲 45 元×3，折扣減 30 元，收據印的總計 300 元。\n2. 回答三題：A. 商品原價240元，先打8折再折30元，實付多少？ B. 三人每人買兩杯45元飲料，合計多少？ C. 09:45 開始，95分鐘後是幾點？\n3. 幫我設計一張繁體中文直式海報，HTML/CSS 畫面寬800高1000像素、body margin0、所有內容在畫面內。海報必須包含：『MOKAAIR AI 夜市實驗室』『週六 18:00–21:00』『一起測試 AI 的腦洞』『虛構活動・設計練習』。只用 HTML/CSS 原創幾何圖形，不要外連、腳本、圖片、iframe 或 emoji；字型用 sans-serif。風格自由。",
+      "output": "plain.json",
+      "sha256": "7387e347fb7f3d247022c9b8aa362177f14b8d16b376462e7ad3bac32c094b84"
+    },
+    {
+      "id": "structured",
+      "agent": "/root/experiment_structured",
+      "input": "你正在參加一個可公開的 AI 輸出實驗。請不要使用任何工具或網路，也不要修改檔案。這次只回答一次；只輸出一個 JSON 物件（不要 Markdown 圍欄）。欄位 receipt_answer（中文字串）、quiz_answers（依題序三個字串）、poster_html（完整獨立 HTML 字串）。任務：\n1. 幫我核對這張自製文字收據，告訴我總額對不對：湯品 85 元×2，茶飲 45 元×3，折扣減 30 元，收據印的總計 300 元。\n2. 回答三題：A. 商品原價240元，先打8折再折30元，實付多少？ B. 三人每人買兩杯45元飲料，合計多少？ C. 09:45 開始，95分鐘後是幾點？\n3. 幫我設計一張繁體中文直式海報，HTML/CSS 畫面寬800高1000像素、body margin0、所有內容在畫面內。海報必須包含：『MOKAAIR AI 夜市實驗室』『週六 18:00–21:00』『一起測試 AI 的腦洞』『虛構活動・設計練習』。只用 HTML/CSS 原創幾何圖形，不要外連、腳本、圖片、iframe 或 emoji；字型用 sans-serif。風格自由。\n額外要求：作答前自行核對算式與題目限制，最後只給結論與簡短可驗算步驟，不要輸出隱藏推理。海報請讓標題、時間、行動呼籲有清楚的閱讀順序；手機縮小後也能閱讀；完稿前檢查必要文字是否齊全。",
+      "output": "structured.json",
+      "sha256": "16a6b1d6247d4f209cb7067a6afbec3c12daba96d3b40a8526b9389a10edaa5a"
+    }
+  ],
+  "answer_key": {
+    "receipt": {
+      "expected": 275,
+      "printed": 300,
+      "overcharge": 25,
+      "calculation": "85*2 + 45*3 - 30"
+    },
+    "quiz": [
+      162,
+      270,
+      "11:20"
+    ]
+  },
+  "limitations": [
+    "One bundled request per condition, n=1: a demonstration, not a controlled statistical benchmark.",
+    "Arithmetic uses text, not a receipt image: no OCR claim.",
+    "HTML/CSS poster generation, not a raster image-generation comparison.",
+    "All four poster strings were mandatory in both conditions; both met that checklist.",
+    "Same shared system environment and no exposed exact model ID; do not infer provider rankings.",
+    "Posters are rendered with a common bundled font. Raw original HTML remains unchanged.",
+    "The final narration and editing were authored after outcomes were known."
+  ],
+  "cost": {
+    "paid_external_api_calls": 0,
+    "incremental_api_cost_ntd": 0,
+    "codex_usage": "Existing account/session usage; not a metered API price estimate",
+    "narration": "Installed Windows zh-TW voice, no cloud request"
+  }
+}
