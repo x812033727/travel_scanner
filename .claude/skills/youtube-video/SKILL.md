@@ -1,6 +1,6 @@
 ---
 name: youtube-video
-description: 製作 YouTube 教學與解說影片的完整流程，分兩條路線。全自動：AI 撰稿與查核、伺服器用 Gemini（或 Azure）合成台灣口音旁白、深色投影片版型、ffmpeg 合成、五語 CC，工具在 tools/video。人工錄製：口播稿、分鏡、字卡、螢幕錄影、剪輯交接。兩條都涵蓋選題與格式、查核、畫面與縮圖、章節、字幕、上架包與上架前檢查。要做一支 YouTube 影片、把 Mokaair 文章改成影片、寫口播稿或分鏡、合成旁白、做縮圖、排章節、寫影片說明或上字幕時，先讀這個 skill。Produce Mokaair YouTube videos, fully automated through tools/video or recorded by the owner, from topic to upload.
+description: 製作 YouTube 教學與解說影片的完整流程，分三條路線。全自動：AI 撰稿與查核、伺服器用 Gemini（或 Azure）合成台灣口音旁白、深色投影片版型、ffmpeg 合成、繁中 CC 加站主每支勾選的語言（標題說明、CC、配音），工具在 tools/video。AI 漫劇：故事聖經或設定集、劇本關卡、AI 生成片段與多角色配音，單集與長篇作品同一條流程。人工錄製：口播稿、分鏡、字卡、螢幕錄影、剪輯交接。三條都涵蓋選題與格式、查核、畫面與縮圖、章節、字幕、上架包與上架前檢查。要做一支 YouTube 影片或 AI 漫劇、把 Mokaair 文章改成影片、寫口播稿或分鏡、合成旁白、做縮圖、排章節、寫影片說明或上字幕時，先讀這個 skill。Produce Mokaair YouTube videos, fully automated through tools/video, as AI drama episodes or recorded by the owner, from topic to upload.
 metadata:
   short-description: YouTube 影片：全自動或人工錄製，從選題到上架
 ---
@@ -20,9 +20,8 @@ metadata:
 
 | 路線 | 成品 | 誰做什麼 | 從哪裡開始 |
 | --- | --- | --- | --- |
-| **全自動** | 深色投影片＋台灣口音合成旁白＋五語 CC，8–12 分鐘 | 代理企劃、撰稿、查核，工具合成旁白、畫面與成片；站主選大綱、聽旁白、看成片、自己上傳 | 下面「全自動路線」與 `.agents/skills/youtube-video/references/automated.md` |
-| **AI 漫劇** | AI 生成的鏡頭片段＋旁白與角色配音＋燒錄繁中字幕＋配樂＋五語 CC，2–4 分鐘一集 | 代理寫故事聖經、劇本與分鏡，工具生成設定圖、關鍵影格、片段、音樂並合成；站主選大綱、選角色設定圖、聽旁白、看分鏡、看成片、自己上傳 | `.agents/skills/youtube-video/references/drama.md`（設計在 `docs/videos/DRAMA.md`） |
-| **長篇漫劇** | 一部約 100 集、分篇章的原創故事，一集接一集地做；角色設定圖與人物表跨集沿用 | 站主建作品、核准設定集／總綱／每篇細綱／每集劇本、上架；工人規劃文件、依細綱寫每一集、自動接續 | `.agents/skills/youtube-video/references/series.md`（設計在 `docs/videos/SERIES.md`） |
+| **全自動** | 深色投影片＋台灣口音合成旁白＋繁中 CC，其他語言（標題說明、CC、配音）由站主每支勾選，8–12 分鐘 | 代理企劃、撰稿、查核，工具合成旁白、畫面與成片；站主選大綱、聽旁白、看成片、自己上傳 | 下面「全自動路線」與 `.agents/skills/youtube-video/references/automated.md` |
+| **AI 漫劇**（單集與作品） | AI 生成的鏡頭片段＋旁白與角色配音＋燒錄繁中字幕＋配樂＋繁中 CC（其他語言的標題說明與 CC 由站主每支勾選），2–4 分鐘一集；單集是一集的作品，長篇是一部約 100 集、分篇章的原創故事，一集接一集地做，角色設定圖與人物表跨集沿用 | 站主發起，在兩個關卡討論並核准：**文件**（單集的故事聖經；作品的設定集、總綱、每篇細綱）與**劇本**；之後的設定圖、分鏡由 judge 決定（`auto_pick_look`、`auto_approve_storyboard` 開了才自動，預設關）、旁白 Jev 全過與成片自動品管自動核准；出錯才找站主；站主再選語言、自己上傳。代理或工人規劃文件、寫劇本與分鏡、依細綱寫每一集並自動接續，工具生成設定圖、關鍵影格、片段、音樂並合成 | `.agents/skills/youtube-video/references/drama.md`（每一集的步驟；設計在 `docs/videos/DRAMA.md`）與 `.agents/skills/youtube-video/references/series.md`（作品的文件、討論串、一致性；設計在 `docs/videos/SERIES.md`）；一條流程與討論在 `docs/videos/DRAMA-FLOW.md` |
 | **一鍵合集** | 一部約兩小時（30–480 分鐘可設）一口氣看完的原創爽文漫劇：六個題材預設、節奏規格（鉤子、爽點、懸念）、混合畫面（四成片段、其餘關鍵影格加運鏡），全部集數做完接成一支長片，1080p 成片從後台下載 | 站主在後台按「一鍵開拍」（題材、主角、長度、畫面等級）、最後上傳與選上架時間；文件由查核模型判、伺服器依規則核准或退回，每集免關卡，工人做合集 | `.agents/skills/youtube-video/references/series.md` 的「合集作品（一鍵）」（設計在 `docs/videos/BINGE.md`） |
 | **人工錄製** | 站主出鏡或配音、螢幕錄影、剪輯 | 代理交稿子、分鏡、字卡、上架文字；站主錄音、錄影、剪輯 | 下面「人工錄製路線」 |
 
@@ -39,14 +38,16 @@ metadata:
 | 人工錄製的稿子格式（`video_kit.py` 讀得懂的寫法） | `.agents/skills/youtube-video/references/script-format.md` |
 | 全自動：一次性設定、主幹、指令、結束碼、發音、成本、坑、主機自動產線 | `.agents/skills/youtube-video/references/automated.md` |
 | 全自動的代理提示 | `.agents/skills/youtube-video/references/prompts/`（`planner.md`、`writer-video.md`、`verifier-video.md`、`listener-rewrite.md`、`caption-translate.md`、`caption-review.md`） |
-| AI 漫劇：一次性設定、主幹與關卡、指令、`video.json` 的角色與鏡頭、品檢與重做、成本、坑 | `.agents/skills/youtube-video/references/drama.md` |
-| AI 漫劇的代理提示（故事聖經、劇本與分鏡、連貫性查核、修鏡頭） | `.agents/skills/youtube-video/references/prompts/planner-drama.md`、`writer-drama.md`、`verifier-drama.md` |
-| 長篇漫劇：名稱、主幹、劇本關卡、一致性（人物表、設定圖存檔、前情）、張力規格、指令、坑 | `.agents/skills/youtube-video/references/series.md` |
-| 長篇漫劇的代理提示（設定集、總綱、篇章細綱、每集撰稿與查核、前情） | `.agents/skills/youtube-video/references/prompts/series-setting.md`、`series-outline.md`、`series-chapter.md`、`writer-series.md`、`verifier-series.md` |
+| AI 漫劇的每一集：一次性設定、關卡（文件、劇本，加四個自動的）、主幹與指令、`video.json` 的角色與鏡頭、品檢與重做、成本、坑、站主怎麼從後台發起單集 | `.agents/skills/youtube-video/references/drama.md` |
+| AI 漫劇的代理提示（單集的故事聖經、劇本與分鏡、連貫性查核、修鏡頭；討論串的回覆） | `.agents/skills/youtube-video/references/prompts/series-bible.md`、`writer-drama.md`、`verifier-drama.md`、`discuss.md`（`planner-drama.md` 只給單集變成作品之前排進的舊請求） |
+| 作品：名稱、主幹（每個核准點的討論）、討論串、劇本關卡、一致性（人物表、設定圖存檔、前情）、張力規格、指令、坑 | `.agents/skills/youtube-video/references/series.md` |
+| 作品的代理提示（設定集、總綱、篇章細綱、每集撰稿與查核、前情） | `.agents/skills/youtube-video/references/prompts/series-setting.md`、`series-outline.md`、`series-chapter.md`、`writer-series.md`、`verifier-series.md` |
 | 一鍵合集：一鍵表單與報價、免關卡的規則、節奏規格與爽點、畫面等級上限、`compile` 指令、下載、坑 | `.agents/skills/youtube-video/references/series.md` 的「合集作品（一鍵）」；still 鏡頭的 `visual` 與運鏡關鍵字在 `drama.md` |
 | 一鍵合集的代理提示（文件裁決、合集的標題／說明／標籤／縮圖與四語翻譯） | `.agents/skills/youtube-video/references/prompts/verifier-series-doc.md`、`planner-compilation.md`；工人實際送出的文字是 `tools/video/automation/prompts.mjs` |
 | 頻道規格：版型、配色、聲音、片頭片尾、說明欄範本 | `docs/videos/README.md` |
 | 全自動的設計理由、YouTube、Azure 與 Gemini 語音的官方規則 | `docs/videos/DESIGN.md` |
+| 漫劇與教學分開的設定分頁、單集與作品同一條流程、文件與劇本的討論串（2026-09-27 設計；API、工人與後台都已落地） | `docs/videos/DRAMA-FLOW.md` |
+| 每支影片的語言（標題與說明、CC、配音）與上架的順序（2026-09-27 設計，實作中） | `docs/videos/LANGUAGES.md` |
 
 ## 不變的規矩
 
@@ -72,9 +73,10 @@ metadata:
 | 4 | 聽眾優先審稿：口語、句長、術語唸法、開場鉤子 | 審稿代理 | 協調者套用修正、`lint` 再過 |
 | 5 | `tts`：先 `--dry-run` 看字數與額度，再實際合成 | 工具 | 時間軸寫出、章節時間檢查過 |
 | 6 | `check-audio`（Jev 判斷）→ 被標的句子 `tts --redo` → 重錄到上限仍被標的句子交給聽眾審稿模型改寫措辭（`prompts/listener-rewrite.md`，最多兩輪）→ `review-push` | 工具、站主 | Jev 全過就自動核准；**還有被標的句子才由站主在 `/admin/videos` 核准旁白** → `review-pull` |
-| 7 | `render` → `assemble` → CC 翻譯與 `captions` | 工具、翻譯代理 | 聯絡表看過；`checks.json` 全過；沒有過期翻譯 |
+| 7 | `render` → `assemble` → `captions`（只有繁中） | 工具 | 聯絡表看過；`checks.json` 全過 |
 | 8 | `review-push --gate final`：先跑 `qa`（11 項自動品管），再送 720p 成片與報告 | 工具 | 11 項全過就自動核准；沒過的才**由站主在 `/admin/videos` 看** → `review-pull` |
-| 9 | `package`（含上傳包檢查）→ `review-push --gate publish` 送完整上傳包 → 站主照 `UPLOAD.md` 在 Studio 上傳成「私人」、在後台貼上網址與上架時間 | 工具、站主 | 4 項全過就自動核准，影片進「可以上架」；影片 ID 由工人寫回 `video.json` |
+| 9 | `package`（含上傳包檢查）→ `review-push --gate publish` 送完整上傳包 → 站主照 `UPLOAD.md` 在 Studio 上傳成「私人」、在後台貼上網址與上架時間 | 工具、站主 | 4 項全過就自動核准；影片 ID 由工人寫回 `video.json` |
+| 10 | 語言（`docs/videos/LANGUAGES.md`）：站主在影片頁勾每個語言要哪些部件（標題說明、CC、配音）或「只出繁體中文」→ 工人只做勾了的（翻譯、審稿；配音含縮短與重錄）→ `captions` → `package` → `review-push --gate languages` | 站主、工具、翻譯代理 | 都做好影片才進「可以上架」、排程才送出；有配音的卡片要站主在 Studio 上傳後按「已在 Studio 上傳配音」 |
 
 `status --slug <SLUG>` 隨時印出做到哪一步、下一個指令是什麼。核准綁檔案雜湊：稿子或旁白改了，舊的核准自動失效，後面的指令會以結束碼 3 拒絕，要重新 `review-push`。後台頁用不了時，才用有選項的提問問站主，再 `approve --gate …` 記下。
 

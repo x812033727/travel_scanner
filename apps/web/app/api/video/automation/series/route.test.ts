@@ -5,6 +5,8 @@ import { POST as docs } from "./[slug]/docs/route";
 import { POST as done } from "./[slug]/episodes/[number]/done/route";
 import { POST as recap } from "./[slug]/episodes/[number]/recap/route";
 import { POST as start } from "./[slug]/episodes/[number]/start/route";
+import { POST as answer } from "./messages/[id]/answer/route";
+import { GET as nextMessage } from "./messages/next/route";
 import { GET as next } from "./next/route";
 
 const TOKEN = `mkv_${"a".repeat(43)}`;
@@ -69,6 +71,28 @@ describe("video series proxy", () => {
     expect((await stray.json()).code).toBe("video_series_not_found");
     expect((await zero.json()).code).toBe("video_series_episode_not_found");
     expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("hands the worker the next line to answer and forwards its answer by message id", async () => {
+    const calls: { url: string; body: string }[] = [];
+    vi.stubGlobal("fetch", vi.fn(async (url: string, init?: RequestInit) => {
+      calls.push({ url, body: init?.body ? Buffer.from(init.body as ArrayBuffer).toString() : "" });
+      const headers = new Headers(init?.headers);
+      expect(headers.get("authorization")).toBe(`Bearer ${TOKEN}`);
+      expect(headers.has("cookie")).toBe(false);
+      return Response.json({ job: null });
+    }));
+    const id = "0b2c4d6e-8f01-4a2b-9c3d-5e6f7a8b9c0d";
+    const waiting = await nextMessage(new NextRequest(`${BASE}/messages/next`, { headers: auth }));
+    const answered = await answer(post(`${BASE}/messages/${id.toUpperCase()}/answer`, { reply_md: "改好了", revised: null }), { params: Promise.resolve({ id: id.toUpperCase() }) });
+    const stray = await answer(post(`${BASE}/messages/not-an-id/answer`, { reply_md: "x" }), { params: Promise.resolve({ id: "not-an-id" }) });
+    expect([waiting.status, answered.status, stray.status]).toEqual([200, 200, 404]);
+    expect(calls.map((call) => call.url.replace(/^.*\/api\/v1\/video\//, ""))).toEqual([
+      "automation/series/messages/next",
+      `automation/series/messages/${id}/answer`,
+    ]);
+    expect(calls[1].body).toBe(JSON.stringify({ reply_md: "改好了", revised: null }));
+    expect((await stray.json()).code).toBe("video_drama_message_not_found");
   });
 
   it("refuses a browser session without a video tool token", async () => {
