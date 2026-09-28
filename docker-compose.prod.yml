@@ -58,6 +58,9 @@ services:
       - /run/travel-scanner-deployer:/run/travel-scanner-deployer:ro
       # The AI accounts agent (ops/ai-accounts); the same travel-api group opens it.
       - /run/mokaair-ai-accounts:/run/mokaair-ai-accounts:ro
+      # Independent YouTube uploader RPC secret. Empty until explicitly provisioned;
+      # URL unset keeps this mode disabled. Google credentials remain in its own service.
+      - ${MOKAAIR_VPS_UPLOADER_SECRET_DIR:-/etc/mokaair-uploader/api}:/run/mokaair-uploader:ro
       # Previews for /admin/videos (app/video_reviews/storage.py): the site has no object store.
       - video_reviews:/var/lib/mokaair/video-reviews
       # The drama route's generated images, clips and music (app/video_media/storage.py), kept
@@ -67,6 +70,7 @@ services:
       # the review store, so /admin/videos downloads its 1080p cut from <slug>/upload/final.mp4
       # here (docs/videos/BINGE.md). The API reads nothing else from it.
       - video_work:/var/lib/mokaair/video-work:ro
+    networks: [default, uploader_rpc]
     group_add: ["${DEPLOY_AGENT_GID:-10002}"]
     security_opt: ["no-new-privileges:true"]
     cap_drop: ["ALL"]
@@ -276,6 +280,13 @@ services:
     cap_drop: ["ALL"]
     depends_on:
       - web
+
+networks:
+  default:
+  # Only API and the separately deployed uploader join this private RPC network.
+  # The uploader also has its own egress network for YouTube.
+  uploader_rpc:
+    internal: true
 
 volumes:
   postgres_data:
