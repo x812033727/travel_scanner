@@ -219,9 +219,20 @@ def _audit(session: AsyncSession, user: User, action: str, slug: str, **metadata
 
 
 async def request_sync(
-    session: AsyncSession, store: ReviewStore, slug: str, user: User, payload: PublishIn
+    session: AsyncSession,
+    store: ReviewStore,
+    slug: str,
+    user: User,
+    payload: PublishIn,
+    *,
+    on_behalf: dict[str, Any] | None = None,
 ) -> ProjectOut:
-    """Check the owner's request against the package and the channel, record it, and start it."""
+    """Check the owner's request against the package and the channel, record it, and start it.
+
+    ``on_behalf`` is set when the site sends a Short under the owner's standing consent
+    (docs/videos/SHORTS.md): ``user`` is then who gave the consent, and what is passed here
+    (that it was automatic, and the consent's id) goes into the audit entry with the rest.
+    """
     row = await _linked_connection(session)
     project = await _locked_project(session, slug)
     if running(project.youtube_sync):
@@ -296,14 +307,18 @@ async def request_sync(
         publish_at=request["publish_at"],
         video_id=video_id,
         package_sha256=package.sha256,
+        **(on_behalf or {}),
     )
     await session.commit()
     launch(slug)
     return await reviews.project_view(session, slug)
 
 
-async def retry_sync(session: AsyncSession, slug: str, user: User) -> ProjectOut:
-    """Run the last request again: finished steps stay finished, the rest start over."""
+async def retry_sync(
+    session: AsyncSession, slug: str, user: User, *, on_behalf: dict[str, Any] | None = None
+) -> ProjectOut:
+    """Run the last request again: finished steps stay finished, the rest start over.
+    ``on_behalf`` is what it is for ``request_sync``."""
     await _linked_connection(session)
     project = await _locked_project(session, slug)
     state = project.youtube_sync
@@ -315,7 +330,7 @@ async def retry_sync(session: AsyncSession, slug: str, user: User) -> ProjectOut
         raise Refused(409, "video_youtube_sync_done", "上一次已經全部完成；要改資料請重新送出")
     project.youtube_sync = retried(state)
     project.updated_at = datetime.now(UTC)
-    _audit(session, user, "video_youtube_sync_retried", slug)
+    _audit(session, user, "video_youtube_sync_retried", slug, **(on_behalf or {}))
     await session.commit()
     launch(slug)
     return await reviews.project_view(session, slug)
