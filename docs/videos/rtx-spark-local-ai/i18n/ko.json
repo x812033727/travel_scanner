@@ -1,0 +1,480 @@
+{
+  "title": "NVIDIA RTX Spark 노트북 128 GB에 들어가는 AI 모델은? 로컬 AI로 ChatGPT를 대체할 수 있을까?",
+  "description": "NVIDIA는 RTX Spark가 1200억 파라미터 모델을 돌릴 수 있다고 하지만, 700억 파라미터 Llama 3.3의 원본 파일은 141 GB로 이 노트북의 최대 메모리 128 GB에 들어가지 않습니다. 이 영상은 ‘파라미터 수 × 파라미터당 바이트’라는 계산식 하나로 16 GB, 64 GB, 128 GB에 각각 어떤 모델이 들어가는지 계산하고, 속도를 정하는 메모리 대역폭과 로컬 AI가 매달 내는 AI 구독을 대체할 수 있는지도 살펴봅니다.\n\n영상 속 사양, 파라미터 수, 파일 크기는 모두 NVIDIA, Microsoft, OpenAI, Hugging Face, Ollama의 공식 페이지에서 가져왔으며, 확인 날짜는 2026년 9월 28일이고 이후 바뀔 수 있습니다. 이날 NVIDIA의 RTX Spark 제품 페이지에는 가격이 없었으니 가격은 공식 사이트를 기준으로 하십시오. 메모리 대역폭 300 GB/s는 NVIDIA 개발자 문서에 나온 수치입니다. 채널에는 RTX Spark 실기기가 없어 영상에 실측 속도는 전혀 없습니다. 초당 토큰 수는 이 대역폭으로 계산한 이론상 상한입니다. NVIDIA의 주장은 모두 제조사의 말임을 밝혀 두었습니다.\n\nClaude Pro 가격은 2026년 9월 28일 공식 사이트의 월 결제 가격이며, 다른 구독은 각 회사 공식 사이트를 기준으로 하십시오. 본전까지의 개월 수와 전기요금 어림 계산식은 모두 화면에 있으니, 여러분의 숫자를 넣어 다시 계산할 수 있습니다. ‘무엇이 가장 중요한가’ 표와 결론은 채널 운영자의 의견이며, 구매 조언이 아닙니다.",
+  "tags": [
+    "RTX Spark",
+    "로컬 AI",
+    "RTX Spark 노트북",
+    "NVIDIA RTX Spark",
+    "로컬 LLM",
+    "노트북 LLM 실행",
+    "128GB로 돌릴 수 있는 모델",
+    "로컬 AI ChatGPT 대체",
+    "AI PC 살 만한가",
+    "LLM 메모리 요구량",
+    "통합 메모리",
+    "Ollama",
+    "gpt-oss",
+    "Llama 3.3",
+    "엔비디아 RTX Spark",
+    "rtx spark local ai",
+    "run llm locally 128gb",
+    "local ai vs chatgpt",
+    "how much ram to run an llm"
+  ],
+  "chapters": {
+    "hook-title": "128 GB AI 노트북에 뭐가 들어갈까?",
+    "specs": "RTX Spark란? NVIDIA가 공개한 사양",
+    "bytes": "AI 모델에 필요한 메모리는? 계산식 하나",
+    "fit-rule": "128 GB, 64 GB, 16 GB에서 돌아가는 모델",
+    "petaflop": "RTX Spark 속도는? 봐야 할 숫자",
+    "agents-quote": "AI 에이전트 백그라운드 실행과 Windows의 벽",
+    "sub-vs-own": "AI 구독 vs 내 PC: 본전까지 몇 달?",
+    "priorities": "로컬 AI가 ChatGPT를 대체할 수 있을까?"
+  },
+  "source_hashes": {
+    "chapters": {
+      "hook-title": "c73af4109a8e",
+      "specs": "5a624b738be9",
+      "bytes": "6ba412584ade",
+      "fit-rule": "0c29ba4704a9",
+      "petaflop": "74fd419a9b33",
+      "agents-quote": "5847f8643a09",
+      "sub-vs-own": "241f956253cc",
+      "priorities": "01c7440d20bb"
+    },
+    "title": "17a99d0f8959",
+    "description": "b32f107a403d",
+    "tags": "54f554abe40d"
+  },
+  "lines": {
+    "6695": {
+      "source_hash": "d52ca08a5a3b",
+      "text": "8비트로 압축하면 1바이트입니다."
+    },
+    "c752": {
+      "source_hash": "289832a2d6b5",
+      "text": "128 GB RTX Spark 노트북에는 어떤 모델이 들어갑니까?"
+    },
+    "xj6b": {
+      "source_hash": "95e9be80448a",
+      "text": "NVIDIA에 따르면 1200억 파라미터급이 돌아갑니다."
+    },
+    "piku": {
+      "source_hash": "92added42b26",
+      "text": "하지만 700억 파라미터 Llama 3.3 원본은 141 GB라 안 들어갑니다."
+    },
+    "bbn6": {
+      "source_hash": "d5e1bdf2c4a1",
+      "text": "둘 다 맞고, 차이는 계산할 숫자 하나."
+    },
+    "xbwf": {
+      "source_hash": "fc3bc89208fb",
+      "text": "이걸로 뭐가 들어갈지 계산합니다."
+    },
+    "prq6": {
+      "source_hash": "cce3aabf06c5",
+      "text": "다음은 속도를 정하는 숫자, 구독 대체 여부."
+    },
+    "m5b4": {
+      "source_hash": "e5c420f4d7e0",
+      "text": "NVIDIA에 따르면 10월 출하, 노트북 두 등급과 미니 PC."
+    },
+    "xapq": {
+      "source_hash": "e607e75df26b",
+      "text": "GPU 코어는 최대 6144개입니다."
+    },
+    "nbyi": {
+      "source_hash": "5aa86f90b044",
+      "text": "CPU는 최대 20코어, 미디어텍과 설계한 Arm 기반입니다."
+    },
+    "ey2n": {
+      "source_hash": "e7e7625aa7bb",
+      "text": "최대 메모리는 128 GB, 다른 등급은 64 GB입니다."
+    },
+    "m3t7": {
+      "source_hash": "f98e1ff89ee9",
+      "text": "칩 전력은 노트북 45에서 80와트, 미니 PC는 140와트."
+    },
+    "2saw": {
+      "source_hash": "0a50b905fb9d",
+      "text": "처음 그 말은 NVIDIA의 5월 말 타이베이 보도자료에 나옵니다."
+    },
+    "rvyh": {
+      "source_hash": "ea1bac7db5f7",
+      "text": "번역하면 1200억 파라미터 대형 언어 모델이 돌아갑니다."
+    },
+    "5atc": {
+      "source_hash": "c0d84e489b3a",
+      "text": "노트북 메모리는 주로 CPU용, 게이밍 GPU엔 따로 조금 있습니다."
+    },
+    "td4z": {
+      "source_hash": "739644f7e890",
+      "text": "RTX Spark는 CPU와 GPU가 통합 메모리를 공유합니다."
+    },
+    "bmxq": {
+      "source_hash": "455eb173e9d7",
+      "text": "GPU 몫엔 Windows 상한이 있지만, 5월 발표엔 수치가 없습니다."
+    },
+    "yuve": {
+      "source_hash": "ae687fb58c02",
+      "text": "모델엔 메모리가 얼마나 듭니까?"
+    },
+    "cens": {
+      "source_hash": "143d43395450",
+      "text": "파라미터는 모델이 배운 수많은 숫자입니다."
+    },
+    "v79x": {
+      "source_hash": "953524c86f85",
+      "text": "숫자 하나를 16비트로 저장하면 2바이트입니다."
+    },
+    "26a5": {
+      "source_hash": "fba218966d8e",
+      "text": "4비트로 압축하면 반 바이트, 이를 양자화라고 합니다."
+    },
+    "6x2b": {
+      "source_hash": "b2c1460adb5d",
+      "text": "계산식은 한 줄, 파라미터 수 곱하기 파라미터당 바이트."
+    },
+    "62hr": {
+      "source_hash": "8851486ba8fd",
+      "text": "Llama 3.3 70B에 2를 곱하면 141 GB, 0.5면 약 35 GB입니다."
+    },
+    "89kx": {
+      "source_hash": "5a491c0ce964",
+      "text": "Ollama는 내 PC용 모델 실행 도구로, 같은 모델도 있습니다."
+    },
+    "q7tw": {
+      "source_hash": "7992f3d1c007",
+      "text": "16비트 파일은 141 GB로 계산식과 같습니다."
+    },
+    "4zmj": {
+      "source_hash": "2eaec2f4b3f5",
+      "text": "8비트는 75 GB로 조금 더 큽니다."
+    },
+    "tj2j": {
+      "source_hash": "45e6447e3766",
+      "text": "4비트는 40에서 43 GB로 10%대에서 20%대 더 큽니다."
+    },
+    "uqcg": {
+      "source_hash": "ea43e2078368",
+      "text": "차이는 주로 압축용 스케일 값이라 계산식은 하한일 뿐입니다."
+    },
+    "uhun": {
+      "source_hash": "eb119a565955",
+      "text": "메모리는 최소 파일 크기만큼, 이것만 기억하십시오."
+    },
+    "rxkq": {
+      "source_hash": "bcc95701c279",
+      "text": "다시 처음으로, 1200억 파라미터는 4비트로 약 60 GB라 128 GB에 들어갑니다."
+    },
+    "p9rk": {
+      "source_hash": "dee8722ace7e",
+      "text": "Llama 70B는 원본 16비트로는 141 GB라 안 들어갑니다."
+    },
+    "veb5": {
+      "source_hash": "401148250beb",
+      "text": "두 말의 차이는 파라미터당 바이트뿐입니다."
+    },
+    "c8mw": {
+      "source_hash": "c2b6bd86bfcb",
+      "text": "16, 64, 128 GB엔 각각 뭐가 들어갑니까?"
+    },
+    "gzmm": {
+      "source_hash": "9779ab63a79b",
+      "text": "판단법은, 먼저 Windows 11 최소 사양인 4 GB를 뺍니다."
+    },
+    "ieht": {
+      "source_hash": "8c475f82b1c9",
+      "text": "나머지보다 작으면 들어가고 전체보다 크면 안 들어갑니다."
+    },
+    "xj2j": {
+      "source_hash": "bb6a71a4afba",
+      "text": "그 사이면 빠듯합니다."
+    },
+    "i55z": {
+      "source_hash": "651127ad0d01",
+      "text": "또, 메모리 GB는 파일 GB보다 조금 커서 표에 이미 환산해 뒀습니다."
+    },
+    "i3ft": {
+      "source_hash": "07d8dd151abe",
+      "text": "OpenAI의 gpt-oss-20b는 파일이 13.8 GB로, 16은 빠듯하고 64 이상은 들어갑니다."
+    },
+    "67f3": {
+      "source_hash": "9d5e3d541894",
+      "text": "Llama 70B 4비트 버전은 43 GB로, 64 GB라야 들어갑니다."
+    },
+    "jxzc": {
+      "source_hash": "13c9d74c2a99",
+      "text": "gpt-oss-120b는 65.2 GB로, 64 GB 등급엔 빠듯하고 128엔 들어갑니다."
+    },
+    "8jvg": {
+      "source_hash": "e7687c0dcb8a",
+      "text": "8비트 Llama는 75 GB라, 128 GB에만 들어갑니다."
+    },
+    "r2ah": {
+      "source_hash": "a75466c23d6d",
+      "text": "원본 Llama는 141 GB라 128에도 안 들어갑니다."
+    },
+    "cwn7": {
+      "source_hash": "3f98b64591e8",
+      "text": "DeepSeek-V4-Flash는 거의 160 GB라 셋 다 안 들어갑니다."
+    },
+    "pt7g": {
+      "source_hash": "c6b0832a83ff",
+      "text": "128 GB면 4050억 파라미터급도 된다는 말, 들어 보셨습니까?"
+    },
+    "6p8h": {
+      "source_hash": "fd8bd73493b5",
+      "text": "4050억 곱하기 0.5면 200 GB가 넘어 역시 안 들어갑니다."
+    },
+    "2y24": {
+      "source_hash": "772bc686233d",
+      "text": "그럼 집에 128 GB PC가 두 대면, 256 GB가 됩니까?"
+    },
+    "5cse": {
+      "source_hash": "6644dc6775c0",
+      "text": "NVIDIA PAIR 도구는 집 안 여러 PC에 작업을 나눠 줍니다."
+    },
+    "8jt5": {
+      "source_hash": "92784feb7936",
+      "text": "공식 사이트는 분명합니다. 가상 GPU로 합치지 않습니다."
+    },
+    "c876": {
+      "source_hash": "47dad8063ba1",
+      "text": "컨텍스트, 즉 한 번에 읽는 내용도 메모리를 먹습니다."
+    },
+    "pii9": {
+      "source_hash": "3153bdaf9a44",
+      "text": "gpt-oss-120b는 최대로 읽으면 4.8 GB 더, 합계 약 70 GB입니다."
+    },
+    "dym6": {
+      "source_hash": "99ddf8398cc5",
+      "text": "OpenAI에 따르면 gpt-oss-20b는 16 GB 메모리 안에서 돌아갑니다."
+    },
+    "ttk7": {
+      "source_hash": "e186c2216cb9",
+      "text": "하지만 16 GB PC에 넣으면 4 GB도 안 남습니다."
+    },
+    "dqk7": {
+      "source_hash": "8d0edad7eaa9",
+      "text": "gpt-oss-120b도 64 GB 등급에선 4 GB가 안 남습니다."
+    },
+    "wyya": {
+      "source_hash": "d3131a3696bd",
+      "text": "Windows 11만 해도 최소 4 GB라, 이 두 칸은 빠듯합니다."
+    },
+    "hcs5": {
+      "source_hash": "30b41ffd0cd0",
+      "text": "직접 돌려 보시겠습니까?"
+    },
+    "9paj": {
+      "source_hash": "65017a916ffd",
+      "text": "설명란 첫 글이 Ollama로 내 PC에서 DeepSeek 돌리기를 단계별로 안내합니다."
+    },
+    "uih3": {
+      "source_hash": "13ccf45c9bec",
+      "text": "들어간 다음엔, 얼마나 빨리 돌아갑니까?"
+    },
+    "pyma": {
+      "source_hash": "9830dc99fdd6",
+      "text": "NVIDIA 제품 페이지의 AI 연산력 문구는 이겁니다."
+    },
+    "cym2": {
+      "source_hash": "b2fdf9190697",
+      "text": "즉 초당 최대 1000조 번 4비트 연산입니다."
+    },
+    "3xvu": {
+      "source_hash": "f788ce73c3b5",
+      "text": "공개된 건 연산력, 메모리 용량, 전력, 메모리 대역폭 초당 300 GB."
+    },
+    "6jug": {
+      "source_hash": "11cd03d2b87c",
+      "text": "9월 말 기준 미공개는 초당 토큰 생성 개수입니다."
+    },
+    "9qt3": {
+      "source_hash": "d33167f08c56",
+      "text": "토큰은 모델의 작은 텍스트 단위입니다."
+    },
+    "xzup": {
+      "source_hash": "d4f37066d746",
+      "text": "저희는 실기기가 없어 실제 속도는 출하 후 실명 리뷰를 기다립니다."
+    },
+    "d7e6": {
+      "source_hash": "e60d82a94701",
+      "text": "대역폭이 왜 중요합니까?"
+    },
+    "k42r": {
+      "source_hash": "95b51dba3f9b",
+      "text": "긴 문서 읽기는 주로 연산력 싸움."
+    },
+    "ajv4": {
+      "source_hash": "7933893689fe",
+      "text": "한 자씩 답할 땐 매 단계 메모리에서 파라미터를 옮겨 대역폭에 막힙니다."
+    },
+    "msnd": {
+      "source_hash": "ae71eb601e49",
+      "text": "대역폭을 알면 속도 상한이 나옵니다."
+    },
+    "rv27": {
+      "source_hash": "61f439ae64cd",
+      "text": "상한은 매 단계 옮길 양에 달렸고 구조마다 크게 다릅니다."
+    },
+    "uc8u": {
+      "source_hash": "77482e632448",
+      "text": "Llama 70B는 토큰 하나마다 700억 개 넘는 파라미터를 전부 씁니다."
+    },
+    "wm6a": {
+      "source_hash": "15c6e553ba2f",
+      "text": "gpt-oss-120b는 전문가 혼합 모델입니다."
+    },
+    "k3zx": {
+      "source_hash": "4745acd06d37",
+      "text": "총 1170억 중 매번 51억만 씁니다."
+    },
+    "kpbj": {
+      "source_hash": "7a2b1313b76e",
+      "text": "십수 배 덜 쓰니 훨씬 빠를 수 있지만, 실측 아닌 비율입니다."
+    },
+    "j4w5": {
+      "source_hash": "575f59010d59",
+      "text": "gpt-oss-120b 원본은 매번 약 5 GB를 읽습니다."
+    },
+    "ujr7": {
+      "source_hash": "84a64a7abb5d",
+      "text": "전문가는 4비트 남짓, 나머지는 16비트."
+    },
+    "3s2v": {
+      "source_hash": "1beb36ea8374",
+      "text": "다음 두 숫자는 이론상 상한, 한 단계에 토큰 하나 기준."
+    },
+    "wxrv": {
+      "source_hash": "6c6c847279f2",
+      "text": "초당 300 GB를 35 GB로 나누면 Llama는 최대 초당 토큰 여덟 개 남짓."
+    },
+    "efif": {
+      "source_hash": "e567bc03603e",
+      "text": "gpt-oss-120b 원본은 300 나누기 5, 최대 약 60개."
+    },
+    "a5ye": {
+      "source_hash": "3176308b24db",
+      "text": "컨텍스트와 다른 앱도 대역폭을 먹어, 실제론 더 느립니다."
+    },
+    "9cfz": {
+      "source_hash": "485c0b390822",
+      "text": "RTX Spark는 백그라운드에서 늘 도는 AI 에이전트도 내세웁니다."
+    },
+    "6wyn": {
+      "source_hash": "8bbdf15ba74f",
+      "text": "NVIDIA 말로는 OS 통제로 백그라운드에서 안전하게 돌아갑니다."
+    },
+    "u5iy": {
+      "source_hash": "bbde53ecb4b5",
+      "text": "MS 실행 컨테이너 MXC는 정책이 정한 파일과 도메인만 허락합니다."
+    },
+    "kna8": {
+      "source_hash": "1593d6aaa7c5",
+      "text": "에이전트 전용 계정이라 기록이 여러분과 구분됩니다."
+    },
+    "rab2": {
+      "source_hash": "59fb18a8f2dc",
+      "text": "다만 MS 6월 발표로는 아직 초기 프리뷰, 기능 다수는 Windows 테스트판부터."
+    },
+    "akm3": {
+      "source_hash": "65b96e24bc47",
+      "text": "제 생각엔 안전은 ‘하지 마’ 프롬프트가 아닌 시스템의 진짜 차단입니다."
+    },
+    "uzk6": {
+      "source_hash": "c8ee8d672a9a",
+      "text": "에이전트를 가둘 세 가지 벽은 정부 사이트 침입 편에서 시연했습니다."
+    },
+    "k76b": {
+      "source_hash": "146b238de586",
+      "text": "이제 돈, 클라우드는 월 구독."
+    },
+    "85b5": {
+      "source_hash": "4e310d5dc631",
+      "text": "Claude Pro는 9월 말 기준 월 결제 20달러입니다."
+    },
+    "45uq": {
+      "source_hash": "8db0da1777c4",
+      "text": "사용량은 다섯 시간마다 리셋, 주간 한도도 있습니다."
+    },
+    "e55p": {
+      "source_hash": "e4df1ab5f1c8",
+      "text": "내 기기는 일시불이지만 전기요금이 듭니다."
+    },
+    "hh47": {
+      "source_hash": "07ef7d047b2b",
+      "text": "RTX Spark 가격은 9월 말 기준 NVIDIA 제품 페이지에 없습니다."
+    },
+    "yhk5": {
+      "source_hash": "fc0e77c62821",
+      "text": "본전까지 개월 수는 더 쓴 돈 나누기 매달 아끼는 구독료입니다."
+    },
+    "fjvj": {
+      "source_hash": "a703d97c3bed",
+      "text": "1000달러를 더 쓸 때마다, 월 20달러로는 50개월이 걸립니다."
+    },
+    "2v5v": {
+      "source_hash": "e3d32a6a653c",
+      "text": "전기료는 PC 전체 실측 아닌 칩 전력 어림입니다."
+    },
+    "kn4k": {
+      "source_hash": "e349d92d4fbb",
+      "text": "미니 PC 140와트 종일이면 월 약 100kWh."
+    },
+    "d45i": {
+      "source_hash": "5e814dd8154d",
+      "text": "노트북 80와트 하루 여덟 시간이면 월 약 19kWh."
+    },
+    "3b5q": {
+      "source_hash": "4d7d68cf70ab",
+      "text": "전기 고지서 단가를 곱하면 됩니다."
+    },
+    "6jas": {
+      "source_hash": "5764cc45adb8",
+      "text": "그럼 살까 말까 물으실 겁니다."
+    },
+    "7ewf": {
+      "source_hash": "3888fef591c2",
+      "text": "대신 답하진 않고 묻겠습니다. 뭐가 가장 중요합니까?"
+    },
+    "t76u": {
+      "source_hash": "516db92a43f0",
+      "text": "제 생각엔, 프라이버시엔 로컬이 최적, 데이터가 안 나갑니다."
+    },
+    "ppxc": {
+      "source_hash": "6561b9c464b7",
+      "text": "품질엔 클라우드, 최강 모델이 아직 거기 있습니다."
+    },
+    "8a5b": {
+      "source_hash": "90dcb2baf5bc",
+      "text": "비용엔 앞 계산식으로 본전까지 몇 달인지 구합니다."
+    },
+    "n97c": {
+      "source_hash": "f183dbed7ecf",
+      "text": "속도엔 실기기 리뷰를 기다립니다."
+    },
+    "egi5": {
+      "source_hash": "550d86bf3420",
+      "text": "로컬 AI가 ChatGPT를 대체할 수 있습니까?"
+    },
+    "2cph": {
+      "source_hash": "d3d6277228ab",
+      "text": "제 생각엔, 집에 둬야 할 매일 작업은 로컬로 옮길 만합니다."
+    },
+    "wdr5": {
+      "source_hash": "f9fa4840cb86",
+      "text": "올려도 될 데이터에 최강 모델이면 구독이 이득일 수 있습니다."
+    },
+    "sji9": {
+      "source_hash": "bcdbedb7aa85",
+      "text": "작업 관리자 성능에서 메모리와 그래픽카드 메모리를 적으십시오."
+    },
+    "wdpg": {
+      "source_hash": "98e4a099664b",
+      "text": "돌릴 모델을 골라 이 계산식에 넣어 보십시오."
+    }
+  }
+}
