@@ -24,14 +24,14 @@ Second of the three English videos the owner chose on 2026-09-28 (season plan `d
 ## Definition of done
 
 - [x] `docs/videos/always-on-agent-explained/` has `brief.md` (eight sections, `套用立場：3、4、5`), `video.json` (`narration_locale: en`), `claims.md`, `demo-log.md`; lint 0 errors.
-- [ ] `verify-1.md` written by an independent agent; listener review applied; lint still 0 errors.
+- [x] `verify-1.md` (66 rows, 4 fact changes) and `verify-2.md` (50 rows, 0 changes) written by two independent agents; listener review applied (20 lines); lint 0 errors, 1 warning (hook about 42 s by the estimator, about 32 s at the voice's pace); slides render with no layout problem.
 - [ ] On or after 2026-09-29: the `always-on` scene (line xc6d and its fourth bullet) updated with what DevDay actually announced, before TTS.
 - [ ] Outline, audio, final and publish gates approved; owner uploads private; `scoreboard.csv` rows filled at 48 h, 7 d, 28 d.
 
 ## Steps
 
 - [x] Real run recorded 2026-09-28 (Claude Code 2.1.283, tools WebFetch and Write): three fetches, one HTTP 403, one file, two-sentence report; `demo-log.md`.
-- [x] Script written (53 lines, about 8.6 min estimated) with the run as chapters 3; verifier round 1 dispatched.
+- [x] Script written (53 lines, about 8.4 min estimated) with the run as chapter 3; verified twice; listener review done.
 - [ ] After DevDay: re-check the always-on chapter; then tts → check-audio → render → assemble → captions → qa → package, on the owner's machine or the host worker (needs the video-tool token).
 
 ## How to verify

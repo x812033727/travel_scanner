@@ -24,13 +24,14 @@ Third of the three English videos the owner chose on 2026-09-28 (season plan `do
 ## Definition of done
 
 - [x] `docs/videos/gpt6-vs-opus55-worth-paying/` has `brief.md` (eight sections, `套用立場：1、2、6`), `video.json` (`narration_locale: en`), `claims.md` with every calculation spelled out; lint 0 errors.
-- [ ] `verify-1.md` by an independent agent confirms each price on the vendor page and redoes the arithmetic; the OpenAI table's $12.50 column is confirmed as the cache-write price or the job-2 rows are recomputed.
-- [ ] Listener review applied; gates approved; owner uploads private; `scoreboard.csv` rows filled.
+- [x] `verify-1.md` (55 claims; 8 changes: cache writes replace the input price, so job 2 became Astra $348, Sol $70, Opus 5.5 $130) and `verify-2.md` (23 rows, 0 changes) by two independent agents; the $12.50 column is confirmed as the cache-write price.
+- [x] Listener review applied (14 lines); lint 0 errors, 1 warning (hook about 37 s by the estimator); slides render with no layout problem.
+- [ ] Gates approved; owner uploads private; `scoreboard.csv` rows filled.
 
 ## Steps
 
 - [x] Prices read 2026-09-28: platform.openai.com/docs/pricing and the GPT-6 Astra model page (200 with the editorial user agent), anthropic.com, docs.x.ai, ai.google.dev.
-- [x] Script written (49 lines, about 8.1 min estimated); verifier round 1 dispatched.
+- [x] Script written (50 lines, about 8.1 min estimated); verified twice; listener review done.
 - [ ] Re-open every price on recording day; then the pipeline steps on the owner's machine or the host worker.
 
 ## How to verify
