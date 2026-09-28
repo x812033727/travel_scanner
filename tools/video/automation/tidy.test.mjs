@@ -6,7 +6,7 @@ import test from "node:test";
 
 import { ROOT } from "../core/paths.mjs";
 import { STATE_FILE as FLOW_STATE_FILE } from "./flow.mjs";
-import { DEFAULT_DAYS, PREVIEW, retentionFrom, STATE_FILE, TARGETS, targetRefusal, tidiedNote, tidyBase, tidyRound } from "./tidy.mjs";
+import { DEFAULT_DAYS, PREVIEW, retentionFrom, roundLines, STATE_FILE, TARGETS, targetRefusal, tidiedNote, tidyBase, tidyRound } from "./tidy.mjs";
 
 const NOW = new Date("2026-10-20T12:00:00Z");
 const daysAgo = (days) => new Date(NOW.getTime() - days * 86_400_000).toISOString();
@@ -147,9 +147,7 @@ test("a video on YouTube past the retention loses its media and keeps its record
 
 test("the line names the video, what was removed and the bytes freed", async () => {
   const where = place();
-  finishedVideo(where.work, "named-line");
-  const { roundLines } = await import("./tidy.mjs");
-  const lines = roundLines(round(where, { site: [listing("named-line")] }));
+  finishedVideo(where.work, "named-line");  const lines = roundLines(round(where, { site: [listing("named-line")] }));
   assert.equal(lines.length, 1);
   assert.match(lines[0], /^tidy: named-line \(on YouTube, counted from 2026-10-12\): removed final\.mp4, upload\/final\.mp4, upload\/dubs\/ \(1 file\), segments\/ \(2 files\)/);
   assert.match(lines[0], /review\/preview-0123456789abcdef\.mp4/);
@@ -165,6 +163,8 @@ test("a video on YouTube within the retention keeps everything; the publish time
   assertUntouched(recent);
   assertUntouched(scheduled);
   assert.deepEqual(result.waiting.map((video) => video.slug), ["on-youtube-recent", "scheduled-late"]);
+  assert.deepEqual(roundLines(result), [], "the worker's round says nothing while videos only wait");
+  assert.equal(roundLines(result, { verbose: true }).at(-1), "tidy: 2 finished videos keep their files for 7 days; the next, on-youtube-recent, is due on 2026-10-24");
   // Public for eight days: the later of the confirmation and the publish time is past the seven.
   const later = round(where, { site: [listing("scheduled-late", { publish_approved_at: daysAgo(12), youtube_publish_at: daysAgo(8) })] });
   assert.equal(later.cleared.slug, "scheduled-late");
@@ -192,9 +192,7 @@ test("a dropped video goes the same way after the retention; without a date it s
   assert.equal(result.cleared.how, "dropped");
   assert.ok(!exists(old, "final.mp4"));
   assertUntouched(recent);
-  assertUntouched(undated);
-  const { roundLines } = await import("./tidy.mjs");
-  assert.match(roundLines(result).at(-1), /^tidy: finished but kept, no usable date: dropped-undated \(dropped, but auto\.json has no date in dropped\.at\)$/);
+  assertUntouched(undated);  assert.match(roundLines(result).at(-1), /^tidy: finished but kept, no usable date: dropped-undated \(dropped, but auto\.json has no date in dropped\.at\)$/);
 });
 
 test("a video on YouTube with no date for its upload confirmation stays, and the round says so", async () => {
@@ -203,9 +201,7 @@ test("a video on YouTube with no date for its upload confirmation stays, and the
   const result = round(where, { site: [listing("no-confirmation", { publish_approved_at: null })] });
   assert.equal(result.cleared, null);
   assertUntouched(dir);
-  assert.deepEqual(result.undated.map((entry) => entry.slug), ["no-confirmation"]);
-  const { roundLines } = await import("./tidy.mjs");
-  assert.match(roundLines(result)[0], /no-confirmation \(on YouTube, but its upload confirmation has no date/);
+  assert.deepEqual(result.undated.map((entry) => entry.slug), ["no-confirmation"]);  assert.match(roundLines(result)[0], /no-confirmation \(on YouTube, but its upload confirmation has no date/);
   // An unreadable publish time is no date either.
   const odd = round(where, { site: [listing("no-confirmation", { youtube_publish_at: "next week" })] });
   assert.match(odd.undated[0].why, /publish time "next week" is not a date/);
@@ -237,9 +233,7 @@ test("--dry-run lists what would go and removes nothing", async () => {
   assert.equal(result.cleared.dryRun, true);
   assert.equal(result.cleared.bytes, MEDIA_BYTES);
   assertUntouched(dir);
-  for (const name of RECORDS) assert.ok(exists(dir, name));
-  const { roundLines } = await import("./tidy.mjs");
-  assert.match(roundLines(result)[0], /^tidy --dry-run: dry-run \(on YouTube, counted from 2026-10-12\) would lose final\.mp4, .*; 4 KB \(4490 bytes\) would be freed$/);
+  for (const name of RECORDS) assert.ok(exists(dir, name));  assert.match(roundLines(result)[0], /^tidy --dry-run: dry-run \(on YouTube, counted from 2026-10-12\) would lose final\.mp4, .*; 4 KB \(4490 bytes\) would be freed$/);
 });
 
 test("a finished video stays while something still needs its files", () => {
@@ -434,9 +428,7 @@ test("a locked or missing file is reported and the round ends normally", async (
   assert.equal(result.cleared.bytes, MEDIA_BYTES - 200 - 400);
   const state = autoJson(dir);
   assert.equal(state.tidied_at, NOW.toISOString(), "the video is not looked at again");
-  assert.deepEqual(state.tidied.failed, [{ path: "segments/s1-0a1b.mp4", error: "EBUSY" }]);
-  const { roundLines } = await import("./tidy.mjs");
-  assert.match(roundLines(result)[0], /; could not remove 1: segments\/s1-0a1b\.mp4 \(EBUSY\); already gone: audio\/k7p2\.wav$/);
+  assert.deepEqual(state.tidied.failed, [{ path: "segments/s1-0a1b.mp4", error: "EBUSY" }]);  assert.match(roundLines(result)[0], /; could not remove 1: segments\/s1-0a1b\.mp4 \(EBUSY\); already gone: audio\/k7p2\.wav$/);
 });
 
 test("status reads a tidied video as cleared, not as a next step", () => {

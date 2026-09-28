@@ -504,7 +504,7 @@ export function roundLines(round, { verbose = false } = {}) {
   const later = round.due.filter((video) => video.slug !== round.cleared?.slug && !round.refused.some((outcome) => outcome.slug === video.slug));
   if (later.length) lines.push(`tidy: also due, one a round: ${later.map((video) => `${video.slug} (${finished(video)})`).join(", ")}`);
   if (round.held.length) lines.push(`tidy: finished but kept while something needs the files: ${round.held.map((entry) => `${entry.slug} (${entry.why})`).join("; ")}`);
-  if (round.waiting.length) lines.push(`tidy: ${round.waiting.length} finished ${round.waiting.length === 1 ? "video keeps" : "videos keep"} its files for ${round.days} days; the next, ${round.waiting[0].slug}, is due on ${day(round.waiting[0].until)}`);
+  if (round.waiting.length) lines.push(`tidy: ${round.waiting.length} finished ${round.waiting.length === 1 ? "video keeps its" : "videos keep their"} files for ${round.days} days; the next, ${round.waiting[0].slug}, is due on ${day(round.waiting[0].until)}`);
   return lines;
 }
 
