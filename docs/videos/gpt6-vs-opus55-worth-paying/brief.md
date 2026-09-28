@@ -1,80 +1,79 @@
 # GPT-6 Astra vs Claude Opus 5.5 vs Gemini: Which One Is Actually Worth Paying For?
 
-slug：`gpt6-vs-opus55-worth-paying`｜narration_locale：en｜企劃日 2026-09-28｜季企劃與包裝：`docs/ai-video-en-season-01/briefs/03-gpt6-vs-opus55-worth-paying.md`
+slug：`gpt6-vs-opus55-worth-paying`｜旁白繁體中文（台灣）；英文以 CC 字幕與英文配音音軌提供｜企劃日 2026-09-28｜季企劃與包裝：`docs/ai-video-en-season-01/briefs/03-gpt6-vs-opus55-worth-paying.md`
 
 ## 觀眾
 
-People and small teams paying for one or more AI subscriptions or API keys, who saw three price changes in one month (GPT-6 Astra on 9/3 at $10/$50 per million tokens, Claude Opus 5.5 on 9/22 at $4/$20, Grok 4.7 on 9/21 at $2/$6) and want to know which one to actually pay for. They know what a token roughly is; they have never priced a workload. Searches: "gpt-6 vs claude opus 5.5", "gpt-6 astra pricing", "which ai model should i pay for 2026", "claude vs chatgpt 2026".
+台灣與其他華語觀眾優先：正在付費使用一個或多個 AI 訂閱方案或 API 金鑰的個人與小團隊。他們一個月內看到三次價格變動（9/3 的 GPT-6 Astra，每百萬 token $10／$50；9/22 的 Claude Opus 5.5，$4／$20；9/21 的 Grok 4.7，$2／$6），想知道到底該付錢給哪一個。他們大概知道 token 是什麼，但從沒替一份工作量算過錢。英語觀眾透過英文 CC 字幕與英文配音音軌收看。中文搜尋：「GPT-6 Claude Opus 5.5 比較」、「GPT-6 Astra 價格」、「AI 訂閱 哪個值得」、「2026 AI 模型 付費 推薦」、「ChatGPT Claude 比較」；英文搜尋：「gpt-6 vs claude opus 5.5」、「gpt-6 astra pricing」、「which ai model should i pay for 2026」、「claude vs chatgpt 2026」。
 
 ## 觀眾看完能做到的事
 
-- Price their own workload in five minutes: tokens in, tokens out, cache share, times per month, times the official rate, for any model.
-- Apply a three-question test (what does a wrong answer cost, how many retries do I really do, is the cheaper sibling good enough) before switching or upgrading.
+- 五分鐘內替自己的工作量算出價錢：輸入 token、輸出 token、快取比例，乘上每月次數，再乘上官方價格，任何模型都適用。
+- 換模型或升級之前，先做三個問題的測試（答錯一次的代價多大、我實際上會重試幾次、同一家較便宜的模型夠不夠用）。
 
 ## 站主觀點
 
 套用立場：1、2、6
 
-Pay for capacity you will use, not for the top of a leaderboard. On the official price sheets the flagship costs 2.5 to 12 times the alternatives, and for most everyday jobs the difference in output is smaller than the difference in price. Every number in this video comes from the vendor's pricing page on the recording date, said out loud with the date; where a vendor publishes no price, I say "check their page" instead of guessing. A new model is not a reason to switch; a change in my own cost, quality or speed is. My picks at the end are mine and say so.
+我只為自己用得到的能力付錢，不為排行榜第一名付錢。照官方價目表，旗艦模型的價格是其他選擇的 2.5 到 12 倍，但對大多數日常工作來說，產出的差距比價格的差距小。這支影片的每一個數字都來自錄製當天各家的價格頁，念出來時會連日期一起講；哪一家沒公布價格，我就說「請看他們的網頁」，不用猜的。新模型推出不是換的理由，我自己的成本、品質或速度有變化才是。片尾的推薦是我個人的選擇，影片裡也會直接講明。
 
 ## 示範或實算
 
-The spine of the video: the same three jobs priced on each model with the official rates of the recording day, on `table`, `code` and `stats` slides (chapters 2–4). Planning-day rates (to be redone on writing day): Astra $10 in / $50 out / $1 cached; Opus 5.5 $4 / $20 / $0.20 cached / $5 cache write; Grok 4.7 $2 / $6 under 200k context; Gemini 3.8: "以官網為準" (ai.google.dev pricing page).
+影片的主軸：同樣三件工作，用錄製當天的官方價格在每個模型上各算一次，放在 `table`、`code`、`stats` 投影片上（第 2–4 章）。企劃日的價格（寫稿日要重算）：Astra 輸入 $10／輸出 $50／快取 $1；Opus 5.5 $4／$20／快取讀取 $0.20／快取寫入 $5；Grok 4.7 在 200k context 以下 $2／$6；Gemini 3.8：「以官網為準」（ai.google.dev 價格頁）。寫稿日（2026-09-28）重算時確認：Astra 另有快取寫入 $12.50；Grok 4.7 快取讀取 $0.50，沒有列快取寫入價；Gemini 3.8 Flash 輸入 $0.75／輸出 $3.75／快取 $0.075（官網寫明到 2026-12-31，2027-01-01 起加倍），Google 沒有列出 3.8 Pro 的價格；另外加入 OpenAI 較便宜的 GPT-6 Sol（$2／$10／快取讀取 $0.20／快取寫入 $2.50）。
 
-| Job (per month) | Tokens | Astra | Opus 5.5 | Grok 4.7 |
+| 工作（每月） | Token 數 | Astra | Opus 5.5 | Grok 4.7 |
 | --- | --- | --- | --- | --- |
-| Summarize a 40-page PDF every day: 30k in + 1k out × 30 | 0.9M in, 30k out | ≈ $10.5 | ≈ $4.2 | ≈ $2.0 |
-| A coding agent 20 workdays: 0.6M fresh in + 2.4M cache reads + 150k out per day | 12M in, 48M cached, 3M out | ≈ $318 | ≈ $118 (+ cache writes) | cache rates: check page |
-| A support bot: 10,000 chats × (3k in + 300 out) | 30M in, 3M out | ≈ $450 | ≈ $180 | ≈ $78 |
+| 每天摘要一份 40 頁的 PDF：輸入 30k + 輸出 1k，× 30 天 | 輸入 0.9M、輸出 30k | ≈ $10.5 | ≈ $4.2 | ≈ $2.0 |
+| 程式代理跑 20 個工作天：每天新輸入 0.6M + 快取讀取 2.4M + 輸出 150k | 新輸入 12M、快取讀取 48M、輸出 3M | ≈ $348（含快取寫入 $150） | ≈ $130（含快取寫入 $60） | ≈ $66 |
+| 客服機器人：10,000 次對話 ×（輸入 3k + 輸出 300） | 輸入 30M、輸出 3M | ≈ $450 | ≈ $180 | ≈ $78 |
 
-The formula is on a `code` slide so viewers can repeat it. Chapter 5 adds the twist: a model that needs two tries costs double, so the "expensive" model can be cheaper on a hard job; shown with one worked retry case. Subscription tiers (Plus/Pro, Pro/Max) are compared on a second `table` only with the prices shown on the vendors' pages that day.
+第二件工作的算法：OpenAI 和 Anthropic 都列了快取寫入價，而且寫入價是取代輸入價、不是另外加收，所以每月 12M 個新輸入 token 都按寫入價計（Astra $12.50、Opus 5.5 $5）；同一件工作，GPT-6 Sol 約 $70。公式放在 `code` 投影片上，讓觀眾可以自己重算。第 5 章加一個轉折：要試兩次才對的模型，花費就是兩倍，所以在困難的工作上，「貴」的模型反而可能比較便宜；用一個重試的實算例子示範。訂閱方案（Plus／Pro、Pro／Max）放在第二張 `table` 比較，而且只用各家當天網頁上寫的價格。
 
 ## 大綱
 
 ### 選項 A：三個價目表，三件工作，一個測試（推薦）
 
-一行說明：price-sheet arithmetic first, benchmark talk last. Differs from B, which starts from the benchmarks that the news led with.
+一行說明：先拿價目表算錢，最後才談跑分，和從新聞主打的跑分切入的選項 B 不同。
 
-開場鉤子（口播，≤30 秒）："GPT-6 Astra costs fifty dollars per million output tokens. Claude Opus 5.5 costs twenty. Gemini 3.8 Flash costs under four. Pick by benchmark and you overpay. Pick by price and you get work you have to redo. So I priced three jobs people actually run every month, on every model, at today's official rates. The winner isn't the smartest model. Here's the math, and the three questions that make it your math."
+開場鉤子（口播）：「GPT-6 Astra 每一百萬個輸出 token 要 50 美元，Claude Opus 5.5 要 20 美元，Gemini 3.8 Flash 不到 4 美元。照跑分挑，你會花冤枉錢；照價格挑，你會拿到得重做的成果。所以我拿大家每個月真的在跑的三件工作，用今天的官方價格，在每個模型上都算了一遍。最後勝出的，不是最聰明的模型。算式在這裡，還有三個問題，讓這筆帳變成你自己的帳。」
 
-| # | Chapter | s | Scenes |
+| # | 章節 | 秒 | 場景 |
 | --- | --- | --- | --- |
-| 1 | Three price sheets in one table (with today's date) | 80 | `title`; `table`: input / output / cache / fast mode per model; `quote`: one line from each pricing page |
-| 2 | Job 1: the daily PDF summary | 80 | `code`: the formula; `stats`: three monthly totals; `big`: the cheapest |
-| 3 | Job 2: a coding agent for a month | 110 | `steps`: how cache reads change the bill; `table`: per model; `chat`: what a day of agent traffic looks like |
-| 4 | Job 3: a support bot at 10,000 chats | 80 | `table`; `stats`; `bullets`: where the money actually goes (input volume) |
-| 5 | When the expensive model is cheaper | 90 | `compare`: one try at $X vs two tries at $Y; `big`: "retries multiply everything" |
-| 6 | The three-question test and my picks | 100 | `steps`: cost of a wrong answer / real retry rate / cheaper sibling (GPT-6 Luna and Sol, Sonnet, Flash); `table`: my pick per job, labelled as opinion |
-| 7 | Which one is worth paying for? | 40 | `outro`: "the one whose failure rate on your job is low enough, at the lowest price that gets you there"; next step: the Mokaair cost-quality-latency article |
+| 1 | 三份價目表放進一張表，附上當天日期（Three price sheets in one table (with today's date)） | 80 | `title`；`table`：各模型的輸入／輸出／快取／快速模式價格；`quote`：每個價格頁各引一句 |
+| 2 | 工作一：每天的 PDF 摘要（Job 1: the daily PDF summary） | 80 | `code`：公式；`stats`：三個每月總額；`big`：最便宜的那一個 |
+| 3 | 工作二：程式代理跑一個月（Job 2: a coding agent for a month） | 110 | `steps`：快取讀取怎麼改變帳單（有列快取寫入價的廠商，新輸入 token 以寫入價取代輸入價計算）；`table`：各模型的金額；`chat`：代理一天的流量長什麼樣子 |
+| 4 | 工作三：10,000 次對話的客服機器人（Job 3: a support bot at 10,000 chats） | 80 | `table`；`stats`；`bullets`：錢實際花在哪裡（輸入量） |
+| 5 | 貴的模型什麼時候反而便宜（When the expensive model is cheaper） | 90 | `compare`：試一次 $X 對上試兩次 $Y；`big`：「重試會讓一切成倍增加」 |
+| 6 | 三個問題的測試，和我的選擇（The three-question test and my picks） | 100 | `steps`：答錯的代價／實際的重試率／同一家較便宜的模型（GPT-6 Luna 與 Sol、Sonnet、Flash）；`table`：每件工作我選哪一個，標明是個人看法 |
+| 7 | 到底哪一個值得付錢？（Which one is worth paying for?） | 40 | `outro`：「在你的工作上失誤率夠低、又是做到這一點的最低價的那一個」；下一步：Mokaair 那篇談成本、品質與延遲的文章 |
 
-Total ≈ 580 s (English runs slightly longer with numbers; aim 1,450 words).
+總長約 580 秒（念數字會稍微拉長；中文旁白抓約 2,400 字，每分鐘 250 字）。
 
 ### 選項 B：先拆排行榜，再算錢
 
-一行說明：start with the benchmark claims the launches led with (FrontierMath, Terminal-Bench, OSWorld), show what each measures and does not, then price the jobs.
+一行說明：先從各家發表時主打的跑分（FrontierMath、Terminal-Bench、OSWorld）切入，講清楚每一項量了什麼、沒量什麼，再算三件工作的錢，順序和先算錢的選項 A 相反。
 
-開場鉤子（口播，≤30 秒）："GPT-6 Astra scores 99.9% on ARC-AGI-3, if you read the footnote. Claude Opus 5.5 beats it on computer use at less than half the price. Benchmarks are true and useless at the same time, and here's how to read them before you pay."
+開場鉤子（口播）：「GPT-6 Astra 在 ARC-AGI-3 拿到 99.9%，但你得先看註腳。Claude Opus 5.5 在操作電腦這件事上贏過它，價格還不到一半。跑分可以同時是真的、又沒什麼用；這集教你付錢之前怎麼讀懂它們。」
 
-Chapters: What the launch numbers measure (120 s: `table`, `quote` with the harness caveat) → The price sheets (80 s) → Three jobs priced (200 s) → Retries (80 s) → The test and picks (80 s) → `outro` (40 s).
+章節：發表數字到底量了什麼（What the launch numbers measure，120 秒：`table`、附測試框架（harness）但書的 `quote`）→ 價目表（The price sheets，80 秒）→ 三件工作算給你看（Three jobs priced，200 秒）→ 重試（Retries，80 秒）→ 測試與我的選擇（The test and picks，80 秒）→ `outro`（40 秒）。
 
 ## 會過期的事實
 
-| Fact | Re-check at |
+| 事實 | 到哪裡重新確認 |
 | --- | --- |
-| Every price (input, output, cache read/write, fast mode, subscription tiers) | openai.com pricing and the GPT-6 Astra page; anthropic.com/news/claude-opus-5-5 and the Claude pricing page; x.ai pricing for Grok 4.7; ai.google.dev/gemini-api/docs/pricing for Gemini 3.8 (no figure confirmed on planning day) |
-| Model names and which are current (GPT-6 Astra / Luna / Sol; Opus 5.5; Grok 4.7; Gemini 3.8 or a newer Gemini) | the same pages; Gemini 4 was reported to be in post-training in September |
-| Benchmark figures if option B is chosen (OSWorld 2.0 72.6% vs 81.8% partial, Terminal-Bench 4.0 57.7% vs 66.4%, ARC-AGI-3 harness caveat) | the vendors' launch posts |
-| Usage-cap changes (Anthropic raised five-hour limits on 9/22) | anthropic.com/news/claude-opus-5-5 |
+| 每一個價格（輸入、輸出、快取讀取／寫入、快速模式、訂閱方案） | openai.com 的價格頁與 GPT-6 Astra 頁面；anthropic.com/news/claude-opus-5-5 與 Claude 價格頁；Grok 4.7 看 x.ai 的價格頁；Gemini 3.8 看 ai.google.dev/gemini-api/docs/pricing（企劃日沒確認到數字；寫稿日官網列出 3.8 Flash，價格寫到 2026-12-31、2027-01-01 起加倍，沒有 3.8 Pro） |
+| 模型名稱，以及哪些是現行版本（GPT-6 Astra／Luna／Sol；Opus 5.5；Grok 4.7；Gemini 3.8 或更新的 Gemini） | 同上各頁；9 月有報導說 Gemini 4 正在後訓練（post-training）階段 |
+| 如果選選項 B 要用的跑分（OSWorld 2.0 72.6% 對 81.8% partial、Terminal-Bench 4.0 57.7% 對 66.4%、ARC-AGI-3 的測試框架但書） | 各家的發表文章 |
+| 用量上限的變動（Anthropic 在 9/22 放寬了五小時的用量上限） | anthropic.com/news/claude-opus-5-5 |
 
 ## 素材
 
-- Original tables and formula slides; `quote` lines from pricing pages with the date.
-- Mokaair article `ai-workflow-cost-quality-latency` (zh-TW; the pilot video's source) for the closing link; English readers get the en locale if published.
-- No vendor logos.
+- 原創的表格與公式投影片；`quote` 引用價格頁上的句子，並附日期。
+- 片尾連結用 Mokaair 文章 `ai-workflow-cost-quality-latency`（zh-TW；試播影片的來源）；英語觀眾在該文 en 語系上線後改給 en 版。
+- 不放廠商標誌。
 
 ## 不做的事
 
-- No claim of having benchmarked the models ourselves; the only measurement here is arithmetic on published prices.
-- No "best model" verdict without the job attached; no investment or stock angle.
-- No subscription-cancelling advice beyond the test.
-
+- 不宣稱我們自己評測過這些模型；這裡唯一的量測，是拿公開價格做算術。
+- 不下沒有附上工作情境的「最佳模型」結論；不談投資或股票。
+- 除了那三個問題的測試之外，不給取消訂閱的建議。
