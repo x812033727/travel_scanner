@@ -275,6 +275,1062 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "zh-CN": {
+      "title": "技术 SEO 检查顺序：抓取、索引、呈现与网站结构",
+      "description": "技术 SEO 审核最需要的是能复现问题的证据和合理的修复顺序。本文以网站改版后的检查为例，说明如何抽样网址模板，并核对公开访问、索引指令、JavaScript 呈现、规范网址和网站结构；同时区分应立即修复、排期改进和后续观察的事项，让普通站长能把明确的问题交给维护人员处理，也明白通过测试不等于保证搜索排名。",
+      "hero": {
+        "src": "/guides/technical-seo-checklist/hero-zh-cn.jpg",
+        "alt": "原创服务器、网页和盾牌图像，表现网站访问、内容呈现与分级验收。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "收到一份列着上百条红色警告的 SEO 报告时，最难的往往不是看懂术语，而是决定先修什么。首页打不开、某张图片缺少说明、测速少了几分，对读者和网站的影响并不一样。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可以把技术 SEO 看作内容进入搜索流程前的基础检查：网址能否被发现、返回的响应是否正确、主要内容能否阅读，以及不同版本是否指向合适的位置。本文把这些事项整理成可交给维护人员执行的审核流程，为每个问题写清范围、证据和验收条件。"
+        },
+        {
+          "type": "heading",
+          "text": "先确定网站范围和代表性页面",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以一家烘焙工作室改版为例，网站可能包含首页、课程列表、单门课程、文章、联系页面和会员区。先标明哪些页面希望公开供搜索，哪些只供已登录学员使用。会员区未被索引可能正符合设计，不能把每个未收录网址都当成错误。"
+        },
+        {
+          "type": "paragraph",
+          "text": "按页面模板挑选代表网址，再加入最近新增、迁移或曾经出错的页面。课程模板可选一门正在招生和一门已结束的课；文章则各选一个有图表和纯文字的版本。抽样是为了找出共用模板的问题，不能因为一页正常就推断全站正常。"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立工作表，至少记录网址、页面类型、公开目的、检查时间、发现的问题和影响范围。另记下这次改版涉及哪些主题、插件、域名或路径，后续出现异常时便能与改动核对，而不是从所有可能原因重新猜起。"
+        },
+        {
+          "type": "heading",
+          "text": "第一层：确认能否取得正确内容",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 的基本技术要求包括不阻挡抓取工具、页面返回成功状态，并提供可建立索引的内容。满足这些条件仍不保证收录；但如果本应公开的课程页面返回错误或要求登录，就该先排除这些入口障碍。先恢复内容可用性，再讨论搜索外观。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在未登录的窗口打开代表网址，确认看到的是正确页面；再请维护人员核对 HTTP 状态码、重定向和防火墙响应。屏幕上出现课程名称，不代表服务器响应一定正确；反过来，返回成功却只显示空白页或验证画面，也不符合实际阅读需求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把全站、单一模板和个别页面的问题分开。如果所有课程页都跳转到登录页面，应检查共用权限设置；如果只有旧课程失效，则检查路径映射。保留原始网址和最终到达的位置，才能避免修好一个重定向后又把访客送进另一个循环。"
+        },
+        {
+          "type": "heading",
+          "text": "第二层：核对索引指令和版本选择",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "查看页面的 robots 元"
+            },
+            {
+              "type": "text",
+              "text": "标签"
+            },
+            {
+              "type": "text",
+              "text": "、相关响应标头及 robots.txt，确认它们符合页面的公开目的。测试站通常设置为禁止索引；改版上线前若未重新检查，正式文章也可能被一起排除。应核对实际输出，而不能只相信后台的某个开关已经关闭。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "同一内容若有多个网址，要核对 canonical、Sitemap、站内链接与重定向是否一致。Google 将这些视为强弱不同的规范化信号，网站指定的版本不是绝对命令。不要让 Sitemap 列出一个版本、页面又指定另一个版本，也不要把不同课程一律指向首页。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Search Console 查看已建立索引版本的规范网址信息，再用实时测试检查当前页面。两者回答的是不同时间点的问题；官方说明指出，实时测试不能预测 Google 最终会选哪个规范版本。验收时分别记录当前输出是否已修正、索引资料是否已更新。"
+        },
+        {
+          "type": "heading",
+          "text": "第三层：查看实际呈现和站内路径",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "如果主要内容通过 JavaScript 加载，应检查渲染后的 HTML、页面画面和加载失败的资源。Google 能运行 JavaScript，但被阻挡的资源或程序错误仍可能造成问题；其他工具也未必具备相同能力。不能因为自己用过的电脑能加载，就认定所有首次访问者都能读到相同内容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "对烘焙课程页，逐项核对名称、时间、地点、材料说明和报名入口是否完整。把全部课程信息放进需要操作后才显示的界面之前，先确认检查工具能取得什么版本。如果原始响应只有页面外框，应请开发人员检查呈现方式，并评估服务器端或预先生成内容是否适合。"
+        },
+        {
+          "type": "paragraph",
+          "text": "沿着首页、课程分类、单门课程和相关文章走一遍，确认重要页面有可供抓取的链接入口。记录孤立页面、错误目的地和过多重定向，而不只是计算菜单层级。验收时既要看抓取工具能否找到网址，也要看读者是否明白下一步该去哪里。"
+        },
+        {
+          "type": "heading",
+          "text": "第四层：排期改进体验和搜索外观",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "基础功能可用后，再检查移动端的加载、交互和布局稳定性。Core Web Vitals 目前涵盖 LCP、INP 和 CLS，分别对应这些方面。先找出课程图片挤动报名按钮、点击后没有反应等真实问题，再用工具数据定位；不要用单次测速分数代替用户体验。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果网站使用结构化数据，要核对标记是否符合页面可见内容和该类型的官方要求。不能为了获得特殊搜索外观而填写虚构评分或页面没有显示的信息。富媒体搜索结果测试可以帮助发现技术问题，但即使通过，也不保证搜索一定显示相应样式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把改进拆成小任务，例如为课程图片预留尺寸、修正一个共用数据字段，或缩减过大的资源。每个任务都保留修改前后的例子，并确认报名和阅读功能没有受损。这样既方便安排成本，也能在效果不如预期时追查是哪项改动造成的。"
+        },
+        {
+          "type": "heading",
+          "text": "把审核报告写成能完成的任务",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "可以按“阻碍重要内容阅读”“影响部分入口或信息”“质量与维护改进”给问题分级，另外标出受影响页数和修复风险。这是管理工作的分类，不是 Google 公布的评分。如果两个问题同样严重，先处理影响主要服务且原因明确的那一个。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每张工作单都要写明复现步骤、预期结果、当前结果、受影响网址和完成条件。例如“未登录访客能在课程页看到正确时间，页面返回成功状态且没有意外的 noindex”，就比“提升 SEO”更容易验收。涉及共用模板时，修复后也要抽查原本正常的其他页面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在报告末尾分别列出已修复事项、待索引更新事项和仍需观察的成效。网站设置通过检查，就可以完成技术任务；搜索资料尚未更新时，留下后续跟踪日期即可，不能把等待期间写成已获得排名成果。将来再次改版，还能沿用同一组代表页面作为验收基准。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "确定公开范围和各类代表网址，记录改版内容。",
+            "依访问、索引、呈现、链接和体验的顺序收集证据。",
+            "为每个问题标明影响、负责人及可复现的完成条件。",
+            "修复后复测受影响模板，并单独跟踪索引和搜索数据。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/technical-seo-checklist/diagram-1-zh-cn.svg",
+          "alt": "四个区块按访问与响应、索引与版本、呈现与链接、体验与标记排列，说明技术 SEO 的检查顺序。",
+          "width": 1600,
+          "height": 900,
+          "caption": "技术修复、索引更新和搜索表现，应分别保留各自的证据。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "分级示例",
+            "问题情境",
+            "验收依据"
+          ],
+          "rows": [
+            [
+              "优先修复",
+              "所有公开课程都要求登录",
+              "未登录访客可以阅读，实际响应和权限符合预期"
+            ],
+            [
+              "优先修复",
+              "正式页面继承测试站的 noindex",
+              "实际指令已修正，后续索引另行跟踪"
+            ],
+            [
+              "排期处理",
+              "旧入口经过多次重定向才到正确课程",
+              "主要链接直接到达目的地，或使用合理的重定向"
+            ],
+            [
+              "排期处理",
+              "JavaScript 版本缺少课程信息",
+              "渲染内容与访客可见的信息一致"
+            ],
+            [
+              "改进质量",
+              "图片加载挤动报名按钮",
+              "画面检查和性能数据确认已有改进"
+            ],
+            [
+              "单独观察",
+              "标记通过验证但没有出现特殊搜索样式",
+              "记录符合条件，不承诺显示"
+            ]
+          ],
+          "caption": "分级应按网站任务和影响调整，并非搜索引擎提供的排名权重。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "绿色测试结果只能回答该测试检查的范围",
+          "text": "实时测试、已索引资料、实际浏览和结构化数据验证各有用途。在报告中写明使用了什么工具、何时检查、看到了什么，才能避免把局部通过误当成全站完成，或认定排名一定会提升。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "深入检查抓取效率和网站日志",
+              "kind": "life",
+              "slug": "crawl-budget-diagnosis"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "改版前先备份网站",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 搜索技术要求",
+          "url": "https://developers.google.com/search/docs/essentials/technical?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console 网址检查工具",
+          "url": "https://support.google.com/webmasters/answer/9012289?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google JavaScript SEO 基础",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 规范网址设置",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Core Web Vitals",
+          "url": "https://developers.google.com/search/docs/appearance/core-web-vitals?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 结构化数据通用指南",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/sd-policies?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Technical SEO audit order: crawling, indexing, rendering, and site structure",
+      "description": "A useful technical SEO audit needs reproducible evidence and a sensible repair order. Using a site relaunch as an example, this guide explains how to sample page templates and check public access, indexing directives, JavaScript rendering, canonical URLs, and site structure. It separates urgent repairs, scheduled improvements, and later observation so that a general site owner can hand actionable findings to maintainers without treating a passing test as a ranking guarantee.",
+      "hero": {
+        "src": "/guides/technical-seo-checklist/hero-en.jpg",
+        "alt": "Original server, page, and shield illustrations representing site access, content rendering, and prioritized verification.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "When an SEO report contains hundreds of red warnings, the hardest part is often deciding what to fix first, not learning the terminology. An unavailable home page, one image without a description, and a few missing speed-test points have very different effects on readers and the site."
+        },
+        {
+          "type": "paragraph",
+          "text": "Think of technical SEO as a basic check before content enters the search process: can a URL be found, does it return the right response, is its main content readable, and do different versions point to sensible destinations? This guide turns those checks into an audit a maintainer can act on, with a scope, evidence, and acceptance criteria for each issue."
+        },
+        {
+          "type": "heading",
+          "text": "Define the site scope and representative pages first",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "After a bakery studio redesign, the site may have a home page, a course list, individual courses, articles, a contact page, and a member area. Mark which pages should be publicly searchable and which are only for signed-in students. An unindexed member area may be working as designed; not every unindexed URL is an error."
+        },
+        {
+          "type": "paragraph",
+          "text": "Choose representative URLs for each page template, then add recently created, moved, and previously broken pages. For the course template, include one open for enrollment and one completed course; for articles, include one with charts or diagrams and one with text only. Sampling should reveal shared-template problems, not justify assuming the whole site works because one page does."
+        },
+        {
+          "type": "paragraph",
+          "text": "Create a worksheet with at least the URL, page type, intended public access, check time, observed problem, and affected scope. Also note which themes, plugins, domains, or paths changed during the redesign. That lets you compare later failures with actual changes instead of guessing across every possible cause."
+        },
+        {
+          "type": "heading",
+          "text": "Layer one: verify that the right content can be fetched",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google's basic technical requirements include not blocking its crawler, returning a successful response, and providing indexable content. Meeting them still does not guarantee indexing. But if a course page intended to be public returns an error or demands a login, remove that entry barrier first. Restore usable content before polishing search appearance."
+        },
+        {
+          "type": "paragraph",
+          "text": "Open representative URLs in a signed-out window and confirm the correct page appears. Ask the maintainer to check the HTTP status, redirects, and firewall response as well. Seeing a course title on screen does not prove that the server response is correct. Conversely, a successful response that only displays a blank page or verification screen does not meet real reading needs."
+        },
+        {
+          "type": "paragraph",
+          "text": "Separate site-wide, template-wide, and single-page failures. If every course page sends visitors to a login screen, inspect shared access settings; if only an old course fails, inspect its path mapping. Save both the starting URL and final destination so a redirect fix does not send visitors into another loop."
+        },
+        {
+          "type": "heading",
+          "text": "Layer two: check indexing directives and version selection",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Inspect the page's robots meta "
+            },
+            {
+              "type": "text",
+              "text": "tag"
+            },
+            {
+              "type": "text",
+              "text": ", related response headers, and robots.txt to ensure they match the intended public access. Staging sites often block indexing; if that setting is not checked before launch, production articles may be excluded too. Inspect the actual output rather than trusting that an admin toggle was turned off."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "For multiple URLs serving the same content, compare the canonical declaration, Sitemap, internal links, and redirects. Google treats these as canonicalization signals of different strengths, not as absolute commands from the site. Avoid listing one version in the Sitemap while the page declares another, or pointing different courses all at the home page."
+        },
+        {
+          "type": "paragraph",
+          "text": "In Search Console, inspect the canonical information for the indexed version, then use the live test to check the current page. They answer questions about different points in time; Google's documentation says the live test cannot predict which canonical version Google will ultimately select. For acceptance, record separately whether current output is fixed and whether indexed data has updated."
+        },
+        {
+          "type": "heading",
+          "text": "Layer three: inspect actual rendering and internal paths",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "If JavaScript loads the main content, inspect rendered HTML, the visible page, and failed resources. Google can run JavaScript, but blocked resources or code errors can still interfere; other tools may not have the same capabilities. A page loading on your own previously used computer does not prove that every first-time visitor sees the same content."
+        },
+        {
+          "type": "paragraph",
+          "text": "For a bakery course page, check the name, schedule, location, materials, and enrollment entry point one by one. Before putting all course information behind an interface that appears only after interaction, confirm what the checking tool can retrieve. If the source response contains only a shell, ask a developer to review rendering and assess whether server-side or pre-generated content fits the page."
+        },
+        {
+          "type": "paragraph",
+          "text": "Follow the path from home page to course category, individual course, and related articles. Confirm important pages have crawlable link entry points. Record orphan pages, wrong destinations, and excessive redirects instead of merely counting menu levels. Acceptance should consider whether readers understand where to go next as well as whether crawlers can find the URL."
+        },
+        {
+          "type": "heading",
+          "text": "Layer four: schedule experience and search-appearance improvements",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Once the basics work, check mobile loading, responsiveness, and layout stability. Core Web Vitals currently cover LCP, INP, and CLS for those aspects. First find real problems such as a course image shifting an enrollment button or a click doing nothing, then use tool data to locate the cause. A single speed-test score is not a substitute for user experience."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the site uses structured data, check that its markup matches visible page content and the official rules for that type. Do not invent ratings or add information the page does not show just to obtain a search feature. The Rich Results Test can reveal technical issues, but passing it does not guarantee that the corresponding appearance will be shown in search."
+        },
+        {
+          "type": "paragraph",
+          "text": "Break improvements into small tasks, such as reserving space for course images, fixing one shared data field, or reducing an oversized resource. Keep before-and-after examples for each task and make sure enrollment and reading still work. This makes costs easier to plan and helps trace which change caused an unexpected result."
+        },
+        {
+          "type": "heading",
+          "text": "Write an audit report that can become finished work",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Prioritize issues by whether they block important content from being read, affect some entrances or information, or concern quality and maintenance. Mark the number of affected pages and repair risk separately. This is a management classification, not a score published by Google. If two issues are equally serious, handle the one affecting a core service with a clear cause first."
+        },
+        {
+          "type": "paragraph",
+          "text": "Each work item needs reproduction steps, the expected result, current result, affected URLs, and acceptance criteria. For example, 'A signed-out visitor sees the correct schedule on the course page, receives a successful response, and finds no unintended noindex' is easier to verify than 'improve SEO.' After fixing a shared template, sample other pages that previously worked too."
+        },
+        {
+          "type": "paragraph",
+          "text": "At the end of the report, list completed fixes, pending index updates, and outcomes still under observation separately. A technical task can be complete once site settings pass their checks; if search data has not updated, keep a follow-up date rather than claiming a ranking gain during the wait. The same representative pages can serve as an acceptance baseline for the next redesign."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Define the public scope and representative URLs for each page type; record what changed in the redesign.",
+            "Gather evidence in order: access, indexing, rendering, links, and experience.",
+            "Record the impact, owner, and reproducible acceptance criteria for each issue.",
+            "Retest affected templates after repair; track index and search data separately."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/technical-seo-checklist/diagram-1-en.svg",
+          "alt": "Four sections—access and response, indexing and versions, rendering and links, then experience and markup—show the technical SEO audit order.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Keep separate evidence for technical repairs, index updates, and search performance.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Priority example",
+            "Issue",
+            "Acceptance evidence"
+          ],
+          "rows": [
+            [
+              "Fix first",
+              "All public courses require a login",
+              "Signed-out visitors can read them; actual response and access match the plan"
+            ],
+            [
+              "Fix first",
+              "Production pages inherited staging noindex",
+              "The actual directive is corrected; later indexing is tracked separately"
+            ],
+            [
+              "Schedule",
+              "An old entry point redirects several times before reaching the right course",
+              "Primary links go directly to the destination or use reasonable redirects"
+            ],
+            [
+              "Schedule",
+              "The JavaScript version omits course information",
+              "Rendered content matches what visitors can see"
+            ],
+            [
+              "Improve quality",
+              "An image load shifts the enrollment button",
+              "Visual checks and performance data confirm the improvement"
+            ],
+            [
+              "Observe separately",
+              "Markup passes validation but no special search appearance shows",
+              "Record eligibility; do not promise display"
+            ]
+          ],
+          "caption": "Adjust priorities to the site's goals and impact; these are not search-engine ranking weights."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "A green test result only answers what that test checked",
+          "text": "Live tests, indexed records, actual browsing, and structured-data validation each serve different purposes. State which tool you used, when you checked, and what you saw. That prevents a local pass from being mistaken for a complete site audit or a guaranteed ranking improvement."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Examine crawl efficiency and site logs in depth",
+              "kind": "life",
+              "slug": "crawl-budget-diagnosis"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back up the site before a redesign",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Search technical requirements",
+          "url": "https://developers.google.com/search/docs/essentials/technical?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console URL Inspection tool",
+          "url": "https://support.google.com/webmasters/answer/9012289?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google JavaScript SEO basics",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google canonical URL guidance",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Core Web Vitals",
+          "url": "https://developers.google.com/search/docs/appearance/core-web-vitals?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google general structured data guidelines",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/sd-policies?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "技術 SEO の確認順序：クロール、索引、表示、サイト構造",
+      "description": "技術 SEO の監査では、問題を再現できる根拠と妥当な修正順序が欠かせません。サイト改修後を例に、ページテンプレートごとの代表 URL の抽出、公開アクセス、索引登録の指示、JavaScript による表示、正規 URL、サイト構造の確認方法を整理します。すぐに直す項目、計画的に改善する項目、その後に観察する項目を分け、一般のサイト運営者が保守担当者に対応可能な結果を渡せるようにします。テストに合格しても検索順位は保証されません。",
+      "hero": {
+        "src": "/guides/technical-seo-checklist/hero-ja.jpg",
+        "alt": "サーバー、ページ、盾の独自図版で、サイトへのアクセス、内容の表示、優先度別の検証を示す。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "赤い警告が何百件も並ぶ SEO レポートを受け取ったとき、難しいのは用語の理解より、何を先に直すかの判断です。トップページが開かないこと、画像の説明が一つ欠けていること、速度テストの点数が少し低いことは、読者とサイトへの影響が同じではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "技術 SEO は、コンテンツが検索の流れに入る前の基礎確認と考えられます。URL を見つけられるか、正しい応答が返るか、主な内容を読めるか、異なる版が適切な場所を指すかを調べます。この記事では、各問題に範囲、根拠、完了条件を付け、保守担当者に渡せる監査手順にまとめます。"
+        },
+        {
+          "type": "heading",
+          "text": "最初にサイトの範囲と代表ページを決める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ベーキングスタジオのサイトを改修した例では、トップページ、講座一覧、各講座、記事、問い合わせページ、会員エリアがあるかもしれません。検索に公開したいページと、ログインした受講者だけに見せるページを先に区別します。会員エリアが索引に登録されていないのは設計どおりかもしれず、未登録の URL をすべてエラーとは扱えません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ページのテンプレートごとに代表 URL を選び、最近追加・移動したページや以前に問題があったページも含めます。講座のテンプレートなら募集中と終了済みの講座を一つずつ、記事なら図表付きとテキストのみのものを一つずつ選びます。抽出の目的は共通テンプレートの問題を見つけることであり、一ページが正常だから全サイトも正常と推測することではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "作業表には少なくとも URL、ページの種類、公開目的、確認日時、見つかった問題、影響範囲を記録します。今回の改修でテーマ、プラグイン、ドメイン、パスのどこが変わったかも残してください。後で異常が出たとき、あらゆる原因を一から推測する代わりに、変更箇所と照らし合わせられます。"
+        },
+        {
+          "type": "heading",
+          "text": "第一段階：正しい内容を取得できるか",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google の基本的な技術要件には、クローラーを妨げないこと、ページが成功応答を返すこと、索引登録できる内容があることが含まれます。要件を満たしても登録は保証されません。ただし公開予定の講座ページがエラーを返したりログインを要求したりするなら、まずその入口の障害を解消します。検索結果での見え方より、内容を使える状態に戻すことが先です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ログアウト状態のウィンドウで代表 URL を開き、正しいページが表示されるか確認します。保守担当者には HTTP ステータス、リダイレクト、ファイアウォールの応答も確認してもらいます。画面に講座名が見えるだけでは、サーバーの応答が正しいとは限りません。逆に成功応答でも、空白ページや認証画面しか出ないなら、実際の閲覧には使えません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "サイト全体、特定のテンプレート、個別ページの問題を分けます。全講座ページがログイン画面に送られるなら共通の権限設定を、古い講座だけが失敗するならパスの対応を調べます。元の URL と最終到達先を保存し、一つのリダイレクトを直した結果、別のループへ誘導してしまうのを防ぎます。"
+        },
+        {
+          "type": "heading",
+          "text": "第二段階：索引指示と版の選択を確認する",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ページの robots メタ"
+            },
+            {
+              "type": "text",
+              "text": "タグ"
+            },
+            {
+              "type": "text",
+              "text": "、関連する応答ヘッダー、robots.txt を調べ、公開目的と一致するか確認します。テストサイトには索引登録を禁止する設定がよくあり、公開前に再確認しないと本番の記事まで除外されるおそれがあります。管理画面の設定がオフになったと信じるだけでなく、実際の出力を確認してください。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ内容を示す複数の URL について、canonical 指定、Sitemap、内部リンク、リダイレクトが整合しているか確認します。Google はこれらを強さの異なる正規化シグナルとして扱い、サイト側の指定を絶対命令とは見なしません。Sitemap には一つの版を載せながらページでは別の版を指定したり、異なる講座をすべてトップページへ向けたりしないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Console で索引登録済みの版に関する正規 URL 情報を見てから、ライブテストで現在のページを確認します。二つは異なる時点の問題に答えます。公式説明によると、ライブテストで Google が最終的に選ぶ正規版を予測することはできません。完了判定では、現在の出力が修正されたか、索引データが更新されたかを別々に記録します。"
+        },
+        {
+          "type": "heading",
+          "text": "第三段階：実際の表示とサイト内の経路を見る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "主な内容を JavaScript で読み込む場合は、レンダリング後の HTML、画面、読み込みに失敗したリソースを確認します。Google は JavaScript を実行できますが、遮断されたリソースやプログラムのエラーには影響を受けます。他のツールが同じ能力を持つとも限りません。以前そのページを読み込んだ自分の端末で表示できたからといって、初めて来るすべての人にも同じ内容が見えるとは言えません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ベーキング講座のページでは、名称、日時、場所、材料の説明、申込口を一つずつ確認します。講座情報をすべて操作後にだけ現れる画面へ移す前に、確認ツールが取得する版を調べます。元の応答に外枠しかない場合は、開発者に表示方法を見直してもらい、サーバー側での表示や事前生成が適切か評価します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "トップページ、講座の分類、個別講座、関連記事の順にたどり、重要ページにクローラーがたどれるリンクの入口があるか確認します。メニューの階層数だけを数えるのではなく、孤立したページ、誤ったリンク先、過度なリダイレクトを記録します。クローラーが URL を見つけられるかとともに、読者が次にどこへ進むか理解できるかも完了判定に含めます。"
+        },
+        {
+          "type": "heading",
+          "text": "第四段階：体験と検索上の表示を計画的に改善する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "基本機能が使えるようになったら、モバイル版の読み込み、操作応答、レイアウトの安定性を確認します。Core Web Vitals は現在、これらの側面に対応する LCP、INP、CLS を含みます。講座画像が申込ボタンを押し下げる、クリックしても反応しないといった実際の問題を先に探し、ツールのデータで原因を絞ります。一度の速度テストの点数を利用者体験の代わりにしないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "構造化データを使うサイトでは、マークアップがページで見える内容とその種類の公式要件に合うか確認します。検索で特別な表示を得るために、架空の評価や表示していない情報を入力してはいけません。リッチリザルトテストは技術的な問題の発見に役立ちますが、合格しても対応する表示が検索結果に必ず出るわけではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "改善は、講座画像の表示領域を先に確保する、共通データ項目を一つ直す、重すぎるリソースを調整するなど、小さな作業に分けます。それぞれ変更前後の例を残し、申込みと閲覧が壊れていないか確認します。費用を計画しやすくなり、期待と異なる結果が出たときにも原因となった変更を探しやすくなります。"
+        },
+        {
+          "type": "heading",
+          "text": "完了できる作業として監査報告を書く",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "問題は「重要な内容を読めなくする」「一部の入口や情報に影響する」「品質や保守を改善する」などで優先度を付け、影響ページ数と修正リスクも別に示します。これは管理のための分類で、Google が公表するスコアではありません。同程度に重大な二件なら、主要サービスに影響し、原因が明確なものから対応します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "各作業票には再現手順、期待する結果、現在の結果、影響する URL、完了条件を書きます。たとえば「ログアウト中の訪問者が講座ページで正しい日時を確認でき、成功応答が返り、意図しない noindex がない」は、「SEO を改善する」より確認しやすい条件です。共通テンプレートを直した後は、以前から正常だった他のページも抽出して再確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "報告の最後には、修正済み、索引更新待ち、成果の観察待ちを分けて列挙します。サイト設定が検査を通れば技術作業は完了できます。検索データがまだ更新されていない場合は追跡日を残し、待っている間に順位が上がったと表現しないでください。次の改修時にも同じ代表ページを完了判定の基準にできます。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "公開範囲と種類ごとの代表 URL を決め、改修内容を記録する。",
+            "アクセス、索引、表示、リンク、体験の順に根拠を集める。",
+            "各問題の影響、担当者、再現可能な完了条件を示す。",
+            "修正後に影響するテンプレートを再確認し、索引と検索データは別に追跡する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/technical-seo-checklist/diagram-1-ja.svg",
+          "alt": "アクセスと応答、索引と版、表示とリンク、体験とマークアップの四区分で技術 SEO の確認順序を示す図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "技術的な修正、索引の更新、検索成果には、それぞれ別の根拠を残します。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "優先度の例",
+            "問題の状況",
+            "完了判定の根拠"
+          ],
+          "rows": [
+            [
+              "優先して修正",
+              "公開講座すべてでログインが必要",
+              "ログアウト状態で読め、実際の応答と権限が想定どおり"
+            ],
+            [
+              "優先して修正",
+              "本番ページがテストサイトの noindex を継承",
+              "実際の指示を修正し、その後の索引更新は別に追跡"
+            ],
+            [
+              "計画的に対応",
+              "古い入口から正しい講座まで何度もリダイレクト",
+              "主なリンクが直接、または妥当なリダイレクトで到達"
+            ],
+            [
+              "計画的に対応",
+              "JavaScript 版に講座情報がない",
+              "レンダリングした内容が訪問者に見える情報と一致"
+            ],
+            [
+              "品質改善",
+              "画像の読み込みで申込ボタンが動く",
+              "画面と性能データで改善を確認"
+            ],
+            [
+              "別途観察",
+              "マークアップの検証は通るが特別な検索表示がない",
+              "条件への適合を記録し、表示を約束しない"
+            ]
+          ],
+          "caption": "優先度はサイトの目的と影響に合わせて調整します。検索エンジンが示す順位の重みではありません。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "テストの合格が示すのは、そのテストの確認範囲だけ",
+          "text": "ライブテスト、索引登録済みのデータ、実際の閲覧、構造化データの検証には、それぞれ用途があります。使ったツール、確認日時、見た結果を報告に書けば、部分的な合格をサイト全体の完了や順位向上の保証と取り違えずに済みます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "クロール効率とサイトのログを詳しく調べる",
+              "kind": "life",
+              "slug": "crawl-budget-diagnosis"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "改修前にサイトをバックアップする",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 検索の技術要件",
+          "url": "https://developers.google.com/search/docs/essentials/technical?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console の URL 検査ツール",
+          "url": "https://support.google.com/webmasters/answer/9012289?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google の JavaScript SEO 基礎",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google の正規 URL に関する案内",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Core Web Vitals",
+          "url": "https://developers.google.com/search/docs/appearance/core-web-vitals?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 構造化データの一般的なガイドライン",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/sd-policies?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "기술 SEO 점검 순서: 크롤링, 색인, 렌더링과 사이트 구조",
+      "description": "기술 SEO 감사에서 가장 필요한 것은 문제를 재현할 수 있는 근거와 합리적인 수정 순서입니다. 이 글은 웹사이트 개편 후의 점검을 예로 들어 URL 템플릿 표본 선정, 공개 접근, 색인 지시문, JavaScript 렌더링, 표준 URL, 사이트 구조를 확인하는 방법을 정리합니다. 즉시 고칠 문제, 일정에 맞춰 개선할 문제, 이후 관찰할 결과를 구분하여 일반 사이트 운영자가 점검 결과를 유지관리 담당자에게 전달하고, 검사를 통과했다는 사실을 검색 순위 보장과 혼동하지 않도록 돕습니다.",
+      "hero": {
+        "src": "/guides/technical-seo-checklist/hero-ko.jpg",
+        "alt": "서버, 웹페이지, 방패를 그린 자체 제작 그림으로 사이트 접근, 콘텐츠 렌더링, 우선순위에 따른 검증을 나타낸다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "빨간 경고가 수백 개 표시된 SEO 보고서를 받으면 용어를 이해하는 것보다 무엇을 먼저 고칠지 판단하는 일이 더 어려울 수 있습니다. 홈페이지가 열리지 않는 문제, 설명이 없는 이미지 하나, 속도 측정 점수가 몇 점 낮은 문제는 독자와 사이트에 미치는 영향이 서로 다릅니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "기술 SEO는 콘텐츠가 검색 과정에 들어가기 전의 기본 점검으로 볼 수 있습니다. URL을 찾을 수 있는지, 응답이 올바른지, 주요 내용을 읽을 수 있는지, 여러 버전이 적절한 위치를 가리키는지 살핍니다. 이 글은 각 문제의 범위, 근거, 완료 기준을 갖춘 감사 절차로 정리해 유지관리 담당자가 실제 작업으로 옮길 수 있게 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "먼저 사이트 범위와 대표 페이지 정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "제과 공방의 웹사이트 개편을 예로 들면 홈페이지, 강좌 목록, 개별 강좌, 글, 문의 페이지, 회원 영역이 있을 수 있습니다. 어떤 페이지를 공개 검색 대상으로 삼고 어떤 페이지를 로그인한 수강생에게만 제공할지 먼저 표시하세요. 회원 영역이 색인에 없다면 설계대로 작동하는 것일 수 있으므로 색인되지 않은 모든 URL을 오류로 분류해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "페이지 템플릿별로 대표 URL을 고른 뒤 최근에 만들거나 옮겼거나 오류가 있었던 페이지를 추가합니다. 강좌 템플릿에서는 모집 중인 강좌와 종료된 강좌를 하나씩, 글에서는 도표가 있는 글과 텍스트만 있는 글을 각각 고릅니다. 표본 점검은 공통 템플릿의 문제를 찾기 위한 것이지 페이지 하나가 정상이라고 사이트 전체를 정상으로 추정하기 위한 것이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "작업표에는 최소한 URL, 페이지 유형, 공개 목적, 점검 시간, 발견한 문제, 영향 범위를 기록하세요. 개편 중 테마, 플러그인, 도메인, 경로 가운데 무엇을 바꿨는지도 적습니다. 그러면 이후의 이상 현상을 실제 변경 사항과 비교할 수 있어 가능한 모든 원인을 처음부터 추측하지 않아도 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "첫 번째 단계: 올바른 콘텐츠를 가져올 수 있는지 확인",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google의 기본 기술 요건에는 크롤러를 차단하지 않을 것, 페이지가 성공 응답을 반환할 것, 색인을 생성할 수 있는 콘텐츠가 있을 것이 포함됩니다. 요건을 충족해도 색인은 보장되지 않습니다. 그러나 공개하려는 강좌 페이지가 오류를 반환하거나 로그인을 요구한다면 이 진입 장애부터 해결해야 합니다. 검색결과의 모습보다 먼저 실제로 내용을 이용할 수 있게 만드세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "로그아웃한 창에서 대표 URL을 열어 올바른 페이지가 보이는지 확인하고, 유지관리 담당자에게 HTTP 상태 코드, 리디렉션, 방화벽 응답도 확인해 달라고 요청하세요. 화면에 강좌명이 나온다고 서버 응답까지 올바르다는 뜻은 아닙니다. 반대로 성공 응답을 돌려주어도 빈 화면이나 인증 화면만 보인다면 실제 독자의 읽기 요구를 충족하지 못합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "사이트 전체, 특정 템플릿, 개별 페이지의 문제를 구분하세요. 모든 강좌 페이지가 로그인 화면으로 이동한다면 공통 권한 설정을 확인하고, 오래된 강좌 하나만 실패한다면 그 경로의 연결을 조사합니다. 리디렉션을 고친 뒤 방문자가 또 다른 순환 경로로 들어가지 않도록 원래 URL과 최종 도착지도 모두 보관하세요."
+        },
+        {
+          "type": "heading",
+          "text": "두 번째 단계: 색인 지시문과 버전 선택 확인",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "페이지의 robots 메타 "
+            },
+            {
+              "type": "text",
+              "text": "태그"
+            },
+            {
+              "type": "text",
+              "text": ", 관련 응답 헤더, robots.txt를 확인하여 의도한 공개 범위와 일치하는지 살펴보세요. 시험용 사이트에는 색인 차단 설정이 자주 있습니다. 개편한 사이트를 공개하기 전에 다시 확인하지 않으면 실제 사이트의 글까지 색인에서 제외될 수 있습니다. 관리자 화면의 설정을 껐다는 사실만 믿지 말고 실제 응답을 확인하세요."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 콘텐츠를 제공하는 여러 URL에 대해서는 canonical 선언, Sitemap, 내부 링크, 리디렉션이 서로 일치하는지 확인합니다. Google은 이를 강도가 서로 다른 표준화 신호로 취급하며 사이트의 지정이 절대적인 명령은 아닙니다. Sitemap에는 한 버전을 나열하면서 페이지는 다른 버전을 지정하거나, 서로 다른 강좌를 모두 홈페이지로 가리키는 일을 피하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Console에서 색인에 등록된 버전의 표준 URL 정보를 확인하고 실시간 테스트로 현재 페이지를 점검합니다. 두 도구는 서로 다른 시점에 관한 질문에 답합니다. Google 문서에 따르면 실시간 테스트는 Google이 최종적으로 선택할 표준 버전을 예측하지 못합니다. 완료 기준에는 현재 출력이 수정됐는지와 색인 데이터가 갱신됐는지를 따로 기록하세요."
+        },
+        {
+          "type": "heading",
+          "text": "세 번째 단계: 실제 렌더링과 사이트 내부 경로 확인",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "주요 콘텐츠를 JavaScript로 불러온다면 렌더링된 HTML, 화면, 로드에 실패한 리소스를 확인하세요. Google이 JavaScript를 실행할 수 있어도 차단된 리소스나 코드 오류 때문에 문제가 생길 수 있고, 다른 도구에는 같은 기능이 없을 수도 있습니다. 자신의 컴퓨터에 페이지가 이전에 로드된 적이 있다고 처음 방문하는 모든 사람도 같은 내용을 본다고 판단해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "제과 강좌 페이지라면 강좌명, 시간, 장소, 준비물 안내, 신청 경로가 모두 있는지 하나씩 확인하세요. 상호작용을 해야 나타나는 화면 뒤에 모든 강좌 정보를 넣기 전에 점검 도구가 어떤 버전을 가져오는지 먼저 확인합니다. 최초 응답에 외형만 있다면 개발자에게 렌더링 방식을 검토하고 서버 측 렌더링이나 미리 생성한 콘텐츠가 적합한지 평가해 달라고 요청하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "홈페이지에서 강좌 분류, 개별 강좌, 관련 글로 이어지는 경로를 직접 따라가 중요한 페이지에 크롤러가 따라갈 수 있는 링크 입구가 있는지 확인합니다. 메뉴 단계 수만 세지 말고 고립된 페이지, 잘못된 목적지, 과도한 리디렉션을 기록하세요. 완료 여부를 판단할 때는 크롤러가 URL을 찾을 수 있는지와 함께 독자가 다음에 어디로 갈지 이해할 수 있는지도 살펴야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "네 번째 단계: 사용 경험과 검색 노출 개선 일정 정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "기본 기능이 작동하면 모바일 로딩, 상호작용, 레이아웃 안정성을 살펴보세요. Core Web Vitals의 현재 지표인 LCP, INP, CLS는 각각 이러한 측면을 다룹니다. 강좌 이미지가 신청 버튼을 밀어내거나 클릭해도 반응하지 않는 것 같은 실제 문제를 먼저 찾고, 도구의 데이터로 원인을 파악하세요. 한 번 측정한 속도 점수가 사용자 경험을 대신하지는 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "사이트에서 구조화 데이터를 사용한다면 마크업이 페이지에 보이는 내용 및 해당 유형의 공식 규칙과 맞는지 확인하세요. 특별한 검색 표시를 얻으려고 가짜 평점이나 페이지에 없는 정보를 추가해서는 안 됩니다. 리치 결과 테스트는 기술 문제를 찾는 데 도움이 되지만 통과해도 그 검색 표시가 반드시 나타나는 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "개선을 강좌 이미지 공간 확보, 공통 데이터 필드 하나 수정, 지나치게 큰 리소스 줄이기처럼 범위가 작은 작업으로 나누세요. 각 작업의 변경 전후 예시를 남기고 신청과 읽기가 여전히 정상인지 확인합니다. 그러면 비용을 계획하기 쉽고 예상 밖의 결과가 나왔을 때 어느 변경이 원인인지 추적하는 데도 도움이 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "완료할 수 있는 작업으로 이어지는 감사 보고서 작성하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "문제는 중요한 콘텐츠의 열람을 막는지, 일부 진입 경로나 정보에 영향을 주는지, 품질과 유지관리의 개선 사항인지에 따라 우선순위를 매길 수 있습니다. 영향받는 페이지 수와 수정 위험은 따로 표시하세요. 이는 운영을 위한 분류이지 Google이 발표한 점수가 아닙니다. 심각성이 같은 두 문제라면 핵심 서비스에 영향을 주고 원인이 분명한 것부터 처리하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "각 작업 항목에는 재현 단계, 기대 결과, 현재 결과, 영향받는 URL, 완료 기준이 필요합니다. 예를 들어 '로그아웃한 방문자가 강좌 페이지에서 올바른 시간을 보고, 성공 응답을 받으며, 의도하지 않은 noindex가 없다'는 'SEO 개선'보다 훨씬 확인하기 쉽습니다. 공통 템플릿을 수정했다면 이전에 정상적이던 다른 페이지도 표본으로 다시 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "보고서 마지막에는 완료한 수정, 아직 진행 중인 색인 갱신, 계속 관찰할 성과를 따로 나열하세요. 사이트 설정이 검사에 통과하면 기술 작업은 완료할 수 있습니다. 검색 데이터가 아직 갱신되지 않았다면 추적 날짜를 남기고 기다리는 기간을 이미 순위 상승을 얻은 것처럼 설명하지 마세요. 다음 개편에서는 같은 대표 페이지를 완료 기준선으로 다시 사용할 수 있습니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "공개 범위와 페이지 유형별 대표 URL을 정하고 개편에서 바뀐 내용을 기록한다.",
+            "접근, 색인, 렌더링, 링크, 사용 경험 순서로 근거를 수집한다.",
+            "각 문제의 영향, 담당자, 재현 가능한 완료 기준을 적는다.",
+            "수정 후 영향받은 템플릿을 다시 점검하고 색인과 검색 데이터는 따로 추적한다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/technical-seo-checklist/diagram-1-ko.svg",
+          "alt": "접근과 응답, 색인과 버전, 렌더링과 링크, 사용자 경험과 마크업의 네 구역이 기술 SEO 점검 순서를 보여 준다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "기술적 수정, 색인 갱신, 검색 성과에 대해서는 각각 별도의 근거를 남긴다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "우선순위 예시",
+            "문제 상황",
+            "완료 확인 근거"
+          ],
+          "rows": [
+            [
+              "우선 수정",
+              "공개 강좌 모두 로그인을 요구함",
+              "로그아웃한 방문자가 읽을 수 있고 실제 응답과 접근 권한이 계획과 일치함"
+            ],
+            [
+              "우선 수정",
+              "운영 페이지에 시험 사이트의 noindex가 남음",
+              "실제 지시문을 수정하고 이후 색인 갱신은 따로 추적함"
+            ],
+            [
+              "일정에 따라 처리",
+              "오래된 진입 경로가 여러 번 이동한 후 올바른 강좌에 도착함",
+              "주요 링크가 목적지로 직접 이어지거나 적절하게 리디렉션됨"
+            ],
+            [
+              "일정에 따라 처리",
+              "JavaScript 버전에 강좌 정보가 빠져 있음",
+              "렌더링된 내용과 방문자에게 보이는 정보가 일치함"
+            ],
+            [
+              "품질 개선",
+              "이미지 로딩 때문에 신청 버튼이 밀림",
+              "화면과 성능 데이터로 개선을 확인함"
+            ],
+            [
+              "별도 관찰",
+              "마크업 검증은 통과했지만 특별한 검색 표시가 나타나지 않음",
+              "표시 자격을 기록하되 실제 표시를 약속하지 않음"
+            ]
+          ],
+          "caption": "우선순위는 사이트의 목표와 영향에 따라 조정하며, 검색엔진의 순위 가중치를 나타내지 않는다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "검사 결과가 녹색이어도 해당 검사가 확인한 범위에만 답합니다",
+          "text": "실시간 테스트, 색인에 등록된 기록, 실제 브라우저 확인, 구조화 데이터 검증은 각각 용도가 다릅니다. 보고서에 사용한 도구와 검사 시점, 확인한 내용을 적어 국소적인 통과를 사이트 전체 감사의 완료나 순위 상승 보장으로 오해하지 않게 하세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "크롤링 효율과 사이트 로그 자세히 살펴보기",
+              "kind": "life",
+              "slug": "crawl-budget-diagnosis"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "사이트를 개편하기 전에 백업하기",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 검색의 기술 요건",
+          "url": "https://developers.google.com/search/docs/essentials/technical?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console URL 검사 도구",
+          "url": "https://support.google.com/webmasters/answer/9012289?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google JavaScript SEO 기본 사항",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 표준 URL 설정 안내",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Core Web Vitals",
+          "url": "https://developers.google.com/search/docs/appearance/core-web-vitals?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 구조화 데이터 일반 가이드라인",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/sd-policies?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }

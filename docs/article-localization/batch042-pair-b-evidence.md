@@ -1,6 +1,6 @@
 # Batch042 Pair B: technical SEO and learning roadmap
 
-This branch contains 24 localized assets for `technical-seo-checklist` and `seo-learning-roadmap`: 16 editable hero/diagram SVGs and eight 1600×900 JPEG covers. Eight complete zh-CN, English, Japanese and Korean documents are independently reviewed and held outside the repository. The two article JSON files are not modified while source-link PR #942 remains unmerged. Original images and attribution are unchanged.
+The two article packs now contain all five languages. This batch adds eight complete zh-CN, English, Japanese and Korean documents and 24 localized assets: 16 hero/diagram SVGs and eight 1600×900 JPEG covers. The source correction #942 merged at `a7e6875693ebd03a162a4737006232ee20dc66aa`; installation rechecked exact main source hashes and independent review before adding locales. Original zh-TW, root metadata, source URLs/checked dates and original artwork remain unchanged from that corrected source. No database import or publication occurred.
 
 ## Source and candidate versions
 
@@ -11,7 +11,7 @@ The historical read-only inventory (receipt SHA-256 `167d0a345864d1a3ca2117b585e
 | `technical-seo-checklist` | `a5f692c99703c5b15e683fd4543d7438c6179d46042f8336f8abaee6cdcc5e08` | `55f4a7ae7f33fd4b4b6d95fb1e95eb08e881984038ba5f1b45f311dd5bb53f48` |
 | `seo-learning-roadmap` | `5d4d982e675e03e7cf3b9840e5ce26488bf7dbc8f54a40f75c7113fdd7635dd5` | `71f1033c6067eba0289ce7e7959100e84086e6c3b1504ef6cc2e582763b11ad4` |
 
-Original candidate bytes are pinned as `e8c957078b059b357feccdb6ea44b3f03a3e519dd9c1ff5adfe277c2ddca2a50` and `3b9b46b26608749c72a483e4c925696e567316bed2e64f04186b46b494c652a0`. The final LF candidates have identical JSON values. The safe installer refuses unmerged/different source hashes or intervening target changes; its dry run currently refuses main because #942 has not merged. No source or candidate was overwritten to bypass that refusal.
+Original candidate bytes are pinned as `e8c957078b059b357feccdb6ea44b3f03a3e519dd9c1ff5adfe277c2ddca2a50` and `3b9b46b26608749c72a483e4c925696e567316bed2e64f04186b46b494c652a0`. The final LF candidates have identical JSON values. The safe installer refuses unmerged/different source hashes or intervening target changes; its pre-merge dry run refused the uncorrected main source. After #942 merged, dry run and installation passed; both entries were unchanged on the post-install rerun. No source or candidate was overwritten to bypass the earlier refusal.
 
 ## Independent text and visual review
 
@@ -35,8 +35,12 @@ Raw receipts, candidates and screenshots remain outside the repository.
 | Final independent text and visual review | `d23e70caf6cccb02b8c9f79777bfbdbb0c5078928c54fe5ab67ceff1c1472621` |
 | Final 20-case local article preview | `4516e9930c9c57c1cf80f9afe8a2fa6179a3f41664cc3298f394f8f1cede9731` |
 
-Scoped candidate pack lint has zero errors; English lengths of 7,347/7,184 characters are advisory and complete paragraphs were retained. Strict intake of the corrected source is **not fully passed**: both start with paragraphs rather than summary blocks, and technical SEO contains two source self-references (limit one). Article targets and SVG numeric checks pass. Final installation must rerun focused content-pack/link tests, scoped lint and current-head CI.
+Scoped candidate pack lint has zero errors; English lengths of 7,347/7,184 characters are advisory and complete paragraphs were retained. Strict intake of the corrected source is **not fully passed**: both start with paragraphs rather than summary blocks, and technical SEO contains two source self-references (limit one). Article targets and SVG numeric checks pass. Installed-pack lint and focused API checks passed as recorded below; current-head CI remains required before ordinary merge.
 
-## Remaining stages
+## Installed-pack validation and remaining release work
 
-`2026-09-28-batch042-pair-b-install-reviewed-locales` tracks guarded installation after #942 merges, exact source hashes match and the source task releases its scopes. This art stage remains a draft review. No database draft import, deployment, publication or live browser verification occurred. Same-image nonproduction rehearsal is unavailable; publication remains NO-GO pending that rehearsal, fresh scoped preflight, source reconciliation, backup/write-control checks, explicit slug/locale dry run and real-route acceptance.
+The installed LF packs are byte-identical to the reviewed final candidates used in the 20 local previews. The guarded install added only four missing locales per article, preserved corrected source/root metadata and existing image bytes, and reported **unchanged** for both entries on immediate rerun. Receipt SHA-256: `1e73661f22eebf35688f1c21477849046b085474fd0d4deeb4536ac24126c4b7`.
+
+`pack_cli lint` on both installed packs has zero errors. `pytest tests/test_guides_content_pack.py tests/test_guides_content_links.py tests/test_guides_links.py -q`: **18 passed, 11 skipped in 37.57s**. Database-dependent skips require CI coverage. The strict source summary/self-reference findings remain explicitly tracked in `2026-09-28-batch042-pair-b-source-editorial-followup`. They are inherited from the frozen source structure, preserved by this existing-article localization; independent acceptance of the added text and artwork is complete. No strict-intake pass is claimed.
+
+Repository authoring/artwork tasks are complete; the PR now covers full article documents and media. Merge requires every triggered current-head CI check. `2026-09-28-batch042-pair-b-release-reviewed-locales` tracks deployment, draft import, publication and real-route verification separately. The historical live snapshot predates #942 and must be reconciled through the Batch042 live-source task. Same-image nonproduction Docker rehearsal remains unavailable, so production is NO-GO. Fresh source/target/version/visibility checks, backup and write controls, exact slug/locale dry run, idempotent import and five-language canonical/hreflang/link/image/browser acceptance are still required.
