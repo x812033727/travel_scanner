@@ -19,6 +19,8 @@ c14｜"The links are in the description": composeDescription in tools/video/core
 
 - Coordinator note (2026-09-28, after verify-1): the job2-table columns are now "Cached reads" and "Fresh input or cache writes", so each vendor's fresh tokens sit in one column at the price that vendor applies to them (the write price where listed, the input price otherwise). Cached reads: Astra 48M × $1 = $48, Sol and Opus 5.5 48M × $0.20 = $9.60, Grok 48M × $0.50 = $24, Flash 48M × $0.075 = $3.60.
 
+- Coordinator note (2026-09-28, after verify-2): the agent-cta title now says the agent "fetched two of these price pages" (the recorded run read the Anthropic and xAI pages and was refused by openai.com), matching line d539.
+
 ## 與企劃不同的地方
 
 - GPT-6 Sol joins the table as the "cheaper sibling" the test asks about; the brief listed only Astra, Opus 5.5 and Grok.
