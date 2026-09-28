@@ -1,0 +1,479 @@
+{
+  "title": "NVIDIA RTX Spark 笔记本电脑 128 GB 装得下哪些 AI 模型？本地 AI 能取代 ChatGPT 吗？",
+  "description": "NVIDIA 称 RTX Spark 能跑 1200 亿参数的模型，但 700 亿参数的 Llama 3.3 原版文件就有 141 GB，放不进这台笔记本电脑最多 128 GB 的内存。这期视频用一个公式“参数量 × 每个参数的字节数”，算出 16 GB、64 GB、128 GB 各装得下哪些模型，再看决定速度的内存带宽，以及本地 AI 能不能取代每月的 AI 订阅。\n\n视频里的规格、参数量和文件大小，都来自 NVIDIA、Microsoft、OpenAI、Hugging Face 和 Ollama 的官方页面，查阅日期是 2026 年 9 月 28 日，之后可能会有变动。当天 NVIDIA 的 RTX Spark 产品页没有列出价格，价格以官网为准；内存带宽 300 GB/s 出自 NVIDIA 的开发者文档。频道没有 RTX Spark 真机，视频里没有任何实测速度：每秒几个 token 的数字，是用这个带宽算出的理论上限。NVIDIA 的说法都标明了是厂商说的。\n\nClaude Pro 的价格是 2026 年 9 月 28 日官网的月付价格，其他订阅以各家官网为准。回本月数和电费粗略估算的公式都在画面上，你可以代入自己的数字重新算。“最在意哪一件事”的表格和结论，是频道主的看法，不是购买建议。",
+  "tags": [
+    "RTX Spark",
+    "本地 AI",
+    "RTX Spark 笔记本电脑",
+    "NVIDIA RTX Spark",
+    "本地大模型",
+    "笔记本电脑跑大模型",
+    "128GB 可以跑什么模型",
+    "本地 AI 取代 ChatGPT",
+    "AI PC 值得买吗",
+    "大模型内存需求",
+    "统一内存",
+    "Ollama",
+    "gpt-oss",
+    "Llama 3.3",
+    "rtx spark local ai",
+    "run llm locally 128gb",
+    "local ai vs chatgpt",
+    "how much ram to run an llm"
+  ],
+  "chapters": {
+    "hook-title": "128 GB 的 AI 笔记本电脑，装得下什么？",
+    "specs": "RTX Spark 是什么：NVIDIA 公布的规格",
+    "bytes": "一个 AI 模型要多少内存？一个公式算清楚",
+    "fit-rule": "128 GB、64 GB、16 GB 内存各跑得动哪些模型",
+    "petaflop": "RTX Spark 跑多快？速度要看哪个数字",
+    "agents-quote": "AI 智能体在后台运行：Windows 加了哪道墙",
+    "sub-vs-own": "AI 订阅 vs 自己的电脑：回本要几个月",
+    "priorities": "本地 AI 能取代 ChatGPT 吗？"
+  },
+  "source_hashes": {
+    "chapters": {
+      "hook-title": "c73af4109a8e",
+      "specs": "5a624b738be9",
+      "bytes": "6ba412584ade",
+      "fit-rule": "0c29ba4704a9",
+      "petaflop": "74fd419a9b33",
+      "agents-quote": "5847f8643a09",
+      "sub-vs-own": "241f956253cc",
+      "priorities": "01c7440d20bb"
+    },
+    "title": "17a99d0f8959",
+    "description": "b32f107a403d",
+    "tags": "54f554abe40d"
+  },
+  "lines": {
+    "6695": {
+      "source_hash": "d52ca08a5a3b",
+      "text": "压缩成 8 位，就是 1 个字节。"
+    },
+    "c752": {
+      "source_hash": "289832a2d6b5",
+      "text": "128 GB 的 RTX Spark 笔记本电脑，装得下哪些模型？"
+    },
+    "xj6b": {
+      "source_hash": "95e9be80448a",
+      "text": "NVIDIA 称，它能跑 1200 亿参数的模型。"
+    },
+    "piku": {
+      "source_hash": "92added42b26",
+      "text": "可是 700 亿参数的 Llama 3.3，原版 141 GB，装不下。"
+    },
+    "bbn6": {
+      "source_hash": "d5e1bdf2c4a1",
+      "text": "两句都对，差就差在一个你算得出来的数字。"
+    },
+    "xbwf": {
+      "source_hash": "fc3bc89208fb",
+      "text": "这期就用它算出装得下什么。"
+    },
+    "prq6": {
+      "source_hash": "cce3aabf06c5",
+      "text": "再看决定速度的数字，还有能不能取代订阅。"
+    },
+    "m5b4": {
+      "source_hash": "e5c420f4d7e0",
+      "text": "NVIDIA 称十月开始出货，有两档笔记本电脑，还有小型台式机。"
+    },
+    "xapq": {
+      "source_hash": "e607e75df26b",
+      "text": "GPU 最多 6144 个核心。"
+    },
+    "nbyi": {
+      "source_hash": "5aa86f90b044",
+      "text": "CPU 最多 20 核，是和联发科一起设计的 Arm 架构。"
+    },
+    "ey2n": {
+      "source_hash": "e7e7625aa7bb",
+      "text": "内存最多 128 GB，另一档笔记本电脑最多 64 GB。"
+    },
+    "m3t7": {
+      "source_hash": "f98e1ff89ee9",
+      "text": "芯片功耗：笔记本电脑是 45 到 80 瓦，台式机 140 瓦。"
+    },
+    "2saw": {
+      "source_hash": "0a50b905fb9d",
+      "text": "开头那句话，出自 NVIDIA 五月底在台北发布时的新闻稿。"
+    },
+    "rvyh": {
+      "source_hash": "ea1bac7db5f7",
+      "text": "翻译成中文，就是能跑 1200 亿参数的大语言模型。"
+    },
+    "5atc": {
+      "source_hash": "c0d84e489b3a",
+      "text": "普通笔记本电脑的内存主要给 CPU 用；游戏本的显卡另有一小块显存。"
+    },
+    "td4z": {
+      "source_hash": "739644f7e890",
+      "text": "RTX Spark 是统一内存，CPU 和 GPU 共用。"
+    },
+    "bmxq": {
+      "source_hash": "455eb173e9d7",
+      "text": "GPU 能用多少，Windows 设了上限，五月的公告没写数字。"
+    },
+    "yuve": {
+      "source_hash": "ae687fb58c02",
+      "text": "一个模型要多少内存？"
+    },
+    "cens": {
+      "source_hash": "143d43395450",
+      "text": "先看它的参数，也就是模型学到的一大堆数字。"
+    },
+    "v79x": {
+      "source_hash": "953524c86f85",
+      "text": "每个数字用 16 位存储，占 2 个字节。"
+    },
+    "26a5": {
+      "source_hash": "fba218966d8e",
+      "text": "压缩成 4 位，只要半个字节，这种压缩叫量化。"
+    },
+    "6x2b": {
+      "source_hash": "b2c1460adb5d",
+      "text": "公式就一行：参数量乘以每个参数的字节数。"
+    },
+    "62hr": {
+      "source_hash": "8851486ba8fd",
+      "text": "Llama 3.3 70B 乘以 2 是 141 GB，乘以 0.5 大约 35 GB。"
+    },
+    "89kx": {
+      "source_hash": "5a491c0ce964",
+      "text": "Ollama 是在自己电脑上跑模型的工具，上面也有同一个模型。"
+    },
+    "q7tw": {
+      "source_hash": "7992f3d1c007",
+      "text": "16 位的文件 141 GB，和公式算的一样。"
+    },
+    "4zmj": {
+      "source_hash": "2eaec2f4b3f5",
+      "text": "8 位的是 75 GB，多了一点。"
+    },
+    "tj2j": {
+      "source_hash": "45e6447e3766",
+      "text": "4 位的是 40 到 43 GB，比公式多出一成多到两成多。"
+    },
+    "uqcg": {
+      "source_hash": "ea43e2078368",
+      "text": "多出来的主要是压缩时另外存的缩放因子，所以公式算出来的只是下限。"
+    },
+    "uhun": {
+      "source_hash": "eb119a565955",
+      "text": "所以记住这句话：文件多大，内存至少就要多大。"
+    },
+    "rxkq": {
+      "source_hash": "bcc95701c279",
+      "text": "回到开头：1200 亿参数用 4 位存储，大约 60 GB，放得进 128 GB。"
+    },
+    "p9rk": {
+      "source_hash": "dee8722ace7e",
+      "text": "Llama 70B 用原版的 16 位，要 141 GB，就放不下了。"
+    },
+    "veb5": {
+      "source_hash": "401148250beb",
+      "text": "两句话的差别，就在每个参数占几个字节。"
+    },
+    "c8mw": {
+      "source_hash": "c2b6bd86bfcb",
+      "text": "那 16、64、128 GB，各装得下哪些模型？"
+    },
+    "gzmm": {
+      "source_hash": "9779ab63a79b",
+      "text": "判断方法是：先扣掉 Windows 11 最低要求的 4 GB。"
+    },
+    "ieht": {
+      "source_hash": "8c475f82b1c9",
+      "text": "文件比剩下的小就放得下，比整个内存还大就放不下。"
+    },
+    "xj2j": {
+      "source_hash": "bb6a71a4afba",
+      "text": "介于两者之间，就算太挤。"
+    },
+    "i55z": {
+      "source_hash": "651127ad0d01",
+      "text": "还有，内存的 GB 比文件的 GB 大一点，表里已经换算好了。"
+    },
+    "i3ft": {
+      "source_hash": "07d8dd151abe",
+      "text": "OpenAI 的 gpt-oss-20b 文件 13.8 GB，16 太挤，64 以上放得下。"
+    },
+    "67f3": {
+      "source_hash": "9d5e3d541894",
+      "text": "Llama 70B 的 4 位版本 43 GB，要 64 GB 才放得下。"
+    },
+    "jxzc": {
+      "source_hash": "13c9d74c2a99",
+      "text": "gpt-oss-120b 是 65.2 GB，64 GB 那档太挤，128 放得下。"
+    },
+    "8jvg": {
+      "source_hash": "e7687c0dcb8a",
+      "text": "8 位的 Llama 75 GB，只有 128 GB 放得下。"
+    },
+    "r2ah": {
+      "source_hash": "a75466c23d6d",
+      "text": "原版的 Llama 141 GB，128 也放不下。"
+    },
+    "cwn7": {
+      "source_hash": "3f98b64591e8",
+      "text": "DeepSeek-V4-Flash 将近 160 GB，三种都放不下。"
+    },
+    "pt7g": {
+      "source_hash": "c6b0832a83ff",
+      "text": "你可能听过：128 GB 连 4050 亿参数的模型都跑得动？"
+    },
+    "6p8h": {
+      "source_hash": "fd8bd73493b5",
+      "text": "算一下：4050 亿乘以 0.5，是两百多 GB，一样放不下。"
+    },
+    "2y24": {
+      "source_hash": "772bc686233d",
+      "text": "那家里两台 128 GB 的电脑，能不能合并成 256 GB？"
+    },
+    "5cse": {
+      "source_hash": "6644dc6775c0",
+      "text": "NVIDIA 的 PAIR 工具，能把任务分给家里的几台电脑。"
+    },
+    "8jt5": {
+      "source_hash": "92784feb7936",
+      "text": "但官网写得很清楚：它不会把几台电脑合并成一块虚拟 GPU。"
+    },
+    "c876": {
+      "source_hash": "47dad8063ba1",
+      "text": "上下文，就是模型一次读进来的内容，也吃内存。"
+    },
+    "pii9": {
+      "source_hash": "3153bdaf9a44",
+      "text": "gpt-oss-120b 上下文读满，还要再多 4.8 GB，合计大约 70 GB。"
+    },
+    "dym6": {
+      "source_hash": "99ddf8398cc5",
+      "text": "OpenAI 称，gpt-oss-20b 在 16 GB 内存以内就能跑。"
+    },
+    "ttk7": {
+      "source_hash": "e186c2216cb9",
+      "text": "可是 16 GB 的电脑放下它，只剩不到 4 GB。"
+    },
+    "dqk7": {
+      "source_hash": "8d0edad7eaa9",
+      "text": "64 GB 那档放 gpt-oss-120b，也只剩不到 4 GB。"
+    },
+    "wyya": {
+      "source_hash": "d3131a3696bd",
+      "text": "Windows 11 自己最少就要 4 GB，所以这两格算太挤。"
+    },
+    "hcs5": {
+      "source_hash": "30b41ffd0cd0",
+      "text": "想实际跑一个看看？"
+    },
+    "9paj": {
+      "source_hash": "65017a916ffd",
+      "text": "简介第一行的文章，一步一步教你用 Ollama 在自己电脑上跑 DeepSeek。"
+    },
+    "uih3": {
+      "source_hash": "13ccf45c9bec",
+      "text": "装得下之后，下一个问题是：它跑得多快？"
+    },
+    "pyma": {
+      "source_hash": "9830dc99fdd6",
+      "text": "NVIDIA 产品页上，讲 AI 算力的是这一句。"
+    },
+    "cym2": {
+      "source_hash": "b2fdf9190697",
+      "text": "意思是，最高每秒一千万亿次 4 位运算。"
+    },
+    "3xvu": {
+      "source_hash": "f788ce73c3b5",
+      "text": "已公布的：算力、内存容量、功耗，还有内存带宽，每秒 300 GB。"
+    },
+    "6jug": {
+      "source_hash": "11cd03d2b87c",
+      "text": "截至九月底还没公布的：每秒能生成几个 token。"
+    },
+    "9qt3": {
+      "source_hash": "d33167f08c56",
+      "text": "token 是模型处理文字的小单位。"
+    },
+    "xzup": {
+      "source_hash": "d4f37066d746",
+      "text": "我们没有真机，所以真正的速度，要等出货后有名有姓的评测。"
+    },
+    "d7e6": {
+      "source_hash": "e60d82a94701",
+      "text": "内存带宽为什么重要？"
+    },
+    "k42r": {
+      "source_hash": "95b51dba3f9b",
+      "text": "读入一大段文档时，速度主要看算力。"
+    },
+    "ajv4": {
+      "source_hash": "7933893689fe",
+      "text": "但一个字一个字回答时，每一步都要从内存搬参数，卡的是带宽。"
+    },
+    "msnd": {
+      "source_hash": "ae71eb601e49",
+      "text": "有了带宽，回答速度的上限就算得出来。"
+    },
+    "rv27": {
+      "source_hash": "61f439ae64cd",
+      "text": "要算上限，先看每一步要搬的量：不同架构的模型差很多。"
+    },
+    "uc8u": {
+      "source_hash": "77482e632448",
+      "text": "Llama 70B 每生成一个 token，要动用全部 700 多亿个参数。"
+    },
+    "wm6a": {
+      "source_hash": "15c6e553ba2f",
+      "text": "gpt-oss-120b 是混合专家模型。"
+    },
+    "k3zx": {
+      "source_hash": "4745acd06d37",
+      "text": "总共 1170 亿，每次只动用 51 亿。"
+    },
+    "kpbj": {
+      "source_hash": "7a2b1313b76e",
+      "text": "要动用的少了十几倍，可能快很多，但这是比例，不是实测。"
+    },
+    "j4w5": {
+      "source_hash": "575f59010d59",
+      "text": "gpt-oss-120b 原版每次大约读取 5 GB。"
+    },
+    "ujr7": {
+      "source_hash": "84a64a7abb5d",
+      "text": "专家是 4 位多，其他是 16 位。"
+    },
+    "3s2v": {
+      "source_hash": "1beb36ea8374",
+      "text": "接下来两个数字，都是每步一个 token 的理论上限。"
+    },
+    "wxrv": {
+      "source_hash": "6c6c847279f2",
+      "text": "每秒 300 GB 除以 35 GB，Llama 最多每秒八个多 token。"
+    },
+    "efif": {
+      "source_hash": "e567bc03603e",
+      "text": "gpt-oss-120b 原版是 300 除以 5，最多约 60 个。"
+    },
+    "a5ye": {
+      "source_hash": "3176308b24db",
+      "text": "上下文和其他程序也要抢带宽，实际只会更慢。"
+    },
+    "9cfz": {
+      "source_hash": "485c0b390822",
+      "text": "RTX Spark 的另一个卖点，是让 AI 智能体在后台一直运行。"
+    },
+    "6wyn": {
+      "source_hash": "8bbdf15ba74f",
+      "text": "NVIDIA 的说法是：智能体在后台安全运行，由操作系统管控。"
+    },
+    "u5iy": {
+      "source_hash": "bbde53ecb4b5",
+      "text": "微软的执行容器 MXC，让智能体只能碰策略允许的文件和域名。"
+    },
+    "kna8": {
+      "source_hash": "1593d6aaa7c5",
+      "text": "智能体用自己的账户运行，做了什么，记录和你的分得开。"
+    },
+    "rab2": {
+      "source_hash": "59fb18a8f2dc",
+      "text": "不过微软六月发布时说，这还是早期预览，很多功能先放在测试版 Windows 里。"
+    },
+    "akm3": {
+      "source_hash": "65b96e24bc47",
+      "text": "我的看法是：安全要靠系统真正挡住，而不是靠提示词里的一句“不要”。"
+    },
+    "uzk6": {
+      "source_hash": "c8ee8d672a9a",
+      "text": "把智能体关起来的三道墙，在智能体闯进政府网站那一期，有真实演示。"
+    },
+    "k76b": {
+      "source_hash": "146b238de586",
+      "text": "再来算钱：云端订阅按月付费。"
+    },
+    "85b5": {
+      "source_hash": "4e310d5dc631",
+      "text": "比如 Claude 的 Pro 套餐，截至九月底是月付 20 美元。"
+    },
+    "45uq": {
+      "source_hash": "8db0da1777c4",
+      "text": "用量每五小时重置，另外还有每周上限。"
+    },
+    "e55p": {
+      "source_hash": "e4df1ab5f1c8",
+      "text": "自己的机器一次付清，只是另外要付电费。"
+    },
+    "hh47": {
+      "source_hash": "07ef7d047b2b",
+      "text": "RTX Spark 的价格，截至九月底 NVIDIA 产品页上还没有列出。"
+    },
+    "yhk5": {
+      "source_hash": "fc0e77c62821",
+      "text": "回本月数，就是机器多花的钱，除以每个月省下的订阅费。"
+    },
+    "fjvj": {
+      "source_hash": "a703d97c3bed",
+      "text": "每多花 1000 美元，按 20 美元的月费算，要 50 个月。"
+    },
+    "2v5v": {
+      "source_hash": "e3d32a6a653c",
+      "text": "电费先用芯片的功耗粗略估算，这不是整台电脑的实测。"
+    },
+    "kn4k": {
+      "source_hash": "e349d92d4fbb",
+      "text": "台式机 140 瓦全天运行，一个月大约 100 度。"
+    },
+    "d45i": {
+      "source_hash": "5e814dd8154d",
+      "text": "笔记本电脑 80 瓦、一天 8 小时，一个月大约 19 度。"
+    },
+    "3b5q": {
+      "source_hash": "4d7d68cf70ab",
+      "text": "再乘以你电费单上的每度电价就行。"
+    },
+    "6jas": {
+      "source_hash": "5764cc45adb8",
+      "text": "那你可能会问：我该买吗？"
+    },
+    "7ewf": {
+      "source_hash": "3888fef591c2",
+      "text": "这个问题我不替你回答，我只问你：你最在意的是哪一件事？"
+    },
+    "t76u": {
+      "source_hash": "516db92a43f0",
+      "text": "按我的看法，在意隐私，本地最合适，数据不会离开你的电脑。"
+    },
+    "ppxc": {
+      "source_hash": "6561b9c464b7",
+      "text": "在意质量，云端比较合适，最强的模型都还在云端。"
+    },
+    "8a5b": {
+      "source_hash": "90dcb2baf5bc",
+      "text": "在意成本，就先用前面的公式，算出回本要几个月。"
+    },
+    "n97c": {
+      "source_hash": "f183dbed7ecf",
+      "text": "在意速度，就等出货后的真机评测。"
+    },
+    "egi5": {
+      "source_hash": "550d86bf3420",
+      "text": "所以本地 AI 能取代 ChatGPT 吗？"
+    },
+    "2cph": {
+      "source_hash": "d3d6277228ab",
+      "text": "我的看法是：必须留在家里、又天天在跑的任务，值得搬回本地。"
+    },
+    "wdr5": {
+      "source_hash": "f9fa4840cb86",
+      "text": "数据可以上云、又要最强的模型，订阅可能还更划算。"
+    },
+    "sji9": {
+      "source_hash": "bcdbedb7aa85",
+      "text": "打开任务管理器的“性能”，记下内存和显卡自己的显存。"
+    },
+    "wdpg": {
+      "source_hash": "98e4a099664b",
+      "text": "再挑一个想跑的模型，用这期的公式算一遍。"
+    }
+  }
+}
