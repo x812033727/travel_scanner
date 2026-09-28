@@ -6,7 +6,7 @@ priority: P2
 area: tools
 owner:
 claimed_at:
-created_at: 2026-09-28T09:00:00Z
+created_at: 2026-09-28T06:00:00Z
 completed_at:
 branch:
 depends_on: []
