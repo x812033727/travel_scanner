@@ -297,6 +297,16 @@ test("the shared folders and anything whose name begins with _ are never touched
   for (const name of shared) assert.equal(readFileSync(path.join(where.work, ...name.split("/")), "utf8"), `shared ${name}`, `${name} is untouched`);
 });
 
+test("a folder whose auto.json names another video is not that video's work directory", () => {
+  const where = place();
+  // Copied or renamed by hand: the folder is not the one the flow writes for "the-real-one".
+  const copy = finishedVideo(where.work, "a-copy", { state: { slug: "the-real-one" } });
+  const result = round(where, { site: [listing("the-real-one"), listing("a-copy")] });
+  assert.equal(result.cleared, null);
+  assert.deepEqual([result.due, result.held, result.undated].map((list) => list.length), [0, 0, 0]);
+  assertUntouched(copy);
+});
+
 test("a work base that is empty, relative, a drive's root or the repository is refused outright", () => {
   const where = place();
   const refused = (options) => tidyBase({ root: where.repo, home: where.top, ...options }).refused;

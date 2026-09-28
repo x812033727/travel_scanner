@@ -194,6 +194,10 @@ test("tidy by hand: --dry-run lists and keeps everything, a run clears one video
   const unreachable = context(box, fakeSite({ down: true }));
   assert.equal(await main(["tidy"], unreachable.ctx), EXIT.external);
   assert.match(unreachable.out.stderr, /the site's video list, which dates the videos on YouTube, could not be read/);
+  put(box.work, "STOP", "");
+  const stopped = context(box, site);
+  assert.equal(await main(["tidy"], stopped.ctx), EXIT.ok);
+  assert.equal(stopped.out.stdout, "STOP found in the work base; nothing is cleared\n");
   assert.ok(untouched(recent) && untouched(undecided));
 });
 
