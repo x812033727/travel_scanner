@@ -1,74 +1,73 @@
 # Chatbots Are Over. Here's How an AI Agent Actually Works (and Fails).
 
-slug：`always-on-agent-explained`｜narration_locale：en｜企劃日 2026-09-28｜季企劃與包裝：`docs/ai-video-en-season-01/briefs/02-always-on-agent-explained.md`
+slug：`always-on-agent-explained`｜旁白繁體中文（台灣）；英文以 CC 字幕與英文配音音軌提供｜企劃日 2026-09-28｜季企劃與包裝：`docs/ai-video-en-season-01/briefs/02-always-on-agent-explained.md`
 
 ## 觀眾
 
-People who use ChatGPT or Claude every week and keep hearing "agent" without a picture of what changes. Hook audience: anyone who watched OpenAI's DevDay (2026-09-29) or read about an always-on assistant that keeps working after the chat closes. Searches: "what is an AI agent", "AI agent vs chatbot", "openai always on agent", "computer use AI explained".
+台灣與其他華語觀眾優先：每週都在用 ChatGPT 或 Claude、一直聽到「AI 代理」（agent）這個詞，卻想像不出到底改變了什麼的人。鉤子要抓住的觀眾：看過 OpenAI DevDay（2026-09-29）的人，或是讀過報導、知道有一種關掉對話之後還會繼續工作的常駐（always-on）助理的人；OpenAI 的這款助理截至 2026-09-28 只有報導，還沒有正式宣布。英語觀眾透過英文 CC 字幕與英文配音音軌收看。中文搜尋：「AI 代理是什麼」、「AI agent 是什麼」、「AI 代理和聊天機器人差在哪」、「OpenAI DevDay 2026」、「OpenAI 常駐助理」、「AI 操作電腦」；英文搜尋：「what is an AI agent」、「AI agent vs chatbot」、「openai always on agent」、「computer use AI explained」。
 
 ## 觀眾看完能做到的事
 
-- Trace what an agent does between "just handle it" and the result: goal, tool call, observation, next step, stop condition; and spot when a demo is really just a chatbot with nice formatting.
-- Ask three questions before handing an agent a task: what evidence will I get that it finished, what can it touch while I am not watching, and what does a wrong answer cost me.
+- 說得出 AI 代理從你一句「你處理就好」到交出結果之間做了哪些事：目標、工具呼叫、觀察結果、下一步、停止條件；也看得出哪些示範其實只是排版漂亮的聊天機器人。
+- 把任務交給 AI 代理之前，先問三個問題：我會拿到什麼證據，證明它真的做完了？我沒在看的時候，它碰得到哪些東西？答錯一次，我要付出什麼代價？
 
 ## 站主觀點
 
 套用立場：3、4、5
 
-An agent's output is a claim until I have opened its evidence: the file, the diff, the booking reference. I treat "always-on" as a reason to draw boundaries first, not as magic; an agent that acts while I sleep needs walls more than one I watch. The benchmark numbers (OSWorld 72.6% for GPT-6 Astra, 81.8% partial for Claude Opus 5.5, as their makers report them) mean one task in four or five still goes wrong, so the question is never "is it smart enough" but "what happens to the wrong ones". This is my reading; the numbers are the companies' own.
+在我親手打開它的證據（檔案、diff、預訂編號）之前，AI 代理交出的成果都只是一個還沒證實的說法。我把「常駐」（always-on）看成必須先畫好邊界的理由，而不是魔法：在我睡覺時還會動手的代理，比我在旁邊看著的代理更需要圍牆。廠商自己公布的基準測試分數（Anthropic 公布 Claude Opus 5.5 在 OSWorld 2.0 拿到 81.8%，部分計分；GPT-6 Astra 的分數在 OpenAI 官方頁面上讀不到，所以我不寫數字）代表大約每五個任務還是有一個沒有完全做完，所以問題從來不是「它夠不夠聰明」，而是「做錯的那些會怎樣」。這是我的解讀；數字都是廠商自己公布的。
 
 ## 示範或實算
 
-A real agent run on a harmless, checkable task, recorded on writing day and shown step by step on `steps` and `chat` slides (chapter 2): "Find the official API prices of three models, write a comparison table to a file, and tell me which page each number came from." The slides show the actual sequence: the goal, each tool call (fetch page → read → write file), the observation the agent acted on, and the stop. Then the calculation in chapter 3 on a `stats` slide: at the reported success rates, out of 100 computer-use tasks about 27 fail with Astra's number and about 18 with Opus 5.5's partial score; what that means when the task is booking, paying or deleting.
+讓一個 AI 代理實際跑一次無害、結果可以檢查的任務，在撰稿當天（2026-09-28）錄下來，第 2 章用 `steps` 和 `chat` 投影片一步一步呈現。任務是：「找出三個模型的官方 API 價格，把比較表寫進一個檔案，並說明每個數字出自哪一頁。」投影片呈現實際發生的順序：目標、每一次工具呼叫（抓取網頁 → 讀取 → 寫入檔案）、代理據以行動的觀察結果，以及它停下來的地方。接著第 3 章在 `stats` 投影片上實算：依廠商公布的分數，每 100 個電腦操作任務，照 Opus 5.5 的部分計分約有 18 個沒有完全做完（GPT-6 Astra 的分數在 OpenAI 官方頁面上讀不到，不列入計算）；再說明任務如果是訂位、付款或刪除檔案，這代表什麼。
 
 ## 大綱
 
 ### 選項 A：一次真實執行，拆成五拍（推薦）
 
-一行說明：one real run carries the whole explanation; the DevDay news frames why it matters now. Differs from B, which starts from the news and explains later.
+一行說明：用一次真實執行撐起整段解說，DevDay 的新聞只用來交代為什麼現在要懂，和先講新聞、之後才解說的選項 B 不同。
 
-開場鉤子（口播，≤30 秒）："Every AI company is now selling you an agent. Next, they want to sell you one that never logs off. Most explanations stop at one line: it can use tools. That tells you nothing about what happens after you press enter. So I gave one agent a boring task and recorded every step. I'll show you the five moves that turn a chatbot into an agent. Plus the tasks that still go wrong, by the makers' own numbers, and what to do about it."
+開場鉤子（口播）：「現在每一家 AI 公司，都在跟你推銷 AI 代理。下一步，他們想賣你一個永遠不下線的。大部分的解說都只講到一句話，就是它會用工具。可是這完全沒有告訴你，你按下 Enter 之後，到底發生了什麼事。所以我給一個 AI 代理一件無聊的任務，把每一步都錄了下來。我會讓你看到，把聊天機器人變成 AI 代理的五個動作。還有，照廠商自己公布的數字，哪些任務還是會出錯，又該怎麼辦。」
 
-| # | Chapter | s | Scenes |
+| # | 章節 | 秒 | 場景 |
 | --- | --- | --- | --- |
-| 1 | The one-sentence difference | 70 | `title`; `compare`: chatbot (text in, text out) vs agent (goal, tools, loop, stop); `big`: "goal + tools + loop" |
-| 2 | A real run, step by step | 160 | `steps`: goal → tool call → observation → next step → stop; `chat`: the actual messages and tool results; `code`: the file it wrote; `table`: the prices it found with their pages |
-| 3 | Where it fails: the numbers the makers publish | 90 | `stats`: OSWorld 2.0 scores as reported (Astra 72.6%, Opus 5.5 81.8% partial), Astra's ~40 minutes per task; `bullets`: the four common failure shapes (wrong page, stale data, half-finished, confidently wrong) |
-| 4 | What "always-on" changes | 80 | `bullets`: acts while you are away, keeps state across chats, may hold its own identity (per what DevDay actually announced); `quote`: the official wording; `cta`: link to video 1 for the walls |
-| 5 | Three questions before you hand it a task | 100 | `steps`: evidence / reach / cost of a wrong answer; `chat`: a bad delegation vs a good one for the same errand |
-| 6 | Do this before your first agent task | 60 | `table`: the evidence checklist; `big`: "read the file, not the summary" |
-| 7 | So is the chatbot over? | 40 | `outro`: "the chat is now the receipt, the work happens behind it; your job is to open the receipt"; next step: the Mokaair article on agent delegation, or the next video |
+| 1 | 一句話的差別（The one-sentence difference） | 70 | `title`；`compare`：聊天機器人（文字進、文字出） vs AI 代理（目標、工具、迴圈、停止）；`big`：「目標 + 工具 + 迴圈」 |
+| 2 | 一次真實執行，一步一步看（A real run, step by step） | 160 | `steps`：目標 → 工具呼叫 → 觀察結果 → 下一步 → 停止；`chat`：實際的訊息與工具回傳結果；`code`：它寫出的檔案；`table`：它找到的價格與出處頁面 |
+| 3 | 哪裡會失敗：廠商自己公布的數字（Where it fails: the numbers the makers publish） | 90 | `stats`：廠商公布的 OSWorld 2.0 分數（Opus 5.5 81.8%，部分計分；GPT-6 Astra 的分數與每個任務的耗時在 OpenAI 官方頁面上讀不到，不列）；`bullets`：四種常見的失敗型態（讀錯頁面、資料過期、只做一半、自信地答錯） |
+| 4 | 常駐代理改變了什麼（What "always-on" changes） | 80 | `bullets`：你不在時照樣動手、跨對話保留狀態、可能擁有自己的身分（以 DevDay 實際宣布的內容為準；截至 2026-09-28，OpenAI 的常駐助理只有報導、尚未宣布）；`quote`：官方原文；`cta`：連到第 1 支影片看三道牆 |
+| 5 | 交出任務前先問三個問題（Three questions before you hand it a task） | 100 | `steps`：證據／能碰到的範圍／答錯的代價；`chat`：同一件差事，糟糕的委派 vs 好的委派 |
+| 6 | 第一次交任務給 AI 代理之前，先做這件事（Do this before your first agent task） | 60 | `table`：證據檢查清單；`big`：「讀檔案，不要只讀摘要」 |
+| 7 | 所以聊天機器人的時代結束了嗎？（So is the chatbot over?） | 40 | `outro`：「對話現在是收據，工作在它背後進行；你的工作是打開收據」；下一步：Mokaair 談把任務委派給 AI 代理的文章，或下一支影片 |
 
-Total ≈ 600 s. Worked example: chapters 2–3.
+全長約 600 秒（中文旁白約 2,500 字，以每分鐘 250 字計）。實算範例在第 2–3 章。
 
 ### 選項 B：從 DevDay 開始講
 
-一行說明：news first (what was announced, what it costs, who gets it), then the explanation. Better if DevDay lands something big; risk of aging faster.
+一行說明：先講新聞（宣布了什麼、多少錢、誰能用）再解說原理，和用一次真實執行帶出解說的選項 A 不同；DevDay 若真的端出大東西會更有利，但內容也老得比較快。
 
-開場鉤子（口播，≤30 秒）："OpenAI just announced an assistant that never logs off. Here's what it can do while you sleep, what it can't, and how to know the difference."
+開場鉤子（口播）：「OpenAI 剛剛宣布了一個永遠不下線的助理。接下來告訴你，它在你睡覺的時候能做什麼、不能做什麼，還有怎麼分辨。」
 
-Chapters: What DevDay actually announced (90 s: `quote`, `table`) → How an agent works in five moves (120 s: `steps`, `chat`) → The failure rate nobody puts on the poster (90 s: `stats`) → A real run (120 s) → Three questions (90 s) → `outro` (40 s).
+章節：DevDay 實際宣布了什麼（What DevDay actually announced，90 秒：`quote`、`table`）→ 五個動作看懂 AI 代理怎麼運作（How an agent works in five moves，120 秒：`steps`、`chat`）→ 沒人印在海報上的失敗率（The failure rate nobody puts on the poster，90 秒：`stats`）→ 一次真實執行（A real run，120 秒）→ 三個問題（Three questions，90 秒）→ `outro`（40 秒）。
 
-If DevDay announces nothing of the kind: the hook uses the September computer-use numbers instead, and chapter 4 becomes "what agents shipping this fall have in common".
+如果 DevDay 沒有宣布這類產品（截至 2026-09-28，OpenAI 的常駐助理只有報導、尚未宣布），開場鉤子改用 9 月公布的電腦操作分數，第 4 章改成「今年秋天推出的 AI 代理有哪些共同點」。
 
 ## 會過期的事實
 
-| Fact | Re-check at |
+| 事實 | 重新確認的來源 |
 | --- | --- |
-| What OpenAI announced on 2026-09-29, product name, pricing, availability | openai.com/index/devday-2026/ and the launch post; the "o" always-on agent was a leak until DevDay, never state it as fact from leaks |
-| OSWorld 2.0 and time-per-task figures | openai.com/index/gpt-6-astra/ (403 to our fetcher on 2026-09-28; DataCamp's 2026-09-03 write-up carried 72.6% and ~40 minutes) and anthropic.com/news/claude-opus-5-5 (81.8% partial, 2026-09-22) |
-| The prices the demo agent finds | each vendor's pricing page on writing day |
-| Whether the CLI used in the demo still supports the same flags | its docs on writing day |
+| OpenAI 在 2026-09-29 宣布的內容、產品名稱、價格、開放對象 | openai.com/index/devday-2026/ 與發表文；這個網址在 2026-09-28 對我們的抓取回 403，`sources` 已改用 https://devday.openai.com/ 這一頁。代號「o」的常駐代理在 DevDay 之前都只是外流消息（截至 2026-09-28 仍是有報導、未宣布），絕不要根據外流消息把它寫成事實 |
+| OSWorld 2.0 分數與每個任務的耗時 | openai.com/index/gpt-6-astra/（2026-09-28 對我們的抓取回 403；DataCamp 2026-09-03 的整理文寫的是 72.6% 和約 40 分鐘，但那是第三方數字，DataCamp 的頁面當天也回 403，所以影片不寫 Astra 的數字）與 anthropic.com/news/claude-opus-5-5（81.8%，部分計分，2026-09-22） |
+| 示範中 AI 代理找到的價格 | 撰稿當天各廠商的定價頁 |
+| 示範用的 CLI 是否還支援同樣的參數 | 撰稿當天該 CLI 的說明文件 |
 
 ## 素材
 
-- The agent transcript is the channel's own recording; nothing is invented and nothing is cut to make it look better.
-- `quote` slides only for official wording; no product screenshots (interfaces change and are copyrighted).
-- Mokaair article on delegating to agents if one exists on writing day; otherwise the closing points to video 1.
+- AI 代理的執行紀錄是頻道自己錄的；沒有任何捏造，也沒有為了好看而剪掉任何東西。
+- `quote` 投影片只放官方原文；不放產品截圖（介面會變，而且受著作權保護）。
+- 撰稿當天如果 Mokaair 已有談「把任務委派給 AI 代理」的文章，結尾就連過去；沒有的話，結尾改指向第 1 支影片。
 
 ## 不做的事
 
-- No claim that any agent "understands" or "wants"; no anthropomorphic language beyond quoting marketing and labelling it.
-- No ranking of agent products; no purchase advice beyond the three questions.
-- No reproduction of the OpenAI incidents in detail (video 1 has them).
-
+- 不說任何 AI 代理「理解」或「想要」什麼；除了引用行銷文案並標明那是行銷用語，不用擬人化的說法。
+- 不幫 AI 代理產品排名；除了那三個問題，不給購買建議。
+- 不細講 OpenAI 的那幾起事件（第 1 支影片已經講過）。
