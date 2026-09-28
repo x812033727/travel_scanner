@@ -62,7 +62,8 @@ previous/next navigation must use that locale's published lessons and copy.
 - [x] Added web duplication and withdrawal guard tests, kept the existing
       zh-TW Gemini renderer and let the other locales use API navigation.
 - [x] Focused API and Web tests passed, plus Web lint, typecheck, i18n and task checks.
-- [ ] Open a focused PR; wait for full CI before merge.
+- [x] Opened focused draft PR #947.
+- [ ] Wait for full CI and review before merge.
 
 ## How to verify
 
@@ -82,3 +83,5 @@ lessons and Gemini's server-only projection, so the old diff must not be copied
 wholesale. The new overlays retain stable slugs and use published article
 documents for public titles/descriptions; API series links remain locale- and
 publication-aware. No production write occurred.
+
+Draft PR: https://github.com/x812033727/travel_scanner/pull/947
