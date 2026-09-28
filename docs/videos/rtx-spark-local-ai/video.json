@@ -158,6 +158,11 @@
       "title": "Microsoft Support, Task Manager Performance tab, zh-TW",
       "url": "https://support.microsoft.com/zh-tw/windows/experience/compatibility/find-out-how-many-cores-a-processor-on-a-windows-device-has",
       "checked_on": "2026-09-28"
+    },
+    {
+      "title": "JEDEC Standard No. 21-C, terms and definitions: memory capacity counts K as 1024 and M as 2^20",
+      "url": "https://www.jedec.org/sites/default/files/2_00R20.pdf",
+      "checked_on": "2026-09-28"
     }
   ],
   "scenes": [
@@ -1424,7 +1429,7 @@
       "template": "outro",
       "data": {
         "title": "打開工作管理員，算一次",
-        "cta": "效能 → 記憶體，以及 GPU 的專用 GPU 記憶體",
+        "cta": "效能 → 記憶體，以及顯示卡自己的記憶體",
         "lines": [
           "記憶體 ≈ 參數量 × 每個參數的位元組",
           "16 位元 2、8 位元 1、4 位元 0.5",
@@ -1439,7 +1444,7 @@
       "lines": [
         {
           "id": "sji9",
-          "text": "打開工作管理員的效能，抄下記憶體和專用 GPU 記憶體。"
+          "text": "打開工作管理員的效能，抄下記憶體和顯示卡自己的記憶體。"
         },
         {
           "id": "wdpg",
