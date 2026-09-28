@@ -39,6 +39,7 @@ from app.news_automation.policy import (
     hard_policy_problems,
     normalized_title,
     transition_allowed,
+    trusted_alone_sites,
 )
 from app.news_automation.scanner import claim_due_sources, classify_vertical, scan_source
 from app.news_automation.schemas import FetchResult
@@ -839,6 +840,22 @@ def test_pages_of_one_website_are_one_source() -> None:
     )
     assert not auto_evidence_ok([row("https://www.theverge.com/story")])
     assert not auto_evidence_ok([row("https://openai.com/index/a", True, role="lead_only")])
+    # A newsroom the owner trusts to stand alone (2026-09-28), set per source in its config.
+    sources = [
+        NewsSource(
+            url="https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
+            config_json={"auto_publish_alone": True},
+            allowed_redirect_hosts_json=["www.theverge-cdn.example"],
+        ),
+        NewsSource(url="https://decrypt.co/feed", config_json={}),
+    ]
+    trusted = trusted_alone_sites(sources)
+    assert trusted == {"theverge.com", "theverge-cdn.example"}
+    assert auto_evidence_ok([row("https://www.theverge.com/story")], trusted)
+    assert not auto_evidence_ok([row("https://decrypt.co/story")], trusted)
+    assert not auto_evidence_ok(
+        [row("https://www.theverge.com/story", role="lead_only")], trusted
+    ), "a lead-only page is never evidence"
 
 
 def test_one_evidence_page_is_enough_to_draft_and_to_pass_the_source_check() -> None:

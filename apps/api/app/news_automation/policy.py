@@ -4,7 +4,7 @@ import hashlib
 import json
 import re
 import unicodedata
-from collections.abc import Iterable, Mapping
+from collections.abc import Collection, Iterable, Mapping
 from datetime import UTC, date, datetime
 from typing import Any, Protocol
 from urllib.parse import urlsplit
@@ -108,15 +108,38 @@ def evidence_sufficient(rows: Iterable[EvidenceLike]) -> bool:
     return evidence_site_count(usable) >= 2 and any(row.is_first_party for row in usable)
 
 
-def auto_evidence_ok(rows: Iterable[EvidenceLike]) -> bool:
-    """Enough evidence to publish without a person: two websites, or one first-party page.
+def auto_evidence_ok(
+    rows: Iterable[EvidenceLike], trusted_sites: Collection[str] = frozenset()
+) -> bool:
+    """Enough evidence to publish without a person: two websites, one first-party page, or
+    one page from a site trusted to stand alone.
 
     The owner decided on 2026-09-25 that an official announcement (the company's own site,
     blog or feed) may be published automatically on its own, reported as that company's
-    statement; any other single website still waits for a person.
+    statement. On 2026-09-28 the owner added the major newsrooms they named (TechCrunch, The
+    Verge, CoinDesk): a source whose config has ``auto_publish_alone`` is one of
+    ``trusted_sites``. Any other single website still waits for a person.
     """
     usable = [row for row in rows if row.role == "evidence"]
-    return evidence_sufficient(usable) or any(row.is_first_party for row in usable)
+    return (
+        evidence_sufficient(usable)
+        or any(row.is_first_party for row in usable)
+        or any(evidence_site(row.url) in trusted_sites for row in usable)
+    )
+
+
+def trusted_alone_sites(sources: Iterable[Any]) -> set[str]:
+    """Websites of the enabled sources whose config says ``auto_publish_alone``."""
+    sites: set[str] = set()
+    for source in sources:
+        if not (source.config_json or {}).get("auto_publish_alone"):
+            continue
+        sites.add(evidence_site(source.url))
+        sites.update(
+            host.casefold().rstrip(".").removeprefix("www.")
+            for host in source.allowed_redirect_hosts_json or []
+        )
+    return sites
 
 
 def transition_allowed(current: str, target: str) -> bool:
