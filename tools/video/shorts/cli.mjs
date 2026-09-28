@@ -71,10 +71,9 @@ export async function main(args=process.argv.slice(2), { env = process.env, fetc
     const {packageBuild} = await import('./package.mjs');
     const directory = need(values,'dir');
     const doc = readJson(path.join(directory,'script.json'),null);
-    // The settings and the source are the site's; without a token the package is made with the
-    // defaults, and the checks that need the site say so.
-    const client = await site().catch(() => null);
-    const settings = client ? await client.settings().catch(() => ({})) : {};
+    // Keep the preceding package intact if the owner's current settings cannot be read.
+    const client = await site();
+    const settings = await client.settings();
     const source = client && doc?.source?.slug ? await client.project(doc.source.slug).catch(() => null) : null;
     const {report} = packageBuild({directory,settings,source});
     for (const each of report.items) print(`  ${each.ok?'ok  ':'FAIL'} ${each.id.padEnd(12)} ${each.detail}`);

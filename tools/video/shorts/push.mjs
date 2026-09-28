@@ -135,6 +135,18 @@ export async function push({ directory, client, log = () => {} }) {
   const qa = readJson(path.join(directory, QA_FILE), null);
   const report = readJson(path.join(directory, PACKAGE_FILE), null);
   const slug = doc.slug;
+  const metadataFile = path.join(directory, 'upload', METADATA_FILE);
+  const metadata = readJson(metadataFile, null);
+  const metadataSha256 = metadata ? sha256(readFileSync(metadataFile)) : null;
+  if (metadata && report) {
+    if (report.final_sha256 !== metadataSha256) return { slug, final: null, publish: null, waits: 'the upload package changed: run package again' };
+    for (const locale of captionLocales(metadata)) {
+      const file = path.join(directory, 'upload', `${locale}.srt`);
+      if (!existsSync(file) || metadata.captions_sha256?.[locale] !== sha256(readFileSync(file))) {
+        return { slug, final: null, publish: null, waits: 'the captions changed or have no package binding: run package again' };
+      }
+    }
+  }
   await client.report(slug, projectBody({ doc, qa, check: readJson(path.join(directory, CHECK_FILE), null), report }));
 
   const files = [await upload(client, slug, final, 'preview'), await upload(client, slug, path.join(directory, 'upload', 'cover.png'), 'thumbnail')];
@@ -158,8 +170,6 @@ export async function push({ directory, client, log = () => {} }) {
     return { slug, final: sent, publish: null, waits: sent.status === 'rejected' ? `the owner sent the cut back: ${sent.note ?? ''}`.trim() : 'the final cut waits for the owner on /admin/videos' };
   }
 
-  const metadataFile = path.join(directory, 'upload', METADATA_FILE);
-  const metadata = readJson(metadataFile, null);
   if (!metadata || !report) return { slug, final: sent, publish: null, waits: 'the upload package is not made yet: run package, then push again' };
   if (metadata.final_sha256 !== finalSha256) return { slug, final: sent, publish: null, waits: 'the upload package is of another cut: run package, then push again' };
   // No thumbnail goes with the package: the site sets on YouTube what the package holds, and
@@ -168,8 +178,11 @@ export async function push({ directory, client, log = () => {} }) {
     await upload(client, slug, metadataFile, 'metadata'),
     await upload(client, slug, final, 'final'),
   ];
+  if (packaged[0].sha256 !== metadataSha256) return { slug, final: sent, publish: null, waits: 'the upload package changed during push: run package again' };
   for (const locale of captionLocales(metadata)) {
-    packaged.push(await upload(client, slug, path.join(directory, 'upload', `${locale}.srt`), `captions_${locale}`));
+    const caption = await upload(client, slug, path.join(directory, 'upload', `${locale}.srt`), `captions_${locale}`);
+    if (caption.sha256 !== metadata.captions_sha256[locale]) return { slug, final: sent, publish: null, waits: 'the captions changed during push: run package again' };
+    packaged.push(caption);
   }
   packaged.push(await upload(client, slug, path.join(directory, 'upload', DESCRIPTION_FILE), 'description_zh-TW'));
   await client.report(slug, projectBody({ doc, qa, check: readJson(path.join(directory, CHECK_FILE), null), report, stage: 'publish' }));

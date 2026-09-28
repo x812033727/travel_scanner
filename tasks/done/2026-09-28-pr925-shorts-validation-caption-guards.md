@@ -5,12 +5,13 @@ status: done
 priority: P1
 area: tools
 owner: codex-pr-merge-watch-shorts
-claimed_at: 2026-09-28T13:04:24Z
+claimed_at: 2026-09-28T13:13:11Z
 created_at: 2026-09-28T13:04:18Z
-completed_at: 2026-09-28T13:08:29Z
+completed_at: 2026-09-28T13:18:35Z
 branch: codex/pr925-shorts-validation
 depends_on: []
 scope:
+  - tools/video/shorts/cli.mjs
   - tools/video/shorts/core.mjs
   - tools/video/shorts/core.test.mjs
   - tools/video/shorts/qa.mjs
@@ -36,6 +37,8 @@ selected translated caption files disappear between local QA and the server uplo
 - [x] Translated text is allowed while its timestamps must match the current timeline.
 - [x] Selected caption locales are checked in the package and reach the server as caption roles.
 - [x] Focused tests and task validation pass; live pilot and publication acceptance stay separate.
+- [x] A settings lookup failure leaves the previous upload package unchanged and returns failure.
+- [x] Caption bytes are bound into metadata and changed bytes cannot reuse a prior approved review.
 
 ## Steps
 
@@ -82,3 +85,17 @@ git diff --check
   deployment or YouTube publication was validated.
 - Stop at a local tested commit for coordinator review. No push, CI rerun, automatic merge
   change, deployment, production migration or publication is authorized in this handoff.
+- Reopened only this own task after independent review reproduced two further failures.
+  Coordinator authorized the seventh code file `cli.mjs` for the swallowed settings failure;
+  no other task records or blocked #906 mutations are part of this continuation.
+- The additional settings/caption binding regressions failed 4/4 before the follow-up fix;
+  all preceding 41 tests still passed. The corrected implementation passed 45/45, then the final
+  run with two asynchronous upload-change cases passed 47/47 in 14.33 seconds. Settings503
+  leaves metadata, description, manifest and package report unchanged; changed timestamps,
+  same-clock translated text and legacy packages cannot reuse an existing approved review.
+- Selected caption SHA256s are embedded in metadata, the server's approval identity. Repackaging
+  changed bytes creates a different metadata SHA; preflight checks occur before any requests,
+  and upload-time hashes are checked again before a publish review is submitted.
+- After the first tested repair commit, fresh main `ebde813d6a7fa9cdd8282bfa2400d002c0a6add8`
+  was inspected (only two guides, their assets and task/evidence records) and merged cleanly as
+  `d2ba2899cd6ba908117625dc98c10fa11cb9e3d6`. It changes no tested tooling/dependency files.

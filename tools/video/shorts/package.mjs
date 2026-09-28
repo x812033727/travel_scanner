@@ -140,6 +140,10 @@ export function packageItems({ files, metadata, timeline, qa }) {
   const fileProblems = missing.map((name) => `${name} is missing`);
   if (finalSha && metadata && metadata.final_sha256 !== finalSha) fileProblems.push('metadata.json records another final cut');
   if (finalSha && qa?.final_sha256 !== finalSha) fileProblems.push('the quality check is of another final cut, or has not run');
+  for (const locale of captionLocales(metadata)) {
+    const caption = files.get(`${locale}.srt`);
+    if (caption && metadata?.captions_sha256?.[locale] !== sha256(caption)) fileProblems.push(`${locale}.srt differs from the metadata binding`);
+  }
   const description = files.has(DESCRIPTION_FILE) ? files.get(DESCRIPTION_FILE).toString('utf8') : null;
   const descriptionProblems = [];
   if (description === null) descriptionProblems.push(`${DESCRIPTION_FILE} is missing`);
@@ -187,6 +191,13 @@ export function packageBuild({ directory, settings = {}, source = null, now = ()
   const qa = readJson(path.join(directory, 'qa.json'), null);
   const finalBytes = readFileSync(path.join(directory, 'upload', 'final.mp4'));
   const metadata = composeMetadata({ doc, finalSha256: sha256(finalBytes), seconds: timeline.seconds, settings, sourceUrl: sourceUrlOf(doc, source) });
+  // The server's approval identity is metadata.json's hash. Bind every selected track into it
+  // so repackaging changed caption bytes cannot reuse an earlier approved review.
+  const files = uploadFiles(directory, metadata);
+  metadata.captions_sha256 = Object.fromEntries(captionLocales(metadata).flatMap((locale) => {
+    const caption = files.get(`${locale}.srt`);
+    return caption ? [[locale, sha256(caption)]] : [];
+  }));
   const metadataText = `${JSON.stringify(metadata, null, 2)}\n`;
   writeFileSync(path.join(directory, 'upload', METADATA_FILE), metadataText);
   writeFileSync(path.join(directory, 'upload', DESCRIPTION_FILE), metadata.description);

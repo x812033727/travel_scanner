@@ -607,3 +607,89 @@ test('push includes exactly the selected translated caption roles for server upl
   assert.deepEqual(review.files.filter((file) => file.role.startsWith('captions_')).map((file) => file.role), ['captions_zh-TW', 'captions_en', 'captions_zh-CN']);
   assert.ok(!review.files.some((file) => file.role === 'thumbnail'));
 });
+
+test('a package settings failure preserves the preceding files and returns failure', async (t) => {
+  const { directory, timeline } = builtDirectory(t);
+  writeFileSync(path.join(directory, 'upload', 'en.srt'), srt({ ...timeline, cues: timeline.cues.map((cue) => ({ ...cue, text: 'Translation' })) }));
+  packageBuild({ directory, settings: { locales: ['en'], made_for_kids: true } });
+  const names = ['upload/metadata.json', 'upload/description.zh-TW.txt', 'upload/manifest.json', 'package.json'];
+  const previous = names.map((name) => readFileSync(path.join(directory, name), 'utf8'));
+  let requests = 0;
+  await assert.rejects(main(['package', '--dir', directory], {
+    env,
+    fetch: async () => {
+      requests++;
+      return new Response(JSON.stringify({ detail: 'settings unavailable' }), { status: 503, headers: { 'content-type': 'application/json', 'retry-after': '0.001' } });
+    },
+  }), (error) => error instanceof SiteError && error.status === 503);
+  assert.equal(requests, 4);
+  assert.deepEqual(names.map((name) => readFileSync(path.join(directory, name), 'utf8')), previous);
+});
+
+for (const change of ['clock', 'text']) {
+  test(`changed translated caption ${change} cannot reuse an approved package hash`, async (t) => {
+    const { directory, timeline } = builtDirectory(t);
+    const captions = srt({ ...timeline, cues: timeline.cues.map((cue) => ({ ...cue, text: 'Translation' })) });
+    const captionFile = path.join(directory, 'upload', 'en.srt');
+    writeFileSync(captionFile, captions);
+    packageBuild({ directory, settings: { locales: ['en'] } });
+    const initial = fakeSite();
+    assert.equal((await push({ directory, client: initial.client })).publish.status, 'approved');
+    const oldSha = sha256(readFileSync(path.join(directory, 'upload', 'metadata.json')));
+    const changed = change === 'clock' ? captions.replace('00:00:00,000', '00:00:00,500') : captions.replaceAll('Translation', 'Corrected translation');
+    writeFileSync(captionFile, changed);
+    const stale = fakeSite();
+    const result = await push({ directory, client: stale.client });
+    assert.equal(result.publish, null);
+    assert.match(result.waits, /captions.*package again/);
+    assert.deepEqual(stale.calls, [], 'reject before uploads or an idempotent approved review can be reused');
+    assert.equal(sha256(readFileSync(path.join(directory, 'upload', 'metadata.json'))), oldSha);
+    if (change === 'text') {
+      const repackaged = packageBuild({ directory, settings: { locales: ['en'] } });
+      assert.equal(repackaged.report.ok, true);
+      assert.notEqual(repackaged.report.final_sha256, oldSha, 'new caption bytes create a new approval identity');
+      const fresh = fakeSite();
+      assert.equal((await push({ directory, client: fresh.client })).publish.status, 'approved');
+      const review = fresh.calls.filter(([kind]) => kind === 'submit').map(([, , value]) => value).find((value) => value.gate === 'publish');
+      assert.equal(review.content_sha256, repackaged.report.final_sha256);
+      assert.equal(review.files.find((file) => file.role === 'captions_en').sha256, sha256(changed));
+    }
+  });
+}
+
+test('a legacy package without caption bindings must be repackaged', async (t) => {
+  const { directory } = builtDirectory(t);
+  const { metadata, report } = packageBuild({ directory });
+  delete metadata.captions_sha256;
+  const bytes = JSON.stringify(metadata);
+  writeFileSync(path.join(directory, 'upload', 'metadata.json'), bytes);
+  writeFileSync(path.join(directory, 'package.json'), JSON.stringify({ ...report, final_sha256: sha256(bytes) }));
+  const legacy = fakeSite();
+  const result = await push({ directory, client: legacy.client });
+  assert.equal(result.publish, null);
+  assert.match(result.waits, /captions.*package again/);
+  assert.deepEqual(legacy.calls, []);
+});
+
+for (const changedFile of ['metadata.json', 'en.srt']) {
+  test(`${changedFile} changing during push cannot create a publish review`, async (t) => {
+    const { directory, timeline } = builtDirectory(t);
+    writeFileSync(path.join(directory, 'upload', 'en.srt'), srt({ ...timeline, cues: timeline.cues.map((cue) => ({ ...cue, text: 'Translation' })) }));
+    packageBuild({ directory, settings: { locales: ['en'] } });
+    const { client, calls } = fakeSite();
+    const submit = client.submit;
+    client.submit = async (slug, review) => {
+      const answer = await submit(slug, review);
+      if (review.gate === 'final') {
+        const file = path.join(directory, 'upload', changedFile);
+        const before = readFileSync(file, 'utf8');
+        writeFileSync(file, changedFile === 'en.srt' ? before.replaceAll('Translation', 'Edited during push') : before + ' ');
+      }
+      return answer;
+    };
+    const result = await push({ directory, client });
+    assert.equal(result.publish, null);
+    assert.match(result.waits, /changed during push/);
+    assert.deepEqual(calls.filter(([kind]) => kind === 'submit').map(([, , review]) => review.gate), ['final']);
+  });
+}
