@@ -85,7 +85,7 @@ export async function run(command, args, ctx) {
     ctx.stdout.write(`${doc.slug} has ${lint.errors.length} lint errors; run lint first\n`);
     return EXIT.lint;
   }
-  if (!isDrama(doc) || !doc.characters?.length) throw new UsageError("look is for a drama with characters (format \"drama\", characters: [...])");
+  if (!isDrama(doc) || !doc.characters?.length) throw new UsageError("look is for a drama with characters (format \"drama\", characters: [...]); a drama with none has no look stage: run keyframes");
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
   const look = resolveLook(doc.look);
   const hash = lookHash(doc);

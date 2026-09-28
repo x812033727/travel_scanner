@@ -332,15 +332,22 @@ async def test_the_owner_files_a_request_only_while_the_drama_route_is_on(
         filed = await client.post(
             ADMIN, json={"premise": "精衛填海", "style_preset": "ink-wash", "target_minutes": 2}
         )
+        explainer = await client.post(
+            ADMIN, json={"premise": "為什麼雷聲總比閃電晚到？", "style_preset": "flat-explainer"}
+        )
+        unknown = await client.post(ADMIN, json={"premise": "p", "style_preset": "watercolour"})
         bad = await client.post(ADMIN, json={"premise": "p", "target_minutes": 20})
         too_late = await client.delete(f"{ADMIN}/{uuid4()}")
     assert off.status_code == 409 and off.json()["code"] == "video_drama_disabled"
-    create.assert_awaited_once()
+    assert create.await_count == 2
     assert filed.status_code == 201, filed.text
     assert filed.json()["status"] == "queued"
     assert filed.json()["series_slug"] == "one-off-1a2b3c4d"
-    payload = create.await_args.args[2]
+    payload = create.await_args_list[0].args[2]
     assert (payload.style_preset, payload.target_minutes) == ("ink-wash", 2)
+    assert explainer.status_code == 201, explainer.text
+    assert create.await_args.args[2].style_preset == "flat-explainer"
+    assert unknown.status_code == 422
     assert bad.status_code == 422
     assert too_late.status_code == 409
     assert too_late.json()["code"] == "video_drama_request_not_queued"

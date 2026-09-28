@@ -7,7 +7,7 @@ import test from "node:test";
 import { EXIT, main } from "../cli.mjs";
 import { approve, readApprovals } from "../core/approvals.mjs";
 import { lookHash } from "../core/drama.mjs";
-import { dramaFixture, sandbox } from "../core/fixtures/load.mjs";
+import { dramaFixture, explainerFixture, sandbox } from "../core/fixtures/load.mjs";
 import { readLedger } from "./ledger.mjs";
 import { chosenSheets, CONTACT_SHEET_TILES, contactSheetPages, keyframeRubric, MAX_KEYFRAME_TAKES, shotPrompt } from "./keyframes.mjs";
 import { DEFAULT_SHEET_PROMPT, MAX_LOOK_ROUNDS, optionKey, parseChoice, sheetPrompt, suggestedOf } from "./look.mjs";
@@ -283,6 +283,25 @@ test("a shot that never passes is left for a prompt fix after the last take", as
   assert.equal(await main(["keyframes", "--slug", box.slug, "--shot", "farewell"], stopped.ctx), EXIT.ok, stopped.out.stderr);
   assert.match(stopped.out.stdout, /stopped by the STOP file/);
   assert.equal(manifestOf(box, "keyframes").shots.farewell, undefined);
+});
+
+test("an explainer has no look: look refuses it, and keyframes draw every still with no sheet and no identity question", async () => {
+  const box = sandbox("fixture-explainer", "explainer");
+  const site = mediaSite({ verdicts: () => ({ overall: 8, passed: true }) });
+  const look = context(box, site.fetchImpl);
+  assert.equal(await main(["look", "--slug", box.slug], look.ctx), EXIT.usage);
+  assert.match(look.out.stderr, /a drama with none has no look stage: run keyframes/);
+
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
+  const shots = explainerFixture().scenes.filter((scene) => scene.template === "shot").map((scene) => scene.id);
+  assert.deepEqual(site.state.images.map((request) => request.shot_id), shots);
+  assert.ok(site.state.images.every((request) => request.references.length === 0), "no character sheet to reference");
+  assert.match(site.state.images[0].prompt, /Style: flat editorial illustration/);
+  assert.ok(site.state.judges.every((request) => !request.rubric.some((item) => item.key.startsWith("identity_"))));
+  const manifest = manifestOf(box, "keyframes");
+  assert.equal(manifest.look_hash, lookHash(explainerFixture()));
+  assert.deepEqual(Object.keys(manifest.shots).sort(), [...shots].sort());
 });
 
 /** The sandbox's video.json, changed by `edit` and written back. */
