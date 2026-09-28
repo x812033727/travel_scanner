@@ -63,6 +63,16 @@
       "title": "Google: Gemini API pricing (Gemini 3.8 Flash)",
       "url": "https://ai.google.dev/gemini-api/docs/pricing",
       "checked_on": "2026-09-28"
+    },
+    {
+      "title": "OpenAI: prompt caching guide (cache writes replace the input price, 1.25x)",
+      "url": "https://developers.openai.com/api/docs/guides/prompt-caching",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Anthropic: prompt caching docs (write 1.25x, read 0.05x for Opus 5.5)",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
+      "checked_on": "2026-09-28"
     }
   ],
   "scenes": [
@@ -194,7 +204,7 @@
       "template": "code",
       "data": {
         "language": "the math",
-        "code": "monthly cost =\n    fresh input tokens   x input price\n  + cached input tokens  x cached price\n  + output tokens        x output price\n  + cache writes         x write price, where listed\n  (all per million tokens)\n\nJob 1: a 40-page PDF summarized every day\n  30k in + 1k out, 30 days\n  = 0.9M in, 0.03M out",
+        "code": "monthly cost =\n    fresh input tokens   x input price\n  + cached input tokens  x cached price\n  + output tokens        x output price\n  (fresh tokens written to a cache: the write price\n   replaces the input price, where a vendor lists one)\n  (all per million tokens)\n\nJob 1: a 40-page PDF summarized every day\n  30k in + 1k out, 30 days\n  = 0.9M in, 0.03M out",
         "highlight": [
           1,
           2,
@@ -323,44 +333,44 @@
         "title": "Job 2: the coding agent, per month",
         "columns": [
           "Model",
-          "Input + cached",
-          "Cache writes",
+          "Cached reads",
+          "Fresh input or cache writes",
           "Output",
           "Total"
         ],
         "rows": [
           [
             "GPT-6 Astra",
-            "$168",
+            "$48",
+            "$150 (writes)",
             "$150",
-            "$150",
-            "$468"
+            "$348"
           ],
           [
             "GPT-6 Sol",
-            "$34",
+            "$10",
+            "$30 (writes)",
             "$30",
-            "$30",
-            "$94"
+            "$70"
           ],
           [
             "Claude Opus 5.5",
-            "$58",
+            "$10",
+            "$60 (writes)",
             "$60",
-            "$60",
-            "$178"
+            "$130"
           ],
           [
             "Grok 4.7",
-            "$48",
-            "not listed",
+            "$24",
+            "$24 (input)",
             "$18",
             "$66"
           ],
           [
             "Gemini 3.8 Flash",
-            "$13",
-            "not listed",
+            "$4",
+            "$9 (input)",
             "$11",
             "$24"
           ]
@@ -373,22 +383,22 @@
       "lines": [
         {
           "id": "wz7s",
-          "text": "Astra: about four hundred seventy dollars a month, and a third of that is cache writes, a fee OpenAI lists for this generation.",
+          "text": "Astra: about three hundred forty eight dollars a month. A hundred fifty of that is cache writes, a fee OpenAI lists for its newer models.",
           "reveal": 1
         },
         {
           "id": "mcai",
-          "text": "Sol, the cheaper OpenAI model: about ninety four. Opus 5.5: about one hundred seventy eight, sixty of it cache writes.",
+          "text": "Sol, the cheaper OpenAI model: about seventy. Opus 5.5: about one hundred thirty, sixty of it cache writes.",
           "reveal": 2
         },
         {
           "id": "z6g3",
-          "text": "Grok 4.7: about sixty six. Gemini 3.8 Flash: about twenty four. Neither lists a cache write fee on its price page.",
+          "text": "Grok 4.7: about sixty six. Gemini 3.8 Flash: about twenty four. Neither lists a cache write fee, though Google bills hourly cache storage, which I left out.",
           "reveal": 2
         },
         {
           "id": "cv6f",
-          "text": "Same work, a twenty fold price range. This is the job where picking wrong costs you hundreds a month, or a lot of redo."
+          "text": "Same work, almost a fifteen fold price range. This is the job where picking wrong costs you hundreds a month, or a lot of redo."
         }
       ]
     },
@@ -460,9 +470,9 @@
         "right": {
           "heading": "Pricier model, fewer fixes",
           "points": [
-            "Claude Opus 5.5: $178",
+            "Claude Opus 5.5: $130",
             "Fewer retries, less babysitting",
-            "Total about $178",
+            "Total about $130",
             "Your hour and your rate decide"
           ]
         }
@@ -486,7 +496,7 @@
         },
         {
           "id": "xauy",
-          "text": "Opus 5.5 at one seventy eight, with fewer retries, is now the cheaper option. Change the hour or the rate and it flips back.",
+          "text": "Opus 5.5 at one hundred thirty, with fewer retries, is now the cheaper option. Change the hour or the rate and it flips back.",
           "reveal": 1
         },
         {
