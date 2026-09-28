@@ -1,19 +1,22 @@
 ---
 id: 2026-09-28-video-story-tidy-finished
 title: 影片上架後清掉工人的工作檔
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-video-story-tidy
+claimed_at: 2026-09-28T11:20:25Z
 created_at: 2026-09-28T03:31:14Z
 completed_at:
-branch:
-depends_on:
-  - 2026-09-28-video-story-worker
+branch: claude/video-story-tidy-finished
+depends_on: []
 scope:
   - tools/video/automation/tidy.mjs
   - tools/video/automation/tidy.test.mjs
+  - tools/video/automation/cli.mjs
+  - tools/video/automation/cli.test.mjs
+  - tools/video/cli.mjs
+  - docs/videos/AUTOMATION.md
 ---
 
 # 影片上架後清掉工人的工作檔
@@ -46,3 +49,6 @@ npm run test:tools
 
 - 已放棄的影片照同一條規則清（放棄滿保留天數）。
 - 作品的共用存檔 `_series/<作品>/`（設定圖、風格錨定圖）與 `_music/` 不清。
+- 2026-09-28 認領時拿掉 `depends_on: 2026-09-28-video-story-worker`：清理在 `auto` 每一輪的最後呼叫一次（`tools/video/automation/cli.mjs`），不在故事的流程裡，也不讀故事工人寫的任何東西，所以不必等那張票。
+- scope 加上：`automation/cli.mjs`（每輪最後的呼叫）與它的測試 `automation/cli.test.mjs`、`tools/video/cli.mjs`（指令表加 `tidy` 讓人手動跑與 `--dry-run`，`status` 遇到已清理的影片不再寫「下一步：assemble」）、`docs/videos/AUTOMATION.md`（工人的環境變數）。`flow.mjs`、`series.mjs`、`prompts.mjs` 只讀不改（#897、#904 正在改）。
+- 以 `--force` 認領，原因：`2026-09-26-video-dubs-worker`、`2026-09-27-video-drama-room-worker`、`2026-09-27-video-split-settings-worker`、`2026-09-27-video-drama-room-skill-docs` 四張票停在 `review`，scope 含 `tools/video/automation` 或 `docs/videos/AUTOMATION.md`，但它們的工作已在 #870（79e26fcdf，2026-09-27）合併進 main，只是票沒有移到 done；沒有開著的 PR 或分支在做清理（`git ls-remote`、`gh pr list` 都查過）。這四張票不動。
