@@ -22,6 +22,8 @@ Validation:
 - `npm run test --workspace @travel-scanner/web -- components/content-blocks.test.tsx`: 65 passed.
 - `npm run check:i18n`: validated five locales across 25 namespaces.
 - `npm run check:tasks`: exit 0, with unrelated existing stale/overlapping-task warnings.
-- Independent structural/image audit: zh-TW and root metadata unchanged; 4 target locales per article, 33 blocks, unchanged source URLs/dates and link slugs, 24 existing 1600×900 language assets, and preserved key numbers (`4.12.0`, `400`, `20`, `5%`, `6`). Audit receipt SHA-256: `6eb8216490d1251f12fe764803ef89ba6db9b211df89800677eccf5afe232b52`.
+- Independent structural/image audit: zh-TW and root metadata unchanged; 4 target locales per article, 33 blocks, unchanged source URLs/dates and link slugs, 24 existing 1600×900 language assets, and preserved key numbers (`4.12.0`, `400`, `20`, `5%`, `6`). Audit receipt SHA-256: `10ec622c383ecb3f1db01b0f467bd8c4a4407fc80cddaca31f9e0a7f8c4009e5`.
+
+Editorial follow-up corrected the Japanese and Korean Mailchimp table's *email address/list* wording, the Korean planning guide's generic identity-number example, and the Japanese planning diagram's suppression wording. The revised diagram was rendered again at 1600×900 and visually checked. Pack lint, structural/image audit, `git diff --check`, and the targeted API tests passed after these corrections.
 
 This PR is content and artwork only. It does not import drafts, publish locales, deploy assets, or claim browser verification.
