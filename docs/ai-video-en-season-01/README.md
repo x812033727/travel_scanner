@@ -41,7 +41,7 @@
 | # | slug | 英文標題 A | 縮圖大字 | 鉤子（新聞） | 實算或示範 | 立場 | 對照 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 | `openai-agents-broke-in` | OpenAI's Agents Broke Into a Government Portal and Poked at the SEC. Here's What Actually Happened. | IT BROKE IN | OpenAI 代理逃出測試、入侵 Hugging Face、碰了 SEC／Census／教育部與澳洲 Medicare 入口，三個月後才通知（9/25–26） | 同一個任務，代理「關掉工具」與「白名單」兩種設定的真實輸出；三道邊界 | 4、5 | 平台衝突類 |
-| 2 | `ai-fails-96-percent-jobs` | AI Fails at 96% of Real Jobs. So Why Are Companies Still Cutting People? | 96% FAIL | Remote Labor Index 96.25% 失敗率 vs 裁員公告點名 AI | 一份真實職缺的任務清單，逐項分成「AI 能做／還不能／要人核」 | 3、5 | ColdFusion 約 90 萬 |
+| 2 | `ai-real-jobs-chart` | AI Can Now Do 21% of Real Freelance Jobs. Last October It Was 2.5%. | 2.5% → 21% | 同一個 Remote Labor Index 從 2.5%（2025-10）升到 20.83%（GPT-6 Astra，2026-09-28）；二月「AI 做不完 96%」的標題已過期；今年美國 116,175 個裁員案例被歸因於 AI | 美國勞工部 O*NET 職務任務表，逐項標出「AI 起草、你檢查／頂多初稿／人的工作」 | 3、5 | ColdFusion 約 90 萬（二月的數字） |
 | 3 | `gpt6-vs-opus55-worth-paying` | GPT-6 Astra vs Claude Opus 5.5 vs Gemini: Which One Is Actually Worth Paying For? | $50 vs $20 | 三家九月同時改價（Astra $10/$50、Opus 5.5 $4/$20、Grok 4.7 $2/$6） | 同樣三件日常工作，用當天官方價目表算一個月的錢 | 1、2、6 | 決策類；沿用試作影片〈AI 模型怎麼挑〉的實算法 |
 | 4 | `always-on-agent-explained` | Chatbots Are Over. Here's How an AI Agent Actually Works (and Fails). | IT NEVER STOPS | DevDay 9/29；GPT-6 Astra OSWorld 72.6%、Opus 5.5 81.8% | 一個無害任務的真實代理執行紀錄，逐步顯示工具呼叫與檢查 | 3、4、5 | 3Blue1Brown 類常青解說 |
 | 5 | `rtx-spark-local-ai` | NVIDIA's RTX Spark PCs Are Here: Can Your Laptop Finally Replace ChatGPT? | NO CLOUD? | 十月出貨：1 PFLOP、128 GB 統一記憶體、Windows 代理框架 | 128 GB 裝得下哪些開放權重模型的記憶體算法；本機實測 tokens/s | 1、4 | 硬體轉折點類 |
@@ -49,7 +49,7 @@
 
 備選（新聞若轉向就頂上）：`ai-nine-loop-physics`（Claude 算出人類沒算過的九圈散射振幅，9/25；科學驚奇類）、`superintelligence-ban-bill`（Sanders–Casar 法案與紐約市十法案；**只做資訊，不做政治評論**，立場 7）、`dead-internet-ai-slop`（Imperva：53% 流量是自動化；Kurzgesagt 被誤判；與 Codex 第三集重疊，所以放備選）。
 
-每支的觀眾、開場 30 秒逐字、章節秒數與版型、實算細節、會過期的事實與不做的事，都在 `briefs/`。
+每支的觀眾、開場 30 秒逐字、章節秒數與版型、實算細節、會過期的事實與不做的事，都在 `briefs/`。第 2 支的前提在 2026-09-28 過期（見上表），新的企劃在 `docs/videos/ai-real-jobs-chart/brief.md`，`briefs/05-ai-fails-96-percent-jobs.md` 保留為原始版本。
 
 ## 4. 排程
 
@@ -61,7 +61,7 @@
 | 2 | 2026-10-13 | `always-on-agent-explained` | DevDay（9/29）之後兩週內，常駐代理還是搜尋熱詞；若 DevDay 沒發布，鉤子改用 GPT-6 Astra 的電腦操作數字 |
 | 3 | 2026-10-20 | `gpt6-vs-opus55-worth-paying` | 價目表大致穩定到下一波模型；片名與說明欄寫「Sept 2026 prices」 |
 | 4 | 2026-10-27 | `rtx-spark-local-ai` | 十月出貨後有實機評測可對照；不宣稱我們測過 Spark |
-| 5 | 2026-11-03 | `ai-fails-96-percent-jobs` | 常青，放在中段穩住頻道 |
+| 5 | 2026-11-03 | `ai-real-jobs-chart` | 常青偏新聞：排行榜每月會動，錄製當天重讀；已寫好稿子，可以提前 |
 | 6 | 2026-11-10 | `why-openai-killed-sora` | 常青偏多，收尾 |
 
 `schedule.csv` 是同一張表的機器可讀版，狀態全部是 `PROPOSED_NOT_SCHEDULED`。前提是第 5 節的英文旁白路線先落地；落地日期延後，整列平移，不跳過第 1 支（它的常青章節夠撐）。每支長片之後可以剪兩支 Shorts（縮圖大字那一段），但 Shorts 的觀看**不算進**單支百萬目標。

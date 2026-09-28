@@ -2,6 +2,8 @@
 
 slug：`ai-fails-96-percent-jobs`｜第 5 支，建議 2026-11-03 上架｜英文旁白、8–12 分鐘｜企劃日 2026-09-28
 
+> **2026-09-28 更新：這份企劃的前提已過期。** 同一個 Remote Labor Index 的排行榜現在是 20.83%（GPT-6 Astra），不是二月的 3.75%。改寫後的企劃與稿子在 `docs/videos/ai-real-jobs-chart/`（slug 改為 `ai-real-jobs-chart`）。這份保留為原始版本。
+
 ## 觀眾
 
 Working adults in offices, agencies and freelancing who feel two contradictory headlines at once: studies saying AI fails most real work, and layoff announcements that name AI. They want to know which part of their own job is exposed, in plain terms. Searches: "will ai take my job 2026", "ai fails 96% of jobs study", "remote labor index", "which jobs are safe from ai".
