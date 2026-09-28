@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-story-api-policy-languages
 title: 故事版立場檢查、自動語系、釋放名額、媒體每小時上限與 Flash 單價
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5-video-story-policy
 claimed_at: 2026-09-28T11:46:43Z
 created_at: 2026-09-28T03:31:13Z
-completed_at:
+completed_at: 2026-09-28T14:26:42Z
 branch: claude/video-story-api-policy-languages
 depends_on:
   - 2026-09-28-video-story-api-series-kind
@@ -61,7 +61,7 @@ cd apps/api && uv run ruff check . && uv run mypy app && uv run mypy tests && uv
 - Jev 只讀文字、不會算數也讀不準日期（`apps/api/app/ai/jev.py` 開頭），題組只問文字判斷；事實對不對是查核階段的事。
 - 改單價前再讀一次官方價目頁，數字與日期寫進目錄的備註。2026-09-28 讀到的是：Flash 0.5K US$0.045、1K US$0.067、2K US$0.101、4K US$0.151；Pro 1K–2K US$0.134。
 - 如果試作發現 1K 放大後不夠清楚，要在 adapter 送尺寸參數改成 2K；那會讓每支成本從約 US$9 變成約 US$13，改之前先問站主。
-- 2026-09-28 認領（claude-opus-5-5-video-story-policy）：`claim` 因為相依的 `2026-09-28-video-story-api-series-kind` 還沒結案而拒絕。那張票的工作已經做完並推上去（PR #910，草稿），它的代理只在等整套測試跑完才 `done`；這個分支從 `origin/claude/video-story-api-series-kind`（`20a5af61`）開出、再併入 main（`5b35df86`），所以用 `--force` 認領。認領前查過：沒有 `policy-languages` 的遠端分支與開著的 PR。之後 #910 在 11:49Z、#918（兩個 alembic head 接成一條、`start_episode` 在鎖住作品列時重查故事配額）在 12:34Z 併進 main，這個分支再併了 main（`27755064`），PR 只剩這張票的改動。那張票在 main 上仍在 `tasks/open`、狀態 `in-progress`，由它的代理結案。
+- 2026-09-28 認領（claude-opus-5-5-video-story-policy）：`claim` 因為相依的 `2026-09-28-video-story-api-series-kind` 還沒結案而拒絕。那張票的工作已經做完並推上去（PR #910，草稿），它的代理只在等整套測試跑完才 `done`；這個分支從 `origin/claude/video-story-api-series-kind`（`20a5af61`）開出、再併入 main（`5b35df86`），所以用 `--force` 認領。認領前查過：沒有 `policy-languages` 的遠端分支與開著的 PR。之後 #910 在 11:49Z、#918（兩個 alembic head 接成一條、`start_episode` 在鎖住作品列時重查故事配額）在 12:34Z 併進 main，這個分支再併了 main（最後一次是 `b48c8b1b`），PR 只剩這張票的改動。那張票在 main 上仍在 `tasks/open`、狀態 `in-progress`，由它的代理結案。
 - **scope 加了 `apps/api/app/video_automation/admin_api.py`**：立場檢查的路由 `judge_video_policy` 在那裡，伺服器要從影片找作品，路由必須把 session 與影片的 slug 交給 `judge_policy`，沒有別的辦法。改動只有那一個呼叫（多了 `session=session, slug=payload.slug`），沒有動 import。這個檔也在 `2026-09-28-video-story-admin-import-api` 的 scope 裡、同時有人在改；兩邊的改動不在同一段。`series.py` 沒有改。
 - **立場檢查**：題組由 `judge.policy_questions_for(session, slug)` 決定：影片的 slug 等於某一集的 slug、那一集的作品 `kind` 是 `story`，就問故事版五題；其他影片（教學、長篇漫劇的一集、單集漫劇）照舊問教學的四題，題目、門檻、`note` 一字不變（測試逐字釘住）。`JudgePolicyIn` 不收不認得的欄位，工人送 `questions` 會 422。
   - 故事版五題都是 noul，順序與規則在 `STORY_POLICY_RULE`：`stance` ≥ 0.6（沿用教學原句）、`observation` ≥ 0.6（留給觀眾一個帶得走的觀察，而不是買什麼、做什麼的建議）、`advice` ≤ 0.3（沿用教學原句）、`sponsored` ≤ 0.3（推薦觀眾購買或使用，或讀起來像那家公司自己的廣告；不問「稱讚」，因為故事本來就整支在講一個品牌）、`disparage` ≤ 0.3（嘲弄、辱罵、貶低點名的人、公司或品牌，或用自己的口吻說對方不誠實、無能，而不是轉述判決、官方紀錄或具名來源的說法）。只問措辭，沒有一題問事實、數字或日期（有測試）。
@@ -83,3 +83,5 @@ cd apps/api && uv run ruff check . && uv run mypy app && uv run mypy tests && uv
   - **給 `video-story-worker`**：`/video/media/status` 的 `image` 仍是設定分頁的選擇（預設 Pro）。故事的圖片實際用 `job.series.image_model`；工人事前估價（`tools/video/media/stages.mjs` 的 `imagePrice(status)`）、快取鍵與帳本的 model 名，要改用作品的模型，單價在 `status.models.images.<廠商>` 裡查。每個工作回來的 `JobOut.model`、`usd_estimate` 才是實際的。
 - **單價**：2026-09-28 用 WebFetch 讀 Google 的 Gemini API 價目頁（`https://ai.google.dev/gemini-api/docs/pricing`，頁面寫 last updated 2026-09-24 UTC）：Flash 0.5K US$0.045、1K US$0.067、2K US$0.101、4K US$0.151；Pro 1K／2K US$0.134、4K US$0.24。跟 brief 與上面那條一樣，沒有差異。圖片生成文件寫 Gemini 3 的圖片模型預設出 1K；adapter（`providers/gemini_images.py`）只送 `aspectRatio`，沒有動，所以兩個都用 1K 價：Flash 改成 US$0.067，Pro 維持 US$0.134；備註寫了尺寸與查價日期。有一個測試釘住 adapter 不送尺寸，之後改尺寸會提醒一起改價。
   - 已經建立的工作的 `usd_estimate` 不回頭改；本月估計（`/video/media/status` 的 `estimated_usd`）是工作列加總，之後的 Flash 工作都用新價。設定分頁的預設是 Pro；如果正式站曾把設定改成 Flash，那些舊工作仍以 US$0.045 計（沒查正式站，這張票不碰正式站）。
+- 本機檢查（2026-09-28，Windows，這個分支併過 main `b48c8b1b` 之後）：`uv run ruff check .` exit 0；`uv run mypy app` exit 0（443 個檔案）；`uv run mypy tests` exit 1，只有既有的 `tests/support/e2e_deploy_agent.py:244`（Windows 沒有 `socketserver.UnixStreamServer`，這張票沒動那個檔），改用 CI 的平台 `uv run mypy tests --platform linux` exit 0（325 個檔案）；brief 的四個測試檔 exit 0（64 passed）；整套 `uv run pytest` exit 1：1 failed、3 errors、4,909 passed、415 skipped，失敗的全是 `tests/test_guides_autolink.py`，Windows 的 cp1252 預設編碼讀寫中文（既有的票 `2026-09-26-guides-autolink-tests-windows-encoding`），同一個檔帶 `PYTHONUTF8=1` 重跑 exit 0（6 passed）；`node tools/tasks.mjs check` exit 0。這台沒有 PostgreSQL，`RUN_INTEGRATION_TESTS=1` 的測試只在 CI 跑。
+- 反向驗證：把十三處各自改回去（永遠問教學題組、語系對每一種作品都決定、語系不決定、放棄不動集數、done 也改成 skipped、圖片不看作品模型、片段也看作品模型、Flash 回到 US$0.045、圖片回到共用的 60、judge 回到 120、放寬貶損門檻、故事改問教學的業配題、伺服器的決定不標作者），每一處都有新測試變紅，而且紅的是對應的那一個。
