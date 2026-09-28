@@ -50,7 +50,7 @@ slug：`why-openai-killed-sora`｜旁白繁體中文（台灣）；CC 五語（z
 | Gen-4.5（Runway） | 每秒 12 點，1 點 $0.01 | $0.12 | 1280:720 等畫面比例（約 720p）；可選 2–10 秒 | $0.96 | https://docs.dev.runwayml.com/guides/pricing/ ；秒數 https://docs.dev.runwayml.com/api/ |
 | Higgsfield | 價目頁的數字由程式載入，讀不到 | 以官網為準 | — | — | https://higgsfield.ai/pricing |
 
-畫面上的重點：表上最便宜 $0.05／秒（Veo 3.1 Lite，720p 有聲），最貴 $0.40／秒（Veo 3.1，720p 或 1080p 有聲），相差 8 倍；Sora 2 當年的 $0.10 落在中間。「一支 8 秒」只是比較用的長度：Veo 3.1、Grok Imagine Video 1.5、Gen-4.5 的官方文件都允許 8 秒；Kling 3.0、Dreamina Seedance 2.0、MiniMax-H3、Gemini Omni Flash 的原廠頁沒讀到可選秒數，只在 Runway 的 API 文件讀到它們在 Runway 上的範圍（Seedance 2.0 4–15 秒、MiniMax-H3 5–15 秒、Omni Flash 3–10 秒），寫稿日以原廠官網為準。
+畫面上的重點：表上最便宜 $0.05／秒（Veo 3.1 Lite，720p 有聲），最貴 $0.40／秒（Veo 3.1，720p 或 1080p 有聲），相差 8 倍；Sora 2 當年的 $0.10 落在中間。「一支 8 秒」只是比較用的長度：Veo 3.1、Grok Imagine Video 1.5、Gen-4.5 的官方文件都允許 8 秒；Kling 3.0 的可選秒數在官網讀不到，以官網為準；Dreamina Seedance 2.0、MiniMax-H3、Gemini Omni Flash 的原廠頁也沒讀到，只在 Runway 的 API 文件讀到它們在 Runway 上的範圍（Seedance 2.0 4–15 秒、MiniMax-H3 5–15 秒、Omni Flash 3–10 秒），寫稿日以原廠官網為準。
 
 **實算二：同一個模型，原廠和轉售的價差**（選項 A 第 4 章的 `compare`；選項 B 第 3 章；選項 C 第 4、5 章）
 
