@@ -1,0 +1,1082 @@
+{
+  "schema_version": 1,
+  "slug": "ai-coding-tools-same-task",
+  "format": "slides",
+  "source_guide": "ai-coding-tools-overview-2026",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "自然清楚的台灣國語，像有經驗的工程師解釋操作；專有名詞稍慢，不要朗讀字卡編號。"
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Claude Code、Codex、Gemini CLI 同題實測：兩支修好，一支卡登入",
+    "description": "三支 AI 程式工具接同一個小型任務，真實結果是兩支完成、一支卡在個人帳戶登入。Google 已於 2026 年 6 月停止 Gemini CLI 對個人帳戶的 Login with Google 支援；企業授權與 API 金鑰另有路徑。開發者可以跟著起始檔、差異與事後驗收，建立自己的比較方法。\n這是一次小型實作示範，預設模型與帳戶條件不同，不當成能力排名；用量估算也不是實際帳單。",
+    "tags": [
+      "Claude Code",
+      "Codex",
+      "Gemini CLI",
+      "AI coding tools",
+      "程式代理"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "AI 工具實測",
+      "headline": "同題試跑\n**2 完成 1 卡住**",
+      "sub": "看差異，比排行榜有用"
+    }
+  },
+  "sources": [
+    {
+      "title": "Claude Code CLI reference",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "checked_on": "2026-09-27"
+    },
+    {
+      "title": "Gemini CLI headless mode",
+      "url": "https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/headless.md",
+      "checked_on": "2026-09-27"
+    },
+    {
+      "title": "Google Developers: Gemini Code Assist consumer accounts deprecation",
+      "url": "https://developers.google.com/gemini-code-assist/docs/deprecations/code-assist-individuals",
+      "checked_on": "2026-09-27"
+    },
+    {
+      "title": "Gemini CLI team announcement: individual account transition",
+      "url": "https://github.com/google-gemini/gemini-cli/discussions/28017",
+      "checked_on": "2026-09-27"
+    },
+    {
+      "title": "Codex CLI documentation",
+      "url": "https://learn.chatgpt.com/docs/codex/cli",
+      "checked_on": "2026-09-27"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "opening",
+      "chapter": "三工具同題實測",
+      "template": "title",
+      "data": {
+        "tag": "實測與選工具",
+        "title": "同一題，三支工具",
+        "subtitle": "兩支修好，一支卡在登入"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "v30000",
+          "text": "三支工具做同一題，兩支修好、一支卡登入。"
+        },
+        {
+          "id": "v30001",
+          "text": "一起看差異和測試，再決定哪支適合你。"
+        },
+        {
+          "id": "v30002",
+          "text": "先看真實結果，再談選擇。"
+        }
+      ]
+    },
+    {
+      "id": "not-a-rank",
+      "chapter": "這不是能力排名",
+      "template": "big",
+      "data": {
+        "kicker": "先說清楚",
+        "text": "這不是排行榜",
+        "sub": "只有一次、小型、帳戶不同"
+      },
+      "lines": [
+        {
+          "id": "v30007",
+          "text": "先講限制：這只是一次小型試跑，不是能力排名。"
+        },
+        {
+          "id": "v30008",
+          "text": "三支工具的預設模型、權限和帳戶條件都不同。"
+        },
+        {
+          "id": "v30009",
+          "text": "所以我不會用秒數說哪一支比較聰明。"
+        },
+        {
+          "id": "v30010",
+          "text": "真正要學的是，怎麼把自己的試跑設計得可核對。"
+        },
+        {
+          "id": "v30011",
+          "text": "你最好先把這個方法套在自己的工作上，再決定付費。"
+        }
+      ]
+    },
+    {
+      "id": "problem",
+      "chapter": "題目與起點",
+      "template": "chapter",
+      "data": {
+        "title": "綠燈卻少了一分"
+      },
+      "lines": [
+        {
+          "id": "v30014",
+          "text": "題目很小，把一筆整數分給幾個人。"
+        },
+        {
+          "id": "v30015",
+          "text": "一百個分，分給三人，總和仍要是一百。"
+        },
+        {
+          "id": "v30016",
+          "text": "多出來的分，要依照陣列順序先給前面的人。"
+        },
+        {
+          "id": "v30017",
+          "text": "這個規則簡單到能一眼看懂，也容易抓錯。"
+        },
+        {
+          "id": "v30018",
+          "text": "如果最後算不回原來的總額，這個函式就沒有完成工作。"
+        }
+      ]
+    },
+    {
+      "id": "baseline",
+      "chapter": "同題起點",
+      "template": "code",
+      "data": {
+        "title": "原本的分攤程式",
+        "language": "javascript",
+        "code": "const each = Math.round(totalCents / people);\nreturn Array(people).fill(each);",
+        "caption": "原本兩個測試都會通過"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "v30021",
+          "text": "原本程式先除人數，再把同一個數字給每個人。"
+        },
+        {
+          "id": "v30022",
+          "text": "整除的時候沒事，不整除就可能多分或少分。"
+        },
+        {
+          "id": "v30023",
+          "text": "更有趣的是，起始的兩個測試都是綠燈。"
+        },
+        {
+          "id": "v30024",
+          "text": "一個測整除，一個測非法人數，都沒測餘數。"
+        },
+        {
+          "id": "v30025",
+          "text": "方法很直觀，所以也能清楚看見錯在哪一行。"
+        }
+      ]
+    },
+    {
+      "id": "one-hundred",
+      "template": "big",
+      "data": {
+        "kicker": "起始問題",
+        "text": "100 ÷ 3",
+        "sub": "原本輸出 33、33、33；合計 99"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "v30028",
+          "text": "直接代入一百分、三個人，原本輸出是三十三、三十三、三十三。"
+        },
+        {
+          "id": "v30029",
+          "text": "加起來只有九十九，一分不見了。"
+        },
+        {
+          "id": "v30030",
+          "text": "這是我接著送給三支 CLI 的同一個題目。"
+        },
+        {
+          "id": "v30031",
+          "text": "如果只看舊測試的綠燈，你會錯過它。"
+        },
+        {
+          "id": "v30032",
+          "text": "少掉一分錢，旅伴共同分帳時就可能起爭議。"
+        }
+      ]
+    },
+    {
+      "id": "fixed-input",
+      "template": "bullets",
+      "data": {
+        "title": "公平起點至少固定這三樣",
+        "items": [
+          "相同起始檔案",
+          "相同題目文字",
+          "相同事後驗收"
+        ]
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "v30035",
+          "text": "我把同一份起始檔案，複製到三個空資料夾。"
+        },
+        {
+          "id": "v30036",
+          "text": "三邊收到的提示文字完全相同。"
+        },
+        {
+          "id": "v30037",
+          "text": "工具都執行完，我才另外寫一份事後驗收。"
+        },
+        {
+          "id": "v30038",
+          "text": "這樣至少能知道每次改動從哪裡開始。"
+        },
+        {
+          "id": "v30039",
+          "text": "我也沒有把個人帳單或真實旅客資料放進示範。"
+        },
+        {
+          "id": "v30040",
+          "text": "三份起點都先提交，才能比對改過的地方。"
+        }
+      ]
+    },
+    {
+      "id": "input-contract",
+      "template": "steps",
+      "data": {
+        "title": "原有函式怎麼限制輸入",
+        "steps": [
+          {
+            "title": "金額",
+            "detail": "非負安全整數分"
+          },
+          {
+            "title": "人數",
+            "detail": "1 到 100 位"
+          },
+          {
+            "title": "輸出",
+            "detail": "每人一個整數分"
+          }
+        ]
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "v3e1000",
+          "text": "原始程式除了除法，還包含輸入檢查。"
+        },
+        {
+          "id": "v3e1001",
+          "text": "金額要是非負的安全整數，單位是分。"
+        },
+        {
+          "id": "v3e1002",
+          "text": "人數必須是一到一百之間的安全整數。"
+        },
+        {
+          "id": "v3e1003",
+          "text": "比較工具時，不能只修餘數，還要把這些規則留下。"
+        }
+      ]
+    },
+    {
+      "id": "prompt",
+      "template": "code",
+      "data": {
+        "title": "共同題目",
+        "language": "text",
+        "code": "Read CHALLENGE.md and complete the task.\nReport what changed and the test result.",
+        "caption": "三支 CLI 都收到同一句提示"
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "v30042",
+          "text": "真正的題目寫在同一份挑戰檔裡。"
+        },
+        {
+          "id": "v30043",
+          "text": "它要求保留輸入驗證，總和必須精準，差額最多一分。"
+        },
+        {
+          "id": "v30044",
+          "text": "還要把多餘的分，依序給前面的人。"
+        },
+        {
+          "id": "v30045",
+          "text": "最後請工具自己加測試，並回報測試結果。"
+        },
+        {
+          "id": "v30046",
+          "text": "輸入驗證的規則也寫清楚，不讓工具自己猜。"
+        }
+      ]
+    },
+    {
+      "id": "old-tests",
+      "template": "code",
+      "data": {
+        "title": "工具看到的兩個舊測試",
+        "language": "javascript",
+        "code": "assert.deepEqual(splitFareCents(120, 3),\n  [40, 40, 40]);\nassert.throws(() => splitFareCents(100, 0),\n  RangeError);",
+        "caption": "整除與非法人數，都沒有碰到餘數"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "v3e2000",
+          "text": "工具能看到的舊測試，第一個是整除案例。"
+        },
+        {
+          "id": "v3e2001",
+          "text": "一百二十分分給三人，每人四十，這本來就會過。"
+        },
+        {
+          "id": "v3e2002",
+          "text": "第二個只確認零人時會丟出錯誤。"
+        },
+        {
+          "id": "v3e2003",
+          "text": "兩個測試都沒有問一百分怎麼分給三人。"
+        }
+      ]
+    },
+    {
+      "id": "which-version",
+      "chapter": "三支 CLI 的結果",
+      "template": "chapter",
+      "data": {
+        "title": "同一題，實際跑一次"
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "v30049",
+          "text": "現在看實際結果，我會把不能比較的地方一起講。"
+        },
+        {
+          "id": "v30050",
+          "text": "本機跑的是當天已安裝的三支命令列工具。"
+        },
+        {
+          "id": "v30051",
+          "text": "原始紀錄留在工作資料夾，兩份差異放在示範包。"
+        },
+        {
+          "id": "v30052",
+          "text": "這段沒有把別人的網路評測拿來當我的實測。"
+        },
+        {
+          "id": "v30053",
+          "text": "以下每個數字都只屬於這次操作，不是廠商承諾。"
+        }
+      ]
+    },
+    {
+      "id": "claude",
+      "template": "bullets",
+      "data": {
+        "title": "Claude Code：完成修補",
+        "items": [
+          "改程式和測試",
+          "自寫測試 9 項通過",
+          "事後驗收 4 項通過"
+        ]
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "v30056",
+          "text": "Claude Code 在這次執行中，改了程式和測試。"
+        },
+        {
+          "id": "v30057",
+          "text": "它先算基本份額和餘數，再把多出來的一分錢分給前面的人。"
+        },
+        {
+          "id": "v30058",
+          "text": "工具自寫的九個測試通過，事後四類驗收也通過。"
+        },
+        {
+          "id": "v30059",
+          "text": "這只能說它完成了這一題，不能推論別的題。"
+        },
+        {
+          "id": "v30060",
+          "text": "請留意，工具自寫測試的數量不是測試品質分數。"
+        }
+      ]
+    },
+    {
+      "id": "claude-diff",
+      "template": "code",
+      "data": {
+        "title": "第一份實際差異",
+        "language": "javascript",
+        "code": "const base = Math.floor(totalCents / people);\nconst remainder = totalCents - base * people;\nreturn Array.from({ length: people }, (_, i) =>\n  i < remainder ? base + 1 : base);",
+        "caption": "節錄自實際 Claude Code patch"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "v30063",
+          "text": "看它的核心差異：先取每人的基本分，再算剩餘幾分。"
+        },
+        {
+          "id": "v30064",
+          "text": "陣列前面的索引先拿到那一分。"
+        },
+        {
+          "id": "v30065",
+          "text": "原來的非法輸入檢查沒有被刪掉。"
+        },
+        {
+          "id": "v30066",
+          "text": "完整差異不能只看核心四行，也要逐行檢查。"
+        },
+        {
+          "id": "v30067",
+          "text": "分配規則看起來短，但總額不變才是主要契約。"
+        }
+      ]
+    },
+    {
+      "id": "codex",
+      "template": "bullets",
+      "data": {
+        "title": "Codex：也完成修補",
+        "items": [
+          "改同兩個檔案",
+          "自寫測試 5 項通過",
+          "事後驗收 4 項通過"
+        ]
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "v30070",
+          "text": "Codex 也改了同樣的兩個檔案。"
+        },
+        {
+          "id": "v30071",
+          "text": "它用取餘數的寫法分配，核心條件相同。"
+        },
+        {
+          "id": "v30072",
+          "text": "工具自寫的五個測試通過，事後四類驗收也通過。"
+        },
+        {
+          "id": "v30073",
+          "text": "測試項目數不同，不等於其中一支比較可靠。"
+        },
+        {
+          "id": "v30074",
+          "text": "我仍然會檢查它有沒有順手改掉題目外的內容。"
+        }
+      ]
+    },
+    {
+      "id": "codex-diff",
+      "template": "code",
+      "data": {
+        "title": "第二份實際差異",
+        "language": "javascript",
+        "code": "const remainder = totalCents % people;\nconst each = (totalCents - remainder) / people;\nreturn Array.from({ length: people }, (_, i) =>\n  each + (i < remainder ? 1 : 0));",
+        "caption": "節錄自實際 Codex patch"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "v30077",
+          "text": "第二份差異先取餘數，再算基本分。"
+        },
+        {
+          "id": "v30078",
+          "text": "這兩種寫法在我們的驗收範圍內，都保住了總額。"
+        },
+        {
+          "id": "v30079",
+          "text": "但不能只看程式像不像，還要跑自己的案例。"
+        },
+        {
+          "id": "v30080",
+          "text": "差異和測試一起保存，下一個審查者才追得上。"
+        },
+        {
+          "id": "v30081",
+          "text": "它和上一份修補寫法不同，最後都要回到需求。"
+        }
+      ]
+    },
+    {
+      "id": "two-patches",
+      "template": "compare",
+      "data": {
+        "title": "兩份修補的共同點",
+        "left": {
+          "heading": "Claude Code",
+          "points": [
+            "Math.floor 取基本分",
+            "用減法算餘數"
+          ]
+        },
+        "right": {
+          "heading": "Codex",
+          "points": [
+            "先取模數",
+            "再算基本分"
+          ]
+        }
+      },
+      "claims": [
+        "c4",
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "v3e3000",
+          "text": "兩份差異用了不同運算順序，結果不是靠文字像不像判斷。"
+        },
+        {
+          "id": "v3e3001",
+        "text": "兩份都算出基本份額和餘數，再把多的一分交給前面的人。"
+        },
+        {
+          "id": "v3e3002",
+          "text": "把兩分交給三人時，應該是一、一、零。"
+        },
+        {
+          "id": "v3e3003",
+          "text": "你可以拿這組數字，逐行代入兩份實際差異。"
+        }
+      ]
+    },
+    {
+      "id": "gemini",
+      "template": "big",
+      "data": {
+        "kicker": "Gemini CLI 本次結果",
+        "text": "尚未讀題",
+        "sub": "個人帳戶登入已停止支援"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "v30084",
+          "text": "Gemini CLI 這次沒有開始解題。"
+        },
+        {
+          "id": "v30085",
+          "text": "這次個人帳戶登入回報不支援，還沒讀到題目。"
+        },
+        {
+          "id": "v30086",
+          "text": "它沒有產生任何修補，所以我不會替它編一個結果。"
+        },
+        {
+          "id": "v30087",
+          "text": "Google 已停止 Gemini CLI 的個人帳戶登入服務。"
+        },
+        {
+          "id": "v30088",
+          "text": "看到錯誤訊息後，我停止了這一輪，沒有偷偷換帳戶。"
+        }
+      ]
+    },
+    {
+      "id": "login-evidence",
+      "template": "big",
+      "data": {
+        "kicker": "本機錯誤類別",
+        "text": "UNSUPPORTED_CLIENT",
+        "sub": "沒有模型輸出，沒有修補差異"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "v3e4000",
+          "text": "Google 六月起停用 Gemini CLI 的個人帳戶登入。"
+        },
+        {
+          "id": "v3e4001",
+          "text": "程式碼並沒有交給模型，所以沒有模型回答。"
+        },
+        {
+          "id": "v3e4002",
+          "text": "原本錯誤程式在事後測試裡失敗，仍是起始碼的失敗。"
+        },
+        {
+          "id": "v3e4003",
+          "text": "企業授權或 API 金鑰可另測，但這次沒有使用。"
+        }
+      ]
+    },
+    {
+      "id": "availability",
+      "template": "compare",
+      "data": {
+        "title": "先分清兩種結果",
+        "left": {
+          "heading": "完成了任務",
+          "points": [
+            "看差異",
+            "跑驗收"
+          ]
+        },
+        "right": {
+          "heading": "沒有開始",
+          "points": [
+            "換支援的授權",
+            "不列能力排名"
+          ]
+        }
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "v30091",
+          "text": "能不能啟動，是選工具時第一個現實條件。"
+        },
+        {
+          "id": "v30092",
+          "text": "沒有執行成功，就不能把原始錯誤程式當成工具的答案。"
+        },
+        {
+          "id": "v30093",
+          "text": "另一邊的兩份修補，也只是這一次的輸出。"
+        },
+        {
+          "id": "v30094",
+          "text": "這張表把可用性和解題結果分開。"
+        },
+        {
+          "id": "v30095",
+          "text": "要取得 Gemini CLI 的程式差異，先換成可用的授權，再跑同一題。"
+        }
+      ]
+    },
+    {
+      "id": "acceptance",
+      "chapter": "事後驗收怎麼看",
+      "template": "chapter",
+      "data": {
+        "title": "不要只信工具自寫測試"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "v30098",
+          "text": "現在看第三個共同條件：事後驗收。"
+        },
+        {
+          "id": "v30099",
+          "text": "它是在三支工具都執行完後才另外寫成。"
+        },
+        {
+          "id": "v30100",
+          "text": "那時候，四類事後驗收還沒有寫出來。"
+        },
+        {
+          "id": "v30101",
+          "text": "它比只看工具自寫測試多一層檢查，但不是事前盲測。"
+        },
+        {
+          "id": "v30102",
+          "text": "這正是為什麼測試資料不能只由答題工具決定。"
+        }
+      ]
+    },
+    {
+      "id": "acceptance-cases",
+      "template": "steps",
+      "data": {
+        "title": "四類事後驗收",
+        "steps": [
+          {
+            "title": "一百除三",
+            "detail": "結果 34、33、33"
+          },
+          {
+            "title": "餘數與零",
+            "detail": "順序和零金額"
+          },
+          {
+            "title": "大量組合",
+            "detail": "總和與差額性質"
+          },
+          {
+            "title": "非法輸入",
+            "detail": "維持原有檢查"
+          }
+        ]
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "v30105",
+          "text": "第一個案例，就是一百分分給三個人。"
+        },
+        {
+          "id": "v30106",
+          "text": "第二個看兩分給三人，以及零金額。"
+        },
+        {
+          "id": "v30107",
+          "text": "第三個跑很多組金額和人數，檢查總和與最大差距。"
+        },
+        {
+          "id": "v30108",
+          "text": "第四個確認非法輸入仍然被拒絕。"
+        },
+        {
+          "id": "v30109",
+          "text": "這幾類檢查可以直接複製到自己的練習專案。"
+        }
+      ]
+    },
+    {
+      "id": "acceptance-timing",
+      "template": "bullets",
+      "data": {
+        "title": "事後驗收何時加入",
+        "items": [
+          "三支 CLI 結束後撰寫",
+          "複製進各資料夾",
+          "再跑相同四類測試"
+        ]
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "v3e5000",
+          "text": "三支工具執行結束後，才另外建立這份驗收。"
+        },
+        {
+          "id": "v3e5001",
+          "text": "因此它不是事前註冊的盲測，這點要講清楚。"
+        },
+        {
+          "id": "v3e5002",
+          "text": "但工具生成修補時，確實看不到這份新檔。"
+        },
+        {
+          "id": "v3e5003",
+          "text": "我把同一份驗收複製進三份資料夾，再逐一執行。"
+        }
+      ]
+    },
+    {
+      "id": "pass-table",
+      "template": "bullets",
+      "data": {
+        "title": "這次的驗收結果",
+        "items": [
+          "Claude Code：4／4",
+          "Codex：4／4",
+          "Gemini CLI：沒有修補"
+        ]
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "v30112",
+          "text": "跑完後，Claude Code 與 Codex 的修補都過了四類。"
+        },
+        {
+          "id": "v30113",
+          "text": "Gemini CLI 沒有修補，原始程式只過其中一類。"
+        },
+        {
+          "id": "v30114",
+          "text": "後者是起始碼的結果，不能列成工具失敗率。"
+        },
+        {
+          "id": "v30115",
+          "text": "拿結果做影片時，這個註解不能剪掉。"
+        },
+        {
+          "id": "v30116",
+          "text": "請不要把沒開始的一欄，塗成紅色叉叉當失敗。"
+        }
+      ]
+    },
+    {
+      "id": "test-output",
+      "template": "screenshot",
+      "data": {
+        "title": "Claude 修補的實際測試輸出",
+        "image": "docs/videos/ai-coding-tools-same-task/demo/claude-acceptance.png",
+        "caption": "node --test 實跑；終端畫面由原始輸出重排，4／4 通過"
+      },
+      "claims": ["c7"],
+      "lines": [
+        {"id": "v3shot0", "text": "這張是實際跑出來的測試紀錄，不是憑印象填表。"},
+        {"id": "v3shot1", "text": "四類事後驗收全過；原始輸出和截圖來源也留著。"}
+      ]
+    },
+    {
+      "id": "cost",
+      "chapter": "成本怎麼記",
+      "template": "chapter",
+      "data": {
+        "title": "用量不等於實際付款"
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "v30119",
+          "text": "再來談成本。先別急著把三個方案放在同一張價目表。"
+        },
+        {
+          "id": "v30120",
+          "text": "Claude Code 的輸出有一筆美元估算值。"
+        },
+        {
+          "id": "v30121",
+          "text": "Codex 的這次輸出有 token 用量，沒有美元帳單。"
+        },
+        {
+          "id": "v30122",
+          "text": "Gemini 沒進到模型執行，自然沒有可比用量。"
+        },
+        {
+          "id": "v30123",
+          "text": "付費方案與額度會更新，公開前還要再看當天官網。"
+        },
+        {
+          "id": "v30124",
+          "text": "我把價格和這次的輸出用量刻意分欄記錄。"
+        }
+      ]
+    },
+    {
+      "id": "cost-caveat",
+      "template": "compare",
+      "data": {
+        "title": "這次只能記下什麼",
+        "left": {
+          "heading": "可記錄",
+          "points": [
+            "工具報告的用量",
+            "執行時間",
+            "帳戶能否啟動"
+          ]
+        },
+        "right": {
+          "heading": "不能推論",
+          "points": [
+            "訂閱實際扣款",
+            "跨帳戶單次排名",
+            "長期專案成本"
+          ]
+        }
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "v30126",
+          "text": "Claude Code 這次顯示約零點三美元，那是工具提供的估算。"
+        },
+        {
+          "id": "v30127",
+          "text": "訂閱帳戶是否因此多付錢，不能從這筆數字得知。"
+        },
+        {
+          "id": "v30128",
+          "text": "Codex 的輸入有大量快取，光看總 token 更會誤導。"
+        },
+        {
+          "id": "v30129",
+          "text": "要算真實成本，得用你自己的帳單和工作量。"
+        },
+        {
+          "id": "v30130",
+          "text": "如果是固定月費，單次工作沒有唯一可歸屬價格。"
+        }
+      ]
+    },
+    {
+      "id": "selection-sheet",
+      "template": "steps",
+      "data": {
+        "title": "自己的試跑記錄表",
+        "steps": [
+          {
+            "title": "起點與版本",
+            "detail": "留檔案雜湊及 CLI 版本"
+          },
+          {
+            "title": "成果",
+            "detail": "差異和驗收輸出"
+          },
+          {
+            "title": "花費",
+            "detail": "帳單與工具用量分欄"
+          }
+        ]
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "v3e6000",
+          "text": "如果你要重做這個比較，我建議先記檔案雜湊。"
+        },
+        {
+          "id": "v3e6001",
+          "text": "工具版本和權限模式也要寫在同一張表。"
+        },
+        {
+          "id": "v3e6002",
+          "text": "成果欄放差異和驗收輸出，不寫主觀的好壞分數。"
+        },
+        {
+          "id": "v3e6003",
+          "text": "花費欄把帳單金額與工具報的用量分開。"
+        }
+      ]
+    },
+    {
+      "id": "choice",
+      "template": "steps",
+      "data": {
+        "title": "你可以照這個順序選",
+        "steps": [
+          {
+            "title": "先確認能用",
+            "detail": "登入與權限"
+          },
+          {
+            "title": "再比同一題",
+            "detail": "起點與提示固定"
+          },
+          {
+            "title": "最後看差異",
+            "detail": "自己的驗收測試"
+          }
+        ]
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "v30133",
+          "text": "我的做法是先確認三支工具在自己的帳戶真的能用。"
+        },
+        {
+          "id": "v30134",
+          "text": "再拿一個小而明確的工作，固定起點與提示。"
+        },
+        {
+          "id": "v30135",
+          "text": "最後把差異、測試和實際花費一起留下。"
+        },
+        {
+          "id": "v30136",
+          "text": "如果工作有機密，就先換成不含真實資料的樣本。"
+        },
+        {
+          "id": "v30137",
+          "text": "同一張清單也適合你已有的工具，無須全部換掉。"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "怎麼選？先做自己的同題試跑",
+        "cta": "照三步重跑同題任務",
+        "lines": [
+          "先看能否啟動",
+          "再看差異與驗收"
+        ]
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "v30140",
+          "text": "選這三款工具，先看能否啟動，再比同一題的差異。"
+        },
+        {
+          "id": "v30141",
+          "text": "這次兩支完成，一支卡在登入，不代表能力名次。"
+        },
+        {
+          "id": "v30142",
+          "text": "重跑時，把起始檔、兩份差異和驗收測試放在一起看。"
+        },
+        {
+          "id": "v30143",
+          "text": "下一次把你自己的小任務代入，答案才跟你有關。"
+        },
+        {
+          "id": "v30144",
+          "text": "先拿你的需求重跑，才是真正有用的選擇依據。"
+        }
+      ]
+    }
+  ]
+}

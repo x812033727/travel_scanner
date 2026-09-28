@@ -94,7 +94,7 @@
 
 ## 素材
 
-- 站內文章（`source_guide`）：`ai-agents-explained`；引用：`ai-news-openai-agents-api-20260910`。
+- 站內文章（`source_guide`）：`ai-news-openai-agents-api-20260910`；引用：`ai-agents-explained`。原本以 `ai-agents-explained` 為主，但 Codex 的影片 `ai-agent-vs-chatbot` 已用它當 source_guide，產線不收同一篇文章的第二支影片，2026-09-28 改用 Agents API 那篇（這支的成本章節本來就以它為據）。
 - 官方頁：上表網址。
 - 圖片：不用；全部用 `chat`、`steps`、`table`、`compare`、`big`。
 
