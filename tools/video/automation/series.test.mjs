@@ -11,7 +11,11 @@ import { keepSheets, readStore, reuseSheets, sheetKey } from "../media/series-st
 import { automationClient } from "./client.mjs";
 import { Automation, automatedVideos, settle } from "./flow.mjs";
 import { instructionsFor, SERIES_INSTRUCTIONS } from "./prompts.mjs";
-import { castFrom, chapterRange, documentPayload, documentProblem, episodeSlug, planDocument, seriesStep } from "./series.mjs";
+import { eachLine } from "../core/schema.mjs";
+import { estimateTimeline, framesFor, frameToSeconds } from "../core/timeline.mjs";
+import { lintCompilation } from "../core/compilation.mjs";
+import { compilationSlug } from "./compilation.mjs";
+import { castFrom, chapterRange, documentPayload, documentProblem, episodeSlug, planDocument, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
 
 const TOKEN = `mkv_${"s".repeat(43)}`;
 const SITE = "https://site.test";
@@ -61,7 +65,7 @@ test("a document the planner returns must have the shape the owner reads, checke
 });
 
 test("every series prompt carries the tension rules, and a stage's variant picks it", () => {
-  assert.deepEqual(Object.keys(SERIES_INSTRUCTIONS).sort(), ["planner:chapter", "planner:outline", "planner:setting", "verifier:episode", "verifier:recap", "writer:episode"]);
+  assert.deepEqual(Object.keys(SERIES_INSTRUCTIONS).sort(), ["planner:chapter", "planner:compilation", "planner:outline", "planner:setting", "translator:compilation", "verifier:episode", "verifier:recap", "verifier:series-doc", "writer:episode"]);
   assert.match(instructionsFor("planner", "drama", "", "setting"), /SETTING BOOK[\s\S]*conflict engine[\s\S]*RESERVED/);
   assert.match(instructionsFor("planner", "drama", "", "outline"), /stakes rise chapter by chapter/);
   assert.match(instructionsFor("planner", "drama", "", "chapter"), /HOOK inside the first 20 seconds[\s\S]*never end on the same cliffhanger type/);
@@ -93,8 +97,8 @@ function context(box, fetchImpl, clock) {
 }
 
 /** A site with the series routes: `jobs` is what next answers in turn; everything sent is recorded. */
-function fakeSite({ jobs = [], answers = {}, settings = {} } = {}) {
-  const calls = { run: [], docs: [], episodes: [], reports: [], reviews: [] };
+function fakeSite({ jobs = [], answers = {}, settings = {}, decide = null, series = SERIES, compilation = null, episodeBeats = beats } = {}) {
+  const calls = { run: [], docs: [], episodes: [], reports: [], reviews: [], compilations: [] };
   const projects = new Map();
   const reviewsOf = (slug) => projects.get(slug) ?? projects.set(slug, []).get(slug);
   const current = {
@@ -115,15 +119,24 @@ function fakeSite({ jobs = [], answers = {}, settings = {} } = {}) {
     const docs = /^\/api\/video\/automation\/series\/([a-z0-9-]+)\/docs$/.exec(pathname);
     if (docs) {
       calls.docs.push({ series: docs[1], ...body });
-      return json({ id: `d${calls.docs.length}`, ...body, version: calls.docs.filter((doc) => doc.kind === body.kind && doc.chapter_number === body.chapter_number).length, status: "review" }, 201);
+      // A hands-off series' site decides on the verdict (docs/videos/BINGE.md); `decide` plays it.
+      const decided = decide?.(body) ?? { status: "review", note: null };
+      return json({ id: `d${calls.docs.length}`, ...body, version: calls.docs.filter((doc) => doc.kind === body.kind && doc.chapter_number === body.chapter_number).length, ...decided }, 201);
+    }
+    const compiling = /^\/api\/video\/automation\/series\/([a-z0-9-]+)\/compilation\/(start|done)$/.exec(pathname);
+    if (compiling) {
+      calls.compilations.push({ series: compiling[1], action: compiling[2], ...(body ?? {}) });
+      if (compiling[2] === "done") return json({ ...series, compilation_finished_at: "2026-09-27T09:00:00Z" });
+      if (compilation?.refuse) return json({ code: compilation.refuse.code, detail: compilation.refuse.detail }, 409);
+      return json({ series: { ...series, compilation_slug: body.slug }, episodes: compilation?.episodes ?? [], context: { series, setting: SETTING, outline: null, chapter: null, chapter_number: null, chapter_range: null, episode: null, episodes: [], recaps: [], mysteries: [], all_recaps: compilation?.recaps ?? [] } });
     }
     const episode = /^\/api\/video\/automation\/series\/([a-z0-9-]+)\/episodes\/(\d+)\/(start|recap|done)$/.exec(pathname);
     if (episode) {
       calls.episodes.push({ series: episode[1], number: Number(episode[2]), action: episode[3], ...(body ?? {}) });
       if (episode[3] === "start") {
         const number = Number(episode[2]);
-        const context = { series: SERIES, setting: SETTING, outline: null, chapter: CHAPTER, chapter_number: 1, chapter_range: [1, 10], episode: null, episodes: CHAPTER.body_json.episodes.map((each) => ({ ...each, chapter_number: 1, status: "ready", beats: each })), recaps: [{ number: 0, title: "序", recap: "鐘響了", state: {} }], mysteries: SETTING.body_json.mysteries };
-        return json({ request: { id: `r${number}`, premise: `第 ${number} 集`, title: null, source_guide: null, style_preset: "cinematic-3d", target_minutes: 3, note: null, status: "started", slug: body.slug }, episode: { ...beats(number), chapter_number: 1, status: "started", slug: body.slug, beats: beats(number) }, context });
+        const context = { series, setting: SETTING, outline: null, chapter: CHAPTER, chapter_number: 1, chapter_range: [1, 10], episode: null, episodes: CHAPTER.body_json.episodes.map((each) => ({ ...each, chapter_number: 1, status: "ready", beats: each })), recaps: [{ number: 0, title: "序", recap: "鐘響了", state: {} }], mysteries: SETTING.body_json.mysteries };
+        return json({ request: { id: `r${number}`, premise: `第 ${number} 集`, title: null, source_guide: null, style_preset: "cinematic-3d", target_minutes: 3, note: null, status: "started", slug: body.slug }, episode: { ...episodeBeats(number), chapter_number: 1, status: "started", slug: body.slug, beats: episodeBeats(number) }, context });
       }
       return json({ number: Number(episode[2]), status: episode[3] === "done" ? "done" : "started" });
     }
@@ -287,7 +300,7 @@ test("an episode is started from the chapter outline, written from the cast word
   assert.equal(site.calls.reports.at(-1).series_slug, "wenjian");
   assert.equal(site.calls.reports.at(-1).episode_number, 1);
   const state = () => automatedVideos(box.work).find((each) => each.slug === slug);
-  assert.deepEqual(state().series, { slug: "wenjian", episode: 1, chapter: 1 });
+  assert.deepEqual(state().series, { slug: "wenjian", episode: 1, chapter: 1, genre: "xianxia-bonds", lead: "dual-male", visual_tier: "clips", compilation: false, hands_off: false });
   assert.deepEqual(state().notes, ["series note: 旁白慢一點"]);
 
   assert.match(await automation.step(), /script drafted and passes lint/);
@@ -349,4 +362,244 @@ test("a series keeps the sheets the owner chose, and the next episode reuses the
   const settled = settle({ ...dramaFixture(), characters: [...dramaFixture().characters].reverse() }, { slug: "wenjian-e002", settings: { voice: { provider: "gemini", name: "Sulafat" }, drama: {} }, sourceGuide: null, root: box.root, format: "drama", series: { slug: "wenjian", episode: 2, chapter: 1 }, cast: doc.characters });
   assert.deepEqual(settled.characters.map((character) => character.id), ["jingwei", "yandi"]);
   assert.deepEqual(settled.series, { slug: "wenjian", episode: 2, chapter: 1 });
+});
+
+// A binge series (docs/videos/BINGE.md): hands-off, a retention genre, a compilation at the end.
+const BINGE = { ...SERIES, slug: "rebirth", title: "她磨好了刀", genre: "rebirth-revenge", lead: "female", visual_tier: "clips", compilation: true, hands_off: true, total_minutes: 30, planned_episodes: 10, episodes_per_chapter: 10, chapters: 1, tone: "hetero-leads" };
+const retentionBeats = (number, changes = {}) => ({
+  ...beats(number, number % 2 ? "danger" : "reveal"),
+  hook_type: number % 2 ? "danger" : "question",
+  lead_arc: number % 2 ? "wins" : "mixed",
+  satisfaction: [{ beat: "opening", type: "face_slap" }, { beat: "ending", type: "reversal" }],
+  payoffs: number % 3 === 0 ? ["m1"] : [],
+  ...changes,
+});
+const RETENTION_CHAPTER = { body_md: "# 第一篇", body_json: { chapter: 1, episodes: Array.from({ length: 10 }, (_, index) => retentionBeats(index + 1)) } };
+const verdict = (kind, changes = {}) => ({ verdicts: Object.fromEntries({ setting: ["originality", "conflict_engine", "genre_fit", "cast_playable"], outline: ["originality", "escalation", "midpoint_reveal", "chapter_turns", "satisfaction_schedule"], chapter: ["originality", "tension_rules", "hooks", "satisfaction", "alternation", "escalation"] }[kind].map((key) => [key, "有"])), problems: [], similar_works: [], notes: "ok", ...changes });
+
+test("a retention genre's chapter outline names the hook type, the lead's arc and the satisfaction beats, as the site demands", () => {
+  const binge = job("chapter", { series: BINGE });
+  assert.equal(documentProblem("chapter", RETENTION_CHAPTER, binge), null);
+  assert.equal(documentProblem("chapter", CHAPTER, job("chapter")), null, "the classic series keeps its rules");
+  const bare = structuredClone(RETENTION_CHAPTER);
+  delete bare.body_json.episodes[2].hook_type;
+  assert.match(documentProblem("chapter", bare, binge), /episode 3 needs hook_type/);
+  const few = structuredClone(RETENTION_CHAPTER);
+  few.body_json.episodes[3].satisfaction.pop();
+  assert.match(documentProblem("chapter", few, binge), /episode 4 needs at least 2 satisfaction beats/);
+  const late = structuredClone(RETENTION_CHAPTER);
+  late.body_json.episodes[4].satisfaction = [{ beat: "ending", type: "reversal" }, { beat: "ending", type: "face_slap" }];
+  assert.match(documentProblem("chapter", late, binge), /first half/);
+  const odd = structuredClone(RETENTION_CHAPTER);
+  odd.body_json.episodes[5].satisfaction[0].type = "kiss";
+  assert.match(documentProblem("chapter", odd, binge), /genre's types/);
+  const suffering = structuredClone(RETENTION_CHAPTER);
+  suffering.body_json.episodes[1].lead_arc = "suffers";
+  suffering.body_json.episodes[2].lead_arc = "suffers";
+  assert.match(documentProblem("chapter", suffering, binge), /episodes 2 and 3 both leave the lead suffering/);
+  const dry = structuredClone(RETENTION_CHAPTER);
+  for (const episode of dry.body_json.episodes) episode.payoffs = [];
+  assert.match(documentProblem("chapter", dry, binge), /pay nothing off/);
+  const payload = documentPayload({ reference: () => smallRefs, dramaPayload: () => ({ drama_settings: {} }) }, binge);
+  assert.equal(payload.series.genre, "rebirth-revenge");
+  assert.equal(payload.genre_spec.label, "重生復仇");
+  assert.match(instructionsFor("planner", "drama", "", "chapter", "", BINGE), /Genre and retention[\s\S]*Retention rules[\s\S]*Compilation mode/);
+  assert.doesNotMatch(instructionsFor("planner", "drama", "", "chapter", "", SERIES), /Retention rules/, "the classic series gets no retention section");
+  assert.doesNotMatch(instructionsFor("listener", "drama", "", null, "", BINGE), /Genre and retention/, "the listener needs no genre");
+});
+
+test("the retention numbers are measured on the script's estimated timeline, and the verdict mirrors the site's rule", () => {
+  const video = dramaFixture();
+  const ids = [...eachLine(video)].map(({ line }) => line.id);
+  const numbers = retentionNumbers(video, { hook_line: ids[0], satisfaction_lines: [ids[1], ids[3]], cliffhanger_line: ids.at(-1) });
+  assert.ok(numbers.hook_seconds > 0 && numbers.hook_seconds < 15, `the hook ends at ${numbers.hook_seconds} s`);
+  // The hook is measured where its words end, without the pause after the line or the gap to the next shot.
+  const hookLine = estimateTimeline(video).lines.find((line) => line.id === ids[0]);
+  assert.equal(numbers.hook_seconds, Number(frameToSeconds(hookLine.start_frame + framesFor(hookLine.audio_samples)).toFixed(1)));
+  assert.ok(numbers.hook_seconds < frameToSeconds(hookLine.end_frame));
+  assert.equal(numbers.satisfaction.count, 2);
+  assert.equal(numbers.satisfaction.first_seconds, numbers.satisfaction.positions[0]);
+  assert.equal(numbers.cliffhanger_last, true);
+  assert.equal(retentionNumbers(video, { hook_line: ids[0], satisfaction_lines: [], cliffhanger_line: ids[0] }).cliffhanger_last, false);
+  assert.equal(retentionNumbers(video, null), null);
+
+  const passing = { coverage: { hook: "有", conflict: "有", turn: "弱", cliffhanger: "有", satisfaction: "有" }, problems: [], similar_works: [], retention: { hook_seconds: 6.2, satisfaction: { count: 2, first_seconds: 20, positions: [20, 100] }, cliffhanger_last: true } };
+  assert.deepEqual(scriptVerdict(passing, BINGE), { passed: true, problems: [] });
+  assert.deepEqual(scriptVerdict({ ...passing, retention: null }, SERIES), { passed: true, problems: [] }, "the classic series has no timing rule");
+  assert.match(scriptVerdict({ ...passing, retention: null }, BINGE).problems.join(" "), /named no hook/);
+  assert.match(scriptVerdict({ ...passing, retention: { ...passing.retention, hook_seconds: 12 } }, BINGE).problems.join(" "), /hook line ends at 12 s; shorten it/);
+  // A hook_line the script does not have measures as null; the site refuses a null, so the worker must too.
+  assert.match(scriptVerdict({ ...passing, retention: { ...passing.retention, hook_seconds: null } }, BINGE).problems.join(" "), /hook_line is not a line of the script/);
+  assert.match(scriptVerdict({ ...passing, retention: { ...passing.retention, satisfaction: { count: 0, first_seconds: null, positions: [] } } }, BINGE).problems.join(" "), /only 0 satisfaction beats[\s\S]*satisfaction_lines are not lines/);
+  assert.match(scriptVerdict({ ...passing, retention: { ...passing.retention, cliffhanger_last: false } }, BINGE).problems.join(" "), /cliffhanger is not the last line/);
+  assert.match(scriptVerdict({ ...passing, coverage: { ...passing.coverage, turn: "無" } }, SERIES).problems.join(" "), /turn is missing/);
+  assert.match(scriptVerdict({ ...passing, coverage: { ...passing.coverage, hook: "弱" } }, SERIES).problems.join(" "), /more than one beat/);
+  assert.match(scriptVerdict({ ...passing, similar_works: ["某作的門派"] }, SERIES).problems.join(" "), /resembles an existing work/);
+  assert.match(scriptVerdict(null, SERIES).problems.join(" "), /no verdict on the hook/);
+});
+
+test("a hands-off series' document goes through the checker and is filed with the verdict; the site's decision is reported", async () => {
+  const box = sandbox();
+  writeFileSync(path.join(box.work, "auto-state.json"), JSON.stringify({ last_draft_at: "2026-09-27T00:00:00Z" }));
+  const decisions = [];
+  const site = fakeSite({
+    jobs: [job("setting", { series: BINGE }), job("setting", { series: BINGE }), job("setting", { series: BINGE })],
+    answers: {
+      "planner:setting": () => SETTING,
+      "verifier:series-doc": (body) => (decisions.length === 0 ? verdict("setting") : decisions.length === 1 ? verdict("setting", { problems: ["反派沒有動機"] }) : { nonsense: true }),
+    },
+    decide: (body) => {
+      decisions.push(body.judge ?? null);
+      if (!body.judge) return { status: "review", note: null };
+      return body.judge.problems.length ? { status: "rejected", note: `[auto] 查核沒過：${body.judge.problems.join("；")}` } : { status: "approved", note: "查核：originality 有，依作品設定自動核准" };
+    },
+  });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-09-27T00:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  assert.match(await automation.step(), /series rebirth: the setting book planned \(version 1\) and approved on the checker's verdict/);
+  const judge = site.calls.run.find((call) => call.variant === "series-doc");
+  assert.equal(judge.stage, "verifier");
+  assert.equal(judge.payload.kind, "setting");
+  assert.deepEqual(judge.payload.document.body_json.characters.map((character) => character.id), CAST.map((character) => character.id));
+  assert.match(judge.instructions, /PLANNED DOCUMENT[\s\S]*Genre and retention/);
+  assert.deepEqual(site.calls.docs[0].judge, verdict("setting"));
+  assert.match(await automation.step(), /the checker sent it back for a rewrite \(\[auto\] 查核沒過：反派沒有動機\)/);
+  assert.deepEqual(site.calls.docs[1].judge.problems, ["反派沒有動機"]);
+  assert.match(await automation.step(), /it waits for the owner on \/admin\/videos/, "no usable verdict: the owner decides, as on a classic series");
+  assert.equal(site.calls.docs[2].judge, undefined);
+  assert.equal(site.calls.run.filter((call) => call.variant === "series-doc").length, 4, "the checker is asked twice before the document is left to the owner");
+});
+
+test("a compilation the site refuses to start ends the run with the site's reason instead of failing every round", async () => {
+  const box = sandbox();
+  writeFileSync(path.join(box.work, "auto-state.json"), JSON.stringify({ last_draft_at: "2026-09-27T00:00:00Z" }));
+  const job = { kind: "compilation", series: { ...BINGE, status: "finished" }, chapter_number: null, episode: null, previous: null, rewrites_left: 0, context: null };
+  const site = fakeSite({ jobs: [job], series: { ...BINGE, status: "finished" }, compilation: { refuse: { code: "video_drama_request_slug_taken", detail: "rebirth-full 已經是另一支影片" } } });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-09-27T00:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  assert.match(await automation.step(), /series rebirth: the site refused to start the compilation rebirth-full: rebirth-full 已經是另一支影片/);
+  assert.equal(automation.halted, true);
+  assert.equal(existsSync(path.join(box.root, "docs", "videos", "rebirth-full")), false, "no document is written for a compilation the site did not start");
+});
+
+test("the compilation of a finished series is started under <series>-full with a document that passes lint", async () => {
+  const box = sandbox();
+  writeFileSync(path.join(box.work, "auto-state.json"), JSON.stringify({ last_draft_at: "2026-09-27T00:00:00Z" }));
+  const episodes = [1, 2, 3].map((number) => ({ number, chapter_number: 1, title: `第 ${number} 集的名字`, logline: `L${number}`, beats: {}, status: "done", slug: `rebirth-e00${number}`, recap: `R${number}`, started_at: null, finished_at: null, video: null }));
+  const site = fakeSite({ jobs: [{ kind: "compilation", series: { ...BINGE, status: "finished" }, chapter_number: null, episode: null, previous: null, rewrites_left: 0, context: null }], series: { ...BINGE, status: "finished" }, compilation: { episodes, recaps: episodes.map((episode) => ({ number: episode.number, title: episode.title, recap: episode.recap })) } });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-09-27T00:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  assert.match(await automation.step(), /series rebirth: compilation rebirth-full started from 3 episodes/);
+  assert.deepEqual(site.calls.compilations, [{ series: "rebirth", action: "start", slug: "rebirth-full" }]);
+  const slug = compilationSlug("rebirth");
+  const dir = path.join(box.root, "docs", "videos", slug);
+  const video = readJson(path.join(dir, "video.json"));
+  assert.deepEqual(video.compilation.episodes, ["rebirth-e001", "rebirth-e002", "rebirth-e003"]);
+  assert.equal(video.compilation.series, "rebirth");
+  assert.equal(video.scenes.length, 4, "a chapter card per episode and the outro");
+  // The site serialises the voice with a null model and a "+0%" rate, which lint refuses; the
+  // document carries the voice as settle writes it, or the compilation could never leave its first step.
+  assert.deepEqual(video.voice, { provider: "gemini", name: "Sulafat", style: "Relaxed" });
+  assert.deepEqual(lintCompilation(video).errors, [], "the compilation's document passes lint as written");
+  assert.equal(readJson(path.join(dir, "compilation.json")).all_recaps.length, 3);
+  const state = automatedVideos(box.work).find((each) => each.slug === slug);
+  assert.deepEqual(state.compilation, { series: "rebirth", episodes: ["rebirth-e001", "rebirth-e002", "rebirth-e003"] });
+  assert.equal(state.series.slug, "rebirth");
+  assert.equal(state.series.episode, undefined, "a compilation is no episode");
+  const report = site.calls.reports.at(-1);
+  assert.equal(report.series_slug, "rebirth");
+  assert.equal(report.episode_number, undefined);
+  assert.equal(report.format, "drama");
+  assert.match(report.checklist.map((item) => item.label).join(" "), /合集|標題/);
+});
+
+test("a hands-off episode's screenplay is fixed from the checker's verdict before anything is sent, then the site approves it on arrival", async () => {
+  const box = sandbox();
+  const slug = "rebirth-e001";
+  const example = dramaFixture();
+  const ids = [...eachLine(example)].filter(({ scene }) => scene.template !== "outro").map(({ line }) => line.id);
+  const script = () => {
+    const video = structuredClone(example);
+    video.characters = [
+      { id: "shen-lan", name: "沈瀾", appearance: "wrong", voice: { provider: "gemini", name: "Kore" } },
+      { id: "chu-ying", name: "楚英", appearance: "wrong too", voice: { provider: "gemini", name: "Sulafat" } },
+    ];
+    for (const scene of video.scenes) {
+      if (scene.data?.characters) scene.data.characters = scene.data.characters.map((id) => (id === "jingwei" ? "shen-lan" : "chu-ying"));
+      for (const line of scene.lines) if (line.speaker && line.speaker !== "narrator") line.speaker = line.speaker === "jingwei" ? "shen-lan" : "chu-ying";
+    }
+    if (video.thumbnail?.data) delete video.thumbnail.data.shot;
+    // A compilation episode ends on its cliffhanger; the compilation adds the cards. The
+    // fixture's outro carried its third chapter label, so the last shot takes it.
+    video.scenes = video.scenes.filter((scene) => scene.template !== "outro");
+    video.scenes.at(-1).chapter = "結尾";
+    return { video: { ...video, slug }, claims: "原創\n", lexicon_additions: {} };
+  };
+  let checks = 0;
+  const fixes = [];
+  const answers = {
+    "writer:episode": (body) => {
+      if (body.payload.fix) {
+        fixes.push(body.payload.fix);
+        const video = structuredClone(body.payload.video);
+        video.scenes[0].lines[0].text = `${video.scenes[0].lines[0].text}！`;
+        return { video };
+      }
+      return script();
+    },
+    // The first check finds the cliffhanger buried mid-script; the second finds it last.
+    "verifier:episode": () => ({ report: "# 查核\n", video: null, claims: "原創\n", changed_facts: 0, coverage: { hook: "有", conflict: "有", turn: "有", cliffhanger: "有", satisfaction: "有" }, problems: [], similar_works: [], retention: { hook_line: ids[0], satisfaction_lines: [ids[1], ids[2]], cliffhanger_line: checks++ === 0 ? ids[1] : ids.at(-1) } }),
+    listener: (body) => ({ video: body.payload.video, edits: [] }),
+  };
+  const site = fakeSite({ series: BINGE, episodeBeats: (number) => retentionBeats(number), jobs: [{ ...job("episode", { series: BINGE, episode: { ...retentionBeats(1), chapter_number: 1, status: "ready", slug: null, beats: retentionBeats(1) } }), context: { ...job("episode").context, series: BINGE } }], answers });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-09-27T01:00:00Z") });
+  const dir = path.join(box.root, "docs", "videos", slug);
+  const runs = [];
+  ctx.runCommand = async (command, runCtx) => {
+    runs.push(command.join(" "));
+    if (command[0] === "review-push") {
+      const gate = command[command.indexOf("--gate") + 1];
+      // The site approves a passing screenplay on arrival (apps/api: auto_approves_script).
+      if (gate === "script") site.reviewsOf(slug).unshift({ id: `script-${runs.length}`, gate: "script", status: "approved", choice: null, note: "查核對照細綱：四個節拍都在、沒有連貫性問題，依作品設定自動核准", decided_at: "2026-09-27T02:00:00Z", content_sha256: sha(path.join(dir, "script.md")), payload: {} });
+      return { code: 0, out: `${gate} submitted` };
+    }
+    const { main: cli } = await import("../cli.mjs");
+    let out = "";
+    const sink = { write: (text) => (out += text) };
+    const code = await cli(command, { ...runCtx, runCommand: undefined, stdout: sink, stderr: sink });
+    return { code, out };
+  };
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+
+  assert.match(await automation.step(), /episode 1 \(rebirth-e001\) started/);
+  assert.match(readFileSync(path.join(dir, "brief.md"), "utf8"), /冷開場：第一句就是鉤子[\s\S]*爽點：opening｜face_slap/);
+  const info = readJson(path.join(dir, "series.json"));
+  assert.equal(info.visual_tier, "clips");
+  assert.equal(info.series.genre, "rebirth-revenge");
+  assert.match(await automation.step(), /script drafted and passes lint/);
+  const writer = site.calls.run.find((call) => call.stage === "writer");
+  assert.match(writer.instructions, /Genre and retention[\s\S]*Retention rules/);
+  assert.equal(writer.payload.series.genre, "rebirth-revenge");
+  assert.match(await automation.step(), /fact-check round 1/);
+  const check = readJson(path.join(box.work, slug, "review", "script-check.json"));
+  assert.equal(check.retention.cliffhanger_last, false);
+  assert.equal(check.retention.satisfaction.count, 2);
+  assert.match(await automation.step(), /listener edit/);
+  assert.match(await automation.step(), /screenplay rewritten after the checker's note \(round 1\); it is checked again/);
+  assert.equal(fixes.length, 1);
+  assert.match(fixes[0].problems[0], /cliffhanger is not the last line/);
+  assert.equal(runs.filter((run) => run.startsWith("review-push")).length, 0, "nothing was sent while the checker failed the script");
+  assert.match(await automation.step(), /fact-check round 2/);
+  assert.equal(readJson(path.join(box.work, slug, "review", "script-check.json")).retention.cliffhanger_last, true);
+  assert.match(await automation.step(), /listener edit/);
+  assert.match(await automation.step(), /screenplay sent to \/admin\/videos/);
+  assert.match(await automation.step(), /the site approved the screenplay/);
+  assert.ok(readApprovals(path.join(box.work, slug)).approvals.some((entry) => entry.gate === "script"));
+  const state = automatedVideos(box.work).find((each) => each.slug === slug);
+  assert.equal(state.prompt_fixes.script, 1);
+  assert.equal(state.series.hands_off, true);
 });

@@ -1,5 +1,6 @@
 // What goes into YouTube's fields, per locale: title, the composed description (the Mokaair
 // article, body, chapters, sources, hashtags) and tags, each checked against YouTube's limits.
+import { descriptionWithinBudget, isCompilation } from "../core/compilation.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription, tagsLength, TAGS_MAX_CHARS } from "../core/metadata.mjs";
 import { NARRATION_LOCALE } from "../core/schema.mjs";
 import { chapterList, formatClock } from "../core/timeline.mjs";
@@ -7,18 +8,22 @@ import { chapterList, formatClock } from "../core/timeline.mjs";
 /**
  * Metadata for zh-TW and every locale with a translation file. A locale's translation supplies
  * { title, description, tags?, chapters?: { sceneId: title } }; the article link uses that
- * locale when the source article has it, zh-TW otherwise.
+ * locale when the source article has it, zh-TW otherwise. A compilation's chapters key on its
+ * episode slugs, and when every title would pass YouTube's description limit they fall back to
+ * 「第 N 集」 (docs/videos/BINGE.md), in the chapter list the upload card shows as well.
  */
 export function composeMetadata({ doc, timeline, translations = {}, pack = null }) {
   const locales = [NARRATION_LOCALE, ...Object.keys(translations).filter((locale) => translations[locale]?.title && translations[locale]?.description)];
+  const compilation = isCompilation(doc);
   const problems = [];
   const perLocale = {};
+  let zhChapters = {};
   for (const locale of locales) {
     const translation = locale === NARRATION_LOCALE ? null : translations[locale];
     const title = translation ? translation.title : doc.youtube.title;
     const body = translation ? translation.description : doc.youtube.description;
     const articleLocale = pack?.locales?.[locale] ? locale : NARRATION_LOCALE;
-    const description = composeDescription({
+    const fields = {
       body,
       timeline,
       chapterTitles: translation?.chapters ?? {},
@@ -26,7 +31,13 @@ export function composeMetadata({ doc, timeline, translations = {}, pack = null 
       sources: doc.sources ?? [],
       locale,
       tags: translation?.tags?.length ? translation.tags : doc.youtube.tags,
-    });
+    };
+    let description;
+    if (compilation) {
+      const budget = descriptionWithinBudget(body, timeline, fields.chapterTitles, { locale, sources: fields.sources, tags: fields.tags, article: fields.article });
+      description = budget.description;
+      if (locale === NARRATION_LOCALE) zhChapters = budget.titles;
+    } else description = composeDescription(fields);
     problems.push(...checkYoutubeFields({ title, description, tags: [] }, `${locale}`));
     perLocale[locale] = { title, description };
   }
@@ -35,7 +46,7 @@ export function composeMetadata({ doc, timeline, translations = {}, pack = null 
   for (const tag of [...doc.youtube.tags, ...locales.flatMap((locale) => translations[locale]?.tags ?? [])]) {
     if (!tags.includes(tag) && tagsLength([...tags, tag]) <= TAGS_MAX_CHARS) tags.push(tag);
   }
-  const chapters = chapterList(timeline).map((chapter) => ({ at: formatClock(chapter.start), title: chapter.title }));
+  const chapters = chapterList(timeline, zhChapters).map((chapter) => ({ at: formatClock(chapter.start), title: chapter.title }));
   return {
     problems,
     metadata: {
@@ -83,20 +94,34 @@ export function dubSteps(dubs = [], skippedDubs = {}) {
 }
 
 /**
+ * The 合集 section of a compilation's UPLOAD.md (docs/videos/BINGE.md): the 1080p file is too
+ * big for the review store, so the owner downloads it from the site's 「可以上架」 card; the
+ * chapters, one per episode, are already in the description.
+ */
+export function compilationSection(metadata, { episodes = 0, size_bytes: sizeBytes = 0 } = {}) {
+  const gb = (sizeBytes / 1024 ** 3).toFixed(2);
+  return `## 合集
+
+- 這支是 ${episodes} 集的合集：每集一章，章節時間戳已經在說明欄裡（\`metadata.json\` 的 \`chapters\` 有 ${(metadata.chapters ?? []).length} 章）。
+- 1080p 的 \`final.mp4\` 約 ${gb} GB，不走審核檔案區：到 /admin/videos 這支的「可以上架」卡片下載（\`${metadata.download ?? "upload/final.mp4"}\`），再照第 1 節在 Studio 上傳，瀏覽權限一樣先選「私人」。
+- 各集已經各自上架；合集不重跑字幕與旁白，字幕是各集字幕依時間接起來的。`;
+}
+
+/**
  * UPLOAD.md: only the operating steps in YouTube Studio. The checks that used to be a list here
  * (facts, links, thumbnail legibility, the owner's viewpoint, the disclosure) are the automatic
  * quality check and the package check now (docs/videos/HANDS-OFF.md); the disclosure answer is
  * in metadata.json and this page only says how to tick it. The dub tracks (docs/videos/DUBS.md)
  * keep their own section: which file goes where in Studio's 「語言」.
  */
-export function uploadChecklist({ metadata, captions, thumbnail, drama = false, disclosure = null, dubs = [], skippedDubs = {} }) {
+export function uploadChecklist({ metadata, captions, thumbnail, drama = false, disclosure = null, dubs = [], skippedDubs = {}, compilation = null }) {
   const captionLines = captions.length ? captions.map((file) => `   - \`${file}\``).join("\n") : "   - （還沒有字幕檔：先跑 captions）";
   const synthetic = typeof disclosure?.synthetic === "boolean" ? disclosure.synthetic : typeof metadata.contains_synthetic_media === "boolean" ? metadata.contains_synthetic_media : drama;
   const reason = disclosure?.reason ?? metadata.disclosure_reason ?? (drama ? "AI-generated shots and voices" : "slides read by a synthesized narration");
   return `# 上傳步驟：${metadata.title}
 
 這個資料夾就是要上傳的全部內容。自動品管與上傳包檢查已經做過；這裡只剩站主自己在 YouTube Studio 的操作，公開的時間也由站主決定。
-
+${compilation ? `\n${compilationSection(metadata, compilation)}\n` : ""}
 ## 1. 上傳（Studio → 建立 → 上傳影片）
 
 1. 上傳 \`final.mp4\`。**瀏覽權限先選「私人」**。

@@ -13,6 +13,7 @@ export const SITE_LABEL = "mokaair.com";
 const isText = (value) => typeof value === "string" && value.trim().length > 0;
 const isTextList = (value, min, max) => Array.isArray(value) && value.length >= min && value.length <= max && value.every(isText);
 const isPercent = (value) => typeof value === "number" && value >= 0 && value <= 100;
+const visibleLength = (value) => [...value.replace(/\*\*/g, "")].length;
 
 export function escapeHtml(text) {
   return String(text).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
@@ -106,12 +107,21 @@ export const TEMPLATE_SPECS = {
   // The next four came from a reference video (2026-09-26): concrete little artefacts instead of
   // one slide of text left up for half a minute.
   chat: {
-    check: (data) => [
-      data.title !== undefined && !isText(data.title) && "title must be text",
-      !(Array.isArray(data.messages) && data.messages.length >= 1 && data.messages.length <= 5 &&
-        data.messages.every((message) => message && ["left", "right"].includes(message.side) && isText(message.text) && (message.name === undefined || isText(message.name)))) &&
-        "messages must be 1 to 5 of { side: left|right, name?, text }",
-    ],
+    check: (data) => {
+      const messages = data.messages;
+      const valid = Array.isArray(messages) && messages.length >= 1 && messages.length <= 3 &&
+        messages.every((message) => message && ["left", "right"].includes(message.side) && isText(message.text) && (message.name === undefined || isText(message.name)));
+      // Hidden bubbles retain their height. Two named, two-line bubbles or three unnamed ones
+      // fit below a one-line heading at 1080p; a fourth named bubble does not.
+      return [
+        data.title !== undefined && !isText(data.title) && "title must be text",
+        isText(data.title) && (visibleLength(data.title) > 20 || data.title.includes("\n")) && "chat title must fit on one line (at most 20 characters)",
+        !valid && "messages must be 1 to 3 of { side: left|right, name?, text }",
+        valid && messages.length > 2 && messages.some((message) => message.name !== undefined) && "named chat messages are limited to 2",
+        valid && messages.some((message) => visibleLength(message.text) > 44 || message.text.includes("\n")) && "chat message text must fit in two lines (at most 44 characters)",
+        valid && messages.some((message) => message.name !== undefined && (visibleLength(message.name) > 10 || message.name.includes("\n"))) && "chat message names must fit on one line (at most 10 characters)",
+      ];
+    },
     capacity: (data) => data.messages.length,
   },
   quote: {

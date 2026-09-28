@@ -65,6 +65,8 @@ class ProjectIn(BaseModel):
     # An episode of a long series (docs/videos/SERIES.md). Left out, the stored ones stay.
     series_slug: str | None = Field(default=None, pattern=SERIES_SLUG_PATTERN)
     episode_number: int | None = Field(default=None, ge=1, le=10_000)
+    # The worker echoes the request it consumed. Older workers leave it out.
+    retry_acknowledged_id: UUID | None = None
 
 
 class ReviewFile(BaseModel):
@@ -125,6 +127,8 @@ class ProjectSummary(BaseModel):
     source_guide: str | None = None
     dropped_at: datetime | None = None
     dropped_note: str | None = None
+    retry_request_id: UUID | None = None
+    retry_acknowledged_id: UUID | None = None
     # What the drama route's generations have cost so far, from the media jobs (any month).
     media_usd: float = 0.0
     clip_seconds: int = 0
@@ -133,6 +137,10 @@ class ProjectSummary(BaseModel):
     # The series this video is an episode of, if any (docs/videos/SERIES.md).
     series_slug: str | None = None
     episode_number: int | None = None
+    # A compilation of a binge series (docs/videos/BINGE.md): its 1080p cut is too big for
+    # the review store and is downloaded from the worker's volume when it is there.
+    compilation: bool = False
+    download_available: bool = False
     # What the site last sent this video's YouTube side through the linked channel, step by step
     # (app/video_youtube/state.py public_state), or None when it never did.
     youtube_sync: dict[str, Any] | None = None

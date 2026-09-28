@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
+import { compilationDocument } from "./compilation.mjs";
 import { fixture } from "./fixtures/load.mjs";
 import { eachLine, spokenText, textHash, validateVideo } from "./schema.mjs";
 
@@ -77,4 +78,15 @@ test("eachLine walks lines in narration order and marks each scene's last line",
 test("spokenText prefers say over text", () => {
   assert.equal(spokenText({ text: "A", say: "B" }), "B");
   assert.equal(spokenText({ text: "A" }), "A");
+});
+
+test("a compilation is valid without a voice, shots, a cast or a look, and a stray compilation block is not", () => {
+  const doc = compilationDocument({ series: "wuxia", episodes: [{ slug: "wuxia-ep-1", number: 1, title: "初入山門" }] });
+  assert.deepEqual(validateVideo(doc), []);
+  assert.deepEqual(validateVideo({ ...doc, scenes: [] }).map((error) => error.path), ["scenes"], "the block implies the cards");
+  const slides = fixture();
+  slides.compilation = { series: "wuxia", episodes: ["a"] };
+  assert.ok(validateVideo(slides).map((error) => error.path).includes("format"));
+  const fresh = fixture();
+  assert.deepEqual(validateVideo(fresh), [], "a slides video is untouched");
 });

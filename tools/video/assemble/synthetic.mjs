@@ -4,14 +4,15 @@
 // The narration is a soft tone per line, as long as the line would take to say, laid on the
 // frame grid exactly as the tts stage lays real speech. A drama also gets a keyframe per shot
 // (ffmpeg's test pattern, a different hue per shot), a clip per shot that opens on that very
-// frame (one clip runs short of its lines and one long, so the fit is exercised both ways) and
-// a twenty-second two-tone music track.
+// frame (one clip runs short of its lines and one long, so the fit is exercised both ways; a
+// shot marked visual "still" gets no clip, only its keyframe named in the manifest, as the clips
+// stage does) and a twenty-second two-tone music track.
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
-import { clipsHash, isShot, lookHash, mixHash } from "../core/drama.mjs";
+import { clipsHash, isShot, lookHash, mixHash, shotVisual } from "../core/drama.mjs";
 import { buildTimeline, estimatedSamples, FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "../core/timeline.mjs";
 
 export const MUSIC_SECONDS = 20;
@@ -79,16 +80,27 @@ export function writeSyntheticKeyframes(doc, workdir, binary) {
 /**
  * One clip per shot that opens on the shot's keyframe, and clips/manifest.json as the clips
  * stage writes it. The second shot's clip is SHORT_BY_SECONDS shorter than its lines and the
- * third LONG_BY_SECONDS longer.
+ * third LONG_BY_SECONDS longer. A still shot's entry names its keyframe from
+ * keyframes/manifest.json instead (written by writeSyntheticKeyframes first).
  */
 export function writeSyntheticClips(doc, timeline, lexicon, workdir, binary) {
   mkdirSync(path.join(workdir, "clips"), { recursive: true });
   const shots = {};
   const order = [];
   let index = 0;
+  let keyframes = null;
   for (const scene of timeline.scenes) {
     const source = doc.scenes.find((each) => each.id === scene.id);
     if (!isShot(source)) continue;
+    if (shotVisual(source) === "still") {
+      keyframes ??= JSON.parse(readFileSync(path.join(workdir, "keyframes", "manifest.json"), "utf8"));
+      const keyframe = keyframes.shots[scene.id];
+      shots[scene.id] = { still: true, file: keyframe.file, sha256: keyframe.sha256 };
+      order.push({ id: scene.id, sha256: keyframe.sha256 });
+      // The short and long clips stay on the same shots whether or not an earlier one is a still.
+      index += 1;
+      continue;
+    }
     let seconds = clipSeconds(scene.end_frame - scene.start_frame);
     if (index === 1) seconds = Math.max(1, seconds - SHORT_BY_SECONDS);
     if (index === 2) seconds += LONG_BY_SECONDS;

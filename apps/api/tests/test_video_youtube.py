@@ -60,6 +60,7 @@ class FakeGoogle:
     """OAuth, channels, videos, captions, thumbnails and resumable uploads, all in memory."""
 
     refresh_tokens: set[str] = field(default_factory=lambda: {"refresh-1"})
+    issued_refresh_token: str = "refresh-1"
     granted_scope: str = SCOPE
     give_refresh_token: bool = True
     channel: dict[str, Any] | None = field(
@@ -106,6 +107,7 @@ class FakeGoogle:
             form = parse_qs(request.content.decode())
             if url.path == "/revoke":
                 self.revoked.append(form["token"][0])
+                self.refresh_tokens.clear()
                 return httpx.Response(200)
             if form["grant_type"] == ["authorization_code"]:
                 self.calls.append("token.code")
@@ -113,7 +115,8 @@ class FakeGoogle:
                     return httpx.Response(400, json={"error": "invalid_grant"})
                 body: dict[str, Any] = {"access_token": "access-1", "scope": self.granted_scope}
                 if self.give_refresh_token:
-                    body["refresh_token"] = "refresh-1"
+                    body["refresh_token"] = self.issued_refresh_token
+                    self.refresh_tokens.add(self.issued_refresh_token)
                 return httpx.Response(200, json=body)
             self.calls.append("token.refresh")
             if form["refresh_token"][0] not in self.refresh_tokens:
@@ -534,6 +537,31 @@ async def test_finishing_the_link_keeps_the_grant_and_reads_the_channel(site: Si
         view = await connection.connection_view(session)
     assert view.linked and view.channel_url == f"https://www.youtube.com/channel/{CHANNEL}"
     assert "refresh-1" not in view.model_dump_json()
+
+
+async def test_reconnecting_replaces_the_token_without_revoking_the_new_grant(site: Site) -> None:
+    await site.link()
+    site.google.issued_refresh_token = "refresh-2"
+    async with site.factory() as session:
+        started = await connection.start_link(
+            session, site.owner, OAuthStartIn(browser_binding=BINDING)
+        )
+    async with site.factory() as session:
+        await connection.finish_link(
+            session,
+            site.owner,
+            OAuthExchangeIn(
+                flow_id=started.flow_id,
+                state=started.state,
+                code="the-code",
+                browser_binding=BINDING,
+            ),
+        )
+    assert site.google.revoked == [], "revoking the old token also invalidates the new grant"
+    assert connection.stored_secrets(await site.connection())["refresh_token"] == "refresh-2"
+    async with site.factory() as session:
+        verified = await connection.verify(session)
+    assert verified.linked and verified.problem is None
 
 
 async def test_a_flow_is_good_once_and_only_in_the_browser_that_started_it(site: Site) -> None:

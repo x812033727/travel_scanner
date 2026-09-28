@@ -6,8 +6,8 @@ import { type ReactNode, useCallback, useEffect, useMemo, useState } from "react
 import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { AdminEmptyState, AdminErrorState, AdminStatusPill } from "@/components/admin-ui";
 import {
-  control, DUB_LOCALES, isBlocked, mp4Retired, needsOwner, type Project, type ProjectSummary, REFRESH_MS, readyToUpload, type Review, ReviewCard, SLUG,
-  UploadPackage, UploadedForm, fileUrl, useRefresh, useWhen, youtubeSyncStuck,
+  CompilationDownload, control, DUB_LOCALES, isBlocked, mp4Retired, needsOwner, type Project, type ProjectSummary, REFRESH_MS, readyToUpload, type Review, ReviewCard,
+  SLUG, UploadPackage, UploadedForm, fileUrl, useRefresh, useWhen, youtubeSyncStuck,
 } from "@/components/admin-video-review-card";
 import { AdminVideoSeries } from "@/components/admin-video-series";
 import { AdminVideoSettings } from "@/components/admin-video-settings";
@@ -20,6 +20,32 @@ import { api } from "@/lib/api";
 // these two are re-exported so older imports keep working. The drama tab (series and one-off
 // episodes) is admin-video-series.tsx; this file holds the tutorial list, the video page and the tabs.
 export { REFRESH_MS, fileUrl };
+
+function RetryVideo({ project, canManage, onRequested }: { project: Project; canManage: boolean; onRequested: () => void }) {
+  const t = useTranslations("admin.videoReviews");
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  if (!isBlocked(project) || project.dropped_at) return null;
+  const pending = Boolean(project.retry_request_id && project.retry_request_id !== project.retry_acknowledged_id);
+  const retry = async () => {
+    setBusy(true);
+    setError("");
+    try {
+      await api(`/admin/videos/${project.slug}/retry`, { method: "POST" });
+      onRequested();
+    } catch (problem) {
+      setError(t("retryVideoError", { message: problem instanceof Error ? problem.message : "" }));
+    } finally {
+      setBusy(false);
+    }
+  };
+  return <section aria-label={t("retryVideoTitle")} className="rounded-2xl border border-amber-600 bg-amber-50 p-4">
+    <p className="font-bold">{t("retryVideoTitle")}</p>
+    <p className="mt-2 text-sm leading-6">{pending ? t("retryVideoPending") : t("retryVideoHelp")}</p>
+    {error && <p role="alert" className="mt-2 text-sm text-red-800">{error}</p>}
+    {canManage && !pending && <div className="mt-3"><Button disabled={busy} onClick={() => void retry()}>{busy ? t("saving") : t("retryVideoButton")}</Button></div>}
+  </section>;
+}
 
 /** Stop a video for good, with a reason; the pipeline leaves it and its topic stays taken. */
 function DropVideo({ slug, onDropped }: { slug: string; onDropped: () => void }) {
@@ -138,7 +164,9 @@ function ProjectDetail({ slug, onBack }: { slug: string; onBack: () => void }) {
     {error && <AdminErrorState title={t("loadError")} detail={error} retry={load} retryLabel={t("retry")} />}
     {project && <>
       <header className="grid gap-2"><h2 className="text-2xl font-bold">{project.title}</h2>
-        {project.series_slug && <p className="text-sm text-[var(--muted)]">{t("episodeOf", { series: project.series_slug, number: project.episode_number ?? 0 })}</p>}
+        {project.series_slug && !project.compilation && <p className="text-sm text-[var(--muted)]">{t("episodeOf", { series: project.series_slug, number: project.episode_number ?? 0 })}</p>}
+        {project.series_slug && project.compilation && <p className="text-sm text-[var(--muted)]">{t("compilationOf", { series: project.series_slug })}</p>}
+        <CompilationDownload project={project} canManage={manage.allowed} />
         {project.youtube_video_id && <p className="text-sm">
           {t("youtube", { id: project.youtube_video_id })}
           {project.youtube_publish_at && ` · ${t("scheduledAt", { time: when(project.youtube_publish_at) })}`}
@@ -153,6 +181,7 @@ function ProjectDetail({ slug, onBack }: { slug: string; onBack: () => void }) {
         <p className="font-bold">{t("checklist")}</p>
         <ul className="mt-2 grid gap-1 text-sm sm:grid-cols-2">{project.checklist.map((item) => <li key={item.key} className="flex items-center gap-2">{item.done ? <CheckCircle2 aria-hidden size={16} className="text-[var(--teal)]" /> : <Circle aria-hidden size={16} className="text-[var(--muted)]" />}<span className={item.done ? "" : "text-[var(--muted)]"}>{item.label}</span></li>)}</ul>
       </section>}
+      <RetryVideo project={project} canManage={manage.allowed} onRequested={load} />
       {project.youtube_sync && <YoutubeSyncPanel slug={slug} sync={project.youtube_sync} canManage={manage.allowed && !dropped} onChange={load} />}
       {readyToUpload(project) && manage.allowed && <SendToYoutube slug={slug} confirmation={approvedPackage(project.reviews)} connection={connection} sync={project.youtube_sync} mp4Gone={retired} onSent={load} />}
       {project.youtube_video_id && !dropped && manage.allowed && connection?.linked && !syncRunning(project.youtube_sync) && <details className="rounded-2xl border border-[var(--line)] p-4">
@@ -222,6 +251,7 @@ function ReadyCard({ project, canManage, connection, onOpen, onLinked }: { proje
       {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
       {!detail && !error && <p className="text-sm text-[var(--muted)]">{t("readyLoading")}</p>}
       {confirmation && <UploadPackage slug={project.slug} review={confirmation} />}
+      <CompilationDownload project={project} canManage={canManage} />
       {project.youtube_sync && <YoutubeSyncPanel slug={project.slug} sync={project.youtube_sync} canManage={canManage} onChange={onLinked} />}
       {canManage && detail && <SendToYoutube slug={project.slug} confirmation={confirmation} connection={connection} sync={project.youtube_sync} mp4Gone={false} onSent={onLinked} />}
     </article>

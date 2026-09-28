@@ -105,14 +105,18 @@ async def list_videos(
     _ = user
     # The page is opened a few times a day: enough to let go of the mp4 of a video that has been
     # on YouTube for a week (HANDS-OFF.md), without a scheduler for one rule.
-    await service.prune_published_previews(session, await _store(session))
-    return await service.list_projects(session, video_format=format, series_slug=series)
+    runtime = await load_runtime_settings(session)
+    await service.prune_published_previews(session, service.review_store(runtime))
+    return await service.list_projects(
+        session, video_format=format, series_slug=series, work_dir=runtime.video_work_dir
+    )
 
 
 @admin_router.get("/{slug}", response_model=ProjectOut)
 async def video_detail(slug: str, user: ContentReader, session: Session) -> ProjectOut:
     _ = user
-    return await service.project_view(session, slug)
+    runtime = await load_runtime_settings(session)
+    return await service.project_view(session, slug, runtime.video_work_dir)
 
 
 @admin_router.post("/{slug}/reviews/{review_id}/decision", response_model=ReviewOut)
@@ -126,6 +130,12 @@ async def decide(
 async def drop(slug: str, payload: DropIn, user: ContentManager, session: Session) -> ProjectOut:
     """The owner stops this video; the pipeline leaves it and its topic counts as made."""
     return await service.drop_project(session, await _store(session), slug, user, payload)
+
+
+@admin_router.post("/{slug}/retry", response_model=ProjectOut)
+async def retry(slug: str, user: ContentManager, session: Session) -> ProjectOut:
+    """Ask the worker to resume a blocked video once on its next run."""
+    return await service.retry_project(session, slug, user)
 
 
 @admin_router.post("/{slug}/youtube", response_model=ProjectOut)
@@ -150,6 +160,21 @@ async def set_dubs(
 ) -> ProjectOut:
     """Which languages to dub this video in; the worker makes those tracks after the final cut."""
     return await service.set_dub_locales(session, slug, user, payload)
+
+
+@admin_router.get("/{slug}/download")
+async def download_final(slug: str, user: ContentManager, session: Session) -> FileResponse:
+    """A compilation's 1080p cut, streamed from the worker's volume with byte ranges
+    (docs/videos/BINGE.md); the review store holds only its 720p preview."""
+    _ = user
+    runtime = await load_runtime_settings(session)
+    path = await service.download_path(session, runtime.video_work_dir, slug)
+    return FileResponse(
+        path,
+        media_type="video/mp4",
+        filename=f"{slug}.mp4",
+        headers={"Cache-Control": "private, no-store", "X-Content-Type-Options": "nosniff"},
+    )
 
 
 @admin_router.get("/{slug}/files/{sha256}")

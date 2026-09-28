@@ -51,6 +51,7 @@ services:
       REDIS_URL: ${REDIS_URL:?set REDIS_URL}
       TRUST_PROXY_CLIENT_IP: "true"
       INTERNAL_PROXY_TOKEN: ${INTERNAL_PROXY_TOKEN:-}
+      VIDEO_WORK_DIR: /var/lib/mokaair/video-work
     command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
     ports: ["127.0.0.1:8090:8000"]
     volumes:
@@ -62,6 +63,10 @@ services:
       # The drama route's generated images, clips and music (app/video_media/storage.py), kept
       # 14 days so a redeploy between two stages does not lose what was paid for.
       - video_media:/var/lib/mokaair/video-media
+      # The video worker's work volume, read-only: a binge series' compilation is too big for
+      # the review store, so /admin/videos downloads its 1080p cut from <slug>/upload/final.mp4
+      # here (docs/videos/BINGE.md). The API reads nothing else from it.
+      - video_work:/var/lib/mokaair/video-work:ro
     group_add: ["${DEPLOY_AGENT_GID:-10002}"]
     security_opt: ["no-new-privileges:true"]
     cap_drop: ["ALL"]

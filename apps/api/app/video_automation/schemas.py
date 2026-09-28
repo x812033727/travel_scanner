@@ -92,7 +92,7 @@ class DramaSettings(StrictModel):
     drama_topic_scope: list[TopicWord] = Field(max_length=20)
     # A long series (docs/videos/SERIES.md); a page from before these existed sends the stored
     # values back unchanged, since it sends the whole drama object.
-    series_max_in_flight: int = Field(default=1, ge=1, le=2)
+    series_max_in_flight: int = Field(default=1, ge=1, le=6)
     series_script_gate: bool = True
     series_auto_continue: bool = True
     series_chapter_ahead: int = Field(default=2, ge=0, le=10)
@@ -396,18 +396,30 @@ SeriesTone = Literal[
 DocKind = Literal["setting", "outline", "chapter"]
 DocStatus = Literal["generating", "review", "approved", "rejected"]
 EpisodeStatus = Literal["planned", "ready", "queued", "started", "done", "skipped"]
-SeriesJobKind = Literal["setting", "outline", "chapter", "episode"]
-SeriesAction = Literal["plan-next-chapter", "start-next"]
+SeriesJobKind = Literal["setting", "outline", "chapter", "episode", "compilation"]
+SeriesAction = Literal["plan-next-chapter", "start-next", "compile"]
+# A binge series (docs/videos/BINGE.md): the genre preset, who leads, and the visual tier.
+SeriesGenre = Literal[
+    "xianxia-bonds", "rebirth-revenge", "system-game", "urban-return", "empress-rise", "custom"
+]
+SeriesLead = Literal["female", "male", "dual-male"]
+VisualTier = Literal["clips", "hybrid", "stills"]
 MAX_DOC_MD_CHARS = 200_000
 MAX_DOC_JSON_BYTES = 512 * 1024
 
 
 class SeriesIn(StrictModel):
-    """What the owner fills in to start a series; the setting book is planned from it."""
+    """What the owner fills in to start a series; the setting book is planned from it.
 
-    slug: str = Field(pattern=SERIES_SLUG_PATTERN)
-    title: str = Field(min_length=1, max_length=200)
-    premise: str = Field(min_length=1, max_length=4000)
+    The one-button form (docs/videos/BINGE.md) sends ``total_minutes`` and ``target_minutes``
+    and leaves ``slug``, ``title`` and ``premise`` blank: the server derives the episode count
+    and the chapter size, names the series after its genre, and lets the planner invent the
+    premise from the genre preset. The classic form fills everything in as before.
+    """
+
+    slug: str | None = Field(default=None, pattern=SERIES_SLUG_PATTERN)
+    title: str | None = Field(default=None, max_length=200)
+    premise: str = Field(default="", max_length=4000)
     aspects: list[SeriesAspect] = Field(default_factory=list, max_length=4)
     tone: SeriesTone = "dual-male-leads-subtext"
     style_preset: StylePreset = "cinematic-3d"
@@ -416,16 +428,17 @@ class SeriesIn(StrictModel):
     episodes_per_chapter: int = Field(default=10, ge=4, le=20)
     open_ended: bool = True
     note: str | None = Field(default=None, min_length=1, max_length=2000)
+    genre: SeriesGenre = "xianxia-bonds"
+    lead: SeriesLead = "dual-male"
+    hands_off: bool = False
+    compilation: bool = False
+    visual_tier: VisualTier = "clips"
+    total_minutes: int | None = Field(default=None, ge=30, le=480)
 
     @field_validator("title", "premise", "note")
     @classmethod
     def _trimmed(cls, value: str | None) -> str | None:
-        if value is None:
-            return None
-        text = value.strip()
-        if not text:
-            raise ValueError("must not be blank")
-        return text
+        return None if value is None else value.strip()
 
     @field_validator("aspects")
     @classmethod
@@ -433,6 +446,19 @@ class SeriesIn(StrictModel):
         if len(set(value)) != len(value):
             raise ValueError("aspects must not repeat")
         return value
+
+    @model_validator(mode="after")
+    def _enough_to_plan_from(self) -> Self:
+        if self.note is not None and not self.note:
+            raise ValueError("note must not be blank")
+        if self.title is not None and not self.title:
+            raise ValueError("title must not be blank")
+        # A genre preset carries its own premise seed; a custom series has nothing else.
+        if not self.premise and self.genre == "custom":
+            raise ValueError("a custom series needs a premise")
+        if self.total_minutes is None and not self.premise and self.genre == "xianxia-bonds":
+            raise ValueError("premise must not be blank")
+        return self
 
 
 class SeriesPatch(StrictModel):
@@ -450,6 +476,12 @@ class SeriesPatch(StrictModel):
     note: str | None = Field(default=None, max_length=2000)
     # Only these three: the others are set by the documents' decisions.
     status: Literal["active", "paused", "finished"] | None = None
+    # The binge switches (docs/videos/BINGE.md): the owner may take a series back into their
+    # own hands, or let it run, at any time; the tier is fixed once an episode started.
+    lead: SeriesLead | None = None
+    hands_off: bool | None = None
+    compilation: bool | None = None
+    visual_tier: VisualTier | None = None
 
 
 class SeriesDocOut(BaseModel):
@@ -503,6 +535,16 @@ class SeriesSummary(BaseModel):
     docs_pending: int
     media_usd: float = 0.0
     clip_seconds: int = 0
+    # The binge columns (docs/videos/BINGE.md); an older row reads as the classic series.
+    genre: SeriesGenre = "xianxia-bonds"
+    lead: SeriesLead = "dual-male"
+    hands_off: bool = False
+    compilation: bool = False
+    visual_tier: VisualTier = "clips"
+    total_minutes: int | None = None
+    compilation_slug: str | None = None
+    compilation_started_at: datetime | None = None
+    compilation_finished_at: datetime | None = None
     created_at: datetime
     updated_at: datetime
 
@@ -542,12 +584,18 @@ class SeriesActionOut(BaseModel):
 
 
 class SeriesDocSubmitIn(StrictModel):
-    """A document the worker planned: a new version that waits for the owner."""
+    """A document the worker planned: a new version that waits for the owner.
+
+    A hands-off series (docs/videos/BINGE.md) sends the checker's ``judge`` verdict with it:
+    the server approves the version on arrival when the verdict passes, or sends it back for a
+    rewrite with the verdict's problems as the note.
+    """
 
     kind: DocKind
     chapter_number: int = Field(default=0, ge=0, le=200)
     body_md: str = Field(min_length=1, max_length=MAX_DOC_MD_CHARS)
     body_json: dict[str, object] = Field(default_factory=dict)
+    judge: dict[str, object] | None = None
 
 
 class SeriesContextOut(BaseModel):
@@ -563,6 +611,9 @@ class SeriesContextOut(BaseModel):
     episodes: list[SeriesEpisodeOut]
     recaps: list[dict[str, object]]
     mysteries: list[dict[str, object]]
+    # Every finished episode's recap, one line each, for the compilation's title and
+    # description (docs/videos/BINGE.md); the three above are the full recent ones.
+    all_recaps: list[dict[str, object]] = Field(default_factory=list)
 
 
 class SeriesJob(BaseModel):
@@ -593,3 +644,37 @@ class SeriesEpisodeStartOut(BaseModel):
 class SeriesEpisodeRecapIn(StrictModel):
     recap: str = Field(min_length=1, max_length=4000)
     state: dict[str, object] = Field(default_factory=dict)
+
+
+class SeriesCompilationStartIn(StrictModel):
+    slug: str = Field(pattern=SLUG_PATTERN)
+
+
+class SeriesCompilationStartOut(BaseModel):
+    """The compilation the worker just started: the episodes to join, in order, and the
+    context its title, description and thumbnail are planned from."""
+
+    series: SeriesSummary
+    episodes: list[SeriesEpisodeOut]
+    context: SeriesContextOut
+
+
+class BudgetLine(BaseModel):
+    needed: int
+    monthly: int
+    ok: bool
+
+
+class BingeQuoteOut(BaseModel):
+    """What one binge series would take (docs/videos/BINGE.md): the shape the server derives
+    from the minutes, the media it needs at the settings' prices, and the month's budgets."""
+
+    episodes: int
+    chapters: int
+    episodes_per_chapter: int
+    clip_seconds: int
+    images: int
+    judge_calls: int
+    usd: float
+    budgets: dict[str, BudgetLine]
+    ok: bool

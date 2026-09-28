@@ -1,13 +1,13 @@
 ---
 id: 2026-09-27-localize-four-wordpress-presentation-guides-batch028
 title: Localize four WordPress presentation guides batch028
-status: review
+status: done
 priority: P2
 area: api
 owner: codex-batch028
 claimed_at: 2026-09-27T08:24:29Z
 created_at: 2026-09-27T08:24:22Z
-completed_at:
+completed_at: 2026-09-27T14:58:19Z
 branch: codex/article-localization-batch028-wordpress-design
 depends_on: []
 scope:
@@ -54,3 +54,5 @@ Some source article links point to `wordpress-themes-plugins-install` and `wordp
 2026-09-27 content handoff: Pair A author receipt SHA-256 `aebd871cf54ba6be37454381e62a84c6de65eedf4606ccc207bac511e6f42c20`; Pair B author receipt SHA-256 `351b0ac7150932c7bd16382fe2db9e9a30de0f47f4a47d4be72091b79926e992`. Reciprocal review receipts SHA-256 `53776bfd33c081f0d951d0b148cda5b2ddc5bbfcab7198fffa18264f44c1bd35` (Pair A reviewed by B) and `040e80f4b9580ab068647a87e0d4d177254dce7a7adaab3a859226b497246a5c` (Pair B reviewed by A) both PASS after simplifying regional zh-CN wording and avoiding an over-specific Japanese 404 claim. Independent 52-path integration review SHA-256 `452687b92ca30f2456f58adb219b9f29470371247bca129d91aa359795abcfe6` passed source/metadata preservation, 16 full documents, 48 images, 32 conditional links and rendered visual checks. Staged-Git blob review SHA-256 `2a7682e3b6879d3e2b283475b44c01101db88a1db9edb424fa32b4c7569fdef1` found 32 exact content bytes and 20 CRLF-to-LF-only text normalizations. Six numeric differences were reviewed as equivalent Han-word-to-digit renderings. Root structural verifier, four focused pack lints, `check:i18n`, `check:tasks`, API ruff/mypy, frontend lint/typecheck and production build all passed. Focused API tests: 208 passed, 122 skipped where Windows lacks isolated PostgreSQL; full web tests: 316 files and 3,402 tests passed. `test:tools` passed 411 with one skip on a rerun using an isolated Windows temp directory after an unrelated first-run `EPERM` rename failure in a video automation test. No production write yet.
 
 Content PR #852 opened from reviewed content commit `a58cb22d859d11c8f58ce1d05828de95341476ce` on main `e97172c297f537170f19fbe6e4813c505a22893a`; CI is pending and squash auto-merge is configured. A task-status-only follow-up commit leaves the 52 reviewed content blobs unchanged. Rebase receipt SHA-256 `c4cb25eb2c8e854f82fbcc25422c2901cef23972a074dbf57677bc2e84dea1c5` proves the initial 52 content blobs remained identical after rebasing. The task is in review; merging the PR will not publish any database locale rows.
+
+PR #852 merged at 2026-09-27T09:58:48Z as `6f66eebd49039d81735ca6658df8e804c4d59a80`, completing this content-PR task. Later production browser QA found four English labels overflowing cards in `wordpress-page-builder-choice/diagram-1-en.svg`. That post-merge defect is owned by the separate narrow task `2026-09-27-fix-batch028-english-page-builder-diagram`; it does not reopen this completed content scope. The guarded production release and hold remain governed by `2026-09-27-release-wordpress-presentation-guides-batch028`.

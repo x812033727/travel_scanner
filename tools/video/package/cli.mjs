@@ -2,16 +2,17 @@
 // been approved exactly as it is. metadata.json carries the disclosure answer (the same the
 // quality check writes), and the package is checked as soon as it is written
 // (docs/videos/HANDS-OFF.md §上傳包與「可以上架」); the publish review sends that check.
-import { copyFileSync, existsSync, mkdirSync, readdirSync, rmSync } from "node:fs";
+import { copyFileSync, existsSync, linkSync, mkdirSync, readdirSync, rmSync, statSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
 
 import { approvalState } from "../core/approvals.mjs";
+import { compilationChecksCurrent, isCompilation } from "../core/compilation.mjs";
 import { isDrama, lookHash, mixHash, subtitlesHash } from "../core/drama.mjs";
-import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
+import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { LOCALES } from "../core/schema.mjs";
 import { dubsForUpload, runCaptions } from "../core/stages.mjs";
-import { ARTIFACTS, loadProject, recordStage } from "../core/state.mjs";
+import { approvedEpisodes, ARTIFACTS, loadProject, recordStage } from "../core/state.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
 import { disclosureDecision } from "../qa/checks.mjs";
 import { readPackageReport } from "./check.mjs";
@@ -22,14 +23,30 @@ import { composeMetadata, uploadChecklist } from "./metadata.mjs";
  * the captions stage left out (missing or older than zh-TW), or that no translation exists at
  * all. The package check accepts either as a reason.
  */
-export function skippedCaptionLocales(manifest, written) {
+export function skippedCaptionLocales(manifest, written, { compilation = false } = {}) {
   const skipped = {};
   for (const locale of LOCALES) {
     if (written.includes(`captions/${locale}.srt`)) continue;
     const lines = manifest?.skipped?.[locale];
-    skipped[locale] = Array.isArray(lines) && lines.length ? lines : `no translation (i18n/${locale}.json missing)`;
+    // A compilation's manifest lists the episodes that have no file for the locale instead.
+    if (compilation) skipped[locale] = Array.isArray(lines) && lines.length ? `no caption file in episodes ${lines.join(", ")}` : "no caption file merged";
+    else skipped[locale] = Array.isArray(lines) && lines.length ? lines : `no translation (i18n/${locale}.json missing)`;
   }
   return skipped;
+}
+
+/**
+ * A compilation's final.mp4 is gigabytes, so upload/ holds a hard link to it rather than a
+ * copy; a file system that refuses the link (another volume) gets the copy.
+ */
+export function linkOrCopy(source, target) {
+  try {
+    linkSync(source, target);
+    return "linked";
+  } catch {
+    copyFileSync(source, target);
+    return "copied";
+  }
 }
 
 /**
@@ -49,11 +66,16 @@ export async function run(command, args, ctx) {
   const project = loadProject({ slug: values.slug, file: values.file, root: ctx.root });
   const { doc, lexicon } = project;
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
-  const speech = speechHash(doc, lexicon);
+  // A series' compilation (docs/videos/BINGE.md): its checks and captions are compile's, bound
+  // to the episodes' approved cuts, and its final.mp4 is linked rather than copied.
+  const compilation = isCompilation(doc);
+  const episodes = compilation ? approvedEpisodes(doc, resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home })) : null;
+  const speech = compilation ? null : speechHash(doc, lexicon);
   const checks = readJson(path.join(workdir, ARTIFACTS.checks), null);
-  const clips = isDrama(doc) ? readJson(path.join(workdir, ARTIFACTS.clips), null) : null;
-  if (!existsSync(path.join(workdir, ARTIFACTS.video)) || !checksCurrent(doc, lexicon, checks, clips)) {
-    ctx.stderr.write("final.mp4 is missing, failed its checks, or is older than the script; run assemble first\n");
+  const clips = isDrama(doc) && !compilation ? readJson(path.join(workdir, ARTIFACTS.clips), null) : null;
+  const current = compilation ? compilationChecksCurrent(doc, checks, episodes) : checksCurrent(doc, lexicon, checks, clips);
+  if (!existsSync(path.join(workdir, ARTIFACTS.video)) || !current) {
+    ctx.stderr.write(compilation ? "final.mp4 is missing, failed its checks, or was joined from other cuts or cards; run compile first\n" : "final.mp4 is missing, failed its checks, or is older than the script; run assemble first\n");
     return EXIT.usage;
   }
   const approval = await approvalState({ gate: "final", docDir: project.dir, workdir });
@@ -65,7 +87,14 @@ export async function run(command, args, ctx) {
 
   const timeline = readJson(path.join(workdir, ARTIFACTS.timeline));
   const captionsManifest = readJson(path.join(workdir, ARTIFACTS.captions), null);
-  const captions = captionsManifest?.speech_hash === speech ? captionsManifest : runCaptions({ slug: values.slug, file: values.file, root: ctx.root, workdir, now: ctx.now() });
+  let captions;
+  if (compilation) {
+    if (captionsManifest?.compilation_hash !== checks.compilation_hash) {
+      ctx.stderr.write("captions/manifest.json is missing or was merged for other cuts; run compile again\n");
+      return EXIT.usage;
+    }
+    captions = captionsManifest;
+  } else captions = captionsManifest?.speech_hash === speech ? captionsManifest : runCaptions({ slug: values.slug, file: values.file, root: ctx.root, workdir, now: ctx.now() });
   const { problems, metadata } = composeMetadata({ doc, timeline, translations: project.translations, pack: project.pack ?? null });
   if (problems.length) {
     for (const problem of problems) ctx.stdout.write(`ERROR ${problem}\n`);
@@ -75,7 +104,8 @@ export async function run(command, args, ctx) {
   const upload = path.join(workdir, "upload");
   rmSync(upload, { recursive: true, force: true });
   mkdirSync(path.join(upload, "captions"), { recursive: true });
-  copyFileSync(path.join(workdir, ARTIFACTS.video), path.join(upload, "final.mp4"));
+  const finalHow = compilation ? linkOrCopy(path.join(workdir, ARTIFACTS.video), path.join(upload, "final.mp4")) : "copied";
+  if (!compilation) copyFileSync(path.join(workdir, ARTIFACTS.video), path.join(upload, "final.mp4"));
   const thumbnail = existsSync(path.join(workdir, "thumbnail.jpg"));
   if (thumbnail) copyFileSync(path.join(workdir, "thumbnail.jpg"), path.join(upload, "thumbnail.jpg"));
   const captionFiles = [];
@@ -89,7 +119,7 @@ export async function run(command, args, ctx) {
   }
   // The dub tracks the owner picked and the worker finished (docs/videos/DUBS.md); a locale the
   // worker gave up on is named with its reason, so the owner knows not to wait for it.
-  const { dubs: tracks, skipped: skippedDubs } = dubsForUpload(project, workdir, speech);
+  const { dubs: tracks, skipped: skippedDubs } = compilation ? { dubs: [], skipped: {} } : dubsForUpload(project, workdir, speech);
   const dubs = tracks.map((dub) => {
     mkdirSync(path.join(upload, "dubs"), { recursive: true });
     copyFileSync(dub.file, path.join(upload, "dubs", path.basename(dub.file)));
@@ -98,21 +128,25 @@ export async function run(command, args, ctx) {
   // The disclosure answer goes last, in this order: the quality check writes the same two keys
   // the same way, so a qa run after package leaves metadata.json byte for byte as it is.
   const disclosure = disclosureDecision(doc);
+  // A compilation's card on the site offers the file for download instead of holding a copy
+  // (docs/videos/BINGE.md): the record says where, how big, and which cuts went in.
+  const compiled = compilation ? { compilation: true, download: "upload/final.mp4", size_bytes: statSync(path.join(upload, "final.mp4")).size, episodes: readJson(path.join(workdir, ARTIFACTS.compilation), null)?.episodes ?? checks.metrics?.episodes ?? [] } : null;
   const record = {
     ...metadata,
     final_sha256: approval.sha256,
     thumbnail: thumbnail ? "thumbnail.jpg" : null,
     captions: captionFiles,
-    skipped_caption_locales: skippedCaptionLocales(captions, captionFiles),
+    skipped_caption_locales: skippedCaptionLocales(captions, captionFiles, { compilation }),
     dubs,
     skipped_dub_locales: skippedDubs,
+    ...(compiled ?? {}),
     contains_synthetic_media: disclosure.synthetic,
     disclosure_reason: disclosure.reason,
   };
   atomicWrite(path.join(upload, "metadata.json"), `${JSON.stringify(record, null, 2)}\n`);
-  atomicWrite(path.join(upload, "UPLOAD.md"), uploadChecklist({ metadata, captions: captionFiles, thumbnail, drama: isDrama(doc), disclosure, dubs, skippedDubs }));
-  recordStage(workdir, "package", { locales: [metadata.default_language, ...Object.keys(metadata.localizations)], captions: captionFiles.length, dubs: dubs.map((dub) => dub.locale) }, ctx.now());
-  ctx.stdout.write(`upload package: ${upload}\n  final.mp4, ${thumbnail ? "thumbnail.jpg, " : ""}${captionFiles.length} caption files, ${1 + Object.keys(metadata.localizations).length} locales of title and description${dubs.length ? `, ${dubs.length} dub tracks (${dubs.map((dub) => dub.locale).join(", ")})` : ""}\n  follow ${path.join(upload, "UPLOAD.md")}\n`);
+  atomicWrite(path.join(upload, "UPLOAD.md"), uploadChecklist({ metadata: record, captions: captionFiles, thumbnail, drama: isDrama(doc), disclosure, dubs, skippedDubs, compilation: compiled ? { episodes: compiled.episodes.length, size_bytes: compiled.size_bytes } : null }));
+  recordStage(workdir, "package", { locales: [metadata.default_language, ...Object.keys(metadata.localizations)], captions: captionFiles.length, dubs: dubs.map((dub) => dub.locale), ...(compiled ? { compilation: true, final: finalHow, size_bytes: compiled.size_bytes } : {}) }, ctx.now());
+  ctx.stdout.write(`upload package: ${upload}\n  final.mp4${compiled ? ` (${finalHow}, ${(compiled.size_bytes / 1024 ** 3).toFixed(2)} GB, ${compiled.episodes.length} episodes)` : ""}, ${thumbnail ? "thumbnail.jpg, " : ""}${captionFiles.length} caption files, ${1 + Object.keys(metadata.localizations).length} locales of title and description${dubs.length ? `, ${dubs.length} dub tracks (${dubs.map((dub) => dub.locale).join(", ")})` : ""}\n  follow ${path.join(upload, "UPLOAD.md")}\n`);
   const { report } = await readPackageReport(workdir);
   for (const each of report.items) ctx.stdout.write(`  [${each.ok ? "x" : " "}] ${each.id}: ${each.detail}\n`);
   if (!report.ok) {
