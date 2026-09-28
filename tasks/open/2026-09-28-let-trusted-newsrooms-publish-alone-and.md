@@ -15,6 +15,7 @@ scope:
   - apps/api/app/news_automation/pipeline.py
   - apps/api/app/news_automation/policy.py
   - apps/api/app/news_automation/backfill_cli.py
+  - apps/api/app/news_automation/sources.json
   - apps/api/tests/test_news_automation.py
   - apps/api/tests/test_news_backfill_cli.py
 ---
@@ -50,9 +51,9 @@ follow-ups to the extractor fix (`2026-09-28-news-extractor-keeps-tag-lists-and`
 - [x] Policy and pipeline.
 - [x] Backfill option.
 - [x] Tests.
-- [ ] After deploy: set `auto_publish_alone` on TechCrunch AI, The Verge AI and CoinDesk. The
-      auto-mode classifier blocked the `sources.json` edit, so it waits for the owner to allow
-      it.
+- [x] `sources.json`: `auto_publish_alone` on TechCrunch AI, The Verge AI and CoinDesk (the
+      owner confirmed it again after the auto-mode classifier blocked the first edit).
+- [ ] After deploy: `sources_cli --apply` pushes the flag to production.
 - [ ] After deploy, on the host:
       `backfill_cli --since 2026-09-01 --jev-quota-holds --apply` and
       `backfill_cli --since 2026-09-15 --refetch-source ... --apply` for Cloudflare blog,
