@@ -53,3 +53,7 @@ node tools/video/cli.mjs status --slug vibe-coding-first-website-2026 --workdir 
 - 官方數字都以撰稿當天重查為準，brief 的「會過期的事實」列了每個要重查的網址。
 - 全自動路線目前不做螢幕錄影，用投影片描述流程；等 `2026-09-24-video-screencast-steps` 落地才有手把手螢幕操作。
 - 記憶點：上線前用純文字編輯器搜自己的電話、地址、像金鑰的字串；原始碼所有人都看得到。
+
+## Progress (2026-09-28, claude-opus-5-5)
+
+Pipeline stages 1–4 done: `video.json` (option A, 8 chapters, ~8.0 min, lint 0/0), `claims.md` (c1–c9), `verify-1.md`. ChatGPT's website feature is named only at the "以官網為準" level because its help page returned 403 today; everything else about Artifacts, Canvas, GitHub Pages and Cloudflare Pages was confirmed on the official pages. Lexicon gained `vibe`, `coding`, `GB`, `Git`, `NC`, `ND`. Remaining stages need the owner setup; next is `review-push --slug vibe-coding-first-website-2026 --gate outline`.
