@@ -282,6 +282,1094 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "zh-CN": {
+      "title": "Kit 电子报流程：订阅表单、受众细分与自动邮件",
+      "description": "Kit 的表单、标签、受众细分、自动邮件和单次广播各有用途；完成设置不等于订阅者已经收到正确的内容。本文以原创衣物修补电子报为例，说明确认邮件的两个开关、Tag 与 Segment 的逻辑、Sequence 和 Visual Automation 的连接方式，以及发送前应如何测试。文章还区分名单导入与公开表单，附有比较表和原创图解，供小型内容创作者逐步验收。",
+      "hero": {
+        "src": "/guides/kit-newsletter-setup/hero-zh-cn.jpg",
+        "alt": "Mokaair 原创插图将订阅表单、受众资料夹和邮件文件连在一起，展示 Kit 电子报流程。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "一位衣物修补创作者希望新读者先收到工具介绍，再按兴趣学习补洞或更换纽扣。如果邮件都写好了，却没有连接订阅入口，读者可能一封也收不到；如果入口和受众细分接错，读者又可能同时收到不相关的教程。使用 Kit 时，关键是明确各个对象负责什么。"
+        },
+        {
+          "type": "paragraph",
+          "text": "下文以原创修补电子报为例，根据 2026 年 9 月 14 日查阅的 Kit 官方文档整理。界面名称以当时文档为准。我们没有登录用户账户、导入真实名单或实际发送邮件；自动化功能是否可用，仍须按自己的方案和账户核对。"
+        },
+        {
+          "type": "heading",
+          "text": "先画清表单、订阅者与邮件的关系",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Form 是收集订阅的入口；Landing Page 是可以单独分享的订阅页面。Kit 将订阅者保存在同一份名单中，再用 Tag 和 Segment 组织他们。增加一种兴趣不必建立一份互不关联的新名单。先按读者任务规划数据，可减少后续重复维护。"
+        },
+        {
+          "type": "paragraph",
+          "text": "示例电子报起初只提供补洞和更换纽扣两种偏好，让读者自行选择。表单文案应明确说明读者会收到入门教程和后续修补内容；不能只说可下载一张图片，却暗中加入长期促销。姓名如非必要，可设为选填；少收集资料也能降低邮件个性化出错的风险。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先做一张对照表，写下每个入口的名称、数据字段、对应 Tag、确认后预计收到的邮件和退订方式。这是团队自己的设计记录，并非 Kit 自动生成的保证。每增加一个入口或合作活动，都要查清新数据会流入哪个现有流程。"
+        },
+        {
+          "type": "heading",
+          "text": "不要把确认邮件的两个开关看反",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "按照当前官方说明，在 Form 或 Landing Page 的 Settings 中打开 Confirmation Email 标签页。若要保留双重确认，应勾选 Send confirmation email，并保持 Auto-confirm new subscribers 未勾选。若勾选后者，读者无需点击确认按钮，也会自动成为已确认订阅者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "点击确认按钮后，可以将读者导向某个网址或提供文件下载。原创修补教程可先指向工具清单页面，同时明确告知订阅已完成、之后会收到什么邮件，以及如何退出。成功下载不代表读者已经同意所有数据用途；也不要只为缩短流程就取消先前承诺的确认步骤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公开表单与导入名单是不同入口。Kit 官方说明，导入到表单的订阅者会自动确认为已订阅；即使该表单启用了双重确认，也不会因此补发确认邮件。迁移既有名单前，要核对原有选择和数据来源，不能将导入视为重新取得订阅同意。"
+        },
+        {
+          "type": "heading",
+          "text": "用 Tag 记录状态，用 Segment 表达条件",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Tag 是附在订阅者身上的标签，通常会保留，直到有人手动或通过自动化将其移除。Segment 则根据筛选条件动态纳入或排除人员。修补电子报可用 Tag 记录读者偏好补洞或更换纽扣，再用 Segment 组合出本期实际需要发送的受众。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如，某封邮件只发给喜欢补洞、且尚未完成入门教程的读者，应先用白话写清这个条件，再进行设置。测试记录要覆盖同时满足两项、只满足其中一项、两项都不满足的情况。预计人数看起来差不多，并不能证明 AND、OR 和排除逻辑都正确。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Tag 可以作为 Visual Automation 的触发条件；Segment 本身不能直接充当同类触发入口。若要按复合条件走不同路径，应使用自动流程支持的条件设置。命名 Tag 时也要区分兴趣和已完成状态，避免把领取过教程误认为读者从此不想再看该主题。"
+        },
+        {
+          "type": "heading",
+          "text": "自动邮件需要启用邮件、序列和入口",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Sequence 是一组按计划发送的邮件；Visual Automation 则根据事件让订阅者进入流程，例如加入表单后进入某个 Sequence。可以先制作原创的工具认识、练习准备和常见错误教程，再把新订阅入口连接到这组邮件，不必一开始就设计大量分支。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Sequence 中的每封邮件都需要设为 Published，Sequence 本身需要设为 Active；Visual Automation 还有自己的启用状态。保存了邮件内容、能在序列中看到邮件、已经接好流程线，是三个不同层次的完成条件。漏掉其中一项时，反复重发确认邮件不能代替排查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Kit 提醒，自动流程不会追溯处理启用前的所有订阅者；但将名单导入会触发流程的表单或 Tag，可能让导入者进入流程。增加教程或迁移名单时，先核对入口和发送计划，再用自己控制的地址测试。不要默认让既有读者重新收到整套欢迎邮件。"
+        },
+        {
+          "type": "heading",
+          "text": "分别选择 Broadcast 的邮件发送与网页发布",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Broadcast 适合单次内容，例如本月修补聚会通知。Kit 目前允许选择发送电子邮件、发布为网页，或两者同时进行。完成草稿的主题、预览文字和正文后，还要到发布设置核对交付方式；私人通知不应因为忽略选项而成为公开页面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "默认收件人是所有已确认订阅者，所以每次向特定受众发送前，都应再次核对筛选条件、排除条件和人数。示例聚会通知可先只发给对相关主题感兴趣的读者，但一个 Tag 并非读者永久愿意接收所有相关邮件的证明。还要核对发件地址、时区和预定时间，别将测试设置留在正式发送中。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Kit 提供桌面、手机和指定订阅者预览，也可以发送测试邮件；但部分个性化内容及 Link Trigger 的行为不会在普通预览邮件中完整运行。若需端到端验收，可另建只发往自己控制地址的版本，核对收件范围后再检查链接行为。外观预览无误，并不等于所有自动化都已验证。"
+        },
+        {
+          "type": "heading",
+          "text": "先测试异常情况，再扩大名单",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "测试应包含填表但未确认、完成确认、同时有两种偏好、已收到教程，以及提出退订的读者。逐项记录预期会收到与不应收到的邮件，再查看订阅者状态及其在流程中的位置。测试前先确认测试入口没有接到真实订阅者，避免验收干扰正在运行的 Sequence。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可在 Kit 的 Email 设置中进入 Verified Sending Domains，按平台提供的 DNS 记录验证发件域名。应由有权限维护 DNS 的人员核对主机名和值，再回到 Kit 完成验证；不要复制其他域名的记录。域名验证是发件身份与投递设置的一环，并不保证每封邮件都会进入主要收件箱。"
+        },
+        {
+          "type": "paragraph",
+          "text": "读者没有收到邮件时，先查确认状态，再查入口是否在自动流程启用后触发、Sequence 的计划与排除条件，最后查看投递状态。先找出哪一步不符合预期，再修改对应设置。每次只改动能解释问题的部分，并保存测试与修正记录，方便下一位维护者接手。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "用清楚易懂的语言列出每个入口、偏好、邮件内容和退出条件。",
+            "在表单中设置确认邮件，核对自动确认开关和确认后的去向。",
+            "建立 Tag 和 Segment，连接已 Published 且 Active 的 Sequence 与已启用的自动流程。",
+            "测试不同订阅状态、收件范围和实际链接，再安排正式发送。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/kit-newsletter-setup/diagram-1-zh-cn.svg",
+          "alt": "四张卡片分别展示表单确认、Tag 与 Segment、Sequence 流程和发送验收；订阅入口必须符合每封邮件的收件条件。",
+          "width": 1600,
+          "height": 900,
+          "caption": "先让自己控制的测试地址走完预期路径，再连接真实订阅来源。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Kit 对象",
+            "主要职责",
+            "应避免的误解"
+          ],
+          "rows": [
+            [
+              "Form / Landing Page",
+              "订阅入口与确认设置",
+              "以为导入名单也会补做双重确认"
+            ],
+            [
+              "Tag",
+              "记录偏好或流程状态",
+              "以为加了 Tag 就永久符合所有收件条件"
+            ],
+            [
+              "Segment",
+              "按条件动态组织人员",
+              "直接将其用作自动流程的触发入口"
+            ],
+            [
+              "Sequence",
+              "按设置发送一组邮件",
+              "以为邮件草稿存在就一定会发出"
+            ],
+            [
+              "Visual Automation",
+              "连接入口、动作与条件",
+              "以为启用后会追溯所有历史订阅者"
+            ],
+            [
+              "Broadcast",
+              "单次邮件或网页内容",
+              "以为发邮件与公开网页始终是同一动作"
+            ]
+          ],
+          "caption": "根据 Kit 官方文档整理各对象的职责；具体可用功能及实际流程仍须在自己的账户中验收。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "导入前先核对自动流程入口",
+          "text": "导入不是中性的备份操作：加入指定 Form 或 Tag 可能触发既有流程，而且即使表单启用双重确认，也不会向导入的订阅者补发确认邮件。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先规划订阅承诺，并验收退订方式。",
+              "kind": "life",
+              "slug": "email-newsletter-planning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理每期内容和事实核对责任。",
+              "kind": "life",
+              "slug": "content-marketing-calendar"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用一致的链接标记辨识邮件流量来源。",
+              "kind": "life",
+              "slug": "utm-link-conventions"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Kit：确认邮件与自动确认设置",
+          "url": "https://help.kit.com/en/articles/2502655-the-confirmation-email",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit：Tag 和 Segment 的用途",
+          "url": "https://help.kit.com/en/articles/4257108-tags-and-segments-in-kit-and-when-to-use-which",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit：导入订阅者对确认及自动流程的影响",
+          "url": "https://help.kit.com/en/articles/5027047-importing-subscribers-into-kit-what-to-know-faqs",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit：建立并发送 Email Sequence",
+          "url": "https://help.kit.com/en/articles/2502629-creating-and-sending-an-email-sequence-in-kit",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit：Visual Automation 的入口与启用",
+          "url": "https://help.kit.com/en/articles/5523023-how-to-create-your-first-kit-visual-automation",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit：建立、发送与发布 Broadcast",
+          "url": "https://help.kit.com/en/articles/2934648-creating-sending-and-publishing-broadcasts",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit：只向测试订阅者发送及预览限制",
+          "url": "https://help.kit.com/en/articles/4212107-how-to-send-a-broadcast-to-a-single-subscriber",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit：验证发件域名",
+          "url": "https://help.kit.com/en/articles/2502558-verify-your-domain-to-optimize-your-deliverability",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "A Kit newsletter workflow: forms, segments, and automated emails",
+      "description": "Kit forms, Tags, Segments, automated emails, and one-time Broadcasts serve different purposes; finishing setup does not prove that subscribers receive the right messages. Using an original clothing-repair newsletter, this guide explains the confirmation switches, Tag and Segment logic, how a Sequence connects to a Visual Automation, and tests before sending. It distinguishes list imports from public forms and includes a comparison table and diagram for small creators to verify the workflow.",
+      "hero": {
+        "src": "/guides/kit-newsletter-setup/hero-en.jpg",
+        "alt": "Original Mokaair illustration of a signup form, audience folders, and email documents connected in a Kit newsletter workflow.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A clothing-repair creator wants new readers to receive a tool introduction first, then lessons on patching holes or replacing buttons according to their interests. If the emails are written but the signup entry point is not connected, readers may receive nothing. If entry and segmentation are connected incorrectly, they may receive unrelated lessons together. The key in Kit is to give each object a clear job."
+        },
+        {
+          "type": "paragraph",
+          "text": "This original repair newsletter is an example based on Kit's official documentation checked on September 14, 2026. Interface names follow that documentation. We did not sign in to a user's account, import a real list, or send an actual email; check the automation features available to your own plan and account."
+        },
+        {
+          "type": "heading",
+          "text": "Map the relationship between forms, subscribers, and emails",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A Form collects subscriptions; a Landing Page is a signup page you can share on its own. Kit keeps subscribers in one list and organizes them with Tags and Segments. A new interest does not require a separate, disconnected list. Plan the data around what readers need so that you do not create duplicate maintenance work."
+        },
+        {
+          "type": "paragraph",
+          "text": "The example newsletter starts with only two preferences, patching holes and replacing buttons, and lets readers choose. Form copy should clearly say that they will receive introductory lessons and later repair content. Do not offer only a downloadable image while quietly adding people to long-term promotions. Make the name field optional if it is not needed; collecting less information also reduces personalization mistakes."
+        },
+        {
+          "type": "paragraph",
+          "text": "First make a mapping table with each entry point's name, data fields, matching Tag, email expected after confirmation, and way to unsubscribe. This is your team's design record, not a guarantee generated by Kit. Whenever you add an entry point or partner campaign, check where its new data flows in the existing workflow."
+        },
+        {
+          "type": "heading",
+          "text": "Do not confuse the two confirmation switches",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Under the current official instructions, open the Confirmation Email tab in the Settings for a Form or Landing Page. To retain double opt-in, check Send confirmation email and leave Auto-confirm new subscribers unchecked. If the latter is checked, a reader becomes confirmed automatically without clicking the confirmation button."
+        },
+        {
+          "type": "paragraph",
+          "text": "After clicking the confirmation button, readers can be sent to a URL or offered a file download. The original repair lesson could lead to a tool-list page that clearly confirms the subscription, describes later emails, and explains how to leave. A successful download does not imply consent to every use of the data. Do not remove a promised confirmation step merely to shorten the flow."
+        },
+        {
+          "type": "paragraph",
+          "text": "A public form and an import are different entry points. Kit's guidance says subscribers imported into a form are automatically confirmed, even when that form uses double opt-in; the import does not send them a new confirmation email. Before moving an existing list, verify the original choices and data source. Importing is not a way to obtain fresh subscription consent."
+        },
+        {
+          "type": "heading",
+          "text": "Use Tags for states and Segments for conditions",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A Tag attaches a label to a subscriber and generally remains until someone or an automation removes it. A Segment dynamically includes or excludes people according to its filters. The repair newsletter can use Tags to record an interest in patching or button replacement, then combine conditions in a Segment to select the readers for a particular issue."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, an email might be intended only for readers interested in patching who have not finished the introductory lesson. Write that condition in plain language before configuring it. Test with records that meet both conditions, only one, and neither. A plausible estimated audience size does not prove that AND, OR, and exclusion logic is correct."
+        },
+        {
+          "type": "paragraph",
+          "text": "A Tag can trigger a Visual Automation; a Segment itself cannot be used directly as the same kind of trigger. If readers need different paths based on combined conditions, use supported conditions inside the automation. Keep interest Tags distinct from completion-state Tags so receiving one lesson does not imply that a reader never wants the topic again."
+        },
+        {
+          "type": "heading",
+          "text": "Automated emails need active messages, a sequence, and an entry point",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A Sequence is a scheduled set of emails. A Visual Automation moves subscribers into a workflow in response to events, such as adding someone to a Sequence after they join a form. You can begin with original lessons introducing tools, preparing an exercise, and avoiding common mistakes, then connect the new signup entry point to that set of emails. Many branches are not needed at the start."
+        },
+        {
+          "type": "paragraph",
+          "text": "Each email in a Sequence must be Published, the Sequence itself must be Active, and the Visual Automation has its own activation state. Saving email text, seeing a message in the Sequence, and connecting the workflow lines are different completion checks. If one is missing, repeatedly resending a confirmation email is not a diagnosis."
+        },
+        {
+          "type": "paragraph",
+          "text": "Kit warns that an automation does not retroactively process every subscriber from before activation. Importing into a form or Tag that triggers it, however, may cause imported subscribers to enter the workflow. When adding lessons or moving a list, check entry points and schedules first, then use an address you control for testing. Do not send existing readers through the whole welcome series again by default."
+        },
+        {
+          "type": "heading",
+          "text": "Choose Broadcast email delivery and web publication separately",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A Broadcast suits one-time content, such as a notice about this month's repair meetup. Kit currently allows delivery as an email, publication as a web page, or both. After writing the subject, preview text, and body in the draft, check the delivery choice in the publishing settings. A private notice should not become a public page because that option was overlooked."
+        },
+        {
+          "type": "paragraph",
+          "text": "The default recipients are all confirmed subscribers, so verify the filters, exclusions, and count every time you send to a Segment. The example meetup notice could go only to readers interested in its topic, but a Tag is not permanent proof that someone wants every related email. Also check the sender address, time zone, and scheduled time so test settings do not remain in the final send."
+        },
+        {
+          "type": "paragraph",
+          "text": "Kit provides desktop, mobile, and specific-subscriber previews and can send a test email. Some personalization and Link Trigger behavior do not work fully in a normal preview email. For end-to-end testing, make a separate version addressed only to an address you control, verify its recipient scope, and then check link behavior. A good-looking preview does not validate every automation."
+        },
+        {
+          "type": "heading",
+          "text": "Test failure cases before expanding the list",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Test a form submission without confirmation, a completed confirmation, a reader with both preferences, someone who already received the lesson, and a person asking to unsubscribe. Record which emails each case should and should not receive, then inspect subscriber status and workflow position. Before testing, ensure the test entry point is not connected to real subscribers, so verification does not disturb an active Sequence."
+        },
+        {
+          "type": "paragraph",
+          "text": "To verify a sending domain, go to Verified Sending Domains in Kit's Email settings and use the DNS records Kit provides. Someone authorized to maintain DNS should verify the hostnames and values before returning to Kit to confirm them; do not copy records from another domain. Domain verification is part of sender identity and delivery setup, not a promise that every message will reach the primary inbox."
+        },
+        {
+          "type": "paragraph",
+          "text": "If a reader does not receive an email, check confirmation status first, then whether the entry point triggered after activation, the Sequence schedule and exclusions, and finally delivery status. Find the first step that differs from the expected path before changing settings. Change only what explains the problem and keep a record of tests and fixes for the next maintainer."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Describe every entry point, preference, email, and exit condition in plain language.",
+            "Set the confirmation email on the form and check the auto-confirm switch and post-confirmation destination.",
+            "Create Tags and Segments, then connect a Published and Active Sequence and an active automation.",
+            "Test subscription states, recipient scope, and actual links before scheduling the real send."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/kit-newsletter-setup/diagram-1-en.svg",
+          "alt": "Four cards show form confirmation, Tags and Segments, the Sequence workflow, and sending checks; signup entry points must match each email's recipient conditions.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Let an address you control complete the expected path before connecting real subscription sources.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Kit object",
+            "Main responsibility",
+            "Mistake to avoid"
+          ],
+          "rows": [
+            [
+              "Form / Landing Page",
+              "Subscription entry point and confirmation settings",
+              "Assuming an import will also perform double opt-in"
+            ],
+            [
+              "Tag",
+              "Record a preference or workflow state",
+              "Assuming a Tag permanently satisfies every sending condition"
+            ],
+            [
+              "Segment",
+              "Dynamically group people by conditions",
+              "Using it directly as an automation trigger"
+            ],
+            [
+              "Sequence",
+              "Send a scheduled set of emails",
+              "Assuming a saved email draft is guaranteed to send"
+            ],
+            [
+              "Visual Automation",
+              "Connect entry points, actions, and conditions",
+              "Assuming activation processes every past subscriber"
+            ],
+            [
+              "Broadcast",
+              "One-time email or web content",
+              "Assuming email delivery and public web publication are always one action"
+            ]
+          ],
+          "caption": "Roles summarized from Kit's official documentation; verify the available features and actual workflow in your account."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Check automation entry points before importing",
+          "text": "An import is not a neutral backup action: adding people to a designated form or Tag can trigger an existing workflow, and enabling double opt-in on the form does not send imported subscribers a confirmation email."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Plan the subscription promise and test unsubscribing first.",
+              "kind": "life",
+              "slug": "email-newsletter-planning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Organize each issue's content and fact-checking responsibility.",
+              "kind": "life",
+              "slug": "content-marketing-calendar"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Use consistent link tags to identify where email traffic came from.",
+              "kind": "life",
+              "slug": "utm-link-conventions"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Kit: confirmation email and auto-confirm settings",
+          "url": "https://help.kit.com/en/articles/2502655-the-confirmation-email",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit: what Tags and Segments do",
+          "url": "https://help.kit.com/en/articles/4257108-tags-and-segments-in-kit-and-when-to-use-which",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit: confirmation and automation effects of importing subscribers",
+          "url": "https://help.kit.com/en/articles/5027047-importing-subscribers-into-kit-what-to-know-faqs",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit: creating and sending an email Sequence",
+          "url": "https://help.kit.com/en/articles/2502629-creating-and-sending-an-email-sequence-in-kit",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit: Visual Automation entry points and activation",
+          "url": "https://help.kit.com/en/articles/5523023-how-to-create-your-first-kit-visual-automation",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit: creating, sending, and publishing a Broadcast",
+          "url": "https://help.kit.com/en/articles/2934648-creating-sending-and-publishing-broadcasts",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit: sending only to a test subscriber and preview limitations",
+          "url": "https://help.kit.com/en/articles/4212107-how-to-send-a-broadcast-to-a-single-subscriber",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit: verifying a sending domain",
+          "url": "https://help.kit.com/en/articles/2502558-verify-your-domain-to-optimize-your-deliverability",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Kitのメールマガジン運用：登録フォーム、セグメント、自動メール",
+      "description": "Kitのフォーム、Tag、Segment、自動メール、単発のBroadcastにはそれぞれ役割があります。設定を終えただけでは、読者に適切なメールが届くとは限りません。衣類の繕いを題材にしたオリジナルのメールマガジンを例に、確認メールの二つのスイッチ、TagとSegmentの条件、SequenceとVisual Automationの接続、配信前のテストを説明します。リストのインポートと公開フォームの違いも、比較表と独自の図を使って小規模な制作者向けに確認します。",
+      "hero": {
+        "src": "/guides/kit-newsletter-setup/hero-ja.jpg",
+        "alt": "Mokaair制作の登録フォーム、読者グループのフォルダー、メール文書をつないだ図。Kitのメールマガジンの流れを示す。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "衣類を繕う制作者は、新しい読者にまず道具の紹介を届け、その後は穴の補修かボタンの付け替えか、関心に合う内容を読んでもらいたいと考えています。メールをすべて書いても登録入口につながっていなければ、一通も届かないかもしれません。入口と読者の振り分けを誤ると、無関係な教材まで同時に届きます。Kitでは各要素の役割を明確にすることが大切です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下は、2026年9月14日に確認したKitの公式文書に基づく、オリジナルの繕いメールマガジンの例です。操作名は確認時の文書に合わせています。利用者のアカウントへのログイン、実際のリストのインポート、メールの実送信は行っていません。自動化機能の利用範囲は、自分のプランとアカウントで確認してください。"
+        },
+        {
+          "type": "heading",
+          "text": "フォーム、読者リスト、メールの関係を先に描く",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Formは購読登録の入口、Landing Pageは単独で共有できる登録ページです。Kitは購読者を一つのリストに置き、TagとSegmentで整理します。関心の種類が増えるたびに、互いにつながらない別のリストを作る必要はありません。読者の目的からデータを設計すると、後の重複管理を減らせます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この例では、最初は穴の補修とボタンの付け替えの二つの好みだけを用意し、読者自身に選んでもらいます。フォームには入門教材とその後の繕い情報が届くことを明記します。画像一枚の受け取りだけを案内して、気づかれないまま長期の宣伝配信に加えてはいけません。氏名が不要なら任意項目にすると、収集する情報もパーソナライズの誤りも減らせます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "まず、各入口の名前、入力項目、対応するTag、確認後に届くはずのメール、配信停止の方法を表にします。これはチームの設計記録であり、Kitが自動的に保証するものではありません。新しい入口や共同企画を追加するたびに、そのデータが既存のどの流れに入るか確認します。"
+        },
+        {
+          "type": "heading",
+          "text": "確認メールの二つのスイッチを取り違えない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "現在の公式手順では、FormまたはLanding PageのSettingsからConfirmation Emailタブを開きます。ダブルオプトインを維持するには、Send confirmation emailをオンにし、Auto-confirm new subscribersはオフのままにします。後者をオンにすると、読者が確認ボタンを押さなくても自動的に確認済みになります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "確認ボタンを押した後は、URLへ移動させるかファイルをダウンロードさせることができます。この繕い教材なら、まず道具一覧のページへ案内し、登録完了、今後のメール内容、配信停止方法を明確に伝えられます。ダウンロードの成功を、データのあらゆる用途への同意とみなしてはいけません。手順を短くするためだけに、約束した確認過程を省かないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公開フォームからの登録とインポートは別の入口です。Kitの公式説明によると、フォームにインポートした購読者は、そのフォームがダブルオプトインでも自動的に確認済みとなり、確認メールは改めて送られません。既存リストを移す前に、元の選択内容とデータの出所を確認してください。インポートは購読への同意を新たに得る方法ではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "Tagで状態を記録し、Segmentで条件を表す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Tagは購読者に付けるラベルで、手動または自動で外さない限り通常は残ります。Segmentはフィルター条件に従って対象者を動的に含めたり除外したりします。繕いメールマガジンでは、穴の補修とボタン交換への関心をTagで記録し、今号を実際に届ける読者をSegmentの条件で組み合わせられます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例えば、穴の補修に関心があり、まだ入門教材を終えていない人だけに送るメールなら、設定前にその条件を平易な言葉で書きます。両方に該当する、片方だけに該当する、どちらにも該当しないテスト用データを用意しましょう。推定人数がもっともらしいだけでは、AND、OR、除外の設定が正しいとは確認できません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "TagはVisual Automationのトリガーにできますが、Segment自体を同じ種類の入口として直接使うことはできません。複数条件によって経路を分ける場合は、自動化の中で対応する条件を使います。Tag名でも興味と完了状態を分け、一度教材を受け取ったことを、その話題を二度と読みたくないという意味にしないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "自動メールには、公開済みメール、有効なSequence、入口が必要",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Sequenceは予定に沿って送る一連のメールです。Visual Automationはイベントに応じて購読者を流れに入れます。例えばフォームに登録した人をSequenceへ追加できます。最初は道具の紹介、練習の準備、よくある失敗について独自の教材を作り、新しい登録入口をこの一連のメールへ接続すれば十分です。初めから多くの分岐を作る必要はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Sequence内の各メールはPublished、Sequence自体はActiveにする必要があり、Visual Automationにも独立した有効化状態があります。本文を保存した、Sequenceにメールが見える、フローの線がつながった、という三つは別々の確認事項です。どれかが欠けているときに確認メールを何度も再送しても、原因の切り分けにはなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Kitは、自動化を有効にする前のすべての購読者を遡って処理するわけではないと注意しています。一方、トリガーとなるフォームやTagへインポートすると、インポートした人が流れに入る可能性があります。教材の追加やリストの移行時は、入口と予定を先に確認し、自分で管理するアドレスで試してください。既存の読者を無条件で歓迎メールの一連の流れに戻さないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "Broadcastのメール配信とWeb公開を別々に選ぶ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Broadcastは、今月の繕い交流会のお知らせのような単発の内容に適しています。Kitでは現在、メールとして送る、Webページとして公開する、または両方を選べます。下書きで件名、プレビューテキスト、本文を整えた後、公開設定で届け方を確認してください。選択肢の見落としによって私的な案内を公開ページにしないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "送信先の初期設定は確認済みの全購読者です。対象を絞るたびに、フィルター、除外条件、人数を改めて確認します。例の交流会案内は関連する話題に関心のある人だけに送れますが、Tagだけで、その人が関連メールを永久に希望しているとは判断できません。送信元アドレス、タイムゾーン、予約時刻も見直し、テスト用の設定を本番に残さないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Kitにはデスクトップ、モバイル、特定の購読者向けのプレビューとテストメールがあります。ただし、通常のプレビューメールでは一部のパーソナライズやLink Triggerが完全には動きません。端から端まで確認するなら、自分で管理するアドレスだけに送る別の版を作り、送信対象を確認してからリンクの動作を試します。見た目のプレビューに合格しても、すべての自動化が検証されたわけではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "リストを広げる前に例外的な状態を試す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "フォームを送信したが未確認の人、確認を終えた人、二つの好みがある人、教材を受け取り済みの人、配信停止を求めた人をテストします。それぞれに届くべきメールと届いてはいけないメールを記録し、購読者の状態とフロー内の位置を調べます。試す前にテスト入口が実際の購読者につながっていないことを確かめ、進行中のSequenceを乱さないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "送信ドメインは、KitのEmail設定にあるVerified Sending Domainsで、Kitが提示するDNSレコードを使って検証できます。DNSを管理する権限のある人がホスト名と値を確認し、その後Kitに戻って検証します。他人のドメインのレコードをコピーしてはいけません。ドメイン検証は送信者の識別と配信設定の一部であり、すべてのメールがメインの受信箱に届く保証ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "読者にメールが届かないときは、まず確認状態、次に有効化後に入口が発火したか、Sequenceの予定と除外条件、最後に配信状態を調べます。期待した経路と最初に違った箇所を見つけてから、関係する設定を直します。一度に変更するのは原因を説明できる部分だけにし、テストと修正の記録を次の担当者に残しましょう。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "各入口、好み、メール内容、終了条件を平易な言葉で書き出す。",
+            "フォームの確認メールを設定し、自動確認スイッチと確認後の移動先を確かめる。",
+            "TagとSegmentを作り、PublishedかつActiveのSequenceと有効な自動化を接続する。",
+            "購読状態、送信対象、実際のリンクを試してから本番の配信を予約する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/kit-newsletter-setup/diagram-1-ja.svg",
+          "alt": "フォームの確認、TagとSegment、Sequenceの流れ、配信前の確認を四枚のカードで示す図。登録入口と各メールの送信条件を一致させる。",
+          "width": 1600,
+          "height": 900,
+          "caption": "実際の登録元を接続する前に、自分で管理するテストアドレスで予定した経路を最後まで確認する。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Kitの要素",
+            "主な役割",
+            "避けたい誤解"
+          ],
+          "rows": [
+            [
+              "Form／Landing Page",
+              "登録入口と確認設定",
+              "インポートでもダブルオプトインが自動でやり直される"
+            ],
+            [
+              "Tag",
+              "好みやフローの状態を記録",
+              "Tagがあれば永久にすべての送信条件を満たす"
+            ],
+            [
+              "Segment",
+              "条件によって対象者を動的に整理",
+              "そのまま自動化のトリガーにできる"
+            ],
+            [
+              "Sequence",
+              "設定した予定で一連のメールを送る",
+              "下書きがあれば必ず配信される"
+            ],
+            [
+              "Visual Automation",
+              "入口、動作、条件をつなぐ",
+              "有効化すると過去の全購読者を遡って処理する"
+            ],
+            [
+              "Broadcast",
+              "単発のメールまたはWeb内容",
+              "メール送信とWeb公開は常に同じ操作"
+            ]
+          ],
+          "caption": "Kitの公式文書から役割を整理しました。利用できる機能と実際の流れは、自分のアカウントで確認してください。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "インポート前に自動化の入口を確認",
+          "text": "インポートは中立的なバックアップ作業ではありません。指定されたFormやTagに追加すると既存のフローが起動する可能性があり、フォームでダブルオプトインを有効にしていても、インポートした人に確認メールは改めて送られません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "購読時の約束と配信停止の確認を先に計画する。",
+              "kind": "life",
+              "slug": "email-newsletter-planning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "各号の内容と事実確認の担当を整理する。",
+              "kind": "life",
+              "slug": "content-marketing-calendar"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "統一したリンクの印でメール経由の流入元を見分ける。",
+              "kind": "life",
+              "slug": "utm-link-conventions"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Kit：確認メールと自動確認の設定",
+          "url": "https://help.kit.com/en/articles/2502655-the-confirmation-email",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit：TagとSegmentの役割",
+          "url": "https://help.kit.com/en/articles/4257108-tags-and-segments-in-kit-and-when-to-use-which",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit：購読者インポートが確認と自動化に与える影響",
+          "url": "https://help.kit.com/en/articles/5027047-importing-subscribers-into-kit-what-to-know-faqs",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit：Email Sequenceの作成と配信",
+          "url": "https://help.kit.com/en/articles/2502629-creating-and-sending-an-email-sequence-in-kit",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit：Visual Automationの入口と有効化",
+          "url": "https://help.kit.com/en/articles/5523023-how-to-create-your-first-kit-visual-automation",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit：Broadcastの作成、配信、公開",
+          "url": "https://help.kit.com/en/articles/2934648-creating-sending-and-publishing-broadcasts",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit：テスト購読者だけへの送信とプレビューの制限",
+          "url": "https://help.kit.com/en/articles/4212107-how-to-send-a-broadcast-to-a-single-subscriber",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit：送信ドメインの検証",
+          "url": "https://help.kit.com/en/articles/2502558-verify-your-domain-to-optimize-your-deliverability",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Kit 뉴스레터 운영 흐름: 구독 폼, 세그먼트, 자동 이메일",
+      "description": "Kit의 폼, Tag, Segment, 자동 이메일, 일회성 Broadcast는 각각 역할이 다릅니다. 설정을 끝냈다고 해서 독자에게 알맞은 이메일이 전달되는 것은 아닙니다. 의류 수선에 관한 자체 제작 뉴스레터를 예로 들어 확인 이메일의 두 스위치, Tag와 Segment 조건, Sequence와 Visual Automation의 연결, 발송 전 테스트 방법을 설명합니다. 명단 가져오기와 공개 폼의 차이도 비교표와 자체 제작 그림으로 정리해 소규모 창작자가 단계별로 점검할 수 있게 했습니다.",
+      "hero": {
+        "src": "/guides/kit-newsletter-setup/hero-ko.jpg",
+        "alt": "Mokaair가 직접 만든 구독 폼, 독자 그룹 폴더, 이메일 문서를 연결한 그림으로 Kit 뉴스레터 운영 흐름을 보여 준다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "의류 수선 콘텐츠를 만드는 창작자는 새 독자에게 먼저 도구 소개를 보내고, 이후에는 구멍 메우기나 단추 교체 중 관심사에 맞는 내용을 읽게 하고 싶습니다. 이메일을 모두 작성해도 구독 진입점에 연결하지 않으면 독자가 한 통도 받지 못할 수 있습니다. 진입점과 대상 분류를 잘못 연결하면 관련 없는 교재까지 함께 받을 수 있습니다. Kit에서는 각 요소의 책임을 분명히 하는 것이 중요합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "아래 내용은 2026년 9월 14일 확인한 Kit 공식 문서를 바탕으로 구성한 자체 제작 수선 뉴스레터 예시입니다. 화면의 기능명은 당시 문서를 따릅니다. 실제 이용자 계정에 로그인하거나, 실제 명단을 가져오거나, 이메일을 발송하지는 않았습니다. 자동화 기능의 이용 가능 범위는 본인의 요금제와 계정에서 다시 확인해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "폼, 구독자 명단, 이메일의 관계부터 그리기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Form은 구독 신청을 받는 진입점이고, Landing Page는 별도로 공유할 수 있는 구독 페이지입니다. Kit는 구독자를 하나의 명단에 두고 Tag와 Segment로 정리합니다. 관심사가 하나 늘어날 때마다 서로 연결되지 않는 명단을 새로 만들 필요는 없습니다. 독자의 목적을 기준으로 데이터를 설계하면 이후 중복 관리가 줄어듭니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예시 뉴스레터에서는 처음에 구멍 메우기와 단추 교체라는 두 가지 선호만 제공하고 독자가 직접 고르게 합니다. 폼에는 입문 교재와 이후 수선 관련 내용이 온다고 명확히 적어야 합니다. 그림 한 장을 받는다고만 안내한 뒤 몰래 장기 판촉 명단에 넣어서는 안 됩니다. 이름이 필요 없다면 선택 항목으로 두세요. 수집 정보를 줄이면 이메일 개인화 오류도 줄일 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 각 진입점의 이름, 데이터 입력 항목, 대응하는 Tag, 확인 후 받게 될 이메일, 구독 해지 방법을 표로 정리합니다. 이 표는 팀이 만든 설계 기록이지 Kit가 자동 생성해 보증하는 결과가 아닙니다. 새 진입점이나 협업 캠페인을 추가할 때마다 새 데이터가 기존의 어떤 흐름으로 들어가는지 확인해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "확인 이메일의 두 스위치를 혼동하지 않기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "현재 공식 안내에 따르면 Form 또는 Landing Page의 Settings에서 Confirmation Email 탭을 엽니다. 이중 확인을 유지하려면 Send confirmation email을 선택하고 Auto-confirm new subscribers는 선택하지 않은 상태로 둡니다. 뒤의 옵션을 선택하면 독자가 확인 버튼을 누르지 않아도 자동으로 확인된 구독자가 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "확인 버튼을 누른 다음에는 URL로 이동시키거나 파일을 내려받게 할 수 있습니다. 이 수선 교재라면 도구 목록 페이지로 안내하면서 구독 완료 사실, 앞으로 올 이메일 내용, 구독 해지 방법을 분명히 알릴 수 있습니다. 다운로드가 성공했다고 모든 데이터 이용 목적에 동의한 것으로 추정해서는 안 됩니다. 절차를 줄이려고 원래 약속한 확인 단계를 없애지도 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "공개 폼을 통한 신청과 명단 가져오기는 서로 다른 진입점입니다. Kit 공식 설명에 따르면 폼으로 가져온 구독자는 그 폼이 이중 확인을 사용하더라도 자동으로 확인되며, 확인 이메일이 추가로 발송되지 않습니다. 기존 명단을 옮기기 전에 원래의 선택 내용과 데이터 출처를 확인하세요. 가져오기 자체를 새로운 구독 동의를 받는 행위로 간주할 수 없습니다."
+        },
+        {
+          "type": "heading",
+          "text": "Tag는 상태를 기록하고 Segment는 조건을 표현",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Tag는 구독자에게 붙는 표식으로, 수동이나 자동화로 제거하지 않는 한 일반적으로 남아 있습니다. Segment는 필터 조건에 따라 사람을 동적으로 포함하거나 제외합니다. 수선 뉴스레터에서는 구멍 메우기나 단추 교체에 대한 선호를 Tag로 기록하고, Segment의 조건을 조합해 이번 호를 실제로 받을 독자를 선택할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 구멍 메우기에 관심이 있고 아직 입문 교재를 마치지 않은 사람에게만 보내려면, 설정 전에 그 조건을 쉬운 문장으로 적어 둡니다. 두 조건을 모두 충족하는 경우, 하나만 충족하는 경우, 둘 다 충족하지 않는 경우의 테스트 데이터를 준비하세요. 예상 인원수가 그럴듯하다는 이유만으로 AND, OR, 제외 논리가 맞다고 판단해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Tag는 Visual Automation을 시작하는 조건이 될 수 있지만 Segment 자체를 같은 종류의 직접적인 트리거로 사용할 수는 없습니다. 복합 조건에 따라 다른 경로를 만들려면 자동화 안에서 지원되는 조건 설정을 이용하세요. Tag 이름에서도 관심사와 완료 상태를 구분해, 교재를 한 번 받았다는 이유로 그 주제를 영원히 원하지 않는다고 해석하지 않도록 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "자동 이메일에는 게시된 메일, 활성 Sequence, 진입점이 필요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Sequence는 일정에 따라 발송하는 일련의 이메일입니다. Visual Automation은 사건에 반응해 구독자를 흐름에 넣습니다. 예를 들어 폼에 가입한 사람을 Sequence에 추가할 수 있습니다. 처음에는 도구 소개, 연습 준비, 흔한 실수를 다루는 자체 교재를 만들고 새 구독 진입점을 그 이메일 묶음에 연결하면 됩니다. 시작부터 많은 분기를 만들 필요는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Sequence 안의 각 이메일은 Published 상태여야 하고 Sequence 자체도 Active여야 합니다. Visual Automation에도 별도의 활성화 상태가 있습니다. 본문을 저장한 것, Sequence에서 이메일이 보이는 것, 흐름의 선을 연결한 것은 서로 다른 완료 조건입니다. 한 군데가 빠졌다면 확인 이메일을 반복해서 다시 보내는 것으로는 원인을 찾을 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Kit는 자동화가 활성화되기 전의 모든 구독자를 소급해 처리하지는 않는다고 안내합니다. 그러나 트리거가 되는 Form이나 Tag로 명단을 가져오면 가져온 구독자가 흐름에 들어갈 수 있습니다. 교재를 추가하거나 명단을 옮길 때 진입점과 일정을 먼저 확인하고 본인이 관리하는 주소로 시험하세요. 기존 독자에게 환영 이메일 전부를 무조건 다시 보내지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "Broadcast의 이메일 발송과 웹 공개를 따로 선택",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Broadcast는 이번 달 수선 모임 안내처럼 한 번 보내는 콘텐츠에 알맞습니다. 현재 Kit에서는 이메일로 보내기, 웹페이지로 공개하기, 두 가지 모두 하기를 선택할 수 있습니다. 초안에서 제목, 미리보기 문구, 본문을 완성한 뒤 게시 설정에서 전달 방식을 확인하세요. 옵션을 놓쳐 비공개 안내가 공개 페이지로 바뀌어서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "기본 수신자는 확인된 구독자 전체이므로 특정 집단에 보낼 때마다 필터, 제외 조건, 인원수를 다시 확인해야 합니다. 예시 모임 안내는 관련 주제에 관심 있는 사람에게만 보낼 수 있지만 Tag만으로 모든 관련 이메일을 영구히 받겠다는 의사를 증명할 수는 없습니다. 발신 주소, 시간대, 예약 시간도 확인해 테스트 설정이 실제 발송에 남지 않게 하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "Kit는 데스크톱, 모바일, 특정 구독자 기준의 미리보기와 테스트 이메일을 제공합니다. 다만 일반적인 미리보기 이메일에서는 일부 개인화 기능과 Link Trigger가 완전히 작동하지 않습니다. 처음부터 끝까지 검증하려면 본인이 관리하는 주소에만 보내는 별도 버전을 만들고 수신 범위를 확인한 뒤 링크 동작을 살펴보세요. 외형 미리보기가 통과해도 모든 자동화가 검증된 것은 아닙니다."
+        },
+        {
+          "type": "heading",
+          "text": "명단을 늘리기 전에 예외 상황을 테스트",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "폼을 제출했지만 미확인인 사람, 확인을 마친 사람, 두 가지 선호를 모두 가진 사람, 교재를 이미 받은 사람, 구독 해지를 요청한 사람을 시험합니다. 각 경우에 받아야 할 메일과 받지 말아야 할 메일을 적고 구독자 상태와 흐름 속 위치를 확인하세요. 시험 전에 테스트 진입점이 실제 구독자에게 연결되지 않았는지 확인해 진행 중인 Sequence를 방해하지 않도록 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "발신 도메인은 Kit의 Email 설정에 있는 Verified Sending Domains에서 Kit가 제공한 DNS 기록으로 인증할 수 있습니다. DNS 관리 권한이 있는 사람이 호스트 이름과 값을 확인한 다음 Kit로 돌아와 인증하세요. 다른 사람의 도메인 기록을 복사하지 마세요. 도메인 인증은 발신자 신원과 전달 설정의 일부일 뿐, 모든 이메일이 기본 받은편지함에 도착한다는 보장은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "독자가 이메일을 받지 못했다면 먼저 확인 상태, 그다음 활성화 이후 진입점이 작동했는지, Sequence 일정과 제외 조건, 마지막으로 전달 상태를 점검합니다. 예상 경로와 처음으로 달라진 지점을 찾은 뒤 관련 설정을 바꾸세요. 문제를 설명할 수 있는 부분만 한 번에 수정하고 테스트와 변경 기록을 남겨 다음 담당자가 이어받을 수 있게 합니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "각 진입점, 선호, 이메일 내용, 종료 조건을 쉬운 문장으로 정리한다.",
+            "폼에서 확인 이메일을 설정하고 자동 확인 스위치와 확인 후 이동 위치를 살핀다.",
+            "Tag와 Segment를 만들고 Published 및 Active 상태의 Sequence와 활성화된 자동화를 연결한다.",
+            "실제 발송을 예약하기 전에 구독 상태, 수신 범위, 링크 동작을 시험한다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/kit-newsletter-setup/diagram-1-ko.svg",
+          "alt": "폼 확인, Tag와 Segment, Sequence 흐름, 발송 점검을 네 장의 카드로 보여 주는 그림. 구독 진입점과 각 이메일의 수신 조건이 일치해야 한다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "실제 구독 경로를 연결하기 전에 본인이 관리하는 테스트 주소로 예상 경로를 끝까지 확인한다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Kit 구성요소",
+            "주요 역할",
+            "피해야 할 오해"
+          ],
+          "rows": [
+            [
+              "Form / Landing Page",
+              "구독 진입점과 확인 설정",
+              "명단을 가져오면 이중 확인도 자동으로 다시 이루어진다"
+            ],
+            [
+              "Tag",
+              "선호나 흐름 상태 기록",
+              "Tag가 있으면 모든 발송 조건을 영구히 충족한다"
+            ],
+            [
+              "Segment",
+              "조건에 따라 사람을 동적으로 분류",
+              "직접 자동화 트리거로 쓸 수 있다"
+            ],
+            [
+              "Sequence",
+              "설정한 일정에 따라 이메일 묶음 발송",
+              "이메일 초안만 있으면 반드시 발송된다"
+            ],
+            [
+              "Visual Automation",
+              "진입점, 작업, 조건 연결",
+              "활성화하면 과거 구독자 모두를 소급 처리한다"
+            ],
+            [
+              "Broadcast",
+              "일회성 이메일 또는 웹 콘텐츠",
+              "이메일 발송과 웹 공개는 언제나 같은 작업이다"
+            ]
+          ],
+          "caption": "Kit 공식 문서를 바탕으로 역할을 정리했습니다. 실제 이용 가능한 기능과 흐름은 본인 계정에서 확인해야 합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "명단을 가져오기 전에 자동화 진입점 확인",
+          "text": "명단 가져오기는 중립적인 백업 작업이 아닙니다. 지정된 Form이나 Tag에 추가하면 기존 흐름이 시작될 수 있고, 폼의 이중 확인을 켜 두었더라도 가져온 구독자에게 확인 이메일이 추가로 발송되지는 않습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "구독할 때의 약속과 구독 해지 절차부터 계획한다.",
+              "kind": "life",
+              "slug": "email-newsletter-planning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "매 호의 콘텐츠와 사실 확인 책임을 정리한다.",
+              "kind": "life",
+              "slug": "content-marketing-calendar"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "일관된 링크 표기로 이메일 유입 경로를 구분한다.",
+              "kind": "life",
+              "slug": "utm-link-conventions"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Kit: 확인 이메일과 자동 확인 설정",
+          "url": "https://help.kit.com/en/articles/2502655-the-confirmation-email",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit: Tag와 Segment의 역할",
+          "url": "https://help.kit.com/en/articles/4257108-tags-and-segments-in-kit-and-when-to-use-which",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit: 구독자 가져오기가 확인과 자동화에 미치는 영향",
+          "url": "https://help.kit.com/en/articles/5027047-importing-subscribers-into-kit-what-to-know-faqs",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit: Email Sequence 만들기와 발송",
+          "url": "https://help.kit.com/en/articles/2502629-creating-and-sending-an-email-sequence-in-kit",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit: Visual Automation의 진입점과 활성화",
+          "url": "https://help.kit.com/en/articles/5523023-how-to-create-your-first-kit-visual-automation",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit: Broadcast 작성, 발송, 공개",
+          "url": "https://help.kit.com/en/articles/2934648-creating-sending-and-publishing-broadcasts",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit: 테스트 구독자 한 명에게 보내기와 미리보기 제한",
+          "url": "https://help.kit.com/en/articles/4212107-how-to-send-a-broadcast-to-a-single-subscriber",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Kit: 발신 도메인 인증",
+          "url": "https://help.kit.com/en/articles/2502558-verify-your-domain-to-optimize-your-deliverability",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
