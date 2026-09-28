@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-story-admin
 title: 後台的故事清單、匯入表單、每日支數與上架時段
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5-5-video-story-admin
 claimed_at: 2026-09-28T14:27:24Z
 created_at: 2026-09-28T03:31:15Z
-completed_at:
+completed_at: 2026-09-28T16:30:12Z
 branch: claude/video-story-admin
 depends_on:
   - 2026-09-28-video-story-api-series-kind
