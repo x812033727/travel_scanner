@@ -20,9 +20,13 @@ jobs:
   uploader:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    env:
+      UPLOADER_CHANNEL_ID: UCaaaaaaaaaaaaaaaaaaaaaa
+      UPLOADER_SECRET_PATH: ${{ runner.temp }}/uploader-secrets/uploader
+      UPLOADER_VNC_PASSWORD_PATH: ${{ runner.temp }}/uploader-secrets/vnc_password
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: "24"
           cache: npm
@@ -33,9 +37,7 @@ jobs:
         working-directory: services/youtube-uploader
       - run: npm test
         working-directory: services/youtube-uploader
-      - name: Build the independent container
-        run: docker build -f ops/youtube-uploader/Dockerfile -t mokaair-uploader:test .
-      - name: Start the headful desktop and check readiness without an account
+      - name: Prepare disposable CI secrets
         shell: bash
         run: |
           set -euo pipefail
@@ -44,13 +46,19 @@ jobs:
           printf '%s' 'ci-only-vnc-password' > "$RUNNER_TEMP/uploader-secrets/vnc_password"
           chmod 755 "$RUNNER_TEMP/uploader-secrets"
           chmod 444 "$RUNNER_TEMP/uploader-secrets/"*
-          docker run -d --name uploader-check --shm-size=1g --cap-drop=ALL --security-opt=no-new-privileges --init -e UPLOADER_CHANNEL_ID=UCaaaaaaaaaaaaaaaaaaaaaa -e UPLOADER_SECRET_FILE=/run/secrets/uploader -v "$RUNNER_TEMP/uploader-secrets:/run/secrets:ro" mokaair-uploader:test
-          trap 'docker stop uploader-check >/dev/null' EXIT
+      - name: Build the independent container with its deployment Compose
+        run: docker compose -f ops/youtube-uploader/compose.yml build
+      - name: Start the headful desktop and check readiness without an account
+        shell: bash
+        run: |
+          set -euo pipefail
+          docker compose -f ops/youtube-uploader/compose.yml up -d --no-build --pull never
+          trap 'docker compose -f ops/youtube-uploader/compose.yml down -v >/dev/null' EXIT
           for attempt in $(seq 1 30); do
-            if docker exec uploader-check node -e "Promise.all([fetch('http://127.0.0.1:8789/health'),fetch('http://127.0.0.1:6080/vnc.html')]).then(rs=>process.exit(rs.every(r=>r.ok)?0:1)).catch(()=>process.exit(1))"; then
+            if docker compose -f ops/youtube-uploader/compose.yml exec -T uploader node -e "Promise.all([fetch('http://127.0.0.1:8789/health'),fetch('http://127.0.0.1:6080/vnc.html')]).then(rs=>process.exit(rs.every(r=>r.ok)?0:1)).catch(()=>process.exit(1))"; then
               exit 0
             fi
             sleep 2
           done
-          docker logs uploader-check
+          docker compose -f ops/youtube-uploader/compose.yml logs
           exit 1
