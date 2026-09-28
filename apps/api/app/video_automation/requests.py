@@ -1,10 +1,13 @@
 """The owner's drama requests: filed on /admin/videos, claimed by the worker (docs/videos/DRAMA.md).
 
 The scheduled drafts pick their own topics; a request is the owner saying "make this one
-next". The worker asks for the oldest queued request before it considers a scheduled draft,
-starts it under the slug it chose, and the request is done once that video is on YouTube
-(the worker says so, or the project row shows it). Only a queued request can be cancelled:
-a started one is a video, dropped on /admin/videos like any other.
+next". Since 2026-09-27 a new request is a one-off series (docs/videos/DRAMA-FLOW.md §二,
+``series.create_one_off``): the request row is its episode's, points at the series, and the
+worker starts it through the series path once the story bible is approved. A request from
+before that, already started, walks the old road: the worker asks for it here, and the request
+is done once its video is on YouTube (the worker says so, or the project row shows it). Only a
+queued request can be cancelled: a started one is a video, dropped on /admin/videos like any
+other.
 
 The router turns ``RequestRefused`` into the API's problem response; nothing here raises
 ``AppError``.
@@ -13,14 +16,14 @@ The router turns ``RequestRefused`` into the API's problem response; nothing her
 from __future__ import annotations
 
 from datetime import UTC, datetime
-from uuid import UUID, uuid4
+from uuid import UUID
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import AdminAuditLog, User, VideoProject, VideoToolToken
-from app.video_automation.models import VideoDramaRequest
-from app.video_automation.schemas import DramaRequestIn, DramaRequestOut
+from app.video_automation.models import VideoDramaRequest, VideoDramaSeries
+from app.video_automation.schemas import DramaRequestOut
 
 ACTIVE = ("queued", "started")
 LIST_LIMIT = 100
@@ -36,7 +39,11 @@ class RequestRefused(Exception):
         self.detail = detail
 
 
-def request_view(row: VideoDramaRequest, youtube_video_id: str | None = None) -> DramaRequestOut:
+def request_view(
+    row: VideoDramaRequest,
+    youtube_video_id: str | None = None,
+    series_slug: str | None = None,
+) -> DramaRequestOut:
     """The request as the page and the worker see it: started and on YouTube counts as done."""
     status = "done" if row.status == "started" and youtube_video_id else row.status
     return DramaRequestOut(
@@ -49,6 +56,8 @@ def request_view(row: VideoDramaRequest, youtube_video_id: str | None = None) ->
         note=row.note,
         status=status,
         slug=row.slug,
+        series_slug=series_slug,
+        episode_number=row.episode_number,
         created_by_user_id=row.created_by_user_id,
         created_at=row.created_at,
         started_at=row.started_at,
@@ -61,42 +70,15 @@ def _now() -> datetime:
     return datetime.now(UTC)
 
 
-async def create_request(
-    session: AsyncSession, actor: User, payload: DramaRequestIn
-) -> DramaRequestOut:
-    now = _now()
-    row = VideoDramaRequest(
-        id=uuid4(),
-        **payload.model_dump(),
-        status="queued",
-        created_by_user_id=actor.id,
-        created_at=now,
-        updated_at=now,
-    )
-    session.add(row)
-    session.add(
-        AdminAuditLog(
-            actor_user_id=actor.id,
-            action="video_drama_request_created",
-            target=f"video-drama-request:{row.id}",
-            metadata_json={
-                "style_preset": payload.style_preset,
-                "target_minutes": payload.target_minutes,
-                "source_guide": payload.source_guide,
-            },
-        )
-    )
-    await session.commit()
-    return request_view(row)
-
-
 async def list_requests(
     session: AsyncSession, *, active_only: bool = False
 ) -> list[DramaRequestOut]:
     """Every request, newest first, for the page; with ``active_only``, only the queued and
     started ones, oldest first, for the worker."""
-    statement = select(VideoDramaRequest, VideoProject.youtube_video_id).outerjoin(
-        VideoProject, VideoProject.slug == VideoDramaRequest.slug
+    statement = (
+        select(VideoDramaRequest, VideoProject.youtube_video_id, VideoDramaSeries.slug)
+        .outerjoin(VideoProject, VideoProject.slug == VideoDramaRequest.slug)
+        .outerjoin(VideoDramaSeries, VideoDramaSeries.id == VideoDramaRequest.series_id)
     )
     if active_only:
         statement = statement.where(VideoDramaRequest.status.in_(ACTIVE)).order_by(
@@ -105,14 +87,15 @@ async def list_requests(
     else:
         statement = statement.order_by(VideoDramaRequest.created_at.desc())
     rows = await session.execute(statement.limit(LIST_LIMIT))
-    return [request_view(row, youtube) for row, youtube in rows.all()]
+    return [request_view(row, youtube, series_slug) for row, youtube, series_slug in rows.all()]
 
 
 async def next_request(session: AsyncSession) -> DramaRequestOut | None:
-    """The oldest queued request, which the worker should start before any scheduled draft."""
+    """The oldest queued request from before one-offs became series, which the worker should
+    start before any scheduled draft; a request that is an episode starts through the series."""
     row = await session.scalar(
         select(VideoDramaRequest)
-        .where(VideoDramaRequest.status == "queued")
+        .where(VideoDramaRequest.status == "queued", VideoDramaRequest.series_id.is_(None))
         .order_by(VideoDramaRequest.created_at.asc())
         .limit(1)
     )

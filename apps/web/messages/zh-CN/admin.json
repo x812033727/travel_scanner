@@ -581,18 +581,10 @@
     },
     "anthropic_connection": {
       "label": "Claude 连接方式",
-      "help": "选“订阅账号”时，攻略搜索、景点介绍、介绍审查、简体名称与 AI 新闻的 Claude 调用都改由主机上“AI 账号”登录的 Claude 订阅账号执行，不用 API 密钥。账号按 A、B、C… 的顺序轮流，一个账号的 5 小时或每周额度用满才换下一个，最后一个用满再回到 A；每个账号都用满时改用 MiniMax。行程规划与行程文字解析仍只用 API 密钥。只有站主能切换。",
+      "help": "选“订阅账号”时，攻略搜索、景点介绍、介绍审查、简体名称与 AI 新闻的 Claude 调用都改由主机上“AI 账号”登录的 Claude 订阅账号执行，不用 API 密钥。账号按 A、B、C… 的顺序轮流，一个账号的 5 小时或每周额度用满才换下一个，最后一个用满再回到 A；每个账号都用满时等额度重置，不会改用其他供应商或模型。行程规划与行程文字解析仍只用 API 密钥。只有站主能切换。",
       "options": {
         "api_key": "API 密钥",
         "subscription": "订阅账号（主机 Claude Code）"
-      }
-    },
-    "ai_subscription_fallback": {
-      "label": "订阅账号都满时",
-      "help": "每个 Claude 账号都到上限时怎么办。“等账号恢复”：新闻先放回队列，每 30 分钟再试一次，其他功能这次调用会失败；“改用 MiniMax”：立刻改用 MiniMax 运行，速度快但质量较差。只有站长能改。",
-      "options": {
-        "wait": "等账号恢复",
-        "minimax": "改用 MiniMax"
       }
     }
   },
@@ -1095,7 +1087,6 @@
       "connection": {
         "apiKey": "API 密钥",
         "subscription": "订阅账号",
-        "subscriptionFallback": "订阅账号（额度用完改用 MiniMax）",
         "none": "不调用 AI"
       },
       "support": {
@@ -2129,7 +2120,8 @@
       "look": "角色设定图",
       "storyboard": "分镜",
       "dubs": "配音音轨",
-      "script": "剧本"
+      "script": "剧本",
+      "languages": "语言"
     },
     "statuses": {
       "pending": "待决定",
@@ -2177,17 +2169,45 @@
     "dropConfirm": "确定放弃这支视频？放弃后无法恢复。",
     "dropButton": "放弃这支视频",
     "dropError": "没有放弃：{message}",
-    "dubsTitle": "配音语言",
-    "dubsHelp": "勾选的语言，工人会在成片核准后做出那条配音音轨送到这里；你下载后到 YouTube Studio 的“语言”页上传。音轨可以在上架前或上架后加。",
-    "dubsSave": "保存配音语言",
-    "dubsSaved": "已保存",
-    "dubsError": "没有保存：{message}",
     "approveDubs": "已在 Studio 上传这些音轨",
     "downloadTrack": "下载 {file}",
-    "dubStatuses": {
-      "ready": "已完成",
-      "skipped": "跳过"
+    "languagesTitle": "这支视频的语言",
+    "languagesHelp": "每支视频都是繁体中文做的。逐语言勾这支还要多做什么：标题与说明、CC 字幕、配音。工人只做勾了的，每格旁边写进度；勾了的都做好才会排上架。配音跟字幕同一条时间轴，勾配音会一起勾 CC。“照默认勾选”照设置分页的语言勾；“只出繁体中文”记下不做其他语言。",
+    "languagesLater": "成片核准后可以选语言。",
+    "languagesAfterPublish": "视频已经在 YouTube 上：现在多勾的会再做一批送上去。取消勾选只对还没送上 YouTube 的部件有效，已经送上去的要你自己在 Studio 删。",
+    "languageColumn": "语言",
+    "parts": {
+      "metadata": "标题与说明",
+      "captions": "CC 字幕",
+      "dub": "配音"
     },
+    "partStates": {
+      "working": "制作中",
+      "ready": "已完成",
+      "skipped": "跳过",
+      "uploaded": "已上传"
+    },
+    "partSkipped": "跳过（{reason}）",
+    "dubDramaLater": "漫剧的配音是第二期，先只能选标题说明与 CC。",
+    "tickDefaults": "照默认勾选",
+    "zhOnly": "只出繁体中文",
+    "languagesSave": "保存",
+    "languagesSaved": "已保存",
+    "languagesError": "没有保存：{message}",
+    "approveLanguages": "已在 Studio 上传配音",
+    "studioTitle": "配音要在 Studio 上传",
+    "studioNote": "标题与说明、CC 字幕在排上架时由网站用 API 送上去；只有配音要你自己上传。",
+    "studioStep1": "下载上面每个语言的音轨。",
+    "studioStep2": "到 YouTube Studio 左菜单“语言”→ 这支视频 →“添加语言”→ 选语言 →“配音”旁的“添加”→ 选取文件 →“发布”，每个语系一次。",
+    "studioStep3": "回来按“已在 Studio 上传配音”。之后再勾的语言会再来一张卡片。",
+    "publishStates": {
+      "deciding": "等你决定语言",
+      "making": "语言制作中",
+      "ready": "可以上架",
+      "scheduled": "已排定",
+      "published": "已上架"
+    },
+    "scheduleWaits": "语言做好后才能送到 YouTube，那时上传包里才有这些语言。",
     "locales": {
       "en": "英文",
       "ja": "日文",
@@ -2207,7 +2227,7 @@
     "drama": "AI 漫剧",
     "spend": "媒体花费 US${usd}（{seconds} 片段秒）",
     "newDrama": "新的漫剧",
-    "newDramaHelp": "写下故事前提（或填一篇站上文章的 slug 改编）、选风格与长度。主机上的工人会先做它再做排程草稿；大纲、角色设定图、旁白、分镜、成片都在这一页等你决定。设置分页要先开启「AI 漫剧」。",
+    "newDramaHelp": "写下故事前提（或填一篇站上文章的 slug 改编）、选风格与长度。送出后就是一部只有一集的作品：工人先写故事圣经给你讨论、核准，再写剧本；之后的关卡都在那一集的视频页。漫剧设置要先开启「AI 漫剧」。",
     "premise": "故事前提（必填）",
     "premisePlaceholder": "谁想要什么、什么挡在前面、结局怎样。公有领域的传说或原创故事。",
     "workingTitle": "暂定标题（选填）",
@@ -2319,6 +2339,7 @@
     "uploadedError": "没有记下：{message}",
     "scheduledAt": "定于 {time} 上架",
     "readyLoading": "读取上传包…",
+    "openDramaSettings": "前往漫剧设置",
     "downloadCompilation": "下载 1080p 成片",
     "compilationInWorkspace": "成片还在工人的工作区",
     "compilationOf": "作品 {series} 的合集"
@@ -2363,7 +2384,7 @@
       "voice_style": "说话风格（给语音模型的英文描述）",
       "target_minutes_min": "最短长度（分钟）",
       "target_minutes_max": "最长长度（分钟）",
-      "caption_locales": "CC 字幕语言（繁体中文一定有）",
+      "caption_locales": "语言面板预先勾选（繁体中文一定会做）",
       "max_drafts_per_month": "每月最多几部草稿",
       "monthly_token_budget_millions": "每月模型 token 上限（百万）",
       "max_verify_rounds": "每部最多核查几轮",
@@ -2398,7 +2419,15 @@
       "channel_stance": "频道立场",
       "auto_pick_outline": "由 Jev 挑大纲（立场留白时没有作用）",
       "auto_approve_final": "自动质检全过就核准成片；上传包备好就核准“确认上架”",
-      "drama_auto_pick_look": "设定图自动选：judge 分数最高的那张达到门槛、没有问题时，就核准该角色"
+      "drama_auto_pick_look": "设定图自动选：judge 分数最高的那张达到门槛、没有问题时，就核准该角色",
+      "drama_stage_models_follow": "各阶段模型跟教学一样",
+      "drama_voice_follows": "旁白声音跟教学一样（频道声音）",
+      "series_script_gate": "剧本先给我看，再开始生成（单集与作品的每一集）",
+      "series_max_in_flight": "同时最多几集在做（1–6）",
+      "series_auto_continue": "上一集确认上架后自动开始下一集",
+      "series_chapter_ahead": "剩几集时先规划下一篇",
+      "series_doc_rewrites": "文件退回后最多重写几轮",
+      "series_episodes_per_month": "每月最多开始几集"
     },
     "stages": {
       "planner": "企划（选题与大纲）",
@@ -2414,7 +2443,6 @@
       "ko": "韩文",
       "zh-CN": "简体中文"
     },
-    "usage": "本月（UTC）API 已用 {tokens} / {tokenBudget} 个 token，订阅账号用了 {planTokens} 个 token；产生 {drafts} / {draftBudget} 部草稿，调用模型 {calls} 次（其中 {failed} 次失败）。",
     "subscription": "订阅账号",
     "agentOff": "主机代理未设置",
     "subscriptionHelp": "Claude Code 与 Codex 的订阅账号分别按 A、B、C… 的顺序轮流，额度用满才换下一个。所选工具的账号都满时，工人等待额度重置，不会自动改用 API 密钥。",
@@ -2427,8 +2455,7 @@
     "dramaModels": "媒体模型",
     "dramaSwitches": "选项",
     "dramaBudgetHelp": "每月预算在服务器拦截，请求不会发给厂商；单部上限由工具在提交前拦截。站长 2026-09-26 决定先不设上限：默认开得很大，试做完再调低。",
-    "seriesInFlightHelp": "工人同时推进几部作品：1 是一部做完再做下一部；试做与正式一部要同时跑就开 2。",
-    "voicePoolHelp": "撰稿模型可以分配给角色的 Gemini 声音；旁白沿用上面的频道声音。",
+    "voicePoolHelp": "撰稿模型可以分配给角色的 Gemini 声音；旁白用上面的声音。",
     "preview": "预览版",
     "stylePresets": {
       "cinematic-3d": "电影感 3D 写实",
@@ -2437,7 +2464,7 @@
       "custom": "自定义（风格由剧本提供）"
     },
     "instructionsTitle": "各阶段的常设指示",
-    "instructionsHelp": "每次都要讲的话写在这里。工人跑该阶段时会把这段文字接在提示词后面，幻灯片与漫剧每一支都适用；每格最多 4,000 字，清空就是不加。单集的要求请写在「新的漫剧」的备注，或退回关卡时的备注。",
+    "instructionsHelp": "每次都要讲的话写在这里。工人跑该阶段时会把这段文字接在提示词后面，教学视频每一部都适用；漫剧的在「漫剧」。每格最多 4,000 字，清空就是不加。",
     "instructionFor": "{stage}的常设指示",
     "instructionPlaceholder": "例如：旁白一律用台湾口语；结尾留下一集的悬念",
     "promptsTitle": "目前的提示词（只读）",
@@ -2451,6 +2478,35 @@
     "stanceTitle": "频道立场",
     "stanceHelp": "这个频道相信什么。企划模型写每一支视频的站主观点时，只以这份立场为依据；撰稿与 Jev 的检查也会读它。跟“各阶段的常设指示”分开：常设指示写怎么写，立场写相信什么。每条一行、加编号，最多 4,000 字。留白时 Jev 不会替你挑大纲，大纲照旧等你。草稿在 docs/videos/HANDS-OFF.md 的“頻道立場”一节，改过再贴进来；改了只影响之后才写企划的视频。",
     "stancePlaceholder": "例如：1. 先把账算清楚再花钱：付费是为了真的用得到的额度与能力，不是为了去掉广告。",
+    "sectionsLabel": "设置分页",
+    "sections": {
+      "tutorial": "教学视频",
+      "drama": "漫剧",
+      "shared": "共用"
+    },
+    "tutorialHelp": "教学视频：幻灯片加频道声音，按排程从题目做起。这个分页的每一部分各自保存；漫剧的设置在「漫剧」，两种都用到的在「共用」。",
+    "sharedHelp": "两种视频都用到的：频道立场、要避开的题材、每月模型 token 上限。",
+    "saveTutorial": "保存教学设置",
+    "saveDrama": "保存漫剧设置",
+    "saveShared": "保存共用设置",
+    "avoidElsewhere": "要避开的题材在「共用」。",
+    "avoidHelp": "教学视频与漫剧都会避开这些题材。",
+    "tokenTitle": "每月模型 token",
+    "usageDrafts": "本月（UTC）产生 {drafts} / {draftBudget} 部草稿。",
+    "usageTokens": "本月（UTC）API 已用 {tokens} / {tokenBudget} 个 token，订阅账号用了 {planTokens} 个 token；调用模型 {calls} 次（其中 {failed} 次失败）。",
+    "localesHelp": "只影响成片核准后语言面板打开时预先勾了什么（docs/videos/LANGUAGES.md）；你在那部视频的面板保存之前，不会做任何其他语言。",
+    "dramaInstructionsHelp": "工人跑该阶段时接在提示词后面，单集与作品的每一集都适用；教学视频的在「教学视频」。每格最多 4,000 字，清空就是不加。单集的要求写在请求的备注或讨论串。",
+    "dramaModelsOwn": "漫剧的各阶段用这些模型，在“AI 设置 › 各功能模型 › 漫剧各阶段”选择。",
+    "dramaModelsFollow": "漫剧的各阶段跟教学视频用同样的模型；要分开，在“AI 设置 › 各功能模型 › 漫剧各阶段”选。",
+    "dramaModelsTitle": "漫剧各阶段",
+    "dramaModelsHelp": "漫剧的六个阶段（策划、撰稿、核查、听众审稿、字幕翻译、字幕审稿）可以用跟教学视频不一样的模型；勾“跟教学一样”就沿用上面的选择。",
+    "dramaStage": "漫剧：{stage}",
+    "voiceTitle": "旁白与角色声音",
+    "dramaVoiceHelp": "漫剧的旁白用频道声音，或自己选一个；角色的声音从下面的声音池分配。",
+    "flowTitle": "流程上限",
+    "seriesTitle": "作品",
+    "seriesHelp": "长篇作品（docs/videos/SERIES.md）的节奏：同时做几集、剩几集先规划下一篇、文件退回后重写几轮才停下来等你。",
+    "dramaGatesHelp": "上传到 YouTube 与上架时间永远由你决定。剧本默认先给你看，关掉才自动核准；设定图、旁白、分镜、成片各有开关，关掉的关卡照旧等你。",
     "permission": {
       "roles": "你当前登录的账号，后台角色是：{roles}。",
       "noRoles": "你当前登录的账号没有任何后台角色。",
@@ -2470,7 +2526,7 @@
     "loadError": "作品读不到",
     "retry": "再试一次",
     "newSeries": "新的作品",
-    "newSeriesHelp": "用你的话写前提、勾你在意的面向、选情感线与形状。工人依序规划设定集、总纲、每篇细纲，你在这里逐份核准；每一集的剧本也先给你看，集数依序制作。设置分页要先开启「AI 漫剧」。",
+    "newSeriesHelp": "用你的话写前提、勾你在意的面向、选情感线与形状。工人依序规划设定集、总纲、每篇细纲，你在这里逐份核准；每一集的剧本也先给你看，集数依序制作。漫剧设置要先开启「AI 漫剧」。",
     "fields": {
       "title": "作品名称",
       "slug": "代号（小写英数与连字号）",
@@ -2510,12 +2566,14 @@
     "saving": "保存中…",
     "statuses": {
       "setting": "设定集",
+      "bible": "故事圣经",
       "outline": "总纲",
       "active": "制作中",
       "paused": "已暂停",
       "finished": "已完结"
     },
     "docsPending": "{count} 份等你核准",
+    "messagesPending": "{count} 则等模型回复",
     "progress": "{done}/{total} 集 · {chapters} 篇",
     "spend": "US${usd} · 片段 {seconds} 秒",
     "minutesEach": "每集 {minutes} 分钟",
@@ -2529,10 +2587,12 @@
     "nextForced": "下一集不等上一集上架就会开始。",
     "docsTitle": "文件",
     "docsEmpty": "工人下一轮会写设定集。",
+    "bibleEmpty": "工人下一轮会写故事圣经。",
     "docKinds": {
       "setting": "设定集",
       "outline": "总纲",
-      "chapter": "篇章细纲"
+      "chapter": "篇章细纲",
+      "bible": "故事圣经"
     },
     "chapterN": "第 {n} 篇细纲",
     "version": "第 {n} 版",
@@ -2553,6 +2613,25 @@
     "saveApprove": "保存并核准",
     "saveReview": "保存为待审",
     "editError": "没有保存：{message}",
+    "thread": {
+      "title": "讨论",
+      "empty": "还没有讨论。问模型问题或说要改什么；它的回复与改出的新版本都留在这里。",
+      "authors": {
+        "owner": "站主",
+        "planner": "企划",
+        "writer": "撰稿"
+      },
+      "aboutVersion": "对第 {n} 版",
+      "aboutScript": "对剧本 {hash}",
+      "waiting": "等模型回复",
+      "closed": "已核准：这条讨论串只留记录，不再接受新消息。",
+      "input": "给模型的话",
+      "placeholder": "例如：第二幕为什么要死一个人？把师兄改成沉默寡言。",
+      "send": "送出",
+      "sending": "送出中…",
+      "sendError": "没有送出：{message}",
+      "loadError": "讨论读不到：{message}"
+    },
     "beats": {
       "episode": "集",
       "title": "标题",
@@ -2587,7 +2666,11 @@
     "openVideo": "打开",
     "skip": "跳过",
     "skipConfirm": "跳过第 {n} 集？作品会直接做下一集。",
+    "withdraw": "撤回",
+    "withdrawConfirm": "撤回「{title}」？还没有任何一集开始做，文件和讨论会一起删掉，排队中的请求会标成已撤回。",
     "oneOffTitle": "单集漫剧",
+    "oneOff": "单集",
+    "openDramaSettings": "前往漫剧设置",
     "dramaOn": "漫剧已开启：工人会依序制作发起的单集漫剧与作品。",
     "dramaOff": "漫剧目前是关闭的。",
     "dramaOffHow": "工人不会制作任何漫剧，你发起的单集漫剧与作品会等到开启后才开始。在下方“{settings}”勾选“{enable}”，再点保存。",

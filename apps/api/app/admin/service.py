@@ -100,7 +100,6 @@ OWNER_ONLY_CONFIG_FIELDS: dict[str, tuple[str, ...]] = {
     "ai_vendors": (
         "openai_connection",
         "anthropic_connection",
-        "ai_subscription_fallback",
     ),
 }
 
@@ -197,12 +196,12 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         "Jev 的每日呼叫次數由新聞自動化、景點介紹的 Jev 影子評估與影片旁白檢查共用。"
         "OpenAI 或 Claude 可以改走主機上「AI 帳號」登入的 Codex 或 Claude Code 訂閱帳號"
         "（只有站主能切換）：各功能照樣選供應商與模型，帳號依 A、B、C… 的順序輪流，"
-        "一個帳號的 5 小時或每週額度用滿才換下一個；依候補設定可改用 MiniMax。"
+        "一個帳號的 5 小時或每週額度用滿才換下一個，"
+        "全部用滿就等額度重置，不會改用其他供應商或模型。"
         "行程規劃與行程文字解析仍使用 API 金鑰。",
         (
             "openai_connection",
             "anthropic_connection",
-            "ai_subscription_fallback",
             "openai_api_base_url",
             "anthropic_api_base_url",
             "minimax_api_base_url",
@@ -1430,7 +1429,6 @@ def _validate_provider_values(
         "hotspot_intro_ai_default_provider": {"openai", "anthropic", "minimax", "gemini"},
         "anthropic_connection": {"api_key", "subscription"},
         "openai_connection": {"api_key", "subscription"},
-        "ai_subscription_fallback": {"minimax", "wait"},
     }
     for field, allowed in modes.items():
         if field in merged and str(merged[field]).lower() not in allowed:
