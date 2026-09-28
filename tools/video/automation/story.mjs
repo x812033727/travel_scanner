@@ -101,9 +101,12 @@ const CHECKER_TOKENS = 16_000;
 const LISTENER_TOKENS = 8_000;
 const FIX_TOKENS = 8_000;
 
+// What a story keeps in its work directory, relative to it: the chapters as written and checked
+// (small, and what a person reads when a story goes wrong), and the pages its sources gave, whole
+// (megabytes; the tidy removes them with the other media once the video is finished, tidy.mjs).
 export const STORY_DIR = "story";
-const CHAPTERS_DIR = path.join(STORY_DIR, "chapters");
-const PAGES_DIR = path.join(STORY_DIR, "pages");
+export const STORY_CHAPTERS_DIR = path.join(STORY_DIR, "chapters");
+export const STORY_PAGES_DIR = path.join(STORY_DIR, "pages");
 
 export const OUTLINE_NOTE = "品牌故事：題目是站主核准過的企劃清單（docs/videos/STORY.md），大綱不再問 Jev";
 export const SCRIPT_NOTE = "品牌故事沒有劇本關卡：企劃查核過、逐章查核與聽眾審稿已完成，依故事流程在本機核准";
@@ -395,7 +398,7 @@ function storyReader(automation) {
  * pass (no answer, 429, a server error) is not kept, so the next step asks again.
  */
 export async function readStoryPage(automation, state, url) {
-  const file = path.join(automation.workdir(state.slug), PAGES_DIR, `${hash16(url)}.json`);
+  const file = path.join(automation.workdir(state.slug), STORY_PAGES_DIR, `${hash16(url)}.json`);
   const kept = readJson(file, null);
   if (kept?.url === url) return kept;
   const page = await storyReader(automation)(url);
@@ -485,7 +488,7 @@ function checkerSourceOrder(plan, key, chapter, belongs) {
 
 // --- the chapters on disk ------------------------------------------------------------------------
 
-const chapterFile = (automation, state, key) => path.join(automation.workdir(state.slug), CHAPTERS_DIR, `${key}.json`);
+const chapterFile = (automation, state, key) => path.join(automation.workdir(state.slug), STORY_CHAPTERS_DIR, `${key}.json`);
 export const readChapter = (automation, state, key) => readJson(chapterFile(automation, state, key), null);
 const saveChapter = (automation, state, chapter) => atomicWrite(chapterFile(automation, state, chapter.key), `${JSON.stringify(chapter, null, 2)}\n`);
 
