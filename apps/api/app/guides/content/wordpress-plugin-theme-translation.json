@@ -237,6 +237,910 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "Translate WordPress themes and plugins into Traditional Chinese: a Loco Translate and Poedit workflow",
+      "description": "When a WordPress plugin or theme still displays English, first determine whether the text comes from program strings, content settings, or an external service. This guide explains Loco Translate and Poedit workflows, language files, update-safe storage, and checks for Taiwan terminology and placeholders so site owners can maintain a Traditional Chinese interface instead of fixing just one button.",
+      "hero": {
+        "src": "/guides/wordpress-plugin-theme-translation/hero-en.jpg",
+        "alt": "Original illustration showing how a translation moves from editing through language files to the website, using a document, folder, and screen.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The site is set to Traditional Chinese, yet the booking plugin still has English buttons and an unreadable payment-failure message. First record where the text appears and what action triggers it; then decide whether to change a setting or a language file. The same English phrase might come from the theme, a plugin, or an external payment page. Picking the wrong source means you will never find it."
+        },
+        {
+          "type": "paragraph",
+          "text": "This guide uses a small studio's booking interface as an example, translating buttons, fields, and status messages into Traditional Chinese. You do not need to translate the entire plugin first. Fix the steps every user must take, then keep a checklist for checking translations after updates."
+        },
+        {
+          "type": "heading",
+          "text": "Find the real source of the text first",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Search for the text in the plugin settings or page editor first. Custom form labels, article content, and navigation names are usually data saved by the site itself and should be changed in their original settings. Loco Translate mainly handles translatable strings supplied by code; it cannot automatically list all database content. For an externally embedded window, check that service's language settings."
+        },
+        {
+          "type": "paragraph",
+          "text": "Record each untranslated phrase, page URL, signed-in role, triggering steps, and owning plugin in a table. For example, you must actually submit incomplete data to see an error that appears only after submission. Check the WordPress site language separately from your personal dashboard language so a change to your own admin interface is not mistaken for a visitor-facing fix."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Walk through the booking flow in a signed-out window; record English text and when it appears.",
+            "Check editable content settings first, then the theme or plugin language files.",
+            "On a staging site, test one easily recognized button to confirm the translation loads."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Choose between dashboard translation and desktop editing",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "In the WordPress dashboard, Loco Translate lets you choose a plugin or theme, find a source string, and enter a translation. It works well for a site owner maintaining a few custom terms, but you must understand file locations and loading dependencies. Do not promote every editor to an administrator who can modify plugin files merely because the tool runs in the dashboard."
+        },
+        {
+          "type": "paragraph",
+          "text": "Poedit provides a desktop editor for translation files. Its dedicated WordPress workflow is currently listed as a Poedit Pro feature: it can read a local plugin directory or work through a server connection. Server mode uploads translations when you save, so connect to a controlled staging site first and verify the path and account permissions."
+        },
+        {
+          "type": "paragraph",
+          "text": "Choose a tool with the next maintainer in mind. A site owner who regularly adjusts copy may prefer the dashboard; a translator handing off files offline may need desktop editing and versioned delivery. Either way, retain the source text, translations, and file backups so the work does not live only in one person's memory."
+        },
+        {
+          "type": "heading",
+          "text": "Create a custom file with Loco Translate",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "In Loco Translate, choose the target under Plugins or Themes and confirm that the language is Traditional Chinese with the correct locale, such as zh_TW. If a system translation already exists, follow the official custom-translation workflow to copy the source strings, then create a Custom file for the same language and enter the few overrides you need."
+        },
+        {
+          "type": "paragraph",
+          "text": "Storage matters. Author files sit in the plugin or theme installation directory and may be overwritten by updates. System files may be overwritten by WordPress language updates. The officially recommended Custom location is wp-content/languages/loco/. Priority loading from that custom location depends on Loco Translate remaining active; document this dependency at handoff."
+        },
+        {
+          "type": "paragraph",
+          "text": "Search for the exact source phrase and read its context before writing wording understandable to readers in Taiwan. Save, then reopen the affected screen. If the site uses caching, clear the relevant entries according to its settings. Do not edit a System file and expect it to last forever, or make the entire site writable by everyone just to save a translation."
+        },
+        {
+          "type": "heading",
+          "text": "Understand the files before delivering with Poedit",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A POT is a template of translatable source text; a PO is an editable language translation; and an MO is a compiled format used by software. Translating only a POT and uploading it does not mean the translation will load. Poedit's current WordPress workflow also creates other formats as needed, such as PHP translation files and JSON used by JavaScript."
+        },
+        {
+          "type": "paragraph",
+          "text": "For offline work, obtain the plugin or theme directory matching the site's version. Create a translation for the target language or open an existing PO. Save and retain all related files generated by the tool. The official guidance says manually copied files must keep the correct names and locations. Do not omit apparently duplicate files on your own: parts of the dashboard may otherwise remain untranslated."
+        },
+        {
+          "type": "paragraph",
+          "text": "A delivery checklist should record at least the plugin name and version, language, source-template date, generated filenames, installation paths, and any special loading requirement. Ask the maintainer to install the files on a staging site first, then schedule the production update after verification. A translator should not overwrite files currently serving visitors."
+        },
+        {
+          "type": "heading",
+          "text": "Proofread meaning while preserving symbols required by code",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For %s, %d, or numbered placeholders, read translator notes to learn whether each represents a name, quantity, or other dynamic value. Preserve the required symbols and their relationships; do not substitute a fixed test name. Check plural forms and distinct contexts individually. The same English phrase may need different translations on different screens."
+        },
+        {
+          "type": "paragraph",
+          "text": "Terminology should match the result of the action. Unsubscribing and cancelling a booking are not interchangeable just because the English looks similar; a button that only saves a draft must not say Publish. Maintain a glossary for account, password, notification, and booking terms, and have someone familiar with the business confirm that error messages offer a useful next step."
+        },
+        {
+          "type": "paragraph",
+          "text": "On phones, inspect long buttons, line breaks, and error messages especially carefully. Test short and long names, different quantities, and empty fields to see whether inserted dynamic values read naturally. Machine translation can help draft text, but it cannot replace checks of meaning and layout in the actual workflow."
+        },
+        {
+          "type": "heading",
+          "text": "Resync and spot-check after updates",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A plugin update may add or change source strings. Even if your custom file remains, its old translations may no longer match. Loco's official guidance calls for a manual check and Sync, followed by reviewing new or obsolete strings before saving. Poedit's local workflow can extract strings again from the updated source; the exact steps depend on the workflow you use."
+        },
+        {
+          "type": "paragraph",
+          "text": "Make translation acceptance part of the site's maintenance log: back up, update the staging site, sync source strings, proofread changes, then test essential actions. If a string cannot be found, give the author its source text, screen, and plugin version to check whether it follows WordPress translation standards. Do not use broad searches as a substitute for editing code directly."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finally, spot-check the affected screens as a signed-out visitor, a regular member, and an administrator. Once both success and failure messages are understandable, retain before-and-after differences and file backups. The next maintainer can then distinguish custom terms from the official language pack."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-plugin-theme-translation/diagram-1-en.svg",
+          "alt": "Four-step diagram: locate the text source, save a custom language file, check placeholders and Taiwan terminology, then resync and verify after updates.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Accept translations based on actual user actions, and keep a method for later maintenance.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Method",
+            "Best for",
+            "Watch out for"
+          ],
+          "rows": [
+            [
+              "Edit content settings directly",
+              "Form labels and page text",
+              "Maintain it in the original feature; it may not be a language string"
+            ],
+            [
+              "Loco Custom translation",
+              "A few interface phrases changed in the dashboard",
+              "Document the plugin loading dependency and sync regularly"
+            ],
+            [
+              "Poedit file handoff",
+              "Offline translation and version control",
+              "Check the edition, filenames, formats, and installation paths"
+            ]
+          ],
+          "caption": "Choose the workflow based on the text's source; complete a representative action before expanding."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "A translation file does not guarantee that the screen uses it",
+          "text": "Check the language, owning plugin, file location, and loading method first. Then inspect caching and source strings after updates. Keep a restorable file copy so every wording change can be traced."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Plan content and URLs for a multilingual website",
+              "kind": "life",
+              "slug": "wordpress-multilingual-site"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back up your WordPress site before updating",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Loco: adding a language and choosing a save location",
+          "url": "https://localise.biz/wordpress/plugin/manual/msginit",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Loco: custom translations and syncing after updates",
+          "url": "https://localise.biz/wordpress/plugin/custom-translations",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Poedit: WordPress translation workflow",
+          "url": "https://poedit.com/docs/get-started/wordpress/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: localization and language files",
+          "url": "https://developer.wordpress.org/apis/internationalization/localization/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: strings, placeholders, and context",
+          "url": "https://developer.wordpress.org/plugins/internationalization/how-to-internationalize-your-plugin/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPress のテーマとプラグインを繁体字中国語に翻訳する：Loco Translate と Poedit の手順",
+      "description": "WordPress のプラグインやテーマに英語が残っているときは、その文言がプログラムの画面、コンテンツ設定、外部サービスのどこから来るかを確認します。Loco Translate と Poedit の作業手順、言語ファイルの役割、更新で上書きされにくい保存場所、台湾向けの用語と変数の確認方法を解説します。ボタンを一つ直すだけでなく、維持できる繁体字中国語の画面を目指します。",
+      "hero": {
+        "src": "/guides/wordpress-plugin-theme-translation/hero-ja.jpg",
+        "alt": "文書、フォルダー、画面を用いて、翻訳が編集から言語ファイルを経てサイトに読み込まれる流れを示すオリジナルのイラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "サイトを繁体字中国語に設定しても、予約プラグインのボタンが英語のままで、決済失敗の表示も分からないことがあります。まず文言の表示場所と発生条件を記録し、設定と言語ファイルのどちらを直すべきか判断します。同じ英語でもテーマ、プラグイン、外部の決済ページから別々に出ている可能性があります。対象を間違えると、いつまでも見つかりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ここでは小規模なスタジオの予約画面を例に、ボタン、入力欄、状態メッセージを繁体字中国語にします。プラグイン全体を先に翻訳する必要はありません。利用者が必ず通る操作を正しく整え、更新後も確認できる翻訳リストを作ります。"
+        },
+        {
+          "type": "heading",
+          "text": "まず文言の本当の出所を特定する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先にプラグインの設定やページエディターでその文言を探します。独自のフォームラベル、記事本文、ナビゲーション名は、通常サイト自身が保存したデータなので、元の設定で変更します。Loco Translate が主に扱うのはプログラム側の翻訳可能な文字列で、データベースの内容をすべて自動で一覧にするものではありません。外部から埋め込んだ画面は、そのサービスの言語設定を確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "未翻訳の文言、ページの URL、ログイン状態、発生までの手順、該当プラグインを表に記録します。例えば「送信後だけ出るエラー」は、不完全な入力を実際に送信しないと確認できません。WordPress のサイト言語と個人の管理画面言語も別々に確認し、自分の管理画面だけ直して訪問者向けも完了したと思い込まないようにします。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "ログアウトした画面で予約操作を一通り行い、英語の文言と表示条件を記録します。",
+            "編集可能なコンテンツ設定を先に調べ、その後テーマやプラグインの言語ファイルを確認します。",
+            "テストサイトで分かりやすいボタンを一つ選び、翻訳が読み込まれるか検証します。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "管理画面での翻訳とデスクトップ編集を選ぶ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Loco Translate では WordPress の管理画面でプラグインやテーマを選び、原文を検索して訳文を入力できます。サイト運営者が少数の独自用語を維持するのに向いていますが、保存先と読み込み時の依存関係を理解する必要があります。管理画面にツールがあるからといって、すべての編集者をプラグインのファイルまで変更できる管理者に昇格させないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Poedit はデスクトップで翻訳ファイルを編集できます。公式案内では、専用の WordPress ワークフローは現在 Poedit Pro の機能で、ローカルのプラグインフォルダーを読む方法とサーバーに接続する方法があります。サーバーモードでは保存時に訳文がアップロードされるため、初回は管理されたテストサイトに接続し、パスとアカウント権限を先に確かめます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ツールは次に誰が引き継ぐかを考えて選びます。運営者が頻繁に文言を直すなら管理画面、翻訳者がオフラインでファイルを納品するならデスクトップ編集とバージョン付きの引き渡しが適しています。どちらも原文、訳文、ファイルのバックアップを残し、保存場所を一人しか知らない状態を避けます。"
+        },
+        {
+          "type": "heading",
+          "text": "Loco Translate で独自ファイルを作る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Loco Translate の Plugins または Themes で対象を選び、言語が繁体字中国語で、locale が zh_TW など正しい値か確認します。既存の System 翻訳があれば、公式の独自翻訳手順に従って原文をコピーし、同じ言語の Custom ファイルを作って必要な少数の訳文を入力します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存先は重要です。Author はプラグインやテーマのインストール先にあり、更新で上書きされる場合があります。System は WordPress の言語更新で上書きされる場合があります。公式が推奨する Custom の保存先は wp-content/languages/loco/ です。この独自保存先からの優先読み込みには Loco Translate の有効化が必要なので、引き継ぎ記録に明記します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "原文全体を検索し、前後の文脈を読んでから、台湾の利用者に分かる表現を入力します。保存後に該当画面を開き直し、キャッシュがあればサイトの設定に従って必要な部分を消去します。System ファイルを直接編集して永続的に残ると期待したり、ファイルを書き込むためにサイト全体を誰でも書き込み可能にしたりしないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "ファイルを理解してから Poedit で納品する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "POT は翻訳可能な原文のひな型、PO は編集可能な言語別訳文、MO はプログラムが使うコンパイル済み形式です。POT だけを中国語に書き換えてアップロードしても、読み込みは完了しません。現在の Poedit の WordPress ワークフローでは、必要に応じて PHP 翻訳ファイルや JavaScript 用の JSON など、ほかの形式も生成します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "オフライン作業では、まずサイトと同じバージョンのプラグインまたはテーマのフォルダーを入手します。対象言語の翻訳を新規作成するか、既存の PO を開きます。保存後はツールが生成した関連ファイルも残します。公式は手動でコピーする場合、正しい名前と場所を保つよう注意しています。重複に見えるファイルを独断で省くと、管理画面の一部に原文が残る可能性があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "納品リストには最低限、プラグイン名とバージョン、言語、原文ひな型の日付、生成したファイル名、設置場所、特別な読み込み方法の要否を記録します。まず保守担当者にテストサイトへ設置してもらい、成功を確認してから本番更新を予定します。翻訳者が稼働中のファイルを直接上書きすることは避けます。"
+        },
+        {
+          "type": "heading",
+          "text": "意味を校正し、プログラムに必要な記号も守る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "%s、%d、番号付きのプレースホルダーがあれば、翻訳者向け注記を読み、名前、数量、その他の動的データのどれを表すか確認します。必要な記号と対応関係を保ち、固定のテスト用人名に置き換えないでください。複数形と異なる文脈も個別に確認します。同じ英語でも画面ごとに同じ訳が適切とは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用語は操作の結果に合わせます。英語が似ていても、購読解除と予約キャンセルを取り違えてはいけません。下書きを保存するだけのボタンを「公開」と訳すのも誤りです。アカウント、パスワード、通知、予約などの用語集を作り、業務を理解する人に、エラーメッセージが実行可能な次の手順を示しているか確認してもらいます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "スマートフォンでは長いボタン、改行、エラー表示を特に確認します。短い名前と長い名前、数量の違い、空欄を試し、動的データを挿入しても自然に読めるか見ます。機械翻訳は下書きには使えますが、実際の操作での意味とレイアウトの確認の代わりにはなりません。"
+        },
+        {
+          "type": "heading",
+          "text": "更新後に再同期して抜き取り確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "プラグイン更新で原文が追加・変更されることがあります。独自ファイルが残っても、以前の訳文が対応しなくなるかもしれません。Loco の公式案内では、手動で確認して Sync で同期し、新規・廃止された文字列を確かめてから保存します。Poedit のローカル作業では更新後のソースから文字列を再抽出できますが、手順は使うワークフローによって異なります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "翻訳の受け入れ確認をサイト保守記録に加えます。バックアップを取り、テストサイトを更新し、原文を同期し、変更を校正してから、必須の操作を試します。どうしても見つからない文字列があれば、原文、画面、プラグインのバージョンを作者に伝え、WordPress の翻訳基準に沿っているか確かめます。大量の検索だけで、コードの直接修正の代わりにしないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後に、ログアウトした訪問者、一般会員、管理者の三つの立場で該当画面を抜き取り確認します。成功と失敗の両メッセージが分かることを確かめ、更新前後の差分とファイルのバックアップを残します。次の担当者も、独自用語と公式の言語パックを区別できます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-plugin-theme-translation/diagram-1-ja.svg",
+          "alt": "文言の出所を特定し、独自の言語ファイルを保存し、変数と台湾向け用語を校正し、更新後に再同期して検証する四段階の図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "実際の操作結果で翻訳を確認し、後の保守方法も残します。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "適した用途",
+            "注意点"
+          ],
+          "rows": [
+            [
+              "コンテンツ設定で直接修正",
+              "フォームのラベル、ページの文言",
+              "元の機能で維持する。言語ファイルの文字列とは限らない"
+            ],
+            [
+              "Loco Custom 翻訳",
+              "管理画面で少数の表示文言を修正",
+              "プラグインへの読み込み依存を記録し、定期的に同期する"
+            ],
+            [
+              "Poedit のファイル納品",
+              "オフライン翻訳とバージョン管理",
+              "エディション、ファイル名、形式、設置場所を確認する"
+            ]
+          ],
+          "caption": "文言の出所で手順を選び、代表的な操作を完了してから対象を広げます。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "訳文があっても、画面で使われるとは限らない",
+          "text": "まず言語、対象プラグイン、ファイルの場所、読み込み方法を確認します。その後、キャッシュと更新後の原文を調べます。変更を追跡できるよう、復元可能なファイルの控えを残します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多言語サイトのコンテンツと URL を計画する",
+              "kind": "life",
+              "slug": "wordpress-multilingual-site"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "更新前に WordPress サイトをバックアップする",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Loco：言語の追加と保存場所",
+          "url": "https://localise.biz/wordpress/plugin/manual/msginit",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Loco：独自翻訳と更新後の同期",
+          "url": "https://localise.biz/wordpress/plugin/custom-translations",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Poedit：WordPress 翻訳ワークフロー",
+          "url": "https://poedit.com/docs/get-started/wordpress/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：ローカライズと言語ファイル",
+          "url": "https://developer.wordpress.org/apis/internationalization/localization/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：文字列、変数、文脈",
+          "url": "https://developer.wordpress.org/plugins/internationalization/how-to-internationalize-your-plugin/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 테마와 플러그인을 번체 중국어로 번역하기: Loco Translate와 Poedit 작업 흐름",
+      "description": "WordPress 플러그인이나 테마에 영어가 남아 있다면 먼저 그 문구가 프로그램 화면, 콘텐츠 설정, 외부 서비스 중 어디에서 왔는지 확인해야 합니다. Loco Translate와 Poedit의 번역 절차, 언어 파일의 역할, 업데이트 시 덮어쓰기를 피하는 저장 방법, 대만에서 쓰는 용어와 변수의 검토 방법을 설명합니다. 버튼 하나만 바꾸는 대신 유지 관리할 수 있는 번체 중국어 화면을 만드는 것이 목표입니다.",
+      "hero": {
+        "src": "/guides/wordpress-plugin-theme-translation/hero-ko.jpg",
+        "alt": "문서, 폴더, 화면을 통해 번역이 편집 단계에서 언어 파일을 거쳐 웹사이트에 적용되는 과정을 보여 주는 독창적인 삽화.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "사이트를 번체 중국어로 설정했는데 예약 플러그인의 버튼은 여전히 영어이고 결제 실패 안내도 이해하기 어려울 수 있습니다. 먼저 문구가 나타나는 위치와 발생 조건을 기록한 다음 설정을 바꿀지 언어 파일을 수정할지 결정하세요. 같은 영어 문구라도 테마, 플러그인, 외부 결제 페이지에서 각각 나올 수 있습니다. 대상을 잘못 고르면 계속 찾지 못합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 작은 스튜디오의 예약 화면을 예로 들어 버튼, 입력란, 상태 메시지를 번체 중국어로 바꾸는 방법을 다룹니다. 플러그인 전체를 먼저 번역할 필요는 없습니다. 사용자가 반드시 거치는 절차를 정확히 수정하고, 업데이트 후에도 계속 확인할 번역 목록을 만드세요."
+        },
+        {
+          "type": "heading",
+          "text": "먼저 문구의 실제 출처 찾기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 플러그인 설정이나 페이지 편집기에서 해당 문구를 검색하세요. 사용자 정의 양식 레이블, 글 내용, 탐색 메뉴 이름은 보통 사이트 자체에 저장된 데이터이므로 원래 설정에서 수정해야 합니다. Loco Translate는 주로 프로그램이 제공하는 번역 가능 문자열을 처리하며 데이터베이스 내용을 모두 자동으로 나열하지는 못합니다. 외부에서 삽입한 창은 해당 서비스의 언어 설정을 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "번역되지 않은 문구, 페이지 URL, 로그인 상태, 발생 단계, 담당 플러그인을 표에 적으세요. 예를 들어 '제출한 뒤에만 표시되는 오류'는 불완전한 내용을 실제로 제출해야 볼 수 있습니다. WordPress 사이트 언어와 개인 관리자 화면 언어도 따로 확인하여 자기 관리자 화면만 바꾸고 방문자 화면까지 끝났다고 착각하지 마세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "로그아웃한 창에서 예약 절차를 한 번 진행하고 영어 문구와 나타나는 조건을 기록하세요.",
+            "편집 가능한 콘텐츠 설정을 먼저 확인한 뒤 테마나 플러그인의 언어 파일을 살피세요.",
+            "테스트 사이트에서 알아보기 쉬운 버튼 하나를 골라 번역이 적용되는지 검증하세요."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "관리자 화면 번역과 데스크톱 편집 중 선택하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Loco Translate에서는 WordPress 관리자 화면에서 플러그인이나 테마를 선택하고 원문 문자열을 찾아 번역을 입력할 수 있습니다. 사이트 운영자가 소수의 사용자 정의 용어를 관리하기에는 좋지만 파일 저장 위치와 불러오기 의존성을 이해해야 합니다. 도구가 관리자 화면에 있다는 이유만으로 모든 편집자에게 플러그인 파일을 수정할 수 있는 관리자 권한을 주지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "Poedit는 데스크톱 화면에서 번역 파일을 편집합니다. 공식 안내에 따르면 전용 WordPress 작업 흐름은 현재 Poedit Pro 기능이며, 로컬 플러그인 폴더를 읽거나 서버에 연결할 수 있습니다. 서버 모드에서는 저장할 때 번역이 업로드되므로 처음에는 관리되는 테스트 사이트에 연결하고 경로와 계정 권한을 먼저 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "도구를 선택할 때 다음 담당자를 생각하세요. 운영자가 문구를 자주 고친다면 관리자 화면 작업이 적합하고, 번역자가 오프라인 파일을 전달한다면 데스크톱 편집과 버전별 인계가 필요할 수 있습니다. 어느 쪽이든 원문, 번역, 파일 백업을 남겨 자료 위치를 한 사람만 아는 상황을 피하세요."
+        },
+        {
+          "type": "heading",
+          "text": "Loco Translate로 사용자 정의 파일 만들기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Loco Translate의 Plugins 또는 Themes에서 대상을 선택하고 언어가 번체 중국어이며 locale이 zh_TW처럼 정확한지 확인하세요. System 번역이 이미 있다면 공식 사용자 정의 번역 절차에 따라 원문 문자열을 복사한 다음 같은 언어의 Custom 파일을 만들어 덮어써야 하는 소수의 번역을 입력하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "저장 위치가 중요합니다. Author는 플러그인이나 테마 설치 폴더에 있어 업데이트로 덮어써질 수 있습니다. System은 WordPress 언어 업데이트로 덮어써질 수 있습니다. 공식 권장 Custom 위치는 wp-content/languages/loco/입니다. 이 사용자 정의 위치의 우선 적용은 Loco Translate가 활성화되어 있어야 하므로 인계 기록에 분명히 적으세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "정확한 원문 전체를 검색하고 관련 문맥을 읽은 뒤 대만 사용자가 이해할 표현을 입력하세요. 저장한 다음 해당 화면을 다시 열고 캐시가 있다면 사이트 설정에 따라 관련 항목을 지우세요. System 파일을 직접 수정하고 영구히 남을 것이라고 기대하거나 파일을 저장하려고 사이트 전체를 누구나 쓸 수 있게 만들지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "파일을 이해한 뒤 Poedit로 전달하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "POT는 번역 가능한 원문의 템플릿, PO는 편집 가능한 언어별 번역, MO는 프로그램이 사용하는 컴파일된 형식입니다. POT만 중국어로 고쳐 업로드했다고 번역이 적용되는 것은 아닙니다. 현재 Poedit의 WordPress 작업 흐름은 필요에 따라 PHP 번역 파일과 JavaScript용 JSON 같은 다른 형식도 생성합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "오프라인 작업에서는 먼저 사이트 버전과 일치하는 플러그인 또는 테마 폴더를 받으세요. 대상 언어 번역을 새로 만들거나 기존 PO를 여세요. 저장 후 도구가 만든 관련 파일을 모두 보관하세요. 공식 안내는 수동으로 복사할 때 올바른 파일 이름과 위치를 유지하라고 강조합니다. 중복으로 보이는 파일을 임의로 빼면 관리자 화면 일부에 원문이 남을 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "전달 목록에는 적어도 플러그인 이름과 버전, 언어, 원문 템플릿 날짜, 생성한 파일 이름, 설치 위치, 특별한 불러오기 방식의 필요 여부를 기록하세요. 먼저 유지보수 담당자가 테스트 사이트에 설치하도록 하고 성공을 확인한 뒤 운영 사이트 업데이트를 예약하세요. 번역자가 현재 서비스 중인 파일을 직접 덮어쓰지 않도록 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "의미를 교정하면서 프로그램에 필요한 기호 지키기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "%s, %d 또는 번호가 붙은 자리표시자를 만나면 번역자 메모를 읽고 이름, 수량, 다른 동적 값 중 무엇을 뜻하는지 확인하세요. 필요한 기호와 대응 관계를 유지하고 고정된 테스트용 이름으로 바꾸지 마세요. 복수형과 서로 다른 문맥도 하나씩 확인해야 합니다. 같은 영어라도 모든 화면에서 같은 번역이 적합하지 않을 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "용어는 작업 결과에 맞춰야 합니다. 영어가 비슷하다는 이유로 구독 취소와 예약 취소를 바꿔 쓰면 안 됩니다. 초안만 저장하는 버튼을 '게시'로 번역해서도 안 됩니다. 계정, 비밀번호, 알림, 예약 같은 용어집을 만들고 업무를 아는 사람이 오류 메시지에 실행 가능한 다음 단계가 있는지 확인하게 하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "휴대전화에서는 긴 버튼, 줄바꿈, 오류 메시지를 특히 살피세요. 짧고 긴 이름, 다른 수량, 빈 입력란을 시험해 동적 값이 들어간 뒤에도 자연스럽게 읽히는지 보세요. 기계 번역은 초안 작성에 도움을 줄 수 있지만 실제 사용 흐름에서 의미와 화면 배치를 확인하는 일을 대신할 수 없습니다."
+        },
+        {
+          "type": "heading",
+          "text": "업데이트 후 다시 동기화하고 표본 점검하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "플러그인 업데이트는 원문 문자열을 추가하거나 바꿀 수 있습니다. Custom 파일이 삭제되지 않아도 오래된 번역이 더는 맞지 않을 수 있습니다. Loco 공식 안내는 수동 검토와 Sync 동기화 후 새 문자열과 폐기된 문자열을 확인하고 저장하라고 합니다. Poedit 로컬 작업 흐름에서는 업데이트된 소스에서 문자열을 다시 추출할 수 있으며 구체적인 방법은 사용하는 작업 흐름에 따라 다릅니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "번역 검수를 사이트 유지보수 기록에 넣으세요. 먼저 백업하고 테스트 사이트를 업데이트한 뒤 원문을 동기화하고 변경 사항을 교정한 다음 필수 작업을 확인합니다. 끝내 찾을 수 없는 문자열이 있다면 원문, 화면, 플러그인 버전을 제작자에게 전달하여 WordPress 번역 표준을 따르는지 확인하세요. 광범위한 검색만으로 코드를 직접 수정하는 일을 대신하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막으로 로그아웃한 방문자, 일반 회원, 관리자 세 가지 입장에서 관련 화면을 표본 점검하세요. 성공과 실패 메시지를 모두 이해할 수 있는지 확인하고 업데이트 전후 차이와 파일 백업을 남기세요. 다음에 도구나 담당자가 바뀌어도 사용자 정의 용어와 공식 언어 팩을 구분할 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-plugin-theme-translation/diagram-1-ko.svg",
+          "alt": "문구의 출처 파악, 사용자 정의 언어 파일 저장, 자리표시자와 대만 용어 교정, 업데이트 후 재동기화와 검증을 나타내는 4단계 도표.",
+          "width": 1600,
+          "height": 900,
+          "caption": "실제 사용자 작업 결과로 번역을 검수하고 이후 유지보수 방법을 남기세요.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "방법",
+            "적합한 용도",
+            "주의할 점"
+          ],
+          "rows": [
+            [
+              "콘텐츠 설정에서 직접 수정",
+              "양식 레이블과 페이지 문구",
+              "원래 기능에서 관리해야 하며 언어 문자열이 아닐 수 있음"
+            ],
+            [
+              "Loco Custom 번역",
+              "관리자 화면에서 소수의 화면 문구 수정",
+              "플러그인 불러오기 의존성을 기록하고 정기적으로 동기화"
+            ],
+            [
+              "Poedit 파일 인계",
+              "오프라인 번역과 버전 관리",
+              "에디션, 파일 이름, 형식, 설치 위치 확인"
+            ]
+          ],
+          "caption": "문구의 출처에 따라 절차를 선택하고 대표적인 작업을 완료한 뒤 범위를 넓히세요."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "번역 파일이 있어도 화면에 적용된다는 보장은 없습니다",
+          "text": "먼저 언어, 담당 플러그인, 파일 위치, 불러오기 방식을 확인하세요. 그런 다음 캐시와 업데이트 후 원문을 살피세요. 모든 문구 변경을 추적할 수 있도록 복원 가능한 파일 사본을 남기세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "다국어 웹사이트의 콘텐츠와 URL 계획하기",
+              "kind": "life",
+              "slug": "wordpress-multilingual-site"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "업데이트 전에 WordPress 사이트 백업하기",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Loco: 언어 추가와 저장 위치",
+          "url": "https://localise.biz/wordpress/plugin/manual/msginit",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Loco: 사용자 정의 번역과 업데이트 후 동기화",
+          "url": "https://localise.biz/wordpress/plugin/custom-translations",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Poedit: WordPress 번역 작업 흐름",
+          "url": "https://poedit.com/docs/get-started/wordpress/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 지역화와 언어 파일",
+          "url": "https://developer.wordpress.org/apis/internationalization/localization/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 문자열, 변수, 문맥",
+          "url": "https://developer.wordpress.org/plugins/internationalization/how-to-internationalize-your-plugin/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WordPress 主题与插件繁体中文本地化：Loco Translate 和 Poedit 工作流程",
+      "description": "WordPress 插件或主题仍显示英文时，先确认文字来自程序界面、内容设置还是外部服务。本文介绍 Loco Translate 和 Poedit 的翻译流程、语言文件的作用、避免更新覆盖的保存方式，以及面向台湾用户的用语和变量校对方法，帮助站长维护繁体中文界面，而不是只修改眼前的一个按钮。",
+      "hero": {
+        "src": "/guides/wordpress-plugin-theme-translation/hero-zh-cn.jpg",
+        "alt": "原创插画用文档、文件夹和屏幕展示翻译从编辑、保存为语言文件到加载进网站的过程。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "网站已设置为繁体中文，预约插件却仍有英文按钮，付款失败的提示也看不懂。遇到这种情况，先记下文字出现的位置和触发条件，再决定修改设置还是语言文件。同一句英文可能分别来自主题、插件和外部付款页面；选错对象就会一直找不到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文以小型工作室修正预约界面为例，处理按钮、字段和状态消息的繁体中文翻译。无需先翻译整个插件；先把用户必经的流程做对，再建立更新后能持续检查的翻译清单。"
+        },
+        {
+          "type": "heading",
+          "text": "先找到文字的真正来源",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先到插件设置或页面编辑器搜索该文字。自定义表单标签、文章内容和导航名称通常是网站自己保存的数据，应在原设置中修改。Loco Translate 主要处理程序提供的可翻译字符串，无法自动列出数据库中的所有内容。对于外部嵌入窗口，则要查看外部服务的语言设置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在表格中记录未翻译文字、页面网址、登录身份、触发步骤及所属插件。例如，“提交后才出现的错误”必须实际提交不完整的数据才能看到。WordPress 网站语言与个人后台语言也要分别确认，避免只改了自己的管理界面，就以为访客界面也已完成。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "在未登录窗口中走一遍预约流程，记录英文文字及出现条件。",
+            "先检查可编辑的内容设置，再检查主题或插件的语言文件。",
+            "在测试站选择一个容易辨认的按钮，验证翻译是否加载。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "选择后台翻译还是桌面编辑",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Loco Translate 可以在 WordPress 后台选择插件或主题，搜索原文字符串并填写译文。它适合站长维护少量自定义用语，但需要理解文件保存位置和加载依赖。不要因为工具在后台，就把每位编辑者都提升为能修改插件文件的管理员。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Poedit 可通过桌面界面编辑翻译文件。官方目前将专用 WordPress 工作流程列为 Poedit Pro 功能：它可以读取本地插件文件夹，也可以通过服务器连接操作。服务器模式在保存时会上传翻译，因此第一次应连接受控测试站，先确认路径和账户权限。"
+        },
+        {
+          "type": "paragraph",
+          "text": "选择工具时要考虑后续由谁接手。若站长经常修正文案，可以使用后台流程；若译者需要离线交付文件，则可以安排桌面编辑和版本交接。两种方式都应保留原文、译文和文件备份，避免只有一个人知道资料放在哪里。"
+        },
+        {
+          "type": "heading",
+          "text": "使用 Loco Translate 建立自定义文件",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "从 Loco Translate 的 Plugins 或 Themes 选择对象，确认目标语言为繁体中文、locale 正确，例如 zh_TW。如果已有 System 翻译，可按官方自定义翻译流程复制原文字符串，再建立同一语言的 Custom 文件，填入少量需要覆盖的译文。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存位置很重要。Author 位于插件或主题安装目录，更新可能覆盖它；System 可能被 WordPress 语言更新覆盖；官方建议的 Custom 位置是 wp-content/languages/loco/。从自定义位置优先加载依赖 Loco Translate 保持启用，应在交接记录中明确说明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "搜索完整原文，阅读相关上下文，再填写台湾用户能理解的文字。保存后重新打开对应画面；如果有缓存，按网站设置清除相关项目。不要直接编辑 System 文件后期待它永久保留，也不要只为了写入文件就让所有人都能写入整个网站。"
+        },
+        {
+          "type": "heading",
+          "text": "理解文件后再用 Poedit 交付",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "POT 是可翻译原文的模板，PO 是可编辑的语言译文，MO 是编译后供程序使用的格式。只把 POT 改成中文并上传，不等于翻译已被加载。现行 Poedit 的 WordPress 工作流程还会根据内容生成其他必要格式，例如 PHP 翻译文件和供 JavaScript 使用的 JSON。"
+        },
+        {
+          "type": "paragraph",
+          "text": "离线工作时，先取得与网站版本一致的插件或主题文件夹，创建目标语言翻译，或打开已有 PO。完成后保存，并保留工具生成的相关文件。官方提醒，手动复制时要保持正确的文件名和位置。不要自行省略看似重复的文件，否则后台部分区域可能仍显示原文。"
+        },
+        {
+          "type": "paragraph",
+          "text": "交付清单至少应记录插件名称和版本、语言、来源模板日期、输出文件名、安装位置，以及是否需要特殊加载方式。先请维护者在测试站安装，确认成功后再安排正式更新，避免译者直接覆盖正在提供服务的文件。"
+        },
+        {
+          "type": "heading",
+          "text": "校对含义，同时保留程序需要的符号",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "遇到 %s、%d 或带编号的占位符时，先阅读译者注释，确认它表示姓名、数量还是其他动态数据。保留必要符号及其对应关系，不要替换成固定的测试人名。复数形式与不同语境也要逐项确认，同一句英文不一定在每个画面都适用同一种译法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用语应符合操作结果。例如，取消订阅和取消预约不能仅因英文相似就混用；如果按钮只是保存草稿，也不该翻译成“发布”。建立常用词表，统一账户、密码、通知、预约等词汇，并请熟悉业务的人确认错误消息是否提供可执行的下一步。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在手机画面上，要特别检查长按钮、换行和错误提示。测试短姓名、较长姓名、不同数量及空白字段，观察插入动态数据后是否自然。机器翻译可帮助起草，但不能替代实际操作中的语义与版面检查。"
+        },
+        {
+          "type": "heading",
+          "text": "更新后重新同步并抽查",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "插件更新可能新增或修改原文。即使自定义文件没有被删除，旧译文也可能不再匹配。Loco 官方要求手动检查并使用 Sync 同步，然后确认新增或废弃的字符串后再保存。Poedit 的本地流程可以从更新后的源代码重新整理字符串，具体方法取决于所用工作流程。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把翻译验收写进网站维护记录：先备份、更新测试站、同步原文、校对变更，再检查必经操作。如果始终找不到某个字符串，应向作者提供原文、画面和插件版本，确认它是否符合 WordPress 翻译标准；不要用大范围搜索来代替直接修改代码。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后以未登录访客、普通会员和管理员三种身份抽查相关画面。确认成功和失败消息都易于理解后，保留更新前后的差异和文件备份。下一次更换工具或交接时，就能分清哪些用语是自定义的，哪些来自官方语言包。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-plugin-theme-translation/diagram-1-zh-cn.svg",
+          "alt": "四步图解：定位文字来源、保存自定义语言文件、校对变量和台湾用语、更新后重新同步并验证。",
+          "width": 1600,
+          "height": 900,
+          "caption": "通过实际操作结果验收翻译，并保留后续维护方法。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "适用需求",
+            "注意事项"
+          ],
+          "rows": [
+            [
+              "直接修改内容设置",
+              "表单标签、页面文字",
+              "在原功能中维护；不一定是语言字符串"
+            ],
+            [
+              "Loco Custom 翻译",
+              "在后台修正少量界面文字",
+              "记录插件加载依赖并定期同步"
+            ],
+            [
+              "Poedit 文件交付",
+              "离线翻译与版本管理",
+              "核对版本方案、文件名、格式和安装位置"
+            ]
+          ],
+          "caption": "根据文字来源选择流程，先完成有代表性的操作，再扩大范围。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "译文存在，不代表画面一定会使用",
+          "text": "先确认语言、文字所属插件、文件位置和加载方式，再检查缓存及更新后的原文。保留可恢复的文件副本，让每次修改文案都有迹可循。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "规划多语言网站的内容与网址",
+              "kind": "life",
+              "slug": "wordpress-multilingual-site"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "更新前备份 WordPress 网站",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Loco：添加语言与选择保存位置",
+          "url": "https://localise.biz/wordpress/plugin/manual/msginit",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Loco：自定义翻译与更新后同步",
+          "url": "https://localise.biz/wordpress/plugin/custom-translations",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Poedit：WordPress 翻译工作流程",
+          "url": "https://poedit.com/docs/get-started/wordpress/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：本地化与语言文件",
+          "url": "https://developer.wordpress.org/apis/internationalization/localization/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：字符串、变量与上下文",
+          "url": "https://developer.wordpress.org/plugins/internationalization/how-to-internationalize-your-plugin/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
