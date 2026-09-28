@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-video-1m-siri-ai
 title: Million-views batch 2: Siri AI on iOS 27, who gets it and how to turn it on
-status: open
+status: in-progress
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-4-8
+claimed_at: 2026-09-28T03:36:50Z
 created_at: 2026-09-28T02:30:45Z
 completed_at:
-branch:
+branch: claude/bold-noether-unopy8
 depends_on: []
 scope:
   - docs/videos/siri-ai-ios-27-how-to-get-it
@@ -53,3 +53,15 @@ node tools/video/cli.mjs status --slug siri-ai-ios-27-how-to-get-it --workdir <V
 - 官方數字都以撰稿當天重查為準，brief 的「會過期的事實」列了每個要重查的網址。
 - 不放 Apple 產品圖或截圖（版權）；機型用 table、流程用 steps。
 - 台灣觀眾的取捨（要把整台手機改英文）是繁中旁白的重點；英文觀眾不需要這段，翻譯時照字幕處理。
+
+## Progress (2026-09-28, claude-opus-4-8)
+
+Pipeline stages 1–4 done in-repo and committed:
+
+- `video.json` from brief option A (推薦): 23 scenes, 100 lines, 7 chapters, ~8.0 min, hook at 0:17.
+- `node tools/video/cli.mjs lint` → 0 errors, 0 warnings; Azure billable ~6,984 chars.
+- `docs/videos/lexicon.json` extended with the Apple terms (Siri, iOS, iPhone, iPad, Mac, Apple, beta, App, iCloud, Pro, Air, Watch, Vision, Google, Outlook, Try, Hey, Intelligence, Safari, WhatsApp, Audible).
+- `claims.md` (c1–c14) and `verify-1.md`: every claim confirmed against the Apple newsroom post and the How-to-get-Siri-AI support page, fetched 2026-09-28. All function descriptions are Apple's own wording; the family-recipe and sports-schedule demos are labelled as Apple's examples.
+- `status --slug` shows brief / script-lint / fact-checked ticked.
+
+Blocked on the same owner setup as the price-war video: outline gate (channel stance or pick option A), the paired video-tool token + Gemini voice key for `tts`, and a host with real ffmpeg for `assemble`. Next: `node tools/video/cli.mjs review-push --slug siri-ai-ios-27-how-to-get-it --gate outline`.
