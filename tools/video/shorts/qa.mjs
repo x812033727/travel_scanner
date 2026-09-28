@@ -122,7 +122,7 @@ export function captionsItem({ captions, timeline, locales = [] }) {
     if (!captions.has(locale)) problems.push(`${locale}.srt is missing`);
     else {
       // A translation says other words on the same clock.
-      const translated = captionProblems(captions.get(locale), { ...timeline, cues: timeline.cues.map((cue) => ({ ...cue, text: null })) }).filter((problem) => !problem.includes('another phrase'));
+      const translated = captionProblems(captions.get(locale), timeline, { checkText: false });
       problems.push(...translated.map((problem) => `${locale}: ${problem}`));
     }
   }

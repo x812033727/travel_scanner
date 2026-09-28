@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
-import { readFileSync, realpathSync, writeFileSync } from 'node:fs';
+import { readFileSync, realpathSync } from 'node:fs';
 import path from 'node:path';
-import { isInside } from '../core/paths.mjs';
+import { atomicWrite, isInside } from '../core/paths.mjs';
 import { themeOf } from './layouts.mjs';
 
 export const PROFILE = Object.freeze({ width: 1080, height: 1920, fps: 30, minSeconds: 25, maxSeconds: 55 });
@@ -27,9 +27,8 @@ export const sha256 = (value) => createHash('sha256').update(value).digest('hex'
 export const esc = (value) => String(value).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const text = (value) => typeof value === 'string' && value.trim().length > 0;
 
-// A build directory has one writer, so a report is written in place: a rename over a file
-// written a moment ago is refused now and then on Windows, while a scanner holds it.
-export const saveJson = (file, data) => writeFileSync(file, `${JSON.stringify(data, null, 2)}\n`);
+// Preserve the previous complete report if an update is interrupted.
+export const saveJson = (file, data) => atomicWrite(file, `${JSON.stringify(data, null, 2)}\n`);
 
 /** The content line of a script: version 1 knew only experiments. */
 export const lineOf = (doc) => (doc?.schema_version === 1 ? 'lab' : doc?.line);
@@ -37,16 +36,23 @@ export const phrasesOf = (doc) => doc.scenes.flatMap((scene) => scene.narration)
 
 function sceneErrors(doc, errors) {
   if (!Array.isArray(doc?.scenes) || doc.scenes.length < 3 || doc.scenes.length > 12) errors.push('3–12 scenes required');
-  for (const [i, scene] of (doc?.scenes ?? []).entries()) {
+  if (!Array.isArray(doc?.scenes)) return;
+  const evidence = Array.isArray(doc.evidence) ? doc.evidence : [];
+  for (const [i, scene] of doc.scenes.entries()) {
+    if (!scene || typeof scene !== 'object' || Array.isArray(scene)) {
+      errors.push(`scene ${i}: scene must be an object`);
+      continue;
+    }
     if (typeof scene.headline !== 'string' || !scene.headline.trim() || scene.headline.length > 36) errors.push(`scene ${i}: headline 1–36 characters`);
     if (!Array.isArray(scene.narration) || !scene.narration.length || scene.narration.some(t => typeof t !== 'string' || !t.trim() || [...t].length > 38)) errors.push(`scene ${i}: narration phrases 1–38 characters`);
     if (scene.body && (!Array.isArray(scene.body) || scene.body.length > 5 || scene.body.some(t => typeof t !== 'string' || t.length > 85))) errors.push(`scene ${i}: up to five body rows of 85 characters`);
-    if (scene.asset && !doc.evidence?.some(e => e.path === scene.asset)) errors.push(`scene ${i}: asset must be evidence-bound`);
+    if (scene.asset && !evidence.some(e => e?.path === scene.asset)) errors.push(`scene ${i}: asset must be evidence-bound`);
   }
 }
 
 function evidenceErrors(doc, errors) {
-  for (const item of doc?.evidence ?? []) if (!item.path || !/^[a-f0-9]{64}$/.test(item.sha256 ?? '')) errors.push('evidence requires path and sha256');
+  if (!Array.isArray(doc?.evidence)) return;
+  for (const item of doc.evidence) if (!text(item?.path) || !/^[a-f0-9]{64}$/.test(item?.sha256 ?? '')) errors.push('evidence requires path and sha256');
 }
 
 // Version 1 is what the three pilots were written in (docs/videos/ai-shorts/pilots): they stay

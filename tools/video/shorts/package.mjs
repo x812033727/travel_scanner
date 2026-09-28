@@ -18,6 +18,9 @@ export const METADATA_FILE = 'metadata.json';
 export const PACKAGE_FILE = 'package.json';
 export const DESCRIPTION_FILE = 'description.zh-TW.txt';
 export const CAPTIONS_FILE = 'zh-TW.srt';
+export const EXTRA_LOCALES = Object.freeze(['en', 'ja', 'ko', 'zh-CN']);
+const selectedLocales = (settings) => EXTRA_LOCALES.filter((locale) => Array.isArray(settings?.locales) && settings.locales.includes(locale));
+export const captionLocales = (metadata) => ['zh-TW', ...selectedLocales(metadata)];
 // YouTube's categories: Science & Technology, and Entertainment for a drama.
 export const CATEGORY = Object.freeze({ lab: '28', cut: '28', drama: '24' });
 const DEFAULT_HASHTAGS = Object.freeze({ lab: ['#AI', '#實測'], cut: ['#AI'], drama: ['#AI漫劇'] });
@@ -78,6 +81,7 @@ export function composeMetadata({ doc, finalSha256, seconds, settings = {}, sour
     series: doc.series,
     source: doc.source ? { ...doc.source, ...(sourceUrl ? { url: sourceUrl } : {}) } : null,
     default_language: 'zh-TW',
+    locales: selectedLocales(settings),
     title: doc.titles[0],
     titles: [...doc.titles],
     description: composeDescription(doc, { sourceUrl }),
@@ -111,7 +115,7 @@ export function metadataProblems(metadata) {
 }
 
 /** Why a caption file does not match the timeline; empty when it does. */
-export function captionProblems(source, timeline) {
+export function captionProblems(source, timeline, { checkText = true } = {}) {
   let cues;
   try {
     cues = parseSrt(source);
@@ -122,15 +126,15 @@ export function captionProblems(source, timeline) {
   const problems = [];
   for (const [index, cue] of cues.entries()) {
     const expected = timeline.cues[index];
-    if (cue.text !== expected.text) problems.push(`caption ${index + 1} says another phrase`);
-    else if (Math.abs(cue.start - expected.startFrame / timeline.fps) > 0.002 || Math.abs(cue.end - expected.endFrame / timeline.fps) > 0.002) problems.push(`caption ${index + 1} is off the timeline`);
+    if (checkText && cue.text !== expected.text) problems.push(`caption ${index + 1} says another phrase`);
+    if (Math.abs(cue.start - expected.startFrame / timeline.fps) > 0.002 || Math.abs(cue.end - expected.endFrame / timeline.fps) > 0.002) problems.push(`caption ${index + 1} is off the timeline`);
   }
   return problems;
 }
 
 /** The four items of the package check, from what upload/ holds. `files` maps a name to its bytes. */
 export function packageItems({ files, metadata, timeline, qa }) {
-  const names = ['final.mp4', CAPTIONS_FILE, 'cover.png', METADATA_FILE];
+  const names = ['final.mp4', CAPTIONS_FILE, 'cover.png', METADATA_FILE, ...selectedLocales(metadata).map((locale) => `${locale}.srt`)];
   const missing = names.filter((name) => !files.has(name));
   const finalSha = files.has('final.mp4') ? sha256(files.get('final.mp4')) : null;
   const fileProblems = missing.map((name) => `${name} is missing`);
@@ -141,12 +145,16 @@ export function packageItems({ files, metadata, timeline, qa }) {
   if (description === null) descriptionProblems.push(`${DESCRIPTION_FILE} is missing`);
   else if (metadata && description !== metadata.description) descriptionProblems.push(`${DESCRIPTION_FILE} differs from metadata.json`);
   if (metadata) descriptionProblems.push(...metadataProblems(metadata));
-  const captions = files.has(CAPTIONS_FILE) ? captionProblems(files.get(CAPTIONS_FILE).toString('utf8'), timeline) : [`${CAPTIONS_FILE} is missing`];
+  const captions = captionLocales(metadata).flatMap((locale) => {
+    const name = `${locale}.srt`;
+    if (!files.has(name)) return [`${name} is missing`];
+    return captionProblems(files.get(name).toString('utf8'), timeline, { checkText: locale === 'zh-TW' }).map((problem) => `${locale}: ${problem}`);
+  });
   const disclosed = typeof metadata?.contains_synthetic_media === 'boolean' && typeof metadata.disclosure_reason === 'string' && metadata.disclosure_reason.trim().length > 0;
   return [
     item('files', !fileProblems.length, fileProblems.length ? fileProblems.join('; ') : `${names.join(', ')}; final.mp4 is the checked cut (${finalSha.slice(0, 12)})`),
     item('descriptions', !descriptionProblems.length, descriptionProblems.length ? descriptionProblems.join('; ') : `zh-TW, ${bytesOf(description)} bytes`),
-    item('captions', !captions.length, captions.length ? captions.join('; ') : `zh-TW, ${timeline.cues.length} captions on the timeline`),
+    item('captions', !captions.length, captions.length ? captions.join('; ') : `${captionLocales(metadata).join(", ")}: ${timeline.cues.length} captions on the timeline`),
     item('disclosure', disclosed, disclosed ? `${metadata.contains_synthetic_media ? 'disclosed as synthetic' : 'not synthetic'}: ${metadata.disclosure_reason}` : 'metadata.json does not answer the synthetic content question'),
   ];
 }
@@ -159,9 +167,9 @@ export function packageReport(items, metadataSha256) {
 }
 
 /** The files of upload/ the package is made of, by name; a missing one is left out. */
-export function uploadFiles(directory) {
+export function uploadFiles(directory, metadata = {}) {
   const files = new Map();
-  for (const name of ['final.mp4', CAPTIONS_FILE, 'cover.png', METADATA_FILE, DESCRIPTION_FILE]) {
+  for (const name of ['final.mp4', CAPTIONS_FILE, 'cover.png', METADATA_FILE, DESCRIPTION_FILE, ...selectedLocales(metadata).map((locale) => `${locale}.srt`)]) {
     const file = path.join(directory, 'upload', name);
     if (existsSync(file)) files.set(name, readFileSync(file));
   }
@@ -182,11 +190,11 @@ export function packageBuild({ directory, settings = {}, source = null, now = ()
   const metadataText = `${JSON.stringify(metadata, null, 2)}\n`;
   writeFileSync(path.join(directory, 'upload', METADATA_FILE), metadataText);
   writeFileSync(path.join(directory, 'upload', DESCRIPTION_FILE), metadata.description);
-  const report = packageReport(packageItems({ files: uploadFiles(directory), metadata, timeline, qa }), sha256(metadataText));
+  const report = packageReport(packageItems({ files: uploadFiles(directory, metadata), metadata, timeline, qa }), sha256(metadataText));
   saveJson(path.join(directory, PACKAGE_FILE), { ...report, checked_at: now().toISOString() });
   const manifestFile = path.join(directory, 'upload', 'manifest.json');
   const manifest = readJson(manifestFile, {});
-  const names = [...uploadFiles(directory).keys()];
+  const names = [...uploadFiles(directory, metadata).keys()];
   saveJson(manifestFile, {
     ...manifest,
     // What the checks found, not a fixed word: the site decides from the reports, not from this.

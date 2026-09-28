@@ -12,7 +12,7 @@ import path from 'node:path';
 import { readJson } from '../core/paths.mjs';
 import { CHECK_FILE } from './check.mjs';
 import { SCRIPT_FILE, USAGE_FILE, lineOf, sha256 } from './core.mjs';
-import { CAPTIONS_FILE, DESCRIPTION_FILE, METADATA_FILE, PACKAGE_FILE } from './package.mjs';
+import { DESCRIPTION_FILE, METADATA_FILE, PACKAGE_FILE, captionLocales } from './package.mjs';
 import { QA_FILE, VERIFY_FILE, scriptShape } from './qa.mjs';
 
 // Mirrors PART_BYTES in apps/api/app/video_reviews/storage.py: under nginx's 6 MB request cap.
@@ -93,6 +93,7 @@ export function publishReview({ metadata, report, metadataSha256 }) {
     summary: check.ok ? `${packageSummary(check)}：照月曆上架` : packageSummary(check),
     payload: {
       package: check,
+      locales: captionLocales(metadata),
       zh: { title: metadata.title, titles: metadata.titles, description: metadata.description, tags: metadata.tags },
       disclosure: { synthetic: metadata.contains_synthetic_media, reason: metadata.disclosure_reason },
       category_id: metadata.category_id,
@@ -166,9 +167,11 @@ export async function push({ directory, client, log = () => {} }) {
   const packaged = [
     await upload(client, slug, metadataFile, 'metadata'),
     await upload(client, slug, final, 'final'),
-    await upload(client, slug, path.join(directory, 'upload', CAPTIONS_FILE), 'captions_zh-TW'),
-    await upload(client, slug, path.join(directory, 'upload', DESCRIPTION_FILE), 'description_zh-TW'),
   ];
+  for (const locale of captionLocales(metadata)) {
+    packaged.push(await upload(client, slug, path.join(directory, 'upload', `${locale}.srt`), `captions_${locale}`));
+  }
+  packaged.push(await upload(client, slug, path.join(directory, 'upload', DESCRIPTION_FILE), 'description_zh-TW'));
   await client.report(slug, projectBody({ doc, qa, check: readJson(path.join(directory, CHECK_FILE), null), report, stage: 'publish' }));
   const confirmed = await client.submit(slug, { ...publishReview({ metadata, report, metadataSha256: packaged[0].sha256 }), files: packaged });
   log(`${slug}: publish review ${confirmed.status}${confirmed.note ? ` (${confirmed.note})` : ''}`);
