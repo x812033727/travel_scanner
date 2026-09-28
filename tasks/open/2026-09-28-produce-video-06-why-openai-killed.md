@@ -45,3 +45,4 @@ node tools/video/cli.mjs status --slug why-openai-killed-sora --workdir <VIDEO_W
 - The owner asked on 2026-09-28 to keep planning after the first three were packaged (「繼續計畫別的」).
 - Schedule slot: 2026-11-10 15:00 UTC in `schedule.csv`.
 - 2026-09-28: brief written (three outlines, A recommended) and sent for the owner's pick as outline review `a8064605-7786-4917-8ed5-ac099e02174a`. `review-push` needs a video.json, so the outline went up through the automation client's calls instead (report, judge — the stance is blank, so it waits for the owner — then submit), the same steps `flow.mjs` `submitOutline` takes.
+- 2026-09-28 10:57 UTC: the owner picked outline A (recorded by `review-pull`; bound to brief.md's hash, so the brief is frozen). Writer dispatched with the season's lessons (pace, `say` for versions/years/percents, date-proof wording, dictionary additions through a locked append script).

@@ -45,3 +45,4 @@ node tools/video/cli.mjs status --slug rtx-spark-local-ai --workdir <VIDEO_WORKD
 - The owner asked on 2026-09-28 to keep planning after the first three were packaged (「繼續計畫別的」).
 - Schedule slot: 2026-10-27 15:00 UTC in `schedule.csv` (after shipping, so real reviews exist to compare with).
 - 2026-09-28: brief written (three outlines, A recommended) and sent for the owner's pick as outline review `786f8faa-d5d1-4ebf-ac04-15e695827413`. `review-push` needs a video.json, so the outline went up through the automation client's calls instead (report, judge — the stance is blank, so it waits for the owner — then submit), the same steps `flow.mjs` `submitOutline` takes.
+- 2026-09-28 10:57 UTC: the owner picked outline A (recorded by `review-pull`; bound to brief.md's hash, so the brief is frozen). Writer dispatched with the season's lessons (pace, `say` for versions/years/percents, date-proof wording, dictionary additions through a locked append script).
