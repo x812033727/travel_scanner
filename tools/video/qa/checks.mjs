@@ -85,19 +85,24 @@ const ORPHAN = /no longer open a chapter/;
 const READING_SPEED = /characters a second/;
 
 /**
- * captions: every locale has a caption file cut from the current narration, and no translation
- * is older than its zh-TW text (lines, chapters, title, description, tags: lint's warnings for
+ * captions: every wanted locale (zh-TW and the ones the owner chose, docs/videos/LANGUAGES.md)
+ * has a caption file cut from the current narration, and no wanted translation is older than
+ * its zh-TW text (lines, chapters, title, description, tags: lint's warnings for
  * i18n/<locale>.json, failures here). Reading-speed overruns are warnings; other cue problems
  * (overlaps, overlong lines) are failures. Chapter titles left over from scenes that no longer
- * open a chapter are dropped by i18n-merge, so they only warn.
+ * open a chapter are dropped by i18n-merge, so they only warn. A dub track the worker gave up on
+ * (`skippedDubs`, locale to reason) is a warning: those captions follow the narration.
  */
-export function captionsItem({ lintWarnings, manifest, current, locales, hasCaptionFile }) {
+export function captionsItem({ lintWarnings, manifest, current, locales, hasCaptionFile, skippedDubs = {} }) {
   const problems = [];
   const warnings = [];
   for (const warning of lintWarnings) {
     if (!/^i18n\//.test(warning.path)) continue;
+    const locale = /^i18n\/([^.]+)\.json$/.exec(warning.path)?.[1];
+    if (locale && !locales.includes(locale)) continue;
     (ORPHAN.test(warning.message) ? warnings : problems).push(`${warning.path}: ${warning.message}`);
   }
+  for (const [locale, reason] of Object.entries(skippedDubs)) warnings.push(`${locale}: dub track skipped (${reason || "no reason recorded"}); its captions follow the narration`);
   if (!manifest) problems.push("captions/manifest.json is missing; run captions");
   else if (!current) problems.push("captions were written for an older narration; run captions again");
   else {

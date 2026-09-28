@@ -2222,10 +2222,18 @@ class VideoProject(Timestamped, Base):
     # next report; until then repeated clicks must not mint another request (migration 0104).
     retry_request_id: Mapped[UUID | None] = mapped_column(nullable=True)
     retry_acknowledged_id: Mapped[UUID | None] = mapped_column(nullable=True)
-    # The languages the owner ticked on /admin/videos to dub this video in, a subset of en, ja,
-    # ko and zh-CN in that order, empty until they choose (docs/videos/DUBS.md; 0099). The worker
-    # makes those tracks once the final cut is approved; the owner uploads them in YouTube Studio.
+    # Superseded by ``locales`` on 2026-09-27 (docs/videos/LANGUAGES.md; migration 0106 copied it
+    # over). Neither read nor written any more; the column stays so no migration has to drop it.
     dub_locales: Mapped[list[str]] = mapped_column(JSON, default=list, server_default="[]")
+    # The languages the owner chose for this video after its final cut, and what of each:
+    # {"en": {"metadata": true, "captions": true, "dub": false}}, only the languages chosen,
+    # empty until they decide (docs/videos/LANGUAGES.md; migration 0106). The worker makes only
+    # those parts; ``locales_decided_at`` is the first save, "only Traditional Chinese" included,
+    # and null while the video waits for the owner's decision.
+    locales: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict, server_default=text("'{}'"))
+    locales_decided_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
     # What the site last sent this video's YouTube side through the linked channel, step by step
     # (app/video_youtube/state.py; migration 0102): the owner's request, each step's result, and
     # whether a run is going. None until the owner first sends it from /admin/videos.
@@ -2281,10 +2289,12 @@ class VideoReview(Timestamped, Base):
         # look and storyboard are the drama format's gates (docs/videos/DRAMA.md; migration 0095);
         # script is an episode's screenplay before any image or clip is paid for
         # (docs/videos/SERIES.md; migration 0099); dubs is a batch of finished dub tracks the
-        # owner uploads (docs/videos/DUBS.md; migration 0100).
+        # owner uploads (docs/videos/DUBS.md; migration 0101); languages is a batch of the parts
+        # the owner chose for a video, descriptions, captions and dub tracks
+        # (docs/videos/LANGUAGES.md; migration 0106).
         CheckConstraint(
             "gate IN ('outline', 'script', 'look', 'storyboard', 'audio', 'final', "
-            "'publish', 'dubs')",
+            "'publish', 'dubs', 'languages')",
             name="ck_video_review_gate",
         ),
         CheckConstraint(

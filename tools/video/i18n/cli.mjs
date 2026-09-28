@@ -8,12 +8,15 @@
 // current translation, marking the ones to do; the translator fills in `text`; `i18n-merge` checks
 // the sheet against the script as it is now and writes the translation file, hashes included.
 // Anything whose zh-TW text changed after the sheet was made is left out and reported, so it
-// cannot be merged against the wrong source.
+// cannot be merged against the wrong source. `--parts` narrows a sheet to what the owner chose for
+// the locale (docs/videos/LANGUAGES.md): "metadata" is the title, description, tags and chapter
+// names, "captions" the lines; a part left out keeps whatever translation it had.
 import path from "node:path";
 import { parseArgs } from "node:util";
 
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { eachLine, LOCALES, NARRATION_LOCALE, textHash } from "../core/schema.mjs";
+import { readLanguages } from "../core/stages.mjs";
 import { ARTIFACTS, dubArtifacts, loadProject } from "../core/state.mjs";
 import { TITLE_MAX_CHARS } from "../core/metadata.mjs";
 import { speechHash } from "../core/timeline.mjs";
@@ -21,23 +24,32 @@ import { chapterScenes, METADATA_FIELDS, metadataStatus, sourceHashes } from "..
 import { defaultRate, lineBudgets } from "../dubs/plan.mjs";
 
 export const TARGET_LOCALES = LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
+// What a sheet can hold; a dub reads the captions' lines, so it never needs a part of its own.
+export const SHEET_PARTS = ["metadata", "captions"];
 
 const sheetFile = (workdir, locale) => path.join(workdir, "i18n", `${locale}.todo.json`);
 const translationFile = (dir, locale) => path.join(dir, "i18n", `${locale}.json`);
 
 const SHEET_NOTE = "Fill the `text` of everything marked todo: lines, chapters, the title, the description, the tags. The rest already has a current translation. Keep `id`, `scene`, `source` and `todo` as they are.";
+const PART_NOTES = { metadata: "This sheet holds only the title, the description, the tags and the chapter names; the lines are not wanted for this locale.", captions: "This sheet holds only the lines; the title, description, tags and chapter names are not wanted for this locale." };
 const BUDGET_NOTE = " `max_chars` is how many characters a line's dub may have (docs/videos/DUBS.md): the translation is also read aloud in the time the zh-TW line takes, so stay under it.";
+
+const partsOf = (sheet) => (Array.isArray(sheet?.parts) && sheet.parts.length ? sheet.parts : SHEET_PARTS);
 
 /**
  * The worksheet for one locale: every line, chapter and YouTube field with its current
  * translation. One whose zh-TW source changed since the merge, or that was merged before its source
  * was hashed, is marked todo with an empty `text`, like a missing one. With `budgets` (line id to
- * characters, from the narration timeline), each line also says how long its dub may be.
+ * characters, from the narration timeline), each line also says how long its dub may be. `parts`
+ * narrows the sheet: without "captions" it has no lines, without "metadata" no title,
+ * description, tags or chapters (those fields are null and the list empty).
  */
-export function buildSheet(doc, translation, locale, budgets = null) {
+export function buildSheet(doc, translation, locale, budgets = null, parts = SHEET_PARTS) {
   const current = translation ?? {};
+  const wantLines = parts.includes("captions");
+  const wantMetadata = parts.includes("metadata");
   const lines = [];
-  for (const { scene, line } of eachLine(doc)) {
+  for (const { scene, line } of wantLines ? eachLine(doc) : []) {
     const entry = current.lines?.[line.id];
     const fresh = entry && entry.source_hash === textHash(line.text) && entry.text;
     lines.push({ id: line.id, scene: scene.id, todo: !fresh, source: line.text, text: fresh ? entry.text : "", ...(budgets ? { max_chars: budgets[line.id] } : {}) });
@@ -51,14 +63,16 @@ export function buildSheet(doc, translation, locale, budgets = null) {
     const fresh = state[name] === "current";
     return { todo: !fresh, source: doc.youtube[name], text: fresh ? current[name] ?? empty : empty };
   };
+  const only = parts.length === 1 ? ` ${PART_NOTES[parts[0]]}` : "";
   return {
     locale,
     slug: doc.slug,
-    note: budgets ? `${SHEET_NOTE}${BUDGET_NOTE}` : SHEET_NOTE,
-    title: field("title", ""),
-    description: field("description", ""),
-    tags: field("tags", []),
-    chapters,
+    parts: [...parts],
+    note: `${SHEET_NOTE}${only}${budgets ? BUDGET_NOTE : ""}`,
+    title: wantMetadata ? field("title", "") : null,
+    description: wantMetadata ? field("description", "") : null,
+    tags: wantMetadata ? field("tags", []) : null,
+    chapters: wantMetadata ? chapters : [],
     lines,
   };
 }
@@ -66,27 +80,17 @@ export function buildSheet(doc, translation, locale, budgets = null) {
 /** What a sheet leaves to translate, for the CLI's report. */
 export function sheetTodo(sheet) {
   const count = (entries) => `${entries.filter((entry) => entry.todo).length} of ${entries.length}`;
-  const parts = [`${count(sheet.lines)} lines`];
-  if (sheet.chapters.length) parts.push(`${count(sheet.chapters)} chapters`);
-  for (const name of METADATA_FIELDS) if (sheet[name].todo) parts.push(`the ${name}`);
-  return parts.join(", ");
+  const parts = partsOf(sheet).includes("captions") ? [`${count(sheet.lines)} lines`] : [];
+  if (sheet.chapters?.length) parts.push(`${count(sheet.chapters)} chapters`);
+  for (const name of METADATA_FIELDS) if (sheet[name]?.todo) parts.push(`the ${name}`);
+  return parts.join(", ") || "nothing";
 }
 
 const sameSource = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
-/**
- * The translation file a filled sheet makes, and what could not go in. Whatever goes in is
- * recorded with the hash of its zh-TW source; whatever cannot keeps its previous translation and
- * hash, so the next sheet marks it again. Only the scenes that open a chapter now get a chapter
- * entry: the package step reads `chapters` by scene id, so a chapter that moved leaves nothing
- * behind under its old scene.
- */
-export function mergeSheet(doc, sheet, previous) {
-  const problems = [];
-  const before = previous ?? {};
-  const kept = before.source_hashes ?? {};
-  const hashes = sourceHashes(doc);
-  const byId = new Map(sheet.lines.map((entry) => [entry.id, entry]));
+/** The lines a filled sheet merges, keeping a previous translation where the sheet has none usable. */
+function mergeLines(doc, sheet, before, problems) {
+  const byId = new Map((sheet.lines ?? []).map((entry) => [entry.id, entry]));
   const lines = {};
   for (const { line } of eachLine(doc)) {
     const entry = byId.get(line.id);
@@ -103,7 +107,31 @@ export function mergeSheet(doc, sheet, previous) {
     }
     lines[line.id] = { source_hash: textHash(line.text), text };
   }
+  return lines;
+}
 
+/**
+ * The translation file a filled sheet makes, and what could not go in. Whatever goes in is
+ * recorded with the hash of its zh-TW source; whatever cannot keeps its previous translation and
+ * hash, so the next sheet marks it again. Only the scenes that open a chapter now get a chapter
+ * entry: the package step reads `chapters` by scene id, so a chapter that moved leaves nothing
+ * behind under its old scene.
+ */
+export function mergeSheet(doc, sheet, previous) {
+  const problems = [];
+  const before = previous ?? {};
+  const kept = before.source_hashes ?? {};
+  const hashes = sourceHashes(doc);
+  const parts = partsOf(sheet);
+  // A part the sheet does not hold keeps its previous translation and hashes untouched.
+  if (!parts.includes("metadata")) {
+    const lines = parts.includes("captions") ? mergeLines(doc, sheet, before, problems) : { ...(before.lines ?? {}) };
+    const translation = { title: before.title, description: before.description, tags: before.tags, chapters: { ...(before.chapters ?? {}) }, source_hashes: { ...kept, chapters: { ...(kept.chapters ?? {}) } }, lines };
+    for (const [key, value] of Object.entries(before)) if (!Object.hasOwn(translation, key)) translation[key] = value;
+    for (const key of METADATA_FIELDS) if (translation[key] === undefined) delete translation[key];
+    return { translation, problems };
+  }
+  const lines = parts.includes("captions") ? mergeLines(doc, sheet, before, problems) : { ...(before.lines ?? {}) };
   const title = String(sheet.title?.text ?? "").trim();
   const description = String(sheet.description?.text ?? "").trim();
   const tags = Array.isArray(sheet.tags?.text) ? sheet.tags.text.map((tag) => String(tag).trim()).filter(Boolean) : [];
@@ -153,13 +181,16 @@ export function mergeSheet(doc, sheet, previous) {
 function options(args) {
   const values = parseArgs({
     args,
-    options: { slug: { type: "string" }, file: { type: "string" }, workdir: { type: "string" }, locale: { type: "string" } },
+    options: { slug: { type: "string" }, file: { type: "string" }, workdir: { type: "string" }, locale: { type: "string" }, parts: { type: "string" } },
     strict: true,
   }).values;
   if (!values.slug && !values.file) throw new UsageError("needs --slug (or --file)");
   const locales = values.locale ? values.locale.split(",").map((locale) => locale.trim()) : TARGET_LOCALES;
   for (const locale of locales) if (!TARGET_LOCALES.includes(locale)) throw new UsageError(`--locale must be among ${TARGET_LOCALES.join(", ")}`);
-  return { ...values, locales };
+  const parts = values.parts ? values.parts.split(",").map((part) => part.trim()).filter(Boolean) : SHEET_PARTS;
+  for (const part of parts) if (!SHEET_PARTS.includes(part)) throw new UsageError(`--parts must be among ${SHEET_PARTS.join(", ")} (a dub reads the captions' lines)`);
+  if (!parts.length) throw new UsageError("--parts names at least one part");
+  return { ...values, locales, parts: SHEET_PARTS.filter((part) => parts.includes(part)) };
 }
 
 export async function run(command, args, ctx) {
@@ -169,15 +200,19 @@ export async function run(command, args, ctx) {
   const { doc } = project;
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
   if (command === "i18n-sheet") {
-    // Once the narration exists, each line's slot is known, and so is how long its dub may be.
+    // Once the narration exists, each line's slot is known, and so is how long its dub may be;
+    // the budgets go on the sheet when the owner chose a dub for the locale, or without a choice.
     const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
     const timed = timeline && timeline.speech_hash === speechHash(doc, project.lexicon);
+    const languages = readLanguages(workdir);
     for (const locale of values.locales) {
-      const fit = timed ? readJson(dubArtifacts(workdir, locale).fit, null) : null;
-      const budgets = timed ? lineBudgets(timeline, fit?.rates?.measured ?? defaultRate(locale, doc, timeline)) : null;
-      const sheet = buildSheet(doc, project.translations[locale], locale, budgets);
+      const dubbed = timed && values.parts.includes("captions") && (!languages || languages.locales[locale]?.dub === true);
+      const fit = dubbed ? readJson(dubArtifacts(workdir, locale).fit, null) : null;
+      const budgets = dubbed ? lineBudgets(timeline, fit?.rates?.measured ?? defaultRate(locale, doc, timeline)) : null;
+      const sheet = buildSheet(doc, project.translations[locale], locale, budgets, values.parts);
       atomicWrite(sheetFile(workdir, locale), `${JSON.stringify(sheet, null, 2)}\n`);
-      ctx.stdout.write(`${locale}: to translate ${sheetTodo(sheet)}; ${sheetFile(workdir, locale)}${budgets ? " (with max_chars for the dub)" : ""}\n`);
+      const scope = values.parts.length < SHEET_PARTS.length ? ` (${values.parts.join(", ")} only)` : "";
+      ctx.stdout.write(`${locale}: to translate ${sheetTodo(sheet)}; ${sheetFile(workdir, locale)}${scope}${budgets ? " (with max_chars for the dub)" : ""}\n`);
     }
     return EXIT.ok;
   }
