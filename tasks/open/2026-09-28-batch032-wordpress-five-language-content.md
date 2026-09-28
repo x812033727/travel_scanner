@@ -45,7 +45,7 @@ byte-for-byte unchanged here.
 
 - [x] Integrate Pair A `ca9323df` and Pair B `3bde09e3` onto merged #876 main.
 - [x] Refresh the link eligibility evidence in the Pair A/B handover notes.
-- [ ] Rebase onto main after #875 and verify the final PR file list.
+- [x] Rebase onto main after #875 and verify the final PR file list.
 
 ## How to verify
 
@@ -86,3 +86,10 @@ Merged code is not a published source revision. The three corrected zh-TW
 originals still need a guarded source-only publication, followed by exact
 production version/hash capture and translation source rebind before the 16
 new locales may publish. Do not infer publication from this draft PR.
+
+After #875 merged, this branch rebased onto exact main
+`4b6c5cd99fa9eab3b658d5b6cf639cb001f8fc3e`. The final comparison has
+55 files: four packs, 48 new assets and three task files, with no other paths.
+All four zh-TW locale objects and root metadata still equal main; 48 image
+hashes match. Scoped lint returned zero errors, targeted API tests returned
+`73 passed, 11 skipped`, and task validation and `git diff --check` passed.
