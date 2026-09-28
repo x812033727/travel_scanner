@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Annotated, Literal, Self, get_args
+from typing import Annotated, Any, Literal, Self, get_args
 from uuid import UUID
 
 from pydantic import (
@@ -59,6 +59,18 @@ class CharacterVoice(StrictModel):
     hint: str | None = Field(default=None, min_length=1, max_length=40)
 
 
+def _kept_instructions(value: dict[Stage, str]) -> dict[Stage, str]:
+    """A field emptied on the settings tab drops that stage's standing instructions."""
+    return {stage: text for stage, text in value.items() if text}
+
+
+def _every_stage(stage_models: dict[Stage, StageModel]) -> dict[Stage, StageModel]:
+    missing = set(get_args(Stage)) - set(stage_models)
+    if missing:
+        raise ValueError(f"stage_models is missing {', '.join(sorted(missing))}")
+    return stage_models
+
+
 class DramaSettings(StrictModel):
     """The drama format's media settings, one nested object on the settings row."""
 
@@ -98,12 +110,38 @@ class DramaSettings(StrictModel):
     series_chapter_ahead: int = Field(default=2, ge=0, le=10)
     series_doc_rewrites: int = Field(default=2, ge=0, le=5)
     series_episodes_per_month: int = Field(default=30, ge=0, le=500)
+    # The drama's own copies of the settings a tutorial keeps at the top level
+    # (docs/videos/DRAMA-FLOW.md §一): the models and the narrator voice (None follows the
+    # tutorial's), the standing instructions, the language defaults, the automatic approval of
+    # the narration and of the final cut, and the rounds. Each has a default so a settings tab
+    # from before it existed, which sends the drama object without it, still validates; the
+    # save route then keeps what is stored for whatever was not sent.
+    drama_stage_models: dict[Stage, StageModel] | None = None
+    drama_stage_instructions: dict[Stage, StandingText] = Field(default_factory=dict)
+    drama_voice: VoiceSettings | None = None
+    drama_caption_locales: list[CaptionLocale] = Field(default_factory=list, max_length=4)
+    drama_auto_approve_audio: bool = True
+    drama_auto_approve_final: bool = True
+    drama_max_verify_rounds: int = Field(default=3, ge=1, le=5)
+    drama_max_retake_rounds: int = Field(default=2, ge=0, le=5)
+
+    @field_validator("drama_stage_models")
+    @classmethod
+    def _complete(cls, value: dict[Stage, StageModel] | None) -> dict[Stage, StageModel] | None:
+        return None if value is None else _every_stage(value)
+
+    @field_validator("drama_stage_instructions")
+    @classmethod
+    def _kept(cls, value: dict[Stage, str]) -> dict[Stage, str]:
+        return _kept_instructions(value)
 
     @model_validator(mode="after")
-    def _distinct_voices(self) -> Self:
+    def _consistent(self) -> Self:
         voices = [(voice.provider, voice.name) for voice in self.character_voice_pool]
         if len(set(voices)) != len(voices):
             raise ValueError("character_voice_pool must not repeat a voice")
+        if len(set(self.drama_caption_locales)) != len(self.drama_caption_locales):
+            raise ValueError("drama_caption_locales must not repeat")
         return self
 
 
@@ -137,27 +175,27 @@ class _SettingsFields(StrictModel):
         return self
 
 
-def _kept_instructions(value: dict[Stage, str]) -> dict[Stage, str]:
-    """A field emptied on the settings tab drops that stage's standing instructions."""
-    return {stage: text for stage, text in value.items() if text}
-
-
-def _every_stage(stage_models: dict[Stage, StageModel]) -> dict[Stage, StageModel]:
-    missing = set(get_args(Stage)) - set(stage_models)
-    if missing:
-        raise ValueError(f"stage_models is missing {', '.join(sorted(missing))}")
-    return stage_models
-
-
 class StageModelsWrite(StrictModel):
-    """The model of each stage, chosen on the AI settings page (PUT /settings/models)."""
+    """The model of each stage, chosen on the AI settings page (PUT /settings/models).
+
+    ``drama_stage_models`` sent as null means the drama follows the tutorial's; left out, the
+    stored choice stays (docs/videos/DRAMA-FLOW.md §一).
+    """
 
     stage_models: dict[Stage, StageModel]
+    drama_stage_models: dict[Stage, StageModel] | None = None
 
     @field_validator("stage_models")
     @classmethod
     def _complete(cls, value: dict[Stage, StageModel]) -> dict[Stage, StageModel]:
         return _every_stage(value)
+
+    @field_validator("drama_stage_models")
+    @classmethod
+    def _complete_drama(
+        cls, value: dict[Stage, StageModel] | None
+    ) -> dict[Stage, StageModel] | None:
+        return None if value is None else _every_stage(value)
 
 
 class SettingsWrite(_SettingsFields):
@@ -181,15 +219,34 @@ class SettingsWrite(_SettingsFields):
         return _kept_instructions(value)
 
 
-class SettingsSave(_SettingsFields):
+class SettingsSave(StrictModel):
     """A save from the settings tab on /admin/videos.
 
-    The stage models are chosen on the AI settings page; a save that leaves them out keeps
-    the stored ones, so the videos page cannot put back models it loaded earlier. The drama
-    settings, the standing instructions, the channel stance and the hands-off switches follow
-    the same rule, so a page built before they existed cannot reset them.
+    Every field may be left out, and a field left out (or sent as null) keeps its stored value:
+    the tab is three parts (tutorial, drama, shared) each saved on its own
+    (docs/videos/DRAMA-FLOW.md §一), the stage models are chosen on the AI settings page, and a
+    page built before a field existed sends none of it. The route lays what was sent over what is
+    stored and validates the whole as ``SettingsWrite``, which holds the bounds and the
+    consistency rules; inside ``drama`` too, only the fields sent change.
     """
 
+    enabled: bool | None = None
+    draft_interval_hours: int | None = None
+    topics_per_run: int | None = None
+    max_waiting_drafts: int | None = None
+    topic_scope: list[TopicWord] | None = None
+    topic_avoid: list[TopicWord] | None = None
+    topic_from_site: bool | None = None
+    topic_from_search: bool | None = None
+    voice: VoiceSettings | None = None
+    target_minutes_min: int | None = None
+    target_minutes_max: int | None = None
+    caption_locales: list[CaptionLocale] | None = None
+    max_drafts_per_month: int | None = None
+    monthly_token_budget_millions: int | None = None
+    max_verify_rounds: int | None = None
+    max_retake_rounds: int | None = None
+    auto_approve_audio: bool | None = None
     stage_models: dict[Stage, StageModel] | None = None
     drama: DramaSettings | None = None
     stage_instructions: dict[Stage, StandingText] | None = None
@@ -206,6 +263,20 @@ class SettingsSave(_SettingsFields):
     @classmethod
     def _kept(cls, value: dict[Stage, str] | None) -> dict[Stage, str] | None:
         return None if value is None else _kept_instructions(value)
+
+    def merged_over(self, current: dict[str, Any]) -> dict[str, Any]:
+        """The stored values with the fields this save sent laid over them.
+
+        ``current`` is ``SettingsWrite.model_dump()`` of what is stored. A field left out or sent
+        as null stays; ``drama`` merges field by field, so a page from before a drama field
+        existed cannot reset it by sending the object without it.
+        """
+        sent = self.model_dump(exclude_unset=True)
+        drama = sent.pop("drama", None)
+        values = {**current, **{key: value for key, value in sent.items() if value is not None}}
+        if drama is not None:
+            values["drama"] = {**current["drama"], **drama}
+        return values
 
 
 class ModelOptionView(StrictModel):
@@ -312,6 +383,10 @@ class DramaRequestOut(BaseModel):
     note: str | None
     status: RequestStatus
     slug: str | None
+    # The series this request is an episode of: a one-off drama's own one-episode series
+    # (docs/videos/DRAMA-FLOW.md §二), or the long series it belongs to.
+    series_slug: str | None = None
+    episode_number: int | None = None
     created_by_user_id: UUID | None
     created_at: datetime
     started_at: datetime | None
@@ -388,15 +463,19 @@ class TopicsOut(StrictModel):
 # (the setting book, the whole-series outline, each chapter's detailed outline), the episode
 # table, and what the worker asks for and reports.
 SERIES_SLUG_PATTERN = r"^[a-z0-9][a-z0-9-]{1,39}$"
+# A long series, or a one-off drama: one episode, one story bible (docs/videos/DRAMA-FLOW.md §二).
+SeriesKind = Literal["series", "one-off"]
 SeriesStatus = Literal["setting", "outline", "active", "paused", "finished"]
 SeriesAspect = Literal["world", "bonds", "structure", "mood"]
 SeriesTone = Literal[
     "dual-male-leads-subtext", "dual-male-leads-explicit", "hetero-leads", "no-romance"
 ]
-DocKind = Literal["setting", "outline", "chapter"]
+DocKind = Literal["setting", "outline", "chapter", "bible"]
 DocStatus = Literal["generating", "review", "approved", "rejected"]
 EpisodeStatus = Literal["planned", "ready", "queued", "started", "done", "skipped"]
-SeriesJobKind = Literal["setting", "outline", "chapter", "episode", "compilation"]
+SeriesJobKind = Literal["setting", "outline", "chapter", "bible", "episode", "compilation"]
+# What the owner fills in for a one-off drama: every number is fixed at one.
+ONE_OFF_EPISODES = 1
 SeriesAction = Literal["plan-next-chapter", "start-next", "compile"]
 # A binge series (docs/videos/BINGE.md): the genre preset, who leads, and the visual tier.
 SeriesGenre = Literal[
@@ -415,9 +494,13 @@ class SeriesIn(StrictModel):
     and leaves ``slug``, ``title`` and ``premise`` blank: the server derives the episode count
     and the chapter size, names the series after its genre, and lets the planner invent the
     premise from the genre preset. The classic form fills everything in as before.
+
+    A ``one-off`` is one episode with one story bible: its numbers are fixed at one whatever
+    was sent, and aspects and tone may be left out (docs/videos/DRAMA-FLOW.md §二).
     """
 
     slug: str | None = Field(default=None, pattern=SERIES_SLUG_PATTERN)
+    kind: SeriesKind = "series"
     title: str | None = Field(default=None, max_length=200)
     premise: str = Field(default="", max_length=4000)
     aspects: list[SeriesAspect] = Field(default_factory=list, max_length=4)
@@ -425,7 +508,7 @@ class SeriesIn(StrictModel):
     style_preset: StylePreset = "cinematic-3d"
     target_minutes: int = Field(default=3, ge=1, le=8)
     planned_episodes: int = Field(default=100, ge=1, le=500)
-    episodes_per_chapter: int = Field(default=10, ge=4, le=20)
+    episodes_per_chapter: int = Field(default=10, ge=1, le=20)
     open_ended: bool = True
     note: str | None = Field(default=None, min_length=1, max_length=2000)
     genre: SeriesGenre = "xianxia-bonds"
@@ -458,6 +541,15 @@ class SeriesIn(StrictModel):
             raise ValueError("a custom series needs a premise")
         if self.total_minutes is None and not self.premise and self.genre == "xianxia-bonds":
             raise ValueError("premise must not be blank")
+        if self.kind == "one-off":
+            if self.total_minutes is not None:
+                raise ValueError("a one-off drama is one episode, not a binge series")
+            self.planned_episodes = ONE_OFF_EPISODES
+            self.episodes_per_chapter = ONE_OFF_EPISODES
+            self.open_ended = False
+            self.compilation = False
+        elif self.episodes_per_chapter < 4:
+            raise ValueError("a series has at least 4 episodes per chapter")
         return self
 
 
@@ -484,6 +576,14 @@ class SeriesPatch(StrictModel):
     visual_tier: VisualTier | None = None
 
 
+class SeriesWithdrawnOut(BaseModel):
+    """A drama the owner withdrew before any episode started, and how many of its queued
+    requests were cancelled with it."""
+
+    slug: str
+    requests_cancelled: int
+
+
 class SeriesDocOut(BaseModel):
     id: UUID
     kind: DocKind
@@ -495,6 +595,9 @@ class SeriesDocOut(BaseModel):
     note: str | None
     decided_at: datetime | None
     created_at: datetime
+    # The owner's lines on this document's thread still waiting for the model
+    # (docs/videos/DRAMA-FLOW.md §三).
+    unanswered: int = 0
 
 
 class SeriesEpisodeOut(BaseModel):
@@ -515,6 +618,7 @@ class SeriesEpisodeOut(BaseModel):
 class SeriesSummary(BaseModel):
     id: UUID
     slug: str
+    kind: SeriesKind = "series"
     title: str
     premise: str
     aspects: list[SeriesAspect]
@@ -533,6 +637,8 @@ class SeriesSummary(BaseModel):
     episodes_started: int
     episodes_ready: int
     docs_pending: int
+    # The owner's lines on every thread of this series still waiting for the model.
+    messages_pending: int = 0
     media_usd: float = 0.0
     clip_seconds: int = 0
     # The binge columns (docs/videos/BINGE.md); an older row reads as the classic series.
@@ -644,6 +750,84 @@ class SeriesEpisodeStartOut(BaseModel):
 class SeriesEpisodeRecapIn(StrictModel):
     recap: str = Field(min_length=1, max_length=4000)
     state: dict[str, object] = Field(default_factory=dict)
+
+
+# The discussion thread on a document or a screenplay (docs/videos/DRAMA-FLOW.md §三): the owner
+# writes a line, the worker's next round has the planner or the writer answer it, with a new
+# version of the document when the owner asked for a change.
+MESSAGE_SUBJECT_PATTERN = r"^(setting|outline|chapter:\d+|bible|script:\d+)$"
+MESSAGE_BODY_MAX_CHARS = 8_000
+MessageAuthor = Literal["owner", "planner", "writer"]
+MessageTarget = Literal["doc", "script"]
+
+
+class MessageIn(StrictModel):
+    subject: str = Field(pattern=MESSAGE_SUBJECT_PATTERN)
+    body: str = Field(min_length=1, max_length=MESSAGE_BODY_MAX_CHARS)
+
+    @field_validator("body")
+    @classmethod
+    def _trimmed(cls, value: str) -> str:
+        text = value.strip()
+        if not text:
+            raise ValueError("must not be blank")
+        return text
+
+
+class MessageOut(BaseModel):
+    id: UUID
+    subject: str
+    author: MessageAuthor
+    body_md: str
+    # The version the line was said about: a document's "v3", or the screenplay's SHA-256
+    # cut to 12 characters; None when the document did not exist yet.
+    refers_to: str | None
+    answered_at: datetime | None
+    created_at: datetime
+    created_by_user_id: UUID | None
+
+
+class MessagesOut(BaseModel):
+    messages: list[MessageOut]
+
+
+class MessageJob(BaseModel):
+    """The oldest line waiting for the model, with everything the model reads to answer it."""
+
+    message: MessageOut
+    thread: list[MessageOut]
+    series: SeriesSummary
+    subject: str
+    target: MessageTarget
+    # The document's latest version, for a document thread; None before the first version.
+    doc: SeriesDocOut | None
+    # The episode whose screenplay is discussed, for a script thread (its slug names the video).
+    episode: SeriesEpisodeOut | None
+    context: SeriesContextOut
+
+
+class MessageJobOut(BaseModel):
+    job: MessageJob | None
+
+
+class RevisedDocIn(StrictModel):
+    body_md: str = Field(min_length=1, max_length=MAX_DOC_MD_CHARS)
+    body_json: dict[str, object] = Field(default_factory=dict)
+
+
+class MessageAnswerIn(StrictModel):
+    """The model's answer: a reply, and the revised document when the owner asked for a change.
+    A screenplay's revision is written by the worker itself, so ``revised`` is ignored there."""
+
+    reply_md: str = Field(min_length=1, max_length=MESSAGE_BODY_MAX_CHARS)
+    revised: RevisedDocIn | None = None
+
+
+class MessageAnswerOut(BaseModel):
+    reply: MessageOut
+    # The new version filed from ``revised``, waiting for the owner; None when nothing was
+    # revised, or the document was approved meanwhile.
+    revision: SeriesDocOut | None
 
 
 class SeriesCompilationStartIn(StrictModel):
