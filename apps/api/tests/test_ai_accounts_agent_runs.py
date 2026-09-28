@@ -7,6 +7,7 @@ import sys
 import textwrap
 import threading
 import time
+from dataclasses import replace
 from pathlib import Path
 from typing import Any
 from uuid import uuid4
@@ -15,7 +16,15 @@ import pytest
 
 from ai_accounts_agent.config import AgentConfig
 from ai_accounts_agent.runner import CliError
-from ai_accounts_agent.runs import RunRefused, RunRequest, pick_slot, run_claude, run_codex
+from ai_accounts_agent.runs import (
+    RunRefused,
+    RunRequest,
+    limit_refusal,
+    model_family,
+    pick_slot,
+    run_claude,
+    run_codex,
+)
 from ai_accounts_agent.security import signature_for
 from ai_accounts_agent.server import AgentApplication
 
@@ -40,6 +49,11 @@ FAKE_CLAUDE = textwrap.dedent(
         sys.exit(1)
     if "LIMIT" in prompt or os.path.exists(os.path.join(folder, "spent")):
         spent = {"type": "result", "is_error": True, "result": "You've hit your weekly limit"}
+        print(json.dumps(spent))
+        sys.exit(1)
+    model = args[args.index("--model") + 1]
+    if "opus" in model and os.path.exists(os.path.join(folder, "opus-spent")):
+        spent = {"type": "result", "is_error": True, "result": "You've hit your Opus limit"}
         print(json.dumps(spent))
         sys.exit(1)
     usage = {"input_tokens": 100, "cache_creation_input_tokens": 20, "output_tokens": 40}
@@ -372,7 +386,7 @@ def test_a_run_that_hits_the_limit_moves_on_to_the_next_account_and_rests_the_fi
     application = AgentApplication(config, claude=Accounts({"a": 10, "b": 20}), codex=Accounts({}))  # type: ignore[arg-type]
     status, body = _signed(application, run)
     assert status == 200 and body["slot"] == "b", "it was a's turn but its run hit the limit"
-    assert ("claude", "a") in application._runs_resting and not application._runs_busy
+    assert ("claude", "a", "*") in application._runs_resting and not application._runs_busy
     assert config.current_path("claude").read_text(encoding="utf-8").strip() == "b"
     (config.slot_path("claude", "b") / "last-run.json").unlink()
     (config.slot_path("claude", "a") / "last-run.json").unlink()
@@ -383,6 +397,57 @@ def test_a_run_that_hits_the_limit_moves_on_to_the_next_account_and_rests_the_fi
     (config.slot_path("claude", "a") / "spent").unlink()
     status, body = _signed(application, run)
     assert status == 200 and body["slot"] == "b", "a has room again, but b keeps its turn"
+
+
+def test_a_model_family_limit_passes_that_family_to_the_next_account_only(
+    tmp_path: Path,
+) -> None:
+    config = _config(tmp_path)
+    (config.slot_path("claude", "a") / "opus-spent").write_text("", encoding="utf-8")
+    run = {"tool": "claude", "model": "claude-opus-5-5", "system": "Write.", "prompt": "{}"}
+    application = AgentApplication(config, claude=Accounts({"a": 10, "b": 20}), codex=Accounts({}))  # type: ignore[arg-type]
+    status, body = _signed(application, run)
+    assert status == 200 and body["slot"] == "b", "a's Opus limit hands the run to b"
+    assert set(application._runs_resting) == {("claude", "a", "opus")}
+    # Back on a's turn, Fable still runs there: only the Opus family is spent on a.
+    assert application.set_default("claude", json.dumps({"slot": "a"}).encode())[0] == 200
+    status, body = _signed(application, {**run, "model": "claude-fable-5-1"})
+    assert status == 200 and body["slot"] == "a"
+    status, body = _signed(application, run)
+    assert status == 200 and body["slot"] == "b", "Opus still skips the resting account"
+
+
+@pytest.mark.parametrize(
+    ("message", "family"),
+    [
+        ("You've hit your weekly limit", "*"),
+        ("You've hit your 5-hour limit · resets 3pm", "*"),
+        ("You've hit your Opus limit", "opus"),
+        ("You've hit your Sonnet weekly limit", "sonnet"),
+        ("Claude usage limit reached", "*"),
+    ],
+)
+def test_limit_notices_pause_the_account_for_the_family_they_name(
+    message: str, family: str
+) -> None:
+    refusal = limit_refusal("a", message)
+    assert refusal is not None and refusal.code == "subscription_quota_paused"
+    assert refusal.family == family
+    assert limit_refusal("a", '{"title": "Nothing about plans"}') is None
+    assert model_family("claude-fable-5-1") == "fable" and model_family("gpt-6-sol") is None
+
+
+def test_a_long_answer_that_mentions_a_limit_is_still_an_answer(tmp_path: Path) -> None:
+    config = _config(tmp_path)
+    story = "Readers who hit your usage limit on a plan " + "x" * 1_000
+    fake = tmp_path / "story_claude.py"
+    fake.write_text(
+        "import json, sys\nsys.stdin.read()\n"
+        f"print(json.dumps({{'type': 'result', 'is_error': False, 'result': {story!r}}}))\n",
+        encoding="utf-8",
+    )
+    config = replace(config, claude_command=(sys.executable, str(fake)))
+    assert run_claude(config, "a", _request())["text"] == story
 
 
 def test_the_turn_survives_a_restart_and_the_default_restarts_it(tmp_path: Path) -> None:
