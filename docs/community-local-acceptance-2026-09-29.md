@@ -73,6 +73,35 @@ After the locator correction, scoped ESLint, Playwright discovery (20 cases),
 and `git diff --check` each completed with exit 0. These checks do not execute
 the browser matrix; its fresh-head CI result is still required.
 
+## Immutable CI receipt: `eefce5fd`
+
+On 2026-09-29, [CI run 36513935070](https://github.com/x812033727/travel_scanner/actions/runs/36513935070)
+completed successfully for exact head
+`eefce5fd0ef043528bc0eb90ef0fe3abd34cc384`. All four required jobs passed:
+
+| Job | Evidence |
+| --- | --- |
+| [web](https://github.com/x812033727/travel_scanner/actions/runs/36513935070/job/109232014172) | Lint, i18n, task checks, typecheck and build passed; 333 component files / 3,551 tests and 673 tool tests passed. The isolated browser command explicitly included `community-ui.spec.ts`: 543 passed, 9 skipped, 0 failed in 7.2 minutes, completed at 03:01:19 UTC. |
+| [api](https://github.com/x812033727/travel_scanner/actions/runs/36513935070/job/109232014247) | Ruff, both mypy checks and migration checks passed; full pytest: 5,548 passed, 16 skipped, 10 warnings in 1,367.19 seconds. Job completed at 03:08:47 UTC. |
+| [containers](https://github.com/x812033727/travel_scanner/actions/runs/36513935070/job/109232014325) | Container builds, production Compose and reverse-proxy/image rate-limit checks passed. |
+| [full-stack-smoke](https://github.com/x812033727/travel_scanner/actions/runs/36513935070/job/109232014021) | Existing real-service community suite: 6 passed. Other journeys: 8 passed; isolated admin: 2 passed; admin operations: 6 passed / 6 skipped. |
+
+The new community UI matrix's **20 cases passed**: five locales × two color
+schemes × desktop/Pixel 7. The CI log uses a dot reporter and only prints the
+combined browser total, not individual case names. The 20-case count comes from
+Playwright discovery and the unchanged spec's unconditional test definitions;
+the spec has no skipped cases and was included in the successful full command.
+This validates translation failure/retry, changed-original recovery, original
+text restoration, report-dialog keyboard/focus behavior and viewport overflow
+against the explicit synthetic fixture. It does not turn those scenarios into
+real-provider, outage or load tests.
+
+At this head, all five additional checks also passed: release-safety,
+food-map-reservations, planner-browser, discovery-browser and lighthouse.
+This receipt is bound to `eefce5fd`; a later merge of the story worker or any
+other new commit has a different head and needs its own CI result. No merge,
+deployment, production browser visit or live community acceptance is implied.
+
 ## Still required
 
 - Real-service translation provider failure and changed-original handling.

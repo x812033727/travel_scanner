@@ -15,14 +15,16 @@
 
 ## 本輪實際結果（2026-09-29）
 
-原 64 張固定分母：**32 張已移至 done、2 張過時票已刪除、30 張仍需保留**。32 張 done 包含 30 張有歷史完成證據的票、本輪完成的 publisher hold 防護，以及工作期間另一個工作合併的 #938 政策票。已納入 main `0cfcfdc1`（#938於02:29:18 UTC合併）；新建的稽核／方案票不混入64張分母。未刪程式、文章或媒體。最新可審查改動在 [草稿 PR #966](https://github.com/x812033727/travel_scanner/pull/966)，不代表此PR已合併或部署。
+原 64 張固定分母：**33 張已移至 done、2 張過時票已刪除、29 張仍需保留**。33 張 done 包含 30 張有歷史完成證據的票、本輪完成的 publisher hold 防護，以及工作期間其他工作合併的 #938 政策票、#933 工人票。已納入 main `157cca88`（#938於02:29:18 UTC、#933於02:49:56 UTC合併）；新建的稽核／方案票不混入64張分母。未刪程式、文章或媒體。最新可審查改動在 [草稿 PR #966](https://github.com/x812033727/travel_scanner/pull/966)，不代表此PR已合併或部署。
 
 - **內部代理憑證**：正式 API 拒絕缺少或少於32字元的 token；開發環境未設 token 但信任轉送位址時發出啟動警告。61項相關測試通過，Ruff及四檔mypy通過。正式站唯讀確認 API/web 皆未設定，故整個 PR 保持草稿；配置方案仍待站主決定。
 - **新聞證據**：統一使用目前擷取器40,000字元全文上限，移除8,000/6,000字元的早截斷；完整instructions/payload/schema以64k輸入預算檢查，輸出預算仍獨立32k，Jev超限交人工處理。相关套件82 passed；最終新增模組10 passed（包含前者案例，不能相加）。Ruff/mypy通過；近月正式資料抽樣未做，票保留。
 - **逐篇發布暫停**：publish_bundle在初始、每次操作、journal intent後及lost-response reconciliation前檢查hold；已失效的新加坡兩條repo hold刪除，正式設定未動。publisher 69 passed/68 skipped，既有API hold 8 passed/3 skipped；skip為無本機PostgreSQL。該票移done。
-- **社群／產品验收**：新增5語×明暗×桌機/Pixel7的20個隔離UI案例並接CI；本機API 52 passed/8 skipped，社群單元52 passed，20案例discover及ESLint通過，Next build通過348頁。未以列出案例代替瀏覽器通過；本機預覽啟動遭自動審批拒絕，原因僅為 `rejected: blocked by policy`，沒有繞過。真實worker/outage/capacity/SMTP/S3及主觀外觀驗收仍保留，詳見 [本機驗收紀錄](community-local-acceptance-2026-09-29.md)。
+- **社群／產品验收**：新增5語×明暗×桌機/Pixel7的20個隔離UI案例並接CI；本機API 52 passed/8 skipped，社群單元52 passed，Next build通過348頁。提交 `eefce5fd` 的 web CI 已成功：瀏覽器543 passed/9 skipped/0 failed，包含這20個無skip的新案例；另有單元3551 passed、工具673 passed。full-stack-smoke也通過，含6個真實社群流程。此證據不轉移到後續合入main的提交。本機預覽啟動遭自動審批拒絕，原因僅為 `rejected: blocked by policy`，沒有繞過；人工外觀、完整worker/outage/capacity與正式SMTP/S3啟用驗收仍保留，詳見 [驗收紀錄](community-local-acceptance-2026-09-29.md)。
 - **六支影片**：獨立重查當日官方事實；Google Vids、vibe、價格、代理、免費方案均另做第二輪，Siri兩組修正未達第二輪門檻。修正同步到稿件、字卡、標題、說明及claims，六票保留音訊／字幕／成片／上架與站主關卡。各slug的 `verify-p1-20260929*.md` 保存來源、逐項更正及SHA；既有作者自查不當作獨立通過。
 - **正式站唯讀盤點**：站主明確同意的一次盤點已完成，結果見下方。沒有正式寫入、配置、部署、內容發布或付費生成。
+
+完整CI收據：提交 `eefce5fd0ef043528bc0eb90ef0fe3abd34cc384` 的 [run 36513935070](https://github.com/x812033727/travel_scanner/actions/runs/36513935070) 已成功；api於2026-09-29 03:08:47 UTC完成，api/web/containers/full-stack-smoke四個必要job及九個check-runs全部SUCCESS。後續合入main `157cca88`及方案／收據的提交須看各自CI，不將此結果當成最終新head已通過。
 
 ## 站主已決定與待決事項
 
@@ -31,7 +33,7 @@
 - Gemini 51–56、69–74：保留待辦，這輪不做。
 - 景點候選、八批店家風格、合作導流、店家補資料：保留待辦，這輪不改正式資料。
 - 文章：已授權準備逐批發布清單與步驟，**未授權發布**。參見 [逐批發布方案](work-status-2026-09-29-article-release-plan.md)，先呈現來源修正、精確slug/locale、依賴及回復步驟，再由站主確認。
-- 品牌故事試作／VPS上傳驗收：依賴就緒後準備方案。参見 [依賴與驗收方案](work-status-2026-09-29-video-acceptance-plan.md)；故事所需PR尚未全合併，VPS可準備方案但沒有執行部署／登入／上傳。
+- 品牌故事試作／VPS上傳驗收：依賴就緒後準備方案。参見 [依賴與驗收方案](work-status-2026-09-29-video-acceptance-plan.md)；故事两個程式依賴已合併，故依站主指示追加 [兩支試作具體方案](work-status-2026-09-29-story-pilot-plan.md)；兩條路線都未執行部署／登入／生成／上傳。
 - 尚待回覆：2026-09-19後舊YouTube API金鑰是否已輪替（只需是/否，不收值）；六支影片後續製作方向；代理token配置方案；六城市商品／飯店原規格是否維持。
 
 以下逐票段落保留第一輪判定依據，新增的「本輪結果」與站主決定優先於歷史狀態。
@@ -84,7 +86,7 @@
 
 剩餘／處理：Implement/run missing isolated-service acceptance matrix; refresh outdated unchecked messaging/pet boxes from actual passed evidence. Production SMTP/S3/translation activation and public launch remain separate owner decisions.
 
-**本輪結果／站主決定：** 本機可行驗收完成，現有證據與缺口寫入docs/community-local-acceptance-2026-09-29.md及票面。20個新UI案例已接CI；本機預覽啟動遭自動審批拒絕（rejected: blocked by policy），沒有宣稱人工瀏覽器驗收。四票保留。
+**本輪結果／站主決定：** 可行驗收與缺口寫入docs/community-local-acceptance-2026-09-29.md及票面。20個新UI案例已在eefce5fd的web CI通過，6個真實社群流程亦通過；本機預覽啟動遭自動審批拒絕（rejected: blocked by policy），沒有宣稱人工外觀或正式環境驗收。四票保留剩餘範圍。
 
 ### 5. 2026-09-07-mokaair-community-web
 
@@ -96,7 +98,7 @@
 
 剩餘／處理：Run an explicit five-language/light-dark/responsive/accessibility/failure matrix on isolated services and fix actual failures; reconcile the many stale unchecked boxes with evidence rather than treating them all as unwritten code.
 
-**本輪結果／站主決定：** 本機可行驗收完成，現有證據與缺口寫入docs/community-local-acceptance-2026-09-29.md及票面。20個新UI案例已接CI；本機預覽啟動遭自動審批拒絕（rejected: blocked by policy），沒有宣稱人工瀏覽器驗收。四票保留。
+**本輪結果／站主決定：** 可行驗收與缺口寫入docs/community-local-acceptance-2026-09-29.md及票面。20個新UI案例已在eefce5fd的web CI通過，6個真實社群流程亦通過；本機預覽啟動遭自動審批拒絕（rejected: blocked by policy），沒有宣稱人工外觀或正式環境驗收。四票保留剩餘範圍。
 
 ### 6. 2026-09-08-continue-evidence-backed-remaining-hotspot-candidate
 
@@ -132,7 +134,7 @@
 
 剩餘／處理：Create an isolated preview under current permissions and inspect the specified flows with CUA; retain owner visual acceptance separately if specifically required. No policy publication/deployment needed.
 
-**本輪結果／站主決定：** 本機可行驗收完成，現有證據與缺口寫入docs/community-local-acceptance-2026-09-29.md及票面。20個新UI案例已接CI；本機預覽啟動遭自動審批拒絕（rejected: blocked by policy），沒有宣稱人工瀏覽器驗收。四票保留。
+**本輪結果／站主決定：** 可行驗收與缺口寫入docs/community-local-acceptance-2026-09-29.md及票面。20個新UI案例已在eefce5fd的web CI通過，6個真實社群流程亦通過；本機預覽啟動遭自動審批拒絕（rejected: blocked by policy），沒有宣稱人工外觀或正式環境驗收。四票保留剩餘範圍。
 
 ### 9. 2026-09-11-deny-school-hospital-tram-stop-ward
 
@@ -390,14 +392,14 @@
 
 **可依完成證據結案** — Fix Batch028 English page builder diagram overflow
 
-- PR #863 merged; batch028 release README records deployed SHA df4bee3246105b41378d09ef44e9c069f1a354b8c496b16f2c9d64833b6d4dc9 and minimum margin 15.42px.
+- PR #863 merged; batch028 release README records repaired English SVG SHA-256 df4bee3246105b41378d09ef44e9c069f1a354b8c496b16f2c9d64833b6d4dc9 and minimum margin 15.42px.
 - Final release QA included repaired English/Japanese diagrams, 40 page cases/20 mobile-right cases, all 20 card bounds pass, hold cleared.
 
 ### 37. 2026-09-27-fix-batch028-japanese-page-builder-diagram
 
 **可依完成證據結案** — Fix Batch028 Japanese page builder diagram card padding
 
-- PR #869 merged; batch028 release README records deployed SHA 017b9865991f441d0d48986378bcc4ca613b3bdbf121bcb65afb0f84f3cb7091 and margin 19.77px.
+- PR #869 merged; batch028 release README records repaired Japanese SVG SHA-256 017b9865991f441d0d48986378bcc4ca613b3bdbf121bcb65afb0f84f3cb7091 and margin 19.77px.
 - Final independent acceptance SHA e4e4f872ae370a3bef8b1fc04f76eebbb3ea87b681e0997ae110c0a1111f3f26 includes both repaired diagrams.
 
 ### 38. 2026-09-27-news-evidence-excerpts-stop-at-8
@@ -657,22 +659,22 @@
 **仍有缺口，待站主決定/條件** — 試作兩支品牌故事並記錄數字
 
 - Current docs/videos/STORY.md:287 trial record table remains placeholder for actual durations, costs, image quality and tokens.
-- 政策依賴 #938 已合併；worker #933 仍 OPEN，最新head `345d8e9926d79b107e23db560b4fdf8cc96db2e0` 的必要檢查仍在跑。
+- 政策依賴 #938 與 worker #933 均已合併；#933於02:49:56 UTC合併為 `157cca889a169ebf9f0af4f609be69388b8f6d2e`。具體試作方案已按站主條件補備，但設定、素材、預算及實際驗收仍待執行批准。
 - Task explicitly requires two production-host videos A01 luggage/B18 conveyor sushi, owner final viewing, settings/limits and expenditure measurement; nothing in repository proves those occurred.
 
-剩餘／處理：Keep pilot ticket. First land prerequisite implementations, then prepare explicit host deployment/config/import steps and selected two-video cost bound; owner watches completed cuts and chooses 1K vs 2K based on evidence.
+剩餘／處理：Keep pilot ticket. Code dependencies and the concrete plan are ready; resolve the documented budget/model gates and obtain the owner's authorization for the exact host deployment/config/import steps before making media. The owner watches completed cuts and chooses 1K vs 2K based on evidence.
 
 **本輪結果／站主決定：** 站主回覆「依賴就緒後準備試作／上傳驗收方案」。目前依賴與可執行步驟見docs/work-status-2026-09-29-video-acceptance-plan.md；未部署、生成、登入或上傳。
 
 ### 63. 2026-09-28-video-story-worker
 
-**現有PR工作或依賴，保留** — 工人的故事流程：逐章撰稿、查核、審稿與提示詞
+**既有PR已合併並結案** — 工人的故事流程：逐章撰稿、查核、審稿與提示詞
 
-- PR #933 OPEN、非草稿，最新head `345d8e9926d79b107e23db560b4fdf8cc96db2e0`，BLOCKED；api/web/full-stack-smoke仍在跑、containers已成功。前一head綠燈不取代此次結果。
-- tools/video/automation/story.mjs does not exist on current main; PR implements it and describes mocked full-flow tests, fact-source extraction and narration-length checks.
-- PR has a 2026-09-29 update and also implements story-page tidy follow-up; another active implementation exists.
+- #933於2026-09-29 02:49:56 UTC合併為 `157cca889a169ebf9f0af4f609be69388b8f6d2e`，本分支已納入該main版本。
+- `tools/video/automation/story.mjs`、逐章查核／審稿及相關回歸、story技能reference皆已在主分支；原票已移done。
+- 本稽核沒有重複實作或接管原作者分支。合併不表示兩支真實媒體已完成。
 
-剩餘／處理：Continue via existing PR owner/workflow, update to current main and verify new head rather than duplicating implementation. Real-media pilot is separate.
+剩餘／處理：工人實作票結案；兩支試作依原票及 [具體方案](work-status-2026-09-29-story-pilot-plan.md) 接續，沒有啟動生片或正式操作。
 
 ### 64. 2026-09-28-vps-youtube-studio-deployment-and-live
 

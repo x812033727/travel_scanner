@@ -4,11 +4,11 @@
 
 ## 依賴現況
 
-以下 GitHub 狀態於 2026-09-29 02:24–02:29 UTC 初查，故事依賴於 **02:33 UTC** 再查並更新。狀態會變；真正執行前須重查當次 SHA。CI 成功、合併、部署、真人驗收分別記錄。
+以下 GitHub 狀態於 2026-09-29 02:24–02:29 UTC 初查，故事依賴於 **02:56 UTC** 再查並更新。狀態會變；真正執行前須重查當次 SHA。CI 成功、合併、部署、真人驗收分別記錄。
 
 | 原任務與依賴 | 今日可確認的證據 | 是否可進入下一階段 |
 | --- | --- | --- |
-| `2026-09-28-video-story-pilot`：worker | [PR #933](https://github.com/x812033727/travel_scanner/pull/933) OPEN、非草稿、BLOCKED；更新後 head `345d8e9926d79b107e23db560b4fdf8cc96db2e0`，containers SUCCESS，api/web/full-stack-smoke IN_PROGRESS | **未就緒**。等新 head 的必要檢查通過並實際合併，才可算依賴完成；舊 head 的四綠不能帶到新 head，本方案不接管該分支 |
+| `2026-09-28-video-story-pilot`：worker | [PR #933](https://github.com/x812033727/travel_scanner/pull/933) 於 **2026-09-29 02:49:56 UTC MERGED**，merge `157cca889a169ebf9f0af4f609be69388b8f6d2e`，已納入本分支 | 程式依賴完成；按站主指示補備 [兩支試作具體方案](work-status-2026-09-29-story-pilot-plan.md)，實際生片未獲本輪批准 |
 | 同上：policy/languages | [PR #938](https://github.com/x812033727/travel_scanner/pull/938) 已於 **2026-09-29 02:29:18 UTC MERGED**，merge `0cfcfdc126db3a6f4ed3f3fc2136816ba8045761`；final head `5e0a06329942d6bb155db5a1842810d09d1a9039` 四必要檢查全 SUCCESS | 程式依賴已完成，取代初查時的 OPEN 狀態；仍不代表部署及真人試作完成 |
 | 同上：100 篇故事 backlog | [PR #909](https://github.com/x812033727/travel_scanner/pull/909) MERGED，merge `be6f584cb51f4ddb2a541588cb9374451a0e65ad`；四必要檢查成功；本機 done 票及計畫清單存在 | 程式庫資料依賴已完成；不代表已匯入主機或已出片 |
 | `2026-09-28-vps-youtube-studio-deployment-and-live`：uploader | [PR #893](https://github.com/x812033727/travel_scanner/pull/893) MERGED，2026-09-28 06:55:22 UTC 合入當時母分支；final head `6ccac4841d7217784a11a1390b1e045e795f398c` 的四必要檢查與專用 uploader 檢查成功 | 已可準備具體驗收方案；不代表部署或 Google 登入完成 |
@@ -27,11 +27,11 @@
 
 VPS 現有交接狀態保留為「既有批准紀錄存在、未部署／未真人驗收」。原票及 VPS-UPLOADER.md 仍記錄未部署；本輪沒有連主機刷新此狀態，不能聲稱今天重新證實主機未運行。2026-09-28 的主機預檢已是歷史資料，不能當今天的容量、鎖或埠狀態。執行前應先核對是否有其他 session 已完成其中步驟，避免重部署、覆寫密鑰或重傳影片。
 
-## 品牌故事：等待條件，先不啟動試作
+## 品牌故事：程式依賴已就緒，具體試作方案待確認
 
-直接依賴 #938 已合併，**#933 仍未就緒**，所以本次不準備可直接執行的主機匯入或生片批次。等 #933 實際合併後，再針對同時包含它與 #938 的精確部署 SHA 完成試作方案與預檢。
+直接依賴 #933、#938 均已合併；依站主「依賴就緒後準備」的指示，補備 [A01／B18 具體試作方案](work-status-2026-09-29-story-pilot-plan.md)。候選版本為包含兩個依賴的 main `157cca88`；選定版本、正式預檢、設定、匯入與生成仍須遵守原有批准關卡，本次未執行。
 
-原驗收範圍繼續保留為 A01 輪子行李箱、B18 迴轉壽司，各一支；不延伸成每天兩支的 rollout。依賴就緒後，方案仍須納入原票的站主立場、字幕語系、AI 漫劇設定、帳號權限、常設指示、預算與配額確認。`video-story-image-model-pricing` 仍是 open follow-up：它影響工人的估價、快取與模型記錄，試作前要確認它是否已修復，或明列如何避免錯誤估價提前觸發花費上限；量測一律以伺服器帳本為準。
+原驗收範圍繼續保留為 A01 輪子行李箱、B18 迴轉壽司，各一支；不延伸成每天兩支的 rollout。具體方案已納入原票的站主立場、字幕語系、AI 漫劇設定、帳號權限、常設指示、預算與配額確認。`video-story-image-model-pricing` 仍是 open follow-up：它影響工人的估價、快取與模型記錄，**付費前須完成修正與回歸**，並合併media帳本與其他供應商／用量收據核帳。若不能證明保守預留及下一階段最壞花費仍在每支25美元內，停在dry-run；不以替代估價或調高上限繞過此門檻。
 
 待後續方案納入的既有接受條件：
 
@@ -99,6 +99,6 @@ VPS 上傳本輪驗的是包內 MP4、字幕、縮圖與 metadata 翻譯；沒�
 
 ## 本次交付與驗證
 
-本次只完成方案與依賴清單：VPS 的程式依賴已具備，故事試作仍等 #933；#938 已在本輪完成合併。沒有把兩張原執行票結案，也沒有填造正式驗收結果。
+本次只完成方案與依賴清單：VPS 與故事的兩個程式依賴均已具備，故事的具體試作方案另列；設定、費用與正式操作門檻仍保留。沒有把兩張原執行票結案，也沒有填造正式驗收結果。
 
 驗證方式：唯讀 gh pr view / gh api 核對狀態、四必要檢查與 uploader checks、stacked merge 路徑、四個相關 blob；閱讀原票、STORY.md、VPS-UPLOADER.md、youtube-video／deploy／task-board 技能與 release hold 規則。文件變更執行 npm run check:tasks；沒有為純方案重跑媒體生成、容器或真實上傳測試。
