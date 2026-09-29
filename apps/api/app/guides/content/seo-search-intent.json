@@ -255,6 +255,934 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "zh-CN": {
+      "title": "如何判断搜索意图：把关键词变成真正要回答的问题",
+      "description": "同一个关键词可能代表学习、比较、找入口或立即行动等不同需求。本文用行李寄存的原创查询案例，说明如何从字词、时间地点、搜索结果类型与自己的查询数据判断意图，再把推测转成明确的文章任务。包含观察表、混合意图处理、内容形式比较及后续验证方法，避免照搬排名页面，也不把单次搜索结果页面当成所有读者的答案。",
+      "hero": {
+        "src": "/guides/seo-search-intent/hero-zh-cn.jpg",
+        "alt": "原创网页、文档及文件夹图像，呈现搜索观察、任务定义与查询整理。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "看到「行李寄存」四个字，你还不知道对方想了解寄放流程、比较柜子与店家，还是正在车站旁寻找空位。只根据这四个字写一篇很长的介绍，可能每件事都提到，却没有让任何一种读者完成眼前的任务。"
+        },
+        {
+          "type": "paragraph",
+          "text": "搜索意图是对搜索者当下目的的判断。它需要证据，也容许不确定；同一个词可能同时存在多种合理需求。编辑工作的重点，是决定这一页要服务哪一种情境，再提供足够的内容让对方继续下一步。"
+        },
+        {
+          "type": "heading",
+          "text": "先读懂查询中的对象、动作与限制",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把查询拆成三部分：在找什么、想做什么，以及有哪些限制。「台北车站行李寄存晚上领取」包含地点、服务与时间需求；「行李寄存和置物柜差别」则更像选择方式的问题。这些是起始线索，仍需后续观察支持，不能只看一个词就下定论。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 官方说明，搜索会考量查询语意、语言、位置与设置等信息，也能理解不同字词的相关意思。因此，两个字面不同的查询可能需要同一份答案；同一个简短查询，在不同地点或时间也可能需要不同结果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先在工作表保留原始查询，再写出你的解读与信心程度。例如将「行李寄存费用」暂记为比较成本，并注明仍不确定是否需要特定地点。把模糊之处留下来，能提醒你补查需求，而不是为了快速分类就硬塞进唯一一个格子。"
+        },
+        {
+          "type": "heading",
+          "text": "用工作目的分类，不把分类当成规则",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "编辑时可暂分成了解概念、比较选择、寻找指定入口，以及完成行动几种工作目的。这是帮助沟通的整理方式，不是每个查询只能获得一张固定标签。找店家的人也可能先确认价格，学习流程的人也可能接着预约。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如「寄放需要证件吗」适合清楚说明规则与核实方法；「置物柜或人工寄放」需要同条件比较；「某服务登录」通常要的是正确入口。若你并未经营该服务，写一篇把官方登录链接藏在长文底部的文章，未必能提供有用的额外内容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "为每个分类补上一个完成条件：看懂限制、缩小选择、抵达正确页面，或知道下一步如何操作。这比只写「信息型」或「交易型」更容易执行。后续决定文章形式时，便能以完成条件检查是否有缺项，而不只是模仿同类文章的长度。"
+        },
+        {
+          "type": "heading",
+          "text": "观察搜索结果时留下范围与日期",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "实际研究时，选定台湾读者使用的语言和地点场景，记录查询、日期、设备及搜索设置。Google 说明搜索结果与这些背景有关，Search Console 也提醒自行查询未必重现报表中的结果。无痕窗口可以减少部分既有状态影响，仍不能代表完全没有地点与设置差异。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先观察结果类型：文本教学、官方服务、地图、商品、视频或其他模块。广告另外标记，不把它的出现等同自然结果偏好的证据。记录「看见什么」与「可能代表什么」两栏，例如多个地点入口可能支持在地需求，但仍需确认读者的实际目的。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "观察可以帮你选择内容形式，不能用来照搬别人的段落顺序或直接采用推荐名次。本篇行李寄存字词都是教学示例，并非某日实际排名盘点。真正制作主题时，另外查官方规则与服务信息，再用自己的架构、例子及比较条件回答问题。"
+        },
+        {
+          "type": "heading",
+          "text": "处理同一查询的多种需求",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "遇到混合意图，先选一个主要任务，其他需求只补到足以让读者判断下一步。例如一篇比较寄放方式的文章，可解释时间、尺寸和取件限制应如何核对，再连到实际服务入口；不必同时塞入每个车站的完整店家清单。"
+        },
+        {
+          "type": "paragraph",
+          "text": "是否拆篇，可用两个问题判断：读者需要的步骤是否不同，以及关键证据是否不同。流程说明需要准备与取回步骤，服务据点整理则需要可核实的地址与营业信息。若两篇只差地名却没有实际服务差异，先确认是否真有足够内容支持独立页面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "对不能判定的查询，保留待观察状态，先整理更明确的长句需求。也可以使用现有读者的常见问题或客服记录确认，但应去除个人信息，避免把单一个案当成所有人的需求。意图研究的成果可以是不添加文章，而是改好既有页面的入口与说明。"
+        },
+        {
+          "type": "heading",
+          "text": "把意图转成可交付的内容任务",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "每个选题写一张简短任务卡：目标读者、使用情境、主要问题、完成条件、必备证据与不处理的范围。以比较寄放方式为例，必备内容可以是比较维度、查询规则的入口和情境选择；数据源必须足以支持每个服务事实。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再选择适合的形式。需要完成流程就用步骤，存在取舍就用比较表，涉及空间关系可用示意图，寻找入口则把已核对的官方链接放在容易找到的位置。形式是由任务决定，不是看到搜索页有视频就认定所有主题都必须做视频。"
+        },
+        {
+          "type": "paragraph",
+          "text": "草稿完成后用原始查询逐一检查。假设读者问的是晚上能否领取，文章就要清楚交代如何核实时间与特殊限制，而不能只说「服务很方便」。若答案依业者或据点而不同，直接说明差异与查询方式，不为了让文章看似完整而写出无法保证的统一规则。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "保存查询原文，拆出主题、动作与限制条件。",
+            "记录搜索观察及背景，区分事实与需求推测。",
+            "选定主要任务，决定合并、拆篇或改善既有页面。",
+            "把任务写成内容要求，完成后逐一核对原始问题。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "用自己的数据修正初步判断",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "网站已有数据时，可在 Search Console 依查询、网页、国家或设备查看成效，确认哪些需求会带到哪一页。报表提供点击、曝光与平均排序等信息，但不直接告诉你读者是否满意。观察查询与目的地的配对，比只看整站总点击更贴近这次工作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果比较型页面经常收到寻找指定入口的查询，可以检查开头与导航是否让人误会；如果教学页收到许多更深入的问题，可评估增加例外说明或另作延伸。不要只因点击率下降就认定意图错误，先看查询组成、设备、位置和期间是否改变。"
+        },
+        {
+          "type": "paragraph",
+          "text": "更新任务卡时保留原判断、后来的证据与调整原因。搜索意图不是一旦分类就永久固定，季节、服务改版或读者熟悉程度都可能改变需求。在重大内容更新时定期重看主要查询，让文章持续服务真实问题，而不是守着最初的一个标签。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/seo-search-intent/diagram-1-zh-cn.svg",
+          "alt": "四步骤依序为拆解查询、观察证据、选择内容任务及数据校正，说明搜索意图是可修正的判断。",
+          "width": 1600,
+          "height": 900,
+          "caption": "意图标签协助整理；读者能完成什么，才是内容任务。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "原创查询示例",
+            "初步推测的任务",
+            "内容需要提供"
+          ],
+          "rows": [
+            [
+              "行李寄存怎么取回",
+              "了解操作与准备",
+              "步骤、所需凭证及例外查询方式"
+            ],
+            [
+              "置物柜和人工寄放差别",
+              "比较服务方式",
+              "一致维度、限制与情境选择"
+            ],
+            [
+              "某寄放服务登录",
+              "找到指定入口",
+              "正确官方入口与必要说明"
+            ],
+            [
+              "台北车站附近晚上寄放",
+              "在地且有时间限制的行动",
+              "核实据点、营业与取件条件"
+            ],
+            [
+              "行李寄存费用",
+              "可能比较成本，也可能找特定价格",
+              "先确认地点、尺寸与计费范围"
+            ]
+          ],
+          "caption": "分类为原创示例推测，不是实际搜索结果调查或任何服务的价格与营业承诺。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "让观察和推测各有一栏",
+          "text": "看到某种结果形式，是观察；判断读者想完成哪件事，是推测。保留查询背景与后续验证方法，才能在新证据出现时调整内容，而不把自己的第一印象当成所有搜索者的需求。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把任务落实为单篇文章与页面设置"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "创建 SEO 的学习与观察顺序"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 如何产生与排列搜索结果",
+          "url": "https://www.google.com/intl/en_us/search/howsearchworks/how-search-works/ranking-results/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console 成效报表总览",
+          "url": "https://support.google.com/webmasters/answer/7576553?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 用户优先内容指南",
+          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "How to Identify Search Intent: Turn Keywords into Questions Worth Answering",
+      "description": "The same keyword can signal learning, comparison, finding a specific entry point or taking action. Using original luggage-storage examples, this guide shows how to judge intent from wording, time and place, result formats and your own query data, then turn a hypothesis into a clear content task. It includes an observation table, ways to handle mixed intent, content-format choices and later validation. Do not copy ranking pages or treat one search-results screen as the answer for every reader.",
+      "hero": {
+        "src": "/guides/seo-search-intent/hero-en.jpg",
+        "alt": "Original webpage, document and folder illustration showing search observation, task definition and query organization.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The words ‘luggage storage’ alone do not tell you whether someone wants to learn the drop-off process, compare lockers with staffed storage, or find an available spot beside a station. A long article based only on those words may mention everything while helping none of these readers finish the task in front of them."
+        },
+        {
+          "type": "paragraph",
+          "text": "Search intent is a judgment about a searcher's immediate goal. It needs evidence and allows uncertainty: one term can carry several reasonable needs at once. An editor's job is to choose which situation a page will serve and provide enough information for that reader to take the next step."
+        },
+        {
+          "type": "heading",
+          "text": "Read the object, action and constraints in the query",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Break a query into three parts: what the person is looking for, what they want to do, and what limits apply. ‘Taipei Main Station luggage storage evening pickup’ contains a place, a service and a time requirement; ‘luggage storage versus lockers’ sounds more like a choice between methods. These are starting clues, not a conclusion from a single word; later observations must support them."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google explains that Search considers meaning, language, location, settings and other context, and can relate words with different wording. Two queries that look different may need the same answer. The same short query may need different results in different places or at different times."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep the original query in your worksheet before adding your interpretation and confidence level. For example, tentatively mark ‘luggage storage cost’ as a cost comparison, while noting that you do not yet know whether a specific location matters. Recording ambiguity reminds you to investigate further instead of forcing every query into a single box for speed."
+        },
+        {
+          "type": "heading",
+          "text": "Classify by the job to be done, not by a rigid rule",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For editing purposes, you may temporarily group goals into learning a concept, comparing options, finding a named destination and completing an action. This helps communication; it does not mean each query can have only one fixed label. Someone looking for a store may first check the price, and someone learning the process may book afterward."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, ‘Do I need ID for storage?’ calls for a clear explanation of rules and how to verify them; ‘locker or staffed storage?’ needs a comparison on common terms; ‘sign in to a particular service’ usually calls for the correct entry point. If you do not operate that service, hiding its official sign-in link at the end of a long article may add little value."
+        },
+        {
+          "type": "paragraph",
+          "text": "Give each group a completion condition: understand a restriction, narrow a choice, reach the right page, or know how to take the next step. This is more actionable than writing only ‘informational’ or ‘transactional’. When choosing a format, check it against that condition instead of imitating the length of similar articles."
+        },
+        {
+          "type": "heading",
+          "text": "Record the scope and date when observing search results",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For actual research, choose the language and location context used by your Taiwan readers, then record the query, date, device and search settings. Google says results depend on this context, and Search Console warns that your own searches may not reproduce reported results. An incognito window can reduce some existing-state effects but cannot erase all location and setting differences."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "First observe result types: written guides, official services, maps, products, videos or other modules. Mark ads separately; their presence is not evidence of what organic results favor. Record ‘what appeared’ and ‘what it might mean’ in separate columns. Several location entry points may suggest local needs, for example, but you still need to check readers' actual goals."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Observations can guide your format, but cannot justify copying another page's paragraph order or adopting its ranking. Every luggage-storage phrase here is a teaching example, not a survey of results on a particular day. For a real topic, check official rules and service information separately, then answer with your own structure, examples and comparison criteria."
+        },
+        {
+          "type": "heading",
+          "text": "Handle multiple needs behind one query",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For mixed intent, choose one primary task and cover other needs only enough to help readers decide what to do next. An article comparing storage methods can explain how to check time, size and pickup restrictions, then link to a real service entry point. It need not contain a complete store list for every station."
+        },
+        {
+          "type": "paragraph",
+          "text": "Two questions help decide whether to split pages: do readers need different steps, and does each page need different evidence? A process guide needs preparation and retrieval steps; a service-location guide needs verifiable addresses and operating details. If two pages differ only by place name without meaningful service differences, first ask whether each can support a standalone page."
+        },
+        {
+          "type": "paragraph",
+          "text": "Leave an undecidable query marked for later observation and work first on clearer, longer queries. Existing reader questions or support records can also help, after removing personal information; do not treat one case as everyone's need. Intent research may conclude that no new article is needed and that an existing page's entry point or explanation should improve instead."
+        },
+        {
+          "type": "heading",
+          "text": "Turn intent into a deliverable content task",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Write a short task card for each topic: target reader, use situation, main question, completion condition, required evidence and out-of-scope matters. For a comparison of storage methods, required material might include comparison dimensions, where to check rules and a scenario-based choice. Sources must support each factual claim about a service."
+        },
+        {
+          "type": "paragraph",
+          "text": "Then choose a suitable format. Use steps for a procedure, a table for trade-offs, a diagram for spatial relationships and a prominent verified official link when the task is finding an entry point. The task determines the format; seeing a video in search results does not mean every topic needs a video."
+        },
+        {
+          "type": "paragraph",
+          "text": "After drafting, check the article against each original query. If readers ask whether they can collect luggage in the evening, explain clearly how to verify hours and special restrictions, not merely that the service is ‘convenient’. When rules differ by operator or location, state the difference and the way to check it instead of inventing one universal rule to make the article look complete."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Keep the original query and separate its topic, action and constraints.",
+            "Record search observations and context, separating facts from guesses about needs.",
+            "Choose the main task and decide whether to combine, split or improve an existing page.",
+            "Turn the task into content requirements, then check every original question after drafting."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Revise the initial judgment with your own data",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "If your site has data, examine Search Console performance by query, page, country or device to see which needs bring visitors to which page. The report includes clicks, impressions and average position, but does not directly tell you whether readers were satisfied. Query-to-destination matches are more useful for this task than sitewide click totals alone."
+        },
+        {
+          "type": "paragraph",
+          "text": "If a comparison page often receives queries for a specific entry point, check whether its opening and navigation create confusion. If a tutorial receives many advanced questions, consider adding exceptions or a follow-up. Do not assume a falling click-through rate proves the intent was wrong; first check whether query mix, device, location or period changed."
+        },
+        {
+          "type": "paragraph",
+          "text": "When updating the task card, retain the original judgment, later evidence and reason for adjustment. Search intent is not permanently fixed by its first classification: seasons, service redesigns and reader familiarity can change needs. Revisit primary queries during major content updates so the page keeps serving real questions rather than an old label."
+        },
+        {
+          "type": "image",
+          "src": "/guides/seo-search-intent/diagram-1-en.svg",
+          "alt": "Four stages—parse the query, observe evidence, choose a content task and refine with data—show that a search-intent judgment can change.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Intent labels help organize; the content task is what the reader can accomplish.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Original query example",
+            "Tentative task",
+            "What the content must provide"
+          ],
+          "rows": [
+            [
+              "How do I retrieve stored luggage?",
+              "Understand the process and preparation",
+              "Steps, required proof and how to check exceptions"
+            ],
+            [
+              "Locker versus staffed luggage storage",
+              "Compare service methods",
+              "Consistent criteria, restrictions and scenario-based choice"
+            ],
+            [
+              "Sign in to a particular storage service",
+              "Find a named entry point",
+              "Correct official entry point and necessary explanation"
+            ],
+            [
+              "Evening storage near Taipei Main Station",
+              "Act locally with a time constraint",
+              "How to verify locations, opening hours and pickup terms"
+            ],
+            [
+              "Luggage storage cost",
+              "Possibly compare costs or find a specific price",
+              "First confirm location, size and billing scope"
+            ]
+          ],
+          "caption": "These classifications are hypotheses for original teaching examples, not a study of live search results or a promise about any service's prices or hours."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Give observations and guesses separate columns",
+          "text": "Seeing a type of result is an observation; deciding what readers want to accomplish is a hypothesis. Preserve query context and a way to validate it later, so new evidence can change the content instead of turning your first impression into an assumption about everyone."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Apply the task to one article and its page settings"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Build an order for learning and observing SEO"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "How Google generates and ranks Search results",
+          "url": "https://www.google.com/intl/en_us/search/howsearchworks/how-search-works/ranking-results/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console Performance report overview",
+          "url": "https://support.google.com/webmasters/answer/7576553?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google guidance on people-first content",
+          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "検索意図の見極め方：キーワードを答えるべき問いに変える",
+      "description": "同じキーワードでも、学習、比較、特定の入口探し、すぐに行動したいという異なる需要があります。この記事では荷物預かりに関する独自の検索語を例に、語句、時間と場所、検索結果の形式、自サイトの検索データから意図を推測し、明確な記事の役割へ落とし込む方法を説明します。観察表、複数の意図への対応、形式の比較、公開後の検証も扱います。上位ページをなぞったり、一度見た検索画面を全読者の答えとみなしたりしません。",
+      "hero": {
+        "src": "/guides/seo-search-intent/hero-ja.jpg",
+        "alt": "検索結果の観察、記事の役割の定義、検索語の整理を表したオリジナルのウェブページ・文書・フォルダーの図。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "「荷物預かり」という語だけでは、預け入れの手順を知りたいのか、ロッカーと有人窓口を比べたいのか、駅のそばで空きを探しているのか分かりません。この語だけを手掛かりに長い紹介記事を書けば、すべてに触れても、どの読者の目の前の課題も解決できないことがあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "検索意図とは、検索者がその時点で何をしたいかについての判断です。根拠が必要で、不確実さも認めます。同じ語に複数の妥当な需要が重なることもあります。編集の要点は、このページがどの状況を支えるか決め、読者が次へ進めるだけの情報を提供することです。"
+        },
+        {
+          "type": "heading",
+          "text": "検索語にある対象・行動・制約を読み取る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "検索語を「何を探すか」「何をしたいか」「どのような制約があるか」に分けます。「台北駅 荷物預かり 夜に受け取り」には場所、サービス、時間の条件があり、「荷物預かりとロッカーの違い」は方法の選択に近い問いです。いずれも最初の手掛かりにすぎず、後の観察で裏付ける必要があります。一語だけで結論を出してはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google の公式説明によれば、検索では語句の意味、言語、場所、設定などを考慮し、異なる表現の関連も理解します。そのため表記の違う二つの検索語に同じ答えが必要なことも、同じ短い検索語でも場所や時間によって異なる結果が必要なこともあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "作業表にはまず元の検索語を残し、解釈と確信度を後から書きます。例えば「荷物預かり 料金」は暫定的に費用比較とし、特定の場所が必要かは未確認と記録します。曖昧さを残せば追加調査を忘れず、素早く分類するために無理やり一つの枠へ入れることを防げます。"
+        },
+        {
+          "type": "heading",
+          "text": "作業目的で分類し、分類を絶対の規則にしない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "編集上は、概念の理解、選択肢の比較、指定された入口探し、行動の完了といった目的に仮分類できます。これは意思疎通のための整理であり、検索語一つに固定のラベルが一つだけ付くという意味ではありません。店舗を探す人も先に料金を確認するでしょうし、手順を学ぶ人がその後予約することもあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例えば「預けるのに身分証は必要か」には規則と確認方法を明確に示し、「ロッカーか有人預かりか」には同じ条件での比較が必要です。「あるサービスにログイン」は通常、正しい入口を求めています。自分が運営しないサービスの公式ログインリンクを長文の末尾に隠しても、有益な付加情報にはならないかもしれません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "分類ごとに達成条件を付けます。制限を理解する、候補を絞る、正しいページに着く、次の操作が分かる、といった条件です。「情報型」「取引型」とだけ書くより実行に移しやすくなります。記事の形式を決める際も、似た記事の長さをまねるのでなく、その条件を満たす内容があるか確認できます。"
+        },
+        {
+          "type": "heading",
+          "text": "検索結果を観察する際は範囲と日付を残す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "実際に調べるときは台湾の読者が使う言語と場所の状況を選び、検索語、日付、端末、検索設定を記録します。Google は結果がこうした背景に左右されると説明し、Search Console も自分の検索ではレポートの結果を再現できないことがあると注意しています。シークレットウィンドウで既存状態の影響を一部減らせても、場所や設定の違いを完全には消せません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "まず文章による解説、公式サービス、地図、商品、動画、その他の表示枠など結果の種類を観察します。広告は別に記録し、その表示を自然検索結果の傾向の根拠と混同しません。「見えたもの」と「意味するかもしれないこと」を別々の列に記します。複数の場所への入口は地域需要を示唆するかもしれませんが、読者の実際の目的はなお確認が必要です。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "観察は形式選びに役立ちますが、他サイトの段落順を写したり、表示順位をそのまま推奨順位にしたりする根拠にはなりません。この記事の荷物預かりに関する語句はすべて教材用の例であり、特定日の実際の順位調査ではありません。実際のテーマでは公式の規則とサービス情報を別途確認し、自分の構成、例、比較条件で問いに答えます。"
+        },
+        {
+          "type": "heading",
+          "text": "一つの検索語に含まれる複数の需要を扱う",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "意図が混在するときは主な課題を一つ選び、ほかの需要には次の行動を判断できる程度に触れます。預け方を比較する記事なら、時間、サイズ、受け取り制限の確認方法を説明し、実際のサービス入口へつなげられます。すべての駅の店舗一覧を同じ記事へ詰め込む必要はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "記事を分けるかは二つの問いで考えます。読者に必要な手順が違うか、必要な根拠が違うかです。手順の説明には準備と受け取り方が必要で、拠点案内には確認できる住所と営業時間が必要です。地名だけが異なりサービスの実質的な違いがなければ、独立ページを支える十分な内容があるか先に確かめます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "判断できない検索語は観察待ちのままにし、より明確な長い語句の需要から整理します。既存読者のよくある質問やサポート記録も使えますが、個人情報を除き、単一の事例を全員の需要とみなさないでください。調査の結論は新記事を増やすことでなく、既存ページの入口や説明を改善することかもしれません。"
+        },
+        {
+          "type": "heading",
+          "text": "検索意図を実行できる記事の役割に変える",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "テーマごとに短い役割カードを作ります。対象読者、利用状況、主な問い、達成条件、必要な根拠、扱わない範囲を書きます。預け方の比較なら、比較軸、規則の確認先、状況別の選び方が必要です。各サービスに関する事実を支えられる情報源を用意します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "次に適した形式を選びます。手順を完了するならステップ、取捨選択があるなら比較表、空間的な関係なら図、入口探しなら確認済みの公式リンクを見つけやすい場所に置きます。形式は課題から決めるもので、検索結果に動画があるからといって全テーマに動画が必要とは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "下書き後、元の検索語を一つずつ当てて確認します。夜に受け取れるかという問いなら、営業時間と特別な制限の確認方法を明確に示し、「便利です」だけで済ませません。事業者や拠点で条件が違うなら違いと確認方法を説明し、記事を完全に見せるために保証できない共通規則を書いてはいけません。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "元の検索語を保存し、対象、行動、制約を分ける。",
+            "検索結果と背景を記録し、事実と需要の推測を分ける。",
+            "主な課題を選び、統合・分割・既存ページ改善を決める。",
+            "課題を記事要件にし、完成後に元の問いを一つずつ確認する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "自サイトのデータで最初の判断を見直す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "サイトにデータがあれば、Search Console で検索語、ページ、国、端末ごとの成果を見て、どの需要がどのページに来るか確かめられます。レポートにはクリック数、表示回数、平均掲載順位がありますが、読者の満足度を直接示すわけではありません。サイト全体のクリック合計より検索語と流入先の対応が今回の作業に役立ちます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "比較ページに特定の入口を探す検索語が頻繁に来るなら、冒頭や導線が誤解を招いていないか調べます。入門記事に高度な質問が多ければ、例外の説明や発展記事を検討します。クリック率が下がっただけで意図の判断が誤りだったと決めず、検索語の構成、端末、場所、期間が変わったか先に見ます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "役割カードを更新するときは、元の判断、後から得た根拠、変更理由を残します。検索意図は最初の分類で永久に固定されません。季節、サービスの変更、読者の習熟度で需要は変わり得ます。大きな内容更新の際に主な検索語を見直し、当初のラベルでなく実際の問いに応え続けます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/seo-search-intent/diagram-1-ja.svg",
+          "alt": "検索語の分解、根拠の観察、記事の役割の選択、データによる見直しという四段階。検索意図の判断は修正できる。",
+          "width": 1600,
+          "height": 900,
+          "caption": "意図の分類名は整理の手段。記事の役割は読者が何を達成できるかで決まります。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "独自の検索語例",
+            "暫定的な課題",
+            "記事に必要な情報"
+          ],
+          "rows": [
+            [
+              "預けた荷物をどう受け取るか",
+              "手順と準備を理解する",
+              "手順、必要な証明、例外の確認方法"
+            ],
+            [
+              "ロッカーと有人預かりの違い",
+              "サービス方法を比較する",
+              "共通の比較軸、制限、状況別の選び方"
+            ],
+            [
+              "ある荷物預かりサービスにログイン",
+              "指定の入口を見つける",
+              "正しい公式入口と必要な説明"
+            ],
+            [
+              "台北駅近くで夜に荷物を預ける",
+              "時間制約のある地域での行動",
+              "拠点、営業時間、受け取り条件の確認方法"
+            ],
+            [
+              "荷物預かりの料金",
+              "費用比較か特定料金探しかもしれない",
+              "まず場所、サイズ、課金範囲を確認"
+            ]
+          ],
+          "caption": "分類は独自の教材例についての仮説であり、実際の検索結果の調査やサービスの料金・営業時間の約束ではありません。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "観察と推測を別の列に置く",
+          "text": "ある形式の結果を見たことは観察、読者が何を達成したいかという判断は推測です。検索の背景と後から検証する方法を残せば、新しい根拠で記事を直せます。最初の印象を全検索者の需要にしてはいけません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "課題を個別の記事とページ設定に反映する"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "SEO の学習と観察の順序を組み立てる"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google が検索結果を生成・順位付けする仕組み",
+          "url": "https://www.google.com/intl/en_us/search/howsearchworks/how-search-works/ranking-results/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console の検索パフォーマンス レポート概要",
+          "url": "https://support.google.com/webmasters/answer/7576553?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google のユーザー第一のコンテンツに関するガイド",
+          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "검색 의도 판단법: 키워드를 답할 만한 질문으로 바꾸기",
+      "description": "같은 키워드라도 배우기, 비교하기, 특정 진입점 찾기, 즉시 행동하기 등 서로 다른 필요를 뜻할 수 있습니다. 이 글은 수하물 보관에 관한 독창적인 검색어 예시를 통해 단어, 시간과 장소, 검색 결과 유형, 자체 검색어 데이터로 의도를 판단하고 추정을 명확한 콘텐츠 과제로 바꾸는 방법을 설명합니다. 관찰 표, 혼합 의도 처리, 콘텐츠 형식 비교, 사후 검증도 담았습니다. 상위 페이지를 베끼거나 한 번 본 검색 화면을 모든 독자의 답으로 취급하지 않습니다.",
+      "hero": {
+        "src": "/guides/seo-search-intent/hero-ko.jpg",
+        "alt": "검색 결과 관찰, 콘텐츠 과제 정의, 검색어 정리를 보여 주는 독창적인 웹페이지·문서·폴더 그림.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "‘수하물 보관’이라는 말만으로는 검색자가 맡기는 절차를 알고 싶은지, 보관함과 직원이 있는 보관소를 비교하는지, 역 근처의 빈자리를 찾는지 알 수 없습니다. 이 말만 보고 긴 소개 글을 쓰면 모든 것을 언급해도 어느 독자의 당장 필요한 일을 끝내 주지 못할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "검색 의도는 검색자의 현재 목적에 대한 판단입니다. 근거가 필요하고 불확실성도 인정해야 합니다. 하나의 표현에 여러 합리적인 필요가 동시에 담길 수 있습니다. 편집자의 핵심 업무는 해당 페이지가 어떤 상황을 돕는지 정하고 독자가 다음 단계로 갈 만큼 충분한 내용을 제공하는 것입니다."
+        },
+        {
+          "type": "heading",
+          "text": "검색어의 대상·행동·제약을 먼저 읽기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "검색어를 무엇을 찾는지, 무엇을 하려는지, 어떤 제약이 있는지로 나눕니다. ‘타이베이 메인역 수하물 보관 저녁 수령’에는 장소·서비스·시간 조건이 있고, ‘수하물 보관과 보관함 차이’는 방법 선택에 가까운 질문입니다. 이것들은 출발 단서일 뿐입니다. 이후 관찰로 뒷받침해야 하며 한 단어만 보고 결론 내리면 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 공식 설명에 따르면 검색은 검색어의 의미, 언어, 위치, 설정 등을 고려하고 다른 표현의 연관성도 이해합니다. 따라서 글자가 다른 두 검색어에 같은 답이 필요할 수 있고, 짧은 검색어 하나도 위치나 시간에 따라 다른 결과가 필요할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "작업표에 원래 검색어를 먼저 남긴 뒤 해석과 확신 정도를 적습니다. 예를 들어 ‘수하물 보관 비용’을 잠정적으로 비용 비교로 분류하면서 특정 장소가 필요한지는 불확실하다고 써 둡니다. 모호함을 남기면 추가 조사를 잊지 않고, 빨리 분류하려고 하나의 칸에 억지로 넣는 일을 줄일 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "업무 목적에 따라 분류하되 규칙으로 굳히지 않기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "편집 과정에서는 개념 이해, 선택지 비교, 지정된 진입점 찾기, 행동 완료 등으로 목적을 잠정 분류할 수 있습니다. 이는 소통을 돕는 정리 방식이지 모든 검색어에 고정된 꼬리표가 하나씩만 붙는다는 뜻이 아닙니다. 가게를 찾는 사람도 먼저 가격을 확인할 수 있고 절차를 배우는 사람도 이어서 예약할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 ‘보관할 때 신분증이 필요한가’에는 규칙과 확인 방법을 분명히 설명해야 하고, ‘보관함인가 직원 보관소인가’에는 같은 조건의 비교가 필요합니다. ‘특정 서비스 로그인’은 대개 올바른 진입점을 원합니다. 해당 서비스를 운영하지 않으면서 공식 로그인 링크를 긴 글 끝에 숨겨 두는 것은 별로 유용한 부가 정보가 아닐 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "각 분류에 완료 조건을 붙입니다. 제한 이해, 선택지 축소, 올바른 페이지 도착, 다음 조작 방법 파악 등이 될 수 있습니다. ‘정보형’이나 ‘거래형’이라고만 쓰는 것보다 실행하기 쉽습니다. 글 형식을 정할 때에도 비슷한 글의 길이를 흉내 내기보다 완료 조건에 비춰 빠진 내용이 없는지 확인할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "검색 결과 관찰에는 범위와 날짜를 남기기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "실제 조사에서는 대만 독자가 사용하는 언어와 위치 상황을 선택하고 검색어, 날짜, 기기, 검색 설정을 기록합니다. Google은 검색 결과가 이런 배경과 관련된다고 설명하며 Search Console도 직접 검색한 화면이 보고서 결과를 재현하지 못할 수 있다고 알립니다. 시크릿 창은 기존 상태의 영향을 일부 줄이지만 위치와 설정 차이까지 완전히 없애지는 못합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "먼저 글 안내, 공식 서비스, 지도, 상품, 동영상, 기타 모듈 등 결과 유형을 관찰합니다. 광고는 따로 표시하고 광고가 보인다는 사실을 자연 검색 결과의 선호를 보여 주는 근거로 삼지 않습니다. ‘본 것’과 ‘의미할 수 있는 것’을 별도 칸에 기록합니다. 예를 들어 여러 지점 진입점은 지역 수요를 시사할 수 있지만 독자의 실제 목적은 여전히 확인해야 합니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "관찰은 콘텐츠 형식 선택에 도움이 되지만 남의 문단 순서를 복제하거나 검색 순위를 그대로 추천 순위로 삼는 근거가 되지 않습니다. 이 글의 모든 수하물 보관 검색어는 교육용 예시이며 특정 날짜의 실제 순위 조사가 아닙니다. 실제 주제를 만들 때는 공식 규칙과 서비스 정보를 별도로 확인하고 자체 구성, 예시, 비교 기준으로 질문에 답합니다."
+        },
+        {
+          "type": "heading",
+          "text": "하나의 검색어에 담긴 여러 필요 처리하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "의도가 섞여 있으면 주요 과제 하나를 정하고 다른 필요는 독자가 다음 행동을 판단할 만큼만 다룹니다. 보관 방식을 비교하는 글이라면 시간, 크기, 수령 제한을 확인하는 방법을 설명한 다음 실제 서비스 진입점으로 연결할 수 있습니다. 모든 역의 가게 목록을 한 글에 전부 넣을 필요는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "글을 나눌지는 두 가지 질문으로 판단합니다. 독자가 필요한 단계가 다른가, 핵심 근거가 다른가입니다. 절차 안내에는 준비와 찾는 단계가 필요하고, 서비스 지점 안내에는 확인 가능한 주소와 영업 정보가 필요합니다. 두 글이 지명만 다르고 실제 서비스 차이가 없다면 독립 페이지를 뒷받침할 충분한 내용이 있는지 먼저 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "판단하기 어려운 검색어는 관찰 대기 상태로 두고 더 구체적인 긴 검색어의 필요부터 정리합니다. 기존 독자의 자주 묻는 질문이나 고객 지원 기록도 확인에 쓸 수 있지만 개인정보를 제거하고 한 사례를 모든 사람의 필요로 일반화하지 마세요. 의도 연구의 결론은 새 글을 쓰는 대신 기존 페이지의 진입점과 설명을 개선하는 것일 수도 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "검색 의도를 전달 가능한 콘텐츠 과제로 바꾸기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "주제마다 짧은 과제 카드를 만듭니다. 대상 독자, 사용 상황, 핵심 질문, 완료 조건, 필수 근거, 다루지 않을 범위를 적습니다. 보관 방식 비교라면 비교 항목, 규칙 확인 위치, 상황에 따른 선택을 포함할 수 있습니다. 각 서비스 관련 사실을 뒷받침할 수 있는 출처가 있어야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "그다음 알맞은 형식을 고릅니다. 절차를 마쳐야 하면 단계별 안내, 장단점의 절충이 있으면 비교 표, 공간 관계가 중요하면 도해를 씁니다. 진입점을 찾는 일이라면 확인된 공식 링크를 쉽게 보이는 곳에 둡니다. 형식은 과제가 정합니다. 검색 결과에 영상이 있다는 이유만으로 모든 주제에 영상이 필요한 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "초안을 쓴 뒤 원래 검색어로 하나씩 검사합니다. 독자가 저녁에 수하물을 찾을 수 있는지 묻는다면 시간과 특별한 제한을 확인하는 방법을 분명히 밝혀야지 ‘편리한 서비스’라고만 해서는 안 됩니다. 운영자나 지점마다 답이 다르면 차이와 확인법을 직접 설명하고, 완전해 보이려고 보장할 수 없는 공통 규칙을 만들지 마세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "원래 검색어를 보존하고 주제, 행동, 제약을 나눈다.",
+            "검색 결과 관찰과 배경을 기록하고 사실과 필요에 관한 추정을 구분한다.",
+            "주요 과제를 정하고 통합, 분리 또는 기존 페이지 개선을 결정한다.",
+            "과제를 콘텐츠 요건으로 쓰고 완성 후 원래 질문을 하나씩 확인한다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "자체 데이터로 초기 판단 수정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "사이트 데이터가 있다면 Search Console에서 검색어, 페이지, 국가, 기기별 실적을 보고 어떤 필요가 어느 페이지로 이어지는지 확인할 수 있습니다. 보고서에는 클릭수, 노출수, 평균 게재순위 등이 있지만 독자가 만족했는지를 직접 알려 주지는 않습니다. 이번 작업에는 사이트 전체 클릭 합계보다 검색어와 방문 페이지의 대응 관계가 더 가깝습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "비교 페이지에 특정 진입점을 찾는 검색어가 자주 유입된다면 첫머리와 탐색 메뉴가 오해를 부르는지 살펴봅니다. 입문 글에 고급 질문이 많다면 예외 설명이나 후속 글을 고려합니다. 클릭률이 떨어졌다는 이유만으로 의도 판단이 틀렸다고 단정하지 말고 검색어 구성, 기기, 위치, 기간이 변했는지 먼저 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "과제 카드를 갱신할 때는 기존 판단, 새 근거, 변경 이유를 남깁니다. 검색 의도는 한 번 분류했다고 영구히 고정되지 않습니다. 계절, 서비스 개편, 독자의 익숙함에 따라 필요가 바뀔 수 있습니다. 중요한 콘텐츠 업데이트 때 주요 검색어를 다시 살펴 처음 붙인 꼬리표가 아니라 실제 질문에 계속 답하게 합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/seo-search-intent/diagram-1-ko.svg",
+          "alt": "검색어 분석, 근거 관찰, 콘텐츠 과제 선택, 데이터로 수정하기의 네 단계는 검색 의도 판단을 다시 고칠 수 있음을 보여 준다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "의도 꼬리표는 정리를 도울 뿐, 콘텐츠 과제는 독자가 무엇을 해낼 수 있는지로 정해집니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "독창적인 검색어 예시",
+            "잠정적인 과제",
+            "콘텐츠에 필요한 내용"
+          ],
+          "rows": [
+            [
+              "보관한 수하물은 어떻게 찾나",
+              "절차와 준비물 이해",
+              "단계, 필요한 증빙, 예외 확인 방법"
+            ],
+            [
+              "보관함과 직원 보관소의 차이",
+              "서비스 방식 비교",
+              "일관된 기준, 제한, 상황별 선택"
+            ],
+            [
+              "특정 수하물 보관 서비스 로그인",
+              "지정된 진입점 찾기",
+              "올바른 공식 진입점과 필요한 설명"
+            ],
+            [
+              "타이베이 메인역 근처 저녁 보관",
+              "시간 제약이 있는 지역 행동",
+              "지점, 영업시간, 수령 조건 확인법"
+            ],
+            [
+              "수하물 보관 비용",
+              "비용 비교 또는 특정 가격 검색 가능성",
+              "장소, 크기, 과금 범위를 먼저 확인"
+            ]
+          ],
+          "caption": "이 분류는 독창적인 교육용 예시의 추정일 뿐 실제 검색 결과 조사나 서비스 가격·영업시간에 대한 약속이 아닙니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "관찰과 추정에 각각 한 칸씩 두기",
+          "text": "특정 결과 형식을 본 것은 관찰이고 독자가 이루고 싶은 일을 판단한 것은 추정입니다. 검색 배경과 후속 검증 방법을 남겨야 새 근거가 나왔을 때 콘텐츠를 고칠 수 있으며 첫인상을 모든 검색자의 필요로 착각하지 않습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "과제를 개별 글과 페이지 설정에 반영하기"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "SEO 학습과 관찰 순서 세우기"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 검색 결과 생성 및 순위 결정 방식",
+          "url": "https://www.google.com/intl/en_us/search/howsearchworks/how-search-works/ranking-results/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console 실적 보고서 개요",
+          "url": "https://support.google.com/webmasters/answer/7576553?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google의 사용자 우선 콘텐츠 가이드",
+          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
