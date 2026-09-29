@@ -153,6 +153,33 @@ test("the title, description, tags and chapters are stale, unknown or missing ag
   assert.match(messages(lintVideo(reordered, context({ translations: { ko: withTags } })).warnings), /older than the zh-TW text: description, tags, chapter hook/);
 });
 
+test("a translation whose description passes 5,000 bytes once composed is flagged, before package refuses it", () => {
+  const doc = fixture();
+  const lines = {};
+  for (const scene of doc.scenes) for (const line of scene.lines) lines[line.id] = { source_hash: textHash(line.text), text: "x" };
+  const hashes = sourceHashes(doc);
+  const short = { title: "T", description: "짧은 설명", tags: ["AI"], chapters: { hook: "I", questions: "Q", wrap: "E" }, source_hashes: hashes, lines };
+  assert.deepEqual(lintVideo(doc, context({ translations: { ko: short } })).warnings, []);
+  // 1,700 Hangul syllables are 5,100 bytes on their own, before the chapters and sources.
+  const long = { ...short, description: "가".repeat(1700) };
+  const found = lintVideo(doc, context({ translations: { ko: long } })).warnings.filter((warning) => warning.path === "i18n/ko.json");
+  assert.equal(found.length, 1);
+  assert.match(found[0].message, /^ko\.description: \d+ bytes once composed, at most 5000 \(package refuses it\)$/);
+});
+
+test("a ja or ko number with a zero inside, before 億 or 억, is flagged; round numbers and other locales are not", () => {
+  const doc = fixture();
+  const ids = [...doc.scenes.flatMap((scene) => scene.lines.map((line) => line.id))];
+  const translate = (texts) => ({ lines: Object.fromEntries(ids.map((id, index) => [id, { source_hash: textHash(doc.scenes.flatMap((scene) => scene.lines)[index].text), text: texts[index] ?? "x" }])) });
+  const ja = translate(["128GBなら4050億パラメータ", "1200億と11万6175人、3,000万", "4千50億"]);
+  const ko = translate(["4,050억 파라미터", "1080p", "4천50억"]);
+  const en = translate(["405 billion, 4050億"]);
+  const found = lintVideo(doc, context({ translations: { ja, ko, en } })).warnings.filter((warning) => /zero inside/.test(warning.message));
+  assert.deepEqual(found.map((warning) => warning.path), ["i18n/ja.json", "i18n/ko.json"]);
+  assert.match(found[0].message, new RegExp(`${ids[0]} \\(4050\\); write the thousands out, like 4千50$`));
+  assert.match(found[1].message, new RegExp(`${ids[0]} \\(4,050\\); write the thousands out, like 4천50$`));
+});
+
 test("a slide sequence that copies another video's is flagged", () => {
   const doc = fixture();
   const extra = ["big", "compare", "steps"].map((template, index) => ({ id: `extra-${index}`, chapter: `章${index}`, template, data: {}, lines: [{ id: `e${index}xx`, text: "這是一句夠長的旁白，讓這一章超過十秒鐘以上。" }] }));

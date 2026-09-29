@@ -32,6 +32,17 @@ const MARKUP_PER_LINE = 30;
 const URL = /https?:\/\/|www\.|\b[a-z0-9-]+\.(?:com|io|ai|dev|org|net|tw)\b/i;
 const CJK = /[㐀-鿿豈-﫿]/gu;
 
+// Before a myriad unit, the Japanese and Korean dub voices have read a number with a zero inside
+// it as if the zero were not there: 4050億 and 4050억 both came out as 450. Writing the thousands
+// with 千 or 천 (4千50億, 4천50억) was read right.
+const MYRIAD_NUMBER = /(\d{1,3}(?:,\d{3})+|\d{4,})(?=\s*[億万억만])/g;
+const THOUSANDS = { ja: "千", ko: "천" };
+
+/** Numbers in a ja or ko line that have an inner zero and stand before 億, 万, 억 or 만. */
+export function innerZeroNumbers(text) {
+  return [...text.matchAll(MYRIAD_NUMBER)].map((match) => match[1]).filter((number) => /0+[1-9]/.test(number.replace(/,/g, "")));
+}
+
 /** The body of each `## heading` in brief.md, comments removed. */
 export function briefSections(markdown) {
   const sections = {};
@@ -252,7 +263,7 @@ export function lintVideo(doc, context = {}) {
   if (minutes < low || minutes > high) warn("scenes", `about ${minutes.toFixed(1)} minutes; the target is ${low}-${high}`);
 
   const article = context.pack ? articleUrl(context.pack, narration, doc.slug) : null;
-  const description = composeDescription({ body: doc.youtube.description, timeline, article, sources: doc.sources ?? [], locale: narration });
+  const description = composeDescription({ body: doc.youtube.description, timeline, article, sources: doc.sources ?? [], locale: narration, tags: doc.youtube.tags });
   for (const problem of checkYoutubeFields({ title: doc.youtube.title, description, tags: doc.youtube.tags })) error("youtube", problem);
   if (!doc.youtube.tags.length) warn("youtube.tags", "no tags: add the product names and their common misspellings");
   if (!doc.sources?.length) warn("sources", "no sources: every fact in claims.md needs one, and they go in the description");
@@ -275,6 +286,19 @@ export function lintVideo(doc, context = {}) {
     if (older.length) warn(`i18n/${locale}.json`, `translations older than the ${narration} text: ${older.join(", ")}`);
     if (unknown.length) warn(`i18n/${locale}.json`, `translations merged before i18n-merge hashed their ${narration} text, so possibly stale: ${unknown.join(", ")}; i18n-sheet marks them todo`);
     if (state.orphans.length) warn(`i18n/${locale}.json`, `chapter titles for scenes that no longer open a chapter: ${state.orphans.join(", ")}; i18n-merge drops them`);
+    // The description `package` uploads carries the link, chapters, sources and hashtags too, and
+    // Hangul and kana take 3 bytes each, so a body that looks short can pass YouTube's 5,000 bytes.
+    if (translation.title && translation.description) {
+      const localeArticle = context.pack ? articleUrl(context.pack, context.pack.locales?.[locale] ? locale : narration, doc.slug) : null;
+      const tags = translation.tags?.length ? translation.tags : doc.youtube.tags;
+      const composed = composeDescription({ body: translation.description, timeline, chapterTitles: translation.chapters ?? {}, article: localeArticle, sources: doc.sources ?? [], locale, tags });
+      for (const problem of checkYoutubeFields({ title: translation.title, description: composed, tags: [] }, locale)) warn(`i18n/${locale}.json`, `${problem} (package refuses it)`);
+    }
+    const thousands = THOUSANDS[locale];
+    if (thousands) {
+      const risky = Object.entries(translation.lines ?? {}).flatMap(([id, entry]) => innerZeroNumbers(entry.text ?? "").map((number) => `${id} (${number})`));
+      if (risky.length) warn(`i18n/${locale}.json`, `numbers with a zero inside, before a myriad unit, which the ${locale} dub voice has read without the zero (4050 as 450): ${risky.join(", ")}; write the thousands out, like 4${thousands}50`);
+    }
   }
 
   // Every drama scene is a shot, so template sequences say nothing there; shotProblems compares prompts instead.
