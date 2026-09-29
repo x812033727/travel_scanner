@@ -86,6 +86,10 @@ export default {
 - 情感線只用動作與物件，不點明（`tone` 說什麼就照什麼）。
 - 對白短而利：旁白負責速度，角色負責刀。
 
+## 集名與包裝是公開的，不能說破
+
+合輯每一集是 YouTube 的一個章節，章節名就是「第 N 集〈集名〉」，40 個集名在說明欄一次列出，觀眾開片前就看得到（`tools/video/core/compilation.mjs`）。標題候選、縮圖文字、說明欄、置頂留言也都公開。所以這些文字只給懸念，不給任何謎團的答案、第 18–22 集的翻轉、篇末的揭曉或結局；說破答案的句子留在集內的台詞。篇名目前不公開，也照同樣的標準寫。
+
 ## 固定外觀（appearance）只寫不變的樣子
 
 產線把 `appearance` 原文接進每一集每一個鏡頭的生圖提示詞，不帶集數（`tools/video/media/look.mjs` 的 `sheetPrompt`、`tools/video/media/keyframes.mjs` 的 `shotPrompt`），一部作品每位角色只有一張設定圖。所以：

@@ -278,3 +278,29 @@ Repair, recorded in `AUDIT-REPAIR-20260929.md` beside it:
   new rule layers) are listed for the owner in the repair record.
 - Production is unchanged: the ten works still hold the version 1 documents
   imported on 2026-09-28. Updating them needs the owner's go-ahead.
+
+## Fifth pass, 2026-09-29
+
+The owner asked for the whole set to be finished, so the 88 items the fourth
+pass had left for the owner were decided by the lead reviewer instead. The
+decisions are in `docs/videos/series-plans/binge-five-20260928/DECISIONS-20260929.md`
+and can be overturned one by one; the repair is recorded in
+`AUDIT-REPAIR-ROUND5-20260929.md` beside it.
+
+- One fixer and one separate read-only reviewer per work, as in the fourth
+  pass. Four first reviews failed (Wedding, Seventh Passenger, Rival, Three
+  Needles), each on a contradiction the repair itself had written.
+- Episode titles are public: a compilation lists all forty as YouTube chapters
+  in its description. A read-only sweep found 47 places where a title, a title
+  candidate, a thumbnail, the description or the pinned comment gave away an
+  answer; all were rewritten, and both AUTHORING.md now forbid it. The pipeline
+  has no such check: `tasks/open/2026-09-29-keep-compilation-chapter-titles-from-giving.md`.
+- A close-out audit (two read-only lenses, every finding challenged before it
+  was fixed) and a final independent review ended the pass. Codex receipts are
+  round 5 in `reviews/<slug>.json` (round 4 kept in `reviews/round-04/`);
+  Claude reviews are in
+  `claude-binge-five-20260928/revision-review-2026-09-29-round5.json`.
+- Still open: similarity to existing works was judged from memory only and
+  needs a human check before release; voices are proposals nobody has heard;
+  looks and voices that change by episode wait for the pipeline ticket.
+- Production is unchanged.
