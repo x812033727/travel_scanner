@@ -9,7 +9,7 @@ import path from "node:path";
 
 import { approvalState, readApprovals } from "./approvals.mjs";
 import { COMPILATION_HEADLINE_PLACEHOLDER, COMPILATION_STEPS, compilationChecksCurrent, isCompilation, lintCompilation, PLACEHOLDER_TITLE } from "./compilation.mjs";
-import { burnIn, illustrated, isDrama, keyframesHash, lookHash, mixHash, picturesHash, sfxHash, subtitlesHash } from "./drama.mjs";
+import { burnIn, illustrated, isDrama, keyframesHash, lookHash, mixHash, picturesHash, resolveMusic, resolveSfx, sfxHash, subtitlesHash } from "./drama.mjs";
 import { emptyLexicon } from "./lexicon.mjs";
 import { lintVideo } from "./lint.mjs";
 import { dubLocales, dubScript, speechLexicon, translationHash } from "../dubs/plan.mjs";
@@ -279,8 +279,12 @@ export function dubsStatus(project, workdir, speech) {
     }
     const hash = project && speech ? translationHash(dubScript(project.doc, project.translations[locale], locale).doc) : null;
     if (timeline && existsSync(files.track(timeline.format))) {
-      const current = timeline.speech_hash === speech && timeline.translation_hash === hash;
-      result[locale] = { status: current ? "current" : "stale", note: current ? timeline.file : "made from an older script or translation" };
+      // A dub also carries the script's music bed and the cut's effects (docs/videos/ILLUSTRATED.md):
+      // one made before either existed, or for another bed or set, is stale like an older script.
+      const doc = project?.doc ?? null;
+      const soundCurrent = !doc || ((timeline.mix_hash ?? null) === (resolveMusic(doc) ? mixHash(doc) : null) && (timeline.sfx_hash ?? null) === (resolveSfx(doc) ? sfxHash(doc) : null));
+      const current = timeline.speech_hash === speech && timeline.translation_hash === hash && soundCurrent;
+      result[locale] = { status: current ? "current" : "stale", note: current ? timeline.file : soundCurrent ? "made from an older script or translation" : "made without the video's music or sound effects; run dub again" };
       continue;
     }
     if (fit?.over?.length && fit.speech_hash === speech && fit.translation_hash === hash) {

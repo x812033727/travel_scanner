@@ -437,11 +437,14 @@ export function measureMixArgs(narration, musicFile, music, totalSeconds, sfxFil
   return ["-hide_banner", "-nostats", ...inputs, "-filter_complex", `${filter};[mix]${loudnorm(":print_format=json")}[out]`, "-map", "[out]", "-f", "null", "-"];
 }
 
-/** Second loudnorm pass over the mix with the first pass's measurement, linear, to AAC-LC stereo 48 kHz. */
-export function mixArgs(narration, musicFile, music, totalSeconds, measured, outFile, sfxFile = null) {
+/** The codec of the cut's own audio: AAC-LC at 384 kb/s; a dub (dubs/encode.mjs) may ask for its upload format instead. */
+export const MIX_CODEC = ["-c:a", "aac", "-b:a", "384k"];
+
+/** Second loudnorm pass over the mix with the first pass's measurement, linear, to stereo 48 kHz in `codec`. */
+export function mixArgs(narration, musicFile, music, totalSeconds, measured, outFile, sfxFile = null, codec = MIX_CODEC) {
   const second = `:measured_I=${measured.input_i}:measured_TP=${measured.input_tp}:measured_LRA=${measured.input_lra}:measured_thresh=${measured.input_thresh}:offset=${measured.target_offset}:linear=true`;
   const { inputs, filter } = soundGraph(narration, { musicFile, music, sfxFile }, totalSeconds);
-  return ["-hide_banner", "-y", "-loglevel", "error", ...inputs, "-filter_complex", `${filter};[mix]${loudnorm(second)},aresample=48000[out]`, "-map", "[out]", "-c:a", "aac", "-b:a", "384k", "-ar", "48000", outFile];
+  return ["-hide_banner", "-y", "-loglevel", "error", ...inputs, "-filter_complex", `${filter};[mix]${loudnorm(second)},aresample=48000[out]`, "-map", "[out]", ...codec, "-ar", "48000", outFile];
 }
 
 /** The bed alone through ebur128, to know how loud the music sits before the voice is added. */

@@ -95,7 +95,7 @@ lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋�
 | 1 格式、lint、狀態、審核順序 | `2026-09-29-video-illustrated-slides-schema` | 做完 |
 | 2 生圖與配樂階段 | `2026-09-29-video-illustrated-slides-media` | 做完 |
 | 3 混合合成、音效 | `2026-09-29-video-illustrated-slides-assemble` | 做完 |
-| 3b 配音音軌帶配樂 | `2026-09-29-video-dubs-carry-bed` | 開著 |
+| 3b 配音音軌帶配樂 | `2026-09-29-video-dubs-carry-bed` | 已落地：`dub` 用成片同一套 `measureMixArgs`／`mixArgs`（自己的上傳格式）混配樂床，重用成片的 `build/sfx.wav`；dub 的 timeline 記 `mix_hash`／`sfx_hash`，不符就 stale |
 | 4 QA、揭露、文件 | `2026-09-29-video-illustrated-slides-qa-docs` | 做完 |
 | 5 伺服器開關、Flash、自動核准分鏡 | `2026-09-29-video-slides-media-api` | 已落地：設定列的 `slides` 物件（`slides_media_enabled` 預設關、`slides_image_model` 預設 gemini-3.1-flash-image、`slides_max_usd_per_video` 20、`slides_auto_approve_storyboard` 預設開、`slides_music_track`、`slides_sfx_set`；migration 0114），教學分頁的「投影片影片的插畫」區塊；`GET /api/video/media/status` 多回 `slides_enabled`、`slides_image`、`slides_max_usd_per_video`；`submit_job` 依 `VideoProject.format` 放行，投影片專案不接片段 |
 | 6 工人 | `2026-09-29-video-illustrated-slides-worker` | 開著 |
