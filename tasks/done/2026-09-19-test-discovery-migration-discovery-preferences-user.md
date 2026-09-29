@@ -1,13 +1,13 @@
 ---
 id: 2026-09-19-test-discovery-migration-discovery-preferences-user
 title: test_discovery_migration 單獨收集時 discovery_preferences.user_id 是 NullType，DDL 生不出來
-status: in-progress
+status: done
 priority: P3
 area: api
 owner: codex-discovery-migration
 claimed_at: 2026-09-29T14:39:24Z
 created_at: 2026-09-19T10:06:50Z
-completed_at:
+completed_at: 2026-09-29T15:24:00Z
 branch: codex/discovery-migration-isolation
 depends_on: []
 scope:
