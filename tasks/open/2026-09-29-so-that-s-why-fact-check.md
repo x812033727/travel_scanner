@@ -42,7 +42,7 @@ episodes.json. Seasons 2 and 3 follow as their own tasks.
 
 ## Steps
 
-- [ ] One fact-check agent per episode (weeks 6–7 done), a week at a time, drafts written outside the repo.
+- [ ] One fact-check agent per episode (weeks 6–9 done), a week at a time, drafts written outside the repo.
 - [ ] Mechanical check per week (claim URLs, Shorts lengths), then copy into the repo.
 - [ ] JSON, CSV, playlists and previews.
 
@@ -64,3 +64,17 @@ episodes.json. Seasons 2 and 3 follow as their own tasks.
 - Recheck on the day for each episode is in its package's 查核結果 and the agents' notes: pages
   that returned 403/503 here (NINDS, NCC, SSO, UNESCO, DEWA, DSC) were confirmed only through
   search snippets or secondary copies.
+- 2026-09-29 weeks 8–9 (days 50–63) done by claude-opus: A12, B13, S14, T14, A13, B14, S15, T15,
+  A14, B15, S16, T16, A15, B16. Five titles changed, carried into titles.json, schedule.csv,
+  playlists.md and the neighbouring previews:
+  T15 「為什麼日本溫泉旅館可以穿浴衣吃晚餐？」 (no rule requires it; some hotels ask guests not to);
+  A14 「為什麼有些遊戲主機要賠錢賣？」 (Xbox and early PS5 yes, Nintendo mostly no);
+  S16 「為什麼高鐵車頭要做成長鼻子？」 (THSR's 700T nose is shorter than the 700 series');
+  T16 「為什麼機票通常越接近出發越貴？」 (an average, fares also drop);
+  B16 「為什麼 Supreme 明明賣得掉，還故意少做？」 (Jebbia: "if we can sell 600, I make 400").
+  Myths not to bring back: LEGO's rescue by the Star Wars licence or the film, "every console is
+  sold at a loss", Dyson's first product being Japanese, "scrolling past is a YouTube signal",
+  incognito mode lowering fares, "insulated lines are why birds are safe", Setun as the first
+  ternary computer, the Salute's 1,156,650 piles, the Pisa tower being straightened to 3.97°.
+- Four checkers (T14, B14, T16, S16) ran out of the 200-search session budget; what they
+  could not trace is in their recheck lists.
