@@ -1,13 +1,13 @@
 ---
 id: 2026-09-26-agy-usage-snapshot-survives-sign-out
 title: Antigravity usage snapshot is written back after a sign-out
-status: in-progress
+status: done
 priority: P3
 area: api
 owner: codex-agy-snapshot
 claimed_at: 2026-09-29T11:52:40Z
 created_at: 2026-09-26T15:24:16Z
-completed_at:
+completed_at: 2026-09-29T12:07:05Z
 branch: codex/agy-usage-signout
 depends_on: []
 scope:
@@ -48,4 +48,5 @@ cd apps/api
 - Supplemental WSL Python 3.14.4 run: all 25 Antigravity tests passed with no skips, including six fake-CLI terminal cases. Source/test copy hashes matched the reviewed working tree; this supplements the matching Windows Python 3.13 run and does not replace Python 3.13 Linux CI.
 - Independent in-memory mutation checks passed: removing the credential guard fails precisely the two late-writer cases; removing the record lock fails precisely the two in-flight cases. The signed-in positive case remains green, and repository source bytes were unchanged by mutation checks.
 - Full API Ruff, `mypy app` (444 files), and scoped source/test mypy pass. Native Windows `mypy tests` reports the existing `tests/support/e2e_deploy_agent.py:244` UnixStreamServer platform error; PR #975 already carries its platform guard, so this ticket does not duplicate that change.
+- Rebased onto main `9daa475f` before preparing the PR; neither the account-agent source/test inputs nor their dependencies changed. Final full API Ruff and `mypy tests --platform linux` pass (331 files). The Windows and WSL runs bind the unchanged final source/test hashes.
 - All runs use local temporary fixtures and fake CLI programs; no real account login, production access or model call is part of this code fix.
