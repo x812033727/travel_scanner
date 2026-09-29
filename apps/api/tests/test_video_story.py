@@ -601,7 +601,7 @@ async def db() -> AsyncIterator[async_sessionmaker[AsyncSession]]:
     engine = create_async_engine("sqlite+aiosqlite://")
 
     # SQLite drops timezone offsets; PostgreSQL hands back aware datetimes.
-    def restore_utc(target: Any, _context: Any) -> None:
+    def restore_utc(target: Any, *_context: Any) -> None:
         for column in target.__table__.columns:
             value = getattr(target, column.name)
             if isinstance(value, datetime) and value.tzinfo is None:
@@ -1209,6 +1209,24 @@ async def test_story_start_guard_does_not_change_other_kinds(
         session.add_all([series, token])
         await session.flush()
         session.add(episode)
+        # Ordinary dramas require their own current approvals, independently of story quotas.
+        keys = (
+            [("bible", 0)]
+            if kind == "one-off"
+            else [("setting", 0), ("outline", 0), ("chapter", 1)]
+        )
+        for doc_kind, chapter in keys:
+            session.add(
+                VideoDramaDoc(
+                    series_id=series.id,
+                    kind=doc_kind,
+                    chapter_number=chapter,
+                    version=1,
+                    body_md="# Approved",
+                    body_json={"approved_fixture": True},
+                    status="approved",
+                )
+            )
         await session.commit()
     async with db() as session:
         started = await service.start_episode(session, token, series.slug, 1, "non-story-episode")

@@ -8,6 +8,10 @@ const text = v => typeof v === 'string' && v.trim().length > 0;
 const cliffTypes = new Set(['danger','reveal','choice','reversal','emotion']);
 const beatOrder = ['opening','first_half','midpoint','second_half','ending'];
 const stateKeys = ['time','knowledge','character_state','evidence','carry_forward'];
+// The image prompts take a character's appearance word for word into every shot of every episode
+// (tools/video/media/look.mjs, keyframes.mjs), so a look that depends on the episode cannot be
+// drawn from it; what changes belongs in continuity_notes and the shot prompt.
+export const TIMED_APPEARANCE = /\b(?:episodes?|eps?\.?\s*\d+|later|initially|at first|at the start|onwards?|near the end|by the end|as the story|from then on|no longer)\b/i;
 export function validateSource(source, expectedSlug=source?.series?.slug) {
   const errors=[];
   const check=(ok,msg)=>{if(!ok) errors.push(msg);};
@@ -35,6 +39,7 @@ export function validateSource(source, expectedSlug=source?.series?.slug) {
     for(const c of source.setting.characters){
       for(const k of ['id','name','role','appearance','personality','want','fear','secret','speech']) check(text(c[k]),`cast ${c.id}: missing ${k}`);
       check(c.appearance.length<=800,`cast ${c.id}: appearance too long`);
+      check(!TIMED_APPEARANCE.test(c.appearance),`cast ${c.id}: appearance must not depend on the episode ("${c.appearance.match(TIMED_APPEARANCE)?.[0]}"); put changes in continuity_notes`);
       check(c.voice.provider==='gemini' && text(c.voice.name) && text(c.voice.style),`cast ${c.id}: voice proposal missing`);
       for(const r of c.relationships) check(cast.has(r.with) && text(r.kind),`cast ${c.id}: unknown relationship ${r.with}`);
     }
@@ -101,15 +106,15 @@ export function validateSource(source, expectedSlug=source?.series?.slug) {
     for (const tag of ['漫劇','AI漫劇','一口氣看完']) check(p.tags.includes(tag),`missing required tag: ${tag}`);
     check(p.thumbnail_variants.length===3,'need three thumbnail compositions');
     for(const v of p.thumbnail_variants)check(text(v.headline)&&[...v.headline].length<=12&&v.episode>=1&&v.episode<=3&&text(v.scene)&&text(v.composition)&&text(v.promise),'invalid thumbnail or reference outside first three episodes');
-    check(source.continuity_notes.length>=3,'cross-episode continuity guidance missing');
+    check(Array.isArray(source.continuity_notes)&&source.continuity_notes.length>=3&&source.continuity_notes.every(text),'cross-episode continuity guidance missing or blank');
   }catch(error){errors.push(`invalid source shape: ${error.message}`);}
   return errors;
 }
 
-export async function validateFiles(slug,source) {
+export async function validateFiles(slug,source,root=ROOT) {
   const errors=[];
   for(const [name,expected] of Object.entries(compile(source))){
-    try{const actual=await fs.readFile(path.join(ROOT,slug,name),'utf8');if(actual!==expected)errors.push(`${name}: missing/stale generated file`);}catch{errors.push(`${name}: cannot read`);}
+    try{const actual=await fs.readFile(path.join(root,slug,name),'utf8');if(actual!==expected)errors.push(`${name}: missing/stale generated file`);}catch{errors.push(`${name}: cannot read`);}
   }
   return errors;
 }
@@ -140,7 +145,7 @@ if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.ur
     try{const source=await loadSource(slug);const errors=[...validateSource(source,slug),...(sourceOnly?[]:await validateFiles(slug,source))];if(requireReviews){try{const review=JSON.parse(await fs.readFile(path.join(ROOT,'reviews',`${slug}.json`),'utf8'));errors.push(...validateReview(review,source));}catch(e){errors.push(`review: ${e.message}`);}}results.push({slug,title:source.series.title,source_sha256:hash(source),episodes:source.chapters.flatMap(c=>c.episodes).length,documents:6,errors});}
     catch(e){results.push({slug,errors:[e.message]});}
   }
-  const report={scope:'offline-production-plans',media_or_retention_measured:false,backend_created:false,source_only:sourceOnly,independent_review_required:requireReviews,ok:results.every(r=>r.errors.length===0),series:results};
+  const report={scope:'offline-production-plans',execution_scope:'local-validation-only',status_note:'This validation does not change or attest to production state or approve revised documents.',media_or_retention_measured:false,backend_created:false,source_only:sourceOnly,independent_review_required:requireReviews,ok:results.every(r=>r.errors.length===0),series:results};
   if(writeReport)await fs.writeFile(path.join(ROOT,'validation-report.json'),JSON.stringify(report,null,2)+'\n','utf8');
   console.log(JSON.stringify(report,null,2));
   if(!report.ok)process.exitCode=1;
