@@ -42,7 +42,7 @@ episodes.json. Seasons 2 and 3 follow as their own tasks.
 
 ## Steps
 
-- [ ] One fact-check agent per episode (weeks 6–11 done), a week at a time, drafts written outside the repo.
+- [ ] One fact-check agent per episode (weeks 6–13 done), a week at a time, drafts written outside the repo.
 - [ ] Mechanical check per week (claim URLs, Shorts lengths), then copy into the repo.
 - [ ] JSON, CSV, playlists and previews.
 
@@ -59,8 +59,12 @@ episodes.json. Seasons 2 and 3 follow as their own tasks.
   A09's preview. Myths not to bring back: Nintendo's "love hotel", the Salute's million piles,
   "QWERTY was made to slow typists", a tourist chewing-gum allowance in Singapore, TSMC's
   largest customer being Apple in 2025, measured 5G speeds for Taiwan (NCC has none).
-- The premise and note blocks run up to about 1,000 and 1,700 characters; the request form
-  takes 4,000 and 2,000 (`DramaRequestIn`), so they paste as they are.
+- The request form takes a premise of up to 4,000 characters and a note of up to 2,000
+  (`DramaRequestIn`, and the web form's maxLength). Weeks 6–7 fit as written, but 13 packages in
+  weeks 8–11 had notes of 2,018–3,116 characters (their long 「必用來源」 lists). Both fields reach
+  the script writer together (`flow.mjs` planPayload), so in every package whose note was over
+  2,000 the 「必用來源」 line now ends the 故事前提 block instead; A19's list is split, with the
+  rest kept in the note as 「必用來源（續）」. Every package now fits both limits.
 - Recheck on the day for each episode is in its package's 查核結果 and the agents' notes: pages
   that returned 403/503 here (NINDS, NCC, SSO, UNESCO, DEWA, DSC) were confirmed only through
   search snippets or secondary copies.
@@ -88,3 +92,14 @@ episodes.json. Seasons 2 and 3 follow as their own tasks.
   Bhatt "apologising" for USB, a 30-30 rule countdown as safety, Finland's "statutory" coffee
   break, prohibition driving Finnish coffee, "the Dutch were short 100 years ago", milk making
   the Dutch tall, alphabet.com as the reason for abc.xyz, the 25-hour body clock.
+- 2026-09-29 weeks 12–13 (days 78–91) done by claude-opus: A19, B20, S21, T21, A20, B21, S22,
+  T22, A21, B22, S23, T23, A22, B23. Two titles changed:
+  A19 「為什麼晶片製程越小越快？」 (transistors shrink, chips don't; "3nm" is a generation name);
+  B22 「為什麼 Samsung 從賣乾貨和麵條變成科技巨頭？」 (produce and dried seafood, plus a noodle
+  factory, per the Hoam Foundation history). T21 (Kyoto) takes no side on the bombings and shows
+  no mushroom cloud or casualties. T23's checker ran while the review classifier was down; its
+  output was checked by hand (repo untouched, 26 sourced rows, nothing unexpected in the blocks).
+  Myths not to bring back: "Moore's law = every 18 months", Gillette inventing razors-and-blades,
+  Stimson's Kyoto honeymoon, Warner saving Kyoto, Kurita as the sole inventor of emoji, the
+  1998 "Yahoo could have bought Google for $1M", "GDPR requires cookie banners", "0–100 °F from
+  body heat and a Danzig winter", "Korea's law used Korean age until 2023", "THSR has no ballast".
