@@ -72,3 +72,9 @@ browser QA is still pending.
 Draft PR: https://github.com/x812033727/travel_scanner/pull/907.
 CI began on the submitted branch; merge remains gated on independent editorial
 review and green checks.
+
+### 2026-09-29 看板盤點與站主決定
+
+站主已同意「準備逐批發布清單與步驟，再讓我確認」。本輪一次正式站唯讀盤點已完成；發布清單、精確來源雜湊、依賴與逐步驗收見 docs/work-status-2026-09-29-article-release-plan.md。未授權正式寫入、部署或發布；原門檻維持。
+
+本次僅追加交接證據，不改既有owner、scope、branch或執行狀態。

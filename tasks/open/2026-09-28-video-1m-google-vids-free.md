@@ -1,11 +1,11 @@
 ---
 id: 2026-09-28-video-1m-google-vids-free
 title: Million-views batch 4: Google Vids makes AI video free with Gemini Omni 1.1, limits and a worked example
-status: in-progress
+status: open
 priority: P1
 area: docs
-owner: codex-p1-video-review
-claimed_at: 2026-09-29T02:12:28Z
+owner:
+claimed_at:
 created_at: 2026-09-28T02:30:46Z
 completed_at:
 branch: codex/p1-task-audit
@@ -57,3 +57,11 @@ node tools/video/cli.mjs status --slug google-vids-free-ai-video-omni-1-1 --work
 ## Progress (2026-09-28, claude-opus-5-5)
 
 Pipeline stages 1–4 done: `video.json` (option A, 11 chapters, ~8.2 min, lint 0/0), `claims.md` (c1–c11), `verify-1.md`. Two facts corrected: the usage-scope quote is now the help page's verbatim sentence, and the quota chapter no longer calls the 6-clip figure a personal-account limit (the page labels it Workspace Individual; default is 500 seconds; the generation page says most users get 50). Follow-up filed for the site article: `google-vids-quota-recheck`. Lexicon gained `Lite`, `Vid`, `Individual`. Remaining stages need the owner setup; next is `review-push --slug google-vids-free-ai-video-omni-1-1 --gate outline`.
+
+### 2026-09-29 independent P1 fact review
+
+第一輪與不同查核者第二輪完成；恢復英文avatar條件、正確區分50／6／500的帳號及單位。來源與查核證據見 `docs/videos/google-vids-free-ai-video-omni-1-1/verify-p1-20260929.md`（如有第二輪，以 `verify-p1-20260929-round2.md` 為最新交接）。同步更正旁白、字卡、標題／說明及claims；未改brief或共用lexicon。最終lint結果由本輪總報告記錄。
+
+只完成獨立事實重查及稿件修正；CTA是否對應已發布文章、觀點／大綱、聽眾與真人試用、TTS／字幕／成片QA／上架仍未完成。既有 `verify-1.md` 是原作者自查且绑定舊稿，CLI顯示fact-checked不能代替上述驗收。
+
+站主對六片後續製作方向尚待回覆；未產生付費媒體、改正式設定或上傳。釋出本次claim，保留原製作票與未勾條件供接續。

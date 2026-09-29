@@ -13,12 +13,28 @@
 
 判定不是全數執行完成宣告；本輪實際結果與測試會記錄在下方及各票。正式站未經本輪具體批准不進行寫入。
 
-## 本輪執行紀錄
+## 本輪實際結果（2026-09-29）
 
-- 代理憑證：新增正式 API 啟動必須至少32字元、開發環境未設憑證但信任轉送位址的啟動警告；新回歸在修正前 9 failed / 2 passed，修正後安全設定、公開讀取限流及API金鑰URL測試合計61 passed。Ruff和四檔mypy通過。主機成對設定仍是合併前門檻。
-- 新聞長正文、逐篇發布暫停規則：正在修正與測試，完成結果將補入。
-- 社群／網站外觀：正在補本機可用驗收；本機缺少真實服務時不宣稱完整服務驗收通過。
-- Gemini 51–56、69–74：站主回覆「保留待辦，這輪先不做」。
+原 64 張固定分母：**31 張已移至 done、2 張過時票已刪除、31 張仍需保留**。31 張 done 包含 30 張有歷史完成證據的票與本輪完成的 publisher hold 防護。僅整理任務檔；未刪程式、文章或媒體。最新可審查改動在 [草稿 PR #966](https://github.com/x812033727/travel_scanner/pull/966)，不代表已合併或部署。
+
+- **內部代理憑證**：正式 API 拒絕缺少或少於32字元的 token；開發環境未設 token 但信任轉送位址時發出啟動警告。61項相關測試通過，Ruff及四檔mypy通過。正式站唯讀確認 API/web 皆未設定，故整個 PR 保持草稿；配置方案仍待站主決定。
+- **新聞證據**：統一使用目前擷取器40,000字元全文上限，移除8,000/6,000字元的早截斷；完整instructions/payload/schema以64k輸入預算檢查，輸出預算仍獨立32k，Jev超限交人工處理。相关套件82 passed；最終新增模組10 passed（包含前者案例，不能相加）。Ruff/mypy通過；近月正式資料抽樣未做，票保留。
+- **逐篇發布暫停**：publish_bundle在初始、每次操作、journal intent後及lost-response reconciliation前檢查hold；已失效的新加坡兩條repo hold刪除，正式設定未動。publisher 69 passed/68 skipped，既有API hold 8 passed/3 skipped；skip為無本機PostgreSQL。該票移done。
+- **社群／產品验收**：新增5語×明暗×桌機/Pixel7的20個隔離UI案例並接CI；本機API 52 passed/8 skipped，社群單元52 passed，20案例discover及ESLint通過，Next build通過348頁。未以列出案例代替瀏覽器通過；本機預覽啟動遭自動審批拒絕，原因僅為 `rejected: blocked by policy`，沒有繞過。真實worker/outage/capacity/SMTP/S3及主觀外觀驗收仍保留，詳見 [本機驗收紀錄](community-local-acceptance-2026-09-29.md)。
+- **六支影片**：獨立重查當日官方事實；Google Vids、vibe、價格、代理、免費方案均另做第二輪，Siri兩組修正未達第二輪門檻。修正同步到稿件、字卡、標題、說明及claims，六票保留音訊／字幕／成片／上架與站主關卡。各slug的 `verify-p1-20260929*.md` 保存來源、逐項更正及SHA；既有作者自查不當作獨立通過。
+- **正式站唯讀盤點**：站主明確同意的一次盤點已完成，結果見下方。沒有正式寫入、配置、部署、內容發布或付費生成。
+
+## 站主已決定與待決事項
+
+六支影片最終均以 Node 24.21.0 分別完成 lint，全部 exit 0、0 errors、0 warnings；Git LF 內容的最終 SHA 已記入各支最新查核報告。這些檢查只驗證稿件格式，不代替聽審、真人試用或成片品質。
+
+- Gemini 51–56、69–74：保留待辦，這輪不做。
+- 景點候選、八批店家風格、合作導流、店家補資料：保留待辦，這輪不改正式資料。
+- 文章：已授權準備逐批發布清單與步驟，**未授權發布**。參見 [逐批發布方案](work-status-2026-09-29-article-release-plan.md)，先呈現來源修正、精確slug/locale、依賴及回復步驟，再由站主確認。
+- 品牌故事試作／VPS上傳驗收：依賴就緒後準備方案。参見 [依賴與驗收方案](work-status-2026-09-29-video-acceptance-plan.md)；故事所需PR尚未全合併，VPS可準備方案但沒有執行部署／登入／上傳。
+- 尚待回覆：2026-09-19後舊YouTube API金鑰是否已輪替（只需是/否，不收值）；六支影片後續製作方向；代理token配置方案；六城市商品／飯店原規格是否維持。
+
+以下逐票段落保留第一輪判定依據，新增的「本輪結果」與站主決定優先於歷史狀態。
 
 ## 逐票證據與剩餘工作
 
@@ -32,7 +48,7 @@
 
 剩餘／處理：36 hotels, 18 tours, 12 transfers and nine country eSIM plans need current licensed/evidenced inventory, actual partner landing/tracking checks, and explicit production release. Hotel ordinary-booking work and destination-level Travelpayouts do not fulfil this product-level inventory scope.
 
-待決事項：這個六城市旅遊商品目錄仍要照原規模推出，還是只保留目前飯店／目的地合作入口？若要继续，先核准一輪正式站唯讀現況盤點，再列具體匯入與啟用批次。
+**本輪結果／站主決定：** 2026-09-29唯讀：六城市107核准/4待審飯店、633核准平台選項，public/direct-hotel/airalo開關為true；六城市ID下其他三類商品0列，未查國家eSIM。原商品覆蓋與真正導流仍未驗收；維持原規格或縮小範圍的問題待站主回覆。
 
 ### 2. 2026-09-07-hotel-platform-options-and-quote-readiness
 
@@ -44,7 +60,7 @@
 
 剩餘／處理：Fresh current-state baseline; six cities each ten verified hotels, three areas, official plus two OTAs with all five OTA checks; complete maps/durable coordinates/links, then city release acceptance.
 
-待決事項：要繼續完成六城市各10家、每家官方加2個OTA的原規格嗎？需要先同意正式站唯讀核對，再逐批呈現實際待審飯店和操作。
+**本輪結果／站主決定：** 2026-09-29唯讀：六城市各至少10家核准飯店已成立；三區覆蓋、每家OTA身分與連結、真實訂房導流等無法用聚合數字驗收。原規格是否維持待站主回覆；本輪不改正式資料。
 
 ### 3. 2026-09-07-merchant-style-discovery
 
@@ -56,7 +72,7 @@
 
 剩餘／處理：Current candidate reconciliation and exact maps/durable coordinates, separate source-backed style approval and merchant publication via normal audited administration.
 
-待決事項：是否繼續把這八批候選逐家完成地圖／座標／風格審核並發布？需要先核准正式站唯讀盤點；核准發布的名單另列給你。
+**本輪結果／站主決定：** 站主回覆「保留待辦，這輪先不改正式資料」。全佇列盤點為景點2,296待審、店家20待審，並非本票候選清單的逐筆核對；沒有核准／退回／補值或啟用。保留原驗收項目。
 
 ### 4. 2026-09-07-mokaair-community-foundation
 
@@ -68,7 +84,7 @@
 
 剩餘／處理：Implement/run missing isolated-service acceptance matrix; refresh outdated unchecked messaging/pet boxes from actual passed evidence. Production SMTP/S3/translation activation and public launch remain separate owner decisions.
 
-待決事項：只有完成隔離驗收後才需決定是否公開啟用社群，以及正式寄信／物件儲存／翻譯與審核營運設定；目前本機測試工作可先做。
+**本輪結果／站主決定：** 本機可行驗收完成，現有證據與缺口寫入docs/community-local-acceptance-2026-09-29.md及票面。20個新UI案例已接CI；本機預覽啟動遭自動審批拒絕（rejected: blocked by policy），沒有宣稱人工瀏覽器驗收。四票保留。
 
 ### 5. 2026-09-07-mokaair-community-web
 
@@ -80,7 +96,7 @@
 
 剩餘／處理：Run an explicit five-language/light-dark/responsive/accessibility/failure matrix on isolated services and fix actual failures; reconcile the many stale unchecked boxes with evidence rather than treating them all as unwritten code.
 
-待決事項：無需先問即可做隔離驗收；公開啟用仍待站主另行決定。
+**本輪結果／站主決定：** 本機可行驗收完成，現有證據與缺口寫入docs/community-local-acceptance-2026-09-29.md及票面。20個新UI案例已接CI；本機預覽啟動遭自動審批拒絕（rejected: blocked by policy），沒有宣稱人工瀏覽器驗收。四票保留。
 
 ### 6. 2026-09-08-continue-evidence-backed-remaining-hotspot-candidate
 
@@ -92,7 +108,7 @@
 
 剩餘／處理：Fresh live queue baseline; Naver exact URLs for Korea; individual source/map/coordinate blockers and owner editorial choices. Do not reject Taipei Sky Tower while the owner's opening hold applies.
 
-待決事項：韓國景點要由你提供／人工查精準 Naver 網址後續做嗎？其餘有爭議紀念物與無独立地圖身分的例外，要先取最新清單讓你逐項裁決。
+**本輪結果／站主決定：** 站主回覆「保留待辦，這輪先不改正式資料」。全佇列盤點為景點2,296待審、店家20待審，並非本票候選清單的逐筆核對；沒有核准／退回／補值或啟用。保留原驗收項目。
 
 ### 7. 2026-09-08-travelpayouts-live-destination-activation
 
@@ -104,7 +120,7 @@
 
 剩餘／處理：Signed-in Project 570089 brand availability, 33-destination/module offer matrix, genuine final landing and tracking evidence, reviewed publication and real clickout analytics.
 
-待決事項：Travelpayouts 的33目的地合作目錄要继续開通，還是保留直接 Klook 等現有渠道即可？若繼續，需可用的已登入品牌帳戶及逐批發布批准。
+**本輪結果／站主決定：** 站主回覆「保留待辦，這輪先不改正式資料」。全佇列盤點為景點2,296待審、店家20待審，並非本票候選清單的逐筆核對；沒有核准／退回／補值或啟用。保留原驗收項目。
 
 ### 8. 2026-09-09-site-experience-settings
 
@@ -116,7 +132,7 @@
 
 剩餘／處理：Create an isolated preview under current permissions and inspect the specified flows with CUA; retain owner visual acceptance separately if specifically required. No policy publication/deployment needed.
 
-待決事項：可以先完成現有權限下的隔離預覽和內建瀏覽器查核；主觀外觀接受／正式發布再交站主決定。
+**本輪結果／站主決定：** 本機可行驗收完成，現有證據與缺口寫入docs/community-local-acceptance-2026-09-29.md及票面。20個新UI案例已接CI；本機預覽啟動遭自動審批拒絕（rejected: blocked by policy），沒有宣稱人工瀏覽器驗收。四票保留。
 
 ### 9. 2026-09-11-deny-school-hospital-tram-stop-ward
 
@@ -128,7 +144,7 @@
 
 剩餘／處理：Correct this stale ticket's seven-type acceptance to four retained deny types plus protection/recovery verification for the three released types. Fresh read-only live discovery checks and four heritage-row status checks remain; do not reinstate reverted types.
 
-待決事項：票面可先修正；正式站只讀查核四類與四筆歷史景點，之後如已誤退需再決定恢復操作。
+**本輪結果／站主決定：** 已依後續政策更正DoD；四類仍拒絕、三類釋出及查詢半徑回歸已驗證（與社群共用API測試52 passed/8 skipped，不能另加總）。四個歷史QID與部署後discovery行為仍欠正式唯讀驗收，保留此票；此次聚合盤點沒有涵蓋該驗收。
 
 ### 10. 2026-09-12-food-merchant-enrichment
 
@@ -140,7 +156,7 @@
 
 剩餘／處理：Fresh production pending-merchant worklist, 30-row researched pilot under current source rules, dry-run/apply with unchanged coordinates/map/approval states, before/after counts and report.
 
-待決事項：要繼續原本待審店家30家補齊試點嗎？若要，需要先核准正式站匯出唯讀工作清單；完成研究與 dry-run 後再核准具体寫入批次。
+**本輪結果／站主決定：** 站主回覆「保留待辦，這輪先不改正式資料」。全佇列盤點為景點2,296待審、店家20待審，並非本票候選清單的逐筆核對；沒有核准／退回／補值或啟用。保留原驗收項目。
 
 ### 11. 2026-09-14-article-image-retry
 
@@ -231,7 +247,7 @@
 
 剩餘／處理：Finish guarded onsen zh-TW correction, re-pin live source, regenerate/review four translations, release; narrow old ticket to remaining onsen scope.
 
-待決事項：是否將未完成的溫泉篇來源修正與四語翻譯接續執行，正式站修正另走逐步批准？
+**本輪結果／站主決定：** 站主已同意「準備逐批發布清單與步驟，再讓我確認」。本輪一次正式站唯讀盤點已完成；發布清單、精確來源雜湊、依賴與逐步驗收見 docs/work-status-2026-09-29-article-release-plan.md。未授權正式寫入、部署或發布；原門檻維持。 Batch003四篇已五語公開且正文hash與repo相符；onsen繁中v8已是修正後來源，僅剩四個目標語系。不要重做已發布的繁中修正。
 
 ### 20. 2026-09-21-five-language-kansai-arrival-usj-batch
 
@@ -331,6 +347,8 @@
 
 剩餘／處理：Implement current-hold guard including dry run, newly-held phases, and lost-response reconciliation tests; root authorized this agent implementation.
 
+**本輪結果／站主決定：** 防護已實作並通過publisher69 passed/68 skipped、API hold8 passed/3 skipped；票已移到tasks/done。只刪除repo兩條已失效新加坡hold，正式站未動。
+
 ### 32. 2026-09-23-internal-proxy-token-required-in-production
 
 **仍必要，本輪執行可行部分** — Production accepts forwarded client addresses without the internal proxy token
@@ -341,7 +359,7 @@
 
 剩餘／處理：Complete local tests; retain pre-merge production equality/presence check and paired-service rollout as explicit blocked acceptance.
 
-待決事項：修正完成後，需核准正式站唯讀查核 API/web 代理憑證是否同值且至少32字元；只輸出判定，不顯示憑證。
+**本輪結果／站主決定：** 本機修正與61項相關測試完成；本輪已授權的唯讀盤點確認API/web token均未設定。票維持blocked，PR966維持draft，需先成對配置才可合併／部署；站主對配置方案的選擇待回覆。
 
 ### 33. 2026-09-26-video-dubs-worker
 
@@ -389,6 +407,8 @@
 - PR #892 fixed HTML extraction but scanner still slices primary/linked text at 8000 and refresh does the same.
 
 剩餘／處理：Agent implements bounded evidence preservation with long-source and pipeline-budget regressions.
+
+**本輪結果／站主決定：** 長證據與完整輸入預算修正已完成，相關82 tests及最終新增模組10 tests通過（有重疊）。近月正式資料抽樣未在唯讀授權範圍，因此仍保留票，不宣稱已驗證實際近月截斷比例。
 
 ### 39. 2026-09-27-video-drama-room-messages-api
 
@@ -498,7 +518,7 @@
 
 剩餘／處理：Fresh live conflict check, isolated rehearsal, exact approved guarded source publication for three slugs.
 
-待決事項：是否核准準備 Batch040 三篇繁中來源修正的正式站發布方案，完成預檢/演練後再逐步批准寫入？
+**本輪結果／站主決定：** 站主已同意「準備逐批發布清單與步驟，再讓我確認」。本輪一次正式站唯讀盤點已完成；發布清單、精確來源雜湊、依賴與逐步驗收見 docs/work-status-2026-09-29-article-release-plan.md。未授權正式寫入、部署或發布；原門檻維持。
 
 ### 50. 2026-09-28-batch041-live-source-reconciliation
 
@@ -509,7 +529,7 @@
 
 剩餘／處理：Fresh version/hash check, isolated rehearsal and guarded image-seo-workflow source publication.
 
-待決事項：是否核准準備 Batch041 圖片 SEO 繁中來源修正的正式站發布方案，演練後再逐步批准寫入？
+**本輪結果／站主決定：** 站主已同意「準備逐批發布清單與步驟，再讓我確認」。本輪一次正式站唯讀盤點已完成；發布清單、精確來源雜湊、依賴與逐步驗收見 docs/work-status-2026-09-29-article-release-plan.md。未授權正式寫入、部署或發布；原門檻維持。
 
 ### 51. 2026-09-28-correct-measurement-guide-source-links-before
 
@@ -520,7 +540,7 @@
 
 剩餘／處理：Rebind published zh-TW source via guarded update for four measurement guides before translating; preserve task until live acceptance or split dedicated release ticket.
 
-待決事項：是否接續這四篇 GA4/Search Console/UTM 的正式站來源修正，逐步批准後再翻譯？
+**本輪結果／站主決定：** 站主已同意「準備逐批發布清單與步驟，再讓我確認」。本輪一次正式站唯讀盤點已完成；發布清單、精確來源雜湊、依賴與逐步驗收見 docs/work-status-2026-09-29-article-release-plan.md。未授權正式寫入、部署或發布；原門檻維持。
 
 ### 52. 2026-09-28-localize-marketing-mix-and-brand-tone
 
@@ -531,7 +551,7 @@
 
 剩餘／處理：Guarded eight-locale publication and live browser QA; or move remaining release scope to separate ticket before closing content work.
 
-待決事項：是否接續發布這兩篇已審稿的八份譯文（發布前會提出精確清單與預檢結果）？
+**本輪結果／站主決定：** 站主已同意「準備逐批發布清單與步驟，再讓我確認」。本輪一次正式站唯讀盤點已完成；發布清單、精確來源雜湊、依賴與逐步驗收見 docs/work-status-2026-09-29-article-release-plan.md。未授權正式寫入、部署或發布；原門檻維持。
 
 ### 53. 2026-09-28-localize-newsletter-content-guides-batch035-pair
 
@@ -561,7 +581,7 @@
 
 剩餘／處理：Independently recheck claims and mark the no-cache five-round bill as illustrative; then approved outline, narration, rendering, audio/final QA, languages and owner upload. Do not delete or close as if #891 delivered an MP4.
 
-待決事項：For production continuation, confirm owner setup/paired tool access and whether to use existing option A; no paid generation or host setting change performed by audit.
+**本輪結果／站主決定：** 本輪独立官方事實重查完成；五支需第二輪的影片已由不同查核者覆核全部更正與隨機三分之一確認主張。來源、修正、當前SHA、未解CTA/觀點及聽審問題見各slug的verify-p1-20260929報告。只完成事實稿件與lint，整張製作票保留，後續製作方向待站主回覆。
 
 ### 56. 2026-09-28-video-1m-ai-price-war
 
@@ -573,7 +593,7 @@
 
 剩餘／處理：Fresh independent official-price and worked-bill verification is actionable without credentials. Continue approved production only after setup and cost/host gates; retain task through upload and English dub.
 
-待決事項：Confirm common six-video production setup and option-A outline choice if channel stance is not already configured.
+**本輪結果／站主決定：** 本輪独立官方事實重查完成；五支需第二輪的影片已由不同查核者覆核全部更正與隨機三分之一確認主張。來源、修正、當前SHA、未解CTA/觀點及聽審問題見各slug的verify-p1-20260929報告。只完成事實稿件與lint，整張製作票保留，後續製作方向待站主回覆。
 
 ### 57. 2026-09-28-video-1m-free-vs-paid
 
@@ -585,7 +605,7 @@
 
 剩餘／處理：Independently verify currently pending OpenAI claims plus other pricing/limits; update script/claims consistently before narration. Then the same six-video production gates. This is genuinely unfinished, not obsolete.
 
-待決事項：Use common six-video production setup decision; do not synthesize pending factual claims.
+**本輪結果／站主決定：** 本輪独立官方事實重查完成；五支需第二輪的影片已由不同查核者覆核全部更正與隨機三分之一確認主張。來源、修正、當前SHA、未解CTA/觀點及聽審問題見各slug的verify-p1-20260929報告。只完成事實稿件與lint，整張製作票保留，後續製作方向待站主回覆。
 
 ### 58. 2026-09-28-video-1m-google-vids-free
 
@@ -597,7 +617,7 @@
 
 剩餘／處理：Independent official quota/account-type verification; retain both officially conflicting limits with correct account attribution if still present. Then approved production and owner upload.
 
-待決事項：Use common six-video production setup decision; no need to ask whether a known factual recheck is useful.
+**本輪結果／站主決定：** 本輪独立官方事實重查完成；五支需第二輪的影片已由不同查核者覆核全部更正與隨機三分之一確認主張。來源、修正、當前SHA、未解CTA/觀點及聽審問題見各slug的verify-p1-20260929報告。只完成事實稿件與lint，整張製作票保留，後續製作方向待站主回覆。
 
 ### 59. 2026-09-28-video-1m-siri-ai
 
@@ -609,7 +629,7 @@
 
 剩餘／處理：Independent current Apple model/region/language availability check, then production gates. Preserve as needed unless owner changes topic strategy; not an obsolete ticket.
 
-待決事項：Use common six-video production setup decision.
+**本輪結果／站主決定：** 本輪独立官方事實重查完成；五支需第二輪的影片已由不同查核者覆核全部更正與隨機三分之一確認主張。來源、修正、當前SHA、未解CTA/觀點及聽審問題見各slug的verify-p1-20260929報告。只完成事實稿件與lint，整張製作票保留，後續製作方向待站主回覆。
 
 ### 60. 2026-09-28-video-1m-vibe-coding
 
@@ -621,7 +641,7 @@
 
 剩餘／處理：Independent tool/hosting claims check and meaningful demonstration review; then approved narration/render/final QA/language pipeline and owner upload.
 
-待決事項：Use common six-video production setup decision.
+**本輪結果／站主決定：** 本輪独立官方事實重查完成；五支需第二輪的影片已由不同查核者覆核全部更正與隨機三分之一確認主張。來源、修正、當前SHA、未解CTA/觀點及聽審問題見各slug的verify-p1-20260929報告。只完成事實稿件與lint，整張製作票保留，後續製作方向待站主回覆。
 
 ### 61. 2026-09-28-video-story-api-policy-languages
 
@@ -643,7 +663,7 @@
 
 剩餘／處理：Keep pilot ticket. First land prerequisite implementations, then prepare explicit host deployment/config/import steps and selected two-video cost bound; owner watches completed cuts and chooses 1K vs 2K based on evidence.
 
-待決事項：After dependencies are ready, approve a concrete production trial for A01 and B18 with the documented US$25 per-video ceiling, configured languages and host changes?
+**本輪結果／站主決定：** 站主回覆「依賴就緒後準備試作／上傳驗收方案」。目前依賴與可執行步驟見docs/work-status-2026-09-29-video-acceptance-plan.md；未部署、生成、登入或上傳。
 
 ### 63. 2026-09-28-video-story-worker
 
@@ -665,4 +685,81 @@
 
 剩餘／處理：Retain. Prepare concrete deployment version/steps plus approved private test video; rerun preflight only in authorized production workflow, owner login/channel selection, and real persistent-state/resume validation.
 
-待決事項：Which specific private test video and final deployment version should the owner approve for mokaair.com, and when can the owner perform Google login/channel confirmation?
+**本輪結果／站主決定：** 站主回覆「依賴就緒後準備試作／上傳驗收方案」。目前依賴與可執行步驟見docs/work-status-2026-09-29-video-acceptance-plan.md；未部署、生成、登入或上傳。
+
+## 已授權的一次正式站唯讀盤點
+
+正式站唯讀盤點摘要（供看板整理引用）
+
+盤點時間：2026-09-29 10:14:43（台灣時間）。正式站 HEAD：`717e16280977fb5e024947bde000adbe0fe4d752`。
+以一次 SSH、四把既有部署鎖及 PostgreSQL REPEATABLE READ / READ ONLY 交易完成；前後 HEAD 與 API/web 容器相同。未改正式檔案、設定或資料，未部署、發布內容、呼叫模型或付費服務。
+
+文章發布狀態
+
+21 篇均存在、active、published，已發布指標有效且沒有到期隱藏。下表的目標語系為 en、ja、ko、zh-CN；缺少代表資料庫未有該語系列。
+
+| 批次 | 篇數 | 已發布目標語系文件 | 缺少目標語系文件 | 繁中源文與目前 repo 不同 |
+|---|---:|---:|---:|---:|
+| Batch003 | 5 | 16 | 4 | 0 |
+| Batch036-marketing | 4 | 0 | 16 | 0 |
+| Batch036-measurement | 4 | 0 | 16 | 4 |
+| Batch040 | 4 | 0 | 16 | 3 |
+| Batch041 | 4 | 0 | 16 | 1 |
+
+Batch003 的 japan-hotel-room-plan-guide、japan-luggage-forwarding-guide、japan-restaurant-reservation-etiquette、japan-station-locker-guide 已五語發布，所有已發布正文的正規化 SHA-256 均與 repo 一致。四語譯文皆為 v2；繁中依序為 v6、v6、v4、v6。japan-onsen-ryokan-guide 只有繁中 v8，雜湊與 repo 一致；這篇仍缺四語。
+
+Batch036 的 marketing 與 measurement 各四篇，以及 Batch040/041 各四篇，目前均只有繁中 v4、文章版本 v2。Batch036 marketing 的四篇源文皆與 repo 一致，但 repo 內的翻譯尚未出現在正式資料庫。
+
+下列八篇仍維持 2026-09-28 修正前盤點的相同已發布正文雜湊，與目前 repo 不同；因此不能把已合併的源文修正当成已發布。
+
+- `affiliate-marketing-basics`（繁中 v4，與前次修正前基準一致：是）
+- `ecommerce-product-seo`（繁中 v4，與前次修正前基準一致：是）
+- `ga4-sessions-engagement`（繁中 v4，與前次修正前基準一致：是）
+- `ga4-site-measurement`（繁中 v4，與前次修正前基準一致：是）
+- `google-search-console-workflow`（繁中 v4，與前次修正前基準一致：是）
+- `image-seo-workflow`（繁中 v4，與前次修正前基準一致：是）
+- `utm-link-conventions`（繁中 v4，與前次修正前基準一致：是）
+- `zero-click-search-strategy`（繁中 v4，與前次修正前基準一致：是）
+
+合計仍缺 68 個目標語系文件。資料庫發布狀態及正文雜湊不代替公網頁面的字型、圖片、連結、語系切換與瀏覽器驗收。
+
+六城市商品／飯店
+
+下表商品數限定 destination_id 為 tokyo、osaka、kyoto、seoul、busan、taipei，查得類型皆是 hotel。其他商品類型在這六個城市 ID 下沒有列；未盤點國家層級的 eSIM 覆蓋，不能據此宣稱全站沒有 eSIM。
+
+| 城市 | 已核准飯店商品 | 待審飯店商品 | 已核准平台選項 | 待審平台選項 | 停用平台選項 |
+|---|---:|---:|---:|---:|---:|
+| tokyo | 23 | 0 | 138 | 0 | 0 |
+| osaka | 11 | 0 | 66 | 0 | 0 |
+| kyoto | 12 | 4 | 84 | 7 | 0 |
+| seoul | 23 | 0 | 127 | 11 | 0 |
+| busan | 18 | 0 | 101 | 5 | 2 |
+| taipei | 20 | 0 | 117 | 3 | 0 |
+
+合計 107 筆已核准、4 筆待審飯店商品，以及 633 筆已核准平台選項。平台選項數不是飯店數；approved 與近期驗證時間也不證明現在可以訂房。本次沒有呼叫外部訂房網站或執行 clickout 驗收。
+
+正式站 public_enabled、direct_hotel_links_enabled、airalo_feed_enabled 均為 true；hotel/tour/esim/transfer 皆列入啟用類型，六城市亦包含於啟用目的地。舊票若描述整個商品功能尚未啟用、正式庫完全没有飯店，需更新描述；商品覆蓋及真實導流驗收仍需保留。
+
+待審佇列
+
+- 景點：2,296 筆 pending；另有 1,968 approved、2,289 rejected、5 disabled。
+- 美食店家：20 筆 pending（首爾 9、釜山 8、大邱 2、濟州 1）；另有 382 approved、108 rejected、1 disabled。
+- 景點介紹 guides：0 pending；9,120 approved、861 rejected。hotspot_intros 表目前沒有列。
+
+內部代理憑證檢查
+
+API 與 web 執行中容器的 INTERNAL_PROXY_TOKEN 均未設定；presence、至少 32 字元及非空相等判定全部為 false。只回傳這些布林值，未輸出或保存任何憑證值、憑證雜湊或完整環境。若準備部署缺值即拒絕啟動的修正，必須先處理正式設定；本次沒有修改設定。
+
+原始盤點證據位於外部 `C:/Users/x8120/.codex/tmp/p1-audit-20260929/production-inventory.json`；同一外部目錄的 `production-inventory-analysis.json` 保存本機基準比對與彙總。上述兩檔不在 docs/，本文件保存可追溯摘要。這份摘要不含私人 ID、帳號、正文、token 或完整環境。
+
+對看板的具體影響
+
+- `2026-09-20-five-language-article-batch-003`：保留；四篇已發布的舊狀態應更正，仍需 onsen 四語、對應審稿／發布及公網驗收。
+- `2026-09-28-correct-measurement-guide-source-links-before`：保留源文正式版本 rebind／publication 未完成；本機修正已合併不等於正式文已更正。
+- `2026-09-28-batch040-live-source-reconciliation`：保留；本次四鎖唯讀前置核對已完成，三篇仍是修正前源文。
+- `2026-09-28-batch041-live-source-reconciliation`：保留；本次四鎖唯讀前置核對已完成，image-seo 仍是修正前源文。
+- `2026-09-28-batch036-marketing-pair-a`、`2026-09-28-localize-marketing-mix-and-brand-tone`：保留正式發布／公網驗收缺口，兩對四語都尚未匯入正式庫。
+- `2026-09-07-contextual-travel-services`：保留覆蓋與實際導流驗收；更新已啟用開關及六城市已有 107 筆核准飯店的狀態，未查的國家層級 eSIM 不能當成沒有。
+- `2026-09-07-hotel-platform-options-and-quote-readiness`：六城市各至少十家核准飯店已可從計數證實；三區覆蓋、個別來源、各 OTA 正確店頁、实际導流與報價準備尚不能由聚合數字驗收，保留。
+
+此次唯讀盤點沒有證明任何上述整張票可新增結案；已完成的局部步驟可記錄證據，仍需正式寫入的步驟保持未勾。

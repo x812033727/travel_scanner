@@ -179,3 +179,9 @@ Rankings lag the writes: `refresh_rankings` takes every active public row but on
 Filed from this batch: `2026-09-12-search-text` — `review` rewrites `city_name` when it re-homes a
 row but never rebuilds `search_text`, and `collect_hotspots` skips approved rows, so a moved row
 stays searchable under its old city forever (three rows are in that state now).
+
+### 2026-09-29 看板盤點與站主決定
+
+站主回覆「保留待辦，這輪先不改正式資料」。全佇列盤點為景點2,296待審、店家20待審，並非本票候選清單的逐筆核對；沒有核准／退回／補值或啟用。保留原驗收項目。
+
+本次僅追加交接證據，不改既有owner、scope、branch或執行狀態。
