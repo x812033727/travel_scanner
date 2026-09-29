@@ -1104,7 +1104,31 @@ touch a line that is not listed. "video" shows the slides for context.
 Return {"lines": [{"id": "<id>", "text": "<the shortened translation, at most max_chars characters>"}, …]}.`;
 
 /**
- * Every "<stage>:<variant>" text: the series documents and episode stages, the explainer's stages,
- * the listener's rewrite pass and the translator's shortening pass.
+ * The translator's rewording pass (docs/videos/AUTOMATION.md, a dub's check), variant "reword":
+ * after the retakes the transcriber still hears a few lines of one locale as other words, most
+ * often a homophone (定価 heard as 低下, "bill" as "build") that no retake changes. Those lines
+ * are reworded so they cannot be heard as what was heard, within the dub's character budget.
+ * The skill's reference text is .agents/skills/youtube-video/references/prompts/caption-translate.md.
  */
-export const VARIANT_INSTRUCTIONS = { ...SERIES_INSTRUCTIONS, ...EXPLAINER_INSTRUCTIONS, "listener:rewrite": LISTENER_REWRITE, "translator:shorten": TRANSLATOR_SHORTEN };
+export const TRANSLATOR_REWORD = `${COMMON}
+
+You reword a few "locale" caption lines whose dub the speech check keeps hearing as something
+else (docs/videos/AUTOMATION.md). "lines" lists each: "id", the zh-TW "source", the current
+translation "text", what the transcriber "heard" instead, and the most characters it may have
+"max_chars". The voice was retaken and the same words were heard again, so the wording itself is
+the problem: usually a homophone or near-homophone ("bill" and "build", 定価 and 低下, 두 표 and
+투표), a clipped ordinal ("Two: developers"), or a word that blurs into its neighbour. Change the
+words that were misheard to ones no listener could take for what was heard (a synonym, a longer
+form, a particle, an explicit ordinal such as "Second,"), and leave the rest of the line alone.
+Every number, price, date, version, product and proper name, and what the sentence claims, stay
+exactly as they are; keep the register (en plain, ja です／ます, ko 합니다체, zh-CN Simplified) and
+stay within max_chars. The captions show the reworded line too. Never touch a line that is not
+listed. "video" shows the slides for context.
+
+Return {"lines": [{"id": "<id>", "text": "<the reworded translation, at most max_chars characters>"}, …]}.`;
+
+/**
+ * Every "<stage>:<variant>" text: the series documents and episode stages, the explainer's stages,
+ * the listener's rewrite pass and the translator's shortening and rewording passes.
+ */
+export const VARIANT_INSTRUCTIONS = { ...SERIES_INSTRUCTIONS, ...EXPLAINER_INSTRUCTIONS, "listener:rewrite": LISTENER_REWRITE, "translator:shorten": TRANSLATOR_SHORTEN, "translator:reword": TRANSLATOR_REWORD };

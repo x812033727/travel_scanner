@@ -55,6 +55,9 @@ export const MAX_REWRITE_ROUNDS = 2;
 // without that track (docs/videos/LANGUAGES.md).
 export const MAX_DUB_SHORTEN_ROUNDS = 2;
 export const MAX_DUB_RETAKE_ROUNDS = 2;
+// The lines Jev still hears wrong after the retakes are reworded by the translator (variant
+// "reword") this many rounds: a homophone is heard the same way on every take.
+export const MAX_DUB_REWORD_ROUNDS = 2;
 const MAX_SOURCE_PAGES = 25;
 const MAX_SOURCE_CHARS = 350_000;
 const REQUIRED_SECTIONS = ["## 觀眾看完能做到的事", "## 站主觀點", "## 大綱"];
@@ -1671,60 +1674,88 @@ export class Automation {
    * One locale's dub track (docs/videos/DUBS.md): `dub`, and when a window does not fit even at
    * MAX_TEMPO, the translator shortens those lines and `dub` runs again, MAX_DUB_SHORTEN_ROUNDS
    * times; then Jev listens (`check-audio --locale`) and the flagged lines are retaken,
-   * MAX_DUB_RETAKE_ROUNDS times. What still fails after that, and what needs the owner (a voice
-   * that speaks one language, a missing key), gives the locale up with the reason instead of
-   * blocking the video; a service that is down ends this run and the next one tries again.
+   * MAX_DUB_RETAKE_ROUNDS times, and the lines still heard wrong after that are reworded by the
+   * translator and dubbed again, MAX_DUB_REWORD_ROUNDS times. A retake that no longer fits its
+   * window goes back to the shortening. What still fails after that, and what needs the owner (a
+   * voice that speaks one language, a missing key), gives the locale up with the reason instead
+   * of blocking the video; a service that is down ends this run and the next one tries again.
    */
   async makeDub(state, locale) {
     const { ctx } = this;
     const slug = state.slug;
     const workdir = this.workdir(slug);
-    const rounds = { shorten: 0, retakes: 0, ...(state.languages?.[locale] ?? {}) };
+    const rounds = { shorten: 0, retakes: 0, reword: 0, ...(state.languages?.[locale] ?? {}) };
     const remember = () => {
       state.languages = { ...(state.languages ?? {}), [locale]: rounds };
       saveState(workdir, state);
     };
     const dubArgs = ["dub", "--slug", slug, "--locale", locale];
-    let made = await run(ctx, dubArgs);
-    while (made.code === 1 && rounds.shorten < MAX_DUB_SHORTEN_ROUNDS) {
-      const over = readJson(dubArtifacts(workdir, locale).fit, null)?.over;
-      if (!Array.isArray(over) || !over.length) break;
-      rounds.shorten += 1;
-      remember();
-      const shortened = await this.shortenDub(state, locale, over);
-      if (shortened.stopped) return shortened.stopped;
-      // Nothing usable came back: the same windows would only be over again.
-      if (!shortened.ids.length) break;
-      made = await run(ctx, dubArgs);
-    }
-    if (made.code === 1) {
-      const over = readJson(dubArtifacts(workdir, locale).fit, null)?.over ?? [];
-      const why = over.length ? `${over.length} lines (${over.map((line) => line.id).join(", ")}) do not fit even at ${MAX_TEMPO}x after ${rounds.shorten} shortening round${rounds.shorten === 1 ? "" : "s"}` : lastLine(made.out);
-      return this.giveUpDub(state, locale, why);
-    }
-    if (made.code === 3) return this.giveUpDub(state, locale, `dub needs the owner: ${lastLine(made.out)}`);
-    if (made.code === 4) return this.later(`${slug}: ${locale} dub could not finish (${lastLine(made.out)}); the next run tries again`);
-    if (made.code !== 0) return this.block(state, `dub ${locale} failed: ${lastLine(made.out, 2)}`);
     const flags = path.join(workdir, "review", `check-flags.${locale}.json`);
     const checkArgs = ["check-audio", "--slug", slug, "--locale", locale];
-    let check = await run(ctx, checkArgs);
-    while (check.code === 1 && rounds.retakes < MAX_DUB_RETAKE_ROUNDS) {
-      rounds.retakes += 1;
-      remember();
-      const redo = await run(ctx, [...dubArgs, "--redo", flags]);
-      if (redo.code === 4) return this.later(`${slug}: ${locale} dub retake could not finish (${lastLine(redo.out)}); the next run tries again`);
-      if (redo.code === 1 || redo.code === 3) return this.giveUpDub(state, locale, `the retake failed: ${lastLine(redo.out)}`);
-      if (redo.code !== 0) return this.block(state, `dub ${locale} retake failed: ${lastLine(redo.out, 2)}`);
-      check = await run(ctx, checkArgs);
+    const overLines = () => readJson(dubArtifacts(workdir, locale).fit, null)?.over;
+    // Each pass makes the track (only the lines whose words changed are synthesized again) and
+    // checks it; a reworded line or a retake that no longer fits starts another pass.
+    for (;;) {
+      let made = await run(ctx, dubArgs);
+      while (made.code === 1 && rounds.shorten < MAX_DUB_SHORTEN_ROUNDS) {
+        const over = overLines();
+        if (!Array.isArray(over) || !over.length) break;
+        rounds.shorten += 1;
+        remember();
+        const shortened = await this.shortenDub(state, locale, over);
+        if (shortened.stopped) return shortened.stopped;
+        // Nothing usable came back: the same windows would only be over again.
+        if (!shortened.ids.length) break;
+        made = await run(ctx, dubArgs);
+      }
+      if (made.code === 1) {
+        const over = overLines() ?? [];
+        const why = over.length ? `${over.length} lines (${over.map((line) => line.id).join(", ")}) do not fit even at ${MAX_TEMPO}x after ${rounds.shorten} shortening round${rounds.shorten === 1 ? "" : "s"}` : lastLine(made.out);
+        return this.giveUpDub(state, locale, why);
+      }
+      if (made.code === 3) return this.giveUpDub(state, locale, `dub needs the owner: ${lastLine(made.out)}`);
+      if (made.code === 4) return this.later(`${slug}: ${locale} dub could not finish (${lastLine(made.out)}); the next run tries again`);
+      if (made.code !== 0) return this.block(state, `dub ${locale} failed: ${lastLine(made.out, 2)}`);
+      let check = await run(ctx, checkArgs);
+      let refit = false;
+      while (check.code === 1 && rounds.retakes < MAX_DUB_RETAKE_ROUNDS) {
+        rounds.retakes += 1;
+        remember();
+        const redo = await run(ctx, [...dubArgs, "--redo", flags]);
+        if (redo.code === 4) return this.later(`${slug}: ${locale} dub retake could not finish (${lastLine(redo.out)}); the next run tries again`);
+        // The new take is longer than its window allows: the next pass's `dub` reports the same
+        // window and shortens it, while shortening rounds are left.
+        if (redo.code === 1 && overLines()?.length && rounds.shorten < MAX_DUB_SHORTEN_ROUNDS) {
+          refit = true;
+          break;
+        }
+        if (redo.code === 1 || redo.code === 3) return this.giveUpDub(state, locale, `the retake failed: ${lastLine(redo.out)}`);
+        if (redo.code !== 0) return this.block(state, `dub ${locale} retake failed: ${lastLine(redo.out, 2)}`);
+        check = await run(ctx, checkArgs);
+      }
+      if (refit) continue;
+      if (check.code === 1 && rounds.reword < MAX_DUB_REWORD_ROUNDS) {
+        rounds.reword += 1;
+        remember();
+        const reworded = await this.rewordDub(state, locale);
+        if (reworded.stopped) return reworded.stopped;
+        // Nothing usable came back: the same words would only be heard wrong again.
+        if (reworded.ids.length) continue;
+      }
+      if (check.code === 4) return this.later(`${slug}: ${locale} dub check could not finish (${lastLine(check.out)}); the next run tries again`);
+      if (check.code === 1) {
+        const reworded = rounds.reword ? ` and ${rounds.reword} rewording round${rounds.reword === 1 ? "" : "s"}` : "";
+        return this.giveUpDub(state, locale, `Jev still hears lines wrong after ${rounds.retakes} retake${rounds.retakes === 1 ? "" : "s"}${reworded}: ${lastLine(check.out)}`);
+      }
+      if (check.code === 3) return this.giveUpDub(state, locale, `the dub check needs the owner: ${lastLine(check.out)}`);
+      if (check.code !== 0) return this.block(state, `check-audio ${locale} failed: ${lastLine(check.out, 2)}`);
+      break;
     }
-    if (check.code === 4) return this.later(`${slug}: ${locale} dub check could not finish (${lastLine(check.out)}); the next run tries again`);
-    if (check.code === 1) return this.giveUpDub(state, locale, `Jev still hears lines wrong after ${rounds.retakes} retake${rounds.retakes === 1 ? "" : "s"}: ${lastLine(check.out)}`);
-    if (check.code === 3) return this.giveUpDub(state, locale, `the dub check needs the owner: ${lastLine(check.out)}`);
-    if (check.code !== 0) return this.block(state, `check-audio ${locale} failed: ${lastLine(check.out, 2)}`);
     if (state.languages) delete state.languages[locale];
     saveState(workdir, state);
     await report(ctx, this.api, state, "languages");
-    const rounding = [rounds.shorten ? `${rounds.shorten} shortening round${rounds.shorten === 1 ? "" : "s"}` : "", rounds.retakes ? `${rounds.retakes} retake${rounds.retakes === 1 ? "" : "s"}` : ""].filter(Boolean).join(", ");
+    const plural = (count, word) => (count ? `${count} ${word}${count === 1 ? "" : "s"}` : "");
+    const rounding = [plural(rounds.shorten, "shortening round"), plural(rounds.retakes, "retake"), plural(rounds.reword, "rewording round")].filter(Boolean).join(", ");
     return `${slug}: ${locale} dub made${rounding ? ` after ${rounding}` : ""}; Jev passed every line`;
   }
 
@@ -1790,20 +1821,94 @@ export class Automation {
       accepted.set(id, after);
     }
     if (accepted.size) {
-      const sheetResult = await run(ctx, ["i18n-sheet", "--slug", slug, "--locale", locale, "--parts", "captions"]);
-      if (sheetResult.code !== 0) return { stopped: await this.block(state, `i18n-sheet ${locale} failed: ${lastLine(sheetResult.out)}`) };
-      const sheetFile = path.join(workdir, "i18n", `${locale}.todo.json`);
-      const sheet = readJson(sheetFile);
-      sheet.lines = sheet.lines.map((line) => (accepted.has(line.id) ? { ...line, text: accepted.get(line.id) } : line));
-      writeFileSync(sheetFile, `${JSON.stringify(sheet, null, 2)}\n`);
-      const merged = await run(ctx, ["i18n-merge", "--slug", slug, "--locale", locale]);
-      if (merged.code !== 0) return { stopped: await this.retryLater(state, "translator", `the shortened ${locale} lines do not merge: ${lastLine(merged.out, 2)}`) };
+      const merged = await this.mergeDubLines(state, locale, accepted, "shortened");
+      if (merged) return { stopped: merged };
     }
     for (const [id, text] of accepted) state.notes.push(`${locale} dub line shortened: ${id} → 「${text}」`);
     for (const problem of problems) state.notes.push(`${locale} shortening dropped: ${problem}`);
     saveState(workdir, state);
     this.log(`  ${locale} shortening: ${accepted.size} of ${lines.length} lines shortened${problems.length ? `, ${problems.length} dropped` : ""}`);
     return { ids: [...accepted.keys()], problems };
+  }
+
+  /**
+   * The translator's rewording pass: the lines `check-audio --locale` still flags after the
+   * retakes, with what the transcriber heard (review/check.<locale>.json) and their budgets from a
+   * fresh captions sheet, go to the translator (variant "reword"). A reworded line that differs,
+   * keeps every digit and stays within its budget (or its current length, when the sheet has
+   * none) replaces the translation the way a shortened one does; the rest are dropped with the
+   * reason in the notes. Answers { ids, problems }, or { stopped } with this run's line.
+   */
+  async rewordDub(state, locale) {
+    const { ctx } = this;
+    const slug = state.slug;
+    const workdir = this.workdir(slug);
+    const dir = docDir(slug, ctx.root);
+    const flagged = readJson(path.join(workdir, "review", `check-flags.${locale}.json`), { flags: [] }).flags ?? [];
+    const heard = readJson(path.join(workdir, "review", `check.${locale}.json`), { lines: {} }).lines ?? {};
+    const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    const translation = readJson(path.join(dir, "i18n", `${locale}.json`), { lines: {} });
+    const sources = new Map([...eachLine(video)].map(({ line }) => [line.id, line.text]));
+    // The sheet carries each line's budget when the owner chose a dub (i18n-sheet's max_chars).
+    const sheetResult = await run(ctx, ["i18n-sheet", "--slug", slug, "--locale", locale, "--parts", "captions"]);
+    if (sheetResult.code !== 0) return { stopped: await this.block(state, `i18n-sheet ${locale} failed: ${lastLine(sheetResult.out)}`) };
+    const budgets = new Map((readJson(path.join(workdir, "i18n", `${locale}.todo.json`), { lines: [] }).lines ?? []).map((line) => [line.id, line.max_chars]));
+    const lines = flagged
+      .filter((id) => sources.has(id) && typeof translation.lines?.[id]?.text === "string")
+      .map((id) => {
+        const text = translation.lines[id].text;
+        const budget = Number.isInteger(budgets.get(id)) ? budgets.get(id) : [...text].length;
+        return { id, source: sources.get(id), text, heard: String(heard[id]?.heard ?? ""), max_chars: Math.max(budget, [...text].length) };
+      });
+    if (!lines.length) return { ids: [], problems: ["no flagged line has a current translation"] };
+    const answer = await this.stage("translator", slug, { locale, lines, video }, 16_000, state.format, "reword");
+    if (!Array.isArray(answer?.lines)) return { stopped: await this.retryLater(state, "translator", `the ${locale} rewording pass answered without a lines array`) };
+    this.cleared(state, "translator");
+    const accepted = new Map();
+    const problems = [];
+    for (const entry of answer.lines) {
+      const id = String(entry?.id ?? "");
+      const before = lines.find((each) => each.id === id);
+      if (!before) {
+        problems.push(`${id || "?"}: not one of the lines to reword`);
+        continue;
+      }
+      if (accepted.has(id)) continue;
+      const after = typeof entry.text === "string" ? entry.text.trim() : "";
+      if (!after) problems.push(`${id}: the reworded line is empty`);
+      else if (after === before.text) problems.push(`${id}: unchanged`);
+      else if ([...after].length > before.max_chars) problems.push(`${id}: over its budget (${[...after].length} characters, at most ${before.max_chars})`);
+      else if (digitsOf(after) !== digitsOf(before.text)) problems.push(`${id}: the numbers changed`);
+      else accepted.set(id, after);
+    }
+    if (accepted.size) {
+      const merged = await this.mergeDubLines(state, locale, accepted, "reworded");
+      if (merged) return { stopped: merged };
+    }
+    for (const [id, text] of accepted) state.notes.push(`${locale} dub line reworded: ${id} → 「${text}」`);
+    for (const problem of problems) state.notes.push(`${locale} rewording dropped: ${problem}`);
+    saveState(workdir, state);
+    this.log(`  ${locale} rewording: ${accepted.size} of ${lines.length} lines reworded${problems.length ? `, ${problems.length} dropped` : ""}`);
+    return { ids: [...accepted.keys()], problems };
+  }
+
+  /**
+   * Put a dub pass's new translations into docs/videos/<slug>/i18n/<locale>.json through a
+   * captions-only sheet and i18n-merge, so the captions and the dub read the same words and the
+   * hashes are the tool's. Null when merged; else this run's line.
+   */
+  async mergeDubLines(state, locale, accepted, how) {
+    const { ctx } = this;
+    const slug = state.slug;
+    const sheetResult = await run(ctx, ["i18n-sheet", "--slug", slug, "--locale", locale, "--parts", "captions"]);
+    if (sheetResult.code !== 0) return this.block(state, `i18n-sheet ${locale} failed: ${lastLine(sheetResult.out)}`);
+    const sheetFile = path.join(this.workdir(slug), "i18n", `${locale}.todo.json`);
+    const sheet = readJson(sheetFile);
+    sheet.lines = sheet.lines.map((line) => (accepted.has(line.id) ? { ...line, text: accepted.get(line.id) } : line));
+    writeFileSync(sheetFile, `${JSON.stringify(sheet, null, 2)}\n`);
+    const merged = await run(ctx, ["i18n-merge", "--slug", slug, "--locale", locale]);
+    if (merged.code !== 0) return this.retryLater(state, "translator", `the ${how} ${locale} lines do not merge: ${lastLine(merged.out, 2)}`);
+    return null;
   }
 
   /**
