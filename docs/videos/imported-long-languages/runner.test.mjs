@@ -1,13 +1,16 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
+import { createServer } from "node:http";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { approve, sha256File } from "../../../tools/video/core/approvals.mjs";
 import { loadProject, recordStage } from "../../../tools/video/core/state.mjs";
 import { speechHash } from "../../../tools/video/core/timeline.mjs";
-import { SLUGS, HardStop, VideoStop, assertProject, checkedDubReceipt, createSiteClient, cumulativeSnapshot, missingPhaseParts, resolveManifest, run, submitSnapshot, verifyLocal } from "./runner.mjs";
+import { main as videoMain } from "../../../tools/video/cli.mjs";
+import { Automation } from "../../../tools/video/automation/flow.mjs";
+import { SLUGS, DIRECT_STAGE_TIMEOUT_MS, HardStop, VideoStop, assertProject, checkedDubReceipt, createSiteClient, cumulativeSnapshot, directStageOrigin, missingPhaseParts, nativeStageRequest, resolveManifest, run, submitSnapshot, translateLocaleResuming, validateResumeSheet, verifyLocal } from "./runner.mjs";
 
 const json = (file, value) => { mkdirSync(path.dirname(file), { recursive: true }); writeFileSync(file, JSON.stringify(value)); };
 const hash = (value) => createHash("sha256").update(value).digest("hex");
@@ -188,6 +191,182 @@ test("phase completion requires actual server ready states for every selected pa
   project.languages.en.captions.state = "ready";
   project.languages.en.dub.state = "skipped";
   assert.deepEqual(missingPhaseParts(project, "all"), []);
+});
+
+test("direct stage transport is explicit, internal-only, and changes only the stage POST", async (t) => {
+  const f = await fixture(t);
+  const calls = [];
+  const env = { MOKAAIR_SITE: "http://web:3000", MOKAAIR_VIDEO_TOKEN: "test-token", VIDEO_LANGUAGE_API_ORIGIN: "http://api:8000" };
+  const client = createSiteClient({ home: f.base, env, sleep: async () => {}, fetch: async (url, init) => { calls.push({ kind: "fetch", url, init }); return Response.json({}); }, nativeStageRequest: async (url, init) => { calls.push({ kind: "native", url, init }); return Response.json({ text: "stage result" }); } });
+  await client.settings();
+  assert.deepEqual(await client.run("translator", SLUGS[0], "prompt", {}, 100, "slides", "shorten"), { text: "stage result" });
+  await client.submit(SLUGS[0], { gate: "languages" });
+  assert.deepEqual(calls.map(({ kind }) => kind), ["fetch", "native", "fetch"]);
+  assert.equal(calls[1].url, "http://api:8000/api/v1/video/automation/run");
+  assert.equal(calls[1].init.headers.Authorization, calls[0].init.headers.Authorization);
+  assert.equal(JSON.parse(calls[1].init.body).variant, "shorten");
+  assert.equal(calls[2].url, `http://web:3000/api/video/reviews/${SLUGS[0]}/reviews`);
+  assert.equal(directStageOrigin({}, "https://mokaair.com"), null);
+  for (const origin of ["https://example.com", "http://api:8000/", "http://api:8000/path", "http://user:secret@api:8000", "http://api:8000?x=1", "http://127.0.0.1:8000"]) assert.throws(() => directStageOrigin({ ...env, VIDEO_LANGUAGE_API_ORIGIN: origin }, env.MOKAAIR_SITE), /exact internal origins/);
+  assert.throws(() => directStageOrigin(env, "https://mokaair.com"), /exact internal origins/);
+  assert.throws(() => directStageOrigin({ VIDEO_LANGUAGE_API_ORIGIN: "http://api:8000" }, "http://web:3000"), /exact internal origins/);
+});
+
+test("POST network failures and 5xx are never retried; GET and file PUT retain bounded retries", async (t) => {
+  const f = await fixture(t);
+  const env = { MOKAAIR_SITE: "https://example.com", MOKAAIR_VIDEO_TOKEN: "test-token" };
+  for (const failure of ["network", "503"]) {
+    for (const operation of ["run", "submit"]) {
+      let calls = 0;
+      const client = createSiteClient({ home: f.base, env, sleep: async () => { assert.fail("POST must not sleep for a retry"); }, fetch: async () => { calls++; if (failure === "network") throw new Error("connection closed"); return Response.json({ detail: "gateway timed out" }, { status: 503 }); } });
+      await assert.rejects(operation === "run" ? client.run("translator", SLUGS[0], "", {}, 100, "slides") : client.submit(SLUGS[0], { gate: "languages" }), /POST was not retried/);
+      assert.equal(calls, 1);
+    }
+  }
+  const counts = { GET: 0, PUT: 0 };
+  const client = createSiteClient({ home: f.base, env, sleep: async () => {}, fetch: async (_url, init) => { counts[init.method]++; return counts[init.method] === 1 ? Response.json({}, { status: 503 }) : Response.json({ complete: true }); } });
+  await client.settings();
+  const file = path.join(f.base, "dub.m4a"); writeFileSync(file, "dub");
+  await client.upload(SLUGS[0], { ...ref("dub_en", "dub"), path: file });
+  assert.deepEqual(counts, { GET: 2, PUT: 2 });
+});
+
+test("direct stage preserves quota/auth hard stops and never retries its unknown result", async (t) => {
+  const f = await fixture(t);
+  const env = { MOKAAIR_SITE: "http://web:3000", MOKAAIR_VIDEO_TOKEN: "test-token", VIDEO_LANGUAGE_API_ORIGIN: "http://api:8000" };
+  for (const status of [401, 403, 429, 503]) {
+    let calls = 0;
+    const client = createSiteClient({ home: f.base, env, sleep: async () => assert.fail("direct POST must not retry"), fetch: async () => assert.fail("stage cannot use BFF"), nativeStageRequest: async () => { calls++; return Response.json({ detail: "refused" }, { status }); } });
+    await assert.rejects(client.run("translator", SLUGS[0], "", {}, 100, "slides"), status === 503 ? VideoStop : HardStop);
+    assert.equal(calls, 1);
+  }
+});
+
+test("native transport accepts delayed headers, bounds the whole request and limits response bytes", async (t) => {
+  assert.equal(DIRECT_STAGE_TIMEOUT_MS, 1_020_000);
+  const server = createServer((request, response) => {
+    if (request.url === "/waiting") return;
+    if (request.url === "/large") { response.end("x".repeat(1024)); return; }
+    setTimeout(() => { response.setHeader("Content-Type", "application/json"); response.end(JSON.stringify({ received: request.method })); }, 30);
+  });
+  await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
+  t.after(() => { server.closeAllConnections(); server.close(); });
+  const origin = `http://127.0.0.1:${server.address().port}`;
+  const init = { method: "POST", headers: { "Content-Type": "application/json" }, body: "{}" };
+  const result = await nativeStageRequest(`${origin}/delayed`, init, { timeoutMs: 1000 });
+  assert.deepEqual(await result.json(), { received: "POST" });
+  await assert.rejects(nativeStageRequest(`${origin}/waiting`, init, { timeoutMs: 30 }), /total deadline/);
+  await assert.rejects(nativeStageRequest(`${origin}/large`, init, { maxBytes: 64, timeoutMs: 1000 }), /byte limit/);
+  await assert.rejects(nativeStageRequest(`${origin}/large`, { ...init, body: "x".repeat(4 * 1024 * 1024 + 1) }, { requestImpl: () => assert.fail("oversized request must not leave this process") }), /request exceeds the byte limit/);
+});
+
+async function resumeFixture(t) {
+  const f = await fixture(t);
+  const entry = f.manifest.videos[0];
+  const calls = [];
+  const ctx = { runCommand: async (args) => {
+    calls.push(args[0]);
+    let out = "";
+    const sink = { write: (text) => { out += text; } };
+    const code = await videoMain(args, { root: f.manifest.root, env: { VIDEO_WORKDIR: f.manifest.work_base }, stdout: sink, stderr: sink });
+    return { code, out };
+  } };
+  const parts = ["metadata", "captions"];
+  assert.equal((await ctx.runCommand(["i18n-sheet", "--slug", entry.slug, "--locale", "en", "--parts", parts.join(",")])).code, 0);
+  const file = path.join(entry.workdir, "i18n/en.todo.json");
+  const fresh = JSON.parse(readFileSync(file, "utf8"));
+  const translated = structuredClone(fresh);
+  translated.lines.forEach((line) => { line.text = `Translated ${line.id}`; });
+  translated.chapters.forEach((chapter) => { chapter.text = `Chapter ${chapter.scene}`; });
+  translated.title.text = "Translated title";
+  translated.description.text = "Translated description";
+  translated.tags.text = ["AI"];
+  json(file, translated);
+  calls.length = 0;
+  return { ...f, entry, ctx, parts, file, fresh, translated, calls, project: loadProject({ slug: entry.slug, root: f.manifest.root }), state: { slug: entry.slug, format: "slides" } };
+}
+
+test("an interrupted translated worksheet is source-checked then independently reviewed and merged without another translator", async (t) => {
+  const f = await resumeFixture(t);
+  const saved = readFileSync(f.file, "utf8");
+  const events = [];
+  const stages = [];
+  const automation = {
+    translateLocale: () => assert.fail("must reuse the paid translation"),
+    stage: async (stage, slug, payload) => {
+      stages.push(stage);
+      assert.equal(slug, f.entry.slug);
+      assert.deepEqual(payload.worksheet, f.translated);
+      assert.equal(existsSync(path.join(f.project.dir, "i18n/en.json")), false, "source validation did not merge or approve");
+      const checked = structuredClone(payload.worksheet);
+      checked.lines[0].text = "Independently corrected English";
+      return { worksheet: checked };
+    }, cleared: () => {}, persist: () => {},
+  };
+  await translateLocaleResuming(automation, f.ctx, f.entry, f.state, "en", f.parts, f.project, (event) => events.push(event));
+  assert.deepEqual(stages, ["caption_reviewer"]);
+  assert.deepEqual(f.calls, ["i18n-sheet", "i18n-merge"]);
+  assert.equal(events[0].worksheet_sha256, hash(saved));
+  assert.equal(loadProject({ slug: f.entry.slug, root: f.manifest.root }).translations.en.lines[f.translated.lines[0].id].text, "Independently corrected English");
+  assert.equal(readFileSync(path.join(f.entry.workdir, "i18n", `en.todo.resume-${hash(saved)}.json`), "utf8"), saved);
+});
+
+test("resume refuses changed sources, identity, budgets, missing content and missing reviewer output while preserving the paid worksheet", async (t) => {
+  const f = await resumeFixture(t);
+  for (const mutate of [
+    (sheet) => { sheet.slug = SLUGS[1]; }, (sheet) => { sheet.locale = "ja"; },
+    (sheet) => { sheet.parts = ["captions"]; }, (sheet) => { sheet.lines[0].source += " changed"; },
+    (sheet) => { sheet.lines[0].id = "wrong"; }, (sheet) => { sheet.lines[0].scene = "wrong"; },
+    (sheet) => { sheet.lines[0].max_chars = 1; }, (sheet) => { sheet.lines.pop(); },
+    (sheet) => { sheet.title.source += " changed"; }, (sheet) => { sheet.chapters[0].source += " changed"; },
+    (sheet) => { sheet.tags.source.push("changed"); }, (sheet) => { sheet.lines[0].text = ""; },
+  ]) {
+    const wrong = structuredClone(f.translated);
+    mutate(wrong);
+    assert.throws(() => validateResumeSheet(wrong, f.fresh, f.project.doc), VideoStop);
+  }
+  const wrong = structuredClone(f.translated);
+  wrong.lines[0].source += " changed";
+  json(f.file, wrong);
+  const badBytes = readFileSync(f.file, "utf8");
+  const automation = { stage: () => assert.fail("source drift must stop before paid review"), translateLocale: () => assert.fail("must not overwrite paid translation") };
+  await assert.rejects(translateLocaleResuming(automation, f.ctx, f.entry, f.state, "en", f.parts, f.project), /differs from the current sheet/);
+  assert.equal(readFileSync(f.file, "utf8"), badBytes);
+  assert.equal(existsSync(path.join(f.project.dir, "i18n/en.json")), false);
+  json(f.file, f.translated);
+  const original = readFileSync(f.file, "utf8");
+  for (const answer of [{}, { worksheet: { ...f.translated, lines: [] } }]) {
+    await assert.rejects(translateLocaleResuming({ ...automation, stage: async () => answer }, f.ctx, f.entry, f.state, "en", f.parts, f.project), VideoStop);
+    assert.equal(readFileSync(f.file, "utf8"), original);
+    assert.equal(existsSync(path.join(f.project.dir, "i18n/en.json")), false, "an absent or incomplete review never becomes ready");
+  }
+  await assert.rejects(translateLocaleResuming({ ...automation, stage: async () => { throw new VideoStop("connection ended after review began"); } }, f.ctx, f.entry, f.state, "en", f.parts, f.project), /connection ended/);
+  assert.equal(readFileSync(f.file, "utf8"), original);
+  assert.equal(f.calls.includes("i18n-merge"), false);
+});
+
+test("fresh translations cannot bypass an absent independent review, and the next invocation resumes only that review", async (t) => {
+  const f = await resumeFixture(t);
+  json(f.file, f.fresh);
+  const stages = [];
+  const ctx = { ...f.ctx, root: f.manifest.root, env: { VIDEO_WORKDIR: f.manifest.work_base }, now: () => new Date(), stdout: { write: () => {} } };
+  const automation = new Automation(ctx, { report: async () => {} }, {});
+  const missingReview = async (stage) => {
+    stages.push(stage);
+    return stage === "translator" ? { worksheet: structuredClone(f.translated) } : {};
+  };
+  automation.stage = missingReview;
+  await assert.rejects(translateLocaleResuming(automation, ctx, f.entry, f.state, "en", f.parts, f.project), /caption_reviewer returned no worksheet/);
+  assert.deepEqual(stages, ["translator", "caption_reviewer"]);
+  assert.equal(automation.stage, missingReview, "temporary strict wrapper is always restored");
+  assert.equal(f.calls.includes("i18n-merge"), false);
+  assert.equal(existsSync(path.join(f.project.dir, "i18n/en.json")), false);
+  assert.deepEqual(JSON.parse(readFileSync(f.file, "utf8")), f.translated, "successful translation remains available after a failed review");
+  stages.length = 0;
+  automation.stage = async (stage) => { stages.push(stage); return { worksheet: structuredClone(f.translated) }; };
+  await translateLocaleResuming(automation, ctx, f.entry, f.state, "en", f.parts, f.project);
+  assert.deepEqual(stages, ["caption_reviewer"]);
+  assert.equal(existsSync(path.join(f.project.dir, "i18n/en.json")), true);
 });
 
 test("one failed video does not starve the next, while owner/quota failure stops all", async (t) => {

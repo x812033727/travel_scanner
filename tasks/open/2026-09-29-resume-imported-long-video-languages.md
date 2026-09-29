@@ -29,7 +29,7 @@ The standard worker cannot adopt these external cuts automatically.
 - [x] The six local final hashes match the currently approved backend reviews.
 - [x] Original source timing is faithfully adapted with provenance that separates
   the original Hanhan narration from the Gemini target dub voice.
-- [ ] An isolated, resumable runner makes only the six projects' selected languages,
+- [x] An isolated, resumable runner makes only the six projects' selected languages,
   preserving the approved cuts and the owner's language and publication choices.
 - [ ] Completed metadata/captions and checked dub tracks are submitted cumulatively;
   failures retain actual reasons and partial progress survives a restart.
@@ -67,3 +67,11 @@ The job must not call the general auto loop, assemble, tidy or youtube-sync.
   All 554 source SRT cues match the source timing within 0.5 ms. Independent review
   covered approval drift, immutable inputs, complete audio checks and cumulative
   submission preservation.
+- Production trial found a successful 302,552 ms translator answer lost at the
+  295,000 ms BFF timeout. The isolated transport/resume correction passes 29 tests
+  and preserves the 94 already translated English lines for fresh independent
+  review. The shared-worker follow-up has its own unclaimed task.
+- Corrected host job `mokaair-imported-languages-20260929-v2` started at
+  `2026-09-29T12:01:31.863243928Z` after a fresh successful six-video dry run.
+  See `docs/videos/imported-long-languages/operations-20260929.md` for exact hashes,
+  container IDs, interrupted-call evidence and the authoritative continuation path.

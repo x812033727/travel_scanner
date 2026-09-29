@@ -69,6 +69,20 @@ through a `node_modules` symlink to `/opt/mokaair/node_modules`; no credentials 
 copied into the bundle. The regular worker has no `auto.json` at the batch parent
 and does not adopt this job.
 
+For subscription stages on that host, explicitly set both
+`MOKAAIR_SITE=http://web:3000` and
+`VIDEO_LANGUAGE_API_ORIGIN=http://api:8000`. Only model-stage POSTs use the
+existing internal API directly, with the same token permissions. This avoids the
+web relay's 295-second deadline and uses a bounded 1,020-second native HTTP
+request. Other origins are rejected; other routes use their existing transport.
+POST requests are not automatically retried because a timeout can lose the answer
+after the model has already completed.
+
+An interrupted translated worksheet is preserved and checked against a fresh
+source worksheet before reuse. It must still pass a fresh independent caption
+review and the standard merge validation before becoming a ready translation.
+Source or budget differences pause the project rather than overwrite that work.
+
 ## Acceptance
 
 ```text

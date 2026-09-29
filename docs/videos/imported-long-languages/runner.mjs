@@ -2,6 +2,7 @@
 // A bounded, explicitly scoped continuation for the six imported long cuts. This never
 // invokes auto.step, assemble, package, project PUT, publish, or a YouTube endpoint.
 import { createHash } from "node:crypto";
+import { request as httpRequest } from "node:http";
 import { appendFileSync, closeSync, existsSync, openSync, readFileSync, readSync, statSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
@@ -13,6 +14,7 @@ import { atomicWrite, isInside, readJson, stopRequested } from "../../../tools/v
 import { dubsForUpload, writeLanguages } from "../../../tools/video/core/stages.mjs";
 import { loadProject } from "../../../tools/video/core/state.mjs";
 import { speechHash } from "../../../tools/video/core/timeline.mjs";
+import { mergeSheet } from "../../../tools/video/i18n/cli.mjs";
 import { composeMetadata } from "../../../tools/video/package/metadata.mjs";
 import { readCredentials } from "../../../tools/video/tts/credentials.mjs";
 import { USER_AGENT } from "../../../tools/video/tts/client.mjs";
@@ -22,6 +24,9 @@ const LOCALES = ["en", "ja", "ko", "zh-CN"];
 const PARTS = ["metadata", "captions", "dub"];
 const COMMANDS = new Set(["review-pull", "i18n-sheet", "i18n-merge", "dub", "check-audio", "captions"]);
 const CHUNK_BYTES = 4 * 1024 * 1024;
+export const DIRECT_STAGE_TIMEOUT_MS = (900 + 60 + 60) * 1000;
+const DIRECT_STAGE_MAX_BYTES = 16 * 1024 * 1024;
+const DIRECT_STAGE_REQUEST_MAX_BYTES = 4 * 1024 * 1024;
 export class HardStop extends Error {}
 export class VideoStop extends Error {}
 const digest = (value) => createHash("sha256").update(value).digest("hex");
@@ -95,20 +100,84 @@ export function cumulativeSnapshot(project, additions = { locales: {}, files: []
   return { locales: kept, files: [...roles].sort().map((role) => files.get(role)) };
 }
 
+/** Explicit, host-only transport for long subscription stages. No public/custom origin is
+ * accepted: this carries the same existing bearer token over the Compose network. */
+export function directStageOrigin(env, site) {
+  const origin = env?.VIDEO_LANGUAGE_API_ORIGIN;
+  if (!origin) return null;
+  if (env.MOKAAIR_SITE !== "http://web:3000" || site !== "http://web:3000" || origin !== "http://api:8000") throw new HardStop("VIDEO_LANGUAGE_API_ORIGIN requires the exact internal origins http://web:3000 and http://api:8000");
+  return origin;
+}
+
+/** Native HTTP avoids fetch/Undici's default five-minute response-header deadline. The
+ * total deadline includes waiting for headers and reading the complete bounded response.
+ * No redirects or retries are followed here. Test overrides affect transport only. */
+export function nativeStageRequest(url, init, { requestImpl = httpRequest, timeoutMs = DIRECT_STAGE_TIMEOUT_MS, maxBytes = DIRECT_STAGE_MAX_BYTES } = {}) {
+  return new Promise((resolve, reject) => {
+    let finished = false;
+    let request;
+    let timer;
+    const finish = (error, response) => {
+      if (finished) return;
+      finished = true;
+      clearTimeout(timer);
+      if (error) reject(error); else resolve(response);
+    };
+    try {
+      const body = init.body ?? "";
+      if (Buffer.byteLength(body) > DIRECT_STAGE_REQUEST_MAX_BYTES) throw new VideoStop("Direct language-stage request exceeds the byte limit");
+      request = requestImpl(url, { method: init.method, headers: { ...init.headers, "Content-Length": Buffer.byteLength(body) }, agent: false }, (response) => {
+        const chunks = [];
+        let size = 0;
+        response.on("data", (chunk) => {
+          size += chunk.length;
+          if (size > maxBytes) {
+            const error = new VideoStop("Direct language-stage response exceeds the byte limit");
+            finish(error);
+            response.destroy(error);
+            request.destroy(error);
+          } else chunks.push(Buffer.from(chunk));
+        });
+        response.on("error", (error) => finish(error));
+        response.on("aborted", () => finish(new VideoStop("Direct language-stage response was interrupted")));
+        response.on("end", () => {
+          if (finished) return;
+          const status = response.statusCode ?? 502;
+          finish(null, new Response([204, 205, 304].includes(status) ? null : Buffer.concat(chunks), { status, headers: { "Content-Type": "application/json" } }));
+        });
+      });
+      request.on("error", (error) => finish(error));
+      timer = setTimeout(() => {
+        const error = new VideoStop(`Direct language stage exceeded the ${timeoutMs / 1000}s total deadline`);
+        finish(error);
+        request.destroy(error);
+      }, timeoutMs);
+      request.end(body);
+    } catch (error) { finish(error); request?.destroy(); }
+  });
+}
+
 /** No call in this client can change owner choices, project fields, approvals, or YouTube. */
 export function createSiteClient(ctx) {
   const { site, token } = readCredentials({ env: ctx.env, home: ctx.home });
   if (!token) throw new HardStop("No video tool token; pair the existing video CLI first.");
+  const direct = directStageOrigin(ctx.env, site);
   const request = async (method, route, body, binary = false) => {
-    for (let attempt = 0; attempt < 2; attempt++) {
+    const attempts = ["GET", "PUT"].includes(method) ? 2 : 1;
+    const uncertain = method === "POST" ? "; POST was not retried because the work may already have completed; inspect its result before resuming" : "";
+    for (let attempt = 0; attempt < attempts; attempt++) {
       let response;
       try {
-        response = await ctx.fetch(`${site}/api/video/${route}`, {
+        const init = {
           method, headers: { Authorization: `Bearer ${token}`, "User-Agent": USER_AGENT, "Accept-Language": "zh-TW", ...(body !== undefined ? { "Content-Type": binary ? "application/octet-stream" : "application/json" } : {}) },
           body: body === undefined ? undefined : binary ? body : JSON.stringify(body),
-        });
+        };
+        response = direct && method === "POST" && route === "automation/run"
+          ? await (ctx.nativeStageRequest ?? nativeStageRequest)(`${direct}/api/v1/video/automation/run`, init)
+          : await ctx.fetch(`${site}/api/video/${route}`, init);
       } catch (error) {
-        if (error instanceof HardStop || attempt === 1) throw error;
+        if (error instanceof HardStop) throw error;
+        if (attempt === attempts - 1) throw new VideoStop(`${clean(error.message)}${uncertain}`);
         await ctx.sleep(1000);
         continue;
       }
@@ -116,7 +185,7 @@ export function createSiteClient(ctx) {
       if (response.ok) return result;
       const message = clean(result.detail ?? result.title ?? `HTTP ${response.status}`);
       if ([401, 403, 429].includes(response.status) || /budget|quota|subscription_paused|token_invalid|provider_not_configured/.test(result.code ?? "")) throw new HardStop(message);
-      if (response.status < 500 || attempt === 1) throw new VideoStop(message);
+      if (response.status < 500 || attempt === attempts - 1) throw new VideoStop(`${message}${response.status >= 500 ? uncertain : ""}`);
       await ctx.sleep(1000);
     }
     throw new VideoStop("Request did not finish");
@@ -155,6 +224,72 @@ export function createSiteClient(ctx) {
       return record;
     },
   };
+}
+
+const sheetSource = (sheet) => ({
+  slug: sheet.slug, locale: sheet.locale, parts: sheet.parts,
+  lines: sheet.lines?.map(({ id, scene, source, max_chars }) => ({ id, scene, source, max_chars })),
+  chapters: sheet.chapters?.map(({ scene, source }) => ({ scene, source })),
+  ...Object.fromEntries(["title", "description", "tags"].map((key) => [key, sheet[key] === null ? null : { source: sheet[key]?.source }])),
+});
+
+/** Source validation is not a review or a merge: an interrupted translator's worksheet
+ * is reusable only against the exact current identity, parts, sources and dub budgets. */
+export function validateResumeSheet(sheet, fresh, doc, previous) {
+  if (canonical(sheetSource(sheet)) !== canonical(sheetSource(fresh))) throw new VideoStop(`${fresh.locale}: saved worksheet identity, source, or dub budget differs from the current sheet; preserved for inspection`);
+  const { problems } = mergeSheet(doc, sheet, previous);
+  if (problems.length) throw new VideoStop(`${fresh.locale}: saved worksheet is incomplete or invalid: ${problems.join("; ")}`);
+}
+
+/** Reuse paid translation bytes after an interrupted reviewer, never its missing review.
+ * The standard sheet command still determines the current sources and character budgets. */
+export async function translateLocaleResuming(automation, ctx, entry, state, locale, parts, project, event = () => {}) {
+  const file = path.join(entry.workdir, "i18n", `${locale}.todo.json`);
+  const saved = existsSync(file) ? readFileSync(file, "utf8") : null;
+  const worksheet = saved === null ? null : JSON.parse(saved);
+  const filled = (value) => typeof value === "string" ? value.trim().length > 0 : Array.isArray(value) && value.length > 0;
+  const hasTranslation = worksheet && [...(worksheet.lines ?? []), ...(worksheet.chapters ?? []), worksheet.title, worksheet.description, worksheet.tags].some((item) => filled(item?.text));
+  if (!hasTranslation) {
+    // The shared flow accepts an absent reviewer worksheet and then merges the translator's
+    // copy. This isolated lane requires both actual outputs to pass the source/completeness
+    // guard; keeping its existing flow preserves prompts, accounting and failure handling.
+    const stage = automation.stage;
+    automation.stage = async (...args) => {
+      const answer = await stage.call(automation, ...args);
+      if (!["translator", "caption_reviewer"].includes(args[0])) return answer;
+      const fresh = args[2].worksheet;
+      if (!Array.isArray(answer.worksheet?.lines)) throw new VideoStop(`${locale}: ${args[0]} returned no worksheet`);
+      const checked = { locale, slug: fresh.slug, parts: fresh.parts, ...answer.worksheet };
+      validateResumeSheet(checked, fresh, project.doc, project.translations[locale]);
+      return { ...answer, worksheet: checked };
+    };
+    try { return await automation.translateLocale(state, locale, parts, project.doc); }
+    finally { automation.stage = stage; }
+  }
+
+  const savedHash = digest(saved);
+  const backup = path.join(entry.workdir, "i18n", `${locale}.todo.resume-${savedHash}.json`);
+  if (!existsSync(backup)) atomicWrite(backup, saved);
+  let fresh;
+  try {
+    const result = await ctx.runCommand(["i18n-sheet", "--slug", state.slug, "--locale", locale, "--parts", parts.join(",")]);
+    if (result.code !== 0) throw new VideoStop(`${locale}: could not validate the saved worksheet against a fresh sheet: ${result.out}`);
+    fresh = readJson(file, null);
+    if (!fresh) throw new VideoStop(`${locale}: no fresh worksheet was produced`);
+  } finally { atomicWrite(file, saved); }
+  validateResumeSheet(worksheet, fresh, project.doc, project.translations[locale]);
+  event({ slug: state.slug, type: "translation-resumed", locale, worksheet_sha256: savedHash, stage: "caption_reviewer" });
+  const reviewed = await automation.stage("caption_reviewer", state.slug, { locale, parts, worksheet, video: project.doc }, 32_000, state.format);
+  if (!Array.isArray(reviewed.worksheet?.lines)) throw new VideoStop(`${locale}: caption reviewer returned no worksheet; original translation retained`);
+  // The model may omit identity, as in the standard flow, but cannot replace it.
+  const checked = { locale, slug: fresh.slug, parts: fresh.parts, ...reviewed.worksheet };
+  validateResumeSheet(checked, fresh, project.doc, project.translations[locale]);
+  save(file, checked);
+  const merged = await ctx.runCommand(["i18n-merge", "--slug", state.slug, "--locale", locale]);
+  if (merged.code !== 0) throw new VideoStop(`${locale}: reviewed worksheet did not merge: ${merged.out}`);
+  automation.cleared(state, "translator");
+  automation.persist(state);
+  return `${state.slug}: saved ${locale} translation independently reviewed and merged`;
 }
 
 export function resolveManifest(raw, base) {
@@ -399,7 +534,7 @@ export async function run(options, dependencies = {}) {
             record.status = "running";
             record.active_unit = { phase, kind: action.kind, locale: action.locale, started_at: now() };
             event({ slug: entry.slug, type: "unit-start", ...record.active_unit });
-            const line = action.kind === "translate" ? await automation.translateLocale(state, action.locale, action.parts, project.doc) : await automation.makeDub(state, action.locale);
+            const line = action.kind === "translate" ? await translateLocaleResuming(automation, ctx, entry, state, action.locale, action.parts, project, event) : await automation.makeDub(state, action.locale);
             event({ slug: entry.slug, type: action.kind, locale: action.locale, detail: clean(line ?? "already current") });
             if (automation.halted || state.status === "blocked") throw new VideoStop(clean(line ?? "Stage stopped; resume in a later invocation"));
             const translation = path.join(project.dir, "i18n", `${action.locale}.json`);
