@@ -37,13 +37,13 @@ Can't generate DDL for NullType(); did you forget to specify a type on this Colu
 ## Definition of done
 
 - [x] `uv run pytest tests/test_discovery_migration.py -q -p no:cacheprovider` 單獨跑全綠。
-- [ ] 整套一起跑仍然全綠，測試斷言的東西沒變。
+- [x] 整套一起跑仍然全綠，測試斷言的東西沒變。
 
 ## Steps
 
 - [x] 在測試模組頂端 import `app.models`（`import app.models  # noqa: F401`，讓 `users` 進 metadata），
       或改用 `app.db.Base.metadata`／`app.models` 匯出的表來建 frozen metadata；看哪個和檔案現有寫法一致。
-- [ ] 單獨跑一次、和整套跑一次，都綠。
+- [x] 單獨跑一次、和整套跑一次，都綠。
 - [x] 順手看看 `tests/` 裡其他只 import 半邊 model 的 migration 測試有沒有同一個形狀（`grep -l "metadata.create_all" tests/*.py`）。
 
 ## How to verify
@@ -84,3 +84,19 @@ cd apps/api && uv run pytest -q -p no:cacheprovider
   are identical to main.
 - Full `mypy app` passed (444 files). The pre-PR collision check again found no
   competing active work; the full local pytest run collected 5,459 cases.
+- The full local suite on base `a5ff4674` passed: **5,040 passed, 419 skipped,
+  2 warnings**, exit 0, in 1,087.93 seconds. Skips require external integration
+  services or POSIX features. Warnings are the existing Redis `setex` deprecation
+  (tracked by `2026-09-19-app-places-router-py-redis-setex`) and AsyncMock coroutine
+  warning previously recorded in `2026-09-09-frontend-flow-saved-api`.
+- Rebased onto `9656d0d9` after the full suite: intervening main commits #977/#978
+  change video tooling/content/API, not discovery models, migrations, this test
+  or Python dependencies. The standalone migration check passed again after the
+  rebase (3 passed, 2 PostgreSQL skips). The six affected upstream API modules
+  passed separately: 94 passed, 5 PostgreSQL skips. Full API Ruff, `mypy app`
+  (444 files) and `mypy tests` (332 files) passed again on the rebased source.
+  The earlier full-suite result remains
+  attributed to its actual base, rather than being presented as a newer-base run.
+- Final pre-push collision refresh: 10 open PRs / 170 fully paginated files,
+  41 remote heads, 386 local branches and 217 other worktrees. No active collision;
+  the same historical branch and absent P: checkout remnants are preserved.
