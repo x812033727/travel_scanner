@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "format": "shorts",
+  "locale": "zh-TW",
+  "experiment_summary": "2026-09-28（台灣時間），兩個全新脈絡的 Codex 子代理，同一會話模型設定，各完成一次打包請求，零重試。收據、三題算術與海報共用這兩次原始輸出。精確後端模型版本未由工具提供。",
+  "limitations": "這是一次小樣本示範，不能推論其他模型、其他題型或一般正確率。畫面是原始文字結果的編排，並非產品介面錄影。 海報是 HTML/CSS 設計，非影像生成；活動為虛構。兩版套用同一套 Noto Sans TC 字型渲染，偏好不代表客觀勝負。 收據、三題算術與海報在每組同一則請求內打包完成；每組只有一次輸出，不能排除任務互相影響，也不能分離個別附加要求的效果。",
+  "evidence": [
+    {
+      "path": "experiments/protocol.json",
+      "sha256": "94e581c08988a62e1ee4b5233484c79cd838224c55852f100fc85edf999d9772"
+    },
+    {
+      "path": "experiments/plain.json",
+      "sha256": "7387e347fb7f3d247022c9b8aa362177f14b8d16b376462e7ad3bac32c094b84"
+    },
+    {
+      "path": "experiments/structured.json",
+      "sha256": "16a6b1d6247d4f209cb7067a6afbec3c12daba96d3b40a8526b9389a10edaa5a"
+    },
+    {
+      "path": "experiments/plain-poster.html",
+      "sha256": "5fb145daed5d52e0325639b6a2b84bcada701fd785124a3203b2fcf534aea270"
+    },
+    {
+      "path": "experiments/structured-poster.html",
+      "sha256": "4db865d6cbb662cb4f472c9ad40ff0bd2c140b27581ed3beef36f49d7d2ddd21"
+    }
+  ],
+  "slug": "shorts-poster-blind",
+  "series": "blind",
+  "titles": [
+    "同一個 AI 做兩張海報，你選 A 還是 B？",
+    "多加三項設計要求，海報有什麼不同？"
+  ],
+  "description": "同一會話模型設定、兩個全新脈絡，製作同一份虛構活動的 HTML/CSS 海報。兩組都有相同必填文字與幾何圖形限制；B 另外要求閱讀順序、手機可讀與必填文字檢查，並與算術任務的核對、輸出格式要求一同追加。這是網頁排版輸出，不是生圖模型評比。收據、三題算術與海報在每組同一則請求內打包完成；每組只有一次輸出，不能排除任務互相影響，也不能分離個別附加要求的效果。",
+  "scenes": [
+    {
+      "kicker": "先選，再看提示詞",
+      "headline": "兩張 AI 海報\n你選哪一張？",
+      "body": [
+        "同一個 AI・同一份活動資料",
+        "先看成品，再揭曉提示詞"
+      ],
+      "note": "HTML/CSS 海報實測・活動為虛構",
+      "narration": [
+        "同一個人工智慧做兩張海報。",
+        "你先選，等一下再看提示詞。"
+      ]
+    },
+    {
+      "kicker": "版本 A",
+      "headline": "版本 A",
+      "asset": "experiments/plain-poster.html",
+      "narration": [
+        "先看第一張，",
+        "記住它的配色和文字安排。"
+      ]
+    },
+    {
+      "kicker": "版本 B",
+      "headline": "版本 B",
+      "asset": "experiments/structured-poster.html",
+      "narration": [
+        "再看第二張，",
+        "同樣看看配色和文字安排。"
+      ]
+    },
+    {
+      "headline": "你剛剛選了誰？",
+      "big": "A / B",
+      "body": [
+        "先記住答案",
+        "接著揭曉提示差異"
+      ],
+      "narration": [
+        "先記住你選哪張。",
+        "兩組用的是同一份活動文字。"
+      ]
+    },
+    {
+      "headline": "B 多了這些要求",
+      "body": [
+        "讓標題、時間、邀請有閱讀順序",
+        "手機縮小後也能閱讀",
+        "完稿前檢查必填文字"
+      ],
+      "narration": [
+        "第二組多要求閱讀順序，",
+        "手機上要看得清楚，也要確認沒漏字。"
+      ]
+    },
+    {
+      "headline": "兩版都沒漏字",
+      "body": [
+        "標題、時間、邀請、虛構標示",
+        "四項必要內容都齊全"
+      ],
+      "note": "兩版同字型渲染；這次各生成一次。",
+      "narration": [
+        "檢查後，兩張必要文字都齊全。",
+        "這次沒有客觀的輸家。"
+      ]
+    },
+    {
+      "headline": "哪個細節\n讓你選了它？",
+      "body": [
+        "留言 A 或 B，說說原因"
+      ],
+      "narration": [
+        "是配色、插圖，還是文字安排？",
+        "告訴我，你選哪一張。"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,646 @@
+{
+  "schema": "t1-t2-candidate-preparation-evidence-v1",
+  "status": "candidate-only",
+  "production_authorized": false,
+  "production_writes": false,
+  "source_git_commit": "086e006cdfd5a982da9f412d28939ebb8eb4b453",
+  "plan_git_commit": "2fda1163d974e75cbe0f6ac68018380c7b06e92d",
+  "validation_runtime_git_commit": "2fda1163d974e75cbe0f6ac68018380c7b06e92d",
+  "candidate_manifest_sha256": "d2e3fc9a7346b7e8345bcce13a0db7771be0bcffd79e4b0ed4adba49dcde5ab0",
+  "builder_validator_sha256": "9adecf746221164d98e15277b1426c8015cb55f6208faa8cc1d0ccf778c4efb1",
+  "offline_validation_sha256": "49d9062cd2b415266db0a77a4be0919e895570f5cd23f0ed00b0fc9fb43ba35e",
+  "private_readme_sha256": "96faf739aeca502be4f7e4841af1cac9109c5237df08fa1ec404a6a41d07eae3",
+  "historical_snapshot": {
+    "captured_at": "2026-09-29T02:14:43.038128+00:00",
+    "original_inventory_sha256": "ca2ef0aa181c9bd60f13bdeb35371fd02bbe3b25f78ccd6cfa6574040d74a17a",
+    "fresh": false
+  },
+  "counts": {
+    "articles": 4,
+    "target_documents": 16,
+    "source_documents": 4,
+    "localized_artwork": 48,
+    "original_source_assets": 12
+  },
+  "validation": {
+    "status": "PASS_candidate_integrity_only",
+    "checks": {
+      "exact_git_pack_blobs": 4,
+      "exact_git_asset_blobs": 60,
+      "GuideDocument_validated": 20,
+      "target_document_hashes_match_plan": 16,
+      "source_document_hashes_match_plan": 4,
+      "source_and_root_preservation": 4,
+      "localized_artwork_hashes_bound_to_original_reviews": 48,
+      "original_source_assets_preserved": 12,
+      "unexpected_content_asset_review_files": 0,
+      "original_review_status_preserved": true
+    },
+    "claims_excluded": [
+      "fresh production state",
+      "strict editorial intake pass",
+      "new independent editorial approval",
+      "database import dry-run",
+      "same-image PostgreSQL rehearsal",
+      "deployment",
+      "publication",
+      "live browser verification"
+    ]
+  },
+  "articles": [
+    {
+      "wave": "T1",
+      "slug": "marketing-mix-models",
+      "target_locales": [
+        "en",
+        "ja",
+        "ko",
+        "zh-CN"
+      ],
+      "pack_git_path": "apps/api/app/guides/content/marketing-mix-models.json",
+      "pack_sha256": "ff388b4168225355e69442ebeef528f1766669e40dd876dbb3aeffbe62e5168c",
+      "source_document_sha256_normalized": "cf9325d203eae0940db98bf6cdc8efcf691667b405a9f396e6e4f16bce937725",
+      "target_document_sha256_normalized": {
+        "en": "373a0509f37ab7a87abf760a20707b6fbabb8d16add2ec16caa7f4cc955a8551",
+        "ja": "a4394674ae748c9de956a3edfe5eac35ea76d142da48f4e28e8c95c9d3462384",
+        "ko": "1b83cd2e4005d1a2cf8ca2a270a0fc022283c4801b894304590de7316138468b",
+        "zh-CN": "5ca07548800feb23a11c71e5f918ade7efb02b87acf203051cbdf856319b296c"
+      },
+      "source_and_root_metadata_preserved": true,
+      "editorial_release_acceptance": "original_T1_translation_GO_preserved_no_new_review",
+      "assets": [
+        {
+          "repository_path": "apps/web/public/guides/marketing-mix-models/diagram-1-en.svg",
+          "sha256": "e1a10fee6437ccafa0037d106544af8cc95d37a8e6c17926943c1b70f152fcbe",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/marketing-mix-models/diagram-1-ja.svg",
+          "sha256": "d5ac0ecfdd7388a547ca043af7392fbf008ebc6226deb0a2e6f166718a4cec6e",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/marketing-mix-models/diagram-1-ko.svg",
+          "sha256": "d8fc648220d42f2f411955a736253272e03f5ee8773ba3efc303b48ce2145980",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/marketing-mix-models/diagram-1-zh-cn.svg",
+          "sha256": "54642ea9e86d10300fd3d0a9279d2e3b9de0347ec4a22ea7ea468e627453045e",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/marketing-mix-models/diagram-1.svg",
+          "sha256": "f6bceb29a3285b8b401d2a7313e64204362d80a660dcf7941271decac847cb3b",
+          "source_asset": true
+        },
+        {
+          "repository_path": "apps/web/public/guides/marketing-mix-models/hero-en.jpg",
+          "sha256": "c34c17c6aa266ec6d3bbe9a06f6c5ff5a8e0169b1a084d7ab5ae9d0d5a89e6b6",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/marketing-mix-models/hero-en.svg",
+          "sha256": "b3d97b38ffdd00b45f52627f945733655d6f6455e71b833f27c4b7c695f646f8",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/marketing-mix-models/hero-ja.jpg",
+          "sha256": "3213249d4a1a0003bf0f65942d7313d814b3c6ff15f809f5e232b5563adc8a81",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/marketing-mix-models/hero-ja.svg",
+          "sha256": "f8221d5f85634def1d7719117d36ec7a18c928b27f655424929c5d6214e80f94",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/marketing-mix-models/hero-ko.jpg",
+          "sha256": "e198e3b2478d1d80ef702c68fd37eed568bafb90eb25af55e06639b6e42b217d",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/marketing-mix-models/hero-ko.svg",
+          "sha256": "fd584108408c3859322ea1f1c4d981e38a8c7fe96ba08309669fca9c8d43b0f5",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/marketing-mix-models/hero-zh-cn.jpg",
+          "sha256": "6e0bb0a40350f710042dd6ade1aa0010f126a48c6e7df55b29323f0e5f9907ea",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/marketing-mix-models/hero-zh-cn.svg",
+          "sha256": "d359a49dcbf090c627a3be92fdfdd4ac61e54c1db74bbf6256713f31b7af34aa",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/marketing-mix-models/hero.jpg",
+          "sha256": "e67b3066c150bee3b63a018b989da74564bca68734675fb733b9d0932b4d864f",
+          "source_asset": true
+        },
+        {
+          "repository_path": "apps/web/public/guides/marketing-mix-models/hero.svg",
+          "sha256": "2de134b23585343319f3aba94e448d74db272f499d8bff607661f9ab293480b8",
+          "source_asset": true
+        }
+      ]
+    },
+    {
+      "wave": "T1",
+      "slug": "brand-tone-vibe-marketing",
+      "target_locales": [
+        "en",
+        "ja",
+        "ko",
+        "zh-CN"
+      ],
+      "pack_git_path": "apps/api/app/guides/content/brand-tone-vibe-marketing.json",
+      "pack_sha256": "cadb408037f758da06a58aff957bba6cced2fe4014b5198640da28c1dd0883ff",
+      "source_document_sha256_normalized": "1e43ef74156c751df615cf65d3da529fd50b5dae4ee83486e7f697e68116f728",
+      "target_document_sha256_normalized": {
+        "en": "56159ebd2e52b00c09f64282b19de33e75d361d243f343a5a926188c7ef23e3a",
+        "ja": "5fce4e8124d6b1655ac980f8f04954490540ed9fda702e9b1b9d996153af205b",
+        "ko": "0f53faacc291720b831a97ec238f13c1f9a2f02a3f54b96d8624e179fa0b10cc",
+        "zh-CN": "9eb16f372750eab74df7d59dc850dd73bcd55839c063d06f9af7d6ae515591ff"
+      },
+      "source_and_root_metadata_preserved": true,
+      "editorial_release_acceptance": "original_T1_translation_GO_preserved_no_new_review",
+      "assets": [
+        {
+          "repository_path": "apps/web/public/guides/brand-tone-vibe-marketing/diagram-1-en.svg",
+          "sha256": "97dab8725ff1509904b74c000e5c8c761fa1c4c02ff8ad54bd56208d078f576f",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/brand-tone-vibe-marketing/diagram-1-ja.svg",
+          "sha256": "374e432b0730268158bd89e9d9bb6dde3ed108fb4b75a36bb07a48619711dcf5",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/brand-tone-vibe-marketing/diagram-1-ko.svg",
+          "sha256": "abdd99667d2a279c9897a7a8aa0837f6d8492bbfa18613d623d49ec331bd3cd2",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/brand-tone-vibe-marketing/diagram-1-zh-cn.svg",
+          "sha256": "50eb593790fb1ff69e3763f8e7a42d0210bd9db600c21a0ee2557abc2ef1c909",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/brand-tone-vibe-marketing/diagram-1.svg",
+          "sha256": "3bd1e573f55a5ac0cbea93264616606fa137e4e0e445f3b324a4b4fbf1559d58",
+          "source_asset": true
+        },
+        {
+          "repository_path": "apps/web/public/guides/brand-tone-vibe-marketing/hero-en.jpg",
+          "sha256": "5687ba2c49be5931ce98ba2b6380f916dc102da20b97578704b3f71e0a694a70",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/brand-tone-vibe-marketing/hero-en.svg",
+          "sha256": "c4f3224036f2ab00e2a2b8397497cc39700b8970d35488c45efb2115a5bdf363",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/brand-tone-vibe-marketing/hero-ja.jpg",
+          "sha256": "3b42320a642e324134b7abd31780d5f23594d235466e78e064f7350ec6f8dc0f",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/brand-tone-vibe-marketing/hero-ja.svg",
+          "sha256": "d17d8328c53e39b649d330e1115334286ed4ceff439fde527c04703abe175e94",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/brand-tone-vibe-marketing/hero-ko.jpg",
+          "sha256": "e69fdbc3333b805ed77f3a553a743f5bbd2bacbba4008580bd3000cf85c9bc6f",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/brand-tone-vibe-marketing/hero-ko.svg",
+          "sha256": "30bc76d6e4093ee4e2a8778830b8cf0451561584e6d6cadb584b03875e538c49",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/brand-tone-vibe-marketing/hero-zh-cn.jpg",
+          "sha256": "69f209c2eb5e81aabb4f616dff6475f09bab3d0dc9412cdb522c85e248ba1660",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/brand-tone-vibe-marketing/hero-zh-cn.svg",
+          "sha256": "8cd4d6a5e574f76a53d80a09384348ac36eb8537b116dc06d3a7905dcb0b151a",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/brand-tone-vibe-marketing/hero.jpg",
+          "sha256": "e3f045a42e39e16f014a9937718f27827c8a28d3514e3d09daf4304a99237d23",
+          "source_asset": true
+        },
+        {
+          "repository_path": "apps/web/public/guides/brand-tone-vibe-marketing/hero.svg",
+          "sha256": "1f6d709cc8e02fb79d674ba9bc4e0aee7dd8092c4c8384dd05edaf39e440e944",
+          "source_asset": true
+        }
+      ]
+    },
+    {
+      "wave": "T2",
+      "slug": "seo-keyword-research",
+      "target_locales": [
+        "en",
+        "ja",
+        "ko",
+        "zh-CN"
+      ],
+      "pack_git_path": "apps/api/app/guides/content/seo-keyword-research.json",
+      "pack_sha256": "5dff294b42067bb0cf5015d12d1d8264d436defee3fa7e4068b5736949264e6b",
+      "source_document_sha256_normalized": "4c59ec325c0e7cefe55a6cf62a58d9cba9860f2f0638f9bdfcfb5bb6bcd07929",
+      "target_document_sha256_normalized": {
+        "en": "eedfae3dc174cf65ae7797d51ab510524e375d5da9126ad386b93a5ba870abe7",
+        "ja": "6b1e3ff00e4c2a0b9bdde951ee8f7d88852232aa59eebfd5dfecc6ea57df13b3",
+        "ko": "a8b76c00a289f20fa3d07197b4c3386e1c153c302c3e145981690e1351598ca9",
+        "zh-CN": "a13df2f8839ecae45b1c70b1ba2612ff78968fc7801b71e77eebb614a582e400"
+      },
+      "source_and_root_metadata_preserved": true,
+      "editorial_release_acceptance": "blocked_pending_source_summary_review",
+      "assets": [
+        {
+          "repository_path": "apps/web/public/guides/seo-keyword-research/diagram-1-en.svg",
+          "sha256": "8dbb7a5bc7312c12e2f0855b9cdaaf36584f535dc7257e03e0b2145442f6918b",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-keyword-research/diagram-1-ja.svg",
+          "sha256": "80cf9510d9a5c644027d4450f99d7b7bd6839302d17c2e1ca3811d880e85d45c",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-keyword-research/diagram-1-ko.svg",
+          "sha256": "bb0b7911c2d7c24c0b7508bd57d54b1b6582685ce1bfc37c5dc9b9b089431092",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-keyword-research/diagram-1-zh-cn.svg",
+          "sha256": "c852862d1926434c03622eb53dcbcf0f8758cfb409ee7c2cda59366b38f541e2",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-keyword-research/diagram-1.svg",
+          "sha256": "99997b72d7701119faa8bed00f37a192c9375b8f1400815f45474cca65f23f3b",
+          "source_asset": true
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-keyword-research/hero-en.jpg",
+          "sha256": "cc63ca5c12cd85f07a5cd4cc61bce3abbc8d88f7bd225c08f185a74f3a107ced",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-keyword-research/hero-en.svg",
+          "sha256": "68d54548185484845314fb04e7ae89e66fd02b35b84dbcd1323fd4e734553263",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-keyword-research/hero-ja.jpg",
+          "sha256": "5e08c8fb1c7575370e9f4e0f37c3bdd303126172368d5ce16b4eff6519aae571",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-keyword-research/hero-ja.svg",
+          "sha256": "86937a5694cfabf8bca41747bc746e1b21893e6d139a3931d89406dc23829af5",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-keyword-research/hero-ko.jpg",
+          "sha256": "d690d7cc1997508eeed79793805b2c13ab6492f0b5e43a047864459aebfb9096",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-keyword-research/hero-ko.svg",
+          "sha256": "560357a5cd8c013936f72e54f11a03b8b35b677899178a9c0934a253d230fc5f",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-keyword-research/hero-zh-cn.jpg",
+          "sha256": "1d6fe7faa3a6d123733d5a1e9b336a2548767f81f54b7ad565a49486cee818a3",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-keyword-research/hero-zh-cn.svg",
+          "sha256": "f68f09f9c6ef4acae4831d84eddee13cd69a191aa5d4975ab321b464e9485053",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-keyword-research/hero.jpg",
+          "sha256": "7bfe9e036db28471c96545b3d4a253be67bfc82629a795512f4b4eece835a67e",
+          "source_asset": true
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-keyword-research/hero.svg",
+          "sha256": "0836a33020f4b82c074a483026e58979345cf49a7c96c6515ba8000a82cf2496",
+          "source_asset": true
+        }
+      ]
+    },
+    {
+      "wave": "T2",
+      "slug": "seo-title-writing",
+      "target_locales": [
+        "en",
+        "ja",
+        "ko",
+        "zh-CN"
+      ],
+      "pack_git_path": "apps/api/app/guides/content/seo-title-writing.json",
+      "pack_sha256": "f35ee83ce3df05e8dc82743ba2832df8e73dedab56ad3a74c3b0a3914efdd447",
+      "source_document_sha256_normalized": "c35deec9315196507dcbaeb8b0e1e347a339e35ecba692a1c4a9baafc621e361",
+      "target_document_sha256_normalized": {
+        "en": "49479ee491b2c8c72316b159d4639a631a41b073acdc2c71ec8ef5ab00a80387",
+        "ja": "b73ef38377e499082fd6cb1eea5ba67c66b88b0c89ab0ede8dccb96d74644fb3",
+        "ko": "82d41007b995431184f6d524da41a6bc75806d6c8a974d00b0fee306ee6d2776",
+        "zh-CN": "c4804819e9c99ff10577900e8c149f85b1cbc7e86af4fe1988b1a65559663f94"
+      },
+      "source_and_root_metadata_preserved": true,
+      "editorial_release_acceptance": "blocked_pending_source_summary_review",
+      "assets": [
+        {
+          "repository_path": "apps/web/public/guides/seo-title-writing/diagram-1-en.svg",
+          "sha256": "28f319ae80ea58b8aa2d26a0c61072a8f66eb73f5303f53b5380b0887e887580",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-title-writing/diagram-1-ja.svg",
+          "sha256": "4dac1372a383718fce8cbeb1d5111c9c5f25a2febe375f945dded021d3ae0685",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-title-writing/diagram-1-ko.svg",
+          "sha256": "67d116c456abdb0560ce720433de32647e438739940c9b339bd4500b730884b2",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-title-writing/diagram-1-zh-cn.svg",
+          "sha256": "e08cff543cb5aaf0a2952bbc479810fe3d30137b74098ca313a8397c67af133e",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-title-writing/diagram-1.svg",
+          "sha256": "8cc3c55cd41e993c8f044d5025f307fcc4702271c64a84d377050933e164022b",
+          "source_asset": true
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-title-writing/hero-en.jpg",
+          "sha256": "fa6d67b9352f5c736b844b87c12679f023d4f3cded9605baf60378bdc0cdf7c6",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-title-writing/hero-en.svg",
+          "sha256": "ce89291c1d1dee8b131f557a8059e6753e06f4b09e4dbc42b8c209b175e74978",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-title-writing/hero-ja.jpg",
+          "sha256": "e376e8264f485d227627da022ba31d292b345a3e6944e9bb73cce96727d5c501",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-title-writing/hero-ja.svg",
+          "sha256": "8f4749cc2d9dcbec6c3db00ba1b2d4bd7accaf1446607fedc1d528f91915684d",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-title-writing/hero-ko.jpg",
+          "sha256": "2e02d251962b32f53c1bc698e2ae1c497f7b2da45b4e6f6e2bc57858f81533d9",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-title-writing/hero-ko.svg",
+          "sha256": "a6ecc1296341a360752ad9a6b61ff7073d36efb8f5e7db96aafa61be6d55a294",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-title-writing/hero-zh-cn.jpg",
+          "sha256": "f9a8ff4f00e8dc0ce93c4951d4d4c96f031f5814d8d095996e74ab19e5ad01ea",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-title-writing/hero-zh-cn.svg",
+          "sha256": "9f405851e1edc17729668f3107171df2f4464258397044967e906ed7a7c674b8",
+          "source_asset": false
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-title-writing/hero.jpg",
+          "sha256": "3287d8a431c844a9d43b957610829b302ac2fef856a725b0e4a6f1685c8c9367",
+          "source_asset": true
+        },
+        {
+          "repository_path": "apps/web/public/guides/seo-title-writing/hero.svg",
+          "sha256": "63cbcbdef0c2233a578117d0f85209c63c7c19882bdc2268215c19a00399fb36",
+          "source_asset": true
+        }
+      ]
+    }
+  ],
+  "review_evidence": [
+    {
+      "repository_path": "docs/article-localization/batch036-marketing-pair-b-evidence.md",
+      "git_commit": "086e006cdfd5a982da9f412d28939ebb8eb4b453",
+      "sha256": "fa95659563d2266e39cf1af35b6aa8d63416d80b53faf7e847e349013fe8f71c"
+    },
+    {
+      "repository_path": "docs/article-localization/batch041-pair-a-evidence.md",
+      "git_commit": "086e006cdfd5a982da9f412d28939ebb8eb4b453",
+      "sha256": "922b7c45881e6e5e28d993eb6422e1646adb85e289c88652c227cb68cca4528c"
+    },
+    {
+      "receipt_label": "t1-content-audit.json",
+      "sha256": "58d31990d54e930287146ef01e9c48a6a3cb9e231f9427fe821e37285b30c89c",
+      "full_receipt_location": "retained privately; not copied to public repository"
+    },
+    {
+      "receipt_label": "t1-render-receipt.json",
+      "sha256": "d95900d425380d479e850b0878e3973e2894567451cb00b54aea315e9a2168ee",
+      "full_receipt_location": "retained privately; not copied to public repository"
+    },
+    {
+      "receipt_label": "t2-review-hashes.json",
+      "sha256": "91c3801224784c30fc93f2236e86cf2525358ea63ffa6e15a3292c81853f8adb",
+      "full_receipt_location": "retained privately; not copied to public repository"
+    },
+    {
+      "receipt_label": "t2-preview-receipt.json",
+      "sha256": "dc92f5abc726895d1ab242fb220d5e5177840bc0f26a6eafef77fa6c3ca8659b",
+      "full_receipt_location": "retained privately; not copied to public repository"
+    }
+  ],
+  "blockers": {
+    "T2_editorial_acceptance": {
+      "status": "open",
+      "task": "2026-09-28-review-batch041-keyword-and-title-summary",
+      "reason": "Each inherited source starts with paragraph, not summary; strict intake has one source failure per article. Candidate byte verification does not accept this exception."
+    },
+    "B_guarded_write_driver": {
+      "status": "missing",
+      "reason": "No validated B-route guarded-write driver was found for these waves. guides-import alone is not a transaction-bound source/version guard."
+    },
+    "same_image_PostgreSQL_rehearsal": {
+      "status": "not_run",
+      "reason": "Docker is unavailable locally; no exact-image PostgreSQL rehearsal has been performed."
+    },
+    "fresh_production_preflight": {
+      "status": "not_authorized_not_run",
+      "reason": "The copied snapshot is historical, not current publication authorization."
+    },
+    "production_release": {
+      "status": "not_authorized",
+      "reason": "Deployment, backup, import, publication, rollback and public browser acceptance require separately approved live steps."
+    }
+  },
+  "independent_validation": {
+    "kind": "integrity_and_synthetic_SQLite_mechanics_only",
+    "summary_sha256": "8f2a63de2de710b23bf82408c7b5a1bef64bffc89abff3f027c7ef2d0d8c40ee",
+    "results": {
+      "independent_validation_and_negative_cases": {
+        "passed": 6,
+        "skipped": 0,
+        "seconds": 27.73,
+        "exit_code": 0
+      },
+      "synthetic_sqlite_import": {
+        "passed": 1,
+        "skipped": 0,
+        "seconds": 8.06,
+        "exit_code": 0
+      }
+    },
+    "private_evidence_sha256": {
+      "README.md": "b2f19e2475741a82731ac0b2a9e6fb5aafd7521e5c972855fd05beadb323b71d",
+      "independent_validator.py": "1994673bdc541ef4ec7223748c76d14da1be6ba0018b82e266c28af26895b074",
+      "test_independent_candidate.py": "9a355f534db24ec7d3793735bdeda0704cbb504953e9f37f37fc8ff96f08c7d3",
+      "test_candidate_sqlite.py": "e1dfd8ed1e3f4468d736cd5091273827e916b5d24c0f2e52984b1f26bf0a576a",
+      "independent-result.json": "964d6ad615b882d56c7034ee00b190579cc177d96eec859cc0ec3f18cfdee598",
+      "sqlite-result.json": "539f611161515dec5726bd8dc0a893ed875aa4b08a6311f907b8d6601775e6d2",
+      "negative-asset_bytes.json": "607562b0de27a33074d85d11529fa9010559015d71d8c0a1376d3b2dd3426012",
+      "negative-coherent_pack_and_manifest_rewrite.json": "e8855461b1a4597775fbaa24100280a1a1044afef6444e55be0ab156ad200a0b",
+      "negative-document_bytes.json": "2160878ecaaefa2f62ab7452ef3a9b4983ca2bdadf5d347f8164201d17a3a4e6",
+      "negative-out_of_allowlist.json": "a29496acffc6bf7ded0ab3cc3795873d6c30235db2b1147f1fb003cc34d4dd29",
+      "negative-t2_gate_upgrade.json": "5cec7643c647b46f8ea21d15605fdee72d64788359ab7d7b2982617f40e0c64e"
+    },
+    "negative_cases": [
+      {
+        "mutation": "asset_bytes",
+        "independent_validator": "rejected",
+        "fresh_builder_cli_exit_code": 1
+      },
+      {
+        "mutation": "coherent_pack_and_manifest_rewrite",
+        "independent_validator": "rejected",
+        "fresh_builder_cli_exit_code": 1
+      },
+      {
+        "mutation": "document_bytes",
+        "independent_validator": "rejected",
+        "fresh_builder_cli_exit_code": 1
+      },
+      {
+        "mutation": "out_of_allowlist",
+        "independent_validator": "rejected",
+        "fresh_builder_cli_exit_code": 1
+      },
+      {
+        "mutation": "t2_gate_upgrade",
+        "independent_validator": "rejected",
+        "fresh_builder_cli_exit_code": 1
+      }
+    ]
+  },
+  "synthetic_sqlite_import": {
+    "kind": "synthetic-sqlite-import-mechanics",
+    "postgresql_or_same_image_rehearsal": false,
+    "transactional_source_guard_verified": false,
+    "t2_editorial_blocker_cleared": false,
+    "seed_ids_actors_versions": "synthetic, not copied production state",
+    "waves": {
+      "T1": {
+        "created": [
+          "brand-tone-vibe-marketing:en",
+          "brand-tone-vibe-marketing:ja",
+          "brand-tone-vibe-marketing:ko",
+          "brand-tone-vibe-marketing:zh-CN",
+          "marketing-mix-models:en",
+          "marketing-mix-models:ja",
+          "marketing-mix-models:ko",
+          "marketing-mix-models:zh-CN"
+        ],
+        "published_in_disposable_sqlite": [
+          "brand-tone-vibe-marketing:en",
+          "brand-tone-vibe-marketing:ja",
+          "brand-tone-vibe-marketing:ko",
+          "brand-tone-vibe-marketing:zh-CN",
+          "marketing-mix-models:en",
+          "marketing-mix-models:ja",
+          "marketing-mix-models:ko",
+          "marketing-mix-models:zh-CN"
+        ],
+        "replay_unchanged": [
+          "brand-tone-vibe-marketing:en",
+          "brand-tone-vibe-marketing:ja",
+          "brand-tone-vibe-marketing:ko",
+          "brand-tone-vibe-marketing:zh-CN",
+          "marketing-mix-models:en",
+          "marketing-mix-models:ja",
+          "marketing-mix-models:ko",
+          "marketing-mix-models:zh-CN"
+        ],
+        "source_root_existing_locale_rows_and_revisions_preserved": true,
+        "replay_all_database_rows_unchanged": true
+      },
+      "T2": {
+        "created": [
+          "seo-keyword-research:en",
+          "seo-keyword-research:ja",
+          "seo-keyword-research:ko",
+          "seo-keyword-research:zh-CN",
+          "seo-title-writing:en",
+          "seo-title-writing:ja",
+          "seo-title-writing:ko",
+          "seo-title-writing:zh-CN"
+        ],
+        "published_in_disposable_sqlite": [
+          "seo-keyword-research:en",
+          "seo-keyword-research:ja",
+          "seo-keyword-research:ko",
+          "seo-keyword-research:zh-CN",
+          "seo-title-writing:en",
+          "seo-title-writing:ja",
+          "seo-title-writing:ko",
+          "seo-title-writing:zh-CN"
+        ],
+        "replay_unchanged": [
+          "seo-keyword-research:en",
+          "seo-keyword-research:ja",
+          "seo-keyword-research:ko",
+          "seo-keyword-research:zh-CN",
+          "seo-title-writing:en",
+          "seo-title-writing:ja",
+          "seo-title-writing:ko",
+          "seo-title-writing:zh-CN"
+        ],
+        "source_root_existing_locale_rows_and_revisions_preserved": true,
+        "replay_all_database_rows_unchanged": true
+      }
+    }
+  },
+  "scoped_pack_lint": {
+    "exit_code": 0,
+    "entries_checked": 4,
+    "errors": 0,
+    "warning_counts": {
+      "no_summary": 20,
+      "text_length": 2,
+      "no_internal_link": 8
+    },
+    "private_log_sha256": "9b526560f9239122d445cf82f1c99b3f1e382ca393153d60f30ec44fb8a2ee8d",
+    "strict_editorial_acceptance": false
+  }
+}

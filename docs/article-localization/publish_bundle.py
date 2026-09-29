@@ -43,7 +43,7 @@ from app.auth.service import cached_admin_capabilities, user_is_suspended
 from app.config import get_settings
 from app.db import engine
 from app.guides import admin_service
-from app.guides.content_pack import ArticlePack
+from app.guides.content_pack import ArticlePack, ContentPackError, load_publish_holds
 from app.guides.models import GuideArticle, GuideArticleLocale, GuideArticleRevision
 from app.guides.schemas import (
     ArticleCreate,
@@ -1149,6 +1149,31 @@ def reconcile(journal, actual, path, bundle):
         complete_intent(journal, actual, path, "committed_reconciled")
 
 
+def require_unheld_publications(operations):
+    """Read the deployed hold list afresh; reviewed bundles cannot override it."""
+    slugs = sorted(
+        {item["slug"] for item in operations if item["phase"] in PHASES[2:]}
+    )
+    if not slugs:
+        return
+    try:
+        holds = load_publish_holds()
+    except ContentPackError as error:
+        raise Refused("Cannot read publication hold list") from error
+    for slug in slugs:
+        require(slug not in holds, f"{slug}: publication held: {holds.get(slug, '')}")
+
+
+def phase_publications(journal, phase):
+    phases = PHASES[2:] if phase == "dry-run" else (phase,)
+    operations = [item for name in phases for item in journal["operations"][name]]
+    # A stopped publication must not be reconciled through a draft/dry-run retry
+    # while held. Preserve its durable intent and all previously completed work.
+    if journal["pending"] is not None:
+        operations.append(journal["pending"])
+    return operations
+
+
 async def write_operation(session, actor, operation, before, bundle):
     slug, locale, action = operation["slug"], operation["locale"], operation["action"]
     pack = bundle.packs[slug]
@@ -1200,6 +1225,7 @@ async def write_operation(session, actor, operation, before, bundle):
             row["locales"][locale]["draft_sha256"] == wanted,
             f"{slug}:{locale}: reviewed draft absent",
         )
+        require_unheld_publications([operation])
         await admin_service.publish_locale(
             session,
             actor,
@@ -1249,6 +1275,7 @@ async def execute_phase(
                             "Journal actor is pinned",
                         )
                     actor = await active_actor(session, journal["actor_id"])
+                    require_unheld_publications(phase_publications(journal, phase))
                     reconcile(journal, actual, journal_path, bundle)
                     validate_journal(bundle, journal)
                 else:
@@ -1275,6 +1302,7 @@ async def execute_phase(
                     }
                     seal_journal(journal)
                     validate_journal(bundle, journal)
+                    require_unheld_publications(phase_publications(journal, phase))
                 if phase == "dry-run":
                     journal["dry_run"] = True
                     journal["history"].append(
@@ -1302,6 +1330,7 @@ async def execute_phase(
                     verify_bundle(bundle.root, bundle.baseline_path, bundle.manifest_sha256)
                     verify_deployed(bundle, deployed_root)
                     authorize_operation(bundle, journal, phase, operation)
+                    require_unheld_publications(phase_publications(journal, phase))
                     if postgres:
                         await session.execute(text("SET LOCAL lock_timeout = '5s'"))
                     before = await snapshot(session, bundle.slugs, lock=True)
