@@ -129,6 +129,22 @@ test("speechHash follows the audio's inputs and nothing else", () => {
   assert.equal(speechHash(picture, lexicon), base);
 });
 
+test("a dictionary term no line says leaves speechHash alone; one a line says changes it", () => {
+  const doc = fixture();
+  const lexicon = { schema_version: 1, terms: { AI: "A I" } };
+  const base = speechHash(doc, lexicon);
+  // Added for another video: this script never says them.
+  assert.equal(speechHash(doc, { schema_version: 1, terms: { ...lexicon.terms, LLM: "L L M", "RTX Spark": "R T X Spark", GB: "G B" } }), base);
+  // Inside a longer word it is not a match either, like the speech request.
+  const inside = fixture();
+  for (const scene of inside.scenes) for (const line of scene.lines) line.text = line.text.replace(/AI/g, "AIs");
+  assert.equal(speechHash(inside, lexicon), speechHash(inside, { schema_version: 1, terms: {} }));
+  // A line that starts saying one of them changes it.
+  const says = fixture();
+  says.scenes[0].lines[0].text = "每次有新 LLM 出來，排行榜就換一次第一名。";
+  assert.notEqual(speechHash(says, { schema_version: 1, terms: { ...lexicon.terms, LLM: "L L M" } }), speechHash(says, lexicon));
+});
+
 test("visualHash follows the pictures' inputs and nothing else", () => {
   const base = visualHash(fixture());
   const picture = fixture();

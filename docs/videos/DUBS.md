@@ -62,7 +62,7 @@
 
 ### 檔案與指令
 
-新指令 `node tools/video/cli.mjs dub --slug <slug> --locale en,ja,ko,zh-CN [--format m4a|mp3|wav] [--dry-run] [--redo <flags>]`，在工作區寫：
+新指令 `node tools/video/cli.mjs dub --slug <slug> --locale en,ja,ko,zh-CN [--format m4a|mp3|wav] [--dry-run] [--redo <flags>] [--line-by-line]`，在工作區寫：
 
 | 檔案 | 內容 |
 | --- | --- |
@@ -70,6 +70,8 @@
 | `dubs/<locale>/timeline.json` | 這條配音每句的開始與結束格、加速倍率、`speech_hash`、翻譯檔的雜湊 |
 | `dubs/<locale>/fit.json` | 每個視窗的餘裕或超出、量到的語速、塞不下的句子與預算 |
 | `dubs/<locale>.m4a` | 上傳的音軌：兩段式 loudnorm 到 −14 LUFS／−1 dBTP，AAC-LC 立體聲 48 kHz 384 kbps，與 `final.mp4` 的聲音同一條編碼鏈；Studio 不收再用 `--format mp3`（libmp3lame 320 kbps）或 `wav` |
+
+預設一個場景送一個請求，再從停頓切成每句；切不出和文字對得上的段落時，那個場景會逐句重錄，兩次都計費，而切錯卻剛好通過的段落會把鄰句夾進同一段音檔。`--line-by-line` 讓還沒錄的句子一句一個請求，字元只算一次：2026-09-28 的英文配音 13 個場景有 7 個切不開，整條花了劇本字數的 1.5 倍，另外有 5 段音檔夾了鄰句。
 
 `check-audio --locale <locale>` 對配音做和 zh-TW 旁白一樣的檢查：伺服器逐句轉寫（要帶語言，轉寫提示不再寫死「台灣國語、繁體字」），文字一樣的直接過，其餘交給 Jev。拼音「同音」規則與語助詞規則只在中文語系用。被標的句子 `dub --redo` 重錄，最多兩輪。
 
@@ -124,6 +126,21 @@ Gemini TTS 的計價（ai.google.dev/gemini-api/docs/pricing，2026-09-27）：`
 - Studio 收不收 `.m4a`；不收就 `--format mp3`。
 - 影片還是私人時能不能加音軌、音軌的「發布」會不會動到影片的瀏覽權限（應該不會，音軌隨影片公開）。
 - 「語言」頁上原始語言是不是照影片語言（中文（台灣））標成原音。
+
+### 聲音會唸錯的地方（第一季第 5、6 支，2026-09-28）
+
+每一條都是兩個轉寫（`check-audio --locale` 的 Gemini 與本機 Whisper large-v3）聽到同一個錯才算數。只有 Gemini 聽錯的，多半是它把不熟的版本號與品牌「修正」成它知道的（Veo 3.1 聽成「算便宜」、Kling 3.0 聽成 1.5），不用改稿。`check-audio --second-opinion "<程式 參數>"`（或環境變數 `VIDEO_SECOND_OPINION`）會自動做這一步：Jev 仍然懷疑的句子交給不看稿的第二個轉寫（參考 `tools/video/tts/whisper_second_opinion.py`），它聽到的和稿子一樣、或 Jev 判它沒問題，就排除並記下由誰排除，旁白審核卡的摘要會寫出來；兩個轉寫都錯在同一處的才留著。
+
+- **數字中間有 0、後面接億／万（ja、ko）**：4050億、4050억 都被唸成 450。寫成 4千50億、4천50억 就唸對；`lint` 會對 ja、ko 的句子提出警告。
+- **省掉的單位會被補錯（ja）**：價格句寫「1秒0.14」，聲音唸成「0.14秒」。價格句保留「ドル」。反過來，聲音自己補上「ドル」「불」的地方是對的，不用改。
+- **GB、kWh（ko、ja）**：字典的 GB → `G B` 在韓文唸成「지비」，韓國人不這樣說。韓文的字幕與配音稿寫「기가」（128기가、초당 300기가）；標題、說明、標籤、章節保留 GB，那是給人讀、給搜尋用的。kWh 寫成「킬로와트시」「キロワット時」，唸法才固定。
+- **連字號的產品名（ko）**：DeepSeek-V4-Flash 的連字號被唸成別的字，Flash 被吞掉；配音稿寫成 DeepSeek V4 Flash。
+- **限定詞跟錯數字（en）**：「300 GB a second over 35 GB: at most 8-plus tokens」的停頓讓 at most 黏到前半句。把限定詞緊貼它限定的數字：「Llama gets at most 8-plus tokens a second」。
+- **問句式的停頓（en）**：「Kling 3.0 with audio, about twenty-four dollars.」重錄時多出一個「Uh」。寫成直述句（is about）。
+- **旁白的聲調（zh-TW）**：只差聲調的詞，兩個轉寫都會挑常見的那個，觀眾也可能聽錯。一支八秒／一至八秒、秒數／描述用 `say` 換說法（一段八秒、長度）。句尾上揚會把三聲、一聲聽成二聲（太擠→太極、本機→本籍）：把詞移離句尾（太擠了、搬回本機做）。「億」接在「乘」前面，跟「一乘」同音（一在二聲前變四聲），4050 億乘 0.5 被聽成 4051：說成「四千多億」。字幕照原字。
+- **數字很密的旁白句**：zh-TW 一個音節唸完的單位（100 度），英日配音要好幾拍，1.15 倍也塞不下。與其刪掉條件，不如給那句旁白 `pause_after_ms`（1.2–1.5 秒），觀眾也有時間看數字。這要在送旁白審核之前決定；審核之後改，時間軸變了，要重送。
+- **說明欄的位元組（ja、ko）**：韓文字與假名一個字 3 bytes，說明欄組合後還有連結、章節、來源、hashtag，本文看起來不長也會超過 YouTube 的 5,000 bytes；`lint` 會先對每個語系組合一次，不等 `package` 才擋。
+- **標籤**：整支影片只有一張 500 字元的標籤表，依 zh-TW、en、ja、ko、zh-CN 的順序放；英文標籤一多，後面的語系全被擠掉。翻譯只放 zh-TW 表裡沒有的詞，重複的英文說法不要再放。
 
 ## 已知限制
 
