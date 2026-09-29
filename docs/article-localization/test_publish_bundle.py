@@ -19,6 +19,7 @@ from uuid import UUID, uuid4
 import pytest
 from app.auth import service as auth_service
 from app.guides import admin_service
+from app.guides.content_pack import load_publish_holds
 from app.guides.models import GuideArticle, GuideArticleLocale, GuideArticleRevision
 from app.guides.publication import today
 from app.guides.schemas import (
@@ -56,6 +57,14 @@ def owner(monkeypatch, actor):
     monkeypatch.setattr(driver, "get_settings", lambda: settings)
     monkeypatch.setattr(auth_service, "get_settings", lambda: settings)
     return actor
+
+
+@pytest.fixture
+def publish_holds(tmp_path, monkeypatch):
+    path = tmp_path / "publish_holds.json"
+    write_json(path, {})
+    monkeypatch.setattr(driver, "load_publish_holds", lambda: load_publish_holds(path))
+    return path
 
 
 async def case(tmp_path, database, owner, *, new=False, images=False, order=100, slug="test-guide"):
@@ -225,6 +234,26 @@ def replace_bundle(bundle, *, manifest=None, baseline=None, pack=None):
     replaced = driver.verify_bundle(bundle.root, bundle.baseline_path, pinned)
     deploy_bundle(replaced)
     return replaced
+
+
+async def as_hub(bundle, tmp_path, database, owner):
+    dependency, _, _ = await case(tmp_path, database, owner, slug="part-one")
+    baseline = json.loads(bundle.baseline_path.read_text("utf-8"))
+    baseline["articles"].extend(json.loads(dependency.baseline_path.read_text("utf-8"))["articles"])
+    manifest = copy.deepcopy(bundle.manifest)
+    manifest["articles"][0].update(
+        hub=True,
+        requires=[
+            {
+                "slug": "part-one",
+                "locale": "zh-TW",
+                "document_sha256": driver.document_hash(
+                    dependency.packs["part-one"].locales["zh-TW"].model_dump(mode="json")
+                ),
+            }
+        ],
+    )
+    return replace_bundle(bundle, manifest=manifest, baseline=baseline)
 
 
 def reviewed_source_correction(bundle, *, approved=True, draft_hash=None):
@@ -425,6 +454,165 @@ async def test_only_authorized_missing_language_publishes_existing_text_is_untou
     await run(bundle, path, database, "publish-articles")
     assert await state(database) == after
     assert await revision_count(database) == 4
+
+
+@pytest.mark.parametrize("hub", [False, True])
+async def test_held_publication_dry_run_refuses_and_records_reason_without_writes(
+    tmp_path, database, owner, publish_holds, hub
+):
+    bundle, path, before = await case(tmp_path, database, owner)
+    if hub:
+        bundle = await as_hub(bundle, tmp_path, database, owner)
+    write_json(publish_holds, {"test-guide": "Independent source review pending"})
+    revisions = await revision_count(database)
+
+    with pytest.raises(driver.Refused, match="test-guide: publication held: Independent source"):
+        await run(bundle, path, database, "dry-run")
+
+    assert await state(database) == before["test-guide"]
+    assert await revision_count(database) == revisions
+    journal = json.loads(path.read_text("utf-8"))
+    assert not journal["dry_run"]
+    assert journal["history"][-1]["status"] == "stopped"
+    assert "Independent source review pending" in journal["history"][-1]["reason"]
+    assert all(not entries for entries in journal["done"].values())
+
+
+async def test_held_repository_only_bundle_still_imports_private_drafts(
+    tmp_path, database, owner, publish_holds
+):
+    bundle, path, _ = await case(tmp_path, database, owner, new=True)
+    write_json(publish_holds, {"test-guide": "Must stay private"})
+    for phase in driver.PHASES:
+        await run(bundle, path, database, phase)
+    after = await state(database)
+    assert set(after["locales"]) == set(driver.LOCALES)
+    assert all(row["published_version"] is None for row in after["locales"].values())
+    assert await revision_count(database) == 5
+
+
+async def test_unrelated_hold_does_not_expand_or_block_selected_publication(
+    tmp_path, database, owner, publish_holds
+):
+    bundle, path, before = await case(tmp_path, database, owner)
+    write_json(publish_holds, {"another-guide": "Unrelated review"})
+    for phase in driver.PHASES:
+        await run(bundle, path, database, phase)
+    after = await state(database)
+    assert set(after["locales"]) == {"zh-TW", "en"}
+    assert after["locales"]["zh-TW"] == before["test-guide"]["locales"]["zh-TW"]
+    assert after["locales"]["en"]["published_version"] == 2
+    assert await state(database, "another-guide") is None
+
+
+@pytest.mark.parametrize("hub", [False, True])
+async def test_hold_added_after_dry_run_allows_drafts_but_refuses_publication(
+    tmp_path, database, owner, publish_holds, hub
+):
+    bundle, path, _ = await case(tmp_path, database, owner)
+    if hub:
+        bundle = await as_hub(bundle, tmp_path, database, owner)
+    await run(bundle, path, database, "dry-run")
+    write_json(publish_holds, {"test-guide": "New editorial hold"})
+    await run(bundle, path, database, "drafts")
+    if hub:
+        await run(bundle, path, database, "publish-articles")
+    drafts = await state(database)
+    revisions = await revision_count(database)
+
+    with pytest.raises(driver.Refused, match="New editorial hold"):
+        await run(bundle, path, database, "publish-hubs" if hub else "publish-articles")
+
+    assert await state(database) == drafts
+    assert drafts["locales"]["en"]["published_version"] is None
+    assert await revision_count(database) == revisions
+    assert json.loads(path.read_text("utf-8"))["done"]["drafts"]
+
+
+async def test_hold_added_after_durable_intent_stops_before_publication_transaction(
+    tmp_path, database, owner, publish_holds, monkeypatch
+):
+    bundle, path, _ = await case(tmp_path, database, owner)
+    await run(bundle, path, database, "dry-run")
+    await run(bundle, path, database, "drafts")
+    drafts = await state(database)
+    revisions = await revision_count(database)
+    persist = driver.persist_journal
+
+    def persist_then_hold(journal_path, journal):
+        persist(journal_path, journal)
+        if journal["pending"] and journal["pending"]["action"] == "publish":
+            write_json(publish_holds, {"test-guide": "Hold arrived after intent"})
+
+    monkeypatch.setattr(driver, "persist_journal", persist_then_hold)
+    with pytest.raises(driver.Refused, match="Hold arrived after intent"):
+        await run(bundle, path, database, "publish-articles")
+    assert await state(database) == drafts
+    assert await revision_count(database) == revisions
+    stopped = json.loads(path.read_text("utf-8"))
+    assert stopped["pending"]["action"] == "publish"
+    assert stopped["done"]["publish-articles"] == []
+
+    # A retry through another phase cannot clear the uncertain durable intent.
+    with pytest.raises(driver.Refused, match="Hold arrived after intent"):
+        await run(bundle, path, database, "drafts")
+    retried = json.loads(path.read_text("utf-8"))
+    assert retried["pending"] == stopped["pending"]
+    assert retried["history"][:-1] == stopped["history"]
+
+
+async def test_hold_preserves_committed_lost_response_until_unheld_reconciliation(
+    tmp_path, database, owner, publish_holds, monkeypatch
+):
+    bundle, path, _ = await case(tmp_path, database, owner)
+    await run(bundle, path, database, "dry-run")
+    await run(bundle, path, database, "drafts")
+    publish = admin_service.publish_locale
+    calls = 0
+
+    async def commit_then_lose_response(*args, **kwargs):
+        nonlocal calls
+        calls += 1
+        await publish(*args, **kwargs)
+        raise ConnectionError("Response lost after commit")
+
+    monkeypatch.setattr(admin_service, "publish_locale", commit_then_lose_response)
+    with pytest.raises(ConnectionError):
+        await run(bundle, path, database, "publish-articles")
+    committed = await state(database)
+    revisions = await revision_count(database)
+    stopped = json.loads(path.read_text("utf-8"))
+    write_json(publish_holds, {"test-guide": "Hold after uncertain publication"})
+    for phase in ("dry-run", "drafts", "publish-articles"):
+        with pytest.raises(driver.Refused, match="Hold after uncertain publication"):
+            await run(bundle, path, database, phase)
+    held = json.loads(path.read_text("utf-8"))
+    assert held["pending"] == stopped["pending"]
+    assert held["done"] == stopped["done"]
+    assert held["history"][: len(stopped["history"])] == stopped["history"]
+    assert await state(database) == committed
+    assert await revision_count(database) == revisions
+
+    write_json(publish_holds, {})
+    await run(bundle, path, database, "publish-articles")
+    resumed = json.loads(path.read_text("utf-8"))
+    assert resumed["pending"] is None
+    assert any(row["status"] == "committed_reconciled" for row in resumed["history"])
+    assert calls == 1
+    assert await revision_count(database) == revisions
+
+
+async def test_invalid_hold_file_fails_closed_with_no_publication(
+    tmp_path, database, owner, publish_holds
+):
+    bundle, path, _ = await case(tmp_path, database, owner)
+    await run(bundle, path, database, "dry-run")
+    await run(bundle, path, database, "drafts")
+    drafts = await state(database)
+    publish_holds.write_text("[]", encoding="utf-8")
+    with pytest.raises(driver.Refused, match="Cannot read publication hold list"):
+        await run(bundle, path, database, "publish-articles")
+    assert await state(database) == drafts
 
 
 async def test_reviewed_source_correction_publishes_once_with_missing_translation(

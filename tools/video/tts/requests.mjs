@@ -4,7 +4,7 @@
 import { createHash } from "node:crypto";
 
 import { NARRATOR, voiceFor } from "../core/drama.mjs";
-import { substitutions } from "../core/lexicon.mjs";
+import { substitutions, termPattern } from "../core/lexicon.mjs";
 import { spokenText } from "../core/schema.mjs";
 import { spokenUnits } from "../core/timeline.mjs";
 
@@ -15,17 +15,15 @@ export const MAX_REQUEST_CHARACTERS = 1500;
 export const SPLIT_BREAK_MS = 800;
 const CJK = /[㐀-䶿一-鿿豈-﫿]/gu;
 
-const escapeRegExp = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-
 /**
  * The text as parts, with each dictionary term that has a spoken form carrying it as `alias`.
  * Terms match whole words only, longest first, so "Claude Code" wins over "Claude" and "API"
- * inside "APIs" is left alone.
+ * inside "APIs" is left alone (termPattern).
  */
 export function spokenParts(text, lexicon) {
   const entries = substitutions(lexicon);
-  if (!entries.length) return [{ text }];
-  const pattern = new RegExp(`(?<![A-Za-z0-9])(${entries.map(([term]) => escapeRegExp(term)).join("|")})(?![A-Za-z0-9])`, "gu");
+  const pattern = termPattern(entries);
+  if (!pattern) return [{ text }];
   const spoken = new Map(entries);
   const parts = [];
   let last = 0;

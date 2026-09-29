@@ -43,6 +43,23 @@ export function appendLedger(workdir, entry, now = new Date()) {
   return ledger.totals;
 }
 
+/** Reconcile a server job, whose id survives both retries and idempotent resubmissions. */
+export function bookJob(workdir, entry, now = new Date()) {
+  const ledger = readLedger(workdir);
+  const index = ledger.entries.findIndex((previous) => previous.job_id === entry.job_id);
+  const recorded = { at: now.toISOString(), ...entry };
+  if (index < 0) ledger.entries.push(recorded);
+  else {
+    // A failed attempt can cost zero and later succeed under the same id. Conversely,
+    // a later failure must not erase a charge already observed for this job.
+    recorded.cost_usd = Math.max(Number(ledger.entries[index].cost_usd || 0), Number(entry.cost_usd || 0));
+    ledger.entries[index] = recorded;
+  }
+  ledger.totals = totalsOf(ledger.entries);
+  atomicWrite(ledgerFile(workdir), `${JSON.stringify(ledger, null, 2)}\n`);
+  return ledger.totals;
+}
+
 export function ledgerTotals(workdir) {
   return totalsOf(readLedger(workdir).entries);
 }

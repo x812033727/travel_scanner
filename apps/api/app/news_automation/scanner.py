@@ -9,6 +9,7 @@ import httpx
 from sqlalchemy import or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.news_automation.evidence import evidence_excerpt
 from app.news_automation.feeds import parse_entries, read_article
 from app.news_automation.fetch import SafeNewsFetcher
 from app.news_automation.models import NewsCandidate, NewsEvidence, NewsSource
@@ -318,7 +319,7 @@ async def scan_source(
                             last_modified=linked.last_modified,
                             content_hash=content_fingerprint(linked_text),
                             body_hash=body_fingerprint(linked_page),
-                            excerpt=linked_text[:8000],
+                            excerpt=evidence_excerpt(linked_text),
                         )
                     )
             if deferred:
@@ -362,7 +363,7 @@ async def scan_source(
                     last_modified=detail.last_modified,
                     content_hash=body_hash,
                     body_hash=story_hash,
-                    excerpt=body_text[:8000],
+                    excerpt=evidence_excerpt(body_text),
                 )
             )
             for row in linked_rows:

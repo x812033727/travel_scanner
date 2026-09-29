@@ -196,6 +196,11 @@ the local draft; insertion confirmations remain bound to the reviewed trip versi
 
 ## Open implementation and acceptance work
 
+The 2026-09-29 local reconciliation and its evidence boundaries are recorded in
+`docs/community-local-acceptance-2026-09-29.md`. The account token/erasure follow-up
+from PR #343 is already merged. Keep real-service acceptance distinct from the
+synthetic browser matrix and always-on SQLite contracts recorded there.
+
 The complete product plan is not yet accepted. The editor now searches published
 hotspots, merchants and pet places and stores at most 20 typed catalog references
 per immutable post version. Names and internal links are resolved by the server;

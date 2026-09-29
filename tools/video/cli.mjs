@@ -49,6 +49,8 @@ export const AREAS = {
   "media-status": ["media", "2026-09-26-video-drama-media-client"],
   // A binge series' compilation: the episodes' cuts joined with chapter cards (docs/videos/BINGE.md).
   compile: ["compile", "2026-09-27-video-binge-compile"],
+  // A long video finished by another tool, sent to /admin/videos for its final review.
+  import: ["import", "2026-09-28-video-tool-import-a-finished-long"],
 };
 
 const HELP = `Automated YouTube video pipeline (docs/videos/DESIGN.md)
@@ -72,8 +74,8 @@ Usage: node tools/video/cli.mjs <command> [options]
                                                    auto does this once a round, --dry-run only lists what would go
 
   login [--name N] [--paste | --token-file F]     pair with the site: allow the printed code on the admin card
-  check-audio --slug S [--threshold 0.5] [--force]  transcribe every line; Jev judges the ones that differ
-  dub --slug S [--locale en,ja,ko,zh-CN] [--format m4a|mp3|wav] [--dry-run] [--redo F] [--force] [--style T]
+  check-audio --slug S [--locale L] [--threshold 0.5] [--force] [--second-opinion "PROGRAM ARGS"]  transcribe every line; Jev judges the ones that differ; a second transcriber rechecks what Jev doubts
+  dub --slug S [--locale en,ja,ko,zh-CN] [--format m4a|mp3|wav] [--dry-run] [--redo F] [--line-by-line] [--force] [--style T]
                                                    a YouTube audio track per locale: the translation read by the
                                                    narration voice, laid into the slide windows (docs/videos/DUBS.md)
   audition, tts, review, render, assemble, package, youtube-sync
@@ -82,6 +84,8 @@ Usage: node tools/video/cli.mjs <command> [options]
   compile --slug <series>-full [--workdir D] [--force] [--dry-run]
                                                    join a binge series' cleared episodes into its compilation, with
                                                    chapter cards, merged captions and chapters (docs/videos/BINGE.md)
+  import --from DIR [--workdir D] [--force]        a long video another tool finished (final.mp4, meta.json, optional
+                                                   zh-TW.srt and thumbnail.png): reported to /admin/videos with its final cut
 
 --workdir defaults to $VIDEO_WORKDIR, then ~/mokaair-work/videos; a video's files go in <workdir>/<slug>/, outside the repository.
 Exit codes: 0 ok, 1 lint or check failed, 2 usage, 3 needs the owner, 4 external service, 5 tool missing.

@@ -1,0 +1,476 @@
+{
+  "title": "NVIDIA RTX Spark 128 GB Laptop: Which AI Models Fit? Can Local AI Replace ChatGPT?",
+  "description": "NVIDIA says RTX Spark can run 120-billion-parameter models, yet the original release of the 70-billion-parameter Llama 3.3 is a 141 GB file, too big for this laptop's maximum of 128 GB. This video uses one formula, \"parameter count × bytes per parameter\", to work out which models fit in 16 GB, 64 GB and 128 GB, then looks at the memory bandwidth that sets speed, and at whether local AI can replace a monthly AI subscription.\n\nThe specs, parameter counts and file sizes in the video all come from official pages by NVIDIA, Microsoft, OpenAI, Hugging Face and Ollama, checked on September 28, 2026, and may change after that. That day, NVIDIA's RTX Spark product page listed no price, so check the official site for pricing; the 300 GB/s memory bandwidth comes from NVIDIA's developer documentation. The channel has no RTX Spark unit, and the video contains no measured speeds: the tokens-per-second figures are theoretical ceilings calculated from that bandwidth. Every NVIDIA claim is labeled as the vendor's own.\n\nThe Claude Pro price is the monthly-billing price on its official site on September 28, 2026; for other subscriptions, check each provider's official site. The formulas for payback months and the rough electricity estimate are on screen, so you can redo them with your own numbers. The \"what matters most to you\" table and the conclusion are the channel host's opinion, not purchase advice.",
+  "tags": [
+    "RTX Spark",
+    "local AI",
+    "local LLM",
+    "NVIDIA RTX Spark",
+    "RTX Spark laptop",
+    "run LLM on laptop",
+    "is an AI PC worth it",
+    "unified memory",
+    "Ollama",
+    "gpt-oss",
+    "Llama 3.3",
+    "rtx spark local ai",
+    "run llm locally 128gb",
+    "local ai vs chatgpt",
+    "how much ram to run an llm"
+  ],
+  "chapters": {
+    "hook-title": "What fits in a 128 GB AI laptop?",
+    "specs": "What is RTX Spark? NVIDIA's official specs",
+    "bytes": "How much memory does an AI model need?",
+    "fit-rule": "Which models run on 128 GB, 64 GB and 16 GB",
+    "petaflop": "How fast is RTX Spark? What sets the speed",
+    "agents-quote": "Background AI agents: the wall Windows adds",
+    "sub-vs-own": "AI subscription vs your own PC: payback time",
+    "priorities": "Can local AI replace ChatGPT?"
+  },
+  "source_hashes": {
+    "chapters": {
+      "hook-title": "c73af4109a8e",
+      "specs": "5a624b738be9",
+      "bytes": "6ba412584ade",
+      "fit-rule": "0c29ba4704a9",
+      "petaflop": "74fd419a9b33",
+      "agents-quote": "5847f8643a09",
+      "sub-vs-own": "241f956253cc",
+      "priorities": "01c7440d20bb"
+    },
+    "title": "17a99d0f8959",
+    "description": "b32f107a403d",
+    "tags": "54f554abe40d"
+  },
+  "lines": {
+    "6695": {
+      "source_hash": "d52ca08a5a3b",
+      "text": "Squeezed to 8 bits: 1 byte."
+    },
+    "c752": {
+      "source_hash": "289832a2d6b5",
+      "text": "Which models fit on a 128 GB RTX Spark laptop?"
+    },
+    "xj6b": {
+      "source_hash": "95e9be80448a",
+      "text": "NVIDIA says it runs 120-billion-parameter models."
+    },
+    "piku": {
+      "source_hash": "92added42b26",
+      "text": "But the original release of 70-billion-parameter Llama 3.3 is 141 GB. It won't fit."
+    },
+    "bbn6": {
+      "source_hash": "d5e1bdf2c4a1",
+      "text": "Both true: the gap is a number you can work out."
+    },
+    "xbwf": {
+      "source_hash": "fc3bc89208fb",
+      "text": "We use it to find what fits."
+    },
+    "prq6": {
+      "source_hash": "cce3aabf06c5",
+      "text": "Then what sets speed, and can it replace a subscription?"
+    },
+    "m5b4": {
+      "source_hash": "e5c420f4d7e0",
+      "text": "NVIDIA says it ships in October: two laptop tiers and a small desktop."
+    },
+    "xapq": {
+      "source_hash": "e607e75df26b",
+      "text": "The GPU has up to 6,144 cores."
+    },
+    "nbyi": {
+      "source_hash": "5aa86f90b044",
+      "text": "The CPU has up to 20 cores, an Arm design co-developed with MediaTek."
+    },
+    "ey2n": {
+      "source_hash": "e7e7625aa7bb",
+      "text": "Memory goes up to 128 GB; the other laptop tier tops out at 64 GB."
+    },
+    "m3t7": {
+      "source_hash": "f98e1ff89ee9",
+      "text": "Chip power: 45 to 80 watts in the laptops, 140 in the desktop."
+    },
+    "2saw": {
+      "source_hash": "0a50b905fb9d",
+      "text": "That opening line is from NVIDIA's late-May press release in Taipei."
+    },
+    "rvyh": {
+      "source_hash": "ea1bac7db5f7",
+      "text": "In short, it can run 120-billion-parameter large language models."
+    },
+    "5atc": {
+      "source_hash": "c0d84e489b3a",
+      "text": "Usually the CPU gets most memory; gaming GPUs have their own small pool."
+    },
+    "td4z": {
+      "source_hash": "739644f7e890",
+      "text": "RTX Spark uses unified memory, shared by the CPU and GPU."
+    },
+    "bmxq": {
+      "source_hash": "455eb173e9d7",
+      "text": "Windows caps how much of it the GPU can use; May's announcement gave no figure."
+    },
+    "yuve": {
+      "source_hash": "ae687fb58c02",
+      "text": "How much memory does a model need?"
+    },
+    "cens": {
+      "source_hash": "143d43395450",
+      "text": "First, its parameters: heaps of numbers it learned."
+    },
+    "v79x": {
+      "source_hash": "953524c86f85",
+      "text": "Stored in 16 bits, each number takes 2 bytes."
+    },
+    "26a5": {
+      "source_hash": "fba218966d8e",
+      "text": "Squeezed to 4 bits, half a byte: that's called quantization."
+    },
+    "6x2b": {
+      "source_hash": "b2c1460adb5d",
+      "text": "One-line formula: parameters times bytes per parameter."
+    },
+    "62hr": {
+      "source_hash": "8851486ba8fd",
+      "text": "For Llama 3.3 70B, times 2 is 141 GB, and times 0.5 is about 35 GB."
+    },
+    "89kx": {
+      "source_hash": "5a491c0ce964",
+      "text": "Ollama, a tool for running models on your own computer, has the same model."
+    },
+    "q7tw": {
+      "source_hash": "7992f3d1c007",
+      "text": "The 16-bit file is 141 GB, same as the formula."
+    },
+    "4zmj": {
+      "source_hash": "2eaec2f4b3f5",
+      "text": "8-bit is 75 GB, a bit more."
+    },
+    "tj2j": {
+      "source_hash": "45e6447e3766",
+      "text": "The 4-bit ones: 40 to 43 GB, 10-plus to 20-plus percent over the formula."
+    },
+    "uqcg": {
+      "source_hash": "ea43e2078368",
+      "text": "The extra is mainly stored scale values, so the formula is a minimum."
+    },
+    "uhun": {
+      "source_hash": "eb119a565955",
+      "text": "So remember: memory must be at least as big as the file."
+    },
+    "rxkq": {
+      "source_hash": "bcc95701c279",
+      "text": "Back to the opening: 120 billion parameters at 4 bits is about 60 GB, which fits in 128 GB."
+    },
+    "p9rk": {
+      "source_hash": "dee8722ace7e",
+      "text": "Llama 70B in its original 16-bit release needs 141 GB, so it doesn't fit."
+    },
+    "veb5": {
+      "source_hash": "401148250beb",
+      "text": "What separates the two is bytes per parameter."
+    },
+    "c8mw": {
+      "source_hash": "c2b6bd86bfcb",
+      "text": "So which models fit in 16, 64 and 128 GB?"
+    },
+    "gzmm": {
+      "source_hash": "9779ab63a79b",
+      "text": "Here's the test: first subtract the 4 GB minimum Windows 11 needs."
+    },
+    "ieht": {
+      "source_hash": "8c475f82b1c9",
+      "text": "Files under what's left fit; files over total memory don't."
+    },
+    "xj2j": {
+      "source_hash": "bb6a71a4afba",
+      "text": "In between, it's too tight."
+    },
+    "i55z": {
+      "source_hash": "651127ad0d01",
+      "text": "Also, a memory GB is a bit bigger than a file GB; the table accounts for it."
+    },
+    "i3ft": {
+      "source_hash": "07d8dd151abe",
+      "text": "gpt-oss-20b is a 13.8 GB file: too tight in 16, fits in 64 and up."
+    },
+    "67f3": {
+      "source_hash": "9d5e3d541894",
+      "text": "4-bit Llama 70B is 43 GB, so it needs 64."
+    },
+    "jxzc": {
+      "source_hash": "13c9d74c2a99",
+      "text": "gpt-oss-120b is 65.2 GB: too tight for the 64 GB tier, fits in 128."
+    },
+    "8jvg": {
+      "source_hash": "e7687c0dcb8a",
+      "text": "The 8-bit Llama, 75 GB, fits only in 128 GB."
+    },
+    "r2ah": {
+      "source_hash": "a75466c23d6d",
+      "text": "The original Llama release, 141 GB, won't fit even in 128."
+    },
+    "cwn7": {
+      "source_hash": "3f98b64591e8",
+      "text": "DeepSeek-V4-Flash is nearly 160 GB, too big for all three."
+    },
+    "pt7g": {
+      "source_hash": "c6b0832a83ff",
+      "text": "You may have heard: 128 GB can even run a 405-billion-parameter model?"
+    },
+    "6p8h": {
+      "source_hash": "fd8bd73493b5",
+      "text": "Do the math: 405 billion times 0.5 is over 200 GB. It doesn't fit either."
+    },
+    "2y24": {
+      "source_hash": "772bc686233d",
+      "text": "So could two 128 GB computers at home combine into 256 GB?"
+    },
+    "5cse": {
+      "source_hash": "6644dc6775c0",
+      "text": "NVIDIA's PAIR tool can spread work across several computers at home."
+    },
+    "8jt5": {
+      "source_hash": "92784feb7936",
+      "text": "NVIDIA is clear: PAIR doesn't combine them into one virtual GPU."
+    },
+    "c876": {
+      "source_hash": "47dad8063ba1",
+      "text": "Context, what a model reads in at once, uses memory too."
+    },
+    "pii9": {
+      "source_hash": "3153bdaf9a44",
+      "text": "At its full context, gpt-oss-120b needs 4.8 GB more: about 70 GB in all."
+    },
+    "dym6": {
+      "source_hash": "99ddf8398cc5",
+      "text": "OpenAI says gpt-oss-20b can run within 16 GB of memory."
+    },
+    "ttk7": {
+      "source_hash": "e186c2216cb9",
+      "text": "But on a 16 GB computer, that leaves under 4 GB."
+    },
+    "dqk7": {
+      "source_hash": "8d0edad7eaa9",
+      "text": "The 64 GB tier with gpt-oss-120b also has under 4 GB left."
+    },
+    "wyya": {
+      "source_hash": "d3131a3696bd",
+      "text": "Windows 11 alone needs at least 4 GB, so both cells count as too tight."
+    },
+    "hcs5": {
+      "source_hash": "30b41ffd0cd0",
+      "text": "Want to actually run one?"
+    },
+    "9paj": {
+      "source_hash": "65017a916ffd",
+      "text": "The article at the top of the description, in Chinese, walks you through running DeepSeek on your PC with Ollama."
+    },
+    "uih3": {
+      "source_hash": "13ccf45c9bec",
+      "text": "Once it fits, next question: how fast is it?"
+    },
+    "pyma": {
+      "source_hash": "9830dc99fdd6",
+      "text": "On NVIDIA's product page, this is the line about AI compute."
+    },
+    "cym2": {
+      "source_hash": "b2fdf9190697",
+      "text": "That's up to a quadrillion 4-bit operations a second."
+    },
+    "3xvu": {
+      "source_hash": "f788ce73c3b5",
+      "text": "Published: compute, memory capacity, power, and memory bandwidth, 300 GB per second."
+    },
+    "6jug": {
+      "source_hash": "11cd03d2b87c",
+      "text": "Not published as of late September: tokens per second."
+    },
+    "9qt3": {
+      "source_hash": "d33167f08c56",
+      "text": "A token is a small piece of text for a model."
+    },
+    "xzup": {
+      "source_hash": "d4f37066d746",
+      "text": "We have no unit, so real speed awaits named reviews once it ships."
+    },
+    "d7e6": {
+      "source_hash": "e60d82a94701",
+      "text": "Why does bandwidth matter?"
+    },
+    "k42r": {
+      "source_hash": "95b51dba3f9b",
+      "text": "Reading a long document leans on compute."
+    },
+    "ajv4": {
+      "source_hash": "7933893689fe",
+      "text": "But answering word by word, each step moves parameters from memory: bandwidth-bound."
+    },
+    "msnd": {
+      "source_hash": "ae71eb601e49",
+      "text": "Bandwidth gives us a ceiling on answer speed."
+    },
+    "rv27": {
+      "source_hash": "61f439ae64cd",
+      "text": "For a ceiling, see what each step moves; model designs differ a lot."
+    },
+    "uc8u": {
+      "source_hash": "77482e632448",
+      "text": "Llama 70B uses all 70-plus billion parameters for every token it generates."
+    },
+    "wm6a": {
+      "source_hash": "15c6e553ba2f",
+      "text": "gpt-oss-120b is a mixture-of-experts model."
+    },
+    "k3zx": {
+      "source_hash": "4745acd06d37",
+      "text": "117 billion in total, only 5.1 billion per token."
+    },
+    "kpbj": {
+      "source_hash": "7a2b1313b76e",
+      "text": "Over 10 times fewer: maybe much faster, but a ratio, not a measurement."
+    },
+    "j4w5": {
+      "source_hash": "575f59010d59",
+      "text": "The original gpt-oss-120b release reads about 5 GB per token."
+    },
+    "ujr7": {
+      "source_hash": "84a64a7abb5d",
+      "text": "Experts are just over 4 bits; the rest are 16-bit."
+    },
+    "3s2v": {
+      "source_hash": "1beb36ea8374",
+      "text": "Next come two theoretical ceilings, both at one token per step."
+    },
+    "wxrv": {
+      "source_hash": "6c6c847279f2",
+      "text": "Llama: 300 over 35, at most 8-plus tokens a second."
+    },
+    "efif": {
+      "source_hash": "e567bc03603e",
+      "text": "The original gpt-oss-120b release: 300 divided by 5, at most about 60."
+    },
+    "a5ye": {
+      "source_hash": "3176308b24db",
+      "text": "Context and other apps share bandwidth; real speed can only be lower."
+    },
+    "9cfz": {
+      "source_hash": "485c0b390822",
+      "text": "RTX Spark's other selling point: AI agents that run in the background, nonstop."
+    },
+    "6wyn": {
+      "source_hash": "8bbdf15ba74f",
+      "text": "NVIDIA says they run safely in the background under OS level control."
+    },
+    "u5iy": {
+      "source_hash": "bbde53ecb4b5",
+      "text": "Microsoft's MXC containers limit agents to files and domains policy allows."
+    },
+    "kna8": {
+      "source_hash": "1593d6aaa7c5",
+      "text": "Agents use their own accounts, logged apart from yours."
+    },
+    "rab2": {
+      "source_hash": "59fb18a8f2dc",
+      "text": "But in June Microsoft called it an early preview, with many features in Windows Insider builds."
+    },
+    "akm3": {
+      "source_hash": "65b96e24bc47",
+      "text": "My take: safety means the system really blocks it, not a \"don't\" in a prompt."
+    },
+    "uzk6": {
+      "source_hash": "c8ee8d672a9a",
+      "text": "Our government-portal episode demos three walls that box in a real agent."
+    },
+    "k76b": {
+      "source_hash": "146b238de586",
+      "text": "Now money: cloud plans bill monthly."
+    },
+    "85b5": {
+      "source_hash": "4e310d5dc631",
+      "text": "Claude Pro, for example, is $20 billed monthly as of late September."
+    },
+    "45uq": {
+      "source_hash": "8db0da1777c4",
+      "text": "Usage resets every 5 hours, plus weekly caps."
+    },
+    "e55p": {
+      "source_hash": "e4df1ab5f1c8",
+      "text": "Your own machine: pay once, plus electricity."
+    },
+    "hh47": {
+      "source_hash": "07ef7d047b2b",
+      "text": "As of late September, NVIDIA's product page still lists no RTX Spark price."
+    },
+    "yhk5": {
+      "source_hash": "fc0e77c62821",
+      "text": "Months to pay back: extra cost divided by monthly fees saved."
+    },
+    "fjvj": {
+      "source_hash": "a703d97c3bed",
+      "text": "Every extra $1,000, against a $20 monthly fee, takes 50 months."
+    },
+    "2v5v": {
+      "source_hash": "e3d32a6a653c",
+      "text": "Rough power math from the chip, not a whole-PC measurement."
+    },
+    "kn4k": {
+      "source_hash": "e349d92d4fbb",
+      "text": "Desktop, 140 watts nonstop: about 100 kWh a month."
+    },
+    "d45i": {
+      "source_hash": "5e814dd8154d",
+      "text": "A laptop at 80 watts, 8 hours a day, is about 19."
+    },
+    "3b5q": {
+      "source_hash": "4d7d68cf70ab",
+      "text": "Then multiply by your rate per kWh."
+    },
+    "6jas": {
+      "source_hash": "5764cc45adb8",
+      "text": "You may ask: should I buy one?"
+    },
+    "7ewf": {
+      "source_hash": "3888fef591c2",
+      "text": "I won't answer for you, only ask: what do you care about most?"
+    },
+    "t76u": {
+      "source_hash": "516db92a43f0",
+      "text": "My take: for privacy, local fits best; your data never leaves your PC."
+    },
+    "ppxc": {
+      "source_hash": "6561b9c464b7",
+      "text": "For quality, cloud fits better; top models are still there."
+    },
+    "8a5b": {
+      "source_hash": "90dcb2baf5bc",
+      "text": "For cost, run the payback formula from earlier first."
+    },
+    "n97c": {
+      "source_hash": "f183dbed7ecf",
+      "text": "For speed, wait for reviews of shipped units."
+    },
+    "egi5": {
+      "source_hash": "550d86bf3420",
+      "text": "So can local AI replace ChatGPT?"
+    },
+    "2cph": {
+      "source_hash": "d3d6277228ab",
+      "text": "My take: daily work that must stay home is worth moving local."
+    },
+    "wdr5": {
+      "source_hash": "f9fa4840cb86",
+      "text": "Cloud-safe work needing top models? Subscribing may still be better value."
+    },
+    "sji9": {
+      "source_hash": "bcdbedb7aa85",
+      "text": "In Task Manager's Performance tab, note memory and the GPU's own memory."
+    },
+    "wdpg": {
+      "source_hash": "98e4a099664b",
+      "text": "Then pick a model to run and try the formula on it."
+    }
+  }
+}

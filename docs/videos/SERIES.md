@@ -94,7 +94,7 @@
 - `flow.mjs`：`draftEpisode(request)`：企劃書由細綱生成（`## 故事前提`＝作品前提＋本集一句話、`## 角色` 逐字來自設定集、`## 站主觀點` 來自頻道立場或作品備註、`## 幕`＝beats、`## 大綱` 單一選項），本機直接核准 outline；`scriptPayload` 多帶 `series` 脈絡；`advance()` 在 listener 之後加 `scriptGate`（送審／等／退回→撰稿 FIX 模式）；`video assembled` 後跑 `recap` 並寫回；上架確認後 `POST done`。
 - 提示詞：skill `references/prompts/series-setting.md`、`series-outline.md`、`series-chapter.md`、`writer-series.md`、`verifier-series.md`，規格照上一節；`DRAMA_INSTRUCTIONS.planner` 的「不重複前一支的角色」在作品模式改成「延續作品的角色」。
 - **設定圖沿用**：作品存檔 `<VIDEO_WORKDIR>/_series/<series>/characters/<id>/<sheetKey>.png`＋`index.json`（`sheetKey = hash(id, appearance, sheet_prompt, resolvedLook)`）。`look` 對每個角色先查存檔，有核准過的就放進這一集的 manifest 當唯一候選並寫 `choice.json` 與 approvals（備註「沿用作品設定圖」），只為新角色生成；核准後把選中的圖複製進存檔。`keyframes` 每集本來就會把選中的圖重新上傳到該 slug 的媒體庫。
-- 詞彙表：設定集階段就把人名、門派名、術語連同讀音寫進 `docs/videos/lexicon.json`（`speechHash` 含整份詞彙表，之後才加詞會讓進行中的集重錄旁白）。
+- 詞彙表：設定集階段就把人名、門派名、術語連同讀音寫進 `docs/videos/lexicon.json`（`speechHash` 只含這一集的句子用到的條目，所以之後才加的詞，只有唸到它的集要重錄那幾句；2026-09-29 以前的做法是整份詞彙表都算）。
 
 ## 後台（`apps/web`）
 

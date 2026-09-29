@@ -1,0 +1,907 @@
+{
+  "schema_version": 1,
+  "slug": "always-on-agent-explained",
+  "format": "slides",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a natural Taiwanese accent. Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace."
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "聊天機器人時代結束了：AI 代理（AI Agent）實際怎麼運作、又怎麼失敗",
+    "description": "從一句「幫我處理好」到拿到結果，中間到底發生了什麼？這支影片把一次真實的 AI 代理執行一步一步記錄下來，整理成讓代理有別於聊天機器人的五個動作，再用廠商自己公布的數字，看看代理還會在哪裡失敗。\n\n這次執行，是請一個程式開發代理讀三個官方定價頁，再寫成一張表；每一次工具呼叫、那一個拒絕存取的網頁，還有它寫出的檔案，都照 2026 年 9 月 28 日當天的實際過程呈現。畫面上的電腦操作分數，是 Anthropic 自己為 Claude Opus 5.5 公布的；OpenAI 自己的 GPT-6 Astra 頁面連結放在下方。關於 OpenAI 下一款助理的消息，影片中都標明是報導。\n\n錄製日期：2026 年 9 月 28 日。",
+    "tags": [
+      "AI 代理",
+      "AI Agent",
+      "AI 代理是什麼",
+      "聊天機器人",
+      "AI 代理與聊天機器人的差別",
+      "AI 操作電腦",
+      "常駐 AI 助理",
+      "Claude Code",
+      "OpenAI DevDay",
+      "Claude Opus 5.5",
+      "GPT-6 Astra",
+      "OSWorld"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "AI 代理一次看懂",
+      "headline": "聊天機器人\nvs **代理**",
+      "sub": "一次真實執行，五個動作"
+    }
+  },
+  "sources": [
+    {
+      "title": "Anthropic: Introducing Claude Opus 5.5 (OSWorld 2.0 81.8% partial; API prices)",
+      "url": "https://www.anthropic.com/news/claude-opus-5-5",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "OpenAI: GPT-6 Astra model page (price, context window)",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "OpenAI: GPT-6 Astra launch page",
+      "url": "https://openai.com/index/gpt-6-astra/",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "xAI: models and pricing (Grok 4.7)",
+      "url": "https://docs.x.ai/docs/models",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "NVIDIA: Sparks Fly, local AI at IFA 2026 (the Windows agent framework)",
+      "url": "https://blogs.nvidia.com/blog/local-ai-ifa-next-gen-agents-nv-pair-rtx-spark/",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "OpenAI DevDay 2026 (date and venue)",
+      "url": "https://devday.openai.com/",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Claude Code CLI reference (the flags used in the run)",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "checked_on": "2026-09-28"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook",
+      "chapter": "AI 代理是什麼？一句話講清楚",
+      "template": "title",
+      "data": {
+        "tag": "AI 代理一次看懂",
+        "title": "聊天機器人時代結束了：**AI 代理**到底怎麼運作",
+        "subtitle": "一次真實執行、五個動作，還有仍會失敗的任務"
+      },
+      "lines": [
+        {
+          "id": "hx5y",
+          "text": "現在每家 AI 公司都在賣你 AI 代理。下一步，要賣你永遠不下線的。"
+        }
+      ]
+    },
+    {
+      "id": "hook-gap",
+      "template": "big",
+      "data": {
+        "kicker": "多數解釋只講一句",
+        "text": "它會用**工具**",
+        "sub": "但按下 Enter 之後發生什麼，完全沒說"
+      },
+      "lines": [
+        {
+          "id": "prkk",
+          "text": "多數解釋只講一句：它會用工具。但按下 Enter 之後發生什麼，完全沒說。"
+        }
+      ]
+    },
+    {
+      "id": "hook-plan",
+      "template": "steps",
+      "data": {
+        "title": "這集要看的三件事",
+        "steps": [
+          {
+            "title": "一件無聊的事",
+            "detail": "交給代理，\n全程錄下來"
+          },
+          {
+            "title": "五個動作",
+            "detail": "聊天機器人\n怎麼變成代理"
+          },
+          {
+            "title": "還會出錯的任務",
+            "detail": "照廠商自己的數字，\n又該怎麼辦"
+          }
+        ]
+      },
+      "claims": [
+        "c1",
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "7iga",
+          "text": "所以我給代理一件無聊的事，全程錄下來。聊天機器人怎麼變成代理，帶你看這五個動作。",
+          "reveal": 2
+        },
+        {
+          "id": "bdiv",
+          "text": "還有，照廠商自己的數字，哪些任務還會出錯，又該怎麼辦。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "difference",
+      "chapter": "AI 代理和聊天機器人差在哪",
+      "template": "compare",
+      "data": {
+        "title": "一句話講差別",
+        "left": {
+          "heading": "聊天機器人",
+          "points": [
+            "文字進、文字出",
+            "一個回合，然後等著",
+            "什麼都不碰"
+          ]
+        },
+        "right": {
+          "heading": "AI 代理",
+          "points": [
+            "一個目標，不是一個問題",
+            "能呼叫的工具",
+            "迴圈：行動、觀察、再行動",
+            "何時該停的規則"
+          ]
+        }
+      },
+      "lines": [
+        {
+          "id": "hpt2",
+          "text": "一句話講差別。聊天機器人把你的文字變成文字，然後等著；代理呢，接下目標，就一路做到完成。"
+        },
+        {
+          "id": "db9w",
+          "text": "左邊是聊天機器人：文字進、文字出，一個回合，對話以外的東西一概不碰。",
+          "reveal": 1
+        },
+        {
+          "id": "p7nm",
+          "text": "右邊是代理：一個目標、能呼叫的工具，一個行動、觀察、再行動的迴圈，還有什麼時候該停的規則。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "difference-loop",
+      "template": "stats",
+      "data": {
+        "title": "全都在這個**迴圈**裡",
+        "stats": [
+          {
+            "value": "有用",
+            "label": "讓代理有用的一切"
+          },
+          {
+            "value": "危險",
+            "label": "讓它危險的一切"
+          }
+        ]
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "qvb8",
+          "text": "讓代理有用的一切，和讓它危險的一切，全都在這個迴圈裡。"
+        }
+      ]
+    },
+    {
+      "id": "three-words",
+      "template": "big",
+      "data": {
+        "kicker": "記住三個詞",
+        "text": "目標 + 工具 + 迴圈"
+      },
+      "lines": [
+        {
+          "id": "agxs",
+          "text": "目標、工具、迴圈。如果這支影片你只記得住三個詞，就記這三個。"
+        }
+      ]
+    },
+    {
+      "id": "three-words-stop",
+      "template": "steps",
+      "data": {
+        "title": "再加第四個詞：**停止**",
+        "steps": [
+          {
+            "title": "停止規則",
+            "detail": "不清楚"
+          },
+          {
+            "title": "代理",
+            "detail": "一直做下去"
+          },
+          {
+            "title": "上週的頭條",
+            "detail": "就是這樣來的"
+          }
+        ]
+      },
+      "claims": [
+        "c9",
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "vaxb",
+          "text": "還記得住的話，再加第四個：停止。停止規則不清楚，代理就會一直做下去，上週的頭條就是這樣來的。"
+        }
+      ]
+    },
+    {
+      "id": "task",
+      "chapter": "實際跑一次，一步一步拆解",
+      "template": "chat",
+      "data": {
+        "title": "我們交給它的任務",
+        "messages": [
+          {
+            "side": "left",
+            "name": "我們",
+            "text": "找出三個官方價格，寫成一張表。"
+          },
+          {
+            "side": "right",
+            "name": "AI 代理",
+            "text": "我會逐一抓取這三個網頁。"
+          }
+        ]
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "eyuh",
+          "text": "來看實測。我們給寫程式的代理一件能查核的小工作：找出三個模型的官方價格，寫成表格。"
+        },
+        {
+          "id": "uf2w",
+          "text": "我們指定了它能讀的三個網頁，也交代它：讀不到的欄位就留白，絕對不要猜數字。",
+          "reveal": 1
+        },
+        {
+          "id": "6gvp",
+          "text": "它先用一句話交代計畫：我會逐一抓取這三個網頁。這就是動作一：目標變成計畫。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "moves",
+      "template": "steps",
+      "data": {
+        "title": "一次執行，五個動作",
+        "steps": [
+          {
+            "title": "1 規劃",
+            "detail": "目標\n變成步驟"
+          },
+          {
+            "title": "2 呼叫\n工具",
+            "detail": "抓取三次，三個網頁"
+          },
+          {
+            "title": "3 觀察",
+            "detail": "兩個有回應\n一個回 403"
+          },
+          {
+            "title": "4 依結果行動",
+            "detail": "寫好表格，失敗的留白"
+          },
+          {
+            "title": "5 停下來回報",
+            "detail": "做了什麼、哪些做不到"
+          }
+        ]
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "6ifa",
+          "text": "動作一，規劃。動作二，呼叫工具：我們指定的三個網頁，它都去抓了。",
+          "reveal": 2
+        },
+        {
+          "id": "zdw7",
+          "text": "動作三，觀察。兩個網頁回傳了價格，第三個拒絕了，回的是 403 錯誤，也就是禁止存取。",
+          "reveal": 1
+        },
+        {
+          "id": "n96a",
+          "text": "動作四，根據看到的結果行動。它寫好表格，把失敗那個模型的欄位留白，完全照我們說的做。",
+          "say": "第四個動作，根據看到的結果行動。它寫好表格，把失敗那個模型的欄位留白，完全照我們說的做。",
+          "say_for": "54e7d33674e4",
+          "reveal": 1
+        },
+        {
+          "id": "9e9d",
+          "text": "動作五，停下來回報：用兩句話說做了什麼、哪些做不到。5 個回合，22 秒。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "result",
+      "template": "table",
+      "data": {
+        "title": "它寫出的檔案",
+        "columns": [
+          "模型",
+          "輸入／百萬",
+          "輸出／百萬",
+          "來源"
+        ],
+        "rows": [
+          [
+            "Claude Opus 5.5",
+            "$4",
+            "$20",
+            "Anthropic 官網"
+          ],
+          [
+            "GPT-6 Astra",
+            "—",
+            "—",
+            "403，讀不到"
+          ],
+          [
+            "Grok 4.7，未滿 200k",
+            "$2.00",
+            "$6.00",
+            "xAI 文件"
+          ],
+          [
+            "Grok 4.7，200k 以上",
+            "$4.00",
+            "$12.00",
+            "xAI 文件"
+          ]
+        ],
+        "highlight": 1
+      },
+      "claims": [
+        "c1",
+        "c6",
+        "c7",
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "qpg5",
+          "text": "這就是那個檔案。有三列填好了，每列都寫了數字出自哪個網頁；還有一列，老老實實空著。"
+        }
+      ]
+    },
+    {
+      "id": "result-blank",
+      "template": "big",
+      "data": {
+        "kicker": "整個檔案最重要的地方",
+        "text": "那一列**空白**",
+        "sub": "網頁一讀不到就亂猜的代理，你根本沒辦法用"
+      },
+      "claims": [
+        "c1",
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "6zh7",
+          "text": "那一列空白，是整個檔案最重要的地方。網頁一讀不到就亂猜的代理，你根本沒辦法用。"
+        }
+      ]
+    },
+    {
+      "id": "report",
+      "template": "chat",
+      "data": {
+        "title": "它最後的回報",
+        "messages": [
+          {
+            "side": "right",
+            "name": "AI 代理",
+            "text": "我成功抓了兩個網頁，也寫下了它們的價格。"
+          },
+          {
+            "side": "right",
+            "name": "AI 代理",
+            "text": "第三個網頁回了 403，所以我留白。"
+          }
+        ]
+      },
+      "claims": [
+        "c1",
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "5dmh",
+          "text": "然後它停下來，照我們要求的，用兩句話回報：做了什麼，還有什麼沒做到。",
+          "reveal": 1
+        },
+        {
+          "id": "2ph2",
+          "text": "不管你用哪個代理，都要找這第二句。白話講就是：網頁拒絕了，所以我留白，而不是用猜的。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "report-good-bad",
+      "template": "compare",
+      "data": {
+        "title": "碰壁的時候",
+        "left": {
+          "heading": "好的代理",
+          "points": [
+            "告訴你它在哪裡碰壁"
+          ]
+        },
+        "right": {
+          "heading": "差的代理",
+          "points": [
+            "把碰壁的地方塗掉",
+            "交給你一份看起來很乾淨的檔案"
+          ]
+        }
+      },
+      "lines": [
+        {
+          "id": "v3m4",
+          "text": "好的代理會告訴你，它在哪裡碰壁；差的會把碰壁的地方塗掉，交給你一份看起來很乾淨的檔案。"
+        }
+      ]
+    },
+    {
+      "id": "run-numbers",
+      "template": "stats",
+      "data": {
+        "title": "整次執行的數字",
+        "stats": [
+          {
+            "value": "5",
+            "label": "回合"
+          },
+          {
+            "value": "3",
+            "label": "抓取的網頁",
+            "note": "其中 1 個被拒"
+          },
+          {
+            "value": "1",
+            "label": "寫出的檔案"
+          },
+          {
+            "value": "22 秒",
+            "label": "從頭到尾"
+          }
+        ],
+        "source": "2026-09-28 錄製，只開放兩個工具：一個抓網頁，一個寫檔案"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "6wdb",
+          "text": "整次執行的數字：5 個回合，抓了 3 個網頁、其中 1 個被拒，寫出 1 個檔案，總共 22 秒。",
+          "reveal": 4
+        }
+      ]
+    },
+    {
+      "id": "run-loop",
+      "template": "big",
+      "data": {
+        "kicker": "這裡沒有魔法",
+        "text": "就是一個**迴圈**",
+        "sub": "呼叫工具、看回傳的結果，每一步你都讀得到"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "q439",
+          "text": "這裡沒有魔法。它就是一個迴圈：呼叫工具、看回傳的結果，而且每一步你都讀得到。"
+        }
+      ]
+    },
+    {
+      "id": "shows",
+      "template": "bullets",
+      "data": {
+        "title": "這次執行說明了什麼",
+        "items": [
+          "每次工具呼叫都看得到：你讀得到軌跡",
+          "失敗變成空白欄位，而不是編出來的數字",
+          "收據是檔案，不是對話"
+        ]
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "fuue",
+          "text": "這次小小的執行，說明了三件事。"
+        },
+        {
+          "id": "7bmr",
+          "text": "第一，每一次工具呼叫都看得到。代理會留下軌跡，你可以回頭去讀。",
+          "reveal": 1
+        },
+        {
+          "id": "dduj",
+          "text": "第二，失敗變成了空白欄位，而不是編出來的數字，因為我們事先就講好了。",
+          "reveal": 1
+        },
+        {
+          "id": "ajex",
+          "text": "第三，收據是檔案，不是對話。對話告訴你發生了什麼，檔案才是真正發生的事。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "fail",
+      "chapter": "AI 代理還會在哪裡失敗：廠商自己的數字",
+      "template": "stats",
+      "data": {
+        "title": "各家實驗室公布的電腦操作分數",
+        "stats": [
+          {
+            "value": "81.8%",
+            "label": "Claude Opus 5.5 的 OSWorld 2.0 成績",
+            "note": "部分給分，Anthropic 公布的數字"
+          },
+          {
+            "value": "≈ 1/5",
+            "label": "任務沒有完全做完",
+            "note": "以這個分數來看"
+          }
+        ],
+        "source": "anthropic.com，2026-09-22；OpenAI 的 GPT-6 Astra 頁面連結在說明欄"
+      },
+      "claims": [
+        "c2",
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "gxyd",
+          "text": "再來是不太舒服的部分。各家實驗室會用 OSWorld 基準測試，公布代理在真實電腦上完成任務的比例。"
+        },
+        {
+          "id": "73y9",
+          "text": "Anthropic 公布，Claude Opus 5.5 拿到 81.8%，部分給分。反過來看，大約每 5 個任務，就有 1 個沒完全做完。",
+          "say": "Anthropic 公布，Claude Opus 五點五拿到百分之八十一點八，部分給分。反過來看，大約每 5 個任務，就有 1 個沒完全做完。",
+          "say_for": "b3513e245b35",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "fail-astra",
+      "template": "big",
+      "data": {
+        "kicker": "至於 GPT-6 Astra：OpenAI 自己的發表頁面",
+        "text": "連結在**說明欄**",
+        "sub": "它怎麼講電腦操作，你去那裡看，再自己比較"
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "u5vx",
+          "text": "至於 GPT-6 Astra，OpenAI 自己的發表頁面連結在說明欄。它怎麼講電腦操作，你去那裡看，再自己比較。"
+        }
+      ]
+    },
+    {
+      "id": "shapes",
+      "template": "bullets",
+      "data": {
+        "title": "任務出錯的四種樣子",
+        "items": [
+          "讀錯網頁，或資料過時",
+          "只做一半，卻回報完成",
+          "信心滿滿的錯誤數字",
+          "做了你沒要求的事"
+        ]
+      },
+      "lines": [
+        {
+          "id": "rcus",
+          "text": "任務失敗的時候，不外乎這四種樣子。"
+        },
+        {
+          "id": "y342",
+          "text": "讀錯網頁，或是讀到過時的資料。",
+          "reveal": 1
+        },
+        {
+          "id": "ar7d",
+          "text": "只做了一半，卻回報說做完了。",
+          "reveal": 1
+        },
+        {
+          "id": "sfmt",
+          "text": "信心滿滿地給出一個錯的數字。",
+          "reveal": 1
+        },
+        {
+          "id": "gb65",
+          "text": "或是做了你根本沒要求的事，上週上新聞的就是這一種。",
+          "say": "或是做了你根本沒要求的事，上個禮拜上新聞的，就是這一種。",
+          "say_for": "b899e677c033",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "always-on",
+      "chapter": "常駐型 AI 代理：各家實驗室的下一步",
+      "template": "bullets",
+      "data": {
+        "title": "永遠不下線，會改變什麼",
+        "items": [
+          "你不在時，它照樣行動",
+          "它會跨對話保留狀態",
+          "NVIDIA 表示：新的 Windows 代理框架，\n讓代理在背景執行、受作業系統控管",
+          "OpenAI 的常駐助理：錄影時只是報導，還沒有正式宣布"
+        ]
+      },
+      "claims": [
+        "c4",
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "sy22",
+          "text": "再來，是大家都在打造的下一步：你關掉視窗之後，還會繼續工作的代理。"
+        },
+        {
+          "id": "zf6x",
+          "text": "你不在的時候，它照樣行動，所以沒有人盯著這個迴圈。",
+          "reveal": 1
+        },
+        {
+          "id": "6fh3",
+          "text": "它會在不同對話之間保留狀態，所以週一任務的一個錯，可能影響到週五的任務。",
+          "reveal": 1
+        },
+        {
+          "id": "txqe",
+          "text": "NVIDIA 表示，在它和微軟的合作裡，新的 Windows 代理框架，能讓這類代理在背景執行，由作業系統控管。",
+          "reveal": 1
+        },
+        {
+          "id": "xc6d",
+          "text": "許多媒體報導，OpenAI 也在打造自己的常駐助理。在我們錄影的時候，這只是報導，還沒有正式宣布。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "always-on-loop",
+      "template": "steps",
+      "data": {
+        "title": "不管最後推出什麼，樣子都一樣",
+        "steps": [
+          {
+            "title": "目標"
+          },
+          {
+            "title": "工具"
+          },
+          {
+            "title": "迴圈",
+            "detail": "只是現在，\n沒有人在場"
+          }
+        ]
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "xc5x",
+          "text": "不管最後推出什麼，樣子都一樣：目標、工具、迴圈，只是這個迴圈，現在沒有人在場。"
+        }
+      ]
+    },
+    {
+      "id": "walls-cta",
+      "template": "cta",
+      "data": {
+        "kicker": "上一支影片",
+        "title": "把代理關在框框裡的三道牆",
+        "sub": "工具、網路、機密"
+      },
+      "lines": [
+        {
+          "id": "7w3r",
+          "text": "會擔心嗎？那很好。上一支影片講的，就是把代理關在框裡的三道牆：工具、網路、機密。接著就去看它。"
+        }
+      ]
+    },
+    {
+      "id": "questions",
+      "chapter": "交辦任務給 AI 前，先問三個問題",
+      "template": "steps",
+      "data": {
+        "title": "交辦任務之前，先問清楚",
+        "steps": [
+          {
+            "title": "證據是什麼？",
+            "detail": "檔案、diff、訂位代號，\n不是摘要"
+          },
+          {
+            "title": "它碰得到什麼？",
+            "detail": "你不在時，它碰得到的\n工具、網站和機密"
+          },
+          {
+            "title": "答錯的代價多大？",
+            "detail": "查起來便宜，\n還是挽回很貴？"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "8j97",
+          "text": "所以，把任務交給代理之前，先問這三個問題。"
+        },
+        {
+          "id": "wppa",
+          "text": "第一，我會拿到什麼證據，證明它做完了？一個檔案、一份 diff、一個訂位代號。摘要不算證據。",
+          "reveal": 1
+        },
+        {
+          "id": "wvpe",
+          "text": "第二，我沒在看的時候，它碰得到什麼？工具、網站、機密。如果答案是全部，就先停下來。",
+          "reveal": 1
+        },
+        {
+          "id": "dujd",
+          "text": "第三，答錯的話，我要付多少代價？一個空白欄位很便宜，訂錯位子、刪掉資料夾，就不便宜了。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "delegation",
+      "template": "chat",
+      "data": {
+        "title": "不好的交辦、好的交辦",
+        "messages": [
+          {
+            "side": "left",
+            "name": "不好的交辦",
+            "text": "幫我訂週五的位子。"
+          },
+          {
+            "side": "right",
+            "name": "好的交辦",
+            "text": "列出三個選項，什麼都不要訂。"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "qpj7",
+          "text": "同一件差事，兩種交辦方式。"
+        },
+        {
+          "id": "s6m4",
+          "text": "「幫我訂週五的位子。」這樣等於把錢和決定都交出去，而且確認信寄來之前，你手上沒有任何證據。",
+          "reveal": 1
+        },
+        {
+          "id": "5djs",
+          "text": "「列出三個選項，什麼都不要訂。」這樣你會拿到一份能查核的清單，決定權也還在你手上。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "chapter": "聊天機器人的時代真的結束了嗎？",
+      "template": "big",
+      "data": {
+        "kicker": "聊天機器人的時代結束了嗎？",
+        "text": "**不完全是**",
+        "sub": "對話變成了收據，真正的工作在它背後進行"
+      },
+      "lines": [
+        {
+          "id": "4nvh",
+          "text": "所以，聊天機器人的時代結束了嗎？不完全是。對話變成了收據，真正的工作在它背後進行。"
+        }
+      ]
+    },
+    {
+      "id": "outro-job",
+      "template": "compare",
+      "data": {
+        "title": "你的工作也變了",
+        "left": {
+          "heading": "以前",
+          "points": [
+            "問出好問題"
+          ]
+        },
+        "right": {
+          "heading": "現在",
+          "points": [
+            "設好界線",
+            "讀檔案，不是讀摘要"
+          ]
+        }
+      },
+      "lines": [
+        {
+          "id": "5esi",
+          "text": "你的工作也變了：從問出好問題，變成設好界線，還有，要讀檔案，不是讀摘要。"
+        }
+      ]
+    },
+    {
+      "id": "outro-end",
+      "template": "outro",
+      "data": {
+        "title": "對話，現在是收據",
+        "cta": "讀檔案，不是讀摘要。",
+        "lines": [
+          "目標、工具、迴圈、停止",
+          "要證據、限範圍、算清出錯的代價",
+          "下一支：哪個 AI 真正值得付費"
+        ]
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "p8zt",
+          "text": "下一支影片，我們從這個代理找到的價格出發，我帶你看哪個模型真正值得付費。"
+        }
+      ]
+    }
+  ]
+}

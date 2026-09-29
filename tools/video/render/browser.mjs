@@ -97,6 +97,18 @@ function layoutProblems(fontFamily) {
     if (box.scrollHeight > box.clientHeight + 1) problems.push(`the slide's content is ${box.scrollHeight - box.clientHeight}px taller than its area`);
     if (box.scrollWidth > box.clientWidth + 1) problems.push(`the slide's content is ${box.scrollWidth - box.clientWidth}px wider than its area`);
   }
+  // The thumbnail's brand mark sits in the bottom corner outside the flow, so a small line that
+  // wraps grows into it without overflowing the box; compare the boxes instead.
+  for (const brand of document.querySelectorAll(".thumb .brand")) {
+    const mark = brand.getBoundingClientRect();
+    for (const element of brand.parentElement.children) {
+      if (element === brand) continue;
+      const box = element.getBoundingClientRect();
+      if (box.bottom > mark.top && box.top < mark.bottom && box.right > mark.left && box.left < mark.right) {
+        problems.push(`the thumbnail's text runs into the ${brand.textContent.trim()} mark: "${excerpt(element)}"; keep it to one line`);
+      }
+    }
+  }
   // The code panel clips what it cannot show, so the content box above never sees the overflow.
   for (const panel of document.querySelectorAll(".t-code .panel")) {
     const shown = [...panel.querySelectorAll(".ln")].filter((line) => line.getBoundingClientRect().bottom <= panel.getBoundingClientRect().bottom + 1).length;
