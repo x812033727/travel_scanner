@@ -9,7 +9,7 @@ import path from "node:path";
 
 import { approvalState, readApprovals } from "./approvals.mjs";
 import { COMPILATION_HEADLINE_PLACEHOLDER, COMPILATION_STEPS, compilationChecksCurrent, isCompilation, lintCompilation, PLACEHOLDER_TITLE } from "./compilation.mjs";
-import { burnIn, isDrama, lookHash, mixHash, subtitlesHash } from "./drama.mjs";
+import { burnIn, illustrated, isDrama, keyframesHash, lookHash, mixHash, picturesHash, sfxHash, subtitlesHash } from "./drama.mjs";
 import { emptyLexicon } from "./lexicon.mjs";
 import { lintVideo } from "./lint.mjs";
 import { dubLocales, dubScript, speechLexicon, translationHash } from "../dubs/plan.mjs";
@@ -82,6 +82,29 @@ export const SLIDES_STEPS = [
 ];
 
 /**
+ * An illustrated slides video's steps (docs/videos/ILLUSTRATED.md): the slides steps with the
+ * pictures drawn and the storyboard approved once the narration is, and the music made once the
+ * cards are rendered. `formatSteps` drops the music step when the script has none.
+ */
+export const ILLUSTRATED_STEPS = [
+  "brief",
+  "outline approved",
+  "script passes lint",
+  "fact-checked",
+  "narration synthesized",
+  "narration approved",
+  "keyframes drawn",
+  "storyboard approved",
+  "frames rendered",
+  "music generated",
+  "video assembled",
+  "captions written",
+  "final video approved",
+  "upload package",
+  "on YouTube",
+];
+
+/**
  * A drama's steps. The look comes before the narration so the owner can drop a concept before
  * anything else is paid for; render (local, cheap, fails on a missing glyph) comes before clips,
  * the most expensive stage; music is skipped when the script has none, and the two look steps
@@ -120,6 +143,7 @@ export { COMPILATION_STEPS };
 /** The steps of the video's format, before `stepsFor` drops the look of a drama with no characters. */
 function formatSteps(doc) {
   if (isCompilation(doc)) return COMPILATION_STEPS;
+  if (illustrated(doc)) return ILLUSTRATED_STEPS.filter((id) => id !== "music generated" || doc.music);
   if (!isDrama(doc)) return SLIDES_STEPS;
   // Every drama has the script gate (docs/videos/DRAMA-FLOW.md, section 2): the owner reads the
   // screenplay, and may discuss it, before any image or clip is paid for. Music is skipped when
@@ -278,6 +302,9 @@ export async function pipelineStatus({ slug, root, workdir }) {
   const compilation = isCompilation(doc);
   // A compilation is a drama for the disclosure and the steps, not for the media stages here.
   const drama = isDrama(doc) && !compilation;
+  // Illustrated slides (docs/videos/ILLUSTRATED.md) draw pictures and a storyboard like a drama,
+  // and keep the slides gates otherwise.
+  const pictures = drama || (illustrated(doc) && !compilation);
   // A narrator-only drama has no cast: no look gate to ask about, no character sheets to read.
   const cast = drama && !narratorOnly(doc);
   const gate = (name) => approvalState({ gate: name, docDir: dir, workdir });
@@ -285,7 +312,7 @@ export async function pipelineStatus({ slug, root, workdir }) {
   const audio = await gate("audio");
   const final = await gate("final");
   const look = cast ? await gate("look") : null;
-  const storyboard = drama ? await gate("storyboard") : null;
+  const storyboard = pictures ? await gate("storyboard") : null;
   const script = drama ? await gate("script") : null;
   const timeline = read(ARTIFACTS.timeline);
   const frames = read(ARTIFACTS.frames);
@@ -293,19 +320,26 @@ export async function pipelineStatus({ slug, root, workdir }) {
   const captions = read(ARTIFACTS.captions);
   const upload = read(ARTIFACTS.upload);
   const characters = cast ? read(ARTIFACTS.characters) : null;
-  const keyframes = drama ? read(ARTIFACTS.keyframes) : null;
+  const keyframes = pictures ? read(ARTIFACTS.keyframes) : null;
   const clips = drama ? read(ARTIFACTS.clips) : null;
-  const music = drama ? read(ARTIFACTS.music) : null;
+  const music = (drama || doc?.music) && !compilation ? read(ARTIFACTS.music) : null;
   const valid = Boolean(lint) && lint.errors.length === 0;
   const speech = valid && !compilation ? speechHash(doc, project.lexicon) : null;
   const visual = valid ? visualHash(doc) : null;
-  const lookNow = valid && drama ? lookHash(doc) : null;
+  const lookNow = valid && pictures ? lookHash(doc) : null;
   const subtitles = valid && drama ? subtitlesHash(doc) : null;
-  const mix = valid && drama ? mixHash(doc) : null;
+  // A drama's checks.json always carries a mix hash (of no music, when it has none); slides carry one only with music.
+  const mix = valid && (drama || doc.music) && !compilation ? mixHash(doc) : null;
   const chosen = cast ? lookChosen(characters, read(ARTIFACTS.characterChoice), lookNow) : null;
 
   const framesDone = Boolean(visual) && frames?.visual_hash === visual && (!drama || !burnIn(doc) || (frames.speech_hash === speech && frames.subtitles_hash === subtitles));
+  // A drama's keyframes are bound to the whole picture; illustrated slides bind theirs to the shots
+  // alone, so a card edit does not have every picture judged again.
+  const keyframesDone = Boolean(lookNow) && keyframes?.look_hash === lookNow && (drama ? keyframes.visual_hash === visual : keyframes.pictures_hash === picturesHash(doc)) && !needsReview(keyframes);
   const assembledDrama = !drama || (checks?.look_hash === lookNow && checks.clips_hash === clips?.clips_hash && checks.subtitles_hash === subtitles && checks.mix_hash === mix);
+  const assembledIllustrated = !(pictures && !drama) || (checks?.look_hash === lookNow && checks.pictures_hash === keyframesHash(doc, keyframes));
+  const assembledSound = compilation || ((!doc?.music || checks?.mix_hash === mix) && (!doc?.sfx || checks?.sfx_hash === sfxHash(doc)));
+  const assembledMedia = assembledDrama && assembledIllustrated && assembledSound;
 
   const definitions = {
     brief: { done: existsSync(path.join(dir, "brief.md")), todo: `the planner agent writes docs/videos/${slug}/brief.md` },
@@ -346,7 +380,7 @@ export async function pipelineStatus({ slug, root, workdir }) {
       todo: `${cli("review", slug)}; the owner listens and flags lines; then ${cli("approve", slug, "--gate audio")}`,
     },
     "keyframes drawn": {
-      done: Boolean(lookNow) && keyframes?.look_hash === lookNow && keyframes.visual_hash === visual && !needsReview(keyframes),
+      done: keyframesDone,
       note: keyframes && needsReview(keyframes) ? "some shots need a prompt fix (needs_review in keyframes/manifest.json)" : undefined,
       todo: cli("keyframes", slug),
     },
@@ -363,7 +397,7 @@ export async function pipelineStatus({ slug, root, workdir }) {
     },
     "music generated": { done: Boolean(mix) && music?.mix_hash === mix, todo: cli("music", slug) },
     "video assembled": {
-      done: Boolean(checks?.ok) && checks.speech_hash === speech && checks.visual_hash === visual && assembledDrama && existsSync(path.join(workdir, ARTIFACTS.video)),
+      done: Boolean(checks?.ok) && checks.speech_hash === speech && checks.visual_hash === visual && assembledMedia && existsSync(path.join(workdir, ARTIFACTS.video)),
       note: checks && !checks.ok ? `checks failed: ${(checks.problems ?? []).join("; ")}` : undefined,
       todo: cli("assemble", slug),
     },
