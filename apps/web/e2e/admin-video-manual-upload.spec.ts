@@ -122,7 +122,9 @@ for (const locale of locales) {
         const description = language === "zh-TW" ? existing ? original.description : "Synthetic unsent description\n00:00 Draft chapter" : translations[language].description;
         await expect(manual.getByRole("textbox", { name: m.description, exact: true })).toHaveValue(description);
         await manual.getByRole("button", { name: m.copyField.replace("{label}", m.description), exact: true }).click();
-        await expect.poll(() => page.evaluate(() => navigator.clipboard.readText())).toBe(description);
+        // Windows clipboard text uses CRLF. Normalize only that line ending so
+        // spaces, paragraph breaks and every copied character still match exactly.
+        await expect.poll(() => page.evaluate(async () => (await navigator.clipboard.readText()).replace(/\r\n/g, "\n"))).toBe(description);
         const captionName = `${language}.${language === "ja" ? "vtt" : "srt"}`;
         const caption = manual.getByRole("region", { name: m.captionsStep }).locator(`a[download="${captionName}"]`);
         await download(caption, page, captionName, state.fileContent.get(hash(5 + locales.indexOf(language)))!);
