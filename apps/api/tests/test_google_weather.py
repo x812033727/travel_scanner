@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import logging
 from datetime import date
 from typing import Any
 
@@ -8,6 +9,7 @@ import httpx
 import pytest
 
 from app.config import Settings
+from app.hotspots.guides import GOOGLE_API_KEY_HEADER
 from app.problems import AppError
 from app.providers.usage_meter import google_maps_usage_snapshot
 from app.weather.google import GoogleWeatherService
@@ -65,7 +67,10 @@ def daily_fixture() -> dict[str, Any]:
 
 
 @pytest.mark.asyncio
-async def test_google_weather_normalizes_and_caches_current_and_daily_results() -> None:
+@pytest.mark.parametrize("borrowed_client", [True, False], ids=["borrowed", "owned"])
+async def test_google_weather_normalizes_and_caches_current_and_daily_results(
+    borrowed_client: bool, monkeypatch: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture
+) -> None:
     calls: list[httpx.Request] = []
 
     async def handler(request: httpx.Request) -> httpx.Response:
@@ -75,26 +80,67 @@ async def test_google_weather_normalizes_and_caches_current_and_daily_results() 
         return httpx.Response(200, json=daily_fixture())
 
     redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
-    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    real_client = httpx.AsyncClient
+    created: list[httpx.AsyncClient] = []
+
+    def make_client(**kwargs: Any) -> httpx.AsyncClient:
+        client = real_client(transport=httpx.MockTransport(handler), **kwargs)
+        created.append(client)
+        return client
+
+    client = (
+        make_client(headers={GOOGLE_API_KEY_HEADER: "unrelated-caller-key", "X-Caller": "keep"})
+        if borrowed_client
+        else None
+    )
+    if not borrowed_client:
+        monkeypatch.setattr(httpx, "AsyncClient", make_client)
     service = GoogleWeatherService(
         redis,
         Settings(google_maps_api_key="server-key", weather_cache_ttl_seconds=900),
         client,
     )
 
-    weather = await service.lookup(
-        latitude=35.6812,
-        longitude=139.7671,
-        location_name="東京車站",
-    )
-    cached = await service.lookup(
-        latitude=35.6812,
-        longitude=139.7671,
-        location_name="東京都",
-    )
+    try:
+        with caplog.at_level(logging.INFO, logger="httpx"):
+            weather = await service.lookup(
+                latitude=35.6812,
+                longitude=139.7671,
+                location_name="東京車站",
+            )
+            cached = await service.lookup(
+                latitude=35.6812,
+                longitude=139.7671,
+                location_name="東京都",
+            )
+        if client is not None:
+            assert not client.is_closed
+            assert client.headers[GOOGLE_API_KEY_HEADER] == "unrelated-caller-key"
+            assert all(request.headers["X-Caller"] == "keep" for request in calls)
+        else:
+            assert len(created) == 2
+            assert all(item.is_closed for item in created)
+    finally:
+        if client is not None:
+            await client.aclose()
 
     assert len(calls) == 2
-    assert {request.url.params["key"] for request in calls} == {"server-key"}
+    assert {request.url.path for request in calls} == {
+        "/v1/currentConditions:lookup",
+        "/v1/forecast/days:lookup",
+    }
+    for request in calls:
+        assert request.headers.get(GOOGLE_API_KEY_HEADER) == "server-key"
+        assert "key" not in request.url.params
+        assert "server-key" not in str(request.url)
+        assert request.url.params["location.latitude"] == "35.681200"
+        assert request.url.params["location.longitude"] == "139.767100"
+        assert request.url.params["unitsSystem"] == "METRIC"
+        if request.url.path.endswith("days:lookup"):
+            assert request.url.params["days"] == request.url.params["pageSize"] == "10"
+    request_logs = [record.getMessage() for record in caplog.records if record.name == "httpx"]
+    assert len(request_logs) == 2
+    assert all("server-key" not in message for message in request_logs)
     assert all(request.url.params["languageCode"] == "zh-TW" for request in calls)
     assert weather.current is not None
     assert weather.current.temperature_c == 28.4
@@ -111,7 +157,6 @@ async def test_google_weather_normalizes_and_caches_current_and_daily_results() 
     usage = await google_maps_usage_snapshot(redis, 10_000)
     assert usage.breakdown["weather_current"] == 1
     assert usage.breakdown["weather_daily_forecast"] == 1
-    await client.aclose()
     await redis.aclose()
 
 
