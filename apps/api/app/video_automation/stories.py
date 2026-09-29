@@ -781,6 +781,8 @@ async def import_story_rows(
     ``episodes_per_day`` in place of the file's when given; an existing series row is never
     changed (the owner may have edited it), and the fields that differ are reported. ``limit``
     imports only the first stories in production order; a later run without it adds the rest.
+    A run that writes leaves one audit record: who ran it (``actor``; none from the host
+    command), the stories created, updated and left alone, and the ``limit`` it ran with.
     """
     report = StoryImportReport(series=series_slug, apply=apply)
     check = check_story_file(document, series_slug)
@@ -921,6 +923,7 @@ async def import_story_rows(
                 "updated": report.update,
                 "renumbered": report.renumbered,
                 "left_alone": len(report.unchanged) + len(report.started),
+                "limit": limit,
             },
         )
     )
