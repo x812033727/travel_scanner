@@ -12,6 +12,11 @@ branch:
 depends_on: []
 scope:
   - tools/video/tts
+  - tools/video/cli.mjs
+  - tools/video/review/sync.mjs
+  - tools/video/review/sync.test.mjs
+  - docs/videos/DUBS.md
+  - .agents/skills/youtube-video/references/automated.md
 ---
 
 # check-audio: Gemini transcriber rewrites unfamiliar model versions and years

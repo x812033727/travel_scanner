@@ -14,7 +14,7 @@ import { SAMPLE_RATE } from "../core/timeline.mjs";
 import { COMPILATION_ITEM_IDS, ITEM_IDS } from "../qa/checks.mjs";
 import { encodeWav } from "../tts/wav.mjs";
 import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeTranslations } from "../compile/fixture.mjs";
-import { audioCheck, checklistFrom, downloadNote, guideSlugs, judgeBody, outlineOptions, PART_BYTES, previewArgs, REVIEW_GATES, sourceGuideOf, STEP_LABELS, uploadItems } from "./sync.mjs";
+import { audioCheck, checklistFrom, clearedSummary, downloadNote, guideSlugs, judgeBody, outlineOptions, PART_BYTES, previewArgs, REVIEW_GATES, sourceGuideOf, STEP_LABELS, uploadItems } from "./sync.mjs";
 
 const TOKEN = `mkv_${"r".repeat(43)}`;
 const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");
@@ -50,6 +50,13 @@ test("the checklist, the Jev summary and the upload items are what the page show
     check: { lines: 5, checked: 4, exact: 1, alike: 1, judged_fine: 1, flagged: 1 },
     flagged_lines: [{ id: "d", script: "稿子", heard: "聽到", noul: 0.1 }],
   });
+  assert.equal(clearedSummary(audioCheck(check, { flags: ["d"] }, 5)), "");
+  // A line Jev doubted that a second transcript cleared is counted apart, with both transcripts.
+  const second = { ...check.lines, e: { match: false, noul: 0.05, intended: "Veo 三點一", heard: "算便宜", second: { by: "whisper.py", heard: "Veo 3.1", match_kind: null, noul: 0.9 } } };
+  const withSecond = audioCheck({ lines: second }, { flags: ["d"] }, 5);
+  assert.deepEqual(withSecond.check, { lines: 5, checked: 5, exact: 1, alike: 1, judged_fine: 1, flagged: 1, cleared: 1 });
+  assert.deepEqual(withSecond.cleared_lines, [{ id: "e", script: "Veo 三點一", heard: "算便宜", second: { by: "whisper.py", heard: "Veo 3.1" } }]);
+  assert.equal(clearedSummary(withSecond), "；whisper.py 另外轉寫、排除 1 句（e）");
   assert.deepEqual(uploadItems("# 上架\n- [ ] **AI 使用揭露**：看情況\n- [x] 已完成\n- [ ] 縮圖看得懂"), ["AI 使用揭露：看情況", "縮圖看得懂"]);
 });
 

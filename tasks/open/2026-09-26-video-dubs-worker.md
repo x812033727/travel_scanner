@@ -1,11 +1,11 @@
 ---
 id: 2026-09-26-video-dubs-worker
 title: Video dubs: the worker synthesizes, shortens, checks and packages the tracks, and qa reports them
-status: in-progress
+status: open
 priority: P2
 area: tools
-owner: claude-opus-5-5
-claimed_at: 2026-09-29T02:58:09Z
+owner:
+claimed_at:
 created_at: 2026-09-26T17:59:41Z
 completed_at:
 branch:
@@ -65,3 +65,4 @@ npm run test:tools
 - 工人在容器裡跑 `tools/video`，ffmpeg 是 `assemble` 用的那一個；要用 `--format mp3` 時先確認容器的 ffmpeg 有 libmp3lame。
 - 每條音軌約 28 MB（m4a），送審的分段上傳與 `video_review_max_total_bytes` 要夠。
 - 伺服器的 Gemini 月額度（`video_speech_gemini_monthly_character_limit`，預設 300,000 字元）先調高再勾語言：四條配音一支約 20,600 字元。
+- 2026-09-29 (claude-opus-5-5): claimed by mistake (`tasks claim` has no `--dry-run`) and released without changes. What the season's videos 5 and 6 taught about each step this task automates is in `docs/videos/DUBS.md` §聲音會唸錯的地方: the shortening rounds need the measured rates, and inner-zero numbers in ja/ko are linted. Two further points. `check-audio --second-opinion` can clear Gemini's false flags before `dub --redo`. A zh-TW line that is too dense for the English and Japanese dubs is better given a longer `pause_after_ms` before the audio gate than cut in every language.

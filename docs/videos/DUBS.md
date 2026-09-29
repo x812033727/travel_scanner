@@ -127,7 +127,7 @@ Gemini TTS 的計價（ai.google.dev/gemini-api/docs/pricing，2026-09-27）：`
 
 ### 聲音會唸錯的地方（第一季第 5、6 支，2026-09-28）
 
-每一條都是兩個轉寫（`check-audio --locale` 的 Gemini 與本機 Whisper large-v3）聽到同一個錯才算數。只有 Gemini 聽錯的，多半是它把不熟的版本號與品牌「修正」成它知道的（Veo 3.1 聽成「算便宜」、Kling 3.0 聽成 1.5），不用改稿。
+每一條都是兩個轉寫（`check-audio --locale` 的 Gemini 與本機 Whisper large-v3）聽到同一個錯才算數。只有 Gemini 聽錯的，多半是它把不熟的版本號與品牌「修正」成它知道的（Veo 3.1 聽成「算便宜」、Kling 3.0 聽成 1.5），不用改稿。`check-audio --second-opinion "<程式 參數>"`（或環境變數 `VIDEO_SECOND_OPINION`）會自動做這一步：Jev 仍然懷疑的句子交給不看稿的第二個轉寫（參考 `tools/video/tts/whisper_second_opinion.py`），它聽到的和稿子一樣、或 Jev 判它沒問題，就排除並記下由誰排除，旁白審核卡的摘要會寫出來；兩個轉寫都錯在同一處的才留著。
 
 - **數字中間有 0、後面接億／万（ja、ko）**：4050億、4050억 都被唸成 450。寫成 4千50億、4천50억 就唸對；`lint` 會對 ja、ko 的句子提出警告。
 - **省掉的單位會被補錯（ja）**：價格句寫「1秒0.14」，聲音唸成「0.14秒」。價格句保留「ドル」。反過來，聲音自己補上「ドル」「불」的地方是對的，不用改。
