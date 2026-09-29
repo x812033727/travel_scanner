@@ -15,7 +15,7 @@ import httpx
 import pytest
 
 from app.config import Settings
-from app.video_automation.models import DEFAULT_DRAMA, VideoAutomationSettings
+from app.video_automation.models import DEFAULT_DRAMA, DEFAULT_SLIDES, VideoAutomationSettings
 from app.video_media import jobs as service
 from app.video_media import meter
 from app.video_media.jobs import MediaContext, MediaJobFailed, advance_job, job_view, submit_job
@@ -71,7 +71,12 @@ class FakeProvider:
 
 
 def _row(**changes: Any) -> VideoAutomationSettings:
-    values = {**copy.deepcopy(DEFAULT_DRAMA), "drama_enabled": True, **changes}
+    values = {
+        **copy.deepcopy(DEFAULT_DRAMA),
+        **copy.deepcopy(DEFAULT_SLIDES),
+        "drama_enabled": True,
+        **changes,
+    }
     return VideoAutomationSettings(id=1, **values)
 
 
@@ -141,6 +146,87 @@ async def test_a_synchronous_image_is_stored_and_ready_after_one_call(
         and view.file.sha256 == job.file_sha256
     )
     assert ctx.session.added == [job] and ctx.session.commits >= 2  # type: ignore[attr-defined]
+
+
+@pytest.mark.asyncio
+async def test_an_illustrated_slides_video_draws_under_its_own_switch_model_and_cap(
+    tmp_path: Path, fake_provider: FakeProvider, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A slides project (docs/videos/ILLUSTRATED.md) draws with the slides' switch and image
+    model; with that switch off it draws under the drama's switch as before; it never asks for
+    a clip; a drama and a video the site does not know keep reading the drama's switch."""
+    formats: dict[str, str | None] = {"v": "slides"}
+
+    async def project_format(_session: Any, slug: str) -> str | None:
+        return formats.get(slug)
+
+    monkeypatch.setattr(service, "project_format", project_format)
+    fake_provider.submit_result = Submitted(inline=PNG, content_type="image/png")
+
+    ctx = _context(tmp_path, fake_provider, row=_row(drama_enabled=False))
+    with pytest.raises(MediaJobFailed) as both_off:
+        await submit_job(ctx, "image", _image())
+    assert both_off.value.code == "video_media_disabled" and "插畫" in both_off.value.detail
+
+    slides_on = _row(drama_enabled=False, slides_media_enabled=True)
+    ctx = _context(tmp_path, fake_provider, row=slides_on)
+    job, created = await submit_job(ctx, "image", _image())
+    assert created and job.status == "ready"
+    assert job.model == "gemini-3.1-flash-image"
+    assert float(job.usd_estimate) == 0.067, "Flash, not the drama's Pro"
+    with pytest.raises(MediaJobFailed) as clip:
+        await submit_job(
+            ctx,
+            "clip",
+            ClipJobIn.model_validate(
+                {"slug": "v", "shot_id": "a", "prompt": "p", "first_frame": "a" * 64, "seconds": 8}
+            ),
+        )
+    assert clip.value.code == "video_media_model_not_allowed" and "片段" in clip.value.detail
+
+    # The slides' image model NULL follows the drama's choice; the drama's switch alone also
+    # lets a slides video draw, on the drama's model.
+    following = _row(slides_media_enabled=True, slides_image_model=None)
+    ctx = _context(tmp_path, fake_provider, row=following)
+    job, _ = await submit_job(ctx, "image", _image(seed=2))
+    assert job.model == "gemini-3-pro-image"
+    ctx = _context(tmp_path, fake_provider, row=_row(slides_media_enabled=False))
+    job, _ = await submit_job(ctx, "image", _image(seed=3))
+    assert job.model == "gemini-3-pro-image"
+
+    # A drama, and a slug the site has no project for, read the drama's switch as before.
+    formats["v"] = "drama"
+    ctx = _context(tmp_path, fake_provider, row=slides_on)
+    with pytest.raises(MediaJobFailed) as drama_off:
+        await submit_job(ctx, "image", _image())
+    assert drama_off.value.code == "video_media_disabled" and "漫劇" in drama_off.value.detail
+    del formats["v"]
+    with pytest.raises(MediaJobFailed):
+        await submit_job(ctx, "image", _image())
+    ctx = _context(tmp_path, fake_provider, row=_row(slides_media_enabled=True))
+    job, _ = await submit_job(ctx, "image", _image(seed=4))
+    assert job.model == "gemini-3-pro-image", "a drama never draws with the slides' model"
+
+    # A slides model retired since it was chosen is refused by name.
+    formats["v"] = "slides"
+    retired = _row(slides_media_enabled=True, slides_image_model="nope")
+    ctx = _context(tmp_path, fake_provider, row=retired)
+    with pytest.raises(MediaJobFailed) as unknown:
+        await submit_job(ctx, "image", _image())
+    assert unknown.value.code == "video_media_model_not_allowed"
+    assert "投影片" in unknown.value.detail
+
+
+@pytest.mark.asyncio
+async def test_the_project_format_comes_from_the_project_row_or_is_unknown() -> None:
+    session = FakeSession()
+    assert await service.project_format(session, "v") is None, "a job row is not a format"  # type: ignore[arg-type]
+
+    class Found:
+        async def scalar(self, _statement: Any) -> str:
+            return "slides"
+
+    assert await service.project_format(Found(), "v") == "slides"  # type: ignore[arg-type]
 
 
 @pytest.mark.asyncio

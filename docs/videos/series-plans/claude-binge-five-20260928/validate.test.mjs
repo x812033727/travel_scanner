@@ -3,9 +3,12 @@
 //   node --test docs/videos/series-plans/claude-binge-five-20260928/validate.test.mjs
 import assert from "node:assert/strict";
 import { test } from "node:test";
+import fs from "node:fs/promises";
+import os from "node:os";
+import path from "node:path";
 
 import { SLUGS, compile, loadSource } from "./build.mjs";
-import { validateSource } from "./validate.mjs";
+import { validateSource, validateFiles } from "./validate.mjs";
 
 const CLIFF_CYCLE = ["danger", "emotion", "choice"];
 const HOOK_CYCLE = ["question", "danger", "image", "line", "reversal"];
@@ -153,6 +156,15 @@ test("an unregistered character, place or mystery is refused", () => {
   assert.ok(errors.some((e) => e.includes("unknown setup m99")));
 });
 
+test("an appearance that only holds for some episodes is refused", () => {
+  for (const words of ["Episodes 1-26: a conductor's coat", "a black cane, later a wheelchair", "orderly at first"]) {
+    const source = syntheticSource();
+    source.setting.characters[0].appearance = `a woman of thirty with short black hair; ${words}`;
+    const { errors } = validateSource(source);
+    assert.ok(errors.some((e) => e.includes("must not depend on the episode")), words);
+  }
+});
+
 test("a mystery must be paid where its schedule says", () => {
   const source = syntheticSource();
   const ep33 = source.chapters[3].episodes[2];
@@ -185,10 +197,51 @@ test("compile writes the six pipeline documents and the one-button request", () 
   assert.equal(JSON.parse(files["chapter-02.json"]).body_json.episodes[0].number, 11);
 });
 
-test("every work of the batch validates and its generated files are current", async () => {
+test("every work of the batch validates", async () => {
   for (const slug of SLUGS) {
     const source = await loadSource(slug);
     const { errors } = validateSource(source, slug);
     assert.deepEqual(errors, [], `${slug}:\n${errors.join("\n")}`);
   }
+});
+
+test("every continuity rule reaches the setting and its importable document", async () => {
+  for (const slug of SLUGS) {
+    const source = await loadSource(slug);
+    const files = compile(source);
+    const setting = JSON.parse(files["setting.json"]);
+    const imported = JSON.parse(files["documents.json"]).documents.find(d => d.kind === "setting");
+    assert.deepEqual(setting.body_json.continuity_notes, source.continuity_notes, slug);
+    assert.deepEqual(imported.body_json.continuity_notes, source.continuity_notes, slug);
+    assert.equal(imported.body_md, setting.body_md, slug);
+    assert.equal(files["setting.md"], setting.body_md, slug);
+    for (const rule of source.continuity_notes) assert.ok(imported.body_md.includes(rule), `${slug}: ${rule}`);
+  }
+});
+
+test("a continuity-only edit invalidates the setting and import bundle until rebuilt", async (t) => {
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), "claude-plan-drift-"));
+  assert.equal(path.dirname(root), path.resolve(os.tmpdir()));
+  t.after(() => fs.rm(root, { recursive: true, force: true }));
+  const source = syntheticSource();
+  const slug = source.series.slug;
+  await fs.mkdir(path.join(root, slug));
+  const write = async () => {
+    for (const [name, body] of Object.entries(compile(source))) await fs.writeFile(path.join(root, slug, name), body);
+  };
+  await write();
+  assert.deepEqual(await validateFiles(slug, source, root), []);
+  source.continuity_notes.push("回歸測試專用：第三十五集仍須保留前集傷口與縫線。");
+  const errors = await validateFiles(slug, source, root);
+  for (const name of ["setting.md", "setting.json", "documents.json", "manifest.json"]) {
+    assert.ok(errors.some(e => e.startsWith(`${name}:`)), `${name} failed to detect changed continuity`);
+  }
+  await write();
+  assert.deepEqual(await validateFiles(slug, source, root), []);
+});
+
+test("blank continuity constraints cannot be delivered as production guidance", () => {
+  const source = syntheticSource();
+  source.continuity_notes = ["one", "two", "   "];
+  assert.ok(validateSource(source).errors.some(e => e.includes("continuity_notes")));
 });

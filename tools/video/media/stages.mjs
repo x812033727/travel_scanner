@@ -26,9 +26,20 @@ const DEFAULT_EXTENSION = { image: ".png", clip: ".mp4", music: ".mp3" };
 // A clip takes a vendor minutes; a job is given this long before the run gives up on it.
 const WAIT_MS = { image: 10 * 60_000, clip: 30 * 60_000, music: 15 * 60_000 };
 
+// Illustrated slides (docs/videos/ILLUSTRATED.md) may draw with their own switch, image model and
+// per-video cap on the server (`slides_enabled`, `slides_image`, `slides_max_usd_per_video`, once
+// the site has them); until then they draw as a drama does.
+export const SLIDES_FORMAT = "slides";
+
+/** The server's choice of model for a kind, for a video of `format`: slides may have their own image choice. */
+export function choiceFor(status, kind, format = null) {
+  if (kind === "image" && format === SLIDES_FORMAT && status.slides_image) return status.slides_image;
+  return status[kind];
+}
+
 /** The catalog entry of the server's chosen model for a kind (image, clip, music). */
-export function chosenModel(status, kind) {
-  const choice = status[kind];
+export function chosenModel(status, kind, format = null) {
+  const choice = choiceFor(status, kind, format);
   const group = { image: "images", clip: "clips", music: "music" }[kind];
   return (status.models?.[group]?.[choice?.provider] ?? []).find((each) => each.value === choice?.model) ?? null;
 }
@@ -61,8 +72,13 @@ export const sameImage = (left, right) => left?.provider === right?.provider && 
 export const imageSelectionVersion = (series) => Object.hasOwn(series ?? {}, "image_model") ? 1 : 0;
 
 /** The list price of one image with the server's chosen image model. */
-export function imagePrice(status) {
-  return Number(chosenModel(status, "image")?.usd_per_image ?? 0);
+export function imagePrice(status, format = null) {
+  return Number(chosenModel(status, "image", format)?.usd_per_image ?? 0);
+}
+
+/** The owner's per-video cap for a video of `format`: slides may have their own. */
+export function capFor(status, format = null) {
+  return format === SLIDES_FORMAT && status.slides_max_usd_per_video !== undefined && status.slides_max_usd_per_video !== null ? status.slides_max_usd_per_video : status.max_usd_per_video;
 }
 
 /** The list price of one second of clip with the server's chosen clip model. */
@@ -75,11 +91,18 @@ export function trackPrice(status) {
   return Number(chosenModel(status, "music")?.usd_per_track ?? 0);
 }
 
-/** Why the server will not generate this kind now, or null. */
-export function statusProblem(status, kind = "image") {
-  if (!status.enabled) return "the drama route is off: turn it on in the settings tab of /admin/videos";
+/** Why the server will not generate this kind now, or null. `format` is the video's: slides may draw under their own switch. */
+export function statusProblem(status, kind = "image", format = null) {
+  const slides = format === SLIDES_FORMAT;
+  if (!status.enabled && !(slides && status.slides_enabled)) {
+    return slides
+      ? "pictures for slides videos are off: turn on the drama route or the slides illustrations in the settings tab of /admin/videos"
+      : "the drama route is off: turn it on in the settings tab of /admin/videos";
+  }
   if (kind === "music" && !status.music_enabled) return "music generation is off: turn it on in the settings tab of /admin/videos";
-  if (status[kind]?.configured !== null && !status[kind]?.configured) return `the site has no ${status[kind]?.provider} key for ${kind} generation (admin: API 與供應商設定)`;
+  const choice = choiceFor(status, kind, format);
+  // A series' own image vendor may be unknown to status (configured null): the server checks it on submit.
+  if (choice?.configured !== null && !choice?.configured) return `the site has no ${choice?.provider} key for ${kind} generation (admin: API 與供應商設定)`;
   return null;
 }
 
@@ -90,13 +113,14 @@ export const stoppedError = () => new MediaError("stopped by the STOP file; reru
 
 /** One stage's connection to the media server and the work directory's books. */
 export class Stage {
-  constructor({ slug, workdir, options, status, stage, imageVersion = 0, now = () => new Date() }) {
+  constructor({ slug, workdir, options, status, stage, imageVersion = 0, format = null, now = () => new Date() }) {
     this.slug = slug;
     this.workdir = workdir;
     this.options = options;
     this.status = status;
     this.stage = stage;
     this.imageVersion = imageVersion;
+    this.format = format;
     this.now = now;
   }
 
@@ -106,7 +130,7 @@ export class Stage {
 
   /** Refuse a generation that would pass the owner's per-video cap. */
   spend(usd) {
-    const problem = capProblem(this.workdir, usd, this.status.max_usd_per_video);
+    const problem = capProblem(this.workdir, usd, capFor(this.status, this.format));
     if (problem) throw new MediaError(problem, { code: "video_media_cap", who: "owner" });
   }
 
@@ -117,7 +141,7 @@ export class Stage {
    * says a new seed may fix. Returns `{ file, sha256, key, cost_usd, job_id, reused }`.
    */
   async generate({ kind, key, submit, request, id, target, usd, seconds = 0 }) {
-    const expected = this.status[kind];
+    const expected = choiceFor(this.status, kind, this.format);
     const hit = cached(this.workdir, key);
     if (hit) return { ...hit, key, reused: true };
     let job;
@@ -160,7 +184,7 @@ export class Stage {
 
   /** Generate one image: a character sheet, a keyframe, an end frame. */
   async image({ id, purpose, prompt, negative = "", aspect = "16:9", references = [], seed = null, shotId = null, target }) {
-    const { provider, model } = this.status.image;
+    const { provider, model } = choiceFor(this.status, "image", this.format);
     const baseKey = keyframeKey({ provider, model, prompt, negative, width: IMAGE_SIZE.width, height: IMAGE_SIZE.height, seed, references: references.map((reference) => reference.sha256) });
     const key = this.imageVersion ? mediaKey("series-image", { version: this.imageVersion, key: baseKey }) : baseKey;
     const request = {
@@ -173,7 +197,7 @@ export class Stage {
       ...(seed !== null ? { seed } : {}),
       ...(shotId ? { shot_id: shotId } : {}),
     };
-    return this.generate({ kind: "image", key, submit: submitImage, request, id, target, usd: imagePrice(this.status) });
+    return this.generate({ kind: "image", key, submit: submitImage, request, id, target, usd: imagePrice(this.status, this.format) });
   }
 
   /** Generate one clip from its first frame (`request` is the server's ClipJobIn without the slug). */

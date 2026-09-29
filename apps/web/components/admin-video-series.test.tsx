@@ -1,7 +1,8 @@
-import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AdminOperationsProvider } from "./admin-operations-provider";
-import { AdminVideoSeries } from "./admin-video-series";
+import { REFRESH_MS } from "./admin-video-review-card";
+import { AdminVideoSeries, DocPanel, type SeriesDoc } from "./admin-video-series";
 import type { AdminBootstrap } from "@/lib/admin-operations";
 
 vi.mock("@/components/header-session", () => ({ useHeaderSession: () => ({ user: null, sessionIdentity: null, status: undefined }) }));
@@ -137,6 +138,7 @@ const panelOf = (title: string) => screen.getByText(title).closest("details") as
 
 afterEach(() => {
   vi.unstubAllGlobals();
+  vi.useRealTimers();
   window.history.replaceState(null, "", "/");
 });
 
@@ -271,7 +273,7 @@ describe("AdminVideoSeries", () => {
     await waitFor(() => expect(calls.some((call) => call.method === "POST")).toBe(true));
     const decision = calls.find((call) => call.method === "POST");
     expect(decision?.url).toContain("/admin/video-automation/series/wenjian/docs/chapter/2/decision");
-    expect(decision?.body).toEqual({ decision: "reject", note: "第 12 集再緊一點" });
+    expect(decision?.body).toEqual({ decision: "reject", note: "第 12 集再緊一點", expected_version: 1 });
 
     const table = screen.getByRole("region", { name: "集數" });
     expect(table.textContent).toContain("完成");
@@ -507,5 +509,170 @@ describe("AdminVideoSeries", () => {
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
     expect(await screen.findByText("漫劇已開啟：工人會依序製作發起的單集漫劇與作品。")).toBeTruthy();
     expect((screen.getByText("漫劇設定", { selector: "summary" }).closest("details") as HTMLDetailsElement).open).toBe(false);
+  });
+});
+
+
+describe("document revision safeguards", () => {
+  it("saves text as an unapproved draft and only synchronizes after an explicit request", async () => {
+    const { calls } = stubFetch();
+    const original = { ...docs[0], status: "review", needs_reconciliation: false } as SeriesDoc;
+    const changed = vi.fn();
+    const view = render(<DocPanel slug="wenjian" doc={original} canManage onChanged={changed} />);
+    fireEvent.click(screen.getByText("自己改", { selector: "summary" }));
+    fireEvent.change(screen.getByRole("textbox", { name: "自己改" }), { target: { value: "# 設定集\n主角改名為沈知芸。" } });
+    expect(screen.queryByRole("button", { name: "儲存並核准" })).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "儲存文字草稿" }));
+    await waitFor(() => expect(changed).toHaveBeenCalledOnce());
+    expect(calls.find((call) => call.method === "PUT")?.body).toEqual({ body_md: "# 設定集\n主角改名為沈知芸。", approve: false });
+    expect(calls.filter((call) => call.method === "POST")).toHaveLength(0);
+    view.rerender(<DocPanel slug="wenjian" doc={{ ...original, body_json: {}, needs_reconciliation: true, version: 3 }} canManage onChanged={changed} />);
+    expect(screen.getByRole("button", { name: "核准" })).toHaveProperty("disabled", true);
+    expect(screen.getByText(/模型呼叫可能產生費用/)).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "請 AI 同步製作資料" }));
+    await waitFor(() => expect(calls.filter((call) => call.method === "POST")).toHaveLength(1));
+    const request = calls.find((call) => call.method === "POST");
+    expect(request?.url).toMatch(/\/wenjian\/messages$/);
+    expect(request?.body?.subject).toBe("setting");
+    expect(request?.body?.body).toContain("最新文字草稿");
+  });
+
+  it("blocks later imported documents until their latest prerequisites are approved", async () => {
+    const pending = docs.map((doc) => ({ ...doc, status: "review" }));
+    stubFetch({ docs: pending });
+    window.history.replaceState(null, "", "/?series=wenjian");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+    await screen.findByRole("heading", { name: /問劍/ });
+    expect(within(panelOf("設定集")).getByRole("button", { name: "核准" })).toHaveProperty("disabled", false);
+    const approvals = within(screen.getByRole("region", { name: "文件" })).getAllByRole("button", { name: "核准" });
+    expect(approvals.filter((button) => !(button as HTMLButtonElement).disabled)).toHaveLength(1);
+  });
+
+  it.each([false, true])("does not resubmit AI synchronization while the document refresh is delayed (refresh fails: %s)", async (refreshFails) => {
+    const revisionDocs = [{ ...docs[0], status: "review", needs_reconciliation: true, unanswered: 0 }];
+    const { calls } = stubFetch({ docs: revisionDocs });
+    const baseFetch = globalThis.fetch;
+    let holdRefresh = false;
+    let releaseRefresh!: (response: Response) => void;
+    let markRefreshStarted!: () => void;
+    const refreshResponse = new Promise<Response>((resolve) => { releaseRefresh = resolve; });
+    const refreshStarted = new Promise<void>((resolve) => { markRefreshStarted = resolve; });
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      if (holdRefresh && String(input).endsWith("/admin/video-automation/series/wenjian") && (init?.method ?? "GET") === "GET") {
+        holdRefresh = false;
+        markRefreshStarted();
+        return refreshResponse;
+      }
+      return baseFetch(input, init);
+    }));
+    window.history.replaceState(null, "", "/?series=wenjian");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+    const synchronize = await screen.findByRole("button", { name: "請 AI 同步製作資料" });
+    holdRefresh = true;
+    await act(async () => {
+      fireEvent.click(synchronize);
+      await refreshStarted;
+    });
+    expect(synchronize).toHaveProperty("disabled", true);
+    fireEvent.click(synchronize);
+    expect(calls.filter((call) => call.method === "POST" && call.url.endsWith("/messages"))).toHaveLength(1);
+
+    await act(async () => {
+      releaseRefresh(refreshFails
+        ? Response.json({ detail: "refresh failed" }, { status: 503 })
+        : Response.json({ ...summary, docs: revisionDocs, episodes }));
+    });
+    // Neither a failed GET nor a still-stale unanswered=0 response cancels the accepted POST.
+    expect(synchronize).toHaveProperty("disabled", true);
+    fireEvent.click(synchronize);
+    expect(calls.filter((call) => call.method === "POST" && call.url.endsWith("/messages"))).toHaveLength(1);
+    if (refreshFails) {
+      expect(screen.getByText("refresh failed")).toBeTruthy();
+      revisionDocs[0] = { ...revisionDocs[0], unanswered: 1 };
+      fireEvent.click(screen.getByRole("button", { name: "再試一次" }));
+      await waitFor(() => expect(screen.queryByText("refresh failed")).toBeNull());
+      expect(synchronize).toHaveProperty("disabled", true);
+      expect(calls.filter((call) => call.method === "POST" && call.url.endsWith("/messages"))).toHaveLength(1);
+    }
+  });
+
+  it("allows retry after a rejected synchronization POST and keeps an accepted request locked until it is answered or revised", async () => {
+    stubFetch();
+    const baseFetch = globalThis.fetch;
+    let attempts = 0;
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      if (String(input).endsWith("/messages") && init?.method === "POST" && ++attempts === 1) {
+        return Promise.resolve(Response.json({ detail: "synchronization rejected" }, { status: 503 }));
+      }
+      return baseFetch(input, init);
+    }));
+    const original = { ...docs[0], status: "review", needs_reconciliation: true, unanswered: 0 } as SeriesDoc;
+    const changed = vi.fn();
+    const view = render(<DocPanel slug="wenjian" doc={original} canManage onChanged={changed} />);
+    const synchronize = screen.getByRole("button", { name: "請 AI 同步製作資料" });
+    fireEvent.click(synchronize);
+    expect((await screen.findByRole("alert")).textContent).toContain("synchronization rejected");
+    expect(synchronize).toHaveProperty("disabled", false);
+    expect(changed).not.toHaveBeenCalled();
+    fireEvent.click(synchronize);
+    await waitFor(() => expect(changed).toHaveBeenCalledOnce());
+    expect(attempts).toBe(2);
+    expect(synchronize).toHaveProperty("disabled", true);
+    view.rerender(<DocPanel slug="wenjian" doc={{ ...original, unanswered: 1 }} canManage onChanged={changed} />);
+    expect(synchronize).toHaveProperty("disabled", true);
+    view.rerender(<DocPanel slug="wenjian" doc={original} canManage onChanged={changed} />);
+    expect(synchronize).toHaveProperty("disabled", true);
+    view.rerender(<DocPanel slug="wenjian" doc={{ ...original, version: 3 }} canManage onChanged={changed} />);
+    expect(synchronize).toHaveProperty("disabled", false);
+  });
+
+  it("unlocks an answered synchronization without a new revision or ever observing an unanswered count", async () => {
+    vi.useFakeTimers({ toFake: ["setInterval", "clearInterval"] });
+    const revisionDocs = [{ ...docs[0], status: "review", needs_reconciliation: true, unanswered: 0 }];
+    const { calls, answer } = stubFetch({ docs: revisionDocs });
+    const baseFetch = globalThis.fetch;
+    let posted = false;
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      if (url.endsWith("/messages") && init?.method === "POST") posted = true;
+      if (posted && url.endsWith("/admin/video-automation/series/wenjian") && (init?.method ?? "GET") === "GET") {
+        return Promise.resolve(Response.json({ detail: "refresh failed" }, { status: 503 }));
+      }
+      return baseFetch(input, init);
+    }));
+    window.history.replaceState(null, "", "/?series=wenjian");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+    const synchronize = await screen.findByRole("button", { name: "請 AI 同步製作資料" });
+    fireEvent.click(synchronize);
+    await screen.findByText("refresh failed");
+    expect(synchronize).toHaveProperty("disabled", true);
+    // The model answers the exact owner message, but does not write a document. The parent's
+    // GET keeps failing, so the displayed version and unanswered=0 can never acknowledge it.
+    answer("setting", "請先補充主角的本名。", "v2");
+    await act(async () => { await vi.advanceTimersByTimeAsync(REFRESH_MS); });
+    expect(screen.getByText("請先補充主角的本名。")).toBeTruthy();
+    expect(synchronize).toHaveProperty("disabled", false);
+    fireEvent.click(synchronize);
+    await waitFor(() => expect(calls.filter((call) => call.method === "POST" && call.url.endsWith("/messages"))).toHaveLength(2));
+  });
+
+  it("submits the version actually reviewed and reports a stale approval without claiming success", async () => {
+    const { calls } = stubFetch();
+    const baseFetch = globalThis.fetch;
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      if (String(input).endsWith("/decision") && init?.method === "POST") {
+        void baseFetch(input, init);
+        return Promise.resolve(Response.json({ code: "video_series_doc_stale", detail: "文件已有新版本，請重新載入並審閱後再決定" }, { status: 409 }));
+      }
+      return baseFetch(input, init);
+    }));
+    const original = { ...docs[0], status: "review", needs_reconciliation: false, version: 2 } as SeriesDoc;
+    const changed = vi.fn();
+    render(<DocPanel slug="wenjian" doc={original} canManage onChanged={changed} />);
+    fireEvent.click(screen.getByRole("button", { name: "核准" }));
+    expect((await screen.findByRole("alert")).textContent).toContain("文件已有新版本，請重新載入並審閱後再決定");
+    expect(calls.find((call) => call.method === "POST")?.body).toEqual({ decision: "approve", expected_version: 2 });
+    expect(changed).not.toHaveBeenCalled();
+    expect(screen.getByRole("button", { name: "核准" })).toHaveProperty("disabled", false);
   });
 });

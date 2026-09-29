@@ -3,7 +3,11 @@
 // directory and answers { id, ok, detail, warnings? }; cli.mjs does the reading and writing.
 import path from "node:path";
 
-import { isDrama } from "../core/drama.mjs";
+import { illustrated, isDrama, resolveLook } from "../core/drama.mjs";
+
+// Look presets whose pictures could pass for a photograph or a film: YouTube's disclosure covers
+// realistic synthetic people, events and places. Flat, painterly and ink illustrations do not.
+export const REALISTIC_PRESETS = ["cinematic-3d"];
 
 /** The eleven items, in the order qa.json lists them; the server requires every one of them. */
 export const ITEM_IDS = ["assemble", "render", "narration", "pace", "captions", "metadata", "facts", "links", "thumbnail", "policy", "disclosure"];
@@ -172,8 +176,19 @@ export function metadataItem({ problems, tagProblems, chapterProblems, locales, 
  * not a realistic depiction of a person, event or place, so no; a drama's 3D shots and generated
  * music always are, so yes. The answer never fails the QA; package's metadata carries it.
  */
-export function disclosureDecision(doc) {
+export function disclosureDecision(doc, { musicSource = null } = {}) {
   if (isDrama(doc)) return { synthetic: true, reason: "a drama: AI-generated shots and music are always disclosed" };
+  // Illustrated slides (docs/videos/ILLUSTRATED.md): stylised pictures under a licensed bed need
+  // no disclosure; a realistic preset or a generated track does (docs/videos/SHORTS.md keeps AI
+  // music disclosed, and the conservative answer costs nothing).
+  const generated = musicSource === "generated";
+  if (illustrated(doc)) {
+    const preset = resolveLook(doc.look).preset;
+    if (REALISTIC_PRESETS.includes(preset)) return { synthetic: true, reason: `illustrated slides in the ${preset} look: pictures that could pass for real are disclosed` };
+    if (generated) return { synthetic: true, reason: "illustrated slides under AI-generated music: the music is disclosed" };
+    return { synthetic: false, reason: `illustrated slides: stylised ${preset} pictures, a licensed music bed and a stock TTS voice; YouTube's disclosure covers realistic synthetic people, events and places` };
+  }
+  if (generated) return { synthetic: true, reason: "slides under AI-generated music: the music is disclosed" };
   return { synthetic: false, reason: "slides read by a stock TTS voice; YouTube's disclosure covers realistic synthetic people, events and places" };
 }
 

@@ -71,9 +71,18 @@ export const PRESETS = {
     negative: "photorealistic, 3D render, cinematic lighting, text, letters, watermark, logo, brand marks, real person's likeness, mascot, recurring cartoon character, extra fingers, deformed hands, cluttered background",
     motion: "slow push in or gentle drift, no morphing, no cuts",
   },
+  // The channel's own illustrated slides (docs/videos/ILLUSTRATED.md): pictures between the dark
+  // data cards, so they share theme.css's ground and accents; no cast, no text in the picture.
+  "tech-story": {
+    style: "flat editorial illustration with a painterly touch, bold clean outlines, deep teal-green night ground, warm cream shapes, teal and amber accents, soft paper grain, simple objects and anonymous figures, generous negative space, cinematic composition, 16:9",
+    negative: "photorealistic, 3D render, text, letters, numbers, watermark, logo, brand marks, real person's likeness, mascot, recurring cartoon character, extra fingers, deformed hands, cluttered background",
+    motion: "slow push in or gentle drift, no morphing, no cuts",
+  },
   custom: { style: "", negative: "", motion: "" },
 };
 export const EXPLAINER_PRESET = "flat-explainer";
+/** The look a slides video's illustrations take unless its video.json names another. */
+export const SLIDES_PRESET = "tech-story";
 export const PRESET_NAMES = Object.keys(PRESETS);
 export const DEFAULT_LOOK_CANDIDATES = 3;
 export const DEFAULT_MUSIC = { gain_db: -20, duck_db: -10, fade_in_ms: 1500, fade_out_ms: 3000 };
@@ -83,6 +92,11 @@ const CHARACTER_KEYS = new Set(["id", "name", "appearance", "voice", "sheet_prom
 const SHOT_KEYS = new Set(["prompt", "camera", "motion", "negative", "characters", "fit", "seed", "transition", "start_frame", "end_frame", "visual"]);
 const MUSIC_KEYS = new Set(["prompt", "track", "sha256", "gain_db", "duck_db", "fade_in_ms", "fade_out_ms"]);
 const SUBTITLE_KEYS = new Set(["burn_in", "style", "speaker_prefix"]);
+// Sound effects (docs/videos/ILLUSTRATED.md): a licensed set under <work base>/_sfx/<set>/, placed
+// by rules in assemble (a stamp on chapter cards, a whoosh into a dissolve, a pop on a reveal).
+const SFX_KEYS = new Set(["set", "gain_db"]);
+export const SFX_SET = /^[a-z0-9][a-z0-9._-]{0,63}$/;
+export const DEFAULT_SFX = { gain_db: -12 };
 const SERIES_KEYS = new Set(["slug", "episode", "chapter"]);
 
 const isObject = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
@@ -103,6 +117,14 @@ export const isExplainer = (doc) => isDrama(doc) && doc.look?.preset === EXPLAIN
 export const hasCast = (doc) => isDrama(doc) && Array.isArray(doc.characters) && doc.characters.length > 0;
 export const isShot = (scene) => scene?.template === SHOT_TEMPLATE;
 export const shotScenes = (doc) => (doc?.scenes ?? []).filter(isShot);
+/**
+ * A slides video with illustrations (docs/videos/ILLUSTRATED.md): still shots between its cards,
+ * drawn by the keyframes stage and animated by assemble like an explainer's. Not a drama: it
+ * keeps the slides steps, prompts, pace QA and dubs, and gains the picture and music steps.
+ */
+export const illustrated = (doc) => !isDrama(doc) && shotScenes(doc).length > 0;
+/** Whether the keyframes stage draws for this video: a drama, or illustrated slides. */
+export const hasPictures = (doc) => isDrama(doc) || illustrated(doc);
 /** "clip" or "still": a shot is a clip unless it says otherwise. */
 export const shotVisual = (scene) => scene?.data?.visual ?? "clip";
 export const isClipShot = (scene) => isShot(scene) && shotVisual(scene) === "clip";
@@ -147,6 +169,10 @@ export function resolveSubtitles(doc) {
 
 export function resolveMusic(doc) {
   return doc?.music ? { ...DEFAULT_MUSIC, ...doc.music } : null;
+}
+
+export function resolveSfx(doc) {
+  return doc?.sfx ? { ...DEFAULT_SFX, ...doc.sfx } : null;
 }
 
 export const burnIn = (doc) => resolveSubtitles(doc).burn_in;
@@ -254,6 +280,16 @@ function validateMusic(music, errors) {
   if (music.fade_out_ms !== undefined && !(Number.isInteger(music.fade_out_ms) && inRange(music.fade_out_ms, 0, 15_000))) errors.push({ path: "music.fade_out_ms", message: "must be 0 to 15000" });
 }
 
+function validateSfx(sfx, errors) {
+  if (!isObject(sfx)) {
+    errors.push({ path: "sfx", message: "must be an object { set, gain_db? }: a licensed sound-effect set under <work base>/_sfx/" });
+    return;
+  }
+  unknownKeys(sfx, SFX_KEYS, "sfx", errors);
+  if (!(typeof sfx.set === "string" && SFX_SET.test(sfx.set))) errors.push({ path: "sfx.set", message: "must be the set's directory name under <work base>/_sfx/, like studio-a" });
+  if (sfx.gain_db !== undefined && !inRange(sfx.gain_db, -40, 0)) errors.push({ path: "sfx.gain_db", message: "must be -40 to 0 dB" });
+}
+
 function validateSubtitles(subtitles, errors) {
   if (!isObject(subtitles)) {
     errors.push({ path: "subtitles", message: "must be an object: { burn_in, style, speaker_prefix }" });
@@ -286,16 +322,22 @@ function validateSeries(series, errors) {
 export function validateDrama(doc, errors, validateVoice) {
   const drama = isDrama(doc);
   if (!drama) {
-    for (const key of ["characters", "look", "series"]) {
+    for (const key of ["characters", "series"]) {
       if (doc[key] !== undefined) errors.push({ path: key, message: `only a video with format "${DRAMA_FORMAT}" has ${key}` });
     }
   }
   if (doc.music !== undefined) validateMusic(doc.music, errors);
+  if (doc.sfx !== undefined) validateSfx(doc.sfx, errors);
   if (doc.subtitles !== undefined) validateSubtitles(doc.subtitles, errors);
   if (!Array.isArray(doc.scenes)) return;
 
   const characterIds = drama ? validateCharacters(doc.characters, errors, validateVoice) : new Set();
-  if (drama) validateLook(doc.look, errors);
+  // A drama always has a look; illustrated slides need one for their shots, and plain slides may
+  // not carry one (there is nothing to draw with it).
+  const pictures = drama || doc.scenes.some(isShot);
+  if (drama || doc.look !== undefined) validateLook(doc.look, errors);
+  if (!drama && pictures && doc.look === undefined) errors.push({ path: "look", message: "illustrations need a look: name a preset such as \"" + SLIDES_PRESET + "\" (docs/videos/ILLUSTRATED.md)" });
+  if (!drama && doc.look !== undefined && !pictures) errors.push({ path: "look", message: `a slides video with no "${SHOT_TEMPLATE}" scenes has nothing to draw with a look` });
   const explainer = isExplainer(doc);
   const cards = explainer ? EXPLAINER_CARD_TEMPLATES : CARD_TEMPLATES;
   if (explainer && characterIds.size) errors.push({ path: "characters", message: `an explainer (look preset "${EXPLAINER_PRESET}") has no characters: the narrator tells it` });
@@ -313,13 +355,16 @@ export function validateDrama(doc, errors, validateVoice) {
     const where = `scenes[${sceneIndex}]`;
     const shot = isShot(scene);
     if (shot) {
-      if (!drama) {
-        errors.push({ path: `${where}.template`, message: `"${SHOT_TEMPLATE}" scenes belong to format "${DRAMA_FORMAT}"` });
-      } else {
-        shots += 1;
-        validateShotData(scene.data, `${where}.data`, characterIds, earlierShots, errors);
-        if (explainer && isObject(scene.data) && shotVisual(scene) !== "still") {
-          errors.push({ path: `${where}.data.visual`, message: `an explainer's shots are all "still": its keyframe under a camera move, no clip` });
+      shots += 1;
+      validateShotData(scene.data, `${where}.data`, characterIds, earlierShots, errors);
+      if (explainer && isObject(scene.data) && shotVisual(scene) !== "still") {
+        errors.push({ path: `${where}.data.visual`, message: `an explainer's shots are all "still": its keyframe under a camera move, no clip` });
+      }
+      // A slides illustration is a still under a camera move: no clip, no cast, no clip-only fields.
+      if (!drama && isObject(scene.data)) {
+        if (shotVisual(scene) !== "still") errors.push({ path: `${where}.data.visual`, message: `a slides illustration is "still": its keyframe under a camera move (docs/videos/ILLUSTRATED.md)` });
+        for (const key of ["characters", "fit", "start_frame", "end_frame"]) {
+          if (scene.data[key] !== undefined) errors.push({ path: `${where}.data.${key}`, message: `a slides illustration has no ${key}: that belongs to a drama's clips` });
         }
       }
     } else if (drama && !cards.includes(scene.template)) {
@@ -329,13 +374,13 @@ export function validateDrama(doc, errors, validateVoice) {
       scene.lines.forEach((line, lineIndex) => {
         if (!isObject(line)) return;
         const label = `${where}.lines[${lineIndex}]${typeof line.id === "string" ? ` (${line.id})` : ""}`;
+        if (shot && line.reveal !== undefined) errors.push({ path: `${label}.reveal`, message: "a shot has nothing to reveal; split the narration into shots instead" });
         if (!drama) {
           for (const key of ["speaker", "emotion"]) {
             if (line[key] !== undefined) errors.push({ path: `${label}.${key}`, message: `only a video with format "${DRAMA_FORMAT}" has line ${key}` });
           }
           return;
         }
-        if (shot && line.reveal !== undefined) errors.push({ path: `${label}.reveal`, message: "a shot has nothing to reveal; split the narration into shots instead" });
         if (line.speaker !== undefined && line.speaker !== NARRATOR && !characterIds.has(line.speaker)) {
           errors.push({ path: `${label}.speaker`, message: `must be "${NARRATOR}" or a character id` });
         }
@@ -347,7 +392,7 @@ export function validateDrama(doc, errors, validateVoice) {
     if (shot && typeof scene.id === "string") earlierShots.add(scene.id);
   });
   if (drama && shots === 0) errors.push({ path: "scenes", message: `a drama needs at least one "${SHOT_TEMPLATE}" scene` });
-  if (drama && isObject(doc.thumbnail?.data) && doc.thumbnail.data.shot !== undefined && !earlierShots.has(doc.thumbnail.data.shot)) {
+  if (pictures && isObject(doc.thumbnail?.data) && doc.thumbnail.data.shot !== undefined && !earlierShots.has(doc.thumbnail.data.shot)) {
     errors.push({ path: "thumbnail.data.shot", message: "must name a shot scene whose keyframe becomes the thumbnail background" });
   }
 }
@@ -399,9 +444,28 @@ export function mixHash(doc) {
   return hash16(["mix", resolveMusic(doc)]);
 }
 
+/** What changes the sound-effect track apart from the picture's cut points: the set and its gain. */
+export function sfxHash(doc) {
+  return hash16(["sfx", resolveSfx(doc)]);
+}
+
 /** Hash of the shots in order with the clip each one uses, written by `clips` and compared by `assemble`. */
 export function clipsHash(shots) {
   return hash16(["clips", shots.map((shot) => [shot.id, shot.sha256])]);
+}
+
+/**
+ * What a slides video's illustrations are drawn from: each shot's id, prompt and camera word.
+ * The keyframes manifest of an illustrated slides video is bound to this and the look, not to
+ * visualHash, so a card's text can change without every picture being judged again.
+ */
+export function picturesHash(doc) {
+  return hash16(["pictures", shotScenes(doc).map((scene) => [scene.id, scene.data?.prompt ?? "", scene.data?.camera ?? null])]);
+}
+
+/** The pictures a cut was assembled from: each shot's keyframe hash, in scene order, from the keyframes manifest. */
+export function keyframesHash(doc, manifest) {
+  return clipsHash(shotScenes(doc).map((scene) => ({ id: scene.id, sha256: manifest?.shots?.[scene.id]?.sha256 ?? null })));
 }
 
 /** The words of a shot's prompt, for the near-duplicate warning. */

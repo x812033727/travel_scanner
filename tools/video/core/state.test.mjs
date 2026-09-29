@@ -235,3 +235,50 @@ test("a compilation walks its own steps: planned metadata, cards, the join, the 
   assert.equal(translationComplete(null), false);
   assert.equal(sha("x").length, 64);
 });
+
+test("illustrated slides walk the picture and music steps, bound to the shots rather than the cards", async () => {
+  const { illustratedFixture } = await import("./fixtures/load.mjs");
+  const { ARTIFACTS, ILLUSTRATED_STEPS, SLIDES_STEPS } = await import("./state.mjs");
+  const { keyframesHash, lookHash, mixHash, picturesHash, sfxHash } = await import("./drama.mjs");
+  const { visualHash } = await import("./timeline.mjs");
+  const doc = illustratedFixture();
+  assert.deepEqual(stepsFor(doc), ILLUSTRATED_STEPS);
+  assert.deepEqual(stepsFor({ ...doc, music: undefined }), ILLUSTRATED_STEPS.filter((id) => id !== "music generated"));
+  assert.equal(stepsFor(fixture()), SLIDES_STEPS, "plain slides keep their twelve steps");
+  const box = sandbox("fixture-illustrated", "illustrated");
+  mkdirSync(box.workdir, { recursive: true });
+  const write = (name, value) => {
+    mkdirSync(path.dirname(path.join(box.workdir, name)), { recursive: true });
+    writeFileSync(path.join(box.workdir, name), JSON.stringify(value));
+  };
+  const status = () => pipelineStatus({ slug: box.slug, root: box.root, workdir: box.workdir });
+  const ids = (state) => state.steps.map((step) => step.id);
+  const done = (state, id) => state.steps.find((step) => step.id === id).done;
+  assert.deepEqual(ids(await status()), ILLUSTRATED_STEPS);
+  // Keyframes bound to the look and the shots: a card edit does not undo them, a camera edit does.
+  const shots = Object.fromEntries(doc.scenes.filter((scene) => scene.template === "shot").map((scene) => [scene.id, { file: `keyframes/${scene.id}.png`, sha256: "a".repeat(64) }]));
+  write(ARTIFACTS.keyframes, { look_hash: lookHash(doc), pictures_hash: picturesHash(doc), shots });
+  assert.equal(done(await status(), "keyframes drawn"), true);
+  const edited = illustratedFixture();
+  edited.scenes[0].data.title = "改了標題";
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(edited));
+  assert.equal(done(await status(), "keyframes drawn"), true, "a card edit leaves the pictures drawn");
+  edited.scenes[1].data.camera = "pan left";
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(edited));
+  assert.equal(done(await status(), "keyframes drawn"), false, "a camera edit asks for the picture again");
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+  // The cut is current only when it was made from these pictures, this music and these effects.
+  const checks = { ok: true, speech_hash: (await status()).steps && null, visual_hash: visualHash(doc), look_hash: lookHash(doc), pictures_hash: keyframesHash(doc, { shots }), mix_hash: mixHash(doc), sfx_hash: sfxHash(doc) };
+  write(ARTIFACTS.music, { mix_hash: mixHash(doc), file: "music/bed.mp3" });
+  assert.equal(done(await status(), "music generated"), true);
+  const { speechHash } = await import("./timeline.mjs");
+  const project = loadProject({ slug: box.slug, root: box.root });
+  checks.speech_hash = speechHash(project.doc, project.lexicon);
+  write(ARTIFACTS.checks, checks);
+  writeFileSync(path.join(box.workdir, ARTIFACTS.video), "");
+  assert.equal(done(await status(), "video assembled"), true);
+  write(ARTIFACTS.checks, { ...checks, pictures_hash: keyframesHash(doc, { shots: { ...shots, podium: { ...shots.podium, sha256: "b".repeat(64) } } }) });
+  assert.equal(done(await status(), "video assembled"), false, "a redrawn picture asks for the cut again");
+  write(ARTIFACTS.checks, { ...checks, sfx_hash: "0000000000000000" });
+  assert.equal(done(await status(), "video assembled"), false, "other sound effects ask for the cut again");
+});

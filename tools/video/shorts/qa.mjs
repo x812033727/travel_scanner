@@ -139,7 +139,8 @@ export function linksItem({ results, metadata }) {
 export function scriptShape(doc) {
   return {
     opening: comparable(phrasesOf(doc)[0] ?? ''),
-    structure: doc.scenes.map((scene) => `${scene.narration.length}${scene.big ? 'b' : ''}${scene.asset ? 'a' : ''}${scene.body?.length ?? 0}${scene.note ? 'n' : ''}`).join('-'),
+    // A scene with a camera move over its picture reads "c": two Shorts that move alike are built alike.
+    structure: doc.scenes.map((scene) => `${scene.narration.length}${scene.big ? 'b' : ''}${scene.asset ? 'a' : ''}${scene.camera ? 'c' : ''}${scene.body?.length ?? 0}${scene.note ? 'n' : ''}`).join('-'),
   };
 }
 

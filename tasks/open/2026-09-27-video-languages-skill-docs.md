@@ -1,11 +1,11 @@
 ---
 id: 2026-09-27-video-languages-skill-docs
 title: Video languages skill docs: publish, automated and drama references, README rows and DUBS point at LANGUAGES
-status: review
+status: open
 priority: P2
 area: docs
-owner: claude-fable-5-1-video-languages
-claimed_at: 2026-09-27T09:08:23Z
+owner:
+claimed_at:
 created_at: 2026-09-27T06:16:04Z
 completed_at:
 branch:

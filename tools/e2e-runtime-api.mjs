@@ -1,4 +1,5 @@
 import { createServer } from "node:http";
+import { createHash } from "node:crypto";
 
 const visibility = {
   hotspots_enabled: true,
@@ -153,6 +154,154 @@ const manualUploadFiles = new Map([
 ].map(([value, role]) => [value.toString(16).padStart(2, "0").repeat(32), `Synthetic download fixture: ${role}\n`]));
 const manualUploadFilePrefix = "/api/v1/admin/videos/manual-upload-fixture/files/";
 
+// Fixed, synthetic Shorts data for admin-video-shorts.spec.ts. Keep API response shapes
+// aligned with app/video_shorts/schemas.py; the browser exercises the real JSON/file BFFs.
+const shortsNow = "2026-10-05T03:00:00Z";
+const shortsId = (number) => `00000000-0000-4000-8000-${String(number).padStart(12, "0")}`;
+// Both decode to 18x32 (9:16). One second of solid teal, no audio or external assets.
+// Generated with ffmpeg's color=c=teal:s=18x32:r=30:d=1, libx264 baseline,
+// yuv420p and +faststart; the PNG is one frame of the same color source.
+const shortsPreview = Buffer.from("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", "base64");
+const shortsCover = Buffer.from("iVBORw0KGgoAAAANSUhEUgAAABIAAAAgCAIAAACQHr+mAAAACXBIWXMAAAABAAAAAQBPJcTWAAAAIUlEQVR4nGNkqKtjIB2wkKFnVNuotlFto9pGtY1qo5s2AHqCAXoBpr13AAAAAElFTkSuQmCC", "base64");
+const shortsHash = (bytes) => createHash("sha256").update(bytes).digest("hex");
+const shortsFiles = new Map([
+  [shortsHash(shortsPreview), { body: shortsPreview, type: "video/mp4" }],
+  [shortsHash(shortsCover), { body: shortsCover, type: "image/png" }],
+]);
+const shortsProjects = ["making", "needs_you", "library", "slotted", "scheduled", "published", "missed", "dropped"].map((state, index) => ({
+  slug: `synthetic-shorts-${state.replaceAll("_", "-")}`, title: `Synthetic Shorts ${state}`,
+  stage: state === "making" ? "render" : "final", checklist: [], pending: state === "needs_you" ? 1 : 0,
+  ready_to_upload: false, locales_decided_at: null, locales: {},
+  format: "shorts", shorts_line: "lab", shorts_series: "daily", shorts_state: state,
+  youtube_video_id: ["scheduled", "published", "dropped"].includes(state) ? `Fixture000${index}` : null,
+  last_synced_at: shortsNow, publish_approved_at: state === "published" ? "2026-10-03T03:00:00Z" : null,
+  slot_at: state === "slotted" ? "2026-10-05T11:30:00Z" : null,
+  youtube_publish_at: state === "scheduled" ? "2026-10-07T11:30:00Z" : ["published", "dropped"].includes(state) ? "2026-10-03T03:00:00Z" : null,
+  youtube_removed_at: state === "dropped" ? "2026-10-04T04:00:00Z" : null,
+  dropped_at: state === "dropped" ? "2026-10-04T04:00:00Z" : null,
+  dropped_note: state === "dropped" ? "Synthetic removed Short" : null,
+}));
+const shortsDetail = (project) => ({ ...project, reviews: [{
+  id: shortsId(100 + shortsProjects.indexOf(project)), gate: "final", content_sha256: shortsHash(shortsPreview),
+  summary: "Synthetic one-second portrait preview", status: project.pending ? "pending" : "approved",
+  payload: { duration_seconds: 1, titles: [project.title, "Synthetic alternate title"],
+    qa: { ok: true, kind: "shorts", final_sha256: shortsHash(shortsPreview), items: [{ id: "profile", ok: true, detail: "Synthetic portrait fixture" }] } },
+  files: [
+    { role: "preview", sha256: shortsHash(shortsPreview), size: shortsPreview.length, content_type: "video/mp4" },
+    { role: "thumbnail", sha256: shortsHash(shortsCover), size: shortsCover.length, content_type: "image/png" },
+  ], choice: null, note: null, created_at: shortsNow, decided_at: project.pending ? null : shortsNow,
+}] });
+const shortsSlot = (number, fields) => ({
+  id: shortsId(number), starts_at: "2026-10-05T11:30:00Z", local_date: "2026-10-05", local_time: "19:30", phase: 1,
+  line: null, series: null, topic_slug: null, project_slug: null, project_title: null, project_line: null,
+  youtube_video_id: null, status: "open", locked_at: null, note: null, ...fields,
+});
+const shortsSlots = [
+  shortsSlot(1, { status: "assigned", project_slug: "synthetic-shorts-slotted", project_title: "Synthetic Shorts slotted", project_line: "lab" }),
+  shortsSlot(2, { starts_at: "2026-10-06T04:30:00Z", local_date: "2026-10-06", local_time: "12:30", status: "skipped" }),
+  shortsSlot(3, { starts_at: "2026-10-06T11:30:00Z", local_date: "2026-10-06" }),
+  shortsSlot(4, { starts_at: "2026-10-20T11:30:00Z", local_date: "2026-10-20", note: "Synthetic later slot" }),
+];
+const shortsBudget = {
+  period_start: "2026-10-04T16:00:00Z", period_end: "2026-11-03T16:00:00Z", spent_ntd: 0.29, reserved_ntd: 0, unknown: 1,
+  limit_ntd: 3000, soft_ntd: 2400, total_start: "2026-10-04T16:00:00Z", total_spent_ntd: 0.29, total_limit_ntd: 9000,
+  paid_work_allowed: false, reason: "Synthetic unknown cost pauses paid work",
+};
+const shortsOverview = {
+  autopublish: "off", autopublish_problem: null, consent_expires_at: null, paused_at: null, timezone: "Asia/Taipei",
+  today: shortsSlots.slice(0, 1), tomorrow: shortsSlots.slice(1, 3), stock: { count: 1, days: 2, wanted_days: 5 },
+  budget: shortsBudget, channel: { linked: true, title: "Synthetic Shorts channel", audited: false, problem: null },
+  worker_seen_at: shortsNow, campaign: { start: "2026-10-05", last_day: "2027-01-02", slots: 4, published: 0, missed: 0 },
+  needs: [
+    { kind: "review", detail: "Synthetic review needs the owner", slug: "synthetic-shorts-needs-you", count: 1 },
+    { kind: "budget", detail: shortsBudget.reason, count: 1 },
+  ], needs_count: 2,
+};
+const shortsSettings = {
+  enabled: false, lines: ["lab", "cut", "drama"], weekly_quota: { lab: 5, cut: 2, drama: 0 },
+  daily_pattern: [{ days: 30, counts: [1] }, { days: 60, counts: [2, 1] }], slot_times: ["19:30", "12:30"], timezone: "Asia/Taipei",
+  stock_days: 5, lock_hours: 24, upload_ahead_days: 10, max_per_day: 2, seconds_min: 25, seconds_max: 55,
+  voice: { provider: "gemini", name: "Sulafat", style: null, model: null, rate: "+0%" }, locales: [], made_for_kids: false, auto_approve: true,
+  budget_ntd_30d: 3000, budget_soft_ntd: 2400, budget_total_ntd: 9000,
+  campaign_start: "2026-10-05", autopublish: false, paused_at: null, updated_at: shortsNow,
+  consent: { state: "none", problem: null, granted_at: null, granted_by_user_id: null, expires_at: null, text_sha256: null, scope: null, offer: null },
+};
+const shortsMetrics = { items: ["published", "dropped"].map((state) => ({
+  slug: `synthetic-shorts-${state}`, title: `Synthetic Shorts ${state}`, line: "lab", series: "daily",
+  youtube_video_id: state === "published" ? "Fixture0005" : "Fixture0007",
+  published_at: "2026-10-03T03:00:00Z", removed_at: state === "dropped" ? "2026-10-04T04:00:00Z" : null,
+  snapshots: [{ period: "d1", source: "data_api", captured_at: "2026-10-04T03:00:00Z", views: 1234, likes: 17, comments: 3 }],
+})) };
+const shortsCosts = {
+  items: [
+    { id: shortsId(201), occurred_at: shortsNow, project_slug: "synthetic-shorts-library", category: "narration", amount: 0.01, currency: "USD", fx_rate: 29, amount_ntd: 0.29, status: "confirmed", source: "auto", units: { seconds: 1 }, note: "Synthetic narration", created_at: shortsNow },
+    { id: shortsId(202), occurred_at: shortsNow, project_slug: null, category: "tool", amount: null, currency: "USD", fx_rate: null, amount_ntd: null, status: "unknown", source: "manual", units: null, note: "Synthetic unknown cost", created_at: shortsNow },
+  ], budget: shortsBudget,
+  periods: [{ start: shortsBudget.period_start, end: shortsBudget.period_end, spent_ntd: 0.29, reserved_ntd: 0, unknown: 1, lines: 2 }],
+};
+
+function shortsFile(request, response, file) {
+  const { body, type } = file;
+  response.setHeader("Content-Type", type);
+  response.setHeader("Accept-Ranges", "bytes");
+  response.setHeader("ETag", `"${shortsHash(body)}"`);
+  let start = 0, end = body.length - 1;
+  if (request.headers.range) {
+    const match = /^bytes=(\d*)-(\d*)$/.exec(request.headers.range);
+    if (match && (match[1] || match[2])) {
+      start = match[1] ? Number(match[1]) : Math.max(0, body.length - Number(match[2]));
+      end = match[1] && match[2] ? Math.min(Number(match[2]), end) : end;
+    } else start = body.length;
+    if (start > end || start >= body.length) {
+      response.statusCode = 416;
+      response.setHeader("Content-Range", `bytes */${body.length}`);
+      response.end();
+      return;
+    }
+    response.statusCode = 206;
+    response.setHeader("Content-Range", `bytes ${start}-${end}/${body.length}`);
+  }
+  response.setHeader("Content-Length", end - start + 1);
+  response.end(body.subarray(start, end + 1));
+}
+
+function serveShortsFixture(request, response, url) {
+  if (request.method !== "GET") return false;
+  const path = url.pathname;
+  let body;
+  if (path === "/api/v1/admin/video-shorts/overview") body = shortsOverview;
+  else if (path === "/api/v1/admin/video-shorts/settings") body = shortsSettings;
+  else if (path === "/api/v1/admin/video-shorts/metrics") body = shortsMetrics;
+  else if (path === "/api/v1/admin/video-shorts/costs") body = shortsCosts;
+  else if (path === "/api/v1/admin/video-shorts/slots") body = {
+    timezone: "Asia/Taipei", slots: shortsSlots.filter((slot) =>
+      (!url.searchParams.get("from") || slot.local_date >= url.searchParams.get("from")) &&
+      (!url.searchParams.get("to") || slot.local_date <= url.searchParams.get("to"))),
+  };
+  else if (path === "/api/v1/admin/video-shorts/uploads") body = { ahead_days: 10, items: [{
+    slug: "synthetic-shorts-slotted", title: "Synthetic Shorts slotted", line: "lab", slot_at: shortsSlots[0].starts_at,
+    file_name: "mokaair-short-synthetic-shorts-slotted.mp4", size: shortsPreview.length, seconds: 1,
+  }] };
+  else if (path === "/api/v1/admin/videos") body = url.searchParams.get("shorts") === "exclude" ? [] : shortsProjects;
+  else if (path.startsWith("/api/v1/admin/videos/synthetic-shorts-")) {
+    const [, slug, hash] = /^\/api\/v1\/admin\/videos\/([^/]+)(?:\/files\/([a-f0-9]{64}))?$/.exec(path) ?? [];
+    const project = shortsProjects.find((item) => item.slug === slug);
+    if (!project || (hash && !shortsFiles.has(hash))) return false;
+    if (hash) { shortsFile(request, response, shortsFiles.get(hash)); return true; }
+    body = shortsDetail(project);
+  }
+  else if (path === "/api/v1/admin/video-automation/settings") body = {
+    voice_options: { gemini: ["Sulafat", "Kore"], gemini_models: ["gemini-3.8-flash-tts"], azure: [] }, locales: [], locale_parts: {},
+  };
+  else if (path === "/api/v1/admin/video-youtube") body = {
+    configured: true, linked: true, audited: false, channel_id: "synthetic-channel", channel_title: "Synthetic Shorts channel",
+    client_id: null, client_secret_set: false, redirect_uri: "", scope: "", channel_url: null, linked_at: null, verified_at: null, problem: null,
+  };
+  else return false;
+  response.end(JSON.stringify(body));
+  return true;
+}
+
 const server = createServer((request, response) => {
   response.setHeader("Cache-Control", "no-store");
   response.setHeader("Content-Type", "application/json");
@@ -247,6 +396,17 @@ const server = createServer((request, response) => {
     return;
   }
   const requestUrl = new URL(request.url || "/", "http://127.0.0.1:8000");
+  if (serveShortsFixture(request, response, requestUrl)) return;
+  if (request.method === "GET" && requestUrl.pathname === "/api/v1/community/status") {
+    response.end(JSON.stringify({ enabled: false, posting_enabled: false, comments_enabled: false,
+      messaging_enabled: false, translation_enabled: false, pet_reports_enabled: false }));
+    return;
+  }
+  // Signed-in layouts ask for saved items even on an administrator page.
+  if (request.method === "GET" && requestUrl.pathname === "/api/v1/saved-items") {
+    response.end(JSON.stringify({ items: [] }));
+    return;
+  }
   // Clearly synthetic SSR fixtures: never a production policy or owner identity.
   if (request.method === "GET" && requestUrl.pathname.startsWith("/api/v1/site-pages/")) {
     const slug = requestUrl.pathname.split("/").at(-1);

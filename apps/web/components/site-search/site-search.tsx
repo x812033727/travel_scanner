@@ -133,9 +133,10 @@ export function SiteSearch({
             onFocus={() => setOpen(true)}
             onChange={(event) => { setQuery(event.target.value); setActive(-1); setOpen(true); }}
             onKeyDown={onKeyDown}
+            style={{ paddingInlineStart: inline ? "2.25rem" : "2.75rem" }}
             className={inline
-              ? "app-field min-h-11 w-56 pl-9 pr-3 text-sm xl:w-72"
-              : "app-field min-h-14 w-full pl-11 pr-3 text-base"}
+              ? "app-field min-h-11 w-56 pr-3 text-sm xl:w-72"
+              : "app-field min-h-14 w-full pr-3 text-base"}
           />
         </div>
         {inline ? null : (

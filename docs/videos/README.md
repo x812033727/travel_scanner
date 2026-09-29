@@ -1,6 +1,6 @@
 # Mokaair 影片頻道規格
 
-這份是頻道的「長相」：每支全自動影片都照這裡做，改這裡等於改整個頻道。產線怎麼跑寫在 skill `youtube-video`（`.agents/skills/youtube-video/references/automated.md`），為什麼這樣設計、YouTube 與 Azure 的官方規則寫在 [`DESIGN.md`](DESIGN.md)。AI 漫劇（`format: "drama"`：AI 生成的鏡頭片段、多角色配音、燒錄字幕、配樂）是第二種格式，設計在 [`DRAMA.md`](DRAMA.md)；下面沒有另外說的地方，漫劇都照這份。
+這份是頻道的「長相」：每支全自動影片都照這裡做，改這裡等於改整個頻道。產線怎麼跑寫在 skill `youtube-video`（`.agents/skills/youtube-video/references/automated.md`），為什麼這樣設計、YouTube 與 Azure 的官方規則寫在 [`DESIGN.md`](DESIGN.md)。AI 漫劇（`format: "drama"`：AI 生成的鏡頭片段、多角色配音、燒錄字幕、配樂）是第二種格式，設計在 [`DRAMA.md`](DRAMA.md)；下面沒有另外說的地方，漫劇都照這份。投影片影片可以帶插圖、配樂與音效（**插圖投影片**，2026-09-29 定案，設計在 [`ILLUSTRATED.md`](ILLUSTRATED.md)）：卡片之間放 AI 插圖加運鏡，單狀態卡片漂移、畫面間溶接。
 
 ## 資料夾
 
@@ -26,7 +26,7 @@
 | 合集 | 每集成片 `-c copy` 串接、音訊重編一次；集間 2 秒章節卡、片尾 4 秒卡；章節＝每集；五語字幕合併。審核頁只放 720p 預覽（`-crf 26 -maxrate 2M`，兩小時約 ≤ 2 GB）；1080p 成片從後台的作品頁或「可以上架」卡下載（`GET /admin/videos/{slug}/download`，API 唯讀掛載工人的 `video_work`）再上傳。合集的 `category_id` 是 24（娛樂） | `tools/video/core/compilation.mjs`、`tools/video/compile/cli.mjs` |
 | 字幕 | zh-TW 的 CC 一定有。en、ja、ko、zh-CN 的 CC 與標題說明是每支影片的選擇：成片核准後站主在 `/admin/videos` 那支影片的「這支影片的語言」面板勾了才做，工人只做勾了的、做好才排上架（[`LANGUAGES.md`](LANGUAGES.md)；設定分頁的 `caption_locales` 只是面板的預先勾選）。投影片影片**不燒錄**；漫劇預設把繁中字幕燒進畫面（漫劇頻道的慣例），由 `video.json` 的 `subtitles.burn_in` 決定 | `tools/video/core/captions.mjs`、`tools/video/core/stages.mjs`、`tools/video/core/drama.mjs` |
 | 配音音軌 | 語言的第三個部件：投影片影片可以多掛 en、ja、ko、zh-CN 四條 YouTube 多語言音軌，同一個頻道聲音唸字幕的翻譯，塞在 zh-TW 的畫面時間軸裡。站主在同一個面板勾了配音才做（勾配音會一起勾 CC），做好後由站主在 Studio「語言」上傳、在「語言」卡片按「已在 Studio 上傳配音」；做不出來的語系跳過並寫原因，不擋上架。漫劇第一期不做。音軌怎麼做在 [`DUBS.md`](DUBS.md) | `tools/video/dubs`、`tools/video/automation/flow.mjs` |
-| 配樂 | 投影片影片沒有；漫劇有（`music`，由 Lyria 生成或站主提供有授權的檔案），在對白下自動壓低 | `tools/video/core/drama.mjs` |
+| 配樂與音效 | 任何格式都可以帶 `music`（站主提供有授權的檔案放 `<VIDEO_WORKDIR>/_music/`，或由 Lyria 生成），在旁白下自動壓低到 ≤ −24 LUFS；插圖投影片另可帶 `sfx`（授權音效組放 `_sfx/<set>/`：章節卡蓋章、溶接 whoosh、逐條出現 pop）。純投影片預設兩者都沒有 | `tools/video/core/drama.mjs`、`tools/video/assemble/sfx.mjs` |
 
 每句旁白和它後面的停頓，都補到整格（48,000 Hz ÷ 30 fps ＝ 每格 1,600 個取樣），所以十分鐘的影片不會有影音漂移。
 
@@ -44,7 +44,7 @@
 
 字型只用 Noto Sans TC 與 JetBrains Mono，兩者都是開源字型，由 npm 套件提供，不讀系統字型。畫面下方 12% 不放重要內容，因為 YouTube 的控制列和 CC 字幕在那裡。
 
-11 種投影片版型（每種的欄位與上限在 `tools/video/templates/templates.mjs` 的 `TEMPLATE_SPECS`，範例在 `tools/video/templates/fixtures/showcase/video.json`）：
+15 種投影片版型（每種的欄位與上限在 `tools/video/templates/templates.mjs` 的 `TEMPLATE_SPECS`，範例在 `tools/video/templates/fixtures/showcase/video.json`），加上不是 HTML 版型的 `shot`（一張 AI 插圖加運鏡，[`ILLUSTRATED.md`](ILLUSTRATED.md)；插圖投影片每 5–8 秒一張、至少佔一半時間）：
 
 | 版型 | 用在 | 可以逐條出現 |
 | --- | --- | --- |
@@ -66,7 +66,7 @@
 
 - **沒有片頭動畫**。第一個場景就是開場鉤子（`title` 版型）：第一句是觀眾的問題或一個反直覺的說法，30 秒內說完「為什麼該看、會得到什麼、怎麼進行」。
 - **片尾**是 `outro` 版型：回到開場的問題給一句答案，只給一個下一步（對應的 Mokaair 文章、下一支影片、或一個具體的留言問題），畫面上有 `mokaair.com`。
-- 投影片影片不放背景音樂。漫劇的配樂規則在 [`DRAMA.md`](DRAMA.md)。
+- 配樂：插圖投影片用站主的授權音樂床（`music.track`），純投影片不放；漫劇的配樂規則在 [`DRAMA.md`](DRAMA.md)。
 
 ## 聲音
 
@@ -75,6 +75,7 @@
 | 供應商 | Azure 語音，由正式站伺服器代為合成（金鑰在後台「API 與供應商設定 → AI 服務 → Azure 語音（影片旁白）」） |
 | 頻道聲音 | **還沒選**。第一支影片開工前，用 `audition` 讓站主聽同一段旁白比較：曉臻、雲哲、曉雨，以及 Ava、Andrew 講台灣國語。選定後寫在這裡，之後每支影片都用同一個聲音 |
 | 語速 | `+0%`；稿子的長度以每分鐘 250 字估計 |
+| 口吻 | 2026-09-29 起是**說書式**（Gemini `voice.style`：有起伏、揭曉前停一拍、「你以為」放慢、「其實」亮起來；全文在 [`ILLUSTRATED.md`](ILLUSTRATED.md)），站主在 `/admin/videos` 設定分頁貼上；改了 style 全部重錄 |
 | 停頓 | 句與句之間 0.3 秒，換場景多 0.7 秒；單句可以用 `pause_after_ms` 改 |
 
 ## 說明欄

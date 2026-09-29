@@ -416,7 +416,12 @@ async def test_a_drama_keeps_one_look_review_per_character_and_can_auto_approve_
         session.add_all([owner, token])
         await session.commit()
         await service.upsert_project(
-            session, store, slug, ProjectIn(title="drama", stage="look", checklist=[])
+            session,
+            store,
+            slug,
+            # A drama reports its format (review-push and the worker both do): its storyboard
+            # reads the drama's switch, an illustrated slides video's its own.
+            ProjectIn(title="drama", stage="look", checklist=[], format="drama"),
         )
 
         def look(subject: str, content: str) -> ReviewIn:
