@@ -15,7 +15,7 @@
 
 ## 本輪實際結果（2026-09-29）
 
-原 64 張固定分母：**31 張已移至 done、2 張過時票已刪除、31 張仍需保留**。31 張 done 包含 30 張有歷史完成證據的票與本輪完成的 publisher hold 防護。僅整理任務檔；未刪程式、文章或媒體。最新可審查改動在 [草稿 PR #966](https://github.com/x812033727/travel_scanner/pull/966)，不代表已合併或部署。
+原 64 張固定分母：**32 張已移至 done、2 張過時票已刪除、30 張仍需保留**。32 張 done 包含 30 張有歷史完成證據的票、本輪完成的 publisher hold 防護，以及工作期間另一個工作合併的 #938 政策票。已納入 main `0cfcfdc1`（#938於02:29:18 UTC合併）；新建的稽核／方案票不混入64張分母。未刪程式、文章或媒體。最新可審查改動在 [草稿 PR #966](https://github.com/x812033727/travel_scanner/pull/966)，不代表此PR已合併或部署。
 
 - **內部代理憑證**：正式 API 拒絕缺少或少於32字元的 token；開發環境未設 token 但信任轉送位址時發出啟動警告。61項相關測試通過，Ruff及四檔mypy通過。正式站唯讀確認 API/web 皆未設定，故整個 PR 保持草稿；配置方案仍待站主決定。
 - **新聞證據**：統一使用目前擷取器40,000字元全文上限，移除8,000/6,000字元的早截斷；完整instructions/payload/schema以64k輸入預算檢查，輸出預算仍獨立32k，Jev超限交人工處理。相关套件82 passed；最終新增模組10 passed（包含前者案例，不能相加）。Ruff/mypy通過；近月正式資料抽樣未做，票保留。
@@ -645,20 +645,19 @@
 
 ### 61. 2026-09-28-video-story-api-policy-languages
 
-**現有PR工作或依賴，保留** — 故事版立場檢查、自動語系、釋放名額、媒體每小時上限與 Flash 單價
+**既有PR已合併並結案** — 故事版立場檢查、自動語系、釋放名額、媒體每小時上限與 Flash 單價
 
-- Live PR #938 OPEN, non-draft, BEHIND, head d1aa02b13696af06b2d046fbfecf44719496bd5a; api/web/containers/full-stack-smoke SUCCESS on that head.
-- Current main judge/admin_service/media files do not contain the PR's story policy/autolanguage flow; task still open because PR not merged.
-- PR already owns the necessary implementation; don't reimplement in this audit.
+- 2026-09-29 02:29:18 UTC，PR #938 已合併為 `0cfcfdc126db3a6f4ed3f3fc2136816ba8045761`，本分支已同步該主分支版本。
+- 主分支已包含judge/admin_service/media的政策、語系與配額流程，原票已移到tasks/done；此稽核沒有重複實作。
 
-剩餘／處理：Coordinate existing PR, update against current main and rerun required checks on new head before any separately authorized merge. Host pilot remains separate.
+剩餘／處理：此實作票結案；正式部署與故事試作仍屬獨立票，不從合併推論已出片。
 
 ### 62. 2026-09-28-video-story-pilot
 
 **仍有缺口，待站主決定/條件** — 試作兩支品牌故事並記錄數字
 
 - Current docs/videos/STORY.md:287 trial record table remains placeholder for actual durations, costs, image quality and tokens.
-- Dependencies story-worker #933 and story-policy #938 are still OPEN/BEHIND.
+- 政策依賴 #938 已合併；worker #933 仍 OPEN，最新head `345d8e9926d79b107e23db560b4fdf8cc96db2e0` 的必要檢查仍在跑。
 - Task explicitly requires two production-host videos A01 luggage/B18 conveyor sushi, owner final viewing, settings/limits and expenditure measurement; nothing in repository proves those occurred.
 
 剩餘／處理：Keep pilot ticket. First land prerequisite implementations, then prepare explicit host deployment/config/import steps and selected two-video cost bound; owner watches completed cuts and chooses 1K vs 2K based on evidence.
@@ -669,7 +668,7 @@
 
 **現有PR工作或依賴，保留** — 工人的故事流程：逐章撰稿、查核、審稿與提示詞
 
-- Live PR #933 OPEN, non-draft, BEHIND, head 0cf33a304210bc8349e2a53246ca867e647bc9ed; api/web/containers/full-stack-smoke SUCCESS on that head.
+- PR #933 OPEN、非草稿，最新head `345d8e9926d79b107e23db560b4fdf8cc96db2e0`，BLOCKED；api/web/full-stack-smoke仍在跑、containers已成功。前一head綠燈不取代此次結果。
 - tools/video/automation/story.mjs does not exist on current main; PR implements it and describes mocked full-flow tests, fact-source extraction and narration-length checks.
 - PR has a 2026-09-29 update and also implements story-page tidy follow-up; another active implementation exists.
 
