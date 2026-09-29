@@ -41,39 +41,39 @@
   },
   "sources": [
     {
-      "title": "Anthropic Pricing（Claude plans）",
-      "url": "https://www.anthropic.com/pricing",
-      "checked_on": "2026-09-28"
+      "title": "Claude Pricing",
+      "url": "https://claude.com/pricing",
+      "checked_on": "2026-09-29"
     },
     {
-      "title": "Claude Help Center：What is the Pro plan",
+      "title": "Claude Pro usage limits",
       "url": "https://support.claude.com/en/articles/8325606-what-is-the-pro-plan",
-      "checked_on": "2026-09-28"
+      "checked_on": "2026-09-29"
     },
     {
-      "title": "Gemini 訂閱方案（台灣）",
+      "title": "Claude Free usage limits",
+      "url": "https://support.claude.com/en/articles/8114491-get-started-with-claude",
+      "checked_on": "2026-09-29"
+    },
+    {
+      "title": "Gemini subscriptions Taiwan",
       "url": "https://gemini.google/tw/subscriptions/",
-      "checked_on": "2026-09-28"
+      "checked_on": "2026-09-29"
     },
     {
-      "title": "Gemini subscriptions（美國）",
+      "title": "Gemini subscriptions US",
       "url": "https://gemini.google/subscriptions/",
-      "checked_on": "2026-09-28"
+      "checked_on": "2026-09-29"
     },
     {
-      "title": "Gemini Apps Help：limits & upgrades",
+      "title": "Gemini Apps limits",
       "url": "https://support.google.com/gemini/answer/16275805",
-      "checked_on": "2026-09-28"
+      "checked_on": "2026-09-29"
     },
     {
-      "title": "OpenAI：Introducing ChatGPT Go",
-      "url": "https://openai.com/index/introducing-chatgpt-go/",
-      "checked_on": "2026-09-28"
-    },
-    {
-      "title": "OpenAI Help Center：File Uploads FAQ",
-      "url": "https://help.openai.com/en/articles/8555545-file-uploads-faq",
-      "checked_on": "2026-09-28"
+      "title": "ChatGPT Work and Codex pricing",
+      "url": "https://learn.chatgpt.com/docs/pricing",
+      "checked_on": "2026-09-29"
     }
   ],
   "scenes": [
@@ -158,8 +158,8 @@
         "rows": [
           [
             "ChatGPT",
-            "每天 3 個檔案",
-            "傳檔讀資料"
+            "以帳號當下顯示為準",
+            "先確認自己撞到的限制"
           ],
           [
             "Claude",
@@ -185,7 +185,7 @@
         },
         {
           "id": "xb2w",
-          "text": "ChatGPT 免費版限的是檔案，一天只能傳三個。"
+          "text": "ChatGPT 先看帳號介面顯示的當下額度，再決定要不要升級。"
         },
         {
           "id": "4gjv",
@@ -213,7 +213,7 @@
         },
         {
           "id": "dvda",
-          "text": "這三個數字，是付費前最該先知道的。"
+          "text": "這些限制，是付費前應該先確認的。"
         }
       ]
     },
@@ -261,11 +261,11 @@
       "id": "model-tier",
       "template": "bullets",
       "data": {
-        "title": "免費版的模型也不同",
+        "title": "模型和額度要分開看",
         "items": [
-          "免費多半是輕量或中階模型",
-          "旗艦模型通常要付費",
-          "付費買的是額度和模型"
+          "Claude 免費：Sonnet、Haiku",
+          "Claude Pro：另含 Opus",
+          "用自己的工作比較模型與額度"
         ]
       },
       "lines": [
@@ -276,21 +276,21 @@
         },
         {
           "id": "2xji",
-          "text": "免費版拿到的，多半是輕量或中階的模型。",
+          "text": "例如 Claude 免費方案可以用 Sonnet，付費方案還有 Opus。",
           "reveal": 1
         },
         {
           "id": "nbjf",
-          "text": "旗艦模型通常要付費才有，所以付費買的是額度加上模型。",
+          "text": "所以要分開比較模型和額度，不能只看方案名稱。",
           "reveal": 1
         },
         {
           "id": "ipyc",
-          "text": "如果免費版的模型已經夠你用，付費買的就只剩額度。"
+          "text": "如果目前模型已夠用，就先確認付費能解決哪一項限制。"
         },
         {
           "id": "47pj",
-          "text": "旗艦模型比較會推理，但日常小事不一定用得到。"
+          "text": "哪個模型適合你，還是要拿自己的工作試。"
         }
       ]
     },
@@ -309,16 +309,16 @@
           [
             "ChatGPT Go",
             "8 美元",
-            "額度較免費版高，模型仍是輕量"
+            "Codex 桌面版 Luna（逐步開放）"
           ],
           [
             "ChatGPT Plus",
             "20 美元",
-            "旗艦模型與 Codex"
+            "Codex 多平台；Sol 與 Luna"
           ],
           [
             "Claude Pro",
-            "20 美元，年繳每月 17",
+            "月繳 $20；年繳 $200",
             "含 Claude Code"
           ],
           [
@@ -350,15 +350,15 @@
         },
         {
           "id": "tjm4",
-          "text": "要旗艦模型和寫程式的 Codex，要升到每月二十美元的 Plus。"
+          "text": "Plus 每月二十美元，提供更多 Codex 使用平台和 Sol、Luna。"
         },
         {
           "id": "dbei",
-          "text": "Claude Pro 月繳二十美元，年繳折合每月十七，一次付兩百。"
+          "text": "Claude Pro 月繳二十美元，年繳一次付兩百，平均每月約十六點六七。"
         },
         {
           "id": "a88i",
-          "text": "Gemini 是唯一在台灣頁直接標台幣的，AI Plus 每月一百六十五元。"
+          "text": "Gemini 台灣頁直接標台幣，AI Plus 每月一百六十五元。"
         },
         {
           "id": "juqe",
@@ -366,7 +366,7 @@
         },
         {
           "id": "jnxh",
-          "text": "注意 Go 雖然便宜，模型還是輕量的那一級。"
+          "text": "Go 的 Codex 桌面版列出 Luna，仍在逐步開放。"
         },
         {
           "id": "nbyb",
@@ -440,7 +440,7 @@
       "data": {
         "kicker": "台幣價格",
         "text": "登入後為準",
-        "sub": "ChatGPT、Claude 沒有在台灣頁標台幣"
+        "sub": "確認幣別、稅額、繳費週期與總額"
       },
       "claims": [
         "c9"
@@ -448,11 +448,11 @@
       "lines": [
         {
           "id": "3eqb",
-          "text": "ChatGPT 和 Claude 的台幣價格，以你登入後看到的為準。"
+          "text": "付款前，以你的帳號結帳頁顯示的幣別和總額為準。"
         },
         {
           "id": "xjnn",
-          "text": "從 App 內購買，價格可能和網頁不一樣。"
+          "text": "我的建議是把 App 和網頁的結帳總額都看一次。"
         },
         {
           "id": "v8md",
@@ -460,11 +460,11 @@
         },
         {
           "id": "bygz",
-          "text": "同一個方案，用不同管道買，價格可能差一截。"
+          "text": "比較時要看同一方案、同一繳費週期和相同內容。"
         },
         {
           "id": "u65e",
-          "text": "匯率和稅也會讓實際扣款跟標價不一樣。"
+          "text": "也要確認結帳總額是否含稅，別只看首頁標價。"
         }
       ]
     },
@@ -591,7 +591,7 @@
         },
         {
           "id": "cjpd",
-          "text": "每一種都有兩個選項，挑你已經習慣的那家。"
+          "text": "先找符合需求的選項，再挑你已經習慣的工具。"
         }
       ]
     },
@@ -643,8 +643,8 @@
       "template": "big",
       "data": {
         "kicker": "年繳划不划算",
-        "text": "每月省 3 美元",
-        "sub": "Claude Pro 年繳折合 17、月繳 20"
+        "text": "一年省 40 美元",
+        "sub": "Claude Pro：年繳 $200；月繳全年 $240"
       },
       "claims": [
         "c6",
@@ -653,11 +653,11 @@
       "lines": [
         {
           "id": "kbu4",
-          "text": "說到年繳，Claude Pro 年繳折合每月十七美元。"
+          "text": "Claude Pro 年繳一次兩百美元，月繳一年合計兩百四十。"
         },
         {
           "id": "39dy",
-          "text": "比月繳的二十美元，每月省三美元。"
+          "text": "因此用滿一年省四十，平均每月約省三點三三美元。"
         },
         {
           "id": "dcby",
@@ -665,11 +665,11 @@
         },
         {
           "id": "buep",
-          "text": "Gemini 的台灣頁只列月費，沒有年繳選項。"
+          "text": "Gemini 這裡列的是台灣頁顯示的月費，其他週期以結帳頁為準。"
         },
         {
           "id": "ah3g",
-          "text": "一年可以省三十六美元，但前提是你真的用滿一年。"
+          "text": "年繳省四十美元，但前提是你真的用滿一年。"
         }
       ]
     },
@@ -692,7 +692,7 @@
           "points": [
             "先從入門方案開始",
             "不夠再升級",
-            "隨時可以取消"
+            "先確認取消條款"
           ]
         }
       },
@@ -720,11 +720,11 @@
         },
         {
           "id": "j8z4",
-          "text": "上一階的價格是入門的五倍以上，別一開始就衝。"
+          "text": "以 Claude 為例，Max 入門月費是 Pro 月繳的五倍。"
         },
         {
           "id": "8ffa",
-          "text": "多數人一輩子都用不到上一階的額度。"
+          "text": "我的建議是先確認入門方案不夠，再考慮上一階。"
         },
         {
           "id": "6jb9",
@@ -772,7 +772,7 @@
           },
           {
             "title": "比對內購與網頁價",
-            "detail": "App 內購可能比較貴"
+            "detail": "確認同方案的結帳總額"
           }
         ]
       },
@@ -816,9 +816,9 @@
       "data": {
         "title": "取消要注意的地方",
         "items": [
-          "三家都可以月繳、隨時取消",
-          "取消後用到當期結束",
-          "App 內購要回商店取消"
+          "確認購買管道與取消入口",
+          "確認取消生效與功能結束時間",
+          "退款依方案、管道與所在地條款"
         ]
       },
       "claims": [
@@ -827,17 +827,17 @@
       "lines": [
         {
           "id": "f3ak",
-          "text": "三家都是月繳、隨時可以取消。",
+          "text": "訂閱前，先確認你的購買管道和取消入口。",
           "reveal": 1
         },
         {
           "id": "7imn",
-          "text": "取消之後，付費功能會用到這一期結束。",
+          "text": "再看取消何時生效，付費功能何時結束。",
           "reveal": 1
         },
         {
           "id": "7xye",
-          "text": "從 App 裡買的，要回到 App 商店取消，刪掉 App 不等於取消。",
+          "text": "如果從 App 購買，先查看商店提供的訂閱管理說明。",
           "reveal": 1
         },
         {
@@ -846,7 +846,7 @@
         },
         {
           "id": "27sx",
-          "text": "錢不會退，但功能會用到期滿。"
+          "text": "退款資格要看該方案、購買管道和所在地的條款。"
         }
       ]
     },

@@ -329,6 +329,51 @@ async def test_the_same_request_is_one_job_and_a_failed_one_is_retried_three_tim
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("series_model", "expected_model", "expected_usd"),
+    [
+        (None, "gemini-3-pro-image", 0.134),
+        ("gemini-3.1-flash-image", "gemini-3.1-flash-image", 0.067),
+    ],
+    ids=["pro-default", "flash-series-override"],
+)
+async def test_a_refunded_retry_restores_the_selected_model_price_on_the_same_job(
+    tmp_path: Path,
+    fake_provider: FakeProvider,
+    monkeypatch: pytest.MonkeyPatch,
+    series_model: str | None,
+    expected_model: str,
+    expected_usd: float,
+) -> None:
+    monkeypatch.setattr(service, "series_image_model", AsyncMock(return_value=series_model))
+    ctx = _context(tmp_path, fake_provider, row=_row(image_model="gemini-3-pro-image"))
+    payload = _image()
+    fake_provider.submit_result = MediaUpstreamError(422, "rejected before generation", "blocked")
+    job, created = await submit_job(ctx, "image", payload)
+    original_id = job.id
+    assert created and job.status == "failed" and job.attempts == 1
+    assert job.model == expected_model and float(job.usd_estimate) == 0
+    assert await meter.used(ctx.redis, meter.IMAGES) == 0
+
+    ctx.session.found = job  # type: ignore[attr-defined]
+    fake_provider.submit_result = Submitted(inline=PNG, content_type="image/png")
+    retried, created_again = await submit_job(ctx, "image", payload)
+    assert retried is job and retried.id == original_id and not created_again
+    assert retried.status == "ready" and retried.attempts == 2
+    assert retried.model == expected_model
+    assert float(retried.usd_estimate) == expected_usd
+    assert job_view(retried).usd_estimate == expected_usd
+    assert await meter.used(ctx.redis, meter.IMAGES) == 1
+    assert [request.model for request in fake_provider.requests] == [expected_model] * 2
+
+    same, repeated = await submit_job(ctx, "image", payload)
+    assert same is retried and not repeated and same.attempts == 2
+    assert job_view(same).usd_estimate == expected_usd
+    assert await meter.used(ctx.redis, meter.IMAGES) == 1
+    assert len(fake_provider.requests) == 2, "a ready job is returned without another purchase"
+
+
+@pytest.mark.asyncio
 async def test_a_second_poll_under_the_lock_waits_and_an_old_operation_expires(
     tmp_path: Path, fake_provider: FakeProvider
 ) -> None:

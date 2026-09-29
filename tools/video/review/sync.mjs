@@ -69,11 +69,12 @@ export const STEP_LABELS = {
 };
 
 export class ReviewError extends Error {
-  constructor(message, { status = 0, code = "", who = "service" } = {}) {
+  constructor(message, { status = 0, code = "", who = "service", submission = false } = {}) {
     super(message);
     this.status = status;
     this.code = code;
     this.who = who;
+    this.submission = submission;
   }
 }
 
@@ -116,18 +117,42 @@ export function checklistFrom(steps) {
   return steps.map((step) => ({ key: step.id.toLowerCase().replace(/[^a-z0-9]+/g, "_").slice(0, 40), label: STEP_LABELS[step.id] ?? step.id, done: Boolean(step.done) }));
 }
 
-/** The Jev check in numbers, and the lines still flagged, from review/check.json and check-flags.json. */
+/**
+ * The Jev check in numbers, and the lines still flagged, from review/check.json and check-flags.json.
+ * Lines a second transcript cleared (tts/second-opinion.mjs) are counted and listed with both
+ * transcripts, so the card says what cleared them; without any, the payload is what it always was.
+ */
 export function audioCheck(check, flags, lineCount) {
   const entries = Object.values(check?.lines ?? {});
   const flagged = new Set(flags?.flags ?? []);
   const exact = entries.filter((entry) => entry.match_kind === "exact").length;
   const alike = entries.filter((entry) => entry.match && entry.match_kind !== "exact").length;
+  const cleared = Object.entries(check?.lines ?? {}).filter(([id, entry]) => !flagged.has(id) && !entry.match && entry.second);
   return {
-    check: { lines: lineCount, checked: entries.length, exact, alike, judged_fine: entries.length - exact - alike - flagged.size, flagged: flagged.size },
+    check: {
+      lines: lineCount,
+      checked: entries.length,
+      exact,
+      alike,
+      judged_fine: entries.length - exact - alike - flagged.size - cleared.length,
+      flagged: flagged.size,
+      ...(cleared.length ? { cleared: cleared.length } : {}),
+    },
     flagged_lines: Object.entries(check?.lines ?? {})
       .filter(([id]) => flagged.has(id))
       .map(([id, entry]) => ({ id, script: entry.intended ?? "", heard: entry.heard ?? "", noul: entry.noul ?? null })),
+    ...(cleared.length
+      ? { cleared_lines: cleared.map(([id, entry]) => ({ id, script: entry.intended ?? "", heard: entry.heard ?? "", second: { by: entry.second.by, heard: entry.second.heard } })) }
+      : {}),
   };
+}
+
+/** The audio card's summary line for the second transcript's work, or "" when it cleared nothing. */
+export function clearedSummary(check) {
+  const lines = check.cleared_lines ?? [];
+  if (!lines.length) return "";
+  const by = [...new Set(lines.map((line) => line.second.by))].join("、");
+  return `；${by} 另外轉寫、排除 ${lines.length} 句（${lines.map((line) => line.id).join("、")}）`;
 }
 
 /** The unticked items of UPLOAD.md, without their Markdown emphasis. */
@@ -262,7 +287,8 @@ function client(ctx) {
       const problem = await response.json().catch(() => ({}));
       const message = problem.detail || `HTTP ${response.status}`;
       const who = response.status === 401 ? "owner" : "service";
-      last = new ReviewError(message, { status: response.status, code: problem.code ?? "", who });
+      const submission = (method === "POST" && route.endsWith("/reviews")) || (method === "PUT" && route.includes("/files/"));
+      last = new ReviewError(message, { status: response.status, code: problem.code ?? "", who, submission });
       if (!(response.status === 429 || response.status >= 500)) throw last;
       await sleep(Math.min(Number(response.headers.get("retry-after")) || 2 ** attempt, 30) * 1000);
     }
@@ -406,7 +432,7 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     return {
       gate,
       content_sha256: await sha256File(file),
-      summary: `旁白 ${formatClock(Math.round(seconds))}，${timeline.lines.length} 句；Jev 標記 ${check.check.flagged} 句${rewrites.length ? `；改寫 ${rewrites.length} 句` : ""}`,
+      summary: `旁白 ${formatClock(Math.round(seconds))}，${timeline.lines.length} 句；Jev 標記 ${check.check.flagged} 句${clearedSummary(check)}${rewrites.length ? `；改寫 ${rewrites.length} 句` : ""}`,
       payload: { duration_seconds: seconds, ...check, rewrites },
       files: [narration],
     };
@@ -495,6 +521,27 @@ export function downloadNote(bytes) {
 
 // The Traditional Chinese names of a language's parts, for a batch's summary line.
 const PART_NAMES = { metadata: "標題說明", captions: "CC", dub: "配音" };
+// ReviewSubmit.summary in apps/api/app/video_reviews/schemas.py counts Unicode characters.
+const MAX_REVIEW_SUMMARY_LENGTH = 500;
+
+/** Keep every locale and its upload instruction visible; full skip reasons stay in the payload. */
+function languagesSummary(locales) {
+  const dubbed = Object.values(locales).some((entry) => entry.dub === "ready");
+  const ending = dubbed ? "配音到 Studio「語言」上傳後按「已在 Studio 上傳配音」" : "沒有要你上傳的配音";
+  const summarize = (reasons) => {
+    const said = Object.entries(locales).map(([locale, entry]) => {
+      const made = Object.entries(PART_NAMES).flatMap(([part, name]) => {
+        if (entry[part] === "ready") return [name];
+        if (part === "dub" && entry.dub?.status === "skipped") return [`${name}跳過${reasons ? `（${entry.dub.reason || "沒有寫原因"}）` : ""}`];
+        return [];
+      });
+      return `${locale} ${made.join("、") || "還在做"}`;
+    });
+    return `語言：${said.join("；")}。${ending}`;
+  };
+  const detailed = summarize(true);
+  return [...detailed].length <= MAX_REVIEW_SUMMARY_LENGTH ? detailed : summarize(false);
+}
 
 /**
  * The languages gate (docs/videos/LANGUAGES.md): one batch of the languages the owner chose, as
@@ -515,21 +562,17 @@ async function languagesSubmission({ request, project, workdir, slug }) {
   const { dubs, skipped } = dubsForUpload(project, workdir, timeline?.speech_hash, chosenLocales(languages, "dub"));
   const files = [];
   const locales = {};
-  const said = [];
   for (const [locale, choice] of chosen) {
     const entry = {};
-    const made = [];
     const description = path.join(workdir, UPLOAD_DIR, `description.${locale}.txt`);
     if (choice.metadata && existsSync(description)) {
       files.push(await upload(request, slug, description, `description_${locale}`, "text/plain"));
       entry.metadata = "ready";
-      made.push(PART_NAMES.metadata);
     }
     const captions = path.join(workdir, UPLOAD_DIR, "captions", `${locale}.srt`);
     if (choice.captions && existsSync(captions)) {
       files.push(await upload(request, slug, captions, `captions_${locale}`, "text/plain"));
       entry.captions = "ready";
-      made.push(PART_NAMES.captions);
     }
     if (choice.dub) {
       const dub = dubs.find((each) => each.locale === locale);
@@ -537,22 +580,18 @@ async function languagesSubmission({ request, project, workdir, slug }) {
         const role = dub.format === "m4a" ? dubRole(locale) : null;
         if (role) files.push(await upload(request, slug, dub.file, role, "audio/mp4"));
         Object.assign(entry, { dub: "ready", file: path.basename(dub.file), format: dub.format, tempo_max: dub.tempo_max, file_role: role, sha256: await sha256File(dub.file) });
-        made.push(PART_NAMES.dub);
       } else if (skipped[locale] !== undefined) {
         entry.dub = { status: "skipped", reason: skipped[locale] };
-        made.push(`${PART_NAMES.dub}跳過（${skipped[locale] || "沒有寫原因"}）`);
       }
     }
     locales[locale] = entry;
-    said.push(`${locale} ${made.join("、") || "還在做"}`);
   }
   const file = GATES.languages({ workdir });
   atomicWrite(file, `${JSON.stringify({ speech_hash: timeline?.speech_hash ?? null, decided_at: languages.decided_at, locales }, null, 2)}\n`);
-  const dubbed = Object.values(locales).some((entry) => entry.dub === "ready");
   return {
     gate: "languages",
     content_sha256: await sha256File(file),
-    summary: `語言：${said.join("；")}。${dubbed ? "配音到 Studio「語言」上傳後按「已在 Studio 上傳配音」" : "沒有要你上傳的配音"}`,
+    summary: languagesSummary(locales),
     payload: { locales },
     files,
   };
@@ -748,6 +787,9 @@ function fail(error, ctx) {
   // The judge is asked through the automation client; its errors say who can fix them too.
   if (!(error instanceof ReviewError || error instanceof AutomationError)) throw error;
   ctx.stderr.write(`${error.message}\n`);
+  // Bad review/file payloads cannot recover by waiting. A failed project report or read still
+  // stops the round: the worker could not reliably report a blocked state on that same route.
+  if (error instanceof ReviewError && error.submission && [413, 422].includes(error.status)) return ctx.EXIT.lint;
   return error.who === "owner" ? ctx.EXIT.owner : ctx.EXIT.external;
 }
 

@@ -57,3 +57,13 @@ scope:
 - 這張票不是上架的授權：公開哪一天由站主在 Shorts 設定選；授權卡由站主自己按。
 - 試片的腳本（`docs/videos/ai-shorts/pilots/*.json`）不要改：`core.test.mjs` 綁著它們的雜湊。換聲音是 `build` 的參數，不是腳本的欄位。
 - PR #880 的 12 支 Shorts 要不要一起接進來，等那個 PR 的去向決定；接的話用 `import`。
+- **2026-09-29（站主問「有些影片還是 Shorts 沒出現在後台」）**：原因是這些影片從沒送上站，後台只列資料庫裡的影片。
+  站主選了：三支試片用頻道聲音重做再送、#880 的 12 支 Shorts 原樣匯入當審片、#880 的 6 支長片寫匯入工具一起送
+  （票 `2026-09-28-video-tool-import-a-finished-long`）。當天做完，21 支都在正式站、各有一筆成片審核在等站主：
+  - 三支試片：`build --speech server`，旁白檢查被標的句子重錄兩輪。`shorts-poster-blind` 0 句；`shorts-receipt-total`
+    剩第 4 句（「我給同一個人工智慧兩種問法」聽成「…，有兩種問法」）；`shorts-prompt-check` 剩第 6 句（「直接問的這組」
+    聽成「直接問了這組」），意思都沒變。第一輪把「答案確實對」聽成「答案卻是對」，重錄後已過。qa 沒全過（頻道立場空白，
+    policy 一定不過），所以沒有自動核准、也還沒排進時段；這張票的第三項要等站主核准後才算完成。
+  - 12 支 #880 Shorts：`ai-real-world-0N-<集>-short-1|2`，內容線 `cut`，來源是同名長片。原檔 24 fps，先轉成 Shorts
+    規格（30 fps、48 kHz、兩段式 −14 LUFS）才匯入得了（另開票 `2026-09-29-shorts-import-a-cut-that-is`）。
+    旁白是 Windows Hanhan，沒跑旁白檢查（省全站共用的 Jev 額度）；說明欄的「完整影片」連結要等長片上 YouTube 才補得上。

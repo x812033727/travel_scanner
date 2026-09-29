@@ -53,3 +53,30 @@ scope:
   - 旁白長度修兩輪仍不合格時影片會卡住，沒有「接受這個長度」的選項。試作遇到就記下來，決定要不要加。
   - 每支花費以伺服器帳本為準。工人日誌的估計值在票 `2026-09-28-video-story-image-model-pricing` 做完之前用的是設定分頁的模型單價，會偏高。
   - 被放棄的故事目前不能重做（票 `2026-09-28-video-story-redo-dropped`）。試作的兩支如果做壞了，先不要按放棄，留著讓人看原因；放棄之後那個故事就不能再做。
+
+### 2026-09-29 看板盤點與站主決定
+
+站主回覆「依賴就緒後準備試作／上傳驗收方案」。目前依賴與可執行步驟見docs/work-status-2026-09-29-video-acceptance-plan.md；未部署、生成、登入或上傳。
+
+本次僅追加交接證據，不改既有owner、scope、branch或執行狀態。
+
+### 2026-09-29 dependency-ready follow-up
+
+PR #933 merged at 02:49:56 UTC as 157cca889a169ebf9f0af4f609be69388b8f6d2e;
+PR #938 is also merged. In response to the owner's conditional request, a concrete
+A01/B18 preparation plan is recorded in docs/work-status-2026-09-29-story-pilot-plan.md.
+No production preflight, deployment, setting change, job import or paid generation was
+performed. This pilot task and its media/owner acceptance remain open; code dependency
+completion does not satisfy those checks.
+
+Concrete pre-generation gates discovered during plan preparation:
+
+- The worker accepts narration at 690–930 seconds; the original final-media
+  acceptance remains 720–900 seconds and must be measured on the actual cut.
+- `drama.max_usd_per_video` covers media estimates; TTS/text costs and judge
+  calls are not fully bounded by it. Reconcile all ledgers/provider receipts and
+  validate worst-case reserves before paid work. The original total of at most
+  US$25 per finished video remains binding; stop at dry-run if it cannot be bounded.
+- Use `drama.drama_auto_approve_final=false` for owner viewing. Caption locales
+  are en/ja/ko/zh-CN, with zh-TW automatically included; a replay can legitimately
+  report started/leave_alone without creating another A01.

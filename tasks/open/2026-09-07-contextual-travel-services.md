@@ -118,3 +118,9 @@ products. Real brand imports, content review, feed access and actual affiliate
 landing/tracking checks remain explicit pre-release work. The software can be
 reviewed independently with all public/category switches off. Do not mark this
 task done or the service production-ready merely because automated tests pass.
+
+### 2026-09-29 看板盤點與站主決定
+
+2026-09-29唯讀：六城市107核准/4待審飯店、633核准平台選項，public/direct-hotel/airalo開關為true；六城市ID下其他三類商品0列，未查國家eSIM。原商品覆蓋與真正導流仍未驗收；維持原規格或縮小範圍的問題待站主回覆。
+
+本次僅追加交接證據，不改既有owner、scope、branch或執行狀態。

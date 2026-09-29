@@ -1,17 +1,27 @@
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass
 from typing import Any, cast
 
 from pydantic import BaseModel
 from redis.asyncio import Redis
 
-from app.ai.jev import JevError, NoulAnswer, NoulQuestion, consume_jev_call, jev_client, route
+from app.ai.jev import (
+    JevError,
+    NoulAnswer,
+    NoulQuestion,
+    consume_jev_call,
+    estimate_tokens,
+    jev_client,
+    route,
+)
 from app.config import Settings
 from app.guides.schemas import GuideDocument
 from app.hotspots.ai_search import AIProviderName, research_provider
 from app.i18n import LOCALES as SITE_LOCALES
 from app.i18n import Locale
+from app.news_automation.evidence import NewsInputTooLarge
 from app.news_automation.models import NewsAutomationSettings, NewsCandidate, NewsEvidence
 from app.news_automation.policy import for_review
 from app.news_automation.schemas import (
@@ -25,6 +35,10 @@ from app.news_automation.schemas import (
 # timeout covers the entire generation; 90 seconds cut off long drafts.
 STAGE_TIMEOUT_SECONDS = 240.0
 STAGE_MAX_OUTPUT_TOKENS = 32_000
+# Includes instructions, payload and response schema. Reserve the existing 32k output
+# separately; this cap is a conservative application budget, not a model context claim.
+# Never trim evidence to fit: a later paragraph may contradict the article's headline.
+STAGE_MAX_INPUT_TOKENS = 64_000
 # Titles the semantic duplicate check may compare against in one Jev call.
 MAX_DUPLICATE_TITLES = 60
 
@@ -135,6 +149,22 @@ async def _structured[T: BaseModel](
     instructions: str,
     payload: dict[str, Any],
 ) -> tuple[T, dict[str, int], str]:
+    input_tokens = estimate_tokens(
+        json.dumps(
+            {
+                "instructions": instructions,
+                "payload": payload,
+                "schema": schema.model_json_schema(),
+            },
+            ensure_ascii=False,
+        )
+    )
+    if input_tokens > STAGE_MAX_INPUT_TOKENS:
+        raise NewsInputTooLarge(
+            f"{schema_name} input is about {input_tokens} tokens; "
+            f"the limit is {STAGE_MAX_INPUT_TOKENS}. Evidence was not truncated. "
+            "Review the evidence bundle before retrying."
+        )
     provider = research_provider(
         environment,
         cast(AIProviderName, provider_name),
@@ -361,28 +391,34 @@ async def jev_duplicate_check(
 
     if not existing_titles:
         return "distinct", 1.0, []
+    state = {
+        "new_event": {"title": title, "excerpt": excerpt},
+        "existing_article_titles": existing_titles[:MAX_DUPLICATE_TITLES],
+    }
+    questions = {
+        "duplicate": NoulQuestion(
+            instructions=(
+                "The new event is materially the same event as at least one existing "
+                "article, rather than a later independent development."
+            ),
+            criteria={
+                "yes": "It repeats an existing event.",
+                "no": "It is a materially new development.",
+            },
+        )
+    }
+    # A single question counts toward both Jev limits. Match its own size guard before
+    # spending a daily call; an incomplete excerpt must never authorize "distinct".
+    input_tokens = estimate_tokens(state) + estimate_tokens(
+        questions["duplicate"].model_dump(exclude_none=True)
+    )
+    if input_tokens > min(environment.jev_max_state_tokens, environment.jev_max_request_tokens):
+        return "manual", None, ["JevRequestTooLarge"]
     if not await consume_jev_call(redis, environment):
         return "manual", None, ["quota_unavailable"]
     client = jev_client(environment)
     try:
-        answers, _ = await client.ask(
-            {
-                "new_event": {"title": title, "excerpt": excerpt[:6000]},
-                "existing_article_titles": existing_titles[:MAX_DUPLICATE_TITLES],
-            },
-            {
-                "duplicate": NoulQuestion(
-                    instructions=(
-                        "The new event is materially the same event as at least one existing "
-                        "article, rather than a later independent development."
-                    ),
-                    criteria={
-                        "yes": "It repeats an existing event.",
-                        "no": "It is a materially new development.",
-                    },
-                )
-            },
-        )
+        answers, _ = await client.ask(state, questions)
     except Exception as error:
         return "manual", None, [type(error).__name__]
     finally:
