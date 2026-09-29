@@ -51,14 +51,14 @@ claim covers either pack. New work uses a separate branch from main `8be1cf9b`.
 The accepted correction promotes the original second paragraph's three verbatim
 sentences to the first summary block and retains the original first paragraph
 immediately afterward. The other 30 blocks, all metadata and all assets remain
-unchanged. Two independent reviews accepted all ten locale documents. The old
+unchanged. The proposal review and independent content review accepted all ten editions. The old
 T2 frozen candidate remains immutable; changed source and target hashes require
 explicit source reconciliation and newly bound release evidence before publishing.
 
 ## Completion evidence
 
 See `docs/article-localization/batch041-summary-correction.md` for before/after
-source and locale hashes, two independent content review receipts, preserved
+source and locale hashes, proposal and independent content review receipts, preserved
 asset hashes, strict-intake results and the formal-release handoff.
 
 - Applied ten three-sentence summaries; no facts, dates, assets or later blocks changed.

@@ -57,7 +57,7 @@ production settings. Content changes have their own task and review binding.
 ## Completion evidence
 
 See `docs/article-localization/batch041-summary-correction.md` for before/after
-source and locale hashes, two independent content review receipts, preserved
+source and locale hashes, proposal and independent content review receipts, preserved
 asset hashes, strict-intake results and the formal-release handoff.
 
 - Applied ten three-sentence summaries; no facts, dates, assets or later blocks changed.
