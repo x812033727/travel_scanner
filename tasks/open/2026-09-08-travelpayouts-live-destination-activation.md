@@ -101,3 +101,9 @@ and recorded account evidence do not complete the Travelpayouts 33-destination
 matrix above, transfer approvals between channels, or establish price API rights.
 All live verification items in this task remain open. Check actual current state
 under a separately authorized operational review before changing any gate.
+
+### 2026-09-29 看板盤點與站主決定
+
+站主回覆「保留待辦，這輪先不改正式資料」。全佇列盤點為景點2,296待審、店家20待審，並非本票候選清單的逐筆核對；沒有核准／退回／補值或啟用。保留原驗收項目。
+
+本次僅追加交接證據，不改既有owner、scope、branch或執行狀態。

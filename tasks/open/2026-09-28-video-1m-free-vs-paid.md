@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-video-1m-free-vs-paid
 title: Million-views batch 6: free vs paid AI plans 2026, is 20 dollars a month worth it, worked out
-status: in-progress
+status: open
 priority: P1
 area: docs
-owner: claude-opus-4-8
-claimed_at: 2026-09-28T04:24:17Z
+owner:
+claimed_at:
 created_at: 2026-09-28T02:30:47Z
 completed_at:
-branch: claude/bold-noether-unopy8
+branch: codex/p1-task-audit
 depends_on: []
 scope:
   - docs/videos/free-vs-paid-ai-plans-2026
@@ -57,3 +57,19 @@ node tools/video/cli.mjs status --slug free-vs-paid-ai-plans-2026 --workdir <VID
 ## Progress (2026-09-28, claude-opus-5-5)
 
 Pipeline stages 1–4 done: `video.json` (option A, 10 chapters, ~8.1 min, lint 0/0), `claims.md` (c1–c12), `verify-1.md`. Claude and Gemini figures are confirmed on today's official pages. **Blocker before `tts`:** the ChatGPT figures (free tier 3 files a day, Go $8, Plus $20 with Codex, cancellation rules) come from the site article's 2026-09-13 check, because openai.com, chatgpt.com and help.openai.com return 403 from this environment. Recheck them in a browser, or run the independent verifier where OpenAI is reachable, and clear the PENDING rows in `claims.md`. One unverified line (every surface sharing one Claude quota) was replaced with the Pro page's own wording. Lexicon gained `Code`, `Flow`.
+
+## Independent P1 audit (2026-09-29, codex-p1-video-review)
+
+- Ownership takeover: normal claim refused the recent old claim; root independently confirmed PR #891 merged and no local worktree, branch, remote branch or open PR for `claude/bold-noether-unopy8`. The 4a7e/4f44 active video work concerns different slugs. Root authorized `--force` takeover on `codex/p1-task-audit`; unseen cloud uncommitted work cannot be excluded.
+- Independently checked official source bodies and repaired factual contradictions, calculations and unsupported guarantees. Details: `docs/videos/free-vs-paid-ai-plans-2026/verify-p1-20260929.md`. Author verify-1 is not accepted as an independent review of this new hash.
+- Scoped lint: 0 errors, 0 warnings. No brief, shared lexicon, account, media, TTS or paid-generation changes.
+- First-round checkpoint: more than three fact changes required a second independent round; that round is now complete as recorded below. Production acceptance remains unfinished.
+
+## Independent review handoff (2026-09-29)
+
+- Second independent factual review completed by `codex-p1-news` / `audit_video`: `docs/videos/free-vs-paid-ai-plans-2026/verify-p1-20260929-round2.md`. All changed/removed groups and the random confirmed sample were rechecked against official sources; the current script needed no further factual changes. The latest `video.json` SHA-256 is recorded in that report after final line-ending normalization; earlier hashes remain historical checkpoints.
+- The first-round report's unrelated Flash 3.8 API-promotion sentence was removed as a report-only correction, with a note. This did not alter the script, brief or approval hash.
+- Fact checks and scoped lint are repository evidence only. The original incomplete DoD and production checklist remain unchecked: no TTS/audio, render, captions, languages, final QA, upload or player acceptance is inferred. Subscription prices/access must be checked again before actual narration/publication.
+- Keep this ticket for unresolved listener/style and opinion/brief findings in both review reports. These include the opening's three-minute promise versus the 8.3-minute estimate, unqualified quality/free-sufficiency recommendations, and the unverified source-article CTA/update promise. Owner outline/channel-stance acceptance and the owner's production choice remain pending; this handoff authorizes no production, account, paid-generation or publication action.
+- Release the review claim to `open` after recording validation, so the next authorized production/editorial session can claim this scope. No duplicate follow-up ticket is needed.
+- Final validation with bundled Node **v24.21.0**: scoped lint exited **0**, **0 errors / 0 warnings**, 102 lines, 1,888 spoken units, estimated 8.3 minutes. The six-video receipt is preserved outside the repository at `C:/Users/x8120/.codex/tmp/p1-audit-20260929/six-video-lint-node24.json`.

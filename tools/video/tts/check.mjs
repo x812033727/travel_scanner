@@ -23,6 +23,10 @@
 // `dub --redo` takes the flags as they are. The same-sound and filler rules are Mandarin's and
 // apply to zh-TW and zh-CN only; in English, Japanese and Korean, whatever differs beyond case,
 // width, spacing and punctuation goes to Jev.
+//
+// A line Jev still doubts can go to a second transcriber that never sees the script
+// (--second-opinion, second-opinion.mjs): it is cleared when that transcript matches the script or
+// Jev passes it, and stays flagged when both transcripts miss the same words.
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
@@ -32,10 +36,11 @@ import { pinyin } from "pinyin-pro";
 
 import { emptyLexicon, isKnownTerm } from "../core/lexicon.mjs";
 import { atomicWrite, lexiconFile, readJson, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
-import { eachLine, LOCALES, NARRATION_LOCALE, spokenText } from "../core/schema.mjs";
+import { eachLine, LOCALES, NARRATION_LOCALE, narrationLocale, spokenText } from "../core/schema.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { judgeLines, SpeechError, transcribeClip } from "./client.mjs";
 import { spokenParts } from "./requests.mjs";
+import { secondOpinionCommand, secondOpinionName, secondTranscripts } from "./second-opinion.mjs";
 import { downsample, encodeWav, parseWav, requireNarrationFormat } from "./wav.mjs";
 
 // Mirrors JudgeIn's max_length in apps/api/app/video_speech/schemas.py.
@@ -54,10 +59,11 @@ const TRANSCRIBE_RATE = 16_000;
 export const DUB_LOCALES = LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
 const CHINESE = new Set([NARRATION_LOCALE, "zh-CN"]);
 
-/** A `--locale` value: one of the dub locales, or a usage error naming them. */
-export function parseDubLocale(value) {
-  if (!DUB_LOCALES.includes(value)) {
-    throw new UsageError(`--locale must be one of ${DUB_LOCALES.join(", ")}: a dubbed track; the narration is checked without --locale`);
+/** A `--locale` value: a caption locale other than the narration's, or a usage error naming them. */
+export function parseDubLocale(value, narration = NARRATION_LOCALE) {
+  const dubs = LOCALES.filter((locale) => locale !== narration);
+  if (!dubs.includes(value)) {
+    throw new UsageError(`--locale must be one of ${dubs.join(", ")}: a dubbed track; the narration is checked without --locale`);
   }
   return value;
 }
@@ -66,14 +72,14 @@ export function parseDubLocale(value) {
  * Where a track's clips and timeline are, relative to the work directory: the narration's
  * artifacts, or the dubs/<locale>/ layout that `dub` writes (docs/videos/DUBS.md).
  */
-export function trackFiles(locale = NARRATION_LOCALE) {
-  if (locale === NARRATION_LOCALE) return { audio: ARTIFACTS.audio, timeline: ARTIFACTS.timeline };
+export function trackFiles(locale = NARRATION_LOCALE, narration = NARRATION_LOCALE) {
+  if (locale === narration) return { audio: ARTIFACTS.audio, timeline: ARTIFACTS.timeline };
   return { audio: path.join("dubs", locale, "audio"), timeline: path.join("dubs", locale, "timeline.json") };
 }
 
 /** A track's transcript cache and flags file, relative to the work directory: one pair per locale. */
-export function checkFiles(locale = NARRATION_LOCALE) {
-  const suffix = locale === NARRATION_LOCALE ? "" : `.${locale}`;
+export function checkFiles(locale = NARRATION_LOCALE, narration = NARRATION_LOCALE) {
+  const suffix = locale === narration ? "" : `.${locale}`;
   return { cache: path.join("review", `check${suffix}.json`), flags: path.join("review", `check-flags${suffix}.json`) };
 }
 
@@ -108,8 +114,8 @@ export function dubLexicon(lexicon) {
 }
 
 /** The dictionary a track's spoken forms come from: the narration's as it is, a dub's filtered. */
-export function lexiconFor(lexicon, locale = NARRATION_LOCALE) {
-  return locale === NARRATION_LOCALE ? lexicon : dubLexicon(lexicon);
+export function lexiconFor(lexicon, locale = NARRATION_LOCALE, narration = NARRATION_LOCALE) {
+  return locale === narration ? lexicon : dubLexicon(lexicon);
 }
 
 // Interjections the voice adds on its own, in Traditional and Simplified characters. 耶 and 餒
@@ -224,23 +230,26 @@ export async function checkAudio(args, ctx, options) {
       threshold: { type: "string" },
       force: { type: "boolean" },
       locale: { type: "string" },
+      "second-opinion": { type: "string" },
     },
     strict: true,
   }).values;
   if (!values.slug && !values.file) throw new UsageError("check-audio needs --slug (or --file for an example outside docs/videos)");
+  const second = secondOpinionCommand(values["second-opinion"], ctx.env);
   const threshold = values.threshold === undefined ? DEFAULT_THRESHOLD : Number(values.threshold);
   if (!(threshold > 0 && threshold < 1)) throw new UsageError("--threshold must be between 0 and 1");
-  const locale = values.locale === undefined ? NARRATION_LOCALE : parseDubLocale(values.locale);
-  const dub = locale !== NARRATION_LOCALE;
   const project = loadProject({ slug: values.slug, file: values.file, root: ctx.root });
+  const narration = narrationLocale(project.doc);
+  const locale = values.locale === undefined ? narration : parseDubLocale(values.locale, narration);
+  const dub = locale !== narration;
   if (lintProject(project).errors.length) {
     ctx.stdout.write(`${project.doc.slug} has lint errors; run lint first\n`);
     return EXIT.lint;
   }
   const { doc } = project;
-  const lexicon = lexiconFor(project.lexicon ?? readJson(lexiconFile(ctx.root), emptyLexicon()), locale);
+  const lexicon = lexiconFor(project.lexicon ?? readJson(lexiconFile(ctx.root), emptyLexicon()), locale, narration);
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
-  const track = trackFiles(locale);
+  const track = trackFiles(locale, narration);
   const timeline = readJson(path.join(workdir, track.timeline), null);
   if (!timeline) {
     throw new UsageError(dub ? `no ${locale} dub yet: run dub --slug ${doc.slug} --locale ${locale} first` : `no narration yet: run tts --slug ${doc.slug} first`);
@@ -249,7 +258,7 @@ export async function checkAudio(args, ctx, options) {
   // What makes the clips again: the flags file goes to it as `--redo`.
   const remake = dub ? `dub --slug ${doc.slug} --locale ${locale}` : `tts --slug ${doc.slug}`;
   const audioDir = path.join(workdir, track.audio);
-  const files = checkFiles(locale);
+  const files = checkFiles(locale, narration);
   const cacheFile = path.join(workdir, files.cache);
   const cache = readJson(cacheFile, { lines: {} });
   const results = {};
@@ -302,34 +311,76 @@ export async function checkAudio(args, ctx, options) {
     atomicWrite(cacheFile, `${JSON.stringify(cache, null, 2)}\n`);
   }
 
-  // Jev looks only at lines whose transcript differs and has not been judged for this clip.
-  const toJudge = Object.entries(results).filter(([, entry]) => !entry.match && typeof entry.noul !== "number");
-  const questions = [];
+  // Jev reads a transcript per line, MAX_JUDGE_LINES a call whichever scenes they are in; lines
+  // too long for it are cut and noted.
   const cut = [];
-  for (const [id, entry] of toJudge) {
-    const question = {
-      id,
-      intended: fit(entry.intended, MAX_INTENDED_CHARACTERS),
-      spoken_form: fit(entry.spoken_form, MAX_INTENDED_CHARACTERS),
-      heard: fit(entry.heard, MAX_HEARD_CHARACTERS),
-    };
-    if (question.intended !== entry.intended || question.spoken_form !== entry.spoken_form || question.heard !== entry.heard) cut.push(id);
-    questions.push(question);
-  }
   let jevCalls = 0;
-  for (const batch of judgeBatches(questions)) {
-    const verdicts = await judgeLines({ ...options, lines: batch, language: locale });
-    jevCalls += 1;
-    for (const { id } of batch) results[id].noul = verdicts.get(id) ?? 0;
-    // After every call, so a run that stops halfway keeps the verdicts it paid for.
-    atomicWrite(cacheFile, `${JSON.stringify(cache, null, 2)}\n`);
+  const askJev = async (pairs, heardOf, record) => {
+    const questions = [];
+    for (const [id, entry] of pairs) {
+      const heard = heardOf(entry);
+      const question = {
+        id,
+        intended: fit(entry.intended, MAX_INTENDED_CHARACTERS),
+        spoken_form: fit(entry.spoken_form, MAX_INTENDED_CHARACTERS),
+        heard: fit(heard, MAX_HEARD_CHARACTERS),
+      };
+      if (question.intended !== entry.intended || question.spoken_form !== entry.spoken_form || question.heard !== heard) cut.push(id);
+      questions.push(question);
+    }
+    for (const batch of judgeBatches(questions)) {
+      const verdicts = await judgeLines({ ...options, lines: batch, language: locale });
+      jevCalls += 1;
+      for (const { id } of batch) record(results[id], verdicts.get(id) ?? 0);
+      // After every call, so a run that stops halfway keeps the verdicts it paid for.
+      atomicWrite(cacheFile, `${JSON.stringify(cache, null, 2)}\n`);
+    }
+  };
+  // Jev looks only at lines whose transcript differs and has not been judged for this clip.
+  await askJev(
+    Object.entries(results).filter(([, entry]) => !entry.match && typeof entry.noul !== "number"),
+    (entry) => entry.heard,
+    (entry, noul) => (entry.noul = noul),
+  );
+
+  // The lines Jev still doubts go to the second transcriber, once per clip (the entry is the clip's).
+  const doubts = () => Object.entries(results).filter(([, entry]) => !entry.match && entry.noul < threshold);
+  const byLine = new Map(lines.map(({ line }) => [line.id, line]));
+  let secondFailed = null;
+  if (second) {
+    const name = secondOpinionName(second);
+    // Asked again when another transcriber answers, or when the line's English words changed.
+    const pending = doubts().filter(([, entry]) => entry.second?.by !== name || (entry.second.terms ?? []).join(" ") !== (entry.terms ?? []).join(" "));
+    if (pending.length) {
+      try {
+        const hints = path.join(workdir, files.cache.replace(/\.json$/, ".hints.json"));
+        atomicWrite(hints, `${JSON.stringify(Object.fromEntries(pending.map(([id, entry]) => [`${id}.wav`, entry.terms ?? []])), null, 2)}\n`);
+        const heard = await secondTranscripts(second, locale, pending.map(([id]) => path.join(audioDir, `${id}.wav`)), { hints, env: ctx.env });
+        const differ = [];
+        for (const [id, entry] of pending) {
+          const text = heard.get(`${id}.wav`);
+          if (text === undefined) continue;
+          entry.second = { by: name, terms: entry.terms ?? [], heard: text, match_kind: matchKind(text, byLine.get(id), lexicon, locale), noul: null };
+          if (entry.second.match_kind === null) differ.push([id, entry]);
+        }
+        atomicWrite(cacheFile, `${JSON.stringify(cache, null, 2)}\n`);
+        // Jev reads the second transcript the way it read the first.
+        await askJev(differ, (entry) => entry.second.heard, (entry, noul) => (entry.second.noul = noul));
+      } catch (error) {
+        if (error instanceof SpeechError && error.who !== "service") throw error;
+        secondFailed = error.message.split("\n")[0];
+      }
+    }
   }
+  const clearedBySecond = (entry) => Boolean(entry.second) && (entry.second.match_kind !== null || (typeof entry.second.noul === "number" && entry.second.noul >= threshold));
 
   const entries = Object.entries(results);
   const exact = entries.filter(([, entry]) => entry.match_kind === "exact").length;
   const alike = entries.filter(([, entry]) => entry.match && entry.match_kind !== "exact").length;
-  const flagged = entries.filter(([, entry]) => !entry.match && entry.noul < threshold);
-  const judgedFine = entries.length - exact - alike - flagged.length;
+  const doubted = doubts();
+  const cleared = doubted.filter(([, entry]) => clearedBySecond(entry));
+  const flagged = doubted.filter(([, entry]) => !clearedBySecond(entry));
+  const judgedFine = entries.length - exact - alike - doubted.length;
   const flagsFile = path.join(workdir, files.flags);
   const notes = Object.fromEntries(flagged.map(([id, entry]) => [id, `Jev ${entry.noul.toFixed(2)}: heard 「${entry.heard}」`]));
   // A dub's flags name their track, and the translation the dub was read from.
@@ -340,19 +391,37 @@ export async function checkAudio(args, ctx, options) {
   recordStage(
     workdir,
     "check-audio",
-    { ...(dub ? { locale } : {}), lines: total, exact, alike, judged: judgedFine + flagged.length, flagged: flagged.length, unchecked: missing, transcribed, jev_calls: jevCalls },
+    {
+      ...(dub ? { locale } : {}),
+      lines: total,
+      exact,
+      alike,
+      judged: judgedFine + doubted.length,
+      ...(cleared.length ? { cleared: cleared.length } : {}),
+      flagged: flagged.length,
+      unchecked: missing,
+      transcribed,
+      jev_calls: jevCalls,
+    },
     ctx.now(),
   );
 
+  const clearedText = cleared.length ? `, ${cleared.length} cleared by a second transcript` : "";
   ctx.stdout.write(
-    `${dub ? `${locale} dub: ` : ""}${entries.length} of ${total} lines checked: ${exact} match the script word for word, ${alike} differ only by same-sound characters or filler words, ${judgedFine} judged fine by Jev, ${flagged.length} flagged (below ${threshold})\n`,
+    `${dub ? `${locale} dub: ` : ""}${entries.length} of ${total} lines checked: ${exact} match the script word for word, ${alike} differ only by same-sound characters or filler words, ${judgedFine} judged fine by Jev${clearedText}, ${flagged.length} flagged (below ${threshold})\n`,
   );
   ctx.stdout.write(`${transcribed} clips transcribed now, ${jevCalls} Jev calls; details in ${cacheFile}\n`);
-  for (const id of cut) {
+  for (const id of new Set(cut)) {
     ctx.stdout.write(`  ${id}  is longer than Jev takes: it judged the first ${MAX_INTENDED_CHARACTERS} characters of the script and ${MAX_HEARD_CHARACTERS} of the transcript\n`);
   }
+  for (const [id, entry] of cleared) {
+    const how = entry.second.match_kind !== null ? "matches the script" : `Jev ${entry.second.noul.toFixed(2)}`;
+    ctx.stdout.write(`  ${id}  cleared by ${entry.second.by} (${how}); Gemini heard 「${entry.heard}」, ${entry.second.by} heard 「${entry.second.heard}」\n`);
+  }
+  if (secondFailed) ctx.stdout.write(`the second transcriber failed (${secondFailed}); the flags below stand\n`);
   for (const [id, entry] of flagged) {
-    ctx.stdout.write(`  ${id}  Jev ${entry.noul.toFixed(2)}\n    script: ${entry.intended}\n    heard:  ${entry.heard}\n`);
+    const other = entry.second ? `\n    ${entry.second.by}: ${entry.second.heard}` : "";
+    ctx.stdout.write(`  ${id}  Jev ${entry.noul.toFixed(2)}\n    script: ${entry.intended}\n    heard:  ${entry.heard}${other}\n`);
   }
   if (flagged.length) {
     ctx.stdout.write(`next: fix the dictionary or the ${dub ? "translation" : "line"}, then node tools/video/cli.mjs ${remake} --redo ${flagsFile}\n`);

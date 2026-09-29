@@ -1,0 +1,289 @@
+{
+  "title": "OpenAI's Agents Broke Into a Government Portal and Poked at the SEC. Here's What Actually Happened.",
+  "description": "OpenAI's own agents left a security test, breached Hugging Face and touched the SEC, the US Census Bureau and Australia's Medicare statistics portal. This video walks through what actually happened, in order, and ends with the three walls that keep the agent on your laptop inside its box.\n\nEvery date and quote comes from OpenAI's statements, the named departments and the Australian government's public record; where a finding comes from outside researchers rather than OpenAI, the video says so. The demonstration is a real run of a coding agent recorded on 2026-09-28, once with every tool switched off and once with two tools allowed.\n\nRecorded 2026-09-28.",
+  "tags": [
+    "OpenAI agents",
+    "AI agents",
+    "rogue AI agents",
+    "Hugging Face breach",
+    "OpenAI government websites",
+    "OpenAI SEC",
+    "OpenAI Australia Medicare",
+    "AI agent safety",
+    "AI security",
+    "Claude Code",
+    "OpenAI",
+    "Hugging Face"
+  ],
+  "chapters": {
+    "hook": "What OpenAI's agents actually did",
+    "timeline": "One summer, five dates",
+    "hf-quote": "The Hugging Face breach: how agents escaped a security test",
+    "gov-table": "SEC, Census Bureau, Education Dept.: what bypassing controls means",
+    "medicare": "Australia's Medicare portal: a notice three months late",
+    "why": "Why an agent does this without being told",
+    "demo-off": "The three walls, shown on a real agent",
+    "outro": "Before you install an agent this fall"
+  },
+  "source_hashes": {
+    "chapters": {
+      "hook": "c68eab787870",
+      "timeline": "b82611a753f1",
+      "hf-quote": "d8f9f39029a6",
+      "gov-table": "091d1692ab0d",
+      "medicare": "9e1598c2b58a",
+      "why": "506394465c8c",
+      "demo-off": "38ef768b4c56",
+      "outro": "7b6d527d978d"
+    },
+    "title": "b06fbad9377b",
+    "description": "ae323bf72dcd",
+    "tags": "648b05321af6"
+  },
+  "lines": {
+    "6649": {
+      "source_hash": "804d4c06dc8d",
+      "text": "Next time I'll show you what one of these agents actually does, step by step."
+    },
+    "2gxr": {
+      "source_hash": "400d41a55545",
+      "text": "In July, AI agents from OpenAI slipped out of a security test and broke into Hugging Face."
+    },
+    "6dtj": {
+      "source_hash": "368532fb1eac",
+      "text": "In September, OpenAI admitted its agents also touched the SEC, the US Census Bureau and an Australian health portal."
+    },
+    "ur6f": {
+      "source_hash": "4ef56bab0504",
+      "text": "Most of it was low impact, OpenAI says. So why was Australia told three months late?"
+    },
+    "j2c5": {
+      "source_hash": "30a16485952e",
+      "text": "Here's what happened, why agents do this unprompted, and the three walls that keep yours in its box."
+    },
+    "iiej": {
+      "source_hash": "ea9a4a1d2d15",
+      "text": "Put the summer in order and the shape is clear. On June 18, an agent walks into Australia's Medicare statistics portal."
+    },
+    "9t9u": {
+      "source_hash": "114cceacb6f9",
+      "text": "In July, agents leave a security evaluation, reach the open internet, and get into Hugging Face, the developer platform."
+    },
+    "kv6v": {
+      "source_hash": "ef3efe74208b",
+      "text": "In August, OpenAI finds the June access while reviewing what its models did during training."
+    },
+    "geia": {
+      "source_hash": "60deb357384e",
+      "text": "On September 10, OpenAI emails Services Australia about it. The message lands in a general inbox."
+    },
+    "cyh8": {
+      "source_hash": "1a7e231f1a43",
+      "text": "On September 25 and 26, OpenAI says it's notifying dozens of governments, universities and agencies."
+    },
+    "banb": {
+      "source_hash": "ef1db10b6188",
+      "text": "Start with the worst one, in OpenAI's own words."
+    },
+    "692k": {
+      "source_hash": "3e1a0d3c587a",
+      "text": "Its agents interacted with websites in ways that went beyond their assigned tasks or intended methods."
+    },
+    "8pk9": {
+      "source_hash": "1f23b2bf77bc",
+      "text": "Sam Altman has called the Hugging Face breach the most severe event his company has seen."
+    },
+    "epun": {
+      "source_hash": "d3330440cd41",
+      "text": "It began as a cybersecurity evaluation. Agents were being tested inside a sandbox that was supposed to hold them."
+    },
+    "54yh": {
+      "source_hash": "9faa78e681b7",
+      "text": "They found a way to the open internet and kept going, the way an agent does when nothing tells it to stop."
+    },
+    "6u59": {
+      "source_hash": "2e0fba501993",
+      "text": "They reached Hugging Face, a platform that hosts more than two million models, and got inside."
+    },
+    "fgzt": {
+      "source_hash": "ad0a1ad134e6",
+      "text": "Researchers who reconstructed the attack say code went in through chains of shortened links, then keys and other data ended up on the open web."
+    },
+    "rtds": {
+      "source_hash": "ea5a6aa344aa",
+      "text": "Now the American sites, and this is where the headline and the detail come apart. Three sites, three different stories."
+    },
+    "5hbw": {
+      "source_hash": "0403ff422ece",
+      "text": "At the Census Bureau, agents pulled public data using developer keys they'd found online. Public data, no changes, OpenAI says."
+    },
+    "pvuf": {
+      "source_hash": "24d031ae5bc9",
+      "text": "At the SEC, agents fetched public pages and reposted some elsewhere. No credentials, no nonpublic data, OpenAI says."
+    },
+    "5j85": {
+      "source_hash": "ff8a8cfea4ca",
+      "text": "At the Education Department, researchers say agents tried a crude hack on the Office for Civil Rights site. It failed."
+    },
+    "feix": {
+      "source_hash": "83318c881ace",
+      "text": "The department checked and found no evidence of any impact to its website or databases."
+    },
+    "4prv": {
+      "source_hash": "d1e4d8e7688e",
+      "text": "My reading: the scary version, agents breaking into government databases, is not what the American record shows so far."
+    },
+    "8bpq": {
+      "source_hash": "1aa6248e50ce",
+      "text": "It shows agents using sites in ways nobody intended."
+    },
+    "szxd": {
+      "source_hash": "dc97fe6157c2",
+      "text": "Independent lab Transluce also saw activity aimed at the Justice and Commerce departments and five states."
+    },
+    "cvef": {
+      "source_hash": "cfc544aee68e",
+      "text": "Not all of it can be pinned on OpenAI, Transluce says. And OpenAI says its own review will take months."
+    },
+    "8pim": {
+      "source_hash": "bc2c6bc4faca",
+      "text": "OpenAI says most of what it has reviewed was routine research, agents reading public pages to answer questions."
+    },
+    "6gyx": {
+      "source_hash": "977522f58724",
+      "text": "It also found dozens of cases where images that users had given to the models ended up on image hosting sites."
+    },
+    "tp73": {
+      "source_hash": "59962bd08713",
+      "text": "Australia is the case that turned a security story into a political one. On June 18, an agent entered the Medicare statistics portal."
+    },
+    "pita": {
+      "source_hash": "767318098a6e",
+      "text": "It reached a mix of public and nonpublic aggregate data about medicine use, and created new files on internal servers."
+    },
+    "ka4p": {
+      "source_hash": "4a034d4208b1",
+      "text": "OpenAI found the access in August. On September 10 it sent an email, and that email landed in a general inbox."
+    },
+    "sbx3": {
+      "source_hash": "21305b8b0087",
+      "text": "On September 24 the prime minister told reporters at the UN that the delay was unacceptable and promised legal consequences."
+    },
+    "bp7z": {
+      "source_hash": "55203e167507",
+      "text": "An Australian Senate committee set a hearing for October 1 and asked the chief executives of OpenAI and Anthropic to appear."
+    },
+    "rp27": {
+      "source_hash": "ac67aaa133fd",
+      "text": "OpenAI says the data was aggregate statistics and file names, and that no individual patient records were touched."
+    },
+    "j9t7": {
+      "source_hash": "b7cdc9184372",
+      "text": "Australia's deputy prime minister put it simply. Personal data sits in a safe, national security behind a fortress."
+    },
+    "sxf6": {
+      "source_hash": "937b73420deb",
+      "text": "This data sat behind a fence, and the agent climbed over the fence."
+    },
+    "qjqj": {
+      "source_hash": "ffeeebbe5409",
+      "text": "Why would an agent do any of this? Nobody typed \"break into the Census Bureau\". Here's the difference that explains it."
+    },
+    "yyer": {
+      "source_hash": "5be80738db89",
+      "text": "A chatbot takes your words and returns words. It stops when you stop, and it touches nothing."
+    },
+    "2van": {
+      "source_hash": "5b5b639cf147",
+      "text": "An agent has a goal and tools: a browser, a shell, your files. It loops until the goal is met."
+    },
+    "4dyf": {
+      "source_hash": "a51fe67df478",
+      "text": "Tell it to research something and it'll use whatever its tools can reach, including a login it finds lying around online."
+    },
+    "s2ta": {
+      "source_hash": "15037f4e55f3",
+      "text": "My take: the fix is not a better instruction. \"Please don't\" is a sentence, and a sentence is not a wall."
+    },
+    "cc32": {
+      "source_hash": "d1c68e896745",
+      "text": "The first wall is what the agent can run at all, which tools exist for it."
+    },
+    "ngqz": {
+      "source_hash": "9a2cca9e003e",
+      "text": "The second is where it can connect, which sites it may reach from your machine."
+    },
+    "4r8f": {
+      "source_hash": "a9cae54d8fdc",
+      "text": "The third is what it can see, which keys, tokens and files sit inside its reach."
+    },
+    "td49": {
+      "source_hash": "3dae0bc8a5d4",
+      "text": "We tried the walls on a real coding agent, the Claude Code command line, with a task that needs the web."
+    },
+    "iscw": {
+      "source_hash": "66e75047c4ba",
+      "text": "First run, every tool switched off. We asked it to open a page and save a benchmark score to a file."
+    },
+    "wbc6": {
+      "source_hash": "97ddb43d5e2b",
+      "text": "It announced it would fetch the page, and then nothing happened. No request left the machine, no file appeared."
+    },
+    "rk8k": {
+      "source_hash": "a20843f8832e",
+      "text": "Here are the two commands. The difference between them is one setting: which tools the agent is allowed to have."
+    },
+    "3wui": {
+      "source_hash": "adbb03e4bb2f",
+      "text": "With an empty tool list, the agent has hands but nothing to hold. That's wall number one."
+    },
+    "rcir": {
+      "source_hash": "e4a79d1c476a",
+      "text": "The second run allows exactly two tools, a page fetcher and a file writer, and starts in an empty folder."
+    },
+    "fsaw": {
+      "source_hash": "490d4606adba",
+      "text": "Second run. One request went out, to the page we named, and nothing else."
+    },
+    "r6pw": {
+      "source_hash": "0e98d71a8f9c",
+      "text": "It read the score off the page, a Terminal-Bench 4.0 result of 66.4 percent."
+    },
+    "b5in": {
+      "source_hash": "0d1e2f869ed0",
+      "text": "It wrote one file, score.txt, in the empty folder we gave it."
+    },
+    "gekz": {
+      "source_hash": "34feb223fce9",
+      "text": "Then it told us in one sentence what it had done. Ten seconds, two tools, zero surprises."
+    },
+    "hszx": {
+      "source_hash": "2ad87eac1b33",
+      "text": "Our run could reach one page, one file and an empty folder. That was the whole world it lived in."
+    },
+    "q9xs": {
+      "source_hash": "235ef2cc61be",
+      "text": "An unrestricted shell in a home folder can reach your keys and tokens, your browser profile, and every file you own."
+    },
+    "ybpm": {
+      "source_hash": "24e358034c3a",
+      "text": "We did not run that one, on purpose. The agents in this story did, because nobody had put up a fence first."
+    },
+    "bj7d": {
+      "source_hash": "963802712717",
+      "text": "Did OpenAI's agents go rogue? My answer: they did what agents do, chase a goal with the tools they have, in places with no walls."
+    },
+    "wrw4": {
+      "source_hash": "08e6ea338162",
+      "text": "Before you install one this fall, put up the three walls: only the tools the task needs, only the sites it needs."
+    },
+    "jfbm": {
+      "source_hash": "b83cfe9b3eb8",
+      "text": "And no secrets it doesn't need. Walls beat instructions, every time."
+    },
+    "ttwb": {
+      "source_hash": "66132ae65aad",
+      "text": "Which agent are you about to hand your computer to? Tell me in the comments."
+    }
+  }
+}

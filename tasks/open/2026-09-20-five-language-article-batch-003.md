@@ -113,3 +113,9 @@ target article kind is `intel`. Neither article belongs to this batch. Task
 validation and `git diff --check` passed. Installer inputs remain untracked
 locally after the native cleanup command was blocked by automatic policy; the
 PR contains only the scoped article packs, diagrams and this task record.
+
+### 2026-09-29 看板盤點與站主決定
+
+站主已同意「準備逐批發布清單與步驟，再讓我確認」。本輪一次正式站唯讀盤點已完成；發布清單、精確來源雜湊、依賴與逐步驗收見 docs/work-status-2026-09-29-article-release-plan.md。未授權正式寫入、部署或發布；原門檻維持。 Batch003四篇已五語公開且正文hash與repo相符；onsen繁中v8已是修正後來源，僅剩四個目標語系。不要重做已發布的繁中修正。
+
+本次僅追加交接證據，不改既有owner、scope、branch或執行狀態。
