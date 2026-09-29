@@ -2,15 +2,16 @@
 
 Every call takes the ``httpx.AsyncClient`` it runs on, so tests hand in a ``MockTransport`` and
 production one client per job. The quota each call costs is from the reference pages read on
-2026-09-27 (docs/videos/YOUTUBE-API-AUDIT.md lists them): channels.list and videos.list 1,
-videos.update 50, captions.list 50, captions.insert 400, thumbnails.set 50, and videos.insert one
-call from its own bucket of 100 a day.
+2026-09-27 (docs/videos/YOUTUBE-API-AUDIT.md lists them): channels.list, videos.list and
+playlistItems.list 1, videos.update 50, captions.list 50, captions.insert 400, thumbnails.set
+50, and videos.insert one call from its own bucket of 100 a day.
 """
 
 from __future__ import annotations
 
 import json
 import secrets
+from collections.abc import Sequence
 from dataclasses import dataclass
 from typing import Any, Literal, cast
 
@@ -203,6 +204,66 @@ class YoutubeClient:
         )
         items = body.get("items")
         return cast(dict[str, Any], items[0]) if isinstance(items, list) and items else None
+
+    async def uploads_playlist(self) -> str | None:
+        """channels.list mine=true (1 unit): the playlist that holds everything the channel
+        uploaded, or None when the grant speaks for no channel."""
+        body = _json(
+            await self.http.get(
+                f"{API}/channels",
+                params={"part": "contentDetails", "mine": "true"},
+                headers=self.headers,
+                timeout=TIMEOUT,
+            )
+        )
+        items = body.get("items")
+        if not isinstance(items, list) or not items or not isinstance(items[0], dict):
+            return None
+        details = items[0].get("contentDetails")
+        related = details.get("relatedPlaylists") if isinstance(details, dict) else None
+        uploads = related.get("uploads") if isinstance(related, dict) else None
+        return uploads if isinstance(uploads, str) and uploads else None
+
+    async def playlist_videos(self, playlist_id: str, *, limit: int = 50) -> list[str]:
+        """playlistItems.list (1 unit): the ids of a playlist's newest videos, newest first."""
+        body = _json(
+            await self.http.get(
+                f"{API}/playlistItems",
+                params={
+                    "part": "contentDetails",
+                    "playlistId": playlist_id,
+                    "maxResults": str(max(1, min(limit, 50))),
+                },
+                headers=self.headers,
+                timeout=TIMEOUT,
+            )
+        )
+        items = body.get("items")
+        found: list[str] = []
+        for item in items if isinstance(items, list) else []:
+            details = item.get("contentDetails") if isinstance(item, dict) else None
+            video_id = details.get("videoId") if isinstance(details, dict) else None
+            if isinstance(video_id, str) and video_id:
+                found.append(video_id)
+        return found
+
+    async def videos(self, video_ids: Sequence[str], *, parts: str) -> list[dict[str, Any]]:
+        """videos.list (1 unit) for up to fifty ids at once; a video that is gone, or that the
+        grant may not see, is simply not in the answer."""
+        if not video_ids:
+            return []
+        if len(video_ids) > 50:
+            raise ValueError("videos.list takes at most fifty ids")
+        body = _json(
+            await self.http.get(
+                f"{API}/videos",
+                params={"part": parts, "id": ",".join(video_ids), "maxResults": "50"},
+                headers=self.headers,
+                timeout=TIMEOUT,
+            )
+        )
+        items = body.get("items")
+        return [item for item in items if isinstance(item, dict)] if isinstance(items, list) else []
 
     async def update_video(self, body: dict[str, Any]) -> dict[str, Any]:
         """videos.update (50 units); ``body`` carries every property the parts should keep."""

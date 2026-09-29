@@ -14,6 +14,9 @@ const FPS = 30;
 export const SHOT_TEMPLATE = "shot";
 // Card templates a drama may still use between shots: the title card, chapter cards, the outro.
 export const CARD_TEMPLATES = ["title", "chapter", "outro"];
+// An explainer (the flat-explainer preset, docs/videos/so-thats-why/) also puts its numbers and
+// comparisons on cards between the illustrations.
+export const EXPLAINER_CARD_TEMPLATES = [...CARD_TEMPLATES, "big", "stats", "compare"];
 export const NARRATOR = "narrator";
 export const CHARACTER_ID = /^[a-z][a-z0-9-]{1,23}$/;
 export const FIT_MODES = ["auto", "freeze", "slow", "trim"];
@@ -61,8 +64,16 @@ export const PRESETS = {
     negative: "text, watermark, logo, photorealistic, neon colours, extra fingers, blurry",
     motion: "slow drifting camera, ink diffusing softly, no morphing, no cuts",
   },
+  // A narrator-only explainer of still illustrations (docs/videos/so-thats-why/look.md): no cast,
+  // so nothing asks for a consistent character, and no text in the picture: cards carry it.
+  "flat-explainer": {
+    style: "flat editorial illustration, bold clean navy outlines, limited palette of warm cream, ink navy, stamp red and mustard yellow, soft paper grain, simple shapes, generous negative space, friendly and clear",
+    negative: "photorealistic, 3D render, cinematic lighting, text, letters, watermark, logo, brand marks, real person's likeness, mascot, recurring cartoon character, extra fingers, deformed hands, cluttered background",
+    motion: "slow push in or gentle drift, no morphing, no cuts",
+  },
   custom: { style: "", negative: "", motion: "" },
 };
+export const EXPLAINER_PRESET = "flat-explainer";
 export const PRESET_NAMES = Object.keys(PRESETS);
 export const DEFAULT_LOOK_CANDIDATES = 3;
 export const DEFAULT_MUSIC = { gain_db: -20, duck_db: -10, fade_in_ms: 1500, fade_out_ms: 3000 };
@@ -86,6 +97,10 @@ const hash16 = (...parts) => {
 
 export const isDrama = (doc) => doc?.format === DRAMA_FORMAT;
 export const isSeriesEpisode = (doc) => isDrama(doc) && isObject(doc.series);
+/** A drama drawn in the explainer preset: narrator only, every shot a still. */
+export const isExplainer = (doc) => isDrama(doc) && doc.look?.preset === EXPLAINER_PRESET;
+/** Whether a drama has characters: without any there are no sheets, so no look stage or gate. */
+export const hasCast = (doc) => isDrama(doc) && Array.isArray(doc.characters) && doc.characters.length > 0;
 export const isShot = (scene) => scene?.template === SHOT_TEMPLATE;
 export const shotScenes = (doc) => (doc?.scenes ?? []).filter(isShot);
 /** "clip" or "still": a shot is a clip unless it says otherwise. */
@@ -281,6 +296,9 @@ export function validateDrama(doc, errors, validateVoice) {
 
   const characterIds = drama ? validateCharacters(doc.characters, errors, validateVoice) : new Set();
   if (drama) validateLook(doc.look, errors);
+  const explainer = isExplainer(doc);
+  const cards = explainer ? EXPLAINER_CARD_TEMPLATES : CARD_TEMPLATES;
+  if (explainer && characterIds.size) errors.push({ path: "characters", message: `an explainer (look preset "${EXPLAINER_PRESET}") has no characters: the narrator tells it` });
   if (drama && doc.series !== undefined) {
     validateSeries(doc.series, errors);
     // An episode lists its cast by id, so lookHash changes only when the cast itself changes
@@ -300,9 +318,12 @@ export function validateDrama(doc, errors, validateVoice) {
       } else {
         shots += 1;
         validateShotData(scene.data, `${where}.data`, characterIds, earlierShots, errors);
+        if (explainer && isObject(scene.data) && shotVisual(scene) !== "still") {
+          errors.push({ path: `${where}.data.visual`, message: `an explainer's shots are all "still": its keyframe under a camera move, no clip` });
+        }
       }
-    } else if (drama && !CARD_TEMPLATES.includes(scene.template)) {
-      errors.push({ path: `${where}.template`, message: `a drama scene is a "${SHOT_TEMPLATE}" or one of the cards ${CARD_TEMPLATES.join(", ")}` });
+    } else if (drama && !cards.includes(scene.template)) {
+      errors.push({ path: `${where}.template`, message: `a drama scene is a "${SHOT_TEMPLATE}" or one of the cards ${cards.join(", ")}` });
     }
     if (Array.isArray(scene.lines)) {
       scene.lines.forEach((line, lineIndex) => {

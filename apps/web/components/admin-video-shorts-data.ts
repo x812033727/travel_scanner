@@ -119,13 +119,22 @@ const HOUR = 60 * 60 * 1000;
 export const METRIC_WINDOWS: Record<Exclude<MetricPeriod, "now">, readonly [number, number]> = {
   d1: [24 * HOUR, 48 * HOUR], d3: [72 * HOUR, 96 * HOUR], d7: [7 * 24 * HOUR, 9 * 24 * HOUR],
 };
-export type BlankReason = "early" | "waiting" | "missed";
+export type BlankReason = "early" | "waiting" | "missed" | "removed";
 
-/** Why a window has no number: its time has not come, it is open and unread, or it closed unread. */
-export function blankReason(period: Exclude<MetricPeriod, "now">, publishedAt: string | null, now = Date.now()): BlankReason {
-  const since = publishedAt ? Date.parse(publishedAt) : Number.NaN;
-  if (!Number.isFinite(since)) return "early";
+/**
+ * Why a window has no number: its time has not come, it is open and unread, or it closed unread.
+ * A Short that was taken down is read no more (apps/api/app/video_shorts/stats.py), so a window of
+ * it that had not closed by then stays empty for that reason, and so does its latest read.
+ */
+export function blankReason(period: MetricPeriod, short: { published_at: string | null; removed_at?: string | null }, now = Date.now()): BlankReason {
+  const gone = short.removed_at ? Date.parse(short.removed_at) : Number.NaN;
+  const removed = Number.isFinite(gone);
+  if (period === "now") return removed ? "removed" : "waiting";
+  const since = short.published_at ? Date.parse(short.published_at) : Number.NaN;
+  if (!Number.isFinite(since)) return removed ? "removed" : "early";
   const [opens, closes] = METRIC_WINDOWS[period];
+  // The window closed while the Short was still up: it was missed, whatever happened later.
+  if (removed) return gone - since >= closes ? "missed" : "removed";
   const age = now - since;
   if (age < opens) return "early";
   return age < closes ? "waiting" : "missed";
@@ -151,7 +160,9 @@ export function zonedInstant(local: string, zone: string): Date | null {
     // The zone's offset at the reading taken as UTC, then again at the instant that gives: the
     // second pass is what a change of clocks between the two needs.
     const first = reading - (wallClock(new Date(reading), zone) - reading);
-    return new Date(reading - (wallClock(new Date(first), zone) - first));
+    const instant = new Date(reading - (wallClock(new Date(first), zone) - first));
+    // A spring-forward gap has no matching instant; never silently move the chosen wall time.
+    return localInput(instant.toISOString(), zone) === local ? instant : null;
   } catch {
     return null;
   }
@@ -182,8 +193,11 @@ export function addDays(day: string, days: number): string {
   return Number.isFinite(moment) ? new Date(moment + days * 24 * HOUR).toISOString().slice(0, 10) : day;
 }
 
-/** Whole New Taiwan dollars as the page writes them: 1,234. */
-export const dollars = (value: number | null | undefined) => (typeof value === "number" && Number.isFinite(value) ? Math.round(value).toLocaleString("en-US") : "0");
+/**
+ * New Taiwan dollars as the page writes them: 1,234, or 0.29 for a line that costs less than a
+ * dollar. A narration is a few cents, so an amount rounded to whole dollars would read as nothing spent.
+ */
+export const dollars = (value: number | null | undefined) => (typeof value === "number" && Number.isFinite(value) ? value.toLocaleString("en-US", { maximumFractionDigits: 2 }) : "0");
 
 export const sizeOf = (bytes: number) => (bytes >= 1_000_000 ? `${(bytes / 1_000_000).toFixed(1)} MB` : `${Math.max(1, Math.round(bytes / 1000))} KB`);
 export const message = (problem: unknown) => (problem instanceof Error ? problem.message : "");
