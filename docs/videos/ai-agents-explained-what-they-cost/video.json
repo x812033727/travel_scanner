@@ -17,8 +17,8 @@
     "category_id": 28,
     "made_for_kids": false,
     "default_language": "zh-TW",
-    "title": "AI 代理是什麼、跑一次多少錢，以及那個能阻止它亂花錢的設定",
-    "description": "AI 代理到底是什麼、為什麼同一件事做成代理會貴十幾倍、委託前該問什麼。這支用一個五輪代理的帳單示意，把錢花在哪講清楚。\n給常聽到「AI 代理」「自動化」，但分不清它跟聊天差在哪、又怕帳單失控的人。\n\n涵蓋聊天、固定流程與代理的差別、代理由模型加指示加工具加環境組成、每輪重讀歷史為何讓成本暴增、委託時要問的權限紀錄停止與預算，以及資料落地與零資料保留兩個合規限制。表格數字為示意，用來說明結構。",
+    "title": "AI 代理是什麼、跑一次多少錢，以及控制預算前該確認的設定",
+    "description": "AI 代理到底是什麼、多輪呼叫如何增加費用、委託前該問什麼。這支用一個五輪代理的帳單示意，把錢花在哪講清楚。\n給常聽到「AI 代理」「自動化」，但分不清它跟聊天差在哪、又怕帳單失控的人。\n\n涵蓋聊天、固定流程與代理的差別、模型、指示、工具與執行環境等常見部分、反覆處理歷史可能如何增加成本、委託時要問的權限紀錄停止與預算，以及資料落地與零資料保留兩個合規限制。表格數字為示意，用來說明結構。\n五輪帳單是 token 費用示例，未計快取、工具、沙箱或第三方費用。OpenAI API 硬支出上限須啟用且可能有延遲，不能保證完全不超額。",
     "tags": [
       "AI 代理",
       "AI agent",
@@ -35,35 +35,35 @@
     "template": "thumb",
     "data": {
       "tag": "AI AGENTS",
-      "headline": "Why it costs\n**16x more**",
-      "sub": "and the switch that stops it"
+      "headline": "Can it cost\n**16x more?**",
+      "sub": "Illustrative token-cost example"
     }
   },
   "sources": [
     {
-      "title": "OpenAI Agents API 概覽",
+      "title": "Agents API Overview",
       "url": "https://developers.openai.com/api/docs/guides/agents-api/overview",
-      "checked_on": "2026-09-28"
+      "checked_on": "2026-09-29"
     },
     {
-      "title": "OpenAI：Introducing the Agents API",
-      "url": "https://openai.com/index/introducing-the-agents-api/",
-      "checked_on": "2026-09-28"
-    },
-    {
-      "title": "OpenAI Data controls",
-      "url": "https://developers.openai.com/api/docs/guides/your-data",
-      "checked_on": "2026-09-28"
+      "title": "Agents API Observability",
+      "url": "https://developers.openai.com/api/docs/guides/agents-api/observability",
+      "checked_on": "2026-09-29"
     },
     {
       "title": "OpenAI API Pricing",
       "url": "https://developers.openai.com/api/docs/pricing",
-      "checked_on": "2026-09-28"
+      "checked_on": "2026-09-29"
     },
     {
-      "title": "Anthropic：Building effective agents",
+      "title": "OpenAI API Spend limits",
+      "url": "https://developers.openai.com/api/docs/guides/spend-limits",
+      "checked_on": "2026-09-29"
+    },
+    {
+      "title": "Anthropic Building effective agents",
       "url": "https://www.anthropic.com/engineering/building-effective-agents",
-      "checked_on": "2026-09-28"
+      "checked_on": "2026-09-29"
     }
   ],
   "scenes": [
@@ -74,7 +74,7 @@
       "data": {
         "tag": "AI 代理",
         "title": "AI 代理是什麼、**跑一次多少錢**？",
-        "subtitle": "還有那個能阻止它亂花錢的設定"
+        "subtitle": "還有哪些設定能幫你控制費用"
       },
       "lines": [
         {
@@ -83,7 +83,7 @@
         },
         {
           "id": "rhcy",
-          "text": "這支告訴你它貴在哪，還有哪個設定能讓它不亂花你的錢。"
+          "text": "這支告訴你它貴在哪，還有哪些設定能幫你控制費用。"
         },
         {
           "id": "w977",
@@ -209,14 +209,14 @@
           },
           {
             "title": "執行環境",
-            "detail": "它動手的沙箱"
+            "detail": "需要執行程式時可用沙箱"
           }
         ]
       },
       "lines": [
         {
           "id": "z3xv",
-          "text": "一個代理，其實是四樣東西組起來的。",
+          "text": "可以從四個部分來理解代理，但不是每一種都需要沙箱。",
           "reveal": 1
         },
         {
@@ -231,12 +231,12 @@
         },
         {
           "id": "trh6",
-          "text": "再加一個它動手的執行環境，也就是沙箱。",
+          "text": "需要執行程式的工具，可以在沙箱裡動手。",
           "reveal": 1
         },
         {
           "id": "dep5",
-          "text": "少了任何一樣，它就只能說、不能做。"
+          "text": "也有工具直接連外部服務，關鍵是功能和授權有沒有接好。"
         },
         {
           "id": "wfy8",
@@ -343,7 +343,7 @@
         "title": "為什麼特別貴",
         "items": [
           "一件事呼叫模型好幾次",
-          "每次都把歷史重讀一遍",
+          "多輪呼叫可能重讀歷史",
           "子代理各自再算一遍"
         ]
       },
@@ -364,7 +364,7 @@
         },
         {
           "id": "mhbv",
-          "text": "而且每一次，都把前面的對話和結果重新讀一遍。",
+          "text": "每次呼叫可能再次處理先前的對話和工具結果。",
           "reveal": 1
         },
         {
@@ -427,7 +427,7 @@
       "id": "subagents",
       "template": "bullets",
       "data": {
-        "title": "子代理會讓帳單翻倍",
+        "title": "子代理也有自己的用量",
         "items": [
           "主代理把工作拆出去",
           "每個子代理自己呼叫模型",
@@ -440,7 +440,7 @@
       "lines": [
         {
           "id": "59w3",
-          "text": "再講子代理，這是帳單翻倍的另一個原因。",
+          "text": "再講子代理，它們也有各自的模型用量。",
           "reveal": 1
         },
         {
@@ -450,7 +450,7 @@
         },
         {
           "id": "t2rw",
-          "text": "每個子代理都自己呼叫模型、自己重讀歷史。",
+          "text": "子代理會自己呼叫模型，費用要按實際用量加總。",
           "reveal": 1
         },
         {
@@ -468,7 +468,7 @@
       "chapter": "實算：五輪的帳單",
       "template": "table",
       "data": {
-        "title": "五輪代理的帳單",
+        "title": "五輪示意：模型 token 費",
         "columns": [
           "輪次",
           "輸入 token",
@@ -526,15 +526,15 @@
         },
         {
           "id": "bjcd",
-          "text": "第一輪的輸入只有兩萬字，到第五輪累積到十五萬。"
+          "text": "這個例子的第一輪輸入兩萬 token，第五輪輸入十五萬。"
         },
         {
           "id": "utze",
-          "text": "因為每一輪都把前面重讀一遍，輸入越滾越大。"
+          "text": "這裡假設每一輪重讀先前內容，輸入才會越滾越大。"
         },
         {
           "id": "bgnm",
-          "text": "六輪加起來，輸入四十萬、輸出一萬四，快一美元。"
+          "text": "五輪加起來，輸入四十萬、輸出一萬四千五百 token，快一美元。"
         },
         {
           "id": "i28v",
@@ -542,19 +542,19 @@
         },
         {
           "id": "3bfe",
-          "text": "這就是為什麼代理的帳單，重點在重讀的歷史。"
+          "text": "這個示例的費用，主要來自反覆處理的輸入。"
         },
         {
           "id": "yuae",
-          "text": "換成更便宜的模型，倍數不變，只是每一格變小。"
+          "text": "換模型要用新單價重算，不能保證費用的倍數一樣。"
         },
         {
           "id": "yug2",
-          "text": "這張表假設完全沒有快取命中，是最貴的情況。"
+          "text": "這張表假設沒有快取命中，也沒有計入工具和沙箱等費用。"
         },
         {
           "id": "ucxc",
-          "text": "有快取的話會便宜一些，但快取讀取一樣要付錢。"
+          "text": "快取命中可能省輸入費，但讀取與寫入仍要按各自單價算。"
         }
       ]
     },
@@ -686,7 +686,7 @@
       "data": {
         "kicker": "跑錯時",
         "text": "預算上限",
-        "sub": "唯一能自動擋住費用的東西"
+        "sub": "OpenAI API 硬上限：可能延遲、少量超額"
       },
       "claims": [
         "c6"
@@ -698,19 +698,19 @@
         },
         {
           "id": "f5f8",
-          "text": "代理跑錯方向時，只有它能自動把費用擋下來。"
+          "text": "OpenAI API 可以另啟用每月硬上限，達限後拒絕相關請求。"
         },
         {
           "id": "ix3h",
-          "text": "設好每月上限和警示，再放手讓它跑。"
+          "text": "警示只會通知；硬上限也可能有延遲，造成少量超額。"
         },
         {
           "id": "twky",
-          "text": "沒有上限的代理，就像沒有煞車的車。"
+          "text": "所以還要搭配單次任務限制和能隨時停止的流程。"
         },
         {
           "id": "ghc5",
-          "text": "很多意外帳單，都是沒設這個造成的。"
+          "text": "設定時確認硬上限已啟用，別把警示當成自動停用。"
         },
         {
           "id": "tzx5",
@@ -761,7 +761,7 @@
       "id": "data-note",
       "template": "bullets",
       "data": {
-        "title": "合規先看兩點",
+        "title": "OpenAI Agents API 的資料限制",
         "items": [
           "資料落地目前只支援美國",
           "不支援零資料保留",
@@ -879,8 +879,8 @@
         "cta": "完整算法與委託清單在說明欄的文章裡",
         "lines": [
           "分得出代理：模型自己決定下一步",
-          "算得出成本：每輪都重讀歷史",
-          "守得住預算：先設每月上限"
+          "算得出成本：可能反覆處理歷史",
+          "控制預算：硬上限、警示與停止流程"
         ]
       },
       "lines": [
@@ -890,11 +890,11 @@
         },
         {
           "id": "sknr",
-          "text": "算得出成本，記得它每輪都重讀歷史。"
+          "text": "算得出成本，記得多輪呼叫可能反覆處理歷史。"
         },
         {
           "id": "t344",
-          "text": "守得住預算，先設每月上限再放手，我們下一支影片見。"
+          "text": "控制預算，要有硬上限、警示和停止流程，我們下一支影片見。"
         },
         {
           "id": "2xyf",

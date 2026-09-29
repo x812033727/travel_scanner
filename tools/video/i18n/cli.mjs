@@ -15,7 +15,7 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
-import { eachLine, LOCALES, NARRATION_LOCALE, textHash } from "../core/schema.mjs";
+import { eachLine, LOCALES, NARRATION_LOCALE, narrationLocale, textHash } from "../core/schema.mjs";
 import { readLanguages } from "../core/stages.mjs";
 import { ARTIFACTS, dubArtifacts, loadProject } from "../core/state.mjs";
 import { TITLE_MAX_CHARS } from "../core/metadata.mjs";
@@ -24,6 +24,8 @@ import { chapterScenes, METADATA_FIELDS, metadataStatus, sourceHashes } from "..
 import { defaultRate, lineBudgets } from "../dubs/plan.mjs";
 
 export const TARGET_LOCALES = LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
+/** The locales one video is translated into: every caption locale but the one it is narrated in. */
+export const targetLocales = (doc) => LOCALES.filter((locale) => locale !== narrationLocale(doc));
 // What a sheet can hold; a dub reads the captions' lines, so it never needs a part of its own.
 export const SHEET_PARTS = ["metadata", "captions"];
 
@@ -32,7 +34,7 @@ const translationFile = (dir, locale) => path.join(dir, "i18n", `${locale}.json`
 
 const SHEET_NOTE = "Fill the `text` of everything marked todo: lines, chapters, the title, the description, the tags. The rest already has a current translation. Keep `id`, `scene`, `source` and `todo` as they are.";
 const PART_NOTES = { metadata: "This sheet holds only the title, the description, the tags and the chapter names; the lines are not wanted for this locale.", captions: "This sheet holds only the lines; the title, description, tags and chapter names are not wanted for this locale." };
-const BUDGET_NOTE = " `max_chars` is how many characters a line's dub may have (docs/videos/DUBS.md): the translation is also read aloud in the time the zh-TW line takes, so stay under it.";
+const BUDGET_NOTE = " `max_chars` is how many characters a line's dub may have (docs/videos/DUBS.md): the translation is also read aloud in the time the narration line takes, so stay under it.";
 
 const partsOf = (sheet) => (Array.isArray(sheet?.parts) && sheet.parts.length ? sheet.parts : SHEET_PARTS);
 
@@ -90,6 +92,7 @@ const sameSource = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
 /** The lines a filled sheet merges, keeping a previous translation where the sheet has none usable. */
 function mergeLines(doc, sheet, before, problems) {
+  const narration = narrationLocale(doc);
   const byId = new Map((sheet.lines ?? []).map((entry) => [entry.id, entry]));
   const lines = {};
   for (const { line } of eachLine(doc)) {
@@ -101,7 +104,7 @@ function mergeLines(doc, sheet, before, problems) {
       continue;
     }
     if (entry.source !== line.text) {
-      problems.push(`${line.id}: the zh-TW line changed after the sheet was made; make a new sheet`);
+      problems.push(`${line.id}: the ${narration} line changed after the sheet was made; make a new sheet`);
       if (before.lines?.[line.id]) lines[line.id] = before.lines[line.id];
       continue;
     }
@@ -118,6 +121,7 @@ function mergeLines(doc, sheet, before, problems) {
  * behind under its old scene.
  */
 export function mergeSheet(doc, sheet, previous) {
+  const narration = narrationLocale(doc);
   const problems = [];
   const before = previous ?? {};
   const kept = before.source_hashes ?? {};
@@ -144,7 +148,7 @@ export function mergeSheet(doc, sheet, previous) {
   const recorded = { chapters: {} };
   for (const [name, { value, empty, invalid }] of Object.entries(fields)) {
     const changed = !sameSource(sheet[name]?.source, doc.youtube[name]);
-    const problem = empty ? "not translated" : changed ? `the zh-TW ${name} changed after the sheet was made; make a new sheet` : invalid;
+    const problem = empty ? "not translated" : changed ? `the ${narration} ${name} changed after the sheet was made; make a new sheet` : invalid;
     if (!problem) {
       values[name] = value;
       recorded[name] = hashes[name];
@@ -160,7 +164,7 @@ export function mergeSheet(doc, sheet, previous) {
   for (const scene of chapterScenes(doc)) {
     const entry = bySceneId.get(scene.id);
     const text = String(entry?.text ?? "").trim();
-    const problem = !text ? "not translated" : entry.source !== scene.chapter ? "the zh-TW chapter title changed after the sheet was made; make a new sheet" : null;
+    const problem = !text ? "not translated" : entry.source !== scene.chapter ? `the ${narration} chapter title changed after the sheet was made; make a new sheet` : null;
     if (!problem) {
       chapters[scene.id] = text;
       recorded.chapters[scene.id] = hashes.chapters[scene.id];
@@ -185,11 +189,11 @@ function options(args) {
     strict: true,
   }).values;
   if (!values.slug && !values.file) throw new UsageError("needs --slug (or --file)");
-  const locales = values.locale ? values.locale.split(",").map((locale) => locale.trim()) : TARGET_LOCALES;
-  for (const locale of locales) if (!TARGET_LOCALES.includes(locale)) throw new UsageError(`--locale must be among ${TARGET_LOCALES.join(", ")}`);
   const parts = values.parts ? values.parts.split(",").map((part) => part.trim()).filter(Boolean) : SHEET_PARTS;
   for (const part of parts) if (!SHEET_PARTS.includes(part)) throw new UsageError(`--parts must be among ${SHEET_PARTS.join(", ")} (a dub reads the captions' lines)`);
   if (!parts.length) throw new UsageError("--parts names at least one part");
+  // The locales are checked in run(), once the video's narration language is known.
+  const locales = values.locale ? values.locale.split(",").map((locale) => locale.trim()) : null;
   return { ...values, locales, parts: SHEET_PARTS.filter((part) => parts.includes(part)) };
 }
 
@@ -198,6 +202,10 @@ export async function run(command, args, ctx) {
   const values = options(args);
   const project = loadProject({ slug: values.slug, file: values.file, root: ctx.root });
   const { doc } = project;
+  // The locales to translate into depend on the narration language, so they are checked once the video is read.
+  const targets = targetLocales(doc);
+  const locales = values.locales ?? targets;
+  for (const locale of locales) if (!targets.includes(locale)) throw new UsageError(`--locale must be among ${targets.join(", ")}`);
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
   if (command === "i18n-sheet") {
     // Once the narration exists, each line's slot is known, and so is how long its dub may be;
@@ -205,7 +213,7 @@ export async function run(command, args, ctx) {
     const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
     const timed = timeline && timeline.speech_hash === speechHash(doc, project.lexicon);
     const languages = readLanguages(workdir);
-    for (const locale of values.locales) {
+    for (const locale of locales) {
       const dubbed = timed && values.parts.includes("captions") && (!languages || languages.locales[locale]?.dub === true);
       const fit = dubbed ? readJson(dubArtifacts(workdir, locale).fit, null) : null;
       const budgets = dubbed ? lineBudgets(timeline, fit?.rates?.measured ?? defaultRate(locale, doc, timeline)) : null;
@@ -217,7 +225,7 @@ export async function run(command, args, ctx) {
     return EXIT.ok;
   }
   let incomplete = false;
-  for (const locale of values.locales) {
+  for (const locale of locales) {
     const sheet = readJson(sheetFile(workdir, locale), null);
     if (!sheet) throw new UsageError(`no sheet for ${locale}; run i18n-sheet first`);
     const { translation, problems } = mergeSheet(doc, sheet, project.translations[locale]);

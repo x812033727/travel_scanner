@@ -1,3 +1,4 @@
+import logging
 import os
 
 from redis import Redis
@@ -26,7 +27,14 @@ def worker_class(os_name: str = os.name) -> type[Worker] | type[SimpleWorker]:
     return SimpleWorker if os_name == "nt" else Worker
 
 
+def configure_logging() -> None:
+    # Request URLs may contain credentials for providers that require query keys.
+    for name in ("httpx", "httpcore"):
+        logging.getLogger(name).setLevel(logging.WARNING)
+
+
 def main() -> None:
+    configure_logging()
     connection = Redis.from_url(get_settings().redis_url)
     queues = [Queue(name, connection=connection) for name in QUEUE_NAMES]
     # Jobs enqueued with Retry(interval=...) are parked in the ScheduledJobRegistry

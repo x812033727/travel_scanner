@@ -78,3 +78,9 @@ Confirm the persistent private video ID and each applied asset; HTTP health alon
   GitHub Actions workflow; record its actual result before calling the deployment package verified.
 - Local Playwright tested only intercepted synthetic pages. Exact Studio selectors remain
   provisional until owner-assisted acceptance; an unexpected page pauses the durable job.
+
+### 2026-09-29 看板盤點與站主決定
+
+站主回覆「依賴就緒後準備試作／上傳驗收方案」。目前依賴與可執行步驟見docs/work-status-2026-09-29-video-acceptance-plan.md；未部署、生成、登入或上傳。
+
+本次僅追加交接證據，不改既有owner、scope、branch或執行狀態。

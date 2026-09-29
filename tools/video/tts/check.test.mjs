@@ -438,3 +438,65 @@ test("check-audio --locale asks for dub first when there is no dub, with the usa
   assert.equal(await main(["check-audio", "--slug", box.slug, "--locale", "zh-TW"], narration.ctx), EXIT.usage);
   assert.match(narration.out.stderr, /--locale must be one of en, ja, ko, zh-CN/);
 });
+
+test("a second transcript clears a line only Gemini misheard; one that misses the same words keeps the flag", async () => {
+  const box = sandbox();
+  const lines = [...eachLine(fixture())].map(({ line }) => line);
+  const [misheard, mispoken] = [lines[2], lines[4]];
+  // Gemini cuts both lines short. The second transcriber hears the first as written and the second
+  // wrong as well, which is what a voice that really said something else sounds like.
+  const heardFor = (count) => {
+    const line = lines[count % lines.length];
+    return line === misheard || line === mispoken ? spokenText(line).slice(0, 4) : spokenText(line);
+  };
+  const server = site({ heardFor, noul: (question) => (question.heard === question.intended ? 0.9 : 0.1) });
+  const script = path.join(box.base, "second.mjs");
+  const log = path.join(box.base, "second.log");
+  const canned = { [`${misheard.id}.wav`]: spokenText(misheard), [`${mispoken.id}.wav`]: "完全不同的一句話" };
+  writeFileSync(
+    script,
+    [
+      'import { appendFileSync, readFileSync } from "node:fs";',
+      'import path from "node:path";',
+      "const [locale, ...files] = process.argv.slice(2);",
+      'const hints = process.env.VIDEO_SECOND_OPINION_HINTS ? JSON.parse(readFileSync(process.env.VIDEO_SECOND_OPINION_HINTS, "utf8")) : {};',
+      `appendFileSync(${JSON.stringify(log)}, \`\${locale} \${files.length} \${Object.keys(hints).sort().join(",")}\\n\`);`,
+      `const canned = ${JSON.stringify(canned)};`,
+      'for (const file of files) console.log(`${path.basename(file)} ${canned[path.basename(file)] ?? ""}`);',
+    ].join("\n"),
+  );
+  const flag = `${process.execPath} ${script}`;
+  const calls = () => (existsSync(log) ? readFileSync(log, "utf8").trim().split("\n") : []);
+
+  const synth = context(box, server.fetchImpl);
+  assert.equal(await main(["tts", "--slug", box.slug], synth.ctx), EXIT.ok, synth.out.stderr);
+  const first = context(box, server.fetchImpl);
+  assert.equal(await main(["check-audio", "--slug", box.slug, "--second-opinion", flag], first.ctx), EXIT.lint, first.out.stderr);
+  const hinted = [`${misheard.id}.wav`, `${mispoken.id}.wav`].sort().join(",");
+  assert.deepEqual(calls(), [`zh-TW 2 ${hinted}`], "one run of the second transcriber, with the locale, the two doubted clips and their hints file");
+  const flags = JSON.parse(readFileSync(path.join(box.workdir, "review", "check-flags.json"), "utf8"));
+  assert.deepEqual(flags.flags, [mispoken.id]);
+  assert.match(first.out.stdout, /, 1 cleared by a second transcript, 1 flagged/);
+  assert.match(first.out.stdout, new RegExp(`${misheard.id}  cleared by second\\.mjs \\(matches the script\\)`));
+  assert.match(first.out.stdout, /second\.mjs: 完全不同的一句話/);
+  assert.ok(server.calls.judge.flat().some((question) => question.id === mispoken.id && question.heard === "完全不同的一句話"), "Jev reads the second transcript that differs");
+  assert.ok(!server.calls.judge.flat().some((question) => question.id === misheard.id && question.heard === spokenText(misheard)), "a second transcript that matches needs no Jev call");
+  const cache = JSON.parse(readFileSync(path.join(box.workdir, "review", "check.json"), "utf8"));
+  assert.equal(cache.lines[misheard.id].second.by, "second.mjs");
+  const state = JSON.parse(readFileSync(path.join(box.workdir, "state.json"), "utf8"));
+  assert.equal(state.runs.at(-1).cleared, 1);
+
+  // The clearance belongs to the clip: a rerun does not ask again, with or without the flag.
+  const again = context(box, server.fetchImpl);
+  assert.equal(await main(["check-audio", "--slug", box.slug, "--second-opinion", flag], again.ctx), EXIT.lint);
+  assert.deepEqual(calls(), [`zh-TW 2 ${hinted}`]);
+  const plain = context(box, server.fetchImpl);
+  assert.equal(await main(["check-audio", "--slug", box.slug], plain.ctx), EXIT.lint);
+  assert.match(plain.out.stdout, /1 cleared by a second transcript, 1 flagged/);
+
+  // A transcriber that fails leaves the flags as they were.
+  const broken = context(box, server.fetchImpl);
+  assert.equal(await main(["check-audio", "--slug", box.slug, "--second-opinion", `${process.execPath} ${path.join(box.base, "missing.mjs")}`], broken.ctx), EXIT.lint);
+  assert.match(broken.out.stdout, /the second transcriber failed/);
+  assert.deepEqual(JSON.parse(readFileSync(path.join(box.workdir, "review", "check-flags.json"), "utf8")).flags, [mispoken.id]);
+});

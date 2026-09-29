@@ -7,12 +7,19 @@ from uuid import UUID, uuid4
 
 import pytest
 import pytest_asyncio
+from fastapi import Request
 from httpx import ASGITransport, AsyncClient
-from sqlalchemy import func, select
+from sqlalchemy import func, select, text
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.admin import user_router
 from app.admin import users as admin_users
-from app.admin.user_schemas import AdminReasonRequest, AdminUserDetail
+from app.admin.user_schemas import (
+    AdminReasonRequest,
+    AdminRolesUpdate,
+    AdminSuspensionRequest,
+    AdminUserDetail,
+)
 from app.community import jobs as community_jobs
 from app.community.models import AccountToken, Job
 from app.config import get_settings
@@ -576,3 +583,140 @@ async def test_erasure_barrier_blocks_resend_and_delayed_scrub_catches_inflight_
         assert mail.status == "completed" and mail.payload_encrypted is None
         persisted = await check.get(AccountErasureRequest, request.id)
         assert persisted is not None and persisted.status == "completed"
+
+
+@pytest.mark.asyncio(loop_scope="module")
+@pytest.mark.parametrize("preloaded_expired_role", [False, True])
+async def test_timed_suspension_waits_for_role_grant_and_refreshes_identity_map(
+    monkeypatch: pytest.MonkeyPatch, preloaded_expired_role: bool
+) -> None:
+    """Use the real PostgreSQL advisory lock and role writer, not an asyncio surrogate."""
+    actor = User(id=uuid4(), email=f"suspension-support-{uuid4()}@example.com", auth_version=3)
+    grantor = User(id=uuid4(), email=f"suspension-owner-{uuid4()}@example.com")
+    target = User(
+        id=uuid4(), email=f"suspension-target-{uuid4()}@example.com", auth_version=7, is_admin=False
+    )
+    expired = datetime.now(UTC) - timedelta(days=1)
+    renewed_until = datetime.now(UTC) + timedelta(days=30)
+    async with SessionFactory() as setup:
+        setup.add_all([actor, grantor, target])
+        await setup.flush()
+        setup.add_all(
+            [
+                AdminRoleAssignment(user_id=actor.id, role="support"),
+                AdminRoleAssignment(user_id=grantor.id, role="owner"),
+            ]
+        )
+        if preloaded_expired_role:
+            setup.add(
+                AdminRoleAssignment(user_id=target.id, role="database_operator", expires_at=expired)
+            )
+        await setup.commit()
+    monkeypatch.setattr(
+        admin_users, "admin_user_detail", AsyncMock(return_value=Mock(spec=AdminUserDetail))
+    )
+    grant_ready = asyncio.Event()
+    release_grant = asyncio.Event()
+    async with SessionFactory() as grant_session, SessionFactory() as suspension_session:
+        cached_user = await suspension_session.get(User, target.id)
+        assert cached_user is not None and cached_user.is_admin is False
+        cached_role = await suspension_session.scalar(
+            select(AdminRoleAssignment).where(AdminRoleAssignment.user_id == target.id)
+        )
+        if preloaded_expired_role:
+            assert cached_role is not None and cached_role.expires_at == expired
+        else:
+            assert cached_role is None
+        grant_pid = await grant_session.scalar(text("SELECT pg_backend_pid()"))
+        suspension_pid = await suspension_session.scalar(text("SELECT pg_backend_pid()"))
+        original_commit = grant_session.commit
+
+        async def pause_role_commit() -> None:
+            # replace_admin_roles already owns the advisory + User row locks here.
+            grant_ready.set()
+            await release_grant.wait()
+            await original_commit()
+
+        monkeypatch.setattr(grant_session, "commit", pause_role_commit)
+
+        async def grant_role() -> None:
+            await admin_users.replace_admin_roles(
+                grant_session,
+                target.id,
+                AdminRolesUpdate(
+                    roles=["database_operator"],
+                    reason="concurrent privileged grant",
+                    confirmation=f"ROLES {target.email}",
+                    expires_at=renewed_until,
+                ),
+                grantor,
+                f"grant-before-suspension-{uuid4()}",
+            )
+
+        async def suspend_after_grant_started() -> str:
+            try:
+                await user_router.post_admin_user_suspension(
+                    target.id,
+                    AdminSuspensionRequest(
+                        reason="concurrent timed suspension", suspended_until=renewed_until
+                    ),
+                    Request({"type": "http", "method": "POST", "path": "/", "headers": []}),
+                    actor,
+                    suspension_session,
+                    f"suspend-after-grant-{uuid4()}",
+                )
+            except AppError as exc:
+                assert exc.status == 401
+                assert not suspension_session.dirty and not suspension_session.new
+                # Strong references keep both preloaded ORM objects in the identity map.
+                assert cached_user.is_admin is True
+                if cached_role is not None:
+                    assert cached_role.expires_at == renewed_until
+                await suspension_session.rollback()
+                return exc.code
+            return "unexpectedly_suspended"
+
+        grant_task = asyncio.create_task(grant_role())
+        suspension_task: asyncio.Task[str] | None = None
+        try:
+            await asyncio.wait_for(grant_ready.wait(), timeout=5)
+            suspension_task = asyncio.create_task(suspend_after_grant_started())
+
+            async def observe_real_lock_wait() -> None:
+                async with SessionFactory() as observer:
+                    while True:
+                        blockers = await observer.scalar(
+                            text("SELECT pg_blocking_pids(:pid)"), {"pid": suspension_pid}
+                        )
+                        if grant_pid in (blockers or []):
+                            return
+                        if suspension_task.done():
+                            pytest.fail("suspension did not wait for the role transaction")
+                        await asyncio.sleep(0.01)
+
+            await asyncio.wait_for(observe_real_lock_wait(), timeout=5)
+            release_grant.set()
+            _, error = await asyncio.wait_for(
+                asyncio.gather(grant_task, suspension_task), timeout=5
+            )
+            assert error == "admin_step_up_required"
+        finally:
+            release_grant.set()
+            pending = [task for task in (grant_task, suspension_task) if task and not task.done()]
+            for task in pending:
+                task.cancel()
+            if pending:
+                await asyncio.gather(*pending, return_exceptions=True)
+    async with SessionFactory() as check:
+        persisted = await check.get(User, target.id)
+        assert persisted is not None and persisted.is_admin is True
+        assert persisted.auth_version == 7 and persisted.suspended_at is None
+        assert persisted.suspended_until is None and persisted.suspension_reason is None
+        actions = list(
+            (
+                await check.scalars(
+                    select(AdminAuditLog.action).where(AdminAuditLog.target == f"user:{target.id}")
+                )
+            ).all()
+        )
+        assert actions == ["user_roles_updated"]

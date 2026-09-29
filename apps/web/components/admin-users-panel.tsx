@@ -17,6 +17,7 @@ import {
   useCallback,
   useEffect,
   useMemo,
+  useRef,
   useState,
   useSyncExternalStore,
 } from "react";
@@ -33,7 +34,7 @@ import {
 } from "@/components/admin-ui";
 import { adminCan } from "@/lib/admin-operations";
 import { adminUsersCopy } from "@/lib/admin-users-copy";
-import { api } from "@/lib/api";
+import { api, ApiError } from "@/lib/api";
 import { Link } from "@/i18n/navigation";
 
 type UserActivity = {
@@ -129,7 +130,25 @@ type AdjustmentResult = {
   replayed: boolean;
 };
 type WrappedUser = UserDetail | { user: UserDetail; replayed?: boolean };
-type SensitiveAction = "roles" | "suspend" | "erase";
+type SensitiveAction = "roles" | "suspend" | "suspend-timed" | "erase";
+type PendingTimedSuspension = Readonly<{
+  id: string;
+  email: string;
+  reason: string;
+  until: string;
+  idempotencyKey: string;
+}>;
+
+function timedSuspensionRequest(pending: PendingTimedSuspension): RequestInit {
+  return {
+    method: "POST",
+    headers: { "Idempotency-Key": pending.idempotencyKey },
+    body: JSON.stringify({
+      reason: pending.reason,
+      suspended_until: pending.until,
+    }),
+  };
+}
 
 const roles = [
   "viewer",
@@ -275,6 +294,9 @@ export function AdminUsersPanel() {
   const [erasureReason, setErasureReason] = useState("");
   const [suspendUntil, setSuspendUntil] = useState("");
   const [sensitive, setSensitive] = useState<SensitiveAction | null>(null);
+  const [pendingTimed, setPendingTimed] =
+    useState<PendingTimedSuspension | null>(null);
+  const pendingTimedRef = useRef<PendingTimedSuspension | null>(null);
   const [stepupPassword, setStepupPassword] = useState("");
   const [confirmation, setConfirmation] = useState("");
   const dateTime = useMemo(
@@ -295,6 +317,7 @@ export function AdminUsersPanel() {
 
   function updateUrl(values: Record<string, string | null>, push = false) {
     if (typeof window === "undefined") return;
+    if ("user" in values) clearSensitive();
     const next = new URL(window.location.href);
     for (const [key, value] of Object.entries(values)) {
       if (value) next.searchParams.set(key, value);
@@ -357,6 +380,11 @@ export function AdminUsersPanel() {
   useEffect(() => {
     let active = true;
     const timer = window.setTimeout(() => {
+      pendingTimedRef.current = null;
+      setPendingTimed(null);
+      setSensitive(null);
+      setStepupPassword("");
+      setConfirmation("");
       if (!selectedId) {
         setSelected(undefined);
         setDetailLoading(false);
@@ -366,7 +394,6 @@ export function AdminUsersPanel() {
       setDetailLoading(true);
       setError("");
       setNotice("");
-      setSensitive(null);
       setRoleReason("");
       setRolesExpireAt("");
       setSuspensionReason("");
@@ -375,8 +402,6 @@ export function AdminUsersPanel() {
       setUsageChange("");
       setUsageReason("");
       setSuspendUntil("");
-      setStepupPassword("");
-      setConfirmation("");
       api<UserDetail>(`/admin/users/${selectedId}`)
         .then((result) => {
           if (active) {
@@ -394,6 +419,7 @@ export function AdminUsersPanel() {
     }, 0);
     return () => {
       active = false;
+      pendingTimedRef.current = null;
       window.clearTimeout(timer);
     };
   }, [selectedId]);
@@ -506,28 +532,74 @@ export function AdminUsersPanel() {
       setError(copy.timedSuspensionLimit);
       return;
     }
-    await mutate(
-      `/admin/users/${selected.id}/suspension`,
-      {
-        method: "POST",
-        headers: { "Idempotency-Key": `admin-suspend-${crypto.randomUUID()}` },
-        body: JSON.stringify({
-          reason: suspensionReason,
-          suspended_until: deadline.toISOString(),
-        }),
-      },
-      copy.saved,
+    const pending: PendingTimedSuspension = {
+      id: selected.id,
+      email: selected.email,
+      reason: suspensionReason,
+      until: deadline.toISOString(),
+      idempotencyKey: `admin-suspend-${crypto.randomUUID()}`,
+    };
+    pendingTimedRef.current = pending;
+    setPendingTimed(pending);
+    setBusy(true);
+    setError("");
+    setNotice("");
+    try {
+      const result = await api<WrappedUser>(
+        `/admin/users/${pending.id}/suspension`,
+        timedSuspensionRequest(pending),
+      );
+      if (!isCurrentTimedSuspension(pending)) return;
+      clearSensitive();
+      await acceptUser(result, copy.saved);
+    } catch (reason) {
+      if (!isCurrentTimedSuspension(pending)) return;
+      if (
+        reason instanceof ApiError &&
+        [
+          "admin_step_up_required",
+          "admin_step_up_invalid",
+          "admin_step_up_scope_required",
+        ].includes(reason.code ?? "")
+      ) {
+        setSensitive("suspend-timed");
+        setStepupPassword("");
+        setConfirmation("");
+      } else {
+        clearSensitive();
+        setError((reason as Error).message);
+      }
+    } finally {
+      setBusy(false);
+    }
+  }
+  function clearSensitive() {
+    pendingTimedRef.current = null;
+    setPendingTimed(null);
+    setSensitive(null);
+    setStepupPassword("");
+    setConfirmation("");
+  }
+  function isCurrentTimedSuspension(pending: PendingTimedSuspension) {
+    return (
+      pendingTimedRef.current === pending &&
+      new URL(window.location.href).searchParams.get("user") === pending.id
     );
   }
   async function submitSensitive() {
     if (!selected || selected.id !== selectedId || !sensitive) return;
+    const timed = sensitive === "suspend-timed" ? pendingTimed : null;
+    if (
+      sensitive === "suspend-timed" &&
+      (!timed || !isCurrentTimedSuspension(timed))
+    ) return;
     setBusy(true);
     setError("");
     setNotice("");
     const scope =
       sensitive === "roles"
         ? "users.roles"
-        : sensitive === "suspend"
+        : sensitive === "suspend" || sensitive === "suspend-timed"
           ? "users.suspend_permanent"
           : "users.erase";
     try {
@@ -535,11 +607,20 @@ export function AdminUsersPanel() {
         method: "POST",
         body: JSON.stringify({ password: stepupPassword, scopes: [scope] }),
       });
+      // Selection or dismissal while verification is pending invalidates the replay.
+      if (new URL(window.location.href).searchParams.get("user") !== selected.id)
+        return;
+      if (timed && !isCurrentTimedSuspension(timed)) return;
       const idempotency = {
-        "Idempotency-Key": `admin-${sensitive}-${crypto.randomUUID()}`,
+        "Idempotency-Key": timed?.idempotencyKey ?? `admin-${sensitive}-${crypto.randomUUID()}`,
       };
       let result: WrappedUser;
-      if (sensitive === "roles")
+      if (timed)
+        result = await api(
+          `/admin/users/${timed.id}/suspension`,
+          timedSuspensionRequest(timed),
+        );
+      else if (sensitive === "roles")
         result = await api(`/admin/users/${selected.id}/roles`, {
           method: "PATCH",
           headers: idempotency,
@@ -573,11 +654,11 @@ export function AdminUsersPanel() {
             confirmation: `ERASE ${selected.email}`,
           }),
         });
+      if (timed && !isCurrentTimedSuspension(timed)) return;
+      clearSensitive();
       await acceptUser(result, copy.saved);
-      setSensitive(null);
-      setStepupPassword("");
-      setConfirmation("");
     } catch (reason) {
+      if (timed && !isCurrentTimedSuspension(timed)) return;
       setError((reason as Error).message);
     } finally {
       setBusy(false);
@@ -586,7 +667,9 @@ export function AdminUsersPanel() {
   const expectedConfirmation =
     !selected || !sensitive
       ? ""
-      : `${sensitive === "roles" ? "ROLES" : sensitive === "suspend" ? "SUSPEND" : "ERASE"} ${selected.email}`;
+      : sensitive === "suspend-timed"
+        ? `SUSPEND ${pendingTimed?.email ?? ""}`
+        : `${sensitive === "roles" ? "ROLES" : sensitive === "suspend" ? "SUSPEND" : "ERASE"} ${selected.email}`;
   const status = userStatus;
   const entryLabel = (value: string) =>
     entryKeys.has(value) ? tAdmin(`usersPanel.entry.${value}`) : value;
@@ -1519,9 +1602,15 @@ export function AdminUsersPanel() {
             ? copy.rolesConfirmation
             : sensitive === "suspend"
               ? copy.suspendConfirmation
-              : copy.eraseConfirmation
+              : sensitive === "suspend-timed"
+                ? copy.suspension
+                : copy.eraseConfirmation
         }
-        description={copy.sensitiveDescription}
+        description={
+          sensitive === "suspend-timed" && pendingTimed
+            ? `${copy.sensitiveDescription} ${copy.suspensionUntil}: ${dateTime.format(new Date(pendingTimed.until))} ${copy.suspensionReason}: ${pendingTimed.reason}`
+            : copy.sensitiveDescription
+        }
         confirmationLabel={copy.typeConfirmation}
         expectedConfirmation={expectedConfirmation}
         confirmation={confirmation}
@@ -1542,15 +1631,15 @@ export function AdminUsersPanel() {
             ? copy.saveRoles
             : sensitive === "suspend"
               ? copy.confirmPermanentSuspension
-              : copy.confirmErasure
+              : sensitive === "suspend-timed"
+                ? copy.suspend
+                : copy.confirmErasure
         }
         onConfirmationChange={setConfirmation}
         onPasswordChange={setStepupPassword}
         onCancel={() => {
           if (!busy) {
-            setSensitive(null);
-            setStepupPassword("");
-            setConfirmation("");
+            clearSensitive();
           }
         }}
         onConfirm={() => void submitSensitive()}

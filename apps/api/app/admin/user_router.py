@@ -156,7 +156,13 @@ async def post_admin_user_suspension(
 ) -> AdminActionResult:
     if payload.suspended_until is None:
         await require_admin_step_up(request, user, "users.suspend_permanent")
-    return await suspend_admin_user(session, user_id, payload, user, idempotency_key)
+
+    async def verify_step_up() -> None:
+        await require_admin_step_up(request, user, "users.suspend_permanent")
+
+    return await suspend_admin_user(
+        session, user_id, payload, user, idempotency_key, verify_step_up=verify_step_up
+    )
 
 
 @router.delete("/{user_id}/suspension", response_model=AdminUserDetail)

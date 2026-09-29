@@ -582,3 +582,9 @@ Resolved Seoul public licensed coordinates: OA-16044's Sheet CSV form works with
 Chrome inspected RYSE's official direct Naver link 1578505636; heading/address/homepage matched 130 Yanghwa-ro. All new map_verified flags remain false until independent admin review. Five other Naver IDs are third-party leads only in evidence; four are still missing. Further Chrome attempts failed with Debugger unattached, and in-app fallback also failed to attach. Do not claim those map checks happened. Known hotel-restaurant Naver IDs and wrong same-brand properties are explicitly excluded in evidence. Solaria's old host failed DNS; new official NNR site is used. Parnas standalone sites failed TLS; no certificate checks bypassed, official IHG SEOHA used instead.
 
 Validation: 114 related tests passed (API content/platform/direct-link/travel-service tests plus 13 optional offline research-tool checks). Verified all ten stored projections without network, UTF-8 admin CSV transfer, closed/missing/duplicate permit rejection, and pending candidates never publicly usable. Five-language catalog and task integrity checks passed. No runtime/UI/migration changes in this follow-up; full CI will still run on the PR. Remaining: Kyoto/Busan, Rakuten usable entries, remaining map/landing reviews, separate product/option approvals and staged city release. Content task stays open; no new merge authorization or production writes/enablement/deployment assumed.
+
+### 2026-09-29 看板盤點與站主決定
+
+2026-09-29唯讀：六城市各至少10家核准飯店已成立；三區覆蓋、每家OTA身分與連結、真實訂房導流等無法用聚合數字驗收。原規格是否維持待站主回覆；本輪不改正式資料。
+
+本次僅追加交接證據，不改既有owner、scope、branch或執行狀態。
