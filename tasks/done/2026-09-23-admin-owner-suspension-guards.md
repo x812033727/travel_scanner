@@ -104,10 +104,11 @@ cd apps/api && uv run pytest tests/test_admin_users.py -q && uv run ruff check .
 - UI regression tests: original code **6 failed / 17 passed**; fixed code
   **23 passed**, using bundled Node 24.21.0 and Vitest 5.0.2. Scoped ESLint,
   full web TypeScript, full API Ruff and `mypy app` (443 files) passed.
-- Scoped mypy for both modified API test files passed. Default Windows
-  `mypy tests` encountered the unchanged Unix socket fixture typing error,
-  now tracked by `2026-09-29-e2e-deploy-fixture-windows-mypy`. The complete
-  Linux-targeted type-check (`mypy --platform linux tests`) passed all 329 files.
+- Scoped mypy for both modified API test files passed. The initial default
+  Windows run exposed an existing Unix socket fixture typing error. Follow-up
+  `2026-09-29-e2e-deploy-fixture-windows-mypy`, included in the same PR, fixes
+  that error with an explicit platform branch and three passing contract tests.
+  Complete Windows and Linux-targeted `mypy tests` now each pass all 329 files.
 - Independent API, UI and regression review found no blocking issue. These are
   local tests and review results; production access and browser acceptance are
   outside this change.
