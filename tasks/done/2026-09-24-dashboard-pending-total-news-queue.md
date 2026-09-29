@@ -1,14 +1,14 @@
 ---
 id: 2026-09-24-dashboard-pending-total-news-queue
 title: 後台總覽的「待處理」算進新聞待審，卻只連到景點審核佇列
-status: open
+status: done
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: codex-admin-pending-queues
+claimed_at: 2026-09-29T06:08:17Z
 created_at: 2026-09-24T04:51:58Z
-completed_at:
-branch:
+completed_at: 2026-09-29T06:33:30Z
+branch: codex/admin-pending-queues
 depends_on: []
 scope:
   - apps/web/components/admin-dashboard.tsx
@@ -38,26 +38,26 @@ scope:
 
 ## Definition of done
 
-- [ ] `/admin` 總覽上，`pending_total` 的每一個組成（景點、文章、料理、店家、飯店、新聞）都有自己的佇列連結，顯示自己的數字，連到自己的工作區。新聞連到 `/admin/news`，數字是 `news_review_pending`。
-- [ ] 「待處理」卡不再帶人到只有景點的佇列。它要嘛連到總覽上列出全部組成的佇列區，要嘛不是連結、直接列出組成。卡上的數字等於畫面上各組成佇列數字的和，沒有 bootstrap 時也一樣，不再退回只顯示 `hotspots_pending`。
-- [ ] 導覽裡沒有 `/admin/news` 的角色看不到新聞佇列（沿用 `canVisit`），頁面上也不會因此出現壞連結。
-- [ ] `admin-dashboard.test.tsx` 有測試釘住上面三點；`admin-partial-payload.test.tsx` 的「每一個待審數字都有自己的佇列」清單也包含新聞。
+- [x] `/admin` 總覽上，`pending_total` 的每一個組成（景點、文章、料理、店家、飯店、新聞）都有自己的佇列連結，顯示自己的數字，連到自己的工作區。新聞連到 `/admin/news`，數字是 `news_review_pending`。
+- [x] 「待處理」卡不再帶人到只有景點的佇列。它要嘛連到總覽上列出全部組成的佇列區，要嘛不是連結、直接列出組成。卡上的數字等於畫面上各組成佇列數字的和，沒有 bootstrap 時也一樣，不再退回只顯示 `hotspots_pending`。
+- [x] 導覽裡沒有 `/admin/news` 的角色看不到新聞佇列（沿用 `canVisit`），頁面上也不會因此出現壞連結。
+- [x] `admin-dashboard.test.tsx` 有測試釘住上面三點；`admin-partial-payload.test.tsx` 的「每一個待審數字都有自己的佇列」清單也包含新聞。
 
 ## Steps
 
-- [ ] 在 `admin-dashboard.tsx` 的 `domains`（`:48-60`）加入新聞，做成一張卡或一列佇列都可以：`count: "news_review_pending"`、href 用 `/admin/news`，並用 `canVisit` 過濾。數字直接用 bootstrap 的 `pending_counts`（`:29-30` 已經合進 `counts`），不必改 API，也不要去改 `quick_actions`。
+- [x] 在 `admin-dashboard.tsx` 的 `domains`（`:48-60`）加入新聞，做成一張卡或一列佇列都可以：`count: "news_review_pending"`、href 用 `/admin/news`，並用 `canVisit` 過濾。數字直接用 bootstrap 的 `pending_counts`（`:29-30` 已經合進 `counts`），不必改 API，也不要去改 `quick_actions`。
   - 「內容目錄」的格線是 `xl:grid-cols-3`（`:71`），加第四張卡要一起調版面。
   - 新聞沒有「總數」。`count(domain.total)` 遇到沒有的 key 會顯示「總數 · —」，所以 `total` 要改成可省略，不要硬塞一個假的。
   - 卡片標題可以直接用 `adminNewsCopy(locale).nav`（`apps/web/lib/admin-news-copy.ts`，側欄已經在用）。
-- [ ] 新佇列的標籤（例如「新聞待審」）加進 `apps/web/lib/admin-domains-messages/` 的五個語系檔。五個檔的 key 是否一致，由 `apps/web/lib/admin-workspace-navigation.test.ts:113-120` 和 typecheck 檢查（`check:i18n` 不讀這個目錄）。
-- [ ] 「待處理」卡（`:44`）的 href 改成總覽上佇列區的錨點，佇列區要補一個 id；另一個做法是這張卡不做連結，改在旁邊列出組成。
+- [x] 新佇列的標籤（例如「新聞待審」）加進 `apps/web/lib/admin-domains-messages/` 的五個語系檔。五個檔的 key 是否一致，由 `apps/web/lib/admin-workspace-navigation.test.ts:113-120` 和 typecheck 檢查（`check:i18n` 不讀這個目錄）。
+- [x] 「待處理」卡（`:44`）的 href 改成總覽上佇列區的錨點，佇列區要補一個 id；另一個做法是這張卡不做連結，改在旁邊列出組成。
   - `:65` 的可見性過濾要改成「任一組成佇列看得到就顯示」，不能再拿景點網址來判斷。
   - 用 next-intl 的 `Link` 包錨點時，要確認渲染出來的 href 真的是錨點，沒有被加上語系前綴。
-- [ ] 卡上的值改成畫面上可見佇列數字的和；或者繼續用 `pending_total`，但把 `:44` 的 `aliases: ["hotspots_pending"]` 拿掉。二選一，並在 Notes 寫下選了哪個。
-- [ ] 補測試（`admin-dashboard.test.tsx`）：
+- [x] 卡上的值改成畫面上可見佇列數字的和；或者繼續用 `pending_total`，但把 `:44` 的 `aliases: ["hotspots_pending"]` 拿掉。二選一，並在 Notes 寫下選了哪個。
+- [x] 補測試（`admin-dashboard.test.tsx`）：
   - bootstrap 帶 `pending_counts: { pending_total: 9, hotspots_pending: 2, news_review_pending: 7 }`，navigation 裡有 news 項。斷言「新聞待審 7」連到 `/admin/news`，「待處理」卡的 href 不是 `/admin/hotspots?...`，卡上數字是 9。
   - navigation 裡沒有 news 的角色看不到新聞佇列。
-- [ ] 在 `admin-partial-payload.test.tsx:32-70` 那張清單加上新聞一列，mock 的 counts 補上 `news_review_pending`。
+- [x] 在 `admin-partial-payload.test.tsx:32-70` 那張清單加上新聞一列，mock 的 counts 補上 `news_review_pending`。
 
 ## How to verify
 
@@ -84,6 +84,39 @@ npm run lint:web && npm run check:i18n && npm run typecheck:web
 4. 點「新聞待審」：要到 `/zh-TW/admin/news` 的人工審查頁。
 
 ## Notes
+
+### Implemented and locally reviewed on 2026-09-29
+
+All seven pending-count components now have visible, role-appropriate links in
+five workspace cards. The total links natively to `#admin-review-queues` and
+sums those same visible components. News opens its review filter; the video
+label includes review and other owner actions. Neither new card invents a
+catalog-record total. The layout supports one, two and three columns.
+
+The independent regression suite first ran against the unchanged component:
+18 expected failures and three passes, with matching before/after component
+hashes. After implementation, dashboard, partial-payload and navigation/copy
+suites passed all 31 tests. Typecheck, full web lint and five-locale validation
+passed. Independent code review and five-language label review found no issues.
+The new tests cover every missing component, explicit zeros, stale global totals,
+bootstrap precedence, restricted roles, news/video-only roles and the fragment
+destination. No production or live-browser acceptance is claimed.
+
+Full frontend validation also passed: 334 test files, 3,580 tests (exit 0).
+
+- 2026-09-29 implementation checkpoint: current `pending_total` includes seven
+  components, adding `video_reviews_pending` since this ticket was filed. That
+  count also includes Shorts owner actions, so this same component/copy scope
+  will add a broadly labelled video pending-work entry at `/admin/videos` as
+  well as `/admin/news?queue=review`. No API or unrelated workspace changes.
+- The selected total is the sum of queues visible under backend navigation,
+  using bootstrap counts over dashboard counts. If any visible component is
+  missing, show the existing unknown marker instead of treating it as zero or
+  substituting the hotspots count. A native fragment link targets the rendered
+  queue section without locale-prefix rewriting. Tests cover both news-only and
+  video-only navigation as well as complete, missing and zero counts.
+- Scope audit found no other active claim or open PR on these component, test
+  and five-locale catalog paths. Existing unrelated worktrees remain untouched.
 
 - 2026-09-23 看 PR #694 時發現，2026-09-24 在 main（692dcf5a）上重新確認還在。
 - 這張和 `2026-09-24-keep-every-news-review-item-reachable` 有關，但沒有重疊。那張修的是 `/admin/news` 清單只取最新 100 筆（`admin-news-workspace.tsx:101`、`:122`），這張修的是總覽沒有入口。那張落地之前，從總覽點進 `/admin/news`，還是可能看不到較舊的待審項。那張加上網址篩選之後，把這裡的新聞連結改指向審查篩選。
