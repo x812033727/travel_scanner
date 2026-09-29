@@ -16,7 +16,7 @@ import { MediaError, mediaStatus } from "./client.mjs";
 import { clientOptions, requireCredentials } from "./cli.mjs";
 import { ledgerTotals } from "./ledger.mjs";
 import { reuseSheets } from "./series-store.mjs";
-import { drawContactSheet, imagePrice, JUDGE_USD_PER_CALL, retakeable, Stage, statusProblem } from "./stages.mjs";
+import { drawContactSheet, imagePrice, imageSelectionVersion, imageStatus, JUDGE_USD_PER_CALL, retakeable, sameImage, Stage, statusProblem } from "./stages.mjs";
 
 export const MAX_LOOK_ROUNDS = 2;
 export const DEFAULT_SHEET_PROMPT = "character design sheet: front view, three-quarter view and full body side by side, neutral standing pose, plain light grey background, even studio lighting, no text";
@@ -79,6 +79,7 @@ export async function run(command, args, ctx) {
   }).values;
   if (!values.slug && !values.file) throw new UsageError("look needs --slug (or --file for an example outside docs/videos)");
   const project = loadProject({ slug: values.slug, file: values.file, root: ctx.root });
+  const imageVersion = imageSelectionVersion(project.series);
   const { doc } = project;
   const lint = lintProject(project);
   if (lint.errors.length) {
@@ -108,10 +109,10 @@ export async function run(command, args, ctx) {
     for (const character of characters) ctx.stdout.write(`${character.id} (${character.name}): ${sheetPrompt(character, look)}\n`);
     const credentials = readCredentials({ env: ctx.env, home: ctx.home });
     if (credentials.token) {
-      const status = await mediaStatus(clientOptions(ctx, credentials));
+      const status = imageStatus(await mediaStatus(clientOptions(ctx, credentials)), project.series);
       const problem = statusProblem(status);
       const usd = characters.length * count * (imagePrice(status) + JUDGE_USD_PER_CALL);
-      ctx.stdout.write(`server: ${problem ? `NOT ready: ${problem}` : `${status.image.provider} ${status.image.model} ready`}; about US$${usd.toFixed(2)} for one round; this video so far US$${ledgerTotals(workdir).usd.toFixed(2)} of the US$${status.max_usd_per_video} cap\n`);
+      ctx.stdout.write(`server: ${problem ? `NOT ready: ${problem}` : `${status.image.provider} ${status.image.model} ${status.image.configured === null ? "(provider key checked on submit)" : "ready"}`}; about US$${usd.toFixed(2)} for one round; this video so far US$${ledgerTotals(workdir).usd.toFixed(2)} of the US$${status.max_usd_per_video} cap\n`);
     } else {
       ctx.stdout.write("no video tool token yet; run `node tools/video/cli.mjs login` before generating\n");
     }
@@ -120,10 +121,10 @@ export async function run(command, args, ctx) {
 
   const credentials = requireCredentials(ctx);
   const options = clientOptions(ctx, credentials);
-  const status = await mediaStatus(options);
+  const status = imageStatus(await mediaStatus(options), project.series);
   const problem = statusProblem(status);
   if (problem) throw new MediaError(problem, { who: "owner" });
-  const stage = new Stage({ slug: doc.slug, workdir, options, status, stage: "look", now: ctx.now });
+  const stage = new Stage({ slug: doc.slug, workdir, options, status, stage: "look", imageVersion, now: ctx.now });
   mkdirSync(path.join(workdir, "characters"), { recursive: true });
   // The owner's style frames go to the media store once, and every sheet is generated with them.
   const references = [];
@@ -133,7 +134,7 @@ export async function run(command, args, ctx) {
     references.push({ sha256: await stage.upload(file), role: "style" });
   }
   const existing = readJson(manifestFile(workdir), null);
-  const manifest = existing?.look_hash === hash ? existing : { look_hash: hash, look, image: { provider: status.image.provider, model: status.image.model }, characters: {} };
+  const manifest = existing?.look_hash === hash && sameImage(existing.image, status.image) && (!imageVersion || existing.image_selection_version === imageVersion) ? existing : { look_hash: hash, look, image: { provider: status.image.provider, model: status.image.model }, image_selection_version: 1, characters: {} };
   manifest.image = { provider: status.image.provider, model: status.image.model };
   const started = Date.now();
   let generated = 0;
@@ -141,7 +142,7 @@ export async function run(command, args, ctx) {
   // An episode of a series reuses the sheets the owner approved for the same characters
   // (docs/videos/SERIES.md); only a new or changed character is drawn.
   const store = doc.series
-    ? reuseSheets({ workBase: resolveWorkBase({ env: ctx.env, root: ctx.root, home: ctx.home }), workdir, seriesSlug: doc.series.slug, characters, look })
+    ? reuseSheets({ workBase: resolveWorkBase({ env: ctx.env, root: ctx.root, home: ctx.home }), workdir, seriesSlug: doc.series.slug, characters, look, ...(imageVersion ? { image: status.image } : {}) })
     : { reused: {}, missing: characters };
   for (const [id, candidate] of Object.entries(store.reused)) {
     const character = characters.find((each) => each.id === id);

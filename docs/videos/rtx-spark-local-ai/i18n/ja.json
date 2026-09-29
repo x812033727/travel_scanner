@@ -1,0 +1,479 @@
+{
+  "title": "NVIDIA RTX SparkノートPC、128GBに入るAIモデルは？ローカルAIはChatGPTの代わりになるか",
+  "description": "NVIDIAによると、RTX Sparkは1200億パラメータのモデルが動くのに、700億パラメータのLlama 3.3はオリジナル版が141GBで、最大128GBに入りません。「パラメータ数 × 1パラメータあたりのバイト数」の式で16/64/128GBに入るモデルを計算し、速度を決めるメモリ帯域と、ローカルAIが月額AIサブスクの代わりになるかを見ます。\n\nスペック、パラメータ数、ファイルサイズはすべてNVIDIA、Microsoft、OpenAI、Hugging Face、Ollamaの公式ページで2026年9月28日に確認しました（今後変わりえます）。RTX Sparkの価格は同日のNVIDIA製品ページになく、公式サイトでご確認を。メモリ帯域300GB/sはNVIDIAの開発者文書から。チャンネルはRTX Sparkの実機がなく、実測の速度は一切ありません。毎秒のトークン数はこの帯域から計算した理論上限です。NVIDIAの主張はすべてメーカーの発言と明示しています。\n\nClaude Proの価格は同日の公式サイトの月払い価格で、他のサブスクは各社公式サイトでご確認を。元を取る月数と電気代概算の式は画面にあり、ご自身の数字で試算できます。「何を一番重視するか」の表と結論は投稿者の考えで、購入の推奨ではありません。",
+  "tags": [
+    "RTX Spark",
+    "ローカルAI",
+    "RTX Spark ノートPC",
+    "NVIDIA RTX Spark",
+    "ローカルLLM",
+    "ノートPCでLLM",
+    "128GB 動くモデル",
+    "ローカルAI ChatGPT 代わり",
+    "AI PC 買うべきか",
+    "LLM 必要メモリ",
+    "ユニファイドメモリ",
+    "Ollama",
+    "gpt-oss",
+    "Llama 3.3",
+    "rtx spark local ai",
+    "run llm locally 128gb",
+    "local ai vs chatgpt",
+    "how much ram to run an llm"
+  ],
+  "chapters": {
+    "hook-title": "128GBのAIノートPCに何が入る？",
+    "specs": "RTX Sparkとは：NVIDIA公表のスペック",
+    "bytes": "AIモデルに必要なメモリは？1行の計算式",
+    "fit-rule": "128GB・64GB・16GBで動くモデルは？",
+    "petaflop": "RTX Sparkはどれだけ速い？見るべき数字",
+    "agents-quote": "裏で動くAIエージェント：Windowsが加えた壁",
+    "sub-vs-own": "AIサブスク vs 自分のPC：何か月で元が取れる？",
+    "priorities": "ローカルAIはChatGPTの代わりになる？"
+  },
+  "source_hashes": {
+    "chapters": {
+      "hook-title": "c73af4109a8e",
+      "specs": "5a624b738be9",
+      "bytes": "6ba412584ade",
+      "fit-rule": "0c29ba4704a9",
+      "petaflop": "74fd419a9b33",
+      "agents-quote": "5847f8643a09",
+      "sub-vs-own": "241f956253cc",
+      "priorities": "01c7440d20bb"
+    },
+    "title": "17a99d0f8959",
+    "description": "b32f107a403d",
+    "tags": "54f554abe40d"
+  },
+  "lines": {
+    "6695": {
+      "source_hash": "d52ca08a5a3b",
+      "text": "8ビットに圧縮すると1バイトです。"
+    },
+    "c752": {
+      "source_hash": "289832a2d6b5",
+      "text": "128GBのRTX Sparkノートには、どのモデルが入りますか？"
+    },
+    "xj6b": {
+      "source_hash": "95e9be80448a",
+      "text": "NVIDIAによると、1200億パラメータが動きます。"
+    },
+    "piku": {
+      "source_hash": "92added42b26",
+      "text": "でも700億パラメータのLlama 3.3オリジナル版141GBは入りません。"
+    },
+    "bbn6": {
+      "source_hash": "d5e1bdf2c4a1",
+      "text": "どちらも正解。差は計算できる数字1つ。"
+    },
+    "xbwf": {
+      "source_hash": "fc3bc89208fb",
+      "text": "今回はこれで入るものを計算。"
+    },
+    "prq6": {
+      "source_hash": "cce3aabf06c5",
+      "text": "速度を決める数字と、サブスクを代替できるか。"
+    },
+    "m5b4": {
+      "source_hash": "e5c420f4d7e0",
+      "text": "NVIDIAによると10月出荷、ノート2クラスとミニPC。"
+    },
+    "xapq": {
+      "source_hash": "e607e75df26b",
+      "text": "GPUは最大6144コアです。"
+    },
+    "nbyi": {
+      "source_hash": "5aa86f90b044",
+      "text": "CPUは最大20コアでMediaTekと共同設計のArm。"
+    },
+    "ey2n": {
+      "source_hash": "e7e7625aa7bb",
+      "text": "メモリは最大128GB、もう一方のノートは64GBまで。"
+    },
+    "m3t7": {
+      "source_hash": "f98e1ff89ee9",
+      "text": "チップの消費電力は、ノート45〜80、ミニPC140ワット。"
+    },
+    "2saw": {
+      "source_hash": "0a50b905fb9d",
+      "text": "冒頭の一文はNVIDIAが5月末に台北で出したプレスリリースから。"
+    },
+    "rvyh": {
+      "source_hash": "ea1bac7db5f7",
+      "text": "訳すと、1200億パラメータの大規模言語モデルが動く。"
+    },
+    "5atc": {
+      "source_hash": "c0d84e489b3a",
+      "text": "普通のノートのメモリは主にCPU用、ゲーミングノートはGPUに別途少し。"
+    },
+    "td4z": {
+      "source_hash": "739644f7e890",
+      "text": "RTX Sparkはユニファイドメモリ、CPUとGPU共有。"
+    },
+    "bmxq": {
+      "source_hash": "455eb173e9d7",
+      "text": "GPUが使える量はWindowsが制限、5月の発表に数字なし。"
+    },
+    "yuve": {
+      "source_hash": "ae687fb58c02",
+      "text": "モデルに必要なメモリは？"
+    },
+    "cens": {
+      "source_hash": "143d43395450",
+      "text": "まずパラメータ。モデルが学んだ大量の数字です。"
+    },
+    "v79x": {
+      "source_hash": "953524c86f85",
+      "text": "数字1つを16ビットで保存すると、2バイト。"
+    },
+    "26a5": {
+      "source_hash": "fba218966d8e",
+      "text": "4ビットなら半バイト。この圧縮を量子化といいます。"
+    },
+    "6x2b": {
+      "source_hash": "b2c1460adb5d",
+      "text": "式は1行。パラメータ数かける1個のバイト数。"
+    },
+    "62hr": {
+      "source_hash": "8851486ba8fd",
+      "text": "Llama 3.3 70Bは、2をかけて141GB、0.5なら約35GB。"
+    },
+    "89kx": {
+      "source_hash": "5a491c0ce964",
+      "text": "自分のPCでモデルを動かすOllamaにも、同じモデルがあります。"
+    },
+    "q7tw": {
+      "source_hash": "7992f3d1c007",
+      "text": "16ビットのファイルは141GB。式と同じです。"
+    },
+    "4zmj": {
+      "source_hash": "2eaec2f4b3f5",
+      "text": "8ビットは75GBで少し多め。"
+    },
+    "tj2j": {
+      "source_hash": "45e6447e3766",
+      "text": "4ビットは40〜43GBで、式より1割強から2割強多いです。"
+    },
+    "uqcg": {
+      "source_hash": "ea43e2078368",
+      "text": "差は主に、圧縮時に足すスケール値。だから式は下限です。"
+    },
+    "uhun": {
+      "source_hash": "eb119a565955",
+      "text": "覚えてください。メモリは最低ファイル分必要です。"
+    },
+    "rxkq": {
+      "source_hash": "bcc95701c279",
+      "text": "冒頭に戻ると、1200億パラメータは4ビットで約60GB、128GBに入ります。"
+    },
+    "p9rk": {
+      "source_hash": "dee8722ace7e",
+      "text": "Llama 70Bはオリジナル版の16ビットだと141GBで、入りません。"
+    },
+    "veb5": {
+      "source_hash": "401148250beb",
+      "text": "差はパラメータ1個のバイト数だけです。"
+    },
+    "c8mw": {
+      "source_hash": "c2b6bd86bfcb",
+      "text": "16、64、128GB、それぞれ何が入る？"
+    },
+    "gzmm": {
+      "source_hash": "9779ab63a79b",
+      "text": "判定は、まずWindows 11の最低4GBを引きます。"
+    },
+    "ieht": {
+      "source_hash": "8c475f82b1c9",
+      "text": "残りより小さければ入る。全体より大きければ入らない。"
+    },
+    "xj2j": {
+      "source_hash": "bb6a71a4afba",
+      "text": "その間なら、きついと判定。"
+    },
+    "i55z": {
+      "source_hash": "651127ad0d01",
+      "text": "なお、メモリの1GBはファイルの1GBより少し大きく、表は換算済みです。"
+    },
+    "i3ft": {
+      "source_hash": "07d8dd151abe",
+      "text": "gpt-oss-20bは13.8GBで、16はきつく64以上で入る。"
+    },
+    "67f3": {
+      "source_hash": "9d5e3d541894",
+      "text": "Llama 70Bの4ビット版は43GBで、64GBからなら入ります。"
+    },
+    "jxzc": {
+      "source_hash": "13c9d74c2a99",
+      "text": "gpt-oss-120bは65.2GB、64GBクラスはきつく128なら入る。"
+    },
+    "8jvg": {
+      "source_hash": "e7687c0dcb8a",
+      "text": "8ビットのLlamaは75GBで、入るのは128GBだけ。"
+    },
+    "r2ah": {
+      "source_hash": "a75466c23d6d",
+      "text": "オリジナル版Llamaは141GB、128でも入らない。"
+    },
+    "cwn7": {
+      "source_hash": "3f98b64591e8",
+      "text": "DeepSeek-V4-Flashは160GB近く、3つとも入りません。"
+    },
+    "pt7g": {
+      "source_hash": "c6b0832a83ff",
+      "text": "128GBなら4千50億パラメータのモデルも動く、と聞いたことは？"
+    },
+    "6p8h": {
+      "source_hash": "fd8bd73493b5",
+      "text": "計算すると4千50億かける0.5で200GB超。やはり入りません。"
+    },
+    "2y24": {
+      "source_hash": "772bc686233d",
+      "text": "では、家の128GBのPC2台で256GBにできる？"
+    },
+    "5cse": {
+      "source_hash": "6644dc6775c0",
+      "text": "NVIDIAのPAIRは、家の複数のPCに仕事を分けるツール。"
+    },
+    "8jt5": {
+      "source_hash": "92784feb7936",
+      "text": "ただ公式は明言：複数台を1つの仮想GPUにはしない。"
+    },
+    "c876": {
+      "source_hash": "47dad8063ba1",
+      "text": "コンテキスト、つまり一度に読む内容もメモリを食う。"
+    },
+    "pii9": {
+      "source_hash": "3153bdaf9a44",
+      "text": "gpt-oss-120bが最長まで読むと、さらに4.8GB、合計約70GB。"
+    },
+    "dym6": {
+      "source_hash": "99ddf8398cc5",
+      "text": "OpenAIによるとgpt-oss-20bは16GBメモリで動く。"
+    },
+    "ttk7": {
+      "source_hash": "e186c2216cb9",
+      "text": "でも16GBのPCに入れると残り4GB未満。"
+    },
+    "dqk7": {
+      "source_hash": "8d0edad7eaa9",
+      "text": "64GBクラスでgpt-oss-120bも、残りは4GB未満。"
+    },
+    "wyya": {
+      "source_hash": "d3131a3696bd",
+      "text": "Windows 11だけで最低4GB、この2つはきつい。"
+    },
+    "hcs5": {
+      "source_hash": "30b41ffd0cd0",
+      "text": "実際に試しますか？"
+    },
+    "9paj": {
+      "source_hash": "65017a916ffd",
+      "text": "概要欄1行目の中国語の記事が、OllamaでDeepSeekを自分のPCで動かす手順を解説。"
+    },
+    "uih3": {
+      "source_hash": "13ccf45c9bec",
+      "text": "入るとわかったら、次はどれだけ速いか？"
+    },
+    "pyma": {
+      "source_hash": "9830dc99fdd6",
+      "text": "NVIDIA製品ページのAI演算性能の記述がこれです。"
+    },
+    "cym2": {
+      "source_hash": "b2fdf9190697",
+      "text": "つまり最大で毎秒1000兆回の4ビット演算。"
+    },
+    "3xvu": {
+      "source_hash": "f788ce73c3b5",
+      "text": "公表済みは演算性能、メモリ容量、消費電力、帯域の毎秒300GB。"
+    },
+    "6jug": {
+      "source_hash": "11cd03d2b87c",
+      "text": "9月末時点の未公表は、毎秒何トークン出せるか。"
+    },
+    "9qt3": {
+      "source_hash": "d33167f08c56",
+      "text": "トークンはモデルが文字を扱う小単位。"
+    },
+    "xzup": {
+      "source_hash": "d4f37066d746",
+      "text": "実機がないので、本当の速度は出荷後の実名のレビュー待ちです。"
+    },
+    "d7e6": {
+      "source_hash": "e60d82a94701",
+      "text": "メモリ帯域はなぜ重要？"
+    },
+    "k42r": {
+      "source_hash": "95b51dba3f9b",
+      "text": "長文の読み込みは主に演算性能次第。"
+    },
+    "ajv4": {
+      "source_hash": "7933893689fe",
+      "text": "1語ずつの回答は毎ステップ、メモリからパラメータを運ぶ。壁は帯域。"
+    },
+    "msnd": {
+      "source_hash": "ae71eb601e49",
+      "text": "帯域がわかれば回答速度の上限が出ます。"
+    },
+    "rv27": {
+      "source_hash": "61f439ae64cd",
+      "text": "上限を出すなら、まず1ステップで運ぶ量。構造で大差です。"
+    },
+    "uc8u": {
+      "source_hash": "77482e632448",
+      "text": "Llama 70Bは1トークンごとに、700億超のパラメータ全部を動かす。"
+    },
+    "wm6a": {
+      "source_hash": "15c6e553ba2f",
+      "text": "gpt-oss-120bは混合エキスパート型。"
+    },
+    "k3zx": {
+      "source_hash": "4745acd06d37",
+      "text": "総数1170億、1回に動くのは51億だけ。"
+    },
+    "kpbj": {
+      "source_hash": "7a2b1313b76e",
+      "text": "十数倍少なく、ずっと速いかも。ただ比率で、実測ではない。"
+    },
+    "j4w5": {
+      "source_hash": "575f59010d59",
+      "text": "gpt-oss-120bオリジナル版は毎回約5GB読む。"
+    },
+    "ujr7": {
+      "source_hash": "84a64a7abb5d",
+      "text": "エキスパートは4ビット強、他は16ビット。"
+    },
+    "3s2v": {
+      "source_hash": "1beb36ea8374",
+      "text": "次の2つの数字は、どちらも1ステップ1トークンの理論上限。"
+    },
+    "wxrv": {
+      "source_hash": "6c6c847279f2",
+      "text": "毎秒300GB割る35GBで、Llamaは毎秒最大8トークン強。"
+    },
+    "efif": {
+      "source_hash": "e567bc03603e",
+      "text": "gpt-oss-120bオリジナル版は300割る5で、最大約60トークン。"
+    },
+    "a5ye": {
+      "source_hash": "3176308b24db",
+      "text": "コンテキストや他の処理も帯域を食い、実際はより遅い。"
+    },
+    "9cfz": {
+      "source_hash": "485c0b390822",
+      "text": "RTX Sparkの別の売りは裏で動き続けるAIエージェント。"
+    },
+    "6wyn": {
+      "source_hash": "8bbdf15ba74f",
+      "text": "NVIDIAによると、エージェントはOSの管理下、裏で安全に動く。"
+    },
+    "u5iy": {
+      "source_hash": "bbde53ecb4b5",
+      "text": "Microsoftの実行コンテナMXCは、ポリシー外のファイルとドメインを遮断。"
+    },
+    "kna8": {
+      "source_hash": "1593d6aaa7c5",
+      "text": "エージェントは専用アカウント。記録はあなたと別。"
+    },
+    "rab2": {
+      "source_hash": "59fb18a8f2dc",
+      "text": "ただMicrosoftは6月、早期プレビューとし、多くはテスト版Windowsで。"
+    },
+    "akm3": {
+      "source_hash": "65b96e24bc47",
+      "text": "私の考えでは、安全は本当に止める仕組み。プロンプトの「ダメ」ではない。"
+    },
+    "uzk6": {
+      "source_hash": "c8ee8d672a9a",
+      "text": "エージェントを閉じ込める3つの壁は、政府ポータル侵入の回で実演済み。"
+    },
+    "k76b": {
+      "source_hash": "146b238de586",
+      "text": "次はお金。クラウドは月額制。"
+    },
+    "85b5": {
+      "source_hash": "4e310d5dc631",
+      "text": "たとえばClaudeのProプランは、9月末時点で月払い20ドル。"
+    },
+    "45uq": {
+      "source_hash": "8db0da1777c4",
+      "text": "利用枠は5時間ごとリセット、週上限も。"
+    },
+    "e55p": {
+      "source_hash": "e4df1ab5f1c8",
+      "text": "自分のマシンは一括払い、ただ電気代は別。"
+    },
+    "hh47": {
+      "source_hash": "07ef7d047b2b",
+      "text": "RTX Sparkの価格は9月末時点でNVIDIA製品ページに未掲載。"
+    },
+    "yhk5": {
+      "source_hash": "fc0e77c62821",
+      "text": "元を取る月数は、マシンの追加費用割る月々浮くサブスク代。"
+    },
+    "fjvj": {
+      "source_hash": "a703d97c3bed",
+      "text": "1000ドル多く払うごとに、月20ドルのサブスクなら50か月。"
+    },
+    "2v5v": {
+      "source_hash": "e3d32a6a653c",
+      "text": "電気代はPC全体の実測でなくチップの消費電力で概算。"
+    },
+    "kn4k": {
+      "source_hash": "e349d92d4fbb",
+      "text": "ミニPCは140ワット終日で月約100キロワット時。"
+    },
+    "d45i": {
+      "source_hash": "5e814dd8154d",
+      "text": "ノートは80ワットで1日8時間、月約19キロワット時。"
+    },
+    "3b5q": {
+      "source_hash": "4d7d68cf70ab",
+      "text": "あとは電気料金の単価をかけるだけ。"
+    },
+    "6jas": {
+      "source_hash": "5764cc45adb8",
+      "text": "では、買うべきでしょうか？"
+    },
+    "7ewf": {
+      "source_hash": "3888fef591c2",
+      "text": "私は代わりに答えません。一番重視するのは何ですか？"
+    },
+    "t76u": {
+      "source_hash": "516db92a43f0",
+      "text": "私の考えでは、プライバシーはローカルが最適。データが外に出ない。"
+    },
+    "ppxc": {
+      "source_hash": "6561b9c464b7",
+      "text": "品質ならクラウド向き。最強モデルは今もクラウド。"
+    },
+    "8a5b": {
+      "source_hash": "90dcb2baf5bc",
+      "text": "コストなら、まず先ほどの式で元を取る月数を計算。"
+    },
+    "n97c": {
+      "source_hash": "f183dbed7ecf",
+      "text": "速度なら出荷後の実機レビュー待ち。"
+    },
+    "egi5": {
+      "source_hash": "550d86bf3420",
+      "text": "ではローカルAIはChatGPTの代わりになる？"
+    },
+    "2cph": {
+      "source_hash": "d3d6277228ab",
+      "text": "私の考えでは、家に置くべき毎日の作業はローカルに移す価値あり。"
+    },
+    "wdr5": {
+      "source_hash": "f9fa4840cb86",
+      "text": "データがクラウドOKで最強モデルが要るなら、サブスクが得かも。"
+    },
+    "sji9": {
+      "source_hash": "bcdbedb7aa85",
+      "text": "タスクマネージャーのパフォーマンスでメモリと専用GPUメモリをメモ。"
+    },
+    "wdpg": {
+      "source_hash": "98e4a099664b",
+      "text": "次に動かしたいモデルを選び、今回の式で計算。"
+    }
+  }
+}

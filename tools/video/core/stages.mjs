@@ -4,10 +4,10 @@
 import { existsSync, rmSync } from "node:fs";
 import path from "node:path";
 
-import { DEFAULT_DUB_LOCALES, dubScript, translationHash } from "../dubs/plan.mjs";
+import { defaultDubLocales, dubScript, translationHash } from "../dubs/plan.mjs";
 import { buildCues, checkCues, toSrt, toVtt } from "./captions.mjs";
 import { atomicWrite, readJson } from "./paths.mjs";
-import { eachLine, LOCALES, NARRATION_LOCALE, textHash } from "./schema.mjs";
+import { eachLine, LOCALES, NARRATION_LOCALE, narrationLocale, textHash } from "./schema.mjs";
 import { ARTIFACTS, dubArtifacts, lintProject, loadProject, recordStage } from "./state.mjs";
 import { checkChapters, speechHash } from "./timeline.mjs";
 
@@ -62,12 +62,13 @@ export function captionLocalesOf(languages) {
   return chosen ? [NARRATION_LOCALE, ...chosen] : [...LOCALES];
 }
 
-/** The text each locale shows for each line; translations older than their zh-TW line are left out. */
+/** The text each locale shows for each line; translations older than their narration line are left out. */
 export function localeTexts(doc, translations) {
-  const texts = { [NARRATION_LOCALE]: {} };
+  const narration = narrationLocale(doc);
+  const texts = { [narration]: {} };
   const skipped = {};
-  for (const { line } of eachLine(doc)) texts[NARRATION_LOCALE][line.id] = line.text;
-  for (const locale of LOCALES.filter((each) => each !== NARRATION_LOCALE)) {
+  for (const { line } of eachLine(doc)) texts[narration][line.id] = line.text;
+  for (const locale of LOCALES.filter((each) => each !== narration)) {
     const translation = translations[locale];
     if (!translation) continue;
     texts[locale] = {};
@@ -104,7 +105,7 @@ export const dubRole = (locale) => `dub_${locale.toLowerCase().replace(/-/g, "_"
  * zh-CN without one), and the locales the worker gave up on with its reason. A locale the worker
  * gave up on stays skipped even when an older track of it exists: the reason is the last word.
  */
-export function dubsForUpload(project, workdir, speech, locales = DEFAULT_DUB_LOCALES) {
+export function dubsForUpload(project, workdir, speech, locales = defaultDubLocales(project.doc)) {
   const dubs = [];
   const skipped = {};
   for (const locale of locales) {
@@ -135,12 +136,13 @@ export function captionTimelineOf(dub) {
 }
 
 /**
- * Write captions/<locale>.srt and .vtt for zh-TW and every chosen locale whose translation is
- * complete and current (every translated locale when no choice was written). A locale with
- * missing or stale lines is reported and not written: a caption track that silently skips
- * sentences is worse than none. A locale with a current dub is cut on the dub's timing, so a
- * viewer who picks that audio and those captions reads what they hear, when they hear it. The
- * files of a locale not written this run are removed, so captions/ holds exactly the current set.
+ * Write captions/<locale>.srt and .vtt for the narration locale, zh-TW and every chosen locale
+ * whose translation is complete and current (every translated locale when no choice was
+ * written). A locale with missing or stale lines is reported and not written: a caption track
+ * that silently skips sentences is worse than none. A locale with a current dub is cut on the
+ * dub's timing, so a viewer who picks that audio and those captions reads what they hear, when
+ * they hear it. The files of a locale not written this run are removed, so captions/ holds
+ * exactly the current set.
  */
 export function runCaptions({ slug, file, root, workdir, now = new Date() }) {
   const project = loadProject({ slug, file, root });
@@ -152,8 +154,8 @@ export function runCaptions({ slug, file, root, workdir, now = new Date() }) {
   if (timeline.speech_hash !== speech) throw new StageError("timeline.json was built for an older script; run tts again", "order");
 
   const languages = readLanguages(workdir);
-  const wanted = new Set(captionLocalesOf(languages));
-  const dubLocales = chosenLocales(languages, "dub") ?? DEFAULT_DUB_LOCALES;
+  const wanted = new Set([narrationLocale(project.doc), ...captionLocalesOf(languages)]);
+  const dubbed = chosenLocales(languages, "dub") ?? defaultDubLocales(project.doc);
   const { texts, skipped } = localeTexts(project.doc, project.translations);
   const manifest = { speech_hash: speech, chapters: checkChapters(timeline), locales: {}, skipped: {} };
   for (const [locale, byLine] of Object.entries(texts)) {
@@ -162,7 +164,7 @@ export function runCaptions({ slug, file, root, workdir, now = new Date() }) {
       manifest.skipped[locale] = skipped[locale];
       continue;
     }
-    const dub = locale === NARRATION_LOCALE || !dubLocales.includes(locale) ? null : currentDub(project, workdir, locale, speech);
+    const dub = locale === narrationLocale(project.doc) || !dubbed.includes(locale) ? null : currentDub(project, workdir, locale, speech);
     const timed = dub && !dub.stale;
     const { cues } = buildCues(timed ? captionTimelineOf(dub) : timeline, byLine, locale);
     atomicWrite(path.join(workdir, "captions", `${locale}.srt`), toSrt(cues));

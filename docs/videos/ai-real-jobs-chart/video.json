@@ -1,0 +1,943 @@
+{
+  "schema_version": 1,
+  "slug": "ai-real-jobs-chart",
+  "format": "slides",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a natural Taiwanese accent. Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace."
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "AI 已經能做完 21% 的真實接案工作，去年十月只有 2.5%：AI 會取代你的工作嗎？",
+    "description": "有一個基準測試收集了 240 個真實專案，多數是付費的自由接案工作。十一個月內，最強的 AI 以客戶會接受的品質完成的專案比例，從 2.5% 升到 20.83%。這支影片會講清楚這個測驗在量什麼、為什麼公司還是照樣裁員，以及怎麼把你自己的工作一項一項拿來檢查。\n\n數字來自 Scale AI 與 AI 安全中心（Center for AI Safety）的 Remote Labor Index（遠端勞動指數）、2026 年 9 月 28 日讀取的公開排行榜，以及 Challenger, Gray & Christmas 的 2026 年 8 月裁員報告。影片中對一份真實職務說明的逐項判讀，是站主的個人意見，影片裡也標明了。這裡的任何內容都不是職涯或財務建議。\n\n任務清單：資訊取自美國勞工部就業與訓練管理局（U.S. Department of Labor, Employment and Training Administration，USDOL/ETA）的 O*NET OnLine，依 CC BY 4.0 授權使用（https://creativecommons.org/licenses/by/4.0/）。O*NET® 是 USDOL/ETA 的商標。影片中的任務敘述經過縮短並譯成中文；USDOL/ETA 並未核准、背書或測試這些修改。\n\n錄製日期：2026 年 9 月 28 日。",
+    "tags": [
+      "AI 取代工作",
+      "AI 會取代我的工作嗎",
+      "哪些工作會被 AI 取代",
+      "AI 裁員",
+      "AI 取代工作 2026",
+      "AI 96% 工作做不到",
+      "AI 自動化率",
+      "AI 接案",
+      "遠端勞動指數",
+      "Remote Labor Index",
+      "GPT-6 Astra",
+      "Claude Fable 5"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "真實接案工作",
+      "headline": "2.5% → **21%**",
+      "sub": "十一個月內"
+    }
+  },
+  "sources": [
+    {
+      "title": "Scale AI: The Remote Labor Index, measuring the automation of work",
+      "url": "https://scale.com/blog/rli",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Remote Labor Index: Measuring AI Automation of Remote Work (paper)",
+      "url": "https://arxiv.org/abs/2510.26787",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Scale Labs leaderboard: Remote Labor Index",
+      "url": "https://labs.scale.com/leaderboard/rli",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Center for AI Safety: A significant increase in digital labor automation",
+      "url": "https://safe.ai/blog/significant-increase-in-digital-labor-automation",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Challenger, Gray & Christmas: August 2026 job cuts report",
+      "url": "https://www.challengergray.com/blog/challenger-report-august-job-cuts-up-58-consumer-products-food-lead/",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Challenger, Gray & Christmas: Job Cut Announcement Report, August 2026 (PDF, for release September 3, 2026)",
+      "url": "https://www.challengergray.com/wp-content/uploads/2026/09/Challenger-Report-August-2026.pdf",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "O*NET OnLine: Market Research Analysts and Marketing Specialists, 13-1161.00",
+      "url": "https://www.onetonline.org/link/summary/13-1161.00",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "ColdFusion: AI Fails at 96% of Jobs (New Study), February 2026",
+      "url": "https://www.youtube.com/watch?v=z3kaLM8Oj4o",
+      "checked_on": "2026-09-28"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook",
+      "chapter": "AI 做不到 96% 的工作？這個數字變了",
+      "template": "title",
+      "data": {
+        "tag": "真實接案工作",
+        "title": "AI 現在能做完\n**21%** 的真實接案工作",
+        "subtitle": "去年十月還只有 2.5%。這條曲線，對你的工作代表什麼？"
+      },
+      "claims": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "eqsu",
+          "text": "今年二月，有一支廣為流傳的影片說，AI 在 96% 的真實工作上都會失敗。在當時，這句話沒有錯。",
+          "say": "今年二月，有一支廣為流傳的影片說，AI 在百分之九十六的真實工作上都會失敗。在當時，這句話沒有錯。",
+          "say_for": "f39eb64c1359"
+        }
+      ]
+    },
+    {
+      "id": "hook-numbers",
+      "template": "stats",
+      "data": {
+        "title": "最強的 AI 能完成的真實付費專案",
+        "stats": [
+          {
+            "value": "2.5%",
+            "label": "去年十月"
+          },
+          {
+            "value": "≈ 21%",
+            "label": "現在",
+            "note": "同一個測驗"
+          }
+        ]
+      },
+      "claims": [
+        "c2",
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "z8yk",
+          "text": "同一個測驗現在顯示，最強的 AI 可以完成大約 21% 的真實付費專案。去年十月，這個數字還只有 2.5%。"
+        }
+      ]
+    },
+    {
+      "id": "hook-roadmap",
+      "template": "bullets",
+      "data": {
+        "title": "接下來",
+        "items": [
+          "這個測驗在量什麼",
+          "為什麼公司還是照樣裁員",
+          "三個問題：這對你的工作代表什麼"
+        ]
+      },
+      "lines": [
+        {
+          "id": "md86",
+          "text": "接下來我會告訴你，這個測驗在量什麼、為什麼公司還是照樣裁員，還有三個問題，讓你知道這對你的工作代表什麼。"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "chapter": "Remote Labor Index：這個測驗在量什麼",
+      "template": "steps",
+      "data": {
+        "title": "遠端勞動指數怎麼測",
+        "steps": [
+          {
+            "title": "真實專案",
+            "detail": "240 個，多數是\n付費的接案工作"
+          },
+          {
+            "title": "23 類工作",
+            "detail": "設計、3D、\n資料、影片、\n音訊、程式"
+          },
+          {
+            "title": "同一份需求",
+            "detail": "需求和檔案，\n都跟接案者一樣"
+          },
+          {
+            "title": "人工評審",
+            "detail": "跟專業人士做的\n一樣好嗎？"
+          }
+        ]
+      },
+      "claims": [
+        "c4",
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "xjp3",
+          "text": "這個測驗叫做遠端勞動指數，是 Scale AI 和 AI 安全中心一起做的。"
+        },
+        {
+          "id": "nsjk",
+          "text": "他們收集了 240 個真實專案，多數是付費的自由接案工作，橫跨 23 類工作。",
+          "reveal": 2
+        },
+        {
+          "id": "hkyj",
+          "text": "每個 AI 拿到的需求說明和檔案，都跟當初的接案者一模一樣。",
+          "reveal": 1
+        },
+        {
+          "id": "mafu",
+          "text": "接著，人工評審只問一個問題：這份成果有沒有跟專業人士做的一樣好，好到客戶會接受？",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "stakes",
+      "template": "stats",
+      "data": {
+        "title": "這些專案值多少",
+        "stats": [
+          {
+            "value": "240",
+            "label": "個真實專案"
+          },
+          {
+            "value": "11.5\n小時",
+            "label": "專業人士的\n工時中位數"
+          },
+          {
+            "value": "200\n美元",
+            "label": "價值的中位數"
+          },
+          {
+            "value": "14.4\n萬美元",
+            "label": "專案合計價值",
+            "note": "$143,991"
+          }
+        ],
+        "source": "Scale AI 與 AI 安全中心，2025 年 10 月"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "h865",
+          "text": "這些不是隨便出的小題目，一共有 240 個專案。",
+          "reveal": 1
+        },
+        {
+          "id": "qarp",
+          "text": "以中位數來看，一個專案要花專業人士大約 11 個半小時。價值的中位數，大約是 200 美元。",
+          "reveal": 2
+        },
+        {
+          "id": "dr78",
+          "text": "這些專案加起來，總價值大約 14 萬 4 千美元。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "rate",
+      "template": "big",
+      "data": {
+        "kicker": "自動化率",
+        "text": "跟人一樣好或更好\n÷ 所有專案",
+        "sub": "在所有專案裡，AI 的成果被評為跟人一樣好、甚至更好的比例"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "x4it",
+          "text": "自動化率的意思很簡單：在所有專案裡，AI 的成果被評為跟人一樣好、甚至更好的，占了多少比例。"
+        }
+      ]
+    },
+    {
+      "id": "curve",
+      "chapter": "AI 進步曲線：11 個月從 2.5% 到 21%",
+      "template": "table",
+      "data": {
+        "title": "排行榜上的最佳自動化率",
+        "columns": [
+          "時間",
+          "最強的 AI 系統",
+          "自動化率"
+        ],
+        "rows": [
+          [
+            "2025 年 10 月，推出時",
+            "Manus",
+            "2.5%"
+          ],
+          [
+            "2026 年 2 月",
+            "Claude Opus 4.5 thinking",
+            "3.75%"
+          ],
+          [
+            "2026 年 7 月",
+            "Claude Fable 5",
+            "15.8%"
+          ],
+          [
+            "2026 年 9 月 28 日",
+            "GPT-6 Astra",
+            "20.83%"
+          ]
+        ],
+        "highlight": 3
+      },
+      "claims": [
+        "c1",
+        "c2",
+        "c3",
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "raaw",
+          "text": "再來看曲線。去年十月剛推出時，最強的是一個叫 Manus 的 AI 代理，完成了 2.5% 的專案。",
+          "reveal": 1
+        },
+        {
+          "id": "cign",
+          "text": "到了二月，最好的成績是 3.75%。那個「96% 失敗」的標題，就是從這裡來的。",
+          "say": "到了二月，最好的成績是百分之三點七五。那個「百分之九十六失敗」的標題，就是從這裡來的。",
+          "say_for": "f4c440fc367c",
+          "reveal": 1
+        },
+        {
+          "id": "dgig",
+          "text": "AI 安全中心的報告指出，到了七月，Claude Fable 5 達到 15.8%。",
+          "say": "AI 安全中心的報告指出，到了七月，Claude 的 Fable 五，達到百分之十五點八。",
+          "say_for": "30c4e7e49583",
+          "reveal": 1
+        },
+        {
+          "id": "pukd",
+          "text": "而今天的排行榜上，GPT-6 Astra 是 20.83%，Claude Fable 5.1 緊追在後。",
+          "say": "而今天的排行榜上，GPT-6 Astra 是百分之二十點八三，Claude 的 Fable 五點一緊追在後。",
+          "say_for": "c3ef5a13426b",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "eightfold",
+      "template": "stats",
+      "data": {
+        "title": "最強的 AI：從 2.5% 到 20.83%",
+        "stats": [
+          {
+            "value": "8 倍多",
+            "label": "十一個月內\n成績的成長"
+          },
+          {
+            "value": "≈ 4 / 5",
+            "label": "最強的 AI\n仍會失敗的真實專案"
+          }
+        ]
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "kdwz",
+          "text": "也就是說，十一個月內，成績變成原來的八倍多。"
+        },
+        {
+          "id": "7yny",
+          "text": "但這也代表，最強的 AI 每五個真實專案，還是有大約四個會失敗。這兩件事同時成立。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "rejected",
+      "chapter": "AI 還會做錯什麼",
+      "template": "bullets",
+      "data": {
+        "title": "推出時，AI 的成果為什麼被退件",
+        "items": [
+          "品質不到專業水準：45.6%",
+          "不完整或格式錯誤：35.7%",
+          "技術或檔案問題：17.6%",
+          "檔案之間對不起來：14.8%"
+        ],
+        "note": "占被退件成果的比例；一份成果可能有好幾個原因"
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "ygm7",
+          "text": "AI 為什麼會失敗？測驗推出時，研究人員把退件原因分了類，而且一個專案可能不只一個原因。"
+        },
+        {
+          "id": "y6mx",
+          "text": "將近一半，單純是品質不到專業水準。",
+          "reveal": 1
+        },
+        {
+          "id": "9zx8",
+          "text": "大約三分之一，是不完整或格式錯誤。",
+          "reveal": 1
+        },
+        {
+          "id": "2hih",
+          "text": "大約六分之一有技術或檔案問題，大約七分之一是檔案之間對不起來。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "frontier",
+      "template": "compare",
+      "data": {
+        "title": "最新的模型做到哪裡了",
+        "left": {
+          "heading": "七月：Fable 5 做了這三件",
+          "points": [
+            "3D 戒指改款設計",
+            "扁平風格 2D 動畫廣告",
+            "平面圖附渲染圖"
+          ]
+        },
+        "right": {
+          "heading": "有進步，但還不能交件",
+          "points": [
+            "戒指：比以前的 AI 成果好很多",
+            "三件都還不會被當成完成品"
+          ]
+        }
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "ztcf",
+          "text": "七月的報告看得出方向。Fable 5 做了 3D 戒指改款、扁平動畫廣告，和附渲染圖的平面圖。",
+          "reveal": 1
+        },
+        {
+          "id": "8vis",
+          "text": "研究人員說，那枚戒指比以前的 AI 成果好很多，但他們也說，這三件都還不會被當成完成品接受。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "out-of-reach",
+      "template": "big",
+      "data": {
+        "kicker": "也有些工作，AI 還是做不到",
+        "text": "把音樂寫成樂譜\n試玩測試即時遊戲"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "9j6u",
+          "text": "也有些工作，AI 還是做不到，像是把音樂寫成樂譜，或是試玩測試一款即時遊戲。"
+        }
+      ]
+    },
+    {
+      "id": "graders",
+      "template": "stats",
+      "data": {
+        "title": "讓 AI 來評 AI",
+        "stats": [
+          {
+            "value": "≈ 3 倍",
+            "label": "AI 評審高估 GPT-5.5 的程度"
+          },
+          {
+            "value": "≈ 2.5 倍",
+            "label": "高估 Opus 4.8 的程度"
+          }
+        ],
+        "source": "AI 安全中心，2026 年 7 月：所以測驗才用人工評審"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "htip",
+          "text": "還有一個細節，跟你的辦公室有關。研究人員讓 AI 來評 AI 的時候，AI 評審把成果高估了。"
+        },
+        {
+          "id": "uwbw",
+          "text": "GPT-5.5 被高估了大約三倍，Opus 4.8 大約兩倍半。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "graders-view",
+      "template": "big",
+      "data": {
+        "kicker": "我的解讀",
+        "text": "AI 評 AI\n比客戶給的更樂觀",
+        "sub": "如果你的公司請另一個 AI 來評 AI 的成果"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "a8f7",
+          "text": "我的解讀是：如果你的公司請另一個 AI 來評 AI 的成果，得到的評價會比客戶給的更樂觀。"
+        }
+      ]
+    },
+    {
+      "id": "layoffs",
+      "chapter": "那公司為什麼還以 AI 為由裁員？",
+      "template": "stats",
+      "data": {
+        "title": "2026 年，美國雇主以 AI 為由的裁員",
+        "stats": [
+          {
+            "value": "116,175",
+            "label": "1 到 8 月\n以 AI 為由的裁員"
+          },
+          {
+            "value": "≈ 22%",
+            "label": "占所有宣布的裁員"
+          },
+          {
+            "value": "5 個月",
+            "label": "3 到 7 月\nAI 都是頭號原因"
+          }
+        ],
+        "source": "Challenger, Gray & Christmas（挑戰者、格雷與克里斯瑪斯），2026 年 9 月 3 日的報告"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "fvxx",
+          "text": "再來看另一邊。挑戰者、格雷與克里斯瑪斯公司，專門統計美國企業宣布的裁員，和雇主給的理由。"
+        },
+        {
+          "id": "98gw",
+          "text": "今年一月到八月，雇主以 AI 為由的裁員，一共有 11 萬 6175 人。",
+          "reveal": 1
+        },
+        {
+          "id": "9s5c",
+          "text": "大約占所有宣布裁員的 22%。從三月到七月，AI 每個月都是頭號原因。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "august",
+      "template": "stats",
+      "data": {
+        "title": "到了 8 月",
+        "stats": [
+          {
+            "value": "第 4 大",
+            "label": "AI 退居的\n裁員原因"
+          },
+          {
+            "value": "3,462",
+            "label": "這個月\n以 AI 為由的裁員"
+          }
+        ],
+        "source": "一個月還不算趨勢，但值得繼續觀察"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "neb9",
+          "text": "到了八月，AI 退居第四大裁員原因，這個月是 3462 人。"
+        },
+        {
+          "id": "b7gr",
+          "text": "一個月還不算趨勢，但值得繼續觀察。"
+        }
+      ]
+    },
+    {
+      "id": "two-sentences",
+      "template": "compare",
+      "data": {
+        "title": "兩個不同的問題",
+        "left": {
+          "heading": "裁員公告",
+          "points": [
+            "以 AI 為核心重組",
+            "用更少的人做更多事",
+            "預算轉向 AI"
+          ]
+        },
+        "right": {
+          "heading": "基準測試",
+          "points": [
+            "AI 能交出整個專案嗎？",
+            "客戶會接受嗎？",
+            "現在：大約 5 個有 1 個"
+          ]
+        }
+      },
+      "lines": [
+        {
+          "id": "hgvq",
+          "text": "這兩件事怎麼會同時成立？因為裁員公告和基準測試，回答的是不同的問題。"
+        },
+        {
+          "id": "g23i",
+          "text": "裁員公告說的是：公司要以 AI 為核心重組，期待用更少的人做更多事，或是把錢轉到 AI 上。",
+          "reveal": 1
+        },
+        {
+          "id": "i3ws",
+          "text": "基準測試問的是：AI 能不能交出客戶會接受的整個專案？現在，大約是五個有一個。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "my-view",
+      "template": "steps",
+      "data": {
+        "title": "我的解讀：公司不會等到五個都做得到",
+        "steps": [
+          {
+            "title": "AI 已經讓\n任務變快"
+          },
+          {
+            "title": "在那裡裁員"
+          },
+          {
+            "title": "留下比較少的人",
+            "detail": "檢查剩下的部分"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "sg7d",
+          "text": "我的解讀是：公司不會等到五個都做得到。"
+        },
+        {
+          "id": "6d9q",
+          "text": "我覺得，公司會在 AI 已經讓任務變快的地方裁員，再留下比較少的人，檢查剩下的部分。"
+        }
+      ]
+    },
+    {
+      "id": "three-questions",
+      "chapter": "用三個問題，檢查你自己的工作",
+      "template": "steps",
+      "data": {
+        "title": "一項一項任務來問",
+        "steps": [
+          {
+            "title": "AI 能起草嗎？",
+            "detail": "做成你打得開、\n檢查得了的東西"
+          },
+          {
+            "title": "誰來檢查？",
+            "detail": "你、同事，還是客戶"
+          },
+          {
+            "title": "做錯的代價多大？",
+            "detail": "改一改就好，\n還是要花大錢收拾"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "6baw",
+          "text": "所以，要怎麼用這張圖看你自己的工作？別問 AI 能不能做你的工作，要一項一項任務來問。"
+        },
+        {
+          "id": "cq7p",
+          "text": "第一，AI 能不能把這項任務，起草成你打得開、檢查得了的東西？",
+          "reveal": 1
+        },
+        {
+          "id": "edqy",
+          "text": "第二，誰來檢查？你、同事，還是客戶？",
+          "reveal": 1
+        },
+        {
+          "id": "9mdx",
+          "text": "第三，做錯一次的代價有多大？是改一改就好，還是要花大錢收拾？",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "demo",
+      "template": "table",
+      "data": {
+        "title": "我的判讀：一份真實工作，逐項看",
+        "columns": [
+          "O*NET 13-1161.00 任務（縮短中譯）",
+          "AI 能起草嗎？",
+          "誰檢查"
+        ],
+        "rows": [
+          [
+            "報告與圖表",
+            "可以，現在就行",
+            "你"
+          ],
+          [
+            "顧客資料分析",
+            "可以，用你的資料",
+            "你"
+          ],
+          [
+            "競爭對手價格",
+            "可以，要查來源",
+            "你"
+          ],
+          [
+            "產業趨勢",
+            "可以，現在就行",
+            "你"
+          ]
+        ]
+      },
+      "claims": [
+        "c12",
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "fkh7",
+          "text": "我們拿一份真實的職務說明來試試：美國勞工部官方的市場研究分析師任務清單。"
+        },
+        {
+          "id": "bevd",
+          "text": "清單上有十三項任務，這裡挑出八項，每一項都附上我的判讀。這是意見，不是測量結果。"
+        },
+        {
+          "id": "2p9b",
+          "text": "報告、圖表、顧客資料、競爭對手價格、產業趨勢：這些 AI 今天都能起草，再由你檢查。",
+          "reveal": 4
+        }
+      ]
+    },
+    {
+      "id": "demo-people",
+      "template": "table",
+      "data": {
+        "title": "我的判讀：初稿和人的工作",
+        "columns": [
+          "O*NET 13-1161.00 任務（縮短中譯）",
+          "AI 能起草嗎？",
+          "誰檢查"
+        ],
+        "rows": [
+          [
+            "問卷設計",
+            "一份初稿",
+            "你"
+          ],
+          [
+            "行銷活動成效",
+            "部分可以",
+            "你"
+          ],
+          [
+            "督導訪員",
+            "不行，是人的工作",
+            "—"
+          ],
+          [
+            "向主管提案",
+            "只能做簡報",
+            "—"
+          ]
+        ]
+      },
+      "claims": [
+        "c12",
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "zb5d",
+          "text": "問卷設計和行銷成效評估：AI 先給一份初稿，真正的判斷還是要靠你。",
+          "reveal": 2
+        },
+        {
+          "id": "ss53",
+          "text": "督導訪員和向主管簡報，是人的工作。AI 可以寫簡報，但沒辦法替你站在會議室裡。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "count",
+      "template": "stats",
+      "data": {
+        "title": "我對這份工作的計數",
+        "stats": [
+          {
+            "value": "4 / 8",
+            "label": "AI 起草，你檢查"
+          },
+          {
+            "value": "2 / 8",
+            "label": "頂多是初稿"
+          },
+          {
+            "value": "2 / 8",
+            "label": "人的工作"
+          }
+        ],
+        "source": "站主對 8 項 O*NET 任務的判讀；是意見，不是測量結果"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "udm6",
+          "text": "所以照我的計數，八項任務裡，有四項是 AI 今天就能起草的，兩項頂多是初稿，兩項是人的工作。",
+          "reveal": 3
+        }
+      ]
+    },
+    {
+      "id": "count-zero",
+      "template": "big",
+      "data": {
+        "kicker": "可以不檢查就放心交出去的任務",
+        "text": "0 / 8",
+        "sub": "五個有四個失敗，放到辦公桌上，就是這種感覺"
+      },
+      "claims": [
+        "c7",
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "g39p",
+          "text": "這八項，沒有一項可以不檢查就放心交出去。五個有四個失敗，放到辦公桌上，就是這種感覺。"
+        }
+      ]
+    },
+    {
+      "id": "this-week",
+      "template": "bullets",
+      "data": {
+        "title": "這週就拿你自己的工作來做",
+        "items": [
+          "寫下你最常做的 10 項任務",
+          "每一項都問那三個問題",
+          "標記：AI 起草、頂多初稿、人的工作",
+          "六個月後再做一次"
+        ]
+      },
+      "lines": [
+        {
+          "id": "z3fe",
+          "text": "這週就拿你自己的工作來做。寫下你最常做的十項任務。",
+          "reveal": 1
+        },
+        {
+          "id": "8yi9",
+          "text": "每一項都問那三個問題，然後標上：AI 起草、頂多初稿，或是人的工作。",
+          "reveal": 2
+        },
+        {
+          "id": "bk7j",
+          "text": "六個月後再做一次。這張圖上的數字，十一個月就變成八倍，所以我預期，你的清單也會跟著變。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "chapter": "所以，AI 會取代你的工作嗎？",
+      "template": "big",
+      "data": {
+        "kicker": "我的答案",
+        "text": "它先拿走的是**任務**",
+        "sub": "而且比二月那個標題暗示的還快"
+      },
+      "lines": [
+        {
+          "id": "rh8y",
+          "text": "所以，AI 會取代你的工作嗎？我的答案是：它先拿走的是任務，而且比二月那個標題暗示的還快。"
+        }
+      ]
+    },
+    {
+      "id": "outro-skill",
+      "template": "big",
+      "data": {
+        "kicker": "我的看法：有價值的能力",
+        "text": "分辨好成果\n和只差一點的成果",
+        "sub": "測驗還得靠人工評審的，就是這個部分"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "njt2",
+          "text": "我的看法：有價值的能力，是分辨好成果和只差一點的成果。測驗還得靠人工評審的，就是這個部分。"
+        }
+      ]
+    },
+    {
+      "id": "outro-card",
+      "template": "outro",
+      "data": {
+        "title": "它先拿走的是任務",
+        "cta": "你清單上的哪一項任務最先有變化？留言告訴我。",
+        "lines": [
+          "十一個月，從 2.5% 到 20.83%",
+          "每 5 個真實專案，仍有約 4 個失敗",
+          "檢查，仍然是人的工作"
+        ]
+      },
+      "claims": [
+        "c2",
+        "c3",
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "pxdi",
+          "text": "你清單上的哪一項任務最先有變化？留言告訴我。"
+        }
+      ]
+    }
+  ]
+}

@@ -43,27 +43,47 @@
     {
       "title": "Claude 說明中心：What are artifacts and how do I use them?",
       "url": "https://support.claude.com/en/articles/9487310-what-are-artifacts-and-how-do-i-use-them",
-      "checked_on": "2026-09-28"
+      "checked_on": "2026-09-29"
     },
     {
       "title": "Gemini Apps Help：Create docs, apps & more with Canvas",
       "url": "https://support.google.com/gemini/answer/16047321",
-      "checked_on": "2026-09-28"
+      "checked_on": "2026-09-29"
     },
     {
       "title": "GitHub Docs：GitHub Pages limits",
       "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits",
-      "checked_on": "2026-09-28"
+      "checked_on": "2026-09-29"
     },
     {
       "title": "Cloudflare Docs：Pages limits",
       "url": "https://developers.cloudflare.com/pages/platform/limits/",
-      "checked_on": "2026-09-28"
+      "checked_on": "2026-09-29"
     },
     {
       "title": "Creative Commons：About CC Licenses",
       "url": "https://creativecommons.org/share-your-work/cclicenses/",
-      "checked_on": "2026-09-28"
+      "checked_on": "2026-09-29"
+    },
+    {
+      "title": "OpenAI：Sites in ChatGPT",
+      "url": "https://learn.chatgpt.com/docs/sites",
+      "checked_on": "2026-09-29"
+    },
+    {
+      "title": "Cloudflare：Direct Upload",
+      "url": "https://developers.cloudflare.com/pages/get-started/direct-upload/",
+      "checked_on": "2026-09-29"
+    },
+    {
+      "title": "GitHub Docs：Creating a GitHub Pages site",
+      "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site",
+      "checked_on": "2026-09-29"
+    },
+    {
+      "title": "Creative Commons：CC BY-ND 4.0 deed",
+      "url": "https://creativecommons.org/licenses/by-nd/4.0/deed.en",
+      "checked_on": "2026-09-29"
     }
   ],
   "scenes": [
@@ -256,7 +276,7 @@
       "data": {
         "kicker": "再加一段技術邊界",
         "text": "只要一個檔",
-        "sub": "檔名 index、樣式寫在同一檔、不連外部資源"
+        "sub": "檔名 index.html、樣式同檔、不連外部資源"
       },
       "lines": [
         {
@@ -265,7 +285,9 @@
         },
         {
           "id": "dv87",
-          "text": "跟它說只要一個檔案，檔名叫 index，樣式寫在同一個檔裡。"
+          "text": "跟它說只要一個 HTML 檔，命名為 index.html，樣式寫在同一檔。",
+          "say": "跟它說只要一個 HTML 檔，命名為 index 點 H T M L，樣式寫在同一檔。",
+          "say_for": "38121ecc2e44"
         },
         {
           "id": "brrx",
@@ -597,11 +619,13 @@
         },
         {
           "id": "knvi",
-          "text": "要注意的是，這些都是軟性上限，官方可以調整。"
+          "text": "要分清楚軟性與硬性上限，例如 GitHub 的網站就不能超過一 GB。"
         },
         {
           "id": "4raw",
-          "text": "GitHub Pages 每小時建置也有軟性上限，是十次。"
+          "text": "每小時建置軟限十次，自訂 GitHub Actions 流程例外。",
+          "say": "每小時建置軟限十次，自訂 GitHub 艾克申斯流程例外。",
+          "say_for": "22f9d14a8d4d"
         }
       ]
     },
@@ -612,7 +636,7 @@
         "title": "上線前把資料夾整理好",
         "steps": [
           {
-            "title": "首頁叫 index",
+            "title": "首頁叫 index.html",
             "detail": "兩家都把它當入口"
           },
           {
@@ -621,7 +645,7 @@
           },
           {
             "title": "上傳或拖放",
-            "detail": "拿到網址"
+            "detail": "Cloudflare 拖放：最多 1,000 檔"
           }
         ]
       },
@@ -633,8 +657,10 @@
         },
         {
           "id": "5ymd",
-          "text": "首頁檔名一定要叫 index，兩家都把它當入口。",
-          "reveal": 1
+          "text": "這份單頁 HTML 的首頁叫 index.html，上傳後才能當網站入口。",
+          "reveal": 1,
+          "say": "這份單頁 HTML 的首頁叫 index 點 H T M L，上傳後才能當網站入口。",
+          "say_for": "0d4d7ff86889"
         },
         {
           "id": "5y3q",
@@ -643,11 +669,11 @@
         },
         {
           "id": "7g2d",
-          "text": "Cloudflare 甚至可以直接把資料夾拖進去，完全不碰 Git。"
+          "text": "Cloudflare 新建直接上傳專案可拖放資料夾，一次最多一千個檔案。"
         },
         {
           "id": "z4ax",
-          "text": "名稱亂取，是上線後網頁打不開最常見的原因。"
+          "text": "檔名或路徑不一致，可能讓上線後的網頁打不開。"
         }
       ]
     },
@@ -711,7 +737,7 @@
         },
         {
           "id": "ykf6",
-          "text": "這一步只要兩分鐘，卻能避免最難收拾的問題。"
+          "text": "這一步請仔細檢查，別只依賴 AI 說檔案沒有問題。"
         }
       ]
     },
@@ -738,7 +764,7 @@
         },
         {
           "id": "rqt9",
-          "text": "第一是圖片版權，從搜尋結果直接抓圖是最常見的違規。",
+          "text": "第一是圖片版權，搜尋結果找得到，不代表你有使用授權。",
           "reveal": 1
         },
         {
@@ -761,7 +787,7 @@
         },
         {
           "id": "9vp8",
-          "text": "每一個坑，上線前都花不到五分鐘就能檢查。"
+          "text": "上線前逐項檢查，有疑問就先處理再公開。"
         }
       ]
     },
@@ -781,7 +807,7 @@
           "heading": "有限制",
           "points": [
             "帶 NC：只限非商業",
-            "帶 ND：不能改作"
+            "帶 ND：不得散布改作版本"
           ]
         }
       },
@@ -796,7 +822,7 @@
         },
         {
           "id": "3r9q",
-          "text": "有的可以商用，帶 NC 的只能非商業、帶 ND 的不能改作。",
+          "text": "有的可以商用，帶 NC 的限非商業，帶 ND 的不得散布改作版本。",
           "reveal": 1
         },
         {

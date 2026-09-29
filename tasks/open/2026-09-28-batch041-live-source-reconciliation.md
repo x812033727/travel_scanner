@@ -75,3 +75,9 @@ current live state; this receipt is only a prior baseline.
 As of this task's creation, no nonproduction Docker environment is available
 for the exact pinned production API image rehearsal. No live source revision,
 deployment, import, publication or browser verification has occurred.
+
+### 2026-09-29 看板盤點與站主決定
+
+站主已同意「準備逐批發布清單與步驟，再讓我確認」。本輪一次正式站唯讀盤點已完成；發布清單、精確來源雜湊、依賴與逐步驗收見 docs/work-status-2026-09-29-article-release-plan.md。未授權正式寫入、部署或發布；原門檻維持。
+
+本次僅追加交接證據，不改既有owner、scope、branch或執行狀態。

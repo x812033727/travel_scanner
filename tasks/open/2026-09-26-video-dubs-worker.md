@@ -74,3 +74,4 @@ npm run test:tools
 - 每條音軌約 28 MB（m4a），送審的分段上傳與 `video_review_max_total_bytes` 要夠。
 - 伺服器的 Gemini 月額度（`video_speech_gemini_monthly_character_limit`，預設 300,000 字元）先調高再勾配音：四條配音一支約 20,600 字元。
 - 檔案角色慣例：`dub_<locale>` 語系小寫、連字號改底線（`dub_zh_cn`），`ReviewFile.role` 不收連字號；說明欄與字幕沿用上傳包的 `description_<l>`、`captions_<l>`。
+- 2026-09-29 (claude-opus-5-5, from the English season's videos 5 and 6, dubbed by hand): the voice traps met while shortening and retaking are listed in `docs/videos/DUBS.md` §聲音會唸錯的地方, and `lint` now warns on ja/ko numbers with an inner zero before 億/억 (read as 450 for 4050). `check-audio --second-opinion` can clear Gemini's false flags before a `dub --redo` round is spent on them.

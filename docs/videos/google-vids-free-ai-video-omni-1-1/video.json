@@ -18,7 +18,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "用 Google 帳號免費做 AI 影片：Google Vids 的 Gemini Omni 1.1 能做什麼、額度到底多少",
-    "description": "Google Vids 開放任何 Google 帳號免費用 Gemini Omni 1.1 生成 AI 影片。這支示範怎麼做一段，並講清楚免費的四個界線。\n給想用 AI 做影片、不想付費也不想學剪輯的人。\n\n涵蓋誰能用、只寫電腦能生成、一段片段的規格、關分頁前一定要先插進 Vid、兩份官方說明頁對免費額度寫法不一致、SynthID 浮水印與「只供在 Vids 內使用」的說法，以及 AI 旁白、中文提示等還沒定案的地方。本站沒有實測生成效果。",
+    "description": "Google Vids 開放任何 Google 帳號免費用 Gemini Omni 1.1 生成 AI 影片。這支示範怎麼做一段，並講清楚免費的四個界線。\n給想用 AI 做影片、不想付費也不想學剪輯的人。\n\n涵蓋誰能用、只寫電腦能生成、一段片段的規格、關分頁前一定要先插進 Vid、兩份說明頁的帳號範圍與額度計量方式不同、SynthID 浮水印與「只供在 Vids 內使用」的說法，以及 AI 旁白、本篇公告未列出的中文提示條件。本站沒有實測生成效果。",
     "tags": [
       "Google Vids",
       "Gemini Omni",
@@ -43,22 +43,22 @@
     {
       "title": "Google：Anyone can make stunning HD videos with Gemini Omni in Google Vids",
       "url": "https://blog.google/products-and-platforms/products/workspace/gemini-omni-in-google-vids/",
-      "checked_on": "2026-09-28"
+      "checked_on": "2026-09-29"
     },
     {
       "title": "Google Workspace Updates：Gemini Omni 1.1 Flash now in Vids",
       "url": "https://workspaceupdates.googleblog.com/2026/09/gemini-omni-11-flash-now-in-vids-with-improved-extension-quality-1080p-and-duration-control.html",
-      "checked_on": "2026-09-28"
+      "checked_on": "2026-09-29"
     },
     {
       "title": "Google 說明中心：Use AI to generate video clips in Google Vids",
       "url": "https://support.google.com/docs/answer/16143507",
-      "checked_on": "2026-09-28"
+      "checked_on": "2026-09-29"
     },
     {
       "title": "Google 說明中心：Gemini features in Google Vids",
       "url": "https://support.google.com/docs/answer/15609411",
-      "checked_on": "2026-09-28"
+      "checked_on": "2026-09-29"
     }
   ],
   "scenes": [
@@ -273,7 +273,7 @@
         },
         {
           "id": "p3f3",
-          "text": "整個流程不到一分鐘，難的是把畫面想清楚。"
+          "text": "生成需要等待，先把畫面想清楚再開始。"
         }
       ]
     },
@@ -390,7 +390,7 @@
         "items": [
           "最多上傳 7 張參考圖",
           "個人帳號只能用預設虛擬化身",
-          "虛擬化身當素材限英文、限特定方案"
+          "化身作為影片素材：限英文與列名方案"
         ]
       },
       "claims": [
@@ -409,12 +409,12 @@
         },
         {
           "id": "ikef",
-          "text": "個人帳號只能用預設的虛擬化身，不能自訂。",
+          "text": "個人帳號的虛擬化身功能只提供預設角色，不能自訂。",
           "reveal": 1
         },
         {
           "id": "24vb",
-          "text": "把虛擬化身當素材，只有英文、而且只開放給列名的方案。"
+          "text": "把虛擬化身當影片素材，目前另限英文及列名方案，要先查資格。"
         }
       ]
     },
@@ -519,7 +519,7 @@
       "chapter": "免費額度到底多少",
       "template": "table",
       "data": {
-        "title": "免費額度：官方頁寫法不一致",
+        "title": "依帳號類型與計量方式查額度",
         "columns": [
           "官方說明頁",
           "每月上限",
@@ -527,17 +527,17 @@
         ],
         "rows": [
           [
-            "影片生成說明頁",
+            "生成說明頁：概括多數使用者",
             "多數使用者 50 部",
             "每月 1 日"
           ],
           [
-            "用量說明頁：Workspace Individual",
+            "用量說明頁：個人／Individual",
             "6 部，與虛擬化身合計",
             "每月 1 日"
           ],
           [
-            "用量說明頁：預設",
+            "用量頁：未另列限制時的預設",
             "500 秒",
             "每月 1 日"
           ]
@@ -549,11 +549,11 @@
       "lines": [
         {
           "id": "ycy7",
-          "text": "第三個界線是額度，這裡有個奇怪的地方。"
+          "text": "第三個界線是額度，要先分清楚帳號類型。"
         },
         {
           "id": "cess",
-          "text": "Google 自己的兩份說明頁，寫的免費額度不一樣。"
+          "text": "兩份說明頁的適用對象和計量方式不同，不能把數字直接當成衝突。"
         },
         {
           "id": "w95t",
@@ -565,11 +565,11 @@
         },
         {
           "id": "f62z",
-          "text": "例如 Workspace Individual 是每月六部，跟虛擬化身合計；預設是每月五百秒。"
+          "text": "個人和 Workspace Individual 都列每月六部，跟虛擬化身合計；其他方案另有秒數上限。"
         },
         {
           "id": "r66b",
-          "text": "同一家公司兩份頁面數字不一樣，其實不常見。"
+          "text": "五十部是概括說明，六部則列在個人帳號的專用表格。"
         },
         {
           "id": "6gkx",
@@ -577,7 +577,7 @@
         },
         {
           "id": "3pgu",
-          "text": "兩份頁面都在每月一號太平洋時間午夜重設，但都沒解釋彼此的差異。"
+          "text": "每月一號太平洋時間午夜重設；部數、秒數和其他功能的點數要分開看。"
         }
       ]
     },
@@ -586,8 +586,8 @@
       "template": "big",
       "data": {
         "kicker": "本站的做法",
-        "text": "不挑一個",
-        "sub": "官方沒統一前，以你登入後看到的為準"
+        "text": "先看帳號",
+        "sub": "依帳號專用表格，再確認登入後額度"
       },
       "claims": [
         "c7"
@@ -595,7 +595,7 @@
       "lines": [
         {
           "id": "6i7z",
-          "text": "所以我們把官方寫的都列出來，不挑一個當唯一答案。"
+          "text": "所以先按自己的帳號類型查額度，再確認登入後的顯示。"
         },
         {
           "id": "vnur",
@@ -603,7 +603,7 @@
         },
         {
           "id": "stwn",
-          "text": "個人帳號的確切數字，請看說明頁的個人帳號分頁，或登入後的顯示。"
+          "text": "個人帳號分頁明列六部，但仍要確認登入後顯示的可用額度。"
         },
         {
           "id": "z9hj",
@@ -730,7 +730,7 @@
         "title": "還沒定案的地方",
         "items": [
           "AI 旁白：寫著即將推出",
-          "中文提示：官方沒寫",
+          "中文提示：這篇公告未列條件",
           "上傳影片來改：部分地區不行"
         ]
       },
@@ -751,7 +751,7 @@
         },
         {
           "id": "ns3z",
-          "text": "中文提示能不能用、有沒有年齡限制，官方都沒寫。",
+          "text": "這份公告沒列出中文提示與年齡條件，使用前要另查帳號限制。",
           "reveal": 1
         },
         {
@@ -843,8 +843,8 @@
             "label": "關分頁前先存"
           },
           {
-            "value": "50？6？",
-            "label": "額度各頁寫法不一致"
+            "value": "依帳號",
+            "label": "部數、秒數、點數分開看"
           },
           {
             "value": "只在 Vids",
@@ -866,7 +866,7 @@
         },
         {
           "id": "5fdi",
-          "text": "第三，額度兩份官方頁不一致，看自己的顯示。",
+          "text": "第三，依帳號看額度，不把多數使用者的數字當成個人保證。",
           "reveal": 1
         },
         {

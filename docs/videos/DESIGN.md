@@ -57,7 +57,7 @@
 
 | 檔案 | 誰寫 | 必帶欄位 |
 | --- | --- | --- |
-| `timeline.json` | `tts` | `buildTimeline()` 的內容＋`speech_hash`（`speechHash(doc, lexicon)`） |
+| `timeline.json` | `tts` | `buildTimeline()` 的內容＋`speech_hash`（`speechHash(doc, lexicon)`：聲音、每句說出的字與停頓，加上這些句子用到的字典條目；別支影片加的詞不算） |
 | `narration.wav`、`audio/<line id>.wav` | `tts` | 48 kHz 16-bit mono；每句補靜音到整格 |
 | `frames/manifest.json`、`contact-sheet.png` | `render` | `visual_hash`（`visualHash(doc)`） |
 | `final.mp4`、`checks.json` | `assemble` | `checks.json` 帶 `ok`、`speech_hash`、`visual_hash`、`problems` |

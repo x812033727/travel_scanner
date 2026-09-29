@@ -6,6 +6,7 @@ from urllib.parse import urlsplit
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.news_automation.evidence import evidence_excerpt
 from app.news_automation.feeds import Article, extract_article, parse_entries, read_article
 from app.news_automation.fetch import RateLimiter, SafeNewsFetcher
 from app.news_automation.models import NewsEvidence, NewsSource
@@ -96,7 +97,7 @@ async def refresh_evidence(
             changed.append(row.url)
         row.content_hash = digest
         row.body_hash = story
-        row.excerpt = article.text[:8000]
+        row.excerpt = evidence_excerpt(article.text)
         row.retrieved_at = now
         row.etag = etag
         row.last_modified = last_modified

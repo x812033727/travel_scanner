@@ -1,0 +1,1000 @@
+{
+  "schema_version": 1,
+  "slug": "gpt6-vs-opus55-worth-paying",
+  "format": "slides",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a natural Taiwanese accent. Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace."
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "GPT-6 Astra vs Claude Opus 5.5 vs Gemini：到底哪個值得付費？API 價格實際算給你看",
+    "description": "三件大家每個月真的會做的工作，照 2026 年 9 月 28 日的官方定價，分別算出用 GPT-6 Astra、GPT-6 Sol、Claude Opus 5.5、Grok 4.7 和 Gemini 3.8 Flash 各要花多少錢。贏家不是最聰明的模型；影片最後用三個問題做測試，把這套算法變成你自己的。\n\n每個價格都來自各廠商在錄製當天的官方定價頁，之後會變動；公式就放在畫面上，你可以用最新的數字重算一次。最後的選擇是頻道主的個人意見，影片中也有標明。這支影片沒有替任何模型跑分，唯一的量測，是用公開價格做的算術。\n\n錄製日期：2026 年 9 月 28 日。",
+    "tags": [
+      "AI 費用比較",
+      "GPT-6 vs Claude",
+      "AI API 價格",
+      "Claude Opus 5.5",
+      "GPT-6 Astra 價格",
+      "哪個 AI 值得付費",
+      "2026 AI API 價格",
+      "Gemini 3.8 Flash 價格",
+      "Grok 4.7 價格",
+      "GPT-6 Sol",
+      "token 計費"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "2026 年 9 月價格",
+      "headline": "$50 vs **$20**",
+      "sub": "同樣的工作，每百萬輸出 token"
+    }
+  },
+  "sources": [
+    {
+      "title": "OpenAI API pricing (GPT-6 Astra, Sol, Luna)",
+      "url": "https://platform.openai.com/docs/pricing",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "OpenAI: GPT-6 Astra model page (price, context window)",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Anthropic: Introducing Claude Opus 5.5 (prices)",
+      "url": "https://www.anthropic.com/news/claude-opus-5-5",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "xAI: models and pricing (Grok 4.7)",
+      "url": "https://docs.x.ai/docs/models",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Google: Gemini API pricing (Gemini 3.8 Flash)",
+      "url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "OpenAI: prompt caching guide (cache writes replace the input price, 1.25x)",
+      "url": "https://developers.openai.com/api/docs/guides/prompt-caching",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Anthropic: prompt caching docs (write 1.25x, read 0.05x for Opus 5.5)",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
+      "checked_on": "2026-09-28"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook",
+      "chapter": "三份價目表，一個月要花多少",
+      "template": "title",
+      "data": {
+        "tag": "2026 年 9 月價格",
+        "title": "到底哪個 AI **值得付費**？",
+        "subtitle": "GPT-6 Astra vs Claude Opus 5.5 vs Gemini，用三件真實工作來算"
+      },
+      "claims": [
+        "c1",
+        "c2",
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "iut8",
+          "text": "GPT-6 Astra，每百萬個輸出 token 要 50 美元。Claude Opus 5.5 要 20，Gemini 3.8 Flash 不到 4 美元。"
+        }
+      ]
+    },
+    {
+      "id": "hook-pick",
+      "template": "compare",
+      "data": {
+        "title": "看跑分挑，還是看價格挑？",
+        "left": {
+          "heading": "兩種挑法",
+          "points": [
+            "看跑分挑：會花冤枉錢",
+            "看價格挑：做出來的還要重做"
+          ]
+        },
+        "right": {
+          "heading": "所以我這樣算",
+          "points": [
+            "三件每月真的會做的事",
+            "照今天的官方價",
+            "每個模型都算一遍"
+          ]
+        }
+      },
+      "lines": [
+        {
+          "id": "4f5z",
+          "text": "看跑分挑，會花冤枉錢；看價格挑，做出來的還要重做。"
+        },
+        {
+          "id": "ed4s",
+          "text": "所以我拿三件每月真的會做的事，照今天的官方價，每個模型都算一遍。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "hook-win",
+      "template": "big",
+      "data": {
+        "text": "贏家**不是**\n最聰明的模型",
+        "sub": "算式跟三個問題都在這，讓它變成你的算式"
+      },
+      "lines": [
+        {
+          "id": "4vsv",
+          "text": "贏家不是最聰明的模型。算式跟三個問題都在這，讓它變成你的算式。"
+        }
+      ]
+    },
+    {
+      "id": "sheet",
+      "template": "table",
+      "data": {
+        "title": "官方定價，每百萬 token，2026-09-28",
+        "columns": [
+          "模型",
+          "輸入",
+          "快取輸入",
+          "輸出"
+        ],
+        "rows": [
+          [
+            "GPT-6 Astra",
+            "$10",
+            "$1",
+            "$50"
+          ],
+          [
+            "GPT-6 Sol",
+            "$2",
+            "$0.20",
+            "$10"
+          ],
+          [
+            "Claude Opus 5.5",
+            "$4",
+            "$0.20",
+            "$20"
+          ],
+          [
+            "Grok 4.7，未滿 200k",
+            "$2",
+            "$0.50",
+            "$6"
+          ],
+          [
+            "Gemini 3.8 Flash",
+            "$0.75",
+            "$0.075",
+            "$3.75"
+          ]
+        ]
+      },
+      "claims": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "zeh4",
+          "text": "首先，把各家的價目表排在一起看，數字都是今天從各家自己的定價頁上看到的。"
+        },
+        {
+          "id": "mpni",
+          "text": "OpenAI 的旗艦模型 GPT-6 Astra，每百萬個 token，輸入 10 美元、快取輸入 1 美元、輸出 50 美元。",
+          "reveal": 1
+        },
+        {
+          "id": "bgt8",
+          "text": "OpenAI 自家比較便宜的 GPT-6 Sol，輸入 2 美元、快取 0.2 美元、輸出 10 美元。",
+          "reveal": 1
+        },
+        {
+          "id": "a8eb",
+          "text": "Anthropic 的 Claude Opus 5.5，輸入 4 美元、快取 0.2 美元、輸出 20 美元。",
+          "reveal": 1
+        },
+        {
+          "id": "xiua",
+          "text": "xAI 的 Grok 4.7，提示詞不到 20 萬個 token 時，輸入 2 美元、快取 0.5 美元、輸出 6 美元。",
+          "say": "xAI 的 Grok 四點七，提示詞不到二十萬個 token 時，輸入二美元、快取零點五美元、輸出六美元。",
+          "say_for": "e3ad1982a247",
+          "reveal": 1
+        },
+        {
+          "id": "qx54",
+          "text": "Google 的 Gemini 3.8 Flash，輸入 0.75 美元、快取 0.075 美元、輸出 3.75 美元。",
+          "say": "Google 這邊，是 Gemini 三點八 Flash：輸入零點七五美元、快取零點零七五美元、輸出三點七五美元。",
+          "say_for": "f33620a6d02a",
+          "reveal": 1
+        }
+      ],
+      "chapter": "五個模型的官方定價並排比較"
+    },
+    {
+      "id": "sheet-flash",
+      "template": "stats",
+      "data": {
+        "title": "Google 說：Flash 這個價格維持到年底",
+        "stats": [
+          {
+            "value": "$3.75",
+            "label": "Gemini 3.8 Flash 輸出",
+            "note": "到 2026 年底"
+          },
+          {
+            "value": "$7.50",
+            "label": "之後翻倍",
+            "note": "2027 年 1 月 1 日起"
+          },
+          {
+            "value": "未列價",
+            "label": "Gemini 3.8 Pro"
+          }
+        ],
+        "source": "每百萬輸出 token；Google 官方定價頁，2026-09-28"
+      },
+      "claims": [
+        "c5",
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "39yb",
+          "text": "Google 說，Flash 這個價格維持到年底，之後會翻倍。至於 3.8 這一代的 Pro，目前還沒有列出價格。"
+        }
+      ]
+    },
+    {
+      "id": "formula",
+      "chapter": "token 費用怎麼算？公式與第一件工作",
+      "template": "code",
+      "data": {
+        "language": "算式",
+        "code": "每月費用 =\n    新的輸入 token × 輸入價\n  + 快取輸入 token × 快取價\n  + 模型輸出 token × 輸出價\n  （寫進快取的新 token：寫入價取代輸入價，\n    只限有列寫入價的廠商）\n  （價格都以每百萬 token 計）",
+        "highlight": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "caption": "任何一個月，都能用當天的價格重算"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "493h",
+          "text": "公式一張投影片就放得下。輸入 token 乘以輸入價，快取 token 乘以快取價，加上輸出 token 乘以輸出價。"
+        }
+      ]
+    },
+    {
+      "id": "job1-inputs",
+      "template": "steps",
+      "data": {
+        "title": "工作 1：每天早上摘要一份 PDF",
+        "steps": [
+          {
+            "title": "每天早上",
+            "detail": "摘要一份\n40 頁的 PDF"
+          },
+          {
+            "title": "每一份",
+            "detail": "輸入 30k token\n輸出 1k token"
+          },
+          {
+            "title": "一個月",
+            "detail": "30 天"
+          },
+          {
+            "title": "每月合計",
+            "detail": "輸入 0.9M\n輸出 0.03M"
+          }
+        ]
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "yvm3",
+          "text": "第一件工作：每天早上摘要一份 40 頁的 PDF。輸入 3 萬個 token，輸出 1000 個，一個月 30 天。"
+        },
+        {
+          "id": "uia6",
+          "text": "加起來，輸入不到 100 萬個 token，輸出 3 萬個。你看，不管用哪一家，這都花不了多少錢。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "job1",
+      "template": "stats",
+      "data": {
+        "title": "工作 1：每天摘要 PDF，每月費用",
+        "stats": [
+          {
+            "value": "$10.50",
+            "label": "GPT-6 Astra"
+          },
+          {
+            "value": "$4.20",
+            "label": "Claude Opus 5.5"
+          },
+          {
+            "value": "$2.10",
+            "label": "GPT-6 Sol"
+          },
+          {
+            "value": "$0.79",
+            "label": "Gemini 3.8 Flash"
+          }
+        ],
+        "source": "輸入 0.9M、輸出 0.03M，用前面的官方定價計算；Grok 4.7 約 $1.98"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "uwys",
+          "text": "Astra 一個月 10.5 美元，Opus 5.5 是 4.2 美元。",
+          "reveal": 2
+        },
+        {
+          "id": "d8vw",
+          "text": "Sol 是 2.1 美元，Gemini Flash 是 0.79 美元，Grok 大約 2 美元。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "job1-verdict",
+      "template": "big",
+      "data": {
+        "kicker": "每天摘要 PDF 這種工作",
+        "text": "價差是真的，\n但只是**零用錢**",
+        "sub": "重點在品質：這幾個模型，摘要 PDF 都沒問題"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "gjky",
+          "text": "這種工作，價差是真的，但都只是零用錢。重點在品質，而這幾個模型，摘要 PDF 都沒問題。"
+        }
+      ]
+    },
+    {
+      "id": "job2",
+      "chapter": "第二件工作：寫程式的 AI 代理跑一個月",
+      "template": "steps",
+      "data": {
+        "title": "AI 代理一天的 token 流量",
+        "steps": [
+          {
+            "title": "新輸入",
+            "detail": "每天 0.6M token\n新程式碼和指示"
+          },
+          {
+            "title": "快取輸入",
+            "detail": "每天 2.4M token\n它重讀的上下文"
+          },
+          {
+            "title": "輸出",
+            "detail": "每天 150k token\n程式碼和回答"
+          },
+          {
+            "title": "20 個工作天",
+            "detail": "新輸入 12M\n快取 48M\n輸出 3M"
+          }
+        ]
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "afk4",
+          "text": "第二件工作才是真正花錢的地方：寫程式的 AI 代理，整天在你旁邊工作，一個月 20 個工作天。"
+        },
+        {
+          "id": "xupq",
+          "text": "它每一輪都把整段對話再讀一遍，所以大部分輸入都是快取。假設每天有 60 萬個新的輸入 token。",
+          "reveal": 1
+        },
+        {
+          "id": "ph5f",
+          "text": "每天還有 240 萬個快取 token，再加上 15 萬個輸出 token。",
+          "reveal": 2
+        },
+        {
+          "id": "xexs",
+          "text": "20 個工作天加起來，新的輸入 1200 萬、快取 4800 萬、輸出 300 萬。這下，價格就真的有感了。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "job2-table",
+      "template": "table",
+      "data": {
+        "title": "工作 2：寫程式的 AI 代理，每月費用",
+        "columns": [
+          "模型",
+          "快取讀取",
+          "新輸入或快取寫入",
+          "輸出",
+          "合計"
+        ],
+        "rows": [
+          [
+            "GPT-6 Astra",
+            "$48",
+            "$150（寫入）",
+            "$150",
+            "$348"
+          ],
+          [
+            "GPT-6 Sol",
+            "$10",
+            "$30（寫入）",
+            "$30",
+            "$70"
+          ],
+          [
+            "Claude Opus 5.5",
+            "$10",
+            "$60（寫入）",
+            "$60",
+            "$130"
+          ],
+          [
+            "Grok 4.7",
+            "$24",
+            "$24（輸入）",
+            "$18",
+            "$66"
+          ],
+          [
+            "Gemini 3.8 Flash",
+            "$4",
+            "$9（輸入）",
+            "$11",
+            "$24"
+          ]
+        ]
+      },
+      "claims": [
+        "c8",
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "wz7s",
+          "text": "Astra 一個月大約 348 美元，其中 150 美元是快取寫入，這是 OpenAI 對較新模型列出的費用。",
+          "reveal": 1
+        },
+        {
+          "id": "mcai",
+          "text": "OpenAI 比較便宜的 Sol，大約 70 美元。Opus 5.5 大約 130 美元，其中 60 美元是快取寫入。",
+          "say": "OpenAI 比較便宜的 Sol，大約 70 美元。Opus 五點五大約 130 美元，其中 60 美元是快取寫入。",
+          "say_for": "63aee44d13b7",
+          "reveal": 2
+        },
+        {
+          "id": "z6g3",
+          "text": "Grok 4.7 大約 66 美元，Gemini 3.8 Flash 大約 24 美元。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "job2-caveat",
+      "template": "stats",
+      "data": {
+        "title": "Grok 4.7 和 Gemini 3.8 Flash 的快取",
+        "stats": [
+          {
+            "value": "未列",
+            "label": "快取寫入費",
+            "note": "這兩家都沒有列"
+          },
+          {
+            "value": "按小時",
+            "label": "Google 的快取儲存費",
+            "note": "這部分沒算進去"
+          }
+        ]
+      },
+      "claims": [
+        "c4",
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "tnfs",
+          "text": "這兩家都沒有列快取寫入費。不過 Google 會按小時收快取儲存費，這部分我沒算進去。",
+          "say": "這兩家都沒有列快取寫入費。不過 Google 會按小時收快取儲存費，這部分，我並沒有算進去。",
+          "say_for": "98c67a1eab79"
+        }
+      ]
+    },
+    {
+      "id": "job2-range",
+      "template": "big",
+      "data": {
+        "kicker": "同樣的工作",
+        "text": "價差將近 **15 倍**",
+        "sub": "一旦選錯，每個月多花好幾百美元，或是要重做一大堆"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "cv6f",
+          "text": "同樣的工作，價差將近 15 倍。這種工作一旦選錯，每個月就會多花好幾百美元，或是要重做一大堆。"
+        }
+      ]
+    },
+    {
+      "id": "job3",
+      "chapter": "第三件工作：客服機器人每月 1 萬次對話",
+      "template": "stats",
+      "data": {
+        "title": "工作 3：每月 1 萬次對話",
+        "stats": [
+          {
+            "value": "$450",
+            "label": "GPT-6 Astra"
+          },
+          {
+            "value": "$180",
+            "label": "Claude Opus 5.5"
+          },
+          {
+            "value": "$78",
+            "label": "Grok 4.7"
+          },
+          {
+            "value": "$34",
+            "label": "Gemini 3.8 Flash"
+          }
+        ],
+        "source": "每次對話輸入 3k、輸出 300 token：共輸入 30M、輸出 3M；GPT-6 Sol 為 $90"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "zyt2",
+          "text": "第三件，客服機器人：每月 1 萬次對話，每次輸入 3000、輸出 300，總共輸入 3000 萬、輸出 300 萬 token。"
+        },
+        {
+          "id": "4e86",
+          "text": "Astra 要 450 美元，Opus 5.5 要 180 美元。",
+          "reveal": 2
+        },
+        {
+          "id": "gbsu",
+          "text": "Grok 4.7 是 78 美元，Gemini Flash 是 34 美元，Sol 則是 90 美元。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "job3-input",
+      "template": "big",
+      "data": {
+        "kicker": "你看錢都花在哪裡？",
+        "text": "**輸入**",
+        "sub": "客服機器人讀的遠比寫的多，所以輸入價格最關鍵"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "b3ge",
+          "text": "你看錢都花在哪裡？輸入。客服機器人讀的遠比寫的多，所以輸入價格最關鍵。"
+        }
+      ]
+    },
+    {
+      "id": "retry",
+      "chapter": "什麼時候貴的模型反而便宜？",
+      "template": "stats",
+      "data": {
+        "title": "把出錯的成本也算進去",
+        "stats": [
+          {
+            "value": "$24",
+            "label": "Gemini Flash",
+            "note": "寫程式，每月"
+          },
+          {
+            "value": "1 小時",
+            "label": "每週幫它修",
+            "note": "假設"
+          },
+          {
+            "value": "$160",
+            "label": "每月多了大約",
+            "note": "以時薪 $40 來算"
+          },
+          {
+            "value": "$184",
+            "label": "總共差不多"
+          }
+        ]
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "dsie",
+          "text": "接下來是轉折。帳單不只有 API 費用：便宜的模型如果要你幫它修，你的時間也要算進帳單。"
+        },
+        {
+          "id": "mbxu",
+          "text": "拿寫程式那件工作來說，用 Gemini Flash 是 24 美元，假設它每週要花你 1 小時來修。",
+          "reveal": 2
+        },
+        {
+          "id": "pmjw",
+          "text": "以時薪 40 美元來算，等於多了大約 160 美元，總共差不多 184 美元。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "retry-compare",
+      "template": "compare",
+      "data": {
+        "title": "較貴的模型，這時反而比較便宜",
+        "left": {
+          "heading": "便宜模型，加上修正",
+          "points": [
+            "Gemini 3.8 Flash：$24",
+            "每週花 1 小時修正錯誤",
+            "時薪 $40：多出約 $160",
+            "合計約 $184"
+          ]
+        },
+        "right": {
+          "heading": "較貴模型，修正較少",
+          "points": [
+            "Claude Opus 5.5：$130",
+            "重試較少，不用一直盯著",
+            "合計約 $130",
+            "由你的時數和時薪決定"
+          ]
+        }
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "xauy",
+          "text": "Opus 5.5 要 130 美元，但重試比較少，這時反而比較便宜。時數或時薪一改，結果又會翻回來。",
+          "say": "Opus 五點五要 130 美元，但重試比較少，這時反而比較便宜。時數或時薪一改，結果又會翻回來。",
+          "say_for": "fcb604b40dfa"
+        }
+      ]
+    },
+    {
+      "id": "retry-yours",
+      "template": "stats",
+      "data": {
+        "title": "真正重要的是你自己的數字",
+        "stats": [
+          {
+            "value": "你的時數",
+            "label": "我舉的例子：每週 1 小時"
+          },
+          {
+            "value": "你的時薪",
+            "label": "我舉的例子：每小時 $40"
+          }
+        ],
+        "source": "只有你自己量得出來"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "bxqs",
+          "text": "時數和時薪這兩個數字，是我舉的例子。真正重要的是你自己的數字，而且只有你自己量得出來。"
+        }
+      ]
+    },
+    {
+      "id": "rule",
+      "template": "big",
+      "data": {
+        "kicker": "轉折背後的規則",
+        "text": "重試會讓\n一切成倍增加",
+        "sub": "便宜的價格試兩次，可能比貴的價格試一次還貴"
+      },
+      "lines": [
+        {
+          "id": "pdgg",
+          "text": "轉折背後的規則是：重試會讓一切成倍增加。便宜的價格試兩次，可能比貴的試一次還花錢。"
+        }
+      ]
+    },
+    {
+      "id": "rule-pick",
+      "template": "compare",
+      "data": {
+        "title": "挑模型的重點",
+        "left": {
+          "heading": "從來不是",
+          "points": [
+            "哪個模型最聰明"
+          ]
+        },
+        "right": {
+          "heading": "而是在你的工作上",
+          "points": [
+            "誰的失敗率你負擔得起",
+            "價格又最低"
+          ]
+        }
+      },
+      "lines": [
+        {
+          "id": "h2z3",
+          "text": "所以重點從來不是哪個模型最聰明，而是在你的工作上，誰的失敗率你負擔得起、價格又最低。"
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "chapter": "付費前的三個問題，和我的選擇",
+      "template": "steps",
+      "data": {
+        "title": "付錢之前先問",
+        "steps": [
+          {
+            "title": "答錯的代價\n是什麼？",
+            "detail": "檢查成本低，還是難挽回"
+          },
+          {
+            "title": "我實際重試幾次？",
+            "detail": "記錄一週看看"
+          },
+          {
+            "title": "同家的便宜款\n夠用嗎？",
+            "detail": "先試 Sol、Flash、Grok，再換 Astra 或 Opus"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "trey",
+          "text": "這是我在付錢買任何模型之前，都會做的測試，一共三個問題。"
+        },
+        {
+          "id": "f4vb",
+          "text": "第一，答錯的代價是什麼？檢查成本低，就買便宜的；錯了很難挽回，就多花點錢。",
+          "reveal": 1
+        },
+        {
+          "id": "tqzv",
+          "text": "第二，我實際上會重試幾次？記一個禮拜看看，大部分的人都低估了。",
+          "reveal": 1
+        },
+        {
+          "id": "ez5e",
+          "text": "第三，同家的便宜款夠用嗎？每家都有：Astra 底下有 Sol，Pro 底下有 Flash，Opus 底下有比較小的 Claude。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "picks",
+      "template": "table",
+      "data": {
+        "title": "我的選擇（個人看法）",
+        "columns": [
+          "工作",
+          "我的選擇",
+          "原因"
+        ],
+        "rows": [
+          [
+            "每天摘要 PDF",
+            "讀起來夠好的最便宜模型",
+            "怎麼選都是零用錢"
+          ],
+          [
+            "寫程式的 AI 代理",
+            "Opus 5.5 或 Sol，再記錄重試次數",
+            "快取寫入和重做時間占大宗"
+          ],
+          [
+            "客服機器人",
+            "Flash 或 Grok，加一道檢查",
+            "帳單由輸入量決定"
+          ]
+        ]
+      },
+      "lines": [
+        {
+          "id": "wpuc",
+          "text": "我的選擇如下，這是我的看法，不是實測。每天的摘要，選讀起來夠好的最便宜模型，反正錢很少。",
+          "reveal": 1
+        },
+        {
+          "id": "m4uq",
+          "text": "寫程式的代理，先從 Opus 5.5 或 Sol 開始，記一個禮拜的重試次數，再做決定。",
+          "reveal": 1
+        },
+        {
+          "id": "6cnv",
+          "text": "客服機器人，我會選 Flash 或 Grok，再加一道檢查，因為那份帳單看的是輸入量。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "picks-switch",
+      "template": "stats",
+      "data": {
+        "title": "新模型衝上排行榜第一？我不會因此就換",
+        "stats": [
+          {
+            "value": "成本",
+            "label": "真的變了"
+          },
+          {
+            "value": "品質",
+            "label": "真的變了"
+          },
+          {
+            "value": "速度",
+            "label": "真的變了"
+          }
+        ],
+        "source": "這三樣真的變了，我才換（個人看法）"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "msvn",
+          "text": "還有，新模型這週衝上排行榜第一，我不會因為這樣就換；我的成本、品質或速度真的變了，我才換。"
+        }
+      ]
+    },
+    {
+      "id": "agent-cta",
+      "template": "cta",
+      "data": {
+        "kicker": "上一支影片",
+        "title": "抓了其中兩個價格頁的 AI 代理",
+        "sub": "五個動作、一次 403、一格誠實的空白"
+      },
+      "lines": [
+        {
+          "id": "d539",
+          "text": "順便一提，上一支影片裡的 AI 代理，幫我們抓了其中兩個價格頁，第三個就碰壁了。"
+        },
+        {
+          "id": "a6h2",
+          "text": "那次的執行過程，連碰壁那段，都在上一支影片裡。"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "chapter": "所以，哪個 AI 值得付費？",
+      "template": "big",
+      "data": {
+        "kicker": "所以，哪一個值得付費？",
+        "text": "出的錯，\n你**負擔得起**",
+        "sub": "在你的工作上，又是做得到的裡面最便宜的那一個"
+      },
+      "lines": [
+        {
+          "id": "u2g7",
+          "text": "所以，哪一個值得付費？就是在你的工作上，出的錯你負擔得起，又是做得到的裡面最便宜的那一個。"
+        }
+      ]
+    },
+    {
+      "id": "outro-steps",
+      "template": "steps",
+      "data": {
+        "title": "決定之前",
+        "steps": [
+          {
+            "title": "用公式算",
+            "detail": "你自己\n一個月的費用"
+          },
+          {
+            "title": "記一個禮拜",
+            "detail": "你的重試次數"
+          },
+          {
+            "title": "出錯的成本",
+            "detail": "也加進去"
+          },
+          {
+            "title": "再決定"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "y5p9",
+          "text": "用公式算出你自己一個月的費用，記一個禮拜的重試次數，加上出錯的成本，然後再決定。"
+        }
+      ]
+    },
+    {
+      "id": "outro-end",
+      "template": "outro",
+      "data": {
+        "title": "每個價格，都來自各家官方頁面",
+        "cta": "2026 年 9 月 28 日的價格，之後會變動。連結都在說明欄。",
+        "lines": [
+          "OpenAI：GPT-6 Astra、GPT-6 Sol",
+          "Anthropic：Claude Opus 5.5",
+          "xAI：Grok 4.7",
+          "Google：Gemini 3.8 Flash"
+        ]
+      },
+      "claims": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "ypij",
+          "text": "影片裡的每個價格，都來自各家 2026 年 9 月 28 日的官方頁面，之後會變動。連結都在說明欄。",
+          "say": "影片裡的每個價格，都來自各家兩千零二十六年九月二十八日的官方頁面，之後會變動。連結都在說明欄。",
+          "say_for": "191f3320b7a6"
+        }
+      ]
+    }
+  ]
+}

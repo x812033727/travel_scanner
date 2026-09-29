@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "slug": "fixture-en",
+  "format": "slides",
+  "narration_locale": "en",
+  "target_minutes": [0.5, 2],
+  "voice": { "provider": "gemini", "name": "Sulafat", "style": "Relaxed, conversational tech explainer talking to a friend, in clear, natural English." },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "en",
+    "title": "Which AI model is worth paying for? Three questions",
+    "description": "The top of the leaderboard is not always the right buy. Three questions pick the model that fits your work.",
+    "tags": ["AI models", "which AI to pay for"],
+    "video_id": null
+  },
+  "thumbnail": { "template": "thumb", "data": { "headline": "Not the **top** one", "tag": "Which AI model" } },
+  "sources": [{ "title": "Example source", "url": "https://example.com/models", "checked_on": "2026-09-28" }],
+  "scenes": [
+    {
+      "id": "hook",
+      "chapter": "Why the leaderboard misleads you",
+      "template": "title",
+      "data": { "title": "Which AI model is worth paying for?", "subtitle": "The top of the leaderboard is not always the right buy" },
+      "lines": [
+        { "id": "e1aa", "text": "Every week a new model takes the top of the leaderboard, so do you switch every week?" },
+        { "id": "e2bb", "text": "Three questions pick the right model for your work in five minutes." }
+      ]
+    },
+    {
+      "id": "questions",
+      "chapter": "The three questions",
+      "template": "bullets",
+      "data": { "title": "Ask yourself three things", "items": ["What is the job", "How long can you wait", "What will you pay"] },
+      "lines": [
+        { "id": "e3cc", "text": "First, what job do you need it to do?", "reveal": 1 },
+        { "id": "e4dd", "text": "Second, how long can you wait for an answer?", "reveal": 1 },
+        { "id": "e5ee", "text": "Third, how much are you willing to pay each month?", "reveal": 1 }
+      ]
+    },
+    {
+      "id": "wrap",
+      "chapter": "What to do next",
+      "template": "outro",
+      "data": { "title": "Next step", "cta": "The full comparison table is in the article in the description" },
+      "lines": [
+        { "id": "e6ff", "text": "Write down those three answers, then look at the leaderboard again." },
+        { "id": "e7gg", "text": "The full comparison table is in the article linked in the description." }
+      ]
+    }
+  ]
+}
