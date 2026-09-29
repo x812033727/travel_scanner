@@ -51,6 +51,28 @@ The existing required Web workflow will execute the new matrix against its
 normal isolated server. Exact-head CI results are required before these browser
 cases can be described as passed.
 
+### First CI execution and locator correction
+
+The first required Web job at head `254c94e24aefa01123b5c4b77cedb7a981c01f9b`
+actually ran the matrix: [job 109225869105](https://github.com/x812033727/travel_scanner/actions/runs/36511969464/job/109225869105)
+finished with 20 failures, 523 other passes and 9 skips. Although the overall run
+was subsequently cancelled, this Web job's browser step had already failed;
+it is neither a passed matrix nor merely an unexecuted cancelled job.
+
+All 20 new failures had the same strict-locator cause at the translation error
+assertion: `getByRole("alert")` matched both the localized error paragraph and
+Next's `__next-route-announcer__`. The trace text shows the expected translation
+error was present. The test now filters the alert by the exact localized error
+text, still asserts the complete text, and checks that same alert disappears
+after retry. The later global alert-count assertion needed the same correction,
+because the route announcer persists after a successful translation. No product
+code was changed and no assertion was removed. A fresh CI head must execute all
+20 cases after this correction before this matrix can be called passed.
+
+After the locator correction, scoped ESLint, Playwright discovery (20 cases),
+and `git diff --check` each completed with exit 0. These checks do not execute
+the browser matrix; its fresh-head CI result is still required.
+
 ## Still required
 
 - Real-service translation provider failure and changed-original handling.

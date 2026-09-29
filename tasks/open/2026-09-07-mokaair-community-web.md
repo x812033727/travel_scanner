@@ -13,7 +13,6 @@ depends_on: []
 scope:
   - apps/web/e2e/community.spec.ts
   - apps/web/e2e/community-ui.spec.ts
-  - apps/web/components/community
   - docs/community-local-acceptance-2026-09-29.md
   - .github/workflows/ci.yml
 ---
@@ -120,3 +119,21 @@ used. The new matrix remains **authored, pending exact-head CI execution**.
 
 See `docs/community-local-acceptance-2026-09-29.md`. Real PostgreSQL/Redis/MinIO/
 Mailpit/worker outage/capacity and the full real-service locale matrix remain open.
+
+### 2026-09-29 CI locator correction (codex-p1-community-ci)
+
+Rechecked branches/worktrees/remote PRs for community-ui.spec.ts: no active task
+owns the exact spec, and only this audit's PR #966 touches it. Removed the unused
+application-component scope before reclaiming, so the unrelated appearance-card
+task's component claim is not overridden. This patch changes only the spec and
+its acceptance receipt.
+
+Initial head 254c94e24aefa01123b5c4b77cedb7a981c01f9b / Web job 109225869105
+ran 20 new community cases and all failed on the first alert assertion: Next's
+route announcer and the expected translation error share role=alert. The browser
+suite otherwise recorded 523 passes and 9 skips. Overall run cancellation does
+not erase that completed Web failure. Both the failure-text and post-retry
+absence assertions now target the localized translation alert specifically.
+Current-head CI execution remains required; no app code or local preview changed.
+After this patch, scoped ESLint, Playwright `--list` (20 cases) and
+`git diff --check` all completed with exit 0. Browser execution remains pending.

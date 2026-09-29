@@ -90,14 +90,16 @@ for (const [locale, messages] of Object.entries(catalogs)) {
       await story.click();
       await expect(page.getByRole("heading", { name: "Synthetic community acceptance story", exact: true })).toBeVisible();
       const translate = page.getByRole("button", { name: messages.translate, exact: true });
+      // Next's route announcer is also role=alert; target only the translation error.
+      const translationError = page.getByRole("alert").filter({ hasText: messages.errors.community_translation_unavailable });
       await expect(translate).toBeEnabled();
       await translate.click();
-      await expect(page.getByRole("alert")).toHaveText(messages.errors.community_translation_unavailable);
+      await expect(translationError).toHaveText(messages.errors.community_translation_unavailable);
       await expect(page.getByText("Original synthetic story", { exact: true })).toBeVisible();
       await translate.click();
       await expect(page.getByText("Synthetic translation before edit", { exact: true })).toBeVisible();
       await expect(page.getByText(messages.machineTranslation, { exact: true })).toBeVisible();
-      await expect(page.getByRole("alert")).toHaveCount(0);
+      await expect(translationError).toHaveCount(0);
       await page.getByRole("button", { name: `${messages.like} · 0`, exact: true }).click();
       await expect(page.getByText("Edited synthetic original", { exact: true })).toBeVisible();
       await expect(page.getByText("Synthetic translation before edit", { exact: true })).toHaveCount(0);
