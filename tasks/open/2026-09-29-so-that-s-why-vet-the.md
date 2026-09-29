@@ -54,3 +54,11 @@ topic is scheduled, as for season 1.
 drop-suggested and a `check` path that exists.
 
 ## Notes
+- 2026-09-29 season 2 done by claude-opus (8 checkers, B/S/T/A 26–38 and 39–50): 3 保留, 95 修正,
+  2 換題 (A35 retitled to the 2006 Western Digital settlement at the owner's request, to avoid
+  repeating season 1's A03; A43 to 「為什麼有些詐騙訊息假得很明顯？」, since the typo premise is not
+  in Herley 2012), 0 建議刪除; 53 titles changed, mostly 「都／總是」 overstatements. Reports are
+  `topic-checks/s2-*.md`. A35's settlement facts were checked against the NBC article by hand.
+- The checkers stopped once on the account's weekly usage limit (2026-09-29 ~04:45 UTC) and were
+  resumed after the 06:00 UTC reset; partial work was kept.
+
