@@ -262,6 +262,994 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "zh-CN": {
+      "title": "页面 SEO 怎么做：从读者问题到标题与段落结构",
+      "description": "页面 SEO 不只是把关键词填进插件，而是让一篇文章从搜索入口到读完后的下一步都清楚一致。本文以整理家庭照片的教学为例，带你设置读者任务、安排段落、补足操作与比较信息，再核对 WordPress 的标题区块、网址、摘要、图片和链接，最后用实际阅读与更新记录确认页面质量，避免追求分数却忽略内容本身。",
+      "hero": {
+        "src": "/guides/on-page-seo-workflow/hero-zh-cn.jpg",
+        "alt": "原创文档、网页与文件夹插图，呈现文章编排、页面预览及内容整理。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "把一篇文章交给读者时，他应该能快速知道这是不是自己要的内容、需要准备什么，以及照着操作会得到什么结果。页面 SEO 的工作，就是让这条阅读路径与搜索入口相互配合。"
+        },
+        {
+          "type": "paragraph",
+          "text": "假设你要写「家庭照片整理」，有人只想腾出手机空间，有人希望保存多年相片，有人需要全家共同分类。这些目的牵涉不同流程；先选定本篇要处理的一件事，才能写出有效的标题、段落与操作说明。"
+        },
+        {
+          "type": "heading",
+          "text": "用一句话定义本页要完成的任务",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先写下「谁在什么情况下，读完后能做什么」。例如：家中照片散落在数台设备的一般用户，想创建一份能持续整理的分类清单。这个任务比「介绍照片管理」具体，也能帮助你决定哪些信息必写、哪些留给别篇文章。"
+        },
+        {
+          "type": "paragraph",
+          "text": "列出读者手边可能掌握的资料与限制，例如文件名混乱、来源不明或没有足够时间一次整理。把限制转成章节需求：先盘点、再选分类方式、处理重复项目，最后安排日常维护。若没有实际执行过特定软件功能，就查官方文档，不把示意步骤写成亲身测试。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外搜索自己的文章清单，确认是否已经有同一操作目的的页面。若现有文章已回答相同问题，优先补足它；若一篇谈备份、另一篇谈照片分类，则让标题与开头明确区分，并在需要时互相链接。不要只换用同义字就添加近似文章。"
+        },
+        {
+          "type": "heading",
+          "text": "先安排答案，再安排段落与比较",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "文章开头先交代适用读者与完成成果，接着提供开始前的准备，再按实际执行顺序展开。以照片分类为例，可以先让读者列出来源设备，选择主要分类方式，试整理一小批，最后才套用到其他照片。这个顺序让读者不用边做边回头找前置条件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每一节只承担一个主要问题。段落标题写成「先按年份还是活动分类」，会比「方法二」更容易扫读；比较表则应用相同字段对照不同方式，例如查找情境、维护成本与例外处理。表格下方补上选择条件，避免只有几个勾叉却没有理由。"
+        },
+        {
+          "type": "paragraph",
+          "text": "步骤要包含动作与确认方式，例如完成清单后，试着找出一张去年聚餐的照片，检查是否能从分类找到。另写出遇到不确定日期时的处理方式。这些原创例子和例外条件，能让内容成为可执行的教学，而不是把资料来源重新排列成另一份摘要。"
+        },
+        {
+          "type": "heading",
+          "text": "在 WordPress 用正确区块呈现层级",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "进入文章编辑器后，把主要段落设置为标题区块，依内容关系使用 H2、H3 等层级，并在文档大纲检查顺序。WordPress 官方说明，多数主题会把文章标题作为 H1，但仍依主题与模板而异，因此应查看实际页面，不要为了放大字体随意更换标题层级。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般说明使用段落区块，有先后的动作用有序清单，并列条件才用项目清单。标题负责组织内容，字体大小则由样式处理。若一个步骤超长到难以扫读，可以拆开说明与动作，不必把整段教学硬塞成一个清单项目。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 没有指定最佳文章字数或标题数量，也不需要把每个章节都塞入同一关键词。编辑时读出段落标题，确认它们是否连成合理的阅读顺序，再检查正文是否真的回答各标题。如果删除某段后读者仍能完成任务，便评估那段是否只是重复铺陈。"
+        },
+        {
+          "type": "heading",
+          "text": "分别检查网址、站内摘要与搜索说明",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "文章设置中的 slug 是网址的一部分，发布前选择能辨认主题且适合长期使用的写法。既有文章若只更新内容，不必顺手改网址；若确实需要搬移，就另外规划旧链接与转址。不要为了把更多关键词放进路径，增加后续维护负担。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 的文章摘要可由主题用在首页或归档页等位置，不能直接假设它就是搜索结果的元描述。若网站使用 SEO 插件或自定义字段，确认哪个设置负责输出 description，再检查实际结果。后台预览显示正常，只代表这个界面的预览正常。"
+        },
+        {
+          "type": "paragraph",
+          "text": "为这一页撰写能概括任务的说明，例如「整理不同设备的照片来源，选择年份或活动分类，并创建后续维护清单」。Google 可能根据搜索查询从正文产生不同摘要，也可能使用元描述，因此让开头与各段内容保持清楚，比期待搜索永远显示一模一样的句子更实际。"
+        },
+        {
+          "type": "heading",
+          "text": "让图片和链接完成文本做不到的说明",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "如果分类方式容易混淆，就画一张来源、整理区与正式分类的流程图，放在相关段落旁。图片应帮助读者理解关系，而不是只补满版面。图中的文本也要能在手机上辨认，图表重要结论则保留文本说明，避免读者只能放大图片才能取得答案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "替代文本描述图片与这段内容的关系，例如说明流程图如何把多个来源整理成统一分类。不要把整串搜索词当作图片描述；若使用别人的素材，另外保存授权与来源。自绘图解也应标示原创，并避免画成让人误以为是真实软件截屏的界面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "站内链接放在读者需要延伸操作的位置，链接文本说清楚目的地，例如「查看照片备份的准备事项」，而非每一个都叫「点这里」。Google 的链接指引强调可供抓取的链接与清楚文本。发布前逐一打开目的地，确认内容与文本一致，且没有连到尚未提供的功能。"
+        },
+        {
+          "type": "heading",
+          "text": "用读者的操作路径完成最后检查",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先看桌面预览，再在手机屏幕宽度下阅读：开头是否过长、表格是否可读、图片是否缺字，以及主要步骤是否被广告或弹窗遮住。请一位不了解主题的人只依文章指出第一步和完成结果；若对方仍不知道从哪里开始，应先补内容，而非继续调整关键词比例。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公开前确认文章状态、所属分类和搜索可见性符合预期。WordPress 阅读设置中的建议搜索引擎不索引本站的选项属网站层级，要由管理者按整站目的核对；它不是保护私人数据的工具。不要为了发一篇文章就自行覆盖测试站或会员内容既有的管理政策。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保留本次修改项目与日期，之后查看哪些读者问题仍未被回答，再安排更新。插件提示可以当作编辑提醒，但文章是否完成，应回到任务、证据、操作与可读性。一次只调整有理由的部分，也比较容易判断下一次需要改进什么。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "写出读者、情境与文章完成成果，先检查现有内容。",
+            "依操作顺序创建段落，补上比较、例外及确认方法。",
+            "核对 WordPress 区块、网址、摘要、图片和链接的实际输出。",
+            "完成移动端阅读与任务检查，保存修改记录供后续更新。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/on-page-seo-workflow/diagram-1-zh-cn.svg",
+          "alt": "四阶段图解依序呈现读者任务、正文编排、页面设置及操作验收，各阶段列出三个检查重点。",
+          "width": 1600,
+          "height": 900,
+          "caption": "文章品质先回答读者问题，再确认页面设置能正确呈现。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "编辑项目",
+            "要回答的问题",
+            "可用的检查方式"
+          ],
+          "rows": [
+            [
+              "主题范围",
+              "本页到底帮谁完成什么",
+              "读者任务能否用一句话说完"
+            ],
+            [
+              "段落层级",
+              "读者能否按顺序操作",
+              "只看大纲仍理解流程"
+            ],
+            [
+              "比较表",
+              "不同选择如何取舍",
+              "使用相同字段并交代适用条件"
+            ],
+            [
+              "摘要设置",
+              "站内预览与搜索说明由谁产生",
+              "核对主题、插件及实际输出"
+            ],
+            [
+              "图片与链接",
+              "是否补足理解或下一步",
+              "手机阅读并打开目的地"
+            ],
+            [
+              "完成验收",
+              "是否真的能照着操作",
+              "抽查第一步、例外与完成结果"
+            ]
+          ],
+          "caption": "这是单篇文章的原创编辑检查表，不是搜索引擎的固定计分公式。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先补读者缺少的答案",
+          "text": "如果教学缺少前置条件、比较没有选择依据，或链接打开后无法完成下一步，再多关键词也不能补上这些缺口。先让读者能理解并照着做，再用工具检查设置是否正确。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先了解 WordPress 文章与固定页面各自适合什么用途。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "页面出现技术问题时，可按技术 SEO 检查清单逐项排查。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google SEO 入门指南",
+          "url": "https://developers.google.com/search/docs/fundamentals/seo-starter-guide?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 管理搜索摘要",
+          "url": "https://developers.google.com/search/docs/appearance/snippet?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 链接最佳做法",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/links-crawlable?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 标题区块",
+          "url": "https://wordpress.org/documentation/article/heading-block/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 文章设置侧栏",
+          "url": "https://wordpress.org/documentation/article/page-post-settings-sidebar/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 阅读设置",
+          "url": "https://wordpress.org/documentation/article/settings-reading-screen/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "On-page SEO workflow: From the reader's question to headings and page structure",
+      "description": "On-page SEO is more than filling an SEO plugin with keywords. A useful article gives readers a consistent path from the search result to their next action. Using a family photo-organizing tutorial, this guide defines the reader's task, orders the steps, adds comparisons and exceptions, and checks WordPress headings, the URL, summaries, images, and links. It finishes with a real reading test and an update record instead of treating a plugin score as proof of quality.",
+      "hero": {
+        "src": "/guides/on-page-seo-workflow/hero-en.jpg",
+        "alt": "Original illustrations of a document, webpage, and folders show article structure, a page preview, and content organization.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "When you hand an article to a reader, they should quickly see whether it answers their question, what they need to prepare, and what they will accomplish. On-page SEO connects that reading path to the entry point in search."
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose you are writing about organizing family photos. One person wants to free space on a phone, another wants to preserve years of pictures, and another needs a shared family filing system. Each goal calls for a different process. Choose the one task this page will handle before writing its title, sections, and instructions."
+        },
+        {
+          "type": "heading",
+          "text": "Define the task this page will complete in one sentence",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Write down who is in what situation and what they can do after reading. For example: an everyday user whose family photos are scattered across several devices wants a set of categories they can keep using. That is more specific than 'an introduction to photo management' and helps you decide what belongs here and what needs another article."
+        },
+        {
+          "type": "paragraph",
+          "text": "List the information and constraints readers may have: inconsistent file names, unknown sources, or too little time to organize everything at once. Turn those limits into section requirements: inventory first, choose categories, handle duplicates, then plan routine upkeep. If you have not used a particular software feature yourself, check its official documentation and do not present an illustrative step as firsthand testing."
+        },
+        {
+          "type": "paragraph",
+          "text": "Search your own article inventory too. If an existing page already answers the same practical question, improve that page first. If one article covers backups and another covers photo categories, distinguish them in the title and opening and connect them where useful. Do not publish a near duplicate merely by changing the wording."
+        },
+        {
+          "type": "heading",
+          "text": "Plan the answer before the sections and comparisons",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Open with who the article is for and what it helps them finish. Then explain preparations and follow the actual order of work. For photo categories, readers might list the source devices, choose a main grouping method, test it on a small batch, and only then apply it to the rest. This order keeps them from having to stop and search backward for prerequisites."
+        },
+        {
+          "type": "paragraph",
+          "text": "Give each section one main question. 'Should I sort by year or event first?' is easier to scan than 'Method two.' Compare the options using the same columns, such as the situation in which a photo must be found, upkeep effort, and how exceptions are handled. Add selection criteria beneath the table; checkmarks alone do not explain a choice."
+        },
+        {
+          "type": "paragraph",
+          "text": "A step needs an action and a way to confirm it worked. After making a category list, for example, try finding a photo from last year's family dinner through that list. Explain what to do if its date is uncertain. Original examples and exceptions make the lesson usable, instead of rearranging source material into another summary."
+        },
+        {
+          "type": "heading",
+          "text": "Use WordPress blocks to show the real hierarchy",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "In the post editor, make the main sections Heading blocks. Use H2, H3, and later levels according to the content relationship, then check the order in Document Overview. WordPress documentation says most themes use the post title as H1, though themes and templates can differ. Check the actual page, and do not change heading levels just to enlarge the type."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use Paragraph blocks for normal explanation, numbered lists for actions in sequence, and bulleted lists for parallel conditions. Headings organize the content; styles control type size. If a step is too long to scan, separate its explanation from its action rather than forcing the whole lesson into one list item."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google does not prescribe an ideal article length or number of headings, and every section does not need the same keyword. Read the headings in order and ask whether they form a sensible route. Then check that the body actually answers each heading. If readers can still complete the task after a paragraph is removed, consider whether it merely repeats an earlier point."
+        },
+        {
+          "type": "heading",
+          "text": "Check the URL, site excerpt, and search description separately",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The slug in post settings is part of the URL. Before publication, choose one that identifies the topic and can last. Updating an existing article does not automatically require a URL change. If a move is necessary, plan the old links and redirects separately. Adding more keywords to the path can create lasting maintenance work."
+        },
+        {
+          "type": "paragraph",
+          "text": "A WordPress post excerpt may appear on the home page or archive pages, depending on the theme; it is not necessarily the meta description shown in search. If the site uses an SEO plugin or custom fields, identify which setting outputs the description and inspect the rendered result. A normal-looking preview in the editor confirms only that preview."
+        },
+        {
+          "type": "paragraph",
+          "text": "Write a description that sums up this page's task, such as 'Collect photos from different devices, choose year or event categories, and create an upkeep checklist.' Google may generate a different snippet from the page for a particular query, or use the meta description. Clear opening and section text matter more than expecting one sentence to appear for every search."
+        },
+        {
+          "type": "heading",
+          "text": "Let images and links explain what words alone cannot",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "If the grouping methods are easy to confuse, draw a flowchart with sources, a staging area, and final categories, and place it near the relevant section. An image should clarify a relationship, not fill space. Its labels must be readable on a phone, and the key conclusion should also appear in text so the answer does not require zooming in."
+        },
+        {
+          "type": "paragraph",
+          "text": "Alt text should describe how the image relates to this section, such as how the flowchart brings several sources into one set of categories. Do not paste a string of search terms into the description. For third-party media, retain the license and source. Mark your own diagrams as original, and avoid drawing a mock interface that could be mistaken for an actual software screenshot."
+        },
+        {
+          "type": "paragraph",
+          "text": "Place internal links where readers need the next step. Link text should name the destination, such as 'See how to prepare a photo backup,' rather than saying 'click here' everywhere. Google's link guidance emphasizes crawlable links and clear anchor text. Before publishing, open every destination and confirm that it matches the wording and does not point to a feature that is not available."
+        },
+        {
+          "type": "heading",
+          "text": "Finish with a test along the reader's path",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Check the desktop preview, then read at phone width. Is the opening too long? Are tables readable, images missing labels, or important steps obscured by ads or pop-ups? Ask someone new to the topic to identify the first action and the intended result using only the article. If they cannot tell where to start, improve the instructions before adjusting keyword frequency."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before publication, confirm the post status, category, and search visibility. The WordPress reading option to discourage search engines is a site-level setting that an administrator should check against the whole site's purpose; it does not protect private data. Do not override existing policy for a staging site or member content just to release one article."
+        },
+        {
+          "type": "paragraph",
+          "text": "Record what changed and when. Later, review which reader questions remain unanswered and schedule an update. Plugin prompts can serve as editing reminders, but completion depends on the task, evidence, usable steps, and readability. Changing one justified thing at a time also helps you understand the next improvement."
+        },
+        {
+          "type": "list",
+          "items": [
+            "State the reader, situation, and intended result; check existing content first.",
+            "Order sections by the work, including comparisons, exceptions, and ways to confirm each step.",
+            "Inspect the actual output of WordPress blocks, URL, excerpt, images, and links.",
+            "Test the task on a phone and keep an edit record for future updates."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/on-page-seo-workflow/diagram-1-en.svg",
+          "alt": "A four-stage diagram shows the reader's task, article structure, page settings, and task testing, with three checks in each stage.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Answer the reader's question first, then check that the page settings present the answer correctly.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Editing area",
+            "Question to answer",
+            "Practical check"
+          ],
+          "rows": [
+            [
+              "Topic scope",
+              "Who can this page help do what?",
+              "Can the reader's task be stated in one sentence?"
+            ],
+            [
+              "Section hierarchy",
+              "Can the reader work in order?",
+              "Does the outline alone explain the process?"
+            ],
+            [
+              "Comparison table",
+              "How should the options be weighed?",
+              "Use the same columns and state when each option fits."
+            ],
+            [
+              "Summary settings",
+              "What generates the site preview and search description?",
+              "Check the theme, plugin, and rendered output."
+            ],
+            [
+              "Images and links",
+              "Do they clarify the task or next step?",
+              "Read on a phone and open each destination."
+            ],
+            [
+              "Completion test",
+              "Can someone actually follow the lesson?",
+              "Spot-check the first step, exceptions, and final result."
+            ]
+          ],
+          "caption": "This original checklist is for editing one article; it is not a fixed search-engine scoring formula."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Fill the gaps in the reader's answer first",
+          "text": "If a tutorial omits prerequisites, compares options without reasons, or links to a next step that cannot be completed, more keywords will not fill those gaps. Make the content understandable and actionable, then use tools to check the settings."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "First clarify when to use a WordPress post and when to use a static page."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "If the page has technical problems, work through a technical SEO checklist."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google SEO Starter Guide",
+          "url": "https://developers.google.com/search/docs/fundamentals/seo-starter-guide?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: Control your snippets in search results",
+          "url": "https://developers.google.com/search/docs/appearance/snippet?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: Make your links crawlable",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/links-crawlable?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress Heading Block",
+          "url": "https://wordpress.org/documentation/article/heading-block/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress Page/Post Settings Sidebar",
+          "url": "https://wordpress.org/documentation/article/page-post-settings-sidebar/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress Reading Settings",
+          "url": "https://wordpress.org/documentation/article/settings-reading-screen/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "ページ内SEOの進め方：読者の疑問から見出しと構成を組み立てる",
+      "description": "ページ内SEOは、SEOプラグインにキーワードを入力するだけではありません。検索結果から記事を読み終えた後の行動まで、読者に一貫した道筋を示すことが大切です。家族写真の整理方法を教える記事を例に、読者の目的を定め、手順と比較・例外を整理し、WordPressの見出し、URL、抜粋、画像、リンクを確認します。最後に実際の読みやすさと更新記録を点検し、プラグインの点数だけで品質を判断しない方法を紹介します。",
+      "hero": {
+        "src": "/guides/on-page-seo-workflow/hero-ja.jpg",
+        "alt": "文書、ウェブページ、フォルダーのオリジナルイラスト。記事の構成、ページのプレビュー、内容の整理を表す。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "記事を読者に渡すとき、その記事が自分の知りたいことに合うか、何を準備するか、読み終えたら何ができるかが、すぐに分かるようにしたいものです。ページ内SEOは、この読み進める道筋と検索からの入口をつなぐ作業です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「家族写真の整理」について書くとします。スマートフォンの容量を空けたい人も、長年の写真を保存したい人も、家族全員で分類したい人もいます。目的によって手順は違います。まずこの記事で扱う作業を一つ決めてから、タイトル、見出し、操作説明を作ります。"
+        },
+        {
+          "type": "heading",
+          "text": "このページで達成する作業を一文で定める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「誰が、どのような状況で、読み終えた後に何をできるか」を書き出します。例えば、複数の端末に家族写真が散らばっている一般の利用者が、継続して使える分類表を作る、という目標です。「写真管理を紹介する」より具体的で、このページに必要な情報と別の記事に任せる情報を分けやすくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ファイル名が統一されていない、写真の出所が分からない、一度に整理する時間がないなど、読者が持つ情報や制約を挙げます。その制約を章の要件に変え、現状の確認、分類方法の選択、重複への対応、日々の維持の順に組み立てます。特定のソフトウェア機能を実際に使っていないなら、公式資料で確認し、例示した手順を自分の実測として書かないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自分のサイトの記事一覧も調べます。既存の記事が同じ作業上の疑問に答えているなら、先にその記事を補強します。一方がバックアップ、もう一方が写真の分類を扱うなら、タイトルと冒頭で違いを明確にし、必要に応じてつなぎます。言い換えただけの類似記事を増やさないようにします。"
+        },
+        {
+          "type": "heading",
+          "text": "見出しや比較表より先に答えの順番を決める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "冒頭で対象読者と達成できる結果を示し、準備することを説明してから、実際の作業順に進めます。写真の分類なら、保存元の端末を洗い出し、主な分類方法を選び、少量の写真で試し、その後で残りに適用できます。この順番なら、作業中に前提条件を探して読み戻す必要が減ります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "各節には主な問いを一つ置きます。「方法その二」より「年別と行事別、どちらを先に使うか」のほうが、見出しだけで内容を追えます。比較表では、写真を探す場面、維持にかかる手間、例外の扱いなど、同じ項目で方法を比べます。表の下に選ぶ条件も書き、チェック印だけで理由を省略しないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手順には操作と確認方法の両方が必要です。分類表を作ったら、例えば昨年の家族の食事会の写真を一枚探し、その分類から見つけられるか確かめます。日付が不明な場合の扱いも書きます。独自の例と例外があれば、資料を並べ替えただけの要約ではなく、実行できる教材になります。"
+        },
+        {
+          "type": "heading",
+          "text": "WordPressのブロックで見出し階層を表す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "投稿エディターでは主要な節を見出しブロックにし、内容の関係に応じてH2、H3などを使い、ドキュメントの概要で順番を確認します。WordPressの公式資料によると、多くのテーマでは投稿タイトルがH1になりますが、テーマやテンプレートによって異なります。実際のページを確認し、文字を大きくするためだけに見出しの階層を変えないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "通常の説明には段落ブロック、順番のある操作には番号付きリスト、並列の条件には箇条書きを使います。見出しは内容を整理し、文字の大きさはスタイルで調整します。手順が長すぎて読みづらいなら、説明と操作を分け、長い教材を一つのリスト項目に押し込まないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Googleは記事の理想的な文字数や見出しの数を指定しておらず、各節に同じキーワードを入れる必要もありません。見出しを順に読んで自然な流れになっているか確認し、本文がそれぞれの問いに本当に答えているか見直します。ある段落を削っても読者が作業を終えられるなら、単なる繰り返しではないか検討します。"
+        },
+        {
+          "type": "heading",
+          "text": "URL、サイト内の抜粋、検索結果の説明文を分けて確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "投稿設定のスラッグはURLの一部です。公開前に、話題を識別でき、長く使える表記を選びます。既存の記事の本文を更新するだけなら、ついでにURLを変える必要はありません。移動が必要なら、旧リンクとリダイレクトを別途計画します。キーワードをパスに増やすためだけに、後の管理負担を増やさないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPressの投稿抜粋は、テーマによってホームページや一覧ページなどで使われます。検索結果のメタディスクリプションと同じとは限りません。SEOプラグインや独自フィールドがあるサイトでは、どの設定がdescriptionを出力するか確認し、実際の出力も調べます。管理画面のプレビューが正常なのは、その画面のプレビューが正常という意味にとどまります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "このページの作業を要約する説明文を書きます。例えば「異なる端末の写真を集め、年別か行事別の分類を選び、今後の維持リストを作る」です。Googleは検索語に応じて本文から別のスニペットを作る場合も、メタディスクリプションを使う場合もあります。同じ一文が毎回表示されると期待するより、冒頭と各節を分かりやすくするほうが実用的です。"
+        },
+        {
+          "type": "heading",
+          "text": "画像とリンクで文章だけでは伝えにくい点を補う",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "分類方法が混同されやすいなら、保存元、整理用の領域、最終的な分類先を示すフローチャートを作り、関連する段落の近くに置きます。画像は余白を埋めるためではなく、関係を理解するためのものです。図中の文字はスマートフォンでも読めるようにし、重要な結論は本文にも残して、拡大しないと答えが得られない状態を避けます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "代替テキストには、その画像が段落とどう関係するかを書きます。例えば、複数の保存元を一つの分類体系にまとめる流れを説明します。検索語を連ねた説明にはしません。他人の素材を使う場合は、ライセンスと出典も保存します。自作の図はオリジナルと明記し、実際のソフトウェア画面と誤認されるような架空の画面は避けます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "サイト内リンクは、読者が次の操作を必要とする場所に置きます。リンク文は「写真のバックアップ前に準備することを確認する」のように行き先を示し、どれも「こちら」だけにしないようにします。Googleのリンク指針は、たどれるリンクと明確なリンク文を重視しています。公開前に各行き先を開き、文言と内容が一致し、未提供の機能に誘導していないか確かめます。"
+        },
+        {
+          "type": "heading",
+          "text": "読者の操作経路に沿って最後の確認をする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まずデスクトップのプレビューを見てから、スマートフォンの幅で読みます。冒頭が長すぎないか、表が読めるか、画像の文字が欠けていないか、重要な手順が広告やポップアップに隠れていないか確認します。初めてこの話題に触れる人に、記事だけを見て最初の操作と完成結果を説明してもらいます。始め方が分からなければ、キーワードの比率を調整する前に本文を補います。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公開前に投稿の状態、カテゴリー、検索上の表示設定が意図どおりか確認します。WordPressの閲覧設定にある検索エンジンへのインデックスを抑制する項目はサイト全体の設定なので、管理者がサイトの目的に照らして確認する必要があります。個人情報を守るための機能ではありません。一つの記事の公開のために、テストサイトや会員向けコンテンツの既存方針を独断で上書きしないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "今回変更した内容と日付を残し、その後も答えられていない読者の疑問を確認して更新を計画します。プラグインの指摘は編集上の注意として役立ちますが、完成の判断は目的、根拠、操作できる手順、読みやすさに戻して行います。理由のある変更を一度に一つずつ進めると、次に何を直すべきかも分かりやすくなります。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "読者、状況、記事で達成する結果を書き、既存の内容を先に確認する。",
+            "作業順に節を組み、比較、例外、確認方法を加える。",
+            "WordPressのブロック、URL、抜粋、画像、リンクの実際の出力を確認する。",
+            "スマートフォンでの読書と作業の確認を行い、更新に備えて変更記録を残す。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/on-page-seo-workflow/diagram-1-ja.svg",
+          "alt": "読者の目的、本文の構成、ページ設定、作業の確認という四段階を、それぞれ三つの確認点とともに順番に示す図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "先に読者の疑問に答え、それからページ設定が内容を正しく示すか確認する。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "編集項目",
+            "答えるべき問い",
+            "使える確認方法"
+          ],
+          "rows": [
+            [
+              "主題の範囲",
+              "このページは誰のどんな作業を助けるか",
+              "読者の目的を一文で言えるか"
+            ],
+            [
+              "見出し階層",
+              "読者は順番に作業できるか",
+              "概要だけで流れが分かるか"
+            ],
+            [
+              "比較表",
+              "選択肢をどう比べるか",
+              "同じ項目を使い、適する条件を説明する"
+            ],
+            [
+              "説明文の設定",
+              "サイト内プレビューと検索結果の説明は何が生成するか",
+              "テーマ、プラグイン、実際の出力を確認する"
+            ],
+            [
+              "画像とリンク",
+              "理解や次の操作を助けるか",
+              "スマートフォンで読み、行き先を開く"
+            ],
+            [
+              "完成の確認",
+              "記事に従って実行できるか",
+              "最初の手順、例外、完成結果を抽出して確認する"
+            ]
+          ],
+          "caption": "単一の記事を編集するためのオリジナルのチェック表であり、検索エンジンの固定的な採点式ではありません。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "まず読者に足りない答えを補う",
+          "text": "前提条件がない、比較に選ぶ理由がない、リンク先で次の作業を終えられない。そのような不足は、キーワードを増やしても埋まりません。内容を理解して実行できるようにしてから、ツールで設定を確認します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "まず、WordPressの投稿と固定ページをそれぞれいつ使うか整理しましょう。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ページに技術的な問題がある場合は、テクニカルSEOのチェック項目に沿って確認しましょう。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google SEOスターターガイド",
+          "url": "https://developers.google.com/search/docs/fundamentals/seo-starter-guide?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 検索結果のスニペットを管理する",
+          "url": "https://developers.google.com/search/docs/appearance/snippet?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google クロール可能なリンクを作成するためのベストプラクティス",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/links-crawlable?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 見出しブロック",
+          "url": "https://wordpress.org/documentation/article/heading-block/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 投稿・固定ページの設定サイドバー",
+          "url": "https://wordpress.org/documentation/article/page-post-settings-sidebar/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 閲覧設定",
+          "url": "https://wordpress.org/documentation/article/settings-reading-screen/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "온페이지 SEO 작업 흐름: 독자의 질문에서 제목과 문단 구조까지",
+      "description": "온페이지 SEO는 SEO 플러그인에 키워드를 채우는 일만이 아닙니다. 검색 결과에서 글을 열고 다음 행동으로 이어질 때까지 독자가 따라갈 수 있는 일관된 경로를 만드는 일입니다. 가족사진 정리 방법을 설명하는 글을 예로 들어 독자의 과제를 정하고, 순서와 비교·예외를 구성한 뒤, WordPress의 제목 블록, URL, 요약, 이미지, 링크를 확인합니다. 마지막에는 실제 읽기 경험과 수정 기록을 점검해 플러그인 점수만으로 글의 품질을 판단하지 않도록 돕습니다.",
+      "hero": {
+        "src": "/guides/on-page-seo-workflow/hero-ko.jpg",
+        "alt": "문서, 웹페이지, 폴더를 그린 독창적인 그림으로 글의 구성, 페이지 미리보기, 콘텐츠 정리를 보여준다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "글을 건네받은 독자는 이것이 자신에게 필요한 내용인지, 무엇을 준비해야 하는지, 따라 한 뒤 무엇을 얻는지 빠르게 알아야 합니다. 온페이지 SEO는 이런 읽기 경로와 검색에서 들어오는 입구가 서로 맞도록 만드는 작업입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "'가족사진 정리'라는 글을 쓴다고 가정해 봅시다. 휴대전화 공간을 비우려는 사람, 여러 해의 사진을 보존하려는 사람, 온 가족이 함께 분류하려는 사람은 서로 다른 절차가 필요합니다. 글에서 해결할 과제를 먼저 하나 고른 뒤 제목, 문단, 작업 설명을 써야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "이 페이지에서 끝낼 과제를 한 문장으로 정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "'누가 어떤 상황에서 글을 읽고 나면 무엇을 할 수 있는가'를 적습니다. 예를 들어 여러 기기에 가족사진이 흩어져 있는 일반 사용자가 계속 사용할 수 있는 분류 목록을 만드는 것입니다. '사진 관리 소개'보다 구체적이므로 이 글에 꼭 들어갈 정보와 다른 글로 넘길 정보를 구분할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "파일 이름이 제각각이거나 사진 출처를 모르거나 한 번에 정리할 시간이 부족할 수 있습니다. 이런 자료와 제약을 장의 요구사항으로 바꿔 먼저 현황을 파악하고, 분류 방식을 고르고, 중복 사진을 처리한 뒤 일상적인 유지 방법을 마련합니다. 특정 소프트웨어 기능을 실제로 사용하지 않았다면 공식 문서를 확인하고, 예시 단계를 직접 시험한 결과처럼 쓰지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "자신이 이미 발행한 글 목록도 살펴봅니다. 같은 작업 목적에 답하는 글이 있다면 먼저 보완하세요. 한 글이 백업을, 다른 글이 사진 분류를 다룬다면 제목과 도입부에서 차이를 분명히 하고 필요한 곳에서 연결합니다. 단어만 바꾼 비슷한 글을 새로 만들지 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "문단과 비교를 배치하기 전에 답의 순서를 정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "도입부에서 대상 독자와 얻을 결과를 알리고, 시작 전 준비 사항을 설명한 뒤 실제 작업 순서로 전개합니다. 사진 분류라면 사진이 있는 기기를 먼저 나열하고, 주된 분류 방법을 선택하고, 적은 양으로 시험한 뒤 나머지 사진에 적용할 수 있습니다. 이 순서라면 독자가 작업 중 앞부분으로 돌아가 전제조건을 찾을 일이 줄어듭니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "각 절은 핵심 질문 하나를 맡습니다. '방법 2'보다는 '연도별로 먼저 정리할까, 행사별로 먼저 정리할까'가 훑어보기 쉽습니다. 비교표는 사진을 찾아야 하는 상황, 유지에 드는 노력, 예외 처리처럼 같은 항목으로 방법을 대조합니다. 표 아래에는 선택 조건을 적어 체크 표시만 남기지 않도록 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "단계에는 행동과 확인 방법이 모두 필요합니다. 분류 목록을 만들었다면 작년 가족 식사 사진 한 장을 골라 그 목록에서 찾을 수 있는지 확인해 보세요. 날짜가 불확실할 때 어떻게 처리할지도 적습니다. 이런 독창적인 예시와 예외 조건이 있어야 자료를 다시 배열한 요약이 아니라 실행할 수 있는 안내문이 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "WordPress 블록으로 실제 제목 계층 표현하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "글 편집기에서 주요 절을 제목 블록으로 설정하고 내용의 관계에 따라 H2, H3 등의 단계를 사용한 다음 문서 개요에서 순서를 확인합니다. WordPress 공식 문서에 따르면 대다수 테마는 글 제목을 H1으로 사용하지만 테마와 템플릿에 따라 달라집니다. 실제 페이지를 확인하고 글자만 키우려고 제목 단계를 임의로 바꾸지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "일반 설명에는 문단 블록, 순서가 있는 행동에는 번호 목록, 나란히 놓인 조건에는 글머리표 목록을 사용합니다. 제목은 내용을 조직하고 글자 크기는 스타일로 조절합니다. 한 단계가 너무 길어 훑어보기 어렵다면 설명과 행동을 나누고 긴 안내 전체를 목록 항목 하나에 억지로 넣지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google은 이상적인 글자 수나 제목 개수를 지정하지 않으며, 모든 절에 같은 키워드를 넣을 필요도 없습니다. 제목을 순서대로 읽어 자연스러운 흐름인지 확인하고 본문이 각 제목의 질문에 실제로 답하는지 살펴봅니다. 한 문단을 삭제해도 독자가 과제를 끝낼 수 있다면 단순히 앞 내용을 반복하는지 검토하세요."
+        },
+        {
+          "type": "heading",
+          "text": "URL, 사이트 내부 요약, 검색 설명을 따로 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "글 설정의 슬러그는 URL의 일부입니다. 게시 전에 주제를 알아볼 수 있고 오래 사용할 수 있는 이름을 선택합니다. 기존 글의 내용만 갱신한다면 URL까지 바꿀 필요는 없습니다. 옮겨야 한다면 예전 링크와 리디렉션을 별도로 계획합니다. 경로에 키워드를 더 넣으려고 추후 유지 부담을 늘리지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 글 요약은 테마에 따라 홈 화면이나 목록 페이지 등에 쓰일 수 있으므로 검색 결과의 메타 설명과 같다고 가정할 수 없습니다. 사이트가 SEO 플러그인이나 사용자 지정 필드를 쓴다면 어떤 설정이 description을 출력하는지 확인하고 실제 결과를 살펴봅니다. 관리자 화면의 미리보기가 정상이라는 것은 그 화면의 미리보기만 정상이라는 뜻입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 페이지의 과제를 요약하는 설명을 씁니다. 예를 들면 '여러 기기에 있는 사진의 출처를 정리하고, 연도별 또는 행사별 분류를 선택한 뒤, 유지 관리 목록을 만든다'입니다. Google은 검색어에 따라 본문에서 다른 검색 요약을 만들 수도 있고 메타 설명을 사용할 수도 있습니다. 같은 문장이 언제나 표시되기를 기대하기보다 도입부와 각 절을 명확히 쓰는 편이 실용적입니다."
+        },
+        {
+          "type": "heading",
+          "text": "이미지와 링크로 글만으로 부족한 설명 채우기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "분류 방식이 헷갈리기 쉽다면 사진 출처, 임시 정리 공간, 최종 분류를 보여주는 흐름도를 만들어 관련 문단 옆에 둡니다. 이미지는 빈 공간을 채우기보다 관계를 이해시키는 데 쓰여야 합니다. 그림 안의 글자는 휴대전화에서도 읽을 수 있어야 하며, 독자가 확대해야만 답을 얻지 않도록 핵심 결론을 본문에도 남깁니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "대체 텍스트는 이미지가 이 문단과 어떻게 연결되는지 설명해야 합니다. 예를 들어 흐름도가 여러 출처를 하나의 분류 체계로 모으는 방식을 적습니다. 검색어를 줄줄이 나열하지 마세요. 다른 사람의 자료를 썼다면 사용 허가와 출처를 보관합니다. 직접 만든 도표는 원본 제작물이라고 표시하고 실제 소프트웨어 화면으로 오해할 수 있는 가짜 인터페이스는 피합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "내부 링크는 독자에게 다음 행동이 필요한 지점에 둡니다. 모두 '여기를 클릭'이라고 쓰지 말고 '사진 백업 준비 사항 보기'처럼 목적지를 설명하세요. Google의 링크 안내는 크롤링할 수 있는 링크와 명확한 링크 문구를 강조합니다. 게시 전 각 목적지를 열어 문구와 내용이 일치하고 아직 제공하지 않는 기능으로 연결되지 않는지 확인합니다."
+        },
+        {
+          "type": "heading",
+          "text": "독자의 작업 경로를 따라 마지막 점검하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 데스크톱 미리보기를 보고 휴대전화 너비로 읽습니다. 도입부가 너무 길지 않은지, 표를 읽을 수 있는지, 이미지의 글자가 잘리지 않는지, 광고나 팝업이 주요 단계를 가리지 않는지 확인합니다. 주제를 모르는 사람에게 글만 보고 첫 단계와 완료 결과를 말해 달라고 해보세요. 어디서 시작할지 모른다면 키워드 비율을 조정하기 전에 내용을 보완해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "게시 전에 글 상태, 분류, 검색 노출 설정이 의도와 맞는지 확인합니다. WordPress 읽기 설정의 검색 엔진 색인 억제 옵션은 사이트 전체에 적용되므로 관리자가 전체 사이트의 목적에 맞게 확인해야 합니다. 개인정보 보호 도구는 아닙니다. 글 하나를 게시하려고 시험 사이트나 회원 콘텐츠에 적용된 기존 운영 방침을 임의로 덮어쓰지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "이번에 무엇을 언제 수정했는지 기록하고, 나중에 어떤 독자 질문이 아직 해결되지 않았는지 확인해 갱신을 계획합니다. 플러그인 알림은 편집할 때 참고할 수 있지만 글의 완성 여부는 과제, 근거, 실행 가능한 절차, 읽기 쉬움으로 판단합니다. 이유가 분명한 부분을 한 번에 하나씩 바꾸면 다음 개선점도 파악하기 쉽습니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "독자, 상황, 글을 통해 얻을 결과를 적고 기존 콘텐츠부터 확인한다.",
+            "작업 순서대로 문단을 구성하고 비교, 예외, 확인 방법을 보탠다.",
+            "WordPress 블록, URL, 요약, 이미지, 링크의 실제 출력을 확인한다.",
+            "휴대전화에서 읽고 작업을 시험하며, 추후 갱신을 위해 수정 기록을 남긴다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/on-page-seo-workflow/diagram-1-ko.svg",
+          "alt": "독자의 과제, 본문 구성, 페이지 설정, 작업 확인의 네 단계를 차례로 보여주고 각 단계에 세 가지 점검 항목을 적은 도표.",
+          "width": 1600,
+          "height": 900,
+          "caption": "먼저 독자의 질문에 답하고 페이지 설정이 그 답을 올바르게 보여주는지 확인한다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "편집 항목",
+            "답할 질문",
+            "확인 방법"
+          ],
+          "rows": [
+            [
+              "주제 범위",
+              "이 페이지는 누구의 어떤 과제를 돕는가",
+              "독자의 과제를 한 문장으로 말할 수 있는가"
+            ],
+            [
+              "문단 계층",
+              "독자가 순서대로 따라 할 수 있는가",
+              "개요만 읽어도 흐름을 이해하는가"
+            ],
+            [
+              "비교표",
+              "서로 다른 선택지를 어떻게 판단하는가",
+              "같은 항목을 쓰고 적용 조건을 설명한다"
+            ],
+            [
+              "요약 설정",
+              "사이트 내부 미리보기와 검색 설명은 어디에서 만들어지는가",
+              "테마, 플러그인, 실제 출력을 확인한다"
+            ],
+            [
+              "이미지와 링크",
+              "이해나 다음 행동을 돕는가",
+              "휴대전화로 읽고 목적지를 연다"
+            ],
+            [
+              "완료 확인",
+              "글에 따라 실제로 할 수 있는가",
+              "첫 단계, 예외, 완료 결과를 뽑아 확인한다"
+            ]
+          ],
+          "caption": "단일 글을 위한 독창적인 편집 점검표이며 검색 엔진의 고정된 채점 공식이 아닙니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "독자에게 부족한 답부터 채우기",
+          "text": "안내문에 사전 조건이 빠졌거나 비교에 선택 근거가 없거나 링크를 열어도 다음 단계를 끝낼 수 없다면 키워드를 늘려도 그 빈틈은 메워지지 않습니다. 먼저 내용을 이해하고 실행할 수 있게 만든 뒤 도구로 설정을 확인하세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "먼저 WordPress 글과 고정 페이지가 각각 어떤 용도인지 알아보세요."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "페이지에 기술적인 문제가 있다면 테크니컬 SEO 점검표를 따라 확인하세요."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google SEO 시작 가이드",
+          "url": "https://developers.google.com/search/docs/fundamentals/seo-starter-guide?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 검색 결과 스니펫 관리하기",
+          "url": "https://developers.google.com/search/docs/appearance/snippet?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 크롤링 가능한 링크 만들기",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/links-crawlable?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 제목 블록",
+          "url": "https://wordpress.org/documentation/article/heading-block/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 페이지·글 설정 사이드바",
+          "url": "https://wordpress.org/documentation/article/page-post-settings-sidebar/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 읽기 설정",
+          "url": "https://wordpress.org/documentation/article/settings-reading-screen/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }

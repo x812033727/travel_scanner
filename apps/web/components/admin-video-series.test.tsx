@@ -445,6 +445,8 @@ describe("AdminVideoSeries", () => {
     const patch = calls.find((call) => call.method === "PATCH");
     expect(patch?.url).toContain("/admin/video-automation/series/wenjian");
     expect(patch?.body).toEqual({ hands_off: false });
+    // A long series reads its compilation again with the page; only a story series stops asking.
+    await waitFor(() => expect(calls.filter((call) => call.url.includes("/admin/videos?series=wenjian")).length).toBe(2));
   });
 
   it("offers 做合集 on a finished series that was not set up to make one, and posts the action", async () => {
