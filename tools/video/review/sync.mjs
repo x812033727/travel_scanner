@@ -17,11 +17,12 @@ import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { AutomationError, automationClient } from "../automation/client.mjs";
 import { GATES, approvalState, approve, readApprovals, sha256File } from "../core/approvals.mjs";
 import { isCompilation } from "../core/compilation.mjs";
-import { hasCast, isDrama, shotScenes } from "../core/drama.mjs";
+import { hasCast, illustrated, isDrama, shotScenes } from "../core/drama.mjs";
 import { atomicWrite, docDir, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { chosenLocales, dubRole, dubsForUpload, LANGUAGES_FILE, readLanguages } from "../core/stages.mjs";
 import { ARTIFACTS, loadProject, pipelineStatus } from "../core/state.mjs";
 import { narrativeHash, scriptScenes, writeScreenplay } from "../core/screenplay.mjs";
+import { scriptCheckMatches } from "../core/script-check.mjs";
 import { estimateTimeline, formatClock } from "../core/timeline.mjs";
 import { keepSheets } from "../media/series-store.mjs";
 import { packageFiles, packageLocales, readPackageReport, UPLOAD_DIR } from "../package/check.mjs";
@@ -362,7 +363,8 @@ const imageType = (file) => IMAGE_TYPES[path.extname(file).toLowerCase()] ?? "ap
 async function nextGate(places, workdir, doc) {
   // A compilation's episodes went through every gate; the owner sees its cut, then its package.
   // Every other drama has a script gate (docs/videos/DRAMA-FLOW.md, section 2).
-  const order = isCompilation(doc) ? ["final"] : isDrama(doc) ? ["outline", "script", ...(hasCast(doc) ? ["look"] : []), "audio", "storyboard", "final"] : ["outline", "audio", "final"];
+  // Illustrated slides (docs/videos/ILLUSTRATED.md) show their storyboard after the narration.
+  const order = isCompilation(doc) ? ["final"] : isDrama(doc) ? ["outline", "script", ...(hasCast(doc) ? ["look"] : []), "audio", "storyboard", "final"] : ["outline", "audio", ...(illustrated(doc) ? ["storyboard"] : []), "final"];
   for (const gate of order) {
     const state = await approvalState({ gate, ...places });
     if (state.status === "missing" || state.status === "stale") return gate;
@@ -395,7 +397,8 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     // Written afresh so the file always matches video.json; the same narrative gives the same
     // bytes, so an approval already given stays valid.
     const file = writeScreenplay(dir, doc);
-    const check = readJson(path.join(workdir, "review", "script-check.json"), null);
+    const previousCheck = readJson(path.join(workdir, "review", "script-check.json"), null);
+    const check = scriptCheckMatches(previousCheck, doc) ? previousCheck : null;
     const scenes = scriptScenes(doc);
     const lines = scenes.reduce((sum, scene) => sum + scene.lines.length, 0);
     const timeline = estimateTimeline(doc);
@@ -410,7 +413,8 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
         minutes,
         beats: project.series?.beats ?? null,
         coverage: check?.coverage ?? null,
-        continuity_problems: check?.problems ?? [],
+        continuity_problems: check?.problems ?? (previousCheck ? ["劇本已修改，舊查核報告不適用；請重新查核。"] : []),
+        check_status: check ? "current" : previousCheck ? "stale" : "missing",
         // A binge series' checker also names the works the script resembles and its retention
         // verdict (docs/videos/BINGE.md); the worker writes both into script-check.json.
         similar_works: check?.similar_works ?? [],
@@ -808,6 +812,9 @@ export async function reviewPush(args, ctx) {
         stage: status.next ? status.next.id.slice(0, 40) : "done",
         checklist: checklistFrom(status.steps),
         youtube_video_id: project.doc.youtube?.video_id || null,
+        // The site reads the format at its gates (a drama's storyboard rule is not a slides video's,
+        // docs/videos/ILLUSTRATED.md); the worker reports it too (automation/flow.mjs).
+        format: project.doc.format ?? "slides",
         ...(sourceGuide ? { source_guide: sourceGuide } : {}),
         // An episode names its series and number; a compilation only its series (docs/videos/BINGE.md).
         ...(isCompilation(project.doc) ? { series_slug: project.doc.compilation.series } : project.doc.series ? { series_slug: project.doc.series.slug, episode_number: project.doc.series.episode } : {}),

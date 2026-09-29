@@ -10,16 +10,16 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 
 import { approvalState } from "../core/approvals.mjs";
-import { isDrama, lookHash, resolveLook, shotScenes } from "../core/drama.mjs";
+import { burnIn, hasCast, hasPictures, illustrated, lookHash, picturesHash, resolveLook, shotScenes } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
-import { ARTIFACTS, lintProject, loadProject, lookChosen, narratorOnly, recordStage } from "../core/state.mjs";
+import { ARTIFACTS, lintProject, loadProject, lookChosen, recordStage } from "../core/state.mjs";
 import { visualHash } from "../core/timeline.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { MediaError, mediaStatus } from "./client.mjs";
 import { clientOptions, requireCredentials } from "./cli.mjs";
 import { ledgerTotals } from "./ledger.mjs";
 import { duplicates } from "./qc.mjs";
-import { drawContactSheet, imagePrice, imageSelectionVersion, imageStatus, JUDGE_USD_PER_CALL, pictureHashes, retakeable, sameImage, Stage, statusProblem } from "./stages.mjs";
+import { capFor, choiceFor, drawContactSheet, imagePrice, imageSelectionVersion, imageStatus, JUDGE_USD_PER_CALL, pictureHashes, retakeable, sameImage, Stage, statusProblem } from "./stages.mjs";
 
 export const MAX_KEYFRAME_TAKES = 3;
 // The server takes at most four reference pictures per image.
@@ -42,8 +42,12 @@ export function contactSheetPages(tiles, perPage = CONTACT_SHEET_TILES) {
   }));
 }
 
-/** What the judge scores a keyframe on: one identity question per character in the shot, then the picture itself. */
-export function keyframeRubric(characters) {
+/**
+ * What the judge scores a keyframe on: one identity question per character in the shot, then the
+ * picture itself. With no cast the style is judged against the look's description alone, and a
+ * video whose subtitles are CC only (illustrated slides) has no subtitle band to keep clear.
+ */
+export function keyframeRubric(characters, { subtitleBand = true } = {}) {
   return [
     ...characters.map((character) => ({
       key: `identity_${character.id.replace(/-/g, "_")}`,
@@ -51,10 +55,14 @@ export function keyframeRubric(characters) {
       weight: 2,
     })),
     { key: "prompt", question: "Does the picture show what the shot prompt describes: subjects, setting, action, framing?", weight: 2 },
-    { key: "style", question: "Is the picture in the requested visual style, consistent with the reference sheets?", weight: 1 },
+    {
+      key: "style",
+      question: characters.length ? "Is the picture in the requested visual style, consistent with the reference sheets?" : "Is the picture in the requested visual style, as the style description in the context puts it: technique, palette, line, mood?",
+      weight: 1,
+    },
     { key: "clean", question: "Is it free of faults: correct hands and fingers, no warped faces, no floating or duplicated parts, no smeared background?", weight: 2 },
     { key: "no_text", question: "Is it free of text, letters, watermarks and logos?", weight: 1 },
-    { key: "subtitle_band", question: "Is the main subject clear of the bottom 14% of the frame, where subtitles will be burned in?", weight: 1 },
+    ...(subtitleBand ? [{ key: "subtitle_band", question: "Is the main subject clear of the bottom 14% of the frame, where subtitles will be burned in?", weight: 1 }] : []),
   ];
 }
 
@@ -101,11 +109,17 @@ export async function run(command, args, ctx) {
     ctx.stdout.write(`${doc.slug} has ${lint.errors.length} lint errors; run lint first\n`);
     return EXIT.lint;
   }
-  if (!isDrama(doc)) throw new UsageError("keyframes is for a drama (format \"drama\")");
+  if (!hasPictures(doc)) throw new UsageError("keyframes is for a drama (format \"drama\") or illustrated slides (still \"shot\" scenes, docs/videos/ILLUSTRATED.md)");
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
   const look = resolveLook(doc.look);
   const hash = lookHash(doc);
-  const visual = visualHash(doc);
+  // A drama's manifest is bound to the whole picture; illustrated slides bind theirs to the shots
+  // alone (id, prompt, camera), so a card's text can change without every picture being judged again.
+  const slides = illustrated(doc);
+  const binding = slides ? { pictures_hash: picturesHash(doc) } : { visual_hash: visualHash(doc) };
+  const bound = (manifest) => manifest && Object.entries(binding).every(([key, value]) => manifest[key] === value);
+  const format = slides ? doc.format : null;
+  const rubricOptions = { subtitleBand: burnIn(doc) };
   const wanted = values.shot ? new Set(values.shot.split(",").map((each) => each.trim()).filter(Boolean)) : null;
   const shots = shotScenes(doc).filter((scene) => !wanted || wanted.has(scene.id));
   if (!shots.length) throw new UsageError(`--shot ${values.shot} names no shot of ${doc.slug}`);
@@ -118,7 +132,7 @@ export async function run(command, args, ctx) {
   // character. A narrator-only drama has no character, so no sheet to wait for.
   let chosen = {};
   let sheets = {};
-  if (!narratorOnly(doc)) {
+  if (hasCast(doc)) {
     const lookManifest = readJson(path.join(workdir, ARTIFACTS.characters), null);
     chosen = lookChosen(lookManifest, readJson(path.join(workdir, ARTIFACTS.characterChoice), null), hash);
     const approval = await approvalState({ gate: "look", docDir: project.dir, workdir });
@@ -136,9 +150,10 @@ export async function run(command, args, ctx) {
     const credentials = readCredentials({ env: ctx.env, home: ctx.home });
     if (credentials.token) {
       const status = imageStatus(await mediaStatus(clientOptions(ctx, credentials)), project.series);
-      const problem = statusProblem(status);
-      const usd = (shots.length + endFrames) * (imagePrice(status) + JUDGE_USD_PER_CALL);
-      ctx.stdout.write(`server: ${problem ? `NOT ready: ${problem}` : `${status.image.provider} ${status.image.model} ${status.image.configured === null ? "(provider key checked on submit)" : "ready"}`}; about US$${usd.toFixed(2)} for one take of everything; this video so far US$${ledgerTotals(workdir).usd.toFixed(2)} of the US$${status.max_usd_per_video} cap\n`);
+      const problem = statusProblem(status, "image", format);
+      const choice = choiceFor(status, "image", format);
+      const usd = (shots.length + endFrames) * (imagePrice(status, format) + JUDGE_USD_PER_CALL);
+      ctx.stdout.write(`server: ${problem ? `NOT ready: ${problem}` : `${choice.provider} ${choice.model} ${choice.configured === null ? "(provider key checked on submit)" : "ready"}`}; about US$${usd.toFixed(2)} for one take of everything, up to US$${(usd * takes).toFixed(2)} at ${takes} takes; this video so far US$${ledgerTotals(workdir).usd.toFixed(2)} of the US$${capFor(status, format)} cap\n`);
     } else {
       ctx.stdout.write("no video tool token yet; run `node tools/video/cli.mjs login` before generating\n");
     }
@@ -148,9 +163,9 @@ export async function run(command, args, ctx) {
   const credentials = requireCredentials(ctx);
   const options = clientOptions(ctx, credentials);
   const status = imageStatus(await mediaStatus(options), project.series);
-  const problem = statusProblem(status);
+  const problem = statusProblem(status, "image", format);
   if (problem) throw new MediaError(problem, { who: "owner" });
-  const stage = new Stage({ slug: doc.slug, workdir, options, status, stage: "keyframes", imageVersion, now: ctx.now });
+  const stage = new Stage({ slug: doc.slug, workdir, options, status, stage: "keyframes", imageVersion, format, now: ctx.now });
   mkdirSync(path.join(workdir, "keyframes"), { recursive: true });
   // The chosen sheets and the style frames go to the media store (the server may have pruned
   // them), once per run, and every keyframe is generated with them as references.
@@ -163,8 +178,9 @@ export async function run(command, args, ctx) {
     styleReferences.push({ sha256: await stage.upload(file), role: "style" });
   }
   const existing = readJson(manifestFile(workdir), null);
-  const manifest = existing?.look_hash === hash && existing.visual_hash === visual && sameImage(existing.image, status.image) && (!imageVersion || existing.image_selection_version === imageVersion) && !values.force ? existing : { look_hash: hash, visual_hash: visual, image_selection_version: 1, shots: {} };
-  manifest.image = { provider: status.image.provider, model: status.image.model };
+  const chosenImage = choiceFor(status, "image", format);
+  const manifest = existing?.look_hash === hash && bound(existing) && sameImage(existing.image, chosenImage) && (!imageVersion || existing.image_selection_version === imageVersion) && !values.force ? existing : { look_hash: hash, ...binding, image_selection_version: 1, shots: {} };
+  manifest.image = { provider: chosenImage.provider, model: chosenImage.model };
   const started = Date.now();
   let generated = 0;
   let stopped = false;
@@ -203,7 +219,7 @@ export async function run(command, args, ctx) {
           id: scene.id,
           kind: "keyframe",
           files: [{ sha256: picture.sha256, label: "keyframe" }, ...characters.filter((character) => uploaded[character.id]).map((character) => ({ sha256: uploaded[character.id], label: `sheet ${character.name}` }))].slice(0, 6),
-          rubric: keyframeRubric(characters),
+          rubric: keyframeRubric(characters, rubricOptions),
           context: { shot: { id: scene.id, prompt: scene.data.prompt, camera: scene.data.camera ?? null }, characters: characters.map((character) => ({ name: character.name, description: character.appearance })), style: look.style },
         });
       } catch (error) {

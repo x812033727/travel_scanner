@@ -14,13 +14,14 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 
 import path from "node:path";
 
 import { approvalState, approve, sha256File } from "../core/approvals.mjs";
-import { EXPLAINER_PRESET } from "../core/drama.mjs";
+import { EXPLAINER_PRESET, illustrated, SLIDES_PRESET } from "../core/drama.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
 import { articlePath, SITE } from "../core/metadata.mjs";
-import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT } from "../core/paths.mjs";
-import { eachLine, LINE_ID, spokenText } from "../core/schema.mjs";
+import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, UsageError } from "../core/paths.mjs";
+import { eachLine, LINE_ID, MAX_PAUSE_MS, spokenText } from "../core/schema.mjs";
 import { writeScreenplay } from "../core/screenplay.mjs";
+import { scriptCheckBinding, scriptCheckMatches, scriptCheckUnbound } from "../core/script-check.mjs";
 import { LOCALE_PARTS, readLanguages, writeLanguages } from "../core/stages.mjs";
 import { ARTIFACTS, dubArtifacts, dubsStatus, lintProject, loadProject, pipelineStatus } from "../core/state.mjs";
 import { speechHash } from "../core/timeline.mjs";
@@ -31,10 +32,11 @@ import { discussStep } from "./discuss.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
 import { advanceStory, fixStoryPrompts } from "./story.mjs";
 import { instructionsFor, parseAnswer, references } from "./prompts.mjs";
+import { registerLine, registerSummary } from "./register.mjs";
 import { rewriteProblems } from "./rewrite.mjs";
 import { advanceCompilation, startCompilation } from "./compilation.mjs";
 import { castFrom, episodeBrief, isExplainerOneOff, isOneOff, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
-import { episodeShortFields, episodeShortsProblems, shortsFile } from "../shorts/episode.mjs";
+import { episodeSeries, episodeShortFields, episodeShortsProblems, shortsFile } from "../shorts/episode.mjs";
 
 export const STATE_FILE = "auto.json";
 const GLOBAL_FILE = "auto-state.json";
@@ -256,8 +258,8 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
   else delete settled.source_guide;
   settled.assets = [];
   if (settled.youtube) settled.youtube = { ...settled.youtube, video_id: null };
+  const drama = settings.drama ?? {};
   if (format === "drama") {
-    const drama = settings.drama ?? {};
     settled.format = "drama";
     const preset = stylePreset ?? drama.style_preset ?? "cinematic-3d";
     settled.look = { preset, ...(video.look ?? {}) };
@@ -266,14 +268,28 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
       settled.characters = [];
     }
     settled.subtitles = { burn_in: drama.subtitle_burn_in ?? true, ...(video.subtitles ?? {}) };
-    if (drama.music_enabled === false) delete settled.music;
+  } else if (illustrated(video)) {
+    // Illustrated slides (docs/videos/ILLUSTRATED.md): the channel's look unless the writer named
+    // one, and the owner's licensed music file and sound-effect set from the settings tab's
+    // slides object (migration 0114; a site from before it sends none) when the writer named none.
+    settled.look = { preset: SLIDES_PRESET, ...(video.look ?? {}) };
+    const slides = settings.slides ?? {};
+    if (!settled.music && slides.slides_music_track) settled.music = { track: slides.slides_music_track };
+    if (!settled.sfx && slides.slides_sfx_set) settled.sfx = { set: slides.slides_sfx_set };
+  } else if (format !== "drama") {
+    // Plain slides: the writer is told the look rides on shots, so a look without any is dropped
+    // rather than left for lint to refuse.
+    delete settled.look;
   }
+  // Music is the owner's switch for every format.
+  if (drama.music_enabled === false) delete settled.music;
   if (format === "drama" && series) {
     // An episode of a series (docs/videos/SERIES.md): the cast is the setting book's, word for
-    // word, listed by id; a character the book does not have stays for lint to refuse.
+    // word, listed by id; a character the book does not have stays for lint to refuse. An
+    // explainer (a one-off of the flat-explainer preset) has no cast whatever the writer returned.
     settled.series = { slug: series.slug, episode: series.episode, chapter: series.chapter };
     const book = new Map((cast ?? []).map((character) => [character.id, character]));
-    settled.characters = (video.characters ?? []).map((character) => book.get(character?.id) ?? character).sort((a, b) => (a?.id < b?.id ? -1 : a?.id > b?.id ? 1 : 0));
+    settled.characters = settled.look?.preset === EXPLAINER_PRESET ? [] : (video.characters ?? []).map((character) => book.get(character?.id) ?? character).sort((a, b) => (a?.id < b?.id ? -1 : a?.id > b?.id ? 1 : 0));
   }
   return settled;
 }
@@ -913,7 +929,14 @@ export class Automation {
    */
   async scriptGate(state) {
     const dir = docDir(state.slug, this.ctx.root);
-    const file = writeScreenplay(dir, JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8")));
+    const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    const check = readJson(path.join(this.workdir(state.slug), "review", "script-check.json"), null);
+    if (state.series && !scriptCheckMatches(check, video)) {
+      state.verified = false;
+      saveState(this.workdir(state.slug), state);
+      return this.verify(state);
+    }
+    const file = writeScreenplay(dir, video);
     if (this.settings.drama?.series_script_gate === false) {
       await approve({ gate: "script", docDir: dir, workdir: this.workdir(state.slug), now: this.ctx.now(), note: "「劇本先給我看」關著，依設定自動核准" });
       return `${state.slug}: screenplay approved by the settings (劇本先給我看 is off)`;
@@ -921,7 +944,6 @@ export class Automation {
     const review = await this.decision(state, "script", file);
     if (!review) {
       if (state.series?.hands_off) {
-        const check = readJson(path.join(this.workdir(state.slug), "review", "script-check.json"), null);
         const verdict = scriptVerdict(check, state.series);
         const rounds = state.prompt_fixes?.script ?? 0;
         if (!verdict.passed && rounds < MAX_PROMPT_FIX_ROUNDS) return this.fixScript(state, verdict.problems.join("；"), "the checker");
@@ -1046,6 +1068,21 @@ export class Automation {
 
     if (next === "brief") return this.block(state,"brief.md is gone");
     if (next === "script passes lint") return this.write(state);
+    // Prompt repairs and resumed workers can reach this point after a saved script
+    // changed without changing script.md (for example its spoken form or pauses).
+    // Check the evidence before every downstream stage, even after script approval.
+    // A brand story has no whole-script report: story.mjs checks it a chapter at a time.
+    if (state.series && !state.compilation && !state.story && state.verified) {
+      const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+      const check = readJson(path.join(workdir, "review", "script-check.json"), null);
+      // A report from before reports named their script has nothing to compare. It is made again
+      // only while the script gate is still ahead, where the owner reads it (scriptGate asks for
+      // it); an episode already past the gate when the worker learned to bind its reports has an
+      // approved screenplay and perhaps paid media, and a checker's rewrite would undo both.
+      const gateAhead = status.steps.some((step) => step.id === "script approved" && !step.done);
+      const spared = scriptCheckUnbound(check) && !gateAhead;
+      if (!spared && !scriptCheckMatches(check, video)) state.verified = false;
+    }
     // status only knows that verify-1.md exists; the rounds and the listener edit are ours.
     if (!state.verified) return this.verify(state);
     if (!state.listener_done) return this.listen(state);
@@ -1199,14 +1236,33 @@ export class Automation {
     };
   }
 
+  /** A stage's video.json as it is saved: the owner's settings and the series' cast over what the model returned. */
+  settled(state, video) {
+    const cast = state.series ? readJson(path.join(docDir(state.slug, this.ctx.root), "series.json"), {}).characters ?? [] : null;
+    return settle(video, { slug: state.slug, settings: this.settings, sourceGuide: state.source_guide, root: this.ctx.root, format: state.format, series: state.series ?? null, cast, stylePreset: state.style_preset ?? null });
+  }
+
+  /**
+   * Whether the saved script is the candidate the checker returned. The candidate is compared
+   * as saveAndLint saves it, so an answer that lists the voice's keys or the cast in another
+   * order, or leaves the voice out, is still the script that was saved; a candidate too broken
+   * to settle or hash is one lint had repaired, and is not.
+   */
+  checkedIsSaved(state, candidate, saved) {
+    try {
+      return scriptCheckMatches(scriptCheckBinding(this.settled(state, candidate)), saved);
+    } catch {
+      return false;
+    }
+  }
+
   /** Save a stage's video.json and lexicon terms, then fix lint errors with the writer, up to 3 times. */
   async saveAndLint(state, answer) {
     const dir = docDir(state.slug, this.ctx.root);
     let current = answer;
     for (let fix = 0; ; fix++) {
       if (!current?.video || typeof current.video !== "object") return "the answer has no video object";
-      const cast = state.series ? readJson(path.join(dir, "series.json"), {}).characters ?? [] : null;
-      writeVideo(dir, settle(current.video, { slug: state.slug, settings: this.settings, sourceGuide: state.source_guide, root: this.ctx.root, format: state.format, series: state.series ?? null, cast, stylePreset: state.style_preset ?? null }));
+      writeVideo(dir, this.settled(state, current.video));
       const added = mergeLexicon(this.ctx.root, current.lexicon_additions);
       if (added.length) state.lexicon_added = [...new Set([...(state.lexicon_added ?? []), ...added])];
       const errors = lintErrors(this.ctx, state.slug);
@@ -1268,7 +1324,7 @@ export class Automation {
     if (rounds >= MAX_PROMPT_FIX_ROUNDS) return this.block(state, `${kind} still fails after ${rounds} prompt fixes (${summary})`);
     const dir = docDir(state.slug, this.ctx.root);
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
-    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix: { kind, targets: found, problems: found.flatMap((target) => target.problems ?? []), owner_note: ownerNote }, line_ids: this.freshIds(state, video, 40) }), 32_000, "drama", this.variantOf(state), state.series ?? null);
+    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix: { kind, targets: found, problems: found.flatMap((target) => target.problems ?? []), owner_note: ownerNote }, line_ids: this.freshIds(state, video, 40) }), 32_000, state.format ?? "drama", this.variantOf(state), state.series ?? null);
     const problem = await this.saveAndLint(state, answer);
     if (problem) return this.retryLater(state, "writer", `the ${kind} fix ${problem}`);
     this.cleared(state, "writer");
@@ -1359,7 +1415,8 @@ export class Automation {
     saveState(this.workdir(state.slug), state);
     if (problem) return this.retryLater(state, "writer", `the script ${problem}`);
     this.cleared(state, "writer");
-    const shorts = this.variantOf(state) === "explainer" ? this.saveShorts(state, answer.shorts) : null;
+    // An explainer's and an illustrated slides video's two Shorts are drafted with the script (docs/videos/ILLUSTRATED.md).
+    const shorts = this.variantOf(state) === "explainer" || illustrated(JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"))) ? this.saveShorts(state, answer.shorts) : null;
     saveState(this.workdir(state.slug), state);
     await report(this.ctx, this.api, state, "fact-checked");
     return `${state.slug}: script drafted and passes lint${shorts ? `; ${shorts}` : ""}`;
@@ -1374,7 +1431,7 @@ export class Automation {
     const dir = docDir(state.slug, this.ctx.root);
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
     const shorts = Array.isArray(drafted)
-      ? drafted.map((doc, index) => ({ ...doc, ...episodeShortFields(state.slug, index) }))
+      ? drafted.map((doc, index) => ({ ...doc, ...episodeShortFields(state.slug, index, episodeSeries(video)) }))
       : drafted;
     const problems = episodeShortsProblems(shorts, video);
     if (problems.length) {
@@ -1395,21 +1452,25 @@ export class Automation {
     const answer = await this.stage("verifier", state.slug, { today: today(this.ctx), round, video, claims, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), sources, ...(state.series ? this.seriesPayload(state) : {}) }, 32_000, state.format, this.variantOf(state), state.series ?? null);
     if (typeof answer.report !== "string") return this.retryLater(state, "verifier", `fact-check round ${round} returned no report`);
     writeFileSync(path.join(dir, `verify-${round}.md`), answer.report.endsWith("\n") ? answer.report : `${answer.report}\n`);
-    if (state.series) {
-      // What the script gate shows the owner: whether each beat is delivered, and what jars;
-      // the retention numbers are measured on the checked script from the lines the checker
-      // named (docs/videos/BINGE.md), never taken from the model.
-      const reviewDir = path.join(this.workdir(state.slug), "review");
-      mkdirSync(reviewDir, { recursive: true });
-      const checked = answer.video && typeof answer.video === "object" ? answer.video : video;
-      atomicWrite(path.join(reviewDir, "script-check.json"), `${JSON.stringify({ round, coverage: answer.coverage ?? null, problems: Array.isArray(answer.problems) ? answer.problems : [], similar_works: Array.isArray(answer.similar_works) ? answer.similar_works : [], retention: retentionNumbers(checked, answer.retention) }, null, 2)}\n`);
-    }
     if (typeof answer.claims === "string") writeFileSync(path.join(dir, "claims.md"), answer.claims.endsWith("\n") ? answer.claims : `${answer.claims}\n`);
     state.verify_rounds = round;
     const changed = Number(answer.changed_facts) || 0;
     if (answer.video) {
       const problem = await this.saveAndLint(state, { video: answer.video });
       if (problem) return this.retryLater(state, "verifier", `fact-check round ${round} changed ${changed} facts but ${problem}`);
+    }
+    const saved = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    if (state.series) {
+      // A lint repair may rewrite the verifier's candidate. Never bind that candidate's
+      // verdict to the repair: another bounded verification must read the saved script.
+      // Without a candidate nothing was saved, and the script read is the script on disk.
+      if (answer.video && !this.checkedIsSaved(state, answer.video, saved)) {
+        state.verified = false;
+        return this.retryLater(state, "verifier", "the lint repair changed the checked script; verification must run again");
+      }
+      const reviewDir = path.join(this.workdir(state.slug), "review");
+      mkdirSync(reviewDir, { recursive: true });
+      atomicWrite(path.join(reviewDir, "script-check.json"), `${JSON.stringify({ ...scriptCheckBinding(saved), round, coverage: answer.coverage ?? null, problems: Array.isArray(answer.problems) ? answer.problems : [], similar_works: Array.isArray(answer.similar_works) ? answer.similar_works : [], retention: retentionNumbers(saved, answer.retention) }, null, 2)}\n`);
     }
     state.verified = changed <= 3 || round >= settingsFor(this.settings, state.format).verifyRounds;
     this.cleared(state, "verifier");
@@ -1420,13 +1481,119 @@ export class Automation {
   async listen(state, note = null) {
     const dir = docDir(state.slug, this.ctx.root);
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
-    const answer = await this.stage("listener", state.slug, { video, script_writing: this.reference().script_writing, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), ...(note ? { owner_note: note } : {}) }, 32_000, state.format);
+    // A drama's listener reads the format alone, as before; a slides video's carries the variant
+    // (the storytelling register of docs/videos/ILLUSTRATED.md rides on it).
+    const variant = state.format === "drama" ? null : this.variantOf(state);
+    const answer = await this.stage("listener", state.slug, { video, script_writing: this.reference().script_writing, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), ...(state.series ? this.seriesPayload(state) : {}), ...(note ? { owner_note: note } : {}) }, 32_000, state.format, variant);
     const problem = await this.saveAndLint(state, answer);
+    const saved = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    if (!scriptCheckMatches(scriptCheckBinding(video), saved)) state.verified = false;
+    // Keep listener_done after the recheck, so a meaningful edit causes one new
+    // verification sequence rather than a verifier/listener loop.
     state.listener_done = !problem;
     if (problem) return this.retryLater(state, "listener", `the listener edit ${problem}`);
     this.cleared(state, "listener");
     saveState(this.workdir(state.slug), state);
     return `${state.slug}: listener edit, ${(answer.edits ?? []).length} changes`;
+  }
+
+  /**
+   * `restyle --slug S` (docs/videos/ILLUSTRATED.md §說書式旁白): a video the worker started, not
+   * yet on YouTube, has its narration retold in the storytelling register without a new script.
+   * The listener's register pass (variant "register") answers line by line; a line that keeps
+   * every number, Latin word and dictionary term (rewrite.mjs) and a pause within the schema
+   * replaces the script's, the rest are refused with the reason; a script the accepted lines
+   * make fail lint goes back as it was. brief.md is not touched (the outline approval holds) and
+   * no line is added, dropped or moved (the translations' ids still match), but the wording is
+   * new: the fact-check runs once more, the narration is recorded again and the audio gate is
+   * reviewed anew, all by the worker's next rounds. Returns the line for the terminal.
+   */
+  async restyle(slug, { dryRun = false } = {}) {
+    const state = automatedVideos(this.workBase).find((each) => each.slug === slug);
+    if (!state) throw new UsageError(`${slug} was not started by the worker (no ${STATE_FILE} in its work directory); restyle works on the worker's videos`);
+    if (state.format === "drama") throw new UsageError(`${slug} is a drama: its narration is the screenplay's, the register is for slides videos`);
+    if (state.youtube_video_id || state.status === "done") throw new UsageError(`${slug} is already on YouTube; a restyle would make a different video`);
+    const dir = docDir(slug, this.ctx.root);
+    const file = path.join(dir, "video.json");
+    if (!existsSync(file)) throw new UsageError(`${slug} has no video.json yet; restyle retells a written script`);
+    const source = readFileSync(file, "utf8");
+    const video = JSON.parse(source);
+    const before = registerSummary(video);
+    if (dryRun) return `${slug}: ${registerLine(before)}; a restyle would send ${before.lines} lines to the listener's register pass, then fact-check, record and review the narration again`;
+    const lexicon = readJson(lexiconFile(this.ctx.root), emptyLexicon());
+    const lines = new Map();
+    const listed = [];
+    for (const scene of video.scenes ?? []) {
+      for (const line of scene.lines ?? []) {
+        lines.set(line.id, line);
+        listed.push({ id: line.id, scene: scene.id, ...(scene.chapter ? { chapter: scene.chapter } : {}), text: spokenText(line) });
+      }
+    }
+    const answer = await this.stage("listener", slug, { video, lines: listed, lexicon: Object.keys(lexicon.terms) }, 32_000, state.format, "register");
+    if (!Array.isArray(answer?.lines)) throw new AutomationError("the register pass answered without a lines array", { code: OUTPUT_INVALID });
+    const accepted = [];
+    const refused = [];
+    const seen = new Set();
+    for (const entry of answer.lines) {
+      const id = String(entry?.id ?? "");
+      const line = lines.get(id);
+      if (!line) {
+        refused.push(`${id || "?"}: not a line of this video`);
+        continue;
+      }
+      if (seen.has(id)) continue;
+      seen.add(id);
+      const was = spokenText(line);
+      const text = typeof entry.text === "string" ? entry.text.trim() : "";
+      if (!text) {
+        refused.push(`${id}: the retold line is empty`);
+        continue;
+      }
+      const pause = entry.pause_after_ms;
+      if (pause !== undefined && !(Number.isInteger(pause) && pause >= 0 && pause <= MAX_PAUSE_MS)) {
+        refused.push(`${id}: pause_after_ms must be an integer from 0 to ${MAX_PAUSE_MS}`);
+        continue;
+      }
+      if (text === was && (pause === undefined || pause === line.pause_after_ms)) continue;
+      const problems = rewriteProblems(was, text, { lexicon });
+      if (problems.length) {
+        refused.push(`${id}: ${problems.join("; ")}`);
+        continue;
+      }
+      accepted.push({ id, before: was, after: text, ...(pause !== undefined ? { pause_after_ms: pause } : {}) });
+    }
+    if (accepted.length) {
+      for (const { id, after, pause_after_ms } of accepted) {
+        const line = lines.get(id);
+        line.text = after;
+        // The retold line is what the voice says now; a spoken form written for the old text would fail lint.
+        delete line.say;
+        delete line.say_for;
+        if (pause_after_ms !== undefined) {
+          if (pause_after_ms > 0) line.pause_after_ms = pause_after_ms;
+          else delete line.pause_after_ms;
+        }
+      }
+      writeVideo(dir, video);
+      const errors = lintErrors(this.ctx, slug);
+      if (errors.length) {
+        writeFileSync(file, source);
+        throw new AutomationError(`lint refuses the retold script, so video.json is back as it was: ${errors.slice(0, 3).join("; ")}`, { code: OUTPUT_INVALID });
+      }
+    }
+    const workdir = this.workdir(slug);
+    mkdirSync(path.join(workdir, "review"), { recursive: true });
+    atomicWrite(path.join(workdir, "review", "restyle.json"), `${JSON.stringify({ restyled_at: this.ctx.now().toISOString(), accepted, refused, before, after: registerSummary(readJson(file)) }, null, 2)}\n`);
+    if (accepted.length) {
+      // The register pass was the listener's edit; the facts are checked once more, then the
+      // worker records the narration again and the audio gate is reviewed anew.
+      state.verified = false;
+      state.listener_done = true;
+      state.notes.push(`restyled on ${today(this.ctx)}: ${accepted.length} lines retold in the storytelling register${refused.length ? `, ${refused.length} refused (review/restyle.json)` : ""}`);
+      saveState(workdir, state);
+    }
+    const after = registerSummary(readJson(file));
+    return `${slug}: ${accepted.length} of ${listed.length} lines retold${refused.length ? `, ${refused.length} refused (review/restyle.json)` : ""}; now ${registerLine(after)}${accepted.length ? "; the worker fact-checks, records and reviews the narration again" : ""}`;
   }
 
   async narration(state) {

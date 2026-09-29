@@ -28,6 +28,7 @@ export function parseSubject(subject) {
 
 const threadOf = (job) => (job.thread ?? []).map(({ author, body_md: body, refers_to: refersTo, created_at: at }) => ({ author, body_md: body, refers_to: refersTo, created_at: at }));
 const clip = (text) => String(text).trim().slice(0, REPLY_MAX_CHARS);
+const discussionDoc = (doc) => doc ? ({ kind: doc.kind, version: doc.version, status: doc.status, needs_reconciliation: doc.needs_reconciliation ?? false, body_md: doc.body_md, body_json: doc.body_json }) : null;
 
 /** The reply the owner reads when the model gave nothing usable: what went wrong, in zh-TW. */
 export const unusableReply = (why) => `模型這一輪沒有給出可用的回覆（${why}）。這條討論串先停在這裡；請換個說法再問一次，或直接改文件。`;
@@ -50,7 +51,7 @@ export function documentDiscussionPayload(automation, job) {
     kind,
     message: job.message.body_md,
     thread: threadOf(job),
-    document: job.doc ? { kind: job.doc.kind, version: job.doc.version, status: job.doc.status, body_md: job.doc.body_md, body_json: job.doc.body_json } : null,
+    document: discussionDoc(job.doc),
     series: {
       slug: series.slug,
       kind: series.kind ?? "series",
@@ -69,9 +70,11 @@ export function documentDiscussionPayload(automation, job) {
     series_reference: refs.series,
     drama: refs.drama,
     drama_settings: automation.dramaPayload({ style_preset: series.style_preset }).drama_settings,
-    // The approved documents above this one, which the answer may not change.
-    ...(kind !== "setting" && kind !== "bible" && context.setting ? { setting: { body_md: context.setting.body_md, body_json: context.setting.body_json } } : {}),
-    ...(kind === "chapter" && context.outline ? { outline: { body_md: context.outline.body_md, body_json: context.outline.body_json }, chapter_number: number, chapter_range: context.chapter_range ?? null } : {}),
+    // Discussion reads the latest parents, including drafts. Their status is explicit and
+    // missing parents stay null; a conversation never grants production approval.
+    ...(kind !== "setting" && kind !== "bible" ? { setting: discussionDoc(context.setting) } : {}),
+    ...(kind === "chapter" ? { outline: discussionDoc(context.outline), chapter_number: number, chapter_range: context.chapter_range ?? null } : {}),
+    context_instruction: "Parent documents are context only. Respect their status/version; review or rejected parents are provisional, and null parents are missing. Do not invent missing facts or approve parents. A revised document must contain matching complete body_md and body_json, including when the current document needs_reconciliation.",
   };
 }
 
@@ -116,8 +119,8 @@ export async function answerDocument(automation, job) {
     if (refused) reply = clip(`${reply}\n\n（新版本沒有存下來：${refused}）`);
     else revised = { body_md: answer.revised.body_md.endsWith("\n") ? answer.revised.body_md : `${answer.revised.body_md}\n`, body_json: answer.revised.body_json };
   }
-  const result = await automation.api.messageAnswer(job.message.id, { reply_md: reply, revised });
-  const filed = result?.revision ? ` with version ${result.revision.version} for the owner` : revised ? " (the document was approved meanwhile; only the reply was kept)" : "";
+  const result = await automation.api.messageAnswer(job.message.id, { reply_md: reply, revised, ...(revised && job.revision_context ? { revision_context: job.revision_context } : {}) });
+  const filed = result?.revision ? ` with version ${result.revision.version} for the owner` : result?.revision_refused ? ` (only the reply was kept: ${result.revision_refused})` : revised ? " (the document changed meanwhile; only the reply was kept)" : "";
   return `series ${series.slug}: the planner answered the owner on ${job.subject}${filed}`;
 }
 

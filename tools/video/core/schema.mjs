@@ -65,10 +65,12 @@ const TOP_KEYS = new Set([
   "sources",
   "assets",
   "scenes",
-  // Drama-only, validated in drama.mjs: the shared look and the cast; music and subtitles for any format.
+  // Validated in drama.mjs: the cast is drama-only; the look belongs to a drama or to illustrated
+  // slides (docs/videos/ILLUSTRATED.md); music, sound effects and subtitles may go with any format.
   "characters",
   "look",
   "music",
+  "sfx",
   "subtitles",
   // Drama-only: which long series and episode this is (docs/videos/SERIES.md).
   "series",
@@ -227,9 +229,9 @@ function validateScenes(scenes, errors, format, compilation = false) {
     if (sceneIndex === 0 && !compilation && !isText(scene.chapter)) {
       errors.push({ path: `${where}.chapter`, message: "the first scene must open a chapter: YouTube needs one at 00:00" });
     }
-    // A drama's "shot" is not an HTML template; drama.mjs checks its data, and refuses it in any other format.
+    // A "shot" is not an HTML template: a drama's clip or still, or a slides video's illustration; drama.mjs checks its data.
     if (!TEMPLATES.includes(scene.template) && scene.template !== SHOT_TEMPLATE) {
-      errors.push({ path: `${where}.template`, message: `must be one of ${TEMPLATES.join(", ")}${format === DRAMA_FORMAT ? ` or ${SHOT_TEMPLATE}` : ""}` });
+      errors.push({ path: `${where}.template`, message: `must be one of ${TEMPLATES.join(", ")} or ${SHOT_TEMPLATE}` });
     }
     if (!isObject(scene.data)) errors.push({ path: `${where}.data`, message: "must be an object (the template's fields)" });
     if (scene.claims !== undefined && (!Array.isArray(scene.claims) || scene.claims.some((claim) => !isText(claim)))) {

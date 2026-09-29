@@ -42,14 +42,17 @@ DEFAULT_STAGE_MODELS: dict[str, dict[str, str]] = {
     "translator": {"provider": "claude_code", "model": "claude-sonnet-5"},
     "caption_reviewer": {"provider": "claude_code", "model": "claude-opus-5-5"},
 }
-# The channel voice the owner picked on 2026-09-24 (docs/videos/README.md).
+# The channel voice the owner picked on 2026-09-24 (docs/videos/README.md); its style is the
+# storytelling register of 2026-09-29 (docs/videos/ILLUSTRATED.md §說書式旁白, the same text as
+# STORY_VOICE_STYLE in tools/video/automation/register.mjs). A stored row keeps what the owner
+# pasted; this is what a fresh install starts from.
 DEFAULT_VOICE: dict[str, Any] = {
     "provider": "gemini",
     "name": "Sulafat",
     "style": (
-        "Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a "
-        "natural Taiwanese accent. Natural rise and fall in intonation, light emphasis on key "
-        "words, never flat or like reading a script. Medium-brisk pace."
+        "台灣國語說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，"
+        "問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。"
+        "絕不平、絕不像在念稿。"
     ),
     "model": None,
     "rate": "+0%",
@@ -121,6 +124,22 @@ DEFAULT_DRAMA: dict[str, Any] = {
     "drama_max_retake_rounds": 2,
 }
 DRAMA_FIELDS: tuple[str, ...] = tuple(DEFAULT_DRAMA)
+# Illustrated slides (docs/videos/ILLUSTRATED.md; migration 0114): the tutorial route draws its
+# pictures under a switch, an image model and a per-video cap of its own (Flash keeps a long
+# video near US$8 to 15 while a drama stays on Pro), its storyboard approves itself from the
+# judge's scores (the owner decided that on 2026-09-29 for the first video already), and the
+# worker gives every new video the owner's licensed music file and sound-effect set by name.
+# The image model NULL follows the drama's choice.
+SLIDES_IMAGE_MODEL = "gemini-3.1-flash-image"
+DEFAULT_SLIDES: dict[str, Any] = {
+    "slides_media_enabled": False,
+    "slides_image_model": SLIDES_IMAGE_MODEL,
+    "slides_max_usd_per_video": 20,
+    "slides_auto_approve_storyboard": True,
+    "slides_music_track": None,
+    "slides_sfx_set": None,
+}
+SLIDES_FIELDS: tuple[str, ...] = tuple(DEFAULT_SLIDES)
 
 
 def _default(value: Any) -> Callable[[], Any]:
@@ -174,6 +193,10 @@ class VideoAutomationSettings(Base):
             name="ck_video_drama_budgets",
         ),
         CheckConstraint("max_usd_per_video BETWEEN 0 AND 10000", name="ck_video_drama_usd"),
+        # The illustrated slides' cap; migration 0114 creates the same constraint.
+        CheckConstraint(
+            "slides_max_usd_per_video BETWEEN 0 AND 10000", name="ck_video_slides_usd"
+        ),
         CheckConstraint("judge_min_score BETWEEN 0 AND 10", name="ck_video_drama_judge"),
         CheckConstraint(
             STYLE_PRESET_CHECK,
@@ -320,6 +343,21 @@ class VideoAutomationSettings(Base):
     )
     drama_max_verify_rounds: Mapped[int] = mapped_column(Integer, default=3, server_default="3")
     drama_max_retake_rounds: Mapped[int] = mapped_column(Integer, default=2, server_default="2")
+    # Illustrated slides (docs/videos/ILLUSTRATED.md; migration 0114), see DEFAULT_SLIDES.
+    slides_media_enabled: Mapped[bool] = mapped_column(
+        Boolean, default=False, server_default="false"
+    )
+    slides_image_model: Mapped[str | None] = mapped_column(
+        String(128), nullable=True, default=SLIDES_IMAGE_MODEL, server_default=SLIDES_IMAGE_MODEL
+    )
+    slides_max_usd_per_video: Mapped[int] = mapped_column(
+        Integer, default=20, server_default="20"
+    )
+    slides_auto_approve_storyboard: Mapped[bool] = mapped_column(
+        Boolean, default=True, server_default="true"
+    )
+    slides_music_track: Mapped[str | None] = mapped_column(String(80), nullable=True)
+    slides_sfx_set: Mapped[str | None] = mapped_column(String(64), nullable=True)
     updated_by_user_id: Mapped[UUID | None] = mapped_column(
         ForeignKey("users.id", ondelete="SET NULL"), nullable=True
     )
