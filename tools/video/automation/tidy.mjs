@@ -35,6 +35,7 @@ export const DAYS_ENV = "VIDEO_TIDY_DAYS";
 export const DEFAULT_DAYS = 7;
 export const MAX_DAYS = 3650;
 const DAY_MS = 86_400_000;
+const PENDING_REVIEW_HOLD = "pending language batches or other reviews still await the owner's decision";
 
 /**
  * What goes from a finished video's work directory, relative to it: the media the stages made,
@@ -234,6 +235,9 @@ function judge({ slug, workdir, state }, { states, listed, fs }) {
   // check there any more; its own approvals still date it.
   const site = listed.get(slug) ?? null;
   if (site && !site.locales_decided_at) return { held: "its languages are not decided on /admin/videos yet" };
+  // Ready language parts can still belong to a pending batch; rejecting it needs the media.
+  // ProjectSummary.pending also counts other review gates, which conservatively hold the files.
+  if (site?.pending > 0) return { held: PENDING_REVIEW_HOLD };
   const working = Object.entries(site?.languages ?? {}).flatMap(([locale, parts]) =>
     Object.entries(parts ?? {})
       .filter(([, part]) => part?.state === "working")
@@ -494,7 +498,7 @@ export function clearedLine(outcome) {
 
 /**
  * What a round prints. `auto` prints only what happened and what needs a person (the cleared
- * video, a refusal, a finished video with no usable date); the hand-run command (verbose) also
+ * video, a refusal, a finished video with no usable date or pending review); the hand-run command (verbose) also
  * says what waits and why.
  */
 export function roundLines(round, { verbose = false } = {}) {
@@ -502,7 +506,11 @@ export function roundLines(round, { verbose = false } = {}) {
   for (const outcome of round.refused) lines.push(clearedLine(outcome));
   if (round.cleared) lines.push(clearedLine(round.cleared));
   if (round.undated.length) lines.push(`tidy: finished but kept, no usable date: ${round.undated.map((entry) => `${entry.slug} (${entry.why})`).join("; ")}`);
-  if (!verbose) return lines;
+  if (!verbose) {
+    const pending = round.held.filter((entry) => entry.why === PENDING_REVIEW_HOLD);
+    if (pending.length) lines.push(`tidy: finished but kept while reviews need the files: ${pending.map((entry) => `${entry.slug} (${entry.why})`).join("; ")}`);
+    return lines;
+  }
   if (!round.cleared) lines.push(`tidy: nothing is due${round.refused.length ? " that can be cleared" : ""}`);
   const later = round.due.filter((video) => video.slug !== round.cleared?.slug && !round.refused.some((outcome) => outcome.slug === video.slug));
   if (later.length) lines.push(`tidy: also due, one a round: ${later.map((video) => `${video.slug} (${finished(video)})`).join(", ")}`);

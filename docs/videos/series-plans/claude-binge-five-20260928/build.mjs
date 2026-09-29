@@ -19,8 +19,9 @@ export const SLUGS = [
 ];
 // The one-button form's values every one of the five shares (docs/videos/BINGE.md): 120 minutes
 // of 3-minute episodes is 40 episodes in four chapters of ten (`binge_shape`); hybrid visuals;
-// one long video at the end; a closed first part. `hands_off` stays false so that creating the
-// series never starts an unattended run by accident; the owner flips it on the series page.
+// one long video at the end; a closed first part. `hands_off: false` disables automatic
+// approvals, not planning or spending: creating an empty series can still enqueue work.
+// Import preloaded review documents through the separately authorized importer workflow.
 export const COMMON = {
   total_minutes: 120,
   target_minutes: 3,
@@ -149,6 +150,7 @@ function settingDocument(source) {
     lexicon: st.lexicon,
     ending: st.ending,
     cold_open: st.cold_open,
+    continuity_notes: source.continuity_notes,
   };
   const body_md = [
     `# ${s.title}｜設定集`,
@@ -168,6 +170,10 @@ function settingDocument(source) {
     "## 規則與代價",
     "",
     bullets(st.rules),
+    "",
+    "## 跨集連貫性與畫面約束",
+    "",
+    bullets(source.continuity_notes),
     "",
     "## 人物",
     "",
@@ -451,7 +457,7 @@ export function compile(source) {
     "",
     s.premise,
     "",
-    `題材 \`${s.genre}\`｜主角 \`${s.lead}\`｜情感線 \`${s.tone}\`｜120 分鐘、四篇四十集、hybrid 畫面。狀態：**製作企劃**，沒有建立後台作品、沒有生成媒體、沒有上架。`,
+    `題材 \`${s.genre}\`｜主角 \`${s.lead}\`｜情感線 \`${s.tone}\`｜120 分鐘、四篇四十集、hybrid 畫面。狀態：**製作企劃**。本機生成器不建立後台作品、生成媒體或上架；正式站既有文件以匯入收據為準，本機修正版尚未更新正式匯入版。`,
     "",
     "- [設定集](setting.md)：世界、規則、人物（外觀提示詞與聲音）、謎團與答案、開場三十秒、結局。",
     "- [四十集總綱](outline.md)：張力地圖、每集一句話、謎團排程。",
@@ -468,6 +474,8 @@ export function compile(source) {
     lead: s.lead,
     source_sha256: hash(source),
     stage: "production-plan",
+    execution_scope: "local-artifact-build",
+    status_note: "These execution flags describe this local build only; existing production state is recorded separately in import receipts. Revised local documents have not updated production.",
     episode_count: episodes.length,
     chapter_count: source.chapters.length,
     media_generated: false,

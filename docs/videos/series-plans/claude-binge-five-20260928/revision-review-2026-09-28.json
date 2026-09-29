@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "evidence_type": "independent-editorial-revision-review",
+  "reviewed_at": "2026-09-28T14:51:59.672Z",
+  "reviewer": "/root/claude_five_audit",
+  "story_revision_author": "/root/drama_audit_map",
+  "scope": "獨立閱讀本輪Claude五部來源差異與受影響的規則、伏筆、上下集、篇章摘要、結局和包裝；重新核對交叉覆核退回後的修正。此輪為修訂與關聯上下文覆核，不宣稱再次完整冷讀全部200集。",
+  "independence": "審查者未撰寫或修改本輪Claude故事來源；另負責兩批共用生成器與回歸測試，其技術修改由機械測試驗證，不冒充獨立技術審查。",
+  "limitations": "僅文字企劃與交接檢查；未生成或觀看成片、試聽聲線、量測實際片長或留存，未作全網相似作品或法律權利檢索，不是正式站judge或站主核准。",
+  "works": [
+    {
+      "slug": "reload-first-day",
+      "source_sha256": "7013eac93d404feda9d13b22542553c207041c77db0876a0711a1bde9d147559",
+      "documents_bundle_sha256": "6a68257c03a94400b24d4763b0ca78cb7e3e20e735cdf54aea2953881abcac0c",
+      "reviewed_context": [
+        "setting rules and m04",
+        "E1-2 and packaging B",
+        "E17, E27, E29-30",
+        "E31-40 including final rewind outside floor nine"
+      ],
+      "resolved": [
+        "九層外回捲世界、九層內僅返身的例外已在規則/m04一致定義，E17石碑先提示、E29重現、E30兌現；E38在鐘塔第一階回到世界存檔，沒有誤套九層例外。",
+        "E1已知每次失憶，但尚不知選取規則；E2明演三次死亡後第四次成功，縮圖承諾同步。",
+        "E27改為全城首次知道6/7，邵擎早知計數、未知第七次代價，與E33相容。2026-02-11星期三已修正。"
+      ],
+      "result": "passed-within-reviewed-scope",
+      "open_findings": []
+    },
+    {
+      "slug": "before-the-hammer",
+      "source_sha256": "0c889758b423229b1ad31cae6df186e7b1c9c1997949fbfd8e1b964a4ffc7005",
+      "documents_bundle_sha256": "23365f629c78ba6aaf37cacc707ad46d8ae39408118f0b9ea26a8010dceff773",
+      "reviewed_context": [
+        "premise and fixed 90-day timeline",
+        "E16-20, chapter three summary, E25-30",
+        "E35-40 and prop ledger",
+        "cold open and packaging"
+      ],
+      "resolved": [
+        "前世死於三年刑滿後未改寫；E16的44天與E28的6天都改為當世初一換展倒數，篇三摘要及E30一致。E18信件提早三年保留。",
+        "E20僅念瑤/師父/邱鶴年/沈懷舟入鏡或發聲；白薇以遺落皮包和識別證留偷盞線索，其餘人場外聽聞，主事件及知情延續仍成立。",
+        "A至E五件道具明確區分；E35台上第四件是現製仿品，韓一刀練習盞始終另件封存；置頂文只計三只歷史盞。",
+        "開場30秒承諾限於倒茶揭示無釐光，完整自證句仍在E1結尾；金線修補與師父傷後語言限制已進設定集。"
+      ],
+      "result": "passed-within-reviewed-scope",
+      "open_findings": []
+    },
+    {
+      "slug": "three-needles",
+      "source_sha256": "d4084b436657dceb05aade33338b5ce1be34d1c188ca3e851bfcdfe2d20e616a",
+      "documents_bundle_sha256": "9fce0e76a4f846b2ccf9a8f0fcac1b9969d3ac66665bf069aa2ca4d7a1087c08",
+      "reviewed_context": [
+        "setting rules/cold open/ending",
+        "E17-24",
+        "E28-31",
+        "E38-40 and thumbnail A"
+      ],
+      "resolved": [
+        "E17-22只知前十味，E23由亦微先唱再排列第十一/十二味，未再無故多出已知次序；篇三摘要與固定規則、E28/E30一致為第四天倒下。",
+        "E21統一為數值短暫上升後回落，沒有同一針既不變又變的雙版本。",
+        "E20韋承留在門外不入鏡不出聲；E38演亦微向阿豆唱歌，E40僅器樂回應，思思有cast並說話，結尾療養院前與廣場兩場景符合限制。",
+        "縮圖不再將三針全置手腕，沿用冷開場第二針在胸前的構圖；此為虛構鏡頭一致性審查，沒有聲稱醫療有效性。"
+      ],
+      "result": "passed-within-reviewed-scope",
+      "open_findings": []
+    },
+    {
+      "slug": "taste-of-the-throne",
+      "source_sha256": "2b5d82a4200fc3502059ebbcd90ce7f0d8a6c6ba9f5fa3d4f1979902544d8a34",
+      "documents_bundle_sha256": "4baf22733f5aa270b5d5ce41d87b6ab921789a06f73dc747d0311245251aab8f",
+      "reviewed_context": [
+        "premise/rules/cold open/E1",
+        "E30, E33-40",
+        "packaging and continuity notes"
+      ],
+      "resolved": [
+        "吞後才准報毒名、禁止指認來源的宮規在設定、開場與E1一致；E40回顧改為替人吞毒，沒有把她當殿指認誤寫成閉嘴。",
+        "三下敲擊最後一次定在E33獄中，此後停止；視覺指南與連貫性備註同步。",
+        "縮圖及標籤一致為第三口有毒，慈寧宮小廚字數為五；皇帝手帕摺數等全域要求已進設定集。"
+      ],
+      "result": "passed-within-reviewed-scope",
+      "open_findings": []
+    },
+    {
+      "slug": "ghost-at-his-side",
+      "source_sha256": "140f446e228e7758abcda39c1eaa2ce9ab0ba617b65ba3596222112308aad97f",
+      "documents_bundle_sha256": "7474790d5eefc0e0528a9eec91b7c6d16018c44f88aa10eaa75f7410a8c7e492",
+      "reviewed_context": [
+        "setting rules, m02/m05/m11",
+        "E8, E12, E18-20, E24-30",
+        "E33, E35-40 and continuity notes"
+      ],
+      "resolved": [
+        "借入壽數遮蔽借出者視力、歸還後才恢復的例外明載，E12先設限，溫檀與陸崢的可見範圍可同時成立。",
+        "血送行符明定為甦醒時一次本命餘息留魂，與一般借命不能寫符分開；m02答案同步，E29借清晏代筆與E38自己恢復符力仍區分。",
+        "陸崢外觀51→E24的61→E30的92，沒有回春；E18點燈者是無咎，E24可翻的名單指定黃符紙。",
+        "借予沈無咎統一五字；E27陸崢承認移到E28；E36以匿名盾手替韓頌，E37列老尤且清晏不出聲，清晏呼喊移E38，與鄰集cast對上。"
+      ],
+      "result": "passed-within-reviewed-scope",
+      "open_findings": []
+    }
+  ]
+}

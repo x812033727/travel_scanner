@@ -172,7 +172,8 @@ def index(tmp_path: Path) -> AliasIndex:
     )
     keywords = tmp_path / "keywords.md"
     keywords.write_text(
-        "| 關鍵字 | 變體 | 讀者要做的事 | 對應 slug | 狀態 |\n| --- | --- | --- | --- | --- |\n"
+        "| 關鍵字 | 變體 | 讀者要做的事 | 對應 slug | 狀態 |\n| --- | --- | --- | --- | --- |\n",
+        encoding="utf-8",
     )
     return AliasIndex.build(packs, terms_file=terms, keywords_file=keywords)
 
@@ -290,9 +291,9 @@ def test_the_command_reports_and_applies_only_the_changed_packs(tmp_path: Path, 
     assert "dry run: nothing written" in out
     assert (
         "link"
-        == json.loads((content / "reader.json").read_text())["locales"]["zh-TW"]["blocks"][0][
-            "type"
-        ]
+        == json.loads((content / "reader.json").read_text(encoding="utf-8"))["locales"]["zh-TW"][
+            "blocks"
+        ][0]["type"]
     )
 
     assert main(["--content-dir", str(content), "relink", "--apply"]) == 0
@@ -302,9 +303,9 @@ def test_the_command_reports_and_applies_only_the_changed_packs(tmp_path: Path, 
     assert (content / "reader.json").read_text(encoding="utf-8") == json.dumps(
         written, ensure_ascii=False, indent=2
     ) + "\n"
-    assert json.loads((content / "untouched.json").read_text())["locales"]["zh-TW"]["blocks"] == [
-        {"type": "paragraph", "text": "沒有連結。"}
-    ]
+    assert json.loads((content / "untouched.json").read_text(encoding="utf-8"))["locales"][
+        "zh-TW"
+    ]["blocks"] == [{"type": "paragraph", "text": "沒有連結。"}]
 
     # Autolink over the same packs uses the packs' own names; with no glossary here the
     # target has no alias, so nothing links -- the command still runs and says so.

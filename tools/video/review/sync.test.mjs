@@ -8,6 +8,7 @@ import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { EXIT, main } from "../cli.mjs";
 import { readApprovals } from "../core/approvals.mjs";
 import { lookHash } from "../core/drama.mjs";
+import { scriptCheckBinding } from "../core/script-check.mjs";
 import { sandbox } from "../core/fixtures/load.mjs";
 import { writeLanguages } from "../core/stages.mjs";
 import { COMPILATION_STEPS, DRAMA_STEPS, SLIDES_STEPS } from "../core/state.mjs";
@@ -15,7 +16,7 @@ import { SAMPLE_RATE } from "../core/timeline.mjs";
 import { COMPILATION_ITEM_IDS, ITEM_IDS } from "../qa/checks.mjs";
 import { encodeWav } from "../tts/wav.mjs";
 import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeTranslations } from "../compile/fixture.mjs";
-import { audioCheck, checklistFrom, downloadNote, guideSlugs, judgeBody, MAX_REVIEW_FILES, outlineOptions, PART_BYTES, previewArgs, REVIEW_GATES, sourceGuideOf, STEP_LABELS, storyboardSheets, uploadItems } from "./sync.mjs";
+import { audioCheck, checklistFrom, clearedSummary, downloadNote, guideSlugs, judgeBody, MAX_REVIEW_FILES, outlineOptions, PART_BYTES, previewArgs, REVIEW_GATES, sourceGuideOf, STEP_LABELS, storyboardSheets, uploadItems } from "./sync.mjs";
 
 const TOKEN = `mkv_${"r".repeat(43)}`;
 const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");
@@ -51,6 +52,13 @@ test("the checklist, the Jev summary and the upload items are what the page show
     check: { lines: 5, checked: 4, exact: 1, alike: 1, judged_fine: 1, flagged: 1 },
     flagged_lines: [{ id: "d", script: "稿子", heard: "聽到", noul: 0.1 }],
   });
+  assert.equal(clearedSummary(audioCheck(check, { flags: ["d"] }, 5)), "");
+  // A line Jev doubted that a second transcript cleared is counted apart, with both transcripts.
+  const second = { ...check.lines, e: { match: false, noul: 0.05, intended: "Veo 三點一", heard: "算便宜", second: { by: "whisper.py", heard: "Veo 3.1", match_kind: null, noul: 0.9 } } };
+  const withSecond = audioCheck({ lines: second }, { flags: ["d"] }, 5);
+  assert.deepEqual(withSecond.check, { lines: 5, checked: 5, exact: 1, alike: 1, judged_fine: 1, flagged: 1, cleared: 1 });
+  assert.deepEqual(withSecond.cleared_lines, [{ id: "e", script: "Veo 三點一", heard: "算便宜", second: { by: "whisper.py", heard: "Veo 3.1" } }]);
+  assert.equal(clearedSummary(withSecond), "；whisper.py 另外轉寫、排除 1 句（e）");
   assert.deepEqual(uploadItems("# 上架\n- [ ] **AI 使用揭露**：看情況\n- [x] 已完成\n- [ ] 縮圖看得懂"), ["AI 使用揭露：看情況", "縮圖看得懂"]);
 });
 
@@ -713,7 +721,8 @@ test("the 720p preview of a compilation caps its bitrate; a cut's and the narrat
 test("the script gate sends the checker's similar works and retention verdict when the worker wrote them", async () => {
   const box = sandbox("fixture-drama", "drama");
   mkdirSync(path.join(box.workdir, "review"), { recursive: true });
-  writeFileSync(path.join(box.workdir, "review", "script-check.json"), JSON.stringify({ coverage: { hook: "yes" }, problems: ["a name changed"], similar_works: [{ title: "魔道祖師", how: "a sect rivalry" }], retention: { score: 0.8, passed: true } }));
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  writeFileSync(path.join(box.workdir, "review", "script-check.json"), JSON.stringify({ ...scriptCheckBinding(doc), coverage: { hook: "yes" }, problems: ["a name changed"], similar_works: [{ title: "魔道祖師", how: "a sect rivalry" }], retention: { score: 0.8, passed: true } }));
   const server = site();
   const push = context(box, server.fetchImpl);
   assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "script"], push.ctx), EXIT.ok, push.out.stderr);
@@ -722,6 +731,18 @@ test("the script gate sends the checker's similar works and retention verdict wh
   assert.deepEqual(script.payload.similar_works, [{ title: "魔道祖師", how: "a sect rivalry" }]);
   assert.deepEqual(script.payload.retention, { score: 0.8, passed: true });
   assert.deepEqual(script.payload.continuity_problems, ["a name changed"]);
+  assert.equal(script.payload.check_status, "current");
+  doc.scenes[0].lines[0].text += "新的情節。";
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+  const changed = site();
+  const stalePush = context(box, changed.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "script"], stalePush.ctx), EXIT.ok, stalePush.out.stderr);
+  const stale = changed.state.reviews[0].payload;
+  assert.equal(stale.check_status, "stale");
+  assert.equal(stale.coverage, null);
+  assert.equal(stale.retention, null);
+  assert.deepEqual(stale.similar_works, []);
+  assert.match(stale.continuity_problems[0], /舊查核報告不適用/);
   rmSync(path.join(box.workdir, "review", "script-check.json"));
   const bare = site();
   const again = context(box, bare.fetchImpl);

@@ -41,9 +41,11 @@ describe("DiscussionThread", () => {
 
   it("shows every line with its author, its version and its time, and posts the owner's line to the same subject", async () => {
     const calls = stubFetch();
-    render(<DiscussionThread seriesSlug="wenjian" subject="script:1" canManage />);
+    const onMessagesLoaded = vi.fn();
+    render(<DiscussionThread seriesSlug="wenjian" subject="script:1" canManage onMessagesLoaded={onMessagesLoaded} />);
     const thread = await screen.findByRole("region", { name: "討論" });
     await waitFor(() => expect(thread.textContent).toContain("開場的鐘聲太早。"));
+    expect(onMessagesLoaded).toHaveBeenCalledWith(lines);
     expect(calls[0].url).toBe("/api/travel/admin/video-automation/series/wenjian/messages?subject=script%3A1");
     expect(thread.textContent).toContain("站主");
     expect(thread.textContent).toContain("撰稿");

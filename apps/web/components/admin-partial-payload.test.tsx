@@ -2,6 +2,7 @@ import { render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AdminDashboard } from "./admin-dashboard";
 import { AdminFoodAreasPanel } from "./admin-food-taxonomy-panel";
+import { adminNewsCopy } from "@/lib/admin-news-copy";
 
 afterEach(() => vi.unstubAllGlobals());
 
@@ -21,12 +22,15 @@ describe("admin panels against a partial payload", () => {
 
     await waitFor(() => expect(vi.mocked(fetch)).toHaveBeenCalled());
     // Each domain remains usable and missing counts are unknown, not false zeros.
-    for (const [name, target] of [["景點", "hotspots"], ["美食", "foods"], ["飯店", "hotels"]]) {
+    for (const [name, target] of [["景點", "hotspots"], ["美食", "foods"], ["飯店", "hotels"], [adminNewsCopy("zh-TW").nav, "news"], ["影片", "videos"]]) {
       const domain = await screen.findByRole("region", { name });
       expect(within(domain).getByRole("link", { name: "進入管理" }).getAttribute("href")).toBe(`/admin/${target}`);
       expect(within(domain).getAllByText("—").length).toBeGreaterThan(0);
       expect(within(domain).queryByText("0")).toBeNull();
     }
+    const total = within(screen.getByRole("region", { name: "營運摘要" })).getByRole("link", { name: /待處理/ });
+    expect(within(total).getByText("—")).toBeTruthy();
+    expect(total.getAttribute("href")).toBe("#admin-review-queues");
   });
 
   it("retains every pending content count and its domain-specific review queue", async () => {
@@ -45,6 +49,8 @@ describe("admin panels against a partial payload", () => {
             merchants_pending: 245,
             guides_pending: 427,
             hotels_pending: 7,
+            news_review_pending: 11,
+            video_reviews_pending: 3,
           },
           quick_actions: [
             { id: "review_hotspots", href: "/admin/hotspots", count_key: "hotspots_pending" },
@@ -64,6 +70,8 @@ describe("admin panels against a partial payload", () => {
       ["店家待審", "245", "/admin/foods?tab=review&section=merchants&status=pending"],
       ["文章待審", "427", "/admin/hotspots?tab=content&section=guides&status=pending"],
       ["飯店待審", "7", "/admin/hotels?tab=review&section=products&status=pending"],
+      ["新聞待審", "11", "/admin/news?queue=review"],
+      ["影片待處理", "3", "/admin/videos"],
     ]) {
       const link = await screen.findByRole("link", { name: new RegExp(`${name}\\s*${count}$`) });
       expect(link.getAttribute("href")).toBe(href);

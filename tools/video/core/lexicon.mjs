@@ -56,9 +56,50 @@ export function unknownTerms(text, lexicon) {
   return latinTerms(text).filter((term) => !isKnownTerm(term, lexicon));
 }
 
+// An all-caps part of a term ("SEC", the "GPT" of "GPT-6", "AI"): what an English voice spells
+// out or guesses at. Ordinary words it reads as written.
+const ACRONYM_PART = /^[A-Z]{2,}[0-9]*$/;
+
+export function hasAcronym(term) {
+  return String(term).split(JOINERS).some((part) => ACRONYM_PART.test(part));
+}
+
+/**
+ * The terms a narration in `locale` needs the dictionary for. A Mandarin voice needs every Latin
+ * term (unknownTerms); an English voice reads its own language, so only acronyms are checked.
+ */
+export function unknownTermsFor(text, lexicon, locale = "zh-TW") {
+  const unknown = unknownTerms(text, lexicon);
+  return locale === "en" ? unknown.filter(hasAcronym) : unknown;
+}
+
 /** Dictionary entries with a spoken form, longest first so "Claude Code" wins over "Claude". */
 export function substitutions(lexicon) {
   return Object.entries(lexicon?.terms ?? {})
     .filter(([, say]) => typeof say === "string")
     .sort(([a], [b]) => b.length - a.length);
+}
+
+const escapeRegExp = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/**
+ * The pattern that finds substitution terms in a line: whole words only, longest first, so
+ * "Claude Code" wins over "Claude" and "API" inside "APIs" is left alone. Null when there are none.
+ */
+export function termPattern(entries) {
+  return entries.length ? new RegExp(`(?<![A-Za-z0-9])(${entries.map(([term]) => escapeRegExp(term)).join("|")})(?![A-Za-z0-9])`, "gu") : null;
+}
+
+/**
+ * The substitutions some texts actually use, found the way the speech request finds them, sorted
+ * by term. The shared dictionary grows with every video, so what a narration depends on is the
+ * entries its own lines use, not the whole file.
+ */
+export function termsUsed(texts, lexicon) {
+  const entries = substitutions(lexicon);
+  const pattern = termPattern(entries);
+  if (!pattern) return [];
+  const used = new Set();
+  for (const text of texts) for (const match of text.matchAll(pattern)) used.add(match[0]);
+  return entries.filter(([term]) => used.has(term)).sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0));
 }

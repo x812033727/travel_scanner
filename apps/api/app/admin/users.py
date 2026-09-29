@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import asyncio
 import math
-from collections.abc import AsyncIterator, Collection
+from collections.abc import AsyncIterator, Awaitable, Callable, Collection
 from contextlib import asynccontextmanager
 from datetime import UTC, datetime, timedelta
 from typing import Literal
@@ -57,6 +57,7 @@ from app.problems import AppError
 LEGACY_ROLES = frozenset({"support", "content", "operations"})
 ACTIVE_ERASURE_STATUSES = ("scheduled", "processing")
 MAX_TIMED_SUSPENSION = timedelta(days=90)
+PRIVILEGED_SUSPENSION_ROLES = frozenset({"owner", "deployer", "database_operator"})
 OWNER_MUTATION_ADVISORY_LOCK_ID = 0x545341444D494E
 _owner_fallback_locks: WeakKeyDictionary[asyncio.AbstractEventLoop, asyncio.Lock] = (
     WeakKeyDictionary()
@@ -548,7 +549,9 @@ async def _user_and_account(
 ) -> tuple[User, UsageAccount | None]:
     user_query = select(User).where(User.id == user_id)
     if lock_user:
-        user_query = user_query.with_for_update()
+        # The actor or target may already be in the session's identity map.
+        # A row lock alone does not refresh values changed by another request.
+        user_query = user_query.with_for_update().execution_options(populate_existing=True)
     user = await session.scalar(user_query)
     if user is None:
         raise AppError(404, "admin_user_not_found", "找不到這個會員帳號")
@@ -831,6 +834,7 @@ async def _active_roles(session: AsyncSession, user: User) -> set[str]:
                 select(AdminRoleAssignment)
                 .where(AdminRoleAssignment.user_id == user.id)
                 .with_for_update()
+                .execution_options(populate_existing=True)
             )
         ).all()
     )
@@ -1001,10 +1005,12 @@ async def suspend_admin_user(
     payload: AdminSuspensionRequest,
     actor: User,
     idempotency_key: str,
+    *,
+    verify_step_up: Callable[[], Awaitable[None]] | None = None,
 ) -> AdminActionResult:
     async with _owner_mutation_guard(session):
         return await _suspend_admin_user_serialized(
-            session, user_id, payload, actor, idempotency_key
+            session, user_id, payload, actor, idempotency_key, verify_step_up=verify_step_up
         )
 
 
@@ -1014,6 +1020,8 @@ async def _suspend_admin_user_serialized(
     payload: AdminSuspensionRequest,
     actor: User,
     idempotency_key: str,
+    *,
+    verify_step_up: Callable[[], Awaitable[None]] | None = None,
 ) -> AdminActionResult:
     user, _ = await _user_and_account(session, user_id, lock_user=True)
     if user.id == actor.id:
@@ -1032,6 +1040,15 @@ async def _suspend_admin_user_serialized(
         )
     if until is None and payload.confirmation != f"SUSPEND {user.email}":
         raise AppError(409, "admin_confirmation_mismatch", f"請輸入 SUSPEND {user.email}")
+    # Role grants take this same mutation guard. Read fresh roles only after
+    # acquiring it, so a concurrent promotion cannot bypass timed step-up.
+    # Permanent suspension keeps its existing route-level verification.
+    if until is not None and PRIVILEGED_SUSPENSION_ROLES.intersection(
+        await _active_roles(session, user)
+    ):
+        if verify_step_up is None:
+            raise AppError(401, "admin_step_up_required", "請重新輸入密碼後再執行此操作")
+        await verify_step_up()
     await _ensure_not_last_owner(session, user)
     fingerprint = f"{until}|{payload.reason}"
     if await _idempotency_replay(
@@ -1071,6 +1088,8 @@ async def unsuspend_admin_user(
     session: AsyncSession, user_id: UUID, payload: AdminReasonRequest, actor: User
 ) -> AdminUserDetail:
     user, _ = await _user_and_account(session, user_id, lock_user=True)
+    if _environment_designated(user):
+        raise AppError(409, "admin_environment_override", "主機環境指定帳號不可由後台解除停權")
     user.suspended_at = user.suspended_until = None
     user.suspension_reason = None
     user.auth_version = (user.auth_version or 1) + 1
@@ -1090,6 +1109,10 @@ async def revoke_admin_user_sessions(
     session: AsyncSession, user_id: UUID, payload: AdminReasonRequest, actor: User
 ) -> AdminUserDetail:
     user, _ = await _user_and_account(session, user_id, lock_user=True)
+    if user.id == actor.id:
+        raise AppError(409, "admin_self_action", "不可強制登出目前登入的管理員帳號")
+    if _environment_designated(user):
+        raise AppError(409, "admin_environment_override", "主機環境指定帳號不可由後台強制登出")
     user.auth_version = (user.auth_version or 1) + 1
     session.add(
         AdminAuditLog(

@@ -15,6 +15,8 @@ export const FORMATS = ["slides", "screencast", DRAMA_FORMAT];
 // Same order as apps/api/app/i18n.py; zh-TW is the narration language.
 export const LOCALES = ["zh-TW", "en", "ja", "ko", "zh-CN"];
 export const NARRATION_LOCALE = "zh-TW";
+/** The locale a video is narrated in: its `narration_locale`, zh-TW when it has none or an unknown one. */
+export const narrationLocale = (doc) => (LOCALES.includes(doc?.narration_locale) ? doc.narration_locale : NARRATION_LOCALE);
 export const TEMPLATES = [
   "title",
   "chapter",
@@ -53,6 +55,8 @@ const TOP_KEYS = new Set([
   "schema_version",
   "slug",
   "format",
+  // The language the voice reads and the captions translate from; zh-TW when absent.
+  "narration_locale",
   "source_guide",
   "target_minutes",
   "voice",
@@ -104,7 +108,7 @@ function lineLabel(sceneIndex, lineIndex, line) {
 }
 
 /** One voice object: the narration's `voice`, or a drama character's (`where` names which). */
-export function validateVoice(voice, errors, where = "voice") {
+export function validateVoice(voice, errors, where = "voice", locale = NARRATION_LOCALE) {
   if (!isObject(voice)) {
     errors.push({ path: where, message: "must be an object with provider and name" });
     return;
@@ -133,12 +137,12 @@ export function validateVoice(voice, errors, where = "voice") {
   if (voice.style !== undefined && !(isText(voice.style) && voice.style.length <= STYLE_MAX)) {
     errors.push({ path: `${where}.style`, message: `must be text of at most ${STYLE_MAX} characters` });
   }
-  if (voice.lang !== undefined && voice.lang !== NARRATION_LOCALE) {
-    errors.push({ path: `${where}.lang`, message: `narration is ${NARRATION_LOCALE}; omit the field or set it to that` });
+  if (voice.lang !== undefined && voice.lang !== locale) {
+    errors.push({ path: `${where}.lang`, message: `narration is ${locale}; omit the field or set it to that` });
   }
 }
 
-function validateYoutube(youtube, errors) {
+function validateYoutube(youtube, errors, locale = NARRATION_LOCALE) {
   if (!isObject(youtube)) {
     errors.push({ path: "youtube", message: "must be an object" });
     return;
@@ -148,8 +152,8 @@ function validateYoutube(youtube, errors) {
     errors.push({ path: "youtube.category_id", message: "must be an integer (28 Science & Technology, 27 Education)" });
   }
   if (typeof youtube.made_for_kids !== "boolean") errors.push({ path: "youtube.made_for_kids", message: "must be true or false" });
-  if (youtube.default_language !== NARRATION_LOCALE) {
-    errors.push({ path: "youtube.default_language", message: `must be ${NARRATION_LOCALE}, the narration language` });
+  if (youtube.default_language !== locale) {
+    errors.push({ path: "youtube.default_language", message: `must be ${locale}, the narration language` });
   }
   if (!isText(youtube.title)) errors.push({ path: "youtube.title", message: "must be a non-empty string" });
   if (!isText(youtube.description)) errors.push({ path: "youtube.description", message: "must be a non-empty string" });
@@ -251,6 +255,10 @@ export function validateVideo(doc) {
     errors.push({ path: "slug", message: "must be lowercase words joined by hyphens" });
   }
   if (!FORMATS.includes(doc.format)) errors.push({ path: "format", message: `must be one of ${FORMATS.join(", ")}` });
+  if (doc.narration_locale !== undefined && !LOCALES.includes(doc.narration_locale)) {
+    errors.push({ path: "narration_locale", message: `must be one of ${LOCALES.join(", ")}; leave it out for ${NARRATION_LOCALE}` });
+  }
+  const locale = narrationLocale(doc);
   if (doc.source_guide !== undefined && (typeof doc.source_guide !== "string" || !SLUG.test(doc.source_guide))) {
     errors.push({ path: "source_guide", message: "must be the slug of a Mokaair content pack" });
   }
@@ -267,8 +275,8 @@ export function validateVideo(doc) {
   }
   // A compilation narrates nothing, so its voice is optional; anything else needs one.
   const compilation = isCompilation(doc);
-  if (!compilation || doc.voice !== undefined) validateVoice(doc.voice, errors);
-  validateYoutube(doc.youtube, errors);
+  if (!compilation || doc.voice !== undefined) validateVoice(doc.voice, errors, "voice", locale);
+  validateYoutube(doc.youtube, errors, locale);
   if (doc.thumbnail !== undefined) {
     if (!isObject(doc.thumbnail) || !THUMBNAIL_TEMPLATES.includes(doc.thumbnail.template) || !isObject(doc.thumbnail.data)) {
       errors.push({ path: "thumbnail", message: `must be { template: ${THUMBNAIL_TEMPLATES.join("|")}, data: {...} }` });
