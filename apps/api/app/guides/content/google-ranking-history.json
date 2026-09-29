@@ -263,6 +263,1014 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "zh-CN": {
+      "title": "Google 搜索更新怎么理解：熊猫、企鹅与蜂鸟留下的原则",
+      "description": "熊猫、企鹅与蜂鸟是理解 Google 搜索演进的重要名称，但不能直接拿来诊断今天每一次流量下滑。本文依目前官方文档整理三者的历史定位，说明核心更新、人工处置措施与技术问题的差别，再提供日期核对、页面分组、内容与链接检查步骤。以原创活动网站情境示范如何保留证据，避免追逐过时技巧或一次删改大量文章。",
+      "hero": {
+        "src": "/guides/google-ranking-history/hero-zh-cn.jpg",
+        "alt": "原创文件夹、屏幕和文档图像，呈现搜索历史、现况观察与网站修改记录。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "看到搜索流量下降，有人说是熊猫，有人说是企鹅，还有人建议把所有关键词改成问句。这些说法混合了不同时期的搜索历史，却未必能解释你现在的网站发生什么事。先分清楚名称、事件与证据，才知道下一步该查哪里。"
+        },
+        {
+          "type": "paragraph",
+          "text": "搜索系统一直在改变。了解历史的用途，是看出内容质量、链接操作和理解需求为何受到重视，而不是背下一套永远不变的算法配方。以下不判定任何真实网站受罚，也不提供能避开所有更新的保证。"
+        },
+        {
+          "type": "heading",
+          "text": "把三个历史名称放回正确位置",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "依 Google 目前的排名系统指南，Panda，常称熊猫，于二〇一一年推出，目标是促进优质原创内容，后于二〇一五年成为核心排名系统的一部分。这段历史有助理解内容价值受到重视，但不能推导出今天存在一个公开可查的熊猫分数。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Penguin，常称企鹅，于二〇一二年推出，处理垃圾链接，二〇一六年集成至核心排名系统。Google 当年的公告说明数据更新变得更即时且更细致。那是历史版本的改变，不能转成现在修好链接后必定几天恢复排名的承诺。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hummingbird，常称蜂鸟，则是二〇一三年八月对整体排名系统的重大改善。官方指南将以上名称列在已淘汰或集成系统的历史说明中。不要把它们想成今天仍需各买一个插件解锁的三道关卡；现行系统持续演进，应再看当前指南。"
+        },
+        {
+          "type": "heading",
+          "text": "分开理解系统更新与个别网站问题",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "核心更新是 Google 对搜索算法和系统的广泛调整，官方说明它不是专门针对某个网站或页面。排名位置改变，可能是系统重新评估可提供的内容，不自动代表你做了违规操作，也不能只凭流量曲线宣称收到处罚。"
+        },
+        {
+          "type": "paragraph",
+          "text": "人工处置措施则有特定的审查与通知管道，可在 Search Console 查看相关报告。技术问题又是另一条线，例如主机故障、错误 noindex 或搬页后重定向缺漏。若三者都称为算法打击，很容易漏掉可以立即核查的故障。"
+        },
+        {
+          "type": "paragraph",
+          "text": "假设社区活动网站在九月改版，某批旧网址失效，刚好同时看到更新消息。正确做法是把两个事件都放进时间表，而不是先选一个最热门的解释。找到实际错误时先处理错误，搜索更新的观察可以另外持续。"
+        },
+        {
+          "type": "heading",
+          "text": "先把日期与数据范围对齐",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "查看 Google 搜索状态与排名更新信息，记录事件开始及完成时间，再和自己的上线、搬移、跟踪设置或内容修改记录对照。网络讨论的日期可能是发文时间，也可能只是个别人的观察，不能直接当成官方更新边界。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若要评估核心更新的影响，Google 建议在更新完成后至少等一周，再比较更新前后适当期间的 Search Console 数据。这是分析更新影响的建议，不是要求网站出现付款失败、无法访问或安全问题时也放着不处理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "比较时固定搜索类型、国家地区、设备与页面范围，避免前期看网页搜索、后期却混入图片数据。另查看较长期间或去年相近时段，辨识季节性。活动结束后自然少了搜索需求，与页面消失造成点击下降，需要不同处理。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "列出网站变更与官方事件，保留来源、发生日期和记录日期。",
+            "确认报表条件一致，挑选可比较的完整期间。",
+            "依页面类型、查询和设备分组，找出影响集中在哪里。",
+            "将已证实问题、可能原因与缺少证据分栏，再安排修正。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "从熊猫的历史回到今天的内容检查",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "不要只问文章够不够长，先问读者能否完成它承诺的任务。以活动报名指南为例，若标题说明报名方式，正文却只有主办单位简介，真正需要补的是资格、流程、时间与例外处理，而不是在结尾多加几百字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "抽查受影响页面时，可以列出来源是否可核对、信息是否过期、是否大量重复同一问题，以及图片或例子有没有额外用途。比较的是内容功能，不是模仿别人的段落顺序。自己没有测试过的功能，也不要用亲身心得来填补证据。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保留仍然有用的内容，优先修正缺漏和错误。Google 的核心更新指南不建议因小幅波动就大改成效良好的内容，也把删除当成最后手段。不要为了追逐一个历史名称，就把全部短文删掉或把所有日期改成今天。"
+        },
+        {
+          "type": "heading",
+          "text": "从企鹅与蜂鸟的历史整理可持续原则",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "链接方面，检查的是是否存在操控排名的配置，例如自己买下大量不相关链接，或要求合作方用指定关键词反复互换。若只是看到陌生来源，还需要核对事实。Google 的现行垃圾内容政策与拒绝链接的适用条件，比十年前某篇恢复心得更适合作为处理依据。"
+        },
+        {
+          "type": "paragraph",
+          "text": "需求方面，让文章以自然语言交代情境与限制。例如读者搜索活动停办后怎么处理，内容就应说明通知、退款或改期信息的查找顺序，而不是反复排列活动名称。这是本文提出的编辑原则，不把某种句型或段落模板说成蜂鸟的固定偏好。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以上原则也不能简化成只要质量好就忽略技术。页面必须能被适当访问，重要信息也应容易找到。可将内容、链接与技术各列一个待查清单，让不同问题得到对应证据，而非所有修改都打包成同一场算法修复。"
+        },
+        {
+          "type": "heading",
+          "text": "以小范围改进和记录累积判断",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先选受影响且重要的一组页面，写出每项修改的理由与验收方式。例如补上已核实的报名限制、修正两个失效来源、合并回答相同问题的旧段落。修改完成时验收的是这些项目已正确呈现，搜索成效则在另定期间观察。"
+        },
+        {
+          "type": "paragraph",
+          "text": "避免同一天同时换域名、改版、删文和大改标题，否则很难知道后续变化与哪些事情有关。确实需要一起调整时，至少保存对照表、日期和恢复数据。没有创建对照实验的观察报告，应写相关线索，而非宣称单一改动带来全部成长。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 没有保证改善后一定恢复原排名，也没有对所有网站统一的等待天数。你的工作记录应持续回答两件事：哪些已知问题已解决，还有哪些假设需要数据。这样即使下一次系统更新出现，也能从自己的证据接续工作。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/google-ranking-history/diagram-1-zh-cn.svg",
+          "alt": "四个区块呈现历史定位、事件时间、具体问题和修改跟踪，说明如何避免用旧算法名称直接判断流量变化。",
+          "width": 1600,
+          "height": 900,
+          "caption": "了解历史是为了读懂变化，修正网站仍要依据今天的证据。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "名称或情况",
+            "官方定位",
+            "今天怎么使用这项信息"
+          ],
+          "rows": [
+            [
+              "Panda 熊猫",
+              "2011 推出；2015 纳入核心",
+              "理解内容价值，核查原创性与用途"
+            ],
+            [
+              "Penguin 企鹅",
+              "2012 推出；2016 纳入核心",
+              "回到现行垃圾链接政策检查"
+            ],
+            [
+              "Hummingbird 蜂鸟",
+              "2013 年 8 月整体系统重大改善",
+              "理解历史演进，不套用神奇句型"
+            ],
+            [
+              "核心更新",
+              "广泛调整，并非专指某网站",
+              "核对完成日期与可比较数据"
+            ],
+            [
+              "人工处置措施或技术故障",
+              "各有通知或可核查的错误",
+              "依具体原因与证据处理"
+            ]
+          ],
+          "caption": "历史日期依目前 Google 排名系统指南；表中的工作建议为原创整理。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "事件同时发生，仍需查明原因",
+          "text": "流量下降刚好碰上搜索更新，只能支持进一步调查。先找可核对的技术错误、内容缺口与数据变动，再评估更新相关性；不要单凭熊猫、企鹅或蜂鸟的名称，就执行全站删改。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "按证据检查技术 SEO 问题",
+              "kind": "life",
+              "slug": "technical-seo-checklist"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "核对内容质量与查证流程",
+              "kind": "life",
+              "slug": "seo-content-quality"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "判断反向链接的处理条件",
+              "kind": "life",
+              "slug": "seo-backlinks-outreach"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 搜索排名系统与历史",
+          "url": "https://developers.google.com/search/docs/appearance/ranking-systems-guide?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 2016 年 Penguin 核心系统整合公告",
+          "url": "https://developers.google.com/search/blog/2016/09/penguin-is-now-part-of-our-core",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 核心更新指南",
+          "url": "https://developers.google.com/search/docs/appearance/core-updates?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜索流量下滑调试",
+          "url": "https://developers.google.com/search/docs/monitor-debug/debugging-search-traffic-drops?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 现行垃圾内容政策",
+          "url": "https://developers.google.com/search/docs/essentials/spam-policies?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Understanding Google Search updates: lessons from Panda, Penguin and Hummingbird",
+      "description": "Panda, Penguin and Hummingbird are useful names in the history of Google Search, but they cannot diagnose every traffic drop today. Using current Google guidance, this guide places each in its historical context, distinguishes core updates from manual actions and technical failures, then walks through dates, page groups, content and links. An original community-events website example shows how to keep evidence without chasing obsolete tactics or rewriting a whole site at once.",
+      "hero": {
+        "src": "/guides/google-ranking-history/hero-en.jpg",
+        "alt": "Original illustration of a folder, screen and document representing Search history, current observations and a website change log.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "When Search traffic falls, one person blames Panda, another blames Penguin, and someone else suggests turning every keyword into a question. Those claims mix different eras of Search history and may explain nothing about your site today. Separate names, events and evidence before deciding what to investigate."
+        },
+        {
+          "type": "paragraph",
+          "text": "Search systems keep changing. History helps explain why content quality, manipulative links and understanding users' needs matter; it is not a permanent recipe for the algorithm. This guide neither declares that a real site has been penalized nor promises protection from every update."
+        },
+        {
+          "type": "heading",
+          "text": "Put three historical names in their proper place",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "According to Google's current guide to ranking systems, Panda launched in 2011 to help surface high-quality original content and became part of the core ranking systems in 2015. That history helps explain the emphasis on useful content. It does not imply that a public, current Panda score exists for you to check."
+        },
+        {
+          "type": "paragraph",
+          "text": "Penguin launched in 2012 to tackle link spam and was integrated into the core ranking systems in 2016. Google's announcement at the time described more real-time and granular data updates. That was a change in a historical version of the system, not a promise that fixing links today will restore rankings within a set number of days."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hummingbird was a major improvement to the overall ranking systems in August 2013. Google's guide places all three names among retired or incorporated systems. Do not imagine three gates that still require separate plugins to unlock. Current systems continue to evolve, so consult current guidance too."
+        },
+        {
+          "type": "heading",
+          "text": "Distinguish system updates from problems on an individual site",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A core update is a broad change to Google's Search algorithms and systems. Google says it does not target a particular site or page. A ranking change may reflect a reassessment of available content; it does not automatically mean you broke a rule, and a traffic chart alone cannot establish a penalty."
+        },
+        {
+          "type": "paragraph",
+          "text": "Manual actions have a separate review and notification channel, with a report in Search Console. Technical failures are another category: a hosting outage, an accidental noindex directive or missing redirects after a move. Calling all three an algorithm hit can hide an error you could check immediately."
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose a community-events website is redesigned in September and some old URLs stop working just as news of an update appears. Put both events on the timeline instead of choosing the most popular explanation first. Fix a verified error when you find one; continue observing the Search update separately."
+        },
+        {
+          "type": "heading",
+          "text": "Align dates and data ranges first",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Check Google's Search status and ranking-update information. Record when an event started and finished, then compare it with your own release, migration, tracking and content-change records. A date in an online discussion might mark the post or one person's observation, not the official boundary of an update."
+        },
+        {
+          "type": "paragraph",
+          "text": "To assess a core update, Google recommends waiting at least a full week after it finishes before comparing suitable periods of Search Console data. That is advice for analyzing an update, not a reason to leave payment failures, inaccessible pages or security problems unresolved."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep Search type, country or region, device and page scope consistent. Do not compare web Search before an update with image Search afterward. Look at a longer period or a comparable season last year as well. A natural fall in demand after an event ends calls for a different response from clicks lost because pages disappeared."
+        },
+        {
+          "type": "list",
+          "items": [
+            "List site changes and official events, retaining the source, event date and date recorded.",
+            "Keep report filters consistent and choose complete periods that can be compared.",
+            "Group by page type, query and device to locate where the impact is concentrated.",
+            "Separate confirmed problems, possible causes and missing evidence before planning fixes."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Bring Panda's history back to today's content review",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not ask only whether an article is long enough. Ask whether readers can complete the task it promises. If a registration guide's title promises instructions but the body merely introduces the organizer, add eligibility, steps, dates and exceptions. Adding a few hundred words at the end would miss the real gap."
+        },
+        {
+          "type": "paragraph",
+          "text": "When sampling affected pages, check whether sources can be verified, information is out of date, many pages repeat the same answer, and images or examples add value. Compare what content does rather than copying someone else's paragraph order. Do not invent first-hand experience with a feature you have not tested."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep content that still helps people, and correct omissions and errors first. Google's core-update guidance advises against sweeping changes to content that is performing well over small fluctuations and treats deletion as a last resort. Do not delete every short article or change every date to today just to chase a historical name."
+        },
+        {
+          "type": "heading",
+          "text": "Use Penguin and Hummingbird history to find durable principles",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For links, investigate arrangements intended to manipulate rankings, such as buying many irrelevant links or requiring partners to repeatedly exchange exact keyword anchors. An unfamiliar referring site alone needs fact-checking. Current Google spam policies and the conditions for disavowing links are a better basis for action than a recovery anecdote from a decade ago."
+        },
+        {
+          "type": "paragraph",
+          "text": "For reader needs, explain the situation and its limits in natural language. Someone asking what happens when an event is canceled needs a clear order for finding notices, refunds or rescheduling information, not repeated variants of the event name. This is an editorial principle proposed here, not a claim that Hummingbird favors one sentence pattern or template."
+        },
+        {
+          "type": "paragraph",
+          "text": "These principles do not mean that good content makes technical access irrelevant. Pages must be appropriately accessible, and important information should be easy to find. Keep separate content, link and technical checklists so each issue has matching evidence instead of bundling every change into one 'algorithm fix.'"
+        },
+        {
+          "type": "heading",
+          "text": "Improve a small area and keep a record",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Choose one important group of affected pages and write down the reason and acceptance check for each change. You might add verified registration limits, fix two broken sources and combine old paragraphs answering the same question. At completion, verify that these changes appear correctly; assess Search performance over a separately defined period."
+        },
+        {
+          "type": "paragraph",
+          "text": "Avoid changing the domain, redesigning, deleting articles and rewriting titles on the same day when possible, because later changes become hard to attribute. If several changes must happen together, preserve a mapping, dates and rollback information. Without a controlled comparison, describe an observation as a clue, not proof that one edit caused all growth."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google does not guarantee a return to the previous ranking after improvements, or a universal waiting period for every site. Your record should keep answering two questions: which confirmed problems are fixed, and which hypotheses still need data. Then the next system update can be assessed against your own evidence."
+        },
+        {
+          "type": "image",
+          "src": "/guides/google-ranking-history/diagram-1-en.svg",
+          "alt": "Four panels show historical context, event timing, specific site problems and change tracking, warning against diagnosing traffic changes solely by old algorithm names.",
+          "width": 1600,
+          "height": 900,
+          "caption": "History helps us understand change; fix a site using today's evidence.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Name or situation",
+            "Google's position",
+            "How to use it today"
+          ],
+          "rows": [
+            [
+              "Panda",
+              "Launched in 2011; joined core in 2015",
+              "Review originality and usefulness"
+            ],
+            [
+              "Penguin",
+              "Launched in 2012; joined core in 2016",
+              "Check current link-spam policies"
+            ],
+            [
+              "Hummingbird",
+              "Major system improvement in August 2013",
+              "Understand history, not magic wording"
+            ],
+            [
+              "Core update",
+              "Broad change, not aimed at one site",
+              "Check completion dates and comparable data"
+            ],
+            [
+              "Manual action or technical failure",
+              "Separate notices or verifiable errors",
+              "Act on the specific cause and evidence"
+            ]
+          ],
+          "caption": "Historical dates follow Google's current ranking-systems guide; the suggested checks are our original synthesis."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Coinciding events still need investigation",
+          "text": "A traffic drop that coincides with a Search update warrants investigation, not a conclusion. Check verifiable technical errors, content gaps and data changes first, then assess any connection with the update. Do not delete or rewrite the whole site because someone named Panda, Penguin or Hummingbird."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Check technical SEO issues against evidence",
+              "kind": "life",
+              "slug": "technical-seo-checklist"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Review content quality and verification steps",
+              "kind": "life",
+              "slug": "seo-content-quality"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Decide when backlink action is appropriate",
+              "kind": "life",
+              "slug": "seo-backlinks-outreach"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google's guide to Search ranking systems and their history",
+          "url": "https://developers.google.com/search/docs/appearance/ranking-systems-guide?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google's 2016 announcement that Penguin joined the core",
+          "url": "https://developers.google.com/search/blog/2016/09/penguin-is-now-part-of-our-core",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google's guide to core updates",
+          "url": "https://developers.google.com/search/docs/appearance/core-updates?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google's guide to debugging Search traffic drops",
+          "url": "https://developers.google.com/search/docs/monitor-debug/debugging-search-traffic-drops?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google's current spam policies",
+          "url": "https://developers.google.com/search/docs/essentials/spam-policies?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Google 検索の更新をどう読むか：Panda・Penguin・Hummingbird が残した原則",
+      "description": "Panda、Penguin、Hummingbird は Google 検索の変遷を理解するための重要な名前ですが、現在のトラフィック減少を毎回診断できる名前ではありません。現行の Google 公式資料をもとに三者の歴史的位置づけを整理し、コア アップデート、手動による対策、技術的な問題を区別します。日付の照合、ページ群の比較、コンテンツとリンクの点検を、オリジナルの地域イベントサイトの例で説明し、記録を残しながら古い施策への飛びつきやサイト全体の一斉変更を避けます。",
+      "hero": {
+        "src": "/guides/google-ranking-history/hero-ja.jpg",
+        "alt": "オリジナルのフォルダー、画面、書類のイラスト。検索の歴史、現在の観察、サイトの変更記録を表す。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "検索トラフィックが下がると、Panda が原因だという人もいれば、Penguin のせいだという人もいます。すべてのキーワードを疑問文に直すべきだという助言もあります。これらは異なる時代の検索の歴史を混ぜており、今のサイトに起きたことを説明できるとは限りません。名前、出来事、証拠を分けてから調べる順番を決めましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "検索システムは変化し続けています。歴史を学ぶ目的は、コンテンツの質、リンク操作、利用者の意図の理解が重視されてきた理由を知ることです。永遠に通用するアルゴリズムの公式を暗記することではありません。ここでは実在のサイトがペナルティを受けたと判定せず、すべての更新を回避できるとも約束しません。"
+        },
+        {
+          "type": "heading",
+          "text": "三つの歴史的な名前を正しい位置に置く",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google の現行のランキング システム ガイドによると、Panda は質の高い独自コンテンツを検索結果に表示しやすくするために 2011 年に導入され、2015 年にコア ランキング システムの一部になりました。この経緯からコンテンツの有用性が重視される理由は分かりますが、現在も公開された「Panda スコア」があるとは言えません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Penguin はリンクスパムへの対策として 2012 年に導入され、2016 年にコア ランキング システムに統合されました。当時の Google の発表では、データ更新がよりリアルタイムかつ細分化されたと説明されています。これは当時の仕組みの変更であって、今リンクを直せば数日で順位が必ず戻るという約束ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hummingbird は 2013 年 8 月にランキング システム全体に加えられた大きな改善です。公式ガイドはこれらの名前を、廃止または統合されたシステムの歴史として扱います。現在も三つの関門があり、それぞれをプラグインで解除する必要がある、と考えないでください。現行の仕組みも進化しているため、最新のガイドを確認します。"
+        },
+        {
+          "type": "heading",
+          "text": "システムの更新と個別サイトの問題を分ける",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "コア アップデートは Google 検索のアルゴリズムとシステムに対する広範な調整です。Google は特定のサイトやページを標的にするものではないと説明しています。順位の変化は利用可能なコンテンツの再評価かもしれず、規則違反を自動的に意味しません。トラフィックの曲線だけでペナルティを断定することもできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手動による対策には別の審査と通知の経路があり、Search Console のレポートで確認できます。技術的な障害はさらに別です。たとえばサーバー停止、誤った noindex、サイト移転後のリダイレクト漏れがあります。すべてを「アルゴリズムの打撃」と呼ぶと、すぐ確認できる故障を見逃します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "地域イベントのサイトを 9 月に改修し、一部の旧 URL が使えなくなった時期に更新の知らせも見たとします。先に人気のある説明を選ぶのではなく、両方を時系列に記録します。実際のエラーが分かったら先に直し、検索更新の影響は別途観察し続けます。"
+        },
+        {
+          "type": "heading",
+          "text": "まず日付とデータ範囲をそろえる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google の検索ステータスとランキング更新情報を確認し、開始日と完了日を記録します。それを自分の公開、移転、計測設定、コンテンツ変更の記録と照合します。ネット上の議論にある日付は投稿日時や個人の観察日かもしれず、公式な更新期間の境界とは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "コア アップデートの影響を評価する場合、Google は完了後少なくとも一週間待ってから、前後の適切な期間の Search Console データを比較するよう勧めています。これは更新の分析方法であり、決済の失敗、ページへのアクセス不能、セキュリティ問題を放置する指示ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "比較する際は検索タイプ、国や地域、デバイス、ページ範囲を固定します。更新前はウェブ検索、更新後は画像検索まで混ぜる比較は避けます。長い期間や前年の同じ季節も見て季節性を確認します。イベント終了後に自然に需要が減る場合と、ページが消えてクリックが減る場合では対処が異なります。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "サイトの変更と公式の出来事を並べ、出典、発生日、記録日を残す。",
+            "レポートの条件をそろえ、比較可能な完全な期間を選ぶ。",
+            "ページ種別、検索クエリ、デバイスで分け、影響が集中する場所を探す。",
+            "確認済みの問題、考えられる原因、足りない証拠を分けて修正を計画する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Panda の歴史から現在のコンテンツ点検へ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "記事の長さだけを問わず、読者が約束された作業を終えられるかを確認します。イベント申込ガイドのタイトルが申込方法を示すのに、本文が主催者紹介だけなら、必要なのは資格、手順、日時、例外の説明です。末尾に数百語を足すことではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "影響を受けたページを抽出するときは、出典を照合できるか、情報が古くないか、同じ質問を大量のページで繰り返していないか、画像や例に役割があるかを調べます。比較すべきは内容の機能であり、他サイトの段落順の模倣ではありません。試していない機能を体験談で埋めないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "まだ役立つ内容は残し、欠落や誤りを優先して直します。Google のコア アップデート ガイドは、小さな変動だけを理由に成果の良いコンテンツを大幅変更することを勧めず、削除を最後の手段としています。歴史上の名前を追って短い記事を全部消したり、すべての日付を今日に変えたりしないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "Penguin と Hummingbird の歴史から持続的な原則を整理する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "リンクについては、無関係なリンクを大量に買う、協力先に指定キーワードでの相互リンクを繰り返し求めるなど、順位操作を狙う配置がないか調べます。知らない参照元を見つけただけなら事実確認が必要です。十年前の回復談より、現在の Google のスパムポリシーとリンク否認の適用条件を判断の根拠にします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "利用者の意図については、状況と制限を自然な言葉で説明します。イベント中止後の対応を調べる読者には、通知、返金、日程変更の情報を探す順序を示すべきで、イベント名の言い換えを並べるだけでは足りません。これは本記事の編集上の原則であり、Hummingbird が特定の文型や段落テンプレートを好むという主張ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "これらの原則は、内容が良ければ技術面を無視できるという意味でもありません。ページに適切にアクセスでき、重要な情報を見つけやすいことも必要です。コンテンツ、リンク、技術の点検表を分け、問題ごとに対応する証拠を集めます。すべての変更を一つの「アルゴリズム対策」にまとめないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "小さな範囲で改善し、記録から判断を積み重ねる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "影響があり重要なページ群を一つ選び、変更ごとの理由と確認方法を書きます。確認済みの申込制限を追記し、切れた出典を二つ直し、同じ質問に答える古い段落を統合する、といった作業です。完了時には表示の正しさを確かめ、検索成果は別に決めた期間で観察します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可能なら同じ日にドメイン変更、改修、記事削除、タイトルの大幅変更を重ねないでください。後の変化との関係が分かりにくくなります。まとめて変更する必要があるなら、対応表、日付、復旧用データを残します。対照実験のない観察報告では、手がかりと書き、単独の変更がすべての成長を生んだとは断定しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "改善後に以前の順位へ必ず戻る保証も、すべてのサイトに共通する待機日数も Google は示していません。作業記録では、確認された問題のうち何を解決したか、まだデータが必要な仮説は何かを追い続けます。次の更新があっても自分の証拠から検討を再開できます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/google-ranking-history/diagram-1-ja.svg",
+          "alt": "四つの枠で歴史的位置づけ、出来事の時期、具体的な問題、変更の追跡を示し、古いアルゴリズム名だけでトラフィックの変化を判断しない方法を説明する。",
+          "width": 1600,
+          "height": 900,
+          "caption": "歴史は変化を理解するために使い、サイトの修正は今ある証拠に基づいて行う。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "名称または状況",
+            "Google の位置づけ",
+            "現在の活用方法"
+          ],
+          "rows": [
+            [
+              "Panda",
+              "2011 年導入、2015 年にコアへ",
+              "独自性と有用性を確認"
+            ],
+            [
+              "Penguin",
+              "2012 年導入、2016 年にコアへ",
+              "現行のリンクスパム規定を確認"
+            ],
+            [
+              "Hummingbird",
+              "2013 年 8 月の全体的な改善",
+              "歴史を理解し、魔法の文型を求めない"
+            ],
+            [
+              "コア アップデート",
+              "特定サイト向けではない広範な変更",
+              "完了日と比較可能なデータを確認"
+            ],
+            [
+              "手動による対策または技術的障害",
+              "別の通知または確認可能なエラー",
+              "具体的な原因と証拠に応じて対応"
+            ]
+          ],
+          "caption": "歴史的な日付は現行の Google ランキング システム ガイドに基づく。作業上の助言は独自に整理した。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "出来事が重なっても原因は調査が必要",
+          "text": "トラフィック低下と検索更新が同時に起きても、それだけで結論は出せません。確認可能な技術的エラー、内容の欠落、データの変化を調べたうえで、更新との関係を評価します。Panda、Penguin、Hummingbird という名前だけでサイト全体を削除・改変しないでください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "証拠に基づいて技術的 SEO を点検する",
+              "kind": "life",
+              "slug": "technical-seo-checklist"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "コンテンツの品質と検証手順を確認する",
+              "kind": "life",
+              "slug": "seo-content-quality"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "被リンクへの対応条件を判断する",
+              "kind": "life",
+              "slug": "seo-backlinks-outreach"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 検索ランキング システムとその歴史",
+          "url": "https://developers.google.com/search/docs/appearance/ranking-systems-guide?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Penguin のコア統合に関する Google の 2016 年発表",
+          "url": "https://developers.google.com/search/blog/2016/09/penguin-is-now-part-of-our-core",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google のコア アップデート ガイド",
+          "url": "https://developers.google.com/search/docs/appearance/core-updates?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google の検索トラフィック低下の調査ガイド",
+          "url": "https://developers.google.com/search/docs/monitor-debug/debugging-search-traffic-drops?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google の現行スパムポリシー",
+          "url": "https://developers.google.com/search/docs/essentials/spam-policies?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Google 검색 업데이트 읽는 법: Panda·Penguin·Hummingbird가 남긴 원칙",
+      "description": "Panda, Penguin, Hummingbird는 Google 검색의 변화를 이해하는 중요한 이름이지만, 오늘 발생한 모든 트래픽 감소를 진단하는 도구는 아닙니다. 현재의 Google 공식 문서를 바탕으로 세 시스템의 역사적 위치를 정리하고, 핵심 업데이트와 직접 조치, 기술 오류를 구분합니다. 날짜 대조, 페이지 묶음, 콘텐츠와 링크 점검 방법을 지역 행사 웹사이트 사례로 설명하며, 근거를 남기고 오래된 요령이나 사이트 전체의 성급한 수정에 매달리지 않도록 돕습니다.",
+      "hero": {
+        "src": "/guides/google-ranking-history/hero-ko.jpg",
+        "alt": "검색의 역사, 현재 관찰 결과, 웹사이트 변경 기록을 나타내는 폴더·화면·문서의 독창적인 일러스트.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "검색 트래픽이 줄면 누군가는 Panda 때문이라고 하고, 다른 사람은 Penguin을 지목합니다. 모든 키워드를 질문형으로 바꾸라는 조언도 나옵니다. 이런 말은 서로 다른 시기의 검색 역사를 섞은 것으로, 지금 사이트에서 일어난 일을 설명하지 못할 수 있습니다. 이름과 사건, 증거를 구분한 뒤 무엇을 조사할지 정하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "검색 시스템은 계속 변합니다. 역사를 배우는 이유는 콘텐츠 품질, 링크 조작, 이용자의 필요를 이해하는 일이 왜 중요해졌는지 알기 위해서입니다. 영원히 통하는 알고리즘 공식을 외우기 위해서가 아닙니다. 이 글은 실제 사이트가 제재를 받았다고 판정하지 않으며, 모든 업데이트를 피할 수 있다고 약속하지도 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "세 가지 역사적 이름을 제자리에 놓기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google의 현재 순위 시스템 안내에 따르면 Panda는 양질의 독창적인 콘텐츠를 더 잘 보여주기 위해 2011년에 도입되었고 2015년에 핵심 순위 시스템의 일부가 되었습니다. 이 역사는 콘텐츠의 유용성을 중시하는 배경을 보여줍니다. 그렇다고 지금 공개적으로 확인할 수 있는 'Panda 점수'가 있다는 뜻은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Penguin은 링크 스팸에 대응하기 위해 2012년에 도입되었고 2016년에 핵심 순위 시스템에 통합되었습니다. 당시 Google 발표는 데이터 갱신이 더 실시간에 가깝고 세밀해졌다고 설명했습니다. 이는 과거 시스템의 변화이지, 오늘 링크를 고치면 며칠 안에 순위가 반드시 회복된다는 약속이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hummingbird는 2013년 8월 전체 순위 시스템에 이루어진 큰 개선이었습니다. Google의 안내는 이 이름들을 폐기되었거나 통합된 시스템의 역사로 다룹니다. 지금도 세 개의 관문을 각각 플러그인으로 풀어야 한다고 생각하지 마세요. 현행 시스템도 계속 발전하므로 최신 안내를 함께 확인해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "시스템 업데이트와 개별 사이트 문제 구분하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "핵심 업데이트는 Google 검색 알고리즘과 시스템 전반에 걸친 조정입니다. Google은 특정 사이트나 페이지를 겨냥한 것이 아니라고 설명합니다. 순위 변화는 제공할 수 있는 콘텐츠를 다시 평가한 결과일 수 있으며, 규칙 위반을 자동으로 뜻하지 않습니다. 트래픽 그래프만으로 제재를 받았다고 단정할 수도 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "직접 조치에는 별도의 검토와 알림 경로가 있으며 Search Console 보고서에서 확인할 수 있습니다. 기술 오류는 또 다른 범주입니다. 서버 장애, 실수로 설정한 noindex, 사이트 이전 후 빠진 리디렉션이 예입니다. 셋을 모두 '알고리즘 타격'이라고 부르면 바로 확인할 수 있는 고장을 놓치기 쉽습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "지역 행사 사이트를 9월에 개편하면서 일부 오래된 URL이 작동하지 않게 되었는데, 같은 시기에 업데이트 소식도 봤다고 가정해 봅시다. 가장 인기 있는 설명부터 고르지 말고 두 사건을 모두 시간표에 적으세요. 실제 오류가 확인되면 먼저 고치고, 검색 업데이트와의 관계는 따로 계속 관찰합니다."
+        },
+        {
+          "type": "heading",
+          "text": "날짜와 데이터 범위를 먼저 맞추기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 검색 상태와 순위 업데이트 정보를 확인하고 사건의 시작일과 완료일을 기록합니다. 이를 사이트의 배포, 이전, 추적 설정, 콘텐츠 변경 기록과 비교하세요. 온라인 토론의 날짜는 글을 올린 날이나 한 사람의 관찰일 수 있으므로 공식 업데이트 기간의 경계로 곧바로 쓰면 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "핵심 업데이트의 영향을 평가할 때 Google은 업데이트가 끝난 뒤 적어도 일주일을 기다리고 적절한 전후 기간의 Search Console 데이터를 비교하라고 권합니다. 이는 업데이트 분석을 위한 조언이지, 결제 오류나 접속 불가, 보안 문제를 방치하라는 뜻이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "비교할 때는 검색 유형, 국가 또는 지역, 기기, 페이지 범위를 같게 둡니다. 전에는 웹 검색만 보고 이후에는 이미지 검색까지 섞지 마세요. 긴 기간이나 전년의 비슷한 시기를 함께 살펴 계절성도 구분합니다. 행사 종료 후 자연스럽게 검색 수요가 줄어든 경우와 페이지가 사라져 클릭이 감소한 경우에는 서로 다른 대응이 필요합니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "사이트 변경과 공식 사건을 나열하고 출처, 발생일, 기록일을 남긴다.",
+            "보고서 조건을 일치시키고 비교할 수 있는 완전한 기간을 고른다.",
+            "페이지 유형, 검색어, 기기별로 묶어 영향이 집중된 곳을 찾는다.",
+            "확인된 문제와 가능한 원인, 부족한 증거를 나눈 뒤 수정을 계획한다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Panda의 역사에서 오늘의 콘텐츠 점검으로",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "글의 길이만 묻지 말고 독자가 약속된 일을 마칠 수 있는지 보세요. 행사 신청 안내의 제목은 신청 방법을 약속하는데 본문은 주최 측 소개뿐이라면, 필요한 것은 자격, 절차, 날짜, 예외 상황입니다. 끝에 몇백 자를 덧붙이는 것으로는 빈틈을 메우지 못합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "영향받은 페이지를 표본으로 볼 때 출처를 확인할 수 있는지, 정보가 오래되었는지, 같은 질문을 여러 페이지에서 반복하는지, 이미지와 예시에 추가 용도가 있는지 살펴보세요. 비교할 것은 콘텐츠의 기능이지 다른 사이트의 문단 순서가 아닙니다. 직접 시험하지 않은 기능을 경험담인 것처럼 채우지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "아직 도움이 되는 콘텐츠는 남기고 누락과 오류부터 고칩니다. Google의 핵심 업데이트 안내는 작은 변동만으로 성과가 좋은 콘텐츠를 대대적으로 바꾸지 말라고 하고, 삭제는 최후의 수단으로 다룹니다. 역사적 이름을 쫓느라 짧은 글을 전부 지우거나 모든 날짜를 오늘로 바꾸지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "Penguin과 Hummingbird의 역사에서 오래가는 원칙 찾기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "링크는 순위 조작을 노린 배치가 있는지 조사합니다. 관련 없는 링크를 대량으로 사거나 협력사에 지정 키워드로 반복적인 상호 링크를 요구하는 경우가 예입니다. 낯선 유입 사이트를 봤다는 이유만으로 결론내리지 말고 사실을 확인하세요. 십 년 전의 회복 경험담보다 현재의 Google 스팸 정책과 링크 거부 적용 조건이 적절한 판단 기준입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이용자 필요에 대해서는 상황과 제한을 자연스러운 말로 설명합니다. 행사가 취소된 뒤 어떻게 해야 하는지 찾는 사람에게는 공지, 환불, 일정 변경 정보를 찾는 순서를 알려줘야지 행사 이름을 반복할 필요는 없습니다. 이는 이 글의 편집 원칙이지, Hummingbird가 특정 문장 형태나 문단 틀을 좋아한다는 주장이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 원칙이 콘텐츠만 좋으면 기술을 무시해도 된다는 뜻은 아닙니다. 페이지에 적절히 접속할 수 있어야 하고 중요한 정보도 찾기 쉬워야 합니다. 콘텐츠, 링크, 기술 점검표를 나누어 문제마다 알맞은 증거를 모으세요. 모든 변경을 하나의 '알고리즘 복구'로 묶지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "작은 범위부터 개선하고 기록으로 판단 쌓기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "중요하면서 영향을 받은 페이지 묶음을 하나 골라 변경 이유와 확인 방법을 각각 적으세요. 확인된 신청 제한을 보충하고, 끊긴 출처 두 개를 고치고, 같은 질문에 답하는 오래된 문단을 합치는 식입니다. 작업을 마치면 변경 사항이 올바르게 보이는지 확인하고 검색 성과는 별도로 정한 기간에 관찰합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "가능하면 같은 날 도메인 변경, 사이트 개편, 글 삭제, 제목 대폭 수정을 모두 하지 마세요. 나중의 변화를 어떤 일과 연결할지 어려워집니다. 함께 해야 한다면 대응표와 날짜, 복구 자료를 남기세요. 비교 실험이 없는 관찰은 단서라고 표현해야지, 한 번의 수정이 모든 성장을 낳았다고 단정하면 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google은 개선 후 이전 순위로 반드시 돌아온다고 보장하지 않으며 모든 사이트에 동일한 대기 기간을 제시하지도 않습니다. 작업 기록은 확인된 문제 중 무엇을 해결했는지, 아직 데이터가 필요한 가설이 무엇인지 계속 답해야 합니다. 다음 시스템 업데이트가 와도 자신의 증거를 바탕으로 이어서 조사할 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/google-ranking-history/diagram-1-ko.svg",
+          "alt": "네 구역에 역사적 위치, 사건의 시기, 구체적인 사이트 문제, 변경 추적을 보여주어 오래된 알고리즘 이름만으로 트래픽 변화를 단정하지 않도록 안내하는 그림.",
+          "width": 1600,
+          "height": 900,
+          "caption": "역사는 변화를 이해하는 데 쓰고, 사이트는 오늘의 증거에 따라 고친다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "이름 또는 상황",
+            "Google의 설명",
+            "오늘 활용하는 방법"
+          ],
+          "rows": [
+            [
+              "Panda",
+              "2011년 도입, 2015년 핵심 시스템에 편입",
+              "독창성과 유용성 확인"
+            ],
+            [
+              "Penguin",
+              "2012년 도입, 2016년 핵심 시스템에 편입",
+              "현행 링크 스팸 정책 점검"
+            ],
+            [
+              "Hummingbird",
+              "2013년 8월 시스템 전반의 큰 개선",
+              "역사를 이해하고 마법 같은 문장 틀은 찾지 않기"
+            ],
+            [
+              "핵심 업데이트",
+              "특정 사이트 대상이 아닌 광범위한 조정",
+              "완료일과 비교 가능한 데이터 확인"
+            ],
+            [
+              "직접 조치 또는 기술 오류",
+              "별도 알림 또는 검증 가능한 오류",
+              "구체적인 원인과 증거에 맞춰 대응"
+            ]
+          ],
+          "caption": "역사적 날짜는 Google의 현행 순위 시스템 안내를 따르며, 작업 제안은 이 글에서 독자적으로 정리했다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "사건이 겹쳐도 원인은 조사해야 한다",
+          "text": "트래픽 감소가 검색 업데이트와 겹쳤다는 사실만으로는 결론을 낼 수 없습니다. 확인 가능한 기술 오류, 콘텐츠의 빈틈, 데이터 변화를 먼저 찾고 업데이트와의 관련성을 평가하세요. Panda, Penguin, Hummingbird라는 이름만 듣고 사이트 전체를 삭제하거나 고치지 마세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "증거를 바탕으로 기술 SEO 문제 점검하기",
+              "kind": "life",
+              "slug": "technical-seo-checklist"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "콘텐츠 품질과 검증 절차 확인하기",
+              "kind": "life",
+              "slug": "seo-content-quality"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "백링크에 조치가 필요한 조건 판단하기",
+              "kind": "life",
+              "slug": "seo-backlinks-outreach"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 검색 순위 시스템과 역사 안내",
+          "url": "https://developers.google.com/search/docs/appearance/ranking-systems-guide?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Penguin의 핵심 시스템 통합에 관한 Google의 2016년 발표",
+          "url": "https://developers.google.com/search/blog/2016/09/penguin-is-now-part-of-our-core",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 핵심 업데이트 안내",
+          "url": "https://developers.google.com/search/docs/appearance/core-updates?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 검색 트래픽 감소 조사 안내",
+          "url": "https://developers.google.com/search/docs/monitor-debug/debugging-search-traffic-drops?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google의 현행 스팸 정책",
+          "url": "https://developers.google.com/search/docs/essentials/spam-policies?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
