@@ -51,6 +51,8 @@ from typing import Any
 SKILL_ROOT = Path(__file__).resolve().parents[4]
 
 SELF_REF = re.compile(r"本文|這篇")
+# Japanese 本文 means the body text; explicit references to this article use these terms.
+SELF_REF_JA = re.compile(r"本記事|この記事|本稿")
 ATTRIB = re.compile(
     r"官方頁(?:寫|說|的|上)|官網(?:寫|說|上寫|標|載明)|依[^，。；]{0,14}(?:公告|公布)"
     r"|公告(?:寫|說|載明)|頁面(?:寫|說)"
@@ -361,9 +363,11 @@ def main() -> int:
         )
         self_ref_limit = int(reader_first.get("self_ref_limit", DEFAULT_SELF_REF_LIMIT))
         attrib_limit = int(reader_first.get("attrib_para_limit", DEFAULT_ATTRIB_PARA_LIMIT))
-        self_refs = len(SELF_REF.findall(all_text))
+        self_ref_pattern = SELF_REF_JA if locale == "ja" else SELF_REF
+        self_ref_label = "本記事/この記事/本稿" if locale == "ja" else "本文/這篇"
+        self_refs = len(self_ref_pattern.findall(all_text))
         (ok if self_refs <= self_ref_limit else fail)(
-            f"self-reference count (本文/這篇) = {self_refs} (limit {self_ref_limit})"
+            f"self-reference count ({self_ref_label}) = {self_refs} (limit {self_ref_limit})"
         )
         for idx, para in enumerate(paragraphs(blocks)):
             n = len(ATTRIB.findall(para))
