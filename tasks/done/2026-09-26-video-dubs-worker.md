@@ -1,13 +1,13 @@
 ---
 id: 2026-09-26-video-dubs-worker
 title: Video languages worker: the worker makes only the parts the owner chose (metadata, captions, dubs), packages them and sends the languages review
-status: review
+status: done
 priority: P1
 area: tools
 owner: claude-fable-5-1-video-languages
 claimed_at: 2026-09-27T08:32:43Z
 created_at: 2026-09-26T17:59:41Z
-completed_at:
+completed_at: 2026-09-29T09:13:39Z
 branch:
 depends_on:
   - 2026-09-26-video-dubs-command
