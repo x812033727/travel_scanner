@@ -46,6 +46,9 @@ jobs:
       - run: node tools/video/assemble/smoke.mjs --fixture drama --workdir "$RUNNER_TEMP/video-smoke-drama"
       # The brand story example: narrator only, every shot a still under a camera move.
       - run: node tools/video/assemble/smoke.mjs --fixture story --workdir "$RUNNER_TEMP/video-smoke-story"
+      # Illustrated slides: still shots between the cards, drifting cards, dissolves, the owner's
+      # music file and a sound-effect set through the same chain (docs/videos/ILLUSTRATED.md).
+      - run: node tools/video/assemble/smoke.mjs --fixture illustrated --workdir "$RUNNER_TEMP/video-smoke-illustrated"
       # A Short from its script to its upload package, with supplied clips for the narration:
       # what can be checked without the site passes, what cannot fails saying so.
       - run: node tools/video/shorts/smoke.mjs --workdir "$RUNNER_TEMP/shorts-smoke"
