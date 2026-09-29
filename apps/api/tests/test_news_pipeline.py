@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from copy import deepcopy
 from datetime import UTC, date, datetime, timedelta
 from pathlib import Path
 from types import TracebackType
@@ -42,7 +43,7 @@ from app.news_automation.models import (
     NewsPipelineRun,
     NewsSource,
 )
-from app.news_automation.policy import EVIDENCE_REFRESH_MARKER
+from app.news_automation.policy import EVIDENCE_REFRESH_MARKER, document_fingerprint
 from app.news_automation.provider_schema import portable_json_schema
 from app.news_automation.schemas import (
     CandidateAction,
@@ -1360,6 +1361,167 @@ async def test_a_translation_the_reviewer_corrected_gets_its_topic_link_back(
     assert "https://mokaair.com/en/life/topics/ai-news" in [
         block.get("url") for block in english.draft_json["blocks"]
     ]
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("saved_article", "second_verdict", "first_issues"),
+    [
+        pytest.param(False, "manual", ["Original wording is ambiguous"], id="new-manual"),
+        pytest.param(False, "revise", ["Original wording is ambiguous"], id="new-revise"),
+        pytest.param(True, "manual", ["Original wording is ambiguous"], id="saved-manual"),
+        pytest.param(True, "revise", ["Original wording is ambiguous"], id="saved-revise"),
+        pytest.param(True, None, ["Original needs an editor"], id="direct-manual"),
+        pytest.param(True, "manual", [], id="empty-original-issues"),
+    ],
+)
+async def test_held_locale_review_evidence_describes_the_previewed_original(
+    monkeypatch: pytest.MonkeyPatch,
+    saved_article: bool,
+    second_verdict: str | None,
+    first_issues: list[str],
+) -> None:
+    """A discarded correction's new mistakes must not become the editor's to-do list."""
+
+    async def guide_state(session: AsyncSession) -> dict[str, list[dict[str, Any]]]:
+        result = {}
+        for model in (GuideArticle, GuideArticleLocale, GuideArticleRevision):
+            table = cast(Table, model.__table__)
+            rows = await session.execute(select(table).order_by(table.c.id))
+            result[table.name] = [deepcopy(dict(row)) for row in rows.mappings()]
+        return result
+
+    engine, factory = await database()
+    try:
+        async with factory() as session:
+            owner_id = await seed_owner(session)
+            if saved_article:
+                candidate_id = await seed_refreshed_candidate(session)
+                candidate = await session.get(NewsCandidate, candidate_id)
+                assert candidate is not None and candidate.guide_article_id is not None
+                article = await session.get(GuideArticle, candidate.guide_article_id)
+                assert article is not None
+                article.version = 7
+                for locale, encoded in candidate.draft_bundle_json.items():
+                    localized = GuideArticleLocale(
+                        id=uuid4(),
+                        article_id=article.id,
+                        locale=locale,
+                        version=3,
+                        draft_json=deepcopy(encoded),
+                        published_version=2,
+                        published_at=datetime(2026, 9, 1, tzinfo=UTC),
+                    )
+                    session.add(localized)
+                    for version, action, document in (
+                        (
+                            2,
+                            "published",
+                            news_document(f"Published {locale}").model_dump(mode="json"),
+                        ),
+                        (3, "draft_saved", encoded),
+                    ):
+                        session.add(
+                            GuideArticleRevision(
+                                article_locale_id=localized.id,
+                                version=version,
+                                action=action,
+                                document_json=deepcopy(document),
+                                created_by_user_id=owner_id,
+                            )
+                        )
+                await session.commit()
+            else:
+                candidate_id = (await seed_single_source_candidate(session)).id
+
+        monkeypatch.setattr(
+            ai, "jev_duplicate_check", AsyncMock(return_value=("distinct", 0.01, []))
+        )
+        stage_one_mocks(monkeypatch)
+        stage_two_mocks(monkeypatch)
+        reviewed: list[GuideDocument] = []
+        correction = news_document("Correction one introduces a different error")
+        unwanted_correction = news_document("Correction two must never replace the preview")
+        second_issues = ["The correction invented a quotation absent from the original"]
+
+        async def review(*args: Any) -> tuple[LocaleReviewResult, dict[str, int], str]:
+            if args[3] != "en":
+                return LocaleReviewResult(verdict="pass"), {}, "other-locale-checker"
+            reviewed.append(cast(GuideDocument, args[4]).model_copy(deep=True))
+            if len(reviewed) == 1:
+                return (
+                    LocaleReviewResult(
+                        verdict="manual" if second_verdict is None else "revise",
+                        issues=first_issues,
+                        corrected_document=None if second_verdict is None else correction,
+                    ),
+                    {"input_tokens": 11},
+                    "original-reviewer",
+                )
+            assert len(reviewed) == 2, "Only one correction may be attempted"
+            return (
+                LocaleReviewResult(
+                    verdict="manual" if second_verdict == "manual" else "revise",
+                    issues=second_issues,
+                    corrected_document=unwanted_correction if second_verdict == "revise" else None,
+                ),
+                {"input_tokens": 22},
+                "correction-reviewer",
+            )
+
+        monkeypatch.setattr(ai, "review_locale", review)
+        if not saved_article:
+            await confirm(factory, candidate_id, owner_id)
+        async with factory() as session:
+            before = await service.candidate_detail(session, candidate_id)
+            guides_before = await guide_state(session)
+        async with factory() as session:
+            result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        # Read committed public detail in another session, not the worker's identity map.
+        async with factory() as session:
+            detail = await service.candidate_detail(session, candidate_id)
+            guides_after = await guide_state(session)
+
+        assert result == "manual_review"
+        assert detail.status == "manual_review"
+        assert detail.error_code == "news_locale_review_failed"
+        assert detail.guide_article_id == before.guide_article_id
+        assert guides_after == guides_before, "No guide drafts, revisions or publication may move"
+        for locale, document in before.documents.items():
+            if locale != "en":
+                assert detail.documents[locale] == document
+        held = [
+            item
+            for item in detail.assessments
+            if item.assessment_type == "locale_review" and item.locale == "en"
+        ]
+        assert len(held) == 1 and held[0].verdict == "manual"
+        assessment = held[0]
+        assert assessment.reasons == first_issues
+        assert assessment.model == "original-reviewer"
+        assert assessment.details["round"] == 1
+        assert assessment.details["document_sha256"] == document_fingerprint(reviewed[0])
+        assert detail.documents["en"] == reviewed[0]
+        assert document_fingerprint(detail.documents["en"]) == document_fingerprint(reviewed[0])
+        assert all(
+            issue not in item.reasons for item in detail.assessments for issue in second_issues
+        )
+        if second_verdict is None:
+            assert len(reviewed) == 1
+            assert "discarded_correction" not in assessment.details
+        else:
+            assert len(reviewed) == 2
+            assert reviewed[1].title == correction.title
+            assert document_fingerprint(reviewed[0]) != document_fingerprint(reviewed[1])
+            assert assessment.details["discarded_correction"] == {
+                "round": 2,
+                "verdict": second_verdict,
+                "issues": second_issues,
+                "model": "correction-reviewer",
+                "document_sha256": document_fingerprint(reviewed[1]),
+            }
+    finally:
+        await engine.dispose()
 
 
 @pytest.mark.asyncio
