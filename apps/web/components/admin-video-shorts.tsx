@@ -50,9 +50,11 @@ function Tile({ label, children }: { label: string; children: ReactNode }) {
 
 function SlotLine({ slot }: { slot: Slot }) {
   const t = useTranslations("admin.videoShorts");
+  // A slot that was missed or is not publishing waits for no Short: its pill says all there is.
+  const waits = slot.status !== "skipped" && slot.status !== "missed";
   return <span className="flex flex-wrap items-center gap-2">
     <span className="font-mono">{slot.local_time}</span>
-    <span className={slot.project_title ? "font-semibold" : "text-[var(--muted)]"}>{slot.project_title ?? t("top.emptySlot")}</span>
+    {slot.project_title ? <span className="font-semibold">{slot.project_title}</span> : waits && <span className="text-[var(--muted)]">{t("top.emptySlot")}</span>}
     <AdminStatusPill status={slotTone[slot.status]}>{t(`slotStatuses.${slot.status}`)}</AdminStatusPill>
   </span>;
 }
@@ -239,7 +241,9 @@ function ShortCard({ project, onOpen }: { project: ProjectSummary; onOpen: (slug
   return <li>
     <button type="button" onClick={() => onOpen(project.slug)} aria-label={t("library.open", { title: project.title })}
       className="grid w-full grid-cols-[4.5rem_1fr] gap-4 rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-4 text-left shadow-[var(--shadow-sm)] hover:border-[var(--teal)]">
-      <span className="grid aspect-[9/16] w-full place-items-center overflow-hidden rounded-xl bg-[var(--paper)]">
+      {/* Nine by sixteen from a height of its own (the column is 4.5rem wide), not from
+          aspect-ratio: that box, inside a button, stopped the page in one embedded Chromium 152. */}
+      <span data-testid="shorts-card-cover" className="grid h-32 w-full place-items-center overflow-hidden rounded-xl bg-[var(--paper)]">
         {/* A private, session-bound preview: the image optimizer cannot fetch it. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         {facts.cover ? <img src={facts.cover} alt={t("library.cover", { title: project.title })} className="h-full w-full object-contain" loading="lazy" /> : <Smartphone aria-hidden size={24} className="text-[var(--muted)]" />}

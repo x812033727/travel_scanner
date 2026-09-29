@@ -1,6 +1,7 @@
 import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AdminOperationsProvider } from "./admin-operations-provider";
+import { needsOwner, type Project, publishState } from "./admin-video-review-card";
 import { AdminVideoReviews } from "./admin-video-reviews";
 import { AdminVideoShorts, BATCH_URL } from "./admin-video-shorts";
 import type { AdminBootstrap } from "@/lib/admin-operations";
@@ -18,7 +19,10 @@ const slot = (fields: Record<string, unknown>) => ({
 const overview = {
   autopublish: "on", autopublish_problem: null, consent_expires_at: "2026-12-30T03:00:00Z", paused_at: null, timezone: "Asia/Taipei",
   today: [slot({ status: "locked", project_slug: "receipt-total", project_title: "AI 真的可以算對發票嗎", project_line: "lab" })],
-  tomorrow: [slot({ id: "22222222-2222-4222-8222-222222222222", local_date: "2026-10-06", starts_at: "2026-10-06T11:30:00Z" })],
+  tomorrow: [
+    slot({ id: "44444444-4444-4444-8444-444444444444", local_date: "2026-10-06", local_time: "12:30", starts_at: "2026-10-06T04:30:00Z", status: "skipped" }),
+    slot({ id: "22222222-2222-4222-8222-222222222222", local_date: "2026-10-06", starts_at: "2026-10-06T11:30:00Z" }),
+  ],
   stock: { count: 4, days: 3, wanted_days: 5 },
   budget: { period_start: "2026-10-04T16:00:00Z", period_end: "2026-11-03T16:00:00Z", spent_ntd: 312.4, reserved_ntd: 40, unknown: 0, limit_ntd: 3000, soft_ntd: 2400, total_start: "2026-10-04T16:00:00Z", total_spent_ntd: 312.4, total_limit_ntd: 9000, paid_work_allowed: true, reason: null },
   channel: { linked: true, title: "Mokaair", audited: false, problem: null },
@@ -160,10 +164,11 @@ describe("the top row", () => {
     expect(tile("今天").textContent).toContain("19:30");
     expect(tile("今天").textContent).toContain("AI 真的可以算對發票嗎");
     expect(tile("今天").textContent).toContain("已鎖定");
-    expect(tile("明天").textContent).toContain("還沒有排影片");
+    // The empty slot waits for a Short; the one that is not publishing waits for none.
+    expect(tile("明天").textContent).toBe("明天12:30不發19:30還沒有排影片空格");
     expect(tile("片庫").textContent).toContain("4 支");
     expect(tile("片庫").textContent).toContain("夠 3 天，希望有 5 天");
-    expect(tile("這 30 天的花費").textContent).toContain("NT$312，上限 NT$3,000");
+    expect(tile("這 30 天的花費").textContent).toContain("NT$312.4，上限 NT$3,000");
     expect(tile("這 30 天的花費").textContent).toContain("另有 NT$40 已預留");
     expect(tile("YouTube 頻道").textContent).toContain("Mokaair");
     expect(tile("YouTube 頻道").textContent).toContain("API 稽核還沒通過：檔案由你上傳");
@@ -312,6 +317,10 @@ describe("the library", () => {
     await waitFor(() => expect(card.textContent).toContain("品管 12 項全過"));
     expect(card.textContent).toContain("35.2 秒");
     expect(within(card).getByRole("img", { name: "AI 真的可以算對發票嗎 的封面" }).getAttribute("src")).toBe(`/api/admin-video-files/receipt-total/${SHA.cover}`);
+    // The cover's box has a height of its own; one sized by aspect-ratio, in a button, stopped a browser.
+    const cover = within(card).getByTestId("shorts-card-cover");
+    expect(cover.className).toContain("h-32");
+    expect(cover.className).not.toContain("aspect-");
     const drama = screen.getByRole("button", { name: "打開 第三集的短篇" });
     expect(drama.textContent).toContain("漫劇直式短篇");
     expect(drama.textContent).toContain("來源 wenjian-e03");
@@ -379,6 +388,25 @@ describe("one Short's page", () => {
     expect(within(evidence).getByRole("link", { name: "下載" }).getAttribute("href")).toBe(`/api/admin-video-files/receipt-total/${SHA.evidence}`);
     // A Short's languages are the Shorts settings', so the page does not ask for them here.
     expect(screen.queryByRole("region", { name: "這支影片的語言" })).toBeNull();
+  });
+
+  it("says where a Short stands once, in the Shorts' own words, and asks for no languages", async () => {
+    const approved = { ...shorts[0], locales: {}, locales_decided_at: null, languages: {}, ready_to_upload: false, reviews: [finalReview] } as unknown as Project;
+    const ready: Project = { ...approved, publish_approved_at: "2026-10-01T00:00:00Z", ready_to_upload: true };
+    const scheduled: Project = { ...ready, shorts_state: "scheduled", youtube_video_id: "ShortVid001", youtube_publish_at: "2999-01-01T00:00:00Z", ready_to_upload: false };
+    for (const each of [approved, ready, scheduled, { ...scheduled, youtube_publish_at: "2026-01-01T00:00:00Z" }]) expect(publishState(each)).toBeNull();
+    expect(needsOwner(approved)).toBe(false);
+    // A tutorial in the same places has the publish flow's states.
+    expect(publishState({ ...approved, shorts_line: null })).toBe("deciding");
+    expect(publishState({ ...ready, shorts_line: null, locales_decided_at: "2026-10-01T00:00:00Z" })).toBe("ready");
+    expect(publishState({ ...scheduled, shorts_line: null })).toBe("scheduled");
+
+    stubFetch({ project: scheduled });
+    window.history.replaceState(null, "", "/?tab=shorts&video=in-library");
+    page();
+    const facts = await screen.findByLabelText("這支 Shorts");
+    expect(facts.textContent).toContain("已排程");
+    for (const pill of ["等你決定語言", "語言製作中", "可以上架", "已排定", "已上架"]) expect(screen.queryByText(pill)).toBeNull();
   });
 
   it("opens the video a highlight or a vertical short was cut from", async () => {
