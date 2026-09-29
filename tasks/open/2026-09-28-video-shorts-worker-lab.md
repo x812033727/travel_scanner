@@ -40,7 +40,7 @@ scope:
 
 ## Definition of done
 
-- [ ] `auto` 每一輪敲門（`POST shorts/tick`，T1 已經加了）之後跑 `shortsStep()`；兩者都在「自動產線有沒有開」的檢查之前，由 Shorts 自己的設定決定做不做。教學影片與漫劇原本的迴圈讀清單時帶 `shorts=exclude`，行為不變。
+- [ ] 工人的迴圈每一輪先敲門（`ops/video/worker.sh` 跑 `shorts/cli.mjs tick`，T1 已經加了），`auto` 再跑 `shortsStep()`，排在「自動產線有沒有開」的檢查之前，由 Shorts 自己的設定決定做不做。教學影片與漫劇原本的迴圈讀清單時帶 `shorts=exclude`，行為不變。
 - [ ] `shortsStep()` 依 `shorts/next` 的工作做一個單位：`report`、`plan`、`brief`、`make`。庫存低於 `stock_days` 時 Shorts 排在漫劇與教學長片之前，否則排在後面。
 - [ ] 實測線的 `make`（`lab.mjs`）：
   - 凍結題目：把規格的輸入、答案、評分寫成 `protocol.json` 並記下雜湊，之後任何一步都不能改它。

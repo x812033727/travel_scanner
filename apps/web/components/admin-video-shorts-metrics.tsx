@@ -35,8 +35,7 @@ function Row({ short, onOpenVideo }: { short: ShortMetrics; onOpenVideo: (slug: 
   const cell = (period: MetricPeriod) => {
     const snapshots = short.snapshots.filter((snapshot) => snapshot.period === period);
     if (snapshots.length) return <div className="grid gap-3">{snapshots.map((snapshot) => <Snapshot key={snapshot.source} snapshot={snapshot} />)}</div>;
-    const reason = period === "now" ? "waiting" : blankReason(period, short.published_at);
-    return <p className="text-xs leading-5 text-[var(--muted)]">{t(`metrics.blank.${reason}`)}</p>;
+    return <p className="text-xs leading-5 text-[var(--muted)]">{t(`metrics.blank.${blankReason(period, short)}`)}</p>;
   };
   return <tr className="border-t border-[var(--line)] align-top">
     <th scope="row" className="py-3 pr-3 text-left"><div className="grid gap-1">
@@ -68,7 +67,8 @@ export function ShortsMetrics({ onOpenVideo }: { onOpenVideo: (slug: string) => 
       <table className="w-full min-w-[52rem] text-left text-sm" aria-label={t("views.metrics")}>
         <thead><tr className="text-xs text-[var(--muted)]">
           <th scope="col" className="py-1 pr-3 font-semibold">{t("metrics.columns.short")}</th>
-          {METRIC_PERIODS.map((period) => <th key={period} scope="col" className="py-1 pr-3 font-semibold">{t(`metrics.columns.${period}`)}</th>)}
+          {/* Four columns of one width: an empty one would otherwise shrink to a word a line. */}
+          {METRIC_PERIODS.map((period) => <th key={period} scope="col" className="w-[18%] py-1 pr-3 font-semibold">{t(`metrics.columns.${period}`)}</th>)}
         </tr></thead>
         <tbody>{metrics.items.map((short) => <Row key={short.slug} short={short} onOpenVideo={onOpenVideo} />)}</tbody>
       </table>

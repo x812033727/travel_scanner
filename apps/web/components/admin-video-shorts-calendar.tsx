@@ -45,7 +45,9 @@ function SlotCard({ slot, timezone, shorts, canManage, onChanged, onOpenVideo }:
       setBusy(false);
     }
   };
-  const title = slot.project_title ?? (slot.topic_slug ? t("calendar.topic", { topic: slot.topic_slug }) : t("calendar.emptySlot"));
+  // What the slot holds: a Short, a topic, or, while it can still be given one, that it has none.
+  // A slot that was missed or is not publishing says so on its pill and has nothing more to say.
+  const title = slot.project_title ?? (slot.topic_slug ? t("calendar.topic", { topic: slot.topic_slug }) : slot.status === "open" ? t("calendar.emptySlot") : null);
   const line = slot.project_line ?? slot.line;
   return <li className="grid content-start gap-2 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4" aria-label={`${slot.local_date} ${slot.local_time}`}>
     <p className="flex flex-wrap items-center gap-2">
@@ -53,7 +55,7 @@ function SlotCard({ slot, timezone, shorts, canManage, onChanged, onOpenVideo }:
       <AdminStatusPill status={slotTone[slot.status]}>{t(`slotStatuses.${slot.status}`)}</AdminStatusPill>
       {line && <AdminStatusPill status="inactive">{t(`lines.${line}`)}</AdminStatusPill>}
     </p>
-    <p className={slot.project_title ? "font-semibold" : "text-[var(--muted)]"}>{title}</p>
+    {title && <p className={slot.project_title ? "font-semibold" : "text-[var(--muted)]"}>{title}</p>}
     {slot.note && <p className="text-sm leading-6 text-[var(--muted)]">{slot.note}</p>}
     {slot.project_slug && <div><Button secondary onClick={() => onOpenVideo(String(slot.project_slug))}>{t("calendar.open")}</Button></div>}
     {canManage && !changeable && <p className="text-xs leading-5 text-[var(--muted)]">{t("calendar.fixed")}</p>}

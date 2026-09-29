@@ -44,9 +44,9 @@ describe("ShortsCosts", () => {
     const summary = await screen.findByRole("region", { name: "這 30 天" });
     expect(summary.textContent).toContain("付費工作已停");
     expect(summary.textContent).toContain("有 1 筆花費還不知道金額");
-    expect(summary.textContent).toContain("已花 · NT$1,235");
+    expect(summary.textContent).toContain("已花 · NT$1,234.5");
     expect(summary.textContent).toContain("30 天上限 · NT$3,000");
-    expect(summary.textContent).toContain("NT$1,235／NT$9,000");
+    expect(summary.textContent).toContain("NT$1,234.5／NT$9,000");
     expect(within(screen.getByRole("region", { name: "每 30 天" })).getAllByRole("listitem")).toHaveLength(3);
     const rows = within(screen.getByRole("table", { name: "帳目" })).getAllByRole("row").slice(1);
     expect(rows).toHaveLength(3);
@@ -54,6 +54,9 @@ describe("ShortsCosts", () => {
     expect(rows[0].textContent).toContain("0.009 USD");
     expect(rows[0].textContent).toContain("匯率 32.5");
     expect(rows[0].textContent).toContain("自動");
+    // A narration costs less than a dollar: the line says how much, not zero.
+    expect(rows[0].textContent).toContain("NT$0.29");
+    expect(rows[2].textContent).toContain("NT$4.36");
     // A line nobody knows the amount of shows no amount, not a zero.
     expect(rows[1].textContent).toContain("不知道金額");
     expect(rows[1].textContent).not.toContain("NT$0");

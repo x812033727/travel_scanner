@@ -14,6 +14,7 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 
 import path from "node:path";
 
 import { approvalState, approve, sha256File } from "../core/approvals.mjs";
+import { EXPLAINER_PRESET } from "../core/drama.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
 import { articlePath, SITE } from "../core/metadata.mjs";
@@ -31,7 +32,8 @@ import { pageReader, urlsIn } from "./fetch.mjs";
 import { instructionsFor, parseAnswer, references } from "./prompts.mjs";
 import { rewriteProblems } from "./rewrite.mjs";
 import { advanceCompilation, startCompilation } from "./compilation.mjs";
-import { castFrom, episodeBrief, isOneOff, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
+import { castFrom, episodeBrief, isExplainerOneOff, isOneOff, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
+import { episodeShortFields, episodeShortsProblems, shortsFile } from "../shorts/episode.mjs";
 
 export const STATE_FILE = "auto.json";
 const GLOBAL_FILE = "auto-state.json";
@@ -56,6 +58,8 @@ const MAX_SOURCE_PAGES = 25;
 const MAX_SOURCE_CHARS = 350_000;
 const REQUIRED_SECTIONS = ["## 觀眾看完能做到的事", "## 站主觀點", "## 大綱"];
 const DRAMA_SECTIONS = ["## 故事前提", "## 角色", "## 站主觀點", "## 大綱"];
+// An explainer's brief (docs/videos/so-thats-why/) answers a question and has no cast.
+const EXPLAINER_SECTIONS = ["## 問題", "## 一句答案", "## 站主觀點", "## 大綱"];
 const YOUTUBE_ID = /^[A-Za-z0-9_-]{11}$/;
 // Which manifest a drama stage's failures are read from, and what its entries are called.
 const FIX_SOURCES = {
@@ -138,16 +142,18 @@ export function siteSources(sourceGuide, urls = [], root = ROOT) {
 
 /**
  * What makes a planner's answer unusable, or null. `usedGuides` are earlier videos' main
- * articles; a drama's brief has the story bible's sections instead of a tutorial's. With a
+ * articles; a drama's brief has the story bible's sections instead of a tutorial's, and an
+ * explainer's (`preset` "flat-explainer") the question's. With a
  * channel stance, 站主觀點 must open by naming the stance points it applies (core/lint.mjs
  * stanceProblems); the local `lint` has no stance and does not check this.
  */
-export function planProblem(plan, taken, usedGuides = new Set(), format = "slides", stance = "") {
+export function planProblem(plan, taken, usedGuides = new Set(), format = "slides", stance = "", preset = null) {
   if (!plan || typeof plan !== "object") return "the answer is not an object";
   if (!SLUG.test(plan.slug ?? "")) return `slug "${plan.slug}" is not lowercase kebab-case of at most 60 characters`;
   if (taken.has(plan.slug)) return `slug "${plan.slug}" is already used by an earlier video`;
   if (typeof plan.brief !== "string") return "brief is missing";
-  const missing = (format === "drama" ? DRAMA_SECTIONS : REQUIRED_SECTIONS).filter((heading) => !plan.brief.includes(heading));
+  const sections = format !== "drama" ? REQUIRED_SECTIONS : preset === EXPLAINER_PRESET ? EXPLAINER_SECTIONS : DRAMA_SECTIONS;
+  const missing = sections.filter((heading) => !plan.brief.includes(heading));
   if (missing.length) return `brief lacks ${missing.join(", ")}`;
   const stanceIssues = stanceProblems(plan.brief, stance);
   if (stanceIssues.length) return `站主觀點 does not apply the channel stance: ${stanceIssues.join("; ")}`;
@@ -234,9 +240,10 @@ export function settledVoice(voice) {
  * video.json as the owner's settings say it must be, whatever the model returned. A drama
  * (docs/videos/DRAMA.md) also takes the settings tab's style preset, subtitle burn-in and
  * whether music is made at all, and its narrator voice is the drama part's when the owner chose
- * one; the writer's own look fields stay.
+ * one; the writer's own look fields stay. The owner's request's preset (`stylePreset`) wins over
+ * the settings tab's; an explainer's preset is not the writer's to change, and it has no characters.
  */
-export function settle(video, { slug, settings, sourceGuide, root, format = "slides", series = null, cast = null }) {
+export function settle(video, { slug, settings, sourceGuide, root, format = "slides", series = null, cast = null, stylePreset = null }) {
   const settled = { ...video, slug, voice: settledVoice(settingsFor(settings, format).voice) };
   // The description links the article through its content pack. An article the news automation
   // published lives only in the database, so without a pack the script names it in sources instead.
@@ -247,7 +254,12 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
   if (format === "drama") {
     const drama = settings.drama ?? {};
     settled.format = "drama";
-    settled.look = { preset: drama.style_preset ?? "cinematic-3d", ...(video.look ?? {}) };
+    const preset = stylePreset ?? drama.style_preset ?? "cinematic-3d";
+    settled.look = { preset, ...(video.look ?? {}) };
+    if (preset === EXPLAINER_PRESET) {
+      settled.look.preset = EXPLAINER_PRESET;
+      settled.characters = [];
+    }
     settled.subtitles = { burn_in: drama.subtitle_burn_in ?? true, ...(video.subtitles ?? {}) };
     if (drama.music_enabled === false) delete settled.music;
   }
@@ -372,6 +384,17 @@ export class Automation {
   /** The channel's stance from the settings tab (docs/videos/HANDS-OFF.md §頻道立場); "" while the owner has not written one. */
   get stance() {
     return typeof this.settings.channel_stance === "string" ? this.settings.channel_stance.trim() : "";
+  }
+
+  /**
+   * The prompt variant of a drama's planner, writer and checker: an episode of a long series has
+   * its own (episodeVariant); an explainer (the flat-explainer preset), a one-off or a legacy
+   * request, has the question's; any other drama none.
+   */
+  variantOf(state) {
+    const episode = episodeVariant(state);
+    if (episode) return episode;
+    return state.format === "drama" && state.style_preset === EXPLAINER_PRESET ? "explainer" : null;
   }
 
   async stage(stage, slug, payload, maxOutputTokens, format = "slides", variant = null, series = null) {
@@ -745,13 +768,14 @@ export class Automation {
           this.planPayload({ premise: request.premise, title: request.title ?? null, note: request.note ?? null, source_guide: request.source_guide ?? null, sources, target_minutes: [minutes, minutes], ...this.dramaPayload(stateBase), ...(problem ? { previous_problem: problem } : {}) }, earlier, "drama"),
           16_000,
           "drama",
+          this.variantOf(stateBase),
         );
       } catch (error) {
         if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) throw error;
         problem = error.message;
         continue;
       }
-      problem = planProblem(answer, taken, request.source_guide ? new Set() : usedGuides, "drama", this.stance);
+      problem = planProblem(answer, taken, request.source_guide ? new Set() : usedGuides, "drama", this.stance, stateBase.style_preset);
       if (!problem) plan = answer;
     }
     const slug = plan?.slug ?? `drama-${String(request.id).slice(0, 8)}`;
@@ -826,7 +850,8 @@ export class Automation {
               hands_off: Boolean(series.hands_off),
             }),
       },
-      source_urls: [],
+      // An explainer's facts rest on the pages its bible names; the checker reads them.
+      source_urls: isExplainerOneOff(series) && Array.isArray(beats.sources) ? beats.sources.filter((url) => /^https:\/\//.test(url)).slice(0, 12) : [],
       replans: 0,
       verify_rounds: 0,
       verified: false,
@@ -914,7 +939,7 @@ export class Automation {
     if (rounds >= MAX_PROMPT_FIX_ROUNDS) return this.block(state, `${by} sent the screenplay back ${rounds + 1} times: ${note}`);
     const dir = docDir(state.slug, this.ctx.root);
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
-    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix: { kind: "script", targets: [], problems: [note], owner_note: note }, line_ids: this.freshIds(state, video, 40) }), 32_000, state.format, episodeVariant(state), state.series ?? null);
+    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix: { kind: "script", targets: [], problems: [note], owner_note: note }, line_ids: this.freshIds(state, video, 40) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
     const problem = await this.saveAndLint(state, answer);
     state.prompt_fixes = { ...(state.prompt_fixes ?? {}), script: rounds + 1 };
     state.notes.push(`script sent back by ${by}: ${note}`);
@@ -1106,8 +1131,8 @@ export class Automation {
     const drama = state.format === "drama";
     const { topics } = drama ? { topics: [] } : await this.api.topics();
     const extra = drama ? { premise: state.premise, target_minutes: [state.target_minutes ?? 3, state.target_minutes ?? 3], source_guide: state.source_guide, ...this.dramaPayload(state) } : { topics };
-    const answer = await this.stage("planner", state.slug, this.planPayload({ ...extra, owner_note: note, sent_back_by: by === "Jev" ? "jev" : "owner", previous_brief: previous, slug: state.slug }, earlier, state.format), 16_000, state.format);
-    const problem = planProblem({ ...answer, slug: state.slug }, taken, drama && state.source_guide ? new Set() : usedGuides, state.format, this.stance);
+    const answer = await this.stage("planner", state.slug, this.planPayload({ ...extra, owner_note: note, sent_back_by: by === "Jev" ? "jev" : "owner", previous_brief: previous, slug: state.slug }, earlier, state.format), 16_000, state.format, drama ? this.variantOf(state) : null);
+    const problem = planProblem({ ...answer, slug: state.slug }, taken, drama && state.source_guide ? new Set() : usedGuides, state.format, this.stance, state.style_preset ?? null);
     state.replans += 1;
     state.notes.push(`outline sent back by ${by}: ${note}`);
     saveState(this.workdir(state.slug), state);
@@ -1167,14 +1192,14 @@ export class Automation {
     for (let fix = 0; ; fix++) {
       if (!current?.video || typeof current.video !== "object") return "the answer has no video object";
       const cast = state.series ? readJson(path.join(dir, "series.json"), {}).characters ?? [] : null;
-      writeVideo(dir, settle(current.video, { slug: state.slug, settings: this.settings, sourceGuide: state.source_guide, root: this.ctx.root, format: state.format, series: state.series ?? null, cast }));
+      writeVideo(dir, settle(current.video, { slug: state.slug, settings: this.settings, sourceGuide: state.source_guide, root: this.ctx.root, format: state.format, series: state.series ?? null, cast, stylePreset: state.style_preset ?? null }));
       const added = mergeLexicon(this.ctx.root, current.lexicon_additions);
       if (added.length) state.lexicon_added = [...new Set([...(state.lexicon_added ?? []), ...added])];
       const errors = lintErrors(this.ctx, state.slug);
       if (!errors.length) return null;
       if (fix >= MAX_LINT_FIXES) return `lint still fails after ${MAX_LINT_FIXES} fixes: ${errors.slice(0, 3).join("; ")}`;
       const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
-      current = await this.stage("writer", state.slug, this.scriptPayload(state, { video, lint_errors: errors, line_ids: this.freshIds(state, video, 40) }), 32_000, state.format, episodeVariant(state), state.series ?? null);
+      current = await this.stage("writer", state.slug, this.scriptPayload(state, { video, lint_errors: errors, line_ids: this.freshIds(state, video, 40) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
     }
   }
 
@@ -1227,7 +1252,7 @@ export class Automation {
     if (rounds >= MAX_PROMPT_FIX_ROUNDS) return this.block(state, `${kind} still fails after ${rounds} prompt fixes (${summary})`);
     const dir = docDir(state.slug, this.ctx.root);
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
-    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix: { kind, targets: found, problems: found.flatMap((target) => target.problems ?? []), owner_note: ownerNote }, line_ids: this.freshIds(state, video, 40) }), 32_000, "drama", episodeVariant(state), state.series ?? null);
+    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix: { kind, targets: found, problems: found.flatMap((target) => target.problems ?? []), owner_note: ownerNote }, line_ids: this.freshIds(state, video, 40) }), 32_000, "drama", this.variantOf(state), state.series ?? null);
     const problem = await this.saveAndLint(state, answer);
     if (problem) return this.retryLater(state, "writer", `the ${kind} fix ${problem}`);
     this.cleared(state, "writer");
@@ -1312,15 +1337,36 @@ export class Automation {
     const brief = readFileSync(path.join(dir, "brief.md"), "utf8");
     const option = outlineOptions(brief).find((each) => each.key === state.chosen) ?? null;
     const sources = await readSources(this.read, siteSources(state.source_guide, state.source_urls, this.ctx.root));
-    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { brief, chosen_option: option, sources, line_ids: this.freshIds(state, null, 140) }), 32_000, state.format, episodeVariant(state), state.series ?? null);
+    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { brief, chosen_option: option, sources, line_ids: this.freshIds(state, null, 140) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
     if (typeof answer.claims === "string") writeFileSync(path.join(dir, "claims.md"), answer.claims.endsWith("\n") ? answer.claims : `${answer.claims}\n`);
     const problem = await this.saveAndLint(state, answer);
     saveState(this.workdir(state.slug), state);
     if (problem) return this.retryLater(state, "writer", `the script ${problem}`);
     this.cleared(state, "writer");
+    const shorts = this.variantOf(state) === "explainer" ? this.saveShorts(state, answer.shorts) : null;
     saveState(this.workdir(state.slug), state);
     await report(this.ctx, this.api, state, "fact-checked");
-    return `${state.slug}: script drafted and passes lint`;
+    return `${state.slug}: script drafted and passes lint${shorts ? `; ${shorts}` : ""}`;
+  }
+
+  /**
+   * An explainer's two Shorts (docs/videos/so-thats-why/), drafted with its script: the fields the
+   * tool decides are set here, and shorts.json is written only when both Shorts fit this video.
+   * A bad draft is noted and never holds the long video back; the Shorts can be written later.
+   */
+  saveShorts(state, drafted) {
+    const dir = docDir(state.slug, this.ctx.root);
+    const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    const shorts = Array.isArray(drafted)
+      ? drafted.map((doc, index) => ({ ...doc, ...episodeShortFields(state.slug, index) }))
+      : drafted;
+    const problems = episodeShortsProblems(shorts, video);
+    if (problems.length) {
+      state.notes.push(`the drafted Shorts were not saved: ${problems.slice(0, 3).join("; ")}`);
+      return "Shorts not saved (see notes)";
+    }
+    writeFileSync(shortsFile(state.slug, this.ctx.root), `${JSON.stringify(shorts, null, 2)}\n`);
+    return "2 Shorts drafted";
   }
 
   async verify(state) {
@@ -1330,7 +1376,7 @@ export class Automation {
     const round = state.verify_rounds + 1;
     const urls = siteSources(null, [...urlsIn(claims), ...(video.sources ?? []).map((source) => source.url), ...(state.source_urls ?? [])], this.ctx.root);
     const sources = await readSources(this.read, urls);
-    const answer = await this.stage("verifier", state.slug, { today: today(this.ctx), round, video, claims, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), sources, ...(state.series ? this.seriesPayload(state) : {}) }, 32_000, state.format, episodeVariant(state), state.series ?? null);
+    const answer = await this.stage("verifier", state.slug, { today: today(this.ctx), round, video, claims, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), sources, ...(state.series ? this.seriesPayload(state) : {}) }, 32_000, state.format, this.variantOf(state), state.series ?? null);
     if (typeof answer.report !== "string") return this.retryLater(state, "verifier", `fact-check round ${round} returned no report`);
     writeFileSync(path.join(dir, `verify-${round}.md`), answer.report.endsWith("\n") ? answer.report : `${answer.report}\n`);
     if (state.series) {

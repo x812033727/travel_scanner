@@ -1037,6 +1037,66 @@ async def test_a_restarting_news_worker_recovers_every_in_flight_candidate_at_on
     assert statuses[waiting_id] == ("discovered", None)
 
 
+def test_the_news_worker_container_runs_a_pool_after_recovering_once(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from app.news_automation import worker
+
+    events: list[object] = []
+
+    async def recover() -> list[UUID]:
+        events.append("recover")
+        return []
+
+    class Pool:
+        def __init__(self, queues: list[str], **kwargs: object) -> None:
+            events.append(("pool", queues, kwargs["num_workers"]))
+
+        def start(self) -> None:
+            events.append("start")
+
+    monkeypatch.setattr(worker, "recover_interrupted", recover)
+    monkeypatch.setattr(worker, "WorkerPool", Pool)
+    pool_size = worker.pool_size
+    monkeypatch.setattr(worker, "pool_size", lambda configured: configured)
+    monkeypatch.setattr("app.news_automation.worker.Redis", Mock())
+    monkeypatch.setattr(
+        worker, "get_settings", lambda: Mock(redis_url="redis://x", news_worker_processes=3)
+    )
+
+    worker.main()
+
+    # Recovery fails every in-flight candidate, so it runs once, before any worker exists.
+    assert events == ["recover", ("pool", ["news"], 3), "start"]
+    assert pool_size(3, os_name="posix") == 3
+    assert pool_size(3, os_name="nt") == 1, "no fork on Windows"
+
+
+def test_known_statuses_start_with_the_pipelines_in_flight_statuses() -> None:
+    from app.news_automation.duplicates import KNOWN_STATUSES
+
+    assert KNOWN_STATUSES[: len(pipeline.ACTIVE_STATUSES)] == pipeline.ACTIVE_STATUSES
+
+
+@pytest.mark.asyncio
+async def test_a_story_already_being_drafted_is_a_known_title() -> None:
+    from app.news_automation.duplicates import known_titles
+
+    engine, factory = await database()
+    async with factory() as session:
+        running = await seed_candidate(session, status="verifying")
+        running.source_title = "OpenAI ships a new model"
+        waiting = await seed_candidate(session, status="discovered")
+        waiting.source_title = "Unrelated waiting story"
+        await session.commit()
+        fresh = await seed_candidate(session)
+        titles = await known_titles(session, fresh)
+    await engine.dispose()
+    # Two news workers may run two outlets' versions of one story at once.
+    assert "OpenAI ships a new model" in titles
+    assert "Unrelated waiting story" not in titles
+
+
 @pytest.mark.asyncio
 async def test_the_review_list_asks_for_exactly_the_statuses_it_shows() -> None:
     engine, factory = await database()
