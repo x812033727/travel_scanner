@@ -39,6 +39,12 @@
 
 ## 本機重建
 
+**2026-09-29 Shorts 修正版：** 直式短片改用
+[`tools/rebuild_shorts.py`](tools/rebuild_shorts.py)，詳見
+[`shorts-corrections.md`](shorts-corrections.md)。新輸出使用 x=78–902 的安全區、上移字幕與揭露、
+保留完整英文詞，並重新量測實際編碼響度。原始 `media/` 時軸與 `local-artifacts.json`
+仍是歷史產物紀錄；不要把它們當成新版核准或新版檔案雜湊。
+
 需求：Python 與 Pillow、Windows `System.Speech` 的 `Microsoft Hanhan Desktop` 聲線、ffmpeg、ffprobe。這些在製作環境已可用；沒有修改全域套件或聲線設定。
 
 ```powershell

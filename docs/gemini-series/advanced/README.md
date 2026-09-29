@@ -136,7 +136,7 @@
 | 3 | 63–68、81–86 | 共 12 篇，交付影音、資料作品與 API 服務，需真實成品及有限成本實測。 |
 | 4 | 統一內容／來源／圖解／瀏覽器驗收 | 36 篇全部完成後，再做整套發布與公開驗證。 |
 
-- [Gemini 深入系列：可見篇章與發布批次支援](../../../tasks/open/2026-09-14-gemini-advanced-platform.md)
+- [Gemini 深入系列：可見篇章與發布批次支援](../../../tasks/done/2026-09-14-gemini-advanced-platform.md)
 - [Gemini 深入教學 51–56：日常與工作流程](../../../tasks/open/2026-09-14-gemini-advanced-work.md)
 - [Gemini 深入教學 57–62：NotebookLM 與研究方法](../../../tasks/open/2026-09-14-gemini-advanced-research.md)
 - [Gemini 深入教學 63–68：圖片、影片與資料作品](../../../tasks/open/2026-09-14-gemini-advanced-creative.md)

@@ -6,7 +6,7 @@
 // were submitted but not finished when the run stopped (STOP file, a crash, a timeout), so the
 // next run polls them instead of paying for the same generation twice.
 import { createHash } from "node:crypto";
-import { existsSync, rmSync } from "node:fs";
+import { closeSync, existsSync, openSync, readSync, rmSync } from "node:fs";
 import path from "node:path";
 
 import { atomicWrite, readJson } from "../core/paths.mjs";
@@ -36,12 +36,26 @@ export function writeCache(workdir, cache) {
   atomicWrite(cacheFile(workdir), `${JSON.stringify(cache, null, 2)}\n`);
 }
 
-/** The cached file for a key when it is still on disk; null otherwise (and the entry is dropped). */
+function fileHash(file) {
+  const handle = openSync(file, "r");
+  try {
+    const digest = createHash("sha256");
+    const chunk = Buffer.allocUnsafe(1024 * 1024);
+    let bytes;
+    while ((bytes = readSync(handle, chunk, 0, chunk.length, null)) > 0) digest.update(chunk.subarray(0, bytes));
+    return digest.digest("hex");
+  } finally {
+    closeSync(handle);
+  }
+}
+
+/** The cached file only while its bytes still match; another model can reuse its target path. */
 export function cached(workdir, key) {
   const cache = readCache(workdir);
   const entry = cache.entries[key];
   if (!entry) return null;
-  if (!existsSync(path.join(workdir, entry.file))) {
+  const file = path.join(workdir, entry.file);
+  if (!existsSync(file) || fileHash(file) !== entry.sha256) {
     delete cache.entries[key];
     writeCache(workdir, cache);
     return null;
@@ -91,9 +105,10 @@ export function rememberJob(workdir, key, { job_id: jobId, kind, target }, now =
   writeJobs(workdir, jobs);
 }
 
-export function forgetJob(workdir, key) {
+export function forgetJob(workdir, key, jobId = null) {
   const jobs = readJobs(workdir);
-  if (!(key in jobs.jobs)) return;
-  delete jobs.jobs[key];
+  const keys = Object.keys(jobs.jobs).filter((each) => each === key || (jobId && jobs.jobs[each].job_id === jobId));
+  if (!keys.length) return;
+  for (const each of keys) delete jobs.jobs[each];
   writeJobs(workdir, jobs);
 }

@@ -31,7 +31,7 @@ export function readStore(workBase, seriesSlug) {
  * The characters whose approved sheet the store holds: each copied into the episode's work
  * directory as its single candidate. Returns { reused: { id: candidate }, missing: [character] }.
  */
-export function reuseSheets({ workBase, workdir, seriesSlug, characters, look }) {
+export function reuseSheets({ workBase, workdir, seriesSlug, characters, look, image = null }) {
   const dir = storeDir(workBase, seriesSlug);
   const index = readStore(workBase, seriesSlug);
   const reused = {};
@@ -40,7 +40,7 @@ export function reuseSheets({ workBase, workdir, seriesSlug, characters, look })
     const key = sheetKey(character, look);
     const kept = index.sheets?.[key];
     const source = kept ? path.join(dir, kept.file) : null;
-    if (!kept || !source || !existsSync(source)) {
+    if (!kept || !source || !existsSync(source) || (image && (kept.image?.provider !== image.provider || kept.image?.model !== image.model))) {
       missing.push(character);
       continue;
     }
@@ -55,6 +55,7 @@ export function reuseSheets({ workBase, workdir, seriesSlug, characters, look })
       key,
       judge: kept.judge ?? { overall: 10, passed: true, scores: {}, problems: [], notes: "approved earlier for this series" },
       reused_from: kept.from,
+      ...(kept.image ? { image: kept.image } : {}),
     };
   }
   return { reused, missing };
@@ -77,7 +78,8 @@ export function keepSheets({ workBase, workdir, seriesSlug, doc, manifest, chose
     mkdirSync(path.join(dir, character.id), { recursive: true });
     copyFileSync(path.join(workdir, candidate.file), path.join(dir, file));
     const sha256 = candidate.sha256 ?? createHash("sha256").update(readFileSync(path.join(dir, file))).digest("hex");
-    index.sheets[key] = { id: character.id, name: character.name, file, sha256, judge: candidate.judge ?? null, from: doc.slug, at: now.toISOString() };
+    const image = candidate.image ?? (!candidate.reused_from && manifest.image_selection_version === 1 ? manifest.image : null);
+    index.sheets[key] = { id: character.id, name: character.name, file, sha256, judge: candidate.judge ?? null, from: doc.slug, at: now.toISOString(), ...(image ? { image: { provider: image.provider, model: image.model } } : {}) };
     kept += 1;
   }
   if (kept) atomicWrite(path.join(dir, "index.json"), `${JSON.stringify(index, null, 2)}\n`);

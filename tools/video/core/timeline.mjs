@@ -7,6 +7,7 @@
 // which have millisecond precision, subdivide a line.
 import { createHash } from "node:crypto";
 
+import { termsUsed } from "./lexicon.mjs";
 import { eachLine, spokenText } from "./schema.mjs";
 
 export const FPS = 30;
@@ -148,7 +149,10 @@ export function chapterText(timeline, titles = {}) {
 export function speechHash(doc, lexicon) {
   const hash = createHash("sha256");
   hash.update(JSON.stringify(doc.voice));
-  hash.update(JSON.stringify(lexicon?.terms ?? {}));
+  // Only the entries these lines use: the dictionary is shared by every video, and a term added
+  // for another video must not mark this narration stale (it did until 2026-09-29, so timelines
+  // from before then need one `tts` run, which re-records nothing).
+  hash.update(JSON.stringify(termsUsed([...eachLine(doc)].map(({ line }) => spokenText(line)), lexicon)));
   // A drama's audio also depends on who speaks each line and with which voice. Slides keep the
   // original hash, so their timelines stay valid across this change.
   const drama = doc.format === "drama";
