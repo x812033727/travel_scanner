@@ -6,8 +6,9 @@ import test from "node:test";
 
 import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { EXIT, main } from "../cli.mjs";
-import { readApprovals } from "../core/approvals.mjs";
+import { approve, readApprovals } from "../core/approvals.mjs";
 import { lookHash } from "../core/drama.mjs";
+import { scriptCheckBinding } from "../core/script-check.mjs";
 import { sandbox } from "../core/fixtures/load.mjs";
 import { writeLanguages } from "../core/stages.mjs";
 import { COMPILATION_STEPS, DRAMA_STEPS, SLIDES_STEPS } from "../core/state.mjs";
@@ -596,6 +597,31 @@ function longStoryboard(box, count, { waiting = [], pages = false } = {}) {
   return { ids, bytes };
 }
 
+test("illustrated slides push their storyboard too, and it is the gate after the narration (docs/videos/ILLUSTRATED.md)", async () => {
+  const box = sandbox("fixture-illustrated", "illustrated");
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  mkdirSync(path.join(box.workdir, "keyframes"), { recursive: true });
+  const shots = {};
+  for (const scene of doc.scenes.filter((each) => each.template === "shot")) {
+    const file = `keyframes/${scene.id}-1.png`;
+    writeFileSync(path.join(box.workdir, file), png(scene.id));
+    shots[scene.id] = { file, sha256: sha(png(scene.id)), seed: 1, judge: { overall: 8, passed: true, problems: [] }, needs_review: false };
+  }
+  writeFileSync(path.join(box.workdir, "keyframes", "manifest.json"), JSON.stringify({ look_hash: "l", pictures_hash: "p", shots }));
+  // The outline and the narration approved, the storyboard is what review-push picks next.
+  await approve({ gate: "outline", docDir: box.dir, workdir: box.workdir, note: "t" });
+  writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify({ speech_hash: "s", lines: [], scenes: [], total_frames: 0 }));
+  await approve({ gate: "audio", docDir: box.dir, workdir: box.workdir, note: "t" });
+  const server = site();
+  const push = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug], push.ctx), EXIT.ok, push.out.stderr);
+  const [board] = server.state.reviews;
+  assert.equal(board.gate, "storyboard");
+  assert.equal(board.payload.shots.length, Object.keys(shots).length);
+  assert.deepEqual(board.payload.shots.map((shot) => shot.id), Object.keys(shots));
+  assert.match(board.summary, /分鏡 5 鏡，judge 最低 8\/10/);
+});
+
 /** review-push --gate storyboard against a fresh site: the review it received and the files it holds. */
 async function pushStoryboard(box) {
   const server = site();
@@ -720,7 +746,8 @@ test("the 720p preview of a compilation caps its bitrate; a cut's and the narrat
 test("the script gate sends the checker's similar works and retention verdict when the worker wrote them", async () => {
   const box = sandbox("fixture-drama", "drama");
   mkdirSync(path.join(box.workdir, "review"), { recursive: true });
-  writeFileSync(path.join(box.workdir, "review", "script-check.json"), JSON.stringify({ coverage: { hook: "yes" }, problems: ["a name changed"], similar_works: [{ title: "魔道祖師", how: "a sect rivalry" }], retention: { score: 0.8, passed: true } }));
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  writeFileSync(path.join(box.workdir, "review", "script-check.json"), JSON.stringify({ ...scriptCheckBinding(doc), coverage: { hook: "yes" }, problems: ["a name changed"], similar_works: [{ title: "魔道祖師", how: "a sect rivalry" }], retention: { score: 0.8, passed: true } }));
   const server = site();
   const push = context(box, server.fetchImpl);
   assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "script"], push.ctx), EXIT.ok, push.out.stderr);
@@ -729,6 +756,18 @@ test("the script gate sends the checker's similar works and retention verdict wh
   assert.deepEqual(script.payload.similar_works, [{ title: "魔道祖師", how: "a sect rivalry" }]);
   assert.deepEqual(script.payload.retention, { score: 0.8, passed: true });
   assert.deepEqual(script.payload.continuity_problems, ["a name changed"]);
+  assert.equal(script.payload.check_status, "current");
+  doc.scenes[0].lines[0].text += "新的情節。";
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+  const changed = site();
+  const stalePush = context(box, changed.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "script"], stalePush.ctx), EXIT.ok, stalePush.out.stderr);
+  const stale = changed.state.reviews[0].payload;
+  assert.equal(stale.check_status, "stale");
+  assert.equal(stale.coverage, null);
+  assert.equal(stale.retention, null);
+  assert.deepEqual(stale.similar_works, []);
+  assert.match(stale.continuity_problems[0], /舊查核報告不適用/);
   rmSync(path.join(box.workdir, "review", "script-check.json"));
   const bare = site();
   const again = context(box, bare.fetchImpl);

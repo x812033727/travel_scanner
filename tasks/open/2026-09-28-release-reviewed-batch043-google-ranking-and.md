@@ -40,3 +40,21 @@ Follow `ops/release/README.md` and the article-localization release workflow. Bi
 ## Notes
 
 Intentionally unclaimed. No production import or publication occurred. Local standalone previews and CI smoke do not replace the required isolated rehearsal or public acceptance. Preserve the source and reconcile any later source editorial revision through its own guarded version/hash workflow.
+
+## Released 2026-09-29 (claude-opus-5-5)
+
+This supersedes any earlier note above saying no import or publication occurred.
+
+The owner chose, in chat, to publish the missing locales without the isolated
+rehearsal: back up first, create only the new locales, leave zh-TW untouched.
+en, ja and ko of both slugs are published. **zh-CN is not**: it waits for `2026-09-28-batch043-pair-a-final-independent-review`; after acceptance, dry-run and `--publish` only these two slugs with `--locale zh-CN`. Receipt: `docs/article-localization/releases/batch043-pair-a/`.
+
+- Done: deploy `716bd5dc`; `pg_dump -Fc` backup
+  `/root/travel_scanner_preimport_seo_20260929T101450Z.dump` (TOC readable);
+  exact slug/locale dry-run, `--publish` under the deploy lock, rerun
+  `unchanged`; links rebuilt; logged-out `verify_public.py --sitemap` pass.
+- Skipped: the same-image isolated Docker rehearsal (none exists).
+- Still open before this ticket can close: a desktop/mobile look at the
+  published pages; the live zh-TW source still carries the pre-correction
+  revision where the zh-TW dry-run says `update` (owned by the
+  live-source reconciliation tickets, not changed here).

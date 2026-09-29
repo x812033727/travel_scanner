@@ -315,3 +315,49 @@ test("a compilation missing a locale's captions in one episode fails its caption
   assert.match(captions.detail, /en: no caption file, 1 episodes have none \(wuxia-ep-2\)/);
   assert.match(captions.detail, /ja: no caption file, 3 episodes have none/);
 });
+
+test("illustrated slides are measured on their cadence: a picture held too long or too few pictures fail the pace item", async () => {
+  const { illustratedFixture } = await import("../core/fixtures/load.mjs");
+  const { keyframesHash, lookHash, mixHash, sfxHash } = await import("../core/drama.mjs");
+  const run = async (seconds) => {
+    const box = sandbox("fixture-illustrated", "illustrated");
+    const doc = illustratedFixture();
+    const lexicon = fixtureLexicon();
+    const workdir = box.workdir;
+    mkdirSync(workdir, { recursive: true });
+    const samples = {};
+    for (const { line } of eachLine(doc)) samples[line.id] = (seconds[line.id] ?? 3) * SAMPLE_RATE;
+    const timeline = { ...buildTimeline(doc, samples), speech_hash: speechHash(doc, lexicon) };
+    atomicWrite(path.join(workdir, "timeline.json"), JSON.stringify(timeline));
+    const visual = visualHash(doc);
+    const cache = {};
+    const scenes = timeline.scenes.map((scene) => {
+      const shot = doc.scenes.find((each) => each.id === scene.id).template === "shot";
+      return { id: scene.id, kind: shot ? "clip" : "stills", states: shot ? [] : scene.states.map((state, index) => { const key = `${scene.id}${index}`.padEnd(16, "0"); cache[key] = { transition: 0, problems: [] }; return { reveal: state.reveal, still: `frames/${key}.png`, transition: [] }; }) };
+    });
+    atomicWrite(path.join(workdir, "frames", "manifest.json"), JSON.stringify({ visual_hash: visual, theme_hash: "t", fps: 30, size: { width: 1920, height: 1080 }, scenes, thumbnail: "thumbnail.jpg" }));
+    atomicWrite(path.join(workdir, "frames", "cache.json"), JSON.stringify(cache));
+    writeFileSync(path.join(workdir, "thumbnail.jpg"), jpegBytes(1280, 720, 4000));
+    const shots = Object.fromEntries(doc.scenes.filter((scene) => scene.template === "shot").map((scene) => [scene.id, { file: `keyframes/${scene.id}.png`, sha256: "e".repeat(64) }]));
+    atomicWrite(path.join(workdir, "keyframes", "manifest.json"), JSON.stringify({ look_hash: lookHash(doc), shots }));
+    atomicWrite(path.join(workdir, "music", "manifest.json"), JSON.stringify({ mix_hash: mixHash(doc), source: "track", track: "bed.mp3" }));
+    writeFileSync(path.join(workdir, "final.mp4"), randomBytes(1024));
+    atomicWrite(path.join(workdir, "checks.json"), JSON.stringify({ ok: true, speech_hash: timeline.speech_hash, visual_hash: visual, look_hash: lookHash(doc), pictures_hash: keyframesHash(doc, { shots }), mix_hash: mixHash(doc), sfx_hash: sfxHash(doc), problems: [], metrics: { frames: timeline.total_frames, loudness: { integrated: -14 }, psnr: [] } }));
+    runCaptions({ slug: box.slug, root: box.root, workdir, now: new Date("2026-09-27T00:00:00Z") });
+    await approve({ gate: "audio", docDir: box.dir, workdir, now: new Date("2026-09-27T01:00:00Z") });
+    const { ctx } = context(box, site({ policy: () => Response.json({ passed: true }) }).fetchImpl);
+    await main(["qa", "--slug", box.slug], ctx);
+    return Object.fromEntries(readReport(workdir).items.map((item) => [item.id, item]));
+  };
+  // Shot lines run about four seconds as written, card lines about three: pictures take over half the runtime.
+  const shotLines = Object.fromEntries(illustratedFixture().scenes.filter((scene) => scene.template === "shot").flatMap((scene) => scene.lines.map((line) => [line.id, 4])));
+  const good = await run(shotLines);
+  assert.equal(good.assemble.ok, true, good.assemble.detail);
+  assert.equal(good.pace.ok, true, good.pace.detail);
+  assert.match(good.pace.detail, /^\d+ pictures, the longest [\d.]+ s, a new one every [\d.]+ s on average, \d+% of the runtime illustrated \(limits: 8 s, 50%\)$/);
+  assert.match(good.disclosure.detail, /^no disclosure needed: illustrated slides: stylised tech-story pictures, a licensed music bed/);
+  const slow = await run({ ...shotLines, a2pd: 12, a5nm: 9, a6nm: 9, a7nm: 9 });
+  assert.equal(slow.pace.ok, false);
+  assert.match(slow.pace.detail, /scenes \(podium state 0\): stays on screen about 1[23](?:\.\d)? s/);
+  assert.match(slow.pace.detail, /illustrations cover \d+% of the runtime/);
+});

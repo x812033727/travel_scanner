@@ -41,6 +41,7 @@ export const AREAS = {
   qa: ["qa", "2026-09-26-video-hands-off-qa"],
   auto: ["automation", "2026-09-25-video-auto-orchestrator-one-command-that"],
   tidy: ["automation", "2026-09-28-video-story-tidy-finished"],
+  restyle: ["automation", "2026-09-29-video-storytelling-prompts"],
   // The drama format's media stages (docs/videos/DRAMA.md).
   look: ["media", "2026-09-26-video-drama-look-keyframes"],
   keyframes: ["media", "2026-09-26-video-drama-look-keyframes"],
@@ -72,6 +73,8 @@ Usage: node tools/video/cli.mjs <command> [options]
   auto [--once]                                    run the pipeline from the settings on /admin/videos (docs/videos/AUTOMATION.md)
   tidy [--dry-run] [--workdir D]                   clear the work files of the oldest video finished $VIDEO_TIDY_DAYS (7) days ago;
                                                    auto does this once a round, --dry-run only lists what would go
+  restyle --slug S [--dry-run]                     retell a worker's video in the storytelling register (docs/videos/ILLUSTRATED.md);
+                                                   --dry-run only measures the script
 
   login [--name N] [--paste | --token-file F]     pair with the site: allow the printed code on the admin card
   check-audio --slug S [--locale L] [--threshold 0.5] [--force] [--second-opinion "PROGRAM ARGS"]  transcribe every line; Jev judges the ones that differ; a second transcriber rechecks what Jev doubts

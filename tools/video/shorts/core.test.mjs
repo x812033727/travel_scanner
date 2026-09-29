@@ -6,7 +6,7 @@ import { syncBuiltinESMExports } from 'node:module';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { PROFILE, buildTimeline, saveJson, sceneHtml, sha256, sourcePath, srt, validate, verifyEvidence } from './core.mjs';
+import { PROFILE, buildTimeline, cameraWords, saveJson, sceneHtml, sha256, sourcePath, srt, validate, verifyEvidence } from './core.mjs';
 
 const base = fileURLToPath(new URL('../../../docs/videos/ai-shorts/',import.meta.url));
 const pilot = () => JSON.parse(readFileSync(path.join(base,'pilots/shorts-receipt-total.json'),'utf8'));
@@ -110,4 +110,42 @@ test('measurable answer key agrees with raw outputs, with no claim of OCR or mod
     assert.ok(result.receipt_answer.includes(String(receipt)));
     keys.forEach((answer,i)=>assert.ok(result.quiz_answers[i].includes(answer)));
   }
+});
+
+test('schema 2 takes a camera over a picture and the owner\'s music and effect set; schema 1 stays as it was', () => {
+  const cut = { schema_version: 2, slug: 'moving-cut', format: 'shorts', locale: 'zh-TW', line: 'cut', series: 'illustrated', titles: ['a', 'b'], description: 'd', source: { slug: 'long-video' }, scenes: [{ headline: '一', narration: ['一句'], shot: 'podium', camera: 'push in' }, { headline: '二', narration: ['兩句'] }, { headline: '三', narration: ['三句'], camera: 'drift' }] };
+  assert.deepEqual(validate(cut), []);
+  assert.deepEqual(validate({ ...cut, scenes: [{ ...cut.scenes[0], camera: 'zoom' }, ...cut.scenes.slice(1)] }), ['scene 0: camera must be one of push in, pull out, pan left, pan right, tilt up, tilt down, drift (schema 2)']);
+  assert.deepEqual(validate({ ...cut, music: { track: 'bed.mp3', gain_db: -22 }, sfx: { set: 'studio-a', gain_db: -12 } }), []);
+  assert.deepEqual(validate({ ...cut, music: { prompt: 'light, curious' } }), ['music.track must be a file name like bed.mp3 under <work base>/_music/ (a Short never generates music)', 'music.prompt is not a field of a Short\'s music']);
+  assert.deepEqual(validate({ ...cut, music: { track: 'bed.mp3', gain_db: 3 } }), ['music.gain_db must be -40 to 0']);
+  assert.deepEqual(validate({ ...cut, sfx: { set: 'Studio A' } }), ['sfx.set must name a sound-effect set under <work base>/_sfx/']);
+  const v1 = pilot();
+  assert.deepEqual(validate(v1), []);
+  assert.ok(validate({ ...v1, scenes: [{ ...v1.scenes[0], camera: 'drift' }, ...v1.scenes.slice(1)] }).some((error) => error.includes('camera')), 'the first format knows no camera');
+});
+
+test('a card can be drawn transparent over a moving background, on a panel over a picture, or as the backdrop alone; the safe area never moves', () => {
+  const doc = pilot();
+  const cue = { sceneIndex: 0, text: '一張手寫的發票' };
+  const plain = sceneHtml(doc, cue);
+  const transparent = sceneHtml(doc, cue, { transparent: true });
+  const onPicture = sceneHtml(doc, cue, { transparent: true, picture: true });
+  const backdrop = sceneHtml(doc, cue, { backdrop: true });
+  assert.match(plain, /body\{margin:0;width:1080px;height:1920px;overflow:hidden;background:#0b2026/);
+  assert.match(transparent, /background:transparent;color/);
+  assert.ok(!transparent.includes('class="glow"'), 'the glow belongs to the backdrop');
+  assert.match(transparent, /data-transparent="1"/);
+  assert.ok(!transparent.includes('class="scrim'), 'no scrims over the backdrop');
+  assert.match(onPicture, /<div class="scrim top"><\/div><div class="scrim bottom"><\/div>/);
+  assert.match(onPicture, /class="content on-picture"/);
+  assert.match(onPicture, /\.content\.on-picture\{height:auto;max-height:1120px/);
+  assert.match(backdrop, /data-backdrop="1"/);
+  assert.match(backdrop, /<div class="glow"><\/div><\/body>/);
+  assert.ok(!backdrop.includes('caption') && !backdrop.includes('h1'), 'the backdrop carries no words');
+  for (const page of [plain, transparent, onPicture]) {
+    assert.match(page, /\.content\{position:absolute;left:80px;top:258px;width:820px;height:1120px/);
+    assert.match(page, /\.caption\{position:absolute;left:80px;top:1430px;width:820px;height:165px/);
+  }
+  assert.deepEqual(['slow push in', 'pull back a little', 'pan to the left', 'pan right', 'tilt up', 'crane down', 'hold still', undefined].map(cameraWords), ['push in', 'pull out', 'pan left', 'pan right', 'tilt up', 'tilt down', 'drift', 'drift']);
 });

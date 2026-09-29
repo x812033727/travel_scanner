@@ -51,8 +51,9 @@ export default {
 - 每集 2–4 個具名出場角色、1–2 個主要場景；全部 ID 已在設定集登記。群眾、工作人員可以無台詞背景呈現。
 - 8–12 條長線 mysteries；`planted`、`advanced`、`revealed` 與 episodes.setups/payoffs 對得上。setups 可以是首次埋下或 advanced 排程內的新線索；可以在 advanced 集數付出局部答案，但不可冒稱終局揭曉。文字說清回收了哪一部分，所有謎團在結尾已回收，沒有保留續作。
 - 任意連續四集至少一項 payoffs，包括跨篇；不能連續兩集只有 suffers。tension 五個 1–5、不能全相同、末值至少 4（結局可以是情感濃度）。
-- 每位角色英文 appearance 800 字元內，具備穩定髮型、衣著、輪廓與辨識物；聲音是擬定 casting，未試聽，先使用現有 Gemini 名稱如 Sulafat、Kore、Aoede、Charon、Fenrir、Puck、Orus、Zephyr，正式開拍先核對主機聲音池。
+- 每位角色英文 appearance 800 字元內，具備穩定髮型、衣著、輪廓與辨識物。產線把它原文接進每一集每一個鏡頭的生圖提示詞、不帶集數（`tools/video/media/look.mjs`、`keyframes.mjs`），所以只寫整部不變的樣子：不寫集數、時間先後（later、at first、after episode…）、場合條件或別的角色名字，validate.mjs 會擋集數與時間字眼。會出現、消失、易手或改變的衣物與道具不寫進去，改在 continuity_notes 逐集寫明，由鏡頭提示詞加上；幾乎每場都帶在身上、觀眾靠它認人的小物件可以留，離身那一拍寫進 continuity_notes。聲音是擬定 casting，未試聽，先使用現有 Gemini 名稱如 Sulafat、Kore、Aoede、Charon、Fenrir、Puck、Orus、Zephyr，正式開拍先核對主機聲音池。
 - setting 規則先補完已核定企劃留下的因果空隙，不能改掉人物、主要事件、結局。例如「第七個活人」必須明確成立；失憶仙俠需明確規定抹除範圍與紅繩毀後不再使用守淵之力的解法。
+- 集名、標題候選、縮圖文字、說明欄、置頂留言都是公開文字：合輯每集是一個 YouTube 章節，40 個集名在說明欄一次列出，觀眾開片前就看得到（`tools/video/core/compilation.mjs`）。這些文字只給懸念，不給謎團答案、中段翻轉、篇末揭曉或結局；篇名照同樣標準。
 - metadata、縮圖為文案與構圖規格，沒有現成圖片；完整台詞、TTS、影片、五語字幕檔另屬媒體製作，不能偽造完成。
 
 ## 五個目錄與作者分工

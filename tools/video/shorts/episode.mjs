@@ -1,17 +1,25 @@
-// An explainer episode's two Shorts (docs/videos/so-thats-why/README.md §Shorts): the scripts in
-// docs/videos/<slug>/shorts.json, cuts of the episode (schema 2, line "cut", docs/videos/SHORTS.md)
-// whose pictures are the episode's keyframes in its work directory.
+// A long video's two Shorts, drafted with its script: an explainer episode's
+// (docs/videos/so-thats-why/README.md §Shorts) or an illustrated slides video's
+// (docs/videos/ILLUSTRATED.md). The scripts sit in docs/videos/<slug>/shorts.json, cuts of the
+// video (schema 2, line "cut", docs/videos/SHORTS.md) whose pictures are the video's keyframes in
+// its work directory, moving as they did in the long video.
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
+import { EXPLAINER_PRESET, hasPictures } from '../core/drama.mjs';
 import { docDir, lexiconFile, readJson, resolveWorkdir, ROOT } from '../core/paths.mjs';
 import { episodeShort, validate } from './core.mjs';
 
 export const SHORTS_PER_EPISODE = 2;
-// The series an explainer's Shorts carry: it picks their theme (layouts.mjs, cut:sothatswhy).
+// The series a long video's Shorts carry, which picks their theme (layouts.mjs): an explainer's
+// and an illustrated slides video's.
 export const EPISODE_SERIES = 'sothatswhy';
+export const ILLUSTRATED_SERIES = 'illustrated';
 
-/** The fields the tool decides for the episode's Short number `index` (0 or 1), over a draft. */
-export const episodeShortFields = (slug, index) => ({ schema_version: 2, slug: `${slug}-short-${index + 1}`, format: 'shorts', locale: 'zh-TW', line: 'cut', series: EPISODE_SERIES, source: { slug } });
+/** The series of a long video's Shorts: an explainer's, else the illustrated slides'. */
+export const episodeSeries = (video) => (video?.format === 'drama' && video?.look?.preset === EXPLAINER_PRESET ? EPISODE_SERIES : ILLUSTRATED_SERIES);
+
+/** The fields the tool decides for the video's Short number `index` (0 or 1), over a draft. */
+export const episodeShortFields = (slug, index, series = EPISODE_SERIES) => ({ schema_version: 2, slug: `${slug}-short-${index + 1}`, format: 'shorts', locale: 'zh-TW', line: 'cut', series, source: { slug } });
 export const shortsFile = (slug, root = ROOT) => path.join(docDir(slug, root), 'shorts.json');
 
 /**
@@ -26,7 +34,7 @@ export function episodeShortsProblems(shorts, video) {
     const where = `short ${index + 1}`;
     for (const error of validate(doc)) problems.push(`${where}: ${error}`);
     if (doc?.schema_version !== 2 || doc?.line !== 'cut') problems.push(`${where}: must be a cut (schema_version 2, line "cut")`);
-    if (doc?.series !== EPISODE_SERIES) problems.push(`${where}: series must be ${EPISODE_SERIES}`);
+    if (doc?.series !== episodeSeries(video)) problems.push(`${where}: series must be ${episodeSeries(video)}`);
     if (doc?.source?.slug !== video.slug) problems.push(`${where}: source.slug must be ${video.slug}`);
     if (doc?.slug !== `${video.slug}-short-${index + 1}`) problems.push(`${where}: slug must be ${video.slug}-short-${index + 1}`);
     const scenes = Array.isArray(doc?.scenes) ? doc.scenes : [];
@@ -46,8 +54,9 @@ export function loadEpisodeShorts({ slug, root = ROOT, env = process.env, home, 
   const videoFile = path.join(dir, 'video.json');
   if (!existsSync(videoFile)) throw new Error(`no ${path.relative(root, videoFile)}`);
   const video = JSON.parse(readFileSync(videoFile, 'utf8'));
+  if (!hasPictures(video)) throw new Error(`${slug} has no shots: its Shorts would have no pictures to reuse (an explainer or illustrated slides video does)`);
   const file = shortsFile(slug, root);
-  if (!existsSync(file)) throw new Error(`no ${path.relative(root, file)}: the explainer writer drafts it with the script`);
+  if (!existsSync(file)) throw new Error(`no ${path.relative(root, file)}: the writer drafts it with the script`);
   const shorts = JSON.parse(readFileSync(file, 'utf8'));
   const problems = episodeShortsProblems(shorts, video);
   if (problems.length) throw new Error(problems.join('\n'));
@@ -58,6 +67,6 @@ export function loadEpisodeShorts({ slug, root = ROOT, env = process.env, home, 
     video,
     workdir,
     lexicon: readJson(lexiconFile(root), { schema_version: 1, terms: {} }),
-    shorts: shorts.map((doc) => episodeShort(doc, keyframes)),
+    shorts: shorts.map((doc) => episodeShort(doc, keyframes, video)),
   };
 }

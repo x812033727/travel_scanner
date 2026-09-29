@@ -1,11 +1,16 @@
 import { copyFileSync, existsSync, mkdirSync, readFileSync, realpathSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fontDir, parseUnicodeRanges, covers } from '../render/fonts.mjs';
+import { bedLevel, bedLoudnessArgs, checkBed, measureMixArgs, mixArgs } from '../assemble/drama.mjs';
 import { locateFfmpeg, runTool } from '../assemble/ffmpeg.mjs';
+import { parseEbur128, parseLoudnorm } from '../assemble/plan.mjs';
+import { sfxSetHash, sfxTrackArgs } from '../assemble/sfx.mjs';
+import { musicInputs, sfxInputs } from '../assemble/sound.mjs';
 import { encodeWav, parseWav, requireNarrationFormat } from '../tts/wav.mjs';
 import { ROOT, isInside, resolveWorkBase, stopRequested } from '../core/paths.mjs';
 import { PROFILE, SCRIPT_FILE, USAGE_FILE, buildTimeline, esc, lineOf, phrasesOf, sceneHtml, sha256, srt, validate, verifyEvidence } from './core.mjs';
 import { themeOf, themeText } from './layouts.mjs';
+import { MOTION_VERSION, backgroundOf, cameraOf, cardsList, firstFrameArgs, lastFrameArgs, sceneSpans, segmentArgs, shortSfxPlan } from './motion.mjs';
 import { WINDOWS_VOICE, defaultSource, flaggedPhrases, narrate } from './speech.mjs';
 
 const saveJson = (file, data) => writeFileSync(file, JSON.stringify(data, null, 2) + '\n');
@@ -79,6 +84,12 @@ async function measurePage(page) {
   });
 }
 
+/**
+ * Draw what the segments are made of (motion.mjs): every phrase's card as a transparent PNG in
+ * frames/ (the layout measured as before), the theme's backdrop once per scene of cards in
+ * backdrops/, and each picture background as a file in assets/. Returns the layout report and the
+ * background of every scene.
+ */
 async function renderFrames(doc, timeline, evidence, directory, channel) {
   const { chromium } = await import('@playwright/test');
   const browser = await chromium.launch({ ...(channel ? { channel } : {}), headless: true });
@@ -96,7 +107,9 @@ async function renderFrames(doc, timeline, evidence, directory, channel) {
     } finally { clearTimeout(timer); }
   };
   const assets = new Map();
+  const assetFiles = new Map();
   const layout = [];
+  const backgrounds = [];
   const fontCss = embeddedFont(JSON.stringify(doc) + evidence.filter(e=>e.file.endsWith('.html')).map(e=>e.bytes.toString('utf8')).join('') + themeText() + '0123456789');
   try {
     for (const item of evidence.filter(e => doc.scenes.some(s=>s.asset===e.path))) {
@@ -140,27 +153,64 @@ async function renderFrames(doc, timeline, evidence, directory, channel) {
       const file = path.join(directory, 'assets', `${item.sha256.slice(0,16)}.${/\.jpe?g$/i.test(item.file)?'jpg':'png'}`);
       writeFileSync(file, bytes);
       assets.set(item.path, `data:image/${file.endsWith('.jpg')?'jpeg':'png'};base64,${bytes.toString('base64')}`);
+      assetFiles.set(item.path, file);
     }
     await page.setViewportSize({ width: PROFILE.width, height: PROFILE.height });
+    mkdirSync(path.join(directory, 'backdrops'), { recursive: true });
+    for (const [sceneIndex, scene] of doc.scenes.entries()) {
+      const background = backgroundOf(scene);
+      if (background === 'picture') {
+        backgrounds.push({ scene: sceneIndex, background, file: assetFiles.get(scene.asset), camera: cameraOf(scene).name });
+        continue;
+      }
+      // The theme's background and glow alone: the still that drifts under this scene's cards.
+      await page.setContent(sceneHtml(doc, { sceneIndex, text: '' }, { backdrop: true }));
+      const file = path.join(directory, 'backdrops', `${number(sceneIndex)}.png`);
+      await page.screenshot({ path: file });
+      backgrounds.push({ scene: sceneIndex, background, file, camera: cameraOf(scene).name });
+    }
     for (const cue of timeline.cues) {
       if (stopRequested(directory)) throw new Error('STOP requested');
       const scene = doc.scenes[cue.sceneIndex];
-      await page.setContent(sceneHtml(doc, cue, { fontCss, assetUrl: assets.get(scene.asset) ?? '' }));
+      const picture = backgroundOf(scene) === 'picture';
+      // A picture scene's card carries no image: the picture is the moving background under it.
+      await page.setContent(sceneHtml(doc, cue, { fontCss, assetUrl: picture ? '' : (assets.get(scene.asset) ?? ''), transparent: true, picture }));
       await ready(`cue ${cue.index}`);
       const problems = await measurePage(page);
       layout.push({ cue: cue.index, problems });
       if (problems.length) throw new Error(`scene ${cue.sceneIndex}, cue ${cue.index}: ${problems.join('; ')}`);
-      await page.screenshot({ path: path.join(directory, 'frames', `${number(cue.index)}.png`) });
+      await page.screenshot({ path: path.join(directory, 'frames', `${number(cue.index)}.png`), omitBackground: true });
     }
-    // One representative cue from each scene, readable in a compact contact sheet.
-    const representatives = doc.scenes.map((_s, i) => timeline.cues.find(c => c.sceneIndex === i));
-    const sheet = representatives.map(c => `<figure><img src="data:image/png;base64,${readFileSync(path.join(directory,'frames',`${number(c.index)}.png`)).toString('base64')}"><figcaption>${esc(doc.scenes[c.sceneIndex].headline)}</figcaption></figure>`).join('');
-    await page.setViewportSize({ width: 1080, height: Math.ceil(representatives.length / 3) * 690 });
-    await page.setContent(`<style>${fontCss}body{margin:0;background:#152b31;color:white;font:22px 'Noto Sans TC Variable';display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:16px}figure{margin:0}img{width:100%}figcaption{padding:8px}</style>${sheet}`);
-    await ready('contact sheet');
-    await page.screenshot({ path: path.join(directory, 'contact-sheet.png'), fullPage: true });
-    return layout;
+    return { layout, backgrounds };
   } finally { await browser.close(); }
+}
+
+/** One representative frame from each scene's segment, readable in a compact contact sheet. */
+async function contactSheet(doc, stills, directory, fontCss, channel) {
+  const { chromium } = await import('@playwright/test');
+  const browser = await chromium.launch({ ...(channel ? { channel } : {}), headless: true });
+  try {
+    const context = await browser.newContext({ viewport: { width: 1080, height: Math.ceil(stills.length / 3) * 690 }, deviceScaleFactor: 1, javaScriptEnabled: false });
+    await context.route('**/*', route => route.abort());
+    const page = await context.newPage();
+    const sheet = stills.map((file, i) => `<figure><img src="data:image/png;base64,${readFileSync(file).toString('base64')}"><figcaption>${esc(doc.scenes[i].headline)}</figcaption></figure>`).join('');
+    await page.setContent(`<style>${fontCss}body{margin:0;background:#152b31;color:white;font:22px 'Noto Sans TC Variable';display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:16px}figure{margin:0}img{width:100%}figcaption{padding:8px}</style>${sheet}`);
+    await page.evaluate(() => document.fonts.ready.then(() => true));
+    await page.screenshot({ path: path.join(directory, 'contact-sheet.png'), fullPage: true });
+  } finally { await browser.close(); }
+}
+
+/**
+ * The sound a Short carries under its voice (docs/videos/SHORTS.md §工具端): the owner's licensed
+ * music file and sound-effect set, found and checked as the long video's are (assemble/sound.mjs);
+ * a Short generates neither. `{ track, music, sfx }`, nulls for a script naming none.
+ */
+async function shortSound(doc, base) {
+  const found = doc.music ? await musicInputs(doc, base, base) : { track: null, music: null };
+  if (found.problem) throw new Error(`the music bed cannot be carried: ${found.problem}`);
+  const effects = doc.sfx ? await sfxInputs(doc, base) : { sfx: null };
+  if (effects.problem) throw new Error(`the sound effects cannot be carried: ${effects.problem}`);
+  return { track: found.track, music: found.music, sfx: effects.sfx };
 }
 
 // Whatever the source, a clip ends on the 48 kHz mono grid the timeline counts in.
@@ -201,13 +251,16 @@ export async function build({ file, sourceBase, workdir, voice=WINDOWS_VOICE, ch
   const settings = source === 'server' && client ? await client.settings() : null;
   const range = settings ? { minSeconds: settings.seconds_min, maxSeconds: settings.seconds_max } : PROFILE;
   const narration = await narrate({ doc, source, workBase: base, voice: settings?.voice, client, audioDir, windowsVoice: voice, lexicon, redo: redo ? flaggedPhrases(path.join(redo,'check.json')) : [], synthesizeImpl });
-  const codeHash = sha256(['build.mjs','core.mjs','layouts.mjs','speech.mjs','speech.ps1'].map(f=>readFileSync(new URL(f,import.meta.url),'utf8')).join('\n'));
+  const codeHash = sha256(['build.mjs','core.mjs','layouts.mjs','motion.mjs','speech.mjs','speech.ps1'].map(f=>readFileSync(new URL(f,import.meta.url),'utf8')).join('\n') + MOTION_VERSION);
   const audioHash = sha256(narration.clips.map(bytes=>sha256(bytes)).join(''));
-  const buildId = sha256(JSON.stringify({document:sha256(documentBytes),codeHash,source,voice:narration.voice,channel,audioHash})).slice(0,16);
+  // The bed and the effect set are part of what was built: another file under the same name is another cut.
+  const sound = await shortSound(doc, base);
+  const soundHash = sha256(JSON.stringify({ track: sound.track?.sha256 ?? null, sfx: sound.sfx ? sfxSetHash(doc, sound.sfx.manifest) : null }));
+  const buildId = sha256(JSON.stringify({document:sha256(documentBytes),codeHash,source,voice:narration.voice,channel,audioHash,soundHash})).slice(0,16);
   // Every attempt is separate: a failed rerun must never leave an old successful manifest next to new bytes.
   const directory = path.join(base,doc.slug,`${buildId}-${Date.now()}`);
   if (stopRequested(path.join(base,doc.slug)) || stopRequested(directory)) throw new Error('STOP requested');
-  for (const sub of ['audio','frames','clips','assets','upload','evidence']) mkdirSync(path.join(directory,sub),{recursive:true});
+  for (const sub of ['audio','frames','clips','assets','upload','evidence','build']) mkdirSync(path.join(directory,sub),{recursive:true});
   // The script and its evidence travel with the build: the checks and the push read them from
   // here, so a script edited afterwards cannot stand in for the one that was filmed.
   writeFileSync(path.join(directory,SCRIPT_FILE),documentBytes);
@@ -223,20 +276,70 @@ export async function build({ file, sourceBase, workdir, voice=WINDOWS_VOICE, ch
   const samples = new Int16Array(timeline.frames*1600);
   for (const cue of timeline.cues) samples.set(wavs[cue.index].samples,cue.startFrame*1600);
   writeFileSync(path.join(directory,'narration.wav'),encodeWav(samples));
-  console.error(`${doc.slug}: render ${timeline.cues.length} caption frames (${timeline.seconds.toFixed(2)}s, ${themeOf(doc).id})`);
-  const layout = await renderFrames(doc,timeline,evidence,directory,channel);
-  console.error(`${doc.slug}: encode portrait video`);
-  for (const cue of timeline.cues) {
+  console.error(`${doc.slug}: render ${timeline.cues.length} caption cards (${timeline.seconds.toFixed(2)}s, ${themeOf(doc).id})`);
+  const { layout, backgrounds } = await renderFrames(doc,timeline,evidence,directory,channel);
+  // One segment per scene (motion.mjs): the background under its camera move, the phrases' cards
+  // over it, a dissolve from the previous scene; the join copies, as before.
+  console.error(`${doc.slug}: encode ${backgrounds.length} moving scenes`);
+  const spans = sceneSpans(timeline);
+  const motion = [];
+  const stills = [];
+  let dissolveFrom = null;
+  for (const [index, span] of spans.entries()) {
     if (stopRequested(directory) || stopRequested(path.join(base,doc.slug))) throw new Error('STOP requested');
-    await runTool(ffmpeg,['-y','-v','error','-loop','1','-framerate','30','-i',path.join(directory,'frames',`${number(cue.index)}.png`),'-frames:v',String(cue.frames),'-an','-c:v','libx264','-threads','2','-preset','fast','-tune','stillimage','-crf','20','-profile:v','high','-pix_fmt','yuv420p','-g','60','-keyint_min','60','-sc_threshold','0','-flags','+cgop','-colorspace','bt709','-color_primaries','bt709','-color_trc','bt709',path.join(directory,'clips',`${number(cue.index)}.mp4`)]);
+    const background = backgrounds[span.sceneIndex];
+    const list = path.join(directory,'build',`cards-${number(span.sceneIndex)}.txt`);
+    writeFileSync(list, cardsList(span.cues.map(cue => ({ file: path.join(directory,'frames',`${number(cue.index)}.png`), frames: cue.frames }))));
+    const segment = path.join(directory,'clips',`${number(span.sceneIndex)}.mp4`);
+    await runTool(ffmpeg, segmentArgs({ background: background.file, move: background.camera, frames: span.frames, cardsList: list, dissolveFrom, outFile: segment }));
+    motion.push({ scene: span.sceneIndex, frames: span.frames, camera: background.camera, background: background.background, dissolve: dissolveFrom !== null });
+    const still = path.join(directory,'build',`scene-${number(span.sceneIndex)}.png`);
+    await runTool(ffmpeg, firstFrameArgs(segment, still));
+    stills.push(still);
+    if (index < spans.length - 1) {
+      dissolveFrom = path.join(directory,'build',`last-${number(span.sceneIndex)}.png`);
+      await runTool(ffmpeg, lastFrameArgs(segment, span.frames, dissolveFrom));
+    }
   }
+  const fontCss = embeddedFont(doc.scenes.map(scene => scene.headline).join(''));
+  await contactSheet(doc, stills, directory, fontCss, channel);
   const listFile = path.join(directory,'clips.txt');
-  writeFileSync(listFile,timeline.cues.map(c=>`file 'clips/${number(c.index)}.mp4'`).join('\n'));
-  const loudness = await runTool(ffmpeg,['-hide_banner','-i',path.join(directory,'narration.wav'),'-af','aformat=channel_layouts=stereo,loudnorm=I=-14:TP=-1:LRA=11:print_format=json','-f','null','-']);
-  const loud = loudnessResult(loudness.stderr);
-  const filter = `aformat=channel_layouts=stereo,loudnorm=I=-14:TP=-1:LRA=11:measured_I=${loud.input_i}:measured_TP=${loud.input_tp}:measured_LRA=${loud.input_lra}:measured_thresh=${loud.input_thresh}:offset=${loud.target_offset}:linear=true:print_format=json`;
+  writeFileSync(listFile,spans.map(span=>`file 'clips/${number(span.sceneIndex)}.mp4'`).join('\n'));
+  const narrationFile = path.join(directory,'narration.wav');
+  const audioFile = path.join(directory,'build','audio.m4a');
+  const totalSeconds = timeline.frames / PROFILE.fps;
+  // The sound effects (motion.mjs shortSfxPlan) on one track, then the mix: the bed ducked under
+  // the voice and the effects over both, to -14 LUFS as the long video's cut; a Short naming
+  // neither is loudnormed as before.
+  let effects = [];
+  let sfxFile = null;
+  if (sound.sfx) {
+    effects = shortSfxPlan(doc, timeline);
+    const args = sfxTrackArgs(effects, sound.sfx.files, timeline.frames, sound.sfx.gain_db, path.join(directory,'build','sfx.wav'));
+    if (args) {
+      await runTool(ffmpeg, args);
+      sfxFile = path.join(directory,'build','sfx.wav');
+    }
+  }
+  let bed = null;
+  if (sound.track || sfxFile) {
+    const file = sound.track?.file ?? null;
+    const measuredMix = parseLoudnorm((await runTool(ffmpeg, measureMixArgs(narrationFile, file, sound.music, totalSeconds, sfxFile))).stderr);
+    await runTool(ffmpeg, mixArgs(narrationFile, file, sound.music, totalSeconds, measuredMix, audioFile, sfxFile, ['-c:a','aac','-b:a','192k']));
+    if (file) {
+      const bedLoudness = parseEbur128((await runTool(ffmpeg, bedLoudnessArgs(narrationFile, file, sound.music, totalSeconds))).stderr);
+      bed = bedLevel(bedLoudness.integrated, measuredMix);
+      const bedWrong = checkBed(bed);
+      if (bedWrong.length) throw new Error(`the music bed failed: ${bedWrong.join('; ')}`);
+    }
+  } else {
+    const loudness = await runTool(ffmpeg,['-hide_banner','-i',narrationFile,'-af','aformat=channel_layouts=stereo,loudnorm=I=-14:TP=-1:LRA=11:print_format=json','-f','null','-']);
+    const loud = loudnessResult(loudness.stderr);
+    const filter = `aformat=channel_layouts=stereo,loudnorm=I=-14:TP=-1:LRA=11:measured_I=${loud.input_i}:measured_TP=${loud.input_tp}:measured_LRA=${loud.input_lra}:measured_thresh=${loud.input_thresh}:offset=${loud.target_offset}:linear=true:print_format=json`;
+    await runTool(ffmpeg,['-y','-hide_banner','-i',narrationFile,'-af',filter,'-ar','48000','-ac','2','-c:a','aac','-b:a','192k',audioFile]);
+  }
   const final = path.join(directory,'upload','final.mp4');
-  await runTool(ffmpeg,['-y','-hide_banner','-f','concat','-safe','1','-i',listFile,'-i',path.join(directory,'narration.wav'),'-map','0:v:0','-map','1:a:0','-c:v','copy','-af',filter,'-ar','48000','-ac','2','-c:a','aac','-b:a','192k','-movflags','+faststart',final]);
+  await runTool(ffmpeg,['-y','-hide_banner','-f','concat','-safe','1','-i',listFile,'-i',audioFile,'-map','0:v:0','-map','1:a:0','-c:v','copy','-c:a','copy','-movflags','+faststart',final]);
   const measured = await measureFinal(final,{ffmpeg,ffprobe});
   const wrong = profileProblems(measured,timeline.frames);
   if (wrong.length) throw new Error(`encoded output failed profile/duration checks: ${wrong.join('; ')}`);
@@ -244,10 +347,11 @@ export async function build({ file, sourceBase, workdir, voice=WINDOWS_VOICE, ch
   if (loudWrong.length) throw new Error(`final loudness failed: ${loudWrong.join('; ')}`);
   const {video,audio} = measured;
   writeFileSync(path.join(directory,'upload','zh-TW.srt'),srt(timeline));
-  writeFileSync(path.join(directory,'upload','cover.png'),readFileSync(path.join(directory,'frames','000.png')));
+  // The cover is the first frame as the viewer sees it: the card over its background, not the transparent card alone.
+  writeFileSync(path.join(directory,'upload','cover.png'),readFileSync(stills[0]));
   saveJson(path.join(directory,'upload','titles.json'),doc.titles);
   saveJson(path.join(directory,'timeline.json'),timeline);
-  saveJson(path.join(directory,'checks.json'),{ok:true,profile:PROFILE,range,seconds:timeline.seconds,frames:timeline.frames,layout,loudness:measured.loudness,video:{codec:video.codec_name,width:video.width,height:video.height,fps:video.r_frame_rate},audio:{codec:audio.codec_name,sample_rate:audio.sample_rate},evidence_verified:true,audio_sha256:sha256(wavs.map((_w,i)=>sha256(readFileSync(path.join(directory,'audio',`${number(i)}.wav`)))).join('')),final_sha256:sha256(readFileSync(final)),checked_at:new Date().toISOString()});
+  saveJson(path.join(directory,'checks.json'),{ok:true,profile:PROFILE,range,seconds:timeline.seconds,frames:timeline.frames,layout,motion,music:sound.track?{track:doc.music.track,sha256:sound.track.sha256,bed_lufs:bed}:null,sfx:sound.sfx?{set:doc.sfx.set,events:effects.length}:null,loudness:measured.loudness,video:{codec:video.codec_name,width:video.width,height:video.height,fps:video.r_frame_rate},audio:{codec:audio.codec_name,sample_rate:audio.sample_rate},evidence_verified:true,audio_sha256:sha256(wavs.map((_w,i)=>sha256(readFileSync(path.join(directory,'audio',`${number(i)}.wav`)))).join('')),final_sha256:sha256(readFileSync(final)),checked_at:new Date().toISOString()});
   // What the site's ledger is told when the final cut is approved: /video/speech takes no slug,
   // so only the tool knows which Short the narration was for (docs/videos/SHORTS.md §花費與預算).
   saveJson(path.join(directory,USAGE_FILE),{narration:{seconds:Number(wavs.reduce((sum,w)=>sum+w.samples.length/w.sampleRate,0).toFixed(3)),characters:phrasesOf(doc).reduce((sum,phrase)=>sum+[...phrase].length,0),calls:narration.calls,provider:narration.provider,...(narration.model?{model:narration.model}:{})},stages:{},checks:{}});

@@ -266,3 +266,29 @@ test("Azure bills each Chinese character twice, plus markup", () => {
   const doc = { scenes: [{ lines: [{ id: "aaaa", text: "中文AB" }] }] };
   assert.equal(billableEstimate(doc), 4 + 2 + 30);
 });
+
+test("illustrated slides lint clean, warn on cadence, and are compared by their cards alone", async () => {
+  const { illustratedFixture, illustratedBrief } = await import("./fixtures/load.mjs");
+  const context = { lexicon: fixtureLexicon(), brief: illustratedBrief(), others: [], translations: {} };
+  const clean = lintVideo(illustratedFixture(), context);
+  assert.deepEqual(clean.errors, []);
+  assert.deepEqual(clean.warnings, []);
+  // A shot holding three sentences is past the 8 s a picture may stay: a warning, never a block.
+  const slow = illustratedFixture();
+  slow.scenes[1].lines.push({ id: "z1zz", text: "這一句讓圖停太久，觀眾會滑走。" });
+  const result = lintVideo(slow, context);
+  assert.deepEqual(result.errors, []);
+  assert.ok(result.warnings.some((warning) => warning.path === "scenes (podium state 0)" && /estimated/.test(warning.message)), JSON.stringify(result.warnings));
+  // A look on a video with nothing to draw is an error; music under slides is not a warning.
+  const bare = fixture();
+  bare.look = { preset: "tech-story" };
+  assert.ok(lintVideo(bare, { ...context, brief: fixtureBrief() }).errors.some((error) => error.path === "look"));
+  const music = fixture();
+  music.music = { track: "bed.mp3" };
+  assert.ok(!lintVideo(music, { ...context, brief: fixtureBrief() }).warnings.some((warning) => warning.path === "music"));
+  // Two illustrated videos with the same cards but different pictures are still look-alikes; shots do not count.
+  const a = illustratedFixture();
+  const b = illustratedFixture();
+  b.scenes.splice(2, 0, { id: "extra", template: "shot", data: { prompt: "flat illustration of a lighthouse", camera: "drift", visual: "still" }, lines: [{ id: "z3zz", text: "多一張圖。" }] });
+  assert.equal(templateSimilarity(a, b), 1);
+});

@@ -4,11 +4,14 @@ import sys
 import textwrap
 import threading
 import time
+from concurrent.futures import Future
 from pathlib import Path
+from types import SimpleNamespace, TracebackType
 from typing import Any
 
 import pytest
 
+from ai_accounts_agent import antigravity as antigravity_module
 from ai_accounts_agent.antigravity import (
     ACCOUNT_NAME,
     CODE_PATTERN,
@@ -551,3 +554,131 @@ def test_a_status_read_does_not_write_the_account_back_after_a_sign_out(
     assert reads == 1, "the status-like write read the file before the sign-out"
     assert not (home / ACCOUNT_NAME).exists()
     assert accounts.status("b")["logged_in"] is False
+
+
+@pytest.mark.parametrize("in_flight", [False, True], ids=["late-writer", "in-flight-writer"])
+@pytest.mark.parametrize("has_windows", [True, False], ids=["fresh-windows", "error-only"])
+def test_a_usage_probe_cannot_recreate_the_snapshot_after_sign_out(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, in_flight: bool, has_windows: bool
+) -> None:
+    config = agy_config(tmp_path)
+    home = sign_in_on_disk(config, "b")
+    application = AgentApplication(config)
+    accounts = AntigravityAccounts(config)
+    application.accounts["agy"] = accounts
+    snapshot = home / SNAPSHOT_NAME
+    old_window = {"label": "Gemini", "window_minutes": 300, "used_percent": 20.0, "resets_at": 9}
+    snapshot.write_text(
+        json.dumps({"recorded_at": 5, "windows": [old_window], "error": None}), "utf-8"
+    )
+    windows = [{**old_window, "used_percent": 40.0}] if has_windows else None
+    paused = threading.Event()
+    resume = threading.Event()
+    logout_attempted = threading.Event()
+    logout_done = threading.Event()
+    logout_contended = False
+    probe_result: Future[None] = Future()
+    logout_result: Future[None] = Future()
+    lock = accounts._account_lock
+    original_read = antigravity_module.read_json
+
+    class ObservedLock:
+        def __enter__(self) -> None:
+            nonlocal logout_contended
+            if threading.current_thread() is sign_out:
+                acquired = lock.acquire(blocking=False)
+                logout_contended = not acquired
+                logout_attempted.set()
+                if acquired:
+                    return
+            assert lock.acquire(timeout=5), "the account lock was not released"
+
+        def __exit__(
+            self,
+            exc_type: type[BaseException] | None,
+            exc: BaseException | None,
+            traceback: TracebackType | None,
+        ) -> None:
+            lock.release()
+
+    def read_then_pause(path: Path) -> dict[str, Any] | None:
+        value = original_read(path)
+        if in_flight and path == snapshot and threading.current_thread() is probe:
+            paused.set()
+            assert resume.wait(5), "the in-flight snapshot read was not released"
+        return value
+
+    def record() -> None:
+        try:
+            if not in_flight:
+                paused.set()
+                assert resume.wait(5), "the late probe was not released"
+            accounts._record_usage("b", windows, None if has_windows else "unreadable")
+        except BaseException as error:
+            probe_result.set_exception(error)
+        else:
+            probe_result.set_result(None)
+
+    def logout() -> None:
+        try:
+            accounts.logout("b")
+        except BaseException as error:
+            logout_result.set_exception(error)
+        else:
+            logout_result.set_result(None)
+        finally:
+            logout_done.set()
+
+    monkeypatch.setattr(accounts, "_account_lock", ObservedLock())
+    monkeypatch.setattr(antigravity_module, "read_json", read_then_pause)
+    probe = threading.Thread(target=record)
+    sign_out = threading.Thread(target=logout)
+    try:
+        probe.start()
+        assert paused.wait(5), "the probe did not reach its controlled pause"
+        sign_out.start()
+        assert logout_attempted.wait(5), "logout did not reach the account lock"
+        # On the old code, logout takes the free lock and must finish before the
+        # stale write resumes. With the fix it waits behind the in-flight writer,
+        # so release that writer and let logout delete its result last.
+        if not logout_contended:
+            assert logout_done.wait(5), "logout did not finish before the late write"
+    finally:
+        resume.set()
+        for worker in (probe, sign_out):
+            if worker.ident is not None:
+                worker.join(5)
+        application.executor.shutdown(wait=True, cancel_futures=True)
+        assert not probe.is_alive() and not sign_out.is_alive(), "a worker did not stop"
+        for result in (probe_result, logout_result):
+            if result.done():
+                result.result()  # Re-raise worker errors on the pytest thread.
+
+    assert not snapshot.exists()
+    view = application.slot_view("agy", "b", accounts.status("b"))
+    assert view["logged_in"] is False
+    assert view["usage"] is None
+
+
+def test_a_signed_in_usage_error_preserves_the_last_windows_and_recorded_time(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    config = agy_config(tmp_path)
+    home = sign_in_on_disk(config, "b")
+    accounts = AntigravityAccounts(config)
+    window = {"label": "Gemini", "window_minutes": 300, "used_percent": 20.0, "resets_at": 9}
+    monkeypatch.setattr(antigravity_module, "time", SimpleNamespace(time=lambda: 123))
+    accounts._record_usage("b", [window], None)
+    monkeypatch.setattr(antigravity_module, "time", SimpleNamespace(time=lambda: 456))
+    accounts._record_usage("b", None, "unreadable")
+    assert json.loads((home / SNAPSHOT_NAME).read_text("utf-8")) == {
+        "recorded_at": 123,
+        "windows": [window],
+        "error": "unreadable",
+    }
+    updated = {**window, "used_percent": 40.0}
+    accounts._record_usage("b", [updated], None)
+    assert accounts.details("b") == {
+        "usage": {"source": "snapshot", "recorded_at": 456, "windows": [updated]},
+        "usage_error": None,
+    }

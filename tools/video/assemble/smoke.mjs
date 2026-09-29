@@ -19,13 +19,16 @@ import { parseArgs } from "node:util";
 
 import { main } from "../cli.mjs";
 import { approve } from "../core/approvals.mjs";
-import { isDrama, isShot } from "../core/drama.mjs";
+import { illustrated, isDrama, isShot } from "../core/drama.mjs";
 import { loadProject } from "../core/state.mjs";
 import { locateFfmpeg } from "./ffmpeg.mjs";
-import { writeSyntheticClips, writeSyntheticKeyframes, writeSyntheticMusic, writeSyntheticNarration } from "./synthetic.mjs";
+import { writeSyntheticClips, writeSyntheticKeyframes, writeSyntheticMusic, writeSyntheticNarration, writeSyntheticSfx, writeSyntheticTrack } from "./synthetic.mjs";
 
 const STEPS = ["render", "assemble", "review", "package"];
-const FIXTURES = ["minimal", "drama", "story"];
+// illustrated (docs/videos/ILLUSTRATED.md): slides with still shots between the cards, the owner's
+// music file and a sound-effect set, so assemble mixes motion segments, drifting cards,
+// dissolves, a music bed and the effects.
+const FIXTURES = ["minimal", "drama", "story", "illustrated"];
 
 const values = parseArgs({
   options: { workdir: { type: "string" }, channel: { type: "string" }, until: { type: "string", default: "package" }, fixture: { type: "string", default: "minimal" } },
@@ -58,6 +61,11 @@ if (isDrama(project.doc)) {
   writeSyntheticKeyframes(project.doc, workdir, tools.ffmpeg);
   writeSyntheticClips(project.doc, timeline, project.lexicon, workdir, tools.ffmpeg);
   writeSyntheticMusic(project.doc, workdir, tools.ffmpeg);
+} else if (illustrated(project.doc)) {
+  const tools = await locateFfmpeg(process.env);
+  writeSyntheticKeyframes(project.doc, workdir, tools.ffmpeg);
+  if (project.doc.music?.track) writeSyntheticTrack(base, project.doc.music.track, tools.ffmpeg);
+  if (project.doc.sfx?.set) writeSyntheticSfx(base, project.doc.sfx.set, tools.ffmpeg);
 }
 
 const common = ["--file", FIXTURE, "--workdir", base];
@@ -86,5 +94,24 @@ if (values.fixture === "story" && STEPS.indexOf(values.until) >= STEPS.indexOf("
     process.exit(1);
   }
   process.stdout.write(`smoke: ${wanted} motion shots (${[...new Set(shots.map((shot) => shot.move))].join(", ")})\n`);
+}
+if (values.fixture === "illustrated" && STEPS.indexOf(values.until) >= STEPS.indexOf("assemble")) {
+  // Every shot is a motion segment, single-state cards drift, at least one picture dissolves in,
+  // the bed sits under the voice and the effects fall on the cut's beats.
+  const checks = JSON.parse(readFileSync(path.join(workdir, expected.assemble), "utf8"));
+  const shots = checks.metrics?.shots ?? [];
+  const wantedShots = project.doc.scenes.filter(isShot).map((scene) => scene.id);
+  const problems = [];
+  for (const id of wantedShots) if (!shots.some((shot) => shot.shot === id && shot.kind === "motion" && !shot.card)) problems.push(`shot ${id} is not a motion segment`);
+  if (!shots.some((shot) => shot.card)) problems.push("no card drifts");
+  if (!shots.some((shot) => shot.transition === "dissolve")) problems.push("no dissolve");
+  if (!(checks.metrics?.music_bed_lufs <= -24)) problems.push(`music bed ${checks.metrics?.music_bed_lufs} LUFS`);
+  if (!(checks.metrics?.sfx?.events > 0)) problems.push("no sound effect placed");
+  for (const key of ["look_hash", "pictures_hash", "mix_hash", "sfx_hash"]) if (!checks[key]) problems.push(`checks.json has no ${key}`);
+  if (problems.length) {
+    process.stderr.write(`smoke: the illustrated cut is wrong: ${problems.join("; ")}\n`);
+    process.exit(1);
+  }
+  process.stdout.write(`smoke: ${wantedShots.length} motion shots, ${shots.filter((shot) => shot.card).length} drifting cards, ${shots.filter((shot) => shot.transition === "dissolve").length} dissolves, bed ${checks.metrics.music_bed_lufs} LUFS, ${checks.metrics.sfx.events} effects\n`);
 }
 process.stdout.write(`smoke: ok in ${workdir}\n`);

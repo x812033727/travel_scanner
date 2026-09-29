@@ -366,3 +366,23 @@ test("music is generated a little longer than the video and cached, or the owner
   assert.equal(await main(["music", "--slug", box.slug], wrong.ctx), EXIT.owner);
   assert.match(wrong.out.stderr, /not music\.sha256/);
 });
+
+test("music under illustrated slides comes from the owner's track, with no drama guard", async () => {
+  const box = sandbox("fixture-illustrated", "illustrated");
+  const site = mediaSite();
+  const missing = context(box, site.fetchImpl);
+  assert.equal(await main(["music", "--slug", box.slug], missing.ctx), EXIT.owner);
+  assert.match(missing.out.stderr, /bed\.mp3 is not in/);
+  mkdirSync(path.join(box.work, "_music"), { recursive: true });
+  writeFileSync(path.join(box.work, "_music", "bed.mp3"), "bed bytes");
+  const track = context(box, site.fetchImpl);
+  assert.equal(await main(["music", "--slug", box.slug], track.ctx), EXIT.ok, track.out.stderr);
+  const manifest = manifestOf(box, "music");
+  assert.equal(manifest.source, "track");
+  assert.equal(manifest.track, "bed.mp3");
+  assert.equal(site.state.music.length, 0, "a licensed file buys nothing");
+  const { capFor } = await import("./stages.mjs");
+  assert.equal(capFor({ max_usd_per_video: 200, slides_max_usd_per_video: 20 }, "slides"), 20);
+  assert.equal(capFor({ max_usd_per_video: 200, slides_max_usd_per_video: 20 }), 200);
+  assert.equal(capFor({ max_usd_per_video: 200 }, "slides"), 200);
+});

@@ -2,6 +2,7 @@
 // settings, the videos the site knows, a video's reviews and files, Jev's policy reading, and the
 // worker's knock. The same video tool token as narration and review-push, and nothing of the
 // owner's session; on the host MOKAAIR_SITE points at the web container.
+import { STORY_VOICE_STYLE } from '../automation/register.mjs';
 import { readCredentials } from '../tts/credentials.mjs';
 import { USER_AGENT } from '../tts/client.mjs';
 import { PROFILE } from './core.mjs';
@@ -16,12 +17,13 @@ export class SiteError extends Error {
   }
 }
 
-// The channel voice the owner chose on 2026-09-24 (docs/videos/README.md), for a site that has
-// neither Shorts settings nor automation settings to read yet.
+// The channel voice the owner chose on 2026-09-24 (docs/videos/README.md) in the storytelling
+// register of 2026-09-29 (docs/videos/ILLUSTRATED.md §說書式旁白), for a site that has neither
+// Shorts settings nor automation settings to read yet.
 export const CHANNEL_VOICE = Object.freeze({
   provider: 'gemini',
   name: 'Sulafat',
-  style: 'Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a natural Taiwanese accent. Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace.',
+  style: STORY_VOICE_STYLE,
 });
 export const DEFAULT_SETTINGS = Object.freeze({ voice: CHANNEL_VOICE, seconds_min: PROFILE.minSeconds, seconds_max: PROFILE.maxSeconds, locales: [], made_for_kids: false });
 

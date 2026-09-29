@@ -17,7 +17,7 @@ export function stretchArgs(inFile, tempo, outFile) {
 
 // What each upload format is encoded as. AAC in an .m4a is the video's own audio; MP3 and WAV are
 // the fallbacks should YouTube Studio refuse it (docs/videos/DUBS.md).
-const CODECS = {
+export const CODECS = {
   m4a: ["-c:a", "aac", "-b:a", "384k"],
   mp3: ["-c:a", "libmp3lame", "-b:a", "320k"],
   wav: ["-c:a", "pcm_s16le"],

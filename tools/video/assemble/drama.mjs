@@ -19,6 +19,11 @@ import { HEIGHT, layoutScenes, LOUDNESS, PlanError, WIDTH } from "./plan.mjs";
 export const CLIP_ENCODER_VERSION = "x264-high-crf18-film-g60-bf2-bt709-clip-v1";
 // The same for a motion segment: the zoompan expressions below are part of what it versions.
 export const MOTION_ENCODER_VERSION = "x264-high-crf18-film-g60-bf2-bt709-motion-v2";
+// A card of an illustrated slides video (docs/videos/ILLUSTRATED.md) may drift like a still: its
+// segment key carries this too, so a change to how cards move never touches a drama's keys.
+export const MOTION_CARD_VERSION = "card-motion-v1";
+// The moves single-state cards take, in turn, so two cards in a row never move the same way.
+export const CARD_MOVES = ["drift", "push-in"];
 // How far a push-in or pull-out travels over the shot, as a share of the picture; a pan or tilt
 // sits at a fixed zoom and slides the window; a drift barely moves at all. Small on purpose: a
 // still is meant to read as a held shot with life in it, not as a camera move.
@@ -75,20 +80,45 @@ export function freezeProblem(scene, fit) {
  * Pair the timeline's scenes with the rendered frames and the generated clips: a card scene lays
  * out its stills like a slides video, a shot carries its clip, its fit mode and its transition.
  */
-export function layoutDrama(doc, timeline, frames, clips, keyframes = null) {
+/**
+ * The transition into a scene of an illustrated slides video (docs/videos/ILLUSTRATED.md): the
+ * writer's word when the scene carries one; else a hard cut into the first scene and into every
+ * chapter opener (the chapter card is the beat), and a dissolve everywhere else.
+ */
+export function illustratedTransition(source, index) {
+  if (index === 0) return "cut";
+  if (source.data?.transition) return source.data.transition;
+  return source.chapter ? "cut" : "dissolve";
+}
+
+/**
+ * Pair the timeline's scenes with the rendered frames and the generated clips. `options` are for
+ * illustrated slides: `transitionRule(source, index)` decides how a shot or a moving card is
+ * entered (a drama takes the shot's own word, else a cut), and `cardMotion` lays a single-state
+ * card out as a motion scene, its still drifting like a keyframe, so a title or a big number is
+ * never a frozen picture; a card with reveals keeps its entrances as its motion.
+ */
+export function layoutDrama(doc, timeline, frames, clips, keyframes = null, { transitionRule = null, cardMotion = false } = {}) {
   if (timeline.scenes.length !== frames.scenes.length) {
     throw new PlanError(`the frames were rendered for ${frames.scenes.length} scenes, the timeline has ${timeline.scenes.length}; run render again`);
   }
+  let moved = 0;
   return timeline.scenes.map((scene, index) => {
     const rendered = frames.scenes[index];
     const source = doc.scenes.find((each) => each.id === scene.id);
     if (!source || rendered.id !== scene.id) throw new PlanError(`scene ${scene.id} does not match the rendered frames; run render again`);
     const base = { id: scene.id, frames: scene.end_frame - scene.start_frame, start_frame: scene.start_frame };
     if (!isShot(source)) {
+      if (cardMotion && rendered.states.length === 1 && rendered.states[0].still) {
+        const move = CARD_MOVES[moved % CARD_MOVES.length];
+        moved += 1;
+        const transition = transitionRule ? transitionRule(source, index) : "cut";
+        return { ...base, kind: "motion", card: true, keyframe: { file: rendered.states[0].still, sha256: null }, move: { name: move, startsAtIdentity: IDENTITY_START.has(move) }, transition, fit: null };
+      }
       const [laid] = layoutScenes({ scenes: [scene] }, { scenes: [rendered] });
       return { ...laid, kind: "stills" };
     }
-    const transition = index > 0 ? (source.data?.transition ?? "cut") : "cut";
+    const transition = transitionRule ? transitionRule(source, index) : index > 0 ? (source.data?.transition ?? "cut") : "cut";
     if (shotVisual(source) === "still") {
       // The keyframes manifest is the source; the clips manifest carries the same file and hash
       // for every still, so a work directory missing one still assembles from the other.
@@ -218,7 +248,7 @@ export function clipSegmentKey(scene, fit, subtitles = null, previous = null) {
 }
 
 export function motionSegmentKey(scene, move, subtitles = null, previous = null) {
-  return hash16([MOTION_ENCODER_VERSION, scene.frames, scene.keyframe.file, scene.keyframe.sha256, move.name, subtitles, scene.transition, previous]);
+  return hash16([MOTION_ENCODER_VERSION, scene.frames, scene.keyframe.file, scene.keyframe.sha256, move.name, subtitles, scene.transition, previous, ...(scene.card ? [MOTION_CARD_VERSION] : [])]);
 }
 
 const COLOUR = `format=yuv420p,setparams=range=tv:color_primaries=bt709:color_trc=bt709:colorspace=bt709`;
@@ -227,7 +257,7 @@ const COLOUR = `format=yuv420p,setparams=range=tv:color_primaries=bt709:color_tr
  * The inputs after the picture (input 0): the subtitle strips as input 1 when there are any,
  * then the previous scene's last frame, looped, for a dissolve.
  */
-function overlayInputs(subtitlesList, dissolveFrom) {
+export function overlayInputs(subtitlesList, dissolveFrom) {
   const inputs = [];
   if (subtitlesList) inputs.push("-f", "concat", "-safe", "0", "-i", subtitlesList);
   if (dissolveFrom) inputs.push("-loop", "1", "-framerate", String(FPS), "-t", seconds(DISSOLVE_FRAMES + 2), "-i", dissolveFrom);
@@ -239,7 +269,7 @@ function overlayInputs(subtitlesList, dissolveFrom) {
  * dissolving away over it when asked, the subtitle strips laid over the bottom, then the colour
  * tags. Shared by clip and motion segments so the two encode identically.
  */
-function overlayGraph(picChain, { subtitlesInput, dissolveInput }) {
+export function overlayGraph(picChain, { subtitlesInput, dissolveInput }) {
   const graph = [`[0:v]${picChain.join(",")}[pic]`];
   let last = "pic";
   if (dissolveInput !== null) {
@@ -257,7 +287,7 @@ function overlayGraph(picChain, { subtitlesInput, dissolveInput }) {
 }
 
 /** Same H.264 settings as a slide segment but tuned for film, so the segments still join without re-encoding. */
-function encodeArgs(inputs, graph, frames, outFile) {
+export function encodeArgs(inputs, graph, frames, outFile) {
   return [
     "-hide_banner", "-y", "-loglevel", "error",
     ...inputs,
@@ -366,36 +396,55 @@ export function bedFilter(music, totalSeconds, label = "bed") {
  * drives a compressor on the bed, so the music drops by about duck_db under speech and comes
  * back between lines; amix keeps the voice's length exactly, so the video's checks still hold.
  */
-export function mixFilter(music, totalSeconds) {
+export function mixFilter(music, totalSeconds, sfxInput = null) {
+  // With sound effects (docs/videos/ILLUSTRATED.md) a third stereo track joins the mix as it is:
+  // it is placed on the frame grid and gained already, and the voice is not ducked under it.
+  const effects = sfxInput === null ? [] : [`[${sfxInput}:a]aformat=sample_rates=48000:channel_layouts=stereo[effects]`];
+  const mixed = sfxInput === null ? "[voice][ducked]amix=inputs=2" : "[voice][ducked][effects]amix=inputs=3";
   return [
     bedFilter(music, totalSeconds),
     `[0:a]aformat=sample_rates=48000:channel_layouts=mono,${STEREO},asplit=2[voice][side]`,
     `[bed][side]sidechaincompress=threshold=${DUCK_THRESHOLD}:ratio=${duckRatio(music.duck_db)}:attack=${DUCK_ATTACK_MS}:release=${DUCK_RELEASE_MS}:makeup=1:level_sc=1[ducked]`,
-    "[voice][ducked]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[mix]",
+    ...effects,
+    `${mixed}:duration=first:dropout_transition=0:normalize=0[mix]`,
   ].join(";");
+}
+
+/** Voice and sound effects with no music bed: the voice to stereo, the effects laid over it. */
+export function effectsFilter() {
+  return [`[0:a]aformat=sample_rates=48000:channel_layouts=mono,${STEREO}[voice]`, "[1:a]aformat=sample_rates=48000:channel_layouts=stereo[effects]", "[voice][effects]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[mix]"].join(";");
 }
 
 const loudnorm = (extra = "") => `loudnorm=I=${LOUDNESS.integrated}:TP=${LOUDNESS.truePeak}:LRA=${LOUDNESS.range}${extra}`;
 
 const musicInput = (music, totalSeconds) => ["-stream_loop", "-1", "-t", totalSeconds.toFixed(6), "-i", music];
 
-/** First loudnorm pass over the mix. */
-export function measureMixArgs(narration, musicFile, music, totalSeconds) {
-  return [
-    "-hide_banner", "-nostats", "-i", narration, ...musicInput(musicFile, totalSeconds),
-    "-filter_complex", `${mixFilter(music, totalSeconds)};[mix]${loudnorm(":print_format=json")}[out]`,
-    "-map", "[out]", "-f", "null", "-",
-  ];
+/**
+ * The inputs and the filter of the sound: the narration, the music bed when there is a track
+ * (looped to the video's length), the effects track when there is one. `{ inputs, filter }`.
+ */
+export function soundGraph(narration, { musicFile = null, music = null, sfxFile = null }, totalSeconds) {
+  if (musicFile) {
+    return { inputs: ["-i", narration, ...musicInput(musicFile, totalSeconds), ...(sfxFile ? ["-i", sfxFile] : [])], filter: mixFilter(music, totalSeconds, sfxFile ? 2 : null) };
+  }
+  if (sfxFile) return { inputs: ["-i", narration, "-i", sfxFile], filter: effectsFilter() };
+  throw new PlanError("soundGraph needs a music track or an effects track; plain narration uses plan.mjs normalizeArgs");
 }
 
-/** Second loudnorm pass over the mix with the first pass's measurement, linear, to AAC-LC stereo 48 kHz. */
-export function mixArgs(narration, musicFile, music, totalSeconds, measured, outFile) {
+/** First loudnorm pass over the mix. `sound` is `{ musicFile, music, sfxFile }` or, as before, the music file alone. */
+export function measureMixArgs(narration, musicFile, music, totalSeconds, sfxFile = null) {
+  const { inputs, filter } = soundGraph(narration, { musicFile, music, sfxFile }, totalSeconds);
+  return ["-hide_banner", "-nostats", ...inputs, "-filter_complex", `${filter};[mix]${loudnorm(":print_format=json")}[out]`, "-map", "[out]", "-f", "null", "-"];
+}
+
+/** The codec of the cut's own audio: AAC-LC at 384 kb/s; a dub (dubs/encode.mjs) may ask for its upload format instead. */
+export const MIX_CODEC = ["-c:a", "aac", "-b:a", "384k"];
+
+/** Second loudnorm pass over the mix with the first pass's measurement, linear, to stereo 48 kHz in `codec`. */
+export function mixArgs(narration, musicFile, music, totalSeconds, measured, outFile, sfxFile = null, codec = MIX_CODEC) {
   const second = `:measured_I=${measured.input_i}:measured_TP=${measured.input_tp}:measured_LRA=${measured.input_lra}:measured_thresh=${measured.input_thresh}:offset=${measured.target_offset}:linear=true`;
-  return [
-    "-hide_banner", "-y", "-loglevel", "error", "-i", narration, ...musicInput(musicFile, totalSeconds),
-    "-filter_complex", `${mixFilter(music, totalSeconds)};[mix]${loudnorm(second)},aresample=48000[out]`,
-    "-map", "[out]", "-c:a", "aac", "-b:a", "384k", "-ar", "48000", outFile,
-  ];
+  const { inputs, filter } = soundGraph(narration, { musicFile, music, sfxFile }, totalSeconds);
+  return ["-hide_banner", "-y", "-loglevel", "error", ...inputs, "-filter_complex", `${filter};[mix]${loudnorm(second)},aresample=48000[out]`, "-map", "[out]", ...codec, "-ar", "48000", outFile];
 }
 
 /** The bed alone through ebur128, to know how loud the music sits before the voice is added. */
