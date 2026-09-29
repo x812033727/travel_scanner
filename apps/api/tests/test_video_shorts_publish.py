@@ -62,7 +62,7 @@ from app.video_shorts.models import (
     VideoShortsSettings,
     VideoShortsSlot,
 )
-from app.video_shorts.quota import Quota
+from app.video_shorts.quota import Quota, pacific_day
 from app.video_shorts.schemas import SettingsWrite, TickOut
 from app.video_speech import admin_api as speech_api
 from app.video_youtube import connection, requests, sync
@@ -1503,6 +1503,10 @@ async def test_the_batch_holds_every_waiting_file_under_the_name_the_claim_looks
 
 
 async def test_a_knock_does_what_is_due_and_says_how_much(site: ShortsSite, now: datetime) -> None:
+    # The daily check is counted per Pacific day; both knocks below must fall on the same one,
+    # or a run in the last minutes before Pacific midnight sees the second knock verify again.
+    if pacific_day(now + timedelta(minutes=5)) != pacific_day(now):
+        now -= timedelta(minutes=10)
     await site.link()
     await agree(site, now)
     await short(site, "receipt", video_id=VIDEO)
