@@ -1,12 +1,13 @@
-// The stages that need nothing but the timeline: caption files for every locale, and which dub
-// tracks are current enough to caption, upload and review.
-import { existsSync } from "node:fs";
+// The stages that need nothing but the timeline: caption files for the locales the owner chose,
+// which dub tracks are current enough to caption, upload and review, and the owner's language
+// choice itself as the worker copies it into the work directory (docs/videos/LANGUAGES.md).
+import { existsSync, rmSync } from "node:fs";
 import path from "node:path";
 
-import { dubLocales, dubScript, translationHash } from "../dubs/plan.mjs";
+import { defaultDubLocales, dubScript, translationHash } from "../dubs/plan.mjs";
 import { buildCues, checkCues, toSrt, toVtt } from "./captions.mjs";
 import { atomicWrite, readJson } from "./paths.mjs";
-import { eachLine, LOCALES, narrationLocale, textHash } from "./schema.mjs";
+import { eachLine, LOCALES, NARRATION_LOCALE, narrationLocale, textHash } from "./schema.mjs";
 import { ARTIFACTS, dubArtifacts, lintProject, loadProject, recordStage } from "./state.mjs";
 import { checkChapters, speechHash } from "./timeline.mjs";
 
@@ -15,6 +16,50 @@ export class StageError extends Error {
     super(message);
     this.code = code;
   }
+}
+
+// The owner's language choice for this video, as the worker copies it from the site each round
+// (docs/videos/LANGUAGES.md): { locales: { en: { metadata, captions, dub } }, decided_at }. Only
+// the languages with something ticked are listed; zh-TW is always made. The captions, package,
+// qa and review-push commands read it from the work directory, so a hand run on the owner's
+// machine and the worker's run agree; without the file (a video from before the panel, an
+// example outside the site) every locale with a translation is made, as before.
+export const LANGUAGES_FILE = "languages.json";
+export const LOCALE_PARTS = ["metadata", "captions", "dub"];
+
+/** The choice in the work directory, or null when none was written. */
+export function readLanguages(workdir) {
+  const record = readJson(path.join(workdir, LANGUAGES_FILE), null);
+  if (!record || typeof record !== "object" || !record.locales || typeof record.locales !== "object") return null;
+  const locales = {};
+  for (const locale of LOCALES) {
+    const choice = record.locales[locale];
+    if (!choice || typeof choice !== "object" || locale === NARRATION_LOCALE) continue;
+    // A dub is read from the captions' translation, so choosing it chooses them (the site does the same).
+    const dub = choice.dub === true;
+    const entry = { metadata: choice.metadata === true, captions: choice.captions === true || dub, dub };
+    if (entry.metadata || entry.captions || entry.dub) locales[locale] = entry;
+  }
+  return { locales, decided_at: typeof record.decided_at === "string" ? record.decided_at : null };
+}
+
+/** Write the site's choice for the commands to read; `locales` is the site's `locales` field. */
+export function writeLanguages(workdir, { locales, decided_at = null, synced_at = null }) {
+  const record = { locales: locales ?? {}, decided_at, ...(synced_at ? { synced_at } : {}) };
+  atomicWrite(path.join(workdir, LANGUAGES_FILE), `${JSON.stringify(record, null, 2)}\n`);
+  return record;
+}
+
+/** The locales with `part` ticked, in the page's order; null without a choice (every locale, as before). */
+export function chosenLocales(languages, part) {
+  if (!languages) return null;
+  return LOCALES.filter((locale) => languages.locales[locale]?.[part]);
+}
+
+/** The caption locales a video is made in: zh-TW, then the chosen ones; every locale without a choice. */
+export function captionLocalesOf(languages) {
+  const chosen = chosenLocales(languages, "captions");
+  return chosen ? [NARRATION_LOCALE, ...chosen] : [...LOCALES];
 }
 
 /** The text each locale shows for each line; translations older than their narration line are left out. */
@@ -55,18 +100,22 @@ export function currentDub(project, workdir, locale, speech) {
 /** The review file role of a locale's dub track: `dub_en`, `dub_zh_cn` (roles are lower-case words). */
 export const dubRole = (locale) => `dub_${locale.toLowerCase().replace(/-/g, "_")}`;
 
-/** Every locale's current dub track, and the locales the worker gave up on with its reason. */
-export function dubsForUpload(project, workdir, speech) {
+/**
+ * The current dub track of every locale asked for (the owner's dub choice, or every locale but
+ * zh-CN without one), and the locales the worker gave up on with its reason. A locale the worker
+ * gave up on stays skipped even when an older track of it exists: the reason is the last word.
+ */
+export function dubsForUpload(project, workdir, speech, locales = defaultDubLocales(project.doc)) {
   const dubs = [];
   const skipped = {};
-  for (const locale of dubLocales(project.doc)) {
-    const dub = currentDub(project, workdir, locale, speech);
-    if (dub && !dub.stale) {
-      dubs.push({ locale, file: dub.file, format: dub.format, total_frames: dub.total_frames, tempo_max: dub.tempo_max ?? 1 });
+  for (const locale of locales) {
+    const gaveUp = readJson(dubArtifacts(workdir, locale).skipped, null);
+    if (gaveUp) {
+      skipped[locale] = gaveUp.reason ?? "";
       continue;
     }
-    const gaveUp = readJson(dubArtifacts(workdir, locale).skipped, null);
-    if (gaveUp) skipped[locale] = gaveUp.reason ?? "";
+    const dub = currentDub(project, workdir, locale, speech);
+    if (dub && !dub.stale) dubs.push({ locale, file: dub.file, format: dub.format, total_frames: dub.total_frames, tempo_max: dub.tempo_max ?? 1 });
   }
   return { dubs, skipped };
 }
@@ -87,11 +136,13 @@ export function captionTimelineOf(dub) {
 }
 
 /**
- * Write captions/<locale>.srt and .vtt for the narration locale and every locale whose translation is complete
- * and current. A locale with missing or stale lines is reported and not written: a caption track
+ * Write captions/<locale>.srt and .vtt for the narration locale, zh-TW and every chosen locale
+ * whose translation is complete and current (every translated locale when no choice was
+ * written). A locale with missing or stale lines is reported and not written: a caption track
  * that silently skips sentences is worse than none. A locale with a current dub is cut on the
  * dub's timing, so a viewer who picks that audio and those captions reads what they hear, when
- * they hear it.
+ * they hear it. The files of a locale not written this run are removed, so captions/ holds
+ * exactly the current set.
  */
 export function runCaptions({ slug, file, root, workdir, now = new Date() }) {
   const project = loadProject({ slug, file, root });
@@ -102,14 +153,18 @@ export function runCaptions({ slug, file, root, workdir, now = new Date() }) {
   if (!timeline) throw new StageError("no timeline.json yet; run tts first", "order");
   if (timeline.speech_hash !== speech) throw new StageError("timeline.json was built for an older script; run tts again", "order");
 
+  const languages = readLanguages(workdir);
+  const wanted = new Set([narrationLocale(project.doc), ...captionLocalesOf(languages)]);
+  const dubbed = chosenLocales(languages, "dub") ?? defaultDubLocales(project.doc);
   const { texts, skipped } = localeTexts(project.doc, project.translations);
   const manifest = { speech_hash: speech, chapters: checkChapters(timeline), locales: {}, skipped: {} };
   for (const [locale, byLine] of Object.entries(texts)) {
+    if (!wanted.has(locale)) continue;
     if (skipped[locale]?.length) {
       manifest.skipped[locale] = skipped[locale];
       continue;
     }
-    const dub = locale === narrationLocale(project.doc) ? null : currentDub(project, workdir, locale, speech);
+    const dub = locale === narrationLocale(project.doc) || !dubbed.includes(locale) ? null : currentDub(project, workdir, locale, speech);
     const timed = dub && !dub.stale;
     const { cues } = buildCues(timed ? captionTimelineOf(dub) : timeline, byLine, locale);
     atomicWrite(path.join(workdir, "captions", `${locale}.srt`), toSrt(cues));
@@ -117,6 +172,10 @@ export function runCaptions({ slug, file, root, workdir, now = new Date() }) {
     const problems = checkCues(cues, locale);
     if (dub?.stale) problems.unshift(`the ${locale} dub track is older than the script or its translation; these cues follow the narration, run dub again`);
     manifest.locales[locale] = { cues: cues.length, problems, timing: timed ? "dub" : "narration" };
+  }
+  for (const locale of LOCALES) {
+    if (manifest.locales[locale]) continue;
+    for (const kind of ["srt", "vtt"]) rmSync(path.join(workdir, "captions", `${locale}.${kind}`), { force: true });
   }
   atomicWrite(path.join(workdir, ARTIFACTS.captions), `${JSON.stringify(manifest, null, 2)}\n`);
   recordStage(workdir, "captions", { locales: Object.keys(manifest.locales) }, now);

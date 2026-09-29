@@ -28,7 +28,8 @@ import hashlib
 import json
 import logging
 import uuid
-from collections.abc import Callable
+from collections.abc import AsyncIterator, Callable
+from contextlib import asynccontextmanager
 from dataclasses import dataclass, field
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
@@ -219,13 +220,28 @@ def _audit(session: AsyncSession, user: User, action: str, slug: str, **metadata
 
 
 async def request_sync(
-    session: AsyncSession, store: ReviewStore, slug: str, user: User, payload: PublishIn
+    session: AsyncSession,
+    store: ReviewStore,
+    slug: str,
+    user: User,
+    payload: PublishIn,
+    *,
+    on_behalf: dict[str, Any] | None = None,
 ) -> ProjectOut:
-    """Check the owner's request against the package and the channel, record it, and start it."""
+    """Check the owner's request against the package and the channel, record it, and start it.
+
+    ``on_behalf`` is set when the site sends a Short under the owner's standing consent
+    (docs/videos/SHORTS.md): ``user`` is then who gave the consent, and what is passed here
+    (that it was automatic, and the consent's id) goes into the audit entry with the rest.
+    Automatic requests also retain that provenance so the run can check consent at the write.
+    """
     row = await _linked_connection(session)
     project = await _locked_project(session, slug)
     if running(project.youtube_sync):
         raise Refused(409, "video_youtube_sync_running", "這支影片正在送 YouTube，等它跑完再送")
+    from app.video_youtube.vps import assert_idle
+
+    await assert_idle(slug, upload=payload.mode == "upload")
     review = approved_confirmation(await _project_reviews(session, project))
     if review is None:
         raise Refused(409, "video_youtube_not_ready", "這支影片還沒有核准的上傳包")
@@ -273,7 +289,7 @@ async def request_sync(
                 "API 稽核還沒通過：網站上傳的影片會被 YouTube 鎖成私人、不能公開。"
                 "只是測試的話請勾選確認",
             )
-    request = {
+    request: dict[str, Any] = {
         "mode": payload.mode,
         "visibility": payload.visibility,
         "publish_at": publish_at.isoformat() if publish_at else None,
@@ -284,6 +300,9 @@ async def request_sync(
         "review_id": package.review_id,
         "package_sha256": package.sha256,
     }
+    if on_behalf and on_behalf.get("auto") is True:
+        # The asynchronous run must know this is standing consent, not a fresh owner action.
+        request["on_behalf"] = {"auto": True, "consent_id": on_behalf.get("consent_id")}
     project.youtube_sync = new_state(request)
     project.updated_at = datetime.now(UTC)
     _audit(
@@ -296,16 +315,23 @@ async def request_sync(
         publish_at=request["publish_at"],
         video_id=video_id,
         package_sha256=package.sha256,
+        **(on_behalf or {}),
     )
     await session.commit()
     launch(slug)
     return await reviews.project_view(session, slug)
 
 
-async def retry_sync(session: AsyncSession, slug: str, user: User) -> ProjectOut:
-    """Run the last request again: finished steps stay finished, the rest start over."""
+async def retry_sync(
+    session: AsyncSession, slug: str, user: User, *, on_behalf: dict[str, Any] | None = None
+) -> ProjectOut:
+    """Run the last request again: finished steps stay finished, the rest start over.
+    ``on_behalf`` is what it is for ``request_sync``."""
     await _linked_connection(session)
     project = await _locked_project(session, slug)
+    from app.video_youtube.vps import assert_idle
+
+    await assert_idle(slug)
     state = project.youtube_sync
     if not state:
         raise Refused(409, "video_youtube_sync_missing", "這支影片還沒有送過 YouTube")
@@ -313,9 +339,15 @@ async def retry_sync(session: AsyncSession, slug: str, user: User) -> ProjectOut
         raise Refused(409, "video_youtube_sync_running", "這支影片正在送 YouTube，等它跑完再送")
     if state.get("status") == "done":
         raise Refused(409, "video_youtube_sync_done", "上一次已經全部完成；要改資料請重新送出")
-    project.youtube_sync = retried(state)
+    next_state = retried(state)
+    if on_behalf and on_behalf.get("auto") is True:
+        next_state["request"]["on_behalf"] = {
+            "auto": True,
+            "consent_id": on_behalf.get("consent_id"),
+        }
+    project.youtube_sync = next_state
     project.updated_at = datetime.now(UTC)
-    _audit(session, user, "video_youtube_sync_retried", slug)
+    _audit(session, user, "video_youtube_sync_retried", slug, **(on_behalf or {}))
     await session.commit()
     launch(slug)
     return await reviews.project_view(session, slug)
@@ -382,6 +414,37 @@ class Run:
         if path is None:
             raise StepFailed("審核區已經找不到上傳包裡的檔案，請重新產生上傳包")
         return path
+
+
+@asynccontextmanager
+async def _automatic_schedule_guard(run: Run) -> AsyncIterator[None]:
+    """Recheck standing consent at the write, serialized with pause/revoke/recall.
+
+    The settings lock lasts through the scheduling call: an owner action either stops this
+    write first, or runs afterward and can recall the schedule it just created. Explicit
+    owner requests have no standing-consent provenance and retain their existing behavior.
+    """
+    behalf = as_dict(run.request.get("on_behalf"))
+    if behalf.get("auto") is not True:
+        yield
+        return
+    from app.video_shorts import settings as shorts_settings
+
+    async with run.factory() as session:
+        row = await shorts_settings.settings_row(session, lock=True)
+        channel = await shorts_settings.channel_facts(session)
+        allowed, reason = shorts_settings.may_publish(row, channel)
+        if not allowed:
+            raise StepFailed(reason or "自動上架授權已失效，請重新同意")
+        if row.consent_id is None or str(row.consent_id) != behalf.get("consent_id"):
+            raise StepFailed("自動上架授權已變更，這次排程已停止")
+        project = await session.scalar(select(VideoProject).where(VideoProject.slug == run.slug))
+        state = as_dict(project.youtube_sync) if project else {}
+        if state.get("run") != run.token or state.get("status") != "running":
+            raise LeaseLost(run.slug)
+        if project is None or project.dropped_at is not None:
+            raise StepFailed("這支影片已經被放棄了，這次排程已停止")
+        yield
 
 
 def describe(error: YoutubeError) -> str:
@@ -515,6 +578,10 @@ async def _details(run: Run, video_id: str) -> str:
     if run.request["visibility"] == "scheduled" and privacy != "private":
         raise StepFailed("排程上架要影片先是「私人」：請在 Studio 改成私人，再按重試")
     publish_at = parse_time(run.request.get("publish_at"))
+    if as_dict(run.request.get("on_behalf")).get("auto") is True:
+        chosen = parse_time(status.get("publishAt"))
+        if chosen is not None and chosen != publish_at:
+            raise StepFailed("站主已在 Studio 排了不同的公開時間，網站不改已經排好的時間")
     body = update_body(
         video,
         run.package.metadata,
@@ -523,21 +590,21 @@ async def _details(run: Run, video_id: str) -> str:
         visibility=run.request["visibility"],
         publish_at=publish_at,
     )
-    try:
-        await client.update_video(body)
-    except YoutubeError as error:
-        if error.reason == "invalidPublishAt":
-            raise StepFailed(
-                "YouTube 不接受這個上架時間：影片要是私人、從來沒有公開過，時間也要在未來"
-            ) from error
-        raise
-
     def recorded(_state: dict[str, Any], project: VideoProject) -> None:
         project.youtube_video_id = video_id
         project.youtube_publish_at = publish_at
         project.updated_at = datetime.now(UTC)
 
-    await run.update(recorded)
+    async with _automatic_schedule_guard(run):
+        try:
+            await client.update_video(body)
+        except YoutubeError as error:
+            if error.reason == "invalidPublishAt":
+                raise StepFailed(
+                    "YouTube 不接受這個上架時間：影片要是私人、從來沒有公開過，時間也要在未來"
+                ) from error
+            raise
+        await run.update(recorded)
     locales = len(body["localizations"]) + 1
     tags = len(body["snippet"].get("tags") or [])
     return (

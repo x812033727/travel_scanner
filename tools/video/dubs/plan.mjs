@@ -17,6 +17,12 @@ export const DUB_LOCALES = LOCALES.filter((locale) => locale !== NARRATION_LOCAL
 export const dubLocales = (doc) => LOCALES.filter((locale) => locale !== narrationLocale(doc));
 // The locales whose dictionary aliases may be written in Chinese characters ("P 九十五").
 export const CHINESE_LOCALES = new Set(["zh-TW", "zh-CN"]);
+// What gets a dub when nobody chose (no --locale, no languages.json): not zh-CN. A viewer who
+// reads Simplified hears Mandarin already in the zh-TW narration, so that track adds nothing
+// unless the owner ticks it for a video (the owner's call, 2026-09-28).
+export const DEFAULT_DUB_LOCALES = DUB_LOCALES.filter((locale) => locale !== "zh-CN");
+/** The same default for one video, whatever it is narrated in (DEFAULT_DUB_LOCALES for zh-TW). */
+export const defaultDubLocales = (doc) => dubLocales(doc).filter((locale) => locale !== "zh-CN");
 export const DUB_FORMATS = ["m4a", "mp3", "wav"];
 export const DEFAULT_FORMAT = "m4a";
 // Silence between two dubbed lines once the original pause is used up.

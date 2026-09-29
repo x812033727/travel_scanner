@@ -2,17 +2,28 @@ from __future__ import annotations
 
 import json
 from datetime import datetime
-from typing import Any, Literal, get_args
+from typing import Any, Literal, Self, get_args
 from uuid import UUID
 
-from pydantic import AwareDatetime, BaseModel, Field, field_validator
+from pydantic import AwareDatetime, BaseModel, Field, field_validator, model_validator
+
+from app.video_shorts.schemas import (
+    SHORTS_SERIES_PATTERN,
+    SLUG_PATTERN,
+    ShortsLine,
+    ShortsState,
+)
 
 # look and storyboard belong to the drama format (docs/videos/DRAMA.md): the character sheets
 # the owner picks from, one review per character, and the keyframes before any clip is made.
 # script is an episode's screenplay, read before any image or clip is paid for
-# (docs/videos/SERIES.md). dubs is a batch of finished dub tracks (docs/videos/DUBS.md): the
-# owner downloads them, uploads them in YouTube Studio, and approves the review to say so.
-Gate = Literal["outline", "script", "look", "storyboard", "audio", "final", "publish", "dubs"]
+# (docs/videos/SERIES.md). dubs was a batch of finished dub tracks (docs/videos/DUBS.md); since
+# 2026-09-27 languages carries the whole batch of what the owner chose for a video, descriptions,
+# captions and dub tracks (docs/videos/LANGUAGES.md): the site approves a batch with no dub
+# track on arrival, one with a dub track waits for the owner to upload it in YouTube Studio.
+Gate = Literal[
+    "outline", "script", "look", "storyboard", "audio", "final", "publish", "dubs", "languages"
+]
 SERIES_SLUG_PATTERN = r"^[a-z0-9][a-z0-9-]{1,39}$"
 # The previews, the dub tracks (docs/videos/DUBS.md: m4a, mp3 or wav), and since HANDS-OFF.md the
 # whole upload package the owner downloads from the "ready to upload" list: the captions (.srt),
@@ -30,9 +41,16 @@ ContentType = Literal[
     "application/json",
 ]
 YOUTUBE_VIDEO_ID_PATTERN = r"^[A-Za-z0-9_-]{11}$"
-# The languages a video can be dubbed in, in the order the page lists them; zh-TW is the original.
+# The languages a video can be made in besides zh-TW, in the order the page lists them.
 DubLocale = Literal["en", "ja", "ko", "zh-CN"]
 DUB_LOCALES: tuple[DubLocale, ...] = get_args(DubLocale)
+# What a language is made of (docs/videos/LANGUAGES.md): the title, description and tags, the
+# captions, and a dub track; a dub needs the captions, since it reads their translation.
+LocalePart = Literal["metadata", "captions", "dub"]
+LOCALE_PARTS: tuple[LocalePart, ...] = get_args(LocalePart)
+# Where a chosen part stands: not made yet, made (in a languages review), given up with a reason,
+# or, a dub track, uploaded by the owner (its languages review approved).
+LanguageState = Literal["working", "ready", "skipped", "uploaded"]
 MAX_PAYLOAD_BYTES = 256 * 1024
 SHA256_PATTERN = r"^[0-9a-f]{64}$"
 # One gate can hold several pending reviews when each names a subject: a look review per
@@ -48,7 +66,9 @@ class ChecklistItem(BaseModel):
     done: bool
 
 
-VideoFormat = Literal["slides", "drama"]
+# "shorts" is the card pipeline of a Short (docs/videos/SHORTS.md). A vertical drama short
+# keeps "drama": what makes a video a Short is its ``shorts_line``, not its format.
+VideoFormat = Literal["slides", "drama", "shorts"]
 
 
 class ProjectIn(BaseModel):
@@ -67,6 +87,11 @@ class ProjectIn(BaseModel):
     episode_number: int | None = Field(default=None, ge=1, le=10_000)
     # The worker echoes the request it consumed. Older workers leave it out.
     retry_acknowledged_id: UUID | None = None
+    # A Short (docs/videos/SHORTS.md): its content line, its series within the line, and the
+    # video a highlight or a vertical short was cut from. Left out, the stored ones stay.
+    shorts_line: ShortsLine | None = None
+    shorts_series: str | None = Field(default=None, pattern=SHORTS_SERIES_PATTERN)
+    source_slug: str | None = Field(default=None, pattern=SLUG_PATTERN)
 
 
 class ReviewFile(BaseModel):
@@ -110,6 +135,50 @@ class ReviewOut(BaseModel):
     created_at: datetime
 
 
+class LocaleChoice(BaseModel):
+    """What the owner chose of one language; a dub track brings the captions with it."""
+
+    metadata: bool = False
+    captions: bool = False
+    dub: bool = False
+
+    @model_validator(mode="after")
+    def _dub_needs_captions(self) -> Self:
+        if self.dub:
+            self.captions = True
+        return self
+
+    def chosen(self) -> list[LocalePart]:
+        return [part for part in LOCALE_PARTS if getattr(self, part)]
+
+
+class LocalesIn(BaseModel):
+    """The owner's choice on the language panel: each language with the parts to make of it.
+
+    An empty choice is the decision too ("only Traditional Chinese"); a language with nothing
+    ticked is dropped, and the languages are kept in the page's order whatever order they came
+    in, so the worker and the audit trail always see one shape for one choice.
+    """
+
+    locales: dict[DubLocale, LocaleChoice] = Field(default_factory=dict)
+
+    @field_validator("locales")
+    @classmethod
+    def _in_page_order_without_empties(
+        cls, value: dict[DubLocale, LocaleChoice]
+    ) -> dict[DubLocale, LocaleChoice]:
+        return {
+            locale: value[locale]
+            for locale in DUB_LOCALES
+            if locale in value and value[locale].chosen()
+        }
+
+
+class LanguagePartOut(BaseModel):
+    state: LanguageState
+    reason: str | None = None
+
+
 class ProjectSummary(BaseModel):
     slug: str
     title: str
@@ -132,7 +201,16 @@ class ProjectSummary(BaseModel):
     # What the drama route's generations have cost so far, from the media jobs (any month).
     media_usd: float = 0.0
     clip_seconds: int = 0
-    # The languages the owner ticked to dub this video in; the worker makes only those tracks.
+    # The languages the owner chose after the final cut and what of each, empty until they
+    # decide; when they first decided; where each chosen part stands, from the languages reviews;
+    # and whether the video may be scheduled: its upload confirmation approved, its languages
+    # decided and every chosen part ready, skipped or uploaded, and no YouTube id yet
+    # (docs/videos/LANGUAGES.md).
+    locales: dict[DubLocale, LocaleChoice] = Field(default_factory=dict)
+    locales_decided_at: datetime | None = None
+    languages: dict[DubLocale, dict[LocalePart, LanguagePartOut]] = Field(default_factory=dict)
+    ready_to_upload: bool = False
+    # The languages with a dub track chosen, for a page from before the language panel.
     dub_locales: list[DubLocale] = Field(default_factory=list)
     # The series this video is an episode of, if any (docs/videos/SERIES.md).
     series_slug: str | None = None
@@ -144,6 +222,16 @@ class ProjectSummary(BaseModel):
     # What the site last sent this video's YouTube side through the linked channel, step by step
     # (app/video_youtube/state.py public_state), or None when it never did.
     youtube_sync: dict[str, Any] | None = None
+    # A Short (docs/videos/SHORTS.md): its line, series and source; where it stands, one of the
+    # eight states the Shorts tab groups by; and when the slot it holds goes public. All None
+    # for a video that is not a Short.
+    shorts_line: ShortsLine | None = None
+    shorts_series: str | None = None
+    source_slug: str | None = None
+    shorts_state: ShortsState | None = None
+    slot_at: datetime | None = None
+    # When the site found the video gone from YouTube, or private again.
+    youtube_removed_at: datetime | None = None
 
 
 class ProjectOut(ProjectSummary):

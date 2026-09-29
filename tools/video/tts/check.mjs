@@ -3,9 +3,10 @@
 // The site owner asked for Jev, not a person, to decide whether the narration says what the
 // script says. Jev reads text only, so the server transcribes each line's clip (Gemini, the site's
 // key) and this tool compares the transcript with the script itself. Lines that match once
-// punctuation, spacing and case are ignored pass without Jev; the rest go to Jev in one call per
-// scene, and every line Jev doubts lands in a flags file that `tts --redo` takes as it is.
-// Transcripts are cached by the clip's hash, so a rerun after `tts --redo` only redoes those lines.
+// punctuation, spacing and case are ignored pass without Jev; the rest go to Jev up to
+// MAX_JUDGE_LINES a call, whichever scenes they are in, and every line Jev doubts lands in a flags
+// file that `tts --redo` takes as it is. Transcripts are cached by the clip's hash, so a rerun
+// after `tts --redo` only redoes those lines.
 //
 // Two differences never reach Jev. Jev documents no accuracy for Chinese, and on the pilot it
 // doubted 它 heard as 他 and 級聯 heard as 吉蓮. So a transcript that reads the same, tones
@@ -186,6 +187,19 @@ function fit(text, max) {
   return characters.length > max ? characters.slice(0, max).join("") : String(text);
 }
 
+/**
+ * Jev's questions in the order given, cut into calls of at most `size` lines; no questions, no
+ * call. Each line is a question of its own, so lines of different scenes share a call: a brand
+ * story has 85–100 one-line shot scenes (docs/videos/STORY.md), and a call per scene spent that
+ * many of the daily Jev budget the whole site shares.
+ */
+export function judgeBatches(questions, size = MAX_JUDGE_LINES) {
+  if (!Number.isInteger(size) || size < 1) throw new RangeError(`a Jev call takes a whole number of lines, at least 1: got ${size}`);
+  const batches = [];
+  for (let start = 0; start < questions.length; start += size) batches.push(questions.slice(start, start + size));
+  return batches;
+}
+
 /** The narration's lines in order, each with the scene it belongs to. */
 function narrationLines(doc) {
   return [...eachLine(doc)].map(({ scene, line }) => ({ scene: scene.id, line }));
@@ -297,13 +311,13 @@ export async function checkAudio(args, ctx, options) {
     atomicWrite(cacheFile, `${JSON.stringify(cache, null, 2)}\n`);
   }
 
-  // Jev reads a transcript per line, one call per scene; lines too long for it are cut and noted.
+  // Jev reads a transcript per line, MAX_JUDGE_LINES a call whichever scenes they are in; lines
+  // too long for it are cut and noted.
   const cut = [];
   let jevCalls = 0;
   const askJev = async (pairs, heardOf, record) => {
-    const byScene = new Map();
+    const questions = [];
     for (const [id, entry] of pairs) {
-      if (!byScene.has(entry.scene)) byScene.set(entry.scene, []);
       const heard = heardOf(entry);
       const question = {
         id,
@@ -312,16 +326,14 @@ export async function checkAudio(args, ctx, options) {
         heard: fit(heard, MAX_HEARD_CHARACTERS),
       };
       if (question.intended !== entry.intended || question.spoken_form !== entry.spoken_form || question.heard !== heard) cut.push(id);
-      byScene.get(entry.scene).push(question);
+      questions.push(question);
     }
-    for (const questions of byScene.values()) {
-      for (let start = 0; start < questions.length; start += MAX_JUDGE_LINES) {
-        const batch = questions.slice(start, start + MAX_JUDGE_LINES);
-        const verdicts = await judgeLines({ ...options, lines: batch, language: locale });
-        jevCalls += 1;
-        for (const { id } of batch) record(results[id], verdicts.get(id) ?? 0);
-        atomicWrite(cacheFile, `${JSON.stringify(cache, null, 2)}\n`);
-      }
+    for (const batch of judgeBatches(questions)) {
+      const verdicts = await judgeLines({ ...options, lines: batch, language: locale });
+      jevCalls += 1;
+      for (const { id } of batch) record(results[id], verdicts.get(id) ?? 0);
+      // After every call, so a run that stops halfway keeps the verdicts it paid for.
+      atomicWrite(cacheFile, `${JSON.stringify(cache, null, 2)}\n`);
     }
   };
   // Jev looks only at lines whose transcript differs and has not been judged for this clip.

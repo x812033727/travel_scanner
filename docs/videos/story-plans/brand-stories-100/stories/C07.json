@@ -1,0 +1,210 @@
+{
+  "id": "C07",
+  "slug": "story-password-rules-regret",
+  "category": "tech",
+  "region": "global",
+  "subject": "密碼規則",
+  "title": "密碼要加符號？寫規則的人後悔了",
+  "logline": "Bill Burr 替 NIST 寫的八頁附錄，把「大寫加符號」算成更難猜的密碼；2017 年他說自己做過的很多事現在都後悔。常被算在他頭上的「每 90 天換一次」，其實不在那份文件裡。",
+  "question": "那些要求密碼一定要有大寫、符號，還要每隔幾個月換一次的規定，到底是誰訂的？現在還適用嗎？",
+  "chapters": [
+    {
+      "key": "hook",
+      "point": "如果你的密碼曾經被要求一定要有大寫字母、數字、特殊符號，還要每隔幾個月換一次，這些規定常被追溯到同一個人：替美國國家標準與技術研究院（NIST）寫密碼指引的 Bill Burr。2017 年他告訴《華爾街日報》，自己做過的很多事現在都後悔。這支影片要回答：他到底寫了什麼、沒寫什麼，又為什麼後悔？"
+    },
+    {
+      "key": "origin",
+      "point": "照《華爾街日報》的報導，2003 年 NIST 的中階主管 Bill Burr 寫了一份八頁的密碼入門說明。2004 年 6 月，它成為 NIST 特別出版品 SP 800-63《電子身分驗證指引》的附錄 A；這份指引是寫給美國聯邦機關、教他們怎麼在網路上確認使用者身分的技術文件，作者是 Burr 與兩位同事。附錄 A 自己寫著：NIST 手上沒有多少使用者實際怎麼選密碼的資料，只好拿 Claude Shannon 在 1948、1951 年對英文文字的研究，粗估一個密碼有多難猜。"
+    },
+    {
+      "key": "idea",
+      "point": "附錄 A 替密碼規則估算「熵」，也就是平均要猜多少次才猜得中。它把規則分成兩類：拿常見字詞與常用密碼的字典來擋，以及規定要混用大小寫與非字母符號的「組合規則」；規定要有大寫又要有符號，就多給 6 位元的加分。文件舉的例子，是至少 8 個字元、大小寫字母數字符號各一個。常被一起提到的「每 90 天換一次」其實不在文件裡：附錄 A 算猜測次數時，舉的例子是兩年或十年換一次。"
+    },
+    {
+      "key": "engine",
+      "point": "這套規則傳得開，靠的是 NIST 的份量與一個能比較的數字。SP 800-63 是寫給美國聯邦機關的技術指引，附錄 A 的表格把密碼長度與規則換算成位元數，文件說這能當作「訂密碼強度標準的一些依據」。照 Consumer Reports 與 BizTech 的報導，這份建議後來被政府機關、企業與大學採用。可是同一份文件也提醒讀者，這些估算只是「非常粗略的經驗法則」，不該當成更多。"
+    },
+    {
+      "key": "turn",
+      "point": "問題出在人怎麼用。附錄 A 早就寫到：被迫加大寫或符號的人，多半把大寫放開頭、符號放結尾，或用 $ 代替 s。被規定定期換密碼的人，很多只把一個字元從 1 改成 2；美國聯邦貿易委員會（FTC）首席技術專家 Lorrie Cranor 2016 年引用北卡羅來納大學的研究：知道舊密碼，17% 的帳號不到 5 次就猜得到新密碼。2017 年 8 月 Burr 對《華爾街日報》說：「我做過的很多事，現在都後悔。」同年 6 月的新版指引 SP 800-63B 已改成建議不要強制組合規則、不要無故定期換密碼。"
+    },
+    {
+      "key": "now",
+      "point": "NIST 的現行版 SP 800-63B-4 在 2025 年 8 月取代 2017 年版，第 3.1.1.2 節寫得更硬：不得規定密碼混用不同種類的字元，不得要求使用者定期換密碼，只有證據顯示密碼外洩時才必須換；單獨使用的密碼至少 15 個字元、應允許至少 64 個字元，還要比對常見與外洩過的密碼清單。回到開場的問題：大寫加符號的規則確實出自他寫的附錄，每 90 天換一次卻不在其中；而這兩種要求，現在的 NIST 指引都明文寫著不得這樣做。"
+    }
+  ],
+  "takeaway": "一條規則傳得越廣，越少人回頭看它原本寫了什麼、沒寫什麼。",
+  "must_verify": [
+    {
+      "claim": "SP 800-63《電子身分驗證指引》1.0 版由 NIST 在 2004 年 6 月發布，作者是 William Burr、Donna Dodson 與 W. Timothy Polk，是寫給美國聯邦機關的技術指引；附錄 A〈估算密碼的熵與強度〉在第 46 到 53 頁，共八頁",
+      "sources": [
+        5,
+        6
+      ],
+      "core": true
+    },
+    {
+      "claim": "照《華爾街日報》2017 年的報導（經 Consumer Reports 與 BizTech 轉述），Burr 當時是 NIST 的中階主管，2003 年寫下這份八頁的入門說明，後來被政府機關、企業與大學採用",
+      "sources": [
+        0,
+        1
+      ],
+      "core": true
+    },
+    {
+      "claim": "附錄 A 把密碼規則分成字典檢查與組合規則（混用大小寫與非字母符號），規定要有大寫與非字母字元就加 6 位元的熵；舉的例子是至少 8 個字元、大小寫字母數字符號各一個",
+      "sources": [
+        6,
+        8
+      ]
+    },
+    {
+      "claim": "三家媒體轉述《華爾街日報》說這份指引要人每 90 天換一次密碼，但 NIST 原文沒有 90 天：附錄 A 計算猜測次數時，舉的例子是十年或兩年換一次（1.0 到 1.0.2 版的勘誤清單沒有列出附錄 A 的修改）",
+      "sources": [
+        6,
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "claim": "附錄 A 自己寫著：被迫加大寫或符號的人多半把大寫放開頭、符號放結尾，或用 $ 代替 s；NIST 沒有多少真實的密碼資料，所以改用 Shannon 對英文文字的研究粗估，只能當非常粗略的經驗法則",
+      "sources": [
+        6,
+        0
+      ]
+    },
+    {
+      "claim": "2017 年 8 月 Burr 對《華爾街日報》說「Much of what I did I now regret」（我做過的很多事，現在都後悔）；BizTech 與 Engadget 的引述一字不差，Consumer Reports 引的是同一次訪問的另一句「barking up the wrong tree」（找錯了方向）",
+      "sources": [
+        1,
+        2,
+        0
+      ],
+      "core": true
+    },
+    {
+      "claim": "被規定定期換密碼時，很多人只把一個字元從 1 改成 2；FTC 首席技術專家 Lorrie Cranor 2016 年 3 月引用北卡羅來納大學的研究：知道舊密碼，17% 的帳號不到 5 次就能猜中新密碼，常見改法包括數字加一、把 S 換成 $",
+      "sources": [
+        0,
+        4
+      ]
+    },
+    {
+      "claim": "2017 年 6 月的 SP 800-63B 第 5.1.1.2 節改成：驗證者不應（SHOULD NOT）強加組合規則，不應無故（例如定期）要求更換密碼，有外洩證據時才必須換",
+      "sources": [
+        3
+      ]
+    },
+    {
+      "claim": "現行的 SP 800-63B-4 自 2025 年 8 月 1 日起取代 2017 年版，第 3.1.1.2 節寫成不得（SHALL NOT）強加組合規則、不得要求定期換密碼；單獨使用的密碼至少 15 個字元、應允許至少 64 個字元，並要比對常見或外洩過的密碼清單",
+      "sources": [
+        7,
+        3
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.consumerreports.org/consumerist/man-who-suggested-complicated-always-changing-passwords-now-has-regrets/",
+      "publisher": "Consumer Reports（Consumerist，2017 年 8 月 8 日）",
+      "kind": "news",
+      "supports": "轉述《華爾街日報》：Burr 是 NIST 中階主管、2003 年寫下八頁入門說明、被政府機關與企業採用、沒有多少真實密碼資料；Burr 的「barking up the wrong tree」；很多人只把 1 改成 2；說指引要求每 90 天換一次",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://biztechmagazine.com/article/2017/08/password-rule-guru-bill-burr-now-regrets-his-advice",
+      "publisher": "BizTech Magazine（Phil Goldstein，2017 年 8 月 8 日）",
+      "kind": "news",
+      "supports": "Burr 對《華爾街日報》說「Much of what I did I now regret」；中階主管、2003 年、八頁文件；被業界、大學與聯邦機關廣泛採用；說指引要求每 90 天換一次",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.engadget.com/2017-08-08-nist-new-password-guidelines.html",
+      "publisher": "Engadget（Swapna Krishna，2017 年 8 月 8 日）",
+      "kind": "news",
+      "supports": "同一句「Much of what I did I now regret」；2003 年的密碼入門說明；被迫每 90 天換密碼時多半只換一個字元",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://pages.nist.gov/800-63-3/sp800-63b.html",
+      "publisher": "NIST（SP 800-63B，2017 年 6 月）",
+      "kind": "official",
+      "supports": "第 5.1.1.2 節：不應強加組合規則、不應無故（例如定期）要求更換密碼、有外洩證據才必須換；頁面註明 2025 年 8 月 1 日起由 SP 800-63-4 取代",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.ftc.gov/policy/advocacy-research/tech-at-ftc/2016/03/time-rethink-mandatory-password-changes",
+      "publisher": "Federal Trade Commission（首席技術專家 Lorrie Cranor，2016 年 3 月 2 日）",
+      "kind": "official",
+      "supports": "北卡羅來納大學研究：知道舊密碼，17% 的帳號不到 5 次就猜中新密碼；可預期的改法（數字加一、S 換成 $）；強制定期換密碼有時弊多於利",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://csrc.nist.gov/pubs/sp/800/63/final",
+      "publisher": "NIST Computer Security Resource Center（SP 800-63 1.0 版）",
+      "kind": "official",
+      "supports": "《Electronic Authentication Guideline》1.0 版 2004 年 6 月發布，作者 William Burr、Donna Dodson、W. Polk，是給聯邦機關導入電子身分驗證的技術指引",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-63ver1.0.2.pdf",
+      "publisher": "NIST（SP 800-63 1.0.2 版全文，2006 年 4 月）",
+      "kind": "official",
+      "supports": "附錄 A 在第 46–53 頁：組合規則加 6 位元、8 字元大小寫數字符號的例子、兩年與十年換一次的例子、沒有 90 天；使用者會用 $ 代替 s；缺乏真實資料而用 Shannon 的研究；勘誤清單沒有列出附錄 A 自 1.0 版以來的修改",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://pages.nist.gov/800-63-4/sp800-63b.html",
+      "publisher": "NIST（SP 800-63B-4，現行版）",
+      "kind": "official",
+      "supports": "第 3.1.1.2 節：不得強加組合規則、不得要求定期換密碼、有外洩證據才必須換；單獨使用的密碼至少 15 字元、應允許至少 64 字元、要比對封鎖清單；本版取代 SP 800-63B",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Password_policy",
+      "publisher": "Wikipedia（Password policy）",
+      "kind": "reference",
+      "supports": "整理 NIST 密碼規則的兩個版本：2004 年《NIST Special Publication 800-63, Appendix A》建議密碼混用不規則大小寫、特殊符號並至少含一個數字；2017 年改版不再要求組合規則與無故定期更換",
+      "checked": "2026-09-28"
+    }
+  ],
+  "names": [
+    "Bill Burr",
+    "William Burr",
+    "Burr",
+    "NIST",
+    "National Institute of Standards and Technology",
+    "美國國家標準與技術研究院",
+    "Donna Dodson",
+    "W. Timothy Polk",
+    "Claude Shannon",
+    "Shannon",
+    "Lorrie Cranor",
+    "Cranor",
+    "Federal Trade Commission",
+    "FTC",
+    "美國聯邦貿易委員會",
+    "Wall Street Journal",
+    "華爾街日報",
+    "Consumer Reports",
+    "BizTech",
+    "Engadget",
+    "University of North Carolina",
+    "北卡羅來納大學"
+  ],
+  "cast": [
+    {
+      "id": "manager",
+      "role": "撰寫 2003 年密碼建議的政府機構中階主管",
+      "appearance": "a man in his late fifties wearing a short-sleeve light-colored dress shirt with a plain tie, khaki trousers, short greying hair, wire-frame glasses, holding a clipboard with a thin printed document, standing in a plain government-office cubicle"
+    }
+  ],
+  "image_notes": "畫面是 2000 年代的美國政府辦公室、資訊部門，以及居家或辦公室裡輸入密碼的畫面。不畫 NIST 或 FTC 的官方印信與標誌；不畫真實 Bill Burr 或其他真人的長相；螢幕上的密碼欄只畫成一排通用的圓點，不寫出任何字元、規則文字或文件內容，不出現任何真實作業系統、瀏覽器或網站的介面與商標。",
+  "sensitivity": "none",
+  "related_guide": null,
+  "thumbnail": {
+    "headline": "寫規則的人後悔了",
+    "idea": "螢幕上的密碼欄只有一排圓點，旁邊一位拿著薄薄一疊文件的年長公務員若有所思地回頭看"
+  }
+}

@@ -1,0 +1,93 @@
+name: YouTube VPS uploader
+on:
+  pull_request:
+    paths:
+      - "services/youtube-uploader/**"
+      - "ops/youtube-uploader/**"
+      - ".github/workflows/youtube-uploader.yml"
+      - "docker-compose.prod.yml"
+  push:
+    branches: [main]
+    paths:
+      - "services/youtube-uploader/**"
+      - "ops/youtube-uploader/**"
+      - ".github/workflows/youtube-uploader.yml"
+      - "docker-compose.prod.yml"
+permissions:
+  contents: read
+concurrency:
+  group: youtube-uploader-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+jobs:
+  uploader:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      UPLOADER_CHANNEL_ID: UCaaaaaaaaaaaaaaaaaaaaaa
+      UPLOADER_API_NETWORK: mokaair-uploader-ci-rpc
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: services/youtube-uploader/package-lock.json
+      - run: npm ci --no-audit --no-fund
+        working-directory: services/youtube-uploader
+      - run: npx playwright install --with-deps chromium
+        working-directory: services/youtube-uploader
+      - run: npm test
+        working-directory: services/youtube-uploader
+      - name: Prepare disposable CI secrets
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/uploader-secrets"
+          printf '%s' 'ci-only-service-secret-not-for-deployment' > "$RUNNER_TEMP/uploader-secrets/uploader"
+          printf '%s' 'ci-only-vnc-password' > "$RUNNER_TEMP/uploader-secrets/vnc_password"
+          chmod 755 "$RUNNER_TEMP/uploader-secrets"
+          chmod 444 "$RUNNER_TEMP/uploader-secrets/"*
+          printf 'UPLOADER_SECRET_PATH=%s\n' "$RUNNER_TEMP/uploader-secrets/uploader" >> "$GITHUB_ENV"
+          printf 'UPLOADER_VNC_PASSWORD_PATH=%s\n' "$RUNNER_TEMP/uploader-secrets/vnc_password" >> "$GITHUB_ENV"
+          sudo install -d -m 0700 -o 10001 -g 10001 "$RUNNER_TEMP/uploader-api-secret"
+          sudo install -m 0400 -o 10001 -g 10001 "$RUNNER_TEMP/uploader-secrets/uploader" "$RUNNER_TEMP/uploader-api-secret/service-secret"
+          printf 'UPLOADER_CI_API_SECRET_DIR=%s\n' "$RUNNER_TEMP/uploader-api-secret" >> "$GITHUB_ENV"
+      - name: Build the independent container with its deployment Compose
+        run: docker compose -f ops/youtube-uploader/compose.yml build
+      - name: Start the headful desktop and check readiness without an account
+        shell: bash
+        run: |
+          set -euo pipefail
+          docker compose -f ops/youtube-uploader/compose.yml up -d --no-build --pull never
+          trap 'docker compose -f ops/youtube-uploader/compose.yml down -v >/dev/null' EXIT
+          for attempt in $(seq 1 30); do
+            if docker compose -f ops/youtube-uploader/compose.yml exec -T uploader node -e "Promise.all([fetch('http://127.0.0.1:8789/health'),fetch('http://127.0.0.1:6080/vnc.html')]).then(rs=>process.exit(rs.every(r=>r.ok)?0:1)).catch(()=>process.exit(1))"; then
+              exit 0
+            fi
+            sleep 2
+          done
+          docker compose -f ops/youtube-uploader/compose.yml logs
+          exit 1
+      - name: Verify same-host RPC and API recreation
+        shell: bash
+        run: |
+          set -euo pipefail
+          uploader() { docker compose -f ops/youtube-uploader/compose.yml -f ops/youtube-uploader/compose.mokaair.yml "$@"; }
+          client() { docker compose -f ops/youtube-uploader/ci-rpc.compose.yml "$@"; }
+          cleanup() { uploader down -v >/dev/null; client down -v >/dev/null; }
+          trap cleanup EXIT
+          client up -d --no-build --pull never
+          uploader up -d --no-build --pull never
+          test "$(docker network inspect --format '{{.Internal}}' "$UPLOADER_API_NETWORK")" = true
+          ready=0
+          for attempt in $(seq 1 30); do
+            if uploader exec -T uploader node -e "fetch('http://127.0.0.1:8789/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"; then
+              ready=1
+              break
+            fi
+            sleep 2
+          done
+          test "$ready" = 1
+          client exec -T client node --input-type=module < ops/youtube-uploader/ci-rpc-check.mjs
+          client up -d --force-recreate --no-build --pull never
+          client exec -T client node --input-type=module < ops/youtube-uploader/ci-rpc-check.mjs

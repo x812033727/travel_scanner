@@ -17,9 +17,9 @@ import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { AutomationError, automationClient } from "../automation/client.mjs";
 import { GATES, approvalState, approve, readApprovals, sha256File } from "../core/approvals.mjs";
 import { isCompilation } from "../core/compilation.mjs";
-import { isDrama, shotScenes } from "../core/drama.mjs";
+import { hasCast, isDrama, shotScenes } from "../core/drama.mjs";
 import { atomicWrite, docDir, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
-import { dubRole, dubsForUpload } from "../core/stages.mjs";
+import { chosenLocales, dubRole, dubsForUpload, LANGUAGES_FILE, readLanguages } from "../core/stages.mjs";
 import { ARTIFACTS, loadProject, pipelineStatus } from "../core/state.mjs";
 import { narrativeHash, scriptScenes, writeScreenplay } from "../core/screenplay.mjs";
 import { estimateTimeline, formatClock } from "../core/timeline.mjs";
@@ -32,9 +32,11 @@ import { USER_AGENT } from "../tts/client.mjs";
 // Mirrors PART_BYTES in apps/api/app/video_reviews/storage.py: under nginx's 6 MB request cap.
 export const PART_BYTES = 4 * 1024 * 1024;
 // look and storyboard are the drama format's gates (docs/videos/DRAMA.md); script is a series
-// episode's screenplay, read before any image or clip is paid for (docs/videos/SERIES.md); dubs is
-// the owner's "uploaded" on the dub tracks (docs/videos/DUBS.md), sent only when asked for with --gate.
-export const REVIEW_GATES = ["outline", "script", "look", "audio", "storyboard", "final", "publish", "dubs"];
+// episode's screenplay, read before any image or clip is paid for (docs/videos/SERIES.md);
+// languages is a batch of the languages the owner chose after the final cut, with their files
+// (docs/videos/LANGUAGES.md), and dubs what that gate was when it carried dub tracks alone
+// (docs/videos/DUBS.md); both are sent only when asked for with --gate.
+export const REVIEW_GATES = ["outline", "script", "look", "audio", "storyboard", "final", "publish", "languages", "dubs"];
 const UPLOAD_CHECKLIST = path.join("upload", "UPLOAD.md");
 
 // The owner reads the site in Traditional Chinese; status's step ids are English. Every step of
@@ -60,7 +62,7 @@ export const STEP_LABELS = {
   "clips generated": "片段生成",
   "music generated": "配樂生成",
   "video assembled": "成片合成",
-  "captions written": "五語字幕",
+  "captions written": "字幕",
   "final video approved": "成片核准",
   "upload package": "上傳包",
   "on YouTube": "已上 YouTube",
@@ -351,11 +353,14 @@ const imageType = (file) => IMAGE_TYPES[path.extname(file).toLowerCase()] ?? "ap
 
 /**
  * The next gate whose content exists and is not approved as it stands; null when none. A drama
- * (docs/videos/DRAMA.md) puts the look before the narration and the storyboard before the cut.
+ * (docs/videos/DRAMA.md) reads its screenplay before the sheets (docs/videos/DRAMA-FLOW.md,
+ * section 2), puts the look before the narration and the storyboard before the cut; a drama with
+ * no characters has no look to approve.
  */
 async function nextGate(places, workdir, doc) {
   // A compilation's episodes went through every gate; the owner sees its cut, then its package.
-  const order = isCompilation(doc) ? ["final"] : isDrama(doc) ? ["outline", ...(doc.series ? ["script"] : []), "look", "audio", "storyboard", "final"] : ["outline", "audio", "final"];
+  // Every other drama has a script gate (docs/videos/DRAMA-FLOW.md, section 2).
+  const order = isCompilation(doc) ? ["final"] : isDrama(doc) ? ["outline", "script", ...(hasCast(doc) ? ["look"] : []), "audio", "storyboard", "final"] : ["outline", "audio", "final"];
   for (const gate of order) {
     const state = await approvalState({ gate, ...places });
     if (state.status === "missing" || state.status === "stale") return gate;
@@ -442,7 +447,9 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
     const checks = readJson(path.join(workdir, ARTIFACTS.checks), null) ?? {};
     const compilation = isCompilation(doc);
-    const { metadata } = composeMetadata({ doc, timeline, translations: project.translations, pack: project.pack });
+    // The owner's language choice, when there is one already (docs/videos/LANGUAGES.md).
+    const languages = readLanguages(workdir);
+    const { metadata } = composeMetadata({ doc, timeline, translations: project.translations, pack: project.pack, locales: chosenLocales(languages, "metadata") });
     const files = [await upload(request, slug, await preview(ctx, workdir, "preview", file, { compilation }), "preview", "video/mp4")];
     const sheet = path.join(workdir, ARTIFACTS.contactSheet);
     if (existsSync(sheet)) files.push(await upload(request, slug, sheet, "contact_sheet", "image/png"));
@@ -451,7 +458,7 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     // The dub tracks made so far go up beside the cut, so the owner can hear them on the site
     // (docs/videos/DUBS.md). Only the m4a form: it is the audio type the review store takes.
     // A compilation has none of its own: its episodes' dubs are theirs.
-    const { dubs, skipped: skippedDubs } = compilation ? { dubs: [], skipped: {} } : dubsForUpload(project, workdir, timeline.speech_hash);
+    const { dubs, skipped: skippedDubs } = compilation ? { dubs: [], skipped: {} } : dubsForUpload(project, workdir, timeline.speech_hash, chosenLocales(languages, "dub") ?? undefined);
     const dubEntries = {};
     for (const dub of dubs) {
       const role = dub.format === "m4a" ? dubRole(dub.locale) : null;
@@ -476,9 +483,10 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
       files,
     };
   }
+  if (gate === "languages") return languagesSubmission({ request, project, workdir, slug });
   if (gate === "dubs") {
     const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
-    const { dubs, skipped } = dubsForUpload(project, workdir, timeline?.speech_hash);
+    const { dubs, skipped } = dubsForUpload(project, workdir, timeline?.speech_hash, chosenLocales(readLanguages(workdir), "dub") ?? undefined);
     if (!dubs.length && !Object.keys(skipped).length) throw new ReviewError("no dub track to send yet: run dub first", { who: "owner" });
     const files = [];
     const locales = {};
@@ -507,6 +515,71 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
 /** The publish summary's note for a compilation: the size, and that the file is downloaded from the site. */
 export function downloadNote(bytes) {
   return `合集 ${(bytes / 1024 ** 3).toFixed(2)} GB，成片從網站下載後上傳`;
+}
+
+// The Traditional Chinese names of a language's parts, for a batch's summary line.
+const PART_NAMES = { metadata: "標題說明", captions: "CC", dub: "配音" };
+
+/**
+ * The languages gate (docs/videos/LANGUAGES.md): one batch of the languages the owner chose, as
+ * far as they are made. For each chosen language, each chosen part's state and file: the title
+ * and description as `description_<locale>` and the captions as `captions_<locale>`, both from
+ * the upload package (so `package` runs first); the dub track as `dub_<locale>` (the m4a form,
+ * the audio type the store takes) or the reason the worker gave it up. A part not made yet is
+ * left out, which the site reads as still in the making. The site approves a batch without a dub
+ * track on arrival; one with a track waits for the owner to upload it in Studio and say so. The
+ * approval binds to the manifest written here of what was sent.
+ */
+async function languagesSubmission({ request, project, workdir, slug }) {
+  const languages = readLanguages(workdir);
+  if (!languages) throw new ReviewError(`no language choice in ${LANGUAGES_FILE}; the worker writes it from /admin/videos`, { who: "owner" });
+  const chosen = Object.entries(languages.locales);
+  if (!chosen.length) throw new ReviewError("the owner chose Traditional Chinese only; there is no language batch to send", { who: "owner" });
+  const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
+  const { dubs, skipped } = dubsForUpload(project, workdir, timeline?.speech_hash, chosenLocales(languages, "dub"));
+  const files = [];
+  const locales = {};
+  const said = [];
+  for (const [locale, choice] of chosen) {
+    const entry = {};
+    const made = [];
+    const description = path.join(workdir, UPLOAD_DIR, `description.${locale}.txt`);
+    if (choice.metadata && existsSync(description)) {
+      files.push(await upload(request, slug, description, `description_${locale}`, "text/plain"));
+      entry.metadata = "ready";
+      made.push(PART_NAMES.metadata);
+    }
+    const captions = path.join(workdir, UPLOAD_DIR, "captions", `${locale}.srt`);
+    if (choice.captions && existsSync(captions)) {
+      files.push(await upload(request, slug, captions, `captions_${locale}`, "text/plain"));
+      entry.captions = "ready";
+      made.push(PART_NAMES.captions);
+    }
+    if (choice.dub) {
+      const dub = dubs.find((each) => each.locale === locale);
+      if (dub) {
+        const role = dub.format === "m4a" ? dubRole(locale) : null;
+        if (role) files.push(await upload(request, slug, dub.file, role, "audio/mp4"));
+        Object.assign(entry, { dub: "ready", file: path.basename(dub.file), format: dub.format, tempo_max: dub.tempo_max, file_role: role, sha256: await sha256File(dub.file) });
+        made.push(PART_NAMES.dub);
+      } else if (skipped[locale] !== undefined) {
+        entry.dub = { status: "skipped", reason: skipped[locale] };
+        made.push(`${PART_NAMES.dub}跳過（${skipped[locale] || "沒有寫原因"}）`);
+      }
+    }
+    locales[locale] = entry;
+    said.push(`${locale} ${made.join("、") || "還在做"}`);
+  }
+  const file = GATES.languages({ workdir });
+  atomicWrite(file, `${JSON.stringify({ speech_hash: timeline?.speech_hash ?? null, decided_at: languages.decided_at, locales }, null, 2)}\n`);
+  const dubbed = Object.values(locales).some((entry) => entry.dub === "ready");
+  return {
+    gate: "languages",
+    content_sha256: await sha256File(file),
+    summary: `語言：${said.join("；")}。${dubbed ? "配音到 Studio「語言」上傳後按「已在 Studio 上傳配音」" : "沒有要你上傳的配音"}`,
+    payload: { locales },
+    files,
+  };
 }
 
 /**
@@ -589,7 +662,35 @@ async function lookSubmissions({ request, project, workdir }) {
   return bodies;
 }
 
-/** The storyboard gate: every keyframe and the contact sheet, with the judge's verdicts; bound to keyframes/manifest.json. */
+// Mirrors MAX_REVIEW_FILES in apps/api/app/video_reviews/schemas.py: the most files one review takes.
+export const MAX_REVIEW_FILES = 48;
+// The shots on a page of the storyboard's contact sheet (docs/videos/STORY.md); read only when a
+// manifest lists its pages without the shots on each.
+const SHEET_PAGE_SHOTS = 24;
+
+/**
+ * The storyboard's contact sheets as [{ file, shots }] in page order, each file there: the pages
+ * the keyframes manifest lists in contact_sheets ({ file, shots }, or a bare file holding the next
+ * 24 shots), else the one sheet of every shot. `ids` are the drawn shots, in order.
+ */
+export function storyboardSheets(manifest, ids, workdir) {
+  const pages = Array.isArray(manifest.contact_sheets) && manifest.contact_sheets.length
+    ? manifest.contact_sheets.map((page, index) => ({
+        file: typeof page === "string" ? page : page?.file,
+        shots: Array.isArray(page?.shots) ? page.shots : ids.slice(index * SHEET_PAGE_SHOTS, (index + 1) * SHEET_PAGE_SHOTS),
+      }))
+    : [{ file: "keyframes/contact-sheet.png", shots: ids }];
+  return pages.filter((page) => typeof page.file === "string" && existsSync(path.join(workdir, page.file))).slice(0, MAX_REVIEW_FILES);
+}
+
+/**
+ * The storyboard gate, bound to keyframes/manifest.json: every keyframe and the contact sheet,
+ * with the judge's verdicts. When that is more files than a review takes (a brand story has 85 to
+ * 100 shots, docs/videos/STORY.md), the contact sheets go up instead, then the keyframes of the
+ * shots left for a prompt fix, as many as fit. The payload still lists every shot, `file_role`
+ * null for one whose keyframe stayed home; `sheets` names each sheet's role and shots, and
+ * `omitted` counts the keyframes that stayed home.
+ */
 async function storyboardSubmission({ request, project, workdir }) {
   const { doc } = project;
   const file = path.join(workdir, ARTIFACTS.keyframes);
@@ -597,36 +698,54 @@ async function storyboardSubmission({ request, project, workdir }) {
   if (!manifest?.shots) throw new ReviewError("keyframes/manifest.json is missing; run keyframes first", { who: "owner" });
   const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
   const seconds = new Map((timeline?.scenes ?? []).map((scene) => [scene.id, Math.round(((scene.end_frame - scene.start_frame) / (timeline.fps || 30)) * 10) / 10]));
+  // A shot's role is its place in the video (shot_07) whichever keyframes go up.
+  const drawn = [...shotScenes(doc).entries()].filter(([, scene]) => manifest.shots[scene.id]?.file);
+  const sheets = storyboardSheets(manifest, drawn.map(([, scene]) => scene.id), workdir)
+    .map((sheet, index, all) => ({ ...sheet, role: all.length === 1 ? "contact_sheet" : `contact_sheet_${String(index + 1).padStart(2, "0")}` }));
+  const whole = drawn.length + sheets.length <= MAX_REVIEW_FILES;
   const files = [];
+  const sendSheets = async () => {
+    for (const sheet of sheets) files.push(await upload(request, doc.slug, path.join(workdir, sheet.file), sheet.role, imageType(sheet.file)));
+  };
+  if (!whole) await sendSheets();
   const shots = [];
-  for (const [index, scene] of shotScenes(doc).entries()) {
+  for (const [index, scene] of drawn) {
     const shot = manifest.shots[scene.id];
-    if (!shot?.file) continue;
     const role = `shot_${String(index + 1).padStart(2, "0")}`;
-    files.push(await upload(request, doc.slug, path.join(workdir, shot.file), role, imageType(shot.file)));
+    const sent = whole || (Boolean(shot.needs_review) && files.length < MAX_REVIEW_FILES);
+    if (sent) files.push(await upload(request, doc.slug, path.join(workdir, shot.file), role, imageType(shot.file)));
     shots.push({
       id: scene.id,
       chapter: scene.chapter ?? null,
       prompt: scene.data?.prompt ?? "",
       seconds: seconds.get(scene.id) ?? null,
-      file_role: role,
+      file_role: sent ? role : null,
       needs_review: Boolean(shot.needs_review),
       judge: { overall: shot.judge?.overall ?? null, problems: shot.judge?.problems ?? [] },
     });
   }
-  const sheet = path.join(workdir, "keyframes", "contact-sheet.png");
-  if (existsSync(sheet) && files.length < 48) files.push(await upload(request, doc.slug, sheet, "contact_sheet", "image/png"));
+  if (whole) await sendSheets();
   const scores = shots.map((shot) => shot.judge.overall).filter((score) => typeof score === "number");
   const lowest = scores.length ? Math.min(...scores) : null;
   const waiting = shots.filter((shot) => shot.needs_review);
   // Only the shots left for a prompt fix carry problems here: a board the judge passed whole
   // may be approved automatically when the owner allows it.
   const problems = [...new Set(waiting.flatMap((shot) => shot.judge.problems))];
+  // Every keyframe with at most one sheet is the review as it always was; any other names its
+  // sheets, so the card can point to the page of a shot listed without its keyframe.
+  const asBefore = whole && sheets.length <= 1;
+  const unshown = waiting.filter((shot) => !shot.file_role).length;
+  const board = asBefore ? "" : `（${sheets.length ? `聯絡表 ${sheets.length} 頁` : "沒有聯絡表"}）`;
   return {
     gate: "storyboard",
     content_sha256: await sha256File(file),
-    summary: `分鏡 ${shots.length} 鏡${lowest === null ? "" : `，judge 最低 ${lowest}/10`}${waiting.length ? `，${waiting.length} 鏡待修` : ""}`,
-    payload: { shots, judge: { overall: lowest, problems }, duplicates: manifest.duplicates ?? [] },
+    summary: `分鏡 ${shots.length} 鏡${board}${lowest === null ? "" : `，judge 最低 ${lowest}/10`}${waiting.length ? `，${waiting.length} 鏡待修` : ""}${unshown ? `，其中 ${unshown} 鏡沒附單張圖` : ""}`,
+    payload: {
+      shots,
+      judge: { overall: lowest, problems },
+      duplicates: manifest.duplicates ?? [],
+      ...(asBefore ? {} : { sheets: sheets.map((sheet) => ({ role: sheet.role, shots: sheet.shots })), omitted: shots.filter((shot) => !shot.file_role).length }),
+    },
     files,
   };
 }
@@ -782,6 +901,7 @@ async function recordApproval(review, { dir, workdir, now }) {
   const note = `approved on /admin/videos at ${review.decided_at}${review.choice ? `; chose outline ${review.choice}` : ""}${review.note ? `; ${review.note}` : ""}`;
   await approve({ gate: review.gate, docDir: dir, workdir, now, note });
   if (review.gate === "publish") return "the owner confirmed the upload; follow upload/UPLOAD.md in YouTube Studio";
+  if (review.gate === "languages") return "the language batch is recorded; its dub tracks, if any, are up in YouTube Studio";
   if (review.gate === "dubs") return "the owner uploaded these dub tracks in YouTube Studio";
   return `approval recorded${review.choice ? ` (outline ${review.choice})` : ""}`;
 }

@@ -11,17 +11,19 @@ import { EXIT, main } from "../cli.mjs";
 import { readApprovals } from "../core/approvals.mjs";
 import { lookHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
 import { dramaFixture, fixture, sandbox } from "../core/fixtures/load.mjs";
+import { shortsFile } from "../shorts/episode.mjs";
 import { atomicWrite, readJson, ROOT } from "../core/paths.mjs";
 import { eachLine } from "../core/schema.mjs";
-import { pipelineStatus } from "../core/state.mjs";
+import { dubArtifacts, loadProject, pipelineStatus } from "../core/state.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
+import { dubScript, translationHash } from "../dubs/plan.mjs";
 import { ITEM_IDS } from "../qa/checks.mjs";
 import { jpegBytes } from "../qa/test-images.mjs";
 import { PART_BYTES } from "../review/sync.mjs";
 import { automationClient } from "./client.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
-import { Automation, automatedVideos, mainGuide, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, settle, sheetDone, siteArticleUrl, siteSources } from "./flow.mjs";
-import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, STANCE_HEADING } from "./prompts.mjs";
+import { Automation, automatedVideos, mainGuide, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, settingsFor, settle, sheetDone, siteArticleUrl, siteSources } from "./flow.mjs";
+import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, STANCE_HEADING, TRANSLATOR_SHORTEN } from "./prompts.mjs";
 
 const TOKEN = `mkv_${"t".repeat(43)}`;
 const SITE = "https://site.test";
@@ -160,6 +162,8 @@ test("a worksheet is done only when every line, chapter, title, description and 
 // The items the site requires on a final cut and on an upload package (judge.py QA_ITEMS, PACKAGE_ITEMS).
 const QA_ITEMS = ["assemble", "render", "narration", "pace", "captions", "metadata", "facts", "links", "thumbnail", "policy", "disclosure"];
 const PACKAGE_ITEMS = ["files", "descriptions", "captions", "disclosure"];
+const LANGUAGE_PARTS = ["metadata", "captions", "dub"];
+const LANGUAGES_AUTO_NOTE = "這一批沒有要你上傳的配音，依規則自動核准";
 
 /** Jev's answer on an outline, as the judge endpoint shapes it (judge.py OutlinePick). */
 function jevPick(choice, { passed = true, stance = 0.9, demo = 0.8, advice = 0.1, keys = ["A", "B"] } = {}) {
@@ -184,8 +188,36 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
   const requests = dramaRequests.map((request) => ({ status: "queued", slug: null, ...request }));
   const projects = new Map();
   // /admin/videos as a list: videos made elsewhere, then whatever the worker reports.
-  const listed = new Map(videos.map((video) => [video.slug, { dropped_at: null, dropped_note: null, source_guide: null, youtube_video_id: null, ...video }]));
+  const listed = new Map(videos.map((video) => [video.slug, { dropped_at: null, dropped_note: null, source_guide: null, youtube_video_id: null, locales: {}, locales_decided_at: null, ...video }]));
   const reviewsOf = (slug) => projects.get(slug) ?? projects.set(slug, []).get(slug);
+  const partState = (value) => (typeof value === "string" ? value : value?.status);
+  /**
+   * The video as the worker's list carries it (apps/api/app/video_reviews/schemas.py
+   * ProjectSummary): the owner's choice, where each chosen part stands from the languages
+   * reviews (admin_service.language_states, oldest batch first), and the ready-to-upload verdict.
+   */
+  const withLanguages = (video) => {
+    const languages = {};
+    for (const [locale, choice] of Object.entries(video.locales ?? {})) {
+      languages[locale] = {};
+      for (const part of LANGUAGE_PARTS) if (choice[part] || (part === "captions" && choice.dub)) languages[locale][part] = { state: "working", reason: null };
+    }
+    for (const review of [...reviewsOf(video.slug)].reverse()) {
+      if (review.gate !== "languages" || !["pending", "approved"].includes(review.status)) continue;
+      for (const [locale, parts] of Object.entries(review.payload?.locales ?? {})) {
+        for (const part of LANGUAGE_PARTS) {
+          if (!languages[locale]?.[part] || !(part in parts)) continue;
+          const status = partState(parts[part]);
+          if (!["ready", "skipped"].includes(status)) continue;
+          const state = status === "ready" && part === "dub" && review.status === "approved" ? "uploaded" : status;
+          languages[locale][part] = { state, reason: status === "skipped" ? (parts[part]?.reason ?? parts.reason ?? null) : null };
+        }
+      }
+    }
+    const confirmed = reviewsOf(video.slug).some((review) => review.gate === "publish" && review.status === "approved");
+    const settled = Object.values(languages).every((parts) => Object.values(parts).every((part) => part.state !== "working"));
+    return { ...video, locales: video.locales ?? {}, locales_decided_at: video.locales_decided_at ?? null, languages, ready_to_upload: !video.dropped_at && !video.youtube_video_id && confirmed && Boolean(video.locales_decided_at) && settled };
+  };
   const current = {
     enabled: true, draft_interval_hours: 72, topics_per_run: 1, max_waiting_drafts: 3,
     topic_scope: ["AI"], topic_avoid: ["投資建議"], topic_from_site: true, topic_from_search: true,
@@ -215,6 +247,8 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
       review.choice = review.payload.pick.choice;
     } else if (review.gate === "final" && current.auto_approve_final && itemsPassed(review.payload.qa, review.content_sha256, QA_ITEMS)) note = "自動品管 11 項全過，依設定自動核准";
     else if (review.gate === "publish" && current.auto_approve_final && itemsPassed(review.payload.package, review.content_sha256, PACKAGE_ITEMS)) note = "上傳包 4 項齊全，依設定自動核准";
+    // A language batch with no dub track has nothing for the owner to do (admin_service.languages_need_owner).
+    else if (review.gate === "languages" && !Object.values(review.payload?.locales ?? {}).some((parts) => partState(parts.dub) === "ready")) note = LANGUAGES_AUTO_NOTE;
     if (note) Object.assign(review, { status: "approved", note, decided_at: new Date().toISOString() });
   };
   const fetchImpl = async (url, init = {}) => {
@@ -233,7 +267,7 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
     }
     const body = init.body ? JSON.parse(init.body) : null;
     if (pathname === "/api/video/automation/settings") return json(current);
-    if (pathname === "/api/video/automation/videos") return json([...listed.values()]);
+    if (pathname === "/api/video/automation/videos") return json([...listed.values()].map(withLanguages));
     if (pathname === "/api/video/automation/judge/outline") {
       calls.judge.push(body);
       if (!current.auto_pick_outline || !current.channel_stance.trim()) return json({ code: "video_judge_not_enabled", detail: "頻道立場還是空白，或「由 Jev 挑大綱」關著；大綱照舊等站主" }, 409);
@@ -497,6 +531,47 @@ test("an outline sent back is re-planned with the owner's note, and a spent budg
 // auto_pick_look is the drama-look ticket's switch (docs/videos/HANDS-OFF.md); the server applies it on look reviews.
 const DRAMA_SETTINGS = { drama_enabled: true, style_preset: "ink-wash", subtitle_burn_in: true, music_enabled: false, auto_pick_look: false, character_voice_pool: [{ provider: "gemini", name: "Kore", hint: "少女" }] };
 
+test("a drama reads the drama part's own settings and falls back to the tutorial's (docs/videos/DRAMA-FLOW.md, section 1)", () => {
+  const voice = { provider: "gemini", name: "Sulafat", style: "Relaxed", model: null, rate: "+0%" };
+  const kore = { provider: "gemini", name: "Kore", style: "Grave", model: null, rate: "+0%" };
+  const tutorial = { voice, stage_instructions: { writer: "結尾留懸念" }, max_verify_rounds: 3, max_retake_rounds: 2, topic_scope: ["AI"] };
+  const split = { ...tutorial, drama: { ...DRAMA_SETTINGS, drama_voice: kore, drama_stage_instructions: { writer: "每集結尾一個懸念" }, drama_max_verify_rounds: 1, drama_max_retake_rounds: 0, drama_topic_scope: ["山海經"] } };
+  assert.deepEqual(settingsFor(split, "slides"), { voice, instructions: { writer: "結尾留懸念" }, verifyRounds: 3, retakeRounds: 2, topicScope: ["AI"] }, "a tutorial never reads the drama part");
+  assert.deepEqual(settingsFor(split, "drama"), { voice: kore, instructions: { writer: "每集結尾一個懸念" }, verifyRounds: 1, retakeRounds: 0, topicScope: ["山海經"] });
+  const following = { ...tutorial, drama: { ...DRAMA_SETTINGS, drama_voice: null, drama_stage_instructions: {}, drama_max_verify_rounds: 5, drama_max_retake_rounds: 1, drama_topic_scope: ["民間傳說"] } };
+  assert.deepEqual(settingsFor(following, "drama"), { voice, instructions: {}, verifyRounds: 5, retakeRounds: 1, topicScope: ["民間傳說"] }, "a null voice follows the tutorial's; empty instructions are empty, not the tutorial's");
+  const older = { ...tutorial, drama: DRAMA_SETTINGS };
+  assert.deepEqual(settingsFor(older, "drama"), { voice, instructions: { writer: "結尾留懸念" }, verifyRounds: 3, retakeRounds: 2, topicScope: ["AI"] }, "a site from before the split: the tutorial's values, as the migration copies them");
+  assert.deepEqual(settingsFor({ ...tutorial, drama: undefined }, "drama").voice, voice, "no drama object at all");
+
+  // settle() gives a drama the drama part's narrator voice, and a tutorial the channel voice.
+  const drama = settle(dramaFixture(), { slug: "jingwei", settings: split, sourceGuide: null, root: ROOT, format: "drama" });
+  assert.deepEqual(drama.voice, { provider: "gemini", name: "Kore", style: "Grave" }, "the drama's own voice, without the fields Gemini has no use for");
+  const followed = settle(dramaFixture(), { slug: "jingwei", settings: following, sourceGuide: null, root: ROOT, format: "drama" });
+  assert.equal(followed.voice.name, "Sulafat");
+  const slides = settle(fixture(), { slug: "z", settings: split, sourceGuide: null, root: ROOT });
+  assert.equal(slides.voice.name, "Sulafat", "a tutorial keeps the channel voice whatever the drama chose");
+});
+
+test("a drama stage ends its prompt with the drama part's standing instructions, a tutorial stage with the tutorial's", async () => {
+  const box = sandbox();
+  const site = fakeSite({ settings: { stage_instructions: { writer: "結尾留懸念" }, drama: { ...DRAMA_SETTINGS, drama_stage_instructions: { writer: "每集結尾一個懸念", verifier: "對照設定集" } } } });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-09-27T09:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  await automation.stage("writer", "jingwei", {}, 1000, "drama");
+  await automation.stage("verifier", "jingwei", {}, 1000, "drama");
+  await automation.stage("writer", "chatgpt-ads-off", {}, 1000, "slides");
+  await automation.stage("verifier", "chatgpt-ads-off", {}, 1000);
+  const [dramaWriter, dramaVerifier, slidesWriter, slidesVerifier] = site.calls.run;
+  assert.match(dramaWriter.instructions, /## The owner's standing instructions\n[\s\S]*每集結尾一個懸念$/);
+  assert.equal(dramaWriter.format, "drama");
+  assert.match(dramaVerifier.instructions, /對照設定集$/);
+  assert.match(slidesWriter.instructions, /## The owner's standing instructions\n[\s\S]*結尾留懸念$/);
+  assert.equal(slidesWriter.instructions.includes("每集結尾一個懸念"), false, "a tutorial never sees the drama's");
+  assert.equal(slidesVerifier.instructions.includes("## The owner's standing instructions"), false, "the tutorial part has none for the verifier");
+});
+
 test("a drama is settled with the settings tab's preset, subtitles and music, and its brief has the bible's sections", () => {
   const settings = { voice: { provider: "gemini", name: "Sulafat", style: "s", model: null, rate: "+0%" }, drama: DRAMA_SETTINGS };
   const video = { ...dramaFixture(), slug: "x" };
@@ -529,6 +604,101 @@ test("a drama is settled with the settings tab's preset, subtitles and music, an
 });
 
 const sha = (file) => createHash("sha256").update(readFileSync(file)).digest("hex");
+
+test("an explainer's drafted Shorts are saved with the fields the tool decides, and a bad draft is only noted", () => {
+  const box = sandbox("fixture-explainer", "explainer");
+  const drafted = JSON.parse(readFileSync(shortsFile(box.slug, box.root), "utf8")).map(({ slug: _slug, series: _series, line: _line, source: _source, format: _format, locale: _locale, schema_version: _version, ...rest }) => rest);
+  const site = fakeSite({ settings: { drama: DRAMA_SETTINGS } });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-09-28T10:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  const state = { slug: box.slug, notes: [] };
+  assert.equal(automation.saveShorts(state, drafted), "2 Shorts drafted");
+  const saved = JSON.parse(readFileSync(shortsFile(box.slug, box.root), "utf8"));
+  assert.deepEqual(saved.map((doc) => [doc.slug, doc.schema_version, doc.line, doc.series, doc.source.slug, doc.format]), [["fixture-explainer-short-1", 2, "cut", "sothatswhy", "fixture-explainer", "shorts"], ["fixture-explainer-short-2", 2, "cut", "sothatswhy", "fixture-explainer", "shorts"]]);
+  const before = readFileSync(shortsFile(box.slug, box.root), "utf8");
+  drafted[0].scenes[0].shot = "no-such-shot";
+  assert.equal(automation.saveShorts(state, drafted), "Shorts not saved (see notes)");
+  assert.match(state.notes[0], /"no-such-shot" is not a shot of fixture-explainer/);
+  assert.equal(automation.saveShorts(state, undefined), "Shorts not saved (see notes)");
+  assert.equal(readFileSync(shortsFile(box.slug, box.root), "utf8"), before, "a bad draft leaves the saved Shorts alone");
+  assert.match(instructionsFor("writer", "drama", "", "explainer"), /"shorts": the episode's two vertical Shorts/);
+});
+
+test("malformed optional Shorts leave the long video active and preserve the saved scripts", () => {
+  const box = sandbox("fixture-explainer", "explainer");
+  const file = shortsFile(box.slug, box.root);
+  const before = readFileSync(file, "utf8");
+  const videoFile = path.join(box.root, "docs", "videos", box.slug, "video.json");
+  const videoBefore = readFileSync(videoFile, "utf8");
+  const site = fakeSite({ settings: { drama: DRAMA_SETTINGS } });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-09-28T10:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  const state = { slug: box.slug, status: "active", notes: [] };
+  for (const fields of [{ scenes: {} }, { scenes: "bad" }, { scenes: [null] }, { scenes: [[]] }, { evidence: {} }, { evidence: [null] }]) {
+    const drafts = JSON.parse(before);
+    Object.assign(drafts[0], fields);
+    const notesBefore = state.notes.length;
+    assert.equal(automation.saveShorts(state, drafts), "Shorts not saved (see notes)");
+    assert.equal(state.status, "active");
+    assert.equal(state.notes.length, notesBefore + 1);
+    assert.match(state.notes.at(-1), /the drafted Shorts were not saved/);
+    assert.equal(readFileSync(file, "utf8"), before);
+    assert.equal(readFileSync(videoFile, "utf8"), videoBefore);
+  }
+});
+
+test("an explainer request plans, writes and checks with the explainer prompts, and is settled with no characters", async () => {
+  const brief = [
+    "# 為什麼雷聲總比閃電晚到？",
+    "## 問題",
+    "為什麼先看到閃電才聽到雷？",
+    "## 一句答案",
+    "光比聲音快太多。",
+    "## 站主觀點",
+    "（提案）數秒數就能算距離。",
+    "## 原因",
+    "- 光速與聲速",
+    "## 大綱",
+    "### 選項 A：從數秒數講起",
+    "一行說明：先數秒。",
+    "開場鉤子：「閃電亮了，你數到幾？」",
+    "### 選項 B：從賽跑講起",
+    "一行說明：先賽跑。",
+    "開場鉤子：「光和聲音賽跑，誰贏？」",
+    "",
+  ].join("\n");
+  assert.equal(planProblem({ slug: "thunder", brief, source_urls: [] }, new Set(), new Set(), "drama", "", "flat-explainer"), null);
+  assert.match(planProblem({ slug: "thunder", brief, source_urls: [] }, new Set(), new Set(), "drama"), /故事前提/, "a story drama still wants its bible");
+  assert.match(planProblem({ slug: "thunder", brief: brief.replace("## 一句答案", "## 答案"), source_urls: [] }, new Set(), new Set(), "drama", "", "flat-explainer"), /一句答案/);
+
+  for (const stage of ["planner", "writer", "verifier"]) assert.match(instructionsFor(stage, "drama", "", "explainer"), /illustrated "why" explainer/, stage);
+  assert.match(instructionsFor("writer", "drama", "", "explainer"), /"characters": \[\] \(always empty\)/);
+  assert.match(instructionsFor("planner", "drama", "", "explainer"), /## 一句答案/);
+  assert.equal(instructionsFor("listener", "drama", "", "explainer"), instructionsFor("listener", "drama"), "the listener has no explainer text of its own");
+
+  const settings = { voice: { provider: "gemini", name: "Sulafat", style: "s", model: null, rate: "+0%" }, drama: DRAMA_SETTINGS };
+  const written = { ...dramaFixture(), slug: "x" };
+  const settled = settle(written, { slug: "thunder", settings, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "flat-explainer" });
+  assert.equal(settled.look.preset, "flat-explainer", "the request's explainer preset beats the writer's");
+  assert.deepEqual(settled.characters, []);
+  assert.equal(settle(written, { slug: "y", settings, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "anime-2d" }).look.preset, "cinematic-3d", "any other request preset still yields to the writer's");
+
+  const box = sandbox();
+  const request = { id: "8b2e3d4c-5b6a-4f7e-9b8c-0d1e2f3a4b5c", premise: "為什麼雷聲總比閃電晚到？", title: null, source_guide: null, style_preset: "flat-explainer", target_minutes: 8, note: null };
+  const site = fakeSite({ answers: { planner: () => ({ slug: "why-thunder-is-late", title: "為什麼雷聲總比閃電晚到？", source_guide: null, source_urls: ["https://en.wikipedia.org/wiki/Speed_of_sound"], brief }) }, settings: { drama: DRAMA_SETTINGS, max_waiting_drafts: 1 }, dramaRequests: [request] });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-09-28T10:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = { ...smallRefs, drama: "the drama route", drama_example: dramaFixture(), drama_brief: brief };
+  assert.match(await automation.step(), /drama: why-thunder-is-late planned from the owner's request; outline sent/);
+  const planner = site.calls.run[0];
+  assert.equal(planner.variant, "explainer");
+  assert.match(planner.instructions, /illustrated "why" explainer/);
+  assert.equal(planner.payload.drama_settings.style_preset, "flat-explainer");
+  const state = automatedVideos(box.work).find((each) => each.slug === "why-thunder-is-late");
+  assert.equal(automation.variantOf(state), "explainer");
+  assert.equal(automation.variantOf({ ...state, style_preset: "ink-wash" }), null);
+  assert.equal(automation.variantOf({ ...state, series: { slug: "s", episode: 1 } }), "episode", "a series episode keeps its own variant");
+});
 
 test("an owner's drama request is planned first, its failed sheets go back to the writer, the gates wait for the owner, and a spent cap blocks the clips", async () => {
   const box = sandbox();
@@ -572,7 +742,8 @@ test("an owner's drama request is planned first, its failed sheets go back to th
   };
   const request = { id: "6f1d2c3b-4a59-4e6f-8a7b-9c0d1e2f3a4b", premise: "精衛填海：炎帝最小的女兒在東海溺水，化成一隻鳥。", title: null, source_guide: null, style_preset: "cinematic-3d", target_minutes: 2, note: "旁白慢一點" };
   // One video at a time: the owner's request takes the place, so no scheduled draft starts beside it.
-  const site = fakeSite({ answers, settings: { drama: DRAMA_SETTINGS, max_waiting_drafts: 1 }, dramaRequests: [request] });
+  // 「劇本先給我看」 is off: the screenplay is approved by the settings, not read by the owner.
+  const site = fakeSite({ answers, settings: { drama: { ...DRAMA_SETTINGS, series_script_gate: false }, max_waiting_drafts: 1 }, dramaRequests: [request] });
   const clock = { now: Date.parse("2026-09-26T10:00:00Z") };
   const { ctx } = context(box, site.fetchImpl, clock);
   const workdir = path.join(box.work, slug);
@@ -667,6 +838,11 @@ test("an owner's drama request is planned first, its failed sheets go back to th
   assert.match(site.calls.run.find((call) => call.stage === "verifier").instructions, /continuity checker/);
   assert.match(await automation.step(), /listener edit/);
   assert.match(site.calls.run.find((call) => call.stage === "listener").instructions, /"speaker"/);
+  // Every drama has the script gate (docs/videos/DRAMA-FLOW.md, section 2); with the switch off it is approved here.
+  assert.match(await automation.step(), /screenplay approved by the settings/);
+  assert.ok(existsSync(path.join(box.root, "docs", "videos", slug, "script.md")));
+  assert.ok(readApprovals(workdir).approvals.some((entry) => entry.gate === "script" && /依設定自動核准/.test(entry.note)));
+  assert.equal(site.reviewsOf(slug).filter((review) => review.gate === "script").length, 0, "nothing went to the owner");
 
   // look: the first run leaves 炎帝 without a passed sheet; the writer fixes the appearance; the second run passes.
   assert.match(await automation.step(), /look prompts fixed \(round 1\) for yandi; look runs again next/);
@@ -845,16 +1021,20 @@ test("Jev being down ends the run and the next one asks again; a judge switched 
   assert.equal("pick" in off.calls.reviews[0].payload, false);
 });
 
-/** A translator that fills every todo entry, so the captions pipeline runs end to end. */
+/**
+ * A translator that fills every todo entry of the parts the sheet holds (a field the sheet does
+ * not hold is null and stays so), so the languages pipeline runs end to end. A line's text
+ * carries no digit, so the shortening pass can cut it without changing a number.
+ */
 function filledSheet(sheet) {
   const { locale } = sheet;
   return {
     ...sheet,
-    title: { ...sheet.title, text: sheet.title.text || `${locale} title` },
-    description: { ...sheet.description, text: sheet.description.text || `${locale} description` },
-    tags: { ...sheet.tags, text: sheet.tags.text?.length ? sheet.tags.text : [`${locale} tag`] },
-    chapters: sheet.chapters.map((chapter) => ({ ...chapter, text: chapter.text || `${locale} ${chapter.scene}` })),
-    lines: sheet.lines.map((line) => ({ ...line, text: line.text || `${locale} ${line.id}` })),
+    title: sheet.title && { ...sheet.title, text: sheet.title.text || `${locale} title` },
+    description: sheet.description && { ...sheet.description, text: sheet.description.text || `${locale} description` },
+    tags: sheet.tags && { ...sheet.tags, text: sheet.tags.text?.length ? sheet.tags.text : [`${locale} tag`] },
+    chapters: (sheet.chapters ?? []).map((chapter) => ({ ...chapter, text: chapter.text || `${locale} ${chapter.scene}` })),
+    lines: (sheet.lines ?? []).map((line) => ({ ...line, text: line.text || `${locale} ${line.id.replace(/[0-9]/g, "x")}` })),
   };
 }
 
@@ -928,8 +1108,8 @@ test("from the picked outline to YouTube without the owner: the final gate sends
   assert.ok(readApprovals(workdir).approvals.some((entry) => entry.gate === "audio"));
   assert.match(await automation.step(), /frames rendered/);
   assert.match(await automation.step(), /video assembled/);
-  assert.match(await automation.step(), /en captions translated and reviewed/);
   assert.match(await automation.step(), /captions written/);
+  assert.equal(site.calls.run.filter((call) => call.stage === "translator").length, 0, "no language is translated before the owner chooses (docs/videos/LANGUAGES.md)");
 
   // The final gate: review-push runs qa and sends its report; the site approves on arrival.
   assert.match(await automation.step(), /final sent to \/admin\/videos/);
@@ -949,8 +1129,9 @@ test("from the picked outline to YouTube without the owner: the final gate sends
   const metadata = readJson(path.join(workdir, "upload", "metadata.json"));
   assert.deepEqual([metadata.contains_synthetic_media, metadata.disclosure_reason], [false, "slides read by a stock TTS voice; YouTube's disclosure covers realistic synthetic people, events and places"]);
   assert.deepEqual(Object.keys(metadata).slice(-2), ["contains_synthetic_media", "disclosure_reason"], "the same two keys last, as qa writes them");
-  assert.deepEqual(metadata.captions, ["captions/en.srt", "captions/zh-TW.srt"]);
-  assert.deepEqual(Object.keys(metadata.skipped_caption_locales), ["ja", "ko", "zh-CN"], "every configured locale without a file says why");
+  assert.deepEqual(metadata.captions, ["captions/zh-TW.srt"]);
+  assert.deepEqual(Object.keys(metadata.skipped_caption_locales), ["en", "ja", "ko", "zh-CN"], "with no choice written yet, every locale without a file says why");
+  assert.equal(metadata.language_choice, null);
   const uploadMd = readFileSync(path.join(workdir, "upload", "UPLOAD.md"), "utf8");
   assert.doesNotMatch(uploadMd, /- \[ \]/, "no self-check list: the automatic checks cover it");
   assert.match(uploadMd, /「變造或合成內容」：不用勾/);
@@ -962,9 +1143,7 @@ test("from the picked outline to YouTube without the owner: the final gate sends
   assert.deepEqual(publish.payload.package.final_sha256, publish.content_sha256);
   assert.deepEqual(publish.payload.package.items.map((item) => [item.id, item.ok]), [["files", true], ["descriptions", true], ["captions", true], ["disclosure", true]]);
   assert.deepEqual(publish.files.map((file) => [file.role, file.content_type]), [
-    ["captions_en", "text/plain"],
     ["captions_zh-TW", "text/plain"],
-    ["description_en", "text/plain"],
     ["description_zh-TW", "text/plain"],
     ["final", "video/mp4"],
     ["metadata", "application/json"],
@@ -976,7 +1155,7 @@ test("from the picked outline to YouTube without the owner: the final gate sends
   assert.equal(Buffer.concat(site.files.get(finalUpload.sha256)).equals(readFileSync(path.join(workdir, "final.mp4"))), true);
   assert.equal(publish.payload.chapters, 3);
   assert.equal(typeof publish.payload.minutes, "number");
-  assert.deepEqual(publish.payload.locales, ["zh-TW", "en"]);
+  assert.deepEqual(publish.payload.locales, ["zh-TW"]);
   assert.deepEqual(publish.payload.zh, { title: metadata.title, description: metadata.description, tags: metadata.tags });
   assert.deepEqual(publish.payload.disclosure, { synthetic: false, reason: metadata.disclosure_reason });
   assert.match(publish.summary, /上傳包 4 項齊全：請確認可以上架/);
@@ -997,6 +1176,277 @@ test("from the picked outline to YouTube without the owner: the final gate sends
   assert.equal(status.next, null);
   assert.equal(await automation.step(), null, "recorded once");
   assert.equal(site.listed.get(slug).youtube_video_id, "dQw4w9WgXcQ");
+});
+
+/**
+ * A fake `dub`, writing what the real one leaves (docs/videos/DUBS.md) for the translation as it
+ * is now: `plan[locale].over` is how many runs first report a window that does not fit (exit 1,
+ * the first line's budget in fit.json, two characters under its length); a run with --redo
+ * always succeeds. `checks[locale]` is how many `check-audio --locale` runs flag the first line
+ * before every line passes; the flags file is written as the real check writes it.
+ */
+function fakeDub(box, slug, workdir, plan, checks) {
+  const overRuns = {};
+  const checkRuns = {};
+  return (command) => {
+    const [name] = command;
+    const locale = command[command.indexOf("--locale") + 1];
+    const timeline = readJson(path.join(workdir, "timeline.json"));
+    const first = timeline.lines[0].id;
+    if (name === "dub") {
+      const project = loadProject({ slug, root: box.root });
+      const files = dubArtifacts(workdir, locale);
+      const words = translationHash(dubScript(project.doc, project.translations[locale], locale).doc);
+      const redo = command.includes("--redo");
+      if (!redo) overRuns[locale] = (overRuns[locale] ?? 0) + 1;
+      const base = { locale, speech_hash: timeline.speech_hash, translation_hash: words, rates: { default: 15, measured: 14.2 } };
+      mkdirSync(files.dir, { recursive: true });
+      if (!redo && overRuns[locale] <= (plan[locale]?.over ?? 0)) {
+        const text = project.translations[locale].lines[first].text;
+        writeFileSync(files.fit, JSON.stringify({ ...base, tempo_max: 1.15, over: [{ id: first, chars: [...text].length, max_chars: Math.max(1, [...text].length - 2), seconds: 3.2, window_over_seconds: 0.8 }] }));
+        return { code: 1, out: `${locale}: 1 windows do not fit even at 1.15x` };
+      }
+      writeFileSync(files.fit, JSON.stringify({ ...base, tempo_max: 1.07, over: [] }));
+      const lines = timeline.lines.map((line) => ({ id: line.id, scene: line.scene, start_frame: line.start_frame + 5, end_frame: line.start_frame + 5 + Math.ceil(line.audio_samples / 2 / 1600), audio_samples: Math.floor(line.audio_samples / 2), tempo: 1 }));
+      writeFileSync(files.timeline, JSON.stringify({ ...base, format: "m4a", file: `${locale}.m4a`, total_frames: timeline.total_frames, tempo_max: 1.07, windows: [], lines }));
+      writeFileSync(files.track("m4a"), Buffer.from(`${locale} track of ${words}`));
+      return { code: 0, out: `${locale}: 3 requests synthesized` };
+    }
+    checkRuns[locale] = (checkRuns[locale] ?? 0) + 1;
+    const flagged = checkRuns[locale] <= (checks[locale] ?? 0);
+    mkdirSync(path.join(workdir, "review"), { recursive: true });
+    writeFileSync(path.join(workdir, "review", `check-flags.${locale}.json`), JSON.stringify({ slug, locale, flags: flagged ? [first] : [], notes: {} }));
+    return { code: flagged ? 1 : 0, out: flagged ? `${locale} dub: 1 flagged` : `${locale} dub: every line passed` };
+  };
+}
+
+/** The shortening pass's answer: each line cut to its budget (docs/videos/DUBS.md). */
+const shortenAnswer = (body) => ({ lines: body.payload.lines.map((line) => ({ id: line.id, text: [...line.text].slice(0, line.max_chars).join("") })) });
+
+/**
+ * A tutorial taken to the confirmed upload without the owner, the way the end-to-end test does,
+ * with the dub and its check played by `fakeDub`; the languages then wait for the owner's
+ * choice on /admin/videos (docs/videos/LANGUAGES.md), which `choose` makes.
+ */
+async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer } = {}) {
+  const box = sandbox();
+  const slug = "chatgpt-ads-off";
+  const answers = {
+    ...answersFor(slug, { applies: "1、2" }),
+    translator: (body) => (body.variant === "shorten" ? shorten(body) : { worksheet: filledSheet(body.payload.worksheet) }),
+    caption_reviewer: (body) => ({ worksheet: body.payload.worksheet, fixes: [] }),
+  };
+  const site = fakeSite({ answers, settings: { channel_stance: STANCE }, judge: () => jevPick("B") });
+  const clock = { now: Date.parse("2026-09-27T09:00:00Z") };
+  const { ctx } = context(box, site.fetchImpl, clock);
+  ctx.encode = async (kind, source, target) => writeFileSync(target, Buffer.from(`${kind} of ${path.basename(source)}`));
+  const workdir = path.join(box.work, slug);
+  const docFile = path.join(box.root, "docs", "videos", slug, "video.json");
+  const lexicon = () => readJson(path.join(box.root, "docs", "videos", "lexicon.json"));
+  const runs = [];
+  const dub = fakeDub(box, slug, workdir, dubs, checks);
+  ctx.runCommand = async (command, runCtx) => {
+    runs.push(command.join(" "));
+    const [name] = command;
+    const video = existsSync(docFile) ? readJson(docFile) : null;
+    const write = (file, data) => atomicWrite(path.join(workdir, file), JSON.stringify(data));
+    if (name === "dub" || (name === "check-audio" && command.includes("--locale"))) return dub(command);
+    if (name === "tts") {
+      mkdirSync(workdir, { recursive: true });
+      writeSyntheticNarration(video, lexicon(), workdir);
+      return { code: 0, out: "narration" };
+    }
+    if (name === "check-audio") {
+      write("review/check.json", { lines: Object.fromEntries([...eachLine(video)].map(({ line }) => [line.id, { match: true, match_kind: "exact" }])) });
+      return { code: 0, out: "every line passed" };
+    }
+    if (name === "render") {
+      write("frames/manifest.json", { visual_hash: visualHash(video), theme_hash: "t", fps: 30, size: { width: 1920, height: 1080 }, scenes: [], thumbnail: "thumbnail.jpg" });
+      writeFileSync(path.join(workdir, "thumbnail.jpg"), jpegBytes(1280, 720));
+      return { code: 0, out: "rendered" };
+    }
+    if (name === "assemble") {
+      writeFileSync(path.join(workdir, "final.mp4"), randomBytes(1000));
+      write("checks.json", { ok: true, speech_hash: speechHash(video, lexicon()), visual_hash: visualHash(video), problems: [], metrics: { frames: 900, loudness: { integrated: -14 }, psnr: [] } });
+      return { code: 0, out: "assembled" };
+    }
+    if (name === "qa") {
+      write("review/qa.json", { ok: true, final_sha256: sha(path.join(workdir, "final.mp4")), items: ITEM_IDS.map((id) => ({ id, ok: true, detail: `${id} fine` })) });
+      return { code: 0, out: "11 of 11 checks passed" };
+    }
+    const { main: cli } = await import("../cli.mjs");
+    let out = "";
+    const sink = { write: (text) => (out += text) };
+    const code = await cli(command, { ...runCtx, stdout: sink, stderr: sink });
+    return { code, out };
+  };
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  const expected = [/Jev picked outline B/, /Jev chose outline B/, /script drafted/, /fact-check round 1/, /listener edit/, /narration synthesized/, /narration checked/, /frames rendered/, /video assembled/, /captions written/, /final sent/, /the final is approved/, /upload package written/, /publish confirmation sent/, /the upload is confirmed/];
+  for (const line of expected) assert.match(await automation.step(), line);
+  assert.equal(await automation.step(), null, "the languages wait for the owner's choice");
+  return {
+    box, site, automation, ctx, workdir, docFile, runs, slug,
+    step: () => automation.step(),
+    listed: () => site.listed.get(slug),
+    onSite: () => automation.site.find((video) => video.slug === slug),
+    reviews: (gate) => site.reviewsOf(slug).filter((review) => review.gate === gate),
+    state: () => automatedVideos(box.work)[0],
+    calls: (stage, variant = null) => site.calls.run.filter((call) => call.stage === stage && (call.variant ?? null) === variant),
+    choose: (locales) => Object.assign(site.listed.get(slug), { locales, locales_decided_at: "2026-09-27T10:00:00Z" }),
+    upload: (...parts) => path.join(workdir, "upload", ...parts),
+  };
+}
+
+test("the languages wait for the owner: an undecided video is translated into nothing, and one chosen as Traditional Chinese only packages zh-TW alone, byte for byte as before", async () => {
+  const video = await finishedVideo();
+  assert.equal(video.calls("translator").length, 0);
+  assert.equal(readJson(video.upload("metadata.json")).language_choice, null, "no choice written yet");
+  const before = Object.fromEntries(["final.mp4", "thumbnail.jpg", "description.zh-TW.txt", path.join("captions", "zh-TW.srt")].map((name) => [name, readFileSync(video.upload(name))]));
+
+  video.choose({});
+  assert.equal(await video.step(), null, "Traditional Chinese only: nothing to translate, dub or send");
+  assert.equal(video.calls("translator").length, 0);
+  assert.deepEqual(readJson(path.join(video.workdir, "languages.json")).locales, {}, "the choice is copied for captions, package, qa and review-push");
+  assert.equal(video.onSite().ready_to_upload, true, "decided and nothing to make: the video may be scheduled");
+
+  // A package written with that choice holds zh-TW alone, and what stays is the same bytes.
+  assert.equal(await main(["package", "--slug", video.slug], { ...video.ctx, runCommand: undefined }), EXIT.ok);
+  const metadata = readJson(video.upload("metadata.json"));
+  assert.deepEqual([metadata.captions, metadata.localizations, metadata.skipped_caption_locales, metadata.dubs, metadata.language_choice], [["captions/zh-TW.srt"], {}, {}, [], {}]);
+  assert.deepEqual(readdirSync(video.upload()).sort(), ["UPLOAD.md", "captions", "description.zh-TW.txt", "final.mp4", "metadata.json", "thumbnail.jpg"]);
+  for (const [name, bytes] of Object.entries(before)) assert.ok(readFileSync(video.upload(name)).equals(bytes), `${name} unchanged`);
+  assert.equal(video.reviews("languages").length, 0, "no batch for a video with no language");
+});
+
+test("a language chosen for its title and description alone is translated without lines, packaged and sent as a batch the site approves; a part the site reports ready is not made again", async () => {
+  const video = await finishedVideo();
+  video.choose({ en: { metadata: true, captions: false, dub: false } });
+  assert.match(await video.step(), /^chatgpt-ads-off: en metadata translated and reviewed$/);
+  const [call] = video.calls("translator");
+  assert.deepEqual(call.payload.parts, ["metadata"]);
+  assert.deepEqual([call.payload.worksheet.parts, call.payload.worksheet.lines, call.payload.worksheet.title.todo], [["metadata"], [], true]);
+  assert.equal(video.calls("caption_reviewer")[0].payload.parts[0], "metadata");
+  assert.ok(video.runs.includes(`i18n-sheet --slug ${video.slug} --locale en --parts metadata`));
+  const translation = readJson(path.join(video.box.root, "docs", "videos", video.slug, "i18n", "en.json"));
+  assert.deepEqual([translation.title, Object.keys(translation.chapters), translation.lines], ["en title", ["hook", "questions", "wrap"], {}]);
+
+  assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(en metadata\)$/);
+  assert.deepEqual(video.runs.slice(-4).map((run) => run.split(" ")[0]), ["captions", "package", "review-push", "review-pull"]);
+  const [batch] = video.reviews("languages");
+  assert.deepEqual(batch.payload, { locales: { en: { metadata: "ready" } } });
+  assert.deepEqual(batch.files.map((file) => [file.role, file.content_type]), [["description_en", "text/plain"]]);
+  assert.deepEqual([batch.status, batch.note], ["approved", LANGUAGES_AUTO_NOTE], "no dub track: nothing for the owner to do");
+  assert.equal(batch.summary, "語言：en 標題說明。沒有要你上傳的配音");
+  const metadata = readJson(video.upload("metadata.json"));
+  assert.deepEqual([Object.keys(metadata.localizations), metadata.captions, metadata.language_choice], [["en"], ["captions/zh-TW.srt"], { en: { metadata: true, captions: false, dub: false } }]);
+  assert.ok(existsSync(video.upload("description.en.txt")));
+  assert.ok(!existsSync(video.upload("captions", "en.srt")), "no captions were chosen for en");
+
+  assert.equal(await video.step(), null, "everything chosen is made");
+  assert.equal(video.calls("translator").length, 1, "a part the site reports ready is not translated again");
+  assert.deepEqual(video.onSite().languages.en, { metadata: { state: "ready", reason: null } });
+  assert.equal(video.onSite().ready_to_upload, true);
+});
+
+test("captions and a dub chosen together: the sheet carries the budgets, the dub is checked and retaken once, and the batch attaches the track and waits for the owner's upload", async () => {
+  const video = await finishedVideo({ checks: { ja: 1 } });
+  video.choose({ ja: { metadata: true, captions: true, dub: true } });
+  assert.match(await video.step(), /^chatgpt-ads-off: ja metadata and captions translated and reviewed$/);
+  const [call] = video.calls("translator");
+  assert.deepEqual(call.payload.parts, ["metadata", "captions"]);
+  assert.ok(call.payload.worksheet.lines.length > 0 && call.payload.worksheet.lines.every((line) => Number.isInteger(line.max_chars) && line.max_chars >= 1), "a dub is chosen, so every line carries its budget");
+  assert.match(call.payload.worksheet.note, /max_chars/);
+
+  assert.match(await video.step(), /^chatgpt-ads-off: ja dub made after 1 retake; Jev passed every line$/);
+  const flags = path.join(video.workdir, "review", "check-flags.ja.json");
+  assert.deepEqual(video.runs.filter((run) => /^(dub|check-audio) .*--locale/.test(run)), [
+    `dub --slug ${video.slug} --locale ja`,
+    `check-audio --slug ${video.slug} --locale ja`,
+    `dub --slug ${video.slug} --locale ja --redo ${flags}`,
+    `check-audio --slug ${video.slug} --locale ja`,
+  ]);
+  assert.equal(video.state().languages?.ja, undefined, "the rounds are forgotten once the track is made");
+
+  assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(ja metadata\+captions\+dub\)$/);
+  const [batch] = video.reviews("languages");
+  assert.equal(batch.status, "pending", "a dub track waits for the owner to upload it in Studio");
+  assert.deepEqual(batch.files.map((file) => [file.role, file.content_type]), [["description_ja", "text/plain"], ["captions_ja", "text/plain"], ["dub_ja", "audio/mp4"]]);
+  const { ja } = batch.payload.locales;
+  assert.deepEqual([ja.metadata, ja.captions, ja.dub, ja.file, ja.file_role, ja.format], ["ready", "ready", "ready", "ja.m4a", "dub_ja", "m4a"]);
+  assert.equal(batch.summary, "語言：ja 標題說明、CC、配音。配音到 Studio「語言」上傳後按「已在 Studio 上傳配音」");
+  assert.equal(readJson(path.join(video.workdir, "captions", "manifest.json")).locales.ja.timing, "dub", "the ja captions follow the dub's timing");
+  const metadata = readJson(video.upload("metadata.json"));
+  assert.deepEqual([metadata.captions, metadata.dubs.map((dub) => dub.file), metadata.skipped_dub_locales], [["captions/ja.srt", "captions/zh-TW.srt"], ["dubs/ja.m4a"], {}]);
+  assert.ok(existsSync(video.upload("dubs", "ja.m4a")));
+  assert.equal(await video.step(), null);
+  assert.deepEqual(Object.fromEntries(Object.entries(video.onSite().languages.ja).map(([part, state]) => [part, state.state])), { metadata: "ready", captions: "ready", dub: "ready" });
+
+  // The owner uploaded the track and said so: the site reads the dub as uploaded.
+  Object.assign(batch, { status: "approved", decided_at: "2026-09-27T11:00:00Z" });
+  assert.equal(await video.step(), null);
+  assert.equal(video.onSite().languages.ja.dub.state, "uploaded");
+  assert.equal(video.onSite().ready_to_upload, true);
+});
+
+test("a window that does not fit is shortened once and the dub is made; two rounds that still do not fit give the locale up with the reason, and the batch says so", async () => {
+  assert.equal(MAX_DUB_SHORTEN_ROUNDS, 2);
+  assert.equal(MAX_DUB_RETAKE_ROUNDS, 2);
+  assert.match(TRANSLATOR_SHORTEN, /at most max_chars characters/);
+  const video = await finishedVideo({ dubs: { en: { over: 1 }, ko: { over: Infinity } } });
+  video.choose({ en: { metadata: false, captions: true, dub: true }, ko: { metadata: false, captions: true, dub: true } });
+  assert.match(await video.step(), /^chatgpt-ads-off: en captions translated and reviewed$/);
+  assert.match(await video.step(), /^chatgpt-ads-off: ko captions translated and reviewed$/);
+  const translationFile = (locale) => path.join(video.box.root, "docs", "videos", video.slug, "i18n", `${locale}.json`);
+  const before = readJson(translationFile("en")).lines.k7p2.text;
+
+  assert.match(await video.step(), /^chatgpt-ads-off: en dub made after 1 shortening round; Jev passed every line$/);
+  const [shorten] = video.calls("translator", "shorten");
+  assert.equal(shorten.payload.locale, "en");
+  assert.deepEqual(shorten.payload.lines.map((line) => [line.id, line.text, line.chars, line.max_chars, line.seconds, line.window_over_seconds]), [["k7p2", before, [...before].length, [...before].length - 2, 3.2, 0.8]]);
+  assert.match(shorten.instructions, /You shorten a few "locale" caption lines/);
+  assert.equal(readJson(translationFile("en")).lines.k7p2.text, [...before].slice(0, -2).join(""), "the shortened line went through the sheet and i18n-merge");
+  assert.ok(video.state().notes.some((note) => note.startsWith("en dub line shortened: k7p2")));
+
+  const reason = `1 lines (k7p2) do not fit even at 1.15x after ${MAX_DUB_SHORTEN_ROUNDS} shortening rounds`;
+  assert.equal(await video.step(), `chatgpt-ads-off: ko dub given up (${reason}); the video goes on without it`);
+  assert.equal(video.calls("translator", "shorten").length, 1 + MAX_DUB_SHORTEN_ROUNDS);
+  assert.equal(readJson(dubArtifacts(video.workdir, "ko").skipped).reason, reason);
+  assert.ok(video.state().notes.includes(`ko dub skipped: ${reason}`));
+
+  assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(en captions\+dub, ko captions\+dub\)$/);
+  const [batch] = video.reviews("languages");
+  assert.deepEqual(batch.payload.locales.ko, { captions: "ready", dub: { status: "skipped", reason } });
+  assert.equal(batch.payload.locales.en.dub, "ready");
+  assert.deepEqual(batch.files.map((file) => file.role), ["captions_en", "dub_en", "captions_ko"]);
+  assert.equal(batch.summary, `語言：en CC、配音；ko CC、配音跳過（${reason}）。配音到 Studio「語言」上傳後按「已在 Studio 上傳配音」`);
+  assert.equal(batch.status, "pending", "the en track waits for the owner");
+  const metadata = readJson(video.upload("metadata.json"));
+  assert.deepEqual([metadata.dubs.map((dub) => dub.locale), metadata.skipped_dub_locales, metadata.captions], [["en"], { ko: reason }, ["captions/en.srt", "captions/ko.srt", "captions/zh-TW.srt"]]);
+  assert.equal(readJson(path.join(video.workdir, "captions", "manifest.json")).locales.ko.timing, "narration", "no ko track: its captions follow the narration");
+  assert.equal(await video.step(), null);
+  assert.deepEqual(video.onSite().languages.ko.dub, { state: "skipped", reason });
+  assert.equal(video.onSite().ready_to_upload, true, "a skipped part does not hold the upload");
+});
+
+test("a language ticked after the video is on YouTube is made as a new batch", async () => {
+  const video = await finishedVideo();
+  video.choose({});
+  assert.equal(await video.step(), null);
+  video.listed().youtube_video_id = "dQw4w9WgXcQ";
+  assert.match(await video.step(), /on YouTube as dQw4w9WgXcQ/);
+  assert.equal(await video.step(), null);
+
+  video.choose({ ko: { metadata: true, captions: false, dub: false } });
+  assert.match(await video.step(), /^chatgpt-ads-off: ko metadata translated and reviewed$/);
+  assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(ko metadata\)$/);
+  const [batch] = video.reviews("languages");
+  assert.deepEqual(batch.payload, { locales: { ko: { metadata: "ready" } } });
+  assert.equal(batch.status, "approved");
+  assert.equal(await video.step(), null);
+  assert.deepEqual([video.state().status, video.state().youtube_video_id, readJson(video.docFile).youtube.video_id], ["done", "dQw4w9WgXcQ", "dQw4w9WgXcQ"]);
+  assert.equal(video.onSite().ready_to_upload, false, "already on YouTube");
+  assert.equal(video.onSite().youtube_video_id, "dQw4w9WgXcQ", "the report keeps the id");
 });
 
 // The narration line Jev keeps hearing wrong (docs/videos/HANDS-OFF.md §旁白): the fixture's

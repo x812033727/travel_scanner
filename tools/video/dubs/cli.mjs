@@ -22,7 +22,7 @@ import { encodeWav, parseWav, requireNarrationFormat } from "../tts/wav.mjs";
 import { encodeArgs, measureLoudnessArgs, parseLoudnorm, stretchArgs } from "./encode.mjs";
 import {
   DEFAULT_FORMAT, DUB_FORMATS, GUARD_MS, MAX_TEMPO,
-  assembleTrack, defaultRate, dubLexicon, dubLocales, dubScript, estimatedLengths, layoutDub, measureRate, placeLines, shrinkBudgets, translationHash,
+  assembleTrack, defaultDubLocales, defaultRate, dubLexicon, dubLocales, dubScript, estimatedLengths, layoutDub, measureRate, placeLines, shrinkBudgets, translationHash,
 } from "./plan.mjs";
 
 // When a stretched window still sticks out (atempo rounds), the next try is this much faster.
@@ -272,7 +272,7 @@ async function dub(args, ctx) {
   const values = options(args);
   const project = loadProject({ slug: values.slug, file: values.file, root: ctx.root });
   const allowed = dubLocales(project.doc);
-  values.locales ??= allowed;
+  values.locales ??= defaultDubLocales(project.doc);
   for (const locale of values.locales) if (!allowed.includes(locale)) throw new UsageError(`--locale must be among ${allowed.join(", ")}: the video is narrated in the other one`);
   const lint = lintProject(project);
   if (lint.errors.length) {

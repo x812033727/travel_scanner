@@ -3,8 +3,8 @@
 ``tool_router`` is what the local pipeline calls with its video tool token, through the web
 routes under apps/web/app/api/video/reviews: report a video's state, upload a preview in parts,
 submit something for review, and read back the owner's decisions. ``admin_router`` is the page:
-the owner lists the videos, opens one, watches its previews and decides, picks the languages to
-dub it in, or drops the video.
+the owner lists the videos, opens one, watches its previews and decides, chooses the languages to
+add after the final cut, or drops the video.
 """
 
 from __future__ import annotations
@@ -14,6 +14,7 @@ from uuid import UUID
 
 from fastapi import APIRouter, Depends, Query, Request
 from fastapi.responses import FileResponse
+from pydantic import AwareDatetime
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
@@ -27,6 +28,7 @@ from app.video_reviews.schemas import (
     DecisionIn,
     DropIn,
     DubLocalesIn,
+    LocalesIn,
     PartOut,
     ProjectIn,
     ProjectOut,
@@ -37,6 +39,7 @@ from app.video_reviews.schemas import (
     YoutubeIn,
 )
 from app.video_reviews.storage import PART_BYTES, ReviewStore, StorageRefused
+from app.video_shorts.schemas import ShortsFilter, ShortsState
 from app.video_speech.admin_api import VideoTool
 
 Session = Annotated[AsyncSession, Depends(get_session)]
@@ -100,15 +103,30 @@ async def list_videos(
     session: Session,
     format: VideoFormat | None = None,
     series: Annotated[str | None, Query(pattern=SERIES_SLUG_PATTERN)] = None,
+    shorts: ShortsFilter | None = None,
+    state: ShortsState | None = None,
+    limit: Annotated[int | None, Query(ge=1, le=service.LIST_LIMIT)] = None,
+    before: AwareDatetime | None = None,
 ) -> list[ProjectSummary]:
-    """The videos, newest first; format or series narrows them (docs/videos/SERIES.md)."""
+    """The videos, newest first; format or series narrows them (docs/videos/SERIES.md).
+    ``shorts=exclude`` leaves the Shorts out, ``shorts=only`` keeps only them, where ``state``
+    keeps one state and ``limit`` and ``before`` page through it (docs/videos/SHORTS.md)."""
     _ = user
+    if state is not None and shorts != "only":
+        raise AppError(422, "video_shorts_state_needs_only", "state 只能跟 shorts=only 一起用")
     # The page is opened a few times a day: enough to let go of the mp4 of a video that has been
     # on YouTube for a week (HANDS-OFF.md), without a scheduler for one rule.
     runtime = await load_runtime_settings(session)
     await service.prune_published_previews(session, service.review_store(runtime))
     return await service.list_projects(
-        session, video_format=format, series_slug=series, work_dir=runtime.video_work_dir
+        session,
+        video_format=format,
+        series_slug=series,
+        shorts=shorts,
+        state=state,
+        limit=limit,
+        before=before,
+        work_dir=runtime.video_work_dir,
     )
 
 
@@ -154,11 +172,21 @@ async def link_youtube(
     return await service.link_youtube(session, slug, user, video_id, payload.publish_at)
 
 
+@admin_router.put("/{slug}/languages", response_model=ProjectOut)
+async def set_languages(
+    slug: str, payload: LocalesIn, user: ContentManager, session: Session
+) -> ProjectOut:
+    """The language panel (docs/videos/LANGUAGES.md): which languages to add after the final cut
+    and what of each; an empty choice means only Traditional Chinese."""
+    return await service.set_locales(session, slug, user, payload)
+
+
 @admin_router.put("/{slug}/dubs", response_model=ProjectOut)
 async def set_dubs(
     slug: str, payload: DubLocalesIn, user: ContentManager, session: Session
 ) -> ProjectOut:
-    """Which languages to dub this video in; the worker makes those tracks after the final cut."""
+    """The dub checkboxes of a page from before the language panel; kept until that page is
+    replaced (docs/videos/LANGUAGES.md)."""
     return await service.set_dub_locales(session, slug, user, payload)
 
 

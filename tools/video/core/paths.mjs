@@ -44,12 +44,26 @@ export function resolveWorkdir({ flag, env = process.env, slug, root = ROOT, hom
   return workdir;
 }
 
+// Windows scanners can briefly hold the destination open. Keep the old file intact
+// and retry only the rename, with at most 630 ms of waiting before the original error.
+const RENAME_RETRY_MS = [10, 20, 40, 80, 160, 320];
+const renameWaitCell = new Int32Array(new SharedArrayBuffer(4));
+const waitForRename = (ms) => Atomics.wait(renameWaitCell, 0, 0, ms);
+
 /** Write through a temporary file and a rename, so an interrupted run never leaves half a file. */
-export function atomicWrite(file, data) {
+export function atomicWrite(file, data, { platform = process.platform, rename = renameSync, wait = waitForRename } = {}) {
   mkdirSync(path.dirname(file), { recursive: true });
   const temporary = `${file}.${process.pid}.tmp`;
   writeFileSync(temporary, data);
-  renameSync(temporary, file);
+  for (let attempt = 0; ; attempt++) {
+    try {
+      rename(temporary, file);
+      return;
+    } catch (error) {
+      if (platform !== "win32" || !["EPERM", "EACCES", "EBUSY"].includes(error?.code) || attempt >= RENAME_RETRY_MS.length) throw error;
+      wait(RENAME_RETRY_MS[attempt]);
+    }
+  }
 }
 
 export function readJson(file, fallback = undefined) {

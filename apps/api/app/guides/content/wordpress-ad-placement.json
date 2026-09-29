@@ -307,6 +307,1194 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "Placing ads in WordPress posts: Ad Inserter and the reading experience",
+      "description": "WordPress ad placement requires attention to the source of the code, the reading experience and mobile interactions. Using an original paper-model tutorial site as an example, this guide explains the boundaries of Auto ads, manually placed ad units, Site Kit and Custom HTML. It covers duplicate code, page exclusions, layout shifts and differences caused by login status, with steps, a comparison table and an original diagram to help site owners configure ads they can check, adjust and roll back.",
+      "hero": {
+        "src": "/guides/wordpress-ad-placement/hero-en.jpg",
+        "alt": "Original Mokaair illustration of a website layout, a code-management folder and an acceptance checklist, representing WordPress ad placement and mobile checks.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A paper-model tutorial site wants to show ads within articles, but readers often need to follow instructions while opening pattern downloads. If an ad crowds the download button or pushes a step down as it loads, the site may become difficult to use even when the dashboard begins to show revenue. Start placement planning with the reader's path through the task."
+        },
+        {
+          "type": "paragraph",
+          "text": "This guide focuses on a WordPress site using AdSense and draws on official Google, Site Kit, WordPress and web.dev documentation checked on September 14, 2026. The paper-model site and test scenarios are original. We did not install ads on a live site, click ads or measure actual revenue. Check the policies of any other ad network separately."
+        },
+        {
+          "type": "heading",
+          "text": "Map reading areas where ads may fit and areas to exclude",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The example paper-model post includes a materials list, fold-line instructions, step images, a download entry and common questions. A site owner can first consider an ad after a complete paragraph, while keeping space around downloads, pagination, expandable steps and form buttons for interaction. This is a design choice for the example, not a universal formula that guarantees policy compliance at any given spacing."
+        },
+        {
+          "type": "paragraph",
+          "text": "AdSense prohibits making ads look like navigation, download links or other content. Do not encourage clicks with arrows, animation or wording such as 'support this site.' Labels should clearly identify an ad. Do not place one under a heading for recommended patterns or essential tools where readers may mistake it for an editorial pick. A layout can cause problems even when accidental clicks are unintended."
+        },
+        {
+          "type": "paragraph",
+          "text": "Try one post template first, then check whether other templates apply the same placement. Short notices, search pages with no results and pages consisting mainly of private messages should not inherit a long tutorial's insertion rule. Do not split content into empty pages just to add placements, and do not treat the homepage view as a test of the whole site."
+        },
+        {
+          "type": "heading",
+          "text": "Separate the jobs of Auto ads, ad units and WordPress plugins",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google decides placements for Auto ads within the configured scope; for an ad unit, the site owner chooses its location on the page. The two approaches can be combined, but make clear which one controls each position. If you only want to control one placement at the end of a post, you can assess a manual unit first rather than enabling every automatic format immediately."
+        },
+        {
+          "type": "paragraph",
+          "text": "Site Kit can connect AdSense, place the code needed for Auto ads and show reports, but it cannot manually insert each ad unit. Connecting AdSense to Site Kit does not mean every placement has been chosen. Check formats, density, page exclusions and other Auto ads settings in the AdSense dashboard."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the theme, an ad-management plugin or existing code already inserts AdSense, inventory those sources before assigning the job to Site Kit. Google warns that placing the code twice can cause errors. The example site owner can keep a table showing which tool manages site-wide code and where each unit enters each template, so contributors do not add another copy."
+        },
+        {
+          "type": "heading",
+          "text": "When adding a unit, check the output after saving",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "AdSense distinguishes site-wide AdSense code from ad-unit code. For a manually placed unit, create it in your own account and copy the correct code before placing it through the selected theme area or insertion tool. Do not publish a sample publisher ID from a tutorial as your own, and do not modify the code to refresh automatically or generate impressions."
+        },
+        {
+          "type": "paragraph",
+          "text": "For a placement in just one post, a Custom HTML block is an option to assess. Whether scripts survive saving depends on WordPress capabilities and site rules. WordPress 7.0 documentation describes separate HTML, CSS and JavaScript editing panels; without the unfiltered_html capability, restricted tags are cleaned. Not every editor can paste and retain a script."
+        },
+        {
+          "type": "paragraph",
+          "text": "After saving, check the front-end output and your own publisher information. Text still visible in the editor does not prove the installation works. If a block, theme or security rule removes required code, ask someone with the appropriate permissions to manage it in the proper place. Do not promote all contributors to administrators or disable site-wide protection merely to run ads."
+        },
+        {
+          "type": "heading",
+          "text": "Automatic exclusions and manual removal are different settings",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The Auto ads preview lets you adjust formats, the number of in-page ads and spacing. Excluded areas remove in-page automatic placements from an area of a page; Page exclusions target specific pages. Their scopes differ: excluding an area near a paragraph does not mean every overlay format on that page is also disabled."
+        },
+        {
+          "type": "paragraph",
+          "text": "If a pattern download page needs Auto ads excluded entirely, check its URL and scope in Page exclusions. If the theme also inserts a manual unit on the page, review your own insertion rule separately. An Auto ads switch is not a master switch for all third-party code or manual placements."
+        },
+        {
+          "type": "paragraph",
+          "text": "After previewing, save and apply the settings, recording the change time and previous values. If you use experiments, understand which settings support them and whether a result can be adopted automatically. Google's documentation says Page exclusions are not an experimentable setting, so do not describe every option as freely available for split testing."
+        },
+        {
+          "type": "heading",
+          "text": "Check width, shifts and usable space on mobile",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A fixed width that fits a desktop sidebar may not fit a phone. Google recommends considering responsive ad units for responsive sites; fixed sizes do not adapt automatically when screen orientation changes. At narrow widths, in landscape and with enlarged text, check for horizontal overflow, clipping and content covered by ads. Merely shrinking a screenshot of the full page is not enough."
+        },
+        {
+          "type": "paragraph",
+          "text": "An ad that loads later can cause cumulative layout shift: the download button suddenly moves just as a reader tries to tap it. web.dev recommends reserving space for late-loading content and adjusting containers by device. Assess reserved height against the sizes that may appear. Do not collapse the space immediately just to remove a gap, causing the text below to jump repeatedly."
+        },
+        {
+          "type": "paragraph",
+          "text": "If a responsive unit should be hidden at certain sizes, Google provides permitted modification examples. Follow that documentation so the hidden unit also sends no ad request. Do not merely make a loaded ad transparent, cover it or crop it. Every size adjustment must still comply with placement policy; technical feasibility is not permission to alter ad behavior arbitrarily."
+        },
+        {
+          "type": "heading",
+          "text": "Compare under consistent conditions and keep a rollback record",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Ads placed by Site Kit are excluded for logged-in users by default, so an administrator seeing no ads while signed in may be seeing normal behavior. Record login state, browser, consent choices and device during acceptance checks, then check as an ordinary visitor. Privacy choices or browser blocking may also affect display; a blank space is not a reason to insert the code again."
+        },
+        {
+          "type": "paragraph",
+          "text": "Caching, minification or deferred-execution tools can change ad scripts. If something breaks after configuration, compare recent changes and actual output, then investigate one factor at a time in a controlled environment; do not disable every plugin on the live site at once. Keep ad serving conditions the same when assessing performance. Comparing a page with ads against one with no ads cannot isolate the cost of a particular plugin."
+        },
+        {
+          "type": "paragraph",
+          "text": "The example site can record its post templates, placements, before-and-after mobile views, loading state and settings needed for rollback. After real ads run, examine revenue alongside reading and download tasks; never click your own ads to test them. If an ad blocks an interaction, roll back the problematic placement first and then find the cause rather than waiting for more revenue data."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Map content, interaction areas and proposed ad positions in the post, including pages that need exceptions.",
+            "Assign one tool to manage each code source and unit; remove duplicates and inspect the saved result.",
+            "Check Auto ads formats and exclusion scope, then inspect mobile loading as a visitor.",
+            "Record changes, reading tasks and rollback steps; evaluate the setup under consistent conditions."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-ad-placement/diagram-1-en.svg",
+          "alt": "Four cards cover the reading path, a single source of code management, mobile loading and rollback records, helping site owners place ads without obstructing the reader's task.",
+          "width": 1600,
+          "height": 900,
+          "caption": "A working configuration must show the right ads and support uninterrupted reading, not just produce a revenue figure.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Method or setting",
+            "Main use",
+            "Still check separately"
+          ],
+          "rows": [
+            [
+              "Auto ads",
+              "Place ads automatically under the chosen settings",
+              "Formats, density and the actual reading path"
+            ],
+            [
+              "Manual ad unit",
+              "Control a specific insertion position",
+              "Templates, devices and policy"
+            ],
+            [
+              "Site Kit",
+              "Connect services, place code and show reports",
+              "Cannot manually insert units"
+            ],
+            [
+              "Custom HTML block",
+              "Save permitted code at a content position",
+              "Permissions, sanitization and actual front-end output"
+            ],
+            [
+              "Excluded areas",
+              "Exclude an area from in-page Auto ads",
+              "Does not disable every format on the page"
+            ],
+            [
+              "Page exclusions",
+              "Exclude Auto ads from specified pages",
+              "Manage manual units on those pages separately"
+            ]
+          ],
+          "caption": "Original placement-management comparison; actual ad display also depends on review, user conditions and available inventory."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Prevent accidental taps near download and navigation buttons",
+          "text": "Keep ads clearly separate from content controls. Check narrow screens and the page after loading to ensure buttons do not move beneath ads and misleading headings do not disguise placements."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Prepare your site for AdSense and its review",
+              "kind": "life",
+              "slug": "adsense-site-preparation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Understand Site Kit integration and permissions",
+              "kind": "life",
+              "slug": "google-site-kit-setup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Include technical checks in website maintenance",
+              "kind": "life",
+              "slug": "technical-seo-checklist"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google: AdSense ad placement policies",
+          "url": "https://support.google.com/adsense/answer/1346295?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: AdSense program policies",
+          "url": "https://support.google.com/adsense/answer/48182?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Site Kit: AdSense features and ad-unit limitations",
+          "url": "https://sitekit.withgoogle.com/documentation/supported-services/adsense/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Site Kit: Managing duplicate code placement",
+          "url": "https://sitekit.withgoogle.com/documentation/using-site-kit/manage-site-kit-placed-code/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: AdSense code and ad-unit code",
+          "url": "https://support.google.com/adsense/answer/9274019?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Custom HTML and script permissions",
+          "url": "https://wordpress.org/documentation/article/custom-html/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: Auto ads settings and exclusions",
+          "url": "https://support.google.com/adsense/answer/9305577?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: Auto ads experiment limitations",
+          "url": "https://support.google.com/adsense/answer/9726342?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: Fixed-size ad-unit limitations",
+          "url": "https://support.google.com/adsense/answer/9185043?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "web.dev: Reserving space and layout shifts",
+          "url": "https://web.dev/articles/optimize-cls",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: Permitted responsive ad modifications",
+          "url": "https://support.google.com/adsense/answer/9183363?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Site Kit: Troubleshooting AdSense display",
+          "url": "https://sitekit.withgoogle.com/documentation/troubleshooting/adsense/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Site Kit: Comparing front-end performance",
+          "url": "https://sitekit.withgoogle.com/documentation/using-site-kit/front-end/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WordPress 文章广告怎么放：Ad Inserter 与阅读体验",
+      "description": "WordPress 广告位要同时考虑代码来源、正文阅读与手机操作。本文以原创纸模型教学网站为例，整理 Auto ads、自行放置广告单元、Site Kit 与自定义 HTML 的使用边界，说明重复加载、页面排除、版面位移及登录状态造成的判读差异。附步骤、比较表及原创图解，协助网站管理员创建能检查、调整与回滚的广告配置流程。",
+      "hero": {
+        "src": "/guides/wordpress-ad-placement/hero-zh-cn.jpg",
+        "alt": "Mokaair 示例网站版面、代码管理文件夹与验收文档，表达 WordPress 广告位及手机检查。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "纸模型教学网站想在文章中放广告，但读者常需要一边看步骤、一边点击纸样下载。如果广告挤在下载按钮旁，或加载时把步骤往下推，即使后台开始出现收益，网站也可能变得难用。广告位规划应从读者的操作路径开始。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下以 WordPress 网站搭配 AdSense 为主，依 2026 年 9 月 14 日查阅的 Google、Site Kit、WordPress 与 web.dev 官方文档整理。纸模型网站及测试情境均原创；没有在正式网站安装广告、点击广告或实测收益，其他广告网络须另核对自己的政策。"
+        },
+        {
+          "type": "heading",
+          "text": "先画出可放与需要排除的阅读区域",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "原创纸模型文章包含材料表、折线说明、步骤图、下载入口与常见问题。网站管理员可以先在段落完整结束的位置评估广告，而把下载、页码、展开步骤与表单按钮周围保留给操作。这是本例的设计选择，不能当成任何间距都保证符合政策的通用公式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "AdSense 禁止让广告看起来像导航、下载链接或其他内容，也不应用箭头、动画或支持本站等措辞诱导点击。标示要清楚表示广告性质，不把它放在推荐纸样或必备工具的标题下，让读者误认为是编辑精选。即使误触并非故意，配置仍可能产生问题。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先挑一种文章模板试排，再检查其他模板是否套用相同位置。短公告、没有正文的搜索空结果或主要为私人消息的页面，不适合沿用长教学文的插入规则。不要为了增加广告位刻意切出没有内容的页面，也不要只用首页的画面代表全站。"
+        },
+        {
+          "type": "heading",
+          "text": "分清自动广告、单元与 WordPress 插件的工作",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Auto ads 由 Google 在设置范围内判断广告位；广告单元则由网站管理员决定放在页面哪里。两者可依需求组合，但必须清楚谁负责哪些位置。若只想先控制文章结尾的一个位置，可以从手动单元开始评估，不必一开始就把所有自动格式打开。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Site Kit 可连接 AdSense、放置 Auto ads 所需代码并呈现报表，但不能用它手动加入每个广告单元。只把 AdSense 连到 Site Kit，也不表示已选好所有广告位。Auto ads 格式、密度、页面排除等多项设置，仍应回 AdSense 后台确认。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若主题、广告管理插件或既有代码已经负责加入 AdSense，先盘点再决定是否交给 Site Kit。Google 的文档提醒重复放置可能造成错误。示例网站管理员可以创建一张表，记下全站代码由哪个工具管理、各单元在哪个模板插入，避免每个人都再补一份。"
+        },
+        {
+          "type": "heading",
+          "text": "加入单元时，确认保存后的实际输出",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "AdSense 官方区分全站使用的 AdSense 代码与广告单元代码。自行放置单元时，先在自己的账户创建单元并复制正确内容，再交由选定的主题区域或插入工具管理。不能拿教学文章的示例发布商 ID 当成自己的，也不应自行改造成会自动刷新或制造曝光的程序。"
+        },
+        {
+          "type": "paragraph",
+          "text": "只需要在一篇文章放置时，自定义 HTML 区块是一种可评估方式，但是否能保存脚本受到 WordPress 能力与站点规则影响。WordPress 7.0 文档说明分开的 HTML、CSS 与 JavaScript 编辑面板；缺少 unfiltered_html 能力时，受限制的标签会被清理，不是每个编辑者都能贴入并保留脚本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存后核对前台输出及自己的发布商信息，不能只看编辑器里还有一段文本就宣称安装成功。若区块、主题或安全规则删除了必要内容，应请具有适当权限的人在正式管理位置处理。不要把所有投稿者升成管理员，也不要为了广告关闭整站的安全保护。"
+        },
+        {
+          "type": "heading",
+          "text": "自动排除与手动移除是不同的设置",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Auto ads 可以通过预览调整格式、页内广告数量与间距等设置。Excluded areas 用于排除页面中的页内自动广告区域，Page exclusions 则针对特定页面。两者影响范围不同：排除一个段落附近，不代表该页所有覆盖式广告也一并停用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若某个纸样下载页需要完整排除 Auto ads，应在页面排除设置核对网址及范围；若同页另外有主题插入的手动单元，仍要检查自己的插入规则。不能把自动广告的开关当成所有第三方代码与手动广告位的总开关。"
+        },
+        {
+          "type": "paragraph",
+          "text": "预览完成后还要保存并套用设置，记录变更时间及原设置。若使用实验功能，也要理解哪些选项支持实验、是否会自动采用结果。Google 文档列明页面排除不在可实验的设置内，所以不能把所有设置都描述成可以任意A/B 测试。"
+        },
+        {
+          "type": "heading",
+          "text": "手机版检查宽度、位移与可操作空间",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "桌面端侧栏放得下的固定宽度，不一定适合手机。Google 建议响应式网站考虑响应式广告单元；固定尺寸不会自行随屏幕方向变化。检查窄屏幕、横向与放大文本时，有没有左右溢出、截断或压住正文，而不是只把整个页面缩小来看。"
+        },
+        {
+          "type": "paragraph",
+          "text": "广告延后加载可能造成累积布局偏移，也就是读者正要点下载时按钮位置突然改变。web.dev 建议对晚加载内容预留空间，并按设备调整容器。预留高度需配合可出现的尺寸评估；不能为了让空白消失就立刻收合，造成下方文本反复跳动。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若想在特定尺寸不显示某个响应式单元，Google 有允许的修改示例，应依该文档处理，使不显示时也不发出该单元请求。不要只把已加载广告变透明、盖住或裁掉。任何尺寸调整都还要符合广告位政策，技术上能做到不等于可以任意改造广告行为。"
+        },
+        {
+          "type": "heading",
+          "text": "用一致条件比较，并保留可回滚的记录",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Site Kit 放置的广告默认排除已登录用户，所以管理员登录时看不到广告，可能是正常设置。验收应记录登录状态、浏览器、同意选择与设备，再从一般访客角度检查。隐私选择或浏览器阻挡也可能影响显示，不能看到空白就重复加入代码。"
+        },
+        {
+          "type": "paragraph",
+          "text": "缓存、压缩或延后运行工具可能修改广告脚本。若配置后异常，先比对最近变更与输出，在可控环境逐项排查；不要在正式站一次停用所有插件。评估性能时也要保持同样的广告服务，不能拿有广告与完全无广告的结果，直接判定某个插件本身的成本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "示例网站可记录文章模板、广告位、变更前后的手机画面、加载状态及需要回滚的设置。真正投放后再看收入、阅读与下载任务是否一起改善，不靠点击自己的广告验证。若广告挡住操作，先回滚有问题的广告位，再查原因，而不是等待更多收益数据才处理。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "画出文章中的内容、操作区与预计广告位置，列出例外页面。",
+            "指定代码与单元的管理工具，排除重复安装并核对保存结果。",
+            "确认 Auto ads 的格式与排除范围，再用访客状态检查手机加载。",
+            "记录变更、阅读任务与回滚方式，在一致条件下评估配置。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-ad-placement/diagram-1-zh-cn.svg",
+          "alt": "四张卡片说明广告位规划、单一管理来源、手机加载及回滚记录，协助网站管理员安排不妨碍任务的广告。",
+          "width": 1600,
+          "height": 900,
+          "caption": "配置成功要同时看见正确广告与顺畅阅读，不能只看收入数字。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "方式或设置",
+            "主要用途",
+            "仍要另外检查"
+          ],
+          "rows": [
+            [
+              "Auto ads",
+              "按设置自动安排广告",
+              "格式、密度及实际阅读动线"
+            ],
+            [
+              "手动广告单元",
+              "控制特定插入位置",
+              "各模板、设备与政策"
+            ],
+            [
+              "Site Kit",
+              "连接服务、放置代码及看报表",
+              "不能手动加入单元"
+            ],
+            [
+              "自定义 HTML 区块",
+              "在内容位置保存允许的代码",
+              "权限、清理与前台实际输出"
+            ],
+            [
+              "Excluded areas",
+              "排除页内自动广告区域",
+              "不等于停用整页所有格式"
+            ],
+            [
+              "Page exclusions",
+              "排除指定页面的 Auto ads",
+              "同页手动单元另行管理"
+            ]
+          ],
+          "caption": "原创广告位管理对照；广告实际显示仍受审查、用户条件与供应影响。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "下载与导航按钮旁，先避免误触",
+          "text": "广告需与内容操作清楚区隔。验收窄屏幕与加载后的画面，确认按钮没有移动到广告下方，也没有用误导标题包装广告位。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "先完成 AdSense 网站准备与审查",
+              "kind": "life",
+              "slug": "adsense-site-preparation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "了解 Site Kit 的集成与权限",
+              "kind": "life",
+              "slug": "google-site-kit-setup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "把技术检查纳入网站维护",
+              "kind": "life",
+              "slug": "technical-seo-checklist"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google：AdSense 广告位政策",
+          "url": "https://support.google.com/adsense/answer/1346295?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：AdSense 计划政策",
+          "url": "https://support.google.com/adsense/answer/48182?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Site Kit：AdSense 功能及单元限制",
+          "url": "https://sitekit.withgoogle.com/documentation/supported-services/adsense/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Site Kit：重复代码管理",
+          "url": "https://sitekit.withgoogle.com/documentation/using-site-kit/manage-site-kit-placed-code/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：AdSense 与单元代码",
+          "url": "https://support.google.com/adsense/answer/9274019?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：自定义 HTML 与脚本能力",
+          "url": "https://wordpress.org/documentation/article/custom-html/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：Auto ads 设置与排除",
+          "url": "https://support.google.com/adsense/answer/9305577?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：Auto ads 实验限制",
+          "url": "https://support.google.com/adsense/answer/9726342?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：固定尺寸单元限制",
+          "url": "https://support.google.com/adsense/answer/9185043?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "web.dev：预留空间与版面位移",
+          "url": "https://web.dev/articles/optimize-cls",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：允许的响应式广告修改",
+          "url": "https://support.google.com/adsense/answer/9183363?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Site Kit：AdSense 显示故障排查",
+          "url": "https://sitekit.withgoogle.com/documentation/troubleshooting/adsense/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Site Kit：前台性能比较方式",
+          "url": "https://sitekit.withgoogle.com/documentation/using-site-kit/front-end/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPressの記事に広告を配置する方法：Ad Inserterと読みやすさ",
+      "description": "WordPressの広告配置では、コードの管理元、本文の読みやすさ、スマートフォンでの操作を併せて考える必要があります。オリジナルのペーパークラフト解説サイトを例に、Auto ads、手動で配置する広告ユニット、Site Kit、カスタムHTMLの役割と限界を整理します。コードの重複、ページの除外、レイアウトのずれ、ログイン状態による表示差を説明し、手順、比較表、独自の図を通して、確認・調整・元に戻すことができる広告設定を考えます。",
+      "hero": {
+        "src": "/guides/wordpress-ad-placement/hero-ja.jpg",
+        "alt": "WordPressの広告配置とスマートフォンでの確認を表す、サイト画面、コード管理用フォルダー、検収書類を描いたMokaairオリジナルの図。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "ペーパークラフトの解説サイトで記事に広告を載せたいとしても、読者は手順を読みながら型紙をダウンロードすることがあります。広告がダウンロードボタンに迫ったり、読み込み時に手順を下へ押し下げたりすれば、管理画面に収益が表示され始めても使いにくいサイトになりかねません。広告の位置は読者の操作の流れから考えます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下はWordPressとAdSenseを使うサイトを主な対象とし、2026年9月14日に確認したGoogle、Site Kit、WordPress、web.devの公式文書に基づきます。ペーパークラフトサイトとテスト場面は独自の例です。実際の公開サイトに広告を設置したり、広告をクリックしたり、収益を実測したりはしていません。他の広告ネットワークについては、その規約を別途確認してください。"
+        },
+        {
+          "type": "heading",
+          "text": "広告を置ける読書領域と除外する領域を先に描く",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "例の記事には材料表、折り線の説明、手順画像、ダウンロードへの入口、よくある質問があります。サイト運営者は、段落が完全に終わる位置から広告を検討し、ダウンロード、ページ番号、展開する手順、フォームのボタンの周囲は操作のために空けられます。これは本例の設計判断であり、どんな間隔でもポリシーに適合するという一般式ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "AdSenseは、広告をナビゲーション、ダウンロードリンク、その他のコンテンツに見せかけることを禁じています。矢印やアニメーション、「サイトを応援」などの文言でクリックを誘導してはいけません。広告であることを明確に示し、「おすすめの型紙」や「必須の道具」の見出しの下に置いて編集部の推奨と誤認させないようにします。誤タップを意図していなくても、配置が問題を生む場合があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "まず一つの記事テンプレートで配置を試し、他のテンプレートにも同じ位置が適用されるか確認します。短いお知らせ、本文のない検索結果なしのページ、主に私的なメッセージで構成されるページには、長い解説記事の挿入ルールを流用しないでください。広告枠を増やすために中身のないページを作らず、トップページだけを見てサイト全体を判断しないことも大切です。"
+        },
+        {
+          "type": "heading",
+          "text": "Auto ads、広告ユニット、WordPressプラグインの役割を分ける",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Auto adsでは設定された範囲内でGoogleが広告位置を判断し、広告ユニットでは運営者がページ内の位置を決めます。併用もできますが、どの位置をどちらが管理するか明確にしてください。まず記事末尾の一枠だけを制御したいなら、すべての自動フォーマットを有効にする前に手動ユニットを検討できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Site KitはAdSenseを接続し、Auto adsに必要なコードを配置し、レポートを表示できますが、個々の広告ユニットを手動で挿入することはできません。AdSenseをSite Kitに接続しただけで、すべての広告位置が決まるわけでもありません。Auto adsのフォーマット、密度、ページ除外などの設定は、AdSenseの管理画面でも確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "テーマ、広告管理プラグイン、既存のコードがすでにAdSenseを挿入しているなら、Site Kitに任せる前に管理元を調べます。Googleの文書はコードの重複配置によるエラーを注意しています。例の運営者は、サイト全体のコードを管理するツールと、各テンプレートで各ユニットを挿入する位置を表に記録し、担当者が別のコピーを追加しないようにできます。"
+        },
+        {
+          "type": "heading",
+          "text": "ユニットを追加したら、保存後の実際の出力を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "AdSenseの公式文書は、サイト全体で使うAdSenseコードと広告ユニットのコードを区別しています。手動ユニットを置く場合は、自分のアカウントでユニットを作成して正しいコードをコピーし、選んだテーマの領域や挿入ツールで管理します。解説記事の例示用パブリッシャーIDを自分のものとして公開したり、自動更新や表示回数の水増しを行うコードに改造したりしないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一つの記事だけに置くならカスタムHTMLブロックも検討できますが、保存後にスクリプトが残るかはWordPressの権限とサイトのルールによります。WordPress 7.0の文書はHTML、CSS、JavaScriptを分けた編集パネルを説明しています。unfiltered_html権限がないと制限対象のタグは除去されるため、すべての編集者がスクリプトを貼って保存できるわけではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存後は公開画面の出力と自分のパブリッシャー情報を確認してください。エディターに文字列が残っているだけでは設置成功とは言えません。ブロック、テーマ、セキュリティルールが必要な部分を削除するなら、適切な権限を持つ人が正規の管理箇所で対応します。広告のために投稿者全員を管理者にしたり、サイト全体の保護を止めたりしないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "自動広告の除外と手動ユニットの削除は別の設定",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Auto adsのプレビューでは、フォーマット、ページ内広告の数、間隔などを調整できます。Excluded areasはページ内の自動広告を特定領域から除外し、Page exclusionsは特定のページを対象にします。影響範囲は異なり、段落の近くを除外しても、そのページのすべてのオーバーレイ形式まで無効になるわけではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "型紙のダウンロードページでAuto adsを全面的に除外したいなら、Page exclusionsでURLと適用範囲を確認します。同じページにテーマが挿入する手動ユニットもあるなら、その挿入ルールは別に確認してください。Auto adsのスイッチは、すべての外部コードや手動配置を止める一括スイッチではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "プレビュー後は設定を保存して適用し、変更時刻と以前の設定を記録します。実験機能を使う場合は、対象にできる設定と結果の自動適用の有無を理解してください。Googleの文書ではPage exclusionsは実験対象外です。あらゆる設定を自由に分割テストできると説明してはいけません。"
+        },
+        {
+          "type": "heading",
+          "text": "スマートフォンで幅、位置ずれ、操作できる余白を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "デスクトップのサイドバーに収まる固定幅が、スマートフォンにも適するとは限りません。Googleはレスポンシブなサイトでレスポンシブ広告ユニットを検討するよう勧めています。固定サイズは画面の向きに合わせて自動変更されません。狭い画面、横向き、拡大した文字で、横方向にはみ出す、切れる、本文を覆うといった問題がないか確認します。ページ全体を縮小して見るだけでは不十分です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "遅れて読み込まれる広告は累積レイアウトシフトを起こし、読者がダウンロードをタップしようとした瞬間にボタンの位置が変わることがあります。web.devは遅延読み込み要素のためのスペースを確保し、端末ごとにコンテナーを調整するよう勧めています。確保する高さは表示され得るサイズに合わせて検討し、空白を消すためだけにすぐ縮めて下の文字を何度も動かさないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "特定サイズでレスポンシブユニットを表示しない場合、Googleには許容される変更例があります。その文書に従い、非表示時にはそのユニットの広告リクエストも送られないようにします。読み込み済みの広告を透明にする、覆う、切り取るだけではいけません。サイズ調整も配置ポリシーに従う必要があり、技術的にできることが広告動作を自由に変える許可にはなりません。"
+        },
+        {
+          "type": "heading",
+          "text": "条件をそろえて比較し、元に戻すための記録を残す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Site Kitが配置する広告は既定でログイン中の利用者に表示されないため、管理者がログイン中に広告を見られなくても正常な設定かもしれません。検収時はログイン状態、ブラウザー、同意の選択、端末を記録し、一般訪問者の状態でも確認します。プライバシー設定やブラウザーのブロック機能も表示に影響します。空白を見ただけでコードを重ねて追加しないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "キャッシュ、圧縮、遅延実行のツールが広告スクリプトを変える場合があります。設定後に異常が出たら、最近の変更と実際の出力を比較し、管理できる環境で一項目ずつ調べます。公開サイトで全プラグインを一度に停止しないでください。性能比較では広告の配信条件もそろえます。広告のあるページと全くないページを比べても、特定プラグイン自体の負荷は判定できません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例のサイトでは記事テンプレート、広告位置、変更前後のスマートフォン画面、読み込み状態、元に戻す設定を記録できます。実際に配信した後で収益だけでなく閲覧やダウンロードの課題も見てください。自分の広告をクリックして検証してはいけません。広告が操作を妨げるなら、収益データが増えるのを待たず、問題のある位置を先に戻して原因を調べます。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "記事の内容、操作領域、広告候補位置を描き、例外とするページを挙げる。",
+            "コードとユニットの管理ツールを指定し、重複設置を除いて保存後の結果を確認する。",
+            "Auto adsの形式と除外範囲を確かめ、訪問者の状態でスマートフォンの読み込みを確認する。",
+            "変更、読者の作業、復元方法を記録し、条件をそろえて設定を評価する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-ad-placement/diagram-1-ja.svg",
+          "alt": "読書の流れ、コード管理の一本化、スマートフォンでの読み込み、復元記録を四つのカードで示し、読者の操作を妨げない広告配置を考える図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "正しい広告の表示と快適な閲覧の両方を確認し、収益の数字だけで成功としない。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法・設定",
+            "主な用途",
+            "別に確認すること"
+          ],
+          "rows": [
+            [
+              "Auto ads",
+              "設定に従って広告を自動配置",
+              "形式、密度、実際の読書の流れ"
+            ],
+            [
+              "手動広告ユニット",
+              "特定の挿入位置を制御",
+              "各テンプレート、端末、ポリシー"
+            ],
+            [
+              "Site Kit",
+              "サービス接続、コード配置、レポート",
+              "ユニットは手動挿入できない"
+            ],
+            [
+              "カスタムHTMLブロック",
+              "本文の位置に許可されたコードを保存",
+              "権限、除去処理、公開画面の出力"
+            ],
+            [
+              "Excluded areas",
+              "ページ内の自動広告領域を除外",
+              "ページ全体の全形式を止めるわけではない"
+            ],
+            [
+              "Page exclusions",
+              "指定ページでAuto adsを除外",
+              "同ページの手動ユニットは別管理"
+            ]
+          ],
+          "caption": "独自の広告配置管理比較。実際の表示は審査、利用者の条件、広告の供給にも左右される。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "ダウンロードやナビゲーションのボタン付近では誤タップを防ぐ",
+          "text": "広告とコンテンツの操作部分を明確に分けます。狭い画面や読み込み後の表示を確認し、ボタンが広告の下へ移動せず、紛らわしい見出しで広告を包んでいないことを確かめます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AdSense向けのサイト準備と審査を先に済ませる",
+              "kind": "life",
+              "slug": "adsense-site-preparation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Site Kitの連携と権限を理解する",
+              "kind": "life",
+              "slug": "google-site-kit-setup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "技術的な確認をサイト保守に組み込む",
+              "kind": "life",
+              "slug": "technical-seo-checklist"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google：AdSenseの広告配置ポリシー",
+          "url": "https://support.google.com/adsense/answer/1346295?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：AdSenseプログラムポリシー",
+          "url": "https://support.google.com/adsense/answer/48182?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Site Kit：AdSenseの機能と広告ユニットの制限",
+          "url": "https://sitekit.withgoogle.com/documentation/supported-services/adsense/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Site Kit：コード重複の管理",
+          "url": "https://sitekit.withgoogle.com/documentation/using-site-kit/manage-site-kit-placed-code/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：AdSenseコードと広告ユニットコード",
+          "url": "https://support.google.com/adsense/answer/9274019?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：カスタムHTMLとスクリプトの権限",
+          "url": "https://wordpress.org/documentation/article/custom-html/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：Auto adsの設定と除外",
+          "url": "https://support.google.com/adsense/answer/9305577?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：Auto adsの実験に関する制限",
+          "url": "https://support.google.com/adsense/answer/9726342?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：固定サイズ広告ユニットの制限",
+          "url": "https://support.google.com/adsense/answer/9185043?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "web.dev：スペースの確保とレイアウトシフト",
+          "url": "https://web.dev/articles/optimize-cls",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：許容されるレスポンシブ広告の変更",
+          "url": "https://support.google.com/adsense/answer/9183363?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Site Kit：AdSense表示のトラブルシューティング",
+          "url": "https://sitekit.withgoogle.com/documentation/troubleshooting/adsense/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Site Kit：公開画面の性能比較",
+          "url": "https://sitekit.withgoogle.com/documentation/using-site-kit/front-end/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 글에 광고 넣기: Ad Inserter와 읽기 경험",
+      "description": "WordPress 광고 위치를 정할 때는 코드의 관리 주체, 본문을 읽는 흐름, 모바일 조작을 함께 고려해야 합니다. 독자적으로 만든 종이 모형 강좌 사이트를 예로 들어 Auto ads, 수동 광고 단위, Site Kit, 사용자 정의 HTML의 역할과 한계를 정리합니다. 코드 중복, 페이지 제외, 레이아웃 이동, 로그인 상태에 따른 표시 차이를 설명하고 단계별 방법, 비교표, 자체 제작 도해를 통해 확인·조정·되돌리기가 가능한 광고 설정을 돕습니다.",
+      "hero": {
+        "src": "/guides/wordpress-ad-placement/hero-ko.jpg",
+        "alt": "WordPress 광고 위치와 모바일 확인을 나타내는 Mokaair 자체 제작 그림. 웹사이트 화면, 코드 관리 폴더, 점검 문서가 이어져 있다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "종이 모형 강좌 사이트에서 글 안에 광고를 넣고 싶더라도 독자는 설명을 따라가면서 도안을 내려받아야 할 수 있습니다. 광고가 다운로드 버튼 옆에 바짝 붙거나 로딩 중 단계를 아래로 밀어 버리면, 관리자 화면에 수익이 잡히기 시작해도 사이트는 쓰기 어려워질 수 있습니다. 광고 위치는 독자가 실제로 작업하는 경로에서부터 계획해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 주로 WordPress와 AdSense를 함께 쓰는 사이트를 대상으로 하며, 2026년 9월 14일 확인한 Google, Site Kit, WordPress, web.dev 공식 문서를 바탕으로 합니다. 종이 모형 사이트와 테스트 상황은 자체 제작한 예시입니다. 실제 공개 사이트에 광고를 설치하거나 광고를 클릭하거나 수익을 실측하지 않았습니다. 다른 광고 네트워크는 해당 정책을 별도로 확인해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "광고를 놓을 수 있는 읽기 영역과 제외할 영역부터 표시하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "예시의 종이 모형 글에는 재료표, 접는 선 설명, 단계별 이미지, 다운로드 입구와 자주 묻는 질문이 있습니다. 운영자는 한 단락이 완전히 끝난 지점부터 광고를 검토하고, 다운로드, 페이지 번호, 펼쳐 보는 단계, 양식 버튼 주위는 조작 공간으로 남겨 둘 수 있습니다. 이는 이 예시의 디자인 선택일 뿐, 어떤 간격이든 정책 준수를 보장하는 일반 공식은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "AdSense는 광고를 탐색 메뉴, 다운로드 링크 또는 다른 콘텐츠처럼 보이게 하는 것을 금지합니다. 화살표, 애니메이션이나 '사이트 후원' 같은 문구로 클릭을 유도해서도 안 됩니다. 광고임을 분명히 표시하고 '추천 도안'이나 '필수 도구'라는 제목 아래 넣어 편집자의 추천으로 오인하게 하지 마세요. 실수로 누르게 만들 의도가 없더라도 배치 자체가 문제를 일으킬 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 글 템플릿 한 가지에서 배치를 시험하고 다른 템플릿에도 같은 위치가 적용되는지 살펴보세요. 짧은 공지, 본문이 없는 검색 결과 없음 페이지, 주로 사적인 메시지로 이루어진 페이지에는 긴 강좌 글의 삽입 규칙을 그대로 적용하기 어렵습니다. 광고 자리를 늘리려고 내용 없는 페이지를 만들지 말고, 홈 화면만으로 사이트 전체를 판단하지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "Auto ads, 광고 단위, WordPress 플러그인의 역할 구분하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Auto ads는 설정된 범위 안에서 Google이 광고 위치를 결정하지만 광고 단위는 운영자가 페이지 안 위치를 정합니다. 필요에 따라 함께 사용할 수 있으나 어느 위치를 누가 관리하는지 분명해야 합니다. 우선 글 끝의 한 자리만 통제하고 싶다면 처음부터 자동 형식을 모두 켜기보다 수동 단위부터 평가할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Site Kit는 AdSense를 연결하고 Auto ads에 필요한 코드를 배치하며 보고서를 보여 줄 수 있지만, 광고 단위를 하나씩 수동으로 삽입하지는 못합니다. AdSense를 Site Kit에 연결했다고 모든 위치를 정한 것도 아닙니다. Auto ads의 형식, 밀도, 페이지 제외 같은 설정은 AdSense 관리 화면에서 다시 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "테마, 광고 관리 플러그인 또는 기존 코드가 이미 AdSense를 삽입한다면 Site Kit에 맡길지 결정하기 전에 관리 출처를 조사하세요. Google 문서는 같은 코드를 중복 배치하면 오류가 날 수 있다고 경고합니다. 예시 사이트에서는 전체 사이트 코드의 담당 도구와 각 템플릿의 광고 단위 삽입 위치를 표로 적어 두어, 여러 사람이 다시 코드를 덧붙이지 않게 할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "광고 단위를 추가한 뒤 저장된 실제 출력 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "AdSense 공식 문서는 사이트 전체에 쓰는 AdSense 코드와 광고 단위 코드를 구분합니다. 수동 단위를 놓으려면 자신의 계정에서 단위를 만들고 정확한 코드를 복사한 다음 선택한 테마 영역이나 삽입 도구에서 관리하세요. 강좌에 나온 예시 게시자 ID를 자신의 것처럼 게시하거나 자동 새로고침 및 노출 생성용 코드로 임의 변경해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "글 한 편에만 배치한다면 사용자 정의 HTML 블록을 검토할 수 있습니다. 다만 저장 후 스크립트가 남는지는 WordPress 권한과 사이트 규칙에 달려 있습니다. WordPress 7.0 문서는 HTML, CSS, JavaScript를 나누어 편집하는 패널을 설명합니다. unfiltered_html 권한이 없으면 제한된 태그가 제거되므로 모든 편집자가 스크립트를 붙여 넣어 유지할 수 있는 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "저장한 뒤에는 실제 공개 화면 출력과 자신의 게시자 정보를 확인하세요. 편집기에 텍스트가 남았다는 것만으로 설치 성공을 주장할 수 없습니다. 블록, 테마, 보안 규칙이 필요한 코드를 삭제한다면 알맞은 권한을 가진 사람이 정식 관리 위치에서 처리해야 합니다. 광고 때문에 모든 기고자를 관리자로 승격하거나 사이트 전체 보안을 끄지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "자동 광고 제외와 수동 광고 제거는 서로 다른 설정",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Auto ads 미리보기에서 형식, 페이지 안 광고 수, 간격 등을 조정할 수 있습니다. Excluded areas는 페이지 내 자동 광고의 특정 영역을 제외하고 Page exclusions는 특정 페이지를 대상으로 합니다. 적용 범위가 다르므로 단락 주변을 제외했다고 그 페이지의 모든 오버레이 형식까지 비활성화되는 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "어떤 도안 다운로드 페이지에서 Auto ads를 완전히 제외해야 한다면 Page exclusions에서 URL과 적용 범위를 확인하세요. 같은 페이지에 테마가 수동 광고 단위를 넣는다면 자체 삽입 규칙은 별도로 살펴봐야 합니다. Auto ads 스위치를 모든 외부 코드와 수동 광고 위치를 끄는 총괄 스위치로 생각하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "미리보기가 끝나면 설정을 저장하고 적용한 뒤 변경 시각과 이전 값을 기록합니다. 실험 기능을 쓴다면 어떤 설정에 실험이 지원되는지, 결과가 자동 적용될 수 있는지 이해해야 합니다. Google 문서에 따르면 Page exclusions는 실험 가능한 설정에 포함되지 않습니다. 모든 설정을 자유롭게 분할 시험할 수 있다고 설명해서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "모바일에서 너비, 위치 이동, 조작 공간 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "데스크톱 사이드바에 맞는 고정 너비가 휴대전화에도 맞는 것은 아닙니다. Google은 반응형 사이트에서 반응형 광고 단위를 고려하라고 권합니다. 고정 크기는 화면 방향에 따라 자동으로 바뀌지 않습니다. 좁은 화면, 가로 방향, 확대된 글자에서 가로 넘침, 잘림, 본문 가림이 있는지 살펴보세요. 전체 페이지를 축소해서 보는 것만으로는 부족합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "늦게 로딩되는 광고는 누적 레이아웃 이동을 일으켜 독자가 다운로드 버튼을 누르려는 순간 버튼 위치가 갑자기 바뀔 수 있습니다. web.dev는 늦게 로딩되는 내용의 공간을 미리 확보하고 기기에 맞게 컨테이너를 조정하라고 권합니다. 확보할 높이는 실제 나타날 수 있는 크기를 고려하세요. 빈 공간을 없애려고 즉시 접어 아래 글이 계속 뛰게 만들지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "특정 크기에서 반응형 단위를 숨기고 싶다면 Google이 허용한 수정 예시를 따르세요. 숨긴 상태에서는 그 단위의 광고 요청도 보내지 않게 해야 합니다. 이미 로딩된 광고를 투명하게 만들거나 덮거나 잘라내는 방식은 피하세요. 크기 조정도 광고 배치 정책에 맞아야 하며, 기술적으로 가능하다고 광고 동작을 마음대로 바꿀 수 있는 것은 아닙니다."
+        },
+        {
+          "type": "heading",
+          "text": "조건을 맞춰 비교하고 되돌릴 기록 남기기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Site Kit가 배치한 광고는 기본적으로 로그인한 사용자에게 표시되지 않으므로 관리자가 로그인한 상태에서 광고를 보지 못해도 정상일 수 있습니다. 검수 때 로그인 상태, 브라우저, 동의 선택, 기기를 기록하고 일반 방문자 상태에서도 확인하세요. 개인정보 선택이나 브라우저 차단 기능도 표시에 영향을 줍니다. 빈자리가 보인다고 코드를 또 삽입하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "캐시, 압축 또는 지연 실행 도구가 광고 스크립트를 바꿀 수 있습니다. 설정 뒤 이상이 생기면 최근 변경과 실제 출력을 비교하고 통제 가능한 환경에서 한 항목씩 조사하세요. 공개 사이트의 플러그인을 한꺼번에 모두 끄지 마세요. 성능 평가에서도 광고 제공 조건을 똑같이 유지해야 합니다. 광고가 있는 페이지와 전혀 없는 페이지를 비교해서 특정 플러그인 자체의 비용을 판단할 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예시 사이트는 글 템플릿, 광고 위치, 변경 전후 모바일 화면, 로딩 상태와 복원할 설정을 기록할 수 있습니다. 실제 광고를 제공한 뒤에야 수익과 함께 읽기·다운로드 작업이 나아졌는지 살펴보세요. 자신의 광고를 클릭해 검증해서는 안 됩니다. 광고가 조작을 막는다면 수익 데이터가 더 쌓이기를 기다리지 말고 문제 위치를 먼저 되돌린 뒤 원인을 찾으세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "글의 내용, 조작 영역, 예정된 광고 위치를 표시하고 예외 페이지를 적는다.",
+            "코드와 단위의 관리 도구를 지정하고 중복 설치를 없앤 뒤 저장 결과를 확인한다.",
+            "Auto ads 형식과 제외 범위를 확인하고 방문자 상태에서 모바일 로딩을 점검한다.",
+            "변경 사항, 읽기 작업, 복원 방법을 기록하고 조건을 맞춰 배치를 평가한다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-ad-placement/diagram-1-ko.svg",
+          "alt": "읽기 경로, 단일 코드 관리 출처, 모바일 로딩, 복원 기록을 네 카드로 보여 주어 독자의 작업을 방해하지 않는 광고 배치를 돕는 그림.",
+          "width": 1600,
+          "height": 900,
+          "caption": "수익 숫자만이 아니라 올바른 광고 표시와 원활한 읽기를 함께 확인해야 한다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "방식 또는 설정",
+            "주요 용도",
+            "따로 확인할 것"
+          ],
+          "rows": [
+            [
+              "Auto ads",
+              "설정에 따라 광고를 자동 배치",
+              "형식, 밀도, 실제 읽기 경로"
+            ],
+            [
+              "수동 광고 단위",
+              "특정 삽입 위치 제어",
+              "각 템플릿, 기기, 정책"
+            ],
+            [
+              "Site Kit",
+              "서비스 연결, 코드 배치, 보고서",
+              "단위의 수동 삽입은 불가"
+            ],
+            [
+              "사용자 정의 HTML 블록",
+              "내용 위치에 허용된 코드 저장",
+              "권한, 코드 제거, 실제 공개 화면 출력"
+            ],
+            [
+              "Excluded areas",
+              "페이지 내 자동 광고 영역 제외",
+              "페이지의 모든 형식을 끄는 것은 아님"
+            ],
+            [
+              "Page exclusions",
+              "지정 페이지의 Auto ads 제외",
+              "같은 페이지 수동 단위는 별도 관리"
+            ]
+          ],
+          "caption": "자체 제작 광고 배치 관리 비교표. 실제 표시는 심사, 사용자 조건, 광고 공급에도 영향을 받는다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "다운로드·탐색 버튼 근처의 잘못된 터치부터 방지",
+          "text": "광고와 콘텐츠 조작부를 분명히 구분하세요. 좁은 화면과 로딩 뒤 모습을 확인해 버튼이 광고 아래로 움직이지 않고 오해를 부르는 제목으로 광고를 감싸지 않았는지 살펴봅니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AdSense 사이트 준비와 심사 먼저 끝내기",
+              "kind": "life",
+              "slug": "adsense-site-preparation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Site Kit 연동과 권한 이해하기",
+              "kind": "life",
+              "slug": "google-site-kit-setup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "기술 점검을 사이트 유지 관리에 포함하기",
+              "kind": "life",
+              "slug": "technical-seo-checklist"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google: AdSense 광고 배치 정책",
+          "url": "https://support.google.com/adsense/answer/1346295?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: AdSense 프로그램 정책",
+          "url": "https://support.google.com/adsense/answer/48182?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Site Kit: AdSense 기능과 광고 단위 제한",
+          "url": "https://sitekit.withgoogle.com/documentation/supported-services/adsense/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Site Kit: 코드 중복 배치 관리",
+          "url": "https://sitekit.withgoogle.com/documentation/using-site-kit/manage-site-kit-placed-code/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: AdSense 코드와 광고 단위 코드",
+          "url": "https://support.google.com/adsense/answer/9274019?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 사용자 정의 HTML과 스크립트 권한",
+          "url": "https://wordpress.org/documentation/article/custom-html/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: Auto ads 설정과 제외",
+          "url": "https://support.google.com/adsense/answer/9305577?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: Auto ads 실험 제한",
+          "url": "https://support.google.com/adsense/answer/9726342?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: 고정 크기 광고 단위 제한",
+          "url": "https://support.google.com/adsense/answer/9185043?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "web.dev: 공간 확보와 레이아웃 이동",
+          "url": "https://web.dev/articles/optimize-cls",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: 허용되는 반응형 광고 수정",
+          "url": "https://support.google.com/adsense/answer/9183363?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Site Kit: AdSense 표시 문제 해결",
+          "url": "https://sitekit.withgoogle.com/documentation/troubleshooting/adsense/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Site Kit: 공개 화면 성능 비교",
+          "url": "https://sitekit.withgoogle.com/documentation/using-site-kit/front-end/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }

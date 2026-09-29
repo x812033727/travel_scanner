@@ -252,6 +252,970 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "WordPress Social Login: Checking LINE, Google, and Facebook Connections",
+      "description": "Adding LINE, Google, or Facebook login to WordPress takes more than a few buttons. This guide explains how the social-login plugin and provider applications divide the work, how to verify callback URLs, link existing accounts, assign registration roles, and prepare another route before disabling a provider. Using Nextend Social Login as an example, it helps Taiwan-based site owners confirm that ordinary visitors can actually reach their original member accounts.",
+      "hero": {
+        "src": "/guides/wordpress-social-login/hero-en.jpg",
+        "alt": "Original illustration of an identity shield, server, and member-page screen, showing provider verification returning to a site account.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A reader first registered with an email address, then clicked Google login and found an empty favorites list. Their data may not have been deleted; the site may have created or connected a different account. The core of social login is mapping the provider identity to the right site member while keeping another usable login route."
+        },
+        {
+          "type": "paragraph",
+          "text": "Start by completing the flow for one provider your readers use, then decide whether to add others. Nextend Social Login is the setup example here, with the main differences among LINE, Google, and Facebook. Provider dashboards change, so use the application’s actual screen labels and review status on the day you configure it."
+        },
+        {
+          "type": "heading",
+          "text": "Check the plugin edition and your membership rules first",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The official Nextend plugin page lists Google and Facebook among free providers, while LINE requires a Pro Addon; some membership-form integrations are also paid features. Identify which tool generates your login page and check that specific integration. A free edition showing social buttons does not mean every membership form can use them directly."
+        },
+        {
+          "type": "paragraph",
+          "text": "The role granted after social login, whether new members may register, and whether accounts awaiting review may sign in must still follow the existing membership system. If the site requires manual approval, test specifically that a social entry does not bypass it. Receiving data from a provider and gaining membership on the site are separate steps to verify."
+        },
+        {
+          "type": "list",
+          "items": [
+            "List the providers to support, the source of your membership form, and the plugin edition required.",
+            "Record new-member roles, links to existing accounts, and treatment of accounts awaiting review.",
+            "Create a test application or isolated environment and complete the whole flow for one provider first."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Copy and check the callback URL exactly",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Choose a provider in the plugin and read its Getting Started instructions to obtain the required callback URL. Enter that URL when creating the provider application. The callback is where the provider returns the verification result to the site; it is not necessarily the homepage or the member center shown after login. Do not swap those two URLs."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google explicitly requires redirect_uri to match an approved URL exactly, including scheme, capitalization, and trailing slash. LINE also requires a registered callback in the Channel’s LINE Login settings. When copying it, check whether it belongs to production or testing and whether the plugin uses a proxy page, so you do not import another environment’s settings."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep Client Secret or Channel Secret only in the plugin’s designated admin settings or controlled server configuration. Do not paste it into a page, public screenshot, or front-end code. After moving the site, changing its domain, or changing the login URL, update the corresponding callbacks with each provider and test again."
+        },
+        {
+          "type": "heading",
+          "text": "Complete each provider application",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For Google login, create a web-application client in a Google Cloud project, set branding information, audience, and authorized redirect URI, then enter Client ID and Secret in the plugin. Request only the data scopes required for login. If the project accesses other services too, assess their extra permissions and verification requirements separately."
+        },
+        {
+          "type": "paragraph",
+          "text": "For LINE, create a LINE Login Channel, select Web app, and set the callback. If you need an email address, LINE officially requires an Email address permission application and an explanation of the collection purpose. Do not assume every login returns every personal detail; if the site needs a contact email entered later, test that additional flow separately."
+        },
+        {
+          "type": "paragraph",
+          "text": "For Facebook, Nextend’s current setup chapter covers application creation, privacy and data-deletion information, Business Verification, App Review, and publishing. An older FAQ still describes requirements from a different period, so do not reuse a “no review needed” conclusion. Check the actual requirements and approval state currently shown in Meta’s dashboard."
+        },
+        {
+          "type": "heading",
+          "text": "Test an ordinary visitor before showing the buttons",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The plugin’s configuration check can reveal ID, secret, and callback errors, but it cannot prove every user can sign in. A provider’s development or test status may limit eligible accounts. After the required publishing or review is complete, ask an authorized tester to check as an ordinary user."
+        },
+        {
+          "type": "paragraph",
+          "text": "At minimum, test a first login, a repeat login, refusal to authorize, and returning to the previous page. Someone who declines authorization should reach an understandable login screen with another option, not a blank page or redirect loop. If the expected email address is absent, check how the plugin responds so it does not create a member account that cannot be recovered."
+        },
+        {
+          "type": "paragraph",
+          "text": "Test mobile entry points separately, including an ordinary browser and pages opened inside a social app. Some providers restrict embedded browsers. Nextend has button handling for unsupported WebViews; you can guide users to open an external browser, but do not promise the same flow works inside every app."
+        },
+        {
+          "type": "heading",
+          "text": "Link existing accounts instead of merging them casually",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Nextend can add or remove social accounts from a WordPress profile. For a member who already has important data, a clearer route is to sign in with the original method, link the provider identity in account settings, sign out and back in, then verify that the same data and the same WordPress user appear."
+        },
+        {
+          "type": "paragraph",
+          "text": "A plugin may match or link accounts automatically. Read the current version’s rules and test matching and different email addresses as well as already-linked accounts on a test site. Do not manually merge members just because two people display the same name. For a conflict, first verify control of both accounts and preserve their data mapping."
+        },
+        {
+          "type": "paragraph",
+          "text": "Provider identity verification is not a substitute for the site’s permission checks. A reader who can log in should not thereby gain the ability to publish articles or manage other people. Test existing two-factor rules, membership limits, and third-party login integrations through each entry point instead of checking only the traditional password form."
+        },
+        {
+          "type": "heading",
+          "text": "Give members another route before disabling a provider",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Before removing a login provider, confirm members have a usable, verified contact route and can set or reset a site password. Unlink a test account and verify it can still reach the same member account. Simply hiding a button can immediately lock out someone who relied on that provider alone."
+        },
+        {
+          "type": "paragraph",
+          "text": "Signing out of the site, unlinking an account, revoking provider authorization, and deleting member data are different operations. Describe them separately in account guidance and check what the plugin and other services actually retain. The site may still hold an earlier member record after authorization is revoked, so provide a clear data-handling contact route."
+        },
+        {
+          "type": "paragraph",
+          "text": "When setup is complete, save each provider application owner, callback URL, required scopes, test results, and check date. Route provider notices to someone who continues to manage the site; do not leave an application in a former contractor’s account. When provider rules or versions change, this record shows where to retest."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-social-login/diagram-1-en.svg",
+          "alt": "Four steps show provider verification, callback URL, site account, and member permissions, with a reminder to keep an alternative login.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Provider login is complete only when it reaches the correct member and correct permissions.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Provider",
+            "Setup focus",
+            "Acceptance check"
+          ],
+          "rows": [
+            [
+              "Google",
+              "Web client and authorized callback",
+              "Account selection and ordinary-user login"
+            ],
+            [
+              "LINE",
+              "Login Channel and email permission",
+              "Missing email and mobile return path"
+            ],
+            [
+              "Facebook",
+              "App permissions, review, and publishing",
+              "Usable beyond development accounts"
+            ],
+            [
+              "All providers",
+              "WordPress account links and roles",
+              "Old data, revoked authorization, and backup login"
+            ]
+          ],
+          "caption": "Check both provider capability and plugin edition; they are separate conditions."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Verify the same member data",
+          "text": "Put a recognizable favorite or profile detail in a test account. Link a provider, log in again, and compare the data. Returning to the homepage proves only that a redirect happened; you must also confirm the correct account."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Complete member registration and account recovery",
+              "kind": "life",
+              "slug": "wordpress-member-registration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Plan WordPress user roles",
+              "kind": "life",
+              "slug": "wordpress-user-roles"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Official Nextend plugin features",
+          "url": "https://wordpress.org/plugins/nextend-facebook-connect/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Nextend LINE setup",
+          "url": "https://social-login.nextendweb.com/documentation/providers/line/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Integrating LINE Login with a website",
+          "url": "https://developers.line.biz/en/docs/line-login/integrate-line-login/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Nextend Google setup",
+          "url": "https://social-login.nextendweb.com/documentation/providers/google/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google web OAuth flow",
+          "url": "https://developers.google.com/identity/protocols/oauth2/web-server",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Nextend Facebook setup",
+          "url": "https://social-login.nextendweb.com/documentation/providers/facebook/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Nextend general settings",
+          "url": "https://social-login.nextendweb.com/documentation/settings/general-settings/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPressのソーシャルログイン：LINE・Google・Facebook連携の確認",
+      "description": "WordPressにLINE、Google、Facebookのログインを加える作業は、ボタンを増やすだけでは終わりません。本記事では、ログインプラグインと各サービスのアプリの役割、コールバックURL、既存アカウントの連携、登録時の権限、サービス停止前の代替ログインを説明します。Nextend Social Loginを例に設定順序を示し、台湾のサイト運営者が一般の訪問者を元の会員アカウントにログインさせられるか確認できるようにします。",
+      "hero": {
+        "src": "/guides/wordpress-social-login/hero-ja.jpg",
+        "alt": "身元を示す盾、サーバー、会員ページの画面を組み合わせたオリジナルの図。外部サービスでの認証がサイトのアカウントにつながる様子を表す。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "読者がもともとメールアドレスで登録していたのに、後からGoogleログインを使ったらお気に入り一覧が空になったとします。データが消えたとは限らず、別のアカウントが作られたか連携された可能性があります。ソーシャルログインの要点は、サービス側の身元を正しいサイト会員に対応させ、別のログイン手段も残すことです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "まず読者がよく使う一つのサービスで全手順を完成させ、それから入口を増やすか判断します。以下ではNextend Social Loginを設定例として、LINE、Google、Facebookの主な違いを説明します。各社の管理画面は更新されるため、画面名や審査状態は設定当日の実際のアプリで確かめてください。"
+        },
+        {
+          "type": "heading",
+          "text": "プラグインの版と会員ルールを先に確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Nextendの公式プラグインページではGoogleとFacebookが無料版の対応サービスに含まれ、LINEにはPro Addonが必要です。一部の会員フォームとの連携も有料機能です。ログインページを作るツールを特定し、その連携方式を調べてください。無料版にソーシャルボタンがあるだけで、全ての会員フォームにそのまま使えるとは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ソーシャルログイン後に付く権限、新会員登録の可否、審査待ちアカウントのログイン可否は、既存の会員制度と一致させます。管理者による審査が必要なサイトでは、ソーシャル入口からそのルールを迂回できないか特に試してください。外部サービスから情報を受け取ることと、サイトの会員資格を得ることは別々に検証する手順です。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "対応するサービス、会員フォームの提供元、必要なプラグインの版を一覧にする。",
+            "新会員の権限、既存アカウントとの連携、審査待ちアカウントの扱いを記録する。",
+            "テスト用アプリか隔離環境を作り、一つのサービスで全手順を先に完了する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "プラグインが示すコールバックURLを一字ずつ確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "プラグインでサービスを選びGetting Startedを読み、要求されるコールバックURLを取得してから、サービス側で作るアプリに登録します。コールバックは認証結果をサイトへ戻す場所です。必ずしもホームページではなく、ログイン後に読者に表示する会員ページとも違います。この二つのURLを取り違えないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Googleはredirect_uriが承認済みのURLと完全に一致することを明示的に要求し、通信方式、大文字小文字、末尾のスラッシュも対象です。LINEでもChannelのLINE Login設定にコールバックを登録します。コピー時には本番用かテスト用か、プラグインが代理ページを使うかを確認し、別環境の設定を持ち込まないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Client SecretやChannel Secretは、プラグイン指定の管理画面か管理されたサーバー設定にだけ置きます。ページ、公開スクリーンショット、フロントエンドコードに貼らないでください。サイト移転、ドメイン変更、ログインURL変更の後は各サービス側のコールバックも更新し、もう一度試します。"
+        },
+        {
+          "type": "heading",
+          "text": "各サービスのアプリ設定を完了する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "GoogleログインではGoogle CloudプロジェクトにWebアプリ用クライアントを作り、ブランド情報、利用対象、承認済みリダイレクトURIを設定してからClient IDとSecretをプラグインへ入力します。ログインに必要な情報の範囲だけを要求します。同じプロジェクトで別サービスも使うなら、追加権限と審査要件を別に確認してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "LINEではLINE Login Channelを作り、Web appを選んでコールバックを設定します。メールアドレスが必要な場合、LINE公式はEmail address permissionの申請と収集目的の説明を求めています。毎回全ての個人情報が得られると想定しないでください。サイトで連絡先メールの追加入力が必要なら、その手順も別に試します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "FacebookについてNextendの現行設定章には、アプリ作成、プライバシーとデータ削除の説明、Business Verification、App Review、公開などが挙がっています。古いFAQには別の時期の記述が残るため、「審査不要」という結論を引き継がないでください。Metaの管理画面が現在示す条件と承認状態を基準にします。"
+        },
+        {
+          "type": "heading",
+          "text": "一般の訪問者で試してからボタンを表示する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "プラグインの設定検証はID、秘密鍵、コールバックの誤りを発見する助けになりますが、全利用者がログインできる証拠ではありません。サービスが開発・テスト状態なら利用可能なアカウントが限られる場合があります。必要な公開や審査の後、権限のあるテスターに一般利用者として確認してもらいます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "少なくとも初回ログイン、二回目のログイン、認可の拒否、前のページへの復帰を試します。認可しない人には別の方法もある分かりやすいログイン画面を示し、白い画面や無限リダイレクトにしないでください。期待したメールアドレスが提供されない場合、プラグインの扱いを調べ、復旧できない会員アカウントを作らないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "スマートフォンでも、通常のブラウザーとSNSアプリ内で開くページなど、入口ごとに試します。一部のサービスは埋め込みブラウザーを制限します。Nextendには対応しないWebViewでのボタン処理設定があります。外部ブラウザーで開く案内はできますが、あらゆるアプリ内で同じ手順が動くとは約束しないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "既存アカウントを連携し、安易に統合しない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "NextendはWordPressのプロフィールページでソーシャルアカウントを追加・解除できます。大切な情報がある既存会員には、まず従来の方法でログインし、アカウント設定から外部サービスの身元を連携します。その後ログアウトして再ログインし、同じ情報と同じWordPressユーザーが表示されることを確認する方法が明確です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "プラグインには自動照合や連携の仕組みがある場合もあります。現在の版の説明を読み、同じメール、別のメール、連携済みアカウントをテストサイトで試してください。表示名が同じというだけで二人の会員を手動で統合しないでください。競合を扱うときは、まず両アカウントを管理できる本人か確認し、情報の対応関係を保存します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "外部サービスでの身元確認は、サイト上の操作権限の代わりにはなりません。読者がログインできても記事公開や他人の管理が許されるわけではありません。従来の二要素認証、会員制限、外部ログイン連携も各入口から試し、通常のパスワードログインだけで判断しないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "サービスを止める前に別のログイン経路を用意する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ログインサービスを外す前に、会員に利用可能で確認済みの連絡先があり、サイトのパスワードを設定または再設定できるか確かめます。テストアカウントの連携を解除し、同じ会員アカウントへ引き続き入れるか確認します。ボタンを隠すだけでは、そのサービスだけに頼っていた利用者が直ちに入れなくなるかもしれません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "サイトからのログアウト、アカウント連携の解除、サービス側の認可撤回、会員データの削除は別の操作です。アカウント案内で区別して説明し、プラグインや他のサービスに実際に残る情報を確認します。認可を取り消してもサイトには以前の会員情報が残る場合があるため、データ対応の連絡先を明示してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完了したら、各サービスのアプリ所有者、コールバックURL、必要な権限、テスト結果、確認日を保存します。通知は継続してサイトを管理する人に届くようにし、離任した業者のアカウントにアプリを残さないでください。規則やバージョンが変わったとき、この一覧が再検証の起点になります。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-social-login/diagram-1-ja.svg",
+          "alt": "外部サービスでの認証、コールバックURL、サイトのアカウント、会員権限の四段階を示し、別のログイン手段を残すよう促す図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "外部サービスでログインできても、正しい会員と権限を確認します。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "サービス",
+            "設定の要点",
+            "追加の検証"
+          ],
+          "rows": [
+            [
+              "Google",
+              "Webクライアントと承認済みコールバック",
+              "アカウント選択と一般利用者のログイン"
+            ],
+            [
+              "LINE",
+              "Login Channelとメール権限",
+              "メールがない場合とスマートフォンで戻る流れ"
+            ],
+            [
+              "Facebook",
+              "アプリの権限、審査、公開",
+              "開発用アカウント以外で使えるか"
+            ],
+            [
+              "共通",
+              "WordPressアカウント連携と権限",
+              "既存データ、認可撤回、別のログイン"
+            ]
+          ],
+          "caption": "サービス側の機能とプラグインのプランは別の条件です。両方を確認します。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "同じ会員データで確認する",
+          "text": "テストアカウントに見分けやすいお気に入りやプロフィール情報を入れ、外部サービスを連携して再ログイン後に比べます。ホームページへ戻っただけでは画面遷移しか確認できません。正しいアカウントに入ったかも確かめます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "会員登録とアカウント復旧を完成させる",
+              "kind": "life",
+              "slug": "wordpress-member-registration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPressのユーザー権限を計画する",
+              "kind": "life",
+              "slug": "wordpress-user-roles"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Nextend公式プラグインの機能",
+          "url": "https://wordpress.org/plugins/nextend-facebook-connect/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NextendのLINE設定",
+          "url": "https://social-login.nextendweb.com/documentation/providers/line/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WebサイトへのLINEログインの組み込み",
+          "url": "https://developers.line.biz/en/docs/line-login/integrate-line-login/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NextendのGoogle設定",
+          "url": "https://social-login.nextendweb.com/documentation/providers/google/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "GoogleのWeb向けOAuthフロー",
+          "url": "https://developers.google.com/identity/protocols/oauth2/web-server",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NextendのFacebook設定",
+          "url": "https://social-login.nextendweb.com/documentation/providers/facebook/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Nextendの一般設定",
+          "url": "https://social-login.nextendweb.com/documentation/settings/general-settings/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 소셜 로그인: LINE·Google·Facebook 연결 확인",
+      "description": "WordPress에 LINE, Google, Facebook 로그인을 추가하는 일은 버튼을 몇 개 놓는 것으로 끝나지 않습니다. 이 글은 소셜 로그인 플러그인과 각 플랫폼 앱의 역할, 콜백 URL 확인, 기존 계정 연결, 가입 역할, 플랫폼을 끄기 전 복구 경로를 설명합니다. Nextend Social Login을 예로 설정 순서를 보여 주어 대만 사이트 운영자가 일반 방문자도 기존 회원 계정으로 실제 로그인할 수 있는지 확인하도록 돕습니다.",
+      "hero": {
+        "src": "/guides/wordpress-social-login/hero-ko.jpg",
+        "alt": "신원을 나타내는 방패, 서버, 회원 페이지 화면을 조합한 자체 제작 그림. 플랫폼 인증 결과가 웹사이트 계정으로 돌아오는 모습을 표현한다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "독자가 예전에 이메일로 가입한 뒤 Google 로그인을 눌렀는데 즐겨찾기 목록이 비어 있다고 합시다. 자료가 삭제된 것이 아니라 사이트가 다른 계정을 만들거나 연결했을 수 있습니다. 소셜 로그인의 핵심은 플랫폼 신원을 올바른 사이트 회원과 연결하고 다른 로그인 경로도 남겨 두는 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 독자가 자주 쓰는 플랫폼 하나의 전체 절차를 완성하고 다른 입구를 추가할지 평가하세요. 아래에서는 Nextend Social Login을 설정 예시로 사용하고 LINE, Google, Facebook의 주요 차이를 설명합니다. 플랫폼 관리자 화면은 바뀌므로 화면 이름과 심사 상태는 설정 당일 실제 앱을 기준으로 확인해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "플러그인 버전과 회원 규칙부터 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Nextend 공식 플러그인 페이지에 따르면 무료로 지원되는 플랫폼에는 Google과 Facebook이 포함되고 LINE에는 Pro Addon이 필요합니다. 일부 회원 양식 연동도 유료 기능입니다. 로그인 페이지를 만든 도구부터 확인하고 해당 연동을 점검하세요. 무료 버전에 소셜 버튼이 있다고 모든 회원 양식에서 바로 쓸 수 있다고 가정하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "소셜 로그인에 성공한 뒤 받는 역할, 새 회원 가입 허용 여부, 심사 대기 계정의 로그인 여부는 기존 회원 제도와 일치해야 합니다. 사이트에 관리자 심사가 필요하다면 소셜 입구가 그 규칙을 건너뛰지 않는지 특별히 시험하세요. 플랫폼에서 자료를 받는 일과 사이트 회원 자격을 얻는 일은 각각 검증해야 합니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "지원할 플랫폼, 회원 양식의 출처, 필요한 플러그인 버전을 적습니다.",
+            "새 회원 역할, 기존 계정 연결, 심사 대기 계정의 처리 방식을 기록합니다.",
+            "테스트 앱 또는 격리 환경을 만들고 플랫폼 하나의 전체 절차를 먼저 완성합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "플러그인이 제공하는 콜백 URL을 정확히 대조하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "플러그인에서 플랫폼을 고르고 Getting Started를 읽어 필요한 콜백 URL을 얻은 다음 플랫폼 앱을 만들며 등록합니다. 콜백은 플랫폼이 인증 결과를 사이트로 돌려보내는 위치입니다. 홈페이지일 필요도 없고 로그인 후 독자에게 보이는 회원 센터와도 다릅니다. 이 두 URL을 바꿔 쓰지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google은 redirect_uri가 승인된 URL과 프로토콜, 대소문자, 마지막 슬래시까지 정확히 일치해야 한다고 명시합니다. LINE도 Channel의 LINE Login 설정에 콜백을 등록해야 합니다. 복사할 때 운영용인지 테스트용 도메인인지, 플러그인이 프록시 페이지를 쓰는지 확인하여 다른 환경의 설정을 가져오지 않게 하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "Client Secret 또는 Channel Secret은 플러그인이 지정한 관리자 설정이나 통제된 서버 설정에만 보관합니다. 페이지, 공개 스크린샷, 프런트엔드 코드에 붙이지 마세요. 사이트 이전, 도메인 변경, 로그인 URL 변경 후에는 각 플랫폼의 콜백을 갱신하고 다시 시험합니다."
+        },
+        {
+          "type": "heading",
+          "text": "플랫폼별 앱 설정 마치기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 로그인을 쓰려면 Google Cloud 프로젝트에서 웹 애플리케이션 클라이언트를 만들고 브랜드 정보, 사용 대상, 승인된 리디렉션 URI를 설정합니다. 그런 다음 Client ID와 Secret을 플러그인에 입력하세요. 로그인에 필요한 자료 범위만 요청하고 같은 프로젝트에서 다른 서비스도 사용한다면 추가 권한과 검증 요구를 따로 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "LINE은 LINE Login Channel을 사용하고 Web app을 선택해 콜백을 설정합니다. 이메일 주소가 필요하다면 LINE 공식 문서는 Email address permission 신청과 수집 목적 설명을 요구합니다. 로그인할 때마다 모든 개인정보를 받을 수 있다고 가정하지 마세요. 사이트에서 연락용 이메일을 나중에 입력받아야 한다면 그 절차도 따로 검증합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Facebook의 경우 Nextend의 현재 설정 문서에는 앱 만들기, 개인정보 및 데이터 삭제 안내, Business Verification, App Review, 게시 등의 단계가 있습니다. 오래된 FAQ에는 다른 시기의 설명이 남아 있으므로 심사가 필요 없다는 결론을 그대로 쓰지 마세요. 지금 Meta 관리자 화면에 표시된 요구와 승인 상태를 기준으로 확인합니다."
+        },
+        {
+          "type": "heading",
+          "text": "일반 방문자로 시험한 뒤 로그인 버튼 보여 주기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "플러그인의 설정 검사는 ID, 비밀 키, 콜백 오류를 찾는 데 도움이 되지만 모든 이용자가 로그인할 수 있다는 증거는 아닙니다. 플랫폼의 개발 또는 테스트 상태에서는 사용 가능한 계정이 제한될 수 있습니다. 필요한 게시나 심사를 마친 뒤 권한이 있는 테스터에게 일반 이용자 입장에서 확인해 달라고 하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "최소한 첫 로그인, 재로그인, 권한 부여 거절, 이전 페이지로 돌아가기를 시험합니다. 권한을 거절한 사람은 다른 방법이 있는 이해하기 쉬운 로그인 화면으로 돌아가야 하며 빈 화면이나 무한 리디렉션으로 빠져서는 안 됩니다. 예상한 이메일이 제공되지 않으면 플러그인의 처리를 확인하여 복구할 수 없는 회원 계정을 만들지 않게 하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "휴대전화에서도 일반 브라우저와 소셜 앱 안에서 연 페이지처럼 서로 다른 입구를 시험합니다. 일부 플랫폼은 내장 브라우저를 제한합니다. Nextend에는 지원하지 않는 WebView에서 버튼을 처리하는 설정이 있습니다. 외부 브라우저에서 열도록 안내할 수 있지만 모든 앱 안에서 같은 절차가 작동한다고 약속하지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "기존 계정을 연결하고 함부로 합치지 않기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Nextend는 WordPress 프로필 페이지에서 소셜 계정을 추가하거나 연결 해제할 수 있습니다. 중요한 자료가 이미 있는 회원에게는 원래 방식으로 먼저 로그인한 뒤 계정 설정에서 플랫폼 신원을 연결하는 방법이 더 명확합니다. 로그아웃했다 다시 로그인해 같은 자료와 같은 WordPress 사용자가 보이는지 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "플러그인에 자동 일치 또는 연결 규칙이 있을 수 있습니다. 현재 버전 설명을 읽고 같은 이메일, 다른 이메일, 이미 연결된 계정의 상황을 테스트 사이트에서 검증하세요. 표시 이름이 같다는 이유만으로 회원 둘을 수동으로 합치지 마세요. 충돌을 처리해야 한다면 먼저 두 계정의 통제권을 확인하고 자료 대응 관계를 보관합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "플랫폼 신원 확인이 사이트의 작업 권한 검사를 대신하지는 않습니다. 독자가 로그인할 수 있어도 글을 게시하거나 다른 사람을 관리할 권한을 얻어서는 안 됩니다. 기존 2단계 인증, 회원 제한, 타사 로그인 연동도 각 입구별로 시험하고 기존 비밀번호 로그인만 확인하지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "플랫폼을 끄기 전에 다른 경로 마련하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "로그인 플랫폼 하나를 없애기 전에 회원에게 사용할 수 있는 확인된 연락처가 있고 사이트 비밀번호를 설정하거나 재설정할 수 있는지 확인합니다. 테스트 계정의 연결을 해제한 뒤에도 같은 회원 계정에 로그인되는지 시험하세요. 버튼만 숨기면 해당 플랫폼에 전적으로 의존한 이용자는 바로 입구를 잃을 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "사이트에서 로그아웃하기, 계정 연결 해제, 플랫폼 권한 부여 철회, 회원 자료 삭제는 다른 작업입니다. 계정 안내에서 각각 설명하고 플러그인과 다른 서비스가 실제로 보관하는 자료 범위를 확인하세요. 이용자가 권한을 철회해도 사이트에는 이전에 만든 회원 자료가 남을 수 있으므로 자료 처리 연락처를 분명히 제시합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "설정 후 플랫폼 앱 소유자, 콜백 URL, 필요한 권한, 테스트 결과, 확인 날짜를 보관합니다. 플랫폼 알림은 계속 사이트를 관리할 사람에게 보내고 퇴사한 업체의 계정에 앱을 남기지 마세요. 나중에 규칙이나 버전이 바뀌면 이 표에서 다시 검증할 지점을 찾을 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-social-login/diagram-1-ko.svg",
+          "alt": "플랫폼 인증, 콜백 URL, 사이트 계정, 회원 권한의 네 단계를 차례로 보여 주며 다른 로그인 수단도 남기라고 알리는 그림.",
+          "width": 1600,
+          "height": 900,
+          "caption": "플랫폼 로그인이 끝나도 올바른 회원과 권한인지 확인해야 합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "플랫폼",
+            "설정 핵심",
+            "추가 검수"
+          ],
+          "rows": [
+            [
+              "Google",
+              "웹 클라이언트와 승인된 콜백",
+              "계정 선택과 일반 이용자 로그인"
+            ],
+            [
+              "LINE",
+              "Login Channel과 이메일 권한",
+              "이메일 누락과 휴대전화 복귀 절차"
+            ],
+            [
+              "Facebook",
+              "앱 권한, 심사, 게시",
+              "개발용 계정 밖에서도 사용 가능 여부"
+            ],
+            [
+              "공통",
+              "WordPress 계정 연결과 역할",
+              "기존 자료, 권한 철회, 대체 로그인"
+            ]
+          ],
+          "caption": "플랫폼 기능과 플러그인 요금제는 별도 조건이므로 함께 확인하세요."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "같은 회원 자료로 검수하기",
+          "text": "테스트 계정에 알아볼 수 있는 즐겨찾기나 프로필 정보를 넣으세요. 소셜 로그인을 연결한 뒤 다시 로그인해 비교합니다. 버튼을 눌러 홈페이지로 돌아온 것은 이동만 증명하므로 올바른 계정에 로그인했는지도 확인해야 합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "회원 가입과 계정 복구 절차 완성하기",
+              "kind": "life",
+              "slug": "wordpress-member-registration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 사용자 역할 계획하기",
+              "kind": "life",
+              "slug": "wordpress-user-roles"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Nextend 공식 플러그인 기능",
+          "url": "https://wordpress.org/plugins/nextend-facebook-connect/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Nextend LINE 설정",
+          "url": "https://social-login.nextendweb.com/documentation/providers/line/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "웹사이트에 LINE 로그인 연결하기",
+          "url": "https://developers.line.biz/en/docs/line-login/integrate-line-login/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Nextend Google 설정",
+          "url": "https://social-login.nextendweb.com/documentation/providers/google/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 웹 OAuth 절차",
+          "url": "https://developers.google.com/identity/protocols/oauth2/web-server",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Nextend Facebook 설정",
+          "url": "https://social-login.nextendweb.com/documentation/providers/facebook/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Nextend 일반 설정",
+          "url": "https://social-login.nextendweb.com/documentation/settings/general-settings/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WordPress 社交登录：LINE、Google 与 Facebook 的连接检查",
+      "description": "在 WordPress 加入 LINE、Google 或 Facebook 登录，不只是多放几个按钮。本文说明社交登录插件与平台应用程序的分工、回调网址核对、已有账号关联、注册角色及停用前的恢复准备，并以 Nextend Social Login 示范设置顺序，帮助台湾网站站长确认普通访客真的能登录原来的会员账号。",
+      "hero": {
+        "src": "/guides/wordpress-social-login/hero-zh-cn.jpg",
+        "alt": "由身份盾牌、服务器和会员页面屏幕组成的原创插图，展现社交平台验证后返回网站账号。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "读者原本用邮箱注册，后来点击 Google 登录，却发现收藏列表是空的。资料未必被删除，也可能是网站创建或关联了另一个账号。社交登录的关键，是让平台身份正确对应到网站会员，同时保留另一条可用的登录途径。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可以先选择一个读者常用的平台完成流程，再评估增加其他入口。下文以 Nextend Social Login 为设置例子，介绍 LINE、Google 与 Facebook 的主要差别。平台后台会更新，界面名称与审核状态应以操作当天实际应用程序显示的内容为准。"
+        },
+        {
+          "type": "heading",
+          "text": "先确认插件版本与网站会员规则",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Nextend 官方插件页列出的免费平台包括 Google 和 Facebook，LINE 则属于 Pro Addon；部分会员表单整合也列为付费功能。先确认登录页由哪个工具生成，再检查对应整合。不要因为免费版有社交按钮，就假设所有会员表单都能直接使用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "社交登录成功后取得什么角色、是否允许新会员注册，以及待审账号能否登录，仍要符合原有会员制度。如果网站要求人工审核，应特别测试社交入口不会跳过规则。平台提供授权资料与取得网站会员资格，是需要分别验证的两个步骤。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "列出要支持的平台、会员表单来源及所需插件版本。",
+            "记录新会员角色、已有账号关联和待审账号的处理方式。",
+            "创建测试应用程序或隔离环境，先完成一个平台的完整流程。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "由插件提供回调网址，逐字核对",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在插件中选择平台并阅读 Getting Started，取得要求的回调网址，再到平台创建应用程序并填入。回调是平台验证后将结果交还网站的位置，不一定是首页，也不等于登录完成后给读者看的会员中心。不要互换这两种网址。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 官方明确要求 redirect_uri 与获批准的网址完全一致，包括协议、大小写和末尾斜杠。LINE 也要求在 Channel 的 LINE Login 设置中登记回调。复制时核对正式或测试域名，以及插件是否改用代理页面，避免带入另一个环境的设置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Client Secret 或 Channel Secret 只放在插件指定的后台设置或受控服务器配置中，不要贴到页面、公开截图或前端代码里。网站迁移、更换域名或登录网址后，应回到各平台更新对应回调并重新测试。"
+        },
+        {
+          "type": "heading",
+          "text": "完成各平台的应用程序设置",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 登录需要在 Google Cloud 项目中创建网页应用程序客户端，设置品牌信息、使用对象和获授权的重定向网址，再把 Client ID 与 Secret 填回插件。只要求登录所需的数据权限；如果同一项目还调用其他服务，额外权限与验证要求也应另外确认。"
+        },
+        {
+          "type": "paragraph",
+          "text": "LINE 使用 LINE Login Channel，选择 Web app 并设置回调。需要取得邮箱时，LINE 官方要求先申请 Email address permission，并说明收集用途。不要假设每次登录都能取得所有个人资料；如果网站需要用户补填联系邮箱，应另行验证补填流程。"
+        },
+        {
+          "type": "paragraph",
+          "text": "关于 Facebook，Nextend 当前设置章节列出创建应用程序、隐私及删除资料说明、Business Verification、App Review 和发布等步骤。旧 FAQ 仍有不同时期的说法，不宜沿用“无需审核”的结论。实际要完成哪些项目，应以 Meta 后台当前列出的要求和批准状态为准。"
+        },
+        {
+          "type": "heading",
+          "text": "先用普通访客身份测试，再显示登录按钮",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "插件提供的设置验证可以先协助发现 ID、密钥和回调错误，但不等于所有用户都已经可以登录。平台的开发或测试状态可能限制可使用的账号。完成必要发布或审核后，请获授权的测试者以普通用户身份确认。"
+        },
+        {
+          "type": "paragraph",
+          "text": "测试至少包括首次登录、再次登录、拒绝授权和返回上一页。拒绝授权的人应回到易懂的登录页面，并有其他选择，不能出现空白页或无限重定向。如果用户没有提供预期的邮箱，应核对插件如何处理，避免产生无法恢复的会员账号。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手机也要从不同入口测试，例如普通浏览器和社交 App 内打开的页面。有些平台限制内嵌浏览器；Nextend 对不支持的 WebView 提供按钮处理设置。可以引导用户改用外部浏览器，但不要承诺任何 App 内都能使用相同流程。"
+        },
+        {
+          "type": "heading",
+          "text": "关联已有账号，不要随意合并",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Nextend 提供在 WordPress 个人资料页面添加或移除社交账号的功能。对于已有重要资料的会员，更清楚的方式是先按原有方法登录，再在账号设置中关联社交身份，退出后重新登录，确认看到的是同一份资料和同一个网站用户。"
+        },
+        {
+          "type": "paragraph",
+          "text": "插件可能有自动匹配或关联逻辑，应阅读当前版本说明，并在测试站验证相同邮箱、不同邮箱和已有账号关联的情形。不要因为两个人显示同样的名字就手动合并会员。需要处理冲突时，先核实对两个账号的控制权并保存资料对应关系。"
+        },
+        {
+          "type": "paragraph",
+          "text": "社交平台的身份验证不能代替网站的操作授权。读者能够登录，不应因此取得发布文章或管理其他人的权限；原有的双因素验证、会员限制与第三方登录整合也要按每个入口测试，而不能只检查传统账号密码登录。"
+        },
+        {
+          "type": "heading",
+          "text": "停用平台前，先让会员有另一条途径",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "取消某个登录平台前，先确认会员拥有可用且已验证的联系方式，并能设置或重置网站密码。用测试账号解除关联后，确认仍能登录同一个会员账号。只隐藏按钮，原本完全依赖它的用户可能马上失去入口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "退出网站、解除账号关联、撤销平台授权和删除会员资料是不同操作。请在账号说明中分别描述，并核对插件与其他服务实际保存的资料范围。用户撤销授权后，网站仍可能保有此前创建的会员资料，应提供明确的资料处理联系途径。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成后保存各平台应用程序的持有人、回调网址、所需权限、测试结果与确认日期。把平台通知交给持续管理网站的人，不要让应用程序留在已经离职的供应商账号下。以后规则或版本变化时，这份对照表能帮助你确定从哪里重新验证。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-social-login/diagram-1-zh-cn.svg",
+          "alt": "依次展示平台验证、回调网址、网站账号与会员权限四个步骤，并提醒保留其他登录途径。",
+          "width": 1600,
+          "height": 900,
+          "caption": "完成平台登录，还要确认会员账号与权限都正确。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "平台",
+            "设置重点",
+            "特别验收"
+          ],
+          "rows": [
+            [
+              "Google",
+              "网页客户端与获授权回调",
+              "账号选择及普通用户登录"
+            ],
+            [
+              "LINE",
+              "Login Channel 与邮箱权限",
+              "缺少邮箱及手机返回流程"
+            ],
+            [
+              "Facebook",
+              "应用权限、审核与发布",
+              "开发账号以外能否使用"
+            ],
+            [
+              "共同事项",
+              "WordPress 账号关联与角色",
+              "旧资料、撤销授权和其他登录途径"
+            ]
+          ],
+          "caption": "平台能力与插件方案是两层条件，请同时核对。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "用同一份会员资料验收",
+          "text": "在测试账号里放入容易识别的收藏或个人资料，关联社交登录后再次登录核对。按钮返回首页只能证明发生了跳转，还必须确认登录的是正确账号。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "完成会员注册与账号恢复流程",
+              "kind": "life",
+              "slug": "wordpress-member-registration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "规划 WordPress 用户角色",
+              "kind": "life",
+              "slug": "wordpress-user-roles"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Nextend 官方插件功能",
+          "url": "https://wordpress.org/plugins/nextend-facebook-connect/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Nextend LINE 设置",
+          "url": "https://social-login.nextendweb.com/documentation/providers/line/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE 网站登录整合",
+          "url": "https://developers.line.biz/en/docs/line-login/integrate-line-login/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Nextend Google 设置",
+          "url": "https://social-login.nextendweb.com/documentation/providers/google/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 网页 OAuth 流程",
+          "url": "https://developers.google.com/identity/protocols/oauth2/web-server",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Nextend Facebook 设置",
+          "url": "https://social-login.nextendweb.com/documentation/providers/facebook/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Nextend 一般设置",
+          "url": "https://social-login.nextendweb.com/documentation/settings/general-settings/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }

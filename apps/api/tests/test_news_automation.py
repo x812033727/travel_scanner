@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import gzip
+import json
 from datetime import UTC, datetime, timedelta
+from pathlib import Path
 from typing import Any
 from unittest.mock import AsyncMock
 from uuid import UUID, uuid4
@@ -11,10 +13,11 @@ import pytest
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
+import app.news_automation as news_automation_package
 from app.config import get_settings
 from app.db import Base
 from app.guides.schemas import GuideDocument
-from app.news_automation.feeds import extract_article, parse_entries
+from app.news_automation.feeds import extract_article, parse_entries, read_article
 from app.news_automation.fetch import (
     MAX_RESPONSE_BYTES,
     RedisHostRateLimiter,
@@ -29,7 +32,9 @@ from app.news_automation.models import (
     NewsSource,
 )
 from app.news_automation.policy import (
+    MIN_BODY_CHARACTERS,
     auto_evidence_ok,
+    body_fingerprint,
     content_fingerprint,
     event_date_problems,
     evidence_present,
@@ -39,6 +44,7 @@ from app.news_automation.policy import (
     hard_policy_problems,
     normalized_title,
     transition_allowed,
+    trusted_alone_sites,
 )
 from app.news_automation.scanner import claim_due_sources, classify_vertical, scan_source
 from app.news_automation.schemas import FetchResult
@@ -462,6 +468,95 @@ async def test_evidence_is_refetched_and_changed_content_fails_closed() -> None:
     assert reasons == [f"source_content_changed:{evidence.url}"]
 
 
+def test_extractor_keeps_the_story_past_self_closing_tags_and_skips_page_chrome() -> None:
+    # SEC: the first "<.../>" in <main> used to end the capture after the side navigation.
+    _, text, _ = extract_article(
+        b'<main><nav><a href="/news">Newsroom</a></nav><img src="seal.png"/>'
+        b"<p>The Commission adopted the rule.<br/>It takes effect in May.</p></main>",
+        "https://www.sec.gov/newsroom/press-releases/1",
+    )
+    assert text == "The Commission adopted the rule.\nIt takes effect in May."
+    # Cloudflare: a tag list and a player script ahead of the story; Meta: a <style> block.
+    _, text, links = extract_article(
+        b'<article><div class="tags"><button>Show 5 tags</button>'
+        b'<aside><a href="/tag/ai">AI</a></aside></div>'
+        b"<style>.x{color:red}</style><script>jwplayer('id-66f7')</script>"
+        b'<p>Workers now start in 2 ms. <a href="https://other.example/a">Source</a></p>'
+        b"<footer>Share</footer></article>",
+        "https://blog.cloudflare.com/post",
+    )
+    assert text == "Workers now start in 2 ms.\nSource"
+    assert links == ["https://other.example/a"], "no links from skipped chrome"
+    # An unclosed <li> or <p> neither ends the region nor keeps it open past </main>.
+    _, text, _ = extract_article(
+        b"<main><ul><li>One<li>Two</ul><p>Three</main><div>Site footer text</div>",
+        "https://example.com/story",
+    )
+    assert text == "One\nTwo\nThree"
+    # Per-source regions and exclusions (Chainalysis keeps its story outside <article>).
+    _, text, _ = extract_article(
+        b'<article class="card">Related post</article>'
+        b'<div class="single-post__content"><p>Hack traced.</p>'
+        b'<div id="newsletter">Subscribe</div></div>',
+        "https://www.chainalysis.com/blog/x/",
+        {
+            "article_tags": [],
+            "article_classes": ["single-post__content"],
+            "exclude_ids": ["newsletter"],
+        },
+    )
+    assert text == "Hack traced."
+
+
+@pytest.mark.asyncio
+async def test_evidence_stored_by_the_old_extractor_still_matches_until_the_story_changes() -> (
+    None
+):
+    source = NewsSource(
+        name="Official",
+        url="https://example.com/feed",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        is_first_party=True,
+        enabled=True,
+    )
+    body = (
+        b"<html><main><script>player('a1')</script>"
+        b"<p>Official product update with API availability details.</p></main></html>"
+    )
+    _, legacy_text, _ = extract_article(body, "https://example.com/release", legacy=True)
+    _, text, _ = extract_article(body, "https://example.com/release")
+    assert content_fingerprint(legacy_text) != content_fingerprint(text)
+    evidence = NewsEvidence(
+        candidate_id=uuid4(),
+        role="evidence",
+        is_first_party=True,
+        url="https://example.com/release",
+        title="Official product update",
+        content_hash=content_fingerprint(legacy_text),
+        excerpt=legacy_text,
+    )
+    session = AsyncMock()
+    session.scalars.return_value = [source]
+    fetcher = AsyncMock()
+    fetcher.fetch.return_value = FetchResult(
+        url=evidence.url, status_code=200, content_type="text/html", body=body
+    )
+    assert await revalidate_evidence(session, [evidence], fetcher=fetcher) == (True, [])
+
+    fetcher.fetch.return_value = FetchResult(
+        url=evidence.url,
+        status_code=200,
+        content_type="text/html",
+        body=body.replace(b"API availability", b"no API"),
+    )
+    assert await revalidate_evidence(session, [evidence], fetcher=fetcher) == (
+        False,
+        [f"source_content_changed:{evidence.url}"],
+    )
+
+
 @pytest.mark.asyncio
 async def test_scanner_skips_unreachable_pages_and_never_refetches_seen_entries() -> None:
     engine = create_async_engine("sqlite+aiosqlite://")
@@ -750,6 +845,22 @@ def test_pages_of_one_website_are_one_source() -> None:
     )
     assert not auto_evidence_ok([row("https://www.theverge.com/story")])
     assert not auto_evidence_ok([row("https://openai.com/index/a", True, role="lead_only")])
+    # A newsroom the owner trusts to stand alone (2026-09-28), set per source in its config.
+    sources = [
+        NewsSource(
+            url="https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
+            config_json={"auto_publish_alone": True},
+            allowed_redirect_hosts_json=["www.theverge-cdn.example"],
+        ),
+        NewsSource(url="https://decrypt.co/feed", config_json={}),
+    ]
+    trusted = trusted_alone_sites(sources)
+    assert trusted == {"theverge.com", "theverge-cdn.example"}
+    assert auto_evidence_ok([row("https://www.theverge.com/story")], trusted)
+    assert not auto_evidence_ok([row("https://decrypt.co/story")], trusted)
+    assert not auto_evidence_ok(
+        [row("https://www.theverge.com/story", role="lead_only")], trusted
+    ), "a lead-only page is never evidence"
 
 
 def test_one_evidence_page_is_enough_to_draft_and_to_pass_the_source_check() -> None:
@@ -1026,3 +1137,306 @@ async def test_refreshing_evidence_takes_the_current_text_only_when_every_page_r
     assert evidence.content_hash == content_fingerprint(text) and "pricing" in evidence.excerpt
     assert evidence.etag == '"new"'
     assert "etag" not in fetcher.fetch.await_args.kwargs, "a stale ETag cannot hide the change"
+
+
+# Pages shaped like the three that went round the "evidence changed" loop on 2026-09-27. Each
+# builder takes the parts that re-render between two fetches (chrome) and the story, so a test
+# can change one and keep the other.
+STORY = [
+    "The company said on Monday that 1,200 customers had moved to the new plan.",
+    'It expects revenue of <a href="https://official.example/results">$4.2 billion</a> this '
+    "year, up from $3.1 billion, according to the filing.",
+    "Regulators have not yet approved the deal, which the company hopes to close in March.",
+    "Analysts said the move puts pressure on rivals, several of which cut prices last quarter.",
+    "The plan costs $12 a month and includes the storage tier that used to cost extra.",
+]
+HEADLINE = "Company moves 1,200 customers to its new plan"
+EDITED_STORIES = [
+    [STORY[0].replace("1,200", "1,300"), *STORY[1:]],  # a changed number
+    [*STORY[:2], "Regulators approved the deal on Friday.", *STORY[3:]],  # a changed sentence
+    [*STORY, "Update: the company withdrew the plan on Tuesday."],  # an added update
+]
+
+
+def _source_config(name: str) -> dict[str, Any]:
+    """The reviewed config the scanner uses for a source in sources.json."""
+
+    path = Path(news_automation_package.__file__).parent / "sources.json"
+    rows = json.loads(path.read_text(encoding="utf-8"))["sources"]
+    return dict(next(row for row in rows if row["name"] == name)["config"])
+
+
+def _techcrunch(
+    *, story: list[str] = STORY, headline: str = HEADLINE, player: str = "6a1b2c", ago: str = "16"
+) -> bytes:
+    # The JW Player embed sits between two story paragraphs, its id from PHP uniqid().
+    player_html = (
+        f"<div id='jwplayer-{player}'></div>"
+        f"<script>jwplayer('jwplayer-{player}').setup({{}})</script>"
+    )
+    paragraphs = [f"<p>{item}</p>" for item in story]
+    paragraphs.insert(1, player_html)
+    return (
+        "<html><body><header><nav>Topics</nav></header><main class='template-content'>"
+        f"<h1>{headline}</h1><p>Posted:</p><ul><li>Anthony Ha</li></ul>"
+        f"<div class='entry-content wp-block-post-content'>{''.join(paragraphs)}</div>"
+        "<div class='rightrail-promo'><p>Get 50% off a second pass</p></div>"
+        f"<h2>Latest in AI</h2><ul><li>AI Another story Anthony Ha {ago} hours ago</li></ul>"
+        "</main></body></html>"
+    ).encode()
+
+
+def _verge(
+    *,
+    story: list[str] = STORY,
+    headline: str = HEADLINE,
+    popular: tuple[str, ...] = ("Smart home graveyard", "Googlebooks", "OLPC laptop"),
+    wrap: bool = False,
+    stream: str = "Sep 25",
+) -> bytes:
+    body = list(story)
+    if wrap:
+        # The same words with the link moved onto others: nothing a reader sees changes.
+        body[1] = (
+            body[1]
+            .replace('<a href="https://official.example/results">', "")
+            .replace("</a>", "")
+            .replace("this year", '<a href="https://official.example/results">this year</a>')
+        )
+    paragraphs = "".join(
+        f"<div class='duet--article--article-body-component'><p>{item}</p></div>"
+        for item in body
+    )
+    items = "".join(f"<li><a href='/x'><div>{title}</div></a></li>" for title in popular)
+    ld = json.dumps({"@type": "NewsArticle", "articleBody": "The story as first published."})
+    return (
+        f"<html><head><script type='application/ld+json'>{ld}</script></head>"
+        f"<body><main id='content'><article><h1>{headline}</h1>"
+        f"<p>The deck of the story.</p><div>Part of <a href='/t'>AI music</a> {stream}</div>"
+        f"{paragraphs}<div class='duet--layout--rail'><h2>Most Popular</h2><ol>{items}</ol>"
+        "<p>This is the title for the native ad</p></div></article>"
+        f"<div class='duet--layout--article-recirc'><h2>Top Stories</h2><ul>{items}</ul></div>"
+        "</main></body></html>"
+    ).encode()
+
+
+def _coindesk(
+    *,
+    story: list[str] = STORY,
+    headline: str = HEADLINE,
+    price: str = "$83,034.73",
+    ages: tuple[str, ...] = ("21h", "22h", "1 day ago"),
+    byline: str = "By",
+) -> bytes:
+    chip = (
+        "<span data-submodule-name='price-chip' class='px-1 relative inline-block premium-hide'>"
+        f"<a href='/price/bitcoin'><span>BTC</span><span>{price}</span></a></span>"
+    )
+    paragraphs = "".join(f"<p>{item}</p>" for item in story).replace(
+        "<p>The company said", f"<p>Bitcoin {chip} fell as the company said", 1
+    )
+    latest = "".join(f"<li>{index}Another headline{age}</li>" for index, age in enumerate(ages))
+    return (
+        "<html><body><main><div class='article-content-wrapper'>"
+        f"<h1>{headline}</h1><span>{byline}</span><span>Ian Allison</span>"
+        "<div class='document-body font-body-lg'><ul><li>A summary point.</li></ul></div>"
+        "<figure><figcaption class='mt-2 premium-hide'>Photo credit</figcaption></figure>"
+        f"<div class='document-body font-body-lg'>{paragraphs}</div></div>"
+        f"<h2>Latest Crypto News</h2><ol>{latest}</ol></main></body></html>"
+    ).encode()
+
+
+def _story_hash(body: bytes, config: dict[str, Any]) -> str | None:
+    return body_fingerprint(read_article(body, "https://example.com/story", config))
+
+
+@pytest.mark.parametrize(
+    ("source", "build", "churn"),
+    [
+        # A JW Player id in a script inside the story, relative ages on the cards below it.
+        ("TechCrunch AI", _techcrunch, {"player": "7f9e8d", "ago": "17"}),
+        # The traffic-ranked Most Popular rail reorders; a story joins the storystream.
+        (
+            "The Verge AI",
+            _verge,
+            {"popular": ("OLPC laptop", "New story", "Googlebooks"), "stream": "Sep 28"},
+        ),
+        # A link re-wrapped around other words of the same sentence.
+        ("The Verge AI", _verge, {"wrap": True}),
+        # Live price chips inside paragraphs, relative ages, UI labels in Russian.
+        (
+            "CoinDesk",
+            _coindesk,
+            {"price": "$83 363,33", "ages": ("22h", "1 day ago", "1 day ago"), "byline": "Автор"},
+        ),
+    ],
+)
+def test_body_hash_ignores_page_chrome_but_not_story_edits(
+    source: str, build: Any, churn: dict[str, Any]
+) -> None:
+    config = _source_config(source)
+    stored = _story_hash(build(), config)
+    assert stored is not None and stored.startswith("body-v1:")
+    assert _story_hash(build(**churn), config) == stored, "re-rendered chrome is not an edit"
+    for story in EDITED_STORIES:
+        assert _story_hash(build(story=story, **churn), config) != stored
+    assert _story_hash(build(headline="Company drops its new plan", **churn), config) != stored
+
+
+def test_body_hash_needs_enough_story_and_never_rests_on_article_body_alone() -> None:
+    long_body = "A long JSON-LD article body. " * 40
+    ld = json.dumps({"@graph": [{"@type": "NewsArticle", "articleBody": long_body}]})
+    tiny = (
+        f"<script type='application/ld+json'>{ld}</script><main><h1>Title</h1><p>Short.</p></main>"
+    ).encode()
+    article = read_article(tiny, "https://example.com/story")
+    assert article.article_body == long_body
+    assert body_fingerprint(article) is None, "articleBody alone never makes a body hash"
+    # Most of the story in loose <div> text: a few captions cannot stand for it.
+    loose = (
+        "<main><p>" + "Caption text. " * 35 + "</p><div>" + "Story text in a div. " * 60 + "</div>"
+        "</main>"
+    ).encode()
+    article = read_article(loose, "https://example.com/story")
+    assert sum(len(item) for item in article.paragraphs) >= MIN_BODY_CHARACTERS
+    assert body_fingerprint(article) is None
+    # A last paragraph the page never closed still counts.
+    unclosed = ("<main><p>" + "Story sentence. " * 40).encode()
+    assert body_fingerprint(read_article(unclosed, "https://example.com/story")) is not None
+
+
+@pytest.mark.asyncio
+async def test_revalidation_compares_the_story_when_both_sides_have_a_body_hash() -> None:
+    from app.news_automation.validation import refresh_evidence
+
+    config = _source_config("The Verge AI")
+    source = NewsSource(
+        name="The Verge AI",
+        url="https://www.theverge.com/rss/index.xml",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        enabled=True,
+        config_json=config,
+    )
+    url = "https://www.theverge.com/ai/1/story"
+    page = read_article(_verge(), url, config)
+
+    def stored(body_hash: str | None) -> NewsEvidence:
+        return NewsEvidence(
+            candidate_id=uuid4(),
+            role="evidence",
+            url=url,
+            title="Story",
+            content_hash=content_fingerprint(page.text),
+            body_hash=body_hash,
+            excerpt=page.text,
+        )
+
+    # ``legacy`` was stored before the body hash existed.
+    legacy, evidence = stored(None), stored(body_fingerprint(page))
+    session = AsyncMock()
+    session.scalars.return_value = [source]
+    fetcher = AsyncMock()
+
+    def serve(body: bytes) -> None:
+        fetcher.fetch.return_value = FetchResult(
+            url=url, status_code=200, content_type="text/html", body=body
+        )
+
+    serve(_verge())
+    assert await revalidate_evidence(session, [legacy, evidence], fetcher=fetcher) == (True, [])
+    churned = _verge(popular=("New story",), stream="Sep 28", wrap=True)
+    assert content_fingerprint(read_article(churned, url, config).text) != legacy.content_hash
+    serve(churned)
+    assert await revalidate_evidence(session, [evidence], fetcher=fetcher) == (True, [])
+    # Without a body hash the whole region decides, as before.
+    assert await revalidate_evidence(session, [legacy], fetcher=fetcher) == (
+        False,
+        [f"source_content_changed:{url}"],
+    )
+    # A real edit fails closed whatever the chrome does.
+    for story in EDITED_STORIES:
+        serve(_verge(story=story, popular=("New story",), wrap=True))
+        assert await revalidate_evidence(session, [evidence], fetcher=fetcher) == (
+            False,
+            [f"source_content_changed:{url}"],
+        )
+    # The editor's re-check stores the body hash, and from then on the story decides.
+    serve(churned)
+    assert await refresh_evidence(session, [legacy], fetcher=fetcher) == ([url], [])
+    assert legacy.body_hash == evidence.body_hash
+    serve(_verge(popular=("Googlebooks",)))
+    assert await revalidate_evidence(session, [legacy], fetcher=fetcher) == (True, [])
+    assert await refresh_evidence(session, [legacy], fetcher=fetcher) == ([], []), (
+        "a re-check of the same story reports no change"
+    )
+    # A body hash of another version reads as missing: content_hash decides.
+    legacy.body_hash = "body-v0:" + "0" * 64
+    assert await revalidate_evidence(session, [legacy], fetcher=fetcher) == (True, [])
+    serve(churned)
+    assert (await revalidate_evidence(session, [legacy], fetcher=fetcher))[0] is False
+
+
+@pytest.mark.asyncio
+async def test_scanner_stores_the_body_hash_and_finds_the_same_story_at_another_url() -> None:
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(
+                sync,
+                tables=[
+                    NewsAutomationSettings.__table__,
+                    NewsSource.__table__,
+                    NewsCandidate.__table__,
+                    NewsEvidence.__table__,
+                ],
+            )
+        )
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    lead = NewsSource(
+        name="The Verge AI",
+        url="https://www.theverge.com/feed",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        enabled=True,
+        config_json=_source_config("The Verge AI"),
+    )
+    listing = (
+        b"<rss><channel>"
+        b"<item><title>First title</title><link>https://www.theverge.com/a</link></item>"
+        b"<item><title>Second title</title><link>https://www.theverge.com/b</link></item>"
+        b"</channel></rss>"
+    )
+
+    class Fetcher:
+        async def fetch(self, url: str, **_kwargs: object) -> FetchResult:
+            if url.endswith("/feed"):
+                return FetchResult(
+                    url=url, status_code=200, content_type="application/rss+xml", body=listing
+                )
+            # The same story at two URLs, rendered with another storystream and link wrap.
+            body = _verge() if url.endswith("/a") else _verge(stream="Sep 28", wrap=True)
+            return FetchResult(url=url, status_code=200, content_type="text/html", body=body)
+
+        async def close(self) -> None:
+            return None
+
+    async def enqueue(_candidate_id: UUID) -> None:
+        return None
+
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        session.add(lead)
+        await session.commit()
+        await scan_source(session, lead.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        rows = list(
+            await session.scalars(select(NewsCandidate).order_by(NewsCandidate.canonical_url))
+        )
+        evidence = list(await session.scalars(select(NewsEvidence)))
+    assert rows[0].content_hash != rows[1].content_hash, "the region text differs"
+    assert [row.status for row in rows] == ["discovered", "duplicate"]
+    assert rows[0].body_hash is not None and rows[0].body_hash == rows[1].body_hash
+    assert {row.body_hash for row in evidence} == {rows[0].body_hash}
+    await engine.dispose()

@@ -23,7 +23,7 @@ from typing import Any
 from urllib.parse import parse_qs, urlsplit
 from uuid import uuid4
 
-from sqlalchemy import func, select
+from sqlalchemy import and_, func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import Settings
@@ -33,10 +33,17 @@ from app.video_automation.judge import (
     PACKAGE_AUTO_APPROVED_NOTE,
     QA_AUTO_APPROVED_NOTE,
     SCRIPT_AUTO_APPROVED_NOTE,
+    SHORTS_PACKAGE_AUTO_APPROVED_NOTE,
+    SHORTS_QA_AUTO_APPROVED_NOTE,
     pick_choice,
     pick_reason,
+    video_series_kind,
 )
-from app.video_automation.models import VideoDramaSeries
+from app.video_automation.models import (
+    VideoAutomationSettings,
+    VideoDramaEpisode,
+    VideoDramaSeries,
+)
 from app.video_automation.settings import (
     AUTO_APPROVED_NOTE,
     AUTO_APPROVED_STORYBOARD_NOTE,
@@ -50,10 +57,15 @@ from app.video_automation.settings import (
 )
 from app.video_media.meter import SlugSpend, spend_by_slug
 from app.video_reviews.schemas import (
+    DUB_LOCALES,
+    LOCALE_PARTS,
     YOUTUBE_VIDEO_ID_PATTERN,
     DecisionIn,
     DropIn,
     DubLocalesIn,
+    LanguagePartOut,
+    LocaleChoice,
+    LocalesIn,
     ProjectIn,
     ProjectOut,
     ProjectSummary,
@@ -62,9 +74,16 @@ from app.video_reviews.schemas import (
     ReviewOut,
 )
 from app.video_reviews.storage import ReviewStore, valid_slug
+from app.video_shorts import costs as shorts_costs
+from app.video_shorts import slots as shorts_slots
+from app.video_shorts.settings import auto_approves_shorts
 from app.video_youtube.state import public_state
 
 LIVE = ("pending", "approved", "rejected")
+# The list's cap, and how many public Shorts the Shorts tab gets at once: the public ones
+# only grow, and the older ones are read from the numbers instead (docs/videos/SHORTS.md).
+LIST_LIMIT = 200
+PUBLIC_SHORTS_LIMIT = 60
 # How long the mp4 of a video that is on YouTube stays in the review store, counted from the
 # later of the upload confirmation's decision and the publish time (HANDS-OFF.md). The
 # thumbnail, captions and descriptions are small and stay.
@@ -78,6 +97,9 @@ YOUTUBE_PATH_KINDS = frozenset({"shorts", "embed", "live", "video", "v"})
 # Gates where approving means choosing one of the offered options (an outline; a character sheet).
 CHOICE_GATES = ("outline", "look")
 CHOICE_PROMPTS = {"outline": "請從 {} 選一個大綱", "look": "請從 {} 選一張角色設定圖"}
+# A languages batch with nothing for the owner to upload is approved as it arrives.
+LANGUAGES_AUTO_APPROVED_NOTE = "這一批沒有要你上傳的配音，依規則自動核准"
+EPOCH = datetime.min.replace(tzinfo=UTC)
 
 
 def review_store(settings: Settings) -> ReviewStore:
@@ -106,6 +128,102 @@ def decision_problem(review: VideoReview, decision: DecisionIn) -> str | None:
     if decision.decision == "approve" and choices and decision.choice not in choices:
         return CHOICE_PROMPTS[review.gate].format("、".join(choices))
     return None
+
+
+def locale_choices(project: VideoProject) -> dict[str, LocaleChoice]:
+    """The owner's language choice as stored (docs/videos/LANGUAGES.md), empty for a shape no
+    page wrote."""
+    raw = project.locales if isinstance(project.locales, dict) else {}
+    try:
+        chosen = LocalesIn.model_validate({"locales": raw}).locales
+    except ValueError:
+        return {}
+    return {str(locale): choice for locale, choice in chosen.items()}
+
+
+def _part_state(value: Any) -> tuple[str | None, str | None]:
+    """A part as a languages review reports it: "ready" or {"status": "skipped", "reason"}."""
+    if isinstance(value, str):
+        return value, None
+    if isinstance(value, dict):
+        status = value.get("status")
+        reason = value.get("reason")
+        return (status if isinstance(status, str) else None), (
+            reason if isinstance(reason, str) else None
+        )
+    return None, None
+
+
+def language_states(
+    choices: dict[str, LocaleChoice], reviews: Iterable[VideoReview]
+) -> dict[str, dict[str, LanguagePartOut]]:
+    """Where each chosen part stands, from the languages reviews (docs/videos/LANGUAGES.md).
+
+    The batches are read oldest first, so a later batch (the languages added after the first)
+    speaks last for the parts it names and leaves the rest as they were. A part a batch reports
+    "ready" or "skipped" (with the worker's reason) is that; a dub track "ready" in an approved
+    batch is "uploaded", since approving the batch is how the owner says they uploaded it;
+    a chosen part no batch has reported is "working". Sent-back batches count for nothing.
+    """
+    states: dict[str, dict[str, LanguagePartOut]] = {
+        locale: {part: LanguagePartOut(state="working") for part in choice.chosen()}
+        for locale, choice in choices.items()
+    }
+    batches = sorted(
+        (
+            review
+            for review in reviews
+            if review.gate == "languages" and review.status in ("pending", "approved")
+        ),
+        key=lambda review: review.created_at or EPOCH,
+    )
+    for review in batches:
+        reported = review.payload.get("locales") if isinstance(review.payload, dict) else None
+        if not isinstance(reported, dict):
+            continue
+        for locale, parts in reported.items():
+            if locale not in states or not isinstance(parts, dict):
+                continue
+            fallback = parts.get("reason") if isinstance(parts.get("reason"), str) else None
+            for part in LOCALE_PARTS:
+                if part not in states[locale] or part not in parts:
+                    continue
+                state, reason = _part_state(parts[part])
+                if state not in ("ready", "skipped"):
+                    continue
+                if state == "ready" and part == "dub" and review.status == "approved":
+                    state = "uploaded"
+                states[locale][part] = LanguagePartOut(
+                    state=state, reason=(reason or fallback) if state == "skipped" else None
+                )
+    return states
+
+
+def languages_need_owner(payload: dict[str, Any]) -> bool:
+    """Whether a languages batch carries a dub track, the one part only the owner can upload."""
+    reported = payload.get("locales") if isinstance(payload, dict) else None
+    if not isinstance(reported, dict):
+        return False
+    return any(
+        _part_state(parts.get("dub"))[0] == "ready"
+        for parts in reported.values()
+        if isinstance(parts, dict)
+    )
+
+
+def ready_to_upload(
+    project: VideoProject,
+    publish_approved_at: datetime | None,
+    languages: dict[str, dict[str, LanguagePartOut]],
+) -> bool:
+    """Whether the video may be scheduled (docs/videos/LANGUAGES.md §上架流程): its upload
+    confirmation approved, its languages decided and every chosen part ready, skipped or
+    uploaded, no YouTube id yet, and not dropped."""
+    if project.dropped_at is not None or project.youtube_video_id is not None:
+        return False
+    if publish_approved_at is None or project.locales_decided_at is None:
+        return False
+    return all(part.state != "working" for parts in languages.values() for part in parts.values())
 
 
 def kept_files(reviews: Iterable[VideoReview]) -> set[str]:
@@ -141,10 +259,26 @@ def _summary(
     pending: int,
     spend: SlugSpend | None = None,
     publish_approved_at: datetime | None = None,
+    languages: dict[str, dict[str, LanguagePartOut]] | None = None,
+    *,
     compilation: bool = False,
     download_available: bool = False,
+    hold: shorts_slots.Hold | None = None,
 ) -> dict[str, Any]:
+    choices = locale_choices(project)
+    states = languages if languages is not None else language_states(choices, [])
+    is_short = project.shorts_line is not None
     return {
+        "shorts_line": project.shorts_line,
+        "shorts_series": project.shorts_series,
+        "source_slug": project.source_slug,
+        "shorts_state": (
+            shorts_slots.state_of(project, pending, publish_approved_at, hold)
+            if is_short
+            else None
+        ),
+        "slot_at": hold.starts_at if is_short and hold is not None else None,
+        "youtube_removed_at": project.youtube_removed_at,
         "compilation": compilation,
         "download_available": download_available,
         "slug": project.slug,
@@ -164,7 +298,19 @@ def _summary(
         "retry_acknowledged_id": project.retry_acknowledged_id,
         "media_usd": spend.usd if spend else 0.0,
         "clip_seconds": spend.clip_seconds if spend else 0,
-        "dub_locales": list(project.dub_locales or []),
+        "locales": choices,
+        "locales_decided_at": project.locales_decided_at,
+        "languages": states,
+        # A Short's languages are the Shorts settings', not a choice made video by video, so
+        # it waits for no decision on the language panel.
+        "ready_to_upload": (
+            publish_approved_at is not None
+            and project.youtube_video_id is None
+            and project.dropped_at is None
+            if is_short
+            else ready_to_upload(project, publish_approved_at, states)
+        ),
+        "dub_locales": [locale for locale, choice in choices.items() if choice.dub],
         "series_slug": project.series_slug,
         "episode_number": project.episode_number,
         "youtube_sync": public_state(project.youtube_sync),
@@ -221,11 +367,26 @@ async def upsert_project(
         project.series_slug = payload.series_slug
     if payload.episode_number is not None:
         project.episode_number = payload.episode_number
+    if payload.shorts_line is not None:
+        project.shorts_line = payload.shorts_line
+    if payload.shorts_series is not None:
+        project.shorts_series = payload.shorts_series
+    if payload.source_slug is not None:
+        project.source_slug = payload.source_slug
+    # The card pipeline only makes Shorts, and the lists tell a Short by its content line: a
+    # row in that format without one would show among the tutorials.
+    if project.format == "shorts" and project.shorts_line is None:
+        raise AppError(
+            422,
+            "video_shorts_line_missing",
+            "Shorts 要帶內容線（shorts_line：lab、cut 或 drama）",
+        )
     # A stale or unrelated report cannot consume a newer retry request.
     if payload.retry_acknowledged_id == project.retry_request_id:
         project.retry_acknowledged_id = payload.retry_acknowledged_id
     project.last_synced_at = now
     project.updated_at = now
+    await _decide_story_locales(session, project, now)
     await session.commit()
     # A video on YouTube keeps its upload package for the owner to download; only the mp4 goes,
     # and only after PREVIEW_RETENTION (prune_published_previews), so nothing is deleted here
@@ -258,18 +419,41 @@ async def project_view(session: AsyncSession, slug: str, work_dir: str | None = 
     reviews = await _reviews(session, project)
     pending = sum(1 for review in reviews if review.status == "pending")
     spend = await spend_by_slug(session, [project.slug])
+    languages = language_states(locale_choices(project), reviews)
     compiled = work_dir is not None and slug in await compilation_slugs(session)
+    held = await shorts_slots.holds(session, [slug]) if project.shorts_line is not None else {}
     return ProjectOut(
         **_summary(
             project,
             pending,
             spend.get(project.slug),
             publish_approved_at(reviews),
+            languages,
             compilation=compiled,
             download_available=compiled and download_file(work_dir, slug) is not None,
+            hold=held.get(slug),
         ),
         reviews=[_review_out(review) for review in reviews],
     )
+
+
+async def _language_batches(
+    session: AsyncSession, projects: list[VideoProject]
+) -> dict[Any, list[VideoReview]]:
+    """The languages reviews of these videos, by project id, for the list's states."""
+    if not projects:
+        return {}
+    rows = await session.scalars(
+        select(VideoReview).where(
+            VideoReview.project_id.in_([project.id for project in projects]),
+            VideoReview.gate == "languages",
+            VideoReview.status.in_(("pending", "approved")),
+        )
+    )
+    batches: dict[Any, list[VideoReview]] = {}
+    for review in rows:
+        batches.setdefault(review.project_id, []).append(review)
+    return batches
 
 
 async def compilation_slugs(session: AsyncSession) -> set[str]:
@@ -308,17 +492,44 @@ async def download_path(session: AsyncSession, work_dir: str | None, slug: str) 
     return file
 
 
+def _is_public(now: datetime) -> Any:
+    """A video whose publish time is past: what the Shorts tab counts as public."""
+    return and_(
+        VideoProject.youtube_video_id.is_not(None), VideoProject.youtube_publish_at <= now
+    )
+
+
+def _not_public(now: datetime) -> Any:
+    return or_(
+        VideoProject.youtube_video_id.is_(None),
+        VideoProject.youtube_publish_at.is_(None),
+        VideoProject.youtube_publish_at > now,
+    )
+
+
 async def list_projects(
     session: AsyncSession,
     *,
     video_format: str | None = None,
     series_slug: str | None = None,
-    limit: int = 200,
+    shorts: str | None = None,
+    state: str | None = None,
+    limit: int | None = None,
+    before: datetime | None = None,
     work_dir: str | None = None,
 ) -> list[ProjectSummary]:
     """The videos, newest first; a format or a series narrows them (docs/videos/SERIES.md),
     so a hundred episodes do not push the tutorials past the cap. With the worker's work
-    directory, a compilation says whether its cut is there to download."""
+    directory, a compilation says whether its cut is there to download.
+
+    ``shorts`` keeps the Shorts apart (docs/videos/SHORTS.md): ``exclude`` is every list that
+    existed before them, ``only`` is the Shorts tab and the worker's Shorts round. With
+    ``only`` the Shorts still to deal with all come, and of the public ones the latest
+    PUBLIC_SHORTS_LIMIT; ``state`` keeps one state, and ``limit`` and ``before`` page through
+    it (``before`` is the publish time of the last public Short read, or the last report of
+    any other).
+    """
+    now = datetime.now(UTC)
     pending = (
         select(VideoReview.project_id, func.count().label("pending"))
         .where(VideoReview.status == "pending")
@@ -335,26 +546,77 @@ async def list_projects(
         statement = statement.where(VideoProject.format == video_format)
     if series_slug is not None:
         statement = statement.where(VideoProject.series_slug == series_slug)
-    rows = await session.execute(
-        statement.order_by(VideoProject.last_synced_at.desc()).limit(limit)
-    )
-    listed = list(rows.all())
+    if shorts == "exclude":
+        statement = statement.where(VideoProject.shorts_line.is_(None))
+    elif shorts == "only":
+        statement = statement.where(VideoProject.shorts_line.is_not(None))
+    cap = limit or LIST_LIMIT
+    if shorts != "only":
+        if before is not None:
+            statement = statement.where(VideoProject.last_synced_at < before)
+        listed = list(
+            (
+                await session.execute(
+                    statement.order_by(VideoProject.last_synced_at.desc()).limit(cap)
+                )
+            ).all()
+        )
+    else:
+        listed = []
+        if state in (None, "published"):
+            public = statement.where(_is_public(now))
+            if before is not None and state == "published":
+                public = public.where(VideoProject.youtube_publish_at < before)
+            listed += list(
+                (
+                    await session.execute(
+                        public.order_by(VideoProject.youtube_publish_at.desc()).limit(
+                            limit or PUBLIC_SHORTS_LIMIT
+                        )
+                    )
+                ).all()
+            )
+        if state != "published":
+            waiting = statement.where(_not_public(now))
+            if before is not None and state is not None:
+                waiting = waiting.where(VideoProject.last_synced_at < before)
+            # Read whole and cut after the state is known: a state is not a column, and the
+            # Shorts that are not public yet are a few dozen.
+            listed = (
+                list(
+                    (
+                        await session.execute(
+                            waiting.order_by(VideoProject.last_synced_at.desc()).limit(LIST_LIMIT)
+                        )
+                    ).all()
+                )
+                + listed
+            )
     spend = await spend_by_slug(session, [project.slug for project, _count, _at in listed])
+    batches = await _language_batches(session, [project for project, _count, _at in listed])
     compiled = await compilation_slugs(session) if work_dir is not None else set()
-    return [
+    held = await shorts_slots.holds(
+        session, [project.slug for project, _count, _at in listed if project.shorts_line]
+    )
+    summaries = [
         ProjectSummary(
             **_summary(
                 project,
                 int(count),
                 spend.get(project.slug),
                 approved_at,
+                language_states(locale_choices(project), batches.get(project.id, [])),
                 compilation=project.slug in compiled,
                 download_available=project.slug in compiled
                 and download_file(work_dir, project.slug) is not None,
+                hold=held.get(project.slug),
             )
         )
         for project, count, approved_at in listed
     ]
+    if shorts == "only" and state is not None:
+        summaries = [item for item in summaries if item.shorts_state == state][:cap]
+    return summaries
 
 
 async def submit_review(
@@ -422,8 +684,13 @@ async def submit_review(
     # The owner chose on 2026-09-25 to let Jev's check stand for them on the narration: when it
     # passed every line and the setting is on, the review is decided as it arrives.
     auto_note = None
+    # A drama reads its own switches (docs/videos/DRAMA-FLOW.md §一); a project row from before
+    # formats existed reads as a tutorial.
+    video_format = project.format or "slides"
     series_slug = project.series_slug
-    if payload.gate == "audio" and await auto_approves_audio(session, payload.payload):
+    if payload.gate == "audio" and await auto_approves_audio(
+        session, payload.payload, video_format
+    ):
         auto_note = AUTO_APPROVED_NOTE
     # A drama's storyboard may stand on the judge's scores when the owner turned that on, or
     # when the series is hands-off (docs/videos/BINGE.md).
@@ -445,14 +712,31 @@ async def submit_review(
     elif payload.gate == "outline" and await auto_picks_outline(session, payload.payload):
         auto_note = pick_reason(payload.payload)
         review.choice = pick_choice(payload.payload)
+    # A Short is held to its own twelve checks and reads its own switch
+    # (docs/videos/SHORTS.md §自動品管); a long video's report never approves one, so the
+    # rule below is not asked about a Short at all.
+    elif payload.gate in ("final", "publish") and project.shorts_line is not None:
+        if await auto_approves_shorts(
+            session, payload.gate, payload.payload, payload.content_sha256
+        ):
+            auto_note = (
+                SHORTS_QA_AUTO_APPROVED_NOTE
+                if payload.gate == "final"
+                else SHORTS_PACKAGE_AUTO_APPROVED_NOTE
+            )
     elif payload.gate in ("final", "publish") and await auto_approves_final(
         session,
         payload.gate,
         payload.payload,
         payload.content_sha256,
+        video_format,
         compilation=slug in await compilation_slugs(session),
     ):
         auto_note = QA_AUTO_APPROVED_NOTE if payload.gate == "final" else PACKAGE_AUTO_APPROVED_NOTE
+    # A batch of languages waits for the owner only for a dub track they must upload in Studio;
+    # descriptions and captions the site sends itself (docs/videos/LANGUAGES.md).
+    elif payload.gate == "languages" and not languages_need_owner(payload.payload):
+        auto_note = LANGUAGES_AUTO_APPROVED_NOTE
     if auto_note is not None:
         review.status = "approved"
         review.note = auto_note
@@ -465,10 +749,28 @@ async def submit_review(
                 metadata_json={"slug": slug, "gate": review.gate, "sha256": review.content_sha256},
             )
         )
+        await _short_approved(session, project, review, now)
     project.last_synced_at = now
     await session.commit()
     store.keep_only(slug, kept_files([*reviews, review]))
     return _review_out(review)
+
+
+async def _short_approved(
+    session: AsyncSession, project: VideoProject, review: VideoReview, now: datetime
+) -> None:
+    """What follows a Short's approval, whoever gave it (docs/videos/SHORTS.md): the final
+    cut's reported usage goes into the ledger, and an approved upload package takes the Short
+    to its slot, or to the library while the run has none for it. The caller commits."""
+    if project.shorts_line is None:
+        return
+    if review.gate == "final":
+        await shorts_costs.record_usage(
+            session, project.slug, review.payload, review.content_sha256, now
+        )
+        await shorts_costs.record_media(session, project.slug, now)
+    elif review.gate == "publish":
+        await shorts_slots.assign_approved(session, project, now)
 
 
 async def decide(
@@ -506,6 +808,8 @@ async def decide(
             },
         )
     )
+    if review.status == "approved":
+        await _short_approved(session, project, review, now)
     await session.commit()
     return _review_out(review)
 
@@ -529,6 +833,9 @@ async def drop_project(
     project.dropped_note = payload.note.strip()
     project.dropped_by_user_id = user.id
     project.updated_at = now
+    if project.shorts_line is not None:
+        # A dropped Short leaves its slot to the next one in the library.
+        await shorts_slots.release(session, slug, now)
     session.add(
         AdminAuditLog(
             actor_user_id=user.id,
@@ -537,9 +844,159 @@ async def drop_project(
             metadata_json={"slug": slug},
         )
     )
+    await _skip_abandoned_episode(session, project, user, now)
     await session.commit()
     store.keep_only(slug, set())
     return await project_view(session, slug)
+
+
+async def _episode_of(
+    session: AsyncSession, project: VideoProject
+) -> tuple[VideoDramaEpisode, VideoDramaSeries] | None:
+    """The episode this video is being made as and its series, both locked, or None.
+
+    Only a video that reports itself as an episode is looked up (a Short or a tutorial never
+    is one); the episode is then the server's own row whose slug is the video's. The series is
+    locked before the episode, the order app.video_automation.series takes them in.
+    """
+    if project.series_slug is None or project.shorts_line is not None:
+        return None
+    series = await session.scalar(
+        select(VideoDramaSeries)
+        .join(VideoDramaEpisode, VideoDramaEpisode.series_id == VideoDramaSeries.id)
+        .where(VideoDramaEpisode.slug == project.slug)
+        .with_for_update(of=VideoDramaSeries)
+    )
+    if series is None:
+        return None
+    episode = await session.scalar(
+        select(VideoDramaEpisode)
+        .where(VideoDramaEpisode.series_id == series.id, VideoDramaEpisode.slug == project.slug)
+        .with_for_update()
+    )
+    return None if episode is None else (episode, series)
+
+
+async def _skip_abandoned_episode(
+    session: AsyncSession, project: VideoProject, user: User, now: datetime
+) -> None:
+    """Skip the episode a dropped video was being made as (docs/videos/STORY.md §伺服器).
+
+    Nothing else will make it under this slug, and a started one would hold its place in
+    ``series_max_in_flight`` for ever. Every kind of series: the next episode of a long series
+    waits for the one before to be done or skipped, so it may start now, as it may after the
+    owner skips an episode on the series page. An episode already done stays done. When it was
+    the series' last open episode the series finishes, as ``skip_episode`` has it. The caller
+    commits.
+    """
+    # Imported here: app.video_automation.series imports this module.
+    from app.video_automation.series import EPISODE_OPEN, finish_if_complete
+
+    found = await _episode_of(session, project)
+    if found is None:
+        return
+    episode, series = found
+    if episode.status not in EPISODE_OPEN:
+        return
+    episode.status = "skipped"
+    episode.updated_at = now
+    episodes = await session.scalars(
+        select(VideoDramaEpisode).where(VideoDramaEpisode.series_id == series.id)
+    )
+    finish_if_complete(series, list(episodes), now)
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="video_series_episode_skipped",
+            target=f"video-series:{series.slug}",
+            metadata_json={"number": episode.number, "dropped_video": project.slug},
+        )
+    )
+
+
+async def _apply_locales(
+    session: AsyncSession, project: VideoProject, user: User, payload: LocalesIn
+) -> None:
+    """Store the owner's language choice, note when they first decided, and log the change."""
+    if (project.format or "slides") == "drama" and any(
+        choice.dub for choice in payload.locales.values()
+    ):
+        raise AppError(
+            422,
+            "video_locales_dub_not_for_drama",
+            "漫劇的配音是第二期（docs/videos/DUBS.md），這裡先只能選標題說明與 CC",
+        )
+    chosen: dict[str, Any] = {
+        locale: choice.model_dump() for locale, choice in payload.locales.items()
+    }
+    if chosen == dict(project.locales or {}) and project.locales_decided_at is not None:
+        return
+    _record_locales(session, project, chosen, datetime.now(UTC), user)
+    await session.commit()
+
+
+def _record_locales(
+    session: AsyncSession,
+    project: VideoProject,
+    chosen: dict[str, Any],
+    now: datetime,
+    actor: User | None,
+    marks: dict[str, str] | None = None,
+) -> None:
+    """Store a language choice, note when it was first decided, and log it as
+    ``video_locales_set``: the owner's, or with no actor and ``marks`` saying so, the server's
+    (``_decide_story_locales``). The caller commits."""
+    project.locales = chosen
+    project.locales_decided_at = project.locales_decided_at or now
+    project.updated_at = now
+    session.add(
+        AdminAuditLog(
+            actor_user_id=actor.id if actor is not None else None,
+            action="video_locales_set",
+            target=f"video_project:{project.id}",
+            metadata_json={"slug": project.slug, "locales": chosen, **(marks or {})},
+        )
+    )
+
+
+async def _decide_story_locales(
+    session: AsyncSession, project: VideoProject, now: datetime
+) -> None:
+    """A brand story's languages, decided by the server when its video first reports
+    (docs/videos/STORY.md §伺服器).
+
+    A story is hands-off: nobody would choose its languages, and a video without a decision is
+    never ready to upload. The server writes what the language panel's "tick the defaults"
+    gives a drama, the settings' ``drama_caption_locales`` with titles, descriptions and
+    captions and no dub, as the same record the owner's save writes, with the server as its
+    author. Once only, and never over a decision; the owner may still change it on the panel.
+    A video of any other kind still waits for the owner. The caller commits.
+    """
+    if project.locales_decided_at is not None or project.dropped_at is not None:
+        return
+    if project.series_slug is None or project.shorts_line is not None:
+        return
+    if await video_series_kind(session, project.slug) != "story":
+        return
+    settings = await session.scalar(
+        select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
+    )
+    ticked = settings.drama_caption_locales if settings is not None else []
+    chosen: dict[str, Any] = {
+        locale: LocaleChoice(metadata=True, captions=True).model_dump()
+        for locale in DUB_LOCALES
+        if locale in ticked
+    }
+    # A project first seen in this report gets its id when it is written.
+    await session.flush()
+    _record_locales(
+        session,
+        project,
+        chosen,
+        now,
+        None,
+        {"decided_by": "server", "from": "drama_caption_locales"},
+    )
 
 
 async def retry_project(session: AsyncSession, slug: str, user: User) -> ProjectOut:
@@ -569,30 +1026,42 @@ async def retry_project(session: AsyncSession, slug: str, user: User) -> Project
     return await project_view(session, slug)
 
 
-async def set_dub_locales(
-    session: AsyncSession, slug: str, user: User, payload: DubLocalesIn
+async def set_locales(
+    session: AsyncSession, slug: str, user: User, payload: LocalesIn
 ) -> ProjectOut:
-    """The owner picks which languages this video gets dubbed in (docs/videos/DUBS.md).
+    """The owner decides a video's languages on the language panel (docs/videos/LANGUAGES.md).
 
-    Every video is made in Traditional Chinese; the worker makes a track for each language chosen
-    here once the final cut is approved, and the owner uploads them in YouTube Studio. The choice
-    is the owner's alone: the pipeline's reports never touch it, and a dropped video takes none.
+    Every video is made in Traditional Chinese; here the owner says which of en, ja, ko and
+    zh-CN to add and what of each. An empty choice is a decision too ("only Traditional
+    Chinese"), and the first save of either kind is what lets the video go up. The worker makes
+    only what was chosen, once the final cut is approved; a drama takes no dub yet. The choice is
+    the owner's: the pipeline's reports never carry one, and a dropped video takes none. Only a
+    brand story, which runs without the owner, has the server decide from the settings when its
+    video first reports (``_decide_story_locales``); the owner may change that here too.
     """
     project = await _project(session, slug)
     _refuse_dropped(project)
-    chosen: list[str] = list(payload.locales)
-    if chosen != list(project.dub_locales or []):
-        project.dub_locales = chosen
-        project.updated_at = datetime.now(UTC)
-        session.add(
-            AdminAuditLog(
-                actor_user_id=user.id,
-                action="video_dub_locales_set",
-                target=f"video_project:{project.id}",
-                metadata_json={"slug": slug, "locales": chosen},
-            )
-        )
-        await session.commit()
+    await _apply_locales(session, project, user, payload)
+    return await project_view(session, slug)
+
+
+async def set_dub_locales(
+    session: AsyncSession, slug: str, user: User, payload: DubLocalesIn
+) -> ProjectOut:
+    """The dub checkboxes of a page from before the language panel: a ticked language gets all
+    three parts, an unticked one loses its dub and keeps the rest (docs/videos/DUBS.md)."""
+    project = await _project(session, slug)
+    _refuse_dropped(project)
+    current = locale_choices(project)
+    merged: dict[str, LocaleChoice] = {}
+    for locale in DUB_LOCALES:
+        choice = current.get(locale, LocaleChoice())
+        if locale in payload.locales:
+            choice = LocaleChoice(metadata=True, captions=True, dub=True)
+        elif choice.dub:
+            choice = LocaleChoice(metadata=choice.metadata, captions=choice.captions, dub=False)
+        merged[locale] = choice
+    await _apply_locales(session, project, user, LocalesIn.model_validate({"locales": merged}))
     return await project_view(session, slug)
 
 

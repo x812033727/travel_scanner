@@ -7,9 +7,9 @@ import test from "node:test";
 import { EXIT, main } from "../cli.mjs";
 import { approve, readApprovals } from "../core/approvals.mjs";
 import { lookHash } from "../core/drama.mjs";
-import { dramaFixture, sandbox } from "../core/fixtures/load.mjs";
+import { dramaFixture, explainerFixture, sandbox } from "../core/fixtures/load.mjs";
 import { readLedger } from "./ledger.mjs";
-import { chosenSheets, keyframeRubric, MAX_KEYFRAME_TAKES, shotPrompt } from "./keyframes.mjs";
+import { chosenSheets, CONTACT_SHEET_TILES, contactSheetPages, keyframeRubric, MAX_KEYFRAME_TAKES, shotPrompt } from "./keyframes.mjs";
 import { DEFAULT_SHEET_PROMPT, MAX_LOOK_ROUNDS, optionKey, parseChoice, sheetPrompt, suggestedOf } from "./look.mjs";
 import { imagePrice, statusProblem } from "./stages.mjs";
 
@@ -248,6 +248,8 @@ test("keyframes need the approved look, draw each shot from the chosen sheets, r
   assert.equal(manifest.thumbnail_source, "keyframes/sea-storm-2.png");
   assert.deepEqual(manifest.duplicates, []);
   assert.ok(existsSync(path.join(box.workdir, "keyframes", "contact-sheet.png")));
+  assert.equal(manifest.contact_sheet, "keyframes/contact-sheet.png");
+  assert.deepEqual(manifest.contact_sheets, ["keyframes/contact-sheet.png"], "four shots fit on one page");
   assert.match(run.out.stdout, /next: node tools\/video\/cli\.mjs review-push --slug fixture-drama --gate storyboard/);
 
   const again = context(box, site.fetchImpl, { hashImage: async () => "0".repeat(16) });
@@ -281,4 +283,117 @@ test("a shot that never passes is left for a prompt fix after the last take", as
   assert.equal(await main(["keyframes", "--slug", box.slug, "--shot", "farewell"], stopped.ctx), EXIT.ok, stopped.out.stderr);
   assert.match(stopped.out.stdout, /stopped by the STOP file/);
   assert.equal(manifestOf(box, "keyframes").shots.farewell, undefined);
+});
+
+test("an explainer has no look: look refuses it, and keyframes draw every still with no sheet and no identity question", async () => {
+  const box = sandbox("fixture-explainer", "explainer");
+  const site = mediaSite({ verdicts: () => ({ overall: 8, passed: true }) });
+  const look = context(box, site.fetchImpl);
+  assert.equal(await main(["look", "--slug", box.slug], look.ctx), EXIT.usage);
+  assert.match(look.out.stderr, /a drama with none has no look stage: run keyframes/);
+
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
+  const shots = explainerFixture().scenes.filter((scene) => scene.template === "shot").map((scene) => scene.id);
+  assert.deepEqual(site.state.images.map((request) => request.shot_id), shots);
+  assert.ok(site.state.images.every((request) => request.references.length === 0), "no character sheet to reference");
+  assert.match(site.state.images[0].prompt, /Style: flat editorial illustration/);
+  assert.ok(site.state.judges.every((request) => !request.rubric.some((item) => item.key.startsWith("identity_"))));
+  const manifest = manifestOf(box, "keyframes");
+  assert.equal(manifest.look_hash, lookHash(explainerFixture()));
+  assert.deepEqual(Object.keys(manifest.shots).sort(), [...shots].sort());
+});
+
+/** The sandbox's video.json, changed by `edit` and written back. */
+function rewrite(box, edit) {
+  const file = path.join(box.dir, "video.json");
+  const doc = JSON.parse(readFileSync(file, "utf8"));
+  edit(doc);
+  writeFileSync(file, `${JSON.stringify(doc, null, 2)}\n`);
+  return doc;
+}
+
+/** The story example stretched to `count` shots: its own ten, then later moments of them under new ids. */
+function stretch(doc, count) {
+  const shots = doc.scenes.filter((scene) => scene.template === "shot");
+  const cards = doc.scenes.filter((scene) => scene.template !== "shot");
+  const more = Array.from({ length: count - shots.length }, (_, index) => {
+    const copy = structuredClone(shots[index % shots.length]);
+    delete copy.chapter;
+    copy.data.prompt = `${copy.data.prompt}, a later moment ${index + 1}`;
+    return { ...copy, id: `more-${index + 1}`, lines: copy.lines.map((line, n) => ({ ...line, id: `m${String(index).padStart(3, "0")}${n}` })) };
+  });
+  doc.scenes = [...shots, ...more, ...cards];
+}
+
+test("a narrator-only drama draws its keyframes without a look gate, from the style frames alone", async () => {
+  const box = sandbox("fixture-story", "story");
+  // The style anchor every story of the series shares (docs/videos/STORY.md), beside the script.
+  const anchor = PNG("style anchor");
+  writeFileSync(path.join(box.dir, "style-anchor.png"), anchor);
+  const doc = rewrite(box, (each) => {
+    each.look.style_frames = ["style-anchor.png"];
+  });
+  const site = mediaSite({ verdicts: () => ({ overall: 8, passed: true }) });
+  const dry = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--dry-run"], dry.ctx), EXIT.ok, dry.out.stderr);
+  assert.match(dry.out.stdout, /keyframes for 10 shots \(0 end frames\), up to 3 takes each/);
+
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
+  assert.equal(site.state.images.length, 10, "one keyframe a shot, and not one character sheet");
+  assert.deepEqual([...new Set(site.state.images.map((request) => request.purpose))], ["keyframe"]);
+  for (const request of site.state.images) assert.deepEqual(request.references, [{ sha256: SHA(anchor), role: "style" }], request.shot_id);
+  assert.deepEqual(site.state.uploads.map((upload) => upload.sha256), [SHA(anchor)], "only the style frame goes to the store");
+  assert.equal(site.state.judges.length, 10);
+  for (const judged of site.state.judges) {
+    assert.deepEqual(judged.rubric.map((item) => item.key), ["prompt", "style", "clean", "no_text", "subtitle_band"], "no identity question without a character");
+    assert.deepEqual(judged.files.map((file) => file.label), ["keyframe"]);
+  }
+  const manifest = manifestOf(box, "keyframes");
+  assert.equal(manifest.look_hash, lookHash(doc));
+  assert.deepEqual(Object.keys(manifest.shots), doc.scenes.filter((scene) => scene.template === "shot").map((scene) => scene.id));
+  assert.equal(manifest.thumbnail_source, manifest.shots["sand-lines"].file);
+  assert.equal(manifest.contact_sheet, "keyframes/contact-sheet.png");
+  assert.deepEqual(manifest.contact_sheets, ["keyframes/contact-sheet.png"]);
+  assert.ok(!existsSync(path.join(box.workdir, "characters")), "no character sheet is read or written");
+  assert.deepEqual(readApprovals(box.workdir).approvals, [], "nothing waited on a gate");
+  assert.match(run.out.stdout, /next: node tools\/video\/cli\.mjs review-push --slug fixture-story --gate storyboard/);
+});
+
+test("the storyboard's contact sheet is one page up to 24 shots, then pages of 24 in shot order", () => {
+  const tiles = (count) => Array.from({ length: count }, (_, index) => ({ file: `keyframes/shot-${index + 1}-1.png`, label: `shot-${index + 1}` }));
+  const pages = (count) => contactSheetPages(tiles(count)).map((page) => [page.file, page.tiles.length]);
+  assert.equal(CONTACT_SHEET_TILES, 24);
+  assert.deepEqual(pages(24), [["keyframes/contact-sheet.png", 24]], "a storyboard that fits keeps the one sheet its readers know");
+  assert.deepEqual(pages(25), [["keyframes/contact-sheet-01.png", 24], ["keyframes/contact-sheet-02.png", 1]]);
+  assert.deepEqual(pages(95), [["keyframes/contact-sheet-01.png", 24], ["keyframes/contact-sheet-02.png", 24], ["keyframes/contact-sheet-03.png", 24], ["keyframes/contact-sheet-04.png", 23]]);
+  assert.deepEqual(contactSheetPages(tiles(95)).flatMap((page) => page.tiles), tiles(95), "every shot once, in order");
+});
+
+test("keyframes of a long story draw every page, keep contact_sheet on the first and clear an older storyboard's sheet", async () => {
+  const box = sandbox("fixture-story", "story");
+  rewrite(box, (doc) => stretch(doc, 25));
+  mkdirSync(path.join(box.workdir, "keyframes"), { recursive: true });
+  writeFileSync(path.join(box.workdir, "keyframes", "contact-sheet.png"), PNG("a shorter storyboard"));
+  const drawn = [];
+  const openRenderer = async () => ({
+    sheet: async (html) => {
+      drawn.push(html);
+      return PNG(`page ${drawn.length}`);
+    },
+    close: async () => {},
+  });
+  const site = mediaSite({ verdicts: () => ({ overall: 8, passed: true }) });
+  const run = context(box, site.fetchImpl, { openRenderer });
+  assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
+  assert.equal(site.state.images.length, 25);
+  const manifest = manifestOf(box, "keyframes");
+  assert.deepEqual(manifest.contact_sheets, ["keyframes/contact-sheet-01.png", "keyframes/contact-sheet-02.png"]);
+  assert.equal(manifest.contact_sheet, "keyframes/contact-sheet-01.png", "the first page, for the readers written before there were pages");
+  assert.deepEqual(drawn.map((html) => html.match(/<figure>/g).length), [24, 1]);
+  assert.match(drawn[0], /fixture-story：分鏡 25 鏡（第 1／2 頁）/);
+  assert.match(drawn[1], /more-15 · 8\/10/);
+  for (const file of manifest.contact_sheets) assert.ok(existsSync(path.join(box.workdir, file)), file);
+  assert.ok(!existsSync(path.join(box.workdir, "keyframes", "contact-sheet.png")), "the shorter storyboard's sheet is gone");
 });

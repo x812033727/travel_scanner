@@ -6,11 +6,15 @@ import { type ReactNode, useCallback, useEffect, useMemo, useState } from "react
 import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { AdminEmptyState, AdminErrorState, AdminStatusPill } from "@/components/admin-ui";
 import {
-  CompilationDownload, control, DUB_LOCALES, isBlocked, mp4Retired, needsOwner, type Project, type ProjectSummary, REFRESH_MS, readyToUpload, type Review, ReviewCard,
-  SLUG, UploadPackage, UploadedForm, fileUrl, useRefresh, useWhen, youtubeSyncStuck,
+  CompilationDownload, control, finalApproved, isBlocked, type LocaleChoice, LOCALE_PARTS, LOCALES, mp4Retired, needsOwner, partStateLabel, type Project,
+  type ProjectSummary, type PublishState, publishState, REFRESH_MS, readyToUpload, type Review, ReviewCard, SLUG, UploadPackage, UploadedForm, fileUrl,
+  useRefresh, useWhen, youtubeSyncStuck,
 } from "@/components/admin-video-review-card";
-import { AdminVideoSeries } from "@/components/admin-video-series";
+import { AdminVideoSeries, DocPanel, type Series } from "@/components/admin-video-series";
 import { AdminVideoSettings } from "@/components/admin-video-settings";
+import { AdminVideoShorts } from "@/components/admin-video-shorts";
+import { stateTone } from "@/components/admin-video-shorts-data";
+import { DiscussionThread, scriptSubject } from "@/components/admin-video-thread";
 import { syncRunning, useYoutubeConnection, YoutubeChannelCard, type YoutubeConnection, YoutubeLinkHint, YoutubePublishForm, YoutubeSyncPanel } from "@/components/admin-video-youtube";
 import { Button, Tabs } from "@/components/community/ui";
 import { useAdminQueryState, useAdminQueryValue } from "@/lib/admin-workspace-navigation";
@@ -79,50 +83,149 @@ function DropVideo({ slug, onDropped }: { slug: string; onDropped: () => void })
   </details>;
 }
 
+type Choices = Record<(typeof LOCALES)[number], Required<LocaleChoice>>;
+const NOTHING: Required<LocaleChoice> = { metadata: false, captions: false, dub: false };
+
+/** The owner's saved choice as a full grid, so every box has a value and the same shape compares equal. */
+function choicesOf(saved: ProjectSummary["locales"]): Choices {
+  return Object.fromEntries(LOCALES.map((locale) => {
+    const choice = saved?.[locale] ?? {};
+    return [locale, { metadata: Boolean(choice.metadata), captions: Boolean(choice.captions || choice.dub), dub: Boolean(choice.dub) }];
+  })) as Choices;
+}
+
+/** What goes to the server: only the languages with something ticked, in the page's order. */
+function chosenBody(choices: Choices): Record<string, Required<LocaleChoice>> {
+  return Object.fromEntries(LOCALES.filter((locale) => LOCALE_PARTS.some((part) => choices[locale][part])).map((locale) => [locale, choices[locale]]));
+}
+
+// What the panel reads from the settings for "tick the defaults": the tutorial and drama lists of
+// languages to pre-tick (docs/videos/LANGUAGES.md; the settings tab, admin-video-settings.tsx).
+type LanguageDefaults = { caption_locales?: string[]; drama?: { drama_caption_locales?: string[] } };
+
 /**
- * The languages to dub this video in (docs/videos/DUBS.md). Every video is made in Traditional
- * Chinese; the worker makes a track for each ticked language once the final cut is approved and
- * sends them back as a card, and the owner uploads them in YouTube Studio. Ticking is allowed
- * before or after the video is public.
+ * The languages this video gets on top of Traditional Chinese and what of each: titles and
+ * descriptions, closed captions, a dub track (docs/videos/LANGUAGES.md). The owner decides once
+ * the final cut is approved; the worker then makes only what is ticked and reports each part back,
+ * and the video is not scheduled until every chosen part is made. A dub track is timed with its
+ * captions, so ticking it ticks them; a drama cannot be dubbed yet (docs/videos/DUBS.md). The panel
+ * stays after the video is public: more can be ticked, and unticking only holds for what is not on
+ * YouTube yet.
  */
-function DubLanguages({ slug, project, canManage, onSaved }: { slug: string; project: Project; canManage: boolean; onSaved: () => void }) {
+function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; project: Project; canManage: boolean; onSaved: () => void }) {
   const t = useTranslations("admin.videoReviews");
-  // The parent keys this section by the saved languages, so a save (or another admin's) remounts
-  // it with the new boxes while an edit in progress survives the page's minute-by-minute reads.
-  const saved = (project.dub_locales ?? []).join(",");
-  const [chosen, setChosen] = useState<string[]>(project.dub_locales ?? []);
+  const drama = (project.format ?? "slides") === "drama";
+  // The boxes follow the saved choice whenever it changes (a save, or another admin's), while an
+  // edit in progress survives the page's minute-by-minute reads that bring the same choice back.
+  const saved = choicesOf(project.locales);
+  const savedKey = JSON.stringify(saved);
+  const [chosen, setChosen] = useState<Choices>(saved);
+  const [seen, setSeen] = useState(savedKey);
+  if (seen !== savedKey) {
+    setSeen(savedKey);
+    setChosen(saved);
+  }
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-  const ordered = DUB_LOCALES.filter((locale) => chosen.includes(locale));
-  const changed = ordered.join(",") !== saved;
-  const toggle = (locale: string) => setChosen((current) => (current.includes(locale) ? current.filter((each) => each !== locale) : [...current, locale]));
-  const save = async () => {
+  const decided = Boolean(project.locales_decided_at);
+  const changed = JSON.stringify(chosen) !== savedKey;
+  const nothingSaved = Object.keys(chosenBody(saved)).length === 0;
+  const toggle = (locale: (typeof LOCALES)[number], part: (typeof LOCALE_PARTS)[number], on: boolean) => setChosen((current) => {
+    const next = { ...current[locale], [part]: on };
+    if (part === "dub" && on) next.captions = true;
+    if (part === "captions" && !on) next.dub = false;
+    return { ...current, [locale]: next };
+  });
+  const put = async (locales: Record<string, Required<LocaleChoice>>) => {
     setBusy(true);
     setError("");
     setMessage("");
     try {
-      await api(`/admin/videos/${slug}/dubs`, { method: "PUT", body: JSON.stringify({ locales: ordered }) });
-      setMessage(t("dubsSaved"));
+      await api(`/admin/videos/${slug}/languages`, { method: "PUT", body: JSON.stringify({ locales }) });
+      setMessage(t("languagesSaved"));
       onSaved();
     } catch (problem) {
-      setError(t("dubsError", { message: problem instanceof Error ? problem.message : "" }));
+      setError(t("languagesError", { message: problem instanceof Error ? problem.message : "" }));
     } finally {
       setBusy(false);
     }
   };
-  return <section aria-label={t("dubsTitle")} className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
-    <p className="font-bold">{t("dubsTitle")}</p>
-    <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("dubsHelp")}</p>
-    <div className="mt-3 flex flex-wrap gap-4">
-      {DUB_LOCALES.map((locale) => <label key={locale} className="inline-flex items-center gap-2 text-sm font-semibold">
-        <input type="checkbox" checked={chosen.includes(locale)} disabled={!canManage || busy} onChange={() => toggle(locale)} />{t(`locales.${locale}`)}
-      </label>)}
-    </div>
-    {error && <p role="alert" className="mt-2 text-sm text-red-800">{error}</p>}
-    {message && !error && <p role="status" className="mt-2 text-sm text-[var(--muted)]">{message}</p>}
-    <div className="mt-3"><Button disabled={!canManage || busy || !changed} onClick={() => void save()}>{busy ? t("saving") : t("dubsSave")}</Button></div>
+  const tickDefaults = async () => {
+    setBusy(true);
+    setError("");
+    try {
+      const settings = await api<LanguageDefaults>("/admin/video-automation/settings");
+      const defaults = (drama ? settings.drama?.drama_caption_locales : settings.caption_locales) ?? [];
+      setChosen(Object.fromEntries(LOCALES.map((locale) => [locale, defaults.includes(locale) ? { metadata: true, captions: true, dub: false } : NOTHING])) as Choices);
+    } catch (problem) {
+      setError(t("languagesError", { message: problem instanceof Error ? problem.message : "" }));
+    } finally {
+      setBusy(false);
+    }
+  };
+  const locked = !canManage || busy;
+  return <section aria-label={t("languagesTitle")} className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
+    <p className="font-bold">{t("languagesTitle")}</p>
+    {!finalApproved(project) ? <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languagesLater")}</p> : <>
+      <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languagesHelp")}</p>
+      {project.youtube_video_id && <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("languagesAfterPublish")}</p>}
+      <table className="mt-3 w-full text-sm">
+        <thead><tr><th scope="col" className="sr-only">{t("languageColumn")}</th>{LOCALE_PARTS.map((part) => <th key={part} scope="col" className="py-1 text-left font-semibold">{t(`parts.${part}`)}</th>)}</tr></thead>
+        <tbody>{LOCALES.map((locale) => <tr key={locale} className="border-t border-[var(--line)]">
+          <th scope="row" className="py-2 pr-3 text-left font-semibold">{t(`locales.${locale}`)}</th>
+          {LOCALE_PARTS.map((part) => {
+            const dubOff = part === "dub" && drama;
+            const state = saved[locale][part] ? project.languages?.[locale]?.[part] : undefined;
+            return <td key={part} className="py-2 align-top">
+              <label className="inline-flex min-h-8 flex-wrap items-center gap-2" title={dubOff ? t("dubDramaLater") : undefined}>
+                <input type="checkbox" aria-label={`${t(`locales.${locale}`)} ${t(`parts.${part}`)}`} checked={chosen[locale][part]} disabled={locked || dubOff} onChange={(event) => toggle(locale, part, event.target.checked)} />
+                {state && <span className="text-xs text-[var(--muted)]">{partStateLabel(t, state.state, state.reason)}</span>}
+              </label>
+            </td>;
+          })}
+        </tr>)}</tbody>
+      </table>
+      {error && <p role="alert" className="mt-2 text-sm text-red-800">{error}</p>}
+      {message && !error && <p role="status" className="mt-2 text-sm text-[var(--muted)]">{message}</p>}
+      <div className="mt-3 flex flex-wrap gap-3">
+        <Button secondary disabled={locked} onClick={() => void tickDefaults()}>{t("tickDefaults")}</Button>
+        <Button secondary disabled={locked || (decided && nothingSaved)} onClick={() => void put({})}>{t("zhOnly")}</Button>
+        <Button disabled={locked || (decided && !changed)} onClick={() => void put(chosenBody(chosen))}>{busy ? t("saving") : t("languagesSave")}</Button>
+      </div>
+    </>}
   </section>;
+}
+
+// The pill for each of the publish flow's five states (docs/videos/LANGUAGES.md).
+const PUBLISH_TONES: Record<PublishState, string> = { deciding: "warning", making: "running", ready: "active", scheduled: "queued", published: "ok" };
+
+/** Where the video is on its way to YouTube, as a pill; nothing before the final cut is approved. */
+function PublishPill({ project }: { project: ProjectSummary }) {
+  const t = useTranslations("admin.videoReviews");
+  const state = publishState(project);
+  return state ? <AdminStatusPill status={PUBLISH_TONES[state]}>{t(`publishStates.${state}`)}</AdminStatusPill> : null;
+}
+
+/**
+ * A one-off episode's series (docs/videos/DRAMA-FLOW.md, section 2): its story bible is the one
+ * document, shown on the episode's page above the gates, with its discussion. The server knows a
+ * one-off by its series' kind, not by its slug (the owner may pick one), so every drama episode's
+ * series is read; a long series never has a bible document (its first document is the setting book)
+ * and shows nothing here.
+ */
+function OneOffBible({ seriesSlug, canManage, onChanged }: { seriesSlug: string; canManage: boolean; onChanged: () => void }) {
+  const t = useTranslations("admin.videoSeries");
+  const [series, setSeries] = useState<Series | null>(null);
+  const load = useCallback(() => {
+    api<Series>(`/admin/video-automation/series/${seriesSlug}`).then((value) => setSeries(value)).catch(() => setSeries(null));
+  }, [seriesSlug]);
+  useRefresh(load);
+  const bible = series?.docs?.find((doc) => doc.kind === "bible");
+  if (bible) return <DocPanel slug={seriesSlug} doc={bible} canManage={canManage} onChanged={() => { load(); onChanged(); }} />;
+  // A one-off whose worker has not written the bible yet: say so instead of showing nothing.
+  if (series?.kind === "one-off") return <p className="text-sm text-[var(--muted)]">{t("bibleEmpty")}</p>;
+  return null;
 }
 
 /** The newest approved upload confirmation: the package the site sends to YouTube. */
@@ -143,7 +246,28 @@ function SendToYoutube({ slug, confirmation, connection, sync, mp4Gone, onSent }
   return <YoutubePublishForm key={`${confirmation?.id ?? "none"}-${sync?.finished_at ?? "new"}`} slug={slug} review={confirmation} connection={connection} canUpload={canUpload} previous={sync?.request ?? null} onSent={onSent} />;
 }
 
-function ProjectDetail({ slug, onBack }: { slug: string; onBack: () => void }) {
+/**
+ * What makes a video a Short, under its title (docs/videos/SHORTS.md): its content line and series,
+ * where it stands, the slot it holds, and the video it was cut from, which opens from here.
+ */
+function ShortFacts({ project, onOpen }: { project: Project; onOpen: (slug: string) => void }) {
+  const t = useTranslations("admin.videoShorts");
+  const when = useWhen();
+  if (!project.shorts_line) return null;
+  const state = project.shorts_state ?? "making";
+  return <div className="grid gap-2 text-sm" aria-label={t("detail.title")}>
+    <p className="flex flex-wrap items-center gap-2">
+      <AdminStatusPill status="inactive">{t(`lines.${project.shorts_line}`)}</AdminStatusPill>
+      <AdminStatusPill status={stateTone[state]}>{t(`states.${state}`)}</AdminStatusPill>
+      {project.shorts_series && <span className="text-[var(--muted)]">{t("library.series", { series: project.shorts_series })}</span>}
+      <span className="text-[var(--muted)]">{project.slot_at ? t("library.slotAt", { time: when(project.slot_at) }) : t("library.noSlot")}</span>
+    </p>
+    {project.youtube_removed_at && <p><AdminStatusPill status="failed">{t("metrics.removed", { time: when(project.youtube_removed_at) })}</AdminStatusPill></p>}
+    {project.source_slug && <p className="flex flex-wrap items-center gap-2">{t("detail.source")}<Button secondary onClick={() => onOpen(String(project.source_slug))}>{t("detail.openSource", { slug: project.source_slug })}</Button></p>}
+  </div>;
+}
+
+function ProjectDetail({ slug, onBack, onOpen }: { slug: string; onBack: () => void; onOpen: (slug: string) => void }) {
   const t = useTranslations("admin.videoReviews");
   const ty = useTranslations("admin.videoYoutube");
   const when = useWhen();
@@ -158,14 +282,27 @@ function ProjectDetail({ slug, onBack }: { slug: string; onBack: () => void }) {
   const live = project?.reviews.filter((review) => review.status === "pending") ?? [];
   const past = project?.reviews.filter((review) => review.status !== "pending") ?? [];
   const dropped = Boolean(project?.dropped_at);
+  // A drama episode's screenplay has a thread on its series (docs/videos/DRAMA-FLOW.md, section 3);
+  // the live card takes the owner's lines, an approved one in the history keeps them as a record.
+  const discussion = (review: Review) => (review.gate === "script" && project?.series_slug && project.episode_number && (review.status === "pending" || review.status === "approved")
+    ? <DiscussionThread seriesSlug={project.series_slug} subject={scriptSubject(project.episode_number)} canManage={manage.allowed && !dropped} readOnly={review.status !== "pending"} />
+    : undefined);
   const retired = project ? mp4Retired(project) : false;
+  const state = project ? publishState(project) : null;
+  // A Short is nine by sixteen, and its languages are the Shorts settings', not this video's.
+  const short = Boolean(project?.shorts_line);
+  // The owner may upload the final cut as private as soon as the upload confirmation is approved;
+  // only its scheduling waits for the languages (docs/videos/LANGUAGES.md).
   return <section className="mt-6 grid gap-5">
     <div><Button secondary onClick={onBack}><ArrowLeft aria-hidden size={18} />{t("back")}</Button></div>
     {error && <AdminErrorState title={t("loadError")} detail={error} retry={load} retryLabel={t("retry")} />}
     {project && <>
-      <header className="grid gap-2"><h2 className="text-2xl font-bold">{project.title}</h2>
+      <header className="grid gap-2">
+        <div className="flex flex-wrap items-center gap-3"><h2 className="text-2xl font-bold">{project.title}</h2><PublishPill project={project} /></div>
+        {state === "making" && <p className="text-sm text-[var(--muted)]">{t("scheduleWaits")}</p>}
         {project.series_slug && !project.compilation && <p className="text-sm text-[var(--muted)]">{t("episodeOf", { series: project.series_slug, number: project.episode_number ?? 0 })}</p>}
         {project.series_slug && project.compilation && <p className="text-sm text-[var(--muted)]">{t("compilationOf", { series: project.series_slug })}</p>}
+        <ShortFacts project={project} onOpen={onOpen} />
         <CompilationDownload project={project} canManage={manage.allowed} />
         {project.youtube_video_id && <p className="text-sm">
           {t("youtube", { id: project.youtube_video_id })}
@@ -177,6 +314,7 @@ function ProjectDetail({ slug, onBack }: { slug: string; onBack: () => void }) {
           {project.dropped_note && <span className="block whitespace-pre-wrap">{project.dropped_note}</span>}
         </p>}
       </header>
+      {project.series_slug && <OneOffBible seriesSlug={project.series_slug} canManage={manage.allowed && !dropped} onChanged={load} />}
       {project.checklist.length > 0 && <section aria-label={t("checklist")} className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
         <p className="font-bold">{t("checklist")}</p>
         <ul className="mt-2 grid gap-1 text-sm sm:grid-cols-2">{project.checklist.map((item) => <li key={item.key} className="flex items-center gap-2">{item.done ? <CheckCircle2 aria-hidden size={16} className="text-[var(--teal)]" /> : <Circle aria-hidden size={16} className="text-[var(--muted)]" />}<span className={item.done ? "" : "text-[var(--muted)]"}>{item.label}</span></li>)}</ul>
@@ -189,11 +327,11 @@ function ProjectDetail({ slug, onBack }: { slug: string; onBack: () => void }) {
         <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{ty("resendHelp")}</p>
         <div className="mt-3"><YoutubePublishForm key={project.youtube_sync?.finished_at ?? "resend"} slug={slug} review={approvedPackage(project.reviews)} connection={connection} canUpload={false} videoId={project.youtube_video_id} previous={project.youtube_sync?.request ?? null} onSent={load} /></div>
       </details>}
-      {!dropped && (project.format ?? "slides") === "slides" && <DubLanguages key={(project.dub_locales ?? []).join(",")} slug={slug} project={project} canManage={manage.allowed} onSaved={load} />}
+      {!dropped && !short && <LanguagePanel slug={slug} project={project} canManage={manage.allowed} onSaved={load} />}
       {live.length === 0 && !dropped && <p className="text-[var(--muted)]">{t("noPending")}</p>}
-      {live.map((review) => <ReviewCard key={review.id} slug={slug} review={review} canManage={manage.allowed && !dropped} onDecided={load} mp4Gone={retired} />)}
+      {live.map((review) => <ReviewCard key={review.id} slug={slug} review={review} canManage={manage.allowed && !dropped} onDecided={load} mp4Gone={retired} discussion={discussion(review)} vertical={short} />)}
       {past.length > 0 && <details className="grid gap-4" open={readyToUpload(project)}><summary className="cursor-pointer font-bold">{t("history")}</summary>
-        <div className="mt-4 grid gap-4">{past.map((review) => <ReviewCard key={review.id} slug={slug} review={review} canManage={false} onDecided={load} mp4Gone={retired} />)}</div>
+        <div className="mt-4 grid gap-4">{past.map((review) => <ReviewCard key={review.id} slug={slug} review={review} canManage={false} onDecided={load} mp4Gone={retired} discussion={discussion(review)} vertical={short} />)}</div>
       </details>}
       {manage.allowed && !dropped && !project.youtube_video_id && <DropVideo slug={slug} onDropped={load} />}
     </>}
@@ -212,7 +350,7 @@ function ProjectItem({ project, onOpen }: { project: ProjectSummary; onOpen: (sl
           ? <AdminStatusPill status="inactive">{t("dropped")}</AdminStatusPill>
           : <AdminStatusPill status={project.pending ? "pending" : "inactive"}>{project.pending ? t("pending", { count: project.pending }) : t("noPendingShort")}</AdminStatusPill>}
         {!project.dropped_at && isBlocked(project) && <AdminStatusPill status="failed">{t("stuck")}</AdminStatusPill>}
-        {readyToUpload(project) && <AdminStatusPill status="active">{t("readyToUpload")}</AdminStatusPill>}
+        <PublishPill project={project} />
         {syncRunning(project.youtube_sync) && <AdminStatusPill status="running">{ty("sendingPill")}</AdminStatusPill>}
         {youtubeSyncStuck(project.youtube_sync) && <AdminStatusPill status="failed">{ty("stuckPill")}</AdminStatusPill>}
       </span>
@@ -245,7 +383,7 @@ function ReadyCard({ project, canManage, connection, onOpen, onLinked }: { proje
       <header className="flex flex-wrap items-center gap-3">
         <Upload aria-hidden size={20} className="text-[var(--teal)]" />
         <h3 className="text-lg font-bold">{project.title}</h3>
-        <AdminStatusPill status="active">{t("readyToUpload")}</AdminStatusPill>
+        <PublishPill project={project} />
         <Button secondary className="ml-auto" onClick={() => onOpen(project.slug)}>{t("openVideo", { slug: project.slug })}</Button>
       </header>
       {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
@@ -266,8 +404,10 @@ function Group({ title, children }: { title: string; children: ReactNode }) {
 }
 
 /**
- * The tutorials (slides videos): dramas live on their own tab. What waits for the owner comes
- * first, then what is ready to upload, then the rest by state (docs/videos/HANDS-OFF.md).
+ * The tutorials (slides videos): dramas and Shorts live on their own tabs, and the list is asked
+ * for without the Shorts, which would otherwise crowd the tutorials out of it. What waits for the owner comes
+ * first (a decision, a stopped video, a finished cut whose languages are not chosen), then what is
+ * ready to upload, then the rest by state (docs/videos/HANDS-OFF.md, docs/videos/LANGUAGES.md).
  */
 function ProjectList({ onOpen }: { onOpen: (slug: string) => void }) {
   const t = useTranslations("admin.videoReviews");
@@ -276,7 +416,7 @@ function ProjectList({ onOpen }: { onOpen: (slug: string) => void }) {
   const [projects, setProjects] = useState<ProjectSummary[] | null>(null);
   const [error, setError] = useState("");
   const load = useCallback(() => {
-    api<ProjectSummary[]>("/admin/videos").then((value) => { setProjects(value.filter((project) => project.format !== "drama")); setError(""); }).catch((problem: unknown) => setError(problem instanceof Error ? problem.message : ""));
+    api<ProjectSummary[]>("/admin/videos?shorts=exclude").then((value) => { setProjects(value.filter((project) => project.format !== "drama" && !project.shorts_line)); setError(""); }).catch((problem: unknown) => setError(problem instanceof Error ? problem.message : ""));
   }, []);
   useRefresh(load);
   const groups = useMemo(() => {
@@ -302,18 +442,19 @@ function ProjectList({ onOpen }: { onOpen: (slug: string) => void }) {
   </div>;
 }
 
-const TABS = ["reviews", "drama", "settings"] as const;
+const TABS = ["reviews", "drama", "shorts", "settings"] as const;
 
 export function AdminVideoReviews() {
   const t = useTranslations("admin.videoReviews");
   const [slug, setSlug] = useAdminQueryValue("video", "", (value) => SLUG.test(value));
   const [tab, setTab] = useAdminQueryState("tab", TABS, "reviews");
-  if (slug) return <ProjectDetail slug={slug} onBack={() => setSlug("")} />;
+  if (slug) return <ProjectDetail slug={slug} onBack={() => setSlug("")} onOpen={setSlug} />;
   return <div className="mt-6">
     <Tabs value={tab} onChange={(value) => setTab(value as (typeof TABS)[number])} label={t("tabsLabel")}
-      items={[{ value: "reviews", label: t("tabReviews") }, { value: "drama", label: t("tabDrama") }, { value: "settings", label: t("tabSettings") }]}>
+      items={[{ value: "reviews", label: t("tabReviews") }, { value: "drama", label: t("tabDrama") }, { value: "shorts", label: t("tabShorts") }, { value: "settings", label: t("tabSettings") }]}>
       {tab === "reviews" && <ProjectList onOpen={setSlug} />}
       {tab === "drama" && <AdminVideoSeries onOpenVideo={setSlug} />}
+      {tab === "shorts" && <AdminVideoShorts onOpenVideo={setSlug} />}
       {tab === "settings" && <><div className="mt-6"><YoutubeChannelCard /></div><AdminVideoSettings /></>}
     </Tabs>
   </div>;

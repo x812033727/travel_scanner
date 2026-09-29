@@ -2,6 +2,8 @@
 
 2026-09-26 定案。這是既有全自動影片產線（[`DESIGN.md`](DESIGN.md)、[`AUTOMATION.md`](AUTOMATION.md)）的第二種格式：畫面不是投影片，而是 AI 生成的鏡頭片段；一支影片有旁白與多個角色；字幕燒進畫面；有背景音樂。這份只寫**為什麼這樣做**與各部分怎麼接起來；操作步驟在 skill `youtube-video` 的 `references/drama.md`（票 `2026-09-26-video-drama-skill-docs`）。工作分成 16 張票，id 都是 `2026-09-26-video-drama-*`。
 
+**2026-09-27 起**：單集與作品走同一條流程（單集是一部 `kind = one-off`、只有一集的作品，文件只有一份故事聖經 `bible`），漫劇不再用「選大綱」卡片，每支都有劇本關卡（`DRAMA_STEPS` 在 `fact-checked` 之後多了 `script approved`），站主可以在文件與劇本上跟模型討論（`video_drama_messages`）；設定分頁把漫劇與教學分開。設計在 [`DRAMA-FLOW.md`](DRAMA-FLOW.md)；下面「產線與關卡」改了第 1 步（站主核准故事聖經）、第 3 步（加聽眾審稿）、第 4 步（新的劇本關卡）、第 5 步（`auto_pick_look`）、第 12 步（只做繁中字幕）與第 13 步（成片自動品管），並加了第 15 步（語言）；其餘照舊。操作步驟在 skill 的 `references/drama.md`。
+
 ## 目標與已定的選擇
 
 站主給的參考是《山海经之万兽图鉴》（YouTube `qbyEeolMKDk`，#AI漫剧）：電影感 3D 寫實國風，每鏡 5–8 秒硬切，旁白加角色對白，底部燒錄字幕，有配樂。要求「品質在這以上」。
@@ -56,7 +58,7 @@
 
 | 欄位 | 內容 |
 | --- | --- |
-| `look` | `{ preset?: cinematic-3d\|anime-2d\|ink-wash\|custom, style (≤600), negative?, motion?, candidates?: 2–4（預設 3）, style_frames?: string[] }`：全影片共用的風格提示詞 |
+| `look` | `{ preset?: cinematic-3d\|anime-2d\|ink-wash\|flat-explainer\|custom, style (≤600), negative?, motion?, candidates?: 2–4（預設 3）, style_frames?: string[] }`：全影片共用的風格提示詞 |
 | `characters[]` | `{ id（小寫，不可是 narrator）, name, appearance（≤800，英文，給圖片模型）, voice（同 doc.voice 的物件）, sheet_prompt? }` |
 | 鏡頭場景 | `template: "shot"`，`data: { prompt (≤1000), camera?, motion?, negative?, characters?: [id]（≤3）, fit?: auto\|freeze\|slow\|trim, seed?, transition?: cut\|dissolve, start_frame?: { shot, at: "last" }, end_frame?: { prompt }, visual?: clip\|still }`；`visual` 預設 `clip`，`still` 不買片段，由 `assemble` 用關鍵影格加運鏡（下面「畫面等級與運鏡」）；句子不能有 `reveal`。`title`／`chapter`／`outro` 卡片仍可用 |
 | 句子 | 多 `speaker?: narrator\|<角色 id>`（預設 narrator）與 `emotion?`（≤80，Gemini 併進 style；Azure 忽略並警告） |
@@ -90,21 +92,23 @@ drama 的 `brief.md` 必要章節：「故事前提」「角色」「站主觀�
 
 | # | 階段 | 誰 | 產出（`<VIDEO_WORKDIR>/<slug>/`） | 關卡 |
 | --- | --- | --- | --- | --- |
-| 1 | 企劃：故事前提、角色、看點、2–3 個大綱 | 企劃代理 | `brief.md` | 站主選大綱 |
+| 1 | 企劃：故事聖經（前提、角色、幕、一個大綱、素材、不做的事；作品是設定集、總綱、篇章細綱） | 企劃模型（variant `bible`） | 站上的文件版本；核准後工人寫 `brief.md`（`## 大綱` 只有選項 A，本機核准） | **站主核准故事聖經**（可先在討論串問或要求改） |
 | 2 | 撰稿：劇本＋分鏡（`video.json`）、`claims.md`（設定與名詞表） | 撰稿代理 | | `lint` 零錯誤 |
-| 3 | 連貫性查核：角色設定、名詞、時間線 | 查核代理 | `verify-1.md` | |
-| 4 | `look`：每角色數張設定圖、judge 評分、聯絡表 | 工具 | `characters/` | **站主在 `/admin/videos` 為每個角色選一張（`look` 關卡，每角色一張審核）** |
-| 5 | `tts`（依說話者分批）→ `check-audio` | 工具 | `audio/`、`narration.wav`、`timeline.json` | 旁白核准（Jev 全過自動核准，照舊） |
-| 6 | `keyframes`：每鏡一張關鍵影格，以選定設定圖當參考；judge 不過換 seed 重做（≤3 次） | 工具 | `keyframes/` | 分鏡關卡 `storyboard`（可選；`auto_approve_storyboard` 開且 judge 過就自動核准） |
-| 7 | `render`：卡片、字幕條、縮圖 | 工具 | `frames/` | 缺字、超框 |
-| 8 | `clips`：每鏡圖生影片、QC、重做（≤2 次）、預算把關 | 工具 | `clips/` | `needs_review` 為空 |
-| 9 | `music`：Lyria 生成或核對站主的檔 | 工具 | `music/` | |
-| 10 | `assemble`：片段對齊、字幕疊圖、音樂壓低、串接、檢查 | 工具 | `final.mp4`、`checks.json` | 六個雜湊全對、檢查全過 |
-| 11 | CC 翻譯與 `captions` | 翻譯與審稿代理、工具 | `captions/` | |
-| 12 | 720p 送審 | 站主 | | 成片核准 |
-| 13 | `package` → 上架確認 → 站主在 Studio 上傳成私人、勾合成內容揭露 | 站主 | `upload/` | 上架核准 |
+| 3 | 連貫性查核：角色設定、名詞、時間線 → 聽眾審稿 | 查核代理 | `verify-1.md` | |
+| 4 | 劇本：`script.md`（只含敘事） | 工具 | `docs/videos/<slug>/script.md` | **劇本關卡 `script`：站主讀、討論、核准；「劇本先給我看」（`series_script_gate`）關著就自動核准。在任何圖片或片段花錢之前** |
+| 5 | `look`：每角色數張設定圖、judge 評分、聯絡表 | 工具 | `characters/` | `look` 關卡（每角色一張審核）：`auto_pick_look` 開著就核准 judge 建議的那張；沒過或關著才**站主在 `/admin/videos` 為每個角色選一張** |
+| 6 | `tts`（依說話者分批）→ `check-audio` | 工具 | `audio/`、`narration.wav`、`timeline.json` | 旁白核准（Jev 全過自動核准，照舊） |
+| 7 | `keyframes`：每鏡一張關鍵影格，以選定設定圖當參考；judge 不過換 seed 重做（≤3 次） | 工具 | `keyframes/` | 分鏡關卡 `storyboard`（可選；`auto_approve_storyboard` 開且 judge 過就自動核准） |
+| 8 | `render`：卡片、字幕條、縮圖 | 工具 | `frames/` | 缺字、超框 |
+| 9 | `clips`：每鏡圖生影片、QC、重做（≤2 次）、預算把關 | 工具 | `clips/` | `needs_review` 為空 |
+| 10 | `music`：Lyria 生成或核對站主的檔 | 工具 | `music/` | |
+| 11 | `assemble`：片段對齊、字幕疊圖、音樂壓低、串接、檢查 | 工具 | `final.mp4`、`checks.json` | 六個雜湊全對、檢查全過 |
+| 12 | `captions`（只有繁中） | 工具 | `captions/` | |
+| 13 | 720p 送審 | 工具、站主 | | 成片關卡 `final`：自動品管全過就核准（`drama_auto_approve_final`），沒過才站主看 |
+| 14 | `package` → 上架確認 → 站主在 Studio 上傳成私人、勾合成內容揭露 | 站主 | `upload/` | 上架核准 |
+| 15 | 語言（[`LANGUAGES.md`](LANGUAGES.md)）：成片核准後站主勾語言，工人只做勾了的 | 站主、工具、翻譯代理 | `captions/<語系>.srt`、`upload/` | `languages` 關卡 |
 
-look 排在旁白之前，讓站主在花任何錢之前就能砍掉不對的概念；render 便宜且會先擋缺字，排在最貴的 clips 之前。
+劇本關卡在 look 之前，站主在花任何錢之前讀過整個故事；look 排在旁白之前，judge 選不出來時站主還能砍掉不對的概念；render 便宜且會先擋缺字，排在最貴的 clips 之前。
 
 ## 工具端的階段（`tools/video/media/`）
 
@@ -149,7 +153,7 @@ look 排在旁白之前，讓站主在花任何錢之前就能砍掉不對的概
 
 ## 審核關卡
 
-`Gate` 加 `look`、`storyboard`；`video_reviews.subject` 讓每個角色一張審核，取代規則改成「同關卡同 subject」；`look` 必須 `choice`；`storyboard` 可自動核准。後台頁的 `LookBody` 是 radio 卡片，`StoryboardBody` 是聯絡表加關鍵影格格網與 judge 摘要。
+`Gate` 加 `look`、`storyboard`（`script` 見 [`SERIES.md`](SERIES.md)，2026-09-27 起每支漫劇都有）；`video_reviews.subject` 讓每個角色一張審核，取代規則改成「同關卡同 subject」；`look` 必須 `choice`；`storyboard` 可自動核准。後台頁的 `LookBody` 是 radio 卡片，`StoryboardBody` 是聯絡表加關鍵影格格網與 judge 摘要。
 
 ## 成本與紀錄
 

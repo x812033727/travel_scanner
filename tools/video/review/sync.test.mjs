@@ -14,7 +14,7 @@ import { SAMPLE_RATE } from "../core/timeline.mjs";
 import { COMPILATION_ITEM_IDS, ITEM_IDS } from "../qa/checks.mjs";
 import { encodeWav } from "../tts/wav.mjs";
 import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeTranslations } from "../compile/fixture.mjs";
-import { audioCheck, checklistFrom, clearedSummary, downloadNote, guideSlugs, judgeBody, outlineOptions, PART_BYTES, previewArgs, REVIEW_GATES, sourceGuideOf, STEP_LABELS, uploadItems } from "./sync.mjs";
+import { audioCheck, checklistFrom, clearedSummary, downloadNote, guideSlugs, judgeBody, MAX_REVIEW_FILES, outlineOptions, PART_BYTES, previewArgs, REVIEW_GATES, sourceGuideOf, STEP_LABELS, storyboardSheets, uploadItems } from "./sync.mjs";
 
 const TOKEN = `mkv_${"r".repeat(43)}`;
 const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");
@@ -365,7 +365,7 @@ test("without a token the push needs the owner", async () => {
 test("every pipeline step of every format has a label for the site", () => {
   for (const id of [...SLIDES_STEPS, ...DRAMA_STEPS, ...COMPILATION_STEPS]) assert.ok(STEP_LABELS[id], `no label for "${id}"`);
   assert.deepEqual(COMPILATION_STEPS.map((id) => STEP_LABELS[id]), ["合集標題與說明", "章節卡與縮圖", "合集串接", "五語標題與說明", "成片核准", "上傳包", "已上 YouTube"]);
-  assert.deepEqual(REVIEW_GATES, ["outline", "script", "look", "audio", "storyboard", "final", "publish", "dubs"]);
+  assert.deepEqual(REVIEW_GATES, ["outline", "script", "look", "audio", "storyboard", "final", "publish", "languages", "dubs"]);
 });
 
 const png = (text) => Buffer.concat([Buffer.from("\x89PNG\r\n\x1a\n", "binary"), Buffer.from(text)]);
@@ -462,6 +462,155 @@ test("the storyboard goes up with every keyframe and the judge's lowest score, a
   const [entry] = readApprovals(box.workdir).approvals;
   assert.equal(entry.gate, "storyboard");
   assert.equal(entry.sha256, board.content_sha256);
+});
+
+/**
+ * The drama fixture stretched to `count` shots (s1, s2, …), drawn as the keyframes stage leaves
+ * them: the shot numbers in `waiting` are left for a prompt fix; `pages` lists the contact sheet
+ * as pages of 24 shots in contact_sheets, otherwise one keyframes/contact-sheet.png holds them all.
+ */
+function longStoryboard(box, count, { waiting = [], pages = false } = {}) {
+  const file = path.join(box.dir, "video.json");
+  const doc = JSON.parse(readFileSync(file, "utf8"));
+  const [first] = doc.scenes;
+  doc.scenes = Array.from({ length: count }, (_, index) => ({ ...first, id: `s${index + 1}`, chapter: index % 24 ? undefined : `第 ${index / 24 + 1} 段`, data: { ...first.data, prompt: `shot ${index + 1}` }, lines: [{ id: `l${index + 1}`, text: "一句旁白。" }] }));
+  writeFileSync(file, `${JSON.stringify(doc, null, 2)}\n`);
+  mkdirSync(path.join(box.workdir, "keyframes"), { recursive: true });
+  const ids = doc.scenes.map((scene) => scene.id);
+  const shots = {};
+  for (const [index, id] of ids.entries()) {
+    const fix = waiting.includes(index + 1);
+    writeFileSync(path.join(box.workdir, "keyframes", `${id}-1.png`), png(id));
+    shots[id] = { file: `keyframes/${id}-1.png`, sha256: sha(png(id)), seed: 1, judge: { overall: fix ? 5 : 8, passed: !fix, problems: fix ? ["no bird"] : [] }, needs_review: fix };
+  }
+  const manifest = { look_hash: "l", visual_hash: "v", shots, duplicates: [] };
+  if (pages) {
+    manifest.contact_sheets = [];
+    for (let start = 0; start < count; start += 24) {
+      const sheet = `keyframes/contact-sheet-${String(start / 24 + 1).padStart(2, "0")}.png`;
+      writeFileSync(path.join(box.workdir, sheet), png(sheet));
+      manifest.contact_sheets.push({ file: sheet, shots: ids.slice(start, start + 24) });
+    }
+    manifest.contact_sheet = manifest.contact_sheets[0].file;
+  } else {
+    writeFileSync(path.join(box.workdir, "keyframes", "contact-sheet.png"), png("sheet"));
+    manifest.contact_sheet = "keyframes/contact-sheet.png";
+  }
+  const bytes = JSON.stringify(manifest);
+  writeFileSync(path.join(box.workdir, "keyframes", "manifest.json"), bytes);
+  return { ids, bytes };
+}
+
+/** review-push --gate storyboard against a fresh site: the review it received and the files it holds. */
+async function pushStoryboard(box) {
+  const server = site();
+  const push = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "storyboard"], push.ctx), EXIT.ok, push.out.stderr);
+  return { review: server.state.reviews[0], stored: server.state.files };
+}
+
+const shotRole = (n) => `shot_${String(n).padStart(2, "0")}`;
+
+test("47 shots still fit a review: every keyframe, then the contact sheet, with the payload and summary as before", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const { ids } = longStoryboard(box, 47, { waiting: [5] });
+  const { review, stored } = await pushStoryboard(box);
+  assert.deepEqual(review.files.map((file) => file.role), [...ids.map((_, index) => shotRole(index + 1)), "contact_sheet"]);
+  assert.equal(review.files.at(-1).content_type, "image/png");
+  assert.equal(stored.size, MAX_REVIEW_FILES);
+  assert.deepEqual(Object.keys(review.payload), ["shots", "judge", "duplicates"], "no sheets and no omitted count");
+  assert.deepEqual(review.payload.shots.map((shot) => shot.file_role), ids.map((_, index) => shotRole(index + 1)));
+  assert.deepEqual(review.payload.shots[4], { id: "s5", chapter: null, prompt: "shot 5", seconds: null, file_role: "shot_05", needs_review: true, judge: { overall: 5, problems: ["no bird"] } });
+  assert.deepEqual(review.payload.judge, { overall: 5, problems: ["no bird"] });
+  assert.equal(review.summary, "分鏡 47 鏡，judge 最低 5/10，1 鏡待修");
+});
+
+test("48 shots and the sheet are one file too many: the contact sheet goes up with the shots left for a fix", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const { ids } = longStoryboard(box, 48, { waiting: [48] });
+  const { review } = await pushStoryboard(box);
+  assert.deepEqual(review.files.map((file) => file.role), ["contact_sheet", "shot_48"]);
+  assert.equal(review.payload.shots.length, 48);
+  assert.deepEqual(review.payload.shots.filter((shot) => shot.file_role).map((shot) => shot.id), ["s48"]);
+  assert.deepEqual(review.payload.sheets, [{ role: "contact_sheet", shots: ids }]);
+  assert.equal(review.payload.omitted, 47);
+  assert.equal(review.summary, "分鏡 48 鏡（聯絡表 1 頁），judge 最低 5/10，1 鏡待修");
+});
+
+test("a brand story's 95 shots go up as four contact sheet pages and the three shots left for a fix; the payload still lists every shot", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const { ids, bytes } = longStoryboard(box, 95, { waiting: [7, 50, 95], pages: true });
+  const { review } = await pushStoryboard(box);
+  assert.equal(review.content_sha256, sha(bytes), "bound to keyframes/manifest.json as before");
+  assert.deepEqual(review.files.map((file) => [file.role, file.content_type]), [
+    ["contact_sheet_01", "image/png"],
+    ["contact_sheet_02", "image/png"],
+    ["contact_sheet_03", "image/png"],
+    ["contact_sheet_04", "image/png"],
+    ["shot_07", "image/png"],
+    ["shot_50", "image/png"],
+    ["shot_95", "image/png"],
+  ]);
+  assert.deepEqual(review.payload.shots.map((shot) => shot.id), ids);
+  assert.deepEqual(review.payload.shots.filter((shot) => shot.file_role).map((shot) => [shot.id, shot.file_role]), [["s7", "shot_07"], ["s50", "shot_50"], ["s95", "shot_95"]]);
+  assert.deepEqual(review.payload.shots[24], { id: "s25", chapter: "第 2 段", prompt: "shot 25", seconds: null, file_role: null, needs_review: false, judge: { overall: 8, problems: [] } });
+  assert.deepEqual(review.payload.sheets.map((sheet) => [sheet.role, sheet.shots.length, sheet.shots[0]]), [["contact_sheet_01", 24, "s1"], ["contact_sheet_02", 24, "s25"], ["contact_sheet_03", 24, "s49"], ["contact_sheet_04", 23, "s73"]]);
+  assert.equal(review.payload.omitted, 92);
+  assert.deepEqual(review.payload.judge, { overall: 5, problems: ["no bird"] });
+  assert.equal(review.summary, "分鏡 95 鏡（聯絡表 4 頁），judge 最低 5/10，3 鏡待修");
+});
+
+test("95 shots drawn on one contact sheet go up as that sheet and the shots left for a fix", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const { ids } = longStoryboard(box, 95, { waiting: [7, 50, 95] });
+  const { review } = await pushStoryboard(box);
+  assert.deepEqual(review.files.map((file) => file.role), ["contact_sheet", "shot_07", "shot_50", "shot_95"]);
+  assert.equal(review.payload.shots.length, 95);
+  assert.deepEqual(review.payload.sheets, [{ role: "contact_sheet", shots: ids }]);
+  assert.equal(review.payload.omitted, 92);
+  assert.equal(review.summary, "分鏡 95 鏡（聯絡表 1 頁），judge 最低 5/10，3 鏡待修");
+});
+
+test("120 shots with 60 left for a fix never send more files than a review takes, and the summary counts the fixes without a picture", async () => {
+  const waiting = Array.from({ length: 60 }, (_, index) => index * 2 + 1);
+  for (const [pages, sheets] of [[true, 5], [false, 1]]) {
+    const box = sandbox("fixture-drama", "drama");
+    longStoryboard(box, 120, { waiting, pages });
+    const { review } = await pushStoryboard(box);
+    const sent = MAX_REVIEW_FILES - sheets;
+    assert.equal(review.files.length, MAX_REVIEW_FILES);
+    assert.deepEqual(review.files.slice(sheets).map((file) => file.role), waiting.slice(0, sent).map(shotRole), "the first shots left for a fix, in shot order");
+    assert.equal(review.payload.shots.length, 120);
+    assert.equal(review.payload.omitted, 120 - sent);
+    assert.equal(review.summary, `分鏡 120 鏡（聯絡表 ${sheets} 頁），judge 最低 5/10，60 鏡待修，其中 ${60 - sent} 鏡沒附單張圖`);
+  }
+});
+
+test("a storyboard that fits sends every keyframe with its pages: one page reads as the contact sheet, two are named and listed", async () => {
+  const one = sandbox("fixture-drama", "drama");
+  longStoryboard(one, 20, { pages: true });
+  const { review: short } = await pushStoryboard(one);
+  assert.equal(short.files.at(-1).role, "contact_sheet");
+  assert.deepEqual(Object.keys(short.payload), ["shots", "judge", "duplicates"]);
+  assert.equal(short.summary, "分鏡 20 鏡，judge 最低 8/10");
+
+  const two = sandbox("fixture-drama", "drama");
+  const { ids } = longStoryboard(two, 30, { pages: true });
+  const { review: long } = await pushStoryboard(two);
+  assert.deepEqual(long.files.map((file) => file.role), [...ids.map((_, index) => shotRole(index + 1)), "contact_sheet_01", "contact_sheet_02"]);
+  assert.deepEqual(long.payload.sheets, [{ role: "contact_sheet_01", shots: ids.slice(0, 24) }, { role: "contact_sheet_02", shots: ids.slice(24) }]);
+  assert.equal(long.payload.omitted, 0);
+  assert.equal(long.summary, "分鏡 30 鏡（聯絡表 2 頁），judge 最低 8/10");
+});
+
+test("pages listed as bare files hold 24 shots each, and a page whose file is gone is left out", () => {
+  const box = sandbox("fixture-drama", "drama");
+  mkdirSync(path.join(box.workdir, "keyframes"), { recursive: true });
+  for (const name of ["a.png", "c.png"]) writeFileSync(path.join(box.workdir, "keyframes", name), png(name));
+  const ids = Array.from({ length: 50 }, (_, index) => `s${index + 1}`);
+  const sheets = storyboardSheets({ contact_sheets: ["keyframes/a.png", "keyframes/b.png", { file: "keyframes/c.png" }] }, ids, box.workdir);
+  assert.deepEqual(sheets.map((sheet) => [sheet.file, sheet.shots.length, sheet.shots[0]]), [["keyframes/a.png", 24, "s1"], ["keyframes/c.png", 2, "s49"]]);
+  assert.deepEqual(storyboardSheets({ shots: {} }, ids, box.workdir), [], "no pages listed and no sheet drawn");
 });
 
 test("the 720p preview of a compilation caps its bitrate; a cut's and the narration's arguments are unchanged", () => {

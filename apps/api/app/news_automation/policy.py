@@ -4,7 +4,7 @@ import hashlib
 import json
 import re
 import unicodedata
-from collections.abc import Iterable, Mapping
+from collections.abc import Collection, Iterable, Mapping
 from datetime import UTC, date, datetime
 from typing import Any, Protocol
 from urllib.parse import urlsplit
@@ -108,15 +108,38 @@ def evidence_sufficient(rows: Iterable[EvidenceLike]) -> bool:
     return evidence_site_count(usable) >= 2 and any(row.is_first_party for row in usable)
 
 
-def auto_evidence_ok(rows: Iterable[EvidenceLike]) -> bool:
-    """Enough evidence to publish without a person: two websites, or one first-party page.
+def auto_evidence_ok(
+    rows: Iterable[EvidenceLike], trusted_sites: Collection[str] = frozenset()
+) -> bool:
+    """Enough evidence to publish without a person: two websites, one first-party page, or
+    one page from a site trusted to stand alone.
 
     The owner decided on 2026-09-25 that an official announcement (the company's own site,
     blog or feed) may be published automatically on its own, reported as that company's
-    statement; any other single website still waits for a person.
+    statement. On 2026-09-28 the owner added the major newsrooms they named (TechCrunch, The
+    Verge, CoinDesk): a source whose config has ``auto_publish_alone`` is one of
+    ``trusted_sites``. Any other single website still waits for a person.
     """
     usable = [row for row in rows if row.role == "evidence"]
-    return evidence_sufficient(usable) or any(row.is_first_party for row in usable)
+    return (
+        evidence_sufficient(usable)
+        or any(row.is_first_party for row in usable)
+        or any(evidence_site(row.url) in trusted_sites for row in usable)
+    )
+
+
+def trusted_alone_sites(sources: Iterable[Any]) -> set[str]:
+    """Websites of the enabled sources whose config says ``auto_publish_alone``."""
+    sites: set[str] = set()
+    for source in sources:
+        if not (source.config_json or {}).get("auto_publish_alone"):
+            continue
+        sites.add(evidence_site(source.url))
+        sites.update(
+            host.casefold().rstrip(".").removeprefix("www.")
+            for host in source.allowed_redirect_hosts_json or []
+        )
+    return sites
 
 
 def transition_allowed(current: str, target: str) -> bool:
@@ -131,6 +154,77 @@ def normalized_title(value: str) -> str:
 def content_fingerprint(*parts: str) -> str:
     encoded = "\n".join(part.strip() for part in parts).encode("utf-8")
     return hashlib.sha256(encoded).hexdigest()
+
+
+# The story-only evidence hash (``NewsEvidence.body_hash``). The version prefix is stored
+# with the value, so a later change to what it covers is read as "no body hash" and falls
+# back to ``content_hash`` instead of holding every waiting candidate.
+BODY_FINGERPRINT_VERSION = "body-v1"
+# Below this much story text the hash would say too little: an empty or tiny body would
+# match on every render and let a real edit elsewhere through. Such pages fall back to the
+# full-region ``content_hash``.
+MIN_BODY_CHARACTERS = 400
+# The story elements must carry at least this share of the region's text. A page that keeps
+# most of its story in loose <div> text would otherwise be judged on a few captions.
+MIN_BODY_COVERAGE = 0.5
+
+
+class StoryLike(Protocol):
+    """``feeds.Article``: what a page's story is made of."""
+
+    @property
+    def headline(self) -> str: ...
+
+    @property
+    def paragraphs(self) -> tuple[str, ...]: ...
+
+    @property
+    def article_body(self) -> str: ...
+
+    @property
+    def region_characters(self) -> int: ...
+
+
+def _story_text(value: str) -> str:
+    return " ".join(unicodedata.normalize("NFKC", value).split())
+
+
+def body_fingerprint(story: StoryLike) -> str | None:
+    """Hash of the story alone, or None when there is too little story to trust it.
+
+    It covers the page headline, the text of each story element (paragraphs, list items,
+    headings, quotes, table cells) and the JSON-LD ``articleBody`` when present, each
+    NFKC-normalised with whitespace collapsed. Rails, relative times, player scripts and
+    bylines outside those elements do not change it; a changed number, sentence or added
+    paragraph does. ``articleBody`` is never enough on its own, because publishers leave
+    it stale after an edit: the visible paragraphs must meet the minimum by themselves.
+    """
+
+    paragraphs = [text for text in (_story_text(item) for item in story.paragraphs) if text]
+    size = sum(len(text) for text in paragraphs)
+    if size < MIN_BODY_CHARACTERS:
+        return None
+    if size < MIN_BODY_COVERAGE * story.region_characters:
+        return None
+    payload = "\n".join(
+        [
+            BODY_FINGERPRINT_VERSION,
+            _story_text(story.headline),
+            *paragraphs,
+            "\x1e",
+            _story_text(story.article_body),
+        ]
+    )
+    digest = hashlib.sha256(payload.encode("utf-8")).hexdigest()
+    return f"{BODY_FINGERPRINT_VERSION}:{digest}"
+
+
+def current_body_hash(value: str | None) -> str | None:
+    """A stored body hash, or None when it is missing or from another version."""
+
+    if value and value.startswith(f"{BODY_FINGERPRINT_VERSION}:"):
+        return value
+    return None
 
 
 def evidence_fingerprint(rows: list[dict[str, Any]]) -> str:

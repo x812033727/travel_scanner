@@ -3,10 +3,11 @@
 // Errors block the pipeline (the CLI exits 1); warnings are for the writer and reviewer to judge.
 // The written-language list is the one the recorded route's video_kit.py uses, so a script that
 // passes one route's check does not fail the other's.
-import { emotionProblems, isDrama, shotProblems, visualTierProblems } from "./drama.mjs";
+import { emotionProblems, EXPLAINER_PRESET, isDrama, shotProblems, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription } from "./metadata.mjs";
 import { DEFAULT_TARGET_MINUTES, LOCALES, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
+import { isStory, storyProblems } from "./story.mjs";
 import { DEFAULT_CPM, chapterList, checkChapters, estimateTimeline, formatClock, frameToSeconds, spokenUnits } from "./timeline.mjs";
 import { metadataStatus, namedWith } from "./translations.mjs";
 
@@ -21,6 +22,9 @@ export const PROCESS_TALK_EN = ["we verified", "according to the official docume
 export const BRIEF_SECTIONS = ["站主觀點", "觀眾看完能做到的事"];
 // A drama's brief is a story bible instead (docs/videos/DRAMA.md); the owner's stance stays.
 export const BRIEF_SECTIONS_DRAMA = ["故事前提", "角色", "站主觀點"];
+// An explainer (docs/videos/so-thats-why/) answers one question with no cast: the question, the
+// one-sentence answer, and the owner's stance.
+export const BRIEF_SECTIONS_EXPLAINER = ["問題", "一句答案", "站主觀點"];
 export const SENTENCE_WARN = 40;
 // An English word counts two units, so 40 is twenty words; spoken English runs to about 25 before it needs a breath.
 export const SENTENCE_WARN_EN = 50;
@@ -59,10 +63,16 @@ export function briefSections(markdown) {
   return sections;
 }
 
-export function checkBrief(markdown, format = "slides") {
+/** The brief sections a video must fill: `preset` is a drama's look preset. */
+export function briefSectionsFor(format = "slides", preset = null) {
+  if (format !== "drama") return BRIEF_SECTIONS;
+  return preset === EXPLAINER_PRESET ? BRIEF_SECTIONS_EXPLAINER : BRIEF_SECTIONS_DRAMA;
+}
+
+export function checkBrief(markdown, format = "slides", preset = null) {
   if (markdown === null || markdown === undefined) return ["brief.md is missing: the planner writes it before the script"];
   const sections = briefSections(markdown);
-  return (format === "drama" ? BRIEF_SECTIONS_DRAMA : BRIEF_SECTIONS).filter((name) => {
+  return briefSectionsFor(format, preset).filter((name) => {
     const body = (sections[name] ?? "").replace(/待填|TODO|TBD/gi, "").replace(/[\s\p{P}\p{S}]/gu, "");
     return body.length === 0;
   }).map((name) => `brief.md needs a non-empty "## ${name}" section`);
@@ -151,7 +161,7 @@ export function billableEstimate(doc) {
 /**
  * Lint one video.
  * context: { lexicon, brief (markdown or null), others: [{ slug, doc }], translations: { locale: json },
- *            pack (the source_guide content pack or null), cpm }
+ *            pack (the source_guide content pack or null), series (series.json or null), cpm }
  */
 /**
  * An episode of a series uses the cast as the setting book has it, word for word, so the
@@ -208,7 +218,7 @@ export function lintVideo(doc, context = {}) {
 
   const lexicon = context.lexicon ?? { schema_version: 1, terms: {} };
   for (const problem of validateLexicon(lexicon)) error(`lexicon.${problem.path}`, problem.message);
-  for (const problem of checkBrief(context.brief, doc.format)) error("brief.md", problem);
+  for (const problem of checkBrief(context.brief, doc.format, doc.look?.preset ?? null)) error("brief.md", problem);
   const drama = isDrama(doc);
   const narration = narrationLocale(doc);
   const english = narration === "en";
@@ -249,6 +259,13 @@ export function lintVideo(doc, context = {}) {
     for (const problem of shots.errors) error(problem.path, problem.message);
     for (const problem of shots.warnings) warn(problem.path, problem.message);
     for (const problem of emotionProblems(doc)) warn(problem.path, problem.message);
+  }
+  // A brand story (docs/videos/STORY.md) is known by its series.json, which the worker writes
+  // when it starts the episode; its rules come on top of the drama's.
+  if (isStory(context.series)) {
+    const story = storyProblems(doc, context.series, timeline);
+    for (const problem of story.errors) error(problem.path, problem.message);
+    for (const problem of story.warnings) warn(problem.path, problem.message);
   }
   const chapters = chapterList(timeline);
   for (const problem of checkChapters(timeline)) {

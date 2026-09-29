@@ -1,0 +1,25 @@
+{
+  "id": "C06",
+  "reviewed": "2026-09-28",
+  "reviewer": "Claude Opus 5.5 (independent fact check); title re-checked and the review bound again by Claude Sonnet 5",
+  "story_sha256": "ee480c08ec63a8d5044dc91c6ff1f4cc35532036e789e9e2b48e1b1d82fa3660",
+  "verdict": "fixed",
+  "sources_opened": 12,
+  "changes": [
+    "「別跟任何人講」查到出處是同事 Jerry Burchfiel 在 1998 年《Forbes ASAP》的回憶（維基百科只是轉引這篇），改標 attributed、拿掉 core，logline、鉤子與要點都改成「據同事回憶」。",
+    "核心說法改放在 Tomlinson 本人說的「不是公司正式指派的小專案」（InformationWeek 引述）與 1971 年結合 SNDMSG 與 CPYNET，並新增網際網路名人堂的官方傳記作為官方來源。",
+    "Internet Society 的網際網路簡史與電腦歷史博物館年表把郵件程式記在 1972 年，跟 1971 年不一致；保留 1971 年，在 claim 與反轉段交代兩種說法。",
+    "生意段的「沒有專利、沒有公司收費、不需簽約、比任何商業產品都擴散得快」找不到來源，改成有來源的擴散過程：Larry Roberts 1972 年寫出郵件管理程式、他改用電子郵件讓研究人員跟著上線、1982 年 RFC 822 把地址格式寫進標準。",
+    "反轉段「外界常以為 ARPANET 是為傳訊息而生」與「連建網路的人都沒料到」沒有來源，改成網際網路簡史寫的「最初動機是共用資源，結果電子郵件成了十多年來最大的網路應用」，1973 年四分之三流量改說是 Hafner 與 Lyon 書裡的說法。",
+    "起點段補上來源撐得住的事實（1967 年進 BBN、1968 年 12 月 BBN 得標做封包交換機、TENEX 是他參與開發的作業系統），CPYNET 從「BBN 手上的小程式」改成「實驗性的檔案傳輸程式」，拿掉「私下」。",
+    "@ 的前史改成來源實際寫的內容：Stabile 找到 1536 年佛羅倫斯商人的信、@ 代表 amphora 容量單位，西班牙 1448 年已有類似符號，1889 年起上了打字機；原本「16 世紀義大利商人用來標記單位價格」把兩件事混在一起（表示單價是 Tomlinson 說的英文用法）。",
+    "「完全不值得記得」這句只有維基百科轉引紐約時報部落格，改標 attributed。",
+    "新增網際網路簡史、電腦歷史博物館年表、RFC 822、RFC 5322、維基百科 At sign 與名人堂官方傳記六個來源。",
+    "現況段改用現行標準 RFC 5322 與電腦歷史博物館「@ 到 1980 年代末才成為全世界標準」的說法，拿掉沒有根據的「原本還想低調藏起來」。",
+    "names 補上 Jerry Burchfiel、Larry Roberts、Katie Hafner、Matthew Lyon、Giorgio Stabile、Francesco Lapi、麻省理工學院、Forbes、Internet Society、電腦歷史博物館等故事裡出現的名字。",
+    "圖像：@ 是字元，依「不畫文字」的規則改成不入畫，縮圖構想改成紙捲與沿電纜飛的信封；人物道具的 teletype 改成通用的 teleprinter；image_notes 補上不畫真實郵件軟體介面與電腦廠牌標誌。",
+    "用語統一成「電子郵件地址」，「沒人交辦」改成「沒人指派」以貼近來源的 not formally assigned。",
+    "標題改寫為「email 裡的 @，來自一個沒有人叫他做的小專案」並補上主題名稱（編輯改的，第二次查核確認「沒人叫他做」是 must_verify 裡標成 core 的說法，來自 Tomlinson 本人受訪的原話，跟 1971／1972 年份的分歧無關）。"
+  ],
+  "notes": "1971 與 1972 的分歧無法用 Tomlinson 本人的原始頁面確認：openmap.bbn.com 已不存在、Raytheon 的 PDF 回 404、Internet Archive 抓不到。1973 年四分之三流量只有維基百科轉引 Hafner 與 Lyon 的書，找不到第二個打得開的來源（衛報、洛杉磯時報、紐約時報部落格、BBC、MoMA 都打不開）。「1971 年被要求讓 SNDMSG 在 TENEX 上執行」維基百科引的是經濟學人（付費牆），InformationWeek 引 Tomlinson 原話只說他在改良 SNDMSG，兩者不衝突但「被要求」這個細節只靠維基百科。名人堂 /inductees/ray-tomlinson/ 目前顯示的是一則 2012 年的時間軸貼文，不是完整的入選者頁面。"
+}

@@ -93,6 +93,14 @@ MODEL_CATALOG: dict[Vendor, tuple[ModelEntry, ...]] = {
     "anthropic": (
         # Opus 5.5 always thinks and rejects temperature and forced tool_choice; every
         # Anthropic path here sends only output_config.format and reads text blocks.
+        # Claude Code takes the same ids, so this list is also what the subscription
+        # accounts offer (video writing stages, and every feature on 訂閱帳號).
+        ModelEntry(
+            "claude-fable-5-1",
+            "Claude Fable 5.1",
+            _ANTHROPIC,
+            "Anthropic 目前最強的模型，成本最高；適合新聞撰稿與查核、完整行程規劃。",
+        ),
         ModelEntry(
             "claude-opus-5-5",
             "Claude Opus 5.5",

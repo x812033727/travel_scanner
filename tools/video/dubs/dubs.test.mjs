@@ -231,6 +231,11 @@ test("dub writes a track per locale, speeds up a tight window, and reports a win
   assert.match(dry.out.stdout, /299000 characters left this month/);
   assert.equal(ffmpeg.calls.length, 0, "a dry run runs no ffmpeg");
 
+  const unchosen = capture(box, server, ffmpeg);
+  assert.equal(await main(["dub", "--slug", box.slug, "--dry-run"], unchosen.ctx), EXIT.ok);
+  for (const locale of ["en", "ja", "ko"]) assert.match(unchosen.out.stdout, new RegExp(`^${locale}: `, "m"));
+  assert.doesNotMatch(unchosen.out.stdout, /^zh-CN: /m, "zh-CN is dubbed only when chosen");
+
   const sheet = capture(box, server, ffmpeg);
   assert.equal(await main(["i18n-sheet", "--slug", box.slug, "--locale", "en"], sheet.ctx), EXIT.ok);
   const worksheet = JSON.parse(readFileSync(path.join(box.workdir, "i18n", "en.todo.json"), "utf8"));

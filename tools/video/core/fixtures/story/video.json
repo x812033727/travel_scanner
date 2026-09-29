@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "slug": "fixture-story",
+  "format": "drama",
+  "target_minutes": [1, 3],
+  "voice": { "provider": "gemini", "name": "Sulafat", "style": "溫和、好奇的說書人語氣，台灣國語，語速適中" },
+  "look": {
+    "preset": "custom",
+    "style": "flat cartoon editorial illustration, clean dark outlines, warm muted palette of cream, teal and brick red, soft paper grain, simple rounded shapes, generic friendly faces",
+    "negative": "text, letters, readable numbers, logos, brand names, watermark, photorealistic, extra fingers, deformed hands, blurry"
+  },
+  "characters": [],
+  "series": { "slug": "brand-stories", "episode": 1, "chapter": 1 },
+  "music": { "prompt": "light pizzicato strings and soft marimba, curious and warm, documentary explainer mood, no vocals", "gain_db": -20, "duck_db": -10 },
+  "subtitles": { "burn_in": true, "style": "drama" },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "結帳嗶一聲，那串條碼是誰發的號碼？",
+    "description": "每天結帳都會聽到嗶的一聲，但那串黑白線條不是隨便印的，而是一組要付費才拿得到的號碼。這一集從一九四八年費城的一個研究生講起，看幾條線怎麼變成全世界共用的號碼簿。",
+    "tags": ["條碼", "商品條碼", "品牌故事", "日常用品"],
+    "video_id": null
+  },
+  "thumbnail": { "template": "thumb", "data": { "headline": "條碼是誰發的？", "tag": "品牌故事", "shot": "sand-lines" } },
+  "sources": [
+    { "title": "Barcode（Wikipedia）", "url": "https://en.wikipedia.org/wiki/Barcode", "checked_on": "2026-09-28" },
+    { "title": "Universal Product Code（Wikipedia）", "url": "https://en.wikipedia.org/wiki/Universal_Product_Code", "checked_on": "2026-09-28" },
+    { "title": "GS1（Wikipedia）", "url": "https://en.wikipedia.org/wiki/GS1", "checked_on": "2026-09-28" }
+  ],
+  "scenes": [
+    {
+      "id": "checkout-beep",
+      "chapter": "嗶一聲的背後",
+      "template": "shot",
+      "data": {
+        "prompt": "a friendly cashier at a supermarket checkout sliding a cereal box over a glowing red scanner window, a short queue of shoppers with baskets behind, warm evening light, the stripe pattern on the box catching the red glow",
+        "camera": "slow push in toward the scanner window",
+        "visual": "still"
+      },
+      "lines": [
+        { "id": "hq4t", "text": "結帳時嗶的一聲，收銀機就知道你買了什麼。" },
+        { "id": "mv8c", "text": "那串黑白線條，其實是一組要付費的號碼。" }
+      ]
+    },
+    {
+      "id": "number-owner",
+      "template": "shot",
+      "data": {
+        "prompt": "a giant open ledger floating above rows of shop shelves, every page lined with rows of plain black and white stripe patterns, tiny clerks on ladders stamping new pages",
+        "camera": "slow pan left across the pages",
+        "visual": "still"
+      },
+      "lines": [
+        { "id": "p3xa", "text": "品牌每年付費，才拿得到全世界不重複的號碼。" },
+        { "id": "r6kd", "text": "今天就來看，幾條線怎麼變成一門生意。" }
+      ]
+    },
+    {
+      "id": "grad-student",
+      "chapter": "沙灘上的點和線",
+      "template": "shot",
+      "data": {
+        "prompt": "a 1940s university corridor with tall windows, a young graduate student in a tweed jacket with notebooks under his arm, pausing to overhear two men in suits talking by an office door",
+        "camera": "slow pan right along the corridor",
+        "visual": "still",
+        "transition": "dissolve"
+      },
+      "lines": [
+        { "id": "t9we", "text": "一九四八年，費城有個研究生叫席爾佛。" },
+        { "id": "y2fb", "text": "他聽說有家超市，想讓結帳自動記下商品。" }
+      ]
+    },
+    {
+      "id": "sand-lines",
+      "template": "shot",
+      "data": {
+        "prompt": "a young man in 1940s summer clothes kneeling on a quiet beach, drawing long parallel lines in the sand with four fingers, a row of dots and dashes above them, gentle waves and a bright afternoon sky",
+        "camera": "tilt down from the sky to the lines in the sand",
+        "visual": "still"
+      },
+      "lines": [
+        { "id": "c5nz", "text": "他的朋友伍德蘭，坐在海灘上想辦法。" },
+        { "id": "g8sm", "text": "他把摩斯電碼的點和線，在沙上往下拉長。" }
+      ]
+    },
+    {
+      "id": "patent-desk",
+      "chapter": "等了二十多年的點子",
+      "template": "shot",
+      "data": {
+        "prompt": "two young inventors at a cluttered wooden desk in 1949, a large technical drawing of stripes and a round ring pattern spread between them, a desk lamp and an envelope ready to mail",
+        "camera": "slow push in on the drawing",
+        "visual": "still"
+      },
+      "lines": [
+        { "id": "j4pv", "text": "兩人在一九四九年申請了專利。" },
+        { "id": "w7rq", "text": "三年後，專利真的下來了。" }
+      ]
+    },
+    {
+      "id": "waiting-years",
+      "template": "shot",
+      "data": {
+        "prompt": "a dusty workshop shelf holding a bulky early reading machine under a cloth, a wall calendar shedding its pages, afternoon dust floating in a beam of light",
+        "camera": "static frame with a gentle drift",
+        "visual": "still"
+      },
+      "lines": [
+        { "id": "e3hy", "text": "可是那個年代，還沒有又快又便宜的機器讀得動它。" },
+        { "id": "n6ub", "text": "這個點子一放，就是二十多年。" }
+      ]
+    },
+    {
+      "id": "first-scan",
+      "chapter": "一本全世界的號碼簿",
+      "template": "shot",
+      "data": {
+        "prompt": "a 1970s supermarket checkout, a cashier holding a small pack of chewing gum over a new glass scanner window, store staff and a photographer gathered around to watch",
+        "camera": "tilt up from the scanner to the faces",
+        "visual": "still",
+        "transition": "dissolve"
+      },
+      "lines": [
+        { "id": "s2ok", "text": "一九七四年六月，俄亥俄州一家超市掃了第一件商品。" },
+        { "id": "x5ld", "text": "那是一包口香糖。" }
+      ]
+    },
+    {
+      "id": "number-book",
+      "template": "shot",
+      "data": {
+        "prompt": "a friendly clerk at a huge wooden card catalogue handing out small cards printed with stripe patterns to a queue of a baker, a farmer and a toy maker",
+        "camera": "pull back to show the whole queue",
+        "visual": "still"
+      },
+      "lines": [
+        { "id": "a9ti", "text": "條碼前面那一段，是廠商自己的代碼。" },
+        { "id": "f4gw", "text": "代碼由國際條碼組織發出，廠商每年付費續用。" }
+      ]
+    },
+    {
+      "id": "square-codes",
+      "chapter": "從線條到方塊",
+      "template": "shot",
+      "data": {
+        "prompt": "a modern checkout counter, a hand holding a snack box printed with a small square dot pattern beside a row of stripes, a scanner window glowing, soft daylight",
+        "camera": "slow pan right past the counter",
+        "visual": "still"
+      },
+      "lines": [
+        { "id": "u7ce", "text": "現在，零售業正準備讓收銀機也讀得懂二維碼。" },
+        { "id": "z3mj", "text": "一個小方塊，能裝下多很多的資訊。" }
+      ]
+    },
+    {
+      "id": "shared-book",
+      "template": "shot",
+      "data": {
+        "prompt": "a city at dusk seen from above, thin glowing threads running from shops, trucks and warehouses to one enormous open book floating in the sky",
+        "camera": "slow crane up over the city",
+        "visual": "still"
+      },
+      "lines": [
+        { "id": "d8vo", "text": "條碼真正厲害的，不是那幾條線。" },
+        { "id": "q5ys", "text": "而是一本大家都願意付費加入的號碼簿。" }
+      ]
+    },
+    {
+      "id": "wrap",
+      "template": "outro",
+      "data": { "title": "下一個故事：另一個天天在用的標準", "cta": "參考資料在說明欄" },
+      "lines": [
+        { "id": "l2ax", "text": "所以嗶的那一聲，其實是在查一本全世界共用的號碼簿。" },
+        { "id": "i6kr", "text": "下一個故事，我們聊另一個天天在用、卻很少人注意的標準。" }
+      ]
+    }
+  ]
+}

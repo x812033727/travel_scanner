@@ -8,7 +8,7 @@ from redis.asyncio import Redis
 from sqlalchemy import and_, func, not_, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.ai.subscription import FALLBACK_CODES
+from app.ai.subscription import WAIT_CODES
 from app.config import Settings
 from app.guides.models import (
     GuideArticle,
@@ -35,6 +35,7 @@ from app.news_automation.models import (
     NewsCandidate,
     NewsEvidence,
     NewsPipelineRun,
+    NewsSource,
 )
 from app.news_automation.policy import (
     EVIDENCE_REFRESH_MARKER,
@@ -50,6 +51,7 @@ from app.news_automation.policy import (
     evidence_site_count,
     hard_policy_problems,
     site_additions_removed,
+    trusted_alone_sites,
     with_crypto_disclaimer,
 )
 from app.news_automation.schemas import Vertical
@@ -69,7 +71,7 @@ SUBSCRIPTION_PAUSED = "news_subscription_paused"
 # What a candidate says while Jev's daily call budget, counted per UTC day
 # (app.ai.jev.consume_jev_call), is spent. The orphan sweep leaves it until that day ends.
 JEV_QUOTA_PAUSED = "news_jev_quota_paused"
-SUBSCRIPTION_WAITS = FALLBACK_CODES
+SUBSCRIPTION_WAITS = WAIT_CODES
 ClaimOutcome = Literal["claimed", "disabled", "skipped", "deferred"]
 # RQ kills a candidate job after 60 minutes; nothing legitimate is still in flight after 70.
 STALE_AFTER = timedelta(minutes=70)
@@ -235,14 +237,17 @@ async def _auto_publishable(
     call on all five locales guard what goes out on its own.
     """
     fresh_settings = await settings_row(session)
-    return bool(
+    if not (
         fresh_settings.enabled
         and fresh_settings.mode == "automatic"
         and getattr(fresh_settings, f"auto_publish_{candidate.vertical}")
         and candidate.would_publish
-        # Two websites, or the company's own announcement; anything else waits for a person.
-        and auto_evidence_ok(usable)
-    )
+    ):
+        return False
+    sources = await session.scalars(select(NewsSource).where(NewsSource.enabled.is_(True)))
+    # Two websites, the company's own announcement, or a newsroom the owner trusts to stand
+    # alone; anything else waits for a person.
+    return auto_evidence_ok(usable, trusted_alone_sites(sources))
 
 
 def _source_locked(document: GuideDocument, evidence: list[NewsEvidence]) -> GuideDocument:

@@ -65,19 +65,60 @@ CODEX_RESULT_SCHEMA = {
     "additionalProperties": False,
 }
 # How the CLI says a subscription window is spent (probed 2026-09-24: "You've hit your weekly
-# limit"); a run that ends like this is a pause, not a failure.
-LIMIT_MESSAGE = re.compile(r"hit your (?:weekly |5-hour |session |usage )?limit|usage limit", re.I)
+# limit"); a run that ends like this is a pause, not a failure. Claude Code also has limits per
+# model family ("You've hit your Opus limit", "... Sonnet limit"), which the pattern once missed:
+# such a run failed instead of passing to the next account.
+LIMIT_MESSAGE = re.compile(
+    r"hit your (?:[a-z0-9-]+ ){0,2}limit|usage limit|(?:weekly|5-hour|session) limit reached",
+    re.I,
+)
+# The model families with a limit of their own. Such a limit rests the account for runs of that
+# family only: the session and weekly windows still have room for the other models.
+MODEL_FAMILIES = ("fable", "opus", "sonnet", "haiku")
+FAMILY_LIMIT = re.compile(rf"hit your ({'|'.join(MODEL_FAMILIES)}) (?:weekly )?limit", re.I)
+# The rest that applies to every model on an account.
+ANY_MODEL = "*"
+LIMIT_NOTICE_CHARS = 400
 
 
 class RunRefused(Exception):
     """Why no run happened: the status and code the API should see."""
 
-    def __init__(self, status: int, code: str, detail: str, extra: dict[str, Any] | None = None):
+    def __init__(
+        self,
+        status: int,
+        code: str,
+        detail: str,
+        extra: dict[str, Any] | None = None,
+        *,
+        family: str = ANY_MODEL,
+    ):
         super().__init__(detail)
         self.status = status
         self.code = code
         self.detail = detail
         self.extra = extra or {}
+        # For a spent account: the model family the limit covers, or ANY_MODEL.
+        self.family = family
+
+
+def model_family(model: str) -> str | None:
+    """The family a model id or alias belongs to (``claude-fable-5-1`` -> ``fable``)."""
+    lowered = model.lower()
+    return next((family for family in MODEL_FAMILIES if family in lowered), None)
+
+
+def limit_refusal(slot: str, *messages: str) -> RunRefused | None:
+    """The pause for a run whose output says a usage limit was hit, or None."""
+    text = "\n".join(messages)
+    if not LIMIT_MESSAGE.search(text):
+        return None
+    match = FAMILY_LIMIT.search(text)
+    family = match.group(1).lower() if match else ANY_MODEL
+    scope = f"its {match.group(1)} limit" if match else "its usage limit"
+    return RunRefused(
+        429, "subscription_quota_paused", f"account {slot} hit {scope}", family=family
+    )
 
 
 @dataclass(frozen=True)
@@ -252,8 +293,11 @@ def run_claude(config: AgentConfig, slot: str, request: RunRequest) -> dict[str,
         shutil.rmtree(workdir, ignore_errors=True)
     result = parse_json_object(completed.stdout)
     text = result.get("result") if result else None
-    if LIMIT_MESSAGE.search(str(text or "")) or LIMIT_MESSAGE.search(completed.stderr):
-        raise RunRefused(429, "subscription_quota_paused", f"account {slot} hit its usage limit")
+    # The CLI's limit notice is one line in place of the answer; a long answer that merely
+    # mentions a limit (a news story about AI plans) is an answer.
+    notice = str(text or "") if len(str(text or "")) <= LIMIT_NOTICE_CHARS else ""
+    if (limit := limit_refusal(slot, notice, completed.stderr)) is not None:
+        raise limit
     if (
         completed.returncode != 0
         or result is None
@@ -344,10 +388,11 @@ def run_codex(config: AgentConfig, slot: str, request: RunRequest) -> dict[str, 
     finals = [item.get("text") for item in items if item.get("type") == "agent_message"]
     answer = parse_json_object(finals[-1]) if finals and isinstance(finals[-1], str) else None
     text = answer.get("text") if answer else None
-    if LIMIT_MESSAGE.search(completed.stderr) or any(
-        LIMIT_MESSAGE.search(str(event.get("message", ""))) for event in events
-    ):
-        raise RunRefused(429, "subscription_quota_paused", f"account {slot} hit its usage limit")
+    limit = limit_refusal(
+        slot, completed.stderr, *(str(event.get("message", "")) for event in events)
+    )
+    if limit is not None:
+        raise limit
     if completed.returncode or not isinstance(text, str) or not text:
         raise CliError(f"codex run failed: exit {completed.returncode}")
     usage = next(

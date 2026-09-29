@@ -2,21 +2,24 @@
 
 import { CheckCircle2, Copy, Download, XCircle } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { type FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import { type FormEvent, type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { AdminStatusPill } from "@/components/admin-ui";
+import { ShortsEvidence, ShortsPlayer } from "@/components/admin-video-shorts-player";
 import { Button } from "@/components/community/ui";
 import { api } from "@/lib/api";
 
 // What the video pipeline reports (apps/api/app/video_reviews/schemas.py). Payloads come from
 // tools/video/review; the page reads them defensively, since an older tool may send less.
 // look and storyboard are the drama format's gates (docs/videos/DRAMA.md): the character sheets
-// the owner picks one of, and the keyframes of every shot before any clip is paid for. dubs is a
-// batch of finished dub tracks (docs/videos/DUBS.md) the owner downloads and uploads in Studio.
+// the owner picks one of, and the keyframes of every shot before any clip is paid for. languages
+// is a batch of the languages the owner chose after the final cut (docs/videos/LANGUAGES.md): for
+// each, its titles and descriptions, captions and dub track; dubs is what that gate was called when
+// it carried dub tracks alone (docs/videos/DUBS.md), kept so older rows still read.
 // This file holds the review card and the gate bodies, shared by the tutorial list, the drama
 // series page and any page that shows a video's reviews; the pages themselves import it, so it
 // must not import them back.
 // script is an episode's screenplay, read before any image or clip is paid for (docs/videos/SERIES.md).
-export type Gate = "outline" | "script" | "look" | "audio" | "storyboard" | "final" | "publish" | "dubs";
+export type Gate = "outline" | "script" | "look" | "audio" | "storyboard" | "final" | "publish" | "languages" | "dubs";
 export type Status = "pending" | "approved" | "rejected" | "superseded";
 export type ReviewFile = { role: string; sha256: string; size: number; content_type: string };
 export type Review = {
@@ -25,6 +28,17 @@ export type Review = {
   decided_at: string | null; created_at: string;
 };
 export type ChecklistItem = { key: string; label: string; done: boolean };
+// The languages a video can get on top of Traditional Chinese, in the page's order, and the three
+// parts each one is made of (docs/videos/LANGUAGES.md): titles and descriptions, closed captions,
+// a dub track. A dub track is timed with its captions, so choosing it means choosing them too.
+export const LOCALES = ["en", "ja", "ko", "zh-CN"] as const;
+export type Locale = (typeof LOCALES)[number];
+export const LOCALE_PARTS = ["metadata", "captions", "dub"] as const;
+export type LocalePart = (typeof LOCALE_PARTS)[number];
+export type LocaleChoice = Partial<Record<LocalePart, boolean>>;
+// Where a chosen part stands, from the server: not reported yet, made, given up on (with the
+// worker's reason), or, for a dub track, uploaded by the owner in Studio.
+export type LanguagePart = { state: "working" | "ready" | "skipped" | "uploaded" | string; reason?: string | null };
 export type ProjectSummary = {
   slug: string; title: string; stage: string; checklist: ChecklistItem[];
   youtube_video_id: string | null; last_synced_at: string; pending: number;
@@ -33,8 +47,21 @@ export type ProjectSummary = {
   youtube_publish_at?: string | null; publish_approved_at?: string | null;
   dropped_at?: string | null; dropped_note?: string | null;
   retry_request_id?: string | null; retry_acknowledged_id?: string | null;
-  format?: "slides" | "drama"; media_usd?: number; clip_seconds?: number;
-  // The languages the owner ticked to dub this video in (docs/videos/DUBS.md).
+  format?: "slides" | "drama" | "shorts"; media_usd?: number; clip_seconds?: number;
+  // A Short (docs/videos/SHORTS.md) is a video whose content line is set: its series, the video it
+  // was cut from, where it stands as the Shorts tab groups them, the slot it holds, and when the
+  // site found it gone from YouTube. All absent from an API older than the Shorts tab.
+  shorts_line?: "lab" | "cut" | "drama" | null; shorts_series?: string | null; source_slug?: string | null;
+  shorts_state?: "making" | "needs_you" | "library" | "slotted" | "scheduled" | "published" | "missed" | "dropped" | null;
+  slot_at?: string | null; youtube_removed_at?: string | null;
+  // The languages the owner chose after the final cut and what of each, when they first decided,
+  // where each chosen part stands, and the server's verdict on whether the video may be scheduled
+  // (docs/videos/LANGUAGES.md); all absent from an API older than the language panel, which
+  // only knew the dub languages.
+  locales?: Partial<Record<string, LocaleChoice>>;
+  locales_decided_at?: string | null;
+  languages?: Partial<Record<string, Partial<Record<string, LanguagePart>>>>;
+  ready_to_upload?: boolean;
   dub_locales?: string[];
   series_slug?: string | null; episode_number?: number | null;
   // A binge series' compilation (docs/videos/BINGE.md): series_slug set, no episode number, and
@@ -52,8 +79,6 @@ export type YoutubeSync = {
   steps: YoutubeSyncStep[]; progress: { sent: number; total: number } | null; error: string | null;
   queued_at?: string | null; started_at: string | null; finished_at: string | null;
 };
-// The languages a video can be dubbed in, in the page's order; zh-TW is the original.
-export const DUB_LOCALES = ["en", "ja", "ko", "zh-CN"] as const;
 
 // How often a list or a page reads the site again while open: the worker moves a video every
 // few minutes, so this is enough to watch a step land without reloading.
@@ -100,10 +125,44 @@ export const jevPicked = (review: Review) => review.gate === "outline" && review
 export const isBlocked = (project: ProjectSummary) => project.stage === "blocked" || project.checklist.some((item) => item.key === "blocked" && !item.done);
 /** A run to YouTube that failed, or that stopped when the site restarted: the owner retries it. */
 export const youtubeSyncStuck = (sync: YoutubeSync | null | undefined) => Boolean(sync && (sync.status === "failed" || sync.interrupted));
-/** What waits for the owner: a decision, a video that stopped, or a YouTube run that did (docs/videos/HANDS-OFF.md). */
-export const needsOwner = (project: ProjectSummary) => !project.dropped_at && (project.pending > 0 || isBlocked(project) || youtubeSyncStuck(project.youtube_sync));
-/** The upload confirmation is approved and the owner has not pasted a YouTube address yet. */
-export const readyToUpload = (project: ProjectSummary) => !project.dropped_at && !project.youtube_video_id && Boolean(project.publish_approved_at);
+/**
+ * What waits for the owner: a decision, a video that stopped (docs/videos/HANDS-OFF.md), a YouTube
+ * run that did, or a finished cut whose languages they have not chosen yet (docs/videos/LANGUAGES.md).
+ */
+export const needsOwner = (project: ProjectSummary) => !project.dropped_at && (project.pending > 0 || isBlocked(project) || youtubeSyncStuck(project.youtube_sync) || publishState(project) === "deciding");
+/** A summary from an API with the language panel carries the server's verdict on scheduling. */
+const knowsLanguages = (project: ProjectSummary) => typeof project.ready_to_upload === "boolean";
+/**
+ * The video may be scheduled: the server says so (its upload confirmation approved, its languages
+ * decided and every chosen part made), and the owner has not pasted a YouTube address yet. An
+ * older API has no languages, so its verdict is the approved upload confirmation alone.
+ */
+export const readyToUpload = (project: ProjectSummary) => !project.dropped_at && !project.youtube_video_id
+  && (knowsLanguages(project) ? Boolean(project.ready_to_upload) : Boolean(project.publish_approved_at));
+/** The final cut is approved: the checklist says so, or something that comes after it already happened. */
+export const finalApproved = (project: ProjectSummary & { reviews?: Review[] }) =>
+  project.checklist.some((item) => item.key === "final_video_approved" && item.done)
+  || Boolean(project.publish_approved_at || project.locales_decided_at || project.youtube_video_id)
+  || (project.reviews ?? []).some((review) => review.gate === "final" && review.status === "approved");
+
+export type PublishState = "deciding" | "making" | "ready" | "scheduled" | "published";
+/**
+ * Where the video is on its way to YouTube (docs/videos/LANGUAGES.md, the publish flow's five
+ * states), or null before the final cut is approved and once the video is dropped: the owner has
+ * still to choose its languages, the languages are in the making (so the upload can wait to be
+ * scheduled), it may be uploaded, it is scheduled, or it is public. An older API knows only
+ * "ready" and the two YouTube states. A Short has none of the five: it chooses no languages of
+ * its own, and where it stands is its shorts_state, which the server works out
+ * (docs/videos/SHORTS.md) and the page shows in the same place.
+ */
+export function publishState(project: ProjectSummary, now = Date.now()): PublishState | null {
+  if (project.dropped_at || project.shorts_line) return null;
+  if (project.youtube_video_id) return project.youtube_publish_at && Date.parse(project.youtube_publish_at) > now ? "scheduled" : "published";
+  if (!knowsLanguages(project)) return readyToUpload(project) ? "ready" : null;
+  if (!finalApproved(project)) return null;
+  if (!project.locales_decided_at) return "deciding";
+  return project.ready_to_upload ? "ready" : "making";
+}
 
 /** Whether the store has let go of this video's mp4 (the same rule as the server's prune). */
 export function mp4Retired(project: ProjectSummary, now = Date.now()): boolean {
@@ -269,8 +328,11 @@ export function JudgeLine({ value }: { value: unknown }) {
   return <span className="text-sm leading-6 text-[var(--muted)]">{t("judgeScore", { score: judge.overall })}{problems.length > 0 && `：${problems.join("；")}`}</span>;
 }
 
+// A picture of a video that is sixteen by nine is cropped to that; one of a Short is shown whole.
+const pictureClass = (vertical: boolean) => (vertical ? "mx-auto aspect-[9/16] w-full max-w-[14rem] rounded-xl bg-black object-contain" : "aspect-video w-full rounded-xl object-cover");
+
 /** The look gate: one character's candidate sheets, the owner picks the one every shot is drawn from. */
-function LookBody({ slug, review, choice, onChoice, disabled }: { slug: string; review: Review; choice: string; onChoice: (key: string) => void; disabled: boolean }) {
+function LookBody({ slug, review, choice, onChoice, disabled, vertical }: { slug: string; review: Review; choice: string; onChoice: (key: string) => void; disabled: boolean; vertical: boolean }) {
   const t = useTranslations("admin.videoReviews");
   const character = record(review.payload.character);
   const options = list(review.payload.options).map(record).filter((option) => text(option.key));
@@ -286,7 +348,7 @@ function LookBody({ slug, review, choice, onChoice, disabled }: { slug: string; 
         return <label key={key} className={`grid gap-2 rounded-2xl border p-3 ${selected ? "border-[var(--teal)] bg-[var(--paper)]" : "border-[var(--line)]"}`}>
           {/* A private, session-bound preview: the image optimizer cannot fetch it. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          {src && <img src={src} alt={t("candidate", { key })} className="aspect-video w-full rounded-xl object-cover" loading="lazy" />}
+          {src && <img src={src} alt={t("candidate", { key })} className={pictureClass(vertical)} loading="lazy" />}
           <span className="flex items-center gap-3 font-bold"><input type="radio" name={`look-${review.id}`} value={key} checked={selected} onChange={() => onChoice(key)} />{t("candidate", { key })}{suggested === key && <span className="text-sm font-semibold text-[var(--teal)]">{t("suggested")}</span>}</span>
           <JudgeLine value={option.judge} />
         </label>;
@@ -295,30 +357,40 @@ function LookBody({ slug, review, choice, onChoice, disabled }: { slug: string; 
   </div>;
 }
 
-/** The storyboard gate: every shot's keyframe with the judge's verdict, and the contact sheet. */
-function StoryboardBody({ slug, review }: { slug: string; review: Review }) {
+/** The storyboard gate: uploaded keyframes and every contact-sheet page, with the judge's verdict. */
+function StoryboardBody({ slug, review, vertical }: { slug: string; review: Review; vertical: boolean }) {
   const t = useTranslations("admin.videoReviews");
   const shots = list(review.payload.shots).map(record);
   const duplicates = list(review.payload.duplicates).map(record);
-  const sheet = fileUrl(slug, fileFor(review, "contact_sheet"));
+  const metadata = list(review.payload.sheets).map(record);
+  // Long boards upload numbered sheets instead of most individual keyframes. Only
+  // attached files are renderable; optional payload metadata supplies the shot mapping.
+  const sheets = review.files
+    .filter((file, index, files) => /^contact_sheet(?:_\d+)?$/.test(file.role) && files.findIndex(other => other.role === file.role) === index)
+    .sort((a, b) => a.role.localeCompare(b.role, "en", { numeric: true }))
+    .map(file => ({ file, shots: metadata.filter(page => text(page.role) === file.role).flatMap(page => list(page.shots).map(text)) }));
+  const sheetLabel = (index: number) => sheets.length === 1 ? t("contactSheet") : `${t("contactSheet")} ${index + 1} / ${sheets.length}`;
   return <div className="grid gap-4">
     <p className="leading-7"><strong>{t("checks")}</strong> <JudgeLine value={review.payload.judge} /></p>
     {duplicates.length > 0 && <p className="text-sm leading-6 text-[var(--muted)]">{t("lookAlike", { pairs: duplicates.map((pair) => `${text(pair.a)}／${text(pair.b)}`).join("、") })}</p>}
     {shots.length > 0 && <ol className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">{shots.map((shot, index) => {
       const src = fileUrl(slug, fileFor(review, text(shot.file_role)));
+      const page = sheets.findIndex(sheet => sheet.shots.includes(text(shot.id)));
       return <li key={text(shot.id) || index} className={`grid gap-2 rounded-2xl border p-3 ${shot.needs_review === true ? "border-amber-600" : "border-[var(--line)]"}`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        {src && <img src={src} alt={text(shot.id)} className="aspect-video w-full rounded-xl object-cover" loading="lazy" />}
+        {src && <img src={src} alt={text(shot.id)} className={pictureClass(vertical)} loading="lazy" />}
+        {!src && page >= 0 && <a href={fileUrl(slug, sheets[page].file)} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-[var(--teal)] underline underline-offset-4">{sheetLabel(page)}</a>}
         <span className="font-bold">{index + 1}. {text(shot.id)}{text(shot.chapter) && <span className="text-sm font-normal text-[var(--muted)]"> · {text(shot.chapter)}</span>}{typeof shot.seconds === "number" && <span className="text-sm font-normal text-[var(--muted)]"> · {t("seconds", { seconds: shot.seconds })}</span>}</span>
         {shot.needs_review === true && <span className="text-sm font-semibold text-amber-800">{t("shotNeedsReview")}</span>}
         <span className="text-sm leading-6">{text(shot.prompt)}</span>
         <JudgeLine value={shot.judge} />
       </li>;
     })}</ol>}
-    {sheet && <details className="rounded-2xl border border-[var(--line)] p-4"><summary className="cursor-pointer font-bold">{t("contactSheet")}</summary>
+    {sheets.map((sheet, index) => <details key={sheet.file.role} className="rounded-2xl border border-[var(--line)] p-4"><summary className="cursor-pointer font-bold">{sheetLabel(index)}</summary>
+      {sheet.shots.length > 0 && <p className="mt-3 break-words text-xs text-[var(--muted)]">{[...new Set(sheet.shots)].join(" · ")}</p>}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={sheet} alt={t("contactSheet")} className="mt-3 w-full rounded-xl" loading="lazy" />
-    </details>}
+      <img src={fileUrl(slug, sheet.file)} alt={sheetLabel(index)} className="mt-3 w-full rounded-xl" loading="lazy" />
+    </details>)}
   </div>;
 }
 
@@ -448,6 +520,8 @@ export function UploadPackage({ slug, review, mp4Gone = false }: { slug: string;
     return [];
   });
   const facts = [minutes !== null && t("minutes", { minutes }), chapters !== null && t("packageChapters", { count: chapters }), locales.length > 0 && t("packageLocales", { count: locales.length })].filter(Boolean);
+  // A Short carries two titles, the one in use and a spare (tools/video/shorts/package.mjs).
+  const spare = list(zh.titles).map(text).filter((title) => title && title !== text(zh.title));
   const hasText = Boolean(text(zh.title) || text(zh.description) || tags.length > 0);
   if (facts.length === 0 && downloads.length === 0 && !mp4Gone && !hasText && typeof disclosure.synthetic !== "boolean") return null;
   return <div className="grid gap-4" aria-label={t("uploadPackage")}>
@@ -461,6 +535,7 @@ export function UploadPackage({ slug, review, mp4Gone = false }: { slug: string;
     </div>}
     {hasText && <div className="grid gap-3">
       {text(zh.title) && <CopyField label={t("zhTitle")} value={text(zh.title)} rows={1} />}
+      {spare.map((title) => <CopyField key={title} label={t("zhTitleSpare")} value={title} rows={1} />)}
       {text(zh.description) && <CopyField label={t("zhDescription")} value={text(zh.description)} rows={6} />}
       {tags.length > 0 && <CopyField label={t("zhTags")} value={tags.join(", ")} rows={2} />}
     </div>}
@@ -514,7 +589,7 @@ export function UploadedForm({ slug, onLinked }: { slug: string; onLinked: () =>
   </form>;
 }
 
-function FinalBody({ slug, review, mp4Gone }: { slug: string; review: Review; mp4Gone: boolean }) {
+function FinalBody({ slug, review, mp4Gone, vertical }: { slug: string; review: Review; mp4Gone: boolean; vertical: boolean }) {
   const t = useTranslations("admin.videoReviews");
   const checks = record(review.payload.checks);
   const problems = list(checks.problems).map(text).filter(Boolean);
@@ -523,9 +598,15 @@ function FinalBody({ slug, review, mp4Gone }: { slug: string; review: Review; mp
   const video = mp4Gone ? undefined : fileUrl(slug, fileFor(review, "preview"));
   const sheet = fileUrl(slug, fileFor(review, "contact_sheet"));
   const poster = fileUrl(slug, fileFor(review, "thumbnail"));
+  // What an experiment's claims rest on (tools/video/shorts/push.mjs names each file evidence_<path>).
+  const evidence = review.files.filter((file) => file.role.startsWith("evidence_"));
+  const titles = list(review.payload.titles).map(text).filter(Boolean);
   return <div className="grid gap-4">
-    {video && <label className="grid gap-2 font-bold">{t("preview")}<video controls preload="metadata" src={video} poster={poster} className="aspect-video w-full rounded-xl bg-black" /></label>}
+    {video && vertical && <ShortsPlayer src={video} poster={poster} />}
+    {video && !vertical && <label className="grid gap-2 font-bold">{t("preview")}<video controls preload="metadata" src={video} poster={poster} className="aspect-video w-full rounded-xl bg-black" /></label>}
+    {titles.length > 0 && <div><p className="font-bold">{t("titles")}</p><ol className="mt-2 grid gap-1 text-sm leading-6">{titles.map((title, index) => <li key={title} className="flex flex-wrap items-center gap-2"><span>{title}</span><AdminStatusPill status={index === 0 ? "active" : "inactive"}>{index === 0 ? t("titleInUse") : t("titleSpare")}</AdminStatusPill></li>)}</ol></div>}
     <CheckItems report={review.payload.qa} title={t("qaTitle")} />
+    <ShortsEvidence files={evidence} urlOf={(file) => fileUrl(slug, file)} />
     {Object.keys(checks).length > 0 && <p className="leading-7"><strong>{t("checks")}</strong>{" "}{checks.ok === true ? t("checksOk") : problems.join("; ")}</p>}
     {chapters.length > 0 && <div><p className="font-bold">{t("chapters")}</p><ol className="mt-2 grid gap-1 text-sm">{chapters.map((chapter, index) => <li key={index}><span className="font-mono">{text(chapter.time)}</span> {text(chapter.title)}</li>)}</ol></div>}
     {sheet && <details className="rounded-2xl border border-[var(--line)] p-4"><summary className="cursor-pointer font-bold">{t("contactSheet")}</summary>
@@ -549,25 +630,59 @@ function PublishBody({ slug, review, mp4Gone }: { slug: string; review: Review; 
   </div>;
 }
 
+// The file a languages review carries for each part of a language, by role prefix (docs/videos/LANGUAGES.md).
+const PART_ROLES: Record<LocalePart, string> = { metadata: "description_", captions: "captions_", dub: "dub_" };
+
+/** A part's state label, for the review card and the language panel: the known four, or the word as sent. */
+export function partStateLabel(t: ReturnType<typeof useTranslations>, state: string, reason?: string | null): string {
+  if (state === "skipped") return reason ? t("partSkipped", { reason }) : t("partStates.skipped");
+  return state === "working" || state === "ready" || state === "uploaded" ? t(`partStates.${state}`) : state;
+}
+
 /**
- * The dub tracks the worker finished (docs/videos/DUBS.md): one row per language with its state,
- * the reason when it was given up on, and the track to download for YouTube Studio's Languages page.
+ * A batch of languages the worker finished (docs/videos/LANGUAGES.md): for every language, where
+ * each chosen part stands (titles and descriptions, captions, dub track), the reason when one was
+ * given up on, and the file to download; when a dub track is ready, the steps on YouTube Studio's
+ * Languages page (docs/videos/DUBS.md, what the owner does), since only the owner can upload it. An
+ * older dubs review, one track per language with its status at the top level, reads the same way.
  */
-function DubsBody({ slug, review }: { slug: string; review: Review }) {
+function LanguagesBody({ slug, review }: { slug: string; review: Review }) {
   const t = useTranslations("admin.videoReviews");
-  const locales = Object.entries(record(review.payload.locales)).map(([locale, value]) => [locale, record(value)] as const);
+  const reported = record(review.payload.locales);
+  const known: readonly string[] = LOCALES;
+  const locales = [...LOCALES.filter((locale) => locale in reported), ...Object.keys(reported).filter((locale) => !known.includes(locale))];
   if (!locales.length) return null;
-  return <ul className="grid gap-2 text-sm leading-6">{locales.map(([locale, entry]) => {
-    const status = text(entry.status);
-    const name = text(entry.file) || `${locale}.${text(entry.format) || "m4a"}`;
-    const href = fileUrl(slug, fileFor(review, text(entry.file_role)));
-    const reason = status === "skipped" ? text(entry.reason) : "";
-    return <li key={locale} className="flex flex-wrap items-center gap-3">
+  const rows = locales.map((locale) => {
+    const entry = record(reported[locale]);
+    const fallback = text(entry.reason);
+    const parts: Record<string, unknown> = review.gate === "dubs" ? { dub: text(entry.status) } : entry;
+    const cells = LOCALE_PARTS.flatMap((part) => {
+      if (!(part in parts)) return [];
+      const value = parts[part];
+      const state = typeof value === "string" ? value : text(record(value).status);
+      const reason = state === "skipped" ? text(record(value).reason) || fallback : "";
+      const file = fileFor(review, `${PART_ROLES[part]}${locale}`) ?? (part === "dub" ? fileFor(review, text(entry.file_role)) : undefined);
+      const name = part === "dub" ? text(entry.file) || `${locale}.${text(entry.format) || "m4a"}` : part === "captions" ? `${locale}.srt` : `description.${locale}.txt`;
+      return [{ part, state, reason, file, name }];
+    });
+    return { locale, cells };
+  });
+  const dubReady = rows.some(({ cells }) => cells.some((cell) => cell.part === "dub" && cell.state === "ready"));
+  return <div className="grid gap-4 text-sm leading-6">
+    <ul className="grid gap-2">{rows.map(({ locale, cells }) => <li key={locale} className="grid gap-1 sm:grid-cols-[7rem_1fr]">
       <span className="font-semibold">{t.has(`locales.${locale}`) ? t(`locales.${locale}`) : locale}</span>
-      <span className="text-[var(--muted)]">{status === "ready" || status === "skipped" ? t(`dubStatuses.${status}`) : status}{reason ? `：${reason}` : ""}</span>
-      {href && <a className="font-semibold text-[var(--teal)] underline" href={href} download={name}>{t("downloadTrack", { file: name })}</a>}
-    </li>;
-  })}</ul>;
+      <span className="flex flex-wrap gap-x-5 gap-y-1">{cells.map(({ part, state, reason, file, name }) => <span key={part} className="inline-flex flex-wrap items-center gap-2">
+        <span>{t(`parts.${part}`)}</span>
+        <span className="text-[var(--muted)]">{partStateLabel(t, state, reason)}</span>
+        {file && <a className="font-semibold text-[var(--teal)] underline" href={fileUrl(slug, file)} download={name}>{t("downloadTrack", { file: name })}</a>}
+      </span>)}</span>
+    </li>)}</ul>
+    {dubReady && <div className="rounded-2xl border border-[var(--line)] p-4">
+      <p className="font-bold">{t("studioTitle")}</p>
+      <p className="mt-1 text-[var(--muted)]">{t("studioNote")}</p>
+      <ol className="mt-2 grid list-decimal gap-1 pl-5">{(["studioStep1", "studioStep2", "studioStep3"] as const).map((step) => <li key={step}>{t(step)}</li>)}</ol>
+    </div>}
+  </div>;
 }
 
 /**
@@ -583,8 +698,16 @@ export function CompilationDownload({ project, canManage }: { project: ProjectSu
   return <p><a href={downloadUrl(project.slug)} download={`${project.slug}.mp4`} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-[var(--teal)] bg-[var(--surface)] px-3 text-sm font-semibold hover:bg-[var(--paper)]"><Download aria-hidden size={16} />{t("downloadCompilation")}</a></p>;
 }
 
-/** One review of one gate: its body, and the owner's approve or reject with a note. */
-export function ReviewCard({ slug, review, canManage, onDecided, mp4Gone = false }: { slug: string; review: Review; canManage: boolean; onDecided: () => void; mp4Gone?: boolean }) {
+/**
+ * One review of one gate: its body, and the owner's approve or reject with a note. `discussion` is
+ * the thread the page attaches under a drama's script gate (docs/videos/DRAMA-FLOW.md, section 3);
+ * the page knows the series and the episode, this card does not.
+ */
+export function ReviewCard({ slug, review, canManage, onDecided, mp4Gone = false, discussion, vertical = false }: {
+  slug: string; review: Review; canManage: boolean; onDecided: () => void; mp4Gone?: boolean; discussion?: ReactNode;
+  // The video is nine by sixteen (a Short): its player and its pictures are shown whole, not cropped to 16:9.
+  vertical?: boolean;
+}) {
   const t = useTranslations("admin.videoReviews");
   const when = useWhen();
   const [choice, setChoice] = useState("");
@@ -608,7 +731,7 @@ export function ReviewCard({ slug, review, canManage, onDecided, mp4Gone = false
       setBusy(false);
     }
   };
-  const approveLabels: Partial<Record<Gate, string>> = { outline: t("approveOutline"), script: t("approveScript"), look: t("approveLook"), storyboard: t("approveStoryboard"), publish: t("approvePublish"), dubs: t("approveDubs") };
+  const approveLabels: Partial<Record<Gate, string>> = { outline: t("approveOutline"), script: t("approveScript"), look: t("approveLook"), storyboard: t("approveStoryboard"), publish: t("approvePublish"), languages: t("approveLanguages"), dubs: t("approveDubs") };
   const approveLabel = approveLabels[review.gate] ?? t("approve");
   const title = review.gate === "look" && text(record(review.payload.character).name) ? `${t("gates.look")}：${text(record(review.payload.character).name)}` : t(`gates.${review.gate}`);
   return <article className="rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]" aria-label={title}>
@@ -622,13 +745,14 @@ export function ReviewCard({ slug, review, canManage, onDecided, mp4Gone = false
     <div className="mt-4">
       {review.gate === "outline" && <OutlineBody review={review} choice={choice} onChoice={setChoice} disabled={!canManage || busy} />}
       {review.gate === "script" && <ScriptBody review={review} />}
-      {review.gate === "look" && <LookBody slug={slug} review={review} choice={choice} onChoice={setChoice} disabled={!canManage || busy} />}
-      {review.gate === "storyboard" && <StoryboardBody slug={slug} review={review} />}
+      {review.gate === "look" && <LookBody slug={slug} review={review} choice={choice} onChoice={setChoice} disabled={!canManage || busy} vertical={vertical} />}
+      {review.gate === "storyboard" && <StoryboardBody slug={slug} review={review} vertical={vertical} />}
       {review.gate === "audio" && <AudioBody slug={slug} review={review} />}
-      {review.gate === "final" && <FinalBody slug={slug} review={review} mp4Gone={mp4Gone} />}
+      {review.gate === "final" && <FinalBody slug={slug} review={review} mp4Gone={mp4Gone} vertical={vertical} />}
       {review.gate === "publish" && <PublishBody slug={slug} review={review} mp4Gone={mp4Gone} />}
-      {review.gate === "dubs" && <DubsBody slug={slug} review={review} />}
+      {(review.gate === "languages" || review.gate === "dubs") && <LanguagesBody slug={slug} review={review} />}
     </div>
+    {discussion && <div className="mt-4">{discussion}</div>}
     {pending ? <div className="mt-5 grid gap-3 border-t border-[var(--line)] pt-4">
       <label className="grid gap-2 text-sm font-semibold">{t("note")}
         <textarea className={control} rows={3} value={note} disabled={!canManage || busy} placeholder={t("notePlaceholder")} onChange={(event) => setNote(event.target.value)} />
