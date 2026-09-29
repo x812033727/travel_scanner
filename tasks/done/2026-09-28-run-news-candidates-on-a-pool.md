@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-run-news-candidates-on-a-pool
 title: Run news candidates on a pool of news workers instead of one at a time
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5
 claimed_at: 2026-09-28T12:05:00Z
 created_at: 2026-09-28T12:04:00Z
-completed_at:
+completed_at: 2026-09-28T15:17:43Z
 branch: claude/news-second-worker
 depends_on: []
 scope:
@@ -43,7 +43,7 @@ never take effect, because only one job ever ran.
       would break this, and the docs now say so.
 - [x] Two workers cannot draft two outlets' versions of one story side by side:
       `duplicates.known_titles` includes in-flight candidates.
-- [ ] After deploy: the container shows the pool's workers (`rq info` or logs), and more than
+- [x] After deploy: the container shows the pool's workers (`rq info` or logs), and more than
       one candidate runs at once when the settings allow.
 
 ## Steps
@@ -56,7 +56,7 @@ never take effect, because only one job ever ran.
 - [x] Tests: the pool starts after recovery, the pool size, and an in-flight story counts as
       a known title.
 - [x] Docs: `news-ops.md`, `docs/news-automation.md`.
-- [ ] Owner: raise `per_vertical_concurrency` from 1 to 2 in /admin/news. Most of the backlog
+- [x] Owner: raise `per_vertical_concurrency` from 1 to 2 in /admin/news. Most of the backlog
       is one vertical (tech), and with 1 the second worker only helps across verticals.
 
 ## How to verify
@@ -80,3 +80,10 @@ docker compose -f docker-compose.prod.yml exec -T news-worker rq info -u "$REDIS
 - Candidates share the host's subscription accounts. With two candidates running, the
   five-hour windows fill faster, and `ai_subscription_fallback=wait` pauses a stage for 30
   minutes when every account is full.
+- Production, 2026-09-28. `0d30e604` was deployed at 14:59Z (with #927; alembic `0112`).
+  - `rq info` showed three `news` workers in one news-worker container.
+  - The owner chose per-vertical concurrency 2. It was saved through
+    `service.update_settings` with an audit row, and only that value changed: global
+    stayed 2, and models, mode and auto-publish were untouched.
+  - In the next 15 minutes three candidates had runs, with 17 overlapping run pairs, and
+    the waiting queue emptied. 13 stories were published that UTC day.
