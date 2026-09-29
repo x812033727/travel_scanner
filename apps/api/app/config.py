@@ -1,5 +1,6 @@
 import hashlib
 import hmac
+import logging
 from functools import lru_cache
 from typing import Literal
 from urllib.parse import urlparse
@@ -879,8 +880,19 @@ class Settings(BaseSettings):
                 "TRUST_PROXY_CLIENT_IP must be true in production because the web BFF is the "
                 "only API caller and per-client rate limits depend on the forwarded address"
             )
+        if self.production and len(self.internal_proxy_token.strip()) < 32:
+            errors.append(
+                "INTERNAL_PROXY_TOKEN must contain at least 32 characters in production "
+                "and have the same value in the API and web services"
+            )
         if errors:
             raise RuntimeError("Unsafe API configuration: " + "; ".join(errors))
+        if self.trust_proxy_client_ip and not self.internal_proxy_token:
+            # Called by the API at startup, not on each forwarded request.
+            logging.getLogger(__name__).warning(
+                "INTERNAL_PROXY_TOKEN is unset; development accepts forwarded addresses "
+                "without authenticating the proxy"
+            )
 
 
 @lru_cache

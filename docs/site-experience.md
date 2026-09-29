@@ -40,6 +40,14 @@ Local checks and built-in browser observations are recorded in the task/PR when 
 
 ### Current verification and remaining acceptance
 
+- **2026-09-29 local reconciliation:** the current production build and TypeScript
+  check passed with 348 generated pages. No application fix was required for the
+  historical regression items below. Manual acceptance remains open: CUA exposed
+  no browser surfaces (IAB unavailable; Chrome creation timed out), and automatic
+  approval review rejected starting the loopback Next preview with `blocked by
+  policy`. No alternate launcher was used, and no new manual/browser result is
+  inferred from the successful build. The task records the exact scope and limit.
+
 - Validated code revision: `470d16d6dea750f1643e7745f94652d6c47daa99`. [Full CI](https://github.com/x812033727/travel_scanner/actions/runs/34357389559) and the planner/discovery workflows passed: 2,805 API cases (15 skipped), 1,445 Web unit cases and 376 isolated browser cases (4 skipped), with Ruff, mypy, fresh/upgrade PostgreSQL migrations, TypeScript, lint, i18n, production builds, containers and full-stack workflows. Subsequent documentation-only commits do not change this implementation; current-head checks are linked from the PR.
 - The native same-document Back regression is resolved: both accept/cancel cases pass on desktop and Pixel 7, including the chosen destination and retained draft assertions. The eight-width topbar checks also pass. All twelve final palette screenshots were visually inspected. [Final-code automated screenshots](https://github.com/x812033727/travel_scanner/actions/runs/34357389559/artifacts/10106686351) are synthetic CI captures, not built-in-browser manual evidence.
 - **Manual acceptance remains open:** an approved isolated preview is needed for the built-in-browser checks below. Policies remain unpublished. The subsequent explicit merge request authorizes reconciling current main, rerunning CI and merging the verified head; it does not complete this manual checklist or authorize deployment.

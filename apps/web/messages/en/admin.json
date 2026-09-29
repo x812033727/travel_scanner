@@ -2783,6 +2783,182 @@
     "compile": "Compile",
     "docNote": "Note:"
   },
+  "videoStories": {
+    "title": "Brand stories",
+    "intro": "One series, one story per episode, made hands-off from the planned list: the worker starts the stories in order within the daily count, and you decide when each one goes up.",
+    "loadError": "The brand stories could not be read: {message}",
+    "kind": "Brand stories",
+    "quota": {
+      "title": "Whether the worker may start a new story now",
+      "todayLabel": "Started today",
+      "inFlightLabel": "In the making",
+      "awaitingLabel": "Ready to upload, not uploaded",
+      "monthLabel": "Started this month",
+      "readyLabel": "Waiting to start",
+      "today": "{count} of {limit} (Taipei, {day})",
+      "todayNoLimit": "{count}, no daily limit (Taipei, {day})",
+      "of": "{count} of {limit}",
+      "count": "{count}",
+      "holdTitle": "No new story starts now:",
+      "go": "The worker starts the next story on its next round.",
+      "line": "Today {today} · in the making {inFlight} of {maxInFlight} · ready to upload {awaiting} of {buffer} · waiting {ready}"
+    },
+    "holds": {
+      "paused": "the series is paused; press Resume and the worker starts the next story.",
+      "notActive": "the series is not running.",
+      "per_day": "{started} started today (Taipei, {day}), which is the daily limit of {perDay}; the next one starts after midnight Taipei time.",
+      "in_flight": "{inFlight} stories are in the making, the limit of {maxInFlight} at a time (set on the settings tab).",
+      "per_month": "{month} episodes started this month, the monthly limit of {perMonth} (set on the settings tab).",
+      "upload_buffer": "{awaiting} stories are ready to upload and not uploaded yet; at {buffer} no new one starts. Upload them and paste their YouTube addresses to go on.",
+      "none_ready": "no story is waiting: every story in the list has started, or none has been imported yet."
+    },
+    "permission": {
+      "title": "You can look at the stories but not change them.",
+      "needs": "Changing the daily count, pausing, skipping or bringing back a story, and writing an import need the {capability} permission, which the {content} and {owner} roles have. You can still dry-run an import.",
+      "roles": "Your roles: {roles}.",
+      "noRoles": "Your account has no admin role."
+    },
+    "perDay": {
+      "label": "Stories a day",
+      "none": "No daily limit",
+      "option": "{count} a day",
+      "save": "Change the daily count",
+      "help": "Counted by the Taipei calendar day. The plan's schedule is two a day (noon and 8 pm); keep it lower while the first videos are being checked."
+    },
+    "chapters": {
+      "hook": "Hook",
+      "origin": "Origin and people",
+      "idea": "The key idea",
+      "engine": "How the business works",
+      "turn": "The cost or the twist",
+      "now": "Today, and one observation"
+    },
+    "sourceKinds": {
+      "official": "Official",
+      "court": "Court record",
+      "academic": "Academic",
+      "archive": "Archive",
+      "reference": "Reference",
+      "news": "News",
+      "book": "Book"
+    },
+    "plan": {
+      "title": "Plan of {id}",
+      "question": "The question it opens with",
+      "chapters": "The six chapters",
+      "takeaway": "What the viewer takes away",
+      "facts": "Facts to verify ({count})",
+      "cites": "Sources {sources}",
+      "core": "The title rests on it",
+      "attributed": "Say whose account it is",
+      "reviewerOnly": "Only the fact checker could read the evidence",
+      "sources": "Sources ({count})",
+      "checked": "checked {date}",
+      "caveats": "The fact checker's caveats"
+    },
+    "list": {
+      "title": "Stories",
+      "category": "Category",
+      "state": "Status",
+      "all": "All ({count})",
+      "option": "{label} ({count})",
+      "none": "No stories yet: import the story plan below.",
+      "noMatch": "No story matches these filters.",
+      "slot": "day {day}, {slot}",
+      "number": "no. {number}",
+      "openPlan": "Read the plan",
+      "closePlan": "Close the plan",
+      "openVideo": "Open the video",
+      "youtube": "YouTube",
+      "skip": "Skip",
+      "restore": "Bring back",
+      "startedSkipped": "Started once and its video was dropped; it cannot come back",
+      "skipConfirm": "Skip {id} “{title}”? The worker will not make it. A story that has not started can be brought back later."
+    },
+    "categories": {
+      "everyday": "Everyday things and hidden standards",
+      "asia-brand": "Travel brands of Japan, Korea and Taiwan",
+      "tech": "Tech and software"
+    },
+    "regions": {
+      "global": "Global",
+      "jp": "Japan",
+      "kr": "Korea",
+      "tw": "Taiwan"
+    },
+    "states": {
+      "waiting": "Waiting",
+      "making": "In the making",
+      "ready": "Ready to upload",
+      "scheduled": "Scheduled",
+      "published": "Published",
+      "done": "Finished",
+      "skipped": "Skipped",
+      "dropped": "Video dropped"
+    },
+    "ready": {
+      "title": "Ready to upload",
+      "help": "Each story is offered the next free publishing slot at its time of day in the plan (noon or 8 pm, Taipei time), after the videos already scheduled; change it if you need to.",
+      "slot": "Next free slot: {time} (Taipei time)",
+      "planned": "The plan puts it on day {day} at {slot}.",
+      "loading": "Reading the upload package…"
+    },
+    "import": {
+      "title": "Import the story plan",
+      "again": "Import the story plan again",
+      "help": "Choose or paste the compiled stories.json. The first answer is always a dry run, which writes nothing; if the file has no problem, you can then write it. The file names its series, which is created from the file if it does not exist yet.",
+      "helpSeries": "The file must be for {slug}. Stories that have not started are updated and new ones are added; stories already started stay as they are.",
+      "file": "stories.json file",
+      "fileChosen": "Chosen: {name} ({size} MB)",
+      "paste": "Or paste its contents",
+      "pastePlaceholder": "Paste the contents of stories.json here",
+      "invalidJson": "This is not valid JSON: {message}",
+      "noStories": "The file has no list of stories (stories).",
+      "parsed": "{count} stories for the series {slug}.",
+      "noSlug": "The file does not name its series (series.slug), so it cannot be imported.",
+      "otherSeries": "The file is for {file}, not {series}: the dry run will refuse it.",
+      "limit": "Import only the first stories",
+      "limitPlaceholder": "All of them",
+      "perDay": "Stories a day when the series is created",
+      "perDayFile": "As the file says",
+      "limitHelp": "The first ones in production order; the pilot imports 2, and a later import without a number adds the rest.",
+      "perDayHelp": "The daily count applies only when this import creates the series; afterwards, change it on the series page.",
+      "checking": "Checking…",
+      "check": "Dry run",
+      "writing": "Writing…",
+      "apply": "Write it (create {create}, update {update})",
+      "applyNeedsRole": "Writing needs the {capability} permission (the {content} or {owner} role).",
+      "nothingToWrite": "The dry run found nothing to write.",
+      "readError": "The file could not be read: {message}",
+      "tooLarge": "This request would be {size} MB; the import takes at most {max} MB.",
+      "error": "Not imported: {message}",
+      "reportTitle": "Import report",
+      "dryRunTitle": "Dry run: nothing was written",
+      "writtenTitle": "Written",
+      "unchangedTitle": "Nothing changed: the series already has these stories",
+      "stale": "The file or the choices changed since this dry run: run it again before writing.",
+      "seriesExists": "The series {slug} exists; the import does not change the series itself.",
+      "seriesWouldBeCreated": "The series {slug} would be created from the file.",
+      "seriesCreated": "The series {slug} was created from the file.",
+      "counts": "{inFile} stories in the file, {imported} imported this time: create {create}, update {update}, leave alone {leave}, refuse {refuse}.",
+      "rows": {
+        "create": "New ({count})",
+        "update": "Changed ({count})",
+        "renumbered": "Moved in the order ({count})",
+        "unchanged": "Unchanged ({count})",
+        "started": "Started, left as they are ({count})",
+        "refused": "Refused ({count})"
+      },
+      "differsTitle": "Where the series differs from the file (the import does not change it):",
+      "differs": "file {file}, series {series}",
+      "problemsTitle": "Problems ({count}): nothing was written",
+      "notesTitle": "Notes"
+    },
+    "page": {
+      "facts": "{stories} stories · {done} finished · about {minutes} minutes each · media US${usd}",
+      "imageModel": "image model {model}"
+    }
+  },
   "videoYoutube": {
     "vps": {
       "open": "Independent VPS upload",

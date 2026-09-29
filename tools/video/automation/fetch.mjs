@@ -33,8 +33,14 @@ export function pageTitle(html) {
   return match ? pageText(match[1]).slice(0, 300) : "";
 }
 
-/** A fetcher that keeps the per-host gap across calls; `now` and `sleep` are injectable. */
-export function pageReader({ fetchImpl = globalThis.fetch, sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms)), now = () => Date.now() } = {}) {
+/**
+ * A fetcher that keeps the per-host gap across calls; `now` and `sleep` are injectable. The
+ * answer's `text` is the page's first MAX_PAGE_CHARS characters. `whole: true` also hands back
+ * the page's whole readable text as `whole`, for a caller that cuts its own passages out of a
+ * long page (a brand story's fact check, automation/story.mjs); without it the answer is as it
+ * always was.
+ */
+export function pageReader({ fetchImpl = globalThis.fetch, sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms)), now = () => Date.now(), whole = false } = {}) {
   const lastByHost = new Map();
   return async function read(url) {
     let parsed;
@@ -62,7 +68,7 @@ export function pageReader({ fetchImpl = globalThis.fetch, sleep = (ms) => new P
       if (!/text\/|html|xml|json/.test(type)) return { url, ok: false, status: response.status, error: `not a text page (${type || "no type"})` };
       const html = new TextDecoder("utf-8").decode(bytes);
       const text = type.includes("html") ? pageText(html) : html.trim();
-      return { url, final_url: response.url || url, ok: true, status: response.status, title: type.includes("html") ? pageTitle(html) : "", text: text.slice(0, MAX_PAGE_CHARS), truncated: text.length > MAX_PAGE_CHARS };
+      return { url, final_url: response.url || url, ok: true, status: response.status, title: type.includes("html") ? pageTitle(html) : "", text: text.slice(0, MAX_PAGE_CHARS), truncated: text.length > MAX_PAGE_CHARS, ...(whole ? { whole: text } : {}) };
     } catch (error) {
       return { url, ok: false, status: 0, error: error.name === "AbortError" ? "timed out" : error.message };
     } finally {

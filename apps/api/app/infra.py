@@ -35,10 +35,9 @@ PROXY_TOKEN_HEADER = "X-Travel-Proxy-Token"  # noqa: S105 -- a header name, not 
 def _from_our_proxy(headers: Mapping[str, str]) -> bool:
     """Whether this request carries our BFF's shared token.
 
-    Only meaningful once a token is configured. Until then every caller passes, which
-    is the behaviour this replaced: a token present on the API but missing from the web
-    container would stop every forwarded address being believed at once, collapsing all
-    visitors into the web container's single bucket.
+    Production API startup requires a token. Development keeps the empty-token
+    fallback for local callers. The API and web must share the same value or every
+    visitor will fall back to the web container's single rate-limit bucket.
     """
     expected = get_settings().internal_proxy_token
     if not expected:
