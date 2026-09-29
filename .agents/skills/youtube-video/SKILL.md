@@ -38,7 +38,7 @@ metadata:
 | 標題、說明、章節、字幕、揭露、上架檢查；全自動的上架包 | `.agents/skills/youtube-video/references/publish.md` |
 | 人工錄製的稿子格式（`video_kit.py` 讀得懂的寫法） | `.agents/skills/youtube-video/references/script-format.md` |
 | 全自動：一次性設定、主幹、指令、結束碼、發音、成本、坑、主機自動產線 | `.agents/skills/youtube-video/references/automated.md` |
-| 全自動的代理提示 | `.agents/skills/youtube-video/references/prompts/`（`planner.md`、`writer-video.md`、`verifier-video.md`、`listener-rewrite.md`、`caption-translate.md`、`caption-review.md`） |
+| 全自動的代理提示 | `.agents/skills/youtube-video/references/prompts/`（`planner.md`、`writer-video.md`、`verifier-video.md`、`listener-rewrite.md`、`listener-register.md`（既有影片改成說書式，`restyle --slug`）、`caption-translate.md`、`caption-review.md`） |
 | AI 漫劇的每一集：一次性設定、關卡（文件、劇本，加四個自動的）、主幹與指令、`video.json` 的角色與鏡頭、品檢與重做、成本、坑、站主怎麼從後台發起單集 | `.agents/skills/youtube-video/references/drama.md` |
 | AI 漫劇的代理提示（單集的故事聖經、劇本與分鏡、連貫性查核、修鏡頭；討論串的回覆） | `.agents/skills/youtube-video/references/prompts/series-bible.md`、`writer-drama.md`、`verifier-drama.md`、`discuss.md`（`planner-drama.md` 只給單集變成作品之前排進的舊請求） |
 | 作品：名稱、主幹（每個核准點的討論）、討論串、劇本關卡、一致性（人物表、設定圖存檔、前情）、張力規格、指令、坑 | `.agents/skills/youtube-video/references/series.md` |

@@ -1,16 +1,20 @@
 // `dub`: one YouTube audio track per locale (docs/videos/DUBS.md). The narration voice reads the
 // caption translation, line by line through the same server and cache as `tts`; the clips are laid
 // into the zh-TW timeline's slide windows, sped up a little where a translation runs long, and the
-// track is written with the video's own loudness. A window that cannot fit even at MAX_TEMPO is
+// track is written with the video's own loudness, and, when the script names music or a
+// sound-effect set (docs/videos/ILLUSTRATED.md), with the same bed and the cut's effects track
+// under the voice as final.mp4 has. A window that cannot fit even at MAX_TEMPO is
 // reported with a character budget per line, for the translator to shorten, and no track is
 // written for that locale until it does.
 import { existsSync, mkdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
 
+import { measureMixArgs, mixArgs } from "../assemble/drama.mjs";
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
-import { isDrama } from "../core/drama.mjs";
-import { atomicWrite, readJson, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
+import { musicInputs, sfxInputs } from "../assemble/sound.mjs";
+import { isDrama, mixHash, resolveMusic, resolveSfx, sfxHash } from "../core/drama.mjs";
+import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { eachLine, LOCALES } from "../core/schema.mjs";
 import { ARTIFACTS, dubArtifacts, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { FPS, SAMPLES_PER_FRAME, framesFor, msToSamples, speechHash } from "../core/timeline.mjs";
@@ -19,7 +23,7 @@ import { readCredentials } from "../tts/credentials.mjs";
 import { billableForRequest, planRequests } from "../tts/requests.mjs";
 import { flaggedLines, lineBody, synthesizeLines, synthesizeRequest } from "../tts/synthesis.mjs";
 import { encodeWav, parseWav, requireNarrationFormat } from "../tts/wav.mjs";
-import { encodeArgs, measureLoudnessArgs, parseLoudnorm, stretchArgs } from "./encode.mjs";
+import { CODECS, encodeArgs, measureLoudnessArgs, parseLoudnorm, stretchArgs } from "./encode.mjs";
 import {
   DEFAULT_FORMAT, DUB_FORMATS, GUARD_MS, MAX_TEMPO,
   assembleTrack, defaultDubLocales, defaultRate, dubLexicon, dubLocales, dubScript, estimatedLengths, layoutDub, measureRate, placeLines, shrinkBudgets, translationHash,
@@ -119,7 +123,37 @@ async function fitWindow(window, originals, lengths, clips, dub, ffmpeg, values)
   }
 }
 
-async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, workdir) {
+/**
+ * The sound a dub carries under its voice (docs/videos/ILLUSTRATED.md): the music track the
+ * script names, checked as `assemble` checks it, and the effects track `assemble` built for the
+ * cut (build/sfx.wav) when checks.json shows it was built for this script's set and narration
+ * timing; the dubbed lines sit in the zh-TW timeline's windows, so the cut's beats hold. A
+ * missing music file is the owner's to put back; a cut not assembled yet only leaves the effects
+ * out, and the dub's timeline records that so status marks it stale until the cut exists.
+ * Returns `{ track, music, sfxFile, notes }`, all null and empty for a script naming neither.
+ */
+async function dubSound(doc, timeline, workdir, workBase) {
+  const notes = [];
+  let track = null;
+  let music = null;
+  if (resolveMusic(doc)) {
+    const found = await musicInputs(doc, workdir, workBase);
+    if (found.problem) throw new UsageError(`the dub cannot carry the music bed: ${found.problem}`);
+    ({ track, music } = found);
+  }
+  let sfxFile = null;
+  if (resolveSfx(doc)) {
+    const found = await sfxInputs(doc, workBase);
+    if (found.problem) throw new UsageError(`the dub cannot carry the sound effects: ${found.problem}`);
+    const checks = readJson(path.join(workdir, ARTIFACTS.checks), null);
+    const file = path.join(workdir, "build", "sfx.wav");
+    if (checks?.sfx_hash === sfxHash(doc) && checks.speech_hash === timeline.speech_hash && existsSync(file)) sfxFile = file;
+    else notes.push("no effects track yet: run assemble first, then dub again for the effects");
+  }
+  return { track, music, sfxFile, notes };
+}
+
+async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, workdir, workBase) {
   const { EXIT } = ctx;
   const { locale, requests, texts, files, cache } = dub;
   if (dub.missing.length) {
@@ -216,14 +250,26 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
   if (!ffmpeg.tools) ffmpeg.tools = await ffmpeg.locate(ctx.env);
   const track = files.track(values.format);
   mkdirSync(path.dirname(track), { recursive: true });
-  const loudness = parseLoudnorm((await ffmpeg.run(ffmpeg.tools.ffmpeg, measureLoudnessArgs(files.narration))).stderr);
-  await ffmpeg.run(ffmpeg.tools.ffmpeg, encodeArgs(files.narration, loudness, track, values.format));
+  const sound = await dubSound(project.doc, timeline, workdir, workBase);
+  if (sound.track || sound.sfxFile) {
+    // The same bed, ducking and effects as the cut's audio (assemble/cli.mjs), in the upload format.
+    const totalSeconds = timeline.total_frames / FPS;
+    const measured = parseLoudnorm((await ffmpeg.run(ffmpeg.tools.ffmpeg, measureMixArgs(files.narration, sound.track?.file ?? null, sound.music, totalSeconds, sound.sfxFile))).stderr);
+    await ffmpeg.run(ffmpeg.tools.ffmpeg, mixArgs(files.narration, sound.track?.file ?? null, sound.music, totalSeconds, measured, track, sound.sfxFile, CODECS[values.format]));
+  } else {
+    const loudness = parseLoudnorm((await ffmpeg.run(ffmpeg.tools.ffmpeg, measureLoudnessArgs(files.narration))).stderr);
+    await ffmpeg.run(ffmpeg.tools.ffmpeg, encodeArgs(files.narration, loudness, track, values.format));
+  }
   const record = {
     locale,
     format: values.format,
     file: path.basename(track),
     speech_hash: timeline.speech_hash,
     translation_hash: dub.hash,
+    // What the mix carried beside the voice (docs/videos/ILLUSTRATED.md): dubsStatus compares
+    // these with the script's, so a bed or a set changed after the dub marks it stale.
+    mix_hash: sound.track ? mixHash(project.doc) : null,
+    sfx_hash: sound.sfxFile ? sfxHash(project.doc) : null,
     voice: dub.script.voice,
     fps: FPS,
     sample_rate: FPS * SAMPLES_PER_FRAME,
@@ -235,7 +281,9 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
   atomicWrite(files.timeline, `${JSON.stringify(record, null, 2)}\n`);
   recordStage(workdir, "dub", { locale, requests: requests.length, synthesized: pending.length, billable, fallbacks, tempo_max: tempoMax, over: 0, file: path.basename(track) }, ctx.now());
   const sped = windows.filter((window) => window.tempo > 1).length;
-  ctx.stdout.write(`${locale}: ${pending.length} requests synthesized (${billable} billable characters), ${requests.length - pending.length} reused; ${sped} of ${windows.length} windows sped up (max ${tempoMax}x); ${track}\n`);
+  const carried = [sound.track ? "music bed" : null, sound.sfxFile ? "sound effects" : null].filter(Boolean);
+  ctx.stdout.write(`${locale}: ${pending.length} requests synthesized (${billable} billable characters), ${requests.length - pending.length} reused; ${sped} of ${windows.length} windows sped up (max ${tempoMax}x)${carried.length ? `; with the ${carried.join(" and ")}` : ""}; ${track}\n`);
+  for (const note of sound.notes) ctx.stdout.write(`  ${note}\n`);
   if (fallbacks.length) ctx.stdout.write(`  line-by-line fallback for: ${fallbacks.join(", ")}\n`);
   return EXIT.ok;
 }
@@ -283,6 +331,7 @@ async function dub(args, ctx) {
   if (isDrama(doc)) throw new UsageError("dub is for slides videos; a drama mixes its own audio (docs/videos/DUBS.md)");
   if (doc.voice.provider !== "gemini") throw new SpeechError(`dubs need a Gemini voice, which speaks every language; the narration voice is ${doc.voice.name}`, { who: "owner" });
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
+  const workBase = resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home });
   const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
   if (!timeline) throw new UsageError("no timeline.json yet; run tts first");
   if (timeline.speech_hash !== speechHash(doc, project.lexicon)) throw new UsageError("timeline.json was built for an older script; run tts again");
@@ -301,7 +350,7 @@ async function dub(args, ctx) {
   const ffmpeg = { locate: ctx.ffmpeg?.locate ?? locateFfmpeg, run: ctx.ffmpeg?.run ?? runTool, tools: null };
   let worst = EXIT.ok;
   for (const dub of dubs) {
-    const code = await dubLocale(dub, project, timeline, values, ctx, clientOpts, ffmpeg, workdir);
+    const code = await dubLocale(dub, project, timeline, values, ctx, clientOpts, ffmpeg, workdir, workBase);
     worst = Math.max(worst, code);
   }
   if (worst === EXIT.ok) ctx.stdout.write(`next: node tools/video/cli.mjs check-audio --slug ${doc.slug} --locale ${values.locales[0]}\n`);

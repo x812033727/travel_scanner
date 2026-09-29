@@ -36,7 +36,9 @@
 | 4 | 聽眾優先審稿：口語、句長、術語唸法、開場鉤子 | 審稿代理 | 修正清單 | 協調者套用後再跑 `lint` |
 | 5 | `tts` | 工具 | 每句的音檔、`narration.wav`、`timeline.json` | 先跑 `--dry-run` 看字數與額度 |
 | 6 | `check-audio`（Gemini 轉寫、Jev 判斷），再 `review-push` 送旁白 | 工具、站主 | `review/check-flags.json`、`review/rewrites.json` | 被標的句子補字典或改措辭，`tts --redo review/check-flags.json` 只重錄那幾句；重錄到上限仍被標的句子，工人交給聽眾審稿模型改寫措辭（提示 `.agents/skills/youtube-video/references/prompts/listener-rewrite.md`；數字、拉丁字詞、字典詞變了就退回這句），再 `tts --redo` 重錄、再檢查，最多兩輪，改了什麼寫在 `review/rewrites.json`、送審時附在 `payload.rewrites`；Jev 全過就自動核准，否則站主在 `/admin/videos` 核准旁白，`review-pull` 記下 |
+| 6b | 插圖投影片才有：`keyframes`（每個 `shot` 一張圖，judge 評分、最多 3 次換 seed；先 `--dry-run` 看提示詞與最多幾塊錢）→ `review-push --gate storyboard`（伺服器依 judge 分數自動核准）→ `review-pull` | 工具 | `keyframes/manifest.json`、`keyframes/contact-sheet*.png` | 沒有 `needs_review` 的 shot；分鏡核准綁 manifest（改卡片文字不會失效，改 camera 或 prompt 才會） |
 | 7 | `render` | 工具 | `frames/`、`contact-sheet.png`、`thumbnail.jpg` | 看聯絡表；版面錯誤就縮短文字 |
+| 7b | 有 `music` 才有：`music`（`music.track` 只核對 `_music/` 裡的檔案與 sha） | 工具 | `music/manifest.json` | 檔案在、雜湊對 |
 | 8 | `assemble` | 工具 | `final.mp4`、`checks.json` | 自動檢查全過 |
 | 9 | `captions`：只有繁體中文的 CC（成片前不翻譯；其他語言在第 13 步） | 工具 | `captions/zh-TW.srt` | `captions/manifest.json` 的雜湊等於這份旁白 |
 | 10 | `review-push --gate final`：先跑 `qa`（11 項，寫到 `review/qa.json`；字幕與標題說明兩項只看 zh-TW 加已選的語言），再送成片（720p 預覽、聯絡表、縮圖、標題說明、`payload.qa`） | 工具 | `review/qa.json` | 11 項全過、`final_sha256` 等於這份 `final.mp4`，伺服器就核准；沒過的才由站主在 `/admin/videos` 看；`review-pull` 記下。`qa` 結束碼 4（Jev 或連結檢查連不上）就不送，下一輪再試 |
@@ -93,7 +95,8 @@ node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整�
   - `quote`：官方原文加翻譯與來源；
   - `stats`：2–4 格大數字；
   - `cta`：影片中段一張卡，指向說明欄第一行的文章。
-- **畫面節奏**：同一個畫面最好不要停超過 15 秒左右。長段說明拆成幾個場景，或一句帶出一個項目；具體例子優先用 `chat`、`quote`、`stats`，不要一張條列從頭講到尾。
+- **畫面節奏**：純投影片同一個畫面最好不要停超過 15 秒左右。長段說明拆成幾個場景，或一句帶出一個項目；具體例子優先用 `chat`、`quote`、`stats`，不要一張條列從頭講到尾。
+- **插圖投影片**（2026-09-29 定案，設計在 `docs/videos/ILLUSTRATED.md`；範例 `tools/video/core/fixtures/illustrated/video.json`）：卡片之間放 `shot` 場景——一張 AI 插圖加運鏡，`data.prompt`（英文 ≤1000 字：物件、場景、無臉人物、構圖；不畫字、logo、真人）、`data.camera`（push in／pull out／pan left／pan right／tilt up／tilt down／drift）、`data.visual: "still"`、可選 `data.transition`（cut／dissolve）。要有 `look`（預設 `tech-story`），可帶 `music.track`（站主放在 `<VIDEO_WORKDIR>/_music/` 的授權檔）與 `sfx.set`（`_sfx/<set>/` 的授權音效組）。節奏：每 5–8 秒換一張畫面、卡片狀態 ≤8 秒、插圖至少佔一半時間、開場 20 秒內落鉤；一個 shot 帶一到兩句；相鄰的 shot 提示詞不能相似；構圖以中央為主（Shorts 裁 9:16 只剩 56% 寬）。lint 先當警告，最終 QA 的 `pace` 項在真實時間軸上擋。主幹在「旁白核准」後多 `keyframes`（生圖，judge 自動核准分鏡）、在 `render` 後多 `music`；`assemble` 自動把單狀態卡片做成漂移、畫面間溶接、章節卡硬切、配樂壓在旁白下、音效放在章節卡、溶接與逐條出現上。
 - **圖片與圖解**：只能用 `apps/web/public/` 或 `docs/videos/` 底下的檔案，並列在 `assets`，寫清楚來源與授權。
 - **說明欄**：`youtube.description` 只寫本文，開頭兩句說這支影片會帶觀眾看什麼。其餘由工具組進去，依序是：
   - 第一行的站內文章連結（依 `source_guide` 自動加 UTM）；

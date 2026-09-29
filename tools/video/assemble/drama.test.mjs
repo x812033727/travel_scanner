@@ -383,3 +383,67 @@ test("package trusts checks.json only for the very same script, and a drama's lo
   assert.match(plain, /「變造或合成內容」：不用勾。`metadata\.json` 的 `contains_synthetic_media` 是 `false`/);
   assert.doesNotMatch(plain, /音樂授權/);
 });
+
+test("illustrated slides lay out as shots under moves, single-state cards drifting in turn, dissolves between pictures and cuts into chapters", async () => {
+  const { illustratedFixture } = await import("../core/fixtures/load.mjs");
+  const { illustratedTransition, CARD_MOVES, MOTION_CARD_VERSION, effectsFilter, soundGraph } = await import("./drama.mjs");
+  const doc = illustratedFixture();
+  const timeline = estimateTimeline(doc);
+  const frames = framesManifestFor(doc, timeline);
+  const keyframes = { shots: Object.fromEntries(doc.scenes.filter((scene) => scene.template === "shot").map((scene) => [scene.id, { file: `keyframes/${scene.id}-1.png`, sha256: "e".repeat(64) }])) };
+  const layout = layoutDrama(doc, timeline, frames, null, keyframes, { transitionRule: illustratedTransition, cardMotion: true });
+  assert.deepEqual(
+    layout.map((scene) => [scene.id, scene.kind, scene.card ?? false, scene.transition ?? null, scene.move?.name ?? null]),
+    [
+      ["hook", "motion", true, "cut", "drift"],
+      ["podium", "motion", false, "dissolve", "push-in"],
+      ["desk", "motion", false, "dissolve", "drift"],
+      ["clock", "motion", false, "dissolve", "tilt-down"],
+      ["numbers", "stills", false, null, null],
+      ["race", "motion", false, "dissolve", "pan-left"],
+      ["rule", "motion", true, "dissolve", "push-in"],
+      ["door", "motion", false, "cut", "push-in"],
+      ["wrap", "motion", true, "dissolve", "drift"],
+    ],
+  );
+  assert.deepEqual(CARD_MOVES, ["drift", "push-in"]);
+  assert.deepEqual(layout[0].keyframe, { file: "frames/hook-0.png", sha256: null }, "a card's picture is its rendered still");
+  assert.equal(layout.reduce((sum, scene) => sum + scene.frames, 0), timeline.total_frames);
+  // A card's segment key carries the card version, so no drama's motion key moves.
+  const card = { ...layout[0], frames: 90, keyframe: { file: "frames/x.png", sha256: null } };
+  const still = { ...card, card: undefined };
+  assert.notEqual(motionSegmentKey(card, card.move), motionSegmentKey(still, still.move));
+  assert.equal(MOTION_CARD_VERSION, "card-motion-v1");
+  // Without the options, the same document lays out as a drama would: cards held as stills, shots cut in.
+  const plain = layoutDrama(doc, timeline, frames, null, keyframes);
+  assert.deepEqual(plain.map((scene) => scene.kind), ["stills", "motion", "motion", "motion", "stills", "motion", "stills", "motion", "stills"]);
+  assert.equal(plain[1].transition, "cut");
+  assert.equal(plain[3].transition, "dissolve", "the shot's own word still counts");
+  // The effects join the mix as a third input; without music they sit over the voice alone.
+  assert.match(mixFilter(MUSIC, 120, 2), /\[2:a\]aformat=sample_rates=48000:channel_layouts=stereo\[effects\];\[voice\]\[ducked\]\[effects\]amix=inputs=3:duration=first:dropout_transition=0:normalize=0\[mix\]$/);
+  assert.equal(mixFilter(MUSIC, 120), mixFilter(MUSIC, 120, null), "no effects: the drama's mix, unchanged");
+  assert.match(effectsFilter(), /^\[0:a\]aformat=sample_rates=48000:channel_layouts=mono,pan=stereo\|c0=c0\|c1=c0\[voice\];\[1:a\]aformat=sample_rates=48000:channel_layouts=stereo\[effects\];\[voice\]\[effects\]amix=inputs=2/);
+  assert.deepEqual(soundGraph("n.wav", { musicFile: "m.mp3", music: MUSIC, sfxFile: "fx.wav" }, 120).inputs, ["-i", "n.wav", "-stream_loop", "-1", "-t", "120.000000", "-i", "m.mp3", "-i", "fx.wav"]);
+  assert.deepEqual(soundGraph("n.wav", { sfxFile: "fx.wav" }, 120).inputs, ["-i", "n.wav", "-i", "fx.wav"]);
+  assert.throws(() => soundGraph("n.wav", {}, 120), PlanError);
+  const measured = { input_i: "-23.1", input_tp: "-5.0", input_lra: "6.0", input_thresh: "-33.5", target_offset: "0.1" };
+  assert.deepEqual(mixArgs("n.wav", "m.mp3", MUSIC, 120, measured, "a.m4a"), mixArgs("n.wav", "m.mp3", MUSIC, 120, measured, "a.m4a", null), "the drama's arguments are unchanged");
+  assert.equal(measureMixArgs("n.wav", null, null, 120, "fx.wav").indexOf("-stream_loop"), -1);
+});
+
+test("package trusts an illustrated cut only with its very pictures, music and effects", async () => {
+  const { illustratedFixture, fixtureLexicon } = await import("../core/fixtures/load.mjs");
+  const { keyframesHash, lookHash, mixHash, sfxHash } = await import("../core/drama.mjs");
+  const { speechHash, visualHash } = await import("../core/timeline.mjs");
+  const doc = illustratedFixture();
+  const lexicon = fixtureLexicon();
+  const keyframes = { shots: Object.fromEntries(doc.scenes.filter((scene) => scene.template === "shot").map((scene) => [scene.id, { file: "k.png", sha256: "f".repeat(64) }])) };
+  const checks = { ok: true, speech_hash: speechHash(doc, lexicon), visual_hash: visualHash(doc), look_hash: lookHash(doc), pictures_hash: keyframesHash(doc, keyframes), mix_hash: mixHash(doc), sfx_hash: sfxHash(doc) };
+  assert.equal(checksCurrent(doc, lexicon, checks, null, keyframes), true);
+  assert.equal(checksCurrent(doc, lexicon, checks, null, null), false, "the pictures must be there to compare");
+  assert.equal(checksCurrent(doc, lexicon, checks, null, { shots: { ...keyframes.shots, podium: { file: "k.png", sha256: "0".repeat(64) } } }), false, "a redrawn picture");
+  assert.equal(checksCurrent(doc, lexicon, { ...checks, mix_hash: "x" }, null, keyframes), false, "other music");
+  assert.equal(checksCurrent(doc, lexicon, { ...checks, sfx_hash: "x" }, null, keyframes), false, "other effects");
+  const plain = fixture();
+  assert.equal(checksCurrent(plain, lexicon, { ok: true, speech_hash: speechHash(plain, lexicon), visual_hash: visualHash(plain) }), true, "plain slides as before");
+});

@@ -339,3 +339,81 @@ test("dub refuses what it cannot do: an Azure voice, a missing timeline, a bad l
   assert.equal(await main(["dub", "--slug", box.slug, "--locale", "en"], missing.ctx), EXIT.lint, "no translation yet");
   assert.match(missing.out.stdout, /en: no track; 7 lines have no current translation/);
 });
+
+test("a dub of an illustrated video carries the music bed and the cut's effects track in its own format, and status marks it stale when they change", async () => {
+  const { illustratedFixture, illustratedBrief } = await import("../core/fixtures/load.mjs");
+  const { mixHash, sfxHash } = await import("../core/drama.mjs");
+  const { speechHash } = await import("../core/timeline.mjs");
+  const { readJson } = await import("../core/paths.mjs");
+  const slug = "ranking-first";
+  const box = sandbox(slug, "illustrated");
+  const doc = { ...illustratedFixture(), slug, voice: { provider: "gemini", name: "Sulafat", style: "說書人" } };
+  writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify(doc, null, 2)}\n`);
+  writeFileSync(path.join(box.dir, "brief.md"), illustratedBrief());
+  mkdirSync(path.join(box.dir, "i18n"), { recursive: true });
+  writeFileSync(path.join(box.dir, "i18n", "en.json"), JSON.stringify(translationFor(doc, (line) => `EN ${line.id}`)));
+  // The owner's licensed bed and effect set, as assemble reads them (docs/videos/ILLUSTRATED.md).
+  mkdirSync(path.join(box.work, "_music"), { recursive: true });
+  writeFileSync(path.join(box.work, "_music", "bed.mp3"), "bed bytes");
+  const sfxDir = path.join(box.work, "_sfx", "studio-a");
+  mkdirSync(sfxDir, { recursive: true });
+  const sounds = {};
+  for (const name of ["stamp", "whoosh", "pop"]) {
+    writeFileSync(path.join(sfxDir, `${name}.wav`), `${name} bytes`);
+    sounds[name] = { file: `${name}.wav` };
+  }
+  writeFileSync(path.join(sfxDir, "manifest.json"), JSON.stringify({ source: "test", license: "test", sounds }));
+  const server = fakeServer();
+  const ffmpeg = fakeFfmpeg();
+  assert.equal(await main(["tts", "--slug", slug], capture(box, server, ffmpeg).ctx), EXIT.ok);
+  const timeline = readJson(path.join(box.workdir, "timeline.json"));
+
+  // Before the cut is assembled: the bed is mixed, the effects wait for assemble.
+  const early = capture(box, server, ffmpeg);
+  assert.equal(await main(["dub", "--slug", slug, "--locale", "en", "--format", "mp3"], early.ctx), EXIT.ok);
+  assert.match(early.out.stdout, /en: .*; with the music bed; .*en\.mp3/);
+  assert.match(early.out.stdout, /no effects track yet: run assemble first/);
+  const en = dubArtifacts(box.workdir, "en");
+  const mixed = ffmpeg.calls.filter((args) => args.includes("-filter_complex"));
+  assert.ok(mixed.length >= 2, "a measurement pass and an encoding pass through the mix graph");
+  const encode = mixed.at(-1);
+  assert.ok(encode.includes(path.join(box.work, "_music", "bed.mp3")), "the bed is an input");
+  assert.equal(encode.filter((arg) => arg === "-i").length, 2, "voice and bed, no effects yet");
+  assert.deepEqual(encode.slice(encode.indexOf("-c:a"), encode.indexOf("-c:a") + 4), ["-c:a", "libmp3lame", "-b:a", "320k"], "the dub's upload format, not the cut's AAC");
+  assert.match(encode.join(" "), /sidechaincompress|amix/);
+  let record = readJson(en.timeline);
+  assert.equal(record.mix_hash, mixHash(doc));
+  assert.equal(record.sfx_hash, null, "no effects were carried");
+  const waiting = capture(box, server, ffmpeg);
+  await main(["status", "--slug", slug], waiting.ctx);
+  assert.match(waiting.out.stdout, /dubs: en stale \(made without the video's music or sound effects; run dub again\)/);
+
+  // The cut exists: its effects track is reused under the dub.
+  mkdirSync(path.join(box.workdir, "build"), { recursive: true });
+  writeFileSync(path.join(box.workdir, "build", "sfx.wav"), "effects bytes");
+  writeFileSync(path.join(box.workdir, "checks.json"), JSON.stringify({ ok: true, speech_hash: speechHash(doc, readJson(path.join(box.videos, "lexicon.json"))), sfx_hash: sfxHash(doc) }));
+  const calls = ffmpeg.calls.length;
+  const full = capture(box, server, ffmpeg);
+  assert.equal(await main(["dub", "--slug", slug, "--locale", "en", "--format", "mp3"], full.ctx), EXIT.ok);
+  assert.match(full.out.stdout, /with the music bed and sound effects/);
+  const withEffects = ffmpeg.calls.slice(calls).filter((args) => args.includes("-filter_complex")).at(-1);
+  assert.ok(withEffects.includes(path.join(box.workdir, "build", "sfx.wav")));
+  assert.equal(withEffects.filter((arg) => arg === "-i").length, 3, "voice, bed and effects");
+  record = readJson(en.timeline);
+  assert.equal(record.sfx_hash, sfxHash(doc));
+  const current = capture(box, server, ffmpeg);
+  await main(["status", "--slug", slug], current.ctx);
+  assert.match(current.out.stdout, /dubs: en current \(en\.mp3\)/);
+
+  // A louder bed in the script is a different mix: the dub is stale until made again.
+  writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify({ ...doc, music: { ...doc.music, gain_db: -16 } }, null, 2)}\n`);
+  const louder = capture(box, server, ffmpeg);
+  await main(["status", "--slug", slug], louder.ctx);
+  assert.match(louder.out.stdout, /dubs: en stale/);
+
+  // A missing bed file is the owner's to put back, not a dry track.
+  writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify({ ...doc, music: { track: "gone.mp3" } }, null, 2)}\n`);
+  const gone = capture(box, server, ffmpeg);
+  assert.equal(await main(["dub", "--slug", slug, "--locale", "en", "--format", "mp3"], gone.ctx), EXIT.usage);
+  assert.match(gone.out.stderr, /cannot carry the music bed: music.track gone.mp3 is not in/);
+});

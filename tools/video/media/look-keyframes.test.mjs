@@ -621,3 +621,52 @@ for (const stage of modelStages) {
     });
   }
 }
+
+test("illustrated slides draw their stills with no look gate, bound to the shots rather than the cards, and judged without a subtitle band", async () => {
+  const { illustratedFixture } = await import("../core/fixtures/load.mjs");
+  const { picturesHash } = await import("../core/drama.mjs");
+  const box = sandbox("fixture-illustrated", "illustrated");
+  // The site draws slides pictures under their own switch and model once it has them; the drama route may be off.
+  const status = { ...STATUS, enabled: false, slides_enabled: true, slides_image: { provider: "gemini", model: "gemini-3.1-flash-image", configured: true }, slides_max_usd_per_video: 20, models: { ...STATUS.models, images: { gemini: [...STATUS.models.images.gemini, { value: "gemini-3.1-flash-image", label: "Flash", description: null, status: "stable", resolutions: [], durations: [], reference_images: 5, native_audio: false, usd_per_second: null, usd_per_image: 0.067, usd_per_track: null }] } } };
+  const site = mediaSite({ verdicts: () => ({ overall: 8, passed: true }), status });
+  const dry = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--dry-run"], dry.ctx), EXIT.ok, dry.out.stderr);
+  assert.match(dry.out.stdout, /gemini gemini-3\.1-flash-image ready; about US\$0\.39 for one take of everything, up to US\$1\.16 at 3 takes; this video so far US\$0\.00 of the US\$20 cap/);
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
+  const doc = illustratedFixture();
+  const shots = doc.scenes.filter((scene) => scene.template === "shot").map((scene) => scene.id);
+  assert.deepEqual(site.state.images.map((request) => request.shot_id), shots);
+  assert.match(site.state.images[0].prompt, /Style: flat editorial illustration with a painterly touch/);
+  assert.ok(site.state.judges.every((request) => !request.rubric.some((item) => item.key === "subtitle_band" || item.key.startsWith("identity_"))), "CC only: no subtitle band; no cast: no identity question");
+  const manifest = manifestOf(box, "keyframes");
+  assert.equal(manifest.look_hash, lookHash(doc));
+  assert.equal(manifest.pictures_hash, picturesHash(doc));
+  assert.equal(manifest.visual_hash, undefined);
+  assert.deepEqual(manifest.image, { provider: "gemini", model: "gemini-3.1-flash-image" });
+  assert.equal(readLedger(box.workdir).totals.images, shots.length);
+  // A card edit keeps every picture; a camera edit redraws that shot alone.
+  const file = path.join(box.dir, "video.json");
+  const edited = JSON.parse(readFileSync(file, "utf8"));
+  edited.scenes[0].data.title = "另一個標題";
+  writeFileSync(file, JSON.stringify(edited));
+  const kept = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], kept.ctx), EXIT.ok, kept.out.stderr);
+  assert.equal(site.state.images.length, shots.length, "nothing redrawn for a card's text");
+  edited.scenes[1].data.camera = "pan left";
+  writeFileSync(file, JSON.stringify(edited));
+  const redrawn = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], redrawn.ctx), EXIT.ok, redrawn.out.stderr);
+  assert.equal(site.state.images.length, shots.length + 1, "a new binding walks every shot again; the cache answers the unchanged ones without the server");
+  assert.equal(readLedger(box.workdir).totals.images, shots.length + 1, "only the shot with the new camera is paid for");
+  // The drama keeps its subtitle band and its binding to the whole picture.
+  assert.ok(keyframeRubric([]).some((item) => item.key === "subtitle_band"));
+  assert.ok(!keyframeRubric([], { subtitleBand: false }).some((item) => item.key === "subtitle_band"));
+  assert.match(keyframeRubric([]).find((item) => item.key === "style").question, /style description in the context/);
+  assert.match(keyframeRubric([{ id: "a", name: "A" }]).find((item) => item.key === "style").question, /reference sheets/);
+  // With the drama route on and no slides fields, slides draw as a drama does.
+  assert.equal(statusProblem({ ...STATUS }, "image", "slides"), null);
+  assert.match(statusProblem({ ...STATUS, enabled: false }, "image", "slides"), /pictures for slides videos are off/);
+  assert.equal(imagePrice(status, "slides"), 0.067);
+  assert.equal(imagePrice(status), 0.134, "a drama keeps the global model");
+});

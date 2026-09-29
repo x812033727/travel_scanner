@@ -6,34 +6,11 @@
 // from timeline.json (the narration as synthesized), scenes and reveals from video.json, so the
 // check reads the video as it was cut rather than the estimate lint makes. This is the local
 // script the 2026-09-26 re-pacing of batch 2 was checked with, made a pure function.
-import { FPS } from "../core/timeline.mjs";
+// The state list itself lives in core/cadence.mjs, where lint reads it on the estimated timeline
+// for illustrated videos; this module keeps the plain slides rule and the QA wording.
+export { slideStates } from "../core/cadence.mjs";
 
 export const MAX_STATE_SECONDS = 15;
-
-/**
- * Every slide state in order: [{ scene, index, start_frame, end_frame, seconds }]. `index` is
- * the state's position in its scene, 0 being the picture the scene opens with. Throws when a
- * line of the script has no entry in the timeline (a timeline built for another script).
- */
-export function slideStates(doc, timeline) {
-  const fps = timeline.fps || FPS;
-  const startOf = new Map((timeline.lines ?? []).map((line) => [line.id, line.start_frame]));
-  const states = [];
-  for (const scene of doc.scenes ?? []) {
-    let index = 0;
-    (scene.lines ?? []).forEach((line, lineIndex) => {
-      const start = startOf.get(line.id);
-      if (start === undefined) throw new Error(`timeline.json has no line ${line.id}; run tts again`);
-      // A reveal on the scene's first line changes its opening state rather than adding one.
-      if (lineIndex === 0 || line.reveal) states.push({ scene: scene.id, index: index++, start_frame: start });
-    });
-  }
-  states.forEach((state, position) => {
-    state.end_frame = states[position + 1]?.start_frame ?? timeline.total_frames;
-    state.seconds = Math.round(((state.end_frame - state.start_frame) / fps) * 10) / 10;
-  });
-  return states;
-}
 
 /** The states held longer than `limit` seconds: [{ scene, index, seconds }]. */
 export function paceProblems(states, limit = MAX_STATE_SECONDS) {

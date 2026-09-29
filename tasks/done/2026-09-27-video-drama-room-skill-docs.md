@@ -1,13 +1,13 @@
 ---
 id: 2026-09-27-video-drama-room-skill-docs
 title: Video drama room skill docs: one drama route in the skill, and DRAMA, SERIES and AUTOMATION follow DRAMA-FLOW
-status: review
+status: done
 priority: P2
 area: docs
 owner: claude-fable-5-1-video-languages
 claimed_at: 2026-09-27T11:39:44Z
 created_at: 2026-09-27T06:16:03Z
-completed_at:
+completed_at: 2026-09-29T09:13:41Z
 branch:
 depends_on:
   - 2026-09-27-video-drama-room-worker

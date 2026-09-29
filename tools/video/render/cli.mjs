@@ -10,7 +10,7 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 
 import { isCompilation, THUMB_SOURCE } from "../core/compilation.mjs";
-import { burnIn, isDrama, subtitlesHash } from "../core/drama.mjs";
+import { burnIn, hasPictures, isDrama, subtitlesHash } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { lintProject, loadProject, recordStage, ARTIFACTS } from "../core/state.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
@@ -91,7 +91,8 @@ export async function run(command, args, ctx) {
     }
     subtitles = subtitlePlan(doc, timeline);
   }
-  const keyframes = drama ? (readJson(path.join(workdir, ARTIFACTS.keyframes), null)?.shots ?? {}) : {};
+  // A drama's thumbnail and an illustrated slides video's may sit on a keyframe (docs/videos/ILLUSTRATED.md).
+  const keyframes = hasPictures(doc) ? (readJson(path.join(workdir, ARTIFACTS.keyframes), null)?.shots ?? {}) : {};
   const plan = renderPlan(doc, themeHash(), ctx.root, { keyframes });
   const undrawn = (plan.thumbnail?.variants ?? []).find((variant) => variant.shot && !variant.keyframe);
   if (undrawn) {

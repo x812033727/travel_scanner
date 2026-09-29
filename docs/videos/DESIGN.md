@@ -126,7 +126,7 @@
 | 縮圖 | JPG／PNG，手機上傳上限 2 MB，帳號需驗證 | support.google.com/youtube/answer/72431 |
 | 編碼 | MP4＋faststart、H.264 High、2 個連續 B 幀、closed GOP、4:2:0、BT.709；AAC-LC 立體聲 48 kHz 384 kbps。−14 LUFS 是業界常用值，官方沒公布 | support.google.com/youtube/answer/1722171 |
 | 營利 | 「非原創內容」（2025-07 由「重複內容」改名）：缺乏教育價值的投影片、套模板、沒有創作者觀點的量產 AI 內容不能營利；另禁止 AI 角色給健康、法律、財務、政治建議 | support.google.com/youtube/answer/1311392 |
-| AI 揭露 | 只有擬真到會被誤認為真人、真實事件、真實場景時要揭露；AI 寫稿、資訊圖不用。通用 TTS 旁白官方沒點名，依規則推論不需要 | support.google.com/youtube/answer/14328491 |
+| AI 揭露 | 只有擬真到會被誤認為真人、真實事件、真實場景時要揭露；AI 寫稿、資訊圖不用。通用 TTS 旁白官方沒點名，依規則推論不需要。插圖投影片的風格化插圖（`tech-story`、`flat-explainer`）加授權配樂不需揭露；`cinematic-3d` 或生成配樂則勾（`qa/checks.mjs`；[`SHORTS.md`](SHORTS.md) 對 AI 音樂的說法較嚴，工具採嚴的一邊） | support.google.com/youtube/answer/14328491 |
 | Azure 語音 | zh-TW：HsiaoChen（女）、YunJhe（男）、HsiaoYu（女），沒有 HD 版；多語 Ava／Andrew／Brian／Emma 可用 `<lang xml:lang="zh-TW">`。每百萬計費字元 15 美元，免費層每月 50 萬。**每個中文字算 2 個計費字元**，SSML 標記（`<speak>`、`<voice>` 以外）也計費：一支 10 分鐘約 3,000 字，連標記約 8,000–9,000 計費字元，免費額度每月約 50 支。即時 REST 單次上限 10 分鐘、只回音檔 | learn.microsoft.com（speech-service 的 text-to-speech §Billable characters、language-support、rest-text-to-speech） |
 
 ## 營利政策的對策（寫成關卡，不只是建議）
@@ -135,7 +135,8 @@
 
 - `brief.md` 必須有「站主觀點」與「觀眾看完能做到的事」兩節，而且不能空白。lint 會擋，站主選大綱時一併確認。
 - 每支至少一段實際示範或實算，不只是念重點。
-- 場景版型的順序和其他支太像時，lint 會警告。
+- 場景版型的順序和其他支太像時，lint 會警告（只比卡片；插圖不算）。
+- 插圖投影片（[`ILLUSTRATED.md`](ILLUSTRATED.md)）：每 5–8 秒一張原創插圖加運鏡、卡片漂移、溶接、配樂與音效、說書式旁白——這是對「AI 旁白配幻燈片」這一類的回答：有觀點、有實料、畫面不重複。字幕只做 CC，畫面不燒錄字。
 - 一週 1–2 支，站主看完才上架。
 - 題材不給財務建議：幣圈題材只做資訊與工具教學，不談投資。
 
