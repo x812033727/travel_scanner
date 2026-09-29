@@ -11,9 +11,9 @@ import { locateFfmpeg } from "../assemble/ffmpeg.mjs";
 import { keyframeKey } from "../core/drama.mjs";
 import { stopRequested } from "../core/paths.mjs";
 import { contactSheetHtml, SHEET_WIDTH } from "../render/contact.mjs";
-import { cached, forgetJob, pendingJob, remember, rememberJob } from "./cache.mjs";
+import { cached, forgetJob, mediaKey, pendingJob, remember, rememberJob } from "./cache.mjs";
 import { MediaError, RETAKE_CODES, TERMINAL, downloadFile, judge as askJudge, putFile, submitClip, submitImage, submitMusic, waitForJob } from "./client.mjs";
-import { appendLedger, capProblem } from "./ledger.mjs";
+import { appendLedger, bookJob, capProblem } from "./ledger.mjs";
 import { dHash, dhashArgs } from "./qc.mjs";
 
 const exec = promisify(execFile);
@@ -32,6 +32,33 @@ export function chosenModel(status, kind) {
   const group = { image: "images", clip: "clips", music: "music" }[kind];
   return (status.models?.[group]?.[choice?.provider] ?? []).find((each) => each.value === choice?.model) ?? null;
 }
+
+/** Match the server's per-series image selection without changing clip/music choices. */
+export function imageStatus(status, series) {
+  const model = series?.image_model;
+  if (!model) return status;
+  const images = status.models?.images ?? {};
+  // The server tries the configured image vendor first, then the catalog's vendor order.
+  const providers = [status.image?.provider, ...Object.keys(images)].filter((value, index, all) => value && all.indexOf(value) === index);
+  for (const provider of providers) {
+    const entry = (images[provider] ?? []).find((each) => each.value === model && each.status !== "retired");
+    if (!entry) continue;
+    if (typeof entry.usd_per_image !== "number" || !Number.isFinite(entry.usd_per_image) || entry.usd_per_image <= 0) {
+      throw new MediaError(`the series image model ${model} has no usable image price; refresh the site's media catalog before generating`, { code: "video_media_price_unavailable", who: "owner" });
+    }
+    // Status reports credentials only for its three selected vendors. A different vendor
+    // can be unknown; let the server check it before submitting to the paid provider.
+    const known = [status.image, status.clip, status.music].find((choice) => choice?.provider === provider && typeof choice.configured === "boolean");
+    return { ...status, image: { ...status.image, provider, model, configured: known?.configured ?? null } };
+  }
+  throw new MediaError(`the series image model ${model} is unavailable or retired; change the series model or clear its override`, { code: "video_media_model_not_allowed", who: "owner" });
+}
+
+export const sameImage = (left, right) => left?.provider === right?.provider && left?.model === right?.model;
+
+// Old story artifacts could be labeled with the settings model instead of the series model.
+// Keep this boundary even after an override is cleared (the stored field is then null).
+export const imageSelectionVersion = (series) => Object.hasOwn(series ?? {}, "image_model") ? 1 : 0;
 
 /** The list price of one image with the server's chosen image model. */
 export function imagePrice(status) {
@@ -52,7 +79,7 @@ export function trackPrice(status) {
 export function statusProblem(status, kind = "image") {
   if (!status.enabled) return "the drama route is off: turn it on in the settings tab of /admin/videos";
   if (kind === "music" && !status.music_enabled) return "music generation is off: turn it on in the settings tab of /admin/videos";
-  if (!status[kind]?.configured) return `the site has no ${status[kind]?.provider} key for ${kind} generation (admin: API 與供應商設定)`;
+  if (status[kind]?.configured !== null && !status[kind]?.configured) return `the site has no ${status[kind]?.provider} key for ${kind} generation (admin: API 與供應商設定)`;
   return null;
 }
 
@@ -63,12 +90,13 @@ export const stoppedError = () => new MediaError("stopped by the STOP file; reru
 
 /** One stage's connection to the media server and the work directory's books. */
 export class Stage {
-  constructor({ slug, workdir, options, status, stage, now = () => new Date() }) {
+  constructor({ slug, workdir, options, status, stage, imageVersion = 0, now = () => new Date() }) {
     this.slug = slug;
     this.workdir = workdir;
     this.options = options;
     this.status = status;
     this.stage = stage;
+    this.imageVersion = imageVersion;
     this.now = now;
   }
 
@@ -89,7 +117,7 @@ export class Stage {
    * says a new seed may fix. Returns `{ file, sha256, key, cost_usd, job_id, reused }`.
    */
   async generate({ kind, key, submit, request, id, target, usd, seconds = 0 }) {
-    const { provider, model } = this.status[kind];
+    const expected = this.status[kind];
     const hit = cached(this.workdir, key);
     if (hit) return { ...hit, key, reused: true };
     let job;
@@ -106,23 +134,35 @@ export class Stage {
         job = await waitForJob({ jobId: submitted.id, stop: () => this.stop(), timeoutMs: WAIT_MS[kind], ...this.options });
       }
     }
-    forgetJob(this.workdir, key);
+    const provider = job.provider ?? expected.provider;
+    const model = job.model ?? expected.model;
+    if (kind === "image" && !sameImage({ provider, model }, expected)) {
+      // The series may have changed on the site since series.json was written. Preserve
+      // the actual charge and job id, but never label/cache its result as the old model.
+      rememberJob(this.workdir, key, { job_id: job.id, kind, target }, this.now());
+      bookJob(this.workdir, { stage: this.stage, kind, id, provider, model, key, job_id: job.id, seconds, cost_usd: job.status === "failed" ? 0 : Number(job.usd_estimate || 0), status: "failed", error: "video_media_model_changed" }, this.now());
+      throw new MediaError(`${id}: the server used ${provider}/${model}, expected ${expected.provider}/${expected.model}; reconcile the series model and saved job before continuing`, { code: "video_media_model_changed", who: "owner", job });
+    }
+    rememberJob(this.workdir, key, { job_id: job.id, kind, target }, this.now());
     if (job.status !== "ready" || !job.file?.sha256) {
       const code = job.error?.code || `video_media_job_${job.status}`;
-      appendLedger(this.workdir, { stage: this.stage, kind, id, provider, model, key, job_id: job.id, seconds, cost_usd: job.status === "failed" ? 0 : Number(job.usd_estimate || 0), status: "failed", error: code }, this.now());
+      bookJob(this.workdir, { stage: this.stage, kind, id, provider, model, key, job_id: job.id, seconds, cost_usd: job.status === "failed" ? 0 : Number(job.usd_estimate || 0), status: "failed", error: code }, this.now());
+      forgetJob(this.workdir, key, job.id);
       throw new MediaError(`${id}: ${job.error?.detail || code}`, { code, job });
     }
+    bookJob(this.workdir, { stage: this.stage, kind, id, provider, model, key, job_id: job.id, seconds, cost_usd: Number(job.usd_estimate || 0), status: "ready" }, this.now());
     const file = `${target}${EXTENSIONS[job.file.content_type] ?? DEFAULT_EXTENSION[kind]}`;
     const got = await downloadFile({ slug: this.slug, sha256: job.file.sha256, file: path.join(this.workdir, file), ...this.options });
     const entry = remember(this.workdir, key, { file, sha256: got.sha256, bytes: got.bytes, job_id: job.id, provider, model, seconds, cost_usd: Number(job.usd_estimate || 0) }, this.now());
-    appendLedger(this.workdir, { stage: this.stage, kind, id, provider, model, key, job_id: job.id, seconds, cost_usd: entry.cost_usd, status: "ready" }, this.now());
+    forgetJob(this.workdir, key, job.id);
     return { ...entry, key, reused: false };
   }
 
   /** Generate one image: a character sheet, a keyframe, an end frame. */
   async image({ id, purpose, prompt, negative = "", aspect = "16:9", references = [], seed = null, shotId = null, target }) {
     const { provider, model } = this.status.image;
-    const key = keyframeKey({ provider, model, prompt, negative, width: IMAGE_SIZE.width, height: IMAGE_SIZE.height, seed, references: references.map((reference) => reference.sha256) });
+    const baseKey = keyframeKey({ provider, model, prompt, negative, width: IMAGE_SIZE.width, height: IMAGE_SIZE.height, seed, references: references.map((reference) => reference.sha256) });
+    const key = this.imageVersion ? mediaKey("series-image", { version: this.imageVersion, key: baseKey }) : baseKey;
     const request = {
       slug: this.slug,
       purpose,

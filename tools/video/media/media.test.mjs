@@ -144,7 +144,7 @@ test("cache keys ignore field order, and entries vanish with their files", () =>
   const workdir = mkdtempSync(path.join(tmpdir(), "video-media-"));
   mkdirSync(path.join(workdir, "keyframes"));
   writeFileSync(path.join(workdir, "keyframes", "a.png"), "x");
-  remember(workdir, key, { file: "keyframes/a.png", sha256: "s", bytes: 1, job_id: "j", provider: "gemini", model: "m", cost_usd: 0.134 });
+  remember(workdir, key, { file: "keyframes/a.png", sha256: SHA("x"), bytes: 1, job_id: "j", provider: "gemini", model: "m", cost_usd: 0.134 });
   assert.equal(cached(workdir, key).file, "keyframes/a.png");
   assert.equal(cached(workdir, "nope"), null);
   rememberJob(workdir, "k2", { job_id: "j2", kind: "clip", target: "clips/b.mp4" });

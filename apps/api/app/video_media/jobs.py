@@ -303,6 +303,8 @@ async def submit_job(
             )
         existing.status = "queued"
         existing.attempts += 1
+        # A refunded failure cleared the estimate; price this newly reserved attempt again.
+        existing.usd_estimate = meter.usd_for(model, kind, seconds)
         existing.error_code = None
         existing.error_detail = None
         existing.vendor_ref = None
