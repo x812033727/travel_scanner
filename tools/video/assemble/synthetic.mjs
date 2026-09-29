@@ -12,7 +12,8 @@ import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
-import { clipsHash, isShot, lookHash, mixHash, shotVisual } from "../core/drama.mjs";
+import { clipsHash, illustrated, isShot, lookHash, mixHash, picturesHash, shotVisual } from "../core/drama.mjs";
+import { SFX_NAMES } from "./sfx.mjs";
 import { buildTimeline, estimatedSamples, FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "../core/timeline.mjs";
 
 export const MUSIC_SECONDS = 20;
@@ -72,8 +73,40 @@ export function writeSyntheticKeyframes(doc, workdir, binary) {
     ffmpeg(binary, ["-f", "lavfi", "-i", `testsrc2=size=1920x1080:rate=${FPS},hue=h=${hue(index)}`, "-frames:v", "1", path.join(workdir, file)]);
     shots[scene.id] = { file, sha256: fileSha256(path.join(workdir, file)) };
   });
-  const manifest = { look_hash: lookHash(doc), visual_hash: visualHash(doc), shots };
+  // A drama's manifest is bound to the whole picture, illustrated slides' to the shots alone (docs/videos/ILLUSTRATED.md).
+  const manifest = { look_hash: lookHash(doc), ...(illustrated(doc) ? { pictures_hash: picturesHash(doc) } : { visual_hash: visualHash(doc) }), shots };
   writeManifest(workdir, "keyframes", manifest);
+  return manifest;
+}
+
+/** The owner's own music file under <work base>/_music/, as a slides video names it: a twenty-second two-tone track. */
+export function writeSyntheticTrack(workBase, name, binary) {
+  mkdirSync(path.join(workBase, "_music"), { recursive: true });
+  const file = path.join(workBase, "_music", name);
+  ffmpeg(binary, [
+    "-f", "lavfi", "-i", `sine=frequency=196:sample_rate=${SAMPLE_RATE}:duration=${MUSIC_SECONDS}`,
+    "-f", "lavfi", "-i", `sine=frequency=294:sample_rate=${SAMPLE_RATE}:duration=${MUSIC_SECONDS}`,
+    "-filter_complex", "[0:a][1:a]amix=inputs=2:normalize=0,volume=-6dB[a]",
+    "-map", "[a]", "-c:a", "libmp3lame", "-q:a", "4", file,
+  ]);
+  return file;
+}
+
+/**
+ * A sound-effect set under <work base>/_sfx/<set>/ as the owner would put one there
+ * (docs/videos/ILLUSTRATED.md): a short tone per sound and the manifest naming them.
+ */
+export function writeSyntheticSfx(workBase, set, binary) {
+  const dir = path.join(workBase, "_sfx", set);
+  mkdirSync(dir, { recursive: true });
+  const sounds = {};
+  SFX_NAMES.forEach((name, index) => {
+    const file = `${name}.wav`;
+    ffmpeg(binary, ["-f", "lavfi", "-i", `sine=frequency=${440 + index * 220}:sample_rate=${SAMPLE_RATE}:duration=0.25`, "-af", "afade=t=out:st=0.1:d=0.15", "-c:a", "pcm_s16le", path.join(dir, file)]);
+    sounds[name] = { file, sha256: fileSha256(path.join(dir, file)), source: "synthetic", licence: "test" };
+  });
+  const manifest = { set, sounds };
+  writeFileSync(path.join(dir, "manifest.json"), `${JSON.stringify(manifest, null, 2)}\n`);
   return manifest;
 }
 

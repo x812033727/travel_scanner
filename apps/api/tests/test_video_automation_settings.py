@@ -30,6 +30,7 @@ from app.video_automation import settings as service
 from app.video_automation.models import (
     DEFAULT_CAPTION_LOCALES,
     DEFAULT_DRAMA,
+    DEFAULT_SLIDES,
     DEFAULT_STAGE_MODELS,
     DEFAULT_TOPIC_AVOID,
     DEFAULT_TOPIC_SCOPE,
@@ -72,6 +73,7 @@ def _values(**changes: Any) -> dict[str, Any]:
         "max_retake_rounds": 2,
         "auto_approve_audio": True,
         "drama": copy.deepcopy(DEFAULT_DRAMA),
+        "slides": copy.deepcopy(DEFAULT_SLIDES),
         "stage_instructions": {},
         "channel_stance": "",
         "auto_pick_outline": True,
@@ -79,6 +81,10 @@ def _values(**changes: Any) -> dict[str, Any]:
     }
     values.update(changes)
     return values
+
+
+def _slides(**changes: Any) -> dict[str, Any]:
+    return {**copy.deepcopy(DEFAULT_SLIDES), **changes}
 
 
 def _drama(**changes: Any) -> dict[str, Any]:
@@ -503,6 +509,9 @@ async def test_a_save_changes_only_the_fields_it_sends_at_both_levels(
         )
         older = await client.put(url, json={"drama": older_drama})
         nulls = await client.put(url, json={"enabled": None, "channel_stance": None})
+        slides = await client.put(
+            url, json={"slides": {"slides_media_enabled": True, "slides_music_track": "bed.mp3"}}
+        )
     assert one.status_code == 200, one.text
     first = update.await_args_list[0].args[2]
     assert first.enabled is True
@@ -523,6 +532,13 @@ async def test_a_save_changes_only_the_fields_it_sends_at_both_levels(
     assert nulls.status_code == 200, nulls.text
     fourth = update.await_args_list[3].args[2]
     assert fourth.enabled is False and fourth.channel_stance == "1. 先把帳算清楚再花錢"
+    # The slides object merges field by field too (docs/videos/ILLUSTRATED.md).
+    assert slides.status_code == 200, slides.text
+    fifth = update.await_args_list[4].args[2]
+    assert fifth.slides.slides_media_enabled is True
+    assert fifth.slides.slides_music_track == "bed.mp3"
+    assert fifth.slides.slides_image_model == "gemini-3.1-flash-image", "what was not sent stays"
+    assert fifth.slides.slides_max_usd_per_video == 20 and fifth.drama.max_usd_per_video == 50
 
 
 @pytest.mark.asyncio
@@ -700,6 +716,8 @@ async def test_the_worker_reads_the_stance_and_the_switches_with_the_settings(
         3,
         2,
     )
+    # The illustrated slides' settings, which settle() reads for every new video.
+    assert body["slides"] == DEFAULT_SLIDES
 
 
 @pytest.mark.asyncio
@@ -900,6 +918,76 @@ async def test_narration_jev_passed_is_approved_as_it_arrives_unless_the_owner_t
 
 
 # --- a hands-off series decides its own sheets, storyboards and screenplays (BINGE.md) -----------
+
+
+def test_the_slides_settings_default_on_flash_with_the_storyboard_approving_itself() -> None:
+    """Illustrated slides (docs/videos/ILLUSTRATED.md): the defaults are valid, a page from before
+    they existed sends none and gets them, and what the server cannot serve is named."""
+    payload = SettingsWrite(**_values())
+    assert payload.slides.model_dump() == DEFAULT_SLIDES
+    assert payload.slides.slides_image_model == "gemini-3.1-flash-image"
+    assert payload.slides.slides_auto_approve_storyboard is True
+    older = _values()
+    del older["slides"]
+    assert SettingsWrite(**older).slides.model_dump() == DEFAULT_SLIDES
+    runtime = Settings(hotspot_guide_gemini_api_key="g")
+    assert service.settings_problems(payload, runtime) == []
+    # The pictures on without the image vendor's key; a model the catalog lacks or has retired.
+    problems = service.settings_problems(
+        SettingsWrite(**_values(slides=_slides(slides_media_enabled=True))), Settings()
+    )
+    assert problems == ["投影片插畫：網站還沒有 gemini 的金鑰，不能開啟插畫"]
+    with pytest.raises(ValidationError, match="not an image model"):
+        SettingsWrite(**_values(slides=_slides(slides_image_model="nope")))
+    with pytest.raises(ValidationError):
+        SettingsWrite(**_values(slides=_slides(slides_music_track="../etc/passwd")))
+    with pytest.raises(ValidationError):
+        SettingsWrite(**_values(slides=_slides(slides_sfx_set="Studio A")))
+    named = SettingsWrite(
+        **_values(slides=_slides(slides_music_track="bed.mp3", slides_sfx_set="studio-a"))
+    )
+    assert (named.slides.slides_music_track, named.slides.slides_sfx_set) == ("bed.mp3", "studio-a")
+    # NULL follows the drama's image model, which is checked in its place.
+    following = SettingsWrite(**_values(slides=_slides(slides_image_model=None)))
+    assert service.settings_problems(following, runtime) == []
+    drama_pro = SimpleNamespace(
+        image_provider="gemini", image_model="gemini-3-pro-image", slides_image_model=None
+    )
+    choice = service.slides_image_choice
+    assert choice(drama_pro) == ("gemini", "gemini-3-pro-image")  # type: ignore[arg-type]
+    elsewhere = SimpleNamespace(
+        image_provider="minimax", image_model="x", slides_image_model="gemini-3.1-flash-image"
+    )
+    assert choice(elsewhere) == ("gemini", "gemini-3.1-flash-image")  # type: ignore[arg-type]
+    # A row from before migration 0114 reads the defaults for what it lacks.
+    older_row = SimpleNamespace()
+    assert service.slides_values(older_row).model_dump() == DEFAULT_SLIDES  # type: ignore[arg-type]
+
+
+@pytest.mark.asyncio
+async def test_a_slides_storyboard_reads_its_own_switch_and_a_drama_s_keeps_the_old_rule() -> None:
+    board: dict[str, Any] = {"shots": [{"id": "a"}], "judge": {"overall": 8, "problems": []}}
+    row = SimpleNamespace(
+        auto_approve_storyboard=False, judge_min_score=7, slides_auto_approve_storyboard=True
+    )
+    session = AsyncMock()
+    session.scalar = AsyncMock(return_value=row)
+    assert await service.auto_approves_storyboard(session, board, None, "slides")
+    assert not await service.auto_approves_storyboard(session, board, None, "drama")
+    assert not await service.auto_approves_storyboard(session, board), "a drama by default"
+    off = SimpleNamespace(**{**vars(row), "slides_auto_approve_storyboard": False})
+    session.scalar = AsyncMock(return_value=off)
+    assert not await service.auto_approves_storyboard(session, board, None, "slides")
+    strict = SimpleNamespace(**{**vars(row), "judge_min_score": 9})
+    session.scalar = AsyncMock(return_value=strict)
+    assert not await service.auto_approves_storyboard(session, board, None, "slides"), (
+        "the judge's threshold is the drama's"
+    )
+    session.scalar = AsyncMock(return_value=None)
+    assert await service.auto_approves_storyboard(session, board, None, "slides"), (
+        "no row yet: the slides' default is on"
+    )
+    assert not await service.auto_approves_storyboard(session, board, None, "drama")
 
 
 @pytest.mark.asyncio

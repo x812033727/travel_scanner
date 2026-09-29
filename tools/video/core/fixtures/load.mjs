@@ -40,3 +40,9 @@ export function sandbox(slug = "fixture-minimal", name = "minimal") {
   mkdirSync(work);
   return { base, root, videos, dir: path.join(videos, slug), work, workdir: path.join(work, slug), slug };
 }
+
+// Illustrated slides (docs/videos/ILLUSTRATED.md): a slides video with still shots between its
+// cards, a look, a licensed music bed and a sound-effect set.
+export const ILLUSTRATED_FIXTURE_FILE = path.join(FIXTURES, "illustrated", "video.json");
+export const illustratedFixture = () => JSON.parse(readFileSync(ILLUSTRATED_FIXTURE_FILE, "utf8"));
+export const illustratedBrief = () => readFileSync(path.join(FIXTURES, "illustrated", "brief.md"), "utf8");

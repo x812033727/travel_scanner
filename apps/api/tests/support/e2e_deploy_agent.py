@@ -13,6 +13,7 @@ import json
 import os
 import re
 import socketserver
+import sys
 import time
 from datetime import UTC, datetime
 from http import HTTPStatus
@@ -74,9 +75,7 @@ def _verified(method: str, path: str, body: bytes, headers: Any) -> bool:
     signature = headers.get("X-Deploy-Signature")
     if not timestamp or not nonce or not signature:
         return False
-    if not re.fullmatch(r"[0-9a-f]{32}", nonce) or not re.fullmatch(
-        r"[0-9a-f]{64}", signature
-    ):
+    if not re.fullmatch(r"[0-9a-f]{32}", nonce) or not re.fullmatch(r"[0-9a-f]{64}", signature):
         return False
     try:
         instant = int(timestamp)
@@ -239,15 +238,20 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def main() -> None:
-    _validate_environment()
+    if sys.platform == "win32":
+        raise SystemExit(
+            "E2E deploy-agent fixture requires Unix sockets and is not supported on Windows"
+        )
+    else:
+        _validate_environment()
 
-    class FixtureServer(socketserver.ThreadingMixIn, socketserver.UnixStreamServer):
-        daemon_threads = True
+        class FixtureServer(socketserver.ThreadingMixIn, socketserver.UnixStreamServer):
+            daemon_threads = True
 
-    SOCKET_PATH.unlink(missing_ok=True)
-    with FixtureServer(str(SOCKET_PATH), Handler) as server:
-        SOCKET_PATH.chmod(0o660)
-        server.serve_forever()
+        SOCKET_PATH.unlink(missing_ok=True)
+        with FixtureServer(str(SOCKET_PATH), Handler) as server:
+            SOCKET_PATH.chmod(0o660)
+            server.serve_forever()
 
 
 if __name__ == "__main__":

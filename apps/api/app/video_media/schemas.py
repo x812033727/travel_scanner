@@ -176,6 +176,15 @@ class MediaStatus(StrictModel):
     image: ChoiceView
     clip: ChoiceView
     music: ChoiceView
+    # Illustrated slides (docs/videos/ILLUSTRATED.md): their own switch, image choice, cap,
+    # storyboard rule and the owner's licensed music file and sound-effect set; the tool's
+    # media/stages.mjs reads the first three.
+    slides_enabled: bool = False
+    slides_image: ChoiceView | None = None
+    slides_max_usd_per_video: int | None = None
+    slides_auto_approve_storyboard: bool = True
+    slides_music_track: str | None = None
+    slides_sfx_set: str | None = None
     models: MediaOptionsView
     budgets: dict[str, BudgetView]
     # This month's jobs priced with the catalog, submitted or ready.

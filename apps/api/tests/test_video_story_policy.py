@@ -611,6 +611,22 @@ async def test_dropping_a_serial_s_episode_lets_the_next_one_start_as_skipping_i
     async with db() as session:
         saga = await session.scalar(select(VideoDramaSeries))
         assert saga is not None
+        # Episodes start only under an approved setting book and outline.
+        for kind in ("setting", "outline"):
+            session.add(
+                VideoDramaDoc(
+                    id=uuid4(),
+                    series_id=saga.id,
+                    kind=kind,
+                    chapter_number=0,
+                    version=1,
+                    body_md="# 已核准",
+                    body_json={},
+                    status="approved",
+                    decided_at=WHEN,
+                    created_at=WHEN,
+                )
+            )
         session.add(
             VideoDramaDoc(
                 id=uuid4(),
