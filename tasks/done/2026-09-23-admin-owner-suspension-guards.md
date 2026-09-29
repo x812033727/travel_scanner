@@ -1,13 +1,13 @@
 ---
 id: 2026-09-23-admin-owner-suspension-guards
 title: Timed suspension and session revocation of owners skip step-up and environment guards
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: codex-admin-guards
 claimed_at: 2026-09-29T08:51:22Z
 created_at: 2026-09-23T15:57:48Z
-completed_at:
+completed_at: 2026-09-29T09:06:11Z
 branch: codex/admin-suspension-guards
 depends_on: []
 scope:
