@@ -33,7 +33,7 @@ The standard worker cannot adopt these external cuts automatically.
   preserving the approved cuts and the owner's language and publication choices.
 - [ ] Completed metadata/captions and checked dub tracks are submitted cumulatively;
   failures retain actual reasons and partial progress survives a restart.
-- [ ] Record real backend review state and remaining work without claiming human
+- [x] Record real backend review state and remaining work without claiming human
   audio acceptance, Studio upload or publication.
 
 ## Steps
@@ -41,8 +41,8 @@ The standard worker cannot adopt these external cuts automatically.
 - [x] Read the video workflow and inspect competing work; keep Shorts out of scope.
 - [x] Read-only preflight verifies all six exact approved hashes and language choices.
 - [x] Build and independently check the adapter, runner and focused regression tests.
-- [ ] Start the authorized language work and verify persisted progress in the backend.
-- [ ] Record the final receipt or the concrete continuation state.
+- [x] Start the authorized language work and verify persisted progress in the backend.
+- [x] Record the final receipt or the concrete continuation state.
 
 ## How to verify
 
@@ -75,3 +75,9 @@ The job must not call the general auto loop, assemble, tidy or youtube-sync.
   `2026-09-29T12:01:31.863243928Z` after a fresh successful six-video dry run.
   See `docs/videos/imported-long-languages/operations-20260929.md` for exact hashes,
   container IDs, interrupted-call evidence and the authoritative continuation path.
+- At 12:03:20Z, episode 01 English metadata/captions reached backend `ready`,
+  review `8901c581-edf5-4878-ae75-4a72d440c79e`. Both attached file hashes match
+  the generated host files and the approved final remains unchanged. Episode 02
+  English translation is active. All remaining locales/dubs still need production
+  completion; keep this task in progress while its isolated container owns the work.
+- Draft PR #986 preserves the tested code and operational record; it is not merged.

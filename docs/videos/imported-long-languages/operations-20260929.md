@@ -64,6 +64,27 @@ A fresh six-project dry run passed. The active replacement is
 started `2026-09-29T12:01:31.863243928Z` (20:01 Taiwan), with the same manifest and
 media. The existing web, API and regular worker services were not changed.
 
+## First persisted result
+
+At `2026-09-29T12:03:20Z`, episode 01's saved English translation passed fresh
+independent review and merge. The backend language review is
+`8901c581-edf5-4878-ae75-4a72d440c79e`, content hash
+`8d65d65c6fed59170bd43a14eeafbefd12e4597dddcddda7d301b10a785091e8`.
+It is automatically approved because this batch has metadata and captions only.
+The English metadata and captions read back as `ready`; its dub still reads
+`working`. The remaining selected languages and videos are not complete.
+
+Persisted file hashes were compared to the actual generated host files:
+
+| Role | Bytes | SHA-256 |
+| --- | ---: | --- |
+| `captions_en` | 7,986 | `4f9d2e175087544b11d8b963cfa91da888d26f66978d0e89073a58ab3fa47f37` |
+| `description_en` | 1,238 | `78a97f75f519c8b47dd6c11f3f638017c6136395302f1e0b41157f09ba6ca389` |
+
+The original final hash was checked again and stayed unchanged. The job advanced
+to episode 02's English translation at `12:03:20.522Z` and remains active. This
+is verified continuation, not a claim that all six projects or their dubs finished.
+
 ## Continuation
 
 Read the container state, `batch/progress.json`, and `batch/events.jsonl`. Use
