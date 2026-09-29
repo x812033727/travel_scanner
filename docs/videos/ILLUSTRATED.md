@@ -100,7 +100,7 @@ lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋�
 | 5 伺服器開關、Flash、自動核准分鏡 | `2026-09-29-video-slides-media-api` | 已落地：設定列的 `slides` 物件（`slides_media_enabled` 預設關、`slides_image_model` 預設 gemini-3.1-flash-image、`slides_max_usd_per_video` 20、`slides_auto_approve_storyboard` 預設開、`slides_music_track`、`slides_sfx_set`；migration 0114），教學分頁的「投影片影片的插畫」區塊；`GET /api/video/media/status` 多回 `slides_enabled`、`slides_image`、`slides_max_usd_per_video`；`submit_job` 依 `VideoProject.format` 放行，投影片專案不接片段 |
 | 6 工人 | `2026-09-29-video-illustrated-slides-worker` | 開著 |
 | 7 說書式提示詞、`restyle` | `2026-09-29-video-storytelling-prompts` | 已落地 |
-| 8 Shorts | `2026-09-29-video-shorts-motion-music` | 開著 |
+| 8 Shorts | `2026-09-29-video-shorts-motion-music` | 已落地：`tools/video/shorts/motion.mjs`（一景一段、透明字卡疊在運鏡的圖或漂移的底色上、景間溶接）、schema 2 的 `camera`／`music`／`sfx`、`from-episode` 接插圖投影片（主題 `cut:illustrated`）、頻道聲音的 style 改說書式；細節在 `SHORTS.md` §工具端 |
 | 9 試片〈Jev〉 | `2026-09-29-video-pilot-jev-decision-model` | 開著 |
 
 ## 試片的數字表（試片後填）
