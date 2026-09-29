@@ -250,3 +250,31 @@ the changed line. Rebuilding without renewed editorial review is insufficient.
 - Worker/tool suite: 578 pass, 1 existing Windows/Bash environment skip.
 - The branch is ready for code review; it has not been merged or deployed. The
   independent production/browser follow-up remains with its existing owner.
+
+## Fourth pass, 2026-09-29
+
+A full cold read of each work (claude-fable-5-1 at the owner's request, on this
+branch) found a further set of contradictions, the Simplified-to-Traditional
+conversion damage in the five Codex works, and one pipeline limit. Findings are
+in `docs/videos/series-plans/binge-five-20260928/AUDIT-FOURTH-PASS-20260929.md`,
+sorted per work into 必修 (fix), 小修 (small) and 留待決定 (owner's call).
+
+Repair, recorded in `AUDIT-REPAIR-20260929.md` beside it:
+
+- Every 必修 and 小修 item of all ten works is fixed; 留待決定 is untouched.
+  One fixer and one separate read-only reviewer per work; two works failed their
+  first review (Rival, Three Needles) and passed after a second repair.
+- Codex receipts are round 4 in `reviews/<slug>.json` (round 3 and its sources
+  kept in `reviews/round-03/`); Claude reviews are in
+  `claude-binge-five-20260928/revision-review-2026-09-29.json`, bound to the
+  source and `documents.json` hashes.
+- A character's `appearance` reaches every shot of every episode word for word
+  (look.mjs, keyframes.mjs). Plans now keep it to what never changes and list
+  changing costume and props per episode in `continuity_notes`; both validators
+  refuse episode and time wording there and both AUTHORING.md say so. A look
+  or voice that changes by episode needs the pipeline change in
+  `tasks/open/2026-09-29-let-a-drama-character-s-look.md`.
+- Creative additions the repair had to make (a renamed city, moved locations,
+  new rule layers) are listed for the owner in the repair record.
+- Production is unchanged: the ten works still hold the version 1 documents
+  imported on 2026-09-28. Updating them needs the owner's go-ahead.

@@ -6,18 +6,18 @@
 
 ## 世界觀
 
-2026 年，虛構的沿海城市雲州，人口約兩百萬，老城區與新開發的健康產業園區隔著一條河。老城區裡的守方堂是一間開了一百一十二年的藥號，三進老宅、黑底金字匾額，靠著「先救人再算帳」的規矩活到今天，也因為這條規矩一直窮。河對岸是霍青山的青山健康總部與山腰上的青山療養院，玻璃長廊看得見整座城；城裡的大型醫藥博覽會每年秋天在河邊的展館舉行。往北一百多公里是終年有霧的雲嶺山區，隱世醫者谿翁住在那裡，四十五天的故事裡他只出現在信與回憶中，直到第 37 集下山。
+2026 年，虛構的沿海城市雲州，人口約兩百萬，老城區與新開發的健康產業園區隔著一條河。老城區裡的守方堂是一間開了一百一十二年的藥號，三進老宅、黑底金字匾額，靠著「先救人再算帳」的規矩活到今天，也因為這條規矩一直窮。河對岸是霍青山的青山健康總部與山腰上的青山療養院，玻璃長廊看得見整座城；城裡的大型醫藥博覽會每年秋天在河邊的展館舉行。往北一百多公里是終年有霧的雲嶺山區，隱世醫者谿翁住在那裡，兩個多月的故事裡他只出現在信與回憶中，直到第 37 集下山。
 
 | 地點（id） | 名稱 | 固定辨識 |
 | --- | --- | --- |
 | hall | 守方堂大堂與匾額 | 三進老宅的第一進。黑底金字「守方堂」匾額懸在正中，匾額背面有一行刻字；兩側是深色杉木藥櫃，櫃檯上一具黃銅秤、一排青花藥罈；地面是磨到發亮的紅磚，門檻被踩出一道凹痕。門外就是廣場與郭大海站的那塊石板。 |
 | storeroom | 守方堂藥庫 | 第二進側廂。整面牆的百子櫃（三百多個小抽屜、銅拉環、毛筆寫的藥名），中央一張老楠木配藥桌，天花板吊著藥籮與幾串乾藥；夜裡只有一盞黃燈泡，牆角一張周伯守夜的躺椅與一台老收音機。 |
 | courtyard | 沈家老宅後院與鶴亭的房 | 第三進。天井裡一棵老桂花樹、一口青石水缸；鶴亭的房間朝天井開一扇木窗，床邊一張藤椅，床頭一盞暖黃檯燈與一副折好的老花眼鏡，牆上掛一張全家舊照片（亦微母親在其中）。 |
-| er | 市立醫院急診 | 冷白日光燈、綠色簾幕隔間、監視器上的波形與嗶聲；地板貼著黃色動線膠帶；姜曼的白袍口袋插紅藍黑三支筆。搶救時整個空間只剩心跳般的鼓聲。 |
+| er | 市立醫院急診 | 室內：冷白日光燈、綠色簾幕隔間、監視器上的波形與嗶聲，地板貼著黃色動線膠帶，搶救時整個空間只剩心跳般的鼓聲。大門外：一道自動玻璃門、門上紅底白字的「急診」燈箱、一條救護車專用的斜坡車道與一排白色護欄。 |
 | sanatorium | 青山療養院 | 山腰上的玻璃長廊：一側整面落地玻璃俯瞰雲州市區，另一側是編號的白色病房門；淺灰石材地面，牆上一枚松枝標誌；長廊盡頭 7 號房的門把是黃銅色，其餘全是銀色。 |
 | plaza | 換匾典禮的廣場 | 守方堂門前的石板廣場：一座紅布覆蓋的新匾架、白色帳篷、紅地毯、一排折疊椅；廣場邊的停車格常停一輛黑色轎車；廣場中央有一塊比其他石板顏色深的石板，是郭大海七年來站的位置。 |
 | expo | 博覽會醫藥展大廳 | 挑高展館、藍白色展位；「安歲」產品線的巨大燈箱；中央圓形展台、階梯座席、媒體攝影區的一排長鏡頭；地面是反光的灰色地磚。 |
-| court | 雲州地方法院法庭 | 淺木色長桌、一面投影螢幕、證人席在被告席後方；旁聽席第一排永遠坐著周伯與亦微；法官席後方牆上一面素色木紋牆，沒有任何真實標誌。 |
+| court | 雲州地方法院法庭 | 淺木色長桌、一面投影螢幕、證人席在被告席後方；旁聽席是三排淺木色長椅；法官席後方牆上一面素色木紋牆，沒有任何真實標誌。 |
 | yunling | 雲嶺 | 山中一間石牆木屋，屋前曬藥的竹篾架、一口石臼、一面掛滿針包的木牆；終年有霧；只在信、回憶與結尾出現，畫面永遠是灰綠色與白霧。 |
 
 | 勢力 | 想要什麼 | 隱瞞什麼 |
@@ -29,7 +29,7 @@
 
 ## 規則與代價
 
-- 三針之限：每個病人只用三針，第三針之後不再加針；三針不成，就換方法，不加針。這是谿翁教的第一條，也是陸謹每次解針包前先說「先把脈」的原因。
+- 三針之限：每一回出手至多三針，第三針之後不再加針；三針不成，就換方法，不加針；同一個病人下一回再診，重新從第一針算起。這是谿翁教的第一條，也是陸謹每次解針包前先說「先把脈」的原因。
 - 第四針借脈：把針扎進自己手腕，把自己的生氣借給病人。每用一次折壽數年、當場吐血，一生只能用三次；谿翁的規矩，不許用在仇人身上。全劇只在第 33 集用一次。
 - 安歲散沒有文字配方：十二味藥的配伍順序只藏在亦微母親教的搖籃曲裡，歌詞裡藥名出現的順序就是下藥的順序；順序錯了就是毒，服用者先好三天，第四天倒下。
 - 匾額背面刻著創始契約「方在人在，堂歸持方者」：守方堂歸持有配方的人，不歸血脈、不歸出資者；這行字決定第 38 集誰能拿回守方堂。
@@ -38,11 +38,13 @@
 
 ## 跨集連貫性與畫面約束
 
-- 三針之限：陸謹每次下針都數到三；第 12 集谿翁的信說「第四針不可用」，第 21 集第一次想用被姜曼按住，第 33 集為郭思思用掉一生三次的第一次並吐血；第 31 集對霍只下一針，第 39 集三針之後停手。
-- 掌心的字：第 2 集鶴亭寫「走」，第 9 集再寫「走」並多一個「霍」，第 16 集才第一次開口說出七年前的威脅；第 40 集同一隻手寫「留」。鶴亭中風後右手抖，陸謹下針後才短暫穩住。
+- 三針之限：每一回出手至多三針，陸謹每次下針都數到三，同一個病人下一回再診重新算起；第 12 集谿翁的信說「第四針不可用」，第 21 集的信說第四針是借命、一生三次，第 21 集第一次想用被姜曼按住，第 33 集為郭思思用掉一生三次的第一次並吐血；「不許用在仇人身上」是谿翁第 37 集當面說的，不在任何一封信裡；第 31 集對霍只下一針，第 39 集三針之後停手。
+- 掌心的字：第 2 集鶴亭寫「走」，第 9 集再寫「走」並多一個「霍」，第 15 集喝到被換的藥時仍出不了聲、只寫「霍」與「藥」，第 16 集才第一次開口說出七年前的威脅，說完那幾句又回到掌心寫字；第 35 集的「歌」由周伯轉寫；第 40 集同一隻手寫「留」。鶴亭中風後右手抖，陸謹下針後才短暫穩住。
 - 搖籃曲與安歲散：歌是亦微的母親教的，順序錯了是毒。第 4 集陸謹聽出藥名，第 17 集找到藥單背面的歌詞，第 18 集依曲配藥見效，第 28 集故意給霍錯序，第 36 集在藥庫公開正確順序。
-- 郭思思：第 20 集以前只存在於死亡證明與郭大海的罵聲；病房識別帶寫著七年前的日期；第 29 集被霍轉走，第 33 集找到，第 34 集醒來第一句叫「爸爸」。郭大海的那杯溫水從第 19 集帶到第 40 集。
-- 匾額：第 1 集吊起翻轉時背面的刻字只有陸謹看見；第 9 集仲謙在簽約前夜拆下；第 25 集搬回、刻字「方在人在，堂歸持方者」全文出現；第 40 集舊匾掛回。
+- 郭思思：第 20 集以前只存在於死亡證明與郭大海的罵聲；病房識別帶寫著七年前的日期；第 29 集被霍轉走，第 33 集找到，第 34 集醒來第一句叫「爸爸」，之後住在市立醫院。郭大海的水杯第 13 集第一次入鏡（杯身寫著「思思」），第 19 集起裝的是送去 7 號房的溫水，一路帶到第 40 集。
+- 匾額：第 1 集吊起翻轉時背面的刻字只有陸謹看見；第 9 集仲謙趕在簽約前連夜拆下、倒放在大堂地上；第 15 集霍當抵押品抬走，第 19 集靠在療養院長廊；第 25 集搬回、刻字「方在人在，堂歸持方者」全文出現；第 30 集被抬去展台，第 31 集散場後運回大堂；第 38 集抬回門楣下等吉日，第 40 集舊匾掛回。
+- 急救優先：有人倒下先叫救護車或由姜曼急救，陸謹的針只在急救進行中或等車時下，穩住後交給醫護（第 1、3、5、7–8、31、33、38–39 集）。第 15–16 集的寫法不同：鶴亭喝到被換的藥，亦微先叫救護車，醫護到場處置、評估穩定可以在家觀察，交代家屬整夜每小時量血壓、有變化立刻回撥並留下急診直撥電話，帶走剩藥送驗；陸謹的三針是在醫護處置並確認穩定、離開之後才下，不取代醫護的處置。沒有一場急救戲是不叫救護車、只等針。
+- 道具與穿著狀態（鏡頭提示詞要照這裡寫）：固定外觀提示詞含陸謹的針包與韋承的黑皮手套，這兩樣每個鏡頭都已經有；不含以下其他各項，需要時由該集的鏡頭提示詞加上。陸謹——第 3 集頭髮與布衫沾滿藥渣；第 13–15 集左臉腫（第 13 集傍晚挨拳，第 14 集是同一晚，第 15 集是隔天早上），第 16 集起不再畫；第 33 集一口血落在白手帕上，第 34 集躺在急診病床上吊點滴；第 37 集起谿翁的舊針包也由他收著，第 38–40 集隨身用的仍是自己那一個。沈亦微——母親留下的小黃銅秤用細繩掛在腰間，第 1–26 集都在；第 26 集塞進陸謹手裡，第 36、38 集腰間不再掛秤。沈鶴亭——第 2、9、15、16、26、27 集半躺在床上（床頭暖黃檯燈、床邊藤椅），第 37、40 集坐輪椅，兩種都照外觀蓋深藍毛毯。沈仲謙——總經理識別證（掛繩與綠色松枝徽章）第 1–16 集掛在胸前，第 16 集摘下放在天井水缸沿上，之後不再佩戴。霍青山——銀頭黑手杖只在第 1、3、6、7、12、14、15 集加上（第 3、7 集只從車窗露出手杖），第 19 集起各集都不加；第 19–22、27 集與第 28 集服藥前坐輪椅、膝上蓋灰色喀什米爾毯；第 28 集服藥隔天到第 30 集站著走路；第 31 集倒在展台、被抬上擔架；第 32、36、39 集躺在病床上，胸口以下蓋灰色喀什米爾毯。韋承——黑皮手套在固定外觀裡，只有三拍離身：第 8 集遞合約前脫下拿在手上、第 22 集遞信封時脫著到說完戴回、第 32 集脫下放在帳本上，那幾拍鏡頭用構圖避開他的手，或由鏡頭提示詞寫明手上沒有手套；第 32 集之後韋承不再入鏡。黑色文件夾不在固定外觀裡，劇本沒有寫到韋承帶文件夾（第 14 集攤借據的黑色文件夾是霍自己帶的），劇本寫到時才加。郭大海——紅字紙板牌用麻繩掛在脖子上，只在守方堂門口罵人時掛（第 3、7 集，第 13 集下班走到巷口時仍掛著）；第 19–20 集在療養院不掛，第 29 集起不再帶牌子。塑膠水杯（杯身麥克筆寫「思思」）第 13、19、20、34 集在他手上，第 40 集由思思端出來，再由他放到陸謹手上；第 39–40 集他手上是一把水果刀，第 40 集掉在地上。郭思思——第 20、21、33 集昏迷躺在病床上、頭髮散在枕上，第 20 集特寫手腕識別帶上七年前的入院日期；舊布兔子第 20–21 集在她手邊，第 29 集掉在空病房地上、由陸謹撿走，之後劇本沒有再用到；第 34 集在急診病床上睜眼；第 40 集站著走出醫院大門，病人服外披淺黃色開襟外套，雙手端著那杯溫水。谿翁——舊針包樣式與陸謹的相同（捲起的牛血紅皮革、黃銅扣），但舊到發黑、裂開；第 37 集背在身上走進守方堂，同集放到陸謹的針包旁邊交給他。姜曼——第 33–34 集手背上寫著一個「一」。杜小豆——劇本沒有寫到保溫瓶，各集都不加。
 - 改名：男主陸謹、養兄沈仲謙、妹妹沈亦微、藥號守方堂、祖傳方安歲散。原名撞到熱門遊戲的男主、台中一家真實藥局與一種註冊成藥，養兄與妹妹的原名和第二部及另一批企劃的人名相近；配音、字幕與發音表都照新名字。
 
 ## 人物
@@ -80,7 +82,7 @@
 | 秘密 | 她其實記得母親死在藥庫那天哼的是哪一段，但二十年不敢把整首唱完。 |
 | 說話習慣 | 說話像秤藥，一句一個重量；常說「秤過再說」。 |
 | 聲音（擬定，未試聽） | gemini / Kore / 台灣國語，直接、利落，語尾不拖；哼搖籃曲時放輕放慢，帶一點氣音。 |
-| 外觀提示詞（每集逐字沿用） | Taiwanese woman, 26, slim, 165 cm, fair skin, alert almond eyes, straight brows, small firm mouth; black hair in a low practical ponytail tied with a plain black band; wears a short white pharmacist coat over a dark green cotton blouse and black slacks, flat black shoes; a small brass herb scale hangs on a cord at her waist; sleeves pushed up, an ink smudge on the right index finger. |
+| 外觀提示詞（每集逐字沿用） | Taiwanese woman, 26, slim, 165 cm, fair skin, alert almond eyes, straight brows, small firm mouth; black hair in a low practical ponytail tied with a plain black band; wears a short white pharmacist coat over a dark green cotton blouse and black slacks, flat black shoes; sleeves pushed up, an ink smudge on the right index finger. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -100,7 +102,7 @@
 | 秘密 | 七年前的假指控是他寫的；他把陸謹送到自己四十年沒見的兄長沈鶴川那裡。 |
 | 說話習慣 | 說不出話，用手指在人掌心寫字，一次一個字：「走」、「霍」、「留」。 |
 | 聲音（擬定，未試聽） | gemini / Enceladus / 台灣國語，氣音很重、每個字都費力，中風後只在第 16 集開口說幾句；其餘全靠手指在掌心寫字，由旁白讀出。 |
-| 外觀提示詞（每集逐字沿用） | Taiwanese elderly man, 73, thin and frail after a stroke, propped in bed or a wheelchair, the left side of the face slightly slack, deep-set watery eyes that stay sharp; sparse white hair combed back, white stubble; wears a gray mandarin-collar cotton jacket over a white undershirt, a dark blue wool blanket over the knees; the right hand thin with long fingers, always resting palm-up; a pair of old round reading glasses folded on the blanket. |
+| 外觀提示詞（每集逐字沿用） | Taiwanese elderly man, 73, thin and frail stroke survivor, always seated or reclining and never standing, the left side of the face slightly slack, deep-set watery eyes that stay sharp; sparse white hair combed back, white stubble; wears a gray mandarin-collar cotton jacket over a white undershirt, a dark blue wool blanket over the knees; the right hand thin with long fingers, always resting palm-up; a pair of old round reading glasses folded on the blanket. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -121,7 +123,7 @@
 | 秘密 | 七年前事後知情並掩蓋；他把守方堂的名字抵押給霍，賭在霍的「投資」上輸掉兩億。 |
 | 說話習慣 | 喜歡說「這是為了守方堂」；心虛時會重複對方最後三個字。 |
 | 聲音（擬定，未試聽） | gemini / Fenrir / 台灣國語，語速快、容易拔高，理虧時會突然壓低變小聲；喊「我沒有」時聲音會裂。 |
-| 外觀提示詞（每集逐字沿用） | Taiwanese man, 34, medium build gone soft, 175 cm, pale face, anxious eyes that avoid contact, neat eyebrows, clean-shaven; black hair slicked back with gel; wears a slim navy business suit slightly too tight, a white shirt, a red silk tie with a gold tie clip, polished black leather shoes; a gold watch on the left wrist that he keeps checking; a company lanyard with a green pine badge. |
+| 外觀提示詞（每集逐字沿用） | Taiwanese man, 34, medium build gone soft, 175 cm, pale face, anxious eyes that avoid contact, neat eyebrows, clean-shaven; black hair slicked back with gel; wears a slim navy business suit slightly too tight, a white shirt, a red silk tie with a gold tie clip, polished black leather shoes; a gold watch on the left wrist that he keeps checking. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -142,7 +144,7 @@
 | 秘密 | 七年前派人換掉守方堂的藥材讓女孩「死亡」，把昏迷的女孩送進自己的療養院；仲謙的兩億是他設的局；二十年前逼死亦微的母親。 |
 | 說話習慣 | 愛用「我早聽說」開頭；談生意像談病情，談病情像談生意。 |
 | 聲音（擬定，未試聽） | gemini / Algenib / 台灣國語，低沉帶砂，慢，每句話結尾都像已經算好；從不喊，越生氣越輕。 |
-| 外觀提示詞（每集逐字沿用） | Taiwanese man, 56, tall and broad-shouldered, 182 cm, silver-gray hair swept back, heavy brows, slow confident eyes, a thin controlled smile; wears a charcoal three-piece suit, a dark green tie, a small silver pine-branch pin on the lapel; carries a black cane with a silver head that he leans on more as the story goes; later seen in a wheelchair with a gray cashmere blanket over the knees. |
+| 外觀提示詞（每集逐字沿用） | Taiwanese man, 56, tall and broad-shouldered, 182 cm, silver-gray hair swept back, heavy brows, slow confident eyes, a thin controlled smile; wears a charcoal three-piece suit, a dark green tie, a small silver pine-branch pin on the lapel. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -163,7 +165,7 @@
 | 秘密 | 夜班學徒的錢是他用仲謙的印章付的；他手上有療養院的鑰匙與帳。 |
 | 說話習慣 | 開口先說「霍董的意思是」；反水後第一次說「我的意思是」。 |
 | 聲音（擬定，未試聽） | gemini / Algieba / 台灣國語，圓滑、輕、有禮，每句都像在念合約；反水後聲音變乾、變快。 |
-| 外觀提示詞（每集逐字沿用） | Taiwanese man, 39, slim, 176 cm, sharp jaw, watchful eyes behind thin rimless glasses, thin lips; short black hair neatly parted; wears a plain black suit without a tie, a white shirt buttoned to the collar, black leather gloves he takes off before speaking; carries a slim black document folder under the left arm; a silver ring on the right little finger. |
+| 外觀提示詞（每集逐字沿用） | Taiwanese man, 39, slim, 176 cm, sharp jaw, watchful eyes behind thin rimless glasses, thin lips; short black hair neatly parted; wears a plain black suit without a tie, a white shirt buttoned to the collar, black leather gloves; a silver ring on the right little finger. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -186,7 +188,7 @@
 
 | 對象 | 關係 |
 | --- | --- |
-| heting | 老東家；跟了他三十五年 |
+| heting | 老東家；十九歲進藥庫當學徒，跟了他四十二年，鶴川離家前叫過他兩年師兄 |
 | lujin | 看著長大的小陸；一起夜守藥庫 |
 | yiwei | 藥庫的同事與晚輩 |
 
@@ -220,7 +222,7 @@
 | 秘密 | 他每天準時來、準時走是霍付錢的工作；他每天去療養院給女兒送一杯溫水。 |
 | 說話習慣 | 七年只罵一句「你殺了我女兒」；跪下那天說的話全是短句。 |
 | 聲音（擬定，未試聽） | gemini / Charon / 台灣國語，沙啞、大聲、罵到破音；一到療養院走廊就變成幾乎聽不見的低語。 |
-| 外觀提示詞（每集逐字沿用） | Taiwanese man, 51, gaunt with a stooped back, 172 cm, hollow cheeks, red-rimmed eyes, gray stubble; graying hair uncombed; wears a faded brown windbreaker over a checked shirt, loose gray trousers, worn sandals with socks; a cardboard sign painted with red characters hangs from his neck on twine; a plastic cup of water often in his hand. |
+| 外觀提示詞（每集逐字沿用） | Taiwanese man, 51, gaunt with a stooped back, 172 cm, hollow cheeks, red-rimmed eyes, gray stubble; graying hair uncombed; wears a faded brown windbreaker over a checked shirt, loose gray trousers, worn sandals with socks. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -239,7 +241,7 @@
 | 秘密 | 七年前她服的是被換過的藥；她十二歲時是守方堂的病人，得的是跟阿豆一樣的慢性病。 |
 | 說話習慣 | 醒來第一句叫「爸爸」；之後只說很短的句子。 |
 | 聲音（擬定，未試聽） | gemini / Leda / 台灣國語，很輕、很慢，像剛學會說話；第 34 集第一個字是「爸」。 |
-| 外觀提示詞（每集逐字沿用） | Taiwanese young woman, 19, very thin from seven years in a coma, pale nearly translucent skin, long black hair spread on a pillow, faint lashes, a small mole under the left eye; wears a white hospital gown with pale blue dots and a white hospital wristband; later a light yellow cardigan over the gown when she sits up; a small worn cloth rabbit tucked by her hand. |
+| 外觀提示詞（每集逐字沿用） | Taiwanese young woman, 19, very thin and frail with the wasted look of a long coma, pale nearly translucent skin, long straight black hair, faint lashes, a small mole under the left eye; wears a white hospital gown with pale blue dots and a white hospital wristband on the left wrist. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -258,7 +260,7 @@
 | 秘密 | 他跟七年前的郭思思得的是同一種病。 |
 | 說話習慣 | 叫陸謹「針叔叔」；每次扎針都數「一、二、三」。 |
 | 聲音（擬定，未試聽） | gemini / Achernar / 台灣國語，童聲，軟、短、常常喘一下再說完；叫陸謹「針叔叔」。 |
-| 外觀提示詞（每集逐字沿用） | Taiwanese boy, 12, small and thin for his age, 140 cm, pale round face, big dark eyes, chapped lips; short black hair with a cowlick; wears an oversized light blue hoodie, gray shorts, white socks, blue sneakers with velcro straps; a red string bracelet on the left wrist; carries a dented steel thermos bottle. |
+| 外觀提示詞（每集逐字沿用） | Taiwanese boy, 12, small and thin for his age, 140 cm, pale round face, big dark eyes, chapped lips; short black hair with a cowlick; wears an oversized light blue hoodie, gray shorts, white socks, blue sneakers with velcro straps; a red string bracelet on the left wrist. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -277,7 +279,7 @@
 | 秘密 | 四十年前拒賣祖方離家，只帶走十二味藥名，沒帶走順序；他一直知道鶴亭為什麼送陸謹上山。 |
 | 說話習慣 | 信末永遠只有一句；見面第一句是「你用了一次」。 |
 | 聲音（擬定，未試聽） | gemini / Sadaltager / 台灣國語，蒼老、慢、有笑意；信裡的話由旁白讀，本人第 37 集才開口。 |
-| 外觀提示詞（每集逐字沿用） | Taiwanese elderly man, 76, tall and upright for his age, 178 cm, deeply lined brown face, bright clear eyes, long white beard, white hair tied back with a hemp cord; wears a rough gray hemp robe over black trousers, straw sandals, a bamboo hat hanging on his back; carries a bamboo staff and a very old dark leather needle case, the same shape as Lu Chen's but larger and cracked; a thin jade ring on the left thumb. |
+| 外觀提示詞（每集逐字沿用） | Taiwanese elderly man, 76, tall and upright for his age, 178 cm, deeply lined brown face, bright clear eyes, long white beard, white hair tied back with a hemp cord; wears a rough gray hemp robe over black trousers, straw sandals, a bamboo hat hanging on his back; carries a bamboo staff; a thin jade ring on the left thumb. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -288,7 +290,7 @@
 
 | id | 問題 | 確定答案 | 埋下（集） | 推進（集） | 揭曉（集） |
 | --- | --- | --- | --- | --- | --- |
-| m01 | 七年前的女孩怎麼死的？ | 她沒死。霍青山派人換掉守方堂的藥材讓十二歲的郭思思昏迷，再讓自己療養院的醫師簽死亡證明，把她藏進青山療養院 7 號房當籌碢。 | 1 | 3、5、13 | 20 |
+| m01 | 七年前的女孩怎麼死的？ | 她沒死。霍青山派人換掉守方堂的藥材讓十二歲的郭思思昏迷，再讓自己療養院的醫師簽死亡證明，把她藏進青山療養院 7 號房當籌碼。 | 1 | 3、5、13 | 20 |
 | m02 | 養父當年為何不辯解？ | 霍青山威脅他「陸謹留下就死」；鶴亭寫下假指控把陸謹送走，是為了保他的命。 | 2 | 9 | 16 |
 | m03 | 谿翁是誰？ | 沈鶴亭的兄長沈鶴川，四十年前拒賣祖方離家；鶴亭把陸謹送到他那裡學真正的祖方。第 31 集由霍青山認出針法說出名字。 | 3 | 12、27 | 31 |
 | m04 | 安歲散在哪？ | 不在紙上。十二味藥的順序藏在亦微母親教的搖籃曲裡，歌詞裡藥名出現的順序就是配伍順序。 | 4 | 10、17、18 | 24 |
@@ -313,8 +315,8 @@
 | 0–5 | 廣場高處，黑底金字的舊匾「守方堂」被兩條吊繩緩緩卸下，金字掠過鏡頭；人群最後方，一個背著針包的男人停下腳步。 | 旁白（Sulafat）：「他被趕出去七年，回來那天，全家正在賣掉他的家。」二胡單音起。 |
 | 5–12 | 台上沈仲謙穿西裝舉著剪刀對準紅布；第一排霍青山雙手按在銀頭手杖上；紅布下新匾露出「沈氏康健」四個字的一角。 | 司儀：「請沈總經理為新匾揭幕。」掌聲，低音提琴進。 |
 | 12–18 | 第一排一位白髮老客人站起來鼓掌，臉色一下灰掉，手抓住胸口，往前栽倒撞翻折疊椅。 | 椅子倒地、尖叫；仲謙的聲音裂開：「叫……叫救護車！」 |
-| 18–24 | 人群散開，仲謙蹲在老人旁邊不敢碰；陸謹從人群擠進來跪下，一手拉開老人衣領、兩指按上頸脈，另一手解開針包的黃銅扣。 | 音樂全停，只剩心跳般的鼓；亦微在遠處喊：「讓他過去！」 |
-| 24–30 | 第一針入手腕內側，第二針入胸前，特寫陸謹的手完全不抖；老人胸口起伏；第三針舉起前，陸謹抬眼，對上台上仲謙的臉。 | 陸謹低聲：「先把脈。」第三針落下，老人吸進一大口氣；鼓聲停。 |
+| 18–24 | 人群散開，仲謙蹲在老人旁邊不敢碰；陸謹從人群擠進來跪下，保全伸手要拖他，被亦微一把推開；陸謹一手拉開老人衣領、兩指按上頸脈，另一手解開針包的黃銅扣。 | 音樂全停，只剩心跳般的鼓；亦微：「讓他過去！」陸謹低聲：「先把脈。」 |
+| 24–30 | 第一針入手腕內側，第二針入胸前，特寫陸謹的手完全不抖；老人胸口起伏；第三針舉起前，陸謹抬眼，對上蹲在一旁的仲謙的臉。 | 只剩心跳般的鼓，沒有人說話；第三針落下，老人吸進一大口氣；鼓聲停。 |
 
 ## 命名規則
 
@@ -367,4 +369,4 @@
 
 ## 確定的結局
 
-霍青山活著出庭受審，青山健康被查封；仲謙因詐欺與掩蓋服刑，在牢裡收到舊匾掛回去的照片；郭思思醒來、郭大海放下刀，帶女兒把那杯溫水還到陸謹手上；安歲散公開登記，持方者是所有人，守方堂依創始契約回到老東家沈鶴亭名下，陸謹不當董事長，只當坐堂醫；換匾典禮重來，黑底金字的舊匾掛回原位；亦微在第 38 集把搖籃曲哼給阿豆聽，第 40 集只以同旋律的器樂重奏回應。最後一個畫面：鶴亭坐在輪椅上，用手指在陸謹掌心寫字，鏡頭停在那隻手上——這次寫的是「留」。
+霍青山活著出庭受審，青山健康被查封；仲謙因詐欺與掩蓋服刑，在牢裡收到舊匾抬回門楣下的照片；郭思思醒來、郭大海放下刀，帶女兒把那杯溫水還到陸謹手上；安歲散公開登記，持方者是所有人，守方堂依創始契約回到老東家沈鶴亭名下，陸謹不當董事長，只當坐堂醫；換匾典禮重來，黑底金字的舊匾掛回原位；亦微在第 38 集把搖籃曲哼給阿豆聽，第 40 集只以同旋律的器樂重奏回應。最後一個畫面：鶴亭坐在輪椅上，用手指在陸謹掌心寫字，鏡頭停在那隻手上——這次寫的是「留」。

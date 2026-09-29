@@ -16,7 +16,7 @@ export default {
   setting: {
     world: {
       era:
-        "2026 年，虛構的沿海城市雲州，人口約兩百萬，老城區與新開發的健康產業園區隔著一條河。老城區裡的守方堂是一間開了一百一十二年的藥號，三進老宅、黑底金字匾額，靠著「先救人再算帳」的規矩活到今天，也因為這條規矩一直窮。河對岸是霍青山的青山健康總部與山腰上的青山療養院，玻璃長廊看得見整座城；城裡的大型醫藥博覽會每年秋天在河邊的展館舉行。往北一百多公里是終年有霧的雲嶺山區，隱世醫者谿翁住在那裡，四十五天的故事裡他只出現在信與回憶中，直到第 37 集下山。",
+        "2026 年，虛構的沿海城市雲州，人口約兩百萬，老城區與新開發的健康產業園區隔著一條河。老城區裡的守方堂是一間開了一百一十二年的藥號，三進老宅、黑底金字匾額，靠著「先救人再算帳」的規矩活到今天，也因為這條規矩一直窮。河對岸是霍青山的青山健康總部與山腰上的青山療養院，玻璃長廊看得見整座城；城裡的大型醫藥博覽會每年秋天在河邊的展館舉行。往北一百多公里是終年有霧的雲嶺山區，隱世醫者谿翁住在那裡，兩個多月的故事裡他只出現在信與回憶中，直到第 37 集下山。",
       places: [
         {
           id: "hall",
@@ -40,7 +40,7 @@ export default {
           id: "er",
           name: "市立醫院急診",
           description:
-            "冷白日光燈、綠色簾幕隔間、監視器上的波形與嗶聲；地板貼著黃色動線膠帶；姜曼的白袍口袋插紅藍黑三支筆。搶救時整個空間只剩心跳般的鼓聲。",
+            "室內：冷白日光燈、綠色簾幕隔間、監視器上的波形與嗶聲，地板貼著黃色動線膠帶，搶救時整個空間只剩心跳般的鼓聲。大門外：一道自動玻璃門、門上紅底白字的「急診」燈箱、一條救護車專用的斜坡車道與一排白色護欄。",
         },
         {
           id: "sanatorium",
@@ -64,7 +64,7 @@ export default {
           id: "court",
           name: "雲州地方法院法庭",
           description:
-            "淺木色長桌、一面投影螢幕、證人席在被告席後方；旁聽席第一排永遠坐著周伯與亦微；法官席後方牆上一面素色木紋牆，沒有任何真實標誌。",
+            "淺木色長桌、一面投影螢幕、證人席在被告席後方；旁聽席是三排淺木色長椅；法官席後方牆上一面素色木紋牆，沒有任何真實標誌。",
         },
         {
           id: "yunling",
@@ -97,7 +97,7 @@ export default {
       ],
     },
     rules: [
-      "三針之限：每個病人只用三針，第三針之後不再加針；三針不成，就換方法，不加針。這是谿翁教的第一條，也是陸謹每次解針包前先說「先把脈」的原因。",
+      "三針之限：每一回出手至多三針，第三針之後不再加針；三針不成，就換方法，不加針；同一個病人下一回再診，重新從第一針算起。這是谿翁教的第一條，也是陸謹每次解針包前先說「先把脈」的原因。",
       "第四針借脈：把針扎進自己手腕，把自己的生氣借給病人。每用一次折壽數年、當場吐血，一生只能用三次；谿翁的規矩，不許用在仇人身上。全劇只在第 33 集用一次。",
       "安歲散沒有文字配方：十二味藥的配伍順序只藏在亦微母親教的搖籃曲裡，歌詞裡藥名出現的順序就是下藥的順序；順序錯了就是毒，服用者先好三天，第四天倒下。",
       "匾額背面刻著創始契約「方在人在，堂歸持方者」：守方堂歸持有配方的人，不歸血脈、不歸出資者；這行字決定第 38 集誰能拿回守方堂。",
@@ -133,7 +133,7 @@ export default {
         role: "support",
         age: "26 歲，守方堂藥師、沈仲謙的妹妹",
         appearance:
-          "Taiwanese woman, 26, slim, 165 cm, fair skin, alert almond eyes, straight brows, small firm mouth; black hair in a low practical ponytail tied with a plain black band; wears a short white pharmacist coat over a dark green cotton blouse and black slacks, flat black shoes; a small brass herb scale hangs on a cord at her waist; sleeves pushed up, an ink smudge on the right index finger.",
+          "Taiwanese woman, 26, slim, 165 cm, fair skin, alert almond eyes, straight brows, small firm mouth; black hair in a low practical ponytail tied with a plain black band; wears a short white pharmacist coat over a dark green cotton blouse and black slacks, flat black shoes; sleeves pushed up, an ink smudge on the right index finger.",
         voice: { provider: "gemini", name: "Kore", style: "台灣國語，直接、利落，語尾不拖；哼搖籃曲時放輕放慢，帶一點氣音。" },
         personality: "直接、利落、不繞圈；相信秤與藥，不相信傳言；會在配藥時哼母親教的搖籃曲。",
         want: "守住母親留下的歌與這間藥庫；證明陸謹七年前沒有殺人。",
@@ -153,7 +153,7 @@ export default {
         role: "support",
         age: "73 歲，守方堂老東家、陸謹養父，中風臥床",
         appearance:
-          "Taiwanese elderly man, 73, thin and frail after a stroke, propped in bed or a wheelchair, the left side of the face slightly slack, deep-set watery eyes that stay sharp; sparse white hair combed back, white stubble; wears a gray mandarin-collar cotton jacket over a white undershirt, a dark blue wool blanket over the knees; the right hand thin with long fingers, always resting palm-up; a pair of old round reading glasses folded on the blanket.",
+          "Taiwanese elderly man, 73, thin and frail stroke survivor, always seated or reclining and never standing, the left side of the face slightly slack, deep-set watery eyes that stay sharp; sparse white hair combed back, white stubble; wears a gray mandarin-collar cotton jacket over a white undershirt, a dark blue wool blanket over the knees; the right hand thin with long fingers, always resting palm-up; a pair of old round reading glasses folded on the blanket.",
         voice: { provider: "gemini", name: "Enceladus", style: "台灣國語，氣音很重、每個字都費力，中風後只在第 16 集開口說幾句；其餘全靠手指在掌心寫字，由旁白讀出。" },
         personality: "硬、話少、認規矩；把「先救人再算帳」看得比家還重。",
         want: "在死前看見守方堂還叫守方堂，看見陸謹活著。",
@@ -174,7 +174,7 @@ export default {
         role: "antagonist",
         age: "34 歲，守方堂現任總經理、沈鶴亭親生兒子",
         appearance:
-          "Taiwanese man, 34, medium build gone soft, 175 cm, pale face, anxious eyes that avoid contact, neat eyebrows, clean-shaven; black hair slicked back with gel; wears a slim navy business suit slightly too tight, a white shirt, a red silk tie with a gold tie clip, polished black leather shoes; a gold watch on the left wrist that he keeps checking; a company lanyard with a green pine badge.",
+          "Taiwanese man, 34, medium build gone soft, 175 cm, pale face, anxious eyes that avoid contact, neat eyebrows, clean-shaven; black hair slicked back with gel; wears a slim navy business suit slightly too tight, a white shirt, a red silk tie with a gold tie clip, polished black leather shoes; a gold watch on the left wrist that he keeps checking.",
         voice: { provider: "gemini", name: "Fenrir", style: "台灣國語，語速快、容易拔高，理虧時會突然壓低變小聲；喊「我沒有」時聲音會裂。" },
         personality: "自卑、愛面子、怕父親也怕輸；會在最需要決定的時候看別人臉色。",
         want: "還清債、保住總經理的位置與面子；後來只想父親說一句他也像沈家人。",
@@ -195,7 +195,7 @@ export default {
         role: "antagonist",
         age: "56 歲，青山健康董事長，真正的主謀",
         appearance:
-          "Taiwanese man, 56, tall and broad-shouldered, 182 cm, silver-gray hair swept back, heavy brows, slow confident eyes, a thin controlled smile; wears a charcoal three-piece suit, a dark green tie, a small silver pine-branch pin on the lapel; carries a black cane with a silver head that he leans on more as the story goes; later seen in a wheelchair with a gray cashmere blanket over the knees.",
+          "Taiwanese man, 56, tall and broad-shouldered, 182 cm, silver-gray hair swept back, heavy brows, slow confident eyes, a thin controlled smile; wears a charcoal three-piece suit, a dark green tie, a small silver pine-branch pin on the lapel.",
         voice: { provider: "gemini", name: "Algenib", style: "台灣國語，低沉帶砂，慢，每句話結尾都像已經算好；從不喊，越生氣越輕。" },
         personality: "耐心、算計、把人都當籌碼；相信每個人都有價錢，包括醫者。",
         want: "完整的安歲散配方治自己的退行性的病；百年招牌用來賣自己的產品線。",
@@ -216,7 +216,7 @@ export default {
         role: "antagonist",
         age: "39 歲，霍青山的白手套，負責換藥與收買",
         appearance:
-          "Taiwanese man, 39, slim, 176 cm, sharp jaw, watchful eyes behind thin rimless glasses, thin lips; short black hair neatly parted; wears a plain black suit without a tie, a white shirt buttoned to the collar, black leather gloves he takes off before speaking; carries a slim black document folder under the left arm; a silver ring on the right little finger.",
+          "Taiwanese man, 39, slim, 176 cm, sharp jaw, watchful eyes behind thin rimless glasses, thin lips; short black hair neatly parted; wears a plain black suit without a tie, a white shirt buttoned to the collar, black leather gloves; a silver ring on the right little finger.",
         voice: { provider: "gemini", name: "Algieba", style: "台灣國語，圓滑、輕、有禮，每句都像在念合約；反水後聲音變乾、變快。" },
         personality: "精確、不留情、對霍忠誠到看見自己名字在名單上為止。",
         want: "把事情辦乾淨、拿到該拿的；後來只想活下來。",
@@ -243,7 +243,7 @@ export default {
         secret: "他早就懷疑夜班學徒，只是不敢說，怕冤枉人。",
         speech: "口頭禪「這抽屜我閉著眼都摸得到」；叫陸謹「小陸」。",
         relationships: [
-          { with: "heting", kind: "老東家；跟了他三十五年" },
+          { with: "heting", kind: "老東家；十九歲進藥庫當學徒，跟了他四十二年，鶴川離家前叫過他兩年師兄" },
           { with: "lujin", kind: "看著長大的小陸；一起夜守藥庫" },
           { with: "yiwei", kind: "藥庫的同事與晚輩" },
         ],
@@ -273,7 +273,7 @@ export default {
         role: "support",
         age: "51 歲，「死去」女孩郭思思的父親，七年來每天守在守方堂門口",
         appearance:
-          "Taiwanese man, 51, gaunt with a stooped back, 172 cm, hollow cheeks, red-rimmed eyes, gray stubble; graying hair uncombed; wears a faded brown windbreaker over a checked shirt, loose gray trousers, worn sandals with socks; a cardboard sign painted with red characters hangs from his neck on twine; a plastic cup of water often in his hand.",
+          "Taiwanese man, 51, gaunt with a stooped back, 172 cm, hollow cheeks, red-rimmed eyes, gray stubble; graying hair uncombed; wears a faded brown windbreaker over a checked shirt, loose gray trousers, worn sandals with socks.",
         voice: { provider: "gemini", name: "Charon", style: "台灣國語，沙啞、大聲、罵到破音；一到療養院走廊就變成幾乎聽不見的低語。" },
         personality: "被掏空的人；準時、固執、用罵人撐住自己。",
         want: "女兒活著；後來只想跟她說一句「爸爸來了」。",
@@ -292,7 +292,7 @@ export default {
         role: "support",
         age: "19 歲，昏迷七年的女孩，被藏在青山療養院 7 號房",
         appearance:
-          "Taiwanese young woman, 19, very thin from seven years in a coma, pale nearly translucent skin, long black hair spread on a pillow, faint lashes, a small mole under the left eye; wears a white hospital gown with pale blue dots and a white hospital wristband; later a light yellow cardigan over the gown when she sits up; a small worn cloth rabbit tucked by her hand.",
+          "Taiwanese young woman, 19, very thin and frail with the wasted look of a long coma, pale nearly translucent skin, long straight black hair, faint lashes, a small mole under the left eye; wears a white hospital gown with pale blue dots and a white hospital wristband on the left wrist.",
         voice: { provider: "gemini", name: "Leda", style: "台灣國語，很輕、很慢，像剛學會說話；第 34 集第一個字是「爸」。" },
         personality: "全劇大半在沉睡；醒來後只認得父親的聲音與那杯溫水。",
         want: "醒來；回家。",
@@ -311,7 +311,7 @@ export default {
         role: "support",
         age: "12 歲，慢性病童，大家叫他阿豆，安歲散能治他的病",
         appearance:
-          "Taiwanese boy, 12, small and thin for his age, 140 cm, pale round face, big dark eyes, chapped lips; short black hair with a cowlick; wears an oversized light blue hoodie, gray shorts, white socks, blue sneakers with velcro straps; a red string bracelet on the left wrist; carries a dented steel thermos bottle.",
+          "Taiwanese boy, 12, small and thin for his age, 140 cm, pale round face, big dark eyes, chapped lips; short black hair with a cowlick; wears an oversized light blue hoodie, gray shorts, white socks, blue sneakers with velcro straps; a red string bracelet on the left wrist.",
         voice: { provider: "gemini", name: "Achernar", style: "台灣國語，童聲，軟、短、常常喘一下再說完；叫陸謹「針叔叔」。" },
         personality: "怕針但不哭；會問「這次幾針」。",
         want: "不用再每個月躺急診。",
@@ -330,7 +330,7 @@ export default {
         role: "support",
         age: "76 歲，雲嶺的隱世醫者，本名沈鶴川，沈鶴亭的兄長",
         appearance:
-          "Taiwanese elderly man, 76, tall and upright for his age, 178 cm, deeply lined brown face, bright clear eyes, long white beard, white hair tied back with a hemp cord; wears a rough gray hemp robe over black trousers, straw sandals, a bamboo hat hanging on his back; carries a bamboo staff and a very old dark leather needle case, the same shape as Lu Chen's but larger and cracked; a thin jade ring on the left thumb.",
+          "Taiwanese elderly man, 76, tall and upright for his age, 178 cm, deeply lined brown face, bright clear eyes, long white beard, white hair tied back with a hemp cord; wears a rough gray hemp robe over black trousers, straw sandals, a bamboo hat hanging on his back; carries a bamboo staff; a thin jade ring on the left thumb.",
         voice: { provider: "gemini", name: "Sadaltager", style: "台灣國語，蒼老、慢、有笑意；信裡的話由旁白讀，本人第 37 集才開口。" },
         personality: "規矩比命重；四十年不下山，卻替弟弟養了一個徒弟。",
         want: "三針的規矩留下去；第四針不被用在仇人身上。",
@@ -344,7 +344,7 @@ export default {
       },
     ],
     mysteries: [
-      { id: "m01", question: "七年前的女孩怎麼死的？", answer: "她沒死。霍青山派人換掉守方堂的藥材讓十二歲的郭思思昏迷，再讓自己療養院的醫師簽死亡證明，把她藏進青山療養院 7 號房當籌碢。", planted: 1, advanced: [3, 5, 13], revealed: 20, reserved: false },
+      { id: "m01", question: "七年前的女孩怎麼死的？", answer: "她沒死。霍青山派人換掉守方堂的藥材讓十二歲的郭思思昏迷，再讓自己療養院的醫師簽死亡證明，把她藏進青山療養院 7 號房當籌碼。", planted: 1, advanced: [3, 5, 13], revealed: 20, reserved: false },
       { id: "m02", question: "養父當年為何不辯解？", answer: "霍青山威脅他「陸謹留下就死」；鶴亭寫下假指控把陸謹送走，是為了保他的命。", planted: 2, advanced: [9], revealed: 16, reserved: false },
       { id: "m03", question: "谿翁是誰？", answer: "沈鶴亭的兄長沈鶴川，四十年前拒賣祖方離家；鶴亭把陸謹送到他那裡學真正的祖方。第 31 集由霍青山認出針法說出名字。", planted: 3, advanced: [12, 27], revealed: 31, reserved: false },
       { id: "m04", question: "安歲散在哪？", answer: "不在紙上。十二味藥的順序藏在亦微母親教的搖籃曲裡，歌詞裡藥名出現的順序就是配伍順序。", planted: 4, advanced: [10, 17, 18], revealed: 24, reserved: false },
@@ -405,13 +405,13 @@ export default {
       "十二味": null,
     },
     ending:
-      "霍青山活著出庭受審，青山健康被查封；仲謙因詐欺與掩蓋服刑，在牢裡收到舊匾掛回去的照片；郭思思醒來、郭大海放下刀，帶女兒把那杯溫水還到陸謹手上；安歲散公開登記，持方者是所有人，守方堂依創始契約回到老東家沈鶴亭名下，陸謹不當董事長，只當坐堂醫；換匾典禮重來，黑底金字的舊匾掛回原位；亦微在第 38 集把搖籃曲哼給阿豆聽，第 40 集只以同旋律的器樂重奏回應。最後一個畫面：鶴亭坐在輪椅上，用手指在陸謹掌心寫字，鏡頭停在那隻手上——這次寫的是「留」。",
+      "霍青山活著出庭受審，青山健康被查封；仲謙因詐欺與掩蓋服刑，在牢裡收到舊匾抬回門楣下的照片；郭思思醒來、郭大海放下刀，帶女兒把那杯溫水還到陸謹手上；安歲散公開登記，持方者是所有人，守方堂依創始契約回到老東家沈鶴亭名下，陸謹不當董事長，只當坐堂醫；換匾典禮重來，黑底金字的舊匾掛回原位；亦微在第 38 集把搖籃曲哼給阿豆聽，第 40 集只以同旋律的器樂重奏回應。最後一個畫面：鶴亭坐在輪椅上，用手指在陸謹掌心寫字，鏡頭停在那隻手上——這次寫的是「留」。",
     cold_open: [
       { seconds: "0–5", picture: "廣場高處，黑底金字的舊匾「守方堂」被兩條吊繩緩緩卸下，金字掠過鏡頭；人群最後方，一個背著針包的男人停下腳步。", audio: "旁白（Sulafat）：「他被趕出去七年，回來那天，全家正在賣掉他的家。」二胡單音起。" },
       { seconds: "5–12", picture: "台上沈仲謙穿西裝舉著剪刀對準紅布；第一排霍青山雙手按在銀頭手杖上；紅布下新匾露出「沈氏康健」四個字的一角。", audio: "司儀：「請沈總經理為新匾揭幕。」掌聲，低音提琴進。" },
       { seconds: "12–18", picture: "第一排一位白髮老客人站起來鼓掌，臉色一下灰掉，手抓住胸口，往前栽倒撞翻折疊椅。", audio: "椅子倒地、尖叫；仲謙的聲音裂開：「叫……叫救護車！」" },
-      { seconds: "18–24", picture: "人群散開，仲謙蹲在老人旁邊不敢碰；陸謹從人群擠進來跪下，一手拉開老人衣領、兩指按上頸脈，另一手解開針包的黃銅扣。", audio: "音樂全停，只剩心跳般的鼓；亦微在遠處喊：「讓他過去！」" },
-      { seconds: "24–30", picture: "第一針入手腕內側，第二針入胸前，特寫陸謹的手完全不抖；老人胸口起伏；第三針舉起前，陸謹抬眼，對上台上仲謙的臉。", audio: "陸謹低聲：「先把脈。」第三針落下，老人吸進一大口氣；鼓聲停。" },
+      { seconds: "18–24", picture: "人群散開，仲謙蹲在老人旁邊不敢碰；陸謹從人群擠進來跪下，保全伸手要拖他，被亦微一把推開；陸謹一手拉開老人衣領、兩指按上頸脈，另一手解開針包的黃銅扣。", audio: "音樂全停，只剩心跳般的鼓；亦微：「讓他過去！」陸謹低聲：「先把脈。」" },
+      { seconds: "24–30", picture: "第一針入手腕內側，第二針入胸前，特寫陸謹的手完全不抖；老人胸口起伏；第三針舉起前，陸謹抬眼，對上蹲在一旁的仲謙的臉。", audio: "只剩心跳般的鼓，沒有人說話；第三針落下，老人吸進一大口氣；鼓聲停。" },
     ],
   },
 };

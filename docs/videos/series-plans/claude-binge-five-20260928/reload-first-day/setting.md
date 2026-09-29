@@ -14,9 +14,9 @@
 | basement-gate | 安養院地下室的第一道梯門 | 水泥樓梯往下十二級，備用發電機、配電箱、堆著輪椅零件；牆上一道冷藍色發光的門框，門內是黑的，門框上浮著「梯門・一」。第 39 集這裡變成一扇普通的木門，門牌寫「帳房」。 |
 | xinggui-hq | 星軌據點 | 港邊玻璃大樓的頂樓，整面落地窗看得到天梯與鐘塔；牆上一條銀色的軌道形徽記；一張長桌、一面螢幕牆、一張永遠空著的分析師座位，桌角貼著已經褪色的名牌。 |
 | iron-warehouse | 鐵幕的港區倉庫 | 鐵皮倉庫、紅色捲門、門口一排灰色廂型車與疊高的貨櫃；裡面一盞吊燈下一張長桌，桌面釘著紅框名單與市區地圖；一台發電機用鐵鍊鎖在角落。 |
-| floor-nine | 第九層（鏡面大廳） | 四面牆、地板、天花板全是鏡子，無限反射；正中央一道細細的直立光縫；進門處浮著石碑字「存檔無效，唯一命」；門外站著守關者，一個比門還高的影人輪廓；沒有怪物，只有映像。門內第一級台階是唯一不反光的黑石。 |
+| floor-nine | 第九層（鏡面大廳） | 四面牆、地板、天花板全是鏡子，無限反射；正中央一道細細的直立光縫；進門處浮著石碑字「存檔無效，唯一命」，底下一行小字「返身不返時」；門外站著守關者，一個比門還高的影人輪廓；沒有怪物，只有映像。門內第一級台階是唯一不反光的黑石。 |
 | clock-tower | 港口鐘塔 | 港口盡頭一座白色石造鐘塔，四面圓鐘、夜裡鐘面亮黃色；塔頂就是天梯最底下那一階落地的地方；塔下一片水泥廣場與寬階梯，西側牆上有一道冷藍門框。 |
-| name-wall | 第八層檔案室與名牆 | 一條看不到盡頭的檔案走廊，鐵灰色檔案櫃一格一座城；盡頭一面黑石牆刻滿名字，每個名字發著微弱的白光；牆前一盞老式綠罩檯燈。第 39 集帳房的門後就是這面牆。 |
+| name-wall | 第八層檔案室與名牆 | 一條看不到盡頭的檔案走廊，鐵灰色檔案櫃一格一座城；盡頭一面黑石牆刻滿名字，每個名字發著微弱的白光；牆前一盞老式綠罩檯燈。走廊、檔案櫃與牆的正面只能從第八層層頂石碑後的門進去（第 28 集）；第五層那道封死的門只通到這面牆的背面：一個三面石壁、沒有別的出口的窄間，名字的白光從石頭裡透過來（第 16 集），到不了走廊，也到不了第九層的門。第 39 集帳房的門後就是這面牆。 |
 | harbor-street | 臨港市區（安養院外的坡道與海港大道） | 從山坡往港口的長坡道、電線桿、路口一家便利商店、老招牌；遠處天梯的冷藍光倒映在海面。門開時路面與牆面浮出冷藍門框，影犬沿著坡道往上湧。 |
 | ladder-floors | 天梯內部（第一到第八層） | 黑色的樓梯間結構，每層一道冷藍門框與層數浮字，扶手發微光；怪物只有影子的輪廓：影犬（四足、低吼）、影人（會學人的動作）；每層頂端一塊小石碑，第五層的碑刻著完整的一句話；第八層的規則是兩人一組。 |
 
@@ -47,6 +47,7 @@
 - 道具在誰手上：老鄧的彎柄銅鑰匙第 18 集起在晚照口袋、第 34 集交給阿嬤收在枕頭下（阿嬤收著的東西重讀後也在）、第 39 集開帳房後還給老鄧；賀嵐的複製鑰匙第 16 集偷拍、第 26 與 28 集使用；杜的紅框名單原件第 13 集起夾在晚照筆記本，杜胸前口袋是白紙，第 31 集當眾念、第 34 集白紙掉出來；周淑芬的紅髮夾第 22 集起在周嶼胸前口袋；上一週期的筆記本第 24 集起在晚照手上，她另寫一本給周嶼（第 32 集起）。
 - 周嶼的承擔：上限 6（第 2 集）→5→3（第 8 集，擋了兩棍）→1（第 14 集）→承擔 0、昏迷（第 25 集）→∞（代價：記憶，第 32 集起）；從第 32 集起他每擋一次就忘一個人，靠筆記本第一頁「林晚照，數三秒」認人，叫她的名字前都要先數三秒。
 - 邵擎的袖扣第 19 集末解開、第 20 集捲起，之後一直捲著；第 38 集讀檔後手臂空白。蘇醒在任何鏡子、螢幕回放裡都不出現，第 35 集之前不拍會露餡的角度。賀嵐的金手鍊在她說謊或下決定時停住不轉。阿嬤的髮夾（綠色）是她自己的，給周嶼的是另一支紅色的。
+- 場景位置：安養院三樓天花板第 1 集塌了一角，老人集中到二樓（第 3 集阿嬤在二樓臨時安置的房間）；第 4 集當晚暫住隔壁大樓、天亮搬回二樓；第 7 集末老鄧撐好三樓，第 8 集起老人回原房、阿嬤回三樓 302。名牆在第八層：第 16 集從第五層封死門只到得了牆的背面（沒有別的出口的窄間），第 28 集才從第八層層頂的門走進檔案走廊、看到牆的正面與第九層的門。晚照第一次設存檔點是第 2 集的樓梯口（面板只閃了一下），第一次打開存檔列表是第 4 集。
 - 沒有感情線：晚照與周嶼只有筆記本、手臂上的字與數三秒，不牽手、不對視超過一秒；第 22 集她說的「好」是謊話，全劇不說破。杜承業提的「第 28 天為他讀檔一次」由第 38 集最後一次讀檔兌現（那次讀檔救了全城，也救了他），不另外拍。
 
 ## 人物
@@ -59,7 +60,7 @@
 | 性格 | 冷靜、嘴硬、什麼都先確認再說；記筆記成癮；越怕的時候越像在做工作。 |
 | 想要 | 讓阿嬤活到三月十二日的生日。 |
 | 害怕 | 忘了自己為什麼而戰。 |
-| 秘密 | 她其實記得三年前拒絕過邵擎——那段記憶在第 9、10 集的讀檔裡被抹掉了。 |
+| 秘密 | 她其實記得三年前拒絕過邵擎——那段記憶在第 10 集的三次讀檔裡被抹掉了（動機是查出星軌裡誰出賣她）。 |
 | 說話習慣 | 口頭禪「先確認一件事」；不說「我覺得」，只說「我看過」。 |
 | 聲音（擬定，未試聽） | gemini / Kore / 冷靜、偏低、句子短的台灣國語，不帶語助詞；說「先確認一件事」時放慢；讀檔後第一句總是比平常小聲。 |
 | 外觀提示詞（每集逐字沿用） | 24-year-old Taiwanese woman, slim and straight-backed, 165 cm, pale oval face with steady dark eyes and faint shadows under them from night shifts, no makeup, thin lips pressed flat; black hair in a low ponytail with loose strands at the temples; pale mint-green care-worker scrub top over a dark grey long-sleeve shirt, left sleeve pushed up to the elbow, black trousers, white sneakers, a staff lanyard at her chest; black marker handwriting on her left forearm; a small black notebook with a rubber band in her hand or thigh pocket; a faint translucent cold-blue system panel hovers at her right shoulder. |
@@ -96,14 +97,14 @@
 
 | 項目 | 設定 |
 | --- | --- |
-| 年齡與身分 | 16 歲，外送少年，天賦【聆聽】。 |
+| 年齡與身分 | 16 歲，騎電動輔助自行車的外送少年，天賦【聆聽】。 |
 | 性格 | 話多、膽小又仗義；害怕的時候會先說「我先講一件事」，然後把最可怕的講出來。 |
 | 想要 | 被人當成隊裡有用的那一個。 |
 | 害怕 | 第二個聲音有一天叫他的名字。 |
 | 秘密 | 他第一天就聽到系統說「備援持有者」，沒聽懂，沒告訴任何人。 |
 | 說話習慣 | 「牠說——」開頭，然後一字一字複述系統沒播出的話。 |
 | 聲音（擬定，未試聽） | gemini / Puck / 快、亮、氣很足的台灣國語少年腔，一緊張就句子接句子；複述系統的話時會突然放慢、變成一字一字。 |
-| 外觀提示詞（每集逐字沿用） | 16-year-old Taiwanese boy, skinny and quick, 168 cm, narrow face with big anxious eyes, a chipped-tooth grin and a sunburnt nose, messy black hair flattened by a helmet; bright yellow delivery jacket with reflective piping over a white tee, black joggers, scuffed orange sneakers, a yellow half-helmet hanging from his backpack strap, an insulated delivery bag on his back; oversized black over-ear headphones always around his neck, one earcup cracked; a faint cold-blue system panel at his right shoulder. |
+| 外觀提示詞（每集逐字沿用） | 16-year-old Taiwanese boy, skinny and quick, 168 cm, narrow face with big anxious eyes, a chipped-tooth grin and a sunburnt nose, messy black hair flattened by a helmet; bright yellow delivery jacket with reflective piping over a white tee, black joggers, scuffed orange sneakers, a yellow bicycle helmet hanging from his backpack strap, an insulated delivery bag on his back; oversized black over-ear headphones always around his neck, one earcup cracked; a faint cold-blue system panel at his right shoulder. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -176,7 +177,7 @@
 | 性格 | 溫和、有魅力、永遠早知道；把六次週期說得像別人的故事，把人命算成路線。 |
 | 想要 | 第七次登頂，帶登了梯的人走，重開一個乾淨的第八次。 |
 | 害怕 | 一個他不知道答案的問題。 |
-| 秘密 | 他六次都死在第九層門口的守關者手上，所以需要晚照先進門，再在唯一命裡只留下他自己；他的面板不給他看「第七次：結清」。 |
+| 秘密 | 他六次都死在第九層門口的守關者手上，所以需要晚照先進門，再在唯一命裡只留下他自己；他的面板不給他看第七次那一行「違約：全額刪除」。 |
 | 說話習慣 | 說話溫和、句尾常常帶她的名字：「晚照。」 |
 | 聲音（擬定，未試聽） | gemini / Algieba / 溫和、有磁性、永遠不急的台灣國語，像在跟老朋友聊天；只有在第九層與 00:00 那三秒，聲音會突然乾掉。 |
 | 外觀提示詞（每集逐字沿用） | 28-year-old Taiwanese man, lean athletic build, 180 cm, handsome symmetrical face with a warm easy smile and cool unreadable eyes, black hair swept back neatly; black tailored bomber jacket with a small silver orbit-track emblem on the chest over a white shirt, charcoal trousers, black leather sneakers; a thin silver ring on his right thumb; hands relaxed in his pockets, never hurried; a faint cold-blue system panel at his right shoulder. |
@@ -246,7 +247,7 @@
 
 冷靜、快、嘴硬。旁白負責速度，用短句把三十天往前推；角色負責刀，一句話就要刺到人。感情全放在物件上：左手臂的字、兩本一樣的筆記本、老鄧的鑰匙、阿嬤的髮夾、周嶼數的三秒——沒有人說「我」開頭的話，沒有告白，沒有解釋。爽點後面永遠跟著代價：每一次首殺、每一次打臉，下一拍就是她翻筆記本確認自己忘了什麼。系統只說短句，不解釋；第二個聲音是她自己的聲音，冷靜、嘴硬，開頭永遠是「先確認一件事」。最狠的話都由笑著的人說（邵擎），最準的話都由失智的人說（阿嬤）。
 
-攝影機愛兩種光：天梯、面板、梯門的冷藍，安養院走廊與鋼琴段落的暖黃；第九層全鏡面，是全劇最亮、最冷的地方。05:59 的紅色電子鐘是全劇的節拍器，每次讀檔都切回同一顆鐘。絕不拍血：死亡是畫面切黑，然後是那顆鐘；被刪除是空掉的椅子、白板上被擦掉的一格、名牆上多一個發光的名字；怪物只有影子輪廓。晚照的左手臂每集都要拍到，字越來越多、字越來越小。邵擎的袖扣永遠扣著，第 20 集才捲起；蘇醒的畫面永遠是全城面板右下角的小視窗，任何鏡子與螢幕的回放裡都不能出現他。阿嬤的段落只留鋼琴，鏡頭放低到輪椅的高度。
+攝影機愛兩種光：天梯、面板、梯門的冷藍，安養院走廊與鋼琴段落的暖黃；第九層全鏡面，是全劇最亮、最冷的地方。05:59 的紅色電子鐘是全劇的節拍器，每次讀檔都切回同一顆鐘。絕不拍血：死亡是畫面切黑，然後是那顆鐘；被刪除是空掉的椅子、白板上被擦掉的一格、名牆上多一個發光的名字；怪物只有影子輪廓。晚照的左手臂每集都要拍到，字越來越多、字越來越小。邵擎的袖扣永遠扣著，第 19 集末才解開、第 20 集才捲起袖子；蘇醒的畫面永遠是全城面板右下角的小視窗，任何鏡子與螢幕的回放裡都不能出現他。阿嬤的段落只留鋼琴，鏡頭放低到輪椅的高度。
 
 ## 開場三十秒（第 1 集）
 

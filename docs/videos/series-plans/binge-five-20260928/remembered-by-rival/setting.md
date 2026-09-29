@@ -23,24 +23,29 @@
 - 守淵之力只在江照主動壓住左掌契印、說出『借淵』並承受抽痛時啟動；受傷、動情、揮劍或天籙破裂都不會自動發動。每次啟動削減他自身可運用的修為，不能無限施放。第 1、18、28 集各有一次啟動，過去救援只以已發生紀錄交代；第 28 集後不再啟動。
 - 每次啟動，天籙對十二陣腳覆蓋的整個照川盆地同步發出一次抹除：當時在區內的人，失去以江照為具體人物的親歷片段與情感連結；在區外的人不受該次影響，本劇不借外地熟人解局。江照本人與當時持有完整互保契的祁硯豁免。
 - 抹除不消滅語言、技能、人的其他記憶或對事件的常識：人知道橋被救了，卻想不起施救者的面孔、名字與共同經歷。紙本、刻痕、工具和客觀身體狀態仍在；別人可以重新讀到『江照救人』並相信證據，但讀資料不等於重獲相處的感覺。下一次抹除會再移走讀完資料後與他新建立的個人記憶。
-- 祁硯少年時與江照立下未入天籙的互保契，完整紅繩縫在右腕內襯。契約繞過天籙的身分索引，所以能保留關於江照的記憶。祁硯少年受落石傷，原本就缺少立契當日的記憶；紅繩被他當作養父留下的平安結。這是既存頭傷，不是天籙任意擦除豁免者的記憶；沒有突然恢復整段童年的橋段。江照記得少年互結平安結、答應互相照看，當時不知道未登錄條款的技術效果；他不是契術匠，只知道自己簽下守淵代價。祁硯的繩藏在右袖內，直到第 8 集才露出可核對的編法；二人先查證而非一見紅線就知道完整原理。
+- 祁硯少年時與江照立下未入天籙的互保契，完整紅繩縫在右腕內襯。契約繞過天籙的身分索引，所以從立契起，天籙的抹除帶不走他關於江照的記憶。祁硯立契後受落石頭傷，缺的是立契前後整段與江照相處的少年時期：學劍、同桌吃飯、結繩與立契都在缺口裡，只剩收劍卸力、替人挑苦葉這類說不出來歷的習慣；傷後兩人分開，直到三日前才再相遇，所以他以為三日前是初識。紅繩被他當作養父留下的平安結。這是既存頭傷，不是天籙任意擦除豁免者的記憶；互保契擋得住抽取，補不回頭傷帶走的往事，全劇沒有突然恢復這段少年記憶的橋段。江照記得少年互結平安結、答應互相照看，當時不知道未登錄條款的技術效果；他不是契術匠，只知道自己簽下守淵代價。祁硯的繩藏在右袖內，直到第 8 集才露出可核對的編法；二人先查證而非一見紅線就知道完整原理。
 - 祁硯記得三日前被江照救下，也記得對方自報姓名，但仍接到有真印的追捕令：押回對質，拒捕可當場斬殺。元衡要利用他追殺江照，祁硯以為是同一人後來犯案，卻堅持先查證而不執行斬令。令書把江照稱作無名者以否定其可信身分，不代表紙上不能出現名字。第 10 集證明令書先於案發；第 23 集才由見證者與底簿解釋記憶例外。
 - 天籙儲存的舊記憶是可歸還但不可複製的人物片段。元衡能以歸還誘惑江照，不能憑空捏造童年。摧毀天籙會讓庫中的舊片段永久散失；不能用抄本、獻祭、相擁或片尾奇蹟恢復。被抽取而死的人不能復活。
-- 元衡另能用接上囚所與天籙的拘押契，分批抽取被拘者自己的自傳記憶；行政名冊與石碑上的名字則由秦錄等人實際刮除，並威脅親友不得作證。阿杳尚未被抽完，仍記得母親和自己的暱稱，家戶身分卻已被抹掉。此機制不讓全城人忘記每一名受害者，也不代表江照每施法一次，她就忘掉自己的名字；江照施法只抽走別人關於江照的親歷片段。兩種抽取的物件必須說清，不能混為同一個範圍。
+- 元衡另能用接上囚所與天籙的拘押契，分批抽取被拘者自己的自傳記憶；行政名冊與石碑上的名字則由秦錄等人實際刮除，並威脅親友不得作證。阿杳尚未被抽完，仍記得母親和自己的暱稱，家戶身分卻已被抹掉。此機制不讓全城人忘記每一名受害者，也不代表江照每施法一次，她就忘掉自己的名字；江照施法只抽走別人關於江照的親歷片段。兩種抽取的對象必須說清，不能混為同一個範圍。
 - 護城陣確實必要，天籙只是被改造為壟斷能源的中心，不等於整道結界。陳渡的普通修陣術以現有陣腳、導霧石、輪換耗材與人力巡檢運作，需十二處完成隔斷並同步接手，不能拿一張圖就一夜解決。第 6、12、22 集鋪工具、圖樣與材料，第 27、29 集實驗；第 34 集兩主角先把可轉存的個人修為注入備用陣石，取得交接時間，永久失去大半修為。此為一般修行供能，不觸發守淵契印。
-- 原天籙有匠人製作的卸壓槽、三枚承重銅銷與普通機械檢修口。先將全部陣腳改接、卸掉天籙的壓力，才能以普通工具破壞記憶儲層；強打未卸壓的塔會造成淵霧外洩。第 12、27、29 集建立工法，第 31 集分送，第 34、36 集完成改接確認，第 37 集才拆銷壓裂儲層。
+- 原天籙有匠人製作的卸壓槽、三枚承重銅銷與普通機械檢修口。先將全部陣腳改接、卸掉天籙的壓力，才能以普通工具破壞記憶儲層；強打未卸壓的塔會造成淵霧外洩。第 12、27、29 集建立工法，第 31 集分送，第 34、36 集完成改接與降壓確認；第 36 集末讀數達標後才抽出第一枚銅銷，第 37 集拔出其餘兩枚並壓裂儲層。
 - 第 35 集紅繩被元衡毀掉，只取消往後抹除的豁免，不回溯抹去祁硯已保有的記憶。江照清楚若再說『借淵』，連祁硯也會忘記；兩人此後不用守淵之力，普通劍術、工具與已注入備用陣石的能量仍可使用。
 - 阿杳的身分可由保留的家戶副簿與傷痕證明；檔案讓她重新取得生活位置，不能讓死去的親人回來。結局恢復的是可驗證的歷史、自由和建立新關係的機會；除祁硯外，其他人與江照已失去的私人感受永久缺席。
 
 ## 跨集連貫性與畫面約束
 
-- 所有秒數是細綱規劃，須由完整臺詞、TTS 與實際剪輯量測；沒有成片即沒有透過音畫驗收。
+- 所有秒數是細綱規劃，須由完整臺詞、TTS 與實際剪輯量測；沒有成片即沒有通過音畫驗收。
 - 標題沿用核定方向，精確寫每用禁術救人與全城，限定照川；普通救援不抽記憶。第三題為只剩追殺者記得。追捕令確含拒捕可斬，祁硯仍堅持先查證；不得用天下無人記得、每一次普通施救都失憶等文案誤導。
-- 主要少年事件以陳渡底簿、頭傷診記與片段客觀回望呈現；祁硯不因一場回憶戲恢復所有童年，江照保有自己的記憶但不全知其他人的契約技術。
+- 主要少年事件以陳渡底簿、頭傷診記與片段客觀回望呈現；祁硯的頭傷缺口是立契前後整段與江照相處的少年時期，不只立契當日；傷後兩人分開，三日前才再相遇。他不因一場回憶戲恢復這段往事，留下的只有收劍卸力、挑苦葉這類說不出來歷的習慣。江照保有自己的記憶但不全知其他人的契約技術。
+- 第 13 集祁硯是出於說不出來歷的習慣替江照挑掉苦葉，只承認習慣、沒有想起往事；第 40 集江照自己開口說不加苦葉，是同一個物件的回收，任何回述都不得寫成『祁硯記得江照不吃苦葉』。
+- 胡娘對江照的記憶照抹除規則計算：第 1 集抹除後她親眼看見江照擋木架，所以第 3 集認得這個人，缺的是舊日的熟悉感與施救那一刻；第 18、28 集兩次抹除移走這些新記憶；第 31、32 集重新共事後再無抹除，所以第 40 集她記得疏散時的江照，更早的事只能靠救援圖與賒帳單。事件常識（孩子被救、橋被保住）始終保留。阿杳同理：第 18、28 集兩次被抹除，第 28 集之後在第 29、32、34、38 集與江照共事的記憶都在，第 39 集她陌生的只是第 28 集以前的相處，那一段靠自己寫的紙條。
+- 第 1 集只讓觀眾看到祁硯喊得出江照的名字、說得出救援經過；『名字是不是照令書背來的』這個疑問留給第 3 集用令書外的細節排除，第 1 集任何欄位都不得寫成江照已確認記憶例外。
+- 第 34 集收尾只拍橫出的劍與掌籙院紋記，持劍者隱在梯影、不入鏡也不列入該集出場名單，第 35 集開場才露面是元衡。第 36 集祁硯擋元衡的收劍卸力步，必須與第 4 集切磋所見是同一套動作，不另創新招。
 - 第 1 集為同一次守淵施法的後效應；第 2–17 集不得額外即興施法。第 18 與 28 集各一次；第 28 集後再無守淵啟動。第 34 集一般修為注入陣石不含契印按壓與『借淵』動作，須由角色說清。
-- 阿杳的右前臂舊疤與第 7 集鎖傷分開；江照左掌契印，祁硯右腕紅繩與右額舊疤固定，不映象。紅繩第 35 集毀後永不完整再現。
-- 第 35 集祁硯仍記得只是因沒有下一次抽取，不能以心意超越規則解釋。第 37 集破塔使用已放在工具包中的量尺、木槌和拔銷器，無突然法寶。
-- 凡人接管並非免費：材料以法器交換、店家墊付和兩主角放棄修為供首輪緩衝；尾宣告示耗材帳與輪班，不用一次勝利假裝全城永久無憂。
+- 阿杳的右前臂舊疤與第 7 集鎖傷分開；江照左掌契印，祁硯右腕紅繩與右額舊疤固定，不鏡像。紅繩第 35 集毀後永不完整再現。阿杳的木牌收在布袋，不掛頸上。
+- 道具狀態｜祁硯的紅繩：一條褪色的暗紅細繩，繫在右腕上，繩結以幾針固定在右袖口內襯，平時被右袖口蓋住（rules 第 4 條『縫在右腕內襯』與各集『右腕紅繩』指的是同一個位置，以此為準）。只在祁硯右腕，不可畫在左腕，其他角色身上不可出現紅繩。第 1–7 集藏在右袖口下，畫面看不到；第 8 集祁硯洗去血跡時第一次露出，留拓印後拉回袖內；第 9–22 集藏；第 23 集對照底簿時露出繩結，集末祁硯把右袖拉回蓋住；第 24–25 集藏；第 26 集在掌籙院偏殿被元衡瞥見，祁硯隨即護住袖口；第 27–34 集藏。第 35 集衝突段元衡一劍割斷，斷繩落地、右腕留一道淺傷，集末江照把斷繩收進紙包；第 36–38 集右腕無繩、留一道淺傷，斷繩在江照紙包；第 39 集斷繩收進抽屜、不修復；第 40 集右腕無繩，淺傷已收成淡痕。鏡頭提示詞要照這裡寫，固定外觀提示詞不含紅繩，也不含腕帶。
+- 第 35 集祁硯仍記得只是因沒有下一次抽取，不能以心意超越規則解釋。第 37 集破塔使用已放在工具包中的量尺、木槌和拔銷器，無突然法寶；這是第 12 集陳渡交出的備用一套，陳渡腰間自己的量尺與木槌仍照外觀設定隨身可見。
+- 凡人接管並非免費：材料以法器交換、店家墊付和兩主角放棄修為供首輪緩衝；尾聲明示耗材帳與輪班，不用一次勝利假裝全城永久無憂。
 - 元衡的災難警告有真實工程風險，但其七成截留、禁工法與迫害確實可查；決戰保護居民優先，仍保留對主要共犯的責任追究。
 - 五語 CC、角色設定圖、配樂授權、完整臺詞、鏡頭、實際章節時間與上架素材另屬媒體階段；這份檔案不宣稱任何一項已完成。
 
@@ -58,7 +63,7 @@
 | 秘密 | 少年替當時被選作祭契人的祁硯簽下守淵契。 |
 | 說話習慣 | 短句、用具體物件說心事；『先把人放下來。』 |
 | 聲音提案 | gemini / Charon / 臺灣國語；偏低、剋制、有疲倦的乾笑；擬定 casting 未試聽。 |
-| 外觀提示詞（跨集逐字沿用） | Adult East Asian man, 28, lean angular silhouette, long black hair tied low with a charcoal cloth band, narrow calm eyes, weathered indigo cross-collar robe, grey trousers and dark cloth boots. A pale branching contract mark sits on his left palm. He carries a plain iron sword with a chipped oval guard and wears no crown, jewellery or red wrist cord. Keep the same face, low ponytail and indigo robe in every present-day shot. |
+| 外觀提示詞（跨集逐字沿用） | Adult East Asian man, 28, lean angular silhouette, long black hair tied low with a charcoal cloth band, narrow calm eyes, weathered indigo cross-collar robe, grey trousers and dark cloth boots. A pale branching contract mark sits on his left palm. He carries a plain iron sword with a chipped oval guard and wears no crown or jewellery. Keep the same face, low ponytail and indigo robe in every shot. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -78,7 +83,7 @@
 | 秘密 | 知道三日前救自己的人就是江照，卻不懂為何同袍都不記得；少年頭傷造成的缺口始終存在。 |
 | 說話習慣 | 先問證據在哪，後來學會說『我來承擔。』 |
 | 聲音提案 | gemini / Orus / 臺灣國語；字尾穩、語速稍慢，後段不靠大吼演情緒；擬定 casting 未試聽。 |
-| 外觀提示詞（跨集逐字沿用） | Adult East Asian man, 28, upright lean silhouette, straight black hair in a high neat knot with a matte dark pin, defined brows and a small old scar above the right temple. He wears an ivory-grey fitted robe with a black narrow belt, dark wrist wraps and practical black boots. A faded red cord is hidden under the RIGHT cuff until revealed; never place it on the left. His sword has a plain rectangular guard. No crown or ornate shoulder armour. |
+| 外觀提示詞（跨集逐字沿用） | Adult East Asian man, 28, upright lean silhouette, straight black hair in a high neat knot with a matte dark pin, defined brows and a small old scar above the right temple. He wears an ivory-grey fitted robe with long narrow sleeves, a black narrow belt and practical black boots. His sword has a plain rectangular guard. No crown or ornate shoulder armour. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -98,7 +103,7 @@
 | 秘密 | 知道替代工法可行，曾切斷材料供給使其失敗；以七成記憶供少數修士，故意藏起分流帳。 |
 | 說話習慣 | 以『你要多少人付代價』把自己的選擇偽裝成天命。 |
 | 聲音提案 | gemini / Fenrir / 臺灣國語；平聲威壓、少量氣音，不用誇張奸笑；擬定 casting 未試聽。 |
-| 外觀提示詞（跨集逐字沿用） | East Asian man appearing 61, tall spare frame, long silver-grey hair in a severe topknot, smooth narrow face and thin brows. He wears a structured pale gold robe with dark geometric borders, a square bronze seal at his waist and a rigid amber-coloured cuff on the left wrist. His hands move very little. Maintain an outwardly immaculate and calm appearance even when his authority fails. |
+| 外觀提示詞（跨集逐字沿用） | East Asian man appearing 61, tall spare frame, long silver-grey hair in a severe topknot, smooth narrow face and thin brows. He wears a structured pale gold robe with dark geometric borders, a square bronze seal at his waist and a rigid amber-coloured cuff on the left wrist. His hands move very little. Always outwardly immaculate and calm. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -158,7 +163,7 @@
 | 秘密 | 把賞賜看成榮耀，尚不知道來源；第 28 集被江照救後失去親歷記憶，但保留自己寫的救援紀錄。 |
 | 說話習慣 | 起初報編號，後來先問人名。 |
 | 聲音提案 | gemini / Zephyr / 臺灣國語；清朗而節制，疑惑時不拖長尾音；擬定 casting 未試聽。 |
-| 外觀提示詞（跨集逐字沿用） | East Asian man, 22, compact athletic build, short tied-back black hair with a broad fabric band, round face and a healed cut on the lower lip. He wears a slate-grey trainee robe with white shoulder piping, plain leather forearm guards and a small numbered copper badge. A narrow practice sword hangs on his left hip. He never wears the ivory fitted coat or red cord of Qi Yan. |
+| 外觀提示詞（跨集逐字沿用） | East Asian man, 22, compact athletic build, short tied-back black hair with a broad fabric band, round face and a healed cut on the lower lip. He wears a slate-grey trainee robe with white shoulder piping, plain leather forearm guards and a small numbered copper badge. A narrow practice sword hangs on his left hip. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -196,7 +201,7 @@
 | 秘密 | 保留孩子畫的救援圖及攤位賒帳單，讓江照的行為仍有痕跡。 |
 | 說話習慣 | 『先坐，麵要冷了。』不把市井角色寫成無知笑料。 |
 | 聲音提案 | gemini / Aoede / 臺灣國語；俐落溫厚、自然生活感；擬定 casting 未試聽。 |
-| 外觀提示詞（跨集逐字沿用） | East Asian woman, 37, sturdy build, black hair braided into a low coil under a navy cloth scarf, sun-weathered cheeks. She wears an ochre cotton blouse, dark skirt, a faded blue apron and flat woven shoes. A small brass ladle hangs from the apron cord. Keep the same scarf, apron and ladle whenever she appears. |
+| 外觀提示詞（跨集逐字沿用） | East Asian woman, 37, sturdy build, black hair braided into a low coil under a navy cloth scarf, sun-weathered cheeks. She wears an ochre cotton blouse, dark skirt, a faded blue apron and flat woven shoes. A small brass ladle hangs from the apron cord. Keep the same scarf, apron and ladle in every shot. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -212,7 +217,7 @@
 | stele | 刻名崖 | 石壁上留字形空白、鑿痕與舊拓本對位孔；沒有會隨失憶魔法自行消失的文字。 |
 | workshop | 平陣坊 | 木製工作臺、卸壓模型、材料架與暗格；鏡頭一眼能認出陳渡的量尺。 |
 | hall | 掌籙院偏殿 | 金色名冊格、分流盤、授賞席；以少量角色呈現制度壓力。 |
-| prison | 除名囚所 | 有姓名被颳去的木牌、編號牢門、通往天籙的拘押契介面。 |
+| prison | 除名囚所 | 有姓名被刮去的木牌、編號牢門、通往天籙的拘押契接口。 |
 | archive | 外庫檔房 | 留存普通紙本、封存圖與家戶副簿；桌面對照畫面取代長篇講解。 |
 | node | 南渡陣腳 | 十二陣腳之一；有可演示的銅銷、卸壓槽、霧窗與人力操作檯，其餘陣腳只用交接牌與遠景呈現。 |
 | tower | 天籙內塔 | 中心儲層、三銅銷、維修窄梯與分流顯示槽；最後靠同一普通維修口完成拆解。 |
@@ -223,7 +228,7 @@
 | ID | 問題 | 確定答案 | 埋下 | 推進 | 揭曉 |
 | --- | --- | --- | --- | --- | --- |
 | m01 | 為何江照剛救人就被忘記，紙上的事卻還在？ | 守淵啟動令天籙抽走區內對江照的親歷人物記憶，保留技能、客觀結果與實體紀錄；第 19 集用兩人的書面測試分清知識與相處感受。 | 1 | 3、5、18 | 19 |
-| m02 | 祁硯為何能記得江照，卻不識紅繩的用途？ | 少年未登錄互保契藏在右腕紅繩；祁硯立契後遭落石頭傷，缺的是既存當日記憶。陳渡底簿、頭傷診記與繩結編法交叉證明，無突然復憶。 | 3 | 3、4、8、13、17 | 23 |
+| m02 | 祁硯為何能記得江照，卻不識紅繩的用途？ | 少年未登錄互保契藏在右腕紅繩，從立契起擋住天籙抽取；祁硯立契後遭落石頭傷，缺的是立契前後整段與江照相處的少年時期，屬既存頭傷而非抹除，所以記得三日前的江照卻不識紅繩。陳渡底簿、頭傷診記與繩結編法交叉證明，無突然復憶。 | 3 | 3、4、8、13、17 | 23 |
 | m03 | 祁硯記得被救，為何還有蓋真印的追捕令？ | 元衡預先安排江照成為結界故障替罪者，以祁硯的公信力送人入獄；紙上真印不代表內容為真，追捕令先於案發。 | 2 | 6、9 | 10 |
 | m04 | 刻名崖與囚所的無名者究竟是誰？ | 是曾反對記憶徵收的居民和被當作耗材的修士；名字被人工刮掉，家戶副簿、名牌與接收冊能恢復可查歷史，不能讓死者復活。 | 5 | 7、11、14 | 24 |
 | m05 | 賞賜修為的來源是什麼，祁硯是否也受益？ | 分流帳證明七成記憶收益供元衡等少數修士延壽與晉階；祁硯曾受領並受益，必須交回位置、耗去修為補交接，不能自稱清白例外。 | 12 | 15、16、20 | 21 |
@@ -231,7 +236,7 @@
 | m07 | 普通匠人是否真能接手結界？ | 舊工法可用，但必須買齊導霧石、輪換耗材、培訓人手並同步改接十二陣腳；兩主角耗去大半修為作交接緩衝，普通維護此後持續花錢與人力。 | 6 | 12、22、27、29 | 34 |
 | m08 | 元衡說毀天籙全城必死，哪些是真的？ | 淵霧與舊陣依賴確實存在，未卸壓硬毀會傷人；十二處完成改接後，可經普通卸壓槽破儲層而保留陣腳，證明他把可避免的災難說成唯一選擇。 | 16 | 16、20、29、30 | 38 |
 | m09 | 紅繩若毀，唯一的記憶會立刻消失嗎？ | 紅繩只防下一次同步抽取，毀後不回溯。第 35 集契印尚未啟動即被江照主動收手，此後不再用守淵之力；祁硯以劍術守門、江照以工具拆塔。 | 8 | 23、26、30 | 35 |
-| m10 | 摧毀天籙後，誰能把江照失去的人生還給他？ | 無人能還；舊私人記憶永久散失。儲存的證據讓人相信他做過什麼，祁硯的引見讓他能建立新的關係，結尾沒有全城復憶。 | 1 | 3、13、24、32、39 | 40 |
+| m10 | 摧毀天籙後，誰能把江照失去的人生還給他？ | 無人能還；舊私人記憶永久散失。保存的證據讓人相信他做過什麼，祁硯的引見讓他能建立新的關係，結尾沒有全城復憶。 | 1 | 3、13、24、32、39 | 40 |
 
 ## 語氣與畫面
 
@@ -243,7 +248,7 @@
 
 | 規劃秒段 | 畫面 | 聲音 |
 | --- | --- | --- |
-| 0–5 | 江照把孩子推上橋面，左掌契印亮一次又暗下；胡娘拉住孩子，望向江照。 | 胡娘：『你是誰？』 |
+| 0–5 | 江照把孩子推上橋面，左掌契印亮一次又暗下；胡娘拉住孩子，望向江照。 | 胡娘：『你是誰？』江照心聲：『我才救了他，她就忘了我。』 |
 | 5–12 | 江照張口又停，祁硯在斷橋另一端落地拔劍；紅繩仍藏在右腕。 | 祁硯：『江照。』江照：『你記得？』 |
 | 12–22 | 餘震令木架滑向母子；江照用普通劍鞘卡住木架，祁硯接住繩索，不再施法。 | 江照：『先拉住人。』祁硯收劍半寸，照做。 |
 | 22–30 | 母子站穩，祁硯把真印追捕令按在殘橋石欄，命令與救援同框。 | 祁硯：『你救過我。這張令，也是真的。』 |

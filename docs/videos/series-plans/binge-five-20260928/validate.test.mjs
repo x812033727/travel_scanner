@@ -19,6 +19,13 @@ test('does not mistake the final emotional payoff for an open sequel',()=>{const
 test('requires a concrete first reward planned within thirty seconds',()=>{const s=clone();s.chapters[0].episodes[0].satisfaction[0].planned_seconds=45;assert.ok(validateSource(s).some(e=>e.includes('within 30 seconds')));});
 test('rejects thumbnail references to later material unavailable to the compiler',()=>{const s=clone();s.packaging.thumbnail_variants[0].episode=35;assert.ok(validateSource(s).some(e=>e.includes('reference outside first three')));});
 
+test('rejects an appearance that only holds for some episodes',()=>{
+  for(const words of ['navy suit; no veil after episode 1','a cane, later a wheelchair','orderly at first']){
+    const s=clone();s.setting.characters[0].appearance=`East Asian woman, 28, ${words}.`;
+    assert.ok(validateSource(s).some(e=>e.includes('must not depend on the episode')),words);
+  }
+});
+
 test('rejects a missing required compilation tag',()=>{const s=clone();s.packaging.tags=s.packaging.tags.filter(t=>t!=='AI漫劇');assert.ok(validateSource(s).includes('missing required tag: AI漫劇'));});
 
 test('renders structured narrator casting in the human-readable setting',()=>{const s=clone();s.setting.world.narrator={provider:'gemini',name:'Sulafat',style:'沉穩台灣國語'};assert.ok(compile(s)['setting.md'].includes('gemini / Sulafat / 沉穩台灣國語'));});

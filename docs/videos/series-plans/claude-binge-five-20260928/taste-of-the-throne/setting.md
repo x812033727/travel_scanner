@@ -6,7 +6,7 @@
 
 ## 世界觀
 
-架空王朝「大燁」開國一百三十年，都城「雲京」，一座三重城牆包著的北方大城，皇宮在最裡一重。先帝十一年前駕崩，九歲的元晟繼位，如今二十歲、體弱無子；嫡母嚴太后掌後宮與司膳院，皇叔攝政王元祁攝政十一年、掌朝政，禁衛司掌宮禁。皇宮裡每一道呈給皇族的菜都經「司膳院」的嘗使先試七口，這是大燁立國就有的規矩；宮裡的水全部來自玄泉井，經引水道分送各宮。故事發生在一年之內，從太后的壽宴到冬末的登基大典。
+架空王朝「大燁」開國一百三十年，都城「雲京」，一座三重城牆包著的北方大城，皇宮在最裡一重。先帝十一年前駕崩，九歲的元晟繼位，如今二十歲、體弱無子；嫡母嚴太后掌後宮與司膳院，皇叔攝政王元祁攝政十一年、掌朝政，禁衛司掌宮禁。皇宮裡每一道呈給皇族的菜都經「司膳院」的嘗使先試七口，這是大燁立國就有的規矩；除了慈寧宮小廚那口青石小井，宮裡的水全部來自玄泉井，經引水道分送各宮。故事發生在一年之內，從太后的壽宴到冬末的登基大典：圜丘祭天，再回紫宸殿受朝。
 
 | 地點（id） | 名稱 | 固定辨識 |
 | --- | --- | --- |
@@ -16,7 +16,7 @@
 | cining-kitchen | 慈寧宮與小廚 | 太后的宮殿與她的私廚：正殿深紅帷帳、一串琥珀念珠的坐榻；小廚只有一口灶、一口青石小井、牆上一排寫著菜名的木牌。 |
 | study | 御書房 | 皇帝批奏摺的地方：整面牆的黑漆奏摺架、一張寬大黑檀書桌、桌上一方黑硯與一座青銅筆山。硯台旁永遠有一塊白手帕。 |
 | ledger-vault | 御膳簿庫 | 司膳院的檔案庫：一排排到頂的木架，上頭是一百三十年的御膳簿，每本深藍布封皮、書脊寫年份；只有一扇小窗，光線是一道斜的。 |
-| spring-well | 玄泉井與引水道 | 全宮用水的源頭：一口青石大井，井口八角，井水映著幽藍；井後一條低矮的引水道，石壁滲水，每隔十步一塊刻著數字的石板。 |
+| spring-well | 玄泉井與引水道 | 慈寧宮小井以外全宮用水的源頭：一口青石大井，井口八角，井水映著幽藍；井後一條低矮的引水道，石壁滲水，每隔十步一塊刻著數字的石板。 |
 | round-mound | 圜丘 | 祭天的白石圓壇：三層圓台、九道石階、壇頂一座青銅鼎；四周是空曠的松林，火把插在石欄上。 |
 | cell | 內獄 | 囚禁皇族與重犯的地下牢：黑石牆、一道道鐵格門、每間一盞油燈。牆上刻著先前囚犯的劃痕，門外一排掛著鑰匙的鐵鉤。 |
 
@@ -24,7 +24,7 @@
 | --- | --- | --- |
 | 慈寧宮（嚴太后） | 把後宮、司膳院與皇帝的儲位牢牢握在自己手裡，不讓任何一個先帝的血脈威脅她。 | 十年前毒死了淑妃；知道含章是先帝長女；每日以「忘憂」抹她的記憶；曾與攝政王合謀。 |
 | 攝政王府（元祁） | 皇位：讓皇帝慢慢死於墨裡的烏砂，再讓兒子元琰娶長公主，順理成章坐上龍椅。 | 御書房的墨與玄泉井引水道的藥包都是他的手筆；曾與太后合謀，如今互相出賣。 |
-| 鳴鸞宮（長公主元霽） | 保住皇帝、保住含章、擋下攝政王，並讓真相在最有利的時刻攤開。 | 早知道太后會在壽宴下毒、早知道含章的身世與解毒湯的秘密，用含章當餌也護著她。 |
+| 鳴鸞宮（長公主元霽） | 保住皇帝、保住含章、擋下攝政王，並讓真相在最有利的時刻攤開。 | 早知道太后會在壽宴下毒、買通老陶把毒量減到一成；早知道含章的身世與解毒湯的秘密，用含章當餌也護著她。 |
 | 司膳院舊人（柳姑姑） | 讓淑妃的女兒活著、活到能替母親說話的那天。 | 十年前把淑妃十二歲的女兒報了「暴斃」藏進廚房、讓忘憂抹掉她十二歲以前的記憶、教她嘗味；壽宴之後才偷換了忘憂湯。 |
 | 禁衛司（嚴決） | 宮禁不亂、皇位不移。 | 他是太后的姪子卻不忠於姑母，只等虎符與皇帝親口的那一句話。 |
 
@@ -32,21 +32,25 @@
 
 - 嘗使試毒必須先吞再說：嘗到毒，先吞下那一口，才准報毒名；說了不吞，是死罪。宮規只准報毒，不准指認哪個廚房或哪雙手下毒；追查來源是主子的權。含章第 1 集違反的是後一條。代價是嘗使的命永遠押在第一句話前面。
 - 七口對七毒，第八口是水，一百三十年來從不試；沒人試過的那一口，就是誰都能下手的那一口。
-- 解毒湯每日一碗，由掌膳親手煮、親手端，嘗使不可拒喝；喝的人不知道碗裡是什麼。
+- 解毒湯每日一碗，由慈寧宮小廚配煮、掌膳親手端，嘗使不可拒喝；喝的人不知道碗裡是什麼。
 - 「忘憂」抹去記憶卻磨利舌頭：十年微毒把嘗使的味覺磨成刀，也讓她記不得十二歲以前的事；湯一停，記憶會慢慢回來，不能挑選回來哪一段。
 - 先帝遺詔要蓋璽才生效，璽在太后手上；沒有璽的遺詔只是一張紙，讀出來的人反而是罪人。
-- 禁衛司只聽虎符與皇帝親口的命令；太后的手諭與攝政王的印都調不動一兵一卒。
-- 毒只在第一勺的表面時，吃第二勺的人不會中毒；試第一口的人替吃第二口的人擋了一切。
+- 禁衛司非聽不可的只有虎符與皇帝親口的命令；太后的手令與攝政王的印，指揮使可以聽、也可以不聽，兩道命令相衝時以皇帝親口的那一句為準。代價是指揮使一旦當眾選了皇帝，就等於背棄下手令的人，回不了頭。
+- 毒浮在第一勺的表面時，吃第二勺的人不會中毒；試第一口的人替吃第二口的人擋了一切。壽宴是例外：雪蠶散油封在魚腹第三層，前兩口沒有味道，第三口才嘗得到。
 
 ## 跨集連貫性與畫面約束
 
 - 銀匙是全劇的道具軸：含章原本那支葉形匙第 1 集落在太后裙邊被她拾起；第 2 集起她用司膳院的備用圓匙，第 20 集把它放在公主几上；第 38 集太后在內獄把葉形匙連同最後一道菜推給她；第 40 集放進御膳簿夾層的就是這支葉形匙。外觀提示詞不畫腰間的匙，匙只在劇本寫到時出現。
 - 手帕的摺數是皇帝的暗號：三摺＝真的病重或真的危險，一摺＝演戲（第 25 集），不摺＝放鬆或昏迷（第 30、35、40 集）；劇本裡皇帝每次掩口都要寫出摺數。
-- 攝政王敲三下：第 5、13、24、26、30、33 集都要有，敲在案、門框、鐵格上；第 33 集在牢裡敲鐵格是最後一次；之後沒有人再敲三下。
-- 解毒湯的味道線：第 1 集以前的十年含章喝的是真忘憂；柳姑姑壽宴之後才換湯，第 2 集起含章喝的是柳姑姑的無害湯（紅棗陳皮，不苦）；第 14 集起她記得以前的湯是苦的；第 18 集起新廚子的湯才是真忘憂（苦）；三種湯在劇本裡不能混。
-- 誰知道什麼：公主從第 1 集就知道身世與忘憂；皇帝第 12 集起知道身世並開始演「不信任」；含章第 17 集知道自己是淑妃之女、第 21 集被皇帝親口稱長姐；太后從頭到尾知道一切；嚴決第 22 集聽到證詞、第 27 集選邊。
-- 不拍血：老陶之死只由獄卒轉述（第 6 集）；皇帝咳只拍手帕；第 39 集公主中箭只拍手爐落地與人跪下；所有中毒都用臉色、手抖、倒下。
+- 攝政王敲三下：第 5、13、26、30、33 集都要有（第 5 集敲案與門框、第 13 集敲案、第 26 集敲廊柱、第 30 集敲門框、第 33 集敲鐵格）；第 24 集不敲；第 30 集那三下是畫外音，人已被押出門外、只聽見聲音，畫面不拍攝政王（本集出場清單沒有他）；第 33 集在牢裡敲鐵格是最後一次，之後沒有人再敲三下。
+- 解毒湯的味道線：湯一律由慈寧宮小廚配煮、掌膳端給嘗使；第 1 集以前的十年含章喝的是小廚的真忘憂；柳姑姑壽宴之後才換湯，第 2 集起她把小廚送來的湯倒掉、另煮無害湯（紅棗陳皮，不苦）端給含章；第 14 集起含章記得以前的湯是苦的；壽宴後到第 18 集前她沒喝過真忘憂（第 9 集太后召她是交代宴席，不是賜湯）；第 18 集起新廚子的湯不經掌膳的手，才又是真忘憂（苦）；忘憂是日積月累的微毒，一碗或一勺都不會讓人當場失憶；三種湯在劇本裡不能混。
+- 誰知道什麼：公主從第 1 集就知道身世與忘憂；皇帝第 3 集起查名冊、第 9 集刮開塗改處確認身世、第 12 集對含章承認，當眾的「不信任」從第 8 集演起；含章第 17 集知道自己是淑妃之女並看過「皇長女」玉牌、第 21 集被皇帝親口稱長姐；太后從頭到尾知道一切；嚴決第 22 集聽到證詞、第 27 集選邊。
+- 不拍血：老陶之死只由獄卒轉述（第 6 集）；皇帝咳只拍手帕；第 39 集公主中箭不拍血、不拍箭傷，只拍手爐落地碎成兩半與人跪下，之後只拍她左肩纏著的布；所有中毒都用臉色、手抖、倒下。
 - 御膳簿：淑妃那本在第 21 集出灶灰、第 23 集被攝政王搶走、第 30 集搜回（嚴決）、第 31 集讀全、第 37 集當殿宣讀、第 40 集收銀匙；封皮夾層裡的硬紙是遺詔本體，菜名密碼是讀法。
+- 名冊、虎符與登基地點：名冊第 9 集由皇帝塞進含章袖裡，第 16 集禁足搜身時被太后的人搜走，第 25 集成為太后手上的罪證；嚴決第 27 集亮出半塊虎符，第 30 集與皇帝那一半合一後一直在嚴決身上，第 35 集皇帝只改口諭、不再交符；登基是圜丘祭天後回紫宸殿受朝，龍椅只在紫宸殿，日子在第 37 集立儲之後才定（第 36 集定下的是祭天大典）。
+- 禁足、封鎖與身分：含章第 16 集禁足司膳院、第 18 集解除；御書房第 16 集被太后封鎖、第 21 集由皇帝下旨解封；第 25 集起含章是洗碗宮人、不得出宮牆，第 23、25 集攝政王要她去王府做菜的事始終沒成行；她到第 35 集才被當眾承認，所以第 33 集的令由嚴決以宮禁名義下、她執行。
+- 第 1 集的結構（製作說明，不寫進畫面與台詞）：開場三十秒是預告，演到銀匙落地那一刻定格；定格之後倒回壽宴開席，從試第一口演起，後半接回太后那一問與含章的回答，結尾演到她倒下之後（太監抬人、太后拾匙）。同一句問答會出現兩次：第二次鏡頭留在殿上眾人的反應（太監縮手、宮人低頭），不重複開場的鏡位；老陶左手縮進圍裙只在開場第 4 拍出現一次。
+- 道具狀態（逐集）：鏡頭提示詞要照這裡寫。固定外觀提示詞「含」四樣招牌物件：太后的念珠、公主的手爐、皇帝的手帕、元琰的白摺扇（第 2、3、4、7 項）；它們離身的拍點列在各項裡，那幾拍鏡頭用構圖避開（特寫別處或不拍那隻手）或由鏡頭提示詞寫明。固定外觀提示詞「不含」：虎符、皇帝的硯、柳姑姑的木勺、老陶的菜刀、元琰靴跟的青泥、攝政王敲三下的動作、公主肩上的纏布、含章的銀匙與登基外袍；這些要用時由鏡頭提示詞加上去。（1）虎符（不含）：第 1–26 集嚴決只有半塊，掛在頸間、藏在甲領下，畫面上看不到（第 22 集他隔著甲按住胸口）；第 27 集他掏出半塊放在洗碗的桌上，說完收回身上；第 30 集他舉起半塊，與皇帝袖裡那半塊合一，此後整塊在嚴決身上（第 35 集他手按胸口）。（2）太后的琥珀念珠（含）：固定外觀提示詞含這樣東西；第 1–38 集都在她手上，第 25 集起是重串的同一串，進內獄也帶著。下列幾拍它不在她身上，鏡頭用構圖避開或由鏡頭提示詞寫明：第 24 集結尾斷線、珠子滾了一地，到第 25 集重串之前；第 38 集結尾她把念珠留在推出鐵格外的空碗邊之後。（3）公主的白玉手爐（含）：固定外觀提示詞含這樣東西；第 1–39 集在她手上或手邊（第 20、34 集她先把手爐放到一邊再說話，手爐仍在畫面裡）。下列幾拍它不在她身上，鏡頭用構圖避開或由鏡頭提示詞寫明：第 12 集結尾她把手爐塞進含章手裡，到第 13 集提親宴開席前含章站到公主案側、放回她膝上的那一拍為止（這一段手爐在含章手上）；第 39 集落地碎成兩半之後，以及第 40 集整集（她空著手）。公主左肩的纏布（不含）第 39 集中箭之後才有，第 40 集仍纏著，由鏡頭提示詞加上。（4）皇帝的白手帕（含）與硯（不含）：固定外觀提示詞含手帕；手帕全季在他身邊，摺數照「手帕的摺數」那一條寫。下列幾拍手帕不在他手上，鏡頭用構圖避開或由鏡頭提示詞寫明位置：第 16 集他把手帕摺了三摺塞進袖裡之後（裴恪看舌苔、含章嘗十二條墨那幾拍），手帕收在袖裡；第 21 集掉在地上、由含章摺成三摺遞回；第 30 集落地攤開；第 35 集攤在膝上；第 40 集放在膝上。硯只在劇本寫到時出現，時間以皇帝倒下那天（第 30 集）為準：公主在倒下前三天送出新硯（硯底刻鳴鸞宮），元琰代送途中拆開下藥、倒下前兩天重膠，膠比送硯晚一天；皇帝在倒下當天早上第一次用它（第 28 集），第 30 集含章在龍案上嘗出硝，第 33 集裴恪把它抱到內獄，第 34 集含章再嘗並指出膠的日子。（5）柳姑姑的木勺（不含）：只在司膳院大廚房的戲，以及第 23 集的御膳簿庫出現（她拿在手裡，含章嘗出第一個字「朕」時掉在地上）；冷宮（第 8 集）、內獄（第 18–22 集）、內獄門口（第 31、38 集）、紫宸殿（第 37、40 集）不帶。（6）老陶的缺口菜刀（不含）：第 1 集在他手上；第 2 集由公主放在司膳院桌上、留給含章；第 3 集老陶被押走時留在案上。（7）元琰的白摺扇（含）與靴跟的青泥（不含）：固定外觀提示詞含白摺扇（一枝紅梅），他出場的第 11、13、23、25、36 集都在手上。下列這一拍它不在他身上，鏡頭用構圖避開或由鏡頭提示詞寫明：第 36 集他跪下、白扇落地之後。靴跟的青泥只在第 23 集與第 36 集出現，由鏡頭提示詞加上。（8）攝政王的銀扳指全季戴著，本來就在固定外觀裡；敲三下的動作（不含）只在「攝政王敲三下」那一條列的集數出現。（9）含章的衣著：劇情沒有安排換裝，第 25 集被貶後仍是同一身青綠窄袖袍；第 40 集登基若要加外袍（不含），由該集鏡頭提示詞外加在這一身之上，不改固定外觀；銀匙（不含）照「銀匙」那一條。
 
 ## 人物
 
@@ -58,10 +62,10 @@
 | 性格 | 安靜、觀察、先嘗再說；把每一道菜當證物看，把每一個人當菜看。 |
 | 想要 | 活著，知道自己是誰。 |
 | 害怕 | 嘗不出來的那一口。 |
-| 秘密 | 她是先帝與淑妃的長女，自己不知道，第 21 集才被親口告知。 |
+| 秘密 | 她是先帝與淑妃的長女；起初自己不知道，第 17 集由柳姑姑說出身世並拿出「皇長女」玉牌，第 21 集皇帝親口稱她長姐。 |
 | 說話習慣 | 口頭禪「這道菜的手，我認得」；說話前一定先閉眼半秒。 |
 | 聲音（擬定，未試聽） | gemini / Kore / 台灣國語，低而穩，句子短，說毒名時像在念一份帳單；只有在說「我認得」時放慢。 |
-| 外觀提示詞（每集逐字沿用） | A 22-year-old woman, slight and straight-backed, 160 cm, pale from years indoors. Oval face, calm dark eyes that settle on things before people, small mouth kept closed. Black hair in a low tight knot with one plain silver pin, no ornament. Wears the palace taster's uniform: a narrow-sleeved robe of deep teal with a white collar band and a dark grey apron sash tied at the left hip, plain cloth shoes. Signature detail: her hands, always visible and very clean, with a thin pale burn scar across the back of the left hand from years at the kitchen stove. |
+| 外觀提示詞（每集逐字沿用） | A 22-year-old woman, slight and straight-backed, 160 cm, pale from years indoors. Oval face, calm dark eyes that rest on objects longer than on people, small mouth kept closed. Black hair in a low tight knot with one plain silver pin, no ornament. Wears a plain palace kitchen robe: narrow-sleeved, deep teal, with a white collar band and a dark grey apron sash tied at the left hip, plain cloth shoes. Signature detail: her hands, always visible and very clean, with a thin pale burn scar across the back of the left hand from years at the kitchen stove. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -79,16 +83,16 @@
 | 性格 | 表面體弱、實際是棋手；愛與利用分不開，每一次保護都順手當成一步棋。 |
 | 想要 | 保住皇帝與大燁，也保住含章；讓太后與攝政王在最有利的時刻同時倒。 |
 | 害怕 | 自己算錯的那一步落在含章身上。 |
-| 秘密 | 十年前就知道含章的身世與解毒湯的秘密；也早知道太后要在壽宴下毒，她把含章放在毒的前面。 |
+| 秘密 | 十年前就知道含章的身世與解毒湯的秘密；也早知道太后要在壽宴下毒，她買通老陶把毒量減到一成，再把含章放在毒的前面。 |
 | 說話習慣 | 從不吃第一口；說「我早知道」時一定看著別處。 |
 | 聲音（擬定，未試聽） | gemini / Leda / 台灣國語，輕、慢、帶笑，像身體不好的人省著力氣說話；每句話的最後一個字往下沉。 |
-| 外觀提示詞（每集逐字沿用） | A 21-year-old princess, tall and thin, 168 cm, with a delicate, deliberately fragile bearing that hides sharp watchfulness. Long face, high cheekbones, half-lidded eyes, pale lips. Black hair in loose court loops with a jade phoenix hairpin and pale gold ribbons. Wears layered robes of pale lotus pink over ivory with a white fox-fur collar in every season and a thin gold chain belt. Signature object: a small white jade hand warmer she cradles in both hands. Often seated, one hand resting on a folded fan. |
+| 外觀提示詞（每集逐字沿用） | A 21-year-old princess, tall and thin, 168 cm, with a delicate, deliberately fragile bearing that hides sharp watchfulness. Long face, high cheekbones, half-lidded eyes, pale lips. Black hair in loose court loops with a jade phoenix hairpin and pale gold ribbons. Wears layered robes of pale lotus pink over ivory with a white fox-fur collar in every season and a thin gold chain belt. Signature object: a small white jade hand warmer. Often seated, one hand resting on a folded fan. |
 
 | 對象 | 關係 |
 | --- | --- |
 | hanzhang | 她的嘗使、她的餌、她護著的人 |
 | yuansheng | 胞弟，兩人共演一場「不信任」 |
-| yanhou | 名義上的祖母輩長輩，實際上想殺她的人 |
+| yanhou | 名義上的嫡母，實際上想殺她的人 |
 
 ### 嚴太后（`yanhou`，反派）
 
@@ -101,7 +105,7 @@
 | 秘密 | 十年前毒死淑妃；知道含章是先帝長女；每日以「忘憂」抹她記憶；曾與攝政王合謀。 |
 | 說話習慣 | 口頭禪「哀家只是問問」；說話時撥念珠，一句一顆。 |
 | 聲音（擬定，未試聽） | gemini / Gacrux / 台灣國語，溫和、圓潤、永遠帶笑，語速很慢；最狠的話說得最像關心。 |
-| 外觀提示詞（每集逐字沿用） | A 58-year-old empress dowager, medium height, upright and well-fed, with a soft round face that smiles by default and cold steady eyes. Grey-streaked black hair swept into a tall formal crown of dark gold with red coral drops. Wears heavy robes of deep crimson and black brocade embroidered with gold cranes, long sleeves that cover her hands. Signature object: a string of dark amber prayer beads she turns one bead at a time while speaking. |
+| 外觀提示詞（每集逐字沿用） | A 58-year-old empress dowager, medium height, upright and well-fed, with a soft round face that smiles by default and cold steady eyes. Grey-streaked black hair swept into a tall formal crown of dark gold with red coral drops. Wears heavy robes of deep crimson and black brocade embroidered with gold cranes, long sleeves that cover her hands. Signature object: a string of dark amber prayer beads. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -121,7 +125,7 @@
 | 秘密 | 御書房的毒墨與玄泉井引水道的藥包都是他的；最後一劑在硯裡，栽贓給公主。 |
 | 說話習慣 | 手指敲桌三下；稱皇帝「陛下」時總拖長第二個字。 |
 | 聲音（擬定，未試聽） | gemini / Algenib / 台灣國語，低沉、沙啞、慢條斯理，句尾帶笑意；不急，因為他以為時間在他那邊。 |
-| 外觀提示詞（每集逐字沿用） | A 45-year-old prince regent, broad-shouldered, 182 cm, heavy build, square jaw with a trimmed black beard, thick brows, small pleased eyes. Black hair under a dark iron-grey court cap with a single sapphire. Wears a robe of storm-blue silk with silver dragon-cloud embroidery at hem and cuffs and a wide black leather belt with a silver buckle. Signature object: a heavy silver thumb ring he taps three times on any table. Cuffs faintly greyed as if by smoke. |
+| 外觀提示詞（每集逐字沿用） | A 45-year-old prince regent, broad-shouldered, 182 cm, heavy build, square jaw with a trimmed black beard, thick brows, small pleased eyes. Black hair under a dark iron-grey court cap with a single sapphire. Wears a robe of storm-blue silk with silver dragon-cloud embroidery at hem and cuffs and a wide black leather belt with a silver buckle. Signature object: a heavy silver thumb ring on his right hand. Cuffs faintly greyed as if by smoke. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -137,10 +141,10 @@
 | 性格 | 溫和、疲倦、演技好；用「不信任」把人推遠，是為了讓人活。 |
 | 想要 | 活到把皇位交給對的人，找到先帝的遺詔。 |
 | 害怕 | 自己死在遺詔找到之前。 |
-| 秘密 | 第 12 集起他知道含章是長姐；此後每一次當眾斥責她都是演給太后看的。 |
+| 秘密 | 第 3 集含章嘗茶皺眉那天起他開始查名冊，第 9 集刮開塗改處確認她是長姐，第 12 集才對含章承認；從第 8 集起，每一次當眾斥責她都是演給太后與攝政王看的。 |
 | 說話習慣 | 說話前先咳一聲；重要的話寫在紙上而不說。 |
 | 聲音（擬定，未試聽） | gemini / Enceladus / 台灣國語，氣音多、句子短、常停下來吸氣；只有說「長姐」那兩個字時聲音是穩的。 |
-| 外觀提示詞（每集逐字沿用） | A 20-year-old emperor, tall but stooped and thin, 176 cm, sallow skin, hollow cheeks, gentle tired eyes with dark circles, thin lips. Black hair under a simple black gauze crown with one row of pearls. Wears an imperial robe of muted yellow-gold with faded dragon roundels and an outer coat of dark brown fur even indoors, a white silk handkerchief always in one hand. Signature object: an ink-stained right thumb and the small black ink stone he keeps beside him. |
+| 外觀提示詞（每集逐字沿用） | A 20-year-old emperor, tall but stooped and thin, 176 cm, sallow skin, hollow cheeks, gentle tired eyes with dark circles, thin lips. Black hair under a simple black gauze crown with one row of pearls. Wears an imperial robe of muted yellow-gold with faded dragon roundels and an outer coat of dark brown fur even indoors. Signature object: a white silk handkerchief. His right thumb is ink-stained. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -156,10 +160,10 @@
 | 性格 | 寡言、守規矩、只認一個主子——皇位。 |
 | 想要 | 宮禁不亂，皇位不移。 |
 | 害怕 | 自己的刀被姑母用來對付皇帝。 |
-| 秘密 | 他早就在等一個讓他選皇上的理由。 |
+| 秘密 | 他早就在等一個讓他選皇帝的理由。 |
 | 說話習慣 | 一句話不超過十個字；說「我選」的時候會把手放到刀柄上。 |
 | 聲音（擬定，未試聽） | gemini / Alnilam / 台灣國語，字少、聲音平、不帶情緒；每句話都像下令，包括道歉。 |
-| 外觀提示詞（每集逐字沿用） | A 36-year-old guard commander, lean and hard, 180 cm, weathered face with a straight nose, a thin old scar across the left eyebrow, narrow unreadable eyes. Black hair pulled tight under a black lacquered helmet-cap with a red tassel. Wears black lamellar armor over a dark red under-robe, a grey cloak, a long straight sword with a plain iron guard at the left hip. Signature object: half of a bronze tiger tally worn on a cord at his neck, hidden under the armor collar. |
+| 外觀提示詞（每集逐字沿用） | A 36-year-old guard commander, lean and hard, 180 cm, weathered face with a straight nose, a thin old scar across the left eyebrow, narrow unreadable eyes. Black hair pulled tight under a black lacquered helmet-cap with a red tassel. Wears black lamellar armor over a dark red under-robe, a grey cloak, a long straight sword with a plain iron guard at the left hip. Signature detail: the old scar across his left eyebrow and the red tassel of his helmet-cap. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -175,10 +179,10 @@
 | 性格 | 隱忍、護犢、把秘密當柴火一根一根燒掉。 |
 | 想要 | 讓淑妃的女兒活著、活到能替母親說話的那天。 |
 | 害怕 | 含章在還不夠強的時候知道一切。 |
-| 秘密 | 十年前把淑妃十二歲的女兒報了「暴斃」藏進廚房、用忘憂抹掉她十二歲以前的記憶、教她嘗味；壽宴上看見她開口，才把忘憂湯偷換成無害的湯，讓她把記憶找回來。 |
+| 秘密 | 十年前把淑妃十二歲的女兒報了「暴斃」藏進廚房、用忘憂抹掉她十二歲以前的記憶、教她嘗味；壽宴上看見她當殿指認下毒的手，才把慈寧宮小廚送來的忘憂湯倒掉、偷換成自己煮的無害湯，讓她把記憶找回來。 |
 | 說話習慣 | 不回答的問題就用「先把湯喝了」擋回去。 |
 | 聲音（擬定，未試聽） | gemini / Vindemiatrix / 台灣國語，溫厚、慢、像在哄孩子；說到「妳母親」時聲音會斷一下。 |
-| 外觀提示詞（每集逐字沿用） | A 46-year-old head cook of the imperial kitchen, medium build, strong forearms, a plain kind face lined around the mouth, watchful brown eyes. Black hair greying at the temples in a neat bun under a dark blue kerchief. Wears a dark blue work robe with sleeves bound by white cords, a long stained hemp apron and a ring of small bronze keys at the waist. Signature object: a worn wooden ladle with a burn mark on the handle, always within reach. |
+| 外觀提示詞（每集逐字沿用） | A 46-year-old head cook of the imperial kitchen, medium build, strong forearms, a plain kind face lined around the mouth, watchful brown eyes. Black hair greying at the temples in a neat bun under a dark blue kerchief. Wears a dark blue work robe with sleeves bound by white cords, a long stained hemp apron and a ring of small bronze keys at the waist. Signature detail: the dark blue kerchief and the white cords binding her sleeves. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -211,10 +215,10 @@
 | 性格 | 貪、怕、聽話；他知道自己只是第一把用完就丟的刀。 |
 | 想要 | 活著離開皇宮，帶著太后給的銀子。 |
 | 害怕 | 那個嘗得出「手」的女人。 |
-| 秘密 | 壽宴的雪蠶散是他奉太后之命下的；他還知道小廚十年來煮的湯叫什麼。 |
+| 秘密 | 壽宴的雪蠶散是他奉太后之命下的，又收了公主的好處只下一成的量；他還知道小廚十年來煮的湯叫什麼。 |
 | 說話習慣 | 每句話都以「小的」開頭。 |
 | 聲音（擬定，未試聽） | gemini / Algieba / 台灣國語，油滑、討好、聲音壓得低；被逼問時尾音會發抖。 |
-| 外觀提示詞（每集逐字沿用） | A 50-year-old palace cook, short and thick, 165 cm, a red flushed face with heavy jowls, small darting eyes and a sparse grey moustache. Bald crown with grey hair at the sides under a brown cloth cap. Wears a brown cook's robe with sleeves tied up by grey cords, a greasy dark apron and cloth shoes. Signature object: a broad cleaver with a chipped black handle. His left thumb has no nail; he hides that hand in his apron. |
+| 外觀提示詞（每集逐字沿用） | A 50-year-old palace cook, short and thick, 165 cm, a red flushed face with heavy jowls, small darting eyes and a sparse grey moustache. Bald crown with grey hair at the sides under a brown cloth cap. Wears a brown cook's robe with sleeves tied up by grey cords, a greasy dark apron and cloth shoes. Signature detail: his left thumb has no nail; he hides that hand in his apron. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -232,7 +236,7 @@
 | 秘密 | 他親自去過引水道放藥包，靴底的泥就是證據。 |
 | 說話習慣 | 開口先誇人一句，再說正事。 |
 | 聲音（擬定，未試聽） | gemini / Puck / 台灣國語，明亮、殷勤、講話像在敬酒；被揭穿時聲音一下子變薄。 |
-| 外觀提示詞（每集逐字沿用） | A 24-year-old noble heir, tall and smoothly handsome, 178 cm, a fair face with a ready smile that never reaches the eyes, a thin moustache, sleek black hair under a gold-trimmed white court cap. Wears a robe of pale silver-white silk with pale blue cloud embroidery, a jade pendant belt and polished black boots. Signature object: a white folding fan painted with a single red plum branch. His boot heels often carry faint mud. |
+| 外觀提示詞（每集逐字沿用） | A 24-year-old noble heir, tall and smoothly handsome, 178 cm, a fair face with a ready smile that never reaches the eyes, a thin moustache, sleek black hair under a gold-trimmed white court cap. Wears a robe of pale silver-white silk with pale blue cloud embroidery, a jade pendant belt and polished black boots. Signature object: a white folding fan painted with a single red plum branch. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -243,9 +247,9 @@
 
 | id | 問題 | 確定答案 | 埋下（集） | 推進（集） | 揭曉（集） |
 | --- | --- | --- | --- | --- | --- |
-| m01 | 誰在公主的菜裡下毒？ | 太后小廚的廚子老陶，奉太后之命，在壽宴的魚裡下了雪蠶散。 | 1 | 3 | 6 |
-| m02 | 含章每天喝的解毒湯是什麼？ | 太后的「忘憂」，抹記憶的微毒，她喝了十年；柳姑姑在壽宴上看見她開口，壽宴之後才把湯偷換成無害的，讓她把記憶找回來，所以她的記憶會慢慢回來。 | 2 | 9、14 | 20 |
-| m03 | 公主為什麼從不吃含章試過的第一口？ | 毒只在第一勺表面；她早知太后要殺她，用含章當觸發，也用第二口護著含章。 | 1 | 7、10 | 12 |
+| m01 | 誰在公主的菜裡下毒？ | 太后小廚的廚子老陶，奉太后之命，在壽宴的魚裡下了雪蠶散；公主早知道，買通他只下一成的量。 | 1 | 3 | 6 |
+| m02 | 含章每天喝的解毒湯是什麼？ | 太后的「忘憂」，抹記憶的微毒，由慈寧宮小廚配煮、掌膳端給她，她喝了十年；柳姑姑在壽宴上看見她當殿指認下毒的手，壽宴之後才把小廚送來的湯倒掉、偷換成無害的，所以她的記憶會慢慢回來。 | 2 | 9、14 | 20 |
+| m03 | 公主為什麼從不吃含章試過的第一口？ | 平日的毒只浮在第一勺表面（壽宴那一次例外，油封在魚腹第三層）；她早知太后要殺她，用含章當觸發，也用第二口護著含章。 | 1 | 7、10 | 12 |
 | m04 | 含章是誰的孩子？ | 先帝的長女，淑妃所生；淑妃被太后毒死後，柳姑姑把她十二歲的女兒報了「暴斃」、藏進廚房當嘗使，用忘憂抹掉她十二歲以前的記憶。 | 4 | 11、17 | 21 |
 | m05 | 皇帝的病是什麼？ | 御書房的墨裡摻了烏砂——磨細後混進墨裡看不出來的黑礦粉，攝政王下的慢性毒。 | 3 | 10、16 | 24 |
 | m06 | 攝政王要什麼？ | 皇位：毒死皇帝、讓兒子元琰娶公主，順理成章接位。 | 5 | 13 | 26 |
@@ -253,7 +257,7 @@
 | m08 | 禁衛司指揮使嚴決效忠誰？ | 皇位，不是姑母；他在第 30 集親手拿下太后。 | 6 | 15、27 | 30 |
 | m09 | 從不試的第八口是什麼？ | 水。攝政王的藥包埋在玄泉井的引水道，全宮半年的怪病都出自那裡。 | 7 | 19、28 | 33 |
 | m10 | 先帝的遺詔在哪裡？ | 御膳簿封皮夾層，用淑妃「以味為字」的菜名密碼寫成，先帝立長女為儲。 | 12 | 23、31 | 37 |
-| m11 | 皇帝知不知道含章是誰？ | 知道，從第 12 集起；他當眾的「不信任」全是演給太后與攝政王看的。 | 9 | 25 | 35 |
+| m11 | 皇帝知不知道含章是誰？ | 知道：第 3 集她嘗茶皺眉那天起他開始查名冊，第 9 集刮開塗改處確認，第 12 集對含章承認；他從第 8 集起當眾的「不信任」全是演給太后與攝政王看的。 | 9 | 25 | 35 |
 
 ## 語氣與畫面
 
@@ -269,18 +273,18 @@
 | 5–12 | 拉開：紅金的紫宸殿壽宴，太后在上首撥著念珠微笑，長公主坐在側席抱著白玉手爐；含章站在公主案側，把那一口吞下去，喉頭動了一下。 | 旁白：「大燁的規矩，七口對七毒。姜含章替長公主試了十年，從沒點過下毒人的名。」編鐘一聲。 |
 | 12–20 | 含章臉色轉白仍站直，旁邊的太監伸手要拉她退下，她抬起頭看向太后案上同一道魚。 | 含章：「雪蠶散。下在魚腹第三層，油封過，所以前兩口沒有味道。」滿殿筷子停住，只剩弦音。 |
 | 20–26 | 太后的指尖停在一顆念珠上，笑容沒變；殿角站著端菜的老陶，握著菜刀的左手縮進圍裙。 | 太后（溫和）：「哀家只是問問——妳說的，是哪個廚房？」 |
-| 26–30 | 含章閉眼半秒，再張開，直視太后。她的膝蓋一軟，銀匙從手裡掉到白石地上。 | 含章：「慈寧宮小廚。這道菜的手，我認得。」銀匙落地一聲脆響，弦斷。 |
+| 26–30 | 含章閉眼半秒，再張開，直視太后。她的膝蓋一軟，銀匙從手裡掉到白石地上；畫面定格在銀匙落地的那一刻。 | 含章：「慈寧宮小廚。這道菜的手，我認得。」銀匙落地一聲脆響，弦斷。 |
 
 ## 命名規則
 
-- 王朝、都城、宮殿、官職全部自創：大燁、雲京、紫宸殿、鳴鸞宮、慈寧宮、司膳院、禁衛司、嘗使、掌膳；不用任何真實朝代的年號與名稱。
+- 王朝與都城自創：大燁、雲京。宮殿與官職用自創名或歷代通用的泛稱：鳴鸞宮、司膳院、禁衛司、嘗使是自創；紫宸殿、慈寧宮是歷史上用過的殿名，司膳、掌膳是歷史上有過的女官名，在本作只當泛稱，不對應任何真實朝代的人與事。不用任何真實年號。
 - 皇族單名，姓「元」：元晟、元霽、元祁、元琰；外戚姓「嚴」；宮人以姓加稱呼：柳姑姑、老陶。
 - 毒與藥以味命名，兩三個字、聽得出味道：雪蠶散、忘憂、烏砂、硝味；菜名密碼的每一道菜名對應一個字，寫在御膳簿封皮夾層。
 - 地點的稱呼全劇固定：玄泉井、引水道、御膳簿庫、圜丘、內獄，不用別名。
 
 ## 不做的事
 
-- 不借用任何真實朝代、真實人物、真實年號、真實官職名。
+- 不借用任何真實朝代、真實人物、真實年號；沿用歷代通用的殿名與女官名時只當泛稱，不對應任何真實的人與事。
 - 不拍血、屍體、傷口；中毒只用臉色、咳嗽、掩口、倒下表現，「畏罪自盡」只轉述。
 - 不性暗示，不羞辱女性；提親只是政治，沒有任何調情。
 - 不說教：沒有人對著鏡頭講道理，正義用一道菜、一杯水證明。
@@ -324,4 +328,4 @@
 
 ## 確定的結局
 
-太后與攝政王下內獄，元琰伏罪；皇帝元晟活著但退居後宮，不再理政。含章依先帝遺詔登基，登基第一道菜由公主元霽親手端上，她自己拿起第一勺吃下，宣布大燁從今天起沒有嘗使——這是她登基的第一件事。太后隔著囚牆聽見「皇長女」三個字時折斷了簪子，攝政王在牢裡再也沒有敲桌。公主留在她身邊，肩上還纏著箭傷的布；柳姑姑在殿下哭。最後一個畫面：含章把那支壽宴上落地、太后拾走又在內獄還給她的葉形銀匙放進御膳簿封皮的夾層，蓋上，一根古琴弦停住。
+太后與攝政王下內獄，元琰伏罪；皇帝元晟活著但退居後宮，不再理政。含章依先帝遺詔登基：圜丘祭天後回紫宸殿受朝，登基第一道菜由公主元霽親手端上，她自己拿起第一勺吃下，宣布大燁從今天起沒有嘗使——這是她登基的第一件事。太后隔著囚牆聽見「皇長女」三個字時折斷了簪子，攝政王在牢裡敲過那一次鐵格之後，再也沒有敲過三下。公主留在她身邊，肩上還纏著箭傷的布；柳姑姑在殿下哭。最後一個畫面：含章把那支壽宴上落地、太后拾走又在內獄還給她的葉形銀匙放進御膳簿封皮的夾層，蓋上，一根古琴弦停住。

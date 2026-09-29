@@ -8,6 +8,10 @@ const text = v => typeof v === 'string' && v.trim().length > 0;
 const cliffTypes = new Set(['danger','reveal','choice','reversal','emotion']);
 const beatOrder = ['opening','first_half','midpoint','second_half','ending'];
 const stateKeys = ['time','knowledge','character_state','evidence','carry_forward'];
+// The image prompts take a character's appearance word for word into every shot of every episode
+// (tools/video/media/look.mjs, keyframes.mjs), so a look that depends on the episode cannot be
+// drawn from it; what changes belongs in continuity_notes and the shot prompt.
+export const TIMED_APPEARANCE = /\b(?:episodes?|eps?\.?\s*\d+|later|initially|at first|at the start|onwards?|near the end|by the end|as the story|from then on|no longer)\b/i;
 export function validateSource(source, expectedSlug=source?.series?.slug) {
   const errors=[];
   const check=(ok,msg)=>{if(!ok) errors.push(msg);};
@@ -35,6 +39,7 @@ export function validateSource(source, expectedSlug=source?.series?.slug) {
     for(const c of source.setting.characters){
       for(const k of ['id','name','role','appearance','personality','want','fear','secret','speech']) check(text(c[k]),`cast ${c.id}: missing ${k}`);
       check(c.appearance.length<=800,`cast ${c.id}: appearance too long`);
+      check(!TIMED_APPEARANCE.test(c.appearance),`cast ${c.id}: appearance must not depend on the episode ("${c.appearance.match(TIMED_APPEARANCE)?.[0]}"); put changes in continuity_notes`);
       check(c.voice.provider==='gemini' && text(c.voice.name) && text(c.voice.style),`cast ${c.id}: voice proposal missing`);
       for(const r of c.relationships) check(cast.has(r.with) && text(r.kind),`cast ${c.id}: unknown relationship ${r.with}`);
     }

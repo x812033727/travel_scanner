@@ -156,6 +156,15 @@ test("an unregistered character, place or mystery is refused", () => {
   assert.ok(errors.some((e) => e.includes("unknown setup m99")));
 });
 
+test("an appearance that only holds for some episodes is refused", () => {
+  for (const words of ["Episodes 1-26: a conductor's coat", "a black cane, later a wheelchair", "orderly at first"]) {
+    const source = syntheticSource();
+    source.setting.characters[0].appearance = `a woman of thirty with short black hair; ${words}`;
+    const { errors } = validateSource(source);
+    assert.ok(errors.some((e) => e.includes("must not depend on the episode")), words);
+  }
+});
+
 test("a mystery must be paid where its schedule says", () => {
   const source = syntheticSource();
   const ep33 = source.chapters[3].episodes[2];

@@ -6,6 +6,8 @@
 
 歷史匯入與審稿收據保留原樣，不能改綁到本次 source 雜湊。正式文件更新必須另經站主授權，保留舊版本，對本次內容取得新的審稿與匯入紀錄；更新前後應逐份比對 Markdown、結構化正文與雜湊。
 
+2026-09-29 第四輪：十部各自完整通讀後又找到一批問題，記在 [`../binge-five-20260928/AUDIT-FOURTH-PASS-20260929.md`](../binge-five-20260928/AUDIT-FOURTH-PASS-20260929.md)。本輪只修確定的矛盾，修了什麼在 [`../binge-five-20260928/AUDIT-REPAIR-20260929.md`](../binge-five-20260928/AUDIT-REPAIR-20260929.md)，這五部的修訂覆核在 [`revision-review-2026-09-29.json`](revision-review-2026-09-29.json)；第三輪的覆核保留在 [`revision-review-2026-09-28.json`](revision-review-2026-09-28.json)。需要站主取捨的項目還沒有處理。
+
 ## 五部
 
 | 順序 | 作品 | 題材／主角 | 一句話 | 為什麼有機會破百萬 |

@@ -36,15 +36,16 @@
 ## 跨集連貫性與畫面約束
 
 - 空間固定：醫院北、轉運站南 250 公尺、控制站西 400 公尺、排水設施東 700 公尺。第 11 集含安全車移動十分鐘，第 31–32 集主角移往東側集合點；第 35 集由留在控制站的同伴保全證據，主角不瞬移回去。
-- 安安位置：第 1 集只有轉運站、第 3 集南側、第 9 集 B1 高處值班區、第 17 集依工作人員確認路線轉平臺、第 26 集警示指向此處；第 29 集向全技術組坦白關係與既知位置，不假裝陳勳、鄭茵先前不知道；31 正式託付、32 仍等待、36 於 02:12 救到地面、38 父女可見重逢。
+- 安安位置：第 1 集只有轉運站、第 3 集南側、第 9 集 B1 高處值班區、第 17 集依工作人員確認路線轉平臺、第 26 集警示指向此處；第 29 集向全技術組坦白關係與既知位置：陳勳、鄭茵早已知情，周禾與吳雅自第 3 集就知道他有女兒在南側（簡訊由周禾留存），周禾只是還沒把 B1 平臺那筆受困編號和她對上，剛加入的維修班則只見編號，不假裝任何人先前不知道位置；31 正式託付、32 仍等待、36 於 02:12 救到地面、38 父女可見重逢。
 - 第一集即有停止未核對重啟和確認病患回應的具體回報；第二集才由專業隊完整救出。主角不碰電梯控制、不私撬門，畫面不教授脫困操作。
 - 真過失為未完成高風險測試就簽有條件驗收、未即時外部通報；栽贓為停用功能與收回扣。19–21 承認簽字與遲報，24 只證實停權後另有改動，36 串起當夜隱瞞，39 才由正式調查分清過失與偽造。
 - 醫院備援不是毫無理由與市電一起全失效：獨立供能仍在，淹水影響散熱與冗餘，工程員定時更新安全轉移時間。27 在 00:15 給約兩小時的轉移時間，28/29 仍更新，33 首批於 02:00 前交接，38 交代後續轉移及關鍵區域逐步恢復。
-- 30 提出受控現場辨識，不表示當場入水；33 工程隔離、抽排和檢測確認，34 隊員帶領到指定觀察點，37 主角只核對銘牌並回報，周禾從安全控制站以本人權限執行。撤離受傷由專業隊救出，不用裸手短接或單人涉水顯示勇敢。
+- 30 提出受控現場辨識，不表示當場入水；33 工程隔離、抽排和檢測確認，34 入口條件通過並取得隨隊入場許可、35–36 由隊員逐段帶到指定觀察點，37 主角只核對銘牌並回報，周禾從安全控制站以本人權限執行。撤離受傷由專業隊救出，不用裸手短接或單人涉水顯示勇敢。
 - 角色權限固定：陳勳決定現場進出與救援，吳雅決定醫護轉移需求，周禾執行授權設備操作，鄭茵維持調度資訊，林既明與賴良提供可核對的舊知識。當夜貢獻不自動恢復主角執業資格。
-- 原件與副本去向：6 周禾封本地原表、12 原班誌櫃留存、23 賴良先傳副本、24 離線盒封存、25 異常表交鄭茵、34 賴良交原班誌、35 有權人員接管原件。36 證據可供調查，不以私下截圖宣判。
+- 原件與副本去向：6 周禾封本地原表、9 安安位置寫上陳勳保管的現場圖（29 起另有林既明補全的副本，31 交陳勳）、12 原班誌櫃留存、23 賴良先傳副本、24 離線盒封存、25 異常表交鄭茵、34 賴良交原班誌（陳勳隊員封袋簽收後轉送調度）、35 有權人員接管原件。36 證據可供調查，不以私下截圖宣判。
 - 賴良第 23 集只遠端交資料，29 答應安全集合，34 才到東側；其跛行保留，沒有突然跑過水道。主角第 37 集腿傷，38 包紮，39 六個月後可步行，40 一年後開課。
 - 安安與朵朵以分享外套、記門牌、等待確認的救援者推進，不自行進入機房或積水。孩子最終與家人團聚用院方紀錄交代，不額外新增聲線與主線。
+- 道具與穿著狀態（逐集）：固定外觀提示詞（appearance）只寫整部不變的樣子，下列會出現、消失、換手或改變的東西都不在裡面；鏡頭提示詞要照這裡寫，固定外觀提示詞不含這些東西。①林既明的白色外送頭盔（scratched white bike helmet）：第 1–8 集隨身，戴著或拿在手上由分鏡決定（第 1 集縮圖 A 構圖寫明外送頭盔）；第 8 集末拍他把頭盔放在資料袋旁、選擇留下，第 9 集起劇本不再出現，鏡頭提示詞不寫。②林既明的外送餐袋：第 1–3 集在他手邊（開場 0–5 秒被攔在設備區線外、第 2 集在地面接回餐袋）；第 3 集末拍由吳雅暫收，之後不在他身上；第 38 集安安把那份沒送完的餐換成一碗溫粥。③林既明的隊方核准工程安全帽與反光背心（approved engineering hard hat and reflective safety vest）：只在隨隊進入受控觀察廊時穿戴，第 34 集末拍準備進場（賴良扣好安全帽那一拍）起，第 36 集在觀察廊完成核對，到第 37 集撤出為止；第 35 集他不入鏡；其餘各集不寫。④林既明的雨濕與傷：第 1–37 集雨夜各場的雨濕、泥水程度由鏡頭提示詞按場景加；第 37 集撤離途中小腿裂傷與踝扭傷、被扶上擔架（擔架只在這一集）；第 38 集在留觀病床上、腿部包紮；第 39 集六個月後腿傷已復原可步行，第 39–40 集不寫包紮、擔架、跛行或雨濕。⑤林安安的淺綠色大號雨衣外套（oversized pale green rain jacket）：第 9 集及第 17 集分外套之前穿在她身上；第 17 集她把外套分給朵朵，該拍起外套在朵朵身上（披在粉紅雨披外），劇本沒有寫還回；第 26 集兩人同場，外套仍在朵朵身上，安安只有固定外觀的校服襯衫；第 31 集安安不穿外套（朵朵若在背景，外套仍在她身上）；第 36 集兩人救到地面只以調度文字交代、不入鏡；第 38–40 集劇本沒有寫她穿這件外套，鏡頭提示詞不加。⑥林安安的手電筒：只在第 17 集拿在手上照出清楚視線，其他集劇本沒寫，不加。⑦林安安的潮濕與受冷：第 9 集衣物潮濕、第 17 集受冷，第 26、31 集仍在平臺等待，沿用潮濕受冷；第 38 集在留觀病房低溫恢復；第 39–40 集不寫潮濕。⑧朵朵只在第 17、26 集入鏡：粉紅雨披與狐狸玩偶在固定外觀，第 17 集那一拍起再加安安的外套（見⑤）；第 36 集救出、第 38 集與家人團聚都只以紀錄交代，不入鏡。⑨賴良的舊黃色安全帽（old yellow hard hat with a narrow white stripe）：第 23 集只以電話出場、第 29 集答應會合尚未到場，都不戴；第 34 集到集合點時拿在手上，該集末拍扣好，戴到第 37 集撤出；第 39–40 集劇本沒寫，不加。跛行全劇不變，已在固定外觀。⑩賴良的班誌原件（folded paper notebook in a clear waterproof sleeve）：第 23 集原件由他持有（班誌副本上註明），只傳副本；第 34 集帶到集合點，交陳勳隊員封袋簽收後轉送調度，之後不在他身上；隨隊的是副本與銘牌拓片，第 34 集起他與林既明各拿一份確認表。⑪宋振南：劇本沒有他外表變凌亂的一場，各集照固定外觀、不加凌亂；黑傘（black umbrella）不在固定外觀，劇本也沒有他撐傘的一拍，不加。⑫鄭茵在哪個位置由各集 locations 與劇本決定，不寫進外觀。⑬留在固定外觀的招牌物件，劇本沒有寫離身的拍點：林既明的外送外套與口袋裡的鋼製鉛筆、安安的黃色帆布袋（小燈補丁）、朵朵的狐狸玩偶（第 17 集寫明一直由朵朵抱著）、吳雅的分診包與紙本病患表、鄭茵的耳機與銀錶、周禾的藍色安全帽與防水小筆記本、陳勳的白色救援頭盔、無線電與地圖袋；分鏡若要其中一樣離身，那一拍鏡頭用構圖避開或由鏡頭提示詞寫明。
 - 第 40 集學徒只作無台詞背景，主要四聲線為林既明、賴良、安安、周禾。門口燈是普通成品，呼應被擋在外的第一幕；不另揭有錢身份、不開新陰謀。
 - 這些是可製作的敘事規格與規劃秒數；未生成影片、音訊、五語字幕或縮圖圖片，也沒有完成真實片長、救援專業顧問覆核、試聽或觀看留存驗收。
 
@@ -62,7 +63,7 @@
 | 秘密 | 有條件驗收確由他簽，當時應拒簽並上報卻沒有。 |
 | 說話習慣 | 先說能核對的事：「先確認裡面的人。」「這項我不能替你簽。」 |
 | 聲音提案 | gemini / Charon / 台灣國語；中低音、疲憊但清楚，少用高聲宣言；擬定 casting，未試聽，開拍前核對主機聲音池。 |
-| 外觀提示詞（跨集逐字沿用） | Taiwanese man, 39, lean strong frame, weathered rectangular face, short black hair with slight grey at temples, stubble, faded orange unbranded delivery jacket over a charcoal shirt, navy work trousers, black rain boots, scratched white bike helmet, steel pencil clipped inside left pocket. Keep the same rain-worn costume; add approved safety vest and helmet only during supervised site entry. |
+| 外觀提示詞（跨集逐字沿用） | Taiwanese man, 39, lean strong frame, weathered rectangular face, short black hair with slight grey at temples, stubble, faded orange unbranded delivery jacket over a charcoal shirt, navy work trousers, black rain boots, steel pencil clipped inside left pocket. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -82,7 +83,7 @@
 | 秘密 | 包上的小燈圖案是幼年父親教她縫的，她一直沒拆掉。 |
 | 說話習慣 | 不說漂亮大道理，先問父親在哪裡、要多久、誰知道。 |
 | 聲音提案 | gemini / Zephyr / 台灣國語；清亮自然、不幼態，疲弱段保留同一聲線；擬定 casting，未試聽，開拍前核對主機聲音池。 |
-| 外觀提示詞（跨集逐字沿用） | Taiwanese girl, 16, slim build, chin-length black bob with a small blue hair clip, oversized pale green rain jacket over a cream school shirt, dark school trousers, white sneakers, yellow canvas tote with a hand-stitched lamp patch. Natural teenage styling, no glamour makeup; keep clothing consistent as it becomes damp. |
+| 外觀提示詞（跨集逐字沿用） | Taiwanese girl, 16, slim build, chin-length black bob with a small blue hair clip, cream school shirt, dark school trousers, white sneakers, yellow canvas tote with a hand-stitched lamp patch. Natural teenage styling, no glamour makeup. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -98,10 +99,10 @@
 | 性格 | 冷靜、按時間記錄，不把感情當可信度。 |
 | 欲望 | 讓每個現場都能被聽見。 |
 | 恐懼 | 再度用一個漂亮總表掩蓋未確認的人。 |
-| 秘密 | 儲存當年被退回的異常通報影本，也記得主角曾遲報。 |
+| 秘密 | 保存當年被退回的異常通報影本，也記得主角曾遲報。 |
 | 說話習慣 | 先複誦位置、狀態，再派下一步；不說全城已安全。 |
 | 聲音提案 | gemini / Kore / 台灣國語；穩定中低女聲、短句有時間感；擬定 casting，未試聽，開拍前核對主機聲音池。 |
-| 外觀提示詞（跨集逐字沿用） | Taiwanese woman, 42, square glasses, straight black hair in a compact bun, dark blue dispatch vest over a grey polo, black utility trousers, wired headset with a yellow tape label, silver watch. Upright posture, precise movements, always at an identified dispatch position unless evacuation is shown. |
+| 外觀提示詞（跨集逐字沿用） | Taiwanese woman, 42, square glasses, straight black hair in a compact bun, dark blue dispatch vest over a grey polo, black utility trousers, wired headset with a yellow tape label, silver watch. Upright posture, precise movements. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -139,7 +140,7 @@
 | 秘密 | 停用警示和改報時間有他批准的紀錄；並非天災與所有故障都出自他。 |
 | 說話習慣 | 「照程序」「避免恐慌」「先保住核心」；遇到原件便改談交易。 |
 | 聲音提案 | gemini / Orus / 台灣國語；低音、體面、控制停頓，不一直咆哮；擬定 casting，未試聽，開拍前核對主機聲音池。 |
-| 外觀提示詞（跨集逐字沿用） | Taiwanese man, 48, broad angular face, neatly combed black hair, dark tailored coat over an open-collar white shirt, polished black shoes, black umbrella, silver tie clip kept in a coat pocket, expensive-looking but unbranded watch. Dry and orderly at first, visibly disordered only near the end. |
+| 外觀提示詞（跨集逐字沿用） | Taiwanese man, 48, broad angular face, neatly combed black hair, dark tailored coat over an open-collar white shirt, polished black shoes, silver tie clip kept in a coat pocket, expensive-looking but unbranded watch. Dry, neatly groomed and composed. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -177,7 +178,7 @@
 | 秘密 | 當年的班誌保留了主角未完成測試與公司後續改動的不同時間。 |
 | 說話習慣 | 講物件和日期，不把情緒全部說破。 |
 | 聲音提案 | gemini / Charon / 台灣國語；年長沙啞、比主角慢半拍，試聽需確認兩人可分辨；擬定 casting，未試聽，開拍前核對主機聲音池。 |
-| 外觀提示詞（跨集逐字沿用） | Taiwanese man, 58, stocky build, short salt-and-pepper hair, thick brows, faded olive work coat, dark trousers, brown safety boots, old yellow hard hat with a narrow white stripe, folded paper notebook in a clear waterproof sleeve. Slight limp visible but stable; no acrobatic movements. |
+| 外觀提示詞（跨集逐字沿用） | Taiwanese man, 58, stocky build, short salt-and-pepper hair, thick brows, faded olive work coat, dark trousers, brown safety boots. Slight limp visible but stable; no acrobatic movements. |
 
 | 對象 | 關係 |
 | --- | --- |
@@ -245,7 +246,7 @@
 | m04 | 女兒在哪裡，父親能否把她交給別人救？ | 安安在 250 公尺外轉運中心高處陪孩子等待，地面阻斷不能直達；林既明坦白資訊，由陳勳指揮專業隊伍從北側通道救出。 | 1 | 3、9、17、29、31 | 36 |
 | m05 | 驗收簽名是真的，後面的罪證呢？ | 原件附未測項目與時間，公司拼接刪附件並製作假操作、金流紀錄；他的真實妥協與造假須分別查明。 | 6 | 19、20、21、24 | 39 |
 | m06 | 中央的正常為何和現場相反？ | 畫面沿用舊回報，異常被匯總過濾；離線時間記錄和多處現場確認證明問題，不是主角臨時駭入修好一切。 | 7 | 10、15、24、25 | 36 |
-| m07 | 備援還能撐多久，救人是否只能等復電？ | 備援受散熱與積水影響，須按現場讀值更新安全視窗；醫護提前轉移與關鍵供電逐步恢復並行，不拿病人等最後一刻奇蹟。 | 2 | 11、22、27、33 | 38 |
+| m07 | 備援還能撐多久，救人是否只能等復電？ | 備援受散熱與積水影響，須按現場讀值更新安全轉移時間；醫護提前轉移與關鍵供電逐步恢復並行，不拿病人等最後一刻奇蹟。 | 2 | 11、22、27、33 | 38 |
 | m08 | 被辭退的老師傅還願意回來嗎？ | 林既明先承認當年的簽字過失，老工頭才帶班誌協助；兩人用透明紀錄與有條件能力傳承，最後辦學徒班而非復仇致富。 | 4 | 11、23、34 | 40 |
 | m09 | 公司所說的核心，到底先保住誰？ | 宋振南延後救援資源去保總部設備，又試圖移走原始紀錄；資源單、通話和保管鏈形成證據。 | 8 | 14、18、28、35 | 36 |
 | m10 | 共用幹線與兩條支路怎樣救人，也保住救援者？ | 先由隊伍查明可通行範圍，設中繼和撤退點；共用幹線先支援南支接近受困者，再由東支帶回受傷主角；兩條支路各自確認，證明他也需要其他人的專業。 | 9 | 13、16、22、30、32 | 37 |
@@ -269,7 +270,7 @@
 
 - 全城、園區與公司皆虛構，避免使用真實企業標識和可以對號入座的事故。
 - 林既明是顧問、周禾是當值工程員、陳勳是救援指揮；三個角色名稱與權限不可互換。
-- 介面用簡單中文狀態，設備只用觀察廊、旁路節點等虛構識別，不提供型號和操作引數。
+- 介面用簡單中文狀態，設備只用觀察廊、旁路節點等虛構識別，不提供型號和操作參數。
 
 ## 不做的事
 

@@ -32,6 +32,10 @@ const REQUIRED_TAGS = ["漫劇", "AI漫劇", "一口氣看完"];
 // line lands near six seconds with room for the actor's pauses.
 export const HOOK_MAX_CHARS = 28;
 export const WORLD_FLIP_RANGE = [18, 22];
+// The image prompts take a character's appearance word for word into every shot of every episode
+// (tools/video/media/look.mjs, keyframes.mjs), so a look that depends on the episode cannot be
+// drawn from it; what changes belongs in continuity_notes and the shot prompt.
+export const TIMED_APPEARANCE = /\b(?:episodes?|eps?\.?\s*\d+|later|initially|at first|at the start|onwards?|near the end|by the end|as the story|from then on|no longer)\b/i;
 
 const isText = (value) => typeof value === "string" && value.trim().length > 0;
 const spoken = (text) => [...String(text).replace(/[\p{P}\p{Z}\s]/gu, "")].length;
@@ -87,6 +91,7 @@ export function validateSource(source, expectedSlug = source?.series?.slug) {
       check(ROLES.has(c.role), p + "role must be lead, support or antagonist");
       check(chars(c.appearance ?? "") <= 800, p + "appearance over 800 characters");
       check(/^[\x20-\x7E]+$/.test(c.appearance ?? ""), p + "appearance must be English (ASCII) for the image model");
+      check(!TIMED_APPEARANCE.test(c.appearance ?? ""), p + `appearance must not depend on the episode ("${(c.appearance ?? "").match(TIMED_APPEARANCE)?.[0]}"); put changes in continuity_notes`);
       check(c.voice?.provider === "gemini" && GEMINI_VOICES.has(c.voice?.name) && isText(c.voice?.style), p + "voice must be a Gemini prebuilt voice with a style");
       check(Array.isArray(c.relationships) && c.relationships.length >= 1, p + "at least one relationship");
       check(Object.hasOwn(st.lexicon ?? {}, c.name), p + `name "${c.name}" must be in the lexicon`);
