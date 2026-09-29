@@ -240,7 +240,15 @@ async def judge_video_policy(
         raise AppError(409, "video_judge_not_enabled", "頻道立場還是空白，Jev 沒有依據可以判斷")
     runtime = await load_runtime_settings(session)
     try:
-        return await judge_policy(runtime, get_redis(), stance, payload.viewpoint, payload.script)
+        return await judge_policy(
+            runtime,
+            get_redis(),
+            stance,
+            payload.viewpoint,
+            payload.script,
+            session=session,
+            slug=payload.slug,
+        )
     except CheckUnavailable as error:
         raise AppError(error.status, error.code, error.detail) from error
     except JevRequestInvalid as error:
