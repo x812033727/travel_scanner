@@ -12,7 +12,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Literal
 
-from pydantic import Field, model_validator
+from pydantic import Field, TypeAdapter, model_validator
 from sqlalchemy import and_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -83,15 +83,21 @@ class Catalogue(StrictModel):
         return self
 
 
+class CatalogueLocalization(StrictModel):
+    groups: dict[str, str]
+    paths: dict[str, str]
+    aliases: dict[str, str]
+
+
 class RegistryEntry(StrictModel):
     """One hub the section pages list, whatever mechanism holds its order.
 
-    Three mechanisms carry a series today -- the catalogues in ``series_data`` (Claude
-    Code, Codex), the web's own Gemini projection, and the editorial catalogues under
-    ``docs/`` (AI terms, AI search) -- and until now each was linked from ``/life`` by
-    hand. The registry lists what cannot be derived: which hub article a series enters
-    through and which sub-topic it belongs to. Whether it shows is derived at request time
-    from the hub article's publication, so a withdrawn hub takes its card with it.
+    The API catalogues cover Claude Code, Codex, Gemini and AI Workflow. Gemini also
+    has a web projection for its zh-TW advanced lessons; the editorial catalogues
+    under ``docs/`` cover AI terms and AI search. The registry lists what cannot
+    be derived: which hub article a series enters through and which sub-topic it
+    belongs to. Whether it shows is derived at request time from the hub article's
+    publication, so a withdrawn hub takes its card with it.
     """
 
     slug: str
@@ -115,10 +121,45 @@ def registry() -> tuple[RegistryEntry, ...]:
 @lru_cache(maxsize=1)
 def catalogues() -> tuple[Catalogue, ...]:
     root = Path(__file__).with_name("series_data")
-    return tuple(
-        Catalogue.model_validate(json.loads(path.read_text(encoding="utf-8")))
-        for path in sorted(root.glob("*.json"))
-    )
+    result: list[Catalogue] = []
+    for path in sorted(root.glob("*.json")):
+        base = Catalogue.model_validate_json(path.read_text(encoding="utf-8"))
+        result.append(base)
+        localized_path = root / "locales" / path.name
+        if not localized_path.exists():
+            continue
+        translations = TypeAdapter(dict[Locale, CatalogueLocalization]).validate_json(
+            localized_path.read_text(encoding="utf-8")
+        )
+        if set(translations) != {"zh-TW", "zh-CN", "en", "ja", "ko"} - {base.locale}:
+            raise ValueError("series localization must cover every other locale")
+        group_ids = {group.id for group in base.groups}
+        path_ids = {route.id for route in base.paths}
+        source_aliases = {
+            alias for entry in base.entries for alias in entry.aliases if not alias.isascii()
+        }
+        for locale, copy in translations.items():
+            if set(copy.groups) != group_ids or set(copy.paths) != path_ids:
+                raise ValueError("localized series groups and paths must match the source")
+            if set(copy.aliases) != source_aliases:
+                raise ValueError("localized series search aliases must match the source")
+            data = base.model_dump()
+            data["locale"] = locale
+            data["groups"] = [
+                {**group.model_dump(), "title": copy.groups[group.id]} for group in base.groups
+            ]
+            data["paths"] = [
+                {**route.model_dump(), "title": copy.paths[route.id]} for route in base.paths
+            ]
+            data["entries"] = [
+                {
+                    **entry.model_dump(),
+                    "aliases": [copy.aliases.get(alias, alias) for alias in entry.aliases],
+                }
+                for entry in base.entries
+            ]
+            result.append(Catalogue.model_validate(data))
+    return tuple(result)
 
 
 def catalogue_for_article(slug: str, locale: Locale) -> Catalogue | None:

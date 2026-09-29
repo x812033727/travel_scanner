@@ -9,6 +9,7 @@ import { HUB_SLUG, learningEntries } from "@/lib/codex-learning";
 import { depthCopy } from "@/lib/codex-learning/units";
 import { seriesCopy } from "@/lib/guide-series-copy";
 import { getGeminiHubReference, getVisibleGeminiSeries, isGeminiSeriesPage, projectGeminiArticle } from "@/lib/gemini-series.server";
+import { publishedGeminiSeries } from "@/lib/gemini-series-projection";
 import { GuideArticle, type GuideArticleLabels } from "@/components/guides/article";
 import type { GuideCardLabels } from "@/components/guides/card";
 import { Breadcrumb } from "@/components/guides/breadcrumb";
@@ -198,7 +199,12 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   const hubReference = getGeminiHubReference(locale);
   const belongsToGemini = rawState.status === "published" && Boolean(rawState.document) && isGeminiSeriesPage(slug, locale, kind);
   const geminiHub = belongsToGemini && hubReference ? (slug === hubReference.slug ? rawState : await getGuideArticle("life", hubReference.slug, locale)) : null;
-  const geminiSeries = belongsToGemini ? getVisibleGeminiSeries({ locale, hubPublished: geminiHub?.status === "published" && Boolean(geminiHub.document) }) : null;
+  const geminiHubPublished = geminiHub?.status === "published" && Boolean(geminiHub.document);
+  const geminiApiSeries = belongsToGemini && geminiHubPublished ? await getGuideSeries("gemini", locale) : null;
+  const projectedGemini = belongsToGemini ? getVisibleGeminiSeries({ locale, hubPublished: geminiHubPublished }) : null;
+  const geminiSeries = projectedGemini && geminiApiSeries?.hub.slug === projectedGemini.hubSlug
+    ? publishedGeminiSeries(projectedGemini, geminiApiSeries.entries)
+    : null;
   const state = projectGeminiArticle(rawState, geminiSeries);
   const listing = listingOf(kind, t);
 
@@ -303,13 +309,17 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
   labels.blocks.code = copy;
   const isCodexHub = kind === "life" && slug === HUB_SLUG;
   const isHub = isCodexHub || Boolean(state.series && !state.series.current && state.series.hub.slug === slug);
-  const series = isHub ? await getGuideSeries(isCodexHub ? "codex" : state.series!.slug, locale) : null;
+  const useApiDirectory = isHub && !geminiSeries;
+  const series = useApiDirectory ? await getGuideSeries(isCodexHub ? "codex" : state.series!.slug, locale) : null;
   if (state.series?.current) trail.push({ name: state.series.hub.title, path: guideHref(state.series.hub.kind, state.series.hub.slug) });
   const headings = guideHeadings(state.document.blocks);
   const seriesDirectory = isCodexHub
     ? <LearningHub locale={locale} entries={learningEntries(locale, series?.entries ?? [])} available={Boolean(series)} />
-    : isHub ? series ? <SeriesHub series={series} />
-    : <div role="alert"><p>{copy.unavailable}</p><a href={`/${locale}${guideHref(kind, slug)}`} className="inline-flex min-h-11 items-center underline">{copy.retry}</a></div> : null;
+    : useApiDirectory
+      ? series
+        ? <SeriesHub series={series} />
+        : <div role="alert"><p>{copy.unavailable}</p><a href={`/${locale}${guideHref(kind, slug)}`} className="inline-flex min-h-11 items-center underline">{copy.retry}</a></div>
+      : null;
 
   return (
     <>
