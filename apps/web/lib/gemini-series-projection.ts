@@ -82,6 +82,35 @@ export function projectGeminiSeries(source: GeminiCatalogue, advancedEnabled = f
   };
 }
 
+/** Intersect the static zh-TW presentation with the API's live published revisions.
+ * A withdrawn lesson must disappear from every path, command and navigation link. */
+export function publishedGeminiSeries(
+  series: VisibleGeminiSeries,
+  published: readonly { slug: string; number: number; group: string; title: string; description: string; minutes: number }[],
+): VisibleGeminiSeries {
+  const bySlug = new Map(published.map(entry => [entry.slug, entry]));
+  const articles = series.articles.flatMap(lesson => {
+    const live = bySlug.get(lesson.slug);
+    return live && live.number === lesson.number && live.group === lesson.group
+      ? [{ ...lesson, title: live.title, purpose: live.description, minutes: live.minutes }]
+      : [];
+  });
+  const numbers = new Set(articles.map(lesson => lesson.number));
+  return {
+    ...series,
+    articles: articles.map(lesson => ({
+      ...lesson,
+      prerequisites: lesson.prerequisites.filter(number => numbers.has(number)),
+      related: lesson.related.filter(number => numbers.has(number)),
+    })),
+    groups: series.groups.filter(group => articles.some(lesson => lesson.group === group.id)),
+    paths: series.paths.map(path => ({ ...path, articles: path.articles.filter(number => numbers.has(number)) }))
+      .filter(path => path.articles.length > 0),
+    commands: series.commands.filter(command => numbers.has(command.article)),
+    advancedEnabled: articles.some(lesson => lesson.stage === 2),
+  };
+}
+
 export function visibleGeminiMember(series: VisibleGeminiSeries, slug: string, locale: string, kind: string) {
   if (locale !== series.locale || kind !== "life") return undefined;
   return series.articles.find(lesson => lesson.slug === slug);

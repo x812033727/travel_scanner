@@ -58,9 +58,16 @@ _ = STYLE_PRESETS  # the tab's presets are named in the settings row; kept here 
 media_router = APIRouter(prefix="/video/media", tags=["video media (pipeline)"])
 Session = Annotated[AsyncSession, Depends(get_session)]
 
+# Per video tool token and hour. They only stop a runaway loop: what bounds the spend is the
+# month's budgets, reserved before every vendor call (meter.reserve), and the worker's
+# per-video cap (max_usd_per_video). A brand story asks for about 120 pictures and a judge call
+# for each (docs/videos/STORY.md §上限與成本), so pictures and judge calls may run faster than
+# before; clips and music keep the lower limit they share, since a vendor takes minutes over
+# each of them anyway and a clip is the expensive kind.
+IMAGE_SUBMITS_PER_HOUR = 240
 SUBMITS_PER_HOUR = 60
 POLLS_PER_HOUR = 900
-JUDGES_PER_HOUR = 120
+JUDGES_PER_HOUR = 360
 UPLOADS_PER_HOUR = 600
 DOWNLOADS_PER_HOUR = 600
 PRUNE_MARK = "video-media:prune-ran"
@@ -169,7 +176,10 @@ async def _submit(
     payload: ImageJobIn | ClipJobIn | MusicJobIn,
     response: Response,
 ) -> JobOut:
-    await _limit("submit", tool_id, SUBMITS_PER_HOUR)
+    if kind == "image":
+        await _limit("submit_image", tool_id, IMAGE_SUBMITS_PER_HOUR)
+    else:
+        await _limit("submit", tool_id, SUBMITS_PER_HOUR)
     ctx = await _context(session, tool_id)
     try:
         job, created = await submit_job(ctx, kind, payload)
