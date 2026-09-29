@@ -204,11 +204,12 @@ const utf8Bytes = (value: string) => new TextEncoder().encode(value).length;
  * Send a video to the linked channel from the "ready to upload" card or the video's page. The
  * title, the description and the visibility are the owner's (YouTube's Required Minimum
  * Functionality); the rest comes from the approved package. ``videoId`` sends again to a video
- * that is already on YouTube, so the upload choice is not offered.
+ * that is already on YouTube, so the upload choice is not offered. ``publishAt`` fills the scheduled
+ * time in (a datetime-local value): a brand story's next free slot (admin-video-stories.tsx).
  */
-export function YoutubePublishForm({ slug, review, connection, canUpload, videoId = null, previous = null, onSent }: {
+export function YoutubePublishForm({ slug, review, connection, canUpload, videoId = null, previous = null, publishAt: suggested = "", onSent }: {
   slug: string; review: Review | null; connection: YoutubeConnection; canUpload: boolean;
-  videoId?: string | null; previous?: YoutubeSync["request"] | null; onSent: () => void;
+  videoId?: string | null; previous?: YoutubeSync["request"] | null; publishAt?: string; onSent: () => void;
 }) {
   const t = useTranslations("admin.videoYoutube");
   const problemText = useProblem();
@@ -220,7 +221,7 @@ export function YoutubePublishForm({ slug, review, connection, canUpload, videoI
   const [title, setTitle] = useState(previous?.title ?? text(zh.title));
   const [description, setDescription] = useState(previous?.description ?? text(zh.description));
   const [visibility, setVisibility] = useState<Visibility>(previous?.visibility ?? "scheduled");
-  const [publishAt, setPublishAt] = useState("");
+  const [publishAt, setPublishAt] = useState(suggested);
   const [acceptLock, setAcceptLock] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
