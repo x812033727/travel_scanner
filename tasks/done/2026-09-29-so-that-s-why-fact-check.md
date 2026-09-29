@@ -1,13 +1,13 @@
 ---
 id: 2026-09-29-so-that-s-why-fact-check
 title: So That's Why: fact-check season 1 days 36-100
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus
 claimed_at: 2026-09-29T02:36:45Z
 created_at: 2026-09-29T02:36:37Z
-completed_at:
+completed_at: 2026-09-29T04:36:23Z
 branch:
 depends_on: []
 scope:
@@ -37,14 +37,14 @@ episodes.json. Seasons 2 and 3 follow as their own tasks.
 
 ## Definition of done
 
-- [ ] `week6/`…`week15/<id>.md` for all 65, in the week 5 format.
-- [ ] episodes.json marks them fact-checked with the answers, hooks and Shorts angles the checks leave; titles.json (all locales), schedule.csv, playlists.md and the previews follow any title change.
+- [x] `week6/`…`week15/<id>.md` for all 65, in the week 5 format.
+- [x] episodes.json marks them fact-checked with the answers, hooks and Shorts angles the checks leave; titles.json (all locales), schedule.csv, playlists.md and the previews follow any title change.
 
 ## Steps
 
-- [ ] One fact-check agent per episode (weeks 6–13 done), a week at a time, drafts written outside the repo.
-- [ ] Mechanical check per week (claim URLs, Shorts lengths), then copy into the repo.
-- [ ] JSON, CSV, playlists and previews.
+- [x] One fact-check agent per episode, a week at a time, drafts written outside the repo.
+- [x] Mechanical check per week (claim URLs, Shorts lengths, form limits), then copy into the repo.
+- [x] JSON, CSV, playlists and previews.
 
 ## How to verify
 
@@ -103,3 +103,15 @@ episodes.json. Seasons 2 and 3 follow as their own tasks.
   Stimson's Kyoto honeymoon, Warner saving Kyoto, Kurita as the sole inventor of emoji, the
   1998 "Yahoo could have bought Google for $1M", "GDPR requires cookie banners", "0–100 °F from
   body heat and a Danzig winter", "Korea's law used Korean age until 2023", "THSR has no ballast".
+- 2026-09-29 weeks 14–15 (days 92–100) done by claude-opus: S24, T24, A23, B24, S25, T25, A24, B25,
+  A25. Three titles changed: A23 「為什麼電動車大多只有一檔？」 (EVs have a single-speed reduction
+  gear; EPA lists 302 of 321 MY2026 EV configurations as one speed); B24 「為什麼 Zara 三週就能把新款
+  送到店裡？」 (Inditex's own "3 weeks", for part of the range; "two weeks" was a 2003 case's
+  restock figure); B25 「為什麼 LINE 在台灣日本很紅，在美國卻紅不起來？」 (LINE's 2016 prospectus
+  reports US users; the US was never a core market). A25 is the season 1 finale: its 結尾預告 thanks
+  viewers and asks for season 2 questions without naming a topic. T24 settles the Buddhist Era
+  epoch as the traditional parinirvana (Thailand starts year 1 a year later, hence +543; Sri Lanka
+  and Myanmar +544), and Thailand adopted BE in 1913, not 1912.
+- Season 1 is fully fact-checked: all 100 in episodes.json are `fact-checked`, and every package's
+  premise and note fit the request form. Seasons 2 and 3 are candidate banks, not scheduled
+  episodes; they get their own tasks.
