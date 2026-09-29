@@ -194,7 +194,7 @@ export function GuideArticle({
         </p>
       ) : null}
 
-      {state.series?.current ? <SeriesStart series={state.series} locale={state.locale} /> : null}
+      {state.series?.current && !geminiMember ? <SeriesStart series={state.series} locale={state.locale} /> : null}
       {seriesHub}
       {isGeminiHub && geminiSeries ? <GeminiSeriesIndex series={geminiSeries} /> : null}
       {headings.length >= CONTENTS_MIN_HEADINGS && !state.series ? (
@@ -274,7 +274,7 @@ export function GuideArticle({
         />
       ) : null}
 
-      {state.series?.current ? <SeriesEnd series={state.series} locale={state.locale} /> : null}
+      {state.series?.current && !geminiMember ? <SeriesEnd series={state.series} locale={state.locale} /> : null}
       {geminiMember && geminiSeries ? <GeminiNavigation series={geminiSeries} number={geminiMember.number} position="bottom" /> : null}
       {related}
 
