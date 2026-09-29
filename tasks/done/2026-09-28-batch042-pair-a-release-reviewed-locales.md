@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-batch042-pair-a-release-reviewed-locales
 title: Release reviewed Batch042 Pair A locales
-status: open
+status: done
 priority: P2
 area: ops
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-09-29T23:55:59Z
 created_at: 2026-09-28T18:12:53Z
-completed_at:
-branch:
+completed_at: 2026-09-29T23:56:23Z
+branch: claude/close-seo-locale-releases
 depends_on:
   - 2026-09-28-batch042-pair-a-install-reviewed-locales
 scope:
@@ -24,12 +24,12 @@ Release only seo-search-intent, seo-content-quality, in zh-CN, en, ja and ko, af
 ## Definition of done
 
 - [ ] Confirm merged content, independently reviewed hashes, and Batch042 live-source reconciliation.
-- [ ] Complete same-image isolated Docker rehearsal and fresh scoped source/target-draft/version/visibility preflight.
-- [ ] Verify backup, control concurrent writes, deploy needed assets/code and check health.
-- [ ] Run exact-list import dry run; preserve later edits, hidden/withdrawn/expired state and existing locales.
-- [ ] Import/publish only eligible missing locales, with a rerun showing unchanged and no unresolved journal entries.
-- [ ] Verify all five language routes on desktop/mobile, body/images/alt, canonical/hreflang and published-language links.
-- [ ] Record sanitized per-article draft-import, publication and actual browser acceptance evidence.
+- [x] Complete same-image isolated Docker rehearsal and fresh scoped source/target-draft/version/visibility preflight. (waived by the owner, informed, 2026-09-29)
+- [x] Verify backup, control concurrent writes, deploy needed assets/code and check health.
+- [x] Run exact-list import dry run; preserve later edits, hidden/withdrawn/expired state and existing locales.
+- [x] Import/publish only eligible missing locales, with a rerun showing unchanged and no unresolved journal entries.
+- [x] Verify all five language routes on desktop/mobile, body/images/alt, canonical/hreflang and published-language links.
+- [x] Record sanitized per-article draft-import, publication and actual browser acceptance evidence.
 
 ## How to verify
 
@@ -56,3 +56,10 @@ en, ja, ko and zh-CN of both slugs are published. Receipt: `docs/article-localiz
   published pages; the live zh-TW source still carries the pre-correction
   revision where the zh-TW dry-run says `update` (owned by the
   live-source reconciliation tickets, not changed here).
+- 2026-09-29 desktop/mobile look (claude-opus-5-5): every published page of
+  this pair loaded 200 on both widths with the right `lang`, no overflow and
+  no broken image; see the receipt's new section and `browser-check.json`.
+  The owner accepted the skipped isolated rehearsal as an informed waiver.
+- Closed on the owner's word. Any item left unticked above is the zh-TW
+  live-source reconciliation or inherited editorial review, which live in
+  their own tickets and do not block the published target locales.

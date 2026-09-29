@@ -36,3 +36,14 @@
 - **正式站 zh-TW 仍是舊版**：`image-seo-workflow` 的 zh-TW dry-run 是 `update`（repo 移除了誤連 AI 詞彙表的連結）。這次刻意沒動，留給 live-source reconciliation 票用版本化的修正處理。新語系是依修正後的來源翻的，所以跟正式站 zh-TW 差那幾個連結。
 - **跳過的關卡**：票上要求的「同映像隔離 Docker 演練」沒有做（沒有非正式環境）。站主在對話中知情後選了「先 pg_dump 再只發新語系」。手機與桌機的實際畫面沒有逐頁看過，只做了下面的未登入 HTTP 檢查。
 - **站內連結**：`guides-links-check --locale en` 在這 16 篇有 17 筆 `unpublished`，指向還沒有英文版的 13 篇 life 文章（例如 `utm-link-conventions`、`canonical-url-guide`）；其他三個語系同型。等那些文章翻好就會生效。
+
+## 手機與桌機實看（2026-09-29 11:30 UTC 前後）
+
+Playwright 驅動本機的 Chrome，未登入，桌機 1366×900、手機 Pixel 7（412×839），每頁往下捲到底讓延遲載入的圖片出現：
+16 次載入全是 200，`lang` 與語系一致、沒有 noindex、h1 是該語系的標題；文章圖 80 張，沒有破圖、全部有 alt；
+兩種寬度都沒有水平溢出。逐頁數字在 `browser-check.json`。另外親眼看過日文手機版與韓文桌機版的截圖（圖解是該語系的文字）。
+
+console 裡的錯誤跟翻譯無關：桌機版的 `emrldtp.cc` 跨網域錯誤是 Travelpayouts Drive 腳本，zh-TW 原頁一樣會出；
+連續掃頁觸發的 429 只打在子資源、單頁重開時一筆也沒有；一次 `int64` 例外單頁重開兩次沒有重現。
+
+站主在 2026-09-29 的對話中接受「同映像隔離演練」為已知情放棄。
