@@ -12,10 +12,19 @@
 | Batch036 marketing | 4 | 16 | 0 | 16 譯文／48 圖已合併；Pair A 額外 metadata 問題未結 |
 | Batch036 measurement | 4 | 16 | 4 | 原文修正已合併；16 譯文缺目前來源綁定的完整發布證據 |
 | Batch040 | 4 | 16 | 3 | 16 譯文／48 圖在 #953、#954 |
-| Batch041 | 4 | 16 | 1 | 16 譯文／48 圖在 #940、#941 |
+| Batch041 | 4 | 16 | 1 | 16 譯文／48 圖已隨 #940、#941 合併；來源審查／修正門檻仍保留 |
 | 合計 | 21 | **68** | **8** | **48** 份已有審稿候選、**20** 份仍需製作或重綁 |
 
-68 = 17 篇 × `en, ja, ko, zh-CN`，不含另列的 8 份 zh-TW 修正。四支未合併 PR 持有 32 份目標文件與 96 圖；加上已合併 marketing，共有48份／144圖的候選證據。候選不表示已部署、正式匯入或公網驗收。
+68 = 17 篇 × `en, ja, ko, zh-CN`，不含另列的 8 份 zh-TW 修正。#953、#954 兩支未合併 PR 持有 16 份目標文件與 48 圖；已合併 marketing 與 Batch041 合計32份／96圖，共有48份／144圖的候選證據。這是 GitHub 相依狀態更新，正式數量仍來自上述歷史快照；候選不表示已部署、正式匯入或公網驗收。
+
+## T1／T2 本機候選準備
+
+[候選凍結與驗證紀錄](article-localization/releases/p1-20260929-t1-t2/README.md)
+已備妥：4篇、16份目標文件、48張語系圖片，另保留4份繁中及12張原圖。
+公開 `evidence.json` 固定候選 manifest、內容／圖片／原審稿收據與工具雜湊。
+完整性及5種竄改拒絕共6項通過；隔離 SQLite 匯入1項通過，確認逐波僅新增8份
+譯文、保留既有資料及重跑無變更。這是合成資料驗證，仍欠路線B交易 guard、
+同映像 PostgreSQL 排演與新的正式操作同意；T2 summary 審稿也仍保留。
 
 ## 逐篇發布清單
 
@@ -68,7 +77,7 @@ S1 = measurement 4篇／7處；S2 = Batch040 3篇／4處；S3 = Batch041 image-s
 
 ## PR 與審稿收據
 
-2026-09-29 唯讀查詢 GitHub：**#940、#941、#953、#954 都是 OPEN、isDraft=false**，目前不是草稿。本方案沒有合併或改其狀態，也沒有宣稱新 head CI 已通過。PR 更新／rebase 後要重新核對。
+2026-09-29 本機準備時唯讀重查 GitHub：**#940、#941 已合併；#953、#954 仍為 OPEN、isDraft=false**。本方案沒有合併或改其狀態，也沒有宣稱這些合併已部署。下方審稿證據仍固定原 review head，不以 merge SHA 偷換審稿版本；PR 更新／rebase 後要重新核對。
 
 | PR | 現況／用途 | merge SHA 或目前 head SHA |
 | --- | --- | --- |
@@ -79,8 +88,8 @@ S1 = measurement 4篇／7處；S2 = Batch040 3篇／4處；S3 = Batch041 image-s
 | [#908](https://github.com/x812033727/travel_scanner/pull/908) | MERGED；marketing Pair A，8譯文／24圖 | `22c86ec81f02b8d3c7fe179e954d5cb90e23be65` |
 | [#930](https://github.com/x812033727/travel_scanner/pull/930) | MERGED；Batch040 繁中修正 | `d68ab5db9a417f8f764b8bb9b39ace058c350e68` |
 | [#934](https://github.com/x812033727/travel_scanner/pull/934) | MERGED；Batch041 image-seo 繁中修正 | `7654e7b5ed14f3e3a118d7a271c887d4c9b1e977` |
-| [#940](https://github.com/x812033727/travel_scanner/pull/940) | OPEN；Batch041 keyword／title，8譯文／24圖 | `91219fda72e401003ba6f069b59db30559845f06` |
-| [#941](https://github.com/x812033727/travel_scanner/pull/941) | OPEN；Batch041 on-page／image，8譯文／24圖 | `4d425bd28344bbfab32af805a53e21b811836cf4` |
+| [#940](https://github.com/x812033727/travel_scanner/pull/940) | MERGED；Batch041 keyword／title，8譯文／24圖 | `ef2b3fb98bf7eb9c848c6c46258291c0355fb135` |
+| [#941](https://github.com/x812033727/travel_scanner/pull/941) | MERGED；Batch041 on-page／image，8譯文／24圖 | `4dc3bd4812451762885c73ab96ce88a719069f0b` |
 | [#953](https://github.com/x812033727/travel_scanner/pull/953) | OPEN；Batch040 affiliate／store，8譯文／24圖 | `0bbf0d74e55e4a1089009abee8525e025c894f88` |
 | [#954](https://github.com/x812033727/travel_scanner/pull/954) | OPEN；Batch040 ecommerce／zero-click，8譯文／24圖 | `6922a5a20d92778863178ddeaab7808962170e6f` |
 
@@ -110,7 +119,7 @@ marketing 的逐文件與逐圖證據：[Pair A](article-localization/batch036-m
 | S2 | affiliate、ecommerce、zero-click，只 zh-TW | 3來源更新；目標語系0新增 | #930；僅表列4處；store不在此波 |
 | S3 | image-seo，只 zh-TW | 1來源更新；目標語系0新增 | #934；僅表列1處 |
 | T1 | marketing mix、brand-tone，各四語 | 8 locale create／發布；繁中不變 | #907及圖在映像；來源無漂移 |
-| T2 | Batch041 keyword、title，各四語 | 8 locale create／發布；繁中不變 | #940合併、exact-head CI、排演 |
+| T2 | Batch041 keyword、title，各四語 | 8 locale create／發布；繁中不變 | #940已合併；兩篇原文summary審查、exact-head CI、排演仍須完成 |
 | T3 | Batch040 affiliate、store，各四語 | 8 locale create／發布；繁中不變 | S2 affiliate完成；#953合併、rebind、排演 |
 | T4 | Batch040 ecommerce、zero-click，各四語 | 8 locale create／發布；繁中不變 | S2完成；#954合併、rebind、排演 |
 | T5 | Batch041 on-page、image，各四語 | 8 locale create／發布；繁中不變 | S3完成；#941合併、rebind、排演 |
@@ -125,7 +134,7 @@ T1–T5共40份已有審稿候選但仍有門檻；T6另8份候選；T7–T8為�
 依據：[article-localization](../.agents/skills/article-localization/SKILL.md)、[content-pipeline](../.agents/skills/content-pipeline/SKILL.md)、[四鎖與hold](../ops/release/README.md)、[publisher](article-localization/publish_bundle.py)、[source correction](article-localization/source_correction.py)、[管理服務](../apps/api/app/guides/admin_service.py)。
 
 1. **本機準備**：選定波次，固定 pack／資產／審稿 hash及部署提交，必要CI在該提交通過。8份來源更正需由上表加 fresh snapshot 製作完整 source-correction receipt（舊draft／published全文、版本、hash、可見性、pointer）；此表不能代替正式收據。未選locale全文保留。
-2. **隔離排演**：以同API映像和隔離PostgreSQL測 dry-run、交易內來源與版本guard、編輯衝突、撤稿／隱藏／到期、失敗後同state續跑及回復。四支未合併PR既有證據沒有成功排演收據；skipped或environment unavailable不算通過。來源單獨發布的guard driver尚待製備／審查／排演，不能只用CLI dry-run替代。onsen沿用路線A；既有路線B批次可用受guard保護的scoped import。
+2. **隔離排演**：以同API映像和隔離PostgreSQL測 dry-run、交易內來源與版本guard、編輯衝突、撤稿／隱藏／到期、失敗後同state續跑及回復。#940、#941、#953、#954 的既有證據沒有成功排演收據；skipped或environment unavailable不算通過。來源單獨發布及路線B scoped import的guard driver尚待製備／審查／排演，不能只用CLI dry-run替代。onsen沿用路線A；既有路線B批次可用受guard保護的scoped import。
 3. **正式fresh preflight**：取得指定步驟同意後，核对當時HEAD、映像、四鎖、hold、release state，以及allowlist各篇article/locale版本、draft/published hash、active/status/expiry和缺語系列；任何來源、資產、可見性或缺列狀態漂移就停該波，不覆蓋編輯。這份盤點不代替未來preflight。
 4. **備份／部署**：第一個資料寫入前做pg_dump -Fc，pg_restore --list驗證並記dump SHA。只在映像缺所需內容或程式時部署批准SHA。多階段driver於持四鎖時acquire hold，每段verify，所有階段成功後clear；失敗／回復保留hold。不得覆寫別人的hold或在內容階段之間另跑一般部署。
 5. **dry-run與diff**：完整指定slug和locale。S1/S2/S3只允許4/3/1份zh-TW更新；T波只允許指定缺語系create，taxonomy不得意外改變。比較正規化正文及表列更正，保存實際返回值，不捏造成功数量。apply前重跑dry-run和已批准收據一致，寫入交易內再驗來源／版本。
@@ -159,7 +168,7 @@ python publish_bundle.py --bundle <BUNDLE> --baseline <BASELINE> --manifest-sha2
 | Pair A | 建議先修paid-vs-organic；是否先獨立發布marketing-plan四語需站主決定，新增來源更正另計 |
 | 部署SHA、映像digest、fresh CI | 未選定；不能把盤點host HEAD／PR head當已批准部署值 |
 | 各波baseline、manifest SHA、來源收據、guard driver | 尚未形成可執行release artifact；需本機製備、獨立審查、排演再確認 |
-| 同映像隔離排演 | 四支未合併PR未有完成證據，必須補齊 |
+| 同映像隔離排演 | #940、#941、#953、#954均未有完成證據，合併不代替排演；必須補齊 |
 | measurement16份／onsen4份 | 缺新來源綁定、完整圖manifest、逐語審稿及內容PR；沒有可核准的最終target SHA |
 | 正式preflight、備份、actor、發布及瀏覽器證據 | 尚未執行；正式每一步待站主明確同意，當時取得值 |
 
