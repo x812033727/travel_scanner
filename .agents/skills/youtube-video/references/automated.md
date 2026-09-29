@@ -78,9 +78,11 @@ node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整�
 - 格式定義在 `tools/video/core/schema.mjs`。
 - 最小範例：`tools/video/core/fixtures/minimal/video.json`。
 - 每種版型各用一次的範例：`tools/video/templates/fixtures/showcase/video.json`。
+- 英文旁白的範例：`tools/video/core/fixtures/en/video.json`。
 
 寫作重點：
 
+- **旁白語言**：預設 zh-TW。英文影片在 `video.json` 頂層寫 `"narration_locale": "en"`（2026-09-28 起，英文第一季 `docs/ai-video-en-season-01/`），`youtube.default_language` 也要是 `en`。這時：lint 只要求全大寫的縮寫（SEC、GPT、API）進字典，一般英文字照寫；字典裡含中文的唸法（`p95 → P 九十五`）自動不套用，跟配音一樣；`voice.style` 寫英文版的語氣（`tools/video/dubs/plan.mjs` 的 `DUB_STYLES.en` 可以直接抄）；`check-audio` 以 `en` 轉寫與判斷，同音字與語助詞規則不用；`i18n-sheet` 以英文為原文翻成 zh-TW、ja、ko、zh-CN，配音也可以做 zh-TW；說明欄的標籤文字用英文版。長度估算沿用每分鐘 250 個「單位」（一個英文字算兩單位，約 125 字／分），Gemini 實唸約 150 字／分，所以估計偏長兩成，跟中文一樣。
 - **句子 id**：用 `ids` 產生，是穩定的短碼。插入新句子時不要重新編號，翻譯、快取和站主的唸錯標記都靠它對齊。
 - **章節**：有 `chapter` 的場景會開一個 YouTube 章節，也就是進度條上可以點選的段落。
   - 章節至少 3 個，每個至少 10 秒；lint 先用估計值檢查，`tts` 之後再用實際時間檢查一次。
@@ -108,7 +110,7 @@ node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整�
 - **Gemini 沒有 SSML**：字典的唸法直接換進文字裡送出（不是 `<sub alias>`），停頓換成 Gemini 的 `<long pause>`／`<short pause>` 標籤，但長度不像 Azure 的 break 那樣精準。語氣靠 `voice.style`，Gemini 聲音不能寫 `rate`。伺服器回 24 kHz，本機工具用視窗化 sinc 內插升到 48 kHz。
 - **試聽只能經伺服器**：`audition --voices gemini:<聲音>`。站主的 Gemini 金鑰限了伺服器 IP，在 AI Studio 會 403；Cloud 的 Gemini-TTS 只收服務帳號。
 - 內建瀏覽器放不了 repo 外 `file://` 路徑的音檔：試聽檔用 SendUserFile 直接給站主。試聽檔不要放在 scratchpad（代理會清掉）。
-- **收斂旁白**：`check-audio` 先在本機比對，只差同音字（拼音連聲調相同）或語氣詞的句子不送 Jev；Jev 的每日次數在「AI 供應商與金鑰」卡片，和自動新聞、景點介紹共用。被標的句子 `tts --redo` 只重錄那幾句（快取按句）。一直被聽錯的句子就改措辭，例如句尾「答」→「回答」、「旗艦」→「旗艦模型」、「分三步走」→「分三個步驟」；工人在重錄到上限後自己做這一步（`prompts/listener-rewrite.md`，`tools/video/automation/rewrite.mjs` 比對改寫前後的數字、拉丁字詞與字典詞，變了就退回），本機也可以照同一份提示請代理改。`check-audio` 遇到轉寫失敗的句子會跳過，連續 3 句失敗才停；工具這邊的修改不用部署就生效。
+- **收斂旁白**：`check-audio` 先在本機比對，只差同音字（拼音連聲調相同）或語氣詞的句子不送 Jev；Jev 仍然懷疑的句子，可以再交給不看稿的第二個轉寫（`--second-opinion` 或 `VIDEO_SECOND_OPINION`，參考 `tools/video/tts/whisper_second_opinion.py`），它聽對的就排除並寫進旁白審核卡，兩個轉寫都聽錯同一處的才是聲音唸錯（`docs/videos/DUBS.md`）；Jev 的每日次數在「AI 供應商與金鑰」卡片，和自動新聞、景點介紹共用。被標的句子 `tts --redo` 只重錄那幾句（快取按句）。一直被聽錯的句子就改措辭，例如句尾「答」→「回答」、「旗艦」→「旗艦模型」、「分三步走」→「分三個步驟」；工人在重錄到上限後自己做這一步（`prompts/listener-rewrite.md`，`tools/video/automation/rewrite.mjs` 比對改寫前後的數字、拉丁字詞與字典詞，變了就退回），本機也可以照同一份提示請代理改。`check-audio` 遇到轉寫失敗的句子會跳過，連續 3 句失敗才停；工具這邊的修改不用部署就生效。
 
 ## 成本
 
