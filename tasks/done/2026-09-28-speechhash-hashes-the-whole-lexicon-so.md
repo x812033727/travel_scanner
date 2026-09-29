@@ -1,17 +1,20 @@
 ---
 id: 2026-09-28-speechhash-hashes-the-whole-lexicon-so
 title: speechHash hashes the whole lexicon, so a term added for one video marks every video's narration stale
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5
 claimed_at: 2026-09-29T02:58:51Z
 created_at: 2026-09-28T15:00:53Z
-completed_at:
+completed_at: 2026-09-29T03:02:11Z
 branch:
 depends_on: []
 scope:
   - tools/video/core
+  - tools/video/tts/requests.mjs
+  - docs/videos/DESIGN.md
+  - docs/videos/SERIES.md
 ---
 
 # speechHash hashes the whole lexicon, so a term added for one video marks every video's narration stale
@@ -36,19 +39,19 @@ hash, so a finished video would need its audio approved again for no change in s
 
 ## Definition of done
 
-- [ ] Adding a lexicon term that no line of a video uses leaves that video's `speech_hash`
+- [x] Adding a lexicon term that no line of a video uses leaves that video's `speech_hash`
       unchanged; adding one that a line uses changes it.
-- [ ] Existing timelines built with the old hash are handled deliberately (accepted once, or
+- [x] Existing timelines built with the old hash are handled deliberately (accepted once, or
       the change documented with the one-time `tts` re-run it needs); `docs/videos/DESIGN.md`
       and `SERIES.md` describe the new rule.
 
 ## Steps
 
-- [ ] Hash each line's spoken parts (what the clip key already uses) instead of the whole
+- [x] Hash each line's spoken parts (what the clip key already uses) instead of the whole
       `lexicon.terms`, or hash only the terms that some line's spoken text matches.
-- [ ] Decide how old timelines are treated: a second accepted hash, or a note that every
+- [x] Decide how old timelines are treated: a second accepted hash, or a note that every
       in-progress video needs one free `tts` re-run (and the audio approval again).
-- [ ] Tests in `tools/video` for both cases above.
+- [x] Tests in `tools/video` for both cases above.
 
 ## How to verify
 
@@ -62,3 +65,15 @@ node tools/video/cli.mjs status --slug <slug> --workdir <VIDEO_WORKDIR>   # befo
 - The host worker's in-progress videos go stale the same way whenever a term is merged into
   its copy of the dictionary, so an automated video between the audio and final gates can
   stall on "run tts first".
+- 2026-09-29 (claude-opus-5-5): done. `speechHash` now hashes `termsUsed(...)`, which is the dictionary
+  entries the script's spoken lines use. They are matched by `termPattern`, which `spokenParts` now
+  shares, so the hash and the speech request apply the same rule: whole words, longest term first.
+  Old timelines are accepted once rather than kept valid. Keeping them valid would have meant
+  accepting a legacy hash at every comparison (about twenty call sites, several of them manifests),
+  and it would only help a video whose dictionary had not changed since its last `tts`. So every
+  timeline from before this change reads as stale once. `tts` re-records nothing (checked:
+  `openai-agents-broke-in` 0 of 28 requests, `rtx-spark-local-ai` 0 of 36) and rewrites
+  `timeline.json`, whose hash the audio approval is bound to. A video between the audio and final
+  gates therefore needs its audio approved again; Jev does that on its own when `check-audio` is
+  clean. Season videos 1, 2, 3, 5 and 6 are packaged, and nothing needs redoing for them. Out of
+  93 dictionary terms, video 1 uses 4 and video 5 uses 12.
