@@ -23,6 +23,7 @@ import { approvalsFile } from "../core/approvals.mjs";
 import { atomicWrite, defaultWorkBase, isInside, ROOT, WORKDIR_ENV } from "../core/paths.mjs";
 import { ARTIFACTS, dubArtifacts } from "../core/state.mjs";
 import { DUB_FORMATS, DUB_LOCALES } from "../dubs/plan.mjs";
+import { STORY_PAGES_DIR } from "./story.mjs";
 
 // flow.mjs writes this file and owns these two patterns; tidy.test.mjs holds the copies together.
 export const STATE_FILE = "auto.json";
@@ -41,7 +42,8 @@ const DAY_MS = 86_400_000;
  * name (PREVIEW). Everything else stays: auto.json, state.json, checks.json, approvals.json,
  * timeline.json, captions/, i18n/, languages.json, media/ (the ledger, the cache, the jobs),
  * answers/, review/'s JSON and pages, upload/'s metadata, descriptions, captions and thumbnail,
- * characters/ and music/ (the owner's picks, and small), thumbnail.jpg and contact-sheet.png.
+ * characters/ and music/ (the owner's picks, and small), thumbnail.jpg and contact-sheet.png, and
+ * a brand story's story/chapters/ (its chapters as written and checked, small).
  */
 export const TARGETS = [
   ARTIFACTS.video, // final.mp4: assemble's, or compile's for a compilation
@@ -54,6 +56,7 @@ export const TARGETS = [
   path.dirname(ARTIFACTS.frames), // render: every slide state, subtitle strip and card
   path.dirname(ARTIFACTS.keyframes), // keyframes: a picture per shot and the contact sheets
   path.dirname(ARTIFACTS.clips), // clips: a generated clip per shot
+  STORY_PAGES_DIR, // a brand story (story.mjs): every source page it read, whole, one JSON a page
   // dub, per locale: a WAV per line, the whole track before loudness, and the upload track
   ...DUB_LOCALES.flatMap((locale) => {
     const files = dubArtifacts("", locale);

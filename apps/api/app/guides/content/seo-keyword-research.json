@@ -257,6 +257,974 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "zh-CN": {
+      "title": "关键词研究工作流：需求清单、长尾关键词与选题优先级",
+      "description": "关键词研究的成果应是一份可排期的内容清单，而不是几百个没有用途的词。本文以小型烘焙教学网站为例，整理从读者问题、Search Console、Google 关键词规划工具和 Google Trends 收集线索的方法，说明搜索量、广告竞争与相对热度的差别，再将长尾需求分组、对照现有页面，依内容价值与制作能力安排优先级。",
+      "hero": {
+        "src": "/guides/seo-keyword-research/hero-zh-cn.jpg",
+        "alt": "原创文件夹、计算器与文档图像，呈现收集查询、判读数字及安排文章。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "研究关键词时，最容易得到的是一张很长的表，最难得到的是下一篇应该写什么。工具数字可以协助理解需求，但若不知道读者是谁、网站能提供什么，搜索量再高也未必适合成为选题。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先把研究成果定义为「主题、读者问题、对应页面及下一个动作」。一组关键词可以共同对应一篇内容，也可以只是现有文章的一个补充段落。这样整理，才能避免每发现一个新说法就增加一篇重复文章。"
+        },
+        {
+          "type": "heading",
+          "text": "从网站能回答的问题创建种子清单",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以烘焙教学网站为例，先列出学习前、操作中与完成后的常见疑问，如材料替换、工具选择、时间安排及成品保存。这些只是研究起点，涉及配方或保存安全时仍要另外查证。先收集真实问法，不急着改成看起来专业的名词。"
+        },
+        {
+          "type": "paragraph",
+          "text": "读者来信、站内搜索和课程询问都能提供线索，使用前去除姓名、联系方式及个人细节。将问题旁边标示来源与日期，区分实际收到的问题和编辑自行推测的情境。只有一个人问过，也可以保留，但不要直接宣称它是市场最热门的需求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每组种子词补上读者限制，例如小烤箱、初次操作或只有周末能练习。限制有助于发现具体问题，但不保证查询量或排名难度。先问网站是否有能力提供足够的图解、数据与操作说明，再考虑把范围扩大到陌生主题。"
+        },
+        {
+          "type": "heading",
+          "text": "用 Search Console 找现有页面的机会",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "网站已有曝光时，可在 Search Console 依页面查看相关查询，再核对这一页是否回答了那些问题。若某篇工具介绍带来很多清洁方式的查询，可以检查是否需要补充维护段落或连到专门教学，而不必立刻添加另一篇介绍同款工具的文章。"
+        },
+        {
+          "type": "paragraph",
+          "text": "报表的查询不是完整的全市场需求清单。Google 会排除部分匿名查询，也受数据行保存与显示限制影响；看不到某个词，不代表没有人搜索。对新网站或数据很少的页面，保留「证据不足」，并使用其他来源交叉确认。"
+        },
+        {
+          "type": "paragraph",
+          "text": "导出时一并保存日期、国家、设备与搜索类型等筛选条件。把原始数据保留一份，另建清理后的比对字段，避免合并同义字后失去来源。已有内容和新提案放在同一张表里，才容易看出哪些需求其实已经被涵盖。"
+        },
+        {
+          "type": "heading",
+          "text": "使用关键词规划工具时先确认设置",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google Ads 的关键词规划工具主要服务搜索广告研究，也能提供新词与预估搜索量线索。依查证时的官方说明，使用基本提案功能需要完成账户设置并提供账单信息。若只是整理内容选题库，先了解账户要求，不要把研究流程误当成必须投放广告的承诺。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在工具中选择寻找新关键词，输入与网站相关的字词，或用现有清单查看搜索量与预测。核对地区、语言、期间与搜索网络等设置，再下载结果。不同范围的数字不宜直接相比，研究台湾读者时也不要把全球数据当成台湾需求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "平均每月搜索量是依设置范围计算的历史估算，可能包含近似变体；竞争程度反映广告客户竞争，并非自然搜索的难度分数。预测点击与费用又会考量出价、预算等广告条件，不能直接拿来预测一篇文章可以带来多少自然流量。"
+        },
+        {
+          "type": "heading",
+          "text": "用 Google Trends 补看季节与用语差异",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google Trends 适合观察相对关注度如何变化，并非提供每个词的精确搜索人数。官方说明数据经过抽样和归一化，使用 0 到 100 的相对尺度；低量字词可能显示零。因此，100 不代表 100 次搜索，0 也不能直接解读成完全没有人有需求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "比较时固定地区、期间与搜索类型，并注意选的是搜索词还是主题。两者的范围不同，主题可汇集不同语言中的同一概念。不要把一个广泛主题与另一个范围很窄的搜索词并列，却忽略两者涵盖范围不同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如要安排节庆烘焙内容，可观察相关字词是否在特定月份反复升高，再预留查证、制图与编辑时间。图上某天突然升高时，先查是否有新闻事件或其他背景，不直接认定长期需求增加。本例只是规划方法，没有提供未实际查询的趋势数值。"
+        },
+        {
+          "type": "heading",
+          "text": "将长尾关键词合并成问题群，而非逐词发文",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "长尾通常指搜索需求分布中较小、较具体的查询，不是字数越多就一定越容易排名。把「小烤箱第一次烤饼干」和其他相近问法放在一起，先判断是否需要同一套准备与操作说明；若答案相同，就由同一篇文章涵盖。"
+        },
+        {
+          "type": "paragraph",
+          "text": "清理时可以统一空白、大小写和常见用语，但保留原词。再用读者问题及操作目的人工分组，例如工具选择、操作设置、失败排查和清洁维护。关键名词相同，不代表目的相同；名称略有差异，也不代表一定要拆篇。"
+        },
+        {
+          "type": "paragraph",
+          "text": "为每一群指定现有网址或预定 slug，写出新建、补充、合并或暂缓的处理结果。选题表另列必写重点、数据缺口及配图需求，让撰稿者知道文章为何存在。若只是把一串词交给作者，再要求每个词都出现，很容易做出读起来重复却没有完整答案的内容。"
+        },
+        {
+          "type": "heading",
+          "text": "依需求价值与制作能力安排优先级",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "排序前先设几个编辑判断字段：与网站读者的关联、目前答案的缺口、来源可查证程度、制作成本与后续维护需求。搜索量放在旁边参考，而不是直接由大到小决定全部顺序。这些字段是工作安排工具，不能宣称是 Google 的排名公式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同时定义内容的合理成果。教学可能希望读者完成准备清单，课程页则希望读者看懂条件后提出合适询问。只有点击增加，未必代表任务完成；若要追踪订阅、询问或购买，应另外规划适当的事件与数据使用方式，不把工具估计当成实际转化。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先选能完整回答的一小组主题，完成文章后记录新增内容、查证日与对应查询。后续用相同范围的数据查看需求是否仍成立，必要时调整顺序。研究清单有明确处理结果和负责人，才会成为可维护的内容计划，而不是持续累积却没人使用的电子表格。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "收集读者原始问法，标示实际来源与推测。",
+            "固定工具设置，保存原始数据与查阅日期。",
+            "依相同问题和操作目的分组，对照现有网址。",
+            "排出可查证、能完成的选题，定义成果与更新条件。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/seo-keyword-research/diagram-1-zh-cn.svg",
+          "alt": "四阶段呈现收集问题、核对数据、分组对照与排期验收，提醒数字要保留设置与来源。",
+          "width": 1600,
+          "height": 900,
+          "caption": "搜索量提供线索；一组能回答的读者问题，才是一个选题。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "数据源／数字",
+            "适合回答",
+            "使用时的限制"
+          ],
+          "rows": [
+            [
+              "读者问题记录",
+              "读者目前在哪些地方遇到困难",
+              "需去标识化，单一问题不代表普遍需求"
+            ],
+            [
+              "Search Console 查询",
+              "自己的页面如何被找到",
+              "有匿名与数据列限制"
+            ],
+            [
+              "规划工具每月搜索量",
+              "指定范围的需求规模线索",
+              "是估计且可能包含近似变体"
+            ],
+            [
+              "规划工具竞争程度",
+              "广告竞争情况",
+              "不能视为自然排名难度"
+            ],
+            [
+              "Google Trends 热度",
+              "相对变化与季节性",
+              "不是精确人数，零不等于无需求"
+            ],
+            [
+              "编辑优先级",
+              "哪个题目值得先投入",
+              "是人工判断，没有排名保证"
+            ]
+          ],
+          "caption": "工具功能与数据定义查证于 2026-09-14；本表未提供虚构搜索量或广告成效。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "选题库一列应该能导向一个动作",
+          "text": "每组需求都留下对应页面与处理结果：新建文章、改善现有内容、与其他主题合并，或因缺乏可靠数据而暂缓。这样即使工具数据更新，团队仍能理解当初为什么选题。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "先判断每组查询的搜索意图"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把选题变成可执行的文章内容"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Ads 使用关键词规划工具",
+          "url": "https://support.google.com/google-ads/answer/7337243?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Ads 预测与历史指标定义",
+          "url": "https://support.google.com/google-ads/answer/3022575?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Trends 数据常见问题",
+          "url": "https://support.google.com/trends/answer/4365533?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Trends 比较字词与主题",
+          "url": "https://support.google.com/trends/answer/4359550?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console 查询维度与限制",
+          "url": "https://support.google.com/webmasters/answer/17011259?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "A keyword research workflow: Reader needs, long-tail queries, and topic priorities",
+      "description": "Keyword research should produce a schedulable content list, not hundreds of unused terms. Using a small baking tutorial site, this guide collects clues from reader questions, Search Console, Google Keyword Planner, and Google Trends. It separates search-volume estimates, ad competition, and relative interest, then groups specific needs, checks existing pages, and prioritizes topics by value and production capacity.",
+      "hero": {
+        "src": "/guides/seo-keyword-research/hero-en.jpg",
+        "alt": "Original folder, calculator, and document illustrations show query collection, number interpretation, and article planning.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Keyword research easily produces a long spreadsheet; deciding what to write next is harder. Tool figures can clarify demand, but even high-volume queries may be poor topics if you do not know your readers or what your site can offer."
+        },
+        {
+          "type": "paragraph",
+          "text": "Define the output as a topic, reader question, matching page, and next action. Related keywords may belong in one article or in a section of an existing page. This avoids publishing a duplicate article for every new phrasing."
+        },
+        {
+          "type": "heading",
+          "text": "Build a seed list from questions your site can answer",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For a baking tutorial site, list questions before, during, and after baking: ingredient swaps, equipment choices, timing, and storage. These are research starting points; recipes and food-storage safety still need separate verification. Collect readers' actual wording before polishing it into technical terms."
+        },
+        {
+          "type": "paragraph",
+          "text": "Reader emails, site search, and course inquiries offer clues. Remove names, contact details, and personal context before use. Record source and date beside each question, separating actual inquiries from editorial guesses. Keep a one-person question if useful, but do not call it the market's most popular need."
+        },
+        {
+          "type": "paragraph",
+          "text": "Add constraints to each seed group, such as a small oven, first attempt, or weekend-only practice. Constraints reveal specific problems but promise neither search volume nor easy rankings. Ask whether the site can supply enough diagrams, evidence, and instructions before expanding into unfamiliar subjects."
+        },
+        {
+          "type": "heading",
+          "text": "Find opportunities on existing pages with Search Console",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Once a site has impressions, inspect queries by page in Search Console and ask whether that page answers them. If an equipment guide draws cleaning queries, consider a maintenance section or a link to a dedicated tutorial before writing another guide to the same tool."
+        },
+        {
+          "type": "paragraph",
+          "text": "The query report is not a complete market-demand list. Google omits some anonymized queries and limits stored and displayed rows. A missing term does not mean nobody searched it. For new sites or sparse pages, record insufficient evidence and cross-check other sources."
+        },
+        {
+          "type": "paragraph",
+          "text": "Export the date, country, device, and search-type filters with the data. Keep an untouched copy and separate cleaned comparison fields, so merging synonyms does not erase provenance. Put existing content and proposals in one table to see needs already covered."
+        },
+        {
+          "type": "heading",
+          "text": "Check settings before using Keyword Planner",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google Ads Keyword Planner primarily serves search-ad research but also suggests terms and search-volume estimates. Official guidance checked for this article required account setup and billing information for basic suggestions. Understand those account requirements; researching content is not a commitment to run ads."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use the new-keyword tool with relevant terms, or inspect volume and forecasts for an existing list. Check location, language, period, and search-network settings before export. Do not compare unlike scopes or treat worldwide figures as demand from Taiwan readers."
+        },
+        {
+          "type": "paragraph",
+          "text": "Average monthly searches are historical estimates for the chosen scope and may include close variants. Competition measures advertisers, not organic-ranking difficulty. Forecast clicks and costs reflect bids, budgets, and other ad conditions; they do not predict an article's organic traffic."
+        },
+        {
+          "type": "heading",
+          "text": "Use Google Trends for seasonality and language differences",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google Trends shows changes in relative interest, not exact searcher counts. Google says data is sampled and normalized to a 0–100 scale; low-volume terms may show zero. Thus 100 is not 100 searches, and zero does not prove nobody has the need."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hold location, period, and search type constant when comparing. Note whether you chose a search term or a topic: topics can combine the same concept across languages. Do not compare a broad topic with a narrow term while ignoring their different coverage."
+        },
+        {
+          "type": "paragraph",
+          "text": "For holiday baking, look for repeated rises in relevant terms during certain months, then allow time for verification, illustration, and editing. Investigate a one-day spike for news or other context before calling it lasting demand. This is a planning method, not an invented trend measurement."
+        },
+        {
+          "type": "heading",
+          "text": "Group long-tail queries by problem instead of publishing one page per term",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Long-tail queries generally occupy smaller, more specific parts of demand. More words do not guarantee easier rankings. Group 'first cookies in a small oven' with similar phrasings and ask whether they need the same preparation and steps. If the answer is the same, cover them in one article."
+        },
+        {
+          "type": "paragraph",
+          "text": "Normalize spaces, case, and common wording while keeping the original query. Then group manually by reader question and task, such as equipment choice, settings, troubleshooting, or cleaning. Shared nouns need not mean shared intent, and slightly different names need not mean separate pages."
+        },
+        {
+          "type": "paragraph",
+          "text": "Assign each group an existing URL or planned slug and a decision: add, improve, merge, or defer. Record required points, evidence gaps, and image needs so writers know why the page exists. Handing over a list of terms and demanding every one appear invites repetitive content without a complete answer."
+        },
+        {
+          "type": "heading",
+          "text": "Prioritize by reader value and ability to produce the content",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Before ranking ideas, assess reader relevance, gaps in current answers, verifiable sources, production cost, and future maintenance. Keep search volume as one clue, not the sole sort key. These are editorial planning fields, not Google's ranking formula."
+        },
+        {
+          "type": "paragraph",
+          "text": "Define a sensible outcome too. A tutorial might help readers finish a preparation checklist; a course page might prompt a relevant inquiry after explaining terms. More clicks alone do not prove success. Plan suitable events and data use to track sign-ups, inquiries, or purchases; do not mistake tool estimates for conversions."
+        },
+        {
+          "type": "paragraph",
+          "text": "Choose a small set of topics you can answer fully. After completing each article, record additions, verification date, and related queries. Review later with data from the same scope and reorder if needed. A list with decisions and owners becomes a maintainable content plan rather than an unused spreadsheet."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Collect readers' original wording and distinguish observed sources from guesses.",
+            "Keep tool settings, raw data, and the date checked.",
+            "Group by problem and task; compare each group with existing URLs.",
+            "Prioritize verifiable, feasible topics and define outcomes and update triggers."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/seo-keyword-research/diagram-1-en.svg",
+          "alt": "Four stages show question collection, data checks, grouping against existing pages, and scheduling and review; retain each number's settings and source.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Search volume offers a clue; a group of answerable reader questions makes a topic.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Source or metric",
+            "Useful for",
+            "Limit"
+          ],
+          "rows": [
+            [
+              "Reader-question log",
+              "Where readers currently get stuck",
+              "Remove identifiers; one question is not general demand"
+            ],
+            [
+              "Search Console queries",
+              "How people find your pages",
+              "Anonymization and row limits"
+            ],
+            [
+              "Planner monthly searches",
+              "Demand estimate for the chosen scope",
+              "An estimate that may include close variants"
+            ],
+            [
+              "Planner competition",
+              "Advertiser competition",
+              "Not organic-ranking difficulty"
+            ],
+            [
+              "Google Trends interest",
+              "Relative change and seasonality",
+              "Not exact counts; zero need not mean no demand"
+            ],
+            [
+              "Editorial priority",
+              "Which topic merits work first",
+              "Human judgment, with no ranking guarantee"
+            ]
+          ],
+          "caption": "Tool functions and data definitions checked September 14, 2026; no search-volume or ad-result figures are invented here."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Each topic-list row should lead to an action",
+          "text": "For each need, record its page and disposition: write a new article, improve existing content, merge with another topic, or defer for lack of reliable evidence. The team can then understand the decision even when tool data changes."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Identify the search intent behind each query group"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Turn a topic choice into an actionable article"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Ads: Use Keyword Planner",
+          "url": "https://support.google.com/google-ads/answer/7337243?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Ads: Forecast and historical metric definitions",
+          "url": "https://support.google.com/google-ads/answer/3022575?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Trends: Data FAQ",
+          "url": "https://support.google.com/trends/answer/4365533?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Trends: Compare search terms and topics",
+          "url": "https://support.google.com/trends/answer/4359550?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console: Query dimensions and limitations",
+          "url": "https://support.google.com/webmasters/answer/17011259?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "キーワード調査の進め方：読者の課題、ロングテール、記事の優先順位",
+      "description": "キーワード調査の成果は、使い道のない大量の語句ではなく、制作予定に落とし込める記事一覧です。小規模な製菓学習サイトを例に、読者の疑問、Search Console、Googleキーワードプランナー、Google Trendsから手掛かりを集める方法を整理します。検索ボリューム、広告の競争、相対的な関心度の違いを踏まえ、具体的な需要をまとめ、既存ページと照合し、内容の価値と制作体制に応じて優先順位を付けます。",
+      "hero": {
+        "src": "/guides/seo-keyword-research/hero-ja.jpg",
+        "alt": "オリジナルのフォルダー、計算機、文書のイラスト。検索語の収集、数値の解釈、記事計画を表す。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "キーワード調査では長い表は簡単に作れますが、次に何を書くかを決めるのは難しいものです。ツールの数値は需要を理解する助けになります。ただし読者像とサイトが提供できることが分からなければ、検索回数が多い語句でも適切なテーマとは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "調査の成果を「テーマ、読者の疑問、対応するページ、次の行動」と定義します。一組のキーワードを一つの記事で扱う場合も、既存記事の補足段落にする場合もあります。新しい言い換えを見つけるたびに重複記事を増やすことを防げます。"
+        },
+        {
+          "type": "heading",
+          "text": "サイトが答えられる疑問から種となる語句を集める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "製菓学習サイトなら、学習前、作業中、完成後の疑問を並べます。材料の代用、道具選び、所要時間、完成品の保存などです。これらは調査の出発点で、レシピや保存の安全性は別途検証が必要です。まず実際の質問の言い方を集め、専門用語に直すのは後にします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "読者からのメール、サイト内検索、講座への問い合わせも手掛かりです。使う前に氏名、連絡先、個人に関わる詳細を取り除きます。各質問に出所と日付を記し、実際に届いた質問と編集者の想定を分けます。一人だけの質問も残せますが、市場で最も多い需要だと主張してはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "各語句のグループに、小型オーブン、初挑戦、週末しか練習できない、といった読者の制約を加えます。具体的な課題を見つけやすくなりますが、検索量や順位の取りやすさは保証しません。知らない領域に広げる前に、十分な図解、根拠、手順を提供できるか考えます。"
+        },
+        {
+          "type": "heading",
+          "text": "Search Consoleで既存ページの機会を探す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "サイトに表示回数があるなら、Search Consoleでページ別の検索語を見て、そのページが疑問に答えているか確認します。道具の紹介ページに洗い方の検索語が多ければ、同じ道具の紹介記事を増やす前に、手入れの段落を足すか専用の解説へリンクするか検討できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "検索語のレポートは市場全体の需要一覧ではありません。Googleは一部の匿名化された検索語を除き、保存・表示する行数にも制限があります。語句が見えないことは、検索されていない証拠ではありません。新しいサイトやデータの少ないページでは「根拠不足」と記し、別の情報源と照合します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "エクスポートするときは日付、国、端末、検索タイプなどの絞り込み条件も保存します。元データを一部残し、整理後の比較用項目を別に作れば、同義語をまとめても出所を失いません。既存記事と新しい案を同じ表に置くと、すでに対応している需要を見つけやすくなります。"
+        },
+        {
+          "type": "heading",
+          "text": "キーワードプランナーは設定を確かめてから使う",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google広告のキーワードプランナーは主に検索広告の調査用ですが、新しい語句や推定検索量の手掛かりにもなります。この記事の検証時に確認した公式説明では、基本的な提案機能を使うにはアカウント設定と請求情報が必要でした。コンテンツのテーマを整理するだけなら、アカウント要件を理解し、広告出稿の約束と取り違えないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新しいキーワードを探す機能に関連語を入れるか、手元の一覧で検索量と予測を確認します。結果をダウンロードする前に地域、言語、期間、検索ネットワークの設定を確認します。範囲の違う数値はそのまま比べられず、台湾の読者を調べるなら世界全体の数値を台湾の需要として扱わないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "月間平均検索数は指定範囲における過去の推定値で、類似する語句を含む場合があります。「競合性」は広告主間の競争を示し、自然検索の順位難易度ではありません。予測クリック数や費用は入札額、予算などの広告条件も反映するため、記事の自然検索流入を直接予測できません。"
+        },
+        {
+          "type": "heading",
+          "text": "Google Trendsで季節性と言葉の違いを補う",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google Trendsは相対的な関心の変化を見る道具で、正確な検索人数は示しません。公式説明ではデータを標本抽出・正規化し、0～100の相対尺度で表示します。検索量の少ない語句は0になる場合があります。100は100回の検索ではなく、0も需要が皆無という意味ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "比較するときは地域、期間、検索タイプをそろえ、選んだものが検索語かトピックかも確認します。トピックには複数言語での同一概念が含まれる場合があります。広いトピックと狭い語句を並べながら、対象範囲の差を無視しないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "たとえば祝祭日の製菓記事を計画するなら、関連語が特定の月に繰り返し上がるか見て、検証、図の制作、編集の時間を確保します。ある日だけ急増したら、長期需要と決めず、ニュースなどの背景を調べます。これは計画の方法であり、実際に調べていないトレンド数値は示しません。"
+        },
+        {
+          "type": "heading",
+          "text": "ロングテールの語句を課題ごとにまとめ、語句ごとに記事を作らない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ロングテールは一般に、需要の分布の中で小さく具体的な検索を指します。文字数が多いほど上位表示しやすいという意味ではありません。「小型オーブンで初めてクッキーを焼く」と近い言い方をまとめ、同じ準備や手順で答えられるか確認します。同じ答えなら一つの記事で扱います。"
+        },
+        {
+          "type": "paragraph",
+          "text": "空白、大文字・小文字、よく使う表現は統一しても、元の語句は残します。そのうえで、道具選び、設定、失敗の原因究明、清掃など、読者の疑問と目的に沿って人が分類します。同じ名詞でも目的が同じとは限らず、名称が少し違うだけで別の記事が必要とも限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "各グループに既存URLか予定slugを割り当て、新規作成、加筆、統合、保留の判断を書きます。必須の要点、資料の不足、画像の必要性も記して、執筆者に記事の存在理由を伝えます。語句の一覧だけを渡してすべて入れるよう求めると、重複が多く十分な答えのない記事になりがちです。"
+        },
+        {
+          "type": "heading",
+          "text": "読者にとっての価値と制作力で優先順位を決める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "並べ替える前に、読者との関連性、現在の回答の不足、出典の検証可能性、制作費、今後の維持管理を評価項目にします。検索量は参考の一つとし、多い順だけで決めません。これは編集作業の道具で、Googleの順位決定式ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "内容に期待する妥当な成果も決めます。解説記事なら準備リストを完成できること、講座ページなら条件を理解したうえで適切な問い合わせができることかもしれません。クリックの増加だけでは達成を証明できません。購読、問い合わせ、購入を追うなら適切なイベントとデータ利用を別途設計し、ツールの推定値を実際のコンバージョンと混同しないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "まず十分に答えられる少数のテーマを選びます。記事を完成させたら追加内容、検証日、対応する検索語を記録します。後から同じ範囲のデータで需要を見直し、必要なら順番を変えます。判断結果と担当者がある一覧なら、使われない表ではなく、維持できる記事計画になります。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "読者の元の言い方を集め、実際の出所と推測を区別する。",
+            "ツールの設定、元データ、確認日を保存する。",
+            "同じ課題と目的でまとめ、既存URLと照合する。",
+            "検証でき、制作できるテーマを優先し、成果と更新条件を決める。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/seo-keyword-research/diagram-1-ja.svg",
+          "alt": "質問の収集、数値の確認、分類と既存ページの照合、制作予定と検証の4段階。数値の設定と出所を残すよう促す。",
+          "width": 1600,
+          "height": 900,
+          "caption": "検索量は手掛かりです。答えられる読者の疑問のまとまりが、一つのテーマになります。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "情報源・指標",
+            "分かること",
+            "利用上の制限"
+          ],
+          "rows": [
+            [
+              "読者の質問記録",
+              "今どこで困っているか",
+              "個人を特定できる情報を除く。一件は一般的需要ではない"
+            ],
+            [
+              "Search Consoleの検索語",
+              "自分のページがどう見つかるか",
+              "匿名化と行数の制限がある"
+            ],
+            [
+              "プランナーの月間検索数",
+              "指定範囲での需要規模の手掛かり",
+              "推定値で、類似語を含む場合がある"
+            ],
+            [
+              "プランナーの競合性",
+              "広告主間の競争",
+              "自然検索の順位難易度ではない"
+            ],
+            [
+              "Google Trendsの関心度",
+              "相対的変化と季節性",
+              "正確な人数ではなく、0も需要なしとは限らない"
+            ],
+            [
+              "編集上の優先順位",
+              "どのテーマを先に扱うか",
+              "人の判断であり、順位の保証はない"
+            ]
+          ],
+          "caption": "ツールの機能とデータの定義は2026年9月14日に確認。架空の検索量や広告成果は示していません。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "テーマ一覧の一行を次の行動につなげる",
+          "text": "各課題に対応ページと判断を残します。新規記事、既存内容の改善、別テーマへの統合、信頼できる資料が足りないための保留などです。ツールの数値が変わっても、当初の選定理由を理解できます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "各検索語グループの検索意図を見極める"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "選んだテーマを実行できる記事にする"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google広告：キーワードプランナーの使い方",
+          "url": "https://support.google.com/google-ads/answer/7337243?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google広告：予測と過去の指標の定義",
+          "url": "https://support.google.com/google-ads/answer/3022575?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Trends：データに関するよくある質問",
+          "url": "https://support.google.com/trends/answer/4365533?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Trends：検索語とトピックの比較",
+          "url": "https://support.google.com/trends/answer/4359550?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console：検索語ディメンションと制限",
+          "url": "https://support.google.com/webmasters/answer/17011259?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "키워드 조사 실무 흐름: 독자 요구, 롱테일 검색어, 주제 우선순위",
+      "description": "키워드 조사의 결과물은 쓰임새 없는 검색어 수백 개가 아니라 일정에 넣을 수 있는 콘텐츠 목록이어야 합니다. 작은 베이킹 교육 사이트를 예로 들어 독자 질문, Search Console, Google 키워드 플래너, Google Trends에서 단서를 모읍니다. 검색량 추정치, 광고 경쟁, 상대적 관심도의 차이를 구분한 뒤 구체적인 요구를 묶고 기존 페이지와 대조하여 콘텐츠 가치와 제작 역량에 따라 우선순위를 정합니다.",
+      "hero": {
+        "src": "/guides/seo-keyword-research/hero-ko.jpg",
+        "alt": "직접 제작한 폴더, 계산기, 문서 그림으로 검색어 수집, 수치 해석, 글 기획을 나타낸다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "키워드를 조사하면 긴 표는 쉽게 만들 수 있지만 다음에 무엇을 써야 할지는 결정하기 어렵습니다. 도구의 수치는 수요를 이해하는 데 도움이 됩니다. 그러나 독자가 누구이고 사이트가 무엇을 제공할 수 있는지 모르면 검색량이 큰 검색어도 적절한 주제가 아닐 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "조사 결과를 '주제, 독자 질문, 대응 페이지, 다음 행동'으로 정의하세요. 비슷한 키워드 여러 개가 한 글에 들어갈 수도 있고 기존 글의 보충 단락이 될 수도 있습니다. 새 표현을 발견할 때마다 중복 글을 만드는 일을 피할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "사이트가 답할 수 있는 질문에서 출발 검색어 모으기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "베이킹 교육 사이트라면 학습 전, 만드는 중, 완성 후의 질문을 적어 보세요. 재료 대체, 도구 선택, 시간 계획, 완성품 보관 등이 있습니다. 이는 조사 출발점일 뿐이며 레시피나 보관 안전성은 별도로 검증해야 합니다. 전문용어로 바꾸기 전에 독자가 실제로 쓰는 표현을 모으세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "독자 이메일, 사이트 내 검색, 강좌 문의도 단서가 됩니다. 활용하기 전에 이름, 연락처, 개인적인 세부 사항을 제거하세요. 각 질문에 출처와 날짜를 표시하고 실제로 받은 질문과 편집자가 추정한 상황을 구분합니다. 한 사람만 물었어도 남길 수 있지만 시장에서 가장 인기 있는 요구라고 단정하지는 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "각 출발 검색어 묶음에 작은 오븐, 첫 시도, 주말에만 연습 가능 등 독자의 제약을 더하세요. 구체적인 문제를 찾는 데 유용하지만 검색량이나 순위 경쟁의 쉬움을 보장하지는 않습니다. 낯선 주제로 넓히기 전에 충분한 그림, 근거, 작업 설명을 제공할 수 있는지 살펴보세요."
+        },
+        {
+          "type": "heading",
+          "text": "Search Console로 기존 페이지의 기회 찾기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "사이트에 검색 노출이 있다면 Search Console에서 페이지별 관련 검색어를 보고 해당 페이지가 질문에 답하는지 확인하세요. 도구 소개 글에 세척법 검색어가 많다면 같은 도구 소개 글을 하나 더 쓰기 전에 관리 단락을 보강하거나 별도 안내문으로 연결할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "검색어 보고서는 시장 전체의 수요 목록이 아닙니다. Google은 일부 익명화된 검색어를 제외하며 저장·표시되는 행 수에도 제한이 있습니다. 어떤 검색어가 보이지 않는다고 아무도 검색하지 않았다는 뜻은 아닙니다. 새 사이트나 자료가 적은 페이지는 '근거 부족'으로 표시하고 다른 출처와 교차 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "내보낼 때 날짜, 국가, 기기, 검색 유형 등의 필터도 함께 저장하세요. 원본 자료를 남기고 정리한 비교용 열을 별도로 만들어 동의어를 합쳐도 출처가 사라지지 않게 합니다. 기존 콘텐츠와 새 제안을 한 표에 두면 이미 다룬 요구를 쉽게 볼 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "키워드 플래너를 쓰기 전에 설정 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google Ads 키워드 플래너는 주로 검색 광고 조사에 쓰이지만 새 검색어와 추정 검색량의 단서도 제공합니다. 이 글에서 확인한 당시의 공식 설명에 따르면 기본 제안 기능을 쓰려면 계정 설정과 결제 정보가 필요했습니다. 콘텐츠 주제만 정리한다면 계정 요건을 먼저 이해하고, 조사를 광고 집행 약속으로 오해하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "새 키워드 찾기에 사이트와 관련된 말을 입력하거나 기존 목록의 검색량과 예측치를 확인하세요. 결과를 내려받기 전에 지역, 언어, 기간, 검색 네트워크 설정을 확인합니다. 범위가 다른 수치를 그대로 비교하지 말고, 대만 독자를 연구하면서 전 세계 자료를 대만 수요로 간주하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "월평균 검색량은 설정한 범위의 과거 추정치이며 유사한 변형 검색어가 포함될 수 있습니다. 경쟁 수준은 광고주 경쟁을 나타내지 자연 검색 순위 난도를 뜻하지 않습니다. 예상 클릭과 비용에는 입찰가, 예산 등 광고 조건도 반영되므로 한 글의 자연 검색 유입을 직접 예측할 수 없습니다."
+        },
+        {
+          "type": "heading",
+          "text": "Google Trends로 계절성과 표현 차이 살피기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google Trends는 상대적 관심의 변화를 보는 데 적합하며 정확한 검색 인원을 알려 주지는 않습니다. 공식 설명에 따르면 자료를 표본 추출하고 정규화해 0~100의 상대 척도로 표시합니다. 검색량이 적은 말은 0으로 보일 수 있습니다. 따라서 100은 검색 100회가 아니고 0도 수요가 전혀 없다는 뜻은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "비교할 때 지역, 기간, 검색 유형을 같게 두고 검색어를 선택했는지 주제를 선택했는지 확인하세요. 주제는 언어가 달라도 같은 개념을 묶을 수 있습니다. 범위가 넓은 주제와 좁은 검색어를 나란히 두면서 포괄 범위의 차이를 무시하면 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "명절 베이킹 콘텐츠를 계획한다면 관련 검색어가 특정 달마다 반복해서 오르는지 보고 검증, 그림 제작, 편집 시간을 확보할 수 있습니다. 하루만 급증했다면 장기 수요라고 단정하기 전에 뉴스 등 배경을 확인하세요. 이는 계획 방법의 예시이며 실제 조회하지 않은 추세 수치를 제시하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "롱테일 검색어를 문제별로 묶고 검색어마다 글을 쓰지 않기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "롱테일은 보통 수요 분포에서 규모가 작고 구체적인 검색을 말합니다. 단어 수가 많다고 순위를 얻기 쉬운 것은 아닙니다. '작은 오븐으로 처음 쿠키 굽기'와 비슷한 표현을 묶고 같은 준비와 작업 설명이 필요한지 살펴보세요. 답이 같다면 한 글에서 다룹니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공백, 영문 대소문자, 자주 쓰는 표현을 통일할 수 있지만 원래 검색어는 보관하세요. 그런 다음 도구 선택, 설정, 실패 원인 파악, 세척과 관리처럼 독자의 질문과 목적에 따라 사람이 직접 묶습니다. 핵심 명사가 같아도 목적이 다를 수 있고 이름이 조금 달라도 글을 나눌 필요는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "각 묶음에 기존 URL이나 예정 slug를 지정하고 새 글 작성, 보완, 통합, 보류 중 하나를 기록하세요. 꼭 쓸 내용, 근거의 빈틈, 필요한 그림도 적어 작성자가 글의 존재 이유를 알게 합니다. 검색어 목록만 주고 모든 말을 넣으라고 하면 반복적이지만 완전한 답은 없는 글이 되기 쉽습니다."
+        },
+        {
+          "type": "heading",
+          "text": "독자 가치와 제작 역량으로 우선순위 정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "순서를 매기기 전에 독자 관련성, 현재 답변의 빈틈, 출처 검증 가능성, 제작비, 이후 관리 필요성을 평가 항목으로 정하세요. 검색량은 참고 단서로 두고 큰 수치 순서만으로 결정하지 않습니다. 이 항목은 편집 계획 도구이지 Google의 순위 산식이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "콘텐츠가 달성할 합리적인 결과도 정의하세요. 안내 글은 준비 목록을 마치도록 돕고, 강좌 페이지는 조건을 이해한 독자의 적절한 문의를 목표로 할 수 있습니다. 클릭 증가만으로는 목표 달성을 알 수 없습니다. 구독, 문의, 구매를 추적하려면 적절한 이벤트와 데이터 이용 방법을 별도로 설계하고 도구의 추정치를 실제 전환으로 보지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 충분히 답할 수 있는 소수의 주제를 선택하세요. 글을 완성한 뒤 새로 넣은 내용, 검증 날짜, 관련 검색어를 기록합니다. 나중에 같은 범위의 자료로 수요를 다시 살펴보고 필요하면 순서를 바꿉니다. 처리 결과와 담당자가 있어야 쓰지 않는 스프레드시트가 아니라 관리 가능한 콘텐츠 계획이 됩니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "독자의 원래 표현을 모으고 실제 출처와 추정을 구분합니다.",
+            "도구 설정, 원본 자료, 확인 날짜를 보관합니다.",
+            "같은 문제와 목적에 따라 묶고 기존 URL과 대조합니다.",
+            "검증하고 완성할 수 있는 주제를 우선하며 성과와 갱신 조건을 정합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/seo-keyword-research/diagram-1-ko.svg",
+          "alt": "질문 수집, 자료 확인, 묶음과 기존 페이지 대조, 일정과 검증의 네 단계. 각 수치의 설정과 출처를 남기도록 안내한다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "검색량은 단서입니다. 답할 수 있는 독자 질문의 묶음이 하나의 주제가 됩니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "출처·지표",
+            "알 수 있는 것",
+            "이용상 한계"
+          ],
+          "rows": [
+            [
+              "독자 질문 기록",
+              "현재 어디서 어려움을 겪는지",
+              "개인 식별 정보를 빼야 하며 질문 한 건은 보편적 수요가 아님"
+            ],
+            [
+              "Search Console 검색어",
+              "내 페이지가 어떻게 발견되는지",
+              "익명화와 자료 행 수 제한이 있음"
+            ],
+            [
+              "플래너 월간 검색량",
+              "설정한 범위의 수요 규모 단서",
+              "추정치이며 유사 변형 검색어를 포함할 수 있음"
+            ],
+            [
+              "플래너 경쟁 수준",
+              "광고주 경쟁 상황",
+              "자연 검색 순위 난도가 아님"
+            ],
+            [
+              "Google Trends 관심도",
+              "상대적 변화와 계절성",
+              "정확한 인원이 아니며 0도 수요 없음과 다름"
+            ],
+            [
+              "편집 우선순위",
+              "어느 주제에 먼저 투자할지",
+              "사람의 판단이며 순위 보장이 없음"
+            ]
+          ],
+          "caption": "도구 기능과 자료 정의는 2026년 9월 14일 확인했습니다. 가상의 검색량이나 광고 성과 수치는 제시하지 않습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "주제 목록의 한 줄이 다음 행동으로 이어져야 합니다",
+          "text": "각 요구에 대응 페이지와 처리 결과를 남기세요. 새 글 작성, 기존 내용 개선, 다른 주제와 통합, 신뢰할 자료 부족으로 보류 등이 있습니다. 도구 수치가 달라져도 팀이 당시 주제를 고른 이유를 이해할 수 있습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "각 검색어 묶음의 검색 의도 파악하기"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "선택한 주제를 실행 가능한 글로 만들기"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Ads: 키워드 플래너 사용 방법",
+          "url": "https://support.google.com/google-ads/answer/7337243?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Ads: 예측과 과거 지표의 정의",
+          "url": "https://support.google.com/google-ads/answer/3022575?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Trends: 자료에 관한 자주 묻는 질문",
+          "url": "https://support.google.com/trends/answer/4365533?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Trends: 검색어와 주제 비교",
+          "url": "https://support.google.com/trends/answer/4359550?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console: 검색어 측정기준과 제한",
+          "url": "https://support.google.com/webmasters/answer/17011259?hl=zh-Hant",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
