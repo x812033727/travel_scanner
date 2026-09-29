@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-caption-wrap-breaks-numbers
 title: Caption wrapping can break inside numbers and product names, and start a line with a full stop, in CJK locales
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: codex-caption-wrap
+claimed_at: 2026-09-29T11:29:25Z
 created_at: 2026-09-28T05:04:19Z
 completed_at:
-branch:
+branch: codex/caption-wrap-boundaries
 depends_on: []
 scope:
   - tools/video/core/captions.mjs

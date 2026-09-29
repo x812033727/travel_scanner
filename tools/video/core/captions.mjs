@@ -38,7 +38,19 @@ export function measure(text, rules) {
 }
 
 function tokens(text, rules) {
-  return rules.words ? text.split(/(\s+)/).filter(Boolean) : (text.match(CJK_TOKEN) ?? []);
+  const parts = rules.words ? text.split(/(\s+)/).filter(Boolean) : (text.match(CJK_TOKEN) ?? []);
+  const grouped = [];
+  for (const token of parts) {
+    if (OPENS_BADLY.test(token)) {
+      // Spaces before closing punctuation cannot make it safe to start a line.
+      // Attach the whole closing run, including those spaces, to its preceding token.
+      let closing = token;
+      while (grouped.length && !grouped.at(-1).trim()) closing = grouped.pop() + closing;
+      if (grouped.length) grouped[grouped.length - 1] += closing;
+      else grouped.push(closing);
+    } else grouped.push(token);
+  }
+  return grouped;
 }
 
 // The last resort, for text with no break that fits: fill each piece up to the width.
@@ -63,21 +75,11 @@ export function joinPieces(first, second, rules) {
 }
 
 /**
- * Whether the text can be shown as one cue: laid out greedily, it takes at most maxLines lines of
- * maxChars. Greedy layout uses the fewest lines, so wrapCue can always find a break when this holds.
+ * Whether the text takes at most maxLines using the same legal breaks as wrapCue's fallback.
+ * An indivisible token wider than maxChars stays intact for checkCues to report, not to be split.
  */
 export function fits(text, rules) {
-  let lines = 1;
-  let current = "";
-  for (const token of tokens(text.trim(), rules)) {
-    if (current.trim() && measure(`${current}${token}`.trim(), rules) > rules.maxChars) {
-      lines += 1;
-      current = token.trimStart();
-    } else {
-      current += token;
-    }
-  }
-  return lines <= rules.maxLines;
+  return hardSplit(text.trim(), rules.maxChars, rules).length <= rules.maxLines;
 }
 
 /**
@@ -121,22 +123,32 @@ export function splitText(text, rules) {
 export function wrapCue(text, rules) {
   if (measure(text, rules) <= rules.maxChars || rules.maxLines < 2) return text;
   const chars = [...text];
+  const boundaries = new Set();
+  let offset = 0;
+  for (const token of tokens(text, rules)) {
+    const length = [...token].length;
+    // Keep the old scoring opportunities inside harmless whitespace runs; trim()
+    // makes the resulting lines identical, but their midpoint scores can differ.
+    if (!token.trim()) for (let index = 1; index < length; index++) boundaries.add(offset + index);
+    offset += length;
+    boundaries.add(offset);
+  }
   const half = measure(text, rules) / 2;
   let best = null;
   let width = 0;
   for (let index = 0; index < chars.length - 1; index++) {
     width += measure(chars[index], rules);
+    if (!boundaries.has(index + 1)) continue;
     const [char, next] = [chars[index], chars[index + 1]];
     let penalty = 0;
     if (rules.words) {
       if (!/\s/.test(char) && !/\s/.test(next)) continue;
     } else {
-      if (/[A-Za-z0-9]/.test(char) && /[A-Za-z0-9]/.test(next)) continue;
       penalty = /[，、；：,;:？！]/.test(char) ? 0 : 3;
     }
     const left = chars.slice(0, index + 1).join("").trim();
     const right = chars.slice(index + 1).join("").trim();
-    if (!left || !right || measure(left, rules) > rules.maxChars || measure(right, rules) > rules.maxChars) continue;
+    if (!left || !right || OPENS_BADLY.test(right) || measure(left, rules) > rules.maxChars || measure(right, rules) > rules.maxChars) continue;
     const score = Math.abs(width - half) + penalty;
     if (!best || score < best.score) best = { score, left, right };
   }
