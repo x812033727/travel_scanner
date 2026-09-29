@@ -37,8 +37,13 @@ from app.video_automation.judge import (
     SHORTS_QA_AUTO_APPROVED_NOTE,
     pick_choice,
     pick_reason,
+    video_series_kind,
 )
-from app.video_automation.models import VideoDramaSeries
+from app.video_automation.models import (
+    VideoAutomationSettings,
+    VideoDramaEpisode,
+    VideoDramaSeries,
+)
 from app.video_automation.settings import (
     AUTO_APPROVED_NOTE,
     AUTO_APPROVED_STORYBOARD_NOTE,
@@ -381,6 +386,7 @@ async def upsert_project(
         project.retry_acknowledged_id = payload.retry_acknowledged_id
     project.last_synced_at = now
     project.updated_at = now
+    await _decide_story_locales(session, project, now)
     await session.commit()
     # A video on YouTube keeps its upload package for the owner to download; only the mp4 goes,
     # and only after PREVIEW_RETENTION (prune_published_previews), so nothing is deleted here
@@ -838,9 +844,74 @@ async def drop_project(
             metadata_json={"slug": slug},
         )
     )
+    await _skip_abandoned_episode(session, project, user, now)
     await session.commit()
     store.keep_only(slug, set())
     return await project_view(session, slug)
+
+
+async def _episode_of(
+    session: AsyncSession, project: VideoProject
+) -> tuple[VideoDramaEpisode, VideoDramaSeries] | None:
+    """The episode this video is being made as and its series, both locked, or None.
+
+    Only a video that reports itself as an episode is looked up (a Short or a tutorial never
+    is one); the episode is then the server's own row whose slug is the video's. The series is
+    locked before the episode, the order app.video_automation.series takes them in.
+    """
+    if project.series_slug is None or project.shorts_line is not None:
+        return None
+    series = await session.scalar(
+        select(VideoDramaSeries)
+        .join(VideoDramaEpisode, VideoDramaEpisode.series_id == VideoDramaSeries.id)
+        .where(VideoDramaEpisode.slug == project.slug)
+        .with_for_update(of=VideoDramaSeries)
+    )
+    if series is None:
+        return None
+    episode = await session.scalar(
+        select(VideoDramaEpisode)
+        .where(VideoDramaEpisode.series_id == series.id, VideoDramaEpisode.slug == project.slug)
+        .with_for_update()
+    )
+    return None if episode is None else (episode, series)
+
+
+async def _skip_abandoned_episode(
+    session: AsyncSession, project: VideoProject, user: User, now: datetime
+) -> None:
+    """Skip the episode a dropped video was being made as (docs/videos/STORY.md §伺服器).
+
+    Nothing else will make it under this slug, and a started one would hold its place in
+    ``series_max_in_flight`` for ever. Every kind of series: the next episode of a long series
+    waits for the one before to be done or skipped, so it may start now, as it may after the
+    owner skips an episode on the series page. An episode already done stays done. When it was
+    the series' last open episode the series finishes, as ``skip_episode`` has it. The caller
+    commits.
+    """
+    # Imported here: app.video_automation.series imports this module.
+    from app.video_automation.series import EPISODE_OPEN, finish_if_complete
+
+    found = await _episode_of(session, project)
+    if found is None:
+        return
+    episode, series = found
+    if episode.status not in EPISODE_OPEN:
+        return
+    episode.status = "skipped"
+    episode.updated_at = now
+    episodes = await session.scalars(
+        select(VideoDramaEpisode).where(VideoDramaEpisode.series_id == series.id)
+    )
+    finish_if_complete(series, list(episodes), now)
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="video_series_episode_skipped",
+            target=f"video-series:{series.slug}",
+            metadata_json={"number": episode.number, "dropped_video": project.slug},
+        )
+    )
 
 
 async def _apply_locales(
@@ -860,19 +931,72 @@ async def _apply_locales(
     }
     if chosen == dict(project.locales or {}) and project.locales_decided_at is not None:
         return
-    now = datetime.now(UTC)
+    _record_locales(session, project, chosen, datetime.now(UTC), user)
+    await session.commit()
+
+
+def _record_locales(
+    session: AsyncSession,
+    project: VideoProject,
+    chosen: dict[str, Any],
+    now: datetime,
+    actor: User | None,
+    marks: dict[str, str] | None = None,
+) -> None:
+    """Store a language choice, note when it was first decided, and log it as
+    ``video_locales_set``: the owner's, or with no actor and ``marks`` saying so, the server's
+    (``_decide_story_locales``). The caller commits."""
     project.locales = chosen
     project.locales_decided_at = project.locales_decided_at or now
     project.updated_at = now
     session.add(
         AdminAuditLog(
-            actor_user_id=user.id,
+            actor_user_id=actor.id if actor is not None else None,
             action="video_locales_set",
             target=f"video_project:{project.id}",
-            metadata_json={"slug": project.slug, "locales": chosen},
+            metadata_json={"slug": project.slug, "locales": chosen, **(marks or {})},
         )
     )
-    await session.commit()
+
+
+async def _decide_story_locales(
+    session: AsyncSession, project: VideoProject, now: datetime
+) -> None:
+    """A brand story's languages, decided by the server when its video first reports
+    (docs/videos/STORY.md §伺服器).
+
+    A story is hands-off: nobody would choose its languages, and a video without a decision is
+    never ready to upload. The server writes what the language panel's "tick the defaults"
+    gives a drama, the settings' ``drama_caption_locales`` with titles, descriptions and
+    captions and no dub, as the same record the owner's save writes, with the server as its
+    author. Once only, and never over a decision; the owner may still change it on the panel.
+    A video of any other kind still waits for the owner. The caller commits.
+    """
+    if project.locales_decided_at is not None or project.dropped_at is not None:
+        return
+    if project.series_slug is None or project.shorts_line is not None:
+        return
+    if await video_series_kind(session, project.slug) != "story":
+        return
+    settings = await session.scalar(
+        select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
+    )
+    ticked = settings.drama_caption_locales if settings is not None else []
+    chosen: dict[str, Any] = {
+        locale: LocaleChoice(metadata=True, captions=True).model_dump()
+        for locale in DUB_LOCALES
+        if locale in ticked
+    }
+    # A project first seen in this report gets its id when it is written.
+    await session.flush()
+    _record_locales(
+        session,
+        project,
+        chosen,
+        now,
+        None,
+        {"decided_by": "server", "from": "drama_caption_locales"},
+    )
 
 
 async def retry_project(session: AsyncSession, slug: str, user: User) -> ProjectOut:
@@ -911,7 +1035,9 @@ async def set_locales(
     zh-CN to add and what of each. An empty choice is a decision too ("only Traditional
     Chinese"), and the first save of either kind is what lets the video go up. The worker makes
     only what was chosen, once the final cut is approved; a drama takes no dub yet. The choice is
-    the owner's alone: the pipeline's reports never touch it, and a dropped video takes none.
+    the owner's: the pipeline's reports never carry one, and a dropped video takes none. Only a
+    brand story, which runs without the owner, has the server decide from the settings when its
+    video first reports (``_decide_story_locales``); the owner may change that here too.
     """
     project = await _project(session, slug)
     _refuse_dropped(project)

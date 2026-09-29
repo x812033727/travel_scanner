@@ -550,12 +550,13 @@ export function UploadPackage({ slug, review, mp4Gone = false }: { slug: string;
 /**
  * The owner uploaded the final cut in Studio (private, nothing else filled in): the pasted address
  * and the optional publish time go to POST /admin/videos/{slug}/youtube, which records the id and
- * when it goes public (docs/videos/HANDS-OFF.md, the YouTube API section, step one).
+ * when it goes public (docs/videos/HANDS-OFF.md, the YouTube API section, step one). ``publishAt``
+ * fills the time in (a datetime-local value): a brand story's next free slot (admin-video-stories.tsx).
  */
-export function UploadedForm({ slug, onLinked }: { slug: string; onLinked: () => void }) {
+export function UploadedForm({ slug, onLinked, publishAt: suggested = "" }: { slug: string; onLinked: () => void; publishAt?: string }) {
   const t = useTranslations("admin.videoReviews");
   const [url, setUrl] = useState("");
-  const [publishAt, setPublishAt] = useState("");
+  const [publishAt, setPublishAt] = useState(suggested);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const id = youtubeVideoId(url);

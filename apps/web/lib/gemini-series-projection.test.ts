@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import base from "./guide-series.json";
 import { loadGeminiCatalogueContract, loadGeminiCurriculum } from "./gemini-series-docs.test-data";
-import { filterVisibleGeminiLessons, projectGeminiSeries, visibleGeminiHref, visibleGeminiMember, visibleGeminiNavigation, type GeminiCatalogue } from "./gemini-series-projection";
+import { filterVisibleGeminiLessons, projectGeminiSeries, publishedGeminiSeries, visibleGeminiHref, visibleGeminiMember, visibleGeminiNavigation, type GeminiCatalogue } from "./gemini-series-projection";
 
 const curriculum = loadGeminiCurriculum();
 const contract = loadGeminiCatalogueContract();
@@ -17,6 +19,18 @@ function full(): GeminiCatalogue {
 }
 
 describe("Gemini server projection contract", () => {
+  it("keeps the enabled web projection inside the API publication catalogue", () => {
+    // When the advanced source grows beyond 50, update the API catalogue before
+    // enabling it: the API's published set is the final link allowlist. Read at
+    // test runtime; the independently built Web image does not contain apps/api.
+    const path = resolve(import.meta.dirname, "../../api/app/guides/series_data/gemini.json");
+    const apiCatalogue = JSON.parse(readFileSync(path, "utf8")) as {
+      entries: { slug: string; number: number; group: string }[];
+    };
+    const enabled = projectGeminiSeries(base, true);
+    expect(enabled.articles.map(({ slug, number, group }) => ({ slug, number, group })))
+      .toEqual(apiCatalogue.entries.map(({ slug, number, group }) => ({ slug, number, group })));
+  });
   it("preserves 50 base lessons, eight groups and five routes while dropping every advanced URL", () => {
     const source = full();
     source.articles[49].related = [48, 51, 86];
@@ -95,6 +109,26 @@ describe("Gemini server projection contract", () => {
     }
     expect(visibleGeminiNavigation(projectGeminiSeries(full()), 50)?.next).toBeUndefined();
     expect(visibleGeminiNavigation(projectGeminiSeries(full(), true), 50)?.next?.number).toBe(51);
+  });
+
+  it("removes withdrawn lessons from the zh-TW directory, paths, commands and navigation", () => {
+    const source = projectGeminiSeries(base);
+    const withdrawn = source.articles[1];
+    const published = source.articles.filter(lesson => lesson.slug !== withdrawn.slug).map(lesson => ({
+      slug: lesson.slug, number: lesson.number, group: lesson.group,
+      title: `${lesson.title} (published)`, description: lesson.purpose, minutes: lesson.minutes,
+    }));
+    const visible = publishedGeminiSeries(source, published);
+    expect(visible.articles).toHaveLength(49);
+    expect(visible.articles[0].title).toContain("(published)");
+    expect(visibleGeminiHref(visible, withdrawn.slug)).toBeUndefined();
+    expect(visibleGeminiNavigation(visible, 1)?.next?.number).toBe(3);
+    expect(visible.paths.every(path => !path.articles.includes(withdrawn.number))).toBe(true);
+    expect(visible.commands.every(command => command.article !== withdrawn.number)).toBe(true);
+    expect(visible.articles.every(lesson => !lesson.prerequisites.includes(withdrawn.number)
+      && !lesson.related.includes(withdrawn.number))).toBe(true);
+    expect(publishedGeminiSeries(source, []).articles).toHaveLength(0);
+    expect(source.articles).toHaveLength(50);
   });
 
   it.each(["GEMINI.md", "/memory", "SKILL.md", "RAG", "Batch", "快取", "引用", "手機"])("finds the advanced keyword %s from visible metadata", query => {
