@@ -18,8 +18,8 @@ import { EXPLAINER_PRESET, illustrated, SLIDES_PRESET } from "../core/drama.mjs"
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
 import { articlePath, SITE } from "../core/metadata.mjs";
-import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT } from "../core/paths.mjs";
-import { eachLine, LINE_ID, spokenText } from "../core/schema.mjs";
+import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, UsageError } from "../core/paths.mjs";
+import { eachLine, LINE_ID, MAX_PAUSE_MS, spokenText } from "../core/schema.mjs";
 import { writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckBinding, scriptCheckMatches, scriptCheckUnbound } from "../core/script-check.mjs";
 import { LOCALE_PARTS, readLanguages, writeLanguages } from "../core/stages.mjs";
@@ -32,6 +32,7 @@ import { discussStep } from "./discuss.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
 import { advanceStory, fixStoryPrompts } from "./story.mjs";
 import { instructionsFor, parseAnswer, references } from "./prompts.mjs";
+import { registerLine, registerSummary } from "./register.mjs";
 import { rewriteProblems } from "./rewrite.mjs";
 import { advanceCompilation, startCompilation } from "./compilation.mjs";
 import { castFrom, episodeBrief, isExplainerOneOff, isOneOff, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
@@ -271,6 +272,10 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
     settled.look = { preset: SLIDES_PRESET, ...(video.look ?? {}) };
     if (!settled.music && settings.slides_music_track) settled.music = { track: settings.slides_music_track };
     if (!settled.sfx && settings.slides_sfx_set) settled.sfx = { set: settings.slides_sfx_set };
+  } else if (format !== "drama") {
+    // Plain slides: the writer is told the look rides on shots, so a look without any is dropped
+    // rather than left for lint to refuse.
+    delete settled.look;
   }
   // Music is the owner's switch for every format.
   if (drama.music_enabled === false) delete settled.music;
@@ -1486,6 +1491,105 @@ export class Automation {
     this.cleared(state, "listener");
     saveState(this.workdir(state.slug), state);
     return `${state.slug}: listener edit, ${(answer.edits ?? []).length} changes`;
+  }
+
+  /**
+   * `restyle --slug S` (docs/videos/ILLUSTRATED.md §說書式旁白): a video the worker started, not
+   * yet on YouTube, has its narration retold in the storytelling register without a new script.
+   * The listener's register pass (variant "register") answers line by line; a line that keeps
+   * every number, Latin word and dictionary term (rewrite.mjs) and a pause within the schema
+   * replaces the script's, the rest are refused with the reason; a script the accepted lines
+   * make fail lint goes back as it was. brief.md is not touched (the outline approval holds) and
+   * no line is added, dropped or moved (the translations' ids still match), but the wording is
+   * new: the fact-check runs once more, the narration is recorded again and the audio gate is
+   * reviewed anew, all by the worker's next rounds. Returns the line for the terminal.
+   */
+  async restyle(slug, { dryRun = false } = {}) {
+    const state = automatedVideos(this.workBase).find((each) => each.slug === slug);
+    if (!state) throw new UsageError(`${slug} was not started by the worker (no ${STATE_FILE} in its work directory); restyle works on the worker's videos`);
+    if (state.format === "drama") throw new UsageError(`${slug} is a drama: its narration is the screenplay's, the register is for slides videos`);
+    if (state.youtube_video_id || state.status === "done") throw new UsageError(`${slug} is already on YouTube; a restyle would make a different video`);
+    const dir = docDir(slug, this.ctx.root);
+    const file = path.join(dir, "video.json");
+    if (!existsSync(file)) throw new UsageError(`${slug} has no video.json yet; restyle retells a written script`);
+    const source = readFileSync(file, "utf8");
+    const video = JSON.parse(source);
+    const before = registerSummary(video);
+    if (dryRun) return `${slug}: ${registerLine(before)}; a restyle would send ${before.lines} lines to the listener's register pass, then fact-check, record and review the narration again`;
+    const lexicon = readJson(lexiconFile(this.ctx.root), emptyLexicon());
+    const lines = new Map();
+    const listed = [];
+    for (const scene of video.scenes ?? []) {
+      for (const line of scene.lines ?? []) {
+        lines.set(line.id, line);
+        listed.push({ id: line.id, scene: scene.id, ...(scene.chapter ? { chapter: scene.chapter } : {}), text: spokenText(line) });
+      }
+    }
+    const answer = await this.stage("listener", slug, { video, lines: listed, lexicon: Object.keys(lexicon.terms) }, 32_000, state.format, "register");
+    if (!Array.isArray(answer?.lines)) throw new AutomationError("the register pass answered without a lines array", { code: OUTPUT_INVALID });
+    const accepted = [];
+    const refused = [];
+    const seen = new Set();
+    for (const entry of answer.lines) {
+      const id = String(entry?.id ?? "");
+      const line = lines.get(id);
+      if (!line) {
+        refused.push(`${id || "?"}: not a line of this video`);
+        continue;
+      }
+      if (seen.has(id)) continue;
+      seen.add(id);
+      const was = spokenText(line);
+      const text = typeof entry.text === "string" ? entry.text.trim() : "";
+      if (!text) {
+        refused.push(`${id}: the retold line is empty`);
+        continue;
+      }
+      const pause = entry.pause_after_ms;
+      if (pause !== undefined && !(Number.isInteger(pause) && pause >= 0 && pause <= MAX_PAUSE_MS)) {
+        refused.push(`${id}: pause_after_ms must be an integer from 0 to ${MAX_PAUSE_MS}`);
+        continue;
+      }
+      if (text === was && (pause === undefined || pause === line.pause_after_ms)) continue;
+      const problems = rewriteProblems(was, text, { lexicon });
+      if (problems.length) {
+        refused.push(`${id}: ${problems.join("; ")}`);
+        continue;
+      }
+      accepted.push({ id, before: was, after: text, ...(pause !== undefined ? { pause_after_ms: pause } : {}) });
+    }
+    if (accepted.length) {
+      for (const { id, after, pause_after_ms } of accepted) {
+        const line = lines.get(id);
+        line.text = after;
+        // The retold line is what the voice says now; a spoken form written for the old text would fail lint.
+        delete line.say;
+        delete line.say_for;
+        if (pause_after_ms !== undefined) {
+          if (pause_after_ms > 0) line.pause_after_ms = pause_after_ms;
+          else delete line.pause_after_ms;
+        }
+      }
+      writeVideo(dir, video);
+      const errors = lintErrors(this.ctx, slug);
+      if (errors.length) {
+        writeFileSync(file, source);
+        throw new AutomationError(`lint refuses the retold script, so video.json is back as it was: ${errors.slice(0, 3).join("; ")}`, { code: OUTPUT_INVALID });
+      }
+    }
+    const workdir = this.workdir(slug);
+    mkdirSync(path.join(workdir, "review"), { recursive: true });
+    atomicWrite(path.join(workdir, "review", "restyle.json"), `${JSON.stringify({ restyled_at: this.ctx.now().toISOString(), accepted, refused, before, after: registerSummary(readJson(file)) }, null, 2)}\n`);
+    if (accepted.length) {
+      // The register pass was the listener's edit; the facts are checked once more, then the
+      // worker records the narration again and the audio gate is reviewed anew.
+      state.verified = false;
+      state.listener_done = true;
+      state.notes.push(`restyled on ${today(this.ctx)}: ${accepted.length} lines retold in the storytelling register${refused.length ? `, ${refused.length} refused (review/restyle.json)` : ""}`);
+      saveState(workdir, state);
+    }
+    const after = registerSummary(readJson(file));
+    return `${slug}: ${accepted.length} of ${listed.length} lines retold${refused.length ? `, ${refused.length} refused (review/restyle.json)` : ""}; now ${registerLine(after)}${accepted.length ? "; the worker fact-checks, records and reviews the narration again" : ""}`;
   }
 
   async narration(state) {

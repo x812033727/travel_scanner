@@ -1871,3 +1871,95 @@ test("illustrated slides walk the picture, storyboard and music steps between th
   assert.equal(status.next.id, "final video approved");
   assert.deepEqual(runs.filter((run) => /^(tts|keyframes|render|music|assemble|captions) /.test(run)).map((run) => run.split(" ")[0]), ["tts", "keyframes", "render", "music", "assemble", "captions"]);
 });
+
+test("restyle retells a worker's slides video in the storytelling register: guarded lines replace the script, the rest are refused, and the worker checks and records the narration again", async () => {
+  const { illustratedFixture } = await import("../core/fixtures/load.mjs");
+  const { LISTENER_REGISTER } = await import("./prompts.mjs");
+  const slug = "ranking-first";
+  const box = sandbox(slug, "illustrated");
+  const docFile = path.join(box.dir, "video.json");
+  writeFileSync(docFile, `${JSON.stringify({ ...illustratedFixture(), slug }, null, 2)}\n`);
+  mkdirSync(box.workdir, { recursive: true });
+  const stateFile = path.join(box.workdir, "auto.json");
+  const state = { slug, title: "第一名的秘密", format: "slides", status: "working", created_at: "2026-09-29T08:00:00Z", notes: [], verified: true, listener_done: true, retakes: 0, verify_rounds: 1 };
+  writeFileSync(stateFile, `${JSON.stringify(state)}\n`);
+  const answers = {
+    listener: () => ({
+      lines: [
+        // Retold and given the cliffhanger beat: accepted.
+        { id: "a3dk", text: "你桌上那份報告，第一名的模型會怎麼寫？", pause_after_ms: 1200 },
+        // A Latin word the line did not have: refused, the line keeps its text.
+        { id: "a5nm", text: "第一個數字，最快的 GPT 三秒就回答了。" },
+        // A pause outside the schema: refused.
+        { id: "a9rl", text: "一句話，先看工作，再看排行榜。", pause_after_ms: 9000 },
+        // Not a line of this video.
+        { id: "zzzz", text: "多出來的一句。" },
+        // Unchanged: nothing to do.
+        { id: "b2wr", text: "把你每天的工作留言告訴我，下一支我們一起挑。" },
+      ],
+    }),
+  };
+  const site = fakeSite({ answers, settings: { stage_instructions: { listener: "先講結論" } } });
+  const clock = { now: Date.parse("2026-09-30T09:00:00Z") };
+  const { ctx, out } = context(box, site.fetchImpl, clock);
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+
+  assert.match(await automation.restyle(slug, { dryRun: true }), /^ranking-first: 11 lines, 1 「你以為」 turn, 0 of 3 chapters closing on a question, 2 pause beats; a restyle would send 11 lines to the listener's register pass/);
+  assert.equal(site.calls.run.length, 0, "the dry run asks the model nothing");
+
+  const line = await automation.restyle(slug);
+  assert.match(line, /^ranking-first: 1 of 11 lines retold, 3 refused \(review\/restyle\.json\); now 11 lines, 1 「你以為」 turn, 0 of 3 chapters closing on a question, 3 pause beats; the worker fact-checks, records and reviews the narration again$/);
+  const call = site.calls.run[0];
+  assert.equal(call.stage, "listener");
+  assert.equal(call.variant, "register");
+  assert.equal(call.format, "slides");
+  assert.ok(call.instructions.startsWith(LISTENER_REGISTER), "the register pass's own text");
+  assert.match(call.instructions, /## The owner's standing instructions\n[\s\S]*先講結論$/, "the listener's standing instructions follow it");
+  assert.equal(call.payload.lines.length, 11);
+  assert.deepEqual(call.payload.lines[0], { id: "a1hk", scene: "hook", chapter: "第一名的秘密", text: "你以為排行榜第一名的模型，就是最適合你的那一個。" });
+  assert.deepEqual(call.payload.lines[1], { id: "a2pd", scene: "podium", text: "其實排行榜考的是一份考卷，而你每天做的，是另一份。" });
+  assert.ok(Array.isArray(call.payload.lexicon));
+  const video = readJson(docFile);
+  const lines = new Map([...eachLine(video)].map(({ line }) => [line.id, line]));
+  assert.equal(lines.get("a3dk").text, "你桌上那份報告，第一名的模型會怎麼寫？");
+  assert.equal(lines.get("a3dk").pause_after_ms, 1200);
+  assert.equal(lines.get("a5nm").text, "第一個數字，最快的模型三秒就回答了。", "a line that gained a Latin word keeps its text");
+  assert.equal(lines.get("a9rl").pause_after_ms, undefined);
+  assert.equal(video.scenes.length, 9, "no scene or line added or dropped");
+  const record = readJson(path.join(box.workdir, "review", "restyle.json"));
+  assert.deepEqual(record.accepted, [{ id: "a3dk", before: "想像你桌上那份報告，第一名的模型會怎麼寫它？", after: "你桌上那份報告，第一名的模型會怎麼寫？", pause_after_ms: 1200 }]);
+  assert.deepEqual(record.refused.map((entry) => entry.split(":")[0]), ["a5nm", "a9rl", "zzzz"]);
+  assert.match(record.refused[0], /word "GPT" was added/);
+  assert.match(record.refused[1], /pause_after_ms must be an integer from 0 to 5000/);
+  assert.equal(record.after.pauses, 3);
+  const saved = readJson(stateFile);
+  assert.equal(saved.verified, false, "the wording is new: the facts are checked once more");
+  assert.equal(saved.listener_done, true, "the register pass was the listener's edit");
+  assert.match(saved.notes.at(-1), /^restyled on 2026-09-30: 1 lines retold in the storytelling register, 3 refused/);
+  assert.match(out.stdout, /listener: claude-sonnet-5/);
+
+  // Videos the register is not for.
+  writeFileSync(stateFile, `${JSON.stringify({ ...state, format: "drama" })}\n`);
+  await assert.rejects(automation.restyle(slug), /is a drama/);
+  writeFileSync(stateFile, `${JSON.stringify({ ...state, youtube_video_id: "dQw4w9WgXcQ" })}\n`);
+  await assert.rejects(automation.restyle(slug), /already on YouTube/);
+  await assert.rejects(automation.restyle("never-started"), /was not started by the worker/);
+});
+
+test("restyle from the command line: --dry-run measures the script without a token, and --slug is required", async () => {
+  const { illustratedFixture } = await import("../core/fixtures/load.mjs");
+  const slug = "ranking-first";
+  const box = sandbox(slug, "illustrated");
+  writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify({ ...illustratedFixture(), slug }, null, 2)}\n`);
+  mkdirSync(box.workdir, { recursive: true });
+  writeFileSync(path.join(box.workdir, "auto.json"), `${JSON.stringify({ slug, title: "t", format: "slides", status: "working", created_at: "2026-09-29T08:00:00Z", notes: [] })}\n`);
+  const out = { stdout: "", stderr: "" };
+  const ctx = { root: box.root, env: { VIDEO_WORKDIR: box.work }, home: box.base, stdout: { write: (text) => (out.stdout += text) }, stderr: { write: (text) => (out.stderr += text) }, now: () => new Date("2026-09-30T09:00:00Z") };
+  assert.equal(await main(["restyle", "--slug", slug, "--dry-run"], ctx), EXIT.ok);
+  assert.match(out.stdout, /ranking-first: 11 lines, 1 「你以為」 turn/);
+  assert.equal(await main(["restyle"], ctx), EXIT.usage);
+  assert.match(out.stderr, /restyle needs --slug/);
+  assert.equal(await main(["restyle", "--slug", "never-started", "--dry-run"], ctx), EXIT.usage);
+  assert.match(out.stderr, /was not started by the worker/);
+});

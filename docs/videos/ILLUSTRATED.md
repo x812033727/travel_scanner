@@ -86,7 +86,7 @@ lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋�
 
 ## 說書式旁白（票 `2026-09-29-video-storytelling-prompts`）
 
-第一句是反常識的說法或觀眾的問題、20 秒內落鉤；第一章至少一個「你以為…其實…」；每章最後一句是下一章要回答的問題；每章至少一個具體場景或比喻；長短句交替；`pause_after_ms` 節拍（冷開場後 900、「其實」前 600、章末懸念後 1200）；不寫「接下來我們來看」。`voice.style` 範例：「台灣國語說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，『你以為』放慢放輕，『其實』亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。」站主在 `/admin/videos` 設定分頁貼上就生效（`settle()` 抄進每支新影片）。
+第一句是反常識的說法或觀眾的問題、20 秒內落鉤；第一章至少一個「你以為…其實…」；每章最後一句是下一章要回答的問題；每章至少一個具體場景或比喻；長短句交替；`pause_after_ms` 節拍（冷開場後 900、「其實」前 600、章末懸念後 1200）；不寫「接下來我們來看」。`voice.style` 範例：「台灣國語說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，『你以為』放慢放輕，『其實』亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。」站主在 `/admin/videos` 設定分頁貼上就生效（`settle()` 抄進每支新影片）。規則的原文是 `tools/video/automation/register.mjs` 的 `REGISTER_RULES`，工具附在企劃、撰稿、聽稿三個階段的提示詞後（漫劇與原來如此事務所的提示詞不變）。已經寫好的影片用 `node tools/video/cli.mjs restyle --slug <slug>` 改口吻：聽稿模型的 `register` 變體逐句重講，數字、拉丁字詞、字典詞變了的句子退回（`rewrite.mjs`）、lint 不過就整份還原，`brief.md` 與 line id 不動（大綱核准與翻譯的 id 都還有效），改完 `verified=false`，工人下一輪重新查核、重錄、重審旁白；`--dry-run` 只量現況（幾個「你以為」、幾章以問題收尾、幾個節拍），結果寫在 `review/restyle.json`。
 
 ## 分期與票
 
@@ -99,7 +99,7 @@ lint 在估計時間軸上把這些當**警告**（撰稿不會因估計被擋�
 | 4 QA、揭露、文件 | `2026-09-29-video-illustrated-slides-qa-docs` | 做完 |
 | 5 伺服器開關、Flash、自動核准分鏡 | `2026-09-29-video-slides-media-api` | 開著 |
 | 6 工人 | `2026-09-29-video-illustrated-slides-worker` | 開著 |
-| 7 說書式提示詞、`restyle` | `2026-09-29-video-storytelling-prompts` | 開著 |
+| 7 說書式提示詞、`restyle` | `2026-09-29-video-storytelling-prompts` | 已落地 |
 | 8 Shorts | `2026-09-29-video-shorts-motion-music` | 開著 |
 | 9 試片〈Jev〉 | `2026-09-29-video-pilot-jev-decision-model` | 開著 |
 
