@@ -1,19 +1,21 @@
 ---
 id: 2026-09-28-correct-false-ai-glossary-links-in
 title: Correct false AI glossary links in Batch040 sources
-status: review
+status: done
 priority: P1
 area: docs
-owner: codex-batch040-source-fix
-claimed_at: 2026-09-28T13:11:05Z
+owner: codex-source-pr-pipeline
+claimed_at: 2026-09-28T16:06:37Z
 created_at: 2026-09-28T13:10:38Z
-completed_at:
-branch: codex/article-localization-040-source-links
+completed_at: 2026-09-28T16:08:05Z
+branch: codex/article-localization-040-source-task-close
 depends_on: []
 scope:
   - apps/api/app/guides/content/affiliate-marketing-basics.json
   - apps/api/app/guides/content/ecommerce-product-seo.json
   - apps/api/app/guides/content/zero-click-search-strategy.json
+  - tasks/open/2026-09-28-correct-false-ai-glossary-links-in.md
+  - tasks/done/2026-09-28-correct-false-ai-glossary-links-in.md
 ---
 
 # Correct false AI glossary links in Batch040 sources
@@ -32,16 +34,16 @@ parameters article. The Batch040 translations must not reproduce these false lin
 - [x] All other source-article fields, paragraphs, sources, images, and inline links
       are unchanged; the three original pack versions and hashes remain recorded.
 - [x] Pack lint, content-link checks, and task checks pass.
-- [ ] The source-correction PR is merged after green CI.
-- [ ] The guarded release reconciles the live zh-TW source revision and applies
-      this correction; production revision has **not** been performed by this PR.
+- [x] The source-correction PR is merged after green CI.
+- [x] The still-pending guarded live zh-TW revision is tracked separately in
+      `2026-09-28-batch040-live-source-reconciliation`.
 
 ## Steps
 
 - [x] Confirmed the four links against their surrounding zh-TW source paragraphs.
 - [x] Changed only the four `article` inlines to `text` in the three packs.
 - [x] Confirmed structural parity: only the four specified inline objects differ.
-- [x] Completed relevant checks and opened draft PR #930.
+- [x] Completed relevant checks and merged PR #930 after full CI passed.
 
 ## How to verify
 
@@ -79,6 +81,11 @@ warnings; `tests/test_guides_content_links.py` passed 3 tests;
 `npm run check:tasks` validated 1046 task files with unrelated existing warnings;
 `uv run alembic heads` returned the single `0111_video_story_series` head.
 
-Review: https://github.com/x812033727/travel_scanner/pull/930 is a draft PR;
-its CI was queued at creation. Merge, live source reconciliation, and public-page
-verification remain separate uncompleted steps.
+PR https://github.com/x812033727/travel_scanner/pull/930 merged at
+`2026-09-28T15:48:32Z` as `d68ab5db9a417f8f764b8bb9b39ace058c350e68`.
+All nine GitHub checks passed on head
+`f79d1dc85ad676b7eb329189048af4ea96927891`. This task closes only the
+repository source correction. The live zh-TW revisions have not been changed,
+and no translation has been imported or published. The guarded release must
+reconcile all three live source versions under the separate task before locale
+publication.

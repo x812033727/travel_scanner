@@ -139,7 +139,69 @@ def test_codex_catalogues_select_exact_locale_and_preserve_stable_routes():
             for entry in item.entries
             if entry.slug == "codex-skills"
         )
-    assert catalogue_for_article("claude-code-tutorials", "en") is None
+
+
+def test_claude_and_gemini_catalogues_use_locale_specific_groups_paths_and_search():
+    from app.guides.series import catalogue_for_article
+
+    for slug, hub, count, groups, paths in (
+        ("claude-code", "claude-code-tutorials", 96, 16, 12),
+        ("gemini", "gemini-guide", 50, 8, 5),
+    ):
+        editions = {item.locale: item for item in catalogues() if item.slug == slug}
+        assert set(editions) == {"zh-TW", "zh-CN", "en", "ja", "ko"}
+        source = editions["zh-TW"]
+        for locale, item in editions.items():
+            assert len(item.entries) == count
+            assert len(item.groups) == groups
+            assert len(item.paths) == paths
+            assert [entry.slug for entry in item.entries] == [
+                entry.slug for entry in source.entries
+            ]
+            assert catalogue_for_article(hub, locale) is item
+            assert catalogue_for_article(item.entries[0].slug, locale) is item
+        assert editions["en"].groups[0].title != source.groups[0].title
+        assert editions["ja"].paths[0].title != source.paths[0].title
+    claude_en = next(
+        item for item in catalogues() if item.slug == "claude-code" and item.locale == "en"
+    )
+    assert any("project conventions" in entry.aliases for entry in claude_en.entries)
+
+
+async def test_claude_and_gemini_navigation_only_names_published_locale_articles(monkeypatch):
+    from app.guides import series
+    from app.guides.schemas import ArticleReference
+
+    session = cast(AsyncSession, None)
+    for slug in ("claude-code", "gemini"):
+        catalogue = next(item for item in catalogues() if item.slug == slug and item.locale == "en")
+        first, second = catalogue.entries[:2]
+        public = {catalogue.hub, first.slug, second.slug}
+
+        async def documents(_session, locale, targets, _public=public):
+            return {
+                target: (
+                    ArticleReference(kind="life", slug=target, title=f"{locale} {target}"),
+                    GuideDocument.model_validate(guides.document(title=f"{locale} {target}")),
+                )
+                for kind, target in targets
+                if kind == "life" and target in _public
+            }
+
+        monkeypatch.setattr(series, "published_documents", documents)
+        directory = await series.public_series(session, slug, "en")
+        assert directory is not None
+        assert [entry.slug for entry in directory.entries] == [first.slug, second.slug]
+        assert all(entry.title.startswith("en ") for entry in directory.entries)
+        assert directory.groups[0].title == catalogue.groups[0].title
+        navigation = await series.article_navigation(session, "life", first.slug, "en")
+        assert navigation is not None and navigation.next is not None
+        assert navigation.next.slug == second.slug
+        public.remove(second.slug)
+        navigation = await series.article_navigation(session, "life", first.slug, "en")
+        assert navigation is not None and navigation.next is None
+        public.remove(catalogue.hub)
+        assert await series.public_series(session, slug, "en") is None
 
 
 async def test_codex_navigation_uses_live_locale_withdrawal_and_unit_boundaries(monkeypatch):
