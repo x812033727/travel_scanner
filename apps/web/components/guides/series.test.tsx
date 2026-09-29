@@ -4,16 +4,35 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { cleanup } from "@testing-library/react";
 import { GeminiSeriesIndex } from "./series-index";
+import { SeriesHub } from "./series-hub";
 import { SeriesNavigation } from "./gemini-series-navigation";
 import { GuideCodeBlock } from "@/components/guide-code-block";
 import { fixtureSeries } from "@/components/gemini-series/fixture.test-data";
 const geminiSeries = fixtureSeries();
 import { ContentBlocks } from "@/components/content-blocks";
 import { siteUrl } from "@/lib/seo";
+import type { GuideSeries } from "@/lib/guide-series";
+import { seriesCopy } from "@/lib/guide-series-copy";
 
 afterEach(cleanup);
 
 describe("Gemini learning series", () => {
+  it("gives the API Gemini directory its published name and locale-specific search label", () => {
+    const series: GuideSeries = {
+      slug: "gemini", locale: "en",
+      hub: { kind: "life", slug: "gemini-guide", title: "Gemini learning centre" },
+      groups: [{ id: "A", title: "Getting started" }], paths: [],
+      entries: [{ kind: "life", slug: "gemini-beginner-guide", title: "Start with Gemini",
+        number: 1, group: "A", level: "beginner", platforms: ["all"], aliases: [],
+        description: "Choose a workflow.", minutes: 5 }],
+    };
+    const html = renderToStaticMarkup(<SeriesHub series={series} />);
+    expect(html).toContain('aria-label="Gemini learning centre"');
+    expect(html).toContain("Search Gemini tutorials, Gems, CLI or API");
+    expect(html).toContain("All platforms");
+    expect(html).not.toContain("Claude Code tutorials");
+    expect(seriesCopy("zh-CN", "gemini").beginner).toBe("入门");
+  });
   it("server-renders all 50 lessons without JavaScript", () => {
     const html = renderToStaticMarkup(<GeminiSeriesIndex series={geminiSeries} />);
     for (const article of geminiSeries.articles) expect(html).toContain(`/zh-TW/life/${article.slug}`);
