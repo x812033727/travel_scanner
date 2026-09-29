@@ -10,9 +10,9 @@ export default {
   },
   "setting": {
     "world": {
-      "place": "虛構霧港市東岸綜合園區。醫院在北、轉運中心在南，相距 250 公尺；園區控制站位於醫院西側 400 公尺；排水設施在東側 700 公尺。四點在約 1.2 公里內。北側服務通道是共用安全幹線，中途南支接轉運中心高處，東端經安全集合點接排水觀察廊；南支與東側廊各自勘查，不能以其中一段可通行就宣稱全線安全。",
+      "place": "虛構霧港市東岸綜合園區。醫院在北、轉運中心在南，相距 250 公尺；園區控制站位於醫院西側 400 公尺；排水設施在東側 700 公尺。四點在約 1.2 公里內。北側服務通道是共用安全幹線，中途分成兩條支路：南支接轉運中心高處，東支經安全集合點接排水觀察廊；南支與東支各自勘查，不能以其中一段可通行就宣稱全線安全。新版圖漏畫的就是這條北側服務通道；「受控觀察廊」專指排水設施內的廊。",
       "period": "當代一場暴雨夜，21:10 至翌日 05:45；第 39 集是六個月後調查結果，第 40 集是一年後。成片以交叉剪輯壓縮等待，不把數公里移動拍成瞬移。",
-      "conflict_engine": "暴雨引起城市供電中斷與園區淹水；供應商為保商譽，把部分本地安全回報與舊設施資料排除在中央監控之外，使螢幕持續假正常。林既明懂被刪掉的舊系統，但有過失紀錄、沒有現場操作權，只能讓每一項主張接受專業人員核對。對手越遮掩，救援越需繞過錯誤資訊。",
+      "conflict_engine": "暴雨引起城市供電中斷與園區淹水；合序系統公司為保商譽，把部分本地安全回報與舊設施資料排除在中央監控之外，使螢幕持續假正常。林既明懂被刪掉的舊系統，但有過失紀錄、沒有現場操作權，只能讓每一項主張接受專業人員核對。對手越遮掩，救援越需繞過錯誤資訊。",
       "factions": [
         {
           "name": "園區現場聯合救援",
@@ -22,29 +22,29 @@ export default {
         {
           "name": "合序系統公司",
           "want": "保住合約、總部設備與七年前事故的既有說法。",
-          "secret": "公司將有條件驗收篡成完成驗收、抹去後續警示，又造出林既明關掉安全功能與收受回扣的假紀錄。"
+          "secret": "公司將有條件驗收篡成完成驗收、抹去後續警示，又造出林既明關掉安全功能與收受零件供應商岱恆機電回扣的假紀錄。"
         },
         {
           "name": "被辭退的維修班",
           "want": "救回仍在設備裡的人，但不想再替公司扛責。",
-          "secret": "仍保存紙本班誌、零件舊標與被打回的警示，沒有人單獨掌握全部證據。"
+          "secret": "仍保存紙本維修班誌、零件舊標與被退回的警示，沒有人單獨掌握全部證據。"
         }
       ],
-      "visual_language": "電影感 3D；雨夜青灰、外送橘、醫護冷白與救援琥珀燈分工明確。控制畫面只保留正常、待確認、異常三種可讀狀態，不堆不可辨識數碼。白天不是全城瞬間亮起，而是關鍵區域依次恢復。",
+      "visual_language": "電影感 3D；雨夜青灰、外送橘、醫護冷白與救援琥珀燈分工明確。控制畫面只保留正常、待確認、異常三種可讀狀態，不堆看不懂的數字。白天不是全城瞬間亮起，而是關鍵區域依次恢復。",
       "narrator": "節制的成年台灣國語男聲，擬定 Charon。只壓縮時間和空間，緊張感主要來自現場回報與角色選擇；不旁白教人操作電梯、電路或救援器材。"
     },
     "rules": [
       "林既明曾任系統整合工程師，現靠外送與合法小型維修生活；他不持有當夜園區系統管理權，也不是消防指揮員。救援隊核對他的資料後可邀為技術顧問，每項進入、停用、復電、撤離均由現場授權人員決定並執行。",
-      "七年前他在兩項高風險測試尚未完成時簽下有條件驗收，相信公司會先整改再投入使用，且未即時向外部監管通報壓測異常。這兩項是真實過失，後續承認並接受重新釐清責任。",
-      "公司後來刪掉附件中的未驗項目，把簽字拼成全部完成，再偽造他停用安全回報及收取供應商款項的紀錄；後兩項屬栽贓。第 39 集分別交代，不讓真簽名、假內容一起被洗掉。",
+      "七年前他在兩項高風險測試尚未完成時簽下有條件驗收，相信公司會先整改再投入使用，且未即時向外部監管通報壓測異常。這兩項是真實過失，後續承認並接受重新釐清責任。七年前事故（虛構）：園區啟用後的第一場豪雨，東側排水設施舊旁路節點的本地警示沒有響，觀察廊舊入口進水，賴良帶的一名維修班學徒受困近兩小時、腿部骨折後由消防救出，無人死亡。合序把事故全歸給林既明並開除他，他的帳號同時停用；維修班之後也被辭退。",
+      "公司後來刪掉附件中的未驗項目，把簽字拼成全部完成，再偽造他停用安全回報及收取零件供應商岱恆機電（虛構）款項的紀錄；後兩項屬栽贓，付款紀錄由合序製作，不是岱恆真的付過錢。第 39 集分別交代，不讓真簽名、假內容一起被洗掉。",
       "暴雨與城市電網損害是停電起因；反派不是遠端按一鈕讓整城斷電。他的可歸責行為是隱瞞失效、停用部分本地警示、提供虛假狀態並延誤資源分配。",
       "醫院急救設備有獨立備援，並非共用城市主電源才可運作。園區進水逐步影響備援設備散熱與安全冗餘，值班工程員根據現場狀態報可用時間；第 27 集倒數是安全轉移時間，不是精確預言所有病患同秒死亡。",
       "中央監控的正常僅來自未更新的回報；現場讀值、人工確認與紙本紀錄優先交由專業值班人員交叉核對。主角不能憑直覺把任何設備判成安全，也不能從截圖直接推定刑責。",
-      "林安安原在南側轉運中心 B1 等車，第 9 集位置確認為高處的值班辦公室，第 17 集帶孩子移到同層較安全平臺。她只能沿工作人員確認的路線等援，不自行闖水或去配電室。",
+      "林安安原在南側轉運中心 B1 等車，第 9 集位置確認為高處的值班辦公室，第 17 集帶孩子移到同層較安全平台。她只能沿工作人員確認的路線等援，不自行闖水或去配電室。",
       "醫院至轉運中心的地面路線受積水阻斷，救援組需由已確認安全的北側服務通道接近；林既明不能離開醫院就立刻出現在女兒身邊。通訊位置、步行與車程在各集狀態列交代。",
       "第 30 集需要有人進入受淹設施辨識舊部件，但必須先由授權人員隔離危險、排水與檢測，並由專業救援組帶隊走受控觀察廊。林既明第 37 集的關鍵工作是核對銘牌與原圖、回報值班工程員，由工程員執行控制；他不涉水碰帶電設備。",
       "第 37 集受傷來自已完成關鍵回報後的次生碎片與濕滑撤離，不是拿肉身短接或單人帶電維修。救援員立即帶他撤出，表明每個人也會需要被救。",
-      "證據保存遵循最小接觸、原件保管、製作副本與交接記錄。第 24、35、36 集能形成調查線索，不在雨夜直接宣判宋振南有罪；第 39 集以時間跳接交代正式調查與追責進度。",
+      "證據保存遵循最小接觸、原件保管、製作副本與交接紀錄。第 24、35、36 集能形成調查線索，不在雨夜直接宣判宋振南有罪；第 39 集以時間跳接交代正式調查與追責進度。",
       "所有設施名稱與流程虛構。畫面只拍結果確認、通訊、圖紙定位與由專業人員執行的遠景，不提供真實配電、電梯脫困、抽排或火場進入的步驟與參數。"
     ],
     "characters": [
@@ -53,7 +53,7 @@ export default {
         "name": "林既明",
         "role": "主角；前系統整合工程師、外送與維修工作者",
         "age": 39,
-        "appearance": "Taiwanese man, 39, lean strong frame, weathered rectangular face, short black hair with slight grey at temples, stubble, faded orange unbranded delivery jacket over a charcoal shirt, navy work trousers, black rain boots, scratched white bike helmet, steel pencil clipped inside left pocket. Keep the same rain-worn costume; add approved safety vest and helmet only during supervised site entry.",
+        "appearance": "Taiwanese man, 39, lean strong frame, weathered rectangular face, short black hair with slight grey at temples, stubble, faded orange unbranded delivery jacket over a charcoal shirt, navy work trousers, black rain boots, steel pencil clipped inside left pocket.",
         "personality": "熟悉現場、寡言、怕再被抓到錯處，因此過去習慣把該說的話吞回去。",
         "want": "讓病患與女兒活著出來，並把真實責任說清楚。",
         "fear": "自己一開口就再次害人；女兒只記得他最失敗的樣子。",
@@ -61,8 +61,8 @@ export default {
         "speech": "先說能核對的事：「先確認裡面的人。」「這項我不能替你簽。」",
         "voice": {
           "provider": "gemini",
-          "name": "Charon",
-          "style": "台灣國語；中低音、疲憊但清楚，少用高聲宣言；擬定 casting，未試聽，開拍前核對主機聲音池。"
+          "name": "Iapetus",
+          "style": "台灣國語；中低音、疲憊但清楚，少用高聲宣言；不與旁白（Charon）或同場男角共用聲音；擬定 casting，未試聽，開拍前核對主機聲音池。"
         },
         "relationships": [
           {
@@ -84,7 +84,7 @@ export default {
         "name": "林安安",
         "role": "女兒；轉運中心受困者",
         "age": 16,
-        "appearance": "Taiwanese girl, 16, slim build, chin-length black bob with a small blue hair clip, oversized pale green rain jacket over a cream school shirt, dark school trousers, white sneakers, yellow canvas tote with a hand-stitched lamp patch. Natural teenage styling, no glamour makeup; keep clothing consistent as it becomes damp.",
+        "appearance": "Taiwanese girl, 16, slim build, chin-length black bob with a small blue hair clip, cream school shirt, dark school trousers, white sneakers, yellow canvas tote with a hand-stitched lamp patch. Natural teenage styling, no glamour makeup.",
         "personality": "直接、有責任感，討厭父親總說沒事。",
         "want": "活著離開，也不丟下比自己更怕的孩子。",
         "fear": "父親又失聯，自己只能假裝不需要他。",
@@ -111,11 +111,11 @@ export default {
         "name": "鄭茵",
         "role": "園區調度員；主角舊同事",
         "age": 42,
-        "appearance": "Taiwanese woman, 42, square glasses, straight black hair in a compact bun, dark blue dispatch vest over a grey polo, black utility trousers, wired headset with a yellow tape label, silver watch. Upright posture, precise movements, always at an identified dispatch position unless evacuation is shown.",
+        "appearance": "Taiwanese woman, 42, square glasses, straight black hair in a compact bun, dark blue dispatch vest over a grey polo, black utility trousers, wired headset with a yellow tape label, silver watch. Upright posture, precise movements.",
         "personality": "冷靜、按時間記錄，不把感情當可信度。",
         "want": "讓每個現場都能被聽見。",
         "fear": "再度用一個漂亮總表掩蓋未確認的人。",
-        "secret": "儲存當年被退回的異常通報影本，也記得主角曾遲報。",
+        "secret": "保存當年被退回的異常通報影本，也記得主角曾遲報。",
         "speech": "先複誦位置、狀態，再派下一步；不說全城已安全。",
         "voice": {
           "provider": "gemini",
@@ -165,7 +165,7 @@ export default {
         "name": "宋振南",
         "role": "合序系統公司負責人；對手",
         "age": 48,
-        "appearance": "Taiwanese man, 48, broad angular face, neatly combed black hair, dark tailored coat over an open-collar white shirt, polished black shoes, black umbrella, silver tie clip kept in a coat pocket, expensive-looking but unbranded watch. Dry and orderly at first, visibly disordered only near the end.",
+        "appearance": "Taiwanese man, 48, broad angular face, neatly combed black hair, dark tailored coat over an open-collar white shirt, polished black shoes, silver tie clip kept in a coat pocket, expensive-looking but unbranded watch. Dry, neatly groomed and composed.",
         "personality": "擅長把資產與責任包裝成秩序，會根據證據變換說詞。",
         "want": "保住合約和既有事故結論。",
         "fear": "原件與現場回報交叉後失去控制。",
@@ -219,16 +219,16 @@ export default {
         "name": "賴良",
         "role": "老工頭；前維修班領班",
         "age": 58,
-        "appearance": "Taiwanese man, 58, stocky build, short salt-and-pepper hair, thick brows, faded olive work coat, dark trousers, brown safety boots, old yellow hard hat with a narrow white stripe, folded paper notebook in a clear waterproof sleeve. Slight limp visible but stable; no acrobatic movements.",
+        "appearance": "Taiwanese man, 58, stocky build, short salt-and-pepper hair, thick brows, faded olive work coat, dark trousers, brown safety boots. Slight limp visible but stable; no acrobatic movements.",
         "personality": "嘴硬、工序仔細，七年前事故後不願再回現場。",
         "want": "保住同伴，也讓經驗不再只被用來背責。",
         "fear": "再看見一個年輕人為趕工受傷。",
-        "secret": "當年的班誌保留了主角未完成測試與公司後續改動的不同時間。",
-        "speech": "講物件和日期，不把情緒全部說破。",
+        "secret": "當年的維修班誌保留了主角未完成測試與公司後續改動的不同時間。",
+        "speech": "講零件、編號和日期，不把情緒全部說破。",
         "voice": {
           "provider": "gemini",
-          "name": "Charon",
-          "style": "台灣國語；年長沙啞、比主角慢半拍，試聽需確認兩人可分辨；擬定 casting，未試聽，開拍前核對主機聲音池。"
+          "name": "Algenib",
+          "style": "台灣國語；年長沙啞、比主角慢半拍，與主角（Iapetus）、旁白（Charon）分開；擬定 casting，未試聽，開拍前核對主機聲音池。"
         },
         "relationships": [
           {
@@ -292,7 +292,7 @@ export default {
       {
         "id": "hospital-lobby",
         "name": "醫院大廳與電梯外",
-        "description": "地面入口、外送交接臺、電梯對講與警戒線；主角全程站門外，專業隊員才作內部救援。"
+        "description": "地面入口、外送交接台、電梯對講與警戒線；主角全程站門外，專業隊員才作內部救援。"
       },
       {
         "id": "hospital-support",
@@ -307,17 +307,17 @@ export default {
       {
         "id": "control",
         "name": "園區控制站",
-        "description": "中央大螢幕與離線班誌櫃，距醫院 400 公尺，可經確認道路車運約十分鐘。"
+        "description": "中央大螢幕與控制席，同棟設紙本紀錄間與原件櫃；距醫院 400 公尺，可經確認道路車運約十分鐘。"
       },
       {
         "id": "transfer",
         "name": "轉運中心 B1 高處值班區",
-        "description": "安安與朵朵先在值班辦公室，後到同層安全平臺；水線可見但人物不下水。"
+        "description": "安安與朵朵先在值班辦公室，後到同層安全平台；水線可見但人物不下水。"
       },
       {
         "id": "service-route",
         "name": "已確認的北側服務通道",
-        "description": "從醫院後側通往東側安全集合點的共用幹線，中途南支接轉運中心高處，東端接排水觀察廊。救援員分段建立照明與中繼；南支救女孩，東段接回主角，兩處不互換。"
+        "description": "從醫院後側出發的共用幹線，中途分成兩條支路：南支接轉運中心高處，東支經東側安全集合點接排水觀察廊。救援員分段建立照明與中繼；南支救女孩，東支接回主角，兩處不互換。"
       },
       {
         "id": "pump-gallery",
@@ -327,7 +327,7 @@ export default {
       {
         "id": "records",
         "name": "控制站紙本紀錄間",
-        "description": "可封存的班誌、附件、原始日誌儲存盒；保管與交接拍得清楚。"
+        "description": "可封存的值班班誌、附件原件盒與離線日誌盒；保管與交接拍得清楚。"
       },
       {
         "id": "workshop",
@@ -343,8 +343,8 @@ export default {
     "mysteries": [
       {
         "id": "m01",
-        "question": "舊圖為何比新圖多一條設施？",
-        "answer": "更新時省略高處觀察廊與旁路節點，新標籤又沿用錯誤對照；林既明與老工頭核對實物後，提供正確位置讓當值工程員完成處置。",
+        "question": "舊圖為何比新圖多一條北側服務通道？",
+        "answer": "更新時省略北側服務通道與東側的舊旁路節點，新標籤又沿用錯誤對照；林既明與老工頭核對實物後，提供正確位置讓當值工程員完成處置。",
         "planted": 4,
         "advanced": [
           12,
@@ -357,7 +357,7 @@ export default {
       {
         "id": "m02",
         "question": "曾有的救援警示為何沒有出現？",
-        "answer": "供應商批准停用部分本地安全回報以減少異常曝光，現場紀錄與停用單證實；不能歸咎主角當夜無權限的帳號。",
+        "answer": "合序系統公司批准停用部分本地安全回報以減少異常曝光，現場紀錄與停用單證實；不能歸咎主角當夜無權限的帳號。",
         "planted": 3,
         "advanced": [
           7,
@@ -386,7 +386,7 @@ export default {
       {
         "id": "m04",
         "question": "女兒在哪裡，父親能否把她交給別人救？",
-        "answer": "安安在 250 公尺外轉運中心高處陪孩子等待，地面阻斷不能直達；林既明坦白資訊，由陳勳指揮專業隊伍從北側通道救出。",
+        "answer": "安安在 250 公尺外轉運中心高處陪孩子等待，地面阻斷不能直達；林既明坦白資訊，由陳勳指揮南支救援組從北側服務通道救出。",
         "planted": 1,
         "advanced": [
           3,
@@ -415,7 +415,7 @@ export default {
       {
         "id": "m06",
         "question": "中央的正常為何和現場相反？",
-        "answer": "畫面沿用舊回報，異常被匯總過濾；離線時間記錄和多處現場確認證明問題，不是主角臨時駭入修好一切。",
+        "answer": "畫面沿用舊回報，異常被匯總過濾；離線時間紀錄和多處現場確認證明問題，不是主角臨時駭入修好一切。",
         "planted": 7,
         "advanced": [
           10,
@@ -429,7 +429,7 @@ export default {
       {
         "id": "m07",
         "question": "備援還能撐多久，救人是否只能等復電？",
-        "answer": "備援受散熱與積水影響，須按現場讀值更新安全視窗；醫護提前轉移與關鍵供電逐步恢復並行，不拿病人等最後一刻奇蹟。",
+        "answer": "備援受散熱與積水影響，須按現場讀值更新安全轉移時間；醫護提前轉移與關鍵供電逐步恢復並行，不拿病人等最後一刻奇蹟。",
         "planted": 2,
         "advanced": [
           11,
@@ -443,7 +443,7 @@ export default {
       {
         "id": "m08",
         "question": "被辭退的老師傅還願意回來嗎？",
-        "answer": "林既明先承認當年的簽字過失，老工頭才帶班誌協助；兩人用透明紀錄與有條件能力傳承，最後辦學徒班而非復仇致富。",
+        "answer": "林既明先承認當年的簽字過失，老工頭才帶維修班誌協助；兩人用透明紀錄與有條件能力傳承，最後辦學徒班而非復仇致富。",
         "planted": 4,
         "advanced": [
           11,
@@ -484,9 +484,9 @@ export default {
       }
     ],
     "naming": [
-      "全城、園區與公司皆虛構，避免使用真實企業標識和可以對號入座的事故。",
+      "全城、園區與公司皆虛構（合序系統公司、零件供應商岱恆機電），避免使用真實企業標識和可以對號入座的事故。",
       "林既明是顧問、周禾是當值工程員、陳勳是救援指揮；三個角色名稱與權限不可互換。",
-      "介面用簡單中文狀態，設備只用觀察廊、旁路節點等虛構識別，不提供型號和操作引數。"
+      "介面用簡單中文狀態，設施只用北側服務通道、受控觀察廊、旁路節點等虛構名稱，不提供型號和操作參數。"
     ],
     "never": [
       "不讓外送員私撬電梯門、擅自送電或跳進帶電積水。",
@@ -505,7 +505,8 @@ export default {
       "陳勳": "ㄔㄣˊ ㄒㄩㄣ",
       "賴良": "ㄌㄞˋ ㄌㄧㄤˊ",
       "吳雅": "ㄨˊ ㄧㄚˇ",
-      "合序": "ㄏㄜˊ ㄒㄩˋ"
+      "合序": "ㄏㄜˊ ㄒㄩˋ",
+      "岱恆": "ㄉㄞˋ ㄏㄥˊ"
     },
     "opening_30_seconds": [
       {
@@ -529,7 +530,7 @@ export default {
         "audio": "吳雅：裡面的人有回應，位置確認了。"
       }
     ],
-    "ending": "重要區域逐步恢復，女兒與病患獲救，林既明也由別人救出。六個月後調查證明停用警示與回扣紀錄是栽贓，但保留他簽不完整驗收及遲報的責任，按正式結果受處分與補償安排；沒有立即恢復全部執業資格。一年後他在合規範圍內與賴良教學徒，安安替門口點亮普通工作燈。"
+    "ending": "重要區域逐步恢復，女兒與病患獲救，林既明也由別人救出。六個月後調查證明停用警示與回扣紀錄是栽贓，但保留他簽不完整驗收及遲報的責任，他按正式結果受處分，沒有立即恢復全部執業資格；合序系統公司依調查結果補償當夜的受困者與家屬，並重新處理七年前受傷學徒的補償。一年後他在合規範圍內與賴良教學徒，安安替門口點亮普通工作燈。"
   },
   "chapters": [
     {
@@ -604,7 +605,7 @@ export default {
           "closed_ending": false,
           "number": 2,
           "title": "先把病床帶出來",
-          "logline": "林既明提供舊檢修位置，救援隊確認隔離後移出病患，醫護開始估算備援轉移視窗。",
+          "logline": "林既明提供舊檢修位置，救援隊確認隔離後移出病患，醫護開始估算備援下的安全轉移時間。",
           "hook": "有人回應，就先把人接住。",
           "hook_type": "line",
           "conflict": "新圖找不到合適接近位置，陳勳要求任何舊資訊先現場驗證；林既明指出標牌差異，隊員核對後決定救援方案。",
@@ -666,7 +667,7 @@ export default {
           "hook": "你不是第一次來這裡。",
           "hook_type": "reversal",
           "conflict": "周禾怕採信外送員意見會負責，吳雅只證明曾看過林既明工作，要求仍按現場資料判斷。",
-          "turn": "林既明指出本應出現的本地警示未亮，周禾記為待確認；女兒短訊補出園區南側，父親把位置寫進救援表而不藏著。",
+          "turn": "林既明指出本應出現的本地警示未亮，周禾記為待確認；女兒簡訊補出園區南側，父親把位置寫進救援表而不藏著。",
           "cliffhanger": {
             "type": "emotion",
             "text": "吳雅把餐袋暫收好：「先把你知道的說清楚，別再只說沒事。」"
@@ -714,7 +715,7 @@ export default {
             "time": "21:25–21:29。",
             "knowledge": "知道應有警示缺席，尚無停用原因。",
             "character_state": "父親擔心女兒但沒有離開已承接的工作。",
-            "evidence": "南側位置短訊與待確認警示記錄由周禾留存。",
+            "evidence": "南側位置簡訊與待確認警示紀錄由周禾留存；外送餐袋由吳雅暫收。",
             "carry_forward": "用舊圖找出新圖漏掉的設施。"
           }
         },
@@ -723,11 +724,11 @@ export default {
           "closed_ending": false,
           "number": 4,
           "title": "新圖少了一條路",
-          "logline": "林既明在公用紀錄櫃找到舊版圖紙，指出一條被新版省略的高處觀察廊。",
+          "logline": "林既明在公用紀錄櫃找到舊版圖紙，指出一條被新版省略的北側服務通道。",
           "hook": "新圖上，少了一條路。",
           "hook_type": "image",
           "conflict": "周禾認為舊圖應丟棄，林既明把現場三個固定位置與兩版圖疊在一起，不要求憑記憶放人進去。",
-          "turn": "陳勳同意把舊廊列為待查路徑；圖角留有老工頭賴良的日期和備註，表示還有可找的知情人。",
+          "turn": "陳勳同意把北側服務通道列為待查路徑；圖角留有老工頭賴良的日期和備註，表示還有可找的知情人。",
           "cliffhanger": {
             "type": "choice",
             "text": "林既明報出賴良的聯絡方式，承認那是當年最不想再見自己的人。"
@@ -770,10 +771,10 @@ export default {
           ],
           "state": {
             "time": "21:29–21:34。",
-            "knowledge": "舊廊可能存在，尚未確認可通行。",
+            "knowledge": "北側服務通道可能存在，尚未確認可通行。",
             "character_state": "林既明要面對舊同事而非獨自逞強。",
             "evidence": "舊圖原件入資料袋，周禾拍副本。",
-            "carry_forward": "查舊圖索引時，系統會拒絕林既明舊身份。"
+            "carry_forward": "查舊圖索引時，系統會拒絕林既明被開除時停用的舊帳號。"
           }
         },
         {
@@ -782,10 +783,10 @@ export default {
           "number": 5,
           "title": "這個名字沒有權限",
           "logline": "林既明的舊帳號仍被停用，他接受由周禾操作，把能證明的資料逐項交給當值人員。",
-          "hook": "我的名字，連查圖都不準。",
+          "hook": "我的名字，連查圖都不准。",
           "hook_type": "line",
           "conflict": "索引要求有效帳號，林既明沒有權限；周禾擔心他要求借密碼，林既明反而請對方以本人權限查指定版本。",
-          "turn": "公開停職紀錄彈出，陳勳沒有立刻趕人，要求只報已可驗證的事並保持顧問身份。",
+          "turn": "公司公告的開除紀錄彈出，陳勳沒有立刻趕人，要求只報已可驗證的事並保持顧問身分。",
           "cliffhanger": {
             "type": "danger",
             "text": "警示頁把林既明標為重大事故責任人，周禾的電話立刻響起。"
@@ -821,16 +822,16 @@ export default {
             {
               "beat": "second_half",
               "type": "first_clear",
-              "text": "陳勳保留經核對的舊圖線索，不因身份標籤抹掉現場證據。",
+              "text": "陳勳保留經核對的舊圖線索，不因身分標籤抹掉現場證據。",
               "planned_seconds": 124
             }
           ],
           "state": {
             "time": "21:34–21:37。",
-            "knowledge": "停職記錄存在，觀眾尚不知道哪些內容真或假。",
+            "knowledge": "開除紀錄存在，觀眾尚不知道哪些內容真或假。",
             "character_state": "林既明被戳中羞愧但沒有逃走。",
             "evidence": "查閱由周禾本人帳號完成，不產生主角新操作紀錄。",
-            "carry_forward": "周禾決定交出已在現場取得的原始記錄。"
+            "carry_forward": "周禾接起公司打來的那通電話，仍決定交出已在現場取得的原始紀錄。"
           }
         },
         {
@@ -840,8 +841,8 @@ export default {
           "title": "先保留這一頁",
           "logline": "周禾拿出未上傳的現場表與舊驗收索引，林既明要求保留原件而不是挑有利部分。",
           "hook": "別幫我擦掉那一行。",
-          "hook_type": "question",
-          "conflict": "周禾想只給他設備頁，免得涉及舊責任；林既明看見自己當年的簽名索引，要求附件缺頁也一併登記。",
+          "hook_type": "line",
+          "conflict": "周禾接起那通電話，掛斷後複述公司的要求：只給設備頁、別碰舊責任；他想照做，林既明卻看見自己當年的簽名索引，要求附件缺頁也一併登記。",
           "turn": "原始現場表顯示警示被設為不匯總，與螢幕不同；驗收附件欄有「未完成項」但內容缺失。",
           "cliffhanger": {
             "type": "reveal",
@@ -865,7 +866,7 @@ export default {
           "locations": [
             "hospital-support"
           ],
-          "theme": "留證不是隻留對自己有利的部分。",
+          "theme": "留證不是只留對自己有利的部分。",
           "lead_arc": "wins",
           "satisfaction": [
             {
@@ -883,7 +884,7 @@ export default {
           ],
           "state": {
             "time": "21:37–21:40。",
-            "knowledge": "知道附件缺失但不知內容；記錄顯示回報被排除。",
+            "knowledge": "公司來電要周禾只給設備頁；知道附件缺失但不知內容；紀錄顯示回報被排除。",
             "character_state": "周禾開始獨立記錄，林既明不為自己作全盤辯護。",
             "evidence": "兩份原件由周禾封袋、拍照、標時。",
             "carry_forward": "先利用現場資料救回一處關鍵區域的供電。"
@@ -896,7 +897,7 @@ export default {
           "title": "先亮起這一小區",
           "logline": "林既明協助核對負載位置，由值班人員恢復一處觀察區照明，卻看出中央狀態從未變過。",
           "hook": "這裡黑著，螢幕怎麼是正常？",
-          "hook_type": "reversal",
+          "hook_type": "question",
           "conflict": "吳雅需要看清病患轉移路線，主畫面卻已標正常；周禾依現場核對，在授權程序下安排局部備援。",
           "turn": "照明恢復、病床能安全移動，主畫面前後一模一樣；林既明指出它可能不是即時狀態。",
           "cliffhanger": {
@@ -954,11 +955,11 @@ export default {
           "closed_ending": false,
           "number": 8,
           "title": "七年前那個人",
-          "logline": "舊汙名在網路傳開，林既明以現場記錄證明自己沒有當夜操作權，但不否認全部過去。",
+          "logline": "舊汙名在網路傳開，林既明以現場紀錄證明自己沒有當夜操作權，但不否認全部過去。",
           "hook": "他們又把那場事故貼上來。",
           "hook_type": "line",
-          "conflict": "宋振南對外稱事故責任人擅入現場，周禾因此受到撤換壓力；林既明交出當夜送餐時間與停用帳號記錄。",
-          "turn": "鄭茵在調度電話上要求分開處理過往與當夜行為；公司宣告卻優先談核心資產，沒有受困人數。",
+          "conflict": "宋振南對外稱七年前排水設施事故的責任人擅入現場，周禾因此受到撤換壓力；林既明交出當夜送餐時間與帳號停用紀錄。",
+          "turn": "鄭茵在調度電話上要求分開處理過往與當夜行為；公司聲明卻優先談核心資產，沒有受困人數。",
           "cliffhanger": {
             "type": "choice",
             "text": "林既明可以趁人未認出就走，他把頭盔放在資料袋旁，選擇留下。"
@@ -998,7 +999,7 @@ export default {
             {
               "beat": "second_half",
               "type": "reversal",
-              "text": "鄭茵以調度需要保留技術顧問，不讓公司宣告決定現場人員去留。",
+              "text": "鄭茵以調度需要保留技術顧問，不讓公司聲明決定現場人員去留。",
               "planned_seconds": 123
             }
           ],
@@ -1006,7 +1007,7 @@ export default {
             "time": "21:44–21:48；宋振南、鄭茵以電話出場。",
             "knowledge": "當夜擅自操作指控不成立，七年前過失仍未交代。",
             "character_state": "林既明選擇公開留在現場，不再躲避名字。",
-            "evidence": "送餐憑證與停用帳號畫面納入紀錄。",
+            "evidence": "送餐憑證與帳號停用畫面納入紀錄；外送頭盔留在資料袋旁，之後不再隨身。",
             "carry_forward": "女兒位置會有足夠精度供救援評估。"
           }
         },
@@ -1019,7 +1020,7 @@ export default {
           "hook": "她離我這麼近，路卻斷了。",
           "hook_type": "danger",
           "conflict": "安安電話斷續，林既明想跑過地面道路；陳勳指出積水和障礙未排除，不能以直線距離決定可達。",
-          "turn": "父女用固定門牌確認 B1 高處值班區，陳勳把舊北側服務通道列入勘查，安安答應留在工作人員指定高處。",
+          "turn": "父女用固定門牌確認 B1 高處值班區，陳勳把舊圖上的北側服務通道列入勘查，安安答應留在工作人員指定高處。",
           "cliffhanger": {
             "type": "danger",
             "text": "電話斷前，安安說旁邊還有個找不到家人的孩子。"
@@ -1065,9 +1066,9 @@ export default {
           ],
           "state": {
             "time": "21:48–21:53。",
-            "knowledge": "女兒精確位置確認，但北側通道未完成勘查。",
+            "knowledge": "女兒精確位置確認，但北側服務通道未完成勘查。",
             "character_state": "安安清醒、衣物潮濕無傷；父女以明確位置取代互說沒事。",
-            "evidence": "位置與門牌寫上紙圖，由陳勳保管。",
+            "evidence": "位置與門牌寫上陳勳的現場紙圖，原件由陳勳保管。",
             "carry_forward": "警示停用紀錄會連上轉運中心的失聯問題。"
           }
         },
@@ -1075,11 +1076,11 @@ export default {
           "timeline": "present",
           "closed_ending": false,
           "number": 10,
-          "title": "有人先把警報關掉",
-          "logline": "周禾從現場配置單找出人為停用欄，林既明要求儲存而非立即怪罪某個人。",
+          "title": "配置單上的那一欄",
+          "logline": "周禾從現場配置單找出人為停用欄，林既明要求保存而非立即怪罪某個人。",
           "hook": "這不是壞掉，是被關掉。",
           "hook_type": "reversal",
-          "conflict": "宋振南將缺報歸咎淹水，周禾對照第 6 集原表與現場時戳，發現停用設定早於暴雨。",
+          "conflict": "合序公司的書面聲明將缺報歸咎淹水，周禾對照第 6 集原表與現場時戳，發現停用設定早於暴雨。",
           "turn": "鄭茵核對兩處回報都被排除，排除單點偶發；林既明指出只能先確定人為改動，批准人還需原件。",
           "cliffhanger": {
             "type": "reveal",
@@ -1125,7 +1126,7 @@ export default {
             }
           ],
           "state": {
-            "time": "21:53–21:55；第一篇結束。",
+            "time": "21:53–21:55；鄭茵以電話出場；第一篇結束。",
             "knowledge": "人為停用成立，尚未證明宋振南批准及過去栽贓。",
             "character_state": "林既明先請求調度安排安全移動，不自行越區。",
             "evidence": "本地原表留醫院，副本帶往控制站。",
@@ -1189,7 +1190,7 @@ export default {
             {
               "beat": "opening",
               "type": "level_up",
-              "text": "鄭茵分開醫護、工程與救援回報，停止互相蓋臺。",
+              "text": "鄭茵分開醫護、工程與救援回報，停止互相蓋台。",
               "planned_seconds": 22
             },
             {
@@ -1211,12 +1212,12 @@ export default {
           "timeline": "present",
           "closed_ending": false,
           "number": 12,
-          "title": "紙上還留著那條廊",
-          "logline": "紙本班誌證明被新版刪去的設施仍曾維護，指揮員據此安排實地勘查。",
+          "title": "紙上還留著那條通道",
+          "logline": "控制站的值班班誌證明被新版刪去的北側服務通道仍曾維護，指揮員據此安排實地勘查。",
           "hook": "它沒有消失，只是被刪了。",
           "hook_type": "image",
-          "conflict": "新版資料庫搜不到舊廊，周禾帶林既明到紙本櫃，兩人以圖角日期查班誌而非憑空猜編號。",
-          "turn": "維修簽註顯示去年仍做過檢查，陳勳要求先看現場入口水線與結構再用；林既明不將「存在」說成「安全」。",
+          "conflict": "新版資料庫搜不到北側服務通道，周禾帶林既明到紙本櫃，兩人以圖角日期查值班班誌而非憑空猜編號。",
+          "turn": "值班班誌上的檢修簽註顯示去年仍做過檢查，陳勳要求先看現場入口水線與結構再用；林既明不將「存在」說成「安全」。",
           "cliffhanger": {
             "type": "choice",
             "text": "陳勳讓隊伍查入口，林既明在圖上把那條路標成待確認而不是可通行。"
@@ -1248,7 +1249,7 @@ export default {
             {
               "beat": "opening",
               "type": "first_clear",
-              "text": "按日期找到維護簽註，證明舊廊不是主角虛構。",
+              "text": "按日期找到檢修簽註，證明北側服務通道不是主角虛構。",
               "planned_seconds": 24
             },
             {
@@ -1260,9 +1261,9 @@ export default {
           ],
           "state": {
             "time": "22:10–22:15。",
-            "knowledge": "觀察廊存在，尚未準任何非隊員進入。",
+            "knowledge": "北側服務通道存在，尚未准許任何非隊員進入。",
             "character_state": "林既明願意在自己的圖上寫未知。",
-            "evidence": "紙本原件留櫃封存，副本給陳勳。",
+            "evidence": "值班班誌原件留櫃封存，副本給陳勳。",
             "carry_forward": "隊伍在北側服務通道遇到一處可局部排險的障礙。"
           }
         },
@@ -1271,14 +1272,14 @@ export default {
           "closed_ending": false,
           "number": 13,
           "title": "只確認這一段",
-          "logline": "林既明遠端指出原圖示記，專業隊核查後解除一小段通路阻礙，建立第一個安全中繼點。",
+          "logline": "林既明遠端指出原圖標記，專業隊核查後解除一小段通路阻礙，建立第一個安全中繼點。",
           "hook": "先救這一段，不賭整條路。",
           "hook_type": "line",
           "conflict": "隊伍回報通道局部障礙，林既明想用舊經驗保證全線，陳勳要求只對看得見的段落說明。",
-          "turn": "周禾與隊伍交叉對上標記，專業人員完成局部排險；第一個中繼點能把後方訊息送回撥度席。",
+          "turn": "周禾與隊伍交叉對上標記，專業人員完成局部排險；第一個中繼點能把後方訊息送回調度席。",
           "cliffhanger": {
             "type": "danger",
-            "text": "中繼收到更深處值班員的求救，但路線尚未清到那裡。"
+            "text": "中繼收到更深處值班員傳來的求救簡訊，但路線尚未清到那裡。"
           },
           "setups": [
             "m10"
@@ -1320,7 +1321,7 @@ export default {
           ],
           "state": {
             "time": "22:15–22:24，主角在控制站以電話協助。",
-            "knowledge": "只一段通道可用，不能剪成轉運中心已通。",
+            "knowledge": "只有這一段通道可用，轉運中心還沒有通。",
             "character_state": "陳勳帶隊員，林既明未進入未查區域。",
             "evidence": "第一段通路驗證時間寫進調度圖。",
             "carry_forward": "宋振南將用主角舊責任阻止他繼續接近控制資訊。"
@@ -1331,14 +1332,14 @@ export default {
           "closed_ending": false,
           "number": 14,
           "title": "不是你家的控制站",
-          "logline": "宋振南試圖將林既明趕離控制站，調度員與指揮員以現場需求留下受限的技術協助。",
+          "logline": "宋振南試圖將林既明趕離控制站，調度員鄭茵以現場需求留下受限的技術協助。",
           "hook": "要我走，先把人數對清楚。",
           "hook_type": "reversal",
-          "conflict": "宋振南拿停職紀錄阻止主角靠近控制席；林既明不爭奪帳號，只請周禾把受困回報送入指揮流程。",
-          "turn": "鄭茵列出公司未回覆的人數，宋振南只能允許他在指定顧問桌核對圖紙，仍企圖遮住原件櫃。",
+          "conflict": "宋振南拿開除紀錄阻止主角靠近控制席；林既明不爭奪帳號，只請周禾把受困回報送入指揮流程。",
+          "turn": "鄭茵列出公司未回覆的人數，宋振南只能允許他在指定顧問桌核對圖紙，卻也把他擋在控制席與原件櫃之外，原件只能經周禾的手查看。",
           "cliffhanger": {
             "type": "reveal",
-            "text": "宋振南口中的安全清單，竟少了剛被聽見的值班員。"
+            "text": "宋振南口中的安全清單，竟少了剛傳出求救的值班員。"
           },
           "setups": [
             "m03",
@@ -1365,7 +1366,7 @@ export default {
             "control"
           ],
           "theme": "權限有邊界，救援資訊不能被私藏。",
-          "lead_arc": "wins",
+          "lead_arc": "mixed",
           "satisfaction": [
             {
               "beat": "opening",
@@ -1383,9 +1384,9 @@ export default {
           "state": {
             "time": "22:24–22:30。",
             "knowledge": "公司掌握的清單不完整，可能刻意也可能失誤，仍待證據。",
-            "character_state": "主角有顧問身份，沒有系統權限。",
+            "character_state": "主角有顧問身分，沒有系統權限；被限在顧問桌，不得自行靠近原件櫃，這條限制整夜不解除，之後要看原件都由周禾在場陪同、經周禾的手翻頁。",
             "evidence": "兩份人數表的差異留在調度紀錄。",
-            "carry_forward": "用即時現場通話逐項拆穿假正常。"
+            "carry_forward": "用現場傳回的簡訊逐項拆穿假正常。"
           }
         },
         {
@@ -1393,10 +1394,10 @@ export default {
           "closed_ending": false,
           "number": 15,
           "title": "讓現場把話說完",
-          "logline": "林既明把受困通話與中央綠燈對照，周禾停止照抄正常並開始人工更新。",
+          "logline": "林既明把受困簡訊與中央綠燈對照，周禾停止照抄正常並開始人工更新。",
           "hook": "正常兩個字，救不了裡面的人。",
           "hook_type": "line",
-          "conflict": "宋振南要求繼續對外報區域正常；鄭茵接入現場值班員短訊，證實該區仍有人被困。",
+          "conflict": "宋振南要求繼續對外報區域正常；鄭茵接入現場值班員簡訊，證實該區仍有人被困。",
           "turn": "周禾將狀態改為待確認並留下理由，林既明指出主畫面更新時間早已停住；宋振南改口稱是顯示小問題。",
           "cliffhanger": {
             "type": "emotion",
@@ -1445,8 +1446,8 @@ export default {
           "state": {
             "time": "22:30–22:35。",
             "knowledge": "假正常機制部分解明，停用批准者仍待原單。",
-            "character_state": "周禾開始承擔準確回報的責任。",
-            "evidence": "人工異常表與通話時間由鄭茵留存。",
+            "character_state": "周禾開始承擔準確回報的責任；林既明仍被限在顧問桌，只能對照簡訊與時間戳。",
+            "evidence": "人工異常表與簡訊時間由鄭茵留存。",
             "carry_forward": "隊伍循已確認通路接近值班員。"
           }
         },
@@ -1459,10 +1460,10 @@ export default {
           "hook": "這次，換我們來接你。",
           "hook_type": "danger",
           "conflict": "值班員在隔離門後無法自出，陳勳讓林既明透過已知圖號協助辨認位置，不讓他要求遠端解除未知隔離。",
-          "turn": "隊伍完成現場確認後帶人撤至中繼點，值班員把親手記的水線與時刻交出；安安所在平臺仍需另一段路線。",
+          "turn": "隊伍完成現場確認後帶人撤至中繼點，值班員把親手記的水線與時刻交出；安安所在的高處值班區仍需另一段路線。",
           "cliffhanger": {
             "type": "choice",
-            "text": "陳勳把新紙條傳回，林既明選擇交給女兒那組救援，而不拿它先證明自己。"
+            "text": "陳勳把新紙條傳回，林既明選擇交給南支勘查組，而不拿它先證明自己。"
           },
           "setups": [
             "m10"
@@ -1498,7 +1499,7 @@ export default {
             {
               "beat": "second_half",
               "type": "rescue",
-              "text": "值班員安全撤到中繼點；其台詞以受困回報文字呈現，無新增具名角色。",
+              "text": "值班員安全撤到中繼點，交出親手記的水線與時刻。",
               "planned_seconds": 131
             }
           ],
@@ -1507,7 +1508,7 @@ export default {
             "knowledge": "通道已有一段真實救援證據，另一段仍待確認。",
             "character_state": "主角留控制站，救援由陳勳隊伍完成。",
             "evidence": "現場紙條進調度圖，不作可免驗證的神圖。",
-            "carry_forward": "女兒會在平臺照顧孩子等待隊伍。"
+            "carry_forward": "女兒會在平台照顧孩子等待隊伍。"
           }
         },
         {
@@ -1515,14 +1516,14 @@ export default {
           "closed_ending": false,
           "number": 17,
           "title": "我等她一起走",
-          "logline": "安安看到先到的引導人員，因朵朵不敢離開角落而留下安撫，按核准路線轉到安全平臺。",
+          "logline": "安安看到先到的引導人員，因朵朵不敢離開角落而留下安撫，按核准路線轉到安全平台。",
           "hook": "她還沒站起來，我不走。",
           "hook_type": "line",
-          "conflict": "朵朵因怕黑不肯移動，安安不能拖她下水；鄭茵透過間歇通訊轉達工作人員確認的短距離平臺路線。",
-          "turn": "安安用自己的外套和手電形成清楚視線，讓朵朵一步步跟上站務員指引，兩人都留在高處；她回訊父親自己還在。",
+          "conflict": "朵朵因怕黑不肯移動，安安不能拖她下水；鄭茵透過間歇通訊轉達工作人員確認的短距離平台路線。",
+          "turn": "安安靠朵朵身上那件淺色外套和自己的手電筒形成清楚視線，讓朵朵一步步跟上站務員指引，兩人都留在高處；她回訊父親自己還在。",
           "cliffhanger": {
             "type": "danger",
-            "text": "水線升到原辦公室門底，她們已到平臺，通訊卻再次斷掉。"
+            "text": "水線升到原辦公室門底，她們已到平台，通訊卻再次斷掉。"
           },
           "setups": [
             "m04"
@@ -1558,7 +1559,7 @@ export default {
             {
               "beat": "second_half",
               "type": "rescue",
-              "text": "兩人依已確認的短路線到更高平臺，沒有自行闖水。",
+              "text": "兩人依已確認的短路線到同層較安全的平台，沒有自行闖水。",
               "planned_seconds": 124
             }
           ],
@@ -1566,7 +1567,7 @@ export default {
             "time": "22:42–22:47。",
             "knowledge": "父親收到最後位置更新，但不知道下一次何時通訊。",
             "character_state": "安安與朵朵清醒、受冷，無突發重傷。",
-            "evidence": "平臺門牌寫入鄭茵紀錄；孩子玩偶一直由朵朵抱著。",
+            "evidence": "平台門牌寫入鄭茵紀錄；安安的淺綠雨衣外套改由朵朵穿著；孩子玩偶一直由朵朵抱著。",
             "carry_forward": "公司將用救援資源對父親提出封口交易。"
           }
         },
@@ -1579,7 +1580,7 @@ export default {
           "hook": "你不能拿救人跟我談條件。",
           "hook_type": "reversal",
           "conflict": "宋振南私下許諾優先救女兒，代價是交回現場副本；林既明既想答應，又知道資源不屬於私人交易。",
-          "turn": "他把對話轉成公開派遣需求，鄭茵要求宋振南報可用設備與位置；宋無法再只向父親兜售承諾。",
+          "turn": "他把對話轉成公開派遣需求，鄭茵要求宋振南報可用設備與位置；宋無法再只向父親兜售承諾，當場收回私下答應的那輛車，女兒那邊只能照正式排序再等。",
           "cliffhanger": {
             "type": "reveal",
             "text": "派遣表顯示一批設備已被標成公司內部優先，目的地不在受困名單上。"
@@ -1606,7 +1607,7 @@ export default {
             "control"
           ],
           "theme": "父親的焦急不該變成別人操控救援的工具。",
-          "lead_arc": "wins",
+          "lead_arc": "mixed",
           "satisfaction": [
             {
               "beat": "opening",
@@ -1624,8 +1625,8 @@ export default {
           "state": {
             "time": "22:47–22:51。",
             "knowledge": "公司資產優先有可追資料，完整目的地待第 28 集。",
-            "character_state": "主角拒絕私救女兒交易，但仍害怕她等太久。",
-            "evidence": "派遣表副本與對話時間記錄留調度端。",
+            "character_state": "主角拒絕私救女兒交易，女兒那邊因此照正式排序等車，他仍害怕她等太久。",
+            "evidence": "派遣表副本與對話時間紀錄留調度端。",
             "carry_forward": "宋振南改以真簽名反擊他的信用。"
           }
         },
@@ -1636,7 +1637,7 @@ export default {
           "title": "這個字是誰簽的",
           "logline": "宋振南公開帶有林既明真簽名的驗收頁，周禾保留其缺附件的事實，等待主角回答。",
           "hook": "那個簽名，真的是我的。",
-          "hook_type": "question",
+          "hook_type": "line",
           "conflict": "宋振南把單頁驗收投到螢幕，稱所有批評都是推責；林既明先確認簽名，不用假筆跡藉口逃避。",
           "turn": "周禾指出該頁索引標有附件卻未提供，鄭茵要求完整原件；但主角仍需回答為何測試未完就簽。",
           "cliffhanger": {
@@ -1686,8 +1687,8 @@ export default {
           "state": {
             "time": "22:51–22:56。",
             "knowledge": "真簽名確立，附件內容未知；主角不再可塑成純受害者。",
-            "character_state": "信用受壓但仍留在顧問桌。",
-            "evidence": "螢幕單頁與附件索引被並列儲存。",
+            "character_state": "信用受壓但仍留在顧問桌；女兒那邊仍照正式排序等，他沒有回頭找宋振南的車。",
+            "evidence": "螢幕單頁與附件索引被並列保存。",
             "carry_forward": "第 20 集必須親口承認實際妥協。"
           }
         },
@@ -1695,7 +1696,7 @@ export default {
           "timeline": "present",
           "closed_ending": false,
           "number": 20,
-          "title": "我當年就該拒絕",
+          "title": "每一項都交簽核",
           "logline": "林既明承認簽下未完成測試的驗收並遲報，同時要求調查後續偽造而不以救人抵銷過失。",
           "hook": "我不是每一件事都被冤枉。",
           "hook_type": "reversal",
@@ -1748,7 +1749,7 @@ export default {
             "time": "22:56–23:00；第二篇結束。",
             "knowledge": "真過失明朗，造假仍須原件；當夜救援不等於既往免責。",
             "character_state": "主角不再閃避，周禾仍有操作與拒絕建議的權限。",
-            "evidence": "顧問建議與核對記錄從此逐項具名。",
+            "evidence": "顧問建議與核對紀錄從此逐項具名。",
             "carry_forward": "下一篇公開說明、拆分任務並找回前維修班。"
           }
         }
@@ -1761,7 +1762,7 @@ export default {
       "start_state": "真過失公開，主角必須逐項重建合作。",
       "end_state": "救援分工與證據互相補齊，最後的關鍵辨識須在受控現場完成。",
       "turn": "第 30 集不能只在控制室找答案，必須由專業隊帶顧問實地核對。",
-      "stakes": "從修正資訊，升至醫院轉移視窗、女兒位置與救援者風險。",
+      "stakes": "從修正資訊，升至醫院轉移時限、女兒位置與救援者風險。",
       "question": "承認錯誤之後，怎樣讓別人放心把下一步交給你？",
       "episodes": [
         {
@@ -1769,7 +1770,7 @@ export default {
           "closed_ending": false,
           "number": 21,
           "title": "這段也照樣記下來",
-          "logline": "林既明把自己的妥協錄入當夜正式紀錄，要求同伴保留而非等救完人再美化。",
+          "logline": "林既明把自己的妥協列入當夜正式紀錄，要求同伴保留而非等救完人再美化。",
           "hook": "先把我做錯的，也寫進去。",
           "hook_type": "line",
           "conflict": "周禾認為此刻公開過失會削弱救援信用；林既明說隱去真錯只會令公司繼續用它威脅，讓鄭茵逐項記下。",
@@ -1833,7 +1834,7 @@ export default {
           "logline": "救援被拆成醫護轉移、通路勘查與工程核對三組，每組有負責人和回報時刻。",
           "hook": "不用等我，每組都能先做。",
           "hook_type": "reversal",
-          "conflict": "各處都把問題丟給林既明，醫院視窗正在消耗；鄭茵要求每件事寫清需誰判斷，主角不能替所有專業拍板。",
+          "conflict": "各處都把問題丟給林既明，醫院的安全轉移時間正在消耗；鄭茵要求每件事寫清需誰判斷，主角不能替所有專業拍板。",
           "turn": "吳雅接醫護表、陳勳接通路表、周禾接工程表，三組同時前進，林既明專注舊圖與節點對照。",
           "cliffhanger": {
             "type": "danger",
@@ -1882,9 +1883,9 @@ export default {
           ],
           "state": {
             "time": "23:08–23:20；主角移至同棟安全調度席。",
-            "knowledge": "安全視窗持續更新，無固定倒數懸空一小時不動。",
+            "knowledge": "安全轉移時間持續更新，無固定倒數懸空一小時不動。",
             "character_state": "林既明放下全包習慣，吳雅與陳勳各守本職。",
-            "evidence": "三張表附負責人和更新時間，周禾以文字回報不新增聲音角色。",
+            "evidence": "三張表附負責人和更新時間；周禾的工程回報以文字送到調度席。",
             "carry_forward": "舊標籤問題需要曾維護它的老師傅。"
           }
         },
@@ -1892,15 +1893,15 @@ export default {
           "timeline": "present",
           "closed_ending": false,
           "number": 23,
-          "title": "人可以回來，帳還是要算",
-          "logline": "前維修班願意提供班誌，賴良要求林既明先承認當年讓大家承擔的風險。",
-          "hook": "我來救人，不是替你作保。",
+          "title": "老工頭開出的條件",
+          "logline": "前維修班願意提供維修班誌，賴良要求林既明先承認當年讓大家承擔的風險。",
+          "hook": "我幫忙救人，不是替你作保。",
           "hook_type": "line",
           "conflict": "賴良在電話上拒絕一句辛苦了就回現場；林既明明確道歉並承認未測簽字，把用人與免責分開。",
-          "turn": "賴良傳來班誌副本，其他舊同事以調度登記方式加入資料核對；他本人仍在距園區外安全集合點等交通安排。",
+          "turn": "賴良傳來維修班誌副本，其他舊同事以調度登記方式加入資料核對；他接受道歉卻不說原諒，本人仍在園區外、尚未答應到場。",
           "cliffhanger": {
             "type": "reveal",
-            "text": "班誌兩個不同日期顯示：林既明簽字之後，公司又改過一次回報配置。"
+            "text": "維修班誌上兩個不同日期顯示：林既明簽字之後，公司又改過一次回報配置。"
           },
           "setups": [
             "m08"
@@ -1924,12 +1925,12 @@ export default {
             "dispatch"
           ],
           "theme": "修補關係不靠要求對方忘記。",
-          "lead_arc": "wins",
+          "lead_arc": "mixed",
           "satisfaction": [
             {
               "beat": "opening",
               "type": "reversal",
-              "text": "林既明接受幫忙不等於原諒，賴良終於願意把班誌交出。",
+              "text": "林既明接受幫忙不等於原諒，賴良終於願意把維修班誌副本交出。",
               "planned_seconds": 25
             },
             {
@@ -1942,8 +1943,8 @@ export default {
           "state": {
             "time": "23:20–23:32；賴良只以電話出場。",
             "knowledge": "有一筆簽字後改動，內容需與離線資料比對。",
-            "character_state": "賴良願給資料，尚未克服回現場的心理壓力。",
-            "evidence": "班誌副本註明原件由賴良持有。",
+            "character_state": "賴良願給資料，尚未克服回現場的心理壓力；林既明的道歉沒有換到原諒，舊標籤仍缺能到場辨認的人。",
+            "evidence": "維修班誌副本註明原件由賴良持有。",
             "carry_forward": "用日期定位離線紀錄，查明後續修改。"
           }
         },
@@ -1951,12 +1952,12 @@ export default {
           "timeline": "present",
           "closed_ending": false,
           "number": 24,
-          "title": "時間對不上他的帳號",
-          "logline": "周禾以班誌日期找到離線日誌，顯示部分改動發生在林既明帳號停用之後。",
+          "title": "離線日誌上的日期",
+          "logline": "周禾以維修班誌的日期找到離線日誌，顯示部分改動發生在林既明帳號停用之後。",
           "hook": "我離開以後，誰還在改？",
           "hook_type": "question",
-          "conflict": "宋振南說所有改動沿用林既明方案，周禾要求對照停用時間、附件編號與離線儲存盒的原始索引。",
-          "turn": "兩筆關鍵修改晚於停權且由不同審批流程通過；這證明需查其他操作者，仍不能僅憑帳號日誌直接判定所有刑責。",
+          "conflict": "林既明由周禾陪同進紀錄間，只看周禾翻開的頁面、仍不碰原件；宋振南說所有改動沿用林既明方案，周禾要求對照帳號停用時間、附件編號與離線日誌盒的原始索引。",
+          "turn": "兩筆關鍵修改晚於他的帳號停用，且由不同簽核流程通過；這證明需查其他操作者，仍不能僅憑帳號日誌直接判定所有刑責。",
           "cliffhanger": {
             "type": "emotion",
             "text": "周禾把有利和不利的頁一起封好，照林既明先前的要求，沒有抽走任何一張。"
@@ -1990,21 +1991,21 @@ export default {
             {
               "beat": "opening",
               "type": "first_clear",
-              "text": "班誌日期定位到離線原件，使查證不再受主畫面限制。",
+              "text": "維修班誌的日期定位到離線日誌原件，使查證不再受主畫面限制。",
               "planned_seconds": 24
             },
             {
               "beat": "second_half",
               "type": "reversal",
-              "text": "停權後改動打破所有配置都由主角操控的指控，留下可供調查的範圍。",
+              "text": "帳號停用後的改動打破所有配置都由主角操控的指控，留下可供調查的範圍。",
               "planned_seconds": 126
             }
           ],
           "state": {
             "time": "23:32–23:43。",
-            "knowledge": "有後續改動與另一審批流，簽名附件和批准原單還需補齊。",
-            "character_state": "周禾開始沿用完整留證原則。",
-            "evidence": "離線盒封存，副本附讀取者與時間。",
+            "knowledge": "有後續改動與另一簽核流程，簽名附件和批准原單還需補齊。",
+            "character_state": "周禾開始沿用完整留證原則；賴良仍不到場，舊標籤只能先以維修班誌副本比對。",
+            "evidence": "離線日誌盒封存、留在紀錄間，副本附讀取者與時間。",
             "carry_forward": "宋振南會要求周禾繼續回報正常以壓住發現。"
           }
         },
@@ -2077,10 +2078,10 @@ export default {
           "hook": "警示亮起，這次有路可等。",
           "hook_type": "reversal",
           "conflict": "原警示被停用，工作人員怕重開就誤導人走入水區；周禾只恢復已由隊伍核對的安全等待訊息，其他路段維持禁行。",
-          "turn": "高處平臺亮起清楚的等待指示與救援位置，安安帶朵朵確認門牌；林既明由調度回報知道女兒仍在正確位置。",
+          "turn": "高處平台亮起清楚的等待指示與救援位置，安安帶朵朵確認門牌；林既明由調度回報知道女兒仍在正確位置。",
           "cliffhanger": {
             "type": "danger",
-            "text": "醫院傳來新回報：備援散熱受影響，病患轉移視窗必須提前。"
+            "text": "醫院傳來新回報：備援散熱受影響，病患轉移時限必須提前。"
           },
           "setups": [
             "m02"
@@ -2124,9 +2125,9 @@ export default {
           "state": {
             "time": "23:50–00:00。",
             "knowledge": "部分警示恢復，中央綠燈不再是唯一來源。",
-            "character_state": "安安與朵朵仍在平臺，未被偷偷救出。",
+            "character_state": "安安與朵朵仍在平台，未被偷偷救出。",
             "evidence": "每項恢復由周禾留操作紀錄，主角仍無操作權。",
-            "carry_forward": "第 27 集醫護具體更新轉移安全視窗。"
+            "carry_forward": "第 27 集醫護具體更新安全轉移時間。"
           }
         },
         {
@@ -2134,7 +2135,7 @@ export default {
           "closed_ending": false,
           "number": 27,
           "title": "留給搬床的時間",
-          "logline": "醫院備援安全餘裕下降，醫護把倒數轉成分批轉移方案，不等最後一臺設備停下。",
+          "logline": "醫院備援安全餘裕下降，醫護把倒數轉成分批轉移方案，不等最後一台設備停下。",
           "hook": "剩下的時間，要留給搬床。",
           "hook_type": "danger",
           "conflict": "吳雅收到工程員更新，若繼續等排水成功才搬會失去安全餘裕；林既明不能承諾幾分鐘修好所有設備。",
@@ -2184,7 +2185,7 @@ export default {
           ],
           "state": {
             "time": "00:00–00:15；工程回報目前約兩小時可安全轉移，需每十五分鐘更新。",
-            "knowledge": "這是保守轉移視窗，不是所有電源精確停止時刻。",
+            "knowledge": "這是保守估計的安全轉移時間，不是所有電源精確停止時刻。",
             "character_state": "主角拒絕空口保證，醫護按本職行動。",
             "evidence": "轉移表附下一次 00:30 更新時間。",
             "carry_forward": "第 28 集查明資源被優先送去哪裡。"
@@ -2194,10 +2195,10 @@ export default {
           "timeline": "present",
           "closed_ending": false,
           "number": 28,
-          "title": "他說的核心是總部",
-          "logline": "鄭茵對上車次與簽核目的地，揭露宋振南以儲存總部設備為由延後公共救援資源。",
+          "title": "派遣單上的目的地",
+          "logline": "鄭茵對上車次與簽核目的地，揭露宋振南以保住總部設備為由延後公共救援資源。",
           "hook": "他保的核心，裡面沒有病人。",
-          "hook_type": "line",
+          "hook_type": "reversal",
           "conflict": "宋振南聲稱總部服務全城，必須先保；鄭茵按任務單核對，該車載的是當夜可調配資源，並無優先病患需求。",
           "turn": "陳勳將受困與醫院需求送入正式聯合調度，要求資源回到救援排序；林既明保存原派遣單，不把口頭爭辯當定罪。",
           "cliffhanger": {
@@ -2243,7 +2244,7 @@ export default {
             }
           ],
           "state": {
-            "time": "00:15–00:30，備援更新後轉移視窗維持 02:00 前完成首批。",
+            "time": "00:15–00:30，備援更新後轉移時限維持 02:00 前完成首批。",
             "knowledge": "資產優先有具體簽核紀錄，刑責留調查。",
             "character_state": "主角焦急卻不私人搶資源。",
             "evidence": "原派遣單和重排單都保存，時間連續。",
@@ -2255,14 +2256,14 @@ export default {
           "closed_ending": false,
           "number": 29,
           "title": "那個女孩是我女兒",
-          "logline": "林既明向完整技術小組說明安安的關係和平臺位置，請同伴監督自己不要因焦急誤判。",
+          "logline": "林既明向完整技術小組說明安安的關係和平台位置，請同伴監督自己不要因焦急誤判。",
           "hook": "B1那個女孩，是我女兒。",
           "hook_type": "line",
-          "conflict": "陳勳和鄭茵早知父女關係，周禾與剛加入的維修班只見受困編號；林既明看自己反覆盯該區，主動補全資訊。",
+          "conflict": "陳勳和鄭茵早知父女關係；周禾從第 3 集就知道他有個女兒在園區南側，卻沒把 B1 平台那筆受困編號和她對上，剛加入的維修班更只見編號；林既明看自己反覆盯該區，主動補全資訊。",
           "turn": "他說明兩名女孩的最後確認時間與未知現況，請周禾接手他容易分心的核對；賴良同意到安全集合點會合。",
           "cliffhanger": {
             "type": "choice",
-            "text": "周禾問他能不能把女兒交給救援組，林既明先把那張圖完整遞過去。"
+            "text": "周禾問他能不能把女兒交給救援組，林既明先把自己補全的那張平台圖完整遞過去。"
           },
           "setups": [
             "m04"
@@ -2303,10 +2304,10 @@ export default {
             }
           ],
           "state": {
-            "time": "00:30–00:45；此處是向全技術組坦白，非首次通報女兒位置。",
-            "knowledge": "最後確認仍為南側高處平臺，沒有新位置假裝先前未知。",
-            "character_state": "林既明承認需要監督，賴良準備進入安全集合點。",
-            "evidence": "完整圖含平臺門牌、兩人數量、確認時間與未知欄。",
+            "time": "00:30–00:45；賴良以電話出場。",
+            "knowledge": "最後確認仍為南側高處平台，沒有新位置假裝先前未知；周禾這才把受困編號和第 3 集留存的簡訊對成同一個人。",
+            "character_state": "林既明承認需要監督，賴良答應會合、準備前往安全集合點。",
+            "evidence": "完整圖是林既明依調度紀錄補全的副本，含平台門牌、兩人數量、確認時間與未知欄，周禾核對加註後交還林既明，留待正式託付時轉交陳勳；第 9 集的現場圖原件仍由陳勳保管。",
             "carry_forward": "技術組查出最後需現場辨識的舊節點，不能只在室內判斷。"
           }
         },
@@ -2319,7 +2320,7 @@ export default {
           "hook": "這一項，不能再隔空簽了。",
           "hook_type": "reversal",
           "conflict": "周禾能執行授權控制，卻無法從畫面確定舊旁路節點；林既明拒絕猜一個答案，陳勳評估受淹設施現場條件。",
-          "turn": "方案改成先隔離、抽排、檢測，再由隊員帶顧問沿高處觀察廊核對；若條件不符立即撤回，醫護轉移照常進行。",
+          "turn": "方案改成先隔離、抽排、檢測，再由隊員帶顧問沿受控觀察廊的高處段核對；若條件不符立即撤回，醫護轉移照常進行。",
           "cliffhanger": {
             "type": "reversal",
             "text": "七年前他在沒看完的表上簽名；今晚他把「待現場確認」留到真的能看見為止。"
@@ -2380,7 +2381,7 @@ export default {
       "theme": "真正可靠的人，也允許別人救自己。",
       "start_state": "女兒與醫院有專業隊伍接手，主角尚待受控進場。",
       "end_state": "救援、調查、父女和解各自完成，主角以負責任的教學開始新生活。",
-      "turn": "第 40 集外送時被擋的門變成他為學徒開啟的門；沒有首富或全能復職。",
+      "turn": "第 40 集外送時被擋的門變成他為學徒打開的門；沒有首富或全能復職。",
       "stakes": "完成最後辨識也要把隊員帶回，且承擔過去而非用功勞抵銷。",
       "question": "能不能相信別人，像別人終於願意相信他一樣？",
       "episodes": [
@@ -2389,11 +2390,11 @@ export default {
           "closed_ending": false,
           "number": 31,
           "title": "把她交給你們",
-          "logline": "林既明把女兒完整資訊交陳勳，由專業救援組接近兩名女孩，自己不再同時指揮兩處。",
+          "logline": "林既明把女兒完整資訊交陳勳，由專業救援組接近兩名女孩，自己不再同時盯兩處。",
           "hook": "我女兒，拜託你們接回來。",
           "hook_type": "line",
-          "conflict": "他想跟女兒那一組走，又知道舊節點只能由自己與老工頭協助辨識；陳勳要求他選定角色後遵守分工。",
-          "turn": "他向安安留簡短訊息說明誰會來接，將平臺圖與回報表交指揮員，接下東側顧問任務。",
+          "conflict": "他想跟南支救援組走，又知道舊節點只能由自己與老工頭協助辨識；陳勳要求他選定角色後遵守分工。",
+          "turn": "他向安安留簡短訊息說明誰會來接，將平台圖與回報表交指揮員，接下東側顧問任務。",
           "cliffhanger": {
             "type": "emotion",
             "text": "安安回訊「你也要跟救你的那個人走」，父親把訊息留在鎖定畫面。"
@@ -2426,7 +2427,7 @@ export default {
             {
               "beat": "opening",
               "type": "level_up",
-              "text": "陳勳收到完整資訊正式派第二救援組，不再靠父親臨時帶路。",
+              "text": "陳勳收到完整資訊正式派出南支救援組，不再靠父親臨時帶路。",
               "planned_seconds": 24
             },
             {
@@ -2438,9 +2439,9 @@ export default {
           ],
           "state": {
             "time": "01:20–01:30。",
-            "knowledge": "女孩還未離開平臺，任務已正式承接。",
+            "knowledge": "女孩還未離開平台，任務已正式承接。",
             "character_state": "林既明按調度安排往東側集合點移動，安安繼續等援。",
-            "evidence": "女兒圖由陳勳持有，主角手機保留回訊。",
+            "evidence": "主角補全的平台圖副本與回報表交陳勳，和他自第 9 集保管的現場圖併存；主角手機保留回訊。",
             "carry_forward": "建立兩組都可維持的通訊，不能靠巧合電話接通。"
           }
         },
@@ -2449,14 +2450,14 @@ export default {
           "closed_ending": false,
           "number": 32,
           "title": "回報到了才算接上",
-          "logline": "調度設中繼與固定回報時點，東側隊與女兒那組即使訊號差也能確認彼此位置。",
-          "hook": "聽到一聲，不等於接上了。",
+          "logline": "調度設中繼與固定回報時點，東側隊與南支救援組即使訊號差也能確認彼此位置。",
+          "hook": "只聽到一聲，算接上了嗎？",
           "hook_type": "question",
           "conflict": "訊號斷續令隊伍重複問話，鄭茵要求每次回報包含位置、人數與下一時點；主角不能直接越過指揮席喊女兒。",
-          "turn": "中繼組回覆女孩仍為兩人、東側集合人員已到，兩條訊息都完整複誦；陳勳授權進場準備繼續。",
+          "turn": "中繼組回覆女孩仍為兩人；東側隊與林既明已到集合點，賴良的車約二十分鐘後到；兩條訊息都完整複誦，陳勳授權進場準備繼續。",
           "cliffhanger": {
             "type": "danger",
-            "text": "醫院回報首批病患已就位，運送路線必須在下一次水線更新前透過。"
+            "text": "醫院回報首批病患已就位，運送路線必須在下一次水線更新前通過。"
           },
           "setups": [
             "m10"
@@ -2498,7 +2499,7 @@ export default {
           ],
           "state": {
             "time": "01:30–01:40；主角已到東側安全集合點，未進受淹區。",
-            "knowledge": "女兒組仍在接近、兩女孩仍在平臺；不能宣稱已救出。",
+            "knowledge": "南支救援組仍在接近、兩女孩仍在平台；不能宣稱已救出。",
             "character_state": "主角按規定等指揮，沒有私自繞回南側。",
             "evidence": "中繼與回報時刻留下紙本副本。",
             "carry_forward": "醫護轉移與東側辨識並行，不互相等奇蹟。"
@@ -2511,8 +2512,8 @@ export default {
           "title": "先把需要的人送出去",
           "logline": "吳雅與救援隊完成首批病患分流，主角在東側聽見成果，知道醫院不是全押在自己身上。",
           "hook": "不要等全城亮了才搬。",
-          "hook_type": "line",
-          "conflict": "有人想等工程好轉避免搬動，吳雅依每十五分鐘更新的安全視窗，決定先轉出高依賴病患。",
+          "hook_type": "danger",
+          "conflict": "有人想等工程好轉避免搬動，吳雅依每十五分鐘更新的安全轉移時間，決定先轉出高依賴病患。",
           "turn": "陳勳確認路線，醫護與運送隊逐床交接、點名；鄭茵把已完成和仍待轉的數字分開，不報全部安全。",
           "cliffhanger": {
             "type": "reveal",
@@ -2547,7 +2548,7 @@ export default {
             {
               "beat": "opening",
               "type": "rescue",
-              "text": "首批病患在安全視窗內開始轉移，最脆弱者不等最後一刻。",
+              "text": "首批病患在安全轉移時間內開始轉移，最脆弱者不等最後一刻。",
               "planned_seconds": 24
             },
             {
@@ -2569,11 +2570,11 @@ export default {
           "timeline": "present",
           "closed_ending": false,
           "number": 34,
-          "title": "我陪你把那一頁看完",
-          "logline": "賴良帶原班誌到集合點，在安全條件確認後願意隨隊作有限辨識，並要求主角不能越過撤退線。",
+          "title": "舊入口前的那一步",
+          "logline": "賴良帶維修班誌原件到集合點，在安全條件確認後願意隨隊作有限辨識，並要求主角不能越過撤退線。",
           "hook": "這次，誰也不能催我們簽。",
           "hook_type": "line",
-          "conflict": "看到舊入口令賴良想起事故，他停在集合線外；林既明承認當年催工傷害，陳勳重申可拒絕進場。",
+          "conflict": "看到觀察廊舊入口，賴良想起七年前學徒在這裡受困的事故，停在集合線外；林既明承認當年催工傷害，陳勳重申可拒絕進場。",
           "turn": "賴良選擇加入，交出原件封存，先在安全區對上舊銘牌拓片；他與主角各拿一份確認表，不讓記憶替代核對。",
           "cliffhanger": {
             "type": "choice",
@@ -2621,9 +2622,9 @@ export default {
           ],
           "state": {
             "time": "01:55–02:05；賴良由安全交通到場，有二十分鐘以上移動準備。",
-            "knowledge": "現場入口條件透過，內部指定觀察點仍須隊員逐段帶領。",
-            "character_state": "賴良跛行保持，不安排奔跑；主角無自行拆設備的許可。",
-            "evidence": "班誌原件交調度保管，副本和銘牌拓片隨隊。",
+            "knowledge": "現場入口條件通過，內部指定觀察點仍須隊員逐段帶領。",
+            "character_state": "賴良跛行、不奔跑，進場前扣好安全帽；林既明換上隊方核准的工程安全帽與反光背心，準備隨隊進場；主角無自行拆設備的許可。",
+            "evidence": "維修班誌原件由陳勳的隊員封袋簽收，轉送調度保管；副本和銘牌拓片隨隊。",
             "carry_forward": "控制站同伴保住即將被移走的其他原始證據。"
           }
         },
@@ -2631,15 +2632,15 @@ export default {
           "timeline": "present",
           "closed_ending": false,
           "number": 35,
-          "title": "原件不能跟車走",
-          "logline": "宋振南企圖以防水搬移原件，鄭茵與周禾建立正式保管交接，防止證據失去去向。",
+          "title": "紀錄間的交接單",
+          "logline": "宋振南企圖以防水為由搬移原件，鄭茵與周禾建立正式保管交接，防止證據失去去向。",
           "hook": "要搬可以，先把交接寫清楚。",
           "hook_type": "reversal",
-          "conflict": "宋振南稱記錄間可能進水，要求把資料盒放公司車；周禾不與他搶物，而請鄭茵通知有權保管者在場核對。",
-          "turn": "有權保管者見證逐件核對時，周禾發現停用批准頁並登記頁碼、製作副本；完整原盒隨即封存交公共保管點，公司車未帶走原件。",
+          "conflict": "宋振南稱紀錄間可能進水，要求把附件原件盒放公司車；周禾不與他搶物，而請鄭茵通知有權保管者在場核對。",
+          "turn": "有權保管者見證逐件核對時，周禾在附件原件盒裡發現停用批准頁並登記頁碼、製作副本；這個盒子隨即封存，連同先前已封存的離線日誌盒一起交公共保管點，公司車未帶走原件。",
           "cliffhanger": {
             "type": "danger",
-            "text": "原件已封存，宋振南卻堵在記錄間門口要求收回副本；周禾護住副本袋，站到保管見證者身旁。"
+            "text": "原件已封存，宋振南卻堵在紀錄間門口要求收回副本；周禾護住副本袋，站到保管見證者身旁。"
           },
           "setups": [
             "m09"
@@ -2663,7 +2664,7 @@ export default {
             "records"
           ],
           "theme": "不讓原件消失，靠的是去向清楚而非誰搶得快。",
-          "lead_arc": "wins",
+          "lead_arc": "mixed",
           "satisfaction": [
             {
               "beat": "opening",
@@ -2679,10 +2680,10 @@ export default {
             }
           ],
           "state": {
-            "time": "02:05–02:10；主角正在東側跟隊，這一集由同伴完成。",
+            "time": "02:05–02:10；主角正在東側跟隊，不在控制站。",
             "knowledge": "停用批准頁出現，下一集才與時戳、派遣單完整串連。",
             "character_state": "周禾能在沒有主角站旁時自行做對的決定。",
-            "evidence": "原盒封存、封條號與交接者記錄完整；不由主角私自收藏。",
+            "evidence": "附件原件盒與離線日誌盒各有封條號，第 12 集封在櫃內的值班班誌原件也列入同一張交接單，三樣一起交公共保管點，交接者紀錄完整；不由主角私自收藏。",
             "carry_forward": "第 36 集建立供正式調查使用的證據鏈，同時回報女孩獲救。"
           }
         },
@@ -2694,11 +2695,11 @@ export default {
           "logline": "停用批准、離線修改與資產派遣時間互相印證，宋振南無法再用一個事故責任人包辦所有解釋。",
           "hook": "不是一張截圖，是整條時間。",
           "hook_type": "line",
-          "conflict": "保管見證者依交接單帶副本離室，宋振南改稱批准頁只是例行設定；周禾對照現場異常與離線時戳；鄭茵逐頁記錄來源，不把推論混成已判決。",
-          "turn": "證據顯示人為停用與延誤發生在主角停權後的公司審批流；同時調度文字確認安安與朵朵已由第二組救到地面救護車。",
+          "conflict": "保管見證者依交接單帶副本離室，宋振南改稱批准頁只是例行設定；周禾對照現場異常與離線時戳；鄭茵逐頁記錄來源，也把自己保存七年、當年被公司退回的旁路節點異常通報影本併入清單，不把推論混成已判決。",
+          "turn": "證據顯示人為停用與延誤發生在主角帳號停用後的公司簽核流程；鄭茵的影本日期同時指向公司當年早知異常、林既明當年遲報；同時調度文字確認安安與朵朵已由南支救援組救到地面救護車。",
           "cliffhanger": {
             "type": "reveal",
-            "text": "鄭茵把「兩名女孩安全」傳到東側；林既明看完，才抬頭完成最後的現場核對。"
+            "text": "鄭茵把「兩名女孩安全」傳到東側；林既明看完，才抬頭去做最後的現場核對。"
           },
           "setups": [],
           "payoffs": [
@@ -2744,15 +2745,15 @@ export default {
             "time": "02:10–02:15；女孩地面救出時刻 02:12。",
             "knowledge": "公司行為證據鏈建立，金流偽造與全部法律責任待後續調查。",
             "character_state": "女兒與孩子低溫觀察但無生命危險；主角得知安全而非親自救她。",
-            "evidence": "資料由有權單位保管，救援文字附人數與接收車次。",
-            "carry_forward": "主角在受控廊完成辨識，並且要跟隊一起退出。"
+            "evidence": "資料由有權單位保管，含鄭茵交出的異常通報影本；救援文字附人數與接收車次。",
+            "carry_forward": "主角在受控觀察廊完成辨識，並且要跟隊一起退出。"
           }
         },
         {
           "timeline": "present",
           "closed_ending": false,
           "number": 37,
-          "title": "這次也有人把他帶出來",
+          "title": "兩塊一樣的銘牌",
           "logline": "林既明與賴良核對正確節點，周禾依授權完成處置；主角撤退時受傷，由專業隊立即帶出。",
           "hook": "確認完了，現在一起出去。",
           "hook_type": "danger",
@@ -2801,8 +2802,8 @@ export default {
             }
           ],
           "state": {
-            "time": "02:15–02:45；入場先決條件已於 33–34 整合立。",
-            "knowledge": "舊圖與互助通道線結清；設備改善仍待後續持續回報。",
+            "time": "02:15–02:45；入場先決條件已於第 33–34 集確認成立。",
+            "knowledge": "新圖漏掉的北側服務通道與舊旁路節點、共用幹線兩條支路的分段救援，這兩條線索結清；設備改善仍待後續持續回報。",
             "character_state": "林既明小腿裂傷與踝扭傷，無致命重傷；賴良、隊員全數撤出。",
             "evidence": "實物確認、操作授權與改善讀值各由不同角色記錄。",
             "carry_forward": "第 38 集時間跳至天亮，交代病患、女兒與關鍵區域逐步恢復。"
@@ -2817,7 +2818,7 @@ export default {
           "hook": "亮起來的，是一盞一盞。",
           "hook_type": "image",
           "conflict": "林既明醒來仍想問全城是否都好，吳雅說清完成和未完成的區域；女兒生氣他受傷，也承認他這次說到做到。",
-          "turn": "鄭茵按時間劃掉已恢復專案，醫院轉移名單全數對上接收端；安安把那份沒送完的餐換成一碗溫粥。",
+          "turn": "鄭茵按時間劃掉已恢復項目，醫院轉移名單全數對上接收端；安安把那份沒送完的餐換成一碗溫粥，彎身時帆布袋滑到身前，父親看見那盞小燈補丁還在，是她小時候跟他學縫、一直沒拆的。",
           "cliffhanger": {
             "type": "reversal",
             "text": "女兒拉亮床邊閱讀燈，父親不再說一切沒事，只說：「我現在好多了。」"
@@ -2860,7 +2861,7 @@ export default {
             }
           ],
           "state": {
-            "time": "02:45–05:45 蒙太奇，重點在天亮時。",
+            "time": "02:45–05:45，天亮前後。",
             "knowledge": "首批與後續轉移完成，關鍵區域恢復；其他城市修復由正常災後工程接續。",
             "character_state": "主角腿部包紮，安安低溫恢復；朵朵與家人團聚由院方登記證實。",
             "evidence": "醫療交接、恢復時間和救援人數表結清。",
@@ -2871,12 +2872,12 @@ export default {
           "timeline": "present",
           "closed_ending": false,
           "number": 39,
-          "title": "不是所有的錯都撤銷",
+          "title": "六個月後的那封通知",
           "logline": "六個月後調查分清主角真過失與栽贓，父女一起讀完有利和不利的結果。",
           "hook": "平反，不是把我的錯也擦掉。",
           "hook_type": "line",
           "conflict": "林既明收到調查通知，安安先問是不是都沒事了；他把未測簽字和遲報責任那頁也放到桌上。",
-          "turn": "原附件、審批與金流核對證明停用警示及收回扣指控為偽造，宋振南和相關責任人接受追究；主角仍承擔已確認過失與規定處分，不即刻恢復全部執業資格。",
+          "turn": "原附件、簽核紀錄與金流核對證明停用警示及收回扣指控為偽造，宋振南和相關責任人接受追究；主角仍承擔已確認過失與規定處分，不即刻恢復全部執業資格。",
           "cliffhanger": {
             "type": "choice",
             "text": "賴良問還想不想把經驗教人，林既明答應先把自己錯過的那兩項列進第一課。"
@@ -2919,7 +2920,7 @@ export default {
           ],
           "state": {
             "time": "六個月後，工作室尚未開課；腿傷已復原可步行。",
-            "knowledge": "責任分項明確，相關刑事程序按結果追究，不虛構雨夜直接定罪。",
+            "knowledge": "責任分項明確；合序依結果補償當夜的受困者與家屬，並重新處理七年前受傷學徒的補償；相關刑事程序按結果追究，不虛構雨夜直接定罪。",
             "character_state": "父女可以談錯誤，賴良願意合作但要求教學留完整紀錄。",
             "evidence": "正式通知、原附件與工作室合規活動範圍可見。",
             "carry_forward": "第 40 集以實際開課與門燈收束，不用頭銜和財富補償結尾。"
@@ -2933,11 +2934,11 @@ export default {
           "logline": "一年後林既明與賴良開設合規維修學徒班，安安點亮門燈，父親把不能省略的確認教給下一代。",
           "hook": "這張表，看完再簽。",
           "hook_type": "reversal",
-          "conflict": "第一堂課的示意表故意缺一項，林既明問要不要為趕時間先簽；新學徒只以無台詞舉手示意缺項。",
+          "conflict": "第一堂課的示意表故意缺一項，林既明問要不要為趕時間先簽；新學徒沒有開口，舉手指向缺的那一項。",
           "turn": "他請賴良一起示範如何標未知、何時交專業人員，安安點亮門口工作燈；有人能走進他曾被擋在外面的門。",
           "cliffhanger": {
             "type": "reversal",
-            "text": "林既明把門開啟，讓第一位學徒進來。普通工作燈照著完整的表，故事在這裡結束。"
+            "text": "林既明把門打開，讓第一位學徒進來。普通工作燈照著完整的表，故事在這裡結束。"
           },
           "setups": [],
           "payoffs": [
@@ -2976,10 +2977,10 @@ export default {
             }
           ],
           "state": {
-            "time": "事故一年後。",
+            "time": "暴雨夜一年後。",
             "knowledge": "救援、真過失、偽造責任及父女關係均已交代；無新案件。",
             "character_state": "主角在合規範圍內教一般維護與安全轉介，不假稱恢復所有專業資格。",
-            "evidence": "示範表明標教學用途，門燈是普通安全成品，不展示電路接法。",
+            "evidence": "示範表明標教學用途，門燈是普通安全成品。",
             "carry_forward": "全季完結；留短暫自然聲與工作室日光，不插新反派或下集預告。"
           }
         }
@@ -2989,10 +2990,10 @@ export default {
   "packaging": {
     "titles": [
       "全城停電後，七年前被開除的工程師終於說出了真相",
-      "他們嫌外送員礙事，直到醫院只剩最後一點電",
+      "他們嫌外送員礙事，直到螢幕說電梯是空的，他卻聽見裡面有人",
       "被全城罵了七年的人，這一夜仍然選擇回去救人"
     ],
-    "description": "他穿著外送服送餐，卻在停電的醫院看見七年前被壓下的缺口。女兒困在兩百五十公尺外，他得說出自己的錯，也得相信別人能把她救回來。一部以真本事、多人合作與父女信任推進的原創都市救援漫劇。規劃約兩小時完整故事；實際片長與章節待成片確認。電影感 3D、台灣國語，擬採 AI 輔助影像與聲音，發布時依實際素材填寫合成內容揭露。",
+    "description": "他穿著外送服送餐，卻在停電的醫院認出七年前那道缺口。女兒困在兩百五十公尺外，他得把自己知道的每一件事說清楚，也得相信別人能把她救回來。一部以真本事、多人合作與父女信任推進的原創都市救援漫劇。規劃約兩小時完整故事；實際片長與章節待成片確認。電影感 3D、台灣國語，擬採 AI 輔助影像與聲音，發布時依實際素材填寫合成內容揭露。",
     "tags": [
       "漫劇",
       "AI漫劇",
@@ -3016,7 +3017,7 @@ export default {
       {
         "id": "B",
         "headline": "他懂這間醫院",
-        "composition": "吳雅認出林既明，前景是外送袋，背景以舊標牌與紙圖對照，不使用七年後才出現的調查檔案。",
+        "composition": "吳雅認出林既明，前景是外送袋，背景以舊標牌與紙圖對照，不使用六個月後才出現的調查文件。",
         "episode": 3,
         "scene": "吳雅讓周禾接收林既明的具體觀察。",
         "promise": "前三集展現設備經驗，但後續仍逐項核對，不假扮隱藏富豪。"
@@ -3034,20 +3035,25 @@ export default {
     "visual_identity": "四個地點在同一張簡圖固定方位。青灰雨夜、外送橘、醫護冷白、救援琥珀形成角色辨識；每場只用 1–2 個主要空間、2–4 名具名角色，遠端通話也列聲線。動態集中在病床移動、交圖、救援接力、撤退與父女重逢。",
     "music": "前段用雨聲與有限脈衝建立急迫，設備狀態變化不都靠爆炸音。第 20 集承認過失抽掉節拍，第 31 集託付留呼吸，第 37 集救援不鋪英雄高昂主題蓋過指令；末集以工作室環境聲和短暖色旋律收束。",
     "release_order": 3,
-    "pinned_comment": "你最記得哪一次「先確認再決定」？如果一個人真的犯過錯，又被栽上別的罪，什麼樣的行動能讓你重新信任他？"
+    "pinned_comment": "你最記得哪一次「先確認再決定」？如果一個人被全城罵了七年，他要做什麼，你才願意把下一步交給他？"
   },
   "continuity_notes": [
     "空間固定：醫院北、轉運站南 250 公尺、控制站西 400 公尺、排水設施東 700 公尺。第 11 集含安全車移動十分鐘，第 31–32 集主角移往東側集合點；第 35 集由留在控制站的同伴保全證據，主角不瞬移回去。",
-    "安安位置：第 1 集只有轉運站、第 3 集南側、第 9 集 B1 高處值班區、第 17 集依工作人員確認路線轉平臺、第 26 集警示指向此處；第 29 集向全技術組坦白關係與既知位置，不假裝陳勳、鄭茵先前不知道；31 正式託付、32 仍等待、36 於 02:12 救到地面、38 父女可見重逢。",
+    "安安位置：第 1 集只有轉運站、第 3 集南側、第 9 集 B1 高處值班區、第 17 集依工作人員確認路線轉平台、第 26 集警示指向此處；第 29 集向全技術組坦白關係與既知位置：陳勳、鄭茵早已知情，周禾與吳雅自第 3 集就知道他有女兒在南側（簡訊由周禾留存），周禾只是還沒把 B1 平台那筆受困編號和她對上，剛加入的維修班則只見編號，不假裝任何人先前不知道位置；31 正式託付、32 仍等待、36 於 02:12 救到地面、38 父女可見重逢。",
     "第一集即有停止未核對重啟和確認病患回應的具體回報；第二集才由專業隊完整救出。主角不碰電梯控制、不私撬門，畫面不教授脫困操作。",
-    "真過失為未完成高風險測試就簽有條件驗收、未即時外部通報；栽贓為停用功能與收回扣。19–21 承認簽字與遲報，24 只證實停權後另有改動，36 串起當夜隱瞞，39 才由正式調查分清過失與偽造。",
+    "真過失為未完成高風險測試就簽有條件驗收、未即時外部通報；栽贓為停用功能與收回扣。19–21 承認簽字與遲報，24 只證實帳號停用後另有改動，36 串起當夜隱瞞，39 才由正式調查分清過失與偽造。",
     "醫院備援不是毫無理由與市電一起全失效：獨立供能仍在，淹水影響散熱與冗餘，工程員定時更新安全轉移時間。27 在 00:15 給約兩小時的轉移時間，28/29 仍更新，33 首批於 02:00 前交接，38 交代後續轉移及關鍵區域逐步恢復。",
-    "30 提出受控現場辨識，不表示當場入水；33 工程隔離、抽排和檢測確認，34 隊員帶領到指定觀察點，37 主角只核對銘牌並回報，周禾從安全控制站以本人權限執行。撤離受傷由專業隊救出，不用裸手短接或單人涉水顯示勇敢。",
+    "30 提出受控現場辨識，不表示當場入水；33 工程隔離、抽排和檢測確認，34 入口條件通過並取得隨隊入場許可、35–36 由隊員逐段帶到指定觀察點，37 主角只核對銘牌並回報，周禾從安全控制站以本人權限執行。撤離受傷由專業隊救出，不用裸手短接或單人涉水顯示勇敢。",
     "角色權限固定：陳勳決定現場進出與救援，吳雅決定醫護轉移需求，周禾執行授權設備操作，鄭茵維持調度資訊，林既明與賴良提供可核對的舊知識。當夜貢獻不自動恢復主角執業資格。",
-    "原件與副本去向：6 周禾封本地原表、12 原班誌櫃留存、23 賴良先傳副本、24 離線盒封存、25 異常表交鄭茵、34 賴良交原班誌、35 有權人員接管原件。36 證據可供調查，不以私下截圖宣判。",
-    "賴良第 23 集只遠端交資料，29 答應安全集合，34 才到東側；其跛行保留，沒有突然跑過水道。主角第 37 集腿傷，38 包紮，39 六個月後可步行，40 一年後開課。",
+    "原件與副本去向：6 周禾封本地原表、9 安安位置寫上陳勳保管的現場圖（29 起另有林既明補全的副本，31 交陳勳）、12 值班班誌原件留櫃封存、23 賴良先傳維修班誌副本、24 離線日誌盒封存留在紀錄間、25 異常表交鄭茵、34 賴良交維修班誌原件（陳勳的隊員封袋簽收後轉送調度）、35 附件原件盒在有權保管者見證下核對封存，連同離線日誌盒與 12 封存的值班班誌原件一起交公共保管點、36 鄭茵交出保存七年的異常通報影本。36 證據可供調查，不以私下截圖宣判。",
+    "賴良第 23 集只遠端交資料，29 以電話答應安全集合，32 時仍在安全交通車上（約二十分鐘後到），約 01:55 抵達東側集合點，34 才在集合點入鏡；其跛行保留，沒有突然跑過水道。主角第 37 集腿傷，38 包紮，39 六個月後可步行，40 一年後開課。",
     "安安與朵朵以分享外套、記門牌、等待確認的救援者推進，不自行進入機房或積水。孩子最終與家人團聚用院方紀錄交代，不額外新增聲線與主線。",
-    "第 40 集學徒只作無台詞背景，主要四聲線為林既明、賴良、安安、周禾。門口燈是普通成品，呼應被擋在外的第一幕；不另揭有錢身份、不開新陰謀。",
+    "道具與穿著狀態（逐集）：固定外觀提示詞（appearance）只寫整部不變的樣子，下列會出現、消失、換手或改變的東西都不在裡面；鏡頭提示詞要照這裡寫，固定外觀提示詞不含這些東西。①林既明的白色外送頭盔（scratched white bike helmet）：第 1–8 集隨身，戴著或拿在手上由分鏡決定（第 1 集縮圖 A 構圖寫明外送頭盔）；第 8 集末拍他把頭盔放在資料袋旁、選擇留下，第 9 集起劇本不再出現，鏡頭提示詞不寫。②林既明的外送餐袋：第 1–3 集在他手邊（開場 0–5 秒被攔在設備區線外、第 2 集在地面接回餐袋）；第 3 集末拍由吳雅暫收，之後不在他身上；第 38 集安安把那份沒送完的餐換成一碗溫粥。③林既明的隊方核准工程安全帽與反光背心（approved engineering hard hat and reflective safety vest）：只在隨隊進入受控觀察廊時穿戴，第 34 集末拍準備進場（賴良扣好安全帽那一拍）起，第 36 集已在觀察廊內、隨隊前往指定觀察點，到第 37 集核對銘牌後撤出為止；第 35 集他不入鏡；其餘各集不寫。④林既明的雨濕與傷：第 1–37 集雨夜各場的雨濕、泥水程度由鏡頭提示詞按場景加；第 37 集撤離途中小腿裂傷與踝扭傷、被扶上擔架（擔架只在這一集）；第 38 集在留觀病床上、腿部包紮，因固定外觀含外送外套與黑色雨靴，該集鏡頭用被子蓋住腿部或只拍上半身；第 39 集六個月後腿傷已復原可步行，第 39–40 集不寫包紮、擔架、跛行或雨濕。⑤林安安的淺綠色大號雨衣外套（oversized pale green rain jacket）：第 9 集及第 17 集分外套之前穿在她身上；第 17 集她把外套分給朵朵，該拍起外套在朵朵身上（披在粉紅雨披外），劇本沒有寫還回；第 26 集兩人同場，外套仍在朵朵身上，安安只有固定外觀的校服襯衫；第 31 集安安不穿外套（朵朵若在背景，外套仍在她身上）；第 36 集兩人救到地面只以調度文字交代、不入鏡；第 38–40 集劇本沒有寫她穿這件外套，鏡頭提示詞不加。⑥林安安的手電筒：只在第 17 集拿在手上照出清楚視線，其他集劇本沒寫，不加。⑦林安安的潮濕與受冷：第 9 集衣物潮濕、第 17 集受冷，第 26、31 集仍在平台等待，沿用潮濕受冷；第 38 集在留觀病房低溫恢復；第 39–40 集不寫潮濕。⑧朵朵具名入鏡只在第 17、26 集（第 31 集至多是背景）：粉紅雨披與狐狸玩偶在固定外觀，第 17 集那一拍起再加安安的外套（見⑤）；第 36 集救出、第 38 集與家人團聚都只以紀錄交代，不入鏡。⑨賴良的舊黃色安全帽（old yellow hard hat with a narrow white stripe）：第 23 集只以電話出場、第 29 集答應會合尚未到場，都不戴；第 34 集到集合點時拿在手上，該集末拍扣好，戴到第 37 集撤出；第 39–40 集劇本沒寫，不加。跛行全劇不變，已在固定外觀。⑩賴良的維修班誌原件（folded paper notebook in a clear waterproof sleeve）：第 23 集原件由他持有（維修班誌副本上註明），只傳副本；第 29 集以電話出場，鏡頭不加；第 34 集帶到集合點，交陳勳的隊員封袋簽收後轉送調度，之後不在他身上；隨隊的是副本與銘牌拓片，第 34 集起他與林既明各拿一份確認表。⑪宋振南：劇本沒有他外表變凌亂的一場，各集照固定外觀、不加凌亂；黑傘（black umbrella）不在固定外觀，劇本也沒有他撐傘的一拍，不加。⑫鄭茵在哪個位置由各集 locations 與劇本決定，不寫進外觀。⑬留在固定外觀的招牌物件，劇本沒有寫離身的拍點：林既明的外送外套與口袋裡的鋼製鉛筆、安安的黃色帆布袋（小燈補丁）、朵朵的狐狸玩偶（第 17 集寫明一直由朵朵抱著）、吳雅的分診包與紙本病患表、鄭茵的耳機與銀錶、周禾的藍色安全帽與防水小筆記本、陳勳的白色救援頭盔、無線電與地圖袋；分鏡若要其中一樣離身，那一拍鏡頭用構圖避開或由鏡頭提示詞寫明。",
+    "第 40 集學徒只作無台詞背景，主要四聲線為林既明、賴良、安安、周禾。門口燈是普通成品，呼應被擋在外的第一幕；不另揭有錢身分、不開新陰謀。",
+    "七年前事故（虛構）：地點是東側排水設施觀察廊的舊入口；園區啟用後第一場豪雨時，舊旁路節點的本地警示沒有響，賴良帶的一名維修班學徒受困近兩小時、腿部骨折後由消防救出，無人死亡。這名學徒不具名、不出聲，只在紙本與台詞中被提到。第 8 集網路上被翻出的、第 34 集賴良在舊入口想起的都是這一場；第 36 集鄭茵交出的，是當年被合序退回的旁路節點異常通報影本，日期同時指向公司早知異常與林既明遲報。事後合序開除林既明、同時停用他的帳號，維修班之後被辭退；全劇只用「開除」（工作）與「帳號停用」（系統）兩個說法，不寫停職、停權。回扣假紀錄上的付款方是零件供應商岱恆機電（虛構），付款紀錄由合序製作；停用警示、改報狀態的是合序系統公司。第 39 集的結果：林既明受處分，合序補償當夜受困者與家屬，並重新處理這名學徒的補償。",
+    "名稱統一：新圖少掉的那條一律叫「北側服務通道」（醫院後側出發的共用幹線，中途分成南支與東支兩條支路：南支接轉運中心，東支經東側集合點接排水觀察廊；不寫東段、東端），「受控觀察廊」只指東側排水設施內的廊，兩者不混用。兩本班誌：控制站的「值班班誌」（第 12 集查到北側服務通道的檢修簽註，原件留紀錄間櫃內封存，第 35 集列入交接單交公共保管點）與賴良保存的「維修班誌」（第 23 集傳副本、第 34 集交原件）；值班班誌裡的日常檢查一律叫「檢修簽註」，不叫維修或維護簽註，免得和維修班誌混淆。盒子也是兩個、不是同一個：第 24 集封存的「離線日誌盒」（離線日誌原件），與第 35 集宋振南想搬上公司車的「附件原件盒」（驗收附件原件與停用批准頁）；第 35 集兩盒一起交公共保管點，附件內容由第 39 集正式調查核對。南側隊伍只用兩個稱呼：第 16 集勘路的「南支勘查組」，第 31 集起正式派出、第 36 集把兩名女孩救到地面的「南支救援組」。第 5 集末響起的是公司打給周禾的電話，第 6 集由周禾掛斷後複述內容，來電者不出聲、不列出場。聲線：旁白 Charon、林既明 Iapetus、賴良 Algenib，同一集有台詞的具名角色不共用聲音。",
+    "呈現界線：七年前學徒受困與受傷只以紙本紀錄、賴良一句話或舊入口的空景交代，不重演受困過程、不拍傷處；第 37 集林既明受傷只拍碎片落下、他倒地與隊員扶上擔架，不拍傷口特寫與流血；安安與朵朵全程不下水，不拍受傷或驚叫特寫；任何受傷都不當成勇敢的勳章。",
+    "不出聲的人與製作提醒：第 13–16 集受困的值班員沒有角色卡，不具名、不出聲。第 13–15 集他的求救與受困回報都是簡訊，畫面上以文字呈現；要唸出來時只由該集出場清單裡的人複誦（第 13 集傳到中繼點、由陳勳回報，第 14–15 集傳到調度席、由鄭茵複誦）。第 16 集他獲救後交出親手寫的紙條，同樣不開口。第 22 集周禾不在出場清單，工程回報以文字送到調度席、不配聲音。第 13 集只通了一段，剪接不要讓人以為轉運中心已通；第 38 集 02:45–05:45 以蒙太奇壓縮、重點放在天亮時；第 40 集門燈只拍成品、不展示電路接法。",
     "這些是可製作的敘事規格與規劃秒數；未生成影片、音訊、五語字幕或縮圖圖片，也沒有完成真實片長、救援專業顧問覆核、試聽或觀看留存驗收。"
   ]
 };

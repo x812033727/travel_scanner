@@ -16,6 +16,8 @@ problem response; nothing here raises ``AppError``.
 
 from __future__ import annotations
 
+import hashlib
+import json
 import re
 from datetime import UTC, datetime
 from typing import Any, cast
@@ -239,6 +241,33 @@ async def post_message(
 # --- the worker's side ----------------------------------------------------------------------------
 
 
+def discussion_revision_context(docs: list[VideoDramaDoc], subject: str) -> str:
+    """Bind the answer to the target and parents actually read, including pending statuses."""
+    kind, chapter = parse_subject(subject)
+    keys = {(kind, chapter)}
+    if kind in ("outline", "chapter"):
+        keys.add(("setting", 0))
+    if kind == "chapter":
+        keys.add(("outline", 0))
+        if chapter > 1:
+            keys.add(("chapter", chapter - 1))
+    latest = series_module.latest_docs(docs)
+    snapshot = [
+        [key, None]
+        if (doc := latest.get(key)) is None
+        else [
+            key,
+            str(doc.id),
+            doc.version,
+            doc.status,
+            doc.body_md,
+            doc.body_json,
+        ]
+        for key in sorted(keys)
+    ]
+    return hashlib.sha256(json.dumps(snapshot, sort_keys=True).encode()).hexdigest()
+
+
 async def next_message(session: AsyncSession) -> MessageJobOut:
     """The oldest of the owner's lines still waiting for the model, with the thread, the
     document's latest version or the episode, and the series' context; none while every thread
@@ -251,7 +280,9 @@ async def next_message(session: AsyncSession) -> MessageJobOut:
     )
     if row is None:
         return MessageJobOut(job=None)
-    series = await session.get(VideoDramaSeries, row.series_id)
+    # Document edits take the same lock, so the target, parent context and fingerprint
+    # belong to one snapshot, even when a queued message predates the latest edit.
+    series = await session.get(VideoDramaSeries, row.series_id, with_for_update=True)
     if series is None:
         return MessageJobOut(job=None)
     doc, episode, _review = await _target(session, series, row.subject)
@@ -274,7 +305,12 @@ async def next_message(session: AsyncSession) -> MessageJobOut:
             target="script" if kind == "script" else "doc",
             doc=series_module.doc_view(doc) if doc else None,
             episode=series_module.episode_view(episode) if episode else None,
-            context=await series_module.context_view(session, series, for_episode),
+            context=await series_module.context_view(
+                session, series, for_episode, discussion=kind != "script"
+            ),
+            revision_context=(
+                discussion_revision_context(docs, row.subject) if kind != "script" else None
+            ),
         )
     )
 
@@ -316,6 +352,7 @@ async def _revise_doc(
         status="review",
         created_at=now,
     )
+    await series_module.invalidate_document_dependents(session, series, docs, kind, chapter)
     session.add(doc)
     return doc
 
@@ -335,16 +372,31 @@ async def answer_message(
     series = await series_module._series_by_id(session, row.series_id)  # noqa: SLF001
     now = _now()
     revision: VideoDramaDoc | None = None
+    revision_refused: str | None = None
     refers_to = row.refers_to
     if is_script(row.subject):
         _doc, episode, review = await _target(session, series, row.subject)
         refers_to = sha_ref(review.content_sha256 if review else None) or refers_to
     elif payload.revised is not None:
-        revision = await _revise_doc(
-            session, series, row.subject, payload.revised.body_md, payload.revised.body_json
-        )
+        docs = await series_module._docs(session, series)  # noqa: SLF001
+        if payload.revision_context is None:
+            revision_refused = "未套用新版本：工人沒有提供文件快照。請更新工人後重新提出修改要求。"
+        elif payload.revision_context != discussion_revision_context(docs, row.subject):
+            revision_refused = (
+                "未套用新版本：文件或上游文件已更新，這則回覆依據舊版本。"
+                "請核對最新文件後重新提出修改要求。"
+            )
+        else:
+            revision = await _revise_doc(
+                session, series, row.subject, payload.revised.body_md, payload.revised.body_json
+            )
+            if revision is None:
+                revision_refused = "未套用新版本：這份文件已核准。"
         if revision is not None:
             refers_to = version_ref(revision)
+        elif revision_refused:
+            # Do not label an answer written from an old snapshot as a change to the new draft.
+            refers_to = None
     else:
         doc, _episode, _review = await _target(session, series, row.subject)
         refers_to = version_ref(doc) or refers_to
@@ -353,7 +405,11 @@ async def answer_message(
         series_id=series.id,
         subject=row.subject,
         author=author_for(row.subject),
-        body_md=payload.reply_md,
+        body_md=(
+            f"{payload.reply_md}\n\n（{revision_refused}）"
+            if revision_refused
+            else payload.reply_md
+        ),
         refers_to=refers_to,
         answered_at=now,
         created_at=now,
@@ -365,4 +421,6 @@ async def answer_message(
     revised_view: SeriesDocOut | None = (
         series_module.doc_view(revision) if revision is not None else None
     )
-    return MessageAnswerOut(reply=message_view(reply), revision=revised_view)
+    return MessageAnswerOut(
+        reply=message_view(reply), revision=revised_view, revision_refused=revision_refused
+    )
