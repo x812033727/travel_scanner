@@ -103,6 +103,118 @@ test("wrapCue breaks near the middle, after punctuation, into lines that fit", (
   assert.equal(english.split("\n").length, 2);
 });
 
+for (const locale of ["zh-TW", "zh-CN", "ja"]) {
+  test(`${locale} wraps versions, prices and product names only at complete token boundaries`, () => {
+    for (const token of ["4.0", "0.50", "GPT-6", "C++", "C#", "A_B", "O'Neil"]) {
+      const rules = { ...LOCALE_RULES[locale], maxChars: Math.ceil(measure(token, zh) + 1) };
+      const text = `甲${token}乙`;
+      const lines = wrapCue(text, rules).split("\n");
+      assert.ok(lines.some((line) => line.includes(token)), `${token}: ${lines.join(" / ")}`);
+      assert.equal(lines.join(""), text);
+      assert.equal(lines.length, 2);
+      for (const line of lines) assert.ok(measure(line, rules) <= rules.maxChars, line);
+    }
+    assert.equal(wrapCue("GPT-6乙", { ...LOCALE_RULES[locale], maxChars: 3 }), "GPT-6\n乙");
+  });
+
+  test(`${locale} keeps closing punctuation with preceding text, including spaces and consecutive closers`, () => {
+    for (const [text, maxChars] of [["甲甲。乙", 3], ["甲甲甲 。乙", 3], ["甲甲甲。」乙乙", 4], ["甲甲。 \t」乙乙", 4]]) {
+      const rules = { ...LOCALE_RULES[locale], maxChars };
+      const pieces = splitText(text, rules);
+      const lines = pieces.flatMap((piece) => {
+        const wrapped = wrapCue(piece, rules).split("\n");
+        assert.ok(wrapped.length <= rules.maxLines, wrapped.join(" / "));
+        return wrapped;
+      });
+      assert.equal(lines.join("").replace(/\s/g, ""), text.replace(/\s/g, ""));
+      for (const line of lines) {
+        assert.doesNotMatch(line.trimStart(), /^[，。！？；：、,.!?;:）」』)\]]/u);
+        assert.ok(measure(line, rules) <= maxChars, line);
+      }
+    }
+  });
+
+  test(`${locale} splits a three-line token layout into cues before wrapping or merging`, () => {
+    const rules = { ...LOCALE_RULES[locale], maxChars: 4 };
+    const text = "甲ABCDEF。乙";
+    assert.equal(fits(text, rules), false);
+    const pieces = splitText(text, rules);
+    assert.equal(pieces.length, 2);
+    assert.equal(pieces.join(""), text);
+    assert.ok(pieces.some((piece) => piece.includes("ABCDEF。")));
+    const timed = timePieces(pieces, 0, 1000, rules);
+    assert.equal(timed.length, 2, "a short duration must not merge an unwrappable cue");
+    for (const cue of timed) {
+      const lines = wrapCue(cue.text, rules).split("\n");
+      assert.ok(lines.length <= rules.maxLines);
+      for (const line of lines) assert.ok(measure(line, rules) <= rules.maxChars, line);
+    }
+  });
+}
+
+test("an indivisible token with closing punctuation stays intact for width QA", () => {
+  const text = `${"A".repeat(32)}。乙`;
+  const pieces = splitText(text, zh);
+  const wrapped = pieces.map((piece) => wrapCue(piece, zh));
+  assert.equal(wrapped.join("").replace(/\n/g, ""), text);
+  assert.ok(wrapped.some((piece) => piece.includes(`${"A".repeat(32)}。`)));
+  assert.ok(checkCues(wrapped.map((value) => ({ start_ms: 0, end_ms: 10000, text: value })), "zh-TW")
+    .some((problem) => problem.includes("wider than 16")));
+});
+
+test("safe existing zh-TW fixture captions keep their exact line breaks", () => {
+  const doc = fixture();
+  const texts = Object.fromEntries([...eachLine(doc)].map(({ line }) => [line.id, line.text]));
+  assert.deepEqual(buildCues(estimateTimeline(doc), texts, "zh-TW").cues.map((cue) => cue.text), [
+    "每次有新模型出來，排行榜就換一次\n第一名，你真的每次都要跟著換嗎？",
+    "今天用三個問題，幫你在五分\n鐘內決定要用哪一個 AI 模型",
+    "第一個問題是，你要它做什麼工作",
+    "第二個問題是，\n你能接受它想多久才回答",
+    "第三個問題是，\n你每個月願意為它付多少錢",
+    "把這三個答案寫下來，再去看排\n行榜，你會發現選擇變得很清楚",
+    "完整的比較表放在說明欄的\n文章裡，我們下一支影片見",
+  ]);
+});
+
+// Real source lines that already rendered safely before token-boundary protection.
+// Synthetic 100-second speech makes the exact old cue boundaries and weights observable.
+for (const [locale, id, text, expected] of [
+  ["zh-TW", "akm3", "我的看法是：安全要靠系統真的擋住，不是靠提示詞裡的一句「不要」。", [
+    [100400, "我的看法是：安全要靠系統真的擋\n住，不是靠提示詞裡的一句「不要」"],
+  ]],
+  ["zh-TW", "3xvu", "有公布的：算力、記憶體容量、功耗，還有記憶體頻寬，每秒 300 GB。", [
+    [100400, "有公布的：算力、記憶體容量、功\n耗，還有記憶體頻寬，每秒 300 GB"],
+  ]],
+  ["zh-TW", "3pgu", "每月一號太平洋時間午夜重設；部數、秒數和其他功能的點數要分開看。", [
+    [100400, "每月一號太平洋時間午夜重設；部\n數、秒數和其他功能的點數要分開看"],
+  ]],
+  ["zh-TW", "qwig", "歐盟的 iPhone、iPad、手錶不提供，只有 Mac 和 Vision Pro 可以。", [
+    [100400, "歐盟的 iPhone、iPad、手錶不提\n供，只有 Mac 和 Vision Pro 可以"],
+  ]],
+  ["ja", "rh8y", "では、AIはあなたの仕事を奪うのか。私の答えは「まずタスクを奪う。しかも2月の見出しが示したより速く」です。", [
+    [60043, "では、AIはあなたの仕事を奪うの\nか。私の答えは「まずタスクを奪う"],
+    [100400, "しかも2月の見出しが\n示したより速く」です"],
+  ]],
+  ["ja", "wpuc", "私の選択です。これは測定ではなく、私の意見です。毎日の要約には、ちゃんと読める中で一番安いモデル。金額はわずかです。", [
+    [54764, "私の選択です。これは測定ではな\nく、私の意見です。毎日の要約には"],
+    [100400, "ちゃんと読める中で一番安\nいモデル。金額はわずかです"],
+  ]],
+  ["zh-CN", "dgig", "AI 安全中心的报告指出，到了七月，Claude Fable 5 达到了 15.8%。", [
+    [100400, "AI 安全中心的报告指出，到了七\n月，Claude Fable 5 达到了 15.8%"],
+  ]],
+  ["zh-CN", "akm3", "我的看法是：安全要靠系统真正挡住，而不是靠提示词里的一句“不要”。", [
+    [100400, "我的看法是：安全要靠系统真正挡\n住，而不是靠提示词里的一句“不要”"],
+  ]],
+]) {
+  test(`${locale}/${id} preserves safe rendered cues and raw punctuation timing weights`, () => {
+    const actual = buildCues({ lines: [{ id, start_frame: 0, end_frame: 3030, audio_samples: 4800000 }] }, { [id]: text }, locale);
+    assert.deepEqual(actual, {
+      cues: expected.map(([end_ms, value], index) => ({ start_ms: index ? expected[index - 1][0] : 0, end_ms, text: value, line: id })),
+      missing: [],
+    });
+  });
+}
+
 test("Chinese cues drop a trailing comma or full stop; English cues keep their punctuation", () => {
   assert.equal(displayText("我們下一支影片見。", zh), "我們下一支影片見");
   assert.equal(displayText("你真的要換嗎？", zh), "你真的要換嗎？");

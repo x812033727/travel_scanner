@@ -595,15 +595,18 @@ class AntigravityAccounts:
     def _record_usage(
         self, slot: str, windows: list[dict[str, Any]] | None, error: str | None
     ) -> None:
-        path = self.home(slot) / SNAPSHOT_NAME
-        previous = read_json(path) or {}
-        snapshot = {
-            "recorded_at": int(time.time()) if windows else previous.get("recorded_at"),
-            "windows": windows if windows else previous.get("windows", []),
-            "error": error,
-        }
-        with contextlib.suppress(OSError):
-            atomic_write_text(path, json.dumps(snapshot, separators=(",", ":")))
+        with self._account_lock:
+            if not self.has_credentials(slot):
+                return
+            path = self.home(slot) / SNAPSHOT_NAME
+            previous = read_json(path) or {}
+            snapshot = {
+                "recorded_at": int(time.time()) if windows else previous.get("recorded_at"),
+                "windows": windows if windows else previous.get("windows", []),
+                "error": error,
+            }
+            with contextlib.suppress(OSError):
+                atomic_write_text(path, json.dumps(snapshot, separators=(",", ":")))
 
     def refresh_usage(self, slot: str) -> bool:
         """Open the TUI once, show its quota page and record the windows on it.
@@ -737,11 +740,11 @@ class AntigravityAccounts:
                 # A login moved aside by a sign-in in progress is that sign-in's to settle.
                 if not path.name.endswith(SET_ASIDE_SUFFIX):
                     path.unlink(missing_ok=True)
-            # After the login files are gone and under the lock: a _remember() that already
-            # holds the lock has its write removed by this unlink, and one that takes the lock
-            # later finds no credentials and writes nothing.
+            # After the login files are gone and under the lock: an account or usage writer
+            # that already holds the lock has its write removed by these unlinks, and one
+            # that takes the lock later finds no credentials and writes nothing.
             with self._account_lock:
                 (home / ACCOUNT_NAME).unlink(missing_ok=True)
-            (home / SNAPSHOT_NAME).unlink(missing_ok=True)
+                (home / SNAPSHOT_NAME).unlink(missing_ok=True)
         except OSError as exc:
             raise CliError(f"cannot sign agy out: {exc.strerror}") from exc

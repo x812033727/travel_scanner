@@ -4,7 +4,7 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { explainerFixture, sandbox } from '../core/fixtures/load.mjs';
 import { main } from './cli.mjs';
-import { episodeShort, sceneHtml, sha256, validate, verifyEvidence } from './core.mjs';
+import { cameraWords as cameraWordOf, episodeShort, sceneHtml, sha256, validate, verifyEvidence } from './core.mjs';
 import { EPISODE_SERIES, episodeShortFields, episodeShortsProblems, loadEpisodeShorts, shortsFile } from './episode.mjs';
 
 /** The explainer fixture in a sandbox, with a keyframe per shot in its work directory. */
@@ -90,4 +90,50 @@ test('the series theme brands every card and points every card to the long video
 test('from-episode needs the episode and one of its two Shorts', async () => {
   await assert.rejects(main(['from-episode']), /--slug required/);
   await assert.rejects(main(['from-episode', '--slug', 'x', '--short', '3']), /--short must be 1 or 2/);
+});
+
+test('a shot\'s picture moves in the Short as it did in the long video, and an illustrated slides video\'s Shorts carry their own series and theme', async () => {
+  const { illustratedFixture, sandbox: box } = await import('../core/fixtures/load.mjs');
+  const { episodeSeries, ILLUSTRATED_SERIES } = await import('./episode.mjs');
+  const { themeOf } = await import('./layouts.mjs');
+  const { explainerFixture } = await import('../core/fixtures/load.mjs');
+  assert.equal(episodeSeries(explainerFixture()), EPISODE_SERIES);
+  assert.equal(episodeSeries(illustratedFixture()), ILLUSTRATED_SERIES);
+  assert.equal(episodeShortFields('jev-model', 0, ILLUSTRATED_SERIES).series, 'illustrated');
+  assert.equal(themeOf({ schema_version: 2, line: 'cut', series: ILLUSTRATED_SERIES }).id, 'cut-illustrated');
+
+  // The explainer's Shorts: each shot's camera direction becomes the scene's camera word.
+  const { load } = episodeBox();
+  const [first] = load().shorts;
+  const cameras = Object.fromEntries(explainerFixture().scenes.filter((scene) => scene.template === 'shot').map((scene) => [scene.id, scene.data.camera]));
+  assert.ok(first.scenes.every((scene) => typeof scene.camera === 'string'), 'every picture scene moves');
+  assert.equal(first.scenes[0].camera, cameraWordOf(cameras.flash));
+  assert.deepEqual(validate(first), []);
+
+  // An illustrated slides video with shorts.json naming its shots: its keyframes, its cameras, its series.
+  const sand = box('ranking-first', 'illustrated');
+  const video = { ...illustratedFixture(), slug: 'ranking-first' };
+  writeFileSync(path.join(sand.dir, 'video.json'), JSON.stringify(video));
+  const shots = {};
+  mkdirSync(path.join(sand.workdir, 'keyframes'), { recursive: true });
+  for (const scene of video.scenes.filter((each) => each.template === 'shot')) {
+    const bytes = Buffer.from(`png of ${scene.id}`);
+    writeFileSync(path.join(sand.workdir, `keyframes/${scene.id}-1.png`), bytes);
+    shots[scene.id] = { file: `keyframes/${scene.id}-1.png`, sha256: sha256(bytes), needs_review: false };
+  }
+  writeFileSync(path.join(sand.workdir, 'keyframes', 'manifest.json'), JSON.stringify({ shots }));
+  const shorts = [0, 1].map((index) => ({
+    ...episodeShortFields('ranking-first', index, ILLUSTRATED_SERIES),
+    titles: ['第一名不一定最好用', '排行榜是考試'], description: '完整故事在長片。',
+    scenes: [{ headline: '你以為第一名最好用', narration: ['你以為第一名最好用'], shot: 'podium' }, { headline: '三個數字', narration: ['三秒對二十秒'], big: '20 秒' }, { headline: '先看工作', narration: ['先看工作再看排行榜'], shot: 'door', camera: 'tilt up' }],
+  }));
+  writeFileSync(shortsFile('ranking-first', sand.root), JSON.stringify(shorts));
+  const loaded = loadEpisodeShorts({ slug: 'ranking-first', root: sand.root, env: { VIDEO_WORKDIR: sand.work }, home: sand.base });
+  assert.equal(loaded.shorts[0].scenes[0].camera, cameraWordOf(video.scenes.find((scene) => scene.id === 'podium').data.camera), "the long video's camera");
+  assert.equal(loaded.shorts[0].scenes[2].camera, 'tilt up', "the Short's own word wins");
+  assert.equal(loaded.shorts[0].scenes[1].camera, undefined, 'a scene of cards has no picture to move');
+  assert.equal(loaded.shorts[0].scenes[0].asset, 'keyframes/podium-1.png');
+  assert.deepEqual(episodeShortsProblems(shorts.map((doc) => ({ ...doc, series: 'sothatswhy' })), video), ['short 1: series must be illustrated', 'short 2: series must be illustrated']);
+  writeFileSync(path.join(sand.dir, 'video.json'), JSON.stringify({ ...video, scenes: video.scenes.filter((scene) => scene.template !== 'shot') }));
+  assert.throws(() => loadEpisodeShorts({ slug: 'ranking-first', root: sand.root, env: { VIDEO_WORKDIR: sand.work }, home: sand.base }), /has no shots/);
 });

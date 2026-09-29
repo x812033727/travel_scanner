@@ -3,7 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { AdminOperationsProvider } from "./admin-operations-provider";
 import { AdminVideoDramaSettings } from "./admin-video-drama-settings";
 import { AdminVideoModelSettings } from "./admin-video-model-settings";
-import { AdminVideoSettings, dramaBody, linesToList, mediaChoice, normalizeDrama, settingsBody, sharedBody, STAGES, tutorialBody } from "./admin-video-settings";
+import { AdminVideoSettings, dramaBody, linesToList, mediaChoice, normalizeDrama, normalizeSlides, settingsBody, sharedBody, STAGES, tutorialBody } from "./admin-video-settings";
 import type { AdminBootstrap } from "@/lib/admin-operations";
 
 vi.mock("@/components/header-session", () => ({ useHeaderSession: () => ({ user: null, sessionIdentity: null, status: undefined }) }));
@@ -34,8 +34,15 @@ const view = {
     drama_stage_models: null, drama_stage_instructions: { writer: "每集結尾一個懸念" }, drama_voice: null, drama_caption_locales: [],
     drama_auto_approve_audio: true, drama_auto_approve_final: true, drama_max_verify_rounds: 3, drama_max_retake_rounds: 2,
   },
+  slides: { slides_media_enabled: false, slides_image_model: "gemini-3.1-flash-image", slides_max_usd_per_video: 20, slides_auto_approve_storyboard: true, slides_music_track: null, slides_sfx_set: null },
   media_options: {
-    images: { gemini: [{ value: "gemini-3-pro-image", label: "Gemini 3 Pro Image", description: null, status: "stable", resolutions: [], durations: [], reference_images: 14, native_audio: false, usd_per_second: null, usd_per_image: 0.134, usd_per_track: null }], minimax: [] },
+    images: {
+      gemini: [
+        { value: "gemini-3-pro-image", label: "Gemini 3 Pro Image", description: null, status: "stable", resolutions: [], durations: [], reference_images: 14, native_audio: false, usd_per_second: null, usd_per_image: 0.134, usd_per_track: null },
+        { value: "gemini-3.1-flash-image", label: "Gemini 3.1 Flash Image", description: null, status: "stable", resolutions: [], durations: [], reference_images: 14, native_audio: false, usd_per_second: null, usd_per_image: 0.067, usd_per_track: null },
+      ],
+      minimax: [],
+    },
     clips: {
       gemini: [{ value: "gemini-omni-1.1-flash", label: "Gemini Omni 1.1 Flash", description: null, status: "stable", resolutions: ["720p", "1080p"], durations: [4, 5, 6, 7, 8, 9, 10], reference_images: 3, native_audio: true, usd_per_second: 0.15, usd_per_image: null, usd_per_track: null }],
       minimax: [{ value: "MiniMax-H3", label: "MiniMax H3", description: null, status: "stable", resolutions: ["768p", "2k"], durations: [4, 6, 8, 10], reference_images: 9, native_audio: false, usd_per_second: 0.13, usd_per_image: null, usd_per_track: null }],
@@ -61,10 +68,10 @@ const prompts = [
   { stage: "writer", format: "slides", variant: "", slug: "ai-model-choice", instructions: "You are the writer.", sent_at: "2026-09-26T16:00:00Z" },
 ];
 
-/** A merge the way the API answers a partial save: the sent fields over the stored ones, drama field by field. */
+/** A merge the way the API answers a partial save: the sent fields over the stored ones, drama and slides field by field. */
 function merged(body: Record<string, unknown>) {
-  const { drama, ...rest } = body as { drama?: Record<string, unknown> };
-  return { ...view, ...rest, drama: { ...view.drama, ...(drama ?? {}) }, updated_at: "2026-09-27T08:00:00Z" };
+  const { drama, slides, ...rest } = body as { drama?: Record<string, unknown>; slides?: Record<string, unknown> };
+  return { ...view, ...rest, drama: { ...view.drama, ...(drama ?? {}) }, slides: { ...view.slides, ...(slides ?? {}) }, updated_at: "2026-09-27T08:00:00Z" };
 }
 
 function stubFetch() {
@@ -106,6 +113,10 @@ describe("AdminVideoSettings", () => {
     // An older site's drama object lacks the series and the split's fields; the defaults fill them.
     const older = normalizeDrama({ drama_enabled: true } as never);
     expect(older).toMatchObject({ drama_enabled: true, drama_stage_models: null, drama_voice: null, drama_stage_instructions: {}, drama_caption_locales: [], series_script_gate: true, drama_max_verify_rounds: 3 });
+    // A site from before the illustrated slides sends no slides object; the defaults fill it, and null keeps meaning "the drama's model".
+    expect(normalizeSlides(undefined)).toEqual({ slides_media_enabled: false, slides_image_model: "gemini-3.1-flash-image", slides_max_usd_per_video: 20, slides_auto_approve_storyboard: true, slides_music_track: null, slides_sfx_set: null });
+    expect(normalizeSlides({ slides_image_model: null, slides_media_enabled: true }).slides_image_model).toBeNull();
+    expect(tutorial.slides).toEqual(view.slides);
   });
 
   it("opens on the tutorial part, saves only its fields, and keeps the drama's and the shared ones out of the body", async () => {
@@ -134,11 +145,35 @@ describe("AdminVideoSettings", () => {
     expect(body).toMatchObject({ enabled: true, draft_interval_hours: 48, topic_scope: ["AI", "Tech"], stage_instructions: { writer: "" }, caption_locales: ["ja", "ko", "zh-CN"] });
     expect(Object.keys(body).sort()).toEqual([
       "auto_approve_audio", "auto_approve_final", "auto_pick_outline", "caption_locales", "draft_interval_hours", "enabled", "max_drafts_per_month",
-      "max_retake_rounds", "max_verify_rounds", "max_waiting_drafts", "stage_instructions", "target_minutes_max", "target_minutes_min", "topic_from_search",
+      "max_retake_rounds", "max_verify_rounds", "max_waiting_drafts", "slides", "stage_instructions", "target_minutes_max", "target_minutes_min", "topic_from_search",
       "topic_from_site", "topic_scope", "topics_per_run", "voice",
     ]);
     expect((await screen.findByRole("status")).textContent).toBe("已儲存");
     expect(vi.mocked(fetch).mock.calls.at(-1)?.[0]).toBe("/api/travel/admin/video-automation/settings");
+  });
+
+  it("turns on the pictures for slides videos with their own model, cap, storyboard rule and media names, and saves them with the tutorial part", async () => {
+    const puts = stubFetch();
+    manager();
+    const pictures = await screen.findByRole("checkbox", { name: "替投影片影片畫插圖" });
+    expect(pictures).toHaveProperty("checked", false);
+    const model = screen.getByRole("combobox", { name: "插畫用的圖片模型" });
+    expect(model).toHaveProperty("value", "gemini-3.1-flash-image");
+    expect(within(model).getByRole("option", { name: /Gemini 3\.1 Flash Image · Google Gemini API · US\$0\.067/ })).toBeTruthy();
+    expect(screen.getByRole("checkbox", { name: "judge 全過時自動核准投影片的分鏡" })).toHaveProperty("checked", true);
+    fireEvent.click(pictures);
+    expect(screen.queryByRole("alert")).toBeNull();
+    fireEvent.change(screen.getByRole("spinbutton", { name: "每支投影片影片的媒體上限（美元）" }), { target: { value: "15" } });
+    fireEvent.change(screen.getByRole("textbox", { name: "授權配樂檔名" }), { target: { value: " bed.mp3 " } });
+    fireEvent.change(screen.getByRole("textbox", { name: "音效組資料夾" }), { target: { value: "" } });
+    fireEvent.change(model, { target: { value: "" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存教學設定" }));
+    await waitFor(() => expect(puts).toHaveLength(1));
+    const body = puts[0] as { slides: Record<string, unknown> };
+    expect(body.slides).toEqual({ slides_media_enabled: true, slides_image_model: null, slides_max_usd_per_video: 15, slides_auto_approve_storyboard: true, slides_music_track: "bed.mp3", slides_sfx_set: null });
+    expect(body).not.toHaveProperty("drama");
+    expect((await screen.findByRole("status")).textContent).toBe("已儲存");
+    expect(model).toHaveProperty("value", "");
   });
 
   it("saves the shared part on its own: the stance, the topics to avoid and the token budget", async () => {

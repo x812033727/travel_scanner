@@ -160,19 +160,47 @@ async def series_image_model(session: AsyncSession, slug: str) -> str | None:
     return found if isinstance(found, str) and found else None
 
 
-def _series_image_model(row: VideoAutomationSettings, model_id: str) -> tuple[str, MediaModel]:
-    """A series' image model, on the settings' image vendor when that vendor has the id. The
-    series was refused when it was written with a name the catalog does not know
-    (``schemas.image_model_problem``); a model retired since then is refused here by name."""
+async def project_format(session: AsyncSession, slug: str) -> str | None:
+    """The format of the video this job is for (``slides`` or ``drama``), from the project row
+    the worker reported, or None when the site has no project of that slug yet."""
+    found = await session.scalar(select(VideoProject.format).where(VideoProject.slug == slug))
+    return found if isinstance(found, str) and found else None
+
+
+def _named_image_model(
+    row: VideoAutomationSettings, model_id: str, refusal: str
+) -> tuple[str, MediaModel]:
+    """An image model named outside the settings' image choice (a series' own, the slides'), on
+    the settings' image vendor when that vendor has the id. The name was checked against the
+    catalog when it was written (``schemas.image_model_problem``); a model retired since then
+    is refused here by name, with ``refusal`` saying where to change it."""
     vendors = sorted(MEDIA_VENDORS, key=lambda vendor: vendor != row.image_provider)
     for vendor in vendors:
         model = find_model(vendor, "image", model_id)
         if model is not None and model.status != "retired":
             return vendor, model
-    raise MediaJobFailed(
-        422,
-        "video_media_model_not_allowed",
+    raise MediaJobFailed(422, "video_media_model_not_allowed", refusal)
+
+
+def _series_image_model(row: VideoAutomationSettings, model_id: str) -> tuple[str, MediaModel]:
+    return _named_image_model(
+        row,
+        model_id,
         f"作品指定的圖片模型 {model_id} 不能用；請在作品上換一個，或清空改用設定分頁的模型",
+    )
+
+
+def _slides_image_model(row: VideoAutomationSettings) -> tuple[str, MediaModel]:
+    """The image model an illustrated slides video draws with (docs/videos/ILLUSTRATED.md):
+    the slides' own, or the drama's choice when the slides name none."""
+    model_id = getattr(row, "slides_image_model", None)
+    if not model_id:
+        return _model(row, "image")
+    return _named_image_model(
+        row,
+        model_id,
+        f"投影片插畫的圖片模型 {model_id} 不能用；"
+        "請到影片審核的設定分頁換一個，或清空改用漫劇的模型",
     )
 
 
@@ -265,15 +293,31 @@ async def submit_job(
 ) -> tuple[VideoMediaJob, bool]:
     """Create (or find) the job for this request and advance it once; returns (job, created)."""
     row = ctx.row
-    if not row.drama_enabled:
+    # An illustrated slides video (docs/videos/ILLUSTRATED.md) draws under the slides' own switch
+    # and image model, or under the drama's switch while the slides' is off; a video the site
+    # does not know yet, and every drama, read the drama's switch as before.
+    slides = await project_format(ctx.session, payload.slug) == "slides"
+    slides_on = slides and bool(getattr(row, "slides_media_enabled", False))
+    if not row.drama_enabled and not slides_on:
         raise MediaJobFailed(
-            503, "video_media_disabled", "漫劇還沒開啟：請到影片審核的設定分頁打開"
+            503,
+            "video_media_disabled",
+            "投影片影片的插畫還沒開啟：請到影片審核的設定分頁打開插畫或漫劇"
+            if slides
+            else "漫劇還沒開啟：請到影片審核的設定分頁打開",
+        )
+    if kind == "clip" and slides:
+        raise MediaJobFailed(
+            422, "video_media_model_not_allowed", "投影片影片的插圖是靜態圖加運鏡，沒有片段"
         )
     if kind == "music" and not row.music_enabled:
         raise MediaJobFailed(503, "video_media_disabled", "配樂生成已關閉")
     # Only the pictures follow a series' own model; its clips and music are the settings'.
     series_image = await series_image_model(ctx.session, payload.slug) if kind == "image" else None
-    vendor, model = _model(row, kind, series_image)
+    if kind == "image" and slides_on and series_image is None:
+        vendor, model = _slides_image_model(row)
+    else:
+        vendor, model = _model(row, kind, series_image)
     if not key_for(ctx.runtime, vendor):
         raise MediaJobFailed(503, "video_media_not_configured", f"網站還沒有 {vendor} 的金鑰")
     fields = _request_fields(payload, row, model)

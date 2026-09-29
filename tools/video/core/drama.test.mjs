@@ -6,6 +6,10 @@ import test from "node:test";
 import { approve } from "./approvals.mjs";
 import {
   charactersBySpeaker,
+  hasPictures,
+  illustrated,
+  picturesHash,
+  sfxHash,
   clipKey,
   clipShotScenes,
   clipsHash,
@@ -26,7 +30,7 @@ import {
   visualTierProblems,
   voiceFor,
 } from "./drama.mjs";
-import { dramaBrief, dramaFixture, fixture, fixtureLexicon, sandbox } from "./fixtures/load.mjs";
+import { dramaBrief, dramaFixture, fixture, fixtureLexicon, illustratedFixture, sandbox } from "./fixtures/load.mjs";
 import { lintVideo } from "./lint.mjs";
 import { atomicWrite } from "./paths.mjs";
 import { validateVideo } from "./schema.mjs";
@@ -45,17 +49,65 @@ test("the drama example is valid and lints clean", () => {
   assert.equal(result.summary.chapters.length, 3);
 });
 
-test("a slides video cannot carry drama fields, and a drama cannot use slide templates", () => {
+test("a slides video cannot carry a cast, speakers or emotions, and a drama cannot use slide templates", () => {
   const slides = fixture();
   slides.characters = [];
-  slides.look = { preset: "cinematic-3d" };
-  slides.scenes[1].template = "shot";
+  slides.series = { slug: "xianxia", episode: 1, chapter: 1 };
   slides.scenes[0].lines[0].speaker = "narrator";
   slides.scenes[0].lines[1].emotion = "calm";
-  assert.deepEqual(paths(validateVideo(slides)), ["characters", "look", "scenes[0].lines[0] (k7p2).speaker", "scenes[0].lines[1] (m4qa).emotion", "scenes[1].template"]);
+  assert.deepEqual(paths(validateVideo(slides)), ["characters", "scenes[0].lines[0] (k7p2).speaker", "scenes[0].lines[1] (m4qa).emotion", "series"]);
   const drama = dramaFixture();
   drama.scenes[0].template = "bullets";
   assert.deepEqual(paths(validateVideo(drama)), ["scenes[0].template"]);
+});
+
+test("a slides video may carry a look and still shots: illustrated slides (docs/videos/ILLUSTRATED.md)", () => {
+  // A look with nothing to draw, and a shot with no look, are each an error.
+  const bare = fixture();
+  bare.look = { preset: "tech-story" };
+  assert.deepEqual(paths(validateVideo(bare)), ["look"]);
+  const noLook = illustratedFixture();
+  delete noLook.look;
+  assert.deepEqual(paths(validateVideo(noLook)), ["look"]);
+  // A slides shot is a still under a camera move: no clip, no cast, no clip-only fields, no reveal.
+  const doc = illustratedFixture();
+  assert.deepEqual(validateVideo(doc), []);
+  assert.equal(illustrated(doc), true);
+  assert.equal(hasPictures(doc), true);
+  assert.equal(illustrated(fixture()), false);
+  assert.equal(hasPictures(dramaFixture()), true);
+  doc.scenes[1].data.visual = "clip";
+  doc.scenes[1].data.characters = ["jingwei"];
+  doc.scenes[1].data.fit = "auto";
+  doc.scenes[1].data.start_frame = { shot: "podium", at: "last" };
+  doc.scenes[2].data.end_frame = { prompt: "the desk, later" };
+  doc.scenes[2].lines[0].reveal = 1;
+  doc.thumbnail.data.shot = "nowhere";
+  assert.deepEqual(paths(validateVideo(doc)), [
+    "scenes[1].data.characters",
+    "scenes[1].data.characters",
+    "scenes[1].data.fit",
+    "scenes[1].data.start_frame",
+    "scenes[1].data.start_frame",
+    "scenes[1].data.visual",
+    "scenes[2].data.end_frame",
+    "scenes[2].data.end_frame",
+    "scenes[2].lines[0] (a3dk).reveal",
+    "thumbnail.data.shot",
+  ]);
+  // The pictures hash follows the shots' prompts and camera words, not the cards.
+  const before = picturesHash(illustratedFixture());
+  const cards = illustratedFixture();
+  cards.scenes[0].data.title = "另一個標題";
+  assert.equal(picturesHash(cards), before);
+  const prompts = illustratedFixture();
+  prompts.scenes[1].data.camera = "pan left";
+  assert.notEqual(picturesHash(prompts), before);
+  // Sound effects name a licensed set; the hash follows the set and its gain.
+  const sfx = illustratedFixture();
+  sfx.sfx = { set: "Studio A", gain_db: 3, extra: 1 };
+  assert.deepEqual(paths(validateVideo(sfx)), ["sfx.extra", "sfx.gain_db", "sfx.set"]);
+  assert.notEqual(sfxHash(illustratedFixture()), sfxHash(fixture()));
 });
 
 test("shots, speakers, references and music are range-checked", () => {
@@ -250,9 +302,10 @@ test("lint wants the drama brief sections and warns about an emotion an Azure vo
   const result = lintVideo(doc, context({ brief: "# x\n\n## 站主觀點\n\n有\n" }));
   assert.deepEqual(result.errors.map((error) => error.message), ['brief.md needs a non-empty "## 故事前提" section', 'brief.md needs a non-empty "## 角色" section']);
   assert.ok(result.warnings.some((warning) => /emotion "溫和但擔心" is ignored/.test(warning.message)));
+  // Music under slides is the channel's own now (docs/videos/ILLUSTRATED.md): no warning.
   const slides = fixture();
   slides.music = { track: "a.mp3" };
-  assert.ok(lintVideo(slides, context({ brief: undefined, lexicon: fixtureLexicon() })).warnings.some((warning) => warning.path === "music"));
+  assert.ok(!lintVideo(slides, context({ brief: undefined, lexicon: fixtureLexicon() })).warnings.some((warning) => warning.path === "music"));
 });
 
 test("a drama's status walks the media steps in order, each bound to its hashes", async () => {

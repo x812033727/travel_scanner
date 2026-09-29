@@ -3,10 +3,12 @@
 // not due yet — and exits; the worker's loop starts it again a few minutes later. `--once` does
 // a single unit, for trying it by hand. After the units, once a run, the tidy clears the work
 // files of the oldest video finished long enough ago (tidy.mjs); `tidy` runs that by hand, and
-// `tidy --dry-run` only says what would go.
+// `tidy --dry-run` only says what would go. `restyle --slug S` retells one of the worker's videos
+// in the storytelling register (docs/videos/ILLUSTRATED.md §說書式旁白) through the listener's
+// register pass; `--dry-run` only measures the script.
 import { parseArgs } from "node:util";
 
-import { ROOT, stopRequested } from "../core/paths.mjs";
+import { ROOT, stopRequested, UsageError } from "../core/paths.mjs";
 import { AutomationError, automationClient } from "./client.mjs";
 import { Automation } from "./flow.mjs";
 import { DAYS_ENV, repositories, retentionFrom, roundLines, tidyBase, tidyRound } from "./tidy.mjs";
@@ -76,8 +78,27 @@ async function tidy(args, ctx) {
   return EXIT.ok;
 }
 
+/** `restyle --slug S [--dry-run]`: the narration retold in the storytelling register, or, dry, how far it keeps it now. */
+async function restyle(args, ctx) {
+  const { EXIT } = ctx;
+  const values = parseArgs({ args, options: { slug: { type: "string" }, "dry-run": { type: "boolean" } }, strict: true }).values;
+  if (!values.slug) throw new UsageError("restyle needs --slug");
+  try {
+    // The dry run reads files only, without a token; the live run needs the site's settings for the listener's prompt.
+    const api = values["dry-run"] ? null : automationClient(ctx);
+    const automation = new Automation(ctx, api, api ? await api.settings() : {});
+    ctx.stdout.write(`${await automation.restyle(values.slug, { dryRun: Boolean(values["dry-run"]) })}\n`);
+    return EXIT.ok;
+  } catch (error) {
+    if (!(error instanceof AutomationError)) throw error;
+    ctx.stderr.write(`${error.message}\n`);
+    return error.who === "owner" ? EXIT.owner : EXIT.external;
+  }
+}
+
 export async function run(command, args, ctx) {
   if (command === "tidy") return tidy(args, ctx);
+  if (command === "restyle") return restyle(args, ctx);
   const { EXIT } = ctx;
   const values = parseArgs({ args, options: { once: { type: "boolean" } }, strict: true }).values;
   try {

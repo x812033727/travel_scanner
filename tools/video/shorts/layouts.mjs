@@ -30,6 +30,12 @@ export const THEMES = Object.freeze({
     id: 'cut', brand: 'MOKAAIR / 長片精華', kicker: '一分鐘重點', footer: '完整影片在說明欄', rows: 'stack', rule: '114px', glow: 'left:-300px;top:700px;width:1000px;height:1000px',
     colors: { background: '#0d1b2e', text: '#eef4ff', muted: '#9db4d6', accent: '#5aa9ff', highlight: '#ffd166', glow: '#1f4f8a60', row: '#15294a', rowBorder: '#3a6fb0', caption: '#07111feb', track: '#203a5e' },
   },
+  // The Shorts of an illustrated slides video (docs/videos/ILLUSTRATED.md, the tech-story look):
+  // deep teal, cream and amber, pointing every card to the long video.
+  'cut:illustrated': {
+    id: 'cut-illustrated', brand: 'MOKAAIR', kicker: '你以為 · 其實', footer: '完整故事在長片 ▶', rows: 'stack', rule: '114px', glow: 'left:-260px;top:900px;width:960px;height:960px',
+    colors: { background: '#0f2f33', text: '#f7f1e3', muted: '#9fc3bd', accent: '#3fbfa8', highlight: '#f2a93b', glow: '#3fbfa833', row: '#173f44', rowBorder: '#3fbfa8', caption: '#08191ceb', track: '#23494e' },
+  },
   // An explainer's Shorts (docs/videos/so-thats-why/look.md): the series' cream, ink navy,
   // stamp red and mustard, its name in the header, and every card pointing to the long video.
   'cut:sothatswhy': {

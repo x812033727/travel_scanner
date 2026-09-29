@@ -4,7 +4,7 @@ Fill the placeholders before dispatch: `<ROOT>` (absolute path of the repo or wo
 
 ---
 
-You are writing ONE zh-TW (Traditional Chinese, Taiwan) YouTube tutorial for the Mokaair channel as `video.json`: every slide and every sentence of narration. A speech engine reads the narration aloud and the same text becomes the zh-TW captions, so you are writing for the ear. This is a DRAFT: a different agent re-checks every fact afterwards, so record your evidence.
+You are writing ONE zh-TW (Traditional Chinese, Taiwan) YouTube video for the Mokaair channel as `video.json`: every card, every illustration prompt and every sentence of narration, told in the storytelling register (`docs/videos/ILLUSTRATED.md`). A speech engine reads the narration aloud and the same text becomes the zh-TW captions, so you are writing for the ear. This is a DRAFT: a different agent re-checks every fact afterwards, so record your evidence.
 
 REPO (read-only except the paths below; never run git): `<ROOT>`
 WRITE HERE ONLY: `<VIDEO_DOCS>/video.json`, `<VIDEO_DOCS>/claims.md`, and new entries in the shared pronunciation dictionary `lexicon.json` in `<ROOT>/docs/videos/` (add terms; never change or remove an existing one). Helper scripts go in `<VIDEO_WORKDIR>/<SLUG>/_tools/`. Never edit `brief.md`: the owner's approval is bound to its hash.
@@ -12,7 +12,7 @@ WRITE HERE ONLY: `<VIDEO_DOCS>/video.json`, `<VIDEO_DOCS>/claims.md`, and new en
 ## Read, in this order
 
 1. `<VIDEO_DOCS>/brief.md` and the chosen outline in the launch message. The owner's version of 站主觀點 overrides the brief's; the brief overrides everything below except official sources.
-2. `<ROOT>/.agents/skills/youtube-video/references/script-writing.md`, all of it, including the section for synthesized narration.
+2. `<ROOT>/.agents/skills/youtube-video/references/script-writing.md`, all of it, including §說書式旁白 (the register; the worker's prompts carry the same rules, `REGISTER_RULES` in `<ROOT>/tools/video/automation/register.mjs`) and the section for synthesized narration.
 3. `<ROOT>/.agents/skills/youtube-video/references/automated.md` §video.json 的重點 and §發音與試聽.
 4. The format: `<ROOT>/tools/video/core/schema.mjs` (fields and their limits), `TEMPLATE_SPECS` in `<ROOT>/tools/video/templates/templates.mjs` (what each template's `data` holds, how many items it can reveal), and the examples `<ROOT>/tools/video/core/fixtures/minimal/video.json` and `<ROOT>/tools/video/templates/fixtures/showcase/video.json` (shape only; do not copy text).
 5. The channel spec `<ROOT>/docs/videos/README.md`: voice, intro and outro, description template.
@@ -22,13 +22,14 @@ WRITE HERE ONLY: `<VIDEO_DOCS>/video.json`, `<VIDEO_DOCS>/claims.md`, and new en
 
 - `video.json` FIRST as a skeleton that passes the schema (all scenes from the outline, one placeholder line each), then fill scene by scene and save after each; a cut-off session keeps files, not chat.
 - Line ids: get fresh ones with `node <ROOT>/tools/video/cli.mjs ids --count 40 --slug <SLUG>`; never renumber when inserting a line.
-- One `lines[]` entry is one spoken sentence, about 25 characters, at most 40. The opening scene states the viewer's question within its first sentence and what they will get within 30 seconds.
+- One `lines[]` entry is one spoken sentence, about 25 characters, at most 40. The opening scene's first sentence is the hook (the viewer's question or the counter-intuitive claim) and the viewer knows what they will get within 20 seconds; the first chapter turns on 「你以為…其實…」, every chapter's last line is the next chapter's question, and the pause beats (`pause_after_ms` 900 / 600 / 1200) sit where §說書式旁白 says.
+- Pictures: a `shot` scene is ONE AI-drawn illustration with a camera move, `data: {prompt, camera, visual: "still", transition?}`. `prompt` in English, at most 1000 characters: the objects, places or anonymous figures, the composition, what is big and what is small; no text, letters or numbers, no logos, no real people's faces or product likenesses (silhouettes and generic objects instead); keep the subject in the middle 60% of the frame, a Short crops it to 9:16. `camera` is one of push in, pull out, pan left, pan right, tilt up, tilt down, drift; `transition` cut or dissolve (a dissolve by default, a cut after a chapter card). A shot carries one or two sentences, 5 to 8 seconds; two shots in a row must not describe alike pictures. The video carries `"look": {"preset": "tech-story"}` and `"subtitles": {"burn_in": false}`, and its thumbnail is `thumb` with `data.shot` naming the most striking shot.
 - `reveal` on the sentence that introduces a bullet, step or card, never ahead of it. A scene's reveal count equals the items it shows.
 - Every Latin-letter term in `text` or `say` must be in the dictionary. Add a new term with its spoken form (`"RAG": "R A G"`) or with `null` if a Mandarin voice reads it correctly as written, and list every term you added in your report so the owner listens for them.
 - `say` only where the spoken form must differ from the caption; lint's error message gives the `say_for` value.
 - No parentheses, URLs, emoji or symbols the voice cannot read in `text`. Numbers as a listener hears them; exact figures go on the slide.
 - Slides hold keywords, not sentences: a title of at most about 16 characters, bullet items of at most about 20. `**文字**` marks the accent colour; `\n` breaks a line by hand.
-- Pace: no slide state should stay up much longer than about 15 seconds. Split a long explanation into several scenes, reveal one item per sentence, and show concrete things with `chat` (a question and its answer, a customer's message), `quote` (an official sentence, its translation, where it is from) and `stats` (two to four big numbers). A `chat` slide fits at most two named bubbles or three unnamed bubbles; keep its title to 20 characters and each message to 44 characters, without manual line breaks. If the video has a source article, put one `cta` scene near the middle, after the main example, with one sentence pointing to the article in the description's first line.
+- Cadence (the final gate measures it): a new picture or card state every 5 to 8 seconds, no state up longer than 8 seconds, and shots under at least half of the runtime; alternate a wide scene, a close object, a comparison and a metaphor, a card where a number or a list must be read, a shot where the story is seen. Split a long explanation into several scenes, reveal one item per sentence, and show concrete things with `chat` (a question and its answer, a customer's message), `quote` (an official sentence, its translation, where it is from) and `stats` (two to four big numbers). A `chat` slide fits at most two named bubbles or three unnamed bubbles; keep its title to 20 characters and each message to 44 characters, without manual line breaks. If the video has a source article, put one `cta` scene near the middle, after the main example, with one sentence pointing to the article in the description's first line.
 - Chapters: at least 3, the first scene has one, each at least 10 seconds. Chapter names are what a viewer would search for (a question or a noun), never 「第一部分」, and the first and last are named for their content too, not 「開場」 or 「結論」.
 - `youtube.title` at most 100 characters, no angle brackets; `youtube.description` is the body only (two opening lines that say what the video answers and for whom, then the substance). The article link (first line), chapters, references and hashtags (from the first three `tags`) are added by the tool; do not write them. Put the most searched terms first in `tags`. `tags` total at most 500 characters. `video_id` stays null.
 - `sources`: every official page a fact rests on, `{ title, url, checked_on: "<TODAY>" }`, the final URL after redirects.
@@ -38,6 +39,10 @@ WRITE HERE ONLY: `<VIDEO_DOCS>/video.json`, `<VIDEO_DOCS>/claims.md`, and new en
 - Verification belongs in `claims.md`, never in the narration: no 「經查證」「根據官方文件」「截至查證」, no 「本影片」.
 - Opinions are marked as the owner's (「我的看法是」「以我的用法」) and must follow 站主觀點; never invent a usage experience the owner did not have.
 - Write helper scripts as files and run them; do not paste non-ASCII text into shell heredocs, Windows mangles it.
+
+## shorts.json
+
+Two vertical Shorts cut from THIS script (25 to 55 seconds each, about 110 to 220 spoken characters): Short 1 the hook and the answer in brief, Short 2 the one most surprising fact; each `{"titles": [two ≤ 100 chars], "description", "scenes": 3 to 6 of {"shot"?: one of this video's shot ids (its illustration is reused), "headline" ≤ 36 chars, "narration": [phrases ≤ 38 chars], "big"?, "note"?}}`, no new facts, the last scene sending the viewer to the long video. On the worker's route the writer returns them as `shorts` and the worker writes `shorts.json`; here write `<VIDEO_DOCS>/shorts.json` yourself (`docs/videos/SHORTS.md`).
 
 ## claims.md
 

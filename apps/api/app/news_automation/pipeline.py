@@ -54,7 +54,7 @@ from app.news_automation.policy import (
     trusted_alone_sites,
     with_crypto_disclaimer,
 )
-from app.news_automation.schemas import Vertical
+from app.news_automation.schemas import LocaleReviewResult, Vertical
 from app.news_automation.service import audit, settings_row
 from app.problems import AppError
 from app.site_pages.schemas import LinkBlock
@@ -868,6 +868,8 @@ async def _second_stage(
     )
     for locale in TARGET_LOCALES:
         translated_document = _source_locked(documents[locale], evidence)
+        original_document = translated_document
+        original_review: tuple[LocaleReviewResult, str] | None = None
         locale_passed = False
         for review_round in range(2):
             await runs.start(
@@ -904,6 +906,7 @@ async def _second_stage(
                 and review_round == 0
                 and locale_result.corrected_document
             ):
+                original_review = (locale_result, model)
                 # The reviewer never saw the topic link, so its correction has none.
                 translated_document = _topic_linked(
                     with_crypto_disclaimer(
@@ -915,6 +918,24 @@ async def _second_stage(
                     locale,
                 )
                 continue
+            details: dict[str, Any] = {
+                "round": review_round + 1,
+                "document_sha256": document_fingerprint(translated_document),
+            }
+            if original_review is not None:
+                # The correction will be discarded. Show issues about the original
+                # draft; keep the correction's review only as diagnostic evidence.
+                details = {
+                    "round": 1,
+                    "document_sha256": document_fingerprint(original_document),
+                    "discarded_correction": {
+                        **details,
+                        "verdict": locale_result.verdict,
+                        "issues": locale_result.issues,
+                        "model": model,
+                    },
+                }
+                locale_result, model = original_review
             session.add(
                 NewsAssessment(
                     candidate_id=candidate.id,
@@ -924,7 +945,7 @@ async def _second_stage(
                     provider=settings.verifier_provider,
                     model=model,
                     reasons_json=locale_result.issues,
-                    details_json={"round": review_round + 1},
+                    details_json=details,
                     evidence_hash=candidate.evidence_hash,
                     prompt_version=candidate.prompt_version,
                 )
@@ -932,6 +953,13 @@ async def _second_stage(
             break
         documents[locale] = translated_document
         if not locale_passed:
+            # Newly translated locales do not yet have guide drafts. Make the held
+            # original readable in the candidate preview without saving a correction
+            # over an editor's guide draft or changing any other locale.
+            candidate.draft_bundle_json = {
+                **candidate.draft_bundle_json,
+                locale: original_document.model_dump(mode="json"),
+            }
             await _needs_redraft(
                 session,
                 candidate,

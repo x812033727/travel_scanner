@@ -7,8 +7,7 @@ import { existsSync, mkdirSync, readdirSync, renameSync, rmSync, writeFileSync }
 import path from "node:path";
 import { parseArgs } from "node:util";
 
-import { sha256File } from "../core/approvals.mjs";
-import { burnIn, isDrama, lookHash, mixHash, resolveMusic, subtitlesHash } from "../core/drama.mjs";
+import { burnIn, hasPictures, illustrated, isDrama, keyframesHash, lookHash, mixHash, picturesHash, sfxHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { FPS, speechHash, visualHash } from "../core/timeline.mjs";
@@ -21,6 +20,7 @@ import {
   clipSegmentKey,
   fitPlan,
   freezeProblem,
+  illustratedTransition,
   keyframeProblem,
   lastFrameArgs,
   layoutDrama,
@@ -56,38 +56,50 @@ import {
   segmentKey,
   segmentSamples,
 } from "./plan.mjs";
+import { sfxPlan, sfxTrackArgs } from "./sfx.mjs";
+import { musicInputs, sfxInputs } from "./sound.mjs";
 
 /**
- * What a drama needs beyond the frames and narration, each checked against the script it was
- * made for: the clips manifest (which names the keyframe of every still shot too), current
- * subtitle strips when they are burned in, and the music, either generated into the work
- * directory or the owner's own file under <work base>/_music/.
- * Returns { problem } with what to run first when something is missing.
+ * What a video needs beyond the frames and narration, each checked against the script it was
+ * made for. A drama: the clips manifest (which names the keyframe of every still shot too) and
+ * current subtitle strips when they are burned in. Illustrated slides: the keyframes manifest
+ * bound to this look and these shots, every shot drawn and none waiting for a prompt fix. Any
+ * format: the music and the sound effects it names. Returns { problem } with what to run first
+ * when something is missing, else the inputs (null when the video needs nothing extra).
  */
-async function dramaInputs(doc, workdir, workBase, manifest, speech, visual) {
-  const look = lookHash(doc);
-  const subtitles = burnIn(doc);
-  if (subtitles && (manifest.speech_hash !== speech || manifest.subtitles_hash !== subtitlesHash(doc) || !manifest.subtitles)) {
-    return { problem: "frames/manifest.json has no subtitle strips for this script; run render again" };
+async function mediaInputs(doc, workdir, workBase, manifest, speech, visual) {
+  const drama = isDrama(doc);
+  const pictures = illustrated(doc);
+  const sound = await musicInputs(doc, workdir, workBase);
+  if (sound.problem) return sound;
+  const effects = await sfxInputs(doc, workBase);
+  if (effects.problem) return effects;
+  if (!drama && !pictures && !sound.track && !effects.sfx) return null;
+  const look = hasPictures(doc) ? lookHash(doc) : null;
+  let subtitles = false;
+  let clips = null;
+  let keyframes = null;
+  if (drama) {
+    subtitles = burnIn(doc);
+    if (subtitles && (manifest.speech_hash !== speech || manifest.subtitles_hash !== subtitlesHash(doc) || !manifest.subtitles)) {
+      return { problem: "frames/manifest.json has no subtitle strips for this script; run render again" };
+    }
+    clips = readJson(path.join(workdir, ARTIFACTS.clips), null);
+    if (!clips || clips.speech_hash !== speech || clips.visual_hash !== visual || clips.look_hash !== look) {
+      return { problem: "clips/manifest.json is missing or was made for an older script or look; run clips first" };
+    }
+    keyframes = readJson(path.join(workdir, ARTIFACTS.keyframes), null);
+  } else if (pictures) {
+    keyframes = readJson(path.join(workdir, ARTIFACTS.keyframes), null);
+    if (!keyframes || keyframes.look_hash !== look || keyframes.pictures_hash !== picturesHash(doc)) {
+      return { problem: "keyframes/manifest.json is missing or was drawn for another look or other shots; run keyframes first" };
+    }
+    const missing = shotScenes(doc).filter((scene) => !keyframes.shots?.[scene.id]?.file).map((scene) => scene.id);
+    if (missing.length) return { problem: `keyframes/manifest.json has no picture for ${missing.join(", ")}; run keyframes first` };
+    const waiting = shotScenes(doc).filter((scene) => keyframes.shots[scene.id].needs_review).map((scene) => scene.id);
+    if (waiting.length) return { problem: `${waiting.join(", ")} failed the judge (needs_review in keyframes/manifest.json); fix the prompts and run keyframes again` };
   }
-  const clips = readJson(path.join(workdir, ARTIFACTS.clips), null);
-  if (!clips || clips.speech_hash !== speech || clips.visual_hash !== visual || clips.look_hash !== look) {
-    return { problem: "clips/manifest.json is missing or was made for an older script or look; run clips first" };
-  }
-  const keyframes = readJson(path.join(workdir, ARTIFACTS.keyframes), null);
-  const music = resolveMusic(doc);
-  let track = null;
-  if (music?.track) {
-    const file = path.join(workBase, "_music", music.track);
-    if (!existsSync(file)) return { problem: `music.track ${music.track} is not in ${path.join(workBase, "_music")}` };
-    if (music.sha256 && (await sha256File(file)) !== music.sha256) return { problem: `${music.track} does not match music.sha256; check the file or update video.json` };
-    track = { file, sha256: music.sha256 ?? (await sha256File(file)) };
-  } else if (music) {
-    const generated = readJson(path.join(workdir, ARTIFACTS.music), null);
-    if (!generated?.file || generated.mix_hash !== mixHash(doc)) return { problem: "music/manifest.json is missing or was made for older music settings; run music first" };
-    track = { file: path.join(workdir, generated.file), sha256: generated.sha256 ?? null };
-  }
-  return { look, subtitles, clips, keyframes, music, track };
+  return { look, subtitles, clips, keyframes, music: sound.music, track: sound.track, sfx: effects.sfx };
 }
 
 export async function run(command, args, ctx) {
@@ -115,7 +127,8 @@ export async function run(command, args, ctx) {
     return EXIT.usage;
   }
   const drama = isDrama(doc);
-  const inputs = drama ? await dramaInputs(doc, workdir, workBase, manifest, speech, visual) : null;
+  const pictures = illustrated(doc);
+  const inputs = await mediaInputs(doc, workdir, workBase, manifest, speech, visual);
   if (inputs?.problem) {
     ctx.stderr.write(`${inputs.problem}\n`);
     return EXIT.usage;
@@ -131,7 +144,14 @@ export async function run(command, args, ctx) {
 
   let layout;
   try {
-    layout = drama ? layoutDrama(doc, timeline, manifest, inputs.clips, inputs.keyframes) : layoutScenes(timeline, manifest);
+    // Illustrated slides (docs/videos/ILLUSTRATED.md) take the drama's mixed layout: the shots
+    // under their camera moves, single-state cards drifting, dissolves between pictures and a
+    // hard cut into every chapter card.
+    layout = drama
+      ? layoutDrama(doc, timeline, manifest, inputs.clips, inputs.keyframes)
+      : pictures
+        ? layoutDrama(doc, timeline, manifest, null, inputs.keyframes, { transitionRule: illustratedTransition, cardMotion: true })
+        : layoutScenes(timeline, manifest);
   } catch (error) {
     if (!(error instanceof PlanError)) throw error;
     ctx.stderr.write(`${error.message}\n`);
@@ -167,7 +187,7 @@ export async function run(command, args, ctx) {
         fit = fitPlan(available, scene.frames, scene.fit);
         fits[scene.id] = { available, ...fit };
       }
-      const strips = inputs.subtitles ? subtitleTrack(scene, manifest.subtitles.cues, manifest.subtitles.blank) : null;
+      const strips = inputs?.subtitles ? subtitleTrack(scene, manifest.subtitles.cues, manifest.subtitles.blank) : null;
       // A dissolve overlays the previous scene's last frame, so its segment is keyed on that too.
       const previousKey = scene.transition === "dissolve" && index > 0 ? keys[index - 1] : null;
       const key = motion ? motionSegmentKey(scene, scene.move, strips, previousKey) : clipSegmentKey(scene, fit, strips, previousKey);
@@ -194,7 +214,7 @@ export async function run(command, args, ctx) {
       renameSync(partial, segment);
       encoded += 1;
       if (motion) {
-        ctx.stdout.write(`encoded ${scene.id} (${scene.frames} frames, motion ${scene.move.name})\n`);
+        ctx.stdout.write(`encoded ${scene.id} (${scene.frames} frames, ${scene.card ? "card " : ""}motion ${scene.move.name}${scene.transition === "dissolve" ? ", dissolve" : ""})\n`);
       } else {
         const how = fit.speed === 1 && fit.pad === 0 ? "" : ` at ${fit.speed}x${fit.pad ? `, last frame held ${fit.pad} frames` : ""}`;
         ctx.stdout.write(`encoded ${scene.id} (${scene.frames} frames from a ${available}-frame clip${how})\n`);
@@ -229,12 +249,27 @@ export async function run(command, args, ctx) {
   const totalSeconds = timeline.total_frames / FPS;
   let measured;
   let bed = null;
-  if (inputs?.track) {
-    const { file, music } = { file: inputs.track.file, music: inputs.music };
-    measured = parseLoudnorm((await runTool(tools.ffmpeg, measureMixArgs(narration, file, music, totalSeconds))).stderr);
-    await runTool(tools.ffmpeg, mixArgs(narration, file, music, totalSeconds, measured, audio));
-    const bedLoudness = parseEbur128((await runTool(tools.ffmpeg, bedLoudnessArgs(narration, file, music, totalSeconds))).stderr);
-    bed = bedLevel(bedLoudness.integrated, measured);
+  // The sound effects (docs/videos/ILLUSTRATED.md): every beat of the cut on one track, mixed
+  // over the voice and the bed; a script with a set but a cut with no beat has no track.
+  let effects = [];
+  let sfxFile = null;
+  if (inputs?.sfx) {
+    effects = sfxPlan(layout, timeline, doc);
+    const args = sfxTrackArgs(effects, inputs.sfx.files, timeline.total_frames, inputs.sfx.gain_db, path.join(buildDir, "sfx.wav"));
+    if (args) {
+      await runTool(tools.ffmpeg, args);
+      sfxFile = path.join(buildDir, "sfx.wav");
+    }
+  }
+  if (inputs?.track || sfxFile) {
+    const file = inputs?.track?.file ?? null;
+    const music = inputs?.music ?? null;
+    measured = parseLoudnorm((await runTool(tools.ffmpeg, measureMixArgs(narration, file, music, totalSeconds, sfxFile))).stderr);
+    await runTool(tools.ffmpeg, mixArgs(narration, file, music, totalSeconds, measured, audio, sfxFile));
+    if (file) {
+      const bedLoudness = parseEbur128((await runTool(tools.ffmpeg, bedLoudnessArgs(narration, file, music, totalSeconds))).stderr);
+      bed = bedLevel(bedLoudness.integrated, measured);
+    }
   } else {
     measured = parseLoudnorm((await runTool(tools.ffmpeg, measureLoudnessArgs(narration))).stderr);
     await runTool(tools.ffmpeg, normalizeArgs(narration, measured, audio));
@@ -279,7 +314,7 @@ export async function run(command, args, ctx) {
   const shots = [];
   for (const scene of layout) {
     if (scene.kind === "motion") {
-      const record = { shot: scene.id, kind: "motion", move: scene.move.name, keyframe_psnr: null };
+      const record = { shot: scene.id, kind: "motion", move: scene.move.name, keyframe_psnr: null, ...(scene.card ? { card: true } : {}), ...(scene.transition === "dissolve" ? { transition: "dissolve" } : {}) };
       if (scene.move.startsAtIdentity && existsSync(resolve(scene.keyframe.file))) {
         const value = parsePsnr((await runTool(tools.ffmpeg, motionFramePsnrArgs(resolve(scene.keyframe.file), scene.move, scene.frames))).stderr);
         record.keyframe_psnr = Number.isFinite(value) ? Number(value.toFixed(2)) : "inf";
@@ -308,21 +343,28 @@ export async function run(command, args, ctx) {
     speech_hash: speech,
     visual_hash: visual,
     ...(drama ? { look_hash: inputs.look, clips_hash: inputs.clips.clips_hash, subtitles_hash: subtitlesHash(doc), mix_hash: mixHash(doc) } : {}),
+    // Illustrated slides bind the cut to the pictures it was made from; any video with music or
+    // effects binds it to those too (core/state.mjs and package read them back).
+    ...(pictures ? { look_hash: inputs.look, pictures_hash: keyframesHash(doc, inputs.keyframes) } : {}),
+    ...(!drama && doc.music ? { mix_hash: mixHash(doc) } : {}),
+    ...(doc.sfx ? { sfx_hash: sfxHash(doc) } : {}),
     problems,
     metrics: {
       frames: timeline.total_frames,
       loudness,
       psnr,
       loudnorm_first_pass: measured.input_i,
-      ...(drama ? { shots, music_bed_lufs: bed, music: inputs.track ? path.basename(inputs.track.file) : null } : {}),
+      ...(drama || pictures ? { shots, music_bed_lufs: bed, music: inputs.track ? path.basename(inputs.track.file) : null } : {}),
+      ...(!drama && !pictures && inputs?.track ? { music_bed_lufs: bed, music: path.basename(inputs.track.file) } : {}),
+      ...(inputs?.sfx ? { sfx: { set: inputs.sfx.set, events: effects.length, sounds: Object.fromEntries(Object.keys(inputs.sfx.files).map((name) => [name, effects.filter((event) => event.sound === name).length])) } } : {}),
     },
     ffmpeg: tools.version,
     encoded_segments: encoded,
     seconds,
   };
   atomicWrite(path.join(workdir, ARTIFACTS.checks), `${JSON.stringify(checks, null, 2)}\n`);
-  recordStage(workdir, "assemble", { ok: checks.ok, encoded_segments: encoded, seconds, ...(drama ? { shots: shots.length, stills: shots.filter((shot) => shot.kind === "motion").length, music: bed !== null } : {}) }, ctx.now());
-  const bedText = bed === null ? "" : `, music bed ${bed} LUFS`;
+  recordStage(workdir, "assemble", { ok: checks.ok, encoded_segments: encoded, seconds, ...(drama || pictures ? { shots: shots.length, stills: shots.filter((shot) => shot.kind === "motion").length, music: bed !== null, sfx: effects.length } : {}) }, ctx.now());
+  const bedText = `${bed === null ? "" : `, music bed ${bed} LUFS`}${effects.length ? `, ${effects.length} sound effects` : ""}`;
   ctx.stdout.write(`${final}: ${timeline.total_frames} frames, ${loudness.integrated} LUFS, true peak ${loudness.truePeak} dBFS${bedText}; ${encoded} of ${layout.length} segments encoded in ${seconds} s\n`);
   for (const problem of problems) ctx.stdout.write(`CHECK ${problem}\n`);
   if (!checks.ok) return EXIT.lint;

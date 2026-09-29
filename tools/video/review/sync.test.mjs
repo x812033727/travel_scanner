@@ -6,7 +6,7 @@ import test from "node:test";
 
 import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { EXIT, main } from "../cli.mjs";
-import { readApprovals } from "../core/approvals.mjs";
+import { approve, readApprovals } from "../core/approvals.mjs";
 import { lookHash } from "../core/drama.mjs";
 import { scriptCheckBinding } from "../core/script-check.mjs";
 import { sandbox } from "../core/fixtures/load.mjs";
@@ -596,6 +596,31 @@ function longStoryboard(box, count, { waiting = [], pages = false } = {}) {
   writeFileSync(path.join(box.workdir, "keyframes", "manifest.json"), bytes);
   return { ids, bytes };
 }
+
+test("illustrated slides push their storyboard too, and it is the gate after the narration (docs/videos/ILLUSTRATED.md)", async () => {
+  const box = sandbox("fixture-illustrated", "illustrated");
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  mkdirSync(path.join(box.workdir, "keyframes"), { recursive: true });
+  const shots = {};
+  for (const scene of doc.scenes.filter((each) => each.template === "shot")) {
+    const file = `keyframes/${scene.id}-1.png`;
+    writeFileSync(path.join(box.workdir, file), png(scene.id));
+    shots[scene.id] = { file, sha256: sha(png(scene.id)), seed: 1, judge: { overall: 8, passed: true, problems: [] }, needs_review: false };
+  }
+  writeFileSync(path.join(box.workdir, "keyframes", "manifest.json"), JSON.stringify({ look_hash: "l", pictures_hash: "p", shots }));
+  // The outline and the narration approved, the storyboard is what review-push picks next.
+  await approve({ gate: "outline", docDir: box.dir, workdir: box.workdir, note: "t" });
+  writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify({ speech_hash: "s", lines: [], scenes: [], total_frames: 0 }));
+  await approve({ gate: "audio", docDir: box.dir, workdir: box.workdir, note: "t" });
+  const server = site();
+  const push = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug], push.ctx), EXIT.ok, push.out.stderr);
+  const [board] = server.state.reviews;
+  assert.equal(board.gate, "storyboard");
+  assert.equal(board.payload.shots.length, Object.keys(shots).length);
+  assert.deepEqual(board.payload.shots.map((shot) => shot.id), Object.keys(shots));
+  assert.match(board.summary, /分鏡 5 鏡，judge 最低 8\/10/);
+});
 
 /** review-push --gate storyboard against a fresh site: the review it received and the files it holds. */
 async function pushStoryboard(box) {

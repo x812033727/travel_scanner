@@ -17,7 +17,7 @@ import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { AutomationError, automationClient } from "../automation/client.mjs";
 import { GATES, approvalState, approve, readApprovals, sha256File } from "../core/approvals.mjs";
 import { isCompilation } from "../core/compilation.mjs";
-import { hasCast, isDrama, shotScenes } from "../core/drama.mjs";
+import { hasCast, illustrated, isDrama, shotScenes } from "../core/drama.mjs";
 import { atomicWrite, docDir, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { chosenLocales, dubRole, dubsForUpload, LANGUAGES_FILE, readLanguages } from "../core/stages.mjs";
 import { ARTIFACTS, loadProject, pipelineStatus } from "../core/state.mjs";
@@ -363,7 +363,8 @@ const imageType = (file) => IMAGE_TYPES[path.extname(file).toLowerCase()] ?? "ap
 async function nextGate(places, workdir, doc) {
   // A compilation's episodes went through every gate; the owner sees its cut, then its package.
   // Every other drama has a script gate (docs/videos/DRAMA-FLOW.md, section 2).
-  const order = isCompilation(doc) ? ["final"] : isDrama(doc) ? ["outline", "script", ...(hasCast(doc) ? ["look"] : []), "audio", "storyboard", "final"] : ["outline", "audio", "final"];
+  // Illustrated slides (docs/videos/ILLUSTRATED.md) show their storyboard after the narration.
+  const order = isCompilation(doc) ? ["final"] : isDrama(doc) ? ["outline", "script", ...(hasCast(doc) ? ["look"] : []), "audio", "storyboard", "final"] : ["outline", "audio", ...(illustrated(doc) ? ["storyboard"] : []), "final"];
   for (const gate of order) {
     const state = await approvalState({ gate, ...places });
     if (state.status === "missing" || state.status === "stale") return gate;
@@ -811,6 +812,9 @@ export async function reviewPush(args, ctx) {
         stage: status.next ? status.next.id.slice(0, 40) : "done",
         checklist: checklistFrom(status.steps),
         youtube_video_id: project.doc.youtube?.video_id || null,
+        // The site reads the format at its gates (a drama's storyboard rule is not a slides video's,
+        // docs/videos/ILLUSTRATED.md); the worker reports it too (automation/flow.mjs).
+        format: project.doc.format ?? "slides",
         ...(sourceGuide ? { source_guide: sourceGuide } : {}),
         // An episode names its series and number; a compilation only its series (docs/videos/BINGE.md).
         ...(isCompilation(project.doc) ? { series_slug: project.doc.compilation.series } : project.doc.series ? { series_slug: project.doc.series.slug, episode_number: project.doc.series.episode } : {}),

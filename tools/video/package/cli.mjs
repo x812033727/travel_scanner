@@ -8,7 +8,7 @@ import { parseArgs } from "node:util";
 
 import { approvalState } from "../core/approvals.mjs";
 import { compilationChecksCurrent, isCompilation } from "../core/compilation.mjs";
-import { isDrama, lookHash, mixHash, subtitlesHash } from "../core/drama.mjs";
+import { illustrated, isDrama, keyframesHash, lookHash, mixHash, sfxHash, subtitlesHash } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { LOCALES } from "../core/schema.mjs";
 import { DEFAULT_DUB_LOCALES } from "../dubs/plan.mjs";
@@ -65,10 +65,17 @@ export function linkOrCopy(source, target) {
  * Whether checks.json describes the final video of this very script: its narration and
  * pictures, and for a drama its look, clips, subtitles and music as well.
  */
-export function checksCurrent(doc, lexicon, checks, clips = null) {
+export function checksCurrent(doc, lexicon, checks, clips = null, keyframes = null) {
   if (!checks?.ok || checks.speech_hash !== speechHash(doc, lexicon) || checks.visual_hash !== visualHash(doc)) return false;
-  if (!isDrama(doc)) return true;
-  return checks.look_hash === lookHash(doc) && checks.subtitles_hash === subtitlesHash(doc) && checks.mix_hash === mixHash(doc) && Boolean(clips?.clips_hash) && checks.clips_hash === clips.clips_hash;
+  // Any format binds its cut to the sound effects it names; a drama's mix hash is always there.
+  if (doc.sfx && checks.sfx_hash !== sfxHash(doc)) return false;
+  if (isDrama(doc)) {
+    return checks.look_hash === lookHash(doc) && checks.subtitles_hash === subtitlesHash(doc) && checks.mix_hash === mixHash(doc) && Boolean(clips?.clips_hash) && checks.clips_hash === clips.clips_hash;
+  }
+  if (doc.music && checks.mix_hash !== mixHash(doc)) return false;
+  // Illustrated slides (docs/videos/ILLUSTRATED.md): the very pictures, as the keyframes manifest holds them now.
+  if (illustrated(doc)) return checks.look_hash === lookHash(doc) && Boolean(keyframes) && checks.pictures_hash === keyframesHash(doc, keyframes);
+  return true;
 }
 
 export async function run(command, args, ctx) {
@@ -85,7 +92,8 @@ export async function run(command, args, ctx) {
   const speech = compilation ? null : speechHash(doc, lexicon);
   const checks = readJson(path.join(workdir, ARTIFACTS.checks), null);
   const clips = isDrama(doc) && !compilation ? readJson(path.join(workdir, ARTIFACTS.clips), null) : null;
-  const current = compilation ? compilationChecksCurrent(doc, checks, episodes) : checksCurrent(doc, lexicon, checks, clips);
+  const keyframes = illustrated(doc) ? readJson(path.join(workdir, ARTIFACTS.keyframes), null) : null;
+  const current = compilation ? compilationChecksCurrent(doc, checks, episodes) : checksCurrent(doc, lexicon, checks, clips, keyframes);
   if (!existsSync(path.join(workdir, ARTIFACTS.video)) || !current) {
     ctx.stderr.write(compilation ? "final.mp4 is missing, failed its checks, or was joined from other cuts or cards; run compile first\n" : "final.mp4 is missing, failed its checks, or is older than the script; run assemble first\n");
     return EXIT.usage;

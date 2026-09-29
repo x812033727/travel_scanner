@@ -14,12 +14,12 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 
 import path from "node:path";
 
 import { approvalState, approve, sha256File } from "../core/approvals.mjs";
-import { EXPLAINER_PRESET } from "../core/drama.mjs";
+import { EXPLAINER_PRESET, illustrated, SLIDES_PRESET } from "../core/drama.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
 import { articlePath, SITE } from "../core/metadata.mjs";
-import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT } from "../core/paths.mjs";
-import { eachLine, LINE_ID, spokenText } from "../core/schema.mjs";
+import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, UsageError } from "../core/paths.mjs";
+import { eachLine, LINE_ID, MAX_PAUSE_MS, spokenText } from "../core/schema.mjs";
 import { writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckBinding, scriptCheckMatches, scriptCheckUnbound } from "../core/script-check.mjs";
 import { LOCALE_PARTS, readLanguages, writeLanguages } from "../core/stages.mjs";
@@ -32,10 +32,11 @@ import { discussStep } from "./discuss.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
 import { advanceStory, fixStoryPrompts } from "./story.mjs";
 import { instructionsFor, parseAnswer, references } from "./prompts.mjs";
+import { registerLine, registerSummary } from "./register.mjs";
 import { rewriteProblems } from "./rewrite.mjs";
 import { advanceCompilation, startCompilation } from "./compilation.mjs";
 import { castFrom, episodeBrief, isExplainerOneOff, isOneOff, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
-import { episodeShortFields, episodeShortsProblems, shortsFile } from "../shorts/episode.mjs";
+import { episodeSeries, episodeShortFields, episodeShortsProblems, shortsFile } from "../shorts/episode.mjs";
 
 export const STATE_FILE = "auto.json";
 const GLOBAL_FILE = "auto-state.json";
@@ -56,6 +57,9 @@ export const MAX_REWRITE_ROUNDS = 2;
 // without that track (docs/videos/LANGUAGES.md).
 export const MAX_DUB_SHORTEN_ROUNDS = 2;
 export const MAX_DUB_RETAKE_ROUNDS = 2;
+// The lines Jev still hears wrong after the retakes are reworded by the translator (variant
+// "reword") this many rounds: a homophone is heard the same way on every take.
+export const MAX_DUB_REWORD_ROUNDS = 2;
 const MAX_SOURCE_PAGES = 25;
 const MAX_SOURCE_CHARS = 350_000;
 const REQUIRED_SECTIONS = ["## 觀眾看完能做到的事", "## 站主觀點", "## 大綱"];
@@ -254,8 +258,8 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
   else delete settled.source_guide;
   settled.assets = [];
   if (settled.youtube) settled.youtube = { ...settled.youtube, video_id: null };
+  const drama = settings.drama ?? {};
   if (format === "drama") {
-    const drama = settings.drama ?? {};
     settled.format = "drama";
     const preset = stylePreset ?? drama.style_preset ?? "cinematic-3d";
     settled.look = { preset, ...(video.look ?? {}) };
@@ -264,14 +268,28 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
       settled.characters = [];
     }
     settled.subtitles = { burn_in: drama.subtitle_burn_in ?? true, ...(video.subtitles ?? {}) };
-    if (drama.music_enabled === false) delete settled.music;
+  } else if (illustrated(video)) {
+    // Illustrated slides (docs/videos/ILLUSTRATED.md): the channel's look unless the writer named
+    // one, and the owner's licensed music file and sound-effect set from the settings tab's
+    // slides object (migration 0114; a site from before it sends none) when the writer named none.
+    settled.look = { preset: SLIDES_PRESET, ...(video.look ?? {}) };
+    const slides = settings.slides ?? {};
+    if (!settled.music && slides.slides_music_track) settled.music = { track: slides.slides_music_track };
+    if (!settled.sfx && slides.slides_sfx_set) settled.sfx = { set: slides.slides_sfx_set };
+  } else if (format !== "drama") {
+    // Plain slides: the writer is told the look rides on shots, so a look without any is dropped
+    // rather than left for lint to refuse.
+    delete settled.look;
   }
+  // Music is the owner's switch for every format.
+  if (drama.music_enabled === false) delete settled.music;
   if (format === "drama" && series) {
     // An episode of a series (docs/videos/SERIES.md): the cast is the setting book's, word for
-    // word, listed by id; a character the book does not have stays for lint to refuse.
+    // word, listed by id; a character the book does not have stays for lint to refuse. An
+    // explainer (a one-off of the flat-explainer preset) has no cast whatever the writer returned.
     settled.series = { slug: series.slug, episode: series.episode, chapter: series.chapter };
     const book = new Map((cast ?? []).map((character) => [character.id, character]));
-    settled.characters = (video.characters ?? []).map((character) => book.get(character?.id) ?? character).sort((a, b) => (a?.id < b?.id ? -1 : a?.id > b?.id ? 1 : 0));
+    settled.characters = settled.look?.preset === EXPLAINER_PRESET ? [] : (video.characters ?? []).map((character) => book.get(character?.id) ?? character).sort((a, b) => (a?.id < b?.id ? -1 : a?.id > b?.id ? 1 : 0));
   }
   return settled;
 }
@@ -1306,7 +1324,7 @@ export class Automation {
     if (rounds >= MAX_PROMPT_FIX_ROUNDS) return this.block(state, `${kind} still fails after ${rounds} prompt fixes (${summary})`);
     const dir = docDir(state.slug, this.ctx.root);
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
-    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix: { kind, targets: found, problems: found.flatMap((target) => target.problems ?? []), owner_note: ownerNote }, line_ids: this.freshIds(state, video, 40) }), 32_000, "drama", this.variantOf(state), state.series ?? null);
+    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix: { kind, targets: found, problems: found.flatMap((target) => target.problems ?? []), owner_note: ownerNote }, line_ids: this.freshIds(state, video, 40) }), 32_000, state.format ?? "drama", this.variantOf(state), state.series ?? null);
     const problem = await this.saveAndLint(state, answer);
     if (problem) return this.retryLater(state, "writer", `the ${kind} fix ${problem}`);
     this.cleared(state, "writer");
@@ -1397,7 +1415,8 @@ export class Automation {
     saveState(this.workdir(state.slug), state);
     if (problem) return this.retryLater(state, "writer", `the script ${problem}`);
     this.cleared(state, "writer");
-    const shorts = this.variantOf(state) === "explainer" ? this.saveShorts(state, answer.shorts) : null;
+    // An explainer's and an illustrated slides video's two Shorts are drafted with the script (docs/videos/ILLUSTRATED.md).
+    const shorts = this.variantOf(state) === "explainer" || illustrated(JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"))) ? this.saveShorts(state, answer.shorts) : null;
     saveState(this.workdir(state.slug), state);
     await report(this.ctx, this.api, state, "fact-checked");
     return `${state.slug}: script drafted and passes lint${shorts ? `; ${shorts}` : ""}`;
@@ -1412,7 +1431,7 @@ export class Automation {
     const dir = docDir(state.slug, this.ctx.root);
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
     const shorts = Array.isArray(drafted)
-      ? drafted.map((doc, index) => ({ ...doc, ...episodeShortFields(state.slug, index) }))
+      ? drafted.map((doc, index) => ({ ...doc, ...episodeShortFields(state.slug, index, episodeSeries(video)) }))
       : drafted;
     const problems = episodeShortsProblems(shorts, video);
     if (problems.length) {
@@ -1462,7 +1481,10 @@ export class Automation {
   async listen(state, note = null) {
     const dir = docDir(state.slug, this.ctx.root);
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
-    const answer = await this.stage("listener", state.slug, { video, script_writing: this.reference().script_writing, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), ...(state.series ? this.seriesPayload(state) : {}), ...(note ? { owner_note: note } : {}) }, 32_000, state.format);
+    // A drama's listener reads the format alone, as before; a slides video's carries the variant
+    // (the storytelling register of docs/videos/ILLUSTRATED.md rides on it).
+    const variant = state.format === "drama" ? null : this.variantOf(state);
+    const answer = await this.stage("listener", state.slug, { video, script_writing: this.reference().script_writing, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), ...(state.series ? this.seriesPayload(state) : {}), ...(note ? { owner_note: note } : {}) }, 32_000, state.format, variant);
     const problem = await this.saveAndLint(state, answer);
     const saved = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
     if (!scriptCheckMatches(scriptCheckBinding(video), saved)) state.verified = false;
@@ -1473,6 +1495,105 @@ export class Automation {
     this.cleared(state, "listener");
     saveState(this.workdir(state.slug), state);
     return `${state.slug}: listener edit, ${(answer.edits ?? []).length} changes`;
+  }
+
+  /**
+   * `restyle --slug S` (docs/videos/ILLUSTRATED.md §說書式旁白): a video the worker started, not
+   * yet on YouTube, has its narration retold in the storytelling register without a new script.
+   * The listener's register pass (variant "register") answers line by line; a line that keeps
+   * every number, Latin word and dictionary term (rewrite.mjs) and a pause within the schema
+   * replaces the script's, the rest are refused with the reason; a script the accepted lines
+   * make fail lint goes back as it was. brief.md is not touched (the outline approval holds) and
+   * no line is added, dropped or moved (the translations' ids still match), but the wording is
+   * new: the fact-check runs once more, the narration is recorded again and the audio gate is
+   * reviewed anew, all by the worker's next rounds. Returns the line for the terminal.
+   */
+  async restyle(slug, { dryRun = false } = {}) {
+    const state = automatedVideos(this.workBase).find((each) => each.slug === slug);
+    if (!state) throw new UsageError(`${slug} was not started by the worker (no ${STATE_FILE} in its work directory); restyle works on the worker's videos`);
+    if (state.format === "drama") throw new UsageError(`${slug} is a drama: its narration is the screenplay's, the register is for slides videos`);
+    if (state.youtube_video_id || state.status === "done") throw new UsageError(`${slug} is already on YouTube; a restyle would make a different video`);
+    const dir = docDir(slug, this.ctx.root);
+    const file = path.join(dir, "video.json");
+    if (!existsSync(file)) throw new UsageError(`${slug} has no video.json yet; restyle retells a written script`);
+    const source = readFileSync(file, "utf8");
+    const video = JSON.parse(source);
+    const before = registerSummary(video);
+    if (dryRun) return `${slug}: ${registerLine(before)}; a restyle would send ${before.lines} lines to the listener's register pass, then fact-check, record and review the narration again`;
+    const lexicon = readJson(lexiconFile(this.ctx.root), emptyLexicon());
+    const lines = new Map();
+    const listed = [];
+    for (const scene of video.scenes ?? []) {
+      for (const line of scene.lines ?? []) {
+        lines.set(line.id, line);
+        listed.push({ id: line.id, scene: scene.id, ...(scene.chapter ? { chapter: scene.chapter } : {}), text: spokenText(line) });
+      }
+    }
+    const answer = await this.stage("listener", slug, { video, lines: listed, lexicon: Object.keys(lexicon.terms) }, 32_000, state.format, "register");
+    if (!Array.isArray(answer?.lines)) throw new AutomationError("the register pass answered without a lines array", { code: OUTPUT_INVALID });
+    const accepted = [];
+    const refused = [];
+    const seen = new Set();
+    for (const entry of answer.lines) {
+      const id = String(entry?.id ?? "");
+      const line = lines.get(id);
+      if (!line) {
+        refused.push(`${id || "?"}: not a line of this video`);
+        continue;
+      }
+      if (seen.has(id)) continue;
+      seen.add(id);
+      const was = spokenText(line);
+      const text = typeof entry.text === "string" ? entry.text.trim() : "";
+      if (!text) {
+        refused.push(`${id}: the retold line is empty`);
+        continue;
+      }
+      const pause = entry.pause_after_ms;
+      if (pause !== undefined && !(Number.isInteger(pause) && pause >= 0 && pause <= MAX_PAUSE_MS)) {
+        refused.push(`${id}: pause_after_ms must be an integer from 0 to ${MAX_PAUSE_MS}`);
+        continue;
+      }
+      if (text === was && (pause === undefined || pause === line.pause_after_ms)) continue;
+      const problems = rewriteProblems(was, text, { lexicon });
+      if (problems.length) {
+        refused.push(`${id}: ${problems.join("; ")}`);
+        continue;
+      }
+      accepted.push({ id, before: was, after: text, ...(pause !== undefined ? { pause_after_ms: pause } : {}) });
+    }
+    if (accepted.length) {
+      for (const { id, after, pause_after_ms } of accepted) {
+        const line = lines.get(id);
+        line.text = after;
+        // The retold line is what the voice says now; a spoken form written for the old text would fail lint.
+        delete line.say;
+        delete line.say_for;
+        if (pause_after_ms !== undefined) {
+          if (pause_after_ms > 0) line.pause_after_ms = pause_after_ms;
+          else delete line.pause_after_ms;
+        }
+      }
+      writeVideo(dir, video);
+      const errors = lintErrors(this.ctx, slug);
+      if (errors.length) {
+        writeFileSync(file, source);
+        throw new AutomationError(`lint refuses the retold script, so video.json is back as it was: ${errors.slice(0, 3).join("; ")}`, { code: OUTPUT_INVALID });
+      }
+    }
+    const workdir = this.workdir(slug);
+    mkdirSync(path.join(workdir, "review"), { recursive: true });
+    atomicWrite(path.join(workdir, "review", "restyle.json"), `${JSON.stringify({ restyled_at: this.ctx.now().toISOString(), accepted, refused, before, after: registerSummary(readJson(file)) }, null, 2)}\n`);
+    if (accepted.length) {
+      // The register pass was the listener's edit; the facts are checked once more, then the
+      // worker records the narration again and the audio gate is reviewed anew.
+      state.verified = false;
+      state.listener_done = true;
+      state.notes.push(`restyled on ${today(this.ctx)}: ${accepted.length} lines retold in the storytelling register${refused.length ? `, ${refused.length} refused (review/restyle.json)` : ""}`);
+      saveState(workdir, state);
+    }
+    const after = registerSummary(readJson(file));
+    return `${slug}: ${accepted.length} of ${listed.length} lines retold${refused.length ? `, ${refused.length} refused (review/restyle.json)` : ""}; now ${registerLine(after)}${accepted.length ? "; the worker fact-checks, records and reviews the narration again" : ""}`;
   }
 
   async narration(state) {
@@ -1720,60 +1841,88 @@ export class Automation {
    * One locale's dub track (docs/videos/DUBS.md): `dub`, and when a window does not fit even at
    * MAX_TEMPO, the translator shortens those lines and `dub` runs again, MAX_DUB_SHORTEN_ROUNDS
    * times; then Jev listens (`check-audio --locale`) and the flagged lines are retaken,
-   * MAX_DUB_RETAKE_ROUNDS times. What still fails after that, and what needs the owner (a voice
-   * that speaks one language, a missing key), gives the locale up with the reason instead of
-   * blocking the video; a service that is down ends this run and the next one tries again.
+   * MAX_DUB_RETAKE_ROUNDS times, and the lines still heard wrong after that are reworded by the
+   * translator and dubbed again, MAX_DUB_REWORD_ROUNDS times. A retake that no longer fits its
+   * window goes back to the shortening. What still fails after that, and what needs the owner (a
+   * voice that speaks one language, a missing key), gives the locale up with the reason instead
+   * of blocking the video; a service that is down ends this run and the next one tries again.
    */
   async makeDub(state, locale) {
     const { ctx } = this;
     const slug = state.slug;
     const workdir = this.workdir(slug);
-    const rounds = { shorten: 0, retakes: 0, ...(state.languages?.[locale] ?? {}) };
+    const rounds = { shorten: 0, retakes: 0, reword: 0, ...(state.languages?.[locale] ?? {}) };
     const remember = () => {
       state.languages = { ...(state.languages ?? {}), [locale]: rounds };
       saveState(workdir, state);
     };
     const dubArgs = ["dub", "--slug", slug, "--locale", locale];
-    let made = await run(ctx, dubArgs);
-    while (made.code === 1 && rounds.shorten < MAX_DUB_SHORTEN_ROUNDS) {
-      const over = readJson(dubArtifacts(workdir, locale).fit, null)?.over;
-      if (!Array.isArray(over) || !over.length) break;
-      rounds.shorten += 1;
-      remember();
-      const shortened = await this.shortenDub(state, locale, over);
-      if (shortened.stopped) return shortened.stopped;
-      // Nothing usable came back: the same windows would only be over again.
-      if (!shortened.ids.length) break;
-      made = await run(ctx, dubArgs);
-    }
-    if (made.code === 1) {
-      const over = readJson(dubArtifacts(workdir, locale).fit, null)?.over ?? [];
-      const why = over.length ? `${over.length} lines (${over.map((line) => line.id).join(", ")}) do not fit even at ${MAX_TEMPO}x after ${rounds.shorten} shortening round${rounds.shorten === 1 ? "" : "s"}` : lastLine(made.out);
-      return this.giveUpDub(state, locale, why);
-    }
-    if (made.code === 3) return this.giveUpDub(state, locale, `dub needs the owner: ${lastLine(made.out)}`);
-    if (made.code === 4) return this.later(`${slug}: ${locale} dub could not finish (${lastLine(made.out)}); the next run tries again`);
-    if (made.code !== 0) return this.block(state, `dub ${locale} failed: ${lastLine(made.out, 2)}`);
     const flags = path.join(workdir, "review", `check-flags.${locale}.json`);
     const checkArgs = ["check-audio", "--slug", slug, "--locale", locale];
-    let check = await run(ctx, checkArgs);
-    while (check.code === 1 && rounds.retakes < MAX_DUB_RETAKE_ROUNDS) {
-      rounds.retakes += 1;
-      remember();
-      const redo = await run(ctx, [...dubArgs, "--redo", flags]);
-      if (redo.code === 4) return this.later(`${slug}: ${locale} dub retake could not finish (${lastLine(redo.out)}); the next run tries again`);
-      if (redo.code === 1 || redo.code === 3) return this.giveUpDub(state, locale, `the retake failed: ${lastLine(redo.out)}`);
-      if (redo.code !== 0) return this.block(state, `dub ${locale} retake failed: ${lastLine(redo.out, 2)}`);
-      check = await run(ctx, checkArgs);
+    const overLines = () => readJson(dubArtifacts(workdir, locale).fit, null)?.over;
+    // Each pass makes the track (only the lines whose words changed are synthesized again) and
+    // checks it; a reworded line or a retake that no longer fits starts another pass.
+    for (;;) {
+      let made = await run(ctx, dubArgs);
+      while (made.code === 1 && rounds.shorten < MAX_DUB_SHORTEN_ROUNDS) {
+        const over = overLines();
+        if (!Array.isArray(over) || !over.length) break;
+        rounds.shorten += 1;
+        remember();
+        const shortened = await this.shortenDub(state, locale, over);
+        if (shortened.stopped) return shortened.stopped;
+        // Nothing usable came back: the same windows would only be over again.
+        if (!shortened.ids.length) break;
+        made = await run(ctx, dubArgs);
+      }
+      if (made.code === 1) {
+        const over = overLines() ?? [];
+        const why = over.length ? `${over.length} lines (${over.map((line) => line.id).join(", ")}) do not fit even at ${MAX_TEMPO}x after ${rounds.shorten} shortening round${rounds.shorten === 1 ? "" : "s"}` : lastLine(made.out);
+        return this.giveUpDub(state, locale, why);
+      }
+      if (made.code === 3) return this.giveUpDub(state, locale, `dub needs the owner: ${lastLine(made.out)}`);
+      if (made.code === 4) return this.later(`${slug}: ${locale} dub could not finish (${lastLine(made.out)}); the next run tries again`);
+      if (made.code !== 0) return this.block(state, `dub ${locale} failed: ${lastLine(made.out, 2)}`);
+      let check = await run(ctx, checkArgs);
+      let refit = false;
+      while (check.code === 1 && rounds.retakes < MAX_DUB_RETAKE_ROUNDS) {
+        rounds.retakes += 1;
+        remember();
+        const redo = await run(ctx, [...dubArgs, "--redo", flags]);
+        if (redo.code === 4) return this.later(`${slug}: ${locale} dub retake could not finish (${lastLine(redo.out)}); the next run tries again`);
+        // The new take is longer than its window allows: the next pass's `dub` reports the same
+        // window and shortens it, while shortening rounds are left.
+        if (redo.code === 1 && overLines()?.length && rounds.shorten < MAX_DUB_SHORTEN_ROUNDS) {
+          refit = true;
+          break;
+        }
+        if (redo.code === 1 || redo.code === 3) return this.giveUpDub(state, locale, `the retake failed: ${lastLine(redo.out)}`);
+        if (redo.code !== 0) return this.block(state, `dub ${locale} retake failed: ${lastLine(redo.out, 2)}`);
+        check = await run(ctx, checkArgs);
+      }
+      if (refit) continue;
+      if (check.code === 1 && rounds.reword < MAX_DUB_REWORD_ROUNDS) {
+        rounds.reword += 1;
+        remember();
+        const reworded = await this.rewordDub(state, locale);
+        if (reworded.stopped) return reworded.stopped;
+        // Nothing usable came back: the same words would only be heard wrong again.
+        if (reworded.ids.length) continue;
+      }
+      if (check.code === 4) return this.later(`${slug}: ${locale} dub check could not finish (${lastLine(check.out)}); the next run tries again`);
+      if (check.code === 1) {
+        const reworded = rounds.reword ? ` and ${rounds.reword} rewording round${rounds.reword === 1 ? "" : "s"}` : "";
+        return this.giveUpDub(state, locale, `Jev still hears lines wrong after ${rounds.retakes} retake${rounds.retakes === 1 ? "" : "s"}${reworded}: ${lastLine(check.out)}`);
+      }
+      if (check.code === 3) return this.giveUpDub(state, locale, `the dub check needs the owner: ${lastLine(check.out)}`);
+      if (check.code !== 0) return this.block(state, `check-audio ${locale} failed: ${lastLine(check.out, 2)}`);
+      break;
     }
-    if (check.code === 4) return this.later(`${slug}: ${locale} dub check could not finish (${lastLine(check.out)}); the next run tries again`);
-    if (check.code === 1) return this.giveUpDub(state, locale, `Jev still hears lines wrong after ${rounds.retakes} retake${rounds.retakes === 1 ? "" : "s"}: ${lastLine(check.out)}`);
-    if (check.code === 3) return this.giveUpDub(state, locale, `the dub check needs the owner: ${lastLine(check.out)}`);
-    if (check.code !== 0) return this.block(state, `check-audio ${locale} failed: ${lastLine(check.out, 2)}`);
     if (state.languages) delete state.languages[locale];
     saveState(workdir, state);
     await report(ctx, this.api, state, "languages");
-    const rounding = [rounds.shorten ? `${rounds.shorten} shortening round${rounds.shorten === 1 ? "" : "s"}` : "", rounds.retakes ? `${rounds.retakes} retake${rounds.retakes === 1 ? "" : "s"}` : ""].filter(Boolean).join(", ");
+    const plural = (count, word) => (count ? `${count} ${word}${count === 1 ? "" : "s"}` : "");
+    const rounding = [plural(rounds.shorten, "shortening round"), plural(rounds.retakes, "retake"), plural(rounds.reword, "rewording round")].filter(Boolean).join(", ");
     return `${slug}: ${locale} dub made${rounding ? ` after ${rounding}` : ""}; Jev passed every line`;
   }
 
@@ -1839,20 +1988,94 @@ export class Automation {
       accepted.set(id, after);
     }
     if (accepted.size) {
-      const sheetResult = await run(ctx, ["i18n-sheet", "--slug", slug, "--locale", locale, "--parts", "captions"]);
-      if (sheetResult.code !== 0) return { stopped: await this.block(state, `i18n-sheet ${locale} failed: ${lastLine(sheetResult.out)}`) };
-      const sheetFile = path.join(workdir, "i18n", `${locale}.todo.json`);
-      const sheet = readJson(sheetFile);
-      sheet.lines = sheet.lines.map((line) => (accepted.has(line.id) ? { ...line, text: accepted.get(line.id) } : line));
-      writeFileSync(sheetFile, `${JSON.stringify(sheet, null, 2)}\n`);
-      const merged = await run(ctx, ["i18n-merge", "--slug", slug, "--locale", locale]);
-      if (merged.code !== 0) return { stopped: await this.retryLater(state, "translator", `the shortened ${locale} lines do not merge: ${lastLine(merged.out, 2)}`) };
+      const merged = await this.mergeDubLines(state, locale, accepted, "shortened");
+      if (merged) return { stopped: merged };
     }
     for (const [id, text] of accepted) state.notes.push(`${locale} dub line shortened: ${id} → 「${text}」`);
     for (const problem of problems) state.notes.push(`${locale} shortening dropped: ${problem}`);
     saveState(workdir, state);
     this.log(`  ${locale} shortening: ${accepted.size} of ${lines.length} lines shortened${problems.length ? `, ${problems.length} dropped` : ""}`);
     return { ids: [...accepted.keys()], problems };
+  }
+
+  /**
+   * The translator's rewording pass: the lines `check-audio --locale` still flags after the
+   * retakes, with what the transcriber heard (review/check.<locale>.json) and their budgets from a
+   * fresh captions sheet, go to the translator (variant "reword"). A reworded line that differs,
+   * keeps every digit and stays within its budget (or its current length, when the sheet has
+   * none) replaces the translation the way a shortened one does; the rest are dropped with the
+   * reason in the notes. Answers { ids, problems }, or { stopped } with this run's line.
+   */
+  async rewordDub(state, locale) {
+    const { ctx } = this;
+    const slug = state.slug;
+    const workdir = this.workdir(slug);
+    const dir = docDir(slug, ctx.root);
+    const flagged = readJson(path.join(workdir, "review", `check-flags.${locale}.json`), { flags: [] }).flags ?? [];
+    const heard = readJson(path.join(workdir, "review", `check.${locale}.json`), { lines: {} }).lines ?? {};
+    const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    const translation = readJson(path.join(dir, "i18n", `${locale}.json`), { lines: {} });
+    const sources = new Map([...eachLine(video)].map(({ line }) => [line.id, line.text]));
+    // The sheet carries each line's budget when the owner chose a dub (i18n-sheet's max_chars).
+    const sheetResult = await run(ctx, ["i18n-sheet", "--slug", slug, "--locale", locale, "--parts", "captions"]);
+    if (sheetResult.code !== 0) return { stopped: await this.block(state, `i18n-sheet ${locale} failed: ${lastLine(sheetResult.out)}`) };
+    const budgets = new Map((readJson(path.join(workdir, "i18n", `${locale}.todo.json`), { lines: [] }).lines ?? []).map((line) => [line.id, line.max_chars]));
+    const lines = flagged
+      .filter((id) => sources.has(id) && typeof translation.lines?.[id]?.text === "string")
+      .map((id) => {
+        const text = translation.lines[id].text;
+        const budget = Number.isInteger(budgets.get(id)) ? budgets.get(id) : [...text].length;
+        return { id, source: sources.get(id), text, heard: String(heard[id]?.heard ?? ""), max_chars: Math.max(budget, [...text].length) };
+      });
+    if (!lines.length) return { ids: [], problems: ["no flagged line has a current translation"] };
+    const answer = await this.stage("translator", slug, { locale, lines, video }, 16_000, state.format, "reword");
+    if (!Array.isArray(answer?.lines)) return { stopped: await this.retryLater(state, "translator", `the ${locale} rewording pass answered without a lines array`) };
+    this.cleared(state, "translator");
+    const accepted = new Map();
+    const problems = [];
+    for (const entry of answer.lines) {
+      const id = String(entry?.id ?? "");
+      const before = lines.find((each) => each.id === id);
+      if (!before) {
+        problems.push(`${id || "?"}: not one of the lines to reword`);
+        continue;
+      }
+      if (accepted.has(id)) continue;
+      const after = typeof entry.text === "string" ? entry.text.trim() : "";
+      if (!after) problems.push(`${id}: the reworded line is empty`);
+      else if (after === before.text) problems.push(`${id}: unchanged`);
+      else if ([...after].length > before.max_chars) problems.push(`${id}: over its budget (${[...after].length} characters, at most ${before.max_chars})`);
+      else if (digitsOf(after) !== digitsOf(before.text)) problems.push(`${id}: the numbers changed`);
+      else accepted.set(id, after);
+    }
+    if (accepted.size) {
+      const merged = await this.mergeDubLines(state, locale, accepted, "reworded");
+      if (merged) return { stopped: merged };
+    }
+    for (const [id, text] of accepted) state.notes.push(`${locale} dub line reworded: ${id} → 「${text}」`);
+    for (const problem of problems) state.notes.push(`${locale} rewording dropped: ${problem}`);
+    saveState(workdir, state);
+    this.log(`  ${locale} rewording: ${accepted.size} of ${lines.length} lines reworded${problems.length ? `, ${problems.length} dropped` : ""}`);
+    return { ids: [...accepted.keys()], problems };
+  }
+
+  /**
+   * Put a dub pass's new translations into docs/videos/<slug>/i18n/<locale>.json through a
+   * captions-only sheet and i18n-merge, so the captions and the dub read the same words and the
+   * hashes are the tool's. Null when merged; else this run's line.
+   */
+  async mergeDubLines(state, locale, accepted, how) {
+    const { ctx } = this;
+    const slug = state.slug;
+    const sheetResult = await run(ctx, ["i18n-sheet", "--slug", slug, "--locale", locale, "--parts", "captions"]);
+    if (sheetResult.code !== 0) return this.block(state, `i18n-sheet ${locale} failed: ${lastLine(sheetResult.out)}`);
+    const sheetFile = path.join(this.workdir(slug), "i18n", `${locale}.todo.json`);
+    const sheet = readJson(sheetFile);
+    sheet.lines = sheet.lines.map((line) => (accepted.has(line.id) ? { ...line, text: accepted.get(line.id) } : line));
+    writeFileSync(sheetFile, `${JSON.stringify(sheet, null, 2)}\n`);
+    const merged = await run(ctx, ["i18n-merge", "--slug", slug, "--locale", locale]);
+    if (merged.code !== 0) return this.retryLater(state, "translator", `the ${how} ${locale} lines do not merge: ${lastLine(merged.out, 2)}`);
+    return null;
   }
 
   /**

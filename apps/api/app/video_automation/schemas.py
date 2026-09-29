@@ -14,6 +14,7 @@ from pydantic import (
 )
 
 from app.ai.catalog import ModelStatus
+from app.video_automation.models import SLIDES_IMAGE_MODEL
 from app.video_media.catalog import MEDIA_VENDORS, find_model
 
 # "claude_code" and "codex" use the host's subscription accounts; the others use API keys.
@@ -199,9 +200,40 @@ class StageModelsWrite(StrictModel):
         return None if value is None else _every_stage(value)
 
 
+# The owner's licensed music file and sound-effect set, as tools/video names them (core/drama.mjs
+# MUSIC_TRACK and SFX_SET): a bare file name under <work base>/_music/, a folder name under _sfx/.
+MusicTrack = Annotated[
+    str, StringConstraints(pattern=r"^[a-z0-9][a-z0-9._-]{0,63}\.(?:mp3|m4a|wav|flac)$")
+]
+SfxSet = Annotated[str, StringConstraints(pattern=r"^[a-z0-9][a-z0-9._-]{0,63}$")]
+
+
+class SlidesSettings(StrictModel):
+    """Illustrated slides (docs/videos/ILLUSTRATED.md): the pictures' switch, image model and
+    per-video cap, whether the storyboard approves itself from the judge's scores, and the
+    licensed music file and sound-effect set the worker gives every new video. Every field has
+    a default, so a settings tab from before these existed, which sends nothing of them, still
+    validates and keeps what is stored."""
+
+    slides_media_enabled: bool = False
+    # None follows the drama's image model.
+    slides_image_model: str | None = Field(default=SLIDES_IMAGE_MODEL, min_length=1, max_length=128)
+    slides_max_usd_per_video: int = Field(default=20, ge=0, le=10_000)
+    slides_auto_approve_storyboard: bool = True
+    slides_music_track: MusicTrack | None = None
+    slides_sfx_set: SfxSet | None = None
+
+    @field_validator("slides_image_model")
+    @classmethod
+    def _image_model(cls, value: str | None) -> str | None:
+        return _known_image_model(value)
+
+
 class SettingsWrite(_SettingsFields):
     stage_models: dict[Stage, StageModel]
     drama: DramaSettings
+    # Illustrated slides (docs/videos/ILLUSTRATED.md), beside the drama's object.
+    slides: SlidesSettings = Field(default_factory=SlidesSettings)
     stage_instructions: dict[Stage, StandingText] = Field(default_factory=dict)
     # The hands-off switches (docs/videos/HANDS-OFF.md). The stance is what this channel
     # believes, at most 4,000 characters; while it is blank Jev does not choose outlines.
@@ -250,6 +282,7 @@ class SettingsSave(StrictModel):
     auto_approve_audio: bool | None = None
     stage_models: dict[Stage, StageModel] | None = None
     drama: DramaSettings | None = None
+    slides: SlidesSettings | None = None
     stage_instructions: dict[Stage, StandingText] | None = None
     channel_stance: StandingText | None = None
     auto_pick_outline: bool | None = None
@@ -269,14 +302,17 @@ class SettingsSave(StrictModel):
         """The stored values with the fields this save sent laid over them.
 
         ``current`` is ``SettingsWrite.model_dump()`` of what is stored. A field left out or sent
-        as null stays; ``drama`` merges field by field, so a page from before a drama field
-        existed cannot reset it by sending the object without it.
+        as null stays; ``drama`` and ``slides`` merge field by field, so a page from before one
+        of their fields existed cannot reset it by sending the object without it.
         """
         sent = self.model_dump(exclude_unset=True)
         drama = sent.pop("drama", None)
+        slides = sent.pop("slides", None)
         values = {**current, **{key: value for key, value in sent.items() if value is not None}}
         if drama is not None:
             values["drama"] = {**current["drama"], **drama}
+        if slides is not None:
+            values["slides"] = {**(current.get("slides") or {}), **slides}
         return values
 
 
