@@ -22,8 +22,8 @@ import { jpegBytes } from "../qa/test-images.mjs";
 import { PART_BYTES } from "../review/sync.mjs";
 import { automationClient } from "./client.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
-import { Automation, automatedVideos, mainGuide, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, settingsFor, settle, sheetDone, siteArticleUrl, siteSources } from "./flow.mjs";
-import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, STANCE_HEADING, TRANSLATOR_SHORTEN } from "./prompts.mjs";
+import { Automation, automatedVideos, mainGuide, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, settingsFor, settle, sheetDone, siteArticleUrl, siteSources } from "./flow.mjs";
+import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, STANCE_HEADING, TRANSLATOR_REWORD, TRANSLATOR_SHORTEN } from "./prompts.mjs";
 
 const TOKEN = `mkv_${"t".repeat(43)}`;
 const SITE = "https://site.test";
@@ -1182,11 +1182,16 @@ test("from the picked outline to YouTube without the owner: the final gate sends
  * A fake `dub`, writing what the real one leaves (docs/videos/DUBS.md) for the translation as it
  * is now: `plan[locale].over` is how many runs first report a window that does not fit (exit 1,
  * the first line's budget in fit.json, two characters under its length); a run with --redo
- * always succeeds. `checks[locale]` is how many `check-audio --locale` runs flag the first line
- * before every line passes; the flags file is written as the real check writes it.
+ * succeeds unless `plan[locale].redoOver` runs are still left, when the new take overruns its
+ * window and the next plain run reports it once more. `checks[locale]` is how many
+ * `check-audio --locale` runs flag the first line before every line passes, or a function of the
+ * line's current translation that says whether it is flagged; the flags file and the heard text
+ * are written as the real check writes them.
  */
 function fakeDub(box, slug, workdir, plan, checks) {
   const overRuns = {};
+  const redoOverRuns = {};
+  const refit = {};
   const checkRuns = {};
   return (command) => {
     const [name] = command;
@@ -1201,11 +1206,20 @@ function fakeDub(box, slug, workdir, plan, checks) {
       if (!redo) overRuns[locale] = (overRuns[locale] ?? 0) + 1;
       const base = { locale, speech_hash: timeline.speech_hash, translation_hash: words, rates: { default: 15, measured: 14.2 } };
       mkdirSync(files.dir, { recursive: true });
-      if (!redo && overRuns[locale] <= (plan[locale]?.over ?? 0)) {
+      const overrun = () => {
         const text = project.translations[locale].lines[first].text;
         writeFileSync(files.fit, JSON.stringify({ ...base, tempo_max: 1.15, over: [{ id: first, chars: [...text].length, max_chars: Math.max(1, [...text].length - 2), seconds: 3.2, window_over_seconds: 0.8 }] }));
         return { code: 1, out: `${locale}: 1 windows do not fit even at 1.15x` };
+      };
+      if (redo && (redoOverRuns[locale] = (redoOverRuns[locale] ?? 0) + 1) <= (plan[locale]?.redoOver ?? 0)) {
+        refit[locale] = true;
+        return overrun();
       }
+      if (!redo && refit[locale]) {
+        refit[locale] = false;
+        return overrun();
+      }
+      if (!redo && overRuns[locale] <= (plan[locale]?.over ?? 0)) return overrun();
       writeFileSync(files.fit, JSON.stringify({ ...base, tempo_max: 1.07, over: [] }));
       const lines = timeline.lines.map((line) => ({ id: line.id, scene: line.scene, start_frame: line.start_frame + 5, end_frame: line.start_frame + 5 + Math.ceil(line.audio_samples / 2 / 1600), audio_samples: Math.floor(line.audio_samples / 2), tempo: 1 }));
       writeFileSync(files.timeline, JSON.stringify({ ...base, format: "m4a", file: `${locale}.m4a`, total_frames: timeline.total_frames, tempo_max: 1.07, windows: [], lines }));
@@ -1213,8 +1227,10 @@ function fakeDub(box, slug, workdir, plan, checks) {
       return { code: 0, out: `${locale}: 3 requests synthesized` };
     }
     checkRuns[locale] = (checkRuns[locale] ?? 0) + 1;
-    const flagged = checkRuns[locale] <= (checks[locale] ?? 0);
+    const text = loadProject({ slug, root: box.root }).translations[locale].lines[first].text;
+    const flagged = typeof checks[locale] === "function" ? checks[locale](text) : checkRuns[locale] <= (checks[locale] ?? 0);
     mkdirSync(path.join(workdir, "review"), { recursive: true });
+    writeFileSync(path.join(workdir, "review", `check.${locale}.json`), JSON.stringify({ lines: { [first]: { intended: text, heard: flagged ? `misheard ${text}` : text } } }));
     writeFileSync(path.join(workdir, "review", `check-flags.${locale}.json`), JSON.stringify({ slug, locale, flags: flagged ? [first] : [], notes: {} }));
     return { code: flagged ? 1 : 0, out: flagged ? `${locale} dub: 1 flagged` : `${locale} dub: every line passed` };
   };
@@ -1222,18 +1238,21 @@ function fakeDub(box, slug, workdir, plan, checks) {
 
 /** The shortening pass's answer: each line cut to its budget (docs/videos/DUBS.md). */
 const shortenAnswer = (body) => ({ lines: body.payload.lines.map((line) => ({ id: line.id, text: [...line.text].slice(0, line.max_chars).join("") })) });
+/** The rewording pass's answer: the misheard line's last character swapped for another word. */
+const rewordAnswer = (body) => ({ lines: body.payload.lines.map((line) => ({ id: line.id, text: `${[...line.text].slice(0, -1).join("")}!` })) });
 
 /**
  * A tutorial taken to the confirmed upload without the owner, the way the end-to-end test does,
  * with the dub and its check played by `fakeDub`; the languages then wait for the owner's
  * choice on /admin/videos (docs/videos/LANGUAGES.md), which `choose` makes.
  */
-async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer } = {}) {
+async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, reword = rewordAnswer } = {}) {
   const box = sandbox();
   const slug = "chatgpt-ads-off";
+  const passes = { shorten, reword };
   const answers = {
     ...answersFor(slug, { applies: "1、2" }),
-    translator: (body) => (body.variant === "shorten" ? shorten(body) : { worksheet: filledSheet(body.payload.worksheet) }),
+    translator: (body) => (passes[body.variant] ? passes[body.variant](body) : { worksheet: filledSheet(body.payload.worksheet) }),
     caption_reviewer: (body) => ({ worksheet: body.payload.worksheet, fixes: [] }),
   };
   const site = fakeSite({ answers, settings: { channel_stance: STANCE }, judge: () => jevPick("B") });
@@ -1579,6 +1598,57 @@ test("a window that does not fit is shortened once and the dub is made; two roun
   assert.equal(await video.step(), null);
   assert.deepEqual(video.onSite().languages.ko.dub, { state: "skipped", reason });
   assert.equal(video.onSite().ready_to_upload, true, "a skipped part does not hold the upload");
+});
+
+test("a line heard wrong on every retake is reworded, the dub is made again for it, and it passes", async () => {
+  assert.equal(MAX_DUB_REWORD_ROUNDS, 2);
+  assert.match(TRANSLATOR_REWORD, /at most max_chars characters/);
+  // The transcriber hears the first line wrong until its words change, as a homophone would be.
+  const video = await finishedVideo({ checks: { en: (text) => !text.endsWith("!") } });
+  video.choose({ en: { metadata: false, captions: true, dub: true } });
+  assert.match(await video.step(), /^chatgpt-ads-off: en captions translated and reviewed$/);
+  const translationFile = path.join(video.box.root, "docs", "videos", video.slug, "i18n", "en.json");
+  const before = readJson(translationFile).lines.k7p2.text;
+
+  assert.match(await video.step(), new RegExp(`^chatgpt-ads-off: en dub made after ${MAX_DUB_RETAKE_ROUNDS} retakes, 1 rewording round; Jev passed every line$`));
+  const [reword] = video.calls("translator", "reword");
+  assert.equal(reword.payload.locale, "en");
+  assert.deepEqual(reword.payload.lines.map((line) => [line.id, line.text, line.heard]), [["k7p2", before, `misheard ${before}`]]);
+  assert.ok(reword.payload.lines[0].max_chars >= [...before].length, "the budget never asks a reworded line to be shorter than it is");
+  assert.match(reword.instructions, /You reword a few "locale" caption lines/);
+  const after = readJson(translationFile).lines.k7p2.text;
+  assert.equal(after, `${[...before].slice(0, -1).join("")}!`, "the reworded line went through the sheet and i18n-merge");
+  assert.ok(video.state().notes.includes(`en dub line reworded: k7p2 → 「${after}」`));
+  const flags = path.join(video.workdir, "review", "check-flags.en.json");
+  const dubAndCheck = [`dub --slug ${video.slug} --locale en`, `check-audio --slug ${video.slug} --locale en`];
+  const retake = [`dub --slug ${video.slug} --locale en --redo ${flags}`, `check-audio --slug ${video.slug} --locale en`];
+  assert.deepEqual(video.runs.filter((run) => /^(dub|check-audio) .*--locale/.test(run)), [...dubAndCheck, ...retake, ...retake, ...dubAndCheck]);
+  assert.equal(video.state().languages?.en, undefined, "the rounds are forgotten once the track is made");
+});
+
+test("a rewording that changes a number is dropped and the locale is given up; words heard wrong through every rewording give it up too", async () => {
+  const video = await finishedVideo({ checks: { en: () => true, ko: () => true }, reword: (body) => (body.payload.locale === "en" ? { lines: body.payload.lines.map((line) => ({ id: line.id, text: `${line.text} 7` })) } : rewordAnswer(body)) });
+  video.choose({ en: { metadata: false, captions: true, dub: true }, ko: { metadata: false, captions: true, dub: true } });
+  assert.match(await video.step(), /^chatgpt-ads-off: en captions translated and reviewed$/);
+  assert.match(await video.step(), /^chatgpt-ads-off: ko captions translated and reviewed$/);
+
+  const en = `Jev still hears lines wrong after ${MAX_DUB_RETAKE_ROUNDS} retakes and 1 rewording round: en dub: 1 flagged`;
+  assert.equal(await video.step(), `chatgpt-ads-off: en dub given up (${en}); the video goes on without it`);
+  assert.ok(video.state().notes.includes("en rewording dropped: k7p2: the numbers changed"));
+  assert.equal(readJson(dubArtifacts(video.workdir, "en").skipped).reason, en);
+
+  const ko = `Jev still hears lines wrong after ${MAX_DUB_RETAKE_ROUNDS} retakes and ${MAX_DUB_REWORD_ROUNDS} rewording rounds: ko dub: 1 flagged`;
+  assert.equal(await video.step(), `chatgpt-ads-off: ko dub given up (${ko}); the video goes on without it`);
+  assert.equal(video.calls("translator", "reword").filter((call) => call.payload.locale === "ko").length, MAX_DUB_REWORD_ROUNDS);
+});
+
+test("a retake that no longer fits its window is shortened, not given up", async () => {
+  const video = await finishedVideo({ dubs: { en: { redoOver: 1 } }, checks: { en: 1 } });
+  video.choose({ en: { metadata: false, captions: true, dub: true } });
+  assert.match(await video.step(), /^chatgpt-ads-off: en captions translated and reviewed$/);
+  assert.match(await video.step(), /^chatgpt-ads-off: en dub made after 1 shortening round, 1 retake; Jev passed every line$/);
+  assert.equal(video.calls("translator", "shorten").length, 1);
+  assert.equal(video.calls("translator", "reword").length, 0);
 });
 
 test("a language ticked after the video is on YouTube is made as a new batch", async () => {
