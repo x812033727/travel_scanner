@@ -12,6 +12,7 @@ import sqlalchemy as sa
 from alembic.migration import MigrationContext
 from alembic.operations import Operations
 
+import app.models  # noqa: F401 - resolve discovery's users foreign-key types in isolation
 from app.db import Base
 from app.discovery.models import DiscoveryDismissal, DiscoveryPreference
 
