@@ -13,6 +13,11 @@ and storyboard approvals: the worker's payload carries the judgement, the server
 thresholds. The thresholds are constants here and in HANDS-OFF.md; after the first five videos
 the owner compares Jev's picks with their own and decides whether to move them.
 
+A brand story (docs/videos/STORY.md) demonstrates nothing, so its narration is asked the story's
+questions instead of the tutorial's: written to the stance, an observation left to the viewer,
+no advice, not sponsored, nobody named run down. The server picks the set from the video's own
+series (``policy_questions_for``); every other video, a drama's included, is asked as before.
+
 Payload contracts the worker writes (tools/video, ticket video-hands-off-worker):
 
 - an outline review's ``payload.pick``: ``{"choice": key, "probabilities": {key: p},
@@ -29,11 +34,13 @@ Payload contracts the worker writes (tools/video, ticket video-hands-off-worker)
 
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, Literal
 
 import httpx
 from pydantic import BaseModel, ConfigDict, Field
 from redis.asyncio import Redis
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.ai.jev import (
     ChoiceQuestion,
@@ -44,6 +51,7 @@ from app.ai.jev import (
     jev_client,
 )
 from app.config import Settings
+from app.video_automation.models import VideoDramaEpisode, VideoDramaSeries
 from app.video_speech.checking import CheckUnavailable
 
 # Thresholds (docs/videos/HANDS-OFF.md §Jev 挑大綱, §自動品管): the chosen outline must keep
@@ -56,6 +64,22 @@ POLICY_MIN_STANCE = 0.6
 POLICY_MIN_DEMO = 0.6
 POLICY_MAX_ADVICE = 0.3
 POLICY_MAX_SPONSORED = 0.3
+# A brand story's narration (docs/videos/STORY.md §伺服器) must keep to the stance and leave the
+# viewer an observation, and must not advise, sell or run down anyone it names. The pass rule is
+# STORY_POLICY_RULE: every answer on its side of its threshold, "min" for what the narration
+# must do, "max" for what it must not. Its keys are the questions, in the order they are asked.
+STORY_MIN_STANCE = 0.6
+STORY_MIN_OBSERVATION = 0.6
+STORY_MAX_ADVICE = 0.3
+STORY_MAX_SPONSORED = 0.3
+STORY_MAX_DISPARAGE = 0.3
+STORY_POLICY_RULE: dict[str, tuple[Literal["min", "max"], float]] = {
+    "stance": ("min", STORY_MIN_STANCE),
+    "observation": ("min", STORY_MIN_OBSERVATION),
+    "advice": ("max", STORY_MAX_ADVICE),
+    "sponsored": ("max", STORY_MAX_SPONSORED),
+    "disparage": ("max", STORY_MAX_DISPARAGE),
+}
 # At most three options: the choice plus two nouls each, plus advice, is eight questions.
 MIN_OPTIONS = 2
 MAX_OPTIONS = 3
@@ -179,7 +203,33 @@ POLICY_SPONSORED_INSTRUCTIONS = (
     "This narration reads as sponsored or promotional: it urges the viewer to buy or sign up "
     "for a named product or service, or praises one without weighing it."
 )
+# The story's own three. Jev reads wording only (app.ai.jev): whether the story's facts are
+# right is the verifier's, before the narration is recorded, never a question here. A brand
+# story names and describes one company at length by design, so the sponsored question asks
+# about recommending and advertising, not about praise.
+STORY_OBSERVATION_INSTRUCTIONS = (
+    "This narration leaves the viewer one observation to take away: a closing thought about "
+    "what the story shows, rather than advice on what the viewer should buy or do."
+)
+STORY_SPONSORED_INSTRUCTIONS = (
+    "This narration reads as sponsored content or an advertisement: it recommends that the "
+    "viewer buy, use or sign up for a product, service or brand it names, or reads as that "
+    "company's own promotion rather than an account of how its business works."
+)
+STORY_DISPARAGE_INSTRUCTIONS = (
+    "This narration disparages a named person, company or brand: it mocks, insults or "
+    "belittles them, or calls them dishonest, incompetent or worse in its own voice instead of "
+    "reporting what a court, an official record or a named source said."
+)
 NOUL_CRITERIA = {"yes": "the statement holds", "no": "the statement does not hold"}
+# What each of the story's answers is called in the note the owner reads.
+STORY_POLICY_LABELS = {
+    "stance": "符合立場",
+    "observation": "留下觀察",
+    "advice": "建議",
+    "sponsored": "業配",
+    "disparage": "貶損",
+}
 
 
 class StrictModel(BaseModel):
@@ -221,13 +271,27 @@ class JudgePolicyIn(StrictModel):
     viewpoint: str = Field(default="", max_length=8_000)
 
 
+# Which questions a narration was asked: the tutorial's four, which every video but a brand
+# story is asked, or the story's five (docs/videos/STORY.md).
+PolicyQuestions = Literal["tutorial", "story"]
+
+
 class PolicyVerdict(BaseModel):
+    """What Jev said about a narration; ``passed`` is the verdict of the set it was asked.
+
+    A tutorial's verdict carries the four scores it always did (``observation`` and
+    ``disparage`` are None); a story's has no ``demo`` (None), since it was not asked.
+    """
+
     stance: float
-    demo: float
+    demo: float | None
     advice: float
     sponsored: float
     passed: bool
     note: str
+    questions: PolicyQuestions = "tutorial"
+    observation: float | None = None
+    disparage: float | None = None
 
 
 # --- questions ----------------------------------------------------------------------------------
@@ -279,6 +343,22 @@ def policy_questions() -> dict[str, JevQuestion]:
         "sponsored": NoulQuestion(
             instructions=POLICY_SPONSORED_INSTRUCTIONS, criteria=NOUL_CRITERIA
         ),
+    }
+
+
+def story_policy_questions() -> dict[str, JevQuestion]:
+    """A brand story's five, in STORY_POLICY_RULE's order; the stance and advice questions are
+    the tutorial's own words, so the two sets score those the same way."""
+    instructions = {
+        "stance": POLICY_STANCE_INSTRUCTIONS,
+        "observation": STORY_OBSERVATION_INSTRUCTIONS,
+        "advice": POLICY_ADVICE_INSTRUCTIONS,
+        "sponsored": STORY_SPONSORED_INSTRUCTIONS,
+        "disparage": STORY_DISPARAGE_INSTRUCTIONS,
+    }
+    return {
+        name: NoulQuestion(instructions=instructions[name], criteria=NOUL_CRITERIA)
+        for name in STORY_POLICY_RULE
     }
 
 
@@ -342,6 +422,32 @@ def read_policy_answers(answers: dict[str, Any]) -> PolicyVerdict:
     )
 
 
+def story_policy_passed(scores: dict[str, float]) -> bool:
+    """The story's pass rule: every answer of STORY_POLICY_RULE on its side of its threshold,
+    a missing one never passing."""
+    for name, (side, threshold) in STORY_POLICY_RULE.items():
+        score = scores.get(name)
+        if score is None or (score < threshold if side == "min" else score > threshold):
+            return False
+    return True
+
+
+def read_story_policy_answers(answers: dict[str, Any]) -> PolicyVerdict:
+    scores = {name: _noul(answers, name) for name in STORY_POLICY_RULE}
+    passed = story_policy_passed(scores)
+    return PolicyVerdict(
+        questions="story",
+        stance=scores["stance"],
+        demo=None,
+        observation=scores["observation"],
+        advice=scores["advice"],
+        sponsored=scores["sponsored"],
+        disparage=scores["disparage"],
+        passed=passed,
+        note=story_policy_note(scores, passed),
+    )
+
+
 def _pick_passes(choice: str, scores: dict[str, OptionScores], advice: float) -> bool:
     chosen = scores.get(choice)
     return (
@@ -393,6 +499,21 @@ def policy_note(stance: float, demo: float, advice: float, sponsored: float, pas
     return f"Jev：{body}；沒過（{'；'.join(reasons)}）"
 
 
+def story_policy_note(scores: dict[str, float], passed: bool) -> str:
+    """The review page's line, e.g. 「Jev（故事）：符合立場 0.81、留下觀察 0.77、…，通過」."""
+    body = "、".join(
+        f"{STORY_POLICY_LABELS[name]} {scores[name]:.2f}" for name in STORY_POLICY_RULE
+    )
+    if passed:
+        return f"Jev（故事）：{body}，通過"
+    reasons = [
+        f"{STORY_POLICY_LABELS[name]}{'低於' if side == 'min' else '高於'} {threshold}"
+        for name, (side, threshold) in STORY_POLICY_RULE.items()
+        if (scores[name] < threshold if side == "min" else scores[name] > threshold)
+    ]
+    return f"Jev（故事）：{body}；沒過（{'；'.join(reasons)}）"
+
+
 # --- one Jev call each --------------------------------------------------------------------------
 
 
@@ -431,6 +552,24 @@ async def judge_outline(
     return read_outline_answers(answers, options)
 
 
+async def video_series_kind(session: AsyncSession, slug: str) -> str | None:
+    """The kind of the series this video is an episode of ("series", "one-off" or "story"), or
+    None for a video that is no episode. An episode's video is the project whose slug is the
+    episode's, so the answer comes from the server's own rows, whatever a request says."""
+    kind = await session.scalar(
+        select(VideoDramaSeries.kind)
+        .join(VideoDramaEpisode, VideoDramaEpisode.series_id == VideoDramaSeries.id)
+        .where(VideoDramaEpisode.slug == slug)
+    )
+    return kind if isinstance(kind, str) else None
+
+
+async def policy_questions_for(session: AsyncSession, slug: str) -> PolicyQuestions:
+    """The story's questions for an episode of a brand-story series, the tutorial's for every
+    other video, a drama's included (docs/videos/STORY.md §伺服器)."""
+    return "story" if await video_series_kind(session, slug) == "story" else "tutorial"
+
+
 async def judge_policy(
     settings: Settings,
     redis: Redis,
@@ -438,12 +577,20 @@ async def judge_policy(
     viewpoint: str,
     script: str,
     client: httpx.AsyncClient | None = None,
+    *,
+    session: AsyncSession,
+    slug: str,
 ) -> PolicyVerdict:
-    """Whether a narration keeps to the stance, shows something, and sells or advises nothing."""
-    answers = await _ask(
-        settings, redis, policy_state(stance, viewpoint, script), policy_questions(), client
-    )
-    return read_policy_answers(answers)
+    """Whether a narration keeps to the stance and sells or advises nothing, asked in one Jev
+    call with the questions of the video's own kind (``policy_questions_for``): a tutorial's
+    also asks for something shown, a brand story's for an observation left and nobody run
+    down. The server looks the video up by ``slug``; the request cannot choose the set."""
+    state = policy_state(stance, viewpoint, script)
+    if await policy_questions_for(session, slug) == "story":
+        return read_story_policy_answers(
+            await _ask(settings, redis, state, story_policy_questions(), client)
+        )
+    return read_policy_answers(await _ask(settings, redis, state, policy_questions(), client))
 
 
 # --- the server's approval rules ----------------------------------------------------------------
