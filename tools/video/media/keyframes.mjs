@@ -19,7 +19,7 @@ import { MediaError, mediaStatus } from "./client.mjs";
 import { clientOptions, requireCredentials } from "./cli.mjs";
 import { ledgerTotals } from "./ledger.mjs";
 import { duplicates } from "./qc.mjs";
-import { drawContactSheet, imagePrice, JUDGE_USD_PER_CALL, pictureHashes, retakeable, Stage, statusProblem } from "./stages.mjs";
+import { drawContactSheet, imagePrice, imageSelectionVersion, imageStatus, JUDGE_USD_PER_CALL, pictureHashes, retakeable, sameImage, Stage, statusProblem } from "./stages.mjs";
 
 export const MAX_KEYFRAME_TAKES = 3;
 // The server takes at most four reference pictures per image.
@@ -94,6 +94,7 @@ export async function run(command, args, ctx) {
   }).values;
   if (!values.slug && !values.file) throw new UsageError("keyframes needs --slug (or --file for an example outside docs/videos)");
   const project = loadProject({ slug: values.slug, file: values.file, root: ctx.root });
+  const imageVersion = imageSelectionVersion(project.series);
   const { doc } = project;
   const lint = lintProject(project);
   if (lint.errors.length) {
@@ -134,10 +135,10 @@ export async function run(command, args, ctx) {
     for (const scene of shots) ctx.stdout.write(`${scene.id}: ${shotPrompt(scene, look, cast(scene))}\n  references: ${(scene.data.characters ?? []).map((id) => `${id}=${sheets[id] ? optionOf(chosen[id]) : "?"}`).join(", ") || "none"}\n`);
     const credentials = readCredentials({ env: ctx.env, home: ctx.home });
     if (credentials.token) {
-      const status = await mediaStatus(clientOptions(ctx, credentials));
+      const status = imageStatus(await mediaStatus(clientOptions(ctx, credentials)), project.series);
       const problem = statusProblem(status);
       const usd = (shots.length + endFrames) * (imagePrice(status) + JUDGE_USD_PER_CALL);
-      ctx.stdout.write(`server: ${problem ? `NOT ready: ${problem}` : `${status.image.provider} ${status.image.model} ready`}; about US$${usd.toFixed(2)} for one take of everything; this video so far US$${ledgerTotals(workdir).usd.toFixed(2)} of the US$${status.max_usd_per_video} cap\n`);
+      ctx.stdout.write(`server: ${problem ? `NOT ready: ${problem}` : `${status.image.provider} ${status.image.model} ${status.image.configured === null ? "(provider key checked on submit)" : "ready"}`}; about US$${usd.toFixed(2)} for one take of everything; this video so far US$${ledgerTotals(workdir).usd.toFixed(2)} of the US$${status.max_usd_per_video} cap\n`);
     } else {
       ctx.stdout.write("no video tool token yet; run `node tools/video/cli.mjs login` before generating\n");
     }
@@ -146,10 +147,10 @@ export async function run(command, args, ctx) {
 
   const credentials = requireCredentials(ctx);
   const options = clientOptions(ctx, credentials);
-  const status = await mediaStatus(options);
+  const status = imageStatus(await mediaStatus(options), project.series);
   const problem = statusProblem(status);
   if (problem) throw new MediaError(problem, { who: "owner" });
-  const stage = new Stage({ slug: doc.slug, workdir, options, status, stage: "keyframes", now: ctx.now });
+  const stage = new Stage({ slug: doc.slug, workdir, options, status, stage: "keyframes", imageVersion, now: ctx.now });
   mkdirSync(path.join(workdir, "keyframes"), { recursive: true });
   // The chosen sheets and the style frames go to the media store (the server may have pruned
   // them), once per run, and every keyframe is generated with them as references.
@@ -162,7 +163,7 @@ export async function run(command, args, ctx) {
     styleReferences.push({ sha256: await stage.upload(file), role: "style" });
   }
   const existing = readJson(manifestFile(workdir), null);
-  const manifest = existing?.look_hash === hash && existing.visual_hash === visual && !values.force ? existing : { look_hash: hash, visual_hash: visual, shots: {} };
+  const manifest = existing?.look_hash === hash && existing.visual_hash === visual && sameImage(existing.image, status.image) && (!imageVersion || existing.image_selection_version === imageVersion) && !values.force ? existing : { look_hash: hash, visual_hash: visual, image_selection_version: 1, shots: {} };
   manifest.image = { provider: status.image.provider, model: status.image.model };
   const started = Date.now();
   let generated = 0;
