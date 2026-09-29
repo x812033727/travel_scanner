@@ -30,6 +30,7 @@ import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview,
 import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
 import { discussStep } from "./discuss.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
+import { advanceStory, fixStoryPrompts } from "./story.mjs";
 import { instructionsFor, parseAnswer, references } from "./prompts.mjs";
 import { rewriteProblems } from "./rewrite.mjs";
 import { advanceCompilation, startCompilation } from "./compilation.mjs";
@@ -74,9 +75,10 @@ const today = (ctx) => ctx.now().toISOString().slice(0, 10);
  * The prompt variant of an episode's writer and checker: "episode" for an episode of a long
  * series (the beats, the recaps, the next episode's promise); a one-off drama, though it is an
  * episode of its own one-episode series (docs/videos/DRAMA-FLOW.md, section 2), is written with
- * the drama prompts, since its story ends.
+ * the drama prompts, since its story ends. A brand story (story.mjs) has variants of its own and
+ * no recap.
  */
-const episodeVariant = (state) => (state.series && state.series.kind !== "one-off" ? "episode" : null);
+const episodeVariant = (state) => (state.series && !["one-off", "story"].includes(state.series.kind) ? "episode" : null);
 
 /** Every video the automation started, oldest first. */
 export function automatedVideos(workBase) {
@@ -478,7 +480,10 @@ export class Automation {
       const request = siteVideo?.retry_request_id;
       if (state.status !== "blocked" || !request || request === siteVideo.retry_acknowledged_id || request === state.retry_request_id) continue;
       state.retry_request_id = request;
-      state.status = "active";
+      // A language batch can fail after the finished video reached YouTube. Resume
+      // only its languages, rather than revisiting the production stages.
+      state.status = state.blocked_from_status === "done" ? "done" : "active";
+      delete state.blocked_from_status;
       const failedStage = /^([a-z_]+) failed \d+ times in a row:/.exec(state.blocked ?? "")?.[1];
       if (failedStage && state.failures) delete state.failures[failedStage];
       delete state.blocked;
@@ -509,7 +514,7 @@ export class Automation {
     for (const state of automatedVideos(this.workBase)) {
       if (!["active", "done"].includes(state.status)) continue;
       // If the first acknowledgement of a retry could not reach the site, send it before another stage.
-      if (state.status === "active" && state.retry_request_id && siteBySlug.get(state.slug)?.retry_acknowledged_id !== state.retry_request_id) {
+      if (state.retry_request_id && siteBySlug.get(state.slug)?.retry_acknowledged_id !== state.retry_request_id) {
         try {
           await report(this.ctx, this.api, state, "retrying");
         } catch (error) {
@@ -996,6 +1001,7 @@ export class Automation {
 
   /** Stop working on a video and say why on /admin/videos; the owner or a person takes over. */
   async block(state, why) {
+    state.blocked_from_status = state.status;
     state.status = "blocked";
     state.blocked = why;
     saveState(this.workdir(state.slug), state);
@@ -1015,6 +1021,11 @@ export class Automation {
     // package and the YouTube id go the same way as any video.
     if (state.compilation) {
       const moved = await advanceCompilation(this, state, next);
+      if (moved !== undefined) return moved;
+    }
+    // A brand story (docs/videos/STORY.md) is written, checked and heard a chapter at a time.
+    if (state.story) {
+      const moved = await advanceStory(this, state, next);
       if (moved !== undefined) return moved;
     }
 
@@ -1042,7 +1053,8 @@ export class Automation {
     // Prompt repairs and resumed workers can reach this point after a saved script
     // changed without changing script.md (for example its spoken form or pauses).
     // Check the evidence before every downstream stage, even after script approval.
-    if (state.series && !state.compilation && state.verified) {
+    // A brand story has no whole-script report: story.mjs checks it a chapter at a time.
+    if (state.series && !state.compilation && !state.story && state.verified) {
       const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
       const check = readJson(path.join(workdir, "review", "script-check.json"), null);
       // A report from before reports named their script has nothing to compare. It is made again
@@ -1284,6 +1296,8 @@ export class Automation {
    * prompt fix, at most MAX_PROMPT_FIX_ROUNDS times per kind; then the video waits for a person.
    */
   async fixPrompts(state, kind, { targets = null, ownerNote = null }) {
+    // A story's fix is a patch of the named shots alone (story.mjs).
+    if (state.story) return fixStoryPrompts(this, state, kind, { targets, ownerNote });
     const workdir = this.workdir(state.slug);
     const found = targets ?? this.failedTargets(state, kind);
     const what = FIX_SOURCES[kind]?.what ?? "shot";
@@ -1652,6 +1666,9 @@ export class Automation {
     const packaged = await run(ctx, ["package", "--slug", slug]);
     if (packaged.code !== 0) return this.block(state, `package failed: ${lastLine(packaged.out)}`);
     const pushed = await run(ctx, ["review-push", "--slug", slug, "--gate", "languages"]);
+    // A rejected payload will not recover next round. Park only this video so later
+    // videos can run; the existing one-shot retry resumes it after the payload is fixed.
+    if (pushed.code === ctx.EXIT.lint) return this.block(state, `language submission rejected: ${lastLine(pushed.out, 2)}`);
     if (pushed.code !== 0) return this.later(`${slug}: could not send the language batch: ${lastLine(pushed.out, 2)}`);
     await this.pull(slug);
     await report(ctx, this.api, state, "languages sent");

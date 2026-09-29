@@ -2,12 +2,13 @@
 
 import { ArrowLeft, BookOpen } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { AdminEmptyState, AdminErrorState, AdminStatusPill } from "@/components/admin-ui";
 import { AdminVideoDramaSettings } from "@/components/admin-video-drama-settings";
 import { CompilationDownload, control, list, type ProjectSummary, record, text, useRefresh, useWhen } from "@/components/admin-video-review-card";
 import type { VideoSettingsView } from "@/components/admin-video-settings";
+import { AdminVideoStorySeries, StorySeriesPage } from "@/components/admin-video-stories";
 import { DiscussionThread, docSubject, type ThreadMessage } from "@/components/admin-video-thread";
 import { Button } from "@/components/community/ui";
 import { Link } from "@/i18n/navigation";
@@ -19,9 +20,10 @@ import { api } from "@/lib/api";
 // approved here, and made episode by episode; every episode is a video of its own with the usual
 // review cards, reached from the episode table. A one-off episode (docs/videos/DRAMA-FLOW.md,
 // section 2) is a series of one episode whose only document is its story bible; the form files one
-// and the list shows them apart. Every document carries a discussion thread (section 3).
+// and the list shows them apart. Every document carries a discussion thread (section 3). A brand-story
+// series (docs/videos/STORY.md) has no documents: its list and its page are admin-video-stories.tsx.
 type SeriesStatus = "setting" | "outline" | "active" | "paused" | "finished";
-type SeriesKind = "series" | "one-off";
+type SeriesKind = "series" | "one-off" | "story";
 type DocKind = "setting" | "outline" | "chapter" | "bible";
 type DocStatus = "generating" | "review" | "approved" | "rejected";
 type EpisodeStatus = "planned" | "ready" | "queued" | "started" | "done" | "skipped";
@@ -483,6 +485,7 @@ function SeriesList({ onOpenSeries, onOpenVideo }: { onOpenSeries: (slug: string
         <span className="line-clamp-2 text-sm leading-6">{each.premise}</span>
       </button>
     </li>)}</ul>}
+    <AdminVideoStorySeries onOpenSeries={onOpenSeries} />
     {manage.allowed && <NewDramaForm onFiled={(seriesSlug) => { load(); if (seriesSlug) onOpenSeries(seriesSlug); }} />}
     <DramaQueue requests={requests} canManage={manage.allowed} onChanged={load} onOpen={onOpenVideo} />
     {oneOffs.length > 0 && <section className="grid gap-3" aria-label={t("oneOffTitle")}>
@@ -653,8 +656,11 @@ function SeriesPage({ slug, onBack, onOpenVideo }: { slug: string; onBack: () =>
   const [error, setError] = useState("");
   const [actionError, setActionError] = useState("");
   const [busy, setBusy] = useState("");
+  // A brand-story series is never compiled: once the page knows this one is, it skips that read.
+  const storySlug = useRef("");
   const load = useCallback(() => {
-    const refreshed = api<Series>(`/admin/video-automation/series/${slug}`).then((value) => { setSeries(value); setError(""); }).catch((problem: unknown) => setError(message(problem)));
+    const refreshed = api<Series>(`/admin/video-automation/series/${slug}`).then((value) => { storySlug.current = value.kind === "story" ? slug : ""; setSeries(value); setError(""); }).catch((problem: unknown) => setError(message(problem)));
+    if (storySlug.current === slug) return refreshed;
     // The compilation is the series' one video without an episode number (docs/videos/BINGE.md);
     // the episodes come with the series itself. An older site ignores the filter and is filtered here.
     api<ProjectSummary[]>(`/admin/videos?series=${slug}&shorts=exclude`)
@@ -701,6 +707,7 @@ function SeriesPage({ slug, onBack, onOpenVideo }: { slug: string; onBack: () =>
   const compilation = series ? (compilations.find((video) => video.slug === series.compilation_slug) ?? compilations[0] ?? null) : null;
   // One compilation per series: the worker names it <series>-full, so a second cannot start. A one-off has none.
   const canCompile = !oneOff && series?.status === "finished" && state === "none";
+  if (series?.kind === "story") return <StorySeriesPage series={series} error={error} onBack={onBack} onOpenVideo={onOpenVideo} onChanged={load} />;
   return <section className="mt-6 grid gap-5">
     <div><Button secondary onClick={onBack}><ArrowLeft aria-hidden size={18} />{t("back")}</Button></div>
     {error && <AdminErrorState title={t("loadError")} detail={error} retry={load} retryLabel={t("retry")} />}

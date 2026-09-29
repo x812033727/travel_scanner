@@ -282,6 +282,1090 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "zh-CN": {
+      "title": "如何解读搜索结果页：SERP 版位、CTR 与曝光变化",
+      "description": "搜索结果页可能包含文字、图片、视频、富媒体搜索结果及其他版位，平均排名不足以完整描述读者看到的画面。本文用原创数字说明 CTR、曝光与点击的关系，并介绍如何在 Search Console 固定条件、分组比较，再检查标题和摘要是否符合页面内容。附操作步骤、对比表和原创图解，避免把比例下降直接当成流量损失，或断定单一版位造成变化。",
+      "hero": {
+        "src": "/guides/search-results-clickthrough/hero-zh-cn.jpg",
+        "alt": "Mokaair 原创屏幕、计算器与文档插画，说明搜索结果版位、CTR 试算和内容修改记录。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "网站本月的搜索点击率下降，团队第一个反应往往是重写标题。但如果曝光范围同时扩大，总点击量反而可能增加；也可能只是新增查询与原有品牌词的点击习惯不同。先看清分母和查询构成，再决定怎样修改。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文主要以 Google 搜索结果页为例，整理于 2026 年 9 月 14 日查阅的官方定义。试算数字与内容情境均为原创示例，没有测量任何真实网站，也不把某个 CTR 百分比当成所有行业通用的合格标准。"
+        },
+        {
+          "type": "heading",
+          "text": "先看版位，再看排名数字",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "SERP 是搜索结果页的缩写。Google 的文字结果通常包括来源、标题链接和摘要，也可能出现图片、视频、富媒体搜索结果或相关问题。布局会随设备、地区、语言与查询变化，并非始终只有十个尺寸相同的文字链接。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如，查询面包整形步骤的读者可能想看连续动作；查询烤箱尺寸的人可能更需要规格信息。观察结果页时，记录读者能直接完成什么，以及哪些问题仍需进入网站。这是在研究内容形式，不能只数竞争者用了几个小标题。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Console 的位置不是页面上的像素距离，广告也不占用其搜索位置编号。因此，相同的平均位置可能对应不同的可见范围。报告应把指标与版位观察分栏，避免只因排名未变，就认为读者看到的环境完全相同。"
+        },
+        {
+          "type": "heading",
+          "text": "阅读 CTR 时同时看分子和分母",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "CTR 是点击除以曝光，以百分比表示。假设前期 1,000 次曝光带来 100 次点击，CTR 为 10%；后期 2,500 次曝光带来 150 次点击，CTR 为 6%。尽管比例下降了 4 个百分点，点击仍增加了 50 次，不能直接说网站失去了访客。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这组原创示例还不能解释原因。可能出现了覆盖面更广的查询、显示位置不同，或各设备曝光占比发生变化。先问是哪组数据变了，再决定是否更新。也要区分百分点与相对百分比：从 10% 到 6% 是相对下降 40%。"
+        },
+        {
+          "type": "paragraph",
+          "text": "计算多个互不重叠分组的总体 CTR 时，应以总点击除以总曝光，不能直接平均各行百分比。也不要强行汇总采用不同聚合方式的数据行。曝光为零时没有可用分母，应保留“不适用”，不能凭空补成可比较的成功率。"
+        },
+        {
+          "type": "heading",
+          "text": "固定条件，找出变化的查询分组",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Search Console 成效报告中，先选定搜索类型、时间段和网站资源，并开启曝光、点击、CTR 与平均位置。再按页面、查询、国家或设备细分。先比较条件相同的两个完整时段，避免把只有半天的最新数据与整天数据并列。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可以先选一个待改进页面，再区分读者是在找品牌、操作教程还是商品信息。采用事先写好的分组规则，不要看完结果后反复改分类，直到得到想要的结论。若一个词可能对应多种用途，留待人工确认，而非强行归入某一组。"
+        },
+        {
+          "type": "paragraph",
+          "text": "查阅时，Google 说明表格会随选定维度改变聚合方式。例如，页面数据和整个网站资源的数据，不一定能直接相加比较。每次导出都保留筛选条件、维度和日期；切换 Search appearance 或页面筛选后，尤其要重新确认比较基础。"
+        },
+        {
+          "type": "heading",
+          "text": "曝光不表示每次都完整读到了内容",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "曝光的计算条件并不相同。一般搜索项目和需要滚动、展开的结果组件未必适用同一规则；因此，一次曝光不代表读者仔细看完了标题。研究特定版位时，先查该类型的官方定义，不能把所有曝光都当成相同的观看程度。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "同样，"
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " Overviews 中的多个链接共用该组件的位置值。平均位置变好，不一定代表普通文字链接上移，也不能单凭此断定 AI 带来或带走了多少点击。保留结果类型的限制，把缺乏直接证据的原因写成待验证假设。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "人工查看搜索页时，记录日期、查询词、地区和设备。截图或笔记只代表当次观察。即使用无痕模式，也不能声称单次画面就是所有用户看到的共同结果。观察主要用于提出后续问题；长期变化仍应回到范围一致的数据检查。"
+        },
+        {
+          "type": "heading",
+          "text": "根据页面用途修改标题与摘要",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "若相关查询已有曝光，但标题没有说清页面能解决什么，可以先修正表述。以面包教程为例，完整步骤、适用器具与常见失败原因，都应符合页面实际内容。不要为了让文字更吸引人而加入未经测试的保证或夸大的时间承诺。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 会从多种来源自动生成标题链接，网站设置的 title 只是其中一项。修改后仍需等待重新处理，也不保证逐字采用。记录旧文案、修改日期与目的，方便下次检查时分辨这次是澄清用途，还是确实增加了新内容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "摘要主要根据页面内容生成，有时会使用 meta description；不同查询也可能显示不同摘要。维护者应同时检查正文是否清楚回答问题，避免只改 SEO 字段却留下过时内容。准确、可核实的描述有助于读者判断是否值得进入网站。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "固定报告资源、时间段与搜索类型，保留曝光和点击的原始数量。",
+            "按页面、查询用途和设备分组，核对聚合方式是否一致。",
+            "记录当次结果页版位，提出可能影响点击的具体假设。",
+            "调整与内容一致的标题、摘要或页面答案，再用相同条件观察。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "用完整记录评估，不急于声称因果",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "结果表格可能省略部分匿名查询，显示行数也有限，因此表格合计未必等于图表总数。官方还提醒，导出时原本表示不适用或非数值的符号可能变成零。整理报告时保留原有含义，不要把格式转换后的零一律当作真实测量结果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "小样本 CTR 容易被少数几次点击影响。可以延长到较完整的观察时段，并注明节日、活动或内容上线时间，但不要预先承诺几天内必有可判断的结果。同时检查相关查询与页面数量，避免总体数字掩盖不同分组的走向。"
+        },
+        {
+          "type": "paragraph",
+          "text": "更新前后的差距也不等于实验证明。搜索需求、竞争内容和版位可能同时变化；报告应区分观察到的数字、实施过的修改和仍不确定的原因。即使点击增加，也要查看页面是否帮助读者完成目标，让改进不止于单一比例。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/search-results-clickthrough/diagram-1-zh-cn.svg",
+          "alt": "四栏依次说明查看曝光与点击原始数量、确认相同分组、观察结果版位，最后修改与页面一致的标题和摘要。",
+          "width": 1600,
+          "height": 900,
+          "caption": "比例变化是研究起点，不能仅凭它判断流量损失或修改效果。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "原创示例时段",
+            "曝光",
+            "点击",
+            "CTR"
+          ],
+          "rows": [
+            [
+              "前期",
+              "1,000",
+              "100",
+              "10%"
+            ],
+            [
+              "后期",
+              "2,500",
+              "150",
+              "6%"
+            ],
+            [
+              "变化",
+              "+1,500",
+              "+50",
+              "下降 4 个百分点"
+            ]
+          ],
+          "caption": "此表为教学试算，未使用真实网站数据。CTR 下降和点击增加可以同时发生，仍需分组寻找原因。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "不要只交付一个点击率",
+          "text": "同时提供曝光、点击、分组条件与观察时段。若结果版位或查询构成改变，先说明限制，再决定要调整哪个页面。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立 Search Console 定期检查流程",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "编写符合页面用途的搜索标题",
+              "kind": "life",
+              "slug": "seo-title-writing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用搜索意图区分读者任务",
+              "kind": "life",
+              "slug": "seo-search-intent"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 搜索视觉元素",
+          "url": "https://developers.google.com/search/docs/appearance/visual-elements-gallery",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜索曝光、位置与点击定义",
+          "url": "https://support.google.com/webmasters/answer/7042828?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console 成效报告与分组",
+          "url": "https://support.google.com/webmasters/answer/7576553?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console 数据聚合与导出",
+          "url": "https://support.google.com/webmasters/answer/17011364?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console 数据差异与匿名查询",
+          "url": "https://support.google.com/webmasters/answer/17010575?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 标题链接生成方式",
+          "url": "https://developers.google.com/search/docs/appearance/title-link",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 摘要与元描述",
+          "url": "https://developers.google.com/search/docs/appearance/snippet",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Reading search results: SERP features, CTR and changing impressions",
+      "description": "A search results page can contain text, images, videos, rich results and other features; average position cannot fully describe what readers see. Original figures show how CTR, impressions and clicks relate, then explain how to hold Search Console conditions constant, compare segments and check whether titles and snippets match the page. Steps, a comparison table and an original diagram prevent a falling percentage from being mistaken for lost traffic or proof that one feature caused the change.",
+      "hero": {
+        "src": "/guides/search-results-clickthrough/hero-en.jpg",
+        "alt": "Original Mokaair illustration of a screen, calculator and document showing search result features, a CTR calculation and a record of content changes.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The site's search click-through rate fell this month, and the team's first instinct may be to rewrite the title. But if impressions expanded at the same time, total clicks could have increased. New queries may also have different clicking habits from the original branded terms. Examine the denominator and query mix before choosing an edit."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article uses Google search results as its main example and summarizes official definitions checked on September 14, 2026. The calculations and content scenarios are original illustrations. They do not measure a real site or treat any one CTR percentage as a universal benchmark across industries."
+        },
+        {
+          "type": "heading",
+          "text": "Look at result features before the ranking number",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "SERP stands for search engine results page. A Google text result typically includes a source, title link and snippet; images, videos, rich results or related questions may also appear. Layout varies by device, region, language and query. It is not always ten text links of identical size."
+        },
+        {
+          "type": "paragraph",
+          "text": "Someone searching for bread-shaping steps may want a sequence of motions, while a query about oven dimensions may call for specifications. As you observe results, note what readers can do directly and which questions still require a visit to a site. This is research into content format, not a count of competitors' subheadings."
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Console position is not a pixel distance on the page, and ads do not occupy its search position numbers. The same average position can therefore correspond to different visibility. Keep numeric metrics and observations of result features in separate report columns; an unchanged rank does not prove that readers saw the same surroundings."
+        },
+        {
+          "type": "heading",
+          "text": "Read CTR with both numerator and denominator",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "CTR is clicks divided by impressions, expressed as a percentage. Suppose an earlier period brought 100 clicks from 1,000 impressions, for 10% CTR. A later period brought 150 clicks from 2,500 impressions, for 6% CTR. Although the rate fell by four percentage points, clicks rose by 50; you cannot directly say the site lost visitors."
+        },
+        {
+          "type": "paragraph",
+          "text": "This original example does not yet explain why. Broader queries may have appeared, positions may differ, or the device mix of impressions may have shifted. Identify which segment changed before deciding whether to update anything. Also distinguish percentage points from relative percent: a move from 10% to 6% is a 40% relative decrease."
+        },
+        {
+          "type": "paragraph",
+          "text": "To calculate overall CTR across mutually exclusive segments, divide total clicks by total impressions; do not average the row percentages. Do not force rows grouped in different ways into a total. If impressions are zero, the rate has no usable denominator: keep it as not applicable rather than inventing a comparable success rate."
+        },
+        {
+          "type": "heading",
+          "text": "Hold conditions steady to find the changing query segment",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "In Search Console's Performance report, first set the search type, time range and property, and turn on impressions, clicks, CTR and average position. Then segment by page, query, country or device. Compare two complete periods under the same conditions; do not put a half-day of latest data beside a full day."
+        },
+        {
+          "type": "paragraph",
+          "text": "Start with a page that needs improvement, then distinguish readers seeking the brand, instructions or product information. Apply grouping rules written in advance; do not keep changing the categories after seeing results until they support a preferred conclusion. If a term could serve several purposes, reserve it for manual review rather than forcing it into one group."
+        },
+        {
+          "type": "paragraph",
+          "text": "At the time checked, Google's guidance said the table changes its aggregation with the selected dimension. Page-level and whole-property data, for example, cannot always be added or compared directly. Keep filters, dimensions and dates with each export. Recheck the comparison basis especially after changing Search appearance or a page filter."
+        },
+        {
+          "type": "heading",
+          "text": "An impression does not mean every reader viewed the content in full",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Impression rules differ. An ordinary search item and a result widget that must be scrolled or expanded may not use the same rule. An impression therefore does not mean a reader carefully read the title. Check the official definition for a particular result type before treating all impressions as equivalent levels of attention."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Likewise, multiple links within "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " Overviews share that feature’s position value. An improved average position does not necessarily mean an ordinary text link moved up, nor can it alone establish how many clicks AI brought or took away. Preserve the limits of each result type, and describe causes without direct evidence as hypotheses to test."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "When manually viewing results, record the date, query, region and device. A screenshot or note represents that observation only. Even incognito mode does not make one view a universal result for all users. Use observations to raise questions; examine long-term changes in data with a consistent scope."
+        },
+        {
+          "type": "heading",
+          "text": "Revise titles and snippets to fit the page's purpose",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "If relevant queries receive impressions but the title does not clearly say what the page solves, clarify it. For a bread tutorial, the full steps, applicable equipment and common failure causes should match the page's actual content. Do not add untested guarantees or exaggerated time promises just to make the wording more attractive."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google generates title links automatically from several sources; the site's title element is one input. A change must still be processed and is not guaranteed to appear verbatim. Record the previous wording, edit date and reason so a later review knows whether you clarified the purpose or added new information."
+        },
+        {
+          "type": "paragraph",
+          "text": "Snippets mainly come from page content and sometimes use the meta description; different queries can show different snippets. Maintainers should check whether the body answers the question clearly, rather than edit only SEO fields while leaving outdated content. Accurate, verifiable descriptions help readers decide whether to visit."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Fix the report property, period and search type; retain raw impression and click counts.",
+            "Segment by page, query purpose and device; check that aggregation is comparable.",
+            "Record the observed result features and form a specific hypothesis about clicks.",
+            "Adjust a title, snippet or page answer to match the content, then observe under the same conditions."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Evaluate with a complete record, without rushing to claim causation",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Result tables may omit some anonymized queries and limit the rows shown, so their totals may differ from chart totals. Official guidance also warns that an export may turn a symbol for not applicable or nonnumeric data into zero. Preserve its original meaning in reports; do not treat every converted zero as a real measurement."
+        },
+        {
+          "type": "paragraph",
+          "text": "A few clicks can strongly affect CTR in a small sample. Use a more complete observation period and note holidays, campaigns or publication dates, without promising that a set number of days will yield a clear result. Check the counts of related queries and pages too, so an aggregate does not hide opposing trends among groups."
+        },
+        {
+          "type": "paragraph",
+          "text": "A before-and-after gap is not experimental proof. Search demand, competing content and result features may all change. Reports should separate observed figures, edits made and causes still uncertain. Even when clicks rise, check whether the page helps readers complete their task; improvement should mean more than a single ratio."
+        },
+        {
+          "type": "image",
+          "src": "/guides/search-results-clickthrough/diagram-1-en.svg",
+          "alt": "Four columns: inspect raw impression and click counts, keep segments comparable, observe result features, then revise titles and snippets to match the page.",
+          "width": 1600,
+          "height": 900,
+          "caption": "A changing rate starts an investigation; it cannot alone establish lost traffic or the effect of an edit.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Original example period",
+            "Impressions",
+            "Clicks",
+            "CTR"
+          ],
+          "rows": [
+            [
+              "Earlier",
+              "1,000",
+              "100",
+              "10%"
+            ],
+            [
+              "Later",
+              "2,500",
+              "150",
+              "6%"
+            ],
+            [
+              "Change",
+              "+1,500",
+              "+50",
+              "Down 4 percentage points"
+            ]
+          ],
+          "caption": "This table is a teaching calculation, not data from a real site. CTR can fall while clicks rise; segment the data to investigate why."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Do not deliver only a click-through rate",
+          "text": "Include impressions, clicks, segment definitions and the observation period. If result features or the query mix changed, explain those limits before deciding which page to edit."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Build a regular Search Console review workflow",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Write a search title that fits the page’s purpose",
+              "kind": "life",
+              "slug": "seo-title-writing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Separate reader tasks by search intent",
+              "kind": "life",
+              "slug": "seo-search-intent"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Search visual elements",
+          "url": "https://developers.google.com/search/docs/appearance/visual-elements-gallery",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google definitions of search impressions, position and clicks",
+          "url": "https://support.google.com/webmasters/answer/7042828?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console Performance report and segments",
+          "url": "https://support.google.com/webmasters/answer/7576553?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console data aggregation and exports",
+          "url": "https://support.google.com/webmasters/answer/17011364?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console data differences and anonymized queries",
+          "url": "https://support.google.com/webmasters/answer/17010575?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "How Google generates title links",
+          "url": "https://developers.google.com/search/docs/appearance/title-link",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google snippets and meta descriptions",
+          "url": "https://developers.google.com/search/docs/appearance/snippet",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "検索結果ページの読み方：SERP の表示枠、CTR と表示回数の変化",
+      "description": "検索結果ページにはテキスト、画像、動画、リッチリザルトなどが並び、平均掲載順位だけでは読者が見た画面を十分に説明できません。独自の数値例で CTR、表示回数、クリック数の関係を示し、Search Console で条件を固定してグループ別に比較し、タイトルとスニペットがページ内容に合っているか調べる方法を紹介します。手順、比較表、独自の図解を使い、率の低下をそのまま流入減少や一つの表示枠の影響と決めつけないようにします。",
+      "hero": {
+        "src": "/guides/search-results-clickthrough/hero-ja.jpg",
+        "alt": "検索結果の表示枠、CTR の計算、内容の変更記録を表した、画面・電卓・文書の Mokaair オリジナルイラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "今月、サイトの検索クリック率が下がると、チームはまずタイトルを書き換えたくなるかもしれません。しかし、同時に表示回数の対象が広がれば、クリック総数は増えている場合もあります。新しく表示された検索語は、従来のブランド名検索とクリックの傾向が異なるかもしれません。修正を選ぶ前に、分母と検索語の構成を確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この記事は Google の検索結果ページを主な例とし、2026 年 9 月 14 日に確認した公式の定義を整理します。計算値と内容の場面は独自の例で、実在サイトを測定したものではありません。また、特定の CTR を全業種共通の合格基準ともみなしません。"
+        },
+        {
+          "type": "heading",
+          "text": "順位の数字より先に表示枠を見る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "SERP は検索結果ページの略です。Google のテキスト結果には通常、情報源、タイトルリンク、スニペットが含まれ、画像、動画、リッチリザルト、関連する質問が表示されることもあります。配置は端末、地域、言語、検索語によって変わり、同じ大きさのテキストリンクが常に十件並ぶわけではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "パン生地の成形手順を探す人は一連の動きを見たいかもしれず、オーブンの寸法を調べる人は仕様を求めるかもしれません。結果ページを見るときは、その場で何が分かり、何を知るにはサイトを開く必要があるかを記録します。これは内容の形式を調べる作業であり、競合記事の小見出しを数えるだけでは足りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Console の掲載順位はページ上のピクセル距離ではなく、広告も検索順位の番号には入りません。そのため、同じ平均掲載順位でも見える範囲が異なり得ます。報告では数値と表示枠の観察を別々の欄にし、順位が変わらないだけで読者の見た環境も同一だったと判断しないようにします。"
+        },
+        {
+          "type": "heading",
+          "text": "CTR は分子と分母を併せて読む",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "CTR はクリック数を表示回数で割った百分率です。前の期間は表示 1,000 回からクリック 100 回で CTR 10%、次の期間は表示 2,500 回からクリック 150 回で CTR 6% だったとします。率は 4 パーセントポイント下がっても、クリックは 50 回増えています。サイトの訪問者が減ったとは直ちに言えません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この独自の例だけでは原因は分かりません。より広い検索語が加わった、表示位置が違った、端末別の表示回数の構成比が変わったなどの可能性があります。どのグループが変わったかを先に調べ、更新が必要かを決めます。パーセントポイントと相対的な変化も区別し、10% から 6% は相対的には 40% の減少です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "互いに重ならない複数グループ全体の CTR は、総クリック数を総表示回数で割って求め、各行の率を単純平均しません。集計方法が異なる行を無理に足し合わせることも避けます。表示回数がゼロなら使える分母がないため「該当なし」とし、比較可能な成功率を作り出してはいけません。"
+        },
+        {
+          "type": "heading",
+          "text": "条件を固定し、変化した検索語グループを探す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Console の検索パフォーマンスレポートで、検索タイプ、期間、プロパティをまず決め、表示回数、クリック数、CTR、平均掲載順位を表示します。その後、ページ、検索語、国、端末で分けます。条件を揃えた二つの完全な期間を比較し、半日分しかない最新データを一日分と並べないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "改善したいページを一つ選び、読者がブランド名、操作手順、商品情報のどれを探しているかを分けられます。結果を見る前に決めた分類規則を使い、望む結論になるまで分類を変え続けないでください。一つの語が複数の目的に当てはまるなら、無理に一群に入れず、手作業での確認対象に残します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "確認時の Google の説明では、表の集計方法は選んだディメンションによって変わります。たとえばページ単位とプロパティ全体の数値を、いつでも直接足したり比較したりできるわけではありません。各エクスポートにはフィルタ、ディメンション、日付を残します。検索での見え方（Search appearance）やページのフィルタを変えた後は、特に比較条件を確認します。"
+        },
+        {
+          "type": "heading",
+          "text": "表示回数は毎回、内容を十分に読んだことを意味しない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "表示回数の計上条件は異なります。通常の検索項目と、スクロールや展開が必要な結果枠には、同じ規則が適用されない場合があります。一回の表示は、読者がタイトルを注意深く読み終えた証拠ではありません。特定の枠を調べる際は、その種類の公式定義を先に確認し、すべての表示を同じ注意の度合いとして扱わないようにします。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "同様に、"
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " Overviews 内の複数のリンクには、その枠と同じ掲載順位が割り当てられます。平均掲載順位の改善は通常のテキストリンクの上昇を必ずしも意味せず、それだけで AI が何クリックを増減させたかも判断できません。結果の種類ごとの制約を残し、直接の証拠がない原因は検証待ちの仮説として記します。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "検索結果を人が確認する際は、日付、検索語、地域、端末を記録します。スクリーンショットやメモはその時の観察だけを示します。シークレットモードでも、一画面をすべての利用者に共通する結果とは言えません。観察から次の問いを立て、長期的な変化は範囲を揃えたデータで調べます。"
+        },
+        {
+          "type": "heading",
+          "text": "ページの目的に合わせてタイトルとスニペットを直す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "関連検索語で表示されているのに、タイトルがページで解決できることを明確に示していないなら、表現を直します。パン作りの手順記事なら、全手順、使える道具、よくある失敗の原因が実際の本文と一致するべきです。魅力的に見せるためだけに、未検証の保証や大げさな所要時間を加えてはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google は複数の情報源からタイトルリンクを自動生成し、サイトの title 要素はその一つです。変更後も再処理が必要で、文言がそのまま採用される保証はありません。以前の文言、変更日、目的を記録し、次回の確認で目的を明確にしたのか、新しい内容を実際に加えたのか分かるようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "スニペットは主にページの内容から生成され、meta description が使われることもあります。検索語によって表示される文が変わる場合もあります。管理者は SEO 欄だけを直して古い本文を残さず、本文が問いに明確に答えているかも確認します。正確で検証可能な説明が、訪問するかどうかの判断を助けます。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "レポートのプロパティ、期間、検索タイプを固定し、表示回数とクリック数の元の値を残す。",
+            "ページ、検索意図、端末で分け、集計方法を比較できるか確認する。",
+            "その時の結果の表示枠を記録し、クリックに関する具体的な仮説を立てる。",
+            "本文に合うタイトル、スニペット、回答を調整し、同条件で観察する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "記録全体で評価し、因果関係を急いで断定しない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "結果の表では一部の匿名化された検索語が省かれ、表示行数にも上限があるため、表の合計はグラフの総数と一致しないことがあります。公式説明では、エクスポート時に「該当なし」や数値でないことを示す記号がゼロに変わる場合もあります。報告では元の意味を残し、変換後のゼロをすべて実測値とみなさないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "小さな標本では少数のクリックで CTR が大きく動きます。より十分な観察期間を取り、祝日、キャンペーン、公開日を記録できますが、何日後に必ず判断できるとは約束できません。関連する検索語とページの数も確認し、全体の数字で各グループの異なる動きを隠さないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "更新前後の差は実験による証明でもありません。検索需要、競合の内容、結果の表示枠が同時に変わる可能性があります。報告では観察した数値、実施した変更、なお不明な原因を分けます。クリックが増えた場合も、ページが読者の目的達成に役立ったかを確認し、改善を単一の率だけで判断しないようにします。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/search-results-clickthrough/diagram-1-ja.svg",
+          "alt": "四つの列で、表示回数とクリック数、同条件のグループ、結果の表示枠を確認してから、本文に合うタイトルとスニペットを修正する順序を示す。",
+          "width": 1600,
+          "height": 900,
+          "caption": "率の変化は調査の出発点であり、それだけで流入減少や修正の効果は判断できません。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "独自例の期間",
+            "表示回数",
+            "クリック数",
+            "CTR"
+          ],
+          "rows": [
+            [
+              "前期",
+              "1,000",
+              "100",
+              "10%"
+            ],
+            [
+              "後期",
+              "2,500",
+              "150",
+              "6%"
+            ],
+            [
+              "変化",
+              "+1,500",
+              "+50",
+              "4 ポイント低下"
+            ]
+          ],
+          "caption": "この表は説明用の試算で、実在サイトのデータではありません。CTR が下がってクリックが増えることは両立するため、グループ別に原因を調べます。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "クリック率だけを報告しない",
+          "text": "表示回数、クリック数、分類条件、観察期間を併記します。結果の表示枠や検索語の構成が変わったなら、制約を説明してから修正するページを決めます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Search Console の定期確認を組み立てる",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ページの目的に合う検索タイトルを書く",
+              "kind": "life",
+              "slug": "seo-title-writing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "検索意図で読者の課題を分ける",
+              "kind": "life",
+              "slug": "seo-search-intent"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 検索の視覚要素",
+          "url": "https://developers.google.com/search/docs/appearance/visual-elements-gallery",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 検索の表示回数・掲載順位・クリックの定義",
+          "url": "https://support.google.com/webmasters/answer/7042828?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console のパフォーマンスレポートと分類",
+          "url": "https://support.google.com/webmasters/answer/7576553?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console のデータ集計とエクスポート",
+          "url": "https://support.google.com/webmasters/answer/17011364?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console のデータ差異と匿名化された検索語",
+          "url": "https://support.google.com/webmasters/answer/17010575?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google によるタイトルリンクの生成方法",
+          "url": "https://developers.google.com/search/docs/appearance/title-link",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google のスニペットとメタディスクリプション",
+          "url": "https://developers.google.com/search/docs/appearance/snippet",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "검색결과 페이지 읽기: SERP 구성, CTR과 노출수 변화",
+      "description": "검색결과 페이지에는 텍스트, 이미지, 동영상, 리치 결과 등 여러 영역이 있어 평균 게재순위만으로 사용자가 본 화면을 충분히 설명할 수 없습니다. 자체 제작한 수치 예시로 CTR, 노출수와 클릭수의 관계를 설명하고 Search Console에서 조건을 고정해 그룹별로 비교한 뒤 제목과 스니펫이 페이지 내용에 맞는지 점검하는 방법을 안내합니다. 절차, 비교표와 자체 도해를 통해 비율 하락을 곧바로 트래픽 손실이나 한 영역의 영향으로 단정하지 않도록 합니다.",
+      "hero": {
+        "src": "/guides/search-results-clickthrough/hero-ko.jpg",
+        "alt": "검색결과 영역, CTR 계산과 콘텐츠 수정 기록을 나타낸 Mokaair의 화면·계산기·문서 원본 일러스트.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "이번 달 사이트의 검색 클릭률이 떨어지면 팀은 먼저 제목을 다시 쓰고 싶을 수 있습니다. 하지만 같은 기간 노출 범위가 넓어졌다면 전체 클릭수는 오히려 늘었을 수 있습니다. 새로 나타난 검색어의 클릭 성향이 기존 브랜드 검색어와 다를 수도 있습니다. 무엇을 고칠지 정하기 전에 분모와 검색어 구성을 살펴보세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 Google 검색결과 페이지를 주된 예로 삼아 2026년 9월 14일에 확인한 공식 정의를 정리합니다. 계산 수치와 콘텐츠 상황은 자체 제작한 예시이며 실제 사이트를 측정하지 않았습니다. 특정 CTR 수치를 모든 업종에 공통으로 적용되는 합격 기준으로 보지도 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "순위 숫자보다 결과 영역을 먼저 보기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "SERP는 검색결과 페이지를 뜻합니다. Google의 텍스트 결과에는 보통 출처, 제목 링크와 스니펫이 있으며 이미지, 동영상, 리치 결과 또는 관련 질문도 나타날 수 있습니다. 화면 구성은 기기, 지역, 언어와 검색어에 따라 달라지며 크기가 같은 텍스트 링크 열 개만 항상 나오는 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "빵 성형 과정을 찾는 사람은 연속된 동작을 보고 싶을 수 있고 오븐 크기를 찾는 사람은 사양을 원할 수 있습니다. 결과 페이지를 살펴볼 때 사용자가 그 자리에서 무엇을 해결할 수 있고 어떤 질문은 사이트에 들어가야 답을 얻는지 기록하세요. 이는 콘텐츠 형식을 조사하는 일이지 경쟁 글의 소제목 개수만 세는 일이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Console의 게재순위는 화면의 픽셀 거리가 아니며 광고도 검색 게재순위 번호를 차지하지 않습니다. 따라서 평균 순위가 같아도 실제로 보이는 범위는 다를 수 있습니다. 보고서에서는 수치와 결과 영역에 대한 관찰을 다른 칸에 두고 순위가 그대로라는 이유만으로 사용자가 본 환경도 같았다고 판단하지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "CTR은 분자와 분모를 함께 읽기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "CTR은 클릭수를 노출수로 나눈 백분율입니다. 앞 기간에 노출 1,000회로 클릭 100회를 얻었다면 CTR은 10%이고, 뒤 기간에 노출 2,500회로 클릭 150회를 얻었다면 CTR은 6%입니다. 비율은 4퍼센트포인트 낮아졌어도 클릭은 50회 늘었으므로 사이트 방문자가 줄었다고 바로 말할 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 자체 예시만으로는 이유를 설명할 수 없습니다. 더 넓은 검색어가 추가됐거나, 표시 위치가 달랐거나, 기기별 노출 비중이 바뀌었을 수 있습니다. 어떤 그룹이 변했는지 먼저 묻고 수정이 필요한지 결정하세요. 퍼센트포인트와 상대 백분율도 구분해야 합니다. 10%에서 6%로 바뀐 것은 상대적으로 40% 감소한 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "서로 겹치지 않는 여러 그룹의 전체 CTR은 총 클릭수를 총 노출수로 나누어 계산해야 하며 각 행의 비율을 단순 평균해서는 안 됩니다. 집계 방식이 다른 행을 억지로 합치지도 마세요. 노출수가 0이면 쓸 수 있는 분모가 없으므로 ‘해당 없음’으로 두고 비교할 수 있는 성공률을 임의로 만들어서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "조건을 고정해 달라진 검색어 그룹 찾기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Console의 실적 보고서에서 먼저 검색 유형, 기간과 속성을 정하고 노출수, 클릭수, CTR, 평균 게재순위를 표시합니다. 그런 다음 페이지, 검색어, 국가 또는 기기별로 나눕니다. 조건이 같은 두 개의 완전한 기간을 비교하고 최신 데이터가 반나절치뿐인데 하루치 데이터와 나란히 놓지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "개선할 페이지 하나를 고른 뒤 사용자가 브랜드, 사용법 또는 상품 정보를 찾는지 구분할 수 있습니다. 결과를 보기 전에 정한 분류 규칙을 사용하고 원하는 결론이 나올 때까지 사후에 분류를 계속 바꾸지 마세요. 한 단어가 여러 목적에 걸칠 수 있다면 한 그룹에 억지로 넣지 말고 사람이 확인할 대상으로 남깁니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "확인 당시 Google은 선택한 측정기준에 따라 표의 집계 방식이 달라진다고 설명했습니다. 예를 들어 페이지 단위 데이터와 속성 전체 데이터를 항상 직접 더하거나 비교할 수는 없습니다. 내보낼 때마다 필터, 측정기준과 날짜를 함께 보관하세요. 특히 Search appearance나 페이지 필터를 바꾼 뒤에는 비교 기준을 다시 확인해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "노출 한 번이 내용을 끝까지 봤다는 뜻은 아님",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "노출을 세는 조건은 결과 유형마다 다릅니다. 일반 검색 항목과 스크롤하거나 펼쳐야 하는 결과 영역에는 같은 규칙이 적용되지 않을 수 있습니다. 따라서 노출 한 번을 사용자가 제목을 꼼꼼히 읽었다는 뜻으로 해석해서는 안 됩니다. 특정 영역을 연구할 때는 공식 정의를 먼저 확인하고 모든 노출을 같은 수준의 주목으로 취급하지 마세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "마찬가지로 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " Overviews 안의 여러 링크에는 그 영역과 같은 게재순위 값이 부여됩니다. 평균 순위가 좋아졌다고 일반 텍스트 링크가 반드시 위로 올라간 것은 아니며 그 수치만으로 AI가 클릭을 얼마나 늘리거나 줄였는지도 알 수 없습니다. 결과 유형의 한계를 밝히고 직접적인 증거가 없는 이유는 검증할 가설로 적으세요."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "검색 페이지를 직접 확인할 때는 날짜, 검색어, 지역과 기기를 기록하세요. 화면 캡처나 메모는 그때의 관찰만 나타냅니다. 시크릿 모드를 써도 한 번 본 화면이 모든 사용자에게 공통인 결과라고 주장할 수 없습니다. 관찰은 다음 질문을 만드는 데 사용하고 장기 변화는 범위를 일정하게 맞춘 데이터로 조사하세요."
+        },
+        {
+          "type": "heading",
+          "text": "페이지 목적에 맞게 제목과 스니펫 수정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "관련 검색어로 노출은 있지만 제목이 페이지에서 해결할 수 있는 일을 분명히 설명하지 못한다면 표현을 고칠 수 있습니다. 빵 만들기 안내라면 전체 단계, 쓸 수 있는 도구와 흔한 실패 원인이 실제 본문과 일치해야 합니다. 문구를 더 매력적으로 보이게 하려고 검증하지 않은 보장이나 과장된 소요 시간을 추가하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google은 여러 출처를 바탕으로 제목 링크를 자동 생성하며 사이트의 title 요소는 그중 하나입니다. 수정 후에는 다시 처리되는 시간이 필요하고 문구가 그대로 쓰인다는 보장도 없습니다. 이전 문구, 수정일과 목적을 기록해 다음 점검에서 용도를 명확히 한 것인지 새 내용을 실제로 보탠 것인지 알 수 있게 하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "스니펫은 주로 페이지 내용에서 생성되며 때로는 meta description을 사용합니다. 검색어마다 다른 스니펫이 보일 수도 있습니다. 관리자는 SEO 필드만 바꾸고 낡은 본문을 남겨두지 말고 본문이 질문에 명확히 답하는지도 확인해야 합니다. 정확하고 검증할 수 있는 설명이 방문 여부를 판단하는 데 도움이 됩니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "보고서의 속성, 기간과 검색 유형을 고정하고 노출수와 클릭수의 원래 값을 보관한다.",
+            "페이지, 검색 목적과 기기별로 나누고 집계 방식이 비교 가능한지 확인한다.",
+            "그때의 결과 영역을 기록하고 클릭에 영향을 줄 수 있는 구체적인 가설을 세운다.",
+            "본문과 맞는 제목, 스니펫 또는 페이지의 답을 조정한 뒤 같은 조건에서 관찰한다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "전체 기록으로 평가하고 인과관계를 서둘러 단정하지 않기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "결과 표에는 일부 익명 처리된 검색어가 빠지고 표시 행 수도 제한되므로 표의 합계가 그래프 총합과 다를 수 있습니다. 공식 안내는 내보내기 과정에서 원래 ‘해당 없음’이나 숫자가 아님을 나타내던 기호가 0으로 바뀔 수 있다고도 알립니다. 보고서에는 원래 의미를 보존하고 변환된 0을 모두 실제 측정치로 보지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "작은 표본의 CTR은 클릭 몇 번으로도 크게 달라집니다. 더 온전한 관찰 기간을 사용하고 공휴일, 행사 또는 게시일을 기록할 수 있지만 며칠 안에 반드시 판단할 수 있다고 약속해서는 안 됩니다. 관련 검색어와 페이지의 수도 살펴 전체 수치가 그룹마다 다른 방향을 가리는 일을 막으세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "수정 전후의 차이도 실험적 증거는 아닙니다. 검색 수요, 경쟁 콘텐츠와 결과 영역이 동시에 바뀔 수 있습니다. 보고서에서는 관찰한 수치, 실행한 수정과 아직 확실하지 않은 원인을 분리하세요. 클릭이 늘어도 페이지가 사용자의 목적 달성에 도움이 되는지 확인해 개선을 하나의 비율로만 판단하지 마세요."
+        },
+        {
+          "type": "image",
+          "src": "/guides/search-results-clickthrough/diagram-1-ko.svg",
+          "alt": "네 칸에 노출수·클릭수의 원래 값, 동일한 그룹 조건, 결과 영역을 확인한 다음 본문에 맞는 제목과 스니펫을 수정하는 순서를 설명한다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "비율 변화는 조사 출발점일 뿐 그것만으로 트래픽 손실이나 수정 효과를 판단할 수 없습니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "자체 예시 기간",
+            "노출수",
+            "클릭수",
+            "CTR"
+          ],
+          "rows": [
+            [
+              "앞 기간",
+              "1,000",
+              "100",
+              "10%"
+            ],
+            [
+              "뒤 기간",
+              "2,500",
+              "150",
+              "6%"
+            ],
+            [
+              "변화",
+              "+1,500",
+              "+50",
+              "4퍼센트포인트 하락"
+            ]
+          ],
+          "caption": "이 표는 설명을 위한 계산이며 실제 사이트 데이터를 사용하지 않았습니다. CTR 하락과 클릭수 증가는 동시에 가능하므로 그룹별로 원인을 조사해야 합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "클릭률 하나만 보고하지 않기",
+          "text": "노출수, 클릭수, 그룹 조건과 관찰 기간을 함께 제시하세요. 결과 영역이나 검색어 구성이 바뀌었다면 한계를 설명한 다음 수정할 페이지를 정합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Search Console 정기 점검 절차 만들기",
+              "kind": "life",
+              "slug": "google-search-console-workflow"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "페이지 목적에 맞는 검색 제목 쓰기",
+              "kind": "life",
+              "slug": "seo-title-writing"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "검색 의도로 독자의 과제 구분하기",
+              "kind": "life",
+              "slug": "seo-search-intent"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 검색의 시각적 요소",
+          "url": "https://developers.google.com/search/docs/appearance/visual-elements-gallery",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 검색 노출수·게재순위·클릭 정의",
+          "url": "https://support.google.com/webmasters/answer/7042828?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console 실적 보고서와 세분화",
+          "url": "https://support.google.com/webmasters/answer/7576553?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console 데이터 집계와 내보내기",
+          "url": "https://support.google.com/webmasters/answer/17011364?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console 데이터 차이와 익명 검색어",
+          "url": "https://support.google.com/webmasters/answer/17010575?hl=en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 제목 링크 생성 방식",
+          "url": "https://developers.google.com/search/docs/appearance/title-link",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 스니펫과 메타 설명",
+          "url": "https://developers.google.com/search/docs/appearance/snippet",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }

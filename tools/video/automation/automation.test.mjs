@@ -1349,6 +1349,158 @@ test("a language chosen for its title and description alone is translated withou
   assert.equal(video.onSite().ready_to_upload, true);
 });
 
+/** Reject only the language review POST; reports, files and other videos keep working. */
+function rejectLanguageSubmission(video, status) {
+  const fetch = video.ctx.fetch;
+  const control = { status, attempts: 0 };
+  video.ctx.fetch = async (url, init) => {
+    if (new URL(url).pathname === `/api/video/reviews/${video.slug}/reviews` && init.method === "POST" && JSON.parse(init.body).gate === "languages") {
+      control.attempts++;
+      if (control.status) return Response.json({ code: "validation_error", detail: "summary：內容太長" }, { status: control.status });
+    }
+    return fetch(url, init);
+  };
+  return control;
+}
+
+test("a rejected language payload blocks only its video, persists across rounds, and lets a later video advance", async () => {
+  const video = await finishedVideo();
+  video.listed().youtube_video_id = "dQw4w9WgXcQ";
+  assert.match(await video.step(), /on YouTube as/);
+  video.choose({ en: { metadata: true, captions: false, dub: false } });
+  assert.match(await video.step(), /en metadata translated and reviewed/);
+  const rejected = rejectLanguageSubmission(video, 422);
+  const mediaHash = sha(path.join(video.workdir, "final.mp4"));
+  const approvals = readApprovals(video.workdir);
+  const modelCalls = video.site.calls.run.length;
+
+  const next = "next-video";
+  atomicWrite(path.join(video.box.videos, next, "brief.md"), brief(["A", "B"], { applies: "1、2" }));
+  atomicWrite(path.join(video.box.work, next, "auto.json"), JSON.stringify({ slug: next, status: "active", created_at: "2026-09-27T10:00:00Z", notes: [], replans: 0 }));
+
+  assert.match(await video.step(), /blocked — language submission rejected:.*summary：內容太長/);
+  assert.equal(video.automation.halted, false, "the CLI can take the next unit in this run");
+  assert.equal(video.state().status, "blocked");
+  assert.equal(rejected.attempts, 1, "a validation error is not retried by the HTTP client");
+  const blocked = video.site.calls.reports.at(-1);
+  assert.equal(blocked.stage, "blocked");
+  assert.match(blocked.checklist[0].label, /language submission rejected/);
+  assert.equal(blocked.youtube_video_id, "dQw4w9WgXcQ", "a blocked language batch keeps the published video id");
+  assert.match(await video.step(), /next-video: Jev picked outline B/);
+  assert.equal(rejected.attempts, 1);
+
+  const fresh = new Automation(video.ctx, automationClient(video.ctx), video.site.settings);
+  assert.match(await fresh.step(), /next-video: Jev chose outline B/);
+  assert.equal(rejected.attempts, 1, "a new worker round also skips the persisted blocked video");
+  assert.equal(video.site.calls.run.length, modelCalls, "no translation or speech is regenerated");
+  assert.equal(sha(path.join(video.workdir, "final.mp4")), mediaHash);
+  assert.deepEqual(readApprovals(video.workdir), approvals);
+  assert.equal(video.reviews("languages").length, 0, "a rejected batch is never treated as approved");
+});
+
+test("one-shot retry recovers a blocked language batch before or after YouTube upload without regenerating media", async (t) => {
+  for (const uploaded of [false, true]) await t.test(uploaded ? "already uploaded" : "awaiting upload", async () => {
+    const video = await finishedVideo();
+    if (uploaded) {
+      video.listed().youtube_video_id = "dQw4w9WgXcQ";
+      assert.match(await video.step(), /on YouTube as/);
+    }
+    video.choose({ en: { metadata: true, captions: false, dub: false } });
+    assert.match(await video.step(), /en metadata translated and reviewed/);
+    const rejected = rejectLanguageSubmission(video, 422);
+    const mediaHash = sha(path.join(video.workdir, "final.mp4"));
+    const modelCalls = video.site.calls.run.length;
+    assert.match(await video.step(), /blocked — language submission rejected/);
+    assert.equal(video.state().blocked_from_status, "done");
+    const commandsBeforeRetry = video.runs.length;
+
+    const first = "2b06f60f-1026-477a-9d40-28683b00a22e";
+    Object.assign(video.listed(), { retry_request_id: first, retry_acknowledged_id: null });
+    assert.equal(await main(["auto"], video.ctx), EXIT.ok);
+    assert.equal(rejected.attempts, 2, "a still-invalid payload gets exactly one owner-requested retry");
+    assert.equal(video.state().status, "blocked");
+    assert.equal(video.listed().retry_acknowledged_id, first);
+    assert.equal(await main(["auto"], video.ctx), EXIT.ok);
+    assert.equal(rejected.attempts, 2, "an acknowledged retry is not replayed on the next run");
+
+    const second = "bc8c0eb3-0737-422e-8e2c-a75dd7ad9c75";
+    rejected.status = null;
+    video.listed().retry_request_id = second;
+    assert.equal(await main(["auto"], video.ctx), EXIT.ok);
+    assert.equal(rejected.attempts, 3);
+    assert.equal(video.listed().retry_acknowledged_id, second);
+    assert.equal(video.state().status, "done");
+    assert.equal(video.state().blocked, undefined);
+    assert.equal(video.state().blocked_from_status, undefined);
+    assert.equal(video.reviews("languages").length, 1);
+    assert.equal(video.reviews("languages")[0].status, "approved");
+    assert.equal(video.site.calls.run.length, modelCalls);
+    assert.ok(video.runs.slice(commandsBeforeRetry).every((command) => ["i18n-sheet", "captions", "package", "review-push", "review-pull"].includes(command.split(" ")[0])), "a finished video resumes only the language checks and delivery commands");
+    assert.equal(sha(path.join(video.workdir, "final.mp4")), mediaHash);
+    assert.equal(video.listed().youtube_video_id, uploaded ? "dQw4w9WgXcQ" : null);
+  });
+});
+
+test("a finished video's retry is acknowledged after a restart before language delivery resumes", async () => {
+  const video = await finishedVideo();
+  video.listed().youtube_video_id = "dQw4w9WgXcQ";
+  await video.step();
+  video.choose({ en: { metadata: true, captions: false, dub: false } });
+  await video.step();
+  const rejected = rejectLanguageSubmission(video, 422);
+  assert.match(await video.step(), /blocked — language submission rejected/);
+  rejected.status = null;
+
+  const request = "2b06f60f-1026-477a-9d40-28683b00a22e";
+  Object.assign(video.listed(), { retry_request_id: request, retry_acknowledged_id: null });
+  const fetch = video.ctx.fetch;
+  let failAcknowledgement = true;
+  const order = [];
+  video.ctx.fetch = async (url, init) => {
+    const pathname = new URL(url).pathname;
+    if (pathname === `/api/video/reviews/${video.slug}` && init.method === "PUT" && JSON.parse(init.body).stage === "retrying") {
+      order.push("acknowledge");
+      if (failAcknowledgement) return Response.json({ detail: "temporarily unavailable" }, { status: 503 });
+    }
+    if (pathname === `/api/video/reviews/${video.slug}/reviews` && init.method === "POST") order.push("submit");
+    return fetch(url, init);
+  };
+  const first = new Automation(video.ctx, automationClient(video.ctx), video.site.settings);
+  assert.match(await first.step(), /retry saved; could not report it yet/);
+  assert.equal(first.halted, true);
+  assert.equal(video.state().status, "done", "the retry saves the finished state before acknowledging");
+  assert.equal(video.state().retry_request_id, request);
+  assert.equal(video.listed().retry_acknowledged_id, null);
+  assert.equal(rejected.attempts, 1, "no delivery before the site acknowledges the retry");
+  assert.ok(!order.includes("submit"));
+
+  failAcknowledgement = false;
+  order.length = 0;
+  const restarted = new Automation(video.ctx, automationClient(video.ctx), video.site.settings);
+  assert.match(await restarted.step(), /language batch sent/);
+  assert.deepEqual(order, ["acknowledge", "submit"]);
+  assert.equal(video.listed().retry_acknowledged_id, request);
+  assert.equal(video.state().status, "done");
+  assert.equal(video.listed().youtube_video_id, "dQw4w9WgXcQ");
+  assert.equal(await restarted.step(), null);
+  assert.equal(rejected.attempts, 2, "the retry is consumed exactly once across the restart");
+});
+
+test("language authentication, quota and service failures still halt the run without blocking a video", async (t) => {
+  for (const status of [401, 403, 429, 503]) await t.test(`HTTP ${status}`, async () => {
+    const video = await finishedVideo();
+    video.choose({ en: { metadata: true, captions: false, dub: false } });
+    assert.match(await video.step(), /en metadata translated and reviewed/);
+    const rejected = rejectLanguageSubmission(video, status);
+    assert.match(await video.step(), /could not send the language batch/);
+    assert.equal(video.automation.halted, true);
+    assert.equal(video.state().status, "done");
+    assert.equal(video.state().blocked, undefined);
+    assert.equal(rejected.attempts, status === 429 || status >= 500 ? 4 : 1, "the existing bounded HTTP retry policy is preserved");
+    assert.equal(video.reviews("languages").length, 0);
+  });
+});
+
 test("captions and a dub chosen together: the sheet carries the budgets, the dub is checked and retaken once, and the batch attaches the track and waits for the owner's upload", async () => {
   const video = await finishedVideo({ checks: { ja: 1 } });
   video.choose({ ja: { metadata: true, captions: true, dub: true } });

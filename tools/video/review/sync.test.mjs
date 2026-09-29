@@ -10,6 +10,7 @@ import { readApprovals } from "../core/approvals.mjs";
 import { lookHash } from "../core/drama.mjs";
 import { scriptCheckBinding } from "../core/script-check.mjs";
 import { sandbox } from "../core/fixtures/load.mjs";
+import { writeLanguages } from "../core/stages.mjs";
 import { COMPILATION_STEPS, DRAMA_STEPS, SLIDES_STEPS } from "../core/state.mjs";
 import { SAMPLE_RATE } from "../core/timeline.mjs";
 import { COMPILATION_ITEM_IDS, ITEM_IDS } from "../qa/checks.mjs";
@@ -85,6 +86,8 @@ function site({ judge = null, policy = null } = {}) {
     if (init.method === "PUT") return Response.json({ ...JSON.parse(init.body), reviews: [], pending: 0 });
     if (init.method === "POST") {
       const body = JSON.parse(init.body);
+      // Match ReviewSubmit.summary's character limit so the real push path cannot hide a 422.
+      if ([...body.summary].length > 500) return Response.json({ detail: "summary：內容太長" }, { status: 422 });
       state.reviews.unshift({ id: `r${state.reviews.length}`, status: "pending", choice: null, note: null, decided_at: null, ...body });
       return Response.json(state.reviews[0], { status: 201 });
     }
@@ -354,6 +357,98 @@ test("without a token the push needs the owner", async () => {
   out.ctx.env = { VIDEO_WORKDIR: box.work };
   assert.equal(await main(["review-push", "--slug", box.slug], out.ctx), EXIT.owner);
   assert.match(out.out.stderr, /login/);
+});
+
+test("language reviews fit the summary limit without losing any locale, files or full skip reasons", async (t) => {
+  const emptyReasonSummary = "語言：en 標題說明、CC、配音跳過（）。沒有要你上傳的配音";
+  const boundaryReason = "𠮷".repeat(500 - [...emptyReasonSummary].length);
+  const longReasons = Object.fromEntries(["en", "ja", "ko", "zh-CN"].map((locale) => [locale, `${locale}: ${Array.from({ length: 120 }, (_, index) => `line-${index}`).join(", ")} 無法塞入視窗𠮷`]));
+  for (const [label, reasons, detailed] of [["exactly 500 Unicode characters", { en: boundaryReason }, true], ["several long locale reasons", longReasons, false]]) {
+    await t.test(label, async () => {
+      const box = sandbox();
+      const chosen = Object.fromEntries(Object.keys(reasons).map((locale) => [locale, { metadata: true, captions: true, dub: true }]));
+      writeLanguages(box.workdir, { locales: chosen, decided_at: "2026-09-29T01:00:00Z" });
+      mkdirSync(path.join(box.workdir, "upload", "captions"), { recursive: true });
+      for (const [locale, reason] of Object.entries(reasons)) {
+        const dubDir = path.join(box.workdir, "dubs", locale);
+        mkdirSync(dubDir, { recursive: true });
+        writeFileSync(path.join(dubDir, "skipped.json"), JSON.stringify({ reason }));
+        writeFileSync(path.join(box.workdir, "upload", `description.${locale}.txt`), `${locale} title and description`);
+        writeFileSync(path.join(box.workdir, "upload", "captions", `${locale}.srt`), `1\n00:00:00,000 --> 00:00:01,000\n${locale}\n`);
+      }
+      const server = site();
+      const push = context(box, server.fetchImpl);
+      assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "languages"], push.ctx), EXIT.ok, push.out.stderr);
+      assert.equal(server.state.reviews.length, 1);
+      const [review] = server.state.reviews;
+      assert.equal(review.gate, "languages");
+      assert.ok([...review.summary].length <= 500);
+      assert.equal(review.summary, `語言：${Object.entries(reasons).map(([locale, reason]) => `${locale} 標題說明、CC、配音跳過${detailed ? `（${reason}）` : ""}`).join("；")}。沒有要你上傳的配音`);
+      if (detailed) assert.equal([...review.summary].length, 500, "the API counts characters, not UTF-16 code units");
+      assert.deepEqual(review.payload.locales, Object.fromEntries(Object.entries(reasons).map(([locale, reason]) => [locale, { metadata: "ready", captions: "ready", dub: { status: "skipped", reason } }])));
+      assert.deepEqual(review.files.map((file) => file.role), Object.keys(reasons).flatMap((locale) => [`description_${locale}`, `captions_${locale}`]));
+      const manifest = readFileSync(path.join(box.workdir, "review", "languages.json"));
+      assert.equal(review.content_sha256, sha(manifest));
+      assert.deepEqual(JSON.parse(manifest).locales, review.payload.locales, "full diagnostic reasons remain bound to the reviewed manifest");
+    });
+  }
+});
+
+test("review-push distinguishes permanent request failures from service and owner failures", async (t) => {
+  const cases = [
+    [413, EXIT.lint, 1], [422, EXIT.lint, 1],
+    [400, EXIT.external, 1],
+    [401, EXIT.owner, 1], [403, EXIT.external, 1],
+    [429, EXIT.external, 4], [500, EXIT.external, 4], [503, EXIT.external, 4],
+    ["network", EXIT.external, 4],
+  ];
+  for (const [status, expected, attempts] of cases) {
+    await t.test(String(status), async () => {
+      const box = sandbox();
+      const server = site();
+      let sends = 0;
+      const detail = status === 422 ? "summary：內容太長" : `review failure ${status}`;
+      const fetchImpl = async (url, init) => {
+        if (init.method !== "POST" || !new URL(url).pathname.endsWith("/reviews")) return server.fetchImpl(url, init);
+        sends += 1;
+        if (status === "network") throw new TypeError(detail);
+        return Response.json({ detail }, { status });
+      };
+      const push = context(box, fetchImpl);
+      assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], push.ctx), expected);
+      assert.equal(sends, attempts);
+      assert.ok(push.out.stderr.includes(detail), push.out.stderr);
+      assert.equal(server.state.reviews.length, 0);
+      assert.doesNotMatch(push.out.stdout, /submitted for review/);
+    });
+  }
+});
+
+test("invalid file uploads are isolated, while invalid project reports and reads remain service failures", async (t) => {
+  for (const [phase, status, expected] of [["file", 413, EXIT.lint], ["file", 422, EXIT.lint], ["project", 422, EXIT.external], ["read", 422, EXIT.external]]) {
+    await t.test(`${phase} ${status}`, async () => {
+      const box = sandbox();
+      writeLanguages(box.workdir, { locales: { en: { metadata: true } } });
+      mkdirSync(path.join(box.workdir, "upload"), { recursive: true });
+      writeFileSync(path.join(box.workdir, "upload", "description.en.txt"), "title and description");
+      const server = site();
+      let rejected = 0;
+      const detail = `${phase} payload rejected`;
+      const fetchImpl = async (url, init) => {
+        const pathname = new URL(url).pathname;
+        const target = phase === "read" ? init.method === "GET" : init.method === "PUT" && (phase === "file" ? pathname.includes("/files/") : pathname.endsWith(`/${box.slug}`));
+        if (!target) return server.fetchImpl(url, init);
+        rejected += 1;
+        return Response.json({ detail }, { status });
+      };
+      const run = context(box, fetchImpl);
+      const args = phase === "read" ? ["review-pull", "--slug", box.slug] : ["review-push", "--slug", box.slug, "--gate", "languages"];
+      assert.equal(await main(args, run.ctx), expected);
+      assert.equal(rejected, 1, "a malformed request is not retried inside the client");
+      assert.ok(run.out.stderr.includes(detail), run.out.stderr);
+      assert.equal(server.state.reviews.length, 0);
+    });
+  }
 });
 
 test("every pipeline step of every format has a label for the site", () => {

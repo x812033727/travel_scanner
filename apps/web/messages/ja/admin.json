@@ -2789,6 +2789,182 @@
     "readProductionData": "制作データを確認",
     "productionDataHelp": "制作では、この登場人物・話数・展開のデータを使用します。承認前に本文との一致を確認してください。"
   },
+  "videoStories": {
+    "title": "ブランドストーリー",
+    "intro": "1 つの作品で 1 話 1 ストーリー。企画リストからゲートなしで制作し、ワーカーが 1 日の本数の範囲で順番に着手します。いつ公開するかはあなたが決めます。",
+    "loadError": "ブランドストーリーを読み込めません：{message}",
+    "kind": "ブランドストーリー",
+    "quota": {
+      "title": "ワーカーがいま新しいストーリーに着手できるか",
+      "todayLabel": "今日の着手",
+      "inFlightLabel": "同時進行",
+      "awaitingLabel": "公開可能・未アップロード",
+      "monthLabel": "今月の着手",
+      "readyLabel": "着手待ち",
+      "today": "{count}／{limit} 本（台北 {day}）",
+      "todayNoLimit": "{count} 本、上限なし（台北 {day}）",
+      "of": "{count}／{limit}",
+      "count": "{count} 件",
+      "holdTitle": "いまは新しいストーリーに着手しません：",
+      "go": "ワーカーは次の巡回で次のストーリーに着手します。",
+      "line": "今日 {today} · 同時進行 {inFlight}／{maxInFlight} · 公開可能 {awaiting}／{buffer} · 着手待ち {ready}"
+    },
+    "holds": {
+      "paused": "作品は一時停止中です。「再開」を押すと、ワーカーが次のストーリーに着手します。",
+      "notActive": "作品は進行中ではありません。",
+      "per_day": "今日（台北 {day}）はすでに {started} 本に着手し、1 日の上限 {perDay} 本に達しました。台北時間の午前 0 時を過ぎると次に着手します。",
+      "in_flight": "制作中のストーリーが {inFlight} 本あり、同時進行の上限 {maxInFlight} 本に達しています（設定タブで変更）。",
+      "per_month": "今月はすでに {month} 話に着手し、月間上限 {perMonth} 話に達しています（設定タブで変更）。",
+      "upload_buffer": "公開可能で未アップロードのストーリーが {awaiting} 本あります。{buffer} 本に達すると新しいものには着手しません。アップロードして YouTube の URL を貼ると再開します。",
+      "none_ready": "着手待ちのストーリーがありません。リストのストーリーはすべて着手済みか、まだインポートされていません。"
+    },
+    "permission": {
+      "title": "ストーリーは閲覧できますが、変更はできません。",
+      "needs": "1 日の本数の変更、一時停止、ストーリーのスキップと復帰、インポートの書き込みには {capability} 権限が必要で、「{content}」と「{owner}」ロールが持っています。インポートの試行は利用できます。",
+      "roles": "現在のロール：{roles}。",
+      "noRoles": "このアカウントには管理ロールがありません。"
+    },
+    "perDay": {
+      "label": "1 日の本数",
+      "none": "上限なし",
+      "option": "1 日 {count} 本",
+      "save": "本数を変更",
+      "help": "台北時間の日付で数えます。企画のスケジュールは 1 日 2 本（正午と午後 8 時）です。最初の数本を確認している間は少なめにしてください。"
+    },
+    "chapters": {
+      "hook": "フック",
+      "origin": "始まりと人物",
+      "idea": "鍵となるアイデア",
+      "engine": "ビジネスの仕組み",
+      "turn": "代償または反転",
+      "now": "現在と一言の観察"
+    },
+    "sourceKinds": {
+      "official": "公式",
+      "court": "裁判資料",
+      "academic": "学術",
+      "archive": "アーカイブ",
+      "reference": "参考資料",
+      "news": "ニュース",
+      "book": "書籍"
+    },
+    "plan": {
+      "title": "{id} の企画",
+      "question": "冒頭で答える問い",
+      "chapters": "6 つの章の要点",
+      "takeaway": "視聴者に残す一言の観察",
+      "facts": "要確認の事実（{count} 件）",
+      "cites": "出典 {sources}",
+      "core": "タイトルの根拠",
+      "attributed": "誰の説かを明示",
+      "reviewerOnly": "証拠はファクトチェッカーのみ閲覧可",
+      "sources": "出典（{count} 件）",
+      "checked": "{date} 確認",
+      "caveats": "ファクトチェッカーの注意点"
+    },
+    "list": {
+      "title": "ストーリー一覧",
+      "category": "カテゴリー",
+      "state": "状態",
+      "all": "すべて（{count}）",
+      "option": "{label}（{count}）",
+      "none": "まだストーリーがありません。下のフォームで企画リストをインポートしてください。",
+      "noMatch": "条件に合うストーリーがありません。",
+      "slot": "{day} 日目 {slot}",
+      "number": "{number} 番目",
+      "openPlan": "企画を見る",
+      "closePlan": "企画を閉じる",
+      "openVideo": "動画を開く",
+      "youtube": "YouTube",
+      "skip": "スキップ",
+      "restore": "元に戻す",
+      "startedSkipped": "着手済みで動画は破棄されたため、元に戻せません",
+      "skipConfirm": "{id}「{title}」をスキップしますか？ワーカーは制作しません。未着手のストーリーは後で元に戻せます。"
+    },
+    "categories": {
+      "everyday": "日用品と見えない標準",
+      "asia-brand": "日本・韓国・台湾の旅先ブランド",
+      "tech": "テクノロジーとソフトウェア"
+    },
+    "regions": {
+      "global": "グローバル",
+      "jp": "日本",
+      "kr": "韓国",
+      "tw": "台湾"
+    },
+    "states": {
+      "waiting": "着手待ち",
+      "making": "制作中",
+      "ready": "公開可能",
+      "scheduled": "予約済み",
+      "published": "公開済み",
+      "done": "完了",
+      "skipped": "スキップ済み",
+      "dropped": "動画は破棄"
+    },
+    "ready": {
+      "title": "公開可能",
+      "help": "各ストーリーには、企画の時間帯（台北時間の正午 12:00 または午後 8:00）で、予約済みの動画の後に来る次の空き枠をあらかじめ入れています。必要なら変更してください。",
+      "slot": "次の空き枠：{time}（台北時間）",
+      "planned": "企画では {day} 日目の {slot} です。",
+      "loading": "アップロードパッケージを読み込み中…"
+    },
+    "import": {
+      "title": "企画リストをインポート",
+      "again": "企画リストを再インポート",
+      "help": "コンパイル済みの stories.json を選ぶか貼り付けてください。最初の送信は常に試行で、何も書き込みません。ファイルに問題がなければ書き込みを確定できます。対象の作品はファイルに書かれており、まだなければファイルから作成します。",
+      "helpSeries": "ファイルは {slug} 用である必要があります。未着手のストーリーは更新され、新しいものは追加され、着手済みのものはそのままです。",
+      "file": "stories.json ファイル",
+      "fileChosen": "選択済み：{name}（{size} MB）",
+      "paste": "または内容を貼り付け",
+      "pastePlaceholder": "stories.json の内容をここに貼り付けます",
+      "invalidJson": "有効な JSON ではありません：{message}",
+      "noStories": "ファイルにストーリーのリスト（stories）がありません。",
+      "parsed": "{count} 件のストーリー、作品 {slug}。",
+      "noSlug": "ファイルに対象の作品（series.slug）が書かれていないため、インポートできません。",
+      "otherSeries": "ファイルは {series} ではなく {file} 用です。試行で拒否されます。",
+      "limit": "先頭の数件だけインポート",
+      "limitPlaceholder": "すべて",
+      "perDay": "作品作成時の 1 日の本数",
+      "perDayFile": "ファイルのとおり",
+      "limitHelp": "制作順の先頭から取ります。試作は 2 件をインポートし、後で数を入れずに再インポートすると残りが追加されます。",
+      "perDayHelp": "1 日の本数は、このインポートで作品を作成するときだけ使います。作成後は作品のページで変更してください。",
+      "checking": "試行中…",
+      "check": "試行",
+      "writing": "書き込み中…",
+      "apply": "書き込みを確定（追加 {create}、更新 {update}）",
+      "applyNeedsRole": "書き込みには {capability} 権限（「{content}」または「{owner}」ロール）が必要です。",
+      "nothingToWrite": "試行の結果、書き込む変更はありません。",
+      "readError": "ファイルを読み込めません：{message}",
+      "tooLarge": "今回の送信は {size} MB です。インポートは最大 {max} MB です。",
+      "error": "インポートしませんでした：{message}",
+      "reportTitle": "インポート結果",
+      "dryRunTitle": "試行結果：何も書き込んでいません",
+      "writtenTitle": "書き込みました",
+      "unchangedTitle": "変更なし：作品はすでにこれらのストーリーです",
+      "stale": "試行の後にファイルまたは選択が変わりました。書き込む前にもう一度試行してください。",
+      "seriesExists": "作品 {slug} はすでにあります。インポートは作品自体を変更しません。",
+      "seriesWouldBeCreated": "ファイルから作品 {slug} を作成します。",
+      "seriesCreated": "ファイルから作品 {slug} を作成しました。",
+      "counts": "ファイルには {inFile} 件のストーリーがあり、今回 {imported} 件をインポート：追加 {create}、更新 {update}、変更なし {leave}、拒否 {refuse}。",
+      "rows": {
+        "create": "追加（{count}）",
+        "update": "更新（{count}）",
+        "renumbered": "順番の変更（{count}）",
+        "unchanged": "変更なし（{count}）",
+        "started": "着手済みのためそのまま（{count}）",
+        "refused": "拒否（{count}）"
+      },
+      "differsTitle": "ファイルと異なる作品の項目（インポートでは変更しません）：",
+      "differs": "ファイル {file}、作品 {series}",
+      "problemsTitle": "問題（{count} 件）：何も書き込んでいません",
+      "notesTitle": "備考"
+    },
+    "page": {
+      "facts": "{stories} 件のストーリー · 完了 {done} · 1 本約 {minutes} 分 · メディア US${usd}",
+      "imageModel": "画像モデル {model}"
+    }
+  },
   "videoYoutube": {
     "vps": {
       "open": "VPS から独立アップロード",

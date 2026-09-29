@@ -33,6 +33,13 @@ const discussionDoc = (doc) => doc ? ({ kind: doc.kind, version: doc.version, st
 /** The reply the owner reads when the model gave nothing usable: what went wrong, in zh-TW. */
 export const unusableReply = (why) => `模型這一輪沒有給出可用的回覆（${why}）。這條討論串先停在這裡；請換個說法再問一次，或直接改文件。`;
 
+/**
+ * The reply to a line on a brand story's screenplay (docs/videos/STORY.md): a story is written and
+ * checked a chapter at a time from its checked plan (story.mjs), and a whole-script rewrite here
+ * would be undone by the next merge of the chapters, and never checked.
+ */
+export const STORY_THREAD_REPLY = "品牌故事的稿子是照查核過的企劃逐章寫、逐章查核的，這裡不直接改稿。要改旁白，請在影片頁退回旁白並寫下要改什麼：工人會逐章照你的話修；題目本身不對，就放棄這支影片。";
+
 /** What the planner gets to answer a line on a document. */
 export function documentDiscussionPayload(automation, job) {
   const refs = automation.reference();
@@ -150,6 +157,10 @@ export async function answerScript(automation, job) {
   if (!state) {
     await automation.api.messageAnswer(job.message.id, { reply_md: unusableReply(`這台工人沒有 ${job.episode?.slug ?? job.subject} 的劇本`), revised: null });
     return `series ${series.slug}: no video for ${job.subject} here; the owner is told and the thread waits`;
+  }
+  if (state.story) {
+    await automation.api.messageAnswer(job.message.id, { reply_md: STORY_THREAD_REPLY, revised: null });
+    return `${state.slug}: a story's screenplay is not rewritten from a thread; the owner is told how to change it`;
   }
   const dir = docDir(state.slug, automation.ctx.root);
   const file = path.join(dir, "video.json");
