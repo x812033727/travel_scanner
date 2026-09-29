@@ -693,9 +693,10 @@ async def submit_review(
     ):
         auto_note = AUTO_APPROVED_NOTE
     # A drama's storyboard may stand on the judge's scores when the owner turned that on, or
-    # when the series is hands-off (docs/videos/BINGE.md).
+    # when the series is hands-off (docs/videos/BINGE.md); an illustrated slides video's reads
+    # its own switch (docs/videos/ILLUSTRATED.md).
     elif payload.gate == "storyboard" and await auto_approves_storyboard(
-        session, payload.payload, series_slug
+        session, payload.payload, series_slug, video_format
     ):
         auto_note = AUTO_APPROVED_STORYBOARD_NOTE
     # A character's sheet is picked by the judge's score when the owner turned that on.

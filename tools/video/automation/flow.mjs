@@ -267,11 +267,12 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
     settled.subtitles = { burn_in: drama.subtitle_burn_in ?? true, ...(video.subtitles ?? {}) };
   } else if (illustrated(video)) {
     // Illustrated slides (docs/videos/ILLUSTRATED.md): the channel's look unless the writer named
-    // one, and the owner's licensed music file and sound-effect set from the settings tab (the
-    // slides fields, once the site has them) when the writer named none.
+    // one, and the owner's licensed music file and sound-effect set from the settings tab's
+    // slides object (migration 0114; a site from before it sends none) when the writer named none.
     settled.look = { preset: SLIDES_PRESET, ...(video.look ?? {}) };
-    if (!settled.music && settings.slides_music_track) settled.music = { track: settings.slides_music_track };
-    if (!settled.sfx && settings.slides_sfx_set) settled.sfx = { set: settings.slides_sfx_set };
+    const slides = settings.slides ?? {};
+    if (!settled.music && slides.slides_music_track) settled.music = { track: slides.slides_music_track };
+    if (!settled.sfx && slides.slides_sfx_set) settled.sfx = { set: slides.slides_sfx_set };
   } else if (format !== "drama") {
     // Plain slides: the writer is told the look rides on shots, so a look without any is dropped
     // rather than left for lint to refuse.

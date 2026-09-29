@@ -88,6 +88,18 @@ export type DramaSettings = {
   drama_max_verify_rounds: number;
   drama_max_retake_rounds: number;
 };
+// Illustrated slides (docs/videos/ILLUSTRATED.md): the pictures' switch, image model (null follows
+// the drama's), per-video cap, whether the storyboard approves itself from the judge's scores, and
+// the owner's licensed music file and sound-effect set the worker gives every new video.
+export type SlidesSettings = {
+  slides_media_enabled: boolean;
+  slides_image_model: string | null;
+  slides_max_usd_per_video: number;
+  slides_auto_approve_storyboard: boolean;
+  slides_music_track: string | null;
+  slides_sfx_set: string | null;
+};
+export const SLIDES_IMAGE_MODEL = "gemini-3.1-flash-image";
 export type VideoSettings = {
   enabled: boolean;
   draft_interval_hours: number;
@@ -108,6 +120,7 @@ export type VideoSettings = {
   max_retake_rounds: number;
   auto_approve_audio: boolean;
   drama: DramaSettings;
+  slides: SlidesSettings;
   // Stage -> the owner's standing instructions, which the worker appends to that stage's prompt.
   stage_instructions: StandingInstructions;
   // The hands-off switches (docs/videos/HANDS-OFF.md): what the channel believes, and which gates approve themselves.
@@ -161,11 +174,24 @@ export function normalizeDrama(drama: Partial<DramaSettings> | undefined): Drama
   };
 }
 
+/** The slides object with every field, for a site from before the illustrated slides existed. */
+export function normalizeSlides(slides: Partial<SlidesSettings> | undefined): SlidesSettings {
+  const given = slides ?? {};
+  return {
+    slides_media_enabled: given.slides_media_enabled ?? false,
+    slides_image_model: given.slides_image_model === undefined ? SLIDES_IMAGE_MODEL : given.slides_image_model,
+    slides_max_usd_per_video: given.slides_max_usd_per_video ?? 20,
+    slides_auto_approve_storyboard: given.slides_auto_approve_storyboard ?? true,
+    slides_music_track: given.slides_music_track ?? null,
+    slides_sfx_set: given.slides_sfx_set ?? null,
+  };
+}
+
 const SETTINGS_KEYS = [
   "enabled", "draft_interval_hours", "topics_per_run", "max_waiting_drafts", "topic_scope", "topic_avoid",
   "topic_from_site", "topic_from_search", "stage_models", "voice", "target_minutes_min", "target_minutes_max",
   "caption_locales", "max_drafts_per_month", "monthly_token_budget_millions", "max_verify_rounds",
-  "max_retake_rounds", "auto_approve_audio", "drama", "stage_instructions", "channel_stance", "auto_pick_outline",
+  "max_retake_rounds", "auto_approve_audio", "drama", "slides", "stage_instructions", "channel_stance", "auto_pick_outline",
   "auto_approve_final",
 ] as const satisfies ReadonlyArray<keyof VideoSettings>;
 
@@ -180,6 +206,7 @@ export function settingsBody(view: VideoSettingsView | VideoSettings): VideoSett
     auto_pick_outline: view.auto_pick_outline ?? true,
     auto_approve_final: view.auto_approve_final ?? true,
     drama: normalizeDrama(view.drama),
+    slides: normalizeSlides(view.slides),
   };
 }
 
@@ -190,7 +217,7 @@ export const TUTORIAL_KEYS = [
   "enabled", "draft_interval_hours", "topics_per_run", "max_waiting_drafts", "topic_scope", "topic_from_site",
   "topic_from_search", "voice", "target_minutes_min", "target_minutes_max", "caption_locales", "max_drafts_per_month",
   "max_verify_rounds", "max_retake_rounds", "auto_approve_audio", "auto_pick_outline", "auto_approve_final",
-  "stage_instructions",
+  "stage_instructions", "slides",
 ] as const satisfies ReadonlyArray<keyof VideoSettings>;
 export const SHARED_KEYS = ["channel_stance", "topic_avoid", "monthly_token_budget_millions"] as const satisfies ReadonlyArray<keyof VideoSettings>;
 export type TutorialBody = Pick<VideoSettings, (typeof TUTORIAL_KEYS)[number]>;

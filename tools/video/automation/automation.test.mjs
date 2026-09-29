@@ -1746,7 +1746,7 @@ test("two rewrite rounds that Jev still flags send the narration to the owner wi
 
 test("illustrated slides: settle gives the channel look and the owner's music and effects; an explainer one-off keeps no cast whatever the writer returned", async () => {
   const { illustratedFixture } = await import("../core/fixtures/load.mjs");
-  const settings = { voice: { provider: "gemini", name: "Sulafat", style: "s", model: null, rate: "+0%" }, slides_music_track: "bed.mp3", slides_sfx_set: "studio-a" };
+  const settings = { voice: { provider: "gemini", name: "Sulafat", style: "s", model: null, rate: "+0%" }, slides: { slides_music_track: "bed.mp3", slides_sfx_set: "studio-a" } };
   const bare = { ...illustratedFixture(), slug: "x" };
   delete bare.look;
   delete bare.music;
@@ -1787,7 +1787,7 @@ test("illustrated slides walk the picture, storyboard and music steps between th
     writer: () => ({ video, claims: "c1｜Go 每月 270 元｜https://openai.com/a｜2026-09-25｜hook\n", lexicon_additions: {}, shorts: shortsDraft }),
     listener: (body) => ({ video: body.payload.video, edits: [] }),
   };
-  const site = fakeSite({ answers, settings: { slides_music_track: "bed.mp3", slides_sfx_set: "studio-a" } });
+  const site = fakeSite({ answers, settings: { slides: { slides_music_track: "bed.mp3", slides_sfx_set: "studio-a" } } });
   const clock = { now: Date.parse("2026-09-29T09:00:00Z") };
   const { ctx } = context(box, site.fetchImpl, clock);
   const workdir = path.join(box.work, slug);
