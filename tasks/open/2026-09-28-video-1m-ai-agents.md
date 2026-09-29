@@ -4,11 +4,11 @@ title: Million-views batch 3: what an AI agent actually is, what one costs to ru
 status: in-progress
 priority: P1
 area: docs
-owner: claude-opus-4-8
-claimed_at: 2026-09-28T04:24:15Z
+owner: codex-p1-video-review
+claimed_at: 2026-09-29T02:05:43Z
 created_at: 2026-09-28T02:39:11Z
 completed_at:
-branch: claude/bold-noether-unopy8
+branch: codex/p1-task-audit
 depends_on: []
 scope:
   - docs/videos/ai-agents-explained-what-they-cost

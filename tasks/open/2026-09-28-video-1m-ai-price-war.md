@@ -4,11 +4,11 @@ title: Million-views batch 1: GPT-6 Sol and Luna vs Claude Opus 5.5 price war, w
 status: in-progress
 priority: P1
 area: docs
-owner: claude-opus-4-8
-claimed_at: 2026-09-28T03:21:48Z
+owner: codex-p1-video-review
+claimed_at: 2026-09-29T02:05:41Z
 created_at: 2026-09-28T02:30:45Z
 completed_at:
-branch: claude/bold-noether-unopy8
+branch: codex/p1-task-audit
 depends_on: []
 scope:
   - docs/videos/ai-price-war-gpt-6-sol-vs-opus-5-5

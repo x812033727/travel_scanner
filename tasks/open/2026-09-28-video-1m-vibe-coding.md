@@ -4,11 +4,11 @@ title: Million-views batch 5: vibe coding your first website in 2026 with Claude
 status: in-progress
 priority: P1
 area: docs
-owner: claude-opus-4-8
-claimed_at: 2026-09-28T04:24:16Z
+owner: codex-p1-video-review
+claimed_at: 2026-09-29T02:12:34Z
 created_at: 2026-09-28T02:30:46Z
 completed_at:
-branch: claude/bold-noether-unopy8
+branch: codex/p1-task-audit
 depends_on: []
 scope:
   - docs/videos/vibe-coding-first-website-2026

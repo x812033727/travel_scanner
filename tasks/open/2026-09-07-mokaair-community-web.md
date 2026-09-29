@@ -8,43 +8,14 @@ owner:
 claimed_at:
 created_at: 2026-09-07T10:14:21Z
 completed_at:
-branch: codex/mokaair-community
+branch: codex/p1-task-audit
 depends_on: []
 scope:
-  - apps/web/lib/api.ts
-  - apps/web/lib/api.test.ts
-  - apps/web/e2e/readability.spec.ts
-  - apps/web/components/community
-  - apps/web/app/[locale]/community
-  - apps/web/app/[locale]/pet-friendly
-  - apps/web/app/[locale]/my
-  - apps/web/app/[locale]/explore
-  - apps/web/app/[locale]/account/confirm
-  - apps/web/app/[locale]/forgot-password
-  - apps/web/app/[locale]/admin/community
-  - apps/web/app/[locale]/admin/pet-friendly
-  - apps/web/app/[locale]/page.tsx
-  - apps/web/app/[locale]/layout.tsx
-  - apps/web/app/[locale]/account/page.tsx
-  - apps/web/app/api/travel
-  - apps/web/lib/community
-  - apps/web/messages
-  - apps/web/i18n/request.ts
-  - apps/web/components/site-navigation.tsx
-  - apps/web/components/mobile-nav.tsx
-  - apps/web/components/app-bottom-nav.tsx
-  - apps/web/components/admin-nav.tsx
-  - apps/web/components/header-session.tsx
-  - apps/web/components/trip-editor.tsx
   - apps/web/e2e/community.spec.ts
-  - apps/web/public/sw.js
-  - README.md
-  - apps/web/lib/csp.ts
-  - apps/web/lib/csp.test.ts
-  - apps/web/lib/ui-text.ts
-  - apps/web/lib/ui-text.test.ts
-  - apps/web/vitest.setup.tsx
-  - apps/web/components/admin-nav.test.tsx
+  - apps/web/e2e/community-ui.spec.ts
+  - apps/web/components/community
+  - docs/community-local-acceptance-2026-09-29.md
+  - .github/workflows/ci.yml
 ---
 
 # Mokaair community responsive web and five-language experience
@@ -56,16 +27,19 @@ experience within the existing five-locale Web/PWA, without exposing private tri
 
 ## Definition of done
 
-- [ ] Responsive discovery, publishing, profiles, collections, messaging and moderation work.
-- [ ] Pet filters and trip companion requirements expose uncertainty instead of guessing.
+- [x] Base responsive discovery, publishing, profiles, collections, messaging and
+      moderation are implemented; merged #340 historical browser evidence is below.
+- [x] Pet filters and trip companion requirements expose uncertainty instead of guessing;
+      merged real-service evidence and fresh local contracts are recorded below.
 - [x] New copy exists in all five catalogs; closed/unavailable states fail safely.
-- [ ] Web tests, i18n, TypeScript, lint, production build and desktop/Pixel 7 flows pass.
+- [ ] Expanded five-locale/light-dark browser acceptance, including translation
+      failure and revised originals, passes at the current change's exact CI head.
 
 ## Steps
 
-- [ ] Shared state, accessible UI and conservative server-side feature gates.
-- [ ] Wire all content, social, pet and administration flows to the real BFF.
-- [ ] Verify permissions, responsive layout, keyboard controls and service failures.
+- [x] Shared state, accessible UI and conservative server-side feature gates.
+- [x] Wire the base content, social, pet and administration flows to the real BFF.
+- [ ] Complete the expanded real-service permissions/responsive/keyboard/failure matrix.
 
 ## How to verify
 
@@ -120,3 +94,29 @@ now records the POST result directly so server errors are not hidden by a URL ti
 
 Built on isolated main 516713d. The existing forgot-password task owns the login
 entry; this task owns the new confirmation/recovery UI and public community pages.
+
+### 2026-09-29 local P1 reconciliation (codex-p1-product)
+
+Claimed for the owner-authorized P1 review. The matching implementation PRs are
+merged and no matching open PR or active same-feature implementation was found.
+The former broad scopes have been narrowed to this local acceptance work. Forced
+claims only bypass historical/shared scope metadata; no other agent application
+changes are taken over. No production or cloud-account access is included.
+
+Added `e2e/community-ui.spec.ts` and included it in the required Web CI job.
+Its 20 synthetic Chromium cases cover five locales, light/dark and desktop/Pixel 7:
+feed/post rendering, translation 503 preserving the original, successful retry,
+a normal reaction refresh receiving a newer original, stale translation removal,
+new-revision translation, show-original, report Escape/focus return and overflow.
+Unexpected browser writes and external requests are blocked and asserted absent.
+
+Local ESLint and 20-case discovery passed; existing community component tests
+passed **10 files / 52 tests**. Next production build and TypeScript passed with
+348 pages. API community/discovery contracts passed **52 / 8 skipped** separately.
+These results are not browser execution. Automatic approval review rejected
+starting the loopback Next preview with `blocked by policy`; CUA had no browser
+surfaces (IAB unavailable, Chrome creation timed out). No equivalent launcher was
+used. The new matrix remains **authored, pending exact-head CI execution**.
+
+See `docs/community-local-acceptance-2026-09-29.md`. Real PostgreSQL/Redis/MinIO/
+Mailpit/worker outage/capacity and the full real-service locale matrix remain open.

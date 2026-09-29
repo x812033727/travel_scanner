@@ -4,11 +4,11 @@ title: Million-views batch 6: free vs paid AI plans 2026, is 20 dollars a month 
 status: in-progress
 priority: P1
 area: docs
-owner: claude-opus-4-8
-claimed_at: 2026-09-28T04:24:17Z
+owner: codex-p1-video-review
+claimed_at: 2026-09-29T02:05:44Z
 created_at: 2026-09-28T02:30:47Z
 completed_at:
-branch: claude/bold-noether-unopy8
+branch: codex/p1-task-audit
 depends_on: []
 scope:
   - docs/videos/free-vs-paid-ai-plans-2026

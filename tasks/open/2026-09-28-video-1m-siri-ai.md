@@ -4,11 +4,11 @@ title: Million-views batch 2: Siri AI on iOS 27, who gets it and how to turn it 
 status: in-progress
 priority: P1
 area: docs
-owner: claude-opus-4-8
-claimed_at: 2026-09-28T03:36:50Z
+owner: codex-p1-video-review
+claimed_at: 2026-09-29T02:12:25Z
 created_at: 2026-09-28T02:30:45Z
 completed_at:
-branch: claude/bold-noether-unopy8
+branch: codex/p1-task-audit
 depends_on: []
 scope:
   - docs/videos/siri-ai-ios-27-how-to-get-it
