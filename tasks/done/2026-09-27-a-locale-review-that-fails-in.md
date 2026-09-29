@@ -1,13 +1,13 @@
 ---
 id: 2026-09-27-a-locale-review-that-fails-in
 title: A locale review that fails in round two reports on its own discarded correction
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: codex-news-locale-review
 claimed_at: 2026-09-29T12:17:34Z
 created_at: 2026-09-27T14:14:26Z
-completed_at:
+completed_at: 2026-09-29T12:26:22Z
 branch: codex/news-locale-review-evidence
 depends_on: []
 scope:
@@ -106,3 +106,7 @@ cd apps/api && uv run pytest tests/test_news_pipeline.py -q
 - The pre-PR collision refresh again found no active overlap. Main remained
   `9daa475f`; all files of 17 open PRs were checked. Existing historical assessment
   rows are not rewritten; the correction applies to subsequent review runs.
+- Independent source/test review found no material issue. `check:tasks` passed
+  for 1,155 tickets; the Windows leftover open copy was removed only after checking
+  the finished record and identical task body. Merge, deployment and live acceptance
+  remain separate from this completed local implementation.
