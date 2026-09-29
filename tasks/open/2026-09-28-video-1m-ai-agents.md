@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-video-1m-ai-agents
 title: Million-views batch 3: what an AI agent actually is, what one costs to run, and the setting that keeps it from spending your money
-status: in-progress
+status: open
 priority: P1
 area: docs
-owner: claude-opus-4-8
-claimed_at: 2026-09-28T04:24:15Z
+owner:
+claimed_at:
 created_at: 2026-09-28T02:39:11Z
 completed_at:
-branch: claude/bold-noether-unopy8
+branch: codex/p1-task-audit
 depends_on: []
 scope:
   - docs/videos/ai-agents-explained-what-they-cost
@@ -57,3 +57,18 @@ node tools/video/cli.mjs status --slug ai-agents-explained-what-they-cost --work
 ## Progress (2026-09-28, claude-opus-5-5)
 
 Pipeline stages 1–4 done: `video.json` (option A, 7 chapters, ~8.4 min, hook at 0:18, lint 0/0), `claims.md` (c1–c8), `verify-1.md`. Two facts corrected in the check: the OpenAI quote slide now carries the docs' verbatim sentence, and the five-round bill says on screen that it assumes no cache hits (the docs say caching within a session can reuse earlier processing). Lexicon gained `Agents`. Remaining stages need the same owner setup as the price-war video; next is `review-push --slug ai-agents-explained-what-they-cost --gate outline`.
+
+## Independent P1 audit (2026-09-29, codex-p1-video-review)
+
+- Ownership takeover: normal claim refused the recent old claim; root independently confirmed PR #891 merged and no local worktree, branch, remote branch or open PR for `claude/bold-noether-unopy8`. The 4a7e/4f44 active video work concerns different slugs. Root authorized `--force` takeover on `codex/p1-task-audit`; unseen cloud uncommitted work cannot be excluded.
+- Independently checked official source bodies and repaired factual contradictions, calculations and unsupported guarantees. Details: `docs/videos/ai-agents-explained-what-they-cost/verify-p1-20260929.md`. Author verify-1 is not accepted as an independent review of this new hash.
+- Scoped lint: 0 errors, 0 warnings. No brief, shared lexicon, account, media, TTS or paid-generation changes.
+- First-round checkpoint: more than three fact changes required a second independent round; that round is now complete as recorded below. Production acceptance remains unfinished.
+
+## Independent review handoff (2026-09-29)
+
+- Second independent factual review completed by `codex-p1-audit`: `docs/videos/ai-agents-explained-what-they-cost/verify-p1-20260929-round2.md`. It rechecked changed/removed claims and sampled confirmed claims, independently recalculated the five-round illustration, and corrected residual title/description/generalization wording. The latest `video.json` SHA-256 is recorded in that report after final line-ending normalization; earlier hashes remain historical checkpoints.
+- Fact checks and scoped lint are repository evidence only. The original incomplete DoD and production checklist remain unchecked: no TTS/audio, render, captions, languages, final QA, upload or player acceptance is inferred. Prices and product-specific limits must be checked again before actual narration/publication.
+- Keep the original ticket for unresolved listener/style and opinion/brief findings in both review reports, owner outline/channel-stance decisions, and actual published article CTA/link verification. The owner's production choice remains pending; this handoff authorizes no production, account, paid-generation or publication action.
+- Release the review claim to `open` after recording validation, so the next authorized production/editorial session can claim this scope. No duplicate follow-up ticket is needed.
+- Final validation with bundled Node **v24.21.0**: scoped lint exited **0**, **0 errors / 0 warnings**, 105 lines, 1,958 spoken units, estimated 8.6 minutes. The six-video receipt is preserved outside the repository at `C:/Users/x8120/.codex/tmp/p1-audit-20260929/six-video-lint-node24.json`.

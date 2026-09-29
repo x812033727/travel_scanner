@@ -1,6 +1,6 @@
 ---
 id: 2026-09-11-deny-school-hospital-tram-stop-ward
-title: Deny school, hospital, tram stop, ward and military base types in hotspot discovery
+title: Verify corrected hotspot deny types and protect historic attractions
 status: open
 priority: P1
 area: api
@@ -8,14 +8,18 @@ owner:
 claimed_at:
 created_at: 2026-09-11T16:53:58Z
 completed_at:
-branch: claude/attractions-review-progress-55bb39
+branch: codex/p1-task-audit
 depends_on: []
 scope:
-  - apps/api/app/hotspots/discovery.py
   - apps/api/tests/test_hotspot_discovery.py
 ---
 
-# Deny school, hospital, tram stop, ward and military base types in hotspot discovery
+# Verify corrected hotspot deny types and protect historic attractions
+
+The original seven-type policy below is historical. PR #561 superseded three of
+those denials after pending-row review found real historic attractions. The
+current acceptance criteria preserve that merged correction; this ticket must
+not reinstate the blanket hospital, primary-school or military-base denial.
 
 ## Why
 
@@ -33,16 +37,21 @@ type could still reach the queue.
 
 ## Definition of done
 
-- [x] Seven types that no approved attraction carries are denied: Q9842 primary school,
-      Q56351315 Japanese high school, Q55521176 lower secondary school in Japan,
-      Q16917 hospital, Q2175765 tram stop, Q687188 ward of Vietnam, Q245016 military base.
+- [x] Four retained types are denied: Q56351315 Japanese high school,
+      Q55521176 lower secondary school in Japan, Q2175765 tram stop and
+      Q687188 ward of Vietnam.
+- [x] Q9842 primary school, Q16917 hospital and Q245016 military base are not
+      denied by type alone; they reach human review unless another classification
+      applies, preserving the correction in PR #561.
 - [x] Types that also describe an approved attraction still reach a human
       (Q5358913 elementary school in Japan, Q285783 intersection; streets unchanged).
-- [x] A denied candidate outside the city radius stays rejected.
+- [x] Candidates outside the discovery radius are excluded; a denied candidate
+      inside it stays rejected, matching the later bounded-radius implementation.
 - [x] Merged as PR #403 (`7867d5dd`) and deployed 2026-09-12 in `6925e3d1`, which was
       verified to contain that commit.
-- [ ] After the next discovery pass the pending rows with these types are
-      `rejected / denylisted_type`.
+- [ ] Read the current deployed discovery result for the four retained types;
+      inspect Q38278536, Q8669747, Q10911386 and Q2410409 for historical false
+      rejection, recording any restoration needed separately before writing.
 
 ## Steps
 
@@ -51,8 +60,8 @@ type could still reach the queue.
 - [x] Extend `DENIED_TYPES` and fix the radius override.
 - [x] Unit tests for both.
 - [x] Merge and deploy.
-- [ ] Check the next discovery pass (due after 2026-09-15 05:54 UTC, the first 6-hour
-      collector cycle following it).
+- [ ] Check a current discovery pass and the four historic-attraction rows;
+      the original 2026-09-15 schedule is no longer a future checkpoint.
 
 ## How to verify
 
@@ -60,10 +69,11 @@ type could still reach the queue.
 cd apps/api && uv run ruff check . && uv run mypy app && uv run pytest tests/test_hotspot_discovery.py
 ```
 
-After deploy and the next discovery pass (the first 6-hour collector cycle after
-`max(last_seen_at) + 7 days` for `origin='wikimedia_discovery'`), read-only:
-`select review_reason, count(*) from travel_hotspots where review_status='rejected' group by 1;`
-`denylisted_type` should rise by roughly the pending rows that carried these types.
+After verifying the deployed corrected policy, inspect the latest discovery
+pass read-only, grouped by actual Wikidata type and review status. Aggregate
+`denylisted_type` growth alone cannot distinguish intended rejection from lost
+historic attractions. Also inspect Q38278536, Q8669747, Q10911386 and Q2410409
+individually; source and map review are required before any restoration.
 
 ## Notes
 
@@ -88,3 +98,19 @@ claude-opus-5 應站主「整理目前所有工作狀態」處理，盤點見 `d
 PR #403 於 2026-09-11 合併。原持有者 claude-opus-5（2026-09-11 認領）。剩下的兩項都是 2026-09-15 那一輪探索之後的查核，還沒有紀錄。
 
 這張票和 `2026-09-12-denylist-tombstones-real-attractions`（P1）的 scope 完全相同，持有它就讓那張認領不到，所以改回 open。建議由接手 denylist-tombstones 的人一起做這裡的查核。
+
+### 2026-09-29 local P1 reconciliation (codex-p1-product)
+
+Claimed for the owner-authorized P1 review. The matching implementation PRs are
+merged and no matching open PR or active same-feature implementation was found.
+The former broad scopes have been narrowed to this local acceptance work. Forced
+claims only bypass historical/shared scope metadata; no other agent application
+changes are taken over. No production or cloud-account access is included.
+
+Current-code evidence: `test_measured_non_attraction_types_are_rejected` checks
+all four retained types; `test_types_that_also_describe_real_sights_reach_the_human_queue`
+checks all three released types and mixed-type precedence. The radius test checks
+outside-radius exclusion and inside-radius denial. These passed on 2026-09-29
+together with community contracts: 52 passed, 8 PostgreSQL/S3 cases skipped.
+No application changes or policy decision were needed. The outstanding live
+status check remains open; this local pass cannot establish deployed row state.

@@ -9,14 +9,20 @@
 // is exactly as long as the video, to the sample.
 import { createHash } from "node:crypto";
 
-import { eachLine, LOCALES, NARRATION_LOCALE, spokenText, textHash } from "../core/schema.mjs";
+import { eachLine, LOCALES, NARRATION_LOCALE, narrationLocale, spokenText, textHash } from "../core/schema.mjs";
 import { FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, framesFor, msToSamples } from "../core/timeline.mjs";
 
 export const DUB_LOCALES = LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
+/** The locales one video can be dubbed in: every caption locale but the one it is narrated in. */
+export const dubLocales = (doc) => LOCALES.filter((locale) => locale !== narrationLocale(doc));
+// The locales whose dictionary aliases may be written in Chinese characters ("P 九十五").
+export const CHINESE_LOCALES = new Set(["zh-TW", "zh-CN"]);
 // What gets a dub when nobody chose (no --locale, no languages.json): not zh-CN. A viewer who
 // reads Simplified hears Mandarin already in the zh-TW narration, so that track adds nothing
 // unless the owner ticks it for a video (the owner's call, 2026-09-28).
 export const DEFAULT_DUB_LOCALES = DUB_LOCALES.filter((locale) => locale !== "zh-CN");
+/** The same default for one video, whatever it is narrated in (DEFAULT_DUB_LOCALES for zh-TW). */
+export const defaultDubLocales = (doc) => dubLocales(doc).filter((locale) => locale !== "zh-CN");
 export const DUB_FORMATS = ["m4a", "mp3", "wav"];
 export const DEFAULT_FORMAT = "m4a";
 // Silence between two dubbed lines once the original pause is used up.
@@ -33,7 +39,7 @@ export const TEMPO_STEP = 0.01;
 // replaces the estimate (fit.json), so the next video's budgets are real.
 export const RATE_RATIOS = { en: 2.6, ja: 1.35, ko: 1.15, "zh-CN": 1.0 };
 // When the narration cannot be measured (no audio lengths in the timeline).
-export const DEFAULT_RATES = { en: 15, ja: 7.8, ko: 6.7, "zh-CN": 5.8 };
+export const DEFAULT_RATES = { en: 15, ja: 7.8, ko: 6.7, "zh-CN": 5.8, "zh-TW": 5.8 };
 // Budgets leave this much of the room unused: a translator lands close to the limit, not on it.
 export const BUDGET_MARGIN = 0.97;
 // What a line costs before its first word and after its last (breath, the trimmed margins, the
@@ -44,6 +50,7 @@ export const LINE_OVERHEAD_MS = 400;
 const STYLE_TAIL = "Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace.";
 // The zh-TW style names Taiwan Mandarin; a dub keeps the manner and changes the language.
 export const DUB_STYLES = {
+  "zh-TW": `Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a natural Taiwanese accent. ${STYLE_TAIL}`,
   en: `Relaxed, conversational tech explainer talking to a friend, in clear, natural English. ${STYLE_TAIL}`,
   ja: `Relaxed, conversational tech explainer talking to a friend, in natural standard Japanese. ${STYLE_TAIL}`,
   ko: `Relaxed, conversational tech explainer talking to a friend, in natural standard Korean. ${STYLE_TAIL}`,
@@ -66,6 +73,14 @@ export function dubLexicon(lexicon) {
   const terms = {};
   for (const [term, say] of Object.entries(lexicon?.terms ?? {})) terms[term] = typeof say === "string" && !CJK.test(say) ? say : null;
   return { ...(lexicon ?? {}), terms };
+}
+
+/**
+ * The dictionary as the voice speaking `locale` may use it: whole for Mandarin, without the
+ * Chinese-character aliases for any other language (an English narration is a dub in this sense).
+ */
+export function speechLexicon(lexicon, locale) {
+  return CHINESE_LOCALES.has(locale) ? lexicon : dubLexicon(lexicon);
 }
 
 /**
@@ -188,7 +203,12 @@ export function narrationRate(doc, timeline) {
 /** The rate to plan a locale's dub with before it is measured: the narration's own rate, scaled. */
 export function defaultRate(locale, doc, timeline) {
   const anchor = timeline ? narrationRate(doc, timeline) : null;
-  return anchor ? Math.round(anchor * RATE_RATIOS[locale] * 100) / 100 : DEFAULT_RATES[locale];
+  if (!anchor) return DEFAULT_RATES[locale];
+  // The ratios were measured against a zh-TW narration; another narration language scales the
+  // fixed starting rates instead.
+  const narration = narrationLocale(doc);
+  const ratio = narration === NARRATION_LOCALE ? RATE_RATIOS[locale] : DEFAULT_RATES[locale] / DEFAULT_RATES[narration];
+  return Math.round(anchor * ratio * 100) / 100;
 }
 
 /**

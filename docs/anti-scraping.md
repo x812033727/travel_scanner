@@ -66,8 +66,14 @@ Inside the Compose network nothing reaches the API through nginx at all, and not
 network layer separates our own web container from anything else on the bridge: neither
 Compose file declares `networks:`, so addresses are dynamic and the subnet is one flat trust
 domain. `INTERNAL_PROXY_TOKEN`, shared by the API and the web container, is what distinguishes
-them. Leaving it empty keeps the previous behaviour — set on the API alone, no forwarded
-address would be believed at all and every visitor would collapse into one bucket.
+them. Production API startup requires a random token of at least 32 characters. Set the same
+value for **both API and web before deploying** this requirement: a missing/short API token
+refuses startup; mismatched values cause forwarded addresses to be ignored and visitors to
+share a bucket. Verify presence, length and equality without printing the token or container
+environment. Do not merge or deploy this change until the host configuration is confirmed.
+Development may leave the token empty; trusting forwarded addresses then emits an API startup
+warning. A configured token still rejects a missing or incorrect request token in every
+environment.
 
 ### Public reads fail open
 
