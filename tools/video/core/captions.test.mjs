@@ -176,6 +176,45 @@ test("safe existing zh-TW fixture captions keep their exact line breaks", () => 
   ]);
 });
 
+// Real source lines that already rendered safely before token-boundary protection.
+// Synthetic 100-second speech makes the exact old cue boundaries and weights observable.
+for (const [locale, id, text, expected] of [
+  ["zh-TW", "akm3", "我的看法是：安全要靠系統真的擋住，不是靠提示詞裡的一句「不要」。", [
+    [100400, "我的看法是：安全要靠系統真的擋\n住，不是靠提示詞裡的一句「不要」"],
+  ]],
+  ["zh-TW", "3xvu", "有公布的：算力、記憶體容量、功耗，還有記憶體頻寬，每秒 300 GB。", [
+    [100400, "有公布的：算力、記憶體容量、功\n耗，還有記憶體頻寬，每秒 300 GB"],
+  ]],
+  ["zh-TW", "3pgu", "每月一號太平洋時間午夜重設；部數、秒數和其他功能的點數要分開看。", [
+    [100400, "每月一號太平洋時間午夜重設；部\n數、秒數和其他功能的點數要分開看"],
+  ]],
+  ["zh-TW", "qwig", "歐盟的 iPhone、iPad、手錶不提供，只有 Mac 和 Vision Pro 可以。", [
+    [100400, "歐盟的 iPhone、iPad、手錶不提\n供，只有 Mac 和 Vision Pro 可以"],
+  ]],
+  ["ja", "rh8y", "では、AIはあなたの仕事を奪うのか。私の答えは「まずタスクを奪う。しかも2月の見出しが示したより速く」です。", [
+    [60043, "では、AIはあなたの仕事を奪うの\nか。私の答えは「まずタスクを奪う"],
+    [100400, "しかも2月の見出しが\n示したより速く」です"],
+  ]],
+  ["ja", "wpuc", "私の選択です。これは測定ではなく、私の意見です。毎日の要約には、ちゃんと読める中で一番安いモデル。金額はわずかです。", [
+    [54764, "私の選択です。これは測定ではな\nく、私の意見です。毎日の要約には"],
+    [100400, "ちゃんと読める中で一番安\nいモデル。金額はわずかです"],
+  ]],
+  ["zh-CN", "dgig", "AI 安全中心的报告指出，到了七月，Claude Fable 5 达到了 15.8%。", [
+    [100400, "AI 安全中心的报告指出，到了七\n月，Claude Fable 5 达到了 15.8%"],
+  ]],
+  ["zh-CN", "akm3", "我的看法是：安全要靠系统真正挡住，而不是靠提示词里的一句“不要”。", [
+    [100400, "我的看法是：安全要靠系统真正挡\n住，而不是靠提示词里的一句“不要”"],
+  ]],
+]) {
+  test(`${locale}/${id} preserves safe rendered cues and raw punctuation timing weights`, () => {
+    const actual = buildCues({ lines: [{ id, start_frame: 0, end_frame: 3030, audio_samples: 4800000 }] }, { [id]: text }, locale);
+    assert.deepEqual(actual, {
+      cues: expected.map(([end_ms, value], index) => ({ start_ms: index ? expected[index - 1][0] : 0, end_ms, text: value, line: id })),
+      missing: [],
+    });
+  });
+}
+
 test("Chinese cues drop a trailing comma or full stop; English cues keep their punctuation", () => {
   assert.equal(displayText("我們下一支影片見。", zh), "我們下一支影片見");
   assert.equal(displayText("你真的要換嗎？", zh), "你真的要換嗎？");

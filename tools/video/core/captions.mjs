@@ -37,8 +37,12 @@ export function measure(text, rules) {
   return width;
 }
 
+function rawTokens(text, rules) {
+  return rules.words ? text.split(/(\s+)/).filter(Boolean) : (text.match(CJK_TOKEN) ?? []);
+}
+
 function tokens(text, rules) {
-  const parts = rules.words ? text.split(/(\s+)/).filter(Boolean) : (text.match(CJK_TOKEN) ?? []);
+  const parts = rawTokens(text, rules);
   const grouped = [];
   for (const token of parts) {
     if (OPENS_BADLY.test(token)) {
@@ -53,11 +57,10 @@ function tokens(text, rules) {
   return grouped;
 }
 
-// The last resort, for text with no break that fits: fill each piece up to the width.
-function hardSplit(text, width, rules) {
+function wrapTokens(parts, width, rules) {
   const pieces = [];
   let current = "";
-  for (const token of tokens(text, rules)) {
+  for (const token of parts) {
     if (current.trim() && measure(`${current}${token}`.trim(), rules) > width) {
       pieces.push(current.trim());
       current = token.trimStart();
@@ -67,6 +70,11 @@ function hardSplit(text, width, rules) {
   }
   if (current.trim()) pieces.push(current.trim());
   return pieces;
+}
+
+// The last resort, for text with no break that fits: fill each piece up to the width.
+function hardSplit(text, width, rules) {
+  return wrapTokens(tokens(text, rules), width, rules);
 }
 
 /** Join two pieces of one line again, keeping the space between words in word-based locales. */
@@ -82,13 +90,21 @@ export function fits(text, rules) {
   return hardSplit(text.trim(), rules.maxChars, rules).length <= rules.maxLines;
 }
 
+function fitsDisplayed(text, rules) {
+  // Keep the old raw-text capacity limit: stripping punctuation must not merge
+  // previously separate cues. Then require the actual displayed text to wrap safely.
+  // Only measure a stripped copy; splitting scores and timing still use the raw text.
+  return wrapTokens(rawTokens(text.trim(), rules), rules.maxChars, rules).length <= rules.maxLines
+    && fits(displayText(text, rules), rules);
+}
+
 /**
  * Cut one line's text into cue-sized pieces: the fewest cues that fit, as even in length as
  * possible, preferring to cut where a clause ends. Every piece fits in the locale's cue.
  */
-export function splitText(text, rules) {
+export function splitText(text, rules, canFit = fits) {
   const clean = text.trim();
-  if (fits(clean, rules)) return [clean];
+  if (canFit(clean, rules)) return [clean];
   const parts = tokens(clean, rules);
   const piece = (from, to) => parts.slice(from, to).join("").trim();
   const cap = rules.maxChars * rules.maxLines;
@@ -102,7 +118,7 @@ export function splitText(text, rules) {
     for (let from = to - 1; from >= 0; from--) {
       const text = piece(from, to);
       if (!text || !best[from]) continue;
-      if (!fits(text, rules)) break;
+      if (!canFit(text, rules)) break;
       const size = measure(text, rules);
       const count = best[from].count + 1;
       const cost = best[from].cost + size * size + (to < parts.length && !ENDS_CLAUSE.test(text) ? midClause : 0);
@@ -169,7 +185,7 @@ function weight(text) {
  * MIN_CUE_MS is merged with a neighbour, when `rules` are given only if the merged cue still fits;
  * a short piece with no neighbour it fits with stays short rather than wrapping onto a third line.
  */
-export function timePieces(pieces, startMs, endMs, rules = null) {
+export function timePieces(pieces, startMs, endMs, rules = null, canFit = fits) {
   let entries = pieces.map((text) => ({ text, weight: weight(text) }));
   const span = Math.max(0, endMs - startMs);
   const duration = (entry, total) => (span * entry.weight) / total;
@@ -181,7 +197,7 @@ export function timePieces(pieces, startMs, endMs, rules = null) {
     const neighbours = [short + 1, short - 1].filter((index) => index >= 0 && index < entries.length);
     const other = neighbours.find((index) => {
       const [first, second] = [Math.min(short, index), Math.max(short, index)];
-      return !rules || fits(merged(entries[first], entries[second]), rules);
+      return !rules || canFit(merged(entries[first], entries[second]), rules);
     });
     if (other === undefined) {
       entries[short].settled = true;
@@ -207,6 +223,7 @@ export function timePieces(pieces, startMs, endMs, rules = null) {
 export function buildCues(timeline, texts, locale) {
   const rules = LOCALE_RULES[locale];
   if (!rules) throw new Error(`no caption rules for locale ${locale}`);
+  const canFit = rules.words ? fits : fitsDisplayed;
   const cues = [];
   const missing = [];
   for (const line of timeline.lines) {
@@ -218,7 +235,7 @@ export function buildCues(timeline, texts, locale) {
     const start = frameToMs(line.start_frame);
     const speechEnd = start + samplesToMs(line.audio_samples);
     const end = Math.min(frameToMs(line.end_frame), speechEnd + LINGER_MS);
-    for (const cue of timePieces(splitText(text, rules), start, end, rules)) {
+    for (const cue of timePieces(splitText(text, rules, canFit), start, end, rules, canFit)) {
       cues.push({ ...cue, line: line.id, text: wrapCue(displayText(cue.text, rules), rules) });
     }
   }
