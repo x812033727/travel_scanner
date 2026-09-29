@@ -32,6 +32,10 @@ const REQUIRED_TAGS = ["漫劇", "AI漫劇", "一口氣看完"];
 // line lands near six seconds with room for the actor's pauses.
 export const HOOK_MAX_CHARS = 28;
 export const WORLD_FLIP_RANGE = [18, 22];
+// The image prompts take a character's appearance word for word into every shot of every episode
+// (tools/video/media/look.mjs, keyframes.mjs), so a look that depends on the episode cannot be
+// drawn from it; what changes belongs in continuity_notes and the shot prompt.
+export const TIMED_APPEARANCE = /\b(?:episodes?|eps?\.?\s*\d+|later|initially|at first|at the start|onwards?|near the end|by the end|as the story|from then on|no longer)\b/i;
 
 const isText = (value) => typeof value === "string" && value.trim().length > 0;
 const spoken = (text) => [...String(text).replace(/[\p{P}\p{Z}\s]/gu, "")].length;
@@ -87,6 +91,7 @@ export function validateSource(source, expectedSlug = source?.series?.slug) {
       check(ROLES.has(c.role), p + "role must be lead, support or antagonist");
       check(chars(c.appearance ?? "") <= 800, p + "appearance over 800 characters");
       check(/^[\x20-\x7E]+$/.test(c.appearance ?? ""), p + "appearance must be English (ASCII) for the image model");
+      check(!TIMED_APPEARANCE.test(c.appearance ?? ""), p + `appearance must not depend on the episode ("${(c.appearance ?? "").match(TIMED_APPEARANCE)?.[0]}"); put changes in continuity_notes`);
       check(c.voice?.provider === "gemini" && GEMINI_VOICES.has(c.voice?.name) && isText(c.voice?.style), p + "voice must be a Gemini prebuilt voice with a style");
       check(Array.isArray(c.relationships) && c.relationships.length >= 1, p + "at least one relationship");
       check(Object.hasOwn(st.lexicon ?? {}, c.name), p + `name "${c.name}" must be in the lexicon`);
@@ -263,7 +268,7 @@ export function validateSource(source, expectedSlug = source?.series?.slug) {
     }
     for (const key of ["audience", "visual_identity", "music", "pinned_comment"]) check(isText(pk[key]), `packaging.${key} is missing`);
     check(Array.isArray(pk.why_million) && pk.why_million.length >= 3, "packaging.why_million: at least three reasons");
-    check(Array.isArray(source.continuity_notes) && source.continuity_notes.length >= 3, "continuity_notes: at least three");
+    check(Array.isArray(source.continuity_notes) && source.continuity_notes.length >= 3 && source.continuity_notes.every(isText), "continuity_notes: at least three nonempty rules");
   } catch (error) {
     errors.push(`invalid source shape: ${error.message}`);
   }
@@ -271,11 +276,11 @@ export function validateSource(source, expectedSlug = source?.series?.slug) {
 }
 
 /** The generated files that differ from what `compile(source)` gives now. */
-export async function validateFiles(slug, source) {
+export async function validateFiles(slug, source, root = ROOT) {
   const stale = [];
   for (const [name, expected] of Object.entries(compile(source))) {
     try {
-      const actual = await fs.readFile(path.join(ROOT, slug, name), "utf8");
+      const actual = await fs.readFile(path.join(root, slug, name), "utf8");
       if (actual !== expected) stale.push(`${name}: stale, rebuild with node build.mjs ${slug}`);
     } catch {
       stale.push(`${name}: missing, build with node build.mjs ${slug}`);
@@ -300,7 +305,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
       results.push({ slug, errors: [error.message], warnings: [] });
     }
   }
-  const report = { scope: "offline production plans; nothing measured on media", checked_at: new Date().toISOString().slice(0, 10), source_only: sourceOnly, ok: results.every((r) => r.errors.length === 0), works: results };
+  const report = { scope: "offline production plans; nothing measured on media", execution_scope: "local-validation-only", status_note: "This validation does not change or attest to production state or approve revised documents.", checked_at: new Date().toISOString().slice(0, 10), source_only: sourceOnly, ok: results.every((r) => r.errors.length === 0), works: results };
   if (writeReport) await fs.writeFile(path.join(ROOT, "validation-report.json"), `${JSON.stringify({ ...report, checked_at: undefined }, null, 2)}\n`, "utf8");
   for (const r of results) {
     process.stdout.write(`${r.slug}: ${r.errors.length} error(s), ${r.warnings.length} warning(s)\n`);

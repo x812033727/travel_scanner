@@ -23,6 +23,12 @@ test("the screenplay hash follows the narrative, not the shot prompts", () => {
   const spoken = episode();
   spoken.scenes.find((scene) => scene.template === "shot").lines[0].emotion = "冷靜";
   assert.notEqual(narrativeHash(spoken), before, "so does a changed emotion");
+  for (const field of ["say", "pause_after_ms"]) {
+    const timed = episode();
+    const line = timed.scenes[0].lines[0];
+    line[field] = field === "say" ? "她已改變了選擇。" : 900;
+    assert.notEqual(screenplay(timed), screenplay(episode()), "spoken words and timing need renewed approval too");
+  }
 });
 
 test("the screenplay names every speaker and never a prompt; the review scenes carry the prompts", () => {
@@ -96,4 +102,8 @@ test("a series episode's status waits for the script gate between the check and 
   writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(project.doc));
   writeScreenplay(box.dir, project.doc);
   assert.equal((await status()).next.id, "look generated", "a prompt fix keeps the approval");
+  shot.lines[0].pause_after_ms = 900;
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(project.doc));
+  writeScreenplay(box.dir, project.doc);
+  assert.equal((await status()).next.id, "script approved", "new timing cannot reuse the previous script approval after rechecking");
 });

@@ -469,17 +469,24 @@ async def test_the_owner_routes_need_the_content_capabilities_and_the_drama_swit
         created = await client.post(base, json=_series_in())
         bad = await client.post(base, json={**_series_in(), "aspects": ["world", "world"]})
         decided = await client.post(
+            f"{base}/xianxia/docs/chapter/2/decision",
+            json={"decision": "approve", "expected_version": 1},
+        )
+        unbound = await client.post(
             f"{base}/xianxia/docs/chapter/2/decision", json={"decision": "approve"}
         )
         unknown = await client.post(
-            f"{base}/xianxia/docs/boss/decision", json={"decision": "approve"}
+            f"{base}/xianxia/docs/boss/decision",
+            json={"decision": "approve", "expected_version": 1},
         )
     assert off.status_code == 409 and off.json()["code"] == "video_drama_disabled"
     assert created.status_code == 201 and created.json()["status"] == "active"
     assert created.json()["kind"] == "series"
     assert bad.status_code == 422
     assert decided.status_code == 200
+    assert unbound.status_code == 422
     assert service.decide_doc.await_args.args[3:] == ("chapter", 2, "approve", None)  # type: ignore[attr-defined]
+    assert service.decide_doc.await_args.kwargs == {"expected_version": 1}  # type: ignore[attr-defined]
     assert unknown.status_code == 404
 
 
@@ -522,7 +529,8 @@ async def test_the_request_form_makes_a_one_off_and_the_list_filters_by_kind(
             json={"premise": "精衛填海", "style_preset": "ink-wash", "target_minutes": 2},
         )
         approved = await client.post(
-            f"{base}/series/{one_off.slug}/docs/bible/decision", json={"decision": "approve"}
+            f"{base}/series/{one_off.slug}/docs/bible/decision",
+            json={"decision": "approve", "expected_version": 1},
         )
     assert only_one_offs.status_code == 200
     assert only_one_offs.json()["series"][0]["kind"] == "one-off"
@@ -653,7 +661,7 @@ async def test_a_series_is_planned_document_by_document_and_made_episode_by_epis
         )
         assert (await service.next_job(session, settings)).job is None, "the owner is reading it"
         sent_back = await service.decide_doc(
-            session, owner, slug, "setting", 0, "reject", "再暗一點"
+            session, owner, slug, "setting", 0, "reject", "再暗一點", expected_version=1
         )
         assert sent_back.docs[0].status == "rejected"
         job = (await service.next_job(session, settings)).job
@@ -671,7 +679,9 @@ async def test_a_series_is_planned_document_by_document_and_made_episode_by_epis
                 },
             ),
         )
-        approved = await service.decide_doc(session, owner, slug, "setting", 0, "approve", None)
+        approved = await service.decide_doc(
+            session, owner, slug, "setting", 0, "approve", None, expected_version=2
+        )
         assert approved.status == "outline" and approved.docs[0].version == 2
 
         job = (await service.next_job(session, settings)).job
@@ -696,7 +706,9 @@ async def test_a_series_is_planned_document_by_document_and_made_episode_by_epis
             slug,
             SeriesDocSubmitIn(kind="outline", body_md="# 總綱", body_json={"chapters": chapters}),
         )
-        active = await service.decide_doc(session, owner, slug, "outline", 0, "approve", None)
+        active = await service.decide_doc(
+            session, owner, slug, "outline", 0, "approve", None, expected_version=1
+        )
         assert active.status == "active" and len(active.episodes) == 25
         assert active.episodes[24].title == "第 25 集" and active.episodes[0].status == "planned"
 
@@ -722,7 +734,9 @@ async def test_a_series_is_planned_document_by_document_and_made_episode_by_epis
                 },
             ),
         )
-        ready = await service.decide_doc(session, owner, slug, "chapter", 1, "approve", None)
+        ready = await service.decide_doc(
+            session, owner, slug, "chapter", 1, "approve", None, expected_version=1
+        )
         assert [e.status for e in ready.episodes[:11]] == ["ready"] * 10 + ["planned"]
         assert ready.episodes[0].title == "E1" and ready.episodes[0].beats["tension"] == [
             2,
@@ -837,7 +851,9 @@ async def test_a_one_off_goes_from_the_request_form_through_its_bible_to_its_epi
             session, slug, SeriesDocSubmitIn(kind="bible", body_md="# 故事聖經", body_json=BIBLE)
         )
         assert (await service.next_job(session, settings)).job is None, "the owner is reading it"
-        approved = await service.decide_doc(session, owner, slug, "bible", 0, "approve", None)
+        approved = await service.decide_doc(
+            session, owner, slug, "bible", 0, "approve", None, expected_version=1
+        )
         assert approved.status == "active" and approved.docs[0].kind == "bible"
         episode = approved.episodes[0]
         assert episode.status == "ready" and episode.title == "精衛填海"
@@ -904,7 +920,9 @@ async def test_a_drama_is_withdrawn_before_its_episode_starts_and_not_after(
         await service.submit_doc(
             session, slug, SeriesDocSubmitIn(kind="bible", body_md="# 故事聖經", body_json=BIBLE)
         )
-        await service.decide_doc(session, owner, slug, "bible", 0, "approve", None)
+        await service.decide_doc(
+            session, owner, slug, "bible", 0, "approve", None, expected_version=1
+        )
         await service.start_episode(session, token, slug, 1, f"{slug}-e001")
         with pytest.raises(service.SeriesRefused, match="已經開始做了") as refused:
             await service.withdraw_series(session, owner, slug)

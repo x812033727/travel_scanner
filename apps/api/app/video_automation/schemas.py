@@ -690,6 +690,8 @@ class SeriesDocOut(BaseModel):
     # The owner's lines on this document's thread still waiting for the model
     # (docs/videos/DRAMA-FLOW.md §三).
     unanswered: int = 0
+    # A Markdown-only edit is a draft until its production data is explicitly reconciled.
+    needs_reconciliation: bool = False
 
 
 class SeriesEpisodeOut(BaseModel):
@@ -798,6 +800,7 @@ class SeriesListOut(BaseModel):
 class SeriesDocDecisionIn(StrictModel):
     decision: Literal["approve", "reject"]
     note: str | None = Field(default=None, max_length=2000)
+    expected_version: int = Field(ge=1)
 
 
 class SeriesDocEditIn(StrictModel):
@@ -835,7 +838,7 @@ class SeriesDocSubmitIn(StrictModel):
 
 
 class SeriesContextOut(BaseModel):
-    """What the prompts need: the approved documents, the episodes so far and the recaps."""
+    """Production uses approved documents; discussion may read explicitly labelled drafts."""
 
     series: SeriesSummary
     setting: SeriesDocOut | None
@@ -934,6 +937,8 @@ class MessageJob(BaseModel):
     # The episode whose screenplay is discussed, for a script thread (its slug names the video).
     episode: SeriesEpisodeOut | None
     context: SeriesContextOut
+    # Echo this opaque snapshot with a revised document; stale answers keep only their reply.
+    revision_context: str | None = None
 
 
 class MessageJobOut(BaseModel):
@@ -951,6 +956,7 @@ class MessageAnswerIn(StrictModel):
 
     reply_md: str = Field(min_length=1, max_length=MESSAGE_BODY_MAX_CHARS)
     revised: RevisedDocIn | None = None
+    revision_context: str | None = Field(default=None, pattern=r"^[a-f0-9]{64}$")
 
 
 class MessageAnswerOut(BaseModel):
@@ -958,6 +964,7 @@ class MessageAnswerOut(BaseModel):
     # The new version filed from ``revised``, waiting for the owner; None when nothing was
     # revised, or the document was approved meanwhile.
     revision: SeriesDocOut | None
+    revision_refused: str | None = None
 
 
 class SeriesCompilationStartIn(StrictModel):

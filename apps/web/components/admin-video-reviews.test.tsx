@@ -593,7 +593,8 @@ describe("AdminVideoReviews", () => {
     const postIndex = calls.findIndex((call) => call.method === "POST");
     const post = calls[postIndex];
     expect(post?.url).toContain("/admin/video-automation/series/one-off-1a2b3c4d/docs/bible/decision");
-    expect(post?.body).toEqual({ decision: "approve" });
+    // The decision names the version the owner read, so the site can refuse one given on an older version.
+    expect(post?.body).toEqual({ decision: "approve", expected_version: 1 });
     // The panel reads its series again and shows the approved bible, whose thread stays as a record;
     // the video page reloads too, so the episode's gates follow the approval.
     await waitFor(() => expect(within(panel.querySelector("summary") as HTMLElement).getByText("已核准")).toBeTruthy());

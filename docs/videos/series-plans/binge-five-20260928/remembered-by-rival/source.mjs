@@ -37,14 +37,14 @@ export default {
       "守淵之力只在江照主動壓住左掌契印、說出『借淵』並承受抽痛時啟動；受傷、動情、揮劍或天籙破裂都不會自動發動。每次啟動削減他自身可運用的修為，不能無限施放。第 1、18、28 集各有一次啟動，過去救援只以已發生紀錄交代；第 28 集後不再啟動。",
       "每次啟動，天籙對十二陣腳覆蓋的整個照川盆地同步發出一次抹除：當時在區內的人，失去以江照為具體人物的親歷片段與情感連結；在區外的人不受該次影響，本劇不借外地熟人解局。江照本人與當時持有完整互保契的祁硯豁免。",
       "抹除不消滅語言、技能、人的其他記憶或對事件的常識：人知道橋被救了，卻想不起施救者的面孔、名字與共同經歷。紙本、刻痕、工具和客觀身體狀態仍在；別人可以重新讀到『江照救人』並相信證據，但讀資料不等於重獲相處的感覺。下一次抹除會再移走讀完資料後與他新建立的個人記憶。",
-      "祁硯少年時與江照立下未入天籙的互保契，完整紅繩縫在右腕內襯。契約繞過天籙的身分索引，所以能保留關於江照的記憶。祁硯少年受落石傷，原本就缺少立契當日的記憶；紅繩被他當作養父留下的平安結。這是既存頭傷，不是天籙任意擦除豁免者的記憶；沒有突然恢復整段童年的橋段。江照記得少年互結平安結、答應互相照看，當時不知道未登錄條款的技術效果；他不是契術匠，只知道自己簽下守淵代價。祁硯的繩藏在右袖內，直到第 8 集才露出可核對的編法；二人先查證而非一見紅線就知道完整原理。",
+      "祁硯少年時與江照立下未入天籙的互保契，承載物是一條完整紅繩，繫在祁硯右腕、繩結固定在右袖口內襯。契約繞過天籙的身分索引，所以從立契起，天籙的抹除帶不走他關於江照的記憶。祁硯立契後受落石頭傷，缺的是立契前後整段與江照相處的少年時期：學劍、同桌吃飯、結繩與立契都在缺口裡，只剩收劍卸力、替人挑苦葉這類說不出來歷的習慣。祁硯的養父是執令堂的一名老巡令，自幼收養他，送他到平陣坊隨陳渡學陣法，劍是在坊裡跟江照學的；頭傷後養父把他接回執令堂養傷，不願他再靠近守淵契，從此不再送他去坊裡，兩人因此分開，直到三日前才再相遇，所以祁硯以為三日前是初識。養父只告訴他腕上是保平安的繩、要他別解，本人不知道互保契的作用，數年前病故，全劇不出場、沒有台詞；紅繩因此被祁硯當作養父留下的平安結。這是既存頭傷，不是天籙任意擦除豁免者的記憶；互保契擋得住抽取，補不回頭傷帶走的往事，全劇沒有突然恢復這段少年記憶的橋段。江照記得少年時兩人一起替祁硯結上這條平安結、答應互相照看；施術的江照本來就不受抹除，所以只有祁硯需要繩。他當時不知道未登錄條款的技術效果；他不是契術匠，只知道自己簽下守淵代價。祁硯的繩藏在右袖內，直到第 8 集才露出可核對的編法；二人先查證而非一見紅線就知道完整原理。",
       "祁硯記得三日前被江照救下，也記得對方自報姓名，但仍接到有真印的追捕令：押回對質，拒捕可當場斬殺。元衡要利用他追殺江照，祁硯以為是同一人後來犯案，卻堅持先查證而不執行斬令。令書把江照稱作無名者以否定其可信身分，不代表紙上不能出現名字。第 10 集證明令書先於案發；第 23 集才由見證者與底簿解釋記憶例外。",
       "天籙儲存的舊記憶是可歸還但不可複製的人物片段。元衡能以歸還誘惑江照，不能憑空捏造童年。摧毀天籙會讓庫中的舊片段永久散失；不能用抄本、獻祭、相擁或片尾奇蹟恢復。被抽取而死的人不能復活。",
-      "元衡另能用接上囚所與天籙的拘押契，分批抽取被拘者自己的自傳記憶；行政名冊與石碑上的名字則由秦錄等人實際刮除，並威脅親友不得作證。阿杳尚未被抽完，仍記得母親和自己的暱稱，家戶身分卻已被抹掉。此機制不讓全城人忘記每一名受害者，也不代表江照每施法一次，她就忘掉自己的名字；江照施法只抽走別人關於江照的親歷片段。兩種抽取的物件必須說清，不能混為同一個範圍。",
+      "元衡另能用接上囚所與天籙的拘押契，分批抽取被拘者自己的自傳記憶；行政名冊與石碑上的名字則由秦錄等人實際刮除，並威脅親友不得作證。阿杳尚未被抽完，仍記得母親這個人和自己的暱稱，卻叫不出母親登記在家戶上的名字，自己的家戶身分也已被抹掉。此機制不讓全城人忘記每一名受害者，也不代表江照每施法一次，她就忘掉自己的名字；江照施法只抽走別人關於江照的親歷片段。兩種抽取的對象必須說清，不能混為同一個範圍。",
       "護城陣確實必要，天籙只是被改造為壟斷能源的中心，不等於整道結界。陳渡的普通修陣術以現有陣腳、導霧石、輪換耗材與人力巡檢運作，需十二處完成隔斷並同步接手，不能拿一張圖就一夜解決。第 6、12、22 集鋪工具、圖樣與材料，第 27、29 集實驗；第 34 集兩主角先把可轉存的個人修為注入備用陣石，取得交接時間，永久失去大半修為。此為一般修行供能，不觸發守淵契印。",
-      "原天籙有匠人製作的卸壓槽、三枚承重銅銷與普通機械檢修口。先將全部陣腳改接、卸掉天籙的壓力，才能以普通工具破壞記憶儲層；強打未卸壓的塔會造成淵霧外洩。第 12、27、29 集建立工法，第 31 集分送，第 34、36 集完成改接確認，第 37 集才拆銷壓裂儲層。",
+      "原天籙有匠人製作的卸壓槽、三枚承重銅銷與普通機械檢修口。先將全部陣腳改接、卸掉天籙的壓力，才能以普通工具破壞記憶儲層；強打未卸壓的塔會造成淵霧外洩。第 12、27、29 集建立工法，第 31 集分送，第 34、36 集完成改接與降壓確認；第 36 集末讀數達標後才抽出第一枚銅銷，第 37 集拔出其餘兩枚並壓裂儲層。",
       "第 35 集紅繩被元衡毀掉，只取消往後抹除的豁免，不回溯抹去祁硯已保有的記憶。江照清楚若再說『借淵』，連祁硯也會忘記；兩人此後不用守淵之力，普通劍術、工具與已注入備用陣石的能量仍可使用。",
-      "阿杳的身分可由保留的家戶副簿與傷痕證明；檔案讓她重新取得生活位置，不能讓死去的親人回來。結局恢復的是可驗證的歷史、自由和建立新關係的機會；除祁硯外，其他人與江照已失去的私人感受永久缺席。"
+      "阿杳的身分可由保留的家戶副簿與傷痕證明；這些紀錄讓她重新取得生活位置，不能讓死去的親人回來。結局恢復的是可驗證的歷史、自由和建立新關係的機會；除祁硯外，其他人與江照已失去的私人感受永久缺席。"
     ],
     "characters": [
       {
@@ -52,7 +52,7 @@ export default {
         "name": "江照",
         "role": "背負守淵契的第一男主",
         "age": 28,
-        "appearance": "Adult East Asian man, 28, lean angular silhouette, long black hair tied low with a charcoal cloth band, narrow calm eyes, weathered indigo cross-collar robe, grey trousers and dark cloth boots. A pale branching contract mark sits on his left palm. He carries a plain iron sword with a chipped oval guard and wears no crown, jewellery or red wrist cord. Keep the same face, low ponytail and indigo robe in every present-day shot.",
+        "appearance": "Adult East Asian man, 28, lean angular silhouette, long black hair tied low with a charcoal cloth band, narrow calm eyes, weathered indigo cross-collar robe, grey trousers and dark cloth boots. A pale branching contract mark sits on his left palm. He carries a plain iron sword with a chipped oval guard and wears no crown or jewellery. Keep the same face, low ponytail and indigo robe in every shot.",
         "personality": "嘴上不計較，救人時先動手；不肯承認自己想被記住。",
         "want": "停止記憶剝奪，又不讓城裡人失去結界。",
         "fear": "自己的一生只能靠一段真假難辨的傳言證明。",
@@ -61,7 +61,7 @@ export default {
         "voice": {
           "provider": "gemini",
           "name": "Charon",
-          "style": "臺灣國語；偏低、剋制、有疲倦的乾笑；擬定 casting 未試聽。"
+          "style": "臺灣國語；偏低、克制、有疲倦的乾笑；擬定 casting 未試聽。"
         },
         "relationships": [
           {
@@ -74,7 +74,7 @@ export default {
           },
           {
             "with": "a-yao",
-            "kind": "救她卻被她忘記，選擇讓檔案保護她而非要求感恩。"
+            "kind": "救她卻被她忘記，選擇讓紀錄保護她而非要求感恩。"
           }
         ]
       },
@@ -83,7 +83,7 @@ export default {
         "name": "祁硯",
         "role": "執令者、唯一保有江照私人記憶的第二男主",
         "age": 28,
-        "appearance": "Adult East Asian man, 28, upright lean silhouette, straight black hair in a high neat knot with a matte dark pin, defined brows and a small old scar above the right temple. He wears an ivory-grey fitted robe with a black narrow belt, dark wrist wraps and practical black boots. A faded red cord is hidden under the RIGHT cuff until revealed; never place it on the left. His sword has a plain rectangular guard. No crown or ornate shoulder armour.",
+        "appearance": "Adult East Asian man, 28, upright lean silhouette, straight black hair in a high neat knot with a matte dark pin, defined brows and a small old scar above the right temple. He wears an ivory-grey fitted robe with long narrow sleeves, a black narrow belt and practical black boots. His sword has a plain rectangular guard. No crown or ornate shoulder armour.",
         "personality": "相信能核對的話，常以冷靜遮住遲疑；願意承認自己曾經判錯。",
         "want": "找出真正破壞結界的人，保住江照和普通人。",
         "fear": "自己的公正只是替別人的謊言蓋印。",
@@ -92,7 +92,7 @@ export default {
         "voice": {
           "provider": "gemini",
           "name": "Orus",
-          "style": "臺灣國語；字尾穩、語速稍慢，後段不靠大吼演情緒；擬定 casting 未試聽。"
+          "style": "臺灣國語；字尾穩、語速稍慢，不靠大吼演情緒；擬定 casting 未試聽。"
         },
         "relationships": [
           {
@@ -114,7 +114,7 @@ export default {
         "name": "元衡",
         "role": "掌籙者、主要對手",
         "age": 61,
-        "appearance": "East Asian man appearing 61, tall spare frame, long silver-grey hair in a severe topknot, smooth narrow face and thin brows. He wears a structured pale gold robe with dark geometric borders, a square bronze seal at his waist and a rigid amber-coloured cuff on the left wrist. His hands move very little. Maintain an outwardly immaculate and calm appearance even when his authority fails.",
+        "appearance": "East Asian man appearing 61, tall spare frame, long silver-grey hair in a severe topknot, smooth narrow face and thin brows. He wears a structured pale gold robe with dark geometric borders, a square bronze seal at his waist and a rigid amber-coloured cuff on the left wrist. His hands move very little. Always outwardly immaculate and calm.",
         "personality": "能真誠談救城，也能把別人的代價當作帳上耗材。",
         "want": "保住掌籙權、延壽收益與自己不可取代的地位。",
         "fear": "凡人證明結界不需要由他獨佔。",
@@ -180,7 +180,7 @@ export default {
         "personality": "不安慰做不到的事，肯把自己最後的工具借出去。",
         "want": "讓修陣工法活下來，也讓兩個孩子能走出契約。",
         "fear": "年輕人為了證明自己，再拿命補制度的漏洞。",
-        "secret": "保留立契底簿與祁硯頭傷診記。為防一次抄坊全失，上頁和診記藏在平陣坊，底簿下頁藏在南渡陣腳的舊工具櫃；櫃所在內圈此前因缺料未能安全進入，直到第 22 集新料到場才由阿杳取出。普通卸壓圖則一直保留在坊中，不能靠陳渡缺失的私人記憶單獨作證。",
+        "secret": "保留立契底簿與祁硯頭傷診記。為防一次抄坊全失，上頁和診記藏在平陣坊，底簿下頁藏在南渡陣腳的舊工具櫃；櫃所在內圈此前因缺料未能安全進入，直到第 22 集新料到場才由阿杳取出。普通卸壓圖則一直保留在坊中，不能靠陳渡缺失的私人記憶單獨作證。他記得替少年祁硯治過頭傷，立契那段卻因為有江照而被歷次抹除帶走，只剩自己的筆跡；所以拿到下頁、祁硯也已不替元衡執令之前，他不說，怕半本帳說出口，只會讓人拿剪刀去試那條繩。",
         "speech": "『先量，再敲。』談規則一律指給人看。",
         "voice": {
           "provider": "gemini",
@@ -194,7 +194,7 @@ export default {
           },
           {
             "with": "qi-yan",
-            "kind": "曾救治少年頭傷，現交出見證檔案解釋紅繩。"
+            "kind": "曾教少年祁硯學陣、救治他的頭傷，現交出底簿與診記解釋紅繩。"
           },
           {
             "with": "a-yao",
@@ -207,7 +207,7 @@ export default {
         "name": "沈闕",
         "role": "敵方弟子、後期倒戈者",
         "age": 22,
-        "appearance": "East Asian man, 22, compact athletic build, short tied-back black hair with a broad fabric band, round face and a healed cut on the lower lip. He wears a slate-grey trainee robe with white shoulder piping, plain leather forearm guards and a small numbered copper badge. A narrow practice sword hangs on his left hip. He never wears the ivory fitted coat or red cord of Qi Yan.",
+        "appearance": "East Asian man, 22, compact athletic build, short tied-back black hair with a broad fabric band, round face and a healed cut on the lower lip. He wears a slate-grey trainee robe with white shoulder piping and plain leather forearm guards. A narrow practice sword hangs on his left hip.",
         "personality": "怕辜負師門，卻不能無視自己眼前受傷的人。",
         "want": "成為有用的守城者。",
         "fear": "離開師門後沒有力量保護人。",
@@ -215,8 +215,8 @@ export default {
         "speech": "起初報編號，後來先問人名。",
         "voice": {
           "provider": "gemini",
-          "name": "Zephyr",
-          "style": "臺灣國語；清朗而節制，疑惑時不拖長尾音；擬定 casting 未試聽。"
+          "name": "Iapetus",
+          "style": "臺灣國語；年輕男聲，清朗而節制，疑惑時不拖長尾音；擬定 casting 未試聽。"
         },
         "relationships": [
           {
@@ -238,12 +238,12 @@ export default {
         "personality": "把傷害切成小步驟，說每一步都不是自己決定的。",
         "want": "守住職位與免責保證。",
         "fear": "元衡把所有失蹤者算在自己身上。",
-        "secret": "藏有拘押接收冊與元衡親押的轉移單；知道受害者是普通人。",
+        "secret": "藏有拘押接收冊與元衡親押的轉移單，留作元衡把帳全推給他時的保命憑據；知道受害者是普通人。第 33 集他把兩樣一起交出。",
         "speech": "『我只照冊。』最後必須具名說出自己的行為。",
         "voice": {
           "provider": "gemini",
-          "name": "Charon",
-          "style": "臺灣國語；較江照高一個音域、鼻音與急促斷句，需在試聽時確認可分辨；擬定 casting 未試聽。"
+          "name": "Algenib",
+          "style": "臺灣國語；沙啞、急促斷句，照冊念時語調平板；擬定 casting 未試聽。"
         },
         "relationships": [
           {
@@ -261,11 +261,11 @@ export default {
         "name": "胡娘",
         "role": "橋市攤主、開場獲救孩子的母親",
         "age": 37,
-        "appearance": "East Asian woman, 37, sturdy build, black hair braided into a low coil under a navy cloth scarf, sun-weathered cheeks. She wears an ochre cotton blouse, dark skirt, a faded blue apron and flat woven shoes. A small brass ladle hangs from the apron cord. Keep the same scarf, apron and ladle whenever she appears.",
+        "appearance": "East Asian woman, 37, sturdy build, black hair braided into a low coil under a navy cloth scarf, sun-weathered cheeks. She wears an ochre cotton blouse, dark skirt, a faded blue apron and flat woven shoes. A small brass ladle hangs from the apron cord. Keep the same scarf, apron and ladle in every shot.",
         "personality": "爽快且實際，願意幫人但不假裝自己有已失去的感受。",
         "want": "孩子平安，橋市能繼續生活。",
         "fear": "不知道該相信誰而再次害到人。",
-        "secret": "保留孩子畫的救援圖及攤位賒帳單，讓江照的行為仍有痕跡。",
+        "secret": "孩子畫的救援圖第 3 集交給江照保存；她自己留著攤位賒帳單，上面記著江照賒過的麵錢，她卻想不起這個熟客的臉；第 40 集她靠這張單和救援圖知道他從前的事，讓他的行為仍有痕跡。",
         "speech": "『先坐，麵要冷了。』不把市井角色寫成無知笑料。",
         "voice": {
           "provider": "gemini",
@@ -313,7 +313,7 @@ export default {
       {
         "id": "prison",
         "name": "除名囚所",
-        "description": "有姓名被颳去的木牌、編號牢門、通往天籙的拘押契介面。"
+        "description": "有姓名被刮去的木牌、編號牢門、通往天籙的拘押契接口。"
       },
       {
         "id": "archive",
@@ -353,7 +353,7 @@ export default {
       {
         "id": "m02",
         "question": "祁硯為何能記得江照，卻不識紅繩的用途？",
-        "answer": "少年未登錄互保契藏在右腕紅繩；祁硯立契後遭落石頭傷，缺的是既存當日記憶。陳渡底簿、頭傷診記與繩結編法交叉證明，無突然復憶。",
+        "answer": "少年未登錄互保契藏在右腕紅繩，從立契起擋住天籙抽取；祁硯立契後遭落石頭傷，缺的是立契前後整段與江照相處的少年時期，屬既存頭傷而非抹除，所以記得三日前的江照卻不識紅繩。陳渡底簿、頭傷診記與繩結編法交叉證明，無突然復憶。",
         "planted": 3,
         "advanced": [
           3,
@@ -437,8 +437,8 @@ export default {
         "advanced": [
           16,
           20,
-          29,
-          30
+          27,
+          29
         ],
         "revealed": 38,
         "reserved": false
@@ -450,8 +450,7 @@ export default {
         "planted": 8,
         "advanced": [
           23,
-          26,
-          30
+          26
         ],
         "revealed": 35,
         "reserved": false
@@ -459,12 +458,12 @@ export default {
       {
         "id": "m10",
         "question": "摧毀天籙後，誰能把江照失去的人生還給他？",
-        "answer": "無人能還；舊私人記憶永久散失。儲存的證據讓人相信他做過什麼，祁硯的引見讓他能建立新的關係，結尾沒有全城復憶。",
+        "answer": "無人能還；舊私人記憶永久散失。保存的證據讓人相信他做過什麼，祁硯的引見讓他能建立新的關係，結尾沒有全城復憶。",
         "planted": 1,
         "advanced": [
-          3,
           13,
           24,
+          30,
           32,
           39
         ],
@@ -504,7 +503,7 @@ export default {
       {
         "seconds": "0–5",
         "picture": "江照把孩子推上橋面，左掌契印亮一次又暗下；胡娘拉住孩子，望向江照。",
-        "audio": "胡娘：『你是誰？』"
+        "audio": "胡娘：『你是誰？』江照心聲：『我才救了他，她就忘了我。』"
       },
       {
         "seconds": "5–12",
@@ -528,10 +527,10 @@ export default {
       "number": 1,
       "title": "唯一記得他的人，為什麼要殺他？",
       "theme": "相信人的起點，是願意核對命令。",
-      "start_state": "江照獨自救人又被遺忘；祁硯奉真印拘捕令追來。",
+      "start_state": "江照獨自救人又被遺忘；祁硯奉真印追捕令追來。",
       "end_state": "兩人證明罪名預先寫好，暫停押送，決定查囚所。",
       "turn": "第 10 集追捕令早於案發，執法證據反成構陷證據。",
-      "stakes": "一個人的生存與名譽，升至整套追捕程式。",
+      "stakes": "一個人的生存與名譽，升至整套追捕程序。",
       "question": "記得你的人，會選擇相信親眼所見還是蓋了印的命令？",
       "episodes": [
         {
@@ -539,14 +538,14 @@ export default {
           "closed_ending": false,
           "number": 1,
           "title": "救過她，她卻問我是誰",
-          "logline": "江照救起橋下孩子後被母親忘記，祁硯喊出他的名字又亮出拘捕令，迫使他同時面對唯一見證者與追兵。",
+          "logline": "江照救起橋下孩子後被母親忘記，祁硯喊出他的名字又亮出追捕令，迫使他同時面對唯一見證者與追兵。",
           "hook": "我才救了他，她就忘了我。",
           "hook_type": "reversal",
-          "conflict": "斷橋仍在坍落，江照施法後虛弱且被胡娘當陌生人；祁硯須在立即拘捕與繼續救援間行動。",
-          "turn": "祁硯聽江照指示先用繩索穩住木架，救援成功；江照確認他在同一次抹除後仍喊得出自己的名字。",
+          "conflict": "斷橋仍在坍落，江照施法後虛弱且被胡娘當陌生人；祁硯須在立即押人與繼續救援間行動。",
+          "turn": "祁硯聽江照指示先用繩索穩住木架，救援成功；江照發現他在同一次抹除後仍喊得出自己的名字，卻分不清那是記得，還是照令書唸的。",
           "cliffhanger": {
             "type": "reveal",
-            "text": "祁硯把帶真印的拘捕令放在江照面前：救命恩人仍是被指控的無名者。"
+            "text": "善後完，祁硯攤開那張按在石欄上的追捕令讓江照自己讀：令上把他稱作無名者，還註明拒捕可當場斬殺；祁硯收劍入鞘，只說先押回對質。"
           },
           "setups": [
             "m01",
@@ -578,17 +577,17 @@ export default {
               "beat": "opening"
             },
             {
-              "type": "identity_reveal",
-              "text": "祁硯在人人遺忘後清楚喊出江照，第一次打破孤立。",
+              "type": "public_vindication",
+              "text": "橋面善後時人人把江照當陌生人，只有祁硯當眾說得出他方才救人的經過，這場救援第一次有人當面作證。",
               "planned_seconds": 115,
               "beat": "second_half"
             }
           ],
           "state": {
             "time": "第一日午後，首次畫面中的守淵啟動剛結束。",
-            "knowledge": "江照懂代價但不懂祁硯例外；祁硯記得三日前被他救過，尚信追捕程式。",
+            "knowledge": "江照懂代價。祁硯說得出方才的救援經過並不稀奇，他在場；江照拿不準的只有那個名字：是記得三日前的事，還是照令書唸的，留待第 3 集查證。祁硯記得三日前被他救過，尚信追捕程序。",
             "character_state": "江照左手短暫顫抖；祁硯未傷人；胡娘與孩子安全。",
-            "evidence": "真印拘捕令由祁硯持有；胡娘留有孩子救援圖尚未展示。",
+            "evidence": "真印追捕令由祁硯持有；胡娘留有孩子救援圖尚未展示。",
             "carry_forward": "二人帶著令書離開擁擠橋面對質，不省略救援善後。"
           }
         },
@@ -597,7 +596,7 @@ export default {
           "closed_ending": false,
           "number": 2,
           "title": "真印不替內容作證",
-          "logline": "祁硯在關口宣讀拘捕理由，江照指出失蹤時間與救援時間矛盾，爭取先核對證詞再進囚所。",
+          "logline": "祁硯在關口宣讀追捕理由，江照指出失蹤時間與救援時間矛盾，爭取先核對證詞再進囚所。",
           "hook": "你拿真令，抓錯了人。",
           "hook_type": "line",
           "conflict": "沈闕奉命接押，認定祁硯應立刻交人；江照若反抗會坐實攻擊執令者。",
@@ -625,7 +624,7 @@ export default {
           "locations": [
             "road"
           ],
-          "theme": "程式要能回答事實。",
+          "theme": "程序要能回答事實。",
           "lead_arc": "wins",
           "satisfaction": [
             {
@@ -644,8 +643,8 @@ export default {
           "state": {
             "time": "第一日下午，離橋一刻後。",
             "knowledge": "祁硯知道救過自己與被指控可以同時存在，但開始懷疑日期；江照仍不知誰設局。",
-            "character_state": "江照被監看但未上鎖；沈闕返院報告，非失蹤退場。",
-            "evidence": "祁硯儲存原令與自行記下的救援時間；血衣仍由江照穿著。",
+            "character_state": "江照被監看但未上鎖；沈闕返院報告。",
+            "evidence": "祁硯保存原令與自行記下的救援時間；血衣仍由江照穿著。",
             "carry_forward": "不把期限當無成本放行；二人必須找出一項更硬的矛盾。"
           }
         },
@@ -657,7 +656,7 @@ export default {
           "logline": "回橋核對受害者時，祁硯說出三日前江照自報的名字與傷口位置，證明他的記憶不是照令書現背。",
           "hook": "名字後面，你還記得什麼？",
           "hook_type": "question",
-          "conflict": "江照懷疑對方只是查過名冊，胡娘卻只能從孩子的畫知道有人救過人，無法描述施救者。",
+          "conflict": "江照懷疑對方只是查過名冊；胡娘記得午後擋住木架的這個人，也知道孩子是被人推上橋面救回來的，卻想不起那一刻的施救者，只能拿孩子的畫核對，對江照沒有舊日的熟悉感。",
           "turn": "祁硯指出救援當時江照沒有寫在令書上的動作；胡娘拿出圖，事件記錄仍在，但她對江照沒有熟悉感。",
           "cliffhanger": {
             "type": "emotion",
@@ -667,7 +666,8 @@ export default {
             "m02"
           ],
           "payoffs": [
-            "m02"
+            "m02",
+            "m01"
           ],
           "tension": [
             4,
@@ -702,8 +702,8 @@ export default {
           ],
           "state": {
             "time": "第一日傍晚。",
-            "knowledge": "局部回收 m02：祁硯確實有親歷記憶，尚不知保護來源；m01 確認紙本不消失。",
-            "character_state": "兩人能短暫放下武器說話；胡娘沒有突然想起江照。",
+            "knowledge": "局部回收 m02：祁硯確實有親歷記憶，尚不知保護來源；局部回收 m01：孩子的救援圖這類紙本不隨抹除消失，胡娘對施救那一刻的記憶卻沒了。",
+            "character_state": "兩人能短暫放下武器說話；胡娘沒有想起江照。",
             "evidence": "江照持孩子畫，祁硯保管追捕令。",
             "carry_forward": "記憶例外不能直接當免罪證明，仍須處理令上的罪名。"
           }
@@ -717,12 +717,14 @@ export default {
           "hook": "這一劍，你怎麼知道？",
           "hook_type": "question",
           "conflict": "二人對查證後是否交押沒有共識；江照想趁夜查石碑，祁硯不能讓嫌疑人獨走。",
-          "turn": "江照本能將劍停在祁硯右肩前，祁硯也做出相應卸力步，兩人都未受傷；祁硯承認童年有一段缺口。",
+          "turn": "江照本能將劍停在祁硯右肩前，祁硯也做出相應卸力步，兩人都未受傷；祁硯承認少年時有一段缺口。",
           "cliffhanger": {
             "type": "danger",
             "text": "關口封夜鈴響起，刻名崖的路即將封閉；二人必須在不傷守路人的前提下過關。"
           },
-          "setups": [],
+          "setups": [
+            "m02"
+          ],
           "payoffs": [],
           "tension": [
             4,
@@ -756,7 +758,7 @@ export default {
           ],
           "state": {
             "time": "第一日入夜。",
-            "knowledge": "祁硯只知道自己少年頭傷，不知道立契；江照記得教過他劍但不知道他為何仍能記得。",
+            "knowledge": "m02 新線索：收劍卸力的默契與祁硯承認的少年缺口。祁硯只知道自己少年頭傷後缺了一段往事，不知道缺口裡有江照與立契；江照記得教過他劍但不知道他為何仍能記得。",
             "character_state": "切磋無新增傷勢，兩人保留兵器。",
             "evidence": "劍路只能作熟識線索，不能獨立證明契約機制。",
             "carry_forward": "必須承接封路，用祁硯的限日查證身份通行，不突然瞬移。"
@@ -771,7 +773,7 @@ export default {
           "hook": "這名字，是被人刮掉的。",
           "hook_type": "reversal",
           "conflict": "碑上只剩編號，江照無法把失蹤者與記憶印象對上；若誤認文字也會被魔法抹除，就無法追查。",
-          "turn": "陳渡在崖邊收拓片，拿量尺對出新舊鑿深，讓二人看見有人近來補颳了名字；他只按底簿認江照，不假稱記得往事。",
+          "turn": "陳渡在崖邊收拓片，拿量尺對出新舊鑿深，讓二人看見有人近來補刮了名字；他只按底簿認江照，不假稱記得往事。",
           "cliffhanger": {
             "type": "reveal",
             "text": "一處未刮乾淨的姓氏，對上囚所接收編號；碑下同時掉出掌籙院修繕封條。"
@@ -815,7 +817,7 @@ export default {
           ],
           "state": {
             "time": "第一日深夜。",
-            "knowledge": "局部回收 m01：實體字不受守淵抹除；m04 尚不知所有無名者身分。",
+            "knowledge": "局部回收 m01：實體字不受守淵抹除；m04 尚不知所有無名者身分。陳渡從名字認出祁硯是當年坊裡受過頭傷的那個少年，此時一字不提，理由到第 23 集才說。",
             "character_state": "陳渡左膝舊傷妨礙攀爬；江照替他取拓片，無施法。",
             "evidence": "封條由祁硯保管，拓片與量尺由陳渡帶回坊。",
             "carry_forward": "回坊查封條用途與舊修繕底稿，不能直接推論元衡已是主謀。"
@@ -833,7 +835,7 @@ export default {
           "turn": "江照以封存時間與無人能穿過的舊封泥對讀；祁硯記錄矛盾，不要求匠人先自證高尚。陳渡示範模型卸壓槽，指出圖樣有用但缺料不能空轉。",
           "cliffhanger": {
             "type": "choice",
-            "text": "陳渡願交底圖，條件是二人先把帶著家戶木牌、正被送去囚所的阿杳帶回來。"
+            "text": "陳渡先讓祁硯帶走底圖副本查證，正本則有條件：二人得先把帶著家戶木牌、逃出囚所又被抓到、正被押回去的阿杳帶回來。"
           },
           "setups": [
             "m07"
@@ -867,7 +869,7 @@ export default {
             },
             {
               "type": "first_clear",
-              "text": "普通卸壓模型在手動操作下成功降壓，替後段解法立下第一個可見基礎。",
+              "text": "普通卸壓模型在手動操作下成功降壓。",
               "planned_seconds": 132,
               "beat": "second_half"
             }
@@ -876,7 +878,7 @@ export default {
             "time": "第二日拂曉。",
             "knowledge": "局部回收 m03 僅限破陣罪狀，未得預謀日期；m07 已知工法但缺料、人力與實驗。",
             "character_state": "江照左手恢復可持工具；陳渡不承諾親自跑十二處。",
-            "evidence": "底圖副本交祁硯，正本留坊；模型不具真正結界容量。",
+            "evidence": "底圖副本先交祁硯，正本留坊、待阿杳帶回才交出；模型不具真正結界容量。",
             "carry_forward": "須用合法複核與現場證據救阿杳，不能立即大破囚所。"
           }
         },
@@ -885,14 +887,14 @@ export default {
           "closed_ending": false,
           "number": 7,
           "title": "妖物的家戶木牌",
-          "logline": "江照和祁硯攔下阿杳的轉押，以她身上的家戶木牌要求複核分類，讓第一次救人與囚所帳冊直接相連。",
+          "logline": "江照和祁硯攔下押阿杳回囚所的隊伍，以她身上的家戶木牌要求複核分類，讓第一次救人與囚所帳冊直接相連。",
           "hook": "妖物，為什麼有戶籍？",
           "hook_type": "question",
           "conflict": "秦錄持除名命令稱阿杳危險，要求祁硯不要因一塊木頭妨礙移交；阿杳一聽編號便想逃。",
-          "turn": "江照請阿杳展示木牌背面的家戶記號，與陳渡副本同式；祁硯封存轉押單、具名要求暫停，迫使秦錄不能偷偷收人。",
+          "turn": "江照請阿杳展示木牌背面的家戶記號，與陳渡副本同式；祁硯封存押送單、具名要求暫停，迫使秦錄不能偷偷收人。",
           "cliffhanger": {
             "type": "emotion",
-            "text": "阿杳離開鎖鏈後沒有道謝，先問牢裡剩下的人怎麼辦；江照把她的木牌掛回她頸上。"
+            "text": "阿杳離開鎖鏈後沒有道謝，先問牢裡剩下的人怎麼辦；江照把她的木牌放回她的布袋。"
           },
           "setups": [
             "m06"
@@ -921,7 +923,7 @@ export default {
           "satisfaction": [
             {
               "type": "rescue",
-              "text": "祁硯先停下轉押，給阿杳一個能說話的機會。",
+              "text": "祁硯先停下押送，給阿杳一個能說話的機會。",
               "planned_seconds": 22,
               "beat": "opening"
             },
@@ -935,8 +937,8 @@ export default {
           "state": {
             "time": "第二日上午。",
             "knowledge": "局部回收 m04：至少一名無名者原是有家戶的普通人；秦錄知道真相仍否認。",
-            "character_state": "阿杳右腕有鎖鏈擦傷，由祁硯包紮；原有右前臂月牙舊疤不可混淆。",
-            "evidence": "木牌由阿杳保管；封存轉押單在祁硯手中。",
+            "character_state": "阿杳右腕有鎖鏈擦傷，由祁硯包紮；她右前臂那道月牙舊疤是另一處舊傷。",
+            "evidence": "木牌由阿杳保管；封存的押送單在祁硯手中。",
             "carry_forward": "阿杳暫避坊內，秦錄有具名複核單可向元衡告狀。"
           }
         },
@@ -948,14 +950,15 @@ export default {
           "logline": "阿杳認出祁硯右腕紅繩結法與拘押契完全不同，二人發現它可能是記憶例外的線索，卻不敢靠破壞去試。",
           "hook": "你袖子裡，藏著什麼？",
           "hook_type": "question",
-          "conflict": "祁硯洗去包紮血跡露出紅繩，江照想檢視，祁硯只記得它是長輩保留的平安結，仍保護私人遺物。",
+          "conflict": "祁硯在盆邊洗手，右袖滑開露出紅繩，江照想查看，祁硯只記得它是已故養父要他別解的平安結，仍保護私人遺物。",
           "turn": "阿杳指出結上沒有仙門登錄的銅扣，江照將左右兩種契紋畫在紙上；祁硯同意拓印但拒絕解開，二人把風險留在紙上核對。",
           "cliffhanger": {
             "type": "danger",
             "text": "沈闕送來召回令，要求祁硯今晚交人並交出所有封存物；紅繩線索尚無答案。"
           },
           "setups": [
-            "m09"
+            "m09",
+            "m02"
           ],
           "payoffs": [],
           "tension": [
@@ -1007,13 +1010,15 @@ export default {
           "hook": "這個簽名，確實是我的。",
           "hook_type": "line",
           "conflict": "秦錄拿祁硯簽名要求服從，企圖將查證變成自我否定；沈闕也等待他認錯交人。",
-          "turn": "祁硯承認簽名卻指出巡區格式與追捕格式頁尾不同，當場要求調出不可重印的封冊騎縫號；沈闕依程式提供原卷。",
+          "turn": "祁硯承認簽名卻指出巡區格式與追捕格式頁尾不同，當場要求調出不可重印的封冊騎縫號；沈闕依程序提供原卷。",
           "cliffhanger": {
             "type": "choice",
             "text": "祁硯把自己的名印一併交作封存：若是他錯，願受查；接下來所有人都必須對日期負責。"
           },
           "setups": [],
-          "payoffs": [],
+          "payoffs": [
+            "m03"
+          ],
           "tension": [
             4,
             3,
@@ -1047,7 +1052,7 @@ export default {
           ],
           "state": {
             "time": "第二日傍晚。",
-            "knowledge": "祁硯知道簽名被挪用，尚未核對案發先後；秦錄意識到原卷會暴露。",
+            "knowledge": "局部回收 m03：令上的簽名是祁硯真的，卻是從例行巡區文書挪過去的；尚未核對案發先後。秦錄意識到原卷會暴露。",
             "character_state": "祁硯暫失可自由簽令的名印，身分仍是執令者。",
             "evidence": "名印封存於檔房；祁硯帶走經沈闕核對的騎縫拓號。",
             "carry_forward": "第 10 集把封冊時日和獨立的橋市日誌對上，不以一眼看紙就斷案。"
@@ -1057,12 +1062,12 @@ export default {
           "timeline": "present",
           "closed_ending": false,
           "number": 10,
-          "title": "先有追捕，才有罪",
+          "title": "橋市日誌與騎縫號",
           "logline": "江照以橋市日誌對上原卷騎縫日期，證明追捕令比案發早三日，祁硯正式中止押送並跟他查囚所。",
           "hook": "案子沒發生，令先寫好了。",
           "hook_type": "reversal",
-          "conflict": "元衡透過召令催迫交人，二人只有一晚能儲存原始日期；單一筆錯字仍可能被說成抄錄失誤。",
-          "turn": "陳渡把封存底圖日期、騎縫號與橋市日誌三處對讀，形成不能同時寫錯的時間鏈；祁硯封存副本而不再交人。",
+          "conflict": "元衡透過召令催迫交人，二人只有一晚能保存原始日期；單一筆錯字仍可能被說成抄錄失誤。",
+          "turn": "陳渡依約交出封存底圖正本，江照把底圖日期、騎縫號與橋市日誌三處對讀，形成不能同時寫錯的時間鏈；祁硯封存副本而不再交人。",
           "cliffhanger": {
             "type": "reveal",
             "text": "祁硯承認自己本被選來替預寫罪名背書；追捕卷後頁列出的下一站，正是阿杳逃出的除名囚所。"
@@ -1105,7 +1110,7 @@ export default {
           "state": {
             "time": "第二日深夜。",
             "knowledge": "完整回收 m03：追捕預先安排，尚未證明元衡如何從無名者獲益。",
-            "character_state": "二人現在共同違抗召回，風險升高但未被神奇洗白。",
+            "character_state": "二人現在共同違抗召回，風險升高；追捕令還沒有撤，江照仍被通緝。",
             "evidence": "三份對讀副本分放坊與祁硯紙包，原卷仍在院內。",
             "carry_forward": "按後頁位置潛查囚所，開始第三日；第一篇問題已答，新的受害者範圍擴大。"
           }
@@ -1114,7 +1119,7 @@ export default {
     },
     {
       "number": 2,
-      "title": "正道儲存的紀錄，正在刪掉活人。",
+      "title": "正道保存的紀錄，正在刪掉活人。",
       "theme": "善意不能洗掉自己受過的好處。",
       "start_state": "兩人帶著預寫追捕令的證據查囚所，仍不知剝奪的用途。",
       "end_state": "確認記憶是仙門修為來源，祁硯自己的受賞簿也在其中。",
@@ -1127,10 +1132,10 @@ export default {
           "closed_ending": false,
           "number": 11,
           "title": "這裡不問姓名",
-          "logline": "阿杳帶兩人從舊巡檢時窗進囚所，看見活人被編號並接上拘押契，救人的目標從一人變成一整批。",
+          "logline": "阿杳趁她摸熟的巡檢換班空檔，帶兩人從外門混進囚所，看見活人被編號並接上拘押契，救人的目標從一人變成一整批。",
           "hook": "牢裡的人，還活著。",
           "hook_type": "line",
-          "conflict": "祁硯想抄冊就走，江照看見囚徒手臂的抽取痕無法置身事外；秦錄將提前移走待抽取者。",
+          "conflict": "祁硯想抄冊就走，江照看見囚徒腕上接著拘押契線，無法置身事外；秦錄將提前移走待抽取者。",
           "turn": "阿杳認出換班規律，江照用普通工具卡住轉運門，祁硯先抄接收編號再掩護人退到無接線的空牢。",
           "cliffhanger": {
             "type": "danger",
@@ -1167,7 +1172,7 @@ export default {
             },
             {
               "type": "first_clear",
-              "text": "接收編號與刻名崖殘名對上，區域性證實刮碑與囚所不是兩起孤案。",
+              "text": "接收編號與刻名崖殘名對上，局部證實刮碑與囚所不是兩起孤案。",
               "planned_seconds": 127,
               "beat": "second_half"
             }
@@ -1175,7 +1180,7 @@ export default {
           "state": {
             "time": "第三日天未亮。",
             "knowledge": "局部回收 m04：無名者不是幻影，名牌與接收冊可相互核對；仍不知能量流向。",
-            "character_state": "囚徒為無臺詞背景，具名阿杳能行動；江照不用守淵，體力可持續。",
+            "character_state": "囚徒虛弱得說不出話，阿杳還能行動；江照沒有動用守淵，體力撐得住。",
             "evidence": "祁硯抄下接收編號；阿杳保有木牌；秦錄掌原冊。",
             "carry_forward": "出口仍封著，下一集必須付代價把囚徒帶出去。"
           }
@@ -1189,7 +1194,7 @@ export default {
           "hook": "我的命，比這塊玉便宜嗎？",
           "hook_type": "question",
           "conflict": "囚所側門沿用陣腳式鎖壓，硬破會傷人；陳渡能開檢修道卻缺導霧材料，祁硯必須放棄隨身護盾。",
-          "turn": "祁硯經檢修口交出護身佩與典押憑，陳渡用既有商戶信用換料；江照依模型先卸壓再拔銷，兩道門開啟，囚徒離開。護身佩受賞號被留在押單上。",
+          "turn": "阿杳從內院牆上只容她側身鑽過的舊通風口出去找來陳渡；祁硯經檢修口交出護身佩與典押文書，陳渡拿去當鋪典押、再用既有商戶信用換料；江照依模型先卸壓再拔銷，兩道門打開，阿杳領著囚徒依序離開。護身佩的受賞號被抄在典押單上。",
           "cliffhanger": {
             "type": "reveal",
             "text": "陳渡看見受賞號也印在囚所輸出盤上：護人法器與抽人的裝置，竟用同一批供料編碼。"
@@ -1210,6 +1215,7 @@ export default {
           "characters": [
             "jiang-zhao",
             "qi-yan",
+            "a-yao",
             "chen-du"
           ],
           "locations": [
@@ -1235,8 +1241,8 @@ export default {
           "state": {
             "time": "第三日清晨至上午，與前集封門連續。",
             "knowledge": "局部回收 m07：普通工法可處理小型鎖壓，不能因此聲稱能守全城；m05 出現同源編碼。",
-            "character_state": "祁硯失去護盾，不再能站著承受攻擊；囚徒暫安置於坊後，背景簡短交代。",
-            "evidence": "陳渡有押單與供料碼拓印；拔銷器、木槌、量尺裝入江照工具包，後段沿用。",
+            "character_state": "祁硯失去護盾，不再能站著承受攻擊；阿杳與前集一同被困，先鑽出舊通風口去找陳渡、再隨他回到檢修口；那個口太窄，兩個成年男人過不去，體力耗盡的囚徒也爬不上去，只能等門開。門開後阿杳帶囚徒到坊後暫時安置。",
+            "evidence": "陳渡有典押單與供料碼拓印；他把備用的一套拔銷器、木槌、量尺裝入江照工具包，後段沿用，自己腰間那套量尺與木槌不離身。",
             "carry_forward": "護身佩不能後來無解釋回到身上；須先照顧逃出者、整理編碼。"
           }
         },
@@ -1248,13 +1254,15 @@ export default {
           "logline": "兩人整理囚所編碼時共餐，祁硯自然替江照挑掉苦葉，熟悉的小動作再次指向缺失的少年往事。",
           "hook": "我沒說過，我不吃這個。",
           "hook_type": "line",
-          "conflict": "江照想追問祁硯是否還記得兩人少年相識、挑掉苦葉的往事；江照自己記得教過他劍，疑問是祁硯還記得多少。祁硯無法證明完整細節，擔心善意會被當成丟失人生的補償。",
-          "turn": "祁硯只承認自己習慣如此、不編造記憶，江照接受這個不完整答案；兩人一邊進食一邊把押單編碼拆成日期與陣腳，找出可查方向。",
+          "conflict": "江照想追問祁硯是否還記得兩人少年相識、挑掉苦葉的往事；江照自己記得教過他劍，疑問是祁硯還記得多少。祁硯想不起那段往事，只有說不出來歷的習慣，擔心善意會被當成丟失人生的補償。",
+          "turn": "祁硯只承認自己習慣如此、不編造記憶，江照接受這個不完整答案；兩人一邊進食一邊把典押單上的編碼拆成日期與陣腳，找出可查方向。",
           "cliffhanger": {
             "type": "emotion",
             "text": "江照把挑出的苦葉留在空碟，沒有追問；祁硯把熱湯挪近他慣用的右手。"
           },
-          "setups": [],
+          "setups": [
+            "m10"
+          ],
           "payoffs": [
             "m02"
           ],
@@ -1283,16 +1291,16 @@ export default {
             },
             {
               "type": "reversal",
-              "text": "二人把供料碼拆出固定的陣腳尾號，安靜場景仍推進調查。",
+              "text": "二人把供料碼拆出固定的陣腳尾號。",
               "planned_seconds": 124,
               "beat": "second_half"
             }
           ],
           "state": {
             "time": "第三日午間。",
-            "knowledge": "局部回收 m02 的熟悉行為，未解釋保護；m10 提出不能拿新動作冒充舊記憶。",
-            "character_state": "兩人睡眠不足，先吃飯休息半刻，不靠無限體力連打。",
-            "evidence": "押單已加上二人的編碼對照筆記；苦葉不是法器或新謎團。",
+            "knowledge": "局部回收 m02 的熟悉行為，未解釋保護；m10 新線索：江照接受習慣不等於記憶，不拿新動作冒充舊記憶。",
+            "character_state": "兩人睡眠不足，先吃飯休息半刻。",
+            "evidence": "典押單已加上二人的編碼對照筆記；苦葉只是湯裡一味常見的野菜。",
             "carry_forward": "以陣腳尾號對舊拓本，進一步追無名者與家戶來源。"
           }
         },
@@ -1302,17 +1310,18 @@ export default {
           "number": 14,
           "title": "拓本比名冊老",
           "logline": "阿杳帶木牌到檔房，與舊拓本和家戶副簿對出母親姓名，讓官方的妖物分類失去根據。",
-          "hook": "我孃的名字，在這裡。",
+          "hook": "我娘的名字，在這裡。",
           "hook_type": "line",
           "conflict": "秦錄派人貼出新分類書，聲稱木牌能偽造；陳渡需要能交叉核對的舊資料，不能只靠同情護她。",
-          "turn": "阿杳用舊疤、家戶記號和木牌刻痕對上副簿，江照指出名冊修訂年份晚於她出生；陳渡將副本分存，避免只剩一張紙。",
+          "turn": "阿杳用舊疤、家戶記號和木牌刻痕對上副簿，副簿上母親的名字也對上刻名崖舊拓本裡被刮掉的一格；江照指出名冊修訂年份晚於她出生；陳渡將副本分存，避免只剩一張紙。",
           "cliffhanger": {
             "type": "choice",
             "text": "阿杳選擇讓自己的名字先公開，換取更多失蹤家戶願意帶紀錄來，但這會暴露她的位置。"
           },
           "setups": [],
           "payoffs": [
-            "m06"
+            "m06",
+            "m04"
           ],
           "tension": [
             4,
@@ -1347,7 +1356,7 @@ export default {
           ],
           "state": {
             "time": "第三日下午。",
-            "knowledge": "局部回收 m06：阿杳是人已證明，分類用途與誰下令仍待接收冊；母親死亡只由紀錄確認，不復活。",
+            "knowledge": "局部回收 m06：阿杳是人已證明，分類用途與誰下令仍待接收冊；局部回收 m04：刻名崖上被刮掉的一格是阿杳的母親。母親的名字在這一集找回，全劇只揭曉這一次；她被送進囚所的日子與在所內的死亡日期要等第 24 集對上接收編號，只由紀錄確認，不復活。",
             "character_state": "阿杳從受保護者變成願意具名證明的人，右腕仍輕纏布。",
             "evidence": "副簿留檔房，抄本分放坊與阿杳布袋；江照不獨佔。",
             "carry_forward": "公開副本後元衡必須作出回應，不能讓反派一直被動。"
@@ -1414,18 +1423,19 @@ export default {
           "timeline": "present",
           "closed_ending": false,
           "number": 16,
-          "title": "他說的災難是真的",
-          "logline": "元衡帶二人檢視滲霧陣腳，江照證實護城風險確實存在，祁硯卻從流量盤看到總輸出與守城用量不符。",
+          "title": "南渡陣腳在滲霧",
+          "logline": "元衡帶二人查看滲霧陣腳，江照證實護城風險確實存在，祁硯卻從流量盤看到總輸出與守城用量不符。",
           "hook": "別踩過去，那霧是真的。",
           "hook_type": "danger",
-          "conflict": "江照不能因恨元衡就否認危險；元衡要求先交回囚徒補足供能，把一個真問題用作迫害的理由。",
-          "turn": "陳渡以普通測片找出區域性裂縫，二人先按他指示封住滲口，證明可以止急；祁硯讀到分流盤有兩條流向，僅一條通陣。",
+          "conflict": "江照不能因恨元衡就否認危險；元衡要求先交回囚徒補足供能，把一個真問題用作迫害的理由。他沒有當場拿下通緝中的江照：預寫追捕令的對讀副本分放在平陣坊與祁硯身上，當眾拿人只會逼出公開對質，他要江照親眼看見淵霧，好把交回囚徒說成唯一的救法。",
+          "turn": "陳渡以普通測片找出局部裂縫，二人先按他指示封住滲口，證明可以止急；祁硯讀到分流盤有兩條流向，僅一條通陣。",
           "cliffhanger": {
             "type": "reveal",
-            "text": "元衡擋住另一條管路標籤，江照看到上面與受賞瓶一樣的批號；救城與供養修士被接在同一座塔上。"
+            "text": "元衡擋住另一條管路標籤，江照仍看到上面與受賞瓶一樣的批號；這條管路不通往任何陣腳，元衡不肯說它通去哪裡。"
           },
           "setups": [
-            "m08"
+            "m08",
+            "m05"
           ],
           "payoffs": [
             "m08"
@@ -1457,16 +1467,16 @@ export default {
             },
             {
               "type": "first_clear",
-              "text": "陳渡普通測片與封口工法控制區域性滲霧，二人看見分流異常。",
+              "text": "陳渡普通測片與封口工法控制局部滲霧，二人看見分流異常。",
               "planned_seconds": 128,
               "beat": "second_half"
             }
           ],
           "state": {
             "time": "第三日入夜。",
-            "knowledge": "局部回收 m08：淵霧真實，但尚無全城替代方案；m05 取得第二條管路線索。",
+            "knowledge": "局部回收 m08：淵霧真實，但尚無全城替代方案；m05 新線索：第二條管路的批號與受賞瓶相同，去向未明。",
             "character_state": "陳渡左膝不適由祁硯扶下臺階；江照未施守淵。",
-            "evidence": "祁硯記下分流盤讀數；元衡仍掌中心總帳，不能已知七成。",
+            "evidence": "祁硯記下分流盤讀數；元衡仍掌中心總帳，七成的比例眾人還不知道。",
             "carry_forward": "回坊追問江照契印與舊陣關聯；臨時封口只有一夜效力。"
           }
         },
@@ -1478,7 +1488,7 @@ export default {
           "logline": "江照承認少年替祁硯接下守淵契，祁硯拒絕把一生變成報恩契約，要求把救城方案做成人人能選擇的事。",
           "hook": "那張契，我替你簽了。",
           "hook_type": "line",
-          "conflict": "祁硯無法回憶當年的全部經過，怕江照用犧牲要求他站隊；江照也怕承認後只得到愧疚。",
+          "conflict": "祁硯想不起當年的任何經過，怕江照用犧牲要求他站隊；江照也怕承認後只得到愧疚。",
           "turn": "江照以左掌印對照舊契存根，只交代自己的行為，不要求祁硯承諾；祁硯把追捕令和存根分開，說一件恩情不能代替全案證據。",
           "cliffhanger": {
             "type": "emotion",
@@ -1522,7 +1532,7 @@ export default {
           "state": {
             "time": "第四日清晨。",
             "knowledge": "局部回收 m02 的守淵代簽，未證互保契；陳渡知道藏有相關底簿，需取得分藏的另一頁才能核對。",
-            "character_state": "江照左手包紮是防磨，不表示契印失效；祁硯不突然想起童年。",
+            "character_state": "江照左手包紮是防磨，契印仍在；祁硯沒有想起少年往事。",
             "evidence": "守淵契存根在祁硯紙包，互保底簿尚未拼全。",
             "carry_forward": "臨時封口將到期，下一集須處理陣腳現場，不讓情感戲延誤已知倒數。"
           }
@@ -1572,7 +1582,7 @@ export default {
             },
             {
               "type": "rescue",
-              "text": "守淵與普通繩索分工救回工人，不以失憶代價換空洞施法畫面。",
+              "text": "江照以守淵壓住逼近的裂口、換來片刻，祁硯趁這段時間用繩索把工人拉回。",
               "planned_seconds": 121,
               "beat": "second_half"
             }
@@ -1580,7 +1590,7 @@ export default {
           "state": {
             "time": "第四日上午，畫面中第二次守淵啟動。",
             "knowledge": "局部回收 m01：紙條在，人物親歷不在；祁硯完整記得救援過程。陳渡失去近來與江照的個人相處感，但保有修陣技能。",
-            "character_state": "江照跪地咳喘、左掌灼痛，修為再減；祁硯與阿杳扶他但不把陌生感演成敵意。",
+            "character_state": "江照跪地咳喘、左掌灼痛，修為再減；阿杳對他陌生卻沒有敵意，和祁硯一起扶他。",
             "evidence": "實驗紙條由阿杳保管，時間與筆跡由陳渡旁證。",
             "carry_forward": "下一集確切區分親歷、技能與紙面知識，不加第三次抹除混淆實驗。"
           }
@@ -1589,12 +1599,12 @@ export default {
           "timeline": "present",
           "closed_ending": false,
           "number": 19,
-          "title": "知道，不等於想起",
+          "title": "自己寫的那張紙條",
           "logline": "眾人用紙條、工具操作與救援記錄核對失憶邊界，確認可以重建可信歷史，卻不能靠朗讀找回共同生活的感受。",
           "hook": "字是我寫的，人卻不熟。",
           "hook_type": "reversal",
           "conflict": "江照想逐句重述幾天經過，阿杳因讀不出熟悉感而自責；陳渡必須排除連技能也會丟失的誤解。",
-          "turn": "陳渡照舊完成卸壓模型，阿杳能說出救援事實卻分不出江照的習慣；祁硯握住江照準備繼續解釋的紙，讓他停止把對方逼成證人。",
+          "turn": "陳渡照舊完成卸壓模型，阿杳能說出救援事實卻分不出江照的習慣；祁硯握住江照準備繼續解釋的紙，讓他停止把對方逼成證人。阿杳改在一張新紙上寫下今天的日期，說往後每天記一張和江照一起做的事。",
           "cliffhanger": {
             "type": "danger",
             "text": "紙條背面原先畫下的雙管路編號，對出當晚將進行大批記憶轉供；二人須趕在分流結束前取總帳。"
@@ -1630,7 +1640,7 @@ export default {
             },
             {
               "type": "reversal",
-              "text": "江照不再要求阿杳認回自己，反而從儲存的管路記號找到下一步。",
+              "text": "江照不再要求阿杳認回自己，反而從保存的管路記號找到下一步。",
               "planned_seconds": 133,
               "beat": "second_half"
             }
@@ -1639,7 +1649,7 @@ export default {
             "time": "第四日中午。",
             "knowledge": "完整回收 m01 的範圍：人物親歷被抽走，技能與客觀紀錄保留；祁硯例外原因仍待 m02。",
             "character_state": "江照休息後能行走但不適宜硬戰；阿杳解除自責，開始重新認識他。",
-            "evidence": "實驗紙條連同時間封存於坊；江照帶雙管路副圖。",
+            "evidence": "實驗紙條連同時間封存於坊；阿杳從本集起每天寫的紙條收在她的布袋；江照帶雙管路副圖。",
             "carry_forward": "潛取總帳須利用第 12 集檢修口技能，不突然精通仙門密術。"
           }
         },
@@ -1647,19 +1657,22 @@ export default {
           "timeline": "present",
           "closed_ending": false,
           "number": 20,
-          "title": "他們的修為，是別人的人生",
+          "title": "分流總帳上的兩條管路",
           "logline": "江照和祁硯沿檢修道找到分流總帳，將囚所人數、受賞批次與兩條管路對讀，揭開仙門修為的來源。",
           "hook": "這裡燒的，是人的記憶。",
           "hook_type": "reversal",
           "conflict": "元衡正在轉供，秦錄準備搬走接收冊；二人不能一邊阻斷未替代的結界一邊追帳。",
-          "turn": "江照依普通檢修程式鎖住支流查帳口、不動護城主流；祁硯抄出七三分流與受賞名單，沈闕出現卻先確認號碼相同而未動手。",
+          "turn": "江照依普通檢修程序鎖住支流查帳口、不動護城主流；祁硯抄出七三分流與受賞名單，總帳上囚所那一欄記的正是妖物分類號；沈闕出現卻先確認號碼相同而未動手。",
           "cliffhanger": {
             "type": "reveal",
             "text": "祁硯在受賞簿翻到自己的名字：他一直用來行正義的力量，也來自被抹去的人。"
           },
-          "setups": [],
+          "setups": [
+            "m06"
+          ],
           "payoffs": [
-            "m05"
+            "m05",
+            "m08"
           ],
           "tension": [
             5,
@@ -1695,7 +1708,7 @@ export default {
           ],
           "state": {
             "time": "第四日夜。",
-            "knowledge": "局部回收 m05：機制與比例確立，祁硯個人帳尚須核對；m08 主流不能貿然斷。",
+            "knowledge": "局部回收 m05：機制與比例確立，祁硯個人帳尚須核對；局部回收 m08：查帳支流能安全鎖住，護城主流仍連著陣腳，不能貿然斷；m06 新線索：總帳把囚所人數記在妖物分類號下，分類與抽取接在同一本帳上，誰下令仍待秦錄的接收冊。",
             "character_state": "祁硯情緒受擊但仍掩護撤離；沈闕沒有因一眼看帳就立刻加入。",
             "evidence": "總帳抄本與受賞頁由祁硯帶出；原冊被秦錄帶走但已知其藏匿方向。",
             "carry_forward": "祁硯必須核對並承認自己的受益，不能用『當時不知』直接跳過。"
@@ -1708,8 +1721,8 @@ export default {
       "title": "如果救他，自己擁有的一切也要放下。",
       "theme": "反對剝奪，必須提出能讓人活下來的替代。",
       "start_state": "真相已露，祁硯的受賞頁使他無法站在制度之外自稱清白。",
-      "end_state": "普通替代陣透過小規模實驗，元衡拿完整的舊人生換祁硯，逼江照選擇。",
-      "turn": "第 30 集從蒐集證據轉成公開分送可行工法、決定不可撤銷的取捨。",
+      "end_state": "普通替代陣通過小規模實驗，元衡拿完整的舊人生換祁硯，逼江照選擇。",
+      "turn": "第 30 集從蒐集證據轉成不可撤銷的取捨：江照不拿祁硯換回舊人生，決定把可行工法公開，第 31 集起分送。",
       "stakes": "個人修為、被囚者身分與全城居民的撤離時間。",
       "question": "拒絕一個殘酷的制度時，能否承擔更笨重卻不剝削人的方法？",
       "episodes": [
@@ -1717,7 +1730,7 @@ export default {
           "timeline": "present",
           "closed_ending": false,
           "number": 21,
-          "title": "我的名字也在帳上",
+          "title": "三筆賞賜的日期",
           "logline": "祁硯核對受賞日期與自己晉階時間，公開承認受益，承諾將可轉存修為用於無剝奪的交接。",
           "hook": "這份好處，我也拿了。",
           "hook_type": "line",
@@ -1766,9 +1779,9 @@ export default {
           "state": {
             "time": "第五日早晨。",
             "knowledge": "完整回收 m05：來源、比例、元衡收益與祁硯受益均可對帳；沈闕仍需時間接受。",
-            "character_state": "祁硯尚未轉存，不能提前演成廢人；江照不替受害者說原諒。",
+            "character_state": "祁硯尚未轉存，修為還在；江照不替受害者說原諒。",
             "evidence": "受賞頁不刪名，與私人練功記錄副本一起放入公開包。",
-            "carry_forward": "轉存需實際陣腳與材料，不會立刻解決全城問題；阿杳仍面臨召回令。"
+            "carry_forward": "轉存需實際陣腳與材料，不會立刻解決全城問題；阿杳仍面臨秦錄的新拘令。"
           }
         },
         {
@@ -1810,7 +1823,7 @@ export default {
           "satisfaction": [
             {
               "type": "villain_humbled",
-              "text": "江照用秦錄自己的具名檔案擋住再押，無須以暴力毀掉工地。",
+              "text": "江照用秦錄自己具名的複核單擋住再押，無須以暴力毀掉工地。",
               "planned_seconds": 24,
               "beat": "opening"
             },
@@ -1823,8 +1836,8 @@ export default {
           ],
           "state": {
             "time": "第五日上午。",
-            "knowledge": "局部回收 m07：材料缺口有典押所得填補，仍只有試驗規模；阿杳明白下頁不會神奇還她記憶。",
-            "character_state": "阿杳腕傷結痂、可搬輕料，陳渡不讓她扛重石；秦錄未被打死或突然洗白。",
+            "knowledge": "局部回收 m07：材料缺口有典押所得填補，仍只有試驗規模；阿杳知道自己取回的是祁硯與江照立契底簿的下頁，只能拿來對證，不會把她第 18 集被抹掉、關於江照的記憶還給她。",
+            "character_state": "阿杳腕傷結痂、可搬輕料，陳渡不讓她扛重石；秦錄沒受傷，回院求保時仍是對手。",
             "evidence": "互保底簿下頁與材料收據交江照；秦錄仍持接收冊。",
             "carry_forward": "下一集將兩頁、頭傷診記與實際繩結核對；本集不先宣告完整契約答案。"
           }
@@ -1833,19 +1846,20 @@ export default {
           "timeline": "present",
           "closed_ending": false,
           "number": 23,
-          "title": "不在名冊裡的互保契",
+          "title": "底簿下頁與頭傷診記",
           "logline": "陳渡拼合立契底簿與頭傷診記，證明祁硯能記得江照來自右腕未登錄互保契，也說清為何他本人不知道。",
-          "hook": "你忘的，是受傷那一天。",
+          "hook": "你忘的，是受傷前那段日子。",
           "hook_type": "line",
-          "conflict": "祁硯質疑契約若保記憶，為何自己不記得立契；若解不開矛盾，紅繩只會成為方便的迷信。",
-          "turn": "底簿記立契在落石傷之前，診記記錄祁硯醒後當日缺憶；紅繩結節與未登錄條款吻合。陳渡用圖解說明它只擋未來抽取，不能治頭傷或復原此前失去的片段。",
+          "conflict": "祁硯質疑契約若保記憶，為何自己不記得立契、也不記得少年時認識江照；若解不開矛盾，紅繩只會成為方便的迷信。他也問陳渡為何拖到今天：陳渡對立契只剩自己的筆跡、沒有親歷記憶，拿到下頁前只有半本帳，而幾天前祁硯還拿著元衡的令追人，半本帳說出口，只會讓人拿剪刀去試那條繩。",
+          "turn": "底簿記立契在落石傷之前，診記記錄祁硯醒後缺的不只當日，而是立契前後整段與江照相處的少年時期；紅繩結節與未登錄條款吻合。陳渡用圖解說明它只擋天籙往後的抽取，不能治頭傷或復原頭傷帶走的往事。",
           "cliffhanger": {
             "type": "reveal",
             "text": "祁硯把右袖拉回護住紅繩：它能保住下一次記憶，卻只要斷開一次，就再也沒有這個例外。"
           },
           "setups": [],
           "payoffs": [
-            "m02"
+            "m02",
+            "m09"
           ],
           "tension": [
             4,
@@ -1880,10 +1894,10 @@ export default {
           ],
           "state": {
             "time": "第五日中午。",
-            "knowledge": "完整回收 m02；區域性建立 m09 的前瞻保護規則，祁硯沒有恢復童年。",
+            "knowledge": "完整回收 m02：頭傷缺口是整段與江照相處的少年時期，不只立契當日；局部回收 m09：陳渡的圖解說明紅繩只擋往後的抽取，斷了之後已記得的會不會留下，仍只是推論，第 35 集才被證實。祁硯沒有恢復那段少年記憶。",
             "character_state": "紅繩完整，祁硯選擇繼續戴著，江照不把它當控制對方的權利。",
             "evidence": "兩頁底簿與診記分存副本；原繩不拆、不為測試剪斷。",
-            "carry_forward": "具體規則已定，後段不得追加『繩斷仍永久免疫』；開始把同等保護轉為儲存普通人的名字。"
+            "carry_forward": "具體規則已定，後段不得追加『繩斷仍永久免疫』；開始把同等保護轉為保存普通人的名字。"
           }
         },
         {
@@ -1895,14 +1909,15 @@ export default {
           "hook": "這一格，不該只寫編號。",
           "hook_type": "line",
           "conflict": "名單中有生還者也有死者，江照想為所有空格補話，陳渡要求未知就留未知，不能因善意編造。",
-          "turn": "阿杳用木牌對出母親姓名與死亡日期，接受紀錄到此為止；眾人把已核對的名字與待證內容分清，將副本交到不同人手裡。",
+          "turn": "阿杳拿已經找回的母親名字去對接收編號，查到母親被送進囚所的日子與她在所內的死亡日期，接受紀錄到此為止；眾人把已核對的名字與待證內容分清，將副本交到不同人手裡。",
           "cliffhanger": {
             "type": "emotion",
             "text": "陳渡讀到自己曾收留江照的底簿，坦白不記得那碗飯的感覺，仍替眼前的江照添了一碗。"
           },
           "setups": [],
           "payoffs": [
-            "m04"
+            "m04",
+            "m10"
           ],
           "tension": [
             4,
@@ -1938,8 +1953,8 @@ export default {
           ],
           "state": {
             "time": "第五日下午。",
-            "knowledge": "完整回收 m04：無名者來源與刮碑行為成立；m10 強化紀錄不能恢復私人感受。",
-            "character_state": "阿杳哀悼母親，無復活暗示；江照接受陳渡新一次的照顧。",
+            "knowledge": "完整回收 m04：無名者來源與刮碑行為成立；局部回收 m10：陳渡從底簿知道自己收留過江照，仍找不回那碗飯的感覺，紀錄能恢復歷史、不能恢復私人感受。",
+            "character_state": "阿杳哀悼母親；江照接受陳渡新一次的照顧。",
             "evidence": "三套名單副本分放坊、阿杳布袋與廣場見證箱；敏感路線不寫在公開件。",
             "carry_forward": "公開名單觸發元衡禁令，群眾不能毫無阻力立即全信。"
           }
@@ -1950,7 +1965,7 @@ export default {
           "number": 25,
           "title": "禁止你記得",
           "logline": "仙門下令沒收無名者副本，秦錄被迫面對自己的接收簽名，承認妖物分類用來隱藏人被送去抽取的事實。",
-          "hook": "他們連名字，都不準留。",
+          "hook": "他們連名字，都不准留。",
           "hook_type": "danger",
           "conflict": "秦錄要收走廣場見證箱，沈闕仍受命維持秩序；阿杳若硬搶會被指暴力，江照必須讓對方在見證下說明。",
           "turn": "阿杳拿秦錄具名複核單，江照讀出接收日期與其先前話語的矛盾；沈闕要求封存而非焚毀。秦錄承認看過受害者戶籍，不能再說不知他們是人。",
@@ -1996,7 +2011,7 @@ export default {
           ],
           "state": {
             "time": "第五日傍晚。",
-            "knowledge": "完整回收 m06；沈闕只保住證物程式，尚未正式背離仙門。",
+            "knowledge": "完整回收 m06；沈闕只保住證物程序，尚未正式背離仙門。",
             "character_state": "秦錄擔心被元衡棄責；阿杳未因對方合作而原諒。",
             "evidence": "見證箱保持原封，秦錄具名回答由沈闕記下；其他兩份副本未被搜到。",
             "carry_forward": "新命令撤許可會影響材料來源，祁硯下一集必須作真選擇。"
@@ -2016,7 +2031,9 @@ export default {
             "type": "choice",
             "text": "祁硯走出院門，選擇按普通人的價錢去籌料；江照接過他沉重的工具袋，兩人並肩回坊。"
           },
-          "setups": [],
+          "setups": [
+            "m09"
+          ],
           "payoffs": [],
           "tension": [
             4,
@@ -2053,7 +2070,7 @@ export default {
           ],
           "state": {
             "time": "第五日夜。",
-            "knowledge": "元衡察覺紅繩是記憶例外線索，尚未知道完整編法；兩主角清楚不能拿它試驗。",
+            "knowledge": "m09 新線索：元衡察覺紅繩是記憶例外的關鍵，試探解繩能否讓祁硯忘記，尚未知道完整編法；兩主角清楚不能拿它試驗。",
             "character_state": "祁硯失去院內補給、許可和繼承位，仍有基本修為與普通劍術。",
             "evidence": "令牌留院；公開證詞副本由沈闕見證、祁硯持有。",
             "carry_forward": "材料須靠已付典押款與店家實際墊付，不突然憑正義取得無限資源。"
@@ -2071,11 +2088,12 @@ export default {
           "turn": "阿杳用量尺找到一枚歪銅銷，祁硯按卸壓流程讓她校正；小陣穩住，但測出耗材只能撐半刻，換班與補料必須算入。",
           "cliffhanger": {
             "type": "reveal",
-            "text": "陳渡開啟舊圖：天籙也有同式卸壓槽，只有十二陣腳先改接，才能從維修口拆掉它。"
+            "text": "陳渡攤開舊圖：天籙也有同式卸壓槽，只有十二陣腳先改接，才能從維修口拆掉它。"
           },
           "setups": [],
           "payoffs": [
-            "m07"
+            "m07",
+            "m08"
           ],
           "tension": [
             4,
@@ -2111,8 +2129,8 @@ export default {
           ],
           "state": {
             "time": "第六日清晨。",
-            "knowledge": "局部回收 m07：試驗成功但容量與時長有限；m08 的安全拆塔路徑具體出現，未完成。",
-            "character_state": "阿杳能按表操作，不突然成天才修士；兩主角沒有耗修為偷補使實驗失真。",
+            "knowledge": "局部回收 m07：試驗成功但容量與時長有限；局部回收 m08：安全拆塔的路徑具體出現（先改接十二陣腳，再從維修口卸壓），尚未完成。",
+            "character_state": "阿杳靠量尺與測表操作；兩主角沒有把修為灌進小陣，測到的是普通工法本身的容量。",
             "evidence": "實驗表、耗材用量與天籙卸壓圖由陳渡保管，副本進工具袋。",
             "carry_forward": "必須面對真實衝擊，不把小試成功當全城可行證據。"
           }
@@ -2167,7 +2185,7 @@ export default {
           ],
           "state": {
             "time": "第六日上午，畫面中第三次且最後一次守淵啟動。",
-            "knowledge": "m01 已知規則再次承受例項，不作新謎；沈闕與阿杳失去對江照新建立的親歷記憶，技能、任務與紙條都在。",
+            "knowledge": "m01 已知規則多一次實例印證；沈闕與阿杳失去對江照新建立的親歷記憶，技能、任務與紙條都在。",
             "character_state": "江照修為再減、短暫無法站立；沈闕左小腿受傷，後段持拐或短距移動。",
             "evidence": "沈闕持血跡現場紙條，阿杳保留試驗表；祁硯記得全部救援。",
             "carry_forward": "江照此後不再啟動守淵；沈闕必須自行對讀證據後才倒戈，不能用感動代替邏輯。"
@@ -2182,14 +2200,15 @@ export default {
           "hook": "別加法力，照表換班。",
           "hook_type": "line",
           "conflict": "江照尚虛弱，小陣面臨第一次實際衝擊；祁硯若以高階修為直接遮住問題，就無法知道普通人能否接手。",
-          "turn": "阿杳按測表提前輪換耗材，陳渡用備用導霧石穩住偏壓；祁硯只負責搬運傷者。測得穩定後，陳渡算出十二處同步與一次緩衝供能缺口。",
+          "turn": "阿杳按測表提前輪換耗材，陳渡用備用導霧石穩住偏壓；偏壓那一下霧窗漏出一縷淵霧，陳渡指給眾人看：天籙若不先卸壓就硬拆，整座盆地都會這樣漏。祁硯只負責搬運傷者。測得穩定後，陳渡算出十二處同步與一次緩衝供能缺口。",
           "cliffhanger": {
             "type": "danger",
-            "text": "元衡關閉民用供材倉，並把江照舊記憶的封存匣送到坊外：要取回人生，就獨自來談。"
+            "text": "元衡關閉民用供材倉，並派人把江照舊記憶封存匣的索引籤送到南渡陣腳，匣子留在掌籙院偏殿：要取回人生，就獨自來談。"
           },
           "setups": [],
           "payoffs": [
-            "m07"
+            "m07",
+            "m08"
           ],
           "tension": [
             5,
@@ -2225,9 +2244,9 @@ export default {
           ],
           "state": {
             "time": "第六日午後。",
-            "knowledge": "局部回收 m07 的負荷與人力條件；m08 未卸壓破塔的風險由舊圖和實測互證。",
-            "character_state": "江照能坐著記錄，暫不參與負重；阿杳普通技能經測試而非口頭升級。",
-            "evidence": "十二處材料、班次、緩衝缺口明列；封存匣外只含可驗索引，未把舊記憶還給任何人。",
+            "knowledge": "局部回收 m07 的負荷與人力條件；局部回收 m08：偏壓時的外洩與舊圖互證，未卸壓就破塔確實會傷人，元衡這一半沒說謊。",
+            "character_state": "江照能坐著記錄，暫不參與負重；阿杳的輪換手法經過了一次實測。",
+            "evidence": "十二處材料、班次、緩衝缺口明列；送來的只有封存匣的可驗索引籤，匣子仍在元衡手中，未把舊記憶還給任何人。",
             "carry_forward": "江照會見元衡須保留自己的選擇，祁硯不得以保護名義代替答覆。"
           }
         },
@@ -2239,14 +2258,16 @@ export default {
           "logline": "元衡展示確實封存的江照舊記憶，提出交回祁硯與停止工法流傳的交易；江照看見最想取回的生活，仍不交出同伴。",
           "hook": "把他交出來，人生還給你。",
           "hook_type": "line",
-          "conflict": "元衡掌供材與舊記憶，聲稱拆塔必失去復原機會；江照必須面對這點真實代價，而非輕易拆穿幻術就逃過選擇。",
+          "conflict": "元衡掌供材與舊記憶，聲稱拆塔必失去復原機會；江照必須面對這點真實代價，而非輕易拆穿幻術就逃過選擇。江照獨自前來，元衡仍不當場拿人：工法的實驗表與卸壓圖已有副本在陳渡與阿杳手上，預寫追捕令的對讀副本也還在外面，抓走江照停不了工法、反而坐實迫害；他要的是江照親口答應交出祁硯、停下工法。",
           "turn": "江照用自己仍保有的細節驗證封存內容確是真的，卻指出祁硯不是可交換物；祁硯趕到只歸還江照工具袋，不替他答應。",
           "cliffhanger": {
             "type": "reversal",
             "text": "江照把封存匣留在原處，帶走普通工具袋：他從取回自己的過去，轉為讓這套剝奪無法再繼續。"
           },
           "setups": [],
-          "payoffs": [],
+          "payoffs": [
+            "m10"
+          ],
           "tension": [
             5,
             3,
@@ -2280,10 +2301,10 @@ export default {
           ],
           "state": {
             "time": "第六日傍晚。",
-            "knowledge": "兩人知道毀塔會永遠失去舊片段；元衡知道紅繩保護是最後軟肋，但仍未毀。",
-            "character_state": "江照恢復可短程走動，未恢復失去的修為；祁硯不立下替他犧牲的秘密計劃。",
+            "knowledge": "局部回收 m10：封存匣裡確是江照的舊片段，眼下只有元衡拿得出來；毀塔之後就沒有人能還，兩人都知道。元衡知道紅繩保護是最後軟肋，但仍未毀。",
+            "character_state": "江照恢復可短程走動，未恢復失去的修為；祁硯沒有瞞著他打算替他犧牲。",
             "evidence": "封存匣留元衡手中，工具袋有量尺、木槌、拔銷器與卸壓副圖。",
-            "carry_forward": "第 31 集立即分發工法並籌備撤離，不再重復是否接受交易的討論。"
+            "carry_forward": "第 31 集立即分發工法並籌備撤離，不再重複是否接受交易的討論。"
           }
         }
       ]
@@ -2302,7 +2323,7 @@ export default {
           "timeline": "present",
           "closed_ending": false,
           "number": 31,
-          "title": "這張圖，誰都能拿",
+          "title": "店家墊料的那一夜",
           "logline": "兩人把替代工法分送十二陣腳的舊維修班，陳渡用試驗資料說服店家墊料，正式啟動有成本的集體交接。",
           "hook": "別藏了，把圖發出去。",
           "hook_type": "line",
@@ -2348,9 +2369,9 @@ export default {
             }
           ],
           "state": {
-            "time": "第六日入夜至午夜，沿用原有陣腳，不新建十二座塔。",
-            "knowledge": "接手者是陳渡原有維修同行，懂基礎工法；只需依試驗修正新改接程式，非居民瞬間學成。",
-            "character_state": "江照能分發檔案與講解，不搬重料；祁硯未再動守淵或護身法器。",
+            "time": "第六日入夜至午夜；改接的是原有的十二陣腳。",
+            "knowledge": "接手者是陳渡原有的維修同行，懂基礎工法，只需照試驗修正新的改接程序；一般居民不碰陣腳。",
+            "character_state": "江照能分發圖樣與講解，不搬重料，第 28 集後未再啟動守淵；祁硯已無護身佩（第 12 集典押），只帶普通劍。",
             "evidence": "工法、風險表、備料帳與墊付簽收分送十二處；原件仍可追溯。",
             "carry_forward": "備料不能憑空滿足所有需求，仍須主角修為作一次緩衝與居民先撤離。"
           }
@@ -2367,7 +2388,7 @@ export default {
           "turn": "江照用清單承諾事後核對物件、不能保證原物無損；胡娘留下貨車先載人，阿杳按路線牌帶隊，不等任何人喊英雄。",
           "cliffhanger": {
             "type": "emotion",
-            "text": "胡娘認得江照名字卻不熟悉他的臉，看見他仍保存孩子當初的救援圖，便在背面寫下今天自己接手疏散的日期：『這次換我們，把路讓出來。』"
+            "text": "胡娘認得江照的名字，也認得昨夜一起籌料的這張臉，只是沒有舊日的熟悉感；看見他仍保存孩子當初的救援圖，便在背面寫下今天自己接手疏散的日期：『這次換我們，把路讓出來。』"
           },
           "setups": [],
           "payoffs": [
@@ -2408,9 +2429,9 @@ export default {
           ],
           "state": {
             "time": "第七日天未亮。",
-            "knowledge": "局部回收 m10：胡娘依證據而非恢復私人記憶，仍主動讓路幫江照；居民清楚工法有風險而自願撤離，重新關係的可能已可見，但完整情感閉合留在第 40 集。",
+            "knowledge": "局部回收 m10：胡娘依證據而非恢復私人記憶，仍主動讓路幫江照；居民清楚工法有風險而自願撤離。",
             "character_state": "阿杳右腕可正常使用，胡娘親子都在疏散範圍外；祁硯準備入塔。",
-            "evidence": "搬運清單由胡娘留存；江照自第 3 集起持有的救援圖由胡娘當面添寫日期後仍放回他紙包，沒有另一次轉移所有權；訊號表已在十二班手中。",
+            "evidence": "搬運清單由胡娘留存；江照自第 3 集起持有的救援圖由胡娘當面添寫日期後仍放回他紙包，仍歸江照保管；訊號表已在十二班手中。",
             "carry_forward": "疏散完成以班次回牌確認，不能只看一群人跑就宣佈全城安全。"
           }
         },
@@ -2423,7 +2444,7 @@ export default {
           "hook": "我忘了他，字沒忘。",
           "hook_type": "reversal",
           "conflict": "秦錄帶原冊想逃，沈闕仍握有封路權；若他只因感動放人，往後仍可被新的口號帶走。",
-          "turn": "沈闕把血跡、左腿傷情與自己寫下的救援順序對上，承認有足夠證據背離命令；秦錄見元衡準備把責任全推自己，交原冊求留命，卻被要求等候受查。",
+          "turn": "沈闕把血跡、左腿傷情與自己寫下的救援順序對上，承認有足夠證據背離命令，摘下胸前的銅編號徽章；秦錄見元衡準備把責任全推自己，交出原冊與一直藏著的元衡親押轉移單求留命，當面具名說出自己經手的接收，仍被要求等候受查。",
           "cliffhanger": {
             "type": "reveal",
             "text": "原冊最後一頁是元衡親押的斷料命令：壟斷失效不是天意，是有人決定讓替代方案失敗。"
@@ -2458,16 +2479,16 @@ export default {
             },
             {
               "type": "betrayer_punished",
-              "text": "秦錄交出原冊但不能用合作換免責，被安排留在有見證的看守處。",
+              "text": "秦錄交出原冊與元衡親押的轉移單，仍不能用合作換免責，被安排留在有見證的看守處。",
               "planned_seconds": 134,
               "beat": "second_half"
             }
           ],
           "state": {
             "time": "第七日清晨。",
-            "knowledge": "沈闕倒戈理由為可交叉核對的證據，不是偷偷恢復記憶；元衡主動斷料的責任補齊。",
-            "character_state": "沈闕左小腿仍傷，使用柺杖，接下固定位置的訊號工作；秦錄受看守不參與戰鬥。",
-            "evidence": "接收原冊與親押斷料令由祁硯交安全見證點封存，入塔只帶必要副本。",
+            "knowledge": "沈闕倒戈是因為證據能交叉核對，他並沒有想起被救的事；元衡主動斷料的責任補齊。",
+            "character_state": "沈闕左小腿仍傷，使用拐杖，摘下編號徽章後接下固定位置的訊號工作；秦錄的鑰匙串交給看守，本人受看守、不參與戰鬥。",
+            "evidence": "接收原冊、元衡親押的轉移單與斷料令由祁硯交安全見證點封存，入塔只帶必要副本；沈闕的徽章收進他的袖袋。",
             "carry_forward": "檢修路已通，但十二處仍須同步改接；不能以找到帳冊自動停止災難。"
           }
         },
@@ -2475,7 +2496,7 @@ export default {
           "timeline": "present",
           "closed_ending": false,
           "number": 34,
-          "title": "把借來的力量用完",
+          "title": "兩處遲到的回牌",
           "logline": "十二陣腳進入交接，兩主角將可轉存修為注入備用陣石，讓普通維修班取得輪換時間，也失去大半修為。",
           "hook": "這一次，不向誰借命。",
           "hook_type": "line",
@@ -2483,7 +2504,7 @@ export default {
           "turn": "祁硯先注入自己可安全轉存的部分，江照跟上；兩人明說這是一般修為注石，手掌契印不亮、沒有『借淵』。阿杳讀到十二處接手回牌，材料輪班開始持續運作。",
           "cliffhanger": {
             "type": "danger",
-            "text": "主流已改接、兩人修為枯竭；內塔窄梯前忽然橫出帶掌籙院紋記的劍，通往尚未卸壓儲層的最後入口被人堵住。持劍者留在鏡外，第 35 集才露面。"
+            "text": "主流已改接、兩人只剩低修為；內塔窄梯前忽然橫出帶掌籙院紋記的劍，通往尚未卸壓儲層的最後入口被人堵住，持劍的人隱在梯影裡。"
           },
           "setups": [],
           "payoffs": [
@@ -2525,7 +2546,7 @@ export default {
           "state": {
             "time": "第七日上午，交接開始到主流改接完成。",
             "knowledge": "完整回收 m07：材料、班次、緩衝與永久修為代價全部到位；m08 尚需卸壓、破儲與觀測才算證明。",
-            "character_state": "江照與祁硯均失去大半修為但可行走、使用普通工具和劍術；沒有同時重傷到不能行動。",
+            "character_state": "江照與祁硯均失去大半修為但可行走、使用普通工具和劍術；兩人都還能行動。",
             "evidence": "十二處回牌由阿杳在固定訊號點持有，陳渡記每次耗材更換；工具包在江照。",
             "carry_forward": "元衡身上外供被截，只剩有限自身修為；戰鬥必須遵守雙方狀態，不出突然大法術。"
           }
@@ -2534,15 +2555,15 @@ export default {
           "timeline": "present",
           "closed_ending": false,
           "number": 35,
-          "title": "紅繩斷了，名字還在",
+          "title": "窄梯前放下的手",
           "logline": "元衡斬斷祁硯右腕紅繩，逼江照再施守淵就失去最後見證者；江照在啟動前收手，選擇沿普通卸壓路徑前進。",
           "hook": "繩斷了，別再說那兩字。",
           "hook_type": "danger",
           "conflict": "元衡知兩人低修為，故意逼江照再次借淵；祁硯右腕受傷，紅繩斷片落地，最後的保護確實失效。",
-          "turn": "江照把按向契印的手放下，沒有喊出『借淵』、沒有光效或抹除；祁硯仍叫出他的名字，二人按已知前瞻規則理解現況，而非宣稱愛能免疫。",
+          "turn": "江照把按向契印的手放下，沒有喊出『借淵』、沒有光效或抹除；祁硯仍叫出他的名字，二人按已知的前瞻規則理解現況：繩斷了只擋不住下一次，已經記得的不會自己消失。",
           "cliffhanger": {
             "type": "reveal",
-            "text": "江照把斷繩收進空紙包，拿出普通拔銷器：只要不再啟動守淵，祁硯現在保有的記憶就不會因繩斷自行消失。"
+            "text": "江照把斷繩收進放著紅繩拓印與救援圖的紙包，拿出普通拔銷器：只要不再啟動守淵，祁硯現在保有的記憶就不會因繩斷自行消失。"
           },
           "setups": [],
           "payoffs": [
@@ -2581,7 +2602,7 @@ export default {
           ],
           "state": {
             "time": "第七日近午，接前集元衡阻擋。",
-            "knowledge": "完整回收 m09；所有人知道沒有下一次守淵就沒有新抹除，不能將這點誤寫成永久免疫。",
+            "knowledge": "完整回收 m09；所有人知道沒有下一次守淵就沒有新抹除；繩已斷，只要再有一次抽取，祁硯也會忘。",
             "character_state": "祁硯右腕淺切傷、紅繩斷，改以左手持劍配右手短暫穩柄；江照工具操作仍可。",
             "evidence": "紅繩斷片在江照紙包，從此不再成完整環；拔銷器在手。",
             "carry_forward": "第 36 集先替江照爭取維修時間，第 37 集只用普通方法，不得偷開守淵。"
@@ -2592,11 +2613,11 @@ export default {
           "closed_ending": false,
           "number": 36,
           "title": "不用護盾的那一劍",
-          "logline": "祁硯用早年學會的卸力劍路在狹窄檢修口擋住元衡，沈闕傳回最後卸壓讀數，江照得到拆銷的安全視窗。",
+          "logline": "祁硯用早年學會的卸力劍路在狹窄檢修口擋住元衡，沈闕傳回最後卸壓讀數，江照得到拆銷的安全空檔。",
           "hook": "我會的，不只那份賞。",
           "hook_type": "line",
           "conflict": "祁硯失護盾、失大半修為且右腕受傷，不能與元衡對轟；元衡想恢復供能支流重新控制局勢。",
-          "turn": "祁硯利用第 4 集已見的收劍卸力步，讓元衡劍勢卡在窄口，不正面硬擋；沈闕以柺杖穩住固定訊號臺，報十二處確認與儲層壓力下降。",
+          "turn": "祁硯用第一晚在驛路關口與江照切磋時那套收劍卸力步，讓元衡劍勢卡在窄口，不正面硬擋；沈闕以拐杖穩住固定訊號臺，報十二處確認與儲層壓力下降。",
           "cliffhanger": {
             "type": "choice",
             "text": "江照得到可安全拆銷的讀數，元衡仍說只要停手便能還記憶；江照把第一枚銅銷抽出，選擇已不回頭。"
@@ -2630,15 +2651,15 @@ export default {
             },
             {
               "type": "first_clear",
-              "text": "沈闕報回已改接、已降壓的雙重條件，普通拆解視窗正式成立。",
+              "text": "沈闕報回已改接、已降壓的雙重條件，普通拆解的時機正式成立。",
               "planned_seconds": 136,
               "beat": "second_half"
             }
           ],
           "state": {
-            "time": "第七日正午，與上集無時間跳躍。",
+            "time": "第七日正午，緊接上集。",
             "knowledge": "元衡不能再說替代只是圖紙，但還能用舊記憶誘惑；雙方皆知拆儲層不可逆。",
-            "character_state": "祁硯避實就虛，傷腕不可突然恢復；沈闕固定站位、不奔跑追戰；元衡外供已斷。",
+            "character_state": "祁硯避實就虛，右腕的傷仍在；沈闕腿傷，守在固定站位；元衡外供已斷。",
             "evidence": "第一枚銅銷在江照工具袋，另兩枚仍在原位；讀數由沈闕與外部回牌互證。",
             "carry_forward": "最後兩銷與儲層須於下一集完成，不在收尾偷算天籙已毀。"
           }
@@ -2647,11 +2668,11 @@ export default {
           "timeline": "present",
           "closed_ending": false,
           "number": 37,
-          "title": "把天籙拆成一件舊物",
+          "title": "最後兩枚銅銷",
           "logline": "江照依陳渡工法拔出剩餘銅銷、以木槌壓裂卸壓後的儲層，記憶抽取停止，舊片段永久散失。",
           "hook": "它不是天意，只是能拆的東西。",
           "hook_type": "reversal",
-          "conflict": "拆最後一銷會永遠失去歸還舊記憶的機會；元衡試圖重新接上被隔離的支流，祁硯必須在低修為下阻止。",
+          "conflict": "拆最後一銷會永遠失去歸還舊記憶的機會；元衡試圖重新接上被隔離的支流，祁硯必須在低修為下擋住他，江照得先把支流鎖死才能拆銷。",
           "turn": "江照再確認儲層壓力歸零，量尺定位置、拔銷器取銷、木槌壓裂；整段左掌契印不亮、不出『借淵』。祁硯用繩索束住力竭的元衡，保住他作為受查者。",
           "cliffhanger": {
             "type": "emotion",
@@ -2679,7 +2700,7 @@ export default {
           "satisfaction": [
             {
               "type": "reversal",
-              "text": "江照先鎖住元衡想接回的支流，保住前面所有人的交接成果。",
+              "text": "祁硯擋住元衡伸向支流的手，江照趁隙鎖住他想接回的支流，保住前面所有人的交接成果。",
               "planned_seconds": 24,
               "beat": "opening"
             },
@@ -2692,9 +2713,9 @@ export default {
           ],
           "state": {
             "time": "第七日正午後數分鐘。",
-            "knowledge": "舊片段已不可回收，不以餘光暗示藏有備份；祁硯記得源於沒有新抹除，天籙毀本身不是抹除脈衝。",
-            "character_state": "兩主角疲憊需互扶下梯；元衡被束、仍活著，無悲情死亡免責。",
-            "evidence": "三銷在工具袋、儲層碎片原地封存；帳冊早已在安全點，不隨塔一起毀。",
+            "knowledge": "舊片段已散，沒有備份可以回收；祁硯仍記得，是因為沒有新的抹除，天籙毀掉本身不會抹除任何人的記憶。",
+            "character_state": "兩主角疲憊需互扶下梯；元衡被束、仍活著，要留著受審。",
+            "evidence": "三銷在工具袋、儲層碎片原地封存；帳冊早已在安全點，不隨塔一起毀；偏殿的封存匣已空。",
             "carry_forward": "仍需第 38 集觀察十二陣腳與居民狀態，不能破塔畫面一亮就宣佈全城得救。"
           }
         },
@@ -2702,12 +2723,12 @@ export default {
           "timeline": "present",
           "closed_ending": false,
           "number": 38,
-          "title": "這一輪，普通人守住了",
+          "title": "十二處的第一輪測片",
           "logline": "阿杳與陳渡完成拆塔後第一輪耗材交班，十二陣腳持續守住淵霧，證明元衡的唯一解法只是壟斷。",
           "hook": "塔熄了，陣還在。",
           "hook_type": "reversal",
           "conflict": "主角修為緩衝正在用盡，一處回牌遲到；陳渡不能用願望宣稱成功，阿杳必須照故障表確認是通訊還是陣腳失守。",
-          "turn": "阿杳派既定備班核查，回報只是斷繩訊號卡住，現場耗材輪換正常；陳渡等完整一輪測片都穩定才準近區居民返回。兩主角的修為沒有因勝利補滿。",
+          "turn": "阿杳派既定備班核查，回報只是訊號拉繩卡住，現場耗材輪換正常；陳渡等完整一輪測片都穩定才准近區居民返回。兩主角的修為沒有因勝利補滿。",
           "cliffhanger": {
             "type": "reveal",
             "text": "第一輪總帳寫明：無新增記憶抽取、十二處穩定、耗材與人力仍要繼續付；能守城的從來不只元衡一人。"
@@ -2743,7 +2764,7 @@ export default {
             },
             {
               "type": "rescue",
-              "text": "一整輪測試透過後安全解除疏散，居民有根據地返回家園。",
+              "text": "一整輪測試通過後安全解除疏散，居民有根據地返回家園。",
               "planned_seconds": 136,
               "beat": "second_half"
             }
@@ -2751,7 +2772,7 @@ export default {
           "state": {
             "time": "第七日下午，觀測完整一輪後。",
             "knowledge": "完整回收 m08：淵霧是真的，破未卸壓塔會害人也是真的，但同步替代可行；元衡『只能剝奪』被推翻。",
-            "character_state": "江照與祁硯失去大半修為永久成立，後續仍能生活、工作、普通練劍；陳渡舊傷也不神奇消失。",
+            "character_state": "江照與祁硯失去大半修為永久成立，後續仍能生活、工作、普通練劍；陳渡的舊膝傷照舊。",
             "evidence": "十二處測片與班次簽收成為公開運作帳；塔碎片封存待受害者見證。",
             "carry_forward": "接下來處理司法責任、受害者與生計，不另開更強敵人。"
           }
@@ -2760,18 +2781,20 @@ export default {
           "timeline": "present",
           "closed_ending": false,
           "number": 39,
-          "title": "石上有名，心裡有空",
-          "logline": "公開對帳確認元衡與秦錄責任，居民按儲存的資料刻回被刮的姓名，江照接受人們知道歷史卻不再熟悉自己。",
+          "title": "公開對帳的那一天",
+          "logline": "公開對帳確認元衡與秦錄責任，居民按保存的資料刻回被刮的姓名，江照接受人們知道歷史卻不再熟悉自己。",
           "hook": "名字回來了，感覺沒有。",
           "hook_type": "reversal",
-          "conflict": "有人為表示感謝想假裝想起與江照的往事；阿杳也怕承認陌生會傷他。新記錄必須區分確認、未知與個人感受。",
-          "turn": "江照請阿杳只刻能證明的事，元衡被公開出示親押斷料令和分流帳，秦錄承認具體接收行為；合作不免責。阿杳以學徒名義接過下一班表，不只是被救者。",
+          "conflict": "有人為表示感謝想假裝想起與江照的往事；阿杳記得最後一次抹除之後一起守陣的江照，更早被救、一起查案的日子卻只剩自己寫的紙條，她怕承認那一段陌生會傷他。新記錄必須區分確認、未知與個人感受。",
+          "turn": "江照請阿杳只刻能證明的事；公開對帳出示元衡親押的轉移單、斷料令和分流帳，也當眾張貼秦錄在看守處具名畫押的接收供述，合作不免責。回到平陣坊，陳渡把下一輪班表交給阿杳，看她自己排完班次、以學徒名義簽名接班，他在旁只看不插手。",
           "cliffhanger": {
             "type": "emotion",
             "text": "祁硯在空白生活簿寫下明天要買的米與兩人的名字，江照把不再有用的斷繩放進抽屜，關上。"
           },
           "setups": [],
-          "payoffs": [],
+          "payoffs": [
+            "m10"
+          ],
           "tension": [
             4,
             2,
@@ -2783,7 +2806,7 @@ export default {
             "jiang-zhao",
             "qi-yan",
             "a-yao",
-            "qin-lu"
+            "chen-du"
           ],
           "locations": [
             "square",
@@ -2794,22 +2817,22 @@ export default {
           "satisfaction": [
             {
               "type": "public_vindication",
-              "text": "儲存的姓名與行為公開對帳，受害者不再只剩編號；元衡與秦錄責任分別成立。",
+              "text": "保存的姓名與行為公開對帳，受害者不再只剩編號；元衡與秦錄責任分別成立。",
               "planned_seconds": 25,
               "beat": "opening"
             },
             {
               "type": "reversal",
-              "text": "阿杳取得正式維修學徒工作，江照不要求她用舊感情償還救命恩情。",
+              "text": "陳渡把班表交到阿杳手上，她取得正式維修學徒工作；江照不要求她用舊感情償還救命恩情。",
               "planned_seconds": 131,
               "beat": "second_half"
             }
           ],
           "state": {
-            "time": "第七日後數週，以公開對帳與交班表的日期交代時間流逝。",
-            "knowledge": "m10 推進：查明歷史不等於恢復私人感受；沒有囚徒家屬被要求原諒。",
-            "character_state": "秦錄由看守帶來作證、之後回到羈押；元衡案以封存帳與審理告示呈現，不加額外臺詞角色。",
-            "evidence": "三套原始證據與新刻碑並存，生活簿只記未來；斷繩封存於抽屜，不修復。",
+            "time": "第七日後數週。",
+            "knowledge": "局部回收 m10：查明歷史不等於恢復私人感受；沒有囚徒家屬被要求原諒。",
+            "character_state": "秦錄留在看守處候審，他的具名供述當眾張貼；元衡的案子以封存帳與審理告示公告。陳渡左膝舊傷如常，教阿杳排班而不代勞。",
+            "evidence": "三套原始證據與新刻碑並存，轉移單與斷料令原件當眾出示後送回見證點封存；生活簿只記未來；斷繩封存於抽屜，不修復。",
             "carry_forward": "第 40 集從日常完成關係重建，不出異象、新追捕令或復活聲音。"
           }
         },
@@ -2817,15 +2840,15 @@ export default {
           "timeline": "present",
           "closed_ending": true,
           "number": 40,
-          "title": "從今天開始認識他",
+          "title": "橋市的兩碗麵",
           "logline": "三個月後，江照以普通人的身分回橋市買麵，祁硯替他介紹名字，陌生不再是被驅逐，而是新關係的起點。",
           "hook": "不記得也沒關係，今天認識。",
           "hook_type": "reversal",
-          "conflict": "胡娘只從資料知道江照救過孩子，怕自己的生疏傷人；江照也遲疑是否該坐到熟悉的位置。",
-          "turn": "祁硯說出『他叫江照。你們可以從今天開始認識他。』江照主動點兩碗麵，指明自己的那碗不加苦葉、祁硯那碗照常；胡娘把各自口味寫進新的點單簿，沒有聲稱想起舊事。第 13 集正是祁硯記得江照不吃苦葉而替他挑掉，這次江照自己說出口。",
+          "conflict": "胡娘記得疏散那兩天一起做事的江照，但他救過孩子、從前在攤上賒過帳的事，她只能從救援圖與賒帳單知道，怕自己的生疏傷人；江照也遲疑是否該坐到熟悉的位置。",
+          "turn": "祁硯說出『他叫江照。你們可以從今天開始認識他。』江照主動點兩碗麵，指明自己的那碗不加苦葉、祁硯那碗照常；胡娘把各自口味寫進新的點單簿，沒有聲稱想起舊事。",
           "cliffhanger": {
             "type": "reversal",
-            "text": "開場那個問『你是誰』的人搬來兩張凳子；江照坐下，祁硯跟著坐下。橋上普通維修班完成交班，畫面在新的一餐結束，全劇閉合。"
+            "text": "開場那個問『你是誰』的人搬來兩張凳子；江照坐下，祁硯跟著坐下。橋下陣腳，沈闕帶的普通維修班完成交班，他先問新班員叫什麼名字，才在交接牌上簽收；橋上，兩人在麵攤吃起這一餐。"
           },
           "setups": [],
           "payoffs": [
@@ -2841,7 +2864,8 @@ export default {
           "characters": [
             "jiang-zhao",
             "qi-yan",
-            "hu-niang"
+            "hu-niang",
+            "shen-que"
           ],
           "locations": [
             "bridge"
@@ -2857,15 +2881,15 @@ export default {
             },
             {
               "type": "reversal",
-              "text": "祁硯引見、胡娘記新點單、兩人坐下共餐，兌現開場孤立的情感翻轉。",
+              "text": "祁硯引見、胡娘記下新點單，當初問『你是誰』的人替江照搬來凳子，兩人坐下共餐。",
               "planned_seconds": 144,
               "beat": "ending"
             }
           ],
           "state": {
-            "time": "三個月後白日，生活已開始而非續集預告。",
-            "knowledge": "完整回收 m10：舊感受不回復，證據與新的相處足以繼續；所有十條長線已閉合。",
-            "character_state": "江照與祁硯保留低修為、舊傷痕與獨立生活能力；紅繩不在腕上；胡娘沒有全城復憶式表演。",
+            "time": "三個月後白日，日常生活已經開始。",
+            "knowledge": "完整回收 m10：舊感受不回復，證據與新的相處足以繼續。沈闕記得第 28 集之後與江照共事的事，更早的只靠自己寫的紙。",
+            "character_state": "江照與祁硯保留低修為、舊傷痕與獨立生活能力；紅繩不在腕上；胡娘沒有想起舊事。沈闕左小腿已癒、不再拄拐，胸前沒有編號徽章，在橋下陣腳值班。",
             "evidence": "新點單簿只記新口味與名字，公共維修帳持續更新，舊證據仍受保管。",
             "carry_forward": "完結；無新增懸案、神秘來客、主線反派復出或復活暗示。"
           }
@@ -2879,7 +2903,7 @@ export default {
       "所有人都把他當陌生人，追殺他的那個人卻喊出了真名",
       "他救過整座城，卻只剩追殺他的那個人記得"
     ],
-    "description": "他每動用守淵之力救人，熟悉的眼睛就把他當成陌生人。普通的援手不會奪走記憶，但有些危機，必須付出代價才能解開。這次，來抓他的祁硯卻叫出了他的名字。\n從斷橋、空白石碑到儲存名字的囚所，兩個立場相反的人逐步查清一座城用什麼維持安穩，也必須決定：若救回別人的人生，就拿不回自己的過去，他們還會怎麼選？\n原創仙俠雙男主漫劇，情感以行動與物件呈現，主線完整完結。此為約 120 分鐘／40 集的製作企劃；實際成片、時間章節與五語 CC 於媒體完成後核對。本作品為虛構故事，畫面、部分聲音擬採 AI 合成；上傳時依實際素材填寫合成內容揭露。",
+    "description": "他每動用守淵之力救人，熟悉的眼睛就把他當成陌生人。普通的援手不會奪走記憶，但有些危機，必須付出代價才能解開。這次，來抓他的祁硯卻叫出了他的名字。\n從斷橋、空白石碑到封存名字的囚所，兩個立場相反的人逐步查清一座城用什麼維持安穩，也必須決定：若救回別人的人生，就拿不回自己的過去，他們還會怎麼選？\n原創仙俠雙男主漫劇，情感以行動與物件呈現，主線完整完結。此為約 120 分鐘／40 集的製作企劃；實際成片、時間章節與五語 CC 於媒體完成後核對。本作品為虛構故事，畫面、部分聲音擬採 AI 合成；上傳時依實際素材填寫合成內容揭露。",
     "tags": [
       "原創漫劇",
       "仙俠",
@@ -2918,21 +2942,36 @@ export default {
         "promise": "第三集區分紀錄與記憶，結尾回收重新認識的機會。"
       }
     ],
-    "audience": "成年華語觀眾；偏好有清楚規則、懸疑追查與剋制雙男主羈絆的一口氣完結故事。",
-    "visual_identity": "江照靛青、祁硯霜白、元衡舊金；唯一高飽和暗紅是右腕繩。前段灰冷，中段帳冊與工具細節增加，尾聲回到日光下同一橋市。",
-    "music": "前段稀疏絃音與木響，真相揭露讓對白乾淨；修陣以穩定人力節奏推進，紅繩斷與破天籙時短暫撤樂；結尾不靠高音煽情，留凳腳與煮麵聲。",
+    "audience": "成年華語觀眾；偏好有清楚規則、懸疑追查與克制雙男主羈絆的一口氣完結故事。",
+    "visual_identity": "江照靛青、祁硯霜白、元衡舊金；全片唯一的暗紅，是祁硯右腕那條褪色細繩。前段灰冷，中段帳冊與工具細節增加，尾聲回到日光下同一橋市。",
+    "music": "前段稀疏弦音與木響，真相揭露讓對白乾淨；修陣以穩定人力節奏推進，紅繩斷與破天籙時短暫撤樂；結尾不靠高音煽情，留凳腳與煮麵聲。",
     "release_order": 5,
-    "pinned_comment": "如果證據能證明你救過一個人，卻不能讓他找回與你相處的感覺，你會希望他感謝過去，還是從今天重新認識你？"
+    "pinned_comment": "如果全城都忘了你救過他們，只有追捕你的人記得，你會先相信他，還是先相信紙上的證據？"
   },
   "continuity_notes": [
-    "所有秒數是細綱規劃，須由完整臺詞、TTS 與實際剪輯量測；沒有成片即沒有透過音畫驗收。",
+    "所有秒數是細綱規劃，須由完整臺詞、TTS 與實際剪輯量測；沒有成片即沒有通過音畫驗收。",
     "標題沿用核定方向，精確寫每用禁術救人與全城，限定照川；普通救援不抽記憶。第三題為只剩追殺者記得。追捕令確含拒捕可斬，祁硯仍堅持先查證；不得用天下無人記得、每一次普通施救都失憶等文案誤導。",
-    "主要少年事件以陳渡底簿、頭傷診記與片段客觀回望呈現；祁硯不因一場回憶戲恢復所有童年，江照保有自己的記憶但不全知其他人的契約技術。",
+    "主要少年事件以陳渡底簿、頭傷診記與片段客觀回望呈現；祁硯的頭傷缺口是立契前後整段與江照相處的少年時期，不只立契當日；傷後養父把他接回執令堂，兩人因此分開，三日前才再相遇（見日期表）。他不因一場回憶戲恢復這段往事，留下的只有收劍卸力、挑苦葉這類說不出來歷的習慣。江照保有自己的記憶但不全知其他人的契約技術。",
+    "第 13 集祁硯是出於說不出來歷的習慣替江照挑掉苦葉，只承認習慣、沒有想起往事；第 40 集江照自己開口說不加苦葉，是同一個物件的回收，任何回述都不得寫成『祁硯記得江照不吃苦葉』。",
+    "胡娘對江照的記憶照抹除規則計算：第 1 集抹除後她親眼看見江照擋木架，所以第 3 集認得這個人，缺的是舊日的熟悉感與施救那一刻；第 18、28 集兩次抹除移走這些新記憶；第 31、32 集重新共事後再無抹除，所以第 40 集她記得疏散時的江照，更早的事只能靠救援圖與賒帳單。事件常識（孩子被救、橋被保住）始終保留。阿杳同理：第 18、28 集兩次被抹除，第 28 集之後在第 29、32、34、38 集與江照共事的記憶都在，第 39 集她陌生的只是第 28 集以前的相處，那一段靠自己寫的紙條。",
+    "第 1 集只讓觀眾看到祁硯喊得出江照的名字、說得出救援經過；『名字是不是照令書背來的』這個疑問留給第 3 集用令書外的細節排除，第 1 集任何欄位都不得寫成江照已確認記憶例外。",
+    "第 34 集收尾只拍橫出的劍與掌籙院紋記，持劍者隱在梯影、不入鏡也不列入該集出場名單，第 35 集開場才露面是元衡。第 36 集祁硯擋元衡的收劍卸力步，必須與第 4 集切磋所見是同一套動作，不另創新招。",
     "第 1 集為同一次守淵施法的後效應；第 2–17 集不得額外即興施法。第 18 與 28 集各一次；第 28 集後再無守淵啟動。第 34 集一般修為注入陣石不含契印按壓與『借淵』動作，須由角色說清。",
-    "阿杳的右前臂舊疤與第 7 集鎖傷分開；江照左掌契印，祁硯右腕紅繩與右額舊疤固定，不映象。紅繩第 35 集毀後永不完整再現。",
-    "第 35 集祁硯仍記得只是因沒有下一次抽取，不能以心意超越規則解釋。第 37 集破塔使用已放在工具包中的量尺、木槌和拔銷器，無突然法寶。",
-    "凡人接管並非免費：材料以法器交換、店家墊付和兩主角放棄修為供首輪緩衝；尾宣告示耗材帳與輪班，不用一次勝利假裝全城永久無憂。",
+    "阿杳的右前臂舊疤與第 7 集鎖傷分開；江照左掌契印，祁硯右腕紅繩與右額舊疤固定，不鏡像。紅繩第 35 集毀後永不完整再現。阿杳的木牌收在布袋，不掛頸上。",
+    "道具狀態｜祁硯的紅繩：一條褪色的暗紅細繩，繫在右腕上，繩結以幾針固定在右袖口內襯，平時被右袖口蓋住（與 rules 第 4 條、各集『右腕紅繩』同一個位置）。只在祁硯右腕，不可畫在左腕，其他角色身上不可出現紅繩；少年回望的鏡頭也一樣，那是兩人一起替少年祁硯結上的一條，江照身上沒有繩。第 1–7 集藏在右袖口下，畫面看不到；第 8 集祁硯洗手時右袖滑開，第一次露出，留拓印後拉回袖內；第 9–22 集藏；第 23 集對照底簿時露出繩結，集末祁硯把右袖拉回蓋住；第 24–25 集藏；第 26 集在掌籙院偏殿被元衡瞥見，祁硯隨即護住袖口；第 27–34 集藏。第 35 集衝突段元衡一劍割斷，斷繩落地、右腕留一道淺傷，集末江照把斷繩收進紙包；第 36–38 集右腕無繩、留一道淺傷，斷繩在江照紙包；第 39 集斷繩收進抽屜、不修復；第 40 集右腕無繩，淺傷已收成淡痕。鏡頭提示詞要照這裡寫，固定外觀提示詞不含紅繩，也不含腕帶。",
+    "第 35 集祁硯仍記得只是因沒有下一次抽取，不能以心意超越規則解釋。第 37 集破塔使用已放在工具包中的量尺、木槌和拔銷器，無突然法寶；這是第 12 集陳渡交出的備用一套，陳渡腰間自己的量尺與木槌仍照外觀設定隨身可見。",
+    "凡人接管並非免費：材料以法器交換、店家墊付和兩主角放棄修為供首輪緩衝；尾聲明示耗材帳與輪班，不用一次勝利假裝全城永久無憂。",
     "元衡的災難警告有真實工程風險，但其七成截留、禁工法與迫害確實可查；決戰保護居民優先，仍保留對主要共犯的責任追究。",
+    "日期表（不寫年份；以第一日為準，『前三日』就是劇中說的『三日前』）｜約十五年前，兩人十三歲：掌籙院選祁硯作守淵祭契人，江照替他簽下守淵契；兩人在平陣坊由陳渡見證，一起替祁硯結上未登錄的互保契紅繩；數日後祁硯遇落石頭傷，陳渡救治並寫下診記；養父（執令堂老巡令）把他接回執令堂，兩人從此分開。其間：江照多次以守淵救人、一再被忘記，只留下紀錄；養父數年前病故。去年：北口陣腳因缺料封閉（第 6 集的封泥）。前四日：追捕令寫成並蓋真印，即騎縫號上的日期。前三日：江照在盆地內動用守淵救下祁硯，祁硯記得，其他人又一次忘了他。前一日：令書所稱的案發日（北口『被破壞』、有人『失蹤』），元衡把追捕令交給祁硯。第一日：第 1–5 集。第二日：第 6–10 集。第三日：第 11–16 集。第四日：第 17–20 集，第 18 集上午第二次啟動守淵。第五日：第 21–26 集。第六日：第 27–31 集，第 28 集上午第三次也是最後一次啟動。第七日：第 32–38 集。數週後：第 39 集，以公開對帳與交班表上的日期交代時間流逝。三個月後：第 40 集。第 10 集證明的『令比案發早三日』就是前四日對前一日。",
+    "阿杳與囚所只有一個版本：她曾被押進除名囚所，被拘押契抽過一批自傳記憶，所以家戶身分被抹，仍記得母親這個人與自己的暱稱，卻叫不出母親登記的名字；她趁巡檢換班的空檔，從內院牆上只容她側身鑽過的舊通風口逃出。第 6 集她又被抓到、正被押回囚所，第 7 集押送途中被江照與祁硯攔下，押送單就是這趟押回的單據。第 10 集『阿杳逃出的除名囚所』，以及第 11 集她趁換班空檔帶兩人從外門混進去，都來自那次逃出時摸熟的換班規律；第 11 集集尾秦錄封鎖外門，退路斷掉；第 12 集她再從同一個通風口鑽出去找陳渡，那個口兩個成年男人過不去。她的母親更早被送進同一座囚所，名字第 14 集找回，進所日子與死亡日期第 24 集才對上。",
+    "文書分清｜四份不同的單子，不可混稱：『典押單』是第 12 集祁硯的護身佩典押換料的當鋪單據，上面抄著護身佩的受賞號，由陳渡保管，第 13 集兩人拿它拆編碼，第 22、26 集的材料錢就是這筆典押款；『押送單』是第 7 集押阿杳回囚所這一趟的單據，被祁硯封存；『複核單』是第 7 集秦錄被迫具名、暫停押送並要求複核分類的文書，第 22、25 集再拿出來對質；『轉移單』是元衡親押、把被拘的人移交進囚所接上拘押契的命令，一次一張、累積成一疊，秦錄一直藏著當保命憑據，第 33 集連同接收原冊交出，第 39 集公開對帳時出示。",
+    "道具狀態｜沈闕：銅編號徽章不寫進固定外觀提示詞。第 2、8、9、15、20、21、25、26、28 集，以及第 33 集他決定倒戈之前，徽章別在左胸；第 33 集倒戈時他摘下徽章收進袖袋，此後（第 33 集其餘段落、第 36、40 集）胸前沒有徽章。第 28 集左小腿受傷；第 33、36 集拄拐杖、固定站位；第 40 集是三個月後，腿已癒、不拄拐。鏡頭提示詞要照這裡寫。",
+    "道具狀態｜秦錄：成束的長方銅鑰匙是他的招牌物件，留在固定外觀提示詞裡。第 33 集他受看守時把鑰匙串交給看守，那一拍之後的鏡頭用構圖避開他的腰間（中景以上，或不拍腰側）；第 33 集後他不再出場，第 39 集他的具名供述只以張貼的紙面呈現，沒有他的聲音。",
+    "封存匣｜第 29、30 集的封存匣接在天籙儲層上，放在掌籙院偏殿，只是取出片段用的封口與索引；江照的舊片段本體一直在內塔儲層，第 30 集他是隔著匣子驗看，片段沒有離開儲層。第 37 集儲層壓裂、片段散失，偏殿的匣子也跟著空了，之後不再出現。",
+    "聲線（擬定、未試聽）：江照 Charon、祁硯 Orus、元衡 Fenrir、陳渡 Puck、沈闕 Iapetus、秦錄 Algenib，都是男聲；阿杳 Kore、胡娘 Aoede 是女聲；旁白 Sulafat 不配給任何角色。八個角色各用一個聲音，同一集不會撞聲。第四輪以前秦錄與江照同用 Charon、沈闕配的是女聲 Zephyr，已換掉。",
+    "呈現界線：第 1 集的孩子只拍被推上橋面、被母親拉住，不拍墜落或受傷。囚所的抽取只拍接在腕上的契線、編號牢門與空牢，不拍抽取過程或傷口。阿杳是 17 歲的少女，第 7 集的鎖鏈擦傷只拍包紮後的布；第 8 集祁硯洗手，只拍手、袖口與盆邊，不拍血水。第 2 集江照的衣袖、第 28 集沈闕紙條上的血跡，只以布或紙上的暗色污點呈現，不拍傷口。第 35 集元衡那一劍，畫面落在紅繩斷開落地，不拍祁硯腕上的切口，之後只見包紮的布或已收口的淺痕。打鬥只拍劍勢與卸力，不拍刺入。元衡的固定外觀寫的是平日整潔冷靜的基底，第 37 集力竭被繩索束住的樣子由該集鏡頭提示詞加上。",
+    "相似作品：高概念（世人都忘了主角，只有一人記得）與小說《艾笛的永生契約》結構相近。這是憑記憶的說法，沒有上網查證；這是整部的核心設定，本輪不改。上線前需人工查證，由站主判斷。",
+    "劇情欄位裡『不…』『沒有…』『而非…』這類句子，是寫給撰稿的限制，不是台詞或旁白；撰稿時不可照抄進對白。",
     "五語 CC、角色設定圖、配樂授權、完整臺詞、鏡頭、實際章節時間與上架素材另屬媒體階段；這份檔案不宣稱任何一項已完成。"
   ]
 };
