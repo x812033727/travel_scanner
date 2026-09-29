@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-english-narration-locale
 title: Slides pipeline: per-video narration locale so English-first videos can be produced
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-fable-5-1
 claimed_at: 2026-09-28T02:47:47Z
 created_at: 2026-09-28T02:13:09Z
-completed_at:
+completed_at: 2026-09-29T02:58:50Z
 branch: claude/ai-video-planning-l43qas
 depends_on: []
 scope:
@@ -62,3 +62,4 @@ cd apps/api && uv run ruff check . && uv run mypy app && uv run pytest tests/tes
 - 2026-09-28 (claude-fable-5-1): filed from the English season plan. `grep -rn "zh-TW\|NARRATION_LOCALE" tools/video --include=*.mjs` (non-test) finds 132 lines in 29 files, but most are the locale list; the places that assume the narration is zh-TW are the ones in scope here. `apps/api/app/video_speech/ssml.py` has its own `NARRATION_LOCALE` for Azure only; the channel voice is Gemini, so it can stay.
 - Estimated one to two days. Until it lands, an English video can only be a zh-TW master with an English dub track (DUBS.md), which the plan treats as a fallback.
 - 2026-09-28 (claude-fable-5-1): done on branch `claude/ai-video-planning-l43qas` (commit e7a9b8b3). Also: an English sentence warns at 25 words (`SENTENCE_WARN_EN`), English written-language and process phrases are checked, `parseDubLocale`/`trackFiles`/`checkFiles`/`lexiconFor` take the narration locale, `dub --locale` and `i18n-sheet --locale` are validated against the video's own dub locales, `defaultRate` scales from the fixed rates when the narration is not zh-TW, and `DUB_STYLES` gained a zh-TW style so a Chinese dub of an English video has a voice. Not done: the host worker's planner and writer prompts (`tools/video/automation/prompts.mjs`) still assume zh-TW; the English season is written by hand for now. Left `render/subtitles.mjs` (drama burn-in) and `automation/compilation.mjs` on `NARRATION_LOCALE`, since dramas and compilations stay zh-TW.
+- 2026-09-29 (claude-opus-5-5, same session as the work above): closed. Every item in the definition of done was ticked on 2026-09-28 in commit e7a9b8b3; the season then moved to zh-TW narration with English dubs, so the English-narration prompts for the host worker's planner and writer stay a possible follow-up rather than part of this task. Closing it releases its scope for the check-audio and speechHash tasks.

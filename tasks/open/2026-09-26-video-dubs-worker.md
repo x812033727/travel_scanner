@@ -1,11 +1,11 @@
 ---
 id: 2026-09-26-video-dubs-worker
 title: Video dubs: the worker synthesizes, shortens, checks and packages the tracks, and qa reports them
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-09-29T02:58:09Z
 created_at: 2026-09-26T17:59:41Z
 completed_at:
 branch:

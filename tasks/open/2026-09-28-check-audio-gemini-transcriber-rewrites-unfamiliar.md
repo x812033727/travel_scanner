@@ -1,11 +1,11 @@
 ---
 id: 2026-09-28-check-audio-gemini-transcriber-rewrites-unfamiliar
 title: check-audio: Gemini transcriber rewrites unfamiliar model versions and years
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-09-29T02:58:51Z
 created_at: 2026-09-28T06:03:30Z
 completed_at:
 branch:

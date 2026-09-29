@@ -1,11 +1,11 @@
 ---
 id: 2026-09-28-speechhash-hashes-the-whole-lexicon-so
 title: speechHash hashes the whole lexicon, so a term added for one video marks every video's narration stale
-status: open
+status: in-progress
 priority: P3
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-09-29T02:58:51Z
 created_at: 2026-09-28T15:00:53Z
 completed_at:
 branch:
