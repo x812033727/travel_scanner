@@ -1,13 +1,13 @@
 ---
 id: 2026-09-19-mobilenav-search-button-fires-twice-in
 title: Isolate MobileNav search mock calls between discovery cases
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: codex-test-isolation
 claimed_at: 2026-09-29T06:41:18Z
 created_at: 2026-09-19T14:14:09Z
-completed_at:
+completed_at: 2026-09-29T06:51:41Z
 branch: codex/test-isolation-fixes
 depends_on: []
 scope:
@@ -73,3 +73,8 @@ overriding only `test.clearMocks` to `false`. This option is not a Vitest CLI fl
 - The green and deliberately duplicated-handler runs use base `49aa683a` with
   Vitest 5.0.1. Their `green-receipt.json` SHA-256 is
   `883abfa95a3e9ac665cc51eebcdccb4c05ca1990d4229497b83a86b73ab5c3c8`.
+- After rebasing onto main `c1fe22fc` and reinstalling its dependencies,
+  bundled Node 24.21.0 / Vitest 5.0.2 also passed all 13 cases with each
+  configuration. ESLint passed again. These newer reports are retained at
+  `C:/Users/x8120/.codex/tmp/test-isolation-fixes-20260929/` as
+  `mobile-current-5.0.2.json` and `mobile-no-clear-5.0.2.json`.

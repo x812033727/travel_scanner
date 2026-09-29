@@ -1,13 +1,13 @@
 ---
 id: 2026-09-26-guides-autolink-tests-windows-encoding
 title: test_guides_autolink writes Chinese fixtures without an encoding, so the four tests fail on Windows
-status: in-progress
+status: done
 priority: P3
 area: api
 owner: codex-test-isolation
 claimed_at: 2026-09-29T06:43:10Z
 created_at: 2026-09-26T02:55:16Z
-completed_at:
+completed_at: 2026-09-29T06:51:43Z
 branch: codex/test-isolation-fixes
 depends_on: []
 scope:

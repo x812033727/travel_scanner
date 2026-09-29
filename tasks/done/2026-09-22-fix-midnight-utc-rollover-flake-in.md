@@ -1,13 +1,13 @@
 ---
 id: 2026-09-22-fix-midnight-utc-rollover-flake-in
 title: Fix midnight UTC rollover flake in test_ai_trip_parser_llm
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: codex-test-isolation
 claimed_at: 2026-09-29T06:43:09Z
 created_at: 2026-09-22T00:30:56Z
-completed_at:
+completed_at: 2026-09-29T06:51:42Z
 branch: codex/test-isolation-fixes
 depends_on: []
 scope:
@@ -59,10 +59,14 @@ The fix is to make the date deterministic, not to drop the check.
 
 ## How to verify
 
-`apps/api/.venv/Scripts/python.exe -m pytest tests/test_ai_trip_parser_llm.py`
-from `apps/api`, plus a run with the clock (or the patched clock) set so the
-captured date and the call-time date differ — that run must still pass with the
-real fix and must fail if the assertion is simply removed.
+From `apps/api`, run
+`.venv/Scripts/python.exe -m pytest tests/test_ai_trip_parser_llm.py`.
+Then simulate a next-day parser wall clock while keeping the suite's captured
+date fixed: the existing test must pass. Supplying a stale or omitted prompt
+date must still fail at the current-date assertion. As a negative control,
+removing that assertion in memory makes the omitted-date mutation pass; a
+verification harness must reject that unexpected pass when testing the real
+suite's protection.
 
 ## Notes
 
