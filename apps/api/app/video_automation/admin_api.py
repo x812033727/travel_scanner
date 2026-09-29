@@ -8,13 +8,15 @@ with a video tool token, through apps/web/app/api/video/automation.
 
 from __future__ import annotations
 
+import json
 from datetime import datetime
 from typing import Annotated, Any
 from uuid import UUID
 
 import httpx
-from fastapi import APIRouter, Depends, Query
-from pydantic import AwareDatetime, ValidationError
+from fastapi import APIRouter, Depends, Query, Request
+from fastapi.responses import JSONResponse
+from pydantic import AwareDatetime, BaseModel, ConfigDict, ValidationError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
@@ -23,7 +25,7 @@ from app.auth.service import require_capability
 from app.db import get_session
 from app.infra import enforce_named_rate_limit, get_redis
 from app.models import User, VideoToolToken
-from app.problems import AppError
+from app.problems import AppError, app_error_handler
 from app.video_automation import messages as drama_messages
 from app.video_automation import requests as drama_requests
 from app.video_automation import series as drama_series
@@ -87,6 +89,7 @@ from app.video_automation.schemas import (
     VisualTier,
 )
 from app.video_automation.series import SeriesRefused
+from app.video_automation.stories import import_story_rows
 from app.video_automation.topics import gather_topics
 from app.video_reviews.admin_service import LIST_LIMIT, list_projects
 from app.video_reviews.schemas import ProjectSummary, VideoFormat
@@ -102,6 +105,12 @@ REQUEST_CALLS_PER_HOUR = 240
 SERIES_CALLS_PER_HOUR = 240
 # Two Jev judgements per video at most; this only stops a runaway loop.
 JUDGE_CALLS_PER_HOUR = 60
+# The request that carries a compiled stories.json to the import: nearly three times the 1.4 MB
+# a hundred stories take now (docs/videos/STORY.md), since the file grows with what the fact
+# checkers leave each story. It stays under the 5 MiB the site's relay and this API take by
+# default (API_PROXY_MAX_BODY_BYTES, API_MAX_REQUEST_BYTES; nginx's client_max_body_size is 6m),
+# so a file over it is refused here, by name, rather than by a nameless 413 on the way.
+STORY_IMPORT_MAX_BYTES = 4 * 1024 * 1024
 
 admin_router = APIRouter(prefix="/admin/video-automation", tags=["admin video automation"])
 tool_router = APIRouter(prefix="/video/automation", tags=["video automation (pipeline)"])
@@ -231,7 +240,15 @@ async def judge_video_policy(
         raise AppError(409, "video_judge_not_enabled", "頻道立場還是空白，Jev 沒有依據可以判斷")
     runtime = await load_runtime_settings(session)
     try:
-        return await judge_policy(runtime, get_redis(), stance, payload.viewpoint, payload.script)
+        return await judge_policy(
+            runtime,
+            get_redis(),
+            stance,
+            payload.viewpoint,
+            payload.script,
+            session=session,
+            slug=payload.slug,
+        )
     except CheckUnavailable as error:
         raise AppError(error.status, error.code, error.detail) from error
     except JevRequestInvalid as error:
@@ -544,6 +561,135 @@ async def skip_video_series_episode(
         return await drama_series.skip_episode(session, user, slug, number)
     except SeriesRefused as error:
         raise _series_refused(error) from error
+
+
+@admin_router.post("/series/{slug}/episodes/{number}/restore", response_model=SeriesOut)
+async def restore_video_series_episode(
+    slug: str, number: int, user: ContentManager, session: Session
+) -> SeriesOut:
+    """Bring a skipped story that never started back to ready: the way back from ``/skip``,
+    for a story series only (``restore_episode`` says why)."""
+    try:
+        return await drama_series.restore_episode(session, user, slug, number)
+    except SeriesRefused as error:
+        raise _series_refused(error) from error
+
+
+# The brand-story backlog (docs/videos/STORY.md §企劃清單與集數列): the admin page's way to what
+# the host command video-story-import does. The file's rules, the report and the audit record
+# are app.video_automation.stories'; this only carries the file there and the report back.
+
+
+class StoryImportIn(BaseModel):
+    """A compiled stories.json and how to import it, as the host command takes them.
+
+    ``file`` is the whole file as JSON. Anything is let through here, because the file is
+    checked in one place only: whatever is wrong with it comes back in the report.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    file: Any
+    apply: bool = False
+    limit: int | None = None
+    episodes_per_day: int | None = None
+
+
+class StoryImportRowsOut(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    create: list[str]
+    update: list[str]
+    renumbered: list[str]
+    unchanged: list[str]
+    started: list[str]
+    refused: list[str]
+
+
+class StoryImportOut(BaseModel):
+    """``StoryImportReport.as_dict()``, field for field: what the import did, or would do with
+    ``apply``. Extra fields are refused, so the two cannot drift apart unnoticed."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    series: str
+    dry_run: bool
+    accepted: bool
+    written: bool
+    series_exists: bool
+    series_created: bool
+    stories_in_file: int
+    stories_imported: int
+    create: int
+    update: int
+    leave_alone: int
+    refuse: int
+    rows: StoryImportRowsOut
+    series_differs: dict[str, dict[str, Any]]
+    problems: list[str]
+    notes: list[str]
+
+
+async def _import_refused(request: Request, report: dict[str, Any]) -> JSONResponse:
+    """The answer to a file with a problem: the site's problem document (a code, and a detail
+    for a caller that reads nothing else) with the whole report beside it, so the page can list
+    every problem."""
+    problems = report["problems"]
+    detail = f"企劃清單有 {len(problems)} 個問題，整份都沒有寫入。第一個：{problems[0]}"
+    problem = await app_error_handler(request, AppError(422, "video_story_import_refused", detail))
+    return JSONResponse(
+        {**json.loads(bytes(problem.body)), **report},
+        status_code=422,
+        media_type="application/problem+json",
+    )
+
+
+@admin_router.post(
+    "/series/{slug}/stories/import",
+    response_model=StoryImportOut,
+    responses={
+        413: {"description": "The request is over STORY_IMPORT_MAX_BYTES."},
+        422: {"description": "The file has a problem: a problem document with the report."},
+    },
+)
+async def import_video_series_stories(
+    slug: str, payload: StoryImportIn, request: Request, user: ContentReader, session: Session
+) -> StoryImportOut | JSONResponse:
+    """Check a compiled stories.json for the story series ``slug`` and, with ``apply``, import
+    it: the series is created from the file when it does not exist, and each story becomes an
+    episode ready to start (``import_story_rows``).
+
+    The dry run is the default and writes nothing, so reading the series is enough for it;
+    ``apply`` needs what creating a series needs. A file with a problem, the path's slug not
+    being the file's ``series.slug`` among them, is refused whole: nothing is written, and the
+    answer is a 422 that carries the report.
+    """
+    if payload.apply:
+        await require_capability("content.manage")(user)
+    size = len(await request.body())
+    if size > STORY_IMPORT_MAX_BYTES:
+        raise AppError(
+            413,
+            "video_story_import_too_large",
+            f"企劃清單最多 {STORY_IMPORT_MAX_BYTES / 1_048_576:.1f} MB，"
+            f"這次送來 {size / 1_048_576:.1f} MB",
+        )
+    try:
+        report = await import_story_rows(
+            session,
+            payload.file,
+            series_slug=slug,
+            apply=payload.apply,
+            limit=payload.limit,
+            episodes_per_day=payload.episodes_per_day,
+            actor=user,
+        )
+    except SeriesRefused as error:
+        raise _series_refused(error) from error
+    answer = report.as_dict()
+    if report.problems:
+        return await _import_refused(request, answer)
+    return StoryImportOut.model_validate(answer)
 
 
 # The discussion thread on every document and every screenplay (docs/videos/DRAMA-FLOW.md §三):

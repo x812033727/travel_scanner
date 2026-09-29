@@ -128,6 +128,20 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 工人每輪先回一則討論（上面「討論」，`GET /video/automation/series/messages/next`），再問 `GET /video/automation/series/next`（單集的故事聖經與第 1 集也從這裡來），再問舊的單集請求，再看排程草稿。作品層的工作是 `setting`／`outline`／`chapter`／`episode`，單集只有 `bible` 與 `episode`：`setting`／`outline`／`chapter` 是企劃模型（variant `setting`、`outline`、`chapter`）寫一份文件送到站上等站主；`episode` 是在站上開始下一集（影片 slug 為 `<作品>-e001` 這種），工人寫 `docs/videos/<slug>/series.json`（人物表、本集細綱、前情、謎團、設定集全文）與 `brief.md`（只有選項 A，本機直接核准），之後照上面每一集的 19 步走（劇本關卡每支漫劇都有），作品的集只多兩件事：撰稿與查核用作品變體（`writer:episode`、`verifier:episode`，查核另輸出 `coverage` 與 `problems` 到 `review/script-check.json`）；`look` 先查作品存檔 `<VIDEO_WORKDIR>/_series/<作品>/characters/`，有核准過的設定圖就沿用並直接核准 look，只畫新角色（`review-pull` 核准 look 時把選中的圖存進去）。合成完成後查核模型（variant `recap`）寫 150 字前情 `POST …/recap`；上架確認後 `POST …/done`，站上依 `series_max_in_flight`、`series_auto_continue` 與前一集是否完成決定下一集何時開始。文件被退回帶 `previous` 與 `owner_note` 重寫，站上限制 `series_doc_rewrites` 輪；討論出的新版本另計，沒有上限。
 
+## 品牌故事（2026-09-28 加，設計在 `STORY.md`）
+
+品牌故事是 12–15 分鐘、只有旁白、約 90 張卡通靜態圖的非虛構短片，影片是漫劇，100 個故事是一部 `kind: "story"` 作品的 100 集（`hands_off`、`visual_tier: "stills"`）。企劃清單事先查核、由站主匯入，工人從 `GET /video/automation/series/next` 拿到 `kind: "episode"` 的工作，集數的 `beats` 就是整份企劃。實作在 `tools/video/automation/story.mjs`，操作步驟在 skill 的 `references/story.md`。
+
+一集的做法跟漫劇的集只差在稿子怎麼來：
+
+1. **開始**：用企劃定好的 `slug` 呼叫 `POST …/episodes/{n}/start`（別的代號伺服器回 409），寫 `series.json`（`kind: "story"`、`names`、人物、畫風、圖片模型、企劃）與 `brief.md`，大綱在本機核准。沒有模型呼叫。
+2. **一步最多一次模型呼叫**，每一次都帶 variant，不算進每月排程草稿：撰稿一章一次（`writer:story`，六章存在工作區的 `story/chapters/`，六章齊了合併成 `video.json`、`claims.md` 並 lint，錯誤落在哪一章就退回那一章）→ 查核一章一次（`verifier:story`，新 session，回句子 patch 與那一章的主張表，不回整份稿）→ 聽眾審稿一章一次（`listener:story`，只回 patch）。正常一支 18 次呼叫；量過最大的一次請求約 71 KB，一章的回答不到 10,000 字，都在轉送的 295 秒與輸出上限之內。
+3. **查核照企劃**：企劃的事實是查核過的，查核模型確認稿子說的跟企劃一樣，只在頁面裡找撰稿模型自己加的數字、年份、人名；`attributed` 的要說是誰的說法，`reviewer_only` 的照企劃的寫法、不去找頁面，`caveats` 照辦。工人讀整頁文字（`pageReader({ whole: true })`，其他呼叫者不變），用那一章的數字、年份（含昭和、平成、令和、民國）與名字切出段落交給模型，讀不到的 PDF 交企劃的 `supports`，並註明不是這次讀的。
+4. **劇本關卡在本機核准**，備註寫原因；故事不寫前情、不做合集、不送劇本關卡。之後照漫劇的步驟：有企劃人物才有 `look`，`tts` 之後先量長度（13 分鐘要在 11:30–15:30，否則撰稿模型砍最長的一章或補最瘦的一章，最多兩輪；段落沒有更多可講就卡住給站主決定，不塞內容），再 `check-audio`、`keyframes`、分鏡（伺服器依 judge 決定）、`render`、`clips`（全靜態圖只寫 manifest）、`music`、`assemble`、字幕、成片、上傳包、上架確認（`POST …/done`）。
+5. **圖片**：提示詞不得出現企劃 `names` 裡的名字、商標、文字或真人長相，lint 擋；沒過 judge 的鏡頭只把那幾鏡交給撰稿模型修（`writer:story-fix`），修正也先 lint 才保存。
+
+站主在影片頁退回旁白並寫原因時，聽眾審稿帶著那句話把六章再聽一次；在故事的劇本討論串留言，工人回一則說明（故事的稿子不從討論串整份重寫）。漫劇設定的「各階段常設指示」也會接在故事的提示詞後面。
+
 ## 語言（2026-09-27 加，設計在 `LANGUAGES.md`）
 
 每支影片先只做繁體中文。成片核准後站主在 `/admin/videos` 的影片頁決定加哪些語言（en、ja、ko、zh-CN）、每種加什麼（標題與說明、CC、配音），或按「只出繁體中文」；`caption_locales` 只是面板的預先勾選。工人每一輪從影片清單（`ProjectSummary.locales`、`locales_decided_at`、`languages`）看每支成片已核准的影片：沒決定就什麼都不做；決定了，就把選擇抄成工作區的 `languages.json`（`captions`、`package`、`qa`、`review-push` 都從這個檔讀，本機手動跑也一樣），再對站上還標成「製作中」的部件做一件事：
@@ -155,8 +169,8 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 - **哪些影片**：`auto.json` 說已經結束的——`status: done` 而且記下了 YouTube id，或站主放棄（`dropped`）——而且結束滿保留天數（預設 7 天，跟審核檔案區刪 mp4 的 `PREVIEW_RETENTION` 一樣）。
 - **從哪天算**：放棄的從 `dropped.at` 算。上了 YouTube 的，`auto.json` 沒有記日期（`recordVideoId` 只寫 `status` 與 `youtube_video_id`），所以照網站刪 mp4 的規則（`prune_published_previews`）：上架確認核准的時間（工作區 `approvals.json` 的 `publish` 項，與每輪影片清單的 `publish_approved_at`，取較晚的）和站主設的公開時間（`youtube_publish_at`），再取較晚的。沒有可用的日期就不清，那一輪印一行說明。
 - **先留著**：還在做、卡住、等站主的影片，不管多舊都不動。已上 YouTube 但語言還沒決定或還在做（影片清單的 `locales_decided_at`、`languages`）、開了合集的作品裡合集還沒上 YouTube 的集數（合集要接每一集的成片與字幕，縮圖取前三集的關鍵影格）、工作區裡有 `STOP` 檔的，也先留著。
-- **刪什麼**：`final.mp4`、`upload/final.mp4`（上傳包的副本；合集是硬連結）、`upload/dubs/`、`segments/`、`build/`、`audio/`、`narration.wav`、`frames/`、`keyframes/`、`clips/`、配音的 `dubs/<語系>/audio/`、`dubs/<語系>/narration.wav`、`dubs/<語系>.<格式>`，以及 `review/` 裡送審用的預覽（`preview-<雜湊>.mp4`、`narration-<雜湊>.m4a`）。
-- **一定留**：`auto.json`、`state.json`、`checks.json`、`approvals.json`、`timeline.json`、`captions/`、`i18n/`、`languages.json`、`media/`（帳本、快取、工作）、`answers/`、`review/` 的 JSON 與頁面、上傳包的文字檔（`metadata.json`、`UPLOAD.md`、說明、字幕）與縮圖、`characters/`、`music/`、`thumbnail.jpg`、`contact-sheet.png`。工作區根目錄的 `_series/`、`_music/` 與任何 `_` 開頭的資料夾從不讀、從不刪。
+- **刪什麼**：`final.mp4`、`upload/final.mp4`（上傳包的副本；合集是硬連結）、`upload/dubs/`、`segments/`、`build/`、`audio/`、`narration.wav`、`frames/`、`keyframes/`、`clips/`、品牌故事讀過的來源頁面 `story/pages/`（整頁文字，一頁一個 JSON）、配音的 `dubs/<語系>/audio/`、`dubs/<語系>/narration.wav`、`dubs/<語系>.<格式>`，以及 `review/` 裡送審用的預覽（`preview-<雜湊>.mp4`、`narration-<雜湊>.m4a`）。
+- **一定留**：`auto.json`、`state.json`、`checks.json`、`approvals.json`、`timeline.json`、`captions/`、`i18n/`、`languages.json`、`media/`（帳本、快取、工作）、`answers/`、`review/` 的 JSON 與頁面、上傳包的文字檔（`metadata.json`、`UPLOAD.md`、說明、字幕）與縮圖、`characters/`、`music/`、`thumbnail.jpg`、`contact-sheet.png`、品牌故事的 `story/chapters/`（每一章的稿子與查核結果，很小，出問題時要看）。工作區根目錄的 `_series/`、`_music/` 與任何 `_` 開頭的資料夾從不讀、從不刪。
 - **拒絕**：工作區根目錄是空白、相對路徑、磁碟根目錄、在 repo 裡或包住 repo，整個不跑。要刪的路徑一定在那支影片自己的資料夾裡，而那個資料夾直接在工作區根目錄底下。路上遇到連結（symbolic link、Windows junction）就不穿過；連結本身當成一個名字刪掉，它指到的東西不動。
 - **一輪一支**，最早結束的先清。印一行：哪一支、刪了什麼、釋放多少位元組。刪不掉的檔案（Windows 上被鎖住）與已經不見的，列在同一行，這一輪照常結束。清完在 `auto.json` 原子寫入 `tidied_at` 與 `tidied`（刪了什麼、多少位元組、哪些刪不掉），之後不再看這一支。
 - **什麼時候跑**：每一輪 `auto` 在工作之後跑一次，不管這一輪有沒有進度；設定裡自動草稿關著、或找到 `STOP` 檔，就不跑。

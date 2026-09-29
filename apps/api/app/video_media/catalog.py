@@ -6,6 +6,12 @@ spend. Ids and prices are the vendors' pages as read on 2026-09-26; the adapter 
 (2026-09-26-video-drama-media-api) re-checks each id against the official page before it
 calls the vendor, and a model whose id is not yet confirmed is marked ``preview``. A retired
 model stays listed so that a stored setting naming it is refused by name, not silently kept.
+
+An image is priced at the size the adapter asks for, not the cheapest size the vendor sells:
+the ledger and the worker's per-video cap add these numbers up. The Gemini adapter
+(providers/gemini_images.py) sends only ``aspectRatio``, and Gemini 3 image models answer
+that with a 1K image, so both Gemini image entries carry their 1K price, re-read on Google's
+pricing page on 2026-09-28. A change of size in the adapter must change the price here too.
 """
 
 from __future__ import annotations
@@ -43,23 +49,34 @@ class MediaModel:
 _SECONDS_4_TO_10 = (4, 5, 6, 7, 8, 9, 10)
 
 MEDIA_CATALOG: tuple[MediaModel, ...] = (
+    # Google's pricing page, read 2026-09-28 (last updated 2026-09-24): 1K or 2K US$0.134, 4K
+    # US$0.24. The adapter asks for no size, so a picture comes at the 1K default.
     MediaModel(
         "gemini-3-pro-image",
         "gemini",
         "image",
         "Gemini 3 Pro Image（Nano Banana Pro）",
-        note="最多 14 張參考圖，角色跨鏡頭最一致；1K 到 2K 每張 US$0.134",
+        note=(
+            "最多 14 張參考圖，角色跨鏡頭最一致；不指定尺寸時出 1K 圖，"
+            "1K 到 2K 每張 US$0.134（2026-09-28 查 Google 價目頁）"
+        ),
         reference_images=14,
         usd_per_image=0.134,
     ),
+    # The same page: 0.5K US$0.045, 1K US$0.067, 2K US$0.101, 4K US$0.151. The catalog said
+    # US$0.045 until 2026-09-28, the 0.5K price, while every picture came at 1K: the ledger and
+    # the per-video cap counted about a third too little. Brand stories draw with this model.
     MediaModel(
         "gemini-3.1-flash-image",
         "gemini",
         "image",
         "Gemini 3.1 Flash Image（Nano Banana 2）",
-        note="便宜的草稿與候選；0.5K 每張 US$0.045",
+        note=(
+            "便宜的草稿與候選，品牌故事用；不指定尺寸時出 1K 圖，"
+            "1K 每張 US$0.067（2026-09-28 查 Google 價目頁）"
+        ),
         reference_images=5,
-        usd_per_image=0.045,
+        usd_per_image=0.067,
     ),
     MediaModel(
         "image-01",
