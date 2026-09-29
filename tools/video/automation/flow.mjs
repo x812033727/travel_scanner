@@ -14,7 +14,7 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 
 import path from "node:path";
 
 import { approvalState, approve, sha256File } from "../core/approvals.mjs";
-import { EXPLAINER_PRESET } from "../core/drama.mjs";
+import { EXPLAINER_PRESET, illustrated, SLIDES_PRESET } from "../core/drama.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
 import { articlePath, SITE } from "../core/metadata.mjs";
@@ -254,8 +254,8 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
   else delete settled.source_guide;
   settled.assets = [];
   if (settled.youtube) settled.youtube = { ...settled.youtube, video_id: null };
+  const drama = settings.drama ?? {};
   if (format === "drama") {
-    const drama = settings.drama ?? {};
     settled.format = "drama";
     const preset = stylePreset ?? drama.style_preset ?? "cinematic-3d";
     settled.look = { preset, ...(video.look ?? {}) };
@@ -264,14 +264,23 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
       settled.characters = [];
     }
     settled.subtitles = { burn_in: drama.subtitle_burn_in ?? true, ...(video.subtitles ?? {}) };
-    if (drama.music_enabled === false) delete settled.music;
+  } else if (illustrated(video)) {
+    // Illustrated slides (docs/videos/ILLUSTRATED.md): the channel's look unless the writer named
+    // one, and the owner's licensed music file and sound-effect set from the settings tab (the
+    // slides fields, once the site has them) when the writer named none.
+    settled.look = { preset: SLIDES_PRESET, ...(video.look ?? {}) };
+    if (!settled.music && settings.slides_music_track) settled.music = { track: settings.slides_music_track };
+    if (!settled.sfx && settings.slides_sfx_set) settled.sfx = { set: settings.slides_sfx_set };
   }
+  // Music is the owner's switch for every format.
+  if (drama.music_enabled === false) delete settled.music;
   if (format === "drama" && series) {
     // An episode of a series (docs/videos/SERIES.md): the cast is the setting book's, word for
-    // word, listed by id; a character the book does not have stays for lint to refuse.
+    // word, listed by id; a character the book does not have stays for lint to refuse. An
+    // explainer (a one-off of the flat-explainer preset) has no cast whatever the writer returned.
     settled.series = { slug: series.slug, episode: series.episode, chapter: series.chapter };
     const book = new Map((cast ?? []).map((character) => [character.id, character]));
-    settled.characters = (video.characters ?? []).map((character) => book.get(character?.id) ?? character).sort((a, b) => (a?.id < b?.id ? -1 : a?.id > b?.id ? 1 : 0));
+    settled.characters = settled.look?.preset === EXPLAINER_PRESET ? [] : (video.characters ?? []).map((character) => book.get(character?.id) ?? character).sort((a, b) => (a?.id < b?.id ? -1 : a?.id > b?.id ? 1 : 0));
   }
   return settled;
 }
@@ -1306,7 +1315,7 @@ export class Automation {
     if (rounds >= MAX_PROMPT_FIX_ROUNDS) return this.block(state, `${kind} still fails after ${rounds} prompt fixes (${summary})`);
     const dir = docDir(state.slug, this.ctx.root);
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
-    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix: { kind, targets: found, problems: found.flatMap((target) => target.problems ?? []), owner_note: ownerNote }, line_ids: this.freshIds(state, video, 40) }), 32_000, "drama", this.variantOf(state), state.series ?? null);
+    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix: { kind, targets: found, problems: found.flatMap((target) => target.problems ?? []), owner_note: ownerNote }, line_ids: this.freshIds(state, video, 40) }), 32_000, state.format ?? "drama", this.variantOf(state), state.series ?? null);
     const problem = await this.saveAndLint(state, answer);
     if (problem) return this.retryLater(state, "writer", `the ${kind} fix ${problem}`);
     this.cleared(state, "writer");
@@ -1397,7 +1406,8 @@ export class Automation {
     saveState(this.workdir(state.slug), state);
     if (problem) return this.retryLater(state, "writer", `the script ${problem}`);
     this.cleared(state, "writer");
-    const shorts = this.variantOf(state) === "explainer" ? this.saveShorts(state, answer.shorts) : null;
+    // An explainer's and an illustrated slides video's two Shorts are drafted with the script (docs/videos/ILLUSTRATED.md).
+    const shorts = this.variantOf(state) === "explainer" || illustrated(JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"))) ? this.saveShorts(state, answer.shorts) : null;
     saveState(this.workdir(state.slug), state);
     await report(this.ctx, this.api, state, "fact-checked");
     return `${state.slug}: script drafted and passes lint${shorts ? `; ${shorts}` : ""}`;
@@ -1462,7 +1472,10 @@ export class Automation {
   async listen(state, note = null) {
     const dir = docDir(state.slug, this.ctx.root);
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
-    const answer = await this.stage("listener", state.slug, { video, script_writing: this.reference().script_writing, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), ...(state.series ? this.seriesPayload(state) : {}), ...(note ? { owner_note: note } : {}) }, 32_000, state.format);
+    // A drama's listener reads the format alone, as before; a slides video's carries the variant
+    // (the storytelling register of docs/videos/ILLUSTRATED.md rides on it).
+    const variant = state.format === "drama" ? null : this.variantOf(state);
+    const answer = await this.stage("listener", state.slug, { video, script_writing: this.reference().script_writing, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), ...(state.series ? this.seriesPayload(state) : {}), ...(note ? { owner_note: note } : {}) }, 32_000, state.format, variant);
     const problem = await this.saveAndLint(state, answer);
     const saved = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
     if (!scriptCheckMatches(scriptCheckBinding(video), saved)) state.verified = false;

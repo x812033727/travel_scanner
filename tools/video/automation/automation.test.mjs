@@ -1743,3 +1743,131 @@ test("two rewrite rounds that Jev still flags send the narration to the owner wi
   assert.equal(gate.state().notes.filter((note) => note.startsWith("narration rewritten: ")).length, 2);
   assert.equal(await gate.automation.step(), null, "the owner decides");
 });
+
+test("illustrated slides: settle gives the channel look and the owner's music and effects; an explainer one-off keeps no cast whatever the writer returned", async () => {
+  const { illustratedFixture } = await import("../core/fixtures/load.mjs");
+  const settings = { voice: { provider: "gemini", name: "Sulafat", style: "s", model: null, rate: "+0%" }, slides_music_track: "bed.mp3", slides_sfx_set: "studio-a" };
+  const bare = { ...illustratedFixture(), slug: "x" };
+  delete bare.look;
+  delete bare.music;
+  delete bare.sfx;
+  const settled = settle(bare, { slug: "y", settings, sourceGuide: null, root: ROOT });
+  assert.deepEqual(settled.look, { preset: "tech-story" }, "the channel's look when the writer named none");
+  assert.deepEqual(settled.music, { track: "bed.mp3" });
+  assert.deepEqual(settled.sfx, { set: "studio-a" });
+  assert.equal(settled.format, "slides");
+  const own = settle({ ...illustratedFixture(), slug: "x" }, { slug: "y", settings: { ...settings, drama: { music_enabled: false } }, sourceGuide: null, root: ROOT });
+  assert.equal(own.look.preset, "tech-story");
+  assert.equal(own.music, undefined, "the owner's music switch is off for every format");
+  assert.deepEqual(own.sfx, { set: "studio-a" }, "the writer's own set stays");
+  const plain = settle(fixture(), { slug: "z", settings, sourceGuide: null, root: ROOT });
+  assert.equal(plain.look, undefined, "plain slides get no look, music or effects");
+  assert.equal(plain.music, undefined);
+  // 2026-09-28-video-explainer-settle-keeps-cast: a one-off explainer's cast is empty even when the writer returned one.
+  const explainer = { ...dramaFixture(), slug: "x", characters: [{ id: "host", name: "主持", appearance: "a host", voice: { provider: "gemini", name: "Kore" } }] };
+  const oneOff = settle(explainer, { slug: "why", settings: { ...settings, drama: DRAMA_SETTINGS }, sourceGuide: null, root: ROOT, format: "drama", series: { slug: "why", episode: 1, chapter: 1, kind: "one-off" }, cast: [], stylePreset: "flat-explainer" });
+  assert.deepEqual(oneOff.characters, []);
+  assert.equal(oneOff.look.preset, "flat-explainer");
+  const cast = settle(explainer, { slug: "why", settings: { ...settings, drama: DRAMA_SETTINGS }, sourceGuide: null, root: ROOT, format: "drama", series: { slug: "why", episode: 1, chapter: 1 }, cast: [explainer.characters[0]], stylePreset: "cinematic-3d" });
+  assert.equal(cast.characters.length, 1, "a drama episode keeps its cast");
+});
+
+test("illustrated slides walk the picture, storyboard and music steps between the narration and the cut, and their Shorts are drafted with the script", async () => {
+  const { illustratedFixture } = await import("../core/fixtures/load.mjs");
+  const { keyframesHash, lookHash: lookOf, mixHash, picturesHash, sfxHash } = await import("../core/drama.mjs");
+  const box = sandbox();
+  const slug = "chatgpt-ads-off";
+  const video = { ...illustratedFixture(), slug };
+  const shortsDraft = [
+    { schema_version: 2, line: "cut", titles: ["第一名不一定最好用", "排行榜是考試，你的工作不是"], description: "排行榜第一名為什麼不是你的第一名。", scenes: [{ headline: "第一名不一定最好用", narration: ["你以為第一名最好用", "其實考卷不一樣"], shot: "podium" }, { headline: "三個數字", narration: ["三秒對二十秒"], big: "20 秒" }, { headline: "先看工作", narration: ["先看工作再看排行榜"], shot: "door" }] },
+    { schema_version: 2, line: "cut", titles: ["價格差一半", "同一個問題三個模型"], description: "同一個問題，價格差一半。", scenes: [{ headline: "價格差一半", narration: ["同一個問題價格差一半"], shot: "race" }, { headline: "三秒對二十秒", narration: ["最快的三秒就回答"], big: "3 秒" }, { headline: "完整故事在長片", narration: ["完整故事在長片"] }] },
+  ];
+  const answers = {
+    ...answersFor(slug),
+    writer: () => ({ video, claims: "c1｜Go 每月 270 元｜https://openai.com/a｜2026-09-25｜hook\n", lexicon_additions: {}, shorts: shortsDraft }),
+    listener: (body) => ({ video: body.payload.video, edits: [] }),
+  };
+  const site = fakeSite({ answers, settings: { slides_music_track: "bed.mp3", slides_sfx_set: "studio-a" } });
+  const clock = { now: Date.parse("2026-09-29T09:00:00Z") };
+  const { ctx } = context(box, site.fetchImpl, clock);
+  const workdir = path.join(box.work, slug);
+  const docFile = path.join(box.root, "docs", "videos", slug, "video.json");
+  const lexicon = () => readJson(path.join(box.root, "docs", "videos", "lexicon.json"));
+  const runs = [];
+  mkdirSync(path.join(box.work, "_music"), { recursive: true });
+  writeFileSync(path.join(box.work, "_music", "bed.mp3"), "bed bytes");
+  ctx.runCommand = async (command, runCtx) => {
+    runs.push(command.join(" "));
+    const [name] = command;
+    const current = existsSync(docFile) ? readJson(docFile) : null;
+    const write = (file, data) => atomicWrite(path.join(workdir, file), JSON.stringify(data));
+    if (name === "tts") {
+      mkdirSync(workdir, { recursive: true });
+      writeSyntheticNarration(current, lexicon(), workdir);
+      return { code: 0, out: "narration" };
+    }
+    if (name === "check-audio") {
+      write("review/check.json", { lines: Object.fromEntries([...eachLine(current)].map(({ line }) => [line.id, { match: true, match_kind: "exact" }])) });
+      return { code: 0, out: "every line passed" };
+    }
+    if (name === "keyframes") {
+      write("keyframes/manifest.json", { look_hash: lookOf(current), pictures_hash: picturesHash(current), shots: Object.fromEntries(shotScenes(current).map((scene) => [scene.id, { file: `keyframes/${scene.id}-1.png`, sha256: "2".repeat(64), needs_review: false, judge: { overall: 8, problems: [] } }])) });
+      return { code: 0, out: "5 keyframes" };
+    }
+    if (name === "render") {
+      write("frames/manifest.json", { visual_hash: visualHash(current), theme_hash: "t", fps: 30, size: { width: 1920, height: 1080 }, scenes: [], thumbnail: "thumbnail.jpg" });
+      writeFileSync(path.join(workdir, "thumbnail.jpg"), jpegBytes(1280, 720));
+      return { code: 0, out: "rendered" };
+    }
+    if (name === "assemble") {
+      const keyframes = readJson(path.join(workdir, "keyframes", "manifest.json"));
+      writeFileSync(path.join(workdir, "final.mp4"), randomBytes(PART_BYTES + 10));
+      write("checks.json", { ok: true, speech_hash: speechHash(current, lexicon()), visual_hash: visualHash(current), look_hash: lookOf(current), pictures_hash: keyframesHash(current, keyframes), mix_hash: mixHash(current), sfx_hash: sfxHash(current), problems: [], metrics: { frames: 900, loudness: { integrated: -14 }, psnr: [] } });
+      return { code: 0, out: "assembled" };
+    }
+    if (name === "review-push") {
+      const gate = command[command.indexOf("--gate") + 1];
+      const list = site.reviewsOf(slug);
+      if (gate === "audio") list.unshift({ id: `audio-${list.length}`, gate: "audio", status: "approved", choice: null, note: "Jev passed every line", decided_at: "2026-09-29T10:30:00Z", content_sha256: sha(path.join(workdir, "timeline.json")), payload: {} });
+      // The site approves the storyboard on its own for illustrated slides (docs/videos/ILLUSTRATED.md).
+      if (gate === "storyboard") list.unshift({ id: `board-${list.length}`, gate: "storyboard", status: "approved", choice: null, note: null, decided_at: "2026-09-29T10:40:00Z", content_sha256: sha(path.join(workdir, "keyframes", "manifest.json")), payload: { shots: [], judge: { overall: 8, problems: [] } } });
+      return { code: 0, out: `${gate} submitted` };
+    }
+    const { main: cli } = await import("../cli.mjs");
+    let out = "";
+    const sink = { write: (text) => (out += text) };
+    const code = await cli(command, { ...runCtx, runCommand: undefined, stdout: sink, stderr: sink });
+    return { code, out };
+  };
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+
+  assert.match(await automation.step(), /planned from 1 topics/);
+  site.reviewsOf(slug)[0].status = "approved";
+  site.reviewsOf(slug)[0].choice = "B";
+  assert.match(await automation.step(), /chose outline B/);
+  assert.match(await automation.step(), /script drafted and passes lint; 2 Shorts drafted/);
+  const written = readJson(docFile);
+  assert.equal(written.format, "slides");
+  assert.equal(written.look.preset, "tech-story");
+  assert.ok(existsSync(shortsFile(slug, box.root)), "an illustrated video's Shorts are saved like an explainer's");
+  const writer = site.calls.run.find((call) => call.stage === "writer");
+  assert.equal(writer.format, "slides", "the slides writer, not the drama's");
+  assert.match(await automation.step(), /fact-check round 1/);
+  assert.match(await automation.step(), /listener edit/);
+  assert.match(await automation.step(), /narration synthesized/);
+  assert.match(await automation.step(), /narration checked \(Jev passed every line\) and sent for review/);
+  assert.match(await automation.step(), /keyframes done/);
+  assert.match(await automation.step(), /storyboard sent to \/admin\/videos/);
+  assert.match(await automation.step(), /the owner approved the storyboard/);
+  assert.ok(readApprovals(workdir).approvals.some((entry) => entry.gate === "storyboard"));
+  assert.match(await automation.step(), /frames rendered/);
+  assert.match(await automation.step(), /music done/, "the owner's track is checked into music/manifest.json");
+  assert.ok(runs.includes(`music --slug ${slug}`));
+  assert.equal(readJson(path.join(workdir, "music", "manifest.json")).source, "track");
+  assert.match(await automation.step(), /video assembled/);
+  assert.match(await automation.step(), /captions written/);
+  const status = await pipelineStatus({ slug, root: box.root, workdir });
+  assert.equal(status.next.id, "final video approved");
+  assert.deepEqual(runs.filter((run) => /^(tts|keyframes|render|music|assemble|captions) /.test(run)).map((run) => run.split(" ")[0]), ["tts", "keyframes", "render", "music", "assemble", "captions"]);
+});
