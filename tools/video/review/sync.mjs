@@ -812,6 +812,9 @@ export async function reviewPush(args, ctx) {
         stage: status.next ? status.next.id.slice(0, 40) : "done",
         checklist: checklistFrom(status.steps),
         youtube_video_id: project.doc.youtube?.video_id || null,
+        // The site reads the format at its gates (a drama's storyboard rule is not a slides video's,
+        // docs/videos/ILLUSTRATED.md); the worker reports it too (automation/flow.mjs).
+        format: project.doc.format ?? "slides",
         ...(sourceGuide ? { source_guide: sourceGuide } : {}),
         // An episode names its series and number; a compilation only its series (docs/videos/BINGE.md).
         ...(isCompilation(project.doc) ? { series_slug: project.doc.compilation.series } : project.doc.series ? { series_slug: project.doc.series.slug, episode_number: project.doc.series.episode } : {}),
