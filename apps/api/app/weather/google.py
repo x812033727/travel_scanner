@@ -10,6 +10,7 @@ from redis.asyncio import Redis
 from redis.exceptions import RedisError
 
 from app.config import Settings
+from app.hotspots.guides import GOOGLE_API_KEY_HEADER
 from app.problems import AppError
 from app.providers.usage_meter import record_google_maps_request
 from app.weather.schemas import CurrentWeather, DailyWeather, TripWeather, WeatherCondition
@@ -61,8 +62,8 @@ class GoogleWeatherService:
                 "weather_not_configured",
                 "Google Weather 尚未設定，請先在管理後台設定伺服器 API 金鑰",
             )
+        headers = {GOOGLE_API_KEY_HEADER: self.settings.google_maps_api_key}
         params: dict[str, str | int] = {
-            "key": self.settings.google_maps_api_key,
             "location.latitude": f"{latitude:.6f}",
             "location.longitude": f"{longitude:.6f}",
             "languageCode": language_code,
@@ -73,12 +74,12 @@ class GoogleWeatherService:
             params["pageSize"] = days
         try:
             if self.client is not None:
-                response = await self.client.get(url, params=params)
+                response = await self.client.get(url, params=params, headers=headers)
             else:
                 async with httpx.AsyncClient(
                     timeout=self.settings.provider_timeout_seconds
                 ) as client:
-                    response = await client.get(url, params=params)
+                    response = await client.get(url, params=params, headers=headers)
             if response.is_error:
                 provider_code = f"HTTP_{response.status_code}"
                 detail = "Google Weather 暫時無法回應"
@@ -279,18 +280,21 @@ class GoogleWeatherService:
             try:
                 current_payload = cast(dict[str, Any], current_result)
                 current = self._parse_current(current_payload)
-                timezone = str(
-                    cast(dict[str, Any], current_payload.get("timeZone") or {}).get("id") or ""
-                ) or None
+                timezone = (
+                    str(cast(dict[str, Any], current_payload.get("timeZone") or {}).get("id") or "")
+                    or None
+                )
             except (KeyError, TypeError, ValueError):
                 warnings.append("weather_current_incomplete")
         else:
             warnings.append("weather_current_unavailable")
         if isinstance(daily_result, dict):
             daily_payload = cast(dict[str, Any], daily_result)
-            timezone = timezone or str(
-                cast(dict[str, Any], daily_payload.get("timeZone") or {}).get("id") or ""
-            ) or None
+            timezone = (
+                timezone
+                or str(cast(dict[str, Any], daily_payload.get("timeZone") or {}).get("id") or "")
+                or None
+            )
             for value in cast(list[dict[str, Any]], daily_payload.get("forecastDays") or []):
                 try:
                     days.append(self._parse_day(value))

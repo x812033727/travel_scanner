@@ -346,7 +346,9 @@ def test_a_hands_off_document_is_decided_from_the_verdict_as_it_arrives() -> Non
     assert service.auto_doc_status(classic, passing, 1, 2) == ("review", None)
 
 
-def test_the_setting_book_names_a_series_the_form_left_blank() -> None:
+def test_the_setting_book_names_a_series_the_form_left_blank(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     series = _series()
     doc = VideoDramaDoc(
         id=uuid4(),
@@ -363,6 +365,7 @@ def test_the_setting_book_names_a_series_the_form_left_blank() -> None:
     import asyncio
 
     session = AsyncMock()
+    monkeypatch.setattr(service, "_docs", AsyncMock(return_value=[doc]))
     asyncio.run(
         service._apply_approval(session, _series(status="setting", title=series.title), doc)
     )

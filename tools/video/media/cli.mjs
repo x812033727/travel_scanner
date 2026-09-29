@@ -7,10 +7,11 @@ import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
 
-import { resolveWorkdir, UsageError } from "../core/paths.mjs";
+import { docDir, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { MediaError, mediaStatus } from "./client.mjs";
 import { ledgerTotals } from "./ledger.mjs";
+import { imageStatus } from "./stages.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 
@@ -50,7 +51,7 @@ export function statusText(status, totals) {
   for (const kind of ["image", "clip", "music"]) {
     const choice = status[kind];
     const shape = kind === "clip" ? ` ${choice.resolution}, ${choice.seconds} s` : "";
-    lines.push(`${kind}: ${choice.provider} ${choice.model}${shape}${choice.configured ? "" : " (NO KEY on the site)"}`);
+    lines.push(`${kind}: ${choice.provider} ${choice.model}${shape}${choice.configured === null ? " (provider key checked on submit)" : choice.configured ? "" : " (NO KEY on the site)"}`);
   }
   for (const [name, budget] of Object.entries(status.budgets ?? {})) {
     lines.push(`budget ${name}: ${budget.used} of ${budget.limit} ${budget.unit} used this month, ${budget.remaining} left`);
@@ -64,7 +65,8 @@ export function statusText(status, totals) {
 async function cmdStatus(args, ctx) {
   const values = parseArgs({ args, options: { slug: { type: "string" }, workdir: { type: "string" }, json: { type: "boolean" } }, strict: true }).values;
   const credentials = requireCredentials(ctx);
-  const status = await mediaStatus(clientOptions(ctx, credentials));
+  const series = values.slug ? readJson(path.join(docDir(values.slug, ctx.root), "series.json"), null) : null;
+  const status = imageStatus(await mediaStatus(clientOptions(ctx, credentials)), series);
   let totals = null;
   if (values.slug) {
     const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: values.slug, root: ctx.root, home: ctx.home });

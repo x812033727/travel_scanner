@@ -1,0 +1,1616 @@
+{
+  "schema_version": 1,
+  "slug": "rtx-spark-local-ai",
+  "format": "slides",
+  "source_guide": "deepseek-local-with-ollama",
+  "target_minutes": [
+    8,
+    10
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a natural Taiwanese accent. Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace."
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "NVIDIA RTX Spark 筆電 128 GB 裝得下哪些 AI 模型？本機 AI 能取代 ChatGPT 嗎？",
+    "description": "NVIDIA 說 RTX Spark 能跑 1200 億參數的模型，700 億參數的 Llama 3.3 原版檔案卻有 141 GB，放不進這台筆電最多的 128 GB。這支影片用一條算式「參數量 × 每個參數的位元組」，算出 16 GB、64 GB、128 GB 各裝得下哪些模型，再看決定速度的記憶體頻寬，以及本機 AI 能不能取代每月的 AI 訂閱。\n\n影片裡的規格、參數量與檔案大小，都來自 NVIDIA、Microsoft、OpenAI、Hugging Face 與 Ollama 的官方頁面，查閱日期是 2026 年 9 月 28 日，之後可能變動。當天 NVIDIA 的 RTX Spark 產品頁沒有列價格，價格以官網為準；記憶體頻寬 300 GB/s 出自 NVIDIA 的開發者文件。頻道沒有 RTX Spark 實機，影片裡沒有任何實測速度：每秒幾個 token 的數字，是用這個頻寬算出的理論上限。NVIDIA 的說法都標明是廠商說的。\n\nClaude Pro 的價格是 2026 年 9 月 28 日官網的月繳價，其他訂閱以各家官網為準。回本月數與電費粗估的算式都在畫面上，你可以代入自己的數字重算。「最在意哪一件事」的表與結論，是頻道主的看法，不是購買建議。",
+    "tags": [
+      "RTX Spark",
+      "本機 AI",
+      "RTX Spark 筆電",
+      "NVIDIA RTX Spark",
+      "本地端 LLM",
+      "筆電跑 LLM",
+      "128GB 可以跑什麼模型",
+      "本機 AI 取代 ChatGPT",
+      "AI PC 值得買嗎",
+      "LLM 記憶體需求",
+      "統一記憶體",
+      "Ollama",
+      "gpt-oss",
+      "Llama 3.3",
+      "rtx spark local ai",
+      "run llm locally 128gb",
+      "local ai vs chatgpt",
+      "how much ram to run an llm"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "NVIDIA RTX Spark",
+      "headline": "**128 GB**\n裝得下什麼？",
+      "sub": "一條算式，自己驗算"
+    }
+  },
+  "sources": [
+    {
+      "title": "NVIDIA RTX Spark product page",
+      "url": "https://www.nvidia.com/en-us/products/rtx-spark/",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "NVIDIA newsroom, RTX Spark announcement, 2026-05-31",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-microsoft-windows-pcs-agents-rtx-spark",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "NVIDIA blog, local AI at IFA 2026, 2026-09-03",
+      "url": "https://blogs.nvidia.com/blog/local-ai-ifa-next-gen-agents-nv-pair-rtx-spark/",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Windows Experience Blog, RTX Spark PCs, 2026-05-31",
+      "url": "https://blogs.windows.com/windowsexperience/2026/05/31/introducing-a-powerful-new-chapter-for-windows-pcs-accelerated-by-nvidia-rtx-spark/",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Windows Developer Blog, security for AI agents (MXC), 2026-06-02",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/06/02/windows-platform-security-for-ai-agents/",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "NVIDIA Personal AI Router (PAIR)",
+      "url": "https://www.nvidia.com/en-us/ai-on-rtx/personal-ai-router/",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Windows 11 and Copilot+ PC requirements",
+      "url": "https://www.microsoft.com/en-us/windows/windows-11-specifications",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "GeForce RTX 50 Series laptop GPUs",
+      "url": "https://www.nvidia.com/en-us/geforce/laptops/50-series/",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Llama 3.3 70B Instruct, Hugging Face",
+      "url": "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Llama 3.3 70B parameters and file sizes, Hugging Face API",
+      "url": "https://huggingface.co/api/models/meta-llama/Llama-3.3-70B-Instruct?blobs=true",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Ollama llama3.3 file sizes",
+      "url": "https://ollama.com/library/llama3.3/tags",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Hugging Face docs, GGUF quantization types",
+      "url": "https://huggingface.co/docs/hub/gguf",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "gpt-oss-20b, Hugging Face",
+      "url": "https://huggingface.co/openai/gpt-oss-20b",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "gpt-oss-120b, Hugging Face",
+      "url": "https://huggingface.co/openai/gpt-oss-120b",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "gpt-oss-120b config.json",
+      "url": "https://huggingface.co/openai/gpt-oss-120b/raw/main/config.json",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "DeepSeek-V4-Flash, Hugging Face",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "gpt-oss-20b file sizes, Hugging Face API",
+      "url": "https://huggingface.co/api/models/openai/gpt-oss-20b?blobs=true",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "gpt-oss-120b file sizes, Hugging Face API",
+      "url": "https://huggingface.co/api/models/openai/gpt-oss-120b?blobs=true",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "DeepSeek-V4-Flash file sizes, Hugging Face API",
+      "url": "https://huggingface.co/api/models/deepseek-ai/DeepSeek-V4-Flash?blobs=true",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "NVIDIA Technical Blog, LLM inference optimization",
+      "url": "https://developer.nvidia.com/blog/mastering-llm-techniques-inference-optimization/",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Claude pricing",
+      "url": "https://claude.com/pricing",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Microsoft Support, Task Manager Performance tab, zh-TW",
+      "url": "https://support.microsoft.com/zh-tw/windows/experience/compatibility/find-out-how-many-cores-a-processor-on-a-windows-device-has",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "JEDEC Standard No. 21-C, terms and definitions: memory capacity counts K as 1024 and M as 2^20",
+      "url": "https://www.jedec.org/sites/default/files/2_00R20.pdf",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "NVIDIA Windows on Arm Porting Guide, RTX Spark System Overview (memory bandwidth), updated 2026-09-10",
+      "url": "https://docs.nvidia.com/rtx-spark/rtx-spark-porting-guide/latest/overview.html",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "OpenAI, gpt-oss-120b & gpt-oss-20b Model Card (arXiv 2508.10925): parameter counts, MXFP4 at 4.25 bits, top-4 of 128 experts",
+      "url": "https://arxiv.org/abs/2508.10925",
+      "checked_on": "2026-09-28"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook-title",
+      "chapter": "128 GB 的 AI 筆電，裝得下什麼？",
+      "template": "title",
+      "data": {
+        "tag": "NVIDIA RTX Spark",
+        "title": "128 GB 的 AI 筆電\n**裝得下**什麼？",
+        "subtitle": "一條算式，自己驗算"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "c752",
+          "text": "128 GB 的 RTX Spark 筆電，裝得下哪些模型？",
+          "say": "一百二十八 GB 的 RTX Spark 筆電，裝得下哪些模型？",
+          "say_for": "289832a2d6b5"
+        }
+      ]
+    },
+    {
+      "id": "hook-numbers",
+      "template": "stats",
+      "data": {
+        "title": "兩個數字",
+        "stats": [
+          {
+            "value": "1200 億",
+            "label": "NVIDIA：能跑的參數量"
+          },
+          {
+            "value": "141 GB",
+            "label": "Llama 3.3 70B 原版檔案",
+            "note": "RTX Spark 最多 128 GB"
+          }
+        ]
+      },
+      "claims": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "xj6b",
+          "text": "NVIDIA 說，它能跑 1200 億參數的模型。",
+          "reveal": 1
+        },
+        {
+          "id": "piku",
+          "text": "可是 700 億參數的 Llama 3.3，原版 141 GB，裝不下。",
+          "say": "可是七百億參數的 Llama 三點三，原版一百四十一 GB，裝不下。",
+          "say_for": "92added42b26",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "hook-chat",
+      "template": "chat",
+      "data": {
+        "title": "兩句都對？",
+        "messages": [
+          {
+            "side": "right",
+            "name": "你",
+            "text": "能跑 1200 億，卻裝不下 700 億？"
+          },
+          {
+            "side": "left",
+            "name": "答案",
+            "text": "兩句都對，差在一個你算得出來的數字"
+          }
+        ]
+      },
+      "claims": [
+        "c2",
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "bbn6",
+          "text": "兩句都對，差在一個你算得出來的數字。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "hook-plan",
+      "template": "bullets",
+      "data": {
+        "title": "這集要算的三件事",
+        "items": [
+          "128 GB 裝得下哪些模型",
+          "決定速度的那個數字",
+          "能不能取代你的 AI 訂閱"
+        ]
+      },
+      "lines": [
+        {
+          "id": "xbwf",
+          "text": "這集用它算出裝得下什麼。",
+          "reveal": 1
+        },
+        {
+          "id": "prq6",
+          "text": "再看決定速度的數字，還有能不能取代訂閱。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "specs",
+      "chapter": "RTX Spark 是什麼：NVIDIA 公布的規格",
+      "template": "table",
+      "data": {
+        "title": "NVIDIA 公布的規格",
+        "columns": [
+          "規格",
+          "筆電",
+          "另一級筆電",
+          "桌機"
+        ],
+        "rows": [
+          [
+            "GPU 核心",
+            "6144",
+            "5120",
+            "6144"
+          ],
+          [
+            "CPU 核心",
+            "20",
+            "18",
+            "20"
+          ],
+          [
+            "記憶體最多",
+            "**128 GB**",
+            "64 GB",
+            "**128 GB**"
+          ],
+          [
+            "晶片功耗 TDP",
+            "45–80 W",
+            "45–80 W",
+            "140 W"
+          ]
+        ]
+      },
+      "claims": [
+        "c4",
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "m5b4",
+          "text": "NVIDIA 說十月開始出貨，有兩級筆電，還有小桌機。",
+          "say": "NVIDIA 說十月開始出貨，有兩種筆電，還有小桌機。",
+          "say_for": "e5c420f4d7e0"
+        },
+        {
+          "id": "xapq",
+          "text": "顯示晶片最多 6144 個核心。",
+          "reveal": 1
+        },
+        {
+          "id": "nbyi",
+          "text": "處理器最多 20 核，是和聯發科一起設計的 Arm 架構。",
+          "pause_after_ms": 1400,
+          "reveal": 1
+        },
+        {
+          "id": "ey2n",
+          "text": "記憶體最多 128 GB，另一級筆電最多 64 GB。",
+          "say": "記憶體最多一百二十八 GB，另一種筆電最多六十四 GB。",
+          "say_for": "e7e7625aa7bb",
+          "reveal": 1
+        },
+        {
+          "id": "m3t7",
+          "text": "晶片功耗，筆電是 45 到 80 瓦，桌機 140 瓦。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "claim-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "NVIDIA 新聞稿原文",
+        "quote": "run 120-billion-parameter large language models with 1 million tokens context",
+        "translation": "能跑 **1200 億參數**的大型語言模型，上下文一百萬個 token",
+        "source": "NVIDIA 新聞稿，2026 年 5 月 31 日，GTC Taipei"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "2saw",
+          "text": "開場那句話，出自 NVIDIA 五月底在台北發表時的新聞稿。"
+        },
+        {
+          "id": "rvyh",
+          "text": "翻成中文，就是能跑 1200 億參數的大型語言模型。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "unified-memory",
+      "template": "compare",
+      "data": {
+        "title": "記憶體放在哪裡？",
+        "left": {
+          "heading": "一般與電競筆電",
+          "points": [
+            "系統記憶體主要給 CPU 用",
+            "Copilot+ PC 最低 16 GB",
+            "電競筆電的顯示卡另有記憶體",
+            "RTX 5060 筆電版：8 GB",
+            "RTX 5090 筆電版：24 GB"
+          ]
+        },
+        "right": {
+          "heading": "RTX Spark",
+          "points": [
+            "CPU 和 GPU **共用**一塊",
+            "最多 128 GB",
+            "GPU 能用多少：Windows 設上限",
+            "上限多少：五月公告未寫"
+          ]
+        }
+      },
+      "claims": [
+        "c6",
+        "c7",
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "5atc",
+          "text": "一般筆電記憶體主要給處理器用；電競筆電的顯示卡另有一小塊。",
+          "reveal": 1
+        },
+        {
+          "id": "td4z",
+          "text": "RTX Spark 是統一記憶體，處理器和顯示晶片共用。",
+          "reveal": 1
+        },
+        {
+          "id": "bmxq",
+          "text": "顯示晶片能用多少，Windows 設了上限，五月的公告沒寫數字。"
+        }
+      ]
+    },
+    {
+      "id": "bytes",
+      "chapter": "一個 AI 模型要多少記憶體？一條算式",
+      "template": "stats",
+      "data": {
+        "title": "每個參數佔幾個位元組",
+        "stats": [
+          {
+            "value": "2",
+            "label": "16 位元",
+            "note": "原版常見"
+          },
+          {
+            "value": "1",
+            "label": "8 位元"
+          },
+          {
+            "value": "0.5",
+            "label": "4 位元"
+          }
+        ]
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "yuve",
+          "text": "一個模型要多少記憶體？"
+        },
+        {
+          "id": "cens",
+          "text": "先看它的參數，也就是模型學到的一大堆數字。"
+        },
+        {
+          "id": "v79x",
+          "text": "每個數字用 16 位元存，佔 2 個位元組。",
+          "reveal": 1
+        },
+        {
+          "id": "6695",
+          "text": "壓成 8 位元，就是 1 個位元組。",
+          "reveal": 1
+        },
+        {
+          "id": "26a5",
+          "text": "壓成 4 位元，只要半個位元組，這種壓縮叫量化。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "formula",
+      "template": "code",
+      "data": {
+        "title": "記憶體的算式",
+        "language": "算式",
+        "code": "記憶體 ≈ 參數量 × 每個參數的位元組\n\nLlama 3.3 70B：705.5 億個參數\n  × 2    ＝ 141.1 GB   16 位元，原版\n  × 1    ＝  70.6 GB    8 位元\n  × 0.5  ＝  35.3 GB    4 位元\n",
+        "highlight": [
+          1
+        ],
+        "caption": "參數量：Hugging Face 模型 API，2026-09-28"
+      },
+      "claims": [
+        "c9",
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "6x2b",
+          "text": "算式就一行：參數量乘上每個參數的位元組。"
+        },
+        {
+          "id": "62hr",
+          "text": "Llama 3.3 70B 乘 2 是 141 GB，乘 0.5 大約 35 GB。",
+          "say": "Llama 三點三的七十 B，乘二是一百四十一 GB，乘 0.5 大約三十五 GB。",
+          "say_for": "8851486ba8fd"
+        }
+      ]
+    },
+    {
+      "id": "vs-ollama",
+      "template": "table",
+      "data": {
+        "title": "算式 vs Ollama 實際檔案",
+        "columns": [
+          "精度",
+          "算式",
+          "Ollama 檔案"
+        ],
+        "rows": [
+          [
+            "16 位元",
+            "141 GB",
+            "141 GB"
+          ],
+          [
+            "8 位元",
+            "71 GB",
+            "75 GB"
+          ],
+          [
+            "4 位元",
+            "35 GB",
+            "**40–43 GB**"
+          ]
+        ],
+        "highlight": 2
+      },
+      "claims": [
+        "c10",
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "89kx",
+          "text": "Ollama 是在自己電腦跑模型的工具，上面也有同一個模型。"
+        },
+        {
+          "id": "q7tw",
+          "text": "16 位元的檔案 141 GB，跟算式一樣。",
+          "say": "十六位元的檔案一百四十一 GB，跟算式一樣。",
+          "say_for": "7992f3d1c007",
+          "reveal": 1
+        },
+        {
+          "id": "4zmj",
+          "text": "8 位元是 75 GB，多了一點。",
+          "say": "八位元是七十五 GB，多了一點。",
+          "say_for": "2eaec2f4b3f5",
+          "reveal": 1
+        },
+        {
+          "id": "tj2j",
+          "text": "4 位元是 40 到 43 GB，比算式多出一成多到兩成多。",
+          "say": "四位元是四十到四十三 GB，比算式多出一成多到兩成多。",
+          "say_for": "45e6447e3766",
+          "reveal": 1
+        },
+        {
+          "id": "uqcg",
+          "text": "多的主要是壓縮時另外存的縮放值，所以算式只是下限。"
+        }
+      ]
+    },
+    {
+      "id": "rule",
+      "template": "big",
+      "data": {
+        "kicker": "記住這一句",
+        "text": "檔案多大，\n記憶體**至少**就要多大",
+        "sub": "還沒算上下文，也還沒算 Windows 自己"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "uhun",
+          "text": "所以記住這一句：檔案多大，記憶體至少就要多大。"
+        }
+      ]
+    },
+    {
+      "id": "hook-answer",
+      "template": "stats",
+      "data": {
+        "title": "回到開場那兩句",
+        "stats": [
+          {
+            "value": "約 60 GB",
+            "label": "1200 億 × 0.5",
+            "note": "4 位元：放得下"
+          },
+          {
+            "value": "141 GB",
+            "label": "705.5 億 × 2",
+            "note": "16 位元：放不下"
+          }
+        ],
+        "source": "RTX Spark 最多 128 GB，只算模型本身"
+      },
+      "claims": [
+        "c2",
+        "c3",
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "rxkq",
+          "text": "回到開場：1200 億參數用 4 位元存，大約 60 GB，放得進 128 GB。",
+          "say": "回到開場：1200 億參數用 4 位元存，大約六十 GB，放得進一百二十八 GB。",
+          "say_for": "bcc95701c279",
+          "reveal": 1
+        },
+        {
+          "id": "p9rk",
+          "text": "Llama 70B 用原版的 16 位元，要 141 GB，就放不下。",
+          "say": "Llama 七十 B 用原版的 16 位元，要一百四十一 GB，就放不下。",
+          "say_for": "dee8722ace7e",
+          "reveal": 1
+        },
+        {
+          "id": "veb5",
+          "text": "兩句話差的，就是每個參數佔幾個位元組。"
+        }
+      ]
+    },
+    {
+      "id": "fit-rule",
+      "chapter": "128 GB、64 GB、16 GB 各跑得動哪些模型",
+      "template": "bullets",
+      "data": {
+        "title": "放不放得下，這樣判斷",
+        "items": [
+          "扣掉 Windows 11 的 **4 GB**",
+          "檔案比剩下的小：**放得下**",
+          "比整個記憶體還大：**放不下**",
+          "介於兩者之間：**太擠**"
+        ],
+        "note": "記憶體的 GB 以 1024³ 計：128 GB ＝ 檔案算法的 137.4 GB"
+      },
+      "claims": [
+        "c13",
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "c8mw",
+          "text": "那 16、64、128 GB，各裝得下哪些模型？",
+          "say": "那十六、六十四、一百二十八 GB，各裝得下哪些模型？",
+          "say_for": "c2b6bd86bfcb"
+        },
+        {
+          "id": "gzmm",
+          "text": "判斷方法是，先扣掉 Windows 11 最低要的 4 GB。",
+          "say": "判斷方法是，先扣掉 Windows 十一最低要的四 GB。",
+          "say_for": "9779ab63a79b",
+          "reveal": 1
+        },
+        {
+          "id": "ieht",
+          "text": "檔案比剩下的小就放得下，比整個記憶體還大就放不下。",
+          "reveal": 2
+        },
+        {
+          "id": "xj2j",
+          "text": "介於兩者之間，就算太擠。",
+          "say": "介於兩者之間，就算太擠了。",
+          "say_for": "bb6a71a4afba",
+          "reveal": 1
+        },
+        {
+          "id": "i55z",
+          "text": "還有，記憶體的 GB 比檔案的 GB 大一點，表上已經換算好了。"
+        }
+      ]
+    },
+    {
+      "id": "fit-table",
+      "template": "table",
+      "data": {
+        "columns": [
+          "模型（還沒算上下文）",
+          "檔案",
+          "16 GB",
+          "64 GB",
+          "128 GB"
+        ],
+        "rows": [
+          [
+            "gpt-oss-20b",
+            "13.8 GB",
+            "太擠",
+            "放得下",
+            "放得下"
+          ],
+          [
+            "Llama 3.3 70B 4 位元",
+            "43 GB",
+            "放不下",
+            "放得下",
+            "放得下"
+          ],
+          [
+            "gpt-oss-120b",
+            "65.2 GB",
+            "放不下",
+            "太擠",
+            "放得下"
+          ],
+          [
+            "Llama 3.3 70B 8 位元",
+            "75 GB",
+            "放不下",
+            "放不下",
+            "放得下"
+          ],
+          [
+            "Llama 3.3 70B 原版",
+            "141.1 GB",
+            "放不下",
+            "放不下",
+            "放不下"
+          ],
+          [
+            "DeepSeek-V4-Flash",
+            "159.6 GB",
+            "放不下",
+            "放不下",
+            "放不下"
+          ]
+        ]
+      },
+      "claims": [
+        "c10",
+        "c11",
+        "c13",
+        "c14",
+        "c15",
+        "c16",
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "i3ft",
+          "text": "OpenAI 的 gpt-oss-20b 檔案 13.8 GB，16 太擠，64 以上放得下。",
+          "say": "OpenAI 的 gpt-oss-20b 檔案十三點八 GB，十六太擠，六十四以上放得下。",
+          "say_for": "07d8dd151abe",
+          "reveal": 1
+        },
+        {
+          "id": "67f3",
+          "text": "Llama 70B 的 4 位元版 43 GB，要 64 GB 才放得下。",
+          "say": "Llama 七十 B 的 4 位元版，四十三 GB，要六十四 GB 才放得下。",
+          "say_for": "9d5e3d541894",
+          "reveal": 1
+        },
+        {
+          "id": "jxzc",
+          "text": "gpt-oss-120b 是 65.2 GB，64 GB 那級太擠，128 放得下。",
+          "say": "gpt-oss-120b 是六十五點二 GB，六十四 GB 那級太擠，一百二十八放得下。",
+          "say_for": "13c9d74c2a99",
+          "reveal": 1
+        },
+        {
+          "id": "8jvg",
+          "text": "8 位元的 Llama 75 GB，只有 128 GB 放得下。",
+          "say": "8 位元的 Llama，七十五 GB，只有一百二十八 GB 放得下。",
+          "say_for": "e7687c0dcb8a",
+          "reveal": 1
+        },
+        {
+          "id": "r2ah",
+          "text": "原版的 Llama 141 GB，128 也放不下。",
+          "say": "原版的 Llama，一百四十一 GB，一百二十八也放不下。",
+          "say_for": "a75466c23d6d",
+          "reveal": 1
+        },
+        {
+          "id": "cwn7",
+          "text": "DeepSeek-V4-Flash 將近 160 GB，三種都放不下。",
+          "say": "DeepSeek 的 V 四 Flash，將近一百六十 GB，三種都放不下。",
+          "say_for": "3f98b64591e8",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ask-405b",
+      "template": "chat",
+      "data": {
+        "title": "你可能聽過這句",
+        "messages": [
+          {
+            "side": "right",
+            "name": "你",
+            "text": "聽說 128 GB 連 405B 的模型都跑得動？"
+          },
+          {
+            "side": "left",
+            "name": "算一下",
+            "text": "4050 億 × 0.5 ＝ 兩百多 GB，放不下"
+          }
+        ]
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "pt7g",
+          "text": "你可能聽過：128 GB 連 4050 億參數的模型都跑得動？",
+          "say": "你可能聽過：一百二十八 GB 連 4050 億參數的模型都跑得動？",
+          "say_for": "c6b0832a83ff",
+          "reveal": 1
+        },
+        {
+          "id": "6p8h",
+          "text": "算一下：4050 億乘 0.5，是兩百多 GB，一樣放不下。",
+          "say": "算一下：四千多億，乘以零點五，是兩百多 GB，一樣放不下。",
+          "say_for": "fd8bd73493b5",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "pair-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "NVIDIA PAIR 常見問題",
+        "quote": "PAIR doesn't combine them into one virtual GPU",
+        "translation": "PAIR 不會把幾台電腦合成**一顆**虛擬 GPU",
+        "source": "NVIDIA Personal AI Router 頁面，2026-09-28"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "2y24",
+          "text": "那家裡兩台 128 GB 的電腦，能不能合成 256 GB？",
+          "say": "那家裡兩台一百二十八 GB 的電腦，能不能合成兩百五十六 GB？",
+          "say_for": "772bc686233d"
+        },
+        {
+          "id": "5cse",
+          "text": "NVIDIA 的 PAIR 工具，能把工作分給家裡的幾台電腦。"
+        },
+        {
+          "id": "8jt5",
+          "text": "但官網寫得很清楚：它不會把幾台合成一顆虛擬 GPU。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "context",
+      "template": "code",
+      "data": {
+        "title": "上下文也要記憶體",
+        "language": "算式",
+        "code": "gpt-oss-120b 的上下文快取，以 16 位元存\n每個 token ＝ 2 × 18 層 × 8 頭 × 64 維 × 2 位元組\n          ＝ 36,864 位元組\n× 131,072 個 token，讀到最長 ≈ 4.8 GB\n另外 18 層只記最近 128 個 token，約 4.7 MB\n\n模型 65.2 GB ＋ 上下文 4.8 GB ≈ 70 GB\n",
+        "highlight": [
+          4,
+          7
+        ],
+        "caption": "層數、KV 頭數、每頭維度：gpt-oss-120b 的 config.json"
+      },
+      "claims": [
+        "c16",
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "c876",
+          "text": "上下文，就是模型一次讀進來的內容，也吃記憶體。",
+          "say": "上下文，就是模型一次讀進來的內容，也會佔用記憶體。",
+          "say_for": "47dad8063ba1"
+        },
+        {
+          "id": "pii9",
+          "text": "gpt-oss-120b 讀到最長，要再多 4.8 GB，合計大約 70 GB。",
+          "say": "gpt-oss-120b 讀到最長，要再多四點八 GB，合計大約七十 GB。",
+          "say_for": "3153bdaf9a44"
+        }
+      ]
+    },
+    {
+      "id": "tight",
+      "template": "stats",
+      "data": {
+        "title": "這兩格為什麼算太擠",
+        "stats": [
+          {
+            "value": "剩不到 4 GB",
+            "label": "16 GB 放 gpt-oss-20b",
+            "note": "OpenAI：16 GB 內能跑"
+          },
+          {
+            "value": "剩不到 4 GB",
+            "label": "64 GB 放 gpt-oss-120b"
+          },
+          {
+            "value": "4 GB",
+            "label": "Windows 11 最低需求"
+          }
+        ]
+      },
+      "claims": [
+        "c13",
+        "c14",
+        "c15",
+        "c16",
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "dym6",
+          "text": "OpenAI 說，gpt-oss-20b 在 16 GB 記憶體內就能跑。",
+          "say": "OpenAI 說，gpt-oss-20b 在十六 GB 記憶體內就能跑。",
+          "say_for": "99ddf8398cc5"
+        },
+        {
+          "id": "ttk7",
+          "text": "可是 16 GB 的電腦放下它，只剩不到 4 GB。",
+          "say": "可是十六 GB 的電腦放下它，只剩不到四 GB。",
+          "say_for": "e186c2216cb9",
+          "reveal": 1
+        },
+        {
+          "id": "dqk7",
+          "text": "64 GB 那級放 gpt-oss-120b，也只剩不到 4 GB。",
+          "say": "六十四 GB 那級放 gpt-oss-120b，也只剩不到四 GB。",
+          "say_for": "8d0edad7eaa9",
+          "reveal": 1
+        },
+        {
+          "id": "wyya",
+          "text": "Windows 11 自己最少就要 4 GB，所以這兩格算太擠。",
+          "say": "Windows 十一自己最少就要四 GB，所以這兩格算太擠。",
+          "say_for": "d3131a3696bd",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "article-cta",
+      "template": "cta",
+      "data": {
+        "kicker": "算完，想實際跑一個？",
+        "title": "在自己電腦跑 DeepSeek",
+        "sub": "Ollama 教學，說明欄第一行的文章"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "hcs5",
+          "text": "想實際跑一個看看？"
+        },
+        {
+          "id": "9paj",
+          "text": "說明欄第一行的文章，一步一步教你用 Ollama 在自己電腦跑 DeepSeek。"
+        }
+      ]
+    },
+    {
+      "id": "petaflop",
+      "chapter": "RTX Spark 跑多快？速度要看哪個數字",
+      "template": "quote",
+      "data": {
+        "kicker": "NVIDIA 產品頁原文",
+        "quote": "Up to 1 Petaflop FP4 AI Performance",
+        "translation": "最高每秒**一千兆次** 4 位元運算",
+        "source": "NVIDIA RTX Spark 產品頁，2026-09-28"
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "uih3",
+          "text": "裝得下之後，下一個問題是：它跑多快？"
+        },
+        {
+          "id": "pyma",
+          "text": "NVIDIA 產品頁上，講 AI 算力的是這一句。"
+        },
+        {
+          "id": "cym2",
+          "text": "意思是，最高每秒一千兆次的 4 位元運算。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "published",
+      "template": "bullets",
+      "data": {
+        "title": "NVIDIA 公布了什麼？",
+        "items": [
+          "有公布：算力、記憶體容量、功耗、頻寬 300 GB/s",
+          "九月底未公布：**token 速度**",
+          "要等的：出貨後的實機評測"
+        ]
+      },
+      "claims": [
+        "c4",
+        "c23",
+        "c24",
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "3xvu",
+          "text": "有公布的：算力、記憶體容量、功耗，還有記憶體頻寬，每秒 300 GB。",
+          "say": "有公布的：算力、記憶體容量、功耗，還有記憶體頻寬，每秒三百 GB。",
+          "say_for": "f788ce73c3b5",
+          "reveal": 1
+        },
+        {
+          "id": "6jug",
+          "text": "九月底還沒公布的：每秒能產生幾個 token。",
+          "reveal": 1
+        },
+        {
+          "id": "9qt3",
+          "text": "token 是模型處理文字的小單位。"
+        },
+        {
+          "id": "xzup",
+          "text": "我們沒有實機，所以真正的速度，要等出貨後有名有姓的評測。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "prefill-decode",
+      "template": "compare",
+      "data": {
+        "title": "速度卡在哪裡？",
+        "left": {
+          "heading": "讀進一大段文件",
+          "points": [
+            "一次處理整段",
+            "主要看**算力**"
+          ]
+        },
+        "right": {
+          "heading": "一個字一個字回答",
+          "points": [
+            "每一步都要搬參數",
+            "主要看**記憶體頻寬**"
+          ]
+        },
+        "verdict": "NVIDIA 技術部落格：回答階段受限於記憶體"
+      },
+      "claims": [
+        "c24",
+        "c26",
+        "c38"
+      ],
+      "lines": [
+        {
+          "id": "d7e6",
+          "text": "記憶體頻寬為什麼重要？"
+        },
+        {
+          "id": "k42r",
+          "text": "讀進一大段文件時，速度主要看算力。",
+          "reveal": 1
+        },
+        {
+          "id": "ajv4",
+          "text": "但一個字一個字回答時，每一步都要從記憶體搬參數，卡的是頻寬。",
+          "reveal": 1
+        },
+        {
+          "id": "msnd",
+          "text": "頻寬有了，回答速度的上限就算得出來。"
+        }
+      ]
+    },
+    {
+      "id": "moe",
+      "template": "stats",
+      "data": {
+        "title": "每產生一個 token，要動多少參數",
+        "stats": [
+          {
+            "value": "705.5 億",
+            "label": "Llama 3.3 70B",
+            "note": "全部都要動"
+          },
+          {
+            "value": "51 億",
+            "label": "gpt-oss-120b",
+            "note": "總共 1170 億，MoE"
+          }
+        ],
+        "source": "同一台機器上的比例，不是速度實測"
+      },
+      "claims": [
+        "c10",
+        "c27",
+        "c38"
+      ],
+      "lines": [
+        {
+          "id": "rv27",
+          "text": "要算上限，先看每一步要搬的量：不同結構的模型差很多。"
+        },
+        {
+          "id": "uc8u",
+          "text": "Llama 70B 每產生一個 token，要動到全部 700 多億個參數。",
+          "say": "Llama 七十 B 每產生一個 token，要動到全部 700 多億個參數。",
+          "say_for": "77482e632448",
+          "reveal": 1
+        },
+        {
+          "id": "wm6a",
+          "text": "gpt-oss-120b 是混合專家模型。"
+        },
+        {
+          "id": "k3zx",
+          "text": "總共 1170 億，每次只動 51 億。",
+          "reveal": 1
+        },
+        {
+          "id": "kpbj",
+          "text": "要動的少了十幾倍，可能快很多，但這是比例，不是實測。"
+        }
+      ]
+    },
+    {
+      "id": "active-bytes",
+      "template": "code",
+      "data": {
+        "title": "每個 token 要讀多少",
+        "language": "算式",
+        "code": "Llama 3.3 70B，4 位元：705.5 億 × 0.5 ≈ 35 GB\n\ngpt-oss-120b 原版：每次只動 51 億個參數\n  專家  36 億 × 0.53 位元組 ≈ 1.9 GB   4.25 位元\n  其他  15 億 × 2 位元組    ≈ 3 GB     16 位元\n  合計  51 億               ≈ 5 GB\n",
+        "highlight": [
+          1,
+          6
+        ],
+        "caption": "每層 128 個專家只用 4 個；出自 OpenAI 的模型卡與 config.json"
+      },
+      "claims": [
+        "c10",
+        "c39",
+        "c40"
+      ],
+      "lines": [
+        {
+          "id": "j4w5",
+          "text": "gpt-oss-120b 原版每次大約讀 5 GB。",
+          "say": "gpt-oss-120b 原版每次大約讀五 GB。",
+          "say_for": "575f59010d59"
+        },
+        {
+          "id": "ujr7",
+          "text": "專家是 4 位元多，其他是 16 位元。"
+        }
+      ]
+    },
+    {
+      "id": "speed-ceiling",
+      "template": "stats",
+      "data": {
+        "title": "每秒最多幾個 token",
+        "stats": [
+          {
+            "value": "約 8.6 個",
+            "label": "Llama 3.3 70B",
+            "note": "4 位元：300 ÷ 35 GB"
+          },
+          {
+            "value": "約 60 個",
+            "label": "gpt-oss-120b 原版",
+            "note": "300 ÷ 5 GB"
+          }
+        ],
+        "source": "理論上限＝頻寬 300 GB/s ÷ 每個 token 要讀的量；不是實測"
+      },
+      "claims": [
+        "c24",
+        "c38",
+        "c39",
+        "c41"
+      ],
+      "lines": [
+        {
+          "id": "3s2v",
+          "text": "接下來兩個數字，都是每步一個 token 的理論上限。"
+        },
+        {
+          "id": "wxrv",
+          "text": "每秒 300 GB 除以 35 GB，Llama 最多每秒八個多 token。",
+          "say": "每秒三百 GB 除以三十五 GB，Llama 最多每秒八個多 token。",
+          "say_for": "6c6c847279f2",
+          "reveal": 1
+        },
+        {
+          "id": "efif",
+          "text": "gpt-oss-120b 原版是 300 除以 5，最多約 60 個。",
+          "reveal": 1
+        },
+        {
+          "id": "a5ye",
+          "text": "上下文和其他程式也要搶頻寬，實際只會更慢。"
+        }
+      ]
+    },
+    {
+      "id": "agents-quote",
+      "chapter": "AI 代理在背景跑：Windows 加了哪道牆",
+      "template": "quote",
+      "data": {
+        "kicker": "NVIDIA 部落格原文",
+        "quote": "agents that run safely in the background under OS level control",
+        "translation": "讓代理在背景安全地跑，由**作業系統**控管",
+        "source": "NVIDIA 部落格，2026 年 9 月 3 日，IFA"
+      },
+      "claims": [
+        "c28"
+      ],
+      "lines": [
+        {
+          "id": "9cfz",
+          "text": "RTX Spark 的另一個賣點，是讓 AI 代理在背景一直跑。"
+        },
+        {
+          "id": "6wyn",
+          "text": "NVIDIA 的說法是：代理在背景安全地跑，由作業系統控管。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "mxc",
+      "template": "bullets",
+      "data": {
+        "title": "Windows 加的那道牆：MXC",
+        "items": [
+          "檔案和網路：只能碰**政策允許**的",
+          "代理用自己的帳號：紀錄分得開",
+          "六月發表時：早期預覽，先在測試版"
+        ]
+      },
+      "claims": [
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "u5iy",
+          "text": "微軟的執行容器 MXC，讓代理只能碰政策允許的檔案和網域。",
+          "reveal": 1
+        },
+        {
+          "id": "kna8",
+          "text": "代理用自己的帳號跑，做了什麼，紀錄跟你分得開。",
+          "reveal": 1
+        },
+        {
+          "id": "rab2",
+          "text": "不過微軟六月發表時說，這還是早期預覽，很多功能先放在測試版 Windows。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "wall-opinion",
+      "template": "big",
+      "data": {
+        "kicker": "我的看法",
+        "text": "牆要是**真的**",
+        "sub": "安全靠系統擋住，不是靠提示詞裡的一句「不要」"
+      },
+      "claims": [
+        "c30"
+      ],
+      "lines": [
+        {
+          "id": "akm3",
+          "text": "我的看法是：安全要靠系統真的擋住，不是靠提示詞裡的一句「不要」。"
+        }
+      ]
+    },
+    {
+      "id": "walls-cta",
+      "template": "cta",
+      "data": {
+        "kicker": "頻道的另一集",
+        "title": "把代理關起來的三道牆",
+        "sub": "工具、網路、機密，有真的代理示範"
+      },
+      "claims": [
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "uzk6",
+          "text": "把代理關起來的三道牆，在代理闖進政府網站那一集，有真的示範。"
+        }
+      ]
+    },
+    {
+      "id": "sub-vs-own",
+      "chapter": "AI 訂閱 vs 自己的電腦：回本要幾個月",
+      "template": "compare",
+      "data": {
+        "title": "錢怎麼付？",
+        "left": {
+          "heading": "雲端訂閱",
+          "points": [
+            "每月付",
+            "Claude Pro：月繳 20 美元",
+            "每 5 小時重置，另有每週上限",
+            "2026 年 9 月官網價格",
+            "其他訂閱：以各家官網為準"
+          ]
+        },
+        "right": {
+          "heading": "自己的機器",
+          "points": [
+            "一次付清",
+            "RTX Spark 價格：以官網為準",
+            "另外付電費"
+          ]
+        }
+      },
+      "claims": [
+        "c32",
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "k76b",
+          "text": "再來算錢：雲端訂閱按月付。",
+          "reveal": 1
+        },
+        {
+          "id": "85b5",
+          "text": "像 Claude 的 Pro 方案，九月底是月繳 20 美元。"
+        },
+        {
+          "id": "45uq",
+          "text": "用量每五小時重置，另外還有每週上限。"
+        },
+        {
+          "id": "e55p",
+          "text": "自己的機器一次付清，只是另外要付電費。",
+          "reveal": 1
+        },
+        {
+          "id": "hh47",
+          "text": "RTX Spark 的價格，九月底 NVIDIA 產品頁還沒有列。"
+        }
+      ]
+    },
+    {
+      "id": "payback",
+      "template": "code",
+      "data": {
+        "title": "回本要幾個月",
+        "language": "算式",
+        "code": "回本月數 ＝ 機器多花的錢 ÷ 每月省下的訂閱費\n\n每多 1,000 美元 ÷ 20 美元 ＝ 50 個月，約 4.2 年\n年繳每月 17 美元：1,000 ÷ 17 ≈ 59 個月\n",
+        "highlight": [
+          3
+        ],
+        "caption": "Claude Pro 價格：claude.com/pricing，2026-09-28"
+      },
+      "claims": [
+        "c32",
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "yhk5",
+          "text": "回本月數，就是機器多花的錢，除以每個月省下的訂閱費。"
+        },
+        {
+          "id": "fjvj",
+          "text": "每多花 1000 美元，換成 20 美元的月費，要 50 個月。"
+        }
+      ]
+    },
+    {
+      "id": "power",
+      "template": "stats",
+      "data": {
+        "title": "電費粗估：用晶片功耗算",
+        "stats": [
+          {
+            "value": "約 100 度",
+            "label": "桌機 140 瓦，全天 30 天"
+          },
+          {
+            "value": "約 19 度",
+            "label": "筆電 80 瓦，每天 8 小時"
+          }
+        ],
+        "source": "瓦 × 小時 × 天 ÷ 1000；晶片 TDP，不是整台電腦的實測"
+      },
+      "claims": [
+        "c4",
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "2v5v",
+          "text": "電費先用晶片的功耗粗估，這不是整台電腦的實測。"
+        },
+        {
+          "id": "kn4k",
+          "text": "桌機 140 瓦全天跑，一個月大約 100 度。",
+          "pause_after_ms": 1500,
+          "reveal": 1
+        },
+        {
+          "id": "d45i",
+          "text": "筆電 80 瓦、一天 8 小時，一個月大約 19 度。",
+          "pause_after_ms": 1200,
+          "reveal": 1
+        },
+        {
+          "id": "3b5q",
+          "text": "再乘上你電費單上的每度電價就好。"
+        }
+      ]
+    },
+    {
+      "id": "should-buy",
+      "template": "chat",
+      "data": {
+        "messages": [
+          {
+            "side": "right",
+            "name": "你",
+            "text": "那我該買嗎？"
+          },
+          {
+            "side": "left",
+            "name": "我",
+            "text": "先說說看：你最在意的是哪一件事？"
+          }
+        ]
+      },
+      "claims": [
+        "c36"
+      ],
+      "lines": [
+        {
+          "id": "6jas",
+          "text": "那你可能會問：我該買嗎？",
+          "reveal": 1
+        },
+        {
+          "id": "7ewf",
+          "text": "這題我不替你回答，我只問你：你最在意的是哪一件事？",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "priorities",
+      "chapter": "本機 AI 能取代 ChatGPT 嗎？",
+      "template": "table",
+      "data": {
+        "title": "我的看法：你最在意哪一件？",
+        "columns": [
+          "最在意",
+          "比較適合",
+          "為什麼"
+        ],
+        "rows": [
+          [
+            "隱私",
+            "本機",
+            "資料不離開你的電腦"
+          ],
+          [
+            "品質",
+            "雲端",
+            "最強的模型在雲端"
+          ],
+          [
+            "成本",
+            "先算回本月數",
+            "多花的錢 ÷ 月費"
+          ],
+          [
+            "速度",
+            "等實機評測",
+            "九月底 token 速度未公布"
+          ]
+        ]
+      },
+      "claims": [
+        "c24",
+        "c36"
+      ],
+      "lines": [
+        {
+          "id": "t76u",
+          "text": "以我的看法，在意隱私，本機最適合，資料不會離開你的電腦。",
+          "reveal": 1
+        },
+        {
+          "id": "ppxc",
+          "text": "在意品質，雲端比較適合，最強的模型都還在雲端。",
+          "reveal": 1
+        },
+        {
+          "id": "8a5b",
+          "text": "在意成本，就先用前面的算式，算出回本要幾個月。",
+          "reveal": 1
+        },
+        {
+          "id": "n97c",
+          "text": "在意速度，就等出貨後的實機評測。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "answer",
+      "template": "compare",
+      "data": {
+        "title": "所以，能取代 ChatGPT 嗎？",
+        "left": {
+          "heading": "搬回本機",
+          "points": [
+            "必須留在家的資料",
+            "天天在跑的工作"
+          ]
+        },
+        "right": {
+          "heading": "留在雲端",
+          "points": [
+            "資料可以上雲",
+            "要最強的模型"
+          ]
+        },
+        "verdict": "這是我的看法，不是購買建議"
+      },
+      "claims": [
+        "c36"
+      ],
+      "lines": [
+        {
+          "id": "egi5",
+          "text": "所以本機 AI 能取代 ChatGPT 嗎？"
+        },
+        {
+          "id": "2cph",
+          "text": "我的看法是：必須留在家、又天天在跑的工作，值得搬回本機。",
+          "say": "我的看法是：必須留在家裡、又天天在跑的工作，值得搬回本機做。",
+          "say_for": "d3d6277228ab",
+          "reveal": 1
+        },
+        {
+          "id": "wdr5",
+          "text": "資料可以上雲、又要最強的模型，訂閱可能還比較划算。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "next-step",
+      "template": "outro",
+      "data": {
+        "title": "打開工作管理員，算一次",
+        "cta": "效能 → 記憶體，以及顯示卡自己的記憶體",
+        "lines": [
+          "記憶體 ≈ 參數量 × 每個參數的位元組",
+          "16 位元 2、8 位元 1、4 位元 0.5",
+          "先扣掉 Windows 11 最低的 4 GB"
+        ]
+      },
+      "claims": [
+        "c9",
+        "c13",
+        "c37"
+      ],
+      "lines": [
+        {
+          "id": "sji9",
+          "text": "打開工作管理員的效能，抄下記憶體和顯示卡自己的記憶體。"
+        },
+        {
+          "id": "wdpg",
+          "text": "再挑一個想跑的模型，用這集的算式算一次。"
+        }
+      ]
+    }
+  ]
+}

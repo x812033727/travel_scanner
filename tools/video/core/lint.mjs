@@ -4,9 +4,9 @@
 // The written-language list is the one the recorded route's video_kit.py uses, so a script that
 // passes one route's check does not fail the other's.
 import { emotionProblems, EXPLAINER_PRESET, isDrama, shotProblems, visualTierProblems } from "./drama.mjs";
-import { unknownTerms, validateLexicon } from "./lexicon.mjs";
+import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription } from "./metadata.mjs";
-import { DEFAULT_TARGET_MINUTES, LOCALES, NARRATION_LOCALE, eachLine, spokenText, textHash, validateVideo } from "./schema.mjs";
+import { DEFAULT_TARGET_MINUTES, LOCALES, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
 import { isStory, storyProblems } from "./story.mjs";
 import { DEFAULT_CPM, chapterList, checkChapters, estimateTimeline, formatClock, frameToSeconds, spokenUnits } from "./timeline.mjs";
 import { metadataStatus, namedWith } from "./translations.mjs";
@@ -15,6 +15,9 @@ import { metadataStatus, namedWith } from "./translations.mjs";
 export const WRITTEN_ONLY = ["本文", "這篇文章", "如上表", "如下表", "上表", "下表", "綜上所述", "值得注意的是", "筆者", "如圖所示"];
 // Narrating how the facts were checked belongs in claims.md, not in the viewer's ear.
 export const PROCESS_TALK = ["本影片", "經查證", "根據官方文件", "查核後", "截至查證"];
+// The same two lists for an English narration (`narration_locale: "en"`), matched without case.
+export const WRITTEN_ONLY_EN = ["as shown above", "as shown below", "in this article", "the table below", "the table above", "as mentioned above"];
+export const PROCESS_TALK_EN = ["we verified", "according to the official documentation", "as of our check", "we checked"];
 // The two brief sections the monetization policy makes mandatory (docs/videos/DESIGN.md).
 export const BRIEF_SECTIONS = ["站主觀點", "觀眾看完能做到的事"];
 // A drama's brief is a story bible instead (docs/videos/DRAMA.md); the owner's stance stays.
@@ -23,6 +26,8 @@ export const BRIEF_SECTIONS_DRAMA = ["故事前提", "角色", "站主觀點"];
 // one-sentence answer, and the owner's stance.
 export const BRIEF_SECTIONS_EXPLAINER = ["問題", "一句答案", "站主觀點"];
 export const SENTENCE_WARN = 40;
+// An English word counts two units, so 40 is twenty words; spoken English runs to about 25 before it needs a breath.
+export const SENTENCE_WARN_EN = 50;
 export const HOOK_SECONDS = 30;
 export const SIMILARITY_WARN = 0.8;
 // SSML markup Azure also bills for, per line (a <break/> and the sentence wrapper); an estimate.
@@ -30,6 +35,17 @@ const MARKUP_PER_LINE = 30;
 
 const URL = /https?:\/\/|www\.|\b[a-z0-9-]+\.(?:com|io|ai|dev|org|net|tw)\b/i;
 const CJK = /[㐀-鿿豈-﫿]/gu;
+
+// Before a myriad unit, the Japanese and Korean dub voices have read a number with a zero inside
+// it as if the zero were not there: 4050億 and 4050억 both came out as 450. Writing the thousands
+// with 千 or 천 (4千50億, 4천50억) was read right.
+const MYRIAD_NUMBER = /(\d{1,3}(?:,\d{3})+|\d{4,})(?=\s*[億万억만])/g;
+const THOUSANDS = { ja: "千", ko: "천" };
+
+/** Numbers in a ja or ko line that have an inner zero and stand before 億, 万, 억 or 만. */
+export function innerZeroNumbers(text) {
+  return [...text.matchAll(MYRIAD_NUMBER)].map((match) => match[1]).filter((number) => /0+[1-9]/.test(number.replace(/,/g, "")));
+}
 
 /** The body of each `## heading` in brief.md, comments removed. */
 export function briefSections(markdown) {
@@ -204,13 +220,15 @@ export function lintVideo(doc, context = {}) {
   for (const problem of validateLexicon(lexicon)) error(`lexicon.${problem.path}`, problem.message);
   for (const problem of checkBrief(context.brief, doc.format, doc.look?.preset ?? null)) error("brief.md", problem);
   const drama = isDrama(doc);
+  const narration = narrationLocale(doc);
+  const english = narration === "en";
   if (!drama && doc.music) warn("music", "the channel spec puts no music under slides videos (docs/videos/README.md); a drama may");
   if (doc.source_guide && context.pack === null) error("source_guide", `no content pack named ${doc.source_guide}`);
   if (drama && doc.series) seriesProblems(doc, context.series, error, warn);
 
   for (const { line, label } of eachLine(doc)) {
     const spoken = spokenText(line);
-    for (const term of unknownTerms(spoken, lexicon)) {
+    for (const term of unknownTermsFor(spoken, lexicon, narration)) {
       error(label, `"${term}" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right`);
     }
     if (line.say !== undefined && line.say_for !== textHash(line.text)) {
@@ -219,7 +237,13 @@ export function lintVideo(doc, context = {}) {
     if (URL.test(line.text) || URL.test(spoken)) error(label, "never read a URL aloud: say it is in the description");
     for (const phrase of WRITTEN_ONLY) if (line.text.includes(phrase)) error(label, `"${phrase}" is written language; say it the way you would out loud`);
     for (const phrase of PROCESS_TALK) if (line.text.includes(phrase)) warn(label, `"${phrase}" narrates the process; facts and their sources go in claims.md and the description`);
-    if (spokenUnits(line.text) > SENTENCE_WARN) warn(label, `${spokenUnits(line.text)} spoken units; split sentences longer than ${SENTENCE_WARN}`);
+    if (english) {
+      const lower = line.text.toLowerCase();
+      for (const phrase of WRITTEN_ONLY_EN) if (lower.includes(phrase)) error(label, `"${phrase}" is written language; say it the way you would out loud`);
+      for (const phrase of PROCESS_TALK_EN) if (lower.includes(phrase)) warn(label, `"${phrase}" narrates the process; facts and their sources go in claims.md and the description`);
+    }
+    const longest = english ? SENTENCE_WARN_EN : SENTENCE_WARN;
+    if (spokenUnits(line.text) > longest) warn(label, `${spokenUnits(line.text)} spoken units; split sentences longer than ${longest}`);
     if (/[()（）]/.test(line.text)) warn(label, "parentheses do not survive being read aloud; make it its own sentence");
   }
 
@@ -255,13 +279,13 @@ export function lintVideo(doc, context = {}) {
   const [low, high] = doc.target_minutes ?? DEFAULT_TARGET_MINUTES;
   if (minutes < low || minutes > high) warn("scenes", `about ${minutes.toFixed(1)} minutes; the target is ${low}-${high}`);
 
-  const article = context.pack ? articleUrl(context.pack, NARRATION_LOCALE, doc.slug) : null;
-  const description = composeDescription({ body: doc.youtube.description, timeline, article, sources: doc.sources ?? [], locale: NARRATION_LOCALE });
+  const article = context.pack ? articleUrl(context.pack, narration, doc.slug) : null;
+  const description = composeDescription({ body: doc.youtube.description, timeline, article, sources: doc.sources ?? [], locale: narration, tags: doc.youtube.tags });
   for (const problem of checkYoutubeFields({ title: doc.youtube.title, description, tags: doc.youtube.tags })) error("youtube", problem);
   if (!doc.youtube.tags.length) warn("youtube.tags", "no tags: add the product names and their common misspellings");
   if (!doc.sources?.length) warn("sources", "no sources: every fact in claims.md needs one, and they go in the description");
 
-  for (const locale of LOCALES.filter((each) => each !== NARRATION_LOCALE)) {
+  for (const locale of LOCALES.filter((each) => each !== narration)) {
     const translation = context.translations?.[locale];
     if (!translation) continue;
     const stale = [];
@@ -272,13 +296,26 @@ export function lintVideo(doc, context = {}) {
       else if (entry.source_hash !== textHash(line.text)) stale.push(line.id);
     }
     if (missing.length) warn(`i18n/${locale}.json`, `${missing.length} lines not translated: ${missing.join(", ")}`);
-    if (stale.length) warn(`i18n/${locale}.json`, `${stale.length} translations older than the zh-TW line: ${stale.join(", ")}`);
+    if (stale.length) warn(`i18n/${locale}.json`, `${stale.length} translations older than the ${narration} line: ${stale.join(", ")}`);
     const state = metadataStatus(doc, translation);
     const [absent, older, unknown] = ["missing", "stale", "unknown"].map((wanted) => namedWith(state, wanted));
     if (absent.length) warn(`i18n/${locale}.json`, `not translated: ${absent.join(", ")}`);
-    if (older.length) warn(`i18n/${locale}.json`, `translations older than the zh-TW text: ${older.join(", ")}`);
-    if (unknown.length) warn(`i18n/${locale}.json`, `translations merged before i18n-merge hashed their zh-TW text, so possibly stale: ${unknown.join(", ")}; i18n-sheet marks them todo`);
+    if (older.length) warn(`i18n/${locale}.json`, `translations older than the ${narration} text: ${older.join(", ")}`);
+    if (unknown.length) warn(`i18n/${locale}.json`, `translations merged before i18n-merge hashed their ${narration} text, so possibly stale: ${unknown.join(", ")}; i18n-sheet marks them todo`);
     if (state.orphans.length) warn(`i18n/${locale}.json`, `chapter titles for scenes that no longer open a chapter: ${state.orphans.join(", ")}; i18n-merge drops them`);
+    // The description `package` uploads carries the link, chapters, sources and hashtags too, and
+    // Hangul and kana take 3 bytes each, so a body that looks short can pass YouTube's 5,000 bytes.
+    if (translation.title && translation.description) {
+      const localeArticle = context.pack ? articleUrl(context.pack, context.pack.locales?.[locale] ? locale : narration, doc.slug) : null;
+      const tags = translation.tags?.length ? translation.tags : doc.youtube.tags;
+      const composed = composeDescription({ body: translation.description, timeline, chapterTitles: translation.chapters ?? {}, article: localeArticle, sources: doc.sources ?? [], locale, tags });
+      for (const problem of checkYoutubeFields({ title: translation.title, description: composed, tags: [] }, locale)) warn(`i18n/${locale}.json`, `${problem} (package refuses it)`);
+    }
+    const thousands = THOUSANDS[locale];
+    if (thousands) {
+      const risky = Object.entries(translation.lines ?? {}).flatMap(([id, entry]) => innerZeroNumbers(entry.text ?? "").map((number) => `${id} (${number})`));
+      if (risky.length) warn(`i18n/${locale}.json`, `numbers with a zero inside, before a myriad unit, which the ${locale} dub voice has read without the zero (4050 as 450): ${risky.join(", ")}; write the thousands out, like 4${thousands}50`);
+    }
   }
 
   // Every drama scene is a shot, so template sequences say nothing there; shotProblems compares prompts instead.
