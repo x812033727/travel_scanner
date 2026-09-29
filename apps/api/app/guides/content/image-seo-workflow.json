@@ -271,6 +271,1022 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "zh-CN": {
+      "title": "网站图片怎么处理：尺寸、替代文本与搜索可读性",
+      "description": "网站图片清楚又好读，不能只靠压缩插件。本文以台湾一般网站编辑的工作流程为例，整理图片用途、尺寸与格式、文件名、替代文本及 WordPress 上传检查方式，并说明 Smush 的适用范围。通过原创换盆教学案例、操作清单与比较表，建立保留原始文件、逐图确认和公开页面验收的流程，兼顾读者理解和搜索可读性。",
+      "hero": {
+        "src": "/guides/image-seo-workflow/hero-zh-cn.jpg",
+        "alt": "原创文件夹、文档与屏幕图像，呈现图片原始文件、文本说明和公开页面的处理顺序。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "一篇香草换盆教学放了十张照片，文件都压小了，读者却看不出哪张是在检查根部、哪张是在加土。图片处理的起点是它要解释的事情；尺寸、文本说明与下载量，都应服务这个目的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可以把每张图当成一个有任务的小素材包：保留原始文件、制作网页版本、补齐用途说明，再查看实际页面的呈现。这样更容易在改版或换工具后追查问题，也不会把图片搜索的表现全押在某个插件分数上。"
+        },
+        {
+          "type": "heading",
+          "text": "先决定图片要补充什么信息",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在插入图片前，先写一句它要回答的问题。例如根部近照要让读者看懂根团是否过密，完成照则呈现土面与盆缘的距离。两张照片虽然拍同一盆植物，对文章的作用不同，不能给它们使用完全相同的文件名和说明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果删掉图片后，读者会少掉一个必要步骤，就应确保重要信息也能通过文本理解。复杂流程图可以在正文列出流程与条件；小图上的密集标注不适合承担全部教学。把图片放在相关段落附近，也有助于人与搜索系统理解上下文。"
+        },
+        {
+          "type": "paragraph",
+          "text": "纯背景纹理或不提供新信息的装饰图，处理方式则不同。不必为了每张图都填入关键词而制造额外干扰。先标出信息性图片、功能图与装饰图，之后编写替代文本时就有一致的判断依据。"
+        },
+        {
+          "type": "heading",
+          "text": "按显示用途输出尺寸与格式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先查看文章内容栏、手机版和放大查看的需求，再决定输出尺寸。相片原始文件可能远大于页面需要，但也不能把教学细节缩到模糊。保留高质量原始文件，在另外的网页版本调整裁切、分辨率与压缩，方便日后重新制作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "照片、透明图案与文本截屏可分别试用合适格式。Google 图片支持 JPEG、PNG、WebP、AVIF 和 SVG 等格式；支持格式不等于每种素材用它都最省。实际比较文件大小与清晰度，特别注意截屏细字、边缘、透明背景和颜色是否改变。"
+        },
+        {
+          "type": "paragraph",
+          "text": "响应式图片可提供多个尺寸，让浏览器依条件挑选。Google 建议使用标准 img，搭配 srcset 或 picture 时仍提供 src 备用 URL。只在 CSS 背景中呈现的图，不应被当成可供 Google 图片索引的内容图。这是输出方式的检查，不能只看编辑器缩略图。"
+        },
+        {
+          "type": "heading",
+          "text": "文件名与替代文本各做自己的工作",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "上传前使用简短、能辨识内容的文件名，例如 herb-root-check，而不是留下一串相机流水号。文件名可以提供线索，但不需要堆入城市、品牌和所有热门搜索词。既有网站若要重命名，还要处理旧引用，不能直接批量改名造成图片无法显示。"
+        },
+        {
+          "type": "paragraph",
+          "text": "替代文本依目前文章情境描述意义。根部照片可写「取出盆栽后，根系沿盆壁密集缠绕」，让无法看到照片的人理解这一步。若同张图改用在销售花盆的页面，描述重点可能不同；它不是素材永远不变的广告标语，也不必以「这是一张图片」开头。"
+        },
+        {
+          "type": "paragraph",
+          "text": "W3C 的判断方式也涵盖功能和装饰：只有图像的按钮需要表达动作或目的地，纯装饰 img 可用空的 alt 属性。空值与完全漏掉属性不是同一件事。图片说明则提供所有读者可见的补充内容，不能假设填了图片说明就已完成替代文本。"
+        },
+        {
+          "type": "heading",
+          "text": "在 WordPress 逐页确认图片字段",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "使用图片区块上传或选取媒体后，检查分辨率、裁切比例与相关文本。WordPress 官方文档说明，在区块设置修改替代文本只影响该页或文章；媒体库的替代文本则是之后插入图片时的默认值。因此更新媒体库后，仍要查看重要旧文章的实际输出。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "不要把显示宽度变小，直接当作下载文件已变小。打开公开页面，确认浏览器加载的图片版本、实际文件大小与页面需求相符。若主题把横图裁成方图，也要确认根部、手势或必要"
+            },
+            {
+              "type": "text",
+              "text": "标记"
+            },
+            {
+              "type": "text",
+              "text": "仍在范围内。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "图库、文章封面和内容区块可能有不同设置来源，应分开抽查。换盆文章可以选一张步骤近照、一张全景和一张图解作代表，再确认所有其他图片沿用相同流程；不是只检查首页封面，就推论整个媒体库都处理完成。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "整理原始文件与网页版本，记下用途、尺寸及素材来源。",
+            "插入图片区块，选择适合版面的分辨率与裁切。",
+            "依这一页的语境填写替代文本或确认装饰标记。",
+            "在公开页面核对实际图片、文本字段与手机显示。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "用 Smush 辅助处理，先做小批量比较",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Smush 的官方插件页列有上传时压缩、单张与批量处理，以及延迟加载等功能；图片 CDN 等项目标示为 Pro。安装前先核对目前版本和方案提供什么，尤其网站若已有主机或另一套插件处理图片，应先厘清谁负责哪一段。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先在可恢复的环境挑几张代表图，保存处理前后的文件和页面截图，确认设置没有牺牲教学细节，再评估批量处理。原始文件另行备份，并确认工具能恢复的实际范围；不能看到「压缩完成」就以为原图、缩略图与站外文件都能完整恢复。"
+        },
+        {
+          "type": "paragraph",
+          "text": "插件的压缩比例不能代替内容验收。根部细丝被抹掉、截屏文本难读，或图解的线条与背景混在一起，都应调整画质或排除个别图片。压缩工具也不会替你决定照片在段落中的意义，替代文本与图片说明仍需要编辑判断。"
+        },
+        {
+          "type": "heading",
+          "text": "发布时核对可读性，更新时保留记录",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "检查读者能否顺着正文理解每张图，图片网址是否可取得，必要信息有没有藏在过小文本里。图像被裁切、无法显示或在手机上溢出，都应列成具体问题；不要只用「图片 SEO 不好」这种无法定位的描述。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用素材表保存文件名、使用文章、原始文件位置、来源或自行绘制记录、输出版本与替代文本。取得授权的照片也要留下作者、授权条件与来源链接，避免下次重新制作时不知道可否使用。这份表同样能帮助换图与删除未使用资产。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成后，将下载量、视觉质量与搜索可读性分开记录。图片可以被找到，不代表一定被索引或得到特定排名；文件变小也不保证整页速度改善。把每次修改的目的与结果留清楚，才知道下一轮该改图片、版面，还是其他加载资源。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/image-seo-workflow/diagram-1-zh-cn.svg",
+          "alt": "四个区块依次列出图片用途、文件制作、文本字段及公开页面检查，每一步保留可追溯信息。",
+          "width": 1600,
+          "height": 900,
+          "caption": "图片需要同时让读者看懂、文件可用、文本说明合乎情境。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "字段或处理",
+            "主要用途",
+            "常见误用"
+          ],
+          "rows": [
+            [
+              "尺寸与压缩",
+              "控制清晰度和下载量",
+              "只改显示宽度"
+            ],
+            [
+              "文件名",
+              "辨识素材并提供线索",
+              "大量堆砌关键词"
+            ],
+            [
+              "替代文本",
+              "传达情境中的意义或功能",
+              "全部拷贝文章标题"
+            ],
+            [
+              "图片说明与正文",
+              "补足公开可见的解释",
+              "重要步骤只藏在小图"
+            ],
+            [
+              "素材记录",
+              "追溯版本与使用权限",
+              "只留下载后的文件"
+            ]
+          ],
+          "caption": "不同字段各有用途，不能靠填满其中一栏完成全部工作。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先留下可比较的原图",
+          "text": "批量压缩前保存原始文件并抽查代表素材。以能看清楚教学细节为准，没有适用所有网站的固定文件大小或压缩比例。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "检查文章分享卡片中的图片显示效果。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "建立网站技术 SEO 的检查顺序。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "大幅修改图片前，先备份 WordPress 文件与数据。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 图片 SEO 最佳做法",
+          "url": "https://developers.google.com/search/docs/appearance/google-images?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C 替代文本判断流程",
+          "url": "https://www.w3.org/WAI/tutorials/images/decision-tree/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 图片区块",
+          "url": "https://wordpress.org/documentation/article/image-block/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Smush 官方插件功能说明",
+          "url": "https://wordpress.org/plugins/wp-smushit/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "How to prepare website images: Size, alt text, and search readability",
+      "description": "Clear, useful website images take more than a compression plugin. Starting from a typical website editor's workflow in Taiwan, this guide covers each image's purpose, dimensions and format, file name, alt text, WordPress upload checks, and the scope of Smush. An original herb-repotting example, checklist, and comparison table show how to keep masters, review images individually, and test the public page for readers and search systems.",
+      "hero": {
+        "src": "/guides/image-seo-workflow/hero-en.jpg",
+        "alt": "Original illustrations of a folder, document, and screen show the sequence from master image to text description and public page.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A herb-repotting tutorial has ten photos, all compressed, yet readers cannot tell which shows the roots being inspected and which shows soil being added. Start image work by asking what each picture must explain. Dimensions, description, and download size should serve that purpose."
+        },
+        {
+          "type": "paragraph",
+          "text": "Treat each image as a small asset package with a job: keep the master, make a web version, explain its use, and inspect the published page. This makes problems easier to trace after a redesign or tool change and keeps image-search performance from resting on one plugin score."
+        },
+        {
+          "type": "heading",
+          "text": "Decide what information each image adds",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Before inserting an image, write the question it answers. A close-up of the roots might show whether the root ball is overcrowded; a finished photo might show the distance between the soil surface and pot rim. Although both show the same plant, they serve different purposes and should not share an identical file name and description."
+        },
+        {
+          "type": "paragraph",
+          "text": "If removing an image would make readers miss a necessary step, make sure the important information is understandable in text too. For a complex flowchart, spell out the sequence and conditions in the article; dense labels in a small picture cannot carry the entire lesson. Placing the image near its related section also helps people and search systems understand its context."
+        },
+        {
+          "type": "paragraph",
+          "text": "A plain background texture or other decoration that adds no information needs different treatment. Do not create noise by forcing keywords into every image field. Mark images as informative, functional, or decorative first; that gives you a consistent basis for writing alt text later."
+        },
+        {
+          "type": "heading",
+          "text": "Export dimensions and formats for the way images appear",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Check the content column, phone layout, and need for enlarged viewing before choosing export dimensions. A photo master may be much larger than the page needs, but lesson details must not become blurry. Keep the high-quality original, and adjust the crop, resolution, and compression in a separate web version so you can remake it later."
+        },
+        {
+          "type": "paragraph",
+          "text": "Try suitable formats for photos, transparent graphics, and screenshots with text. Google Images supports formats including JPEG, PNG, WebP, AVIF, and SVG, but support does not mean one format is smallest for every asset. Compare actual file size and clarity, especially fine screenshot text, edges, transparency, and color changes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Responsive images can offer several sizes for the browser to choose under different conditions. Google recommends a standard img element; when using srcset or picture, still provide a fallback src URL. Do not treat an image shown only as a CSS background as a content image available for Google Images indexing. Check the output, not just the editor thumbnail."
+        },
+        {
+          "type": "heading",
+          "text": "Give file names and alt text separate jobs",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Before upload, use a short, recognizable name such as herb-root-check instead of a camera serial number. A file name can provide context without stacking city names, brands, and every popular query. On an existing site, renaming also requires handling old references; bulk changes can break images."
+        },
+        {
+          "type": "paragraph",
+          "text": "Write alt text for the image's meaning in this article. For a root photo, 'After removing the plant from the pot, dense roots coil along the pot wall' helps someone who cannot see it understand this step. The emphasis could change if the same photo appears on a pot sales page. Alt text is not a permanent advertising slogan for an asset, and it need not begin 'This is an image of.'"
+        },
+        {
+          "type": "paragraph",
+          "text": "The W3C's decision process also covers function and decoration: an image-only button needs text for its action or destination, while a purely decorative img can have an empty alt attribute. An empty value differs from omitting the attribute. A caption adds visible context for all readers; filling it in does not replace alt text."
+        },
+        {
+          "type": "heading",
+          "text": "Check image fields on each WordPress page",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "After uploading or choosing media through the Image block, check resolution, crop, and related text. WordPress documentation says changing alt text in block settings affects only that page or post; Media Library alt text is the default for future insertions. After editing the library, inspect the actual output of important older posts as well."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Reducing the displayed width does not necessarily reduce the downloaded file. Open the public page and check that the browser loads an image version and file size suited to the layout. If the theme crops a landscape picture into a square, make sure roots, gestures, and essential "
+            },
+            {
+              "type": "text",
+              "text": "labels"
+            },
+            {
+              "type": "text",
+              "text": " remain in frame."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Galleries, post covers, and content blocks can have different settings, so sample them separately. For the repotting article, check a close-up of one step, a full view, and a diagram, then verify that the remaining images follow the same process. Checking only the home-page cover does not prove the whole media library is ready."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Organize master and web versions; note purpose, dimensions, and source.",
+            "Insert an Image block and choose a resolution and crop that suit the layout.",
+            "Write alt text for this page's context or confirm that the image is decorative.",
+            "Check the actual image, text fields, and phone display on the public page."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Use Smush to assist, starting with a small comparison batch",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The official Smush plugin page lists compression on upload, individual and bulk processing, and lazy loading; it marks features such as the image CDN as Pro. Before installing, check the current version and plan. If the host or another plugin already processes images, establish which tool is responsible for each stage."
+        },
+        {
+          "type": "paragraph",
+          "text": "In a recoverable environment, first choose a few representative images and keep the files and page views from before and after processing. Confirm that the settings preserve lesson details before considering a bulk run. Back up masters separately and check what the tool can actually restore; a 'compression complete' message does not prove that originals, thumbnails, and off-site files are all recoverable."
+        },
+        {
+          "type": "paragraph",
+          "text": "A plugin's compression ratio cannot stand in for content review. If fine root fibers disappear, screenshot text becomes hard to read, or diagram lines blend into the background, adjust quality or exclude that image. A compression tool also cannot decide what a photo means in its section; alt text and captions still require editorial judgment."
+        },
+        {
+          "type": "heading",
+          "text": "Check readability at publication and keep an update record",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Check whether readers can understand each image in the flow of the article, whether its URL loads, and whether essential information is hidden in tiny text. Cropped, missing, or overflowing images on phones are concrete issues to record. 'Bad image SEO' alone does not identify a problem you can fix."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use an asset log to retain file names, articles using each image, master locations, sources or original-art records, exported versions, and alt text. For licensed photos, keep the creator, license terms, and source link too, so you know whether you may remake them later. This log also helps when replacing images or removing unused assets."
+        },
+        {
+          "type": "paragraph",
+          "text": "Afterward, record download weight, visual quality, and search readability separately. An image being discoverable does not guarantee indexing or any ranking, and a smaller file does not guarantee a faster whole page. Keep the reason and result for each change so the next round can target the image, layout, or other loading resources."
+        },
+        {
+          "type": "image",
+          "src": "/guides/image-seo-workflow/diagram-1-en.svg",
+          "alt": "Four sections show image purpose, file production, text fields, and public-page checks, with traceable details retained at each step.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Images should be understandable to readers, usable as files, and described in the right context.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Field or task",
+            "Main purpose",
+            "Common misuse"
+          ],
+          "rows": [
+            [
+              "Dimensions and compression",
+              "Balance clarity and download weight",
+              "Changing displayed width only"
+            ],
+            [
+              "File name",
+              "Identify the asset and provide context",
+              "Stuffing it with keywords"
+            ],
+            [
+              "Alt text",
+              "Convey meaning or function in context",
+              "Copying the post title everywhere"
+            ],
+            [
+              "Caption and body text",
+              "Add visible explanation",
+              "Hiding an essential step in a small image"
+            ],
+            [
+              "Asset record",
+              "Trace versions and usage rights",
+              "Keeping only the downloaded copy"
+            ]
+          ],
+          "caption": "Each field has a distinct purpose; filling in one cannot do every job."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Keep the original for comparison",
+          "text": "Save masters and sample representative assets before bulk compression. The standard is whether lesson details remain clear; no fixed file size or compression ratio suits every site."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Check how the article's sharing card presents its image."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Set an order for technical SEO checks on the site."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Back up WordPress files and data before major image changes."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Images SEO best practices",
+          "url": "https://developers.google.com/search/docs/appearance/google-images?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C: An alt text decision tree",
+          "url": "https://www.w3.org/WAI/tutorials/images/decision-tree/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress Image Block",
+          "url": "https://wordpress.org/documentation/article/image-block/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Smush plugin features on WordPress.org",
+          "url": "https://wordpress.org/plugins/wp-smushit/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "サイトの画像を整える方法：サイズ、代替テキスト、検索での理解しやすさ",
+      "description": "サイトの画像を見やすく役立つものにするには、圧縮プラグインだけでは足りません。台湾の一般的なサイト編集者の作業順に、画像の目的、サイズと形式、ファイル名、代替テキスト、WordPressでのアップロード確認、Smushの機能範囲を整理します。ハーブの植え替えを題材にした独自の例、チェックリスト、比較表を使い、元画像の保管、画像ごとの確認、公開ページでの検証を進めます。",
+      "hero": {
+        "src": "/guides/image-seo-workflow/hero-ja.jpg",
+        "alt": "フォルダー、文書、画面のオリジナルイラスト。元画像から説明文を付けて公開ページで確認するまでの順番を表す。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "ハーブの植え替えを教える記事に写真が十枚あり、すべて圧縮されていても、どれが根の確認でどれが土を足す場面か読者には分からないことがあります。画像処理の出発点は、その写真が何を説明するかです。サイズ、説明文、ダウンロード量はその目的に合わせます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "各画像を役割のある小さな素材一式として考えます。元画像を残し、ウェブ用を作り、用途を説明し、実際の公開ページを確認します。これなら改修やツール変更の後に問題を追いやすく、画像検索の成果をプラグインの点数一つに任せずに済みます。"
+        },
+        {
+          "type": "heading",
+          "text": "画像が補う情報を先に決める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "画像を挿入する前に、それが答える問いを一文で書きます。根の接写なら根鉢が詰まりすぎていないか、完成写真なら土の表面と鉢の縁の距離を見せます。同じ鉢の植物を撮った二枚でも記事での役割は異なり、同じファイル名と説明文を使い回すべきではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "画像を削除すると必要な手順が分からなくなるなら、重要な情報は文章でも理解できるようにします。複雑なフローチャートは流れと条件を本文にも書き、小さな図の細かい注記に教材全体を任せません。関連する段落の近くに画像を置くことは、人と検索システムが文脈を理解する助けにもなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "単なる背景の模様や新しい情報のない装飾画像は別の扱いが必要です。すべての画像にキーワードを入れて余計な情報を増やす必要はありません。まず情報を伝える画像、機能を持つ画像、装飾画像を分けると、後で代替テキストを一貫した基準で判断できます。"
+        },
+        {
+          "type": "heading",
+          "text": "表示の用途に合わせてサイズと形式を書き出す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "記事の本文幅、スマートフォン表示、拡大して見る必要性を確認してから、書き出しサイズを決めます。写真の元ファイルはページに必要なサイズより大きいことがありますが、教材の細部をぼかしてはいけません。高品質の元画像を残し、別のウェブ用画像でトリミング、解像度、圧縮を調整すれば、後から作り直せます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "写真、透過画像、文字入りスクリーンショットでは、それぞれ適した形式を試します。Google画像検索はJPEG、PNG、WebP、AVIF、SVGなどに対応していますが、対応形式だからといってどの素材でも最小になるわけではありません。実際の容量と鮮明さを比べ、スクリーンショットの細い文字、輪郭、透過部分、色の変化に注意します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "レスポンシブ画像では複数のサイズを用意し、条件に応じてブラウザーに選ばせられます。Googleは標準のimg要素を推奨し、srcsetやpictureを使う場合も代替のsrc URLを用意するよう案内しています。CSSの背景としてだけ表示する画像を、Google画像検索のインデックス対象となる本文画像とみなしてはいけません。エディターの縮小表示だけでなく、出力を確認します。"
+        },
+        {
+          "type": "heading",
+          "text": "ファイル名と代替テキストに別々の役割を持たせる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "アップロード前に、カメラの連番ではなくherb-root-checkのような短く識別しやすいファイル名を付けます。ファイル名は手掛かりになりますが、都市名、ブランド名、人気の検索語を詰め込む必要はありません。既存サイトで改名する場合は古い参照も処理し、一括改名で画像を壊さないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "代替テキストは、その記事での画像の意味を伝えます。根の写真なら「鉢から取り出した植物の根が鉢の内壁に沿って密集している」と書くと、写真を見られない人もこの手順を理解できます。同じ写真を鉢の販売ページで使えば、説明の重点は変わり得ます。素材に固定された宣伝文句ではなく、「これは画像です」で始める必要もありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "W3Cの判断方法は、機能と装飾も扱います。画像だけのボタンには操作や行き先を表す文が必要で、純粋な装飾のimgには空のalt属性を使えます。空の値と属性そのものがない状態は別です。キャプションは全読者に見える補足情報であり、書き込んでも代替テキストの代わりにはなりません。"
+        },
+        {
+          "type": "heading",
+          "text": "WordPressではページごとに画像の項目を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "画像ブロックでアップロードまたはメディアを選択したら、解像度、切り抜き、関連する文章を確認します。WordPressの公式資料では、ブロック設定で代替テキストを変えてもそのページや投稿にだけ反映され、メディアライブラリの代替テキストは後で画像を挿入するときの初期値になります。ライブラリを更新した後も、重要な既存記事の実際の出力を調べます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "表示幅を小さくしただけで、ダウンロードするファイルも小さくなったと考えないでください。公開ページを開き、ブラウザーが読み込む画像の種類と実際の容量が画面の用途に合うか確かめます。テーマが横長の写真を正方形に切り抜く場合は、根、手の動き、必要な"
+            },
+            {
+              "type": "text",
+              "text": "目印"
+            },
+            {
+              "type": "text",
+              "text": "が範囲に残るかも確認します。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "ギャラリー、記事のカバー、本文のブロックでは設定元が異なることがあるため、別々に抽出して確認します。植え替え記事なら、手順の接写、全体写真、図解を一枚ずつ代表として選び、残りの画像も同じ流れで確認します。トップページのカバーだけを見て、メディアライブラリ全体が済んだとは判断できません。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "元画像とウェブ用画像を整理し、用途、サイズ、素材の出典を記録する。",
+            "画像ブロックに挿入し、表示に適した解像度と切り抜きを選ぶ。",
+            "このページの文脈に合わせて代替テキストを書くか、装飾画像と確認する。",
+            "公開ページで実際の画像、文字項目、スマートフォン表示を確認する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Smushは少数の画像で比較してから補助に使う",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Smushの公式プラグインページには、アップロード時の圧縮、個別・一括処理、遅延読み込みなどが記載され、画像CDNなどはPro機能と表示されています。導入前に現在のバージョンとプランを確認します。ホスティング環境や別のプラグインが画像を処理している場合は、どの工程をどのツールが担うか決めておきます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "復元できる環境で代表的な画像を数枚選び、処理前後のファイルと画面を保存します。教材の細部が損なわれないと確認してから、一括処理を検討します。元画像は別にバックアップし、ツールで実際に復元できる範囲も調べます。「圧縮完了」と表示されても、元画像、サムネイル、外部に置いたファイルがすべて元に戻るとは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "プラグインの圧縮率は内容の確認に代わりません。細い根が消えたり、スクリーンショットの文字が読みにくくなったり、図の線が背景に埋もれたりしたら、画質を調整するかその画像を対象外にします。圧縮ツールは段落の中での写真の意味も決められません。代替テキストとキャプションには編集者の判断が必要です。"
+        },
+        {
+          "type": "heading",
+          "text": "公開時に読みやすさを確認し、更新の記録を残す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "本文の流れの中で各画像を理解できるか、画像のURLにアクセスできるか、必要な情報が小さすぎる文字に隠れていないか調べます。切り抜き、欠落、スマートフォンでのはみ出しは具体的な問題として記録します。「画像SEOが悪い」だけでは修正点を特定できません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "素材表には、ファイル名、使用する記事、元画像の場所、出典または自作の記録、書き出した版、代替テキストを残します。利用許諾のある写真でも作者、許諾条件、出典リンクを保存すれば、次に作り直すときに使用可能か判断できます。素材表は画像の差し替えや未使用ファイルの削除にも役立ちます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "作業後はダウンロード量、見た目の品質、検索での理解しやすさを分けて記録します。画像を見つけられる状態でも、インデックス登録や特定の順位は保証されません。ファイルを小さくしてもページ全体の速度が必ず上がるわけではありません。変更の目的と結果を残し、次に画像、レイアウト、ほかの読み込み資源のどれを直すか判断します。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/image-seo-workflow/diagram-1-ja.svg",
+          "alt": "画像の目的、ファイルの作成、文字項目、公開ページの確認を四つの枠に順番に示し、各工程で追跡できる情報を残す図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "画像は読者が理解でき、ファイルとして使え、説明文が文脈に合う必要がある。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目または処理",
+            "主な役割",
+            "よくある誤用"
+          ],
+          "rows": [
+            [
+              "サイズと圧縮",
+              "鮮明さとダウンロード量を調整する",
+              "表示幅だけを変える"
+            ],
+            [
+              "ファイル名",
+              "素材を識別し手掛かりを示す",
+              "キーワードを大量に詰め込む"
+            ],
+            [
+              "代替テキスト",
+              "文脈における意味や機能を伝える",
+              "記事のタイトルをすべてにコピーする"
+            ],
+            [
+              "キャプションと本文",
+              "公開画面で読める説明を補う",
+              "重要な手順を小さな画像だけに隠す"
+            ],
+            [
+              "素材の記録",
+              "版と利用権限を追跡する",
+              "ダウンロード後のファイルだけを残す"
+            ]
+          ],
+          "caption": "項目ごとに役割は異なり、一つを埋めるだけではすべての仕事を果たせません。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "比較できる元画像を先に残す",
+          "text": "一括圧縮の前に元画像を保管し、代表的な素材を確認します。教材の細部が見えることを基準にし、どのサイトにも当てはまる固定の容量や圧縮率はありません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "記事の共有カードで画像がどう表示されるか確認しましょう。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "サイトのテクニカルSEOを確認する順番を決めましょう。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "画像を大きく変更する前にWordPressのファイルとデータをバックアップしましょう。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 画像検索SEOのベストプラクティス",
+          "url": "https://developers.google.com/search/docs/appearance/google-images?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C 代替テキストの判断フロー",
+          "url": "https://www.w3.org/WAI/tutorials/images/decision-tree/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 画像ブロック",
+          "url": "https://wordpress.org/documentation/article/image-block/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress.org Smushプラグインの機能説明",
+          "url": "https://wordpress.org/plugins/wp-smushit/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "웹사이트 이미지를 다루는 방법: 크기, 대체 텍스트, 검색 가독성",
+      "description": "웹사이트 이미지를 선명하고 이해하기 쉽게 만들려면 압축 플러그인만으로는 부족합니다. 대만의 일반적인 사이트 편집 업무 흐름을 바탕으로 이미지의 목적, 크기와 형식, 파일 이름, 대체 텍스트, WordPress 업로드 확인, Smush의 적용 범위를 정리합니다. 허브 분갈이를 설명하는 독창적인 예시와 작업 목록, 비교표를 통해 원본을 보관하고 이미지마다 확인하며 공개 페이지에서 독자와 검색 시스템에 적합한지 시험하는 방법을 안내합니다.",
+      "hero": {
+        "src": "/guides/image-seo-workflow/hero-ko.jpg",
+        "alt": "폴더, 문서, 화면을 그린 독창적인 그림으로 이미지 원본에서 설명 문구를 거쳐 공개 페이지를 확인하는 순서를 보여준다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "허브 분갈이를 설명하는 글에 사진 열 장을 넣고 모두 압축했더라도, 독자가 어느 사진에서 뿌리를 확인하고 어느 사진에서 흙을 더하는지 알지 못할 수 있습니다. 이미지 작업은 각 사진이 무엇을 설명해야 하는지에서 시작합니다. 크기, 설명, 다운로드 용량은 그 목적에 맞아야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이미지 하나를 역할이 있는 작은 자료 묶음으로 생각해 보세요. 원본을 보관하고, 웹용 버전을 만들고, 쓰임을 설명한 뒤 실제 공개 페이지에서 어떻게 보이는지 확인합니다. 이렇게 하면 사이트를 개편하거나 도구를 바꾼 뒤에도 문제를 추적하기 쉽고, 이미지 검색 성과를 플러그인 점수 하나에만 맡기지 않게 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "이미지가 보탤 정보를 먼저 결정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "이미지를 넣기 전에 그 이미지가 답할 질문을 한 문장으로 적습니다. 뿌리 확대 사진은 뿌리 덩어리가 지나치게 빽빽한지 보여주고, 완성 사진은 흙 표면과 화분 테두리 사이의 거리를 보여줄 수 있습니다. 같은 식물 사진 두 장이라도 글에서 하는 일이 다르므로 같은 파일 이름과 설명을 그대로 복사하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이미지를 지우면 독자가 필요한 단계를 놓치게 된다면 중요한 정보는 글로도 이해할 수 있게 해야 합니다. 복잡한 흐름도는 본문에 절차와 조건을 적고, 작은 그림에 빼곡한 표기만으로 전체 안내를 대신하지 않습니다. 관련 문단 가까이에 이미지를 놓으면 사람과 검색 시스템이 맥락을 파악하는 데도 도움이 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "단순한 배경 무늬나 새로운 정보를 주지 않는 장식 이미지는 다르게 다룹니다. 모든 이미지에 키워드를 채워 넣어 혼란을 만들 필요는 없습니다. 먼저 정보 전달용, 기능용, 장식용 이미지를 구분하면 나중에 대체 텍스트를 쓸 때 일관된 기준을 적용할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "표시 용도에 맞게 크기와 형식 내보내기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "본문 영역의 너비, 휴대전화 화면, 확대해서 볼 필요를 확인한 뒤 내보낼 크기를 정합니다. 사진 원본은 페이지에서 필요한 것보다 훨씬 클 수 있지만 교육에 필요한 세부 요소가 흐려져서도 안 됩니다. 고품질 원본을 보관하고 별도의 웹용 버전에서 자르기, 해상도, 압축을 조절하면 나중에 다시 만들 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "사진, 투명한 그림, 글자가 든 화면 캡처에는 각각 적합한 형식을 시험해 봅니다. Google 이미지는 JPEG, PNG, WebP, AVIF, SVG 등을 지원하지만 지원한다는 사실이 모든 자료에서 그 형식의 용량이 가장 작다는 뜻은 아닙니다. 실제 파일 크기와 선명도를 비교하고 특히 화면 캡처의 작은 글자, 가장자리, 투명 배경, 색 변화에 주의합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "반응형 이미지는 여러 크기를 제공해 브라우저가 조건에 따라 고를 수 있게 합니다. Google은 표준 img 요소를 권장하며 srcset이나 picture를 쓸 때도 대체할 src URL을 제공하도록 안내합니다. CSS 배경에만 나타나는 그림을 Google 이미지 검색에서 색인할 수 있는 본문 이미지로 취급해서는 안 됩니다. 편집기의 작은 미리보기만 보지 말고 실제 출력을 확인하세요."
+        },
+        {
+          "type": "heading",
+          "text": "파일 이름과 대체 텍스트의 역할 나누기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "업로드 전에 카메라의 연속 번호 대신 herb-root-check처럼 짧고 내용을 알아볼 수 있는 파일 이름을 사용합니다. 파일 이름은 단서를 줄 수 있지만 도시, 브랜드, 인기 검색어를 모두 쌓아 넣을 필요는 없습니다. 기존 사이트에서 이름을 바꾼다면 예전 참조도 처리해야 하므로 일괄 변경으로 이미지가 깨지지 않도록 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "대체 텍스트는 현재 글에서 이미지가 갖는 의미를 설명합니다. 뿌리 사진에 '화분에서 꺼낸 뒤 뿌리가 화분 안쪽 벽을 따라 빽빽하게 감겨 있다'고 쓰면 사진을 볼 수 없는 사람도 이 단계를 이해할 수 있습니다. 같은 사진을 화분 판매 페이지에서 쓰면 설명의 초점은 달라질 수 있습니다. 이미지에 영원히 붙는 광고 문구가 아니며 '이것은 이미지입니다'로 시작할 필요도 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "W3C의 판단 방법은 기능과 장식도 다룹니다. 이미지만 있는 버튼은 동작이나 목적지를 표현해야 하고, 순수한 장식용 img에는 빈 alt 속성을 사용할 수 있습니다. 빈 값과 속성을 아예 빠뜨린 것은 다릅니다. 캡션은 모든 독자에게 보이는 보충 설명이며, 캡션을 썼다고 대체 텍스트까지 완성된 것은 아닙니다."
+        },
+        {
+          "type": "heading",
+          "text": "WordPress에서 페이지마다 이미지 필드 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "이미지 블록으로 파일을 업로드하거나 미디어를 고른 뒤 해상도, 잘림 비율, 관련 문구를 확인합니다. WordPress 공식 문서에 따르면 블록 설정에서 바꾼 대체 텍스트는 해당 페이지나 글에만 적용되고, 미디어 라이브러리의 대체 텍스트는 이후 이미지를 넣을 때 기본값이 됩니다. 따라서 라이브러리를 갱신한 뒤에도 중요한 예전 글의 실제 출력을 살펴봅니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "표시 너비만 줄였다고 다운로드 파일까지 작아진 것은 아닙니다. 공개 페이지를 열어 브라우저가 불러온 이미지 버전과 실제 파일 용량이 화면의 필요에 맞는지 확인합니다. 테마가 가로 사진을 정사각형으로 자른다면 뿌리, 손동작, 꼭 필요한 "
+            },
+            {
+              "type": "text",
+              "text": "표시"
+            },
+            {
+              "type": "text",
+              "text": "가 여전히 화면에 남는지도 살펴봅니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "갤러리, 글 표지, 본문 블록은 설정이 서로 다른 곳에서 올 수 있으므로 따로 골라 확인합니다. 분갈이 글에서는 한 단계의 확대 사진, 전체 사진, 도표를 대표로 선택한 뒤 나머지 이미지도 같은 절차를 따르는지 점검할 수 있습니다. 홈 화면의 표지만 보고 미디어 라이브러리 전체가 준비됐다고 판단하지 않습니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "원본과 웹용 버전을 정리하고 용도, 크기, 자료 출처를 기록한다.",
+            "이미지 블록에 넣고 화면에 맞는 해상도와 잘림 범위를 고른다.",
+            "해당 페이지의 맥락에 맞춰 대체 텍스트를 쓰거나 장식 이미지임을 확인한다.",
+            "공개 페이지에서 실제 이미지, 문구 필드, 휴대전화 표시를 확인한다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Smush는 적은 양을 비교한 뒤 보조 도구로 사용하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Smush 공식 플러그인 페이지에는 업로드 시 압축, 개별·일괄 처리, 지연 로딩 등이 나와 있으며 이미지 CDN 등은 Pro 기능으로 표시됩니다. 설치 전에 현재 버전과 요금제에 포함된 기능을 확인합니다. 호스팅 서비스나 다른 플러그인이 이미 이미지를 처리한다면 어느 단계의 책임이 어디에 있는지 먼저 정하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "복구할 수 있는 환경에서 대표 이미지 몇 장을 골라 처리 전후의 파일과 화면을 보관합니다. 설정 때문에 교육에 필요한 세부 요소가 사라지지 않는지 확인한 다음 일괄 처리를 검토합니다. 원본은 따로 백업하고 도구가 실제로 복원할 수 있는 범위도 확인하세요. '압축 완료'라는 메시지만으로 원본, 썸네일, 외부 파일까지 모두 되돌릴 수 있다고 믿어서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "플러그인의 압축률이 콘텐츠 검수를 대신할 수는 없습니다. 가는 뿌리가 사라지거나 화면 캡처의 글자가 읽기 어렵거나 도표의 선이 배경과 섞인다면 품질을 조정하거나 해당 이미지를 제외합니다. 압축 도구는 문단 안에서 사진이 갖는 의미도 결정하지 못합니다. 대체 텍스트와 캡션에는 편집 판단이 필요합니다."
+        },
+        {
+          "type": "heading",
+          "text": "게시할 때 읽기 쉬운지 확인하고 갱신 기록 남기기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "독자가 본문을 따라가며 각 이미지를 이해할 수 있는지, 이미지 URL에 접근할 수 있는지, 필요한 정보가 너무 작은 글자에 숨지 않았는지 확인합니다. 잘리거나 누락되거나 휴대전화 화면 밖으로 넘치는 이미지는 구체적인 문제로 적습니다. '이미지 SEO가 나쁘다'만으로는 어디를 고칠지 알 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "자료 목록에 파일 이름, 사용한 글, 원본 위치, 출처 또는 직접 제작 기록, 내보낸 버전, 대체 텍스트를 보관합니다. 사용 허가를 받은 사진도 제작자, 허가 조건, 출처 링크를 남겨야 다음에 다시 만들 수 있는지 알 수 있습니다. 이 목록은 이미지 교체와 미사용 자료 삭제에도 도움이 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "작업을 마친 뒤 다운로드 용량, 시각적 품질, 검색 시스템의 이해 가능성을 따로 기록합니다. 이미지를 찾을 수 있다고 해서 색인이나 특정 순위가 보장되지는 않으며 파일이 작아져도 전체 페이지가 반드시 빨라지는 것은 아닙니다. 매번 수정한 이유와 결과를 남겨 다음에는 이미지, 레이아웃, 다른 로딩 자원 중 무엇을 바꿀지 판단합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/image-seo-workflow/diagram-1-ko.svg",
+          "alt": "이미지의 목적, 파일 제작, 문구 필드, 공개 페이지 확인을 네 칸에 차례로 보여주고 각 단계의 추적 정보를 남긴 도표.",
+          "width": 1600,
+          "height": 900,
+          "caption": "이미지는 독자가 이해할 수 있고 파일로 쓸 수 있어야 하며 설명 문구도 맥락에 맞아야 한다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "필드 또는 작업",
+            "주요 목적",
+            "흔한 오용"
+          ],
+          "rows": [
+            [
+              "크기와 압축",
+              "선명도와 다운로드 용량 조절",
+              "표시 너비만 바꾸기"
+            ],
+            [
+              "파일 이름",
+              "자료를 식별하고 단서 제공",
+              "키워드를 잔뜩 넣기"
+            ],
+            [
+              "대체 텍스트",
+              "맥락 속 의미나 기능 전달",
+              "모든 이미지에 글 제목 복사하기"
+            ],
+            [
+              "캡션과 본문",
+              "공개 화면에서 볼 수 있는 설명 보충",
+              "중요한 단계를 작은 그림에만 숨기기"
+            ],
+            [
+              "자료 기록",
+              "버전과 사용 권한 추적",
+              "다운로드한 파일만 남기기"
+            ]
+          ],
+          "caption": "각 필드에는 고유한 역할이 있으므로 한 곳만 채워서는 모든 작업을 마칠 수 없습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "비교할 수 있는 원본부터 남기기",
+          "text": "일괄 압축 전에 원본을 보관하고 대표 이미지를 확인합니다. 교육에 필요한 세부 요소가 선명한지를 기준으로 삼으세요. 모든 사이트에 적용할 고정된 파일 크기나 압축률은 없습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "글 공유 카드에서 이미지가 어떻게 보이는지 확인하세요."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "사이트의 테크니컬 SEO를 확인할 순서를 세우세요."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이미지를 크게 바꾸기 전에 WordPress 파일과 데이터를 백업하세요."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 이미지 SEO 권장사항",
+          "url": "https://developers.google.com/search/docs/appearance/google-images?hl=zh-tw",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "W3C 대체 텍스트 판단 절차",
+          "url": "https://www.w3.org/WAI/tutorials/images/decision-tree/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 이미지 블록",
+          "url": "https://wordpress.org/documentation/article/image-block/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress.org Smush 플러그인 기능 안내",
+          "url": "https://wordpress.org/plugins/wp-smushit/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
