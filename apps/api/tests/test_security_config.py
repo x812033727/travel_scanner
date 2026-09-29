@@ -16,6 +16,7 @@ def secure_production_settings(**overrides: object) -> Settings:
         "api_cors_origins": "https://mokaair.com",
         "next_public_site_url": "https://mokaair.com",
         "cookie_secure": True,
+        "internal_proxy_token": "proxy-token-for-tests-at-least-32-characters",
     }
     values.update(overrides)
     return Settings(**values)
@@ -150,6 +151,41 @@ def test_production_api_process_requires_trusted_proxy_client_ip() -> None:
     with pytest.raises(RuntimeError, match="TRUST_PROXY_CLIENT_IP"):
         secure_production_settings(trust_proxy_client_ip=False).validate_api_serving_security()
     secure_production_settings(trust_proxy_client_ip=True).validate_api_serving_security()
+
+
+@pytest.mark.parametrize("token", ["", "short", "x" * 31, " " * 32])
+@pytest.mark.parametrize("environment", ["production", "prod"])
+def test_production_api_rejects_missing_or_short_proxy_token(
+    token: str, environment: str
+) -> None:
+    with pytest.raises(RuntimeError, match="INTERNAL_PROXY_TOKEN"):
+        secure_production_settings(
+            app_env=environment, trust_proxy_client_ip=True, internal_proxy_token=token
+        ).validate_api_serving_security()
+
+
+def test_production_api_accepts_32_character_proxy_token() -> None:
+    secure_production_settings(
+        trust_proxy_client_ip=True, internal_proxy_token="x" * 32
+    ).validate_api_serving_security()
+
+
+def test_development_api_warns_when_trusting_addresses_without_a_token(
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    Settings(
+        app_env="development", trust_proxy_client_ip=True, internal_proxy_token=""
+    ).validate_api_serving_security()
+    assert "INTERNAL_PROXY_TOKEN is unset" in caplog.text
+
+
+def test_development_api_without_forwarded_addresses_needs_no_token(
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    Settings(
+        app_env="development", trust_proxy_client_ip=False, internal_proxy_token=""
+    ).validate_api_serving_security()
+    assert "INTERNAL_PROXY_TOKEN" not in caplog.text
 
 
 @pytest.mark.parametrize(

@@ -118,18 +118,42 @@ export function checklistFrom(steps) {
   return steps.map((step) => ({ key: step.id.toLowerCase().replace(/[^a-z0-9]+/g, "_").slice(0, 40), label: STEP_LABELS[step.id] ?? step.id, done: Boolean(step.done) }));
 }
 
-/** The Jev check in numbers, and the lines still flagged, from review/check.json and check-flags.json. */
+/**
+ * The Jev check in numbers, and the lines still flagged, from review/check.json and check-flags.json.
+ * Lines a second transcript cleared (tts/second-opinion.mjs) are counted and listed with both
+ * transcripts, so the card says what cleared them; without any, the payload is what it always was.
+ */
 export function audioCheck(check, flags, lineCount) {
   const entries = Object.values(check?.lines ?? {});
   const flagged = new Set(flags?.flags ?? []);
   const exact = entries.filter((entry) => entry.match_kind === "exact").length;
   const alike = entries.filter((entry) => entry.match && entry.match_kind !== "exact").length;
+  const cleared = Object.entries(check?.lines ?? {}).filter(([id, entry]) => !flagged.has(id) && !entry.match && entry.second);
   return {
-    check: { lines: lineCount, checked: entries.length, exact, alike, judged_fine: entries.length - exact - alike - flagged.size, flagged: flagged.size },
+    check: {
+      lines: lineCount,
+      checked: entries.length,
+      exact,
+      alike,
+      judged_fine: entries.length - exact - alike - flagged.size - cleared.length,
+      flagged: flagged.size,
+      ...(cleared.length ? { cleared: cleared.length } : {}),
+    },
     flagged_lines: Object.entries(check?.lines ?? {})
       .filter(([id]) => flagged.has(id))
       .map(([id, entry]) => ({ id, script: entry.intended ?? "", heard: entry.heard ?? "", noul: entry.noul ?? null })),
+    ...(cleared.length
+      ? { cleared_lines: cleared.map(([id, entry]) => ({ id, script: entry.intended ?? "", heard: entry.heard ?? "", second: { by: entry.second.by, heard: entry.second.heard } })) }
+      : {}),
   };
+}
+
+/** The audio card's summary line for the second transcript's work, or "" when it cleared nothing. */
+export function clearedSummary(check) {
+  const lines = check.cleared_lines ?? [];
+  if (!lines.length) return "";
+  const by = [...new Set(lines.map((line) => line.second.by))].join("、");
+  return `；${by} 另外轉寫、排除 ${lines.length} 句（${lines.map((line) => line.id).join("、")}）`;
 }
 
 /** The unticked items of UPLOAD.md, without their Markdown emphasis. */
@@ -411,7 +435,7 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     return {
       gate,
       content_sha256: await sha256File(file),
-      summary: `旁白 ${formatClock(Math.round(seconds))}，${timeline.lines.length} 句；Jev 標記 ${check.check.flagged} 句${rewrites.length ? `；改寫 ${rewrites.length} 句` : ""}`,
+      summary: `旁白 ${formatClock(Math.round(seconds))}，${timeline.lines.length} 句；Jev 標記 ${check.check.flagged} 句${clearedSummary(check)}${rewrites.length ? `；改寫 ${rewrites.length} 句` : ""}`,
       payload: { duration_seconds: seconds, ...check, rewrites },
       files: [narration],
     };

@@ -1,4 +1,5 @@
 import {
+  act,
   fireEvent,
   render,
   screen,
@@ -75,6 +76,49 @@ function response(payload: unknown, status = 200) {
     status,
     headers: { "Content-Type": "application/json" },
   });
+}
+
+function suspensionServer(
+  suspend: (init: RequestInit) => Response | Promise<Response>,
+  stepUp: () => Response | Promise<Response> = () => response({}),
+) {
+  const other = { ...detail, id: "77777777-7777-4777-8777-777777777777", email: "other@example.com" };
+  const fetchMock = vi.fn(async (input: string | URL | Request, init?: RequestInit) => {
+    const path = String(input);
+    if (path.endsWith("/admin/step-up")) return stepUp();
+    if (path.endsWith("/suspension")) return suspend(init!);
+    if (path.endsWith(`/admin/users/${member.id}`)) return response(detail);
+    if (path.endsWith(`/admin/users/${other.id}`)) return response(other);
+    return response({ ...list, items: [member, other] });
+  });
+  vi.stubGlobal("fetch", fetchMock);
+  return { fetchMock, other };
+}
+
+async function fillSuspension(timed = true) {
+  render(<AdminUsersPanel />);
+  const row = (await screen.findByText(member.email)).closest("tr")!;
+  fireEvent.click(within(row).getByRole("button", { name: "管理" }));
+  await screen.findByRole("heading", { name: "停權管理" });
+  fireEvent.change(screen.getByLabelText("停權／解除原因"), { target: { value: "security review" } });
+  // A local datetime one day ahead works independently of the runner's timezone.
+  const tomorrow = new Date(Date.now() + 24 * 60 * 60 * 1000);
+  const local = new Date(tomorrow.getTime() - tomorrow.getTimezoneOffset() * 60 * 1000).toISOString().slice(0, 16);
+  if (timed) fireEvent.change(screen.getByLabelText(/^停權至（留空為永久）/), { target: { value: local } });
+  fireEvent.click(screen.getByRole("button", { name: "套用停權" }));
+  return new Date(local).toISOString();
+}
+
+async function confirmSuspension(permanent = false) {
+  const dialog = await screen.findByRole("dialog", { name: permanent ? "確認永久停權" : "停權管理" });
+  fireEvent.change(within(dialog).getByLabelText("目前密碼"), { target: { value: "current-password" } });
+  fireEvent.change(within(dialog).getByLabelText(/^輸入確認文字/), { target: { value: `SUSPEND ${member.email}` } });
+  fireEvent.click(within(dialog).getByRole("button", { name: permanent ? "套用永久停權" : "套用停權" }));
+  return dialog;
+}
+
+function stepUpRequired(code = "admin_step_up_required") {
+  return response({ code, detail: "Password verification required" }, code === "admin_step_up_scope_required" ? 403 : 401);
 }
 
 afterEach(() => {
@@ -319,6 +363,116 @@ describe("AdminUsersPanel", () => {
     expect(fetchMock).toHaveBeenCalledTimes(2);
   });
 
+  it("sends an ordinary member's timed suspension directly without step-up", async () => {
+    const suspend = vi.fn<(init: RequestInit) => Response>().mockImplementation(() => response(detail));
+    const { fetchMock } = suspensionServer(suspend);
+    const until = await fillSuspension();
+    await screen.findByText("變更已儲存。");
+    expect(suspend).toHaveBeenCalledTimes(1);
+    const init = suspend.mock.calls[0][0] as RequestInit;
+    expect(JSON.parse(String(init.body))).toEqual({ reason: "security review", suspended_until: until });
+    expect(new Headers(init.headers).get("Idempotency-Key")).toMatch(/^admin-suspend-/);
+    expect(fetchMock.mock.calls.some(([path]) => String(path).endsWith("/admin/step-up"))).toBe(false);
+  });
+
+  it.each(["admin_step_up_required", "admin_step_up_invalid", "admin_step_up_scope_required"])("replays the exact timed request after %s, even with stale role metadata", async (code) => {
+    const suspend = vi.fn<(init: RequestInit) => Response>()
+      .mockImplementationOnce(() => stepUpRequired(code))
+      .mockImplementation(() => response(detail));
+    const { fetchMock } = suspensionServer(suspend);
+    const until = await fillSuspension();
+    const dialog = await screen.findByRole("dialog", { name: "停權管理" });
+    expect(within(dialog).queryByRole("heading", { name: "確認永久停權" })).toBeNull();
+    expect(within(dialog).queryByRole("button", { name: "套用永久停權" })).toBeNull();
+    // Later draft edits must not alter the already challenged request.
+    fireEvent.change(screen.getByLabelText("停權／解除原因"), { target: { value: "changed draft" } });
+    fireEvent.change(screen.getByLabelText(/^停權至（留空為永久）/), { target: { value: "" } });
+    expect(dialog.textContent).toContain("security review");
+    expect(dialog.textContent).not.toContain("changed draft");
+    expect(dialog.textContent).toContain(new Intl.DateTimeFormat("zh-TW", { dateStyle: "medium", timeStyle: "short" }).format(new Date(until)));
+    await confirmSuspension();
+    await screen.findByText("變更已儲存。");
+    expect(suspend).toHaveBeenCalledTimes(2);
+    const [original, replay] = suspend.mock.calls.map(([init]) => init);
+    expect(replay.body).toBe(original.body);
+    expect(new Headers(replay.headers).get("Idempotency-Key")).toBe(new Headers(original.headers).get("Idempotency-Key"));
+    expect(JSON.parse(String(replay.body))).toEqual({ reason: "security review", suspended_until: until });
+    const stepup = fetchMock.mock.calls.find(([path]) => String(path).endsWith("/admin/step-up"))![1];
+    expect(JSON.parse(String(stepup?.body))).toEqual({ password: "current-password", scopes: ["users.suspend_permanent"] });
+  });
+
+  it("discards a cancelled timed challenge before a new suspension request", async () => {
+    const suspend = vi.fn<(init: RequestInit) => Response>().mockImplementation(() => stepUpRequired());
+    const { fetchMock } = suspensionServer(suspend);
+    await fillSuspension();
+    const dialog = await screen.findByRole("dialog", { name: "停權管理" });
+    fireEvent.click(within(dialog).getByRole("button", { name: "取消" }));
+    expect(screen.queryByRole("dialog", { name: "停權管理" })).toBeNull();
+    expect(fetchMock.mock.calls.some(([path]) => String(path).endsWith("/admin/step-up"))).toBe(false);
+    fireEvent.change(screen.getByLabelText("停權／解除原因"), { target: { value: "new investigation" } });
+    fireEvent.click(screen.getByRole("button", { name: "套用停權" }));
+    await screen.findByRole("dialog", { name: "停權管理" });
+    expect(suspend).toHaveBeenCalledTimes(2);
+    const [original, next] = suspend.mock.calls.map(([init]) => init);
+    expect(JSON.parse(String(next.body)).reason).toBe("new investigation");
+    expect(new Headers(next.headers).get("Idempotency-Key")).not.toBe(new Headers(original.headers).get("Idempotency-Key"));
+  });
+
+  it.each(["challenge", "step-up"])("does not continue a pending %s after selecting another member", async (phase) => {
+    let release!: (result: Response) => void;
+    const pending = new Promise<Response>((resolve) => { release = resolve; });
+    const suspend = vi.fn<(init: RequestInit) => Response | Promise<Response>>()
+      .mockImplementation(() => phase === "challenge" ? pending : stepUpRequired());
+    const { other } = suspensionServer(suspend, () => pending);
+    await fillSuspension();
+    if (phase === "step-up") await confirmSuspension();
+    const next = new URL(window.location.href);
+    next.searchParams.set("user", other.id);
+    act(() => {
+      window.history.pushState(null, "", next);
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    });
+    await screen.findByRole("dialog", { name: other.email });
+    await act(async () => { release(phase === "challenge" ? stepUpRequired() : response({})); });
+    expect(screen.queryByRole("dialog", { name: "停權管理" })).toBeNull();
+    expect(suspend).toHaveBeenCalledTimes(1);
+    expect((screen.getByLabelText("停權／解除原因") as HTMLInputElement).value).toBe("");
+  });
+
+  it("retains the timed request through password and suspension retry failures", async () => {
+    const suspend = vi.fn<(init: RequestInit) => Response>()
+      .mockImplementationOnce(() => stepUpRequired())
+      .mockImplementationOnce(() => response({ detail: "Temporary suspension failure" }, 503))
+      .mockImplementation(() => response(detail));
+    const stepUp = vi.fn()
+      .mockImplementationOnce(() => response({ detail: "Incorrect password" }, 401))
+      .mockImplementation(() => response({}));
+    suspensionServer(suspend, stepUp);
+    const until = await fillSuspension();
+    await confirmSuspension();
+    await screen.findByText("Incorrect password");
+    expect(suspend).toHaveBeenCalledTimes(1);
+    await confirmSuspension();
+    await screen.findByText("Temporary suspension failure");
+    await confirmSuspension();
+    await screen.findByText("變更已儲存。");
+    expect(suspend).toHaveBeenCalledTimes(3);
+    expect(new Set(suspend.mock.calls.map(([init]) => new Headers(init.headers).get("Idempotency-Key"))).size).toBe(1);
+    for (const [init] of suspend.mock.calls) expect(JSON.parse(String(init.body))).toEqual({ reason: "security review", suspended_until: until });
+  });
+
+  it("keeps permanent suspension explicitly null after password confirmation", async () => {
+    const suspend = vi.fn<(init: RequestInit) => Response>().mockImplementation(() => response(detail));
+    const { fetchMock } = suspensionServer(suspend);
+    await fillSuspension(false);
+    await confirmSuspension(true);
+    await screen.findByText("變更已儲存。");
+    expect(suspend).toHaveBeenCalledTimes(1);
+    expect(JSON.parse(String(suspend.mock.calls[0][0].body))).toEqual({ reason: "security review", suspended_until: null, confirmation: `SUSPEND ${member.email}` });
+    const stepup = fetchMock.mock.calls.find(([path]) => String(path).endsWith("/admin/step-up"))![1];
+    expect(JSON.parse(String(stepup?.body)).scopes).toEqual(["users.suspend_permanent"]);
+  });
+
   it("clears the previous member and every mutation draft when browser history selects another user", async () => {
     const other = {
       ...member,
@@ -353,8 +507,10 @@ describe("AdminUsersPanel", () => {
 
     const next = new URL(window.location.href);
     next.searchParams.set("user", other.id);
-    window.history.pushState(null, "", next);
-    window.dispatchEvent(new PopStateEvent("popstate"));
+    act(() => {
+      window.history.pushState(null, "", next);
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    });
     await screen.findByRole("dialog", { name: other.email });
     expect((screen.getByLabelText("調整次數") as HTMLInputElement).value).toBe(
       "",
