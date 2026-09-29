@@ -477,7 +477,10 @@ export class Automation {
       const request = siteVideo?.retry_request_id;
       if (state.status !== "blocked" || !request || request === siteVideo.retry_acknowledged_id || request === state.retry_request_id) continue;
       state.retry_request_id = request;
-      state.status = "active";
+      // A language batch can fail after the finished video reached YouTube. Resume
+      // only its languages, rather than revisiting the production stages.
+      state.status = state.blocked_from_status === "done" ? "done" : "active";
+      delete state.blocked_from_status;
       const failedStage = /^([a-z_]+) failed \d+ times in a row:/.exec(state.blocked ?? "")?.[1];
       if (failedStage && state.failures) delete state.failures[failedStage];
       delete state.blocked;
@@ -508,7 +511,7 @@ export class Automation {
     for (const state of automatedVideos(this.workBase)) {
       if (!["active", "done"].includes(state.status)) continue;
       // If the first acknowledgement of a retry could not reach the site, send it before another stage.
-      if (state.status === "active" && state.retry_request_id && siteBySlug.get(state.slug)?.retry_acknowledged_id !== state.retry_request_id) {
+      if (state.retry_request_id && siteBySlug.get(state.slug)?.retry_acknowledged_id !== state.retry_request_id) {
         try {
           await report(this.ctx, this.api, state, "retrying");
         } catch (error) {
@@ -989,6 +992,7 @@ export class Automation {
 
   /** Stop working on a video and say why on /admin/videos; the owner or a person takes over. */
   async block(state, why) {
+    state.blocked_from_status = state.status;
     state.status = "blocked";
     state.blocked = why;
     saveState(this.workdir(state.slug), state);
@@ -1604,6 +1608,9 @@ export class Automation {
     const packaged = await run(ctx, ["package", "--slug", slug]);
     if (packaged.code !== 0) return this.block(state, `package failed: ${lastLine(packaged.out)}`);
     const pushed = await run(ctx, ["review-push", "--slug", slug, "--gate", "languages"]);
+    // A rejected payload will not recover next round. Park only this video so later
+    // videos can run; the existing one-shot retry resumes it after the payload is fixed.
+    if (pushed.code === ctx.EXIT.lint) return this.block(state, `language submission rejected: ${lastLine(pushed.out, 2)}`);
     if (pushed.code !== 0) return this.later(`${slug}: could not send the language batch: ${lastLine(pushed.out, 2)}`);
     await this.pull(slug);
     await report(ctx, this.api, state, "languages sent");
