@@ -41,4 +41,12 @@ scope:
 
 ## Notes
 
-站主第 0 期要先做：後台貼說書式 `voice.style` 與常設指示；工人主機放 `_music/`、`_sfx/` 授權檔與 manifest；打開 `slides_media_enabled`（或過渡期的 `drama_enabled`＋系列 `image_model`）。
+站主第 0 期要先做（2026-09-29 第 1–8 期都已落地，不再需要過渡期的做法）：
+
+1. 部署後到 `/admin/videos` 設定分頁：
+   - 教學分頁的 Gemini 語音 `style` 貼 `tools/video/automation/register.mjs` 的 `STORY_VOICE_STYLE`（新安裝已是預設；既有的資料列要自己貼）。
+   - 「投影片影片的插畫」區塊：打開「替投影片影片畫插圖」；模型維持 gemini-3.1-flash-image；單支上限 20（或 15）；「judge 全過時自動核准投影片的分鏡」維持開；填「授權配樂檔名」（例如 `bed.mp3`）與「音效組資料夾」（例如 `studio-a`）。
+   - 說書規則已在提示詞裡（`REGISTER_RULES`），常設指示不必再貼；要加頻道自己的口頭禪才貼。
+2. 工人主機的 `<VIDEO_WORKDIR>/_music/<檔名>`（mp3／m4a／wav／flac）與 `<VIDEO_WORKDIR>/_sfx/<組名>/{stamp,whoosh,pop}.*` 加 `manifest.json`（`{"source":…,"license":…,"sounds":{"stamp":{"file":"stamp.wav"},"whoosh":{…},"pop":{…}}}`），格式見 `docs/videos/ILLUSTRATED.md` §配樂與音效。
+3. 在「影片」分頁發起一支投影片影片（題目如上）；工人會自己走 keyframes → storyboard（自動核准）→ render → music（檢查你的檔）→ assemble → 品管 → 上架包；插圖成本估 US$5–8（60–75 張 × US$0.077，含 judge）。
+4. 舊的 10 支要改口吻：`node tools/video/cli.mjs restyle --slug <slug>`（先 `--dry-run` 看現況）；要加插圖則要撰稿重寫成有 `shot` 的稿（另開票；它們的資料夾仍在別的 in-progress 票的 scope 裡）。
