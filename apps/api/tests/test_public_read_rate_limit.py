@@ -258,12 +258,7 @@ async def test_ignores_a_forwarded_address_without_the_proxy_token(
 async def test_an_unset_token_keeps_the_previous_behaviour(
     limited_app: Starlette, counted: dict[str, int]
 ) -> None:
-    """Back-compatibility is the point, not an oversight.
-
-    A token configured on the API but not yet on the web container would stop every
-    forwarded address being believed at once, collapsing all visitors into the web
-    container's single bucket -- an outage wearing a security feature's clothes.
-    """
+    """Development keeps the empty-token fallback; production rejects it at startup."""
     async for client in _client(limited_app):
         await client.get("/api/v1/foods/categories", headers=FORWARDED)
 

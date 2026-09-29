@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-video-1m-vibe-coding
 title: Million-views batch 5: vibe coding your first website in 2026 with Claude, ChatGPT or Gemini, published free
-status: in-progress
+status: open
 priority: P1
 area: docs
-owner: claude-opus-4-8
-claimed_at: 2026-09-28T04:24:16Z
+owner:
+claimed_at:
 created_at: 2026-09-28T02:30:46Z
 completed_at:
-branch: claude/bold-noether-unopy8
+branch: codex/p1-task-audit
 depends_on: []
 scope:
   - docs/videos/vibe-coding-first-website-2026
@@ -57,3 +57,11 @@ node tools/video/cli.mjs status --slug vibe-coding-first-website-2026 --workdir 
 ## Progress (2026-09-28, claude-opus-5-5)
 
 Pipeline stages 1–4 done: `video.json` (option A, 8 chapters, ~8.0 min, lint 0/0), `claims.md` (c1–c9), `verify-1.md`. ChatGPT's website feature is named only at the "以官網為準" level because its help page returned 403 today; everything else about Artifacts, Canvas, GitHub Pages and Cloudflare Pages was confirmed on the official pages. Lexicon gained `vibe`, `coding`, `GB`, `Git`, `NC`, `ND`. Remaining stages need the owner setup; next is `review-push --slug vibe-coding-first-website-2026 --gate outline`.
+
+### 2026-09-29 independent P1 fact review
+
+第一輪與不同查核者第二輪完成；保留Cloudflare拖放限制及GitHub Actions例外的適用範圍。來源與查核證據見 `docs/videos/vibe-coding-first-website-2026/verify-p1-20260929.md`（如有第二輪，以 `verify-p1-20260929-round2.md` 為最新交接）。同步更正旁白、字卡、標題／說明及claims；未改brief或共用lexicon。最終lint結果由本輪總報告記錄。
+
+只完成獨立事實重查及稿件修正；CTA是否對應已發布文章、觀點／大綱、聽眾與真人試用、TTS／字幕／成片QA／上架仍未完成。既有 `verify-1.md` 是原作者自查且绑定舊稿，CLI顯示fact-checked不能代替上述驗收。
+
+站主對六片後續製作方向尚待回覆；未產生付費媒體、改正式設定或上傳。釋出本次claim，保留原製作票與未勾條件供接續。

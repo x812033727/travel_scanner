@@ -8,31 +8,11 @@ owner:
 claimed_at:
 created_at: 2026-09-07T09:22:13Z
 completed_at:
-branch: codex/community-account-safety
+branch: codex/p1-task-audit
 depends_on: []
 scope:
-  - apps/api/app/community
-  - apps/api/app/models.py
-  - apps/api/app/main.py
-  - apps/api/app/config.py
-  - apps/api/app/auth
-  - apps/api/app/i18n.py
-  - apps/api/app/worker.py
-  - apps/api/app/trips
-  - apps/api/app/search/schemas.py
-  - docker-compose.yml
-  - docker-compose.prod.yml
-  - apps/api/pyproject.toml
-  - apps/api/uv.lock
-  - apps/api/migrations
   - apps/api/tests/test_community_foundation.py
-  - apps/api/tests/test_schema.py
-  - apps/api/tests/test_ui_text.py
-  - .env.example
-  - docker-compose.community.yml
-  - .github/workflows/ci.yml
   - docs/community.md
-  - apps/api/app/ui_text/schemas.py
 ---
 
 # Mokaair community foundation and account safety
@@ -55,8 +35,11 @@ requires verification, recovery and deletion before public activation.
 
 - [x] Implement and verify foundations.
 - [x] Verify versioned public posts, moderation, free itinerary forks and collections.
-- [ ] Verify mutual-follow messaging, durable notifications and platform-paid translation.
-- [ ] Verify reviewed pet conditions, traveller reports and conservative planning filters.
+- [x] Verify mutual-follow messaging and reviewed pet/traveller/planning contracts;
+      historical real-service browser acceptance is recorded below, with fresh
+      local API contract checks on 2026-09-29.
+- [ ] Complete real-service translation failure/revision, worker restart/outage and
+      capacity recovery acceptance; local contracts alone do not complete it.
 
 ## How to verify
 
@@ -125,3 +108,22 @@ locks, refreshing both snapshots and clearing place_refs during erasure. Add rea
 PostgreSQL overlap/replay/issuance tests; those must pass CI before this follow-up
 is accepted. The wider background-worker/deletion, outage/capacity and multi-locale
 browser acceptance work remains open.
+
+### 2026-09-29 local P1 reconciliation (codex-p1-product)
+
+Claimed for the owner-authorized P1 review. The matching implementation PRs are
+merged and no matching open PR or active same-feature implementation was found.
+The former broad scopes have been narrowed to this local acceptance work. Forced
+claims only bypass historical/shared scope metadata; no other agent application
+changes are taken over. No production or cloud-account access is included.
+
+The local run of `tests/test_hotspot_discovery.py` and
+`tests/test_community_foundation.py` passed: **52 passed, 8 skipped** in 213.84s.
+The skipped cases require PostgreSQL or private S3; this machine has no Docker
+command and no listening PostgreSQL/Redis/MinIO/Mailpit companion services.
+The always-on contracts cover mutual messaging, token erasure/replay, translation
+cache invalidation/budget, conservative pet filters and durable-job erasure.
+This is API contract evidence, not a worker restart/load or real SMTP/S3 result.
+PR #343 already merged the account-safety fixes; do not reimplement the stale
+follow-up paragraph above. See `docs/community-local-acceptance-2026-09-29.md`
+for the separately identified browser UI evidence and remaining real-service work.

@@ -10,6 +10,7 @@ from html.parser import HTMLParser
 from urllib.parse import urljoin, urlsplit
 from xml.etree import ElementTree
 
+from app.news_automation.evidence import evidence_excerpt
 from app.news_automation.schemas import Entry, SourceFormat
 
 MAX_ENTRIES = 100
@@ -513,7 +514,7 @@ def read_article(
     links = [url for url in (_join(base_url, href) for href in parser.links) if url]
     return Article(
         title=parser.title[:500],
-        text=text[:40_000],
+        text=evidence_excerpt(text),
         links=links,
         headline=parser.headline,
         paragraphs=tuple(parser.paragraphs),
@@ -542,7 +543,7 @@ def extract_article(
     parser.feed(body.decode("utf-8", errors="replace"))
     text = "\n".join(parser.text)
     links = [url for url in (_join(base_url, href) for href in parser.links) if url]
-    return parser.title[:500], text[:40_000], links
+    return parser.title[:500], evidence_excerpt(text), links
 
 
 def parse_entries(
