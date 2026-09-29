@@ -19,7 +19,8 @@ start, no documents at all, its episodes the stories of a planned backlog import
 (``app.video_automation.stories``). The next ready story starts without waiting for the one
 before, unless a limit holds (``story_quota``): the day's count on the Asia/Taipei calendar
 day, the episodes in the making, the month's count, or STORY_UPLOAD_BUFFER stories cleared for
-upload that the owner has not uploaded yet.
+upload that the owner has not uploaded yet. A skipped story that never started can be brought
+back (``restore_episode``); a skipped episode of the other kinds cannot.
 
 The router turns ``SeriesRefused`` into the API's problem response; nothing here raises
 ``AppError``.
@@ -1554,6 +1555,64 @@ async def skip_episode(session: AsyncSession, actor: User, slug: str, number: in
             action="video_series_episode_skipped",
             target=f"video-series:{series.slug}",
             metadata_json={"number": number},
+        )
+    )
+    await session.commit()
+    return await series_view(session, slug)
+
+
+async def restore_episode(session: AsyncSession, actor: User, slug: str, number: int) -> SeriesOut:
+    """Bring a skipped story back to ready: the day's count, the other limits and the worker's
+    next job read the rows, so they see it at once (``story_quota``, ``next_job_for``).
+
+    A story series only. Its stories stand alone and start in number order without waiting for
+    one another, so a story brought back just takes its turn again. An episode of a long series
+    is written after the one before it and from its recap, and the episodes after a skipped one
+    went on without it; brought back, it would be made after them and would not fit what they
+    already tell. A one-off is its only episode. Those are refused rather than reordered.
+
+    A story that never started only: one that started (``started_at`` set) was skipped when its
+    video was dropped, and its slug stays that video's, so it could never start again and, as
+    the lowest ready number, would hold up every story after it. When skipping this story had
+    finished the series, the series is active again.
+    """
+    series = await _series(session, slug, lock=True)
+    if not is_story(series):
+        raise SeriesRefused(
+            409,
+            "video_series_restore_story_only",
+            "只有品牌故事能恢復略過的集數：漫劇一集接著一集寫，後面的劇情已經當這一集不存在，"
+            "恢復了會接不上",
+        )
+    episode = await _episode(session, series, number)
+    if episode.status != "skipped":
+        raise SeriesRefused(
+            409, "video_series_episode_not_skipped", f"第 {number} 個故事沒有被略過，不用恢復"
+        )
+    if episode.started_at is not None:
+        raise SeriesRefused(
+            409,
+            "video_series_episode_was_started",
+            f"第 {number} 個故事在 {taipei_day(episode.started_at):%m/%d} 開始做過、影片已經放棄，"
+            f"影片代號 {episode.slug} 留給那支影片；只有從沒開始過的故事能恢復",
+        )
+    now = _now()
+    episode.status = "ready"
+    episode.updated_at = now
+    reopened = series.status == "finished"
+    if reopened:
+        series.status = "active"
+        series.updated_at = now
+    session.add(
+        AdminAuditLog(
+            actor_user_id=actor.id,
+            action="video_series_episode_restored",
+            target=f"video-series:{series.slug}",
+            metadata_json={
+                "number": number,
+                "story": (episode.beats or {}).get("id"),
+                "reopened": reopened,
+            },
         )
     )
     await session.commit()
