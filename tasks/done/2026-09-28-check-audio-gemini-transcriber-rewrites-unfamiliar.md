@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-check-audio-gemini-transcriber-rewrites-unfamiliar
 title: check-audio: Gemini transcriber rewrites unfamiliar model versions and years
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5
 claimed_at: 2026-09-29T02:58:51Z
 created_at: 2026-09-28T06:03:30Z
-completed_at:
+completed_at: 2026-09-29T03:13:34Z
 branch:
 depends_on: []
 scope:
@@ -39,16 +39,16 @@ are not real, with nothing in the tool to say a second opinion cleared them.
 
 ## Definition of done
 
-- [ ] A flagged line can be cleared by a second, independent transcript that matches the
+- [x] A flagged line can be cleared by a second, independent transcript that matches the
       script, and the audio gate shows that it was cleared and by what.
 - [ ] Or: the transcription request carries the script's expected product names and numbers as
       context, and the pricing video's three lines pass without a `say` change.
 
 ## Steps
 
-- [ ] Decide between a second-opinion transcript (Whisper on the owner's machine or the worker)
+- [x] Decide between a second-opinion transcript (Whisper on the owner's machine or the worker)
       and a context-primed Gemini request; measure both on the three clips above.
-- [ ] Record the outcome in `review/check.json` so `review-push --gate audio` can show it.
+- [x] Record the outcome in `review/check.json` so `review-push --gate audio` can show it.
 
 ## How to verify
 
@@ -69,3 +69,22 @@ node tools/video/cli.mjs check-audio --slug gpt6-vs-opus55-worth-paying --workdi
 - On the same day it also wrote Gemini 1.5 Flash's real old prices into a Japanese line that said
   something else entirely (qx54), so a transcript that differs in numbers is not proof the voice
   said them.
+- 2026-09-29 (claude-opus-5-5): done with the second-opinion route. A context-primed Gemini request
+  already existed (`terms`) and still produced the false flags. Priming it with the script would
+  hide the real misreadings that videos 5 and 6 had (4050 as 450, 秒數 as 描述). How it works:
+  - `check-audio --second-opinion "<program args>"` or `VIDEO_SECOND_OPINION` runs the program once
+    per check on the lines Jev still doubts. It passes the same English-word hints Gemini gets, as a
+    JSON file named in `VIDEO_SECOND_OPINION_HINTS`, and never the sentences.
+  - A line is cleared when the program's transcript matches the script or Jev passes it; the result
+    is kept per clip in `review/check.json` (`second`).
+  - `check-flags.json` lists only the lines still flagged, and the audio card's summary names what
+    cleared which lines (`cleared_lines` in the payload). The server's auto-approval rule is
+    unchanged: it approves when the flag count is 0.
+  - `tools/video/tts/whisper_second_opinion.py` is the faster-whisper example.
+  - Measured on `why-openai-killed-sora`, whose 7 flags were all Gemini mishearings by the owner's
+    listen and a manual Whisper check. Without hints, 4 were cleared. With hints, 5 were cleared:
+    ux5y's Seedance 2.0 was then spelled right. The 2 left are 46dv, where Whisper heard 一支 as
+    一直, exactly where Gemini was right, and wcet, where Whisper dropped 3.1 on that run. Both
+    stay flagged, which is the conservative outcome.
+  - A judge that could read both transcripts at once would clear lines like 46dv. That needs the
+    server's judge schema to take two transcripts, and is not done here.

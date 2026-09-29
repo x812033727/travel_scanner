@@ -443,10 +443,11 @@ test("a second transcript clears a line only Gemini misheard; one that misses th
   writeFileSync(
     script,
     [
-      'import { appendFileSync } from "node:fs";',
+      'import { appendFileSync, readFileSync } from "node:fs";',
       'import path from "node:path";',
       "const [locale, ...files] = process.argv.slice(2);",
-      `appendFileSync(${JSON.stringify(log)}, \`\${locale} \${files.length}\\n\`);`,
+      'const hints = process.env.VIDEO_SECOND_OPINION_HINTS ? JSON.parse(readFileSync(process.env.VIDEO_SECOND_OPINION_HINTS, "utf8")) : {};',
+      `appendFileSync(${JSON.stringify(log)}, \`\${locale} \${files.length} \${Object.keys(hints).sort().join(",")}\\n\`);`,
       `const canned = ${JSON.stringify(canned)};`,
       'for (const file of files) console.log(`${path.basename(file)} ${canned[path.basename(file)] ?? ""}`);',
     ].join("\n"),
@@ -458,7 +459,8 @@ test("a second transcript clears a line only Gemini misheard; one that misses th
   assert.equal(await main(["tts", "--slug", box.slug], synth.ctx), EXIT.ok, synth.out.stderr);
   const first = context(box, server.fetchImpl);
   assert.equal(await main(["check-audio", "--slug", box.slug, "--second-opinion", flag], first.ctx), EXIT.lint, first.out.stderr);
-  assert.deepEqual(calls(), ["zh-TW 2"], "one run of the second transcriber, with the locale and the two doubted clips");
+  const hinted = [`${misheard.id}.wav`, `${mispoken.id}.wav`].sort().join(",");
+  assert.deepEqual(calls(), [`zh-TW 2 ${hinted}`], "one run of the second transcriber, with the locale, the two doubted clips and their hints file");
   const flags = JSON.parse(readFileSync(path.join(box.workdir, "review", "check-flags.json"), "utf8"));
   assert.deepEqual(flags.flags, [mispoken.id]);
   assert.match(first.out.stdout, /, 1 cleared by a second transcript, 1 flagged/);
@@ -474,7 +476,7 @@ test("a second transcript clears a line only Gemini misheard; one that misses th
   // The clearance belongs to the clip: a rerun does not ask again, with or without the flag.
   const again = context(box, server.fetchImpl);
   assert.equal(await main(["check-audio", "--slug", box.slug, "--second-opinion", flag], again.ctx), EXIT.lint);
-  assert.deepEqual(calls(), ["zh-TW 2"]);
+  assert.deepEqual(calls(), [`zh-TW 2 ${hinted}`]);
   const plain = context(box, server.fetchImpl);
   assert.equal(await main(["check-audio", "--slug", box.slug], plain.ctx), EXIT.lint);
   assert.match(plain.out.stdout, /1 cleared by a second transcript, 1 flagged/);

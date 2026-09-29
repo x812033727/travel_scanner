@@ -337,15 +337,18 @@ export async function checkAudio(args, ctx, options) {
   let secondFailed = null;
   if (second) {
     const name = secondOpinionName(second);
-    const pending = doubts().filter(([, entry]) => entry.second?.by !== name);
+    // Asked again when another transcriber answers, or when the line's English words changed.
+    const pending = doubts().filter(([, entry]) => entry.second?.by !== name || (entry.second.terms ?? []).join(" ") !== (entry.terms ?? []).join(" "));
     if (pending.length) {
       try {
-        const heard = await secondTranscripts(second, locale, pending.map(([id]) => path.join(audioDir, `${id}.wav`)));
+        const hints = path.join(workdir, files.cache.replace(/\.json$/, ".hints.json"));
+        atomicWrite(hints, `${JSON.stringify(Object.fromEntries(pending.map(([id, entry]) => [`${id}.wav`, entry.terms ?? []])), null, 2)}\n`);
+        const heard = await secondTranscripts(second, locale, pending.map(([id]) => path.join(audioDir, `${id}.wav`)), { hints, env: ctx.env });
         const differ = [];
         for (const [id, entry] of pending) {
           const text = heard.get(`${id}.wav`);
           if (text === undefined) continue;
-          entry.second = { by: name, heard: text, match_kind: matchKind(text, byLine.get(id), lexicon, locale), noul: null };
+          entry.second = { by: name, terms: entry.terms ?? [], heard: text, match_kind: matchKind(text, byLine.get(id), lexicon, locale), noul: null };
           if (entry.second.match_kind === null) differ.push([id, entry]);
         }
         atomicWrite(cacheFile, `${JSON.stringify(cache, null, 2)}\n`);

@@ -28,10 +28,16 @@ export function secondOpinionName(command) {
   return path.basename(script ?? command[0]);
 }
 
-/** The transcript of each clip, keyed by the clip's file name; clips the program printed nothing for are left out. */
-export async function secondTranscripts(command, locale, files, { run = promisify(execFile) } = {}) {
+/**
+ * The transcript of each clip, keyed by the clip's file name; clips the program printed nothing for
+ * are left out. `hints` names the file (JSON, { "<clip file name>": ["Veo", ...] }) with the English
+ * words each line says, the same hints Gemini gets; the program finds it in VIDEO_SECOND_OPINION_HINTS
+ * and may use it for spelling. The script itself is never passed.
+ */
+export async function secondTranscripts(command, locale, files, { run = promisify(execFile), hints = null, env = process.env } = {}) {
   const [program, ...args] = command;
-  const { stdout } = await run(program, [...args, locale, ...files], { maxBuffer: 16 * 1024 * 1024, timeout: TIMEOUT_MS, windowsHide: true });
+  const childEnv = hints ? { ...env, [`${SECOND_OPINION_ENV}_HINTS`]: hints } : env;
+  const { stdout } = await run(program, [...args, locale, ...files], { maxBuffer: 16 * 1024 * 1024, timeout: TIMEOUT_MS, windowsHide: true, env: childEnv });
   const wanted = new Set(files.map((file) => path.basename(file)));
   const heard = new Map();
   for (const line of String(stdout).split(/\r?\n/)) {
