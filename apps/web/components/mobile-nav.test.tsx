@@ -9,7 +9,11 @@ const discovery = vi.hoisted(() => ({ enabled: false, loading: false }));
 vi.mock("@/lib/discovery", () => ({useDiscoveryStatus: () => discovery}));
 const search = vi.hoisted(() => ({ open: vi.fn() }));
 vi.mock("@/components/site-search/site-search-dialog", () => ({ openSiteSearch: search.open }));
-beforeEach(() => { discovery.enabled = false; discovery.loading = false; });
+beforeEach(() => {
+  discovery.enabled = false;
+  discovery.loading = false;
+  search.open.mockClear();
+});
 
 describe("MobileNav", () => {
   it("uses compact discovery controls and avoids flashing old controls while loading", () => {

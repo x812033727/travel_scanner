@@ -349,7 +349,9 @@ async def test_the_worker_gets_the_oldest_unanswered_line_with_the_thread_and_th
     assert job.episode is not None and job.episode.slug == "xianxia-e001"
 
 
-async def _context(session: Any, series: VideoDramaSeries, episode_number: int | None) -> Any:
+async def _context(
+    session: Any, series: VideoDramaSeries, episode_number: int | None, *, discussion: bool = False
+) -> Any:
     docs = await series_service._docs(session, series)  # noqa: SLF001
     episodes = await series_service._episodes(session, series)  # noqa: SLF001
     from app.video_automation.schemas import SeriesContextOut
@@ -382,7 +384,9 @@ async def test_an_answer_files_a_new_version_of_a_document_and_only_a_reply_for_
         session,
         question.id,
         MessageAnswerIn(
-            reply_md="把第二幕改成…", revised=RevisedDocIn(body_md="# v2", body_json=BIBLE)
+            reply_md="把第二幕改成…",
+            revised=RevisedDocIn(body_md="# v2", body_json=BIBLE),
+            revision_context=service.discussion_revision_context([current], "bible"),
         ),
     )
     assert answered.revision is not None and answered.revision.version == 2
@@ -396,12 +400,17 @@ async def test_an_answer_files_a_new_version_of_a_document_and_only_a_reply_for_
 
     # A bad revision is refused before anything is written.
     fresh = _message("bible")
-    _wire(monkeypatch, series, docs=[_doc("bible", 1, "review")])
+    invalid_doc = _doc("bible", 1, "review")
+    _wire(monkeypatch, series, docs=[invalid_doc])
     with pytest.raises(service.MessageRefused) as invalid:
         await service.answer_message(
             _session(scalar=AsyncMock(return_value=fresh)),
             fresh.id,
-            MessageAnswerIn(reply_md="x", revised=RevisedDocIn(body_md="# x", body_json={})),
+            MessageAnswerIn(
+                reply_md="x",
+                revised=RevisedDocIn(body_md="# x", body_json={}),
+                revision_context=service.discussion_revision_context([invalid_doc], "bible"),
+            ),
         )
     assert invalid.value.code == "video_series_doc_invalid" and fresh.answered_at is None
 
@@ -608,7 +617,9 @@ async def test_a_thread_runs_from_the_owner_s_line_to_a_new_version_and_closes_o
             session,
             asked.id,
             MessageAnswerIn(
-                reply_md="改成受傷", revised=RevisedDocIn(body_md="# v2", body_json=BIBLE)
+                reply_md="改成受傷",
+                revised=RevisedDocIn(body_md="# v2", body_json=BIBLE),
+                revision_context=job.revision_context,
             ),
         )
         assert answered.revision is not None and answered.revision.version == 2
@@ -623,7 +634,7 @@ async def test_a_thread_runs_from_the_owner_s_line_to_a_new_version_and_closes_o
         # The replaced version is not one of the owner's rewrites: the budget is untouched.
         settings = await settings_service.settings_row(session)
         sent_back = await series_service.decide_doc(
-            session, owner, slug, "bible", 0, "reject", "再緊一點"
+            session, owner, slug, "bible", 0, "reject", "再緊一點", expected_version=2
         )
         assert sent_back.docs[0].status == "rejected"
         plan = (await series_service.next_job(session, settings)).job
@@ -632,7 +643,9 @@ async def test_a_thread_runs_from_the_owner_s_line_to_a_new_version_and_closes_o
         await series_service.submit_doc(
             session, slug, SeriesDocSubmitIn(kind="bible", body_md="# v3", body_json=BIBLE)
         )
-        await series_service.decide_doc(session, owner, slug, "bible", 0, "approve", None)
+        await series_service.decide_doc(
+            session, owner, slug, "bible", 0, "approve", None, expected_version=3
+        )
         with pytest.raises(service.MessageRefused, match="已經核准"):
             await service.post_message(session, owner, slug, MessageIn(subject="bible", body="x"))
         with pytest.raises(service.MessageRefused, match="還沒開始寫劇本"):

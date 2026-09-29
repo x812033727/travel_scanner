@@ -169,3 +169,21 @@ test("a compilation's report has its six items and says so, and its captions ite
   assert.match(compilationCaptionsItem({ lintWarnings: [], manifest, current: false, locales, hasCaptionFile: () => true }).detail, /merged for other cuts; run compile again/);
   assert.equal(compilationCaptionsItem({ lintWarnings: [], manifest, current: true, locales: ["zh-TW"], hasCaptionFile: () => false }).detail, "zh-TW: no caption file");
 });
+
+test("disclosure for illustrated slides: stylised pictures under a licensed bed need none; a realistic look or generated music does", async () => {
+  const { illustratedFixture } = await import("../core/fixtures/load.mjs");
+  const { REALISTIC_PRESETS } = await import("./checks.mjs");
+  assert.deepEqual(REALISTIC_PRESETS, ["cinematic-3d"]);
+  const doc = illustratedFixture();
+  const licensed = disclosureDecision(doc, { musicSource: "track" });
+  assert.equal(licensed.synthetic, false);
+  assert.match(licensed.reason, /stylised tech-story pictures, a licensed music bed/);
+  assert.equal(disclosureDecision(doc, { musicSource: "generated" }).synthetic, true);
+  const realistic = illustratedFixture();
+  realistic.look = { preset: "cinematic-3d" };
+  assert.equal(disclosureDecision(realistic, { musicSource: "track" }).synthetic, true);
+  const plain = fixture();
+  plain.music = { prompt: "soft piano" };
+  assert.equal(disclosureDecision(plain, { musicSource: "generated" }).synthetic, true, "generated music under plain slides is disclosed too");
+  assert.equal(disclosureDecision(fixture()).synthetic, false);
+});

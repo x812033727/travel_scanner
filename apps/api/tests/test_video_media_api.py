@@ -18,7 +18,7 @@ from app.config import Settings
 from app.db import get_session
 from app.models import VideoToolToken
 from app.problems import AppError, app_error_handler
-from app.video_automation.models import DEFAULT_DRAMA, VideoAutomationSettings
+from app.video_automation.models import DEFAULT_DRAMA, DEFAULT_SLIDES, VideoAutomationSettings
 from app.video_media import admin_api, meter
 from app.video_media.jobs import MediaContext
 from app.video_media.models import VideoMediaJob
@@ -59,7 +59,13 @@ def _app(token: VideoToolToken | None = None) -> FastAPI:
 
 def _row(**changes: Any) -> VideoAutomationSettings:
     return VideoAutomationSettings(
-        id=1, **{**copy.deepcopy(DEFAULT_DRAMA), "drama_enabled": True, **changes}
+        id=1,
+        **{
+            **copy.deepcopy(DEFAULT_DRAMA),
+            **copy.deepcopy(DEFAULT_SLIDES),
+            "drama_enabled": True,
+            **changes,
+        },
     )
 
 
@@ -137,6 +143,18 @@ async def test_status_reports_the_choices_budgets_store_and_limits(media: dict[s
         "remaining": 3000,
     }
     assert body["estimated_usd"] == 1.25 and body["max_usd_per_video"] == 200
+    # Illustrated slides (docs/videos/ILLUSTRATED.md): their own switch, Flash and cap, which the
+    # tool's media/stages.mjs reads; a row from before migration 0114 reads the defaults.
+    assert body["slides_enabled"] is False and body["slides_max_usd_per_video"] == 20
+    assert body["slides_image"] == {
+        "provider": "gemini",
+        "model": "gemini-3.1-flash-image",
+        "configured": True,
+        "resolution": None,
+        "seconds": None,
+    }
+    assert body["slides_auto_approve_storyboard"] is True
+    assert (body["slides_music_track"], body["slides_sfx_set"]) == (None, None)
     assert body["store"]["writable"] and body["limits"]["max_reference_images"] == 4
 
 

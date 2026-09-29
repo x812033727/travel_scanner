@@ -9,6 +9,7 @@ import { writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { characterOf, isShot, NARRATOR } from "./drama.mjs";
+import { speechHash } from "./timeline.mjs";
 
 export const SCRIPT_FILE = "script.md";
 
@@ -72,7 +73,9 @@ export function screenplay(doc) {
     }
     out.push("");
   });
-  out.push(`narrative ${narrativeHash(doc)}`, "");
+  // Pronunciation overrides and pauses affect the checked story/timing even when
+  // the displayed lines do not change. Their approval must also be renewed.
+  out.push(`narrative ${narrativeHash(doc)}`, `speech ${speechHash(doc, null)}`, "");
   return out.join("\n");
 }
 

@@ -268,6 +268,58 @@ test("a finished video stays while something still needs its files", () => {
   assert.equal(round(where, { site: [...site, listing("saga-full", { publish_approved_at: daysAgo(30) })] }).cleared.slug, "saga-e001");
 });
 
+for (const pending of [1, 2]) for (const dryRun of [false, true]) {
+  test(`ready language parts keep their media while ${pending} batches await review (dry run: ${dryRun})`, () => {
+    const where = place();
+    const slug = "languages-pending";
+    const dir = finishedVideo(where.work, slug);
+    const state = readFileSync(path.join(dir, STATE_FILE));
+    // The site can report ready/uploaded parts while the languages review is still pending.
+    // No publish time was set; the upload confirmation alone is already eight days old.
+    const site = [listing(slug, { pending, languages: { en: { metadata: { state: "ready" }, captions: { state: "ready" }, dub: { state: "ready" } }, ja: { dub: { state: "uploaded" } } } })];
+    const result = round(where, { site, dryRun });
+    assert.equal(result.cleared, null);
+    assert.deepEqual(result.due, []);
+    assert.equal(result.held.length, 1);
+    assert.equal(result.held[0].slug, slug);
+    assert.match(result.held[0].why, /pending language batches/);
+    assert.ok(roundLines(result).some((line) => line.includes(slug) && /pending language batches/.test(line)));
+    assert.equal(roundLines(result, { verbose: true }).filter((line) => line.includes(slug)).length, 1, "verbose mode reports the held video once");
+    assertUntouched(dir);
+    for (const [name, size] of Object.entries(MEDIA)) assert.deepEqual(readFileSync(path.join(dir, name)), Buffer.alloc(size, 7), `${name} keeps its bytes`);
+    assert.deepEqual(readFileSync(path.join(dir, STATE_FILE)), state, "a held round does not rewrite auto.json");
+  });
+}
+
+test("approving the pending language batch lets the next round clear its old media", () => {
+  const where = place();
+  const slug = "languages-approved";
+  const dir = finishedVideo(where.work, slug);
+  const languages = { en: { metadata: { state: "ready" }, captions: { state: "ready" }, dub: { state: "ready" } } };
+  const pending = round(where, { site: [listing(slug, { pending: 1, languages })] });
+  assert.equal(pending.cleared, null);
+  assertUntouched(dir);
+
+  const approved = round(where, { site: [listing(slug, { pending: 0, languages: { en: { ...languages.en, dub: { state: "uploaded" } } } })] });
+  assert.equal(approved.cleared.slug, slug);
+  assert.deepEqual(approved.held, []);
+  for (const name of Object.keys(MEDIA)) assert.ok(!exists(dir, name), `${name} is removed after approval`);
+  for (const name of RECORDS) assert.equal(readFileSync(path.join(dir, name), "utf8"), `${slug} ${name}\n`, `${name} stays as it was`);
+  assert.equal(autoJson(dir).tidied_at, NOW.toISOString());
+});
+
+test("rejecting a language batch still keeps its media while the parts return to working", () => {
+  const where = place();
+  const slug = "languages-rejected";
+  const dir = finishedVideo(where.work, slug);
+  const site = [listing(slug, { pending: 0, languages: { en: { metadata: { state: "ready" }, captions: { state: "ready" }, dub: { state: "working" } } } })];
+  const result = round(where, { site });
+  assert.equal(result.cleared, null);
+  assert.equal(result.held[0].slug, slug);
+  assert.match(result.held[0].why, /en dub in the making/);
+  assertUntouched(dir);
+});
+
 test("a compilation's hard-linked cut frees its bytes once", () => {
   const where = place();
   const dir = finishedVideo(where.work, "saga-full", { media: { "final.mp4": 5000 }, state: { compilation: { series: "saga", episodes: [] } } });

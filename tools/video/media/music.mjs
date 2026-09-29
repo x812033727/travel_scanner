@@ -1,4 +1,4 @@
-// `music`: the drama's background track (docs/videos/DRAMA.md). `music.prompt` has the server
+// `music`: the video's background track (docs/videos/DRAMA.md; slides: docs/videos/ILLUSTRATED.md). `music.prompt` has the server
 // generate one at least as long as the video into music/; `music.track` names the owner's own
 // file under <work base>/_music/, checked against music.sha256 when given. Either way
 // music/manifest.json carries the mix hash status compares.
@@ -7,7 +7,7 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 
 import { sha256File } from "../core/approvals.mjs";
-import { isDrama, mixHash, resolveMusic } from "../core/drama.mjs";
+import { mixHash, resolveMusic } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { FPS, speechHash } from "../core/timeline.mjs";
@@ -42,7 +42,7 @@ export async function run(command, args, ctx) {
     ctx.stdout.write(`${doc.slug} has ${lint.errors.length} lint errors; run lint first\n`);
     return EXIT.lint;
   }
-  if (!isDrama(doc)) throw new UsageError("music is for a drama (format \"drama\")");
+  // Any format may carry music (docs/videos/ILLUSTRATED.md); a script without any has nothing to make.
   const music = resolveMusic(doc);
   if (!music) throw new UsageError(`${doc.slug} has no music: add music.prompt or music.track to video.json`);
   const workBase = resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home });
@@ -71,7 +71,7 @@ export async function run(command, args, ctx) {
     const credentials = readCredentials({ env: ctx.env, home: ctx.home });
     if (credentials.token) {
       const status = await mediaStatus(clientOptions(ctx, credentials));
-      const problem = statusProblem(status, "music");
+      const problem = statusProblem(status, "music", doc.format);
       ctx.stdout.write(`server: ${problem ? `NOT ready: ${problem}` : `${status.music.provider} ${status.music.model} ready`}; about US$${trackPrice(status).toFixed(2)}; this video so far US$${ledgerTotals(workdir).usd.toFixed(2)} of the US$${status.max_usd_per_video} cap\n`);
     } else {
       ctx.stdout.write("no video tool token yet; run `node tools/video/cli.mjs login` before generating\n");
@@ -82,9 +82,9 @@ export async function run(command, args, ctx) {
   const credentials = requireCredentials(ctx);
   const options = clientOptions(ctx, credentials);
   const status = await mediaStatus(options);
-  const problem = statusProblem(status, "music");
+  const problem = statusProblem(status, "music", doc.format);
   if (problem) throw new MediaError(problem, { who: "owner" });
-  const stage = new Stage({ slug: doc.slug, workdir, options, status, stage: "music", now: ctx.now });
+  const stage = new Stage({ slug: doc.slug, workdir, options, status, stage: "music", format: doc.format, now: ctx.now });
   const key = mediaKey("music", { provider: status.music.provider, model: status.music.model, prompt: music.prompt, seconds });
   const track = await stage.music({ id: "music", key, prompt: music.prompt, seconds, target: `music/${key}` });
   const manifest = { mix_hash: mix, source: "generated", file: track.file, sha256: track.sha256, seconds, prompt: music.prompt, key, model: manifest_model(status), generated_at: ctx.now().toISOString() };

@@ -23,6 +23,7 @@ from app.video_automation.judge import (
 )
 from app.video_automation.models import (
     DRAMA_FIELDS,
+    SLIDES_FIELDS,
     STYLE_PRESETS,
     VideoAutomationSettings,
     VideoDramaSeries,
@@ -38,6 +39,7 @@ from app.video_automation.schemas import (
     ProviderName,
     SettingsView,
     SettingsWrite,
+    SlidesSettings,
     Stage,
     StagePromptView,
     StageRunIn,
@@ -136,6 +138,31 @@ def drama_values(row: VideoAutomationSettings) -> DramaSettings:
     return DramaSettings(**{field: getattr(row, field) for field in DRAMA_FIELDS})
 
 
+def slides_values(row: VideoAutomationSettings) -> SlidesSettings:
+    """The illustrated slides' settings (docs/videos/ILLUSTRATED.md); a row from before
+    migration 0114 reads the defaults for what it lacks."""
+    return SlidesSettings(
+        **{
+            field: value
+            for field in SLIDES_FIELDS
+            if (value := getattr(row, field, None)) is not None
+        }
+    )
+
+
+def slides_image_choice(row: VideoAutomationSettings) -> tuple[str, str]:
+    """The vendor and model that draw an illustrated slides video's pictures: the slides' own
+    image model on the vendor that has it (the settings' image vendor first), or the drama's
+    choice when the slides name none."""
+    model_id = getattr(row, "slides_image_model", None)
+    if not model_id:
+        return row.image_provider, row.image_model
+    for vendor in sorted(MEDIA_VENDORS, key=lambda vendor: vendor != row.image_provider):
+        if find_model(vendor, "image", model_id) is not None:
+            return vendor, model_id
+    return row.image_provider, model_id
+
+
 async def settings_row(session: AsyncSession, *, lock: bool = False) -> VideoAutomationSettings:
     statement = select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
     if lock:
@@ -170,6 +197,7 @@ def settings_values(row: VideoAutomationSettings) -> SettingsWrite:
         max_retake_rounds=row.max_retake_rounds,
         auto_approve_audio=row.auto_approve_audio,
         drama=drama_values(row),
+        slides=slides_values(row),
         channel_stance=row.channel_stance or "",
         auto_pick_outline=row.auto_pick_outline,
         auto_approve_final=row.auto_approve_final,
@@ -270,6 +298,28 @@ def settings_problems(payload: SettingsWrite, runtime: Settings) -> list[str]:
     elif voice.name not in runtime.azure_speech_voice_list:
         problems.append(f"{voice.name} 不在 Azure 語音的允許清單裡")
     problems.extend(drama_problems(payload.drama, runtime))
+    problems.extend(slides_problems(payload.slides, payload.drama, runtime))
+    return problems
+
+
+def slides_problems(slides: SlidesSettings, drama: DramaSettings, runtime: Settings) -> list[str]:
+    """What the illustrated slides' settings name that the server cannot serve: a retired image
+    model, or, with the pictures on, an image vendor the site has no key for."""
+    problems: list[str] = []
+    model_id = slides.slides_image_model or drama.image_model
+    found = [
+        (vendor, model)
+        for vendor in sorted(MEDIA_VENDORS, key=lambda vendor: vendor != drama.image_provider)
+        if (model := find_model(vendor, "image", model_id)) is not None
+    ]
+    if not found:
+        problems.append(f"投影片插畫：沒有 {model_id} 這個圖片模型")
+        return problems
+    if all(model.status == "retired" for _vendor, model in found):
+        problems.append(f"投影片插畫：{model_id} 已經退役，請換一個模型")
+    vendor = found[0][0]
+    if slides.slides_media_enabled and vendor not in set(configured_providers(runtime)):
+        problems.append(f"投影片插畫：網站還沒有 {vendor} 的金鑰，不能開啟插畫")
     return problems
 
 
@@ -411,15 +461,24 @@ async def hands_off_series(
 
 
 async def auto_approves_storyboard(
-    session: AsyncSession, payload: dict[str, Any], series_slug: str | None = None
+    session: AsyncSession,
+    payload: dict[str, Any],
+    series_slug: str | None = None,
+    video_format: str = "drama",
 ) -> bool:
     row = await session.scalar(
         select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
     )
-    # Off by default: the owner looks at the first drama's keyframes before any clip is paid
-    # for; a hands-off series decided otherwise when it was created.
+    # A drama's is off by default: the owner looks at the first drama's keyframes before any
+    # clip is paid for; a hands-off series decided otherwise when it was created. Illustrated
+    # slides (docs/videos/ILLUSTRATED.md) read their own switch, on by default: their pictures
+    # are cheap stills and the owner chose to look at the finished cut only.
     if row is None:
-        return False
+        return video_format == "slides" and storyboard_check_passed(payload, 7)
+    if video_format == "slides":
+        if not slides_values(row).slides_auto_approve_storyboard:
+            return False
+        return storyboard_check_passed(payload, row.judge_min_score)
     if not row.auto_approve_storyboard and await hands_off_series(session, series_slug) is None:
         return False
     return storyboard_check_passed(payload, row.judge_min_score)

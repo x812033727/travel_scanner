@@ -1,3 +1,5 @@
+import logging
+
 from fastapi import FastAPI
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
@@ -98,6 +100,14 @@ from app.video_speech.admin_api import speech_router as video_speech_router
 from app.video_youtube.admin_api import connection_router as video_youtube_router
 from app.video_youtube.admin_api import publish_router as video_youtube_publish_router
 
+
+def configure_logging() -> None:
+    # Request URLs may contain credentials for providers that require query keys.
+    for name in ("httpx", "httpcore"):
+        logging.getLogger(name).setLevel(logging.WARNING)
+
+
+configure_logging()
 settings = get_settings()
 settings.validate_api_serving_security()
 app = FastAPI(

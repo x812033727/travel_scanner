@@ -3,7 +3,8 @@
 // Errors block the pipeline (the CLI exits 1); warnings are for the writer and reviewer to judge.
 // The written-language list is the one the recorded route's video_kit.py uses, so a script that
 // passes one route's check does not fail the other's.
-import { emotionProblems, EXPLAINER_PRESET, isDrama, shotProblems, visualTierProblems } from "./drama.mjs";
+import { cadenceProblems, HOOK_SECONDS as ILLUSTRATED_HOOK_SECONDS } from "./cadence.mjs";
+import { emotionProblems, EXPLAINER_PRESET, illustrated, isDrama, isShot, shotProblems, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription } from "./metadata.mjs";
 import { DEFAULT_TARGET_MINUTES, LOCALES, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
@@ -135,10 +136,14 @@ function lcsLength(a, b) {
   return row[b.length];
 }
 
-/** How alike two videos' scene template sequences are, 0 to 1. */
+/**
+ * How alike two videos' scene template sequences are, 0 to 1. Only the cards count: two
+ * illustrated videos share "shot, shot, shot" whatever they show, and shotProblems compares the
+ * pictures' prompts instead.
+ */
 export function templateSimilarity(a, b) {
-  const x = a.scenes.map((scene) => scene.template);
-  const y = b.scenes.map((scene) => scene.template);
+  const x = a.scenes.filter((scene) => !isShot(scene)).map((scene) => scene.template);
+  const y = b.scenes.filter((scene) => !isShot(scene)).map((scene) => scene.template);
   if (!x.length || !y.length) return 0;
   return lcsLength(x, y) / Math.max(x.length, y.length);
 }
@@ -222,7 +227,7 @@ export function lintVideo(doc, context = {}) {
   const drama = isDrama(doc);
   const narration = narrationLocale(doc);
   const english = narration === "en";
-  if (!drama && doc.music) warn("music", "the channel spec puts no music under slides videos (docs/videos/README.md); a drama may");
+  const pictures = illustrated(doc);
   if (doc.source_guide && context.pack === null) error("source_guide", `no content pack named ${doc.source_guide}`);
   if (drama && doc.series) seriesProblems(doc, context.series, error, warn);
 
@@ -254,12 +259,15 @@ export function lintVideo(doc, context = {}) {
   });
 
   const timeline = estimateTimeline(doc, context.cpm ?? DEFAULT_CPM);
-  if (drama) {
+  if (drama || pictures) {
     const shots = shotProblems(doc, timeline);
     for (const problem of shots.errors) error(problem.path, problem.message);
     for (const problem of shots.warnings) warn(problem.path, problem.message);
-    for (const problem of emotionProblems(doc)) warn(problem.path, problem.message);
   }
+  if (drama) for (const problem of emotionProblems(doc)) warn(problem.path, problem.message);
+  // The cadence of an illustrated video (docs/videos/ILLUSTRATED.md) is estimated here and
+  // measured at the final gate; warnings, so the writer's draft is never blocked on an estimate.
+  for (const problem of cadenceProblems(doc, timeline)) warn(problem.path, `${problem.message} (estimated; the final gate measures the synthesized timeline)`);
   // A brand story (docs/videos/STORY.md) is known by its series.json, which the worker writes
   // when it starts the episode; its rules come on top of the drama's.
   if (isStory(context.series)) {
@@ -272,8 +280,9 @@ export function lintVideo(doc, context = {}) {
     if (problem.includes("at least")) error("scenes", problem);
     else warn("scenes", `${problem} (estimated; the real check runs on the synthesized timeline)`);
   }
-  if (chapters[0] && chapters[0].seconds > HOOK_SECONDS) {
-    warn("scenes[0]", `the opening chapter runs about ${Math.round(chapters[0].seconds)} s; the hook should land within ${HOOK_SECONDS} s`);
+  const hookSeconds = pictures ? ILLUSTRATED_HOOK_SECONDS : HOOK_SECONDS;
+  if (chapters[0] && chapters[0].seconds > hookSeconds) {
+    warn("scenes[0]", `the opening chapter runs about ${Math.round(chapters[0].seconds)} s; the hook should land within ${hookSeconds} s`);
   }
   const minutes = frameToSeconds(timeline.total_frames) / 60;
   const [low, high] = doc.target_minutes ?? DEFAULT_TARGET_MINUTES;

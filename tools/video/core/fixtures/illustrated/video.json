@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "slug": "fixture-illustrated",
+  "format": "slides",
+  "target_minutes": [
+    0.5,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "台灣國語說書人，像在跟朋友講一個等不及要分享的故事，有起伏，揭曉前停一拍"
+  },
+  "look": {
+    "preset": "tech-story"
+  },
+  "music": {
+    "track": "bed.mp3",
+    "gain_db": -22
+  },
+  "sfx": {
+    "set": "studio-a"
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "AI 模型排行榜第一名，為什麼不一定最好用？",
+    "description": "排行榜是一場考試，你的工作不是。這支用一個故事說清楚，為什麼第一名常常不是你的第一名。",
+    "tags": [
+      "AI 模型",
+      "排行榜"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "第一名\n**不一定**最好用",
+      "tag": "AI 模型",
+      "shot": "podium"
+    }
+  },
+  "sources": [
+    {
+      "title": "範例來源",
+      "url": "https://example.com/models",
+      "checked_on": "2026-09-29"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "hook",
+      "chapter": "第一名的秘密",
+      "template": "title",
+      "data": {
+        "title": "第一名，不一定最好用",
+        "subtitle": "排行榜是一場考試，你的工作不是",
+        "tag": "AI 模型"
+      },
+      "lines": [
+        {
+          "id": "a1hk",
+          "text": "你以為排行榜第一名的模型，就是最適合你的那一個。",
+          "pause_after_ms": 600
+        }
+      ]
+    },
+    {
+      "id": "podium",
+      "template": "shot",
+      "data": {
+        "prompt": "flat illustration of a podium with three trophies under spotlights, an anonymous figure in the audience looking unsure, deep teal night ground, warm cream shapes",
+        "camera": "slow push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "a2pd",
+          "text": "其實排行榜考的是一份考卷，而你每天做的，是另一份。"
+        }
+      ]
+    },
+    {
+      "id": "desk",
+      "template": "shot",
+      "data": {
+        "prompt": "flat illustration of a cluttered office desk at night, a glowing laptop, coffee cup, sticky notes, seen from above, deep teal ground, amber lamp light",
+        "camera": "drift",
+        "visual": "still",
+        "transition": "dissolve"
+      },
+      "lines": [
+        {
+          "id": "a3dk",
+          "text": "想像你桌上那份報告，第一名的模型會怎麼寫它？"
+        }
+      ],
+      "chapter": "桌上的報告"
+    },
+    {
+      "id": "clock",
+      "template": "shot",
+      "data": {
+        "prompt": "flat illustration of a wall clock and an hourglass on a shelf, sand falling, a small glowing laptop below, deep teal ground, amber highlights",
+        "camera": "tilt down",
+        "visual": "still",
+        "transition": "dissolve"
+      },
+      "lines": [
+        {
+          "id": "a4dk",
+          "text": "答案可能讓你意外，先別急著猜，我們用三個數字來看。",
+          "pause_after_ms": 900
+        }
+      ]
+    },
+    {
+      "id": "numbers",
+      "chapter": "三個數字",
+      "template": "stats",
+      "data": {
+        "title": "同一個問題，三個模型",
+        "stats": [
+          {
+            "value": "3 秒",
+            "label": "最快的回答"
+          },
+          {
+            "value": "20 秒",
+            "label": "第一名的回答"
+          },
+          {
+            "value": "**一半**",
+            "label": "價格差"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "a5nm",
+          "text": "第一個數字，最快的模型三秒就回答了。"
+        },
+        {
+          "id": "a6nm",
+          "text": "第二個數字，排行榜第一名花了二十秒。",
+          "reveal": 1
+        },
+        {
+          "id": "a7nm",
+          "text": "第三個數字，價格差了一半。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "race",
+      "template": "shot",
+      "data": {
+        "prompt": "flat illustration of two runners as simple arrows on a night track, a long amber arrow far ahead of a short cream arrow, spotlights, deep teal ground",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "a8rc",
+          "text": "所以問題從來不是誰最強，而是誰最適合你手上的工作。"
+        }
+      ]
+    },
+    {
+      "id": "rule",
+      "template": "big",
+      "data": {
+        "kicker": "一句話",
+        "text": "先看工作，再看排行榜",
+        "sub": "等待時間和價格，才是你每天付的成本"
+      },
+      "lines": [
+        {
+          "id": "a9rl",
+          "text": "一句話，先看工作，再看排行榜。"
+        }
+      ]
+    },
+    {
+      "id": "door",
+      "chapter": "那該怎麼選",
+      "template": "shot",
+      "data": {
+        "prompt": "flat illustration of an anonymous figure opening one of three doors in a dark hallway, warm light spilling out of the chosen door, deep teal ground",
+        "camera": "slow push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "b1dr",
+          "text": "三個問題就能幫你選，第一個問題，你每天做的是哪一種工作？"
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "template": "outro",
+      "data": {
+        "title": "第一名不一定最好用",
+        "cta": "把你每天的工作留言告訴我，我幫你挑",
+        "lines": [
+          "完整文章在說明欄"
+        ]
+      },
+      "lines": [
+        {
+          "id": "b2wr",
+          "text": "把你每天的工作留言告訴我，下一支我們一起挑。"
+        }
+      ]
+    }
+  ]
+}

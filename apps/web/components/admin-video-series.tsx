@@ -9,7 +9,7 @@ import { AdminVideoDramaSettings } from "@/components/admin-video-drama-settings
 import { CompilationDownload, control, list, type ProjectSummary, record, text, useRefresh, useWhen } from "@/components/admin-video-review-card";
 import type { VideoSettingsView } from "@/components/admin-video-settings";
 import { AdminVideoStorySeries, StorySeriesPage } from "@/components/admin-video-stories";
-import { DiscussionThread, docSubject } from "@/components/admin-video-thread";
+import { DiscussionThread, docSubject, type ThreadMessage } from "@/components/admin-video-thread";
 import { Button } from "@/components/community/ui";
 import { Link } from "@/i18n/navigation";
 import { useAdminQueryValue } from "@/lib/admin-workspace-navigation";
@@ -28,6 +28,7 @@ type DocKind = "setting" | "outline" | "chapter" | "bible";
 type DocStatus = "generating" | "review" | "approved" | "rejected";
 type EpisodeStatus = "planned" | "ready" | "queued" | "started" | "done" | "skipped";
 export type SeriesDoc = {
+  needs_reconciliation?: boolean;
   id: string; kind: DocKind; chapter_number: number; version: number; body_md: string; body_json: Record<string, unknown>; status: DocStatus; note: string | null;
   decided_at: string | null; created_at: string;
   // The owner's lines on this document's thread the model has not answered; absent from an older API.
@@ -540,19 +541,33 @@ function BeatsTable({ episodes }: { episodes: Record<string, unknown>[] }) {
  * One document of a series: read it, discuss it with the model, approve it or send it back with a
  * note, or rewrite it yourself. The video page of a one-off shows its story bible through this too.
  */
-export function DocPanel({ slug, doc, canManage, onChanged }: { slug: string; doc: SeriesDoc; canManage: boolean; onChanged: () => void }) {
+export function DocPanel({ slug, doc, canManage, onChanged, approvalBlocked = false }: { slug: string; doc: SeriesDoc; canManage: boolean; onChanged: () => void | Promise<void>; approvalBlocked?: boolean }) {
   const t = useTranslations("admin.videoSeries");
   const when = useWhen();
   const [note, setNote] = useState("");
   const [draft, setDraft] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const [reconciliationRequested, setReconciliationRequested] = useState<{ revision: string; messageId: string } | null>(null);
+  const revision = `${doc.id}:${doc.version}`;
+  // A failed or stale refresh cannot cancel an accepted request. The exact message's answer
+  // releases this lock even when the model asks a question without producing a new version.
+  if (reconciliationRequested !== null && reconciliationRequested.revision !== revision) {
+    setReconciliationRequested(null);
+  }
+  const reconciliationPending = reconciliationRequested?.revision === revision;
+  const pendingMessageId = reconciliationRequested?.messageId;
+  const onMessagesLoaded = useCallback((messages: ThreadMessage[]) => {
+    if (pendingMessageId && messages.some((line) => line.id === pendingMessageId && line.answered_at)) {
+      setReconciliationRequested((current) => current?.messageId === pendingMessageId ? null : current);
+    }
+  }, [pendingMessageId]);
   const title = doc.kind === "chapter" ? t("chapterN", { n: doc.chapter_number }) : t(`docKinds.${doc.kind}`);
   const decide = async (decision: "approve" | "reject") => {
     setBusy(true);
     setError("");
     try {
-      await api(`${docPath(slug, doc)}/decision`, { method: "POST", body: JSON.stringify({ decision, note: note.trim() || undefined }) });
+      await api(`${docPath(slug, doc)}/decision`, { method: "POST", body: JSON.stringify({ decision, note: note.trim() || undefined, expected_version: doc.version }) });
       setNote("");
       onChanged();
     } catch (problem) {
@@ -561,14 +576,28 @@ export function DocPanel({ slug, doc, canManage, onChanged }: { slug: string; do
       setBusy(false);
     }
   };
-  const save = async (approve: boolean) => {
+  const save = async () => {
     if (draft === null || !draft.trim()) return;
     setBusy(true);
     setError("");
     try {
-      await api(docPath(slug, doc), { method: "PUT", body: JSON.stringify({ body_md: draft, approve }) });
+      await api(docPath(slug, doc), { method: "PUT", body: JSON.stringify({ body_md: draft, approve: false }) });
       setDraft(null);
       onChanged();
+    } catch (problem) {
+      setError(t("editError", { message: message(problem) }));
+    } finally {
+      setBusy(false);
+    }
+  };
+  const reconcile = async () => {
+    if (busy || reconciliationPending || (doc.unanswered ?? 0) > 0) return;
+    setBusy(true);
+    setError("");
+    try {
+      const posted = await api<ThreadMessage>(`/admin/video-automation/series/${slug}/messages`, { method: "POST", body: JSON.stringify({ subject: docSubject(doc.kind, doc.chapter_number), body: t("reconcileRequest") }) });
+      setReconciliationRequested({ revision, messageId: posted.id });
+      await onChanged();
     } catch (problem) {
       setError(t("editError", { message: message(problem) }));
     } finally {
@@ -585,14 +614,20 @@ export function DocPanel({ slug, doc, canManage, onChanged }: { slug: string; do
     </summary>
     <div className="mt-4 grid gap-4">
       {doc.note && <p className="rounded-xl bg-[var(--paper)] p-3 text-sm leading-6"><strong>{doc.status === "rejected" ? t("sentBack") : t("docNote")}</strong> {doc.note}</p>}
+      {doc.needs_reconciliation && <div className="grid gap-3 rounded-xl bg-[var(--paper)] p-3 text-sm leading-6">
+        <p>{t("reconcileHelp")}</p>
+        {canManage && <Button secondary disabled={busy || reconciliationPending || (doc.unanswered ?? 0) > 0} onClick={() => void reconcile()}>{t("reconcileAction")}</Button>}
+      </div>}
       {episodes.length > 0 && <BeatsTable episodes={episodes} />}
       <details className="rounded-2xl border border-[var(--line)] p-4"><summary className="cursor-pointer font-bold">{t("readDoc")}</summary><div className="mt-3 max-h-[40rem] overflow-y-auto whitespace-pre-wrap text-sm leading-7">{doc.body_md}</div></details>
+      <details className="rounded-2xl border border-[var(--line)] p-4"><summary className="cursor-pointer font-bold">{t("readProductionData")}</summary><p className="mt-3 text-sm leading-6 text-[var(--muted)]">{t("productionDataHelp")}</p><pre className="mt-3 max-h-[32rem] overflow-auto whitespace-pre-wrap break-words text-xs leading-6">{JSON.stringify(doc.body_json, null, 2)}</pre></details>
       {/* An approved document keeps its thread as a record; a new version the model writes from the discussion arrives through onChanged. */}
-      <DiscussionThread seriesSlug={slug} subject={docSubject(doc.kind, doc.chapter_number)} canManage={canManage} readOnly={doc.status === "approved"} waiting={(doc.unanswered ?? 0) > 0} onPosted={onChanged} />
+      <DiscussionThread seriesSlug={slug} subject={docSubject(doc.kind, doc.chapter_number)} canManage={canManage} readOnly={doc.status === "approved"} waiting={(doc.unanswered ?? 0) > 0} onPosted={onChanged} onMessagesLoaded={onMessagesLoaded} />
       {canManage && doc.status === "review" && <div className="grid gap-3 border-t border-[var(--line)] pt-4">
+        {approvalBlocked && <p className="text-sm text-[var(--muted)]">{t("approvalOrder")}</p>}
         <label className="grid gap-2 text-sm font-semibold">{t("note")}<textarea className={control} rows={3} value={note} disabled={busy} placeholder={t("notePlaceholder")} onChange={(event) => setNote(event.target.value)} /></label>
         <div className="flex flex-wrap gap-3">
-          <Button disabled={busy} onClick={() => void decide("approve")}>{busy ? t("saving") : t("approve")}</Button>
+          <Button disabled={busy || approvalBlocked || doc.needs_reconciliation} onClick={() => void decide("approve")}>{busy ? t("saving") : t("approve")}</Button>
           <Button secondary disabled={busy || !note.trim()} onClick={() => void decide("reject")}>{t("reject")}</Button>
         </div>
       </div>}
@@ -602,8 +637,7 @@ export function DocPanel({ slug, doc, canManage, onChanged }: { slug: string; do
           <p className="text-sm leading-6 text-[var(--muted)]">{t("editHelp")}</p>
           <textarea className={`${control} font-mono text-xs`} rows={16} value={draft ?? doc.body_md} disabled={busy} aria-label={t("editDoc")} onChange={(event) => setDraft(event.target.value)} />
           <div className="flex flex-wrap gap-3">
-            <Button disabled={busy || draft === null || !draft.trim()} onClick={() => void save(true)}>{t("saveApprove")}</Button>
-            <Button secondary disabled={busy || draft === null || !draft.trim()} onClick={() => void save(false)}>{t("saveReview")}</Button>
+            <Button disabled={busy || draft === null || !draft.trim()} onClick={() => void save()}>{t("saveReview")}</Button>
           </div>
         </div>
       </details>}
@@ -625,13 +659,14 @@ function SeriesPage({ slug, onBack, onOpenVideo }: { slug: string; onBack: () =>
   // A brand-story series is never compiled: once the page knows this one is, it skips that read.
   const storySlug = useRef("");
   const load = useCallback(() => {
-    api<Series>(`/admin/video-automation/series/${slug}`).then((value) => { storySlug.current = value.kind === "story" ? slug : ""; setSeries(value); setError(""); }).catch((problem: unknown) => setError(message(problem)));
-    if (storySlug.current === slug) return;
+    const refreshed = api<Series>(`/admin/video-automation/series/${slug}`).then((value) => { storySlug.current = value.kind === "story" ? slug : ""; setSeries(value); setError(""); }).catch((problem: unknown) => setError(message(problem)));
+    if (storySlug.current === slug) return refreshed;
     // The compilation is the series' one video without an episode number (docs/videos/BINGE.md);
     // the episodes come with the series itself. An older site ignores the filter and is filtered here.
     api<ProjectSummary[]>(`/admin/videos?series=${slug}&shorts=exclude`)
       .then((value) => setCompilations((Array.isArray(value) ? value : []).filter((video) => video.series_slug === slug && video.episode_number == null)))
       .catch(() => setCompilations([]));
+    return refreshed;
   }, [slug]);
   useRefresh(load);
   const act = async (what: string, request: () => Promise<unknown>) => {
@@ -716,7 +751,11 @@ function SeriesPage({ slug, onBack, onOpenVideo }: { slug: string; onBack: () =>
       <section className="grid gap-4" aria-label={t("docsTitle")}>
         <h3 className="text-lg font-bold">{t("docsTitle")}</h3>
         {series.docs.length === 0 && <p className="text-sm text-[var(--muted)]">{oneOff ? t("bibleEmpty") : t("docsEmpty")}</p>}
-        {[...series.docs].sort((a, b) => order(a) - order(b)).map((doc) => <DocPanel key={doc.id} slug={slug} doc={doc} canManage={manage.allowed} onChanged={load} />)}
+        {[...series.docs].sort((a, b) => order(a) - order(b)).map((doc) => <DocPanel key={doc.id} slug={slug} doc={doc} canManage={manage.allowed} onChanged={load} approvalBlocked={!oneOff && doc.kind !== "setting" && (
+          !series.docs.some((parent) => parent.kind === "setting" && parent.status === "approved" && !parent.needs_reconciliation)
+          || (doc.kind === "chapter" && !series.docs.some((parent) => parent.kind === "outline" && parent.status === "approved" && !parent.needs_reconciliation))
+          || (doc.kind === "chapter" && doc.chapter_number > 1 && !series.docs.some((parent) => parent.kind === "chapter" && parent.chapter_number === doc.chapter_number - 1 && parent.status === "approved" && !parent.needs_reconciliation))
+        )} />)}
       </section>
       <section className="grid gap-3" aria-label={t("episodesTitle")}>
         <h3 className="text-lg font-bold">{t("episodesTitle")}</h3>

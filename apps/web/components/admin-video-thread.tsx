@@ -41,8 +41,8 @@ const waitingOn = (messages: ThreadMessage[]) => messages.some((line) => line.au
  * document or screenplay is approved, when the thread stays as a record. `waiting` lets the parent
  * say the model still owes an answer before the lines are read.
  */
-export function DiscussionThread({ seriesSlug, subject, canManage, readOnly = false, waiting = false, onPosted }: {
-  seriesSlug: string; subject: string; canManage: boolean; readOnly?: boolean; waiting?: boolean; onPosted?: () => void;
+export function DiscussionThread({ seriesSlug, subject, canManage, readOnly = false, waiting = false, onPosted, onMessagesLoaded }: {
+  seriesSlug: string; subject: string; canManage: boolean; readOnly?: boolean; waiting?: boolean; onPosted?: () => void; onMessagesLoaded?: (messages: ThreadMessage[]) => void;
 }) {
   const t = useTranslations("admin.videoSeries");
   const when = useWhen();
@@ -52,8 +52,13 @@ export function DiscussionThread({ seriesSlug, subject, canManage, readOnly = fa
   const [error, setError] = useState("");
   const [loadError, setLoadError] = useState("");
   const load = useCallback(() => {
-    api<Thread>(threadPath(seriesSlug, subject)).then((value) => { setMessages(messagesOf(value)); setLoadError(""); }).catch((problem: unknown) => setLoadError(message(problem) || "?"));
-  }, [seriesSlug, subject]);
+    api<Thread>(threadPath(seriesSlug, subject)).then((value) => {
+      const loaded = messagesOf(value);
+      setMessages(loaded);
+      setLoadError("");
+      onMessagesLoaded?.(loaded);
+    }).catch((problem: unknown) => setLoadError(message(problem) || "?"));
+  }, [seriesSlug, subject, onMessagesLoaded]);
   useRefresh(load);
   const send = async () => {
     const body = draft.trim();

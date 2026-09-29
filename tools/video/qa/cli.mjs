@@ -13,7 +13,8 @@ import { parseArgs } from "node:util";
 import { AutomationError, automationClient } from "../automation/client.mjs";
 import { approvalState, sha256File } from "../core/approvals.mjs";
 import { compilationChecksCurrent, compilationHash, estimatedCompilationTimeline, isCompilation } from "../core/compilation.mjs";
-import { burnIn, isDrama, subtitlesHash } from "../core/drama.mjs";
+import { cadenceProblems, cadenceSummary, illustrationShare, MAX_PICTURE_SECONDS, MIN_ILLUSTRATION_SHARE } from "../core/cadence.mjs";
+import { burnIn, illustrated, isDrama, subtitlesHash } from "../core/drama.mjs";
 import { checkYoutubeFields } from "../core/metadata.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { LOCALES } from "../core/schema.mjs";
@@ -158,6 +159,9 @@ export async function run(command, args, ctx) {
   const timelineCurrent = Boolean(timeline) && timeline.speech_hash === speech;
   const checks = readJson(inWork(ARTIFACTS.checks), null);
   const clips = drama ? readJson(inWork(ARTIFACTS.clips), null) : null;
+  const pictures = illustrated(doc);
+  const keyframes = pictures ? readJson(inWork(ARTIFACTS.keyframes), null) : null;
+  const music = doc.music ? readJson(inWork(ARTIFACTS.music), null) : null;
   const finalFile = inWork(ARTIFACTS.video);
   const finalExists = existsSync(finalFile);
   const finalSha256 = finalExists ? await sha256File(finalFile) : null;
@@ -177,7 +181,7 @@ export async function run(command, args, ctx) {
 
   const items = [];
   let who = null;
-  items.push(assembleItem({ checks, current: checksCurrent(doc, lexicon, checks, clips), finalExists }));
+  items.push(assembleItem({ checks, current: checksCurrent(doc, lexicon, checks, clips, keyframes), finalExists, stale: pictures ? "an older script, look, pictures, music or effects" : undefined }));
   items.push(renderItem({ manifest: frames, cache, visual, speech, subtitles: drama ? subtitlesHash(doc) : null, burnIn: drama && burnIn(doc), hasThumbnail: Boolean(doc.thumbnail) }));
   items.push(narrationItem({ approval, current: timelineCurrent }));
   if (!timelineCurrent) {
@@ -185,8 +189,19 @@ export async function run(command, args, ctx) {
   } else {
     try {
       const states = slideStates(doc, timeline);
-      const problems = paceProblems(states);
-      items.push(item("pace", problems.length === 0, paceDetail(states, problems)));
+      if (pictures) {
+        // Illustrated slides (docs/videos/ILLUSTRATED.md) are measured on the cadence: a picture
+        // held past the limit or too little of the runtime illustrated fails; a slow average only shows.
+        const cadence = cadenceProblems(doc, timeline);
+        const failing = cadence.filter((problem) => problem.kind !== "average");
+        const summary = cadenceSummary(states);
+        const share = Math.round(illustrationShare(doc, timeline) * 100);
+        const figures = `${summary.count} pictures, the longest ${summary.longest} s, a new one every ${summary.average} s on average, ${share}% of the runtime illustrated (limits: ${MAX_PICTURE_SECONDS} s, ${Math.round(MIN_ILLUSTRATION_SHARE * 100)}%)`;
+        items.push(item("pace", failing.length === 0, failing.length ? `${figures}; ${failing.map((problem) => `${problem.path}: ${problem.message}`).join("; ")}` : figures, cadence.filter((problem) => problem.kind === "average").map((problem) => problem.message)));
+      } else {
+        const problems = paceProblems(states);
+        items.push(item("pace", problems.length === 0, paceDetail(states, problems)));
+      }
     } catch (error) {
       items.push(item("pace", false, error.message));
     }
@@ -209,7 +224,7 @@ export async function run(command, args, ctx) {
   const policy = await policyItem(ctx, policyRequest({ doc, brief: project.brief }));
   items.push(policy.item);
   who = policy.who ?? null;
-  const decision = disclosureDecision(doc);
+  const decision = disclosureDecision(doc, { musicSource: music?.source ?? (doc.music?.track ? "track" : doc.music ? "generated" : null) });
   items.push(disclosureItem(decision, recordDisclosure(inWork(ARTIFACTS.upload), decision)));
 
   const report = qaReport(items, finalSha256);

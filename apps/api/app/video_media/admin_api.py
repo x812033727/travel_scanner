@@ -21,7 +21,12 @@ from app.db import get_session
 from app.infra import enforce_named_rate_limit, get_redis
 from app.problems import AppError
 from app.video_automation.models import STYLE_PRESETS
-from app.video_automation.settings import media_options_view, settings_row
+from app.video_automation.settings import (
+    media_options_view,
+    settings_row,
+    slides_image_choice,
+    slides_values,
+)
 from app.video_media import meter
 from app.video_media.jobs import (
     MediaContext,
@@ -139,12 +144,19 @@ async def media_status(tool: VideoTool, session: Session) -> MediaStatus:
             seconds=row.clip_seconds_default if kind == "clip" else None,
         )
 
+    slides = slides_values(row)
     return MediaStatus(
         enabled=row.drama_enabled,
         music_enabled=row.music_enabled,
         image=choice("image", row.image_provider, row.image_model),
         clip=choice("clip", row.clip_provider, row.clip_model),
         music=choice("music", row.music_provider, row.music_model),
+        slides_enabled=slides.slides_media_enabled,
+        slides_image=choice("image", *slides_image_choice(row)),
+        slides_max_usd_per_video=slides.slides_max_usd_per_video,
+        slides_auto_approve_storyboard=slides.slides_auto_approve_storyboard,
+        slides_music_track=slides.slides_music_track,
+        slides_sfx_set=slides.slides_sfx_set,
         models=media_options_view(),
         budgets=await meter.budgets_view(ctx.redis, row),
         estimated_usd=await meter.month_usd(session, ctx.redis),
