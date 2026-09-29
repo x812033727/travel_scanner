@@ -7,6 +7,11 @@ is downloaded into the store. The row is written before the vendor is called and
 change is committed, so a restart loses nothing and the vendor is never asked twice for the
 same request. The budget is reserved before the vendor call and given back only when the
 vendor refused or failed: a generation that succeeded is billed even when our download fails.
+
+The models are the settings tab's, but for one exception: a picture for a video that is an
+episode of a series naming its own ``image_model`` is drawn with that model (a brand story
+draws with Gemini 3.1 Flash Image while the dramas keep the settings' Pro; docs/videos/
+STORY.md). The server looks the series up from the video's slug; the request names no model.
 """
 
 from __future__ import annotations
@@ -27,9 +32,13 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import Settings
 from app.models import VideoProject
-from app.video_automation.models import VideoAutomationSettings
+from app.video_automation.models import (
+    VideoAutomationSettings,
+    VideoDramaEpisode,
+    VideoDramaSeries,
+)
 from app.video_media import meter
-from app.video_media.catalog import MediaModel, find_model
+from app.video_media.catalog import MEDIA_VENDORS, MediaModel, find_model
 from app.video_media.models import LIVE_STATUSES, MAX_ATTEMPTS, VideoMediaJob
 from app.video_media.providers import (
     USER_AGENT,
@@ -139,7 +148,39 @@ def provider_for(runtime: Settings, vendor: str, kind: str) -> MediaProvider:
     raise MediaJobFailed(422, "video_media_model_not_allowed", "MiniMax 沒有音樂模型")
 
 
-def _model(row: VideoAutomationSettings, kind: str) -> tuple[str, MediaModel]:
+async def series_image_model(session: AsyncSession, slug: str) -> str | None:
+    """The image model named by the series this video is an episode of, or None to follow the
+    settings tab. An episode's video is the project whose slug is the episode's, so the answer
+    comes from the server's own rows, whatever the request says."""
+    found = await session.scalar(
+        select(VideoDramaSeries.image_model)
+        .join(VideoDramaEpisode, VideoDramaEpisode.series_id == VideoDramaSeries.id)
+        .where(VideoDramaEpisode.slug == slug)
+    )
+    return found if isinstance(found, str) and found else None
+
+
+def _series_image_model(row: VideoAutomationSettings, model_id: str) -> tuple[str, MediaModel]:
+    """A series' image model, on the settings' image vendor when that vendor has the id. The
+    series was refused when it was written with a name the catalog does not know
+    (``schemas.image_model_problem``); a model retired since then is refused here by name."""
+    vendors = sorted(MEDIA_VENDORS, key=lambda vendor: vendor != row.image_provider)
+    for vendor in vendors:
+        model = find_model(vendor, "image", model_id)
+        if model is not None and model.status != "retired":
+            return vendor, model
+    raise MediaJobFailed(
+        422,
+        "video_media_model_not_allowed",
+        f"作品指定的圖片模型 {model_id} 不能用；請在作品上換一個，或清空改用設定分頁的模型",
+    )
+
+
+def _model(
+    row: VideoAutomationSettings, kind: str, series_image: str | None = None
+) -> tuple[str, MediaModel]:
+    if kind == "image" and series_image is not None:
+        return _series_image_model(row, series_image)
     vendor, model_id = choice_for(row, kind)
     model = find_model(vendor, kind, model_id)  # type: ignore[arg-type]
     if model is None or model.status == "retired":
@@ -230,7 +271,9 @@ async def submit_job(
         )
     if kind == "music" and not row.music_enabled:
         raise MediaJobFailed(503, "video_media_disabled", "配樂生成已關閉")
-    vendor, model = _model(row, kind)
+    # Only the pictures follow a series' own model; its clips and music are the settings'.
+    series_image = await series_image_model(ctx.session, payload.slug) if kind == "image" else None
+    vendor, model = _model(row, kind, series_image)
     if not key_for(ctx.runtime, vendor):
         raise MediaJobFailed(503, "video_media_not_configured", f"網站還沒有 {vendor} 的金鑰")
     fields = _request_fields(payload, row, model)

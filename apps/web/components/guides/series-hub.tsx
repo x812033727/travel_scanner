@@ -22,7 +22,8 @@ export function SeriesHub({ series }: { series: GuideSeries }) {
   // the catalogue behind a client-only fallback.
   const search = useSyncExternalStore(subscribe, snapshot, serverSnapshot);
   const filters = readSeriesFilters(new URLSearchParams(search));
-  const copy = seriesCopy(series.locale);
+  const copy = seriesCopy(series.locale, series.slug);
+  const namedPlatform = (platform: string) => platform === "all" ? copy.allPlatforms : platformLabel(platform);
   const entries = filterSeries(series, filters);
   const selectedPath = series.paths.find(path => path.id === filters.path);
   const groups = selectedPath ? [{ id: "path", title: selectedPath.title, entries }]
@@ -38,7 +39,7 @@ export function SeriesHub({ series }: { series: GuideSeries }) {
     window.dispatchEvent(new Event("guide-series-filter"));
   }
   const control = "min-h-11 w-full rounded-xl border border-[var(--line)] bg-[var(--surface)] px-3 py-2";
-  return <section className="min-w-0 space-y-7" aria-label={copy.hub}>
+  return <section className="min-w-0 space-y-7" aria-label={series.hub.title}>
     <div className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-5">
       <h2 className="text-xl font-semibold">{copy.paths}</h2>
       <div className="mt-3 flex flex-wrap gap-2">
@@ -58,7 +59,7 @@ export function SeriesHub({ series }: { series: GuideSeries }) {
         <option value="">{copy.all}</option>{(["beginner", "intermediate", "advanced"] as const).map(level => <option key={level} value={level}>{copy[level]}</option>)}
       </select></label>
       <label className="grid gap-2">{copy.platform}<select aria-label={copy.platform} className={control} value={filters.platform} onChange={e => change("platform", e.target.value)}>
-        <option value="">{copy.all}</option>{Array.from(new Set(series.entries.flatMap(entry => entry.platforms))).map(platform => <option key={platform} value={platform}>{platformLabel(platform)}</option>)}
+        <option value="">{copy.all}</option>{Array.from(new Set(series.entries.flatMap(entry => entry.platforms))).map(platform => <option key={platform} value={platform}>{namedPlatform(platform)}</option>)}
       </select></label>
     </div>
     <div className="flex flex-wrap items-center justify-between gap-3">
@@ -75,7 +76,7 @@ export function SeriesHub({ series }: { series: GuideSeries }) {
           </a>
           <p className="mt-2 text-sm leading-7 text-[var(--muted)]">{entry.description.includes("。") ? `${entry.description.split("。")[0]}。` : entry.description}</p>
           <p className="mt-3 text-xs leading-6">{copy[entry.level as "beginner" | "intermediate" | "advanced"] ?? entry.level} · {entry.minutes} {copy.minutes}</p>
-          <ul className="mt-2 flex flex-wrap gap-2">{entry.platforms.map(platform => <li key={platform} className="rounded-full bg-[var(--paper)] px-2 py-1 text-xs">{platformLabel(platform)}</li>)}</ul>
+          <ul className="mt-2 flex flex-wrap gap-2">{entry.platforms.map(platform => <li key={platform} className="rounded-full bg-[var(--paper)] px-2 py-1 text-xs">{namedPlatform(platform)}</li>)}</ul>
         </li>)}
       </ol>
     </section>)}
