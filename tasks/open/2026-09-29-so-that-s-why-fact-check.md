@@ -42,7 +42,7 @@ episodes.json. Seasons 2 and 3 follow as their own tasks.
 
 ## Steps
 
-- [ ] One fact-check agent per episode (weeks 6–9 done), a week at a time, drafts written outside the repo.
+- [ ] One fact-check agent per episode (weeks 6–11 done), a week at a time, drafts written outside the repo.
 - [ ] Mechanical check per week (claim URLs, Shorts lengths), then copy into the repo.
 - [ ] JSON, CSV, playlists and previews.
 
@@ -78,3 +78,13 @@ episodes.json. Seasons 2 and 3 follow as their own tasks.
   ternary computer, the Salute's 1,156,650 piles, the Pisa tower being straightened to 3.97°.
 - Four checkers (T14, B14, T16, S16) ran out of the 200-search session budget; what they
   could not trace is in their recheck lists.
+- 2026-09-29 weeks 10–11 (days 64–77) done by claude-opus: S17, T17, A16, B17, S18, T18, A17,
+  B18, S19, T19, A18, B19, S20, T20. Four titles changed:
+  A16 「為什麼 AI 特別容易畫錯手指？」 (developers report big gains; 2025–26 studies still list hands);
+  B18 「為什麼 Google 頭上多了一家 Alphabet？」 (no rename: a new holding company above Google);
+  S19 「為什麼洋芋片袋裡那麼多「空氣」？」 (nobody measured "half"; the worst Korean test bag was 46.3%);
+  B19 「為什麼 Airbnb 快撐不下去時，跑去賣選舉麥片？」 (cereal bought time; YC and Sequoia saved it).
+  Myths not to bring back: the Roadster funding the Model S, "you are the product" as fact,
+  Bhatt "apologising" for USB, a 30-30 rule countdown as safety, Finland's "statutory" coffee
+  break, prohibition driving Finnish coffee, "the Dutch were short 100 years ago", milk making
+  the Dutch tall, alphabet.com as the reason for abc.xyz, the 25-hour body clock.
