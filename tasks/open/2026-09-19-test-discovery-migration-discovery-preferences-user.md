@@ -1,14 +1,14 @@
 ---
 id: 2026-09-19-test-discovery-migration-discovery-preferences-user
 title: test_discovery_migration 單獨收集時 discovery_preferences.user_id 是 NullType，DDL 生不出來
-status: open
+status: in-progress
 priority: P3
 area: api
-owner:
-claimed_at:
+owner: codex-discovery-migration
+claimed_at: 2026-09-29T14:39:24Z
 created_at: 2026-09-19T10:06:50Z
 completed_at:
-branch:
+branch: codex/discovery-migration-isolation
 depends_on: []
 scope:
   - apps/api/tests/test_discovery_migration.py
@@ -36,15 +36,15 @@ Can't generate DDL for NullType(); did you forget to specify a type on this Colu
 
 ## Definition of done
 
-- [ ] `uv run pytest tests/test_discovery_migration.py -q -p no:cacheprovider` 單獨跑全綠。
+- [x] `uv run pytest tests/test_discovery_migration.py -q -p no:cacheprovider` 單獨跑全綠。
 - [ ] 整套一起跑仍然全綠，測試斷言的東西沒變。
 
 ## Steps
 
-- [ ] 在測試模組頂端 import `app.models`（`import app.models  # noqa: F401`，讓 `users` 進 metadata），
+- [x] 在測試模組頂端 import `app.models`（`import app.models  # noqa: F401`，讓 `users` 進 metadata），
       或改用 `app.db.Base.metadata`／`app.models` 匯出的表來建 frozen metadata；看哪個和檔案現有寫法一致。
 - [ ] 單獨跑一次、和整套跑一次，都綠。
-- [ ] 順手看看 `tests/` 裡其他只 import 半邊 model 的 migration 測試有沒有同一個形狀（`grep -l "metadata.create_all" tests/*.py`）。
+- [x] 順手看看 `tests/` 裡其他只 import 半邊 model 的 migration 測試有沒有同一個形狀（`grep -l "metadata.create_all" tests/*.py`）。
 
 ## How to verify
 
@@ -56,3 +56,31 @@ cd apps/api && uv run pytest -q -p no:cacheprovider
 ## Notes
 
 - 2026-09-19 由 claude-fable-5-1 的一個修 mypy 錯誤的 agent 回報；那次只把該檔的兩個 mypy 錯誤修掉，沒動這個問題。
+
+### 2026-09-29 local repair (codex-discovery-migration)
+
+- Started from main `a5ff4674`. All files of 12 open PRs, 43 remote heads,
+  385 local branches and 217 other worktrees were checked before claiming.
+  The sole historical scoped branch has the same file as merged PR #372;
+  no active scope owner or competing implementation was found.
+- A fresh process reproduced the original failure: 1 failed, 2 passed,
+  2 PostgreSQL cases skipped. Adding only the explicit `app.models` import
+  makes that same standalone run pass: 3 passed, 2 PostgreSQL cases skipped.
+  The ticket's historical six-test count is now five collected cases.
+- This is collection-time model registration: pytest imports all selected
+  modules before running tests. Either order of discovery plus the collection
+  migration test passed on the old source (6 passed, 2 skipped), which explains
+  why a combined run alone cannot guard this defect.
+- Sibling audit: collection, guides and site-pages migration tests explicitly
+  import User; hotel uses typed frozen metadata. Their standalone checks passed
+  (3; 21 with 1 skip; 3 with 1 skip), while hotel's PostgreSQL-only case skipped.
+  No additional defect was established and no product or migration code changed.
+- Full local verification uses `RUN_INTEGRATION_TESTS=0`,
+  `RUN_MIGRATION_TESTS=0` and `COMMUNITY_TEST_S3=0`; external service coverage
+  remains with CI. Full API Ruff passed.
+- Full native Windows `mypy tests` passed (331 files). Independent AST and
+  textual review confirmed that the explicit import is the sole test-code change:
+  all test/helper bodies, parameterization, skip conditions and 11 assertions
+  are identical to main.
+- Full `mypy app` passed (444 files). The pre-PR collision check again found no
+  competing active work; the full local pytest run collected 5,459 cases.
