@@ -109,7 +109,7 @@ existing refusal to update already public videos; manual backfill is a separate 
   YouTube/review/Shorts run passed 322 tests, with 9 PostgreSQL-only tests skipped.
   Full API ruff/mypy and the uploader's 12 synthetic service/browser tests pass.
 - Producer changes are a reviewable patch outside the repository, tested with a
-  runtime module overlay (61 tests pass). Actual producer source has not changed:
+  runtime module overlay (63 tests pass). Actual producer source has not changed:
   its two paths are held by `2026-09-28-drama-listener-stale-check` in another
   worktree. That change was merged in #978, its remote branch is absent, and no
   open PR touches the producer paths, but the old task remains open/review.
