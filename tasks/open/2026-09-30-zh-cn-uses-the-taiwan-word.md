@@ -1,14 +1,14 @@
 ---
 id: 2026-09-30-zh-cn-uses-the-taiwan-word
 title: zh-CN uses the Taiwan word 备援 in nine published articles; replace it by context
-status: open
+status: in-progress
 priority: P3
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5-5-news-4-9
+claimed_at: 2026-09-30T13:00:15Z
 created_at: 2026-09-30T12:23:51Z
 completed_at:
-branch:
+branch: claude/gifted-rubin-umw5s4
 depends_on: []
 scope:
   - apps/api/app/guides/content/ai-news-claude-fable-5-access-20260609.json
