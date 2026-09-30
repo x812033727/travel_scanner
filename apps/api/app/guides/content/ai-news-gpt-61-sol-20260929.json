@@ -517,6 +517,508 @@
         }
       ]
     },
+    "ja": {
+      "title": "GPT-6.1 Sol が登場：Sol の新版が API、Codex、ChatGPT Work に、Chat では提供なし",
+      "description": "OpenAI は 2026年9月29日に GPT-6.1 Sol を公開しました。API 名は gpt-6.1-sol です。Plus、Pro、Business、Enterprise、Edu の各プランでは Codex と ChatGPT Work が初回の提供範囲に含まれ（Enterprise と Edu は管理者による有効化が必要）、Free と Go は初回の範囲に含まれず、Chat では提供されていません（2026年9月確認）。",
+      "hero": {
+        "src": "/guides/ai-news-gpt-61-sol-20260929/hero-ja.jpg",
+        "alt": "オリジナルのイラスト：実線の円（太陽を表す）が、より大きな破線の円環の手前に重なり、右側には高さの違う二つの階段状のブロックが連なっています。新しい版が前の版に続くことを表しており、商標や実在の人物は含みません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "OpenAI は 2026年9月29日に GPT-6.1 Sol を公開しました。API 名は gpt-6.1-sol です。OpenAI のヘルプ文書は GPT-6 Sol を「前の Sol モデル」と呼んでおり、今回は Sol の新版にあたりますが、これらの文書には GPT-6 Sol をいつ停止するかは書かれていません。system card 増補（Addendum）の冒頭には「GPT-6.1 は GPT-6 シリーズの最新のモデルファミリーです」と書かれています。ChatGPT では、初回の提供範囲に Plus、Pro、Business、Enterprise、Edu の Codex と ChatGPT Work が含まれ（Enterprise と Edu は管理者による有効化が必要）、Chat では提供されておらず、Free と Go は初回の範囲に含まれません。台湾のアカウントで使えるかどうかは、これらの文書には書かれていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事は、OpenAI の API モデルページ、料金表、ChatGPT と Codex のヘルプ文書の Models ページ、および system card 増補をもとにまとめたもので、情報は 2026年9月30日に確認しました。評価は system card 増補のみを引用しています。能力や安全性に関する説明はすべて OpenAI 自身の公表であり、当サイトは実地の検証を行っておらず、契約や購入、モデルの切り替えを勧めるものではありません。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "OpenAI は 2026年9月29日に GPT-6.1 Sol を公開し、API 名は gpt-6.1-sol で、ヘルプ文書は GPT-6 Sol を前の Sol モデルと呼んでいますが、旧版をいつ停止するかはこれらのページには書かれていません。",
+            "ChatGPT 側の初回の提供範囲には、Plus、Pro、Business、Enterprise、Edu の各プランの Codex（デスクトップアプリと CLI）と ChatGPT Work（Web 版とモバイル版）が含まれ、Enterprise と Edu は既定でオフのため管理者による有効化が必要で、Free と Go は初回の範囲に含まれず、Chat では提供されていません。",
+            "API の定価（100万 tokens あたり、米ドル、Standard、短いコンテキスト）は、GPT-6.1 Sol が入力 2.00米ドル、キャッシュ入力 0.10米ドル、出力 10.00米ドル、GPT-6 Astra が入力 10.00米ドル、出力 50.00米ドルで、GPT-6.1 Sol は入力が 272K tokens を超えるリクエストについて、より高い価格が別に設定されています。",
+            "OpenAI は自社の Preparedness Framework にもとづき、GPT-6.1 Sol をサイバーセキュリティ分野で Critical、生物・化学分野で High と扱っていますが、これは OpenAI 独自の区分であり、評価や安全性の結論はいずれも OpenAI の公表で、当サイトは実地の検証を行っていません。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "GPT-6.1 Sol とは何か、GPT-6 Sol との関係"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI が API モデルページで示している位置づけは、GPT-6.1 Sol が、複雑なコーディング、コンピューター操作、専門的な業務で、より低いコストで「Astra に近い」性能を提供する、というものです。これは OpenAI の自己説明で、割合やスコア差は示されておらず、モデルページも、開発者は自分のタスクで Astra と比較し、品質とコストのトレードオフを判断するよう勧めています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ヘルプ文書は、GPT-6.1 Sol と GPT-6 Sol の API 仕様の違いを読者自身で比較するよう案内しています。GPT-6 Sol は今も残っており、ヘルプ文書は GPT-6 Sol を GPT-6.1 Sol と並べて Work と Codex で使えるモデルとして載せていて、料金表にも確認日の時点で引き続き載っています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "API モデルページに載っている仕様（確認日時点）は、コンテキストウィンドウ 1,050,000 tokens、最大出力 128,000 tokens、知識カットオフ 2026年4月30日で、入力はテキストと画像、出力はテキストです。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "API の定価の読み方：GPT-6 Sol、GPT-6 Astra との比較"
+        },
+        {
+          "type": "paragraph",
+          "text": "API 料金表の Standard、短いコンテキストの定価（100万 tokens あたり、米ドル）は、GPT-6.1 Sol が入力 2.00米ドル、キャッシュ入力 0.10米ドル、キャッシュ書き込み 2.50米ドル、出力 10.00米ドルで、GPT-6 Astra は 10.00、1.00、12.50、50.00米ドルです。編集部が定価から換算すると、GPT-6.1 Sol の入力と出力の定価はそれぞれ Astra の5分の1です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT-6 Sol と比べると、同じ料金表の All models の一覧で、GPT-6 Sol の短いコンテキストの定価は入力 2.00米ドル、キャッシュ入力 0.20米ドル、キャッシュ書き込み 2.50米ドル、出力 10.00米ドルで、違うのはキャッシュ入力だけです（0.10米ドルと 0.20米ドル）。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT-6.1 Sol のモデルページには課金ルールが明記されています。キャッシュ入力はキャッシュなしの入力価格の 5%、キャッシュ書き込みはキャッシュなしの入力価格の 1.25倍で、そのためキャッシュ書き込みの 2.50米ドルは通常の入力より高くなります。入力が 272K tokens を超えるリクエストは、そのリクエスト全体で入力とキャッシュの価格が 2倍、出力が 1.5倍になります。Fast mode は Standard の 2倍、Batch と Flex は Standard より 50% 安く、地域処理が提供されている場合は 10% が加算されます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ここに挙げたのは API の定価であり、ChatGPT の月額料金ではありません。これらのページには、各プランの月額料金や GPT-6.1 Sol の利用上限は書かれていません。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目（100万 tokens あたり）",
+            "GPT-6.1 Sol",
+            "GPT-6 Sol",
+            "GPT-6 Astra"
+          ],
+          "rows": [
+            [
+              "入力",
+              "2.00米ドル",
+              "2.00米ドル",
+              "10.00米ドル"
+            ],
+            [
+              "キャッシュ入力",
+              "0.10米ドル",
+              "0.20米ドル",
+              "1.00米ドル"
+            ],
+            [
+              "キャッシュ書き込み",
+              "2.50米ドル",
+              "2.50米ドル",
+              "12.50米ドル"
+            ],
+            [
+              "出力",
+              "10.00米ドル",
+              "10.00米ドル",
+              "50.00米ドル"
+            ]
+          ],
+          "caption": "OpenAI API 料金表、Standard、短いコンテキスト、100万 tokens あたりの米ドル。GPT-6 Sol は料金表の All models の一覧に掲載。確認日は 2026年9月30日。料金表には、より高い長いコンテキストの価格も別に載っています。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "誰がどこで GPT-6.1 Sol を使えるか"
+        },
+        {
+          "type": "paragraph",
+          "text": "ヘルプ文書には、ChatGPT では GPT-6.1 Sol、GPT-6 Sol、GPT-6 Luna が Work と Codex で使え、Chat では使えないと書かれています（原文は「They aren't available in Chat」）。Chat に加わるかどうかは、文書には書かれていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT-6.1 Sol の初回の提供範囲には Plus、Pro、Business、Enterprise、Edu の各プランが含まれ、Codex はデスクトップアプリと CLI、ChatGPT Work は Web 版とモバイル版です。Enterprise と Edu は既定でオフで、管理者による有効化が必要です。Business でも管理者による有効化が必要かどうかは、文書には書かれていません。Free と Go は初回の範囲に含まれず、その後に加わるかどうかも文書には書かれていません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "初回は Standard と Fast の 2つの速度モードが使えます。Ultrafast への対応は「あとから」とされていて、日付は示されていません。提供期間中も GPT-5.6 Sol、GPT-5.6 Terra、GPT-5.6 Luna は引き続き使えます。使えるかどうかは、提供の進み具合、サインイン方法、使っているクライアントによって決まり、新しいモデルを選んでもワークスペースの権限は変わらず、それによって利用権が得られるわけでもありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "台湾やほかの地域での提供時期については、2026年9月30日時点で、これらの文書のいずれにも書かれておらず、GPT-6.1 Sol について国や地域の制限も挙げられていません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-61-sol-20260929/diagram-1-ja.svg",
+          "alt": "4つの枠の図解：Plus などの有料プラン、Free と Go、Chat モード、API の提供範囲",
+          "width": 1600,
+          "height": 900,
+          "caption": "GPT-6.1 Sol の API、Codex、ChatGPT Work、Chat における初回の提供範囲（「Plus などのプラン」は Plus、Pro、Business、Enterprise、Edu を指し、Enterprise と Edu は管理者による有効化が必要です）。OpenAI の文書をもとに整理、確認日は 2026年9月30日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "system card 増補には何が書かれているか"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI は Deployment Safety Hub に「Addendum to GPT-6 Astra System Card: GPT-6.1 Sol」を掲載しました。GPT-6 Astra の system card の増補で、ページに印字された日付は 2026年9月29日です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI は自社の Preparedness Framework にもとづき、GPT-6.1 Sol を、サイバーセキュリティ分野で Critical、生物・化学分野で High、AI の自己改善分野で High のしきい値を下回ると扱っています。Preparedness Framework は OpenAI が自ら定めたリスク区分の枠組みで、これは内部の区分であり、外部機関による格付けではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI は、サイバーセキュリティの Critical は GPT-6 Astra と同じ扱いで、この区分にもとづいて GPT-6 Astra と同じ安全対策を適用したと書いています。Astra と同様に、GPT-6.1 Sol のサイバーセキュリティ用途へのアクセスは Daybreak を通じた段階的な進め方で、詳細は GPT-6 Astra の system card を見る必要があります。また OpenAI は、社内の安全諮問グループの勧告と会社の経営陣の判断として、これらの安全対策は公開に十分だとしており、これは OpenAI 自身の判断です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "増補の評価は、OpenAI が自社の研究環境または API で行ったもので、本番の ChatGPT の出力とは少し異なる場合があると OpenAI は注記しています。OpenAI によると、ユーザーがフラグを付けた事例の評価では、GPT-6.1 Sol と GPT-6 Sol の幻覚率は同じく低く、HealthBench では GPT-6 Astra と同等です。コーディング作業での欺瞞評価（Coding Deception）では、事実と異なる説明をした割合は GPT-6.1 Sol が 1.50%、GPT-6 Astra が 0.51%、GPT-6 Sol が 1.30% で、OpenAI は、これらのタスクは不誠実な行動が起きうる状況をあえて選んだもので、観察された割合は本番環境の実際の割合とは一致しないと想定される、と注記しています。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "自分で確かめるには：どこを見るか"
+        },
+        {
+          "type": "paragraph",
+          "text": "いちばん直接的な方法は、Codex または ChatGPT Work を開いて、モデルの選択メニューに GPT-6.1 Sol があるかを見ることです。見当たらない場合は、まず上記のプランとクライアントを照らし合わせてください。Enterprise と Edu のアカウントは、管理者に有効化されているかを確認してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開発者は gpt-6.1-sol という名前で呼び出します。モデルページには、米国と EU のデータレジデンシーに対応し、EU を選ぶと Fast mode は使えないと書かれています。課金は呼び出した日の料金表が基準です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "価格や提供範囲は初回公開時点の記述で、その後変更される可能性があります。最新の状況は OpenAI の API モデルページ、料金表、ヘルプ文書の Models ページで確認してください。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "GPT-6.1 Sol と GPT-6 Sol は何が違いますか？",
+              "answer": "ヘルプ文書には、GPT-6 Sol は前の Sol モデルだと書かれているだけで、両者の API 仕様の違いは読者自身で比較するよう案内されています。同じ料金表では、短いコンテキストの定価で違うのはキャッシュ入力だけで、GPT-6.1 Sol は 0.10米ドル、GPT-6 Sol は 0.20米ドルです。入力、キャッシュ書き込み、出力の定価は同じです。"
+            },
+            {
+              "question": "GPT-6 Sol は停止されますか？",
+              "answer": "2026年9月30日時点で、OpenAI の API モデルページ、料金表、ヘルプ文書の Models ページ、system card 増補のいずれにも、GPT-6 Sol をいつ停止または終了するかは書かれていません。ChatGPT のヘルプ文書は今も GPT-6 Sol を Work と Codex で使えるモデルとして載せていて、API 料金表の全一覧にも載っています。"
+            },
+            {
+              "question": "Free や Go プランで GPT-6.1 Sol は使えますか？",
+              "answer": "ヘルプ文書には、Free と Go は初回の範囲に含まれないと書かれていて、その後に加わるかどうかは書かれていません。初回の範囲には Plus、Pro、Business、Enterprise、Edu の各プランの Codex と ChatGPT Work が含まれ、そのうち Enterprise と Edu は管理者による有効化が必要です。"
+            },
+            {
+              "question": "ChatGPT の Chat で GPT-6.1 Sol は見られますか？",
+              "answer": "ヘルプ文書には、GPT-6.1 Sol は Work と Codex で使え、Chat では使えないと書かれていて、時期は示されていません。"
+            },
+            {
+              "question": "GPT-6.1 Sol の API 定価は GPT-6 Astra とどれくらい違いますか？",
+              "answer": "Standard、短いコンテキスト、100万 tokens あたりで、GPT-6.1 Sol は入力 2.00米ドル、キャッシュ入力 0.10米ドル、出力 10.00米ドル、GPT-6 Astra は入力 10.00米ドル、キャッシュ入力 1.00米ドル、出力 50.00米ドルです。料金表には、より高い長いコンテキストの価格も別に載っていて（GPT-6.1 Sol は入力が 272K tokens を超えるリクエストに適用）、実際の課金は呼び出した日の料金表が基準です。"
+            },
+            {
+              "question": "system card に書かれたサイバーセキュリティの Critical とは何ですか？",
+              "answer": "OpenAI が自社の Preparedness Framework にもとづいて GPT-6.1 Sol のサイバーセキュリティ能力につけた内部の区分で、外部機関による格付けではありません。OpenAI は、GPT-6 Astra と同じ扱いで、Astra と同じ安全対策を適用したと書いています。"
+            },
+            {
+              "question": "台湾で GPT-6.1 Sol は使えますか？",
+              "answer": "2026年9月30日時点で、OpenAI の API モデルページ、料金表、ヘルプ文書の Models ページ、system card 増補のいずれにも台湾への言及はなく、GPT-6.1 Sol について国や地域の制限も挙げられていません。確認するには、ご自身の Codex または ChatGPT Work を開いてモデルの選択メニューを見てください。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "価格と範囲は変わる可能性があり、評価は OpenAI 自身のものです",
+          "text": "価格、プラン、提供範囲は 2026年9月30日時点のページの内容で、その後変更される可能性があります。能力や安全性に関する説明はすべて OpenAI 自身の公表です。本記事について当サイトは実地の検証を行っておらず、モデルの切り替えやプランの契約を勧めるものでもありません。"
+        },
+        {
+          "type": "link",
+          "text": "2026年AIニュース総まとめ：1月から9月までの重要動向と実生活への応用",
+          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "GPT-6 SolとLunaが登場：API値下げ、Codexで利用可能、Chatはまだ利用不可",
+          "url": "https://mokaair.com/ja/life/ai-news-gpt-6-sol-luna-20260923"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI API ドキュメント：GPT-6.1 Sol モデルページ",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+          "checked_on": "2026-09-30"
+        },
+        {
+          "title": "OpenAI API ドキュメント：Pricing",
+          "url": "https://developers.openai.com/api/docs/pricing",
+          "checked_on": "2026-09-30"
+        },
+        {
+          "title": "OpenAI（ChatGPT と Codex のヘルプ文書）：Models",
+          "url": "https://learn.chatgpt.com/docs/models",
+          "checked_on": "2026-09-30"
+        },
+        {
+          "title": "OpenAI Deployment Safety Hub：Addendum to GPT-6 Astra System Card: GPT-6.1 Sol",
+          "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+          "checked_on": "2026-09-30"
+        }
+      ]
+    },
+    "ko": {
+      "title": "GPT-6.1 Sol 출시: 새 버전 Sol이 API, Codex, ChatGPT Work에 제공, Chat에는 없음",
+      "description": "OpenAI는 2026년 9월 29일 GPT-6.1 Sol을 출시했습니다. API 이름은 gpt-6.1-sol이며, Plus, Pro, Business, Enterprise, Edu 요금제의 Codex와 ChatGPT Work가 출시 시 제공 범위에 포함되고(Enterprise와 Edu는 관리자가 켜야 함), Free와 Go는 출시 시 포함되지 않으며, Chat에는 없습니다(2026년 9월 확인).",
+      "hero": {
+        "src": "/guides/ai-news-gpt-61-sol-20260929/hero-ko.jpg",
+        "alt": "오리지널 일러스트: 실선 원(태양을 뜻함)이 더 큰 점선 고리 앞에 겹쳐 있고, 오른쪽에는 높이가 다른 두 개의 계단형 블록이 이어져 있습니다. 새 버전이 이전 버전 뒤를 잇는다는 뜻이며, 상표나 실존 인물은 포함하지 않습니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "OpenAI는 2026년 9월 29일 GPT-6.1 Sol을 출시했습니다. API 이름은 gpt-6.1-sol입니다. OpenAI의 도움말 문서는 GPT-6 Sol을 “이전 Sol 모델”이라고 부르므로 이번 모델은 Sol의 새 버전이지만, 이 문서들에는 GPT-6 Sol을 언제 종료하는지 쓰여 있지 않습니다. system card 부록(Addendum)의 첫머리에는 “GPT-6.1은 GPT-6 시리즈의 최신 모델 패밀리입니다”라고 쓰여 있습니다. ChatGPT에서는 출시 시 제공 범위에 Plus, Pro, Business, Enterprise, Edu의 Codex와 ChatGPT Work가 포함되며(Enterprise와 Edu는 관리자가 켜야 함), Chat에는 없고, Free와 Go는 출시 시 포함되지 않습니다. 대만 계정에서 쓸 수 있는지는 이 문서들에 쓰여 있지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "본 기사는 OpenAI의 API 모델 페이지, 가격표, ChatGPT와 Codex 도움말 문서의 Models 페이지, 그리고 system card 부록을 바탕으로 정리했으며, 정보는 2026년 9월 30일에 확인했습니다. 평가는 system card 부록만 인용했습니다. 능력과 안전에 관한 설명은 모두 OpenAI가 직접 공개한 것이고, 본 사이트는 직접 시험해 보지 않았고 구독이나 구매, 모델 전환을 권하지 않습니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "OpenAI는 2026년 9월 29일 GPT-6.1 Sol을 출시했고, API 이름은 gpt-6.1-sol이며, 도움말 문서는 GPT-6 Sol을 이전 Sol 모델이라고 부르지만 이전 버전을 언제 종료하는지는 이 페이지들에 쓰여 있지 않습니다.",
+            "ChatGPT 쪽 출시 시 제공 범위에는 Plus, Pro, Business, Enterprise, Edu 요금제의 Codex(데스크톱 앱과 CLI)와 ChatGPT Work(웹과 모바일)가 포함되고, Enterprise와 Edu는 기본으로 꺼져 있어 관리자가 켜야 하며, Free와 Go는 출시 시 포함되지 않고, Chat에는 없습니다.",
+            "API 정가(100만 tokens당, 미국 달러, Standard, 짧은 컨텍스트)는 GPT-6.1 Sol이 입력 2.00달러, 캐시 입력 0.10달러, 출력 10.00달러, GPT-6 Astra가 입력 10.00달러, 출력 50.00달러이며, GPT-6.1 Sol은 입력이 272K tokens를 넘는 요청에 대해 더 높은 가격이 따로 적용됩니다.",
+            "OpenAI는 자사의 Preparedness Framework에 따라 GPT-6.1 Sol을 사이버 보안 분야에서 Critical, 생물·화학 분야에서 High로 다루는데, 이는 OpenAI 자체 분류이며 평가와 안전 결론은 모두 OpenAI가 공개한 것이고 본 사이트는 직접 시험해 보지 않았습니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "GPT-6.1 Sol이란 무엇이며 GPT-6 Sol과는 어떤 관계인가"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI가 API 모델 페이지에서 내세우는 위치는, GPT-6.1 Sol이 복잡한 코딩, 컴퓨터 사용, 전문 업무에서 더 낮은 비용으로 “Astra에 가까운” 성능을 낸다는 것입니다. 이는 OpenAI의 자체 설명이며 백분율이나 점수 차이는 제시되어 있지 않고, 모델 페이지도 개발자가 자신의 작업으로 Astra와 비교해 품질과 비용의 균형을 판단하라고 권하고 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "도움말 문서는 GPT-6.1 Sol과 GPT-6 Sol의 API 사양 차이를 독자가 직접 비교해 보라고 안내합니다. GPT-6 Sol은 여전히 남아 있어, 도움말 문서는 GPT-6 Sol을 GPT-6.1 Sol과 나란히 Work와 Codex에서 쓸 수 있는 모델로 싣고 있고, 가격표에도 확인일 기준으로 계속 올라 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "API 모델 페이지에 실린 사양(확인일 기준)은 컨텍스트 윈도우 1,050,000 tokens, 최대 출력 128,000 tokens, 지식 기준일 2026년 4월 30일이며, 입력은 텍스트와 이미지, 출력은 텍스트입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "API 정가 읽는 법: GPT-6 Sol, GPT-6 Astra와 나란히 보기"
+        },
+        {
+          "type": "paragraph",
+          "text": "API 가격표의 Standard, 짧은 컨텍스트 정가(100만 tokens당, 미국 달러)는 GPT-6.1 Sol이 입력 2.00달러, 캐시 입력 0.10달러, 캐시 쓰기 2.50달러, 출력 10.00달러이고, GPT-6 Astra는 10.00, 1.00, 12.50, 50.00달러입니다. 편집부가 정가로 환산하면 GPT-6.1 Sol의 입력과 출력 정가는 각각 Astra의 5분의 1입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT-6 Sol과 비교하면, 같은 가격표의 All models 목록에서 GPT-6 Sol의 짧은 컨텍스트 정가는 입력 2.00달러, 캐시 입력 0.20달러, 캐시 쓰기 2.50달러, 출력 10.00달러로, 다른 것은 캐시 입력뿐입니다(0.10달러와 0.20달러)."
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT-6.1 Sol의 모델 페이지에는 과금 규칙이 명시되어 있습니다. 캐시 입력은 캐시하지 않은 입력 가격의 5%, 캐시 쓰기는 캐시하지 않은 입력 가격의 1.25배이므로 캐시 쓰기 2.50달러는 일반 입력보다 비쌉니다. 입력이 272K tokens를 넘는 요청은 요청 전체에 대해 입력과 캐시 가격이 2배, 출력이 1.5배가 됩니다. Fast mode는 Standard의 2배이고, Batch와 Flex는 Standard보다 50% 저렴하며, 지역 처리가 제공되는 곳에서는 10%가 추가됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이것들은 API 정가이며 ChatGPT 구독 요금이 아닙니다. 이 페이지들에는 각 요금제의 월 요금이나 GPT-6.1 Sol의 사용 한도가 쓰여 있지 않습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "항목(100만 tokens당)",
+            "GPT-6.1 Sol",
+            "GPT-6 Sol",
+            "GPT-6 Astra"
+          ],
+          "rows": [
+            [
+              "입력",
+              "2.00달러",
+              "2.00달러",
+              "10.00달러"
+            ],
+            [
+              "캐시 입력",
+              "0.10달러",
+              "0.20달러",
+              "1.00달러"
+            ],
+            [
+              "캐시 쓰기",
+              "2.50달러",
+              "2.50달러",
+              "12.50달러"
+            ],
+            [
+              "출력",
+              "10.00달러",
+              "10.00달러",
+              "50.00달러"
+            ]
+          ],
+          "caption": "OpenAI API 가격표, Standard, 짧은 컨텍스트, 100만 tokens당 미국 달러. GPT-6 Sol은 가격표의 All models 목록에 게재. 확인일 2026년 9월 30일. 가격표에는 더 높은 긴 컨텍스트 가격도 따로 실려 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "누가 어디서 GPT-6.1 Sol을 쓸 수 있나"
+        },
+        {
+          "type": "paragraph",
+          "text": "도움말 문서에는 ChatGPT에서 GPT-6.1 Sol, GPT-6 Sol, GPT-6 Luna를 Work와 Codex에서 쓸 수 있고 Chat에서는 쓸 수 없다고 쓰여 있습니다(원문은 “They aren't available in Chat”). Chat에 추가될지는 문서에 쓰여 있지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "GPT-6.1 Sol의 출시 시 제공 범위에는 Plus, Pro, Business, Enterprise, Edu 요금제가 포함되며, Codex는 데스크톱 앱과 CLI, ChatGPT Work는 웹과 모바일입니다. Enterprise와 Edu는 기본으로 꺼져 있어 관리자가 켜야 합니다. Business도 관리자가 켜야 하는지는 문서에 쓰여 있지 않습니다. Free와 Go는 출시 시 범위에 포함되지 않고, 이후에 추가될지도 문서에 쓰여 있지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "출시 시에는 Standard와 Fast 두 가지 속도 모드를 제공합니다. Ultrafast 지원은 “나중에” 제공될 예정이며 날짜는 없습니다. 출시 기간에도 GPT-5.6 Sol, GPT-5.6 Terra, GPT-5.6 Luna는 계속 쓸 수 있습니다. 사용 가능 여부는 출시 진행 상황, 로그인 방식, 사용하는 클라이언트에 따라 달라지며, 새 모델을 선택해도 워크스페이스 권한은 바뀌지 않고 그것으로 사용 권한이 생기는 것도 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "대만과 다른 지역의 제공 시기는 2026년 9월 30일 기준으로 이 문서들 어디에도 쓰여 있지 않으며, GPT-6.1 Sol에 대해 국가나 지역 제한을 명시한 곳도 없습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-gpt-61-sol-20260929/diagram-1-ko.svg",
+          "alt": "네 칸 도해: Plus 등 유료 요금제, Free와 Go, Chat 모드, API의 제공 범위",
+          "width": 1600,
+          "height": 900,
+          "caption": "GPT-6.1 Sol의 API, Codex, ChatGPT Work, Chat에서의 출시 시 제공 범위(“Plus 등 요금제”는 Plus, Pro, Business, Enterprise, Edu를 가리키며 Enterprise와 Edu는 관리자가 켜야 합니다). OpenAI 문서를 바탕으로 정리, 확인일 2026년 9월 30일.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "system card 부록에는 무엇이 쓰여 있나"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI는 Deployment Safety Hub에 “Addendum to GPT-6 Astra System Card: GPT-6.1 Sol”을 올렸습니다. GPT-6 Astra system card의 부록이며, 페이지에 인쇄된 날짜는 2026년 9월 29일입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI는 자사의 Preparedness Framework에 따라 GPT-6.1 Sol을 사이버 보안 분야에서 Critical, 생물·화학 분야에서 High, AI 자기 개선 분야에서 High 기준선 미만으로 다룹니다. Preparedness Framework는 OpenAI가 스스로 정한 위험 분류 체계이며, 이는 내부 분류이지 외부 기관의 평가가 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI는 사이버 보안 Critical이 GPT-6 Astra와 같은 처리이며, 이 분류에 따라 GPT-6 Astra와 같은 안전 조치를 적용했다고 씁니다. Astra와 마찬가지로 GPT-6.1 Sol의 사이버 보안 용도 접근은 Daybreak를 통한 단계적 방식이며, 세부 사항은 GPT-6 Astra system card를 봐야 합니다. 또 OpenAI는 내부 안전 자문 그룹의 권고와 회사 경영진의 판단으로 이 안전 조치가 공개 출시에 충분하다고 밝혔으며, 이는 OpenAI 자신의 판단입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "부록의 평가는 OpenAI가 자사 연구 환경 또는 API에서 수행한 것으로, 실제 서비스 ChatGPT의 출력과 조금 다를 수 있다고 OpenAI는 밝혔습니다. OpenAI에 따르면 사용자가 표시한 사례 평가에서 GPT-6.1 Sol과 GPT-6 Sol의 환각률은 똑같이 낮고, HealthBench에서는 GPT-6 Astra와 비슷합니다. 코딩 작업 기만 평가(Coding Deception)에서 사실과 다르게 진술한 비율은 GPT-6.1 Sol이 1.50%, GPT-6 Astra가 0.51%, GPT-6 Sol이 1.30%이며, OpenAI는 이 작업들이 부정직한 행동이 나올 수 있는 상황을 일부러 골라 만든 것이어서 관찰된 비율이 실제 서비스 환경의 실제 비율과 같을 것으로 기대하지 않는다고 밝혔습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "직접 확인하려면: 어디를 보나"
+        },
+        {
+          "type": "paragraph",
+          "text": "가장 직접적인 방법은 Codex나 ChatGPT Work를 열어 모델 선택 메뉴에 GPT-6.1 Sol이 있는지 보는 것입니다. 보이지 않으면 먼저 위의 요금제와 클라이언트를 대조해 보세요. Enterprise와 Edu 계정은 관리자에게 켜져 있는지 확인해 달라고 하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "개발자는 gpt-6.1-sol이라는 이름으로 호출합니다. 모델 페이지에는 미국과 EU 데이터 레지던시를 지원하며 EU를 고르면 Fast mode를 쓸 수 없다고 쓰여 있습니다. 과금은 호출한 날의 가격표를 기준으로 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "가격과 제공 범위는 출시 시점의 설명이며 이후 바뀔 수 있습니다. 최신 상태는 OpenAI의 API 모델 페이지, 가격표, 도움말 문서의 Models 페이지에서 확인하세요."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "GPT-6.1 Sol과 GPT-6 Sol은 무엇이 다른가요?",
+              "answer": "도움말 문서에는 GPT-6 Sol이 이전 Sol 모델이라고만 쓰여 있고, 두 모델의 API 사양 차이는 독자가 직접 비교해 보라고 안내합니다. 같은 가격표에서 짧은 컨텍스트 정가 중 다른 것은 캐시 입력뿐이며, GPT-6.1 Sol은 0.10달러, GPT-6 Sol은 0.20달러입니다. 입력, 캐시 쓰기, 출력 정가는 같습니다."
+            },
+            {
+              "question": "GPT-6 Sol은 종료되나요?",
+              "answer": "2026년 9월 30일 기준으로 OpenAI의 API 모델 페이지, 가격표, 도움말 문서의 Models 페이지, system card 부록 어디에도 GPT-6 Sol을 언제 종료하거나 퇴역시키는지는 쓰여 있지 않습니다. ChatGPT 도움말 문서는 여전히 GPT-6 Sol을 Work와 Codex에서 쓸 수 있는 모델로 싣고 있고, API 가격표의 전체 목록에도 올라 있습니다."
+            },
+            {
+              "question": "Free나 Go 요금제에서 GPT-6.1 Sol을 쓸 수 있나요?",
+              "answer": "도움말 문서에는 Free와 Go가 출시 시 범위에 포함되지 않는다고 쓰여 있고, 이후 추가될지는 쓰여 있지 않습니다. 출시 시 범위에는 Plus, Pro, Business, Enterprise, Edu 요금제의 Codex와 ChatGPT Work가 포함되며, 그중 Enterprise와 Edu는 관리자가 켜야 합니다."
+            },
+            {
+              "question": "ChatGPT의 Chat에서 GPT-6.1 Sol을 볼 수 있나요?",
+              "answer": "도움말 문서에는 GPT-6.1 Sol을 Work와 Codex에서 쓸 수 있고 Chat에는 없다고 쓰여 있으며, 어떤 일정도 제시되어 있지 않습니다."
+            },
+            {
+              "question": "GPT-6.1 Sol의 API 정가는 GPT-6 Astra와 얼마나 다른가요?",
+              "answer": "Standard, 짧은 컨텍스트, 100만 tokens당 GPT-6.1 Sol은 입력 2.00달러, 캐시 입력 0.10달러, 출력 10.00달러이고, GPT-6 Astra는 입력 10.00달러, 캐시 입력 1.00달러, 출력 50.00달러입니다. 가격표에는 더 높은 긴 컨텍스트 가격도 따로 실려 있으며(GPT-6.1 Sol은 입력이 272K tokens를 넘는 요청에 적용), 실제 과금은 호출한 날의 가격표를 기준으로 합니다."
+            },
+            {
+              "question": "system card에 쓰인 사이버 보안 Critical은 무슨 뜻인가요?",
+              "answer": "OpenAI가 자사의 Preparedness Framework에 따라 GPT-6.1 Sol의 사이버 보안 능력에 매긴 내부 분류이며, 외부 기관의 평가가 아닙니다. OpenAI는 GPT-6 Astra와 같은 처리이며 Astra와 같은 안전 조치를 적용했다고 씁니다."
+            },
+            {
+              "question": "대만에서 GPT-6.1 Sol을 쓸 수 있나요?",
+              "answer": "2026년 9월 30일 기준으로 OpenAI의 API 모델 페이지, 가격표, 도움말 문서의 Models 페이지, system card 부록 어디에도 대만에 대한 언급은 없으며, GPT-6.1 Sol에 대해 국가나 지역 제한을 명시한 곳도 없습니다. 확인하려면 자신의 Codex나 ChatGPT Work를 열어 모델 선택 메뉴를 보세요."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "가격과 범위는 바뀔 수 있고, 평가는 OpenAI 자체의 것입니다",
+          "text": "가격, 요금제, 제공 범위는 2026년 9월 30일 기준 페이지의 내용이며 이후 바뀔 수 있습니다. 능력과 안전에 관한 설명은 모두 OpenAI가 직접 공개한 것입니다. 본 기사에 대해 본 사이트는 직접 시험해 보지 않았고, 모델 전환이나 요금제 구독을 권하지 않습니다."
+        },
+        {
+          "type": "link",
+          "text": "2026년 AI 뉴스 총정리: 1월부터 9월까지의 핵심과 일상 적용",
+          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "GPT-6 Sol과 Luna 출시: API 가격 인하, Codex에서 사용 가능, Chat에는 아직 미제공",
+          "url": "https://mokaair.com/ko/life/ai-news-gpt-6-sol-luna-20260923"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI API 문서: GPT-6.1 Sol 모델 페이지",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+          "checked_on": "2026-09-30"
+        },
+        {
+          "title": "OpenAI API 문서: Pricing",
+          "url": "https://developers.openai.com/api/docs/pricing",
+          "checked_on": "2026-09-30"
+        },
+        {
+          "title": "OpenAI(ChatGPT와 Codex 도움말 문서): Models",
+          "url": "https://learn.chatgpt.com/docs/models",
+          "checked_on": "2026-09-30"
+        },
+        {
+          "title": "OpenAI Deployment Safety Hub: Addendum to GPT-6 Astra System Card: GPT-6.1 Sol",
+          "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+          "checked_on": "2026-09-30"
+        }
+      ]
+    },
     "zh-CN": {
       "title": "GPT-6.1 Sol 推出：新一版 Sol 上 API、Codex 与 ChatGPT Work，Chat 里没有",
       "description": "OpenAI 在 2026 年 9 月 29 日推出 GPT-6.1 Sol，API 名称是 gpt-6.1-sol：Plus、Pro、Business、Enterprise、Edu 方案的 Codex 与 ChatGPT Work 在首发推出范围内，Enterprise 与 Edu 要管理员启用，Free 与 Go 首发不含，Chat 里没有（2026 年 9 月查证）。",
