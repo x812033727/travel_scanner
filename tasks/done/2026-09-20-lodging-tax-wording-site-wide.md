@@ -1,14 +1,14 @@
 ---
 id: 2026-09-20-lodging-tax-wording-site-wide
 title: 全站「住宿稅」用詞統一：五篇日本文章的「宿泊稅」與日文字形「宿泊税」
-status: open
+status: done
 priority: P3
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-09-30T04:28:32Z
 created_at: 2026-09-20T03:12:48Z
-completed_at:
-branch:
+completed_at: 2026-09-30T04:32:18Z
+branch: claude/lodging-tax-wording
 depends_on: []
 scope:
   - apps/api/app/guides/content/tokyo-where-to-stay.json
@@ -34,16 +34,16 @@ scope:
 
 ## Definition of done
 
-- [ ] 五篇**正文、`title` 與 `description`** 的「宿泊稅」全部改成「住宿稅」；改到標題的要確認列表頁讀起來仍通順。
-- [ ] 日文字形「宿泊税」只留在**引用日文官方頁名稱的 `sources` 標題與直接引文**裡，正文不留。
+- [x] 五篇**正文、`title` 與 `description`** 的「宿泊稅」全部改成「住宿稅」；改到標題的要確認列表頁讀起來仍通順。
+- [x] 日文字形「宿泊税」只留在**引用日文官方頁名稱的 `sources` 標題與直接引文**裡，正文不留。
 - [ ] 五篇若有 `aliases` 欄位，收進「宿泊稅」，舊搜尋詞不失效。
-- [ ] 數字一個都沒動：東京 100／200（2027 年 4 月起 3%）、大阪 200／400／500、京都五級、金澤 200／500、入湯稅 150／300。
+- [x] 數字一個都沒動：東京 100／200（2027 年 4 月起 3%）、大阪 200／400／500、京都五級、金澤 200／500、入湯稅 150／300。
 - [ ] lint（`--kind howto`）與內容包測試綠；部署後五個 slug 一起 dry-run 再 `--publish`。
 
 ## Steps
 
-- [ ] 五篇逐篇改（位置見上面的清單），每篇改完 `grep -c "宿泊稅" <file>` 是 0。
-- [ ] 確認 `sources` 的日文頁名沒有被改成繁體（那是官方頁名稱）。
+- [x] 五篇逐篇改（位置見上面的清單），每篇改完 `grep -c "宿泊稅" <file>` 是 0。
+- [x] 確認 `sources` 的日文頁名沒有被改成繁體（那是官方頁名稱）。
 - [ ] lint、pytest、PR；部署後一次匯入五篇。
 
 ## How to verify
@@ -69,3 +69,19 @@ uv run python -m app.cli guides-links-check --locale zh-TW
 - `apps/web/public/guides/*/diagram-1.svg` 全掃過，**沒有任何一張圖**含這三種寫法，所以 scope 不含圖目錄。
 - `japan-hotel-room-plan-guide` 寫「本文不提供固定住宿稅或兒童年齡門檻」，與這張票無關、不要改。
 - `kanazawa-2-day-itinerary` 另有 `2026-09-20-shirakawago-bus-times-and-reservation-rule`（`blocks[55]`）也在同一個檔上，兩張票不能同時 claim。
+- 2026-09-30 (claude-opus-5-5): zh-TW only. Replaced in title, description and
+  body: Tokyo 6, Kanazawa 3 (+ `sources[19]`, a Chinese description, not a page
+  name), onsen 7, Osaka/Kyoto 2 (Japanese glyph in running text), Kyoto 1.
+  `grep` for 宿泊稅／宿泊税 outside `sources` is 0 in all five. A script
+  compared every number before and after: identical. Japanese page names
+  in `sources` (東京都主税局 宿泊税, 大阪府 宿泊税, 京都市 …宿泊税…) are kept.
+  Tokyo's ja edition correctly says 宿泊税 and zh-CN already says 住宿税; both
+  untouched.
+- Not done: `aliases`. None of the five packs has an `aliases` field, and
+  adding one makes the importer rewrite each article's taxonomy, replacing any
+  alias an editor set in the admin. Left for an editor to add in the admin if
+  wanted.
+- Checks: content pack tests green; lint's only error is the Kyoto diagram's
+  pre-existing 14 px label, fixed separately in PR #1001 (`2026-09-21-91-ci`).
+- Scope overlapped three codex-article-localization tickets; owner approved
+  `--force`; each has a note. Production import of the five slugs after deploy.
