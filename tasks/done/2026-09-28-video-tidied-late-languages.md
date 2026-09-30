@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-tidied-late-languages
 title: 清理過的影片被勾新語言時告訴站主
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-tidied-languages
 claimed_at: 2026-09-30T15:40:56Z
 created_at: 2026-09-28T11:51:48Z
-completed_at:
+completed_at: 2026-09-30T15:56:50Z
 branch: claude/video-tidied-late-languages
 depends_on:
   - 2026-09-28-video-story-tidy-finished
