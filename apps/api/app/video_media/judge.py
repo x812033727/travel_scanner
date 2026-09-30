@@ -36,9 +36,8 @@ INSTRUCTIONS = """You are the quality judge of an AI anime-drama pipeline. Score
 shown against each rubric criterion from 0 (fails completely) to 10 (flawless). Be strict: a wrong
 number of fingers, a warped face, a character whose face, hair, clothing or build differ from
 the reference sheet, text or watermarks in the picture, or a cut inside a clip are serious
-faults. Answer with JSON only: {"scores": {<criterion key>: <0-10>, ...}, "problems": [<short,
-concrete faults a director would fix>], "notes": <one or two sentences>}. Every rubric key must
-appear in scores."""
+faults. Score every rubric criterion; "problems" are short, concrete faults a director would fix,
+and "notes" is one or two sentences."""
 
 
 class JudgeError(Exception):
@@ -90,13 +89,20 @@ def request_body(
         "The media follow, each preceded by its label."
     )
     parts = [{"text": lead}, *_parts(store, media, payload)]
+    keys = [criterion.key for criterion in payload.rubric]
+    scores = {
+        "type": "object",
+        "properties": {key: {"type": "number"} for key in keys},
+        "required": keys,
+    }
+    schema = {**SCHEMA, "properties": {**SCHEMA["properties"], "scores": scores}}
     return {
         "system_instruction": {"parts": [{"text": INSTRUCTIONS}]},
         "contents": [{"role": "user", "parts": parts}],
         "generationConfig": {
             "temperature": 0,
             "responseMimeType": "application/json",
-            "responseSchema": SCHEMA,
+            "responseSchema": schema,
         },
     }
 
