@@ -1,13 +1,13 @@
 ---
 id: 2026-09-19-hotspot-restaurants-panel-offers-the-overwrite
 title: hotspot-restaurants-panel offers the overwrite step when a chosen meal answers meal_slot_occupied
-status: review
+status: done
 priority: P3
 area: web
 owner: codex-b10e-web
 claimed_at: 2026-09-30T10:57:16Z
 created_at: 2026-09-19T11:38:40Z
-completed_at:
+completed_at: 2026-09-30T15:43:45Z
 branch: codex/remaining-tickets-20260930
 depends_on: []
 scope:
@@ -83,3 +83,12 @@ npm run check:i18n && npm run typecheck:web && npm run lint:web
   pressure; the full web suite had not started and is delegated to PR CI.
   Rebased onto `d7787f51` (only upstream video operations changed), with identical
   web contents. A fresh 26-PR/worktree collision review found no active overlap.
+- Draft PR #1044: all eight CI checks passed on `8b7f609b`, including the full
+  web checks and required API/container/smoke jobs. After main advanced to
+  `3b3c1eb3`, the four source/test files remained byte-identical; 45 focused
+  tests passed again and the local task check passed. Preserved the concurrent
+  GitHub main merge and PR promotion, then added this archive on top. Full CI
+  must be assessed again on the new pushed head.
+- Archived this locally completed ticket after the owner's continuation request.
+  This closes the implementation ticket; PR merge and deployment remain separate
+  and have not been performed.

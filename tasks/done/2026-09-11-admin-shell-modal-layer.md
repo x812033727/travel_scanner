@@ -1,13 +1,13 @@
 ---
 id: 2026-09-11-admin-shell-modal-layer
 title: admin-shell 命令面板改用 modal-sheet 的分層堆疊
-status: review
+status: done
 priority: P3
 area: web
 owner: codex-b10e-modal
 claimed_at: 2026-09-30T10:54:00Z
 created_at: 2026-09-11T20:07:47Z
-completed_at:
+completed_at: 2026-09-30T11:16:14Z
 branch: codex/remaining-tickets-20260930
 depends_on: []
 scope:
@@ -69,3 +69,14 @@ npm run lint:web && npm run typecheck:web && npm run test:web -- admin-shell
   pressure; the full web suite had not started and is delegated to PR CI.
   Rebased onto `d7787f51` (only upstream video operations changed), with identical
   web contents. A fresh 26-PR/worktree collision review found no active overlap.
+- Draft PR #1044: all eight CI checks passed on `8b7f609b`, including the full
+  web checks and required API/container/smoke jobs. After main advanced to
+  `3b3c1eb3`, the four source/test files remained byte-identical; 45 focused
+  tests passed again and the local task check passed. Preserved the concurrent
+  GitHub main merge and PR promotion, then added this archive on top. Full CI
+  must be assessed again on the new pushed head.
+- The owner asked to continue clearing unfinished tickets after the concrete
+  two-ticket archive request. Verified the completed record and matching body,
+  removed only its leftover open copy, and retained this completion record.
+  This closes the local implementation ticket; PR merge and deployment remain
+  separate and have not been performed.
