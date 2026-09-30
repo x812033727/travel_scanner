@@ -399,7 +399,11 @@ async def jev_duplicate_check(
         "duplicate": NoulQuestion(
             instructions=(
                 "The new event is materially the same event as at least one existing "
-                "article, rather than a later independent development."
+                "article, rather than a later independent development. A new version or "
+                "successor of a product or model (for example GPT-6.1 Sol after GPT-6 Sol, "
+                "Claude Sonnet 5.5 after Claude Sonnet 5), a new model joining an existing "
+                "family, and a later change of price, availability or regions are new "
+                "developments, even when the names and most of the wording match."
             ),
             criteria={
                 "yes": "It repeats an existing event.",
