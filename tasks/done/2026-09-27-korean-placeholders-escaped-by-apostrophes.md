@@ -1,14 +1,14 @@
 ---
 id: 2026-09-27-korean-placeholders-escaped-by-apostrophes
 title: Korean copy prints three placeholders literally, and check:i18n cannot see an apostrophe-escaped placeholder
-status: open
+status: done
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: codex-gpt6-i18n
+claimed_at: 2026-09-30T01:54:23Z
 created_at: 2026-09-27T05:59:56Z
-completed_at:
-branch:
+completed_at: 2026-09-30T01:59:44Z
+branch: codex/korean-icu-placeholders
 depends_on: []
 scope:
   - apps/web/messages/ko/admin.json
@@ -43,18 +43,18 @@ purpose. It documents the tokens of a URL template, so they must print literally
 
 ## Definition of done
 
-- [ ] The three Korean strings print their values. Quote them with U+2018/U+2019, as
+- [x] The three Korean strings print their values. Quote them with U+2018/U+2019, as
       `usage.packages.archiveConfirm` already does (`‘{name}’`).
-- [ ] `check:i18n` fails on a placeholder that `en` substitutes and a locale prints
+- [x] `check:i18n` fails on a placeholder that `en` substitutes and a locale prints
       literally, and the travelpayouts help (literal in `en` too) still passes.
 
 ## Steps
 
-- [ ] Fix the three strings.
-- [ ] In `tools/check-i18n.mjs`, compare parameters by what the message parser sees: format
-      each message with `intl-messageformat` and a marker value per parameter, and flag a
-      parameter whose marker does not appear. A literal in `en` stays allowed.
-- [ ] Add `tools/check-i18n.test.mjs` (it has no test yet) with one escaped case, one
+- [x] Fix the three strings.
+- [x] In `tools/check-i18n.mjs`, compare actual argument sets from the
+      `intl-messageformat` AST, including every plural/select branch. A literal
+      in `en` stays allowed. The AST approach replaces marker rendering; see Notes.
+- [x] Add `tools/check-i18n.test.mjs` (it has no test yet) with one escaped case, one
       curly-quoted case and the travelpayouts case.
 
 ## How to verify
@@ -73,6 +73,22 @@ node -e 'const F=require("intl-messageformat").IntlMessageFormat;console.log(new
 It prints `{source}`; with `‘{source}’` it prints `‘X’`.
 
 ## Notes
+
+- 2026-09-30 collision audit: the claim tool reported two old review scopes.
+  Withdrawal work landed in PR #870 (79e26fcd) and preloaded approval work in
+  PR #978 (9656d0d9), both ancestors of origin/main. The latter's 31ce checkout
+  has no tracked changes; the former branch no longer exists. No open PR changes
+  any of this ticket's five paths. Used claim --force for these stale overlaps
+  without changing either owner's task or branch.
+- Use the IntlMessageFormat AST with ignoreTag: true to compare all actual
+  argument names. This replaces the proposed marker rendering, which only
+  visits one plural/select branch and cannot safely format numeric/date markers.
+- Regression coverage: 19 tests, including all three actual Korean renders,
+  reversal to the three original strings (exactly three failures), intentional
+  URL-template literals in all five locales, nested plural/select/ordinal
+  branches, number/date/time arguments, malformed ICU attribution, duplicate
+  keys, namespace/allowlist/key validation and the real catalog CLI.
+- No message keys or argument names change; admin text override keys remain valid.
 
 - Found on 2026-09-27 while adding Korean copy for the drama settings
   (`2026-09-27-video-drama-settings-ux`): the new Korean strings use `‘…’` for that reason.
