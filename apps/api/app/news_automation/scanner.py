@@ -41,6 +41,11 @@ MAX_REPORTED_SKIPS = 5
 REFUSED_STATUSES = frozenset({401, 403})
 SUMMARY_LEAD_MAX_AGE = timedelta(hours=72)
 PAGE_REFUSED = "news_page_refused"
+# A readable article (a press report, say) that links to a story still waiting for evidence
+# -- a refused page kept as a lead, or a candidate with lead-only pages -- is attached to that
+# story as its evidence, and the story is drafted instead of the report filing a second one.
+ATTACHED = "news_attached_as_evidence"
+WAITING_LOOKUP_LIMIT = 200
 # Links that are plainly not articles. Apple Newsroom's first scan fetched 76 image links
 # as evidence, each one a robots check and a rate-limited request that then failed.
 NON_ARTICLE_SUFFIXES = (
@@ -190,6 +195,30 @@ def _summary_lead_ok(entry: Entry, now: datetime) -> bool:
     )
 
 
+def _link_key(url: str) -> str:
+    """A URL as two pages link to it: no query, no fragment, no trailing slash, host in
+    lower case. A press report links to the announcement with tracking parameters and
+    sometimes a trailing slash the feed did not have."""
+    parts = urlsplit(url)
+    return f"{(parts.hostname or '').casefold()}{parts.path.rstrip('/')}"
+
+
+async def _waiting_for(
+    session: AsyncSession, links: list[str], canonical: str
+) -> NewsCandidate | None:
+    """The newest candidate still waiting for evidence that this page links to."""
+    keys = {_link_key(link) for link in links} - {_link_key(canonical)}
+    if not keys:
+        return None
+    waiting = await session.scalars(
+        select(NewsCandidate)
+        .where(NewsCandidate.status == "needs_evidence")
+        .order_by(NewsCandidate.created_at.desc())
+        .limit(WAITING_LOOKUP_LIMIT)
+    )
+    return next((row for row in waiting if _link_key(row.canonical_url) in keys), None)
+
+
 def _skip_note(skipped: list[str], summarized: list[str] | None = None) -> str:
     notes: list[str] = []
     if skipped:
@@ -294,6 +323,8 @@ async def scan_source(
     skipped: list[str] = []
     # Refused entries kept as summary leads (never queued: nothing can be drafted from them).
     summarized: list[str] = []
+    # Stories that were waiting for evidence and got it from a page read in this scan.
+    attached_ids: list[UUID] = []
     now = datetime.now(UTC)
     try:
         listing = await fetcher.fetch(
@@ -439,6 +470,35 @@ async def scan_source(
                     )
             if deferred:
                 continue
+            waiting = (
+                await _waiting_for(session, links, canonical)
+                if not exact_duplicate_id and detail_source.role == "evidence"
+                else None
+            )
+            if waiting is not None:
+                waiting.status = "discovered"
+                waiting.error_code = None
+                waiting.error_detail = None
+                session.add(
+                    NewsEvidence(
+                        candidate_id=waiting.id,
+                        role="evidence",
+                        is_first_party=detail_source.is_first_party,
+                        url=canonical,
+                        title=title[:500],
+                        source_date=entry.published_at.date() if entry.published_at else None,
+                        etag=detail.etag,
+                        last_modified=detail.last_modified,
+                        content_hash=body_hash,
+                        body_hash=story_hash,
+                        excerpt=evidence_excerpt(body_text),
+                    )
+                )
+                for row in linked_rows:
+                    row.candidate_id = waiting.id
+                    session.add(row)
+                linked_rows = []
+                attached_ids.append(waiting.id)
             vertical: Vertical = (
                 classify_vertical(title, body_text)
                 if source.vertical == "mixed"
@@ -447,7 +507,7 @@ async def scan_source(
             candidate = NewsCandidate(
                 source_id=source.id,
                 vertical=vertical,
-                status="duplicate" if exact_duplicate_id else "discovered",
+                status="duplicate" if exact_duplicate_id or waiting else "discovered",
                 canonical_url=canonical,
                 source_title=title[:500],
                 normalized_title=normalized,
@@ -457,10 +517,14 @@ async def scan_source(
                 idempotency_key=idempotency,
                 prompt_version=settings.prompt_version,
                 policy_version=settings.policy_version,
-                error_code="news_exact_duplicate" if exact_duplicate_id else None,
+                error_code=(
+                    "news_exact_duplicate" if exact_duplicate_id else ATTACHED if waiting else None
+                ),
                 error_detail=(
                     f"Exact URL, title or content duplicate of {exact_duplicate_id}"
                     if exact_duplicate_id
+                    else f"Attached as evidence to {waiting.id}"
+                    if waiting
                     else None
                 ),
             )
@@ -484,7 +548,7 @@ async def scan_source(
             for row in linked_rows:
                 row.candidate_id = candidate.id
                 session.add(row)
-            if exact_duplicate_id:
+            if exact_duplicate_id or waiting:
                 continue
             created_ids.append(candidate.id)
         if not skipped:
@@ -512,6 +576,6 @@ async def scan_source(
     finally:
         if own_fetcher:
             await fetcher.close()
-    for candidate_id in created_ids:
+    for candidate_id in [*created_ids, *attached_ids]:
         await enqueue(candidate_id)
-    return len(created_ids)
+    return len(created_ids) + len(attached_ids)

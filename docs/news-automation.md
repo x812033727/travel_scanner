@@ -39,6 +39,13 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    evidence. Nothing is drafted from it; it is there so the story shows up in the review
    queue, to be written by hand from the publisher's other pages or rejected. Before this
    (2026-09-30), every OpenAI announcement was skipped every hour and never seen.
+   Such a story does not wait for a person when a later scan reads a page from an
+   `evidence` source that links to it (a press report linking to the refused announcement,
+   compared without query string, fragment or trailing slash): that page and the evidence
+   linked from it are attached to the waiting candidate, which goes back to `discovered`
+   and is queued, and the report itself is closed as `duplicate`
+   (`news_attached_as_evidence`) instead of filing the same story twice. This applies to
+   any candidate in `needs_evidence`, including one that had only `lead_only` pages.
    Every fetch uses `fetch.tls_context()`: it verifies the chain, the expiry and the host
    name, but not Python 3.13's strict X.509 profile, which the TWCA chain of Taiwan's
    government sites fails ("Missing Subject Key Identifier"). Before this no `gov.tw` page

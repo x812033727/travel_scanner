@@ -812,6 +812,123 @@ def test_news_tls_context_still_verifies_but_drops_python_313_strict_mode() -> N
 
 
 @pytest.mark.asyncio
+async def test_a_report_linking_to_a_waiting_story_becomes_its_evidence() -> None:
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(
+                sync,
+                tables=[
+                    NewsAutomationSettings.__table__,
+                    NewsSource.__table__,
+                    NewsCandidate.__table__,
+                    NewsEvidence.__table__,
+                ],
+            )
+        )
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    official = NewsSource(
+        name="Official",
+        url="https://official.example/rss.xml",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        is_first_party=True,
+        enabled=True,
+    )
+    press = NewsSource(
+        name="Press",
+        url="https://press.example/feed",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        enabled=True,
+    )
+    gossip = NewsSource(
+        name="Gossip",
+        url="https://gossip.example/feed",
+        format="rss",
+        role="lead_only",
+        vertical="ai",
+        enabled=True,
+    )
+    published = (datetime.now(UTC) - timedelta(hours=3)).strftime("%a, %d %b %Y %H:%M:%S GMT")
+    announcement = "https://official.example/index/new-model"
+
+    def feed(link: str, title: str, summary: str = "") -> bytes:
+        return (
+            f"<rss><channel><item><title>{title}</title><link>{link}</link>"
+            f"<description>{summary}</description><pubDate>{published}</pubDate>"
+            "</item></channel></rss>"
+        ).encode()
+
+    class Fetcher:
+        async def fetch(self, url: str, **_kwargs: object) -> FetchResult:
+            listings = {
+                official.url: feed(announcement, "Introducing new model", "Meet new model."),
+                press.url: feed("https://press.example/story", "The new model, explained"),
+                gossip.url: feed("https://gossip.example/rumour", "Rumour about the new model"),
+            }
+            if url in listings:
+                return FetchResult(
+                    url=url, status_code=200, content_type="application/rss+xml", body=listings[url]
+                )
+            if url.startswith(announcement):
+                request = httpx.Request("GET", url)
+                response = httpx.Response(403, request=request)
+                raise httpx.HTTPStatusError("refused", request=request, response=response)
+            # Both reports link to the announcement, with a tracking query and a slash.
+            body = (
+                f"<html><main>{url}: {'A long report about the new model. ' * 20}"
+                f'<a href="{announcement}/?utm_source=feed">the announcement</a></main></html>'
+            )
+            return FetchResult(
+                url=url, status_code=200, content_type="text/html", body=body.encode()
+            )
+
+        async def close(self) -> None:
+            return None
+
+    queued: list[UUID] = []
+
+    async def enqueue(candidate_id: UUID) -> None:
+        queued.append(candidate_id)
+
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        session.add_all([official, press, gossip])
+        await session.commit()
+        await scan_source(session, official.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        lead = await session.scalar(
+            select(NewsCandidate).where(NewsCandidate.canonical_url == announcement)
+        )
+        assert lead is not None and lead.status == "needs_evidence"
+        # A lead-only site is never evidence, so it files its own candidate as before.
+        await scan_source(session, gossip.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        await session.refresh(lead)
+        assert lead.status == "needs_evidence"
+        attached = await scan_source(session, press.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        await session.refresh(lead)
+        report = await session.scalar(
+            select(NewsCandidate).where(NewsCandidate.canonical_url == "https://press.example/story")
+        )
+        lead_evidence = list(
+            await session.scalars(select(NewsEvidence).where(NewsEvidence.candidate_id == lead.id))
+        )
+    assert attached == 1
+    assert lead.status == "discovered" and lead.error_code is None
+    assert sorted((row.role, row.url) for row in lead_evidence) == [
+        ("evidence", "https://press.example/story"),
+        ("lead_only", announcement),
+    ]
+    # The report does not become a second story, and only the waiting one is queued.
+    assert report is not None and report.status == "duplicate"
+    assert report.error_code == "news_attached_as_evidence"
+    assert queued[-1] == lead.id and report.id not in queued
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
 async def test_robots_txt_is_read_once_per_host_for_the_life_of_a_fetcher() -> None:
     robots_reads: list[str] = []
 
