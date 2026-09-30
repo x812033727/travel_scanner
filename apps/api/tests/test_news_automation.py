@@ -52,6 +52,10 @@ from app.news_automation.schemas import FetchResult
 from app.news_automation.validation import revalidate_evidence, validate_source_configuration
 from app.problems import AppError
 
+# Sources in these tests have been scanned before: a first scan only records its listing
+# as seen (scanner.BASELINE), which test_a_new_source_s_first_scan_files_only_fresh_entries covers.
+SCANNED_BEFORE = datetime(2026, 1, 1, tzinfo=UTC)
+
 
 def test_feed_json_and_configured_html_parsers_are_bounded() -> None:
     rss = b"""<?xml version="1.0"?><rss><channel><item><title>Official update</title>
@@ -285,6 +289,7 @@ async def test_scheduler_claims_one_catchup_scan_and_prevents_overlap() -> None:
         )
     factory = async_sessionmaker(engine, expire_on_commit=False)
     source = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Official",
         url="https://example.com/feed",
         format="rss",
@@ -326,6 +331,7 @@ async def test_scanner_marks_cross_url_exact_duplicate_and_jobs_are_idempotent()
         )
     factory = async_sessionmaker(engine, expire_on_commit=False)
     source = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Official",
         url="https://example.com/feed",
         format="rss",
@@ -386,6 +392,7 @@ async def test_scanner_marks_cross_url_exact_duplicate_and_jobs_are_idempotent()
 @pytest.mark.asyncio
 async def test_source_activation_requires_a_readable_feed() -> None:
     source = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Official",
         url="https://example.com/feed",
         format="rss",
@@ -426,6 +433,7 @@ async def test_source_activation_requires_a_readable_feed() -> None:
 @pytest.mark.asyncio
 async def test_evidence_is_refetched_and_changed_content_fails_closed() -> None:
     source = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Official",
         url="https://example.com/feed",
         format="rss",
@@ -514,6 +522,7 @@ async def test_evidence_stored_by_the_old_extractor_still_matches_until_the_stor
     None
 ):
     source = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Official",
         url="https://example.com/feed",
         format="rss",
@@ -575,6 +584,7 @@ async def test_scanner_skips_unreachable_pages_and_never_refetches_seen_entries(
         )
     factory = async_sessionmaker(engine, expire_on_commit=False)
     lead = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Lead",
         url="https://example.com/feed",
         format="rss",
@@ -583,6 +593,7 @@ async def test_scanner_skips_unreachable_pages_and_never_refetches_seen_entries(
         enabled=True,
     )
     official = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Official",
         url="https://official.example/news",
         format="rss",
@@ -675,6 +686,7 @@ async def test_scanner_keeps_a_refused_recent_page_as_a_feed_summary_lead() -> N
         )
     factory = async_sessionmaker(engine, expire_on_commit=False)
     official = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Official",
         url="https://official.example/rss.xml",
         format="rss",
@@ -812,6 +824,88 @@ def test_news_tls_context_still_verifies_but_drops_python_313_strict_mode() -> N
 
 
 @pytest.mark.asyncio
+async def test_a_new_source_s_first_scan_files_only_fresh_entries() -> None:
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(
+                sync,
+                tables=[
+                    NewsAutomationSettings.__table__,
+                    NewsSource.__table__,
+                    NewsCandidate.__table__,
+                    NewsEvidence.__table__,
+                ],
+            )
+        )
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    source = NewsSource(
+        name="New",
+        url="https://new.example/feed",
+        format="rss",
+        role="evidence",
+        vertical="tech",
+        enabled=True,
+    )
+    now = datetime.now(UTC)
+
+    def stamp(delta: timedelta) -> str:
+        return (now - delta).strftime("%a, %d %b %Y %H:%M:%S GMT")
+
+    items = [
+        ("fresh", f"<pubDate>{stamp(timedelta(hours=6))}</pubDate>"),
+        ("old", f"<pubDate>{stamp(timedelta(days=40))}</pubDate>"),
+        ("undated", ""),
+    ]
+    listing = (
+        "<rss><channel>"
+        + "".join(
+            f"<item><title>Release {name}</title><link>https://new.example/{name}</link>{date}</item>"
+            for name, date in items
+        )
+        + "</channel></rss>"
+    ).encode()
+    requested: list[str] = []
+
+    class Fetcher:
+        async def fetch(self, url: str, **_kwargs: object) -> FetchResult:
+            requested.append(url)
+            if url.endswith("/feed"):
+                return FetchResult(
+                    url=url, status_code=200, content_type="application/rss+xml", body=listing
+                )
+            body = f"<html><main>{url}: {'The whole release. ' * 30}</main></html>".encode()
+            return FetchResult(url=url, status_code=200, content_type="text/html", body=body)
+
+        async def close(self) -> None:
+            return None
+
+    async def enqueue(_candidate_id: UUID) -> None:
+        return None
+
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        session.add(source)
+        await session.commit()
+        created = await scan_source(session, source.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        rows = {
+            row.canonical_url.rsplit("/", 1)[-1]: (row.status, row.error_code)
+            for row in await session.scalars(select(NewsCandidate))
+        }
+        # The second scan is an ordinary one: the baselined entries count as seen.
+        requested.clear()
+        again = await scan_source(session, source.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+    assert created == 1
+    assert rows == {
+        "fresh": ("discovered", None),
+        "old": ("rejected", "news_baseline"),
+        "undated": ("rejected", "news_baseline"),
+    }
+    assert again == 0 and requested == ["https://new.example/feed"]
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
 async def test_a_report_linking_to_a_waiting_story_becomes_its_evidence() -> None:
     engine = create_async_engine("sqlite+aiosqlite://")
     async with engine.begin() as connection:
@@ -828,6 +922,7 @@ async def test_a_report_linking_to_a_waiting_story_becomes_its_evidence() -> Non
         )
     factory = async_sessionmaker(engine, expire_on_commit=False)
     official = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Official",
         url="https://official.example/rss.xml",
         format="rss",
@@ -837,6 +932,7 @@ async def test_a_report_linking_to_a_waiting_story_becomes_its_evidence() -> Non
         enabled=True,
     )
     press = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Press",
         url="https://press.example/feed",
         format="rss",
@@ -845,6 +941,7 @@ async def test_a_report_linking_to_a_waiting_story_becomes_its_evidence() -> Non
         enabled=True,
     )
     gossip = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Gossip",
         url="https://gossip.example/feed",
         format="rss",
@@ -1011,6 +1108,7 @@ async def test_a_feed_link_that_redirects_to_a_seen_page_files_nothing_new() -> 
         )
     factory = async_sessionmaker(engine, expire_on_commit=False)
     source = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Lead",
         url="https://example.com/feed",
         format="rss",
@@ -1119,6 +1217,7 @@ def test_pages_of_one_website_are_one_source() -> None:
     # A newsroom the owner trusts to stand alone (2026-09-28), set per source in its config.
     sources = [
         NewsSource(
+            last_scanned_at=SCANNED_BEFORE,
             url="https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
             config_json={"auto_publish_alone": True},
             allowed_redirect_hosts_json=["www.theverge-cdn.example"],
@@ -1175,6 +1274,7 @@ async def test_scanner_fetches_only_articles_on_other_websites_as_evidence() -> 
         )
     factory = async_sessionmaker(engine, expire_on_commit=False)
     press = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Press",
         url="https://press.example/feed",
         format="rss",
@@ -1183,6 +1283,7 @@ async def test_scanner_fetches_only_articles_on_other_websites_as_evidence() -> 
         enabled=True,
     )
     official = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Official",
         url="https://official.example/news",
         format="rss",
@@ -1371,6 +1472,7 @@ async def test_refreshing_evidence_takes_the_current_text_only_when_every_page_r
     from app.news_automation.validation import refresh_evidence
 
     source = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Official",
         url="https://example.com/feed",
         format="rss",
@@ -1582,6 +1684,7 @@ async def test_revalidation_compares_the_story_when_both_sides_have_a_body_hash(
 
     config = _source_config("The Verge AI")
     source = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="The Verge AI",
         url="https://www.theverge.com/rss/index.xml",
         format="rss",
@@ -1666,6 +1769,7 @@ async def test_scanner_stores_the_body_hash_and_finds_the_same_story_at_another_
         )
     factory = async_sessionmaker(engine, expire_on_commit=False)
     lead = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="The Verge AI",
         url="https://www.theverge.com/feed",
         format="rss",

@@ -45,6 +45,10 @@ PAGE_REFUSED = "news_page_refused"
 # -- a refused page kept as a lead, or a candidate with lead-only pages -- is attached to that
 # story as its evidence, and the story is drafted instead of the report filing a second one.
 ATTACHED = "news_attached_as_evidence"
+# A source's first scan reads a listing that is mostly its back catalogue. Every entry older
+# than this (or undated: an HTML listing has no dates) is recorded as seen without being
+# fetched or drafted, so adding a source files only its news of the last days.
+BASELINE = "news_baseline"
 WAITING_LOOKUP_LIMIT = 200
 # Links that are plainly not articles. Apple Newsroom's first scan fetched 76 image links
 # as evidence, each one a robots check and a rate-limited request that then failed.
@@ -219,6 +223,28 @@ async def _waiting_for(
     return next((row for row in waiting if _link_key(row.canonical_url) in keys), None)
 
 
+def _baseline_candidate(
+    source: NewsSource, entry: Entry, prompt: str, policy: str
+) -> NewsCandidate:
+    """An entry a new source already listed, closed as seen. Its hashes are the URL's, so it
+    never matches a later story's content, only its own URL."""
+    return NewsCandidate(
+        source_id=source.id,
+        vertical=source.vertical if source.vertical != "mixed" else "tech",
+        status="rejected",
+        canonical_url=entry.url,
+        source_title=entry.title[:500],
+        normalized_title="",
+        source_published_at=entry.published_at,
+        content_hash=content_fingerprint("baseline", entry.url),
+        idempotency_key=content_fingerprint("baseline", entry.url, "key"),
+        prompt_version=prompt,
+        policy_version=policy,
+        error_code=BASELINE,
+        error_detail="Listed when the source was first scanned; recorded as seen, not drafted.",
+    )
+
+
 def _skip_note(skipped: list[str], summarized: list[str] | None = None) -> str:
     notes: list[str] = []
     if skipped:
@@ -326,6 +352,7 @@ async def scan_source(
     # Stories that were waiting for evidence and got it from a page read in this scan.
     attached_ids: list[UUID] = []
     now = datetime.now(UTC)
+    first_scan = source.last_scanned_at is None
     try:
         listing = await fetcher.fetch(
             source.url,
@@ -353,6 +380,16 @@ async def scan_source(
             if _host(entry.url) not in allowed_hosts | allowed_redirects:
                 continue
             if await _already_seen(session, entry.url):
+                continue
+            if first_scan and not (
+                entry.published_at is not None
+                and now - entry.published_at <= SUMMARY_LEAD_MAX_AGE
+            ):
+                session.add(
+                    _baseline_candidate(
+                        source, entry, settings.prompt_version, settings.policy_version
+                    )
+                )
                 continue
             try:
                 detail = await fetcher.fetch(
