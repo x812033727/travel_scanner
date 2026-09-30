@@ -67,6 +67,17 @@ decision. Run API lint/type checks and PostgreSQL integration CI.
 
 ## Notes
 
+- The first CI run passed all 7 migration-0115 tests (including PostgreSQL), all
+  13 renewal cases and all 7 review-integration cases. In addition to the known
+  22 fixture failures, it exposed two pending Shorts left by the new concurrency
+  tests, affecting a later global queue assertion. Added failure-safe cleanup
+  scoped to those fixtures' UUIDs; retained the downstream queue assertions.
+  Direct SQLite teardown verification also forced a failure, preserved unrelated
+  rows and confirmed unfinished worker tasks were cancelled and drained.
+- Fresh collision check after rebasing onto parent #992 at 07d5507c found no new
+  API/model/migration overlap. Concurrent #998 edits only a different policy-table
+  row in SHORTS.md within this ticket's paths; its judge changes are separate.
+
 - Full local API run found 22 fixture failures (5072 passed, 424 skipped): older
   Shorts publish fixtures omitted the required final ID, and the shared SQLite
   YouTube fixture accepted the wrong refresh-callback arity. After checking active
