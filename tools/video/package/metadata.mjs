@@ -1,9 +1,15 @@
 // What goes into YouTube's fields, per locale: title, the composed description (the Mokaair
 // article, body, chapters, sources, hashtags) and tags, each checked against YouTube's limits.
-import { descriptionWithinBudget, isCompilation } from "../core/compilation.mjs";
+import { chapterTitle, descriptionWithinBudget, episodeNumbers, isCompilation } from "../core/compilation.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription, tagsLength, TAGS_MAX_CHARS } from "../core/metadata.mjs";
 import { narrationLocale } from "../core/schema.mjs";
 import { chapterList, formatClock } from "../core/timeline.mjs";
+
+/** Current names on the measured timeline: title-only edits need not re-encode a cardless cut. */
+export function compilationChapterTitles(doc) {
+  const numbers = episodeNumbers(doc.compilation);
+  return Object.fromEntries(doc.compilation.episodes.map((slug, index) => [slug, chapterTitle(numbers[index], doc.compilation.titles?.[slug])]));
+}
 
 /**
  * Metadata for the narration locale and the localized locales: the ones the owner chose titles
@@ -32,7 +38,7 @@ export function composeMetadata({ doc, timeline, translations = {}, pack = null,
     const fields = {
       body,
       timeline,
-      chapterTitles: translation?.chapters ?? {},
+      chapterTitles: compilation ? { ...compilationChapterTitles(doc), ...(translation?.chapters ?? {}) } : translation?.chapters ?? {},
       article: pack ? articleUrl(pack, articleLocale, doc.slug) : null,
       sources: doc.sources ?? [],
       locale,

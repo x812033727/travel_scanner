@@ -3,13 +3,14 @@
 // Nothing here touches a service: the site, the speech server and the links are handed in.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { encodeWav } from '../tts/wav.mjs';
-import { loudnessProblems, profileProblems } from './build.mjs';
+import { ToolMissing } from '../assemble/ffmpeg.mjs';
+import { build, loudnessProblems, profileProblems } from './build.mjs';
 import { audioHash, checkPhrases, phrasesHash } from './check.mjs';
 import { main } from './cli.mjs';
 import { PROFILE, buildTimeline, lineOf, parseSrt, phrasesOf, sceneHtml, sha256, srt, validate } from './core.mjs';
@@ -153,6 +154,51 @@ test('the three sources, and which one a build takes when none is named', async 
   writeFileSync(path.join(dir, 'check.json'), JSON.stringify({ flagged_lines: [{ index: 4 }, { index: 9 }] }));
   assert.deepEqual(flaggedPhrases(path.join(dir, 'check.json')), [4, 9]);
   assert.deepEqual(flaggedPhrases(path.join(dir, 'none.json')), []);
+});
+
+test('a STOP file or a missing ffmpeg ends a build before a single phrase is paid for', async (t) => {
+  const slug = script().slug;
+  const attempt = async (dir, { ffmpeg = true } = {}) => {
+    const spent = { synthesized: 0, located: 0 };
+    const client = { site: 'https://site.test', token: TOKEN, settings: async () => ({ voice: CHANNEL_VOICE, seconds_min: 1, seconds_max: 180 }) };
+    const synthesizeImpl = async () => { spent.synthesized += 1; return { wav: tone(1), billable: 1 }; };
+    const locateFfmpegImpl = async () => {
+      spent.located += 1;
+      if (!ffmpeg) throw new ToolMissing('ffmpeg with libx264 was not found');
+      // A stand-in that cannot run: a build let past the checks fails at its first ffmpeg call.
+      return { ffmpeg: path.join(dir, 'no-ffmpeg'), ffprobe: path.join(dir, 'no-ffprobe'), version: 'stand-in' };
+    };
+    const error = await build({ file: path.join(FIXTURE, 'script.json'), sourceBase: FIXTURE, workdir: dir, speech: 'server', client, synthesizeImpl, locateFfmpegImpl }).then(() => null, (reason) => reason);
+    return { ...spent, error };
+  };
+  const phrases = phrasesOf(script()).length;
+
+  const stopped = temp(t);
+  mkdirSync(path.join(stopped, slug));
+  writeFileSync(path.join(stopped, slug, 'STOP'), '');
+  const slugStop = await attempt(stopped);
+  assert.match(String(slugStop.error), /STOP requested/);
+  assert.deepEqual([slugStop.synthesized, slugStop.located], [0, 0], 'the STOP in the directory of the Short is read first');
+  assert.deepEqual(readdirSync(path.join(stopped, slug)), ['STOP'], 'and no build directory is made');
+
+  const everything = temp(t);
+  writeFileSync(path.join(everything, 'STOP'), '');
+  const baseStop = await attempt(everything);
+  assert.match(String(baseStop.error), /STOP requested/);
+  assert.equal(baseStop.synthesized, 0, 'a STOP for every video stops this one too');
+  assert.ok(!existsSync(path.join(everything, '.speech-server')));
+
+  const bare = temp(t);
+  const missing = await attempt(bare, { ffmpeg: false });
+  assert.ok(missing.error instanceof ToolMissing);
+  assert.deepEqual([missing.synthesized, missing.located], [0, 1], 'no ffmpeg, no narration');
+  assert.ok(!existsSync(path.join(bare, '.speech-server')));
+
+  // The stand-ins are the ones the build uses: past both checks, every phrase is synthesized.
+  const open = temp(t);
+  const ran = await attempt(open);
+  assert.deepEqual([ran.synthesized, ran.located], [phrases, 1]);
+  assert.match(String(ran.error), /failed/, 'and the stand-in ffmpeg is where it stops');
 });
 
 test('the listener passes what says the script and asks Jev about the rest', async () => {

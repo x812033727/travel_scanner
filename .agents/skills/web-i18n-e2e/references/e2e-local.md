@@ -55,7 +55,7 @@ CI 是**逐一列出** spec 檔，新 spec 沒加進清單就永遠不會在 CI 
 
 | workflow（job） | spec |
 | --- | --- |
-| `.github/workflows/ci.yml`（`web`，用假 API） | navigation、readability、signed-out、travel-services、stay22-allez、stay22-script、guides-adsense、stay22-maps、merchant-styles、admin-domains、admin-operations、site-experience、site-pages、discovery-card-details、planner-premium、korea-dual-maps、seo |
+| `.github/workflows/ci.yml`（`web`，用假 API；以該 job 的 `npx playwright test` 那一行為準） | navigation、readability、signed-out、travel-services、stay22-allez、stay22-script、guides-adsense、stay22-maps、merchant-styles、admin-domains、admin-operations、admin-video-manual-upload、admin-video-shorts、site-experience、site-pages、community-ui、discovery-card-details、planner-premium、korea-dual-maps、seo |
 | `ci.yml`（`full-stack-smoke`，真的 API＋Postgres＋Redis） | full-stack、community（`COMMUNITY_E2E=1`）、admin-domains-full-stack（`ADMIN_DOMAIN_E2E=1`）、admin-operations-full-stack（`ADMIN_OPERATIONS_E2E=1`），都 `PLAYWRIGHT_REUSE_EXISTING=true` |
 | `.github/workflows/planner-premium.yml` | planner-route-tones、planner-calm、planner-premium、trip-stay-areas、stay22-maps |
 | `.github/workflows/travel-discovery.yml` | discovery、frontend-flow、discovery-card-details、discovery-full-stack、frontend-flow-full-stack |

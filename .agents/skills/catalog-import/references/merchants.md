@@ -2,7 +2,7 @@
 
 規則的全文：補資料的邊界與 Gemini 模式在 `docs/catalog-review.md`（"Merchant enrichment" 一節），寫入規則在 `apps/api/app/foods/enrichment.py` 與 `apps/api/app/foods/trend_import.py` 的模組說明，風格店家批次在 `docs/merchant-styles.md`。`<SSH>`、`<API>`、`<PY>` 的意思同 SKILL.md。
 
-## 邊界（站主 2026-09-12 決定，至今沒變）
+## 邊界（站主的決定）
 
 - Google、Naver、米其林、食べログ、OpenRice、CatchTable 等只當**定位與發現**。寫進資料庫的地址、來源、商圈、分類要有店家官網（`merchant_official` → `merchant_website`）或觀光局／政府講這一家的頁（`official_tourism` → `merchant_listing`）佐證。第三種較弱的 `merchant_platform` 只有 CatchTable 轉檔器與後台表單能寫（skill `catchtable-discovery`）。
 - AI 與批次**永遠不寫** `map_match_status`、`review_status`、`is_active`、`naver_map_url`；座標只有 `fill-food-merchant-coordinates` 從店家自己引用的頁讀結構化資料來寫。

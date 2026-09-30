@@ -90,4 +90,4 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli guides-l
 ## 這個 skill 的檔案
 
 - `references/`：`pipeline.md`、`bundle-release.md`、`agent-route.md`、`tickets-and-records.md`、`pitfalls.md`。
-- `.claude/skills/article-localization/` 是這個目錄的逐字複本，`npm run test:tools` 會比對 SKILL.md。
+- `.claude/skills/article-localization/SKILL.md` 是這一份的逐字複本，`npm run test:tools` 會比對；`references/` 只在 `.agents/` 這邊。

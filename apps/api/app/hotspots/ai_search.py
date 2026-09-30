@@ -164,7 +164,10 @@ class ResponsesResearchProvider:
     ) -> tuple[TModel, dict[str, int]]:
         previous = ""
         failure: ValidationError | None = None
-        system_prompt = _with_schema(instructions, schema)
+        # Only MiniMax ignores text.format; OpenAI's strict format already enforces the schema.
+        system_prompt = (
+            _with_schema(instructions, schema) if self.name == "minimax" else instructions
+        )
         for attempt in range(2):
             user_input = json.dumps(payload, ensure_ascii=False)
             if attempt and failure is not None:
@@ -208,6 +211,16 @@ class ResponsesResearchProvider:
         raise ValueError("AI structured output validation failed")
 
 
+# Opus 5.5 always thinks and effort is its only depth control; left unset it runs at
+# `medium`, one level below Opus 5. Name the level here so it is a choice, and sweep it
+# per stage before raising. Other catalog models (e.g. Haiku 4.5) reject `effort`.
+OPUS_5_5_EFFORT = "medium"
+
+
+def _effort_for(model: str) -> dict[str, str]:
+    return {"effort": OPUS_5_5_EFFORT} if model.startswith("claude-opus-5-5") else {}
+
+
 class AnthropicResearchProvider:
     name: AIProviderName = "anthropic"
 
@@ -240,7 +253,7 @@ class AnthropicResearchProvider:
     ) -> tuple[TModel, dict[str, int]]:
         previous = ""
         failure: ValidationError | None = None
-        system_prompt = _with_schema(instructions, schema)
+        system_prompt = instructions  # output_config.format carries the schema
         for attempt in range(2):
             user_input = json.dumps(payload, ensure_ascii=False)
             if attempt and failure is not None:
@@ -258,7 +271,8 @@ class AnthropicResearchProvider:
                     "system": system_prompt,
                     "messages": [{"role": "user", "content": user_input}],
                     "output_config": {
-                        "format": {"type": "json_schema", "schema": schema.model_json_schema()}
+                        **_effort_for(self.model),
+                        "format": {"type": "json_schema", "schema": schema.model_json_schema()},
                     },
                 },
             )

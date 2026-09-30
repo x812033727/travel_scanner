@@ -54,7 +54,7 @@ cd apps/api && <PY> <ROOT>/.agents/skills/content-pipeline/scripts/verify_public
 每篇：200、h1 等於內容包標題、canonical 正確、沒有 noindex、hero 與每張圖解 200、在 sitemap 裡。網址形狀：生活分享 `/<locale>/life/<slug>`，其餘 `/<locale>/guides/<kind>/<slug>`；分類頁 `/<locale>/guides/topics/<topic>`。
 
 - 正式站有讀取限流：腳本循序、每次間隔 1.3 秒以上；不要多執行緒。
-- `/sitemap.xml` 是 sitemap index（#531），沒有 1,000 列上限了；`--sitemap` 仍要逐篇確認在裡面。
+- `/sitemap.xml` 是 sitemap index（`apps/web/app/sitemap.xml/route.ts`）；`--sitemap` 會讀每個子 sitemap，逐篇確認在裡面。
 - 別用「這篇文章目前看不到」（`unavailableTitle`）判斷有沒有上線：每一頁的 HTML 都內嵌這串字。看標題或 robots。
 - 系列的公開 API 是 `/api/travel/guides/series?locale=zh-TW` 與 `/api/travel/guides/series/<series_slug>`；`/api/v1/guides/series` 在公開網域是 404。
 - 麵包屑取 `topics[0]`（依 display_order）：文章掛子主題就只掛子主題，否則料理名不會出現。
