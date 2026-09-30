@@ -46,7 +46,7 @@ grep -n "error\|warning" "$SCRATCH/lint.log" | head -40
 
 - **兩個各自會過的 PR 合在一起才壞**：例如 sitemap import 了 `server-only` 模組後，任何會載入 sitemap 的 vitest 都得 `vi.mock("@/lib/community/server")`，照 `apps/web/app/sitemaps/sitemap.test.ts`。rebase 到最新 main 後再跑一次受影響的測試。
 - **日期算術**：`start.replace(day=min(start.day + 2, 28))` 在 29–31 號會紅、`date.today().replace(year=...)` 在 2 月 29 日會丟例外。測試裡一律用 `timedelta`。
-- **午夜 UTC 換日**：用「今天」算期望值的測試在 UTC 00:00 前後跑會紅（還有一張開著的票在追 `test_ai_trip_parser_llm`）。
+- **午夜 UTC 換日**：用「今天」算期望值的測試在 UTC 00:00 前後跑會紅：把受測程式讀時間的函式釘成測試自己的「今天」（例：`apps/api/tests/test_ai_trip_parser_llm.py` 的 autouse fixture）。
 - **ruff E501 用顯示寬度算**：CJK 字元算 2，70 個漢字的行會是「107 > 100」。拆行用 `unicodedata.east_asian_width`，不是 `len()`。
 - **vitest 的 next-intl mock 每個 namespace 快取一個 translator**（`apps/web/vitest.setup.tsx`）：元件可以把 `t` 放進 effect 的 dependencies；自己寫的 mock 若每次回新函式，effect 會無限重跑。
 - **舊的 `node_modules`**：本機紅或綠都可能是版本不對，見 local-env.md。

@@ -255,7 +255,7 @@ synthesized Taiwanese-Mandarin voice. Each entry of "lines" was retaken and Jev 
 wrong: "text" is what the script says, "heard" is what the transcriber understood, "jev" is
 Jev's confidence that they say the same thing. Rewrite ONLY these sentences' wording so the
 voice reads them unambiguously: swap the word that gets misheard for a plainer one with the
-same meaning (on 2026-09-26 the fixes were 「和」→「跟」, a sentence-final 「答」→「回答」,
+same meaning (for example 「和」→「跟」, a sentence-final 「答」→「回答」,
 「旗艦」→「旗艦模型」), split a run of same-sound characters, keep the sentence about as long.
 Keep every number, price, date and version exactly as written, keep every Latin-script word and
 every product or proper name spelled exactly the same ("lexicon" lists the dictionary's terms),

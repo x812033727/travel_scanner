@@ -11,7 +11,7 @@ Mokaair 的文章都是「內容包」：`apps/api/app/guides/content/<slug>.jso
 
 ## 什麼時候用、什麼時候不用
 
-- 用：多篇文章的批次（旅遊 howto／intel、美食特輯、生活分享、新聞、系列教學）；接手別人做到一半的批次；把已合併的內容包推上正式站；補既有文章的語系。
+- 用：多篇文章的批次（旅遊 howto／intel、美食特輯、生活分享、新聞、系列教學）；接手別人做到一半的批次；把已合併的內容包推上正式站。補既有文章的語系走 skill `article-localization`。
 - 不用：只改一個內容包裡的一句話（直接改 JSON，跑 `pack_cli lint --slug`）；改網站程式。
 
 ## 先選模式，再讀對應的 reference
@@ -20,7 +20,7 @@ Mokaair 的文章都是「內容包」：`apps/api/app/guides/content/<slug>.jso
 | --- | --- |
 | 新的 zh-TW 旅遊／美食批次 | `.agents/skills/content-pipeline/references/travel-batch.md` |
 | 五語系新聞／系列教學（含 zh-TW-only 的新聞批次） | `.agents/skills/content-pipeline/references/news-batch.md` |
-| 補既有文章的 en／ja／ko／zh-CN | `tools/article-localization/README.md`（Codex CLI 驅動的翻譯產線，只產翻譯稿） |
+| 補既有文章的 en／ja／ko／zh-CN | skill `article-localization` |
 | 已合併，要上正式站 | `.agents/skills/content-pipeline/references/publish-runbook.md` |
 | 要交接、要接手、要開新批次的 docs 目錄 | `.agents/skills/content-pipeline/references/handover-template.md` |
 | 任何階段覺得「怪怪的」 | `.agents/skills/content-pipeline/references/pitfalls.md` |
