@@ -1,0 +1,84 @@
+[
+  {
+    "schema_version": 2,
+    "slug": "ai-term-retrieval-augmented-generation-short-1",
+    "format": "shorts",
+    "locale": "zh-TW",
+    "line": "cut",
+    "series": "illustrated",
+    "source": { "slug": "ai-term-retrieval-augmented-generation" },
+    "titles": [
+      "RAG 是什麼？一句話：先找、再答",
+      "AI 回答附了引用，為什麼還是錯？RAG 三十秒說清楚"
+    ],
+    "description": "RAG，檢索增強生成：先從資料裡找出段落，再照段落回答。找到的段落對不對，是另一回事。完整的三個步驟、自己跑的檢索示範，在長片。",
+    "hashtags": ["RAG", "AI名詞十分鐘", "檢索增強生成"],
+    "tags": ["RAG", "檢索增強生成", "AI 名詞", "AI 名詞十分鐘", "AI 引用", "知識庫問答"],
+    "scenes": [
+      {
+        "shot": "s-stamp",
+        "headline": "有引用，還是錯",
+        "narration": ["它回答的時候附了條文，還標了出處。", "可是那條規則，今年一月就失效了。"]
+      },
+      {
+        "shot": "s-assembly",
+        "headline": "RAG ＝ 先找、再答",
+        "big": "先找、再答",
+        "narration": ["RAG，檢索增強生成，一句話：先找、再答。", "答案是從找到的段落組出來的。"]
+      },
+      {
+        "shot": "s-twins",
+        "headline": "找到的段落對不對，是另一回事",
+        "narration": ["找到的段落對不對，是另一回事。", "就像這兩本規章，長得幾乎一樣。"]
+      },
+      {
+        "shot": "s-receipt",
+        "headline": "引用像收據",
+        "narration": ["引用像收據：證明它拿了什麼，不證明拿對了。", "三個步驟怎麼出錯，完整的在長片。"]
+      }
+    ]
+  },
+  {
+    "schema_version": 2,
+    "slug": "ai-term-retrieval-augmented-generation-short-2",
+    "format": "shorts",
+    "locale": "zh-TW",
+    "line": "cut",
+    "series": "illustrated",
+    "source": { "slug": "ai-term-retrieval-augmented-generation" },
+    "titles": [
+      "你以為附了出處就是查證過？我跑了一次，排第一的是失效的舊版",
+      "AI 引用的條文是真的，答案還是錯：RAG 最常見的誤解"
+    ],
+    "description": "你以為附了出處就是查證過。其實我自己跑了一次關鍵字比對的檢索：問退費，排第一的是今年一月就失效的舊版規則，例外條款排最後。它沒有亂編，只是版本錯了。怎麼分找錯還是讀錯，完整的在長片。",
+    "hashtags": ["RAG", "AI名詞十分鐘", "AI引用"],
+    "tags": ["RAG", "檢索增強生成", "AI 名詞", "AI 名詞十分鐘", "AI 引用", "知識庫問答"],
+    "scenes": [
+      {
+        "shot": "s-held-up",
+        "headline": "你以為附了出處，就是查證過",
+        "narration": ["你以為，附了出處，就是查證過。"]
+      },
+      {
+        "shot": "s-queue-old",
+        "headline": "排第一的，是失效的舊版",
+        "narration": ["其實我自己跑了一次：六段課程規章，問退費。", "排第一的，是今年一月就失效的舊版規則。"]
+      },
+      {
+        "shot": "s-last-card",
+        "headline": "例外條款排最後",
+        "narration": ["材料費的例外條款，排在最後一名。", "只給前幾名，模型根本看不到它。"]
+      },
+      {
+        "shot": "s-handoff",
+        "headline": "拿著真的條文，答錯",
+        "narration": ["只把第一名交給模型，它就拿著真實的文字答錯了。", "它沒有亂編，只是版本錯了。"]
+      },
+      {
+        "shot": "s-fork",
+        "headline": "找錯還是讀錯？完整的在長片",
+        "narration": ["答錯的時候，先分是找錯，還是讀錯。", "怎麼分，完整的在長片。"]
+      }
+    ]
+  }
+]
