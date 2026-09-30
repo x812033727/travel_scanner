@@ -328,7 +328,7 @@
     {
       "claim": "「價格是 Astra 的五分之一」（one-fifth of Astra’s standard API input and output token prices）。",
       "seen_where": "官方 RSS https://openai.com/news/rss.xml 本則 description（200、755,374 bytes）。價目表同頁數字也對得起來：輸入 2.00 對 10.00、輸出 10.00 對 50.00 美元。",
-      "why_excluded": "RSS 不在 sources[]（上限 4 條）。現況下正文若要寫倍數，只能明寫「編輯換算：輸入與輸出牌價都是 Astra 的五分之一」，而且不進標題、description、summary 與圖（DELTA-4-9 第 4 條）；快取輸入 0.10 對 1.00、寫入快取 2.50 對 12.50 不是五分之一，換算時不可把「五分之一」套到四欄。若協調者把 RSS 換進 sources[]，可以改寫成「OpenAI 表示……五分之一」並歸因。"
+      "why_excluded": "RSS 不在 sources[]（上限 4 條）。現況下正文若要寫倍數，只能明寫「編輯換算：輸入與輸出牌價都是 Astra 的五分之一」，而且不進標題、description、summary 與圖（DELTA-4-9 第 4 條）。換算時不可把「五分之一」套到四欄：快取輸入 0.10 對 1.00 是十分之一，不是五分之一；寫入快取 2.50 對 12.50 算出來也是五分之一（2.50×5＝12.50），但 RSS 那句只講 input and output，所以同樣不寫（第一輪查核 2026-09-30 更正：原句把寫入快取也寫成「不是五分之一」，算術錯誤）。若協調者把 RSS 換進 sources[]，可以改寫成「OpenAI 表示……五分之一」並歸因。"
     },
     {
       "claim": "API changelog 的 Sep 29 條目：「at a lower cost than GPT-6 Astra」、GPT-6.1 Sol 支援 beta 的 Multi-agent（在 Responses API 請求裡把工作交給 subagents），以及 Sep 22 條目 GPT-6 Sol 的「$2 input, $0.20 cached input, and $10 output」。",
@@ -400,7 +400,7 @@
   "must_not_write": [
     "不寫「GPT-6.1 Sol 取代／接替 GPT-6 Sol」「GPT-6 Sol 下架／停用／退役」：官方只稱 GPT-6 Sol 為「previous Sol model」，四條 sources[] 沒有退役或日期，價目表完整清單仍列 gpt-6-sol，ChatGPT 那句也把兩者並列可用。",
     "不寫「比 GPT-6 Sol 降價」或任何 GPT-6 Sol → 6.1 Sol 的降幅百分比。同頁牌價只有快取輸入不同（0.10 對 0.2 美元），短脈絡輸入、寫入快取、輸出相同；也不寫「快取打五折／減半」這種自己算的倍數，要寫就寫兩個牌價。",
-    "不在標題、description、summary、圖上寫「五分之一」「便宜 80%」這類倍數或百分比。正文若寫，明標「編輯換算」，只限輸入與輸出兩欄；快取輸入與寫入快取不是五分之一。",
+    "不在標題、description、summary、圖上寫「五分之一」「便宜 80%」這類倍數或百分比。正文若寫，明標「編輯換算」，只限輸入與輸出兩欄；快取輸入（0.10 對 1.00）是十分之一，寫入快取（2.50 對 12.50）雖然也是五分之一，但 OpenAI 的說法只涵蓋輸入與輸出，一樣不寫。",
     "不寫 GPT-6 Sol 的長脈絡價格、知識截止日、none 推理強度或 10% 快取規則（不在 sources[]）。",
     "不寫「付費方案都能用」「Plus 以上可用」：首發名單是 Plus、Pro、Business、Enterprise、Edu；Go 是付費方案但首發不含。",
     "不寫「免費版不能用 GPT-6.1 Sol」這種沒有時間限定的句子，要寫「Free 與 Go 不在首發範圍」；也不寫之後會加入。",
