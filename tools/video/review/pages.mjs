@@ -2,7 +2,9 @@
 // review/audio.html to listen to every line and flag the ones read wrong, and review/final.html to
 // watch the finished video with its lines alongside. Nothing is loaded from the network, and both
 // open straight from disk.
+import { appliedBranding, presentationTimeline } from "../core/branding.mjs";
 import { characterOf } from "../core/drama.mjs";
+import { UsageError } from "../core/paths.mjs";
 import { eachLine, spokenText } from "../core/schema.mjs";
 import { formatClock, frameToSeconds } from "../core/timeline.mjs";
 
@@ -117,9 +119,15 @@ export function dubPlayers(dubs = []) {
 }
 
 export function finalReviewHtml(doc, timeline, checks, dubs = []) {
+  const applied = appliedBranding(checks);
+  if (applied && ((timeline.body_total_frames ?? timeline.total_frames) !== applied.body_frames
+      || checks.speech_hash !== timeline.speech_hash || checks.compilation_hash !== timeline.compilation_hash)) {
+    throw new UsageError("the branded final was built for another body timeline; rebuild the final before creating its review page");
+  }
+  const presented = presentationTimeline(timeline, applied);
   const text = new Map([...eachLine(doc)].map(({ line }) => [line.id, labelledText(doc, line)]));
-  const cues = timeline.lines.map((line) => ({ id: line.id, start: frameToSeconds(line.start_frame), end: frameToSeconds(line.end_frame), text: text.get(line.id) ?? "" }));
-  const chapters = timeline.chapters.map((chapter) => `<li class="cue" data-start="${frameToSeconds(chapter.start_frame)}"><span class="time">${formatClock(frameToSeconds(chapter.start_frame))}</span>${escapeHtml(chapter.title)}</li>`);
+  const cues = presented.lines.map((line) => ({ id: line.id, start: frameToSeconds(line.start_frame), end: frameToSeconds(line.end_frame), text: text.get(line.id) ?? "" }));
+  const chapters = presented.chapters.map((chapter) => `<li class="cue" data-start="${frameToSeconds(chapter.start_frame)}"><span class="time">${formatClock(frameToSeconds(chapter.start_frame))}</span>${escapeHtml(chapter.title)}</li>`);
   const lines = cues.map((cue) => `<li class="cue" data-start="${cue.start}" data-end="${cue.end}"><span class="time">${formatClock(cue.start)}</span>${escapeHtml(cue.text)}</li>`);
   const problems = checks?.problems?.length ? `<p class="hint">自動檢查有問題：${checks.problems.map(escapeHtml).join("；")}</p>` : `<p class="hint">自動檢查全部通過：畫格數、影音長度、響度 ${escapeHtml(checks?.metrics?.loudness?.integrated ?? "?")} LUFS、每個場景的抽樣畫面。</p>`;
   const body = [

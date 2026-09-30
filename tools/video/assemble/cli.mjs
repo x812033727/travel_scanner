@@ -8,6 +8,7 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 
 import { burnIn, hasPictures, illustrated, isDrama, keyframesHash, lookHash, mixHash, picturesHash, sfxHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
+import { presentationTimeline, selectBrandingForBuild } from "../core/branding.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { FPS, speechHash, visualHash } from "../core/timeline.mjs";
@@ -58,6 +59,7 @@ import {
 } from "./plan.mjs";
 import { sfxPlan, sfxTrackArgs } from "./sfx.mjs";
 import { musicInputs, sfxInputs } from "./sound.mjs";
+import { commitBrandedVideo, verifyBrandingAssets, wrapVideo } from "./branding.mjs";
 
 /**
  * What a video needs beyond the frames and narration, each checked against the script it was
@@ -104,7 +106,7 @@ async function mediaInputs(doc, workdir, workBase, manifest, speech, visual) {
 
 export async function run(command, args, ctx) {
   const { EXIT } = ctx;
-  const values = parseArgs({ args, options: { slug: { type: "string" }, file: { type: "string" }, workdir: { type: "string" }, force: { type: "boolean" } }, strict: true }).values;
+  const values = parseArgs({ args, options: { slug: { type: "string" }, file: { type: "string" }, workdir: { type: "string" }, force: { type: "boolean" }, "adopt-branding": { type: "boolean" } }, strict: true }).values;
   if (!values.slug && !values.file) throw new UsageError("assemble needs --slug (or --file for an example outside docs/videos)");
   const project = loadProject({ slug: values.slug, file: values.file, root: ctx.root });
   if (lintProject(project).errors.length) {
@@ -141,6 +143,8 @@ export async function run(command, args, ctx) {
     ctx.stderr.write(`${error.message}\n`);
     return EXIT.missing;
   }
+  const branding = await selectBrandingForBuild({ doc, workdir, workBase, adoptCurrent: values["adopt-branding"] });
+  if (branding) await verifyBrandingAssets(branding, { tools });
 
   let layout;
   try {
@@ -276,14 +280,24 @@ export async function run(command, args, ctx) {
   }
   const final = path.join(workdir, ARTIFACTS.video);
   const partialFinal = path.join(buildDir, "final.partial.mp4");
-  await runTool(tools.ffmpeg, muxArgs(video, audio, partialFinal));
-  rmSync(final, { force: true });
-  renameSync(partialFinal, final);
+  const bodyPartial = branding ? path.join(buildDir, "body.partial.mp4") : null;
+  let applied = null;
+  if (branding) {
+    await runTool(tools.ffmpeg, muxArgs(video, audio, bodyPartial));
+    applied = await wrapVideo({ tools, workdir, bodyFile: bodyPartial, bodyFrames: timeline.total_frames, branding, outFile: partialFinal });
+    applied.body_file = "build/body.mp4";
+  } else {
+    await runTool(tools.ffmpeg, muxArgs(video, audio, partialFinal));
+    rmSync(final, { force: true });
+    renameSync(partialFinal, final);
+  }
+  const presented = presentationTimeline(timeline, applied);
+  const candidate = branding ? partialFinal : final;
 
   const problems = [];
-  const probe = JSON.parse((await runTool(tools.ffprobe, probeArgs(final))).stdout);
-  problems.push(...checkProbe(probe, { frames: timeline.total_frames }));
-  const loudness = parseEbur128((await runTool(tools.ffmpeg, ebur128Args(final))).stderr);
+  const probe = JSON.parse((await runTool(tools.ffprobe, probeArgs(candidate))).stdout);
+  problems.push(...checkProbe(probe, { frames: presented.total_frames }));
+  const loudness = parseEbur128((await runTool(tools.ffmpeg, ebur128Args(candidate))).stderr);
   problems.push(...checkLoudness(loudness));
   if (bed !== null) problems.push(...checkBed(bed));
   const psnr = [];
@@ -348,9 +362,10 @@ export async function run(command, args, ctx) {
     ...(pictures ? { look_hash: inputs.look, pictures_hash: keyframesHash(doc, inputs.keyframes) } : {}),
     ...(!drama && doc.music ? { mix_hash: mixHash(doc) } : {}),
     ...(doc.sfx ? { sfx_hash: sfxHash(doc) } : {}),
+    ...(applied ? { branding: applied } : {}),
     problems,
     metrics: {
-      frames: timeline.total_frames,
+      frames: presented.total_frames,
       loudness,
       psnr,
       loudnorm_first_pass: measured.input_i,
@@ -362,10 +377,11 @@ export async function run(command, args, ctx) {
     encoded_segments: encoded,
     seconds,
   };
-  atomicWrite(path.join(workdir, ARTIFACTS.checks), `${JSON.stringify(checks, null, 2)}\n`);
+  if (branding && checks.ok) commitBrandedVideo({ workdir, branding, finalPartial: partialFinal, bodyPartial, checks, now: ctx.now() });
+  else atomicWrite(path.join(branding ? buildDir : workdir, branding ? "branding-failed-checks.json" : ARTIFACTS.checks), `${JSON.stringify(checks, null, 2)}\n`);
   recordStage(workdir, "assemble", { ok: checks.ok, encoded_segments: encoded, seconds, ...(drama || pictures ? { shots: shots.length, stills: shots.filter((shot) => shot.kind === "motion").length, music: bed !== null, sfx: effects.length } : {}) }, ctx.now());
   const bedText = `${bed === null ? "" : `, music bed ${bed} LUFS`}${effects.length ? `, ${effects.length} sound effects` : ""}`;
-  ctx.stdout.write(`${final}: ${timeline.total_frames} frames, ${loudness.integrated} LUFS, true peak ${loudness.truePeak} dBFS${bedText}; ${encoded} of ${layout.length} segments encoded in ${seconds} s\n`);
+  ctx.stdout.write(`${branding && !checks.ok ? candidate : final}: ${presented.total_frames} frames, ${loudness.integrated} LUFS, true peak ${loudness.truePeak} dBFS${bedText}; ${encoded} of ${layout.length} segments encoded in ${seconds} s\n`);
   for (const problem of problems) ctx.stdout.write(`CHECK ${problem}\n`);
   if (!checks.ok) return EXIT.lint;
   ctx.stdout.write(`next: node tools/video/cli.mjs review --slug ${doc.slug}\n`);

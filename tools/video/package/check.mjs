@@ -12,6 +12,7 @@ import { existsSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
 
 import { readApprovals, sha256File } from "../core/approvals.mjs";
+import { appliedBranding, brandingCurrent, readBranding } from "../core/branding.mjs";
 import { readJson } from "../core/paths.mjs";
 import { LOCALES, NARRATION_LOCALE } from "../core/schema.mjs";
 import { captionLocalesOf, chosenLocales, readLanguages } from "../core/stages.mjs";
@@ -48,7 +49,7 @@ const present = (files, name) => sizeOf(files, name) !== null;
  * one metadata.json records), thumbnail.jpg is there when the video has one, metadata.json is
  * there. `files` maps each path under upload/ (posix, relative) to its size.
  */
-export function filesItem({ files, metadata, finalSha256, approvedSha256 }) {
+export function filesItem({ files, metadata, finalSha256, approvedSha256, brandingMatches = true }) {
   const problems = [];
   if (!metadata) problems.push(`${METADATA_FILE} is missing`);
   if (!present(files, FINAL_FILE)) problems.push(`${FINAL_FILE} is missing`);
@@ -56,6 +57,7 @@ export function filesItem({ files, metadata, finalSha256, approvedSha256 }) {
   else if (finalSha256 !== approvedSha256) problems.push(`${FINAL_FILE} is not the approved final (${String(finalSha256).slice(0, 12)} vs ${approvedSha256.slice(0, 12)})`);
   else if (metadata && metadata.final_sha256 !== finalSha256) problems.push(`${METADATA_FILE} records another final (${String(metadata.final_sha256).slice(0, 12)})`);
   if (metadata?.thumbnail && !present(files, THUMBNAIL_FILE)) problems.push(`${THUMBNAIL_FILE} is missing`);
+  if (!brandingMatches) problems.push("the upload package does not match the selected and applied branding; rebuild the final and run package again");
   if (problems.length) return item("files", false, problems.join("; "));
   const named = [FINAL_FILE, ...(metadata.thumbnail ? [THUMBNAIL_FILE] : []), METADATA_FILE];
   return item("files", true, `${named.join(", ")}; ${FINAL_FILE} is the approved final (${finalSha256.slice(0, 12)})`);
@@ -126,9 +128,9 @@ export function disclosureItem({ metadata }) {
  * (docs/videos/LANGUAGES.md: zh-TW plus what the owner chose); without a choice every locale
  * needs captions or a reason, and the descriptions are what metadata.json lists.
  */
-export function checkPackage({ files, metadata, finalSha256, approvedSha256, metadataSha256, locales = LOCALES, descriptionLocales = null }) {
+export function checkPackage({ files, metadata, finalSha256, approvedSha256, metadataSha256, locales = LOCALES, descriptionLocales = null, brandingMatches = true }) {
   return packageReport(
-    [filesItem({ files, metadata, finalSha256, approvedSha256 }), descriptionsItem({ files, metadata, locales: descriptionLocales }), captionsItem({ files, metadata, locales }), disclosureItem({ metadata })],
+    [filesItem({ files, metadata, finalSha256, approvedSha256, brandingMatches }), descriptionsItem({ files, metadata, locales: descriptionLocales }), captionsItem({ files, metadata, locales }), disclosureItem({ metadata })],
     metadataSha256,
   );
 }
@@ -193,5 +195,7 @@ export async function readPackageReport(workdir, given = {}) {
   const finalSha256 = existsSync(finalFile) ? await sha256File(finalFile) : null;
   const approvedSha256 = readApprovals(workdir).approvals.filter((entry) => entry.gate === "final").at(-1)?.sha256 ?? null;
   const metadataSha256 = metadata ? await sha256File(metadataFile) : null;
-  return { report: checkPackage({ files, metadata, finalSha256, approvedSha256, metadataSha256, locales, descriptionLocales }), files, metadata, finalSha256 };
+  const checks = readJson(path.join(workdir, "checks.json"), null);
+  const brandingMatches = brandingCurrent(checks, readBranding(workdir)) && (metadata?.branding_hash ?? null) === (appliedBranding(checks)?.hash ?? null);
+  return { report: checkPackage({ files, metadata, finalSha256, approvedSha256, metadataSha256, locales, descriptionLocales, brandingMatches }), files, metadata, finalSha256 };
 }
