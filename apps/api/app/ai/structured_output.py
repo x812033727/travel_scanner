@@ -80,14 +80,13 @@ def ensure_response_completed(body: dict[str, Any]) -> None:
 
 
 def anthropic_output_text(body: dict[str, Any]) -> str:
-    """Join the text blocks of a Messages API body, refusing truncated or declined answers."""
-    if body.get("stop_reason") == "max_tokens":
-        raise ValueError("AI 回應未完成 (max_tokens)")
+    """Join the text blocks of a Messages API body, refusing declined or truncated answers."""
     if body.get("stop_reason") == "refusal":
-        # A safety classifier declined: HTTP 200 with empty or partial text, never repairable.
         details = body.get("stop_details")
         category = details.get("category") if isinstance(details, dict) else None
-        raise ValueError(f"AI 拒絕回應（{category or 'refusal'}）")
+        raise ValueError(f"AI 拒絕回應 ({category or 'refusal'})")
+    if body.get("stop_reason") == "max_tokens":
+        raise ValueError("AI 回應未完成 (max_tokens)")
     texts = [
         str(item.get("text"))
         for item in body.get("content") or []

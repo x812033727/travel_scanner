@@ -36,6 +36,7 @@ from app.news_automation.policy import (
     auto_evidence_ok,
     body_fingerprint,
     content_fingerprint,
+    document_fingerprint,
     event_date_problems,
     evidence_present,
     evidence_site,
@@ -1440,3 +1441,233 @@ async def test_scanner_stores_the_body_hash_and_finds_the_same_story_at_another_
     assert rows[0].body_hash is not None and rows[0].body_hash == rows[1].body_hash
     assert {row.body_hash for row in evidence} == {rows[0].body_hash}
     await engine.dispose()
+
+
+def _punctuation_document(**changes: Any) -> GuideDocument:
+    return GuideDocument.model_validate({
+        "title": "A news report",
+        "description": "A report description.",
+        "blocks": [{"type": "paragraph", "text": "Body text."}],
+        **changes,
+    })
+
+
+def _punctuation_problems(document: GuideDocument, locale: str = "zh-TW") -> list[str]:
+    return [
+        problem for problem in hard_policy_problems(document, "ai", locale, source_count=1)
+        if problem.startswith("news_punctuation:")
+    ]
+
+
+def test_news_punctuation_rejects_the_reported_headline_without_changing_its_fingerprint() -> None:
+    headline = "KelpDAO 起訴 LayerZero 與其執行長,指控 2.92 億美元跨鏈橋漏洞"
+    document = _punctuation_document(title=headline)
+    original = document.model_dump(mode="json")
+    fingerprint = document_fingerprint(document)
+    problems = _punctuation_problems(document)
+    assert len(problems) == 1 and "title" in problems[0]
+    assert document.model_dump(mode="json") == original and document.title == headline
+    assert document_fingerprint(document) == fingerprint
+
+
+@pytest.mark.parametrize("locale", ["zh-TW", "zh-CN", "ja"])
+@pytest.mark.parametrize("punctuation", list(",:;?!()"))
+def test_news_punctuation_checks_both_cjk_neighbors_with_japanese_comma_exception(
+    locale: str, punctuation: str
+) -> None:
+    for text in (f"更新{punctuation}Latin", f"Latin{punctuation}更新"):
+        problems = _punctuation_problems(_punctuation_document(title=text), locale)
+        if locale == "ja" and punctuation == ",":
+            assert problems == []
+        else:
+            assert len(problems) == 1 and "title" in problems[0], (locale, text)
+
+
+@pytest.mark.parametrize("text", ["かな?", "カナ!", "漢字:"])
+def test_news_punctuation_includes_hiragana_katakana_and_han(text: str) -> None:
+    assert _punctuation_problems(_punctuation_document(title=text), "ja")
+
+
+@pytest.mark.parametrize("locale", ["en", "ko"])
+def test_news_punctuation_does_not_apply_to_english_or_korean(locale: str) -> None:
+    document = _punctuation_document(title="引用,中文:かな;カナ?內容!（中文) (更新）")
+    assert _punctuation_problems(document, locale) == []
+
+
+@pytest.mark.parametrize(
+    ("block", "field"),
+    [
+        ({"type": "heading", "level": 2, "text": "更新:內容"}, "text"),
+        ({"type": "paragraph", "text": "更新:內容"}, "text"),
+        ({"type": "list", "items": ["更新:內容"]}, "items[0]"),
+        ({"type": "link", "text": "更新:內容", "url": "https://example.com/a"}, "text"),
+        ({"type": "code", "label": "範例:內容", "code": "pass"}, "label"),
+        ({"type": "summary", "items": ["更新:內容", "第二項。"]}, "items[0]"),
+        ({"type": "callout", "title": "更新:內容", "text": "內容。"}, "title"),
+        ({"type": "callout", "title": "注意事項", "text": "更新:內容"}, "text"),
+        ({"type": "table", "header": ["更新:內容"], "rows": [["值"]]}, "header[0]"),
+        ({"type": "table", "header": ["欄位"], "rows": [["更新:內容"]]}, "rows[0][0]"),
+        ({"type": "table", "header": ["欄位"], "rows": [["值"]], "caption": "更新:內容"},
+         "caption"),
+        ({"type": "offer", "module": "flight", "heading": "更新:內容"}, "heading"),
+        ({"type": "partner_link", "partner": "example", "url": "https://example.com/a",
+          "label": "更新:內容"}, "label"),
+        ({"type": "partner_link", "partner": "example", "url": "https://example.com/a",
+          "label": "連結", "note": "更新:內容"}, "note"),
+        ({"type": "faq", "items": [
+            {"question": "問題?", "answer": "答案。"},
+            {"question": "另一個問題？", "answer": "另一個答案。"},
+        ]}, "items[0].question"),
+        ({"type": "faq", "items": [
+            {"question": "問題？", "answer": "答案:說明"},
+            {"question": "另一個問題？", "answer": "另一個答案。"},
+        ]}, "items[0].answer"),
+    ],
+)
+def test_news_punctuation_reports_the_nested_reader_field(
+    block: dict[str, Any], field: str
+) -> None:
+    problems = _punctuation_problems(_punctuation_document(blocks=[block]))
+    assert len(problems) == 1 and f"blocks[0].{field}" in problems[0]
+
+
+@pytest.mark.parametrize("field", ["alt", "caption", "description"])
+def test_news_punctuation_checks_image_reader_text(field: str) -> None:
+    block = {
+        "type": "image", "src": "/guides/news-assets/example.svg", "alt": "Diagram",
+        "width": 800, "height": 600, field: "圖片:說明",
+    }
+    problems = _punctuation_problems(_punctuation_document(blocks=[block]))
+    assert len(problems) == 1 and f"blocks[0].{field}" in problems[0]
+
+
+def test_news_punctuation_checks_the_description_and_hero_alt() -> None:
+    document = _punctuation_document(
+        description="說明:內容",
+        hero={
+            "src": "/guides/news-assets/example.png", "alt": "圖片:說明",
+            "width": 1200, "height": 630,
+        },
+    )
+    problems = _punctuation_problems(document)
+    assert len(problems) == 2
+    assert any("description" in problem for problem in problems)
+    assert any("hero.alt" in problem for problem in problems)
+
+
+@pytest.mark.parametrize(
+    "inlines",
+    [
+        [{"type": "text", "text": "更新"}, {"type": "text", "text": ":details"}],
+        [{"type": "link", "text": "Update:", "url": "https://example.com/a"},
+         {"type": "text", "text": "更新"}],
+        [{"type": "article", "text": "更新", "slug": "other-article"},
+         {"type": "text", "text": "?"}],
+    ],
+)
+def test_news_punctuation_checks_the_rendered_boundary_between_rich_nodes(
+    inlines: list[dict[str, Any]],
+) -> None:
+    document = _punctuation_document(blocks=[
+        {"type": "paragraph", "text": "先前內容。"},
+        {"type": "rich_paragraph", "inlines": inlines},
+    ])
+    problems = _punctuation_problems(document)
+    assert len(problems) == 1 and "blocks[1].inlines" in problems[0]
+
+
+@pytest.mark.parametrize("locale", ["zh-TW", "zh-CN", "ja"])
+def test_news_punctuation_preserves_fullwidth_numbers_times_latin_and_urls(locale: str) -> None:
+    document = _punctuation_document(
+        title="更新，說明：細節；確定？注意！（內容）",
+        description="持股50.1%，時間17:35，名稱ACME, Inc. (US): APIs; ready? Yes! "
+        "標點周圍有空白 : 分隔文字。",
+        blocks=[{
+            "type": "paragraph",
+            "text": "網址 https://example.com/中文:路徑?q=內容,其他! "
+            "和 http://example.com/かな?query=カナ;value=(中文) 都保留。",
+        }],
+    )
+    before = document.model_dump(mode="json")
+    assert _punctuation_problems(document, locale) == []
+    assert document.model_dump(mode="json") == before
+
+
+def test_news_punctuation_skips_code_and_evidence_metadata_without_joining_across_code() -> None:
+    credit = {"author": "攝影:本人", "license": "授權:原文", "source_url": "https://example.com"}
+    document = _punctuation_document(
+        hero={
+            "src": "/guides/news-assets/example.png", "alt": "主圖",
+            "width": 1200, "height": 630, "credit": credit,
+        },
+        sources=[{"title": "來源:原文", "url": "https://example.com/中文?查詢=更新"}],
+        blocks=[
+            {"type": "code", "label": "範例", "code": "函式(參數); // 中文,註解!"},
+            {"type": "rich_paragraph", "inlines": [
+                {"type": "text", "text": "更新"},
+                {"type": "code", "text": "函式(參數)"},
+                {"type": "text", "text": ": Latin"},
+            ]},
+            {"type": "image", "src": "/guides/news-assets/example.svg", "alt": "圖表",
+             "width": 800, "height": 600, "credit": credit},
+            {"type": "rich_paragraph", "inlines": [
+                {"type": "link", "text": "https://example.com/中文:路徑?q=更新,內容",
+                 "url": "https://example.com/中文:路徑?q=更新,內容"},
+            ]},
+        ],
+    )
+    before = document.model_dump(mode="json")
+    fingerprint = document_fingerprint(document)
+    assert _punctuation_problems(document) == []
+    assert document.model_dump(mode="json") == before
+    assert document_fingerprint(document) == fingerprint
+
+
+@pytest.mark.parametrize("rich_link", [False, True])
+def test_news_punctuation_keeps_prose_after_a_url_visible(rich_link: bool) -> None:
+    url = "https://example.test/"
+    text = f"{url},其餘另議。" if rich_link else f'請見 "{url}",其餘另議。'
+    block: dict[str, Any] = {
+        "type": "rich_paragraph", "inlines": [
+            {"type": "link", "text": url, "url": url},
+            {"type": "text", "text": ",其餘另議。"},
+        ],
+    } if rich_link else {"type": "paragraph", "text": text}
+    problems = _punctuation_problems(_punctuation_document(blocks=[block]))
+    field = "inlines" if rich_link else "text"
+    assert len(problems) == 1 and f"blocks[0].{field}" in problems[0]
+    assert f"character(s) {text.index(',') + 1}" in problems[0]
+
+
+@pytest.mark.parametrize("inline_type", ["link", "article"])
+def test_news_punctuation_keeps_link_and_article_text_after_a_plain_url_visible(
+    inline_type: str,
+) -> None:
+    url = "https://example.test/"
+    target = {"url": "https://example.test/next"} if inline_type == "link" else {"slug": "next"}
+    document = _punctuation_document(blocks=[{
+        "type": "rich_paragraph", "inlines": [
+            {"type": "text", "text": url},
+            {"type": inline_type, "text": ",其餘另議。", **target},
+        ],
+    }])
+    problems = _punctuation_problems(document)
+    assert len(problems) == 1 and "blocks[0].inlines" in problems[0]
+    assert f"character(s) {len(url) + 1}" in problems[0]
+
+
+def test_news_punctuation_does_not_treat_unicode_url_query_brackets_as_prose() -> None:
+    document = _punctuation_document(blocks=[{
+        "type": "paragraph", "text": "https://example.test/?q=說明（中文?）",
+    }])
+    assert _punctuation_problems(document) == []
+
+
+def test_news_punctuation_recognizes_a_url_split_between_text_nodes() -> None:
+    document = _punctuation_document(blocks=[{
+        "type": "rich_paragraph", "inlines": [
+            {"type": "text", "text": "網址 https://example.test/?q="},
+            {"type": "text", "text": "中文:說明,內容!"},
+        ],
+    }])
+    assert _punctuation_problems(document) == []
