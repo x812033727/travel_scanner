@@ -1,0 +1,575 @@
+{
+  "title": "GPT-6 Sol vs Claude Opus 5.5 Price Cut: How Much Will Your AI Bill Drop?",
+  "description": "GPT-6 Sol's price list shows eight prices for one model. This video reads it cell by cell, then estimates the monthly token cost of five models, including GPT-6 Sol, Luna and Opus 5.5, for three sample usage levels.\nFor anyone who uses an AI API or subscription and wants to know whether \"50% cheaper\" or \"40% less\" actually has anything to do with their own bill.\n\nThe video starts with the eight cells of GPT-6 Sol's standard price: input, cache read, cache write and output, each with a short-context and a long-context price. Then it covers batch, fast mode and promo pricing, works out the monthly cost of three sample usages (chat, agent, bulk processing), and finally unpacks what Anthropic's 40%, 20% and 60% are each measured against.\n\nAmounts are illustrative token costs for short context and standard processing; they do not include cache write, storage, tool or other service fees, and the bulk processing column does not use the batch discount. Prices change; check the official site on the day.\n\nFurther reading: API price comparison: cost per million tokens by vendor (official price lists, mid-September)\nhttps://mokaair.com/zh-TW/life/ai-api-pricing-comparison-2026?utm_source=youtube&utm_medium=video&utm_campaign=ai-price-war-gpt-6-sol-vs-opus-5-5",
+  "tags": [
+    "GPT-6 Sol",
+    "GPT-6 Luna",
+    "Claude Opus 5.5",
+    "AI API pricing",
+    "OpenAI price cut",
+    "Anthropic",
+    "Gemini 3.8 Flash",
+    "AI bill",
+    "token cost",
+    "AI model comparison",
+    "prompt caching",
+    "batch API discount"
+  ],
+  "chapters": {
+    "eight-prices": "Why GPT-6 Sol has eight prices",
+    "promise": "GPT-6 Sol price table, 8 cells",
+    "four-tokens": "Cache read vs cache write",
+    "batch-half": "Batch discount and promo price",
+    "scenario-walk": "Monthly cost, 3 usage levels",
+    "news-three-numbers": "Is Opus 5.5 really 40% less?",
+    "switch-or-not": "Switch after an AI price cut?"
+  },
+  "source_hashes": {
+    "chapters": {
+      "eight-prices": "0d131805c628",
+      "promise": "47349373d2a4",
+      "four-tokens": "5115fb3e3a7e",
+      "batch-half": "df98981e3274",
+      "scenario-walk": "89360fe59d97",
+      "news-three-numbers": "30ae172a97b6",
+      "switch-or-not": "ee53eba733aa"
+    },
+    "title": "8ff41785abfb",
+    "description": "29af3c3ad50f",
+    "tags": "c55b2c448d4a"
+  },
+  "lines": {
+    "ki36": {
+      "source_hash": "5a4dea3204c1",
+      "text": "On the price list, one GPT-6 Sol has eight prices."
+    },
+    "ibpp": {
+      "source_hash": "4ef8309da494",
+      "text": "Which one is the price you actually pay?"
+    },
+    "8nqw": {
+      "source_hash": "a9dca792f535",
+      "text": "You think one model means one price."
+    },
+    "pc4t": {
+      "source_hash": "fb65e9f3f663",
+      "text": "Yet this standard table alone gives GPT-6 Sol eight prices."
+    },
+    "fvdq": {
+      "source_hash": "08175ae5d0b0",
+      "text": "So what do those eight prices actually look like?"
+    },
+    "xf3x": {
+      "source_hash": "e1cb26664dfd",
+      "text": "We'll read the price list one cell at a time."
+    },
+    "vcu8": {
+      "source_hash": "eb668bb1a860",
+      "text": "First, read all 8."
+    },
+    "p6w3": {
+      "source_hash": "7ad51190a7ae",
+      "text": "Then monthly cost of 3 usages."
+    },
+    "gm9p": {
+      "source_hash": "90907bfb95e6",
+      "text": "Last, we unpack three numbers in the news."
+    },
+    "tigr": {
+      "source_hash": "e760791f69d4",
+      "text": "Eight prices, in two groups first."
+    },
+    "ippg": {
+      "source_hash": "e93e618ba085",
+      "text": "Input up to 272,000 tokens counts as short context."
+    },
+    "vyp2": {
+      "source_hash": "1321badb996e",
+      "text": "Past that line, it's long context."
+    },
+    "qfj6": {
+      "source_hash": "bf423eff9493",
+      "text": "Let's read the four token prices, cell by cell."
+    },
+    "qjec": {
+      "source_hash": "40d11aa679fe",
+      "text": "Input: $2 short context, $4 long context."
+    },
+    "xr9r": {
+      "source_hash": "c78ed8610fe4",
+      "text": "Cache read: $0.20 short, $0.40 long."
+    },
+    "p683": {
+      "source_hash": "f9e549da23be",
+      "text": "Cache write: $2.50 short, $5 long."
+    },
+    "ja6c": {
+      "source_hash": "2fadf9dfaf15",
+      "text": "Output: $10 short, $15 long. That fills all eight."
+    },
+    "qjk4": {
+      "source_hash": "dfa6d9e9459d",
+      "text": "But what are cache read and cache write, really?"
+    },
+    "s7fy": {
+      "source_hash": "6c8f85042dcb",
+      "text": "Let's see when each of the four tokens appears."
+    },
+    "ma9h": {
+      "source_hash": "0e7696f91f37",
+      "text": "Input is what you send the model, processed the first time."
+    },
+    "q2in": {
+      "source_hash": "807401c66673",
+      "text": "Cache write stores the start of a prompt the first time, for a bit extra."
+    },
+    "7u9g": {
+      "source_hash": "be036ae136cb",
+      "text": "Cache read: the same start again, read directly, far cheaper."
+    },
+    "b3y9": {
+      "source_hash": "3d99f77f457a",
+      "text": "Output is the text the model returns, hidden thinking included."
+    },
+    "6kug": {
+      "source_hash": "e618fcc04eae",
+      "text": "Each input token is one type only, never charged twice."
+    },
+    "me45": {
+      "source_hash": "392eefb58d14",
+      "text": "Like a print shop: extra to set up once, then just print it."
+    },
+    "4by8": {
+      "source_hash": "f03448dbb750",
+      "text": "Cache write: 1.25 times the input price."
+    },
+    "wh3j": {
+      "source_hash": "ca726441ae03",
+      "text": "Cache read: one tenth."
+    },
+    "x4fd": {
+      "source_hash": "a67c98c9154a",
+      "text": "Same start used ten times: one write, nine reads, 2.15x."
+    },
+    "spkw": {
+      "source_hash": "6798a34f33c4",
+      "text": "Without caching, ten uses cost ten times."
+    },
+    "c32b": {
+      "source_hash": "12d2744c6f70",
+      "text": "So a cache write costs more than input."
+    },
+    "599y": {
+      "source_hash": "67457509038b",
+      "text": "Cache it and nobody reads it: you overpaid 25% for nothing."
+    },
+    "66qr": {
+      "source_hash": "951532572501",
+      "text": "Caching doesn't always work. Ten questions on one file don't guarantee ten hits."
+    },
+    "4b3g": {
+      "source_hash": "51a678b4c230",
+      "text": "The start must match; one changed word breaks the rest."
+    },
+    "medc": {
+      "source_hash": "bb08bdcdec3a",
+      "text": "It also needs length: at least 1,024 tokens."
+    },
+    "xrwh": {
+      "source_hash": "415dc59e80fe",
+      "text": "Left too long, it expires and must be redone."
+    },
+    "4y9a": {
+      "source_hash": "9f646009a4a4",
+      "text": "So what about the batch discount and the promo price?"
+    },
+    "c46x": {
+      "source_hash": "35a5615dcaf0",
+      "text": "Like slow delivery: wait a bit, shipping is half."
+    },
+    "kex8": {
+      "source_hash": "71a5d64f5920",
+      "text": "The price list has a row of tabs."
+    },
+    "cjya": {
+      "source_hash": "6ac53d7490ea",
+      "text": "Standard tab: Sol input $2, output $10."
+    },
+    "vk96": {
+      "source_hash": "d753dfbc2568",
+      "text": "Click Batch and it's exactly half: input $1, output $5."
+    },
+    "x5cg": {
+      "source_hash": "4b6d8ff9c700",
+      "text": "The catch: no instant answers. Officially, it finishes within 24 hours."
+    },
+    "kp2s": {
+      "source_hash": "0110c80835e9",
+      "text": "So pick which tab a price comes from."
+    },
+    "4dbt": {
+      "source_hash": "e3acf232c49a",
+      "text": "Batch is half the standard price."
+    },
+    "eniv": {
+      "source_hash": "0e6306e1f622",
+      "text": "Fast mode is the reverse: twice standard, so Sol output is $20."
+    },
+    "teb4": {
+      "source_hash": "227c88bf8518",
+      "text": "This video's costs all use the standard price."
+    },
+    "gb49": {
+      "source_hash": "612782f4f67c",
+      "text": "Under the table, fine print."
+    },
+    "v74j": {
+      "source_hash": "7ca4473cc628",
+      "text": "GPT-5.6 Sol's promo price holds until at least November 21."
+    },
+    "fges": {
+      "source_hash": "a9dbca776b2e",
+      "text": "GPT-6 Sol's four short-context cells are all half the promo price."
+    },
+    "ym8g": {
+      "source_hash": "ac7e280c9d90",
+      "text": "Input: $4 becomes $2."
+    },
+    "m5fk": {
+      "source_hash": "6cbd141fc239",
+      "text": "Cache read: $0.40 to $0.20."
+    },
+    "r3k9": {
+      "source_hash": "4490406865a2",
+      "text": "Cache write: $5 becomes $2.50."
+    },
+    "ef3k": {
+      "source_hash": "e3b01446d102",
+      "text": "Output: $20 becomes $10."
+    },
+    "tuik": {
+      "source_hash": "074cc4563ce0",
+      "text": "So the 50% in the news is against this expiring price."
+    },
+    "ntee": {
+      "source_hash": "d7fd8b60f43b",
+      "text": "One more"
+    },
+    "76fk": {
+      "source_hash": "5c0a8c0d93c7",
+      "text": "The flagship Sol has a new version."
+    },
+    "mzxf": {
+      "source_hash": "fa7a2436c386",
+      "text": "GPT-6 Sol's cached input is $0.20 per million."
+    },
+    "mvrg": {
+      "source_hash": "3a42094213b5",
+      "text": "GPT-6.1 Sol, out September 29: only $0.10."
+    },
+    "2djf": {
+      "source_hash": "043fa626068a",
+      "text": "Input, output same."
+    },
+    "ntq5": {
+      "source_hash": "56a4cb8acfc1",
+      "text": "To find GPT-6 Sol, expand all models."
+    },
+    "443u": {
+      "source_hash": "a6b8bf86f828",
+      "text": "My view: don't rush to the new version; calculate from your own usage."
+    },
+    "9tsk": {
+      "source_hash": "2cbcc8453050",
+      "text": "So apply these prices to your usage: what would the cost be?"
+    },
+    "3h7y": {
+      "source_hash": "acb806772549",
+      "text": "Cost is usage times price; first, three sample usages."
+    },
+    "gt4x": {
+      "source_hash": "84b4035986c7",
+      "text": "Chat: 5 million input and 1 million output tokens a month."
+    },
+    "ssvn": {
+      "source_hash": "e642bbddef67",
+      "text": "Agent: 12 million fresh input, 48 million cache read."
+    },
+    "sjsy": {
+      "source_hash": "3c98c605e2b7",
+      "text": "Add 4 million output."
+    },
+    "747h": {
+      "source_hash": "9d18b5bfe372",
+      "text": "Bulk: 200 million input, 10 million output."
+    },
+    "wcfz": {
+      "source_hash": "51212baf3f11",
+      "text": "Just a demo; check your real usage on the usage page."
+    },
+    "m5xb": {
+      "source_hash": "e03cab130346",
+      "text": "Here's the cost for five models."
+    },
+    "hjxw": {
+      "source_hash": "b0cabb49f366",
+      "text": "GPT-6 Sol: chat, $20."
+    },
+    "87h7": {
+      "source_hash": "70cd3db3ff07",
+      "text": "Agent $73.60, bulk $500."
+    },
+    "bazf": {
+      "source_hash": "a241fb5aa1ef",
+      "text": "GPT-6 Luna is much cheaper."
+    },
+    "afjr": {
+      "source_hash": "7cda100a4f23",
+      "text": "Chat: $1 a month, less than a coffee."
+    },
+    "vpac": {
+      "source_hash": "1db011caea0c",
+      "text": "Opus 5.5 chat and bulk are exactly twice Sol."
+    },
+    "e9gz": {
+      "source_hash": "b95c080e76ca",
+      "text": "Sonnet 5.5 unit prices match Sol, so all three costs match."
+    },
+    "6jr2": {
+      "source_hash": "3a712075fc12",
+      "text": "Gemini 3.8 Flash falls in the middle."
+    },
+    "227a": {
+      "source_hash": "a83060d4363c",
+      "text": "But that's promo pricing; once 2026 ends, unit prices double."
+    },
+    "yvvp": {
+      "source_hash": "0df5e660007e",
+      "text": "For all three usages, GPT-6 Luna is cheapest."
+    },
+    "8ika": {
+      "source_hash": "ca5077587f6e",
+      "text": "Price only, not who answers better."
+    },
+    "zg43": {
+      "source_hash": "6bd6feaca894",
+      "text": "Only your own test run shows if it's enough."
+    },
+    "ikjd": {
+      "source_hash": "eee28b245e21",
+      "text": "Now the last generation, to see where prices fell."
+    },
+    "jeek": {
+      "source_hash": "31f3d42229b9",
+      "text": "Chat: GPT-5.6 Sol's promo price is $40."
+    },
+    "gbzh": {
+      "source_hash": "8498cf9ed196",
+      "text": "GPT-6 Sol is only $20, exactly half."
+    },
+    "kqwi": {
+      "source_hash": "c13267e86892",
+      "text": "Agent: Opus 5 costs $184 a month."
+    },
+    "giy7": {
+      "source_hash": "b26eea3ce6a3",
+      "text": "Opus 5.5 is $137.60."
+    },
+    "6kqy": {
+      "source_hash": "3783e2e4bbff",
+      "text": "Only about 25% lower, not the 40% in the news."
+    },
+    "5sv5": {
+      "source_hash": "2f404dbe6e4a",
+      "text": "The GPT-6 launch article is on the description's first line."
+    },
+    "kdtw": {
+      "source_hash": "4246a3f72f75",
+      "text": "Agent: of Sol's $73.60, $40 is output."
+    },
+    "rfmv": {
+      "source_hash": "18bedf3303d1",
+      "text": "Over half. Cache read is only $9.60, about 13%."
+    },
+    "4hmf": {
+      "source_hash": "01674a3c06d4",
+      "text": "Anthropic says exactly the opposite."
+    },
+    "j3qt": {
+      "source_hash": "7d6cfb8121a9",
+      "text": "It writes that cache reads are the bulk of cost in agent and coding work."
+    },
+    "jkds": {
+      "source_hash": "2eeb034bdb94",
+      "text": "Both may be right; it depends on the ratio of cache reads to output."
+    },
+    "inzr": {
+      "source_hash": "42b8d5841692",
+      "text": "In my example, cache reads are 12 times output."
+    },
+    "d5j2": {
+      "source_hash": "047f8c5a9526",
+      "text": "So what are the 50%, 40% and 20% in the news each compared with?"
+    },
+    "x5eq": {
+      "source_hash": "4c08e350f22a",
+      "text": "On September 22, OpenAI and Anthropic cut prices the same day."
+    },
+    "86x9": {
+      "source_hash": "6f7948785fbf",
+      "text": "GPT-6 Sol is half its predecessor's promo price."
+    },
+    "ha6t": {
+      "source_hash": "39bd70d7c797",
+      "text": "Anthropic says Opus 5.5 cuts running cost by 40%."
+    },
+    "tq5v": {
+      "source_hash": "32044797c429",
+      "text": "And its input and output list prices are down 20%."
+    },
+    "giku": {
+      "source_hash": "49a76db77132",
+      "text": "We covered the 50%; of the other two, first the 40%."
+    },
+    "dz5g": {
+      "source_hash": "b49ff476c3b7",
+      "text": "Anthropic's 40% says \"running cost,\" not price."
+    },
+    "vnit": {
+      "source_hash": "317eccf4cb99",
+      "text": "It also says it's estimated under default settings and typical workloads."
+    },
+    "hcrz": {
+      "source_hash": "5e60e227ded1",
+      "text": "It covers unit price plus changes in usage per task."
+    },
+    "z2j6": {
+      "source_hash": "af6309e7a7bb",
+      "text": "No guarantee everyone saves 40%."
+    },
+    "zr58": {
+      "source_hash": "55c339fe5eec",
+      "text": "Left: list prices, input and output down 20%, cache read down 60%."
+    },
+    "gxii": {
+      "source_hash": "365c827e91e8",
+      "text": "Right, the 40% is a vendor-measured cost, including fewer tokens per task."
+    },
+    "s7ng": {
+      "source_hash": "2f27e85d48fd",
+      "text": "List prices you can see; cost estimates depend on your tasks."
+    },
+    "pxgf": {
+      "source_hash": "a337df59aac3",
+      "text": "Remember only one kind of cut? These three list-price cuts."
+    },
+    "njxt": {
+      "source_hash": "3eb82f9a0dbd",
+      "text": "Input: $5 to $4, down 20%."
+    },
+    "7xsg": {
+      "source_hash": "196c27b023d0",
+      "text": "Output: $25 to $20, also down 20%."
+    },
+    "virh": {
+      "source_hash": "922aa317cf26",
+      "text": "Cache read: $0.50 to $0.20, down 60%."
+    },
+    "5kqm": {
+      "source_hash": "c2930a0712a7",
+      "text": "Before any cut, ask: compared with what?"
+    },
+    "s9bb": {
+      "source_hash": "e49e8a2c25c8",
+      "text": "Vs. promo: a temporary price that expires."
+    },
+    "pder": {
+      "source_hash": "bc96b0c2d701",
+      "text": "Versus list: the printed price, but it may change."
+    },
+    "bu8a": {
+      "source_hash": "a4c8e8ecc3f4",
+      "text": "A vendor's cost estimate isn't your actual charge."
+    },
+    "uukx": {
+      "source_hash": "b1d0f79a1d29",
+      "text": "So after a price cut, should you switch models?"
+    },
+    "q6sw": {
+      "source_hash": "d84aa8c9c871",
+      "text": "Switch? First see which side you're on."
+    },
+    "id4m": {
+      "source_hash": "187b13bf257d",
+      "text": "My view: only the left cases are worth working out once."
+    },
+    "avk5": {
+      "source_hash": "8db9a74de440",
+      "text": "Right side: wait."
+    },
+    "ycu2": {
+      "source_hash": "f51df9a96b8d",
+      "text": "A cut isn't a reason to switch; do your own math."
+    },
+    "r2f7": {
+      "source_hash": "a3d5aaf996fb",
+      "text": "Someone asks: my API cost is $30 a month, should I switch?"
+    },
+    "8egg": {
+      "source_hash": "8c86d89740d1",
+      "text": "No sample usage is exactly $30, so borrow the chat one."
+    },
+    "bxsk": {
+      "source_hash": "a5420d859ab2",
+      "text": "Chat on Sol is $20 a month; switching to Luna saves $19."
+    },
+    "9wrt": {
+      "source_hash": "dbbc1edfbba8",
+      "text": "But switching means retesting quality, and time is a cost."
+    },
+    "3vii": {
+      "source_hash": "a6b555990c80",
+      "text": "My view: saving $19 a month may not justify a retest."
+    },
+    "5snu": {
+      "source_hash": "a097807b130a",
+      "text": "Switching? Two steps first, not by feel."
+    },
+    "gkup": {
+      "source_hash": "6c0607e65b3b",
+      "text": "First, open your usage page and see what each token type costs."
+    },
+    "za36": {
+      "source_hash": "c64a6dd53209",
+      "text": "Second, run your real tasks on both and compare."
+    },
+    "gvft": {
+      "source_hash": "1a69820c2008",
+      "text": "After those two, whether to switch will be clear."
+    },
+    "m7k4": {
+      "source_hash": "c33f2eef4bbe",
+      "text": "Back to the start: which price will you pay?"
+    },
+    "qimv": {
+      "source_hash": "ef12f914d051",
+      "text": "First, is your request long? That picks short or long context."
+    },
+    "mvch": {
+      "source_hash": "27c795c79384",
+      "text": "Next: any caching? Can you use batch?"
+    },
+    "gqv4": {
+      "source_hash": "676651331304",
+      "text": "Finally, multiply by your own three token usages."
+    },
+    "y3mp": {
+      "source_hash": "ebf330cacf98",
+      "text": "More vendors are in the API price comparison; confirm on official sites."
+    },
+    "uhfk": {
+      "source_hash": "e50e0fed31ab",
+      "text": "What you pay is the cells you use, times your usage."
+    }
+  }
+}
