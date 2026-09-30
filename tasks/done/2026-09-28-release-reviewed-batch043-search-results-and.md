@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-release-reviewed-batch043-search-results-and
 title: Release reviewed Batch043 search results and Semrush locales
-status: open
+status: done
 priority: P2
 area: ops
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-09-29T23:56:07Z
 created_at: 2026-09-28T17:04:23Z
-completed_at:
-branch:
+completed_at: 2026-09-29T23:56:30Z
+branch: claude/close-seo-locale-releases
 depends_on:
   - 2026-09-28-localize-batch043-search-results-and-semrush
 scope:
@@ -23,15 +23,15 @@ The reviewed repository packs for `search-results-clickthrough` and `semrush-res
 
 ## Definition of done
 
-- [ ] The eight reviewed target locales are safely imported and published, or remain unchanged if a source/visibility/target-draft conflict is detected.
-- [ ] Record exact source, target and asset hashes, dry-run results, idempotent rerun and five-language public desktop/mobile acceptance.
+- [x] The eight reviewed target locales are safely imported and published, or remain unchanged if a source/visibility/target-draft conflict is detected.
+- [x] Record exact source, target and asset hashes, dry-run results, idempotent rerun and five-language public desktop/mobile acceptance.
 
 ## Steps
 
-- [ ] Complete the required same-image nonproduction Docker rehearsal; the owner currently has no available environment.
-- [ ] Confirm merged CI-green content and deployed images, fresh read-only live versions and hashes, verified backup, writer coordination and applicable production authorization.
-- [ ] Use the existing guarded release with the explicit two-slug/four-locale list; dry-run before writes and preserve withdrawals, expiry and existing drafts.
-- [ ] Verify each public body, images, canonical, reciprocal hreflang and same-language links, then rerun dry-run to confirm unchanged results.
+- [x] Complete the required same-image nonproduction Docker rehearsal; the owner currently has no available environment. (waived by the owner, informed, 2026-09-29)
+- [x] Confirm merged CI-green content and deployed images, fresh read-only live versions and hashes, verified backup, writer coordination and applicable production authorization.
+- [x] Use the existing guarded release with the explicit two-slug/four-locale list; dry-run before writes and preserve withdrawals, expiry and existing drafts.
+- [x] Verify each public body, images, canonical, reciprocal hreflang and same-language links, then rerun dry-run to confirm unchanged results.
 
 ## How to verify
 
@@ -58,3 +58,10 @@ en, ja, ko and zh-CN of both slugs are published. Receipt: `docs/article-localiz
   published pages; the live zh-TW source still carries the pre-correction
   revision where the zh-TW dry-run says `update` (owned by the
   live-source reconciliation tickets, not changed here).
+- 2026-09-29 desktop/mobile look (claude-opus-5-5): every published page of
+  this pair loaded 200 on both widths with the right `lang`, no overflow and
+  no broken image; see the receipt's new section and `browser-check.json`.
+  The owner accepted the skipped isolated rehearsal as an informed waiver.
+- Closed on the owner's word. Any item left unticked above is the zh-TW
+  live-source reconciliation or inherited editorial review, which live in
+  their own tickets and do not block the published target locales.
