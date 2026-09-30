@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-planner-counts-the-ai-shorts-folder
 title: The video planner counts docs/videos/ai-shorts as a video it already made
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-fable-5-1-planner
 claimed_at: 2026-09-30T03:40:19Z
 created_at: 2026-09-28T04:25:00Z
-completed_at:
+completed_at: 2026-09-30T03:50:16Z
 branch: claude/video-planner-earlier-videos
 depends_on: []
 scope:
