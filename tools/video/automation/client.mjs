@@ -22,6 +22,7 @@ const OWNER_CODES = new Set([
   "video_tool_token_invalid",
   "video_ai_provider_not_configured",
   "video_ai_budget_exhausted",
+  "video_ai_subscription_cli_outdated",
   "video_automation_settings_invalid",
 ]);
 const RETRYABLE_CODES = new Set(["video_ai_upstream_busy", "video_ai_upstream_unreachable", "rate_limit_exceeded", "upstream_unavailable"]);
