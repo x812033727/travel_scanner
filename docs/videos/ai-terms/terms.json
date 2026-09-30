@@ -1,0 +1,2635 @@
+{
+  "schema_version": 1,
+  "note": "一列一個名詞、一個名詞一集，不編集數。從 docs/ai-terms-series/catalogue.json（搜尋截止 2026-09-14）生成，新名詞照同樣的欄位加一列。規則在 README.md。",
+  "series": {
+    "slug": "ai-terms",
+    "names": {
+      "zh-TW": "AI 名詞十分鐘",
+      "en": "AI Terms in 10 Minutes",
+      "ja": "10分でわかるAI用語",
+      "ko": "10분 AI 용어",
+      "zh-CN": "AI 名词十分钟"
+    },
+    "title_suffix": {
+      "zh-TW": "｜AI 名詞十分鐘",
+      "en": " | AI Terms in 10 Minutes",
+      "ja": "｜10分でわかるAI用語",
+      "ko": " | 10분 AI 용어",
+      "zh-CN": "｜AI 名词十分钟"
+    },
+    "title_pattern": {
+      "zh-TW": "<名詞>是什麼？<反常識的一句>｜AI 名詞十分鐘"
+    },
+    "thumbnail": {
+      "template": "thumb",
+      "tag": "AI 名詞十分鐘",
+      "headline": "terms[].short",
+      "sub": "鉤子的短版"
+    },
+    "target_minutes": [
+      9,
+      11
+    ],
+    "format": "slides",
+    "look": "tech-story",
+    "video_slug_prefix": "ai-term-",
+    "index_article": "ai-terms-index",
+    "playlists": {
+      "all": {
+        "zh-TW": "AI 名詞十分鐘（全部）",
+        "en": "AI Terms in 10 Minutes (All)",
+        "ja": "10分でわかるAI用語（全話）",
+        "ko": "10분 AI 용어 (전체)",
+        "zh-CN": "AI 名词十分钟（全部）",
+        "category": null
+      },
+      "foundations": {
+        "zh-TW": "基礎觀念",
+        "en": "Foundations",
+        "ja": "基礎の考え方",
+        "ko": "기초 개념",
+        "zh-CN": "基础观念",
+        "category": "foundation"
+      },
+      "prompts-context": {
+        "zh-TW": "提示詞與上下文",
+        "en": "Prompts & Context",
+        "ja": "プロンプトとコンテキスト",
+        "ko": "프롬프트와 컨텍스트",
+        "zh-CN": "提示词与上下文",
+        "category": "context"
+      },
+      "agents": {
+        "zh-TW": "AI 代理",
+        "en": "AI Agents",
+        "ja": "AIエージェント",
+        "ko": "AI 에이전트",
+        "zh-CN": "AI 代理",
+        "category": "agents"
+      },
+      "retrieval": {
+        "zh-TW": "檢索與知識",
+        "en": "Retrieval & Knowledge",
+        "ja": "検索と知識",
+        "ko": "검색과 지식",
+        "zh-CN": "检索与知识",
+        "category": "retrieval"
+      },
+      "training": {
+        "zh-TW": "訓練與推論",
+        "en": "Training & Inference",
+        "ja": "学習と推論",
+        "ko": "학습과 추론",
+        "zh-CN": "训练与推理",
+        "category": "training"
+      },
+      "engineering": {
+        "zh-TW": "工程方法",
+        "en": "Engineering Practices",
+        "ja": "エンジニアリング手法",
+        "ko": "엔지니어링 방법",
+        "zh-CN": "工程方法",
+        "category": "engineering"
+      },
+      "evaluation-safety": {
+        "zh-TW": "評測與安全",
+        "en": "Evaluation & Safety",
+        "ja": "評価と安全",
+        "ko": "평가와 안전",
+        "zh-CN": "评测与安全",
+        "category": "evaluation"
+      },
+      "multimodal-open": {
+        "zh-TW": "多模態與開放",
+        "en": "Multimodal & Open Models",
+        "ja": "マルチモーダルとオープンモデル",
+        "ko": "멀티모달과 오픈 모델",
+        "zh-CN": "多模态与开放",
+        "category": "multimodal"
+      }
+    }
+  },
+  "tiers": {
+    "1": "入門：一般人會搜、其他集會用到的 20 個名詞，照 suggested_order 先出",
+    "2": "進階：第 1 層做完接著出，順序看第 1 層的數據再排",
+    "3": "專業：Harness、Loop、Agentic Engineering、LLMOps、AgentOps，有人問再做"
+  },
+  "statuses": {
+    "backlog": "還沒開工",
+    "planned": "已排入、正在寫 brief.md",
+    "in-production": "大綱核准後到上架前",
+    "published": "已上架，video_id 與 published_at 已填",
+    "covered": "既有影片已經講過，不單出一集（existing_videos 列出是哪幾支）",
+    "skipped": "站主決定不做，notes 寫原因"
+  },
+  "counts": {
+    "terms": 81,
+    "tier_1": 21,
+    "tier_2": 55,
+    "tier_3": 5
+  },
+  "terms": [
+    {
+      "id": "token",
+      "video_slug": "ai-term-token",
+      "source_guide": "ai-term-token",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-token",
+      "article_title": "token（Token）是什麼：AI 如何計算文字長度",
+      "zh": "token",
+      "en": "Token",
+      "short": "Token",
+      "aliases": [
+        "標記",
+        "詞元"
+      ],
+      "category": "context",
+      "playlist": "prompts-context",
+      "tier": 1,
+      "suggested_order": 1,
+      "hook": "你以為 AI 算的是字數，其實它算的是自己的單位：同一段中文，換一個模型，用量就不一樣。",
+      "related": [
+        "context-window",
+        "artificial-intelligence",
+        "tokenization"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": "原來如此事務所 A08 用 strawberry 的 r 講 token；本集鉤子不用 strawberry，用「同一段中文換模型用量不同」。"
+    },
+    {
+      "id": "context-window",
+      "video_slug": "ai-term-context-window",
+      "source_guide": "ai-context-window-explained",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-context-window-explained",
+      "article_title": "上下文視窗（Context Window）是什麼：容量與理解的差別",
+      "zh": "上下文視窗",
+      "en": "Context Window",
+      "short": "上下文視窗",
+      "aliases": [
+        "context length",
+        "上下文長度"
+      ],
+      "category": "context",
+      "playlist": "prompts-context",
+      "tier": 1,
+      "suggested_order": 2,
+      "hook": "聊天視窗裡的訊息都還在，不代表模型這一次全部讀到了：塞得進去，不等於讀得懂。",
+      "related": [
+        "agent-memory",
+        "artificial-intelligence",
+        "context-compaction",
+        "model-parameters",
+        "token"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "large-language-model",
+      "video_slug": "ai-term-large-language-model",
+      "source_guide": "what-is-a-large-language-model",
+      "article_url": "https://mokaair.com/zh-TW/life/what-is-a-large-language-model",
+      "article_title": "大型語言模型（Large Language Model）是什麼",
+      "zh": "大型語言模型",
+      "en": "Large Language Model",
+      "short": "LLM",
+      "aliases": [
+        "LLM",
+        "Large Language Model",
+        "大型語言模型"
+      ],
+      "category": "foundation",
+      "playlist": "foundations",
+      "tier": 1,
+      "suggested_order": 3,
+      "hook": "大型語言模型不是一本會查資料的百科全書：它學的是語言的模式，所以答得流暢不等於答得正確。",
+      "related": [
+        "context-window",
+        "model-parameters",
+        "pretraining",
+        "token",
+        "tool-calling"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "hallucination",
+      "video_slug": "ai-term-hallucination",
+      "source_guide": "ai-hallucination-fact-check",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-hallucination-fact-check",
+      "article_title": "AI 幻覺（Hallucination）是什麼？把流暢回答拆成可查主張",
+      "zh": "幻覺",
+      "en": "Hallucination",
+      "short": "AI 幻覺",
+      "aliases": [
+        "AI 幻覺",
+        "Hallucination",
+        "hallucination",
+        "幻覺"
+      ],
+      "category": "evaluation",
+      "playlist": "evaluation-safety",
+      "tier": 1,
+      "suggested_order": 4,
+      "hook": "AI 附了連結、你再問一次它還是同一個答案、兩個模型都這樣講：這三件事沒有一件能證明它是對的。",
+      "related": [
+        "artificial-intelligence",
+        "evals",
+        "llm-as-a-judge",
+        "large-language-model"
+      ],
+      "existing_videos": [
+        "ai-citation-check"
+      ],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": "原來如此事務所 A01（為什麼 AI 會一本正經地胡說八道，尚未製作）講的是「為什麼」；本集講怎麼把流暢回答拆成可查主張。ai-citation-check 講抓錯誤引用，片尾互連。"
+    },
+    {
+      "id": "prompt-engineering",
+      "video_slug": "ai-term-prompt-engineering",
+      "source_guide": "ai-term-prompt-engineering",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-prompt-engineering",
+      "article_title": "提示詞工程（Prompt Engineering）是什麼",
+      "zh": "提示詞工程",
+      "en": "Prompt Engineering",
+      "short": "提示詞工程",
+      "aliases": [
+        "Prompt Engineering",
+        "提示工程",
+        "提示詞工程"
+      ],
+      "category": "engineering",
+      "playlist": "engineering",
+      "tier": 1,
+      "suggested_order": 5,
+      "hook": "指令越寫越長，答案卻沒有變好？提示詞工程不是寫得多，是測得出哪裡失敗。",
+      "related": [
+        "artificial-intelligence",
+        "context-engineering",
+        "few-shot-prompting",
+        "prompt-chaining",
+        "token"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "system-prompt",
+      "video_slug": "ai-term-system-prompt",
+      "source_guide": "ai-term-system-prompt",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-system-prompt",
+      "article_title": "系統提示詞（System Prompt）是什麼：設定助理的工作規則",
+      "zh": "系統提示詞",
+      "en": "System Prompt",
+      "short": "系統提示詞",
+      "aliases": [
+        "系統提示詞"
+      ],
+      "category": "context",
+      "playlist": "prompts-context",
+      "tier": 1,
+      "suggested_order": 6,
+      "hook": "你在自訂助理裡寫「絕對不能透露」，它就真的不會透露嗎？系統提示詞是規則，不是保證。",
+      "related": [
+        "model-parameters",
+        "prompt-engineering",
+        "prompt-injection",
+        "tool-calling"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "retrieval-augmented-generation",
+      "video_slug": "ai-term-retrieval-augmented-generation",
+      "source_guide": "ai-term-retrieval-augmented-generation",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-retrieval-augmented-generation",
+      "article_title": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
+      "zh": "檢索增強生成",
+      "en": "Retrieval-Augmented Generation",
+      "short": "RAG",
+      "aliases": [
+        "RAG",
+        "檢索增強生成"
+      ],
+      "category": "retrieval",
+      "playlist": "retrieval",
+      "tier": 1,
+      "suggested_order": 7,
+      "hook": "回答附了引用，為什麼還是錯？RAG 的三個步驟，每一步都可能讓它拿著證據答錯。",
+      "related": [
+        "chunking",
+        "fine-tuning",
+        "model-parameters",
+        "pretraining",
+        "reranking",
+        "vector-database"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "embedding",
+      "video_slug": "ai-term-embedding",
+      "source_guide": "ai-term-embedding",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-embedding",
+      "article_title": "嵌入向量（Embedding）是什麼：把內容放進可比較的空間",
+      "zh": "嵌入向量",
+      "en": "Embedding",
+      "short": "嵌入向量",
+      "aliases": [
+        "embeddings",
+        "嵌入向量"
+      ],
+      "category": "retrieval",
+      "playlist": "retrieval",
+      "tier": 1,
+      "suggested_order": 8,
+      "hook": "「下雨可以去哪裡」跟「室內景點」沒有一個字一樣，AI 為什麼找得到？",
+      "related": [
+        "chunking",
+        "semantic-search",
+        "vector-database"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "fine-tuning",
+      "video_slug": "ai-term-fine-tuning",
+      "source_guide": "ai-term-fine-tuning",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-fine-tuning",
+      "article_title": "微調（Fine-tuning）：讓既有模型更適合你的任務",
+      "zh": "微調",
+      "en": "Fine-tuning",
+      "short": "微調",
+      "aliases": [
+        "finetuning",
+        "微調"
+      ],
+      "category": "training",
+      "playlist": "training",
+      "tier": 1,
+      "suggested_order": 9,
+      "hook": "訓練成績變好了，實際上線卻退步：微調到底改了模型的什麼？",
+      "related": [
+        "lora",
+        "model-parameters",
+        "retrieval-augmented-generation",
+        "supervised-fine-tuning",
+        "token"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "reasoning-model",
+      "video_slug": "ai-term-reasoning-model",
+      "source_guide": "ai-reasoning-models-explained",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-reasoning-models-explained",
+      "article_title": "推理模型（Reasoning Model）：多想幾步能解決什麼",
+      "zh": "推理模型",
+      "en": "Reasoning Model",
+      "short": "推理模型",
+      "aliases": [
+        "reasoning model",
+        "推理模型"
+      ],
+      "category": "training",
+      "playlist": "training",
+      "tier": 1,
+      "suggested_order": 10,
+      "hook": "等更久、寫更長，不保證更對：推理模型多想的那幾步，到底在做什麼？",
+      "related": [
+        "knowledge-distillation",
+        "model-parameters",
+        "retrieval-augmented-generation",
+        "test-time-compute"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "model-context-protocol",
+      "video_slug": "ai-term-model-context-protocol",
+      "source_guide": "ai-term-model-context-protocol",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-model-context-protocol",
+      "article_title": "模型上下文協定（MCP）是什麼：連接工具與資料的共同介面",
+      "zh": "模型上下文協定",
+      "en": "Model Context Protocol",
+      "short": "MCP",
+      "aliases": [
+        "MCP"
+      ],
+      "category": "agents",
+      "playlist": "agents",
+      "tier": 1,
+      "suggested_order": 11,
+      "hook": "MCP 不是模型，接上也不代表能完成任務：它是 AI 跟工具說話的共同插座。",
+      "related": [
+        "agent-skills",
+        "agent2agent-protocol",
+        "artificial-intelligence",
+        "tool-calling"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "agent-skills",
+      "video_slug": "ai-term-agent-skills",
+      "source_guide": "ai-term-agent-skills",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-agent-skills",
+      "article_title": "代理技能（Agent Skills）是什麼：可重用的工作方法包",
+      "zh": "代理技能",
+      "en": "Agent Skills",
+      "short": "代理技能",
+      "aliases": [
+        "Skills",
+        "代理技能"
+      ],
+      "category": "agents",
+      "playlist": "agents",
+      "tier": 1,
+      "suggested_order": 12,
+      "hook": "把一段長提示詞換個檔名叫 SKILL.md，不算技能：Agent Skills 差在哪一步？",
+      "related": [
+        "agent2agent-protocol",
+        "model-context-protocol",
+        "model-parameters",
+        "system-prompt",
+        "token"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "context-engineering",
+      "video_slug": "ai-term-context-engineering",
+      "source_guide": "ai-term-context-engineering",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-context-engineering",
+      "article_title": "上下文工程（Context Engineering）是什麼",
+      "zh": "上下文工程",
+      "en": "Context Engineering",
+      "short": "上下文工程",
+      "aliases": [
+        "Context Engineering",
+        "上下文工程",
+        "情境工程"
+      ],
+      "category": "engineering",
+      "playlist": "engineering",
+      "tier": 1,
+      "suggested_order": 13,
+      "hook": "回答錯了，常常不是模型笨，是它這一次根本沒看到那份資料。",
+      "related": [
+        "artificial-intelligence",
+        "context-compaction",
+        "prompt-engineering",
+        "retrieval-augmented-generation",
+        "token"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "prompt-injection",
+      "video_slug": "ai-term-prompt-injection",
+      "source_guide": "ai-term-prompt-injection",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-prompt-injection",
+      "article_title": "提示詞注入（Prompt Injection）是什麼",
+      "zh": "提示詞注入",
+      "en": "Prompt Injection",
+      "short": "提示詞注入",
+      "aliases": [
+        "Prompt Injection",
+        "提示注入",
+        "提示詞注入"
+      ],
+      "category": "evaluation",
+      "playlist": "evaluation-safety",
+      "tier": 1,
+      "suggested_order": 14,
+      "hook": "一封報名郵件裡藏一行字，就能讓你的 AI 助理改做別的事：提示詞注入是接上外部內容就會遇到的風險。",
+      "related": [
+        "artificial-intelligence",
+        "evals",
+        "fine-tuning",
+        "guardrails",
+        "jailbreak",
+        "model-parameters",
+        "retrieval-augmented-generation",
+        "token"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "guardrails",
+      "video_slug": "ai-term-guardrails",
+      "source_guide": "ai-term-guardrails",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-guardrails",
+      "article_title": "安全防護機制（Guardrails）是什麼",
+      "zh": "安全防護機制",
+      "en": "Guardrails",
+      "short": "Guardrails",
+      "aliases": [
+        "Guardrails",
+        "安全護欄",
+        "安全防護機制"
+      ],
+      "category": "evaluation",
+      "playlist": "evaluation-safety",
+      "tier": 1,
+      "suggested_order": 15,
+      "hook": "加一個篩選器不等於安全：防護機制是放在輸入、資料、回答與工具四個地方的一整組檢查。",
+      "related": [
+        "artificial-intelligence",
+        "evals",
+        "jailbreak",
+        "prompt-injection"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "generative-ai",
+      "video_slug": "ai-term-generative-ai",
+      "source_guide": "ai-term-generative-ai",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-generative-ai",
+      "article_title": "生成式 AI（Generative AI）是什麼",
+      "zh": "生成式 AI",
+      "en": "Generative AI",
+      "short": "生成式 AI",
+      "aliases": [
+        "GenAI",
+        "Generative AI",
+        "生成式 AI",
+        "生成式人工智慧"
+      ],
+      "category": "foundation",
+      "playlist": "foundations",
+      "tier": 1,
+      "suggested_order": 16,
+      "hook": "它會生成，不會保證忠於事實：生成式 AI 跟分類、搜尋到底差在哪？",
+      "related": [
+        "hallucination",
+        "artificial-intelligence",
+        "diffusion-model",
+        "large-language-model"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "multimodal-ai",
+      "video_slug": "ai-term-multimodal-ai",
+      "source_guide": "ai-term-multimodal-ai",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-multimodal-ai",
+      "article_title": "多模態 AI（Multimodal AI）是什麼：把圖像、聲音與文字一起理解",
+      "zh": "多模態 AI",
+      "en": "Multimodal AI",
+      "short": "多模態 AI",
+      "aliases": [
+        "multimodal",
+        "多模態"
+      ],
+      "category": "multimodal",
+      "playlist": "multimodal-open",
+      "tier": 1,
+      "suggested_order": 17,
+      "hook": "它看得到圖片，不代表它看到了細節：多模態 AI 什麼時候在看，什麼時候在猜？",
+      "related": [
+        "artificial-intelligence",
+        "automatic-speech-recognition",
+        "text-to-image",
+        "text-to-speech",
+        "token"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "deepfake",
+      "video_slug": "ai-term-deepfake",
+      "source_guide": "ai-term-deepfake",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-deepfake",
+      "article_title": "深偽（Deepfake）是什麼：分清合成痕跡、來源與事件真假",
+      "zh": "深度偽造",
+      "en": "Deepfake",
+      "short": "深偽",
+      "aliases": [
+        "deep fake",
+        "深偽",
+        "深度偽造"
+      ],
+      "category": "multimodal",
+      "playlist": "multimodal-open",
+      "tier": 1,
+      "suggested_order": 18,
+      "hook": "嘴形對得上、偵測分數很低、來源標記也有：這三樣都不能單獨判定一支影片是不是深偽。",
+      "related": [
+        "artificial-intelligence",
+        "deep-learning",
+        "multimodal-ai",
+        "text-to-speech",
+        "text-to-video",
+        "token"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "open-weights",
+      "video_slug": "ai-term-open-weights",
+      "source_guide": "ai-term-open-weights",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-open-weights",
+      "article_title": "開放權重（Open Weights）：能下載模型，還要確認什麼",
+      "zh": "開放權重",
+      "en": "Open Weights",
+      "short": "開放權重",
+      "aliases": [
+        "open-weight",
+        "開放權重"
+      ],
+      "category": "multimodal",
+      "playlist": "multimodal-open",
+      "tier": 1,
+      "suggested_order": 19,
+      "hook": "能下載的模型不等於開源，也不自動等於隱私：開放權重拿到的到底是什麼？",
+      "related": [
+        "artificial-intelligence",
+        "model-parameters",
+        "open-source-ai",
+        "quantization"
+      ],
+      "existing_videos": [
+        "rtx-spark-local-ai"
+      ],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": "本機 AI 那支講硬體裝得下哪些模型；本集講開放權重拿到的是什麼、跟開源差在哪。"
+    },
+    {
+      "id": "small-language-model",
+      "video_slug": "ai-term-small-language-model",
+      "source_guide": "ai-term-small-language-model",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-small-language-model",
+      "article_title": "小型語言模型（Small Language Model）是什麼",
+      "zh": "小型語言模型",
+      "en": "Small Language Model",
+      "short": "小型語言模型",
+      "aliases": [
+        "SLM",
+        "Small Language Model",
+        "小型語言模型"
+      ],
+      "category": "foundation",
+      "playlist": "foundations",
+      "tier": 1,
+      "suggested_order": 20,
+      "hook": "小模型不等於弱，離線也不等於隱私：小型語言模型該看的是任務、記憶體和資料流。",
+      "related": [
+        "model-parameters",
+        "quantization",
+        "large-language-model"
+      ],
+      "existing_videos": [
+        "rtx-spark-local-ai"
+      ],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": "本機 AI 那支從硬體出發；本集從任務、記憶體與資料流出發。"
+    },
+    {
+      "id": "ai-agent",
+      "video_slug": "ai-term-ai-agent",
+      "source_guide": "ai-agents-explained",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-agents-explained",
+      "article_title": "AI 代理（AI Agent）是什麼：從回答問題到完成任務",
+      "zh": "AI 代理",
+      "en": "AI Agent",
+      "short": "AI 代理",
+      "aliases": [
+        "AI Agent",
+        "AI 代理",
+        "AI 智慧代理"
+      ],
+      "category": "agents",
+      "playlist": "agents",
+      "tier": 1,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "agent-loop",
+        "agent-orchestration",
+        "artificial-intelligence",
+        "token",
+        "tool-calling"
+      ],
+      "existing_videos": [
+        "ai-agent-vs-chatbot",
+        "ai-agents-explained-what-they-cost",
+        "always-on-agent-explained"
+      ],
+      "status": "covered",
+      "video_id": null,
+      "published_at": null,
+      "notes": "三支長片已經講過 AI 代理是什麼、怎麼運作、跑一次多少錢，不再單出一集；機制的部分由「代理迴圈」與「工具呼叫」兩集接手，播放清單把三支收進來。"
+    },
+    {
+      "id": "vibe-coding",
+      "video_slug": "ai-term-vibe-coding",
+      "source_guide": "ai-term-vibe-coding",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-vibe-coding",
+      "article_title": "氛圍編碼（Vibe Coding）是什麼",
+      "zh": "氛圍編碼",
+      "en": "Vibe Coding",
+      "short": "氛圍編碼",
+      "aliases": [
+        "Vibe Coding",
+        "氛圍式編程",
+        "氛圍編碼"
+      ],
+      "category": "engineering",
+      "playlist": "engineering",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "agentic-engineering",
+        "artificial-intelligence",
+        "human-in-the-loop",
+        "spec-driven-development",
+        "token"
+      ],
+      "existing_videos": [
+        "vibe-coding-first-website-2026"
+      ],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": "操作教學已經有一支；本集只講定義、狹義與廣義的用法、原型與正式開發的界線，不教怎麼做網站。"
+    },
+    {
+      "id": "spec-driven-development",
+      "video_slug": "ai-term-spec-driven-development",
+      "source_guide": "ai-term-spec-driven-development",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-spec-driven-development",
+      "article_title": "規格驅動開發（Spec-driven Development）是什麼",
+      "zh": "規格驅動開發",
+      "en": "Spec-driven Development",
+      "short": "規格驅動開發",
+      "aliases": [
+        "SDD",
+        "Spec-driven Development",
+        "規格驅動開發"
+      ],
+      "category": "engineering",
+      "playlist": "engineering",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "agentic-engineering",
+        "artificial-intelligence",
+        "evals",
+        "prompt-engineering",
+        "token"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "prompt-chaining",
+      "video_slug": "ai-term-prompt-chaining",
+      "source_guide": "ai-term-prompt-chaining",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-prompt-chaining",
+      "article_title": "提示詞串接（Prompt Chaining）是什麼",
+      "zh": "提示詞串接",
+      "en": "Prompt Chaining",
+      "short": "提示詞串接",
+      "aliases": [
+        "Prompt Chaining",
+        "提示詞串接"
+      ],
+      "category": "engineering",
+      "playlist": "engineering",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "agent-loop",
+        "context-engineering",
+        "evals",
+        "multi-agent-system",
+        "token"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "artificial-intelligence",
+      "video_slug": "ai-term-artificial-intelligence",
+      "source_guide": "ai-term-artificial-intelligence",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-artificial-intelligence",
+      "article_title": "人工智慧（Artificial Intelligence）是什麼",
+      "zh": "人工智慧",
+      "en": "Artificial Intelligence",
+      "short": "人工智慧",
+      "aliases": [
+        "AI",
+        "Artificial Intelligence",
+        "人工智慧"
+      ],
+      "category": "foundation",
+      "playlist": "foundations",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "ai-agent",
+        "deep-learning",
+        "generative-ai",
+        "machine-learning"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "machine-learning",
+      "video_slug": "ai-term-machine-learning",
+      "source_guide": "ai-term-machine-learning",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-machine-learning",
+      "article_title": "機器學習（Machine Learning）是什麼",
+      "zh": "機器學習",
+      "en": "Machine Learning",
+      "short": "機器學習",
+      "aliases": [
+        "ML",
+        "Machine Learning",
+        "機器學習"
+      ],
+      "category": "foundation",
+      "playlist": "foundations",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "artificial-intelligence",
+        "deep-learning",
+        "generative-ai",
+        "model-parameters"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "deep-learning",
+      "video_slug": "ai-term-deep-learning",
+      "source_guide": "ai-term-deep-learning",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-deep-learning",
+      "article_title": "深度學習（Deep Learning）是什麼",
+      "zh": "深度學習",
+      "en": "Deep Learning",
+      "short": "深度學習",
+      "aliases": [
+        "DL",
+        "Deep Learning",
+        "深度學習"
+      ],
+      "category": "foundation",
+      "playlist": "foundations",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "artificial-intelligence",
+        "generative-ai",
+        "machine-learning",
+        "model-parameters"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "foundation-model",
+      "video_slug": "ai-term-foundation-model",
+      "source_guide": "ai-term-foundation-model",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-foundation-model",
+      "article_title": "基礎模型（Foundation Model）是什麼",
+      "zh": "基礎模型",
+      "en": "Foundation Model",
+      "short": "基礎模型",
+      "aliases": [
+        "Foundation Model",
+        "基礎模型"
+      ],
+      "category": "foundation",
+      "playlist": "foundations",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "fine-tuning",
+        "generative-ai",
+        "model-parameters",
+        "open-weights",
+        "large-language-model"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "transformer",
+      "video_slug": "ai-term-transformer",
+      "source_guide": "ai-term-transformer",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-transformer",
+      "article_title": "Transformer 架構（Transformer）是什麼",
+      "zh": "Transformer 架構",
+      "en": "Transformer",
+      "short": "Transformer",
+      "aliases": [
+        "Transformer",
+        "Transformer 架構"
+      ],
+      "category": "foundation",
+      "playlist": "foundations",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "context-window",
+        "artificial-intelligence",
+        "model-parameters",
+        "large-language-model"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "mixture-of-experts",
+      "video_slug": "ai-term-mixture-of-experts",
+      "source_guide": "ai-term-mixture-of-experts",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-mixture-of-experts",
+      "article_title": "混合專家模型（Mixture of Experts）是什麼",
+      "zh": "混合專家模型",
+      "en": "Mixture of Experts",
+      "short": "混合專家模型",
+      "aliases": [
+        "Mixture of Experts",
+        "MoE",
+        "混合專家模型"
+      ],
+      "category": "foundation",
+      "playlist": "foundations",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "evals",
+        "model-parameters",
+        "multi-agent-system",
+        "transformer"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "model-parameters",
+      "video_slug": "ai-term-model-parameters",
+      "source_guide": "ai-term-model-parameters",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-model-parameters",
+      "article_title": "模型參數（Model Parameters）是什麼",
+      "zh": "模型參數",
+      "en": "Model Parameters",
+      "short": "模型參數",
+      "aliases": [
+        "Model Parameters",
+        "parameters",
+        "參數",
+        "模型參數"
+      ],
+      "category": "foundation",
+      "playlist": "foundations",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "artificial-intelligence",
+        "evals",
+        "fine-tuning",
+        "machine-learning",
+        "mixture-of-experts",
+        "quantization"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "tokenization",
+      "video_slug": "ai-term-tokenization",
+      "source_guide": "ai-term-tokenization",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-tokenization",
+      "article_title": "分詞（Tokenization）是什麼：文字進入模型前的切分",
+      "zh": "分詞",
+      "en": "Tokenization",
+      "short": "分詞",
+      "aliases": [
+        "分詞",
+        "詞元化"
+      ],
+      "category": "context",
+      "playlist": "prompts-context",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "artificial-intelligence",
+        "chunking",
+        "token"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": "原來如此事務所 A08（為什麼 AI 會數錯 strawberry 裡有幾個 r，尚未製作）用同一個機制講「為什麼」；本集講切分怎麼做、怎麼檢查繁中與混合語言，鉤子避開 strawberry。"
+    },
+    {
+      "id": "few-shot-prompting",
+      "video_slug": "ai-term-few-shot-prompting",
+      "source_guide": "ai-term-few-shot-prompting",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-few-shot-prompting",
+      "article_title": "少樣本提示（Few-shot Prompting）是什麼：用例子教清楚格式",
+      "zh": "少樣本提示",
+      "en": "Few-shot Prompting",
+      "short": "少樣本提示",
+      "aliases": [
+        "few-shot",
+        "少樣本提示"
+      ],
+      "category": "context",
+      "playlist": "prompts-context",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "fine-tuning",
+        "in-context-learning",
+        "model-parameters",
+        "token",
+        "zero-shot-prompting"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "zero-shot-prompting",
+      "video_slug": "ai-term-zero-shot-prompting",
+      "source_guide": "ai-term-zero-shot-prompting",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-zero-shot-prompting",
+      "article_title": "零樣本提示（Zero-shot Prompting）是什麼：先把任務說清楚",
+      "zh": "零樣本提示",
+      "en": "Zero-shot Prompting",
+      "short": "零樣本提示",
+      "aliases": [
+        "zero-shot",
+        "零樣本提示"
+      ],
+      "category": "context",
+      "playlist": "prompts-context",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "evals",
+        "few-shot-prompting",
+        "fine-tuning",
+        "retrieval-augmented-generation"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "in-context-learning",
+      "video_slug": "ai-term-in-context-learning",
+      "source_guide": "ai-term-in-context-learning",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-in-context-learning",
+      "article_title": "上下文學習（In-context Learning）是什麼：當場適應新規則",
+      "zh": "上下文學習",
+      "en": "In-context Learning",
+      "short": "上下文學習",
+      "aliases": [
+        "ICL",
+        "情境學習"
+      ],
+      "category": "context",
+      "playlist": "prompts-context",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "agent-memory",
+        "few-shot-prompting",
+        "fine-tuning",
+        "model-parameters"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "context-compaction",
+      "video_slug": "ai-term-context-compaction",
+      "source_guide": "ai-term-context-compaction",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-context-compaction",
+      "article_title": "上下文壓縮（Context Compaction）是什麼：讓長任務接得下去",
+      "zh": "上下文壓縮",
+      "en": "Context Compaction",
+      "short": "上下文壓縮",
+      "aliases": [
+        "context compression",
+        "上下文壓縮"
+      ],
+      "category": "context",
+      "playlist": "prompts-context",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "context-window",
+        "agent-memory"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "context-rot",
+      "video_slug": "ai-term-context-rot",
+      "source_guide": "ai-term-context-rot",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-context-rot",
+      "article_title": "上下文品質衰退（Context Rot）是什麼：長文為何不一定更準",
+      "zh": "上下文品質衰退",
+      "en": "Context Rot",
+      "short": "上下文衰退",
+      "aliases": [
+        "上下文腐化"
+      ],
+      "category": "context",
+      "playlist": "prompts-context",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "context-window",
+        "context-compaction",
+        "context-engineering",
+        "model-parameters"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "agent-memory",
+      "video_slug": "ai-term-agent-memory",
+      "source_guide": "ai-term-agent-memory",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-agent-memory",
+      "article_title": "代理記憶（Agent Memory）是什麼：保存、取回與更新資訊",
+      "zh": "代理記憶",
+      "en": "Agent Memory",
+      "short": "代理記憶",
+      "aliases": [
+        "AI memory",
+        "代理記憶"
+      ],
+      "category": "context",
+      "playlist": "prompts-context",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "context-window",
+        "artificial-intelligence",
+        "context-compaction",
+        "model-parameters",
+        "retrieval-augmented-generation",
+        "vector-database"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "agent-loop",
+      "video_slug": "ai-term-agent-loop",
+      "source_guide": "ai-term-agent-loop",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-agent-loop",
+      "article_title": "代理迴圈（Agent Loop）是什麼：判斷、操作與回饋",
+      "zh": "代理迴圈",
+      "en": "Agent Loop",
+      "short": "代理迴圈",
+      "aliases": [
+        "代理循環"
+      ],
+      "category": "agents",
+      "playlist": "agents",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "ai-agent",
+        "loop-engineering",
+        "model-parameters",
+        "tool-calling"
+      ],
+      "existing_videos": [
+        "always-on-agent-explained"
+      ],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": "always-on-agent-explained 講過代理怎麼運作又怎麼失敗；本集聚焦判斷、操作、回饋三拍與停止條件，不重講常駐代理的新聞。"
+    },
+    {
+      "id": "multi-agent-system",
+      "video_slug": "ai-term-multi-agent-system",
+      "source_guide": "ai-term-multi-agent-system",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-multi-agent-system",
+      "article_title": "多代理系統（Multi-agent System）是什麼：分工與協作的代價",
+      "zh": "多代理系統",
+      "en": "Multi-agent System",
+      "short": "多代理系統",
+      "aliases": [
+        "MAS",
+        "多代理"
+      ],
+      "category": "agents",
+      "playlist": "agents",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "agent-orchestration",
+        "agent2agent-protocol",
+        "subagent"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "subagent",
+      "video_slug": "ai-term-subagent",
+      "source_guide": "ai-term-subagent",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-subagent",
+      "article_title": "子代理（Subagent）是什麼：把有邊界的工作交出去",
+      "zh": "子代理",
+      "en": "Subagent",
+      "short": "子代理",
+      "aliases": [
+        "sub-agent",
+        "子代理"
+      ],
+      "category": "agents",
+      "playlist": "agents",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "agent-orchestration",
+        "multi-agent-system"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "agent-orchestration",
+      "video_slug": "ai-term-agent-orchestration",
+      "source_guide": "ai-term-agent-orchestration",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-agent-orchestration",
+      "article_title": "代理協調（Agent Orchestration）是什麼：安排分工與交付順序",
+      "zh": "代理協調",
+      "en": "Agent Orchestration",
+      "short": "代理協調",
+      "aliases": [
+        "orchestration",
+        "代理編排"
+      ],
+      "category": "agents",
+      "playlist": "agents",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "agent-loop",
+        "agent2agent-protocol",
+        "agentops",
+        "model-context-protocol",
+        "multi-agent-system",
+        "subagent"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "react-reasoning-acting",
+      "video_slug": "ai-term-react-reasoning-acting",
+      "source_guide": "ai-term-react-reasoning-acting",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-react-reasoning-acting",
+      "article_title": "ReAct 是什麼：讓推理與行動交替補足資訊",
+      "zh": "推理與行動交替",
+      "en": "ReAct",
+      "short": "ReAct",
+      "aliases": [
+        "ReAct"
+      ],
+      "category": "agents",
+      "playlist": "agents",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "reasoning-model",
+        "agent-loop",
+        "tool-calling"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "tool-calling",
+      "video_slug": "ai-term-tool-calling",
+      "source_guide": "ai-term-tool-calling",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-tool-calling",
+      "article_title": "工具呼叫（Tool Calling）是什麼：模型如何請程式做事",
+      "zh": "工具呼叫",
+      "en": "Tool Calling",
+      "short": "工具呼叫",
+      "aliases": [
+        "function calling",
+        "tool use",
+        "函式呼叫",
+        "工具使用"
+      ],
+      "category": "agents",
+      "playlist": "agents",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "ai-agent",
+        "agent-loop",
+        "model-context-protocol",
+        "model-parameters"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "agent2agent-protocol",
+      "video_slug": "ai-term-agent2agent-protocol",
+      "source_guide": "ai-term-agent2agent-protocol",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-agent2agent-protocol",
+      "article_title": "代理互通協定（A2A）是什麼：跨系統交辦與回報任務",
+      "zh": "代理互通協定",
+      "en": "Agent2Agent Protocol",
+      "short": "A2A",
+      "aliases": [
+        "A2A"
+      ],
+      "category": "agents",
+      "playlist": "agents",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "agent-skills",
+        "model-context-protocol",
+        "multi-agent-system"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "agentic-rag",
+      "video_slug": "ai-term-agentic-rag",
+      "source_guide": "ai-term-agentic-rag",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-agentic-rag",
+      "article_title": "代理式檢索增強生成（Agentic RAG）：何時需要再查一次",
+      "zh": "代理式檢索增強生成",
+      "en": "Agentic RAG",
+      "short": "Agentic RAG",
+      "aliases": [
+        "代理式 RAG"
+      ],
+      "category": "retrieval",
+      "playlist": "retrieval",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "agent-loop",
+        "agent-orchestration",
+        "retrieval-augmented-generation"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "graph-rag",
+      "video_slug": "ai-term-graph-rag",
+      "source_guide": "ai-term-graph-rag",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-graph-rag",
+      "article_title": "圖譜檢索增強生成（GraphRAG）：從關係看懂整批文件",
+      "zh": "圖譜檢索增強生成",
+      "en": "GraphRAG",
+      "short": "GraphRAG",
+      "aliases": [
+        "GraphRAG",
+        "圖譜 RAG"
+      ],
+      "category": "retrieval",
+      "playlist": "retrieval",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "knowledge-graph",
+        "retrieval-augmented-generation",
+        "semantic-search"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "vector-database",
+      "video_slug": "ai-term-vector-database",
+      "source_guide": "ai-term-vector-database",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-vector-database",
+      "article_title": "向量資料庫（Vector Database）：相似內容怎麼存、怎麼找",
+      "zh": "向量資料庫",
+      "en": "Vector Database",
+      "short": "向量資料庫",
+      "aliases": [
+        "vector DB",
+        "向量資料庫"
+      ],
+      "category": "retrieval",
+      "playlist": "retrieval",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "embedding",
+        "hybrid-search",
+        "retrieval-augmented-generation",
+        "token"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "semantic-search",
+      "video_slug": "ai-term-semantic-search",
+      "source_guide": "ai-term-semantic-search",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-semantic-search",
+      "article_title": "語意搜尋（Semantic Search）：用不同說法找到相關內容",
+      "zh": "語意搜尋",
+      "en": "Semantic Search",
+      "short": "語意搜尋",
+      "aliases": [
+        "語意檢索"
+      ],
+      "category": "retrieval",
+      "playlist": "retrieval",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "artificial-intelligence",
+        "embedding",
+        "hybrid-search",
+        "reranking",
+        "retrieval-augmented-generation",
+        "vector-database"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "hybrid-search",
+      "video_slug": "ai-term-hybrid-search",
+      "source_guide": "ai-term-hybrid-search",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-hybrid-search",
+      "article_title": "混合搜尋（Hybrid Search）：兼顧精確字詞與語意",
+      "zh": "混合搜尋",
+      "en": "Hybrid Search",
+      "short": "混合搜尋",
+      "aliases": [
+        "混合檢索"
+      ],
+      "category": "retrieval",
+      "playlist": "retrieval",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "artificial-intelligence",
+        "model-parameters",
+        "reranking",
+        "semantic-search",
+        "vector-database"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "reranking",
+      "video_slug": "ai-term-reranking",
+      "source_guide": "ai-term-reranking",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-reranking",
+      "article_title": "重新排序（Reranking）：從找得到到把好答案排在前面",
+      "zh": "重新排序",
+      "en": "Reranking",
+      "short": "重新排序",
+      "aliases": [
+        "rerank",
+        "重排序"
+      ],
+      "category": "retrieval",
+      "playlist": "retrieval",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "chunking",
+        "hybrid-search",
+        "retrieval-augmented-generation",
+        "semantic-search",
+        "large-language-model"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "chunking",
+      "video_slug": "ai-term-chunking",
+      "source_guide": "ai-term-chunking",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-chunking",
+      "article_title": "文件分塊（Chunking）：切多長，才不會把答案切斷",
+      "zh": "文件分塊",
+      "en": "Chunking",
+      "short": "文件分塊",
+      "aliases": [
+        "文件分塊"
+      ],
+      "category": "retrieval",
+      "playlist": "retrieval",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "artificial-intelligence",
+        "embedding",
+        "reranking",
+        "retrieval-augmented-generation",
+        "token",
+        "tokenization"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "knowledge-graph",
+      "video_slug": "ai-term-knowledge-graph",
+      "source_guide": "ai-term-knowledge-graph",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-knowledge-graph",
+      "article_title": "知識圖譜（Knowledge Graph）：把事物與關係說清楚",
+      "zh": "知識圖譜",
+      "en": "Knowledge Graph",
+      "short": "知識圖譜",
+      "aliases": [
+        "KG",
+        "知識圖譜"
+      ],
+      "category": "retrieval",
+      "playlist": "retrieval",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "embedding",
+        "graph-rag",
+        "retrieval-augmented-generation"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "pretraining",
+      "video_slug": "ai-term-pretraining",
+      "source_guide": "ai-term-pretraining",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-pretraining",
+      "article_title": "預訓練（Pretraining）：模型的基礎能力從哪裡來",
+      "zh": "預訓練",
+      "en": "Pretraining",
+      "short": "預訓練",
+      "aliases": [
+        "pre-training",
+        "預訓練"
+      ],
+      "category": "training",
+      "playlist": "training",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "artificial-intelligence",
+        "fine-tuning",
+        "in-context-learning",
+        "model-parameters"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "supervised-fine-tuning",
+      "video_slug": "ai-term-supervised-fine-tuning",
+      "source_guide": "ai-term-supervised-fine-tuning",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-supervised-fine-tuning",
+      "article_title": "監督式微調（SFT）：用好示範教模型完成任務",
+      "zh": "監督式微調",
+      "en": "Supervised Fine-tuning",
+      "short": "SFT",
+      "aliases": [
+        "SFT",
+        "監督式微調"
+      ],
+      "category": "training",
+      "playlist": "training",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "direct-preference-optimization",
+        "few-shot-prompting",
+        "fine-tuning",
+        "model-parameters"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "rlhf",
+      "video_slug": "ai-term-rlhf",
+      "source_guide": "ai-term-rlhf",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-rlhf",
+      "article_title": "人類回饋強化學習（RLHF）：把偏好變成訓練訊號",
+      "zh": "人類回饋強化學習",
+      "en": "RLHF",
+      "short": "RLHF",
+      "aliases": [
+        "Reinforcement Learning from Human Feedback",
+        "人類回饋強化學習"
+      ],
+      "category": "training",
+      "playlist": "training",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "direct-preference-optimization",
+        "fine-tuning",
+        "human-in-the-loop",
+        "model-parameters",
+        "supervised-fine-tuning",
+        "token"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "direct-preference-optimization",
+      "video_slug": "ai-term-direct-preference-optimization",
+      "source_guide": "ai-term-direct-preference-optimization",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-direct-preference-optimization",
+      "article_title": "直接偏好最佳化（DPO）：用回答比較直接調整模型",
+      "zh": "直接偏好最佳化",
+      "en": "Direct Preference Optimization",
+      "short": "DPO",
+      "aliases": [
+        "DPO",
+        "直接偏好最佳化"
+      ],
+      "category": "training",
+      "playlist": "training",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "lora",
+        "model-parameters",
+        "rlhf",
+        "supervised-fine-tuning",
+        "token"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "lora",
+      "video_slug": "ai-term-lora",
+      "source_guide": "ai-term-lora",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-lora",
+      "article_title": "低秩適應（LoRA）：少量可訓練參數如何調整模型",
+      "zh": "低秩適應",
+      "en": "LoRA",
+      "short": "LoRA",
+      "aliases": [
+        "Low-Rank Adaptation",
+        "低秩調適"
+      ],
+      "category": "training",
+      "playlist": "training",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "fine-tuning",
+        "model-parameters",
+        "quantization",
+        "supervised-fine-tuning"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "knowledge-distillation",
+      "video_slug": "ai-term-knowledge-distillation",
+      "source_guide": "ai-term-knowledge-distillation",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-knowledge-distillation",
+      "article_title": "知識蒸餾（Knowledge Distillation）：讓學生模型學教師",
+      "zh": "知識蒸餾",
+      "en": "Knowledge Distillation",
+      "short": "知識蒸餾",
+      "aliases": [
+        "distillation",
+        "知識蒸餾"
+      ],
+      "category": "training",
+      "playlist": "training",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "fine-tuning",
+        "model-parameters",
+        "quantization",
+        "small-language-model",
+        "supervised-fine-tuning"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "quantization",
+      "video_slug": "ai-term-quantization",
+      "source_guide": "ai-term-quantization",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-quantization",
+      "article_title": "量化（Quantization）：用較少位元執行模型的取捨",
+      "zh": "量化",
+      "en": "Quantization",
+      "short": "量化",
+      "aliases": [
+        "模型量化"
+      ],
+      "category": "training",
+      "playlist": "training",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "fine-tuning",
+        "knowledge-distillation",
+        "lora",
+        "model-parameters"
+      ],
+      "existing_videos": [
+        "rtx-spark-local-ai"
+      ],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": "本機 AI 那支提到量化後的模型大小；本集講量化的取捨本身。"
+    },
+    {
+      "id": "test-time-compute",
+      "video_slug": "ai-term-test-time-compute",
+      "source_guide": "ai-term-test-time-compute",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-test-time-compute",
+      "article_title": "推論時計算（Test-time Compute）：把算力花在這一道題",
+      "zh": "推論時計算",
+      "en": "Test-time Compute",
+      "short": "推論時計算",
+      "aliases": [
+        "inference-time compute",
+        "推論時計算",
+        "測試時計算"
+      ],
+      "category": "training",
+      "playlist": "training",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "reasoning-model",
+        "evals",
+        "knowledge-distillation",
+        "llm-as-a-judge",
+        "model-parameters"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "prompt-caching",
+      "video_slug": "ai-term-prompt-caching",
+      "source_guide": "ai-term-prompt-caching",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-prompt-caching",
+      "article_title": "提示詞快取（Prompt Caching）：重用相同字首的計算",
+      "zh": "提示詞快取",
+      "en": "Prompt Caching",
+      "short": "提示詞快取",
+      "aliases": [
+        "提示詞快取"
+      ],
+      "category": "training",
+      "playlist": "training",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "context-window",
+        "agent-memory",
+        "context-compaction",
+        "token"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "evals",
+      "video_slug": "ai-term-evals",
+      "source_guide": "ai-term-evals",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-evals",
+      "article_title": "模型與代理評測（Evals）是什麼",
+      "zh": "模型與代理評測",
+      "en": "Evals",
+      "short": "Evals",
+      "aliases": [
+        "Evals",
+        "evaluation",
+        "模型與代理評測",
+        "評測"
+      ],
+      "category": "evaluation",
+      "playlist": "evaluation-safety",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "agentops",
+        "benchmark",
+        "llm-as-a-judge"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "benchmark",
+      "video_slug": "ai-term-benchmark",
+      "source_guide": "ai-term-benchmark",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-benchmark",
+      "article_title": "基準測試（Benchmark）是什麼",
+      "zh": "基準測試",
+      "en": "Benchmark",
+      "short": "基準測試",
+      "aliases": [
+        "Benchmark",
+        "基準測試"
+      ],
+      "category": "evaluation",
+      "playlist": "evaluation-safety",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "artificial-intelligence",
+        "evals",
+        "fine-tuning",
+        "llm-as-a-judge",
+        "test-time-compute"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "llm-as-a-judge",
+      "video_slug": "ai-term-llm-as-a-judge",
+      "source_guide": "ai-term-llm-as-a-judge",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-llm-as-a-judge",
+      "article_title": "以語言模型擔任評審（LLM-as-a-Judge）是什麼",
+      "zh": "以語言模型擔任評審",
+      "en": "LLM-as-a-Judge",
+      "short": "LLM 評審",
+      "aliases": [
+        "LLM judge",
+        "LLM-as-a-Judge",
+        "以語言模型擔任評審",
+        "模型評審"
+      ],
+      "category": "evaluation",
+      "playlist": "evaluation-safety",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "benchmark",
+        "evals",
+        "prompt-injection",
+        "large-language-model"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "jailbreak",
+      "video_slug": "ai-term-jailbreak",
+      "source_guide": "ai-term-jailbreak",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-jailbreak",
+      "article_title": "越獄提示（Jailbreak）是什麼",
+      "zh": "越獄提示",
+      "en": "Jailbreak",
+      "short": "越獄提示",
+      "aliases": [
+        "Jailbreak",
+        "越獄",
+        "越獄提示"
+      ],
+      "category": "evaluation",
+      "playlist": "evaluation-safety",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "artificial-intelligence",
+        "evals",
+        "guardrails",
+        "prompt-injection"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "sandbox",
+      "video_slug": "ai-term-sandbox",
+      "source_guide": "ai-term-sandbox",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-sandbox",
+      "article_title": "沙盒（Sandbox）：讓 AI 執行工具時有明確邊界",
+      "zh": "沙盒",
+      "en": "Sandbox",
+      "short": "沙盒",
+      "aliases": [
+        "沙箱"
+      ],
+      "category": "evaluation",
+      "playlist": "evaluation-safety",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "ai-agent",
+        "artificial-intelligence",
+        "guardrails",
+        "human-in-the-loop"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "human-in-the-loop",
+      "video_slug": "ai-term-human-in-the-loop",
+      "source_guide": "ai-term-human-in-the-loop",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-human-in-the-loop",
+      "article_title": "人工介入（Human-in-the-loop）：讓人有資訊也有決定權",
+      "zh": "人工介入",
+      "en": "Human-in-the-loop",
+      "short": "人工介入",
+      "aliases": [
+        "HITL",
+        "人類參與迴圈"
+      ],
+      "category": "evaluation",
+      "playlist": "evaluation-safety",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "agent-orchestration",
+        "artificial-intelligence",
+        "guardrails",
+        "rlhf"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "red-teaming",
+      "video_slug": "ai-term-red-teaming",
+      "source_guide": "ai-term-red-teaming",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-red-teaming",
+      "article_title": "紅隊測試（Red Teaming）：主動找出 AI 系統會怎樣失敗",
+      "zh": "紅隊測試",
+      "en": "Red Teaming",
+      "short": "紅隊測試",
+      "aliases": [
+        "red team",
+        "紅隊測試"
+      ],
+      "category": "evaluation",
+      "playlist": "evaluation-safety",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "artificial-intelligence",
+        "generative-ai",
+        "guardrails",
+        "model-parameters",
+        "prompt-injection",
+        "sandbox",
+        "token"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "diffusion-model",
+      "video_slug": "ai-term-diffusion-model",
+      "source_guide": "ai-term-diffusion-model",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-diffusion-model",
+      "article_title": "擴散模型（Diffusion Model）是什麼：從雜訊逐步生成影像",
+      "zh": "擴散模型",
+      "en": "Diffusion Model",
+      "short": "擴散模型",
+      "aliases": [
+        "擴散模型"
+      ],
+      "category": "multimodal",
+      "playlist": "multimodal-open",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "generative-ai",
+        "model-parameters",
+        "text-to-image",
+        "text-to-video"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": "原來如此事務所 A16（為什麼 AI 特別容易畫錯手指，尚未製作）會碰到擴散模型；本集的鉤子避開手指梗。"
+    },
+    {
+      "id": "text-to-image",
+      "video_slug": "ai-term-text-to-image",
+      "source_guide": "ai-term-text-to-image",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-text-to-image",
+      "article_title": "文字生圖（Text-to-Image）是什麼：把描述轉成可挑選的影像",
+      "zh": "文生圖",
+      "en": "Text-to-Image",
+      "short": "文生圖",
+      "aliases": [
+        "T2I",
+        "文生圖"
+      ],
+      "category": "multimodal",
+      "playlist": "multimodal-open",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "artificial-intelligence",
+        "diffusion-model",
+        "multimodal-ai",
+        "text-to-video"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "text-to-video",
+      "video_slug": "ai-term-text-to-video",
+      "source_guide": "ai-term-text-to-video",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-text-to-video",
+      "article_title": "文字生影片（Text-to-Video）是什麼：讓畫面在時間裡保持連貫",
+      "zh": "文生影片",
+      "en": "Text-to-Video",
+      "short": "文生影片",
+      "aliases": [
+        "T2V",
+        "文生影",
+        "文生影片"
+      ],
+      "category": "multimodal",
+      "playlist": "multimodal-open",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "deepfake",
+        "diffusion-model",
+        "generative-ai",
+        "text-to-image"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "automatic-speech-recognition",
+      "video_slug": "ai-term-automatic-speech-recognition",
+      "source_guide": "ai-term-automatic-speech-recognition",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-automatic-speech-recognition",
+      "article_title": "自動語音辨識（ASR）是什麼：把錄音轉成可核對的文字",
+      "zh": "語音辨識",
+      "en": "Automatic Speech Recognition",
+      "short": "語音辨識",
+      "aliases": [
+        "ASR",
+        "STT",
+        "speech-to-text",
+        "語音轉文字"
+      ],
+      "category": "multimodal",
+      "playlist": "multimodal-open",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "hallucination",
+        "artificial-intelligence",
+        "multimodal-ai",
+        "text-to-speech",
+        "token"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "text-to-speech",
+      "video_slug": "ai-term-text-to-speech",
+      "source_guide": "ai-term-text-to-speech",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-text-to-speech",
+      "article_title": "語音合成（TTS）是什麼：讓文字成為聽得懂、聽得對的聲音",
+      "zh": "語音合成",
+      "en": "Text-to-Speech",
+      "short": "語音合成",
+      "aliases": [
+        "TTS",
+        "語音合成"
+      ],
+      "category": "multimodal",
+      "playlist": "multimodal-open",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "automatic-speech-recognition",
+        "deepfake",
+        "multimodal-ai",
+        "token"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "open-source-ai",
+      "video_slug": "ai-term-open-source-ai",
+      "source_guide": "ai-term-open-source-ai",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-open-source-ai",
+      "article_title": "開源 AI（Open Source AI）：公開哪些東西才算完整",
+      "zh": "開源 AI",
+      "en": "Open Source AI",
+      "short": "開源 AI",
+      "aliases": [
+        "開源 AI"
+      ],
+      "category": "multimodal",
+      "playlist": "multimodal-open",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "artificial-intelligence",
+        "fine-tuning",
+        "machine-learning",
+        "model-parameters",
+        "open-weights",
+        "pretraining"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "content-credentials",
+      "video_slug": "ai-term-content-credentials",
+      "source_guide": "ai-term-content-credentials",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-content-credentials",
+      "article_title": "內容憑證（Content Credentials）：查來源歷程，不替真假背書",
+      "zh": "內容憑證",
+      "en": "Content Credentials",
+      "short": "內容憑證",
+      "aliases": [
+        "內容憑證"
+      ],
+      "category": "multimodal",
+      "playlist": "multimodal-open",
+      "tier": 2,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "artificial-intelligence",
+        "deepfake",
+        "multimodal-ai",
+        "text-to-image"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "harness-engineering",
+      "video_slug": "ai-term-harness-engineering",
+      "source_guide": "ai-term-harness-engineering",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-harness-engineering",
+      "article_title": "代理執行環境工程（Harness Engineering）是什麼",
+      "zh": "代理執行環境工程",
+      "en": "Harness Engineering",
+      "short": "Harness",
+      "aliases": [
+        "Harness Engineering",
+        "代理執行框架工程",
+        "代理執行環境工程"
+      ],
+      "category": "engineering",
+      "playlist": "engineering",
+      "tier": 3,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "agent-loop",
+        "context-engineering",
+        "loop-engineering",
+        "model-parameters"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "loop-engineering",
+      "video_slug": "ai-term-loop-engineering",
+      "source_guide": "ai-term-loop-engineering",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-loop-engineering",
+      "article_title": "Loop Engineering 是什麼：讓 AI 持續工作，也知道何時停止",
+      "zh": "迴圈工程",
+      "en": "Loop Engineering",
+      "short": "迴圈工程",
+      "aliases": [
+        "循環工程",
+        "迴圈工程"
+      ],
+      "category": "engineering",
+      "playlist": "engineering",
+      "tier": 3,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "ai-agent",
+        "agent-loop",
+        "agentic-engineering",
+        "artificial-intelligence",
+        "evals",
+        "harness-engineering",
+        "subagent"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "agentic-engineering",
+      "video_slug": "ai-term-agentic-engineering",
+      "source_guide": "ai-term-agentic-engineering",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-agentic-engineering",
+      "article_title": "代理式工程（Agentic Engineering）是什麼",
+      "zh": "代理式工程",
+      "en": "Agentic Engineering",
+      "short": "代理式工程",
+      "aliases": [
+        "Agentic Engineering",
+        "代理工程",
+        "代理式工程"
+      ],
+      "category": "engineering",
+      "playlist": "engineering",
+      "tier": 3,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "agentops",
+        "artificial-intelligence",
+        "spec-driven-development",
+        "vibe-coding"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "llmops",
+      "video_slug": "ai-term-llmops",
+      "source_guide": "ai-term-llmops",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-llmops",
+      "article_title": "大型語言模型維運（LLMOps）是什麼",
+      "zh": "大型語言模型維運",
+      "en": "LLMOps",
+      "short": "LLMOps",
+      "aliases": [
+        "LLM Operations",
+        "LLMOps",
+        "大型語言模型維運"
+      ],
+      "category": "engineering",
+      "playlist": "engineering",
+      "tier": 3,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "agentops",
+        "artificial-intelligence",
+        "evals",
+        "prompt-engineering",
+        "token",
+        "large-language-model"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    },
+    {
+      "id": "agentops",
+      "video_slug": "ai-term-agentops",
+      "source_guide": "ai-term-agentops",
+      "article_url": "https://mokaair.com/zh-TW/life/ai-term-agentops",
+      "article_title": "代理系統維運（AgentOps）是什麼",
+      "zh": "代理系統維運",
+      "en": "AgentOps",
+      "short": "AgentOps",
+      "aliases": [
+        "Agent Operations",
+        "AgentOps",
+        "代理系統維運"
+      ],
+      "category": "engineering",
+      "playlist": "engineering",
+      "tier": 3,
+      "suggested_order": null,
+      "hook": null,
+      "related": [
+        "ai-agent",
+        "agent-orchestration",
+        "evals",
+        "llmops",
+        "model-parameters",
+        "tool-calling"
+      ],
+      "existing_videos": [],
+      "status": "backlog",
+      "video_id": null,
+      "published_at": null,
+      "notes": ""
+    }
+  ]
+}
