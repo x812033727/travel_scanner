@@ -1,7 +1,7 @@
 ---
 id: 2026-09-30-news-automation-has-no-taiwan-sources
 title: News automation has no Taiwan sources: add readable feeds from FSC, MODA, the central bank and others
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: claude-opus-5-5-news-4-9
