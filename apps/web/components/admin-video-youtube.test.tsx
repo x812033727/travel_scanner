@@ -41,7 +41,8 @@ function stub(answer: (url: string, method: string, body: unknown) => unknown) {
     const method = init?.method ?? "GET";
     const body = init?.body ? JSON.parse(String(init.body)) : undefined;
     calls.push({ url, method, body });
-    const value = answer(url, method, body);
+    // The catalog under the groups (admin-video-browser.tsx) is not what these tests look at.
+    const value = url.includes("/admin/videos/browse") ? { items: [], total: 0, page: 1, pages: 0, facets: { category: [], state: [] } } : answer(url, method, body);
     return Promise.resolve(value instanceof Response ? value : Response.json(value));
   }));
   return calls;

@@ -1,7 +1,8 @@
 import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AdminOperationsProvider } from "./admin-operations-provider";
-import { youtubeVideoId } from "./admin-video-review-card";
+import { BROWSE_STATES } from "./admin-video-browser";
+import { VIDEO_CATEGORIES, youtubeVideoId } from "./admin-video-review-card";
 import { AdminVideoReviews, REFRESH_MS } from "./admin-video-reviews";
 import type { AdminBootstrap } from "@/lib/admin-operations";
 
@@ -28,15 +29,42 @@ const final = {
   status: "pending", choice: null, note: null, decided_at: null, created_at: "2026-09-25T05:00:00Z",
 };
 
+// One page of the catalog under the groups (admin-video-browser.tsx), with the counts the server
+// would put on the pills, worked out from the items the way the server does.
+type Item = { slug: string; category?: string | null; dropped_at?: string | null; youtube_video_id?: string | null } & Record<string, unknown>;
+const browseState = (item: Item) => (item.dropped_at ? "dropped" : item.youtube_video_id ? "published" : "working");
+function pageOf(items: Item[], extra: Record<string, unknown> = {}) {
+  return {
+    items, total: items.length, page: 1, pages: items.length ? 1 : 0,
+    facets: {
+      category: [...VIDEO_CATEGORIES, "none"].map((code) => ({ code, count: items.filter((item) => (item.category ?? "none") === code).length })),
+      state: BROWSE_STATES.map((code) => ({ code, count: items.filter((item) => browseState(item) === code).length })),
+    },
+    ...extra,
+  };
+}
+/** A fetch stub that answers the catalog from `items` (read at call time) and everything else from `answer`. */
+const withBrowse = (answer: (input: RequestInfo | URL, init?: RequestInit) => Promise<Response>, items: Item[] | (() => Item[]) = []) =>
+  vi.fn((input: RequestInfo | URL, init?: RequestInit) => (String(input).includes("/admin/videos/browse")
+    ? Promise.resolve(Response.json(pageOf(typeof items === "function" ? items() : items)))
+    : answer(input, init)));
+const tableRows = (table: HTMLElement) => [...table.querySelectorAll("tbody tr")].map((row) => row.textContent ?? "");
+
 function stubFetch() {
-  const posts: Array<{ url: string; body: unknown }> = [];
-  const fetchMock = vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+  const posts: Array<{ url: string; method: string; body: unknown }> = [];
+  let category: string | null = null;
+  const fetchMock = withBrowse((input: RequestInfo | URL, init?: RequestInit) => {
     const url = String(input);
-    if (init?.method === "POST") {
-      posts.push({ url, body: JSON.parse(String(init.body)) });
+    if (init?.method === "POST" || init?.method === "PUT") {
+      const body = JSON.parse(String(init.body)) as Record<string, unknown>;
+      posts.push({ url, method: init.method, body });
+      if (init.method === "PUT") {
+        if (url.endsWith("/category")) category = body.category as string | null;
+        return Promise.resolve(Response.json({ ...summary, category, reviews: [outline, final] }));
+      }
       return Promise.resolve(Response.json({ ...outline, status: "approved" }));
     }
-    const body = url.endsWith("/admin/videos?shorts=exclude") ? [summary] : { ...summary, reviews: [outline, final] };
+    const body = url.endsWith("/admin/videos?shorts=exclude") ? [summary] : { ...summary, category, reviews: [outline, final] };
     return Promise.resolve(Response.json(body));
   });
   vi.stubGlobal("fetch", fetchMock);
@@ -429,27 +457,28 @@ describe("AdminVideoReviews", () => {
     const scheduled = { ...base, slug: "scheduled-video", title: "排定的影片", youtube_video_id: "abcdefghijk", youtube_publish_at: "2999-01-01T00:00:00Z", publish_approved_at: "2026-09-27T05:00:00Z" };
     const published = { ...base, slug: "public-video", title: "公開的影片", youtube_video_id: "abcdefghijl", youtube_publish_at: "2026-09-01T00:00:00Z", publish_approved_at: "2026-08-27T05:00:00Z" };
     const all = [deciding, making, ready, scheduled, published];
-    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
+    vi.stubGlobal("fetch", withBrowse((input: RequestInfo | URL) => {
       const url = String(input);
       if (url.endsWith("/admin/videos?shorts=exclude")) return Promise.resolve(Response.json(all));
       const project = all.find((each) => url.endsWith(`/admin/videos/${each.slug}`)) ?? making;
       return Promise.resolve(Response.json({ ...project, reviews: [] }));
-    }));
+    }, all));
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
     await screen.findByRole("article", { name: "可上架的影片" });
-    expect(screen.getAllByRole("region").map((region) => region.getAttribute("aria-label"))).toEqual(["需要你", "可以上架", "進行中", "已上架"]);
+    // The two groups that wait for the owner, then the catalog of every tutorial.
+    expect(screen.getAllByRole("region").map((region) => region.getAttribute("aria-label"))).toEqual(["需要你", "可以上架", "全部影片"]);
     const needs = screen.getByRole("region", { name: "需要你" });
     expect(needs.textContent).toContain("等語言的影片");
     expect(needs.textContent).toContain("等你決定語言");
-    const working = screen.getByRole("region", { name: "進行中" });
-    expect(working.textContent).toContain("做語言的影片");
-    expect(working.textContent).toContain("語言製作中");
-    const onYouTube = screen.getByRole("region", { name: "已上架" });
-    const items = [...onYouTube.querySelectorAll("li")].map((item) => item.textContent);
-    expect(items[0]).toContain("排定的影片");
-    expect(items[0]).toContain("已排定");
-    expect(items[1]).toContain("公開的影片");
-    expect(items[1]).toContain("已上架");
+    const rows = tableRows(await screen.findByRole("table", { name: "全部影片" }));
+    expect(rows).toHaveLength(5);
+    const rowOf = (title: string) => rows.find((row) => row.includes(title)) ?? "";
+    expect(rowOf("等語言的影片")).toContain("等你決定語言");
+    expect(rowOf("做語言的影片")).toContain("語言製作中");
+    expect(rowOf("可上架的影片")).toContain("可以上架");
+    expect(rowOf("排定的影片")).toContain("已排定");
+    expect(rowOf("公開的影片")).toContain("已上架");
+    expect(rowOf("公開的影片")).toContain("YouTube 影片 abcdefghijl");
 
     fireEvent.click(screen.getByRole("button", { name: /做語言的影片/ }));
     await screen.findByRole("heading", { name: "做語言的影片" });
@@ -469,13 +498,14 @@ describe("AdminVideoReviews", () => {
       target_minutes: 2, planned_episodes: 1, episodes_per_chapter: 1, chapters: 1, open_ended: false, status: "setting", note: null, requested_chapter: null, force_next: false,
       episodes_done: 0, episodes_started: 0, episodes_ready: 0, docs_pending: 1, messages_pending: 0, media_usd: 12.5, clip_seconds: 96, created_at: "2026-09-27T00:00:00Z", updated_at: "2026-09-27T01:00:00Z",
     };
-    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
+    const tutorial = { ...summary, slug: "a-tutorial", title: "教學片", pending: 0 };
+    vi.stubGlobal("fetch", withBrowse((input: RequestInfo | URL) => {
       const url = String(input);
       if (url.endsWith("/admin/video-automation/series?kind=one-off")) return Promise.resolve(Response.json({ series: [oneOff] }));
       if (url.includes("/admin/video-automation/series")) return Promise.resolve(Response.json({ series: [] }));
       if (url.endsWith("/drama-requests")) return Promise.resolve(Response.json({ requests: [] }));
-      return Promise.resolve(Response.json([{ ...summary, pending: 0, format: "drama", series_slug: "one-off-1a2b3c4d", episode_number: 1, media_usd: 12.5, clip_seconds: 96 }, { ...summary, slug: "a-tutorial", title: "教學片", pending: 0 }]));
-    }));
+      return Promise.resolve(Response.json([{ ...summary, pending: 0, format: "drama", series_slug: "one-off-1a2b3c4d", episode_number: 1, media_usd: 12.5, clip_seconds: 96 }, tutorial]));
+    }, [tutorial]));
     const { unmount } = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
     await screen.findByRole("button", { name: /教學片/ });
     expect(screen.queryByRole("button", { name: /AI 模型怎麼挑/ })).toBeNull();
@@ -731,11 +761,16 @@ describe("AdminVideoReviews", () => {
     expect(calls.filter((url) => url.includes("/messages?subject="))).toHaveLength(1);
   });
 
-  it("marks a dropped video in the list", async () => {
-    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(Response.json([{ ...summary, pending: 0, dropped_at: "2026-09-25T13:00:00Z" }]))));
+  it("marks a dropped video in the catalog, and a video nobody filed as uncategorized", async () => {
+    const dropped = { ...summary, pending: 0, dropped_at: "2026-09-25T13:00:00Z" };
+    vi.stubGlobal("fetch", withBrowse(() => Promise.resolve(Response.json([dropped])), [dropped]));
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
-    const item = await screen.findByRole("button", { name: /AI 模型怎麼挑/ });
-    expect(item.textContent).toContain("已放棄");
+    const item = await screen.findByRole("button", { name: "AI 模型怎麼挑" });
+    const row = item.closest("tr")?.textContent ?? "";
+    expect(row).toContain("已放棄");
+    expect(row).toContain("未分類");
+    expect(row).toContain("尚未上架");
+    expect(screen.queryByRole("region", { name: "需要你" })).toBeNull();
   });
 
   it("shows why Jev picked an outline, and the quality check items with the failed ones first", async () => {
@@ -806,27 +841,28 @@ describe("AdminVideoReviews", () => {
     };
     const posts: Array<{ url: string; body: unknown }> = [];
     let linked = false;
-    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+    const listed = () => [published, linked ? { ...ready, youtube_video_id: "dQw4w9WgXcQ" } : ready, blocked, summary];
+    vi.stubGlobal("fetch", withBrowse((input: RequestInfo | URL, init?: RequestInit) => {
       const url = String(input);
       if (init?.method === "POST") {
         posts.push({ url, body: JSON.parse(String(init.body)) });
         linked = true;
         return Promise.resolve(Response.json({ ...ready, youtube_video_id: "dQw4w9WgXcQ", reviews: [confirmation] }));
       }
-      const current = linked ? { ...ready, youtube_video_id: "dQw4w9WgXcQ" } : ready;
-      if (url.endsWith("/admin/videos?shorts=exclude")) return Promise.resolve(Response.json([published, current, blocked, summary]));
+      const current = listed()[1];
+      if (url.endsWith("/admin/videos?shorts=exclude")) return Promise.resolve(Response.json(listed()));
       if (url.endsWith("/admin/videos/upload-ready")) return Promise.resolve(Response.json({ ...current, reviews: [confirmation] }));
       return Promise.resolve(Response.json({ ...summary, reviews: [] }));
-    }));
+    }, listed));
     const writeText = vi.fn().mockResolvedValue(undefined);
     Object.defineProperty(navigator, "clipboard", { value: { writeText }, configurable: true });
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
     const card = await screen.findByRole("article", { name: "上傳包影片" });
-    expect(screen.getAllByRole("region").map((region) => region.getAttribute("aria-label"))).toEqual(["需要你", "可以上架", "已上架"]);
+    expect(screen.getAllByRole("region").map((region) => region.getAttribute("aria-label"))).toEqual(["需要你", "可以上架", "全部影片"]);
     const needs = screen.getByRole("region", { name: "需要你" });
     expect([...needs.querySelectorAll("button")].map((button) => button.textContent)).toEqual([expect.stringContaining("卡住的影片"), expect.stringContaining("AI 模型怎麼挑")]);
     expect(needs.textContent).toContain("卡住");
-    expect(screen.getByRole("region", { name: "已上架" }).textContent).toContain("YouTube 影片 abcdefghijk");
+    expect(tableRows(await screen.findByRole("table", { name: "全部影片" })).find((row) => row.includes("已上架的影片"))).toContain("YouTube 影片 abcdefghijk");
 
     await waitFor(() => expect(card.textContent).toContain("9.5 分鐘"));
     expect(card.textContent).toContain("6 章");
@@ -857,8 +893,133 @@ describe("AdminVideoReviews", () => {
     await waitFor(() => expect(posts).toHaveLength(1));
     expect(posts[0].url).toContain("/admin/videos/upload-ready/youtube");
     expect(posts[0].body).toEqual({ url: "https://youtu.be/dQw4w9WgXcQ?si=share", publish_at: new Date("2026-10-01T20:00").toISOString() });
-    await waitFor(() => expect(screen.getByRole("region", { name: "已上架" }).textContent).toContain("上傳包影片"));
-    expect(screen.queryByRole("region", { name: "可以上架" })).toBeNull();
+    // Linking the video reads the groups and the catalog again: the card goes, its line says it is on YouTube.
+    await waitFor(() => expect(screen.queryByRole("region", { name: "可以上架" })).toBeNull());
+    await waitFor(() => expect(tableRows(screen.getByRole("table", { name: "全部影片" })).find((row) => row.includes("上傳包影片"))).toContain("YouTube 影片 dQw4w9WgXcQ"));
+  });
+
+  it("filters the catalog by category and state, searches it, and keeps the typed search across reloads", async () => {
+    const news = { ...summary, slug: "gemini-student", title: "Gemini 學生方案", pending: 0, category: "ai-news" };
+    const unfiled = { ...summary, pending: 0 };
+    const gone = { ...summary, slug: "old-tutorial", title: "舊教學", pending: 0, category: "tutorial", dropped_at: "2026-09-25T13:00:00Z" };
+    const items: Item[] = [news, unfiled, gone];
+    const urls: string[] = [];
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/admin/videos/browse")) {
+        urls.push(url);
+        const query = new URL(url, "http://test").searchParams;
+        const matches = (item: Item, skip: string) => (skip === "category" || !query.get("category") || (item.category ?? "none") === query.get("category"))
+          && (skip === "state" || !query.get("state") || browseState(item) === query.get("state"))
+          && (!query.get("q") || String(item.title).includes(query.get("q") ?? ""));
+        const shown = items.filter((item) => matches(item, ""));
+        // Each facet is counted with the other filters kept and its own dropped, as the server does.
+        const facets = { category: pageOf(items.filter((item) => matches(item, "category"))).facets.category, state: pageOf(items.filter((item) => matches(item, "state"))).facets.state };
+        return Promise.resolve(Response.json({ ...pageOf(shown), facets }));
+      }
+      return Promise.resolve(Response.json(url.endsWith("/admin/videos?shorts=exclude") ? items : { ...unfiled, reviews: [] }));
+    }));
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const table = await screen.findByRole("table", { name: "全部影片" });
+    expect(tableRows(table)).toHaveLength(3);
+    expect(tableRows(table).find((row) => row.includes("Gemini 學生方案"))).toContain("AI／科技時事");
+    expect(tableRows(table).find((row) => row.includes("AI 模型怎麼挑"))).toContain("未分類");
+    expect(screen.getByText("共 3 支")).toBeTruthy();
+    expect(urls[0]).toContain("/admin/videos/browse?page=1&limit=30");
+
+    // The pills carry the server's counts; a category with none is not clickable.
+    const categories = screen.getByRole("group", { name: "分類" });
+    expect(within(categories).getByRole("button", { name: /^全部分類/ }).textContent).toBe("全部分類3");
+    expect(within(categories).getByRole("button", { name: /^AI／科技時事/ }).textContent).toBe("AI／科技時事1");
+    expect(within(categories).getByRole("button", { name: /^觀念解說/ })).toHaveProperty("disabled", true);
+    fireEvent.click(within(categories).getByRole("button", { name: /^AI／科技時事/ }));
+    expect(window.location.search).toBe("?category=ai-news");
+    await waitFor(() => expect(urls.at(-1)).toContain("category=ai-news"));
+    await waitFor(() => expect(tableRows(screen.getByRole("table", { name: "全部影片" }))).toHaveLength(1));
+    fireEvent.click(within(categories).getByRole("button", { name: /^未分類/ }));
+    expect(window.location.search).toBe("?category=none");
+    await waitFor(() => expect(urls.at(-1)).toContain("category=none"));
+    fireEvent.click(within(categories).getByRole("button", { name: /^全部分類/ }));
+    expect(window.location.search).toBe("");
+
+    const states = screen.getByRole("group", { name: "狀態" });
+    fireEvent.click(within(states).getByRole("button", { name: /^已放棄/ }));
+    expect(window.location.search).toBe("?state=dropped");
+    await waitFor(() => expect(tableRows(screen.getByRole("table", { name: "全部影片" }))).toEqual([expect.stringContaining("舊教學")]));
+
+    // What is typed stays through a reload for another filter; Enter sends it as q and resets the page.
+    const box = screen.getByRole("searchbox", { name: "搜尋" });
+    fireEvent.change(box, { target: { value: "學生" } });
+    fireEvent.click(within(states).getByRole("button", { name: /^全部/ }));
+    await waitFor(() => expect(urls.at(-1)).not.toContain("state="));
+    expect((screen.getByRole("searchbox", { name: "搜尋" }) as HTMLInputElement).value).toBe("學生");
+    fireEvent.submit(box.closest("form") as HTMLFormElement);
+    expect(window.location.search).toBe(`?q=${encodeURIComponent("學生")}`);
+    await waitFor(() => expect(urls.at(-1)).toContain(`q=${encodeURIComponent("學生")}`));
+    await waitFor(() => expect(tableRows(screen.getByRole("table", { name: "全部影片" }))).toEqual([expect.stringContaining("Gemini 學生方案")]));
+    fireEvent.change(screen.getByRole("searchbox", { name: "搜尋" }), { target: { value: "沒有這支" } });
+    fireEvent.submit(box.closest("form") as HTMLFormElement);
+    await screen.findByText("沒有符合條件的影片。");
+  });
+
+  it("pages through the catalog and falls back to the last page when the URL is past it", async () => {
+    const urls: string[] = [];
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/admin/videos/browse")) {
+        urls.push(url);
+        const page = Number(new URL(url, "http://test").searchParams.get("page") ?? "1");
+        return Promise.resolve(Response.json(pageOf([{ ...summary, pending: 0 }], { total: 40, page: Math.min(page, 2), pages: 2 })));
+      }
+      return Promise.resolve(Response.json(url.endsWith("/admin/videos?shorts=exclude") ? [] : { ...summary, reviews: [] }));
+    }));
+    window.history.replaceState(null, "", "/?page=7");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    await screen.findByRole("table", { name: "全部影片" });
+    expect(urls[0]).toContain("page=7");
+    await waitFor(() => expect(window.location.search).toBe("?page=2"));
+    await waitFor(() => expect(urls.at(-1)).toContain("page=2&"));
+    const paging = await screen.findByRole("navigation", { name: "第 2／2 頁" });
+    expect(within(paging).getByRole("button", { name: "下一頁" })).toHaveProperty("disabled", true);
+    fireEvent.click(within(paging).getByRole("button", { name: "上一頁" }));
+    expect(window.location.search).toBe("");
+    await waitFor(() => expect(urls.at(-1)).toContain("page=1&"));
+    fireEvent.click(screen.getByRole("button", { name: "下一頁" }));
+    expect(window.location.search).toBe("?page=2");
+  });
+
+  it("lets a content manager file the video under a category on its page, and a reader only see it", async () => {
+    const posts = stubFetch();
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    fireEvent.click(await screen.findByRole("button", { name: /AI 模型怎麼挑/ }));
+    const form = await screen.findByRole("form", { name: "分類" });
+    const select = within(form).getByRole("combobox") as HTMLSelectElement;
+    expect(select.value).toBe("");
+    expect([...select.options].map((option) => option.textContent)).toEqual(["未分類", "AI 名詞解釋", "AI／科技時事", "教學實作", "比較評測", "觀念解說", "品牌故事", "旅遊", "其他"]);
+    const save = within(form).getByRole("button", { name: "儲存" });
+    expect(save).toHaveProperty("disabled", true);
+    fireEvent.change(select, { target: { value: "tutorial" } });
+    expect(save).toHaveProperty("disabled", false);
+    fireEvent.click(save);
+    await waitFor(() => expect(posts.filter((post) => post.method === "PUT")).toHaveLength(1));
+    expect(posts.at(-1)?.url).toContain("/admin/videos/ai-model-choice/category");
+    expect(posts.at(-1)?.body).toEqual({ category: "tutorial" });
+    await within(form).findByRole("status");
+    expect(within(form).getByRole("status").textContent).toBe("分類已儲存");
+    // Back to none is a choice too, sent as null.
+    fireEvent.change(select, { target: { value: "" } });
+    fireEvent.click(within(form).getByRole("button", { name: "儲存" }));
+    await waitFor(() => expect(posts.filter((post) => post.method === "PUT")).toHaveLength(2));
+    expect(posts.at(-1)?.body).toEqual({ category: null });
+  });
+
+  it("shows a reader the category without a save", async () => {
+    stubFetch();
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    fireEvent.click(await screen.findByRole("button", { name: /AI 模型怎麼挑/ }));
+    const form = await screen.findByRole("form", { name: "分類" });
+    expect(within(form).getByRole("combobox")).toHaveProperty("disabled", true);
+    expect(within(form).queryByRole("button")).toBeNull();
   });
 
   it("offers a compilation's 1080p cut on its ready card and its page, says when it is still being cut, and nothing for an ordinary video", async () => {
