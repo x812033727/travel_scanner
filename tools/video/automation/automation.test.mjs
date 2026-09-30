@@ -425,6 +425,26 @@ test("the planner sees every video on /admin/videos and may not retell an articl
   assert.equal(site.calls.reviews.length, 0, "nothing reaches the owner");
 });
 
+test("the planner's earlier videos are the docs/videos folders with a video.json or a brief.md, not the folders of plans and notes", () => {
+  const box = sandbox();
+  const notes = path.join(box.videos, "ai-shorts");
+  mkdirSync(notes, { recursive: true });
+  writeFileSync(path.join(notes, "README.md"), "# AI Shorts 企劃\n");
+  writeFileSync(path.join(notes, "trial-script.md"), "# 試片腳本\n");
+  mkdirSync(path.join(box.videos, "empty-folder"));
+  const draft = path.join(box.videos, "brief-only-draft");
+  mkdirSync(draft);
+  writeFileSync(path.join(draft, "brief.md"), "# 只有企劃的草稿\n\n## 目標觀眾\n");
+  const clock = { now: Date.parse("2026-09-28T09:00:00Z") };
+  const site = fakeSite();
+  const { ctx } = context(box, site.fetchImpl, clock);
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  const earlier = automation.earlierVideos();
+  const slugs = earlier.map((video) => video.slug).sort();
+  assert.deepEqual(slugs, ["brief-only-draft", "fixture-minimal"], "a folder of notes or an empty folder is not a video");
+  assert.equal(earlier.find((video) => video.slug === "brief-only-draft").title, "只有企劃的草稿", "a draft with only its brief keeps the brief's title");
+});
+
 test("a video the owner drops is left alone, frees its place and keeps its topic taken", async () => {
   const box = sandbox();
   const slug = "chatgpt-ads-off";
@@ -2032,4 +2052,52 @@ test("restyle from the command line: --dry-run measures the script without a tok
   assert.match(out.stderr, /restyle needs --slug/);
   assert.equal(await main(["restyle", "--slug", "never-started", "--dry-run"], ctx), EXIT.usage);
   assert.match(out.stderr, /was not started by the worker/);
+});
+
+test("two lanes move two different videos at once, and only the first lane starts anything new", async () => {
+  const box = sandbox();
+  const clock = { now: Date.parse("2026-09-30T02:00:00Z") };
+  const { ctx } = context(box, async () => new Response("{}"), clock);
+  for (const [slug, created] of [["older-video", "2026-09-29T00:00:00Z"], ["newer-video", "2026-09-29T01:00:00Z"], ["waiting-video", "2026-09-29T02:00:00Z"]]) {
+    mkdirSync(path.join(box.work, slug), { recursive: true });
+    writeFileSync(path.join(box.work, slug, "auto.json"), JSON.stringify({ slug, status: "active", created_at: created }));
+  }
+  const api = { videos: async () => [] };
+  const settings = { enabled: true, max_waiting_drafts: 1 };
+  const busy = new Set();
+  const first = new Automation(ctx, api, settings, { busy });
+  const second = new Automation(ctx, api, settings, { busy, secondary: true });
+  const moved = [];
+  let release;
+  const gate = new Promise((resolve) => (release = resolve));
+  for (const lane of [first, second]) {
+    lane.advance = async (state) => {
+      if (state.slug === "waiting-video") return null;
+      moved.push(state.slug);
+      // Both lanes are inside a stage at the same time until the gate opens.
+      await gate;
+      return `${state.slug}: moved`;
+    };
+    lane.languages = async () => null;
+  }
+  first.draft = async () => "a new draft";
+  first.due = () => false;
+  const both = Promise.all([first.step(), second.step()]);
+  await new Promise((resolve) => setImmediate(resolve));
+  // Which lane reaches the oldest video first is a matter of timing; they never share one.
+  assert.deepEqual([...moved].sort(), ["newer-video", "older-video"], "each lane took a different video");
+  assert.deepEqual([...busy].sort(), ["newer-video", "older-video"]);
+  release();
+  assert.deepEqual((await both).sort(), ["newer-video: moved", "older-video: moved"]);
+  assert.deepEqual([...busy], [], "a lane lets go of its video when the unit ends");
+  // With nothing left to move, the second lane stops; the first may still start a draft.
+  for (const lane of [first, second]) lane.advance = async () => null;
+  first.due = () => true;
+  assert.equal(await second.step(), null);
+  assert.equal(await first.step(), "a new draft");
+});
+
+test("VIDEO_WORKER_LANES is read as 1 to 3 lanes, 1 when unset or unreadable", async () => {
+  const { laneCount } = await import("./cli.mjs");
+  assert.deepEqual(["", "0", "x", "1", "2", "3", "8"].map((value) => laneCount(value ? { VIDEO_WORKER_LANES: value } : {})), [1, 1, 1, 1, 2, 3, 3]);
 });

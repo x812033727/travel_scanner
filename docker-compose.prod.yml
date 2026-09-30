@@ -267,13 +267,16 @@ services:
     environment:
       VIDEO_INTERNAL_SITE: http://web:3000
       VIDEO_WORKER_INTERVAL_SECONDS: "300"
+      # Two videos move at once (tools/video/automation/cli.mjs laneCount); 1 goes back to one.
+      VIDEO_WORKER_LANES: "2"
     volumes:
       - video_work:/var/lib/mokaair/video-work
       - video_home:/var/lib/mokaair/video-home
       - video_docs:/opt/mokaair/docs/videos
     # Chromium renders the slides; Docker's 64 MB /dev/shm makes it crash on 1080p pages.
     shm_size: "1gb"
-    mem_limit: 3g
+    # Each lane may render with its own Chromium and ffmpeg at the same time.
+    mem_limit: 5g
     read_only: true
     tmpfs: ["/tmp:size=512m"]
     security_opt: ["no-new-privileges:true"]
