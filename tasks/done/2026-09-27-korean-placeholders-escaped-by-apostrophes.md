@@ -83,12 +83,18 @@ It prints `{source}`; with `‘{source}’` it prints `‘X’`.
 - Use the IntlMessageFormat AST with ignoreTag: true to compare all actual
   argument names. This replaces the proposed marker rendering, which only
   visits one plural/select branch and cannot safely format numeric/date markers.
-- Regression coverage: 19 tests, including all three actual Korean renders,
+- Regression coverage: 20 tests, including all three actual Korean renders,
   reversal to the three original strings (exactly three failures), intentional
   URL-template literals in all five locales, nested plural/select/ordinal
   branches, number/date/time arguments, malformed ICU attribution, duplicate
   keys, namespace/allowlist/key validation and the real catalog CLI.
 - No message keys or argument names change; admin text override keys remain valid.
+- Keep the existing lexical token comparison alongside the parsed argument check.
+  This preserves the API/editor contract and rejects dropping or renaming quoted
+  URL-template tokens. A web regression explicitly covers the shared lexical
+  rule; the new parser check adds the missing runtime interpolation requirement.
+- The existing saved/admin override validators have the same quoting blind spot;
+  tracked separately as `2026-09-30-reject-icu-escaped-parameters-in-admin`.
 
 - Found on 2026-09-27 while adding Korean copy for the drama settings
   (`2026-09-27-video-drama-settings-ux`): the new Korean strings use `‘…’` for that reason.

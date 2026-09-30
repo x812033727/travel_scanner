@@ -95,6 +95,17 @@ test("turning a literal English token into an argument also fails the contract",
   assert.deepEqual(checkI18n(root).errors, ["ko/example.json:help: ICU parameters differ from en"]);
 });
 
+test("literal template tokens still cannot be dropped or renamed in translations", (t) => {
+  const root = fixture(t, { help: "URL: '{destination}' for {name}" }, {
+    ko: { help: "URL for {name}" },
+    ja: { help: "URL: '{place}' for {name}" },
+  });
+  assert.deepEqual(checkI18n(root).errors, [
+    "ja/example.json:help: ICU parameters differ from en",
+    "ko/example.json:help: ICU parameters differ from en",
+  ]);
+});
+
 test("a quoted argument in a non-default nested branch is still detected", (t) => {
   const source = "{kind, select, special {{count, plural, one {{person}} other {# {items}}}} other {{fallback}}}";
   const root = fixture(t, { label: source }, { ko: { label: source.replace("{person}", "'{person}'") } });

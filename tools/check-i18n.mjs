@@ -35,6 +35,13 @@ export function parameters(message) {
   return [...names].sort();
 }
 
+function lexicalParameters(message) {
+  // Retain the existing token contract shared with the API and admin editor.
+  // In particular, a translation must not lose/rename literal URL-template tokens
+  // such as '{destination}', even though they are not runtime ICU arguments.
+  return [...message.matchAll(/\{([A-Za-z_][\w]*)/g)].map((match) => match[1]).sort().join(",");
+}
+
 export function checkI18n(root = resolve(import.meta.dirname, "..")) {
   const messagesRoot = join(root, "apps", "web", "messages");
   const locales = ["en", "ja", "ko", "zh-TW", "zh-CN"];
@@ -51,7 +58,10 @@ export function checkI18n(root = resolve(import.meta.dirname, "..")) {
     const expectedParameters = new Map();
     for (const [key, message] of messages) {
       try {
-        expectedParameters.set(key, parameters(message).join(","));
+        expectedParameters.set(key, {
+          arguments: parameters(message).join(","),
+          tokens: lexicalParameters(message),
+        });
       } catch (error) {
         errors.push(`en/${namespace}:${key}: invalid ICU message: ${error.message}`);
       }
@@ -86,7 +96,7 @@ export function checkI18n(root = resolve(import.meta.dirname, "..")) {
         try {
           const actual = parameters(localized.get(key)).join(",");
           const wanted = referenceParameters.get(namespace).get(key);
-          if (wanted !== undefined && actual !== wanted) {
+          if (wanted !== undefined && (actual !== wanted.arguments || lexicalParameters(localized.get(key)) !== wanted.tokens)) {
             errors.push(`${locale}/${namespace}:${key}: ICU parameters differ from en`);
           }
         } catch (error) {
