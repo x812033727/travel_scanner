@@ -59,6 +59,6 @@ End the file with `## 與企劃不同的地方`, `## 我懷疑但沒動的事`, 
 
 Lint must show zero errors. Read every warning and fix it or say in the report why it stays. The estimated length must sit inside the target.
 
-## Report (at most 40 lines, pasted back)
+## Report (pasted back; the coordinator scans it, one line per item)
 
 status; estimated minutes and narration characters; scenes and chapters with their estimated start times; the worked example and where it sits; dictionary terms you added and how you expect them to be read; lint warnings that remain and why; claims written without a number and why; differences from the chosen outline; things you suspected but did not change.

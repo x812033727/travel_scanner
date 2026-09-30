@@ -425,6 +425,26 @@ test("the planner sees every video on /admin/videos and may not retell an articl
   assert.equal(site.calls.reviews.length, 0, "nothing reaches the owner");
 });
 
+test("the planner's earlier videos are the docs/videos folders with a video.json or a brief.md, not the folders of plans and notes", () => {
+  const box = sandbox();
+  const notes = path.join(box.videos, "ai-shorts");
+  mkdirSync(notes, { recursive: true });
+  writeFileSync(path.join(notes, "README.md"), "# AI Shorts 企劃\n");
+  writeFileSync(path.join(notes, "trial-script.md"), "# 試片腳本\n");
+  mkdirSync(path.join(box.videos, "empty-folder"));
+  const draft = path.join(box.videos, "brief-only-draft");
+  mkdirSync(draft);
+  writeFileSync(path.join(draft, "brief.md"), "# 只有企劃的草稿\n\n## 目標觀眾\n");
+  const clock = { now: Date.parse("2026-09-28T09:00:00Z") };
+  const site = fakeSite();
+  const { ctx } = context(box, site.fetchImpl, clock);
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  const earlier = automation.earlierVideos();
+  const slugs = earlier.map((video) => video.slug).sort();
+  assert.deepEqual(slugs, ["brief-only-draft", "fixture-minimal"], "a folder of notes or an empty folder is not a video");
+  assert.equal(earlier.find((video) => video.slug === "brief-only-draft").title, "只有企劃的草稿", "a draft with only its brief keeps the brief's title");
+});
+
 test("a video the owner drops is left alone, frees its place and keeps its topic taken", async () => {
   const box = sandbox();
   const slug = "chatgpt-ads-off";

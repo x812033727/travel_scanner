@@ -27,7 +27,7 @@ export function RelatedGrid({
         {shown.map((item) => (
           <li key={`${item.kind}:${item.slug}`} className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
             <p className="text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">
-              <span className="rounded-full bg-[var(--line)] px-2 py-1 text-[var(--fg)]">{kindLabels[item.kind]}</span>
+              <span className="rounded-full bg-[var(--line)] px-2 py-1 text-[var(--ink)]">{kindLabels[item.kind]}</span>
             </p>
             <h3 className="mt-2 font-bold">
               <Link className="text-[var(--teal)] underline" href={guideHref(item.kind, item.slug)}>{item.title}</Link>
