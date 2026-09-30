@@ -1,7 +1,7 @@
 ---
 id: 2026-09-28-video-1m-free-vs-paid
 title: Million-views batch 6: free vs paid AI plans 2026, is 20 dollars a month worth it, worked out
-status: in-progress
+status: blocked
 priority: P1
 area: docs
 owner: claude-fable-5-1

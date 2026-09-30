@@ -1,7 +1,7 @@
 ---
 id: 2026-09-28-video-1m-ai-agents
 title: Million-views batch 3: what an AI agent actually is, what one costs to run, and the setting that keeps it from spending your money
-status: in-progress
+status: blocked
 priority: P1
 area: docs
 owner: claude-fable-5-1

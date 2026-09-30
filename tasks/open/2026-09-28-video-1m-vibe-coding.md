@@ -1,7 +1,7 @@
 ---
 id: 2026-09-28-video-1m-vibe-coding
 title: Million-views batch 5: vibe coding your first website in 2026 with Claude, ChatGPT or Gemini, published free
-status: in-progress
+status: blocked
 priority: P1
 area: docs
 owner: claude-fable-5-1
@@ -65,3 +65,10 @@ Pipeline stages 1–4 done: `video.json` (option A, 8 chapters, ~8.0 min, lint 0
 只完成獨立事實重查及稿件修正；CTA是否對應已發布文章、觀點／大綱、聽眾與真人試用、TTS／字幕／成片QA／上架仍未完成。既有 `verify-1.md` 是原作者自查且绑定舊稿，CLI顯示fact-checked不能代替上述驗收。
 
 站主對六片後續製作方向尚待回覆；未產生付費媒體、改正式設定或上傳。釋出本次claim，保留原製作票與未勾條件供接續。
+
+## 2026-09-30 製作進度（claude-fable-5-1／claude-opus-5-5）
+
+- 站主 09-28 選大綱 B；重寫 → 查核兩輪（`verify-1.md`、`verify-2.md`；09-28 A 案報告改名 `verify-1-outline-a-20260928.md`）→ 聽眾審稿。
+- 旁白：Gemini 標 17 句，Whisper 清 10 句，改寫兩輪後 0 標記；一個畫面 15.3 秒，拆成兩個 big 後最長 14.1 秒。縮圖標題太長（手機上 21 px），改短後過關。
+- `qa` 10／11（只剩 help.openai.com 的 ChatGPT Sites 頁對檢查程式回 403），站主核准成片（ea2b9817da40）。
+- 四語字幕翻譯＋審稿；配音 en 0 標記、ja 剩 1 句（ctf9，寫法差異）、ko 剩 2 句（助詞與斷字）。`package` 4／4（metadata.json ec48de930262）→ 上架確認自動核准 → 語言卡已送出、等站主。剩下的是站主的事：照 `upload/UPLOAD.md` 在 Studio 上傳成私人、在「語言」頁加三條配音音軌並在語言卡按「已在 Studio 上傳配音」、在「可以上架」卡貼網址與上架時間。本機工作區 `C:/Users/x8120/mokaair-work/videos/<slug>/`（`upload/`、`dubs/<語系>.m4a`）。

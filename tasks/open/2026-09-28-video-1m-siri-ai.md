@@ -1,7 +1,7 @@
 ---
 id: 2026-09-28-video-1m-siri-ai
 title: Million-views batch 2: Siri AI on iOS 27, who gets it and how to turn it on
-status: in-progress
+status: blocked
 priority: P1
 area: docs
 owner: claude-fable-5-1

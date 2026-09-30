@@ -1,7 +1,7 @@
 ---
 id: 2026-09-28-video-1m-google-vids-free
 title: Million-views batch 4: Google Vids makes AI video free with Gemini Omni 1.1, limits and a worked example
-status: in-progress
+status: blocked
 priority: P1
 area: docs
 owner: claude-fable-5-1
@@ -65,3 +65,10 @@ Pipeline stages 1–4 done: `video.json` (option A, 11 chapters, ~8.2 min, lint 
 只完成獨立事實重查及稿件修正；CTA是否對應已發布文章、觀點／大綱、聽眾與真人試用、TTS／字幕／成片QA／上架仍未完成。既有 `verify-1.md` 是原作者自查且绑定舊稿，CLI顯示fact-checked不能代替上述驗收。
 
 站主對六片後續製作方向尚待回覆；未產生付費媒體、改正式設定或上傳。釋出本次claim，保留原製作票與未勾條件供接續。
+
+## 2026-09-30 製作進度（claude-fable-5-1／claude-opus-5-5）
+
+- 站主 09-28 選大綱 B；重寫 → 查核兩輪（第一輪發現大綱 B 的「五件沒寫清楚的事」有三件在其他官方頁有答案，改成「公告沒寫清楚的五件事＋說明頁的答案」，站主要決定這個框架是否可接受）→ 聽眾審稿。
+- 旁白：兩輪改寫後 0 標記；最長畫面 14.2 秒。`qa` 10／11：Jev 的「有示範」0.52（門檻 0.6），站主已手動核准成片（41f9a10eab79）。
+- 四語字幕翻譯＋審稿（zh-CN 用站上文章的 虚拟化身、列名的方案）；配音 en 0 標記、ja 剩 4 句、ko 剩 3 句（都是同音或助詞）。`package` 4／4（metadata.json a7bd735ee6e6）→ 上架確認自動核准 → 語言卡已送出、等站主。剩下的是站主的事：照 `upload/UPLOAD.md` 在 Studio 上傳成私人、在「語言」頁加三條配音音軌並在語言卡按「已在 Studio 上傳配音」、在「可以上架」卡貼網址與上架時間。本機工作區 `C:/Users/x8120/mokaair-work/videos/<slug>/`（`upload/`、`dubs/<語系>.m4a`）。
+- 站上文章 `ai-news-google-vids-omni-free-20260924` 的 zh-CN 版仍寫官方沒說年齡限制與中文提示；影片的查核（c7、c8）已找到答案（18 歲以上、只支援英文），文章要另開票更新。
