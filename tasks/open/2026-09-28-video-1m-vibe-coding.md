@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-video-1m-vibe-coding
 title: Million-views batch 5: vibe coding your first website in 2026 with Claude, ChatGPT or Gemini, published free
-status: open
+status: in-progress
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-30T03:40:52Z
 created_at: 2026-09-28T02:30:46Z
 completed_at:
-branch: codex/p1-task-audit
+branch: claude/video-1m-production
 depends_on: []
 scope:
   - docs/videos/vibe-coding-first-website-2026

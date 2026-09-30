@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-video-1m-ai-price-war
 title: Million-views batch 1: GPT-6 Sol and Luna vs Claude Opus 5.5 price war, what your bill looks like now
-status: open
+status: in-progress
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-30T03:40:21Z
 created_at: 2026-09-28T02:30:45Z
 completed_at:
-branch: codex/p1-task-audit
+branch: claude/video-1m-production
 depends_on: []
 scope:
   - docs/videos/ai-price-war-gpt-6-sol-vs-opus-5-5

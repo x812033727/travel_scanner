@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-video-1m-google-vids-free
 title: Million-views batch 4: Google Vids makes AI video free with Gemini Omni 1.1, limits and a worked example
-status: open
+status: in-progress
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-30T03:40:47Z
 created_at: 2026-09-28T02:30:46Z
 completed_at:
-branch: codex/p1-task-audit
+branch: claude/video-1m-production
 depends_on: []
 scope:
   - docs/videos/google-vids-free-ai-video-omni-1-1

@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-video-1m-siri-ai
 title: Million-views batch 2: Siri AI on iOS 27, who gets it and how to turn it on
-status: open
+status: in-progress
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-30T03:40:33Z
 created_at: 2026-09-28T02:30:45Z
 completed_at:
-branch: codex/p1-task-audit
+branch: claude/video-1m-production
 depends_on: []
 scope:
   - docs/videos/siri-ai-ios-27-how-to-get-it
@@ -73,3 +73,10 @@ Blocked on the same owner setup as the price-war video: outline gate (channel st
 只完成獨立事實重查及稿件修正；CTA是否對應已發布文章、觀點／大綱、聽眾與真人試用、TTS／字幕／成片QA／上架仍未完成。既有 `verify-1.md` 是原作者自查且绑定舊稿，CLI顯示fact-checked不能代替上述驗收。
 
 站主對六片後續製作方向尚待回覆；未產生付費媒體、改正式設定或上傳。釋出本次claim，保留原製作票與未勾條件供接續。
+
+## 2026-09-30 製作進度（claude-fable-5-1）
+
+- 站主 2026-09-28 12:15 UTC 在 /admin/videos 選了大綱 **C**（Siri AI 對 ChatGPT、Gemini），稿子原本照 A 寫，今天重寫（sonnet）→ 獨立查核一輪（38 確認、1 修正，`verify-1.md`；09-28 A 案的報告改名 `verify-1-outline-a-20260928.md`）→ 聽眾審稿。
+- 旁白：Gemini 標 13 句，Whisper 清 9 句，4 句改寫重錄後 0 標記。Jev 第一次成片品管判「有示範 0.26」沒過，把「怎麼打開」那一章改成帶著做（4 句重錄）後 0.62 通過。
+- 節奏：1 個畫面 16.1 秒，拆成兩個 big 後最長 14.5 秒。四語字幕翻譯＋審稿完成。
+- `qa` 9／11：`captions` ko 第 59 句（af4g）五個語言名用「·」連接無法折行（待改成逗號）；`links` 兩條 help.openai.com 對檢查程式回 403（用瀏覽器打得開）。成片已送站主看；en／ja／ko 配音進行中。
