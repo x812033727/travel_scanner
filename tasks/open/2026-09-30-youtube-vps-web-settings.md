@@ -1,7 +1,7 @@
 ---
 id: 2026-09-30-youtube-vps-web-settings
 title: Configure the VPS YouTube uploader from video settings
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: codex-vps-web-settings
