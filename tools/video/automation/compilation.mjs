@@ -9,11 +9,15 @@ import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from
 import path from "node:path";
 
 import { sha256File } from "../core/approvals.mjs";
-import { COMPILATION_HEADLINE_PLACEHOLDER, COMPILATION_TITLE_PLACEHOLDER, compilationDocument, THUMB_SHOT, THUMB_SOURCE } from "../core/compilation.mjs";
+import { appliedBranding, presentationTimeline } from "../core/branding.mjs";
+import { COMPILATION_HEADLINE_PLACEHOLDER, COMPILATION_TITLE_PLACEHOLDER, compilationDocument, compilationScenes, episodeNumbers, THUMB_SHOT, THUMB_SOURCE, TITLE_MAX_CHARS as CHAPTER_TITLE_MAX } from "../core/compilation.mjs";
+import { COMPILATION_REVIEW_FILE, contextFromSeries, publicTexts, reviewCurrent, reviewHash, reviewProblem } from "../core/compilation-review.mjs";
 import { DESCRIPTION_MAX_BYTES, TAGS_MAX_CHARS, TITLE_MAX_CHARS } from "../core/metadata.mjs";
 import { atomicWrite, docDir, readJson } from "../core/paths.mjs";
 import { LOCALES, NARRATION_LOCALE } from "../core/schema.mjs";
 import { ARTIFACTS, lintProject, loadProject } from "../core/state.mjs";
+import { chosenLocales, readLanguages } from "../core/stages.mjs";
+import { composeMetadata } from "../package/metadata.mjs";
 import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
 import { GENRE_SPECS } from "./prompts.mjs";
 
@@ -34,6 +38,68 @@ const ANSWER_ATTEMPTS = 2;
 const isObject = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
 const isText = (value) => typeof value === "string" && value.trim().length > 0;
 const bytes = (text) => Buffer.byteLength(String(text ?? ""), "utf8");
+
+const writeJson = (file, value) => atomicWrite(file, `${JSON.stringify(value, null, 2)}\n`);
+const chaptersOf = (video) => Object.fromEntries(video.compilation.episodes.map((slug, index) => [slug, video.compilation.titles?.[slug] ?? `第 ${episodeNumbers(video.compilation)[index]} 集`]));
+
+/** Restore a legacy compilation's missing context; an absent schedule never means no mysteries. */
+async function compilationInfo(automation, state) {
+  const file = path.join(docDir(state.slug, automation.ctx.root), COMPILATION_FILE);
+  const info = readJson(file, {});
+  if (!Array.isArray(info.spoiler_context?.mysteries)) {
+    const series = state.compilation?.series ?? state.series?.slug;
+    const context = contextFromSeries(await automation.api.seriesContext(series));
+    if (!context) return { info, problem: "the series has no usable mystery context; restore its setting and reveal schedule before reviewing public text" };
+    info.spoiler_context = context;
+    writeJson(file, info);
+  }
+  return { info, problem: null };
+}
+
+function reviewInputs(automation, state, video, translations = {}, plan = null) {
+  const workdir = automation.workdir(state.slug);
+  const body = readJson(path.join(workdir, ARTIFACTS.timeline), null);
+  const timeline = body ? presentationTimeline(body, appliedBranding(readJson(path.join(workdir, ARTIFACTS.checks), null))) : null;
+  const pack = video.source_guide ? loadProject({ slug: state.slug, root: automation.ctx.root }).pack ?? null : null;
+  return publicTexts({ doc: video, translations, timeline, plan, pack });
+}
+
+function receiptsFor(automation, state) {
+  return readJson(path.join(docDir(state.slug, automation.ctx.root), COMPILATION_REVIEW_FILE), { schema_version: 1, locales: {} });
+}
+
+function saveReview(automation, state, context, locale, fields) {
+  const receipts = receiptsFor(automation, state);
+  writeJson(path.join(docDir(state.slug, automation.ctx.root), COMPILATION_REVIEW_FILE), {
+    schema_version: 1,
+    locales: { ...(receipts.schema_version === 1 ? receipts.locales : {}), [locale]: { passed: true, input_sha256: reviewHash(context, locale, fields), reviewed_at: automation.ctx.now().toISOString() } },
+  });
+  automation.cleared(state, "verifier");
+  automation.cleared(state, locale === NARRATION_LOCALE ? "planner" : "translator");
+  automation.saveState(automation.workdir(state.slug), state);
+}
+
+async function publicTextProblem(automation, state, context, locale, fields) {
+  if (!context.mysteries.length) return null;
+  try {
+    const verdict = await automation.stage("verifier", state.slug, { locale, spoiler_context: context, public_text: fields }, 16_000, "drama", "compilation", state.series);
+    return reviewProblem(verdict);
+  } catch (error) {
+    if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) throw error;
+    return error.message;
+  }
+}
+
+function applyChapterTitles(video, titles) {
+  video.compilation.titles = titles;
+  const numbers = episodeNumbers(video.compilation);
+  video.scenes = compilationScenes({
+    episodes: video.compilation.episodes.map((slug, index) => ({ slug, number: numbers[index], title: titles[slug] })),
+    chapterCards: video.compilation.chapter_cards ?? true,
+    outro: video.compilation.outro ?? true,
+    outroData: video.scenes.find((scene) => scene.template === "outro")?.data,
+  });
+}
 
 /** The compilation video's slug for a series. */
 export const compilationSlug = (seriesSlug) => `${seriesSlug}-full`;
@@ -130,6 +196,7 @@ export async function startCompilation(automation, job) {
     episodes,
     all_recaps: context.all_recaps ?? [],
     setting_md: context.setting?.body_md ?? "",
+    spoiler_context: contextFromSeries(context),
     genre: series.genre ?? "xianxia-bonds",
   }, null, 2)}\n`);
   const state = {
@@ -158,10 +225,16 @@ export async function startCompilation(automation, job) {
  * The planner writes the upload fields and picks the thumbnail's picture; the chosen keyframe
  * is copied into the work directory as the "thumb" shot so render draws the thumbnail on it.
  */
-export async function planMetadata(automation, state) {
+export async function planMetadata(automation, state, previousProblem = null) {
   const { ctx } = automation;
   const dir = docDir(state.slug, ctx.root);
-  const info = readJson(path.join(dir, COMPILATION_FILE), {});
+  const loaded = await compilationInfo(automation, state);
+  if (loaded.problem) return automation.block(state, loaded.problem);
+  const { info } = loaded;
+  const context = info.spoiler_context;
+  const file = path.join(dir, "video.json");
+  const original = readFileSync(file, "utf8");
+  const before = JSON.parse(original);
   const episodes = info.episodes ?? [];
   const candidates = thumbnailCandidates(automation.workBase, ctx.root, episodes);
   const payload = {
@@ -170,12 +243,17 @@ export async function planMetadata(automation, state) {
     series_reference: automation.reference().series,
     episodes: episodes.map(({ slug, number, title, logline, recap }) => ({ slug, number, title, logline, recap })),
     all_recaps: info.all_recaps ?? [],
+    spoiler_context: context,
+    chapters: chaptersOf(before),
     description_budget_bytes: descriptionBudget(episodes.length),
     thumbnail_headline_max: HEADLINE_MAX_CHARS,
     thumbnail_candidates: candidates.map(({ episode, number, shot, judge, characters, prompt }) => ({ episode, number, shot, judge, characters, prompt })),
   };
-  let problem = null;
+  let problem = previousProblem;
   let answer = null;
+  let video;
+  let plan;
+  let fields;
   for (let attempt = 0; attempt < ANSWER_ATTEMPTS && !answer; attempt++) {
     let candidate;
     try {
@@ -186,13 +264,31 @@ export async function planMetadata(automation, state) {
       continue;
     }
     problem = metadataProblem(candidate, candidates);
+    if (problem) continue;
+    if (context.mysteries.length || candidate.chapters !== undefined) {
+      const chapters = candidate.chapters;
+      if (!isObject(chapters) || Object.keys(chapters).length !== before.compilation.episodes.length || before.compilation.episodes.some((slug) => !isText(chapters[slug]) || [...chapters[slug].trim()].length > CHAPTER_TITLE_MAX)) {
+        problem = `chapters must give every episode slug a public title of 1 to ${CHAPTER_TITLE_MAX} characters`;
+        continue;
+      }
+    }
+    video = structuredClone(before);
+    const description = bytes(candidate.description) > descriptionBudget(episodes.length) ? candidate.description.slice(0, Math.floor(descriptionBudget(episodes.length) / 3)) : candidate.description;
+    video.youtube = { ...video.youtube, title: candidate.title.trim(), description: description.trim(), tags: candidate.tags.map((tag) => tag.trim()) };
+    video.thumbnail = { template: "thumb", data: { headline: candidate.thumbnail.headline.trim(), ...(isText(candidate.thumbnail.tag) ? { tag: candidate.thumbnail.tag.trim() } : {}), shot: THUMB_SHOT } };
+    if (candidate.chapters) applyChapterTitles(video, Object.fromEntries(video.compilation.episodes.map((slug) => [slug, candidate.chapters[slug].trim()])));
+    plan = { titles: [candidate.title, ...(Array.isArray(candidate.titles) ? candidate.titles : [])], thumbnail: candidate.thumbnail, ...(isText(candidate.pinned_comment) ? { pinned_comment: candidate.pinned_comment } : {}), planned_at: ctx.now().toISOString() };
+    const errors = lintProject({ ...loadProject({ slug: state.slug, root: ctx.root }), doc: video }).errors;
+    if (errors.length) {
+      problem = `the candidate fails lint: ${errors.slice(0, 3).map((error) => `${error.path}: ${error.message}`).join("; ")}`;
+      continue;
+    }
+    fields = reviewInputs(automation, state, video, {}, plan)[NARRATION_LOCALE];
+    problem = await publicTextProblem(automation, state, context, NARRATION_LOCALE, fields);
     if (!problem) answer = candidate;
   }
   if (!answer) return automation.retryLater(state, "planner", `the compilation's upload fields were not usable (${problem})`);
-  const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
-  const description = bytes(answer.description) > descriptionBudget(episodes.length) ? answer.description.slice(0, Math.floor(descriptionBudget(episodes.length) / 3)) : answer.description;
-  video.youtube = { ...video.youtube, title: answer.title.trim(), description: description.trim(), tags: answer.tags.map((tag) => tag.trim()), video_id: null };
-  video.thumbnail = { template: "thumb", data: { headline: answer.thumbnail.headline.trim(), ...(isText(answer.thumbnail.tag) ? { tag: answer.thumbnail.tag.trim() } : {}), shot: THUMB_SHOT } };
+  if (readFileSync(file, "utf8") !== original) return automation.retryLater(state, "planner", "the compilation changed while its public text was reviewed; retry without overwriting the newer document");
   const chosen = candidates.find((candidate) => matchesCandidate(candidate, answer.thumbnail)) ?? candidates[0] ?? null;
   const workdir = automation.workdir(state.slug);
   if (chosen && existsSync(chosen.file)) {
@@ -203,8 +299,9 @@ export async function planMetadata(automation, state) {
     // No episode keyframe to draw on: the thumb template still draws its text on the theme.
     delete video.thumbnail.data.shot;
   }
-  writeFileSync(path.join(dir, "video.json"), `${JSON.stringify(video, null, 2)}\n`);
-  atomicWrite(path.join(dir, "metadata-plan.json"), `${JSON.stringify({ titles: [answer.title, ...(Array.isArray(answer.titles) ? answer.titles : [])], thumbnail: answer.thumbnail, planned_at: ctx.now().toISOString() }, null, 2)}\n`);
+  writeJson(file, video);
+  writeJson(path.join(dir, "metadata-plan.json"), plan);
+  if (context.mysteries.length) saveReview(automation, state, context, NARRATION_LOCALE, fields);
   const errors = lintProject(loadProject({ slug: state.slug, root: ctx.root })).errors;
   if (errors.length) return automation.retryLater(state, "planner", `the compilation's document fails lint after the upload fields: ${errors.slice(0, 3).map((error) => `${error.path}: ${error.message}`).join("; ")}`);
   automation.cleared(state, "planner");
@@ -221,18 +318,53 @@ export async function planMetadata(automation, state) {
 export async function translateMetadata(automation, state) {
   const { ctx } = automation;
   const dir = docDir(state.slug, ctx.root);
-  const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
-  const info = readJson(path.join(dir, COMPILATION_FILE), {});
-  const chapters = Object.fromEntries((info.episodes ?? []).map((episode) => [episode.slug, video.compilation?.titles?.[episode.slug] ?? `第 ${episode.number} 集`]));
+  const original = readFileSync(path.join(dir, "video.json"), "utf8");
+  const video = JSON.parse(original);
+  const loaded = await compilationInfo(automation, state);
+  if (loaded.problem) return automation.block(state, loaded.problem);
+  const { info } = loaded;
+  const context = info.spoiler_context;
+  const chapters = chaptersOf(video);
   for (const locale of LOCALES.filter((each) => each !== NARRATION_LOCALE)) {
     const file = path.join(dir, "i18n", `${locale}.json`);
     const existing = readJson(file, null);
-    if (existing && isText(existing.title) && isText(existing.description) && Array.isArray(existing.tags) && existing.tags.length && isObject(existing.chapters) && Object.keys(chapters).every((key) => isText(existing.chapters[key]))) continue;
-    const answer = await automation.stage("translator", state.slug, { locale, youtube: { title: video.youtube.title, description: video.youtube.description, tags: video.youtube.tags }, chapters, series: info.series ?? {} }, 16_000, "drama", "compilation");
-    const problem = translationProblem(answer, chapters);
-    if (problem) return automation.retryLater(state, "translator", `the ${locale} upload fields ${problem}`);
+    let problem = null;
+    let fields;
+    if (existing && !translationProblem(existing, chapters)) {
+      if (!context.mysteries.length) continue;
+      fields = reviewInputs(automation, state, video, { [locale]: existing })[locale];
+      if (reviewCurrent(receiptsFor(automation, state), context, locale, fields)) continue;
+      problem = await publicTextProblem(automation, state, context, locale, fields);
+      if (!problem) {
+        saveReview(automation, state, context, locale, fields);
+        return `${state.slug}: ${locale} public text reviewed`;
+      }
+    }
+    const payload = { locale, youtube: { title: video.youtube.title, description: video.youtube.description, tags: video.youtube.tags }, chapters, series: info.series ?? {}, spoiler_context: context };
+    let translated = null;
+    for (let attempt = 0; attempt < ANSWER_ATTEMPTS && !translated; attempt++) {
+      let answer;
+      try {
+        answer = await automation.stage("translator", state.slug, problem ? { ...payload, previous_problem: problem } : payload, 16_000, "drama", "compilation");
+      } catch (error) {
+        if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) throw error;
+        problem = error.message;
+        continue;
+      }
+      problem = translationProblem(answer, chapters);
+      if (problem) continue;
+      const candidate = { title: answer.title.trim(), description: answer.description.trim(), tags: answer.tags.map((tag) => tag.trim()), chapters: Object.fromEntries(Object.keys(chapters).map((key) => [key, answer.chapters[key].trim()])), lines: {} };
+      fields = reviewInputs(automation, state, video, { [locale]: candidate })[locale];
+      problem = await publicTextProblem(automation, state, context, locale, fields);
+      if (!problem) translated = candidate;
+    }
+    if (!translated) return automation.retryLater(state, "translator", `the ${locale} upload fields were not usable (${problem})`);
+    if (readFileSync(path.join(dir, "video.json"), "utf8") !== original || JSON.stringify(readJson(file, null)) !== JSON.stringify(existing)) {
+      return automation.retryLater(state, "translator", "the compilation or translation changed during review; retry without overwriting newer text");
+    }
     mkdirSync(path.join(dir, "i18n"), { recursive: true });
-    atomicWrite(file, `${JSON.stringify({ title: answer.title.trim(), description: answer.description.trim(), tags: answer.tags.map((tag) => tag.trim()), chapters: Object.fromEntries(Object.keys(chapters).map((key) => [key, answer.chapters[key].trim()])), lines: {} }, null, 2)}\n`);
+    writeJson(file, translated);
+    if (context.mysteries.length) saveReview(automation, state, context, locale, fields);
     automation.cleared(state, "translator");
     automation.saveState(automation.workdir(state.slug), state);
     return `${state.slug}: ${locale} title and description translated`;
@@ -247,6 +379,44 @@ export async function translateMetadata(automation, state) {
 export async function advanceCompilation(automation, state, next) {
   const { ctx } = automation;
   if (next === "metadata planned") return planMetadata(automation, state);
+  const loaded = await compilationInfo(automation, state);
+  if (loaded.problem) return automation.block(state, loaded.problem);
+  const context = loaded.info.spoiler_context;
+  if (context.mysteries.length) {
+    const dir = docDir(state.slug, ctx.root);
+    const project = loadProject({ slug: state.slug, root: ctx.root });
+    const plan = readJson(path.join(dir, "metadata-plan.json"), null);
+    const fields = reviewInputs(automation, state, project.doc, project.translations, plan);
+    const receipts = receiptsFor(automation, state);
+    if (!reviewCurrent(receipts, context, NARRATION_LOCALE, fields[NARRATION_LOCALE])) {
+      const problem = await publicTextProblem(automation, state, context, NARRATION_LOCALE, fields[NARRATION_LOCALE]);
+      if (problem) return planMetadata(automation, state, problem);
+      saveReview(automation, state, context, NARRATION_LOCALE, fields[NARRATION_LOCALE]);
+      return `${state.slug}: source public text reviewed`;
+    }
+    const later = ["metadata translated", "final video approved", "upload package", "on YouTube"].includes(next) || !next;
+    const needsTranslationReview = LOCALES.filter((locale) => locale !== NARRATION_LOCALE).some((locale) => {
+      const translation = project.translations[locale];
+      return translation ? translationProblem(translation, chaptersOf(project.doc)) || !reviewCurrent(receipts, context, locale, fields[locale]) : later;
+    });
+    if (needsTranslationReview) return translateMetadata(automation, state);
+    // Status historically binds a package only to final.mp4. A resumed worker must replace
+    // its old public fields before handing that package to the shared publish step.
+    if (next === "on YouTube" || !next) {
+      const workdir = automation.workdir(state.slug);
+      const packaged = readJson(path.join(workdir, "upload", "metadata.json"), null);
+      const body = readJson(path.join(workdir, ARTIFACTS.timeline), null);
+      const timeline = body ? presentationTimeline(body, appliedBranding(readJson(path.join(workdir, ARTIFACTS.checks), null))) : null;
+      if (!timeline) return automation.block(state, "the compilation has no timeline for its public chapter list; run compile first");
+      const expected = composeMetadata({ doc: project.doc, timeline, translations: project.translations, pack: project.pack ?? null, locales: chosenLocales(readLanguages(workdir), "metadata") }).metadata;
+      const keys = ["title", "description", "tags", "localizations", "chapters", "default_language"];
+      if (!packaged || keys.some((key) => JSON.stringify(packaged[key]) !== JSON.stringify(expected[key]))) {
+        const result = await automation.run(["package", "--slug", state.slug]);
+        if (result.code !== 0) return automation.block(state, `package failed after public-text review: ${automation.lastLine(result.out)}`);
+        return `${state.slug}: reviewed upload metadata rebuilt`;
+      }
+    }
+  }
   if (next === "cards rendered") {
     const channel = ctx.env.VIDEO_BROWSER_CHANNEL ? ["--channel", ctx.env.VIDEO_BROWSER_CHANNEL] : [];
     const result = await automation.run(["render", "--slug", state.slug, ...channel]);
