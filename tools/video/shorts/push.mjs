@@ -85,14 +85,15 @@ export function finalReview({ doc, qa, usage, timeline, finalSha256 }) {
   };
 }
 
-/** The publish review, without its files: bound to metadata.json, carrying the package check. */
-export function publishReview({ metadata, report, metadataSha256 }) {
+/** The publish review: bound to metadata.json and the approved final decision it follows. */
+export function publishReview({ metadata, report, metadataSha256, finalReviewId }) {
   const { checked_at: _at, ...check } = report;
   return {
     gate: 'publish',
     content_sha256: metadataSha256,
     summary: check.ok ? `${packageSummary(check)}：照月曆上架` : packageSummary(check),
     payload: {
+      final_review_id: finalReviewId,
       package: check,
       locales: captionLocales(metadata),
       zh: { title: metadata.title, titles: metadata.titles, description: metadata.description, tags: metadata.tags },
@@ -182,6 +183,9 @@ export async function push({ directory, client, log = () => {} }) {
   if (sent.status !== 'approved') {
     return { slug, final: sent, publish: null, waits: sent.status === 'rejected' ? `the owner sent the cut back: ${sent.note ?? ''}`.trim() : 'the final cut waits for the owner on /admin/videos' };
   }
+  if (typeof sent.id !== 'string' || !sent.id.trim()) {
+    return { slug, final: sent, publish: null, waits: 'the site returned an approval without a final review ID: refresh the final review before publishing' };
+  }
 
   if (!metadata || !report) return { slug, final: sent, publish: null, waits: 'the upload package is not made yet: run package, then push again' };
   if (metadata.final_sha256 !== finalSha256) return { slug, final: sent, publish: null, waits: 'the upload package is of another cut: run package, then push again' };
@@ -201,7 +205,7 @@ export async function push({ directory, client, log = () => {} }) {
   if (staleQa()) return { slug, final: sent, publish: null, waits: 'the QA inputs changed during push: run qa and package again' };
   await client.report(slug, projectBody({ doc, qa, check: readJson(path.join(directory, CHECK_FILE), null), report, stage: 'publish' }));
   if (staleQa()) return { slug, final: sent, publish: null, waits: 'the QA inputs changed during push: run qa and package again' };
-  const confirmed = await client.submit(slug, { ...publishReview({ metadata, report, metadataSha256: packaged[0].sha256 }), files: packaged });
+  const confirmed = await client.submit(slug, { ...publishReview({ metadata, report, metadataSha256: packaged[0].sha256, finalReviewId: sent.id }), files: packaged });
   log(`${slug}: publish review ${confirmed.status}${confirmed.note ? ` (${confirmed.note})` : ''}`);
   return { slug, final: sent, publish: confirmed, waits: confirmed.status === 'approved' ? null : 'the upload package waits for the owner on /admin/videos' };
 }

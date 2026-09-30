@@ -12,6 +12,7 @@ import { parseArgs } from "node:util";
 
 import { AutomationError, automationClient } from "../automation/client.mjs";
 import { approvalState, sha256File } from "../core/approvals.mjs";
+import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
 import { compilationChecksCurrent, compilationHash, estimatedCompilationTimeline, isCompilation } from "../core/compilation.mjs";
 import { cadenceProblems, cadenceSummary, illustrationShare, MAX_PICTURE_SECONDS, MIN_ILLUSTRATION_SHARE } from "../core/cadence.mjs";
 import { burnIn, illustrated, isDrama, subtitlesHash } from "../core/drama.mjs";
@@ -100,29 +101,33 @@ async function compilationQa(ctx, { project, lint, workdir, workBase }) {
   const uncleared = episodes.filter((episode) => !episode.sha256).map((episode) => episode.slug);
   const expected = uncleared.length ? null : compilationHash(doc, episodes);
   const checks = readJson(inWork(ARTIFACTS.checks), null);
+  const applied = appliedBranding(checks);
   const finalFile = inWork(ARTIFACTS.video);
   const finalExists = existsSync(finalFile);
   const finalSha256 = finalExists ? await sha256File(finalFile) : null;
   const timeline = readJson(inWork(ARTIFACTS.timeline), null);
+  const brandingMatches = brandingCurrent(checks, readBranding(workdir)) && (!applied || (applied.body_frames === timeline?.total_frames && checks.compilation_hash === timeline?.compilation_hash));
   const timelineCurrent = Boolean(timeline) && Boolean(expected) && timeline.compilation_hash === expected;
+  const presented = presentationTimeline(timeline, brandingMatches ? applied : null);
   const captions = readJson(inWork(ARTIFACTS.captions), null);
-  const { problems: metadataProblems, metadata } = composeMetadata({ doc, timeline: timelineCurrent ? timeline : estimatedCompilationTimeline(doc), translations: project.translations, pack: null });
+  const { problems: metadataProblems, metadata } = composeMetadata({ doc, timeline: timelineCurrent ? presented : estimatedCompilationTimeline(doc), translations: project.translations, pack: null });
+  if (!brandingMatches) metadataProblems.push("selected branding differs from the final cut; run compile again");
   const descriptions = [metadata.description, ...Object.values(metadata.localizations).map((fields) => fields.description)];
   const items = [];
   items.push(assembleItem({
     checks,
-    current: compilationChecksCurrent(doc, checks, episodes),
+    current: compilationChecksCurrent(doc, checks, episodes) && brandingMatches && (!applied || checks.metrics?.frames === presented?.total_frames),
     finalExists,
     command: "compile",
-    stale: `other cuts or cards${uncleared.length ? ` (episodes not cleared for upload: ${uncleared.join(", ")})` : ""}`,
+    stale: `other cuts or cards${!brandingMatches ? ", or another branding selection" : ""}${uncleared.length ? ` (episodes not cleared for upload: ${uncleared.join(", ")})` : ""}`,
   }));
-  items.push(compilationCaptionsItem({ lintWarnings: lint.warnings, manifest: captions, current: Boolean(expected) && captions?.compilation_hash === expected, locales: LOCALES, hasCaptionFile: (locale) => existsSync(inWork(path.join("captions", `${locale}.srt`))) }));
+  items.push(compilationCaptionsItem({ lintWarnings: lint.warnings, manifest: captions, current: Boolean(expected) && captions?.compilation_hash === expected && brandingMatches && (captions?.branding_hash ?? null) === (applied?.hash ?? null), locales: LOCALES, hasCaptionFile: (locale) => existsSync(inWork(path.join("captions", `${locale}.srt`))) }));
   items.push(metadataItem({
     problems: metadataProblems,
     tagProblems: checkYoutubeFields({ title: "", description: "", tags: metadata.tags }, "youtube"),
-    chapterProblems: timelineCurrent ? checkChapters(timeline) : [],
+    chapterProblems: timelineCurrent ? checkChapters(presented) : [],
     locales: [metadata.default_language, ...Object.keys(metadata.localizations)],
-    chapters: timelineCurrent ? chapterList(timeline).length : 0,
+    chapters: timelineCurrent ? chapterList(presented).length : 0,
     timelineCurrent,
     command: "compile",
   }));
@@ -158,6 +163,9 @@ export async function run(command, args, ctx) {
   const timeline = readJson(inWork(ARTIFACTS.timeline), null);
   const timelineCurrent = Boolean(timeline) && timeline.speech_hash === speech;
   const checks = readJson(inWork(ARTIFACTS.checks), null);
+  const applied = appliedBranding(checks);
+  const brandingMatches = brandingCurrent(checks, readBranding(workdir)) && (!applied || (applied.body_frames === timeline?.total_frames && checks.speech_hash === timeline?.speech_hash));
+  const presented = presentationTimeline(timeline, brandingMatches ? applied : null);
   const clips = drama ? readJson(inWork(ARTIFACTS.clips), null) : null;
   const pictures = illustrated(doc);
   const keyframes = pictures ? readJson(inWork(ARTIFACTS.keyframes), null) : null;
@@ -176,12 +184,13 @@ export async function run(command, args, ctx) {
   const languages = readLanguages(workdir);
   const captionLocales = captionLocalesOf(languages);
   const skippedDubs = Object.fromEntries((chosenLocales(languages, "dub") ?? []).map((locale) => [locale, readJson(dubArtifacts(workdir, locale).skipped, null)]).filter(([, gaveUp]) => gaveUp).map(([locale, gaveUp]) => [locale, gaveUp.reason ?? ""]));
-  const { problems: metadataProblems, metadata } = composeMetadata({ doc, timeline: timelineCurrent ? timeline : estimateTimeline(doc), translations: project.translations, pack: project.pack ?? null, locales: chosenLocales(languages, "metadata") });
+  const { problems: metadataProblems, metadata } = composeMetadata({ doc, timeline: timelineCurrent ? presented : estimateTimeline(doc), translations: project.translations, pack: project.pack ?? null, locales: chosenLocales(languages, "metadata") });
+  if (!brandingMatches) metadataProblems.push("selected branding differs from the final cut; run assemble again");
   const descriptions = [metadata.description, ...Object.values(metadata.localizations).map((fields) => fields.description)];
 
   const items = [];
   let who = null;
-  items.push(assembleItem({ checks, current: checksCurrent(doc, lexicon, checks, clips, keyframes), finalExists, stale: pictures ? "an older script, look, pictures, music or effects" : undefined }));
+  items.push(assembleItem({ checks, current: checksCurrent(doc, lexicon, checks, clips, keyframes) && brandingMatches && (!applied || checks.metrics?.frames === presented?.total_frames), finalExists, stale: !brandingMatches ? "another branding selection" : pictures ? "an older script, look, pictures, music or effects" : undefined }));
   items.push(renderItem({ manifest: frames, cache, visual, speech, subtitles: drama ? subtitlesHash(doc) : null, burnIn: drama && burnIn(doc), hasThumbnail: Boolean(doc.thumbnail) }));
   items.push(narrationItem({ approval, current: timelineCurrent }));
   if (!timelineCurrent) {
@@ -206,13 +215,13 @@ export async function run(command, args, ctx) {
       items.push(item("pace", false, error.message));
     }
   }
-  items.push(captionsItem({ lintWarnings: lint.warnings, manifest: captions, current: captions?.speech_hash === speech, locales: captionLocales, hasCaptionFile: (locale) => existsSync(inWork(path.join("captions", `${locale}.srt`))), skippedDubs }));
+  items.push(captionsItem({ lintWarnings: lint.warnings, manifest: captions, current: captions?.speech_hash === speech && brandingMatches && (captions?.branding_hash ?? null) === (applied?.hash ?? null), locales: captionLocales, hasCaptionFile: (locale) => existsSync(inWork(path.join("captions", `${locale}.srt`))), skippedDubs }));
   items.push(metadataItem({
     problems: metadataProblems,
     tagProblems: checkYoutubeFields({ title: "", description: "", tags: metadata.tags }, "youtube"),
-    chapterProblems: timelineCurrent ? checkChapters(timeline) : [],
+    chapterProblems: timelineCurrent ? checkChapters(presented) : [],
     locales: [metadata.default_language, ...Object.keys(metadata.localizations)],
-    chapters: timelineCurrent ? chapterList(timeline).length : 0,
+    chapters: timelineCurrent ? chapterList(presented).length : 0,
     timelineCurrent,
   }));
   const last = reports.length ? reports.sort((a, b) => Number(VERIFY_FILE.exec(b)[1]) - Number(VERIFY_FILE.exec(a)[1]))[0] : null;

@@ -6,6 +6,7 @@ import test from "node:test";
 
 import { EXIT, main } from "../cli.mjs";
 import { approve } from "../core/approvals.mjs";
+import { pinBranding, validateBranding } from "../core/branding.mjs";
 import { fixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
 import { atomicWrite } from "../core/paths.mjs";
 import { eachLine, LOCALES, textHash } from "../core/schema.mjs";
@@ -152,6 +153,39 @@ test("with the judge passing, everything passes and the exit code is 0", async (
   assert.equal(report.ok, true);
   assert.equal(report.items.find((item) => item.id === "policy").detail, note);
   assert.match(out.stdout, /11 of 11 checks passed \(final\.mp4 sha256 [0-9a-f]{12}\)/);
+});
+
+test("QA uses presentation duration and bound captions while measuring pacing only on the unchanged body", async () => {
+  const { box, workdir, timeline } = finishedVideo();
+  await approve({ gate: "audio", docDir: box.dir, workdir });
+  const run = () => main(["qa", "--slug", box.slug], context(box, site({ policy: () => Response.json({ passed: true }) }).fetchImpl).ctx);
+  assert.equal(await run(), EXIT.ok);
+  const originalPace = readReport(workdir).items.find((item) => item.id === "pace");
+  const selection = validateBranding({ schema_version: 1, id: "v1", intro: { file: "intro.mp4", sha256: "a".repeat(64), frames: 150 }, outro: { file: "outro.mp4", sha256: "b".repeat(64), frames: 90 } }, { base: workdir });
+  pinBranding(workdir, selection);
+  const checksFile = path.join(workdir, "checks.json");
+  const originalChecks = JSON.parse(readFileSync(checksFile, "utf8"));
+  const checks = { ...originalChecks, branding: { hash: selection.hash, id: selection.id, intro_frames: 150, outro_frames: 90, body_frames: timeline.total_frames, body_file: "body.mp4", body_sha256: "c".repeat(64) }, metrics: { ...originalChecks.metrics, frames: timeline.total_frames + 240 } };
+  writeFileSync(checksFile, JSON.stringify(checks));
+  assert.equal(await run(), EXIT.lint, "captions from before the bookends are stale");
+  assert.deepEqual(readReport(workdir).items.filter((item) => !item.ok).map((item) => item.id), ["captions"]);
+  runCaptions({ slug: box.slug, root: box.root, workdir });
+  assert.equal(await run(), EXIT.ok);
+  const branded = Object.fromEntries(readReport(workdir).items.map((item) => [item.id, item]));
+  assert.deepEqual(branded.pace, originalPace);
+  assert.match(branded.assemble.detail, new RegExp(`^${timeline.total_frames + 240} frames`));
+  assert.match(branded.metadata.detail, /3 chapters$/);
+  writeFileSync(checksFile, JSON.stringify({ ...checks, metrics: originalChecks.metrics }));
+  assert.equal(await run(), EXIT.lint, "a branded final must include both bookends in its measured frame count");
+  assert.deepEqual(readReport(workdir).items.filter((item) => !item.ok).map((item) => item.id), ["assemble"]);
+  writeFileSync(checksFile, JSON.stringify(checks));
+  pinBranding(workdir, validateBranding({ ...selection, hash: undefined, intro: { ...selection.intro, sha256: "d".repeat(64) } }));
+  assert.equal(await run(), EXIT.lint);
+  const stale = Object.fromEntries(readReport(workdir).items.map((item) => [item.id, item]));
+  assert.equal(stale.assemble.ok, false);
+  assert.equal(stale.captions.ok, false);
+  assert.match(stale.metadata.detail, /selected branding differs/);
+  assert.deepEqual(stale.pace, originalPace);
 });
 
 test("a slide left up too long, a broken link, a cited NOT FOUND claim and a stale caption each fail their item", async () => {

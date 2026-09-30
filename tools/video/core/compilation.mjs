@@ -247,7 +247,7 @@ export function validateCompilation(doc, errors) {
  * frames, file?, sha256? }], a card before its episode and the outro last. `episode` is the
  * episode's number in the series.
  */
-export function compilationLayout(doc, episodes) {
+export function compilationLayout(doc, episodes, { branding = null } = {}) {
   const spec = doc.compilation;
   const order = episodes.map((episode) => episode.slug);
   if (JSON.stringify(order) !== JSON.stringify(spec.episodes)) throw new Error(`the episodes ${order.join(", ")} are not compilation.episodes in order`);
@@ -261,10 +261,11 @@ export function compilationLayout(doc, episodes) {
       frame += CARD_FRAMES;
     }
     if (!Number.isInteger(episode.frames) || episode.frames <= 0) throw new Error(`episode ${episode.slug} has no frame count`);
-    layout.push({ kind: "episode", id: episode.slug, slug: episode.slug, episode: n, start_frame: frame, frames: episode.frames, ...(episode.file ? { file: episode.file } : {}), ...(episode.sha256 ? { sha256: episode.sha256 } : {}) });
+    layout.push({ kind: "episode", id: episode.slug, slug: episode.slug, episode: n, start_frame: frame, frames: episode.frames, ...(episode.file ? { file: episode.file } : {}), ...(episode.sha256 ? { sha256: episode.sha256 } : {}), ...(episode.body_sha256 ? { body_sha256: episode.body_sha256, branding_hash: episode.branding_hash, intro_frames: episode.intro_frames } : {}) });
     frame += episode.frames;
   });
-  if (spec.outro ?? true) layout.push({ kind: "outro", id: OUTRO_ID, start_frame: frame, frames: OUTRO_FRAMES });
+  // Channel branding supplies the single closing card for the whole compilation.
+  if (!branding && (spec.outro ?? true)) layout.push({ kind: "outro", id: OUTRO_ID, start_frame: frame, frames: OUTRO_FRAMES });
   return layout;
 }
 
@@ -280,7 +281,7 @@ export function totalFrames(layout) {
  * after its approval voids the compilation.
  */
 export function compilationHash(doc, episodes) {
-  return hash16(["compilation", episodes.map((episode) => [episode.slug, episode.sha256]), doc.compilation.chapter_cards ?? true, doc.compilation.outro ?? true]);
+  return hash16(["compilation", episodes.map((episode) => episode.body_sha256 ? [episode.slug, episode.sha256, episode.body_sha256, episode.branding_hash] : [episode.slug, episode.sha256]), doc.compilation.chapter_cards ?? true, doc.compilation.outro ?? true]);
 }
 
 /**
@@ -341,11 +342,13 @@ export function shiftCues(cues, offsetMs) {
 
 /**
  * The episodes' caption files as one track: each file's cues moved to where its episode starts.
- * `perEpisode` is [{ srt, offsetMs }] in play order. An episode's cues end inside its own
+ * `perEpisode` is [{ srt, offsetMs, introMs? }] in play order. Branded episode captions already
+ * include their own intro, which is removed before placing the body in the compilation.
+ * An episode's cues end inside its own
  * length (captions never outlive their line), so the merged track never overlaps at a seam.
  */
 export function mergeCaptions(perEpisode) {
-  return perEpisode.flatMap(({ srt, offsetMs }) => shiftCues(parseSrt(srt), offsetMs));
+  return perEpisode.flatMap(({ srt, offsetMs, introMs = 0 }) => shiftCues(parseSrt(srt), offsetMs - introMs));
 }
 
 /**
