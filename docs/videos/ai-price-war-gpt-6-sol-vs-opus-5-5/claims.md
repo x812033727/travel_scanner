@@ -13,7 +13,7 @@ c4｜快速模式（Fast）頁 GPT-6 Sol 短脈絡 4／0.40／5／20，是標準
 c5｜快取寫入是標準輸入價的 1.25 倍；快取讀取 0.1 倍（GPT-6.1 Sol 為 0.05 倍）；寫一次、完整讀九次是 2.15 倍，沒有快取十次是 10 倍｜https://developers.openai.com/api/docs/guides/prompt-caching｜2026-09-30｜cache-math, write-costs-more, sol-61, answer-recap
 c6｜快取要相同的前綴；最短可快取長度 1,024 token（GPT-5.6 及之後）；快取項目不會永久保存｜https://developers.openai.com/api/docs/guides/prompt-caching｜2026-09-30｜cache-conditions
 c7｜一個輸入 token 只會算成輸入、快取輸入、快取寫入其中一種，寫入不是額外加收；輸出價含看不見的推理 token（價目表表頭說明）｜https://developers.openai.com/api/docs/pricing｜2026-09-30｜four-tokens
-c8｜GPT-5.6 Sol 短脈絡 4／0.40／5／20；頁尾註記「GPT-5.6 Sol’s promotional pricing is available at least through November 21, 2026」；GPT-6 Sol 短脈絡四格都是它的一半（4→2、0.40→0.20、5→2.50、20→10）｜https://developers.openai.com/api/docs/pricing｜2026-09-30｜promo-quote, half-of-promo, compare-to-last-gen, news-three-numbers, three-words
+c8｜GPT-5.6 Sol 短脈絡 4／0.40／5／20；旗艦模型表格下方註記（不在頁面最底，下面還有 Cyber、多模態等區塊；2026-09-30 查核更正）「GPT-5.6 Sol’s promotional pricing is available at least through November 21, 2026」；GPT-6 Sol 短脈絡四格都是它的一半（4→2、0.40→0.20、5→2.50、20→10）｜https://developers.openai.com/api/docs/pricing｜2026-09-30｜promo-quote, half-of-promo, compare-to-last-gen, news-three-numbers, three-words
 c9｜GPT-6 Sol 與 GPT-6 Luna 於 2026-09-22 上線（更新紀錄）；Claude Opus 5.5 公告頁日期同為 2026 年 9 月 22 日｜https://developers.openai.com/api/docs/changelog 、 https://www.anthropic.com/claude-opus-5-5｜2026-09-30｜news-three-numbers
 c10｜2026-09-29 上線 gpt-6.1-sol，標準短脈絡 2／0.10／2.50／10；價目表旗艦區列 gpt-6-astra、gpt-6.1-sol、gpt-6-luna，gpt-6-sol 在展開後的全部模型區｜https://developers.openai.com/api/docs/changelog 、 https://developers.openai.com/api/docs/pricing｜2026-09-30｜sol-61, chase-new
 c11｜GPT-6 Luna 標準短脈絡：輸入 0.10、快取讀取 0.01、快取寫入 0.125、輸出 0.50｜https://developers.openai.com/api/docs/pricing｜2026-09-30｜monthly-bill
@@ -55,7 +55,7 @@ c26｜站內文章〈API 價格比較：每百萬 token 各家多少〉（`ai-ap
 - 收尾的下一步：B 指定站內文章〈API 價格比較：每百萬 token 各家多少〉，該文存在（見 c26），但 `source_guide`（brief 與站主指定，沒有改）仍是〈GPT-6 Sol 與 Luna 推出…〉，說明欄第一行由工具依 `source_guide` 自動放那篇。所以：中段 cta（`article-cta`）指向說明欄第一行的來源文章；結尾口播與 outro 卡片講〈API 價格比較〉，並在 `youtube.description` 本文最後一段放它的連結（帶 UTM，格式照 docs/videos/README.md）。這是唯一一處說明欄第一行不等於結尾下一步的地方，請站主確認是否接受，或改 `source_guide`。
 - brief 的「表格 5 列 × 3 情境」保留，但把 Claude Sonnet 5 改成 Claude Sonnet 5.5：Sonnet 5.5 在 2026-09-28 發布，價目表已把 Sonnet 5 移到舊版；兩者同價（2／0.20／10），數字沒有變。
 - brief 寫「不算長脈絡價格、不算快取寫入、不算 Fast mode；各講一句『另有價格』」。B 的第 1、2、3 章本來就要讀這些格子，所以片中逐格讀了長脈絡、快取寫入、批次與快速模式的官方價格（c2、c3、c4、c5），但每月帳單（第 5 章）仍只算標準價的輸入、快取讀取、輸出三種，並口播與說明欄註明。
-- brief 的第 3 章「批次五折與促銷價」的 quote 用 GPT-5.6 Sol 促銷價「至少到 2026-11-21」，本稿改引價目表頁尾原文（c8）；OpenAI 發布文原話不引（該頁本環境回 403，且 2026-09-29 查核已刪）。
+- brief 的第 3 章「批次五折與促銷價」的 quote 用 GPT-5.6 Sol 促銷價「至少到 2026-11-21」，本稿改引價目表旗艦表格下方註記原文（c8）；OpenAI 發布文原話不引（該頁本環境回 403，且 2026-09-29 查核已刪）。
 - 「40% 少的是任務成本」的說法照 2026-09-29 查核後的措辭（含單價與每任務 token 用量變化，不保證每個人省四成）。
 - 加了 brief 沒有的兩件官方事實：GPT-6.1 Sol 於 2026-09-29 上線、旗艦區已換成它，快取讀取只要 0.10（c10）；Anthropic 自己寫快取讀取占代理與寫程式工作成本的大宗（c21）。前者是讀價目表的實際障礙（片中要找 GPT-6 Sol 得展開全部模型），後者與站主「代理型大頭是輸出」的看法並陳，見下。
 
@@ -72,3 +72,4 @@ c26｜站內文章〈API 價格比較：每百萬 token 各家多少〉（`ai-ap
 
 - 2026-09-30：video.json 與 claims.md 依選項 B 重寫完成，33 個場景、121 句、7 章；`lint` 0 錯誤 0 警告，估計 9.5 分鐘（實際語速較快，約 8 分鐘）。字典沒有新增（用到的拉丁字詞都已在 `lexicon.json`）。
 - 未做：獨立查核（新稿）、旁白試聽、站主對「與企劃不同的地方」的確認。
+- 2026-09-30 獨立查核第 1 輪（`verify-r1-20260930.md`）：15 格帳單、兩組對照、54%、各官方單價與原文全部重算重開確認；只更正 c8 註記的位置（旗艦表格下方，不是頁尾）。openai.com 發布文當天回 200，原文「reducing API prices for Sol and Luna by 50% compared with their GPT‑5.6 promotional pricing」，發布日 2026-09-22，證實 half-of-promo 的「新聞講的五成是跟促銷價比」。
