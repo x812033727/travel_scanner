@@ -45,6 +45,13 @@ MAX_REPORTED_SKIPS = 5
 # from (lead_only evidence stops at needs_evidence) but shows up in the review queue.
 REFUSED_STATUSES = frozenset({401, 403})
 SUMMARY_LEAD_MAX_AGE = timedelta(hours=72)
+# A dated entry that is still skipped this long after it was published has failed on every
+# hourly scan since: the source is reported "stuck", which the admin puts at the top, instead
+# of "partial", which a one-off timeout also produces. Entries older than a week are left out:
+# a feed keeps them for months, and a source whose back catalogue is refused would otherwise
+# read "stuck" for good.
+STUCK_AFTER = timedelta(hours=6)
+STUCK_UNTIL = timedelta(days=7)
 PAGE_REFUSED = "news_page_refused"
 # A readable article (a press report, say) that links to a story still waiting for evidence
 # -- a refused page kept as a lead, or a candidate with lead-only pages -- is attached to that
@@ -354,6 +361,8 @@ async def scan_source(
     skipped: list[str] = []
     # Refused entries kept as summary leads (never queued: nothing can be drafted from them).
     summarized: list[str] = []
+    # Skipped entries published long enough ago that every scan since has failed on them.
+    stuck: list[str] = []
     # Stories that were waiting for evidence and got it from a page read in this scan.
     attached_ids: list[UUID] = []
     now = datetime.now(UTC)
@@ -425,6 +434,11 @@ async def scan_source(
                             summarized.append(entry.url)
                         continue
                     skipped.append(f"{entry.url} ({type(error).__name__})")
+                    if (
+                        entry.published_at is not None
+                        and STUCK_AFTER < now - entry.published_at <= STUCK_UNTIL
+                    ):
+                        stuck.append(entry.url)
                     continue
             # Feed links that redirect (tracking, feed proxies) only match after the
             # fetch; without this the same page files a new "duplicate" every hour.
@@ -612,10 +626,18 @@ async def scan_source(
             # again (a 304 would hide the skipped entries); seen entries cost one query.
             source.etag = listing.etag
             source.last_modified = listing.last_modified
-        source.last_status = "partial" if skipped or summarized else "succeeded"
-        source.last_error = (
-            _skip_note(skipped, summarized)[:4000] if skipped or summarized else None
+        source.last_status = (
+            "stuck" if stuck else "partial" if skipped or summarized else "succeeded"
         )
+        note = _skip_note(skipped, summarized)
+        if stuck:
+            note = (
+                f"Failing for more than {int(STUCK_AFTER.total_seconds() // 3600)} hours: "
+                + "; ".join(stuck[:MAX_REPORTED_SKIPS])
+                + ". "
+                + note
+            )
+        source.last_error = note[:4000] if note else None
         source.consecutive_failures = 0
         await session.commit()
     except Exception as error:

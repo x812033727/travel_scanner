@@ -919,6 +919,80 @@ async def test_a_feed_whose_summary_is_the_story_is_scanned_and_revalidated_from
 
 
 @pytest.mark.asyncio
+async def test_a_source_that_keeps_failing_on_a_recent_entry_is_reported_stuck() -> None:
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(
+                sync,
+                tables=[
+                    NewsAutomationSettings.__table__,
+                    NewsSource.__table__,
+                    NewsCandidate.__table__,
+                    NewsEvidence.__table__,
+                ],
+            )
+        )
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    source = NewsSource(
+        name="Flaky",
+        url="https://flaky.example/feed",
+        format="rss",
+        role="evidence",
+        vertical="tech",
+        enabled=True,
+        last_scanned_at=SCANNED_BEFORE,
+    )
+    now = datetime.now(UTC)
+    ages = {"fresh": timedelta(hours=1)}
+
+    def listing() -> bytes:
+        return (
+            "<rss><channel>"
+            + "".join(
+                f"<item><title>Story {name}</title><link>https://flaky.example/{name}</link>"
+                f"<pubDate>{(now - age).strftime('%a, %d %b %Y %H:%M:%S GMT')}</pubDate></item>"
+                for name, age in ages.items()
+            )
+            + "</channel></rss>"
+        ).encode()
+
+    class Fetcher:
+        async def fetch(self, url: str, **_kwargs: object) -> FetchResult:
+            if url.endswith("/feed"):
+                return FetchResult(
+                    url=url, status_code=200, content_type="application/rss+xml", body=listing()
+                )
+            raise httpx.ConnectTimeout("the article server does not answer")
+
+        async def close(self) -> None:
+            return None
+
+    async def enqueue(_candidate_id: UUID) -> None:
+        return None
+
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        session.add(source)
+        await session.commit()
+        await scan_source(session, source.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        await session.refresh(source)
+        # An hour of failures is an ordinary skip.
+        assert source.last_status == "partial"
+        ages["stale"] = timedelta(hours=10)
+        ages["ancient"] = timedelta(days=30)
+        await scan_source(session, source.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        await session.refresh(source)
+    # Ten hours of failures is not; a month-old entry of the back catalogue does not count.
+    assert source.last_status == "stuck"
+    note = source.last_error or ""
+    assert note.startswith("Failing for more than 6 hours: https://flaky.example/stale.")
+    assert "https://flaky.example/ancient (ConnectTimeout)" in note
+    assert "ancient" not in note.split(". ", 1)[0]
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
 async def test_a_new_source_s_first_scan_files_only_fresh_entries() -> None:
     engine = create_async_engine("sqlite+aiosqlite://")
     async with engine.begin() as connection:

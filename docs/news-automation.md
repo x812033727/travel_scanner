@@ -51,6 +51,10 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    summary is its evidence, its anchor URL the canonical URL, and revalidation and
    「用最新來源重新查核」 read the entry from the feed again. A URL of that site the feed does
    not list (an aged-out entry, a page linked from another source) is read as a page.
+   A source whose dated entries of the last week keep failing for more than six hours is
+   reported `stuck` instead of `partial` (the note names those URLs first); `/admin/news`
+   lists stuck sources first under a warning, so a publisher that starts refusing the
+   scanner is noticed the same day.
    A source's **first scan** (`last_scanned_at` empty) records every listed entry older than
    72 hours, or undated, as seen (`rejected`, `news_baseline`) without fetching it, so
    adding a source files only its news of the last days, never its back catalogue.
