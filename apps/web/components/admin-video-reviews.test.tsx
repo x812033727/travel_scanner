@@ -1,8 +1,8 @@
-import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AdminOperationsProvider } from "./admin-operations-provider";
 import { youtubeVideoId } from "./admin-video-review-card";
-import { AdminVideoReviews } from "./admin-video-reviews";
+import { AdminVideoReviews, REFRESH_MS } from "./admin-video-reviews";
 import type { AdminBootstrap } from "@/lib/admin-operations";
 
 vi.mock("@/components/header-session", () => ({ useHeaderSession: () => ({ user: null, sessionIdentity: null, status: undefined }) }));
@@ -641,6 +641,59 @@ describe("AdminVideoReviews", () => {
     await screen.findByRole("article", { name: "劇本" });
     expect(await screen.findByText("工人下一輪會寫故事聖經。")).toBeTruthy();
     expect(screen.queryByText("故事聖經")).toBeNull();
+  });
+
+  it("reads a long series or a brand story once for the episode page, and keeps refreshing a one-off's bible", async () => {
+    const bible = { id: "b1", kind: "bible", chapter_number: 0, version: 1, body_md: "# 故事聖經\n精衛。", body_json: {}, status: "review", note: null, decided_at: null, created_at: "2026-09-27T02:00:00Z", unanswered: 0 };
+    const setting = { ...bible, id: "s1", kind: "setting", body_md: "# 設定集", status: "approved" };
+    const base = {
+      id: "7c2e3d4f-5a6b-4c7d-8e9f-0a1b2c3d4e5f", title: "作品", premise: "前提", aspects: [], tone: "no-romance", style_preset: "ink-wash",
+      target_minutes: 2, planned_episodes: 100, episodes_per_chapter: 10, chapters: 10, open_ended: false, status: "running", note: null, requested_chapter: null, force_next: false,
+      episodes_done: 0, episodes_started: 1, episodes_ready: 0, docs_pending: 0, messages_pending: 0, media_usd: 0, clip_seconds: 0, created_at: "2026-09-27T00:00:00Z", updated_at: "2026-09-27T01:00:00Z",
+      episodes: [],
+    };
+    // A long drama, a brand story, and a response from an API without the kind (no bible, so not a one-off).
+    const long = [
+      { slug: "long-drama", series: { ...base, slug: "long-drama", kind: "series", docs: [setting] } },
+      { slug: "brand-story", series: { ...base, slug: "brand-story", kind: "story", docs: [] } },
+      { slug: "old-api", series: { ...base, slug: "old-api", docs: [setting] } },
+    ];
+    const oneOff = { slug: "jingwei", series: { ...base, slug: "jingwei", kind: "one-off", planned_episodes: 1, status: "setting", docs: [bible] } };
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+    try {
+      for (const { slug, series } of [...long, oneOff]) {
+        const calls: string[] = [];
+        vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
+          const url = String(input);
+          calls.push(url);
+          if (url.includes("/messages?subject=")) return Promise.resolve(Response.json({ messages: [] }));
+          if (url.endsWith(`/admin/video-automation/series/${slug}`)) return Promise.resolve(Response.json(series));
+          return Promise.resolve(Response.json({ ...summary, format: "drama", series_slug: slug, episode_number: 1, reviews: [] }));
+        }));
+        window.history.replaceState(null, "", "/?video=ai-model-choice");
+        const view = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+        await screen.findByText(`作品 ${slug} 第 1 集`);
+        const seriesReads = () => calls.filter((url) => url.endsWith(`/admin/video-automation/series/${slug}`)).length;
+        await waitFor(() => expect(seriesReads()).toBe(1));
+        const pageReads = () => calls.filter((url) => url.endsWith("/admin/videos/ai-model-choice")).length;
+        const pageBefore = pageReads();
+        await act(async () => { await vi.advanceTimersByTimeAsync(REFRESH_MS * 3 + 100); });
+        // The video page itself keeps refreshing every minute either way.
+        expect(pageReads()).toBeGreaterThanOrEqual(pageBefore + 3);
+        if (slug === oneOff.slug) {
+          // The one-off's bible is still read every minute, so the worker's new version and its thread show up.
+          expect(seriesReads()).toBe(4);
+          expect(screen.getByText("故事聖經")).toBeTruthy();
+        } else {
+          expect(seriesReads()).toBe(1);
+          expect(screen.queryByText("故事聖經")).toBeNull();
+          expect(screen.queryByText("工人下一輪會寫故事聖經。")).toBeNull();
+        }
+        view.unmount();
+      }
+    } finally {
+      vi.useRealTimers();
+    }
   });
 
   it("keeps an approved screenplay's thread as a record in the history, and gives a rejected one none", async () => {
