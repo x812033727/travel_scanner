@@ -208,24 +208,47 @@ function PublishPill({ project }: { project: ProjectSummary }) {
 }
 
 /**
+ * Whether a series read is a one-off's: the API's kind, which every series response carries
+ * (SeriesSummary.kind in apps/api/app/video_automation/schemas.py, "series" by default). A response
+ * without it (an API older than one-off series) counts as one only when it has a bible document.
+ */
+const isOneOff = (series: Series) => (series.kind ? series.kind === "one-off" : Boolean(series.docs?.some((doc) => doc.kind === "bible")));
+
+/**
  * A one-off episode's series (docs/videos/DRAMA-FLOW.md, section 2): its story bible is the one
  * document, shown on the episode's page above the gates, with its discussion. The server knows a
  * one-off by its series' kind, not by its slug (the owner may pick one), so every drama episode's
- * series is read; a long series never has a bible document (its first document is the setting book)
- * and shows nothing here.
+ * series is read once. A long series or a brand story never has a bible document (its first
+ * document is the setting book) and a series never changes its kind, so the first read that says
+ * so is the last: those reads carry every episode's plan (about 1.2 MB for a hundred stories) and
+ * would otherwise repeat every minute for nothing. A one-off keeps refreshing, so its bible and
+ * thread follow the worker.
  */
 function OneOffBible({ seriesSlug, canManage, onChanged }: { seriesSlug: string; canManage: boolean; onChanged: () => void }) {
   const t = useTranslations("admin.videoSeries");
   const [series, setSeries] = useState<Series | null>(null);
+  // The slug last read as not a one-off; keyed by slug so another series on the same page reads again.
+  const [notOneOff, setNotOneOff] = useState<string | null>(null);
+  const settled = notOneOff === seriesSlug;
   const load = useCallback(() => {
-    api<Series>(`/admin/video-automation/series/${seriesSlug}`).then((value) => setSeries(value)).catch(() => setSeries(null));
+    api<Series>(`/admin/video-automation/series/${seriesSlug}`).then((value) => {
+      if (isOneOff(value)) { setSeries(value); return; }
+      setSeries(null);
+      setNotOneOff(seriesSlug);
+    }).catch(() => setSeries(null));
   }, [seriesSlug]);
-  useRefresh(load);
-  const bible = series?.docs?.find((doc) => doc.kind === "bible");
+  // useRefresh's timer, but stopped for good once the series is known not to be a one-off.
+  useEffect(() => {
+    if (settled) return undefined;
+    load();
+    const timer = window.setInterval(load, REFRESH_MS);
+    return () => window.clearInterval(timer);
+  }, [load, settled]);
+  if (settled || !series) return null;
+  const bible = series.docs?.find((doc) => doc.kind === "bible");
   if (bible) return <DocPanel slug={seriesSlug} doc={bible} canManage={canManage} onChanged={() => { load(); onChanged(); }} />;
   // A one-off whose worker has not written the bible yet: say so instead of showing nothing.
-  if (series?.kind === "one-off") return <p className="text-sm text-[var(--muted)]">{t("bibleEmpty")}</p>;
-  return null;
+  return <p className="text-sm text-[var(--muted)]">{t("bibleEmpty")}</p>;
 }
 
 /** The newest approved upload confirmation: the package the site sends to YouTube. */
