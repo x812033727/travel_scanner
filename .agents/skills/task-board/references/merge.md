@@ -51,15 +51,7 @@ gh api "repos/{owner}/{repo}/actions/jobs/<job-id>/logs" --allow-escape-sequence
 
 每個失敗的 vitest 測試會變成一條 annotation（檔案、行號、名稱），比 log 快。
 
-已知的、不是你的錯的紅燈（2026-09-15 清查 60 個失敗 run，PR #522 修掉四類；再出現先想這些）：
-
-| 症狀 | 成因 | 已修的做法 |
-| --- | --- | --- |
-| `exit code 125` 加 `Unable to find image`、quay.io 502／504、`auth.docker.io` timeout | 映像只拉一次 | `tools/ci/pull-images.sh` 獨立步驟重試 |
-| `community.spec.ts` 的 `read ECONNRESET` | Playwright 的 keep-alive 連線比 `next start` 的閒置逾時長 | start 帶 `--keepAliveTimeout 65000`，`tools/ci-images.test.mjs` 檢查與正式站一致 |
-| `site-pages.spec.ts` 的 `Response has been disposed` | 測試在 route handler 的 `fetch` 與 `json()` 之間結束 | 先 `waitForResponse` |
-| `trip-editor.test.tsx` 190／292 行 | planner 關閉守衛的競態，見票 `2026-09-11-planner-overlay-close-guard-race` | 只有它紅時 PR 沒錯，推新 head 再跑 |
-| 兩個各自會過的 PR 合在一起才壞 | 例：sitemap import 了 `server-only` 模組，載入它的 vitest 要 `vi.mock("@/lib/community/server")` | 照 `apps/web/app/sitemaps/sitemap.test.ts` |
+已知的、不是你的錯的紅燈與各自的現況，正本在 skill `dev-and-ci` 的 `.agents/skills/dev-and-ci/references/ci-triage.md`；先對那張表，再決定重跑或修。
 
 本機限制：Playwright 需要的 chromium build 本機沒裝，e2e 只能靠 CI；workflow 代理留下的 `src.tar` 之類的大檔要 `git status` 清掉。
 
