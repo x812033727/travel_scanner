@@ -37,7 +37,7 @@
         },
         {
           "type": "paragraph",
-          "text": "這一篇的資料在 2026 年 9 月 30 日查核，讀的是 Anthropic 的公告、模型頁、Sonnet 產品頁與 System Card。Sonnet 產品頁寫任何人都能在 Claude.ai 使用；開發者用 claude-sonnet-5-5。這幾頁沒有提到台灣，也沒有列地區限制。評測與安全分級都是 Anthropic 自己公布，這個網站沒有實測，也不提供換模型或訂閱的建議。"
+          "text": "這一篇的資料在 2026 年 9 月 30 日查核，讀的是 Anthropic 的公告、模型頁、產品頁與 System Card。Sonnet 產品頁寫任何人都能在 Claude.ai 使用；開發者用 claude-sonnet-5-5。這幾頁沒有提到台灣，也沒有列地區限制。評測與安全分級都是 Anthropic 自己公布，這個網站沒有實測，也不建議換模型或訂閱。"
         },
         {
           "type": "summary",
@@ -56,7 +56,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Anthropic 的定位是：Sonnet 5.5 是 Opus 5.5 較快、成本較低的搭配。Opus 5.5 為需要審慎判斷的複雜工作打造，Sonnet 5.5 最擅長範圍明確的日常任務、修 bug，以及製作文件、簡報與試算表。公告稱它是 Sonnet 5 的「明確升級」，輸出速度快 30% 以上。以上都是 Anthropic 的自述。"
+          "text": "Anthropic 說 Sonnet 5.5 是 Opus 5.5 較快、成本較低的搭配。Opus 5.5 為需要審慎判斷的複雜工作打造，Sonnet 5.5 最擅長範圍明確的日常任務、修 bug，以及製作文件、簡報與試算表。公告稱它是 Sonnet 5 的「明確升級」，輸出速度快 30% 以上。這些都是 Anthropic 的自述。"
         },
         {
           "type": "paragraph",
@@ -64,7 +64,7 @@
         },
         {
           "type": "paragraph",
-          "text": "對開發者，模型頁寫有五項破壞性變更會影響原本在 Sonnet 5 上跑的程式；公告點出其中一項：把思考關掉來跑的人，換到 Sonnet 5.5 前要改用新的 between_tools 設定。公告也說 Claude Haiku 5.5 會在「未來幾週」加入這個家族，沒有給日期。"
+          "text": "對開發者，模型頁寫有五項破壞性變更會影響原本在 Sonnet 5 上跑的程式；公告點出其中一項：把思考關掉來跑的人，換到 Sonnet 5.5 前要改用新的 between_tools 設定。"
         },
         {
           "type": "heading",
@@ -77,11 +77,11 @@
         },
         {
           "type": "paragraph",
-          "text": "「最多便宜 30%」要小心讀：公告寫的是在 Anthropic 的測試裡，每個任務的成本比前一代最多少 30%；產品頁寫的是一般工作負載的估計。兩處都是「最多」，都是 Anthropic 自己的測試或估計，牌價沒有降。實際省多少，要看自己的任務用掉多少 tokens。"
+          "text": "「最多便宜 30%」要小心讀：公告寫的是在 Anthropic 的測試裡，每個任務的成本比前一代最多少 30%；產品頁寫的是一般工作負載的估計。兩處都是「最多」，都是 Anthropic 自己的測試或估計，牌價沒有降。實際省多少，看自己的任務用掉多少 tokens。"
         },
         {
           "type": "paragraph",
-          "text": "產品頁另寫：提示快取最多可省 90%、批次處理可省 50%；需要在美國境內執行的工作負載，可用 US-only inference，輸入與輸出 tokens 價格乘 1.1 倍。下表的 Opus 5.5 欄是公告同一張價格表印的。"
+          "text": "產品頁另寫：提示快取最多可省 90%、批次處理可省 50%；US-only inference 的輸入與輸出 tokens 價格乘 1.1 倍。下表的 Opus 5.5 欄是公告同一張價格表印的。"
         },
         {
           "type": "table",
@@ -121,15 +121,15 @@
         },
         {
           "type": "paragraph",
-          "text": "聊天這一端，Sonnet 產品頁寫，任何人都能在 Claude.ai 上用 Sonnet 5.5 對話，網頁、iOS、Android 都有。這句沒有逐一列出各方案，也沒有寫用量上限或是否為預設模型，這些官方未說明，不能推論成某個方案不能用。"
+          "text": "聊天這一端，Sonnet 產品頁寫，任何人都能在 Claude.ai 上用 Sonnet 5.5 對話，網頁、iOS、Android 都有。這句沒有逐一列出各方案，也沒有寫用量上限或是否為預設模型，這些官方未說明，不能推論成某方案不能用。"
         },
         {
           "type": "paragraph",
-          "text": "開發者這一端，公告寫 Sonnet 5.5 已在「所有平台」上線，舉例有 Amazon Web Services、Google Cloud 與 Microsoft Azure。模型頁列的平台是 Claude API、Amazon Bedrock、Google Cloud、Microsoft Foundry、Claude Platform on AWS；模型 ID 除 Amazon Bedrock 是 anthropic.claude-sonnet-5-5，其餘都是 claude-sonnet-5-5。"
+          "text": "開發者這一端，公告寫 Sonnet 5.5 已在「所有平台」上線，舉例有 Amazon Web Services、Google Cloud 與 Microsoft Azure；模型頁列的平台是 Claude API、Amazon Bedrock、Google Cloud、Microsoft Foundry、Claude Platform on AWS；模型 ID 除 Amazon Bedrock 是 anthropic.claude-sonnet-5-5，其餘都是 claude-sonnet-5-5。"
         },
         {
           "type": "paragraph",
-          "text": "模型頁列的規格是脈絡視窗 1M tokens、最大輸出 128K tokens、可靠知識截止 2026 年 6 月；這些頁面沒有寫 Sonnet 5 的規格，所以不比較。公告另寫，Claude Code 與 Claude 應用的預設 effort 是 Medium，Claude Platform 預設 High，這是 effort 的預設，不是哪個模型是預設。"
+          "text": "模型頁列的規格是脈絡視窗 1M tokens、最大輸出 128K tokens、可靠知識截止 2026 年 6 月；這些頁面沒有寫 Sonnet 5 的規格，所以不比較。公告另寫，Claude Code 與 Claude 應用的預設 effort 是 Medium，Claude Platform 預設 High。"
         },
         {
           "type": "image",
@@ -155,11 +155,11 @@
         },
         {
           "type": "paragraph",
-          "text": "FrontierCode 1.1 (Main) 要連 effort 一起看：Sonnet 5.5 在 Max effort 是 46.2%、Xhigh effort 是 52.1%，Sonnet 5 是 42.4%，Opus 5.5 是 54.4%；註腳說 Max 較低，是因為 Max 較常跑 Claude Code 的程式審查技能，有兩個任務逾時或改到範圍外。GDPval-AA v2.1 是分數制、不是百分比：Sonnet 5.5 1844、Sonnet 5 1449、Opus 5.5 1846；註腳說這項由 Artificial Analysis 在上市前部署上執行，Anthropic 事後發現該部署有影響結構化輸出的 bug，已修正。"
+          "text": "FrontierCode 1.1 (Main) 要連 effort 一起看：Sonnet 5.5 在 Max effort 是 46.2%、Xhigh effort 是 52.1%，Sonnet 5 是 42.4%，Opus 5.5 是 54.4%；註腳說 Max 較低，是因為它較常跑 Claude Code 的程式審查技能，有兩個任務逾時或改到範圍外。GDPval-AA v2.1 是分數制、不是百分比：Sonnet 5.5 1844、Sonnet 5 1449、Opus 5.5 1846；註腳說這項由 Artificial Analysis 在上市前部署上執行，該部署有影響結構化輸出的 bug，已修正。"
         },
         {
           "type": "paragraph",
-          "text": "Anthropic 自己也寫了但書：評測分數只反映模型能力的一個面向，在 Anthropic 與外部測試者的使用中，Opus 5.5 在需要持續判斷的複雜開放式工作上仍明顯較強。這些數字是 Anthropic 選定條件下的參考，這個網站沒有實測。"
+          "text": "Anthropic 自己也寫了但書：評測分數只反映模型能力的一個面向，在 Anthropic 與外部測試者的使用中，Opus 5.5 在需要持續判斷的複雜開放式工作上仍明顯較強。"
         },
         {
           "type": "heading",
@@ -172,11 +172,11 @@
         },
         {
           "type": "paragraph",
-          "text": "System Card 摘要的其他結論也是 Anthropic 的評估：失準風險低，理由是思考過程可見時，它很難控制思維鏈或躲過監控；它是目前對提示注入最穩健的 Sonnet 級模型，但在電腦操作環境裡，對有害任務的拒絕率與 Opus 5.5 相當、比部分較早的模型退步。"
+          "text": "System Card 摘要的其他結論同樣是 Anthropic 的評估：失準風險低；它是目前對提示注入最穩健的 Sonnet 級模型，但在電腦操作環境裡，對有害任務的拒絕率與 Opus 5.5 相當、比部分較早的模型退步。"
         },
         {
           "type": "paragraph",
-          "text": "公告說，Sonnet 5.5 的資安能力比 Sonnet 5 大幅提升，所以比照 Opus 5.5 部署類似的防護，是第一個帶資安防護與備援上線的 Sonnet 模型。一般開發中找 bug、修 bug 不受影響，較高風險的資安任務會看得到地退回 Sonnet 5 處理；生物防護與 Sonnet 5 相同。System Card 補充，退回其他模型的做法適用 Anthropic 自家產品與在 API 選擇啟用備援的開發者，透過其他平台使用時行為可能不同。"
+          "text": "公告說，Sonnet 5.5 的資安能力比 Sonnet 5 大幅提升，所以比照 Opus 5.5 部署類似的防護，是第一個帶資安防護與備援上線的 Sonnet 模型。一般開發中找 bug、修 bug 不受影響，較高風險的資安任務會看得到地退回 Sonnet 5 處理。System Card 補充，這種退回適用 Anthropic 自家產品與在 API 選擇啟用備援的開發者，其他平台可能不同。"
         },
         {
           "type": "faq",
