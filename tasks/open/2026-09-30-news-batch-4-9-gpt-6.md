@@ -1,7 +1,7 @@
 ---
 id: 2026-09-30-news-batch-4-9-gpt-6
 title: News batch 4.9: GPT-6.1 Sol, five languages (hourly automation did not publish it)
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: claude-opus-5-5-news-4-9
@@ -41,20 +41,20 @@ asked for a hand-written five-language article, the way batch 4.8 did it.
 
 ## Definition of done
 
-- [ ] `ai-news-gpt-61-sol-20260929` in five locales, researched from OpenAI's own pages only,
+- [x] `ai-news-gpt-61-sol-20260929` in five locales, researched from OpenAI's own pages only,
       two fact-check rounds, translated and reviewed per language, with a diagram.
-- [ ] AI index links to it in five locales.
+- [x] AI index links to it in five locales.
 - [ ] PR merged; deploy and `guides-import --slug` publish done by someone with host access.
 
 ## Steps
 
-- [ ] DELTA-4-9.md
-- [ ] Research record (opus)
-- [ ] zh-TW draft (sonnet)
-- [ ] Fact check round 1 and round 2 (opus, different agents)
-- [ ] Translate en/ja/ko/zh-CN (sonnet), per-language review
-- [ ] Assets, index, `check_article.py --full --assets`, lint, pytest
-- [ ] PR
+- [x] DELTA-4-9.md
+- [x] Research record (opus)
+- [x] zh-TW draft (sonnet)
+- [x] Fact check round 1 and round 2 (opus, different agents)
+- [x] Translate en/ja/ko/zh-CN (sonnet), per-language review
+- [x] Assets, index, `check_article.py --full --assets`, lint, pytest
+- [x] PR
 
 ## How to verify
 
@@ -66,3 +66,9 @@ asked for a hand-written five-language article, the way batch 4.8 did it.
 - Follow-up (not this scope): find the Sol candidate in `/admin/news` and record which gate
   held it; if the duplicate check treats a new version of a model family as a duplicate,
   file an api task for Jev's duplicate prompt.
+- Done 2026-09-30: research 45/45 quotes verified; round 1 131 claims, 10 facts changed; round 2 74
+  claims, 9 changes; review adopted en 0, ja 2, ko 3, zh-CN 0. `check_article.py --full --assets` OK,
+  `pack_cli lint --kind life` no errors (en body 9,211 characters is a warning the spec allows).
+  Details in `docs/news-2026-batch-4/HANDOVER.md` §1i. Left: deploy, re-read the live pages, then
+  `guides-import --slug ai-news-gpt-61-sol-20260929 --slug ai-news-2026-january-september-index`
+  dry run and publish on the host.
