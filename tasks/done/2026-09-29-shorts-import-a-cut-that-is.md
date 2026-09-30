@@ -1,13 +1,13 @@
 ---
 id: 2026-09-29-shorts-import-a-cut-that-is
 title: "Shorts import: a cut that is not 30 fps fails with a misleading caption-length error"
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-shorts-import
 claimed_at: 2026-09-30T15:40:47Z
 created_at: 2026-09-29T00:08:19Z
-completed_at:
+completed_at: 2026-09-30T15:42:39Z
 branch: claude/shorts-import-frame-rate
 depends_on: []
 scope:
