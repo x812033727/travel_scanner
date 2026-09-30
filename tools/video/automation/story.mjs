@@ -694,6 +694,8 @@ export function composeStory({ slug, info, chapters, voice, drama = {}, root, vi
     schema_version: 1,
     slug,
     format: "drama",
+    // A brand story's place among the site's videos (/admin/videos filters by it).
+    category: "story",
     ...(guide ? { source_guide: guide } : {}),
     target_minutes: [Math.max(1, target - TARGET_SPREAD.below), target + TARGET_SPREAD.above],
     voice,
@@ -841,6 +843,7 @@ export async function draftStory(automation, started, job = {}) {
     status: "active",
     created_at: automation.ctx.now().toISOString(),
     format: "drama",
+    category: "story",
     request_id: request.id ?? null,
     premise: request.premise ?? plan.question ?? "",
     style_preset: "custom",

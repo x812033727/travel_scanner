@@ -3,12 +3,23 @@ import test from "node:test";
 
 import { compilationDocument } from "./compilation.mjs";
 import { fixture } from "./fixtures/load.mjs";
-import { eachLine, spokenText, textHash, validateVideo } from "./schema.mjs";
+import { eachLine, spokenText, textHash, validateVideo, VIDEO_CATEGORIES } from "./schema.mjs";
 
 const paths = (errors) => errors.map((error) => error.path);
 
 test("the minimal example is valid", () => {
   assert.deepEqual(validateVideo(fixture()), []);
+});
+
+test("a category is one of the site's eight, and a video may have none", () => {
+  const doc = fixture();
+  assert.deepEqual(validateVideo(doc), [], "no category is fine: the owner files it on the page");
+  doc.category = "tutorial";
+  assert.deepEqual(validateVideo(doc), []);
+  doc.category = "news";
+  assert.deepEqual(paths(validateVideo(doc)), ["category"]);
+  assert.match(validateVideo(doc)[0].message, /ai-terms, ai-news, tutorial/);
+  assert.equal(VIDEO_CATEGORIES.length, 8);
 });
 
 test("unknown fields are errors, so a typo cannot pass as an ignored field", () => {

@@ -69,6 +69,17 @@ class ChecklistItem(BaseModel):
 # "shorts" is the card pipeline of a Short (docs/videos/SHORTS.md). A vertical drama short
 # keeps "drama": what makes a video a Short is its ``shorts_line``, not its format.
 VideoFormat = Literal["slides", "drama", "shorts"]
+# What kind of video a tutorial is (app.models.VIDEO_CATEGORIES; migration 0116), the review
+# page's first filter. ``none`` in a filter means the videos nobody filed yet.
+VideoCategory = Literal[
+    "ai-terms", "ai-news", "tutorial", "comparison", "explainer", "story", "travel", "other"
+]
+VIDEO_CATEGORY_CODES: tuple[VideoCategory, ...] = get_args(VideoCategory)
+CategoryFilter = VideoCategory | Literal["none"]
+# Where a tutorial stands, for the review page's second filter: still being made, on
+# YouTube, or dropped by the owner. Not the Shorts tab's ShortsState.
+BrowseState = Literal["working", "published", "dropped"]
+BROWSE_STATES: tuple[BrowseState, ...] = get_args(BrowseState)
 
 
 class ProjectIn(BaseModel):
@@ -80,6 +91,10 @@ class ProjectIn(BaseModel):
     youtube_video_id: str | None = Field(default=None, pattern=YOUTUBE_VIDEO_ID_PATTERN)
     # The article's slug. Left out, the stored one stays: older tools do not send it.
     source_guide: str | None = Field(default=None, pattern=r"^[a-z0-9][a-z0-9-]{0,118}[a-z0-9]$")
+    # video.json's category. Left out, the stored one stays; sent, it fills only a video
+    # nobody filed yet, because the worker reports at every stage and the owner's choice on
+    # the page must not be undone a round later (admin_service.set_category).
+    category: VideoCategory | None = None
     # Slides or the AI drama route (docs/videos/DRAMA.md). Left out, the stored one stays.
     format: VideoFormat | None = None
     # An episode of a long series (docs/videos/SERIES.md). Left out, the stored ones stay.
@@ -194,6 +209,8 @@ class ProjectSummary(BaseModel):
     last_synced_at: datetime
     pending: int
     source_guide: str | None = None
+    # One of VIDEO_CATEGORY_CODES, or None while nobody filed the video (migration 0116).
+    category: VideoCategory | None = None
     dropped_at: datetime | None = None
     dropped_note: str | None = None
     retry_request_id: UUID | None = None
@@ -236,6 +253,35 @@ class ProjectSummary(BaseModel):
 
 class ProjectOut(ProjectSummary):
     reviews: list[ReviewOut]
+
+
+class CategoryIn(BaseModel):
+    """The owner's choice on the page: a category, or null to file the video under none."""
+
+    category: VideoCategory | None
+
+
+class FacetCount(BaseModel):
+    code: str
+    count: int
+
+
+class ProjectFacets(BaseModel):
+    """How many videos each filter value would list, with the other filters applied: every
+    category (and ``none``) and every state is present, with 0 when nothing matches."""
+
+    category: list[FacetCount]
+    state: list[FacetCount]
+
+
+class ProjectPage(BaseModel):
+    """One page of the review tab's catalog (GET /admin/videos/browse)."""
+
+    items: list[ProjectSummary]
+    total: int
+    page: int
+    pages: int
+    facets: ProjectFacets
 
 
 class DecisionIn(BaseModel):
