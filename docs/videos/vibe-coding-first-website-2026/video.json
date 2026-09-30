@@ -50,8 +50,18 @@
       "checked_on": "2026-09-30"
     },
     {
+      "title": "Claude 說明中心：Create and edit files with Claude",
+      "url": "https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude",
+      "checked_on": "2026-09-30"
+    },
+    {
       "title": "Gemini Apps Help：Create docs, apps & more with Canvas",
       "url": "https://support.google.com/gemini/answer/16047321",
+      "checked_on": "2026-09-30"
+    },
+    {
+      "title": "Google Gemini：Canvas",
+      "url": "https://gemini.google/overview/canvas/",
       "checked_on": "2026-09-30"
     },
     {
@@ -161,7 +171,7 @@
           [
             "Gemini",
             "Canvas",
-            "只寫要登入 Gemini，沒寫方案"
+            "所有 Gemini 使用者都能用"
           ],
           [
             "ChatGPT",
@@ -183,7 +193,7 @@
         },
         {
           "id": "3rhn",
-          "text": "Gemini 的叫 Canvas，官方只寫要先登入 Gemini。",
+          "text": "Gemini 的叫 Canvas，官方寫所有 Gemini 使用者都能用。",
           "reveal": 1
         },
         {
@@ -205,14 +215,14 @@
         "left": {
           "heading": "寫明免費可用",
           "points": [
-            "Claude：Artifacts"
+            "Claude：Artifacts",
+            "Gemini：Canvas"
           ]
         },
         "right": {
-          "heading": "免費用不到或沒寫明",
+          "heading": "免費用不到",
           "points": [
-            "ChatGPT：免費與 Go 沒有",
-            "Gemini：官方沒寫方案"
+            "ChatGPT：免費與 Go 沒有"
           ]
         }
       },
@@ -224,12 +234,12 @@
       "lines": [
         {
           "id": "sbwf",
-          "text": "官方頁面寫明免費方案能用的，三家裡只有 Claude。",
+          "text": "官方寫明免費方案能用的，有 Claude 和 Gemini 兩家。",
           "reveal": 1
         },
         {
           "id": "7up6",
-          "text": "ChatGPT 寫明免費和 Go 沒有，Gemini 沒寫方案。",
+          "text": "ChatGPT 則寫明，免費和 Go 方案都沒有。",
           "reveal": 1
         },
         {
@@ -441,7 +451,7 @@
       "id": "claude-setup",
       "template": "steps",
       "data": {
-        "title": "Claude 先打開兩個設定",
+        "title": "Claude 先確認一個設定",
         "steps": [
           {
             "title": "打開設定",
@@ -452,8 +462,8 @@
             "detail": "Capabilities"
           },
           {
-            "title": "開兩個功能",
-            "detail": "雲端程式執行、檔案建立"
+            "title": "確認開關開著",
+            "detail": "雲端程式執行與檔案建立"
           }
         ]
       },
@@ -473,12 +483,12 @@
         },
         {
           "id": "wpkd",
-          "text": "把雲端程式執行和檔案建立都打開。",
+          "text": "確認雲端程式執行與檔案建立這個開關是開著的。",
           "reveal": 1
         },
         {
           "id": "j3xg",
-          "text": "官方寫明，Artifacts 需要這兩項打開才能用。"
+          "text": "官方寫明 Artifacts 需要它，免費方案預設就是開的。"
         }
       ]
     },
@@ -496,12 +506,12 @@
           [
             "Claude",
             "免費方案就能建立",
-            "要先開兩個設定"
+            "確認一個設定有開"
           ],
           [
             "Gemini",
             "程式碼可直接改，有主控台",
-            "官方沒寫方案與下載"
+            "官方沒寫下載網頁檔"
           ],
           [
             "ChatGPT",
@@ -518,7 +528,7 @@
       "lines": [
         {
           "id": "39ct",
-          "text": "Claude 的好處是免費方案就能建立，代價是要先開設定。",
+          "text": "Claude 的好處是免費方案就能建立，只要確認一個設定有開。",
           "reveal": 1
         },
         {
@@ -1058,7 +1068,7 @@
       "lines": [
         {
           "id": "7f5w",
-          "text": "GitHub 的免費方案只能用公開儲存庫，你放上去的東西誰都看得到。"
+          "text": "GitHub Pages 免費方案只能用公開儲存庫，放上去的東西誰都看得到。"
         },
         {
           "id": "wvvw",
@@ -1113,7 +1123,7 @@
       "data": {
         "title": "你該從哪一家開始",
         "items": [
-          "只有免費帳號：從 Claude 開始",
+          "只有免費帳號：Claude 或 Gemini",
           "有 Gemini 帳號：先試 Canvas",
           "有 Plus、Pro 或工作區：ChatGPT Sites 也能試"
         ]
@@ -1126,7 +1136,7 @@
       "lines": [
         {
           "id": "k26g",
-          "text": "只有免費帳號，官方寫明能用的是 Claude，就從這裡開始。",
+          "text": "只有免費帳號，官方寫明能用的是 Claude 和 Gemini。",
           "reveal": 1
         },
         {
