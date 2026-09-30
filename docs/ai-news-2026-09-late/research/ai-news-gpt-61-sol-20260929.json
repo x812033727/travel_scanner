@@ -437,7 +437,7 @@
   "hero_label": "新一版的 Sol",
   "diagram": {
     "title": "GPT-6.1 Sol 在哪裡用得到",
-    "caption": "GPT-6.1 Sol 在 API、Codex、ChatGPT Work 與 Chat 的首發開放範圍（「Plus 等方案」指 Plus、Pro、Business、Enterprise、Edu），依 OpenAI 文件整理，查核日 2026 年 9 月 30 日。",
+    "caption": "GPT-6.1 Sol 在 API、Codex、ChatGPT Work 與 Chat 的首發開放範圍（「Plus 等方案」指 Plus、Pro、Business、Enterprise、Edu，其中 Enterprise 與 Edu 要管理員啟用），依 OpenAI 文件整理，查核日 2026 年 9 月 30 日。",
     "nodes": [
       [
         "Plus 等方案",
@@ -578,6 +578,34 @@
       "learn.chatgpt.com/docs/models still tells Plus–Edu users replacing GPT-5.5 to 'choose GPT-6 Sol (gpt-6-sol) when available', inconsistent with the 6.1 Sol recommendation on the same page; not written.",
       "The pricing table's 'All models' label and the collapsed state are UI; re-read on publication day with the other live pages (live_data_warnings).",
       "openai.com/index/introducing-gpt-6-1-sol still 403 at 2026-09-30T10:38Z; nothing in the article depends on it."
-    ]
+    ],
+    "second_round": {
+      "checked_by": "independent second-round factcheck agent",
+      "checked_on": "2026-09-30",
+      "method": "Re-fetched the four sources[] at 2026-09-30T10:46Z (all HTTP 200, 0 redirects, landed bytes 447,982 / 575,660 / 584,535 / 543,894, body text). Every paragraph round 1 changed and every sentence round 1 added was re-read against the source text; 45/45 verbatim_quote strings matched as contiguous strings after whitespace and HTML-entity normalisation (#16 only in the decoded TextTokenPricingTables props, tier standard); no quote uses ..., … or |. Summary, FAQ, diagram nodes and hero_label re-checked against the body.",
+      "claims_checked": 74,
+      "edits": 9,
+      "edits_to_the_pack": [
+        "Paragraph 1 (round-1 sentence): the plan list dropped the Enterprise/Edu condition; now 'Enterprise 與 Edu 要管理員啟用' (L: 'off by default until an administrator enables it'). 'launch rollout includes' rendered as 首發推出範圍包括, also in summary 2, section 3 paragraph 2 and FAQ 3; FAQ 3 gains the admin condition.",
+        "Paragraph 1: 'but does not say when GPT-6 Sol is retired' scoped to 這幾份文件.",
+        "Paragraph 2 (round-1 sentence): 'evaluations are only system card safety and alignment evaluations' was wrong (HealthBench is section 5 Health, hallucinations section 6); now 評測只引 system card 增補. Removed '價格與開放範圍以當天頁面為準', which repeats the callout and section 5 paragraph 3, to stay under 3,000.",
+        "Section 2 paragraph 1: the one-fifth sentence keeps 由編輯以牌價換算 and is limited to input and output; the repeated four prices (already in the previous sentence) were removed.",
+        "Section 4 paragraph 3: 'therefore' tied the Astra safeguards to the cyber rating only; source: 'Based on this assessment' (all three Preparedness determinations). Daybreak 'phased opening for cyber uses' → 資安存取透過 Daybreak 採分階段做法 (S 9.2.1.3 'we are taking a phased approach for GPT-6.1 Sol through Daybreak').",
+        "Section 4 paragraph 4: Coding Deception caveat restored 'potentially' and 'not expected to match': 刻意挑來誘發可能的不誠實行為，觀察到的比例預期不會等於正式環境的實際比例.",
+        "FAQ 2: negation scoped to 2026-09-30 and all four documents (system card addendum added; retire/deprecat 0 hits in it)."
+      ],
+      "checked_and_correct": [
+        "Enterprise/Edu admin enablement and 'Business 是否也要管理員啟用，文件沒有寫' match learn.chatgpt.com/docs/models word for word.",
+        "272K long-context surcharge only attached to GPT-6.1 Sol (model page); the pricing table also prints Astra long-context prices but no threshold, and the article states none for Astra.",
+        "五分之一 appears once, in the body only, as an editorial conversion; not in title, description, summary, FAQ or diagram.",
+        "Preparedness: Critical cyber, High bio/chem, below High in AI self-improvement, per S section 9.",
+        "'Ultrafast … coming later' and the Daybreak phased approach are both sourced (L, S 9.2.1.3) and neither is written as launched.",
+        "No purchase or switch advice, no Taiwan availability inferred, no capability benchmark scores, no 44.8%/16.1%, no attack detail; one callout, no finance topic; 本文 and 官方 0 times."
+      ],
+      "left_for_the_owner": [
+        "Diagram node 'Plus 等方案 / Codex、Work 可選' omits the Enterprise/Edu admin condition; the caption does not add it either. Redrawing the diagram is outside this round's files."
+      ],
+      "verdict": "ok"
+    }
   }
 }
