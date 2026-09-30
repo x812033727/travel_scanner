@@ -7,6 +7,7 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 
 import { approvalState } from "../core/approvals.mjs";
+import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
 import { compilationChecksCurrent, isCompilation } from "../core/compilation.mjs";
 import { illustrated, isDrama, keyframesHash, lookHash, mixHash, sfxHash, subtitlesHash } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
@@ -40,8 +41,8 @@ export function skippedCaptionLocales(manifest, written, { locales = LOCALES, co
  * Whether the caption manifest was cut for this narration and for exactly the caption locales
  * wanted now: the owner's choice may have grown or shrunk since the captions were last written.
  */
-export function captionsCurrent(manifest, speech, wanted, translations) {
-  if (!manifest || manifest.speech_hash !== speech) return false;
+export function captionsCurrent(manifest, speech, wanted, translations, brandingHash = null) {
+  if (!manifest || manifest.speech_hash !== speech || (manifest.branding_hash ?? null) !== brandingHash) return false;
   const have = Object.keys(manifest.locales ?? {});
   if (have.some((locale) => !wanted.includes(locale))) return false;
   return wanted.every((locale) => manifest.locales?.[locale] || manifest.skipped?.[locale] || (locale !== "zh-TW" && !translations[locale]));
@@ -91,9 +92,18 @@ export async function run(command, args, ctx) {
   const episodes = compilation ? approvedEpisodes(doc, resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home })) : null;
   const speech = compilation ? null : speechHash(doc, lexicon);
   const checks = readJson(path.join(workdir, ARTIFACTS.checks), null);
+  const applied = appliedBranding(checks);
+  const bodyTimeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
+  const brandingMatches = brandingCurrent(checks, readBranding(workdir)) && (!applied || (applied.body_frames === bodyTimeline?.total_frames
+    && checks.metrics?.frames === applied.intro_frames + applied.body_frames + applied.outro_frames
+    && (compilation ? checks.compilation_hash === bodyTimeline?.compilation_hash : checks.speech_hash === bodyTimeline?.speech_hash)));
   const clips = isDrama(doc) && !compilation ? readJson(path.join(workdir, ARTIFACTS.clips), null) : null;
   const keyframes = illustrated(doc) ? readJson(path.join(workdir, ARTIFACTS.keyframes), null) : null;
   const current = compilation ? compilationChecksCurrent(doc, checks, episodes) : checksCurrent(doc, lexicon, checks, clips, keyframes);
+  if (!brandingMatches) {
+    ctx.stderr.write(`final.mp4 does not match the selected branding; run ${compilation ? "compile" : "assemble"} again before package\n`);
+    return EXIT.usage;
+  }
   if (!existsSync(path.join(workdir, ARTIFACTS.video)) || !current) {
     ctx.stderr.write(compilation ? "final.mp4 is missing, failed its checks, or was joined from other cuts or cards; run compile first\n" : "final.mp4 is missing, failed its checks, or is older than the script; run assemble first\n");
     return EXIT.usage;
@@ -111,16 +121,16 @@ export async function run(command, args, ctx) {
   const captionLocales = captionLocalesOf(languages);
   const metadataLocales = chosenLocales(languages, "metadata");
   const dubLocales = chosenLocales(languages, "dub") ?? DEFAULT_DUB_LOCALES;
-  const timeline = readJson(path.join(workdir, ARTIFACTS.timeline));
+  const timeline = presentationTimeline(bodyTimeline, applied);
   const captionsManifest = readJson(path.join(workdir, ARTIFACTS.captions), null);
   let captions;
   if (compilation) {
-    if (captionsManifest?.compilation_hash !== checks.compilation_hash) {
+    if (captionsManifest?.compilation_hash !== checks.compilation_hash || (captionsManifest?.branding_hash ?? null) !== (applied?.hash ?? null)) {
       ctx.stderr.write("captions/manifest.json is missing or was merged for other cuts; run compile again\n");
       return EXIT.usage;
     }
     captions = captionsManifest;
-  } else captions = captionsCurrent(captionsManifest, speech, captionLocales, project.translations) ? captionsManifest : runCaptions({ slug: values.slug, file: values.file, root: ctx.root, workdir, now: ctx.now() });
+  } else captions = captionsCurrent(captionsManifest, speech, captionLocales, project.translations, applied?.hash ?? null) ? captionsManifest : runCaptions({ slug: values.slug, file: values.file, root: ctx.root, workdir, now: ctx.now() });
   const { problems, metadata } = composeMetadata({ doc, timeline, translations: project.translations, pack: project.pack ?? null, locales: metadataLocales });
   if (problems.length) {
     for (const problem of problems) ctx.stdout.write(`ERROR ${problem}\n`);
@@ -160,6 +170,7 @@ export async function run(command, args, ctx) {
   const record = {
     ...metadata,
     final_sha256: approval.sha256,
+    ...(applied ? { branding_hash: applied.hash } : {}),
     thumbnail: thumbnail ? "thumbnail.jpg" : null,
     captions: captionFiles,
     skipped_caption_locales: skippedCaptionLocales(captions, captionFiles, { locales: captionLocales, compilation }),
