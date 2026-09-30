@@ -58,3 +58,9 @@ hand-wrote ten stories the automation missed, every one because its publisher is
 - Tested with httpx through this container's proxy: `SafeNewsFetcher` pins the resolved IP,
   which the container's egress proxy does not allow, so the end-to-end check is the host's
   `sources_cli` dry run after the deploy (it fetches each source and its newest article).
+- Later the same day: **central bank and NSTC added too.** The central bank's 45 KB
+  press-release list page (`/tw/lp-302-1.html`) replaces the 3.4 MB feed, `.cp` is the release
+  body, and only crypto and digital-currency titles are kept (its current 20 are all statistics,
+  so it files nothing today). NSTC's news list page (`/folksonomy/list/9aa56881-…`) replaces
+  the DTD feed, `#templateF` is the release with its headline, and only technology titles are
+  kept. NCC remains out (SPA).
