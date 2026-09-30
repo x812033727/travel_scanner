@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-ai-shorts-docs-carry-one-machine-s-paths
 title: The AI Shorts documents carry one machine's paths
-status: in-progress
+status: done
 priority: P3
 area: docs
 owner: claude-sonnet-ai-shorts-paths
 claimed_at: 2026-09-30T15:41:50Z
 created_at: 2026-09-28T04:26:00Z
-completed_at:
+completed_at: 2026-09-30T15:48:26Z
 branch: claude/ai-shorts-docs-paths
 depends_on: []
 scope:
