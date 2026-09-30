@@ -1,14 +1,14 @@
 ---
 id: 2026-09-20-bangkok-4-day-wat-arun-dress
 title: bangkok-4-day-itinerary：大皇宮服裝清單漏「褲裙」、鄭王廟改成觀光局的 200 泰銖與 08:00 到 18:00
-status: open
+status: done
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-09-30T01:35:46Z
 created_at: 2026-09-20T03:13:22Z
-completed_at:
-branch:
+completed_at: 2026-09-30T01:40:25Z
+branch: claude/bangkok-grand-palace-wat-arun
 depends_on: []
 scope:
   - apps/api/app/guides/content/bangkok-4-day-itinerary.json
@@ -33,18 +33,18 @@ No mini skirts / **No pants skirts** / No sleeping suit——漏掉的是「褲�
 
 ## Definition of done
 
-- [ ] `blocks[5]` 的服裝清單變十一項（「迷你裙」與「睡衣式服裝」之間插「褲裙」），順序照官網。
-- [ ] 鄭王廟三處一起改成「200 泰銖（外國人）／每天 08:00 到 18:00」並寫明出處是泰國觀光局（2026 年 9 月）：`blocks[5]` 那一句、`blocks[18]` 表格那一列的兩格、`blocks[0]` 的「查不到官方數字的」清單裡拿掉鄭王廟。
-- [ ] `sources` 補上 TAT 東京鄭王廟頁、更新大皇宮 Practical Information 的 `checked_on`；`blocks[18]` 的 caption 查證來源加上泰國觀光局。
-- [ ] 沒有動 `blocks[19]` 的 800／1,600（500＋300 的加總，本身正確，只是調價時的連動點）、沒有動 `blocks[16]`（activities offer）、沒有動臥佛寺的 300 泰銖與 08:00 到 19:30。
+- [x] `blocks[5]` 的服裝清單變十一項（「迷你裙」與「睡衣式服裝」之間插「褲裙」），順序照官網。
+- [x] 鄭王廟三處一起改成「200 泰銖（外國人）／每天 08:00 到 18:00」並寫明出處是泰國觀光局（2026 年 9 月）：`blocks[5]` 那一句、`blocks[18]` 表格那一列的兩格、`blocks[0]` 的「查不到官方數字的」清單裡拿掉鄭王廟。
+- [x] `sources` 補上 TAT 東京鄭王廟頁、更新大皇宮 Practical Information 的 `checked_on`；`blocks[18]` 的 caption 查證來源加上泰國觀光局。
+- [x] 沒有動 `blocks[19]` 的 800／1,600（500＋300 的加總，本身正確，只是調價時的連動點）、沒有動 `blocks[16]`（activities offer）、沒有動臥佛寺的 300 泰銖與 08:00 到 19:30。
 - [ ] lint 與內容包測試綠；部署後 `guides-import --slug bangkok-4-day-itinerary` 是 `update` 再 `--publish`。
 
 ## Steps
 
-- [ ] `blocks[5]`：補「褲裙」；把鄭王廟那句改成「門票 200 泰銖、每天 08:00 到 18:00（泰國觀光局，2026 年 9 月）」。
-- [ ] `blocks[18]`（table）：鄭王廟那一列的「票價（成人）」與「開放或營運時間」兩格填上數字，備註保留「從 Tha Tien 碼頭搭渡船過河」。
-- [ ] `blocks[0]`（rich_paragraph）：把鄭王廟從「查不到官方數字的」那一串拿掉（Jim Thompson House 與恰圖恰留著）。
-- [ ] 圖不用改：`apps/web/public/guides/bangkok-4-day-itinerary/diagram-1.svg` 2026-09-20 確認只寫「河西岸的鄭王廟用渡船過河」，沒有票價。
+- [x] `blocks[5]`：補「褲裙」；把鄭王廟那句改成「門票 200 泰銖、每天 08:00 到 18:00（泰國觀光局，2026 年 9 月）」。
+- [x] `blocks[18]`（table）：鄭王廟那一列的「票價（成人）」與「開放或營運時間」兩格填上數字，備註保留「從 Tha Tien 碼頭搭渡船過河」。
+- [x] `blocks[0]`（rich_paragraph）：把鄭王廟從「查不到官方數字的」那一串拿掉（Jim Thompson House 與恰圖恰留著）。
+- [x] 圖不用改：`apps/web/public/guides/bangkok-4-day-itinerary/diagram-1.svg` 2026-09-20 確認只寫「河西岸的鄭王廟用渡船過河」，沒有票價。
 - [ ] 與第八批第 14 篇對：鄭王廟 200 泰銖／08:00 到 18:00、臥佛寺 08:00 到 19:30、大皇宮十一條清單三組要一字不差。
 
 ## How to verify
@@ -70,3 +70,21 @@ uv run python -m app.cli guides-links-check --locale zh-TW
 - scope 與「既有文章補連第八批」重疊：那張票要在 `blocks[5]` 插一個連第 14 篇的 inline（整塊改 `rich_paragraph`）、在 `blocks[15]` 插一個連第 13 篇的 inline。**`blocks[5]` 的兩件事併成一次編輯**，哪一張票先做就一起做完；兩張票不能同時 claim。
 - `blocks[24]` 的 `foods?city=bangkok` **不要改**（協調者 2026-09-20 裁決）。
 - 泰國門票常在年初調：2027-01 以前還有一張複查票（第八批 FOLLOWUPS 第 1 節第 30 列），那張票會重讀同樣這幾個官方頁。
+- 2026-09-30 (claude-opus-5-5): re-read both official pages the same day. The
+  Grand Palace Practical Information page lists eleven items with "No pants
+  skirts" between mini skirts and sleeping suit; the TAT Tokyo Wat Arun page
+  gives 営業時間 08:00～18:00 and 料金 200バーツ. It does not say "foreigners",
+  so the article says 200 泰銖 without that qualifier (the ticket's wording
+  had added it).
+- Practical Information today shows no price or hours text, so its source
+  title now names what it does show (the dress code) and the price and hours
+  (500 baht, 08:30-16:30, tickets 08:30-15:30, all unchanged) moved to the
+  FAQ entry, which shows them today; both `checked_on` are 2026-09-30.
+- `blocks[0]` now also says Wat Arun's numbers come from the TAT page.
+- Batch 8 #14 (`thailand-temple-etiquette-dress-code`) does not exist yet, so
+  there is nothing to align with; whoever writes it should use these numbers.
+- Checks: `pack_cli lint --slug` 0 errors; `tests/test_guides_content_pack.py`
+  green; `intake_check --from-content` has the same two failures as main
+  (no opening summary; the `?city=` link the coordinator said to keep).
+- Left unticked: lint green overall is covered by `2026-09-21-91-ci` (#1001),
+  and the production import needs this merged and deployed first.

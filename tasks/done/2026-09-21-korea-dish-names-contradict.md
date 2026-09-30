@@ -1,14 +1,14 @@
 ---
 id: 2026-09-21-korea-dish-names-contradict
 title: 韓國料理名在站內互相矛盾：막창說牛也說豬，고기국수有三個中文名
-status: open
+status: done
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-09-30T02:52:45Z
 created_at: 2026-09-21T04:50:00Z
-completed_at:
-branch:
+completed_at: 2026-09-30T02:58:01Z
+branch: claude/korea-dish-names
 depends_on: []
 scope:
   - apps/api/app/guides/content/daegu-2-day-itinerary.json
@@ -60,18 +60,18 @@ scope:
 
 ## Definition of done
 
-- [ ] 站內搜尋 막창，每一處的定義彼此不衝突。
-- [ ] 고기국수 的中文名只剩一個，正文、圖說、`alt`、hub 文章與 `taxonomy.py` 全部一致。
+- [x] 站內搜尋 막창，每一處的定義彼此不衝突。
+- [x] 고기국수 的中文名只剩一個，正文、圖說、`alt`、hub 文章與 `taxonomy.py` 全部一致。
 
 ## Steps
 
-- [ ] 決定 고기국수 用哪一個中文名。建議 **豬肉湯麵**：`taxonomy.py` 已經是這個，
+- [x] 決定 고기국수 用哪一個中文名。建議 **豬肉湯麵**：`taxonomy.py` 已經是這個，
       改動面最小，而且「湯麵」比「麵」準確（這道菜是湯的）。
-- [ ] 四個地方一起改：內容包正文、內容包的 image `alt` 與 `caption`、
+- [x] 四個地方一起改：內容包正文、內容包的 image `alt` 與 `caption`、
       `korea-food-guide-must-eat`、`taxonomy.py`。
-- [ ] SVG 上的標籤也要改，改完重跑 `tools/lift-diagram-descriptions.py --slug jeju-gogi-guksu-food-guide`，
+- [x] SVG 上的標籤也要改，改完重跑 `tools/lift-diagram-descriptions.py --slug jeju-gogi-guksu-food-guide`，
       並把內容包從 CRLF 轉回 LF（那個工具在 Windows 上會寫 CRLF）。
-- [ ] 行程文那一行改成同時涵蓋豬與牛，或直接對齊美食文的說法。
+- [x] 行程文那一行改成同時涵蓋豬與牛，或直接對齊美食文的說法。
 
 ## How to verify
 
@@ -94,3 +94,18 @@ grep -ro "肉湯麵\|豬肉麵\|豬肉湯麵" apps/api/app/guides/ | sort | uniq
   都是本來就有飯的菜，沒有問題。
 - `daegu-2-day-itinerary` 不在 2026-09 韓國美食那一批裡，是另一個批次寫的，
   所以那一批的改寫沒有掃到它。同一批可能還有別的行程文引用美食名詞，值得一起看。
+- 2026-09-30 (claude-opus-5-5): chose 豬肉湯麵 as the ticket suggested (already in
+  `taxonomy.py`, so it needed no change there). `jeju-gogi-guksu-food-guide`:
+  title, description, summary, table (비빔고기국수's row became 豬肉拌麵, since the
+  bibim version has no soup), blocks 23 and 36, image alt, and the SVG (3 labels);
+  `lift-diagram-descriptions.py` re-lifted the description and the pack was
+  converted back to LF. `korea-food-guide-must-eat`: 豬肉湯麵（고기국수…）.
+  The pack's search `aliases` keep 肉湯麵／豬肉麵 so old queries still find it.
+- `daegu-2-day-itinerary` now reads 막창구이：烤腸（大腸頭），菜單上豬、牛都有，
+  돼지막창是豬、소막창是牛，沾大醬醬料 — the makchang guide's wording; 홍창 is gone
+  (the backlinks ticket found no current source using it).
+- `taiwan-food-guide-must-eat` also has 肉湯麵, but for a Taiwanese dish; left alone.
+- Scope overlapped `2026-09-20-launch-korea-food-specials-1` (codex, review, 9
+  days idle); owner approved `--force`; that ticket has a note.
+- Checks: lint 0 errors for the three slugs; content pack tests green; the
+  rendered diagram fits. Production import of the three slugs after deploy.

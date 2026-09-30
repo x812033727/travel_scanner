@@ -22,7 +22,7 @@ export const EPISODE_FRAMES = { "wuxia-ep-1": 4321, "wuxia-ep-2": 3900, "wuxia-e
 export const VOICE = { provider: "gemini", name: "Sulafat", style: "沉穩的說書人語氣" };
 
 /** One episode's work directory as its pipeline cleared it. `captions` lists the locales with a file. */
-export function writeEpisode(workBase, slug, { frames = EPISODE_FRAMES[slug] ?? 3600, captions = ["zh-TW", "en"], approved = true, checksOk = true, cutBytes = 2048 } = {}) {
+export function writeEpisode(workBase, slug, { frames = EPISODE_FRAMES[slug] ?? 3600, captions = ["zh-TW", "en"], approved = true, checksOk = true, cutBytes = 2048, branding = null } = {}) {
   const dir = path.join(workBase, slug);
   mkdirSync(path.join(dir, "captions"), { recursive: true });
   const cut = randomBytes(cutBytes);
@@ -30,14 +30,23 @@ export function writeEpisode(workBase, slug, { frames = EPISODE_FRAMES[slug] ?? 
   const hash = sha(cut);
   if (approved) atomicWrite(path.join(dir, "approvals.json"), JSON.stringify({ approvals: [{ gate: "final", file: "final.mp4", sha256: hash, approved_at: "2026-09-27T00:00:00Z", note: "" }] }));
   else rmSync(path.join(dir, "approvals.json"), { force: true });
-  atomicWrite(path.join(dir, "checks.json"), JSON.stringify({ ok: checksOk, problems: checksOk ? [] : ["1 frame short"], metrics: { frames } }));
+  let applied = null;
+  if (branding) {
+    const body = randomBytes(cutBytes);
+    mkdirSync(path.join(dir, "build"), { recursive: true });
+    writeFileSync(path.join(dir, "build", "body.mp4"), body);
+    applied = { ...branding, body_frames: frames, body_file: "build/body.mp4", body_sha256: sha(body) };
+  }
+  atomicWrite(path.join(dir, "checks.json"), JSON.stringify({ ok: checksOk, problems: checksOk ? [] : ["1 frame short"], metrics: { frames: frames + (applied ? applied.intro_frames + applied.outro_frames : 0) }, ...(applied ? { branding: applied } : {}) }));
   atomicWrite(path.join(dir, "timeline.json"), JSON.stringify({ fps: 30, sample_rate: 48000, total_frames: frames, scenes: [], lines: [], chapters: [], speech_hash: "s"}));
   for (const locale of captions) {
     // Two cues per episode, the second ending well inside the episode's length.
-    const cues = [{ start_ms: 0, end_ms: 1500, text: `${locale} ${slug} 1` }, { start_ms: 2000, end_ms: 3200, text: `${locale} ${slug} 2` }];
+    const introMs = applied ? (applied.intro_frames / 30) * 1000 : 0;
+    const cues = [{ start_ms: introMs, end_ms: introMs + 1500, text: `${locale} ${slug} 1` }, { start_ms: introMs + 2000, end_ms: introMs + 3200, text: `${locale} ${slug} 2` }];
     writeFileSync(path.join(dir, "captions", `${locale}.srt`), toSrt(cues));
   }
-  return { dir, sha256: hash, frames, bytes: cutBytes };
+  if (applied) atomicWrite(path.join(dir, "captions", "manifest.json"), JSON.stringify({ speech_hash: "s", branding_hash: applied.hash, locales: Object.fromEntries(captions.map((locale) => [locale, { cues: 2, problems: [], timing: "narration" }])) }));
+  return { dir, sha256: hash, frames, bytes: cutBytes, ...(applied ? { body_sha256: applied.body_sha256, branding_hash: applied.hash } : {}) };
 }
 
 /**
@@ -92,12 +101,12 @@ export function renderCards(box, doc) {
  * An ffmpeg and ffprobe that write the file they are asked for and answer the probes with a
  * well-formed result for `total` frames. `calls` records every invocation.
  */
-export function fakeFfmpeg({ total, loudness = -14.4, peak = -1.6 } = {}) {
+export function fakeFfmpeg({ total, loudness = -14.4, peak = -1.6, framesByFile = {} } = {}) {
   const calls = [];
   const runTool = async (file, args) => {
     calls.push({ tool: path.basename(file), args });
     if (path.basename(file) === "ffprobe") {
-      const frames = total ?? 0;
+      const frames = framesByFile[args.at(-1)] ?? total ?? 0;
       const streams = [
         { codec_type: "video", codec_name: "h264", profile: "High", width: 1920, height: 1080, r_frame_rate: "30/1", pix_fmt: "yuv420p", color_space: "bt709", color_primaries: "bt709", color_transfer: "bt709", nb_read_packets: String(frames) },
         { codec_type: "audio", codec_name: "aac", sample_rate: "48000", channels: 2, duration: String(frames / 30 + 0.02) },
