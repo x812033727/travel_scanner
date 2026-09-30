@@ -39,7 +39,7 @@ from app.video_automation import judge as judging
 from app.video_automation.models import VideoAutomationSettings, VideoDramaSeries
 from app.video_media.models import VideoMediaJob
 from app.video_reviews import admin_service
-from app.video_reviews.schemas import DecisionIn, DropIn, ProjectIn, ReviewIn
+from app.video_reviews.schemas import DecisionIn, DropIn, ProjectIn, ReviewIn, ReviewOut
 from app.video_reviews.storage import ReviewStore
 from app.video_shorts import admin_api, costs, overview, rules, slots
 from app.video_shorts import settings as shorts_settings
@@ -630,7 +630,9 @@ async def report_short(
         )
 
 
-async def submit(site: Site, slug: str, gate: str, payload: dict[str, Any], sha: str = SHA) -> Any:
+async def submit(
+    site: Site, slug: str, gate: str, payload: dict[str, Any], sha: str = SHA
+) -> ReviewOut:
     async with site.session() as session:
         return await admin_service.submit_review(
             session,
@@ -641,12 +643,16 @@ async def submit(site: Site, slug: str, gate: str, payload: dict[str, Any], sha:
         )
 
 
-async def approved_short(site: Site, slug: str, line: str = "lab", sha: str = SHA) -> None:
-    """A Short whose final cut and upload package both passed the automatic checks."""
+async def approved_short(site: Site, slug: str, line: str = "lab", sha: str = SHA) -> UUID:
+    """A Short whose cut and package passed; return the final review's approved identity."""
     await report_short(site, slug, line)
-    assert (await submit(site, slug, "final", {"qa": _qa(sha)}, sha)).status == "approved"
-    package = await submit(site, slug, "publish", {"package": _package(sha)}, sha)
+    final = await submit(site, slug, "final", {"qa": _qa(sha)}, sha)
+    assert final.status == "approved"
+    package = await submit(
+        site, slug, "publish", {"package": _package(sha), "final_review_id": str(final.id)}, sha
+    )
     assert package.status == "approved"
+    return final.id
 
 
 async def rows(site: Site, model: Any, *order: Any) -> list[Any]:
@@ -669,7 +675,10 @@ async def test_a_short_whose_twelve_checks_passed_is_approved_as_it_arrives(site
     assert [(row.action, row.metadata_json["gate"]) for row in audit] == [
         ("video_review_auto_approved", "final")
     ]
-    package = await submit(site, "receipt-total", "publish", {"package": _package(SHA)})
+    package = await submit(
+        site, "receipt-total", "publish",
+        {"package": _package(SHA), "final_review_id": str(review.id)},
+    )
     assert package.status == "approved"
     assert package.note == "Shorts 上傳包 4 項齊全，依設定自動核准"
     async with site.session() as session:
@@ -1068,19 +1077,25 @@ async def test_the_run_can_be_rebuilt_until_a_slot_was_acted_on(site: Site) -> N
 @pytest.mark.asyncio
 async def test_an_approved_package_takes_the_short_to_the_earliest_open_slot(site: Site) -> None:
     await start(site)
-    await approved_short(site, "one", sha="a" * 64)
-    await approved_short(site, "two", sha="b" * 64)
+    first_final_id = await approved_short(site, "one", sha="a" * 64)
+    second_final_id = await approved_short(site, "two", sha="b" * 64)
     calendar = await rows(site, VideoShortsSlot, VideoShortsSlot.starts_at)
     assert [slot.project_slug for slot in calendar[:3]] == ["one", "two", None]
-    # The same package sent again does not take a second slot, nor does a new package of a
-    # Short that is on YouTube already.
-    await submit(site, "one", "publish", {"package": _package("a" * 64)}, "a" * 64)
+    # Resending a package does not take a second slot. The synthetic scheduled slot below
+    # has no YouTube ID or active upload; an updated package must preserve its existing slot.
+    await submit(
+        site, "one", "publish",
+        {"package": _package("a" * 64), "final_review_id": str(first_final_id)}, "a" * 64,
+    )
     async with site.session() as session:
         held = await session.get(VideoShortsSlot, calendar[1].id)
         assert held is not None
         held.status = "scheduled"
         await session.commit()
-    again = await submit(site, "two", "publish", {"package": _package("c" * 64)}, "c" * 64)
+    again = await submit(
+        site, "two", "publish",
+        {"package": _package("c" * 64), "final_review_id": str(second_final_id)}, "c" * 64,
+    )
     assert again.status == "approved"
     calendar = await rows(site, VideoShortsSlot, VideoShortsSlot.starts_at)
     assert [(slot.project_slug, slot.status) for slot in calendar[:3]] == [
