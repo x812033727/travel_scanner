@@ -18,9 +18,10 @@ RUN npm install --omit=dev --no-audit --no-fund && npm cache clean --force
 
 COPY tools/video ./tools/video
 COPY .agents/skills/youtube-video ./.agents/skills/youtube-video
-# The channel spec, the pronunciation dictionary and the earlier videos, so a new draft does not
-# repeat one; the volume mounted here keeps what the worker adds to them.
-COPY docs/videos ./docs/videos
+# Keep the image's source outside the writable docs volume. The entrypoint refreshes that
+# volume from this snapshot while preserving the worker's existing folders and dictionary.
+COPY docs/videos ./docs-seed/videos
+COPY ops/video/sync-docs.mjs ops/video/sync-docs.test.mjs ./ops/video/
 # Content packs, so a script can name the site article it comes from and lint can check it.
 COPY apps/api/app/guides/content ./apps/api/app/guides/content
 COPY ops/video/worker.sh /usr/local/bin/video-worker
@@ -28,7 +29,7 @@ COPY ops/video/worker.sh /usr/local/bin/video-worker
 # pwuser (uid 1001) comes with the image. Named volumes start from what the image has at their
 # mount points, owner included.
 RUN chmod 0755 /usr/local/bin/video-worker \
- && mkdir -p /var/lib/mokaair/video-work /var/lib/mokaair/video-home \
+ && mkdir -p /var/lib/mokaair/video-work /var/lib/mokaair/video-home /opt/mokaair/docs/videos \
  && chown -R pwuser:pwuser /var/lib/mokaair /opt/mokaair/docs/videos
 
 USER pwuser
@@ -46,6 +47,8 @@ RUN --mount=type=tmpfs,target=/dev/shm \
     set -e; \
     sh -n /usr/local/bin/video-worker; \
     test "$(id -un)" = pwuser; \
+    node --test ops/video/sync-docs.test.mjs; \
+    node ops/video/sync-docs.mjs; \
     ffmpeg -hide_banner -encoders | grep -q libx264; \
     test -f .agents/skills/youtube-video/references/script-writing.md; \
     test -f docs/videos/README.md; \

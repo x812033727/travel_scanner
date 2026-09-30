@@ -65,6 +65,10 @@ jobs:
       # tests/ is checked too, on its own line so a failure names itself; the override in
       # pyproject.toml says which strict rules tests are held to.
       - run: uv run mypy tests
+      # The editorial rules in app/guides/pack_ingest.py (diagram figures the text carries,
+      # 15 px labels, SVG safety): every article pack and its images, errors only fail.
+      - name: Lint article content packs
+        run: uv run python -m app.guides.pack_cli lint
       # One migration head, or a failure that names both files. Two branches that took
       # the same number otherwise surface as "found 2" from every test module, and
       # alembic upgrade below would only say "Multiple head revisions are present".
