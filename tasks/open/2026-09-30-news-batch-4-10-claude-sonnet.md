@@ -1,7 +1,7 @@
 ---
 id: 2026-09-30-news-batch-4-10-claude-sonnet
 title: News batch 4.10: Claude Sonnet 5.5, five languages (the scanner never saw Anthropic's root-level launch pages)
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: claude-opus-5-5-news-4-9
@@ -35,15 +35,22 @@ hand-written five-language article, the way batch 4.9 did GPT-6.1 Sol.
 
 ## Definition of done
 
-- [ ] `ai-news-claude-sonnet-55-20260928` in five locales from Anthropic's own pages, two fact-check rounds, translated and
+- [x] `ai-news-claude-sonnet-55-20260928` in five locales from Anthropic's own pages, two fact-check rounds, translated and
       reviewed per language, with a diagram; AI index links it in five locales.
 - [ ] PR merged; deploy and `guides-import --slug` publish done by someone with host access.
 
 ## Steps
 
-- [ ] DELTA-4-10.md and `RELATED`
-- [ ] Research record (opus)
-- [ ] zh-TW draft (sonnet)
-- [ ] Fact check round 1 and round 2 (opus, different agents)
-- [ ] Translate en/ja/ko/zh-CN (sonnet), per-language review
-- [ ] Assets, index, checks
+- [x] DELTA-4-10.md and `RELATED`
+- [x] Research record (opus)
+- [x] zh-TW draft (sonnet)
+- [x] Fact check round 1 and round 2 (opus, different agents)
+- [x] Translate en/ja/ko/zh-CN (sonnet), per-language review
+- [x] Assets, index, checks
+
+## Notes
+
+- Done 2026-09-30, details in `docs/news-2026-batch-4/HANDOVER.md` §1j. `check_article.py --full --assets`
+  OK; lint no errors (en 9,370 and ja 6,083 characters are length warnings the spec allows). Left:
+  deploy, re-read the live pages, then `guides-import --slug ai-news-claude-sonnet-55-20260928` with
+  the index, dry run first.

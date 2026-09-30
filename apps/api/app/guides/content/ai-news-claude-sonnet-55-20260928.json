@@ -21,7 +21,7 @@
       "description": "Anthropic 在 2026 年 9 月 28 日推出 Claude Sonnet 5.5，API 牌價與 Sonnet 5 相同（每百萬 tokens 輸入 2 美元、輸出 10 美元）；Claude.ai、API 與多個雲端平台可用，較高風險的資安請求會退回 Sonnet 5 處理（2026 年 9 月查證）。",
       "hero": {
         "src": "/guides/ai-news-claude-sonnet-55-20260928/hero.jpg",
-        "alt": "原創插圖：兩個大小相同的實心圓上下疊放，上面一個外圍多畫一圈細線表示新一版，中間用等號連接表示同價；右側三個小方塊代表聊天、開發者平台與安全門檻；不含商標或真實人物。",
+        "alt": "原創插圖：左邊一張虛線卡片代表前一版 Sonnet，等號接著一張實線卡片代表 Sonnet 5.5，表示牌價相同；右邊一台螢幕、一支手機與一朵雲，代表網頁、App 與 API 平台；不含商標或真實人物。",
         "width": 1600,
         "height": 900,
         "credit": {
@@ -224,14 +224,26 @@
           "text": "價格、平台與開放範圍都是截至 2026 年 9 月 30 日的頁面內容，這些頁面隨時可能更新。評測與安全分級都是 Anthropic 自己公布，這一篇沒有實測，也不是換模型或訂閱方案的建議。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Sonnet 5：能力與成本之間，怎麼找日常工作的平衡？",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-claude-sonnet-5-20260630"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Sonnet 5：能力與成本之間，怎麼找日常工作的平衡？",
+              "kind": "life",
+              "slug": "ai-news-claude-sonnet-5-20260630"
+            }
+          ]
         }
       ],
       "sources": [
@@ -262,7 +274,7 @@
       "description": "Anthropic launched Claude Sonnet 5.5 on September 28, 2026. API list prices are the same as Sonnet 5 ($2 per million input tokens, $10 per million output tokens). It is available in Claude.ai, the API and several cloud platforms, and higher-risk cybersecurity requests fall back to Sonnet 5 (checked September 2026).",
       "hero": {
         "src": "/guides/ai-news-claude-sonnet-55-20260928/hero-en.jpg",
-        "alt": "Original illustration: two same-size solid circles, the upper with an extra ring for the newer version, joined by an equals sign for the same price; three small squares for chat, developers, safety.",
+        "alt": "Original illustration: a dashed card for the previous Sonnet, an equals sign and a solid card for Sonnet 5.5 (same list price), then a screen, a phone and a cloud for web, apps and API platforms.",
         "width": 1600,
         "height": 900,
         "credit": {
@@ -465,14 +477,26 @@
           "text": "Prices, platforms and availability reflect the pages as of September 30, 2026, and those pages can be updated at any time. The evaluations and the safety classification are published by Anthropic itself; we have not tested them ourselves, and this article is not a recommendation to switch models or subscribe to a plan."
         },
         {
-          "type": "link",
-          "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January to September",
-          "url": "https://mokaair.com/en/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January to September",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Sonnet 5: Balancing Capability and Cost in Daily Work",
-          "url": "https://mokaair.com/en/life/ai-news-claude-sonnet-5-20260630"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Sonnet 5: Balancing Capability and Cost in Daily Work",
+              "kind": "life",
+              "slug": "ai-news-claude-sonnet-5-20260630"
+            }
+          ]
         }
       ],
       "sources": [
@@ -503,7 +527,7 @@
       "description": "Anthropicは2026年9月28日にClaude Sonnet 5.5を発表しました。APIの定価はSonnet 5と同じ（100万tokensあたり入力2ドル、出力10ドル）で、Claude.ai、API、複数のクラウドプラットフォームで利用でき、リスクの高いサイバーセキュリティ関連のリクエストはSonnet 5にフォールバックされます（2026年9月確認）。",
       "hero": {
         "src": "/guides/ai-news-claude-sonnet-55-20260928/hero-ja.jpg",
-        "alt": "オリジナルのイラスト：大きさの同じ2つの塗りつぶしの円が上下に重なり、上の円には新バージョンを示す細い輪郭線がもう1本加えられ、間は等号で結ばれて同価格を表しています。右側の3つの小さな四角はチャット、開発者向けプラットフォーム、安全性のしきい値を表しています。商標や実在の人物は含みません。",
+        "alt": "オリジナルのイラスト：左の破線のカードが前の Sonnet、等号の先の実線のカードが Sonnet 5.5 で、定価が同じことを表します。右の画面、スマートフォン、雲はウェブ、アプリ、API プラットフォームです。商標は含みません。",
         "width": 1600,
         "height": 900,
         "credit": {
@@ -621,7 +645,7 @@
         },
         {
           "type": "paragraph",
-          "text": "モデルページに載っている仕様は、コンテキストウィンドウ1M tokens、最大出力128K tokens、信頼できる知識のカットオフ2026年6月です。これらのページにはSonnet 5の仕様がなく、比較はできません。発表にはさらに、Claude CodeとClaudeアプリのデフォルトのeffortはMedium、Claude PlatformのデフォルトはHighとあります。"
+          "text": "モデルページに載っている仕様は、コンテキストウィンドウ1M tokens、最大出力128K tokens、信頼できる知識のカットオフ2026年6月です。これらのページには、比較できるSonnet 5の仕様は載っていません。発表にはさらに、Claude CodeとClaudeアプリのデフォルトのeffortはMedium、Claude PlatformのデフォルトはHighとあります。"
         },
         {
           "type": "image",
@@ -703,17 +727,29 @@
           "type": "callout",
           "tone": "info",
           "title": "価格と範囲は変わりうる。評価はAnthropic自身のもの",
-          "text": "価格、プラットフォーム、提供範囲は2026年9月30日時点（確認日）のページの内容で、これらのページはいつでも更新される可能性があります。評価結果も安全性の分類もAnthropic自身が公表したもので、当サイトは実地の検証を行っておらず、契約や購入を勧めるものではありません。"
+          "text": "価格、プラットフォーム、提供範囲は2026年9月30日時点（確認日）のページの内容で、これらのページはいつでも更新される可能性があります。評価結果も安全性の分類もAnthropic自身が公表したもので、当サイトは実地の検証を行っておらず、モデルの切り替えやプランの契約を勧めるものでもありません。"
         },
         {
-          "type": "link",
-          "text": "2026年AIニュース総まとめ：1月から9月までの重要動向と実生活への応用",
-          "url": "https://mokaair.com/ja/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月から9月までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Sonnet 5：能力とコストの間で日常業務のバランスをどう取るか？",
-          "url": "https://mokaair.com/ja/life/ai-news-claude-sonnet-5-20260630"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Sonnet 5：能力とコストの間で日常業務のバランスをどう取るか？",
+              "kind": "life",
+              "slug": "ai-news-claude-sonnet-5-20260630"
+            }
+          ]
         }
       ],
       "sources": [
@@ -744,7 +780,7 @@
       "description": "Anthropic은 2026년 9월 28일 Claude Sonnet 5.5를 출시했습니다. API 정가는 Sonnet 5와 같고(100만 tokens당 입력 2달러, 출력 10달러), Claude.ai, API, 여러 클라우드 플랫폼에서 사용할 수 있으며, 위험도가 높은 사이버 보안 요청은 Sonnet 5로 되돌려 처리됩니다(2026년 9월 확인).",
       "hero": {
         "src": "/guides/ai-news-claude-sonnet-55-20260928/hero-ko.jpg",
-        "alt": "직접 만든 일러스트: 크기가 같은 속이 찬 원 두 개가 위아래로 겹쳐 있고, 위쪽 원에는 새 버전을 뜻하는 가는 테두리가 한 겹 더 그려져 있으며, 둘 사이를 등호로 이어 같은 가격을 나타냅니다. 오른쪽의 작은 사각형 세 개는 채팅, 개발자 플랫폼, 안전 임계값을 뜻합니다. 상표나 실제 인물은 없습니다.",
+        "alt": "오리지널 일러스트: 왼쪽 점선 카드는 이전 Sonnet, 등호 뒤 실선 카드는 Sonnet 5.5로 정가가 같다는 뜻입니다. 오른쪽 화면, 휴대전화, 구름은 웹, 앱, API 플랫폼을 나타냅니다. 상표는 포함하지 않습니다.",
         "width": 1600,
         "height": 900,
         "credit": {
@@ -766,7 +802,7 @@
           "type": "summary",
           "items": [
             "Anthropic은 2026년 9월 28일 Claude 5.5 패밀리의 두 번째 모델인 Claude Sonnet 5.5를 출시했으며 API 이름은 claude-sonnet-5-5이고, 확인일 기준으로 이 페이지들에는 Sonnet 5가 언제 종료되는지 적혀 있지 않습니다.",
-            "정가는 Sonnet 5와 같아 100만 tokens당 입력 2달러, 출력 10달러, 캐시 읽기 0.20달러입니다. Anthropic은 같은 작업에 필요한 tokens가 보통 훨씬 적다고도 밝혔는데, 이는 Anthropic의 설명이며 정가 자체는 내려가지 않았습니다.",
+            "정가는 Sonnet 5와 같아 100만 tokens당 입력 2달러, 출력 10달러, 캐시 읽기 0.20달러입니다. Anthropic은 Sonnet 5.5가 같은 작업에 필요한 tokens가 보통 훨씬 적다고도 밝혔는데, 이는 Anthropic의 설명이며 정가 자체는 내려가지 않았습니다.",
             "Anthropic의 Sonnet 제품 페이지에는 누구나 Claude.ai의 웹, iOS, Android에서 사용할 수 있다고 적혀 있고 요금제별 차이는 하나하나 나열되어 있지 않으며, 모델 페이지에 나열된 플랫폼은 Claude API, Amazon Bedrock, Google Cloud, Microsoft Foundry, Claude Platform on AWS입니다.",
             "Anthropic이 공개한 평가에서 Terminal-Bench 4.0은 Sonnet 5.5가 70.6%, Sonnet 5가 10.3%인데, 이 점수는 독자 자신의 작업을 대표하지 않으며 Anthropic도 Opus 5.5가 복잡하고 열린 작업에서는 여전히 뚜렷하게 더 강하다고 말합니다.",
             "System Card에는 Sonnet 5.5가 새로운 RSP 임계값을 넘지 않았다고 적혀 있으나 이는 Anthropic 자체 정책 틀에 따른 판정이지 외부 평가가 아니며, 공지에 따르면 위험도가 높은 사이버 보안 작업은 Sonnet 5로 되돌려 처리됩니다."
@@ -796,7 +832,7 @@
         },
         {
           "type": "paragraph",
-          "text": "아래 표는 공지 가격표와 모델 페이지에 나온 Sonnet 5.5 정가입니다(100만 tokens당, 달러). 공지가 Sonnet 5와 같다고 분명히 적은 것은 입력, 출력, 캐시 읽기 세 항목이며, 같은 작업에 필요한 tokens가 보통 훨씬 적다고도 밝혔습니다."
+          "text": "아래 표는 공지 가격표와 모델 페이지에 나온 Sonnet 5.5 정가입니다(100만 tokens당, 달러). 공지가 Sonnet 5와 같다고 분명히 적은 것은 입력, 출력, 캐시 읽기 세 항목이며, Sonnet 5.5가 같은 작업에 필요한 tokens가 보통 훨씬 적다고도 밝혔습니다."
         },
         {
           "type": "paragraph",
@@ -943,18 +979,30 @@
         {
           "type": "callout",
           "tone": "info",
-          "title": "가격과 범위는 바뀔 수 있고, 평가는 Anthropic 자체 것입니다",
+          "title": "가격과 범위는 바뀔 수 있고, 평가는 Anthropic 자체 평가입니다",
           "text": "가격, 플랫폼, 제공 범위는 2026년 9월 30일(확인일) 기준 페이지 내용이며 이 페이지들은 언제든 업데이트될 수 있습니다. 평가와 안전 등급은 모두 Anthropic이 직접 공개한 것이고, 본 사이트는 직접 시험해 보지 않았으며 모델 교체나 구독 요금제를 권하지 않습니다."
         },
         {
-          "type": "link",
-          "text": "2026년 AI 뉴스 총정리: 1월부터 9월까지의 핵심과 일상 적용",
-          "url": "https://mokaair.com/ko/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월부터 9월까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Sonnet 5: 역량과 비용 사이, 일상 업무의 균형을 찾는 방법은?",
-          "url": "https://mokaair.com/ko/life/ai-news-claude-sonnet-5-20260630"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Sonnet 5: 역량과 비용 사이, 일상 업무의 균형을 찾는 방법은?",
+              "kind": "life",
+              "slug": "ai-news-claude-sonnet-5-20260630"
+            }
+          ]
         }
       ],
       "sources": [
@@ -985,7 +1033,7 @@
       "description": "Anthropic 在 2026 年 9 月 28 日推出 Claude Sonnet 5.5，API 标价与 Sonnet 5 相同（每百万 tokens 输入 2 美元、输出 10 美元）；Claude.ai、API 与多个云平台可用，较高风险的网络安全请求会退回 Sonnet 5 处理（2026 年 9 月查证）。",
       "hero": {
         "src": "/guides/ai-news-claude-sonnet-55-20260928/hero-zh-cn.jpg",
-        "alt": "原创插图：两个大小相同的实心圆上下叠放，上面一个外围多画一圈细线表示新一版，中间用等号连接表示同价；右侧三个小方块代表聊天、开发者平台与安全门槛；不含商标或真实人物。",
+        "alt": "原创插图：左边一张虚线卡片代表前一版 Sonnet，等号接着一张实线卡片代表 Sonnet 5.5，表示标价相同；右边一台屏幕、一部手机与一朵云，代表网页、应用与 API 平台；不含商标或真实人物。",
         "width": 1600,
         "height": 900,
         "credit": {
@@ -1142,7 +1190,7 @@
         },
         {
           "type": "paragraph",
-          "text": "System Card 写，Anthropic 依自己的 Responsible Scaling Policy（RSP，Anthropic 自订的负责任扩展政策框架，不是外部评级）评估，Sonnet 5.5 整体能力低于 Opus 5.5，没有跨过任何新的 RSP 门槛。Opus 5.5 没有跨过 CB-2 与 Autonomy-2 门槛的判定同样适用；Anthropic 把 Sonnet 5.5 当作已达到 CB-1 与 Autonomy-1 门槛，并套用 RSP 对应的缓解措施。"
+          "text": "System Card 写，Anthropic 依自己的 Responsible Scaling Policy（RSP，Anthropic 自行制定的负责任扩展政策框架，不是外部评级）评估，Sonnet 5.5 整体能力低于 Opus 5.5，没有跨过任何新的 RSP 门槛。Opus 5.5 没有跨过 CB-2 与 Autonomy-2 门槛的判定同样适用；Anthropic 把 Sonnet 5.5 当作已达到 CB-1 与 Autonomy-1 门槛，并套用 RSP 对应的缓解措施。"
         },
         {
           "type": "paragraph",
@@ -1150,7 +1198,7 @@
         },
         {
           "type": "paragraph",
-          "text": "公告说，Sonnet 5.5 的网络安全能力比 Sonnet 5 大幅提升，是第一个带网络安全防护与备援上线的 Sonnet 模型。一般开发中找 bug、修 bug 不受影响，较高风险的网络安全任务会看得到地退回 Sonnet 5 处理。System Card 提醒，用户应预期拒绝会变多，即使是无害的网络安全相关任务也一样；它也补充，这种退回适用 Anthropic 自家产品与在 API 选择启用备援的开发者，通过其他平台与供应商使用时可能不同。"
+          "text": "公告说，Sonnet 5.5 的网络安全能力比 Sonnet 5 大幅提升，是第一个带网络安全防护与回退机制上线的 Sonnet 模型。一般开发中找 bug、修 bug 不受影响，较高风险的网络安全任务会看得到地退回 Sonnet 5 处理。System Card 提醒，用户应预期拒绝会变多，即使是无害的网络安全相关任务也一样；它也补充，这种退回适用 Anthropic 自家产品与在 API 选择启用回退机制的开发者，通过其他平台与供应商使用时可能不同。"
         },
         {
           "type": "faq",
@@ -1169,11 +1217,11 @@
             },
             {
               "question": "为什么有些网络安全相关的请求会由 Sonnet 5 回答？",
-              "answer": "公告写，Sonnet 5.5 是第一个带网络安全防护与备援上线的 Sonnet 模型，较高风险的网络安全任务会看得到地退回 Sonnet 5 处理；一般开发中找 bug、修 bug 不受影响。System Card 提醒，这种退回做法适用 Anthropic 自家产品与在 API 选择启用备援的开发者，通过其他平台与供应商使用时可能不同。"
+              "answer": "公告写，Sonnet 5.5 是第一个带网络安全防护与回退机制上线的 Sonnet 模型，较高风险的网络安全任务会看得到地退回 Sonnet 5 处理；一般开发中找 bug、修 bug 不受影响。System Card 提醒，这种退回做法适用 Anthropic 自家产品与在 API 选择启用回退机制的开发者，通过其他平台与供应商使用时可能不同。"
             },
             {
               "question": "“没有跨过新的 RSP 门槛”是什么意思？",
-              "answer": "RSP 是 Anthropic 自己订的负责任扩展政策框架。System Card 写 Anthropic 的评估认为 Sonnet 5.5 整体能力低于 Opus 5.5，没有跨过新的门槛，并把它当作已达到 CB-1 与 Autonomy-1、未跨过 CB-2 与 Autonomy-2。这是 Anthropic 的自我判定，不是外部机构的评级。"
+              "answer": "RSP 是 Anthropic 自己制定的负责任扩展政策框架。System Card 写 Anthropic 的评估认为 Sonnet 5.5 整体能力低于 Opus 5.5，没有跨过新的门槛，并把它当作已达到 CB-1 与 Autonomy-1、未跨过 CB-2 与 Autonomy-2。这是 Anthropic 的自我判定，不是外部机构的评级。"
             },
             {
               "question": "Claude Haiku 5.5 推出了吗？",
@@ -1188,14 +1236,26 @@
           "text": "价格、平台与开放范围都是截至 2026 年 9 月 30 日的页面内容，这些页面随时可能更新。评测与安全分级都是 Anthropic 自己公布，这一篇没有实测，也不是换模型或订阅方案的建议。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新闻总整理：1 月至 9 月的重点与生活应用",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月至 9 月的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Claude Sonnet 5：能力与成本之间，如何寻找日常工作的平衡？",
-          "url": "https://mokaair.com/zh-CN/life/ai-news-claude-sonnet-5-20260630"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Sonnet 5：能力与成本之间，如何寻找日常工作的平衡？",
+              "kind": "life",
+              "slug": "ai-news-claude-sonnet-5-20260630"
+            }
+          ]
         }
       ],
       "sources": [

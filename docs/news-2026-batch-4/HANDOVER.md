@@ -410,6 +410,22 @@ OpenAI 在 9/29 10:00Z 發了〈Introducing GPT-6.1 Sol〉，別的中文站當�
 - **自動化那筆候選**：部署後 Safety Hub 來源的第一筆就是 GPT-6.1 Sol 的 system card。手寫這篇先發布的話，Jev 的重複檢查應該會擋；沒擋就在
   `/admin/news` 退件。OpenAI News 來源在部署後的第一次掃描，會把 72 小時內被擋的條目各留一筆 `news_page_refused`，那些是提示，不是稿件。
 
+## 1j. Claude Sonnet 5.5（批次 4.10，2026-09-30）：一篇 AI，五語
+
+Anthropic 9/28 發表 Claude Sonnet 5.5，自動化沒看到：Anthropic 來源只收 `/news/`，模型發表頁在網站根目錄（同一個 PR 修了 prefix）。
+規則在 [`agents/DELTA-4-10.md`](agents/DELTA-4-10.md)，做法與 4.9 相同，`display_order` 191，索引連結放在 Google Vids 與 GPT-6.1 Sol 之間。
+
+| slug | order | zh-TW 字數 | 第一輪 主張／改動 | 第二輪 主張／改動 | 審稿採用（en／ja／ko／zh-CN） |
+| --- | --- | --- | --- | --- | --- |
+| `ai-news-claude-sonnet-55-20260928` | 191 | 2,925 | 約 110／21 | 62／11 | 0／4／3／6 |
+
+- **來源四條**：公告頁、Claude 開發者文件的 Sonnet 5.5 模型頁、System Card（148 頁 PDF）、Sonnet 產品頁。44／45 條引文逐字比對通過（第二輪補一條）。
+- **裁決**：30% 不是降價（牌價與 Sonnet 5 相同，30% 是 Anthropic 的「最多」估計）；不寫與 OpenAI 的任何比較；安全分級照 System Card 原文、沒有 ASL；
+  System Card 對資安防護比照 Opus 5 或 5.5 前後不一，正文兩者都不寫；標題的「三家雲端」是編輯清點，改成「雲端平台」；表格不放 Opus 5.5 欄。
+- **發布當天要重讀**：模型頁的平台清單（Amazon Bedrock）、產品頁（頁首與 FAQ 還停在舊版）。
+- **ja 審稿提醒**：淘汰頁寫 Sonnet 5「Not sooner than June 30, 2027」，但它不在 `sources[]`；正文「這幾頁沒有寫 Sonnet 5 何時停用」限縮在四頁，沒有錯，站主想寫停用日就把淘汰頁換進來源。
+- **zh-CN 審稿提醒**：「备援」在 opus-55、fable-5-access、gpt-6-sol-luna、nvidia-rubin 的 zh-CN 也有，要統一另開票。
+
 ## 2. 還沒做完的事
 
 ### 2.1 上線後仍可修訂的原稿用詞（都不是事實錯誤）
