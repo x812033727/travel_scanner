@@ -1,14 +1,14 @@
 ---
 id: 2026-09-20-chiang-rai-wat-phra-kaew-hours
 title: chiang-rai-2-day-itinerary：清萊玉佛寺「沒有官方公告」已過時，觀光局寫 07:00 到 17:00、免費參拜
-status: open
+status: done
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-09-30T01:49:24Z
 created_at: 2026-09-20T03:12:47Z
-completed_at:
-branch:
+completed_at: 2026-09-30T01:51:59Z
+branch: claude/chiang-rai-wat-phra-kaew
 depends_on: []
 scope:
   - apps/api/app/guides/content/chiang-rai-2-day-itinerary.json
@@ -28,16 +28,16 @@ scope:
 
 ## Definition of done
 
-- [ ] `blocks[17]` 末句改成「07:00 到 17:00、免費參拜」（可順便補「離市中心車程約 20 分」），不再寫「沒有官方公告」。
-- [ ] 同一塊講鐘樓燈光秀的「場次時間沒有官方公告，以現場公告為準」**保留**（那一項確實沒有官方公告）。
-- [ ] `sources` 補上 TAT 東京清萊玉佛寺頁（`checked_on` 填實際重讀日）；原本 `sources[0]` 的清萊地區頁不動。
-- [ ] 全篇沒有其他地方說玉佛寺沒有公告；圖不用改（`apps/web/public/guides/chiang-rai-2-day-itinerary/diagram-1.svg` 2026-09-20 確認沒有提到玉佛寺）。
+- [x] `blocks[17]` 末句改成「07:00 到 17:00、免費參拜」（可順便補「離市中心車程約 20 分」），不再寫「沒有官方公告」。
+- [x] 同一塊講鐘樓燈光秀的「場次時間沒有官方公告，以現場公告為準」**保留**（那一項確實沒有官方公告）。
+- [x] `sources` 補上 TAT 東京清萊玉佛寺頁（`checked_on` 填實際重讀日）；原本 `sources[0]` 的清萊地區頁不動。
+- [x] 全篇沒有其他地方說玉佛寺沒有公告；圖不用改（`apps/web/public/guides/chiang-rai-2-day-itinerary/diagram-1.svg` 2026-09-20 確認沒有提到玉佛寺）。
 - [ ] lint 與內容包測試綠；部署後 `guides-import --slug chiang-rai-2-day-itinerary` 是 `update` 再 `--publish`。
 
 ## Steps
 
-- [ ] 重開 https://www.thailandtravel.or.jp/wat-phra-kaew/ 確認三個欄位還在（頁面若改版，以當天讀到的為準）。
-- [ ] 改 `blocks[17]` 末句、補 `sources`。
+- [x] 重開 https://www.thailandtravel.or.jp/wat-phra-kaew/ 確認三個欄位還在（頁面若改版，以當天讀到的為準）。
+- [x] 改 `blocks[17]` 末句、補 `sources`。
 - [ ] lint、pytest、PR；部署後匯入。
 
 ## How to verify
@@ -62,3 +62,13 @@ uv run python -m app.cli guides-links-check --locale zh-TW
 - 第八批第 14 篇 `thailand-temple-etiquette-dress-code` 會寫清萊玉佛寺這一組數字，兩篇要一致。
 - 白廟（`watrongkhun.org` 現在被別家公司佔著、夾賭場連結）與藍廟的票價**不在**這張票；哪天那個網域恢復成寺方官網，是另一張條件票（FOLLOWUPS 第 1 節第 82 列）。
 - scope 與「既有文章補連第八批」重疊：那張票要在 `blocks[31]`（list）與 `blocks[32]`（已是 rich_paragraph）之間**新增**一個 `rich_paragraph` 連第 14 篇。兩張票不能同時 claim；新增區塊會讓 `blocks[32]` 之後位移，所以兩張票都要以當下的檔案內容為準再數一次。
+- 2026-09-30 (claude-opus-5-5): the TAT page still reads 営業時間 07:00～17:00,
+  料金 拝観自由, アクセス 車で約20分 (HTTP 200, visible text). The block is an
+  evening plan (clock tower show, night bazaar), so the sentence now says to go
+  before the evening, since the temple closes at 17:00; "順路可以加" would have
+  sent readers after dark. The optional 20-minute drive was left out: the
+  paragraph treats the temple as in town and the TAT figure would contradict
+  it without a second source.
+- No other block mentions the temple; the source is added after the Wat Rong
+  Suea Ten entry with `checked_on` 2026-09-30. Lint 0 errors; content pack
+  tests green. Left unticked: production import after merge and deploy.
