@@ -398,6 +398,95 @@ def _visible_text(document: GuideDocument) -> str:
     return json.dumps(document.model_dump(mode="json"), ensure_ascii=False).casefold()
 
 
+_CJK = r"[\u3005\u3007\u3040-\u30ff\u3400-\u9fff\uf900-\ufaff\U00020000-\U0002fa1f]"
+_CJK_PUNCTUATION = {
+    locale: re.compile(rf"(?<={_CJK})[{marks}]|[{marks}](?={_CJK})")
+    for locale, marks in (("zh-TW", r",:;?!()"), ("zh-CN", r",:;?!()"), ("ja", r":;?!()"))
+}
+# A bare URL ends at whitespace or a quote delimiter. Full-width punctuation can
+# be part of a Unicode path/query, so an undelimited token stays a URL.
+_PROSE_URL = re.compile(r'''(?:https?://|mailto:|www\.)[^\s<>"']+''', re.I)
+_PROSE_FIELDS = {
+    "heading": ("text",),
+    "paragraph": ("text",),
+    "list": ("items",),
+    "summary": ("items",),
+    "table": ("header", "rows", "caption"),
+    "callout": ("title", "text"),
+    "faq": ("items",),
+    "image": ("alt", "caption", "description"),
+    "link": ("text",),
+    "partner_link": ("label", "note"),
+    "offer": ("heading",),
+    "code": ("label",),
+}
+
+
+def _prose_strings(value: Any, path: str) -> Iterable[tuple[str, str]]:
+    if isinstance(value, str):
+        yield path, _mask_prose_urls(value)
+    elif isinstance(value, list):
+        for index, item in enumerate(value):
+            yield from _prose_strings(item, f"{path}[{index}]")
+    elif isinstance(value, dict):
+        for key, item in value.items():
+            yield from _prose_strings(item, f"{path}.{key}")
+
+
+def _mask_prose_urls(text: str) -> str:
+    # Detection only: retain character offsets and never change the document/hash.
+    return _PROSE_URL.sub(lambda match: " " * len(match.group()), text)
+
+
+def _news_prose(document: GuideDocument) -> Iterable[tuple[str, str]]:
+    """Localized prose with code/URLs masked and original source/credit metadata omitted."""
+    yield "title", _mask_prose_urls(document.title)
+    yield "description", _mask_prose_urls(document.description)
+    if document.hero is not None:
+        yield "hero.alt", _mask_prose_urls(document.hero.alt)
+    for index, block in enumerate(document.blocks):
+        path = f"blocks[{index}]"
+        encoded = block.model_dump(mode="json")
+        if block.type == "rich_paragraph":
+            # Adjacency also crosses inline links/text. Code is an opaque span, not
+            # prose; keep its width so the diagnostic still names the rendered offset.
+            parts: list[str] = []
+            text_run: list[str] = []
+            for node in encoded["inlines"]:
+                text = node["text"]
+                if node["type"] == "text":
+                    text_run.append(text)
+                    continue
+                # Links and code have known boundaries. Mask each text run and
+                # link label separately so a URL cannot swallow the next label.
+                parts.append(_mask_prose_urls("".join(text_run)))
+                text_run = []
+                if node["type"] == "code":
+                    parts.append(" " * len(text))
+                else:
+                    parts.append(_mask_prose_urls(text))
+            parts.append(_mask_prose_urls("".join(text_run)))
+            yield f"{path}.inlines", "".join(parts)
+        else:
+            for field in _PROSE_FIELDS.get(block.type, ()):
+                yield from _prose_strings(encoded[field], f"{path}.{field}")
+
+
+def _punctuation_problems(document: GuideDocument, locale: str) -> list[str]:
+    pattern = _CJK_PUNCTUATION.get(locale)
+    if pattern is None:
+        return []
+    problems: list[str] = []
+    for path, prose in _news_prose(document):
+        positions = [str(match.start() + 1) for match in pattern.finditer(prose)]
+        if positions:
+            problems.append(
+                f"news_punctuation: {path}: use full-width punctuation next to CJK text "
+                f"at character(s) {', '.join(positions)}"
+            )
+    return problems
+
+
 def hard_policy_problems(
     document: GuideDocument, vertical: Vertical, locale: str, *, source_count: int
 ) -> list[str]:
@@ -411,6 +500,7 @@ def hard_policy_problems(
         for problem in lint_document(document, "life", topics=topics)
         if problem.level == "error"
     ]
+    problems.extend(_punctuation_problems(document, locale))
     if not any(isinstance(block, SummaryBlock) for block in document.blocks):
         problems.append("news_summary: a summary block is required")
     if not any(isinstance(block, FaqBlock) for block in document.blocks):
