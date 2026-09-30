@@ -60,8 +60,8 @@
       "checked_on": "2026-09-30"
     },
     {
-      "title": "PyPI：tiktoken（示範用的開源計數工具，0.14.0；JSON 端點）",
-      "url": "https://pypi.org/pypi/tiktoken/json",
+      "title": "PyPI：tiktoken（示範用的開源計數工具，0.14.0）",
+      "url": "https://pypi.org/project/tiktoken/",
       "checked_on": "2026-09-30"
     }
   ],
@@ -279,10 +279,6 @@
         {
           "id": "tkw90",
           "text": "字數是給人看的尺，token 才是模型自己用的尺。"
-        },
-        {
-          "id": "tkimq",
-          "text": "量的東西不一樣。"
         }
       ]
     },
@@ -320,10 +316,6 @@
         {
           "id": "tklcz",
           "text": "服務回給你的用量紀錄，寫的也是 token，不是字數。"
-        },
-        {
-          "id": "tklg8",
-          "text": "看的是這個數。"
         }
       ]
     },
@@ -342,6 +334,46 @@
         {
           "id": "tkc58",
           "text": "這個數字決定兩件事：一次塞不塞得下，還有帳單上的用量。"
+        }
+      ]
+    },
+    {
+      "id": "why-fewer",
+      "template": "bullets",
+      "data": {
+        "title": "字數少，token 為什麼不一定少",
+        "items": [
+          "常用的整塊，少見的拆片",
+          "表情符號：一個可能不只一片",
+          "換一種編碼，切法就不同",
+          "標點也算：逗號自己佔一片"
+        ]
+      },
+      "claims": [
+        "c1",
+        "c4",
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "0yfm",
+          "text": "常用的詞，一整個就是一塊；少見的字，反而拆成好幾片，字少不等於片少。",
+          "reveal": 1
+        },
+        {
+          "id": "2d6g",
+          "text": "表情符號和裝飾符號，看起來只有一個字，佔的位子卻可能不只一片。",
+          "reveal": 1
+        },
+        {
+          "id": "3z5qc",
+          "text": "換一種編碼，切法就不一樣，同一句話切出來的片數，也跟著不一樣。",
+          "reveal": 1
+        },
+        {
+          "id": "are2",
+          "text": "連標點都算：那句話中間的那個逗號，兩種編碼裡都自己佔一片。",
+          "reveal": 1
         }
       ]
     },
@@ -423,6 +455,25 @@
       ]
     },
     {
+      "id": "chalk-lines",
+      "template": "shot",
+      "data": {
+        "prompt": "A dressmaker's table at night: two identical bolts of cream cloth side by side, each marked with a different pattern of chalk cutting lines, a pair of shears resting on one of them and an anonymous tailor's hands holding a stick of chalk. Overhead shot, the two cloths centred, dark teal table, one amber lamp.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c4",
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "n8599",
+          "text": "所以 token 不是字裡本來就有的邊界，而是每個系統自己選的切法。"
+        }
+      ]
+    },
+    {
       "id": "how-diagram",
       "template": "diagram",
       "data": {
@@ -454,7 +505,11 @@
       "lines": [
         {
           "id": "tk4c9",
-          "text": "模型看不到你的字，它看到的是一排號碼，像置物櫃的號碼牌。"
+          "text": "模型看不到你的字，它看到的是一排號碼。"
+        },
+        {
+          "id": "afysv",
+          "text": "像置物櫃的號碼牌。"
         }
       ]
     },
@@ -493,9 +548,17 @@
           "reveal": 1
         },
         {
+          "id": "bc059ux",
+          "text": "像北、見、逗號，一查就有。"
+        },
+        {
           "id": "tkcsk",
           "text": "第二步，少見的字拆開，拆到詞彙表裡有的為止。",
           "reveal": 1
+        },
+        {
+          "id": "crqureq",
+          "text": "傘，就是這樣被拆開的。"
         },
         {
           "id": "tkrz0",
@@ -503,9 +566,17 @@
           "reveal": 1
         },
         {
+          "id": "rl2ww",
+          "text": "十個片段，就是十個號碼，一片一個。"
+        },
+        {
           "id": "tkccr",
           "text": "第四步，這串編號才交給模型。",
           "reveal": 1
+        },
+        {
+          "id": "smc2i",
+          "text": "所以數的時候，一個號碼算一個 token。"
         }
       ]
     },
@@ -524,6 +595,24 @@
         {
           "id": "tkevx",
           "text": "它的做法像郵局分揀：整包能直接投的先投，剩下的才拆開來分。"
+        }
+      ]
+    },
+    {
+      "id": "bricks",
+      "template": "shot",
+      "data": {
+        "prompt": "A child's building-block set spread on a dark teal rug: a few large moulded cream pieces shaped like an arch and a roof lie ready-made, while an anonymous figure kneels assembling an unusual shape from dozens of tiny single studs. Low wide shot, the pieces centred, warm evening lamp.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "o2hs7",
+          "text": "也像積木：常用的形狀，原廠做成整塊；少見的形狀，只能拿小顆粒拼。"
         }
       ]
     },
@@ -548,6 +637,25 @@
           "id": "tk6cf",
           "text": "常見的詞整個留，少見或沒看過的詞，拆成幾個子詞。",
           "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "long-bead",
+      "template": "shot",
+      "data": {
+        "prompt": "A string of whole cream wooden beads lying in a gentle curve on a dark teal cloth, and at one end a single much longer bead that has been sawn into three short segments still threaded in line, a tiny brass saw beside it. Overhead close shot, the string centred, amber light.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c3",
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "p6b8z",
+          "text": "英文最明顯：常見的單字，往往一整個就是一片；長的字，才會被拆開。"
         }
       ]
     },
@@ -583,7 +691,7 @@
       "lines": [
         {
           "id": "tk0is",
-          "text": "剛才那九個字，在其中一種編碼裡，「傘」被拆成了兩個位元組片段。"
+          "text": "剛才那九個字，在其中一種編碼裡，「傘」被拆成兩個更小的位元組片段。"
         }
       ]
     },
@@ -610,6 +718,24 @@
       ]
     },
     {
+      "id": "umbrella-three",
+      "template": "shot",
+      "data": {
+        "prompt": "A folded cream umbrella cut into three short segments laid end to end on a dark teal floor, and beside them three whole cream ceramic tiles in a neat row, a thin amber light line between the two rows. Overhead shot, both rows centred, deep teal shadow.",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "pv2ey",
+          "text": "在那種編碼裡，傘甚至被拆成了三片；北、見和逗號，反而都還是一片。"
+        }
+      ]
+    },
+    {
       "id": "rejoin",
       "template": "shot",
       "data": {
@@ -624,7 +750,7 @@
       "lines": [
         {
           "id": "tkfmu",
-          "text": "拆開的片段，模型會再拼回來；只是它數的時候，一片算一片。"
+          "text": "拆開的片段，最後會再拼回來；只是數的時候，一片算一片。"
         }
       ]
     },
@@ -719,7 +845,7 @@
       "lines": [
         {
           "id": "tk7g0",
-          "text": "來，拿一份真的社團公告，實際算一次。"
+          "text": "來，拿一份社團公告，實際算一次。"
         },
         {
           "id": "tk7si",
@@ -991,9 +1117,31 @@
           "reveal": 1
         },
         {
+          "id": "bwzjvur",
+          "text": "換一種編碼也差不多。"
+        },
+        {
           "id": "tk72m",
           "text": "省了五十六個，大約三分之一，而且該留的一條都沒少。",
           "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ribbon-rolls",
+      "template": "shot",
+      "data": {
+        "prompt": "Two spools of cream ribbon on a dark teal workbench, one large and one small, each with the same share of its ribbon unwound and cut off into a neat coil lying in front of it, a pair of scissors between the two coils. Overhead shot, the two spools centred, amber lamp.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "vrgpj",
+          "text": "另一種編碼，兩百三十一個變一百四十六個，省的也是三分之一多。"
         }
       ]
     },
@@ -1058,6 +1206,28 @@
       ]
     },
     {
+      "id": "even-pins",
+      "template": "shot",
+      "data": {
+        "prompt": "Two cream notices pinned side by side on a dark corkboard, almost the same length, with two small brass weights hanging beneath them at almost the same height, an anonymous figure looking from one to the other. Frontal shot, the two notices centred, teal shadow, one amber lamp.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "w0o5",
+          "text": "量完兩份差不多？"
+        },
+        {
+          "id": "xi5j",
+          "text": "計數器沒壞，可能你能刪掉的，本來就沒有多少。"
+        }
+      ]
+    },
+    {
       "id": "hidden-input",
       "template": "shot",
       "data": {
@@ -1094,6 +1264,25 @@
         {
           "id": "tk7kx",
           "text": "規則、之前的對話、附件，都會一起算進輸入；它回你的字，另外算輸出。"
+        }
+      ]
+    },
+    {
+      "id": "bubble-train",
+      "template": "shot",
+      "data": {
+        "prompt": "A long train of cream speech-bubble shaped paper cards coupled together like railway wagons on a dark teal floor, the newest card at the front pulling the whole line, an anonymous figure pushing from behind. Side wide shot, the train running through the centre of the frame, amber lamps.",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c11",
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "zg4x",
+          "text": "來回聊了一下午，前面每一輪的字，可能每一次都跟著再送一次。"
         }
       ]
     },
@@ -1206,6 +1395,48 @@
       ]
     },
     {
+      "id": "handbook",
+      "template": "shot",
+      "data": {
+        "prompt": "An open cream suitcase on a dark teal floor with a thick hardcover handbook lying across it that clearly will not fit, an anonymous figure pressing the lid down with both hands, a luggage tag dangling. Three-quarter view, the suitcase centred, amber lamp.",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c12",
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "dkskl8",
+          "text": "要它讀完一整本手冊，再寫一頁摘要？"
+        },
+        {
+          "id": "igvbqc",
+          "text": "先問那本手冊，塞不塞得下。"
+        }
+      ]
+    },
+    {
+      "id": "answer-room",
+      "template": "shot",
+      "data": {
+        "prompt": "A cream bookshelf compartment on a dark teal wall crammed with folders right to the edge with no gap left, while a small blank cream envelope waits on the floor with nowhere to go, an anonymous figure holding it up. Frontal shot, the compartment centred, amber light.",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c12",
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "jwxded",
+          "text": "答案也要佔位子：別把整個上限全拿來貼文件，要留一點空間給回覆。"
+        }
+      ]
+    },
+    {
       "id": "helper",
       "template": "shot",
       "data": {
@@ -1220,7 +1451,11 @@
       "lines": [
         {
           "id": "tkgtl",
-          "text": "如果你是社團助理，每次都附整份活動辦法，那份辦法每一次都算。"
+          "text": "如果你是社團助理，每次都附整份活動辦法。"
+        },
+        {
+          "id": "e7png",
+          "text": "那份辦法，每一次都算。"
         }
       ]
     },
@@ -1256,7 +1491,11 @@
       "lines": [
         {
           "id": "tki54",
-          "text": "量的時候量整份請求：附件、規則、歷史訊息，不是只量最後一句。"
+          "text": "量的時候，量整份請求：附件、規則、歷史訊息。"
+        },
+        {
+          "id": "ikky",
+          "text": "不是只量最後一句。"
         }
       ]
     },
@@ -1292,7 +1531,11 @@
       "lines": [
         {
           "id": "tkuhg",
-          "text": "如果你是客服，每天要改一百封信，每封省三分之一，一天就差很多。"
+          "text": "如果你是客服，每天要改一百封信，每封省三分之一。"
+        },
+        {
+          "id": "ktsuo",
+          "text": "一天就差很多。"
         }
       ]
     },
@@ -1384,6 +1627,25 @@
         {
           "id": "tkw7h",
           "text": "有的服務還分推理、快取、工具，每一欄的意思，看它自己的說明。"
+        }
+      ]
+    },
+    {
+      "id": "two-ledgers",
+      "template": "shot",
+      "data": {
+        "prompt": "Two cream ledger books lying open side by side on a dark desk, each with the same three ruled columns of tally marks, a single brass ruler laid straight across both pages, an anonymous figure's hands aligning the ruler. Overhead close shot, the two books centred, soft amber light.",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c11",
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "lk06h8",
+          "text": "要比較前後兩個月，就用同一家服務回傳的欄位對照，不要換尺。"
         }
       ]
     },
@@ -1523,6 +1785,24 @@
       ]
     },
     {
+      "id": "two-desks",
+      "template": "shot",
+      "data": {
+        "prompt": "Split composition: on the left an editor's desk with a cream manuscript and a wooden ruler laid across it, on the right a cashier's counter with a tray of small cream blocks and a brass coin scale, an anonymous figure standing at each. Wide symmetrical shot, dark teal room, amber lamps.",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "wypays",
+          "text": "如果你是編輯，交稿看的是字數；如果你是付錢的人，看的就是 token。"
+        }
+      ]
+    },
+    {
       "id": "jar-ruler",
       "template": "shot",
       "data": {
@@ -1572,7 +1852,11 @@
       "lines": [
         {
           "id": "tkn8b",
-          "text": "第三個是存取權杖，英文也叫 token，那是登入用的憑證，要保密。"
+          "text": "第三個是存取權杖，英文也叫 token。"
+        },
+        {
+          "id": "mu7he",
+          "text": "那是登入用的憑證，要保密。"
         }
       ]
     },
@@ -1632,6 +1916,61 @@
           "id": "tk5gl",
           "text": "先保住日期和否定條件，整理完對原文，再談省。",
           "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "decisions",
+      "template": "bullets",
+      "data": {
+        "title": "以我的用法，它改變三個決定",
+        "items": [
+          "花不花錢：用量分開讀，別拿字數猜",
+          "信不信答案：漏了下雨取消就不能信",
+          "給不給權限：鑰匙不貼進聊天視窗"
+        ]
+      },
+      "claims": [
+        "c7",
+        "c11",
+        "c14",
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "41dbma",
+          "text": "以我的用法，第一個決定是花不花錢：用量分開讀，別拿字數乘一個常數去猜。",
+          "reveal": 1
+        },
+        {
+          "id": "4fitri3",
+          "text": "第二個，信不信答案：省了 token 卻漏掉下雨取消，那個答案就不能信。",
+          "reveal": 1
+        },
+        {
+          "id": "hrtqbf9",
+          "text": "第三個，給不給權限：鑰匙也叫 token，別因為同名，就把它貼進聊天視窗。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "takeaways",
+      "template": "shot",
+      "data": {
+        "prompt": "Three small cream objects lined up on a dark teal shelf under one lamp, each on its own tiny stand: a paper block cut from a strip, a tape measure wrapped around a small bundle of folders, and a teacup. Frontal shot, the three objects centred, soft amber glow.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c2",
+        "c11",
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "jtxi0r",
+          "text": "簡單講：AI 數的是片段，要省就先量整份請求，平常真的不用算。"
         }
       ]
     },
