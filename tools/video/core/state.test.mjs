@@ -4,6 +4,7 @@ import path from "node:path";
 import test from "node:test";
 
 import { approvalState, approve } from "./approvals.mjs";
+import { brandingHash, pinBranding } from "./branding.mjs";
 import { parseSrt } from "./captions.mjs";
 import { lookHash, subtitlesHash } from "./drama.mjs";
 import { dramaFixture, fixture, sandbox, storyFixture } from "./fixtures/load.mjs";
@@ -91,6 +92,30 @@ test("editing the script after synthesis makes the narration stale again", async
   const status = await pipelineStatus({ slug: box.slug, root: box.root, workdir: box.workdir });
   assert.equal(status.next.id, "narration synthesized");
   assert.equal(status.next.note, "timeline.json was built for an older script");
+});
+
+test("branding pins invalidate presentation artifacts without invalidating narration or following a new channel default", async () => {
+  const box = sandbox();
+  const timeline = writeTimeline(box);
+  const project = loadProject({ slug: box.slug, root: box.root });
+  const brand = { schema_version: 1, id: "first", intro: { file: "intro.mp4", sha256: "a".repeat(64), frames: 150 }, outro: { file: "outro.mp4", sha256: "b".repeat(64), frames: 90 } };
+  pinBranding(box.workdir, brand);
+  const hash = brandingHash(brand);
+  atomicWrite(path.join(box.workdir, "checks.json"), JSON.stringify({ ok: true, speech_hash: timeline.speech_hash, visual_hash: visualHash(project.doc), branding: { hash, body_frames: timeline.total_frames } }));
+  atomicWrite(path.join(box.workdir, "captions", "manifest.json"), JSON.stringify({ speech_hash: timeline.speech_hash, branding_hash: hash }));
+  atomicWrite(path.join(box.workdir, "final.mp4"), "approved branded bytes");
+  const final = await approve({ gate: "final", docDir: box.dir, workdir: box.workdir });
+  await approve({ gate: "audio", docDir: box.dir, workdir: box.workdir });
+  atomicWrite(path.join(box.workdir, "upload", "metadata.json"), JSON.stringify({ final_sha256: final.sha256, branding_hash: hash }));
+  const status = async () => pipelineStatus({ slug: box.slug, root: box.root, workdir: box.workdir });
+  const done = (state, id) => state.steps.find((step) => step.id === id).done;
+  for (const id of ["video assembled", "captions written", "final video approved", "upload package"]) assert.equal(done(await status(), id), true, id);
+  const nextBrand = { ...brand, intro: { ...brand.intro, sha256: "c".repeat(64) } };
+  atomicWrite(path.join(box.work, "_branding", "current.json"), JSON.stringify(nextBrand));
+  assert.equal(done(await status(), "video assembled"), true, "changing the default never changes an old pin");
+  pinBranding(box.workdir, nextBrand);
+  for (const id of ["video assembled", "captions written", "final video approved", "upload package"]) assert.equal(done(await status(), id), false, id);
+  assert.equal(done(await status(), "narration approved"), true, "body TTS timing and approval are unchanged");
 });
 
 test("captions: zh-TW always, a translated locale only when every line is current", () => {

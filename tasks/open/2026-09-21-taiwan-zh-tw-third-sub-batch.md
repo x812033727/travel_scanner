@@ -114,3 +114,10 @@ writing to production.
   diagrams report no missing numbers. `baseline-diagram-audit.json` records the
   exact inherited findings.
 - No production import, publication, deployment, merge or write was performed.
+
+- 2026-09-30 (claude-opus-5-5, owner-approved `--force` on `2026-09-21-91-ci`):
+  that ticket edited these packs only where the content checker failed.
+  kaohsiung-3-day-itinerary: en `blocks[21]` "17:00 to 24:00", ko/zh-CN
+  `blocks[6]` add "R11", ja/zh-CN `blocks[16]` add the 1883 lighthouse date.
+  tainan-2-day-itinerary: ja `blocks[3]` writes 05:50/23:00; zh-TW
+  `diagram-1-zh-tw.svg` 14 px labels became 15 px. No zh-TW text changed.
