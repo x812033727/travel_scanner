@@ -208,6 +208,16 @@ class ResponsesResearchProvider:
         raise ValueError("AI structured output validation failed")
 
 
+# Opus 5.5 always thinks and effort is its only depth control; left unset it runs at
+# `medium`, one level below Opus 5. Name the level here so it is a choice, and sweep it
+# per stage before raising. Other catalog models (e.g. Haiku 4.5) reject `effort`.
+OPUS_5_5_EFFORT = "medium"
+
+
+def _effort_for(model: str) -> dict[str, str]:
+    return {"effort": OPUS_5_5_EFFORT} if model.startswith("claude-opus-5-5") else {}
+
+
 class AnthropicResearchProvider:
     name: AIProviderName = "anthropic"
 
@@ -258,7 +268,8 @@ class AnthropicResearchProvider:
                     "system": system_prompt,
                     "messages": [{"role": "user", "content": user_input}],
                     "output_config": {
-                        "format": {"type": "json_schema", "schema": schema.model_json_schema()}
+                        **_effort_for(self.model),
+                        "format": {"type": "json_schema", "schema": schema.model_json_schema()},
                     },
                 },
             )
