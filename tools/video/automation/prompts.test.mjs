@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { DRAMA_INSTRUCTIONS, EXPLAINER_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REGISTER, LISTENER_REWRITE, VARIANT_INSTRUCTIONS } from "./prompts.mjs";
+import { DRAMA_INSTRUCTIONS, EXPLAINER_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REGISTER, LISTENER_REWRITE, parseAnswer, VARIANT_INSTRUCTIONS } from "./prompts.mjs";
 import { REGISTER_RULES } from "./register.mjs";
 
 test("the slides writer is told the shot template, the 5 to 8 second cadence, the storytelling register, the look and the two Shorts", () => {
@@ -57,4 +57,23 @@ test("the drama's and the explainer's prompts do not carry the slides register",
   assert.equal(instructionsFor("listener", "drama"), DRAMA_INSTRUCTIONS.listener);
   assert.match(DRAMA_INSTRUCTIONS.listener, /You edit for the ear[\s\S]*This is a drama: every line has a "speaker"/);
   assert.equal(DRAMA_INSTRUCTIONS.listener.includes("storytelling register"), false, "a drama's listener keeps its speakers, not the slides register");
+});
+
+test("a model's answer is its first complete JSON object, whatever follows it", () => {
+  // Two objects back to back, and a sentence with braces after the object.
+  assert.deepEqual(parseAnswer('{"a": 1}\n{"b": 2}'), { a: 1 });
+  assert.deepEqual(parseAnswer('Here: {"a": {"b": [1, 2]}} and {that} is all}'), { a: { b: [1, 2] } });
+  // Braces, brackets, quotes and backslashes inside strings do not end the object.
+  assert.deepEqual(parseAnswer('{"text": "a } b ] c \\" d \\\\", "n": 1} trailing'), { text: 'a } b ] c " d \\', n: 1 });
+  assert.throws(() => parseAnswer('{"a": 1'), SyntaxError);
+  assert.throws(() => parseAnswer("no json here"), SyntaxError);
+});
+
+test("an object closed one brace early and followed by its next key is read whole", () => {
+  // google-vids-omni-free-quota's ja caption reviewer on 2026-09-30: the worksheet, one brace
+  // too many, then the fixes.
+  const answer = '{"worksheet":{"locale":"ja","lines":[{"id":"3qzu","text":"次は概要欄の記事を開いて"}]}},"fixes":["9iqg: 28 characters → 「1つ目は」"]}';
+  assert.deepEqual(parseAnswer(answer), { worksheet: { locale: "ja", lines: [{ id: "3qzu", text: "次は概要欄の記事を開いて" }] }, fixes: ["9iqg: 28 characters → 「1つ目は」"] });
+  // When the rest does not complete it, the first object is still the answer.
+  assert.deepEqual(parseAnswer('{"worksheet":{"lines":[]}},"fixes":[oops'), { worksheet: { lines: [] } });
 });
