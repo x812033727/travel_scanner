@@ -323,7 +323,7 @@
     },
     "zh-CN": {
       "title": "Worktree 与多任务隔离",
-      "description": "Worktree 让同一个 Git 程式库有不同的工作目录，各自承接不同分支。它适合让两项工作分开改档，但资料库、连接埠与外部服务仍可能共用，不能把档案隔离当成所有资源隔离。",
+      "description": "Worktree 让同一个 Git 程序库有不同的工作目录，各自承接不同分支。它适合让两项工作分开改档，但数据库、连接埠与外部服务仍可能共用，不能把文件隔离当成所有资源隔离。",
       "hero": {
         "src": "/guides/codex-worktrees/hero.jpg",
         "alt": "实作顺序示意图，非产品介面截图。",
@@ -339,8 +339,8 @@
         {
           "type": "summary",
           "items": [
-            "Worktree 让同一个 Git 程式库有不同的工作目录，各自承接不同分支。",
-            "它适合让两项工作分开改档，但资料库、连接埠与外部服务仍可能共用，不能把档案隔离当成所有资源隔离。"
+            "Worktree 让同一个 Git 程序库有不同的工作目录，各自承接不同分支。",
+            "它适合让两项工作分开改档，但数据库、连接埠与外部服务仍可能共用，不能把文件隔离当成所有资源隔离。"
           ]
         },
         {
@@ -381,7 +381,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Worktree 是同一 Git 储存库的另一份 checkout：档案与暂存区分开，提交与分支资料仍共用。它适合一边修 Bug、一边研究其他功能，但不是安全沙盒。两个目录若连到同一资料库、同一云端文件或相同 port，仍可能互相影响。多人任务要同时分清档案范围、外部资料与执行服务，不能只看资料夹名称不同就认定完全隔离。"
+          "text": "Worktree 是同一 Git 储存库的另一份 checkout：文件与暂存区分开，提交与分支资料仍共用。它适合一边修 Bug、一边研究其他功能，但不是安全沙盒。两个目录若连到同一数据库、同一云端文件或相同 port，仍可能互相影响。多人任务要同时分清文件范围、外部资料与执行服务，不能只看文件夹名称不同就认定完全隔离。"
         },
         {
           "type": "heading",
@@ -390,7 +390,7 @@
         },
         {
           "type": "paragraph",
-          "text": "在自己的练习资料夹里，用档案管理员新增空白的 worktree-lab 资料夹。Windows 用档案总管，macOS 用 Finder，Linux 用档案管理员；再于该资料夹开启终端机。先确认现在的路径确实是新资料夹，没有正式专案档案。下列命令只在这个新练习库执行，设定作者身分也是此库的 local 设定，不要加 --global。"
+          "text": "在自己的练习文件夹里，用文件管理员新增空白的 worktree-lab 文件夹。Windows 用文件资源管理器，macOS 用 Finder，Linux 用文件管理员；再于该文件夹开启终端。先确认现在的路径确实是新文件夹，没有正式项目文件。下列命令只在这个新练习库执行，设置作者身分也是此库的 local 设置，不要加 --global。"
         },
         {
           "type": "code",
@@ -400,7 +400,7 @@
         },
         {
           "type": "paragraph",
-          "text": "用编辑器在 worktree-lab 新增 notes.md，完整内容如下。这里的 marker 是刻意可辨识的练习值，让你不用依赖 Codex 的叙述就能比对档案。保存 UTF-8 纯文字并确认档名没有多出 .txt，再执行下一段提交命令。这次只加入 notes.md，不用 git add .，以免不小心把旁边其他档案也收进练习提交。"
+          "text": "用编辑器在 worktree-lab 新增 notes.md，完整内容如下。这里的 marker 是刻意可辨识的练习值，让你不用依赖 Codex 的叙述就能比对文件。保存 UTF-8 纯文字并确认文件名没有多出 .txt，再执行下一段提交命令。这次只加入 notes.md，不用 git add .，以免不小心把旁边其他文件也收进练习提交。"
         },
         {
           "type": "code",
@@ -416,7 +416,7 @@
         },
         {
           "type": "paragraph",
-          "text": "预期目前分支是 main，status 没有未提交列。若提交失败，读取错误并修正此练习库的作者设定；不要为了完成教材改公司储存库的签章政策。还没有第一个提交时，没有可用的 HEAD 基准，先完成此步再新增 worktree。已有同名资料夹或分支时换一组未使用的练习名称，将后续命令一致替换，不强制覆盖既有内容。"
+          "text": "预期目前分支是 main，status 没有未提交列。若提交失败，读取错误并修正此练习库的作者设置；不要为了完成教材改公司储存库的签章政策。还没有第一个提交时，没有可用的 HEAD 基准，先完成此步再新增 worktree。已有同名文件夹或分支时换一组未使用的练习名称，将后续命令一致替换，不强制覆盖既有内容。"
         },
         {
           "type": "heading",
@@ -434,7 +434,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "命令在目前资料夹外的同一层建立 worktree-copy，并用新分支 codex/worktree-practice。执行前先确认该路径不存在；list 应列出两个实际路径，分别对应 main 与新分支。两份 notes.md 一开始都应是 LOCAL-A。Windows 路径也可以用这段相对路径，前提是终端机确实在 worktree-lab；不确定时用"
+              "text": "命令在目前文件夹外的同一层建立 worktree-copy，并用新分支 codex/worktree-practice。执行前先确认该路径不存在；list 应列出两个实际路径，分别对应 main 与新分支。两份 notes.md 一开始都应是 LOCAL-A。Windows 路径也可以用这段相对路径，前提是终端确实在 worktree-lab；不确定时用"
             },
             {
               "type": "article",
@@ -450,7 +450,7 @@
         },
         {
           "type": "paragraph",
-          "text": "用另一个编辑器视窗开启 worktree-copy/notes.md，只将 LOCAL-A 改成 COPY-B。回到原本 worktree-lab 的视窗，确认自己的 notes.md 仍是 LOCAL-A，再查看两边 status 与差异。不要在两个视窗都只看档案标签 notes.md；显示完整路径或根目录名称，才能知道目前正在修改哪一份。"
+          "text": "用另一个编辑器窗口开启 worktree-copy/notes.md，只将 LOCAL-A 改成 COPY-B。回到原本 worktree-lab 的窗口，确认自己的 notes.md 仍是 LOCAL-A，再查看两边 status 与差异。不要在两个窗口都只看文件标签 notes.md；显示完整路径或根目录名称，才能知道目前正在修改哪一份。"
         },
         {
           "type": "code",
@@ -460,7 +460,7 @@
         },
         {
           "type": "paragraph",
-          "text": "预期第一行 status 没有改动，第二个 status 显示 notes.md 已修改，diff 只有 marker 一行变动。这证明工作档案隔离，不表示修改已合并回 main。若两边都变了，先核对实际路径，看看是不是两个编辑器指向同一个资料夹，或你也手动改了另一份；不要继续提交直到原因清楚。"
+          "text": "预期第一行 status 没有改动，第二个 status 显示 notes.md 已修改，diff 只有 marker 一行变动。这证明工作文件隔离，不表示修改已合并回 main。若两边都变了，先核对实际路径，看看是不是两个编辑器指向同一个文件夹，或你也手动改了另一份；不要继续提交直到原因清楚。"
         },
         {
           "type": "heading",
@@ -479,7 +479,7 @@
         },
         {
           "type": "paragraph",
-          "text": "提交前再做一次移除失败的对照。保持 COPY-B 尚未提交，先用 worktree list 核对 ../worktree-copy 的完整路径确实是本篇副本，再执行下面命令。预期 Git 因修改尚未保存而拒绝，资料夹与 COPY-B 都仍在。若已先提交，就跳过这个对照，不再制造额外变更。确认后才执行下一段提交；不用 --force。"
+          "text": "提交前再做一次移除失败的对照。保持 COPY-B 尚未提交，先用 worktree list 核对 ../worktree-copy 的完整路径确实是本篇副本，再执行下面命令。预期 Git 因修改尚未保存而拒绝，文件夹与 COPY-B 都仍在。若已先提交，就跳过这个对照，不再制造额外变更。确认后才执行下一段提交；不用 --force。"
         },
         {
           "type": "code",
@@ -500,11 +500,11 @@
         },
         {
           "type": "paragraph",
-          "text": "在 Git 专案的新任务输入框下选 Worktree，再选起始分支，送出需求后由 Codex 建立工作目录。选目前分支连同未提交修改时，先核对那些修改确实应带入，不要把无关私有资料也当作任务背景。桌面建立的管理型 worktree 预设可能是 detached HEAD；要长期保留成果，可在任务标头用 Create branch here 建立分支，再按正常 Git 流程验收提交。"
+          "text": "在 Git 项目的新任务输入框下选 Worktree，再选起始分支，送出需求后由 Codex 建立工作目录。选目前分支连同未提交修改时，先核对那些修改确实应带入，不要把无关私有资料也当作任务背景。桌面建立的管理型 worktree 默认可能是 detached HEAD；要长期保留成果，可在任务标头用 Create branch here 建立分支，再按正常 Git 流程验收提交。"
         },
         {
           "type": "paragraph",
-          "text": "需要把同一任务与程式带到 Local 时用 Hand off，完成后重新核对目录、分支及档案；Handoff 是移动工作，不等于已合并 main 或已部署。Windows、macOS、Linux 依可用的桌面版本操作相同栏位；若 Linux 预览没有所需控制，使用本篇 Git 命令方式并标记差异。手机透过 Remote 控制连线电脑上的任务，worktree 留在主机，不是在 iPhone 或 Android 本机执行 Git。"
+          "text": "需要把同一任务与程序带到 Local 时用 Hand off，完成后重新核对目录、分支及文件；Handoff 是移动工作，不等于已合并 main 或已部署。Windows、macOS、Linux 依可用的桌面版本操作相同栏位；若 Linux 预览没有所需控制，使用本篇 Git 命令方式并标记差异。手机通过 Remote 控制连线电脑上的任务，worktree 留在主机，不是在 iPhone 或 Android 本机执行 Git。"
         },
         {
           "type": "table",
@@ -515,7 +515,7 @@
           ],
           "rows": [
             [
-              "已追踪档案与暂存区",
+              "已追踪文件与暂存区",
               "是",
               "编辑器目前开启路径"
             ],
@@ -527,7 +527,7 @@
             [
               "node_modules、建置快取",
               "通常需各自准备",
-              "专案安装与启动步骤"
+              "项目安装与启动步骤"
             ],
             [
               "本机 port",
@@ -535,9 +535,9 @@
               "每个预览使用的 port"
             ],
             [
-              "资料库、云端服务",
+              "数据库、云端服务",
               "不保证",
-              "练习资料与帐号范围"
+              "练习资料与账号范围"
             ]
           ]
         },
@@ -551,7 +551,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "副本缺少环境设定时，先看 .gitignore 与 README，依专案自己的准备步骤建立练习设定。不要把正式 .env 整份复制过去当捷径。Codex 管理型本机 worktree 的 .worktreeinclude 有特定复制规则，不能套用到本篇手动 Git worktree；需要它时查官方文件及"
+              "text": "副本缺少环境设置时，先看 .gitignore 与 README，依项目自己的准备步骤建立练习设置。不要把正式 .env 整份复制过去当快捷方式。Codex 管理型本机 worktree 的 .worktreeinclude 有特定复制规则，不能套用到本篇手动 Git worktree；需要它时查官方文件及"
             },
             {
               "type": "article",
@@ -567,7 +567,7 @@
         },
         {
           "type": "paragraph",
-          "text": "清理前关闭正在使用副本的编辑器、终端机或预览程序，回到原 worktree-lab，执行 list 比对完整目标路径，再确认副本 status 为空。这次成果已提交在 codex/worktree-practice 分支才可移除副本；若还有未提交档案，先保存与核对，遇到拒绝时不加 --force。下列操作只移除本篇建立的 worktree-copy，保留原库与已提交分支。"
+          "text": "清理前关闭正在使用副本的编辑器、终端或预览程序，回到原 worktree-lab，执行 list 比对完整目标路径，再确认副本 status 为空。这次成果已提交在 codex/worktree-practice 分支才可移除副本；若还有未提交文件，先保存与核对，遇到拒绝时不加 --force。下列操作只移除本篇建立的 worktree-copy，保留原库与已提交分支。"
         },
         {
           "type": "code",

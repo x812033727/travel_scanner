@@ -345,7 +345,7 @@
     },
     "zh-CN": {
       "title": "云端任务与 GitHub",
-      "description": "云端任务使用为程式库设定的远端环境，适合把较长工作交出去并回来检查。它不会自动读取你电脑尚未提交的档案；建立 PR 也不代表已合并或部署。",
+      "description": "云端任务使用为程序库设置的远端环境，适合把较长工作交出去并回来检查。它不会自动读取你电脑尚未提交的文件；建立 PR 也不代表已合并或部署。",
       "hero": {
         "src": "/guides/codex-cloud-tasks-github/hero.jpg",
         "alt": "实作顺序示意图，非产品介面截图。",
@@ -361,8 +361,8 @@
         {
           "type": "summary",
           "items": [
-            "云端任务使用为程式库设定的远端环境，适合把较长工作交出去并回来检查。",
-            "它不会自动读取你电脑尚未提交的档案；建立 PR 也不代表已合并或部署。"
+            "云端任务使用为程序库设置的远端环境，适合把较长工作交出去并回来检查。",
+            "它不会自动读取你电脑尚未提交的文件；建立 PR 也不代表已合并或部署。"
           ]
         },
         {
@@ -384,7 +384,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "在独立 GitHub 练习储存库修好 Completed 筛选，取得测试与 diff，最后准备一份可审查的 PR。阅读约 15 分钟，操作约 35 分钟，另加帐号设定与排队时间。Windows、macOS、Linux 都从浏览器操作；需要具 Codex 资格的 ChatGPT 帐号、可建立储存库的 GitHub 帐号，以及 Small Steps 练习包。"
+          "text": "在独立 GitHub 练习储存库修好 Completed 筛选，取得测试与 diff，最后准备一份可审查的 PR。阅读约 15 分钟，操作约 35 分钟，另加账号设置与排队时间。Windows、macOS、Linux 都从浏览器操作；需要具 Codex 资格的 ChatGPT 账号、可建立储存库的 GitHub 账号，以及 Small Steps 练习包。"
         },
         {
           "type": "rich_paragraph",
@@ -401,7 +401,7 @@
             },
             {
               "type": "text",
-              "text": "则控制已连接主机。电脑上的未提交修改、登入网站与 node_modules 不会因为选了同名专案就出现在云端。这次用明确的 GitHub 分支和档案清单当起点，让每个结果都能追到同一份材料。"
+              "text": "则控制已连接主机。电脑上的未提交修改、登录网站与 node_modules 不会因为选了同名项目就出现在云端。这次用明确的 GitHub 分支和文件清单当起点，让每个结果都能追到同一份材料。"
             }
           ]
         },
@@ -424,22 +424,22 @@
             },
             {
               "type": "text",
-              "text": "。这次取 broken 里的 index.html、style.css、app.js、core.mjs、core.test.mjs 五个档案；expected 是答案参考，保留在电脑，不要混进起始储存库。broken 刻意让 Completed 回传未完成项目，所以起始测试有一项失败，这是要修的题目。"
+              "text": "。这次取 broken 里的 index.html、style.css、app.js、core.mjs、core.test.mjs 五个文件；expected 是答案参考，保留在电脑，不要混进起始储存库。broken 刻意让 Completed 回传未完成项目，所以起始测试有一项失败，这是要修的题目。"
             }
           ]
         },
         {
           "type": "paragraph",
-          "text": "在 GitHub 的 New repository 选自己的帐号，命名 codex-cloud-lab，选 Private，初始化 README 后建立。进入该储存库的 Add file → Upload files，上传五个档案到根目录，写明「Add broken Small Steps exercise」并提交到这个全新练习库的起始分支。若帐号规则要求分支与 PR，依规则合并教材后再往下；不要更改正式储存库保护规则。"
+          "text": "在 GitHub 的 New repository 选自己的账号，命名 codex-cloud-lab，选 Private，初始化 README 后建立。进入该储存库的 Add file → Upload files，上传五个文件到根目录，写明「Add broken Small Steps exercise」并提交到这个全新练习库的起始分支。若账号规则要求分支与 PR，依规则合并教材后再往下；不要更改正式储存库保护规则。"
         },
         {
           "type": "paragraph",
-          "text": "在档案清单确认不是 broken/core.mjs 多包一层，也不是五个空白档。打开 core.mjs 找 visibleTasks，核对 completed 分支有反向筛选，再记下画面上的分支名称与最新 commit。不要直接假设预设分支叫 main；后面选的分支必须包含刚上传的教材。这个步骤比只确认 GitHub 登入成功更接近真正可执行的起点。"
+          "text": "在文件清单确认不是 broken/core.mjs 多包一层，也不是五个空白档。打开 core.mjs 找 visibleTasks，核对 completed 分支有反向筛选，再记下画面上的分支名称与最新 commit。不要直接假设默认分支叫 main；后面选的分支必须包含刚上传的教材。这个步骤比只确认 GitHub 登录成功更接近真正可执行的起点。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤二：连接帐号并建立环境"
+          "text": "步骤二：连接账号并建立环境"
         },
         {
           "type": "rich_paragraph",
@@ -455,7 +455,7 @@
             },
             {
               "type": "text",
-              "text": "，确认 ChatGPT 帐号与工作区，依 Connect GitHub 流程选择可存取的储存库。首次练习只选 codex-cloud-lab；若是组织帐号需要管理员核准，先完成核准再确认清单出现。GitHub 的登入身分与 ChatGPT 身分不同，登入其中一个不代表另一个连线已授权。"
+              "text": "，确认 ChatGPT 账号与工作区，依 Connect GitHub 流程选择可存取的储存库。首次练习只选 codex-cloud-lab；若是组织账号需要管理员核准，先完成核准再确认清单出现。GitHub 的登录身分与 ChatGPT 身分不同，登录其中一个不代表另一个连线已授权。"
             }
           ]
         },
@@ -468,12 +468,12 @@
             },
             {
               "type": "link",
-              "text": "环境设定",
+              "text": "环境设置",
               "url": "https://chatgpt.com/codex/settings/environments"
             },
             {
               "type": "text",
-              "text": "建立练习库环境，确认储存库名称。本例没有外部套件、API 或金钥，只需支援 node:test 的 Node.js。使用环境的套件版本选项选择可用的 Node.js 22 或更新相容版本，并在 setup script 只放下面的版本检查。不要把故意失败的测试放进 setup，否则任务可能在代理开始前就中止。"
+              "text": "建立练习库环境，确认储存库名称。本例没有外部套件、API 或金钥，只需支持 node:test 的 Node.js。使用环境的套件版本选项选择可用的 Node.js 22 或更新相容版本，并在 setup script 只放下面的版本检查。不要把故意失败的测试放进 setup，否则任务可能在代理开始前就中止。"
             }
           ]
         },
@@ -485,7 +485,7 @@
         },
         {
           "type": "paragraph",
-          "text": "本例的 agent internet access 保持 Off 即可，因为需要的档案已在储存库。环境安装阶段与代理工作阶段的网路设定要分开看，能安装不表示代理可任意连网。若另做有套件的专案，依 lockfile 设定安装命令并读取失败纪录；不要为了这个零依赖练习增加套件或把私人 token 写进 README。"
+          "text": "本例的 agent internet access 保持 Off 即可，因为需要的文件已在储存库。环境安装阶段与代理工作阶段的网络设置要分开看，能安装不表示代理可任意连网。若另做有套件的项目，依 lockfile 设置安装命令并读取失败纪录；不要为了这个零依赖练习增加套件或把私人 token 写进 README。"
         },
         {
           "type": "heading",
@@ -494,7 +494,7 @@
         },
         {
           "type": "paragraph",
-          "text": "回云端任务页，选练习环境及包含教材的分支，先送出下列唯读要求。预期列出五个程式档、目前目录、commit 与一项失败测试。如果显示已全部通过，先查是否上传 expected 或选到修好后的分支；不要为了符合文章而任意破坏已正确的程式。若根目录没有档案，先修正环境或上传位置。"
+          "text": "回云端任务页，选练习环境及包含教材的分支，先送出下列唯读要求。预期列出五个程序档、目前目录、commit 与一项失败测试。如果显示已全部通过，先查是否上传 expected 或选到修好后的分支；不要为了符合文章而任意破坏已正确的程序。若根目录没有文件，先修正环境或上传位置。"
         },
         {
           "type": "code",
@@ -596,7 +596,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "先用自己的实际纪录替换所有方括号；只有真的跑出三项通过时才能这样填写。未跑的项目填「未执行」及原因，PR 的标题与结果叙述也要符合最终差异。需要画面验收时，把 PR 的确切分支或 commit 取得到另一个独立资料夹，再按"
+              "text": "先用自己的实际纪录替换所有方括号；只有真的跑出三项通过时才能这样填写。未跑的项目填「未执行」及原因，PR 的标题与结果叙述也要符合最终差异。需要画面验收时，把 PR 的确切分支或 commit 取得到另一个独立文件夹，再按"
             },
             {
               "type": "article",
@@ -606,7 +606,7 @@
             },
             {
               "type": "text",
-              "text": "启动预览。先保留想留下的练习资料，再于 About this exercise 选 Reset practice data，切到 All tasks 并确认空清单，然后加入 Read、Build，只完成 Read，Completed 只看见 Read，Active 只看见 Build。不要用电脑旧资料夹的正常画面替云端新修改背书。"
+              "text": "启动预览。先保留想留下的练习资料，再于 About this exercise 选 Reset practice data，切到 All tasks 并确认空清单，然后加入 Read、Build，只完成 Read，Completed 只看见 Read，Active 只看见 Build。不要用电脑旧文件夹的正常画面替云端新修改背书。"
             }
           ]
         },
@@ -617,7 +617,7 @@
         },
         {
           "type": "paragraph",
-          "text": "看不到储存库时，先核对 GitHub 拥有者、连接授权范围与组织核准；环境初始化失败时，读 setup 的第一个错误并确认 Node 版本；测试找不到档案时，核对选定分支和根目录；云端结果与本机不同时，比对 commit、档案与最后测试，而不是反复送相同提示词。这四种现象分别对应存取、工具、材料位置与版本问题。"
+          "text": "看不到储存库时，先核对 GitHub 拥有者、连接授权范围与组织核准；环境初始化失败时，读 setup 的第一个错误并确认 Node 版本；测试找不到文件时，核对选定分支和根目录；云端结果与本机不同时，比对 commit、文件与最后测试，而不是反复送相同提示词。这四种现象分别对应存取、工具、材料位置与版本问题。"
         },
         {
           "type": "paragraph",

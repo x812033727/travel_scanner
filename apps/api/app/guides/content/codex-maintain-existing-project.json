@@ -1106,7 +1106,7 @@
       ]
     },
     "zh-CN": {
-      "title": "实战：维护既有专案",
+      "title": "实战：维护既有项目",
       "description": "建立现况基准，处理一项真实变更，以回归检查和交接纪录交付可追溯成果。",
       "hero": {
         "src": "/guides/codex-maintain-existing-project/hero.jpg",
@@ -1123,7 +1123,7 @@
           "type": "summary",
           "items": [
             "建立现况基准，处理一项真实变更，以回归检查和交接纪录交付可追溯成果。",
-            "接手既有 Small Steps，把画面中的统计逻辑抽成可测试函式，同时保留全部既有行为。"
+            "接手既有 Small Steps，把画面中的统计逻辑抽成可测试函数，同时保留全部既有行为。"
           ]
         },
         {
@@ -1145,7 +1145,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "接手既有 Small Steps，把画面中的统计逻辑抽成可测试函式，同时保留全部既有行为。阅读约 15 分钟、实作约 30 分钟。从练习材料全新的 expected 副本开始，命名 maintenance-lab；不用读者上一篇生成的版本，避免把不同基准混在一起。需要 Codex、Node.js 与 Python 3，先理解程式地图及Git 还原。"
+          "text": "接手既有 Small Steps，把画面中的统计逻辑抽成可测试函数，同时保留全部既有行为。阅读约 15 分钟、实作约 30 分钟。从练习材料全新的 expected 副本开始，命名 maintenance-lab；不用读者上一篇生成的版本，避免把不同基准混在一起。需要 Codex、Node.js 与 Python 3，先理解程序地图及Git 还原。"
         },
         {
           "type": "rich_paragraph",
@@ -1188,15 +1188,15 @@
         },
         {
           "type": "paragraph",
-          "text": "开启 maintenance-lab，应只有 index.html、style.css、app.js、core.mjs、core.test.mjs 五份程式档。先执行 node --test core.test.mjs，预期三项通过，再记下 Node 版本、日期与资料夹。如果不是这个结果，先查是否拿到 start 或 broken，不把既有失败算在这次重构。将副本纳入自己的本机 Git 基准提交，或另存完整 baseline 副本；保存后才开始修改，确保能还原这次改动。"
+          "text": "开启 maintenance-lab，应只有 index.html、style.css、app.js、core.mjs、core.test.mjs 五份程序档。先执行 node --test core.test.mjs，预期三项通过，再记下 Node 版本、日期与文件夹。如果不是这个结果，先查是否拿到 start 或 broken，不把既有失败算在这次重构。将副本纳入自己的本机 Git 基准提交，或另存完整 baseline 副本；保存后才开始修改，确保能还原这次改动。"
         },
         {
           "type": "paragraph",
-          "text": "修改前也要建立画面基准：在此资料夹执行下方「画面回归」列出的对应平台预览命令，使用专供练习的浏览器设定档与来源网址。先确认 Show 为 All tasks 且没有既存资料；若已有资料，先保存，再选用另一个全新练习设定档，以空白状态开始，不直接清除原资料。新增 Read、Build，完成 Read，确认 1 active / 2 total；在浏览器开发者工具的 Application／Storage → Local Storage 中，保存 mokaair-codex-todo-v1 的虚构 JSON，包含两笔 ID 与完成状态。保留这两笔资料、网址及浏览器设定档供修改后比对。接著在桌面版开启 maintenance-lab 并建立任务，或从此资料夹另开的终端机执行 codex，再提交下一步的需求。"
+          "text": "修改前也要建立画面基准：在此文件夹执行下方「画面回归」列出的对应平台预览命令，使用专供练习的浏览器配置文件与来源网址。先确认 Show 为 All tasks 且没有既存资料；若已有资料，先保存，再选用另一个全新练习配置文件，以空白状态开始，不直接清除原资料。新增 Read、Build，完成 Read，确认 1 active / 2 total；在浏览器开发者工具的 Application／Storage → Local Storage 中，保存 mokaair-codex-todo-v1 的虚构 JSON，包含两笔 ID 与完成状态。保留这两笔资料、网址及浏览器配置文件供修改后比对。接著在桌面版开启 maintenance-lab 并建立任务，或从此文件夹另开的终端执行 codex，再提交下一步的需求。"
         },
         {
           "type": "paragraph",
-          "text": "请 Codex 唯读查看 app.js 中更新 #count 的地方，描述统计是全部任务还是筛选后清单。正确基准是全部任务，即使选 Completed，仍显示所有任务的 active／total。接著确认储存键 mokaair-codex-todo-v1、version 1、ID 与 completed 型别。重构只搬动计数责任，不改资料格式，不新增储存迁移。这个先读再改的步骤能避免把看似重复的程式码合并后改变原本细节。"
+          "text": "请 Codex 唯读查看 app.js 中更新 #count 的地方，描述统计是全部任务还是筛选后清单。正确基准是全部任务，即使选 Completed，仍显示所有任务的 active／total。接著确认储存键 mokaair-codex-todo-v1、version 1、ID 与 completed 型别。重构只搬动计数责任，不改资料格式，不新增储存迁移。这个先读再改的步骤能避免把看似重复的代码合并后改变原本细节。"
         },
         {
           "type": "heading",
@@ -1213,7 +1213,7 @@
           "rows": [
             [
               "core.mjs",
-              "新增纯函式 countTasks(tasks)",
+              "新增纯函数 countTasks(tasks)",
               "不修改输入，不碰 DOM／储存"
             ],
             [
@@ -1249,7 +1249,7 @@
         },
         {
           "type": "paragraph",
-          "text": "把下方内容另存为 maintenance.test.mjs，与原测试并列。先跑两份测试，新函式尚未存在时，新三项会失败而原三项仍通过；保存这个预期失败，确认测试真的会因缺少计数函式而报错。不要因红色结果就把教材当成坏版本，也不要让 Codex 删掉新测试来取得绿色。这里输入都符合既有 Task 契约，没有擅自扩大成任意资料清理工具。"
+          "text": "把下方内容另存为 maintenance.test.mjs，与原测试并列。先跑两份测试，新函数尚未存在时，新三项会失败而原三项仍通过；保存这个预期失败，确认测试真的会因缺少计数函数而报错。不要因红色结果就把教材当成坏版本，也不要让 Codex 删掉新测试来取得绿色。这里输入都符合既有 Task 契约，没有擅自扩大成任意资料清理工具。"
         },
         {
           "type": "code",
@@ -1276,7 +1276,7 @@
         },
         {
           "type": "paragraph",
-          "text": "完成后应有六项测试通过。参考核心函式如下，app.js 需汇入它并在 render 里先对 tasks 计数，再组出与原本相同的文字。特别检查是否误传 shown，也就是目前筛选结果；那会让 Completed 页面错显示总数。查看 git diff 或编辑器差异，原测试、HTML、CSS、储存读写不应被改动。纯函式的测试绿色，不能取代这个接线检查。"
+          "text": "完成后应有六项测试通过。参考核心函数如下，app.js 需汇入它并在 render 里先对 tasks 计数，再组出与原本相同的文字。特别检查是否误传 shown，也就是目前筛选结果；那会让 Completed 页面错显示总数。查看 git diff 或编辑器差异，原测试、HTML、CSS、储存读写不应被改动。纯函数的测试绿色，不能取代这个接线检查。"
         },
         {
           "type": "code",
@@ -1286,7 +1286,7 @@
         },
         {
           "type": "paragraph",
-          "text": "在 app.js 原有的第一行汇入清单加上 countTasks，保留原六个函式。接著找到 render 中原本写入 #count.textContent 的那一行，用第二段替换；不要把整个 render 换掉，也不改前面产生 shown 的筛选。以下两段只是指定位置的片段，不是完整 app.js。"
+          "text": "在 app.js 原有的第一行汇入清单加上 countTasks，保留原六个函数。接著找到 render 中原本写入 #count.textContent 的那一行，用第二段替换；不要把整个 render 换掉，也不改前面产生 shown 的筛选。以下两段只是指定位置的片段，不是完整 app.js。"
         },
         {
           "type": "code",
@@ -1302,7 +1302,7 @@
         },
         {
           "type": "paragraph",
-          "text": "检查这里的参数确实是 tasks。只有 Read 完成、Build 未完成时，Completed 的 shown 只有一笔；若误传 shown，会得到 0 active / 1 total，而正确画面应仍为 1 active / 2 total。核心六项测试只验 countTasks 的函式契约，仍可能全部通过，所以保留这个独立的接线与画面核对。"
+          "text": "检查这里的参数确实是 tasks。只有 Read 完成、Build 未完成时，Completed 的 shown 只有一笔；若误传 shown，会得到 0 active / 1 total，而正确画面应仍为 1 active / 2 total。核心六项测试只验 countTasks 的函数契约，仍可能全部通过，所以保留这个独立的接线与画面核对。"
         },
         {
           "type": "heading",
@@ -1311,11 +1311,11 @@
         },
         {
           "type": "paragraph",
-          "text": "若修改前的同一个练习服务仍在执行，直接重新整理该网址，不另启动第二个；已停止才使用以下命令。在此资料夹启动预览：Windows 执行 py -3 -m http.server 4173 --bind 127.0.0.1；macOS／Linux 执行 python3 -m http.server 4173 --bind 127.0.0.1，浏览同一 http://127.0.0.1:4173。若已有人占用，先核对原服务，不直接终止它。在修改前后使用同一来源网址及虚构待办，避免换连接埠后空白的 localStorage 被误认为资料遗失。保留修改前建立的 Read、Build，不重设或重复新增；先比对储存的两笔 ID 与完成状态，再依序选 All tasks、Active、Completed，三次统计都必须是 1 active / 2 total。"
+          "text": "若修改前的同一个练习服务仍在执行，直接重新整理该网址，不另启动第二个；已停止才使用以下命令。在此文件夹启动预览：Windows 执行 py -3 -m http.server 4173 --bind 127.0.0.1；macOS／Linux 执行 python3 -m http.server 4173 --bind 127.0.0.1，浏览同一 http://127.0.0.1:4173。若已有人占用，先核对原服务，不直接终止它。在修改前后使用同一来源网址及虚构待办，避免换连接埠后空白的 localStorage 被误认为资料遗失。保留修改前建立的 Read、Build，不重设或重复新增；先比对储存的两笔 ID 与完成状态，再依序选 All tasks、Active、Completed，三次统计都必须是 1 active / 2 total。"
         },
         {
           "type": "paragraph",
-          "text": "重新整理确认两笔资料、ID 与完成状态保留。先用同一组两笔资料，在 390px 与桌面宽度各检查一次筛选与统计；接著选 All tasks，只删除一次 Read，确认 1 active / 1 total。按 Tab 确认焦点仍可见。这是回归验收，不需要新的设计图。若数字随筛选改变，就回到 app.js 查函式引数；若纯函式本身不对，用新测试的实际失败案例定位。只有在确实观察过后才填写浏览器通过，未操作的系统另外标记。"
+          "text": "重新整理确认两笔资料、ID 与完成状态保留。先用同一组两笔资料，在 390px 与桌面宽度各检查一次筛选与统计；接著选 All tasks，只删除一次 Read，确认 1 active / 1 total。按 Tab 确认焦点仍可见。这是回归验收，不需要新的设计图。若数字随筛选改变，就回到 app.js 查函数引数；若纯函数本身不对，用新测试的实际失败案例定位。只有在确实观察过后才填写浏览器通过，未操作的系统另外标记。"
         },
         {
           "type": "heading",
@@ -1327,7 +1327,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "需要撤回时先保存当前差异，再只还原本次改动的 core.mjs、app.js，并移走自己新增的 maintenance.test.mjs；重新执行原本三项测试及统计划面，应回到原基准。不要用整个专案强制重设来清掉其他人的修改。交接写明基准、抽出的责任、未变的资料契约、六项测试、实际画面验收及还原位置；没跑的测试不能写通过。下一个维护需求另列范围，参考"
+              "text": "需要撤回时先保存当前差异，再只还原本次改动的 core.mjs、app.js，并移走自己新增的 maintenance.test.mjs；重新执行原本三项测试及统计划面，应回到原基准。不要用整个项目强制重设来清掉其他人的修改。交接写明基准、抽出的责任、未变的资料契约、六项测试、实际画面验收及还原位置；没跑的测试不能写通过。下一个维护需求另列范围，参考"
             },
             {
               "type": "article",
@@ -1337,7 +1337,7 @@
             },
             {
               "type": "text",
-              "text": "，不要在这次小重构顺便重写储存层或更换框架。 完成后在自己的预览终端机按 Ctrl+C 停止这次服务，保留基准 JSON 与验收纪录。"
+              "text": "，不要在这次小重构顺便重写储存层或更换框架。 完成后在自己的预览终端按 Ctrl+C 停止这次服务，保留基准 JSON 与验收纪录。"
             }
           ]
         },

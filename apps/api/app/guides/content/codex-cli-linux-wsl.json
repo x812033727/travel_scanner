@@ -1374,8 +1374,8 @@
       ]
     },
     "zh-CN": {
-      "title": "Linux／WSL CLI 与档案位置",
-      "description": "辨识主机与 WSL 的工具、路径和帐号，从正确目录执行相同练习并更新 CLI。",
+      "title": "Linux／WSL CLI 与文件位置",
+      "description": "辨识主机与 WSL 的工具、路径和账号，从正确目录执行相同练习并更新 CLI。",
       "hero": {
         "src": "/guides/codex-cli-linux-wsl/hero.jpg",
         "width": 1600,
@@ -1390,8 +1390,8 @@
         {
           "type": "summary",
           "items": [
-            "辨识主机与 WSL 的工具、路径和帐号，从正确目录执行相同练习并更新 CLI。",
-            "在 Linux 或 Windows 的 WSL2 中安装 Codex CLI，分辨主机、发行版与档案位置，完成标记档唯读验证及更新。"
+            "辨识主机与 WSL 的工具、路径和账号，从正确目录执行相同练习并更新 CLI。",
+            "在 Linux 或 Windows 的 WSL2 中安装 Codex CLI，分辨主机、发行版与文件位置，完成标记档唯读验证及更新。"
           ]
         },
         {
@@ -1413,14 +1413,14 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "在 Linux 或 Windows 的 WSL2 中安装 Codex CLI，分辨主机、发行版与档案位置，完成标记档唯读验证及更新。阅读约 12 分钟，操作约 30 分钟；初次安装 WSL、重开机与下载另计。本篇依 2026-09-14 官方文件查证，未在 Linux／WSL 实机执行，也没有使用 Windows 画面冒充 Linux 截图。"
+          "text": "在 Linux 或 Windows 的 WSL2 中安装 Codex CLI，分辨主机、发行版与文件位置，完成标记档唯读验证及更新。阅读约 12 分钟，操作约 30 分钟；初次安装 WSL、重开机与下载另计。本篇依 2026-09-14 官方文件查证，未在 Linux／WSL 实机执行，也没有使用 Windows 画面冒充 Linux 截图。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "本来就在 Linux 电脑上，直接开该系统的 Terminal，从步骤二开始。Windows 使用者先决定是否真的需要 Linux 工具；原生 PowerShell 可以使用 Codex，不必为了 CLI 强制加装 WSL。已有 Linux 开发环境或专案依赖 Linux 时才走 WSL2。两者的选择与"
+              "text": "本来就在 Linux 电脑上，直接开该系统的 Terminal，从步骤二开始。Windows 用户先决定是否真的需要 Linux 工具；原生 PowerShell 可以使用 Codex，不必为了 CLI 强制加装 WSL。已有 Linux 开发环境或项目依赖 Linux 时才走 WSL2。两者的选择与"
             },
             {
               "type": "article",
@@ -1436,16 +1436,16 @@
         },
         {
           "type": "paragraph",
-          "text": "图中 1 是辨认正在输入指令的环境，2 是安装并进入 Linux 专案，3 是从同一环境读档验收。Linux 的家目录、工具和认证预设各自存在；在 Windows 成功执行 codex --version，不能证明 Ubuntu 里也已安装。反过来，WSL 的登入完成也不能单凭这点判定 Windows 桌面端已登入。"
+          "text": "图中 1 是辨认正在输入指令的环境，2 是安装并进入 Linux 项目，3 是从同一环境读档验收。Linux 的家目录、工具和认证默认各自存在；在 Windows 成功执行 codex --version，不能证明 Ubuntu 里也已安装。反过来，WSL 的登录完成也不能单凭这点判定 Windows 桌面端已登录。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤一：Windows 使用者确认 WSL2"
+          "text": "步骤一：Windows 用户确认 WSL2"
         },
         {
           "type": "paragraph",
-          "text": "在 Windows PowerShell 执行下面的查询，先看是否已有发行版，以及 VERSION 栏是否为 2。这不是 Linux shell 命令。已有 WSL2 就保留它，不重灌、不删除发行版。官方现行 Codex Linux 沙盒不支援 WSL1；若现有专案还在 WSL1，先备份并依 Microsoft 文件规划转换，不要对唯一的工作副本直接试改。"
+          "text": "在 Windows PowerShell 执行下面的查询，先看是否已有发行版，以及 VERSION 栏是否为 2。这不是 Linux shell 命令。已有 WSL2 就保留它，不重灌、不删除发行版。官方现行 Codex Linux 沙盒不支持 WSL1；若现有项目还在 WSL1，先备份并依 Microsoft 文件规划转换，不要对唯一的工作副本直接试改。"
         },
         {
           "type": "code",
@@ -1455,7 +1455,7 @@
         },
         {
           "type": "paragraph",
-          "text": "先用 winver 核对 Windows 版本；Microsoft 的 wsl --install 简化流程要求 Windows 11，或 Windows 10 2004（组建 19041）以上。旧版请用官方手动安装文件，不要直接套用下面命令。 没有安装 WSL 的读者，先确认电脑政策允许启用虚拟化与 WSL，再按 Microsoft 文件在系统管理员 PowerShell 执行 wsl --install，依提示重开机与建立 Linux 使用者。这是安装作业系统环境，不是只下载一个 npm 套件；需要安排中断其他工作的时间。公司电脑依管理政策处理，不另教绕过限制。"
+          "text": "先用 winver 核对 Windows 版本；Microsoft 的 wsl --install 简化流程要求 Windows 11，或 Windows 10 2004（组建 19041）以上。旧版请用官方手动安装文件，不要直接套用下面命令。 没有安装 WSL 的读者，先确认电脑政策允许启用虚拟化与 WSL，再按 Microsoft 文件在系统管理员 PowerShell 执行 wsl --install，依提示重开机与建立 Linux 用户。这是安装作业系统环境，不是只下载一个 npm 套件；需要安排中断其他工作的时间。公司电脑依管理政策处理，不另教绕过限制。"
         },
         {
           "type": "code",
@@ -1465,11 +1465,11 @@
         },
         {
           "type": "paragraph",
-          "text": "有多个发行版时，可在 PowerShell 使用 wsl --distribution 加上清单中的完整名称，例如把自己的名称放在引号内。先选对发行版再安装；不要在发行版 A 查到 codex，就跳到发行版 B 宣称已可使用。完成本篇后若切回 PowerShell，必须重新辨识命令来源，不把 Linux 的安装或档案杂凑纪录套到 Windows。"
+          "text": "有多个发行版时，可在 PowerShell 使用 wsl --distribution 加上清单中的完整名称，例如把自己的名称放在引号内。先选对发行版再安装；不要在发行版 A 查到 codex，就跳到发行版 B 宣称已可使用。完成本篇后若切回 PowerShell，必须重新辨识命令来源，不把 Linux 的安装或文件杂凑纪录套到 Windows。"
         },
         {
           "type": "paragraph",
-          "text": "安装完成后在 Terminal 选自己的 Linux 发行版，或于一般 PowerShell 执行 wsl 进入预设发行版。有多个发行版时，用 wsl --list --verbose 的真实名称选择，不要照抄不一定存在的 Ubuntu。进入后提示符号与路径变成 Linux 形式；以下步骤全部在这个 Linux shell 执行。"
+          "text": "安装完成后在 Terminal 选自己的 Linux 发行版，或于一般 PowerShell 执行 wsl 进入默认发行版。有多个发行版时，用 wsl --list --verbose 的真实名称选择，不要照抄不一定存在的 Ubuntu。进入后提示符号与路径变成 Linux 形式；以下步骤全部在这个 Linux shell 执行。"
         },
         {
           "type": "heading",
@@ -1484,11 +1484,11 @@
         },
         {
           "type": "paragraph",
-          "text": "uname 预期显示 Linux；WSL_DISTRO_NAME 在 WSL 会指出发行版，一般 Linux 留空是合理的。command -v 与 type -a 应指向你打算在 Linux 使用的安装；若出现 /mnt/c 下的 Windows 包装程式，不要只因命令能跑就当成 Linux 安装。先记录来源，后续把 CLI 安装在 Linux 环境，并重新核对 shell 实际选到哪一份。"
+          "text": "uname 预期显示 Linux；WSL_DISTRO_NAME 在 WSL 会指出发行版，一般 Linux 留空是合理的。command -v 与 type -a 应指向你打算在 Linux 使用的安装；若出现 /mnt/c 下的 Windows 包装程序，不要只因命令能跑就当成 Linux 安装。先记录来源，后续把 CLI 安装在 Linux 环境，并重新核对 shell 实际选到哪一份。"
         },
         {
           "type": "paragraph",
-          "text": "新装使用官方独立安装命令，先核对来源，完成后阅读 PATH 指示并开新 Linux 终端机。已用 npm 的读者可在同一个 Linux 环境确认 node 和 npm 版本，再用 npm install -g @openai/codex；不把 Windows 的 Node.js 当作 Linux 的前置依赖。一次选一种管道，之后更新保持一致。"
+          "text": "新装使用官方独立安装命令，先核对来源，完成后阅读 PATH 指示并开新 Linux 终端。已用 npm 的读者可在同一个 Linux 环境确认 node 和 npm 版本，再用 npm install -g @openai/codex；不把 Windows 的 Node.js 当作 Linux 的前置依赖。一次选一种管道，之后更新保持一致。"
         },
         {
           "type": "code",
@@ -1504,7 +1504,7 @@
         },
         {
           "type": "paragraph",
-          "text": "安装输出、实际路径和版本三者要能对上。curl、sh 或系统工具本身不存在时，先依你的 Linux 发行版文件准备工具；不要照抄另一个发行版的套件管理指令。CLI 能启动仍不代表专案依赖或 Linux 沙盒已正常；后面的实际读档会检查第二层。"
+          "text": "安装输出、实际路径和版本三者要能对上。curl、sh 或系统工具本身不存在时，先依你的 Linux 发行版文件准备工具；不要照抄另一个发行版的套件管理指令。CLI 能启动仍不代表项目依赖或 Linux 沙盒已正常；后面的实际读档会检查第二层。"
         },
         {
           "type": "heading",
@@ -1513,7 +1513,7 @@
         },
         {
           "type": "paragraph",
-          "text": "WSL 专案若由 Linux 工具执行，优先放在 Linux 家目录，例如 ~/code 下；/mnt/c 是 Windows 档案系统的挂载入口，与 /home 不是两个名称指向同一份专案。不要为了本练习搬动正式专案。下面用新资料夹示范，若目录已存在会保留内容并停止建立；换新名字再试。整个区块在子 shell 执行，结束后依下一段明确切入。"
+          "text": "WSL 项目若由 Linux 工具执行，优先放在 Linux 家目录，例如 ~/code 下；/mnt/c 是 Windows 文件系统的挂载入口，与 /home 不是两个名称指向同一份项目。不要为了本练习搬动正式项目。下面用新文件夹示范，若目录已存在会保留内容并停止建立；换新名字再试。整个区块在子 shell 执行，结束后依下一段明确切入。"
         },
         {
           "type": "code",
@@ -1523,7 +1523,7 @@
         },
         {
           "type": "paragraph",
-          "text": "建立成功才执行下一个区块。若 mkdir 显示 File exists，表示它保护了原资料，并不是需要加 sudo；先选新目录。切入后应看到两个档案及 LINUX-CLI-01，两份 SHA-256 相同。这个相同是本机两份相同位元组的比对，不要求与 Windows 的档案杂凑一致。"
+          "text": "建立成功才执行下一个区块。若 mkdir 显示 File exists，表示它保护了原资料，并不是需要加 sudo；先选新目录。切入后应看到两个文件及 LINUX-CLI-01，两份 SHA-256 相同。这个相同是本机两份相同位元组的比对，不要求与 Windows 的文件杂凑一致。"
         },
         {
           "type": "code",
@@ -1534,7 +1534,7 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤四：在同一个 Linux 环境登入与读取"
+          "text": "步骤四：在同一个 Linux 环境登录与读取"
         },
         {
           "type": "code",
@@ -1544,7 +1544,7 @@
         },
         {
           "type": "paragraph",
-          "text": "逐行等候完成，依实际登入画面处理；WSL 可能透过主机浏览器完成认证，完成页出现后仍要回 Linux 终端机确认登入结果。没有浏览器或本机回呼不可用时，先查 codex login --help 及官方认证页；只有帐号与组织允许装置码流程时，才用 codex login --device-auth。不要把 Windows 认证档复制到专案来解决登入。"
+          "text": "逐行等候完成，依实际登录画面处理；WSL 可能通过主机浏览器完成认证，完成页出现后仍要回 Linux 终端确认登录结果。没有浏览器或本机回呼不可用时，先查 codex login --help 及官方认证页；只有账号与组织允许设备码流程时，才用 codex login --device-auth。不要把 Windows 认证档复制到项目来解决登录。"
         },
         {
           "type": "code",
@@ -1554,12 +1554,12 @@
         },
         {
           "type": "paragraph",
-          "text": "上段是 Codex 对话，不是 bash 命令。要求的目录应是 Linux 练习资料夹，标记 LINUX-CLI-01；同时看实际读取记录。接著在同一个 Codex 工作阶段要求读取不存在的 note-missing.txt，预期清楚回报缺档而不新增。完成后才用 /exit 回 shell，重跑 sha256sum、cat 和 ls，核对没有改动。能完成这两种结果，才验证安装、登入、定位与读取串在一起。"
+          "text": "上段是 Codex 对话，不是 bash 命令。要求的目录应是 Linux 练习文件夹，标记 LINUX-CLI-01；同时看实际读取记录。接著在同一个 Codex 工作阶段要求读取不存在的 note-missing.txt，预期清楚回报缺档而不新增。完成后才用 /exit 回 shell，重跑 sha256sum、cat 和 ls，核对没有改动。能完成这两种结果，才验证安装、登录、定位与读取串在一起。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "档案位置、更新与排错"
+          "text": "文件位置、更新与排错"
         },
         {
           "type": "table",
@@ -1575,12 +1575,12 @@
               "在 PowerShell 用 Get-Location"
             ],
             [
-              "/home 下的专案",
-              "Linux／WSL 的档案系统",
+              "/home 下的项目",
+              "Linux／WSL 的文件系统",
               "在 Linux shell 用 pwd"
             ],
             [
-              "/mnt/c 下的专案",
+              "/mnt/c 下的项目",
               "Linux 看到的 Windows 挂载磁碟",
               "不当成 /home 的另一个副本"
             ],
@@ -1596,7 +1596,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "如果 Linux 工具专案放在 /mnt/c 而操作很慢，先用新的 Linux 家目录练习副本比较，不要直接移动或删除唯一原稿。需要从 Windows 档案总管检视 WSL，可用官方文件说明的 "
+              "text": "如果 Linux 工具项目放在 /mnt/c 而操作很慢，先用新的 Linux 家目录练习副本比较，不要直接移动或删除唯一原稿。需要从 Windows 文件资源管理器检视 WSL，可用官方文件说明的 "
             },
             {
               "type": "code",
@@ -1604,7 +1604,7 @@
             },
             {
               "type": "text",
-              "text": " 入口选实际发行版；这是存取 Linux 档案，不是把两份内容同步。两个目录都存在时，用标记与 pwd 判断，不凭同名资料夹猜测。"
+              "text": " 入口选实际发行版；这是存取 Linux 文件，不是把两份内容同步。两个目录都存在时，用标记与 pwd 判断，不凭同名文件夹猜测。"
             }
           ]
         },
@@ -1627,7 +1627,7 @@
             },
             {
               "type": "text",
-              "text": "排查，不要一律关闭沙盒。找不到旧工作阶段时，核对是否换了发行版、Linux 使用者或 CODEX_HOME；本篇不设定共用认证目录，以免把登入和工具来源混在一起。后续回"
+              "text": "排查，不要一律关闭沙盒。找不到旧工作阶段时，核对是否换了发行版、Linux 用户或 CODEX_HOME；本篇不设置共用认证目录，以免把登录和工具来源混在一起。后续回"
             },
             {
               "type": "article",

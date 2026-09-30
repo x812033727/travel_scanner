@@ -312,7 +312,7 @@
     },
     "zh-CN": {
       "title": "修复 Bug 的完整流程",
-      "description": "好的除错从可重现的症状开始，再用证据缩小原因，最后验证修正。『网站坏了』不够具体；提供哪个输入、在哪个步骤、期待什么、实际出现什么，能让 Codex 更快找到相关程式。",
+      "description": "好的除错从可重现的症状开始，再用证据缩小原因，最后验证修正。『网站坏了』不够具体；提供哪个输入、在哪个步骤、期待什么、实际出现什么，能让 Codex 更快找到相关程序。",
       "hero": {
         "src": "/guides/codex-debugging/hero.jpg",
         "alt": "实作顺序示意图，非产品介面截图。",
@@ -329,7 +329,7 @@
           "type": "summary",
           "items": [
             "好的除错从可重现的症状开始，再用证据缩小原因，最后验证修正。",
-            "『网站坏了』不够具体；提供哪个输入、在哪个步骤、期待什么、实际出现什么，能让 Codex 更快找到相关程式。"
+            "『网站坏了』不够具体；提供哪个输入、在哪个步骤、期待什么、实际出现什么，能让 Codex 更快找到相关程序。"
           ]
         },
         {
@@ -351,7 +351,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "把「Completed 显示错任务」转成可重现的 Bug 报告，用最小程式定位原因、修正并做回归，保留没有验证的项目。阅读约 14 分钟，操作约 25 分钟。使用编辑器、已登入的 Codex、Node.js 22 以上相容版本及 Python。先完成既有专案阅读，不需要正式帐号资料或外部服务。"
+          "text": "把「Completed 显示错任务」转成可重现的 Bug 报告，用最小程序定位原因、修正并做回归，保留没有验证的项目。阅读约 14 分钟，操作约 25 分钟。使用编辑器、已登录的 Codex、Node.js 22 以上相容版本及 Python。先完成既有项目阅读，不需要正式账号资料或外部服务。"
         },
         {
           "type": "rich_paragraph",
@@ -375,7 +375,7 @@
         },
         {
           "type": "paragraph",
-          "text": "从练习 ZIP 的 broken 复制五个档案到新资料夹 codex-bug-lab，保留原版。这份程式已有筛选分支，但 Completed 的条件故意写反；与 start「尚未实作筛选」不同。开编辑器，PowerShell 用 Get-Location、macOS／Linux 用 pwd 确认位置，再执行既有测试，预期 2 过 1 败。"
+          "text": "从练习 ZIP 的 broken 复制五个文件到新文件夹 codex-bug-lab，保留原版。这份程序已有筛选分支，但 Completed 的条件故意写反；与 start「尚未实作筛选」不同。开编辑器，PowerShell 用 Get-Location、macOS／Linux 用 pwd 确认位置，再执行既有测试，预期 2 过 1 败。"
         },
         {
           "type": "code",
@@ -385,7 +385,7 @@
         },
         {
           "type": "paragraph",
-          "text": "要确认画面，从本目录启动本机预览：Windows 执行 py -m http.server 4173 --bind 127.0.0.1，macOS／Linux 执行 python3 -m http.server 4173 --bind 127.0.0.1。开 http://127.0.0.1:4173；若有想保留的虚构资料先记录，再使用 Reset practice data，切到 All tasks 并确认空清单。接著依序新增 Read、Build，只勾选 Read，再切 Completed。预期应是 Read，故障版实际却显示 Build；把这个顺序完整记下。资料重设不会还原程式档。"
+          "text": "要确认画面，从本目录启动本机预览：Windows 执行 py -m http.server 4173 --bind 127.0.0.1，macOS／Linux 执行 python3 -m http.server 4173 --bind 127.0.0.1。开 http://127.0.0.1:4173；若有想保留的虚构资料先记录，再使用 Reset practice data，切到 All tasks 并确认空清单。接著依序新增 Read、Build，只勾选 Read，再切 Completed。预期应是 Read，故障版实际却显示 Build；把这个顺序完整记下。资料重设不会还原程序档。"
         },
         {
           "type": "paragraph",
@@ -404,7 +404,7 @@
         },
         {
           "type": "paragraph",
-          "text": "在根目录新增 repro.mjs，贴入下面完整程式。它直接把一个已完成与一个未完成任务送给 visibleTasks，不经 localStorage、DOM、浏览器快取或外部网路。保存后在另一个终端机执行 node repro.mjs。故障版应先印出实际 b，再因期待 a 而以非零状态结束；这次 assertion 失败就是要保留的证据。"
+          "text": "在根目录新增 repro.mjs，贴入下面完整程序。它直接把一个已完成与一个未完成任务送给 visibleTasks，不经 localStorage、DOM、浏览器快取或外部网络。保存后在另一个终端执行 node repro.mjs。故障版应先印出实际 b，再因期待 a 而以非零状态结束；这次 assertion 失败就是要保留的证据。"
         },
         {
           "type": "code",
@@ -420,16 +420,16 @@
         },
         {
           "type": "paragraph",
-          "text": "现在可以缩小调查：核心函式在没有浏览器的情况下就已回传错误，故障不需要快取或按钮事件才能发生。这不能证明所有 UI 都正确，但足以先查核心 Completed 分支。请 Codex 用证据解释「为什么目前条件选中了未完成任务」，再谈修正；不要以一次重新整理偶然正常当根因已找到。"
+          "text": "现在可以缩小调查：核心函数在没有浏览器的情况下就已回传错误，故障不需要快取或按钮事件才能发生。这不能证明所有 UI 都正确，但足以先查核心 Completed 分支。请 Codex 用证据解释「为什么目前条件选中了未完成任务」，再谈修正；不要以一次重新整理偶然正常当根因已找到。"
         },
         {
           "type": "heading",
           "level": 3,
-          "text": "先分辨程式失败与环境失败"
+          "text": "先分辨程序失败与环境失败"
         },
         {
           "type": "paragraph",
-          "text": "若 node repro.mjs 显示 ERR_MODULE_NOT_FOUND，尚未执行到 Completed 断言，先检查目前资料夹与 core.mjs 的档名；若是 SyntaxError，核对是否完整贴上程式。只有程式成功载入，印出 b，接著因期待 a 而失败，才是此缺陷的重现。反过来，第一轮直接通过也不是你已修好：可能拿到 expected 副本，应回查材料来源。把命令、退出码、实际输出及副本位置一起留下，不只记「红色」或「失败」。"
+          "text": "若 node repro.mjs 显示 ERR_MODULE_NOT_FOUND，尚未执行到 Completed 断言，先检查目前文件夹与 core.mjs 的文件名；若是 SyntaxError，核对是否完整贴上程序。只有程序成功载入，印出 b，接著因期待 a 而失败，才是此缺陷的重现。反过来，第一轮直接通过也不是你已修好：可能拿到 expected 副本，应回查材料来源。把命令、退出码、实际输出及副本位置一起留下，不只记「红色」或「失败」。"
         },
         {
           "type": "heading",
@@ -438,7 +438,7 @@
         },
         {
           "type": "paragraph",
-          "text": "桌面版先以 codex-bug-lab 建立 Codex 任务；CLI 则在该资料夹确认路径后执行 codex。接著送出下面的完整要求，将范围限定到 core.mjs 的 Completed 条件。既有测试与 repro.mjs 都不要修改，否则无法比较前后。教材的故障注解在修好后会过期，可一并移除那一行；除此以外不重构所有函式、不改 UI 文案、不换框架。若代理没有读测试输出，就要求先确认原始失败再继续。"
+          "text": "桌面版先以 codex-bug-lab 建立 Codex 任务；CLI 则在该文件夹确认路径后执行 codex。接著送出下面的完整要求，将范围限定到 core.mjs 的 Completed 条件。既有测试与 repro.mjs 都不要修改，否则无法比较前后。教材的故障注解在修好后会过期，可一并移除那一行；除此以外不重构所有函数、不改 UI 文案、不换框架。若代理没有读测试输出，就要求先确认原始失败再继续。"
         },
         {
           "type": "code",
@@ -448,7 +448,7 @@
         },
         {
           "type": "paragraph",
-          "text": "根因是 Completed 使用 !task.completed，与 Active 一样选未完成；正确条件是 task.completed。只需把该分支改成下列一行，不要连 Active 的 ! 也删除。若只把下拉选单的标签交换，画面有时看起来合理，但 repro 仍会失败；这说明修表象与修行为是两件事。"
+          "text": "根因是 Completed 使用 !task.completed，与 Active 一样选未完成；正确条件是 task.completed。只需把该分支改成下列一行，不要连 Active 的 ! 也删除。若只把下拉菜单的标签交换，画面有时看起来合理，但 repro 仍会失败；这说明修表象与修行为是两件事。"
         },
         {
           "type": "code",
@@ -511,7 +511,7 @@
         },
         {
           "type": "paragraph",
-          "text": "原重现已通过后，另建 regression.mjs，贴上下面程式，再执行 node regression.mjs。它先验证 Completed 的 a，取消 a 的完成状态后验证 Completed 为空、Active 保留 a／b，并检查原输入未被改动与三种空清单。预期印出 Regression passed，退出码 0。它是独立断言程式，不会把原 node --test core.test.mjs 的测试数自动增加。"
+          "text": "原重现已通过后，另建 regression.mjs，贴上下面程序，再执行 node regression.mjs。它先验证 Completed 的 a，取消 a 的完成状态后验证 Completed 为空、Active 保留 a／b，并检查原输入未被改动与三种空清单。预期印出 Regression passed，退出码 0。它是独立断言程序，不会把原 node --test core.test.mjs 的测试数自动增加。"
         },
         {
           "type": "code",
@@ -551,7 +551,7 @@
         },
         {
           "type": "paragraph",
-          "text": "一次只改一个可验证的假设，失败时把「做了什么、得到什么」追加到报告，避免下一个任务再次重试相同无效修正。若根因不在本篇预设位置，保留新证据并重新缩小范围，不因为教学说一行就硬改一行。真实专案的计时、帐号及网路条件可能造成不同故障，重现资料应先去除私人内容再交给 Codex。"
+          "text": "一次只改一个可验证的假设，失败时把「做了什么、得到什么」追加到报告，避免下一个任务再次重试相同无效修正。若根因不在本篇默认位置，保留新证据并重新缩小范围，不因为教学说一行就硬改一行。真实项目的计时、账号及网络条件可能造成不同故障，重现资料应先去除私人内容再交给 Codex。"
         },
         {
           "type": "rich_paragraph",

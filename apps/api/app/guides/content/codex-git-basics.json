@@ -354,7 +354,7 @@
     },
     "zh-CN": {
       "title": "Git、分支、diff 与还原",
-      "description": "Git 保存档案版本，分支承接一组修改，diff 显示差异。Codex 可以协助操作，但你仍要确认修改属于这次任务。聊天纪录与 Git 历史不同，恢复旧对话不会自动还原档案。",
+      "description": "Git 保存文件版本，分支承接一组修改，diff 显示差异。Codex 可以协助操作，但你仍要确认修改属于这次任务。聊天纪录与 Git 历史不同，恢复旧对话不会自动还原文件。",
       "hero": {
         "src": "/guides/codex-git-basics/hero.jpg",
         "alt": "实作顺序示意图，非产品介面截图。",
@@ -370,9 +370,9 @@
         {
           "type": "summary",
           "items": [
-            "Git 保存档案版本，分支承接一组修改，diff 显示差异。",
+            "Git 保存文件版本，分支承接一组修改，diff 显示差异。",
             "Codex 可以协助操作，但你仍要确认修改属于这次任务。",
-            "聊天纪录与 Git 历史不同，恢复旧对话不会自动还原档案。"
+            "聊天纪录与 Git 历史不同，恢复旧对话不会自动还原文件。"
           ]
         },
         {
@@ -394,7 +394,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "在独立 Git 练习库建立分支、看懂差异，只暂存与提交指定档案，再分别练习未提交还原和已提交撤回。阅读约 15 分钟，操作约 30 分钟。需要 Git 2.28 以上、编辑器及 expected 教材；三种 OS 的 Git 命令相同。本篇只建立本机历史，不需要 GitHub、远端帐号或推送。"
+          "text": "在独立 Git 练习库建立分支、看懂差异，只暂存与提交指定文件，再分别练习未提交还原和已提交撤回。阅读约 15 分钟，操作约 30 分钟。需要 Git 2.28 以上、编辑器及 expected 教材；三种 OS 的 Git 命令相同。本篇只建立本机历史，不需要 GitHub、远端账号或推送。"
         },
         {
           "type": "rich_paragraph",
@@ -411,7 +411,7 @@
             },
             {
               "type": "text",
-              "text": "。工作目录是目前磁碟内容，暂存区是下一次 commit 要包含的内容，commit 是已记录的版本；三者可能不同。分支指向一条版本线，不会自动复制所有未提交档案。要同时在多份目录工作，另看"
+              "text": "。工作目录是目前磁碟内容，暂存区是下一次 commit 要包含的内容，commit 是已记录的版本；三者可能不同。分支指向一条版本线，不会自动复制所有未提交文件。要同时在多份目录工作，另看"
             },
             {
               "type": "article",
@@ -432,7 +432,7 @@
         },
         {
           "type": "paragraph",
-          "text": "在不属于其他专案的新资料夹 codex-git-lab 放入 expected 的五个档案。用编辑器开该资料夹与终端机，PowerShell 用 Get-Location、macOS／Linux 用 pwd 核对位置，再跑 git --version。若系统找不到 git，先依平台的 Git 官方安装说明完成，重开终端机；不要在原本工作库执行接下来的初始化。"
+          "text": "在不属于其他项目的新文件夹 codex-git-lab 放入 expected 的五个文件。用编辑器开该文件夹与终端，PowerShell 用 Get-Location、macOS／Linux 用 pwd 核对位置，再跑 git --version。若系统找不到 git，先依平台的 Git 官方安装说明完成，重开终端；不要在原本工作库执行接下来的初始化。"
         },
         {
           "type": "code",
@@ -442,7 +442,7 @@
         },
         {
           "type": "paragraph",
-          "text": "逐行执行，不略过中间检查。初次暂存应恰好是五档，提交后 status 应无变更。姓名与保留网域信箱只写在这个练习库的本机设定，不是 GitHub 登入，也没有 --global。若 commit 遇到你既有的签章或 hooks 要求，先依自己的设定完成或暂停记录原因，不改全域政策来追求成功画面。"
+          "text": "逐行执行，不略过中间检查。初次暂存应恰好是五档，提交后 status 应无变更。姓名与保留网域信箱只写在这个练习库的本机设置，不是 GitHub 登录，也没有 --global。若 commit 遇到你既有的签章或 hooks 要求，先依自己的设置完成或暂停记录原因，不改全域政策来追求成功画面。"
         },
         {
           "type": "heading",
@@ -494,7 +494,7 @@
         },
         {
           "type": "paragraph",
-          "text": "现在再做一次同档案的差异比较：不要重新 git add，用编辑器只把已暂存的 Plan one useful step. 改成 Compare one useful step.。执行下面四行，观察工作目录、暂存区与 HEAD 的不同版本。"
+          "text": "现在再做一次同文件的差异比较：不要重新 git add，用编辑器只把已暂存的 Plan one useful step. 改成 Compare one useful step.。执行下面四行，观察工作目录、暂存区与 HEAD 的不同版本。"
         },
         {
           "type": "code",
@@ -534,7 +534,7 @@
             },
             {
               "type": "text",
-              "text": "列出这个预设来源差异。执行前确认要丢弃的是这个练习标题；CSS 必须保留。"
+              "text": "列出这个默认来源差异。执行前确认要丢弃的是这个练习标题；CSS 必须保留。"
             }
           ]
         },
@@ -546,7 +546,7 @@
         },
         {
           "type": "paragraph",
-          "text": "此时 status 应只剩 style.css，h1 回到 Make room for one small task.，注解仍在。这是本篇最重要的保留检查：撤销自己的修改，不等于把别人的工作一起清干净。如果只执行 restore --staged，它并不删除工作目录内容；相反地 restore --worktree 会覆写指定档案，不能只看到 restore 一词就把两者当同义。"
+          "text": "此时 status 应只剩 style.css，h1 回到 Make room for one small task.，注解仍在。这是本篇最重要的保留检查：撤销自己的修改，不等于把别人的工作一起清干净。如果只执行 restore --staged，它并不删除工作目录内容；相反地 restore --worktree 会覆写指定文件，不能只看到 restore 一词就把两者当同义。"
         },
         {
           "type": "heading",
@@ -555,7 +555,7 @@
         },
         {
           "type": "paragraph",
-          "text": "重新用编辑器把 h1 改成 Plan one useful step.，再次只暂存 index.html 并检查 cached diff。下面提交只应包含标题，style.css 注解继续留在工作目录。用 show 的档名清单确认真正提交了什么，不把终端机显示成功当作范围一定正确。"
+          "text": "重新用编辑器把 h1 改成 Plan one useful step.，再次只暂存 index.html 并检查 cached diff。下面提交只应包含标题，style.css 注解继续留在工作目录。用 show 的文件名清单确认真正提交了什么，不把终端显示成功当作范围一定正确。"
         },
         {
           "type": "code",
@@ -575,7 +575,7 @@
         },
         {
           "type": "paragraph",
-          "text": "revert 会新增撤回提交，保留原本标题修改的历史。预期 h1 回旧值，log 仍看得到基准、标题修改与撤回三笔，工作目录干净。若出现冲突，先读提示与实际状态，不连按强制选项；只想取消这次未完成的 revert，可依 Git 指引使用 git revert --abort，之后重新检查档案。"
+          "text": "revert 会新增撤回提交，保留原本标题修改的历史。预期 h1 回旧值，log 仍看得到基准、标题修改与撤回三笔，工作目录干净。若出现冲突，先读提示与实际状态，不连按强制选项；只想取消这次未完成的 revert，可依 Git 指引使用 git revert --abort，之后重新检查文件。"
         },
         {
           "type": "heading",
@@ -622,7 +622,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "找不到分支先看是否在对的 repository；status 多出意外档案就先查看，不使用 git add . 把它们一起带进去。若同一档案混有自己的与原有修改，整档暂存会一起提交，应先读懂每段差异再分段处理。这次验收要能证明 CSS 在标题提交中被排除、两种 restore 效果不同、revert 保留历史。图中 1 是辨认状态，2 是限定提交，3 是验证还原；下一步看"
+              "text": "找不到分支先看是否在对的 repository；status 多出意外文件就先查看，不使用 git add . 把它们一起带进去。若同一文件混有自己的与原有修改，整档暂存会一起提交，应先读懂每段差异再分段处理。这次验收要能证明 CSS 在标题提交中被排除、两种 restore 效果不同、revert 保留历史。图中 1 是辨认状态，2 是限定提交，3 是验证还原；下一步看"
             },
             {
               "type": "article",
