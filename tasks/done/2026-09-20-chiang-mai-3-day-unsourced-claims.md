@@ -1,14 +1,14 @@
 ---
 id: 2026-09-20-chiang-mai-3-day-unsourced-claims
 title: chiang-mai-3-day-itinerary：blocks[2] 兩句沒有官方來源、blocks[9]「門口租沙龍」要照觀光局改寫
-status: open
+status: done
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-09-30T02:21:52Z
 created_at: 2026-09-20T03:12:47Z
-completed_at:
-branch:
+completed_at: 2026-09-30T02:24:25Z
+branch: claude/chiang-mai-unsourced-claims
 depends_on: []
 scope:
   - apps/api/app/guides/content/chiang-mai-3-day-itinerary.json
@@ -30,18 +30,18 @@ scope:
 
 ## Definition of done
 
-- [ ] `blocks[2]` 的 Grab 那半句拿掉或改寫成官網說法（上車前就看到價格），不留「和櫃台計程車差不多」。
-- [ ] `blocks[2]` 的「離塔佩門只有幾公里，不塞車十來分鐘就到」改成有出處的「機場到塔佩門車程約 15 分（泰國觀光局）」。
-- [ ] `blocks[9]` 的「短褲短裙的人可以在門口租沙龍圍上」改成「有些寺廟可以付費租腰布，不是每一座都有」。
-- [ ] `blocks[2]` 的 40／60 泰銖、12 號門、06:00 到 23:30，以及 `blocks[9]` 第二段的市集時段與「從古城搭雙條車約 10 分鐘」**一個字都沒動**（那幾組是第八批第 10、11 篇要一字不差的共用事實）。
-- [ ] `sources` 補 Grab 官網、TAT 塔佩門頁與 TAT 參拜寺廟頁。
+- [x] `blocks[2]` 的 Grab 那半句拿掉或改寫成官網說法（上車前就看到價格），不留「和櫃台計程車差不多」。
+- [x] `blocks[2]` 的「離塔佩門只有幾公里，不塞車十來分鐘就到」改成有出處的「機場到塔佩門車程約 15 分（泰國觀光局）」。
+- [x] `blocks[9]` 的「短褲短裙的人可以在門口租沙龍圍上」改成「有些寺廟可以付費租腰布，不是每一座都有」。
+- [x] `blocks[2]` 的 40／60 泰銖、12 號門、06:00 到 23:30，以及 `blocks[9]` 第二段的市集時段與「從古城搭雙條車約 10 分鐘」**一個字都沒動**（那幾組是第八批第 10、11 篇要一字不差的共用事實）。
+- [x] `sources` 補 Grab 官網、TAT 塔佩門頁與 TAT 參拜寺廟頁。
 - [ ] lint 與內容包測試綠；部署後 `guides-import --slug chiang-mai-3-day-itinerary` 是 `update` 再 `--publish`。
 
 ## Steps
 
-- [ ] `blocks[2]`：兩句一次改完（Grab 與「幾公里」），其餘數字不動。
-- [ ] `blocks[9]`：第一段結尾那句改寫；第二段（三個市集）原文一字不改。
-- [ ] 確認 `blocks[7]`（image）的 `alt`／`description` 與 `apps/web/public/guides/chiang-mai-3-day-itinerary/diagram-1.svg` 沒有這三句話（2026-09-20 兩處都確認過沒有），所以圖與圖說不用改。
+- [x] `blocks[2]`：兩句一次改完（Grab 與「幾公里」），其餘數字不動。
+- [x] `blocks[9]`：第一段結尾那句改寫；第二段（三個市集）原文一字不改。
+- [x] 確認 `blocks[7]`（image）的 `alt`／`description` 與 `apps/web/public/guides/chiang-mai-3-day-itinerary/diagram-1.svg` 沒有這三句話（2026-09-20 兩處都確認過沒有），所以圖與圖說不用改。
 - [ ] lint、pytest、PR；部署後匯入。
 
 ## How to verify
@@ -66,3 +66,15 @@ uv run python -m app.cli guides-links-check --locale zh-TW
 - ⚠️ `blocks[9]` 那一句的改寫**也寫在「既有文章補連第八批」票的合併編輯裡**：規格 #11 與 #14 要求把 `blocks[9]` 整塊改成 `rich_paragraph`、插兩個 inline，並在同一次把這句改掉。**哪一張票先做就在那張做完**，另一張把該項打勾並註明；兩張票 scope 重疊、不能同時 claim。
 - `blocks[26]`（只含 `thailand-entry-2026-tdac` inline 的 rich_paragraph，2027-01-01 整塊刪）與 `blocks[29]` 的 `foods?city=chiang-mai`（不是錯）都**不在**這張票。
 - 「柴迪隆寺」那個譯名問題在另一篇（`chiang-mai-old-city-slow-day`），票 `2026-09-20-chiang-mai-old-city-chedi-luang`；本篇正文與 `blocks[7]` 已經寫「契迪龍寺」，不用改。
+- 2026-09-30 (claude-opus-5-5): re-read all three pages that day. Grab:
+  "Upfront pricing ... (excluding tolls and surcharges) before you book"; TAT
+  Tha Phae Gate: チェンマイ国際空港から車で約15分; TAT temple manners: 場所によっては
+  腰巻などを有料で借りられる ... 入場を断られることも.
+- The Grab sentence also lost "深夜與雨天加價", which had no source either; it
+  now says the app shows the fare before booking, excluding tolls and
+  surcharges. The temple sentence keeps TAT's warning that unsuitable clothing
+  can be refused.
+- Verified the shared facts are byte-identical (40/60 baht, gate 12,
+  06:00-23:30, the three markets, "約 10 分鐘"); every other block unchanged;
+  the diagram has none of the three phrases. Sources now 20 (the per-locale cap).
+- Lint 0 errors; content pack tests green. Left unticked: production import.

@@ -5,6 +5,7 @@ import path from "node:path";
 import test from "node:test";
 
 import { sandbox } from "../core/fixtures/load.mjs";
+import { pinBranding, validateBranding } from "../core/branding.mjs";
 import { writeLanguages } from "../core/stages.mjs";
 import { captionsItem, checkPackage, descriptionsItem, disclosureItem, filesItem, listFiles, PACKAGE_ITEM_IDS, packageFiles, packageReport, readPackageReport, skipReason } from "./check.mjs";
 
@@ -127,6 +128,33 @@ test("readPackageReport reads upload/ and compares final.mp4 with the final gate
   const none = await readPackageReport(path.join(box.work, "missing"));
   assert.equal(none.report.final_sha256, null);
   assert.ok(none.report.items.every((item) => !item.ok));
+});
+
+test("an unchanged approved final cannot publish a package with a stale brand binding or changed pin", async () => {
+  const box = sandbox();
+  const upload = path.join(box.workdir, "upload");
+  mkdirSync(path.join(upload, "captions"), { recursive: true });
+  const final = Buffer.from("branded approved cut");
+  writeFileSync(path.join(upload, "final.mp4"), final);
+  writeFileSync(path.join(upload, "captions", "zh-TW.srt"), "1\n00:00:05,000 --> 00:00:06,000\nx\n");
+  writeFileSync(path.join(upload, "description.zh-TW.txt"), "title\n\nbody\n");
+  writeLanguages(box.workdir, { locales: {} });
+  const selection = validateBranding({ schema_version: 1, id: "v1", intro: { file: "intro.mp4", sha256: "a".repeat(64), frames: 150 }, outro: { file: "outro.mp4", sha256: "b".repeat(64), frames: 90 } }, { base: box.workdir });
+  pinBranding(box.workdir, selection);
+  writeFileSync(path.join(box.workdir, "checks.json"), JSON.stringify({ branding: { hash: selection.hash, intro_frames: 150, outro_frames: 90 } }));
+  writeFileSync(path.join(box.workdir, "approvals.json"), JSON.stringify({ approvals: [{ gate: "final", file: "final.mp4", sha256: sha(final), approved_at: "2026-09-30T00:00:00Z" }] }));
+  const record = { ...metadata(), final_sha256: sha(final), thumbnail: null, localizations: {}, captions: ["captions/zh-TW.srt"] };
+  const metadataPath = path.join(upload, "metadata.json");
+  writeFileSync(metadataPath, JSON.stringify(record));
+  const unbound = await readPackageReport(box.workdir);
+  assert.equal(unbound.report.ok, false);
+  assert.match(unbound.report.items[0].detail, /selected and applied branding/);
+  writeFileSync(metadataPath, JSON.stringify({ ...record, branding_hash: selection.hash }));
+  assert.equal((await readPackageReport(box.workdir)).report.ok, true);
+  pinBranding(box.workdir, validateBranding({ ...selection, hash: undefined, intro: { ...selection.intro, sha256: "d".repeat(64) } }));
+  const changed = await readPackageReport(box.workdir);
+  assert.equal(changed.report.ok, false);
+  assert.match(changed.report.items[0].detail, /selected and applied branding/);
 });
 
 test("with the owner's choice, descriptions and captions are checked for zh-TW and the chosen locales, read from languages.json", async () => {

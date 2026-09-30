@@ -16,9 +16,10 @@ import { parseArgs } from "node:util";
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { AutomationError, automationClient } from "../automation/client.mjs";
 import { GATES, approvalState, approve, readApprovals, sha256File } from "../core/approvals.mjs";
+import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
 import { isCompilation } from "../core/compilation.mjs";
 import { hasCast, illustrated, isDrama, shotScenes } from "../core/drama.mjs";
-import { atomicWrite, docDir, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
+import { atomicWrite, docDir, isInside, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { chosenLocales, dubRole, dubsForUpload, LANGUAGES_FILE, readLanguages } from "../core/stages.mjs";
 import { ARTIFACTS, loadProject, pipelineStatus } from "../core/state.mjs";
 import { narrativeHash, scriptScenes, writeScreenplay } from "../core/screenplay.mjs";
@@ -377,7 +378,7 @@ async function nextGate(places, workdir, doc) {
   return confirmed ? null : "publish";
 }
 
-async function submission(gate, { ctx, request, project, workdir, dir, flags = [] }) {
+async function submission(gate, { ctx, request, project, workdir, dir, flags = [], manualReview = false }) {
   const { doc } = project;
   const slug = doc.slug;
   if (gate === "outline") {
@@ -444,15 +445,32 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
   if (gate === "final") {
     const file = path.join(workdir, ARTIFACTS.video);
     const sha = await sha256File(file);
+    const bodyTimeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
+    const checks = readJson(path.join(workdir, ARTIFACTS.checks), null) ?? {};
+    const compilation = isCompilation(doc);
+    const applied = appliedBranding(checks);
+    const rebuild = compilation ? "compile" : "assemble";
+    if (!bodyTimeline) throw new UsageError(`timeline.json is missing; run ${rebuild} before review-push --gate final`);
+    if (!brandingCurrent(checks, readBranding(workdir))) throw new UsageError(`final.mp4 does not match the selected branding; run ${rebuild} before review-push --gate final`);
+    if (applied) {
+      if (applied.body_frames !== bodyTimeline.total_frames
+          || checks.speech_hash !== bodyTimeline.speech_hash || checks.compilation_hash !== bodyTimeline.compilation_hash) {
+        throw new UsageError(`the branded final was built for another body timeline; run ${rebuild} before review-push --gate final`);
+      }
+      const bodyFile = typeof applied.body_file === "string" && applied.body_file && !path.isAbsolute(applied.body_file) ? path.resolve(workdir, applied.body_file) : null;
+      if (!bodyFile || !isInside(bodyFile, workdir) || bodyFile === file || !existsSync(bodyFile)
+          || !/^[0-9a-f]{64}$/.test(applied.body_sha256 ?? "") || await sha256File(bodyFile) !== applied.body_sha256) {
+        throw new UsageError(`the branded final's retained body does not match checks.json; run ${rebuild} before review-push --gate final`);
+      }
+    }
+    const timeline = presentationTimeline(bodyTimeline, applied);
     // The quality check first (docs/videos/HANDS-OFF.md §自動品管): its report goes up with the
     // review, and only a report of this very final.mp4 counts; the site approves the cut on
     // arrival when every item passed and the owner's switch is on.
     const report = await qualityCheck(ctx, slug, workdir, flags);
+    if (await sha256File(file) !== sha) throw new UsageError("final.mp4 changed during the quality check; run review-push --gate final again");
     const qa = report?.final_sha256 === sha ? report : null;
     if (!qa) ctx.stdout.write(`${slug}: no quality check report for this final.mp4; the review goes up without one\n`);
-    const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
-    const checks = readJson(path.join(workdir, ARTIFACTS.checks), null) ?? {};
-    const compilation = isCompilation(doc);
     // The owner's language choice, when there is one already (docs/videos/LANGUAGES.md).
     const languages = readLanguages(workdir);
     const { metadata } = composeMetadata({ doc, timeline, translations: project.translations, pack: project.pack, locales: chosenLocales(languages, "metadata") });
@@ -464,7 +482,7 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     // The dub tracks made so far go up beside the cut, so the owner can hear them on the site
     // (docs/videos/DUBS.md). Only the m4a form: it is the audio type the review store takes.
     // A compilation has none of its own: its episodes' dubs are theirs.
-    const { dubs, skipped: skippedDubs } = compilation ? { dubs: [], skipped: {} } : dubsForUpload(project, workdir, timeline.speech_hash, chosenLocales(languages, "dub") ?? undefined);
+    const { dubs, skipped: skippedDubs } = compilation ? { dubs: [], skipped: {} } : dubsForUpload(project, workdir, bodyTimeline.speech_hash, chosenLocales(languages, "dub") ?? undefined);
     const dubEntries = {};
     for (const dub of dubs) {
       const role = dub.format === "m4a" ? dubRole(dub.locale) : null;
@@ -476,13 +494,16 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     return {
       gate,
       content_sha256: sha,
-      summary: `成片 ${formatClock(Math.round(seconds))}，${qa ? qaSummary(qa) : `自動檢查${checks.ok ? "全部通過" : `有 ${(checks.problems ?? []).length} 項問題`}；${qaSummary(null)}`}${dubs.length ? `，配音 ${dubs.map((dub) => dub.locale).join("、")}` : ""}`,
+      summary: `成片 ${formatClock(Math.round(seconds))}，${qa ? qaSummary(qa) : `自動檢查${checks.ok ? "全部通過" : `有 ${(checks.problems ?? []).length} 項問題`}；${qaSummary(null)}`}${dubs.length ? `，配音 ${dubs.map((dub) => dub.locale).join("、")}` : ""}${manualReview ? "；需站主重新審看" : ""}`,
       payload: {
         duration_seconds: seconds,
         checks: { ok: Boolean(checks.ok), problems: checks.problems ?? [] },
         chapters: metadata.chapters.map((chapter) => ({ time: chapter.at, title: chapter.title })),
         metadata: { [metadata.default_language]: { title: metadata.title, description: metadata.description }, ...metadata.localizations },
-        ...(qa ? { qa } : {}),
+        ...(applied ? { branding_hash: applied.hash } : {}),
+        // The server auto-approves final only from payload.qa. This one submission keeps its
+        // machine report as evidence while explicitly requesting the owner's fresh review.
+        ...(manualReview ? { manual_review: true, manual_review_reason: applied ? "已重製頻道片頭與片尾，需站主重新審看成片與銜接；機械品管僅供參考。" : "此成片明確要求站主重新審看；機械品管僅供參考。", ...(qa ? { manual_review_qa: qa } : {}) } : qa ? { qa } : {}),
         ...(Object.keys(dubEntries).length ? { dubs: dubEntries } : {}),
         ...(compilation ? { compilation: { series: doc.compilation.series, episodes: doc.compilation.episodes, total_frames: timeline.total_frames } } : {}),
       },
@@ -776,10 +797,11 @@ async function submissions(gate, places) {
   return [await submission(gate, places)];
 }
 
-function common(args) {
-  const values = parseArgs({ args, options: { slug: { type: "string" }, workdir: { type: "string" }, gate: { type: "string" }, "report-only": { type: "boolean" } }, strict: true }).values;
+function common(args, { allowManualReview = false } = {}) {
+  const values = parseArgs({ args, options: { slug: { type: "string" }, workdir: { type: "string" }, gate: { type: "string" }, "report-only": { type: "boolean" }, "manual-review": { type: "boolean" } }, strict: true }).values;
   if (!values.slug) throw new UsageError("needs --slug");
   if (values.gate && !REVIEW_GATES.includes(values.gate)) throw new UsageError(`--gate must be one of ${REVIEW_GATES.join(", ")}`);
+  if (values["manual-review"] && (!allowManualReview || values.gate !== "final" || values["report-only"])) throw new UsageError("--manual-review requires review-push with explicit --gate final and cannot use --report-only");
   return values;
 }
 
@@ -798,7 +820,7 @@ function fail(error, ctx) {
 }
 
 export async function reviewPush(args, ctx) {
-  const values = common(args);
+  const values = common(args, { allowManualReview: true });
   const dir = docDir(values.slug, ctx.root);
   const project = loadProject({ slug: values.slug, root: ctx.root });
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: values.slug, root: ctx.root, home: ctx.home });
@@ -829,7 +851,7 @@ export async function reviewPush(args, ctx) {
       ctx.stdout.write(`${values.slug}: reported; nothing waits for the owner right now\n`);
       return ctx.EXIT.ok;
     }
-    const bodies = await submissions(gate, { ctx, request, project, workdir, dir, flags: values.workdir ? ["--workdir", values.workdir] : [] });
+    const bodies = await submissions(gate, { ctx, request, project, workdir, dir, flags: values.workdir ? ["--workdir", values.workdir] : [], manualReview: values["manual-review"] ?? false });
     for (const body of bodies) {
       const review = await request("POST", `${values.slug}/reviews`, { json: body });
       const what = body.subject ? `${gate} (${body.subject})` : gate;

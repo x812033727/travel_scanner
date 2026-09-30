@@ -443,6 +443,64 @@ async def test_the_server_asks_a_story_the_story_s_questions_and_every_other_vid
     assert chosen.status_code == 422 and len(asked) == 4
 
 
+async def test_a_cut_short_is_not_asked_for_a_demonstration_and_a_lab_short_still_is(
+    db: async_sessionmaker[AsyncSession], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    # A 26-second highlight of a long video has no room for a worked example: on 2026-09-30
+    # twelve of them scored 0.07-0.16 on it while keeping to the stance at 0.87-0.92.
+    async with db() as session:
+        for slug, line in (("long-video-short-1", "cut"), ("receipt-lab", "lab")):
+            session.add(
+                VideoProject(
+                    slug=slug, title=slug, stage="final", format="shorts", shorts_line=line
+                )
+            )
+        await session.commit()
+    asked: list[list[str]] = []
+
+    async def ask(
+        settings: Settings,
+        redis: Any,
+        state: dict[str, Any],
+        questions: dict[str, Any],
+        client: httpx.AsyncClient | None,
+    ) -> dict[str, Any]:
+        asked.append(list(questions))
+        return _answers(**{name: ANSWERS[name] for name in questions})
+
+    monkeypatch.setattr(judging, "_ask", ask)
+    monkeypatch.setattr(automation_api, "load_runtime_settings", AsyncMock(return_value=Settings()))
+    monkeypatch.setattr(automation_api, "get_redis", lambda: object())
+    monkeypatch.setattr(automation_api, "enforce_named_rate_limit", AsyncMock())
+    url = "/api/v1/video/automation/judge/policy"
+    body = {"script": "AI 看圖很有把握，不代表它看對了。", "viewpoint": ""}
+    async with AsyncClient(transport=ASGITransport(app=_judge_app(db)), base_url="http://t") as c:
+        cut = await c.post(url, json={**body, "slug": "long-video-short-1"})
+        lab = await c.post(url, json={**body, "slug": "receipt-lab"})
+    assert asked == [["stance", "advice", "sponsored"], TUTORIAL_ASKED]
+    assert cut.status_code == 200, cut.text
+    assert cut.json() == {
+        "stance": 0.8,
+        "demo": None,
+        "advice": 0.1,
+        "sponsored": 0.2,
+        "passed": True,
+        "note": "Jev（精華）：符合立場 0.80、建議 0.10、業配 0.20，通過",
+        "questions": "cut",
+        "observation": None,
+        "disparage": None,
+    }
+    assert lab.status_code == 200 and lab.json() == TUTORIAL_VERDICT
+
+
+def test_a_cut_short_fails_on_the_tutorial_s_thresholds_and_says_which() -> None:
+    verdict = judging.read_cut_policy_answers(_answers(stance=0.5, advice=0.4, sponsored=0.1))
+    assert not verdict.passed and verdict.demo is None
+    assert verdict.note == (
+        "Jev（精華）：符合立場 0.50、建議 0.40、業配 0.10；沒過（符合立場低於 0.6；建議高於 0.3）"
+    )
+
+
 # --- a story's languages --------------------------------------------------------------------------
 
 
