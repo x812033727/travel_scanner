@@ -456,5 +456,128 @@
         "gpt-6.1-sol"
       ]
     ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent (round 1, opus)",
+    "checked_on": "2026-09-30",
+    "method": "2026-09-30T10:37:39–10:37:47Z re-fetched all four sources[] and the system card PDF with curl -sSL --compressed --max-time 90 -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' (no personal data in any request): model page 200/0 redirects/447,982 bytes, pricing 200/0/575,660, learn.chatgpt.com/docs/models 200/0/584,535, deploymentsafety gpt-6-1-sol 200/0/543,894, PDF 200/8,020,508 (48 pages via pypdf) — all byte-identical to the research agent's landing files, bodies are full text. openai.com/index/introducing-gpt-6-1-sol retried once at 10:38Z: 403, 5,141 bytes Cloudflare challenge page, not used. Visible text via html.parser (script/style/noscript/svg/template and comments removed, html.unescape, ASCII whitespace collapsed, NBSP/U+2011/U+2019 untouched) in three tag-separator variants plus a decoded RAW variant; all 45 verbatim_quote strings are contiguous substrings of at least one variant (45/45; #16 gpt-6-sol prices only in RAW, confirmed inside the tier=standard TextTokenPricingTables props, collapsedLatestRowCount 3, row [\"gpt-6-sol\",2,0.2,2.5,10]). Every claim in title, description, 4 summary items, 23 paragraphs, table cells and caption, image caption and research diagram nodes, 7 FAQ answers, callout and 4 source titles was matched sentence by sentence; negative sentences checked by word-boundary search (Taiwan 0 in all four pages and the PDF; retire/deprecat only in GPT-5.5 / Codex-Spark context and nav).",
+    "claims_checked": 131,
+    "verdict": "ok",
+    "edits_to_the_pack": [
+      {
+        "where": "paragraph 2",
+        "before": "OpenAI 的公告頁這次讀不到，所以公告裡的評測分數一律不寫。",
+        "after": "這一篇根據 OpenAI 的 API 模型頁、價目表、ChatGPT 與 Codex 說明文件的 Models 頁與 system card 增補整理……評測只寫 system card 的安全與對齊評測",
+        "why": "coordinator ruling: fetch log is not reader content; replaced with the scope of the four sources"
+      },
+      {
+        "where": "paragraph 1",
+        "before": "（未交代 GPT-6 Sol 去留與首發方案）",
+        "after": "加「但沒有寫 GPT-6 Sol 何時停用」與首發方案、Free/Go 不含",
+        "why": "DELTA-4-9 item 4 and DELTA-4-7 item 14: first paragraph must say how the old model is handled and who can use it; both from learn.chatgpt.com/docs/models"
+      },
+      {
+        "where": "summary 3, table caption, FAQ 5",
+        "before": "輸入超過 272K tokens 的請求另計較高價格（接在 Astra 價格之後，讀起來也適用 Astra）",
+        "after": "限定為 GPT-6.1 Sol；表格與 FAQ 改寫「價目表另列較高的長脈絡價格」",
+        "why": "272K is printed only on the GPT-6.1 Sol model page; the pricing page prints Short/Long context columns without a threshold for gpt-6-astra"
+      },
+      {
+        "where": "section 2 paragraph 1",
+        "before": "以牌價換算（這是編輯換算，不是 OpenAI 印出的倍數）",
+        "after": "由編輯以牌價換算",
+        "why": "OpenAI's RSS description does print 'one-fifth of Astra’s standard API input and output token prices'; the parenthesis was false. RSS is not in sources[], so it stays an editorial conversion, once, input and output only"
+      },
+      {
+        "where": "section 2 paragraph 2 and table caption",
+        "before": "價目表預設只顯示三列，GPT-6 Sol 要展開才看得到；它的長脈絡價格這次沒讀到，不寫。／取自價目表展開後的完整清單",
+        "after": "同一張價目表的 All models 清單裡……／GPT-6 Sol 列在價目表的 All models 清單",
+        "why": "verification detail readers do not need (DELTA-4-7 item 14); kept only the visible label a reader clicks"
+      },
+      {
+        "where": "section 2 paragraph 3",
+        "before": "計價規則寫在模型頁：……寫入快取是 1.25 倍",
+        "after": "GPT-6.1 Sol 的模型頁寫明計價規則：……寫入快取是未快取輸入價的 1.25 倍",
+        "why": "source: 'Cache writes are billed at 1.25x the uncached input token rate'; rules are printed on the 6.1 Sol page only"
+      },
+      {
+        "where": "section 3 paragraph 4, FAQ 7",
+        "before": "以 Taiwan 一詞在這四頁搜尋，查核到 2026 年 9 月 30 日未見……／答案只能是官方頁沒有寫",
+        "after": "截至 2026 年 9 月 30 日，這幾份文件都沒有寫……／列出四份文件",
+        "why": "negative sentence limited to these pages and date; search method is not reader content; 'official pages' was broader than what was read"
+      },
+      {
+        "where": "section 3 paragraph 2",
+        "before": "文件只點名這兩種方案，Business 怎麼處理這一頁沒有寫。",
+        "after": "Business 是否也要管理員啟用，文件沒有寫。",
+        "why": "source only says 'For Enterprise and Edu, the plan keeps GPT-6.1 Sol off by default until an administrator enables it'; Business is in the rollout list"
+      },
+      {
+        "where": "section 4 paragraph 1",
+        "before": "……不是另一份獨立的 system card。",
+        "after": "（刪）",
+        "why": "the PDF's own title is 'GPT-6.1 Sol System Card' / 'Addendum: GPT-6.1 Sol System Card'; the negative is an inference the source does not state"
+      },
+      {
+        "where": "section 4 paragraph 2",
+        "before": "……這一篇也不寫攻擊細節。",
+        "after": "（刪）",
+        "why": "editorial process, not content"
+      },
+      {
+        "where": "section 4 paragraph 3",
+        "before": "（這一頁沒有細寫申請與對象）",
+        "after": "Daybreak 的開放細節要看 GPT-6 Astra system card",
+        "why": "source: 'For more details on Daybreak access, please see the Trusted Access for Cyber section in the GPT-6 Astra card.'"
+      },
+      {
+        "where": "section 4 paragraph 4",
+        "before": "在程式工作的不實陳述評測上，比例是",
+        "after": "在程式工作的欺騙評測（Coding Deception）上，不實陳述的比例是",
+        "why": "the 1.50%/0.51%/1.30% sentence is in 7.4.1 Coding Deception under 7.4 Avoiding Deceptive Interactions with Users; name the evaluation"
+      },
+      {
+        "where": "section 5 paragraph 3",
+        "before": "之後會改",
+        "after": "之後可能改",
+        "why": "prediction not in any source; callout already says 可能改動"
+      },
+      {
+        "where": "description",
+        "before": "首發可用",
+        "after": "在首發推出範圍內",
+        "why": "source: 'The GPT-6.1 Sol launch rollout includes …' plus 'Availability depends on the rollout'"
+      },
+      {
+        "where": "summary 4",
+        "before": "列為 Critical／High",
+        "after": "視為 Critical／High",
+        "why": "source: 'we are treating GPT-6.1 Sol as Critical …'"
+      },
+      {
+        "where": "FAQ 2",
+        "before": "這幾頁沒有寫",
+        "after": "OpenAI 的 API 模型頁、價目表與說明文件的 Models 頁沒有寫",
+        "why": "FAQ answers stand alone; name the pages the negative covers"
+      }
+    ],
+    "research_record_edits": [
+      "unverified_or_excluded[1] (the one-fifth item): 'cache writes 2.50 vs 12.50 is not one-fifth' was arithmetic error — 2.50×5 = 12.50 is one-fifth; cached input 0.10 vs 1.00 is one-tenth. Corrected; conclusion (write only input and output) unchanged because the RSS sentence covers input and output only.",
+      "must_not_write[2]: same arithmetic error corrected."
+    ],
+    "checked_and_correct": [
+      "Pricing, Standard short context, 12 cells: gpt-6.1-sol 2.00/0.10/2.50/10.00 (visible text and model page), gpt-6-astra 10.00/1.00/12.50/50.00 (visible), gpt-6-sol 2/0.2/2.5/10 (tier=standard component props, whose first row gpt-6-astra 10/1/12.5/50 matches the visible short-context cells).",
+      "Model page: near-Astra positioning attributed to OpenAI; 'Compare it with Astra on your tasks'; 1,050,000 / 128,000 / Apr 30, 2026; Text, Image in, Text out; 5%, 1.25x, 272K 2x/1.5x, Fast 2x, Batch/Flex 50% lower, Regional +10%; US and EU data residency, no Fast with EU.",
+      "learn.chatgpt.com: rollout list Plus, Pro, Business, Enterprise, Edu; Codex desktop app and CLI; Work web and mobile; Enterprise/Edu off by default until an administrator enables it; Free and Go not included at launch; Standard and Fast at launch, Ultrafast coming later; GPT-5.6 trio remain available during the rollout; aren’t available in Chat; previous Sol model; permissions sentence.",
+      "System card: Published September 29, 2026; addendum title; 'GPT-6.1 is the latest model family in the GPT-6 series'; Preparedness Critical cyber / High bio-chem / below High AI self-improvement (section 9 wording); same safeguards stack as Astra; SAG and leadership determination attributed; Daybreak phased; evaluation-environment caveat; hallucination 'similarly low' (6.1 Sol vs 6 Sol, cases flagged by users); HealthBench 'on par with GPT-6 Astra'; Coding Deception 1.50%/0.51%/1.30% with the 'deliberately selected' caveat.",
+      "Boundaries: no purchase or switch advice, no recommendation-style price comparison, no capability benchmark names or scores, no 44.8%/16.1%, no attack detail, no Taiwan availability inferred, no 'replaces/retires GPT-6 Sol', no '本文', exactly one 五分之一 in the body, labelled as an editorial conversion.",
+      "Diagram nodes and hero_label, checked_on (2026-09-30) consistent in all four sources, paragraph 2, table caption and callout; title unchanged."
+    ],
+    "left_for_the_owner": [
+      "If the coordinator swaps the RSS item into sources[], the one-fifth sentence can be attributed to OpenAI ('input and output token prices' only) instead of an editorial conversion.",
+      "learn.chatgpt.com/docs/models still tells Plus–Edu users replacing GPT-5.5 to 'choose GPT-6 Sol (gpt-6-sol) when available', inconsistent with the 6.1 Sol recommendation on the same page; not written.",
+      "The pricing table's 'All models' label and the collapsed state are UI; re-read on publication day with the other live pages (live_data_warnings).",
+      "openai.com/index/introducing-gpt-6-1-sol still 403 at 2026-09-30T10:38Z; nothing in the article depends on it."
+    ]
   }
 }
