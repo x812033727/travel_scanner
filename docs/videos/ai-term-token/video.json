@@ -23,7 +23,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "Token 是什麼？AI 算的不是字數，是它自己的單位｜AI 名詞十分鐘",
-    "description": "Token 是什麼？這集回答 AI 到底在數什麼、為什麼同一段中文換一種編碼數量就不同，以及什麼時候該在意。\n給常把公告、文件貼給 AI 整理，看過用量或帳單卻搞不懂 token 的人；不用懂程式。\n\n用一份社團郊遊公告實際算一次：完整請求 160 個 token，只刪掉客套話和表情符號之後 104 個，省了約三分之一，而日期、費用、下雨取消都還在。同一句「週六臺北見，帶雨傘」九個字，兩種編碼分別算成 10 個和 16 個 token，所以網路流傳的字數換算常數換個編碼就失效。示範是 2026-09-30 用開源計數工具 tiktoken 0.14.0 自行計算的結果，不是任何產品介面的畫面；數字會隨編碼與工具版本改變，以你使用的服務的計數功能為準。三種該在意 token 的情況：處理長文件、重複跑的流程、看用量與帳單，輸入和輸出分開算。最後分清楚字數、上下文視窗，和同名不同物、要保密的存取權杖。\n\nAI 名詞總索引：https://mokaair.com/zh-TW/life/ai-terms-index?utm_source=youtube&utm_medium=video&utm_campaign=ai-term-token",
+    "description": "Token 是什麼？這集回答 AI 到底在數什麼、為什麼同一段中文換一種編碼數量就不同，以及什麼時候該在意。\n給常把公告、文件貼給 AI 整理，看過用量或帳單卻搞不懂 token 的人；不用懂程式。\n\n用一份社團郊遊公告實際算一次：完整請求 160 個 token，只刪掉客套話、裝飾符號和幾個贅字之後 104 個，省了約三分之一，而日期、費用、下雨取消都還在。同一句「週六臺北見，帶雨傘」九個字，兩種編碼分別算成 10 個和 16 個 token，所以網路流傳的字數換算常數換個編碼就失效。示範是 2026-09-30 用開源計數工具 tiktoken 0.14.0 自行計算的結果，不是任何產品介面的畫面；數字會隨編碼與工具版本改變，以你使用的服務的計數功能為準。三種該在意 token 的情況：處理長文件、重複跑的流程、看用量與帳單，輸入和輸出分開算。最後分清楚字數、上下文視窗，和同名不同物、要保密的存取權杖。\n\nAI 名詞總索引：https://mokaair.com/zh-TW/life/ai-terms-index?utm_source=youtube&utm_medium=video&utm_campaign=ai-term-token",
     "tags": [
       "token",
       "詞元",
@@ -60,8 +60,8 @@
       "checked_on": "2026-09-30"
     },
     {
-      "title": "PyPI：tiktoken（示範用的開源計數工具，0.14.0）",
-      "url": "https://pypi.org/project/tiktoken/",
+      "title": "PyPI：tiktoken（示範用的開源計數工具，0.14.0；JSON 端點）",
+      "url": "https://pypi.org/pypi/tiktoken/json",
       "checked_on": "2026-09-30"
     }
   ],
@@ -637,7 +637,7 @@
           {
             "value": "≈ 4 字元",
             "label": "一個 token",
-            "note": "英文"
+            "note": "Google 自家模型"
           },
           {
             "value": "60–80 個字",
@@ -658,7 +658,7 @@
       "lines": [
         {
           "id": "tkhqe",
-          "text": "Google 對自家模型給過一個估法：一個 token，大約四個英文字元。",
+          "text": "Google 對自家模型給過一個估法：一個 token，大約四個字元。",
           "reveal": 1
         },
         {
@@ -893,7 +893,7 @@
         },
         {
           "id": "tkp01",
-          "text": "精簡版，只刪客套話和裝飾，變成八十六個，或一百一十五個。",
+          "text": "精簡版，刪掉客套話、裝飾和幾個贅字，變成八十六個，或一百一十五個。",
           "reveal": 1
         },
         {
