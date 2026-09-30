@@ -1,11 +1,11 @@
 ---
 id: 2026-09-30-news-scanner-keeps-a-refused-article
 title: News scanner keeps a refused article page as a feed-summary lead instead of skipping it forever
-status: open
+status: in-progress
 priority: P1
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5-5-news-4-9
+claimed_at: 2026-09-30T10:35:30Z
 created_at: 2026-09-30T10:34:32Z
 completed_at:
 branch: claude/gifted-rubin-umw5s4
@@ -48,3 +48,6 @@ again next hour, forever: no candidate is ever stored, so nobody sees the story 
 
 - The summary is not evidence: a person writes the story by hand or rejects it; the owner
   sees that it exists, which is the point.
+- Claimed with `--force` on 2026-09-30: `2026-09-27-news-evidence-excerpts-stop-at-8` (codex-p1-news,
+  status review) also lists `scanner.py`, but its PR #966 was closed unmerged on 2026-09-29, and
+  this change only touches the article-fetch failure branch of `scan_source`.
