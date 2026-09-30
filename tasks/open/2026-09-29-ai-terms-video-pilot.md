@@ -35,11 +35,14 @@ scope:
 ## Steps
 
 - [ ] 站主先在 `/admin/videos` 設定分頁存「頻道立場」（含或不含 README 提案的第 8、9 條），否則大綱關卡不會自動過。
-- [ ] token：`terms.json` 改 `planned` → 企劃（`prompts/planner.md`，IDENTITY 附 README 的骨架與配方 A）→ `review-push --gate outline` → 撰稿、查核、聽眾審稿 → `tts` → `check-audio` → `keyframes` → `render` → `assemble` → `captions` → `qa` → `package`。
-- [ ] 上下文視窗：同上，配方 B；`source_guide: ai-context-window-explained`，影片代號 `ai-term-context-window`。
-- [ ] RAG：同上，配方 C；鄰近名詞連到 token 與上下文視窗兩集。
-- [ ] 三集的英文詞補進 `docs/videos/lexicon.json`（RAG、Context Window、tokenizer…），試聽確認。
-- [ ] 每集交 `shorts.json` 兩支（一句話定義、最常見的誤解），`node tools/video/shorts/cli.mjs from-episode --slug <slug> --check` 過。
+- [x] token：`terms.json` 改 `planned`、企劃（brief.md，配方 A）、撰稿、兩輪查核、加長與聽眾審稿都做完（2026-09-30，lint 零錯誤）。
+- [ ] token：`review-push --gate outline`（要站主先存頻道立場）→ `tts` → `check-audio` → `keyframes` → `render` → `assemble` → `captions` → `qa` → `package`（要有工具權杖與 ffmpeg 的機器或主機工人）。
+- [x] 上下文視窗：brief（配方 B）、撰稿、兩輪查核、加長與聽眾審稿做完；`source_guide: ai-context-window-explained`，影片代號 `ai-term-context-window`。
+- [ ] 上下文視窗：大綱關卡起的產線步驟，同 token。
+- [x] RAG：brief（配方 C）、撰稿、兩輪查核（第一輪改 4 處所以有第二輪）、加長與聽眾審稿做完；鄰近名詞連到 token 與上下文視窗（兩集都還沒上架，片尾先指文章）。
+- [ ] RAG：大綱關卡起的產線步驟，同 token。
+- [x] 字典：只需要加 `RAG`（R A G）；其他英文只在字卡。試聽要確認：RAG（業界也有唸成一個字的）、Hugging Face 連唸、「二〇二五」的「〇」。
+- [x] 每集 `shorts.json` 兩支，撰稿時用 `episodeShortsProblems` 驗過；`from-episode --check` 要等關鍵影格畫好才跑得了。
 - [ ] 把數字寫回 README。
 
 ## How to verify
