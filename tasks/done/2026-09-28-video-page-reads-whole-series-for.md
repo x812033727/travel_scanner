@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-page-reads-whole-series-for
 title: 影片頁為了找單集漫劇的故事聖經，每分鐘重讀整部作品
-status: in-progress
+status: done
 priority: P3
 area: web
 owner: claude-fable-5-1-video-page
 claimed_at: 2026-09-30T03:49:48Z
 created_at: 2026-09-28T15:24:26Z
-completed_at:
+completed_at: 2026-09-30T04:02:52Z
 branch: claude/video-page-series-read-once
 depends_on: []
 scope:
