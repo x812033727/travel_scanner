@@ -1,7 +1,7 @@
 ---
 id: 2026-09-29-ai-terms-video-pilot
 title: AI 名詞影片系列：前三集試片（token、上下文視窗、RAG）
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: claude-fable-5-1
@@ -76,4 +76,3 @@ python3 -c "import json;d=json.load(open('docs/videos/ai-terms/terms.json'));pri
   5. `tts` 後把三集實際長度、`keyframes` 的張數與費用、站主花的時間填回 README §成本與產能，並依實際語速修 §站主的決定 的長度一行。
   6. 上架後 `terms.json` 三列改 `published`、填 `video_id`，其他集的片尾「下一個名詞」改指影片。
 - 查核者留下、要站主決定的幾件事：token 集 `mu7he`「存取權杖要保密」比文章「可能需要保密」強；RAG 集說明欄現在含六段示範規章與三題排名（因為文章沒有），站主若把示範補進文章可改回指文章；三集 brief 的站主觀點都是提案；「今年一月失效」「去年停辦」等說法只在 2026 年成立。
-
