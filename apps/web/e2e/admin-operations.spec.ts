@@ -219,6 +219,8 @@ async function isolateAdmin(page: Page, role = "owner") {
       response = { topics: [] };
     } else if (path === "/admin/videos") {
       response = [];
+    } else if (path === "/admin/videos/browse") {
+      response = { items: [], total: 0, page: 1, pages: 0, facets: { category: [], state: [] } };
     } else if (path === "/admin/video-youtube") {
       response = { configured: false, linked: false, audited: false };
     } else if (path === "/admin/catalog-review") {

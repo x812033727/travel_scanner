@@ -10,7 +10,7 @@ READ: `<VIDEO_DOCS>/video.json` (the script, for the line's neighbours), `<VIDEO
 
 ## Rules
 
-- Rewrite ONLY these sentences' wording so the voice reads them unambiguously: swap the word that gets misheard for a plainer one with the same meaning (on 2026-09-26 the fixes were 「和」→「跟」, a sentence-final 「答」→「回答」, 「旗艦」→「旗艦模型」), split a run of same-sound characters, keep the sentence about as long.
+- Rewrite ONLY these sentences' wording so the voice reads them unambiguously: swap the word that gets misheard for a plainer one with the same meaning (for example 「和」→「跟」, a sentence-final 「答」→「回答」, 「旗艦」→「旗艦模型」), split a run of same-sound characters, keep the sentence about as long.
 - Keep every number, price, date and version exactly as written; keep every Latin-script word and every product or proper name spelled exactly the same, the dictionary's terms included; keep the meaning. Add no fact and no filler.
 - Leave a line alone when `heard` already says the same thing in other characters.
 - When `previous_problems` lists rewrites of yours the check refused last round, do not repeat them.

@@ -14,12 +14,12 @@ metadata:
 
 ## 不變的規矩
 
-1. **CatchTable、Naver、Google、Instagram 只當發現與定位，不當官方來源；名次只留在候選檔。** 進目錄優先要官方頁（觀光局／政府／店家官網）講這家分店；都沒有時（2026-09-23 起）可用 `merchant_platform`：這個 alias 自己的 CatchTable 店頁或 `/info` 分頁，或 `/info`「網站」欄指向的社群帳號（候選檔要記 `catchtable.website`），公開頁另標「平台／社群登記」。
+1. **CatchTable、Naver、Google、Instagram 只當發現與定位，不當官方來源；名次只留在候選檔。** 進目錄優先要官方頁（觀光局／政府／店家官網）講這家分店；都沒有時可用 `merchant_platform`：這個 alias 自己的 CatchTable 店頁或 `/info` 分頁，或 `/info`「網站」欄指向的社群帳號（候選檔要記 `catchtable.website`），公開頁另標「平台／社群登記」。
 2. **只有渲染後看到店家自己的訂位控制項才算可訂位**（`service-tab-DINING` 點開有日期選擇），候位、優先入場都存 `disabled`。
 3. **兩個瀏覽器都開不了 Naver**（Anthropic 端安全政策，內建瀏覽器與 Chrome 同樣拒絕），不繞道 curl；Naver 精準頁由站主在自己的 Naver 地圖依地址挑選、
    貼短網址，session 只讀 `naver.me` 的轉址標頭取 id。經營者官網自己放的 Naver 短網址可以直接用。
 4. **座標只用耐久來源**：官方頁 JSON-LD 的 `GeoCoordinates`（`official_tourism`）或 OpenStreetMap 上店家或同門牌建物的節點（`admin_verified`，來源網址是節點永久連結）。
-   座標佇列自 2026-09-19 起不寫座標，Google 候選只作比對。
+   座標佇列不寫座標，Google 候選只作比對。
 5. **正式站每一步先 dry-run、站主在對話裡同意後才 `--apply`；後台的連續寫入與核准在 auto 模式會被分類器擋**，用有選項的提問列出動作，站主同意後同一動作放行，
    或先切 Manual。被擋不要換寫法重試。
 6. 抓官方頁用固定 UA `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`，任何請求不帶任何人的個資。

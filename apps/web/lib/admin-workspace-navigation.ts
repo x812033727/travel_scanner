@@ -55,6 +55,16 @@ export function adminNavigate(url: URL, replace = false) {
   return true;
 }
 
+/** Writes several query keys in one history entry, so a filter change and its page reset are one step back. */
+export function updateAdminQuery(changes: Record<string, string>) {
+  const target = new URL(window.location.href);
+  for (const [key, value] of Object.entries(changes)) {
+    if (value) target.searchParams.set(key, value);
+    else target.searchParams.delete(key);
+  }
+  adminNavigate(target);
+}
+
 /** URL-backed state for legacy panels that predate the workspace tab router. */
 export function useAdminQueryState<T extends string>(
   key: string,
