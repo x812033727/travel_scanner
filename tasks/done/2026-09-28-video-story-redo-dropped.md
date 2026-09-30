@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-story-redo-dropped
 title: 放棄的故事可以重做一次
-status: in-progress
+status: done
 priority: P3
 area: api
 owner: claude-opus-5-5-story-redo
 claimed_at: 2026-09-30T15:40:28Z
 created_at: 2026-09-28T14:30:22Z
-completed_at:
+completed_at: 2026-09-30T16:02:41Z
 branch: claude/story-redo-dropped
 depends_on:
   - 2026-09-28-video-story-admin-import-api
