@@ -68,3 +68,8 @@ only blocks 4 and 14, two items in block 5, the block 19 map caption,
 and the source SVG heading/layout. The independent visual review counted all
 48 original text nodes and found no remaining text-to-text collision or canvas
 overflow after the layout patch.
+
+- 2026-09-30 (claude-opus-5-5, owner-approved `--force` on
+  `2026-09-20-lodging-tax-wording-site-wide`): in this ticket's packs the zh-TW
+  title, description and body now say 住宿稅 where they said 宿泊稅 or 宿泊税.
+  No number changed; Japanese official page names in `sources` are unchanged.
