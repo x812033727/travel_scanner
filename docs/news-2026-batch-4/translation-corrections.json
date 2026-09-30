@@ -20830,5 +20830,293 @@
     "old": "평가는 Anthropic 자체 것입니다",
     "new": "평가는 Anthropic 자체 평가입니다",
     "reason": "「자체 것」不是自然的韓文（자체 需接名詞），改成「자체 평가」，意思與原稿「評測是 Anthropic 自己的」相同。"
+  },
+  {
+    "slug": "ai-news-claude-fable-5-access-20260609",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "假若软件架构欠缺备援节点",
+    "new": "假若软件架构欠缺冗余节点",
+    "reason": "zh-CN「备援」依語境替換：軟體架構節點，改用大陸慣用的「冗余节点」"
+  },
+  {
+    "slug": "ai-news-claude-opus-55-20260922",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "API 则默认不开，需自行设置备援。",
+    "new": "API 则默认不开，需自行设置回退机制。",
+    "reason": "zh-CN「备援」依語境替換：模型自動換模型（fallback），改為「回退机制」"
+  },
+  {
+    "slug": "ai-news-claude-opus-55-20260922",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "（AutomationBench 除外：它没开备援，防护介入就算失败）",
+    "new": "（AutomationBench 除外：它没开回退机制，防护介入就算失败）",
+    "reason": "zh-CN「备援」依語境替換：評測時的模型回退設定，改為「回退机制」"
+  },
+  {
+    "slug": "ai-news-claude-opus-55-20260922",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "需要客户自己选择并设置备援。",
+    "new": "需要客户自己选择并设置回退机制。",
+    "reason": "zh-CN「备援」依語境替換：FAQ 講 API 的自動換模型（fallback），改為「回退机制」"
+  },
+  {
+    "slug": "ai-news-gpt-6-sol-luna-20260923",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "约 40% 任务改用 Opus 5 备援的成本",
+    "new": "约 40% 任务改由 Opus 5 回退处理的成本",
+    "reason": "zh-CN「备援」依語境替換：模型回退：任務改由 Opus 5 接手，改為「回退处理」"
+  },
+  {
+    "slug": "ai-news-nvidia-rubin-20260105",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "是否具备优雅降级的备援方案",
+    "new": "是否具备优雅降级的后备方案",
+    "reason": "zh-CN「备援」依語境替換：應用的降級方案，改為「后备方案」"
+  },
+  {
+    "slug": "codex-agents-md-scopes",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "最后才是已设定的备援档名；",
+    "new": "最后才是已设定的备用文件名；",
+    "reason": "zh-CN「备援」依語境替換：Codex 設定的 fallback 檔名（project_doc_fallback_filenames），改為「备用文件名」"
+  },
+  {
+    "slug": "codex-agents-md-scopes",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "没有另外设定备援档名时",
+    "new": "没有另外设定备用文件名时",
+    "reason": "zh-CN「备援」依語境替換：Codex 的 fallback 檔名設定，改為「备用文件名」"
+  },
+  {
+    "slug": "codex-agents-md-scopes",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "不在备援清单内的 override.saved.md",
+    "new": "不在备用清单内的 override.saved.md",
+    "reason": "zh-CN「备援」依語境替換：Codex 的 fallback 檔名清單，改為「备用清单」"
+  },
+  {
+    "slug": "codex-agents-md-scopes",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "备援档名和上限属设定项",
+    "new": "备用文件名和上限属设定项",
+    "reason": "zh-CN「备援」依語境替換：Codex 的 fallback 檔名設定，改為「备用文件名」（連結前的純文字，不是文章標題連結）"
+  },
+  {
+    "slug": "tech-news-2026-index",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "中华电信改开微波通信备援的经过",
+    "new": "中华电信改开微波备用通信的经过",
+    "reason": "zh-CN「备援」依語境替換：海纜中斷改走微波的敘述（非引文），與馬祖海纜文章一致改為「微波备用通信」"
+  },
+  {
+    "slug": "tech-news-taiwan-matsu-cable-20260623",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "马祖通信备援现况",
+    "new": "马祖通信备用线路现况",
+    "reason": "zh-CN「备援」依語境替換：海纜冗餘：文章標題本身（title 欄位），其他文章的連結文字留給協調者對齊"
+  },
+  {
+    "slug": "tech-news-taiwan-matsu-cable-20260623",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "中断与备援经过",
+    "new": "中断与备用线路启用经过",
+    "reason": "zh-CN「备援」依語境替換：海纜冗餘：描述裡的中斷與備援經過"
+  },
+  {
+    "slug": "tech-news-taiwan-matsu-cable-20260623",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "代表四乡之间的微波备援",
+    "new": "代表四乡之间的微波备用通信",
+    "reason": "zh-CN「备援」依語境替換：海纜冗餘：hero 圖 alt 裡的微波備援"
+  },
+  {
+    "slug": "tech-news-taiwan-matsu-cable-20260623",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "中华电信改开微波通信备援，",
+    "new": "中华电信改开微波备用通信，",
+    "reason": "zh-CN「备援」依語境替換：海纜冗餘：重點摘要裡改開微波（非引文）"
+  },
+  {
+    "slug": "tech-news-taiwan-matsu-cable-20260623",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "东引全断：备援实际上怎么运作",
+    "new": "东引全断：备用线路实际上怎么运作",
+    "reason": "zh-CN「备援」依語境替換：海纜冗餘：小標"
+  },
+  {
+    "slug": "tech-news-taiwan-matsu-cable-20260623",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "备援系统实际被派上用场的例子",
+    "new": "备用线路实际被派上用场的例子",
+    "reason": "zh-CN「备援」依語境替換：海纜冗餘：正文敘述（非引文）"
+  },
+  {
+    "slug": "tech-news-taiwan-matsu-cable-20260623",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "依标准作业程序开启微波通信备援",
+    "new": "依标准作业程序开启微波备用通信",
+    "reason": "zh-CN「备援」依語境替換：海纜冗餘：正文轉述，不在引號內"
+  },
+  {
+    "slug": "tech-news-taiwan-matsu-cable-20260623",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "无法使用微波通信备援。",
+    "new": "无法使用微波备用通信。",
+    "reason": "zh-CN「备援」依語境替換：海纜冗餘：正文轉述，不在引號內（與上一筆同一字串的第二處）"
+  },
+  {
+    "slug": "tech-news-taiwan-matsu-cable-20260623",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "海缆之外还有微波备援。",
+    "new": "海缆之外还有微波备用通信。",
+    "reason": "zh-CN「备援」依語境替換：海纜冗餘：FAQ 回答"
+  },
+  {
+    "slug": "tech-news-taiwan-matsu-cable-20260623",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "改走微波通信备援后",
+    "new": "改走微波备用通信后",
+    "reason": "zh-CN「备援」依語境替換：海纜冗餘：FAQ 回答（非引文）"
+  },
+  {
+    "slug": "tech-news-taiwan-matsu-cable-20260623",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "曾经发生过的中断与备援。",
+    "new": "曾经发生过的中断与备用线路启用。",
+    "reason": "zh-CN「备援」依語境替換：海纜冗餘：文末說明，與描述的「中断与备用线路启用」一致"
+  },
+  {
+    "slug": "tech-news-taiwan-matsu-cable-20260623",
+    "locale": "zh-CN",
+    "file": "research",
+    "old": "台马海缆与微波备援",
+    "new": "台马海缆与微波备用通信",
+    "reason": "zh-CN「备援」依語境替換：海纜冗餘：hero_label（11 字，≤ 15）"
+  },
+  {
+    "slug": "tech-news-taiwan-matsu-cable-20260623",
+    "locale": "zh-CN",
+    "file": "research",
+    "old": "台湾—马祖通信的两层备援",
+    "new": "台湾—马祖通信的两层备份",
+    "reason": "zh-CN「备援」依語境替換：海纜冗餘：diagram.title（12 字，≤ 25）"
+  },
+  {
+    "slug": "tech-news-taiwan-matsu-cable-tm4-20260918",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "三路由备援与 1.9 Tbps",
+    "new": "三路由冗余与 1.9 Tbps",
+    "reason": "zh-CN「备援」依語境替換：海纜冗餘：文章標題本身（title 欄位），其他文章的連結文字留給協調者對齊"
+  },
+  {
+    "slug": "tech-news-taiwan-matsu-cable-tm4-20260918",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "代表微波备援",
+    "new": "代表微波备用通信",
+    "reason": "zh-CN「备援」依語境替換：海纜冗餘：hero 圖 alt"
+  },
+  {
+    "slug": "tech-news-taiwan-matsu-cable-tm4-20260918",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "上半年的中断备援经过",
+    "new": "上半年的中断与备用线路启用经过",
+    "reason": "zh-CN「备援」依語境替換：海纜冗餘：與馬祖海纜文章描述用字一致"
+  },
+  {
+    "slug": "tech-news-taiwan-matsu-cable-tm4-20260918",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "备援怎么叠起来：",
+    "new": "冗余怎么叠起来：",
+    "reason": "zh-CN「备援」依語境替換：海纜冗餘：小標，三層架構用「冗余」"
+  },
+  {
+    "slug": "tech-news-taiwan-matsu-cable-tm4-20260918",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "三路由之外还有两层备援：",
+    "new": "三路由之外还有两层备份：",
+    "reason": "zh-CN「备援」依語境替換：海纜冗餘：微波與衛星兩層，用「备份」"
+  },
+  {
+    "slug": "tech-news-taiwan-matsu-cable-tm4-20260918",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "实际发生过的中断与备援经过",
+    "new": "实际发生过的中断与备用线路启用经过",
+    "reason": "zh-CN「备援」依語境替換：海纜冗餘：與 blocks/1 同一用字"
+  },
+  {
+    "slug": "tech-news-taiwan-matsu-cable-tm4-20260918",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "海缆断了要靠什么备援？",
+    "new": "海缆断了要靠什么备用线路？",
+    "reason": "zh-CN「备援」依語境替換：海纜冗餘：FAQ 問題"
+  },
+  {
+    "slug": "tech-news-taiwan-matsu-cable-tm4-20260918",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "（第二、第三、第四海缆互为备援）",
+    "new": "（第二、第三、第四海缆互为冗余）",
+    "reason": "zh-CN「备援」依語境替換：海纜冗餘：括號內是本文轉述、不在引號內，改為「互为冗余」"
+  },
+  {
+    "slug": "tech-news-taiwan-matsu-cable-tm4-20260918",
+    "locale": "zh-CN",
+    "file": "research",
+    "old": "海缆、微波、卫星三层备援",
+    "new": "海缆、微波、卫星三层冗余",
+    "reason": "zh-CN「备援」依語境替換：海纜冗餘：diagram.title（12 字，≤ 25），與小標「冗余」一致"
+  },
+  {
+    "slug": "tech-news-taiwan-matsu-cable-tm4-20260918",
+    "locale": "zh-CN",
+    "file": "research",
+    "old": "低中高轨整合备援",
+    "new": "低中高轨整合备份",
+    "reason": "zh-CN「备援」依語境替換：海纜冗餘：diagram 節點說明（8 字，≤ 17），與正文「两层备份」一致"
+  },
+  {
+    "slug": "tech-news-taiwan-matsu-cable-20260623",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "微波系统等多元异质备援",
+    "new": "微波系统等多元异构冗余",
+    "reason": "協調者：zh-CN「备援」依語境替換，不在引號內的轉述，海纜冗餘語境"
+  },
+  {
+    "slug": "tech-news-taiwan-matsu-cable-tm4-20260918",
+    "locale": "zh-CN",
+    "file": "pack",
+    "old": "”的异质备援网",
+    "new": "”的异构冗余网",
+    "reason": "協調者：zh-CN「备援」依語境替換，引號只包住三個名詞，後面的「异质备援网」是本站敘述，海纜冗餘語境"
   }
 ]
