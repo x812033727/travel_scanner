@@ -14,6 +14,7 @@ depends_on:
 scope:
   - tools/video/automation/flow.mjs
   - tools/video/automation/automation.test.mjs
+  - tools/video/automation/cli.test.mjs
   - docs/videos/AUTOMATION.md
 ---
 
@@ -51,4 +52,5 @@ npm run test:tools
   - 批次只列新勾的部件；伺服器是「後一筆只替它列到的部件說話」，所以清理前做好的部件照舊。不會蓋掉等站主的批次：`tidy.mjs` 在站上還有 pending 審核時就不清（`PENDING_REVIEW_HOLD`），清理後不會有 pending 的語言批次。沒有音軌，伺服器直接核准。
   - 送不出去：400／422（非站主類）當成內容被拒，只卡這支影片（同 `review-push` 的 lint 結束碼）；其他錯誤 `later`，下一輪再送。
 - 測試（`automation.test.mjs`，加進 scope）：用真的 `tidyRound` 清掉 `finishedVideo` 之後勾 ja 三個部件——一輪回報、沒跑任何指令、沒叫翻譯、payload 只有 ja、原因含清理日期、直接核准、下一輪不再送、en 仍是 ready；原本「上 YouTube 後才勾的語言」那個測試多驗 `tidied_at` 不存在時照舊做一批。拿掉 `tidiedLanguages` 那行時新測試會失敗（`step()` 回 null）。
+- `cli.test.mjs` 的「a tidied video is not made again…」原本把舊行為（清理後勾英文 CC，`auto` 什麼都不做、不打任何 API）寫死了，`npm run test:tools` 因此失敗；改成驗新行為（一筆 `languages` 審核、en 兩個部件 skipped、原因含 2026-10-20、沒跑任何指令、檔案仍是清掉的），`fakeSite` 多一個選用的 `reviews` 收審核與回報。這個檔也加進 scope。
 - `docs/videos/AUTOMATION.md` §清理工作區的兩句（「語言那一步要成片核准還在才動」「站上那一格會一直是製作中」）改成新行為，也加進 scope。
