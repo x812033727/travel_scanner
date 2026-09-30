@@ -17,9 +17,9 @@ c10｜歐盟：iOS、iPadOS、watchOS 不提供；macOS 與 visionOS 在帳號�
 c11｜中國大陸 Apple 帳號地區目前無法運作；「符合資格的地區」支援頁未列清單、未提台灣｜S｜2026-09-30｜eu-china, eligible-region
 c12｜裝置語言與 Siri 語言須設為同一種支援語言，目前為英文｜S｜2026-09-30｜language-tradeoff
 c13｜開通：更新後到設定點 Siri（關著先 Turn On Siri）→ Try Siri AI (Beta) → 選聲音、完成語音登錄、檢視隱私設定｜S｜2026-09-30｜how-to-enable, privacy-switches
-c14｜上述流程會加入等候名單，等待時間不一，輪到後 Siri AI 自動下載｜S｜2026-09-30｜waitlist, recap
+c14｜上述流程會加入等候名單，等待時間不一，輪到後 Siri AI 自動下載｜S｜2026-09-30｜waitlist, not-yet, recap
 c15｜Apple 稱用裝置端處理與私密雲端運算；私密雲端運算處理請求時個人資料不儲存、Apple 或任何人無法存取；外部專家可持續驗證｜N｜2026-09-30｜private-cloud, privacy-switches
-c16｜新一代 Apple Foundation Models 與 Google 及其 Gemini 模型合作打造，在裝置端與私密雲端運算伺服器上執行｜N｜2026-09-30｜private-cloud
+c16｜新一代 Apple Foundation Models 與 Google 及其 Gemini 模型合作打造，在裝置端與私密雲端運算伺服器上執行｜N｜2026-09-30｜with-gemini
 c17｜仰賴伺服器端模型的功能有每日使用限制，Siri AI 在其中；日後以付費提供更多用量（註腳「Expanded access … for a fee in the future」）｜N｜2026-09-30｜daily-limits
 c18｜ChatGPT：到 Settings > Plugins 選 App、必要時連接帳號後才能讀該服務的資訊；可在 Settings > Plugins 中斷連接（2026-09-30 驗證者更正選單名稱）｜O1｜2026-09-30｜three-assistants, two-homes, privacy-switches
 c19｜ChatGPT 連接的 App 可搜尋、參考資訊，也可「Take supported actions」如建立或更新資訊｜O1｜2026-09-30｜three-assistants
