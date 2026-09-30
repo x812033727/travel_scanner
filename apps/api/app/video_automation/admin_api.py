@@ -58,6 +58,7 @@ from app.video_automation.schemas import (
     NextDramaRequestOut,
     SeriesAction,
     SeriesActionOut,
+    SeriesBeatsRead,
     SeriesCompilationStartIn,
     SeriesCompilationStartOut,
     SeriesContextOut,
@@ -460,10 +461,26 @@ async def video_series_binge_quote(
 
 
 @admin_router.get("/series/{slug}", response_model=SeriesOut)
-async def video_series_detail(slug: str, user: ContentReader, session: Session) -> SeriesOut:
+async def video_series_detail(
+    slug: str, user: ContentReader, session: Session, beats: SeriesBeatsRead = "full"
+) -> SeriesOut:
+    """The series and every episode. ``beats=summary`` keeps only the list fields of each
+    episode's beats (a hundred whole story plans are over a megabyte); the default is whole."""
     _ = user
     try:
-        return await drama_series.series_view(session, slug)
+        return await drama_series.series_view(session, slug, beats=beats)
+    except SeriesRefused as error:
+        raise _series_refused(error) from error
+
+
+@admin_router.get("/series/{slug}/episodes/{number}", response_model=SeriesEpisodeOut)
+async def video_series_episode_detail(
+    slug: str, number: int, user: ContentReader, session: Session
+) -> SeriesEpisodeOut:
+    """One episode with its whole beats: the story the owner opens on the story page."""
+    _ = user
+    try:
+        return await drama_series.episode_detail(session, slug, number)
     except SeriesRefused as error:
         raise _series_refused(error) from error
 

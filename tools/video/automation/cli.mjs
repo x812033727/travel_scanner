@@ -96,6 +96,16 @@ async function restyle(args, ctx) {
   }
 }
 
+// How many videos the worker moves at once: the rendering, the assembly and the model calls of
+// each lane share the container's memory, so it stays small.
+export const MAX_LANES = 3;
+
+/** VIDEO_WORKER_LANES as a lane count: 1 when unset or unreadable, at most MAX_LANES. */
+export function laneCount(env = {}) {
+  const lanes = Number.parseInt(env.VIDEO_WORKER_LANES ?? "", 10);
+  return Number.isInteger(lanes) && lanes >= 1 ? Math.min(lanes, MAX_LANES) : 1;
+}
+
 export async function run(command, args, ctx) {
   if (command === "tidy") return tidy(args, ctx);
   if (command === "restyle") return restyle(args, ctx);
@@ -108,23 +118,31 @@ export async function run(command, args, ctx) {
       ctx.stdout.write("automatic drafts are off in the settings on /admin/videos; nothing to do\n");
       return EXIT.ok;
     }
-    const automation = new Automation(ctx, api, settings);
+    // Several lanes move different videos at once (VIDEO_WORKER_LANES, default 1); only the
+    // first starts anything new, and a lane never picks a video another lane is moving.
+    const busy = new Set();
+    const lanes = Array.from({ length: laneCount(ctx.env) }, (_, index) => new Automation(ctx, api, settings, { busy, secondary: index > 0 }));
+    const [automation] = lanes;
     let stopped = false;
-    for (let unit = 0; unit < (values.once ? 1 : MAX_UNITS_PER_RUN); unit++) {
-      if (stopRequested(automation.workBase)) {
-        ctx.stdout.write("STOP found; stopping between units\n");
-        stopped = true;
-        break;
+    const drive = async (lane, index) => {
+      const tag = index ? `[lane ${index + 1}] ` : "";
+      for (let unit = 0; unit < (values.once ? 1 : MAX_UNITS_PER_RUN); unit++) {
+        if (stopRequested(lane.workBase)) {
+          ctx.stdout.write(`${tag}STOP found; stopping between units\n`);
+          stopped = true;
+          break;
+        }
+        const done = await lane.step();
+        if (!done) {
+          if (!index) ctx.stdout.write("nothing to do now: every video waits on the owner, or the next draft is not due\n");
+          break;
+        }
+        ctx.stdout.write(`${tag}${done}\n`);
+        // The unit could not move and would fail the same way right now: wait for the next round.
+        if (lane.halted) break;
       }
-      const done = await automation.step();
-      if (!done) {
-        ctx.stdout.write("nothing to do now: every video waits on the owner, or the next draft is not due\n");
-        break;
-      }
-      ctx.stdout.write(`${done}\n`);
-      // The unit could not move and would fail the same way right now: wait for the next round.
-      if (automation.halted) break;
-    }
+    };
+    await Promise.all(lanes.map(drive));
     // Once a round, after the units and whether or not any moved; a STOP file stops it too.
     if (!stopped && !stopRequested(automation.workBase)) for (const line of tidyAfterRound(ctx, automation.site)) ctx.stdout.write(`${line}\n`);
     return EXIT.ok;

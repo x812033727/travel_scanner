@@ -255,7 +255,7 @@ synthesized Taiwanese-Mandarin voice. Each entry of "lines" was retaken and Jev 
 wrong: "text" is what the script says, "heard" is what the transcriber understood, "jev" is
 Jev's confidence that they say the same thing. Rewrite ONLY these sentences' wording so the
 voice reads them unambiguously: swap the word that gets misheard for a plainer one with the
-same meaning (on 2026-09-26 the fixes were 「和」→「跟」, a sentence-final 「答」→「回答」,
+same meaning (for example 「和」→「跟」, a sentence-final 「答」→「回答」,
 「旗艦」→「旗艦模型」), split a run of same-sound characters, keep the sentence about as long.
 Keep every number, price, date and version exactly as written, keep every Latin-script word and
 every product or proper name spelled exactly the same ("lexicon" lists the dictionary's terms),
@@ -486,11 +486,44 @@ export function parseAnswer(text) {
   try {
     return JSON.parse(body);
   } catch {
+    // The first complete object, whatever comes before or after it: a sentence, a second
+    // object, a stray bracket.
     const start = body.indexOf("{");
-    const end = body.lastIndexOf("}");
-    if (start >= 0 && end > start) return JSON.parse(body.slice(start, end + 1));
-    throw new SyntaxError("the model's answer is not a JSON object");
+    const end = start < 0 ? -1 : objectEnd(body, start);
+    if (end < 0) throw new SyntaxError("the model's answer is not a JSON object");
+    const rest = body.slice(end).trimStart();
+    // An object closed one brace early and followed by its next key, {"a":{…}},"b":…}: on
+    // 2026-09-30 a caption reviewer's 16,000-character worksheet ended that way before its fixes.
+    if (rest.startsWith(",")) {
+      try {
+        return JSON.parse(body.slice(start, end - 1) + rest);
+      } catch {
+        // Not that: the first object alone is the answer.
+      }
+    }
+    return JSON.parse(body.slice(start, end));
   }
+}
+
+/** Where the object opening at `start` closes (the index after its `}`), strings and escapes skipped; -1 if it never does. */
+function objectEnd(text, start) {
+  let depth = 0;
+  let inString = false;
+  for (let index = start; index < text.length; index++) {
+    const char = text[index];
+    if (inString) {
+      if (char === "\\") index++;
+      else if (char === '"') inString = false;
+    } else if (char === '"') {
+      inString = true;
+    } else if (char === "{" || char === "[") {
+      depth++;
+    } else if (char === "}" || char === "]") {
+      depth--;
+      if (depth === 0) return index + 1;
+    }
+  }
+  return -1;
 }
 
 

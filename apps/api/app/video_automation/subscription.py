@@ -33,6 +33,8 @@ class PlanRun:
 
 
 def _failure(error: AppError) -> StageFailed:
+    if error.code == "subscription_cli_outdated":
+        return StageFailed(409, "video_ai_subscription_cli_outdated", error.detail)
     if error.code == "subscription_quota_paused":
         # Nothing ran; the worker tries again on its next round, after the window moves on.
         return StageFailed(429, "video_ai_subscription_paused", error.detail, "900")
