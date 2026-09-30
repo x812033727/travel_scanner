@@ -28,7 +28,7 @@ metadata:
 | # | 做什麼 | 關卡 |
 | --- | --- | --- |
 | 1 | `git fetch origin` 後在 `apps/api` 跑 `uv run alembic heads`，拿到目前 head 的 `revision` 字串 | 只有一個 head |
-| 2 | 抄最新一支（例如 `0093_video_project_dropped.py`）的樣子，不要用 `alembic revision` 產的 mako 樣板：檔名 `NNNN_<snake>.py`、`revision` ≤ 32 字元、`down_revision` = 上一步的字串、docstring 寫 `Revision ID:`／`Revises:` 與為什麼 | `uv run pytest tests/test_schema.py -q` 綠 |
+| 2 | 抄 `migrations/versions/` 裡編號最大的那支的樣子，不要用 `alembic revision` 產的 mako 樣板：檔名 `NNNN_<snake>.py`、`revision` ≤ 32 字元、`down_revision` = 上一步的字串、docstring 寫 `Revision ID:`／`Revises:` 與為什麼 | `uv run pytest tests/test_schema.py -q` 綠 |
 | 3 | `upgrade()`：「欄位不在才加」＋ `_offline()` 分支；回填用 Core（`sa.table(..., sa.column(...))`）寫；`downgrade()` 反向 | 沒有 jsonb-only 運算子（`tests/test_migration_sql_dialect.py` 會擋） |
 | 4 | 模型同步改（`apps/api/app/models.py` 或各模組的 `models.py`），新 CHECK constraint 兩邊同名 | `uv run mypy app` |
 | 5 | 會動既有資料、改 constraint 或回填的，寫 `tests/test_migration_NNNN_<name>.py`（或在 `test_migration_dead_branches.py` 加一例） | 本機有 Postgres 就 `RUN_INTEGRATION_TESTS=1` 跑；沒有就明講「只在 CI 跑」 |

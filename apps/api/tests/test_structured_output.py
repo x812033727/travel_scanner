@@ -68,6 +68,13 @@ def test_anthropic_output_text_joins_blocks_and_rejects_truncation() -> None:
         anthropic_output_text(truncated)
     with pytest.raises(ValueError, match="沒有回傳"):
         anthropic_output_text({"content": []})
+    declined = {
+        "stop_reason": "refusal",
+        "stop_details": {"type": "refusal", "category": "bio", "explanation": None},
+        "content": [{"type": "text", "text": "{"}],
+    }
+    with pytest.raises(ValueError, match="拒絕回應（bio）"):
+        anthropic_output_text(declined)
 
 
 def test_schema_instructions_embed_the_schema_and_forbid_fences() -> None:
