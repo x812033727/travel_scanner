@@ -29,6 +29,10 @@ from ai_accounts_agent.security import signature_for
 from ai_accounts_agent.server import AgentApplication
 
 KEY = "k" * 64
+OUTDATED_CLAUDE = (
+    "API Error: 400 Claude Code 2.1.259 does not support this model; "
+    "version 2.1.280 or newer is required."
+)
 
 # Records what it was given in the account folder, then answers like `claude -p --output-format
 # json`. The prompt decides the outcome: LIMIT answers as a spent window, FAIL exits with an error;
@@ -119,6 +123,24 @@ def _request(prompt: str = '{"brief": "…"}', **changes: Any) -> RunRequest:
     }
     payload.update(changes)
     return RunRequest.parse(payload)
+
+
+def _cli_output(
+    tmp_path: Path, *, stdout: str = "", stderr: str = "", exit_code: int = 1
+) -> AgentConfig:
+    config = _config(tmp_path)
+    fake = tmp_path / "result_claude.py"
+    fake.write_text(
+        "import os, pathlib, sys\n"
+        "sys.stdin.read()\n"
+        "log = pathlib.Path(os.environ['CLAUDE_CONFIG_DIR']) / 'run-count.txt'\n"
+        "with log.open('a', encoding='utf-8') as out: out.write('run\\n')\n"
+        f"sys.stdout.write({stdout!r})\n"
+        f"sys.stderr.write({stderr!r})\n"
+        f"sys.exit({exit_code})\n",
+        encoding="utf-8",
+    )
+    return replace(config, claude_command=(sys.executable, str(fake)))
 
 
 @pytest.mark.parametrize(
@@ -232,6 +254,60 @@ def test_a_spent_window_is_a_pause_and_a_crash_is_a_failure(tmp_path: Path) -> N
     with pytest.raises(CliError) as failed:
         run_claude(config, "a", _request("FAIL"))
     assert "overloaded" in str(failed.value)
+
+
+@pytest.mark.parametrize(
+    ("channel", "exit_code"),
+    [("json", 0), ("json", 1), ("stderr", 1), ("stdout", 1)],
+)
+def test_an_outdated_claude_returns_the_versions_and_host_remedy(
+    tmp_path: Path, channel: str, exit_code: int
+) -> None:
+    stdout = (
+        json.dumps({"type": "result", "is_error": True, "result": OUTDATED_CLAUDE})
+        if channel == "json"
+        else OUTDATED_CLAUDE if channel == "stdout" else ""
+    )
+    config = _cli_output(
+        tmp_path,
+        stdout=stdout,
+        stderr=OUTDATED_CLAUDE if channel == "stderr" else "",
+        exit_code=exit_code,
+    )
+    with pytest.raises(RunRefused) as refused:
+        run_claude(config, "a", _request())
+    assert (refused.value.status, refused.value.code) == (409, "subscription_cli_outdated")
+    assert refused.value.extra == {
+        "installed_version": "2.1.259",
+        "required_version": "2.1.280",
+    }
+    assert all(part in refused.value.detail for part in ("2.1.259", "2.1.280", "claude update"))
+    assert not any((config.state_root / "runs").iterdir()), "the failed run is cleaned up"
+
+
+def test_a_successful_answer_can_quote_the_exact_outdated_cli_notice(tmp_path: Path) -> None:
+    answer = f"The previous host incident said: {OUTDATED_CLAUDE}"
+    config = _cli_output(
+        tmp_path,
+        stdout=json.dumps({"type": "result", "is_error": False, "result": answer}),
+        exit_code=0,
+    )
+    assert run_claude(config, "a", _request())["text"] == answer
+
+
+@pytest.mark.parametrize("json_error", [False, True])
+def test_an_unrecognized_cli_failure_keeps_the_generic_error(
+    tmp_path: Path, json_error: bool
+) -> None:
+    message = "The selected model is unavailable."
+    config = _cli_output(
+        tmp_path,
+        stdout=json.dumps({"type": "result", "is_error": True, "result": message})
+        if json_error else message,
+        exit_code=0 if json_error else 1,
+    )
+    with pytest.raises(CliError, match="claude run failed"):
+        run_claude(config, "a", _request())
 
 
 def test_codex_runs_with_all_tools_disabled_and_rejects_any_tool_event(tmp_path: Path) -> None:
@@ -363,6 +439,43 @@ def test_the_runs_route_picks_an_account_runs_once_and_pauses_when_all_are_spent
     assert body["resets_at"] == "2026-09-25T12:00:00Z"
     status, body = _signed(application, {**run, "tool": "codex", "model": "gpt-6-sol"})
     assert status == 409 and body["code"] == "subscription_not_signed_in"
+
+
+def test_an_outdated_cli_refusal_does_not_rotate_or_leave_the_account_busy(
+    tmp_path: Path,
+) -> None:
+    config = _cli_output(
+        tmp_path,
+        stdout=json.dumps({"type": "result", "is_error": True, "result": OUTDATED_CLAUDE}),
+    )
+    config.current_path("claude").write_text("a\n", encoding="utf-8")
+    application = AgentApplication(
+        config, claude=Accounts({"a": 10, "b": 20}), codex=Accounts({})  # type: ignore[arg-type]
+    )
+    run = {
+        "tool": "claude", "model": "claude-opus-5-5", "system": "Write.", "prompt": "{}",
+        "queue_seconds": 0,
+    }
+    for attempts in (1, 2):
+        status, body = _signed(application, run)
+        assert (status, body["code"]) == (409, "subscription_cli_outdated")
+        assert (body["installed_version"], body["required_version"]) == ("2.1.259", "2.1.280")
+        assert all(part in body["detail"] for part in ("2.1.259", "2.1.280", "claude update"))
+        assert not application._runs_busy and not application._runs_resting
+        assert config.current_path("claude").read_text(encoding="utf-8").strip() == "a"
+        assert (config.slot_path("claude", "a") / "run-count.txt").read_text() == "run\n" * attempts
+        assert not (config.slot_path("claude", "b") / "run-count.txt").exists()
+    # Replacing the executable models the host update; the running agent keeps its slot.
+    _cli_output(
+        tmp_path,
+        stdout=json.dumps({"type": "result", "is_error": False, "result": "updated"}),
+        exit_code=0,
+    )
+    status, body = _signed(application, run)
+    assert (status, body["slot"], body["text"]) == (200, "a", "updated")
+    assert not application._runs_busy and not application._runs_resting
+    assert (config.slot_path("claude", "a") / "run-count.txt").read_text() == "run\n" * 3
+    assert not (config.slot_path("claude", "b") / "run-count.txt").exists()
 
 
 def test_a_busy_account_is_waited_for_and_a_resting_one_counts_as_spent() -> None:
