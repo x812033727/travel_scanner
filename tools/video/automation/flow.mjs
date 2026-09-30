@@ -663,6 +663,8 @@ export class Automation {
   /**
    * Every video made or started: the ones in docs/videos, the worker's own drafts, and every video
    * on /admin/videos (the owner's branches and dropped ones too), with the article each retells.
+   * A folder in docs/videos is a video only when it holds a video.json or a brief.md; the others
+   * (ai-shorts, story-plans, validation and the like) are plans and notes, not videos.
    */
   earlierVideos() {
     const found = new Map();
@@ -670,7 +672,9 @@ export class Automation {
     const dirs = existsSync(videos) ? readdirSync(videos, { withFileTypes: true }).filter((entry) => entry.isDirectory()) : [];
     for (const entry of dirs) {
       const brief = path.join(videos, entry.name, "brief.md");
-      const video = readJson(path.join(videos, entry.name, "video.json"), null);
+      const script = path.join(videos, entry.name, "video.json");
+      if (!existsSync(script) && !existsSync(brief)) continue;
+      const video = readJson(script, null);
       found.set(entry.name, {
         slug: entry.name,
         title: video?.youtube?.title ?? (existsSync(brief) ? titleOf(readFileSync(brief, "utf8")) : ""),
