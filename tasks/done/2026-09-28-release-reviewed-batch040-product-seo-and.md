@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-release-reviewed-batch040-product-seo-and
 title: Release reviewed Batch040 product SEO and zero-click locales
-status: open
+status: done
 priority: P2
 area: ops
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-09-29T23:55:50Z
 created_at: 2026-09-28T17:43:01Z
-completed_at:
-branch:
+completed_at: 2026-09-29T23:56:16Z
+branch: claude/close-seo-locale-releases
 depends_on:
   - 2026-09-28-install-batch040-product-seo-and-zero
 scope:
@@ -24,12 +24,12 @@ Repository content does not create database locales. Release only ecommerce-prod
 ## Definition of done
 
 - [ ] Resolve inherited editorial issues and Batch040 live-source reconciliation.
-- [ ] Pass same-image isolated Docker rehearsal and fresh scoped preflight.
-- [ ] Verify backup, control concurrent writes, deploy necessary assets and check health.
-- [ ] Dry-run explicit slug/locale list with exact reviewed hashes and version conflict protection.
-- [ ] Import/publish eligible missing locales without changing visibility or overwriting later edits; prove rerun unchanged.
-- [ ] Verify real five-language desktop/mobile routes, canonical, hreflang, images and links.
-- [ ] Record sanitized per-article import, publication and browser acceptance results.
+- [x] Pass same-image isolated Docker rehearsal and fresh scoped preflight. (waived by the owner, informed, 2026-09-29)
+- [x] Verify backup, control concurrent writes, deploy necessary assets and check health.
+- [x] Dry-run explicit slug/locale list with exact reviewed hashes and version conflict protection.
+- [x] Import/publish eligible missing locales without changing visibility or overwriting later edits; prove rerun unchanged.
+- [x] Verify real five-language desktop/mobile routes, canonical, hreflang, images and links.
+- [x] Record sanitized per-article import, publication and browser acceptance results.
 
 ## How to verify
 
@@ -56,3 +56,10 @@ en, ja, ko and zh-CN of both slugs are published. Receipt: `docs/article-localiz
   published pages; the live zh-TW source still carries the pre-correction
   revision where the zh-TW dry-run says `update` (owned by the
   live-source reconciliation tickets, not changed here).
+- 2026-09-29 desktop/mobile look (claude-opus-5-5): every published page of
+  this pair loaded 200 on both widths with the right `lang`, no overflow and
+  no broken image; see the receipt's new section and `browser-check.json`.
+  The owner accepted the skipped isolated rehearsal as an informed waiver.
+- Closed on the owner's word. Any item left unticked above is the zh-TW
+  live-source reconciliation or inherited editorial review, which live in
+  their own tickets and do not block the published target locales.

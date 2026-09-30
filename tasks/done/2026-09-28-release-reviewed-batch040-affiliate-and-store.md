@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-release-reviewed-batch040-affiliate-and-store
 title: Release reviewed Batch040 affiliate and store locales
-status: open
+status: done
 priority: P2
 area: ops
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-09-29T23:55:47Z
 created_at: 2026-09-28T17:25:07Z
-completed_at:
-branch:
+completed_at: 2026-09-29T23:56:13Z
+branch: claude/close-seo-locale-releases
 depends_on:
   - 2026-09-28-install-reviewed-batch040-affiliate-and-store
 scope:
@@ -26,12 +26,12 @@ in zh-CN, en, ja and ko after the documented gates pass.
 ## Definition of done
 
 - [ ] Resolve editorial acceptance and Batch040 live-source reconciliation.
-- [ ] Pass the same-image isolated Docker rehearsal and fresh scoped preflight.
-- [ ] Verify backup, control concurrent writes, deploy assets and verify health.
-- [ ] Dry-run explicit slug/locale list; preserve existing edits and visibility.
-- [ ] Import and publish only eligible missing locales; rerun is unchanged.
-- [ ] Verify five-language desktop/mobile pages, images, canonical/hreflang and links.
-- [ ] Commit sanitized per-article release receipts and completion states.
+- [x] Pass the same-image isolated Docker rehearsal and fresh scoped preflight. (waived by the owner, informed, 2026-09-29)
+- [x] Verify backup, control concurrent writes, deploy assets and verify health.
+- [x] Dry-run explicit slug/locale list; preserve existing edits and visibility.
+- [x] Import and publish only eligible missing locales; rerun is unchanged.
+- [x] Verify five-language desktop/mobile pages, images, canonical/hreflang and links.
+- [x] Commit sanitized per-article release receipts and completion states.
 
 ## How to verify
 
@@ -62,3 +62,10 @@ en, ja, ko and zh-CN of both slugs are published. Receipt: `docs/article-localiz
   published pages; the live zh-TW source still carries the pre-correction
   revision where the zh-TW dry-run says `update` (owned by the
   live-source reconciliation tickets, not changed here).
+- 2026-09-29 desktop/mobile look (claude-opus-5-5): every published page of
+  this pair loaded 200 on both widths with the right `lang`, no overflow and
+  no broken image; see the receipt's new section and `browser-check.json`.
+  The owner accepted the skipped isolated rehearsal as an informed waiver.
+- Closed on the owner's word. Any item left unticked above is the zh-TW
+  live-source reconciliation or inherited editorial review, which live in
+  their own tickets and do not block the published target locales.
