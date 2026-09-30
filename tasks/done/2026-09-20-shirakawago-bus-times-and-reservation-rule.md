@@ -1,14 +1,14 @@
 ---
 id: 2026-09-20-shirakawago-bus-times-and-reservation-rule
 title: 白川鄉巴士三個錯：金澤發是座席指定制不是預約優先、所要時間 1 小時 15 分、展望台接駁上行末班 15:40
-status: open
+status: done
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-09-30T01:58:48Z
 created_at: 2026-09-20T03:12:40Z
-completed_at:
-branch:
+completed_at: 2026-09-30T02:15:41Z
+branch: claude/shirakawago-bus-facts
 depends_on: []
 scope:
   - apps/api/app/guides/content/takayama-shirakawago-day-trip.json
@@ -46,19 +46,19 @@ https://www.vill.shirakawa.lg.jp/2696.htm （官方繁體中文版：「乘坐�
 ## Definition of done
 
 - [ ] `takayama-shirakawago-day-trip` `blocks[23]` 三處一次改完：乘車處寫「和田家旁」（拿掉沒有官方出處的「約 200 公尺」）、班表寫「上行 9:00 到 15:40、下行 9:10 到 16:10，12 點到 13 點之間沒有上行班次」、步行寫「15 到 20 分」。同一塊的 300 日圓、和田家與民家園的票價時間一個都沒動。
-- [ ] `takayama-shirakawago-day-trip` `blocks[4]`（table 末列「巴士 白川鄉–金澤」）的「約 1 小時 20 分」改成「約 1 小時 15 分（觀光協會寫約 1 小時 20 分）」；`blocks[7]` 補一句營運者的 1 小時 15 分（原句「白川鄉觀光協會標示約 1 小時 20 分」有標出處、不刪）。
-- [ ] `apps/web/public/guides/takayama-shirakawago-day-trip/diagram-1.svg` 上的「白川郷到金沢約 1 小時 20 分」（2 處）與正文一致。
-- [ ] `kanazawa-2-day-itinerary` `blocks[55]` 改成座席指定制、必須預約，且所要時間改成「約 1 小時 15 分（觀光協會寫約 1 小時 20 分）」。
+- [x] `takayama-shirakawago-day-trip` `blocks[4]`（table 末列「巴士 白川鄉–金澤」）的「約 1 小時 20 分」改成「約 1 小時 15 分（觀光協會寫約 1 小時 20 分）」；`blocks[7]` 補一句營運者的 1 小時 15 分（原句「白川鄉觀光協會標示約 1 小時 20 分」有標出處、不刪）。
+- [x] `apps/web/public/guides/takayama-shirakawago-day-trip/diagram-1.svg` 上的「白川郷到金沢約 1 小時 20 分」（2 處）與正文一致。
+- [x] `kanazawa-2-day-itinerary` `blocks[55]` 改成座席指定制、必須預約，且所要時間改成「約 1 小時 15 分（觀光協會寫約 1 小時 20 分）」。
 - [ ] 兩篇的 `sources` 補上或更新北陸鐵道兩個路線頁、白川村役場兩頁與觀光協會 access／events 頁，`checked_on` 只更新實際重讀的那幾條。
 - [ ] lint 與內容包測試綠；部署後兩個 slug 的 `guides-import` 都是 `update` 再 `--publish`。
 
 ## Steps
 
-- [ ] `takayama-shirakawago-day-trip` `blocks[23]`：(a) 和田家旁、(b) 上下行兩組時刻與中午無上行、(c) 15 到 20 分，**一次改完**。
-- [ ] `takayama-shirakawago-day-trip` `blocks[4]` 表格末列與 `blocks[7]` 的所要時間。
-- [ ] `diagram-1.svg` 的兩處「1 小時 20 分」（改完 lint 會檢查圖上的數字有沒有出現在正文）。
-- [ ] `kanazawa-2-day-itinerary` `blocks[55]`（全文就是那一句）。
-- [ ] **不要動**：`takayama-shirakawago-day-trip` `blocks[25]` 的「每車 6,000 到 10,000 日圓」（第 1 回 6,000／9,000、第 2 回 7,000／10,000，合起來正確）、`blocks[7]` 的「白川鄉回高山末班 17:30（18:35 到）」（與官方時刻表相符）、兩篇結尾的 `foods?city=`。
+- [x] `takayama-shirakawago-day-trip` `blocks[23]`：(a) 和田家旁、(b) 上下行兩組時刻與中午無上行、(c) 15 到 20 分，**一次改完**。
+- [x] `takayama-shirakawago-day-trip` `blocks[4]` 表格末列與 `blocks[7]` 的所要時間。
+- [x] `diagram-1.svg` 的兩處「1 小時 20 分」（改完 lint 會檢查圖上的數字有沒有出現在正文）。
+- [x] `kanazawa-2-day-itinerary` `blocks[55]`（全文就是那一句）。
+- [x] **不要動**：`takayama-shirakawago-day-trip` `blocks[25]` 的「每車 6,000 到 10,000 日圓」（第 1 回 6,000／9,000、第 2 回 7,000／10,000，合起來正確）、`blocks[7]` 的「白川鄉回高山末班 17:30（18:35 到）」（與官方時刻表相符）、兩篇結尾的 `foods?city=`。
 
 ## How to verify
 
@@ -87,3 +87,24 @@ uv run python -m app.cli guides-links-check --locale zh-TW
 - scope 與「既有文章補連第八批」重疊：那張票要把 `kanazawa-2-day-itinerary` `blocks[55]` 與 `takayama-shirakawago-day-trip` `blocks[7]` 改成 `rich_paragraph` 加 inline 連第八批第 4 篇。**哪一張票先做就在那張一起做完**，另一張把該項打勾並註明；兩張票不能同時 claim。
 - 撰稿當天還要再開一次白川村役場 `/2866.htm`（展望台步道封閉公告，內文是圖片、沒有文字層）：步道若封閉，`blocks[23]` 的步行時間要再處理一次。
 - `kanazawa-2-day-itinerary` 另有「宿泊稅」用詞那張票（`2026-09-20-lodging-tax-wording-site-wide`）也在同一個檔上，兩張票同樣不能同時 claim。
+- 2026-09-30 (claude-opus-5-5): every figure re-read that day. Hokutetsu's
+  Takayama and Nagoya route pages: 座席指定制、必ずご予約, 金沢–白川郷 1時間15分.
+  Tourism association events/441: shuttle 上り 9:00–15:40・下り 9:10–16:10, walk
+  15–20 min from behind Wada House; access page still 約1時間20分, Takayama 約50分.
+  Village timetable 1952.htm (read in a browser; curl does not carry the table):
+  up every 20 min but 11:40 is followed by 13:20, down 9:10–16:10, 300 yen cash,
+  weather suspensions. Village 2866.htm (path closure) shows only its title and
+  contacts, no body or image, so no closure could be confirmed or ruled out.
+- `blocks[23]` now gives both directions, the midday gap and the 15–20 minute
+  walk, and drops the unofficial "about 200 m".
+- Deviation, because `sources` is capped at 20 per locale and both packs were
+  full with entries the text still uses: the Wada House boarding point (only on
+  village page 2696.htm) was left out of the text rather than dropping a source
+  that another fact depends on; `shirakawa-going.jp` (the 200 m / 15 min source)
+  was removed and Hokutetsu's Takayama page added to the Takayama pack, with
+  1952, events/441 and access updated to `checked_on` 2026-09-30 after
+  re-reading everything their titles list. The Kanazawa pack gets no new
+  source; its one sentence is backed by the Takayama pack's sources.
+- Checks: the two greps are 0; lint 0 errors for both slugs; content pack
+  tests green. Left unticked: sources in Kanazawa (see above) and the
+  production import after merge and deploy.

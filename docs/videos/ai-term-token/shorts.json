@@ -1,0 +1,80 @@
+[
+  {
+    "schema_version": 2,
+    "slug": "ai-term-token-short-1",
+    "format": "shorts",
+    "locale": "zh-TW",
+    "line": "cut",
+    "series": "illustrated",
+    "source": { "slug": "ai-term-token" },
+    "titles": [
+      "Token 是什麼？九個字，AI 算成十個，也可能十六個",
+      "AI 算的不是字數，是它自己的單位：token 一句話講清楚"
+    ],
+    "description": "同一句「週六臺北見，帶雨傘」，九個字，兩種編碼算成 10 個和 16 個 token。token 是什麼，一句話講清楚；完整的十分鐘在長片。",
+    "scenes": [
+      {
+        "shot": "two-machines",
+        "headline": "九個字，十個還是十六個？",
+        "narration": ["「週六臺北見，帶雨傘」，九個字。", "一種編碼算十個，另一種算十六個。"]
+      },
+      {
+        "shot": "cutter",
+        "headline": "AI 算的不是字數",
+        "narration": ["AI 不是一個字一個字讀。", "它先把文字切成自己的單位，叫 token。"]
+      },
+      {
+        "shot": "pieces",
+        "headline": "半個字、一個字，或一個詞",
+        "narration": ["一個 token 可能是半個字、一個字，或一個詞。", "大小不固定，換一種編碼就不一樣。"]
+      },
+      {
+        "headline": "9 個字 ＝ 10 或 16 個 token",
+        "big": "10 或 16",
+        "narration": ["所以字數少，不代表 token 少。"]
+      },
+      {
+        "shot": "scale",
+        "headline": "怎麼省下三分之一，完整的在長片",
+        "narration": ["怎麼替自己省下三分之一的用量，完整的在長片。"]
+      }
+    ]
+  },
+  {
+    "schema_version": 2,
+    "slug": "ai-term-token-short-2",
+    "format": "shorts",
+    "locale": "zh-TW",
+    "line": "cut",
+    "series": "illustrated",
+    "source": { "slug": "ai-term-token" },
+    "titles": [
+      "你以為 AI 算的是字數？同一份公告換一種編碼，多了四成",
+      "Token 最常見的誤解：字數少，不代表 token 少"
+    ],
+    "description": "你以為 AI 跟我們一樣一個字一個字讀，其實它切成自己的單位；同一份公告一個字沒改，換一種編碼就多了四成。為什麼會這樣切，長片講清楚。",
+    "scenes": [
+      {
+        "shot": "two-rulers",
+        "headline": "你以為 AI 算的是字數",
+        "narration": ["你以為 AI 跟我們一樣，一個字一個字讀。"]
+      },
+      {
+        "shot": "cutter",
+        "headline": "其實它切成自己的單位",
+        "narration": ["其實它先把文字切成自己的單位，叫 token。"]
+      },
+      {
+        "shot": "forty-percent",
+        "headline": "文字沒改，換一種編碼多四成",
+        "big": "142 → 200",
+        "narration": ["同一份公告，一個字沒改，換一種編碼就多了四成。", "所以網路上的字數換算常數，換個編碼就失效。"]
+      },
+      {
+        "shot": "count-tool",
+        "headline": "要算，就用服務自己的計數功能",
+        "narration": ["真的要知道數量，用你那個服務的計數功能量一次。", "為什麼會這樣切，長片講清楚。"]
+      }
+    ]
+  }
+]

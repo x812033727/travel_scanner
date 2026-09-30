@@ -7,12 +7,15 @@ import test from "node:test";
 import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { EXIT, main } from "../cli.mjs";
 import { approve, readApprovals } from "../core/approvals.mjs";
+import { pinBranding, presentationTimeline, validateBranding } from "../core/branding.mjs";
 import { lookHash } from "../core/drama.mjs";
 import { scriptCheckBinding } from "../core/script-check.mjs";
 import { sandbox } from "../core/fixtures/load.mjs";
-import { writeLanguages } from "../core/stages.mjs";
-import { COMPILATION_STEPS, DRAMA_STEPS, SLIDES_STEPS } from "../core/state.mjs";
-import { SAMPLE_RATE } from "../core/timeline.mjs";
+import { eachLine, textHash } from "../core/schema.mjs";
+import { runCaptions, writeLanguages } from "../core/stages.mjs";
+import { COMPILATION_STEPS, DRAMA_STEPS, dubArtifacts, loadProject, SLIDES_STEPS } from "../core/state.mjs";
+import { formatClock, SAMPLE_RATE, visualHash } from "../core/timeline.mjs";
+import { dubScript, translationHash } from "../dubs/plan.mjs";
 import { COMPILATION_ITEM_IDS, ITEM_IDS } from "../qa/checks.mjs";
 import { encodeWav } from "../tts/wav.mjs";
 import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeTranslations } from "../compile/fixture.mjs";
@@ -68,7 +71,7 @@ test("the checklist, the Jev summary and the upload items are what the page show
  * default the outline judge is off (409) and the policy judge is not there (404). Any other
  * address is a description's link the quality check opens.
  */
-function site({ judge = null, policy = null } = {}) {
+function site({ judge = null, policy = null, autoApproveFinal = false } = {}) {
   const state = { calls: [], files: new Map(), reviews: [], judge: [] };
   const answer = (value) => (value instanceof Response ? value : Response.json(value));
   const fetchImpl = async (url, init = {}) => {
@@ -95,7 +98,8 @@ function site({ judge = null, policy = null } = {}) {
       const body = JSON.parse(init.body);
       // Match ReviewSubmit.summary's character limit so the real push path cannot hide a 422.
       if ([...body.summary].length > 500) return Response.json({ detail: "summary：內容太長" }, { status: 422 });
-      state.reviews.unshift({ id: `r${state.reviews.length}`, status: "pending", choice: null, note: null, decided_at: null, ...body });
+      const status = autoApproveFinal && body.gate === "final" && body.payload?.qa?.ok === true ? "approved" : "pending";
+      state.reviews.unshift({ id: `r${state.reviews.length}`, status, choice: null, note: null, decided_at: null, ...body });
       return Response.json(state.reviews[0], { status: 201 });
     }
     return Response.json({ slug: "fixture-minimal", reviews: state.reviews });
@@ -273,7 +277,149 @@ function cutVideo(box) {
   return { doc, final };
 }
 
+function brandedCut(box) {
+  const cut = cutVideo(box);
+  const timeline = JSON.parse(readFileSync(path.join(box.workdir, "timeline.json"), "utf8"));
+  const selection = validateBranding({ schema_version: 1, id: "channel-v1", intro: { file: "intro.mp4", sha256: "a".repeat(64), frames: 150 }, outro: { file: "outro.mp4", sha256: "b".repeat(64), frames: 90 } }, { base: box.workdir });
+  pinBranding(box.workdir, selection);
+  const body = Buffer.from("the retained unbranded body");
+  writeFileSync(path.join(box.workdir, "body.mp4"), body);
+  const applied = { hash: selection.hash, id: selection.id, intro_frames: 150, outro_frames: 90, body_frames: timeline.total_frames, body_file: "body.mp4", body_sha256: sha(body) };
+  const checks = { ok: true, speech_hash: timeline.speech_hash, visual_hash: visualHash(cut.doc), branding: applied, problems: [], metrics: { frames: timeline.total_frames + 240 } };
+  writeFileSync(path.join(box.workdir, "checks.json"), JSON.stringify(checks));
+  return { ...cut, timeline, selection, applied, checks };
+}
+
+function passingQualityCheck(box, final, calls = []) {
+  return async (args) => {
+    calls.push(args);
+    assert.deepEqual(args, ["qa", "--slug", box.slug]);
+    mkdirSync(path.join(box.workdir, "review"), { recursive: true });
+    const report = { ok: true, final_sha256: sha(final), items: ITEM_IDS.map((id) => ({ id, ok: true, detail: "passed" })) };
+    writeFileSync(path.join(box.workdir, "review", "qa.json"), JSON.stringify(report));
+    return { code: EXIT.ok };
+  };
+}
+
 const encode = async (kind, source, target) => writeFileSync(target, Buffer.from(`${kind} of ${path.basename(source)}`));
+
+test("a branded final submission reports the full duration and shifted chapters without shifting captions or dubs again", async () => {
+  const box = sandbox();
+  const { doc, final, timeline, applied } = brandedCut(box);
+  const translation = { title: "English title", description: "English description", tags: [], chapters: {}, source_hashes: {}, lines: Object.fromEntries([...eachLine(doc)].map(({ line }) => [line.id, { source_hash: textHash(line.text), text: `English ${line.id}` }])) };
+  mkdirSync(path.join(box.dir, "i18n"), { recursive: true });
+  writeFileSync(path.join(box.dir, "i18n", "en.json"), JSON.stringify(translation));
+  writeLanguages(box.workdir, { locales: { en: { metadata: true, captions: true, dub: true } } });
+  const project = loadProject({ slug: box.slug, root: box.root });
+  const files = dubArtifacts(box.workdir, "en");
+  mkdirSync(files.dir, { recursive: true });
+  const dub = presentationTimeline({ ...timeline, locale: "en", format: "m4a", translation_hash: translationHash(dubScript(project.doc, project.translations.en, "en").doc), tempo_max: 1 }, applied);
+  writeFileSync(files.timeline, JSON.stringify(dub));
+  const track = Buffer.from("already branded English audio");
+  writeFileSync(files.track("m4a"), track);
+  runCaptions({ slug: box.slug, root: box.root, workdir: box.workdir });
+  const captionFile = path.join(box.workdir, "captions", "en.srt");
+  const captionsBefore = readFileSync(captionFile, "utf8");
+  const dubBefore = readFileSync(files.timeline, "utf8");
+  const qaCalls = [];
+  const server = site({ autoApproveFinal: true });
+  const push = context(box, server.fetchImpl, { encode, runCommand: passingQualityCheck(box, final, qaCalls) });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], push.ctx), EXIT.ok, push.out.stderr);
+  const review = server.state.reviews[0];
+  const duration = timeline.total_frames / timeline.fps + 8;
+  assert.equal(review.payload.duration_seconds, duration);
+  assert.ok(review.summary.startsWith(`成片 ${formatClock(Math.round(duration))}，`));
+  assert.equal(review.payload.chapters[0].time, "00:00");
+  assert.equal(review.payload.chapters[1].time, formatClock(Math.floor(timeline.chapters[1].start_frame / timeline.fps) + 5));
+  assert.equal(review.payload.branding_hash, applied.hash);
+  assert.equal(review.payload.dubs.en.status, "ready");
+  assert.equal(review.files.find((entry) => entry.role === "dub_en").sha256, sha(track));
+  assert.equal(readFileSync(files.timeline, "utf8"), dubBefore);
+  assert.equal(readFileSync(captionFile, "utf8"), captionsBefore);
+  assert.equal(qaCalls.length, 1);
+  assert.equal(review.payload.qa.ok, true);
+  assert.equal(review.status, "approved", "ordinary future finals keep the existing site auto-approval choice");
+  assert.deepEqual(readApprovals(box.workdir).approvals, [], "push itself never records an approval");
+
+  const audio = context(box, server.fetchImpl, { encode });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "audio"], audio.ctx), EXIT.ok, audio.out.stderr);
+  assert.equal(server.state.reviews[0].payload.duration_seconds, timeline.total_frames / timeline.fps, "audio review retains the unpadded narration clock");
+});
+
+test("explicit manual final review still runs QA but keeps even passing machine evidence outside the auto-approval key", async () => {
+  const box = sandbox();
+  const { final, applied } = brandedCut(box);
+  const server = site({ autoApproveFinal: true });
+  const qaCalls = [];
+  const push = context(box, server.fetchImpl, { encode, runCommand: passingQualityCheck(box, final, qaCalls) });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final", "--manual-review"], push.ctx), EXIT.ok, push.out.stderr);
+  const review = server.state.reviews[0];
+  assert.equal(qaCalls.length, 1);
+  assert.equal(review.status, "pending", "the same qa.ok auto-approval rule cannot approve this explicit owner review");
+  assert.equal(Object.hasOwn(review.payload, "qa"), false);
+  assert.equal(review.payload.manual_review_qa.ok, true);
+  assert.equal(review.payload.manual_review_qa.final_sha256, sha(final));
+  assert.equal(review.payload.manual_review, true);
+  assert.match(review.payload.manual_review_reason, /片頭與片尾.*站主重新審看/);
+  assert.match(review.summary, /需站主重新審看$/);
+  assert.equal(review.payload.branding_hash, applied.hash);
+  assert.deepEqual(JSON.parse(readFileSync(path.join(box.workdir, "review", "qa.json"), "utf8")), review.payload.manual_review_qa);
+  assert.deepEqual(readApprovals(box.workdir).approvals, []);
+  assert.ok(server.state.calls.every((call) => !call.pathname.includes("/approve")));
+});
+
+test("manual review is only accepted by an explicit final push before any site request", async () => {
+  const box = sandbox();
+  for (const args of [
+    ["review-push", "--manual-review"],
+    ["review-push", "--gate", "audio", "--manual-review"],
+    ["review-push", "--gate", "publish", "--manual-review"],
+    ["review-push", "--gate", "final", "--manual-review", "--report-only"],
+    ["review-pull", "--gate", "final", "--manual-review"],
+  ]) {
+    const server = site();
+    const push = context(box, server.fetchImpl);
+    assert.equal(await main([...args, "--slug", box.slug], push.ctx), EXIT.usage);
+    assert.match(push.out.stderr, /manual-review requires review-push with explicit --gate final/);
+    assert.equal(server.state.calls.length, 0);
+  }
+});
+
+test("final submission refuses changed branding pins, stale body timing and a body whose bytes no longer match", async () => {
+  for (const change of ["pin", "speech", "frames", "body"]) {
+    const box = sandbox();
+    const { final, selection, checks } = brandedCut(box);
+    if (change === "pin") pinBranding(box.workdir, validateBranding({ ...selection, hash: undefined, intro: { ...selection.intro, sha256: "d".repeat(64) } }));
+    if (change === "speech") writeFileSync(path.join(box.workdir, "checks.json"), JSON.stringify({ ...checks, speech_hash: "old" }));
+    if (change === "frames") writeFileSync(path.join(box.workdir, "checks.json"), JSON.stringify({ ...checks, branding: { ...checks.branding, body_frames: checks.branding.body_frames + 1 } }));
+    if (change === "body") appendFileSync(path.join(box.workdir, "body.mp4"), "changed");
+    const server = site();
+    const qaCalls = [];
+    const push = context(box, server.fetchImpl, { encode, runCommand: passingQualityCheck(box, final, qaCalls) });
+    assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final", "--manual-review"], push.ctx), EXIT.usage, change);
+    assert.match(push.out.stderr, /run assemble before review-push --gate final/);
+    assert.equal(qaCalls.length, 0, "invalid source bindings stop before QA and media uploads");
+    assert.equal(server.state.files.size, 0);
+    assert.equal(server.state.reviews.length, 0);
+    assert.deepEqual(readApprovals(box.workdir).approvals, []);
+  }
+});
+
+test("a final replaced while QA runs cannot be submitted with the previous content hash", async () => {
+  const box = sandbox();
+  const { final } = cutVideo(box);
+  const server = site();
+  const writeReport = passingQualityCheck(box, final);
+  const push = context(box, server.fetchImpl, { encode, runCommand: async (args) => {
+    const result = await writeReport(args);
+    appendFileSync(path.join(box.workdir, "final.mp4"), "changed during QA");
+    return result;
+  } });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], push.ctx), EXIT.usage);
+  assert.match(push.out.stderr, /changed during the quality check/);
+  assert.equal(server.state.reviews.length, 0);
+  assert.equal(server.state.files.size, 0);
+});
 
 test("review-push --gate final runs the quality check and sends its report; a check that could not finish sends nothing", async () => {
   const box = sandbox();

@@ -1,14 +1,14 @@
 ---
 id: 2026-09-20-okinawa-4-day-batch-8-edits
 title: okinawa-4-day-itinerary：高速巴士「約 3 小時」是英文頁的數字，要改成 2 小時 30 分（同票做第八批兩個反向連結）
-status: open
+status: done
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-09-30T02:26:30Z
 created_at: 2026-09-20T03:12:34Z
-completed_at:
-branch:
+completed_at: 2026-09-30T02:31:25Z
+branch: claude/okinawa-4-day-bus-and-links
 depends_on: []
 scope:
   - apps/api/app/guides/content/okinawa-4-day-itinerary.json
@@ -29,20 +29,20 @@ scope:
 
 ## Definition of done
 
-- [ ] `blocks[15]` 的「搭高速巴士約 3 小時」改成「搭高速巴士約 2 小時 30 分」，同一段其他數字一個都沒動。
-- [ ] `blocks[6]` 原地改成 `rich_paragraph`（**不新增區塊**），原文拆成 `text` inline、文字與數字一字不改，結尾加一句並插一個 `article` inline 連 `okinawa-without-a-car`（`kind: howto`）。
-- [ ] `blocks[4]`（callout「第一天不要租車」）之後**新增**一個 `rich_paragraph`：一句「2027 年 2 月 1 日起住宿要另付住宿稅，算總預算時要加進去」＋`article` inline 連 `okinawa-lodging-tax-2027`（`kind: intel`）；那一句**拿掉連結後仍讀得通**（不得出現「見下方」「另一篇」）。
-- [ ] 插入後全篇 27 個區塊，`blocks[2]`（table）、`blocks[22]`（list）、`blocks[23]`（callout）都沒被動到（三種都放不了 inline）。
+- [x] `blocks[15]` 的「搭高速巴士約 3 小時」改成「搭高速巴士約 2 小時 30 分」，同一段其他數字一個都沒動。
+- [x] `blocks[6]` 原地改成 `rich_paragraph`（**不新增區塊**），原文拆成 `text` inline、文字與數字一字不改，結尾加一句並插一個 `article` inline 連 `okinawa-without-a-car`（`kind: howto`）。
+- [x] `blocks[4]`（callout「第一天不要租車」）之後**新增**一個 `rich_paragraph`：一句「2027 年 2 月 1 日起住宿要另付住宿稅，算總預算時要加進去」＋`article` inline 連 `okinawa-lodging-tax-2027`（`kind: intel`）；那一句**拿掉連結後仍讀得通**（不得出現「見下方」「另一篇」）。
+- [x] 插入後全篇 27 個區塊，`blocks[2]`（table）、`blocks[22]`（list）、`blocks[23]`（callout）都沒被動到（三種都放不了 inline）。
 - [ ] lint 與內容包測試綠；部署後 `guides-import --slug okinawa-4-day-itinerary` 的計畫是 `update`，再 `--publish`。
 
 ## Steps
 
 依這個順序做（**從後往前，最後才插入新區塊**）：
 
-- [ ] 1. `blocks[15]`：「搭高速巴士約 3 小時」→「搭高速巴士約 2 小時 30 分」。出處 https://churaumi.okinawa/guide/access/ 「バス（高速バス使用）で約2時間30分」；`sources` 的 `checked_on` 只更新這一條。
-- [ ] 2. `blocks[6]`（paragraph → `rich_paragraph`，原地改型別不會位移）：原文拆 `text`，結尾加一句連 `okinawa-without-a-car`，連結文字講「不開車的沖繩能玩到哪裡、末班車幾點」。
-- [ ] 3. 最後做：`blocks[4]` 之後新增 `rich_paragraph` 連 `okinawa-lodging-tax-2027`。插入後 `blocks[5]` 起全部往後移一格（原 `[6]`→`[7]`、原 `[15]`→`[16]`、原 `[25]`→`[26]`）。若不照這個順序，就要先算好插入後的新編號再動手。
-- [ ] 4. 自檢：兩個新 inline 的 slug 與 kind 都存在、沒有兩個 `article` inline 相鄰、`blocks[16]`（photo-1）與 hero 沒被動。
+- [x] 1. `blocks[15]`：「搭高速巴士約 3 小時」→「搭高速巴士約 2 小時 30 分」。出處 https://churaumi.okinawa/guide/access/ 「バス（高速バス使用）で約2時間30分」；`sources` 的 `checked_on` 只更新這一條。
+- [x] 2. `blocks[6]`（paragraph → `rich_paragraph`，原地改型別不會位移）：原文拆 `text`，結尾加一句連 `okinawa-without-a-car`，連結文字講「不開車的沖繩能玩到哪裡、末班車幾點」。
+- [x] 3. 最後做：`blocks[4]` 之後新增 `rich_paragraph` 連 `okinawa-lodging-tax-2027`。插入後 `blocks[5]` 起全部往後移一格（原 `[6]`→`[7]`、原 `[15]`→`[16]`、原 `[25]`→`[26]`）。若不照這個順序，就要先算好插入後的新編號再動手。
+- [x] 4. 自檢：兩個新 inline 的 slug 與 kind 都存在、沒有兩個 `article` inline 相鄰、`blocks[16]`（photo-1）與 hero 沒被動。
 
 ## How to verify
 
@@ -63,3 +63,18 @@ uv run pytest tests/test_guides_content_pack.py -q
 - `blocks[16]`（photo-1）與 `okinawa-car-rental-guide` `blocks[24]` 是同一張 Commons 照片（`Main_tank_of_the_Kuroshio_Sea_in_Okinawa_Churaumi_Aquarium.JPG`，そらみみ，CC BY-SA 4.0）。**這張票不處理**，它的作用是第八批三篇沖繩文章的避開清單。
 - `okinawa-car-rental-guide` 的兩件事不在這張票：`blocks[13]` 誤植見 `2026-09-20-okinawa-car-rental-ai-term-inline`，`blocks[23]` 補連第 7 篇走「既有文章補連第八批」。
 - 2028-01-01 要拿掉步驟 3 那個 inline（#1 的 `valid_until` 是 2027-12-31），那是上線 PR 另開的日期票。
+- 2026-09-30 (claude-opus-5-5): churaumi.okinawa/guide/access/ still reads
+  バス（高速バス使用）で約2時間30分; the English page still says about three
+  hours and "Parking lots at Ocean Expo Park are free". The pack cited only the
+  English page, so the Japanese page is added for the times and the English
+  entry is retitled to what it now supports (free parking); both 2026-09-30.
+- Order followed: block 15, then block 6 in place (original text kept
+  verbatim, one sentence appended linking okinawa-without-a-car, howto), then
+  the new rich_paragraph after the callout linking okinawa-lodging-tax-2027
+  (intel), whose sentence still reads without the link. Both targets are live.
+  27 blocks; the table [2], list [23] and callout [24] are unchanged, and only
+  the original blocks 6 and 15 differ.
+- Checks: `3 小時` 0 hits; lint 0 errors; content pack tests green; intake has
+  the same three failures as before (no summary, the kept `?city=` link, and
+  block 16's two "官網寫" attributions, which predate this ticket).
+- Left unticked: production import after merge and deploy.
