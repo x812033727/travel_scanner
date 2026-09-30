@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-video-planner-counts-the-ai-shorts-folder
 title: The video planner counts docs/videos/ai-shorts as a video it already made
-status: open
+status: in-progress
 priority: P3
 area: tools
-owner:
-claimed_at:
+owner: claude-fable-5-1-planner
+claimed_at: 2026-09-30T03:40:19Z
 created_at: 2026-09-28T04:25:00Z
 completed_at:
-branch:
+branch: claude/video-planner-earlier-videos
 depends_on: []
 scope:
   - tools/video/automation/flow.mjs
@@ -25,13 +25,13 @@ scope:
 
 ## Definition of done
 
-- [ ] `earlierVideos()` 只收有 `video.json` 或 `brief.md` 的資料夾。
-- [ ] 測試：`docs/videos` 底下放一個只有說明文件的資料夾，清單裡沒有它；有 `brief.md` 沒有 `video.json` 的草稿仍然在清單裡。
+- [x] `earlierVideos()` 只收有 `video.json` 或 `brief.md` 的資料夾。
+- [x] 測試：`docs/videos` 底下放一個只有說明文件的資料夾，清單裡沒有它；有 `brief.md` 沒有 `video.json` 的草稿仍然在清單裡。
 
 ## Steps
 
-- [ ] 改 `earlierVideos()` 的篩選。
-- [ ] 加測試。
+- [x] 改 `earlierVideos()` 的篩選。
+- [x] 加測試。
 
 ## How to verify
 
@@ -42,3 +42,8 @@ node --test tools/video/automation/automation.test.mjs
 ## Notes
 
 - `2026-09-28-video-shorts-worker-lab` 也會改 `flow.mjs`；兩張票不要同時做，誰先拿到誰順手做掉這一項並在另一張票留一句。
+- 2026-09-30 claude-fable-5-1-planner 用 `--force` 認領：scope 被 `2026-09-28-sothatswhy-shorts-from-episode`（claude-opus）的認領鎖住，那個認領超過 24 小時，本機、遠端都沒有它的分支，也沒有開著的 PR，照規則算過期。`2026-09-28-drama-listener-stale-check` 也在 scope 裡列了 `flow.mjs`，這裡只動 `earlierVideos()` 一個函式，合併時若撞到只會是文字相鄰。
+- 做了什麼：`earlierVideos()` 讀 `docs/videos` 時，資料夾裡沒有 `video.json` 也沒有 `brief.md` 就跳過；有其中一個就照舊收進清單（只有 `brief.md` 的草稿用 brief 的第一個標題當標題）。工人自己的草稿與 /admin/videos 上的影片兩個來源沒有變。
+- 測試：`automation.test.mjs` 加一條，在 sandbox 的 `docs/videos` 放一個只有說明文件的 `ai-shorts`、一個空資料夾、一個只有 `brief.md` 的草稿，清單只剩草稿與 fixture。拿掉篩選那一行時這條測試會紅，放回去就綠。
+- 學到的：以 2026-09-30 的 main 來看，被排除的資料夾有 `ai-shorts`、`ai-terms`、`image-trust-opening-v2`、`imported-long-languages`、`series-plans`、`so-thats-why`、`story-plans`、`validation`。`image-trust-opening-v2` 是第一支長片（`01-image-trust`）的開場改版包，只有 `long-video.json`，不是一支新影片，排除它是對的；那支影片本身在 /admin/videos 上，企劃模型仍然看得到。
+- 上面提到的 `2026-09-28-video-shorts-worker-lab` 已經在 `tasks/done/`，它沒有改 `earlierVideos()` 的篩選，所以這一項留到這張票做。
