@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-dropped-episode-request
 title: 放棄影片後，那一集的漫劇請求列仍是 started
-status: in-progress
+status: done
 priority: P3
 area: api
 owner: claude-fable-5-1-drama-request
 claimed_at: 2026-09-30T03:39:59Z
 created_at: 2026-09-28T13:07:52Z
-completed_at:
+completed_at: 2026-09-30T03:56:43Z
 branch: claude/drama-request-cancelled-on-abandon
 depends_on: []
 scope:
