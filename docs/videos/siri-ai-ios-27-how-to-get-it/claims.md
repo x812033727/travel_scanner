@@ -21,11 +21,11 @@ c14｜上述流程會加入等候名單，等待時間不一，輪到後 Siri AI
 c15｜Apple 稱用裝置端處理與私密雲端運算；私密雲端運算處理請求時個人資料不儲存、Apple 或任何人無法存取；外部專家可持續驗證｜N｜2026-09-30｜private-cloud, privacy-switches
 c16｜新一代 Apple Foundation Models 與 Google 及其 Gemini 模型合作打造，在裝置端與私密雲端運算伺服器上執行｜N｜2026-09-30｜private-cloud
 c17｜仰賴伺服器端模型的功能有每日使用限制，Siri AI 在其中；日後以付費提供更多用量（註腳「Expanded access … for a fee in the future」）｜N｜2026-09-30｜daily-limits
-c18｜ChatGPT：在設定選 App、必要時連接帳號後才能讀該服務的資訊；可隨時在設定中斷連接｜O1｜2026-09-30｜three-assistants, two-homes, privacy-switches
+c18｜ChatGPT：到 Settings > Plugins 選 App、必要時連接帳號後才能讀該服務的資訊；可在 Settings > Plugins 中斷連接（2026-09-30 驗證者更正選單名稱）｜O1｜2026-09-30｜three-assistants, two-homes, privacy-switches
 c19｜ChatGPT 連接的 App 可搜尋、參考資訊，也可「Take supported actions」如建立或更新資訊｜O1｜2026-09-30｜three-assistants
 c20｜ChatGPT 支援的語言清單含 Chinese（依裝置語言自動偵測；頁面未細分繁簡）｜O2｜2026-09-30｜three-assistants, language-gap, chinese-users
 c21｜ChatGPT 的 App 可用性依 App、方案、地區、工作區、角色、模型與介面而異｜O1｜2026-09-30｜three-assistants
-c22｜Gemini：使用者選擇要連接哪些 App，可隨時在 Connected Apps 設定連接或中斷｜G1｜2026-09-30｜three-assistants, two-homes, privacy-switches
+c22｜Gemini：使用者選擇要連接哪些 App，可隨時在 Connected Apps 設定連接或中斷；另有部分 Connected Apps 預設就與 Gemini 連動、Gemini 也自動使用 Google 搜尋等服務的公開資訊，所以 two-homes 不寫「只能找你連接過的服務」（2026-09-30 驗證者）｜G1｜2026-09-30｜three-assistants, two-homes, privacy-switches
 c23｜Gemini：經使用者同意可協助在其他 App 採取動作，如編輯與管理內容；例子含摘要 Gmail 郵件、在 Google 日曆建立活動｜G1｜2026-09-30｜three-assistants
 c24｜Gemini 手機 App 的支援語言含 Chinese (Simplified / Traditional)，支援地區列有 Taiwan｜G2｜2026-09-30｜three-assistants, language-gap, chinese-users
 c25｜Gemini 的 Connected Apps 依 Gemini App、裝置、國家等而異（例：只在 Android 的 App 不會出現在 iOS）｜G1｜2026-09-30｜three-assistants
