@@ -1,13 +1,13 @@
 ---
 id: 2026-09-30-long-form-drama-1-tide-after
 title: Long-form drama 1: Tide After, 40 one-hour episodes plan and live-action budget
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-09-30T11:57:05Z
 created_at: 2026-09-30T11:52:27Z
-completed_at:
+completed_at: 2026-09-30T13:32:36Z
 branch: claude/nifty-heisenberg-0ldw0i-long-drama
 depends_on: []
 scope:
