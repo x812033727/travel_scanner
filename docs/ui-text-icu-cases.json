@@ -1,0 +1,296 @@
+[
+  {
+    "id": "simple-rewrite",
+    "default": "Hello {name}",
+    "override": "Welcome {name}!",
+    "problem": null,
+    "values": { "name": "Ada" },
+    "rendered": "Welcome Ada!"
+  },
+  {
+    "id": "quoted-runtime-argument",
+    "default": "Hello {name}",
+    "override": "Hello '{name}'",
+    "problem": "parameters"
+  },
+  {
+    "id": "curly-quotes-keep-argument",
+    "default": "Hello {name}",
+    "override": "Hello ‘{name}’",
+    "problem": null,
+    "values": { "name": "Ada" },
+    "rendered": "Hello ‘Ada’"
+  },
+  {
+    "id": "doubled-apostrophes-keep-argument",
+    "default": "Hello {name}",
+    "override": "Hello ''{name}''",
+    "problem": null,
+    "values": { "name": "Ada" },
+    "rendered": "Hello 'Ada'"
+  },
+  {
+    "id": "ordinary-apostrophe",
+    "default": "Hello {name}",
+    "override": "You're welcome, {name}",
+    "problem": null,
+    "values": { "name": "Ada" },
+    "rendered": "You're welcome, Ada"
+  },
+  {
+    "id": "duplicate-argument-is-set-semantics",
+    "default": "{count}",
+    "override": "{count} / {count}",
+    "problem": null,
+    "values": { "count": 2 },
+    "rendered": "2 / 2"
+  },
+  {
+    "id": "whitespace-around-argument",
+    "default": "Hello {name}",
+    "override": "Hi { name }",
+    "problem": null,
+    "values": { "name": "Ada" },
+    "rendered": "Hi Ada"
+  },
+  {
+    "id": "unicode-argument",
+    "default": "Hello {名字}",
+    "override": "Hi {名字}",
+    "problem": null,
+    "values": { "名字": "Ada" },
+    "rendered": "Hi Ada"
+  },
+  {
+    "id": "quoted-unicode-argument",
+    "default": "Hello {名字}",
+    "override": "Hi '{名字}'",
+    "problem": "parameters"
+  },
+  {
+    "id": "quoted-lone-opening-brace",
+    "default": "The symbol is '{'",
+    "override": "Opening brace: '{'",
+    "problem": null,
+    "values": {},
+    "rendered": "Opening brace: {"
+  },
+  {
+    "id": "quoted-lone-closing-brace",
+    "default": "The symbol is '}'",
+    "override": "Closing brace: '}'",
+    "problem": null,
+    "values": {},
+    "rendered": "Closing brace: }"
+  },
+  {
+    "id": "literal-tag-help",
+    "default": "Read <slug> before editing {name}",
+    "override": "Edit {name}; see <slug>",
+    "problem": null,
+    "values": { "name": "Ada" },
+    "rendered": "Edit Ada; see <slug>"
+  },
+  {
+    "id": "literal-template-preserved",
+    "default": "URL: https://partner.example/'{destination}'?sub_id='{sub_id}'",
+    "override": "Use https://partner.example/'{destination}'?sub_id='{sub_id}'",
+    "problem": null,
+    "values": {},
+    "rendered": "Use https://partner.example/{destination}?sub_id={sub_id}"
+  },
+  {
+    "id": "literal-template-renamed",
+    "default": "URL: https://partner.example/'{destination}'",
+    "override": "URL: https://partner.example/'{city}'",
+    "problem": "parameters"
+  },
+  {
+    "id": "literal-template-removed",
+    "default": "URL: https://partner.example/'{destination}'",
+    "override": "URL: https://partner.example/",
+    "problem": "parameters"
+  },
+  {
+    "id": "literal-template-became-runtime",
+    "default": "Use '{destination}'",
+    "override": "Use {destination}",
+    "problem": "parameters"
+  },
+  {
+    "id": "travelpayouts-help",
+    "default": "Used only when the Partner Links API fails; may contain '{destination}', '{departure_date}', '{return_date}' and '{sub_id}'.",
+    "override": "Fallback URL tokens: '{destination}', '{departure_date}', '{return_date}' and '{sub_id}'.",
+    "problem": null,
+    "values": {},
+    "rendered": "Fallback URL tokens: {destination}, {departure_date}, {return_date} and {sub_id}."
+  },
+  {
+    "id": "compact-plural-text-is-not-a-token",
+    "default": "{count, plural, one{hello} other{world}}",
+    "override": "{count, plural, one{welcome} other{everyone}}",
+    "problem": null,
+    "values": { "count": 1 },
+    "rendered": "welcome"
+  },
+  {
+    "id": "plural-copy",
+    "default": "{count, plural, one {# day} other {# days}}",
+    "override": "{count, plural, other {# nights} one {# night}}",
+    "problem": null,
+    "values": { "count": 2 },
+    "rendered": "2 nights"
+  },
+  {
+    "id": "plural-branch-quoted-name",
+    "default": "{count, plural, one {{name} has one} other {{name} has many}}",
+    "override": "{count, plural, one {'{name}' has one} other {{name} has many}}",
+    "problem": "parameters"
+  },
+  {
+    "id": "plural-branch-moved-name",
+    "default": "{count, plural, one {{name} has one} other {many}}",
+    "override": "{count, plural, one {one} other {{name} has many}}",
+    "problem": "parameters"
+  },
+  {
+    "id": "nested-select-copy",
+    "default": "{mode, select, direct {{count, plural, one {{name} has # item} other {{name} has # items}}} other {{name} is waiting}}",
+    "override": "{mode, select, other {{name} waits} direct {{count, plural, other {# items for {name}} one {# item for {name}}}}}",
+    "problem": null,
+    "values": { "mode": "direct", "count": 2, "name": "Ada" },
+    "rendered": "2 items for Ada"
+  },
+  {
+    "id": "nested-select-quoted-name",
+    "default": "{mode, select, direct {{count, plural, one {{name}} other {{name}}}} other {{name}}}",
+    "override": "{mode, select, direct {{count, plural, one {'{name}'} other {{name}}}} other {{name}}}",
+    "problem": "parameters"
+  },
+  {
+    "id": "plural-pound-quoted-away",
+    "default": "{count, plural, one {# item} other {# items}}",
+    "override": "{count, plural, one {'#' item} other {# items}}",
+    "problem": "parameters"
+  },
+  {
+    "id": "plural-offset-preserved",
+    "default": "{count, plural, offset:1 =0 {none} one {# guest} other {# guests}}",
+    "override": "{count, plural, offset:1 other {# visitors} =0 {nobody} one {# visitor}}",
+    "problem": null,
+    "values": { "count": 3 },
+    "rendered": "2 visitors"
+  },
+  {
+    "id": "plural-offset-changed",
+    "default": "{count, plural, offset:1 one {# guest} other {# guests}}",
+    "override": "{count, plural, offset:2 one {# guest} other {# guests}}",
+    "problem": "parameters"
+  },
+  {
+    "id": "selectordinal-copy",
+    "default": "{rank, selectordinal, one {#st} two {#nd} few {#rd} other {#th}}",
+    "override": "{rank, selectordinal, other {#th place} few {#rd place} two {#nd place} one {#st place}}",
+    "problem": null,
+    "values": { "rank": 2 },
+    "rendered": "2nd place"
+  },
+  {
+    "id": "plural-kind-changed",
+    "default": "{count, plural, one {# item} other {# items}}",
+    "override": "{count, selectordinal, one {# item} other {# items}}",
+    "problem": "parameters"
+  },
+  {
+    "id": "select-branch-removed",
+    "default": "{mode, select, direct {Direct} other {Other}}",
+    "override": "{mode, select, other {Other}}",
+    "problem": "parameters"
+  },
+  {
+    "id": "simple-became-number",
+    "default": "{count}",
+    "override": "{count, number}",
+    "problem": "parameters"
+  },
+  {
+    "id": "number-became-date",
+    "default": "{value, number}",
+    "override": "{value, date}",
+    "problem": "parameters"
+  },
+  {
+    "id": "date-became-time",
+    "default": "{value, date}",
+    "override": "{value, time}",
+    "problem": "parameters"
+  },
+  {
+    "id": "plural-became-simple",
+    "default": "{count, plural, one {# item} other {# items}}",
+    "override": "{count}",
+    "problem": "parameters"
+  },
+  {
+    "id": "number-style-presentation",
+    "default": "{count, number}",
+    "override": "{count, number, integer}",
+    "problem": null,
+    "values": { "count": 2.4 },
+    "rendered": "2"
+  },
+  {
+    "id": "date-style-presentation",
+    "default": "{value, date, short}",
+    "override": "Date: {value, date, long}",
+    "problem": null
+  },
+  {
+    "id": "missing-close",
+    "default": "{name}",
+    "override": "Hello {name",
+    "problem": "braces"
+  },
+  {
+    "id": "balanced-invalid-type",
+    "default": "{count}",
+    "override": "{count, unknown}",
+    "problem": "braces"
+  },
+  {
+    "id": "plural-missing-other",
+    "default": "{count, plural, one {# item} other {# items}}",
+    "override": "{count, plural, one {# item}}",
+    "problem": "braces"
+  },
+  {
+    "id": "select-missing-other",
+    "default": "{mode, select, direct {Direct} other {Other}}",
+    "override": "{mode, select, direct {Direct}}",
+    "problem": "braces"
+  },
+  {
+    "id": "duplicate-selector",
+    "default": "{count, plural, one {# item} other {# items}}",
+    "override": "{count, plural, one {# item} one {again} other {# items}}",
+    "problem": "braces"
+  },
+  {
+    "id": "empty-argument",
+    "default": "Plain text",
+    "override": "Hello {}",
+    "problem": "braces"
+  },
+  {
+    "id": "empty-number-style",
+    "default": "{count, number}",
+    "override": "{count, number, }",
+    "problem": "braces"
+  },
+  {
+    "id": "invalid-default-is-not-a-baseline",
+    "default": "Hello {name",
+    "override": "Hello {name}",
+    "problem": "braces"
+  }
+]
