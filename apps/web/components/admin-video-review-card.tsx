@@ -39,9 +39,20 @@ export type LocaleChoice = Partial<Record<LocalePart, boolean>>;
 // Where a chosen part stands, from the server: not reported yet, made, given up on (with the
 // worker's reason), or, for a dub track, uploaded by the owner in Studio.
 export type LanguagePart = { state: "working" | "ready" | "skipped" | "uploaded" | string; reason?: string | null };
+// What kind of video a tutorial is (apps/api/app/models.py VIDEO_CATEGORIES; migration 0116), the
+// list's first filter; a video nobody filed yet has null. The pipeline reports it from video.json
+// once, the owner changes it on the video's page.
+export const VIDEO_CATEGORIES = ["ai-terms", "ai-news", "tutorial", "comparison", "explainer", "story", "drama", "long-drama", "travel", "other"] as const;
+export type VideoCategory = (typeof VIDEO_CATEGORIES)[number];
+export type FacetCount = { code: string; count: number };
+// One page of the list's catalog (GET /admin/videos/browse): the tutorials that match, how many
+// there are in all, and how many each category and each state would list with the other filters kept.
+export type VideoPage = { items: ProjectSummary[]; total: number; page: number; pages: number; facets: { category: FacetCount[]; state: FacetCount[] } };
 export type ProjectSummary = {
   slug: string; title: string; stage: string; checklist: ChecklistItem[];
   youtube_video_id: string | null; last_synced_at: string; pending: number;
+  // Absent from an API older than the category filter.
+  category?: VideoCategory | null;
   // Set by the owner on the "ready to upload" card (docs/videos/HANDS-OFF.md), and when the upload
   // confirmation was approved; both absent from an API older than this page.
   youtube_publish_at?: string | null; publish_approved_at?: string | null;
@@ -162,6 +173,16 @@ export function publishState(project: ProjectSummary, now = Date.now()): Publish
   if (!finalApproved(project)) return null;
   if (!project.locales_decided_at) return "deciding";
   return project.ready_to_upload ? "ready" : "making";
+}
+
+// The pill for each of the publish flow's five states (docs/videos/LANGUAGES.md).
+const PUBLISH_TONES: Record<PublishState, string> = { deciding: "warning", making: "running", ready: "active", scheduled: "queued", published: "ok" };
+
+/** Where the video is on its way to YouTube, as a pill; nothing before the final cut is approved. */
+export function PublishPill({ project }: { project: ProjectSummary }) {
+  const t = useTranslations("admin.videoReviews");
+  const state = publishState(project);
+  return state ? <AdminStatusPill status={PUBLISH_TONES[state]}>{t(`publishStates.${state}`)}</AdminStatusPill> : null;
 }
 
 /** Whether the store has let go of this video's mp4 (the same rule as the server's prune). */

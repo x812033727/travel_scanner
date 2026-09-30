@@ -4,10 +4,11 @@ import { ArrowLeft, CheckCircle2, Circle, Clapperboard, Upload } from "lucide-re
 import { useTranslations } from "next-intl";
 import { type ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import { useAdminActionGuard } from "@/components/admin-action-guard";
-import { AdminEmptyState, AdminErrorState, AdminStatusPill } from "@/components/admin-ui";
+import { AdminErrorState, AdminStatusPill } from "@/components/admin-ui";
+import { CategoryPanel, VideoBrowser } from "@/components/admin-video-browser";
 import {
   CompilationDownload, control, finalApproved, isBlocked, type LocaleChoice, LOCALE_PARTS, LOCALES, mp4Retired, needsOwner, partStateLabel, type Project,
-  type ProjectSummary, type PublishState, publishState, REFRESH_MS, readyToUpload, type Review, ReviewCard, SLUG, UploadPackage, UploadedForm, fileUrl,
+  type ProjectSummary, PublishPill, publishState, REFRESH_MS, readyToUpload, type Review, ReviewCard, SLUG, UploadPackage, UploadedForm, fileUrl,
   useRefresh, useWhen, youtubeSyncStuck,
 } from "@/components/admin-video-review-card";
 import { AdminVideoSeries, DocPanel, type Series } from "@/components/admin-video-series";
@@ -197,16 +198,6 @@ function LanguagePanel({ slug, project, canManage, onSaved }: { slug: string; pr
   </section>;
 }
 
-// The pill for each of the publish flow's five states (docs/videos/LANGUAGES.md).
-const PUBLISH_TONES: Record<PublishState, string> = { deciding: "warning", making: "running", ready: "active", scheduled: "queued", published: "ok" };
-
-/** Where the video is on its way to YouTube, as a pill; nothing before the final cut is approved. */
-function PublishPill({ project }: { project: ProjectSummary }) {
-  const t = useTranslations("admin.videoReviews");
-  const state = publishState(project);
-  return state ? <AdminStatusPill status={PUBLISH_TONES[state]}>{t(`publishStates.${state}`)}</AdminStatusPill> : null;
-}
-
 /**
  * Whether a series read is a one-off's: the API's kind, which every series response carries
  * (SeriesSummary.kind in apps/api/app/video_automation/schemas.py, "series" by default). A response
@@ -326,6 +317,7 @@ function ProjectDetail({ slug, onBack, onOpen }: { slug: string; onBack: () => v
         {project.series_slug && !project.compilation && <p className="text-sm text-[var(--muted)]">{t("episodeOf", { series: project.series_slug, number: project.episode_number ?? 0 })}</p>}
         {project.series_slug && project.compilation && <p className="text-sm text-[var(--muted)]">{t("compilationOf", { series: project.series_slug })}</p>}
         <ShortFacts project={project} onOpen={onOpen} />
+        {!short && <CategoryPanel slug={slug} project={project} canManage={manage.allowed} onSaved={load} />}
         <CompilationDownload project={project} canManage={manage.allowed} />
         {project.youtube_video_id && <p className="text-sm">
           {t("youtube", { id: project.youtube_video_id })}
@@ -428,9 +420,12 @@ function Group({ title, children }: { title: string; children: ReactNode }) {
 
 /**
  * The tutorials (slides videos): dramas and Shorts live on their own tabs, and the list is asked
- * for without the Shorts, which would otherwise crowd the tutorials out of it. What waits for the owner comes
- * first (a decision, a stopped video, a finished cut whose languages are not chosen), then what is
- * ready to upload, then the rest by state (docs/videos/HANDS-OFF.md, docs/videos/LANGUAGES.md).
+ * for without the Shorts, which would otherwise crowd the tutorials out of it. What waits for the owner
+ * comes first (a decision, a stopped video, a finished cut whose languages are not chosen), then what is
+ * ready to upload (docs/videos/HANDS-OFF.md, docs/videos/LANGUAGES.md); under the two, every tutorial
+ * is in the catalog, one line each, with the category and state filters, a search and pages
+ * (VideoBrowser). A video that needs the owner is in both: the group is the reminder, the catalog the
+ * record.
  */
 function ProjectList({ onOpen }: { onOpen: (slug: string) => void }) {
   const t = useTranslations("admin.videoReviews");
@@ -442,26 +437,18 @@ function ProjectList({ onOpen }: { onOpen: (slug: string) => void }) {
     api<ProjectSummary[]>("/admin/videos?shorts=exclude").then((value) => { setProjects(value.filter((project) => project.format !== "drama" && !project.shorts_line)); setError(""); }).catch((problem: unknown) => setError(problem instanceof Error ? problem.message : ""));
   }, []);
   useRefresh(load);
+  // A video sent or linked from its card changes its line in the catalog too: both read again.
+  const [revision, setRevision] = useState(0);
+  const changed = useCallback(() => { load(); setRevision((value) => value + 1); }, [load]);
   const groups = useMemo(() => {
     const listed = projects ?? [];
-    const rest = listed.filter((project) => !needsOwner(project) && !readyToUpload(project));
-    return {
-      needs: listed.filter(needsOwner),
-      ready: listed.filter((project) => !needsOwner(project) && readyToUpload(project)),
-      working: rest.filter((project) => !project.youtube_video_id && !project.dropped_at),
-      published: rest.filter((project) => Boolean(project.youtube_video_id) && !project.dropped_at),
-      dropped: rest.filter((project) => Boolean(project.dropped_at)),
-    };
+    return { needs: listed.filter(needsOwner), ready: listed.filter((project) => !needsOwner(project) && readyToUpload(project)) };
   }, [projects]);
-  if (error) return <AdminErrorState title={t("loadError")} detail={error} retry={load} retryLabel={t("retry")} />;
-  if (projects && projects.length === 0) return <AdminEmptyState title={t("empty")} detail={t("emptyDetail")} />;
-  const rows = (items: ProjectSummary[]) => items.map((project) => <ProjectItem key={project.slug} project={project} onOpen={onOpen} />);
   return <div className="grid gap-6" aria-label={t("listTitle")}>
-    {groups.needs.length > 0 && <Group title={t("needsYou")}>{rows(groups.needs)}</Group>}
-    {groups.ready.length > 0 && <Group title={t("readyToUpload")}>{groups.ready.map((project) => <ReadyCard key={project.slug} project={project} canManage={manage.allowed} connection={connection} onOpen={onOpen} onLinked={load} />)}</Group>}
-    {groups.working.length > 0 && <Group title={t("inProgress")}>{rows(groups.working)}</Group>}
-    {groups.published.length > 0 && <Group title={t("publishedSection")}>{rows(groups.published)}</Group>}
-    {groups.dropped.length > 0 && <Group title={t("dropped")}>{rows(groups.dropped)}</Group>}
+    {error && <AdminErrorState title={t("loadError")} detail={error} retry={load} retryLabel={t("retry")} />}
+    {groups.needs.length > 0 && <Group title={t("needsYou")}>{groups.needs.map((project) => <ProjectItem key={project.slug} project={project} onOpen={onOpen} />)}</Group>}
+    {groups.ready.length > 0 && <Group title={t("readyToUpload")}>{groups.ready.map((project) => <ReadyCard key={project.slug} project={project} canManage={manage.allowed} connection={connection} onOpen={onOpen} onLinked={changed} />)}</Group>}
+    <VideoBrowser onOpen={onOpen} revision={revision} />
   </div>;
 }
 
