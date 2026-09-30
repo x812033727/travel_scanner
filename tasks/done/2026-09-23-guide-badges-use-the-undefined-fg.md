@@ -1,14 +1,14 @@
 ---
 id: 2026-09-23-guide-badges-use-the-undefined-fg
 title: Guide badges use the undefined --fg token and fail contrast
-status: open
+status: done
 priority: P3
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-09-30T10:36:07Z
 created_at: 2026-09-23T23:33:28Z
-completed_at:
-branch:
+completed_at: 2026-09-30T10:52:27Z
+branch: claude/guide-badge-fg
 depends_on: []
 scope:
   - apps/web/components/guides/related-grid.tsx
@@ -17,7 +17,6 @@ scope:
   - apps/web/components/guides/search-results.tsx
   - apps/web/app/globals.css
 ---
-
 
 # Guide badges use the undefined --fg token and fail contrast
 
@@ -31,13 +30,13 @@ fixed only `components/guides/card.tsx` (now `--ink`).
 
 ## Definition of done
 
-- [ ] No component or stylesheet references `var(--fg)`; every badge reads at 4.5:1 or better.
+- [x] No component or stylesheet references `var(--fg)`; every badge reads at 4.5:1 or better.
 
 ## Steps
 
-- [ ] `text-[var(--fg)]` -> `text-[var(--ink)]` in `related-grid.tsx`, `partner-link.tsx`,
+- [x] `text-[var(--fg)]` -> `text-[var(--ink)]` in `related-grid.tsx`, `partner-link.tsx`,
       `article.tsx`, `search-results.tsx`.
-- [ ] `app/globals.css` (around line 3593, `color: var(--fg)`): find what it styles, use `--ink`.
+- [x] `app/globals.css` (around line 3593, `color: var(--fg)`): find what it styles, use `--ink`.
 
 ## How to verify
 
@@ -47,3 +46,8 @@ excluded); `npx playwright test e2e/readability.spec.ts` passes.
 ## Notes
 
 Found by CI on PR #702 (2026-09-23).
+- 2026-09-30 (claude-opus-5-5): the four badges now use `text-[var(--ink)]`, and
+  `globals.css` `.app-term-card` (the glossary hover card) uses `color: var(--ink)`.
+  `--ink` is defined for every palette and dark mode. No `var(--fg)` remains under
+  `apps/web/app`, `components` or `lib`. `e2e/readability.spec.ts` on a served build:
+  48 passed; lint, typecheck and `vitest run components/guides` (157 tests) green.

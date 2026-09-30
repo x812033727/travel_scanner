@@ -55,6 +55,6 @@ The owner's channel stance (numbered points on the settings tab, `docs/videos/HA
 - No verification narration anywhere the viewer will see it (titles, hooks, chapter names).
 - Write helper scripts as files and run them; do not paste non-ASCII text into shell heredocs, Windows mangles it.
 
-## Report (at most 30 lines, pasted back)
+## Report (pasted back; the coordinator scans it, one line per item)
 
 The premise in one line; the characters with one line each; the three outline options in one line each; which one you recommend and why; the stance you proposed for 站主觀點; the music direction; anything the owner must decide besides the outline (a character's voice, a style frame).
