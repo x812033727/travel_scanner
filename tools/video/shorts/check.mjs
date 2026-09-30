@@ -28,6 +28,9 @@ const fit = (text, max) => [...String(text)].slice(0, max).join('');
 /** The hash a check is bound to: the clips in order, so a check of other audio never counts. */
 export const audioHash = (clips) => sha256(clips.map((clip) => sha256(clip)).join(''));
 
+/** The exact intended words in order; JSON preserves the boundary between phrases. */
+export const phrasesHash = (phrases) => sha256(JSON.stringify(phrases));
+
 /** A build's clip as the transcriber takes it. */
 export function transcribable(clip) {
   const samples = requireNarrationFormat(parseWav(clip));
@@ -35,7 +38,7 @@ export function transcribable(clip) {
 }
 
 /**
- * The check of a build's clips: { ok, audio_sha256, lines, checked, flagged, threshold,
+ * The check of a build's clips: { ok, audio_sha256, phrases_sha256, lines, checked, flagged, threshold,
  * transcribe_calls, judge_calls, results, flagged_lines }. `transcribe` and `judge` are the
  * site's two calls; tests hand in their own. `prepare` turns a clip into what is sent.
  */
@@ -73,6 +76,7 @@ export async function checkPhrases({ phrases, clips, lexicon = null, threshold =
   return {
     ok: flagged.length === 0,
     audio_sha256: audioHash(clips),
+    phrases_sha256: phrasesHash(phrases),
     lines: phrases.length,
     checked: results.length,
     flagged: flagged.length,
