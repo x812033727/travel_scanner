@@ -1,13 +1,13 @@
 ---
 id: 2026-09-30-read-a-model-answer-s-first
 title: Read a model answer's first complete JSON object
-status: open
+status: done
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-09-30T01:21:08Z
 created_at: 2026-09-30T01:12:52Z
-completed_at:
+completed_at: 2026-09-30T01:21:19Z
 branch:
 depends_on: []
 scope:
@@ -30,16 +30,16 @@ MAX_STAGE_FAILURES in a row the video is blocked. The answer is kept in the work
 
 ## Definition of done
 
-- [ ] `parseAnswer` returns the first complete top-level JSON object in the answer (a string-
+- [x] `parseAnswer` returns the first complete top-level JSON object in the answer (a string-
       and escape-aware brace scan), fenced or not, with any text before or after it ignored.
-- [ ] An answer with no complete object still throws the same SyntaxError.
-- [ ] Tests: two objects back to back, a trailing sentence with `}` in it, braces inside strings,
+- [x] An answer with no complete object still throws the same SyntaxError.
+- [x] Tests: two objects back to back, a trailing sentence with `}` in it, braces inside strings,
       and the answer above (or a cut of it) if it turns out to be one of those.
 
 ## Steps
 
-- [ ] Read the kept answer around character 16172 to see what the model actually did.
-- [ ] Write the scan and its tests.
+- [x] Read the kept answer around character 16172 to see what the model actually did.
+- [x] Write the scan and its tests.
 
 ## How to verify
 
@@ -49,3 +49,7 @@ MAX_STAGE_FAILURES in a row the video is blocked. The answer is kept in the work
 
 - Filed at the owner's request on 2026-09-30 while `2026-09-28-sothatswhy-shorts-from-episode`
   still listed prompts.mjs in its scope (its PRs #904, #950, #962 have merged).
+- What the kept answer was: the model closed the top-level object one brace early,
+  `{"worksheet":{…}}` then `,"fixes":[…]}`. Besides the first complete object, `parseAnswer` now
+  tries dropping that brace when a `,` follows the object; the real answer reads whole
+  (109 worksheet lines, 5 fixes). Only `worksheet` is used by the caption step.
