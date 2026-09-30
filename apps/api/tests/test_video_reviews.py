@@ -5,23 +5,27 @@ from __future__ import annotations
 import hashlib
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 from unittest.mock import AsyncMock, MagicMock
 from uuid import uuid4
 
 import pytest
 from fastapi import FastAPI
 from httpx import ASGITransport, AsyncClient
+from sqlalchemy import String, Table
 
 from app.auth.service import current_user
 from app.config import Settings
 from app.db import get_session
-from app.models import User, VideoProject, VideoReview, VideoToolToken
+from app.models import VIDEO_CATEGORIES, User, VideoProject, VideoReview, VideoToolToken
 from app.problems import AppError, app_error_handler
 from app.video_automation.judge import QA_AUTO_APPROVED_NOTE
+from app.video_automation.models import VideoDramaEpisode, VideoDramaRequest, VideoDramaSeries
 from app.video_automation.settings import AUTO_APPROVED_STORYBOARD_NOTE
 from app.video_reviews import admin_api, admin_service
 from app.video_reviews.schemas import (
+    VIDEO_CATEGORY_CODES,
+    CategoryIn,
     DecisionIn,
     DropIn,
     DubLocalesIn,
@@ -582,11 +586,176 @@ async def test_dropping_a_video_closes_its_reviews_deletes_its_previews_and_is_f
     assert submitted.value.code == decided_after.value.code == "video_project_dropped"
 
 
+def _series_episode(
+    episode_status: str, request_status: str
+) -> tuple[VideoDramaSeries, VideoDramaEpisode, VideoDramaRequest]:
+    """A three-episode drama whose second episode is being made as the video "saga-two"."""
+    series = VideoDramaSeries(
+        id=uuid4(), slug="saga", title="長篇", status="active", planned_episodes=3
+    )
+    request = VideoDramaRequest(
+        id=uuid4(),
+        premise="長篇 第 2 集",
+        status=request_status,
+        slug="saga-two",
+        series_id=series.id,
+        episode_number=2,
+    )
+    episode = VideoDramaEpisode(
+        id=uuid4(),
+        series_id=series.id,
+        number=2,
+        slug="saga-two",
+        status=episode_status,
+        request_id=request.id,
+    )
+    return series, episode, request
+
+
+def _dropping(
+    monkeypatch: pytest.MonkeyPatch,
+    project: VideoProject,
+    found: tuple[VideoDramaEpisode, VideoDramaSeries] | None,
+    request: VideoDramaRequest,
+) -> AsyncMock:
+    """A session on which dropping ``project`` finds ``found`` as its episode and ``request``
+    as the row that episode travelled as."""
+    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
+    monkeypatch.setattr(admin_service, "_reviews", AsyncMock(return_value=[]))
+    monkeypatch.setattr(admin_service, "project_view", AsyncMock(return_value="view"))
+    if found is not None:
+        monkeypatch.setattr(admin_service, "_episode_of", AsyncMock(return_value=found))
+    session = AsyncMock()
+    session.add = MagicMock()
+    session.scalar = AsyncMock(return_value=request)
+    session.scalars = AsyncMock(return_value=[] if found is None else [found[0]])
+    return session
+
+
+@pytest.mark.asyncio
+async def test_dropping_an_episode_s_video_cancels_the_request_it_was_started_as(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    series, episode, request = _series_episode("started", "started")
+    project = VideoProject(
+        id=uuid4(), slug="saga-two", title="長篇 第 2 集", stage="outline", series_slug="saga"
+    )
+    session = _dropping(monkeypatch, project, (episode, series), request)
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+
+    await admin_service.drop_project(session, _store(tmp_path), "saga-two", owner, DropIn(note="x"))
+
+    assert episode.status == "skipped"
+    assert request.status == "cancelled" and request.cancelled_at == project.dropped_at
+    assert request.updated_at == project.dropped_at and request.finished_at is None
+    assert session.scalar.await_count == 1 and session.commit.await_count == 1
+    assert series.status == "active", "episodes 1 and 3 are still to come"
+
+
+@pytest.mark.asyncio
+async def test_dropping_an_episode_s_video_after_it_was_done_leaves_its_request_done(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+    project = VideoProject(
+        id=uuid4(), slug="saga-two", title="長篇 第 2 集", stage="final", series_slug="saga"
+    )
+    series, episode, request = _series_episode("done", "done")
+    session = _dropping(monkeypatch, project, (episode, series), request)
+    await admin_service.drop_project(session, _store(tmp_path), "saga-two", owner, DropIn(note="x"))
+    assert (episode.status, request.status, request.cancelled_at) == ("done", "done", None)
+
+    # An episode still open whose request the worker already reported done keeps it done too.
+    project.dropped_at = None
+    series, episode, request = _series_episode("started", "done")
+    session = _dropping(monkeypatch, project, (episode, series), request)
+    await admin_service.drop_project(session, _store(tmp_path), "saga-two", owner, DropIn(note="x"))
+    assert (episode.status, request.status, request.cancelled_at) == ("skipped", "done", None)
+
+
+@pytest.mark.asyncio
+async def test_dropping_a_video_of_no_series_touches_no_drama_request(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    _, _, request = _series_episode("started", "started")
+    project = VideoProject(id=uuid4(), slug="ai-agent-permissions", title="教學", stage="outline")
+    session = _dropping(monkeypatch, project, None, request)
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+
+    await admin_service.drop_project(
+        session, _store(tmp_path), "ai-agent-permissions", owner, DropIn(note="x")
+    )
+
+    assert project.dropped_at is not None
+    assert (request.status, request.cancelled_at) == ("started", None)
+    assert session.scalar.await_count == 0 and session.scalars.await_count == 0
+    assert [call.args[0].action for call in session.add.call_args_list] == [
+        "video_project_dropped"
+    ]
+
+
 def test_a_report_keeps_the_source_article_an_older_tool_does_not_send() -> None:
     assert ProjectIn(title="t", stage="s").source_guide is None
     assert ProjectIn(title="t", stage="s", source_guide="ai-news-x-20260820").source_guide
     with pytest.raises(ValueError):
         ProjectIn(title="t", stage="s", source_guide="../etc")
+    assert ProjectIn(title="t", stage="s").category is None, "an older tool sends no category"
+    assert ProjectIn(title="t", stage="s", category="tutorial").category == "tutorial"
+    with pytest.raises(ValueError):
+        ProjectIn(title="t", stage="s", category="news")
+
+
+def test_the_categories_are_one_list_in_the_model_the_schema_and_the_migration() -> None:
+    assert set(VIDEO_CATEGORY_CODES) == set(VIDEO_CATEGORIES)
+    assert len(VIDEO_CATEGORY_CODES) == 10
+    table = cast(Table, VideoProject.__table__)
+    column = table.c.category
+    assert isinstance(column.type, String) and column.type.length == 16 and column.nullable
+    assert any(constraint.name == "ck_video_project_category" for constraint in table.constraints)
+    # The owner may clear a category; the key itself is not optional.
+    assert CategoryIn.model_validate({"category": None}).category is None
+    with pytest.raises(ValueError):
+        CategoryIn.model_validate({})
+    with pytest.raises(ValueError):
+        CategoryIn.model_validate({"category": "none"})
+
+
+@pytest.mark.asyncio
+async def test_the_owner_files_a_video_under_a_category_and_the_same_choice_is_no_change(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    project = VideoProject(id=uuid4(), slug="v", title="AI 模型怎麼挑", stage="final")
+    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
+    monkeypatch.setattr(admin_service, "project_view", AsyncMock(return_value="view"))
+    session = AsyncMock()
+    session.add = MagicMock()
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+    assert admin_service._summary(project, 0)["category"] is None
+
+    filed = CategoryIn(category="tutorial")
+    assert await admin_service.set_category(session, "v", owner, filed) == "view"
+    assert project.category == "tutorial"
+    audit = session.add.call_args.args[0]
+    assert audit.action == "video_category_set" and audit.actor_user_id == owner.id
+    assert audit.target == f"video_project:{project.id}"
+    assert audit.metadata_json == {"slug": "v", "category": "tutorial", "previous": None}
+    assert session.commit.await_count == 1
+    assert admin_service._summary(project, 0)["category"] == "tutorial"
+
+    assert await admin_service.set_category(session, "v", owner, filed) == "view"
+    assert session.add.call_count == 1 and session.commit.await_count == 1, (
+        "the same category again is not a change"
+    )
+
+    cleared = CategoryIn(category=None)
+    assert await admin_service.set_category(session, "v", owner, cleared) == "view"
+    assert project.category is None and session.commit.await_count == 2
+    assert session.add.call_args.args[0].metadata_json["previous"] == "tutorial"
+
+    # A dropped video is filed too: the catalog lists it under its category.
+    project.dropped_at = datetime.now(UTC)
+    await admin_service.set_category(session, "v", owner, filed)
+    assert project.category == "tutorial"
 
 
 def test_a_review_payload_is_capped() -> None:
@@ -633,6 +802,12 @@ async def test_admin_routes_need_content_capabilities(
     monkeypatch.setattr(admin_service, "retry_project", retry)
     monkeypatch.setattr(admin_service, "set_dub_locales", dubs)
     monkeypatch.setattr(admin_service, "set_locales", languages)
+    category = AsyncMock()
+    monkeypatch.setattr(admin_service, "set_category", category)
+    empty_page = {
+        "items": [], "total": 0, "page": 1, "pages": 0, "facets": {"category": [], "state": []},
+    }
+    monkeypatch.setattr(admin_service, "browse_projects", AsyncMock(return_value=empty_page))
     app = _app(viewer)
     review = f"/api/v1/admin/videos/v/reviews/{uuid4()}/decision"
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
@@ -646,7 +821,14 @@ async def test_admin_routes_need_content_capabilities(
         not_chosen = await client.put(
             "/api/v1/admin/videos/v/languages", json={"locales": {"en": {"captions": True}}}
         )
+        browsed = await client.get("/api/v1/admin/videos/browse")
+        not_filed = await client.put(
+            "/api/v1/admin/videos/v/category", json={"category": "tutorial"}
+        )
     assert nobody.status_code == 403 and listed.status_code == 200
+    assert browsed.status_code == 200, "a viewer reads the catalog"
+    assert not_filed.status_code == 403, "but does not file a video"
+    category.assert_not_awaited()
     assert refused.status_code == 403, "a viewer can read but not decide"
     assert not_dropped.status_code == 403, "nor drop a video"
     assert not_retried.status_code == 403, "nor retry a blocked video"
@@ -1012,6 +1194,73 @@ async def test_a_compilation_s_cut_is_downloaded_with_byte_ranges_and_only_by_a_
     ) as client:
         refused = await client.get("/api/v1/admin/videos/s-full/download")
     assert refused.status_code == 403, "a viewer watches previews but does not take the cut"
+
+
+@pytest.mark.asyncio
+async def test_the_catalog_takes_a_category_a_state_a_search_and_a_page(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+    owner._admin_roles_cache = frozenset({"owner"})  # type: ignore[attr-defined]
+    empty_page = {
+        "items": [], "total": 0, "page": 1, "pages": 0, "facets": {"category": [], "state": []},
+    }
+    browsed = AsyncMock(return_value=empty_page)
+    monkeypatch.setattr(admin_service, "browse_projects", browsed)
+    filed = AsyncMock(
+        return_value={
+            "slug": "v", "title": "t", "stage": "s", "checklist": [], "youtube_video_id": None,
+            "last_synced_at": "2026-09-30T00:00:00Z", "pending": 0, "category": "tutorial",
+            "reviews": [],
+        }
+    )
+    monkeypatch.setattr(admin_service, "set_category", filed)
+
+    async def settings(_: Any) -> Settings:
+        return Settings(video_review_dir=str(tmp_path), video_work_dir=str(tmp_path))
+
+    monkeypatch.setattr(admin_api, "load_runtime_settings", settings)
+    url = "/api/v1/admin/videos/browse"
+    async with AsyncClient(
+        transport=ASGITransport(app=_app(owner)), base_url="http://test"
+    ) as client:
+        plain = await client.get(url)
+        narrowed = await client.get(
+            url,
+            params={"category": "none", "state": "published", "q": "模型", "page": 3, "limit": 10},
+        )
+        refused = [
+            await client.get(url, params=params)
+            for params in (
+                {"category": "bogus"},
+                {"state": "library"},
+                {"page": 0},
+                {"limit": 101},
+                {"q": "x" * 81},
+            )
+        ]
+        set_ok = await client.put("/api/v1/admin/videos/v/category", json={"category": "tutorial"})
+        set_bad = await client.put("/api/v1/admin/videos/v/category", json={"category": "news"})
+        set_none = await client.put("/api/v1/admin/videos/v/category", json={})
+    assert plain.status_code == narrowed.status_code == 200
+    assert plain.json()["facets"] == {"category": [], "state": []}
+    calls = [call.kwargs for call in browsed.await_args_list]
+    keys = ("category", "state", "q", "page", "limit")
+    assert {k: calls[0][k] for k in keys} == {
+        "category": None, "state": None, "q": None, "page": 1,
+        "limit": admin_service.BROWSE_PAGE_SIZE,
+    }
+    assert {k: calls[1][k] for k in keys} == {
+        "category": "none", "state": "published", "q": "模型", "page": 3, "limit": 10,
+    }
+    assert calls[1]["work_dir"] == str(tmp_path)
+    assert [response.status_code for response in refused] == [422] * 5
+    assert len(calls) == 2, "a refused request never reaches the service"
+    assert set_ok.status_code == 200 and set_ok.json()["category"] == "tutorial"
+    assert filed.await_args.args[1] == "v"
+    assert filed.await_args.args[3].category == "tutorial"
+    assert set_bad.status_code == 422 and set_none.status_code == 422
+    assert filed.await_count == 1, "a bad category never reaches the service"
 
 
 @pytest.mark.asyncio

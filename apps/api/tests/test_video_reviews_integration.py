@@ -22,7 +22,15 @@ from app.models import AdminAuditLog, User, VideoProject, VideoReview, VideoTool
 from app.problems import AppError
 from app.video_automation import settings as automation
 from app.video_reviews import admin_service as service
-from app.video_reviews.schemas import DecisionIn, DropIn, LocalesIn, ProjectIn, ReviewIn, ReviewOut
+from app.video_reviews.schemas import (
+    CategoryIn,
+    DecisionIn,
+    DropIn,
+    LocalesIn,
+    ProjectIn,
+    ReviewIn,
+    ReviewOut,
+)
 from app.video_reviews.storage import ReviewStore
 from app.video_youtube import vps
 
@@ -672,3 +680,91 @@ async def test_concurrent_owner_decision_refreshes_a_preloaded_superseded_review
         ))
         assert [row.status for row in rows] == ["superseded", "pending"]
         assert all(row.decided_at is None for row in rows)
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_the_catalog_files_tutorials_by_category_state_and_search(tmp_path: Path) -> None:
+    """docs/videos/HANDS-OFF.md §影片分類: the review tab's catalog of tutorials, its filters
+    and their counts, and a report that files a video only while nobody has."""
+    tag = uuid4().hex[:10]
+    store = ReviewStore(tmp_path, max_file_bytes=10_000, max_total_bytes=50_000)
+    async with SessionFactory() as session:
+        owner = User(email=f"video-catalog-{uuid4()}@example.com", password_hash="unused")
+        session.add(owner)
+        await session.commit()
+
+        async def report(slug: str, **fields: Any) -> None:
+            await service.upsert_project(
+                session, store, f"{tag}-{slug}", ProjectIn(stage="outline", **fields)
+            )
+
+        await report("news", title=f"Gemini 學生方案 {tag}", category="ai-news")
+        await report("terms", title="什麼是 token", category="ai-terms")
+        await report("unfiled", title="AI 模型怎麼挑")
+        await report("done", title="Siri 怎麼開", category="tutorial", youtube_video_id="a" * 11)
+        await report("gone", title="重複的教學", category="tutorial")
+        await service.drop_project(
+            session, store, f"{tag}-gone", owner, DropIn(note="第二批做過了")
+        )
+        await report("drama", title="山海經", format="drama", category="story")
+        await report("short", title="精華", format="shorts", shorts_line="cut", category="other")
+
+        # A later report does not overwrite a category; the owner's choice does, and sticks.
+        await report("news", title=f"Gemini 學生方案 {tag}", category="other")
+        assert (await service.project_view(session, f"{tag}-news")).category == "ai-news"
+        await service.set_category(
+            session, f"{tag}-unfiled", owner, CategoryIn(category="comparison")
+        )
+        await report("unfiled", title="AI 模型怎麼挑", category="tutorial")
+        assert (await service.project_view(session, f"{tag}-unfiled")).category == "comparison"
+
+        mine = lambda page: [item.slug.removeprefix(f"{tag}-") for item in page.items]  # noqa: E731
+        everything = await service.browse_projects(session, q=tag, limit=100)
+        assert set(mine(everything)) == {"news", "terms", "unfiled", "done", "gone", "drama"}, (
+            "the Short has its own tab; a drama is in the catalog like a tutorial"
+        )
+        assert everything.total == 6 and everything.pages == 1
+        counts = {facet.code: facet.count for facet in everything.facets.category}
+        assert counts == {
+            "ai-terms": 1, "ai-news": 1, "tutorial": 2, "comparison": 1, "explainer": 0,
+            "story": 1, "drama": 0, "long-drama": 0, "travel": 0, "other": 0, "none": 0,
+        }
+        assert {f.code: f.count for f in everything.facets.state} == {
+            "working": 4, "published": 1, "dropped": 1
+        }
+
+        tutorials = await service.browse_projects(session, q=tag, category="tutorial")
+        assert set(mine(tutorials)) == {"done", "gone"}
+        assert {f.code: f.count for f in tutorials.facets.state} == {
+            "working": 0, "published": 1, "dropped": 1
+        }, "the state counts respect the category"
+        assert {f.code: f.count for f in tutorials.facets.category}["ai-news"] == 1, (
+            "the category counts do not narrow themselves"
+        )
+        assert mine(await service.browse_projects(session, q=tag, state="published")) == ["done"]
+        assert mine(await service.browse_projects(session, q=tag, state="dropped")) == ["gone"]
+        working = await service.browse_projects(session, q=tag, state="working")
+        assert set(mine(working)) == {"news", "terms", "unfiled", "drama"}
+
+        await service.set_category(session, f"{tag}-terms", owner, CategoryIn(category=None))
+        assert mine(await service.browse_projects(session, q=tag, category="none")) == ["terms"]
+
+        # Other runs' rows share the titles, so the search carries this run's tag too.
+        found = await service.browse_projects(session, q=f"gEMINI 學生方案 {tag}")
+        assert mine(found) == ["news"], "the search reads the title, whatever the case"
+        assert mine(await service.browse_projects(session, q=f"{tag}%")) == []
+        assert mine(await service.browse_projects(session, q=f"{tag}_")) == [], (
+            "SQL wildcards are letters"
+        )
+
+        paged = await service.browse_projects(session, q=tag, limit=4, page=2)
+        assert (paged.total, paged.pages, paged.page, len(paged.items)) == (6, 2, 2, 2)
+        first = await service.browse_projects(session, q=tag, limit=2, page=1)
+        assert first.items[0].last_synced_at >= first.items[1].last_synced_at, "newest first"
+
+        actions = await session.scalars(
+            select(AdminAuditLog.action).where(AdminAuditLog.actor_user_id == owner.id)
+        )
+        assert sorted(actions) == [
+            "video_category_set", "video_category_set", "video_project_dropped"
+        ]

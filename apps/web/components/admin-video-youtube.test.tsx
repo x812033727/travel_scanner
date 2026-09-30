@@ -45,7 +45,8 @@ function stub(answer: (url: string, method: string, body: unknown) => unknown) {
       enabled: false, url: null, channel_id: null, desktop_url: null, secret_set: false, configured: false,
       source: "none", updated_at: null, last_test_status: null, last_test_message: null, last_tested_at: null,
     }));
-    const value = answer(url, method, body);
+    // The catalog under the groups (admin-video-browser.tsx) is not what these tests look at.
+    const value = url.includes("/admin/videos/browse") ? { items: [], total: 0, page: 1, pages: 0, facets: { category: [], state: [] } } : answer(url, method, body);
     return Promise.resolve(value instanceof Response ? value : Response.json(value));
   }));
   return calls;

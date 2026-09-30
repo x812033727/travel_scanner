@@ -102,6 +102,12 @@
 - `UPLOAD.md` 只留操作步驟。原本「上架前自我檢查」的項目都已經併進自動品管。
 - `/admin/videos` 最上面新增「可以上架」：每支列出標題、長度、章節數、下載連結、中文標題、說明欄與標籤的複製鈕，以及揭露要怎麼勾。站主上傳之後，在同一張卡片貼上 YouTube 網址（第一步之後，也在這裡選上架時間）。伺服器記下 `youtube_video_id`，工人下一輪把它寫進工作區的 `video.json`，這支影片就算完成。
 
+## 影片分類（2026-09-30 加）
+
+- 每支影片有一個 `category`，十選一：`ai-terms` AI 名詞解釋、`ai-news` AI／科技時事、`tutorial` 教學實作、`comparison` 比較評測、`explainer` 觀念解說、`story` 品牌故事、`drama` 漫劇（`DRAMA.md`、`SERIES.md` 的三分鐘一集）、`long-drama` 長篇劇（接下來規劃的一集 40–60 分鐘、40–50 集的作品）、`travel` 旅遊、`other` 其他；沒有就是「未分類」。清單定義在 `apps/api/app/models.py` 的 `VIDEO_CATEGORIES`，工具端同一份在 `tools/video/core/schema.mjs`，資料庫用 `ck_video_project_category` 擋（遷移 0116）。
+- **誰填**：`video.json` 頂層可以寫 `category`，工具回報時帶上；伺服器只在這支影片還沒分類時採用，之後的回報不會覆寫，因為工人每個階段都會重送一次回報，若每次覆寫，站主在後台改的會被洗掉。站主在 `/admin/videos` 的影片詳情頁隨時可以改（`PUT /admin/videos/{slug}/category`，寫 `video_category_set` 稽核），改成「未分類」也可以。品牌故事一律 `story`；`import` 的 `meta.json` 可帶 `category`。遷移用四條規則回填既有影片（只填未分類的、依序）：品牌故事作品（`video_drama_series.kind = story`）的集是 `story`、其餘 `format = drama` 的非 Shorts 影片是 `drama`、`source_guide` 以 `ai-news-` 開頭的是時事、slug 以 `ai-term-` 開頭的是名詞解釋，其餘留給站主。
+- **清單**：「等你決定」與「可以上架」兩組維持在最上面；底下是全部影片的目錄（`GET /admin/videos/browse`，教學與戲劇都在，只有 Shorts 不在、留在 Shorts 分頁）：分類與狀態（進行中／已上架／已放棄）兩排篩選膠囊帶數量、標題或代號搜尋、每頁 30 支的分頁，條件都在網址（`category`、`state`、`q`、`page`）；戲劇集在標題下標明作品與集數，戲劇分頁照舊。舊的 `GET /admin/videos` 清單形狀不變，工人與其他分頁照舊讀它。
+
 ## YouTube API：分兩步
 
 **第一步：不需要稽核。** YouTube 鎖成私人的，只有「未通過稽核的 API 專案用 `videos.insert` 上傳」的影片。站主在 Studio 上傳的私人影片，可以用 `videos.update` 設定 `status.publishAt`（官方規則：影片必須是私人、而且從來沒有公開過；更新時也要把 `privacyStatus` 設成 `private`）。流程是：

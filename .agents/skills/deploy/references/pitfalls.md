@@ -44,7 +44,7 @@
 
 - 磁碟滿了先看 `/var/lib/containerd`，不是 `/var/lib/docker`，也不是發布目錄（77 個目錄只佔 22 GB，containerd 佔 127 GB）。
 - `docker image prune` 幾乎回收不到東西：每次部署留下的 `:<sha40>` 標籤不是 dangling。`docker system df` 的兩個數字加起來超過磁碟總量，就是共享 layer 的訊號，能回收多少事前算不出來。
-- `docker builder prune -af` 才是大槓桿（一次 121.6 GB），站台不受影響，冷建置只多約 4 分鐘；「8 到 10 分鐘」是過時的說法。
+- `docker builder prune -af` 才是大槓桿（一次 121.6 GB），站台不受影響，冷建置只多約 4 分鐘。
 - 清發布目錄只挑 `-type d`，40 個鬆散檔案裡有 `mokaair-deploy.lock`（四把鎖之一）與驅動還會用到的腳本。
 
 ## nginx 與邊緣層

@@ -24,6 +24,6 @@ DRAFT: `<VIDEO_DOCS>/` (`video.json`, `claims.md`, `brief.md`, and `verify-1.md`
 
 ## Output
 
-Write `<VIDEO_DOCS>/verify-<ROUND>.md` with the full claim table (# ｜ claim ｜ where (line id or scene.data path) ｜ URL ｜ HTTP status ｜ verdict ｜ before → after), then a summary: claims checked, confirmed, changed, not found; facts that expire soon and the official date you saw; opinion mismatches; listener findings; the lint result; things you suspected but did not change; and whether a SECOND ROUND is required (rule: more than three FACT changes in this round → yes). Paste the summary (at most 40 lines) as your reply. Never call the script verified while any claim is unresolved.
+Write `<VIDEO_DOCS>/verify-<ROUND>.md` with the full claim table (# ｜ claim ｜ where (line id or scene.data path) ｜ URL ｜ HTTP status ｜ verdict ｜ before → after), then a summary: claims checked, confirmed, changed, not found; facts that expire soon and the official date you saw; opinion mismatches; listener findings; the lint result; things you suspected but did not change; and whether a SECOND ROUND is required (rule: more than three FACT changes in this round → yes). Paste the summary as your reply, one line per item; the tables stay in the file. Never call the script verified while any claim is unresolved.
 
 Round 2 (when told so): re-check every claim round 1 changed plus a random third of the ones it confirmed; write `verify-2.md`.
