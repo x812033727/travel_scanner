@@ -15,6 +15,10 @@ export const routing = defineRouting({
     sameSite: "lax",
   },
   localeDetection: true,
+  // The middleware's `Link` header would list all five locales with an unprefixed x-default
+  // on every page, contradicting page metadata that names only published languages and
+  // points x-default at English. Page metadata and the sitemap are the only alternate sets.
+  alternateLinks: false,
 });
 
 export function isLocale(value: unknown): value is Locale {

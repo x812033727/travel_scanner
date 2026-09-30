@@ -4,6 +4,8 @@ import path from "node:path";
 import test from "node:test";
 
 import { EXIT, main } from "../cli.mjs";
+import { sha256File } from "../core/approvals.mjs";
+import { brandingHash, pinBranding } from "../core/branding.mjs";
 import { fixture, sandbox } from "../core/fixtures/load.mjs";
 import { eachLine, textHash } from "../core/schema.mjs";
 import { dubArtifacts } from "../core/state.mjs";
@@ -205,6 +207,70 @@ function capture(box, server, ffmpeg) {
   };
   return { ctx, out };
 }
+
+test("adding branding reuses dubbed speech, wraps the upload audio and offsets only presentation timing", async () => {
+  const box = sandbox();
+  const doc = geminiDoc(fixture());
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+  mkdirSync(path.join(box.dir, "i18n"), { recursive: true });
+  writeFileSync(path.join(box.dir, "i18n", "en.json"), JSON.stringify(translationFor(doc, (line) => `EN ${line.id}`)));
+  const server = fakeServer();
+  const ffmpeg = fakeFfmpeg();
+  assert.equal(await main(["tts", "--slug", box.slug], capture(box, server, ffmpeg).ctx), EXIT.ok);
+  assert.equal(await main(["dub", "--slug", box.slug, "--locale", "en"], capture(box, server, ffmpeg).ctx), EXIT.ok);
+  const files = dubArtifacts(box.workdir, "en");
+  const before = JSON.parse(readFileSync(files.timeline, "utf8"));
+  const bodyNarrationHash = await sha256File(files.narration);
+  const selection = { schema_version: 1, id: "channel-v1" };
+  for (const [role, frames] of [["intro", 150], ["outro", 90]]) {
+    const file = path.join(box.base, `${role}.mp4`);
+    writeFileSync(file, role);
+    selection[role] = { file, frames, sha256: await sha256File(file) };
+  }
+  pinBranding(box.workdir, selection);
+  writeFileSync(path.join(box.workdir, "checks.json"), JSON.stringify({ speech_hash: before.speech_hash, branding: { hash: brandingHash(selection), intro_frames: 150, outro_frames: 90, body_frames: before.total_frames } }));
+  const originalRun = ffmpeg.run;
+  ffmpeg.run = async (tool, args) => {
+    if (tool !== "ffprobe") return originalRun(tool, args);
+    const frames = path.basename(args.at(-1)) === "intro.mp4" ? 150 : 90;
+    return { stdout: JSON.stringify({ streams: [{ codec_type: "video", width: 1920, height: 1080, r_frame_rate: "30/1", nb_read_packets: String(frames) }, { codec_type: "audio", duration: frames / 30 }] }), stderr: "" };
+  };
+  const count = server.calls.length;
+  const run = capture(box, server, ffmpeg);
+  assert.equal(await main(["dub", "--slug", box.slug, "--locale", "en"], run.ctx), EXIT.ok, run.out.stderr);
+  assert.equal(server.calls.length, count + 1, "only a status read; cached speech is not generated again");
+  assert.equal(await sha256File(files.narration), bodyNarrationHash, "body narration is byte-identical");
+  const after = JSON.parse(readFileSync(files.timeline, "utf8"));
+  assert.equal(after.total_frames, before.total_frames + 240);
+  assert.equal(after.content_end_frame, before.total_frames + 150);
+  assert.deepEqual(after.lines.map((line) => line.start_frame), before.lines.map((line) => line.start_frame + 150));
+  assert.deepEqual(after.windows.map((window) => window.start_frame), before.windows.map((window) => window.start_frame + 150));
+  const wrap = ffmpeg.calls.findLast((args) => args.some((arg) => String(arg).includes("concat=n=3:v=0:a=1")));
+  assert.ok(wrap, "the encoded body is joined to both bumper audio streams");
+  assert.equal(wrap.at(-1), path.join(files.dir, "branded.partial.m4a"));
+  assert.ok(existsSync(path.join(files.dir, "body.m4a")));
+  const trackHash = await sha256File(files.track("m4a"));
+  const timelineHash = await sha256File(files.timeline);
+  const successRun = ffmpeg.run;
+  ffmpeg.run = async (tool, args) => {
+    if (tool === "ffmpeg" && args.some((arg) => String(arg).includes("concat=n=3:v=0:a=1"))) {
+      writeFileSync(args.at(-1), "interrupted encoder output");
+      throw new Error("wrapper interrupted");
+    }
+    return successRun(tool, args);
+  };
+  await assert.rejects(main(["dub", "--slug", box.slug, "--locale", "en"], capture(box, server, ffmpeg).ctx), /wrapper interrupted/);
+  assert.equal(await sha256File(files.track("m4a")), trackHash, "an interrupted rerun preserves the finished track");
+  assert.equal(await sha256File(files.timeline), timelineHash, "the finished track retains its matching timeline");
+  const bodyFile = path.join(box.workdir, "timeline.json");
+  const changedBody = JSON.parse(readFileSync(bodyFile, "utf8"));
+  changedBody.total_frames += 30;
+  writeFileSync(bodyFile, JSON.stringify(changedBody));
+  const stale = capture(box, server, ffmpeg);
+  assert.equal(await main(["status", "--slug", box.slug], stale.ctx), EXIT.ok);
+  assert.match(stale.out.stdout, /en stale/);
+  assert.equal(await main(["dub", "--slug", box.slug, "--locale", "en"], capture(box, server, ffmpeg).ctx), EXIT.usage, "re-timed TTS requires a new assembled cut first");
+});
 
 test("dub writes a track per locale, speeds up a tight window, and reports a window that cannot fit", async () => {
   const box = sandbox();

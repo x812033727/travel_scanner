@@ -2,23 +2,28 @@
 
 from __future__ import annotations
 
+import asyncio
 import hashlib
 import os
-from collections.abc import AsyncIterator
+from collections.abc import AsyncIterator, Coroutine
+from dataclasses import dataclass, field
 from pathlib import Path
-from uuid import uuid4
+from typing import Any
+from unittest.mock import AsyncMock
+from uuid import UUID, uuid4
 
 import pytest
 import pytest_asyncio
-from sqlalchemy import select
+from sqlalchemy import delete, or_, select
 
 from app.db import SessionFactory, engine
-from app.models import AdminAuditLog, User, VideoToolToken
+from app.models import AdminAuditLog, User, VideoProject, VideoReview, VideoToolToken
 from app.problems import AppError
 from app.video_automation import settings as automation
 from app.video_reviews import admin_service as service
-from app.video_reviews.schemas import DecisionIn, DropIn, LocalesIn, ProjectIn, ReviewIn
+from app.video_reviews.schemas import DecisionIn, DropIn, LocalesIn, ProjectIn, ReviewIn, ReviewOut
 from app.video_reviews.storage import ReviewStore
+from app.video_youtube import vps
 
 pytestmark = pytest.mark.skipif(
     os.getenv("RUN_INTEGRATION_TESTS") != "1",
@@ -476,3 +481,187 @@ async def test_a_drama_keeps_one_look_review_per_character_and_can_auto_approve_
         row.auto_approve_storyboard = False
         row.judge_min_score = 7
         await session.commit()
+
+
+def _renewal_review(version: str) -> ReviewIn:
+    return ReviewIn(
+        gate="final",
+        content_sha256="e" * 64,
+        summary=f"QA {version}",
+        payload={"qa": {"ok": False, "inputs": {"version": 1, "files": {"script": version}}}},
+    )
+
+
+@dataclass
+class RenewalRows:
+    project_id: UUID = field(default_factory=uuid4)
+    token_id: UUID = field(default_factory=uuid4)
+    owner_id: UUID = field(default_factory=uuid4)
+    tasks: list[asyncio.Task[ReviewOut]] = field(default_factory=list)
+
+    def start(self, work: Coroutine[Any, Any, ReviewOut]) -> asyncio.Task[ReviewOut]:
+        task = asyncio.create_task(work)
+        self.tasks.append(task)
+        return task
+
+
+@pytest_asyncio.fixture(loop_scope="module")
+async def renewal_rows() -> AsyncIterator[RenewalRows]:
+    """Independent sessions must commit to test locks, then remove only their own rows.
+
+    These pending Shorts must not enter later tests' global review queues. Allocate IDs
+    before setup so teardown also covers failures after the first commit.
+    """
+    owned = RenewalRows()
+    try:
+        yield owned
+    finally:
+        # A failed lock assertion must not leave a task holding the rows cleanup needs.
+        for task in owned.tasks:
+            if not task.done():
+                task.cancel()
+        if owned.tasks:
+            await asyncio.gather(*owned.tasks, return_exceptions=True)
+        async with SessionFactory() as session:
+            review_ids = list(await session.scalars(
+                select(VideoReview.id).where(VideoReview.project_id == owned.project_id)
+            ))
+            targets = [f"video_project:{owned.project_id}"] + [
+                f"video_review:{review_id}" for review_id in review_ids
+            ]
+            await session.execute(delete(AdminAuditLog).where(or_(
+                AdminAuditLog.target.in_(targets),
+                AdminAuditLog.actor_user_id == owned.owner_id,
+            )))
+            await session.execute(
+                delete(VideoReview).where(VideoReview.project_id == owned.project_id)
+            )
+            await session.execute(delete(VideoProject).where(VideoProject.id == owned.project_id))
+            await session.execute(delete(VideoToolToken).where(VideoToolToken.id == owned.token_id))
+            await session.execute(delete(User).where(User.id == owned.owner_id))
+            await session.commit()
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_concurrent_identical_short_renewals_create_one_new_current_review(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, renewal_rows: RenewalRows,
+) -> None:
+    slug = f"renewal-race-{uuid4().hex[:12]}"
+    store = ReviewStore(tmp_path, max_file_bytes=10_000, max_total_bytes=50_000)
+    monkeypatch.setattr(service, "auto_approves_shorts", AsyncMock(return_value=False))
+    monkeypatch.setattr(vps, "assert_idle", AsyncMock())
+    async with SessionFactory() as session:
+        token = VideoToolToken(
+            id=renewal_rows.token_id, name="renewal", token_hash=uuid4().hex * 2,
+            token_prefix="mkv_it",
+        )
+        project = VideoProject(
+            id=renewal_rows.project_id, slug=slug, title="Renewal", stage="final",
+            format="shorts", shorts_line="lab",
+        )
+        session.add_all([token, project])
+        await session.commit()
+        original = await service.submit_review(session, store, slug, _renewal_review("A"), token)
+
+    locked = asyncio.Event()
+    release = asyncio.Event()
+
+    async def hold_first(_slug: str, *, upload: bool = False) -> None:
+        assert _slug == slug and upload
+        locked.set()
+        await release.wait()
+
+    idle = AsyncMock(side_effect=hold_first)
+    monkeypatch.setattr(vps, "assert_idle", idle)
+
+    async def renew() -> ReviewOut:
+        async with SessionFactory() as session:
+            return await service.submit_review(session, store, slug, _renewal_review("B"), token)
+
+    first = renewal_rows.start(renew())
+    try:
+        await asyncio.wait_for(locked.wait(), timeout=10)
+        second = renewal_rows.start(renew())
+        await asyncio.sleep(0)
+    finally:
+        release.set()
+    results = await asyncio.wait_for(asyncio.gather(first, second), timeout=10)
+    assert results[0].id == results[1].id != original.id
+    idle.assert_awaited_once_with(slug, upload=True)
+    async with SessionFactory() as session:
+        rows = list(await session.scalars(
+            select(VideoReview).where(VideoReview.project_id == project.id)
+            .order_by(VideoReview.revision)
+        ))
+        assert [(row.revision, row.status) for row in rows] == [
+            (0, "superseded"), (1, "pending"),
+        ]
+        assert rows[1].payload == _renewal_review("B").payload
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_concurrent_owner_decision_refreshes_a_preloaded_superseded_review(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, renewal_rows: RenewalRows,
+) -> None:
+    slug = f"renewal-owner-{uuid4().hex[:12]}"
+    store = ReviewStore(tmp_path, max_file_bytes=10_000, max_total_bytes=50_000)
+    monkeypatch.setattr(service, "auto_approves_shorts", AsyncMock(return_value=False))
+    monkeypatch.setattr(vps, "assert_idle", AsyncMock())
+    async with SessionFactory() as session:
+        owner = User(
+            id=renewal_rows.owner_id, email=f"renewal-{uuid4()}@example.test",
+            password_hash="unused",
+        )
+        token = VideoToolToken(
+            id=renewal_rows.token_id, name="renewal", token_hash=uuid4().hex * 2,
+            token_prefix="mkv_it",
+        )
+        project = VideoProject(
+            id=renewal_rows.project_id, slug=slug, title="Renewal", stage="final",
+            format="shorts", shorts_line="lab",
+        )
+        session.add_all([owner, token, project])
+        await session.commit()
+        original = await service.submit_review(session, store, slug, _renewal_review("A"), token)
+
+    locked = asyncio.Event()
+    release = asyncio.Event()
+
+    async def hold_renewal(_slug: str, *, upload: bool = False) -> None:
+        assert _slug == slug and upload
+        locked.set()
+        await release.wait()
+
+    monkeypatch.setattr(vps, "assert_idle", hold_renewal)
+
+    async def renew() -> ReviewOut:
+        async with SessionFactory() as session:
+            return await service.submit_review(session, store, slug, _renewal_review("B"), token)
+
+    async with SessionFactory() as owner_session:
+        stale = await owner_session.get(VideoReview, original.id)
+        assert stale is not None and stale.status == "pending"
+        renewing = renewal_rows.start(renew())
+        try:
+            await asyncio.wait_for(locked.wait(), timeout=10)
+            deciding = renewal_rows.start(service.decide(
+                owner_session, slug, original.id, owner, DecisionIn(decision="approve"),
+            ))
+            await asyncio.sleep(0)
+        finally:
+            release.set()
+        results = await asyncio.wait_for(
+            asyncio.gather(renewing, deciding, return_exceptions=True), timeout=10,
+        )
+        assert isinstance(results[0], ReviewOut)
+        assert results[0].id != original.id and results[0].status == "pending"
+        assert isinstance(results[1], AppError)
+        assert results[1].status == 409 and results[1].code == "video_review_not_decidable"
+        assert stale.status == "superseded", "the locked lookup must refresh the identity map"
+    async with SessionFactory() as session:
+        rows = list(await session.scalars(
+            select(VideoReview).where(VideoReview.project_id == project.id)
+            .order_by(VideoReview.revision)
+        ))
+        assert [row.status for row in rows] == ["superseded", "pending"]
+        assert all(row.decided_at is None for row in rows)

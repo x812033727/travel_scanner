@@ -4,12 +4,14 @@ import path from "node:path";
 import test from "node:test";
 
 import { dubScript, translationHash } from "../dubs/plan.mjs";
+import { pinBranding, presentationTimeline, validateBranding } from "./branding.mjs";
+import { parseSrt } from "./captions.mjs";
 import { sandbox } from "./fixtures/load.mjs";
 import { atomicWrite, readJson } from "./paths.mjs";
 import { eachLine, textHash } from "./schema.mjs";
-import { captionLocalesOf, chosenLocales, dubsForUpload, LANGUAGES_FILE, readLanguages, runCaptions, writeLanguages } from "./stages.mjs";
+import { captionLocalesOf, captionTimelineOf, chosenLocales, currentDub, dubsForUpload, LANGUAGES_FILE, readLanguages, runCaptions, writeLanguages } from "./stages.mjs";
 import { dubArtifacts, loadProject } from "./state.mjs";
-import { estimateTimeline, speechHash } from "./timeline.mjs";
+import { estimateTimeline, frameToMs, speechHash } from "./timeline.mjs";
 
 function translationFor(doc, prefix) {
   const lines = {};
@@ -40,6 +42,89 @@ function writeDub(box, project, locale, timeline) {
   writeFileSync(files.timeline, JSON.stringify({ locale, format: "m4a", file: `${locale}.m4a`, speech_hash: timeline.speech_hash, translation_hash: words, total_frames: timeline.total_frames, tempo_max: 1.05, windows: [], lines }));
   writeFileSync(files.track("m4a"), "not really audio");
 }
+
+function brand(box, timeline, digit = "a") {
+  const selection = validateBranding({ schema_version: 1, id: `brand-${digit}`, intro: { file: "intro.mp4", sha256: digit.repeat(64), frames: 150 }, outro: { file: "outro.mp4", sha256: "b".repeat(64), frames: 90 } }, { base: box.workdir });
+  pinBranding(box.workdir, selection);
+  const applied = { hash: selection.hash, id: selection.id, intro_frames: 150, outro_frames: 90, body_frames: timeline.total_frames, body_file: "body.mp4", body_sha256: "c".repeat(64) };
+  atomicWrite(path.join(box.workdir, "checks.json"), JSON.stringify({ ok: true, speech_hash: timeline.speech_hash, branding: applied }));
+  return applied;
+}
+
+test("selected bookends shift narration captions once, bind the manifest, and leave the TTS timeline intact", () => {
+  const { box, timeline } = translated([]);
+  const options = { slug: box.slug, root: box.root, workdir: box.workdir };
+  runCaptions(options);
+  const captionFile = path.join(box.workdir, "captions", "zh-TW.srt");
+  const before = parseSrt(readFileSync(captionFile, "utf8"));
+  const originalTimeline = readFileSync(path.join(box.workdir, "timeline.json"), "utf8");
+  const applied = brand(box, timeline);
+  const manifest = runCaptions(options);
+  const written = readFileSync(captionFile, "utf8");
+  const after = parseSrt(written);
+  assert.equal(manifest.branding_hash, applied.hash);
+  assert.deepEqual(after, before.map((cue) => ({ ...cue, start_ms: cue.start_ms + 5000, end_ms: cue.end_ms + 5000 })));
+  assert.ok(after.at(-1).end_ms <= frameToMs(timeline.total_frames + 150), "no narration caption crosses into the CTA");
+  runCaptions(options);
+  assert.equal(readFileSync(captionFile, "utf8"), written, "rerunning does not add the intro offset a second time");
+  assert.equal(readFileSync(path.join(box.workdir, "timeline.json"), "utf8"), originalTimeline);
+});
+
+test("dub captions accept only the applied branding and use the already padded timeline without extending into the outro", () => {
+  const { box, project, speech, timeline } = translated(["en"]);
+  writeDub(box, project, "en", timeline);
+  const files = dubArtifacts(box.workdir, "en");
+  const bodyDub = readJson(files.timeline);
+  const applied = brand(box, timeline);
+  assert.deepEqual(currentDub(project, box.workdir, "en", speech), { stale: true }, "a body-only dub cannot accompany the padded final");
+  assert.deepEqual(dubsForUpload(project, box.workdir, speech, ["en"]).dubs, []);
+  const presented = presentationTimeline(bodyDub, applied);
+  writeFileSync(files.timeline, JSON.stringify(presented));
+  writeLanguages(box.workdir, { locales: { en: { dub: true } } });
+  const manifest = runCaptions({ slug: box.slug, root: box.root, workdir: box.workdir });
+  assert.equal(manifest.locales.en.timing, "dub");
+  const cues = parseSrt(readFileSync(path.join(box.workdir, "captions", "en.srt"), "utf8"));
+  assert.equal(cues[0].start_ms, Math.round(frameToMs(bodyDub.lines[0].start_frame + 150)));
+  assert.ok(cues.at(-1).end_ms <= frameToMs(presented.content_end_frame));
+  assert.equal(captionTimelineOf(presented).lines.at(-1).end_frame, presented.content_end_frame);
+  assert.equal(dubsForUpload(project, box.workdir, speech, ["en"]).dubs[0].branding_hash, applied.hash);
+  writeFileSync(files.timeline, JSON.stringify({ ...presented, content_end_frame: undefined }));
+  assert.deepEqual(currentDub(project, box.workdir, "en", speech), { stale: true }, "a hash alone cannot replace the dub's content boundary");
+});
+
+test("a changed branding pin refuses to overwrite captions for the still-old final", () => {
+  const { box, timeline } = translated([]);
+  brand(box, timeline);
+  const options = { slug: box.slug, root: box.root, workdir: box.workdir };
+  runCaptions(options);
+  const captionFile = path.join(box.workdir, "captions", "zh-TW.srt");
+  const written = readFileSync(captionFile, "utf8");
+  const pin = readJson(path.join(box.workdir, "branding.json"));
+  delete pin.hash;
+  pin.intro.sha256 = "d".repeat(64);
+  pinBranding(box.workdir, validateBranding(pin));
+  assert.throws(() => runCaptions(options), /selected branding; run assemble again/);
+  assert.equal(readFileSync(captionFile, "utf8"), written);
+});
+
+test("a branded final cannot time captions for a newer narration or a body with different duration", () => {
+  const { box, timeline } = translated([]);
+  brand(box, timeline);
+  const options = { slug: box.slug, root: box.root, workdir: box.workdir };
+  runCaptions(options);
+  const captionFile = path.join(box.workdir, "captions", "zh-TW.srt");
+  const before = readFileSync(captionFile, "utf8");
+  const checksFile = path.join(box.workdir, "checks.json");
+  const checks = readJson(checksFile);
+  for (const changed of [
+    { ...checks, speech_hash: "old-narration" },
+    { ...checks, branding: { ...checks.branding, body_frames: timeline.total_frames + 1 } },
+  ]) {
+    writeFileSync(checksFile, JSON.stringify(changed));
+    assert.throws(() => runCaptions(options), /another body timeline; run assemble again/);
+    assert.equal(readFileSync(captionFile, "utf8"), before);
+  }
+});
 
 test("the language choice is read as the site writes it: only the ticked languages, a dub implying its captions, and nothing without the file", () => {
   const box = sandbox();

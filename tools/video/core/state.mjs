@@ -8,6 +8,7 @@ import { existsSync, readdirSync } from "node:fs";
 import path from "node:path";
 
 import { approvalState, readApprovals } from "./approvals.mjs";
+import { appliedBranding, brandingCurrent, readBranding } from "./branding.mjs";
 import { COMPILATION_HEADLINE_PLACEHOLDER, COMPILATION_STEPS, compilationChecksCurrent, isCompilation, lintCompilation, PLACEHOLDER_TITLE } from "./compilation.mjs";
 import { burnIn, illustrated, isDrama, keyframesHash, lookHash, mixHash, picturesHash, resolveMusic, resolveSfx, sfxHash, subtitlesHash } from "./drama.mjs";
 import { emptyLexicon } from "./lexicon.mjs";
@@ -30,6 +31,7 @@ export const ARTIFACTS = {
   contactSheet: "contact-sheet.png", // render
   thumbnail: "thumbnail.jpg", // render
   video: "final.mp4", // assemble, or compile for a compilation
+  branding: "branding.json", // pinned channel assets; timeline.json remains body-only
   // assemble: { ok, speech_hash, visual_hash, problems: [...] }; a drama adds look_hash, clips_hash, subtitles_hash, mix_hash
   checks: "checks.json",
   captions: path.join("captions", "manifest.json"), // captions: { speech_hash, locales: { <locale>: {...} } }
@@ -224,8 +226,10 @@ export function lintProject(project) {
  */
 export function approvedEpisodes(doc, workBase) {
   return doc.compilation.episodes.map((slug) => {
-    const entry = readApprovals(path.join(workBase, slug)).approvals.filter((each) => each.gate === "final").at(-1) ?? null;
-    return { slug, sha256: entry?.sha256 ?? null };
+    const episodeDir = path.join(workBase, slug);
+    const entry = readApprovals(episodeDir).approvals.filter((each) => each.gate === "final").at(-1) ?? null;
+    const brand = appliedBranding(readJson(path.join(episodeDir, ARTIFACTS.checks), null));
+    return { slug, sha256: entry?.sha256 ?? null, ...(brand ? { body_sha256: brand.body_sha256, branding_hash: brand.hash } : {}) };
   });
 }
 
@@ -268,6 +272,11 @@ const needsReview = (manifest) => Object.values(manifest?.shots ?? {}).some((sho
  */
 export function dubsStatus(project, workdir, speech) {
   const result = {};
+  const checks = readJson(path.join(workdir, ARTIFACTS.checks), null);
+  const branding = appliedBranding(checks);
+  const selectionCurrent = brandingCurrent(checks, readBranding(workdir));
+  const bodyTimeline = branding ? readJson(path.join(workdir, ARTIFACTS.timeline), null) : null;
+  const bodyCurrent = !branding || (checks.speech_hash === speech && bodyTimeline?.speech_hash === speech && branding.body_frames === bodyTimeline?.total_frames);
   for (const locale of dubLocales(project?.doc)) {
     const files = dubArtifacts(workdir, locale);
     const skipped = readJson(files.skipped, null);
@@ -283,8 +292,10 @@ export function dubsStatus(project, workdir, speech) {
       // one made before either existed, or for another bed or set, is stale like an older script.
       const doc = project?.doc ?? null;
       const soundCurrent = !doc || ((timeline.mix_hash ?? null) === (resolveMusic(doc) ? mixHash(doc) : null) && (timeline.sfx_hash ?? null) === (resolveSfx(doc) ? sfxHash(doc) : null));
-      const current = timeline.speech_hash === speech && timeline.translation_hash === hash && soundCurrent;
-      result[locale] = { status: current ? "current" : "stale", note: current ? timeline.file : soundCurrent ? "made from an older script or translation" : "made without the video's music or sound effects; run dub again" };
+      const frameCurrent = !branding || (timeline.body_total_frames === branding.body_frames && timeline.content_end_frame === branding.intro_frames + branding.body_frames && timeline.total_frames === branding.intro_frames + branding.body_frames + branding.outro_frames);
+      const brandCurrent = selectionCurrent && bodyCurrent && frameCurrent && (timeline.branding_hash ?? null) === (branding?.hash ?? null);
+      const current = timeline.speech_hash === speech && timeline.translation_hash === hash && soundCurrent && brandCurrent;
+      result[locale] = { status: current ? "current" : "stale", note: current ? timeline.file : !brandCurrent ? "made for different channel branding; run dub again" : soundCurrent ? "made from an older script or translation" : "made without the video's music or sound effects; run dub again" };
       continue;
     }
     if (fit?.over?.length && fit.speech_hash === speech && fit.translation_hash === hash) {
@@ -321,6 +332,9 @@ export async function pipelineStatus({ slug, root, workdir }) {
   const timeline = read(ARTIFACTS.timeline);
   const frames = read(ARTIFACTS.frames);
   const checks = read(ARTIFACTS.checks);
+  const brandCurrent = brandingCurrent(checks, readBranding(workdir));
+  const brandHash = appliedBranding(checks)?.hash ?? null;
+  const brandBodyCurrent = !checks?.branding || (timeline?.total_frames === checks.branding.body_frames && (compilation || timeline?.speech_hash === checks.speech_hash));
   const captions = read(ARTIFACTS.captions);
   const upload = read(ARTIFACTS.upload);
   const characters = cast ? read(ARTIFACTS.characters) : null;
@@ -343,7 +357,7 @@ export async function pipelineStatus({ slug, root, workdir }) {
   const assembledDrama = !drama || (checks?.look_hash === lookNow && checks.clips_hash === clips?.clips_hash && checks.subtitles_hash === subtitles && checks.mix_hash === mix);
   const assembledIllustrated = !(pictures && !drama) || (checks?.look_hash === lookNow && checks.pictures_hash === keyframesHash(doc, keyframes));
   const assembledSound = compilation || ((!doc?.music || checks?.mix_hash === mix) && (!doc?.sfx || checks?.sfx_hash === sfxHash(doc)));
-  const assembledMedia = assembledDrama && assembledIllustrated && assembledSound;
+  const assembledMedia = assembledDrama && assembledIllustrated && assembledSound && brandCurrent && brandBodyCurrent;
 
   const definitions = {
     brief: { done: existsSync(path.join(dir, "brief.md")), todo: `the planner agent writes docs/videos/${slug}/brief.md` },
@@ -405,13 +419,13 @@ export async function pipelineStatus({ slug, root, workdir }) {
       note: checks && !checks.ok ? `checks failed: ${(checks.problems ?? []).join("; ")}` : undefined,
       todo: cli("assemble", slug),
     },
-    "captions written": { done: Boolean(speech) && captions?.speech_hash === speech, todo: cli("captions", slug) },
+    "captions written": { done: Boolean(speech) && captions?.speech_hash === speech && brandCurrent && brandBodyCurrent && (captions.branding_hash ?? null) === brandHash, todo: cli("captions", slug) },
     "final video approved": {
-      done: final.status === "approved",
+      done: final.status === "approved" && brandCurrent && brandBodyCurrent,
       note: describe(final),
       todo: `the owner watches review/final.html; then ${cli("approve", slug, "--gate final")}`,
     },
-    "upload package": { done: Boolean(upload) && upload.final_sha256 === final.sha256, todo: cli("package", slug) },
+    "upload package": { done: Boolean(upload) && upload.final_sha256 === final.sha256 && brandCurrent && brandBodyCurrent && (upload.branding_hash ?? null) === brandHash, todo: cli("package", slug) },
     "on YouTube": {
       done: Boolean(doc?.youtube?.video_id),
       todo: `the owner uploads final.mp4 in YouTube Studio as Private; then ${cli("youtube-sync", slug, "--video-id <id> --dry-run")}`,
@@ -444,7 +458,10 @@ function compilationDefinitions({ slug, workdir, doc, project, valid, lint, visu
   // The thumbnail draws on an episode keyframe when the planner picked one; a compilation whose
   // episodes left no keyframe to pick draws on the theme alone and needs no source.
   const thumbSource = doc?.thumbnail?.data?.shot === undefined || Boolean(keyframes?.shots?.thumb?.file);
-  const compiled = valid && compilationChecksCurrent(doc, checks, episodes);
+  const brandCurrent = brandingCurrent(checks, readBranding(workdir));
+  const body = read(ARTIFACTS.timeline);
+  const brandBodyCurrent = !checks?.branding || (checks.branding.body_frames === body?.total_frames && checks.compilation_hash === body?.compilation_hash);
+  const compiled = valid && compilationChecksCurrent(doc, checks, episodes) && brandCurrent && brandBodyCurrent;
   const locales = LOCALES.filter((locale) => locale !== narrationLocale(doc));
   const untranslated = locales.filter((locale) => !translationComplete(project.translations[locale]));
   return {
@@ -459,7 +476,7 @@ function compilationDefinitions({ slug, workdir, doc, project, valid, lint, visu
       todo: cli("render", slug),
     },
     "video compiled": {
-      done: compiled && captions?.compilation_hash === checks.compilation_hash && existsSync(path.join(workdir, ARTIFACTS.video)),
+      done: compiled && captions?.compilation_hash === checks.compilation_hash && (captions.branding_hash ?? null) === (appliedBranding(checks)?.hash ?? null) && existsSync(path.join(workdir, ARTIFACTS.video)),
       note: uncleared.length ? `episodes not cleared for upload: ${uncleared.join(", ")}` : checks && !checks.ok ? `checks failed: ${(checks.problems ?? []).join("; ")}` : checks && !compiled ? "checks.json was written for other cuts or cards" : undefined,
       todo: cli("compile", slug),
     },
