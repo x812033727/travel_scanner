@@ -3,9 +3,11 @@
 A review is bound to the SHA-256 of what it shows (the brief, the timeline, the final cut, the
 upload package). Submitting different content for the same gate supersedes the pending review;
 submitting the same content again returns the review that exists, whatever its state, so a
-rejected cut cannot come back as a fresh pending one without changing. Files no live review
-refers to are deleted from the store. A video the owner dropped takes no more submissions or
-decisions.
+rejected cut cannot come back as a fresh pending one without changing. Shorts final reviews
+also bind the complete QA receipt; changed evidence creates a new review revision before
+upload, and its publish review must name that approved final review. Files no live or decided
+review refers to are deleted from the store. A video the owner dropped takes no more
+submissions or decisions.
 
 Once the owner has uploaded a video themselves and pasted its YouTube address (HANDS-OFF.md
 §上傳包與「可以上架」), the row carries ``youtube_video_id`` and ``youtube_publish_at``; the
@@ -15,6 +17,7 @@ upload confirmation and the publish time are both at least PREVIEW_RETENTION old
 
 from __future__ import annotations
 
+import json
 import re
 from collections.abc import Iterable
 from datetime import UTC, datetime, timedelta
@@ -227,11 +230,11 @@ def ready_to_upload(
 
 
 def kept_files(reviews: Iterable[VideoReview]) -> set[str]:
-    """Files a live review still shows; everything else in the project's store can go."""
+    """Keep live previews and evidence for historical decisions, not abandoned drafts."""
     return {
         str(item["sha256"])
         for review in reviews
-        if review.status in LIVE
+        if review.status in LIVE or review.decided_at is not None
         for item in review.files
         if isinstance(item, dict) and item.get("sha256")
     }
@@ -317,9 +320,12 @@ def _summary(
     }
 
 
-async def _project(session: AsyncSession, slug: str) -> VideoProject:
+async def _project(session: AsyncSession, slug: str, *, lock: bool = False) -> VideoProject:
+    statement = select(VideoProject).where(VideoProject.slug == slug)
+    if lock:
+        statement = statement.with_for_update().execution_options(populate_existing=True)
     project: VideoProject | None = (
-        await session.scalar(select(VideoProject).where(VideoProject.slug == slug))
+        await session.scalar(statement)
         if valid_slug(slug)
         else None
     )
@@ -338,6 +344,7 @@ async def _reviews(session: AsyncSession, project: VideoProject) -> list[VideoRe
         select(VideoReview)
         .where(VideoReview.project_id == project.id)
         .order_by(VideoReview.created_at.desc())
+        .execution_options(populate_existing=True)
     )
     return list(rows)
 
@@ -619,6 +626,61 @@ async def list_projects(
     return summaries
 
 
+def _same_qa(first: dict[str, Any], second: dict[str, Any]) -> bool:
+    # Key order is irrelevant; JSON preserves booleans versus numbers and list order.
+    return json.dumps(first.get("qa"), sort_keys=True, separators=(",", ":")) == json.dumps(
+        second.get("qa"), sort_keys=True, separators=(",", ":")
+    )
+
+
+async def _short_revision_allowed(project: VideoProject) -> None:
+    """Renew only before any uploader can have acted on the old approved package."""
+    if (
+        project.youtube_video_id is not None
+        or project.youtube_upload_session is not None
+        or (project.youtube_sync or {}).get("status") in ("queued", "running")
+    ):
+        raise AppError(
+            409, "video_shorts_review_upload_started",
+            "影片已開始上傳或同步，請先核對 YouTube 狀態；目前不能重新送審成片",
+        )
+    # The VPS sender takes the same project lock before staging or starting an upload.
+    from app.video_youtube import vps
+    from app.video_youtube.errors import Refused
+
+    try:
+        await vps.assert_idle(project.slug, upload=True)
+    except Refused as error:
+        raise AppError(error.status, error.code, error.detail) from error
+
+
+def _supersede_short_reviews(
+    session: AsyncSession,
+    project: VideoProject,
+    reviews: list[VideoReview],
+    gates: tuple[str, ...],
+    new_id: Any,
+    now: datetime,
+) -> None:
+    for older in reviews:
+        if older.gate not in gates or older.status not in LIVE:
+            continue
+        session.add(
+            AdminAuditLog(
+                actor_user_id=None,
+                action="video_review_superseded",
+                target=f"video_review:{older.id}",
+                metadata_json={
+                    "slug": project.slug, "gate": older.gate,
+                    "previous_status": older.status, "replacement_review_id": str(new_id),
+                    "sha256": older.content_sha256, "revision": older.revision or 0,
+                },
+            )
+        )
+        older.status = "superseded"
+        older.updated_at = now
+
+
 async def submit_review(
     session: AsyncSession,
     store: ReviewStore,
@@ -626,7 +688,8 @@ async def submit_review(
     payload: ReviewIn,
     token: VideoToolToken,
 ) -> ReviewOut:
-    project = await _project(session, slug)
+    # All review writes take the project before a review lock, also used by the uploaders.
+    project = await _project(session, slug, lock=True)
     _refuse_dropped(project)
     missing = [item.sha256 for item in payload.files if store.path(slug, item.sha256) is None]
     if missing:
@@ -643,7 +706,45 @@ async def submit_review(
         None,
     )
     now = datetime.now(UTC)
+    short_gate = project.shorts_line is not None and payload.gate in ("final", "publish")
+    revision = 0
+    if short_gate:
+        current = next(
+            (row for row in reviews if row.gate == payload.gate and row.status in LIVE), None
+        )
+        if payload.gate == "publish":
+            final = next(
+                (row for row in reviews if row.gate == "final" and row.status in LIVE), None
+            )
+            if (
+                final is None or final.status != "approved"
+                or payload.payload.get("final_review_id") != str(final.id)
+            ):
+                raise AppError(
+                    409, "video_shorts_final_review_stale",
+                    "上傳包必須綁定目前已核准的成片審核，請重新執行 push",
+                )
+        matches = (
+            current is not None and current.content_sha256 == payload.content_sha256
+            and (
+                _same_qa(current.payload, payload.payload)
+                if payload.gate == "final"
+                else current.payload.get("final_review_id")
+                == payload.payload.get("final_review_id")
+            )
+        )
+        same = current if matches else None
+        if same is None:
+            # Even a pending changed receipt gets a new id, so an owner looking at an
+            # older page cannot approve evidence they have not seen.
+            await _short_revision_allowed(project)
+            revision = 1 + max(
+                (row.revision or 0 for row in reviews
+                 if row.gate == payload.gate and row.content_sha256 == payload.content_sha256),
+                default=-1,
+            )
     if same is not None and same.status != "pending":
+        await session.commit()  # release the project lock on an idempotent resend
         return _review_out(same)
     if same is not None:
         # The same file sent again while it waits: the newer payload, summary and files
@@ -659,7 +760,7 @@ async def submit_review(
         # review per character stays open at a time, and the older gates (subject None)
         # behave as before.
         for older in reviews:
-            if (
+            if not short_gate and (
                 older.gate == payload.gate
                 and older.status == "pending"
                 and older.subject == payload.subject
@@ -672,6 +773,7 @@ async def submit_review(
             gate=payload.gate,
             subject=payload.subject,
             content_sha256=payload.content_sha256,
+            revision=revision,
             summary=payload.summary,
             payload=payload.payload,
             files=[item.model_dump() for item in payload.files],
@@ -680,6 +782,11 @@ async def submit_review(
             created_at=now,
             updated_at=now,
         )
+        if short_gate:
+            gates = ("final", "publish") if payload.gate == "final" else ("publish",)
+            _supersede_short_reviews(session, project, reviews, gates, review.id, now)
+            if payload.gate == "final":
+                await shorts_slots.release(session, slug, now)
         session.add(review)
     # The owner chose on 2026-09-25 to let Jev's check stand for them on the narration: when it
     # passed every line and the setting is on, the review is decided as it arrives.
@@ -777,12 +884,13 @@ async def _short_approved(
 async def decide(
     session: AsyncSession, slug: str, review_id: Any, user: User, decision: DecisionIn
 ) -> ReviewOut:
-    project = await _project(session, slug)
+    project = await _project(session, slug, lock=True)
     _refuse_dropped(project)
     review = await session.scalar(
         select(VideoReview)
         .where(VideoReview.id == review_id, VideoReview.project_id == project.id)
         .with_for_update()
+        .execution_options(populate_existing=True)
     )
     if review is None:
         raise AppError(404, "video_review_not_found", "找不到這一項審核")
