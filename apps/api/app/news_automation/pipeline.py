@@ -816,7 +816,7 @@ async def _second_stage(
     automatic: bool,
     last_call: bool = False,
 ) -> str:
-    """Translate (or take the editor's translations), review, check, save and publish.
+    """Finalize the source, translate (or take the editor's text), review and publish.
 
     Jev's last call runs on AI translations, and on a saved article re-checked against
     refreshed evidence (``last_call``); an editor's own re-verified text does not get it.
@@ -824,11 +824,32 @@ async def _second_stage(
 
     candidate.status = "locale_review"
     await session.commit()
+    final_holds: list[str] = []
     if localized is None:
         # A rerun's zh-TW text still carries the last run's artwork and topic link; the
         # translators start from the words alone, and both come back after the reviews.
-        document = site_additions_removed(document)
+        document = _topic_linked(
+            with_crypto_disclaimer(
+                site_additions_removed(document), candidate.vertical, "zh-TW"
+            ),
+            candidate.vertical,
+            "zh-TW",
+        )
         documents: dict[Locale, GuideDocument] = {"zh-TW": document}
+        # All translations and their reviews must start from the accepted final source,
+        # including when a later target-locale edit falls back to its reviewed text.
+        final_holds = await _final_edit(
+            session,
+            environment,
+            settings,
+            candidate,
+            evidence,
+            usable,
+            runs,
+            documents,
+            locales=("zh-TW",),
+        )
+        document = site_additions_removed(documents["zh-TW"])
         for target in TARGET_LOCALES:
             await runs.start(
                 f"translation-{target}",
@@ -968,14 +989,22 @@ async def _second_stage(
             )
             return candidate.status
 
-    final_holds: list[str] = []
     if localized is None:
-        # The owner's final editor reads every locale against the evidence (2026-09-25). An
-        # editor's own changes in the guide editor (``localized``) are never rewritten.
-        final_holds = await _final_edit(
-            session, environment, settings, candidate, evidence, usable, runs, documents
+        # The source was finalized before translation. Finish the other locales against
+        # that same source; an editor's own ``localized`` changes are never rewritten.
+        final_holds.extend(
+            await _final_edit(
+                session,
+                environment,
+                settings,
+                candidate,
+                evidence,
+                usable,
+                runs,
+                documents,
+                locales=TARGET_LOCALES,
+            )
         )
-        document = documents["zh-TW"]
 
     documents = await ensure_assets(session, candidate, documents)
     problems: dict[str, list[str]] = {
@@ -1072,13 +1101,15 @@ async def _final_edit(
     usable: list[NewsEvidence],
     runs: _Runs,
     documents: dict[Locale, GuideDocument],
+    *,
+    locales: tuple[Locale, ...],
 ) -> list[str]:
-    """Run the final editor over each locale in place; return the locales it held.
+    """Finalize the selected locales in place; return the locales the editor held.
 
-    An edit may not break a site check the translation passed (on 2026-09-26 one rewrote the
+    An edit may not break a site check its input passed (on 2026-09-26 one rewrote the
     crypto disclaimer out of its callout in all five locales): the editor gets one more call
     with the checks it broke, and if they are still broken the locale keeps its reviewed
-    translation.
+    text.
     """
 
     source = documents["zh-TW"]
@@ -1098,7 +1129,7 @@ async def _final_edit(
         )
 
     held: list[str] = []
-    for locale in ("zh-TW", *TARGET_LOCALES):
+    for locale in locales:
         original = documents[locale]
         await runs.start(
             f"final-edit-{locale}", provider=settings.editor_provider, model=settings.editor_model
@@ -1148,6 +1179,7 @@ async def _final_edit(
             "stage": "final_edit",
             "revised": revised,
             "document_sha256": fingerprint,
+            "source_document_sha256": document_fingerprint(source),
         }
         session.add(
             NewsAssessment(
@@ -1166,6 +1198,12 @@ async def _final_edit(
         if revised and locale == "zh-TW":
             # The published zh-TW text is the editor's, checked against the same evidence;
             # publication looks for a verification of exactly that text.
+            # Save it with that assessment: if translation fails next, an owner can retry
+            # the verified draft instead of finding an old preview with a newer hash.
+            candidate.draft_bundle_json = {
+                **candidate.draft_bundle_json,
+                "zh-TW": documents["zh-TW"].model_dump(mode="json"),
+            }
             session.add(
                 NewsAssessment(
                     candidate_id=candidate.id,

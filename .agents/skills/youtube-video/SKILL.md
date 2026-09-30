@@ -49,7 +49,7 @@ metadata:
 | 品牌故事的代理提示（逐章撰稿、長度修正與圖片修正；逐章查核；逐章聽眾審稿） | `.agents/skills/youtube-video/references/prompts/writer-story.md`、`verifier-story.md`、`listener-story.md`；工人實際送出的文字是 `tools/video/automation/story-prompts.mjs` |
 | 頻道規格：版型、配色、聲音、片頭片尾、說明欄範本 | `docs/videos/README.md` |
 | 全自動的設計理由、YouTube、Azure 與 Gemini 語音的官方規則 | `docs/videos/DESIGN.md` |
-| 漫劇與教學分開的設定分頁、單集與作品同一條流程、文件與劇本的討論串（2026-09-27 設計；API、工人與後台都已落地） | `docs/videos/DRAMA-FLOW.md` |
+| 漫劇與教學分開的設定分頁、單集與作品同一條流程、文件與劇本的討論串 | `docs/videos/DRAMA-FLOW.md` |
 | 每支影片的語言（標題與說明、CC、配音）與上架的順序 | `docs/videos/LANGUAGES.md` |
 
 ## 不變的規矩

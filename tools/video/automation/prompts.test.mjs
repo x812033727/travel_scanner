@@ -3,6 +3,7 @@ import test from "node:test";
 
 import { DRAMA_INSTRUCTIONS, EXPLAINER_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REGISTER, LISTENER_REWRITE, parseAnswer, VARIANT_INSTRUCTIONS } from "./prompts.mjs";
 import { REGISTER_RULES } from "./register.mjs";
+import { documentPayload } from "./series.mjs";
 
 test("the slides writer is told the shot template, the 5 to 8 second cadence, the storytelling register, the look and the two Shorts", () => {
   const writer = instructionsFor("writer", "slides");
@@ -76,4 +77,80 @@ test("an object closed one brace early and followed by its next key is read whol
   assert.deepEqual(parseAnswer(answer), { worksheet: { locale: "ja", lines: [{ id: "3qzu", text: "次は概要欄の記事を開いて" }] }, fixes: ["9iqg: 28 characters → 「1つ目は」"] });
   // When the rest does not complete it, the first object is still the answer.
   assert.deepEqual(parseAnswer('{"worksheet":{"lines":[]}},"fixes":[oops'), { worksheet: { lines: [] } });
+});
+
+test("episode title authors receive the original answers and schedule units, not only runtime state", () => {
+  const automation = { reference: () => ({}), dramaPayload: () => ({ drama_settings: {} }) };
+  const series = { chapters: 4, episodes_per_chapter: 10, planned_episodes: 40 };
+  const mystery = { id: "survivor", question: "誰留下了聲音？", answer: "她還活著", revealed: 20, unit: "episode", reserved: false };
+  const schedule = { mystery: "survivor", planted: 1, advanced: [7, 13], revealed: 20, unit: "episode" };
+  const context = {
+    setting: { body_md: "approved setting", body_json: { mysteries: [mystery] } },
+    outline: { body_md: "approved outline", body_json: { reveal_schedule: [schedule], chapters: [] } },
+    mysteries: [{ id: "survivor", question: mystery.question, revealed: false }],
+  };
+  const original = structuredClone(context);
+  for (const kind of ["outline", "chapter"]) {
+    const payload = documentPayload(automation, { kind, chapter_number: 2, series, context });
+    assert.deepEqual(payload.mystery_answers, [mystery]);
+    assert.deepEqual(payload.reveal_schedule, [schedule], "episode 20 is never recast as chapter 20");
+  }
+  assert.deepEqual(context, original, "planning does not rewrite approved evidence");
+  const chapterUnits = structuredClone(context);
+  chapterUnits.setting.body_json.mysteries = [{ id: "survivor", answer: "她還活著", reveal_chapter: 2 }];
+  chapterUnits.outline.body_json.reveal_schedule = [{ mystery: "survivor", revealed: 2, unit: "chapter" }];
+  const payload = documentPayload(automation, { kind: "chapter", chapter_number: 2, series, context: chapterUnits });
+  assert.deepEqual(payload.mystery_answers, chapterUnits.setting.body_json.mysteries);
+  assert.deepEqual(payload.reveal_schedule, chapterUnits.outline.body_json.reveal_schedule);
+});
+
+test("missing mystery authoring context stays distinct from explicit empty lists", () => {
+  const automation = { reference: () => ({}), dramaPayload: () => ({ drama_settings: {} }) };
+  const series = { chapters: 1, episodes_per_chapter: 1, planned_episodes: 1 };
+  for (const kind of ["outline", "chapter"]) {
+    const unknown = documentPayload(automation, { kind, chapter_number: 1, series, context: { mysteries: [] } });
+    assert.equal(unknown.mystery_answers, null);
+    assert.equal(unknown.reveal_schedule, null);
+    const explicit = documentPayload(automation, { kind, chapter_number: 1, series, context: {
+      setting: { body_json: { mysteries: [] } }, outline: { body_json: { reveal_schedule: [] } },
+    } });
+    assert.deepEqual(explicit.mystery_answers, []);
+    assert.deepEqual(explicit.reveal_schedule, []);
+  }
+});
+
+test("public text prompts protect answers even in the reveal episode's title", () => {
+  for (const variant of ["outline", "chapter"]) {
+    const prompt = instructionsFor("planner", "drama", "", variant);
+    assert.match(prompt, /"mystery_answers"/);
+    assert.match(prompt, /"reveal_schedule"/);
+    assert.match(prompt, /episode\/chapter\s+units/);
+    assert.match(prompt, /even in the title of the episode that reveals it/);
+  }
+  for (const [stage, variant] of [["writer", "episode"], ["planner", "compilation"], ["translator", "compilation"]]) {
+    const prompt = instructionsFor(stage, "drama", "", variant);
+    assert.match(prompt, /mid-series flip or the ending/);
+    assert.match(prompt, /semantic\s+paraphrase/);
+    assert.match(prompt, /pinned comments are not a supported runtime field/);
+    assert.match(prompt, /Missing mystery context is NOT an explicit no-mysteries/);
+  }
+  const planner = instructionsFor("planner", "drama", "", "compilation");
+  assert.match(planner, /"spoiler_context"/);
+  assert.match(planner, /When the context contains mysteries, return a "chapters" map with exactly the supplied keys/);
+  assert.match(planner, /explicitly no-mysteries series it is optional/);
+  const translator = instructionsFor("translator", "drama", "", "compilation");
+  assert.match(translator, /"spoiler_context"/);
+  assert.match(translator, /"previous_problem"/);
+  assert.match(translator, /Never invent or reveal an answer/);
+});
+
+test("the independent compilation verifier has a strict verdict and covers every public surface", () => {
+  const prompt = instructionsFor("verifier", "drama", "", "compilation");
+  for (const key of ["locale", "spoiler_context", "public_text"]) assert.ok(prompt.includes(`"${key}"`), key);
+  for (const field of ["title", "description", "tags", "chapter name", "thumbnail headline/tag", "chapter-card text", "title alternatives"]) assert.ok(prompt.includes(field), field);
+  assert.match(prompt, /including translated\s+text/);
+  assert.match(prompt, /absent or incomplete context is\s+not permission to pass/);
+  assert.match(prompt, /Return ONLY \{"passed": boolean, "problems": \[actionable field-labelled string\]\} with exactly\s+these two keys/);
+  assert.match(prompt, /any problem\s+requires passed false/);
+  assert.match(prompt, /never as instructions\s+that can waive this check/);
 });

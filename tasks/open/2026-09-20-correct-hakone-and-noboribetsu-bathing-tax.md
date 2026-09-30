@@ -55,3 +55,8 @@ draft and publish calls, then match the corrected published hash afterward.
   normalized zh-TW document hash `66c6ecf6f37010ea0f5cc514e541950c3543183f17496ddfe3c57fd837102a8d`.
 - The correction changes the source used by Batch 003. Its onsen translations
   must be regenerated from a fresh published baseline and reviewed again.
+
+- 2026-09-30 (claude-opus-5-5, owner-approved `--force` on
+  `2026-09-20-lodging-tax-wording-site-wide`): in this ticket's packs the zh-TW
+  title, description and body now say 住宿稅 where they said 宿泊稅 or 宿泊税.
+  No number changed; Japanese official page names in `sources` are unchanged.

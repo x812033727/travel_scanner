@@ -5,11 +5,12 @@ from __future__ import annotations
 from typing import Any
 from unittest.mock import AsyncMock, MagicMock
 
+import httpx
 import pytest
 
 import app.video_automation.ai as ai
 import app.video_automation.subscription as subscription
-from app.admin_ai_accounts.agent import AgentRunResult
+from app.admin_ai_accounts.agent import AgentRunResult, AiAccountsAgentClient
 from app.config import Settings
 from app.problems import AppError
 from app.video_automation.models import DEFAULT_STAGE_MODELS, VideoAiRun, VideoAutomationSettings
@@ -104,6 +105,39 @@ async def test_the_agents_refusals_become_the_pipelines_errors(
     assert failed.value.code == mapped
 
 
+@pytest.mark.asyncio
+async def test_the_agent_http_cli_version_refusal_keeps_its_owner_remedy(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    detail = (
+        "Claude Code 2.1.259 does not support this model; version 2.1.280 or newer is "
+        "required. Run claude update on the host."
+    )
+    requests: list[httpx.Request] = []
+
+    def respond(request: httpx.Request) -> httpx.Response:
+        requests.append(request)
+        return httpx.Response(409, json={
+            "code": "subscription_cli_outdated", "detail": detail,
+            "installed_version": "2.1.259", "required_version": "2.1.280",
+        })
+
+    agent = AiAccountsAgentClient(AGENT)
+    monkeypatch.setattr(agent, "_transport", lambda: httpx.MockTransport(respond))
+    with pytest.raises(ai.StageFailed) as failed:
+        await subscription.run_on_subscription(
+            AGENT,
+            model="claude-opus-5-5",
+            instructions="Check it.",
+            payload={},
+            max_usage_percent=80,
+            client=agent,
+        )
+    assert (failed.value.status, failed.value.code) == (409, "video_ai_subscription_cli_outdated")
+    assert failed.value.detail == detail and failed.value.retry_after is None
+    assert len(requests) == 1 and requests[0].url.path == "/v1/runs"
+
+
 def _usage(**changes: int) -> UsageView:
     values = {"tokens": 0, "token_budget": 1_000_000, "subscription_tokens": 0, "drafts": 0}
     values.update({"draft_budget": 8, "calls": 0, "failed_calls": 0})
@@ -183,3 +217,30 @@ async def test_a_paused_subscription_records_nothing_and_a_missing_agent_says_so
         await ai.run_stage(session, Settings(), row, _request(), None)
     assert missing.value.code == "video_ai_provider_not_configured"
     assert "AI 帳號代理" in missing.value.detail
+
+
+@pytest.mark.asyncio
+async def test_an_outdated_cli_is_recorded_once_without_retrying_or_spending_tokens(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    detail = "Claude Code 2.1.259 needs version 2.1.280; run claude update on the host."
+    agent = FakeAgent(AppError(409, "subscription_cli_outdated", detail))
+    monkeypatch.setattr(ai, "usage_view", AsyncMock(return_value=_usage()))
+    monkeypatch.setattr(subscription, "AiAccountsAgentClient", lambda runtime: agent)
+    session = MagicMock(commit=AsyncMock())
+    with pytest.raises(ai.StageFailed) as failed:
+        await ai.run_stage(
+            session, AGENT, VideoAutomationSettings(stage_models={}), _request(), None
+        )
+    assert (failed.value.status, failed.value.code) == (409, "video_ai_subscription_cli_outdated")
+    assert failed.value.detail == detail and failed.value.retry_after is None
+    assert len(agent.calls) == 1
+    session.add.assert_called_once()
+    session.commit.assert_awaited_once()
+    recorded = session.add.call_args.args[0]
+    assert isinstance(recorded, VideoAiRun)
+    assert (recorded.status, recorded.error_code) == (
+        "failed", "video_ai_subscription_cli_outdated"
+    )
+    assert (recorded.provider, recorded.model) == ("claude_code", "claude-opus-5-5")
+    assert recorded.input_tokens == recorded.output_tokens == 0

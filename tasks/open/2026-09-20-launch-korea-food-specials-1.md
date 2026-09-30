@@ -160,3 +160,10 @@ curl -s -o /dev/null -w "%{http_code}\n" https://mokaair.com/zh-TW/guides/topics
 結構性觀察：111 個連結裡 87 個是搜尋形式。搜尋結果會隨時間漂移，place ID 不會。
 要長期穩定，補 place ID 比每季複查搜尋字串有效，可併入
 `2026-09-20-kfood-closure-sweep-2026-12` 一起考慮。
+
+- 2026-09-30 (claude-opus-5-5, owner-approved `--force` on
+  `2026-09-21-korea-dish-names-contradict`): in `jeju-gogi-guksu-food-guide`
+  (zh-TW) 고기국수 is now 豬肉湯麵 everywhere the reader sees it (title,
+  description, summary, table, blocks 23 and 36, the diagram and its lifted
+  description, image alt), and 비빔고기국수's row reads 豬肉拌麵. The pack's
+  search aliases keep the old names. Nothing else in this ticket's scope changed.
