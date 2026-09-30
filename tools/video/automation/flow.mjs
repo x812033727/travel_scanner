@@ -342,10 +342,18 @@ async function report(ctx, api, state, stage) {
 }
 
 export class Automation {
-  constructor(ctx, api, settings) {
+  /**
+   * `lane` runs several of these side by side in one `auto` (VIDEO_WORKER_LANES): `busy` is the
+   * slugs some lane is moving right now, shared by every lane, and a `secondary` lane only moves
+   * videos already under way, never drops, retries, drafts, discussions or series, which stay
+   * with the first lane so two lanes never start the same thing.
+   */
+  constructor(ctx, api, settings, { busy = new Set(), secondary = false } = {}) {
     this.ctx = ctx;
     this.api = api;
     this.settings = settings;
+    this.busy = busy;
+    this.secondary = secondary;
     this.read = pageReader({ fetchImpl: ctx.fetch ?? globalThis.fetch, sleep: ctx.sleep, now: () => ctx.now().getTime() });
     this.refs = null;
     this.log = (text) => ctx.stdout.write(`${text}\n`);
@@ -486,13 +494,50 @@ export class Automation {
     // Every video on /admin/videos, the ones this worker did not make included, read afresh
     // each unit: the owner may drop one at any time.
     this.site = await this.api.videos();
+    const siteBySlug = new Map(this.site.map((video) => [video.slug, video]));
+    // Another lane is moving these: its copy of auto.json is the one that gets saved.
+    const free = (state) => !this.busy.has(state.slug);
+    if (!this.secondary) {
+      const found = await this.bookkeeping(siteBySlug, free);
+      if (found) return found;
+    }
+    for (const state of automatedVideos(this.workBase)) {
+      if (!["active", "done"].includes(state.status) || !free(state)) continue;
+      this.busy.add(state.slug);
+      try {
+        const done = await this.move(state, siteBySlug);
+        if (done) return done;
+      } finally {
+        this.busy.delete(state.slug);
+      }
+    }
+    if (this.secondary) return null;
+    // The owner's lines on a document or a screenplay are answered first, one per round
+    // (docs/videos/DRAMA-FLOW.md, section 3): the owner is waiting, and nothing is paid for.
+    const discussed = await discussStep(this);
+    if (discussed) return discussed;
+    // A series in the making comes next (docs/videos/SERIES.md), then the owner's one-off
+    // requests from before one-offs became series, then a scheduled draft, all within the same
+    // waiting cap.
+    const series = await seriesStep(this);
+    if (series) return series;
+    // The owner's drama requests come before any scheduled draft, within the same waiting cap.
+    if (this.settings.drama?.drama_enabled && this.room()) {
+      const request = await this.api.dramaNext();
+      if (request) return this.draftDrama(request);
+    }
+    if (this.due()) return this.draft();
+    return null;
+  }
+
+  /** The first lane's bookkeeping before any stage: drops, retries, pasted addresses, compilations. */
+  async bookkeeping(siteBySlug, free) {
     const dropped = new Map(this.site.filter((video) => video.dropped_at).map((video) => [video.slug, video]));
     for (const state of automatedVideos(this.workBase)) {
-      if (state.status !== "dropped" && dropped.has(state.slug)) return this.drop(state, dropped.get(state.slug));
+      if (state.status !== "dropped" && dropped.has(state.slug) && free(state)) return this.drop(state, dropped.get(state.slug));
     }
     // A retry belongs to one site request and one local state transition. Remember the request
     // before doing any paid stage so a stale list response or a failed report cannot replay it.
-    const siteBySlug = new Map(this.site.map((video) => [video.slug, video]));
     for (const state of automatedVideos(this.workBase)) {
       const siteVideo = siteBySlug.get(state.slug);
       const request = siteVideo?.retry_request_id;
@@ -518,55 +563,41 @@ export class Automation {
     // into the script, and the video reads as complete (docs/videos/HANDS-OFF.md).
     const uploaded = new Map(this.site.filter((video) => YOUTUBE_ID.test(video.youtube_video_id ?? "")).map((video) => [video.slug, video.youtube_video_id]));
     for (const state of automatedVideos(this.workBase)) {
-      if (!["active", "done"].includes(state.status) || !uploaded.has(state.slug)) continue;
+      if (!["active", "done"].includes(state.status) || !uploaded.has(state.slug) || !free(state)) continue;
       const recorded = await this.recordVideoId(state, uploaded.get(state.slug));
       if (recorded) return recorded;
     }
     // A finished compilation the site has not heard about yet (the call failed on the round
     // that finished it): tell it now, or the series stays 合集正在做.
     for (const state of automatedVideos(this.workBase)) {
-      if (state.status === "done" && state.compilation && !state.compilation_told && (await this.tellCompilationDone(state))) {
+      if (state.status === "done" && state.compilation && !state.compilation_told && free(state) && (await this.tellCompilationDone(state))) {
         return `${state.slug}: the site now knows the compilation of ${state.compilation.series} is done`;
       }
     }
-    for (const state of automatedVideos(this.workBase)) {
-      if (!["active", "done"].includes(state.status)) continue;
-      // If the first acknowledgement of a retry could not reach the site, send it before another stage.
-      if (state.retry_request_id && siteBySlug.get(state.slug)?.retry_acknowledged_id !== state.retry_request_id) {
-        try {
-          await report(this.ctx, this.api, state, "retrying");
-        } catch (error) {
-          return this.later(`${state.slug}: retry saved; could not report it yet (${error.message})`);
-        }
-      }
-      let done = null;
-      try {
-        if (state.status === "active") done = await this.advance(state);
-        // The languages the owner chose after the final cut (docs/videos/LANGUAGES.md), for a
-        // video still on its way to YouTube or already there; nothing while a step of its own is due.
-        done ??= await this.languages(state);
-      } catch (error) {
-        if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) throw error;
-        return this.retryLater(state, error.stage, error.message);
-      }
-      if (done) return done;
-    }
-    // The owner's lines on a document or a screenplay are answered first, one per round
-    // (docs/videos/DRAMA-FLOW.md, section 3): the owner is waiting, and nothing is paid for.
-    const discussed = await discussStep(this);
-    if (discussed) return discussed;
-    // A series in the making comes next (docs/videos/SERIES.md), then the owner's one-off
-    // requests from before one-offs became series, then a scheduled draft, all within the same
-    // waiting cap.
-    const series = await seriesStep(this);
-    if (series) return series;
-    // The owner's drama requests come before any scheduled draft, within the same waiting cap.
-    if (this.settings.drama?.drama_enabled && this.room()) {
-      const request = await this.api.dramaNext();
-      if (request) return this.draftDrama(request);
-    }
-    if (this.due()) return this.draft();
     return null;
+  }
+
+  /** One video's next stage, or its languages; null when it waits on someone. */
+  async move(state, siteBySlug) {
+    // If the first acknowledgement of a retry could not reach the site, send it before another stage.
+    if (state.retry_request_id && siteBySlug.get(state.slug)?.retry_acknowledged_id !== state.retry_request_id) {
+      try {
+        await report(this.ctx, this.api, state, "retrying");
+      } catch (error) {
+        return this.later(`${state.slug}: retry saved; could not report it yet (${error.message})`);
+      }
+    }
+    let done = null;
+    try {
+      if (state.status === "active") done = await this.advance(state);
+      // The languages the owner chose after the final cut (docs/videos/LANGUAGES.md), for a
+      // video still on its way to YouTube or already there; nothing while a step of its own is due.
+      done ??= await this.languages(state);
+    } catch (error) {
+      if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) throw error;
+      return this.retryLater(state, error.stage, error.message);
+    }
+    return done;
   }
 
   /** Whether another video may start without passing the owner's cap on drafts waiting on them. */

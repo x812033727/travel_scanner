@@ -72,6 +72,12 @@ LIMIT_MESSAGE = re.compile(
     r"hit your (?:[a-z0-9-]+ ){0,2}limit|usage limit|(?:weekly|5-hour|session) limit reached",
     re.I,
 )
+CLAUDE_OUTDATED_MESSAGE = re.compile(
+    r"\bClaude\s+Code\s+(?P<installed>\d+\.\d+\.\d+(?:-[\w.-]+)?)\s+"
+    r"does not support this model;\s*version\s+"
+    r"(?P<required>\d+\.\d+\.\d+(?:-[\w.-]+)?)\s+or newer is required\b",
+    re.I,
+)
 # The model families with a limit of their own. Such a limit rests the account for runs of that
 # family only: the session and weekly windows still have room for the other models.
 MODEL_FAMILIES = ("fable", "opus", "sonnet", "haiku")
@@ -118,6 +124,21 @@ def limit_refusal(slot: str, *messages: str) -> RunRefused | None:
     scope = f"its {match.group(1)} limit" if match else "its usage limit"
     return RunRefused(
         429, "subscription_quota_paused", f"account {slot} hit {scope}", family=family
+    )
+
+
+def outdated_cli_refusal(*messages: str) -> RunRefused | None:
+    """Recognize a failed Claude run's version refusal without echoing its output."""
+    match = CLAUDE_OUTDATED_MESSAGE.search("\n".join(messages))
+    if match is None:
+        return None
+    installed, required = match.group("installed", "required")
+    return RunRefused(
+        409,
+        "subscription_cli_outdated",
+        f"Claude Code {installed} does not support this model; version {required} or newer "
+        "is required. Run `claude update` on the host, then retry.",
+        {"installed_version": installed, "required_version": required},
     )
 
 
@@ -293,21 +314,31 @@ def run_claude(config: AgentConfig, slot: str, request: RunRequest) -> dict[str,
         shutil.rmtree(workdir, ignore_errors=True)
     result = parse_json_object(completed.stdout)
     text = result.get("result") if result else None
+    failed = (
+        completed.returncode != 0
+        or result is None
+        or result.get("is_error")
+        or not isinstance(text, str)
+    )
+    if failed:
+        # A successful answer may quote this diagnostic. Only a failed CLI result
+        # can require an update; retrying it on another account cannot help.
+        outdated = outdated_cli_refusal(
+            text if isinstance(text, str) else "", completed.stderr, completed.stdout
+        )
+        if outdated is not None:
+            raise outdated
     # The CLI's limit notice is one line in place of the answer; a long answer that merely
     # mentions a limit (a news story about AI plans) is an answer.
     notice = str(text or "") if len(str(text or "")) <= LIMIT_NOTICE_CHARS else ""
     if (limit := limit_refusal(slot, notice, completed.stderr)) is not None:
         raise limit
-    if (
-        completed.returncode != 0
-        or result is None
-        or result.get("is_error")
-        or not isinstance(text, str)
-    ):
+    if failed:
         reason = (text if isinstance(text, str) else completed.stderr).strip().splitlines()
         raise CliError(
             f"claude run failed: {reason[-1][:300] if reason else f'exit {completed.returncode}'}"
         )
+    assert result is not None  # A missing JSON result is one of the failure conditions above.
     raw_usage = result.get("usage")
     usage: dict[str, Any] = raw_usage if isinstance(raw_usage, dict) else {}
     # Cached prompt tokens still count against the plan's window, so they count here too.
