@@ -16,7 +16,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "聊天機器人時代結束了：AI 代理（AI Agent）實際怎麼運作、又怎麼失敗",
-    "description": "從一句「幫我處理好」到拿到結果，中間到底發生了什麼？這支影片把一次真實的 AI 代理執行一步一步記錄下來，整理成讓代理有別於聊天機器人的五個動作，再用廠商自己公布的數字，看看代理還會在哪裡失敗。\n\n這次執行，是請一個程式開發代理讀三個官方定價頁，再寫成一張表；每一次工具呼叫、那一個拒絕存取的網頁，還有它寫出的檔案，都照 2026 年 9 月 28 日當天的實際過程呈現。畫面上的電腦操作分數，是 Anthropic 自己為 Claude Opus 5.5 公布的；OpenAI 自己的 GPT-6 Astra 頁面連結放在下方。關於 OpenAI 下一款助理的消息，影片中都標明是報導。\n\n錄製日期：2026 年 9 月 28 日。",
+    "description": "從一句「幫我處理好」到拿到結果，中間到底發生了什麼？這支影片把一次真實的 AI 代理執行一步一步記錄下來，整理成讓代理有別於聊天機器人的五個動作，再用廠商自己公布的數字，看看代理還會在哪裡失敗。\n\n這次執行，是請一個程式開發代理讀三個官方定價頁，再寫成一張表；每一次工具呼叫、那一個拒絕存取的網頁，還有它寫出的檔案，都照 2026 年 9 月 28 日當天的實際過程呈現。畫面上的電腦操作分數，是 Anthropic 自己為 Claude Opus 5.5 公布的；OpenAI 自己的 GPT-6 Astra 頁面連結放在下方。關於 OpenAI 的常駐代理 dots，內容依照 OpenAI 在 2026 年 9 月 29 日 DevDay 發表時的官方說明。\n\n錄製日期：2026 年 9 月 28 日；DevDay 的段落在 9 月 29 日依官方說明更新。",
     "tags": [
       "AI 代理",
       "AI Agent",
@@ -27,6 +27,7 @@
       "常駐 AI 助理",
       "Claude Code",
       "OpenAI DevDay",
+      "OpenAI dots",
       "Claude Opus 5.5",
       "GPT-6 Astra",
       "OSWorld"
@@ -73,6 +74,16 @@
       "checked_on": "2026-09-28"
     },
     {
+      "title": "OpenAI: Meet dots, an always-on agent (DevDay 2026)",
+      "url": "https://developers.openai.com/codex/dots",
+      "checked_on": "2026-09-29"
+    },
+    {
+      "title": "OpenAI: DevDay 2026, what's new (dots, September 29, 2026)",
+      "url": "https://developers.openai.com/codex/whats-new/devday-2026",
+      "checked_on": "2026-09-29"
+    },
+    {
       "title": "Claude Code CLI reference (the flags used in the run)",
       "url": "https://code.claude.com/docs/en/cli-reference",
       "checked_on": "2026-09-28"
@@ -88,10 +99,13 @@
         "title": "聊天機器人時代結束了：**AI 代理**到底怎麼運作",
         "subtitle": "一次真實執行、五個動作，還有仍會失敗的任務"
       },
+      "claims": [
+        "c5"
+      ],
       "lines": [
         {
           "id": "hx5y",
-          "text": "現在每家 AI 公司都在賣你 AI 代理。下一步，要賣你永遠不下線的。"
+          "text": "每家 AI 公司都在賣你 AI 代理。OpenAI 更在 DevDay 上，發表了永遠不下線的那種。"
         }
       ]
     },
@@ -684,7 +698,7 @@
           "你不在時，它照樣行動",
           "它會跨對話保留狀態",
           "NVIDIA 表示：新的 Windows 代理框架，\n讓代理在背景執行、受作業系統控管",
-          "OpenAI 的常駐助理：錄影時只是報導，還沒有正式宣布"
+          "OpenAI 在 DevDay 發表 dots：\n雲端有自己的電腦，你關機它照樣工作"
         ]
       },
       "claims": [
@@ -713,7 +727,7 @@
         },
         {
           "id": "xc6d",
-          "text": "許多媒體報導，OpenAI 也在打造自己的常駐助理。在我們錄影的時候，這只是報導，還沒有正式宣布。",
+          "text": "OpenAI 也在 DevDay 發表了自己的常駐代理 dots。它在雲端有自己的電腦，你關機了，它照樣工作。",
           "reveal": 1
         }
       ]
@@ -722,7 +736,7 @@
       "id": "always-on-loop",
       "template": "steps",
       "data": {
-        "title": "不管最後推出什麼，樣子都一樣",
+        "title": "不管哪一家推出，樣子都一樣",
         "steps": [
           {
             "title": "目標"
@@ -742,7 +756,7 @@
       "lines": [
         {
           "id": "xc5x",
-          "text": "不管最後推出什麼，樣子都一樣：目標、工具、迴圈，只是這個迴圈，現在沒有人在場。"
+          "text": "不管哪一家推出的，樣子都一樣：目標、工具、迴圈，只是這個迴圈，現在沒有人在場。"
         }
       ]
     },
