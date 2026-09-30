@@ -1,7 +1,7 @@
 ---
 id: 2026-09-11-admin-shell-modal-layer
 title: admin-shell 命令面板改用 modal-sheet 的分層堆疊
-status: in-progress
+status: review
 priority: P3
 area: web
 owner: codex-b10e-modal
@@ -64,3 +64,8 @@ npm run lint:web && npm run typecheck:web && npm run test:web -- admin-shell
   admin navigation and modal hook suites passed 27 tests across 3 files.
 - Independent diff review found no blocking issue. Full web checks and the final
   PR receipt are recorded at the final delivery; this is not production acceptance.
+- Final local verification: TypeScript, scoped ESLint, five-locale i18n and task
+  validation passed. Full local lint was interrupted under sustained memory
+  pressure; the full web suite had not started and is delegated to PR CI.
+  Rebased onto `d7787f51` (only upstream video operations changed), with identical
+  web contents. A fresh 26-PR/worktree collision review found no active overlap.

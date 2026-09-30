@@ -1,7 +1,7 @@
 ---
 id: 2026-09-19-hotspot-restaurants-panel-offers-the-overwrite
 title: hotspot-restaurants-panel offers the overwrite step when a chosen meal answers meal_slot_occupied
-status: in-progress
+status: review
 priority: P3
 area: web
 owner: codex-b10e-web
@@ -78,3 +78,8 @@ npm run check:i18n && npm run typecheck:web && npm run lint:web
   Independent code review passed. The isolated lint run was stopped to avoid
   duplicating root's full web lint; it is not recorded as a pass.
 - This is local code and synthetic API testing only; no real trip was changed.
+- Final local verification: TypeScript, scoped ESLint, five-locale i18n and task
+  validation passed. Full local lint was interrupted under sustained memory
+  pressure; the full web suite had not started and is delegated to PR CI.
+  Rebased onto `d7787f51` (only upstream video operations changed), with identical
+  web contents. A fresh 26-PR/worktree collision review found no active overlap.
