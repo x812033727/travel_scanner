@@ -5,6 +5,7 @@ import { existsSync, rmSync } from "node:fs";
 import path from "node:path";
 
 import { defaultDubLocales, dubScript, translationHash } from "../dubs/plan.mjs";
+import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "./branding.mjs";
 import { buildCues, checkCues, toSrt, toVtt } from "./captions.mjs";
 import { atomicWrite, readJson } from "./paths.mjs";
 import { eachLine, LOCALES, NARRATION_LOCALE, narrationLocale, textHash } from "./schema.mjs";
@@ -93,7 +94,14 @@ export function currentDub(project, workdir, locale, speech) {
   if (!dub) return null;
   const words = translationHash(dubScript(project.doc, project.translations[locale], locale).doc);
   const file = files.track(dub.format);
-  if (dub.speech_hash !== speech || dub.translation_hash !== words || !existsSync(file)) return { stale: true };
+  const checks = readJson(path.join(workdir, ARTIFACTS.checks), null);
+  const applied = appliedBranding(checks);
+  const bodyTimeline = applied ? readJson(path.join(workdir, ARTIFACTS.timeline), null) : null;
+  if (!brandingCurrent(checks, readBranding(workdir)) || (dub.branding_hash ?? null) !== (applied?.hash ?? null)
+      || (applied && (checks.speech_hash !== speech || bodyTimeline?.speech_hash !== speech || applied.body_frames !== bodyTimeline?.total_frames))
+      || (applied && (dub.body_total_frames !== applied.body_frames || dub.content_end_frame !== applied.intro_frames + applied.body_frames
+        || dub.total_frames !== applied.intro_frames + applied.body_frames + applied.outro_frames))
+      || dub.speech_hash !== speech || dub.translation_hash !== words || !existsSync(file)) return { stale: true };
   return { ...dub, file };
 }
 
@@ -115,7 +123,7 @@ export function dubsForUpload(project, workdir, speech, locales = defaultDubLoca
       continue;
     }
     const dub = currentDub(project, workdir, locale, speech);
-    if (dub && !dub.stale) dubs.push({ locale, file: dub.file, format: dub.format, total_frames: dub.total_frames, tempo_max: dub.tempo_max ?? 1 });
+    if (dub && !dub.stale) dubs.push({ locale, file: dub.file, format: dub.format, total_frames: dub.total_frames, tempo_max: dub.tempo_max ?? 1, ...(dub.branding_hash ? { branding_hash: dub.branding_hash } : {}) });
   }
   return { dubs, skipped };
 }
@@ -126,11 +134,12 @@ export function dubsForUpload(project, workdir, speech, locales = defaultDubLoca
  */
 export function captionTimelineOf(dub) {
   const lines = [...dub.lines].sort((a, b) => a.start_frame - b.start_frame);
+  const contentEnd = dub.content_end_frame ?? dub.total_frames;
   return {
     ...dub,
     lines: lines.map((line, index) => ({
       ...line,
-      end_frame: Math.max(line.end_frame, index + 1 < lines.length ? lines[index + 1].start_frame : dub.total_frames),
+      end_frame: Math.min(contentEnd, Math.max(line.end_frame, index + 1 < lines.length ? lines[index + 1].start_frame : contentEnd)),
     })),
   };
 }
@@ -152,12 +161,17 @@ export function runCaptions({ slug, file, root, workdir, now = new Date() }) {
   const speech = speechHash(project.doc, project.lexicon);
   if (!timeline) throw new StageError("no timeline.json yet; run tts first", "order");
   if (timeline.speech_hash !== speech) throw new StageError("timeline.json was built for an older script; run tts again", "order");
+  const checks = readJson(path.join(workdir, ARTIFACTS.checks), null);
+  if (!brandingCurrent(checks, readBranding(workdir))) throw new StageError("final.mp4 does not match the selected branding; run assemble again before captions", "order");
+  const applied = appliedBranding(checks);
+  if (applied && (checks.speech_hash !== speech || applied.body_frames !== timeline.total_frames)) throw new StageError("the branded final.mp4 was built for another body timeline; run assemble again before captions", "order");
+  const presented = presentationTimeline(timeline, applied);
 
   const languages = readLanguages(workdir);
   const wanted = new Set([narrationLocale(project.doc), ...captionLocalesOf(languages)]);
   const dubbed = chosenLocales(languages, "dub") ?? defaultDubLocales(project.doc);
   const { texts, skipped } = localeTexts(project.doc, project.translations);
-  const manifest = { speech_hash: speech, chapters: checkChapters(timeline), locales: {}, skipped: {} };
+  const manifest = { speech_hash: speech, ...(applied ? { branding_hash: applied.hash } : {}), chapters: checkChapters(presented), locales: {}, skipped: {} };
   for (const [locale, byLine] of Object.entries(texts)) {
     if (!wanted.has(locale)) continue;
     if (skipped[locale]?.length) {
@@ -166,11 +180,12 @@ export function runCaptions({ slug, file, root, workdir, now = new Date() }) {
     }
     const dub = locale === narrationLocale(project.doc) || !dubbed.includes(locale) ? null : currentDub(project, workdir, locale, speech);
     const timed = dub && !dub.stale;
-    const { cues } = buildCues(timed ? captionTimelineOf(dub) : timeline, byLine, locale);
+    // Dub timelines already describe their padded presentation; only narration is shifted here.
+    const { cues } = buildCues(timed ? captionTimelineOf(dub) : presented, byLine, locale);
     atomicWrite(path.join(workdir, "captions", `${locale}.srt`), toSrt(cues));
     atomicWrite(path.join(workdir, "captions", `${locale}.vtt`), toVtt(cues));
     const problems = checkCues(cues, locale);
-    if (dub?.stale) problems.unshift(`the ${locale} dub track is older than the script or its translation; these cues follow the narration, run dub again`);
+    if (dub?.stale) problems.unshift(`the ${locale} dub track is older than the script or its translation, or does not match the branding; these cues follow the narration, run dub again`);
     manifest.locales[locale] = { cues: cues.length, problems, timing: timed ? "dub" : "narration" };
   }
   for (const locale of LOCALES) {

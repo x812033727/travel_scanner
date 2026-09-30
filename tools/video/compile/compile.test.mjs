@@ -1,9 +1,10 @@
 import assert from "node:assert/strict";
-import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, renameSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
 import { AREAS, EXIT, main } from "../cli.mjs";
+import { brandingHash } from "../core/branding.mjs";
 import { parseSrt } from "../core/captions.mjs";
 import { CARD_FRAMES, compilationHash, compilationLayout, OUTRO_FRAMES } from "../core/compilation.mjs";
 import { pipelineStatus } from "../core/state.mjs";
@@ -13,6 +14,20 @@ import { audioInputs, cardEntries, cardSegments, checkCompilationLoudness, Compi
 
 const TOTAL = EPISODES.reduce((sum, slug) => sum + EPISODE_FRAMES[slug], 0) + EPISODES.length * CARD_FRAMES + OUTRO_FRAMES;
 const readWork = (box, name) => JSON.parse(readFileSync(path.join(box.workdir, name), "utf8"));
+
+function installBranding(box) {
+  const dir = path.join(box.work, "_branding");
+  mkdirSync(dir, { recursive: true });
+  const spec = { schema_version: 1, id: "channel-v1" };
+  for (const [role, frames] of [["intro", 150], ["outro", 90]]) {
+    const bytes = Buffer.from(`channel ${role}`);
+    const file = path.join(dir, `${role}.mp4`);
+    writeFileSync(file, bytes);
+    spec[role] = { file, frames, sha256: sha(bytes) };
+  }
+  writeFileSync(path.join(dir, "current.json"), JSON.stringify(spec));
+  return spec;
+}
 
 test("compile is a registered command of the pipeline", () => {
   assert.deepEqual(AREAS.compile, ["compile", "2026-09-27-video-binge-compile"]);
@@ -138,7 +153,7 @@ test("compile encodes the cards, joins the cuts, checks the result, merges the c
   assert.deepEqual([en[2].start_ms, en[2].end_ms, en[2].text], [Math.round((4441 * 1000) / 30), Math.round((4441 * 1000) / 30) + 1500, "en wuxia-ep-2 1"]);
   assert.ok(existsSync(path.join(box.workdir, "captions", "zh-TW.vtt")));
   assert.equal(existsSync(path.join(box.workdir, "captions", "ja.srt")), false);
-  assert.match(out.stdout, /captions: zh-TW, en; skipped ja \(no file in wuxia-ep-1, wuxia-ep-3\)/);
+  assert.match(out.stdout, /captions: zh-TW, en; skipped ja \(no current file in wuxia-ep-1, wuxia-ep-3\)/);
 
   // The manifest and the timeline the later stages read.
   const manifest = readWork(box, "compile/manifest.json");
@@ -231,4 +246,190 @@ test("a failed probe leaves checks.json failed and exits 1, and a changed card t
   assert.match(redo.out.stdout, /1 of 4 cards encoded/);
   assert.equal(readWork(box, "checks.json").visual_hash, visualHash(doc));
   assert.equal(sha(readFileSync(path.join(box.workdir, "final.mp4"))).length, 64);
+});
+
+test("a compilation strips episode bookends and wraps the joined body only once, preserving caption and chapter positions", async () => {
+  const box = compilationSandbox();
+  const spec = installBranding(box);
+  const sourceBranding = { hash: "a".repeat(64), id: "earlier-channel", intro_frames: 150, outro_frames: 90 };
+  for (const slug of [EPISODES[0], EPISODES[2]]) box.episodes[slug] = writeEpisode(box.work, slug, { branding: sourceBranding });
+  const bodyFrames = TOTAL - OUTRO_FRAMES;
+  const total = bodyFrames + 240;
+  const fake = fakeFfmpeg({ total, framesByFile: { [spec.intro.file]: 150, [spec.outro.file]: 90 } });
+  const { out, ctx } = compileContext(box, fake);
+  assert.equal(await main(["compile", "--slug", box.slug], ctx), EXIT.ok, out.stderr);
+  const bodyJoin = fake.calls.find((call) => call.args.at(-1).endsWith("body.partial.mp4"));
+  const bodyList = readFileSync(bodyJoin.args[bodyJoin.args.indexOf("-i") + 1], "utf8");
+  assert.match(bodyList, /wuxia-ep-1\/build\/body\.mp4/);
+  assert.match(bodyList, /wuxia-ep-2\/final\.mp4/);
+  assert.match(bodyList, /wuxia-ep-3\/build\/body\.mp4/);
+  assert.doesNotMatch(bodyList, /outro-/);
+  const joins = fake.calls.filter((call) => call.args.includes("-filter_complex"));
+  assert.equal(joins.length, 2, "one body join and one channel wrap");
+  const outerList = readFileSync(joins[1].args[joins[1].args.indexOf("-i") + 1], "utf8").trim().split("\n");
+  assert.equal(outerList.length, 4, "one intro, one complete body, one outro");
+  assert.match(outerList[1], /\/intro\.mp4'$/);
+  assert.match(outerList[2], /\/build\/body\.partial\.mp4'$/, "the old retained body survives until the wrap succeeds");
+  assert.match(outerList[3], /\/outro\.mp4'$/);
+  const checks = readWork(box, "checks.json");
+  assert.equal(checks.branding.hash, brandingHash(spec));
+  assert.equal(checks.branding.body_frames, bodyFrames);
+  assert.equal(checks.branding.body_file, "build/body.mp4");
+  assert.equal(checks.branding.body_sha256, sha(readFileSync(path.join(box.workdir, "build", "body.mp4"))));
+  assert.equal(checks.metrics.frames, total);
+  assert.equal(readWork(box, "branding.json").hash, brandingHash(spec));
+  const hash = compilationHash(box.doc, EPISODES.map((slug) => ({ slug, ...box.episodes[slug] })));
+  assert.equal(checks.compilation_hash, hash);
+  const timeline = readWork(box, "timeline.json");
+  assert.equal(timeline.total_frames, bodyFrames, "the saved timeline remains body-only");
+  assert.equal(timeline.chapters[1].start_frame, 4381);
+  const manifest = readWork(box, "compile/manifest.json");
+  assert.equal(manifest.chapters[0].start_frame, 0);
+  assert.equal(manifest.chapters[1].start_frame, 4531);
+  assert.equal(manifest.layout.some((entry) => entry.kind === "outro"), false);
+  const cues = parseSrt(readFileSync(path.join(box.workdir, "captions", "en.srt"), "utf8"));
+  assert.equal(cues[0].start_ms, 7000, "the source's intro is replaced, not stacked");
+  assert.equal(cues[2].start_ms, Math.round(4441 * 1000 / 30) + 5000, "legacy episode captions get the single channel intro");
+  assert.equal(cues[4].start_ms, Math.round(8401 * 1000 / 30) + 5000);
+  assert.equal(readWork(box, "captions/manifest.json").branding_hash, brandingHash(spec));
+});
+
+test("an approved source cut cannot hide a changed or missing branded body", async () => {
+  const box = compilationSandbox();
+  const sourceBranding = { hash: "a".repeat(64), id: "channel-v1", intro_frames: 150, outro_frames: 90 };
+  const source = writeEpisode(box.work, EPISODES[0], { branding: sourceBranding });
+  writeFileSync(path.join(source.dir, "build", "body.mp4"), "changed body");
+  const changed = compileContext(box, fakeFfmpeg({ total: TOTAL }));
+  assert.equal(await main(["compile", "--slug", box.slug], changed.ctx), EXIT.usage);
+  assert.match(changed.out.stderr, /body_sha256 mismatch/);
+  writeEpisode(box.work, EPISODES[0], { branding: sourceBranding });
+  const checksFile = path.join(source.dir, "checks.json");
+  const checks = JSON.parse(readFileSync(checksFile, "utf8"));
+  checks.branding.body_file = "build/missing.mp4";
+  writeFileSync(checksFile, JSON.stringify(checks));
+  const missing = compileContext(box, fakeFfmpeg({ total: TOTAL }));
+  assert.equal(await main(["compile", "--slug", box.slug], missing.ctx), EXIT.usage);
+  assert.match(missing.out.stderr, /branding body is missing/);
+  checks.branding.body_file = "../another-video/final.mp4";
+  writeFileSync(checksFile, JSON.stringify(checks));
+  const outside = compileContext(box, fakeFfmpeg({ total: TOTAL }));
+  assert.equal(await main(["compile", "--slug", box.slug], outside.ctx), EXIT.usage);
+  assert.match(outside.out.stderr, /inside its work directory/);
+  writeEpisode(box.work, EPISODES[0], { branding: sourceBranding });
+  writeFileSync(path.join(source.dir, "final.mp4"), "changed final");
+  const final = compileContext(box, fakeFfmpeg({ total: TOTAL }));
+  assert.equal(await main(["compile", "--slug", box.slug], final.ctx), EXIT.usage);
+  assert.match(final.out.stderr, /not the approved cut/, "final approval is checked before the retained body");
+});
+
+test("branded source captions need their matching manifest before their intro can be removed", async () => {
+  for (const stale of ["different branding", "missing manifest"]) {
+    const box = compilationSandbox();
+    const sourceBranding = { hash: "a".repeat(64), id: "channel-v1", intro_frames: 150, outro_frames: 90 };
+    const source = writeEpisode(box.work, EPISODES[0], { branding: sourceBranding });
+    const first = compileContext(box, fakeFfmpeg({ total: TOTAL }));
+    assert.equal(await main(["compile", "--slug", box.slug], first.ctx), EXIT.ok, first.out.stderr);
+    assert.ok(existsSync(path.join(box.workdir, "captions", "en.srt")));
+    // Model adopting branding while the episode still has captions on its old body timeline.
+    const manifestFile = path.join(source.dir, "captions", "manifest.json");
+    if (stale === "missing manifest") rmSync(manifestFile);
+    else writeFileSync(manifestFile, JSON.stringify({ branding_hash: "b".repeat(64), locales: { en: {} } }));
+    writeFileSync(path.join(source.dir, "captions", "en.srt"), "1\n00:00:00,000 --> 00:00:01,500\nold body timing\n");
+    const again = compileContext(box, fakeFfmpeg({ total: TOTAL }));
+    assert.equal(await main(["compile", "--slug", box.slug], again.ctx), EXIT.ok, again.out.stderr);
+    const captions = readWork(box, "captions/manifest.json");
+    assert.equal(captions.locales.en, undefined, stale);
+    assert.deepEqual(captions.skipped.en, [EPISODES[0]], stale);
+    assert.deepEqual(captions.skipped["zh-TW"], [EPISODES[0]], stale);
+    for (const extension of ["srt", "vtt"]) assert.equal(existsSync(path.join(box.workdir, "captions", `en.${extension}`)), false, `${stale}: an old merged track must not survive for package`);
+    assert.match(again.out.stdout, /no current file in wuxia-ep-1/);
+  }
+});
+
+test("an existing unpinned compilation ignores a new default until explicitly adopted", async () => {
+  const box = compilationSandbox();
+  const first = compileContext(box, fakeFfmpeg({ total: TOTAL }));
+  assert.equal(await main(["compile", "--slug", box.slug], first.ctx), EXIT.ok, first.out.stderr);
+  const spec = installBranding(box);
+  const again = compileContext(box, fakeFfmpeg({ total: TOTAL }));
+  assert.equal(await main(["compile", "--slug", box.slug, "--force"], again.ctx), EXIT.ok, again.out.stderr);
+  assert.equal(readWork(box, "checks.json").branding, undefined);
+  assert.equal(existsSync(path.join(box.workdir, "branding.json")), false);
+  const adopted = compileContext(box, fakeFfmpeg({ total: TOTAL - OUTRO_FRAMES + 240, framesByFile: { [spec.intro.file]: 150, [spec.outro.file]: 90 } }));
+  assert.equal(await main(["compile", "--slug", box.slug, "--adopt-branding"], adopted.ctx), EXIT.ok, adopted.out.stderr);
+  assert.equal(readWork(box, "checks.json").branding.hash, brandingHash(spec));
+});
+
+test("a failed channel wrap preserves the existing final, retained body and branding pin", async () => {
+  const box = compilationSandbox();
+  const spec = installBranding(box);
+  const fake = fakeFfmpeg({ total: TOTAL - OUTRO_FRAMES + 240, framesByFile: { [spec.intro.file]: 150, [spec.outro.file]: 90 } });
+  const first = compileContext(box, fake);
+  assert.equal(await main(["compile", "--slug", box.slug], first.ctx), EXIT.ok, first.out.stderr);
+  const previous = Object.fromEntries(["final.mp4", "build/body.mp4", "branding.json", "checks.json"].map((file) => [file, readFileSync(path.join(box.workdir, file))]));
+  const failing = compileContext(box, fake, { runTool: async (tool, args) => {
+    if (args.at(-1).endsWith("final.partial.mp4")) throw new Error("wrapper failed");
+    return fake.runTool(tool, args);
+  } });
+  await assert.rejects(main(["compile", "--slug", box.slug], failing.ctx), /wrapper failed/);
+  for (const [file, bytes] of Object.entries(previous)) assert.deepEqual(readFileSync(path.join(box.workdir, file)), bytes, file);
+});
+
+test("a failed branded probe preserves the approved compilation and all timing records", async () => {
+  const box = compilationSandbox();
+  const spec = installBranding(box);
+  const total = TOTAL - OUTRO_FRAMES + 240;
+  const framesByFile = { [spec.intro.file]: 150, [spec.outro.file]: 90 };
+  const first = compileContext(box, fakeFfmpeg({ total, framesByFile }));
+  assert.equal(await main(["compile", "--slug", box.slug], first.ctx), EXIT.ok, first.out.stderr);
+  writeFileSync(path.join(box.workdir, "approvals.json"), JSON.stringify({ approvals: [{ gate: "final", sha256: sha(readFileSync(path.join(box.workdir, "final.mp4"))) }] }));
+  const files = ["final.mp4", "build/body.mp4", "branding.json", "checks.json", "approvals.json", "timeline.json", "compile/manifest.json", "captions/manifest.json", "captions/en.srt"];
+  const previous = Object.fromEntries(files.map((file) => [file, readFileSync(path.join(box.workdir, file))]));
+  const fake = fakeFfmpeg({ total: total - 1, framesByFile });
+  const failed = compileContext(box, fake);
+  assert.equal(await main(["compile", "--slug", box.slug], failed.ctx), EXIT.lint);
+  assert.match(failed.out.stdout, /previous compilation and its captions remain unchanged/);
+  for (const [file, bytes] of Object.entries(previous)) assert.deepEqual(readFileSync(path.join(box.workdir, file)), bytes, file);
+  assert.equal(readWork(box, "build/branding-failed-checks.json").ok, false);
+  assert.equal(fake.calls.filter((call) => call.tool === "ffprobe").at(-1).args.at(-1), path.join(box.workdir, "build", "final.partial.mp4"));
+  assert.equal(existsSync(path.join(box.workdir, "build", "body.partial.mp4")), true);
+});
+
+test("a first branded build that fails QA still adopts the channel package on retry", async () => {
+  const box = compilationSandbox();
+  const spec = installBranding(box);
+  const total = TOTAL - OUTRO_FRAMES + 240;
+  const framesByFile = { [spec.intro.file]: 150, [spec.outro.file]: 90 };
+  const failed = compileContext(box, fakeFfmpeg({ total: total - 1, framesByFile }));
+  assert.equal(await main(["compile", "--slug", box.slug], failed.ctx), EXIT.lint);
+  assert.equal(existsSync(path.join(box.workdir, "final.mp4")), false);
+  assert.equal(existsSync(path.join(box.workdir, "branding.json")), false);
+  assert.equal(existsSync(path.join(box.workdir, "checks.json")), false);
+  const retry = compileContext(box, fakeFfmpeg({ total, framesByFile }));
+  assert.equal(await main(["compile", "--slug", box.slug], retry.ctx), EXIT.ok, retry.out.stderr + retry.out.stdout);
+  assert.equal(readWork(box, "checks.json").branding.hash, brandingHash(spec));
+  assert.equal(readWork(box, "timeline.json").total_frames, TOTAL - OUTRO_FRAMES);
+  assert.equal(existsSync(path.join(box.workdir, "build", "branding-failed-checks.json")), false);
+});
+
+test("a failed branded commit rolls captions and timing records back with the media", async () => {
+  const box = compilationSandbox();
+  const spec = installBranding(box);
+  const makeFake = () => fakeFfmpeg({ total: TOTAL - OUTRO_FRAMES + 240, framesByFile: { [spec.intro.file]: 150, [spec.outro.file]: 90 } });
+  const first = compileContext(box, makeFake());
+  assert.equal(await main(["compile", "--slug", box.slug], first.ctx), EXIT.ok, first.out.stderr);
+  writeFileSync(path.join(box.workdir, "captions", "ja.srt"), "previous stale caption");
+  const files = ["final.mp4", "build/body.mp4", "branding.json", "checks.json", "timeline.json", "compile/manifest.json", "captions/manifest.json", "captions/en.srt", "captions/ja.srt"];
+  const previous = Object.fromEntries(files.map((file) => [file, readFileSync(path.join(box.workdir, file))]));
+  const failed = compileContext(box, makeFake(), { renameBranding: (from, to) => {
+    if (to === path.join(box.workdir, "checks.json")) throw new Error("injected commit failure");
+    renameSync(from, to);
+  } });
+  await assert.rejects(main(["compile", "--slug", box.slug], failed.ctx), /injected commit failure/);
+  for (const [file, bytes] of Object.entries(previous)) assert.deepEqual(readFileSync(path.join(box.workdir, file)), bytes, file);
+  assert.equal(existsSync(path.join(box.workdir, "build", "final.partial.mp4")), true);
+  const retry = compileContext(box, makeFake());
+  assert.equal(await main(["compile", "--slug", box.slug], retry.ctx), EXIT.ok, retry.out.stderr);
+  assert.equal(existsSync(path.join(box.workdir, "captions", "ja.srt")), false, "only the complete current caption set is promoted");
+  assert.equal(readdirSync(path.join(box.workdir, "build")).some((name) => name.startsWith("compile-pending-")), false);
 });
