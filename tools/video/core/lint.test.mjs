@@ -93,6 +93,17 @@ test("a slide cannot reveal more elements than it has", () => {
   assert.match(messages(lintVideo(doc, context()).errors), /reveals 5 elements but the bullets slide has 3/);
 });
 
+test("scene data the renderer would refuse is a lint error, so the writer fixes it before the audio", () => {
+  const doc = fixture();
+  doc.scenes[1].template = "chat";
+  doc.scenes[1].data = { messages: [{ side: "right", name: "你", text: "可以用中文嗎？" }, { side: "left", name: "說明頁", text: "只支援英文。" }, { side: "left", name: "建議", text: "先備英文提示。" }] };
+  doc.scenes[1].lines.forEach((line) => delete line.reveal);
+  const errors = lintVideo(doc, context()).errors;
+  assert.deepEqual(errors.map((error) => `${error.path}: ${error.message}`), ["scenes[1] (" + doc.scenes[1].id + ").data: named chat messages are limited to 2"]);
+  doc.scenes[1].data.messages.forEach((message) => delete message.name);
+  assert.deepEqual(lintVideo(doc, context()).errors, []);
+});
+
 test("fewer than three chapters is an error; a short estimated chapter is a warning", () => {
   const doc = fixture();
   delete doc.scenes[1].chapter;
