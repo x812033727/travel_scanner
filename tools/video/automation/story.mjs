@@ -98,8 +98,9 @@ export const MIN_READABLE_CHARS = 400;
 // The output each call may take: a chapter is about 25 shots at most, some 5,000 tokens.
 const WRITER_TOKENS = 16_000;
 const CHECKER_TOKENS = 16_000;
-const LISTENER_TOKENS = 8_000;
-const FIX_TOKENS = 8_000;
+// The listener runs on Opus 5.5 by default, which always thinks; thinking counts toward the cap.
+const LISTENER_TOKENS = 16_000;
+const FIX_TOKENS = 16_000;
 
 // What a story keeps in its work directory, relative to it: the chapters as written and checked
 // (small, and what a person reads when a story goes wrong), and the pages its sources gave, whole

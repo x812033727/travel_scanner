@@ -164,7 +164,10 @@ class ResponsesResearchProvider:
     ) -> tuple[TModel, dict[str, int]]:
         previous = ""
         failure: ValidationError | None = None
-        system_prompt = _with_schema(instructions, schema)
+        # Only MiniMax ignores text.format; OpenAI's strict format already enforces the schema.
+        system_prompt = (
+            _with_schema(instructions, schema) if self.name == "minimax" else instructions
+        )
         for attempt in range(2):
             user_input = json.dumps(payload, ensure_ascii=False)
             if attempt and failure is not None:
@@ -250,7 +253,7 @@ class AnthropicResearchProvider:
     ) -> tuple[TModel, dict[str, int]]:
         previous = ""
         failure: ValidationError | None = None
-        system_prompt = _with_schema(instructions, schema)
+        system_prompt = instructions  # output_config.format carries the schema
         for attempt in range(2):
             user_input = json.dumps(payload, ensure_ascii=False)
             if attempt and failure is not None:

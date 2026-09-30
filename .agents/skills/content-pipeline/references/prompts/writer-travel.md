@@ -54,6 +54,6 @@ Run from `<ROOT>/apps/api` with `PYTHONIOENCODING=utf-8`; `<PY>` is that worktre
 
 Manual: every summary number appears verbatim in the body; every article inline's slug and kind exist; table columns at most 4; offers placed per the spec; every source has checked_on = today. Write helper scripts as files into `<WORKDIR>/_tools/<SLUG>/` and run them; do not paste non-ASCII text into shell heredocs, Windows mangles it.
 
-## Report (at most 40 lines, saved as report.md and pasted back)
+## Report (saved as report.md and pasted back; the coordinator scans it, one line per item)
 
 status; body_length; counts (H2, table, callout, offer, image, FAQ); the state of each time-sensitive row as of today with the notice date you saw; numbers that differ from the spec; claims written as 「以官網為準」 and why; Commons file names used with licence; dry-run and intake_check output summary (warnings verbatim); things you suspected but did not change; open questions for the coordinator. Do not touch any other article's workdir. Do not modify the repo.

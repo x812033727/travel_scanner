@@ -45,8 +45,9 @@ Rules that never bend:
   such (「我的看法是」「以我的用法」) and follow 站主觀點 in the brief.
 - No financial, investment, health, legal or political advice; crypto only as information.
 - Verification never enters the narration: no 「經查證」「根據官方文件」「截至查證」「本影片」.
-- Name interface elements as Taiwanese viewers see them (the zh-TW interface), with the English
-  name on the slide only when it helps.
+- In zh-TW text, name interface elements as Taiwanese viewers see them (the zh-TW interface), with
+  the English name on the slide only when it helps; a translation uses the locale's own interface
+  names.
 - Nobody's personal data anywhere.
 `.trim();
 

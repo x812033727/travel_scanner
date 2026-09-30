@@ -72,7 +72,7 @@
 - 麵包屑取 `topics[0]`（依 display_order）：文章只掛子主題，否則料理名不會出現。
 - `map.naver.com` 在內建瀏覽器與 Claude in Chrome 都被政策擋，沒有繞法：把抽查交給站主，機械檢查所有連結（place id 跨篇不得重複）。
 - 正式站有讀取限流：逐頁驗證循序、每次間隔 1.3 秒以上。
-- `/sitemap.xml` 從 #531 起是 sitemap index（`apps/web/app/sitemap.xml/route.ts`），舊的 `SITEMAP_LIMIT` 1,000 列上限已經不存在。
+- `/sitemap.xml` 是 sitemap index（`apps/web/app/sitemap.xml/route.ts`），沒有列數上限；確認收錄要讀到每個子 sitemap。
 - 後台的最後一步「發布／確認發布」留給站主按：內建瀏覽器裡填欄位、儲存草稿、打開發布確認框都過了，把「發布」點擊綁進同一批動作就被 auto 模式擋。
 - 種子檔不等於正式站：`FOOD_SEEDS` 只有 10 道韓國料理，正式站有 25 道，15 道是後台建的、多半沒有 `kr-` 前綴（`dakhanmari`、`jokbal`、`kalguksu`…）；`seed_food_catalog` 只比 slug。加料理前先用韓文名查 `GET https://mokaair.com/api/travel/foods?country_code=KR&limit=50`。
 - 種子店家與正式站同 slug 時只會被「收編」：補料理連結，審核狀態與 source 不動（`foods/service.py`）。`merchant_catalog.py` 的（城市, 料理）配對在匯入時嚴格比對，配錯 API 起不來。

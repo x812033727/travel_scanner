@@ -53,7 +53,7 @@ gh api "repos/{owner}/{repo}/actions/jobs/<job-id>/logs" --allow-escape-sequence
 
 已知的、不是你的錯的紅燈與各自的現況，正本在 skill `dev-and-ci` 的 `.agents/skills/dev-and-ci/references/ci-triage.md`；先對那張表，再決定重跑或修。
 
-本機限制：Playwright 需要的 chromium build 本機沒裝，e2e 只能靠 CI；workflow 代理留下的 `src.tar` 之類的大檔要 `git status` 清掉。
+本機限制：本機的 chromium build 可能對不上 `@playwright/test`，那時 e2e 只能靠 CI（本機跑法見 skill `web-i18n-e2e` 的 `references/e2e-local.md`）；workflow 代理留下的 `src.tar` 之類的大檔要 `git status` 清掉。
 
 ## 合併之後
 

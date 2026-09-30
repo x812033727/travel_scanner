@@ -29,7 +29,7 @@ metadata:
 | 3 | 做事 | 在 worktree 裡改 scope 內的檔案；票的 Steps 隨手打勾；AGENTS.md 列的檢查跑你動到的那幾項 | `npm run check:tasks` 過 |
 | 4 | 結案 | `npm run tasks -- done <id>`，commit（訊息附 `Task: <id>`），push | 檔案在 `tasks/done/`、未勾的項目在 Notes 交代 |
 | 5 | PR | `gh pr create --base main --head <branch> --title "<type>(<area>): …" --body-file <file>` | 內文寫為什麼、做了什麼、怎麼驗；站主還沒同意合併的加 `--draft`（否則綠了會被自動合併） |
-| 6 | 等綠、合併 | `bash .agents/skills/task-board/scripts/merge-when-green.sh <pr>`（rebase → push → 等檢查 → squash 合併 → main 又動了就重來，最多三輪） | 四個必要檢查 `completed success`；`mergeStateStatus` 是 CLEAN |
+| 6 | 等綠、合併 | `bash .agents/skills/task-board/scripts/merge-when-green.sh <pr>`（rebase → push → 等檢查 → squash 合併 → main 又動了就重來，最多三輪）；PR 符合規矩 6 的自動合併條件時不要跑，兩邊會同時改分支 | 四個必要檢查 `completed success`；`mergeStateStatus` 是 CLEAN |
 | 7 | 之後 | 部署走 skill `deploy`；同一組票要批次合併時一次跑一條 chain | 票在 done、分支已刪、記憶或交接有寫 |
 
 ## 指令
