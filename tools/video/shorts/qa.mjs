@@ -7,22 +7,49 @@
 // measuring and the calls. The cut is measured again here with ffprobe and ffmpeg: the build's
 // own receipt is not taken for the answer. A call that fails (Jev, a link, the site) fails its
 // item; nothing passes because it could not be checked.
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, realpathSync } from 'node:fs';
 import path from 'node:path';
 
 import { locateFfmpeg } from '../assemble/ffmpeg.mjs';
-import { readJson } from '../core/paths.mjs';
+import { isInside, readJson } from '../core/paths.mjs';
 import { checkLinks, descriptionUrls, linkChecker, linksDetail } from '../qa/links.mjs';
 import { policyVerdict } from '../qa/policy.mjs';
 import { comparable } from '../tts/check.mjs';
 import { loudnessProblems, measureFinal, profileProblems } from './build.mjs';
-import { audioHash, buildClips, CHECK_FILE } from './check.mjs';
+import { audioHash, buildClips, CHECK_FILE, phrasesHash } from './check.mjs';
 import { PROFILE, SCRIPT_FILE, lineOf, phrasesOf, saveJson, sha256, verifyEvidence } from './core.mjs';
-import { CAPTIONS_FILE, captionProblems, composeMetadata, disclosureOf, metadataProblems, sourceUrlOf } from './package.mjs';
+import { CAPTIONS_FILE, EXTRA_LOCALES, captionProblems, composeMetadata, disclosureOf, metadataProblems, sourceUrlOf } from './package.mjs';
 
 export const ITEM_IDS = Object.freeze(['profile', 'loudness', 'layout', 'narration', 'evidence', 'facts', 'policy', 'metadata', 'captions', 'links', 'variety', 'disclosure']);
 export const QA_FILE = 'qa.json';
 export const VERIFY_FILE = 'verify.json';
+/** Local inputs of a QA verdict. Missing inputs stay explicit so adding them invalidates it too.
+ * Package outputs are deliberately excluded: package runs after qa. All supported caption
+ * tracks are included so adding a language cannot carry forward a verdict that never saw it.
+ */
+export function qaInputBindings(directory) {
+  const doc = readJson(path.join(directory, SCRIPT_FILE), null);
+  const names = [SCRIPT_FILE, 'timeline.json', CHECK_FILE, VERIFY_FILE, 'checks.json', 'upload/final.mp4',
+    ...['zh-TW', ...EXTRA_LOCALES].map((locale) => `upload/${locale}.srt`),
+    ...(doc ? phrasesOf(doc).map((_phrase, index) => `audio/${String(index).padStart(3, '0')}.wav`) : []),
+    ...(doc?.evidence ?? []).map((entry) => `evidence/${entry.path}`)];
+  const files = Object.fromEntries([...new Set(names)].sort().map((name) => {
+    const file = path.resolve(directory, name);
+    if (!isInside(file, path.resolve(directory))) throw new Error(`QA input outside build directory: ${name}`);
+    if (!existsSync(file)) return [name, null];
+    if (!isInside(realpathSync(file), realpathSync(directory))) throw new Error(`QA input outside build directory: ${name}`);
+    return [name, sha256(readFileSync(file))];
+  }));
+  return { version: 1, files };
+}
+
+/** Compare the complete set as well as its hashes; partial/legacy bindings never count. */
+export function sameQaInputs(recorded, current) {
+  if (recorded?.version !== 1 || !recorded.files || typeof recorded.files !== 'object' || Array.isArray(recorded.files)) return false;
+  const names = Object.keys(current.files);
+  return Object.keys(recorded.files).length === names.length
+    && names.every((name) => Object.hasOwn(recorded.files, name) && recorded.files[name] === current.files[name]);
+}
 // How many of the latest Shorts an opening is compared with.
 export const VARIETY_WINDOW = 30;
 const OFFLINE = 'not checked: the quality check ran without the site';
@@ -62,11 +89,19 @@ export function layoutItem({ checks, cues }) {
 export function narrationItem({ check, audioSha256, phrases }) {
   if (!check) return item('narration', false, 'check.json is missing; run check-audio');
   const problems = [];
+  if (!Array.isArray(phrases)) return item('narration', false, 'the current phrase text is missing; run check-audio again');
   if (check.audio_sha256 !== audioSha256) problems.push('the check is of other audio; run check-audio again');
-  if (check.lines !== phrases || check.checked !== phrases) problems.push(`${check.checked} of ${phrases} phrases checked`);
-  if (check.flagged) problems.push(`${check.flagged} phrases flagged: ${(check.flagged_lines ?? []).map((line) => `#${line.index} heard 「${line.heard}」`).join(', ')}`);
+  if (check.phrases_sha256 !== phrasesHash(phrases)) problems.push('the check has no binding to these phrases; run check-audio again');
+  if (check.lines !== phrases.length || check.checked !== phrases.length) problems.push(`${check.checked} of ${phrases.length} phrases checked`);
+  if (!Array.isArray(check.results) || check.results.length !== phrases.length
+    || phrases.some((text, index) => check.results[index]?.index !== index || check.results[index]?.text !== text)) {
+    problems.push('the checked phrases differ from the script; run check-audio again');
+  }
+  if (Array.isArray(check.results) && check.results.some((result) => result?.ok !== true)) problems.push('a phrase result did not pass');
+  if (check.flagged) problems.push(`${check.flagged} phrases flagged: ${(Array.isArray(check.flagged_lines) ? check.flagged_lines : []).map((line) => `#${line?.index ?? '?'} heard 「${line?.heard ?? '?'}」`).join(', ')}`);
+  if (check.flagged !== 0 || !Array.isArray(check.flagged_lines) || check.flagged_lines.length) problems.push('the check does not have zero flagged phrases');
   if (check.ok !== true && !problems.length) problems.push('the check did not pass');
-  return verdict('narration', problems, `${phrases} phrases say what the script says`);
+  return verdict('narration', problems, `${phrases.length} phrases say what the script says`);
 }
 
 /**
@@ -190,9 +225,10 @@ const failing = async (call) => {
 
 /**
  * Check a build directory and write its qa.json. `client` is the site (null with `offline`, when
- * the items that need it fail saying so); `tools`, `linkCheck` and `history` are for tests.
+ * the items that need it fail saying so); `tools`, `measureImpl`, `linkCheck` and `history`
+ * let tests supply measurements and services without calling external processes.
  */
-export async function runQa({ directory, client = null, offline = false, settings = null, tools = null, linkCheck = null, history = undefined, now = () => new Date() }) {
+export async function runQa({ directory, client = null, offline = false, settings = null, tools = null, measureImpl = measureFinal, linkCheck = null, history = undefined, now = () => new Date() }) {
   const scriptFile = path.join(directory, SCRIPT_FILE);
   if (!existsSync(scriptFile)) throw new Error(`${directory} holds no ${SCRIPT_FILE}: it is not a build of this tool`);
   const scriptBytes = readFileSync(scriptFile);
@@ -203,9 +239,12 @@ export async function runQa({ directory, client = null, offline = false, setting
   const online = !offline && client !== null;
   const finalSha = sha256(readFileSync(final));
   const phrases = phrasesOf(doc);
+  // Snapshot before any service call; an edit while QA awaits a measurement/model must not
+  // attach fresh hashes to an answer about the previous contents.
+  const inputs = qaInputBindings(directory);
   const used = settings ?? (online ? (await failing(() => client.settings())).value : null) ?? {};
   const range = { minSeconds: used.seconds_min ?? PROFILE.minSeconds, maxSeconds: used.seconds_max ?? PROFILE.maxSeconds };
-  const measured = await measureFinal(final, tools ?? (await locateFfmpeg()));
+  const measured = await measureImpl(final, tools ?? (await locateFfmpeg()));
 
   const line = lineOf(doc);
   let evidenceError = null;
@@ -247,7 +286,7 @@ export async function runQa({ directory, client = null, offline = false, setting
     profileItem({ measured, frames: timeline.frames, range }),
     loudnessItem({ loudness: measured.loudness }),
     layoutItem({ checks: readJson(path.join(directory, 'checks.json'), null), cues: timeline.cues.length }),
-    clips ? narrationItem({ check: readJson(path.join(directory, CHECK_FILE), null), audioSha256: audioHash(clips), phrases: phrases.length }) : item('narration', false, 'the clips of the phrases are missing'),
+    clips ? narrationItem({ check: readJson(path.join(directory, CHECK_FILE), null), audioSha256: audioHash(clips), phrases }) : item('narration', false, 'the clips of the phrases are missing'),
     line !== 'lab' && doc.source?.slug && !online ? item('evidence', false, OFFLINE) : evidenceItem({ doc, evidenceError, source, now: now() }),
     factsItem({ verify: readJson(path.join(directory, VERIFY_FILE), null), documentSha256: sha256(scriptBytes) }),
     policy,
@@ -257,7 +296,8 @@ export async function runQa({ directory, client = null, offline = false, setting
     past === null && offline ? item('variety', false, OFFLINE) : varietyItem({ doc, history: past }),
     disclosureItem({ doc }),
   ];
-  const report = qaReport(items, finalSha, line);
+  if (!sameQaInputs(inputs, qaInputBindings(directory))) throw new Error('QA inputs changed while checking: run qa again');
+  const report = { ...qaReport(items, finalSha, line), inputs };
   saveJson(path.join(directory, QA_FILE), { ...report, script: { series: doc.series, ...scriptShape(doc) }, checked_at: now().toISOString() });
   return report;
 }

@@ -252,7 +252,7 @@ async def open_site(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> AsyncIte
     engine = create_async_engine("sqlite+aiosqlite://")
 
     # SQLite drops timezone offsets; PostgreSQL hands back aware datetimes.
-    def restore_utc(target: Any, _context: Any) -> None:
+    def restore_utc(target: Any, _context: Any, *_more: Any) -> None:
         for column in target.__table__.columns:
             value = getattr(target, column.name)
             if isinstance(value, datetime) and value.tzinfo is None:

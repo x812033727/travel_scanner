@@ -136,7 +136,19 @@ PR #871（2026-09-28 合併）交付的是本機產線：`node tools/video/short
 
 ## 自動品管（成片）
 
-`node tools/video/shorts/cli.mjs qa --dir <成片目錄>` 寫出 `qa.json`：`{ ok, final_sha256, kind: "shorts", line, items: [{ id, ok, detail }] }`，`push` 把它放進成片審核的 `payload.qa`。
+`node tools/video/shorts/cli.mjs qa --dir <成片目錄>` 寫出 `qa.json`：`{ ok, final_sha256, kind: "shorts", line, items: [{ id, ok, detail }], inputs: { version: 1, files: { 檔案路徑: SHA256或null } } }`，`push` 把它放進成片審核的 `payload.qa`。
+
+`check-audio` 的 `check.json` 同時綁定依序排列的 WAV（`audio_sha256`）和逐句原文（`phrases_sha256`）；`qa` 還核對 `results` 的順序、文字與每句結果。只改文字、句數不變，也要重查，不能沿用原音檔的舊通過結果。
+
+`qa.inputs` 記錄本機的 `script.json`、`timeline.json`、`check.json`、`verify.json`、`checks.json`、成片、逐句 WAV、五種支援語系的字幕與腳本列出的證據檔；缺檔記成 `null`，之後補檔也要重跑 QA。`qa` 在非同步檢查前後比對快照，途中改檔就拒絕寫入新結果。`push` 在任何後台寫入前及送出審核前重核；沒有綁定或任一輸入改變時，回報 `waits` 並停止。`package` 產出的 metadata、說明及 manifest 不列入 QA 輸入，仍走原有的上傳包檢查。
+
+舊成片升級順序：先對目前版本重新查核並更新 `verify.json`，再跑 `check-audio --dir <成片目錄>` → `qa --dir <成片目錄>` → `package --dir <成片目錄>` → `push --dir <成片目錄>`（各指令前加 `node tools/video/shorts/cli.mjs`）。若旁白、字卡或時間軸改了，先依修改內容重建成片；只改說明也會使 QA 與事實查核失效。不可只補 hash、改 `ok`，或把舊收據重新包裝成通過；新跑出的失敗項仍照下方規則交站主處理。這份綁定記錄本機檔案的一致性，不替代重新查詢網站狀態或站主驗收。
+
+後台的 Shorts 成片審核同時辨識 MP4 與完整 QA。更新 QA 後重新 `push`，即使 MP4 沒變，也會建立新審核 ID／版本；完全相同的重送仍回傳目前同一筆決定，包含站主對該版失敗 QA 的人工核准。待審 QA 改變也建立新 ID，舊頁面的核准操作會被拒絕。舊成片與上傳包審核標成 `superseded`，決定者、時間、備註與原收據保留，另寫入取代前狀態的稽核紀錄；已決定審核的附件也會保留。原本尚未上傳的指派／鎖定時段釋放，通過新成片審核後才重新送上傳包。
+
+`push` 會比對後台回傳的完整 QA，再把該筆成片的 `final_review_id` 放進上傳包審核。後台拒絕缺少 ID、舊 ID 或尚未核准的 ID；上傳包的 metadata 雜湊相同，也不能沿用另一版成片的核准。升級時需同時更新 API 與 Shorts 工具；舊工具遇到 `video_shorts_final_review_stale` 時，更新工具並重新 `push`。遷移 `0115_video_review_revision` 讓舊紀錄成為版本 0；若已產生同檔案的多版審核，資料庫降版會拒絕刪去版本欄位，保護歷史紀錄。
+
+重新送審支援尚未開始上傳的 Shorts。已有 YouTube 影片 ID、續傳工作、排隊或執行中的 API 同步，以及尚未結束或已取得影片 ID 的 VPS 工作，都會擋下更新；VPS 狀態無法確認也先停止。遇到 `video_shorts_review_upload_started` 或 VPS 錯誤，先到後台與 Studio 核對原工作；不可清掉上傳紀錄或刪除失敗項來冒用舊核准。這個流程不會撤回已上傳影片或 YouTube 上的公開排程。
 
 | id | 檢查 | 來源 |
 | --- | --- | --- |
@@ -146,7 +158,7 @@ PR #871（2026-09-28 合併）交付的是本機產線：`node tools/video/short
 | `narration` | 每一句唸出來的跟稿子一樣 | 伺服器逐句轉寫加 Jev（`/video/speech/transcribe`、`/video/speech/judge`），跟長片同一套 |
 | `evidence` | 實測線：每個證據檔都在、雜湊都對、字卡用到的素材都在證據清單裡。精華與漫劇：來源影片存在而且已公開（或已核准） | 腳本與伺服器的影片清單 |
 | `facts` | 查核模型在新對話對照證據：字卡與旁白的每個數字和結論都對得上；沒有超出這次測試範圍的說法 | `verify.json` |
-| `policy` | Jev：照頻道立場、有觀眾能照著做的東西、沒有投資醫療法律政治建議、沒有業配 | 既有的 `POST /video/automation/judge/policy` |
+| `policy` | Jev：照頻道立場、有觀眾能照著做的東西、沒有投資醫療法律政治建議、沒有業配。精華（`cut`）不問「有觀眾能照著做的東西」：二、三十秒的片段放不下示範，示範留在它連回去的長片（站主 2026-09-30 決定） | 既有的 `POST /video/automation/judge/policy`；伺服器依影片的內容線選題組 |
 | `metadata` | 標題 ≤ 100 字元、沒有角括號；說明 ≤ 5,000 位元組；標籤合計 ≤ 500 字元；話題標籤最多 3 個 | `package` |
 | `captions` | `zh-TW.srt` 讀得懂、每段時間跟時間軸一致；有勾其他語言時每個語系都在而且沒過期 | `package` |
 | `links` | 說明欄每個網址都回 200；精華的完整影片連結是公開的 | 工人用固定的 User-Agent 抓 |
