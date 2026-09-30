@@ -652,6 +652,16 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
         _area("euljiro", "乙支路", "Euljiro", 37.5664, 126.991, 0.7, ko="을지로"),
         _area("yeonnam", "延南洞", "Yeonnam-dong", 37.5625, 126.9255, 0.6, ko="연남동"),
         _area("yongnidan", "龍理團街", "Yongnidan-gil", 37.532, 126.972, 0.6, ko="용리단길"),
+        _area(
+            "yongsan-electronics",
+            "龍山電子商街",
+            "Yongsan Electronics Market",
+            37.533,
+            126.963,
+            0.6,
+            ja="龍山電子商街",
+            ko="용산전자상가",
+        ),
         _area("sindang", "新堂洞", "Sindang-dong", 37.566, 127.02, 0.7, ko="신당동"),
     ),
     "PUS": (
@@ -886,6 +896,7 @@ HOTSPOT_AREAS: dict[str, tuple[HotspotArea, ...]] = {
             0.9,
         ),
         _area("dongqu", "東區巷弄", "Taipei East Village", 25.0417, 121.5514, 0.7),
+        _area("guanghua", "光華商圈／華山", "Guanghua & Huashan", 25.045, 121.531, 0.4),
     ),
     "SIN": (
         _area("marina-bay", "濱海灣", "Marina Bay", 1.2850, 103.8600, 1.2),
@@ -1729,7 +1740,7 @@ def resolve_area_code(
 
 
 # Simplified spellings for the area names written differently in the two scripts.
-# A table rather than a field on all 393 entries: the catalog is curated in
+# A table rather than a field on every entry: the catalog is curated in
 # Traditional, most names are identical in both, and one list is what a reader
 # checking the conversion actually wants to see. Produced by
 # ``python -m app.cli fill-simplified-names --source areas`` and reviewed by hand.
@@ -1764,6 +1775,7 @@ SIMPLIFIED_AREA_NAMES: dict[str, str] = {
     "信義區／台北101": "信义区／台北101",
     "元朗／吉慶圍": "元朗／吉庆围",
     "克蘭芝": "克兰芝",
+    "光華商圈／華山": "光华商圈／华山",
     "全州動物園／松川": "全州动物园／松川",
     "全州歷史博物館／孝子洞": "全州历史博物馆／孝子洞",
     "全州韓屋村": "全州韩屋村",
@@ -2011,6 +2023,7 @@ SIMPLIFIED_AREA_NAMES: dict[str, str] = {
     "黃金町／日之出町": "黄金町／日之出町",
     "黑屋博物館／南邦": "黑屋博物馆／南邦",
     "龍山／梨泰院": "龙山／梨泰院",
+    "龍山電子商街": "龙山电子商街",
     "龍理團街": "龙理团街",
 }
 
