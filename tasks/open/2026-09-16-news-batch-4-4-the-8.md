@@ -135,3 +135,9 @@ scope:
 - 索引：`update_index.py ai --locale=zh-TW`（EXPANDED_ON 2026-09-23）把六個連結依事件日插進 8 月群（08-15、08-20、08-20、08-26、08-28）與 9 月群（09-09）；
   en／ja／ko／zh-CN 逐位元不變；第二次執行拒絕。科技與幣圈索引本波未動。
 - relink 六篇（10 個連結轉 article inline）。繪圖：`build_assets.py` `# 4.4` 區六個函式；AI 整垂直重跑出 manifest 與 sheet。
+
+- 2026-09-30 (claude-opus-5-5, owner-approved `--force` on
+  `2026-09-25-gemini-student-offer-figure-alt-text`): only the zh-TW
+  `blocks[16].alt` of `ai-news-gemini-student-offer-20260820` changed, to
+  describe the diagram as drawn (2×2 boxes, no arrows, each box's title and
+  line). Nothing else in this ticket's scope changed.
