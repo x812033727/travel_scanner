@@ -1,13 +1,13 @@
 ---
 id: 2026-09-11-deny-school-hospital-tram-stop-ward
 title: Verify corrected hotspot deny types and protect historic attractions
-status: open
+status: done
 priority: P1
 area: api
 owner:
 claimed_at:
 created_at: 2026-09-11T16:53:58Z
-completed_at:
+completed_at: 2026-09-30T03:14:57Z
 branch: codex/p1-task-audit
 depends_on: []
 scope:
@@ -49,7 +49,7 @@ type could still reach the queue.
       inside it stays rejected, matching the later bounded-radius implementation.
 - [x] Merged as PR #403 (`7867d5dd`) and deployed 2026-09-12 in `6925e3d1`, which was
       verified to contain that commit.
-- [ ] Read the current deployed discovery result for the four retained types;
+- [x] Read the current deployed discovery result for the four retained types;
       inspect Q38278536, Q8669747, Q10911386 and Q2410409 for historical false
       rejection, recording any restoration needed separately before writing.
 
@@ -60,7 +60,7 @@ type could still reach the queue.
 - [x] Extend `DENIED_TYPES` and fix the radius override.
 - [x] Unit tests for both.
 - [x] Merge and deploy.
-- [ ] Check a current discovery pass and the four historic-attraction rows;
+- [x] Check a current discovery pass and the four historic-attraction rows;
       the original 2026-09-15 schedule is no longer a future checkpoint.
 
 ## How to verify
@@ -114,3 +114,30 @@ outside-radius exclusion and inside-radius denial. These passed on 2026-09-29
 together with community contracts: 52 passed, 8 PostgreSQL/S3 cases skipped.
 No application changes or policy decision were needed. The outstanding live
 status check remains open; this local pass cannot establish deployed row state.
+### 2026-09-30 live check (claude-opus-5-5, read-only transaction on production)
+Latest Wikimedia discovery pass: `last_seen_at` 2026-09-29 10:08 UTC (3,403 of
+5,913 discovery rows seen in the last 8 days). Rows by stored `wikidata_types`,
+status and reason (reasons bucketed: `denylisted_type`, a reviewer's text, or none):
+
+| Type | Policy | Result on 2026-09-30 |
+| --- | --- | --- |
+| Q56351315 JP high school | denied | 40 `denylisted_type` (last seen 09-29), 22 reviewer-rejected |
+| Q55521176 JP lower secondary | denied | 55 `denylisted_type` (09-29), 30 reviewer-rejected |
+| Q2175765 tram stop | denied | 37 `denylisted_type` (09-29), 11 reviewer-rejected, 1 reviewer-approved (西4丁目) |
+| Q687188 ward of Vietnam | denied | 55 `denylisted_type` (09-29), 81 rejected earlier |
+| Q9842 primary school | review | 65 pending `unknown_type` (09-29), 1 approved, 66 reviewer-rejected |
+| Q16917 hospital | review | 46 pending `unknown_type` (09-29), 2 approved, 40 reviewer-rejected |
+| Q245016 military base | review | 3 pending `unknown_type` (09-29), 2 approved, 3 reviewer-rejected |
+
+So the deployed policy is the corrected one: the four retained types are denied
+on the latest pass, and the three released types reach the human queue rather
+than being rejected by type.
+
+The four historic rows are all `approved` and active: Q38278536 喜屋武城 (OKA,
+military base), Q8669747 鎮平台 (HUI, military base; restored 2026-09-19 after the
+09-12 type denial), Q10911386 原花園尋常小學校本館 (TNN, primary school) and
+Q2410409 島醫院 (HIJ, hospital). No restoration is needed.
+
+The approved tram stop keeps its decision: `run_discovery` (service.py) only
+touches `last_seen_at` for curated or approved rows and never re-classifies them,
+so a denied type cannot overwrite a reviewer's approval. No code change.

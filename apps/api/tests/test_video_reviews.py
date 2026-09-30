@@ -19,6 +19,7 @@ from app.db import get_session
 from app.models import User, VideoProject, VideoReview, VideoToolToken
 from app.problems import AppError, app_error_handler
 from app.video_automation.judge import QA_AUTO_APPROVED_NOTE
+from app.video_automation.models import VideoDramaEpisode, VideoDramaRequest, VideoDramaSeries
 from app.video_automation.settings import AUTO_APPROVED_STORYBOARD_NOTE
 from app.video_reviews import admin_api, admin_service
 from app.video_reviews.schemas import (
@@ -580,6 +581,114 @@ async def test_dropping_a_video_closes_its_reviews_deletes_its_previews_and_is_f
     with pytest.raises(AppError) as decided_after:
         await admin_service.decide(session, "v", uuid4(), owner, DecisionIn(decision="approve"))
     assert submitted.value.code == decided_after.value.code == "video_project_dropped"
+
+
+def _series_episode(
+    episode_status: str, request_status: str
+) -> tuple[VideoDramaSeries, VideoDramaEpisode, VideoDramaRequest]:
+    """A three-episode drama whose second episode is being made as the video "saga-two"."""
+    series = VideoDramaSeries(
+        id=uuid4(), slug="saga", title="長篇", status="active", planned_episodes=3
+    )
+    request = VideoDramaRequest(
+        id=uuid4(),
+        premise="長篇 第 2 集",
+        status=request_status,
+        slug="saga-two",
+        series_id=series.id,
+        episode_number=2,
+    )
+    episode = VideoDramaEpisode(
+        id=uuid4(),
+        series_id=series.id,
+        number=2,
+        slug="saga-two",
+        status=episode_status,
+        request_id=request.id,
+    )
+    return series, episode, request
+
+
+def _dropping(
+    monkeypatch: pytest.MonkeyPatch,
+    project: VideoProject,
+    found: tuple[VideoDramaEpisode, VideoDramaSeries] | None,
+    request: VideoDramaRequest,
+) -> AsyncMock:
+    """A session on which dropping ``project`` finds ``found`` as its episode and ``request``
+    as the row that episode travelled as."""
+    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
+    monkeypatch.setattr(admin_service, "_reviews", AsyncMock(return_value=[]))
+    monkeypatch.setattr(admin_service, "project_view", AsyncMock(return_value="view"))
+    if found is not None:
+        monkeypatch.setattr(admin_service, "_episode_of", AsyncMock(return_value=found))
+    session = AsyncMock()
+    session.add = MagicMock()
+    session.scalar = AsyncMock(return_value=request)
+    session.scalars = AsyncMock(return_value=[] if found is None else [found[0]])
+    return session
+
+
+@pytest.mark.asyncio
+async def test_dropping_an_episode_s_video_cancels_the_request_it_was_started_as(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    series, episode, request = _series_episode("started", "started")
+    project = VideoProject(
+        id=uuid4(), slug="saga-two", title="長篇 第 2 集", stage="outline", series_slug="saga"
+    )
+    session = _dropping(monkeypatch, project, (episode, series), request)
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+
+    await admin_service.drop_project(session, _store(tmp_path), "saga-two", owner, DropIn(note="x"))
+
+    assert episode.status == "skipped"
+    assert request.status == "cancelled" and request.cancelled_at == project.dropped_at
+    assert request.updated_at == project.dropped_at and request.finished_at is None
+    assert session.scalar.await_count == 1 and session.commit.await_count == 1
+    assert series.status == "active", "episodes 1 and 3 are still to come"
+
+
+@pytest.mark.asyncio
+async def test_dropping_an_episode_s_video_after_it_was_done_leaves_its_request_done(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+    project = VideoProject(
+        id=uuid4(), slug="saga-two", title="長篇 第 2 集", stage="final", series_slug="saga"
+    )
+    series, episode, request = _series_episode("done", "done")
+    session = _dropping(monkeypatch, project, (episode, series), request)
+    await admin_service.drop_project(session, _store(tmp_path), "saga-two", owner, DropIn(note="x"))
+    assert (episode.status, request.status, request.cancelled_at) == ("done", "done", None)
+
+    # An episode still open whose request the worker already reported done keeps it done too.
+    project.dropped_at = None
+    series, episode, request = _series_episode("started", "done")
+    session = _dropping(monkeypatch, project, (episode, series), request)
+    await admin_service.drop_project(session, _store(tmp_path), "saga-two", owner, DropIn(note="x"))
+    assert (episode.status, request.status, request.cancelled_at) == ("skipped", "done", None)
+
+
+@pytest.mark.asyncio
+async def test_dropping_a_video_of_no_series_touches_no_drama_request(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    _, _, request = _series_episode("started", "started")
+    project = VideoProject(id=uuid4(), slug="ai-agent-permissions", title="教學", stage="outline")
+    session = _dropping(monkeypatch, project, None, request)
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+
+    await admin_service.drop_project(
+        session, _store(tmp_path), "ai-agent-permissions", owner, DropIn(note="x")
+    )
+
+    assert project.dropped_at is not None
+    assert (request.status, request.cancelled_at) == ("started", None)
+    assert session.scalar.await_count == 0 and session.scalars.await_count == 0
+    assert [call.args[0].action for call in session.add.call_args_list] == [
+        "video_project_dropped"
+    ]
 
 
 def test_a_report_keeps_the_source_article_an_older_tool_does_not_send() -> None:
