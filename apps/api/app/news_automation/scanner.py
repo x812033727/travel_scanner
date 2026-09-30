@@ -422,7 +422,9 @@ async def scan_source(
                         allowed_redirect_hosts=allowed_redirects,
                     )
                 except PAGE_ERRORS as error:
-                    if _refused(error) and _summary_lead_ok(entry, now):
+                    # Only a first-party announcement is worth a lead: a refused press page
+                    # (The Block refuses every article) would fill the queue with them.
+                    if source.is_first_party and _refused(error) and _summary_lead_ok(entry, now):
                         if await _keep_summary_lead(
                             session,
                             source,
