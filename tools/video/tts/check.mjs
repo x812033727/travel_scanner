@@ -35,9 +35,10 @@ import { parseArgs } from "node:util";
 import { pinyin } from "pinyin-pro";
 
 import { emptyLexicon, isKnownTerm } from "../core/lexicon.mjs";
-import { atomicWrite, lexiconFile, readJson, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
+import { atomicWrite, readJson, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { eachLine, LOCALES, NARRATION_LOCALE, narrationLocale, spokenText } from "../core/schema.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
+import { speechLexicon } from "../dubs/plan.mjs";
 import { judgeLines, SpeechError, transcribeClip } from "./client.mjs";
 import { spokenParts } from "./requests.mjs";
 import { secondOpinionCommand, secondOpinionName, secondTranscripts } from "./second-opinion.mjs";
@@ -99,23 +100,12 @@ export function spokenForm(line, lexicon) {
     .join("");
 }
 
-// Han, kana and Hangul.
-const CJK = /[぀-ヿ㐀-䶿一-鿿豈-﫿ｦ-ﾟ가-힯]/u;
+// Preserve the exported helper while synthesis and checking share one pronunciation rule.
+export { dubLexicon } from "../dubs/plan.mjs";
 
-/**
- * The dictionary as a dub reads it. Mirrors the rule in tools/video/dubs/: an alias applies only
- * when it has no CJK characters ("API" is "A P I" in English or Japanese too), and a term whose
- * alias is a Mandarin reading ("p95" as "P 九十五") is spoken as written instead.
- */
-export function dubLexicon(lexicon) {
-  const terms = {};
-  for (const [term, say] of Object.entries(lexicon?.terms ?? {})) terms[term] = typeof say === "string" && CJK.test(say) ? null : say;
-  return { ...(lexicon ?? emptyLexicon()), terms };
-}
-
-/** The dictionary a track's spoken forms come from: the narration's as it is, a dub's filtered. */
-export function lexiconFor(lexicon, locale = NARRATION_LOCALE, narration = NARRATION_LOCALE) {
-  return locale === narration ? lexicon : dubLexicon(lexicon);
+/** The dictionary a track's spoken forms come from, selected by the language being heard. */
+export function lexiconFor(lexicon, locale = NARRATION_LOCALE) {
+  return speechLexicon(lexicon, locale);
 }
 
 // Interjections the voice adds on its own, in Traditional and Simplified characters. 耶 and 餒
@@ -247,7 +237,8 @@ export async function checkAudio(args, ctx, options) {
     return EXIT.lint;
   }
   const { doc } = project;
-  const lexicon = lexiconFor(project.lexicon ?? readJson(lexiconFile(ctx.root), emptyLexicon()), locale, narration);
+  // Use the unfiltered shelf dictionary, including for --file and Chinese dubs of English video.
+  const lexicon = lexiconFor(readJson(path.join(path.dirname(project.dir), "lexicon.json"), emptyLexicon()), locale);
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
   const track = trackFiles(locale, narration);
   const timeline = readJson(path.join(workdir, track.timeline), null);

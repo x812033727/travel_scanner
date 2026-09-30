@@ -33,7 +33,7 @@ npm run tasks -- next      # the best task nobody else is on
    allowed to change. `claim` refuses a task whose scope overlaps work already in
    progress, and `next` never offers one. Keep scopes narrow: a task scoped to
    `apps/web` blocks every other web task.
-4. **Claim before you work, with a name.** `--owner` is you: `claude-opus-5`,
+4. **Claim before you work, with a name.** `--owner` is you: your model name,
    `codex`, `pei`. A claim older than 24 hours is stale and anyone may take it over,
    so a crashed agent cannot hold the queue.
 5. **Finish or hand back.** `done` when it is done, `release` when you stop. A task
@@ -44,7 +44,7 @@ npm run tasks -- next      # the best task nobody else is on
 ```bash
 npm run tasks -- next --area web                     # pick something free
 npm run tasks -- claim 2026-09-05-alert-empty-state \
-  --owner claude-opus-5 --branch claude/alert-empty-state
+  --owner <your-model-name> --branch claude/alert-empty-state
 # do the work; tick the checklist and add findings in the task file as you go
 npm run tasks -- status 2026-09-05-alert-empty-state review   # pull request is open
 npm run tasks -- done 2026-09-05-alert-empty-state            # merged

@@ -60,6 +60,9 @@ def test_the_request_labels_each_file_and_asks_for_json(tmp_path: Path) -> None:
     assert parts[1] == {"text": "[keyframe]"}
     assert parts[2]["inline_data"]["mime_type"] == "image/png"
     assert body["generationConfig"]["responseMimeType"] == "application/json"
+    scores = body["generationConfig"]["responseSchema"]["properties"]["scores"]
+    assert scores["required"] == ["identity_jingwei", "artifacts"]
+    assert set(scores["properties"]) == {"identity_jingwei", "artifacts"}
     with pytest.raises(JudgeError) as missing:
         request_body("m", store, media, _payload("0" * 64))
     assert missing.value.code == "video_media_file_not_found"

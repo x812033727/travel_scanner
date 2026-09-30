@@ -135,3 +135,11 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli guides-f
 - `c4706b00` 的 `canonical_url` 已經 404，同文搬到英文 slug，而且 zh-hant 路徑下現在是英文內容。保留是就這條規則而言；
   死連結／語言不符要另開票處理（更新網址或重新探索這個景點的 zh-TW 介紹）。
 - 2026-09-13 文件「沒退的」一節提到的 hoiana 文章，就是這裡的 `c4706b00`，已在 skip 清單裡。
+
+## 2026-09-30 追記：hoiana.com 會安古鎮那筆已退件
+
+keep 清單第二筆 `c4706b00-7c1d-4eac-9d5e-96229a20f0be`（會安古鎮：你應該在會安停留多少天？，zh-TW）
+原網址回 404；hoiana.com 把文章搬到 `https://www.hoiana.com/zh-hant/blog/how-many-days-should-you-spend-hoi-an`，
+頁面宣告 `lang=zh-TW` 但標題與本文全是英文（中文字只在選單）。站主選擇退件，2026-09-30 09:23 UTC
+依後台 `/guides/review` reject 的同樣欄位寫入（狀態、理由、審核時間與站主管理員帳號、`hotspot_guides_reviewed`
+稽核紀錄）。公開 API 對這筆現在回 404。同網域另外兩筆 en 介紹（越南十大美景、占婆島）都回 200、`lang=en`，維持核准。
