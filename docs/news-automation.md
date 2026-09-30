@@ -46,6 +46,9 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    and is queued, and the report itself is closed as `duplicate`
    (`news_attached_as_evidence`) instead of filing the same story twice. This applies to
    any candidate in `needs_evidence`, including one that had only `lead_only` pages.
+   A source's **first scan** (`last_scanned_at` empty) records every listed entry older than
+   72 hours, or undated, as seen (`rejected`, `news_baseline`) without fetching it, so
+   adding a source files only its news of the last days, never its back catalogue.
    Every fetch uses `fetch.tls_context()`: it verifies the chain, the expiry and the host
    name, but not Python 3.13's strict X.509 profile, which the TWCA chain of Taiwan's
    government sites fails ("Missing Subject Key Identifier"). Before this no `gov.tw` page
