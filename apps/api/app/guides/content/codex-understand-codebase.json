@@ -1142,8 +1142,8 @@
       ]
     },
     "zh-CN": {
-      "title": "先读懂一个既有专案",
-      "description": "用唯读流程找到启动点、资料流与测试，产生有档案依据的专案地图。",
+      "title": "先读懂一个既有项目",
+      "description": "用只读流程找到启动点、数据流与测试，产生有文件依据的项目地图。",
       "hero": {
         "src": "/guides/codex-understand-codebase/hero.jpg",
         "width": 1600,
@@ -1158,8 +1158,8 @@
         {
           "type": "summary",
           "items": [
-            "用唯读流程找到启动点、资料流与测试，产生有档案依据的专案地图。",
-            "在不修改既有程式的前提下，画出 Small Steps 的档案分工、资料流与验证边界，让下一个功能任务知道从哪里下手。"
+            "用只读流程找到启动点、数据流与测试，产生有文件依据的项目地图。",
+            "在不修改既有代码的前提下，画出 Small Steps 的文件分工、数据流与验证边界，让下一个功能任务知道从哪里下手。"
           ]
         },
         {
@@ -1181,7 +1181,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "在不修改既有程式的前提下，画出 Small Steps 的档案分工、资料流与验证边界，让下一个功能任务知道从哪里下手。阅读约 14 分钟，操作约 25 分钟。需要已登入的 Codex、编辑器、Node.js 22 以上相容版本；画面确认另需要 Python。Windows、macOS、Linux 均用同一份公开教材。"
+          "text": "在不修改既有代码的前提下，画出 Small Steps 的文件分工、数据流与验证边界，让下一个功能任务知道从哪里下手。阅读约 14 分钟，操作约 25 分钟。需要已登录的 Codex、编辑器、Node.js 22 以上兼容版本；页面确认另需要 Python。Windows、macOS、Linux 均用同一份公开教材。"
         },
         {
           "type": "rich_paragraph",
@@ -1192,13 +1192,13 @@
             },
             {
               "type": "article",
-              "text": "第一个小专案",
+              "text": "第一个小项目",
               "kind": "life",
               "slug": "codex-first-project"
             },
             {
               "type": "text",
-              "text": "。读懂专案不是把所有档案逐行翻译，而是回答「入口在哪、动作经过哪里、资料存在哪、什么证据能确认」。我们先固定一个小网站，再用同一个使用者动作追查，避免只得到一张看似完整却不能指导修改的档名清单。"
+              "text": "。读懂项目不是把所有文件逐行翻译，而是回答「入口在哪、动作经过哪里、数据存在哪、什么证据能确认」。我们先固定一个小网站，再用同一个用户动作追查，避免只得到一张看似完整却不能指导修改的文件名列表。"
             }
           ]
         },
@@ -1209,41 +1209,41 @@
         },
         {
           "type": "paragraph",
-          "text": "将练习 ZIP 的 expected 中五个档案复制到新的 codex-read-lab，保留原版。这次要读正确版本，不用 start 或 broken。用编辑器开根目录；PowerShell 执行 Get-Location，macOS／Linux 用 pwd，确认直接看得到 index.html、style.css、app.js、core.mjs 与 core.test.mjs。不要为了让专案看起来熟悉就先新增 package.json。"
+          "text": "将练习 ZIP 的 expected 中五个文件复制到新的 codex-read-lab，保留原版。这次要读正确版本，不用 start 或 broken。用编辑器开根目录；PowerShell 执行 Get-Location，macOS／Linux 用 pwd，确认直接看得到 index.html、style.css、app.js、core.mjs 与 core.test.mjs。不要为了让项目看起来熟悉就先新增 package.json。"
         },
         {
           "type": "code",
-          "label": "终端机：版本与基准测试",
+          "label": "终端：版本与基准测试",
           "language": "sh",
           "code": "node --version\nnode --test core.test.mjs\n"
         },
         {
           "type": "paragraph",
-          "text": "教材预期三项测试通过；先记录实际结果，再请 Codex 做唯读调查。若起点失败，保留错误与版本资讯，不把不明故障夹在「理解架构」中顺手修掉。正式专案若已有未提交修改，先记录哪些是原有工作，读程式阶段不使用全目录重设或自动格式化，避免把观察变成修改。"
+          "text": "教材预期三项测试通过；先记录实际结果，再请 Codex 做只读调查。若起点失败，保留错误与版本信息，不把不明故障夹在「理解架构」中顺手修掉。正式项目若已有未提交修改，先记录哪些是原有工作，读代码阶段不使用全目录重置或自动格式化，避免把观察变成修改。"
         },
         {
           "type": "paragraph",
-          "text": "桌面版先加入 codex-read-lab 为本机专案，再在此专案建立新任务；CLI 从刚核对过的练习终端机执行 codex。确认任务工作路径后，将下列要求送到 Codex 输入框，不是在系统终端机执行。"
+          "text": "桌面版先加入 codex-read-lab 为本地项目，再在此项目创建新任务；CLI 从刚核对过的练习终端执行 codex。确认任务工作路径后，将下列要求送到 Codex 输入框，不是在系统终端执行。"
         },
         {
           "type": "code",
-          "label": "Codex 提示词：唯读专案导览",
+          "label": "Codex 提示词：唯读项目导览",
           "language": "text",
           "code": "Read this codex-read-lab without editing any files. Identify the actual entry point, file responsibilities and commands available from the files, not from framework assumptions.\nTrace adding a task, marking it complete, changing the filter and reloading the page. Name the relevant functions and DOM elements.\nSeparate observed code from inferred intent. List what the existing tests cover and what still needs browser verification. If evidence is missing, say so instead of inventing a backend or build step.\n"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤 2：建立有证据的档案地图"
+          "text": "步骤 2：创建有证据的文件地图"
         },
         {
           "type": "paragraph",
-          "text": "预期会找到以下分工。看表时同时打开对应档案，确认不是依副档名猜测：index.html 实际载入 style.css 与模组 app.js；app.js 汇入 core.mjs 的功能。core.test.mjs 使用 Node 内建测试，不靠 npm script。本教材没有后端 API、资料库伺服器或 bundler，若回答有这些项目，请它指出证据再修正地图。"
+          "text": "预期会找到以下分工。看表时同时打开对应文件，确认不是依扩展名猜测：index.html 实际加载 style.css 与模块 app.js；app.js 导入 core.mjs 的功能。core.test.mjs 使用 Node 内置测试，不靠 npm script。本教材没有后端 API、数据库服务器或 bundler，若回答有这些项目，请它指出证据再修正地图。"
         },
         {
           "type": "table",
           "header": [
-            "档案",
+            "文件",
             "角色",
             "可核对的证据"
           ],
@@ -1256,7 +1256,7 @@
             [
               "style.css",
               "版面、外观、焦点样式",
-              "表单与清单样式规则"
+              "表单与列表样式规则"
             ],
             [
               "app.js",
@@ -1265,7 +1265,7 @@
             ],
             [
               "core.mjs",
-              "纯资料操作与格式验证",
+              "纯数据操作与格式验证",
               "addTask、visibleTasks、decodeTasks"
             ],
             [
@@ -1277,11 +1277,11 @@
         },
         {
           "type": "paragraph",
-          "text": "再请它对「新增 Read」列出完整顺序：表单 submit 防止预设送出，addTask 检查文字并产生新阵列，tasks 接住结果，persist 将编码后资料写入 localStorage，输入框清空，render 更新清单，最后输入框取得焦点。每个名称都能在 app.js 或 core.mjs 找到，先确认顺序与资料型态，再谈要加什么功能。"
+          "text": "再请它对「新增 Read」列出完整顺序：表单 submit 防止默认发送，addTask 检查文字并产生新数组，tasks 接住结果，persist 将编码后数据写入 localStorage，输入框清空，render 更新列表，最后输入框获取焦点。每个名称都能在 app.js 或 core.mjs 找到，先确认顺序与数据类型，再谈要加什么功能。"
         },
         {
           "type": "paragraph",
-          "text": "这里特别容易混淆「资料」与「画面」：filter.value 只决定 render 显示哪些任务，不应从 tasks 删除被隐藏的项目；完成勾选透过 task.id 找对任务，不依目前画面第几列猜测。若未先理解，后续修 Completed 可能误把未完成任务从储存资料删掉，测到画面变少却破坏功能。"
+          "text": "这里特别容易混淆「数据」与「页面」：filter.value 只决定 render 显示哪些任务，不应从 tasks 删除被隐藏的项目；完成勾选通过 task.id 找对任务，不依目前页面第几行猜测。若未先理解，后续修 Completed 可能误把未完成任务从存储的数据中删掉，测到页面变少却破坏功能。"
         },
         {
           "type": "heading",
@@ -1290,14 +1290,14 @@
         },
         {
           "type": "paragraph",
-          "text": "搜寻 app.js 的 mokaair-codex-todo-v1，可看到本教材使用的 localStorage 键。启动时 decodeTasks 读取 JSON 并检查 version 与栏位；保存时 encodeTasks 包成版本文件。这代表换浏览器来源或储存被封锁会影响资料，但不是云端帐号同步。请 Codex 说明 catch 分支会如何显示暂存状态，不能只解释成功路径。"
+          "text": "搜索 app.js 的 mokaair-codex-todo-v1，可看到本教材使用的 localStorage 键。启动时 decodeTasks 读取 JSON 并检查 version 与字段；保存时 encodeTasks 包成版本文档。这代表换浏览器来源或存储被阻止会影响数据，但不是云端账号同步。请 Codex 说明 catch 分支会如何显示暂存状态，不能只解释成功路径。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "再读测试中的第三个案例，确认坏 JSON、错误版本、重复识别码及错误栏位会被拒绝。这能证明核心解码规则，但不能单靠此测试证明浏览器真的显示错误讯息、键盘焦点合理或重新整理后仍保存。把「测过资料函式」与「测过使用者操作」分开记录，会让后续"
+              "text": "再读测试中的第三个案例，确认坏 JSON、错误版本、重复标识符及错误字段会被拒绝。这能证明核心解码规则，但不能单靠此测试证明浏览器真的显示错误信息、键盘焦点合理或刷新后仍保存。把「测过数据函数」与「测过用户操作」分开记录，会让后续"
             },
             {
               "type": "article",
@@ -1314,35 +1314,35 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤 4：用画面核对理解并留下地图"
+          "text": "步骤 4：用页面核对理解并留下地图"
         },
         {
           "type": "paragraph",
-          "text": "从 codex-read-lab 启动第一个小专案教过的 Python 伺服器：Windows 用下面第一段，macOS／Linux 用第二段，两者只选一个。浏览器开 http://127.0.0.1:4173；若埠被自己的旧练习占用，先回那个伺服器终端机停止后再启动，不能直接沿用不明资料夹的画面。另开终端机执行测试。"
+          "text": "从 codex-read-lab 启动第一个小项目教过的 Python 服务器：Windows 用下面第一段，macOS／Linux 用第二段，两者只选一个。浏览器开 http://127.0.0.1:4173；若端口被自己的旧练习占用，先回那个服务器终端停止后再启动，不能直接沿用不明文件夹的页面。另开终端执行测试。"
         },
         {
           "type": "code",
-          "label": "Windows 终端机：本机预览",
+          "label": "Windows 终端：本机预览",
           "language": "powershell",
           "code": "py -m http.server 4173 --bind 127.0.0.1\n"
         },
         {
           "type": "code",
-          "label": "macOS／Linux 终端机：本机预览",
+          "label": "macOS／Linux 终端：本机预览",
           "language": "sh",
           "code": "python3 -m http.server 4173 --bind 127.0.0.1\n"
         },
         {
           "type": "paragraph",
-          "text": "先保留仍需要的旧练习纪录，再于 About this exercise 使用 Reset practice data。选 All tasks、确认空清单后，新增 Read 与 Build，只勾选 Read。All 应显示两项，Active 只有 Build，Completed 只有 Read；切回 All 重新整理，确认资料仍在。这是核心资料与画面的串接验证，未涵盖每个错误分支。完成后只清本例资料，不清整个浏览器。"
+          "text": "先保留仍需要的旧练习记录，再于 About this exercise 使用 Reset practice data。选 All tasks、确认空列表后，新增 Read 与 Build，只勾选 Read。All 应显示两项，Active 只有 Build，Completed 只有 Read；切回 All 刷新，确认数据仍在。这是核心数据与页面的衔接验证，未涵盖每个错误分支。完成后只清本例数据，不清整个浏览器。"
         },
         {
           "type": "paragraph",
-          "text": "最后用编辑器另存 project-map.md，把以下地图作为骨架，填入你真正执行的测试与尚未验证的项目。这是新增说明文件，不需要修改五个原始程式。若请 Codex 写入，明确限定只能新增此文件，并要求完成后核对原始五档没有差异；前面的唯读调查要求也要明确结束，避免以为已授权任何重构。"
+          "text": "最后用编辑器另存 project-map.md，把以下地图作为骨架，填入你真正执行的测试与尚未验证的项目。这是新增说明文档，不需要修改五个原始代码文件。若请 Codex 写入，明确限定只能新增此文档，并要求完成后核对原始五个文件没有差异；前面的只读调查要求也要明确结束，避免以为已授权任何重构。"
         },
         {
           "type": "code",
-          "label": "档案：project-map.md",
+          "label": "文件：project-map.md",
           "language": "markdown",
           "code": "# Small Steps project map\n\n## Entry and runtime\nindex.html loads style.css and app.js as a browser module.\napp.js imports core.mjs. Local HTTP preview; no dependency installation.\n\n## Flow\nsubmit -> addTask -> tasks -> persist -> input clear -> render -> input focus\ncheckbox change -> toggleTask by ID -> persist -> render with focus restoration\nfilter change -> render -> visibleTasks; hidden tasks stay in tasks\nreload -> localStorage -> decodeTasks -> tasks -> render\n\n## Storage\nKey: mokaair-codex-todo-v1. Versioned JSON; invalid data is rejected.\nBrowser storage failures leave a temporary session and a visible message.\n\n## Verification\nnode --test core.test.mjs: fill actual result and date.\nBrowser filters, reload, keyboard and storage errors: record separately.\nDo not claim checks you did not perform.\n\n## Change boundaries\nFilter logic: core.mjs visibleTasks.\nDOM and storage orchestration: app.js.\nLayout and controls: style.css and index.html.\nUnknowns and next task: fill from evidence.\n"
         },
@@ -1353,15 +1353,15 @@
         },
         {
           "type": "paragraph",
-          "text": "在 app.js 找 submit 事件，再对照 core.mjs 的 addTask。只输入空白时，trim 后长度为 0，addTask 会抛出 title-length；事件的 catch 显示讯息并 return，因此这次不会执行后面的 persist、清空输入或 render。这是阅读程式得到的路径，不能填成已亲自按过按钮。以相同方法追一次 localStorage 写入失败，确认它会设 storageAvailable 为 false，后续资料仍可在这个分页暂存，却不保证重载后保留。"
+          "text": "在 app.js 找 submit 事件，再对照 core.mjs 的 addTask。只输入空格时，trim 后长度为 0，addTask 会抛出 title-length；事件的 catch 显示消息并 return，因此这次不会执行后面的 persist、清空输入或 render。这是阅读代码得到的路径，不能填成已亲自按过按钮。以相同方法追一次 localStorage 写入失败，确认它会设 storageAvailable 为 false，后续数据仍可在这个标签页暂存，却不保证重新加载后保留。"
         },
         {
           "type": "paragraph",
-          "text": "再检查两个容易写错的导览结论：「切换筛选会保存资料」与「三项测试通过就证明按钮正常」。前者不符 filter 的 change 只呼叫 render；后者把核心函式测试扩张为 DOM 实测。将下面段落补进 project-map.md，并把尚未实测的栏位保留 NOT RUN。若找不到所引函式，先核对是否开了 expected 副本，再修正导览，仍不更动五个程式档。"
+          "text": "再检查两个容易写错的导览结论：「切换筛选会保存数据」与「三项测试通过就证明按钮正常」。前者不符 filter 的 change 只调用 render；后者把核心函数测试扩张为 DOM 实测。将下面段落补进 project-map.md，并把尚未实测的字段保留 NOT RUN。若找不到所引函数，先核对是否开了 expected 副本，再修正导览，仍不更动五个代码文件。"
         },
         {
           "type": "code",
-          "label": "附加到档案：project-map.md",
+          "label": "附加到文件：project-map.md",
           "language": "markdown",
           "code": "## Evidence and limits\n- Blank input: core.mjs/addTask throws; app.js/submit catches and returns before persist.\n- Filter change: app.js connects change to render; that handler does not persist.\n- Count: app.js/render counts all tasks, not only the displayed subset.\n- Storage failure: app.js/persist disables further writes after a failed setItem.\n- Automated baseline: node --test core.test.mjs; record actual exit and totals.\n- Browser submit/filter/reload checks: NOT RUN until performed.\n"
         },
@@ -1372,14 +1372,14 @@
         },
         {
           "type": "paragraph",
-          "text": "Codex 说需要安装套件时，要求指出哪个档案宣告相依；只列目录却不能说明资料流，就指定追查一次 submit；把测试全过等同画面全正常，就要求列出未测边界。若找不到档案先核对根目录，不在整台电脑任意搜寻。同名函式出现在其他副本时，要用实际路径辨认，避免读 expected 却把结论套到 broken。"
+          "text": "Codex 说需要安装依赖包时，要求指出哪个文件声明依赖；只列目录却不能说明数据流，就指定追查一次 submit；把测试全过等同页面全正常，就要求列出未测边界。若找不到文件先核对根目录，不在整台电脑任意搜索。同名函数出现在其他副本时，要用实际路径辨认，避免读 expected 却把结论套到 broken。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "能依地图指出新增、勾选、筛选及重新整理各经过哪个函式，并说明至少一项仍未验证的行为，才算读懂这次范围。最后在伺服器终端机 Ctrl+C 停止，保留地图并核对五档与原始 expected 一致。若意外修改，只从保留原版还原那个档案，别重设整个专案。图中 1 是基准，2 是追查，3 是用证据核对；接下来才能"
+              "text": "能依地图指出新增、勾选、筛选及刷新各经过哪个函数，并说明至少一项仍未验证的行为，才算读懂这次范围。最后在服务器终端 Ctrl+C 停止，保留地图并核对五个文件与原始 expected 一致。若意外修改，只从保留原版还原那个文件，别重置整个项目。图中 1 是基准，2 是追查，3 是用证据核对；接下来才能"
             },
             {
               "type": "article",
