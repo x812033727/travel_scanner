@@ -71,3 +71,5 @@ en, ja, ko and zh-CN of both slugs are published. Receipt: `docs/article-localiz
 - The published locales are the pre-#970 text. PR #970 later added opening
   summaries to all five editions; releasing that version (zh-TW included) is
   a separate, owner-approved update, not part of this ticket.
+- 2026-09-30 00:02 UTC: the owner asked for the #970 version; all five locales
+  of both guides now serve it (see the receipt's last section).
