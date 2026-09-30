@@ -66,7 +66,8 @@ could not reach a summary item until now, which is why that item still said four
 after 4.5 had made them five; it edits a summary's or a list's items the way it edits a rich
 paragraph's text nodes, one item, once.
 
-Batch 4.9 (one article, GPT-6.1 Sol, 2026-09-29, five locales) touches the AI index alone:
+Batch 4.9 (one article, GPT-6.1 Sol, 2026-09-29, five locales) touches the AI index alone,
+and batch 4.10 (Claude Sonnet 5.5, 2026-09-28) the same way, with one link and no date:
 
     update_index.py ai [--dry-run]
 
@@ -130,13 +131,17 @@ NEWEST_AI_EVENT = "2026-09-29"
 # as a dict, when it names a heading whose text differs by locale. Applied in order: an entry
 # may name a slug inserted just before it.
 #
-# Batch 4.9 (2026-09-30): one article, GPT-6.1 Sol, five locales. It goes at the end of
-# September's group, which ends on the Google Vids article (09-24) in all five locales.
+# Batch 4.10 (2026-09-30): one article, Claude Sonnet 5.5 (09-28), five locales. By event
+# date it goes between Google Vids (09-24) and 4.9's GPT-6.1 Sol (09-29), i.e. right after
+# Google Vids in all five locales.
 NEW: dict[str, list[tuple[str, object]]] = {
     "crypto": [],
     "tech": [],
-    "ai": [("ai-news-gpt-61-sol-20260929", "ai-news-google-vids-omni-free-20260924")],
+    "ai": [("ai-news-claude-sonnet-55-20260928", "ai-news-google-vids-omni-free-20260924")],
 }
+# What batch 4.9 (2026-09-30) added, kept for the record:
+#
+#     "ai": [("ai-news-gpt-61-sol-20260929", "ai-news-google-vids-omni-free-20260924")],
 # What batch 4.8 (2026-09-27) added, kept for the record, as it ran:
 #
 # # Batch 4.8 (2026-09-27): ten articles the hourly automation missed, five locales each. The
@@ -455,9 +460,10 @@ _EDITS_4_8: dict[str, dict[str, list[tuple[object, str, str]]]] = {
         ],
     },
 }
-# Batch 4.9 (2026-09-30) moves the AI index's three date sentences in all five locales, from
-# batch 4.8's 2026-09-27 (expanded) and 2026-09-24 (newest event); tech and crypto are untouched.
-EDITS: dict[str, dict[str, list[tuple[object, str, str]]]] = {
+# Batch 4.9 (2026-09-30) moved the AI index's three date sentences in all five locales, from
+# batch 4.8's 2026-09-27 and 2026-09-24; its table is kept as ``_EDITS_4_9``. Batch 4.10's
+# event (09-28) is older than 4.9's newest (09-29) and it runs the same day, so no date moves.
+_EDITS_4_9: dict[str, dict[str, list[tuple[object, str, str]]]] = {
     "crypto": {locale: [] for locale in LOCALES},
     "tech": {locale: [] for locale in LOCALES},
     "ai": {
@@ -507,6 +513,11 @@ EDITS: dict[str, dict[str, list[tuple[object, str, str]]]] = {
             ),
         ],
     },
+}
+EDITS: dict[str, dict[str, list[tuple[object, str, str]]]] = {
+    "crypto": {locale: [] for locale in LOCALES},
+    "tech": {locale: [] for locale in LOCALES},
+    "ai": {locale: [] for locale in LOCALES},
 }
 
 # vertical -> locale -> (row label in column 0, column index, current cell, new cell). Nothing
