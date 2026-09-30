@@ -40,7 +40,7 @@
       "verbatim_quote": "Claude Sonnet 5.5 September 28, 2026"
     },
     {
-      "fact": "Claude Sonnet 5.5 是「Claude 5.5 家族」的第二個模型（第一個是 9 月 22 日的 Opus 5.5）。Anthropic 自己的說法是它比 Sonnet 5 明顯升級、快 30% 以上、多數工作的成本最多少 30%——這三句都是 Anthropic 自述。",
+      "fact": "Claude Sonnet 5.5 是「Claude 5.5 家族」的第二個模型（同家族還有 Opus 5.5；四條 sources[] 都沒有印 Opus 5.5 的日期，第二輪查核刪掉原本的「9 月 22 日」）。Anthropic 自己的說法是它比 Sonnet 5 明顯升級、快 30% 以上、多數工作的成本最多少 30%——這三句都是 Anthropic 自述。",
       "url": "https://www.anthropic.com/claude-sonnet-5-5",
       "is_vendor_claim": true,
       "verbatim_quote": "Introducing Claude Sonnet 5.5, the second model in the Claude 5.5 family. It’s a clear upgrade over Claude Sonnet 5, runs 30%+ faster, and costs up to 30% less for most work."
@@ -100,7 +100,7 @@
       "verbatim_quote": "Multidisciplinary reasoningHumanity’s Last Exam 64.5%with tools 54.9%with tools 67.7%with tools —"
     },
     {
-      "fact": "Anthropic 自己的但書：評測分數只反映模型能力的一個面向；在 Anthropic 與外部測試者的使用中，Opus 5.5 在需要持續判斷的複雜開放式工作上仍明顯較強。",
+      "fact": "Anthropic 自己的但書：評測分數只反映模型能力的一個面向；在 Anthropic 自己與外部測試者的測試中，Opus 5.5 在需要持續判斷的複雜開放式工作上仍明顯較強。",
       "url": "https://www.anthropic.com/claude-sonnet-5-5",
       "is_vendor_claim": false,
       "verbatim_quote": "However, benchmark scores capture only one facet of a model’s capabilities; in our own testing, and in that of external testers, Opus 5.5 remains clearly stronger at complex, open-ended work requiring sustained judgment."
@@ -142,7 +142,7 @@
       "verbatim_quote": "In Claude Code and our apps, the default effort is set to Medium, while the Claude Platform defaults to High."
     },
     {
-      "fact": "資安防護：公告寫 Sonnet 5.5 的資安能力比 Sonnet 5 大幅提升，所以比照 Opus 5.5 部署類似的防護；一般開發中找 bug、修 bug 不受影響，較高風險的資安任務會「看得到地」退回 Sonnet 5 處理。",
+      "fact": "資安防護：公告寫 Sonnet 5.5 的資安能力比 Sonnet 5 大幅提升（公告另寫 safeguards similar to those on Opus 5.5，但 System Card 摘要、§1.5、§3.3 對比照 Opus 5.5 或 Opus 5 各有不同寫法，正文不寫比照哪一代，見 must_not_write）；一般開發中找 bug、修 bug 不受影響，較高風險的資安任務會「看得到地」退回 Sonnet 5 處理。",
       "url": "https://www.anthropic.com/claude-sonnet-5-5",
       "is_vendor_claim": false,
       "verbatim_quote": "Users can still find and fix bugs in their code as part of routine software development, but higher-risk cybersecurity tasks will visibly fall back to Sonnet 5."
@@ -296,6 +296,12 @@
       "url": "https://www.anthropic.com/claude/sonnet",
       "is_vendor_claim": true,
       "verbatim_quote": "Claude Sonnet 5.5 Sep 28, 2026 A clear upgrade over Sonnet 5 that runs 30% faster and costs up to 30% less for most work."
+    },
+    {
+      "fact": "System Card §3.3：資安防護與 Sonnet 5 的相比是很大的改變，使用者應預期 Sonnet 5.5 的拒絕會變多，即使是無害的資安相關任務也一樣（第二輪查核新增，撐第五節第三段與 FAQ 相關句）。",
+      "url": "https://www.anthropic.com/claude-sonnet-5-5-system-card",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The safeguards are a significant change from those on Sonnet 5, and users should expect increased refusals with Sonnet 5.5, even on benign cybersecurity-related tasks."
     }
   ],
   "not_said": [
@@ -406,7 +412,7 @@
     "不寫 Sonnet 5.5 的脈絡視窗或最大輸出「比 Sonnet 5 大／一樣」（sources[] 沒有 Sonnet 5 的規格）。",
     "不寫快取寫入、1 小時快取寫入、Batch 價「也和 Sonnet 5 一樣」（公告只點名輸入、輸出、快取讀取三項）。",
     "不寫 System Card 的頁數，不寫「評測時開著正式防護」（那是 Opus 5.5 公告的說法）。",
-    "資安防護照公告寫「比照 Opus 5.5 的類似防護」；不寫「與 Opus 5 相同」或「三段式」（System Card 內兩處說法不一致）。",
+    "資安防護不寫比照哪一代模型（協調者 2026-09-30 裁定，第二輪查核照做）：公告寫 similar to those on Opus 5.5，System Card 摘要寫 three-stage cyber safeguards … as they are to Opus 5.5，§1.5 寫 similar blocking classifiers to those on Opus 5，§3.3 寫 same policy as on Claude Opus 5 and Claude Opus 5.5。正文不可只挑一個當事實；要寫就四處並列並寫出處。也不寫「三段式」。",
     "不寫 Haiku 5.5 的推出日期；只能寫「未來幾週」。不寫 Cyber Verification Program 的開放日期；只能寫「Soon」。",
     "不做「該不該從 Sonnet 5 或 Opus 5.5 換過來」的建議（DELTA-4-10 第 3 條）。",
     "不重講 Sonnet 5 那篇的客服情境與 8/10 價格更新，不重講 Opus 5.5 那篇的 40／20／60%、用量上限與換模型設定步驟。",
@@ -488,6 +494,17 @@
       "Sonnet 5 的退役承諾（deprecations 頁：Not sooner than June 30, 2027）與「快取寫入、Batch 也同價」（What's new 頁、docs 定價頁）不在 sources[]，文章不寫；若站主要寫，需換來源。",
       "System Card 內部不一致照舊不裁定：摘要 three-stage cyber safeguards as they are to Opus 5.5 對 §1.5 similar blocking classifiers to those on Opus 5；生物防護公告寫同 Sonnet 5、System Card 寫同 Opus 5。文章不提生物防護，資安照公告寫。",
       "版本說明 RSS 9/28 那則沒有列 Amazon Bedrock，模型頁有；發布當天重讀模型頁 Platforms。"
-    ]
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent (round 2, claude-opus-5-5)",
+      "checked_on": "2026-09-30",
+      "method": "2026-09-30 UTC 11:52 以 curl -sSL --compressed -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 重抓 sources[] 四條（間隔 1.2 秒，請求不含任何人的姓名、email 或個資）；四條都是 200、正文可讀，落地 bytes 430,222／429,120／13,101,289（148 頁 PDF）／405,412。第一輪改過的段落與新寫的句子逐句回原文；verbatim_quote 以程式做正規化空白與 HTML entity 後的連續子字串比對。暫存 /root/news49/s55/agents/fc2/。",
+      "claims_checked": 62,
+      "verbatim_quotes": "45/45 連續字串通過（原 44 條加第二輪新增 1 條），沒有含 ... 或 | 的引文，url 全在 sources[]",
+      "edits_to_the_pack": 11,
+      "edits_to_the_research_record": 5,
+      "verdict": "ok",
+      "notes": "最重三處：(1) 第五節與 FAQ 4 刪掉「比照 Opus 5.5 部署類似的防護」——公告、System Card 摘要、§1.5、§3.3 四處說法不一致，照協調者裁定不挑一個寫；並補上 System Card §3.3「使用者應預期拒絕變多，即使是無害的資安相關任務」。(2) 方案層級與 Sonnet 5 停用的否定句限縮到「這幾頁、查核日」。(3) summary 第 2 點「通常需要少得多的 tokens」原本不在正文，補進第二節第一段，並把「自己測試的說法」改成「Anthropic 的說法」（公告這句沒有說是測試）。另有評測但書「使用中」→「測試中」、GDPval 註腳補「Anthropic 發現」與 degrade 的語意、第二節小標加歸因。自檢 exit 0、零 FAIL、段落 2,925 字。"
+    }
   }
 }

@@ -42,8 +42,8 @@
         {
           "type": "summary",
           "items": [
-            "Anthropic 在 2026 年 9 月 28 日推出 Claude Sonnet 5.5，是 Claude 5.5 家族的第二個模型，API 名稱是 claude-sonnet-5-5；這幾頁沒有寫 Sonnet 5 何時停用。",
-            "牌價與 Sonnet 5 相同：每百萬 tokens 輸入 2 美元、輸出 10 美元、快取讀取 0.20 美元。Anthropic 另表示它做同樣的工作通常需要少得多的 tokens，那是 Anthropic 自己測試的說法，牌價本身沒有調降。",
+            "Anthropic 在 2026 年 9 月 28 日推出 Claude Sonnet 5.5，是 Claude 5.5 家族的第二個模型，API 名稱是 claude-sonnet-5-5；截至查核日，這幾頁沒有寫 Sonnet 5 何時停用。",
+            "牌價與 Sonnet 5 相同：每百萬 tokens 輸入 2 美元、輸出 10 美元、快取讀取 0.20 美元。Anthropic 另表示它做同樣的工作通常需要少得多的 tokens，這是 Anthropic 的說法，牌價本身沒有調降。",
             "Anthropic 的 Sonnet 產品頁寫任何人都能在 Claude.ai 的網頁、iOS 與 Android 使用，各方案的差別沒有逐一列出；模型頁列出的平台有 Claude API、Amazon Bedrock、Google Cloud、Microsoft Foundry 與 Claude Platform on AWS。",
             "Anthropic 公布的評測裡，Terminal-Bench 4.0 是 Sonnet 5.5 70.6%、Sonnet 5 10.3%；這些分數不代表讀者自己的任務，Anthropic 也說 Opus 5.5 在複雜開放式工作上仍明顯較強。",
             "System Card 寫 Sonnet 5.5 沒有跨過新的 RSP 門檻，這是 Anthropic 自己政策框架下的判定，不是外部評等；公告說較高風險的資安任務會退回 Sonnet 5 處理。"
@@ -60,7 +60,7 @@
         },
         {
           "type": "paragraph",
-          "text": "舊版方面，公告、模型頁與產品頁都沒有寫 Sonnet 5 何時停用；模型頁只寫 Sonnet 5.5 自己的退役日「不早於 2027 年 9 月 28 日」，這是 Anthropic 對 Sonnet 5.5 的承諾。公告另寫，較高風險的資安任務會退回 Sonnet 5 處理（見最後一節）。"
+          "text": "舊版方面，截至查核日，公告、模型頁與產品頁都沒有寫 Sonnet 5 何時停用；模型頁只寫 Sonnet 5.5 自己的退役日「不早於 2027 年 9 月 28 日」，這是 Anthropic 對 Sonnet 5.5 的承諾。公告另寫，較高風險的資安任務會退回 Sonnet 5 處理（見最後一節）。"
         },
         {
           "type": "paragraph",
@@ -69,11 +69,11 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "價格怎麼讀：牌價沒變，變的是每個任務的用量"
+          "text": "價格怎麼讀：牌價沒變，Anthropic 說變的是每個任務的用量"
         },
         {
           "type": "paragraph",
-          "text": "下表是公告價格表與模型頁列的 Sonnet 5.5 牌價（每百萬 tokens、美元）。公告明寫與 Sonnet 5 相同的是輸入、輸出與快取讀取三項。"
+          "text": "下表是公告價格表與模型頁列的 Sonnet 5.5 牌價（每百萬 tokens、美元）。公告明寫與 Sonnet 5 相同的是輸入、輸出與快取讀取三項，並表示它做同樣的工作通常需要少得多的 tokens。"
         },
         {
           "type": "paragraph",
@@ -131,7 +131,7 @@
         },
         {
           "type": "paragraph",
-          "text": "聊天這一端，Sonnet 產品頁寫，任何人都能在 Claude.ai 上用 Sonnet 5.5 對話，網頁、iOS、Android 都有。這句沒有逐一列出各方案，也沒有寫用量上限或是否為預設模型，這些官方未說明，不能推論成某方案不能用。"
+          "text": "聊天這一端，Sonnet 產品頁寫，任何人都能在 Claude.ai 上用 Sonnet 5.5 對話，網頁、iOS、Android 都有。這句沒有逐一列出各方案，也沒有寫用量上限或是否為預設模型；這幾頁在查核日都沒有說明，不能推論成某方案不能用。"
         },
         {
           "type": "paragraph",
@@ -165,11 +165,11 @@
         },
         {
           "type": "paragraph",
-          "text": "FrontierCode 1.1 (Main) 要連 effort 一起看：Sonnet 5.5 在 Max effort 是 46.2%、Xhigh effort 是 52.1%，Sonnet 5 是 42.4%，Opus 5.5 是 54.4%；註腳說 Max 較低，是因為它較常跑 Claude Code 的程式審查技能，在 Cognition 檢視的兩個案例裡導致逾時或改到任務範圍外。GDPval-AA v2.1 是分數制、不是百分比：Sonnet 5.5 1844、Sonnet 5 1449、Opus 5.5 1846；註腳說這項由 Artificial Analysis 在上市前部署上執行，該部署有一個可能影響結構化輸出回應的 bug，現已修正。"
+          "text": "FrontierCode 1.1 (Main) 要連 effort 一起看：Sonnet 5.5 在 Max effort 是 46.2%、Xhigh effort 是 52.1%，Sonnet 5 是 42.4%，Opus 5.5 是 54.4%；註腳說 Max 較低，是因為它較常跑 Claude Code 的程式審查技能，在 Cognition 檢視的兩個案例裡導致逾時或改到任務範圍外。GDPval-AA v2.1 是分數制、不是百分比：Sonnet 5.5 1844、Sonnet 5 1449、Opus 5.5 1846；註腳說這項由 Artificial Analysis 在上市前部署上執行，Anthropic 發現該部署有一個可能讓使用結構化輸出的請求回應變差的 bug，現已修正。"
         },
         {
           "type": "paragraph",
-          "text": "Anthropic 自己也寫了但書：評測分數只反映模型能力的一個面向，在 Anthropic 與外部測試者的使用中，Opus 5.5 在需要持續判斷的複雜開放式工作上仍明顯較強。"
+          "text": "Anthropic 自己也寫了但書：評測分數只反映模型能力的一個面向，在 Anthropic 自己與外部測試者的測試中，Opus 5.5 在需要持續判斷的複雜開放式工作上仍明顯較強。"
         },
         {
           "type": "heading",
@@ -186,7 +186,7 @@
         },
         {
           "type": "paragraph",
-          "text": "公告說，Sonnet 5.5 的資安能力比 Sonnet 5 大幅提升，所以比照 Opus 5.5 部署類似的防護，是第一個帶資安防護與備援上線的 Sonnet 模型。一般開發中找 bug、修 bug 不受影響，較高風險的資安任務會看得到地退回 Sonnet 5 處理。System Card 補充，這種退回適用 Anthropic 自家產品與在 API 選擇啟用備援的開發者，透過其他平台與供應商使用時可能不同。"
+          "text": "公告說，Sonnet 5.5 的資安能力比 Sonnet 5 大幅提升，是第一個帶資安防護與備援上線的 Sonnet 模型。一般開發中找 bug、修 bug 不受影響，較高風險的資安任務會看得到地退回 Sonnet 5 處理。System Card 提醒，使用者應預期拒絕會變多，即使是無害的資安相關任務也一樣；它也補充，這種退回適用 Anthropic 自家產品與在 API 選擇啟用備援的開發者，透過其他平台與供應商使用時可能不同。"
         },
         {
           "type": "faq",
@@ -197,7 +197,7 @@
             },
             {
               "question": "免費版能用 Sonnet 5.5 嗎？",
-              "answer": "Anthropic 的 Sonnet 產品頁寫，任何人都能在 Claude.ai 的網頁、iOS 與 Android 上用 Sonnet 5.5 對話。這句沒有逐一列出各方案，也沒有寫用量上限，這些官方未說明。要確認自己的帳號，登入後看能選哪些模型。"
+              "answer": "Anthropic 的 Sonnet 產品頁寫，任何人都能在 Claude.ai 的網頁、iOS 與 Android 上用 Sonnet 5.5 對話。這句沒有逐一列出各方案，也沒有寫用量上限；這幾頁在查核日都沒有說明。要確認自己的帳號，登入後看能選哪些模型。"
             },
             {
               "question": "Sonnet 5 會被停用嗎？",
@@ -205,7 +205,7 @@
             },
             {
               "question": "為什麼有些資安相關的請求會由 Sonnet 5 回答？",
-              "answer": "公告寫，Sonnet 5.5 比照 Opus 5.5 部署類似的資安防護，較高風險的資安任務會看得到地退回 Sonnet 5 處理；一般開發中找 bug、修 bug 不受影響。System Card 提醒，這種退回做法適用 Anthropic 自家產品與在 API 選擇啟用備援的開發者，透過其他平台與供應商使用時可能不同。"
+              "answer": "公告寫，Sonnet 5.5 是第一個帶資安防護與備援上線的 Sonnet 模型，較高風險的資安任務會看得到地退回 Sonnet 5 處理；一般開發中找 bug、修 bug 不受影響。System Card 提醒，這種退回做法適用 Anthropic 自家產品與在 API 選擇啟用備援的開發者，透過其他平台與供應商使用時可能不同。"
             },
             {
               "question": "「沒有跨過新的 RSP 門檻」是什麼意思？",
