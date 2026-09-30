@@ -18,6 +18,8 @@ scope:
   - apps/api/tests/test_migration_0115_video_review_revision.py
   - apps/api/tests/test_video_review_renewal.py
   - apps/api/tests/test_video_shorts_integration.py
+  - apps/api/tests/test_video_shorts.py
+  - apps/api/tests/test_video_youtube.py
   - docs/videos/SHORTS.md
   - tools/video/shorts/push.mjs
   - tools/video/shorts/pipeline.test.mjs
@@ -64,6 +66,13 @@ report must be reviewed on its own, while resending it unchanged returns the sam
 decision. Run API lint/type checks and PostgreSQL integration CI.
 
 ## Notes
+
+- Full local API run found 22 fixture failures (5072 passed, 424 skipped): older
+  Shorts publish fixtures omitted the required final ID, and the shared SQLite
+  YouTube fixture accepted the wrong refresh-callback arity. After checking active
+  tasks, branches, worktrees and PRs, added those two fixture files to scope and
+  corrected them. Force-refresh is limited to review submissions; read views keep
+  their existing behavior. All video API tests then passed: 612 passed, 18 skipped.
 
 - 2026-09-30 implementation: migration 0115 adds a revision to the review identity
   without changing the media SHA. Changed final QA supersedes live final/publish

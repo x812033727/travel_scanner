@@ -339,13 +339,17 @@ def _refuse_dropped(project: VideoProject) -> None:
         raise AppError(409, "video_project_dropped", "站主已經放棄這支影片")
 
 
-async def _reviews(session: AsyncSession, project: VideoProject) -> list[VideoReview]:
-    rows = await session.scalars(
+async def _reviews(
+    session: AsyncSession, project: VideoProject, *, refresh: bool = False
+) -> list[VideoReview]:
+    statement = (
         select(VideoReview)
         .where(VideoReview.project_id == project.id)
         .order_by(VideoReview.created_at.desc())
-        .execution_options(populate_existing=True)
     )
+    if refresh:
+        statement = statement.execution_options(populate_existing=True)
+    rows = await session.scalars(statement)
     return list(rows)
 
 
@@ -696,7 +700,7 @@ async def submit_review(
         raise AppError(
             409, "video_review_files_missing", f"這些檔案還沒上傳完：{', '.join(missing)}"
         )
-    reviews = await _reviews(session, project)
+    reviews = await _reviews(session, project, refresh=True)
     same = next(
         (
             review
