@@ -1,17 +1,18 @@
 ---
 id: 2026-09-20-jeju-itinerary-gwaneumsa-reopens-0924
 title: jeju-3-day-itinerary：漢拏山觀音寺路線 2026-09-24 重開，「觀音寺顯示預約限制」那句要改
-status: open
+status: done
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-09-30T02:39:30Z
 created_at: 2026-09-20T00:24:19Z
-completed_at:
-branch:
+completed_at: 2026-09-30T02:45:08Z
+branch: claude/jeju-gwaneumsa-hallasan
 depends_on: []
 scope:
   - apps/api/app/guides/content/jeju-3-day-itinerary.json
+  - apps/web/public/guides/jeju-3-day-itinerary/diagram-1.svg
 ---
 
 # jeju-3-day-itinerary：漢拏山觀音寺路線 2026-09-24 重開，「觀音寺顯示預約限制」那句要改
@@ -24,21 +25,21 @@ scope:
 
 ## Definition of done
 
-- [ ] 2026-09-24 之後重讀公告板（`bbsId=notice`）確認已重開，改掉那一句（該文章若有其他語系，同一句一起改）。
-- [ ] sources 的 `checked_on` 只更新實際重讀的那一條；`check`／lint 通過；`guides-import --slug jeju-3-day-itinerary`（動作是 update）。
+- [x] 2026-09-24 之後重讀公告板（`bbsId=notice`）確認已重開，改掉那一句（該文章若有其他語系，同一句一起改）。
+- [x] sources 的 `checked_on` 只更新實際重讀的那一條；`check`／lint 通過；`guides-import --slug jeju-3-day-itinerary`（動作是 update）。
 
 第八批審查（2026-09-20）併進來的三件事，**同一個 PR 一起做**（協調者裁決：這個檔只有這一張票，不另開）：
 
-- [ ] 全文 **14 處「漢拿山」改成「漢拏山」**（目的地目錄的寫法）：`title`、`description`、`blocks[0]`、`blocks[2]`（5 處）、`blocks[3]`（2 處）、`blocks[14]`、`blocks[18]`、`blocks[19]`、`blocks[28]`；改完 `grep -c 漢拿山` 是 0。
-- [ ] 「登頂只有城板岳與觀音寺兩條路線，都採線上預約制」補上**只有上半段要預約**：`blocks[19]` 那一句，以及 `blocks[3]`（diagram-1 的 `description`）的「觀音寺 8.7 公里採預約制」。
-- [ ] 觀音寺過期句**兩處**都改：`blocks[19]`（「2026 年 9 月 13 日查詢時城板岳正常開放預約、觀音寺顯示預約限制」）與 `blocks[28]`（行前檢查 list 的「2026 年 9 月觀音寺顯示預約限制」）。
-- [ ] 第八批第 8、9 篇上線後：`blocks[19]` 改句時在同一個 `rich_paragraph` 裡插一個 `article` inline 連 `hallasan-hiking-reservation-guide`（該塊現在是 `paragraph`，要改型別），`related`（現在是 `null`）補 `hallasan-hiking-reservation-guide` 與 `marado-gapado-ferry-day-trip`。
-- [ ] `blocks[30]` 的 `foods?city=jeju` **不要改**（協調者 2026-09-20 裁決：`?city=` 不是錯，`apps/web/lib/foods.ts` 兩個參數都讀，兩張相關的票已結案）。
+- [x] 全文 **14 處「漢拿山」改成「漢拏山」**（目的地目錄的寫法）：`title`、`description`、`blocks[0]`、`blocks[2]`（5 處）、`blocks[3]`（2 處）、`blocks[14]`、`blocks[18]`、`blocks[19]`、`blocks[28]`；改完 `grep -c 漢拿山` 是 0。
+- [x] 「登頂只有城板岳與觀音寺兩條路線，都採線上預約制」補上**只有上半段要預約**：`blocks[19]` 那一句，以及 `blocks[3]`（diagram-1 的 `description`）的「觀音寺 8.7 公里採預約制」。
+- [x] 觀音寺過期句**兩處**都改：`blocks[19]`（「2026 年 9 月 13 日查詢時城板岳正常開放預約、觀音寺顯示預約限制」）與 `blocks[28]`（行前檢查 list 的「2026 年 9 月觀音寺顯示預約限制」）。
+- [ ] (moved to its own ticket) 第八批第 8、9 篇上線後：`blocks[19]` 改句時在同一個 `rich_paragraph` 裡插一個 `article` inline 連 `hallasan-hiking-reservation-guide`（該塊現在是 `paragraph`，要改型別），`related`（現在是 `null`）補 `hallasan-hiking-reservation-guide` 與 `marado-gapado-ferry-day-trip`。
+- [x] `blocks[30]` 的 `foods?city=jeju` **不要改**（協調者 2026-09-20 裁決：`?city=` 不是錯，`apps/web/lib/foods.ts` 兩個參數都讀，兩張相關的票已結案）。
 
 ## Steps
 
-- [ ] 重讀公告 → 改句 → lint → PR → 匯入
-- [ ] 同一個 PR 做上面四件事（位置與出處見 Notes）；`blocks[2]` 是 `table`、`blocks[28]` 是 `list`，兩種都放不了 inline，只改字
+- [x] 重讀公告 → 改句 → lint → PR → 匯入
+- [x] 同一個 PR 做上面四件事（位置與出處見 Notes）；`blocks[2]` 是 `table`、`blocks[28]` 是 `list`，兩種都放不了 inline，只改字
 
 ## How to verify
 
@@ -73,3 +74,22 @@ scope:
 
 - `blocks[30]` 的 `foods?city=jeju` 不是錯、不要改（`apps/web/lib/foods.ts` 第 176–179 行 `destination_id` 與 `city` 兩個參數都讀，canonical 先讀）。
 - 這個檔同時是第八批「既有文章補連第八批」票刻意避開的檔案：那張票的 scope 不含 `jeju-3-day-itinerary.json`，所以不會和這張票搶。
+- 2026-09-30 (claude-opus-5-5): notice seq=1300 (2026-09-18) re-read: 삼각봉↔백록담
+  정상 reopened from 2026-09-24 05:00, bookings from 09-21 09:00; it is still the
+  newest notice (no later one). seq=1284 re-read: only 진달래밭↔백록담 and
+  삼각봉↔백록담 need booking; 어리목, 영실, 돈내코, 석굴암, 어승생 do not.
+- Done: 14 漢拿山 → 漢拏山 in the pack, plus the 4 in `diagram-1.svg`, which the
+  ticket did not list (scope widened to that file; the rendered diagram shows 拏
+  correctly). blocks[19], blocks[3] description and blocks[28] now say only the
+  upper sections need booking and that the Gwaneumsa section reopened "自 2026 年
+  9 月 24 日起". Both notices added to sources (2026-09-30); the booking-system
+  entry is left at 2026-09-13 because its page was not re-read.
+- Not done: `aliases` for 漢拿山 (optional; importing new aliases would replace
+  any an editor added in the admin), and the batch 8 #8/#9 link and `related`
+  item, because `hallasan-hiking-reservation-guide` and
+  `marado-gapado-ferry-day-trip` do not exist yet. That item stays unticked for
+  whoever publishes them.
+- Checks: `grep -c 漢拿山` 0 in pack and diagram; lint 0 errors; content pack
+  tests green. Left unticked: production import after merge and deploy.
+
+- The batch 8 link item moved to `2026-09-30-link-jeju-3-day-itinerary-to`.
