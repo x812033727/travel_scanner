@@ -1,13 +1,15 @@
 #!/bin/sh
 # The video worker's loop (docs/videos/AUTOMATION.md).
 #
-# First it pairs with the site: `login` prints a code, the owner allows it on the video tool card
+# First refresh the docs volume from this image, keeping worker-owned files (ops/video/README.md).
+# Then it pairs with the site: `login` prints a code, the owner allows it on the video tool card
 # in the admin AI settings, and the token lands in $HOME/.mokaair (a volume), never in the log.
 # Then `auto` runs every few minutes; each run does units of work until every video waits on the
 # owner or the next draft is not due, and exits. The settings decide everything else, including
 # whether anything happens at all.
 set -u
 cd /opt/mokaair || exit 1
+node ops/video/sync-docs.mjs || exit 1
 interval="${VIDEO_WORKER_INTERVAL_SECONDS:-300}"
 credentials="$HOME/.mokaair/video-tool.json"
 

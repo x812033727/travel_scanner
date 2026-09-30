@@ -3,13 +3,14 @@
 // Nothing here touches a service: the site, the speech server and the links are handed in.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { encodeWav } from '../tts/wav.mjs';
-import { loudnessProblems, profileProblems } from './build.mjs';
+import { ToolMissing } from '../assemble/ffmpeg.mjs';
+import { build, loudnessProblems, profileProblems } from './build.mjs';
 import { audioHash, checkPhrases, phrasesHash } from './check.mjs';
 import { main } from './cli.mjs';
 import { PROFILE, buildTimeline, lineOf, parseSrt, phrasesOf, sceneHtml, sha256, srt, validate } from './core.mjs';
@@ -153,6 +154,51 @@ test('the three sources, and which one a build takes when none is named', async 
   writeFileSync(path.join(dir, 'check.json'), JSON.stringify({ flagged_lines: [{ index: 4 }, { index: 9 }] }));
   assert.deepEqual(flaggedPhrases(path.join(dir, 'check.json')), [4, 9]);
   assert.deepEqual(flaggedPhrases(path.join(dir, 'none.json')), []);
+});
+
+test('a STOP file or a missing ffmpeg ends a build before a single phrase is paid for', async (t) => {
+  const slug = script().slug;
+  const attempt = async (dir, { ffmpeg = true } = {}) => {
+    const spent = { synthesized: 0, located: 0 };
+    const client = { site: 'https://site.test', token: TOKEN, settings: async () => ({ voice: CHANNEL_VOICE, seconds_min: 1, seconds_max: 180 }) };
+    const synthesizeImpl = async () => { spent.synthesized += 1; return { wav: tone(1), billable: 1 }; };
+    const locateFfmpegImpl = async () => {
+      spent.located += 1;
+      if (!ffmpeg) throw new ToolMissing('ffmpeg with libx264 was not found');
+      // A stand-in that cannot run: a build let past the checks fails at its first ffmpeg call.
+      return { ffmpeg: path.join(dir, 'no-ffmpeg'), ffprobe: path.join(dir, 'no-ffprobe'), version: 'stand-in' };
+    };
+    const error = await build({ file: path.join(FIXTURE, 'script.json'), sourceBase: FIXTURE, workdir: dir, speech: 'server', client, synthesizeImpl, locateFfmpegImpl }).then(() => null, (reason) => reason);
+    return { ...spent, error };
+  };
+  const phrases = phrasesOf(script()).length;
+
+  const stopped = temp(t);
+  mkdirSync(path.join(stopped, slug));
+  writeFileSync(path.join(stopped, slug, 'STOP'), '');
+  const slugStop = await attempt(stopped);
+  assert.match(String(slugStop.error), /STOP requested/);
+  assert.deepEqual([slugStop.synthesized, slugStop.located], [0, 0], 'the STOP in the directory of the Short is read first');
+  assert.deepEqual(readdirSync(path.join(stopped, slug)), ['STOP'], 'and no build directory is made');
+
+  const everything = temp(t);
+  writeFileSync(path.join(everything, 'STOP'), '');
+  const baseStop = await attempt(everything);
+  assert.match(String(baseStop.error), /STOP requested/);
+  assert.equal(baseStop.synthesized, 0, 'a STOP for every video stops this one too');
+  assert.ok(!existsSync(path.join(everything, '.speech-server')));
+
+  const bare = temp(t);
+  const missing = await attempt(bare, { ffmpeg: false });
+  assert.ok(missing.error instanceof ToolMissing);
+  assert.deepEqual([missing.synthesized, missing.located], [0, 1], 'no ffmpeg, no narration');
+  assert.ok(!existsSync(path.join(bare, '.speech-server')));
+
+  // The stand-ins are the ones the build uses: past both checks, every phrase is synthesized.
+  const open = temp(t);
+  const ran = await attempt(open);
+  assert.deepEqual([ran.synthesized, ran.located], [phrases, 1]);
+  assert.match(String(ran.error), /failed/, 'and the stand-in ffmpeg is where it stops');
 });
 
 test('the listener passes what says the script and asks Jev about the rest', async () => {
@@ -478,7 +524,7 @@ function fakeSite({ finalStatus = 'approved', publishStatus = 'approved' } = {})
       submit: async (slug, review) => {
         calls.push(['submit', slug, review]);
         const status = review.gate === 'final' ? finalStatus : publishStatus;
-        return { id: 'r', gate: review.gate, status, payload: structuredClone(review.payload), note: status === 'approved' ? '依設定自動核准' : null };
+        return { id: `${review.gate}-review`, gate: review.gate, status, payload: structuredClone(review.payload), note: status === 'approved' ? '依設定自動核准' : null };
       },
     },
   };
@@ -505,6 +551,8 @@ test('a Short whose cut is approved goes on to its upload package', async (t) =>
   assert.match(final.summary, /^Shorts 35\.\d 秒，Shorts 自動品管 12 項全過$/);
   const metadataSha = sha256(readFileSync(path.join(directory, 'upload', 'metadata.json')));
   assert.deepEqual([publish.gate, publish.content_sha256, publish.payload.package.final_sha256, publish.payload.package.kind], ['publish', metadataSha, metadataSha, 'shorts']);
+  assert.equal(publish.payload.final_review_id, result.final.id);
+  assert.notEqual(publish.payload.final_review_id, result.publish.id);
   assert.deepEqual(publish.files.map((file) => file.role), ['metadata', 'final', 'captions_zh-TW', 'description_zh-TW'], 'no thumbnail: the site would set it on YouTube');
   assert.deepEqual(publish.files.map((file) => file.content_type), ['application/json', 'video/mp4', 'application/x-subrip', 'text/plain']);
   assert.equal(publish.summary, 'Shorts 上傳包 4 項齊全：照月曆上架');
@@ -541,8 +589,9 @@ test('what the site is told about a highlight and about a cut of another version
   const stale = finalReview({ doc: script(), qa: { ok: true, final_sha256: 'a'.repeat(64), kind: 'shorts', items: [] }, usage: null, timeline, finalSha256: 'b'.repeat(64) });
   assert.ok(!('qa' in stale.payload) && !('usage' in stale.payload), 'a report of another cut is not sent');
   assert.equal(stale.summary, 'Shorts 35.0 秒，Shorts 自動品管沒有結果');
-  const failed = publishReview({ metadata: composeMetadata({ doc: script(), finalSha256: 'f', seconds: 35 }), report: { ok: false, kind: 'shorts', final_sha256: 'm', items: [{ id: 'captions', ok: false }], checked_at: 'x' }, metadataSha256: 'm' });
+  const failed = publishReview({ metadata: composeMetadata({ doc: script(), finalSha256: 'f', seconds: 35 }), report: { ok: false, kind: 'shorts', final_sha256: 'm', items: [{ id: 'captions', ok: false }], checked_at: 'x' }, metadataSha256: 'm', finalReviewId: 'final-review' });
   assert.deepEqual([failed.summary, 'checked_at' in failed.payload.package], ['Shorts 上傳包 1 項沒過：captions', false]);
+  assert.equal(failed.payload.final_review_id, 'final-review');
   assert.equal(evidenceRole('experiments/raw outputs/plain.json'), 'evidence_experiments_raw_outputs_plain');
   assert.ok(evidenceRole(`deep/${'x'.repeat(80)}.txt`).length <= 40);
   assert.match(evidenceRole('圖片/海報.png'), /^evidence_[A-Za-z0-9_-]*$/);

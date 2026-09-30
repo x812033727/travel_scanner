@@ -102,6 +102,7 @@ function site({
   onPart = async () => {},
   onReport = async () => {},
   onSubmit = async (body) => ({
+    id: `${body.gate}-review`,
     status: body.gate === 'final' && !body.payload.qa.ok ? 'pending' : 'approved',
     payload: structuredClone(body.payload),
   }),
@@ -142,6 +143,7 @@ test('an all-pass run binds every local QA input and still permits packaging and
   const submitted = client.writes.filter((write) => write.method === 'submit');
   assert.deepEqual(submitted.map((write) => write.body.gate), ['final', 'publish']);
   assert.deepEqual(submitted[0].body.payload.qa.inputs, qa.inputs);
+  assert.equal(submitted[1].body.payload.final_review_id, result.final.id);
 });
 
 const MUTATIONS = [
@@ -277,6 +279,40 @@ test('an approved final response without its stored QA payload cannot publish', 
   assert.equal(client.writes.at(-1).method, 'submit');
 });
 
+test('an approval without a usable final review ID stops before uploading its package', async (t) => {
+  for (const id of [undefined, null, '', '   ', 7]) {
+    await t.test(String(id), async (t) => {
+      const { directory } = await passingBuild(t);
+      const client = site({ onSubmit: async (body) => ({ id, status: 'approved', payload: structuredClone(body.payload) }) });
+      const result = await push({ directory, client });
+      assert.equal(result.final.status, 'approved');
+      assert.equal(result.publish, null);
+      assert.match(result.waits, /without a final review ID/);
+      assert.deepEqual(client.writes.filter((write) => write.method === 'submit').map((write) => write.body.gate), ['final']);
+      assert.equal(client.writes.at(-1).method, 'submit');
+    });
+  }
+});
+
+test('the same package follows the final review ID returned on each push', async (t) => {
+  const { directory } = await passingBuild(t);
+  const packages = [];
+  for (const finalId of ['00000000-0000-4000-8000-000000000001', '00000000-0000-4000-8000-000000000002']) {
+    const client = site({ onSubmit: async (body) => ({
+      id: body.gate === 'final' ? finalId : 'publish-review',
+      status: 'approved',
+      payload: structuredClone(body.payload),
+    }) });
+    const result = await push({ directory, client });
+    assert.equal(result.waits, null);
+    const publish = client.writes.find((write) => write.method === 'submit' && write.body.gate === 'publish').body;
+    assert.equal(publish.payload.final_review_id, finalId);
+    packages.push(publish);
+  }
+  assert.equal(packages[0].content_sha256, packages[1].content_sha256, 'the metadata bytes did not change');
+  assert.notEqual(packages[0].payload.final_review_id, packages[1].payload.final_review_id);
+});
+
 test('an owner approval of the current failed QA still permits publishing', async (t) => {
   const fixture = await passingBuild(t);
   const currentQa = await quality(fixture, {
@@ -284,7 +320,7 @@ test('an owner approval of the current failed QA still permits publishing', asyn
   });
   assert.equal(currentQa.ok, false);
   packageBuild({ directory: fixture.directory, settings: SETTINGS });
-  const client = site({ onSubmit: async (body) => ({ status: 'approved', payload: structuredClone(body.payload) }) });
+  const client = site({ onSubmit: async (body) => ({ id: `${body.gate}-review`, status: 'approved', payload: structuredClone(body.payload) }) });
   const result = await push({ directory: fixture.directory, client });
   assert.equal(result.final.status, 'approved');
   assert.equal(result.final.payload.qa.ok, false);
