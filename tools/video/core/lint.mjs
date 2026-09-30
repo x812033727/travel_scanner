@@ -11,6 +11,7 @@ import { DEFAULT_TARGET_MINUTES, LOCALES, eachLine, narrationLocale, spokenText,
 import { isStory, storyProblems } from "./story.mjs";
 import { DEFAULT_CPM, chapterList, checkChapters, estimateTimeline, formatClock, frameToSeconds, spokenUnits } from "./timeline.mjs";
 import { metadataStatus, namedWith } from "./translations.mjs";
+import { TEMPLATE_SPECS } from "../templates/templates.mjs";
 
 // Phrases that only work on a page. Same list as video_kit.py's WRITTEN_ONLY.
 export const WRITTEN_ONLY = ["本文", "這篇文章", "如上表", "如下表", "上表", "下表", "綜上所述", "值得注意的是", "筆者", "如圖所示"];
@@ -48,14 +49,18 @@ export function innerZeroNumbers(text) {
   return [...text.matchAll(MYRIAD_NUMBER)].map((match) => match[1]).filter((number) => /0+[1-9]/.test(number.replace(/,/g, "")));
 }
 
-/** The body of each `## heading` in brief.md, comments removed. */
+/**
+ * The body of each `## heading` in brief.md, comments removed. A heading is keyed by its name
+ * alone: the planner prompt spells each one out as 「## 站主觀點 — what goes here」, and a brief
+ * that copied the dash and the description still has the section.
+ */
 export function briefSections(markdown) {
   const sections = {};
   let current = null;
   for (const line of markdown.replace(/\r\n/g, "\n").replace(/<!--[\s\S]*?-->/g, "").split("\n")) {
     const heading = /^##\s+(.+?)\s*$/.exec(line);
     if (heading) {
-      current = heading[1];
+      current = heading[1].split(/\s+[—–]\s+/)[0];
       sections[current] = "";
     } else if (current) {
       sections[current] += `${line}\n`;
@@ -253,6 +258,10 @@ export function lintVideo(doc, context = {}) {
   }
 
   doc.scenes.forEach((scene, index) => {
+    // What the renderer refuses (templates.mjs), found here so the writer fixes it before any
+    // audio is paid for, instead of the render blocking the video after the narration gate.
+    const spec = !isShot(scene) && TEMPLATE_SPECS[scene.template];
+    if (spec) for (const problem of spec.check(scene.data ?? {}).filter(Boolean)) error(`scenes[${index}] (${scene.id}).data`, problem);
     const capacity = revealCapacity(scene.data);
     const reveals = scene.lines.reduce((sum, line) => sum + (line.reveal ?? 0), 0);
     if (capacity !== null && reveals > capacity) error(`scenes[${index}]`, `reveals ${reveals} elements but the ${scene.template} slide has ${capacity}`);
