@@ -136,7 +136,15 @@ PR #871（2026-09-28 合併）交付的是本機產線：`node tools/video/short
 
 ## 自動品管（成片）
 
-`node tools/video/shorts/cli.mjs qa --dir <成片目錄>` 寫出 `qa.json`：`{ ok, final_sha256, kind: "shorts", line, items: [{ id, ok, detail }] }`，`push` 把它放進成片審核的 `payload.qa`。
+`node tools/video/shorts/cli.mjs qa --dir <成片目錄>` 寫出 `qa.json`：`{ ok, final_sha256, kind: "shorts", line, items: [{ id, ok, detail }], inputs: { version: 1, files: { 檔案路徑: SHA256或null } } }`，`push` 把它放進成片審核的 `payload.qa`。
+
+`check-audio` 的 `check.json` 同時綁定依序排列的 WAV（`audio_sha256`）和逐句原文（`phrases_sha256`）；`qa` 還核對 `results` 的順序、文字與每句結果。只改文字、句數不變，也要重查，不能沿用原音檔的舊通過結果。
+
+`qa.inputs` 記錄本機的 `script.json`、`timeline.json`、`check.json`、`verify.json`、`checks.json`、成片、逐句 WAV、五種支援語系的字幕與腳本列出的證據檔；缺檔記成 `null`，之後補檔也要重跑 QA。`qa` 在非同步檢查前後比對快照，途中改檔就拒絕寫入新結果。`push` 在任何後台寫入前及送出審核前重核；沒有綁定或任一輸入改變時，回報 `waits` 並停止。`package` 產出的 metadata、說明及 manifest 不列入 QA 輸入，仍走原有的上傳包檢查。
+
+舊成片升級順序：先對目前版本重新查核並更新 `verify.json`，再跑 `check-audio --dir <成片目錄>` → `qa --dir <成片目錄>` → `package --dir <成片目錄>` → `push --dir <成片目錄>`（各指令前加 `node tools/video/shorts/cli.mjs`）。若旁白、字卡或時間軸改了，先依修改內容重建成片；只改說明也會使 QA 與事實查核失效。不可只補 hash、改 `ok`，或把舊收據重新包裝成通過；新跑出的失敗項仍照下方規則交站主處理。這份綁定記錄本機檔案的一致性，不替代重新查詢網站狀態或站主驗收。
+
+已被核准的同一支 MP4 可能讓後台回傳舊審核；`push` 也比對回傳的完整 QA（綁定與各項結果），不同就停止，不會沿用舊核准送上傳包。相同 MP4 的已決定審核如何重新送審，另由票 `2026-09-30-shorts-renew-decided-qa-review` 處理；遇到這個 `waits` 時保留新收據，不可刪掉失敗項來冒用舊核准。
 
 | id | 檢查 | 來源 |
 | --- | --- | --- |
