@@ -45,7 +45,7 @@ from app.models import AdminAuditLog, User, VideoProject, VideoReview
 from app.video_reviews import admin_service as reviews
 from app.video_reviews.schemas import ProjectOut
 from app.video_reviews.storage import ReviewStore
-from app.video_youtube import connection
+from app.video_youtube import connection, language_package
 from app.video_youtube.client import (
     AuthorizationLost,
     UploadInterrupted,
@@ -107,6 +107,7 @@ class Package:
     final: PackageFile | None
     thumbnail: PackageFile | None
     captions: dict[str, PackageFile] = field(default_factory=dict)
+    approval_pin: dict[str, Any] = field(default_factory=dict)
 
 
 # --- the approved package ------------------------------------------------------------------------
@@ -167,6 +168,67 @@ def read_package(store: ReviewStore, slug: str, review: VideoReview) -> Package:
         thumbnail=_file(thumbnail) if thumbnail is not None else None,
         captions=dict(sorted(captions.items())),
     )
+
+
+def read_approved_package(
+    store: ReviewStore,
+    slug: str,
+    project: VideoProject,
+    rows: list[VideoReview],
+    *,
+    verify_files: bool = True,
+) -> Package:
+    """One approved cut plus its current, independently approved language batch."""
+    review = approved_confirmation(rows)
+    if review is None:
+        raise Refused(409, "video_youtube_not_ready", "這支影片還沒有核准的上傳包")
+    base = read_package(store, slug, review)
+    final = next((row for row in rows if row.gate == "final" and row.subject is None), None)
+    if final is not None and (
+        final.status != "approved" or final.content_sha256 != base.metadata.get("final_sha256")
+    ):
+        raise language_package.invalid("目前的成片與上傳核准不同，請重新產生上傳包")
+    files = language_package.files_by_role(review.files)
+    if verify_files:
+        for item in files.values():
+            language_package.verify_file(store, slug, item)
+    captions = {
+        locale: {
+            "role": f"captions_{locale}",
+            "sha256": item.sha256,
+            "size": item.size,
+            "content_type": item.content_type,
+        }
+        for locale, item in base.captions.items()
+    }
+    composed = language_package.compose(
+        store, slug, project, rows, review, base.metadata, captions, verify_files=verify_files
+    )
+    return Package(
+        review_id=base.review_id,
+        sha256=composed.sha256,
+        metadata=composed.metadata,
+        final=base.final,
+        thumbnail=base.thumbnail,
+        captions={locale: _file(item) for locale, item in composed.captions.items()},
+        approval_pin=composed.approval_pin,
+    )
+
+
+def _check_request_package(package: Package, request: dict[str, Any]) -> None:
+    if (
+        package.review_id != request.get("review_id")
+        or package.sha256 != request.get("package_sha256")
+        or (
+            request.get("approval_pin") != package.approval_pin
+            and (
+                "approval_pin" in request
+                or package.approval_pin.get("languages") is not None
+                or package.approval_pin.get("choice")
+            )
+        )
+    ):
+        raise language_package.invalid("核准的影片、語言包或語言選擇已變更，請重新送出")
 
 
 # --- the owner's request -------------------------------------------------------------------------
@@ -242,10 +304,9 @@ async def request_sync(
     from app.video_youtube.vps import assert_idle
 
     await assert_idle(slug, upload=payload.mode == "upload")
-    review = approved_confirmation(await _project_reviews(session, project))
-    if review is None:
-        raise Refused(409, "video_youtube_not_ready", "這支影片還沒有核准的上傳包")
-    package = read_package(store, slug, review)
+    package = await asyncio.to_thread(
+        read_approved_package, store, slug, project, await _project_reviews(session, project)
+    )
     title = payload.title if payload.title is not None else str(package.metadata["title"])
     description = (
         payload.description
@@ -299,6 +360,7 @@ async def request_sync(
         "accept_private_lock": payload.accept_private_lock,
         "review_id": package.review_id,
         "package_sha256": package.sha256,
+        "approval_pin": package.approval_pin,
     }
     if on_behalf and on_behalf.get("auto") is True:
         # The asynchronous run must know this is standing consent, not a fresh owner action.
@@ -339,6 +401,11 @@ async def retry_sync(
         raise Refused(409, "video_youtube_sync_running", "這支影片正在送 YouTube，等它跑完再送")
     if state.get("status") == "done":
         raise Refused(409, "video_youtube_sync_done", "上一次已經全部完成；要改資料請重新送出")
+    store = reviews.review_store(await load_runtime_settings(session))
+    package = await asyncio.to_thread(
+        read_approved_package, store, slug, project, await _project_reviews(session, project)
+    )
+    _check_request_package(package, state["request"])
     next_state = retried(state)
     if on_behalf and on_behalf.get("auto") is True:
         next_state["request"]["on_behalf"] = {
@@ -415,6 +482,43 @@ class Run:
             raise StepFailed("審核區已經找不到上傳包裡的檔案，請重新產生上傳包")
         return path
 
+    def file_bytes(self, item: PackageFile) -> bytes:
+        data = _read_file(self.file(item))
+        if len(data) != item.size or hashlib.sha256(data).hexdigest() != item.sha256:
+            raise StepFailed("即將送出的附件不是核准的內容，請重新產生上傳包")
+        return data
+
+    async def ensure_current(self, item: PackageFile | None = None) -> None:
+        """Recheck after remote reads and before each write; never adopt a newer package."""
+        async with self.factory() as session:
+            project = await session.scalar(
+                select(VideoProject).where(VideoProject.slug == self.slug)
+            )
+            if project is None or project.dropped_at is not None:
+                raise StepFailed("這支影片已經被放棄，這次上傳已停止")
+            state = as_dict(project.youtube_sync)
+            if state.get("run") != self.token or state.get("status") != "running":
+                raise LeaseLost(self.slug)
+            try:
+                package = await asyncio.to_thread(
+                    read_approved_package,
+                    self.store,
+                    self.slug,
+                    project,
+                    await _project_reviews(session, project),
+                    verify_files=False,
+                )
+                _check_request_package(package, self.request)
+                if item is not None:
+                    await asyncio.to_thread(
+                        language_package.verify_file,
+                        self.store,
+                        self.slug,
+                        {"sha256": item.sha256, "size": item.size},
+                    )
+            except Refused as error:
+                raise StepFailed(error.detail) from error
+
 
 @asynccontextmanager
 async def _automatic_schedule_guard(run: Run) -> AsyncIterator[None]:
@@ -464,6 +568,10 @@ def _read_chunk(path: Path, offset: int, size: int) -> bytes:
         return handle.read(size)
 
 
+def _read_file(path: Path) -> bytes:
+    return path.read_bytes()
+
+
 def _session_of(stored: str | None, sha256: str) -> str | None:
     """The stored upload session, when it is for this very mp4 (stored as "<sha256> <uri>")."""
     if not stored:
@@ -494,6 +602,7 @@ async def _upload(run: Run) -> str:
             session_uri = None
     if session_uri is None:
         body = insert_body(run.package.metadata, run.request["title"], run.request["description"])
+        await run.ensure_current(final)
         session_uri = await client.start_upload(body, size=size, content_type=final.content_type)
         uri = session_uri
 
@@ -511,6 +620,7 @@ async def _upload(run: Run) -> str:
         await run.update(_progress(offset, size))
         chunk = await asyncio.to_thread(_read_chunk, path, offset, CHUNK_BYTES)
         client = await run.client()
+        await run.ensure_current()
         try:
             state = await client.upload_chunk(
                 session_uri, offset=offset, data=chunk, size=size, content_type=final.content_type
@@ -590,12 +700,14 @@ async def _details(run: Run, video_id: str) -> str:
         visibility=run.request["visibility"],
         publish_at=publish_at,
     )
+
     def recorded(_state: dict[str, Any], project: VideoProject) -> None:
         project.youtube_video_id = video_id
         project.youtube_publish_at = publish_at
         project.updated_at = datetime.now(UTC)
 
     async with _automatic_schedule_guard(run):
+        await run.ensure_current()
         try:
             await client.update_video(body)
         except YoutubeError as error:
@@ -618,13 +730,15 @@ async def _captions(run: Run, video_id: str) -> tuple[str, str]:
         return "skipped", "上傳包沒有字幕檔"
     client = await run.client()
     have = caption_languages(await client.captions(video_id))
+    await run.ensure_current()
     done: list[str] = []
     failed: list[str] = []
     for locale, item in run.package.captions.items():
         if language_key(locale) in have:
             done.append(f"{locale} 已經有了")
             continue
-        data = run.file(item).read_bytes()
+        data = await asyncio.to_thread(run.file_bytes, item)
+        await run.ensure_current()
         try:
             await client.insert_caption(video_id, language=locale, name=CAPTION_NAME, data=data)
         except YoutubeError as error:
@@ -647,8 +761,10 @@ async def _thumbnail(run: Run, video_id: str) -> tuple[str, str]:
     if item is None:
         return "skipped", "上傳包沒有縮圖"
     client = await run.client()
+    data = await asyncio.to_thread(run.file_bytes, item)
+    await run.ensure_current()
     try:
-        await client.set_thumbnail(video_id, run.file(item).read_bytes(), item.content_type)
+        await client.set_thumbnail(video_id, data, item.content_type)
     except YoutubeError as error:
         if error.reason == "forbidden" or error.status == 403:
             raise StepFailed(
@@ -704,16 +820,18 @@ async def _prepare(factory: Factory, slug: str, state: dict[str, Any]) -> tuple[
         project = await session.scalar(select(VideoProject).where(VideoProject.slug == slug))
         if project is None:
             raise StepFailed("找不到這支影片")
-        review = approved_confirmation(await _project_reviews(session, project))
+        try:
+            package = await asyncio.to_thread(
+                read_approved_package,
+                store,
+                slug,
+                project,
+                await _project_reviews(session, project),
+            )
+            _check_request_package(package, request)
+        except Refused as refused:
+            raise StepFailed(refused.detail) from refused
         await session.commit()
-    if review is None or str(review.id) != request.get("review_id"):
-        raise StepFailed("核准的上傳包換了一份：請重新送出，讓網站用新的那一份")
-    try:
-        package = read_package(store, slug, review)
-    except Refused as refused:
-        raise StepFailed(refused.detail) from refused
-    if package.sha256 != request.get("package_sha256"):
-        raise StepFailed("上傳包和送出時的那一份不一樣：請重新送出")
     return store, package, channel_id, audited
 
 
@@ -758,6 +876,7 @@ async def run_sync(slug: str, factory: Factory | None = None) -> None:
                     await run.mark(current, *await _captions(run, video_id))
                 elif current == "thumbnail":
                     await run.mark(current, *await _thumbnail(run, video_id))
+            await run.ensure_current()
             await _finish(factory, slug, token, None, None)
         except LeaseLost:
             logger.info("YouTube sync of %s stopped: another run holds it", slug)

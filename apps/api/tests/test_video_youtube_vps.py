@@ -19,6 +19,11 @@ from app.video_youtube import sync, vps
 from app.video_youtube.errors import Refused
 from app.video_youtube.state import new_state
 from tests.test_video_youtube import Site, _app, open_site
+from tests.test_video_youtube_language_package import (
+    LOCALES,
+    _language_batch,
+    _replace_manifest,
+)
 from tests.test_video_youtube_sync import SLUG, STUDIO_ID, _package, _publish
 
 CHANNEL = "UC" + "a" * 22
@@ -97,6 +102,117 @@ async def fixture(
 async def begin(site: Site, **kwargs: Any) -> dict[str, Any]:
     async with site.factory() as session:
         return await vps.start(session, SLUG, site.owner, vps.StartIn(**kwargs))
+
+
+@pytest.fixture
+async def multilingual(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> AsyncIterator[tuple[Site, Remote]]:
+    async with open_site(monkeypatch, tmp_path) as site:
+        remote = Remote()
+        monkeypatch.setattr(vps, "config", lambda: vps.Config("http://vps.test", SECRET, CHANNEL))
+        monkeypatch.setattr(vps, "load_runtime_settings", AsyncMock(return_value=site.settings))
+        monkeypatch.setattr(
+            vps,
+            "http_client",
+            lambda: httpx.AsyncClient(transport=httpx.MockTransport(remote.respond)),
+        )
+        await _language_batch(site)
+        yield site, remote
+
+
+async def test_vps_stages_later_approved_languages_and_identifies_the_composed_package(
+    multilingual: tuple[Site, Remote],
+) -> None:
+    site, remote = multilingual
+    result = await begin(site)
+    m = remote.manifest
+    assert set(m["metadata"]["localizations"]) == set(LOCALES)
+    assert {f["role"] for f in m["files"] if f["role"].startswith("captions_")} == {
+        f"captions_{locale}" for locale in ("zh-TW", *LOCALES)
+    }
+    async with site.factory() as session:
+        publish = await session.scalar(select(VideoReview).where(VideoReview.gate == "publish"))
+        assert publish and m["review_sha256"] != publish.content_sha256
+        assert (await vps.status(session, SLUG))["new_package"] is False
+    assert (await begin(site))["job"]["id"] == result["job"]["id"]
+    for _ in range(len(m["files"]) + 1):
+        async with site.factory() as session:
+            result = await vps.stage(session, SLUG)
+    assert result["job"]["state"] == "queued"
+    assert len(remote.uploads) == len(m["files"])
+
+
+async def test_vps_changed_choice_refuses_stage_resume_and_record_but_allows_cancel(
+    multilingual: tuple[Site, Remote],
+) -> None:
+    site, remote = multilingual
+    result = await begin(site)
+    old_id = result["job"]["id"]
+    async with site.factory() as session:
+        project = await session.scalar(select(VideoProject))
+        assert project
+        project.locales = {"en": {"metadata": True, "captions": True, "dub": False}}
+        await session.commit()
+    writes = sum(r.method != "GET" for r in remote.calls)
+    async with site.factory() as session:
+        assert (await vps.status(session, SLUG))["new_package"] is True
+        with pytest.raises(Refused):
+            await vps.stage(session, SLUG)
+        with pytest.raises(Refused):
+            await vps.action(session, SLUG, site.owner, "resume", vps.ResumeIn())
+        assert remote.job
+        remote.job.update(state="done", video_id=STUDIO_ID)
+        with pytest.raises(Refused):
+            await vps.action(session, SLUG, site.owner, "record", vps.ResumeIn())
+        assert sum(r.method != "GET" for r in remote.calls) == writes
+        remote.job["state"] = "needs_action"
+        result = await vps.action(session, SLUG, site.owner, "cancel", vps.ResumeIn())
+    assert result["job"]["id"] == old_id and result["job"]["state"] == "cancelled"
+
+
+async def test_vps_new_language_digest_is_not_mistaken_for_completed_job(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    async with open_site(monkeypatch, tmp_path) as site:
+        remote = Remote()
+        monkeypatch.setattr(vps, "config", lambda: vps.Config("http://vps.test", SECRET, CHANNEL))
+        monkeypatch.setattr(vps, "load_runtime_settings", AsyncMock(return_value=site.settings))
+        monkeypatch.setattr(
+            vps,
+            "http_client",
+            lambda: httpx.AsyncClient(transport=httpx.MockTransport(remote.respond)),
+        )
+        batch = await _language_batch(site)
+        result = await begin(site)
+        old_id = result["job"]["id"]
+        assert remote.job
+        remote.job.update(state="done", video_id=STUDIO_ID)
+        await _replace_manifest(
+            site, batch, lambda manifest: manifest["choice"].update(decided_at="updated audit time")
+        )
+        async with site.factory() as session:
+            assert (await vps.status(session, SLUG))["new_package"] is True
+        result = await begin(site)
+        assert result["job"]["id"] != old_id
+        assert result["job"]["video_id"] == STUDIO_ID
+        assert all(f["role"] != "final" for f in remote.manifest["files"])
+
+
+@pytest.mark.parametrize("status", ["pending", "rejected"])
+async def test_vps_unapproved_languages_are_refused_without_writes(
+    multilingual: tuple[Site, Remote], status: str
+) -> None:
+    site, remote = multilingual
+    async with site.factory() as session:
+        review = await session.scalar(select(VideoReview).where(VideoReview.gate == "languages"))
+        assert review
+        review.status = status
+        await session.commit()
+    with pytest.raises(Refused) as denied:
+        await begin(site)
+    assert denied.value.code == "video_youtube_languages_invalid"
+    assert not remote.calls
 
 
 async def test_no_google_oauth_needed_and_staging_resumes_at_vps_offsets(
