@@ -40,6 +40,7 @@ from app.config import Settings
 from app.db import Base, get_session
 from app.models import (
     AdminAuditLog,
+    ProviderConfig,
     User,
     VideoProject,
     VideoReview,
@@ -205,6 +206,8 @@ MODELS = (
     VideoShortsSlot,
     VideoShortsMetric,
     VideoShortsCost,
+    # The VPS uploader's settings row: the sender reads it (vps_settings.resolve) before it sends.
+    ProviderConfig,
 )
 
 

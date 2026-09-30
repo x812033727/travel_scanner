@@ -22,6 +22,8 @@ scope:
   - apps/api/tests/test_video_youtube.py
   - apps/api/tests/test_video_review_renewal.py
   - apps/api/tests/test_video_reviews_integration.py
+  - apps/api/tests/test_video_shorts.py
+  - apps/api/tests/test_video_shorts_publish.py
   - services/youtube-uploader/src/server.mjs
   - services/youtube-uploader/test/service.test.mjs
   - apps/web/components/admin-video-vps-settings.tsx
@@ -117,3 +119,9 @@ execution and acceptance; they are not completion claims for this code change.
   `2026-09-30-youtube-vps-web-settings-browser-acceptance`. Real service deployment,
   Google login and private-upload acceptance remain in the existing ops task
   `2026-09-28-vps-youtube-studio-deployment-and-live`.
+- CI `api` on the first head: 42 tests in `test_video_shorts.py` and
+  `test_video_shorts_publish.py` failed with `no such table: provider_configs`. Those
+  suites build their SQLite schema from their own `MODELS` tuple, and the sender now
+  reads the uploader's settings row (`vps_settings.resolve` inside `assert_idle`) on
+  every send, so both tuples list `ProviderConfig` too. The 152-test local run above
+  did not include them.
