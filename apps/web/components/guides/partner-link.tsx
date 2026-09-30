@@ -40,7 +40,7 @@ export function PartnerLink({
   return (
     <aside className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] px-4 py-3">
       <p className="text-xs font-semibold text-[var(--muted)]">
-        <span className="rounded-full bg-[var(--line)] px-2 py-0.5 text-[var(--fg)]">{labels.badge}</span>
+        <span className="rounded-full bg-[var(--line)] px-2 py-0.5 text-[var(--ink)]">{labels.badge}</span>
         <span className="ml-2">{link.display_name}</span>
       </p>
       <a
