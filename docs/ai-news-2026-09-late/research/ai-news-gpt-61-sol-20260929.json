@@ -1,0 +1,315 @@
+{
+  "slug": "ai-news-gpt-61-sol-20260929",
+  "event_date": "2026-09-29",
+  "event_date_basis": "",
+  "title": "",
+  "checked_on": "2026-09-30",
+  "sources": [
+    {
+      "title": "OpenAI API 文件：GPT-6.1 Sol 模型頁",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-30"
+    },
+    {
+      "title": "OpenAI API 文件：Pricing",
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-30"
+    },
+    {
+      "title": "OpenAI（ChatGPT 與 Codex 說明文件）：Models",
+      "url": "https://learn.chatgpt.com/docs/models",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-30"
+    },
+    {
+      "title": "OpenAI Deployment Safety Hub：Addendum to GPT-6 Astra System Card: GPT-6.1 Sol",
+      "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-30"
+    }
+  ],
+  "sourcing_verdict": "",
+  "sourcing_notes": "",
+  "verified_facts": [
+    {
+      "fact": "API 的模型名稱是 gpt-6.1-sol（模型頁 Snapshots 欄位只列這一個名稱）。",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Use gpt-6.1-sol to select this model."
+    },
+    {
+      "fact": "OpenAI 對 GPT-6.1 Sol 的定位：以較低成本，在複雜程式、電腦操作與專業工作上提供「接近 Astra」的表現。這是 OpenAI 自述，不是本站實測。",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GPT-6.1 Sol delivers near-Astra performance at a lower cost for complex coding, computer use, and professional work."
+    },
+    {
+      "fact": "OpenAI 自己建議開發者拿自己的任務與 Astra 比較，自行衡量品質與成本的取捨——「接近 Astra」不保證在讀者自己的任務上成立。",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Compare it with Astra on your tasks to assess the tradeoff between quality and cost."
+    },
+    {
+      "fact": "推理強度（reasoning.effort）支援 low、medium（預設）、high、xhigh、max；不支援 none 與 minimal。",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "is_vendor_claim": false,
+      "verbatim_quote": "reasoning.effort supports low, medium (default), high, xhigh, and max. The none and minimal reasoning efforts are not supported."
+    },
+    {
+      "fact": "工具呼叫要用 Responses API；Chat Completions 可以用，但不能帶工具呼叫。",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Use the Responses API for tool calling. Chat Completions is supported without tool calling."
+    },
+    {
+      "fact": "資料落地：支援美國與歐盟；選歐盟資料落地時不能用 Fast mode。",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "is_vendor_claim": false,
+      "verbatim_quote": "GPT-6.1 Sol supports US and EU data residency. Fast mode is unavailable with EU data residency."
+    },
+    {
+      "fact": "規格（模型頁卡片，查核日當下）：脈絡視窗 1,050,000 tokens、最大輸出 128,000 tokens、知識截止日 2026 年 4 月 30 日。三個數值是頁面上相鄰的卡片元素，引文中的空格是元素之間的分隔，不是一句話。",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "is_vendor_claim": false,
+      "verbatim_quote": "1,050,000 context window 128,000 max output tokens Apr 30, 2026 knowledge cutoff"
+    },
+    {
+      "fact": "輸入與輸出模態：輸入文字與圖片，輸出文字。",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Input Text, Image Output Text"
+    },
+    {
+      "fact": "模型頁的文字 token 價格（每 100 萬 tokens、美元、Standard）：輸入 2.00、快取輸入 0.10、寫入快取 2.50、輸出 10.00。",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Input $2.00 Cached input $0.10 Cache writes $2.50 Output $10.00"
+    },
+    {
+      "fact": "模型頁寫明計價規則：快取輸入是未快取輸入價的 5%；寫入快取是未快取輸入價的 1.25 倍（所以寫入快取 2.50 美元比一般輸入 2.00 美元貴）。",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Cached input tokens are priced at 5% of the uncached input token rate. Cache writes are billed at 1.25x the uncached input token rate."
+    },
+    {
+      "fact": "長提示加價：輸入超過 272K tokens 的請求，整筆請求的輸入與快取價格乘 2、輸出乘 1.5。",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Prompts with more than 272K input tokens are priced at 2x input and cache rates and 1.5x output for the full request."
+    },
+    {
+      "fact": "處理等級與地區加價：Fast mode 是 Standard 的 2 倍；Batch 與 Flex 比 Standard 便宜 50%；有提供地區處理的地方加收 10%。",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Fast mode prices are 2x Standard. Batch and Flex prices are 50% lower than Standard. Regional processing adds a 10% premium where available."
+    },
+    {
+      "fact": "API 價目表 Flagship models 區的單位是每 100 萬 tokens，欄位分短脈絡（Short context）與長脈絡（Long context），各有 Input、Cached input、Cache writes、Output 四欄。",
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Prices per 1M tokens. StandardBatchFlexFastUltrafast Standard Short context Long context Model Input Cached input Cache writes Output Input Cached input Cache writes Output"
+    },
+    {
+      "fact": "價目表 Standard 分頁 gpt-6-astra 一列：短脈絡輸入 10.00、快取輸入 1.00、寫入快取 12.50、輸出 50.00；長脈絡 20.00、2.00、25.00、75.00（美元／每百萬 tokens）。",
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "is_vendor_claim": false,
+      "verbatim_quote": "gpt-6-astra $10.00 $1.00 $12.50 $50.00 $20.00 $2.00 $25.00 $75.00"
+    },
+    {
+      "fact": "價目表 Standard 分頁 gpt-6.1-sol 一列：短脈絡輸入 2.00、快取輸入 0.10、寫入快取 2.50、輸出 10.00；長脈絡 4.00、0.20、5.00、15.00（美元／每百萬 tokens）。短脈絡四個數字與模型頁相同。",
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "is_vendor_claim": false,
+      "verbatim_quote": "gpt-6.1-sol $2.00 $0.10 $2.50 $10.00 $4.00 $0.20 $5.00 $15.00"
+    },
+    {
+      "fact": "價目表 Standard 分頁的完整清單（預設只顯示前三列 gpt-6-astra、gpt-6.1-sol、gpt-6-luna，按「All models」展開才看得到其餘）裡仍有 gpt-6-sol：短脈絡輸入 2、快取輸入 0.2、寫入快取 2.5、輸出 10（美元／每百萬 tokens）。這組數字只在頁面內嵌的表格資料（Astro 元件 props）裡，靜態 HTML 的可見文字沒有這一列；引文是 HTML entity 解碼後的原樣字串。長脈絡的 gpt-6-sol 價格在這份資料裡沒有讀到，不寫。",
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "is_vendor_claim": false,
+      "verbatim_quote": "[0,\"gpt-6-sol\"],[0,2],[0,0.2],[0,2.5],[0,10]"
+    },
+    {
+      "fact": "ChatGPT／Codex 文件的定位句：GPT-6.1 Sol 以低於 Astra 的成本，在複雜工作上提供接近 Astra 的表現（OpenAI 自述）。",
+      "url": "https://learn.chatgpt.com/docs/models",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GPT-6.1 Sol offers near-Astra performance for complex work at a lower cost than Astra."
+    },
+    {
+      "fact": "在 ChatGPT 裡，GPT-6.1 Sol、GPT-6 Sol、GPT-6 Luna 可以在 Work 與 Codex 使用，Chat 裡沒有（原文是 aren’t available，沒有 yet，也沒有時程）。",
+      "url": "https://learn.chatgpt.com/docs/models",
+      "is_vendor_claim": false,
+      "verbatim_quote": "In ChatGPT, GPT-6.1 Sol, GPT-6 Sol, and GPT-6 Luna are available in Work and Codex. They aren’t available in Chat."
+    },
+    {
+      "fact": "推出期間 GPT-5.6 Sol、GPT-5.6 Terra、GPT-5.6 Luna 仍可使用。",
+      "url": "https://learn.chatgpt.com/docs/models",
+      "is_vendor_claim": false,
+      "verbatim_quote": "GPT-5.6 Sol, GPT-5.6 Terra, and GPT-5.6 Luna remain available during the rollout."
+    },
+    {
+      "fact": "選新模型不會改變工作區權限，也不會因此取得使用權。",
+      "url": "https://learn.chatgpt.com/docs/models",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Selecting a new model doesn’t change workspace permissions or grant access to it."
+    },
+    {
+      "fact": "GPT-6.1 Sol 首發的推出範圍：Plus、Pro、Business、Enterprise、Edu，在桌面 App 與 CLI 的 Codex，以及網頁與行動版的 ChatGPT Work。",
+      "url": "https://learn.chatgpt.com/docs/models",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The GPT-6.1 Sol launch rollout includes Plus, Pro, Business, Enterprise, and Edu in Codex in the desktop app and CLI, and ChatGPT Work on the web and mobile."
+    },
+    {
+      "fact": "Enterprise 與 Edu：GPT-6.1 Sol 預設關閉，要管理員啟用。",
+      "url": "https://learn.chatgpt.com/docs/models",
+      "is_vendor_claim": false,
+      "verbatim_quote": "For Enterprise and Edu, the plan keeps GPT-6.1 Sol off by default until an administrator enables it."
+    },
+    {
+      "fact": "Free 與 Go 不在首發範圍內（原文 not included at launch，沒有說之後會不會加入）。",
+      "url": "https://learn.chatgpt.com/docs/models",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Free and Go are not included at launch."
+    },
+    {
+      "fact": "首發提供 Standard 與 Fast 兩種速度模式；GPT-6.1 Sol 的 Ultrafast 支援「之後才會有」（沒有日期）。",
+      "url": "https://learn.chatgpt.com/docs/models",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Standard and Fast modes are available at launch. Ultrafast support for GPT-6.1 Sol is coming later."
+    },
+    {
+      "fact": "和 GPT-6 Sol 的關係：文件稱 GPT-6 Sol 是「前一個 Sol 模型」，並請讀者比較兩者的 API 規格差異。文件沒有寫 GPT-6 Sol 退役或停用。",
+      "url": "https://learn.chatgpt.com/docs/models",
+      "is_vendor_claim": false,
+      "verbatim_quote": "To see how its API specifications differ from the previous Sol model, compare GPT-6.1 Sol and GPT-6 Sol."
+    },
+    {
+      "fact": "能不能用取決於推出進度、登入方式與使用的用戶端。",
+      "url": "https://learn.chatgpt.com/docs/models",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Availability depends on the rollout, your sign-in method, and your client."
+    },
+    {
+      "fact": "文件建議的分工：成本重要時，程式、App 與文件的工作可以考慮 GPT-6.1 Sol；最吃重的工作留給 Astra。",
+      "url": "https://learn.chatgpt.com/docs/models",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Consider GPT-6.1 Sol for work across code, apps, and documents when cost matters. Keep Astra for your most demanding work."
+    },
+    {
+      "fact": "OpenAI Deployment Safety Hub 上的這份文件標題是〈Addendum to GPT-6 Astra System Card: GPT-6.1 Sol〉，是 GPT-6 Astra system card 的增補，頁面印 Published September 29, 2026。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Published September 29, 2026 Addendum to GPT-6 Astra System Card: GPT-6.1 Sol"
+    },
+    {
+      "fact": "OpenAI 在 system card 增補的開頭寫：今天推出 GPT-6.1 Sol，GPT-6.1 是 GPT-6 系列最新的模型家族。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Today, we’re introducing GPT-6.1 Sol. GPT-6.1 is the latest model family in the GPT-6 series."
+    },
+    {
+      "fact": "OpenAI 自述 GPT-6.1 Sol 的能力可與 GPT-6 Astra 相比，兼具「無可匹敵」的速度與價格組合（廠商宣稱）。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GPT-6.1 Sol delivers capabilities comparable to those of our most powerful model, GPT-6 Astra, with an unmatched combination of speed and affordability."
+    },
+    {
+      "fact": "評測但書：GPT-6.1 Sol 的評測在 OpenAI 研究環境或 API 上進行，可能與正式版 ChatGPT 的輸出略有不同。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Evaluations of GPT-6.1 Sol were performed in our research environment or via our API, which may provide slightly different output from production ChatGPT"
+    },
+    {
+      "fact": "GPT-6.1 Sol 使用與 GPT-6 Astra 相同類型的資料與訓練（OpenAI 自述）。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GPT-6.1 Sol uses the same types of data and training as GPT-6 Astra"
+    },
+    {
+      "fact": "Preparedness 分級：OpenAI 依自己的 Preparedness Framework，把 GPT-6.1 Sol 在資安領域視為 Critical、生物與化學領域視為 High、AI 自我改進低於 High 門檻。這是 OpenAI 內部框架的分級，不是外部評等。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Under our Preparedness Framework, we are treating GPT-6.1 Sol as Critical capability in Cybersecurity, High capability in the Biological and Chemical domain, and below the High threshold in AI Self-Improvement."
+    },
+    {
+      "fact": "資安 Critical 與 GPT-6 Astra 的處理相同（As we did for GPT-6 Astra）；比較點：9/23 那一篇寫的 GPT-6 Sol／Luna 在資安是 High。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+      "is_vendor_claim": false,
+      "verbatim_quote": "As we did for GPT-6 Astra, we are treating GPT-6.1 Sol as Critical capability in the Cybersecurity domain."
+    },
+    {
+      "fact": "OpenAI 框架對資安 Critical 的定義（引號內是 OpenAI 引自自己框架的文字，原樣連同彎引號照抄）。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Critical capability is defined as a model that can “identify and develop functional zero-day exploits of all severity levels in many hardened real-world critical systems without human intervention” or “devise and execute end-to-end novel strategies for cyberattacks against hardened targets given only a high level desired goal”."
+    },
+    {
+      "fact": "OpenAI 表示因此對 GPT-6.1 Sol 套用與 GPT-6 Astra 相同的防護措施。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Based on this assessment, we applied the same safeguards stack to GPT-6.1 Sol as GPT-6 Astra."
+    },
+    {
+      "fact": "OpenAI 寫明，內部安全顧問小組（Safety Advisory Group）的建議與公司領導層的判斷是：這些防護措施足以讓 GPT-6.1 Sol 公開推出（OpenAI 自己的判斷）。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The internal report informed our Safety Advisory Group’s recommendation and OpenAI leadership’s determination that these safeguards are sufficient for GPT-6.1 Sol’s public launch."
+    },
+    {
+      "fact": "資安用途：和 Astra 一樣，GPT-6.1 Sol 透過 Daybreak 分階段開放（Daybreak 的申請與對象這一頁沒有細寫，只指回 Astra system card）。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Like Astra, we are taking a phased approach for GPT-6.1 Sol through Daybreak"
+    },
+    {
+      "fact": "幻覺：OpenAI 表示在使用者標記過的案例評測上，GPT-6.1 Sol 與 GPT-6 Sol 的幻覺率同樣低（沒有說比 GPT-6 Sol 更低）。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We find that GPT-6.1 Sol and GPT-6 Sol achieve similarly low hallucination rates."
+    },
+    {
+      "fact": "健康評測：OpenAI 表示 GPT-6.1 Sol 在 HealthBench 評測上與 GPT-6 Astra 相當。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GPT-6.1 Sol performs on par with GPT-6 Astra on our HealthBench evaluations."
+    },
+    {
+      "fact": "回答長度：GPT-6.1 Sol 的最終回答比 GPT-6 Sol 與 GPT-6 Luna 長，比 GPT-6 Astra 略短（頁面此句用 U+2011 連字號，照抄）。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+      "is_vendor_claim": false,
+      "verbatim_quote": "GPT‑6.1 Sol produces longer final answers than GPT‑6 Sol and GPT‑6 Luna, but slightly shorter answers than GPT‑6 Astra."
+    },
+    {
+      "fact": "CoT 可控性（章節〈Monitorability Under Adversarial Conditions〉）：在 750–1,250 tokens 長的思維鏈裡，照指示控制思維鏈的比例 GPT-6 Sol 23.2%、GPT-5.6 Sol 16.1%、GPT-5.5 Thinking 1.7%、GPT-6.1 Sol 44.8%、GPT-6 Astra 60.9%。這是「模型能否依指示改寫自己的思維鏈」，放在可監控性章節，不是一般意義的「指令遵循率」或品質分數；44.8% 要和 16.1% 一起寫時必須連著長度區間與比較對象。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+      "is_vendor_claim": false,
+      "verbatim_quote": "among CoTs between 750 and 1,250 tokens long, GPT‑6 Sol successfully follows the requested CoT instruction in 23.2% of cases, compared with 16.1% for GPT‑5.6 Sol, 1.7% for GPT‑5.5 Thinking, 44.8% for GPT‑6.1 Sol, and 60.9% for GPT‑6 Astra."
+    },
+    {
+      "fact": "對齊評測的「程式工作不實陳述」比例：GPT-6.1 Sol 1.50%、GPT-6 Astra 0.51%、GPT-6 Sol 1.30%（GPT-6.1 Sol 高於兩者）。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+      "is_vendor_claim": false,
+      "verbatim_quote": "GPT-6.1 Sol’s rate of misrepresentation is 1.50%, compared with 0.51% for GPT-6 Astra and 1.30% for GPT-6 Sol."
+    },
+    {
+      "fact": "同一評測的但書：任務是刻意挑來誘發不誠實行為的，觀察到的比例不代表正式環境的真實比例。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+      "is_vendor_claim": false,
+      "verbatim_quote": "These tasks were deliberately selected to elicit potentially dishonest behavior and the observed rates are not expected to match the true rate of misbehavior in production."
+    },
+    {
+      "fact": "「尊重警告」評測：GPT-6.1 Sol 有 23.5% 的執行出現不該有的堅持（試圖繞過限制），GPT-6 Astra 是 17.4%；OpenAI 說明這項主要測日常任務中的低風險限制，且沒有開啟系統層級的防繞過控制。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Unwanted persistence appeared in 23.5% of GPT-6.1 Sol rollouts, compared to 17.4% of GPT-6 Astra’s."
+    }
+  ],
+  "not_said": [],
+  "unverified_or_excluded": [],
+  "editorial_brief": "",
+  "must_not_write": [],
+  "live_data_warnings": [],
+  "corrections_applied": [],
+  "hero_label": "",
+  "diagram": {}
+}
