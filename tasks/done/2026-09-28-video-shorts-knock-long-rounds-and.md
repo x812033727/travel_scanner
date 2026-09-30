@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-shorts-knock-long-rounds-and
 title: 工人的 Shorts 敲門：長輪次誤報沉默、STOP 檔不停敲門
-status: in-progress
+status: done
 priority: P3
 area: ops
 owner: claude-opus-5-5-shorts-knock
 claimed_at: 2026-09-30T16:07:40Z
 created_at: 2026-09-28T15:33:40Z
-completed_at:
+completed_at: 2026-09-30T16:12:30Z
 branch: claude/shorts-knock-timing
 depends_on: []
 scope:
