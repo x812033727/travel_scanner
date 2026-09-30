@@ -18,7 +18,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "GPT-6 Sol 與 Claude Opus 5.5 同一天降價，你的 AI 帳單會少多少？",
-    "description": "OpenAI 和 Anthropic 同一天降價，這支用三種示範用量，估算換模型後的 token 費用。\n給用 API 或訂閱 AI、想搞懂「便宜五成」到底跟自己帳單有沒有關係的人。\n\n三個百分比比的不是同一件事：五成是 Sol 相對前代促銷單價的降幅，四成是 Anthropic 自估的任務成本降幅，兩成是 Opus 5.5 輸入與輸出的單價降幅。影片用聊天型、代理型、大量整理三種示範用量，把 GPT-6 Sol、Luna、Claude Opus 5.5、Sonnet 5、Gemini 3.8 Flash 的每月帳單算給你看，並告訴你什麼時候該換、什麼時候先別動。\n金額是短脈絡、標準處理的 token 費示意，未含快取寫入、儲存、工具或其他服務費；大量整理欄未使用 Batch API 折扣。",
+    "description": "GPT-6 Sol 的價目表上，同一個模型有八個價格。這支影片逐格讀懂它，再用三種每月用量，估算 GPT-6 Sol、Luna、Opus 5.5 等五個模型的 token 費用。\n給用 API 或訂閱 AI、想搞懂「便宜五成」「少四成」到底跟自己帳單有沒有關係的人。\n\n影片從 GPT-6 Sol 標準價的八個格子讀起：輸入、快取讀取、快取寫入、輸出，各有短脈絡與長脈絡兩組價；接著看批次、快速模式與促銷價，再算聊天型、代理型、大量整理三種示範用量的每月帳單，最後拆開 Anthropic 的四成、兩成、六成各自在比什麼。\n\n金額是短脈絡、標準處理的 token 費示意，未含快取寫入、儲存、工具或其他服務費；大量整理欄未使用批次折扣。價格會變，以官網當天為準。\n\n延伸閱讀：API 價格比較：每百萬 token 各家多少（九月中旬的官網價目表）\nhttps://mokaair.com/zh-TW/life/ai-api-pricing-comparison-2026?utm_source=youtube&utm_medium=video&utm_campaign=ai-price-war-gpt-6-sol-vs-opus-5-5",
     "tags": [
       "GPT-6 Sol",
       "GPT-6 Luna",
@@ -43,139 +43,1042 @@
   },
   "sources": [
     {
-      "title": "OpenAI API Changelog",
-      "url": "https://developers.openai.com/api/docs/changelog",
-      "checked_on": "2026-09-29"
-    },
-    {
       "title": "OpenAI API Pricing",
       "url": "https://developers.openai.com/api/docs/pricing",
-      "checked_on": "2026-09-29"
+      "checked_on": "2026-09-30"
+    },
+    {
+      "title": "OpenAI API Changelog",
+      "url": "https://developers.openai.com/api/docs/changelog",
+      "checked_on": "2026-09-30"
+    },
+    {
+      "title": "OpenAI Prompt caching",
+      "url": "https://developers.openai.com/api/docs/guides/prompt-caching",
+      "checked_on": "2026-09-30"
+    },
+    {
+      "title": "OpenAI Batch API",
+      "url": "https://developers.openai.com/api/docs/guides/batch",
+      "checked_on": "2026-09-30"
     },
     {
       "title": "Claude Opus 5.5",
       "url": "https://www.anthropic.com/claude-opus-5-5",
-      "checked_on": "2026-09-29"
+      "checked_on": "2026-09-30"
+    },
+    {
+      "title": "Claude Sonnet 5.5",
+      "url": "https://www.anthropic.com/claude-sonnet-5-5",
+      "checked_on": "2026-09-30"
     },
     {
       "title": "Claude Pricing",
       "url": "https://claude.com/pricing",
-      "checked_on": "2026-09-29"
+      "checked_on": "2026-09-30"
     },
     {
       "title": "Gemini API Pricing",
       "url": "https://ai.google.dev/gemini-api/docs/pricing",
-      "checked_on": "2026-09-29"
-    },
-    {
-      "title": "Agents API Observability",
-      "url": "https://developers.openai.com/api/docs/guides/agents-api/observability",
-      "checked_on": "2026-09-29"
+      "checked_on": "2026-09-30"
     }
   ],
   "scenes": [
     {
-      "id": "two-price-cuts",
-      "chapter": "你的 AI 帳單會少多少",
+      "id": "eight-prices",
+      "chapter": "GPT-6 Sol 為什麼有八個價格",
       "template": "title",
       "data": {
-        "tag": "AI 帳單",
-        "title": "兩家同一天降價，**你的帳單會少多少**？",
-        "subtitle": "三個「便宜多少」，其實比的不是同一件事"
+        "tag": "價目表怎麼讀",
+        "title": "同一個 GPT-6 Sol，**八個價格**",
+        "subtitle": "跟著價目表逐格讀，再算你的帳單"
       },
+      "claims": [
+        "c1",
+        "c2"
+      ],
       "lines": [
         {
-          "id": "ayvr",
-          "text": "GPT-6 Sol 單價少五成，Anthropic 估成本少四成，就在同一天。"
+          "id": "ki36",
+          "text": "價目表上，同一個 GPT-6 Sol，有八個價格。",
+          "say": "價目表上，同一個 GPT 六 Sol，有八個價格。",
+          "say_for": "5a4dea3204c1",
+          "pause_after_ms": 900
         },
         {
-          "id": "2xba",
-          "text": "但這兩個數字比的不是同一件事，換了之後有時一毛都不會少。"
-        },
-        {
-          "id": "nnq8",
-          "text": "這支用三種常見用量，把每一家的月帳單算給你看。"
+          "id": "ibpp",
+          "text": "哪一個，才是你真正會付的那個？"
         }
       ]
     },
     {
-      "id": "three-list-prices",
-      "chapter": "三個模型的牌價先擺出來",
-      "template": "stats",
+      "id": "you-think",
+      "template": "compare",
       "data": {
-        "title": "三個模型的牌價，先擺出來",
-        "stats": [
-          {
-            "value": "$2 / $10",
-            "label": "GPT-6 Sol 每百萬輸入／輸出"
-          },
-          {
-            "value": "$0.10 / $0.50",
-            "label": "GPT-6 Luna 每百萬輸入／輸出"
-          },
-          {
-            "value": "$4 / $20",
-            "label": "Claude Opus 5.5 每百萬輸入／輸出"
-          }
-        ],
-        "source": "每百萬 token、短脈絡，2026 年 9 月官方價目表"
+        "title": "價目表上的 GPT-6 Sol",
+        "left": {
+          "heading": "你以為",
+          "points": [
+            "一個模型",
+            "一個價錢"
+          ]
+        },
+        "right": {
+          "heading": "其實",
+          "points": [
+            "四種 token",
+            "短、長兩組價",
+            "八個價格"
+          ]
+        }
       },
       "claims": [
         "c1",
-        "c2",
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "8nqw",
+          "text": "你以為，一個模型就是一個價錢。",
+          "pause_after_ms": 600,
+          "reveal": 1
+        },
+        {
+          "id": "pc4t",
+          "text": "其實，GPT-6 Sol 光是標準價那一頁，就有八個。",
+          "say": "其實，GPT 六 Sol 光是標準價那一頁，就有八個。",
+          "say_for": "aee40ab0fa4c",
+          "reveal": 1
+        },
+        {
+          "id": "fvdq",
+          "text": "那這八個價格，到底長什麼樣子？",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "promise",
+      "chapter": "GPT-6 Sol 價目表八格怎麼讀",
+      "template": "bullets",
+      "data": {
+        "title": "這支影片會做的三件事",
+        "items": [
+          "逐格讀懂八個價格",
+          "算三種每月用量的帳單",
+          "拆開新聞的三個數字"
+        ]
+      },
+      "lines": [
+        {
+          "id": "xf3x",
+          "text": "這支影片，我們跟著價目表一格一格讀。"
+        },
+        {
+          "id": "vcu8",
+          "text": "先讀懂這八個價格。",
+          "reveal": 1
+        },
+        {
+          "id": "p6w3",
+          "text": "再算三種用量的每月帳單。",
+          "reveal": 1
+        },
+        {
+          "id": "gm9p",
+          "text": "最後拆開新聞裡的三個數字。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "context-split",
+      "template": "big",
+      "data": {
+        "kicker": "八個價格，先分兩組",
+        "text": "27 萬 2 千",
+        "sub": "輸入超過這條線，就換長脈絡那組價"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "tigr",
+          "text": "八個價格，先分成兩組。"
+        },
+        {
+          "id": "ippg",
+          "text": "輸入不超過二十七萬兩千個 token 算短脈絡，超過就是長脈絡。"
+        }
+      ]
+    },
+    {
+      "id": "sol-table",
+      "template": "table",
+      "data": {
+        "title": "GPT-6 Sol 標準價，每百萬 token 美元",
+        "columns": [
+          "價格",
+          "短脈絡",
+          "長脈絡"
+        ],
+        "rows": [
+          [
+            "輸入",
+            "$2",
+            "$4"
+          ],
+          [
+            "快取讀取",
+            "$0.20",
+            "$0.40"
+          ],
+          [
+            "快取寫入",
+            "$2.50",
+            "$5"
+          ],
+          [
+            "輸出",
+            "$10",
+            "$15"
+          ]
+        ]
+      },
+      "claims": [
+        "c1",
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "qfj6",
+          "text": "先把四種 token 的價格，逐格讀一遍。"
+        },
+        {
+          "id": "qjec",
+          "text": "輸入，短脈絡兩塊美元，長脈絡四塊。",
+          "reveal": 1
+        },
+        {
+          "id": "xr9r",
+          "text": "快取讀取，短脈絡兩角，長脈絡四角。",
+          "reveal": 1
+        },
+        {
+          "id": "p683",
+          "text": "快取寫入，短脈絡兩塊五，長脈絡五塊。",
+          "reveal": 1
+        },
+        {
+          "id": "ja6c",
+          "text": "輸出，短脈絡十塊，長脈絡十五塊，八格湊齊。",
+          "reveal": 1
+        },
+        {
+          "id": "qjk4",
+          "text": "可是，快取讀取和快取寫入，到底是什麼？",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "four-tokens",
+      "chapter": "快取讀取和快取寫入是什麼",
+      "template": "steps",
+      "data": {
+        "title": "帳單上的四種 token",
+        "steps": [
+          {
+            "title": "輸入",
+            "detail": "你送進去、第一次處理的內容"
+          },
+          {
+            "title": "快取寫入",
+            "detail": "第一次把開頭存起來"
+          },
+          {
+            "title": "快取讀取",
+            "detail": "同樣的開頭再出現，直接讀"
+          },
+          {
+            "title": "輸出",
+            "detail": "模型回你的字，含看不見的思考"
+          }
+        ]
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "s7fy",
+          "text": "先把四種 token，各自什麼時候出現講清楚。"
+        },
+        {
+          "id": "ma9h",
+          "text": "輸入，是你送給模型、第一次處理的內容。",
+          "reveal": 1
+        },
+        {
+          "id": "q2in",
+          "text": "快取寫入，是第一次把一段開頭存起來，要多付一點。",
+          "reveal": 1
+        },
+        {
+          "id": "7u9g",
+          "text": "快取讀取，是同樣的開頭再出現，直接讀，便宜很多。",
+          "reveal": 1
+        },
+        {
+          "id": "b3y9",
+          "text": "輸出，是模型回給你的字，連看不見的思考也算。",
+          "reveal": 1
+        },
+        {
+          "id": "6kug",
+          "text": "同一個輸入 token，只會算成其中一種，不會重複收。"
+        }
+      ]
+    },
+    {
+      "id": "cache-math",
+      "template": "stats",
+      "data": {
+        "title": "快取的官方倍率",
+        "stats": [
+          {
+            "value": "1.25 倍",
+            "label": "快取寫入",
+            "note": "相對一般輸入價"
+          },
+          {
+            "value": "0.1 倍",
+            "label": "快取讀取",
+            "note": "相對一般輸入價"
+          },
+          {
+            "value": "2.15 對 10",
+            "label": "同一段開頭用十次",
+            "note": "有快取，對沒快取"
+          }
+        ]
+      },
+      "claims": [
+        "c1",
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "me45",
+          "text": "這就像影印店，第一次製版要多付一點，之後同一份直接印。"
+        },
+        {
+          "id": "4by8",
+          "text": "快取寫入，是一般輸入價的一點二五倍。",
+          "reveal": 1
+        },
+        {
+          "id": "wh3j",
+          "text": "快取讀取，只有十分之一。",
+          "reveal": 1
+        },
+        {
+          "id": "x4fd",
+          "text": "同一段開頭用十次，寫一次、讀九次，是二點一五倍。",
+          "reveal": 1
+        },
+        {
+          "id": "spkw",
+          "text": "沒有快取，同樣十次要付十倍。"
+        }
+      ]
+    },
+    {
+      "id": "write-costs-more",
+      "template": "big",
+      "data": {
+        "kicker": "小心",
+        "text": "$2.50 > $2",
+        "sub": "快取寫入，比一般輸入還貴"
+      },
+      "claims": [
+        "c1",
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "c32b",
+          "text": "所以第一次存快取，比直接送輸入還貴。"
+        },
+        {
+          "id": "599y",
+          "text": "存進去卻沒人再讀，就白多付了兩成五。"
+        }
+      ]
+    },
+    {
+      "id": "cache-conditions",
+      "template": "bullets",
+      "data": {
+        "title": "快取要算數，三個條件",
+        "items": [
+          "開頭一模一樣",
+          "長度至少 1,024 個 token",
+          "還沒過期"
+        ]
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "66qr",
+          "text": "但快取不是自動算數，同一份文件問十次，也不保證每次命中。"
+        },
+        {
+          "id": "4b3g",
+          "text": "開頭得一模一樣，中間改一個字，後面就對不上了。",
+          "reveal": 1
+        },
+        {
+          "id": "medc",
+          "text": "長度也要夠，至少一千零二十四個 token。",
+          "reveal": 1
+        },
+        {
+          "id": "xrwh",
+          "text": "而且放太久會過期，過期了就要重新算一次。",
+          "reveal": 1
+        },
+        {
+          "id": "4y9a",
+          "text": "那批次折扣和促銷價，又是怎麼回事？",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "batch-half",
+      "chapter": "批次折扣和促銷價怎麼看",
+      "template": "compare",
+      "data": {
+        "title": "標準頁和批次頁",
+        "left": {
+          "heading": "標準頁",
+          "points": [
+            "輸入 $2",
+            "輸出 $10",
+            "馬上回答"
+          ]
+        },
+        "right": {
+          "heading": "批次頁",
+          "points": [
+            "輸入 $1",
+            "輸出 $5",
+            "二十四小時內完成"
+          ]
+        }
+      },
+      "claims": [
+        "c1",
         "c3"
       ],
       "lines": [
         {
-          "id": "x53m",
-          "text": "先把三個模型的牌價擺出來，看的是每百萬 token 的輸入和輸出。",
+          "id": "c46x",
+          "text": "就像網購選不趕時間的宅配，等一等，運費就對折。"
+        },
+        {
+          "id": "kex8",
+          "text": "價目表上有一排分頁，標準頁，Sol 的輸入兩塊、輸出十塊。",
           "reveal": 1
         },
         {
-          "id": "a4jn",
-          "text": "GPT-6 Luna 最便宜，輸入一角、輸出五角美元。",
+          "id": "vk96",
+          "text": "點到批次頁，剛好對折，輸入一塊、輸出五塊。",
           "reveal": 1
         },
         {
-          "id": "u6u7",
-          "text": "Claude Opus 5.5 最貴，輸入四塊、輸出二十塊美元。",
-          "reveal": 1
-        },
-        {
-          "id": "u5h2",
-          "text": "光看這幾個數字，你還看不出換了會不會比較省。"
-        },
-        {
-          "id": "efbw",
-          "text": "因為真正的帳單，要看你每月的輸入、輸出和快取 token 用量。"
+          "id": "x5cg",
+          "text": "代價是不能馬上拿答案，官方說二十四小時內完成。"
         }
       ]
     },
     {
-      "id": "openai-quote",
-      "template": "quote",
+      "id": "other-tabs",
+      "template": "bullets",
       "data": {
-        "kicker": "OpenAI 更新紀錄",
-        "quote": "GPT-6 Sol: $2 input, $0.20 cached input, and $10 output.",
-        "translation": "每百萬 token：輸入 2、快取讀取 0.20、輸出 10 美元",
-        "source": "OpenAI API Changelog，2026-09-22"
+        "title": "分頁上的價格，先選對是哪一種",
+        "items": [
+          "批次：標準價的一半",
+          "快速模式：標準價的兩倍",
+          "這支影片：一律用標準價"
+        ]
       },
       "claims": [
+        "c3",
         "c4"
       ],
       "lines": [
         {
-          "id": "s4nh",
-          "text": "先看 OpenAI，GPT-6 Sol 的輸入和輸出單價都是前代的一半。"
+          "id": "kp2s",
+          "text": "所以分頁上的價格，你得先選對是哪一種。"
         },
         {
-          "id": "myq6",
-          "text": "比較基準是 GPT-5.6 Sol 的促銷價，不是促銷前的價格。",
+          "id": "4dbt",
+          "text": "批次，是標準價的一半。",
           "reveal": 1
         },
         {
-          "id": "bg95",
-          "text": "算降幅時，要把新舊單價和比較基準一起看。"
+          "id": "eniv",
+          "text": "快速模式反過來，是標準價的兩倍，Sol 的輸出要二十塊。",
+          "reveal": 1
+        },
+        {
+          "id": "teb4",
+          "text": "這支影片的帳單，一律用標準價。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "promo-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "OpenAI 價目表頁尾小字",
+        "quote": "GPT-5.6 Sol’s promotional pricing is available at least through November 21, 2026.",
+        "translation": "GPT-5.6 Sol 的促銷價，至少維持到 2026 年 11 月 21 日",
+        "source": "OpenAI API Pricing 頁尾註記"
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "gb49",
+          "text": "再往頁面最下面看，有一行小字。"
+        },
+        {
+          "id": "v74j",
+          "text": "GPT-5.6 Sol 的促銷價，至少維持到十一月二十一日。",
+          "say": "GPT 五點六 Sol 的促銷價，至少維持到十一月二十一日。",
+          "say_for": "7ca4473cc628",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "half-of-promo",
+      "template": "stats",
+      "data": {
+        "title": "GPT-6 Sol 短脈絡的四格",
+        "stats": [
+          {
+            "value": "$4 → $2",
+            "label": "輸入",
+            "note": "少 50%"
+          },
+          {
+            "value": "$0.40 → $0.20",
+            "label": "快取讀取",
+            "note": "少 50%"
+          },
+          {
+            "value": "$5 → $2.50",
+            "label": "快取寫入",
+            "note": "少 50%"
+          },
+          {
+            "value": "$20 → $10",
+            "label": "輸出",
+            "note": "少 50%"
+          }
+        ],
+        "source": "GPT-5.6 Sol 促銷價 → GPT-6 Sol，每百萬 token"
+      },
+      "claims": [
+        "c1",
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "fges",
+          "text": "GPT-6 Sol 短脈絡的四格，全都是促銷價的一半。",
+          "say": "GPT 六 Sol 短脈絡的四格，全都是促銷價的一半。",
+          "say_for": "a9dbca776b2e"
+        },
+        {
+          "id": "ym8g",
+          "text": "輸入，四塊變兩塊。",
+          "reveal": 1
+        },
+        {
+          "id": "m5fk",
+          "text": "快取讀取，四角變兩角。",
+          "reveal": 1
+        },
+        {
+          "id": "r3k9",
+          "text": "快取寫入，五塊變兩塊五。",
+          "reveal": 1
+        },
+        {
+          "id": "ef3k",
+          "text": "輸出，二十塊變十塊。",
+          "reveal": 1
+        },
+        {
+          "id": "tuik",
+          "text": "所以新聞講的五成，是跟這個會到期的價格比。"
+        }
+      ]
+    },
+    {
+      "id": "sol-61",
+      "template": "stats",
+      "data": {
+        "title": "價目表旗艦區的 Sol",
+        "stats": [
+          {
+            "value": "$0.20",
+            "label": "GPT-6 Sol 快取讀取",
+            "note": "九月二十二日"
+          },
+          {
+            "value": "$0.10",
+            "label": "GPT-6.1 Sol 快取讀取",
+            "note": "九月二十九日新上"
+          }
+        ]
+      },
+      "claims": [
+        "c1",
+        "c5",
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "ntee",
+          "text": "還有一件事：價目表旗艦區裡的 Sol，已經換成新版了。"
+        },
+        {
+          "id": "mzxf",
+          "text": "GPT-6 Sol 的快取讀取，每百萬兩角美元。",
+          "say": "GPT 六 Sol 的快取讀取，每百萬兩角美元。",
+          "say_for": "fa7a2436c386",
+          "reveal": 1
+        },
+        {
+          "id": "mvrg",
+          "text": "九月二十九日出的 GPT-6.1 Sol，只要一角。",
+          "say": "九月二十九日出的 GPT 六點一 Sol，只要一角。",
+          "say_for": "3a42094213b5",
+          "reveal": 1
+        },
+        {
+          "id": "2djf",
+          "text": "輸入和輸出價沒變，要找 GPT-6 Sol，得展開全部模型。",
+          "say": "輸入和輸出價沒變，要找 GPT 六 Sol，得展開全部模型。",
+          "say_for": "e30f1ea801d5"
+        }
+      ]
+    },
+    {
+      "id": "chase-new",
+      "template": "big",
+      "data": {
+        "kicker": "我的看法",
+        "text": "先算，再追新版",
+        "sub": "新版上架，不是換模型的理由"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "443u",
+          "text": "我的看法是，新版本不用急著追，先用自己的用量算。"
+        },
+        {
+          "id": "9tsk",
+          "text": "那把這些單價，套進你的用量，帳單會是多少？",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "scenario-walk",
+      "chapter": "三種用量的每月帳單怎麼算",
+      "template": "steps",
+      "data": {
+        "title": "三種示範用量，每月",
+        "steps": [
+          {
+            "title": "聊天型",
+            "detail": "500 萬輸入、100 萬輸出"
+          },
+          {
+            "title": "代理型",
+            "detail": "1,200 萬新輸入、4,800 萬快取讀取、400 萬輸出"
+          },
+          {
+            "title": "大量整理",
+            "detail": "2 億輸入、1,000 萬輸出，用標準價"
+          }
+        ]
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "3h7y",
+          "text": "帳單是用量乘單價，先講好三種示範用量。"
+        },
+        {
+          "id": "gt4x",
+          "text": "聊天型，每月五百萬輸入、一百萬輸出 token。",
+          "reveal": 1
+        },
+        {
+          "id": "ssvn",
+          "text": "代理型，一千兩百萬新輸入、四千八百萬快取讀取、四百萬輸出。",
+          "reveal": 1
+        },
+        {
+          "id": "747h",
+          "text": "大量整理，兩億輸入、一千萬輸出。",
+          "reveal": 1
+        },
+        {
+          "id": "wcfz",
+          "text": "這只是示範，你的用量要去用量頁看。"
+        }
+      ]
+    },
+    {
+      "id": "monthly-bill",
+      "template": "table",
+      "data": {
+        "title": "每月 token 費，美元",
+        "columns": [
+          "每月",
+          "聊天型",
+          "代理型",
+          "大量整理"
+        ],
+        "rows": [
+          [
+            "GPT-6 Sol",
+            "$20",
+            "$73.6",
+            "$500"
+          ],
+          [
+            "GPT-6 Luna",
+            "$1",
+            "$3.68",
+            "$25"
+          ],
+          [
+            "Opus 5.5",
+            "$40",
+            "$137.6",
+            "$1,000"
+          ],
+          [
+            "Sonnet 5.5",
+            "$20",
+            "$73.6",
+            "$500"
+          ],
+          [
+            "Gemini 3.8 Flash",
+            "$7.5",
+            "$27.6",
+            "$187.5"
+          ]
+        ],
+        "highlight": 1
+      },
+      "claims": [
+        "c1",
+        "c11",
+        "c12",
+        "c15",
+        "c16",
+        "c17",
+        "c23",
+        "c24",
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "m5xb",
+          "text": "五個模型套進去，帳單長這樣。"
+        },
+        {
+          "id": "hjxw",
+          "text": "GPT-6 Sol，聊天二十、代理七十三點六、大量整理五百。",
+          "say": "GPT 六 Sol，聊天二十、代理七十三點六、大量整理五百。",
+          "say_for": "cb0789ecc931",
+          "reveal": 1
+        },
+        {
+          "id": "bazf",
+          "text": "GPT-6 Luna 便宜很多，聊天型一個月才一塊，不到一杯咖啡。",
+          "say": "GPT 六 Luna 便宜很多，聊天型一個月才一塊，不到一杯咖啡。",
+          "say_for": "aaab135ef364",
+          "reveal": 1
+        },
+        {
+          "id": "vpac",
+          "text": "Opus 5.5 的聊天型和大量整理，剛好是 Sol 的兩倍。",
+          "say": "Opus 五點五 的聊天型和大量整理，剛好是 Sol 的兩倍。",
+          "say_for": "1db011caea0c",
+          "reveal": 1
+        },
+        {
+          "id": "e9gz",
+          "text": "Sonnet 5.5 的單價跟 Sol 一樣，三格帳單也一樣。",
+          "say": "Sonnet 五點五 的單價跟 Sol 一樣，三格帳單也一樣。",
+          "say_for": "59417952d56a",
+          "reveal": 1
+        },
+        {
+          "id": "6jr2",
+          "text": "Gemini 3.8 Flash 介於中間，但這是促銷價，年底過後單價翻倍。",
+          "say": "Gemini 三點八 Flash 介於中間，但這是促銷價，年底過後單價翻倍。",
+          "say_for": "1ee19f282be3",
+          "reveal": 1
+        },
+        {
+          "id": "yvvp",
+          "text": "三種用量，最便宜的都是 GPT-6 Luna。",
+          "say": "三種用量，最便宜的都是 GPT 六 Luna。",
+          "say_for": "0df5e660007e"
+        }
+      ]
+    },
+    {
+      "id": "price-not-quality",
+      "template": "big",
+      "data": {
+        "kicker": "這張表沒比的東西",
+        "text": "品質",
+        "sub": "夠不夠用，拿自己的題目測"
+      },
+      "lines": [
+        {
+          "id": "8ika",
+          "text": "這張表只比價格，沒有比誰答得好。"
+        },
+        {
+          "id": "zg43",
+          "text": "夠不夠用，只有拿你自己的題目跑一次才知道。"
+        }
+      ]
+    },
+    {
+      "id": "compare-to-last-gen",
+      "template": "stats",
+      "data": {
+        "title": "跟前一代比，降在哪",
+        "stats": [
+          {
+            "value": "$40 → $20",
+            "label": "聊天型：GPT-5.6 Sol 促銷價到 GPT-6 Sol",
+            "note": "剛好一半"
+          },
+          {
+            "value": "$184 → $137.6",
+            "label": "代理型：Opus 5 到 Opus 5.5",
+            "note": "少約 25%"
+          }
+        ],
+        "source": "月費為官方牌價實算，2026 年 9 月"
+      },
+      "claims": [
+        "c8",
+        "c13",
+        "c14",
+        "c18",
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "ikjd",
+          "text": "再拿上一代來對照，看降價降在哪。"
+        },
+        {
+          "id": "jeek",
+          "text": "聊天型，前代促銷價四十美元，GPT-6 Sol 二十，剛好一半。",
+          "say": "聊天型，前代促銷價四十美元，GPT 六 Sol 二十，剛好一半。",
+          "say_for": "5caaef5c83a8",
+          "reveal": 1
+        },
+        {
+          "id": "kqwi",
+          "text": "代理型，Opus 5 是一百八十四，Opus 5.5 是一百三十七點六。",
+          "say": "代理型，Opus 五 是一百八十四，Opus 五點五 是一百三十七點六。",
+          "say_for": "a173e4aa85bd",
+          "reveal": 1
+        },
+        {
+          "id": "6kqy",
+          "text": "只少了約兩成五，不是四成。"
+        }
+      ]
+    },
+    {
+      "id": "article-cta",
+      "template": "cta",
+      "data": {
+        "kicker": "這次發布的報導",
+        "title": "GPT-6 Sol 與 Luna 推出了什麼",
+        "sub": "說明欄第一行的文章"
+      },
+      "lines": [
+        {
+          "id": "5sv5",
+          "text": "這次 GPT-6 發布的相關報導，放在說明欄第一行的文章。",
+          "say": "這次 GPT 六 發布的相關報導，放在說明欄第一行的文章。",
+          "say_for": "2f404dbe6e4a"
+        }
+      ]
+    },
+    {
+      "id": "output-share",
+      "template": "big",
+      "data": {
+        "kicker": "這組代理用量的 Sol 帳單",
+        "text": "54%",
+        "sub": "是輸出，快取讀取只占 13%"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "kdtw",
+          "text": "再看代理型那格，Sol 的七十三點六美元裡，四十是輸出。"
+        },
+        {
+          "id": "rfmv",
+          "text": "超過一半；快取讀取只有九點六，約一成三。"
+        }
+      ]
+    },
+    {
+      "id": "anthropic-cache-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "Anthropic 談快取讀取",
+        "quote": "make up the majority of agentic and coding work costs",
+        "translation": "占了代理型與寫程式工作成本的大宗",
+        "source": "Anthropic：Introducing Claude Opus 5.5"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "4hmf",
+          "text": "Anthropic 自己的說法，剛好相反。"
+        },
+        {
+          "id": "j3qt",
+          "text": "它寫，代理型和寫程式的工作，快取讀取占了成本的大宗。",
+          "reveal": 1
+        },
+        {
+          "id": "jkds",
+          "text": "兩種都可能對，差在快取讀取是輸出的幾倍。"
+        }
+      ]
+    },
+    {
+      "id": "cache-output-ratio",
+      "template": "big",
+      "data": {
+        "kicker": "我這組例子",
+        "text": "12 倍",
+        "sub": "快取讀取 4,800 萬，對輸出 400 萬 token"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "inzr",
+          "text": "我這組例子，快取讀取是輸出的十二倍。"
+        },
+        {
+          "id": "d5j2",
+          "text": "那新聞裡的五成、四成、兩成，各自在比什麼？",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "news-three-numbers",
+      "chapter": "Opus 5.5 少四成是真的嗎",
+      "template": "stats",
+      "data": {
+        "title": "新聞丟給你三個數字",
+        "stats": [
+          {
+            "value": "50%",
+            "label": "GPT-6 Sol 對前代促銷價",
+            "note": "單價"
+          },
+          {
+            "value": "40%",
+            "label": "Opus 5.5 對 Opus 5",
+            "note": "Anthropic 自估的執行成本"
+          },
+          {
+            "value": "20%",
+            "label": "Opus 5.5 對 Opus 5",
+            "note": "輸入與輸出牌價"
+          }
+        ],
+        "source": "2026 年 9 月 22 日，兩家同一天發布"
+      },
+      "claims": [
+        "c8",
+        "c9",
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "x5eq",
+          "text": "九月二十二日，OpenAI 和 Anthropic 同一天降價。"
+        },
+        {
+          "id": "86x9",
+          "text": "GPT-6 Sol 的單價，只有前代促銷價的一半。",
+          "say": "GPT 六 Sol 的單價，只有前代促銷價的一半。",
+          "say_for": "6f7948785fbf",
+          "reveal": 1
+        },
+        {
+          "id": "ha6t",
+          "text": "Anthropic 說，Opus 5.5 的執行成本少四成。",
+          "say": "Anthropic 說，Opus 五點五 的執行成本少四成。",
+          "say_for": "39bd70d7c797",
+          "reveal": 1
+        },
+        {
+          "id": "tq5v",
+          "text": "而它的輸入和輸出牌價，少了兩成。",
+          "reveal": 1
+        },
+        {
+          "id": "giku",
+          "text": "五成前面拆過了，剩下兩個，先看四成。"
         }
       ]
     },
@@ -189,8 +1092,7 @@
         "source": "Anthropic：Introducing Claude Opus 5.5"
       },
       "claims": [
-        "c5",
-        "c8"
+        "c13"
       ],
       "lines": [
         {
@@ -201,87 +1103,97 @@
           "id": "vnit",
           "text": "它自己也寫，這是在預設設定、一般工作負載下估出來的。",
           "reveal": 1
-        },
-        {
-          "id": "hcrz",
-          "text": "這個估計包含單價和每個任務用量的變化，不能保證每個人都省四成。"
         }
       ]
     },
     {
-      "id": "what-percent-means",
-      "chapter": "三個百分比，各比各的",
+      "id": "cut-buckets",
       "template": "compare",
       "data": {
-        "title": "三個「便宜」，各比各的",
+        "title": "Anthropic 的數字，分兩邊",
         "left": {
-          "heading": "OpenAI 的五成",
+          "heading": "價目表上的牌價",
           "points": [
-            "Sol 跟 GPT-5.6 Sol 促銷單價比",
-            "輸入與輸出單價都少五成"
+            "輸入輸出：少兩成",
+            "快取讀取：少六成"
           ]
         },
         "right": {
-          "heading": "Anthropic 的四成",
+          "heading": "廠商的成本估計",
           "points": [
-            "是自己估的執行成本",
+            "少四成",
             "含每個任務用的 token 變少"
           ]
-        },
-        "verdict": "單價降幅與任務成本估計，要分開看"
+        }
       },
+      "claims": [
+        "c13"
+      ],
       "lines": [
         {
-          "id": "ptxw",
-          "text": "把兩家的數字分清楚。第一個，OpenAI 的便宜五成。",
+          "id": "hcrz",
+          "text": "這個估計包含單價和每個任務用量的變化，不能保證每個人都省四成。"
+        },
+        {
+          "id": "zr58",
+          "text": "左邊是價目表印的牌價，輸入輸出少兩成，快取讀取少六成。",
           "reveal": 1
         },
         {
-          "id": "h4mb",
-          "text": "第二個，Anthropic 的少四成，那是它自己估的成本，不是牌價。",
+          "id": "gxii",
+          "text": "右邊的四成，是廠商測出來的成本，含每個任務用的 token 變少。",
           "reveal": 1
         },
         {
-          "id": "c5si",
-          "text": "成本估計會把 token 用量、輸入輸出和快取單價一起算進去。"
-        },
-        {
-          "id": "j9p9",
-          "text": "所以這兩個數字，都不能直接當成你會少付的錢。"
-        },
-        {
-          "id": "qdfn",
-          "text": "很多人看到五成就直接換，這一步最容易白忙。"
+          "id": "s7ng",
+          "text": "牌價你看得到；成本估計，得看你自己的任務。"
         }
       ]
     },
     {
       "id": "real-list-cut",
-      "template": "big",
+      "template": "stats",
       "data": {
-        "kicker": "真正的牌價降幅",
-        "text": "20%",
-        "sub": "Opus 5.5 的輸入和輸出，比 Opus 5 少兩成"
+        "title": "價目表印出來的降幅",
+        "stats": [
+          {
+            "value": "$5 → $4",
+            "label": "輸入，少 20%"
+          },
+          {
+            "value": "$25 → $20",
+            "label": "輸出，少 20%"
+          },
+          {
+            "value": "$0.50 → $0.20",
+            "label": "快取讀取，少 60%"
+          }
+        ],
+        "source": "Opus 5 到 Opus 5.5，每百萬 token"
       },
       "claims": [
-        "c5"
+        "c13",
+        "c14"
       ],
       "lines": [
         {
-          "id": "ybzn",
-          "text": "那輸入和輸出的牌價，降幅是多少？"
+          "id": "pxgf",
+          "text": "如果只記一種降幅，就記價目表印出來的這三個。"
         },
         {
-          "id": "5te6",
-          "text": "Opus 5.5 的輸入和輸出單價，分別少兩成。"
+          "id": "njxt",
+          "text": "輸入，從五塊變四塊，少兩成。",
+          "reveal": 1
         },
         {
-          "id": "v2sd",
-          "text": "Opus 5.5 的輸入和輸出，比前一代少兩成。"
+          "id": "7xsg",
+          "text": "輸出，從二十五塊變二十塊，也少兩成。",
+          "reveal": 1
         },
         {
-          "id": "9m3t",
-          "text": "快取讀取還降了六成，實際省多少，也要看任務用量。"
+          "id": "virh",
+          "text": "快取讀取，從五角變兩角，少了六成。",
+          "reveal": 1
         }
       ]
     },
@@ -296,15 +1208,23 @@
           "成本估計：廠商自己算出來的"
         ]
       },
+      "claims": [
+        "c8",
+        "c13"
+      ],
       "lines": [
         {
-          "id": "t9dp",
-          "text": "所以看到便宜多少，先問一句話：跟什麼比。",
+          "id": "5kqm",
+          "text": "看到便宜多少，先問一句話：跟什麼比？"
+        },
+        {
+          "id": "s9bb",
+          "text": "跟促銷價比，那是有期限的暫時價。",
           "reveal": 1
         },
         {
-          "id": "8nd2",
-          "text": "促銷要看期限，牌價也可能調整，不能保證長期不變。",
+          "id": "pder",
+          "text": "跟牌價比，那是價目表上寫的價，但也可能調整。",
           "reveal": 1
         },
         {
@@ -313,481 +1233,31 @@
           "reveal": 1
         },
         {
-          "id": "daj9",
-          "text": "把這三個詞分開，你就不會被標題騙。"
-        }
-      ]
-    },
-    {
-      "id": "three-tokens",
-      "chapter": "帳單上的三種 token",
-      "template": "steps",
-      "data": {
-        "title": "你的帳單，三種 token",
-        "steps": [
-          {
-            "title": "輸入",
-            "detail": "送入模型的 token"
-          },
-          {
-            "title": "輸出",
-            "detail": "模型產生的 token"
-          },
-          {
-            "title": "快取讀取",
-            "detail": "符合條件、命中的重複內容"
-          }
-        ]
-      },
-      "lines": [
-        {
-          "id": "exph",
-          "text": "要算帳，先認得帳單上的三種 token。",
-          "reveal": 1
-        },
-        {
-          "id": "jeuh",
-          "text": "輸入和輸出都按 token 計量，不是直接按中文字數收費。",
-          "reveal": 1
-        },
-        {
-          "id": "qh23",
-          "text": "符合條件並命中的快取讀取，在這張表裡單價最低。",
-          "reveal": 1
-        },
-        {
-          "id": "f87w",
-          "text": "這三種的單價都不一樣，混在一起你就算不準。"
-        }
-      ]
-    },
-    {
-      "id": "cache-example",
-      "template": "chat",
-      "data": {
-        "title": "快取讀取是什麼",
-        "messages": [
-          {
-            "side": "right",
-            "name": "你",
-            "text": "我把同一份長文件問了十次，這樣很貴嗎？"
-          },
-          {
-            "side": "left",
-            "name": "算帳",
-            "text": "符合快取條件、前綴相同且未過期的內容，才能按快取讀取計費。"
-          }
-        ]
-      },
-      "lines": [
-        {
-          "id": "quvt",
-          "text": "舉個例子，你把同一份長文件問了十次。",
-          "reveal": 1
-        },
-        {
-          "id": "nzmd",
-          "text": "重複部分能否按快取讀取計費，要看前綴是否相同和快取是否有效。",
-          "reveal": 1
-        },
-        {
-          "id": "8avf",
-          "text": "這也是為什麼一直來回的代理型工作，快取讀取會佔一部分。"
-        }
-      ]
-    },
-    {
-      "id": "why-agent-costs",
-      "template": "steps",
-      "data": {
-        "title": "代理型為什麼特別貴",
-        "steps": [
-          {
-            "title": "可能反覆讀取",
-            "detail": "再次送入先前內容"
-          },
-          {
-            "title": "來回很多輪",
-            "detail": "一件事做好幾步"
-          },
-          {
-            "title": "輸出堆起來",
-            "detail": "每一步都吐字"
-          }
-        ]
-      },
-      "lines": [
-        {
-          "id": "b2ms",
-          "text": "這裡先解釋，為什麼代理型的帳單特別可怕。",
-          "reveal": 1
-        },
-        {
-          "id": "ixba",
-          "text": "它可能反覆送入先前的內容，所以輸入會累積。",
-          "reveal": 1
-        },
-        {
-          "id": "wka7",
-          "text": "加上來回很多輪、每一步都吐字，輸出就堆起來了。",
-          "reveal": 1
-        }
-      ]
-    },
-    {
-      "id": "output-is-the-gap",
-      "template": "bullets",
-      "data": {
-        "title": "用自己的用量算差距",
-        "items": [
-          "Sol、Opus 5.5 快取讀取都是 $0.20",
-          "這組 Sol 代理用量：輸出費最高",
-          "輸入、輸出、快取一起算"
-        ]
-      },
-      "lines": [
-        {
-          "id": "tpzs",
-          "text": "這裡的 Sol 和 Opus 5.5，快取讀取都是兩角美元。",
-          "reveal": 1
-        },
-        {
-          "id": "vkkv",
-          "text": "以這組代理用量算，Sol 的輸出費用佔比最高。",
-          "reveal": 1
-        },
-        {
-          "id": "j9h8",
-          "text": "不論聊天還是代理，都要把輸入、輸出和快取用量一起算。",
-          "reveal": 1
-        },
-        {
-          "id": "vrqe",
-          "text": "記住這一點，下面的帳單你就看得懂。"
-        }
-      ]
-    },
-    {
-      "id": "monthly-bill",
-      "chapter": "三種用量的每月帳單",
-      "template": "table",
-      "data": {
-        "title": "三種示範用量的 token 費（美元）",
-        "columns": [
-          "每月",
-          "聊天型",
-          "代理型",
-          "大量整理"
-        ],
-        "rows": [
-          [
-            "GPT-6 Sol",
-            "$20",
-            "$74",
-            "$500"
-          ],
-          [
-            "GPT-6 Luna",
-            "$1",
-            "$3.7",
-            "$25"
-          ],
-          [
-            "Opus 5.5",
-            "$40",
-            "$138",
-            "$1000"
-          ],
-          [
-            "Sonnet 5",
-            "$20",
-            "$74",
-            "$500"
-          ],
-          [
-            "Gemini 3.8 Flash",
-            "$7.5",
-            "$28",
-            "$188"
-          ]
-        ],
-        "highlight": 1
-      },
-      "claims": [
-        "c1",
-        "c2",
-        "c3",
-        "c6",
-        "c7",
-        "c11"
-      ],
-      "lines": [
-        {
-          "id": "85qy",
-          "text": "把三種每月用量，套進五個模型，帳單長這樣。"
-        },
-        {
-          "id": "ba4p",
-          "text": "這裡比較小量問答、多輪代理，以及大量整理三組示範用量。"
-        },
-        {
-          "id": "f8ui",
-          "text": "先看聊天型這欄，最便宜和最貴之間差了幾十倍。"
-        },
-        {
-          "id": "de7v",
-          "text": "再看代理型，因為來回多，每一家的金額都跳上去。"
-        },
-        {
-          "id": "4txq",
-          "text": "最便宜的是 GPT-6 Luna，但它不是每種工作都夠聰明。"
-        },
-        {
-          "id": "229i",
-          "text": "Gemini 3.8 Flash 這一列是促銷價，年底之後會漲。"
-        },
-        {
-          "id": "gcyy",
-          "text": "這張表裡三種用量都是 Luna 最便宜，但價格不代表任務品質。"
-        }
-      ]
-    },
-    {
-      "id": "luna-enough",
-      "template": "chat",
-      "data": {
-        "title": "最便宜的夠用嗎",
-        "messages": [
-          {
-            "side": "right",
-            "name": "你",
-            "text": "那我全部都用最便宜的 Luna 就好了？"
-          },
-          {
-            "side": "left",
-            "name": "算帳",
-            "text": "簡單工作可以，難題和長任務常常還是要用貴的。"
-          }
-        ]
-      },
-      "lines": [
-        {
-          "id": "q6r7",
-          "text": "看到最便宜的，你可能想全部都用它就好。",
-          "reveal": 1
-        },
-        {
-          "id": "7x9b",
-          "text": "但便宜的模型，難題和長任務常常還是撐不住。",
-          "reveal": 1
-        },
-        {
-          "id": "q8a9",
-          "text": "常見的做法是簡單的用便宜的，難的才丟給貴的。"
-        }
-      ]
-    },
-    {
-      "id": "scenario-walk",
-      "template": "steps",
-      "data": {
-        "title": "帳單是怎麼算出來的",
-        "steps": [
-          {
-            "title": "聊天型",
-            "detail": "500 萬輸入、100 萬輸出 token"
-          },
-          {
-            "title": "代理型",
-            "detail": "1,200 萬新輸入、4,800 萬快取、400 萬輸出"
-          },
-          {
-            "title": "大量整理",
-            "detail": "2 億輸入、1,000 萬輸出；非 Batch API 折扣"
-          }
-        ]
-      },
-      "lines": [
-        {
-          "id": "2p28",
-          "text": "這些金額不是我喊的，是照官方單價乘出來的。",
-          "reveal": 1
-        },
-        {
-          "id": "kpte",
-          "text": "聊天型假設每月五百萬 token 輸入、一百萬 token 輸出。",
-          "reveal": 1
-        },
-        {
-          "id": "hq7m",
-          "text": "代理型假設一千兩百萬新輸入、四千八百萬快取、四百萬輸出 token。",
-          "reveal": 1
-        },
-        {
-          "id": "4dsr",
-          "text": "把三種 token 換成自己的用量，就能按對應單價估算。"
-        },
-        {
-          "id": "hbbh",
-          "text": "這三種是示範用量，不代表每個人的實際工作。"
-        }
-      ]
-    },
-    {
-      "id": "compare-to-last-gen",
-      "template": "stats",
-      "data": {
-        "title": "跟前一代比，才看得出降多少",
-        "stats": [
-          {
-            "value": "$40 → $20",
-            "label": "GPT-5.6 Sol 到 GPT-6 Sol",
-            "note": "聊天型，剛好一半"
-          },
-          {
-            "value": "$184 → $138",
-            "label": "Opus 5 到 Opus 5.5",
-            "note": "代理型，少約兩成五"
-          }
-        ],
-        "source": "情境金額為官方牌價實算，2026 年 9 月"
-      },
-      "claims": [
-        "c5",
-        "c8"
-      ],
-      "lines": [
-        {
-          "id": "fpax",
-          "text": "把新舊兩代放在一起，降價的意義才看得出來。",
-          "reveal": 1
-        },
-        {
-          "id": "qiu7",
-          "text": "聊天型從四十掉到二十，剛好一半，對得上五成。",
-          "reveal": 1
-        },
-        {
-          "id": "68yw",
-          "text": "但代理型從一百八十四掉到約一百三十八，只少約兩成五。",
-          "reveal": 1
-        },
-        {
-          "id": "kczt",
-          "text": "同一次降價，換算到不同用量，感受差很多。"
-        }
-      ]
-    },
-    {
-      "id": "short-context-note",
-      "template": "big",
-      "data": {
-        "kicker": "這裡都算短脈絡",
-        "text": "還有長脈絡",
-        "sub": "依模型門檻與處理模式，可能有不同費率"
-      },
-      "lines": [
-        {
-          "id": "6td8",
-          "text": "提醒一下，這支算的都是短脈絡的價格。"
-        },
-        {
-          "id": "fukm",
-          "text": "有些模型在單次輸入很長時會換費率，要看各自的門檻。"
-        },
-        {
-          "id": "a5rw",
-          "text": "這裡只估三種 token，未含快取寫入、儲存、工具和其他服務費。"
-        }
-      ]
-    },
-    {
-      "id": "output-share",
-      "template": "big",
-      "data": {
-        "kicker": "這組 Sol 代理用量的 token 費",
-        "text": "54%",
-        "sub": "是輸出，快取讀取只佔一成三"
-      },
-      "claims": [
-        "c9"
-      ],
-      "lines": [
-        {
-          "id": "u5c2",
-          "text": "再看這組 Sol 的代理用量，超過一半的 token 費是輸出。"
-        },
-        {
-          "id": "up9m",
-          "text": "同一組用量的快取讀取費，只佔大約一成三。"
-        },
-        {
-          "id": "xb4h",
-          "text": "這個例子值得先看輸出，但你還是要用自己的比例重算。"
-        }
-      ]
-    },
-    {
-      "id": "batch-note",
-      "template": "big",
-      "data": {
-        "kicker": "批次型的省法不同",
-        "text": "看輸入",
-        "sub": "大量整理時，輸入才是帳單的大頭"
-      },
-      "lines": [
-        {
-          "id": "j56y",
-          "text": "批次型又不一樣，它是大量整理，輸入才是大頭。"
-        },
-        {
-          "id": "sju7",
-          "text": "這種工作用便宜的小模型，常常就夠划算。"
-        },
-        {
-          "id": "6mvh",
-          "text": "這張表是 Luna 三種用量都最省，任務做不做得好還要另外測。"
-        }
-      ]
-    },
-    {
-      "id": "article-cta",
-      "template": "cta",
-      "data": {
-        "kicker": "完整價目表",
-        "title": "五個模型的每月帳單怎麼算",
-        "sub": "說明欄第一行就是文章連結"
-      },
-      "lines": [
-        {
-          "id": "uats",
-          "text": "每一格是怎麼乘出來的，完整價目表放在說明欄第一行的文章。"
-        },
-        {
-          "id": "3rsz",
-          "text": "你可以照著把自己的 token 用量帶進去，估算費用。"
+          "id": "uukx",
+          "text": "那降價之後，到底要不要換模型？",
+          "pause_after_ms": 1200
         }
       ]
     },
     {
       "id": "switch-or-not",
-      "chapter": "什麼時候該換模型",
+      "chapter": "AI 降價後要不要換模型",
       "template": "compare",
       "data": {
-        "title": "該換，還是先別動",
+        "title": "該算一次，還是先別動",
         "left": {
           "heading": "值得算一次",
           "points": [
             "每月帳單超過五十美元",
             "輸出很多",
-            "已經在用貴的舊模型"
+            "還在用貴的舊模型"
           ]
         },
         "right": {
           "heading": "先別動",
           "points": [
             "聊天型小用量",
-            "用訂閱、不是用 API",
+            "用訂閱、不是 API",
             "還沒量過自己的用量"
           ]
         }
@@ -795,25 +1265,21 @@
       "lines": [
         {
           "id": "q6sw",
-          "text": "那到底該不該換？先看你落在哪一邊。",
+          "text": "那到底該不該換？先看你落在哪一邊。"
+        },
+        {
+          "id": "id4m",
+          "text": "我的看法是，左邊這幾種，才值得花時間算一次。",
           "reveal": 1
         },
         {
-          "id": "gxdk",
-          "text": "帳單很小、又還沒量過自己用量的，先別急著換。",
+          "id": "avk5",
+          "text": "右邊這幾種，先別動。",
           "reveal": 1
         },
         {
-          "id": "fsvr",
-          "text": "每月帳單上看、輸出又多的，才真的值得算一次。"
-        },
-        {
-          "id": "9eru",
-          "text": "換模型也有成本，不是每次降價都要跟著動。"
-        },
-        {
-          "id": "7pvy",
-          "text": "先分清楚自己是哪一種，再決定要不要花時間。"
+          "id": "ycu2",
+          "text": "降價不是換工具的理由，帳要自己算。"
         }
       ]
     },
@@ -825,68 +1291,40 @@
         "messages": [
           {
             "side": "right",
-            "name": "你",
-            "text": "我每月 API 帳單 30 美元，要換到便宜的嗎？"
+            "text": "我每月 API 帳單 30 美元，要換嗎？"
           },
           {
             "side": "left",
-            "name": "先算帳",
-            "text": "先看是輸入多還是輸出多，小用量換了每月可能只省幾塊。"
+            "text": "聊天型那格，Sol 換 Luna 每月省 19 美元。"
+          },
+          {
+            "side": "left",
+            "text": "但換模型要重測品質，時間也是成本。"
           }
         ]
       },
-      "lines": [
-        {
-          "id": "prcs",
-          "text": "有人問，我每月帳單三十美元，要不要換到便宜的模型。",
-          "reveal": 1
-        },
-        {
-          "id": "e7hw",
-          "text": "先看你是輸入多還是輸出多，這決定換了有沒有感。",
-          "reveal": 1
-        },
-        {
-          "id": "9xug",
-          "text": "小用量換了每月可能只省幾塊，卻要重測一輪。"
-        },
-        {
-          "id": "tkkc",
-          "text": "省下的錢，不一定夠補你花的時間。"
-        },
-        {
-          "id": "bbpu",
-          "text": "帳單越小，換模型越不划算，這點常被忽略。"
-        }
-      ]
-    },
-    {
-      "id": "gemini-flash-note",
-      "template": "big",
-      "data": {
-        "kicker": "別忘了看期限",
-        "text": "促銷價",
-        "sub": "Gemini 3.8 Flash 的低價，只到年底"
-      },
       "claims": [
-        "c11"
+        "c22"
       ],
       "lines": [
         {
-          "id": "m3e9",
-          "text": "還有一個容易忽略的地方：促銷價有期限。"
+          "id": "r2f7",
+          "text": "有人問，我每月 API 帳單三十美元，要換嗎？",
+          "reveal": 1
         },
         {
-          "id": "7p4x",
-          "text": "Gemini 3.8 Flash 現在很便宜，但那是促銷價，只到年底。"
+          "id": "bxsk",
+          "text": "拿聊天型那格算，Sol 換成 Luna，一個月省十九美元。",
+          "reveal": 1
         },
         {
-          "id": "bp7s",
-          "text": "挑模型時，順手看一眼這個價會維持多久。"
+          "id": "9wrt",
+          "text": "可是換模型要重測一輪品質，時間也是成本。",
+          "reveal": 1
         },
         {
-          "id": "t46v",
-          "text": "很多降價新聞不提期限，看的時候要自己補上。"
+          "id": "3vii",
+          "text": "我的看法是，每月省十九美元，未必值得你重測一輪。"
         }
       ]
     },
@@ -903,8 +1341,7 @@
       "lines": [
         {
           "id": "5snu",
-          "text": "真的要換，先做兩件事，別憑感覺。",
-          "reveal": 1
+          "text": "真的要換，先做兩件事，別憑感覺。"
         },
         {
           "id": "gkup",
@@ -913,7 +1350,8 @@
         },
         {
           "id": "za36",
-          "text": "第二，拿自己的真實題目，在兩個模型上各跑一次比較。"
+          "text": "第二，拿自己的真實題目，在兩個模型上各跑一次比較。",
+          "reveal": 1
         },
         {
           "id": "gvft",
@@ -922,73 +1360,66 @@
       ]
     },
     {
-      "id": "recap-three",
-      "template": "stats",
+      "id": "answer-recap",
+      "template": "bullets",
       "data": {
-        "title": "三個數字，記這樣就好",
-        "stats": [
-          {
-            "value": "五成",
-            "label": "Sol 比前代促銷單價"
-          },
-          {
-            "value": "四成",
-            "label": "廠商自估的成本"
-          },
-          {
-            "value": "兩成",
-            "label": "Opus 輸入／輸出單價降幅"
-          }
-        ],
-        "source": "看到降價，先對號到這三種"
+        "title": "八格裡，你只會付幾格",
+        "items": [
+          "請求長不長：短脈絡還是長脈絡",
+          "有沒有快取，能不能批次",
+          "乘上你自己的用量"
+        ]
       },
+      "claims": [
+        "c2",
+        "c3",
+        "c5"
+      ],
       "lines": [
         {
-          "id": "czny",
-          "text": "快結束前，把三個數字再收一次。",
+          "id": "m7k4",
+          "text": "所以回到開頭：哪一個才是你會付的價？"
+        },
+        {
+          "id": "qimv",
+          "text": "先看你的請求長不長，決定讀短脈絡還是長脈絡。",
           "reveal": 1
         },
         {
-          "id": "qexc",
-          "text": "五成是 Sol 跟前代促銷單價比，四成是 Anthropic 自估的成本。",
+          "id": "mvch",
+          "text": "再看有沒有快取，能不能改用批次。",
           "reveal": 1
         },
         {
-          "id": "aqna",
-          "text": "兩成則是 Opus 5.5 輸入和輸出的單價降幅。",
+          "id": "gqv4",
+          "text": "最後，把你自己的三種 token 用量乘上去。",
           "reveal": 1
         }
       ]
     },
     {
       "id": "wrap",
-      "chapter": "先算帳，再換模型",
       "template": "outro",
       "data": {
         "title": "先算帳，再換模型",
-        "cta": "完整價目表與算法在說明欄的文章裡",
+        "cta": "各家價目表：站上「API 價格比較」",
         "lines": [
-          "聊天型小用量：不用急著換",
-          "代理型、輸出多：值得算一次",
-          "看牌價，不看新聞的百分比"
+          "八格裡，只有你用得到的幾格會進帳單",
+          "降價不是換工具的理由",
+          "帳要自己算"
         ]
       },
+      "claims": [
+        "c26"
+      ],
       "lines": [
         {
-          "id": "a3zg",
-          "text": "最後記住一句話：降價不是換工具的理由，帳要自己算。"
+          "id": "y3mp",
+          "text": "價目表在站上「API 價格比較」那篇，數字還是回官網對。"
         },
         {
-          "id": "88b9",
-          "text": "先分清楚促銷價、牌價和成本估計，再看自己是哪一種用量。"
-        },
-        {
-          "id": "jh4u",
-          "text": "輸出多、帳單大的值得算一次；小用量的，先別動。"
-        },
-        {
-          "id": "v6i2",
-          "text": "看牌價，別被新聞的百分比帶著走，我們下一支影片見。"
+          "id": "uhfk",
+          "text": "你會付的價，就是你用得到的那幾格，乘上你的用量。"
         }
       ]
     }

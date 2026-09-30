@@ -1,53 +1,74 @@
-> 2026-09-29 獨立 P1 查核已修正文稿；下方 2026-09-28 清單是原作者歷史紀錄，不代表現稿通過。現稿事實、刪除項與來源以 [verify-p1-20260929.md](verify-p1-20260929.md) 為準。第二輪覆核與站主企劃確認未完成。
-
 # claims — ai-price-war-gpt-6-sol-vs-opus-5-5
 
-一行一個可查證的說法：`id｜說法｜官方來源｜查核日｜出現的場景`。金額都是每百萬 token、短脈絡、標準處理、美元；情境帳單為官方單價實算。
+2026-09-30 依站主 2026-09-28 選定的大綱 B「跟著價目表逐格讀」重寫：腳本、章節與示範都改了，本檔取代 2026-09-28 的舊清單。舊稿的 2026-09-29 兩輪獨立查核（`verify-p1-20260929.md`、`verify-p1-20260929-round2.md`）更正過的說法沒有帶回：不宣稱 Luna 降幅、不引 OpenAI 發布文原話、不說「批次型」、不說字數計價、不說快取一定命中。新稿尚未經獨立查核，`verify-*` 報告對的是舊稿，不代表本稿通過。
 
-c1｜GPT-6 Sol 輸入 2、輸出 10｜https://developers.openai.com/api/docs/pricing｜2026-09-28｜three-list-prices, monthly-bill
-c2｜GPT-6 Luna 輸入 0.10、輸出 0.50（快取讀取 0.01）｜https://developers.openai.com/api/docs/pricing｜2026-09-28｜three-list-prices, monthly-bill
-c3｜Claude Opus 5.5 輸入 4、輸出 20、快取讀取 0.20｜https://www.anthropic.com/pricing｜2026-09-28｜three-list-prices, monthly-bill
-c4｜OpenAI：便宜 50% 比的是 GPT-5.6 促銷價，不是原價｜https://openai.com/index/introducing-gpt-6-sol-and-luna/｜2026-09-28｜openai-quote
-c5｜Opus 5.5 輸入與輸出牌價比 Opus 5 少 20%；快取讀取少 60%；「40% less to run」是預設設定、一般工作負載下的成本估計｜https://www.anthropic.com/claude-opus-5-5｜2026-09-28｜real-list-cut, anthropic-quote, compare-to-last-gen
-c6｜Sol 與 Opus 5.5 的快取讀取都是 0.20｜https://developers.openai.com/api/docs/pricing 、 https://www.anthropic.com/pricing｜2026-09-28｜output-is-the-gap, monthly-bill
-c7｜Gemini 3.8 Flash 輸入 0.75、輸出 3.75、快取 0.075，促銷價至 2026-12-31｜https://ai.google.dev/gemini-api/docs/pricing｜2026-09-28｜monthly-bill, gemini-flash-note
-c8｜Opus 5（對照）輸入 5、輸出 25、快取讀取 0.50；由官方 20%／60% 降幅反推，正式站文章亦記此值｜https://www.anthropic.com/claude-opus-5-5｜2026-09-28｜compare-to-last-gen, anthropic-quote
-c9｜代理型情境（1,200 萬新輸入、4,800 萬快取讀取、400 萬輸出）GPT-6 Sol 帳單 73.6 美元，其中輸出 40 佔 54%、快取讀取 9.6 佔 13%｜實算自 c1、c6｜2026-09-28｜output-share
-c10｜小用量換模型每月只省幾塊：以每月 30 美元帳單為例的說明性判斷，非單一官方數字｜實算自 c1–c3｜2026-09-28｜thirty-dollar-case
-c11｜Gemini 3.8 Flash 目前價為促銷價，2027-01-01 起漲為 1.50／7.50｜https://ai.google.dev/gemini-api/docs/pricing｜2026-09-28｜monthly-bill, gemini-flash-note
+一行一個可查證的說法：`id｜說法｜官方來源｜查核日｜出現的場景`。金額都是每百萬 token、標準處理、美元；情境帳單為官方單價實算（算式見 c17）。官方頁都在 2026-09-30 以編輯用 User-Agent 重新打開（OpenAI 價目表 `platform.openai.com/docs/pricing` 轉址到 `developers.openai.com/api/docs/pricing`，HTTP 200；表格取自頁面內嵌資料與該頁的 `.md` 版本）。
+
+## 價目與官方說法
+
+c1｜GPT-6 Sol 標準價、短脈絡：輸入 2、快取讀取 0.20、快取寫入 2.50、輸出 10｜https://developers.openai.com/api/docs/pricing｜2026-09-30｜eight-prices, you-think, sol-table, cache-math, write-costs-more, batch-half, half-of-promo, sol-61, monthly-bill
+c2｜GPT-6 Sol 標準價、長脈絡：輸入 4、快取讀取 0.40、快取寫入 5、輸出 15；頁面定義「Short context: ≤272K input tokens. Long context: >272K input tokens」｜https://developers.openai.com/api/docs/pricing｜2026-09-30｜eight-prices, you-think, context-split, sol-table, answer-recap
+c3｜批次頁 GPT-6 Sol 短脈絡 1／0.10／1.25／5，四格都是標準價的一半（長脈絡 2／0.20／2.50／7.50 亦然）；Batch API「50% cost discount」「each batch completes within 24 hours」｜https://developers.openai.com/api/docs/pricing 、 https://developers.openai.com/api/docs/guides/batch｜2026-09-30｜batch-half, other-tabs, answer-recap
+c4｜快速模式（Fast）頁 GPT-6 Sol 短脈絡 4／0.40／5／20，是標準價的兩倍；頁面註記 Priority processing 於 2026-07-30 更名為 Fast mode｜https://developers.openai.com/api/docs/pricing｜2026-09-30｜other-tabs
+c5｜快取寫入是標準輸入價的 1.25 倍；快取讀取 0.1 倍（GPT-6.1 Sol 為 0.05 倍）；寫一次、完整讀九次是 2.15 倍，沒有快取十次是 10 倍｜https://developers.openai.com/api/docs/guides/prompt-caching｜2026-09-30｜cache-math, write-costs-more, sol-61, answer-recap
+c6｜快取要相同的前綴；最短可快取長度 1,024 token（GPT-5.6 及之後）；快取項目不會永久保存｜https://developers.openai.com/api/docs/guides/prompt-caching｜2026-09-30｜cache-conditions
+c7｜一個輸入 token 只會算成輸入、快取輸入、快取寫入其中一種，寫入不是額外加收；輸出價含看不見的推理 token（價目表表頭說明）｜https://developers.openai.com/api/docs/pricing｜2026-09-30｜four-tokens
+c8｜GPT-5.6 Sol 短脈絡 4／0.40／5／20；頁尾註記「GPT-5.6 Sol’s promotional pricing is available at least through November 21, 2026」；GPT-6 Sol 短脈絡四格都是它的一半（4→2、0.40→0.20、5→2.50、20→10）｜https://developers.openai.com/api/docs/pricing｜2026-09-30｜promo-quote, half-of-promo, compare-to-last-gen, news-three-numbers, three-words
+c9｜GPT-6 Sol 與 GPT-6 Luna 於 2026-09-22 上線（更新紀錄）；Claude Opus 5.5 公告頁日期同為 2026 年 9 月 22 日｜https://developers.openai.com/api/docs/changelog 、 https://www.anthropic.com/claude-opus-5-5｜2026-09-30｜news-three-numbers
+c10｜2026-09-29 上線 gpt-6.1-sol，標準短脈絡 2／0.10／2.50／10；價目表旗艦區列 gpt-6-astra、gpt-6.1-sol、gpt-6-luna，gpt-6-sol 在展開後的全部模型區｜https://developers.openai.com/api/docs/changelog 、 https://developers.openai.com/api/docs/pricing｜2026-09-30｜sol-61, chase-new
+c11｜GPT-6 Luna 標準短脈絡：輸入 0.10、快取讀取 0.01、快取寫入 0.125、輸出 0.50｜https://developers.openai.com/api/docs/pricing｜2026-09-30｜monthly-bill
+c12｜Claude Opus 5.5：輸入 4、輸出 20、快取讀取 0.20、快取寫入 5｜https://claude.com/pricing 、 https://www.anthropic.com/claude-opus-5-5｜2026-09-30｜monthly-bill
+c13｜Opus 5.5 對 Opus 5：輸入輸出各少 20%（5→4、25→20）、快取讀取少 60%（0.50→0.20）；「costs 40% less to run than Opus 5」是預設設定、一般工作負載下的成本估計，來自「costs less per token … and uses fewer tokens per task」｜https://www.anthropic.com/claude-opus-5-5｜2026-09-30｜news-three-numbers, anthropic-quote, cut-buckets, real-list-cut, three-words, compare-to-last-gen
+c14｜Claude Opus 5（舊版）輸入 5、快取讀取 0.50、輸出 25，仍列在價目表的 Legacy models｜https://claude.com/pricing｜2026-09-30｜compare-to-last-gen, real-list-cut
+c15｜Claude Sonnet 5.5（2026-09-28 發布）輸入 2、快取讀取 0.20、快取寫入 2.50、輸出 10，與 Sonnet 5 同價；價目表已把 Sonnet 5 移到舊版｜https://www.anthropic.com/claude-sonnet-5-5 、 https://claude.com/pricing｜2026-09-30｜monthly-bill
+c16｜Gemini 3.8 Flash 標準：輸入 0.75、輸出 3.75、快取 0.075，「through December 31, 2026」；2027-01-01 起 1.50／7.50／0.15（單價翻倍）｜https://ai.google.dev/gemini-api/docs/pricing｜2026-09-30｜monthly-bill
+c21｜Anthropic 原文：cache reads「make up the majority of agentic and coding work costs」（Opus 5.5 公告）｜https://www.anthropic.com/claude-opus-5-5｜2026-09-30｜anthropic-cache-quote
+
+## 實算（官方單價 × 示範用量）
+
+c17｜三種示範用量（百萬 token）：聊天型 輸入 5、輸出 1；代理型 新輸入 12、快取讀取 48、輸出 4；大量整理 輸入 200、輸出 10。15 格帳單（美元，聊天／代理／大量整理）：Sol 20／73.6／500；Luna 1／3.68／25；Opus 5.5 40／137.6／1,000；Sonnet 5.5 20／73.6／500；Gemini 3.8 Flash 7.5／27.6／187.5。例：Sol 代理 12×2＋48×0.2＋4×10＝73.6。已用小腳本 `_tools/arith.py` 重算｜實算自 c1、c11、c12、c15、c16｜2026-09-30｜scenario-walk, monthly-bill
+c18｜聊天型：GPT-5.6 Sol 促銷價 5×4＋1×20＝40，GPT-6 Sol 20，剛好一半｜實算自 c8、c1｜2026-09-30｜compare-to-last-gen
+c19｜代理型：Opus 5 12×5＋48×0.5＋4×25＝184，Opus 5.5 137.6，少 25.217%（約兩成五）｜實算自 c13、c14｜2026-09-30｜compare-to-last-gen
+c20｜代理型 Sol 73.6 之中，輸出 40（54.35%）、快取讀取 9.6（13.04%）；快取讀取 4,800 萬對輸出 400 萬＝12 倍｜實算自 c1、c17｜2026-09-30｜output-share, cache-output-ratio
+c22｜聊天型 Sol 20 換 Luna 1，每月差 19 美元｜實算自 c17｜2026-09-30｜thirty-dollar-case
+c23｜Opus 5.5 的聊天型（40 對 20）和大量整理（1,000 對 500）剛好是 Sol 的兩倍；Sonnet 5.5 三格與 Sol 相同；Gemini 3.8 Flash 三格都介於 Luna 與 Sol 之間｜實算自 c17｜2026-09-30｜monthly-bill
+c24｜三種用量最便宜的都是 GPT-6 Luna；這張表只比價格，沒有比品質｜實算自 c17｜2026-09-30｜monthly-bill, price-not-quality
+c25｜帳單只含輸入、快取讀取、輸出三種 token 費，未含快取寫入、儲存（Gemini 快取儲存另計每百萬 token 每小時 0.50）、工具與其他服務費；大量整理欄用標準價，沒有套批次折扣｜https://ai.google.dev/gemini-api/docs/pricing 、 https://developers.openai.com/api/docs/pricing｜2026-09-30｜scenario-walk, monthly-bill
+
+## 站內資料（非官方站）
+
+c26｜站內文章〈API 價格比較：每百萬 token 各家多少〉（`ai-api-pricing-comparison-2026`）記的是各家官網 2026-09-15 當天的標準價，含八家、快取與批次折扣、一萬次對話算式；文章比 GPT-6 Sol／Luna 的價格更早，價格欄沒有 GPT-6 Sol 與 Luna｜`apps/api/app/guides/content/ai-api-pricing-comparison-2026.json`（repo 內容檔；正式站是否已上線未核對）｜2026-09-30｜wrap（說明欄也附連結）
+
+## 站主的看法（不是可查證的說法）
+
+- o1｜「新版本不用急著追，先用自己的用量算」｜站主觀點（立場 6）｜chase-new
+- o2｜「每月帳單超過五十美元、輸出多、還在用貴的舊模型，才值得花時間算一次；聊天型小用量先別動」「每月省十九美元，未必值得你重測一輪」｜站主觀點與 brief 大綱｜switch-or-not, thirty-dollar-case（口播都標「我的看法是」）
+- o3｜「降價不是換工具的理由，帳要自己算」｜站主觀點（立場 1、6）｜switch-or-not, wrap（畫面文字）
+- o4｜代理型帳單「先看輸出、不是快取讀取」只限本片這組用量；片中與 Anthropic 原文（c21）並陳，明說兩種都可能對，差在快取讀取是輸出的幾倍｜站主觀點（立場 1、2）｜output-share, anthropic-cache-quote, cache-output-ratio
+
+各場景在 `video.json` 的 `claims` 欄列出用到的 id；沒有數字或只有站主看法的場景（promise、price-not-quality、article-cta、switch-or-not、two-things-first）不列。
 
 ## 與企劃不同的地方
 
-- 無。腳本照 brief 的選項 A（推薦）與示範表，未改角度或章節。
+- 腳本照 brief 的選項 B（站主 2026-09-28 選定）：開場鉤子、章節順序、示範放第 5 章（brief 排在第 4 章）、結尾下一步都用 B 的；舊稿（選項 A）的章節順序與大半場景已重寫，只留逐字相同的 9 句（id 沿用）。
+- 章節從 B 的六章拆成七章：B 的第 1 章「一個模型八個價格」拆成「為什麼有八個價格」（22 秒，鉤子與「你以為…其實…」）和「八格怎麼讀」，因為 lint 要求開場章節不超過 30 秒；快取一章、批次促銷一章、帳單一章、Anthropic 三個數字一章、答案一章依 B。Anthropic 三個數字那章開頭補了一個回顧新聞三個百分比的場景。
+- 收尾的下一步：B 指定站內文章〈API 價格比較：每百萬 token 各家多少〉，該文存在（見 c26），但 `source_guide`（brief 與站主指定，沒有改）仍是〈GPT-6 Sol 與 Luna 推出…〉，說明欄第一行由工具依 `source_guide` 自動放那篇。所以：中段 cta（`article-cta`）指向說明欄第一行的來源文章；結尾口播與 outro 卡片講〈API 價格比較〉，並在 `youtube.description` 本文最後一段放它的連結（帶 UTM，格式照 docs/videos/README.md）。這是唯一一處說明欄第一行不等於結尾下一步的地方，請站主確認是否接受，或改 `source_guide`。
+- brief 的「表格 5 列 × 3 情境」保留，但把 Claude Sonnet 5 改成 Claude Sonnet 5.5：Sonnet 5.5 在 2026-09-28 發布，價目表已把 Sonnet 5 移到舊版；兩者同價（2／0.20／10），數字沒有變。
+- brief 寫「不算長脈絡價格、不算快取寫入、不算 Fast mode；各講一句『另有價格』」。B 的第 1、2、3 章本來就要讀這些格子，所以片中逐格讀了長脈絡、快取寫入、批次與快速模式的官方價格（c2、c3、c4、c5），但每月帳單（第 5 章）仍只算標準價的輸入、快取讀取、輸出三種，並口播與說明欄註明。
+- brief 的第 3 章「批次五折與促銷價」的 quote 用 GPT-5.6 Sol 促銷價「至少到 2026-11-21」，本稿改引價目表頁尾原文（c8）；OpenAI 發布文原話不引（該頁本環境回 403，且 2026-09-29 查核已刪）。
+- 「40% 少的是任務成本」的說法照 2026-09-29 查核後的措辭（含單價與每任務 token 用量變化，不保證每個人省四成）。
+- 加了 brief 沒有的兩件官方事實：GPT-6.1 Sol 於 2026-09-29 上線、旗艦區已換成它，快取讀取只要 0.10（c10）；Anthropic 自己寫快取讀取占代理與寫程式工作成本的大宗（c21）。前者是讀價目表的實際障礙（片中要找 GPT-6 Sol 得展開全部模型），後者與站主「代理型大頭是輸出」的看法並陳，見下。
 
 ## 我懷疑但沒動的事
 
-- Opus 5 是否仍列在 anthropic.com/pricing 的可見表上：2026-09-28 我抓到的頁面只列 Fable 5.1、Opus 5.5、Sonnet 5、Haiku 4.5，沒看到 Opus 5。腳本只在對照用到 Opus 5 的 5／25／0.50，這三個數字可由官方明載的「輸入輸出少 20%、快取讀取少 60%」反推，正式站文章也記此值，故保留並在 c8 註明來源為反推。撰稿日若頁面已明確下架 Opus 5，維持反推並保留註記即可。
-- 表格金額四捨五入到易讀位數（73.6→$74、137.6→$138、3.68→$3.7、27.6→$28、187.5→$188）；精確值在 c9 與說明欄文章。
+- 站主觀點寫「代理型的帳單大頭是輸出 token，而不是新聞裡強調的快取讀取」，但 Anthropic 公告寫快取讀取占代理與寫程式工作成本的大宗（c21）。本稿把站主的說法限縮為「我這組例子」（Sol 代理用量，快取讀取是輸出的 12 倍，輸出占 54%），並在 anthropic-cache-quote 與 cache-output-ratio 兩個場景把 Anthropic 的說法放在一起，明說兩種都可能對、差在比例。站主若要更強的說法，需要有一組真實用量佐證，請決定。
+- 「每月帳單超過 50 美元才值得算」的門檻來自 brief 大綱，不是官方數字，也沒有獨立測試；口播標「我的看法是」。
+- `article-cta` 的說明欄第一行文章〈GPT-6 Sol 與 Luna 推出…〉是否已在正式站上線、內容是否如標題，本輪沒有到正式站核對（2026-09-29 查核也標 NOT FOUND）。〈API 價格比較〉同理，且它記的是 2026-09-15 的價格，不含 GPT-6 Sol／Luna；口播與說明欄都說「數字還是回官網對」。
+- `openai.com/index/introducing-gpt-6-sol-and-luna/` 本輪沒有嘗試（brief 標明 403）；片中沒有任何數字只靠該頁。「便宜五成」在片中是靠價目表與更新紀錄的四格對半實算，沒有引 OpenAI 自己怎麼說。
+- 價格 2026-09-30 當天有效：GPT-5.6 Sol 促銷價至少到 2026-11-21、Gemini 3.8 Flash 促銷價到 2026-12-31；上片前要重查。GPT-6.1 Sol 剛上線，價目表旗艦區的列還可能再動。
+- 語音：Sol、Luna、Opus、Sonnet、Flash 在字典裡是 null（照原字唸）；版本號用 `say` 寫成中文（GPT 六、GPT 五點六、GPT 六點一、Opus 五點五、Sonnet 五點五、Gemini 三點八 Flash）。聽稿時請留意 Sol、Luna 有沒有被唸成別的字。
 
-## 2026-09-29 corrected claim register
+## 進度
 
-- c1｜CONFIRMED｜Sol 標準短脈絡輸入/輸出 2/10 美元每 MTok｜未改數值｜https://developers.openai.com/api/docs/pricing｜2026-09-29｜three-list-prices; monthly-bill
-- c2｜CONFIRMED｜Luna 輸入/快取讀取/輸出 .10/.01/.50｜未改數值｜https://developers.openai.com/api/docs/pricing｜2026-09-29｜three-list-prices; monthly-bill
-- c3｜CONFIRMED｜Opus 5.5 輸入/快取讀取/輸出 4/.20/20｜未改數值｜https://claude.com/pricing｜2026-09-29｜three-list-prices; monthly-bill
-- c4｜CHANGED｜Sol 比前代促銷單價少 50%；兩家公司同日發布｜改以 Sep 22 更新紀錄和 4→2、20→10 實算；移除未重新核實的發布文引語與 Luna 降幅宣稱｜https://developers.openai.com/api/docs/changelog https://developers.openai.com/api/docs/pricing https://www.anthropic.com/claude-opus-5-5｜2026-09-29｜ayvr; openai-quote; recap-three; youtube
-- c5｜CHANGED｜Opus 輸入輸出少 20%、快取讀取少 60%；40% 是廠商預設工作量成本估計｜費用估算與單價無關 → 同時取決於各費率和 token 用量｜https://www.anthropic.com/claude-opus-5-5｜2026-09-29｜anthropic-quote; real-list-cut; what-percent-means
-- c6｜CONFIRMED｜Sol、Opus 5.5 快取讀取同為 .20｜限定這兩模型及標準短脈絡｜https://developers.openai.com/api/docs/pricing https://claude.com/pricing｜2026-09-29｜output-is-the-gap; monthly-bill
-- c7｜CONFIRMED｜Flash 3.8 .75/.075/3.75；促銷至 2026-12-31｜未改數值｜https://ai.google.dev/gemini-api/docs/pricing｜2026-09-29｜monthly-bill; gemini-flash-note
-- c8｜CONFIRMED｜Opus 5 歷史對照 5/.50/25｜今日兩份官方資料直接列出，已不必只靠百分比反推｜https://claude.com/pricing https://www.anthropic.com/claude-opus-5-5｜2026-09-29｜compare-to-last-gen
-- c9｜CHANGED｜Sol 代理 token 費 73.6；輸出 40 為 54.35%、快取 9.6 為 13.04%｜算式正確；把通用結論限縮為這組 Sol 用量｜https://developers.openai.com/api/docs/pricing｜2026-09-29｜output-share; scenario-walk
-- c10｜OUT OF SCOPE｜每月 30 美元是否值得換模型｜條件式建議，非省錢承諾；需站主確認建議措辭｜https://developers.openai.com/api/docs/pricing｜2026-09-29｜thirty-dollar-case; switch-or-not
-- c11｜CONFIRMED｜Flash 3.8 2027-01-01 變為 1.50/.15/7.50｜當日官方日期；上片前仍須重查｜https://ai.google.dev/gemini-api/docs/pricing｜2026-09-29｜gemini-flash-note; monthly-bill
-- p12｜CONFIRMED｜Sonnet 5 輸入/快取讀取/輸出 2/.20/10｜官方 legacy 表仍列；不是 Sonnet 5.5 的誤植｜https://claude.com/pricing｜2026-09-29｜monthly-bill
-- p13｜CHANGED｜聊天/代理/大量整理 15 格 token 費｜數值全可重算；排名三欄皆 Luna 最低；大量整理不是 Batch API 折扣｜https://developers.openai.com/api/docs/pricing https://claude.com/pricing https://ai.google.dev/gemini-api/docs/pricing｜2026-09-29｜monthly-bill; scenario-walk
-- p14｜CHANGED｜Opus 對照 184→137.6，降 25.217%；Sol 聊天 40→20｜口播 180 → 184，圖上138為四捨五入｜https://developers.openai.com/api/docs/pricing https://claude.com/pricing｜2026-09-29｜compare-to-last-gen;68yw
-- p15｜CHANGED｜token 與中文字數、可計價輸入輸出｜字數 → token；不宣稱一字一 token｜https://developers.openai.com/api/docs/pricing https://developers.openai.com/api/docs/guides/agents-api/observability｜2026-09-29｜three-tokens;kpte;4dsr;3rsz
-- p16｜CHANGED｜同文件重問不保證快取命中；歷史不一定整段重送｜加入相同前綴、有效快取條件；每轮必重讀 → 可能｜https://developers.openai.com/api/docs/guides/agents-api/observability｜2026-09-29｜cache-example;why-agent-costs
-- p17｜CHANGED｜費率期限、長脈絡與未列費用｜牌價不保證長期固定；長脈絡依模型；未含寫入/儲存/工具等｜https://developers.openai.com/api/docs/pricing https://ai.google.dev/gemini-api/docs/pricing｜2026-09-29｜three-words;short-context-note;youtube
-- p18｜CHANGED｜不存在三種都最省的模型、聊天只看輸入｜與本片表格矛盾 → Luna 三欄最低，品質需另測，三種用量均需算｜https://developers.openai.com/api/docs/pricing https://claude.com/pricing https://ai.google.dev/gemini-api/docs/pricing｜2026-09-29｜gcyy;6mvh;j9h8;output-is-the-gap
-- p19｜OUT OF SCOPE｜簡單任務選便宜模型、50/30 美元是否值得切換｜編輯建議而非測試結論；沒有獨立性能評測｜編輯建議或待驗內部內容｜2026-09-29｜luna-enough;switch-or-not;thirty-dollar-case;wrap
-- p20｜NOT FOUND｜站內文章包含計算表且持續更新｜本輪未上正式站核對文章內容與更新承諾；不得當作已完成發佈驗收｜編輯建議或待驗內部內容｜2026-09-29｜article-cta;youtube.source_guide
-
-## 2026-09-29 第二輪獨立查核
-
-全部第一輪更正及隨機三分之一已確認主張完成覆核，殘留標題／說明／旁白依賴已同步修正。正式來源、逐項更正、算式及新 SHA 見 `verify-p1-20260929-round2.md`。仍有站主觀點、大綱、文章 CTA 與媒體驗收門檻，未核准製作或上架。
+- 2026-09-30：video.json 與 claims.md 依選項 B 重寫完成，33 個場景、121 句、7 章；`lint` 0 錯誤 0 警告，估計 9.5 分鐘（實際語速較快，約 8 分鐘）。字典沒有新增（用到的拉丁字詞都已在 `lexicon.json`）。
+- 未做：獨立查核（新稿）、旁白試聽、站主對「與企劃不同的地方」的確認。
