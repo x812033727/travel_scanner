@@ -824,6 +824,101 @@ def test_news_tls_context_still_verifies_but_drops_python_313_strict_mode() -> N
 
 
 @pytest.mark.asyncio
+async def test_a_feed_whose_summary_is_the_story_is_scanned_and_revalidated_from_the_feed() -> None:
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(
+                sync,
+                tables=[
+                    NewsAutomationSettings.__table__,
+                    NewsSource.__table__,
+                    NewsCandidate.__table__,
+                    NewsEvidence.__table__,
+                ],
+            )
+        )
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    source = NewsSource(
+        name="Release notes",
+        url="https://docs.example/release-notes/feed.xml",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        is_first_party=True,
+        enabled=True,
+        last_scanned_at=SCANNED_BEFORE,
+        config_json={"evidence_from_feed_summary": True},
+    )
+    published = (datetime.now(UTC) - timedelta(hours=2)).strftime("%a, %d %b %Y %H:%M:%S GMT")
+    notes = {
+        "september-28": "We've launched model X on the API. " * 15,
+        "september-24": "Cache diagnostics is out of beta. " * 15,
+    }
+
+    def listing() -> bytes:
+        return (
+            "<rss><channel>"
+            + "".join(
+                f"<item><title>Release notes {day}</title>"
+                f"<link>https://docs.example/release-notes/overview#{day}</link>"
+                f"<description>{text}</description><pubDate>{published}</pubDate></item>"
+                for day, text in notes.items()
+            )
+            + "</channel></rss>"
+        ).encode()
+
+    requested: list[str] = []
+
+    class Fetcher:
+        async def fetch(self, url: str, **_kwargs: object) -> FetchResult:
+            requested.append(url)
+            if url == source.url:
+                return FetchResult(
+                    url=url, status_code=200, content_type="application/rss+xml", body=listing()
+                )
+            # The shared page every entry links to: read only for an entry the feed dropped.
+            page = f"<html><main>{'Every release note on one page. ' * 40}</main></html>"
+            return FetchResult(
+                url=url, status_code=200, content_type="text/html", body=page.encode()
+            )
+
+        async def close(self) -> None:
+            return None
+
+    async def enqueue(_candidate_id: UUID) -> None:
+        return None
+
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        session.add(source)
+        await session.commit()
+        created = await scan_source(session, source.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        rows = list(await session.scalars(select(NewsEvidence).order_by(NewsEvidence.url)))
+        assert created == 2
+        assert [(row.url.rsplit("#", 1)[-1], row.excerpt.strip()) for row in rows] == [
+            ("september-24", notes["september-24"].strip()),
+            ("september-28", notes["september-28"].strip()),
+        ]
+        current, reasons = await revalidate_evidence(session, rows, fetcher=Fetcher())  # type: ignore[arg-type]
+        assert current and reasons == []
+        # The feed rewrites one entry, and drops the other.
+        notes["september-28"] = "We've launched model X on the API and on Bedrock. " * 15
+        del notes["september-24"]
+        current, reasons = await revalidate_evidence(session, rows, fetcher=Fetcher())  # type: ignore[arg-type]
+    assert not current
+    # The rewritten entry is read from the feed; the dropped one from the page, which is not
+    # the story that was stored.
+    assert sorted(reason.split(":", 1)[0] for reason in reasons) == [
+        "source_content_changed",
+        "source_content_changed",
+    ]
+    assert requested.count("https://docs.example/release-notes/overview#september-24") == 1
+    assert "https://docs.example/release-notes/overview#september-28" not in requested
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
 async def test_a_new_source_s_first_scan_files_only_fresh_entries() -> None:
     engine = create_async_engine("sqlite+aiosqlite://")
     async with engine.begin() as connection:

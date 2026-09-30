@@ -46,6 +46,11 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    and is queued, and the report itself is closed as `duplicate`
    (`news_attached_as_evidence`) instead of filing the same story twice. This applies to
    any candidate in `needs_evidence`, including one that had only `lead_only` pages.
+   A source with `evidence_from_feed_summary` (the Claude Platform release notes, whose
+   entries all link to anchors on one page) is not fetched page by page: each entry's feed
+   summary is its evidence, its anchor URL the canonical URL, and revalidation and
+   「用最新來源重新查核」 read the entry from the feed again. A URL of that site the feed does
+   not list (an aged-out entry, a page linked from another source) is read as a page.
    A source's **first scan** (`last_scanned_at` empty) records every listed entry older than
    72 hours, or undated, as seen (`rejected`, `news_baseline`) without fetching it, so
    adding a source files only its news of the last days, never its back catalogue.

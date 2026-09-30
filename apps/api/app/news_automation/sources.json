@@ -71,6 +71,18 @@
       "note": "Anthropic's product blog (Claude apps, Claude Code, connectors); no RSS. Separate from anthropic.com/news, which carries company and model announcements. HTML listings keep the default 20 entries per scan: several blogs pin older posts first, and a source's first scan only records its listing as seen (scanner.BASELINE)."
     },
     {
+      "name": "Claude Platform release notes",
+      "url": "https://platform.claude.com/docs/en/release-notes/feed.xml",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"evidence_from_feed_summary": true},
+      "note": "Anthropic's API release notes. Every entry links to an anchor on one shared page, so the entry's feed summary (about 1,200 characters, the day's notes in full) is the evidence and revalidation reads the feed, not the page."
+    },
+    {
       "name": "Hugging Face blog",
       "url": "https://huggingface.co/blog/feed.xml",
       "format": "rss",

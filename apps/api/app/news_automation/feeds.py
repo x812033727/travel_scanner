@@ -551,6 +551,22 @@ def extract_article(
     return parser.title[:500], evidence_excerpt(text), links
 
 
+def summary_is_evidence(source: object) -> bool:
+    """Whether this source's entries carry the whole story in the feed (``summary``).
+
+    The Claude Platform release notes link every entry to an anchor on one shared page;
+    fetching that page would give every entry the same 40,000 characters and the same
+    canonical URL. For such a source the entry's summary is the evidence, its anchor URL is
+    the canonical URL, and revalidation reads the feed again, not the page.
+    """
+    config = getattr(source, "config_json", None) or {}
+    return bool(config.get("evidence_from_feed_summary"))
+
+
+def summary_article(entry: Entry) -> Article:
+    return Article(title=entry.title, text=entry.summary.strip(), links=[])
+
+
 def _strings(value: object) -> list[str]:
     return [str(item) for item in value if str(item)] if isinstance(value, list) else []
 

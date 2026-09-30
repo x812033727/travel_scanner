@@ -10,7 +10,12 @@ from sqlalchemy import or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.news_automation.evidence import evidence_excerpt
-from app.news_automation.feeds import parse_entries, read_article
+from app.news_automation.feeds import (
+    parse_entries,
+    read_article,
+    summary_article,
+    summary_is_evidence,
+)
 from app.news_automation.fetch import SafeNewsFetcher
 from app.news_automation.models import NewsCandidate, NewsEvidence, NewsSource
 from app.news_automation.policy import (
@@ -19,7 +24,7 @@ from app.news_automation.policy import (
     evidence_site,
     normalized_title,
 )
-from app.news_automation.schemas import Entry, Vertical
+from app.news_automation.schemas import Entry, FetchResult, Vertical
 from app.news_automation.service import settings_row
 
 Enqueue = Callable[[UUID], Awaitable[None]]
@@ -391,32 +396,46 @@ async def scan_source(
                     )
                 )
                 continue
-            try:
-                detail = await fetcher.fetch(
-                    entry.url,
-                    allowed_hosts=allowed_hosts,
-                    allowed_redirect_hosts=allowed_redirects,
-                )
-            except PAGE_ERRORS as error:
-                if _refused(error) and _summary_lead_ok(entry, now):
-                    if await _keep_summary_lead(
-                        session,
-                        source,
-                        entry,
-                        error,
-                        settings.prompt_version,
-                        settings.policy_version,
-                    ):
-                        summarized.append(entry.url)
+            if summary_is_evidence(source):
+                # The entry's own text is the story (release notes whose entries all link to
+                # anchors on one shared page): nothing to fetch, and the anchor URL, not the
+                # page, is what tells one entry from the next.
+                if not entry.summary.strip():
                     continue
-                skipped.append(f"{entry.url} ({type(error).__name__})")
-                continue
+                detail = FetchResult(
+                    url=entry.url, status_code=200, content_type="text/plain", body=b""
+                )
+            else:
+                try:
+                    detail = await fetcher.fetch(
+                        entry.url,
+                        allowed_hosts=allowed_hosts,
+                        allowed_redirect_hosts=allowed_redirects,
+                    )
+                except PAGE_ERRORS as error:
+                    if _refused(error) and _summary_lead_ok(entry, now):
+                        if await _keep_summary_lead(
+                            session,
+                            source,
+                            entry,
+                            error,
+                            settings.prompt_version,
+                            settings.policy_version,
+                        ):
+                            summarized.append(entry.url)
+                        continue
+                    skipped.append(f"{entry.url} ({type(error).__name__})")
+                    continue
             # Feed links that redirect (tracking, feed proxies) only match after the
             # fetch; without this the same page files a new "duplicate" every hour.
             if detail.url != entry.url and await _already_seen(session, detail.url):
                 continue
             detail_source = by_host.get(_host(detail.url), source)
-            page = read_article(detail.body, detail.url, detail_source.config_json)
+            page = (
+                summary_article(entry)
+                if summary_is_evidence(source)
+                else read_article(detail.body, detail.url, detail_source.config_json)
+            )
             page_title, article_text, links = page.title, page.text, page.links
             body_text = article_text or entry.summary
             title = page_title or entry.title
