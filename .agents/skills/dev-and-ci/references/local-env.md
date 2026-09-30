@@ -21,6 +21,41 @@
 - scratchpad 裡臨時的 Playwright 量測腳本要用 `createRequire("<worktree>/apps/web/package.json")("playwright")` 解析套件。
 - 完整版 Playwright Chromium 在 Windows ARM64 可能起不來（WinError 14001 side-by-side），同一個 build 的 headless shell 可以。要 Chromium 的後端程式（例如 `app.guides.pack_ingest.render_svg` 讀 `CHROMIUM_BIN`）指向 `$LOCALAPPDATA/ms-playwright/chromium_headless_shell-<rev>/chrome-headless-shell-win64/chrome-headless-shell.exe`。
 
+### 影片測試還沒進 assertion 就原生崩潰
+
+2026-09-30 在 Windows 11 ARM64（`win32/arm64`、OS build `10.0.26200`）重驗：
+Node 24.13.0 的 `fs.cpSync(source, target, { recursive: true })` 在來源路徑含
+`ㄐ` 時會退出 `3221226505`，沒有 JavaScript exception。同樣只有一個文字檔的
+ASCII 來源目錄能複製；建目錄和單檔 `cpSync` 也能過。共享 `sandbox()` 的
+fixture 路徑在含 `travel_scanㄐ` 的 worktree 下，因此會遇到這個症狀。
+這和 `atomicWrite` 回報的 JavaScript `EPERM` rename 是兩件事。
+
+同機內建 Node **24.19.0 ARM64** 通過 ASCII／Unicode 最小重現、直接呼叫
+`sandbox()`、series/state 的 50 個測試，以及完整 `test:tools`（917 passed，
+2 個平台 skip）。這是已驗證的執行環境解法，沒有證明所有中間版本、Node 22
+或其他架構都已修好；不要因此改掉 fixture 或略過 assertion。最小重現與 Linux
+CI 對照見 `tasks/done/2026-09-28-investigate-windows-native-crash-in-video.md`。
+
+在這類 Codex Windows 環境，可只為目前的命令選用已驗證的 Node，不改全域安裝。
+內建路徑若不同，先用 `load_workspace_dependencies` 取得實際位置。
+**單改 PATH 再呼叫 `npm` 不夠**：既有 `npm.ps1` 會優先用它旁邊的舊
+`node.exe`。把已驗證的 Node 放進 PATH 供子程序使用，並由它直接執行 npm CLI：
+
+```powershell
+$verifiedNode = Join-Path $env:USERPROFILE '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe'
+$npmCli = Join-Path (Split-Path (Get-Command npm.ps1).Source) 'node_modules/npm/bin/npm-cli.js'
+$originalPath = $env:PATH
+try {
+  $env:PATH = (Split-Path $verifiedNode) + ';' + $originalPath
+  & $verifiedNode -p 'JSON.stringify({version:process.version,platform:process.platform,arch:process.arch})'
+  if ($LASTEXITCODE -ne 0) { throw 'Node verification failed' }
+  & $verifiedNode $npmCli run test:tools
+  if ($LASTEXITCODE -ne 0) { throw "test:tools failed: $LASTEXITCODE" }
+} finally {
+  $env:PATH = $originalPath
+}
+```
+
 ## Python 與 API
 
 - 首選跟 CI 一樣：`cd apps/api && uv sync --frozen`，在這個 worktree 建出 git 忽略的 `.venv`，裝的是這個 worktree 的程式；之後 `uv run ruff check .`、`uv run mypy app`、`uv run pytest`。

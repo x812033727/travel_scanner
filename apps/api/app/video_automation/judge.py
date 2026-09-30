@@ -16,7 +16,9 @@ the owner compares Jev's picks with their own and decides whether to move them.
 A brand story (docs/videos/STORY.md) demonstrates nothing, so its narration is asked the story's
 questions instead of the tutorial's: written to the stance, an observation left to the viewer,
 no advice, not sponsored, nobody named run down. The server picks the set from the video's own
-series (``policy_questions_for``); every other video, a drama's included, is asked as before.
+series (``policy_questions_for``). A Short cut from a long video (docs/videos/SHORTS.md, line
+"cut") is a highlight too short to hold a demonstration, so it is asked the tutorial's questions
+without that one; every other video, a drama's included, is asked as before.
 
 Payload contracts the worker writes (tools/video, ticket video-hands-off-worker):
 
@@ -51,6 +53,7 @@ from app.ai.jev import (
     jev_client,
 )
 from app.config import Settings
+from app.models import VideoProject
 from app.video_automation.models import VideoDramaEpisode, VideoDramaSeries
 from app.video_speech.checking import CheckUnavailable
 
@@ -272,15 +275,17 @@ class JudgePolicyIn(StrictModel):
 
 
 # Which questions a narration was asked: the tutorial's four, which every video but a brand
-# story is asked, or the story's five (docs/videos/STORY.md).
-PolicyQuestions = Literal["tutorial", "story"]
+# story or a cut Short is asked, the story's five (docs/videos/STORY.md), or a cut Short's three:
+# the tutorial's without the demonstration (docs/videos/SHORTS.md §自動品管).
+PolicyQuestions = Literal["tutorial", "story", "cut"]
 
 
 class PolicyVerdict(BaseModel):
     """What Jev said about a narration; ``passed`` is the verdict of the set it was asked.
 
     A tutorial's verdict carries the four scores it always did (``observation`` and
-    ``disparage`` are None); a story's has no ``demo`` (None), since it was not asked.
+    ``disparage`` are None); a story's and a cut Short's have no ``demo`` (None), since it was
+    not asked.
     """
 
     stance: float
@@ -344,6 +349,16 @@ def policy_questions() -> dict[str, JevQuestion]:
             instructions=POLICY_SPONSORED_INSTRUCTIONS, criteria=NOUL_CRITERIA
         ),
     }
+
+
+# The tutorial's questions a cut Short is asked, in the order its note lists them.
+CUT_POLICY_QUESTIONS = ("stance", "advice", "sponsored")
+
+
+def cut_policy_questions() -> dict[str, JevQuestion]:
+    """A cut Short's three: the tutorial's own questions, the demonstration left out."""
+    tutorial = policy_questions()
+    return {name: tutorial[name] for name in CUT_POLICY_QUESTIONS}
 
 
 def story_policy_questions() -> dict[str, JevQuestion]:
@@ -419,6 +434,41 @@ def read_policy_answers(answers: dict[str, Any]) -> PolicyVerdict:
         sponsored=sponsored,
         passed=passed,
         note=policy_note(stance, demo, advice, sponsored, passed),
+    )
+
+
+def read_cut_policy_answers(answers: dict[str, Any]) -> PolicyVerdict:
+    """A cut Short's verdict: the tutorial's thresholds on the three it was asked."""
+    stance, advice = _noul(answers, "stance"), _noul(answers, "advice")
+    sponsored = _noul(answers, "sponsored")
+    passed = (
+        stance >= POLICY_MIN_STANCE
+        and advice <= POLICY_MAX_ADVICE
+        and sponsored <= POLICY_MAX_SPONSORED
+    )
+    body = f"符合立場 {stance:.2f}、建議 {advice:.2f}、業配 {sponsored:.2f}"
+    reasons = [
+        reason
+        for failed, reason in (
+            (stance < POLICY_MIN_STANCE, f"符合立場低於 {POLICY_MIN_STANCE}"),
+            (advice > POLICY_MAX_ADVICE, f"建議高於 {POLICY_MAX_ADVICE}"),
+            (sponsored > POLICY_MAX_SPONSORED, f"業配高於 {POLICY_MAX_SPONSORED}"),
+        )
+        if failed
+    ]
+    note = (
+        f"Jev（精華）：{body}，通過"
+        if passed
+        else f"Jev（精華）：{body}；沒過（{'；'.join(reasons)}）"
+    )
+    return PolicyVerdict(
+        questions="cut",
+        stance=stance,
+        demo=None,
+        advice=advice,
+        sponsored=sponsored,
+        passed=passed,
+        note=note,
     )
 
 
@@ -565,9 +615,13 @@ async def video_series_kind(session: AsyncSession, slug: str) -> str | None:
 
 
 async def policy_questions_for(session: AsyncSession, slug: str) -> PolicyQuestions:
-    """The story's questions for an episode of a brand-story series, the tutorial's for every
-    other video, a drama's included (docs/videos/STORY.md §伺服器)."""
-    return "story" if await video_series_kind(session, slug) == "story" else "tutorial"
+    """The story's questions for an episode of a brand-story series (docs/videos/STORY.md
+    §伺服器), a cut Short's for a Short on the "cut" line, the tutorial's for every other video,
+    a drama's included."""
+    if await video_series_kind(session, slug) == "story":
+        return "story"
+    line = await session.scalar(select(VideoProject.shorts_line).where(VideoProject.slug == slug))
+    return "cut" if line == "cut" else "tutorial"
 
 
 async def judge_policy(
@@ -586,9 +640,14 @@ async def judge_policy(
     also asks for something shown, a brand story's for an observation left and nobody run
     down. The server looks the video up by ``slug``; the request cannot choose the set."""
     state = policy_state(stance, viewpoint, script)
-    if await policy_questions_for(session, slug) == "story":
+    kind = await policy_questions_for(session, slug)
+    if kind == "story":
         return read_story_policy_answers(
             await _ask(settings, redis, state, story_policy_questions(), client)
+        )
+    if kind == "cut":
+        return read_cut_policy_answers(
+            await _ask(settings, redis, state, cut_policy_questions(), client)
         )
     return read_policy_answers(await _ask(settings, redis, state, policy_questions(), client))
 
