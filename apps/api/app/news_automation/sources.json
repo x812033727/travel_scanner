@@ -55,8 +55,20 @@
       "is_first_party": true,
       "enabled": true,
       "scan_interval_minutes": 60,
-      "config": {"include_path_prefixes": ["/news/"], "minimum_title_length": 12},
-      "note": "No RSS feed; the news index page is read as an HTML listing."
+      "config": {"include_path_prefixes": ["/news/", "/claude-"], "exclude_path_prefixes": ["/claude-in-", "/claude-for-", "/claude-corps"], "minimum_title_length": 12},
+      "note": "No RSS feed; the news index page is read as an HTML listing. Model launches live at the site root (/claude-opus-5-5, /claude-sonnet-5-5), not under /news/, hence the second prefix (2026-09-30)."
+    },
+    {
+      "name": "Claude blog",
+      "url": "https://claude.com/blog",
+      "format": "html",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"include_path_prefixes": ["/blog/"], "minimum_title_length": 12, "max_entries_per_scan": 3},
+      "note": "Anthropic's product blog (Claude apps, Claude Code, connectors); no RSS. Separate from anthropic.com/news, which carries company and model announcements."
     },
     {
       "name": "Hugging Face blog",
