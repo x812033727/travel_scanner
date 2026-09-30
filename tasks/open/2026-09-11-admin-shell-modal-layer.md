@@ -1,14 +1,14 @@
 ---
 id: 2026-09-11-admin-shell-modal-layer
 title: admin-shell 命令面板改用 modal-sheet 的分層堆疊
-status: open
+status: in-progress
 priority: P3
 area: web
-owner:
-claimed_at:
+owner: codex-b10e-modal
+claimed_at: 2026-09-30T10:54:00Z
 created_at: 2026-09-11T20:07:47Z
 completed_at:
-branch:
+branch: codex/remaining-tickets-20260930
 depends_on: []
 scope:
   - apps/web/components/admin-shell.tsx
@@ -32,8 +32,8 @@ scope:
 
 ## Definition of done
 
-- [ ] `admin-shell.tsx` 的命令面板改用 `useModalSheet`，手刻的 effect 移除。
-- [ ] 既有測試（若有）仍綠；Escape 從 `document` 發也要能關。
+- [x] `admin-shell.tsx` 的命令面板改用 `useModalSheet`，手刻的 effect 移除。
+- [x] 既有測試（若有）仍綠；Escape 從 `document` 發也要能關。
 
 ## How to verify
 
@@ -45,3 +45,22 @@ npm run lint:web && npm run typecheck:web && npm run test:web -- admin-shell
 
 - 開始之前先確認 `2026-09-09-site-experience-settings` 是否仍持有 `admin-shell.tsx`；
   若已合併或釋出，正常 claim 即可。
+
+### 2026-09-30 local implementation (codex-b10e-modal)
+
+- Checked main `422b3f68`, open PR files, remote heads, local branches and worktree
+  changes before claiming normally. The earlier site-experience claim now owns
+  acceptance files only; historical admin shell changes are from merged #377/#380.
+  No other active implementation touches these two files. Missing old worktrees and
+  incomplete P: article-only checkouts were recorded rather than modified.
+- Replaced the hand-written Escape/Tab/overflow effect with `useModalSheet`.
+  A following layout effect focuses the command input only when opening, preserving
+  immediate typing without interfering with the hook's opener capture. The account
+  popover and Ctrl/Meta+K shortcut behavior are unchanged.
+- Added five behavioral regressions: document Escape and two-way Tab wrapping,
+  keyboard-opener focus return, handled/IME Escape, top-layer keyboard handling,
+  and scroll locking when the lower shell unmounts before the upper sheet.
+  Against the old component: 4 failed / 1 passed. With the fix: the command shell,
+  admin navigation and modal hook suites passed 27 tests across 3 files.
+- Independent diff review found no blocking issue. Full web checks and the final
+  PR receipt are recorded at the final delivery; this is not production acceptance.
