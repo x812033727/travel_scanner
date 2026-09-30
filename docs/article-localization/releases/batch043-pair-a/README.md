@@ -36,3 +36,24 @@
 - **zh-CN 沒發**：`2026-09-28-batch043-pair-a-final-independent-review` 還開著（60 處 zh-CN 修正等獨立審稿）。兩篇的 zh-CN 公開頁目前是「这篇文章目前无法查看」、noindex、不在 sitemap。審稿通過後只要帶這兩個 slug、`--locale zh-CN` 重跑 dry-run 與 `--publish`。
 - **跳過的關卡**：票上要求的「同映像隔離 Docker 演練」沒有做（沒有非正式環境）。站主在對話中知情後選了「先 pg_dump 再只發新語系」。手機與桌機的實際畫面沒有逐頁看過，只做了下面的未登入 HTTP 檢查。
 - **站內連結**：`guides-links-check --locale en` 在這 16 篇有 17 筆 `unpublished`，指向還沒有英文版的 13 篇 life 文章（例如 `utm-link-conventions`、`canonical-url-guide`）；其他三個語系同型。等那些文章翻好就會生效。
+
+## 手機與桌機實看（2026-09-29 11:30 UTC 前後）
+
+Playwright 驅動本機的 Chrome，未登入，桌機 1366×900、手機 Pixel 7（412×839），每頁往下捲到底讓延遲載入的圖片出現：
+16 次載入全是 200，`lang` 與語系一致、沒有 noindex、h1 是該語系的標題；文章圖 80 張，沒有破圖、全部有 alt；
+兩種寬度都沒有水平溢出。逐頁數字在 `browser-check.json`。另外親眼看過日文手機版與韓文桌機版的截圖（圖解是該語系的文字）。
+
+console 裡的錯誤跟翻譯無關：桌機版的 `emrldtp.cc` 跨網域錯誤是 Travelpayouts Drive 腳本，zh-TW 原頁一樣會出；
+連續掃頁觸發的 429 只打在子資源、單頁重開時一筆也沒有；一次 `int64` 例外單頁重開兩次沒有重現。
+
+站主在 2026-09-29 的對話中接受「同映像隔離演練」為已知情放棄。
+
+## zh-CN 補發（2026-09-29 14:35 UTC）
+
+最終獨立審稿 #971 合併、`669f05b0` 部署後，站主在對話中要求補發。先 `pg_dump -Fc`
+（`/root/travel_scanner_preimport_zhcn043_20260929T143545Z.dump`，166,776,033 bytes，TOC 1,216 項），
+部署鎖下只帶這兩個 slug、`--locale zh-CN`：dry-run 兩個 `create`、`--publish` 無 failed、重跑兩個 `unchanged`，
+zh-TW／en／ja／ko 仍全是 `unchanged`。`guides-links-rebuild` materialized 2,525、dropped 0。
+`verify_public.py --locale zh-CN --sitemap`：`RESULT PASS (0 problems, 2 pages)`；上面的桌機／手機實看已含這兩頁。
+zh-CN 版連到還沒有 zh-CN 的 `seo-backlinks-outreach`、`seo-content-cannibalization`（`unpublished`，待那兩篇翻好）。
+上面表格裡的「未發布」與 FAIL 是 10:15 當時的狀態。

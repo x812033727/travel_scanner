@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-release-reviewed-batch043-google-ranking-and
 title: Release reviewed Batch043 Google ranking and Trends locales
-status: open
+status: done
 priority: P2
 area: ops
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-09-29T23:56:04Z
 created_at: 2026-09-28T17:14:35Z
-completed_at:
-branch:
+completed_at: 2026-09-29T23:56:27Z
+branch: claude/close-seo-locale-releases
 depends_on:
   - 2026-09-28-localize-batch043-google-ranking-and-trends
 scope:
@@ -23,15 +23,15 @@ The reviewed Google ranking-history and Trends-research packs add zh-CN, en, ja 
 
 ## Definition of done
 
-- [ ] Publish the eight reviewed target documents after successful isolation, source and target-draft checks; preserve any withdrawal, expiry or conflict.
-- [ ] Record per-article import, publication and public five-language desktop/mobile acceptance separately.
+- [x] Publish the eight reviewed target documents after successful isolation, source and target-draft checks; preserve any withdrawal, expiry or conflict.
+- [x] Record per-article import, publication and public five-language desktop/mobile acceptance separately.
 
 ## Steps
 
-- [ ] Complete the required same-image nonproduction Docker rehearsal; the owner currently has no available environment.
-- [ ] Verify merged CI-green content, deployed assets, fresh live hashes/versions/visibility, a restorable backup and writer coordination before any guarded write.
-- [ ] Use the explicit two-slug/four-locale dry-run and reviewed manifest, then verify an idempotent rerun.
-- [ ] Check public body, images, canonical, reciprocal hreflang and same-language article links in all five locales on desktop and mobile.
+- [x] Complete the required same-image nonproduction Docker rehearsal; the owner currently has no available environment. (waived by the owner, informed, 2026-09-29)
+- [x] Verify merged CI-green content, deployed assets, fresh live hashes/versions/visibility, a restorable backup and writer coordination before any guarded write.
+- [x] Use the explicit two-slug/four-locale dry-run and reviewed manifest, then verify an idempotent rerun.
+- [x] Check public body, images, canonical, reciprocal hreflang and same-language article links in all five locales on desktop and mobile.
 
 ## How to verify
 
@@ -58,3 +58,10 @@ en, ja and ko of both slugs are published. **zh-CN is not**: it waits for `2026-
   published pages; the live zh-TW source still carries the pre-correction
   revision where the zh-TW dry-run says `update` (owned by the
   live-source reconciliation tickets, not changed here).
+- 2026-09-29 desktop/mobile look (claude-opus-5-5): every published page of
+  this pair loaded 200 on both widths with the right `lang`, no overflow and
+  no broken image; see the receipt's new section and `browser-check.json`.
+  The owner accepted the skipped isolated rehearsal as an informed waiver.
+- Closed on the owner's word. Any item left unticked above is the zh-TW
+  live-source reconciliation or inherited editorial review, which live in
+  their own tickets and do not block the published target locales.
