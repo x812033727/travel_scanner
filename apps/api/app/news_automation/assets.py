@@ -3,7 +3,7 @@ from __future__ import annotations
 import asyncio
 import hashlib
 import io
-from html import escape
+from datetime import UTC, datetime
 from typing import TYPE_CHECKING, cast
 from uuid import UUID
 
@@ -14,7 +14,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.community.media import storage
 from app.config import get_settings
-from app.guides.schemas import GuideDocument, HeroImage, ImageBlock, ImageCredit
+from app.guides.schemas import GuideDocument, HeroImage, ImageCredit
 from app.i18n import Locale
 from app.news_automation.models import NewsAsset, NewsCandidate
 from app.problems import AppError
@@ -31,16 +31,6 @@ LOCALE_TOKEN: dict[Locale, str] = {
     "en": "en",
     "ja": "ja",
     "ko": "ko",
-}
-DIAGRAM_COPY: dict[Locale, tuple[str, str]] = {
-    "zh-TW": ("Mokaair 編輯查核流程", "消息會先蒐集來源、獨立查核，再交由 Jev 判斷。"),
-    "zh-CN": ("Mokaair 编辑核查流程", "消息会先收集来源、独立核查，再交由 Jev 判断。"),
-    "en": (
-        "Mokaair editorial verification flow",
-        "Sources are collected, independently checked, then reviewed by Jev.",
-    ),
-    "ja": ("Mokaair 編集検証フロー", "情報源を収集し、独立検証を行ってから Jev が判断します。"),
-    "ko": ("Mokaair 편집 검증 절차", "출처를 수집하고 독립적으로 검증한 뒤 Jev가 판단합니다."),
 }
 PALETTE = {
     "ai": (65, 49, 136),
@@ -90,46 +80,6 @@ def render_brand_raster(vertical: str, size: tuple[int, int]) -> bytes:
     output = io.BytesIO()
     image.save(output, format="WEBP", quality=88, method=6)
     return output.getvalue()
-
-
-def render_diagram(title: str, vertical: str, locale: Locale) -> bytes:
-    label = {
-        "zh-TW": ("來源", "獨立查核", "Jev 判斷"),
-        "zh-CN": ("来源", "独立核查", "Jev 判断"),
-        "en": ("Sources", "Independent check", "Jev decision"),
-        "ja": ("情報源", "独立検証", "Jev 判断"),
-        "ko": ("출처", "독립 검증", "Jev 판단"),
-    }[locale]
-    safe_title = escape(title[:120])
-    boxes = "".join(
-        f'<rect x="{70 + index * 500}" y="300" width="400" height="220" rx="32" '
-        f'fill="#ffffff" opacity="0.94"/><text x="{270 + index * 500}" y="420" '
-        f'text-anchor="middle" font-size="38" font-family="sans-serif" fill="#172033">'
-        f"{escape(text)}</text>"
-        for index, text in enumerate(label)
-    )
-    arrows = "".join(
-        f'<path d="M {470 + index * 500} 410 L {550 + index * 500} 410" '
-        'stroke="#f5b63e" stroke-width="18" marker-end="url(#arrow)"/>'
-        for index in range(2)
-    )
-    svg = (
-        '<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" '
-        'viewBox="0 0 1600 900">'
-        f"<title>{safe_title}</title>"
-        f"<desc>Mokaair {escape(vertical)} news evidence workflow</desc>"
-        '<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" '
-        'refY="4" orient="auto"><path d="M0 0 L8 4 L0 8z" fill="#f5b63e"/>'
-        "</marker></defs>"
-        '<rect width="1600" height="900" fill="#172033"/>'
-        '<text x="800" y="155" text-anchor="middle" font-size="46" '
-        f'font-family="sans-serif" fill="white">{safe_title}</text>'
-        f"{boxes}{arrows}"
-        '<text x="800" y="720" text-anchor="middle" font-size="30" '
-        f'font-family="sans-serif" fill="#d8dfef">MOKAAIR · '
-        f"{escape(vertical.upper())} NEWS</text></svg>"
-    )
-    return svg.encode()
 
 
 def object_storage() -> S3Client | None:
@@ -229,19 +179,17 @@ async def ensure_assets(
         1200,
         630,
     )
+    # Articles used to carry a fixed "editorial verification flow" figure that named an
+    # internal tool and took the article title as its alt text; it told readers nothing about
+    # the story. It is no longer drawn, and a candidate processed again loses the old one.
+    now = datetime.now(UTC)
+    for (variant, _), row in existing.items():
+        if variant == "diagram" and row.deleted_at is None:
+            row.deleted_at = now
+            row.is_public = False
     credit = ImageCredit(author="Mokaair", license="Original editorial artwork")
     output: dict[Locale, GuideDocument] = {}
     for locale, document in documents.items():
-        diagram_caption, diagram_description = DIAGRAM_COPY[locale]
-        diagram = await create(
-            "diagram",
-            locale,
-            render_diagram(document.title, candidate.vertical, locale),
-            "image/svg+xml",
-            1600,
-            900,
-        )
-        diagram_src = f"{PUBLIC_PREFIX}/{diagram.public_filename}"
         encoded = document.model_dump(mode="json")
         encoded["hero"] = HeroImage(
             src=f"{PUBLIC_PREFIX}/{hero.public_filename}",
@@ -255,20 +203,6 @@ async def ensure_assets(
             for block in encoded["blocks"]
             if not (block.get("type") == "image" and block.get("src", "").startswith(PUBLIC_PREFIX))
         ]
-        insert_at = min(4, len(encoded["blocks"]))
-        encoded["blocks"].insert(
-            insert_at,
-            ImageBlock(
-                type="image",
-                src=diagram_src,
-                alt=document.title,
-                width=1600,
-                height=900,
-                caption=diagram_caption,
-                description=diagram_description,
-                credit=credit,
-            ).model_dump(mode="json"),
-        )
         output[locale] = GuideDocument.model_validate(encoded)
     return output
 

@@ -61,6 +61,7 @@ const settings = {
 let rows: Row[] = [];
 let details: Record<string, ReturnType<typeof detailOf>> = {};
 let pages = 1;
+let sourceRows: Record<string, unknown>[] = [];
 
 function serveRows(...next: Row[]) {
   rows = next;
@@ -71,6 +72,7 @@ beforeEach(() => {
   window.history.replaceState(null, "", "/zh-TW/admin/news?tab=review");
   serveRows(summary);
   pages = 1;
+  sourceRows = [];
   vi.stubGlobal("fetch", vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
     const url = String(input);
     const action = url.match(/\/admin\/news\/candidates\/([0-9a-f-]{36})\/([a-z-]+)$/);
@@ -81,7 +83,7 @@ beforeEach(() => {
     const one = url.match(/\/admin\/news\/candidates\/([0-9a-f-]{36})$/);
     if (one) return Response.json(details[one[1]]);
     if (url.includes("/admin/news/candidates?")) return Response.json({ candidates: rows, total: rows.length * pages, page: 1, pages });
-    if (url.endsWith("/admin/news/sources")) return Response.json([]);
+    if (url.endsWith("/admin/news/sources")) return Response.json(sourceRows);
     if (url.endsWith("/admin/news/settings/models") && init?.method === "PUT") return Response.json({ ...settings, ...JSON.parse(String(init.body)) });
     if (url.endsWith("/admin/news/settings")) return Response.json(init?.method === "PUT" ? { ...settings, ...JSON.parse(String(init.body)) } : settings);
     if (url.endsWith("/admin/news/stats")) return Response.json({ pending_review: 1, failed: 0, published: 3, queue_by_status: { manual_review: 1, needs_redraft: 2, failed: 1 }, pipeline_runs: 4, pipeline_failures: 1, input_tokens: 10, output_tokens: 5 });
@@ -96,6 +98,26 @@ const actionButtons = () => ["確認發布，翻譯其他語言", "重新翻譯�
   .filter((name) => screen.queryByRole("button", { name }));
 
 describe("AdminNewsWorkspace", () => {
+  it("lists a source that keeps failing on its recent articles first, with a warning", async () => {
+    const source = (id: string, name: string, lastStatus: string, lastError: string | null) => ({
+      id, name, url: `https://${id}.example/feed`, format: "rss", role: "evidence", vertical: "ai",
+      is_first_party: true, enabled: true, scan_interval_minutes: 60, allowed_redirect_hosts: [], config: {},
+      etag: null, last_modified: null, last_scanned_at: "2026-09-30T10:00:00Z", next_scan_at: "2026-09-30T11:00:00Z",
+      last_status: lastStatus, last_error: lastError, consecutive_failures: 0,
+      created_at: "2026-09-01T00:00:00Z", updated_at: "2026-09-30T10:00:00Z",
+    });
+    sourceRows = [
+      source("fine", "Fine source", "partial", "Skipped 1 page(s): https://fine.example/a (ConnectTimeout)"),
+      source("stuck", "Stuck source", "stuck", "Failing for more than 6 hours: https://stuck.example/b. Skipped 1 page(s)"),
+    ];
+    window.history.replaceState(null, "", "/zh-TW/admin/news?tab=sources");
+    render(<AdminNewsWorkspace />);
+    expect(await screen.findByRole("alert")).toBeTruthy();
+    expect(screen.getByText(/1 個來源最近的文章已連續抓不到超過 6 小時/)).toBeTruthy();
+    const names = screen.getAllByRole("heading", { level: 3 }).map((heading) => heading.textContent);
+    expect(names.indexOf("Stuck source")).toBeLessThan(names.indexOf("Fine source"));
+  });
+
   it("explains a Jev hold in Chinese and publishes it with an audited reason", async () => {
     render(<AdminNewsWorkspace />);
     expect(await screen.findByRole("heading", { name: "AI 每小時自動新聞" })).toBeTruthy();

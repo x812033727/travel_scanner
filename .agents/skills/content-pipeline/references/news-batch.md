@@ -40,4 +40,4 @@
 
 ## 補既有文章的語系
 
-不是新聞批次的事。先看目標的語系數與長度：五語系文章走 TRANSLATE 加逐語審稿；成批補語系用 `tools/article-localization/README.md` 的產線（Codex CLI 驅動，只產翻譯稿，不匯入、不發布）。
+不是新聞批次的事。先看目標的語系數與長度：五語系文章走 TRANSLATE 加逐語審稿；成批補語系走 skill `article-localization`。

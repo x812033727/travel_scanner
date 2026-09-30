@@ -61,6 +61,6 @@ Jev chooses among the outlines against the same stance (`review-push --gate outl
 - No verification narration anywhere the viewer will see it (titles, hooks, chapter names).
 - Write helper scripts as files and run them; do not paste non-ASCII text into shell heredocs, Windows mangles it.
 
-## Report (at most 30 lines, pasted back)
+## Report (pasted back; the coordinator scans it, one line per item)
 
 The three outline options in one line each; which one you recommend and why; the stance you proposed for 站主觀點 and what in the source it rests on; the worked example; facts you could not confirm today; anything the owner must decide besides the outline.

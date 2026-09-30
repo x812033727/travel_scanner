@@ -57,7 +57,15 @@ export const DUB_STYLES = {
   "zh-CN": `Relaxed, conversational tech explainer talking to a friend, in natural Mandarin as spoken in mainland China. ${STYLE_TAIL}`,
 };
 
-const CJK = /[぀-ヿ㐀-鿿豈-﫿가-힯]/u;
+const CJK = /[぀-ヿ㐀-鿿豈-﫿ｦ-ﾟ가-힯]/u;
+
+// Complete letter spellings of words (App → A P P, iOS → i O S) are Mandarin aliases.
+// Acronyms (CBS → C B S) and partial spellings (OpenAI → Open A I) still apply elsewhere.
+function spellsWord(term, say) {
+  return /^[A-Za-z]{2,}$/.test(term) && /[a-z]/.test(term)
+    && /^[A-Za-z](?:\s+[A-Za-z])+$/.test(say.trim())
+    && say.replace(/\s/g, "").toUpperCase() === term.toUpperCase();
+}
 
 /** The narration voice with the locale's style: one Gemini voice speaks every language. */
 export function dubVoice(doc, locale, style = null) {
@@ -66,18 +74,20 @@ export function dubVoice(doc, locale, style = null) {
 }
 
 /**
- * The dictionary a dub uses: a spoken form written in Latin letters ("A P I") applies in any
- * language; one written in Chinese ("P 九十五") does not, and that term is read as written.
+ * The dictionary outside Chinese: acronyms and partial Latin spellings still apply; CJK
+ * readings and full letter spellings of mixed-case words leave the original term to the voice.
  */
 export function dubLexicon(lexicon) {
   const terms = {};
-  for (const [term, say] of Object.entries(lexicon?.terms ?? {})) terms[term] = typeof say === "string" && !CJK.test(say) ? say : null;
+  for (const [term, say] of Object.entries(lexicon?.terms ?? {})) {
+    terms[term] = typeof say === "string" && !CJK.test(say) && !spellsWord(term, say) ? say : null;
+  }
   return { ...(lexicon ?? {}), terms };
 }
 
 /**
- * The dictionary as the voice speaking `locale` may use it: whole for Mandarin, without the
- * Chinese-character aliases for any other language (an English narration is a dub in this sense).
+ * The dictionary as the voice speaking `locale` may use it: whole for Mandarin, filtered for
+ * any other language (an English narration is a dub in this sense).
  */
 export function speechLexicon(lexicon, locale) {
   return CHINESE_LOCALES.has(locale) ? lexicon : dubLexicon(lexicon);

@@ -249,12 +249,18 @@ class AnthropicTripParserProvider:
         self.client = client
 
     async def draft(self, text: str) -> TripParseDraft:
+        output_config: dict[str, Any] = {"format": {"type": "json_schema", "schema": _schema()}}
+        if not self.model.startswith("claude-haiku"):
+            # Current Claude models think by default and thinking counts toward max_tokens;
+            # on this latency-bound route effort is the control. Haiku 4.5 rejects effort.
+            output_config["effort"] = "low"
         payload = {
             "model": self.model,
             "max_tokens": self.max_output_tokens,
-            "system": _instructions(),
+            # output_config.format carries the schema, so the prompt does not repeat it.
+            "system": _system_prompt(_today()),
             "messages": [{"role": "user", "content": _input_payload(text)}],
-            "output_config": {"format": {"type": "json_schema", "schema": _schema()}},
+            "output_config": output_config,
         }
         owns_client = self.client is None
         client = self.client or httpx.AsyncClient(timeout=self.timeout_seconds)
