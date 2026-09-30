@@ -10,14 +10,14 @@ import { fileURLToPath } from 'node:url';
 
 import { encodeWav } from '../tts/wav.mjs';
 import { loudnessProblems, profileProblems } from './build.mjs';
-import { audioHash, checkPhrases } from './check.mjs';
+import { audioHash, checkPhrases, phrasesHash } from './check.mjs';
 import { main } from './cli.mjs';
 import { PROFILE, buildTimeline, lineOf, parseSrt, phrasesOf, sceneHtml, sha256, srt, validate } from './core.mjs';
 import { captionTimingProblems, scriptFromImport, timelineFromCaptions } from './import.mjs';
 import { THEMES, themeOf } from './layouts.mjs';
 import { composeDescription, composeMetadata, disclosureOf, metadataProblems, packageBuild, packageItems, packageReport, PACKAGE_ITEM_IDS } from './package.mjs';
 import { PART_BYTES, evidenceRole, finalReview, projectBody, publishReview, push } from './push.mjs';
-import { ITEM_IDS, captionsItem, evidenceItem, factsItem, layoutItem, linksItem, loudnessItem, metadataItem, narrationItem, policyItem, profileItem, qaReport, scriptShape, siteHistory, varietyItem } from './qa.mjs';
+import { ITEM_IDS, captionsItem, evidenceItem, factsItem, layoutItem, linksItem, loudnessItem, metadataItem, narrationItem, policyItem, profileItem, qaInputBindings, qaReport, scriptShape, siteHistory, varietyItem } from './qa.mjs';
 import { CHANNEL_VOICE, SiteError, siteClient } from './site.mjs';
 import { defaultSource, flaggedPhrases, narrate, phraseBody, phraseKey, serverNarration } from './speech.mjs';
 
@@ -180,6 +180,7 @@ test('the listener passes what says the script and asks Jev about the rest', asy
   const alike = await checkPhrases({ phrases: ['這一題打成平手'], clips: clips.slice(0, 1), transcribe: async () => '這一提打成平守', judge: async () => assert.fail('same sounds need no judge') });
   assert.deepEqual([alike.ok, alike.results[0].verdict], [true, 'sound']);
   assert.equal(check.audio_sha256, audioHash(clips));
+  assert.equal(check.phrases_sha256, phrasesHash(phrases));
   assert.ok(sent.every((clip) => clip.bytes < clips[0].length), 'the transcriber takes 16 kHz');
   const silent = await checkPhrases({ phrases: phrases.slice(1, 2), clips: clips.slice(1, 2), transcribe: async () => '別的話', judge: async () => new Map() });
   assert.deepEqual([silent.ok, silent.flagged_lines[0].noul], [false, null], 'no answer is a doubt, never a pass');
@@ -189,6 +190,64 @@ test('the listener passes what says the script and asks Jev about the rest', asy
 });
 
 // --- the quality check ---------------------------------------------------------------------------
+
+test('a narration receipt cannot approve changed words with the same clips and phrase count', async () => {
+  const phrases = ['一張手寫的發票', '這一題打成平手'];
+  const clips = [tone(1, 300), tone(1, 400)];
+  let phraseIndex = 0;
+  const check = await checkPhrases({
+    phrases,
+    clips,
+    transcribe: async () => phrases[phraseIndex++],
+    judge: async () => assert.fail('matching words need no judge'),
+  });
+  const audioSha256 = audioHash(clips);
+  assert.equal(narrationItem({ check, audioSha256, phrases }).ok, true);
+  const changed = [phrases[0], '這一題有明確贏家'];
+  assert.equal(changed.length, phrases.length);
+  assert.equal(check.audio_sha256, audioHash(clips));
+  assert.equal(narrationItem({ check, audioSha256, phrases: changed }).ok, false);
+  assert.equal(narrationItem({ check, audioSha256, phrases: [...phrases].reverse() }).ok, false);
+  assert.notEqual(phrasesHash(['ab', 'c']), phrasesHash(['a', 'bc']), 'phrase boundaries are part of the identity');
+  assert.notEqual(phrasesHash(['a\nb', 'c']), phrasesHash(['a', 'b\nc']), 'line breaks cannot blur phrase boundaries');
+});
+
+test('narration requires the binding and complete ordered passing results, including old receipts', () => {
+  const phrases = ['一張手寫的發票', '這一題打成平手'];
+  const audioSha256 = 'a'.repeat(64);
+  const check = {
+    ok: true,
+    audio_sha256: audioSha256,
+    phrases_sha256: phrasesHash(phrases),
+    lines: 2,
+    checked: 2,
+    flagged: 0,
+    flagged_lines: [],
+    results: phrases.map((text, index) => ({ index, text, ok: true })),
+  };
+  assert.equal(narrationItem({ check, audioSha256, phrases }).ok, true);
+  const { phrases_sha256: _binding, ...legacy } = check;
+  for (const [name, receipt] of [
+    ['legacy without phrase binding', legacy],
+    ['missing result list', { ...check, results: undefined }],
+    ['malformed result list', { ...check, results: {} }],
+    ['missing result', { ...check, results: check.results.slice(0, 1) }],
+    ['extra result', { ...check, results: [...check.results, check.results[0]] }],
+    ['reordered results', { ...check, results: [...check.results].reverse() }],
+    ['duplicate result index', { ...check, results: [check.results[0], { ...check.results[1], index: 0 }] }],
+    ['wrong result words', { ...check, results: [check.results[0], { ...check.results[1], text: '沒有核對過的話' }] }],
+    ['null result', { ...check, results: [check.results[0], null] }],
+    ['failed result with passing summary', { ...check, results: [check.results[0], { ...check.results[1], ok: false }] }],
+    ['truthy result verdict', { ...check, results: [check.results[0], { ...check.results[1], ok: 'true' }] }],
+    ['failed check summary', { ...check, ok: false }],
+    ['flagged summary', { ...check, flagged: 1 }],
+    ['flagged result', { ...check, flagged_lines: [{ index: 1, heard: '別的話' }] }],
+    ['malformed flagged list', { ...check, flagged: 1, flagged_lines: {} }],
+    ['malformed flagged result', { ...check, flagged: 1, flagged_lines: [null] }],
+  ]) {
+    assert.equal(narrationItem({ check: receipt, audioSha256, phrases }).ok, false, name);
+  }
+});
 
 const measured = (changes = {}) => ({
   video: { width: 1080, height: 1920, codec_name: 'h264', r_frame_rate: '30/1', nb_frames: '1050', ...changes.video },
@@ -230,12 +289,13 @@ test('the cards were measured, the clips were heard, the evidence is the script\
   assert.match(layoutItem({ checks: { imported: true }, cues: 2 }).detail, /safe-area overlay/);
   assert.equal(layoutItem({ checks: null, cues: 2 }).ok, false);
 
-  const check = { ok: true, audio_sha256: 'a'.repeat(64), lines: 11, checked: 11, flagged: 0, flagged_lines: [] };
-  assert.equal(narrationItem({ check, audioSha256: 'a'.repeat(64), phrases: 11 }).ok, true);
-  assert.match(narrationItem({ check, audioSha256: 'b'.repeat(64), phrases: 11 }).detail, /other audio/);
-  assert.match(narrationItem({ check: { ...check, checked: 9 }, audioSha256: 'a'.repeat(64), phrases: 11 }).detail, /9 of 11/);
-  assert.match(narrationItem({ check: { ...check, ok: false, flagged: 1, flagged_lines: [{ index: 3, heard: '平守' }] }, audioSha256: 'a'.repeat(64), phrases: 11 }).detail, /#3 heard 「平守」/);
-  assert.match(narrationItem({ check: null, audioSha256: 'a'.repeat(64), phrases: 11 }).detail, /run check-audio/);
+  const phrases = phrasesOf(script());
+  const check = { ok: true, audio_sha256: 'a'.repeat(64), phrases_sha256: phrasesHash(phrases), lines: 11, checked: 11, flagged: 0, flagged_lines: [], results: phrases.map((text, index) => ({ index, text, ok: true })) };
+  assert.equal(narrationItem({ check, audioSha256: 'a'.repeat(64), phrases }).ok, true);
+  assert.match(narrationItem({ check, audioSha256: 'b'.repeat(64), phrases }).detail, /other audio/);
+  assert.match(narrationItem({ check: { ...check, checked: 9 }, audioSha256: 'a'.repeat(64), phrases }).detail, /9 of 11/);
+  assert.match(narrationItem({ check: { ...check, ok: false, flagged: 1, flagged_lines: [{ index: 3, heard: '平守' }] }, audioSha256: 'a'.repeat(64), phrases }).detail, /#3 heard 「平守」/);
+  assert.match(narrationItem({ check: null, audioSha256: 'a'.repeat(64), phrases }).detail, /run check-audio/);
 
   assert.equal(evidenceItem({ doc: script() }).ok, true);
   assert.deepEqual(evidenceItem({ doc: script(), evidenceError: 'evidence changed: evidence/result.json' }), { id: 'evidence', ok: false, detail: 'evidence changed: evidence/result.json' });
@@ -340,6 +400,12 @@ test('the description leads back to the full video, and says what an experiment 
   assert.deepEqual([disclosureOf({ schema_version: 2, line: 'drama' }).synthetic, composeMetadata({ doc: { ...cut(), line: 'drama' }, finalSha256: 'f', seconds: 30 }).category_id], [true, '24']);
 });
 
+function refreshQaInputs(directory) {
+  const file = path.join(directory, 'qa.json');
+  const qa = JSON.parse(readFileSync(file, 'utf8'));
+  writeFileSync(file, JSON.stringify({ ...qa, inputs: qaInputBindings(directory) }));
+}
+
 function builtDirectory(t, { qaOk = true, doc = script() } = {}) {
   const directory = temp(t, 'shorts-build-');
   for (const sub of ['upload', 'audio', 'evidence/evidence']) mkdirSync(path.join(directory, sub), { recursive: true });
@@ -356,7 +422,7 @@ function builtDirectory(t, { qaOk = true, doc = script() } = {}) {
   writeFileSync(path.join(directory, 'upload', 'manifest.json'), JSON.stringify({ slug: doc.slug, status: 'built' }));
   for (const evidence of doc.evidence ?? []) writeFileSync(path.join(directory, 'evidence', evidence.path), readFileSync(path.join(FIXTURE, evidence.path)));
   const items = ITEM_IDS.map((id) => ({ id, ok: qaOk || id !== 'facts', detail: '' }));
-  writeFileSync(path.join(directory, 'qa.json'), JSON.stringify({ ...qaReport(items, sha256(finalBytes), lineOf(doc)), script: scriptShape(doc), checked_at: '2026-10-01T00:00:00Z' }));
+  writeFileSync(path.join(directory, 'qa.json'), JSON.stringify({ ...qaReport(items, sha256(finalBytes), lineOf(doc)), inputs: qaInputBindings(directory), script: scriptShape(doc), checked_at: '2026-10-01T00:00:00Z' }));
   return { directory, finalSha: sha256(finalBytes), timeline };
 }
 
@@ -412,7 +478,7 @@ function fakeSite({ finalStatus = 'approved', publishStatus = 'approved' } = {})
       submit: async (slug, review) => {
         calls.push(['submit', slug, review]);
         const status = review.gate === 'final' ? finalStatus : publishStatus;
-        return { id: 'r', gate: review.gate, status, note: status === 'approved' ? '依設定自動核准' : null };
+        return { id: 'r', gate: review.gate, status, payload: structuredClone(review.payload), note: status === 'approved' ? '依設定自動核准' : null };
       },
     },
   };
@@ -598,6 +664,7 @@ test('push includes exactly the selected translated caption roles for server upl
   const timeline = JSON.parse(readFileSync(path.join(directory, 'timeline.json'), 'utf8'));
   const translated = srt({ ...timeline, cues: timeline.cues.map((cue) => ({ ...cue, text: 'Translation' })) });
   for (const locale of ['en', 'ja', 'ko', 'zh-CN']) writeFileSync(path.join(directory, 'upload', locale + '.srt'), translated);
+  refreshQaInputs(directory);
   packageBuild({ directory, settings: { locales: ['en', 'zh-CN'] } });
   const { client, calls } = fakeSite();
   const result = await push({ directory, client });
@@ -632,6 +699,7 @@ for (const change of ['clock', 'text']) {
     const captions = srt({ ...timeline, cues: timeline.cues.map((cue) => ({ ...cue, text: 'Translation' })) });
     const captionFile = path.join(directory, 'upload', 'en.srt');
     writeFileSync(captionFile, captions);
+    refreshQaInputs(directory);
     packageBuild({ directory, settings: { locales: ['en'] } });
     const initial = fakeSite();
     assert.equal((await push({ directory, client: initial.client })).publish.status, 'approved');
@@ -645,6 +713,7 @@ for (const change of ['clock', 'text']) {
     assert.deepEqual(stale.calls, [], 'reject before uploads or an idempotent approved review can be reused');
     assert.equal(sha256(readFileSync(path.join(directory, 'upload', 'metadata.json'))), oldSha);
     if (change === 'text') {
+      refreshQaInputs(directory);
       const repackaged = packageBuild({ directory, settings: { locales: ['en'] } });
       assert.equal(repackaged.report.ok, true);
       assert.notEqual(repackaged.report.final_sha256, oldSha, 'new caption bytes create a new approval identity');
@@ -675,6 +744,7 @@ for (const changedFile of ['metadata.json', 'en.srt']) {
   test(`${changedFile} changing during push cannot create a publish review`, async (t) => {
     const { directory, timeline } = builtDirectory(t);
     writeFileSync(path.join(directory, 'upload', 'en.srt'), srt({ ...timeline, cues: timeline.cues.map((cue) => ({ ...cue, text: 'Translation' })) }));
+    refreshQaInputs(directory);
     packageBuild({ directory, settings: { locales: ['en'] } });
     const { client, calls } = fakeSite();
     const submit = client.submit;
