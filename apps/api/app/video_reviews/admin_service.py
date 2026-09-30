@@ -45,6 +45,7 @@ from app.video_automation.judge import (
 from app.video_automation.models import (
     VideoAutomationSettings,
     VideoDramaEpisode,
+    VideoDramaRequest,
     VideoDramaSeries,
 )
 from app.video_automation.settings import (
@@ -999,8 +1000,10 @@ async def _skip_abandoned_episode(
     ``series_max_in_flight`` for ever. Every kind of series: the next episode of a long series
     waits for the one before to be done or skipped, so it may start now, as it may after the
     owner skips an episode on the series page. An episode already done stays done. When it was
-    the series' last open episode the series finishes, as ``skip_episode`` has it. The caller
-    commits.
+    the series' last open episode the series finishes, as ``skip_episode`` has it. The request
+    row the episode travelled as (``start_episode``) is cancelled while it is still started, so
+    the owner's request list and the worker's active list stop showing it in the making; one
+    already done stays done. The caller commits.
     """
     # Imported here: app.video_automation.series imports this module.
     from app.video_automation.series import EPISODE_OPEN, finish_if_complete
@@ -1013,6 +1016,7 @@ async def _skip_abandoned_episode(
         return
     episode.status = "skipped"
     episode.updated_at = now
+    await _cancel_started_request(session, episode, now)
     episodes = await session.scalars(
         select(VideoDramaEpisode).where(VideoDramaEpisode.series_id == series.id)
     )
@@ -1025,6 +1029,29 @@ async def _skip_abandoned_episode(
             metadata_json={"number": episode.number, "dropped_video": project.slug},
         )
     )
+
+
+async def _cancel_started_request(
+    session: AsyncSession, episode: VideoDramaEpisode, now: datetime
+) -> None:
+    """Cancel the request row a dropped episode travelled as, while it is still started.
+
+    Nothing else would ever close it: ``finish_episode`` marks it done only for a video that
+    was made. Locked after the series and the episode, the order ``start_episode`` takes them
+    in. A request already done, or cancelled, is left as it is.
+    """
+    if episode.request_id is None:
+        return
+    request = await session.scalar(
+        select(VideoDramaRequest)
+        .where(VideoDramaRequest.id == episode.request_id)
+        .with_for_update()
+    )
+    if request is None or request.status != "started":
+        return
+    request.status = "cancelled"
+    request.cancelled_at = now
+    request.updated_at = now
 
 
 async def _apply_locales(
