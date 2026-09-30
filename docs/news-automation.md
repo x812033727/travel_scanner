@@ -39,6 +39,12 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    evidence. Nothing is drafted from it; it is there so the story shows up in the review
    queue, to be written by hand from the publisher's other pages or rejected. Before this
    (2026-09-30), every OpenAI announcement was skipped every hour and never seen.
+   Every fetch uses `fetch.tls_context()`: it verifies the chain, the expiry and the host
+   name, but not Python 3.13's strict X.509 profile, which the TWCA chain of Taiwan's
+   government sites fails ("Missing Subject Key Identifier"). Before this no `gov.tw` page
+   could be read at all. Listings can be narrowed with `include_query_contains` (sites that
+   serve every page from one script, like the FSC's `/ch/home.jsp`) and
+   `include_title_keywords` (a publisher mostly outside the three verticals).
 2. **Evidence gate.** At least one page from an evidence source (owner decision,
    2026-09-25: every enabled source is an official or trusted feed, and a person confirms
    each story before it is translated). Only a candidate with nothing but `lead_only` pages

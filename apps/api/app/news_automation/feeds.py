@@ -430,6 +430,7 @@ def parse_html_listing(body: bytes, base_url: str, config: dict[str, object]) ->
     raw_exclude = config.get("exclude_path_prefixes", [])
     include = [str(value) for value in raw_include] if isinstance(raw_include, list) else []
     exclude = [str(value) for value in raw_exclude] if isinstance(raw_exclude, list) else []
+    query_include = _strings(config.get("include_query_contains"))
     raw_minimum = config.get("minimum_title_length", 12)
     minimum = int(raw_minimum) if isinstance(raw_minimum, (int, str)) else 12
     seen: set[str] = set()
@@ -444,6 +445,10 @@ def parse_html_listing(body: bytes, base_url: str, config: dict[str, object]) ->
         if parsed.scheme != "https" or not title or len(title) < minimum:
             continue
         if include and not any(parsed.path.startswith(prefix) for prefix in include):
+            continue
+        # Sites that serve every page from one script (the FSC's /ch/home.jsp) tell a news
+        # item from the menu only by its query string.
+        if query_include and not any(fragment in parsed.query for fragment in query_include):
             continue
         if any(parsed.path.startswith(prefix) for prefix in exclude) or url in seen:
             continue
@@ -546,11 +551,22 @@ def extract_article(
     return parser.title[:500], evidence_excerpt(text), links
 
 
+def _strings(value: object) -> list[str]:
+    return [str(item) for item in value if str(item)] if isinstance(value, list) else []
+
+
 def parse_entries(
     body: bytes, source_format: SourceFormat, base_url: str, config: dict[str, object]
 ) -> list[Entry]:
     if source_format in {"rss", "atom"}:
-        return parse_xml_feed(body, base_url)
-    if source_format in {"json", "api"}:
-        return parse_json_feed(body, base_url, config)
-    return parse_html_listing(body, base_url, config)
+        entries = parse_xml_feed(body, base_url)
+    elif source_format in {"json", "api"}:
+        entries = parse_json_feed(body, base_url, config)
+    else:
+        entries = parse_html_listing(body, base_url, config)
+    # A publisher whose feed is mostly outside the three verticals (Taiwan's FSC: funds,
+    # insurance, statistics) is read only for the entries whose title names one of them.
+    keywords = [word.casefold() for word in _strings(config.get("include_title_keywords"))]
+    if keywords:
+        entries = [row for row in entries if any(word in row.title.casefold() for word in keywords)]
+    return entries

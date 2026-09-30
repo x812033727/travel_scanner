@@ -314,6 +314,30 @@
       "scan_interval_minutes": 60,
       "config": {"max_entries_per_scan": 10},
       "note": "Press; a second website for crypto stories, which automatic publication can count."
+    },
+    {
+      "name": "Taiwan MODA press releases",
+      "url": "https://moda.gov.tw/",
+      "format": "html",
+      "role": "evidence",
+      "vertical": "tech",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"include_path_prefixes": ["/press/press-releases/"], "minimum_title_length": 12, "max_entries_per_scan": 3},
+      "note": "數位發展部新聞稿. The press-release list URL is a 404; the home page lists the five newest, newest first. Needs fetch.tls_context (TWCA chain fails Python 3.13's strict X.509 mode)."
+    },
+    {
+      "name": "Taiwan FSC press releases (crypto)",
+      "url": "https://www.fsc.gov.tw/ch/home.jsp?id=96&parentpath=0,2",
+      "format": "html",
+      "role": "evidence",
+      "vertical": "crypto",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"include_path_prefixes": ["/ch/home.jsp"], "include_query_contains": ["mcustomize=news_view.jsp"], "include_title_keywords": ["虛擬資產", "虛擬通貨", "穩定幣", "代幣", "加密", "區塊鏈"], "minimum_title_length": 12, "max_entries_per_scan": 3, "article_classes": ["maincontent"]},
+      "note": "金管會新聞稿, only the crypto ones: most FSC releases are funds, insurance and statistics. The RSS page lists no feed URL; the news list page is read instead, news items told apart from the menu by their query string. maincontent keeps the release and drops the page's view counter, which would change the evidence hash on every fetch. Needs fetch.tls_context."
     }
   ]
 }

@@ -768,6 +768,49 @@ async def test_scanner_keeps_a_refused_recent_page_as_a_feed_summary_lead() -> N
     await engine.dispose()
 
 
+def test_html_listing_filters_by_query_string_and_every_format_by_title_keyword() -> None:
+    # The FSC serves the menu and every news item from one script, /ch/home.jsp.
+    listing = (
+        '<a href="home.jsp?id=36&parentpath=0,6">金融業重大突發性金融事件24小時緊急通報專線</a>'
+        '<a href="home.jsp?id=96&parentpath=0,2&mcustomize=news_view.jsp&dataserno=1">'
+        "金管會開放銀行申請試辦存款代幣業務</a>"
+        '<a href="home.jsp?id=96&parentpath=0,2&mcustomize=news_view.jsp&dataserno=2">'
+        "壽險業115年截至7月底外幣保險商品銷售情形</a>"
+    ).encode()
+    base = "https://www.fsc.gov.tw/ch/home.jsp?id=96&parentpath=0,2"
+    config: dict[str, object] = {
+        "include_path_prefixes": ["/ch/home.jsp"],
+        "include_query_contains": ["mcustomize=news_view.jsp"],
+    }
+    news = parse_entries(listing, "html", base, config)
+    assert [row.url.rsplit("=", 1)[-1] for row in news] == ["1", "2"]
+    config["include_title_keywords"] = ["代幣", "穩定幣"]
+    assert [row.title for row in parse_entries(listing, "html", base, config)] == [
+        "金管會開放銀行申請試辦存款代幣業務"
+    ]
+    rss = (
+        b"<rss><channel>"
+        b"<item><title>Stablecoin rules</title><link>https://example.com/1</link></item>"
+        b"<item><title>Fund approvals</title><link>https://example.com/2</link></item>"
+        b"</channel></rss>"
+    )
+    keywords: dict[str, object] = {"include_title_keywords": ["STABLECOIN"]}
+    kept = parse_entries(rss, "rss", "https://example.com/feed", keywords)
+    assert [row.url for row in kept] == ["https://example.com/1"]
+
+
+def test_news_tls_context_still_verifies_but_drops_python_313_strict_mode() -> None:
+    import ssl
+
+    from app.news_automation.fetch import tls_context
+
+    context = tls_context()
+    # Taiwan's government sites (TWCA chain) fail the strict X.509 profile Python 3.13 turns on.
+    assert not context.verify_flags & ssl.VERIFY_X509_STRICT
+    assert context.verify_mode == ssl.CERT_REQUIRED
+    assert context.check_hostname is True
+
+
 @pytest.mark.asyncio
 async def test_robots_txt_is_read_once_per_host_for_the_life_of_a_fetcher() -> None:
     robots_reads: list[str] = []
