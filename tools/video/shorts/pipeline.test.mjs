@@ -478,7 +478,7 @@ function fakeSite({ finalStatus = 'approved', publishStatus = 'approved' } = {})
       submit: async (slug, review) => {
         calls.push(['submit', slug, review]);
         const status = review.gate === 'final' ? finalStatus : publishStatus;
-        return { id: 'r', gate: review.gate, status, payload: structuredClone(review.payload), note: status === 'approved' ? '依設定自動核准' : null };
+        return { id: `${review.gate}-review`, gate: review.gate, status, payload: structuredClone(review.payload), note: status === 'approved' ? '依設定自動核准' : null };
       },
     },
   };
@@ -505,6 +505,8 @@ test('a Short whose cut is approved goes on to its upload package', async (t) =>
   assert.match(final.summary, /^Shorts 35\.\d 秒，Shorts 自動品管 12 項全過$/);
   const metadataSha = sha256(readFileSync(path.join(directory, 'upload', 'metadata.json')));
   assert.deepEqual([publish.gate, publish.content_sha256, publish.payload.package.final_sha256, publish.payload.package.kind], ['publish', metadataSha, metadataSha, 'shorts']);
+  assert.equal(publish.payload.final_review_id, result.final.id);
+  assert.notEqual(publish.payload.final_review_id, result.publish.id);
   assert.deepEqual(publish.files.map((file) => file.role), ['metadata', 'final', 'captions_zh-TW', 'description_zh-TW'], 'no thumbnail: the site would set it on YouTube');
   assert.deepEqual(publish.files.map((file) => file.content_type), ['application/json', 'video/mp4', 'application/x-subrip', 'text/plain']);
   assert.equal(publish.summary, 'Shorts 上傳包 4 項齊全：照月曆上架');
@@ -541,8 +543,9 @@ test('what the site is told about a highlight and about a cut of another version
   const stale = finalReview({ doc: script(), qa: { ok: true, final_sha256: 'a'.repeat(64), kind: 'shorts', items: [] }, usage: null, timeline, finalSha256: 'b'.repeat(64) });
   assert.ok(!('qa' in stale.payload) && !('usage' in stale.payload), 'a report of another cut is not sent');
   assert.equal(stale.summary, 'Shorts 35.0 秒，Shorts 自動品管沒有結果');
-  const failed = publishReview({ metadata: composeMetadata({ doc: script(), finalSha256: 'f', seconds: 35 }), report: { ok: false, kind: 'shorts', final_sha256: 'm', items: [{ id: 'captions', ok: false }], checked_at: 'x' }, metadataSha256: 'm' });
+  const failed = publishReview({ metadata: composeMetadata({ doc: script(), finalSha256: 'f', seconds: 35 }), report: { ok: false, kind: 'shorts', final_sha256: 'm', items: [{ id: 'captions', ok: false }], checked_at: 'x' }, metadataSha256: 'm', finalReviewId: 'final-review' });
   assert.deepEqual([failed.summary, 'checked_at' in failed.payload.package], ['Shorts 上傳包 1 項沒過：captions', false]);
+  assert.equal(failed.payload.final_review_id, 'final-review');
   assert.equal(evidenceRole('experiments/raw outputs/plain.json'), 'evidence_experiments_raw_outputs_plain');
   assert.ok(evidenceRole(`deep/${'x'.repeat(80)}.txt`).length <= 40);
   assert.match(evidenceRole('圖片/海報.png'), /^evidence_[A-Za-z0-9_-]*$/);
