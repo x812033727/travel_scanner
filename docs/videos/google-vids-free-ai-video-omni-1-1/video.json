@@ -18,7 +18,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "用 Google 帳號免費做 AI 影片：Google Vids 的 Gemini Omni 1.1 能做什麼、額度到底多少",
-    "description": "Google Vids 開放任何 Google 帳號免費用 Gemini Omni 1.1 生成 AI 影片。這支示範怎麼做一段，並講清楚官方頁沒寫清楚的五件事。\n給想用 AI 做影片、不想付費也不想學剪輯的人。\n\n涵蓋：電腦上怎麼做一段、關分頁前要先插進 Vid、中文提示與年齡條件、手機能不能生成、上傳影片的地區限制、AI 旁白何時上線；兩份說明頁的額度為什麼寫得不一樣、SynthID 浮水印與「只供在 Vids 內使用」。本站沒有實測生成效果。",
+    "description": "Google Vids 開放任何 Google 帳號免費用 Gemini Omni 1.1 生成 AI 影片。這支示範怎麼做一段，並講清楚公告沒寫清楚的五件事，說明頁怎麼回答。\n給想用 AI 做影片、不想付費也不想學剪輯的人。\n\n涵蓋：電腦上怎麼做一段、關分頁前要先插進 Vid、中文提示與年齡條件、手機能不能生成、上傳影片的地區限制、新版 AI 旁白何時上線；兩份說明頁的額度為什麼寫得不一樣、SynthID 浮水印與「只供在 Vids 內使用」。本站沒有實測生成效果。",
     "tags": [
       "Google Vids",
       "Gemini Omni",
@@ -36,7 +36,7 @@
     "template": "thumb",
     "data": {
       "tag": "FREE AI VIDEO",
-      "headline": "Free, but\n**5 unknowns**",
+      "headline": "Free, but\n**5 catches**",
       "sub": "Google Vids · Omni 1.1"
     }
   },
@@ -65,6 +65,21 @@
       "title": "Google 說明中心：Supported languages for Google Workspace with Gemini",
       "url": "https://support.google.com/docs/answer/14925782",
       "checked_on": "2026-09-30"
+    },
+    {
+      "title": "Google 說明中心：Get started with Google Workspace with Gemini",
+      "url": "https://support.google.com/docs/answer/13952129",
+      "checked_on": "2026-09-30"
+    },
+    {
+      "title": "Google 說明中心：Get started with Google Vids",
+      "url": "https://support.google.com/docs/answer/15082958",
+      "checked_on": "2026-09-30"
+    },
+    {
+      "title": "Google Workspace Updates：Create more natural, expressive AI voiceovers in Google Vids with upgraded Gemini 3.8 Flash Lite TTS",
+      "url": "https://workspaceupdates.googleblog.com/2026/09/create-more-natural-expressive-ai-voiceovers-in-Google-Vids-with-upgraded-Gemini-3.8-Flash-Lite-TTS.html",
+      "checked_on": "2026-09-30"
     }
   ],
   "scenes": [
@@ -84,12 +99,12 @@
       "lines": [
         {
           "id": "wchu",
-          "text": "這個免費的 AI 影片工具，有五件事，Google 的官方頁沒有寫清楚。",
+          "text": "這個免費的 AI 影片工具，有五件事，Google 的公告沒有寫清楚。",
           "pause_after_ms": 900
         },
         {
           "id": "gqa7",
-          "text": "你以為免費的意思，就是官方頁什麼都寫好了。",
+          "text": "你以為公告寫了免費，就什麼都講清楚了。",
           "pause_after_ms": 600
         }
       ]
@@ -100,7 +115,7 @@
       "data": {
         "kicker": "其實",
         "text": "中文？手機？",
-        "sub": "這兩件事，官方頁都沒有一句話"
+        "sub": "這兩件事，公告裡一句都沒提"
       },
       "claims": [
         "c7",
@@ -109,7 +124,7 @@
       "lines": [
         {
           "id": "chza",
-          "text": "其實連中文提示能不能用、手機能不能做，都沒寫。"
+          "text": "其實連中文提示能不能用、手機能不能做，公告都沒寫。"
         },
         {
           "id": "yvre",
@@ -540,34 +555,34 @@
     },
     {
       "id": "unclear-table",
-      "chapter": "Google Vids AI 影片官方沒寫清楚的五件事",
+      "chapter": "Google Vids AI 影片公告沒寫清楚的五件事",
       "template": "table",
       "data": {
-        "title": "官方頁沒寫清楚的五件事",
+        "title": "公告沒寫清楚的五件事",
         "columns": [
           "事項",
-          "官方頁現況"
+          "說明頁怎麼寫"
         ],
         "rows": [
           [
             "中文提示",
-            "語言支援頁沒有 AI 影片這一列"
+            "語言表沒列；沒列的只支援英文"
           ],
           [
             "年齡條件",
-            "公告與說明頁都沒提"
+            "Gemini 入門頁：滿 18 歲"
           ],
           [
             "手機能不能生成",
-            "步驟從電腦開始，沒說手機"
+            "手機只能看，不能編輯"
           ],
           [
             "上傳影片來改",
             "只列出不能用的地區"
           ],
           [
-            "AI 旁白",
-            "寫著即將推出，沒有日期"
+            "新版 AI 旁白",
+            "9 月 29 日更新：已上線，限列名方案"
           ]
         ]
       },
@@ -605,7 +620,7 @@
         },
         {
           "id": "hqkj",
-          "text": "第五，AI 旁白什麼時候上線。",
+          "text": "第五，新版 AI 旁白什麼時候上線。",
           "reveal": 1
         },
         {
@@ -628,7 +643,7 @@
           {
             "side": "left",
             "name": "官方頁",
-            "text": "支援語言表沒有列 AI 影片生成"
+            "text": "語言表沒有 AI 影片；沒列的功能只支援英文"
           }
         ]
       },
@@ -647,7 +662,7 @@
         },
         {
           "id": "7xnu",
-          "text": "官方頁的回應是，支援語言表沒有列 AI 影片生成。",
+          "text": "官方頁的回應是，語言表沒有 AI 影片，沒列的只支援英文。",
           "reveal": 1
         }
       ]
@@ -658,18 +673,18 @@
       "data": {
         "title": "語言表與年齡",
         "left": {
-          "heading": "頁面有寫",
+          "heading": "語言表",
           "points": [
-            "圖片生成的語言",
-            "AI 旁白的語言",
-            "虛擬化身的語言"
+            "列了圖片、旁白、虛擬化身",
+            "AI 影片生成不在表上",
+            "沒列的功能：只支援英文"
           ]
         },
         "right": {
-          "heading": "頁面沒寫",
+          "heading": "年齡",
           "points": [
-            "AI 影片生成的語言",
-            "年齡條件"
+            "Gemini 入門頁：滿 18 歲",
+            "影片生成頁本身沒寫"
           ]
         }
       },
@@ -684,17 +699,17 @@
         },
         {
           "id": "vzju",
-          "text": "上面列了圖片、旁白和虛擬化身的語言。",
+          "text": "表上有圖片、旁白和虛擬化身，沒列的功能寫明只支援英文。",
           "reveal": 1
         },
         {
           "id": "fsf9",
-          "text": "AI 影片生成的語言，還有年齡條件，這幾頁都沒寫。",
+          "text": "年齡則在生成頁連到的 Gemini 入門頁，寫要滿十八歲。",
           "reveal": 1
         },
         {
           "id": "3gje",
-          "text": "能不能用中文寫提示、有沒有年齡條件，只能以登入後的畫面為準。"
+          "text": "官方的建議是，功能只支援英文時，把帳號語言改成英文。"
         }
       ]
     },
@@ -704,7 +719,7 @@
       "data": {
         "kicker": "第三件：手機",
         "text": "電腦",
-        "sub": "官方步驟都從電腦開始，沒說手機能生成"
+        "sub": "Vids 入門頁：手機只能看，不能編輯"
       },
       "claims": [
         "c3",
@@ -721,7 +736,7 @@
         },
         {
           "id": "chsh",
-          "text": "手機或平板能不能生成影片，官方沒有說明。"
+          "text": "Vids 入門頁還寫，手機只能看影片，不能編輯。"
         }
       ]
     },
@@ -769,11 +784,11 @@
       "id": "voiceover",
       "template": "bullets",
       "data": {
-        "title": "AI 旁白：即將推出",
+        "title": "新版 AI 旁白：已上線",
         "items": [
           "Gemini 3.8 Flash-Lite 文字轉語音",
-          "一百多種語言",
-          "沒有給上線日期"
+          "公告說一百多種語言",
+          "9 月 29 日更新：已上線，限列名方案"
         ]
       },
       "claims": [
@@ -782,7 +797,7 @@
       "lines": [
         {
           "id": "wga7",
-          "text": "第五件，AI 旁白。"
+          "text": "第五件，新版的 AI 旁白。"
         },
         {
           "id": "cysz",
@@ -793,12 +808,12 @@
         },
         {
           "id": "bp5e",
-          "text": "它會支援一百多種語言。",
+          "text": "公告說它會支援一百多種語言。",
           "reveal": 1
         },
         {
           "id": "u2gj",
-          "text": "旁白上線的日期，公告沒有給。",
+          "text": "九月二十九日，更新公告寫已經上線，限列名的方案。",
           "reveal": 1
         }
       ]
@@ -820,7 +835,7 @@
       "lines": [
         {
           "id": "jm3a",
-          "text": "官方頁沒寫的地方，最實際的辦法，是看自己的畫面。"
+          "text": "公告沒寫的地方，最實際的辦法，是看自己的畫面。"
         },
         {
           "id": "radj",
@@ -950,7 +965,7 @@
           [
             "用量說明頁：未另列限制時的預設",
             "500 秒",
-            "每月 1 日"
+            "頁面沒寫"
           ]
         ]
       },
@@ -962,7 +977,7 @@
       "lines": [
         {
           "id": "42a3",
-          "text": "把三個數字排在一起看，都是每月一號太平洋時間午夜重設。"
+          "text": "把三個數字排在一起看，前兩個寫每月一號太平洋時間午夜重設。"
         },
         {
           "id": "us6x",
@@ -1212,11 +1227,11 @@
       "data": {
         "title": "那五件事，現在的答案",
         "items": [
-          "中文提示：語言表沒列，看你的畫面",
-          "年齡條件：這幾頁都沒寫",
-          "手機：官方只寫電腦",
+          "中文提示：沒列的功能只支援英文",
+          "年齡條件：Gemini 入門頁寫滿 18 歲",
+          "手機：只能看，不能編輯",
           "上傳影片來改：有不能用的地區",
-          "AI 旁白：即將推出，沒有日期"
+          "新版 AI 旁白：9 月 29 日更新寫已上線"
         ]
       },
       "claims": [
@@ -1233,17 +1248,17 @@
         },
         {
           "id": "3yjx",
-          "text": "中文提示，語言表沒列，只能看你自己的畫面。",
+          "text": "中文提示，語言表沒列，沒列的功能只支援英文。",
           "reveal": 1
         },
         {
           "id": "is5i",
-          "text": "年齡條件，這幾頁都沒有寫。",
+          "text": "年齡條件，Gemini 入門頁寫要滿十八歲。",
           "reveal": 1
         },
         {
           "id": "js58",
-          "text": "手機，官方只寫了電腦。",
+          "text": "手機，只能看，不能編輯。",
           "reveal": 1
         },
         {
@@ -1253,7 +1268,7 @@
         },
         {
           "id": "y9fj",
-          "text": "AI 旁白，寫著即將推出，沒有日期。",
+          "text": "新版 AI 旁白，九月二十九日的更新寫已上線，限列名方案。",
           "reveal": 1
         }
       ]
@@ -1284,7 +1299,7 @@
         "title": "先插進 Vid，再看那五件事",
         "cta": "完整限制與兩份額度原文在說明欄的文章裡",
         "lines": [
-          "用電腦做，手機沒寫能生成",
+          "用電腦做，手機只能看",
           "做好一段先插進 Vid",
           "額度與使用範圍以官方頁為準"
         ]
