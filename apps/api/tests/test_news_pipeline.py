@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections.abc import AsyncIterator
 from copy import deepcopy
 from datetime import UTC, date, datetime, timedelta
 from pathlib import Path
@@ -43,7 +44,13 @@ from app.news_automation.models import (
     NewsPipelineRun,
     NewsSource,
 )
-from app.news_automation.policy import EVIDENCE_REFRESH_MARKER, document_fingerprint
+from app.news_automation.policy import (
+    EVIDENCE_REFRESH_MARKER,
+    document_fingerprint,
+)
+from app.news_automation.policy import (
+    hard_policy_problems as actual_hard_policy_problems,
+)
 from app.news_automation.provider_schema import portable_json_schema
 from app.news_automation.schemas import (
     CandidateAction,
@@ -1722,3 +1729,281 @@ async def test_when_every_subscription_account_is_full_the_story_waits_instead_o
     assert stored is not None
     assert (stored.status, stored.error_code) == ("discovered", "news_subscription_paused")
     assert draft_run is not None and draft_run.error_code == "subscription_quota_paused"
+
+
+def _solar_document(factor: int, locale: str = "zh-TW", *, broken: bool = False) -> GuideDocument:
+    document = news_document(f"Solar capacity {locale}").model_dump(mode="json")
+    document["blocks"] = [
+        {"type": "summary", "items": [f"Capacity can reach {factor} times.", "An official plan."]},
+        {"type": "paragraph", "text": f"太陽能可達 {factor} 倍。" if locale == "zh-TW"
+         else f"Capacity {factor} times."},
+    ]
+    if broken:
+        document["blocks"] = document["blocks"][1:]
+    return GuideDocument.model_validate(document)
+
+
+def _solar_factor(document: GuideDocument) -> int:
+    paragraph = next(block for block in document.blocks if block.type == "paragraph")
+    return int(paragraph.text.split()[1])
+
+
+async def _translate_solar(*args: Any) -> tuple[LocalizedDocument, dict[str, int], str]:
+    # Read the actual input; a canned "8" would hide translation from the stale 4x source.
+    source, locale = cast(GuideDocument, args[2]), cast(Locale, args[3])
+    return LocalizedDocument(document=_solar_document(_solar_factor(source), locale)), {}, "writer"
+
+
+SolarCandidate = tuple[async_sessionmaker[AsyncSession], UUID, UUID, dict[str, Any]]
+
+
+@pytest.fixture
+async def confirmed_solar_candidate(
+    monkeypatch: pytest.MonkeyPatch,
+) -> AsyncIterator[SolarCandidate]:
+    engine, factory = await database()
+    try:
+        async with factory() as session:
+            candidate = await seed_single_source_candidate(session)
+            owner_id = await seed_owner(session)
+            candidate_id = candidate.id
+        monkeypatch.setattr(
+            ai, "jev_duplicate_check", AsyncMock(return_value=("distinct", 0.01, []))
+        )
+        mocks = stage_one_mocks(monkeypatch)
+        draft, usage, model = mocks["draft"].return_value
+        mocks["draft"].return_value = (
+            draft.model_copy(update={"document": _solar_document(4)}), usage, model
+        )
+        stage_two_mocks(monkeypatch)
+        mocks["solar_translate"] = AsyncMock(side_effect=_translate_solar)
+        mocks["solar_review"] = AsyncMock(
+            return_value=(LocaleReviewResult(verdict="pass"), {}, "checker")
+        )
+        monkeypatch.setattr(ai, "translate_article", mocks["solar_translate"])
+        monkeypatch.setattr(ai, "review_locale", mocks["solar_review"])
+
+        def summary_check(document: GuideDocument, *args: Any, **kwargs: Any) -> list[str]:
+            # Exercise the real hard-check rejection while keeping this fixture independent
+            # of generated artwork and the unrelated publication layout requirements.
+            return [
+                problem for problem in actual_hard_policy_problems(document, *args, **kwargs)
+                if problem.startswith("news_summary:")
+            ]
+
+        monkeypatch.setattr(pipeline, "hard_policy_problems", summary_check)
+        await confirm(factory, candidate_id, owner_id)
+        yield factory, candidate_id, owner_id, mocks
+    finally:
+        await engine.dispose()
+
+
+@pytest.mark.parametrize("english_edit_falls_back", [False, True])
+@pytest.mark.asyncio
+async def test_final_source_fact_reaches_translations_reviews_and_foreign_edit_fallback(
+    monkeypatch: pytest.MonkeyPatch,
+    confirmed_solar_candidate: SolarCandidate,
+    english_edit_falls_back: bool,
+) -> None:
+    factory, candidate_id, _owner_id, mocks = confirmed_solar_candidate
+    final_sources: list[tuple[str, int]] = []
+    retried: list[str] = []
+
+    async def final_edit(
+        *args: Any, problems: list[str] | None = None
+    ) -> tuple[LocaleReviewResult, dict[str, int], str]:
+        locale = cast(Locale, args[3])
+        final_sources.append((locale, _solar_factor(args[2])))
+        if problems:
+            retried.append(locale)
+        if locale == "zh-TW":
+            corrected = _solar_document(8)
+        elif locale == "en" and english_edit_falls_back:
+            corrected = _solar_document(64, "en", broken=True)
+        else:
+            return LocaleReviewResult(verdict="pass"), {}, "editor"
+        return LocaleReviewResult(verdict="revise", corrected_document=corrected), {}, "editor"
+
+    monkeypatch.setattr(ai, "final_edit", final_edit)
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        stored = await session.get(NewsCandidate, candidate_id)
+        assert stored is not None
+        saved = {
+            row.locale: GuideDocument.model_validate(row.draft_json)
+            for row in await session.scalars(select(GuideArticleLocale))
+        }
+        assessments = list(await session.scalars(select(NewsAssessment)))
+        stages = list(await session.scalars(
+            select(NewsPipelineRun.stage).where(NewsPipelineRun.candidate_id == candidate_id)
+            .order_by(NewsPipelineRun.started_at)
+        ))
+        assert _solar_factor(GuideDocument.model_validate(stored.draft_bundle_json["zh-TW"])) == 8
+    assert result == "published"
+    assert {locale: _solar_factor(doc) for locale, doc in saved.items()} == {
+        "zh-TW": 8, "zh-CN": 8, "en": 8, "ja": 8, "ko": 8,
+    }
+    assert stages.index("final-edit-zh-TW") < stages.index("translation-zh-CN")
+    assert [call.args[3] for call in mocks["solar_translate"].await_args_list] == [
+        "zh-CN", "en", "ja", "ko"
+    ]
+    assert all(
+        _solar_factor(call.args[2]) == 8 for call in mocks["solar_translate"].await_args_list
+    )
+    assert len(mocks["solar_review"].await_args_list) == 4
+    assert all(
+        (_solar_factor(call.args[2]), _solar_factor(call.args[4])) == (8, 8)
+        for call in mocks["solar_review"].await_args_list
+    )
+    assert final_sources == [
+        ("zh-TW", 4), ("zh-CN", 8), ("en", 8),
+        *([("en", 8)] if english_edit_falls_back else []), ("ja", 8), ("ko", 8),
+    ]
+    assert retried == (["en"] if english_edit_falls_back else [])
+    final_en = next(row for row in assessments
+                    if row.locale == "en" and row.details_json.get("stage") == "final_edit")
+    assert final_en.details_json["document_sha256"] == document_fingerprint(saved["en"])
+    assert final_en.details_json["source_document_sha256"] == document_fingerprint(saved["zh-TW"])
+    assert (
+        any("was not kept" in reason for reason in final_en.reasons_json) == english_edit_falls_back
+    )
+    mocks["draft"].assert_awaited_once()
+
+
+@pytest.mark.parametrize("second_edit_passes", [False, True])
+@pytest.mark.asyncio
+async def test_final_source_uses_only_the_accepted_zh_edit_after_hard_check_retry(
+    monkeypatch: pytest.MonkeyPatch,
+    confirmed_solar_candidate: SolarCandidate,
+    second_edit_passes: bool,
+) -> None:
+    factory, candidate_id, _owner_id, mocks = confirmed_solar_candidate
+    corrections: list[list[str] | None] = []
+
+    async def final_edit(
+        *args: Any, problems: list[str] | None = None
+    ) -> tuple[LocaleReviewResult, dict[str, int], str]:
+        if args[3] != "zh-TW":
+            return LocaleReviewResult(verdict="pass"), {}, "editor"
+        corrections.append(problems)
+        corrected = _solar_document(8, broken=not (problems and second_edit_passes))
+        return LocaleReviewResult(verdict="revise", corrected_document=corrected), {}, "editor"
+
+    monkeypatch.setattr(ai, "final_edit", final_edit)
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        stored = await session.get(NewsCandidate, candidate_id)
+        assert stored is not None
+        source = await service.verified_zh_draft(session, stored)
+        factors = {
+            row.locale: _solar_factor(GuideDocument.model_validate(row.draft_json))
+            for row in await session.scalars(select(GuideArticleLocale))
+        }
+        zh_edits = [row for row in await session.scalars(select(NewsAssessment))
+                    if row.locale == "zh-TW" and row.details_json.get("stage") == "final_edit"]
+    expected = 8 if second_edit_passes else 4
+    assert result == "published" and set(factors.values()) == {expected}
+    assert source is not None and _solar_factor(source) == expected
+    assert corrections == [None, ["news_summary: a summary block is required"]]
+    assert len(zh_edits) == 1 and zh_edits[0].details_json["revised"] is second_edit_passes
+    assert all(
+        _solar_factor(call.args[2]) == expected for call in mocks["solar_translate"].await_args_list
+    )
+    assert mocks["solar_translate"].await_count == 4
+
+
+@pytest.mark.asyncio
+async def test_final_source_manual_hold_blocks_publication_and_jevs_last_call(
+    monkeypatch: pytest.MonkeyPatch, confirmed_solar_candidate: SolarCandidate,
+) -> None:
+    factory, candidate_id, _owner_id, mocks = confirmed_solar_candidate
+
+    async def final_edit(*args: Any) -> tuple[LocaleReviewResult, dict[str, int], str]:
+        if args[3] == "zh-TW":
+            return (
+                LocaleReviewResult(verdict="manual", issues=["Check the capacity claim"]),
+                {}, "editor",
+            )
+        return LocaleReviewResult(verdict="pass"), {}, "editor"
+
+    monkeypatch.setattr(ai, "final_edit", final_edit)
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        stored = await session.get(NewsCandidate, candidate_id)
+        assert stored is not None
+        assert (stored.status, stored.error_code, stored.human_decision) == (
+            "manual_review", "news_final_edit_hold", "publish"
+        )
+        assert "zh-TW" in (stored.error_detail or "")
+        locales = list(await session.scalars(select(GuideArticleLocale)))
+        held = [row for row in await session.scalars(select(NewsAssessment))
+                if row.locale == "zh-TW" and row.details_json.get("stage") == "final_edit"]
+    assert result == "manual_review"
+    assert len(locales) == 5 and all(row.published_version is None for row in locales)
+    assert len(held) == 1 and held[0].verdict == "manual"
+    assert held[0].reasons_json == ["Check the capacity claim"]
+    assert mocks["jev_locales"] == [("zh-TW",)]
+
+
+@pytest.mark.asyncio
+async def test_final_source_and_verification_survive_translation_failure_and_owner_requeue(
+    monkeypatch: pytest.MonkeyPatch, confirmed_solar_candidate: SolarCandidate,
+) -> None:
+    factory, candidate_id, owner_id, mocks = confirmed_solar_candidate
+    final_edit = AsyncMock(return_value=(
+        LocaleReviewResult(verdict="revise", corrected_document=_solar_document(8)), {}, "editor"
+    ))
+    monkeypatch.setattr(ai, "final_edit", final_edit)
+    observed_before_failure: list[tuple[int, bool]] = []
+
+    async def fail_translation(*args: Any) -> tuple[LocalizedDocument, dict[str, int], str]:
+        async with factory() as persisted:
+            stored = await persisted.get(NewsCandidate, candidate_id)
+            assert stored is not None
+            saved_source = GuideDocument.model_validate(stored.draft_bundle_json["zh-TW"])
+            verified = await service.verified_zh_draft(persisted, stored)
+            observed_before_failure.append((_solar_factor(saved_source), verified is not None))
+        raise AppError(503, "test_translation_unavailable", "Translator temporarily unavailable")
+
+    failed_translate = AsyncMock(side_effect=fail_translation)
+    monkeypatch.setattr(ai, "translate_article", failed_translate)
+    async with factory() as session:
+        with pytest.raises(AppError, match="Translator temporarily unavailable"):
+            await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+    assert observed_before_failure == [(8, True)], (
+        "the source and verification commit before translation"
+    )
+    final_edit.assert_awaited_once()
+    failed_translate.assert_awaited_once()
+    async with factory() as session:
+        stored = await session.get(NewsCandidate, candidate_id)
+        owner = await session.get(User, owner_id)
+        assert stored is not None and owner is not None
+        assert (stored.status, stored.human_decision, stored.guide_article_id) == (
+            "failed", "publish", None
+        )
+        source = GuideDocument.model_validate(stored.draft_bundle_json["zh-TW"])
+        verification = await session.scalar(
+            select(NewsAssessment).where(
+                NewsAssessment.candidate_id == candidate_id,
+                NewsAssessment.assessment_type == "verification",
+            ).order_by(NewsAssessment.created_at.desc()).limit(1)
+        )
+        assert verification is not None
+        assert verification.details_json["document_sha256"] == document_fingerprint(source)
+        queued = await service.approve_candidate(
+            session, owner, candidate_id, CandidateAction(reason="Retry the recovered translator")
+        )
+        assert queued.status == "discovered"
+    monkeypatch.setattr(ai, "final_edit", AsyncMock(return_value=(
+        LocaleReviewResult(verdict="pass"), {}, "editor"
+    )))
+    monkeypatch.setattr(ai, "translate_article", mocks["solar_translate"])
+    async with factory() as session:
+        assert await pipeline.process_candidate(
+            session, Mock(), get_settings(), candidate_id
+        ) == "published"
+        factors = [_solar_factor(GuideDocument.model_validate(row.draft_json))
+                   for row in await session.scalars(select(GuideArticleLocale))]
+    assert factors == [8] * 5
+    mocks["draft"].assert_awaited_once()
