@@ -506,5 +506,57 @@
       "verdict": "ok",
       "notes": "最重三處：(1) 第五節與 FAQ 4 刪掉「比照 Opus 5.5 部署類似的防護」——公告、System Card 摘要、§1.5、§3.3 四處說法不一致，照協調者裁定不挑一個寫；並補上 System Card §3.3「使用者應預期拒絕變多，即使是無害的資安相關任務」。(2) 方案層級與 Sonnet 5 停用的否定句限縮到「這幾頁、查核日」。(3) summary 第 2 點「通常需要少得多的 tokens」原本不在正文，補進第二節第一段，並把「自己測試的說法」改成「Anthropic 的說法」（公告這句沒有說是測試）。另有評測但書「使用中」→「測試中」、GDPval 註腳補「Anthropic 發現」與 degrade 的語意、第二節小標加歸因。自檢 exit 0、零 FAIL、段落 2,925 字。"
     }
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Same-price new Sonnet",
+      "diagram": {
+        "title": "Four things about Sonnet 5.5",
+        "caption": "Claude Sonnet 5.5's list prices, use in Claude.ai, developer platforms and the System Card's safety threshold determination, compiled from Anthropic's announcement, model page, product page and System Card, checked September 30, 2026.",
+        "nodes": [
+          [
+            "Same list price",
+            "Same as Sonnet 5"
+          ],
+          [
+            "Chat access",
+            "Web, iOS and Android"
+          ],
+          [
+            "Developers",
+            "API and cloud platforms"
+          ],
+          [
+            "Safety threshold",
+            "No new RSP threshold crossed"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "同价新版 Sonnet",
+      "diagram": {
+        "title": "Sonnet 5.5 上线看四点",
+        "caption": "Claude Sonnet 5.5 的标价、Claude.ai 使用、开发者平台与 System Card 安全门槛判定，依 Anthropic 公告、模型页、产品页与 System Card 整理，查核日 2026 年 9 月 30 日。",
+        "nodes": [
+          [
+            "标价不变",
+            "与 Sonnet 5 相同"
+          ],
+          [
+            "聊天使用",
+            "网页、iOS、Android"
+          ],
+          [
+            "开发者",
+            "API 与云平台"
+          ],
+          [
+            "安全门槛",
+            "未跨新 RSP 门槛"
+          ]
+        ]
+      }
+    }
   }
 }
