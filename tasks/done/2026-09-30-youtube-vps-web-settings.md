@@ -1,13 +1,13 @@
 ---
 id: 2026-09-30-youtube-vps-web-settings
 title: Configure the VPS YouTube uploader from video settings
-status: review
+status: done
 priority: P1
 area: api
 owner: codex-vps-web-settings
 claimed_at: 2026-09-30T12:14:39Z
 created_at: 2026-09-30T12:06:46Z
-completed_at:
+completed_at: 2026-09-30T12:56:52Z
 branch: codex/youtube-vps-web-settings-20260930
 depends_on: []
 scope:
@@ -56,7 +56,7 @@ actually uses. Service connectivity and Google login must remain distinct states
 - [x] Test connection reports reachability/channel match without claiming Google login.
 - [x] A separate remote-desktop link lets the owner complete VPS browser login.
 - [x] Changing the connection cannot orphan active uploader jobs or bypass duplicate-upload guards.
-- [ ] Five-language UI copy, focused regressions and required local checks pass.
+- [x] Five-language UI copy, focused regressions and required local checks pass.
 
 ## Steps
 
@@ -65,7 +65,7 @@ actually uses. Service connectivity and Google login must remain distinct states
 - [x] Implement persistent backend configuration, runtime resolution and connection test.
 - [x] Add the website settings card and links from blocked upload states.
 - [x] Add active job counts to the service status endpoint and verify its tests.
-- [ ] Validate, independently review, record limitations and open a draft PR.
+- [x] Validate, independently review, record limitations and open draft PR #1046.
 
 ## How to verify
 
@@ -103,6 +103,12 @@ execution and acceptance; they are not completion claims for this code change.
   Five-locale namespace validation passed; separate VPS catalog key alignment is
   covered by component tests. Tool suite: 951 passed, 2 skipped. Uploader service
   suite: 13 passed in the delegated run (11 service tests rechecked by root).
+- Full web regressions: 335 files, 3,626 tests passed with bundled Node 24.19;
+  existing isolation and fileParallelism settings retained (21m19s).
+- Draft PR: https://github.com/x812033727/travel_scanner/pull/1046. Rebased onto
+  origin/main 3ead85be; the intervening commits record branding deployment and
+  DevDay video authoring artifacts, without changes to this feature's code.
+  CI is still in progress. The PR remains a draft; no merge or deployment occurred.
 - Local website/browser acceptance remains unverified: the local mock API and
   Next server started, but IAB attachment/focus commands repeatedly timed out.
   No form save, connection-test action or screenshot was completed in the browser.
