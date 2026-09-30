@@ -6,6 +6,7 @@ import path from "node:path";
 
 import { EXIT, main } from "../cli.mjs";
 import { approve } from "../core/approvals.mjs";
+import { presentationTimeline } from "../core/branding.mjs";
 import { compilationDocument, compilationLayout, compilationTimeline } from "../core/compilation.mjs";
 import { fixture } from "../core/fixtures/load.mjs";
 import { DESCRIPTION_MAX_BYTES } from "../core/metadata.mjs";
@@ -13,10 +14,35 @@ import { estimateTimeline } from "../core/timeline.mjs";
 import { audioReviewHtml, finalReviewHtml } from "../review/pages.mjs";
 import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeTranslations } from "../compile/fixture.mjs";
 import { compilationSection, composeMetadata, uploadChecklist } from "./metadata.mjs";
-import { linkOrCopy, skippedCaptionLocales } from "./cli.mjs";
+import { captionsCurrent, linkOrCopy, skippedCaptionLocales } from "./cli.mjs";
 
 const doc = fixture();
 const timeline = { ...estimateTimeline(doc), speech_hash: "abc123" };
+
+test("branded metadata shifts later chapters five seconds while retaining a valid opening chapter", () => {
+  const applied = { hash: "a".repeat(64), intro_frames: 150, outro_frames: 90 };
+  const presented = presentationTimeline(timeline, applied);
+  const { metadata, problems } = composeMetadata({ doc, timeline: presented, translations: { en: { title: "Title", description: "Body", chapters: { hook: "Opening" } } } });
+  assert.deepEqual(problems, []);
+  assert.equal(metadata.chapters.length, timeline.chapters.length, "no invalid five-second standalone brand chapter");
+  assert.deepEqual(metadata.chapters[0], { at: "00:00", title: "開場" });
+  assert.match(metadata.localizations.en.description, /Chapters\n00:00 Opening\n/);
+  assert.equal(presented.chapters[1].start_frame, timeline.chapters[1].start_frame + 150);
+  const expectedSeconds = Math.floor(timeline.chapters[1].start_frame / 30) + 5;
+  const stamp = `${Math.floor(expectedSeconds / 60).toString().padStart(2, "0")}:${(expectedSeconds % 60).toString().padStart(2, "0")}`;
+  assert.equal(metadata.chapters[1].at, stamp);
+  assert.ok(metadata.description.includes(`\n${stamp} `));
+});
+
+test("caption reuse is bound to the applied brand, including transitions to and from legacy cuts", () => {
+  const manifest = { speech_hash: "speech", locales: { "zh-TW": {} }, skipped: {} };
+  assert.equal(captionsCurrent(manifest, "speech", ["zh-TW"], {}), true);
+  assert.equal(captionsCurrent(manifest, "speech", ["zh-TW"], {}, "brand-a"), false);
+  const branded = { ...manifest, branding_hash: "brand-a" };
+  assert.equal(captionsCurrent(branded, "speech", ["zh-TW"], {}, "brand-a"), true);
+  assert.equal(captionsCurrent(branded, "speech", ["zh-TW"], {}, "brand-b"), false);
+  assert.equal(captionsCurrent(branded, "speech", ["zh-TW"], {}), false);
+});
 
 test("zh-TW metadata carries the composed description with chapters and sources", () => {
   const { problems, metadata } = composeMetadata({ doc, timeline });

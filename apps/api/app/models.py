@@ -2305,7 +2305,14 @@ class VideoReview(Timestamped, Base):
 
     __tablename__ = "video_reviews"
     __table_args__ = (
-        UniqueConstraint("project_id", "gate", "content_sha256", name="uq_video_review_content"),
+        UniqueConstraint(
+            "project_id",
+            "gate",
+            "content_sha256",
+            "revision",
+            name="uq_video_review_content_revision",
+        ),
+        CheckConstraint("revision >= 0", name="ck_video_review_revision"),
         # look and storyboard are the drama format's gates (docs/videos/DRAMA.md; migration 0095);
         # script is an episode's screenplay before any image or clip is paid for
         # (docs/videos/SERIES.md; migration 0099); dubs is a batch of finished dub tracks the
@@ -2330,6 +2337,8 @@ class VideoReview(Timestamped, Base):
     # Which of a gate's several reviews this is (a look review per character); None for the rest.
     subject: Mapped[str | None] = mapped_column(String(40), nullable=True)
     content_sha256: Mapped[str] = mapped_column(String(64))
+    # A new decision about changed evidence can retain the same media bytes and their hash.
+    revision: Mapped[int] = mapped_column(Integer, default=0, server_default=text("0"))
     summary: Mapped[str] = mapped_column(String(500))
     payload: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
     # [{role, sha256, size, content_type}], each a file in the review store.

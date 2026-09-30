@@ -6,14 +6,16 @@
 // under the voice as final.mp4 has. A window that cannot fit even at MAX_TEMPO is
 // reported with a character budget per line, for the translator to shorten, and no track is
 // written for that locale until it does.
-import { existsSync, mkdirSync, readFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, renameSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
 
 import { measureMixArgs, mixArgs } from "../assemble/drama.mjs";
+import { verifyBrandingAssets, wrapAudio } from "../assemble/branding.mjs";
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { musicInputs, sfxInputs } from "../assemble/sound.mjs";
 import { isDrama, mixHash, resolveMusic, resolveSfx, sfxHash } from "../core/drama.mjs";
+import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { eachLine, LOCALES } from "../core/schema.mjs";
 import { ARTIFACTS, dubArtifacts, lintProject, loadProject, recordStage } from "../core/state.mjs";
@@ -250,15 +252,25 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
   if (!ffmpeg.tools) ffmpeg.tools = await ffmpeg.locate(ctx.env);
   const track = files.track(values.format);
   mkdirSync(path.dirname(track), { recursive: true });
+  const checks = readJson(path.join(workdir, ARTIFACTS.checks), null);
+  const branding = appliedBranding(checks);
+  const selection = readBranding(workdir);
+  if (!brandingCurrent(checks, selection)) throw new UsageError("channel branding changed; run assemble before dub");
+  const bodyTrack = branding ? path.join(files.dir, `body.${values.format}`) : track;
   const sound = await dubSound(project.doc, timeline, workdir, workBase);
   if (sound.track || sound.sfxFile) {
     // The same bed, ducking and effects as the cut's audio (assemble/cli.mjs), in the upload format.
     const totalSeconds = timeline.total_frames / FPS;
     const measured = parseLoudnorm((await ffmpeg.run(ffmpeg.tools.ffmpeg, measureMixArgs(files.narration, sound.track?.file ?? null, sound.music, totalSeconds, sound.sfxFile))).stderr);
-    await ffmpeg.run(ffmpeg.tools.ffmpeg, mixArgs(files.narration, sound.track?.file ?? null, sound.music, totalSeconds, measured, track, sound.sfxFile, CODECS[values.format]));
+    await ffmpeg.run(ffmpeg.tools.ffmpeg, mixArgs(files.narration, sound.track?.file ?? null, sound.music, totalSeconds, measured, bodyTrack, sound.sfxFile, CODECS[values.format]));
   } else {
     const loudness = parseLoudnorm((await ffmpeg.run(ffmpeg.tools.ffmpeg, measureLoudnessArgs(files.narration))).stderr);
-    await ffmpeg.run(ffmpeg.tools.ffmpeg, encodeArgs(files.narration, loudness, track, values.format));
+    await ffmpeg.run(ffmpeg.tools.ffmpeg, encodeArgs(files.narration, loudness, bodyTrack, values.format));
+  }
+  if (branding) {
+    const partial = path.join(files.dir, `branded.partial.${values.format}`);
+    await wrapAudio({ tools: ffmpeg.tools, exec: ffmpeg.run, bodyFile: bodyTrack, bodyFrames: timeline.total_frames, branding: selection, outFile: partial, outputCodec: CODECS[values.format] });
+    renameSync(partial, track);
   }
   const record = {
     locale,
@@ -278,7 +290,7 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
     windows: fit.windows,
     lines,
   };
-  atomicWrite(files.timeline, `${JSON.stringify(record, null, 2)}\n`);
+  atomicWrite(files.timeline, `${JSON.stringify(presentationTimeline(record, branding), null, 2)}\n`);
   recordStage(workdir, "dub", { locale, requests: requests.length, synthesized: pending.length, billable, fallbacks, tempo_max: tempoMax, over: 0, file: path.basename(track) }, ctx.now());
   const sped = windows.filter((window) => window.tempo > 1).length;
   const carried = [sound.track ? "music bed" : null, sound.sfxFile ? "sound effects" : null].filter(Boolean);
@@ -335,9 +347,19 @@ async function dub(args, ctx) {
   const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
   if (!timeline) throw new UsageError("no timeline.json yet; run tts first");
   if (timeline.speech_hash !== speechHash(doc, project.lexicon)) throw new UsageError("timeline.json was built for an older script; run tts again");
+  const checks = readJson(path.join(workdir, ARTIFACTS.checks), null);
+  const selection = readBranding(workdir);
+  if (!brandingCurrent(checks, selection)) throw new UsageError("channel branding changed; run assemble before dub");
+  if (checks?.branding && (checks.speech_hash !== timeline.speech_hash || checks.branding.body_frames !== timeline.total_frames)) throw new UsageError("branded cut was made for another body timeline; run assemble before dub");
   const dubs = values.locales.map((locale) => prepare(project, locale, values, workdir));
 
   if (values["dry-run"]) return dryRun(dubs, project, timeline, ctx, readCredentials({ env: ctx.env, home: ctx.home }));
+
+  const ffmpeg = { locate: ctx.ffmpeg?.locate ?? locateFfmpeg, run: ctx.ffmpeg?.run ?? runTool, tools: null };
+  if (selection) {
+    ffmpeg.tools = await ffmpeg.locate(ctx.env);
+    await verifyBrandingAssets(selection, { tools: ffmpeg.tools, exec: ffmpeg.run });
+  }
 
   const credentials = requireCredentials(ctx);
   const clientOpts = clientOptions(ctx, credentials);
@@ -347,7 +369,6 @@ async function dub(args, ctx) {
   const needed = dubs.filter((dub) => !dub.missing.length).reduce((sum, dub) => sum + dub.requests.filter((request) => !request.lines.every((line) => [line.key, request.key].includes(dub.cache.lines[line.id]) && existsSync(path.join(dub.files.audio, `${line.id}.wav`)))).reduce((inner, request) => inner + billableForRequest(request.body), 0), 0);
   if (remaining !== null && needed > remaining) throw new SpeechError(`about ${needed} billable characters needed, ${remaining} left this month`, { code: "video_speech_budget_exhausted" });
 
-  const ffmpeg = { locate: ctx.ffmpeg?.locate ?? locateFfmpeg, run: ctx.ffmpeg?.run ?? runTool, tools: null };
   let worst = EXIT.ok;
   for (const dub of dubs) {
     const code = await dubLocale(dub, project, timeline, values, ctx, clientOpts, ffmpeg, workdir, workBase);
