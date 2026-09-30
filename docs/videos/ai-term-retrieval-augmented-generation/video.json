@@ -120,7 +120,7 @@
       "lines": [
         {
           "id": "rgl64",
-          "text": "十分鐘，看懂 RAG 的三步，還有它怎麼拿著證據答錯。"
+          "text": "十分鐘，看懂 RAG，檢索增強生成的三步，和它怎麼拿著證據答錯。"
         }
       ]
     },
@@ -155,7 +155,7 @@
         },
         {
           "id": "rgtjf",
-          "text": "示意的回覆是：可以，一律全額退，依據二〇二五年版規則。",
+          "text": "示意的回覆是：可以，課程費一律全退，依據二〇二五年版規則。",
           "reveal": 1
         }
       ]
@@ -176,6 +176,21 @@
         {
           "id": "rg2ka",
           "text": "換作是你，會不會就信了？"
+        }
+      ]
+    },
+    {
+      "id": "s-colleague",
+      "template": "shot",
+      "data": {
+        "prompt": "an open-plan office at dusk, one anonymous figure handing a printed reply slip across a low partition to a colleague who is already reaching for a stapler, a shelf of binders behind them; medium shot, the slip at centre",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "0w7b7o",
+          "text": "如果你是管公司知識庫的人，同事拿到這句，還會再翻規章嗎？"
         }
       ]
     },
@@ -240,7 +255,7 @@
       "lines": [
         {
           "id": "rg2m7",
-          "text": "第一段，現行的退費規則，今年的版本，開課前七天以上取消全退。",
+          "text": "第一段，現行的退費規則，今年的版本，開課前七天以上取消，退課程費全額。",
           "reveal": 1
         },
         {
@@ -293,6 +308,25 @@
       ]
     },
     {
+      "id": "s-second-card",
+      "template": "shot",
+      "data": {
+        "prompt": "a single blank index card standing upright on a small wooden easel, two coloured ribbons running from it to two closed binders on either side; close-up, dark backdrop, lamp from above",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c5",
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "0zvk9v7b",
+          "text": "第二名是課程分類：陶藝班算手作課，適用哪幾條，沒說退多少。"
+        }
+      ]
+    },
+    {
       "id": "s-last-card",
       "template": "shot",
       "data": {
@@ -333,6 +367,24 @@
         {
           "id": "rgz0e",
           "text": "它沒有亂編。"
+        }
+      ]
+    },
+    {
+      "id": "s-right-answer",
+      "template": "shot",
+      "data": {
+        "prompt": "two paper slips clipped together with one brass paperclip lying on a desk blotter, a small tear-off calendar and a taped cardboard box beside them; top-down view, the clipped slips at centre",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "1d99",
+          "text": "照現行規則和例外，該答的是課程費看天數，材料費採購後不退。"
         }
       ]
     },
@@ -412,6 +464,24 @@
       ]
     },
     {
+      "id": "s-not-a-db",
+      "template": "shot",
+      "data": {
+        "prompt": "a card cabinet with one open drawer bolted side by side to a small writing desk holding a pen and a blank sheet, the two joined by a brass hinge, standing alone in an empty room; straight-on wide shot",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "39i2gl80",
+          "text": "它不是一個裝資料的資料庫，是一種先找再答的組合方式。"
+        }
+      ]
+    },
+    {
       "id": "s-receipt",
       "template": "shot",
       "data": {
@@ -427,6 +497,24 @@
         {
           "id": "rgmi0",
           "text": "拿錯了，照樣蓋章。"
+        }
+      ]
+    },
+    {
+      "id": "s-clue-tag",
+      "template": "shot",
+      "data": {
+        "prompt": "a paper tag on a string dangling from a thick bound document that hangs on a brass hook on a bare wall, the tag lit by a small spotlight; close-up from the side",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "6m5s",
+          "text": "我的看法是，引用只是可以點開核對的線索，不是正確的保證。"
         }
       ]
     },
@@ -609,6 +697,25 @@
       ]
     },
     {
+      "id": "s-tab-folders",
+      "template": "shot",
+      "data": {
+        "prompt": "an anonymous figure at a tall filing cabinet pressing coloured edge tabs onto a row of folders, a date stamp and an ink pad on the cabinet top; medium shot from the side, warm office light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "claims": [
+        "c4",
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "71j7e1w",
+          "text": "如果你在公司裡管文件，第一步就是你的事：哪一版、誰能看，先標好。"
+        }
+      ]
+    },
+    {
       "id": "index-care",
       "template": "bullets",
       "data": {
@@ -637,6 +744,24 @@
           "id": "rgdgg",
           "text": "版本更新，要讓舊段落退出，不能只是把新版丟進去一起排名。",
           "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "s-three-desks",
+      "template": "shot",
+      "data": {
+        "prompt": "one wooden tray passed hand to hand between three anonymous figures seated at three small desks in a line, chalk arrows on the floor between the desks; top-down view of the whole row",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "80yflb",
+          "text": "三步是不是同一個服務做的，不影響分工，拆開看才知道修哪裡。"
         }
       ]
     },
@@ -691,6 +816,28 @@
         {
           "id": "rg05s",
           "text": "一種鎖在模型參數裡，一種放在外面的索引裡，可以隨時換。"
+        }
+      ]
+    },
+    {
+      "id": "s-calendar-swap",
+      "template": "shot",
+      "data": {
+        "prompt": "a wall calendar with a page being torn off by an anonymous hand, beneath it an open card drawer receiving a fresh stack of cards, while a heavy sealed vault door in the far background stays shut; medium shot",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "88iewhp",
+          "text": "外面那份資料只在作答當下用。"
+        },
+        {
+          "id": "8nua3lc",
+          "text": "資料更新和模型訓練，從此分開。"
         }
       ]
     },
@@ -822,6 +969,24 @@
       ]
     },
     {
+      "id": "s-ladder",
+      "template": "shot",
+      "data": {
+        "prompt": "a tall wooden ladder leaning against a dark wall, a paper slip resting on each of six rungs, the lowest slip torn and dangling, the top slip yellowed; low angle from the foot of the ladder",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "ceyi",
+          "text": "第一題裡，停辦公告排第四，報名方式第五，都在例外條款前面。"
+        }
+      ]
+    },
+    {
       "id": "s-scale",
       "template": "shot",
       "data": {
@@ -873,7 +1038,7 @@
       "lines": [
         {
           "id": "rgicb",
-          "text": "第三種，解讀過頭：條文寫材料費另計，模型把它接成全額退。"
+          "text": "第三種，解讀過頭：條文寫材料費另計，模型可能把它接成全額退。"
         }
       ]
     },
@@ -896,6 +1061,25 @@
         {
           "id": "rgcbe",
           "text": "這就是拿著證據答錯。"
+        }
+      ]
+    },
+    {
+      "id": "s-curtain",
+      "template": "shot",
+      "data": {
+        "prompt": "a small theatre stage with the curtain still closed and the spotlight off, two paper slips already crumpled on the stage floor in front of the curtain, a third slip standing untouched; wide shot from the seats",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c11",
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "dteh",
+          "text": "前兩種，模型還沒出場就錯了；第三種，才是模型讀錯。"
         }
       ]
     },
@@ -933,6 +1117,24 @@
       ]
     },
     {
+      "id": "s-pegboard",
+      "template": "shot",
+      "data": {
+        "prompt": "a metal tag with a unique notch pattern being fitted by an anonymous hand into the one matching slot on a pegboard full of many similar slots; close-up, cool workshop light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "dxot71s",
+          "text": "反過來，題目裡有精確的課程代碼時，只靠語意相近也未必好。"
+        }
+      ]
+    },
+    {
       "id": "s-notice-thread",
       "template": "shot",
       "data": {
@@ -947,6 +1149,24 @@
         {
           "id": "rge28",
           "text": "第三題找對了停辦公告，公告卻說，依二〇二五年版規則辦理。"
+        }
+      ]
+    },
+    {
+      "id": "s-net",
+      "template": "shot",
+      "data": {
+        "prompt": "a fishing net being hauled up from dark water by an anonymous figure in a small boat, five pale paper slips caught in the mesh, one yellowed slip still sinking below the surface; medium shot, moonlit",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "e5pqgb80",
+          "text": "可是在這一題，舊版規則只排第五，靠關鍵字，它不會自己浮上來。"
         }
       ]
     },
@@ -986,7 +1206,25 @@
       "lines": [
         {
           "id": "rg4e0",
-          "text": "不能拿最新文件回答所有年份，也不能因為文句像就忽略時點。"
+          "text": "不能拿最新的文件回答所有年份，文句再像，也要看是哪一年的。"
+        }
+      ]
+    },
+    {
+      "id": "s-lift-sheet",
+      "template": "shot",
+      "data": {
+        "prompt": "an anonymous figure at a reading desk lifting the top sheet of a stapled reply with one finger to peek at the clause pinned underneath, a cup of tea beside; close-up over the shoulder",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "ej39",
+          "text": "如果你是拿到答案的人，別急著看結論，先點開它引的那一段。"
         }
       ]
     },
@@ -1095,6 +1333,24 @@
       ]
     },
     {
+      "id": "s-two-tags",
+      "template": "shot",
+      "data": {
+        "prompt": "a reply sheet with faint ruled lines lying on a desk, two ribbon tags pinned at two different lines, one green and one amber, a rubber stamp resting beside it; top-down close-up",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "claims": [
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "hvn67",
+          "text": "答對的樣子是：課程費可能退，材料費要看採購狀態，各引各的條文。"
+        }
+      ]
+    },
+    {
       "id": "s-empty-drawer",
       "template": "shot",
       "data": {
@@ -1126,7 +1382,11 @@
       "lines": [
         {
           "id": "rgbtf",
-          "text": "還是漏掉材料費，就查指令、上下文的排列和答案驗證。"
+          "text": "還是漏掉材料費？"
+        },
+        {
+          "id": "uzkq0xi",
+          "text": "就查指令、上下文的排列和答案驗證。"
         }
       ]
     },
@@ -1221,6 +1481,28 @@
       ]
     },
     {
+      "id": "s-empty-hole",
+      "template": "shot",
+      "data": {
+        "prompt": "a wall of pigeonholes with every slot stuffed with papers except one empty slot at eye level, an anonymous figure standing before it with open empty hands; straight-on medium shot",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "io8t",
+          "text": "沒搜到例外，不等於沒有例外。"
+        },
+        {
+          "id": "k6is",
+          "text": "只有一般規則時，它該說資料不足。"
+        }
+      ]
+    },
+    {
       "id": "checklist",
       "template": "bullets",
       "data": {
@@ -1283,6 +1565,28 @@
       ]
     },
     {
+      "id": "s-stopwatch",
+      "template": "shot",
+      "data": {
+        "prompt": "a stopwatch lying on a fresh stack of paper in a printer's output tray, a round wall clock behind it, a lamp above; close-up from the side",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "m9ylx",
+          "text": "再記兩個時間：等多久，更新後多久查得到。"
+        },
+        {
+          "id": "pzptxzd2",
+          "text": "更新了卻查不到，也要記。"
+        }
+      ]
+    },
+    {
       "id": "s-redo",
       "template": "shot",
       "data": {
@@ -1340,6 +1644,24 @@
       ]
     },
     {
+      "id": "s-idle-desk",
+      "template": "shot",
+      "data": {
+        "prompt": "a card cabinet with one glowing open drawer standing beside a writing desk whose chair is empty and whose pen still lies capped on a blank page; straight-on wide shot, dim room",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "qleo65",
+          "text": "用了向量資料庫就是 RAG？沒有生成那一步，它還是搜尋。"
+        }
+      ]
+    },
+    {
       "id": "methods",
       "template": "table",
       "data": {
@@ -1374,7 +1696,7 @@
       "lines": [
         {
           "id": "rgrcr",
-          "text": "搜尋，交出片段，讀者自己彙整。",
+          "text": "搜尋，交出片段，讀者自己整理。",
           "reveal": 1
         },
         {
@@ -1421,7 +1743,7 @@
       "lines": [
         {
           "id": "rgpjd",
-          "text": "要它穩定守格式、學特殊語氣，微調更貼近，兩者也能併用。"
+          "text": "要它穩定守格式、學特殊語氣，微調更貼近，兩個也能一起用。"
         }
       ]
     },
@@ -1453,7 +1775,7 @@
         },
         {
           "id": "rgmm4",
-          "text": "一個模型要服務好幾套資料，也常從它開始。",
+          "text": "一個模型要服務好幾套資料，也常從 RAG 開始。",
           "reveal": 1
         },
         {
@@ -1477,7 +1799,25 @@
       "lines": [
         {
           "id": "rg48c",
-          "text": "別為一頁紙蓋倉庫：複雜度要跟資料量、更新頻率和權限一起算。"
+          "text": "別為一頁紙蓋倉庫：要多複雜，得看資料量、更新頻率和權限。"
+        }
+      ]
+    },
+    {
+      "id": "s-notebook-paste",
+      "template": "shot",
+      "data": {
+        "prompt": "an anonymous figure at a kitchen table pasting three torn notebook pages onto one large sheet with a glue stick, a mug of tea and a houseplant beside; medium shot from over the shoulder",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "rwu5ee",
+          "text": "如果你只是要問自己的筆記，先把幾頁整個貼進去，再談建不建索引。"
         }
       ]
     },
@@ -1536,6 +1876,60 @@
         {
           "id": "rgof0",
           "text": "我的看法是，它會改變兩個決定：信不信這個答案，給不給它權限。"
+        }
+      ]
+    },
+    {
+      "id": "s-crossed-bubble",
+      "template": "shot",
+      "data": {
+        "prompt": "a paper note with a crossed-out speech bubble drawn on it taped to the base of a desk lamp, while an anonymous hand turns a heavy key in the lock of a card cabinet drawer; close-up",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "claims": [
+        "c13",
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "sohx",
+          "text": "權限那一件，不能靠提示詞裡的不要透露，要在檢索那一步就擋住。"
+        }
+      ]
+    },
+    {
+      "id": "recap",
+      "template": "bullets",
+      "data": {
+        "title": "這集的三個要點",
+        "items": [
+          "先找、再答：引用只證明拿了什麼",
+          "三步各有各的錯法",
+          "答錯先分找錯還是讀錯"
+        ]
+      },
+      "claims": [
+        "c1",
+        "c4",
+        "c11",
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "sse0",
+          "text": "第一，RAG 是先找、再答，引用只證明它拿了什麼。",
+          "reveal": 1
+        },
+        {
+          "id": "ttzt",
+          "text": "第二，建索引、檢索、生成，三步各有各的錯法：資料沒更新、文件沒找齊、解讀過頭。",
+          "reveal": 1
+        },
+        {
+          "id": "u7oe",
+          "text": "第三，答錯先分找錯還是讀錯：把正確條文直接交給模型，再問一次。",
+          "reveal": 1
         }
       ]
     },
