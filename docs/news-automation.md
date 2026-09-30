@@ -32,6 +32,13 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    fails is skipped and listed on the source (`partial`), and the listing's ETag is kept
    back so the next scan tries it again. Exact URL, title or content matches are closed as
    duplicates at once.
+   A page that *refuses* the scanner (HTTP 401 or 403: `openai.com/index/*` answers every
+   request with a Cloudflare challenge) is not skipped forever when its entry is dated within
+   the last 72 hours and the feed carries a summary: it becomes a candidate in
+   `needs_evidence` (`news_page_refused`) holding that summary as its only `lead_only`
+   evidence. Nothing is drafted from it; it is there so the story shows up in the review
+   queue, to be written by hand from the publisher's other pages or rejected. Before this
+   (2026-09-30), every OpenAI announcement was skipped every hour and never seen.
 2. **Evidence gate.** At least one page from an evidence source (owner decision,
    2026-09-25: every enabled source is an official or trusted feed, and a person confirms
    each story before it is translated). Only a candidate with nothing but `lead_only` pages

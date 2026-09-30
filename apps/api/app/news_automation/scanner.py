@@ -19,7 +19,7 @@ from app.news_automation.policy import (
     evidence_site,
     normalized_title,
 )
-from app.news_automation.schemas import Vertical
+from app.news_automation.schemas import Entry, Vertical
 from app.news_automation.service import settings_row
 
 Enqueue = Callable[[UUID], Awaitable[None]]
@@ -33,6 +33,14 @@ PAGE_ERRORS: tuple[type[Exception], ...] = (
     ValueError,
 )
 MAX_REPORTED_SKIPS = 5
+# A publisher that refuses the scanner outright (openai.com/index/* answers every request
+# with a Cloudflare challenge, HTTP 403) never becomes a candidate if a refused page is only
+# skipped: the entry is tried and skipped every hour and nobody sees the story. A recent
+# entry is kept instead as a lead holding the feed's own summary, which cannot be drafted
+# from (lead_only evidence stops at needs_evidence) but shows up in the review queue.
+REFUSED_STATUSES = frozenset({401, 403})
+SUMMARY_LEAD_MAX_AGE = timedelta(hours=72)
+PAGE_REFUSED = "news_page_refused"
 # Links that are plainly not articles. Apple Newsroom's first scan fetched 76 image links
 # as evidence, each one a robots check and a rate-limited request that then failed.
 NON_ARTICLE_SUFFIXES = (
@@ -163,10 +171,104 @@ def _transient(error: Exception) -> bool:
     return isinstance(error, (httpx.TransportError, OSError))
 
 
-def _skip_note(skipped: list[str]) -> str:
-    shown = "; ".join(skipped[:MAX_REPORTED_SKIPS])
-    more = len(skipped) - MAX_REPORTED_SKIPS
-    return f"Skipped {len(skipped)} page(s): {shown}" + (f"; and {more} more" if more > 0 else "")
+def _refused(error: Exception) -> bool:
+    """The page exists and the publisher will not serve it to us: retrying will not help."""
+    return (
+        isinstance(error, httpx.HTTPStatusError)
+        and error.response.status_code in REFUSED_STATUSES
+    )
+
+
+def _summary_lead_ok(entry: Entry, now: datetime) -> bool:
+    """A refused entry worth keeping from its feed summary: recent, dated and not empty.
+    An undated or older entry would put a feed's whole back catalogue in the queue the first
+    time a publisher starts refusing the scanner."""
+    return (
+        bool(entry.summary.strip())
+        and entry.published_at is not None
+        and now - entry.published_at <= SUMMARY_LEAD_MAX_AGE
+    )
+
+
+def _skip_note(skipped: list[str], summarized: list[str] | None = None) -> str:
+    notes: list[str] = []
+    if skipped:
+        shown = "; ".join(skipped[:MAX_REPORTED_SKIPS])
+        more = len(skipped) - MAX_REPORTED_SKIPS
+        notes.append(
+            f"Skipped {len(skipped)} page(s): {shown}" + (f"; and {more} more" if more > 0 else "")
+        )
+    if summarized:
+        shown = "; ".join(summarized[:MAX_REPORTED_SKIPS])
+        more = len(summarized) - MAX_REPORTED_SKIPS
+        notes.append(
+            f"Kept {len(summarized)} refused page(s) as feed summaries: {shown}"
+            + (f"; and {more} more" if more > 0 else "")
+        )
+    return ". ".join(notes)
+
+
+async def _keep_summary_lead(
+    session: AsyncSession,
+    source: NewsSource,
+    entry: Entry,
+    error: Exception,
+    prompt_version: str,
+    policy_version: str,
+) -> bool:
+    """Store a refused entry as a candidate waiting for evidence. False when the same URL
+    or title is already a candidate, so a story seen through two feeds is kept once."""
+    title = entry.title
+    normalized = normalized_title(title)[:500]
+    if await session.scalar(
+        select(NewsCandidate.id)
+        .where(
+            or_(
+                NewsCandidate.canonical_url == entry.url,
+                NewsCandidate.normalized_title == normalized,
+            )
+        )
+        .limit(1)
+    ):
+        return False
+    summary = entry.summary.strip()
+    body_hash = content_fingerprint(summary)
+    status = error.response.status_code if isinstance(error, httpx.HTTPStatusError) else None
+    candidate = NewsCandidate(
+        source_id=source.id,
+        vertical=(
+            classify_vertical(title, summary) if source.vertical == "mixed" else source.vertical
+        ),
+        status="needs_evidence",
+        canonical_url=entry.url,
+        source_title=title[:500],
+        normalized_title=normalized,
+        source_published_at=entry.published_at,
+        content_hash=body_hash,
+        idempotency_key=content_fingerprint(entry.url, body_hash),
+        prompt_version=prompt_version,
+        policy_version=policy_version,
+        error_code=PAGE_REFUSED,
+        error_detail=(
+            f"The article page refused the scanner (HTTP {status}); only the feed's summary "
+            "is kept. Write the story from the publisher's other pages, or reject it."
+        ),
+    )
+    session.add(candidate)
+    await session.flush()
+    session.add(
+        NewsEvidence(
+            candidate_id=candidate.id,
+            role="lead_only",
+            is_first_party=source.is_first_party,
+            url=entry.url,
+            title=title[:500],
+            source_date=entry.published_at.date() if entry.published_at else None,
+            content_hash=body_hash,
+            excerpt=evidence_excerpt(summary),
+        )
+    )
+    return True
 
 
 async def scan_source(
@@ -190,6 +292,8 @@ async def scan_source(
     # One unreachable article or linked page is skipped and reported, never allowed to
     # roll back the whole scan: the same entry would then break every later scan too.
     skipped: list[str] = []
+    # Refused entries kept as summary leads (never queued: nothing can be drafted from them).
+    summarized: list[str] = []
     now = datetime.now(UTC)
     try:
         listing = await fetcher.fetch(
@@ -226,6 +330,17 @@ async def scan_source(
                     allowed_redirect_hosts=allowed_redirects,
                 )
             except PAGE_ERRORS as error:
+                if _refused(error) and _summary_lead_ok(entry, now):
+                    if await _keep_summary_lead(
+                        session,
+                        source,
+                        entry,
+                        error,
+                        settings.prompt_version,
+                        settings.policy_version,
+                    ):
+                        summarized.append(entry.url)
+                    continue
                 skipped.append(f"{entry.url} ({type(error).__name__})")
                 continue
             # Feed links that redirect (tracking, feed proxies) only match after the
@@ -377,8 +492,10 @@ async def scan_source(
             # again (a 304 would hide the skipped entries); seen entries cost one query.
             source.etag = listing.etag
             source.last_modified = listing.last_modified
-        source.last_status = "partial" if skipped else "succeeded"
-        source.last_error = _skip_note(skipped)[:4000] if skipped else None
+        source.last_status = "partial" if skipped or summarized else "succeeded"
+        source.last_error = (
+            _skip_note(skipped, summarized)[:4000] if skipped or summarized else None
+        )
         source.consecutive_failures = 0
         await session.commit()
     except Exception as error:

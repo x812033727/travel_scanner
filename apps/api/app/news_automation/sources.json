@@ -1,5 +1,5 @@
 {
-  "reviewed_on": "2026-09-26",
+  "reviewed_on": "2026-09-30",
   "sources": [
     {
       "name": "OpenAI News",
@@ -11,6 +11,18 @@
       "enabled": true,
       "scan_interval_minutes": 60,
       "note": "Company announcements; about 2 a day. Press articles link here as the primary source."
+    },
+    {
+      "name": "OpenAI Deployment Safety Hub",
+      "url": "https://deploymentsafety.openai.com/",
+      "format": "html",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"minimum_title_length": 25, "max_entries_per_scan": 1},
+      "note": "System cards, one per OpenAI model launch, newest first. openai.com/index/* refuses the scanner (403), this host does not. One entry per scan so the first scan takes only the newest card, never the back catalogue."
     },
     {
       "name": "Google AI blog",

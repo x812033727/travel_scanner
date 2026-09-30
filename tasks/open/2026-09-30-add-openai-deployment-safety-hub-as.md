@@ -1,7 +1,7 @@
 ---
 id: 2026-09-30-add-openai-deployment-safety-hub-as
 title: Add OpenAI Deployment Safety Hub as a first-party news source (openai.com article pages refuse the scanner)
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: claude-opus-5-5-news-4-9
@@ -25,8 +25,8 @@ characters and states the launch, the date and the Preparedness ratings), while 
 
 ## Definition of done
 
-- [ ] `sources.json` lists the Safety Hub index as an `html` evidence source, first-party, AI.
-- [ ] `max_entries_per_scan` is 1: the index lists newest first, so the first scan takes only
+- [x] `sources.json` lists the Safety Hub index as an `html` evidence source, first-party, AI.
+- [x] `max_entries_per_scan` is 1: the index lists newest first, so the first scan takes only
       the newest system card and older ones are never drafted as news.
 - [ ] Loaded on the host with `sources_cli` (dry run, then `--apply`), after the deploy.
 
@@ -41,3 +41,10 @@ source `succeeded` after its first scan.
   Hub", "Learn more"); every system-card link text starts with its date and is longer.
 - If two system cards appear within one hour, the second is picked up only once it is the
   newest; raise the cap only with a baseline so old cards are not drafted.
+- Checked 2026-09-30 from outside the host: `parse_html_listing` on the index with this config
+  returns the eight system cards newest first (`/gpt-6-1-sol` first) and none of the chrome;
+  `read_article` on `/gpt-6-1-sol` keeps about 39,000 characters of the card. What is left is
+  the host step (`sources_cli`, dry run then `--apply`) after this PR is deployed.
+- The GPT-6.1 Sol card will be this source's first candidate. If the hand-written
+  `ai-news-gpt-61-sol-20260929` is published first, Jev's duplicate check should catch it;
+  if not, reject the candidate in `/admin/news`.

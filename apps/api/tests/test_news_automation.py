@@ -659,6 +659,116 @@ async def test_scanner_skips_unreachable_pages_and_never_refetches_seen_entries(
 
 
 @pytest.mark.asyncio
+async def test_scanner_keeps_a_refused_recent_page_as_a_feed_summary_lead() -> None:
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(
+                sync,
+                tables=[
+                    NewsAutomationSettings.__table__,
+                    NewsSource.__table__,
+                    NewsCandidate.__table__,
+                    NewsEvidence.__table__,
+                ],
+            )
+        )
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    official = NewsSource(
+        name="Official",
+        url="https://official.example/rss.xml",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        is_first_party=True,
+        enabled=True,
+    )
+    now = datetime.now(UTC)
+    recent = (now - timedelta(hours=5)).strftime("%a, %d %b %Y %H:%M:%S GMT")
+    old = (now - timedelta(days=10)).strftime("%a, %d %b %Y %H:%M:%S GMT")
+
+    def item(name: str, published: str | None, summary: str) -> str:
+        date = f"<pubDate>{published}</pubDate>" if published else ""
+        return (
+            f"<item><title>Introducing model {name}</title>"
+            f"<link>https://official.example/index/{name}</link>"
+            f"<description>{summary}</description>{date}</item>"
+        )
+
+    listing = (
+        "<rss><channel>"
+        + item("new", recent, "Meet model new: faster and cheaper.")
+        + item("old", old, "An older launch.")
+        + item("undated", None, "No date on this one.")
+        + item("bare", recent, "")
+        + item("flaky", recent, "The site is briefly down.")
+        + "</channel></rss>"
+    ).encode()
+    requested: list[str] = []
+
+    class Fetcher:
+        async def fetch(self, url: str, **_kwargs: object) -> FetchResult:
+            requested.append(url)
+            if url.endswith("rss.xml"):
+                return FetchResult(
+                    url=url,
+                    status_code=200,
+                    content_type="application/rss+xml",
+                    body=listing,
+                    etag='"listing"',
+                )
+            request = httpx.Request("GET", url)
+            if url.endswith("/flaky"):
+                response = httpx.Response(503, request=request)
+            else:
+                response = httpx.Response(403, request=request)
+            raise httpx.HTTPStatusError("refused", request=request, response=response)
+
+        async def close(self) -> None:
+            return None
+
+    queued: list[UUID] = []
+
+    async def enqueue(candidate_id: UUID) -> None:
+        queued.append(candidate_id)
+
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        session.add(official)
+        await session.commit()
+        created = await scan_source(session, official.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        await session.refresh(official)
+        status, error, etag = official.last_status, official.last_error or "", official.etag
+        candidates = list(await session.scalars(select(NewsCandidate)))
+        evidence = list(await session.scalars(select(NewsEvidence)))
+        requested.clear()
+        again = await scan_source(session, official.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        count = len(list(await session.scalars(select(NewsCandidate))))
+
+    # Only the recent, dated entry with a summary is kept; nothing is queued for drafting.
+    assert created == 0 and queued == []
+    assert [row.canonical_url for row in candidates] == ["https://official.example/index/new"]
+    lead = candidates[0]
+    assert lead.status == "needs_evidence"
+    assert lead.error_code == "news_page_refused"
+    assert "HTTP 403" in (lead.error_detail or "")
+    assert [(row.role, row.is_first_party, row.excerpt) for row in evidence] == [
+        ("lead_only", True, "Meet model new: faster and cheaper.")
+    ]
+    assert status == "partial"
+    assert "Kept 1 refused page(s) as feed summaries: https://official.example/index/new" in error
+    # The old, undated and empty entries are skipped as before, and so is the 503.
+    assert "https://official.example/index/old (HTTPStatusError)" in error
+    assert "https://official.example/index/flaky (HTTPStatusError)" in error
+    assert etag is None
+    # The kept entry is seen from now on; the skipped ones are tried again.
+    assert again == 0 and count == 1
+    assert "https://official.example/index/new" not in requested
+    assert "https://official.example/index/flaky" in requested
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
 async def test_robots_txt_is_read_once_per_host_for_the_life_of_a_fetcher() -> None:
     robots_reads: list[str] = []
 
