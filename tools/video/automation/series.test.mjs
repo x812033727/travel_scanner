@@ -87,7 +87,7 @@ test("a document the planner returns must have the shape the owner reads, checke
 });
 
 test("every series prompt carries the tension rules, and a stage's variant picks it", () => {
-  assert.deepEqual(Object.keys(SERIES_INSTRUCTIONS).sort(), ["planner:bible", "planner:chapter", "planner:compilation", "planner:discuss", "planner:outline", "planner:setting", "translator:compilation", "verifier:episode", "verifier:recap", "verifier:series-doc", "writer:discuss", "writer:episode"]);
+  assert.deepEqual(Object.keys(SERIES_INSTRUCTIONS).sort(), ["planner:bible", "planner:chapter", "planner:compilation", "planner:discuss", "planner:outline", "planner:setting", "translator:compilation", "verifier:compilation", "verifier:episode", "verifier:recap", "verifier:series-doc", "writer:discuss", "writer:episode"]);
   assert.match(instructionsFor("planner", "drama", "", "bible"), /STORY BIBLE[\s\S]*ONE outline, not options/);
   assert.match(instructionsFor("planner", "drama", "", "discuss"), /OWNER'S LINE[\s\S]*300 characters[\s\S]*"revised" is null[\s\S]*Never change a document above/);
   assert.match(instructionsFor("writer", "drama", "", "discuss"), /OWNER'S LINE[\s\S]*revised\.video[\s\S]*keep every other scene, line and id/);

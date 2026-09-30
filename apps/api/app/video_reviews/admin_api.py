@@ -25,6 +25,9 @@ from app.problems import AppError
 from app.video_reviews import admin_service as service
 from app.video_reviews.schemas import (
     SERIES_SLUG_PATTERN,
+    BrowseState,
+    CategoryFilter,
+    CategoryIn,
     DecisionIn,
     DropIn,
     DubLocalesIn,
@@ -32,6 +35,7 @@ from app.video_reviews.schemas import (
     PartOut,
     ProjectIn,
     ProjectOut,
+    ProjectPage,
     ProjectSummary,
     ReviewIn,
     ReviewOut,
@@ -130,6 +134,33 @@ async def list_videos(
     )
 
 
+# Declared before /{slug}, which would otherwise take "browse" for a video's slug.
+@admin_router.get("/browse", response_model=ProjectPage)
+async def browse_videos(
+    user: ContentReader,
+    session: Session,
+    category: CategoryFilter | None = None,
+    state: BrowseState | None = None,
+    q: Annotated[str | None, Query(max_length=service.BROWSE_QUERY_MAX)] = None,
+    page: Annotated[int, Query(ge=1)] = 1,
+    limit: Annotated[int, Query(ge=1, le=service.BROWSE_PAGE_LIMIT)] = service.BROWSE_PAGE_SIZE,
+) -> ProjectPage:
+    """One page of the review tab's catalog (tutorials and dramas, not Shorts), with the
+    counts behind its category and state filters (docs/videos/HANDS-OFF.md §影片分類).
+    ``category=none`` is the videos nobody filed yet; ``state`` here is not a Short's."""
+    _ = user
+    runtime = await load_runtime_settings(session)
+    return await service.browse_projects(
+        session,
+        category=category,
+        state=state,
+        q=q,
+        page=page,
+        limit=limit,
+        work_dir=runtime.video_work_dir,
+    )
+
+
 @admin_router.get("/{slug}", response_model=ProjectOut)
 async def video_detail(slug: str, user: ContentReader, session: Session) -> ProjectOut:
     _ = user
@@ -148,6 +179,14 @@ async def decide(
 async def drop(slug: str, payload: DropIn, user: ContentManager, session: Session) -> ProjectOut:
     """The owner stops this video; the pipeline leaves it and its topic counts as made."""
     return await service.drop_project(session, await _store(session), slug, user, payload)
+
+
+@admin_router.put("/{slug}/category", response_model=ProjectOut)
+async def set_category(
+    slug: str, payload: CategoryIn, user: ContentManager, session: Session
+) -> ProjectOut:
+    """The owner files the video under a category, or under none (null)."""
+    return await service.set_category(session, slug, user, payload)
 
 
 @admin_router.post("/{slug}/retry", response_model=ProjectOut)

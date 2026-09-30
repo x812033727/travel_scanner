@@ -39,6 +39,8 @@ test("meta.json takes one title or two, and reads chapters from the description"
   assert.deepEqual(meta.titles, META.titles);
   assert.equal(meta.chapters.length, 3);
   assert.equal(meta.source_guide, null);
+  assert.equal(meta.category, null, "the owner files an unfiled import on the page");
+  assert.equal(readMeta({ ...META, category: "tutorial" }).category, "tutorial");
   assert.deepEqual(readMeta({ ...META, titles: undefined, title: " 一個標題 " }).titles, ["一個標題"]);
   const listed = readMeta({ ...META, chapters: [{ time: "00:00", title: "開場" }] });
   assert.deepEqual(listed.chapters, [{ time: "00:00", title: "開場" }]);
@@ -57,6 +59,7 @@ test("meta.json that cannot be imported lists every problem", () => {
   assert.throws(() => readMeta({ ...META, description: "字".repeat(1700) }), /5100 bytes, YouTube takes 5000/);
   assert.throws(() => readMeta({ ...META, chapters: [{ time: "later", title: "x" }] }), /chapters/);
   assert.throws(() => readMeta({ ...META, source_guide: "Not A Slug" }), /source_guide/);
+  assert.throws(() => readMeta({ ...META, category: "news" }), /category must be one of ai-terms, ai-news/);
 });
 
 test("a cut on the pipeline's profile has nothing to say", () => {
@@ -91,6 +94,8 @@ test("the site is told of a tutorial waiting at its final cut, marked as importe
   assert.equal(body.source_guide, "ai-image-trust");
   assert.deepEqual(body.checklist.map((item) => [item.key, item.done]), [[IMPORTED, true], ["final_video_approved", false]]);
   assert.equal(projectBody(readMeta(META)).source_guide, undefined);
+  assert.equal(projectBody(readMeta(META)).category, undefined, "nothing filed is left to the page");
+  assert.equal(projectBody(readMeta({ ...META, category: "comparison" })).category, "comparison");
 });
 
 test("the final review carries what the page shows and says it was imported", () => {

@@ -2,7 +2,7 @@
 
 這條路線的成品是一支像《山海经之万兽图鉴》那樣的 AI 動畫劇：每個鏡頭是一段 AI 生成的動態片段（先出關鍵影格，再圖生影片），旁白加多個角色配音，底部燒錄繁中字幕，有背景音樂，繁中 CC；其他語言的標題說明與 CC 由站主每支勾選（下面第 14 步）。設計與為什麼這樣做在 `docs/videos/DRAMA.md`，單集與作品走同一條流程的設計在 `docs/videos/DRAMA-FLOW.md`；這份只寫**怎麼做**。投影片路線的共通部分（一次性設定、發音字典、CC 翻譯、上架包）在 `.agents/skills/youtube-video/references/automated.md`，作品多做的事（設定集、總綱、篇章細綱、討論串、一致性）在 `references/series.md`，這裡不重複。
 
-**單集就是一集的作品**（2026-09-27 起）：「新的漫劇」表單建立的是一部 `kind = one-off` 的作品，只有一集、只有一份文件——**故事聖經**（doc kind `bible`）。作品（`kind = series`）的文件是設定集 → 總綱 → 每篇細綱。之後每一集的步驟一樣。
+**單集就是一集的作品**：「新的漫劇」表單建立的是一部 `kind = one-off` 的作品，只有一集、只有一份文件——**故事聖經**（doc kind `bible`）。作品（`kind = series`）的文件是設定集 → 總綱 → 每篇細綱。之後每一集的步驟一樣。
 
 站主把關的關卡只有兩個，都可以先討論再核准：
 
@@ -11,7 +11,7 @@
 
 之後四關自動決定（`docs/videos/HANDS-OFF.md`），沒過的才在 `/admin/videos` 找站主：設定圖 `look`（`auto_pick_look`：judge 最高分達門檻、沒有問題就核准該角色）、旁白 `audio`（Jev 全過就核准，`drama_auto_approve_audio`）、分鏡 `storyboard`（`auto_approve_storyboard` 開著且 judge 全過）、成片 `final`（自動品管，`drama_auto_approve_final`）。上架確認（`publish`）與語言（`languages`）照投影片路線。
 
-漫劇**不再用「選大綱」卡片**：`brief.md` 由工人從核准的文件寫出，`## 大綱` 只有選項 A，`outline` 關卡在本機直接核准（單集備註「依故事聖經」，作品的集備註 `planned by chapter <n>'s approved outline`）。Jev 挑大綱與 `auto_pick_outline` 只管教學影片。
+漫劇**沒有「選大綱」卡片**：`brief.md` 由工人從核准的文件寫出，`## 大綱` 只有選項 A，`outline` 關卡在本機直接核准（單集備註「依故事聖經」，作品的集備註 `planned by chapter <n>'s approved outline`）。Jev 挑大綱與 `auto_pick_outline` 只管教學影片。
 
 關卡都在 `/admin/videos` 做，工具用 `review-push --gate <關卡>` 送、`review-pull` 讀回；核准綁檔案雜湊。
 

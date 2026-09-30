@@ -111,7 +111,13 @@ MODEL_CATALOG: dict[Vendor, tuple[ModelEntry, ...]] = {
             "claude-opus-5",
             "Claude Opus 5",
             _ANTHROPIC,
-            "前一代 Opus，成本最高；適合完整行程規劃。",
+            "前一代 Opus，價格高於 Opus 5.5；適合完整行程規劃。",
+        ),
+        ModelEntry(
+            "claude-sonnet-5-5",
+            "Claude Sonnet 5.5",
+            _ANTHROPIC,
+            "最新 Sonnet，價格與 Sonnet 5 相同；品質與成本的平衡。",
         ),
         ModelEntry(
             "claude-sonnet-5",
@@ -120,7 +126,7 @@ MODEL_CATALOG: dict[Vendor, tuple[ModelEntry, ...]] = {
             "目前預設；品質與成本的平衡。",
         ),
         ModelEntry(
-            "claude-haiku-4-5-20251001",
+            "claude-haiku-4-5",
             "Claude Haiku 4.5",
             _ANTHROPIC,
             "最快、最便宜；適合搜尋詞規劃與評選。",
