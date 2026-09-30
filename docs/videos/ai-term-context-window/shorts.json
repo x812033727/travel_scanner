@@ -1,0 +1,115 @@
+[
+  {
+    "schema_version": 2,
+    "slug": "ai-term-context-window-short-1",
+    "format": "shorts",
+    "locale": "zh-TW",
+    "line": "cut",
+    "series": "illustrated",
+    "source": { "slug": "ai-term-context-window" },
+    "titles": [
+      "上下文視窗是什麼？留著，不等於讀到",
+      "AI 每一輪只看桌上的東西：上下文視窗一句話講清楚"
+    ],
+    "description": "上下文視窗（Context Window）一句話：模型每一輪只拿到應用程式放上桌面的東西，桌面多大就是視窗，用 token 算。完整的十分鐘在 AI 名詞十分鐘的長片。",
+    "scenes": [
+      {
+        "shot": "scroll-tiny-desk",
+        "headline": "訊息都還在，模型卻沒看到？",
+        "narration": [
+          "上個月的對話還在畫面裡，",
+          "模型這一次，可能一個字都沒看到。"
+        ]
+      },
+      {
+        "shot": "desk-few-sheets",
+        "headline": "它只拿到桌上的東西",
+        "narration": [
+          "模型每一次，只拿到應用程式放上桌面的東西。"
+        ]
+      },
+      {
+        "shot": "reserved-corner",
+        "headline": "問題、規則、歷史、附件，還要留位子給回答",
+        "narration": [
+          "本輪的問題、規則、一部分歷史、附件，",
+          "還要留一塊空位給回答。"
+        ]
+      },
+      {
+        "shot": "ruler-by-desk",
+        "headline": "桌面多大，就是上下文視窗",
+        "big": "用 token 算",
+        "narration": [
+          "這張桌面有多大，就是上下文視窗，",
+          "單位是 token。"
+        ]
+      },
+      {
+        "shot": "figure-mid-table",
+        "headline": "放得下，不等於讀得懂",
+        "narration": [
+          "放得下，不等於讀得懂。",
+          "三種忘記怎麼分，完整的在長片。"
+        ]
+      }
+    ]
+  },
+  {
+    "schema_version": 2,
+    "slug": "ai-term-context-window-short-2",
+    "format": "shorts",
+    "locale": "zh-TW",
+    "line": "cut",
+    "series": "illustrated",
+    "source": { "slug": "ai-term-context-window" },
+    "titles": [
+      "你以為 AI 記得每一句？其實它只拿到桌上的東西",
+      "聊天紀錄都在 AI 腦子裡？這是上下文視窗最常見的誤解"
+    ],
+    "description": "最常見的誤解：聊天紀錄都在模型的腦子裡。其實每一輪只有應用程式放上桌面的東西；三份會議紀錄 535 個 token 的實算，和一句摘要怎麼把「尚未核准」壓掉，在 AI 名詞十分鐘的長片。",
+    "scenes": [
+      {
+        "shot": "brain-cloud",
+        "headline": "你以為，它記得每一句",
+        "narration": [
+          "你以為聊天紀錄都在模型的腦子裡，",
+          "它記得你們聊過的每一句。"
+        ]
+      },
+      {
+        "shot": "hand-places-sheet",
+        "headline": "其實，放什麼上桌是應用程式準備的",
+        "narration": [
+          "其實模型每一次，只拿到應用程式放上桌面的東西。",
+          "有的放全文，有的先搜尋，有的換成摘要。"
+        ]
+      },
+      {
+        "shot": "three-records-desk",
+        "headline": "三份會議紀錄，算出多少 token？",
+        "big": "535 token",
+        "narration": [
+          "三份社區會議紀錄，六百零四個字元，",
+          "同一種編碼算下來，五百三十五個 token。"
+        ]
+      },
+      {
+        "shot": "copier-thin-sheet",
+        "headline": "被壓成摘要，狀態就掉了",
+        "narration": [
+          "對話太長被壓成摘要，",
+          "「尚未核准」四個字，很容易就不見。"
+        ]
+      },
+      {
+        "shot": "taking-stock",
+        "headline": "先看桌上有什麼",
+        "narration": [
+          "換新對話前，先看這一輪桌上有什麼。",
+          "三種忘記怎麼分，完整的在長片。"
+        ]
+      }
+    ]
+  }
+]
