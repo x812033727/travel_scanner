@@ -235,7 +235,7 @@ async function normalizeClips(clips, directory, ffmpeg) {
  * files); `client` is the site, needed for the server's voice; `redo` is a finished build whose
  * check flagged phrases, which are synthesized again while the rest come from the cache.
  */
-export async function build({ file, sourceBase, workdir, voice=WINDOWS_VOICE, channel=process.platform==='win32'?'msedge':undefined, audioDir, speech, client=null, redo=null, lexicon=null, synthesizeImpl }) {
+export async function build({ file, sourceBase, workdir, voice=WINDOWS_VOICE, channel=process.platform==='win32'?'msedge':undefined, audioDir, speech, client=null, redo=null, lexicon=null, synthesizeImpl, locateFfmpegImpl=locateFfmpeg }) {
   const documentBytes = readFileSync(file);
   const doc = JSON.parse(documentBytes);
   const errors = validate(doc);
@@ -246,6 +246,11 @@ export async function build({ file, sourceBase, workdir, voice=WINDOWS_VOICE, ch
   let ancestor = base;
   while (!existsSync(ancestor)) ancestor = path.dirname(ancestor);
   if (isInside(path.resolve(realpathSync(ancestor),path.relative(ancestor,base)),realpathSync(ROOT))) throw new Error('output symlink points inside repository');
+  // Before any paid narration: a STOP file, or a machine that has no ffmpeg to finish the cut,
+  // ends the build with nothing synthesized. The timestamped directory is still to be made, so the
+  // slug's directory (and the base above it) is where a STOP can already be.
+  if (stopRequested(path.join(base,doc.slug))) throw new Error('STOP requested');
+  const {ffmpeg,ffprobe,version} = await locateFfmpegImpl();
   const source = speech ?? (audioDir ? 'files' : defaultSource());
   // The voice and the length a Short may have are the owner's settings when the site is asked.
   const settings = source === 'server' && client ? await client.settings() : null;
@@ -269,7 +274,6 @@ export async function build({ file, sourceBase, workdir, voice=WINDOWS_VOICE, ch
     mkdirSync(path.dirname(copy),{recursive:true});
     copyFileSync(item.file,copy);
   }
-  const {ffmpeg,ffprobe,version} = await locateFfmpeg();
   console.error(`${doc.slug}: measure narration (${source})`);
   const wavs = await normalizeClips(narration.clips,directory,ffmpeg);
   const timeline = buildTimeline(doc,wavs.map(w=>w.samples.length/w.sampleRate),range);

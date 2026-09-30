@@ -7,7 +7,7 @@ metadata:
 
 # 正式站部署（deploy）
 
-只有一台正式主機。這個 skill 只放指令、關卡、去哪裡讀；分階段發布與暫停檔的規則全文在 `ops/release/README.md`，別在這裡重抄。`<SSH>` 是你自己開到主機 root shell 的指令前綴（每個人的連線方式、金鑰放在自己的筆記，不進 repo）；從 Git Bash 送絕對 POSIX 路徑時前面加 `MSYS_NO_PATHCONV=1`。
+只有一台正式主機。這個 skill 只放指令、關卡、去哪裡讀；分階段發布與暫停檔的規則全文在 `ops/release/README.md`，別在這裡重抄。`<SSH>` 是你自己開到主機 root shell 的指令前綴（每個人的連線方式、金鑰放在自己的筆記，不進 repo）；從 Git Bash 送絕對 POSIX 路徑時前面加 `MSYS_NO_PATHCONV=1`。session 本身就在正式主機上時（`/root/deploy-travel-scanner.sh` 存在），沒有 SSH 這一跳：`<SSH>` 留空、`MSYS_NO_PATHCONV=1` 不用，`<SSH> -m <腳本>` 與 `<SSH> "bash -s -- …" < <腳本>` 都改成 `bash <腳本> …`，部署照樣用 `run_in_background`。
 
 ## 主機長什麼樣
 
