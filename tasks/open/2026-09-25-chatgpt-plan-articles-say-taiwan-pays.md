@@ -1,19 +1,20 @@
 ---
 id: 2026-09-25-chatgpt-plan-articles-say-taiwan-pays
 title: ChatGPT 方案文章還寫台灣以美元計價
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-09-30T03:48:02Z
 created_at: 2026-09-25T06:01:29Z
 completed_at:
-branch:
+branch: claude/chatgpt-plans-refresh
 depends_on: []
 scope:
   - apps/api/app/guides/content/chatgpt-plans-plus-pro-2026.json
   - apps/api/app/guides/content/ai-free-vs-paid-plans-2026.json
   - apps/web/public/guides/chatgpt-plans-plus-pro-2026
+  - apps/web/public/guides/ai-free-vs-paid-plans-2026/diagram-1.svg
 ---
 
 # ChatGPT 方案文章還寫台灣以美元計價
