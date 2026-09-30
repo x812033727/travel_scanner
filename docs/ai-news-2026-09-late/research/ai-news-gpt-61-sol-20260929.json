@@ -1,8 +1,8 @@
 {
   "slug": "ai-news-gpt-61-sol-20260929",
   "event_date": "2026-09-29",
-  "event_date_basis": "",
-  "title": "",
+  "event_date_basis": "官方 RSS https://openai.com/news/rss.xml（2026-09-30T10:22:05Z 讀取，HTTP 200、755,374 bytes，<item> 1,238 筆、最新一筆即本則，筆數只用來判斷 feed 有拿到，不是事實）的 item〈Introducing GPT-6.1 Sol〉，link https://openai.com/index/introducing-gpt-6-1-sol，pubDate「Tue, 29 Sep 2026 10:00:00 GMT」＝台北時間 2026-09-29 18:00，所以事件日（台北）是 2026-09-29。同一個 pubDate 也掛在〈DevDay 2026 Recap〉。sources[] 裡有兩條獨立印出同一天：system card 增補頁印「Published September 29, 2026」（verified_facts 第 28 條）；另外 API changelog（未列入 sources，見 sourcing_notes）的條目日期是 Sep 29、ChatGPT／Codex changelog 的條目日期是 2026-09-29。RSS 沒有列進 sources[]（上限 4 條，見 sourcing_notes 的取捨），撰稿時只能寫到「2026 年 9 月 29 日」這一級（system card 只印日期）；若要寫「晚間」或 18:00 這個時刻，需協調者把 RSS 換進 sources[]。Mokaair 不另寫美國各時區的時刻。",
+  "title": "GPT-6.1 Sol 推出：新一版 Sol 上 API、Codex 與 ChatGPT Work，Chat 裡沒有",
   "checked_on": "2026-09-30",
   "sources": [
     {
@@ -30,8 +30,8 @@
       "checked_on": "2026-09-30"
     }
   ],
-  "sourcing_verdict": "",
-  "sourcing_notes": "",
+  "sourcing_verdict": "partial",
+  "sourcing_notes": "2026-09-30（台北 18:22–18:29，10:22–10:29Z）研究代理以 curl -sSL --compressed --max-time 60 -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 逐條抓取，同一主機間隔 ≥1.2 秒；請求、標頭、查詢字串都沒有任何人的姓名、email 或個人資料。落地檔與逐筆紀錄（UTC 時間、狀態碼、最終網址、轉址次數、落地 bytes）在 /root/news49/agents/research/raw/ 與同目錄 fetch-log.tsv；bytes 一律是落地檔大小（--compressed 解壓後），不是傳輸量。\nsources[]：\n(1) https://developers.openai.com/api/docs/models/gpt-6.1-sol → HTTP 200、0 次轉址、447,982 bytes。Astro 靜態頁，正文（定位句、推理強度、資料落地、規格卡、Text tokens 價格與計價規則、Snapshots、Rate limits）都是可見文字；網址取自 changelog 內的 GPT-6.1 Sol 連結。\n(2) https://developers.openai.com/api/docs/pricing → HTTP 200、0 次轉址、575,660 bytes。Flagship models 的 Standard 分頁可見文字只有三列：gpt-6-astra、gpt-6.1-sol、gpt-6-luna（短脈絡與長脈絡各 Input／Cached input／Cache writes／Output）；gpt-6-sol 已不在預設可見的三列裡，但仍在同一表格元件的完整清單資料（astro-island props，collapsedLatestRowCount 為 3，按 All models 展開才顯示）：[0,\"gpt-6-sol\"],[0,2],[0,0.2],[0,2.5],[0,10]，也就是短脈絡 2／0.2／2.5／10 美元；這份 props 只有短脈絡四欄，gpt-6-sol 的長脈絡價格沒有讀到。交叉核對（不列入 sources）：https://developers.openai.com/api/docs/models/gpt-6-sol（200、447,927 bytes）可見文字印 Input $2.00、Cached input $0.20、Cache writes $2.50、Output $10.00，與 props 一致。Batch、Flex、Fast、Ultrafast 分頁也是可見文字（Ultrafast 只有 gpt-6-astra 一列）。9/23 那篇研究紀錄從這一頁引過的「For GPT-6 Sol and Luna, EU data residency is available only with Standard processing.」今天在可見文字與解碼後的原始 HTML 都查不到 EU data residency 字串，那句已不在此頁。\n(3) https://learn.chatgpt.com/docs/models → HTTP 200、0 次轉址、584,535 bytes。這是 developers.openai.com/codex/models（model 頁左側導覽的「Models」連結）308 轉址後的落地頁；先抓舊網址（1 次轉址、同 bytes），再直接抓落地網址確認 0 次轉址、抽出的文字逐字相同，sources[] 放落地網址。頁面有 Recommended models、Astra／6.1 Sol／6 Luna 三張卡、〈GPT-6.1 Sol〉推出範圍段落與 Other models；不是導覽殼（BRIEF 第 6 條）：內容有逐模型段落與 2026-10-14 的 GPT-5.5 退役日期。\n(4) https://deploymentsafety.openai.com/gpt-6-1-sol → HTTP 200、0 次轉址、543,894 bytes，頁題「Addendum to GPT-6 Astra System Card: GPT-6.1 Sol - OpenAI Deployment Safety Hub」，印「Published September 29, 2026」。網址不是猜的：取自 Deployment Safety Hub 首頁 https://deploymentsafety.openai.com/（200、55,276 bytes；首頁網址取自 9/23 那篇研究紀錄的 sourcing_notes）Updates 列表最新一筆「Sep 29, 2026 Addendum to GPT-6 Astra System Card: GPT-6.1 Sol」的連結。頁內「View PDF」連結 https://deploymentsafety.openai.com/gpt-6-1-sol/gpt-6-1-sol.pdf（200、8,020,508 bytes）用 pypdf 6.19.0 讀：48 頁，/Title「GPT-6.1 Sol System Card」，首頁文字「Addendum: GPT-6.1 Sol System Card 2026-09-29」；PDF 的 /CreationDate 與 /ModDate 都是 D:20251217192705Z，是 LaTeX 產生器的中繼資料，不能當日期用。system card 的表格有不少是互動元件（頁面只印「Table 1 … Category」這類殼），verified_facts 只收段落文字裡印出的數字。\n讀不到（不進 sources[]、沒用 Wayback、沒用媒體）：\n- https://openai.com/index/introducing-gpt-6-1-sol → 10:22:08Z HTTP 403、9,895 bytes；10:23:19Z 重試一次仍 403、9,873 bytes。body 是只有 CSS 與空 <title> 的 Cloudflare 挑戰頁（沒有正文）。\n- https://openai.com/index/devday-2026-recap → 10:22:11Z 403、9,855 bytes；10:23:20Z 重試 403、9,877 bytes，同樣是挑戰頁。\n- https://chatgpt.com/pricing（網址取自 9/23 那篇研究紀錄）→ 10:24:40Z 403、8,612 bytes，挑戰頁。\n- https://help.openai.com/en/articles/6825453-chatgpt-release-notes（同上來源）→ 10:28:41Z 403、9,957 bytes，挑戰頁。\n讀到但沒有放進 sources[]（上限 4 條）：\n- 官方 RSS https://openai.com/news/rss.xml（200、755,374 bytes）：本則 description 原文「Meet GPT-6.1 Sol: near-Astra intelligence for coding, computer use, and professional work at one-fifth of Astra’s standard API input and output token prices.」（Astra’s 是 U+2019）。\n- API changelog：https://developers.openai.com/changelog 301 轉到 https://developers.openai.com/api/docs/changelog（落地 200、535,542 bytes，逐日條目、最新 Sep 29）。Sep 29 條目：「Released GPT-6.1 Sol ( gpt-6.1-sol ) for complex coding and professional work at a lower cost than GPT-6 Astra. Standard pricing per 1M tokens for prompts with up to 272K input tokens is $2 input, $0.10 cached input, $2.50 cache write, and $10 output. GPT-6.1 Sol also supports Multi-agent in beta.」；Sep 22 條目印 GPT-6 Sol「$2 input, $0.20 cached input, and $10 output」；Sep 25 條目修正 GPT-6 Sol／Luna 的影像編碼錯誤。\n- ChatGPT／Codex changelog https://learn.chatgpt.com/docs/changelog（developers.openai.com/codex/changelog 轉址，200、1,539,692 bytes）：2026-09-29 條目〈GPT-6.1 Sol in Codex and ChatGPT Work〉，與 sources[3] 的說法一致而較短；同日 Codex CLI 0.159.1 條目。\n- https://developers.openai.com/api/docs/models/gpt-6-sol（200、447,927 bytes）、/gpt-6-astra（200、447,379 bytes）、/api/docs/models（200、384,713 bytes）、/api/docs/deprecations（200、484,795 bytes）、/api/docs/guides/latest-model?model=gpt-6-astra（200、492,968 bytes）、/api/docs/guides/model-selection（200、376,381 bytes）、learn.chatgpt.com/docs/pricing（codex/pricing 轉址，200、689,935 bytes）、learn.chatgpt.com/docs/enterprise/workspace-model-availability（200、373,446 bytes）。這些頁撐得住的事實列在 unverified_or_excluded，撰稿不可用，除非協調者換掉 sources[] 的某一條。\nsources[] 的取捨：四條選的是讀者最需要的三件事——API 名稱與規格（1）、三個型號同頁牌價（2）、ChatGPT／Codex 哪些方案能用（3）——加上 OpenAI 自己的安全分級（4），因為資安 Critical 是 GPT-6.1 Sol 與 9/23 那篇的 GPT-6 Sol（High）最不一樣的地方。代價是 RSS 那句官方的「one-fifth」與 API changelog 不在 sources[]，見 unverified_or_excluded 第 2、3 條。\n逐字比對方法：/root/news49/agents/research/check_quotes.py 用 html.parser 去掉 script／style／noscript／svg／template 與註解，html.unescape 後把 ASCII 空白壓成一個空格，NBSP、U+2011、U+2019 不動；做三種版本（A：區塊標籤→空格、行內標籤（含 code、span）→無；B：所有標籤→空格；C：所有標籤→無），另加整份 HTML 解碼後的 RAW 版。45 條 verbatim_quote 全部至少是其中一版的連續子字串（2026-09-30 執行結果 45/45）：44 條在 A 版成立；價格表列、規格卡與表頭（第 7、8、9、10、12、13、14、15 條）在 A、B 版成立、C 版因儲存格黏在一起不成立；第 4、25 條含行內 code，在 A、C 版成立、B 版因 code 前後多出空格不成立——都是正規化方式造成的；第 16 條（gpt-6-sol 價格）只在 RAW 版成立，因為它是元件 props 資料不是可見文字。",
   "verified_facts": [
     {
       "fact": "API 的模型名稱是 gpt-6.1-sol（模型頁 Snapshots 欄位只列這一個名稱）。",
@@ -106,16 +106,16 @@
       "verbatim_quote": "Fast mode prices are 2x Standard. Batch and Flex prices are 50% lower than Standard. Regional processing adds a 10% premium where available."
     },
     {
-      "fact": "API 價目表 Flagship models 區的單位是每 100 萬 tokens，欄位分短脈絡（Short context）與長脈絡（Long context），各有 Input、Cached input、Cache writes、Output 四欄。",
+      "fact": "API 價目表 Flagship models 區（標「Our latest models」）的單位是每 100 萬 tokens。",
       "url": "https://developers.openai.com/api/docs/pricing",
       "is_vendor_claim": false,
-      "verbatim_quote": "Prices per 1M tokens. StandardBatchFlexFastUltrafast Standard Short context Long context Model Input Cached input Cache writes Output Input Cached input Cache writes Output"
+      "verbatim_quote": "Flagship models Our latest models Prices per 1M tokens."
     },
     {
-      "fact": "價目表 Standard 分頁 gpt-6-astra 一列：短脈絡輸入 10.00、快取輸入 1.00、寫入快取 12.50、輸出 50.00；長脈絡 20.00、2.00、25.00、75.00（美元／每百萬 tokens）。",
+      "fact": "價目表 Standard 分頁的欄位分短脈絡（Short context）與長脈絡（Long context），各有 Input、Cached input、Cache writes、Output 四欄；第一列 gpt-6-astra：短脈絡輸入 10.00、快取輸入 1.00、寫入快取 12.50、輸出 50.00；長脈絡 20.00、2.00、25.00、75.00（美元／每百萬 tokens）。",
       "url": "https://developers.openai.com/api/docs/pricing",
       "is_vendor_claim": false,
-      "verbatim_quote": "gpt-6-astra $10.00 $1.00 $12.50 $50.00 $20.00 $2.00 $25.00 $75.00"
+      "verbatim_quote": "Short context Long context Model Input Cached input Cache writes Output Input Cached input Cache writes Output gpt-6-astra $10.00 $1.00 $12.50 $50.00 $20.00 $2.00 $25.00 $75.00"
     },
     {
       "fact": "價目表 Standard 分頁 gpt-6.1-sol 一列：短脈絡輸入 2.00、快取輸入 0.10、寫入快取 2.50、輸出 10.00；長脈絡 4.00、0.20、5.00、15.00（美元／每百萬 tokens）。短脈絡四個數字與模型頁相同。",
@@ -232,7 +232,7 @@
       "verbatim_quote": "Under our Preparedness Framework, we are treating GPT-6.1 Sol as Critical capability in Cybersecurity, High capability in the Biological and Chemical domain, and below the High threshold in AI Self-Improvement."
     },
     {
-      "fact": "資安 Critical 與 GPT-6 Astra 的處理相同（As we did for GPT-6 Astra）；比較點：9/23 那一篇寫的 GPT-6 Sol／Luna 在資安是 High。",
+      "fact": "資安 Critical 與 GPT-6 Astra 的處理相同（As we did for GPT-6 Astra）。",
       "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
       "is_vendor_claim": false,
       "verbatim_quote": "As we did for GPT-6 Astra, we are treating GPT-6.1 Sol as Critical capability in the Cybersecurity domain."
@@ -304,12 +304,157 @@
       "verbatim_quote": "Unwanted persistence appeared in 23.5% of GPT-6.1 Sol rollouts, compared to 17.4% of GPT-6 Astra’s."
     }
   ],
-  "not_said": [],
-  "unverified_or_excluded": [],
-  "editorial_brief": "",
-  "must_not_write": [],
-  "live_data_warnings": [],
+  "not_said": [
+    "台灣與地區：四條 sources[] 以詞界比對 Taiwan 皆 0 次（2026-09-30 查核）；模型頁導覽列的「Supported countries」只是連結文字。四條都沒有列出 GPT-6.1 Sol 的國家或地區限制。正文只能寫「OpenAI 沒有說明地區或台灣的時程」這類限縮句，不可寫成台灣能用或不能用；台灣帳號請讀者看自己 Codex 或 ChatGPT Work 的模型選單。",
+    "GPT-6 Sol 的去留：sources[3] 稱 GPT-6 Sol 是「previous Sol model」，但四條 sources[] 都沒有寫 GPT-6 Sol 退役、停用或退役日期；價目表的完整清單今天仍列 gpt-6-sol；sources[3] 同頁 ChatGPT 那句還把 GPT-6 Sol 與 GPT-6.1 Sol 並列為 Work 與 Codex 可用。另外以 https://developers.openai.com/api/docs/deprecations（未列入 sources）2026-09-30 全文查 gpt-6 只出現在導覽列的部落格標題，未見 gpt-6-sol 條目。正文寫「官方文件稱 GPT-6 Sol 為前一個 Sol 模型，沒有公布退役時程」，不可寫「取代」「下架」「停用」，也不可反過來寫「GPT-6 Sol 會長期保留」。",
+    "Chat 什麼時候有：sources[3] 只寫 They aren’t available in Chat，沒有 yet、沒有時程。不可寫「之後會開放到 Chat」「近期上線」，也不可寫成「還沒有」暗示即將推出。",
+    "Free 與 Go 之後會不會有：原文 not included at launch，只說首發不含，沒有說之後加入，也沒有說永遠不給。不可寫「免費版不能用 GPT-6.1 Sol」這種沒有時間限定的否定句，要帶「首發」。",
+    "ChatGPT 裡的預設模型：四條 sources[] 都沒有說 GPT-6.1 Sol 成為 ChatGPT 或 Work 的預設模型。sources[3] 的 Power 預設（Luna High、GPT-6 Sol Light……）明寫是示意，不是事實。不寫「預設換成 GPT-6.1 Sol」。",
+    "訂閱月費與用量上限：四條 sources[] 沒有 ChatGPT 各方案月費、GPT-6.1 Sol 的訊息數或 credits 費率（這些在未列入的 learn.chatgpt.com/docs/pricing，見 unverified_or_excluded）。API 牌價不是訂閱價，不可拿來推估方案內的用量。",
+    "能力評測（DeepSWE、OSWorld、AutomationBench、Terminal-Bench Science、GDP.pdf 等）：四條 sources[] 沒有任何一個能力評測的名稱與分數；它們只可能在 403 的公告頁上。system card 印的是安全、對齊、健康與 Preparedness 評測，不是能力排行。正文不寫任何能力評測分數，也不寫 GPT-6.1 Sol 在某評測「勝過」誰。",
+    "「接近 Astra」沒有量化：模型頁、sources[3] 與 system card 都用 near-Astra／comparable to 這類說法，沒有給百分比或分數差。不可寫「達到 Astra 的 9 成」之類的數字。",
+    "GPT-6.1 Luna 或 GPT-6.1 Astra：四條 sources[] 沒有提到；價目表 Flagship 三列是 gpt-6-astra、gpt-6.1-sol、gpt-6-luna。不可推論 Luna 或 Astra 也會出 6.1 版。",
+    "與 GPT-6 Sol 的規格差異：四條 sources[] 只有 GPT-6.1 Sol 自己的規格；GPT-6 Sol 的知識截止日、是否支援 none 推理強度、快取價占比都只在未列入的 gpt-6-sol 模型頁與 GPT-6 指南（見 unverified_or_excluded）。正文只能用價目表同頁的牌價比較兩者（快取輸入 0.10 對 0.2 美元，其餘短脈絡三欄相同），不寫知識截止日或推理強度的前後差異。",
+    "降幅百分比：四條 sources[] 沒有印「GPT-6.1 Sol 比 GPT-6 Sol 便宜幾 %」或「比 Astra 便宜幾 %」。模型頁印的是規則「快取輸入為未快取輸入價的 5%」，不是降幅。",
+    "Ultrafast 的時程：sources[3] 只寫 coming later，沒有日期。",
+    "system card 的頁數：網頁版沒有印頁數；PDF 今天是 48 頁（pypdf 計數，是讀到的值，不是官方宣稱）。正文不寫頁數。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "OpenAI 公告〈Introducing GPT-6.1 Sol〉與〈DevDay 2026 Recap〉的全部內容，包括第三方文章轉述的評測名稱與數字（DeepSWE、OSWorld、AutomationBench、Terminal-Bench Science、GDP.pdf）與可用方案說法。",
+      "seen_where": "https://openai.com/index/introducing-gpt-6-1-sol、https://openai.com/index/devday-2026-recap：2026-09-30 各抓兩次都是 HTTP 403 Cloudflare 挑戰頁（9,855–9,895 bytes，無正文）。四條 sources[] 與其他讀到的 developers／learn 頁以不分大小寫比對這五個評測名稱：只有 model-selection 頁一張「Model strengths」抽象圖的 aria 說明提到 AutomationBench，而且明寫圖上沒有數字標籤。",
+      "why_excluded": "讀不到就是讀不到，不是沒有；不用 Wayback、不用媒體。正文不寫任何能力評測名稱與分數。若發布前重試公告頁成功，由協調者決定是否換進 sources[] 並重新逐字比對。"
+    },
+    {
+      "claim": "「價格是 Astra 的五分之一」（one-fifth of Astra’s standard API input and output token prices）。",
+      "seen_where": "官方 RSS https://openai.com/news/rss.xml 本則 description（200、755,374 bytes）。價目表同頁數字也對得起來：輸入 2.00 對 10.00、輸出 10.00 對 50.00 美元。",
+      "why_excluded": "RSS 不在 sources[]（上限 4 條）。現況下正文若要寫倍數，只能明寫「編輯換算：輸入與輸出牌價都是 Astra 的五分之一」，而且不進標題、description、summary 與圖（DELTA-4-9 第 4 條）；快取輸入 0.10 對 1.00、寫入快取 2.50 對 12.50 不是五分之一，換算時不可把「五分之一」套到四欄。若協調者把 RSS 換進 sources[]，可以改寫成「OpenAI 表示……五分之一」並歸因。"
+    },
+    {
+      "claim": "API changelog 的 Sep 29 條目：「at a lower cost than GPT-6 Astra」、GPT-6.1 Sol 支援 beta 的 Multi-agent（在 Responses API 請求裡把工作交給 subagents），以及 Sep 22 條目 GPT-6 Sol 的「$2 input, $0.20 cached input, and $10 output」。",
+      "seen_where": "https://developers.openai.com/api/docs/changelog（由 /changelog 301 轉入，200、535,542 bytes）。",
+      "why_excluded": "不在 sources[]。牌價以價目表為準；Multi-agent beta 是開發者細節，一般讀者用不到。"
+    },
+    {
+      "claim": "GPT-6 Sol 模型頁的說法：「See GPT-6.1 Sol for the newer Sol model.」、知識截止日 Apr 20, 2026、reasoning.effort 支援 none、快取輸入是未快取輸入價的 10%、歐盟資料落地可用 Standard／Flex／Batch。",
+      "seen_where": "https://developers.openai.com/api/docs/models/gpt-6-sol（200、447,927 bytes）。",
+      "why_excluded": "不在 sources[]。「前一個 Sol 模型」的關係改用 sources[3] 那句表達；知識截止日與推理強度的前後差異不寫。"
+    },
+    {
+      "claim": "GPT-6 指南的遷移說明：「If you already use gpt-6-sol, review the migration guidance before switching to GPT-6.1 Sol.」，以及 GPT-6 Astra 與 GPT-6.1 Sol 不支援 none、GPT-6 Sol 與 GPT-6 Luna 支援 none。",
+      "seen_where": "https://developers.openai.com/api/docs/guides/latest-model?model=gpt-6-astra（200、492,968 bytes；網址取自模型頁「GPT-6.1 Sol in the GPT-6 guide」連結，去掉 #gpt-61-sol 錨點）。",
+      "why_excluded": "開發者遷移細節、不在 sources[]。"
+    },
+    {
+      "claim": "ChatGPT／Codex 的用量估計與 credits：Plus 與 Standard Business 每 5 小時本機訊息 GPT-6.1 Sol 15–160、GPT-6 Sol 15–150；credits 費率 GPT-6.1 Sol 每百萬 tokens 輸入 50、快取輸入 2.5、輸出 250 credits（GPT-6 Sol 快取輸入 5 credits）；GPT-5.5 於 2026-10-14 從 ChatGPT、ChatGPT Work 與 Codex 退役。",
+      "seen_where": "https://learn.chatgpt.com/docs/pricing（developers.openai.com/codex/pricing 308 轉址，200、689,935 bytes）；GPT-5.5 退役日也在 sources[3] 的 Other models 段。",
+      "why_excluded": "credits 與訊息估計是活數字、頁面自己寫 not fixed message limits，且不在 sources[]；GPT-5.5 退役和 GPT-6.1 Sol 無直接關係，寫進來容易被讀成 GPT-6.1 Sol 取代 GPT-5.5。"
+    },
+    {
+      "claim": "Codex CLI 0.159.1「Added GPT-6.1 Sol as the default model in the bundled catalog and Amazon Bedrock Mantle and Runtime catalogs.」",
+      "seen_where": "https://learn.chatgpt.com/docs/changelog 的 2026-09-29 Codex CLI 0.159.1 條目。",
+      "why_excluded": "這是 CLI 內建模型清單的預設值與 Bedrock 清單支援，不等於「ChatGPT 預設換成 GPT-6.1 Sol」或「GPT-6.1 Sol 已在 Amazon Bedrock 上架」；不在 sources[]，不寫。"
+    },
+    {
+      "claim": "第三方文章的價格說法：輸入 2 美元／輸出 10 美元、快取 0.10 美元、Astra 10／50 美元。",
+      "seen_where": "第三方整合站（只當線索）。",
+      "why_excluded": "四個數字都已在價目表與模型頁查實（verified_facts 第 9、14、15 條），正文照一手頁寫、歸因到 OpenAI 價目表；不引用第三方。第三方沒提的長脈絡加價與寫入快取 2.50 美元要一起交代。"
+    },
+    {
+      "claim": "第三方文章：「Plus 以上可在 ChatGPT Work／Codex 使用」「Chat 裡尚未提供」。",
+      "seen_where": "第三方整合站（只當線索）。",
+      "why_excluded": "改用 sources[3] 原文：首發名單是 Plus、Pro、Business、Enterprise、Edu（不是「Plus 以上」這種階層說法；Go 是付費方案但首發不含），Enterprise 與 Edu 要管理員啟用；Chat 那句原文是 aren’t available in Chat，沒有「尚未」。"
+    },
+    {
+      "claim": "第三方文章：「45 頁 system card」。",
+      "seen_where": "第三方整合站；一手 PDF https://deploymentsafety.openai.com/gpt-6-1-sol/gpt-6-1-sol.pdf 今天用 pypdf 數是 48 頁。",
+      "why_excluded": "頁數對不上，而且頁數不是讀者需要的事實；system card 存在與它是 Astra system card 的「增補」可以寫（verified_facts 第 28 條），頁數不寫。"
+    },
+    {
+      "claim": "第三方文章：「思維鏈遵循率 44.8% vs 16.1%」。",
+      "seen_where": "system card 增補第 8.1.1 節〈CoT Controllability〉（sources[4]，verified_facts 第 42 條）印出這兩個數字：750–1,250 tokens 長的思維鏈中，GPT-6.1 Sol 44.8%、GPT-5.6 Sol 16.1%（同句另有 GPT-6 Sol 23.2%、GPT-5.5 Thinking 1.7%、GPT-6 Astra 60.9%）。",
+      "why_excluded": "數字查實，但第三方的框法錯：這是「模型能否依指示控制自己的思維鏈」，放在〈Monitorability Under Adversarial Conditions〉章節，屬可監控性的風險面向，不是一般的指令遵循或品質分數，也只限那個長度區間。DELTA-4-9 第 3 條把它列為一手頁讀不到的說法，今天其實在 system card 讀到了，要不要寫由站主決定；若寫，必須連著長度區間、五個模型的完整比較與章節脈絡，不可寫成「遵循率」或「進步」。"
+    },
+    {
+      "claim": "第三方文章：「循環模型架構」。",
+      "seen_where": "第三方整合站（只當線索）。以不分大小寫比對 recurren、looped、loop architecture，在今天讀到的所有一手頁（四條 sources[] 與上列未列入頁）0 次。",
+      "why_excluded": "一手頁沒有任何架構說明，不寫。"
+    },
+    {
+      "claim": "system card 增補裡的其他數字：生物評測（例如 Tacit Knowledge and Troubleshooting 88.50%）、資安評測（ExploitBench 99.7%、ExploitBench Internal Port 21.5%、SEC-Bench Pro 78.8%、ExploitGym 35.1%）、內部部署模擬的旗標數（28 個、0.056%）、HealthBench 各項分數、MentalHealthBench。",
+      "seen_where": "https://deploymentsafety.openai.com/gpt-6-1-sol 第 5、7.6、9 節。",
+      "why_excluded": "讀到了，但一般讀者用不到、容易被誤讀成能力排名或「會駭客」；OpenAI 自己寫 ExploitBench 可能因訓練資料污染而高估。正文只寫 Preparedness 分級結論、同一套防護、評測環境但書，以及對齊評測裡兩個有但書的數字（若要寫）。"
+    },
+    {
+      "claim": "ChatGPT 方案頁與 Help Center 的 GPT-6.1 Sol 說法。",
+      "seen_where": "https://chatgpt.com/pricing（403、8,612 bytes）、https://help.openai.com/en/articles/6825453-chatgpt-release-notes（403、9,957 bytes），皆為挑戰頁。",
+      "why_excluded": "讀不到。方案可用範圍只照 sources[3]。"
+    },
+    {
+      "claim": "learn.chatgpt.com/docs/models 的 GPT-5.5 退役段落仍建議 Plus 至 Edu「choose GPT-6 Sol ( gpt-6-sol ) when available」。",
+      "seen_where": "sources[3] 同頁 Other models 之前的 GPT-5.5 retirement 段。",
+      "why_excluded": "與同頁建議改用 GPT-6.1 Sol 的段落不一致，可能是文件還沒更新；這是 GPT-5.5 遷移的事，不寫，也不拿來推論 GPT-6 Sol 的去留。"
+    }
+  ],
+  "editorial_brief": "讀者是用 ChatGPT 或 Codex 的台灣一般讀者，其次是按 token 付費的開發者。第一段就回答：OpenAI 在 2026 年 9 月 29 日（台北時間）推出 GPT-6.1 Sol，官方文件稱 GPT-6 Sol 是「前一個 Sol 模型」、API 名稱是 gpt-6.1-sol；首發給 Plus、Pro、Business、Enterprise、Edu，在 Codex（桌面 App 與 CLI）與 ChatGPT Work（網頁與行動版）使用，Chat 裡沒有，Free 與 Go 首發不含，Enterprise 與 Edu 要管理員先啟用；文件沒有寫台灣或地區限制，也沒有寫 GPT-6 Sol 退役。\n\n和既有兩篇的分工：ai-news-gpt-6-sol-luna-20260923 寫 GPT-6 Sol 與 Luna 首發、Luna 給 Free／Go 的桌面 App、對 GPT-5.6 促銷價便宜 50%、OpenAI 對 Claude 的評測與 Astra system card 附錄；ai-news-gpt-6-astra-20260903 寫 Astra 本身與怎麼把電腦工作交代清楚。這一篇只寫 GPT-6.1 Sol 這個新版本：它和 GPT-6 Sol 的關係、三個型號在價目表上的牌價、誰在哪裡用得到、system card 增補的安全分級。不重講 Luna、GPT-5.6 促銷價、對 Claude 的評測、Astra 的功能與任務交代法。\n\n最重要的一件事：GPT-6.1 Sol 在價目表上和 GPT-6 Sol 的短脈絡輸入（2 美元）、寫入快取（2.50 美元）、輸出（10 美元）牌價一樣，差在快取輸入 0.10 對 0.2 美元；和 Astra 比是輸入 2 對 10、輸出 10 對 50 美元。「便宜」的主角不是 GPT-6 Sol → 6.1，而是跟 Astra 比。第二件事：OpenAI 把 GPT-6.1 Sol 的資安分級列為 Critical（原文 As we did for GPT-6 Astra），並套用 Astra 那套防護；GPT-6 Sol 的分級不在本篇 sources[]，正文不做 GPT-6 Sol 對 GPT-6.1 Sol 的分級比較；這是 OpenAI 內部框架的分級，不是外部評等，也不等於一般使用者的使用風險。\n\n建議五節：一、GPT-6.1 Sol 是什麼、和 GPT-6 Sol 什麼關係（新版 Sol、API 名稱、GPT-6 Sol 沒寫退役、推出期間 GPT-5.6 三型仍可用）；二、價格怎麼讀（節末表：四欄「項目｜GPT-6.1 Sol｜GPT-6 Sol｜GPT-6 Astra」，四列「輸入、快取輸入、寫入快取、輸出」，短脈絡 Standard、每百萬 tokens 美元，GPT-6 Sol 的寫入快取 2.5；caption 寫「OpenAI API 價目表，短脈絡、Standard，查核日 2026 年 9 月 30 日；超過 272K 輸入 tokens 的請求另計較高價格」）；正文交代長提示加價規則、Batch／Flex 半價、Fast 兩倍、地區處理加 10%，以及五分之一只能寫成編輯換算且只限輸入與輸出；三、誰在哪裡用得到（節末放圖）：方案、Codex 與 Work 的用戶端、Chat 沒有、Free／Go 首發不含、Enterprise／Edu 管理員啟用、Standard 與 Fast、Ultrafast 之後；四、system card 增補說了什麼：它是 Astra system card 的增補、Preparedness 分級（資安 Critical、生化 High、AI 自我改進低於 High）與同一套防護、Daybreak 分階段、評測環境但書；對齊評測可擇一兩個有但書的數字（程式工作不實陳述 1.50%、尊重警告 23.5%），每個都連著「刻意挑的困難情境、不代表正式環境」；五、怎麼自己確認：看 Codex 或 Work 的模型選單、Enterprise／Edu 找管理員、開發者以呼叫當天的價目表為準、規格（1,050,000 脈絡、128,000 最大輸出、知識截止 2026 年 4 月 30 日）在模型頁。\n\nFAQ 建議：GPT-6.1 Sol 和 GPT-6 Sol 差在哪？（只答官方寫的：新版、API 名稱、同頁牌價差在快取輸入；規格差異官方請讀者自己比）GPT-6 Sol 會下架嗎？（文件沒有寫退役）免費版或 Go 能用嗎？（首發不含）ChatGPT 一般對話看得到嗎？（Chat 裡沒有）比 Astra 便宜多少？（牌價數字，倍數標編輯換算）「資安 Critical」代表什麼？台灣能用嗎？（文件沒寫地區，看自己的模型選單）\ncallout（info）：價格、方案與開放範圍截至 2026 年 9 月 30 日，都是活頁面；評測與安全分級都是 OpenAI 自己公布，這一篇沒有實測，也不是換模型的採購建議。\n\n用語：保留原文 GPT-6.1 Sol、gpt-6.1-sol、GPT-6 Sol、GPT-6 Astra、Codex、ChatGPT Work、Chat、Plus、Pro、Business、Enterprise、Edu、Free、Go、Standard、Fast、Ultrafast、Batch、Flex、Preparedness Framework、Critical、High、Daybreak、system card。topics 用 [\"ai\",\"software\",\"ai-news\"]，沒有投資免責 callout。結尾連結照 DELTA-4-9 第 5 條。",
+  "must_not_write": [
+    "不寫「GPT-6.1 Sol 取代／接替 GPT-6 Sol」「GPT-6 Sol 下架／停用／退役」：官方只稱 GPT-6 Sol 為「previous Sol model」，四條 sources[] 沒有退役或日期，價目表完整清單仍列 gpt-6-sol，ChatGPT 那句也把兩者並列可用。",
+    "不寫「比 GPT-6 Sol 降價」或任何 GPT-6 Sol → 6.1 Sol 的降幅百分比。同頁牌價只有快取輸入不同（0.10 對 0.2 美元），短脈絡輸入、寫入快取、輸出相同；也不寫「快取打五折／減半」這種自己算的倍數，要寫就寫兩個牌價。",
+    "不在標題、description、summary、圖上寫「五分之一」「便宜 80%」這類倍數或百分比。正文若寫，明標「編輯換算」，只限輸入與輸出兩欄；快取輸入與寫入快取不是五分之一。",
+    "不寫 GPT-6 Sol 的長脈絡價格、知識截止日、none 推理強度或 10% 快取規則（不在 sources[]）。",
+    "不寫「付費方案都能用」「Plus 以上可用」：首發名單是 Plus、Pro、Business、Enterprise、Edu；Go 是付費方案但首發不含。",
+    "不寫「免費版不能用 GPT-6.1 Sol」這種沒有時間限定的句子，要寫「Free 與 Go 不在首發範圍」；也不寫之後會加入。",
+    "不寫「Chat 之後會開放」「還沒有」這類暗示時程的說法；原文是 aren’t available in Chat。",
+    "不把 Enterprise 與 Edu 的「管理員啟用」擴大到 Business，也不寫 Business 不用管理員啟用（sources[3] 只點名 Enterprise 與 Edu）。",
+    "不寫「ChatGPT 預設模型換成 GPT-6.1 Sol」，也不引 Codex CLI 內建清單的 default 說法；不寫「已在 Amazon Bedrock 上架」。",
+    "不寫任何能力評測名稱或分數（DeepSWE、OSWorld、AutomationBench、Terminal-Bench Science、GDP.pdf 等），不寫 GPT-6.1 Sol 在任何評測勝過誰；公告頁 403，讀不到。",
+    "不寫「接近 Astra 的 X%」或把 near-Astra／comparable 量化；一律寫成 OpenAI 表示，並帶 OpenAI 自己的建議：拿自己的任務和 Astra 比。",
+    "不把 Preparedness「Critical」寫成「危險」「不安全」「會駭客」或外部評等；那是 OpenAI 內部框架對資安能力的分級，OpenAI 同時寫它套用與 Astra 相同的防護。不寫 ExploitBench 等資安評測分數。",
+    "不寫「思維鏈遵循率 44.8%」「思維鏈可控性大幅進步」：若站主決定要寫 CoT 可控性，必須寫明它在可監控性章節、只限 750–1,250 tokens 的思維鏈，並列出同句五個模型的數字。",
+    "對齊評測數字（1.50%、23.5% 等）若寫，每一個都要連著 OpenAI 的但書（刻意挑的困難任務、不代表正式環境；尊重警告評測沒有開系統層級控制），而且要把對照組一起寫（Astra 0.51%／17.4%、GPT-6 Sol 1.30%），不可只寫 GPT-6.1 Sol 自己一個數字。",
+    "不寫「幻覺比 GPT-6 Sol 少」：system card 寫的是兩者 similarly low。不寫健康評測「超越 Astra」：原文是 on par。",
+    "不寫 system card 的頁數（第三方說 45 頁，PDF 今天數到 48 頁），也不寫「另一份獨立 system card」：頁題是〈Addendum to GPT-6 Astra System Card: GPT-6.1 Sol〉。",
+    "不寫「循環模型架構」或任何架構說法。",
+    "不寫 GPT-6.1 Luna、GPT-6.1 Astra 或「6.1 家族其他型號即將推出」；system card 那句 GPT-6.1 is the latest model family 只能照原文寫，不可延伸成其他型號。",
+    "不寫 Ultrafast 的上線日期；只能寫「之後才會支援」。",
+    "不做「該不該從 GPT-6 Sol 或 Astra 換過來」的購買建議（DELTA-4-9 第 4 條）。",
+    "不重講 9/23 那篇的 Luna、Free／Go 桌面 App 用 Luna、GPT-5.6 促銷價 50%、對 Claude 的評測；不重講 9/3 那篇的 Astra 功能與任務交代法。",
+    "不寫「GPT-6 Sol 是 High、6.1 升級成 Critical」這類比較：GPT-6 Sol 的分級只在 9/23 那篇引用的 Astra system card 附錄，不在本篇 sources[]。",
+    "不寫美國各時區的發布時刻；RSS 不在 sources[] 的現況下不寫「18:00」這個時刻。",
+    "正文不出現「本文」，查證流水帳不寫進正文或 description（DELTA-4-7 第 14 條）。",
+    "圖解不畫任何商標、字標或介面截圖；圖上只能放官方印的牌價與正文寫過的數字。"
+  ],
+  "live_data_warnings": [
+    "API 價目表 https://developers.openai.com/api/docs/pricing 是活頁面：Flagship 表今天預設只顯示 gpt-6-astra、gpt-6.1-sol、gpt-6-luna 三列，gpt-6-sol 已被收進 All models 展開清單；各欄價格、列的排序與收合狀態都可能再改。正文寫「截至 2026 年 9 月 30 日查核」，發布當天重抓，確認 gpt-6-sol 仍在清單裡、三個型號的數字沒變。",
+    "GPT-6.1 Sol 模型頁 https://developers.openai.com/api/docs/models/gpt-6.1-sol 是活頁面：價格、快取占比（5%）、規格卡、資料落地與速度模式都可能改。發布當天重讀。",
+    "ChatGPT／Codex 的 Models 頁 https://learn.chatgpt.com/docs/models 是活頁面：推出範圍（Plus、Pro、Business、Enterprise、Edu）、「Free and Go are not included at launch」「aren’t available in Chat」「Ultrafast … coming later」都是首發當下的描述，隨時可能改；同頁 GPT-5.5 段落與 6.1 段落已經有不一致。發布當天重讀，任何一句改了，標題、description、summary 與第三節要跟著改。",
+    "changelog（https://developers.openai.com/api/docs/changelog、https://learn.chatgpt.com/docs/changelog，未列入 sources）是持續累加的列表，9/29 條目會往下沉；發布當天確認條目仍在、文字相同。",
+    "ChatGPT 方案頁 https://chatgpt.com/pricing 與 Help Center 今天 403 讀不到；發布當天可再試，讀到且與 sources[3] 衝突時要回報協調者，不可自行取捨。",
+    "system card 增補 https://deploymentsafety.openai.com/gpt-6-1-sol 可能像 Astra system card 一樣事後加變更紀錄或修正數值；發布當天看頁面有沒有新的更新說明。",
+    "openai.com/index/* 的 403 是間歇性的；發布當天查核者可現場重試公告頁，讀到時交協調者決定是否換進 sources[]，不可用 Wayback。"
+  ],
   "corrections_applied": [],
-  "hero_label": "",
-  "diagram": {}
+  "hero_label": "新一版的 Sol",
+  "diagram": {
+    "title": "GPT-6.1 Sol 在哪裡用得到",
+    "caption": "GPT-6.1 Sol 在 API、Codex、ChatGPT Work 與 Chat 的首發開放範圍（「Plus 等方案」指 Plus、Pro、Business、Enterprise、Edu），依 OpenAI 文件整理，查核日 2026 年 9 月 30 日。",
+    "nodes": [
+      [
+        "Plus 等方案",
+        "Codex、Work 可選"
+      ],
+      [
+        "Free 與 Go",
+        "首發不包含"
+      ],
+      [
+        "Chat 模式",
+        "目前沒有提供"
+      ],
+      [
+        "API",
+        "gpt-6.1-sol"
+      ]
+    ]
+  }
 }
