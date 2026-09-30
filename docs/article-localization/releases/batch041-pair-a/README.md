@@ -35,3 +35,31 @@
 
 - **跳過的關卡**：票上要求的「同映像隔離 Docker 演練」沒有做（沒有非正式環境）。站主在對話中知情後選了「先 pg_dump 再只發新語系」。手機與桌機的實際畫面沒有逐頁看過，只做了下面的未登入 HTTP 檢查。
 - **站內連結**：`guides-links-check --locale en` 在這 16 篇有 17 筆 `unpublished`，指向還沒有英文版的 13 篇 life 文章（例如 `utm-link-conventions`、`canonical-url-guide`）；其他三個語系同型。等那些文章翻好就會生效。
+
+## 手機與桌機實看（2026-09-29 11:30 UTC 前後）
+
+Playwright 驅動本機的 Chrome，未登入，桌機 1366×900、手機 Pixel 7（412×839），每頁往下捲到底讓延遲載入的圖片出現：
+16 次載入全是 200，`lang` 與語系一致、沒有 noindex、h1 是該語系的標題；文章圖 80 張，沒有破圖、全部有 alt；
+兩種寬度都沒有水平溢出。逐頁數字在 `browser-check.json`。另外親眼看過日文手機版與韓文桌機版的截圖（圖解是該語系的文字）。
+
+console 裡的錯誤跟翻譯無關：桌機版的 `emrldtp.cc` 跨網域錯誤是 Travelpayouts Drive 腳本，zh-TW 原頁一樣會出；
+連續掃頁觸發的 429 只打在子資源、單頁重開時一筆也沒有；一次 `int64` 例外單頁重開兩次沒有重現。
+
+站主在 2026-09-29 的對話中接受「同映像隔離演練」為已知情放棄。
+
+## 發布後的來源變動：#970 版已上線（2026-09-30 00:02 UTC）
+
+PR #970（`9daa475f`）替兩篇的五個語系補上開頭摘要（每份文件 32 個區塊中改了 2 個），
+`669f05b0` 起在正式站映像裡。站主在對話中要求推上正式站，五個語系都包含在內。
+
+1. **先證明沒有後台編輯**：在 api 容器裡用唯讀腳本比對，10 個語系列的草稿與已發布版本都跟
+   #970 之前的內容包完全相同（zh-TW 為 v4，其他語系為 v2），覆蓋不會蓋掉任何人的修改。
+2. **備份**：`pg_dump -Fc` 存 `/root/travel_scanner_preimport_pr970_20260930T000151Z.dump`
+   （168,526,406 bytes，TOC 1,216 項）。
+3. **發布**：在部署鎖下只帶這兩個 slug、五個語系。dry-run 為 10 個 `update`、taxonomy `unchanged`；
+   `--publish` 結果 updated 10、published 10、failed 無；重跑 10 個 `unchanged`。
+   `guides-links-rebuild` materialized 2,570、dropped 0。
+4. **公開頁**：`verify_public.py --sitemap` 五個語系 `RESULT PASS (0 problems, 10 pages)`，
+   每一頁都找得到新摘要的開頭文字。
+
+上面表格的內容包雜湊是 #970 之前的版本；現在上線的版本以 main 的內容包為準。
