@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-shorts-build-checks-before-narration
 title: Shorts build 先查 STOP 與 ffmpeg 再付費合成旁白
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-fable-5-1-shorts-build
 claimed_at: 2026-09-30T03:40:23Z
 created_at: 2026-09-28T15:33:40Z
-completed_at:
+completed_at: 2026-09-30T03:49:54Z
 branch: claude/shorts-build-stop-before-narration
 depends_on: []
 scope:
