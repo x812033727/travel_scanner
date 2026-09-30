@@ -13,9 +13,10 @@ import httpx
 import pytest
 from sqlalchemy import select
 
-from app.models import AdminAuditLog, VideoProject, VideoReview
+from app.admin.service import encrypt_secrets
+from app.models import AdminAuditLog, ProviderConfig, VideoProject, VideoReview
 from app.video_reviews.admin_service import review_store
-from app.video_youtube import sync, vps
+from app.video_youtube import sync, vps, vps_settings
 from app.video_youtube.errors import Refused
 from app.video_youtube.state import new_state
 from tests.test_video_youtube import Site, _app, open_site
@@ -83,7 +84,13 @@ async def fixture(
 ) -> AsyncIterator[tuple[Site, Remote]]:
     async with open_site(monkeypatch, tmp_path) as site:
         remote = Remote()
-        monkeypatch.setattr(vps, "config", lambda: vps.Config("http://vps.test", SECRET, CHANNEL))
+        async with site.factory() as session:
+            session.add(ProviderConfig(
+                provider=vps_settings.PROVIDER, enabled=True,
+                config={"url": "https://vps.test", "channel_id": CHANNEL},
+                secret_config_encrypted=encrypt_secrets({"secret": SECRET}),
+            ))
+            await session.commit()
         monkeypatch.setattr(vps, "load_runtime_settings", AsyncMock(return_value=site.settings))
         monkeypatch.setattr(
             vps,
@@ -260,7 +267,7 @@ async def test_remote_errors_do_not_expose_secrets_and_wrong_channel_is_rejected
     assert remote.job
     remote.job["channel_id"] = "UC" + "b" * 22
     with pytest.raises(Refused) as wrong:
-        await vps.latest(SLUG)
+        await vps.latest(SLUG, settings=vps.Config("https://vps.test", SECRET, CHANNEL))
     assert wrong.value.code == "vps_invalid_response"
     monkeypatch.setattr(
         vps,
@@ -272,7 +279,7 @@ async def test_remote_errors_do_not_expose_secrets_and_wrong_channel_is_rejected
         ),
     )
     with pytest.raises(Refused) as error:
-        await vps.latest(SLUG)
+        await vps.latest(SLUG, settings=vps.Config("https://vps.test", SECRET, CHANNEL))
     assert SECRET not in str(error.value)
 
 
@@ -281,14 +288,14 @@ async def test_disabled_mode_and_route_permissions(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     site, remote = fixture
-    monkeypatch.setattr(vps, "config", lambda: None)
+    monkeypatch.setattr(vps_settings, "resolve", AsyncMock(return_value=None))
     async with site.factory() as session:
         assert await vps.status(session, SLUG) == {
             "configured": False,
             "job": None,
             "linked": False,
         }
-        await vps.assert_idle(SLUG)
+        await vps.assert_idle(session, SLUG)
     assert not remote.calls
     # viewer may read content, but only owner/content may mutate it.
     for roles, readable in [({"viewer"}, True), (set(), False)]:

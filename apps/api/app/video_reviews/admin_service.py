@@ -637,7 +637,7 @@ def _same_qa(first: dict[str, Any], second: dict[str, Any]) -> bool:
     )
 
 
-async def _short_revision_allowed(project: VideoProject) -> None:
+async def _short_revision_allowed(session: AsyncSession, project: VideoProject) -> None:
     """Renew only before any uploader can have acted on the old approved package."""
     if (
         project.youtube_video_id is not None
@@ -653,7 +653,7 @@ async def _short_revision_allowed(project: VideoProject) -> None:
     from app.video_youtube.errors import Refused
 
     try:
-        await vps.assert_idle(project.slug, upload=True)
+        await vps.assert_idle(session, project.slug, upload=True)
     except Refused as error:
         raise AppError(error.status, error.code, error.detail) from error
 
@@ -741,7 +741,7 @@ async def submit_review(
         if same is None:
             # Even a pending changed receipt gets a new id, so an owner looking at an
             # older page cannot approve evidence they have not seen.
-            await _short_revision_allowed(project)
+            await _short_revision_allowed(session, project)
             revision = 1 + max(
                 (row.revision or 0 for row in reviews
                  if row.gate == payload.gate and row.content_sha256 == payload.content_sha256),

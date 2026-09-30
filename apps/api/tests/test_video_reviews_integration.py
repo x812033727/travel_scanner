@@ -15,6 +15,7 @@ from uuid import UUID, uuid4
 import pytest
 import pytest_asyncio
 from sqlalchemy import delete, or_, select
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import SessionFactory, engine
 from app.models import AdminAuditLog, User, VideoProject, VideoReview, VideoToolToken
@@ -566,7 +567,8 @@ async def test_concurrent_identical_short_renewals_create_one_new_current_review
     locked = asyncio.Event()
     release = asyncio.Event()
 
-    async def hold_first(_slug: str, *, upload: bool = False) -> None:
+    async def hold_first(_session: AsyncSession, _slug: str, *, upload: bool = False) -> None:
+        assert isinstance(_session, AsyncSession)
         assert _slug == slug and upload
         locked.set()
         await release.wait()
@@ -587,7 +589,11 @@ async def test_concurrent_identical_short_renewals_create_one_new_current_review
         release.set()
     results = await asyncio.wait_for(asyncio.gather(first, second), timeout=10)
     assert results[0].id == results[1].id != original.id
-    idle.assert_awaited_once_with(slug, upload=True)
+    idle.assert_awaited_once()
+    assert idle.await_args is not None
+    assert isinstance(idle.await_args.args[0], AsyncSession)
+    assert idle.await_args.args[1:] == (slug,)
+    assert idle.await_args.kwargs == {"upload": True}
     async with SessionFactory() as session:
         rows = list(await session.scalars(
             select(VideoReview).where(VideoReview.project_id == project.id)
@@ -627,7 +633,8 @@ async def test_concurrent_owner_decision_refreshes_a_preloaded_superseded_review
     locked = asyncio.Event()
     release = asyncio.Event()
 
-    async def hold_renewal(_slug: str, *, upload: bool = False) -> None:
+    async def hold_renewal(_session: AsyncSession, _slug: str, *, upload: bool = False) -> None:
+        assert isinstance(_session, AsyncSession)
         assert _slug == slug and upload
         locked.set()
         await release.wait()
