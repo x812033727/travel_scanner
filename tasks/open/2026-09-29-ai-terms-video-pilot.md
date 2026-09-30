@@ -62,3 +62,6 @@ python3 -c "import json;d=json.load(open('docs/videos/ai-terms/terms.json'));pri
   - 字典加了 `RAG`。
   - 撰稿：三個代理各寫一集（brief、spec.json → build_video.py → video.json、claims、demo-log、shorts），lint 零錯誤為關卡；接著換人查核（verify-1.md）、聽眾審稿、再 lint。
   - 這個環境沒有 ffmpeg、沒有影片工具的權杖：`review-push`、`tts`、`keyframes` 之後的步驟要在有權杖的機器或主機工人上跑。
+- 2026-09-30 校正：lint 估每分鐘 250 字，實際合成約 300 字（`automated.md` §坑），三集初稿估 9.9–10.1 分，成片會只有 8 分多。做法：每集加長到估 11.8–12.3 分（2,650–2,750 單位），`target_minutes` 保持 `[9, 11]`（最終品管量真實時間軸），lint 的「about 12 minutes」警告留著；README 的長度規則已改。`tts` 後把實際長度填回 README。
+- 2026-09-30 第一輪查核結果：token 51 條主張改 3；上下文視窗 94 條改 1；RAG 152 條改 4（超過 3，要第二輪）。三集都沒有意見不符，但 brief 的站主觀點都還是「提案，待站主確認」，頻道立場空白，站主存立場前不算定稿。RAG 的文章沒有示範用的六段規章與排名，查核者把它們抄進說明欄本文；站主若把示範補進文章，說明欄可改回指文章。
+
