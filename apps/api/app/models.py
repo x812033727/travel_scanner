@@ -2175,6 +2175,27 @@ class VideoToolToken(Timestamped, Base):
     revoked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
 
 
+# What kind of video a tutorial is, for the list's filters (migration 0116): the pipeline
+# reports it from video.json, the owner changes it on /admin/videos; NULL is "uncategorized".
+VIDEO_CATEGORIES: tuple[str, ...] = (
+    "ai-terms",
+    "ai-news",
+    "tutorial",
+    "comparison",
+    "explainer",
+    "story",
+    # The AI dramas (docs/videos/DRAMA.md, SERIES.md: three-minute episodes) and the long-form
+    # dramas planned next (episodes of forty to sixty minutes, forty to fifty of them).
+    "drama",
+    "long-drama",
+    "travel",
+    "other",
+)
+VIDEO_CATEGORY_CHECK = "category IS NULL OR category IN ({})".format(
+    ", ".join(f"'{code}'" for code in VIDEO_CATEGORIES)
+)
+
+
 class VideoProject(Timestamped, Base):
     """One video the local pipeline is making, as the owner sees it on /admin/videos.
 
@@ -2197,6 +2218,7 @@ class VideoProject(Timestamped, Base):
             "shorts_line IS NULL OR shorts_line IN ('lab', 'cut', 'drama')",
             name="ck_video_project_shorts_line",
         ),
+        CheckConstraint(VIDEO_CATEGORY_CHECK, name="ck_video_project_category"),
     )
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     slug: Mapped[str] = mapped_column(String(80), unique=True, index=True)
@@ -2226,6 +2248,9 @@ class VideoProject(Timestamped, Base):
     last_synced_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
     # The article the video retells, so the next automatic draft does not pick it again.
     source_guide: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    # One of VIDEO_CATEGORIES, or None while nobody filed it. A report fills it only while it
+    # is empty; the owner's choice on the page sticks (admin_service.set_category).
+    category: Mapped[str | None] = mapped_column(String(16), nullable=True)
     # The owner stopped this video on /admin/videos; the pipeline leaves it, its topic stays taken.
     dropped_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     dropped_note: Mapped[str | None] = mapped_column(Text, nullable=True)

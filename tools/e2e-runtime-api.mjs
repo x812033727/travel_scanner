@@ -283,6 +283,7 @@ function serveShortsFixture(request, response, url) {
     file_name: "mokaair-short-synthetic-shorts-slotted.mp4", size: shortsPreview.length, seconds: 1,
   }] };
   else if (path === "/api/v1/admin/videos") body = url.searchParams.get("shorts") === "exclude" ? [] : shortsProjects;
+  else if (path === "/api/v1/admin/videos/browse") body = { items: [], total: 0, page: 1, pages: 0, facets: { category: [], state: [] } };
   else if (path.startsWith("/api/v1/admin/videos/synthetic-shorts-")) {
     const [, slug, hash] = /^\/api\/v1\/admin\/videos\/([^/]+)(?:\/files\/([a-f0-9]{64}))?$/.exec(path) ?? [];
     const project = shortsProjects.find((item) => item.slug === slug);
