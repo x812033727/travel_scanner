@@ -336,6 +336,35 @@ def test_diagram_numbers_are_the_visible_labels_and_match_the_text_loosely() -> 
     assert missing_diagram_numbers(drawn, document) == ["07:45"]
 
 
+def test_a_myriad_unit_in_the_text_carries_the_figure_the_diagram_draws() -> None:
+    svg = (
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100">'
+        '<text x="10" y="40" font-size="20">NT$1,000,000 · NT$10,000 · 15,000 · 30,000</text></svg>'
+    )
+    document = GuideDocument.model_validate(good_document())
+    document.blocks[1] = document.blocks[1].model_copy(
+        update={"text": "罰金は1万元以上100万元以下。보증금은 1.5만 원입니다。"}
+    )
+    # 1万, 100万 and 1.5만 are 10,000, 1,000,000 and 15,000; nothing in the text says 30,000.
+    assert missing_diagram_numbers(svg, document) == ["30,000"]
+
+
+def test_a_step_badge_is_not_a_number_the_text_must_carry() -> None:
+    sentence = "01/02 is not a badge; 05 minutes is not one either"
+    badges = (
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100">'
+        '<text x="10" y="40" font-size="34"> 01 </text>'
+        '<text x="110" y="40" font-size="34">02</text>'
+        f'<text x="10" y="80" font-size="18">{sentence}</text>'
+        '<text x="210" y="40" font-size="34">10</text></svg>'
+    )
+    # Only a node that holds nothing but 01-09 is a badge; the same digits in a sentence, and a
+    # two-digit 10, still have to appear in the article.
+    assert diagram_numbers(badges) == {"01", "02", "05", "10"}
+    only_badges = badges.replace(sentence, "").replace(">10<", "><")
+    assert diagram_numbers(only_badges) == set()
+
+
 @pytest.mark.parametrize(
     ("short_name", "allowed"),
     [
