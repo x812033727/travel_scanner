@@ -192,6 +192,24 @@
       ]
     },
     {
+      "id": "contracts-to-sort",
+      "template": "shot",
+      "claims": [
+        "c3"
+      ],
+      "data": {
+        "prompt": "flat editorial illustration: an anonymous office worker seated at a desk, a tall pile of bound contract folders stacked at one side, and only three folders opened flat in the center of the desk under the lamp; front view, the three open folders centered and lit, the rest of the pile dim in shadow; deep teal-green ground, cream folders, amber lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cw0fm",
+          "text": "如果你把一批合約丟給它整理，先問一句：它這一次拿到了哪幾份？"
+        }
+      ]
+    },
+    {
       "id": "three-ways",
       "template": "shot",
       "data": {
@@ -224,6 +242,10 @@
         {
           "id": "cwiz3",
           "text": "有的把舊對話，換成一段摘要。"
+        },
+        {
+          "id": "cw0gl",
+          "text": "哪一種，看你用的工具怎麼做。"
         }
       ]
     },
@@ -278,7 +300,7 @@
       "lines": [
         {
           "id": "cwb3u",
-          "text": "你貼的附件、它查到的資料，也都攤在這張桌上。"
+          "text": "你貼的附件，還有它查到的資料，也都攤在這張桌上。"
         }
       ]
     },
@@ -350,7 +372,7 @@
       "lines": [
         {
           "id": "cwr09",
-          "text": "token 是模型自己的單位，不是字數；我拿三份會議紀錄算過一次。"
+          "text": "token 是模型自己的單位，不是字數；拿三份會議紀錄實際算一次。"
         }
       ]
     },
@@ -369,6 +391,42 @@
         {
           "id": "cwfqu",
           "text": "三份社區管委會的會議紀錄，加起來六百零四個字元。"
+        }
+      ]
+    },
+    {
+      "id": "longest-record-lifted",
+      "template": "shot",
+      "claims": [
+        "c4"
+      ],
+      "data": {
+        "prompt": "flat editorial illustration: one stapled meeting-minute document lifted out of a fan of three and held up close under a lamp, visibly a little taller than the two left behind on the desk, its lines drawn as plain grey stripes with no lettering; close up, the lifted document centered; deep teal-green ground, cream paper, amber lamp",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cw3si",
+          "text": "最長的一份，兩百一十七個字元。"
+        }
+      ]
+    },
+    {
+      "id": "document-on-scale",
+      "template": "shot",
+      "claims": [
+        "c4"
+      ],
+      "data": {
+        "prompt": "flat editorial illustration: a small balance scale standing on a desk, a stapled document resting on one pan and a heap of tiny round cream chips on the other pan, the beam level; front view, the scale centered; deep teal-green ground, cream chips, amber scale",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cwof9",
+          "text": "算出來一百八十八個 token。"
         }
       ]
     },
@@ -426,6 +484,24 @@
           "id": "cwyeb",
           "text": "一百萬 token 的桌面，放得下五千六百多份，四百多年的會議。",
           "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "your-own-stack-ruler",
+      "template": "shot",
+      "claims": [
+        "c5"
+      ],
+      "data": {
+        "prompt": "flat editorial illustration: a wide flat tray shaped like a desktop with many identical small document cards tiled across it in neat rows like floor tiles, one card lifted above the tray by a hand for comparison; overhead view, the tray centered; deep teal-green ground, cream cards, amber tray rim",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cw4k9",
+          "text": "你自己的文件也能算：視窗大小除以每份的 token 數，就是放得下幾份。"
         }
       ]
     },
@@ -501,7 +577,7 @@
       "lines": [
         {
           "id": "cwftv",
-          "text": "你可能覺得，反正全都在桌上，它自己會翻。"
+          "text": "你可能覺得，反正都在桌上，它自己會翻、會找。"
         }
       ]
     },
@@ -566,7 +642,7 @@
       "lines": [
         {
           "id": "cw5l9",
-          "text": "沒有超限，全部都放上桌了，模型還是可能搞混哪一版才有效。"
+          "text": "沒有超限，全都上桌了，它還是可能搞混哪一版才有效。"
         }
       ]
     },
@@ -586,6 +662,42 @@
         {
           "id": "cwm26",
           "text": "二零二三年一篇研究，把答案放在長文的不同位置，看它找不找得到。"
+        }
+      ]
+    },
+    {
+      "id": "many-folders-one-marked",
+      "template": "shot",
+      "claims": [
+        "c8"
+      ],
+      "data": {
+        "prompt": "flat editorial illustration: a long row of identical closed folders standing upright on a shelf, all the same cream colour, except one folder near the middle tied with an amber ribbon; front view, the row centered and spanning the frame; deep teal-green ground, cream folders, amber ribbon",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cw5mv",
+          "text": "他們測的是多份文件一起放進去的問答。"
+        }
+      ]
+    },
+    {
+      "id": "bookmark-in-stack",
+      "template": "shot",
+      "claims": [
+        "c8"
+      ],
+      "data": {
+        "prompt": "flat editorial illustration: an anonymous figure at a reading desk with a tall stack of documents beside them and a single blank question card propped up in front, one small amber bookmark sticking out from somewhere inside the stack; side view, the figure and stack centered; deep teal-green ground, cream paper, amber bookmark",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cwotj",
+          "text": "看相關的那一份放在哪裡。"
         }
       ]
     },
@@ -646,6 +758,42 @@
         {
           "id": "cwrtb",
           "text": "就算是專門做長上下文的模型，也一樣會在中間迷路。"
+        }
+      ]
+    },
+    {
+      "id": "withdrawal-at-end",
+      "template": "shot",
+      "claims": [
+        "c7"
+      ],
+      "data": {
+        "prompt": "flat editorial illustration: a long row of standing documents laid out like a fence across the frame, all plain except the very last one at the far right, which carries a bold red diagonal stripe and stands in bright lamplight; wide side view, the row centered; deep teal-green ground, cream paper, red stripe, amber lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cw6fn",
+          "text": "換成你的長桌，撤回單在最後面還好。"
+        }
+      ]
+    },
+    {
+      "id": "withdrawal-in-middle",
+      "template": "shot",
+      "claims": [
+        "c7"
+      ],
+      "data": {
+        "prompt": "flat editorial illustration: close up on the dim middle of a row of documents, where one red-striped sheet is squeezed between two plain sheets and half hidden in shadow, the bright ends of the row only hinted at the edges of the frame; the striped sheet centered; deep teal-green ground, cream paper, red stripe, faint amber glow at the edges",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cwprg",
+          "text": "要是被夾在中間，它就容易漏看。"
         }
       ]
     },
@@ -749,6 +897,42 @@
       ]
     },
     {
+      "id": "tabs-few-minutes",
+      "template": "shot",
+      "claims": [
+        "c12"
+      ],
+      "data": {
+        "prompt": "flat editorial illustration: a hand pressing small coloured tabs onto a short stack of meeting documents on a small desk, a folded agenda sheet and a pen beside the stack; front view, the stack centered; deep teal-green ground, cream paper, amber and teal tabs",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cw8rl",
+          "text": "如果你是管委會的幹部，先把每份紀錄貼上標籤。"
+        }
+      ]
+    },
+    {
+      "id": "movers-with-giant-desk",
+      "template": "shot",
+      "claims": [
+        "c12"
+      ],
+      "data": {
+        "prompt": "flat editorial illustration: two anonymous movers carrying in a giant grey desktop that fills the back of the room, while in the foreground a small tabbed stack of documents sits lit under a lamp on a modest desk; front view, the small desk centered, the giant desk dim behind; deep teal-green ground, cream paper, amber lamp",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cwptq",
+          "text": "比換一個更大的視窗有用。"
+        }
+      ]
+    },
+    {
       "id": "forgot-which-kind",
       "template": "shot",
       "data": {
@@ -831,6 +1015,25 @@
         {
           "id": "cwpmk",
           "text": "第一種，沒送進去：服務直接告訴你，輸入太長。"
+        }
+      ]
+    },
+    {
+      "id": "cabinet-into-bundles",
+      "template": "shot",
+      "claims": [
+        "c9",
+        "c13"
+      ],
+      "data": {
+        "prompt": "flat editorial illustration: a tall open cabinet standing empty at the left, its reports now split into a long row of thin bundles tied with string along a counter, a hand lifting the first bundle toward a small open doorway at the right edge; side view, the row of bundles centered; deep teal-green ground, cream paper, amber string",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cw9ec",
+          "text": "像是一口氣把一整櫃的報告全丟進去，門太小；最直接的做法，是分批。"
         }
       ]
     },
@@ -935,7 +1138,7 @@
       "lines": [
         {
           "id": "cwpzq",
-          "text": "我把三次會議壓成一句話，六十二個字元，看起來很完整。"
+          "text": "把三次會議壓成一句話試試看：六十二個字元，看起來很完整。"
         }
       ]
     },
@@ -978,6 +1181,60 @@
       ]
     },
     {
+      "id": "summary-three-icons",
+      "template": "shot",
+      "claims": [
+        "c10"
+      ],
+      "data": {
+        "prompt": "flat editorial illustration: a single summary slip lying on a desk with three small plain pictograms drawn on it in a row, a stack of coins, a light bulb and a bus, and a fourth spot at the end of the row left as a faint empty dotted circle; overhead close-up, the slip centered; deep teal-green ground, cream slip, amber pictograms",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cwaua",
+          "text": "壞的那句什麼都記得：報價、燈具、旅遊。"
+        }
+      ]
+    },
+    {
+      "id": "unused-stamp",
+      "template": "shot",
+      "claims": [
+        "c10"
+      ],
+      "data": {
+        "prompt": "flat editorial illustration: a small round rubber stamp lying on its side on a desk, unused, its face showing a plain barred circle, next to the corner of a slip of paper with nothing stamped on it; close up, the stamp centered; deep teal-green ground, cream paper, amber stamp handle, red ink pad beside it",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cwsjq",
+          "text": "就是沒說維修案還沒核准。"
+        }
+      ]
+    },
+    {
+      "id": "handoff-status-strip",
+      "template": "shot",
+      "claims": [
+        "c10"
+      ],
+      "data": {
+        "prompt": "flat editorial illustration: a second slip of paper held up by a hand, carrying a row of four solid stamp-like marks, a barred circle, a crossed-out calendar page, a stop bar and a small checklist box, all firmly inked; close up, the slip centered against a dim background; deep teal-green ground, cream slip, amber and red ink",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cwchh",
+          "text": "好的那句留的是狀態：尚未核准、流會延期、不得發包，還有待辦。"
+        }
+      ]
+    },
+    {
       "id": "new-desk-only-summary",
       "template": "shot",
       "data": {
@@ -1006,7 +1263,7 @@
       "lines": [
         {
           "id": "cw9er",
-          "text": "它要是把維修案寫成即將施工，錯的不是模型，是交接。"
+          "text": "我的看法是，它要是寫成即將施工，錯的不是模型，是交接。"
         }
       ]
     },
@@ -1374,6 +1631,101 @@
       ]
     },
     {
+      "id": "workset-steps",
+      "template": "steps",
+      "claims": [
+        "c14"
+      ],
+      "data": {
+        "title": "把紀錄整理成**可查核的工作集**",
+        "steps": [
+          {
+            "title": "列欄位，建索引",
+            "detail": "提案、狀態、負責人、缺什麼、原文位置"
+          },
+          {
+            "title": "抽成工作表",
+            "detail": "找不到就留空；保留可回查的位置"
+          },
+          {
+            "title": "只帶核對過的表",
+            "detail": "加必要原文，再請它草擬議程"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "cwcp2",
+          "text": "第一步，先列欄位：提案、狀態、負責人、缺什麼、原文在哪；再按日期建索引。",
+          "reveal": 1
+        },
+        {
+          "id": "cwcxa",
+          "text": "第二步，請它把每份紀錄抽成工作表；找不到就留空，位置要查得回去。",
+          "reveal": 1
+        },
+        {
+          "id": "cwdzl",
+          "text": "第三步，只帶核對過的工作表和必要原文，請它草擬議程。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "worksheet-vs-summary",
+      "template": "shot",
+      "claims": [
+        "c14"
+      ],
+      "data": {
+        "prompt": "flat editorial illustration: two sheets side by side on a desk, the left one a ruled grid worksheet with tidy cells, a few filled with plain shapes, the right one a single smooth paragraph drawn as one solid rounded bar; the grid sheet lit warm and the paragraph sheet dim; overhead view, both centered; deep teal-green ground, cream paper, amber highlight on the grid",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cwex2",
+          "text": "要的是一張工作表，不是一篇看起來很完整的摘要。"
+        }
+      ]
+    },
+    {
+      "id": "pen-paused-looking-back",
+      "template": "shot",
+      "claims": [
+        "c14"
+      ],
+      "data": {
+        "prompt": "flat editorial illustration: an anonymous figure pausing with a pen held above a draft page, head turned to look back over one shoulder, a faint dotted arrow curling back from the page toward the edge of the frame; side view, the figure centered; deep teal-green ground, cream page, amber arrow",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cwflo",
+          "text": "寫錯了，回頭查三件事。"
+        }
+      ]
+    },
+    {
+      "id": "three-things-to-recheck",
+      "template": "shot",
+      "claims": [
+        "c14"
+      ],
+      "data": {
+        "prompt": "flat editorial illustration: three things laid in a row on a desk, a grid worksheet, a stapled original document and a small card of ruled lines like an instruction sheet, each with a round amber checkpoint marker set beside it; overhead view, the row centered; deep teal-green ground, cream paper, amber markers",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cwslc",
+          "text": "表對不對、原文在不在、有沒有要它分狀態。"
+        }
+      ]
+    },
+    {
       "id": "three-drawers-infinite",
       "template": "shot",
       "data": {
@@ -1720,6 +2072,60 @@
       ]
     },
     {
+      "id": "two-decisions-fork",
+      "template": "shot",
+      "claims": [
+        "c17"
+      ],
+      "data": {
+        "prompt": "flat editorial illustration: a path across a desktop landscape splitting at a signpost with two blank arrow boards, the left branch leading toward the outline of a very large desk, the right branch toward a small original document with a summary slip laid over it; high angle, the fork centered; deep teal-green ground, cream path, amber signpost",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cwk4g",
+          "text": "以我的用法，上下文視窗這個名詞，改變我兩個決定。"
+        }
+      ]
+    },
+    {
+      "id": "bigger-desk-or-not",
+      "template": "shot",
+      "claims": [
+        "c17"
+      ],
+      "data": {
+        "prompt": "flat editorial illustration: an anonymous figure standing with arms crossed between a delivery cart carrying a huge flat desktop and a small wall chart of three simple pictures, a sheet outside a door, a thin pressed sheet and a sheet with a cross beside it, the figure looking at the chart rather than the cart; front view, the figure centered; deep teal-green ground, cream shapes, amber chart frame",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cwka0",
+          "text": "第一，換不換更大的視窗，先分清是哪一種忘記。"
+        }
+      ]
+    },
+    {
+      "id": "trust-after-checking",
+      "template": "shot",
+      "claims": [
+        "c17"
+      ],
+      "data": {
+        "prompt": "flat editorial illustration: a hand laying a short summary slip directly on top of a long original document so that their lines align, a small tick mark appearing beside each matched line; overhead close-up, the overlapping papers centered; deep teal-green ground, cream paper, amber tick marks",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cwkop",
+          "text": "第二，信不信一句看起來很完整的摘要：先對原文，再信。"
+        }
+      ]
+    },
+    {
       "id": "three-checkpoints",
       "template": "shot",
       "data": {
@@ -1734,6 +2140,28 @@
         {
           "id": "cwuec",
           "text": "真正要看的是：這一輪收到什麼、限制留住了沒、結果追不追得到證據。"
+        }
+      ]
+    },
+    {
+      "id": "three-takeaways",
+      "template": "shot",
+      "claims": [
+        "c17"
+      ],
+      "data": {
+        "prompt": "flat editorial illustration: three small objects lined up on a clean desk under one lamp, a tidy stack of just a few sheets, a summary slip pinned beside an original page, and a small three-way signpost, each on its own round coaster; front view, the trio centered; deep teal-green ground, cream objects, amber lamp",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cwmw3",
+          "text": "帶走三件事。"
+        },
+        {
+          "id": "cwnro",
+          "text": "先看桌上有什麼；摘要對原文；分清是哪一種，再動手。"
         }
       ]
     },
