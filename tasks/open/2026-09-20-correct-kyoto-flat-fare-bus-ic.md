@@ -69,6 +69,12 @@ and the source SVG heading/layout. The independent visual review counted all
 48 original text nodes and found no remaining text-to-text collision or canvas
 overflow after the layout patch.
 
+- 2026-09-30 (claude-opus-5-5, owner-approved `--force` on `2026-09-21-91-ci`):
+  that ticket touched this scope only to satisfy the content checker. In
+  `diagram-1.svg` every 14 px label became 15 px (layout re-rendered and
+  checked), and zh-TW `blocks[18]` item 0 now says `早上 6:00 開門` instead of
+  `早上 6 點開門`. Nothing about fares or IC cards changed; rebase onto main.
+
 - 2026-09-30 (claude-opus-5-5, owner-approved `--force` on
   `2026-09-20-lodging-tax-wording-site-wide`): in this ticket's packs the zh-TW
   title, description and body now say 住宿稅 where they said 宿泊稅 or 宿泊税.
