@@ -368,10 +368,10 @@
     },
     "zh-CN": {
       "title": "实战：制作小网站",
-      "description": "从 brief.md 规划并制作 Small Steps 待办网站，完成新增、完成、删除、筛选与本机资料保存。将 HTML、CSS、资料函数、画面事件与测试分开，以 Node 测试和浏览器操作验收，并留下可重新启动与还原的交接纪录。",
+      "description": "从 brief.md 规划并制作 Small Steps 待办网站，完成新增、完成、删除、筛选与本地数据保存。将 HTML、CSS、数据函数、界面事件与测试分开，以 Node 测试和浏览器操作验收，并留下可重启与还原的交接记录。",
       "hero": {
         "src": "/guides/codex-website-workshop/hero.jpg",
-        "alt": "实作顺序示意图，非产品介面截图。",
+        "alt": "实操顺序示意图，非产品界面截图。",
         "width": 1600,
         "height": 900,
         "credit": {
@@ -385,8 +385,8 @@
           "type": "summary",
           "items": [
             "从 brief.",
-            "md 规划并制作 Small Steps 待办网站，完成新增、完成、删除、筛选与本机资料保存。",
-            "将 HTML、CSS、资料函数、画面事件与测试分开，以 Node 测试和浏览器操作验收，并留下可重新启动与还原的交接纪录。"
+            "md 规划并制作 Small Steps 待办网站，完成新增、完成、删除、筛选与本地数据保存。",
+            "将 HTML、CSS、数据函数、界面事件与测试分开，以 Node 测试和浏览器操作验收，并留下可重启与还原的交接记录。"
           ]
         },
         {
@@ -408,14 +408,14 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "从一份需求文件做出可新增、完成、删除、筛选及保存资料的 Small Steps 待办网站。阅读约 20 分钟、实作约 60 分钟，模型等待另计。准备 Codex 入门、Node.js、Python 3、编辑器与浏览器。使用公开可分享的虚构待办，不连接账号或后端。完成代表自己的本机功能与验收通过，正式部署另有流程。"
+          "text": "从一份需求文档做出可新增、完成、删除、筛选及保存数据的 Small Steps 待办网站。阅读约 20 分钟、实操约 60 分钟，模型等待另计。准备 Codex 入门、Node.js、Python 3、编辑器与浏览器。使用公开可分享的虚构待办，不连接账号或后端。完成代表自己的本地功能与验收通过，正式部署另有流程。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "本段提到的教学与资源: "
+              "text": "本段提到的教程与资源: "
             },
             {
               "type": "article",
@@ -444,11 +444,11 @@
             },
             {
               "type": "text",
-              "text": "，解压缩后将 expected 保留在另一个参考文件夹。这篇在自己新建的 website-lab 从 brief.md 开始，不把 start 或 broken 混入；它们是其他课程的受控练习。expected 有五个程序档，可在卡住时比较完整参考成果。先在工作区终端确认 node --version，Windows 用 py -3 --version、macOS／Linux 用 python3 --version。若找不到命令，先完成对应安装及"
+              "text": "，解压缩后将 expected 保留在另一个参考文件夹。这篇在自己新建的 website-lab 从 brief.md 开始，不把 start 或 broken 混入；它们是其他课程的受控练习。expected 有五个代码文件，可在卡住时比较完整参考成果。先在工作区终端确认 node --version，Windows 用 py -3 --version、macOS／Linux 用 python3 --version。若找不到命令，先完成对应安装及"
             },
             {
               "type": "article",
-              "text": "路径设定",
+              "text": "路径设置",
               "kind": "life",
               "slug": "codex-terminal-paths"
             },
@@ -460,7 +460,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Windows、macOS、Linux 都以同一份 HTML／CSS／JavaScript 实作；Codex 桌面、CLI 或 IDE 可开启 website-lab。桌面选这个文件夹，CLI 先 cd 进去再输入 codex，IDE 开文件夹后确认带入的项目。手机可追踪电脑任务，但文件与预览仍在执行主机上；手机的 127.0.0.1 不是你的电脑。不要为了手机展示而把练习服务器公开到网络，响应式检查先在电脑完成。"
+          "text": "Windows、macOS、Linux 都以同一份 HTML／CSS／JavaScript 实现；Codex 桌面、CLI 或 IDE 可打开 website-lab。桌面选这个文件夹，CLI 先 cd 进去再输入 codex，IDE 开文件夹后确认带入的项目。手机可追踪电脑任务，但文件与预览仍在执行主机上；手机的 127.0.0.1 不是你的电脑。不要为了手机展示而把练习服务器公开到网络，响应式检查先在电脑完成。"
         },
         {
           "type": "heading",
@@ -469,7 +469,7 @@
         },
         {
           "type": "paragraph",
-          "text": "将以下内容保存为 brief.md。英文介面文字与共用参考一致，五语教学都用同样按钮名称方便核对。新增后能看见资料就是读取，勾选完成就是更新，因此本例已有 CRUD 的四种动作，不额外加入登录、同步或多人协作。重要的不只是外观好看，还要说明资料坏掉、空白输入与键盘操作会怎样。"
+          "text": "将以下内容保存为 brief.md。英文界面文字与共用参考一致，五语教程都用同样按钮名称方便核对。新增后能看见数据就是读取，勾选完成就是更新，因此本例已有 CRUD 的四种动作，不额外加入登录、同步或多人协作。重要的不只是外观好看，还要说明数据坏掉、空白输入与键盘操作会怎样。"
         },
         {
           "type": "code",
@@ -480,7 +480,7 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤 3：先检查设计，再分段实作"
+          "text": "步骤 3：先检查设计，再分段实现"
         },
         {
           "type": "rich_paragraph",
@@ -497,7 +497,7 @@
             },
             {
               "type": "text",
-              "text": "请 Codex 阅读 brief.md，列出五个文件各自负责什么、资料如何流动、需要哪些验收。确认 core.mjs 不直接存取 DOM，app.js 才处理按钮与储存，没有引进框架或额外服务。若计划缺少资料损坏或还原，直接补进计划；确认后再切换实作。分成资料与测试、画面与互动两段，每段都要求列出实际修改及未验证事项。"
+              "text": "请 Codex 阅读 brief.md，列出五个文件各自负责什么、数据如何流动、需要哪些验收。确认 core.mjs 不直接访问 DOM，app.js 才处理按钮与存储，没有引进框架或额外服务。若计划缺少数据损坏或还原，直接补进计划；确认后再切换到实现。分成数据与测试、页面与交互两段，每段都要求列出实际修改及未验证事项。"
             }
           ]
         },
@@ -518,7 +518,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "每段完成后自己开启文件并执行测试。参考版本的 core.test.mjs 有三个顶层测试，里面含多个验收断言；Codex 自己写的测试数量可能不同，不能只比较数字。若功能与测试一起写错，绿色仍会漏掉需求，因此使用下一步的独立画面清单。卡住时只比较 expected 里对应文件，先找差异原因，不整包覆盖自己尚未保存的工作。需要撤回先读 "
+              "text": "每段完成后自己打开文件并执行测试。参考版本的 core.test.mjs 有三个顶层测试，里面含多个验收断言；Codex 自己写的测试数量可能不同，不能只比较数字。若功能与测试一起写错，绿色仍会漏掉需求，因此使用下一步的独立页面清单。卡住时只比较 expected 里对应文件，先找差异原因，不整包覆盖自己尚未保存的工作。需要撤回先读 "
             },
             {
               "type": "article",
@@ -551,16 +551,16 @@
         },
         {
           "type": "paragraph",
-          "text": "浏览 http://127.0.0.1:4173，保留这个终端运行；需要其他命令另开终端。若 4173 已被使用，先确认是否自己的练习服务器，不任意终止别人的工作；改用未占用连接埠时，网址与验收纪录一起改。双击 HTML 的 file 入口可能限制 ES module，不适合此材料。画面不是预期版本时，先查服务启动文件夹、网址及 Network 的 app.js 回应，不立刻请 Codex 重写整个网站。"
+          "text": "浏览 http://127.0.0.1:4173，保留这个终端运行；需要其他命令另开终端。若 4173 已被使用，先确认是否自己的练习服务器，不任意终止别人的工作；改用未占用端口时，网址与验收记录一起改。双击 HTML 的 file 入口可能限制 ES module，不适合此材料。页面不是预期版本时，先查服务启动文件夹、网址及 Network 的 app.js 响应，不立刻请 Codex 重写整个网站。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤 5：逐项验收功能与画面"
+          "text": "步骤 5：逐项验收功能与页面"
         },
         {
           "type": "paragraph",
-          "text": "先在 About this exercise 展开后，确认资料全是可丢弃的虚构项目，再用 Reset practice data 清除本例专用键。将 Show 选回 All tasks，确认 0 active / 0 total，再新增 Read 与 Build，完成 Read。All tasks 应有两笔、Active 只有 Build、Completed 只有 Read，统计是 1 active / 2 total。重新整理后资料仍在；选回 All tasks 并删除 Read，应剩 Build。以下表格接著测，别只拍一张首页就判定完成。"
+          "text": "先在 About this exercise 展开后，确认数据全是可丢弃的虚构项目，再用 Reset practice data 清除本例专用键。将 Show 选回 All tasks，确认 0 active / 0 total，再新增 Read 与 Build，完成 Read。All tasks 应有两条、Active 只有 Build、Completed 只有 Read，统计是 1 active / 2 total。刷新后数据仍在；选回 All tasks 并删除 Read，应剩 Build。以下表格接着测，别只拍一张首页就判定完成。"
         },
         {
           "type": "table",
@@ -578,11 +578,11 @@
             [
               "Unicode",
               "新增 写作 ✨",
-              "原文保留，重新整理不损坏"
+              "原文保留，刷新不损坏"
             ],
             [
               "文字安全",
-              "新增 下方 HTML 测试字串",
+              "新增 下方 HTML 测试字符串",
               "显示文字，不产生图片元素"
             ],
             [
@@ -598,7 +598,7 @@
             [
               "桌面宽度",
               "1280px",
-              "清单、统计与操作都可读"
+              "列表、统计与操作都可读"
             ]
           ]
         },
@@ -615,15 +615,15 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤 6：资料损坏、修正与交付"
+          "text": "步骤 6：数据损坏、修正与交付"
         },
         {
           "type": "paragraph",
-          "text": "进阶验收只在本机虚构练习页操作：先保存需要的测试纪录，开启浏览器开发工具的 Storage／Application → Local Storage，选目前 127.0.0.1 与连接埠。找到 mokaair-codex-todo-v1，把值改成 bad-json，重新整理。应显示资料无法读取的警告；新增暂存项目后检查储存值仍是 bad-json，不能默默覆盖它。完成后用 Reset practice data 只移除这一键，再新增一笔并重整，确认恢复正常保存。不要对其他网站资料执行清空全部。"
+          "text": "进阶验收只在本地虚构练习页操作：先保存需要的测试记录，打开浏览器开发工具的 Storage／Application → Local Storage，选目前 127.0.0.1 与端口。找到 mokaair-codex-todo-v1，把值改成 bad-json，刷新。应显示数据无法读取的警告；新增临时项目后检查存储值仍是 bad-json，不能默默覆盖它。完成后用 Reset practice data 只移除这一键，再新增一条并刷新，确认恢复正常保存。不要对其他网站数据执行清空全部。"
         },
         {
           "type": "paragraph",
-          "text": "交接前从清空的虚构资料开始，再走一次下方顺序，将「预期」与「实际」分栏填写。即使读者使用参考版本，也要自行观察自己的页面。筛选时统计仍来自全部任务，这能抓到只看目前画面笔数的错误；未能启动预览的项目留未验证，不能把期望数字填成实测。"
+          "text": "交接前从清空的虚构数据开始，再走一次下方顺序，将「预期」与「实际」分栏填写。即使读者使用参考版本，也要自行观察自己的页面。筛选时统计仍来自全部任务，这能抓到只看目前页面条数的错误；未能启动预览的项目留未验证，不能把期望数字填成实测。"
         },
         {
           "type": "code",
@@ -636,7 +636,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "验收失败时回报确切输入、操作、预期与实际值，请 Codex 只修对应层并重跑相关检查，参考 "
+              "text": "验收失败时报告确切输入、操作、预期与实际值，请 Codex 只修对应层并重跑相关检查，参考 "
             },
             {
               "type": "article",
@@ -646,7 +646,7 @@
             },
             {
               "type": "text",
-              "text": "。交付时保留 brief、五个文件、Node 测试纪录、桌面及窄版画面、未实测平台与还原方法。服务器用原终端 Ctrl+C 停止。最后请 Codex 用"
+              "text": "。交付时保留 brief、五个文件、Node 测试记录、桌面及窄版页面、未实测平台与还原方法。服务器用原终端 Ctrl+C 停止。最后请 Codex 用"
             },
             {
               "type": "article",
@@ -656,7 +656,7 @@
             },
             {
               "type": "text",
-              "text": "说明如何重新启动；若要改用框架、加入后端或正式上线，另开明确需求，不能把本机画面可见视为已部署。"
+              "text": "说明如何重启；若要改用框架、加入后端或正式上线，另开明确需求，不能把本地页面可见视为已部署。"
             }
           ]
         },
@@ -674,10 +674,10 @@
         {
           "type": "image",
           "src": "/guides/codex-website-workshop/diagram-1.svg",
-          "alt": "31. 实战：制作小网站 — 实作顺序示意图，非产品介面截图。 Brief → HTML / CSS → Browser checks",
+          "alt": "31. 实战：制作小网站 — 实操顺序示意图，非产品界面截图。 Brief → HTML / CSS → Browser checks",
           "width": 1600,
           "height": 900,
-          "caption": "31. 实战：制作小网站 — 实作顺序示意图，非产品介面截图。 Brief → HTML / CSS → Browser checks",
+          "caption": "31. 实战：制作小网站 — 实操顺序示意图，非产品界面截图。 Brief → HTML / CSS → Browser checks",
           "description": "Brief to HTML / CSS to Browser checks",
           "credit": {
             "author": "Mokaair",
@@ -689,7 +689,7 @@
           "type": "image",
           "src": "/guides/codex-first-project/todo-390.png",
           "alt": "待办练习网站：Build 已完成，Read the AGENTS.md rules 尚未完成，共两项任务。",
-          "caption": "完整参考版的实际浏览器画面，供修改前比对。Windows / Edge 153.0.4234.32，2026-09-14；使用虚构数据。390px 为响应式窗口，非实体手机。这不是 Codex 桌面界面截图。",
+          "caption": "完整参考版的实际浏览器页面，供修改前比对。Windows / Edge 153.0.4234.32，2026-09-14；使用虚构数据。390px 为响应式窗口，非实体手机。这不是 Codex 桌面界面截图。",
           "width": 390,
           "height": 900,
           "credit": {
@@ -701,7 +701,7 @@
           "type": "image",
           "src": "/guides/codex-first-project/todo-1280.png",
           "alt": "待办练习网站：Build 已完成，Read the AGENTS.md rules 尚未完成，共两项任务。",
-          "caption": "完整参考版的实际浏览器画面，供修改前比对。Windows / Edge 153.0.4234.32，2026-09-14；使用虚构数据。1280px 为响应式窗口，非实体手机。这不是 Codex 桌面界面截图。",
+          "caption": "完整参考版的实际浏览器页面，供修改前比对。Windows / Edge 153.0.4234.32，2026-09-14；使用虚构数据。1280px 为响应式窗口，非实体手机。这不是 Codex 桌面界面截图。",
           "width": 1280,
           "height": 900,
           "credit": {

@@ -303,10 +303,10 @@
     },
     "zh-CN": {
       "title": "实战：制作数据整理工具",
-      "description": "这个实战制作 CSV 名单整理工具，保留原档并产生新结果。规则固定为修剪空白、将 email 转小写、同 email 保留第一笔有效资料、略过缺姓名或格式不合的 email，最后回报保留、重复与无效笔数。这是练习用格式检查，不保证信箱真实存在。",
+      "description": "这个实战制作 CSV 名单整理工具，保留原文件并产生新结果。规则固定为修剪空白、将 email 转小写、同 email 保留第一条有效数据、略过缺姓名或格式不合的 email，最后报告保留、重复与无效条数。这是练习用格式检查，不保证邮箱真实存在。",
       "hero": {
         "src": "/guides/codex-csv-workshop/hero.jpg",
-        "alt": "实作顺序示意图，非产品介面截图。",
+        "alt": "实操顺序示意图，非产品界面截图。",
         "width": 1600,
         "height": 900,
         "credit": {
@@ -319,9 +319,9 @@
         {
           "type": "summary",
           "items": [
-            "这个实战制作 CSV 名单整理工具，保留原档并产生新结果。",
-            "规则固定为修剪空白、将 email 转小写、同 email 保留第一笔有效资料、略过缺姓名或格式不合的 email，最后回报保留、重复与无效笔数。",
-            "这是练习用格式检查，不保证信箱真实存在。"
+            "这个实战制作 CSV 名单整理工具，保留原文件并产生新结果。",
+            "规则固定为修剪空白、将 email 转小写、同 email 保留第一条有效数据、略过缺姓名或格式不合的 email，最后报告保留、重复与无效条数。",
+            "这是练习用格式检查，不保证邮箱真实存在。"
           ]
         },
         {
@@ -343,16 +343,16 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "做出一个保留原始资料的 CSV 整理工具：修剪空白、统一 email 大小写、保留第一笔有效资料、统计重复与无效列，拒绝覆写既有文件。阅读约 20 分钟、实作约 45 分钟。准备 Python 3.9 以上版本、Codex 与自己的空白 csv-lab；只使用下方虚构姓名及 example.test 地址。这是格式整理，不会寄信，也不能证明 email 真正存在。"
+          "text": "做出一个保留原始数据的 CSV 整理工具：修剪空白、统一 email 大小写、保留第一条有效数据、统计重复与无效行，拒绝覆盖现有文件。阅读约 20 分钟、实操约 45 分钟。准备 Python 3.9 以上版本、Codex 与自己的空白 csv-lab；只使用下方虚构姓名及 example.test 地址。这是格式整理，不会发邮件，也不能证明 email 真正存在。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤 1：建立可以人工验算的资料"
+          "text": "步骤 1：创建可以人工验算的数据"
         },
         {
           "type": "paragraph",
-          "text": "在编辑器开启 csv-lab，以 UTF-8 建立 contacts.csv，完整内容如下。第一列栏名必须正好是 name,email，顺序也相同。保留 Alice 前后与第一笔 email 的空白，它们是测试条件。使用纯文字编辑器检查原文，避免试算表另存时换编码或改值。Windows 执行 py -3 --version，macOS／Linux 执行 python3 --version，确认版本至少为 Python 3.9；本例不需要 pip、pandas 或数据库。"
+          "text": "在编辑器打开 csv-lab，以 UTF-8 创建 contacts.csv，完整内容如下。第一行列名必须正好是 name,email，顺序也相同。保留 Alice 前后与第一条 email 的空白，它们是测试条件。使用纯文本编辑器检查原文，避免电子表格另存时换编码或改值。Windows 执行 py -3 --version，macOS／Linux 执行 python3 --version，确认版本至少为 Python 3.9；本例不需要 pip、pandas 或数据库。"
         },
         {
           "type": "code",
@@ -363,7 +363,7 @@
         {
           "type": "table",
           "header": [
-            "输入列",
+            "输入行",
             "判定",
             "输出"
           ],
@@ -392,7 +392,7 @@
         },
         {
           "type": "paragraph",
-          "text": "因此预期 kept 2、duplicate 1、invalid 1。去重依标准化后 email，不依姓名；若第一笔同地址资料因姓名空白而无效，后来第一笔有效资料仍可保留。这些规则应在生成程序前说清楚。"
+          "text": "因此预期 kept 2、duplicate 1、invalid 1。去重依标准化后 email，不依姓名；若第一条同地址数据因姓名空白而无效，后来第一条有效数据仍可保留。这些规则应在生成程序前说清楚。"
         },
         {
           "type": "heading",
@@ -404,7 +404,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "让 Codex 开启 csv-lab，先用 "
+              "text": "让 Codex 打开 csv-lab，先用 "
             },
             {
               "type": "article",
@@ -414,7 +414,7 @@
             },
             {
               "type": "text",
-              "text": "确认输入、输出、例外及验收，再交付实作。每次只输出新文件；结构坏掉要整次失败，不留下看似成功的半份资料。一般无效 email 是可计数的资料问题，但缺栏、多栏或错误表头是契约错误。这个区分会直接影响下游是否敢使用结果，不能只写一句帮我清理 CSV。"
+              "text": "确认输入、输出、例外及验收，再交付实现。每次只输出新文件；结构坏掉要整次失败，不留下看似成功的半份数据。一般无效 email 是可计数的数据问题，但缺列、多列或错误表头是契约错误。这个区分会直接影响下游是否敢使用结果，不能只写一句帮我清理 CSV。"
             }
           ]
         },
@@ -431,7 +431,7 @@
         },
         {
           "type": "paragraph",
-          "text": "以下是完整参考程序，存为 clean_contacts.py 可独立执行；若你已让 Codex 生成版本，先另存备份，再比较差异。csv 模组负责引号、逗号与换行，不能用 split(',') 替代。程序在全部输入读完后才用 x 模式建立输出；已有目标档就失败。这能避免输入格式错误时留下输出，但磁碟在写到一半失败仍可能留下不完整文件，该次必须标记失败并检查产物，不能声称这是完整交易系统。"
+          "text": "以下是完整参考程序，存为 clean_contacts.py 可独立执行；若你已让 Codex 生成版本，先另存备份，再比较差异。csv 模块负责引号、逗号与换行，不能用 split(',') 替代。程序在全部输入读完后才用 x 模式创建输出；已有目标文件就失败。这能避免输入格式错误时留下输出，但磁盘在写到一半失败仍可能留下不完整文件，该次必须标记失败并检查产物，不能声称这是完整事务系统。"
         },
         {
           "type": "code",
@@ -468,16 +468,16 @@
         },
         {
           "type": "paragraph",
-          "text": "预期退出 0，计数为 kept 2、duplicate 1、invalid 1，输出两笔且顺序保留，PowerShell 比对 True 或 cmp 无差异。接著原指令再执行一次，因 cleaned-01.csv 已存在应退出 1，既有输出内容不变；不要先删掉它来假装通过覆写防护。再把输入与输出都指定 contacts.csv，应拒绝且原件不变。这些失败是验收成功的一部分。"
+          "text": "预期退出 0，计数为 kept 2、duplicate 1、invalid 1，输出两条且顺序保留，PowerShell 比对 True 或 cmp 无差异。接着原命令再执行一次，因 cleaned-01.csv 已存在应退出 1，现有输出内容不变；不要先删掉它来假装通过覆盖防护。再把输入与输出都指定 contacts.csv，应拒绝且原件不变。这些失败是验收成功的一部分。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤 5：Unicode、引号与坏列"
+          "text": "步骤 5：Unicode、引号与坏行"
         },
         {
           "type": "paragraph",
-          "text": "另存下方 contacts-unicode.csv，输出用 cleaned-unicode.csv。预期 kept 1、duplicate 0、invalid 0，姓名中的逗号仍属同一栏，Unicode 不变。若输出重新打开变成乱码，先确认编辑器以 UTF-8 解码，不立刻改写原始输入。再建立 bad.csv，内容为 name,email 换行 Alice，也就是缺少 email 栏；指定全新的 cleaned-bad.csv 执行，应退出 1 且不建立输出。把表头改成 email,name 或多加第三栏也应拒绝。"
+          "text": "另存下方 contacts-unicode.csv，输出用 cleaned-unicode.csv。预期 kept 1、duplicate 0、invalid 0，姓名中的逗号仍属同一列，Unicode 不变。若输出重新打开变成乱码，先确认编辑器以 UTF-8 解码，不立刻改写原始输入。再创建 bad.csv，内容为 name,email 换行 Alice，也就是缺少 email 列；指定全新的 cleaned-bad.csv 执行，应退出 1 且不创建输出。把表头改成 email,name 或多加第三列也应拒绝。"
         },
         {
           "type": "code",
@@ -488,7 +488,7 @@
         {
           "type": "heading",
           "level": 3,
-          "text": "延伸：保留第一笔有效资料"
+          "text": "延伸：保留第一条有效数据"
         },
         {
           "type": "code",
@@ -498,7 +498,7 @@
         },
         {
           "type": "paragraph",
-          "text": "用这份新增输入与尚不存在的 cleaned-first-valid.csv 执行同一程序，其他参数不变。预期 kept 1、duplicate 1、invalid 1：第一笔姓名空白而无效，不应先占住 email；第二笔才是第一笔有效资料；第三笔才算重复。若输出没有 First valid，检查 seen 是在资料通过验证后才加入，而不是先去重再验证。原 contacts.csv 与 cleaned-01.csv 都保持原样。"
+          "text": "用这份新增输入与尚不存在的 cleaned-first-valid.csv 执行同一程序，其他参数不变。预期 kept 1、duplicate 1、invalid 1：第一条姓名空白而无效，不应先占住 email；第二条才是第一条有效数据；第三条才算重复。若输出没有 First valid，检查 seen 是在数据通过验证后才加入，而不是先去重再验证。原 contacts.csv 与 cleaned-01.csv 都保持原样。"
         },
         {
           "type": "code",
@@ -513,7 +513,7 @@
         },
         {
           "type": "paragraph",
-          "text": "把下方完整测试存为 test_clean_contacts.py，放在程序与 contacts.csv 旁边。它使用暂存文件夹，会核对输入位元组未变、既有输出拒绝覆写、Unicode、引号与结构错误；不在你的练习目录累积测试产物。Windows 执行 py -3 -m unittest -v test_clean_contacts.py；macOS／Linux 执行 python3 -m unittest -v test_clean_contacts.py。参考版本应有三项测试全部通过；若生成版本的介面不同，先对齐 clean 函数契约，不随意删除失败案例。"
+          "text": "把下方完整测试存为 test_clean_contacts.py，放在程序与 contacts.csv 旁边。它使用临时文件夹，会核对输入字节未变、现有输出拒绝覆盖、Unicode、引号与结构错误；不在你的练习目录累积测试产物。Windows 执行 py -3 -m unittest -v test_clean_contacts.py；macOS／Linux 执行 python3 -m unittest -v test_clean_contacts.py。参考版本应有三项测试全部通过；若生成版本的接口不同，先对齐 clean 函数契约，不随意删除失败案例。"
         },
         {
           "type": "code",
@@ -531,7 +531,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "交付时提供原始虚构 CSV、程序、测试、执行指令、计数及未修改原件的证据。可以下载"
+              "text": "交付时提供原始虚构 CSV、程序、测试、执行命令、计数及未修改原件的证据。可以下载"
             },
             {
               "type": "link",
@@ -540,17 +540,17 @@
             },
             {
               "type": "text",
-              "text": "比对；压缩档包含参考程序，不需要先完成其他项目。重新整理用新的输出名称，清理时只选自己已确认的产物。若要读真正名单、处理超大文件或汇入试算表，另设计权限、串流及公式文字的处理规则；本篇把资料当文字保存，不自动把外部内容当命令执行。下一篇练习"
+              "text": "比对；压缩包包含参考程序，不需要先完成其他项目。重新整理用新的输出名称，清理时只选自己已确认的产物。若要读真正名单、处理超大文件或导入电子表格，另设计权限、流式处理及公式文本的处理规则；本篇把数据当文本保存，不自动把外部内容当命令执行。下一篇练习"
             },
             {
               "type": "article",
-              "text": "接手既有专案",
+              "text": "接手既有项目",
               "kind": "life",
               "slug": "codex-maintain-existing-project"
             },
             {
               "type": "text",
-              "text": "，保留这里建立的基准与验证方法。"
+              "text": "，保留这里创建的基准与验证方法。"
             }
           ]
         },
@@ -568,10 +568,10 @@
         {
           "type": "image",
           "src": "/guides/codex-csv-workshop/diagram-1.svg",
-          "alt": "32. 实战：制作数据整理工具 — 实作顺序示意图，非产品介面截图。 contacts.csv → Cleanup → clean.csv",
+          "alt": "32. 实战：制作数据整理工具 — 实操顺序示意图，非产品界面截图。 contacts.csv → Cleanup → clean.csv",
           "width": 1600,
           "height": 900,
-          "caption": "32. 实战：制作数据整理工具 — 实作顺序示意图，非产品介面截图。 contacts.csv → Cleanup → clean.csv",
+          "caption": "32. 实战：制作数据整理工具 — 实操顺序示意图，非产品界面截图。 contacts.csv → Cleanup → clean.csv",
           "description": "contacts.csv to Cleanup to clean.csv",
           "credit": {
             "author": "Mokaair",

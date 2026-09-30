@@ -1215,7 +1215,7 @@
     },
     "zh-CN": {
       "title": "JSON 输出与结果验证",
-      "description": "区分事件串流与最终结果，解析结构化输出并拒绝缺栏位或错误格式。",
+      "description": "区分事件流与最终结果，解析结构化输出并拒绝缺字段或错误格式。",
       "hero": {
         "src": "/guides/codex-json-output/hero.jpg",
         "width": 1600,
@@ -1230,8 +1230,8 @@
         {
           "type": "summary",
           "items": [
-            "区分事件串流与最终结果，解析结构化输出并拒绝缺栏位或错误格式。",
-            "把一次 Codex 回答变成能被程序检查的资料，同时保留执行事件。"
+            "区分事件流与最终结果，解析结构化输出并拒绝缺字段或错误格式。",
+            "把一次 Codex 回答变成能被程序检查的数据，同时保留执行事件。"
           ]
         },
         {
@@ -1253,14 +1253,14 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "把一次 Codex 回答变成能被程序检查的资料，同时保留执行事件。阅读约 20 分钟、操作约 25 分钟，模型等待另计。需要 codex exec、已登录的 CLI、Git 与 Python 3。这次模型执行会使用额度；故意破坏输出再验证的步骤只在本机读档，不会再次呼叫模型。"
+          "text": "把一次 Codex 回答变成能被程序检查的数据，同时保留执行事件。阅读约 20 分钟、操作约 25 分钟，模型等待另计。需要 codex exec、已登录的 CLI、Git 与 Python 3。这次模型执行会使用额度；故意破坏输出再验证的步骤只在本地读取文件，不会再次调用模型。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "本段提到的教学与资源: "
+              "text": "本段提到的教程与资源: "
             },
             {
               "type": "article",
@@ -1277,7 +1277,7 @@
         },
         {
           "type": "paragraph",
-          "text": "--json 会把 stdout 改为 JSONL，也就是每一行各自是一个 JSON 对象。它不是单一 JSON 阵列，也不是只包含最后答案；不能直接对整份 events.jsonl 呼叫一次 json.loads。--output-schema 指定最后回答的结构，-o 把最后回答另存为 final.json。因此同一工作可以同时保留事件与结构化答案，stderr 则继续保存诊断。副文件名只是名称，真正格式由旗标与内容决定。"
+          "text": "--json 会把 stdout 改为 JSONL，也就是每一行各自是一个 JSON 对象。它不是单一 JSON 数组，也不是只包含最后答案；不能直接对整份 events.jsonl 调用一次 json.loads。--output-schema 指定最后回答的结构，-o 把最后回答另存为 final.json。因此同一工作可以同时保留事件与结构化答案，stderr 则继续保存诊断。扩展名只是名称，真正格式由选项与内容决定。"
         },
         {
           "type": "table",
@@ -1300,7 +1300,7 @@
             [
               "final.json",
               "最后的结构化回答",
-              "栏位、型别、版本与数值可验证"
+              "字段、类型、版本与数值可验证"
             ],
             [
               "stderr.log",
@@ -1325,7 +1325,7 @@
         },
         {
           "type": "paragraph",
-          "text": "在自己的空白 exec-json-lab 文件夹执行 git init，以 UTF-8 建立下方 tasks.md。若你沿用前篇资料，先确认内容完全一致；本篇验证器刻意只接受 exec-practice-1，避免拿其他版本的回答混用。先人工计算总数 3、完成 1、未完成 2。需要改用真实资料时，应另订版本与验收契约，不是删掉验证直到任何输出都能通过。"
+          "text": "在自己的空白 exec-json-lab 文件夹执行 git init，以 UTF-8 创建下方 tasks.md。若你沿用前篇资料，先确认内容完全一致；本篇验证器刻意只接受 exec-practice-1，避免拿其他版本的回答混用。先人工计算总数 3、完成 1、未完成 2。需要改用真实数据时，应另订版本与验收契约，不是删掉验证直到任何输出都能通过。"
         },
         {
           "type": "code",
@@ -1336,18 +1336,18 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤 3：建立一次执行、逐层验证的程序"
+          "text": "步骤 3：创建一次执行、逐层验证的程序"
         },
         {
           "type": "paragraph",
-          "text": "将下方完整程序存为同一文件夹的 run_summary.py。它只用 Python 标准函数库，不需 pip install。程序先建立全新的输出文件夹，保存 schema 与 running 状态，再用参数阵列启动 Codex；不把模型文字拼成 shell 指令。120 秒是教材自行设置的等待上限，不是 Codex 的固定限制。遇到逾时、启动失败或非零退出，保留产物并拒绝接受答案，不自动重试。"
+          "text": "将下方完整程序存为同一文件夹的 run_summary.py。它只用 Python 标准库，不需 pip install。程序先创建全新的输出文件夹，保存 schema 与 running 状态，再用参数数组启动 Codex；不把模型文字拼成 shell 命令。120 秒是教材自行设置的等待上限，不是 Codex 的固定限制。遇到超时、启动失败或非零退出，保留产物并拒绝接受答案，不自动重试。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "Windows 本篇使用独立安装版 codex.exe。在 PowerShell 先执行 Get-Command codex -All，确认来源是已安装的 .exe；若只有 npm 的 .cmd／.ps1 包装档或别名，Python 不会套用 PowerShell 的命令解析。请依 "
+              "text": "Windows 本篇使用独立安装版 codex.exe。在 PowerShell 先执行 Get-Command codex -All，确认来源是已安装的 .exe；若只有 npm 的 .cmd／.ps1 包装脚本或别名，Python 不会套用 PowerShell 的命令解析。请依 "
             },
             {
               "type": "article",
@@ -1357,13 +1357,13 @@
             },
             {
               "type": "text",
-              "text": " 使用官方独立安装管道，开新终端后重查；不要为此改成 shell=True 或拼接 shell 指令。macOS／Linux 则确认终端和 Python 程序使用相同 PATH。"
+              "text": " 使用官方独立安装渠道，开新终端后重查；不要为此改成 shell=True 或拼接 shell 命令。macOS／Linux 则确认终端和 Python 程序使用相同 PATH。"
             }
           ]
         },
         {
           "type": "code",
-          "label": "run_summary.py（完整程式）",
+          "label": "run_summary.py（完整代码）",
           "language": "python",
           "code": "\"\"\"Run once, retain evidence, and accept only a validated practice summary.\"\"\"\nimport argparse\nimport json\nfrom pathlib import Path\nimport subprocess\nimport sys\n\nSCHEMA = {\n    \"type\": \"object\",\n    \"properties\": {\n        \"revision\": {\"type\": \"string\"},\n        \"total\": {\"type\": \"integer\", \"minimum\": 0},\n        \"completed\": {\"type\": \"integer\", \"minimum\": 0},\n        \"pending\": {\"type\": \"integer\", \"minimum\": 0},\n    },\n    \"required\": [\"revision\", \"total\", \"completed\", \"pending\"],\n    \"additionalProperties\": False,\n}\nPROMPT = (\n    \"Read only tasks.md. Return its Revision marker and checkbox counts \"\n    \"as revision, total, completed and pending. Do not edit input files \"\n    \"or use external services.\"\n)\n\n\ndef verify(run):\n    status = json.loads((run / \"status.json\").read_text(encoding=\"utf-8\"))\n    if (not isinstance(status, dict)\n            or status != {\"state\": \"exited\", \"exit_code\": 0}\n            or type(status.get(\"exit_code\")) is not int):\n        raise ValueError(\"Process did not exit successfully\")\n    events = []\n    for number, line in enumerate((run / \"events.jsonl\").read_text(encoding=\"utf-8-sig\").splitlines(), 1):\n        if not line.strip():\n            continue\n        event = json.loads(line)\n        if not isinstance(event, dict) or not isinstance(event.get(\"type\"), str):\n            raise ValueError(f\"Invalid event on line {number}\")\n        events.append(event[\"type\"])\n    if (events.count(\"turn.completed\") != 1 or events.count(\"turn.started\") != 1\n            or events.index(\"turn.started\") > events.index(\"turn.completed\")):\n        raise ValueError(\"Missing or ambiguous completed turn\")\n    if \"turn.failed\" in events or \"error\" in events:\n        raise ValueError(\"Failure event requires investigation\")\n    result = json.loads((run / \"final.json\").read_text(encoding=\"utf-8-sig\"))\n    if not isinstance(result, dict) or set(result) != set(SCHEMA[\"required\"]):\n        raise ValueError(\"Unexpected or missing final fields\")\n    if result[\"revision\"] != \"exec-practice-1\":\n        raise ValueError(\"Unexpected input revision\")\n    if any(type(result[key]) is not int or result[key] < 0 for key in (\"total\", \"completed\", \"pending\")):\n        raise ValueError(\"Counts must be nonnegative integers, not booleans\")\n    if result[\"total\"] != result[\"completed\"] + result[\"pending\"]:\n        raise ValueError(\"Inconsistent count arithmetic\")\n    return result\n\n\ndef main():\n    parser = argparse.ArgumentParser()\n    parser.add_argument(\"run_name\")\n    parser.add_argument(\"--verify-only\", action=\"store_true\")\n    args = parser.parse_args()\n    root = Path.cwd().resolve()\n    if Path(args.run_name).name != args.run_name or args.run_name in {\".\", \"..\"}:\n        parser.error(\"Use a folder name, not a path\")\n    run = root / args.run_name\n    if not args.verify_only:\n        if not (root / \"tasks.md\").is_file():\n            parser.error(\"Missing tasks.md in the current folder\")\n        run.mkdir()  # Refuse to overwrite an earlier run.\n        schema_path = run / \"schema.json\"\n        schema_path.write_text(json.dumps(SCHEMA, indent=2) + \"\\n\", encoding=\"utf-8\")\n        status_path = run / \"status.json\"\n        status_path.write_text(json.dumps({\"state\": \"running\"}) + \"\\n\", encoding=\"utf-8\")\n        command = [\"codex\", \"exec\", \"--sandbox\", \"read-only\", \"--ephemeral\", \"--json\",\n                   \"--output-schema\", str(schema_path), \"-o\", str(run / \"final.json\"), PROMPT]\n        try:\n            with (run / \"events.jsonl\").open(\"xb\") as stdout, (run / \"stderr.log\").open(\"xb\") as stderr:\n                process = subprocess.run(command, cwd=root, stdout=stdout, stderr=stderr, timeout=120, check=False)\n            status = {\"state\": \"exited\", \"exit_code\": process.returncode}\n        except subprocess.TimeoutExpired:\n            status = {\"state\": \"timeout\"}\n        except OSError:\n            status = {\"state\": \"launch_failed\"}\n        status_path.write_text(json.dumps(status) + \"\\n\", encoding=\"utf-8\")\n    result = verify(run)\n    # Output data only: never execute text returned by the model.\n    print(json.dumps(result, ensure_ascii=False))\n\n\nif __name__ == \"__main__\":\n    try:\n        main()\n    except (OSError, ValueError) as error:\n        print(f\"Not accepted: {error}\", file=sys.stderr)\n        sys.exit(1)\n"
         },
@@ -1374,19 +1374,19 @@
         },
         {
           "type": "code",
-          "label": "Windows PowerShell，在教材资料夹内",
+          "label": "Windows PowerShell，在教材文件夹内",
           "language": "powershell",
           "code": "py -3 --version\npy -3 run_summary.py run-01\n$practiceExit = $LASTEXITCODE\n$practiceExit\n"
         },
         {
           "type": "code",
-          "label": "macOS／Linux，在教材资料夹内",
+          "label": "macOS／Linux，在教材文件夹内",
           "language": "sh",
           "code": "python3 --version\npython3 run_summary.py run-01\npractice_exit=$?\nprintf '%s\\n' \"$practice_exit\"\n"
         },
         {
           "type": "paragraph",
-          "text": "若 Windows 没有 py，但 python --version 显示 Python 3，可把 py -3 换成 python。预期终端输出一个对象，revision 为 exec-practice-1，数值为 total 3、completed 1、pending 2，退出 0。开启 run-01，核对五份文件。验证器会拒绝缺栏、多栏、负数、以 true 冒充整数及数学不一致；但 3／2／1 虽然总和正确仍是错误内容，因此最后还要和清单核对。结构符合 schema 不等于事实正确。"
+          "text": "若 Windows 没有 py，但 python --version 显示 Python 3，可把 py -3 换成 python。预期终端输出一个对象，revision 为 exec-practice-1，数值为 total 3、completed 1、pending 2，退出 0。打开 run-01，核对五份文件。验证器会拒绝缺字段、多字段、负数、以 true 冒充整数及数学不一致；但 3／2／1 虽然总和正确仍是错误内容，因此最后还要和清单核对。结构符合 schema 不等于事实正确。"
         },
         {
           "type": "heading",
@@ -1395,7 +1395,7 @@
         },
         {
           "type": "paragraph",
-          "text": "用文件管理员复制整个 run-01 成 run-bad-fields，只在副本 final.json 删除 pending 栏位；执行下方 verify-only。预期 stderr 出现 Not accepted 且退出非 0。接著另复制原始 run-01 成 run-bad-events，把 events.jsonl 任意一个有效对象的最后一个右大括号删掉；换成该文件夹名称再验证，也应失败。第三个副本 run-bad-status 只把 status.json 的 exit_code 改成 7，即使 final.json 正确仍应拒绝。每个案例都从未改动的原始产物复制，不互相叠加错误。"
+          "text": "用文件管理器复制整个 run-01 成 run-bad-fields，只在副本 final.json 删除 pending 字段；执行下方 verify-only。预期 stderr 出现 Not accepted 且退出非 0。接着另复制原始 run-01 成 run-bad-events，把 events.jsonl 任意一个有效对象的最后一个右大括号删掉；换成该文件夹名称再验证，也应失败。第三个副本 run-bad-status 只把 status.json 的 exit_code 改成 7，即使 final.json 正确仍应拒绝。每个案例都从未改动的原始产物复制，不互相叠加错误。"
         },
         {
           "type": "code",
@@ -1416,7 +1416,7 @@
         },
         {
           "type": "paragraph",
-          "text": "再从原始 run-01 复制出未使用的 run-wrong-counts，只把 final.json 换成下方完整对象。保留 status 与 events 原样，使用相同 verify-only 命令但改为这个文件夹。预期程序退出 0，因为型别、版本和总和都符合；人工比对 tasks.md 则必须拒绝这份答案。它没有重读输入，也没有核对最终档与事件中的回答是否相同，不能作为通用事实验证器。"
+          "text": "再从原始 run-01 复制出未使用的 run-wrong-counts，只把 final.json 换成下方完整对象。保留 status 与 events 原样，使用相同 verify-only 命令但改为这个文件夹。预期程序退出 0，因为类型、版本和总和都符合；人工比对 tasks.md 则必须拒绝这份答案。它没有重读输入，也没有核对最终文件与事件中的回答是否相同，不能作为通用事实验证器。"
         },
         {
           "type": "code",
@@ -1426,7 +1426,7 @@
         },
         {
           "type": "paragraph",
-          "text": "把此例记成「结构通过／内容拒绝」，不改原始成功纪录，也不自动提交或使用答案。回到未改动 run-01 验证并人工核对，应仍为 3／1／2。下一篇 CI 会对固定教材加上精确数值检查，展示如何把这个人工判断写成可执行条件。"
+          "text": "把此例记成「结构通过／内容拒绝」，不改原始成功记录，也不自动提交或使用答案。回到未改动 run-01 验证并人工核对，应仍为 3／1／2。下一篇 CI 会对固定教材加上精确数值检查，展示如何把这个人工判断写成可执行条件。"
         },
         {
           "type": "heading",
@@ -1438,7 +1438,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "还原时不用请 Codex 修 JSON；保留失败副本当证据，再对原始 run-01 执行 verify-only，应重新通过。下一次真正执行用 run-02；重用 run-01 会因目录已存在而拒绝覆写。若出现 launch_failed，先在同一终端查 codex --version；若是 timeout，查看 "
+              "text": "还原时不用请 Codex 修 JSON；保留失败副本当证据，再对原始 run-01 执行 verify-only，应重新通过。下一次真正执行用 run-02；重用 run-01 会因目录已存在而拒绝覆盖。若出现 launch_failed，先在同一终端查 codex --version；若是 timeout，查看 "
             },
             {
               "type": "article",
@@ -1448,7 +1448,7 @@
             },
             {
               "type": "text",
-              "text": " 再决定是否重试。程序只负责这个单次工作，不追踪整台主机所有子程序，也不提供跨机器的唯一执行锁。"
+              "text": " 再决定是否重试。程序只负责这个单次工作，不跟踪整台主机所有子进程，也不提供跨机器的唯一执行锁。"
             }
           ]
         },
@@ -1457,7 +1457,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "CLI 事件可能加入新种类，因此程序保留未知事件，不靠固定的 item 数量判定成功；遇到未完成或含失败事件则保守拒绝，让人调查。这里只验证一个回合，不直接套用到续接多回合纪录。Windows、macOS、Linux 都能以相同 Python 原始码操作；手机不在本机执行此脚本。正式交付前记录 Python／CLI 版本、输入版本、文件及人工计数结果，再进入 "
+              "text": "CLI 事件可能加入新种类，因此程序保留未知事件，不靠固定的 item 数量判定成功；遇到未完成或含失败事件则保守拒绝，让人调查。这里只验证一轮，不直接套用到续接多轮记录。Windows、macOS、Linux 都能以相同 Python 源代码操作；手机不在本地执行此脚本。正式交付前记录 Python／CLI 版本、输入版本、文件及人工计数结果，再进入 "
             },
             {
               "type": "article",

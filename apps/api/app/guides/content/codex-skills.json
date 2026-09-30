@@ -410,10 +410,10 @@
     },
     "zh-CN": {
       "title": "Skills 与 SKILL.md",
-      "description": "Skill 将固定工作流程整理成可重用的指示与资源。最小结构是一个文件夹与 SKILL.md，文件前段需要 name 和 description，正文描述操作与输出。安装技能不代表每个任务都必然使用，还要检查是否载入。",
+      "description": "Skill 将固定工作流程整理成可重用的指示与资源。最小结构是一个文件夹与 SKILL.md，文件前段需要 name 和 description，正文描述操作与输出。安装技能不代表每个任务都必然使用，还要检查是否加载。",
       "hero": {
         "src": "/guides/codex-skills/hero.jpg",
-        "alt": "实作顺序示意图，非产品介面截图。",
+        "alt": "实操顺序示意图，非产品界面截图。",
         "width": 1600,
         "height": 900,
         "credit": {
@@ -429,7 +429,7 @@
             "Skill 将固定工作流程整理成可重用的指示与资源。",
             "最小结构是一个文件夹与 SKILL.",
             "md，文件前段需要 name 和 description，正文描述操作与输出。",
-            "安装技能不代表每个任务都必然使用，还要检查是否载入。"
+            "安装技能不代表每个任务都必然使用，还要检查是否加载。"
           ]
         },
         {
@@ -451,7 +451,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "你会建立一个专门验收 Small Steps 待办网站的技能，放在练习项目内，让 Codex 找到并使用。完成后能分辨「技能文件有效」「被发现」「已被采用」「检查真的完成」四种状态，并用正常版和故障版观察不同结果。阅读约 12 分钟，操作约 25 分钟。"
+          "text": "你会创建一个专门验收 Small Steps 待办网站的技能，放在练习项目内，让 Codex 找到并使用。完成后能分辨「技能文件有效」「被发现」「已被采用」「检查真的完成」四种状态，并用正常版和故障版观察不同结果。阅读约 12 分钟，操作约 25 分钟。"
         },
         {
           "type": "rich_paragraph",
@@ -510,7 +510,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "测试使用 Node.js，浏览器预览使用 Python 3。没有浏览器工具时，技能应回报画面检查未执行，提供给你手动操作的步骤；不能因为写了「检查画面」就假设环境会自动多出工具。你也可以下载"
+              "text": "测试使用 Node.js，浏览器预览使用 Python 3。没有浏览器工具时，技能应报告页面检查未执行，提供给你手动操作的步骤；不能因为写了「检查页面」就假设环境会自动多出工具。你也可以下载"
             },
             {
               "type": "link",
@@ -534,16 +534,16 @@
         },
         {
           "type": "paragraph",
-          "text": "本例的名字是 todo-acceptance，描述把范围限定为 Small Steps 的验收，而不是任意网站开发。先保持纯指引，不加脚本、外部服务或全域安装。只有需要稳定重复的工具逻辑时，再将程序放进 scripts；大量参考资料可以另放 references 并在主文件指出何时读取。"
+          "text": "本例的名字是 todo-acceptance，描述把范围限定为 Small Steps 的验收，而不是任意网站开发。先保持纯指引，不加脚本、外部服务或全局安装。只有需要稳定重复的工具逻辑时，再将程序放进 scripts；大量参考资料可以另放 references 并在主文档指出何时读取。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "第一步：建立项目内的技能位置"
+          "text": "第一步：创建项目内的技能位置"
         },
         {
           "type": "paragraph",
-          "text": "从 codex-practice 根目录建立 .agents/skills/todo-acceptance。前面的点是文件夹名称的一部分；不是 .codex，也不是 agents 少一个点。Windows PowerShell 可执行以下命令；已存在时先看内容，不要覆盖别人的技能。"
+          "text": "从 codex-practice 根目录创建 .agents/skills/todo-acceptance。前面的点是文件夹名称的一部分；不是 .codex，也不是 agents 少一个点。Windows PowerShell 可执行以下命令；已存在时先看内容，不要覆盖别人的技能。"
         },
         {
           "type": "code",
@@ -553,13 +553,13 @@
         },
         {
           "type": "code",
-          "label": "macOS / Linux 终端机；codex-practice 根目录",
+          "label": "macOS / Linux 终端；codex-practice 根目录",
           "language": "bash",
           "code": "mkdir -p .agents/skills/todo-acceptance\n"
         },
         {
           "type": "paragraph",
-          "text": "用纯文字编辑器建立 SKILL.md，Windows 检查不是 SKILL.md.txt，Linux 检查大写文件名。完成后的目录如下。这个位置让技能和练习项目一起管理，不会立刻变成所有项目共用的个人技能。"
+          "text": "用纯文本编辑器创建 SKILL.md，Windows 检查不是 SKILL.md.txt，Linux 检查大写文件名。完成后的目录如下。这个位置让技能和练习项目一起管理，不会立刻变成所有项目共用的个人技能。"
         },
         {
           "type": "code",
@@ -574,17 +574,17 @@
         },
         {
           "type": "paragraph",
-          "text": "以下内容与下载范例相同。流程会读现有程序、执行既有测试、在可用时检查浏览器，最后以 PASS、FAIL、NOT RUN 区分结果。它不会为了让验收通过而偷偷修程序，让你能先看懂实际问题再决定是否修改。"
+          "text": "以下内容与下载示例相同。流程会读现有代码、执行既有测试、在可用时检查浏览器，最后以 PASS、FAIL、NOT RUN 区分结果。它不会为了让验收通过而偷偷修代码，让你能先看懂实际问题再决定是否修改。"
         },
         {
           "type": "code",
-          "label": "写入 .agents/skills/todo-acceptance/SKILL.md；完整档案",
+          "label": "写入 .agents/skills/todo-acceptance/SKILL.md；完整文件",
           "language": "markdown",
           "code": "---\nname: todo-acceptance\ndescription: Verify the Small Steps todo practice website after a change, using its existing tests and browser checks. Use for acceptance checks of this exercise, not unrelated websites or feature implementation.\n---\n\n# Small Steps acceptance\n\nConfirm the requested practice folder contains index.html, style.css, app.js,\ncore.mjs and core.test.mjs. If these are missing, stop and report the path checked.\n\nRead the existing code, then run `node --test core.test.mjs` from that folder.\nDo not rewrite tests or implementation to make an acceptance run pass.\n\nIf a browser is available, preview the site on a loopback address with a fresh\nbrowser context. Add Read and Build, complete Read, check Active and Completed\nfilters, reload, and delete Read. Reject whitespace-only input. Check 390px and\n1280px widths and visible Tab focus. Keep existing user browser data unchanged.\n\nReport PASS, FAIL or NOT RUN for each check, with the command, observation or\nlimitation. Include the working folder and remaining issues. Do not claim that\ntests, screenshots, deployment or publication happened without evidence.\n\nIf a check fails, report the reproduction and relevant file. If a required tool\nis unavailable, report NOT RUN and the manual steps. Finish with results only;\nimplement fixes only when the user requests them.\n"
         },
         {
           "type": "paragraph",
-          "text": "name 适合用小写英文、数字及连字号，文件夹名称也保持相同。description 的触发边界写在前面，正文则保留真正会影响决策的条件。本例没有多余的套件或配置文件；建立更多空文件夹不会让技能更完整。"
+          "text": "name 适合用小写英文、数字及连字符，文件夹名称也保持相同。description 的触发边界写在前面，正文则保留真正会影响决策的条件。本例没有多余的依赖包或配置文件；创建更多空文件夹不会让技能更完整。"
         },
         {
           "type": "heading",
@@ -593,7 +593,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Codex 会侦测技能变更；没有出现时重新开启工作阶段，确认工作目录位于此项目。CLI 或 IDE 可用 /skills 或输入 $ 寻找技能；桌面应用程序可由侧栏 Skills 检查可用项目，依目前介面选择。菜单能找到名称，才是「已发现」的证据，仍不是已执行。"
+          "text": "Codex 会检测技能变更；没有出现时重新打开会话，确认工作目录位于此项目。CLI 或 IDE 可用 /skills 或输入 $ 寻找技能；桌面应用程序可由侧栏 Skills 检查可用项目，依目前界面选择。菜单能找到名称，才是「已发现」的证据，仍不是已执行。"
         },
         {
           "type": "code",
@@ -603,7 +603,7 @@
         },
         {
           "type": "paragraph",
-          "text": "桌面版若提供技能选择器，先选 todo-acceptance，再送出同样的验收要求。开始时请确认它读的是本项目 SKILL.md，而不是另一个同名技能。两个同名技能不会自动合并；全域或其他目录存在同名项目时，路径尤其重要。"
+          "text": "桌面版若提供技能选择器，先选 todo-acceptance，再发送同样的验收要求。开始时请确认它读的是本项目 SKILL.md，而不是另一个同名技能。两个同名技能不会自动合并；全局或其他目录存在同名项目时，路径尤其重要。"
         },
         {
           "type": "heading",
@@ -612,15 +612,15 @@
         },
         {
           "type": "paragraph",
-          "text": "在 expected 副本，node --test core.test.mjs 应有 3 个测试通过。回应应列出实际命令与结果；如果也执行浏览器流程，应能描述 Read、Build、筛选、重新整理及空白输入的结果。没有浏览器时应把该项列 NOT RUN，这不是测试通过也不是整个技能失效。"
+          "text": "在 expected 副本，node --test core.test.mjs 应有 3 个测试通过。回复应列出实际命令与结果；如果也执行浏览器流程，应能描述 Read、Build、筛选、刷新及空白输入的结果。没有浏览器时应把该项列 NOT RUN，这不是测试通过也不是整个技能失效。"
         },
         {
           "type": "paragraph",
-          "text": "再建立一份独立 broken 副本，把同一个技能文件夹放到该副本的 .agents/skills，从那个位置建立新任务。这个版本刻意把 Completed 筛选反过来：Read 完成、Build 未完成时，会错误显示 Build。资料测试应为 2 个通过、1 个失败，技能应报告 FAIL 和重现方法，原始码维持不变。"
+          "text": "再创建一份独立 broken 副本，把同一个技能文件夹放到该副本的 .agents/skills，从那个位置创建新任务。这个版本刻意把 Completed 筛选反过来：Read 完成、Build 未完成时，会错误显示 Build。数据测试应为 2 个通过、1 个失败，技能应报告 FAIL 和复现方法，源代码维持不变。"
         },
         {
           "type": "paragraph",
-          "text": "这个比较能验证工作流程是否会忠实回报失败。文件格式检查只证明 YAML、名称与结构能解析，不证明代理真的照流程做；反过来，测试失败也可能正是技能成功找到问题。请分开保存这些证据，避免只有一个模糊的「成功」勾选。"
+          "text": "这个比较能验证工作流程是否会忠实报告失败。文件格式检查只证明 YAML、名称与结构能解析，不证明代理真的照流程做；反过来，测试失败也可能正是技能成功找到问题。请分开保存这些证据，避免只有一个模糊的「成功」勾选。"
         },
         {
           "type": "heading",
@@ -629,14 +629,14 @@
         },
         {
           "type": "paragraph",
-          "text": "另外复制 expected 成一份独立的 incomplete 练习目录，放入同一份技能。先把这个副本的 core.test.mjs 移到该目录外的备份位置，保留原始 expected 与 broken 不变，再从 incomplete 开新任务选用技能。合格结果是指出缺少的文件与检查路径，停止后续验收；不能自行补写测试、改到另一份目录执行，或沿用先前的通过结果。完成后把备份放回原位置，再重新验收。"
+          "text": "另外复制 expected 成一份独立的 incomplete 练习目录，放入同一份技能。先把这个副本的 core.test.mjs 移到该目录外的备份位置，保留原始 expected 与 broken 不变，再从 incomplete 新建任务选用技能。合格结果是指出缺少的文件与检查路径，停止后续验收；不能自行补写测试、改到另一份目录执行，或沿用先前的通过结果。完成后把备份放回原位置，再重新验收。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "这与 broken 的差别是：broken 材料齐全、测试确实执行但失败；incomplete 尚不符合起步条件；没有浏览器工具则只让画面项目 NOT RUN。不要把三种情况都写成同一个 FAIL。要整理更多输入与触发情境，接著看"
+              "text": "这与 broken 的差别是：broken 材料齐全、测试确实执行但失败；incomplete 尚不符合起步条件；没有浏览器工具则只让页面项目 NOT RUN。不要把三种情况都写成同一个 FAIL。要整理更多输入与触发情境，接着看"
             },
             {
               "type": "article",
@@ -646,7 +646,7 @@
             },
             {
               "type": "text",
-              "text": "；要加入脚本与参考文件，先看"
+              "text": "；要加入脚本与参考文档，先看"
             },
             {
               "type": "article",
@@ -667,11 +667,11 @@
         },
         {
           "type": "paragraph",
-          "text": "技能没有出现：先检查 .agents/skills 的位置、SKILL.md 真正副文件名、frontmatter 是否以两行 --- 包住，以及 name／description 是否存在。确认不是把整个 ZIP 放进文件夹后就以为已安装。修正后重开 Codex 再查菜单。"
+          "text": "技能没有出现：先检查 .agents/skills 的位置、SKILL.md 真正扩展名、frontmatter 是否以两行 --- 包住，以及 name／description 是否存在。确认不是把整个 ZIP 放进文件夹后就以为已安装。修正后重开 Codex 再查菜单。"
         },
         {
           "type": "paragraph",
-          "text": "技能出现却没使用：先明确选取或以 $todo-acceptance 指定，检查名称及来源路径。自动选用依描述与任务判断，不保证任何一句相似文字都会触发。若普通问候也经常触发，应收窄描述，让它只处理待办网站验收。"
+          "text": "技能出现却没使用：先明确选择或以 $todo-acceptance 指定，检查名称及来源路径。自动选用依描述与任务判断，不保证任何一句相似文字都会触发。若普通问候也经常触发，应收窄描述，让它只处理待办网站验收。"
         },
         {
           "type": "paragraph",
@@ -679,7 +679,7 @@
         },
         {
           "type": "paragraph",
-          "text": "停止进行中的验收先在任务内中止；需要停用时，将这份练习技能移出项目的技能扫描位置，保留备份，再重开工作阶段核对。更细的停用设置可以依官方 [[skills.config]] 说明处理，但要先保留既有 config.toml。停用不会删除之前的报告，也不会撤销任何过去修改。"
+          "text": "停止进行中的验收先在任务内中止；需要停用时，将这份练习技能移出项目的技能扫描位置，保留备份，再重开会话核对。更细的停用设置可以依官方 [[skills.config]] 说明处理，但要先保留既有 config.toml。停用不会删除之前的报告，也不会撤销任何过去修改。"
         },
         {
           "type": "table",
@@ -691,7 +691,7 @@
           "rows": [
             [
               "格式有效",
-              "必要栏位可以解析",
+              "必要字段可以解析",
               "会被选到"
             ],
             [
@@ -706,7 +706,7 @@
             ],
             [
               "已验证",
-              "有实际测试或画面结果",
+              "有实际测试或页面结果",
               "已经发布网站"
             ]
           ]
@@ -714,11 +714,11 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "小练习与验证纪录"
+          "text": "小练习与验证记录"
         },
         {
           "type": "paragraph",
-          "text": "比较两个提示词：「请验收 Small Steps 的筛选与储存」和「请解释今天的练习目标」。前者适合使用技能，后者不需要完整验收。记录选用与否、实际路径和结果，根据观察调整描述；不要把一次选对就当成所有情境都通过。"
+          "text": "比较两个提示词：「请验收 Small Steps 的筛选与存储」和「请解释今天的练习目标」。前者适合使用技能，后者不需要完整验收。记录选用与否、实际路径和结果，根据观察调整描述；不要把一次选对就当成所有情境都通过。"
         },
         {
           "type": "rich_paragraph",
@@ -729,12 +729,12 @@
             },
             {
               "type": "link",
-              "text": "Build skills 官方文件",
+              "text": "Build skills 官方文档",
               "url": "https://learn.chatgpt.com/docs/build-skills"
             },
             {
               "type": "text",
-              "text": "于 2026-09-14 查证。范例会做格式验证，网站核心与故障结果已有实际测试；自动触发与不同 Codex 介面的选择器仍须分别实测，未列为全部通过。下一步可读"
+              "text": "于 2026-09-14 查证。示例会做格式验证，网站核心与故障结果已有实际测试；自动触发与不同 Codex 界面的选择器仍须分别实测，未列为全部通过。下一步可读"
             },
             {
               "type": "article",
@@ -782,10 +782,10 @@
         {
           "type": "image",
           "src": "/guides/codex-skills/diagram-1.svg",
-          "alt": "23. Skills 与 SKILL.md — 实作顺序示意图，非产品介面截图。 SKILL.md → Invoke → Output",
+          "alt": "23. Skills 与 SKILL.md — 实操顺序示意图，非产品界面截图。 SKILL.md → Invoke → Output",
           "width": 1600,
           "height": 900,
-          "caption": "23. Skills 与 SKILL.md — 实作顺序示意图，非产品介面截图。 SKILL.md → Invoke → Output",
+          "caption": "23. Skills 与 SKILL.md — 实操顺序示意图，非产品界面截图。 SKILL.md → Invoke → Output",
           "description": "SKILL.md to Invoke to Output",
           "credit": {
             "author": "Mokaair",

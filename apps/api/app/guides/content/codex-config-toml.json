@@ -309,10 +309,10 @@
     },
     "zh-CN": {
       "title": "config.toml 配置教程",
-      "description": "config.toml 控制 Codex 的设置值，与 AGENTS.md 的自然语言工作规则不同。用户设置在 Codex home，受信任项目也能有 .codex/config.toml。设置可能被 CLI 参数、项目层或组织政策影响，不能只看一个文件就断言生效。",
+      "description": "config.toml 控制 Codex 的配置值，与 AGENTS.md 的自然语言工作规则不同。用户配置在 Codex home，受信任项目也能有 .codex/config.toml。配置可能被 CLI 参数、项目层或组织政策影响，不能只看一个文件就断言生效。",
       "hero": {
         "src": "/guides/codex-config-toml/hero.jpg",
-        "alt": "实作顺序示意图，非产品介面截图。",
+        "alt": "实操顺序示意图，非产品界面截图。",
         "width": 1600,
         "height": 900,
         "credit": {
@@ -326,9 +326,9 @@
           "type": "summary",
           "items": [
             "config.",
-            "toml 控制 Codex 的设置值，与 AGENTS.",
+            "toml 控制 Codex 的配置值，与 AGENTS.",
             "md 的自然语言工作规则不同。",
-            "用户设置在 Codex home，受信任项目也能有 .",
+            "用户配置在 Codex home，受信任项目也能有 .",
             "codex/config."
           ]
         },
@@ -351,7 +351,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "在独立项目设置 web_search，确认配置文件位置、有效层级与重新启动后的状态，再还原这次变更。阅读约 12 分钟，操作约 25 分钟。需要已能启动的 Codex CLI、Git 和纯文字编辑器；Windows、macOS、Linux 都使用同一份 TOML 内容。IDE 可从设置入口开档，但本篇用 CLI 诊断作为共同验证方式。"
+          "text": "在独立项目设置 web_search，确认配置文件位置、有效层级与重新启动后的状态，再还原这次变更。阅读约 12 分钟，操作约 25 分钟。需要已能启动的 Codex CLI、Git 和纯文本编辑器；Windows、macOS、Linux 都使用同一份 TOML 内容。IDE 可从设置入口打开文件，但本篇用 CLI 诊断作为共同验证方式。"
         },
         {
           "type": "rich_paragraph",
@@ -364,18 +364,18 @@
             },
             {
               "type": "text",
-              "text": " 告诉代理如何工作，config.toml 则设置应用选项。把「使用哪个模型」写进一段普通 Markdown，不等于已更改默认模型；同样地，在 config.toml 留一段没有注解符号的中文要求，可能让 TOML 无法解析。先用一项低影响设置学会正确位置与还原，再逐步增加真正需要的选项。"
+              "text": " 告诉代理如何工作，config.toml 则设置应用选项。把「使用哪个模型」写进一段普通 Markdown，不等于已更改默认模型；同样地，在 config.toml 留一段没有注释符号的中文要求，可能让 TOML 无法解析。先用一项低影响配置学会正确位置与还原，再逐步增加真正需要的选项。"
             }
           ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "先分清用户设置与项目设置"
+          "text": "先分清用户配置与项目配置"
         },
         {
           "type": "paragraph",
-          "text": "用户设置默认是用户目录下的 .codex/config.toml；若启动环境已有 CODEX_HOME，先确认实际指向哪里。项目设置则是储存库内的 .codex/config.toml，只在该项目被信任时载入。两个文件同名，但影响范围不同。本次只建立练习项目的文件，不需要搬走账号验证、改用户设置或更动系统环境变量。"
+          "text": "用户配置默认是用户目录下的 .codex/config.toml；若启动环境已有 CODEX_HOME，先确认实际指向哪里。项目配置则是仓库内的 .codex/config.toml，只在该项目被信任时加载。两个文件同名，但影响范围不同。本次只创建练习项目的文件，不需要搬走账号验证、改用户配置或改动系统环境变量。"
         },
         {
           "type": "table",
@@ -401,9 +401,9 @@
               "该环境的练习相对路径"
             ],
             [
-              "IDE 扩充套件",
+              "IDE 扩展",
               "齿轮 → Codex Settings → Open config.toml",
-              "开档后核对实际位置"
+              "打开文件后核对实际位置"
             ]
           ]
         },
@@ -414,17 +414,17 @@
         },
         {
           "type": "paragraph",
-          "text": "建立新的 codex-config-lab，用编辑器开启，新增 note.txt 写入下方一行。从整合终端确认位置：PowerShell 用 Get-Location，macOS／Linux 用 pwd；在确认全新练习文件夹后执行 git init，让项目根目录明确。先不要建立 .codex/config.toml。若同名文件夹已是别人的项目，换新的练习位置，不能为了照步骤重设它。"
+          "text": "创建新的 codex-config-lab，用编辑器打开，新增 note.txt 写入下方一行。从集成终端确认位置：PowerShell 用 Get-Location，macOS／Linux 用 pwd；在确认全新练习文件夹后执行 git init，让项目根目录明确。先不要创建 .codex/config.toml。若同名文件夹已是别人的项目，换新的练习位置，不能为了照步骤重置它。"
         },
         {
           "type": "code",
-          "label": "档案内容：存入 note.txt",
+          "label": "文件内容：存入 note.txt",
           "language": "text",
           "code": "CONFIG-LAB-01\n"
         },
         {
           "type": "paragraph",
-          "text": "在系统终端输入 codex --cd .。若出现项目信任选择，先核对就是自己刚建立的材料，再依画面处理。进入互动 CLI 后，分别输入下面两个斜线指令；它们不是 PowerShell 命令。/debug-config 用来看设置层及启用状态，/status 用来核对任务环境。记录相关层的路径与状态即可，不将完整私人设置输出贴到公开教学。"
+          "text": "在系统终端输入 codex --cd .。若出现项目信任选择，先核对就是自己刚创建的材料，再按界面提示处理。进入交互 CLI 后，分别输入下面两个斜杠命令；它们不是 PowerShell 命令。/debug-config 用来看配置层及启用状态，/status 用来核对任务环境。记录相关层的路径与状态即可，不将完整私人配置输出贴到公开教程。"
         },
         {
           "type": "code",
@@ -440,26 +440,26 @@
         },
         {
           "type": "paragraph",
-          "text": "看不到 /debug-config 时先输入 / 查看该版菜单，再用 /exit 回系统终端，以 codex --version 记版本；依官方安装来源更新后，重新启动 CLI 再查。不要臆造另一个同名 shell 指令。若版本或组织环境没有足够诊断信息，就把有效值标成尚未确认，不能只靠模型说「已设置」就算完成。保存起始纪录后用 /exit 退出。"
+          "text": "看不到 /debug-config 时先输入 / 查看该版菜单，再用 /exit 回系统终端，以 codex --version 记版本；依官方安装来源更新后，重新启动 CLI 再查。不要臆造另一个同名 shell 命令。若版本或组织环境没有足够诊断信息，就把有效值标成尚未确认，不能只靠模型说「已设置」就算完成。保存起始记录后用 /exit 退出。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤 2：新增一项可还原设置"
+          "text": "步骤 2：新增一项可还原配置"
         },
         {
           "type": "paragraph",
-          "text": "在编辑器的项目文件清单新增 .codex 文件夹，再建立 config.toml。检查路径确实为 codex-config-lab/.codex/config.toml，不是项目根目录的 config.toml 或 config.toml.txt。如果文件已存在，先复制到自己能辨认的备份位置并记下原值，只修改同一个顶层 web_search，不重复新增相同键。全新练习档可以直接使用下方完整内容。"
+          "text": "在编辑器的项目文件清单新增 .codex 文件夹，再创建 config.toml。检查路径确实为 codex-config-lab/.codex/config.toml，不是项目根目录的 config.toml 或 config.toml.txt。如果文件已存在，先复制到自己能辨认的备份位置并记下原值，只修改同一个顶层 web_search，不重复新增相同键。全新练习文件可以直接使用下方完整内容。"
         },
         {
           "type": "code",
-          "label": "TOML 档案内容：新的专案 .codex/config.toml",
+          "label": "TOML 文件内容：新的项目 .codex/config.toml",
           "language": "toml",
           "code": "# Practice setting: disable the built-in web search tool.\nweb_search = \"disabled\"\n"
         },
         {
           "type": "paragraph",
-          "text": "键名和值的拼字保持原样；字串要用半形引号，# 后面是注解。这是一个顶层键，不能不加判断就贴在 [features] 或其他表格段落下面；TOML 的表格标头会改变后续键的位置。不要把网页显示的代码外框反引号一起贴进文件，存成 UTF-8 纯文字后再检查一次。"
+          "text": "键名和值的拼写保持原样；字符串要用半角引号，# 后面是注释。这是一个顶层键，不能不加判断就贴在 [features] 或其他表格段落下面；TOML 的表头会改变后续键的位置。不要把网页显示的代码外框反引号一起贴进文件，存成 UTF-8 纯文本后再检查一次。"
         },
         {
           "type": "heading",
@@ -468,15 +468,15 @@
         },
         {
           "type": "paragraph",
-          "text": "仍在练习根目录，用 codex --cd . 开新工作阶段，不使用 --search、-c 或 --profile 等额外选项，以免混入另一个实验。再看 /debug-config，确认项目层是否列出且启用；若显示因未信任被略过，先核对项目来源，再按正常信任流程处理。诊断资料的层级顺序可能由低到高显示，要看标签与启用状态，不能只把第一列当成赢家。"
+          "text": "仍在练习根目录，用 codex --cd . 开新会话，不使用 --search、-c 或 --profile 等额外选项，以免混入另一个实验。再看 /debug-config，确认项目层是否列出且启用；若显示因未信任被略过，先核对项目来源，再按正常信任流程处理。诊断数据的层级顺序可能由低到高显示，要看标签与启用状态，不能只把第一行当成赢家。"
         },
         {
           "type": "paragraph",
-          "text": "将有效设置或可用工具信息与本文件比对，并送出下面的本机读取要求。预期 note.txt 正确回报 CONFIG-LAB-01，没有为这项任务执行网页搜寻；若介面提供 web_search 有效值，应为 disabled。单次没有搜寻只证明那次没用，不能单独证明设置成功，所以需保留设置层的诊断依据。"
+          "text": "将有效配置或可用工具信息与本文件比对，并发送下面的本地读取要求。预期 note.txt 正确报告 CONFIG-LAB-01，没有为这项任务执行网页搜索；若界面提供 web_search 有效值，应为 disabled。单次没有搜索只证明那次没用，不能单独证明设置成功，所以需保留配置层的诊断依据。"
         },
         {
           "type": "code",
-          "label": "自然语言提示词：在此练习专案的新 CLI 输入",
+          "label": "自然语言提示词：在此练习项目的新 CLI 输入",
           "language": "text",
           "code": "Read note.txt from this practice project and report its exact line. Do not edit files, browse websites or call external services. If you cannot verify an effective setting from available diagnostics, say so rather than inferring it from the file alone.\n"
         },
@@ -485,7 +485,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "这个开关只关闭内建网页搜寻工具，不能用来证明所有网络都被封锁。Shell、浏览器、MCP 与外部服务还有自己的权限和设置；需要控制这些范围时读"
+              "text": "这个开关只关闭内置网页搜索工具，不能用来证明所有网络都被封锁。Shell、浏览器、MCP 与外部服务还有自己的权限和设置；需要控制这些范围时读"
             },
             {
               "type": "article",
@@ -495,27 +495,27 @@
             },
             {
               "type": "text",
-              "text": "。本例不开新服务、不做网络测试，也不为了证明搜寻关闭而绕到其他工具上网。"
+              "text": "。本例不开新服务、不做网络测试，也不为了证明搜索关闭而绕到其他工具上网。"
             }
           ]
         },
         {
           "type": "heading",
           "level": 3,
-          "text": "同一句「没有搜寻」，可能代表三种情况"
+          "text": "同一句「没有搜索」，可能代表三种情况"
         },
         {
           "type": "paragraph",
-          "text": "判读例题：甲只有看到 config.toml 写 disabled；乙另有诊断显示该项目层因未信任而略过；丙看到该层已启用且有效值为 disabled。三者这次都没有搜寻。甲的有效值仍未知；乙要先解决载入来源，不能称此项目档已生效；丙才有这个设置的诊断证据，仍不能推论所有网络工具都被封锁。记录「文件内容／层是否载入／有效值／本次行为」四栏，缺证据的栏位留未确认。"
+          "text": "判读例题：甲只有看到 config.toml 写 disabled；乙另有诊断显示该项目层因未信任而略过；丙看到该层已启用且有效值为 disabled。三者这次都没有搜索。甲的有效值仍未知；乙要先解决加载来源，不能称此项目文件已生效；丙才有这项配置的诊断证据，仍不能推论所有网络工具都被封锁。记录「文件内容／层是否加载／有效值／本次行为」四列，缺证据的字段留未确认。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤 4：还原并留下短纪录"
+          "text": "步骤 4：还原并留下短记录"
         },
         {
           "type": "paragraph",
-          "text": "退出 CLI 后，若原本没有此文件，把本次新建的 config.toml 移到项目设置目录以外的备份位置；若原本有文件，只还原 web_search 的旧值或移除这次新增的那一个键，保留其他设置。重新开新工作阶段，确认项目这项覆写已不再生效，note.txt 仍未改动。还原后的实际搜寻模式取决于其余设置，不一定回到某个你猜测的默认值。"
+          "text": "退出 CLI 后，若原本没有此文件，把本次新建的 config.toml 移到项目配置目录以外的备份位置；若原本有文件，只还原 web_search 的旧值或移除这次新增的那一个键，保留其他配置。重新开新会话，确认项目这项覆盖已不再生效，note.txt 仍未改动。还原后的实际搜索模式取决于其余配置，不一定回到某个你猜测的默认值。"
         },
         {
           "type": "code",
@@ -530,14 +530,14 @@
         },
         {
           "type": "paragraph",
-          "text": "不能启动时，先看错误指到哪份 TOML、哪一行，检查引号、重复键与表格位置；能启动但值没变时，查文件路径、项目信任、启动参数和较近的子目录设置；编辑器与 CLI 不同时，查它们是否在相同 OS、用户与工作目录，尤其 Windows 和 WSL 不共享同一个用户家目录。这些问题需要逐一查来源，重装程序通常不是第一个判断。"
+          "text": "不能启动时，先看错误指到哪份 TOML、哪一行，检查引号、重复键与表格位置；能启动但值没变时，查文件路径、项目信任、启动参数和较近的子目录配置；编辑器与 CLI 不同时，查它们是否在相同 OS、用户与工作目录，尤其 Windows 和 WSL 不共享同一个用户主目录。这些问题需要逐一查来源，重装程序通常不是第一个判断。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "组织强制要求与一般默认不同，不能靠项目键覆写被禁止的值。模型、推理深度与额度另看"
+              "text": "组织强制要求与一般默认不同，不能靠项目键覆盖被禁止的值。模型、推理深度与额度另看"
             },
             {
               "type": "article",
@@ -547,17 +547,17 @@
             },
             {
               "type": "text",
-              "text": "，不要从网络抄一份整包设置把现有供应者与登录流程换掉。完成本篇应有起始、启用、还原三份纪录，并能指出哪些项目仍未确认；接著到"
+              "text": "，不要从网络抄一份整包配置把现有提供商与登录流程换掉。完成本篇应有起始、启用、还原三份记录，并能指出哪些项目仍未确认；接着到"
             },
             {
               "type": "article",
-              "text": "设定故障排除",
+              "text": "设置故障排除",
               "kind": "life",
               "slug": "codex-config-troubleshooting"
             },
             {
               "type": "text",
-              "text": "实际诊断错误文件。本文入口与设置依官方文件查证，文件语法可独立验证，不能把语法正确当成每台机器都已载入。"
+              "text": "实际诊断错误文件。本文入口与设置依官方文档查证，文件语法可独立验证，不能把语法正确当成每台机器都已加载。"
             }
           ]
         },
@@ -575,10 +575,10 @@
         {
           "type": "image",
           "src": "/guides/codex-config-toml/diagram-1.svg",
-          "alt": "16. config.toml 配置教程 — 实作顺序示意图，非产品介面截图。 User config → Project config → CLI override",
+          "alt": "16. config.toml 配置教程 — 实操顺序示意图，非产品界面截图。 User config → Project config → CLI override",
           "width": 1600,
           "height": 900,
-          "caption": "16. config.toml 配置教程 — 实作顺序示意图，非产品介面截图。 User config → Project config → CLI override",
+          "caption": "16. config.toml 配置教程 — 实操顺序示意图，非产品界面截图。 User config → Project config → CLI override",
           "description": "User config to Project config to CLI override",
           "credit": {
             "author": "Mokaair",

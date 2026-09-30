@@ -1278,8 +1278,8 @@
       ]
     },
     "zh-CN": {
-      "title": "平行工作后的整合与验收",
-      "description": "依文件与介面契约整合独立修改，处理冲突，再验证合并后的整体行为。",
+      "title": "并行工作后的集成与验收",
+      "description": "依文件与接口契约集成独立修改，处理冲突，再验证合并后的整体行为。",
       "hero": {
         "src": "/guides/codex-parallel-integration/hero.jpg",
         "width": 1600,
@@ -1294,7 +1294,7 @@
         {
           "type": "summary",
           "items": [
-            "依文件与介面契约整合独立修改，处理冲突，再验证合并后的整体行为。",
+            "依文件与接口契约集成独立修改，处理冲突，再验证合并后的整体行为。",
             "把两条独立分支的成果合到第三个检查目录，验收组合结果，再演练冲突与中止。"
           ]
         },
@@ -1317,14 +1317,14 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "把两条独立分支的成果合到第三个检查目录，验收组合结果，再演练冲突与中止。阅读约 20 分钟、操作约 30 分钟。需要 Git、Node.js、编辑器，先读 Worktree 与证据验收。全程使用新建的 integration-lab，小型纯文字材料不连正式项目、GitHub 或外部数据库。"
+          "text": "把两条独立分支的成果合到第三个检查目录，验收组合结果，再演练冲突与中止。阅读约 20 分钟、操作约 30 分钟。需要 Git、Node.js、编辑器，先读 Worktree 与证据验收。全程使用新建的 integration-lab，小型纯文本材料不连正式项目、GitHub 或外部数据库。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "本段提到的教学与资源: "
+              "text": "本段提到的教程与资源: "
             },
             {
               "type": "article",
@@ -1346,26 +1346,26 @@
         },
         {
           "type": "paragraph",
-          "text": "平行工作节省的是可以独立完成的时间，最后的整合仍有顺序。两个工作者都说完成，可能只是各自的分支完成；同一页同时用到两个变更时，还要在相同版本与环境重跑验收。这篇用标题与页尾两个文字档代表两份交付，不把简单文字测试宣称成整个网站测试。学会流程后，再套用到你项目真正的建置与浏览器检查。"
+          "text": "并行工作节省的是可以独立完成的时间，最后的集成仍有顺序。两个工作者都说完成，可能只是各自的分支完成；同一页同时用到两个变更时，还要在相同版本与环境重跑验收。这篇用标题与页脚两个文本文件代表两份交付，不把简单文字测试宣称成整个网站测试。学会流程后，再套用到你项目真正的构建与浏览器检查。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤 1：建立共同验收材料"
+          "text": "步骤 1：创建共同验收材料"
         },
         {
           "type": "paragraph",
-          "text": "在自己练习区用文件管理员建立全新 integration-lab，再于此目录开启终端。Windows、macOS、Linux 的下列 Git／Node 命令相同；先核对路径，并确认旁边没有本篇要用的 integration-heading、integration-footer、integration-review、integration-conflict 同名文件夹。若名称已存在就另选一组名称，所有后续步骤一致替换，不覆盖原工作。"
+          "text": "在自己练习区用文件管理器创建全新 integration-lab，再于此目录打开终端。Windows、macOS、Linux 的下列 Git／Node 命令相同；先核对路径，并确认旁边没有本篇要用的 integration-heading、integration-footer、integration-review、integration-conflict 同名文件夹。若名称已存在就另选一组名称，所有后续步骤一致替换，不覆盖原工作。"
         },
         {
           "type": "code",
-          "label": "新 integration-lab 终端机：仅设定这个练习库",
+          "label": "新 integration-lab 终端：仅设置这个练习库",
           "language": "sh",
           "code": "git init -b main\ngit config user.name \"Codex Learner\"\ngit config user.email \"learner@example.test\"\n"
         },
         {
           "type": "paragraph",
-          "text": "用编辑器建立下列三个完整文件。heading.txt 初始为 Title: Small Steps，footer.txt 初始为 Footer: Local exercise，各自保留最后换行。测试描述的是两项尚未完成的新要求，所以基准执行刻意是零通过、两失败；这是没有远端的独立教材，不是在正式 main 上留下未说明的失败。"
+          "text": "用编辑器创建下列三个完整文件。heading.txt 初始为 Title: Small Steps，footer.txt 初始为 Footer: Local exercise，各自保留最后换行。测试描述的是两项尚未完成的新要求，所以基准执行刻意是零通过、两失败；这是没有远程的独立教材，不是在正式 main 上留下未说明的失败。"
         },
         {
           "type": "code",
@@ -1394,7 +1394,7 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤 2：分配两份互不覆写的交付"
+          "text": "步骤 2：分配两份互不覆盖的交付"
         },
         {
           "type": "code",
@@ -1404,7 +1404,7 @@
         },
         {
           "type": "paragraph",
-          "text": "A 只能改 integration-heading/heading.txt 为 Title: Small Steps Lab；B 只能改 integration-footer/footer.txt 为 Footer: Practice only。你可以手动完成这两个明确编辑，或在支持子代理的 Codex 主任务中明确委派两位工作者，分别提供完整路径、分支、唯一可写文件与回报格式。本篇参考验证使用手动等价编辑，不冒充已启动两个模型。"
+          "text": "A 只能改 integration-heading/heading.txt 为 Title: Small Steps Lab；B 只能改 integration-footer/footer.txt 为 Footer: Practice only。你可以手动完成这两个明确编辑，或在支持子代理的 Codex 主任务中明确委派两位工作者，分别提供完整路径、分支、唯一可写文件与报告格式。本篇参考验证使用手动等价编辑，不冒充已启动两个模型。"
         },
         {
           "type": "code",
@@ -1423,15 +1423,15 @@
             [
               "A 标题",
               "heading.txt",
-              "标题通过、页尾尚未通过"
+              "标题通过、页脚尚未通过"
             ],
             [
-              "B 页尾",
+              "B 页脚",
               "footer.txt",
-              "页尾通过、标题尚未通过"
+              "页脚通过、标题尚未通过"
             ],
             [
-              "整合者",
+              "集成者",
               "确认后的组合分支",
               "合并两份后两项通过"
             ]
@@ -1450,11 +1450,11 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤 3：保存后依序整合"
+          "text": "步骤 3：保存后依序集成"
         },
         {
           "type": "paragraph",
-          "text": "等两份交付都停止修改后，查看完整 status，确认只改指定文件，再用下列命令提交。若已有其他人或工作者提交，先核对提交与 diff，不再重复提交。记录两条分支的 SHA，让整合对象具体；正式协作时若分支仍在变动，应使用已核对的提交或请持有人先停止写入，不在不断变更的目标上验收。"
+          "text": "等两份交付都停止修改后，查看完整 status，确认只改指定文件，再用下列命令提交。若已有其他人或工作者提交，先核对提交与 diff，不再重复提交。记录两条分支的 SHA，让集成对象具体；正式协作时若分支仍在变动，应使用已核对的提交或请持有人先停止写入，不在不断变更的目标上验收。"
         },
         {
           "type": "code",
@@ -1470,7 +1470,7 @@
         },
         {
           "type": "paragraph",
-          "text": "预期整合目录两项通过，diff 同时包含标题与页尾的新值，而原 integration-lab 的 main 仍是初始文字。若第一个 merge 已冲突，先停止，不执行第二个；不能用某条分支自己的绿灯代替组合验收。这里的 --no-ff 用于让教材清楚保留两次整合纪录，真实储存库的合并策略仍依其规则决定。"
+          "text": "预期集成目录两项通过，diff 同时包含标题与页脚的新值，而原 integration-lab 的 main 仍是初始文字。若第一个 merge 已冲突，先停止，不执行第二个；不能用某条分支自己的绿灯代替组合验收。这里的 --no-ff 用于让教材清楚保留两次集成记录，真实仓库的合并策略仍依其规则决定。"
         },
         {
           "type": "code",
@@ -1480,7 +1480,7 @@
         },
         {
           "type": "paragraph",
-          "text": "将这个完整 SHA 和两项通过结果放在同一笔纪录。完成下一步冲突与 abort 后，从原目录再执行同一命令，结果必须与此刻相同，并且 status 干净、两项仍通过；三者一起核对才能确认回到原状。不要把标题分支或 main 的 SHA 误填为整合 SHA。"
+          "text": "将这个完整 SHA 和两项通过结果放在同一笔记录。完成下一步冲突与 abort 后，从原目录再执行同一命令，结果必须与此刻相同，并且 status 干净、两项仍通过；三者一起核对才能确认回到原状。不要把标题分支或 main 的 SHA 误填为集成 SHA。"
         },
         {
           "type": "heading",
@@ -1495,7 +1495,7 @@
         },
         {
           "type": "paragraph",
-          "text": "在 integration-conflict/heading.txt 把初始文字改成 Title: Another direction，保存并只提交该档。它从旧 main 起步，也改同一行，因此与整合分支的标题方向相冲突。先确认 integration-review 的 status 没有未提交修改、两项测试都通过，再尝试合入冲突分支。这个前提让 --abort 可以回到开始合并前的清楚状态，不拿含未保存工作内容的目录做演练。"
+          "text": "在 integration-conflict/heading.txt 把初始文字改成 Title: Another direction，保存并只提交该文件。它从旧 main 起步，也改同一行，因此与集成分支的标题方向相冲突。先确认 integration-review 的 status 没有未提交修改、两项测试都通过，再尝试合入冲突分支。这个前提让 --abort 可以回到开始合并前的清楚状态，不拿含未保存工作内容的目录做演练。"
         },
         {
           "type": "code",
@@ -1505,7 +1505,7 @@
         },
         {
           "type": "paragraph",
-          "text": "查看冲突档会看到两种标题与 Git 标记。这次不选任一方，而是保存错误和 status，执行 merge --abort。中止后再跑测试，预期恢复先前两项通过、status 干净。若工作目录在合并前本来就有修改，abort 不保证能重建所有未提交状态；因此不要省略前一步的检查。真正要解冲突时逐段决定保留行为，再重跑测试，不能一律取 ours 或 theirs。"
+          "text": "查看冲突文件会看到两种标题与 Git 标记。这次不选任一方，而是保存错误和 status，执行 merge --abort。中止后再跑测试，预期恢复先前两项通过、status 干净。若工作目录在合并前本来就有修改，abort 不保证能重建所有未提交状态；因此不要省略前一步的检查。真正要解冲突时逐段决定保留行为，再重跑测试，不能一律取 ours 或 theirs。"
         },
         {
           "type": "code",
@@ -1520,7 +1520,7 @@
         },
         {
           "type": "paragraph",
-          "text": "测试找不到文字档时，确认三个文件都在同一份 checkout；此测试依自己的文件 URL 读资料，因此从原目录执行也不会误读另一份文字。status 显示未知修改时先问清来源；分支不存在时回看 worktree 建立与提交纪录；合并成功但验收失败时查组合 diff，不让工作者擅自改验收条件。不要把需要先产出共同介面的工作硬拆成彼此不知道规格的两个写入任务。"
+          "text": "测试找不到文本文件时，确认三个文件都在同一份 checkout；此测试依自己的文件 URL 读数据，因此从原目录执行也不会误读另一份文字。status 显示未知修改时先问清来源；分支不存在时回看 worktree 创建与提交记录；合并成功但验收失败时查组合 diff，不让工作者擅自改验收条件。不要把需要先产出共同接口的工作硬拆成彼此不知道规格的两个写入任务。"
         },
         {
           "type": "paragraph",
@@ -1537,7 +1537,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "交付纪录包含两个输入 SHA、合并顺序、整合 SHA、两项测试结果、一次冲突与 abort 后的结果，以及保留原 main 的确认。参考 Git／Node 检查不等于 Codex 模型真的分工，也不等于网站已完成整页验收；未操作平台依官方文件查证。接续"
+              "text": "交付记录包含两个输入 SHA、合并顺序、集成 SHA、两项测试结果、一次冲突与 abort 后的结果，以及保留原 main 的确认。参考 Git／Node 检查不等于 Codex 模型真的分工，也不等于网站已完成整页验收；未操作平台依官方文档查证。接续"
             },
             {
               "type": "article",
@@ -1547,7 +1547,7 @@
             },
             {
               "type": "text",
-              "text": "，将程序与画面验证补齐后，才准备你的正式项目交付。"
+              "text": "，将代码与页面验证补齐后，才准备你的正式项目交付。"
             }
           ]
         },

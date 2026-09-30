@@ -336,7 +336,7 @@
       "description": "测试确认程序在指定条件的行为，Code Review 检查变更是否有遗漏或风险，PR 则让人查看并讨论要合并的差异。三者互补；通过测试不等于审查通过，开 PR 也不是已合并。",
       "hero": {
         "src": "/guides/codex-testing-review/hero.jpg",
-        "alt": "实作顺序示意图，非产品介面截图。",
+        "alt": "实操顺序示意图，非产品界面截图。",
         "width": 1600,
         "height": 900,
         "credit": {
@@ -372,14 +372,14 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "审查一个「原测试仍通过」的错误修改，补出能抓到它的回归测试，整理最终差异并准备 PR。阅读约 15 分钟，本机操作约 30 分钟。需要 Git、Node.js 22 以上相容版本、编辑器及已登录的 Codex。先完成Git 入门；实际建立 GitHub PR 为最后可选步骤，需要自己的练习储存库。"
+          "text": "审查一个「原测试仍通过」的错误修改，补出能抓到它的回归测试，整理最终差异并准备 PR。阅读约 15 分钟，本地操作约 30 分钟。需要 Git、Node.js 22 以上兼容版本、编辑器及已登录的 Codex。先完成Git 入门；实际创建 GitHub PR 为最后可选步骤，需要自己的练习仓库。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "本段提到的教学与资源: "
+              "text": "本段提到的教程与资源: "
             },
             {
               "type": "article",
@@ -391,20 +391,20 @@
         },
         {
           "type": "paragraph",
-          "text": "测试回答已写出的案例是否符合期待，Review 检查修改是否带来遗漏的风险与行为差异，PR 则让指定分支的成果可以被其他人审阅。三者不能互相代替；没有发现问题不是证明不可能有问题，PR 已开启也不表示已合并、部署或公开。这次会让你亲自看见测试覆盖范围的空缺。"
+          "text": "测试回答已写出的案例是否符合期待，Review 检查修改是否带来遗漏的风险与行为差异，PR 则让指定分支的成果可以被其他人审阅。三者不能互相代替；没有发现问题不是证明不可能有问题，PR 已创建也不表示已合并、部署或公开。这次会让你亲自看见测试覆盖范围的空缺。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤 1：建立故意有问题的提案"
+          "text": "步骤 1：创建故意有问题的提案"
         },
         {
           "type": "paragraph",
-          "text": "建立新的 codex-review-lab，复制 expected 的五个文件，依 Git 篇用本机练习身分初始化 main 并提交五档基准。确认工作目录干净后执行下面命令建立分支。不要使用刚才仍有未完成变更的库；在新的副本操作才能判断本次差异来自哪里。"
+          "text": "创建新的 codex-review-lab，复制 expected 的五个文件，依 Git 篇用本地练习身份初始化 main 并提交五个文件基准。确认工作目录干净后执行下面命令创建分支。不要使用刚才仍有未完成变更的仓库；在新的副本操作才能判断本次差异来自哪里。"
         },
         {
           "type": "code",
-          "label": "终端机：Review 分支与基准",
+          "label": "终端：Review 分支与基准",
           "language": "sh",
           "code": "git switch -c codex/review-lab\nnode --test core.test.mjs\n"
         },
@@ -414,7 +414,7 @@
         },
         {
           "type": "code",
-          "label": "终端机：观察原测试的缺口",
+          "label": "终端：观察原测试的缺口",
           "language": "sh",
           "code": "git diff -- core.mjs\nnode --test core.test.mjs\n"
         },
@@ -428,11 +428,11 @@
           "inlines": [
             {
               "type": "text",
-              "text": "桌面版开启本 Git 项目，先在 Review 面板选 Unstaged，确认看到刚改的 core.mjs，再于 Codex 输入框使用 /review，核对所选差异。CLI 先从 codex-review-lab 的系统终端执行 codex，确认工作目录后，在互动输入框使用 /review，选 Review uncommitted changes；不要把 /review 打在系统 shell。此处还没 commit，只审某个已提交版本会漏掉 reverse。入口与范围依"
+              "text": "桌面版打开本 Git 项目，先在 Review 面板选 Unstaged，确认看到刚改的 core.mjs，再于 Codex 输入框使用 /review，核对所选差异。CLI 先从 codex-review-lab 的系统终端执行 codex，确认工作目录后，在交互输入框使用 /review，选 Review uncommitted changes；不要把 /review 打在系统 shell。此处还没 commit，只审某个已提交版本会漏掉 reverse。入口与范围依"
             },
             {
               "type": "link",
-              "text": "官方 Code review 文件",
+              "text": "官方 Code review 文档",
               "url": "https://learn.chatgpt.com/docs/code-review"
             },
             {
@@ -446,7 +446,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "桌面版另有 Staged、Commit、Branch、Last turn，不能把 Last turn 当整个分支。CLI 的未提交审查包含已暂存、未暂存与未追踪内容，范围比单看 git diff 更广。Review 面板也可能呈现你或其他任务留下的改动；多 repository 时先核对选取的库。若同一文件既有 staged 又有 unstaged，依"
+              "text": "桌面版另有 Staged、Commit、Branch、Last turn，不能把 Last turn 当整个分支。CLI 的未提交审查包含已暂存、未暂存与未追踪内容，范围比单看 git diff 更广。Review 面板也可能呈现你或其他任务留下的改动；多 repository 时先核对选择的仓库。若同一文件既有 staged 又有 unstaged，依"
             },
             {
               "type": "article",
@@ -462,7 +462,7 @@
         },
         {
           "type": "paragraph",
-          "text": "把「All 必须保留原顺序且不能修改输入」作为补充审查条件。预期的有效发现要指出目前那行 reverse、触发条件是 All／默认分支、影响是反转顺序且原地改阵列，以及哪些测试没涵盖。只有「代码品质可改善」没有位置和具体后果，不是本例可采取行动的发现。"
+          "text": "把「All 必须保留原顺序且不能修改输入」作为补充审查条件。预期的有效发现要指出目前那行 reverse、触发条件是 All／默认分支、影响是反转顺序且原地改数组，以及哪些测试没涵盖。只有「代码质量可改善」没有位置和具体后果，不是本例可采取行动的发现。"
         },
         {
           "type": "code",
@@ -472,7 +472,7 @@
         },
         {
           "type": "paragraph",
-          "text": "如果代理没指出问题，不要把它的结论当唯一验收；亲自读 reverse 的用法，接著用下面测试确认。若代理提出错误发现，也不要直接照改，要求能重现的输入与结果。Review 的责任是提供可核对的证据；真正修改要在理解并同意修正后另行交付，保留原始问题与最后差异之间的对照。"
+          "text": "如果代理没指出问题，不要把它的结论当唯一验收；亲自读 reverse 的用法，接着用下面测试确认。若代理提出错误发现，也不要直接照改，要求能复现的输入与结果。Review 的责任是提供可核对的证据；真正修改要在理解并同意修正后另行交付，保留原始问题与最后差异之间的对照。"
         },
         {
           "type": "heading",
@@ -481,23 +481,23 @@
         },
         {
           "type": "paragraph",
-          "text": "将下列内容新增为 review.test.mjs。第一项检查 All 的原始顺序，第二项用冻结阵列检查不应尝试原地修改。先在错误版执行两个文件，预期原三项通过、新两项失败；不要跳过这一步，否则不知道新测试是否真能挡住这种改动。"
+          "text": "将下列内容新增为 review.test.mjs。第一项检查 All 的原始顺序，第二项用冻结数组检查不应尝试原地修改。先在错误版执行两个文件，预期原三项通过、新两项失败；不要跳过这一步，否则不知道新测试是否真能挡住这种改动。"
         },
         {
           "type": "code",
-          "label": "新增档案：review.test.mjs",
+          "label": "新增文件：review.test.mjs",
           "language": "javascript",
           "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst makeTasks = () => [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\n\ntest(\"All preserves original order\", () => {\n  assert.deepEqual(visibleTasks(makeTasks(), \"all\").map((task) => task.id), [\"a\", \"b\"]);\n});\n\ntest(\"All does not attempt to mutate the input array\", () => {\n  const tasks = Object.freeze(makeTasks());\n  assert.doesNotThrow(() => visibleTasks(tasks, \"all\"));\n});\n"
         },
         {
           "type": "code",
-          "label": "终端机：执行完整回归",
+          "label": "终端：执行完整回归",
           "language": "sh",
           "code": "node --test core.test.mjs review.test.mjs\n"
         },
         {
           "type": "paragraph",
-          "text": "接著只把 visibleTasks 最后一行恢复为 return tasks;，保留新测试，再跑应 5 项全过。检查 git diff：core.mjs 应已回到 main 基准，最终要交付的只有新增 review.test.mjs。这次 Review 阻止了错误实作进入提交，同时留下之前缺少的保护；PR 要描述最终的测试补强，不能宣称代码仍有不存在的修正。"
+          "text": "接着只把 visibleTasks 最后一行恢复为 return tasks;，保留新测试，再跑应 5 项全过。检查 git diff：core.mjs 应已回到 main 基准，最终要交付的只有新增 review.test.mjs。这次 Review 阻止了错误实现进入提交，同时留下之前缺少的保护；PR 要描述最终的测试补强，不能宣称代码仍有不存在的修正。"
         },
         {
           "type": "heading",
@@ -506,11 +506,11 @@
         },
         {
           "type": "paragraph",
-          "text": "只暂存新测试，先看清单与内容再提交。接著用 branch diff 核对 main 到本分支只有 review.test.mjs，检查命令结果是这个最终版本。若又修改文件，先重跑受影响测试，不能引用较早版本的全过记录。下面 PR 文字中的结果只在你真的执行后才能保留。"
+          "text": "只暂存新测试，先看清单与内容再提交。接着用 branch diff 核对 main 到本分支只有 review.test.mjs，检查命令结果是这个最终版本。若又修改文件，先重跑受影响测试，不能引用较早版本的全过记录。下面 PR 文字中的结果只在你真的执行后才能保留。"
         },
         {
           "type": "code",
-          "label": "终端机：提交最终测试差异",
+          "label": "终端：提交最终测试差异",
           "language": "sh",
           "code": "git add review.test.mjs\ngit diff --cached --name-only\ngit diff --cached -- review.test.mjs\ngit commit -m \"Test All filter order and input preservation\"\ngit diff --stat main...HEAD\ngit status --short\n"
         },
@@ -522,30 +522,30 @@
         },
         {
           "type": "paragraph",
-          "text": "这时本机交付已具体可审，还没有 GitHub PR。若要练习外部 PR，在自己的 GitHub 建立空白练习库，不预先加入 README，复制它实际显示的远端网址，再把下面第一行的占位符换成该网址后执行。先核对 remote -v 确实是自己的新库；后面两次 push 会把本机基准与测试分支传到 GitHub。"
+          "text": "这时本地交付已具体可审，还没有 GitHub PR。若要练习外部 PR，在自己的 GitHub 创建空白练习仓库，不预先加入 README，复制它实际显示的远程网址，再把下面第一行的占位符换成该网址后执行。先核对 remote -v 确实是自己的新仓库；后面两次 push 会把本地基准与测试分支传到 GitHub。"
         },
         {
           "type": "code",
-          "label": "终端机范本：先替换远端网址再推送",
+          "label": "终端范本：先替换远程网址再推送",
           "language": "text",
           "code": "git remote add origin YOUR_REPOSITORY_URL\ngit remote -v\ngit push -u origin main\ngit push -u origin codex/review-lab\n"
         },
         {
           "type": "paragraph",
-          "text": "在 GitHub 的 Pull requests 选 New pull request，base 选 main、compare 选 codex/review-lab，检查 Files changed 只有测试，再贴上整理好的标题与说明，选 Create pull request；仍要讨论可用 draft 状态。没有设置 CI 的练习库不会凭空出现测试检查，有 CI 时要核对它检查的是目前 head。这一步可先停在 PR，合并与部署各自依项目流程处理。"
+          "text": "在 GitHub 的 Pull requests 选 New pull request，base 选 main、compare 选 codex/review-lab，检查 Files changed 只有测试，再粘贴整理好的标题与说明，选 Create pull request；仍要讨论可用 draft 状态。没有设置 CI 的练习仓库不会凭空出现测试检查，有 CI 时要核对它检查的是目前 head。这一步可先停在 PR，合并与部署各自依项目流程处理。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "让测试纪录对应到最后版本"
+          "text": "让测试记录对应到最后版本"
         },
         {
           "type": "paragraph",
-          "text": "完成本机提交后，暂停其他会改这个练习库的任务，逐行执行下列命令。前后 HEAD 应相同、status 应干净、分支应为 codex/review-lab、main...HEAD 应只有 review.test.mjs，测试应 5 过 0 败且没有跳过项目。把实际 SHA 和输出附在交付纪录。HEAD 相同但文件还有修改时，测试其实包含未提交内容，不能把结果全算到那个 commit 上。"
+          "text": "完成本地提交后，暂停其他会改这个练习仓库的任务，逐行执行下列命令。前后 HEAD 应相同、status 应干净、分支应为 codex/review-lab、main...HEAD 应只有 review.test.mjs，测试应 5 过 0 败且没有跳过项目。把实际 SHA 和输出附在交付记录。HEAD 相同但文件还有修改时，测试其实包含未提交内容，不能把结果全算到那个 commit 上。"
         },
         {
           "type": "code",
-          "label": "终端机：核对受测版本与最终差异",
+          "label": "终端：核对受测版本与最终差异",
           "language": "sh",
           "code": "git branch --show-current\ngit rev-parse HEAD\ngit status --short --untracked-files=all\ngit diff --name-only main...HEAD\nnode --test core.test.mjs review.test.mjs\ngit rev-parse HEAD\ngit status --short --untracked-files=all\n"
         },
@@ -563,7 +563,7 @@
             },
             {
               "type": "text",
-              "text": "，main...HEAD 从两者共同祖先比较到 HEAD；它不会把尚未提交的修改算进去。因此新增 review.test.mjs 但还没 git add 时，普通 diff 可能空白，仍要看 status 并开档审查。这里使用本机 main；正式 PR 要核对实际 base、head 和该 head 的 CI。看到 skipped、cancelled 或测试尚未完成，都分开记录，不以绿色图示取代检查范围。"
+              "text": "，main...HEAD 从两者共同祖先比较到 HEAD；它不会把尚未提交的修改算进去。因此新增 review.test.mjs 但还没 git add 时，普通 diff 可能空白，仍要看 status 并打开文件审查。这里使用本地 main；正式 PR 要核对实际 base、head 和该 head 的 CI。看到 skipped、cancelled 或测试尚未完成，都分开记录，不以绿色图标取代检查范围。"
             }
           ]
         },
@@ -589,7 +589,7 @@
             ],
             [
               "Review 指出问题但说不出原因",
-              "要求位置、触发与最小重现"
+              "要求位置、触发与最小复现"
             ],
             [
               "PR 包含其他文件",
@@ -600,14 +600,14 @@
               "查工作流程是否存在及 head SHA"
             ],
             [
-              "有人继续改档",
+              "有人继续改文件",
               "重验最终差异，不沿用旧结论"
             ]
           ]
         },
         {
           "type": "paragraph",
-          "text": "验收要保留原三测试漏失问题、新两测试抓到问题、最终五测试通过的对照，以及只有测试档的提交。想重做就在同一独立练习重新引入 reverse，确认失败后再恢复，不删除整个 Git 库或改写公开历史。若已开练习 PR 而决定不合并，可在 GitHub 关闭它并保留讨论。图中 1 是测试证据，2 是审查判断，3 是可核对交付；本篇未替你执行模型 Review、GitHub 推送或公开操作。"
+          "text": "验收要保留原三测试遗漏问题、新两测试抓到问题、最终五测试通过的对照，以及只有测试文件的提交。想重做就在同一独立练习重新引入 reverse，确认失败后再恢复，不删除整个 Git 仓库或改写公开历史。若已开练习 PR 而决定不合并，可在 GitHub 关闭它并保留讨论。图中 1 是测试证据，2 是审查判断，3 是可核对交付；本篇未替你执行模型 Review、GitHub 推送或公开操作。"
         },
         {
           "type": "rich_paragraph",
@@ -623,10 +623,10 @@
         {
           "type": "image",
           "src": "/guides/codex-testing-review/diagram-1.svg",
-          "alt": "21. 测试、Code Review 与 PR — 实作顺序示意图，非产品介面截图。 Tests → Review → PR",
+          "alt": "21. 测试、Code Review 与 PR — 实操顺序示意图，非产品界面截图。 Tests → Review → PR",
           "width": 1600,
           "height": 900,
-          "caption": "21. 测试、Code Review 与 PR — 实作顺序示意图，非产品介面截图。 Tests → Review → PR",
+          "caption": "21. 测试、Code Review 与 PR — 实操顺序示意图，非产品界面截图。 Tests → Review → PR",
           "description": "Tests to Review to PR",
           "credit": {
             "author": "Mokaair",

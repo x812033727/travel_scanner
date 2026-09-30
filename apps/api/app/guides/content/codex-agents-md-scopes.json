@@ -1198,7 +1198,7 @@
       ]
     },
     "zh-CN": {
-      "title": "AGENTS.md 层级与覆写验证",
+      "title": "AGENTS.md 层级与覆盖验证",
       "description": "用根目录与子目录案例追踪规则来源、冲突与 override，确认实际选入的文件。",
       "hero": {
         "src": "/guides/codex-agents-md-scopes/hero.jpg",
@@ -1215,7 +1215,7 @@
           "type": "summary",
           "items": [
             "用根目录与子目录案例追踪规则来源、冲突与 override，确认实际选入的文件。",
-            "用新 CLI 工作阶段比较根目录、子目录、override、空 override 与改名还原五种情况，找出为什么某条 AGENTS."
+            "用新 CLI 会话比较根目录、子目录、override、空 override 与改名还原五种情况，找出为什么某条 AGENTS."
           ]
         },
         {
@@ -1237,7 +1237,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "用新 CLI 工作阶段比较根目录、子目录、override、空 override 与改名还原五种情况，找出为什么某条 AGENTS.md 没有生效。阅读约 12 分钟，操作约 25 分钟。先完成 CLI 与 AGENTS.md 入门；需要 Git、文字编辑器及可用的 Codex 登录。Windows、macOS、Linux 的规则档内容相同，终端路径操作依系统分开。"
+          "text": "用新 CLI 会话比较根目录、子目录、override、空 override 与改名还原五种情况，找出为什么某条 AGENTS.md 没有生效。阅读约 12 分钟，操作约 25 分钟。先完成 CLI 与 AGENTS.md 入门；需要 Git、文本编辑器及可用的 Codex 登录。Windows、macOS、Linux 的规则文件内容相同，终端路径操作依系统分开。"
         },
         {
           "type": "rich_paragraph",
@@ -1260,18 +1260,18 @@
             },
             {
               "type": "text",
-              "text": " 保存应用设置；两者不是同一个覆写机制。这次用回复标记与必须保留的共同要求观察规则，不提高沙盒权限，也不要求模型执行未知命令。能复述某个文件，仍不等于它在启动时自动载入，所以要同时看实际回复行为与工作目录。"
+              "text": " 保存应用设置；两者不是同一个覆盖机制。这次用回复标记与必须保留的共同要求观察规则，不提高沙箱权限，也不要求模型执行未知命令。能复述某个文件，仍不等于它在启动时自动加载，所以要同时看实际回复行为与工作目录。"
             }
           ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "先看载入顺序"
+          "text": "先看加载顺序"
         },
         {
           "type": "paragraph",
-          "text": "全域规则默认位于用户目录的 .codex；若已有 CODEX_HOME，则以其指向位置为准。项目规则从辨识到的根目录往目前工作目录走，不会一次遍历所有兄弟文件夹。每一层依文件名优先检查 AGENTS.override.md，再找 AGENTS.md，最后才是已设置的备用文件名；同层最多取一份。较深层的指示可覆写前面冲突项目，没有冲突的共同要求仍保留。"
+          "text": "全局规则默认位于用户目录的 .codex；若已有 CODEX_HOME，则以其指向位置为准。项目规则从识别到的根目录往目前工作目录走，不会一次遍历所有兄弟文件夹。每一层依文件名优先检查 AGENTS.override.md，再找 AGENTS.md，最后才是已设置的备用文件名；同层最多取一份。较深层的指示可覆盖前面冲突项目，没有冲突的共同要求仍保留。"
         },
         {
           "type": "table",
@@ -1284,7 +1284,7 @@
             [
               "从根目录启动",
               "根目录规则",
-              "所有子目录都已载入"
+              "所有子目录都已加载"
             ],
             [
               "从 ui 启动",
@@ -1297,50 +1297,50 @@
               "同层 AGENTS.md 也会合并"
             ],
             [
-              "修改规则后沿用旧工作阶段",
+              "修改规则后沿用旧会话",
               "可能仍有先前上下文",
-              "存档就代表新规则已载入"
+              "保存文件就代表新规则已加载"
             ]
           ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤一：建立独立规则实验室"
+          "text": "步骤一：创建独立规则实验室"
         },
         {
           "type": "paragraph",
-          "text": "在自己的练习位置建立新的 codex-rules-lab，里面再建 ui 与 data 子文件夹。先不要建立 override。用编辑器开启这个新文件夹，在整合终端确认位置：PowerShell 用 Get-Location，macOS／Linux 用 pwd。确认没有同名既有项目后，在这个新文件夹执行下列 Git 初始化；它只用来让练习有明确项目根目录，不需要提交或连接远端。"
+          "text": "在自己的练习位置创建新的 codex-rules-lab，里面再建 ui 与 data 子文件夹。先不要创建 override。用编辑器打开这个新文件夹，在集成终端确认位置：PowerShell 用 Get-Location，macOS／Linux 用 pwd。确认没有同名现有项目后，在这个新文件夹执行下列 Git 初始化；它只用来让练习有明确项目根目录，不需要提交或连接远程。"
         },
         {
           "type": "code",
-          "label": "系统终端机：确认位于新的规则练习根目录后执行",
+          "label": "系统终端：确认位于新的规则练习根目录后执行",
           "language": "sh",
           "code": "git init\ngit rev-parse --show-toplevel\n"
         },
         {
           "type": "paragraph",
-          "text": "在根目录新增 AGENTS.md，贴入第一份完整内容。ROOT-LAB 是方便观察的回复前缀，KEEP-DATA 则是各子目录都应保留的共同要求。这些标记只服务练习，正式规则应改写成实际测试、资料保留与交付要求。"
+          "text": "在根目录新增 AGENTS.md，贴入第一份完整内容。ROOT-LAB 是方便观察的回复前缀，KEEP-DATA 则是各子目录都应保留的共同要求。这些标记只服务练习，正式规则应改写成实际测试、数据保留与交付要求。"
         },
         {
           "type": "code",
-          "label": "档案内容：根目录 AGENTS.md",
+          "label": "文件内容：根目录 AGENTS.md",
           "language": "markdown",
           "code": "# Root practice instructions\n\n- Start the final answer with ROOT-LAB.\n- Include KEEP-DATA in the final answer.\n- Do not change any files for the rule-discovery exercise.\n- Report checks that were actually performed separately from unverified claims.\n"
         },
         {
           "type": "paragraph",
-          "text": "在 ui/AGENTS.md 放第二份完整内容，在 data/README.md 放下面的资料说明。README 刻意不是 AGENTS 档，没有另外设置备用文件名时，不应只因为同为 Markdown 就加入启动指示。先检查每份文件名大小写与副文件名，避免 Windows 编辑器默默补上 .txt。"
+          "text": "在 ui/AGENTS.md 放第二份完整内容，在 data/README.md 放下面的数据说明。README 刻意不是 AGENTS 文件，没有另外设置备用文件名时，不应只因为同为 Markdown 就加入启动指示。先检查每份文件名大小写与扩展名，避免 Windows 编辑器默默补上 .txt。"
         },
         {
           "type": "code",
-          "label": "档案内容：ui/AGENTS.md",
+          "label": "文件内容：ui/AGENTS.md",
           "language": "markdown",
           "code": "# UI practice instructions\n\n- Start the final answer with UI-LAB instead of ROOT-LAB.\n- Include UI-BASE in the final answer.\n"
         },
         {
           "type": "code",
-          "label": "档案内容：data/README.md",
+          "label": "文件内容：data/README.md",
           "language": "markdown",
           "code": "# Data notes\n\nThis folder describes fictional practice data.\nDATA-NOTE is a document marker, not a required answer prefix.\n"
         },
@@ -1351,11 +1351,11 @@
         },
         {
           "type": "paragraph",
-          "text": "在实验室根目录的系统终端先执行第一个启动命令；它把这次 CLI 限制为唯读。进入 Codex 后送出下方自然语言要求，不另外贴规则内容或指定应有前缀。预期回复从 ROOT-LAB 开始并包含 KEEP-DATA。再用 /exit 回到系统终端，不要用 resume 接续刚才任务，改执行第二个命令从 ui 开全新工作阶段。"
+          "text": "在实验室根目录的系统终端先执行第一个启动命令；它把这次 CLI 限制为只读。进入 Codex 后发送下方自然语言要求，不另外贴规则内容或指定应有前缀。预期回复从 ROOT-LAB 开始并包含 KEEP-DATA。再用 /exit 回到系统终端，不要用 resume 接续刚才任务，改执行第二个命令从 ui 开全新会话。"
         },
         {
           "type": "code",
-          "label": "系统终端机：从实验室根目录启动新的 CLI",
+          "label": "系统终端：从实验室根目录启动新的 CLI",
           "language": "sh",
           "code": "codex --cd . --sandbox read-only\n"
         },
@@ -1367,13 +1367,13 @@
         },
         {
           "type": "code",
-          "label": "系统终端机：退出上一个 CLI 后，从根目录执行",
+          "label": "系统终端：退出上一个 CLI 后，从根目录执行",
           "language": "sh",
           "code": "codex --cd ui --sandbox read-only\n"
         },
         {
           "type": "paragraph",
-          "text": "在 ui 工作阶段送出完全相同要求。预期前缀改成 UI-LAB，仍有 KEEP-DATA，并增加 UI-BASE。这代表子目录覆写前缀，根目录不冲突的要求仍在。若它只能在你要求手动读档后才说出规则，请把「手动读到」和「启动已载入」分开记录；模型自述不是载入日志，不要把不确定的状态标成成功。"
+          "text": "在 ui 会话发送完全相同要求。预期前缀改成 UI-LAB，仍有 KEEP-DATA，并增加 UI-BASE。这代表子目录覆盖前缀，根目录不冲突的要求仍在。若它只能在你要求手动读取文件后才说出规则，请把「手动读到」和「启动已加载」分开记录；模型自述不是加载日志，不要把不确定的状态标成成功。"
         },
         {
           "type": "heading",
@@ -1382,26 +1382,26 @@
         },
         {
           "type": "paragraph",
-          "text": "退出 ui 工作阶段，保留 ui/AGENTS.md，再新增 ui/AGENTS.override.md，内容如下。回实验室根目录，重新执行 codex --cd ui --sandbox read-only，送出同一个要求。预期 UI-OVERRIDE 与 KEEP-DATA，这次不应因同层 AGENTS.md 而加入 UI-BASE。override 取代的是同一层候选，不是把根目录与所有全域要求全部清空。"
+          "text": "退出 ui 会话，保留 ui/AGENTS.md，再新增 ui/AGENTS.override.md，内容如下。回实验室根目录，重新执行 codex --cd ui --sandbox read-only，发送同一个要求。预期 UI-OVERRIDE 与 KEEP-DATA，这次不应因同层 AGENTS.md 而加入 UI-BASE。override 取代的是同一层候选，不是把根目录与所有全局要求全部清空。"
         },
         {
           "type": "code",
-          "label": "档案内容：ui/AGENTS.override.md",
+          "label": "文件内容：ui/AGENTS.override.md",
           "language": "markdown",
           "code": "# UI override practice\n\n- Start the final answer with UI-OVERRIDE instead of ROOT-LAB.\n- Include OVERRIDE-ACTIVE in the final answer.\n"
         },
         {
           "type": "paragraph",
-          "text": "多做一个边界检查：保留 override 备份后清空、储存并开新工作阶段，记录实际载入结果。本机 codex-cli 0.154.0-alpha.6.2 的诊断输入显示，空 override 不提供内容，但也没有接著载入同层 AGENTS.md，只留下根目录规则；不要把空档当作可靠的停用方法。要恢复 ui 规则，将 override 改名为不在备用清单内的 override.saved.md，再开全新工作阶段确认 UI-LAB、UI-BASE、KEEP-DATA。不要删除全域档或整个设置目录。"
+          "text": "多做一个边界检查：保留 override 备份后清空、保存并开新会话，记录实际加载结果。本地 codex-cli 0.154.0-alpha.6.2 的诊断输入显示，空 override 不提供内容，但也没有接着加载同层 AGENTS.md，只留下根目录规则；不要把空文件当作可靠的停用方法。要恢复 ui 规则，将 override 改名为不在备用清单内的 override.saved.md，再开全新会话确认 UI-LAB、UI-BASE、KEEP-DATA。不要删除全局文件或整个配置目录。"
         },
         {
           "type": "heading",
           "level": 3,
-          "text": "用一张观察表分开载入与遵循"
+          "text": "用一张观察表分开加载与遵循"
         },
         {
           "type": "paragraph",
-          "text": "每次新启动都填下面栏位，分别记 ROOT-LAB、UI-LAB、UI-OVERRIDE、空 override 与改名还原。不要把期望值先写进「实际回复」。例如诊断输入包含 ui override，但回复没有 OVERRIDE-ACTIVE，只能说来源已出现在输入、回复格式未通过；不能因此说文件没载入，也不能把模型自述当成诊断输入证据。私人的完整输入可能含其他规则，只保存本练习需要的摘要。"
+          "text": "每次新启动都填下面字段，分别记 ROOT-LAB、UI-LAB、UI-OVERRIDE、空 override 与改名还原。不要把期望值先写进「实际回复」。例如诊断输入包含 ui override，但回复没有 OVERRIDE-ACTIVE，只能说来源已出现在输入、回复格式未通过；不能因此说文件没加载，也不能把模型自述当成诊断输入证据。私人的完整输入可能含其他规则，只保存本练习需要的摘要。"
         },
         {
           "type": "code",
@@ -1412,22 +1412,22 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "失效排查与完成判准"
+          "text": "失效排查与完成标准"
         },
         {
           "type": "paragraph",
-          "text": "完全没出现标记时，确认真正副文件名、非空内容、Git 根目录与 --cd 位置；总是显示旧标记时，确认已退出并新启动，不是 resume 旧上下文；只有某段消失时，找同层 override、全域偏好或更高优先级的环境指示。不能把较深 AGENTS.md 当作越过组织政策、工具权限或用户要求的通行证。若有冲突，先说明来源，再调整自己可控制的规则。"
+          "text": "完全没出现标记时，确认真正扩展名、非空内容、Git 根目录与 --cd 位置；总是显示旧标记时，确认已退出并新启动，不是 resume 旧上下文；只有某段消失时，找同层 override、全局偏好或更高优先级的环境指示。不能把较深 AGENTS.md 当作越过组织政策、工具权限或用户要求的通行证。若有冲突，先说明来源，再调整自己可控制的规则。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "文件很长时还要考虑合计大小上限，官方默认是 32 KiB，计算的是位元组，不是中文字数。先保留必要规则，把长设计和范例移到普通文件并在需要时明确读取；不要以为切成大量兄弟目录就会自动载入全部内容。备用文件名和上限属设置项，留到"
+              "text": "文件很长时还要考虑合计大小上限，官方默认是 32 KiB，计算的是字节，不是中文字数。先保留必要规则，把长设计和示例移到普通文件并在需要时明确读取；不要以为切成大量兄弟目录就会自动加载全部内容。备用文件名和上限属设置项，留到"
             },
             {
               "type": "article",
-              "text": "设定教学",
+              "text": "设置教学",
               "kind": "life",
               "slug": "codex-config-toml"
             },
@@ -1442,7 +1442,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "完成时保存根目录、ui、override、空 override、改名还原五种情况的启动位置、文件状态与实际标记。共同的 KEEP-DATA 应持续保留，移除 override 后可回到原 ui 行为。上述本机证据使用 debug prompt-input 检查真正组成的输入，没有送出模型请求，也未声称模型一定遵从。官方来源与实际版本差异都要记录；回复行为需由新工作阶段另行验证。接著看"
+              "text": "完成时保存根目录、ui、override、空 override、改名还原五种情况的启动位置、文件状态与实际标记。共同的 KEEP-DATA 应持续保留，移除 override 后可回到原 ui 行为。上述本地证据使用 debug prompt-input 检查真正组成的输入，没有发送模型请求，也未声称模型一定遵从。官方来源与实际版本差异都要记录；回复行为需由新会话另行验证。接着看"
             },
             {
               "type": "article",

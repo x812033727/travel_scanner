@@ -1130,8 +1130,8 @@
       ]
     },
     "zh-CN": {
-      "title": "规则、说明与上下文文件怎么分",
-      "description": "把工作规则、项目入口、设计条件与交接状态分开保存，用实档与测试验证过期猜测。",
+      "title": "规则、说明与上下文文档怎么分",
+      "description": "把工作规则、项目入口、设计条件与交接状态分开保存，用实际文件与测试验证过期猜测。",
       "hero": {
         "src": "/guides/codex-rules-and-context-files/hero.jpg",
         "width": 1600,
@@ -1146,8 +1146,8 @@
         {
           "type": "summary",
           "items": [
-            "把工作规则、项目入口、设计条件与交接状态分开保存，用实档与测试验证过期猜测。",
-            "把项目规则、操作入口、设计条件与交接纪录分成四个小文件，让下一次任务能找到需要的内容并验证过期猜测。"
+            "把工作规则、项目入口、设计条件与交接状态分开保存，用实际文件与测试验证过期猜测。",
+            "把项目规则、操作入口、设计条件与交接记录分成四个小文档，让下一次任务能找到需要的内容并验证过期猜测。"
           ]
         },
         {
@@ -1169,11 +1169,11 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "把项目规则、操作入口、设计条件与交接纪录分成四个小文件，让下一次任务能找到需要的内容并验证过期猜测。阅读约 12 分钟，操作约 25 分钟。Windows、macOS、Linux 都可使用同一份 Small Steps expected 材料；需要文字编辑器、Codex 与 Node.js。先读 Markdown 和 AGENTS.md 入门。"
+          "text": "把项目规则、操作入口、设计条件与交接记录分成四个小文档，让下一次任务能找到需要的内容并验证过期猜测。阅读约 12 分钟，操作约 25 分钟。Windows、macOS、Linux 都可使用同一份 Small Steps expected 材料；需要文本编辑器、Codex 与 Node.js。先读 Markdown 和 AGENTS.md 入门。"
         },
         {
           "type": "paragraph",
-          "text": "不是每份文件都要塞进 AGENTS.md。规则描述每次都要遵守的工作要求；README 帮人找到入口；设计文件保存特定功能的条件；交接纪录保存这次做到哪里与下一步。写在一般 Markdown 里的文字，不会只因为互相链接就全部自动载入。应在规则或任务中明确要求何时读哪份资料，并用实际文件确认。"
+          "text": "不是每份文档都要塞进 AGENTS.md。规则描述每次都要遵守的工作要求；README 帮人找到入口；设计文档保存特定功能的条件；交接记录保存这次做到哪里与下一步。写在一般 Markdown 里的文字，不会只因为互相链接就全部自动加载。应在规则或任务中明确要求何时读哪份资料，并用实际文件确认。"
         },
         {
           "type": "table",
@@ -1185,7 +1185,7 @@
           "rows": [
             [
               "AGENTS.md",
-              "何时读文件、测试与交付规则",
+              "何时读文档、测试与交付规则",
               "完整历史聊天"
             ],
             [
@@ -1230,7 +1230,7 @@
         },
         {
           "type": "paragraph",
-          "text": "以下四段都是完整文件内容，依序存入指定路径。若副本已经有同名文件，先保存原文再合并，不要覆盖原本的重要规则。共同范例使用英文，五语读者可比对相同文件名、链接和判准；自己的正式文件可以使用熟悉的语言。"
+          "text": "以下四段都是完整文件内容，依序存入指定路径。若副本已经有同名文件，先保存原文再合并，不要覆盖原本的重要规则。共同示例使用英文，五语读者可比对相同文件名、链接和判断标准；自己的正式文档可以使用熟悉的语言。"
         },
         {
           "type": "heading",
@@ -1239,11 +1239,11 @@
         },
         {
           "type": "paragraph",
-          "text": "先把下面内容写进根目录 AGENTS.md。它指定筛选任务要读 docs/filters.md、续接任务要读 docs/handoff.md；并要求用程序和执行结果验证旧纪录，避免直接把前人猜测当成事实。它不要求每个任务都读所有设计资料，也没有把文件变成工具授权。"
+          "text": "先把下面内容写进根目录 AGENTS.md。它指定筛选任务要读 docs/filters.md、续接任务要读 docs/handoff.md；并要求用代码和执行结果验证旧记录，避免直接把前人猜测当成事实。它不要求每个任务都读所有设计资料，也没有把文档变成工具授权。"
         },
         {
           "type": "code",
-          "label": "档案内容：根目录 AGENTS.md",
+          "label": "文件内容：根目录 AGENTS.md",
           "language": "markdown",
           "code": "# Small Steps working instructions\n\n- Before analyzing or changing filters, read docs/filters.md.\n- When resuming work, read docs/handoff.md and verify its claims against current files.\n- Preserve the task data format, localStorage key, existing tests and unrelated behavior.\n- Use node --test core.test.mjs for core behavior checks.\n- Do not add dependencies or network requests for this exercise.\n- Record actual test results separately from hypotheses and checks not run.\n- Update docs/handoff.md only within the scope authorized by the current task.\n"
         },
@@ -1252,11 +1252,11 @@
           "inlines": [
             {
               "type": "text",
-              "text": "根目录 README.md 则放项目用途、文件对照和测试入口。点下面的两个文件链接时，都应在 docs 底下找到对应文件；这些相对链接对人和编辑器有帮助，但不代表 Codex 已自动展开读取。需要更多启动步骤可接回"
+              "text": "根目录 README.md 则放项目用途、文件对照和测试入口。点下面的两个文档链接时，都应在 docs 底下找到对应文件；这些相对链接对人和编辑器有帮助，但不代表 Codex 已自动展开读取。需要更多启动步骤可接回"
             },
             {
               "type": "article",
-              "text": "第一个专案",
+              "text": "第一个项目",
               "kind": "life",
               "slug": "codex-first-project"
             },
@@ -1268,50 +1268,50 @@
         },
         {
           "type": "code",
-          "label": "档案内容：根目录 README.md",
+          "label": "文件内容：根目录 README.md",
           "language": "markdown",
           "code": "# Small Steps documentation lab\n\nA local todo app using fictional practice data.\n\n## File map\n\n- index.html: page structure and filter controls.\n- style.css: presentation and focus styles.\n- app.js: browser events and storage integration.\n- core.mjs: task operations and filters.\n- core.test.mjs: core behavior tests.\n\n## Read next\n\n- [Filter requirements](./docs/filters.md)\n- [Current handoff](./docs/handoff.md)\n\n## Check\n\nRun node --test core.test.mjs from this folder with Node.js installed.\nThis command description is not a claim that tests have run.\n"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤三：分开条件与执行纪录"
+          "text": "步骤三：分开条件与执行记录"
         },
         {
           "type": "paragraph",
-          "text": "docs/filters.md 写出可验证的条件。Read 完成、Build 未完成是一组固定输入；每个筛选有明确输出，空清单则是边界案例。这份文件描述应该如何运作，没有声称这台电脑已跑过测试。资料顺序与不修改输入的要求留在设计条件，让修改功能时仍能判断是否破坏其他行为。"
+          "text": "docs/filters.md 写出可验证的条件。Read 完成、Build 未完成是一组固定输入；每个筛选有明确输出，空列表则是边界案例。这份文档描述应该如何运作，没有声称这台电脑已跑过测试。数据顺序与不修改输入的要求留在设计条件，让修改功能时仍能判断是否破坏其他行为。"
         },
         {
           "type": "code",
-          "label": "档案内容：docs/filters.md",
+          "label": "文件内容：docs/filters.md",
           "language": "markdown",
           "code": "# Filter requirements\n\nGiven Read is completed and Build is incomplete:\n\n- All returns Read, then Build.\n- Active returns Build only.\n- Completed returns Read only.\n- An empty input returns an empty result for every filter.\n- Filtering preserves task order and does not modify the input.\n\nCore checks: node --test core.test.mjs\nBrowser check: create both tasks, complete Read, and inspect all three filters.\n\n[Back to project](../README.md)\n"
         },
         {
           "type": "paragraph",
-          "text": "docs/handoff.md 故意保留一个未验证的旧猜测：「Completed 可能回传未完成项目」。因为本次起点是 expected，下一次任务应查证并推翻这项猜测，而不是照笔记去改坏已正常的程序。交接应有可辨识的来源版本；本范例没有要求 Git，因此用 expected 副本与稍后的实档、测试证据确认，正式项目可再记 commit。"
+          "text": "docs/handoff.md 故意保留一个未验证的旧猜测：「Completed 可能返回未完成项目」。因为本次起点是 expected，下一次任务应查证并推翻这项猜测，而不是照笔记去改坏已正常的代码。交接应有可识别的来源版本；本示例没有要求 Git，因此用 expected 副本与稍后的实际文件、测试证据确认，正式项目可再记 commit。"
         },
         {
           "type": "code",
-          "label": "档案内容：docs/handoff.md 的起始未验证纪录",
+          "label": "文件内容：docs/handoff.md 的起始未验证纪录",
           "language": "markdown",
           "code": "# Current handoff\n\nStarting material: an untouched copy of the Small Steps expected folder.\nGoal: verify the current Completed behavior before changing any code.\n\n## Verified\n\nNo checks have been run for this copy yet.\n\n## Unverified hypothesis\n\nAn older note suggested Completed might return unfinished tasks.\nTreat this as a hypothesis, not an instruction to change the implementation.\n\n## Next action\n\nRead docs/filters.md and core.mjs, then run node --test core.test.mjs.\nRecord the actual result and which checks remain unperformed.\n\n[Back to project](../README.md)\n"
         },
         {
           "type": "paragraph",
-          "text": "开始验证前，将这四份新文件另外复制到项目外的备份文件夹，保留相同相对路径；五个程序档则对照未动过的 expected 原副本。操作后逐一比对，只有 docs/handoff.md 可以改。若编辑器显示差异，先确认比较的是这次备份，而不是别次任务留下的文件；没有 Git 也能用两个实际文件比较。"
+          "text": "开始验证前，将这四份新文档另外复制到项目外的备份文件夹，保留相同相对路径；五个代码文件则对照未动过的 expected 原副本。操作后逐一比对，只有 docs/handoff.md 可以改。若编辑器显示差异，先确认比较的是这次备份，而不是别次任务留下的文档；没有 Git 也能用两个实际文件比较。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤四：用新任务验证文件分工"
+          "text": "步骤四：用新任务验证文档分工"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "储存全部文件，再从 codex-docs-lab 开全新桌面任务或 CLI 工作阶段，确认工作目录。送出下列要求，明确允许更新 handoff.md，但保留程序、测试与规则档不动。若目前唯读模式不能更新，先取得读取和测试结果，核对后由你手动更新同一份交接纪录，或依"
+              "text": "保存全部文件，再从 codex-docs-lab 开全新桌面任务或 CLI 会话，确认工作目录。发送下列要求，明确允许更新 handoff.md，但保留代码、测试与规则文件不动。若目前只读模式不能更新，先获取读取和测试结果，核对后由你手动更新同一份交接记录，或依"
             },
             {
               "type": "article",
@@ -1333,11 +1333,11 @@
         },
         {
           "type": "paragraph",
-          "text": "合格结果应指出 completed 条件目前正确、3 项核心测试通过，旧猜测已被目前程序与测试推翻。handoff.md 的 Verified 应列出实际命令、结果和相应文件，Pending 保留未做的浏览器验收。README 和 filters.md 的要求没有变；不能把「定义了浏览器检查」改写成「浏览器检查已通过」。你再独立执行下面命令核对一次，并看差异是否只有 handoff.md。"
+          "text": "合格结果应指出 completed 条件目前正确、3 项核心测试通过，旧猜测已被目前代码与测试推翻。handoff.md 的 Verified 应列出实际命令、结果和相应文件，Pending 保留未做的浏览器验收。README 和 filters.md 的要求没有变；不能把「定义了浏览器检查」改写成「浏览器检查已通过」。你再独立执行下面命令核对一次，并看差异是否只有 handoff.md。"
         },
         {
           "type": "code",
-          "label": "系统终端机：在 codex-docs-lab 根目录执行",
+          "label": "系统终端：在 codex-docs-lab 根目录执行",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
@@ -1348,7 +1348,7 @@
         },
         {
           "type": "paragraph",
-          "text": "不要把下列方括号原封不动当成完成纪录；以你的输出填写并放进 handoff.md 的适当段落。若 Node 不可用、测试失败或未执行，就保留原本假说的未确认状态及原因，不填三项通过。读懂程序只能支持程序检查，不能代替执行测试或画面操作。"
+          "text": "不要把下列方括号原封不动当成完成记录；以你的输出填写并放进 handoff.md 的适当段落。若 Node 不可用、测试失败或未执行，就保留原本假说的未确认状态及原因，不填三项通过。读懂代码只能支持代码检查，不能代替执行测试或界面操作。"
         },
         {
           "type": "code",
@@ -1363,15 +1363,15 @@
         },
         {
           "type": "paragraph",
-          "text": "要练缺少设计文件的情况，先保存 handoff.md 与 filters.md，再暂时将 filters.md 改名为 filters.saved.md，开新任务要求读原路径。预期明确回报文件不存在，先查路径与目前目录，而不是凭旧聊天编造一份已读过的设计。把文件改回原名后，再核对 README 的 ./docs/filters.md 和文件底下 ../README.md 两个方向都可到达。"
+          "text": "要练缺少设计文档的情况，先保存 handoff.md 与 filters.md，再暂时将 filters.md 改名为 filters.saved.md，新建任务要求读原路径。预期明确报告文档不存在，先查路径与目前目录，而不是凭旧聊天编造一份已读过的设计。把文件改回原名后，再核对 README 的 ./docs/filters.md 和文档底下 ../README.md 两个方向都可到达。"
         },
         {
           "type": "paragraph",
-          "text": "如果需求互相矛盾，先标出哪份文件谈的是产品条件、哪份只是历史猜测，再向目前任务的明确要求对齐；不要默默把全部文件改成一致而隐藏问题。若规则太长，先搬走重复背景与完整日志，保留触发阅读的短句与可用链接。若交接一直过期，把更新交接放在每次真正验证后，写明未完成事项，而不是在任务刚开始就先填成功。"
+          "text": "如果需求互相矛盾，先标出哪份文档谈的是产品条件、哪份只是历史猜测，再向目前任务的明确要求对齐；不要默默把全部文档改成一致而隐藏问题。若规则太长，先搬走重复背景与完整日志，保留触发阅读的短句与可用链接。若交接一直过期，把更新交接放在每次真正验证后，写明未完成事项，而不是在任务刚开始就先填成功。"
         },
         {
           "type": "paragraph",
-          "text": "重做时只把自己保存的 handoff.md 还原到起始未验证版本，保留正常程序；四份新文件只存在本练习副本，不影响全域设置。完成判准是四档齐全、双向链接可读、能分辨规则与历史、测试结果有来源、缺档会被指出，而且交接没有把未做事项标成通过。本文范例为原创，规则载入行为依官方查证；本机 expected 测试有实际通过纪录，仍不等同每个读者的 Codex 已完成执行。"
+          "text": "重做时只把自己保存的 handoff.md 还原到起始未验证版本，保留正常代码；四份新文档只存在本练习副本，不影响全局设置。完成判断标准是四个文件齐全、双向链接可读、能分辨规则与历史、测试结果有来源、缺文件会被指出，而且交接没有把未做事项标成通过。本文示例为原创，规则加载行为依官方查证；本地 expected 测试有实际通过记录，仍不等同每个读者的 Codex 已完成执行。"
         },
         {
           "type": "rich_paragraph",

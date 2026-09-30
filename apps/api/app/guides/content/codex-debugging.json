@@ -312,10 +312,10 @@
     },
     "zh-CN": {
       "title": "修复 Bug 的完整流程",
-      "description": "好的除错从可重现的症状开始，再用证据缩小原因，最后验证修正。『网站坏了』不够具体；提供哪个输入、在哪个步骤、期待什么、实际出现什么，能让 Codex 更快找到相关程序。",
+      "description": "好的调试从可重现的症状开始，再用证据缩小原因，最后验证修正。『网站坏了』不够具体；提供哪个输入、在哪个步骤、期待什么、实际出现什么，能让 Codex 更快找到相关代码。",
       "hero": {
         "src": "/guides/codex-debugging/hero.jpg",
-        "alt": "实作顺序示意图，非产品介面截图。",
+        "alt": "实操顺序示意图，非产品界面截图。",
         "width": 1600,
         "height": 900,
         "credit": {
@@ -328,8 +328,8 @@
         {
           "type": "summary",
           "items": [
-            "好的除错从可重现的症状开始，再用证据缩小原因，最后验证修正。",
-            "『网站坏了』不够具体；提供哪个输入、在哪个步骤、期待什么、实际出现什么，能让 Codex 更快找到相关程序。"
+            "好的调试从可重现的症状开始，再用证据缩小原因，最后验证修正。",
+            "『网站坏了』不够具体；提供哪个输入、在哪个步骤、期待什么、实际出现什么，能让 Codex 更快找到相关代码。"
           ]
         },
         {
@@ -351,18 +351,18 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "把「Completed 显示错任务」转成可重现的 Bug 报告，用最小程序定位原因、修正并做回归，保留没有验证的项目。阅读约 14 分钟，操作约 25 分钟。使用编辑器、已登录的 Codex、Node.js 22 以上相容版本及 Python。先完成既有项目阅读，不需要正式账号资料或外部服务。"
+          "text": "把「Completed 显示错任务」转成可重现的 Bug 报告，用最小程序定位原因、修正并做回归，保留没有验证的项目。阅读约 14 分钟，操作约 25 分钟。使用编辑器、已登录的 Codex、Node.js 22 以上兼容版本及 Python。先完成现有项目阅读，不需要正式账号数据或外部服务。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "本段提到的教学与资源: "
+              "text": "本段提到的教程与资源: "
             },
             {
               "type": "article",
-              "text": "既有专案阅读",
+              "text": "既有项目阅读",
               "kind": "life",
               "slug": "codex-understand-codebase"
             }
@@ -375,21 +375,21 @@
         },
         {
           "type": "paragraph",
-          "text": "从练习 ZIP 的 broken 复制五个文件到新文件夹 codex-bug-lab，保留原版。这份程序已有筛选分支，但 Completed 的条件故意写反；与 start「尚未实作筛选」不同。开编辑器，PowerShell 用 Get-Location、macOS／Linux 用 pwd 确认位置，再执行既有测试，预期 2 过 1 败。"
+          "text": "从练习 ZIP 的 broken 复制五个文件到新文件夹 codex-bug-lab，保留原版。这份代码已有筛选分支，但 Completed 的条件故意写反；与 start「尚未实现筛选」不同。开编辑器，PowerShell 用 Get-Location、macOS／Linux 用 pwd 确认位置，再执行现有测试，预期 2 过 1 败。"
         },
         {
           "type": "code",
-          "label": "终端机：基准测试",
+          "label": "终端：基准测试",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
         {
           "type": "paragraph",
-          "text": "要确认画面，从本目录启动本机预览：Windows 执行 py -m http.server 4173 --bind 127.0.0.1，macOS／Linux 执行 python3 -m http.server 4173 --bind 127.0.0.1。开 http://127.0.0.1:4173；若有想保留的虚构资料先记录，再使用 Reset practice data，切到 All tasks 并确认空清单。接著依序新增 Read、Build，只勾选 Read，再切 Completed。预期应是 Read，故障版实际却显示 Build；把这个顺序完整记下。资料重设不会还原程序档。"
+          "text": "要确认页面，从本目录启动本地预览：Windows 执行 py -m http.server 4173 --bind 127.0.0.1，macOS／Linux 执行 python3 -m http.server 4173 --bind 127.0.0.1。开 http://127.0.0.1:4173；若有想保留的虚构数据先记录，再使用 Reset practice data，切到 All tasks 并确认空清单。接着依序新增 Read、Build，只勾选 Read，再切 Completed。预期应是 Read，故障版实际却显示 Build；把这个顺序完整记下。数据重置不会还原代码文件。"
         },
         {
           "type": "paragraph",
-          "text": "故障报告要带执行环境、起点、操作、预期、实际与证据，先不要填「原因一定是快取」。下列范本只记已观察的现象；日期与测试结果由你填入。若你的画面显示不同，先核对预览目录及是否混入 expected，不把文章预期硬写成自己的实测。"
+          "text": "故障报告要带执行环境、起点、操作、预期、实际与证据，先不要填「原因一定是缓存」。下列模板只记已观察的现象；日期与测试结果由你填入。若你的页面显示不同，先核对预览目录及是否混入 expected，不把文章预期硬写成自己的实测。"
         },
         {
           "type": "code",
@@ -400,27 +400,27 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤 2：建立不依赖画面的最小重现"
+          "text": "步骤 2：创建不依赖页面的最小重现"
         },
         {
           "type": "paragraph",
-          "text": "在根目录新增 repro.mjs，贴入下面完整程序。它直接把一个已完成与一个未完成任务送给 visibleTasks，不经 localStorage、DOM、浏览器快取或外部网络。保存后在另一个终端执行 node repro.mjs。故障版应先印出实际 b，再因期待 a 而以非零状态结束；这次 assertion 失败就是要保留的证据。"
+          "text": "在根目录新增 repro.mjs，贴入下面完整代码。它直接把一个已完成与一个未完成任务传给 visibleTasks，不经 localStorage、DOM、浏览器缓存或外部网络。保存后在另一个终端执行 node repro.mjs。故障版应先输出实际 b，再因期待 a 而以非零状态结束；这次 assertion 失败就是要保留的证据。"
         },
         {
           "type": "code",
-          "label": "新增档案：repro.mjs",
+          "label": "新增文件：repro.mjs",
           "language": "javascript",
           "code": "import assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = [\n  { id: \"a\", title: \"Read\", completed: true },\n  { id: \"b\", title: \"Build\", completed: false },\n];\nconst actual = visibleTasks(tasks, \"completed\").map((task) => task.id);\nconsole.log(\"Completed IDs:\", JSON.stringify(actual));\nassert.deepEqual(actual, [\"a\"]);\nconsole.log(\"Reproduction passed.\");\n"
         },
         {
           "type": "code",
-          "label": "终端机：最小重现",
+          "label": "终端：最小重现",
           "language": "sh",
           "code": "node repro.mjs\n"
         },
         {
           "type": "paragraph",
-          "text": "现在可以缩小调查：核心函数在没有浏览器的情况下就已回传错误，故障不需要快取或按钮事件才能发生。这不能证明所有 UI 都正确，但足以先查核心 Completed 分支。请 Codex 用证据解释「为什么目前条件选中了未完成任务」，再谈修正；不要以一次重新整理偶然正常当根因已找到。"
+          "text": "现在可以缩小调查：核心函数在没有浏览器的情况下就已返回错误，故障不需要缓存或按钮事件才能发生。这不能证明所有 UI 都正确，但足以先查核心 Completed 分支。请 Codex 用证据解释「为什么目前条件选中了未完成任务」，再谈修正；不要以一次刷新偶然正常当根因已找到。"
         },
         {
           "type": "heading",
@@ -429,7 +429,7 @@
         },
         {
           "type": "paragraph",
-          "text": "若 node repro.mjs 显示 ERR_MODULE_NOT_FOUND，尚未执行到 Completed 断言，先检查目前文件夹与 core.mjs 的文件名；若是 SyntaxError，核对是否完整贴上程序。只有程序成功载入，印出 b，接著因期待 a 而失败，才是此缺陷的重现。反过来，第一轮直接通过也不是你已修好：可能拿到 expected 副本，应回查材料来源。把命令、退出码、实际输出及副本位置一起留下，不只记「红色」或「失败」。"
+          "text": "若 node repro.mjs 显示 ERR_MODULE_NOT_FOUND，尚未执行到 Completed 断言，先检查目前文件夹与 core.mjs 的文件名；若是 SyntaxError，核对是否完整粘贴代码。只有程序成功加载，输出 b，接着因期待 a 而失败，才是此缺陷的重现。反过来，第一轮直接通过也不是你已修好：可能拿到 expected 副本，应回查材料来源。把命令、退出码、实际输出及副本位置一起留下，不只记「红色」或「失败」。"
         },
         {
           "type": "heading",
@@ -438,7 +438,7 @@
         },
         {
           "type": "paragraph",
-          "text": "桌面版先以 codex-bug-lab 建立 Codex 任务；CLI 则在该文件夹确认路径后执行 codex。接著送出下面的完整要求，将范围限定到 core.mjs 的 Completed 条件。既有测试与 repro.mjs 都不要修改，否则无法比较前后。教材的故障注解在修好后会过期，可一并移除那一行；除此以外不重构所有函数、不改 UI 文案、不换框架。若代理没有读测试输出，就要求先确认原始失败再继续。"
+          "text": "桌面版先以 codex-bug-lab 创建 Codex 任务；CLI 则在该文件夹确认路径后执行 codex。接着发送下面的完整要求，将范围限定到 core.mjs 的 Completed 条件。现有测试与 repro.mjs 都不要修改，否则无法比较前后。教材的故障注释在修好后会过期，可一并移除那一行；除此以外不重构所有函数、不改 UI 文案、不换框架。若代理没有读测试输出，就要求先确认原始失败再继续。"
         },
         {
           "type": "code",
@@ -448,7 +448,7 @@
         },
         {
           "type": "paragraph",
-          "text": "根因是 Completed 使用 !task.completed，与 Active 一样选未完成；正确条件是 task.completed。只需把该分支改成下列一行，不要连 Active 的 ! 也删除。若只把下拉菜单的标签交换，画面有时看起来合理，但 repro 仍会失败；这说明修表象与修行为是两件事。"
+          "text": "根因是 Completed 使用 !task.completed，与 Active 一样选未完成；正确条件是 task.completed。只需把该分支改成下列一行，不要连 Active 的 ! 也删除。若只把下拉菜单的标签交换，页面有时看起来合理，但 repro 仍会失败；这说明修表象与修行为是两件事。"
         },
         {
           "type": "code",
@@ -463,7 +463,7 @@
         },
         {
           "type": "paragraph",
-          "text": "修正后 node repro.mjs 应印出 [\"a\"] 与 Reproduction passed，退出码为 0；原测试应 3 项全过。再依第一步相同操作重测画面：Completed 只有 Read，Active 只有 Build，All 保留两笔。先用相同输入证明原错误消失，再新增空清单与取消完成等边界，不要一开始换整批资料而失去前后比较。"
+          "text": "修正后 node repro.mjs 应输出 [\"a\"] 与 Reproduction passed，退出码为 0；原测试应 3 项全过。再依第一步相同操作重测页面：Completed 只有 Read，Active 只有 Build，All 保留两条。先用相同输入证明原错误消失，再新增空清单与取消完成等边界，不要一开始换整批数据而失去前后比较。"
         },
         {
           "type": "table",
@@ -484,25 +484,25 @@
               "3 过 0 败"
             ],
             [
-              "Completed 画面",
+              "Completed 页面",
               "Build",
               "Read"
             ],
             [
               "Active／All",
               "需记实际结果",
-              "Build／两笔皆在"
+              "Build／两条都在"
             ],
             [
               "尚未做的检查",
-              "明列未执行",
+              "列明未执行",
               "不自动改成通过"
             ]
           ]
         },
         {
           "type": "paragraph",
-          "text": "最后看 core.mjs 的差异，确认没有改 addTask、decodeTasks 或测试期待。若对方回报修好了却没显示执行结果，要求命令、退出状态及失败摘要；不能执行时就记原因。两个测试通过也不能取代真正画面检查，要由你或具备浏览器工具的代理完成，并标明平台与预览网址。"
+          "text": "最后看 core.mjs 的差异，确认没有改 addTask、decodeTasks 或测试期待。若对方报告修好了却没显示执行结果，要求命令、退出状态及失败摘要；不能执行时就记原因。两个测试通过也不能取代真正页面检查，要由你或具备浏览器工具的代理完成，并标明平台与预览网址。"
         },
         {
           "type": "heading",
@@ -511,17 +511,17 @@
         },
         {
           "type": "paragraph",
-          "text": "原重现已通过后，另建 regression.mjs，贴上下面程序，再执行 node regression.mjs。它先验证 Completed 的 a，取消 a 的完成状态后验证 Completed 为空、Active 保留 a／b，并检查原输入未被改动与三种空清单。预期印出 Regression passed，退出码 0。它是独立断言程序，不会把原 node --test core.test.mjs 的测试数自动增加。"
+          "text": "原重现已通过后，另建 regression.mjs，粘贴下面代码，再执行 node regression.mjs。它先验证 Completed 的 a，取消 a 的完成状态后验证 Completed 为空、Active 保留 a／b，并检查原输入未被改动与三种空清单。预期输出 Regression passed，退出码 0。它是独立断言程序，不会把原 node --test core.test.mjs 的测试数自动增加。"
         },
         {
           "type": "code",
-          "label": "档案：regression.mjs",
+          "label": "文件：regression.mjs",
           "language": "javascript",
           "code": "import assert from \"node:assert/strict\";\nimport { toggleTask, visibleTasks } from \"./core.mjs\";\n\nconst tasks = Object.freeze([\n  Object.freeze({ id: \"a\", title: \"Read\", completed: true }),\n  Object.freeze({ id: \"b\", title: \"Build\", completed: false }),\n]);\nconst ids = (items, filter) => visibleTasks(items, filter).map((task) => task.id);\nassert.deepEqual(ids(tasks, \"completed\"), [\"a\"]);\nconst changed = toggleTask(tasks, \"a\");\nassert.deepEqual(ids(changed, \"completed\"), []);\nassert.deepEqual(ids(changed, \"active\"), [\"a\", \"b\"]);\nassert.deepEqual(ids(changed, \"all\"), [\"a\", \"b\"]);\nassert.deepEqual(tasks.map((task) => task.completed), [true, false]);\nfor (const filter of [\"all\", \"active\", \"completed\"]) {\n  assert.deepEqual(ids(Object.freeze([]), filter), []);\n}\nconsole.log(\"Regression passed.\");\n"
         },
         {
           "type": "code",
-          "label": "终端机：执行边界回归",
+          "label": "终端：执行边界回归",
           "language": "sh",
           "code": "node regression.mjs\n"
         },
@@ -530,7 +530,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "原 broken/core.mjs 还原练习也保留 regression.mjs；它应再次以非零状态失败，与 repro.mjs 的 b 一致。若你另外更动测试、标签或保存流程才让结果转绿，回到保存的原档重新做单一修正，并在"
+              "text": "原 broken/core.mjs 还原练习也保留 regression.mjs；它应再次以非零状态失败，与 repro.mjs 的 b 一致。若你另外改动测试、标签或保存流程才让结果转绿，回到保存的原文件重新做单一修正，并在"
             },
             {
               "type": "article",
@@ -540,7 +540,7 @@
             },
             {
               "type": "text",
-              "text": "标示这次被舍弃的假设。完整回归仍需实际画面与重载检查，未做就保留未执行。"
+              "text": "标示这次被舍弃的假设。完整回归仍需实际页面与重新加载检查，未做就保留未执行。"
             }
           ]
         },
@@ -551,7 +551,7 @@
         },
         {
           "type": "paragraph",
-          "text": "一次只改一个可验证的假设，失败时把「做了什么、得到什么」追加到报告，避免下一个任务再次重试相同无效修正。若根因不在本篇默认位置，保留新证据并重新缩小范围，不因为教学说一行就硬改一行。真实项目的计时、账号及网络条件可能造成不同故障，重现资料应先去除私人内容再交给 Codex。"
+          "text": "一次只改一个可验证的假设，失败时把「做了什么、得到什么」追加到报告，避免下一个任务再次重试相同无效修正。若根因不在本篇默认位置，保留新证据并重新缩小范围，不因为教程说一行就硬改一行。真实项目的计时、账号及网络条件可能造成不同故障，重现数据应先去除私人内容再交给 Codex。"
         },
         {
           "type": "rich_paragraph",
@@ -568,7 +568,7 @@
             },
             {
               "type": "text",
-              "text": "。图中 1 是重现，2 是定位修正，3 是回归；参考修正可本机验证，Codex 实际对话和各平台操作仍要依你的执行记录判定。"
+              "text": "。图中 1 是重现，2 是定位修正，3 是回归；参考修正可本地验证，Codex 实际对话和各平台操作仍要依你的执行记录判定。"
             }
           ]
         },
@@ -586,10 +586,10 @@
         {
           "type": "image",
           "src": "/guides/codex-debugging/diagram-1.svg",
-          "alt": "20. 修复 Bug 的完整流程 — 实作顺序示意图，非产品介面截图。 Reproduce → Fix → Regression",
+          "alt": "20. 修复 Bug 的完整流程 — 实操顺序示意图，非产品界面截图。 Reproduce → Fix → Regression",
           "width": 1600,
           "height": 900,
-          "caption": "20. 修复 Bug 的完整流程 — 实作顺序示意图，非产品介面截图。 Reproduce → Fix → Regression",
+          "caption": "20. 修复 Bug 的完整流程 — 实操顺序示意图，非产品界面截图。 Reproduce → Fix → Regression",
           "description": "Reproduce to Fix to Regression",
           "credit": {
             "author": "Mokaair",

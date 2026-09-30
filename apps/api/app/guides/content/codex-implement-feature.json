@@ -1150,8 +1150,8 @@
       ]
     },
     "zh-CN": {
-      "title": "实作功能：完成待办筛选",
-      "description": "从 start 材料补上 Active／Completed 筛选，保留资料格式并用正常与边界案例验收。",
+      "title": "实现功能：完成待办筛选",
+      "description": "从 start 材料补上 Active／Completed 筛选，保留数据格式并用正常与边界案例验收。",
       "hero": {
         "src": "/guides/codex-implement-feature/hero.jpg",
         "width": 1600,
@@ -1166,8 +1166,8 @@
         {
           "type": "summary",
           "items": [
-            "从 start 材料补上 Active／Completed 筛选，保留资料格式并用正常与边界案例验收。",
-            "完成 All／Active／Completed 筛选功能，用额外的验收测试确认顺序、同名任务与空清单，再检查画面、差异与还原。"
+            "从 start 材料补上 Active／Completed 筛选，保留数据格式并用正常与边界案例验收。",
+            "完成 All／Active／Completed 筛选功能，用额外的验收测试确认顺序、同名任务与空清单，再检查页面、差异与还原。"
           ]
         },
         {
@@ -1189,18 +1189,18 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "完成 All／Active／Completed 筛选功能，用额外的验收测试确认顺序、同名任务与空清单，再检查画面、差异与还原。阅读约 14 分钟，操作约 30 分钟。先完成项目阅读；使用 Node.js 22 以上相容版本、Python、编辑器及已登录的 Codex。三种桌面系统均使用相同教材。"
+          "text": "完成 All／Active／Completed 筛选功能，用额外的验收测试确认顺序、同名任务与空清单，再检查页面、差异与还原。阅读约 14 分钟，操作约 30 分钟。先完成项目阅读；使用 Node.js 22 以上兼容版本、Python、编辑器及已登录的 Codex。三种桌面系统均使用相同教材。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "本段提到的教学与资源: "
+              "text": "本段提到的教程与资源: "
             },
             {
               "type": "article",
-              "text": "专案阅读",
+              "text": "项目阅读",
               "kind": "life",
               "slug": "codex-understand-codebase"
             }
@@ -1217,7 +1217,7 @@
             },
             {
               "type": "text",
-              "text": "练习审阅与交付计划；这篇把焦点放在功能从失败到完成的证据。题目相同，验收更深入：不能只看画面剩一列就说筛选成功，还要证明被隐藏的资料没有被删除、排序不变，两个相同标题仍能依识别码正确处理。"
+              "text": "练习审阅与交付计划；这篇把焦点放在功能从失败到完成的证据。题目相同，验收更深入：不能只看页面剩一行就说筛选成功，还要证明被隐藏的数据没有被删除、排序不变，两个相同标题仍能依标识符正确处理。"
             }
           ]
         },
@@ -1228,17 +1228,17 @@
         },
         {
           "type": "paragraph",
-          "text": "从练习 ZIP 的 start 复制五个文件到新的 codex-feature-lab，不沿用已完成的 expected，也不把前一篇修好的 core.mjs 带进来。开启文件夹后确认路径；PowerShell 用 Get-Location，macOS／Linux 用 pwd。保留 start 原版，先跑下列既有测试，预期 2 项通过、1 项筛选失败。"
+          "text": "从练习 ZIP 的 start 复制五个文件到新的 codex-feature-lab，不沿用已完成的 expected，也不把前一篇修好的 core.mjs 带进来。打开文件夹后确认路径；PowerShell 用 Get-Location，macOS／Linux 用 pwd。保留 start 原版，先跑下列既有测试，预期 2 项通过、1 项筛选失败。"
         },
         {
           "type": "code",
-          "label": "终端机：原始测试",
+          "label": "终端：原始测试",
           "language": "sh",
           "code": "node --test core.test.mjs\n"
         },
         {
           "type": "paragraph",
-          "text": "先读 index.html 的选项与 app.js 的 filter change 事件，确认控制项已经存在。缺少的是 visibleTasks 的行为，不需要重写 UI 或安装框架。这也是先读项目的价值：文件名称看起来像前端，不代表所有变更都要从画面开始。将既有失败结果记在笔记，后续不能靠删测试改写成功。"
+          "text": "先读 index.html 的选项与 app.js 的 filter change 事件，确认控制项已经存在。缺少的是 visibleTasks 的行为，不需要重写 UI 或安装框架。这也是先读项目的价值：文件名称看起来像前端，不代表所有变更都要从页面开始。将既有失败结果记在笔记，后续不能靠删测试改写成功。"
         },
         {
           "type": "heading",
@@ -1247,32 +1247,32 @@
         },
         {
           "type": "paragraph",
-          "text": "将下列三个验收测试存为根目录 filter.test.mjs。它是本篇新增的测试档，不覆盖 core.test.mjs。第一个用 a 与 c 两个同名 Read，确认完成筛选保留两个识别码且顺序相同；第二个确认 All 没丢资料；第三个涵盖三种空清单。冻结输入会让不当原地修改更容易被抓出来。"
+          "text": "将下列三个验收测试存为根目录 filter.test.mjs。它是本篇新增的测试文件，不覆盖 core.test.mjs。第一个用 a 与 c 两个同名 Read，确认完成筛选保留两个标识符且顺序相同；第二个确认 All 没丢数据；第三个涵盖三种空清单。冻结输入会让不当原地修改更容易被抓出来。"
         },
         {
           "type": "code",
-          "label": "新增档案：filter.test.mjs",
+          "label": "新增文件：filter.test.mjs",
           "language": "javascript",
           "code": "import test from \"node:test\";\nimport assert from \"node:assert/strict\";\nimport { visibleTasks } from \"./core.mjs\";\n\nconst tasks = Object.freeze([\n  Object.freeze({ id: \"a\", title: \"Read\", completed: true }),\n  Object.freeze({ id: \"b\", title: \"Build\", completed: false }),\n  Object.freeze({ id: \"c\", title: \"Read\", completed: true }),\n]);\nconst ids = (items) => items.map((item) => item.id);\n\ntest(\"filters preserve identity and order with duplicate titles\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"active\")), [\"b\"]);\n  assert.deepEqual(ids(visibleTasks(tasks, \"completed\")), [\"a\", \"c\"]);\n  assert.deepEqual(ids(tasks), [\"a\", \"b\", \"c\"]);\n});\n\ntest(\"All retains every task without changing its completion state\", () => {\n  assert.deepEqual(ids(visibleTasks(tasks, \"all\")), [\"a\", \"b\", \"c\"]);\n  assert.deepEqual(tasks.map((task) => task.completed), [true, false, true]);\n});\n\ntest(\"every filter accepts an empty list\", () => {\n  for (const filter of [\"all\", \"active\", \"completed\"]) {\n    assert.deepEqual(visibleTasks(Object.freeze([]), filter), []);\n  }\n});\n"
         },
         {
           "type": "code",
-          "label": "终端机：原始与新增测试",
+          "label": "终端：原始与新增测试",
           "language": "sh",
           "code": "node --test core.test.mjs filter.test.mjs\n"
         },
         {
           "type": "paragraph",
-          "text": "在 start 起点，合并执行应是 4 过、2 败：既有筛选测试与新第一项测试会失败，All 和空阵列本来就通过。这让你知道新测试确实能抓到缺少筛选的问题。若出现语法错误或找不到文件，先修正储存位置与复制内容；它们不是预期的功能失败，不能混成同一个红灯。"
+          "text": "在 start 起点，合并执行应是 4 过、2 败：既有筛选测试与新第一项测试会失败，All 和空数组本来就通过。这让你知道新测试确实能抓到缺少筛选的问题。若出现语法错误或找不到文件，先修正保存位置与复制内容；它们不是预期的功能失败，不能混成同一个红灯。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤 3：实作最小功能"
+          "text": "步骤 3：实现最小功能"
         },
         {
           "type": "paragraph",
-          "text": "桌面版加入 codex-feature-lab 为本机项目并建立新任务；CLI 从此练习目录执行 codex。确认任务路径后，贴上完整要求。这时原始程序只有 core.mjs 可修改，新增的 filter.test.mjs 内容也已经固定。若模型认为需要其他文件，先请它指出具体原因；不要一开始就让它把所有测试、画面与设置一起「整理」。没有读到测试时，要求先读，避免只照自然语言猜测。"
+          "text": "桌面版加入 codex-feature-lab 为本地项目并创建新任务；CLI 从此练习目录执行 codex。确认任务路径后，粘贴完整要求。这时原始代码只有 core.mjs 可修改，新增的 filter.test.mjs 内容也已经固定。若模型认为需要其他文件，先请它指出具体原因；不要一开始就让它把所有测试、页面与设置一起「整理」。没有读到测试时，要求先读，避免只照自然语言猜测。"
         },
         {
           "type": "code",
@@ -1282,7 +1282,7 @@
         },
         {
           "type": "paragraph",
-          "text": "参考实作如下。filter 产生符合条件的新阵列，里面仍引用原任务对象；这个函数只挑选，不修改对象，因此符合本题要求。All 可以回传原阵列，不必为了看起来「更安全」进行没有必要的深层复制。使用 !task.completed 与 task.completed 的差别要能自己读懂，不能只认测试变绿。"
+          "text": "参考实现如下。filter 产生符合条件的新数组，里面仍引用原任务对象；这个函数只挑选，不修改对象，因此符合本题要求。All 可以返回原数组，不必为了看起来「更安全」进行没有必要的深拷贝。使用 !task.completed 与 task.completed 的差别要能自己读懂，不能只认测试变绿。"
         },
         {
           "type": "code",
@@ -1293,19 +1293,19 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤 4：验收资料、画面与范围"
+          "text": "步骤 4：验收数据、页面与范围"
         },
         {
           "type": "paragraph",
-          "text": "重跑同一条测试命令，参考修正预期 6 项全过。接著核对差异：原本五个文件只改了 core.mjs，另外多一个你新增的 filter.test.mjs。若测试 assertions 被删除，先恢复固定测试再跑；若增加无关文件，逐一检查来源，不能因为成功摘要漂亮就忽略范围。修改完成与验收完成分开记录。"
+          "text": "重跑同一条测试命令，参考修正预期 6 项全过。接着核对差异：原本五个文件只改了 core.mjs，另外多一个你新增的 filter.test.mjs。若测试 assertions 被删除，先恢复固定测试再跑；若增加无关文件，逐一检查来源，不能因为成功摘要漂亮就忽略范围。修改完成与验收完成分开记录。"
         },
         {
           "type": "paragraph",
-          "text": "从 codex-feature-lab 启动 Python HTTP 预览，Windows 用 py -m http.server 4173 --bind 127.0.0.1，macOS／Linux 用 python3 代替 py，浏览器开 http://127.0.0.1:4173。先处理自己原有预览的埠占用，不停其他服务。直接双击 HTML 可能因模组限制载入失败；若看到旧画面，确认服务器目录及重新整理后再判断。"
+          "text": "从 codex-feature-lab 启动 Python HTTP 预览，Windows 用 py -m http.server 4173 --bind 127.0.0.1，macOS／Linux 用 python3 代替 py，浏览器开 http://127.0.0.1:4173。先处理自己原有预览的端口占用，不停其他服务。直接双击 HTML 可能因模块限制加载失败；若看到旧页面，确认服务器目录及刷新后再判断。"
         },
         {
           "type": "paragraph",
-          "text": "先保留仍需要的旧练习纪录，再于 About this exercise 使用 Reset practice data。选 All tasks 并确认空清单后，依序加入 Read、Build、Read，勾选第一与第三项。照表切换，再回 All 确认三笔都在；同名项目以原先位置与勾选状态辨认。取消第一项完成后，Completed 应只剩原第三项，Active 应保留原第一项与 Build。最后切回 All 重新整理，确认状态仍在。"
+          "text": "先保留仍需要的旧练习记录，再于 About this exercise 使用 Reset practice data。选 All tasks 并确认空清单后，依序加入 Read、Build、Read，勾选第一与第三项。照表切换，再回 All 确认三条都在；同名条目以原先位置与勾选状态辨认。取消第一项完成后，Completed 应只剩原第三项，Active 应保留原第一项与 Build。最后切回 All 刷新，确认状态仍在。"
         },
         {
           "type": "table",
@@ -1343,11 +1343,11 @@
         },
         {
           "type": "paragraph",
-          "text": "画面练习中，Read、Build、Read 共三笔，第一和第三笔完成时，All／Active／Completed 的列数分别为 3／1／2，但三种画面的计数都应是 1 active / 3 total。取消第一笔完成后，三种列数变成 3／2／1，计数都为 2 active / 3 total。app.js 用完整 tasks 计数；只通过核心筛选测试不能证明画面计数正确，请另记实际结果。"
+          "text": "页面练习中，Read、Build、Read 共三条，第一和第三条完成时，All／Active／Completed 的行数分别为 3／1／2，但三种页面的计数都应是 1 active / 3 total。取消第一条完成后，三种行数变成 3／2／1，计数都为 2 active / 3 total。app.js 用完整 tasks 计数；只通过核心筛选测试不能证明页面计数正确，请另记实际结果。"
         },
         {
           "type": "paragraph",
-          "text": "六项测试通过后，先把修好的 core.mjs 复制到练习文件夹外保存。在练习版只暂时把 Completed 分支替换成下面的错误写法，再跑原两个测试档。它先按完成状态筛选，再按 title 去重，会遗失 ID c；预期 5 过 1 败。原三项测试单独跑仍全过，因为其两笔资料没有同名。读出失败的实际 ID 后，立刻用刚才保存的修正版恢复 core.mjs，应回到 6 过 0 败；测试档保持不变。"
+          "text": "六项测试通过后，先把修好的 core.mjs 复制到练习文件夹外保存。在练习版只暂时把 Completed 分支替换成下面的错误写法，再跑原两个测试文件。它先按完成状态筛选，再按 title 去重，会遗失 ID c；预期 5 过 1 败。原三项测试单独跑仍全过，因为其两条数据没有同名。读出失败的实际 ID 后，立刻用刚才保存的修正版恢复 core.mjs，应回到 6 过 0 败；测试文件保持不变。"
         },
         {
           "type": "code",
@@ -1357,7 +1357,7 @@
         },
         {
           "type": "paragraph",
-          "text": "若反例没有失败，先确认有执行 filter.test.mjs、第三笔仍为不同 ID 的 Read，以及正在测试修改过的副本。若变成语法或找不到模组错误，先恢复文件再核对替换位置；那不是成功抓到去重缺陷。这个反例只检查测试覆盖，不需要改 UI 或提交错误版本。"
+          "text": "若反例没有失败，先确认有执行 filter.test.mjs、第三条仍为不同 ID 的 Read，以及正在测试修改过的副本。若变成语法或找不到模块错误，先恢复文件再核对替换位置；那不是成功抓到去重缺陷。这个反例只检查测试覆盖，不需要改 UI 或提交错误版本。"
         },
         {
           "type": "heading",
@@ -1366,11 +1366,11 @@
         },
         {
           "type": "paragraph",
-          "text": "筛选时资料真的少了，先看是否错把 filter 结果写回 tasks 或保存；画面数量对但同名任务不对，要检查是否用 title 代替 id。核心全过但画面无变，先读 app.js 是否载入正确 core.mjs，并核对 HTTP 来源与浏览器快取。不要连续要求「再修一次」却不提供哪个表格列失败，先把重现顺序与预期写清楚。"
+          "text": "筛选时数据真的少了，先看是否错把 filter 结果写回 tasks 或保存；页面数量对但同名任务不对，要检查是否用 title 代替 id。核心全过但页面无变，先读 app.js 是否加载正确 core.mjs，并核对 HTTP 来源与浏览器缓存。不要连续要求「再修一次」却不提供哪个表格行失败，先把重现顺序与预期写清楚。"
         },
         {
           "type": "paragraph",
-          "text": "交付应包含六项测试摘要、画面案例、最终差异，以及没有操作的检查清单。重做时停止预览，只从 start 还原 core.mjs；若保留新测试，应回到 4 过 2 败，若只执行旧测试，则是 2 过 1 败。保留两个命令的差别，避免把测试数量不同误当另一个故障。图中 1 是固定案例，2 是限定修改，3 是回归与还原。这些是可执行参考材料，不是声称已替你执行 Codex 任务。"
+          "text": "交付应包含六项测试摘要、页面案例、最终差异，以及没有操作的检查清单。重做时停止预览，只从 start 还原 core.mjs；若保留新测试，应回到 4 过 2 败，若只执行旧测试，则是 2 过 1 败。保留两个命令的差别，避免把测试数量不同误当另一个故障。图中 1 是固定案例，2 是限定修改，3 是回归与还原。这些是可执行参考材料，不是声称已替你执行 Codex 任务。"
         },
         {
           "type": "rich_paragraph",
@@ -1399,8 +1399,8 @@
         {
           "type": "image",
           "src": "/guides/codex-implement-feature/reference-390.png",
-          "alt": "Completed 筛选显示两笔 Read，总计仍有三笔任务。",
-          "caption": "本篇参考修正的实际成果：Completed 保留两笔不同识别码的 Read，计数仍为 1 active / 3 total。Windows / Edge 153.0.4234.32，2026-09-14；虚构数据，窄版为响应式窗口，非实体手机。这是练习网站，不是 Codex 界面或模型执行证据。",
+          "alt": "Completed 筛选显示两条 Read，总计仍有三条任务。",
+          "caption": "本篇参考修正的实际成果：Completed 保留两条不同标识符的 Read，计数仍为 1 active / 3 total。Windows / Edge 153.0.4234.32，2026-09-14；虚构数据，窄版为响应式窗口，非实体手机。这是练习网站，不是 Codex 界面或模型执行证据。",
           "width": 390,
           "height": 900,
           "credit": {
@@ -1411,8 +1411,8 @@
         {
           "type": "image",
           "src": "/guides/codex-implement-feature/reference-1280.png",
-          "alt": "Completed 筛选显示两笔 Read，总计仍有三笔任务。",
-          "caption": "本篇参考修正的实际成果：Completed 保留两笔不同识别码的 Read，计数仍为 1 active / 3 total。Windows / Edge 153.0.4234.32，2026-09-14；虚构数据，窄版为响应式窗口，非实体手机。这是练习网站，不是 Codex 界面或模型执行证据。",
+          "alt": "Completed 筛选显示两条 Read，总计仍有三条任务。",
+          "caption": "本篇参考修正的实际成果：Completed 保留两条不同标识符的 Read，计数仍为 1 active / 3 total。Windows / Edge 153.0.4234.32，2026-09-14；虚构数据，窄版为响应式窗口，非实体手机。这是练习网站，不是 Codex 界面或模型执行证据。",
           "width": 1280,
           "height": 900,
           "credit": {

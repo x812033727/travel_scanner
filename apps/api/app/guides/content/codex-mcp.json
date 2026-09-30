@@ -331,10 +331,10 @@
     },
     "zh-CN": {
       "title": "MCP 配置与连接排查",
-      "description": "MCP 让 Codex 使用外部工具与资料。STDIO 服务器通常由本机命令启动；HTTP 服务器通过 URL 连线。配置文件写入成功只代表设置存在，还需要确认服务启动、验证通过与工具回应。",
+      "description": "MCP 让 Codex 使用外部工具与数据。STDIO 服务器通常由本地命令启动；HTTP 服务器通过 URL 连接。配置文件写入成功只代表配置存在，还需要确认服务启动、验证通过与工具响应。",
       "hero": {
         "src": "/guides/codex-mcp/hero.jpg",
-        "alt": "实作顺序示意图，非产品介面截图。",
+        "alt": "实操顺序示意图，非产品界面截图。",
         "width": 1600,
         "height": 900,
         "credit": {
@@ -347,9 +347,9 @@
         {
           "type": "summary",
           "items": [
-            "MCP 让 Codex 使用外部工具与资料。",
-            "STDIO 服务器通常由本机命令启动；HTTP 服务器通过 URL 连线。",
-            "配置文件写入成功只代表设置存在，还需要确认服务启动、验证通过与工具回应。"
+            "MCP 让 Codex 使用外部工具与数据。",
+            "STDIO 服务器通常由本地命令启动；HTTP 服务器通过 URL 连接。",
+            "配置文件写入成功只代表配置存在，还需要确认服务启动、验证通过与工具响应。"
           ]
         },
         {
@@ -371,14 +371,14 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "接上 OpenAI 的唯读文件 MCP，查一个问题、开启原文核对，再停用或移除自己的练习项目。阅读约 15 分钟、操作约 20 分钟。需要能上网的 Codex 桌面版、CLI 或 IDE；CLI 路线先完成安装篇。本篇不用私有文件、付费服务金钥或第三方 npm 服务器套件。"
+          "text": "接上 OpenAI 的只读文档 MCP，查一个问题、打开原文核对，再停用或移除自己的练习条目。阅读约 15 分钟、操作约 20 分钟。需要能上网的 Codex 桌面版、CLI 或 IDE；CLI 路线先完成安装篇。本篇不用私有文档、付费服务密钥或第三方 npm 服务器包。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "本段提到的教学与资源: "
+              "text": "本段提到的教程与资源: "
             },
             {
               "type": "article",
@@ -393,7 +393,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "MCP 是让客户端呼叫工具与取得上下文的协定。服务器提供哪些能力，取决于该服务器；接上文件服务不会自动取得你的 GitHub 或本机浏览器。OpenAI Docs MCP 提供文件搜寻与原文内容，不会代你呼叫 OpenAI API。本篇用它练习读取验收；日后换成会写入资料的服务，仍须重新检查工具与"
+              "text": "MCP 是让客户端调用工具与取得上下文的协议。服务器提供哪些能力，取决于该服务器；接上文档服务不会自动取得你的 GitHub 或本地浏览器。OpenAI Docs MCP 提供文档搜索与原文内容，不会代你调用 OpenAI API。本篇用它练习读取验收；日后换成会写入数据的服务，仍须重新检查工具与"
             },
             {
               "type": "article",
@@ -410,20 +410,20 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤 1：选择传输方式与设置位置"
+          "text": "步骤 1：选择传输方式与配置位置"
         },
         {
           "type": "table",
           "header": [
             "类型",
-            "你要提供的资料",
+            "你要提供的信息",
             "执行位置"
           ],
           "rows": [
             [
               "STDIO",
               "启动程序与参数",
-              "Codex 主机启动本机程序"
+              "Codex 主机启动本地程序"
             ],
             [
               "Streamable HTTP",
@@ -432,7 +432,7 @@
             ],
             [
               "插件提供的 MCP",
-              "插件安装与必要连线",
+              "插件安装与必要连接",
               "依插件与入口提供"
             ]
           ]
@@ -446,7 +446,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "同一 Codex 主机的桌面版、CLI、IDE 共用 MCP 设置。默认用户设置为 ~/.codex/config.toml；Windows 通常在用户文件夹下的 .codex，macOS、Linux 同样在自己的家目录。若已设置自订 CODEX_HOME，请依实际位置确认。可信任项目也能用 .codex/config.toml；本篇沿用用户层设置，不在不明来源项目内调整。位置判断见 "
+              "text": "同一 Codex 主机的桌面版、CLI、IDE 共用 MCP 配置。默认用户配置为 ~/.codex/config.toml；Windows 通常在用户文件夹下的 .codex，macOS、Linux 同样在自己的主目录。若已设置自定义 CODEX_HOME，请依实际位置确认。可信任项目也能用 .codex/config.toml；本篇沿用用户层配置，不在不明来源项目内调整。位置判断见 "
             },
             {
               "type": "article",
@@ -463,31 +463,31 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤 2：先检查既有项目，再新增"
+          "text": "步骤 2：先检查既有条目，再新增"
         },
         {
           "type": "code",
-          "label": "终端机：查看已设定伺服器",
+          "label": "终端：查看已配置服务器",
           "language": "sh",
           "code": "codex mcp list\n"
         },
         {
           "type": "paragraph",
-          "text": "在 Windows PowerShell、macOS 终端或 Linux 终端执行上面的命令。这是管理命令，不需先进入 codex 对话。检查是否已有 codexLearningDocs；若有同名项目，先看详情，不要覆写。已有相同官方网址的可用项目也能直接使用其现有名称，并在验收纪录写明「沿用既有设置」，收尾时保留它。列表可能含私人服务网址，不要直接公开整份输出。"
+          "text": "在 Windows PowerShell、macOS 终端或 Linux 终端执行上面的命令。这是管理命令，不需先进入 codex 对话。检查是否已有 codexLearningDocs；若有同名条目，先看详情，不要覆盖。已有相同官方网址的可用条目也能直接使用其现有名称，并在验收记录写明「沿用既有配置」，收尾时保留它。列表可能含私人服务网址，不要直接公开整份输出。"
         },
         {
           "type": "paragraph",
-          "text": "若确定要新增，先在编辑器开启实际用户 config.toml，将现有文件另存一份有日期且不覆盖旧档的备份。文件原本不存在就记录此状态，不必自行建立空设置。只做这次单一变更，保存前后差异；备份可能含敏感值，放在自己的本机文件夹，不加入 Git。完成练习时优先移除新增的单一区段，避免用旧备份覆盖其他任务刚加入的设置。"
+          "text": "若确定要新增，先在编辑器打开实际用户 config.toml，将现有文件另存一份有日期且不覆盖旧文件的备份。文件原本不存在就记录此状态，不必自行创建空配置。只做这次单一变更，保存前后差异；备份可能含敏感值，放在自己的本地文件夹，不加入 Git。完成练习时优先移除新增的单一区段，避免用旧备份覆盖其他任务刚加入的配置。"
         },
         {
           "type": "code",
-          "label": "三种系统的终端机：新增并检查练习项目",
+          "label": "三种系统的终端：新增并检查练习项目",
           "language": "sh",
           "code": "codex mcp add codexLearningDocs --url https://developers.openai.com/mcp\ncodex mcp get codexLearningDocs\n"
         },
         {
           "type": "paragraph",
-          "text": "预期 get 显示名称、HTTP 传输与完全相同的官方网址。这时只能勾选「设置保存成功」，尚未证明服务器可达、工具列出或查询成功。实际工具数量会改变，不抄教材中的固定数字；管理命令回传零也不能作为读取证据。若命令不存在，先用 codex mcp --help 确认版本与可用命令，再回到 CLI 更新说明。"
+          "text": "预期 get 显示名称、HTTP 传输与完全相同的官方网址。这时只能勾选「配置保存成功」，尚未证明服务器可达、工具列出或查询成功。实际工具数量会改变，不抄教材中的固定数字；管理命令返回零也不能作为读取证据。若命令不存在，先用 codex mcp --help 确认版本与可用命令，再回到 CLI 更新说明。"
         },
         {
           "type": "heading",
@@ -496,7 +496,7 @@
         },
         {
           "type": "paragraph",
-          "text": "不使用 CLI 时，桌面版到 Settings → MCP servers → Add server；输入 codexLearningDocs，选 Streamable HTTP，贴上同一官方网址后保存，再按 Restart。IDE 从齿轮选 MCP servers → Add server，栏位相同，保存后按 Restart extension。Windows、macOS、Linux 使用其实际可用客户端完成相同步骤；Linux 预览或版本中没有这个入口时可改用 CLI，不把缺少 UI 按钮误判为服务故障。"
+          "text": "不使用 CLI 时，桌面版到 Settings → MCP servers → Add server；输入 codexLearningDocs，选 Streamable HTTP，粘贴同一官方网址后保存，再按 Restart。IDE 从齿轮选 MCP servers → Add server，字段相同，保存后按 Restart extension。Windows、macOS、Linux 使用其实际可用客户端完成相同步骤；Linux 预览或版本中没有这个入口时可改用 CLI，不把缺少 UI 按钮误判为服务故障。"
         },
         {
           "type": "code",
@@ -509,7 +509,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "上面是同一设置的文件表示，CLI、UI、手动编辑三条路选一条即可。不要先用命令新增又把相同 TOML 表格贴一次，重复表格可能使设置无法解析。若要手动编辑，只合并该区段后重新启动客户端。ChatGPT 网页与手机不读取你电脑的本机 config.toml；网页的外部能力走 "
+              "text": "上面是同一配置的文件表示，CLI、UI、手动编辑三条路选一条即可。不要先用命令新增又把相同 TOML 表格贴一次，重复表格可能使配置无法解析。若要手动编辑，只合并该区段后重新启动客户端。ChatGPT 网页与手机不读取你电脑的本地 config.toml；网页的外部能力走 "
             },
             {
               "type": "article",
@@ -519,7 +519,7 @@
             },
             {
               "type": "text",
-              "text": "，不能因本机成功就宣称手机也已设置。"
+              "text": "，不能因本地成功就宣称手机也已设置。"
             }
           ]
         },
@@ -530,23 +530,23 @@
         },
         {
           "type": "code",
-          "label": "Codex 桌面版、CLI、IDE 输入框：查看连线，非终端机命令",
+          "label": "Codex 桌面版、CLI、IDE 输入框：查看连线，非终端命令",
           "language": "text",
           "code": "/mcp\n"
         },
         {
           "type": "paragraph",
-          "text": "在桌面版、CLI 或 IDE 的新任务／工作阶段输入 /mcp，查看练习服务器与当下工具；这是 Codex 输入框指令，不是终端命令。也可回到 MCP servers 设置页确认状态，再观察新任务的实际工具活动。若要求认证，先核对公开端点。其他 OAuth 服务可能需要 Authenticate 或 codex mcp login 名称，本篇公开文件服务不需任意填入 API key。"
+          "text": "在桌面版、CLI 或 IDE 的新任务／会话输入 /mcp，查看练习服务器与当下工具；这是 Codex 输入框命令，不是终端命令。也可回到 MCP servers 设置页确认状态，再观察新任务的实际工具活动。若要求认证，先核对公开端点。其他 OAuth 服务可能需要 Authenticate 或 codex mcp login 名称，本篇公开文档服务不需任意填入 API key。"
         },
         {
           "type": "code",
-          "label": "新任务提示词：透过 MCP 查证规则",
+          "label": "新任务提示词：通过 MCP 查证规则",
           "language": "text",
           "code": "Use the codexLearningDocs MCP tools to find the official AGENTS.md instructions.\nRead the relevant page and explain global versus project rules in three bullets.\nInclude the source URL and the section you checked.\nIf the MCP tools are unavailable, report that limitation instead of answering from memory.\nDo not edit files or call paid APIs.\n"
         },
         {
           "type": "paragraph",
-          "text": "如果沿用既有服务器，先把提示词中的名称替换成那个名称。观察至少一次搜寻或读取工具的活动，再打开回复的官方来源，确认段落确实支持全域与项目规则的说明。模型回复格式可能不同，验收重点是工具证据、网址与内容一致，不是一定三句或固定工具名称。回答虽然正确但没有经过 MCP，应记为一般回答，这次连线练习仍未完成。"
+          "text": "如果沿用既有服务器，先把提示词中的名称替换成那个名称。观察至少一次搜索或读取工具的活动，再打开回复的官方来源，确认段落确实支持全局与项目规则的说明。模型回复格式可能不同，验收重点是工具证据、网址与内容一致，不是一定三句或固定工具名称。回答虽然正确但没有经过 MCP，应记为一般回答，这次连接练习仍未完成。"
         },
         {
           "type": "heading",
@@ -555,11 +555,11 @@
         },
         {
           "type": "paragraph",
-          "text": "失败对照只改自己新增的项目：原区段已有 enabled 就把该值改成 false；没有才新增一次 enabled = false，不能重复键或表格。也可使用客户端停用控制。保存并重新启动后，在桌面版、CLI 或 IDE 的新任务／工作阶段用 /mcp 和实际工具活动确认不再提供该工具。旧对话文字不算新读取。恢复时还原原值，或只移除这次新增的 enabled 键，再重新启动并重做读取。"
+          "text": "失败对照只改自己新增的条目：原区段已有 enabled 就把该值改成 false；没有才新增一次 enabled = false，不能重复键或表格。也可使用客户端停用控制。保存并重新启动后，在桌面版、CLI 或 IDE 的新任务／会话用 /mcp 和实际工具活动确认不再提供该工具。旧对话文字不算新读取。恢复时还原原值，或只移除这次新增的 enabled 键，再重新启动并重做读取。"
         },
         {
           "type": "code",
-          "label": "终端机：只移除本次新增的项目，再核对列表",
+          "label": "终端：只移除本次新增的项目，再核对列表",
           "language": "sh",
           "code": "codex mcp remove codexLearningDocs\ncodex mcp list\n"
         },
@@ -568,7 +568,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "移除后新任务应不再列出这个新增项目；这不会移除其他服务器、删除文件或撤销别的 OAuth 授权。如果原先只是沿用既有项目，跳过移除并保留原状。本篇若未变更设置，收尾纪录就写未变更。对有登录的其他服务，remove 与 logout 的目的不同，请依 "
+              "text": "移除后新任务应不再列出这个新增条目；这不会移除其他服务器、删除文件或撤销别的 OAuth 授权。如果原先只是沿用既有条目，跳过移除并保留原状。本篇若未变更配置，收尾记录就写未变更。对有登录的其他服务，remove 与 logout 的目的不同，请依 "
             },
             {
               "type": "article",
@@ -578,25 +578,25 @@
             },
             {
               "type": "text",
-              "text": " 核对，而不是一口气清空所有连线。"
+              "text": " 核对，而不是一口气清空所有连接。"
             }
           ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "常见问题与完成判准"
+          "text": "常见问题与完成标准"
         },
         {
           "type": "paragraph",
-          "text": "找不到服务器时先查设置层级、名称、enabled 与是否重新启动；出现 TOML 解析错误时看重复表格与引号，不要重置整档；设置正确但连不上时核对完整 URL、目前主机网络与服务状态，再保存遮蔽后错误。工具回复没有来源，则重问读取原文并核对链接，不把模糊答案当通过。这四类问题分别有不同证据，全部改成放宽权限通常不能解释原因。"
+          "text": "找不到服务器时先查配置层级、名称、enabled 与是否重新启动；出现 TOML 解析错误时看重复表格与引号，不要重置整个文件；配置正确但连不上时核对完整 URL、目前主机网络与服务状态，再保存遮盖后错误。工具回复没有来源，则重问读取原文并核对链接，不把模糊答案当通过。这四类问题分别有不同证据，全部改成放宽权限通常不能解释原因。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "验收至少记录实际客户端版本、设置保存、一次带来源的工具结果，以及自己新增项目的停用或移除结果。Windows 的独立设置测试与公开服务协定测试可另外记录，但不等同于桌面 UI、macOS、Linux 或你的模型任务已实测；无法操作的入口依官方文件查证。接续用"
+              "text": "验收至少记录实际客户端版本、配置保存、一次带来源的工具结果，以及自己新增条目的停用或移除结果。Windows 的独立配置测试与公开服务协议测试可另外记录，但不等同于桌面 UI、macOS、Linux 或你的模型任务已实测；无法操作的入口依官方文档查证。接续用"
             },
             {
               "type": "article",
@@ -624,10 +624,10 @@
         {
           "type": "image",
           "src": "/guides/codex-mcp/diagram-1.svg",
-          "alt": "25. MCP 配置与连接排查 — 实作顺序示意图，非产品介面截图。 Configuration → Handshake → Tool result",
+          "alt": "25. MCP 配置与连接排查 — 实操顺序示意图，非产品界面截图。 Configuration → Handshake → Tool result",
           "width": 1600,
           "height": 900,
-          "caption": "25. MCP 配置与连接排查 — 实作顺序示意图，非产品介面截图。 Configuration → Handshake → Tool result",
+          "caption": "25. MCP 配置与连接排查 — 实操顺序示意图，非产品界面截图。 Configuration → Handshake → Tool result",
           "description": "Configuration to Handshake to Tool result",
           "credit": {
             "author": "Mokaair",

@@ -1015,7 +1015,7 @@
           "type": "summary",
           "items": [
             "设计有明确输入、权限与退出状态的 CI 工作，保存产物并区分建议与正式套用。",
-            "在自己新建的测试 GitHub 储存库，手动启动一次 Codex 唯读工作，验证结果并下载带有 commit 与执行编号的报告。"
+            "在自己新建的测试 GitHub 仓库，手动启动一次 Codex 只读工作，验证结果并下载带有 commit 与执行编号的报告。"
           ]
         },
         {
@@ -1037,14 +1037,14 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "在自己新建的测试 GitHub 储存库，手动启动一次 Codex 唯读工作，验证结果并下载带有 commit 与执行编号的报告。阅读约 20 分钟、操作约 30 分钟，runner 等待另计。需要 GitHub 储存库管理权限、可用的 Actions 与 OpenAI API 项目金钥；ChatGPT 订阅不自动支付 API 费用。先读 JSON 输出验证及账号用量。本篇不替读者建立储存库、购买额度或触发工作。"
+          "text": "在自己新建的测试 GitHub 仓库，手动启动一次 Codex 只读工作，验证结果并下载带有 commit 与执行编号的报告。阅读约 20 分钟、操作约 30 分钟，runner 等待另计。需要 GitHub 仓库管理权限、可用的 Actions 与 OpenAI API 项目密钥；ChatGPT 订阅不自动支付 API 费用。先读 JSON 输出验证及账号用量。本篇不替读者创建仓库、购买额度或触发工作。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "本段提到的教学与资源: "
+              "text": "本段提到的教程与资源: "
             },
             {
               "type": "article",
@@ -1058,7 +1058,7 @@
             },
             {
               "type": "article",
-              "text": "帐号用量",
+              "text": "账号用量",
               "kind": "life",
               "slug": "codex-account-usage"
             }
@@ -1071,20 +1071,20 @@
         },
         {
           "type": "paragraph",
-          "text": "在 GitHub 建立只放虚构教材的私人测试储存库，确认你可以修改默认分支并使用 Actions。Windows、macOS、Linux 都可以用同样的 GitHub 网页或编辑器建立文件；实际模型工作跑在 GitHub 的 ubuntu-latest，不是在你的电脑。手机可检视纪录，但这份多文件练习建议用电脑编辑。官方 Action 的受保护策略支持 Linux／macOS runner；Windows runner 目前要求 unsafe，本篇维持 Linux，不把关闭保护当成跨平台安装步骤。"
+          "text": "在 GitHub 创建只放虚构教材的私人测试仓库，确认你可以修改默认分支并使用 Actions。Windows、macOS、Linux 都可以用同样的 GitHub 网页或编辑器创建文件；实际模型工作跑在 GitHub 的 ubuntu-latest，不是在你的电脑。手机可查看记录，但这份多文件练习建议用电脑编辑。官方 Action 的受保护策略支持 Linux／macOS runner；Windows runner 目前要求 unsafe，本篇维持 Linux，不把关闭保护当成跨平台安装步骤。"
         },
         {
           "type": "paragraph",
-          "text": "先在 OpenAI API 项目确认可用模型、计费方式与支出限制，再建立仅供这个练习使用的金钥。到储存库 Settings → Secrets and variables → Actions → New repository secret，名称填 OPENAI_API_KEY，值贴入金钥后保存。金钥只放在 Secret，不写入 YAML、tasks.md、截图或整个 job 的 env。组织若限制 Secrets 或第三方 Actions，先依管理政策启用所需项目；不要改成公开储存库来解决权限问题。"
+          "text": "先在 OpenAI API 项目确认可用模型、计费方式与支出限制，再创建仅供这个练习使用的密钥。到仓库 Settings → Secrets and variables → Actions → New repository secret，名称填 OPENAI_API_KEY，值贴入密钥后保存。密钥只放在 Secret，不写入 YAML、tasks.md、截图或整个 job 的 env。组织若限制 Secrets 或第三方 Actions，先依管理政策启用所需项目；不要改成公开仓库来解决权限问题。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤 2：建立三份文件"
+          "text": "步骤 2：创建三份文件"
         },
         {
           "type": "paragraph",
-          "text": "在储存库根目录建立 tasks.md 与 summary.schema.json，再建立 .github/workflows/practice-codex.yml。三份都提交到自己测试库的默认分支；文件名区分大小写，schema 路径是相对储存库根目录。表格列出每份的用途，后面提供完整可复制内容。这个流程不安装项目依赖、不执行来自外部 PR 的脚本，也不需要设置 production environment。"
+          "text": "在仓库根目录创建 tasks.md 与 summary.schema.json，再创建 .github/workflows/practice-codex.yml。三份都提交到自己测试库的默认分支；文件名区分大小写，schema 路径是相对仓库根目录。表格列出每份的用途，后面提供完整可复制内容。这个流程不安装项目依赖、不执行来自外部 PR 的脚本，也不需要设置 production environment。"
         },
         {
           "type": "table",
@@ -1096,24 +1096,24 @@
           "rows": [
             [
               "tasks.md",
-              "只供读取的虚构资料",
-              "版本及三笔待办"
+              "只供读取的虚构数据",
+              "版本及三条待办"
             ],
             [
               "summary.schema.json",
               "最后回答的格式",
-              "四个必要栏位，不允许额外栏位"
+              "四个必要字段，不允许额外字段"
             ],
             [
               "practice-codex.yml",
               "启动、验证、保存",
-              "手动触发、唯读、固定 Action commit"
+              "手动触发、只读、固定 Action commit"
             ]
           ]
         },
         {
           "type": "paragraph",
-          "text": "版本标签可能移动。本范例固定已核对的完整 commit SHA。查证当下的 Codex Action v1 是带注解标签；解析它指向的 commit 后，与范例 SHA 相同。标签对象的 SHA 不同，不代表程序提交较新。更新时先读目标 commit 的输入与权限规格，再改 SHA 并重做验证。固定 Action 不会固定所有 runner 软件或 CLI 版本，实际执行纪录仍要保存。"
+          "text": "版本标签可能移动。本示例固定已核对的完整 commit SHA。查证当下的 Codex Action v1 是带注释标签；解析它指向的 commit 后，与示例 SHA 相同。标签对象的 SHA 不同，不代表代码提交较新。更新时先读目标 commit 的输入与权限规格，再改 SHA 并重做验证。固定 Action 不会固定所有 runner 软件或 CLI 版本，实际执行记录仍要保存。"
         },
         {
           "type": "code",
@@ -1140,18 +1140,18 @@
         },
         {
           "type": "paragraph",
-          "text": "summarize 只读取指定 commit，checkout 不保留 Git 凭证；Codex 通过官方 Action 的 API 代理使用 Secret，drop-sudo 降低程序权限，:read-only 限制命令权限。这两项解决不同层次的问题，因此都保留。此固定版本支持 permission-profile；不要同时再加 sandbox。Codex 是第一个 job 的最后一步，答案以资料传到新的 save_report job，后者没有 API Secret，也没有写入储存库的权限。"
+          "text": "summarize 只读取指定 commit，checkout 不保留 Git 凭据；Codex 通过官方 Action 的 API 代理使用 Secret，drop-sudo 降低进程权限，:read-only 限制命令权限。这两项解决不同层次的问题，因此都保留。此固定版本支持 permission-profile；不要同时再加 sandbox。Codex 是第一个 job 的最后一步，答案以数据传到新的 save_report job，后者没有 API Secret，也没有写入仓库的权限。"
         },
         {
           "type": "paragraph",
-          "text": "save_report 使用环境变量接收答案，再以 json.loads 解析，没有把模型回答直接插入 run 脚本。它会对虚构资料的版本与 3／1／2 做精确检查，通过才产出 report.json 及 run-info.json。artifact 保存三天是本例设置，受账号保留政策限制；它不是正式发布页面。concurrency 减少同一分支同时执行，但待处理的工作仍受 GitHub 排队规则影响，不是保证每次按钮都执行一次的完整伫列。"
+          "text": "save_report 使用环境变量接收答案，再以 json.loads 解析，没有把模型回答直接插入 run 脚本。它会对虚构数据的版本与 3／1／2 做精确检查，通过才产出 report.json 及 run-info.json。artifact 保存三天是本例设置，受账号保留政策限制；它不是正式发布页面。concurrency 减少同一分支同时执行，但待处理的工作仍受 GitHub 排队规则影响，不是保证每次按钮都执行一次的完整队列。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "以本例默认的 concurrency 排队方式推演：A 正在执行、B 等待，此时 C 加入相同群组，B 可能被 C 取代；cancel-in-progress: false 保护的是 A，不保证 B 也保留。这是规则推演，没有要求为了测试连按三次付费工作。采用结果时逐笔核对 run 状态与 artifact；需要保留多笔等待工作时另查 "
+              "text": "以本例默认的 concurrency 排队方式推演：A 正在执行、B 等待，此时 C 加入相同群组，B 可能被 C 取代；cancel-in-progress: false 保护的是 A，不保证 B 也保留。这是规则推演，没有要求为了测试连按三次付费工作。采用结果时逐条核对 run 状态与 artifact；需要保留多个等待中的工作时另查 "
             },
             {
               "type": "link",
@@ -1160,7 +1160,7 @@
             },
             {
               "type": "text",
-              "text": "，不要把这个范例当成完整工作伫列。"
+              "text": "，不要把这个示例当成完整工作队列。"
             }
           ]
         },
@@ -1171,7 +1171,7 @@
         },
         {
           "type": "paragraph",
-          "text": "在 Actions 选 Codex practice summary → Run workflow，确认分支是刚提交教材的分支，再按一次执行。打开这次 run，记录网址、commit SHA、attempt、runner 与日志中的 CLI 版本。预期 summarize 与 save_report 都成功；下载 practice-report 开头的 artifact，打开两份 JSON，对照 commit 与执行编号，并确认 3／1／2。只看到 summarize 绿色还不够，因为后续资料验证可能失败。实际模型文字不是固定的，但栏位与虚构数值固定。"
+          "text": "在 Actions 选 Codex practice summary → Run workflow，确认分支是刚提交教材的分支，再按一次执行。打开这次 run，记录网址、commit SHA、attempt、runner 与日志中的 CLI 版本。预期 summarize 与 save_report 都成功；下载 practice-report 开头的 artifact，打开两份 JSON，对照 commit 与执行编号，并确认 3／1／2。只看到 summarize 绿色还不够，因为后续数据验证可能失败。实际模型文字不是固定的，但字段与虚构数值固定。"
         },
         {
           "type": "heading",
@@ -1180,14 +1180,14 @@
         },
         {
           "type": "paragraph",
-          "text": "成功后，在测试库把 tasks.md 的 Create a practice file 改成 [x]，但不改验证器，再提交一次并手动执行。模型若正确读到新版数值 3／2／1，save_report 应以 Incorrect fixture summary 失败且没有合格报告；这是在验证契约保护，不代表 Codex 读错。最后把那一列恢复 [ ]、提交并再跑，应恢复通过。每次都记录不同 SHA，不把旧 artifact 当成新结果。这两次追加执行也会使用 API 额度，可先检查用量再决定是否做。"
+          "text": "成功后，在测试库把 tasks.md 的 Create a practice file 改成 [x]，但不改验证器，再提交一次并手动执行。模型若正确读到新版数值 3／2／1，save_report 应以 Incorrect fixture summary 失败且没有合格报告；这是在验证契约保护，不代表 Codex 读错。最后把那一行恢复 [ ]、提交并再跑，应恢复通过。每次都记录不同 SHA，不把旧 artifact 当成新结果。这两次追加执行也会使用 API 额度，可先检查用量再决定是否做。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "没有 Run workflow 按钮时，确认 YAML 已在默认分支、Actions 未停用及你有权限。缺 Secret／代理启动失败，回头核对名称与 API 项目权限，不将金钥印入日志。已取消或逾时就保留失败纪录，再依"
+              "text": "没有 Run workflow 按钮时，确认 YAML 已在默认分支、Actions 未停用及你有权限。缺 Secret／代理启动失败，回头核对名称与 API 项目权限，不将密钥打印到日志。已取消或超时就保留失败记录，再依"
             },
             {
               "type": "article",
@@ -1197,7 +1197,7 @@
             },
             {
               "type": "text",
-              "text": "确认没有重复工作。结束练习后在 Actions 停用这个 workflow，另取消仍在执行的 run；不再需要时撤销专用 API 金钥并移除对应 Secret。YAML 提交、CI 成功、PR 合并及网站部署是不同动作，这份教材只完成报告工作。本文 Action 设置依官方原始码查证；没有你的实际 run URL 就不标示你的 CI 已通过。"
+              "text": "确认没有重复工作。结束练习后在 Actions 停用这个 workflow，另取消仍在执行的 run；不再需要时撤销专用 API 密钥并移除对应 Secret。YAML 提交、CI 成功、PR 合并及网站部署是不同动作，这份教材只完成报告工作。本文 Action 设置依官方源代码查证；没有你的实际 run URL 就不标示你的 CI 已通过。"
             }
           ]
         },
