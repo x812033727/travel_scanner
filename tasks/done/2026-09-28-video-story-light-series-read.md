@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-story-light-series-read
 title: 故事作品的輕量讀法：清單不帶每個故事的企劃全文
-status: in-progress
+status: done
 priority: P3
 area: api
 owner: claude-fable-5-1-story-read
 claimed_at: 2026-09-30T04:08:11Z
 created_at: 2026-09-28T15:24:24Z
-completed_at:
+completed_at: 2026-09-30T04:23:25Z
 branch: claude/story-series-light-read
 depends_on:
   - 2026-09-28-video-story-admin
