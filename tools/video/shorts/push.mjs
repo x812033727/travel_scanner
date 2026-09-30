@@ -8,12 +8,13 @@
 // safe: the site answers with the review it has.
 import { closeSync, existsSync, openSync, readFileSync, readSync, statSync } from 'node:fs';
 import path from 'node:path';
+import { isDeepStrictEqual } from 'node:util';
 
 import { readJson } from '../core/paths.mjs';
 import { CHECK_FILE } from './check.mjs';
 import { SCRIPT_FILE, USAGE_FILE, lineOf, sha256 } from './core.mjs';
 import { DESCRIPTION_FILE, METADATA_FILE, PACKAGE_FILE, captionLocales } from './package.mjs';
-import { QA_FILE, VERIFY_FILE, scriptShape } from './qa.mjs';
+import { QA_FILE, VERIFY_FILE, qaInputBindings, sameQaInputs, scriptShape } from './qa.mjs';
 
 // Mirrors PART_BYTES in apps/api/app/video_reviews/storage.py: under nginx's 6 MB request cap.
 export const PART_BYTES = 4 * 1024 * 1024;
@@ -147,6 +148,11 @@ export async function push({ directory, client, log = () => {} }) {
       }
     }
   }
+  const staleQa = () => {
+    const current = qaInputBindings(directory);
+    return !qa || qa.final_sha256 !== current.files['upload/final.mp4'] || !sameQaInputs(qa.inputs, current);
+  };
+  if (staleQa()) return { slug, final: null, publish: null, waits: 'the QA inputs changed or have no binding: run check-audio if narration changed, then qa and package again' };
   await client.report(slug, projectBody({ doc, qa, check: readJson(path.join(directory, CHECK_FILE), null), report }));
 
   const files = [await upload(client, slug, final, 'preview'), await upload(client, slug, path.join(directory, 'upload', 'cover.png'), 'thumbnail')];
@@ -164,7 +170,14 @@ export async function push({ directory, client, log = () => {} }) {
   const verify = path.join(directory, VERIFY_FILE);
   if (existsSync(verify)) files.push(await upload(client, slug, verify, 'evidence_verify'));
   const finalSha256 = files[0].sha256;
-  const sent = await client.submit(slug, { ...finalReview({ doc, qa, usage: readJson(path.join(directory, USAGE_FILE), null), timeline, finalSha256 }), files });
+  if (staleQa() || finalSha256 !== qa.final_sha256) return { slug, final: null, publish: null, waits: 'the QA inputs changed during push: run qa and package again' };
+  const review = { ...finalReview({ doc, qa, usage: readJson(path.join(directory, USAGE_FILE), null), timeline, finalSha256 }), files };
+  const sent = await client.submit(slug, review);
+  // The site may reuse a decided review for this MP4. Its approval only covers the QA
+  // it actually stores, not a newer verdict with different inputs or failed items.
+  if (sent.status === 'approved' && !isDeepStrictEqual(sent.payload?.qa, review.payload.qa)) {
+    return { slug, final: sent, publish: null, waits: 'the site returned an approval for different QA evidence: renew the final review before publishing' };
+  }
   log(`${slug}: final review ${sent.status}${sent.note ? ` (${sent.note})` : ''}`);
   if (sent.status !== 'approved') {
     return { slug, final: sent, publish: null, waits: sent.status === 'rejected' ? `the owner sent the cut back: ${sent.note ?? ''}`.trim() : 'the final cut waits for the owner on /admin/videos' };
@@ -185,7 +198,9 @@ export async function push({ directory, client, log = () => {} }) {
     packaged.push(caption);
   }
   packaged.push(await upload(client, slug, path.join(directory, 'upload', DESCRIPTION_FILE), 'description_zh-TW'));
+  if (staleQa()) return { slug, final: sent, publish: null, waits: 'the QA inputs changed during push: run qa and package again' };
   await client.report(slug, projectBody({ doc, qa, check: readJson(path.join(directory, CHECK_FILE), null), report, stage: 'publish' }));
+  if (staleQa()) return { slug, final: sent, publish: null, waits: 'the QA inputs changed during push: run qa and package again' };
   const confirmed = await client.submit(slug, { ...publishReview({ metadata, report, metadataSha256: packaged[0].sha256 }), files: packaged });
   log(`${slug}: publish review ${confirmed.status}${confirmed.note ? ` (${confirmed.note})` : ''}`);
   return { slug, final: sent, publish: confirmed, waits: confirmed.status === 'approved' ? null : 'the upload package waits for the owner on /admin/videos' };
