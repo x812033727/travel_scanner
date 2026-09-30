@@ -492,23 +492,29 @@ describe("AdminVideoReviews", () => {
     expect(row).toContain("製作中");
   });
 
-  it("keeps dramas off the tutorial list and shows a one-off drama as a one-episode series on the drama tab", async () => {
+  it("keeps dramas out of the needs-you group but lists them in the catalog, and shows a one-off drama as a one-episode series on the drama tab", async () => {
     const oneOff = {
       id: "7c2e3d4f-5a6b-4c7d-8e9f-0a1b2c3d4e5f", slug: "one-off-1a2b3c4d", kind: "one-off", title: "精衛填海", premise: "炎帝最小的女兒在東海溺水。", aspects: [], tone: "no-romance", style_preset: "ink-wash",
       target_minutes: 2, planned_episodes: 1, episodes_per_chapter: 1, chapters: 1, open_ended: false, status: "setting", note: null, requested_chapter: null, force_next: false,
       episodes_done: 0, episodes_started: 0, episodes_ready: 0, docs_pending: 1, messages_pending: 0, media_usd: 12.5, clip_seconds: 96, created_at: "2026-09-27T00:00:00Z", updated_at: "2026-09-27T01:00:00Z",
     };
     const tutorial = { ...summary, slug: "a-tutorial", title: "教學片", pending: 0 };
+    const episode = { ...summary, pending: 0, format: "drama", category: "drama", series_slug: "one-off-1a2b3c4d", episode_number: 1, media_usd: 12.5, clip_seconds: 96 };
     vi.stubGlobal("fetch", withBrowse((input: RequestInfo | URL) => {
       const url = String(input);
       if (url.endsWith("/admin/video-automation/series?kind=one-off")) return Promise.resolve(Response.json({ series: [oneOff] }));
       if (url.includes("/admin/video-automation/series")) return Promise.resolve(Response.json({ series: [] }));
       if (url.endsWith("/drama-requests")) return Promise.resolve(Response.json({ requests: [] }));
-      return Promise.resolve(Response.json([{ ...summary, pending: 0, format: "drama", series_slug: "one-off-1a2b3c4d", episode_number: 1, media_usd: 12.5, clip_seconds: 96 }, tutorial]));
-    }, [tutorial]));
+      return Promise.resolve(Response.json([{ ...episode, pending: 2 }, tutorial]));
+    }, [episode, tutorial]));
     const { unmount } = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
     await screen.findByRole("button", { name: /教學片/ });
-    expect(screen.queryByRole("button", { name: /AI 模型怎麼挑/ })).toBeNull();
+    // The drama waits for the owner on the drama tab, not in the tutorials' needs-you group; the catalog records it.
+    expect(screen.queryByRole("region", { name: "需要你" })).toBeNull();
+    const rows = tableRows(screen.getByRole("table", { name: "全部影片" }));
+    expect(rows).toHaveLength(2);
+    expect(rows.find((row) => row.includes("AI 模型怎麼挑"))).toContain("漫劇");
+    expect(rows.find((row) => row.includes("AI 模型怎麼挑"))).toContain("作品 one-off-1a2b3c4d 第 1 集");
     unmount();
     window.history.replaceState(null, "", "/?tab=drama");
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
@@ -995,7 +1001,7 @@ describe("AdminVideoReviews", () => {
     const form = await screen.findByRole("form", { name: "分類" });
     const select = within(form).getByRole("combobox") as HTMLSelectElement;
     expect(select.value).toBe("");
-    expect([...select.options].map((option) => option.textContent)).toEqual(["未分類", "AI 名詞解釋", "AI／科技時事", "教學實作", "比較評測", "觀念解說", "品牌故事", "旅遊", "其他"]);
+    expect([...select.options].map((option) => option.textContent)).toEqual(["未分類", "AI 名詞解釋", "AI／科技時事", "教學實作", "比較評測", "觀念解說", "品牌故事", "漫劇", "長篇劇", "旅遊", "其他"]);
     const save = within(form).getByRole("button", { name: "儲存" });
     expect(save).toHaveProperty("disabled", true);
     fireEvent.change(select, { target: { value: "tutorial" } });

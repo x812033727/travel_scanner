@@ -58,3 +58,5 @@ On the host after a worker round: `SELECT slug, category FROM video_projects WHE
 - The server never overwrites a category with a report (`admin_service.upsert_project`): sending it
   at every stage is safe. Do not change that rule.
 - `VIDEO_CATEGORIES` lives in `tools/video/core/schema.mjs`; `validateVideo` already accepts the key.
+- Drama drafts and series episodes (`format: "drama"`, not stories) should report `category: "drama"`;
+  the long-form drama pipeline, once it exists, reports `long-drama`.

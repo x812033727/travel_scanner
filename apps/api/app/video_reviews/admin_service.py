@@ -659,8 +659,9 @@ async def _summaries(
 
 
 def _browse_scope() -> Any:
-    """The review tab's population: the tutorials. Dramas and Shorts have their own tabs."""
-    return and_(VideoProject.shorts_line.is_(None), VideoProject.format == "slides")
+    """The review tab's population: every video that is not a Short, tutorials and dramas
+    alike. The Shorts tab groups the Shorts by state and is the only place that lists them."""
+    return VideoProject.shorts_line.is_(None)
 
 
 def _category_filter(category: str) -> Any:
@@ -698,8 +699,8 @@ async def browse_projects(
     work_dir: str | None = None,
 ) -> ProjectPage:
     """One page of the review tab's catalog, newest report first (docs/videos/HANDS-OFF.md
-    §影片分類): the tutorials, narrowed by a category (``none`` for the unfiled ones), a state
-    and a search, with how many each other value of the two filters would list."""
+    §影片分類): the tutorials and the dramas, narrowed by a category (``none`` for the unfiled
+    ones), a state and a search, with how many each other value of the two filters would list."""
     query = q.strip() if q else ""
     filters: dict[str, Any] = {"scope": _browse_scope()}
     if category is not None:

@@ -7,11 +7,13 @@ Revises: 0115_video_review_revision
 a video nobody has filed yet. The pipeline reports it from video.json and only fills an empty
 one; the owner changes it on /admin/videos (docs/videos/HANDS-OFF.md §影片分類).
 
-Two rules file the rows that exist: a video that retells a news-automation article (its
-``source_guide`` starts with ``ai-news-``) is news, and a video whose slug starts with
-``ai-term-`` (the AI terms series) explains a term. Only a NULL category is filled, and
-everything else stays NULL for the owner: an article's kind is the site's section, not the
-video's type, so nothing else is guessed.
+Four rules file the rows that exist, in this order and only where the category is NULL: a
+drama episode (format ``drama``, not a Short) of a brand-story series (``video_drama_series``
+of kind ``story``) is a story, any other drama episode is a drama, a video that retells a
+news-automation article (its ``source_guide`` starts with ``ai-news-``) is news, and a video
+whose slug starts with ``ai-term-`` (the AI terms series) explains a term. Everything else
+stays NULL for the owner: an article's kind is the site's section, not the video's type, so
+nothing else is guessed.
 0001 creates the table from the current models, so the column and the constraint are
 inspected before they are added, and the backfill runs only when the column was just added.
 
@@ -39,6 +41,8 @@ CATEGORIES = (
     "comparison",
     "explainer",
     "story",
+    "drama",
+    "long-drama",
     "travel",
     "other",
 )
@@ -46,11 +50,13 @@ CHECK_TEXT = "category IS NULL OR category IN ({})".format(
     ", ".join(f"'{code}'" for code in CATEGORIES)
 )
 # (a category, the column whose value starting with the prefix files a video under it), in the
-# order applied. Compared with substr() rather than LIKE: no wildcard to escape in offline SQL.
+# order applied after the drama rules. Compared with substr() rather than LIKE: no wildcard to
+# escape in offline SQL.
 BACKFILL: tuple[tuple[str, str, str], ...] = (
     ("ai-news", "source_guide", "ai-news-"),
     ("ai-terms", "slug", "ai-term-"),
 )
+SERIES = "video_drama_series"
 
 
 def _offline() -> bool:
@@ -70,29 +76,48 @@ def _checks() -> set[str]:
     return {str(check.get("name")) for check in inspector.get_check_constraints(PROJECTS)}
 
 
+def _run(statement: sa.sql.Update) -> None:
+    # Rendered with its constants inline, so the offline SQL is runnable as written.
+    op.execute(
+        str(
+            statement.compile(
+                dialect=op.get_context().dialect, compile_kwargs={"literal_binds": True}
+            )
+        )
+    )
+
+
 def _backfill() -> None:
     projects = sa.table(
         PROJECTS,
         sa.column("slug", sa.String),
+        sa.column("format", sa.String),
+        sa.column("shorts_line", sa.String),
+        sa.column("series_slug", sa.String),
         sa.column("source_guide", sa.String),
         sa.column("category", sa.String),
     )
+    series = sa.table(SERIES, sa.column("slug", sa.String), sa.column("kind", sa.String))
+    unfiled_drama = (
+        projects.c.category.is_(None),
+        projects.c.format == "drama",
+        projects.c.shorts_line.is_(None),
+    )
+    stories = sa.select(series.c.slug).where(series.c.kind == "story")
+    _run(
+        projects.update()
+        .where(*unfiled_drama, projects.c.series_slug.in_(stories))
+        .values(category="story")
+    )
+    _run(projects.update().where(*unfiled_drama).values(category="drama"))
     for category, column, prefix in BACKFILL:
-        statement = (
+        _run(
             projects.update()
             .where(
                 projects.c.category.is_(None),
                 sa.func.substr(projects.c[column], 1, len(prefix)) == prefix,
             )
             .values(category=category)
-        )
-        # Rendered with its constants inline, so the offline SQL is runnable as written.
-        op.execute(
-            str(
-                statement.compile(
-                    dialect=op.get_context().dialect, compile_kwargs={"literal_binds": True}
-                )
-            )
         )
 
 

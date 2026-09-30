@@ -104,10 +104,14 @@ def test_offline_sql_does_not_inspect_a_database(
     if direction == "upgrade":
         assert f"ALTER TABLE {PROJECTS} ADD COLUMN category VARCHAR(16)" in sql
         assert f"ADD CONSTRAINT {CATEGORY_CHECK} CHECK ({migration.CHECK_TEXT})" in sql
-        assert sql.count(f"UPDATE {PROJECTS} SET category=") == 2
+        assert sql.count(f"UPDATE {PROJECTS} SET category=") == 4
+        assert f"SET category='story' WHERE {PROJECTS}.category IS NULL" in sql
+        assert "IN (SELECT video_drama_series.slug" in sql and "kind = 'story'" in sql
+        assert f"SET category='drama' WHERE {PROJECTS}.category IS NULL" in sql
         assert f"SET category='ai-news' WHERE {PROJECTS}.category IS NULL" in sql
         assert f"substr({PROJECTS}.source_guide, 1, 8) = 'ai-news-'" in sql
         assert f"substr({PROJECTS}.slug, 1, 8) = 'ai-term-'" in sql
+        assert sql.index("category='story'") < sql.index("category='drama'"), "stories first"
         assert "%(" not in sql, "the constants are rendered inline, not as bind parameters"
         assert sql.index("ADD CONSTRAINT") < sql.index("UPDATE"), "the rows are filed under it"
     else:
@@ -140,23 +144,46 @@ def _exercise(connection: Connection) -> None:
                 sa.text(
                     f"CREATE TEMPORARY TABLE {PROJECTS} ("
                     "id uuid PRIMARY KEY, slug varchar(80) NOT NULL UNIQUE, "
-                    "title varchar(200) NOT NULL, source_guide varchar(120)) ON COMMIT DROP"
+                    "title varchar(200) NOT NULL, format varchar(8) NOT NULL DEFAULT 'slides', "
+                    "shorts_line varchar(8), series_slug varchar(40), source_guide varchar(120)) "
+                    "ON COMMIT DROP"
+                )
+            )
+            # Shadows the shared series table too: one brand-story series the story rule reads.
+            connection.execute(
+                sa.text(
+                    "CREATE TEMPORARY TABLE video_drama_series (slug varchar(40) PRIMARY KEY, "
+                    "kind varchar(12) NOT NULL) ON COMMIT DROP"
+                )
+            )
+            connection.execute(
+                sa.text(
+                    "INSERT INTO video_drama_series (slug, kind) VALUES "
+                    "('brand-stories', 'story'), ('wenjian', 'series')"
                 )
             )
             rows = {
                 "ai-term-token": "ai-terms",
                 "gemini-student-offer": "ai-news",
                 "ai-model-choice": None,
+                "brellco-umbrellas": "story",
+                "wenjian-ep-01": "drama",
+                "wenjian-ep-01-short-1": None,
             }
             connection.execute(
                 sa.text(
-                    f"INSERT INTO {PROJECTS} (id, slug, title, source_guide) VALUES "
-                    "(:a, 'ai-term-token', 'Token', NULL), "
-                    "(:b, 'gemini-student-offer', '學生方案', "
+                    f"INSERT INTO {PROJECTS} "
+                    "(id, slug, title, format, shorts_line, series_slug, source_guide) VALUES "
+                    "(:a, 'ai-term-token', 'Token', 'slides', NULL, NULL, NULL), "
+                    "(:b, 'gemini-student-offer', '學生方案', 'slides', NULL, NULL, "
                     "'ai-news-gemini-student-offer-20260820'), "
-                    "(:c, 'ai-model-choice', 'AI 模型怎麼挑', 'ai-model-choice-guide')"
+                    "(:c, 'ai-model-choice', 'AI 模型怎麼挑', 'slides', NULL, NULL, "
+                    "'ai-model-choice-guide'), "
+                    "(:d, 'brellco-umbrellas', '折疊傘', 'drama', NULL, 'brand-stories', NULL), "
+                    "(:e, 'wenjian-ep-01', '問劍 第一集', 'drama', NULL, 'wenjian', NULL), "
+                    "(:f, 'wenjian-ep-01-short-1', '問劍 短片', 'drama', 'drama', 'wenjian', NULL)"
                 ),
-                {"a": uuid4(), "b": uuid4(), "c": uuid4()},
+                {key: uuid4() for key in "abcdef"},
             )
             run(connection, "upgrade")
             run(connection, "upgrade")
@@ -166,7 +193,7 @@ def _exercise(connection: Connection) -> None:
                     sa.text(f"SELECT slug, category FROM {PROJECTS}")
                 ).all()
             }
-            assert filed == rows, "the two rules file two rows and leave the third to the owner"
+            assert filed == rows, "the four rules file four rows; a Short and a plain tutorial wait"
             assert CATEGORY_CHECK in _checks(connection)
             with pytest.raises(IntegrityError):
                 with connection.begin_nested():

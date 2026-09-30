@@ -72,7 +72,16 @@ VideoFormat = Literal["slides", "drama", "shorts"]
 # What kind of video a tutorial is (app.models.VIDEO_CATEGORIES; migration 0116), the review
 # page's first filter. ``none`` in a filter means the videos nobody filed yet.
 VideoCategory = Literal[
-    "ai-terms", "ai-news", "tutorial", "comparison", "explainer", "story", "travel", "other"
+    "ai-terms",
+    "ai-news",
+    "tutorial",
+    "comparison",
+    "explainer",
+    "story",
+    "drama",
+    "long-drama",
+    "travel",
+    "other",
 ]
 VIDEO_CATEGORY_CODES: tuple[VideoCategory, ...] = get_args(VideoCategory)
 CategoryFilter = VideoCategory | Literal["none"]

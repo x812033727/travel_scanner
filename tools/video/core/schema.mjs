@@ -47,7 +47,7 @@ export const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 // What kind of video this is, for /admin/videos' filters: the same list as
 // apps/api/app/models.py VIDEO_CATEGORIES. The site takes it from the first report that
 // carries it and leaves a category the owner set on the page alone.
-export const VIDEO_CATEGORIES = ["ai-terms", "ai-news", "tutorial", "comparison", "explainer", "story", "travel", "other"];
+export const VIDEO_CATEGORIES = ["ai-terms", "ai-news", "tutorial", "comparison", "explainer", "story", "drama", "long-drama", "travel", "other"];
 // Short and random, never positional: inserting a line must not renumber the ones after it,
 // because translations, the audio cache and the owner's audio flags all key on these ids.
 export const LINE_ID = /^[a-z0-9]{4,8}$/;

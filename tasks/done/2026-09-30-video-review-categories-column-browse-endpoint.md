@@ -41,11 +41,12 @@ a category (schema, story, import).
 
 ## Definition of done
 
-- [x] `video_projects.category` exists (migration 0116), one of eight codes or NULL, guarded by
-      `ck_video_project_category`; the migration files `ai-news-*` sources and `ai-term-*` slugs.
+- [x] `video_projects.category` exists (migration 0116), one of ten codes or NULL, guarded by
+      `ck_video_project_category`; the migration files story episodes, drama episodes,
+      `ai-news-*` sources and `ai-term-*` slugs.
 - [x] A report (`ProjectIn.category`) fills only an unfiled video; the owner's choice
       (`PUT /admin/videos/{slug}/category`, `video_category_set` audit) sticks and can go back to null.
-- [x] `GET /admin/videos/browse` pages the tutorials with `category` (incl. `none`), `state`
+- [x] `GET /admin/videos/browse` pages the tutorials and dramas (not Shorts) with `category` (incl. `none`), `state`
       (working/published/dropped), `q` and returns the counts behind every filter value.
 - [x] `GET /admin/videos` keeps its shape; the worker and the other tabs are untouched.
 - [x] `video.json` accepts `category`; brand stories carry `story`; `import` takes `meta.category`.
@@ -75,6 +76,8 @@ shows the `ai-news` / `ai-terms` rows filed and the rest NULL.
   `tools/video/review/sync.mjs` do not send `category` yet: both files were held by other active
   tickets when this one was claimed, so that part is `2026-09-30-video-worker-and-review-push-report`.
   Until it lands, a worker-made tutorial is filed by the owner on the page (or by the migration's rules).
+- `drama` and `long-drama` were added the same day: the owner plans long-form dramas (40–60
+  minute episodes, 40–50 of them) next and wanted the three-minute dramas filed apart from them.
 - The backfill deliberately does not read the guide's `kind`: `intel`/`howto` are the travel
   section and `life` mixes AI news with everyday pieces, so it would mislabel most rows.
 - The backfill compares with `substr()` rather than `LIKE`, so the offline SQL has no `%` to escape,

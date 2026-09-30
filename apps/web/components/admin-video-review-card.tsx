@@ -42,7 +42,7 @@ export type LanguagePart = { state: "working" | "ready" | "skipped" | "uploaded"
 // What kind of video a tutorial is (apps/api/app/models.py VIDEO_CATEGORIES; migration 0116), the
 // list's first filter; a video nobody filed yet has null. The pipeline reports it from video.json
 // once, the owner changes it on the video's page.
-export const VIDEO_CATEGORIES = ["ai-terms", "ai-news", "tutorial", "comparison", "explainer", "story", "travel", "other"] as const;
+export const VIDEO_CATEGORIES = ["ai-terms", "ai-news", "tutorial", "comparison", "explainer", "story", "drama", "long-drama", "travel", "other"] as const;
 export type VideoCategory = (typeof VIDEO_CATEGORIES)[number];
 export type FacetCount = { code: string; count: number };
 // One page of the list's catalog (GET /admin/videos/browse): the tutorials that match, how many

@@ -691,7 +691,7 @@ async def test_the_catalog_files_tutorials_by_category_state_and_search(tmp_path
                 session, store, f"{tag}-{slug}", ProjectIn(stage="outline", **fields)
             )
 
-        await report("news", title="Gemini 學生方案", category="ai-news")
+        await report("news", title=f"Gemini 學生方案 {tag}", category="ai-news")
         await report("terms", title="什麼是 token", category="ai-terms")
         await report("unfiled", title="AI 模型怎麼挑")
         await report("done", title="Siri 怎麼開", category="tutorial", youtube_video_id="a" * 11)
@@ -703,7 +703,7 @@ async def test_the_catalog_files_tutorials_by_category_state_and_search(tmp_path
         await report("short", title="精華", format="shorts", shorts_line="cut", category="other")
 
         # A later report does not overwrite a category; the owner's choice does, and sticks.
-        await report("news", title="Gemini 學生方案", category="other")
+        await report("news", title=f"Gemini 學生方案 {tag}", category="other")
         assert (await service.project_view(session, f"{tag}-news")).category == "ai-news"
         await service.set_category(
             session, f"{tag}-unfiled", owner, CategoryIn(category="comparison")
@@ -713,17 +713,17 @@ async def test_the_catalog_files_tutorials_by_category_state_and_search(tmp_path
 
         mine = lambda page: [item.slug.removeprefix(f"{tag}-") for item in page.items]  # noqa: E731
         everything = await service.browse_projects(session, q=tag, limit=100)
-        assert set(mine(everything)) == {"news", "terms", "unfiled", "done", "gone"}, (
-            "the drama and the Short have their own tabs"
+        assert set(mine(everything)) == {"news", "terms", "unfiled", "done", "gone", "drama"}, (
+            "the Short has its own tab; a drama is in the catalog like a tutorial"
         )
-        assert everything.total == 5 and everything.pages == 1
+        assert everything.total == 6 and everything.pages == 1
         counts = {facet.code: facet.count for facet in everything.facets.category}
         assert counts == {
             "ai-terms": 1, "ai-news": 1, "tutorial": 2, "comparison": 1, "explainer": 0,
-            "story": 0, "travel": 0, "other": 0, "none": 0,
+            "story": 1, "drama": 0, "long-drama": 0, "travel": 0, "other": 0, "none": 0,
         }
         assert {f.code: f.count for f in everything.facets.state} == {
-            "working": 3, "published": 1, "dropped": 1
+            "working": 4, "published": 1, "dropped": 1
         }
 
         tutorials = await service.browse_projects(session, q=tag, category="tutorial")
@@ -737,21 +737,21 @@ async def test_the_catalog_files_tutorials_by_category_state_and_search(tmp_path
         assert mine(await service.browse_projects(session, q=tag, state="published")) == ["done"]
         assert mine(await service.browse_projects(session, q=tag, state="dropped")) == ["gone"]
         working = await service.browse_projects(session, q=tag, state="working")
-        assert set(mine(working)) == {"news", "terms", "unfiled"}
+        assert set(mine(working)) == {"news", "terms", "unfiled", "drama"}
 
         await service.set_category(session, f"{tag}-terms", owner, CategoryIn(category=None))
         assert mine(await service.browse_projects(session, q=tag, category="none")) == ["terms"]
 
-        assert mine(await service.browse_projects(session, q="gEMINI 學生")) == ["news"], (
-            "the search reads the title, whatever the case"
-        )
-        assert mine(await service.browse_projects(session, q="100%")) == []
-        assert mine(await service.browse_projects(session, q="_")) == [], (
+        # Other runs' rows share the titles, so the search carries this run's tag too.
+        found = await service.browse_projects(session, q=f"gEMINI 學生方案 {tag}")
+        assert mine(found) == ["news"], "the search reads the title, whatever the case"
+        assert mine(await service.browse_projects(session, q=f"{tag}%")) == []
+        assert mine(await service.browse_projects(session, q=f"{tag}_")) == [], (
             "SQL wildcards are letters"
         )
 
-        paged = await service.browse_projects(session, q=tag, limit=2, page=3)
-        assert (paged.total, paged.pages, paged.page, len(paged.items)) == (5, 3, 3, 1)
+        paged = await service.browse_projects(session, q=tag, limit=4, page=2)
+        assert (paged.total, paged.pages, paged.page, len(paged.items)) == (6, 2, 2, 2)
         first = await service.browse_projects(session, q=tag, limit=2, page=1)
         assert first.items[0].last_synced_at >= first.items[1].last_synced_at, "newest first"
 

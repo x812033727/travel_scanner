@@ -2184,6 +2184,10 @@ VIDEO_CATEGORIES: tuple[str, ...] = (
     "comparison",
     "explainer",
     "story",
+    # The AI dramas (docs/videos/DRAMA.md, SERIES.md: three-minute episodes) and the long-form
+    # dramas planned next (episodes of forty to sixty minutes, forty to fifty of them).
+    "drama",
+    "long-drama",
     "travel",
     "other",
 )

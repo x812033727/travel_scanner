@@ -68,7 +68,8 @@ URL follows the filters; on a video's page change 分類 and save, the row's pil
 
 - The catalog reads again every 60 s like the groups, for the same query, and once more when a
   video is sent or linked from its card (`revision`); the search box keeps what is typed until Enter.
-- The browser only lists `format = slides` without a Shorts line: dramas and Shorts have their tabs.
+- The browser lists every video without a Shorts line, tutorials and dramas alike (a drama
+  episode shows its series and number under the title); Shorts stay on their tab.
 - The two top groups still come from `GET /admin/videos?shorts=exclude` (cap 200): a video that
   needs the owner is by construction recently reported, so the cap is not a problem today; revisit
   past ~150 tutorials.

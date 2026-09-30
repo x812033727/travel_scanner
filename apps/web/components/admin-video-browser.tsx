@@ -32,7 +32,7 @@ export function CategoryPill({ category }: { category: VideoCategory | null | un
   return <AdminStatusPill status={category ? "queued" : "inactive"}>{category ? t(`categories.${category}`) : t("uncategorized")}</AdminStatusPill>;
 }
 
-/** One line of the catalog: the title, its category, where it stands, and the numbers the cards showed. */
+/** One line of the catalog: the title (and the series a drama episode belongs to), its category, where it stands, and the numbers the cards showed. */
 function VideoRow({ project, onOpen }: { project: ProjectSummary; onOpen: (slug: string) => void }) {
   const t = useTranslations("admin.videoReviews");
   const ty = useTranslations("admin.videoYoutube");
@@ -44,6 +44,7 @@ function VideoRow({ project, onOpen }: { project: ProjectSummary; onOpen: (slug:
     <td data-label={t("table.title")} className="px-4 py-3">
       <button type="button" className="text-left font-semibold underline-offset-2 hover:underline" onClick={() => onOpen(project.slug)}>{project.title}</button>
       <span className="block text-xs text-[var(--muted)]">{project.slug}</span>
+      {project.series_slug && <span className="block text-xs text-[var(--muted)]">{project.compilation ? t("compilationOf", { series: project.series_slug }) : t("episodeOf", { series: project.series_slug, number: project.episode_number ?? 0 })}</span>}
     </td>
     <td data-label={t("table.category")} className="px-4 py-3"><CategoryPill category={project.category} /></td>
     <td data-label={t("table.state")} className="px-4 py-3">

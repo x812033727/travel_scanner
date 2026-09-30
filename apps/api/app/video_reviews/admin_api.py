@@ -145,9 +145,9 @@ async def browse_videos(
     page: Annotated[int, Query(ge=1)] = 1,
     limit: Annotated[int, Query(ge=1, le=service.BROWSE_PAGE_LIMIT)] = service.BROWSE_PAGE_SIZE,
 ) -> ProjectPage:
-    """One page of the review tab's catalog of tutorials, with the counts behind its
-    category and state filters (docs/videos/HANDS-OFF.md §影片分類). ``category=none`` is
-    the videos nobody filed yet; ``state`` here is a tutorial's, not a Short's."""
+    """One page of the review tab's catalog (tutorials and dramas, not Shorts), with the
+    counts behind its category and state filters (docs/videos/HANDS-OFF.md §影片分類).
+    ``category=none`` is the videos nobody filed yet; ``state`` here is not a Short's."""
     _ = user
     runtime = await load_runtime_settings(session)
     return await service.browse_projects(
