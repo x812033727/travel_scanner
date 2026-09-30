@@ -403,7 +403,7 @@
       "lines": [
         {
           "id": "frv7",
-          "text": "整段貼進三個工具，括號裡換成你自己的內容。"
+          "text": "把整份範本貼進三個工具，括號裡換成你自己的內容。"
         },
         {
           "id": "ctf9",
@@ -977,7 +977,7 @@
       "data": {
         "kicker": "GitHub Pages 建置次數",
         "text": "每小時軟限 10 次",
-        "sub": "自訂 GitHub Actions 流程例外"
+        "sub": "軟性上限，不是硬性"
       },
       "claims": [
         "c5"
@@ -986,7 +986,21 @@
         {
           "id": "4raw",
           "text": "GitHub Pages 每小時的建置，有十次的軟性上限。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "actions-exception-custom",
+      "template": "big",
+      "data": {
+        "kicker": "例外",
+        "text": "自訂 GitHub Actions 流程",
+        "sub": "不受每小時 10 次的軟性上限"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
         {
           "id": "svsx",
           "text": "用自訂的 GitHub Actions 流程建置和發布，就不受這個限制。",
@@ -1116,7 +1130,7 @@
         },
         {
           "id": "2gnu",
-          "text": "再搜尋身分證字號。",
+          "text": "接著，搜尋身分證字號。",
           "reveal": 1
         },
         {
