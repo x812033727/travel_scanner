@@ -576,13 +576,20 @@ def check_svg(text: str, *, body: bool = False) -> list[Problem]:
     return problems
 
 
+_STEP_BADGE = re.compile(r"0[1-9]")
+
+
 def diagram_numbers(text: str) -> set[str]:
-    """Every number drawn as a label. ``<title>``/``<desc>`` are not labels."""
+    """Every number drawn as a label. ``<title>``/``<desc>`` are not labels, and neither is a
+    step badge: a node holding nothing but ``01``-``09`` numbers the boxes of a flow, it is not
+    a fare or a time the article has to carry. ``01`` inside other text is still a number."""
     root = _parse_svg(text)
     found: set[str] = set()
     for tag in ("text", "tspan"):
         for node in root.iter(f"{SVG_NS}{tag}"):
             for piece in (node.text or "", node.tail or ""):
+                if _STEP_BADGE.fullmatch(piece.strip()):
+                    continue
                 found.update(_NUMBER.findall(piece))
     return found
 
@@ -590,8 +597,10 @@ def diagram_numbers(text: str) -> set[str]:
 def missing_diagram_numbers(text: str, document: GuideDocument) -> list[str]:
     """Numbers on the diagram the article's own text does not carry -- the rule that a fare or
     a time the article never verified is not drawn. Both sides are compared with thousands
-    separators and leading zeros dropped, so 1,000 and 1000 agree and so do 06:30 and 6:30."""
-    body = _normalise_numbers(_document_text(document))
+    separators and leading zeros dropped, so 1,000 and 1000 agree and so do 06:30 and 6:30.
+    Japanese, Korean and Chinese text counts in ten-thousands, so 100万 and 1,000,000 agree too."""
+    article = _document_text(document)
+    body = _normalise_numbers(article) + " " + " ".join(_myriad_numbers(article))
     return sorted(
         number for number in diagram_numbers(text) if _normalise_number(number) not in body
     )
@@ -606,6 +615,20 @@ def _normalise_number(token: str) -> str:
 
 def _normalise_numbers(text: str) -> str:
     return _NUMBER.sub(lambda m: _normalise_number(m.group(0)), text)
+
+
+_MYRIAD = re.compile(r"(\d+(?:\.\d+)?)\s*(万|萬|만|億|亿|억)")
+_MYRIAD_SCALE = {"万": 10**4, "萬": 10**4, "만": 10**4, "億": 10**8, "亿": 10**8, "억": 10**8}
+
+
+def _myriad_numbers(text: str) -> list[str]:
+    """``100万`` → ``1000000``, ``1.5만`` → ``15000``: the figure a myriad unit writes."""
+    found = []
+    for digits, unit in _MYRIAD.findall(text):
+        value = Decimal(digits.replace(",", "")) * _MYRIAD_SCALE[unit]
+        if value == value.to_integral_value():
+            found.append(str(int(value)))
+    return found
 
 
 # --- pictures -----------------------------------------------------------------------------

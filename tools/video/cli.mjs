@@ -50,6 +50,7 @@ export const AREAS = {
   "media-status": ["media", "2026-09-26-video-drama-media-client"],
   // A binge series' compilation: the episodes' cuts joined with chapter cards (docs/videos/BINGE.md).
   compile: ["compile", "2026-09-27-video-binge-compile"],
+  branding: ["branding", "2026-09-30-video-channel-branding"],
   // A long video finished by another tool, sent to /admin/videos for its final review.
   import: ["import", "2026-09-28-video-tool-import-a-finished-long"],
 };
@@ -64,7 +65,8 @@ Usage: node tools/video/cli.mjs <command> [options]
   approve  --slug S --gate outline|script|look|storyboard|audio|final|publish [--workdir D] [--note T]
                                                    record the owner's approval of the file as it is now
   script   --slug S                                write docs/videos/<slug>/script.md, the screenplay a series episode's owner reads
-  review-push --slug S [--gate G | --report-only]  report the video to /admin/videos and submit the next gate
+  review-push --slug S [--gate G | --report-only] [--manual-review]
+                                                   report and submit; --manual-review requires --gate final and keeps QA from auto-approving it
   review-pull --slug S [--gate G]                  record the owner's decisions made on /admin/videos
   captions --slug S [--workdir D]                  caption files for every current locale
   i18n-sheet --slug S [--locale L,L]               a translation worksheet per locale, in the work directory
@@ -84,7 +86,11 @@ Usage: node tools/video/cli.mjs <command> [options]
   audition, tts, review, render, assemble, package, youtube-sync
                                                    media stages, each built by its own ticket
   look, keyframes, clips, music, media-status      the drama format's generation stages (docs/videos/DRAMA.md)
-  compile --slug <series>-full [--workdir D] [--force] [--dry-run]
+  branding [--install DIR] [--workdir D] [--dry-run] [--json]
+                                                   inspect or install a fixed intro/outro package for new long videos
+  assemble --slug S [--workdir D] [--adopt-branding]
+                                                   explicitly add current branding to an existing unapproved cut
+  compile --slug <series>-full [--workdir D] [--force] [--dry-run] [--adopt-branding]
                                                    join a binge series' cleared episodes into its compilation, with
                                                    chapter cards, merged captions and chapters (docs/videos/BINGE.md)
   import --from DIR [--workdir D] [--force]        a long video another tool finished (final.mp4, meta.json, optional

@@ -158,6 +158,21 @@ test("the hash follows the cuts and the card switches, not the titles; checks ar
   assert.equal(compilationChecksCurrent(doc, null, episodes), false);
 });
 
+test("channel branding removes the compilation's old outro without changing its episode card order", () => {
+  const doc = build();
+  const episodes = cuts(doc).map((episode) => ({ ...episode, body_sha256: "b".repeat(64), branding_hash: "c".repeat(64), intro_frames: 150 }));
+  const layout = compilationLayout(doc, episodes, { branding: { id: "channel-v1" } });
+  assert.deepEqual(layout.map((entry) => entry.kind), ["card", "episode", "card", "episode", "card", "episode"]);
+  assert.equal(totalFrames(layout), 10983);
+  assert.equal(layout[1].intro_frames, 150);
+  assert.equal(layout[1].body_sha256, "b".repeat(64));
+  const hash = compilationHash(doc, episodes);
+  assert.notEqual(hash, compilationHash(doc, cuts(doc)), "the checked bodies are part of the provenance");
+  assert.notEqual(hash, compilationHash(doc, episodes.map((episode) => ({ ...episode, body_sha256: "d".repeat(64) }))));
+  assert.notEqual(hash, compilationHash(doc, episodes.map((episode) => ({ ...episode, branding_hash: "e".repeat(64) }))));
+  assert.equal(compilationChecksCurrent(doc, { ok: true, compilation_hash: hash, visual_hash: visualHash(doc) }, episodes), true);
+});
+
 test("chapters start at the cards, key on the episode slug, and read like the timeline's", () => {
   const doc = build();
   const layout = compilationLayout(doc, cuts(doc));
@@ -194,6 +209,13 @@ test("cues shift by the episode's offset and merge in play order", () => {
     { start_ms: 122_000, end_ms: 123_000, text: "第二集" },
   ]);
   assert.deepEqual(mergeCaptions([{ srt: "", offsetMs: 0 }]), []);
+  assert.deepEqual(mergeCaptions([
+    { srt: toSrt([{ start_ms: 5100, end_ms: 5900, text: "branded body" }]), introMs: 5000, offsetMs: 2000 },
+    { srt: second, offsetMs: 122_000 },
+  ]), [
+    { start_ms: 2100, end_ms: 2900, text: "branded body" },
+    { start_ms: 122_000, end_ms: 123_000, text: "第二集" },
+  ], "a source intro is removed before the body receives its compilation position");
 });
 
 test("eighty titled chapters fall back to 「第 N 集」 so the description stays within 5,000 bytes", () => {

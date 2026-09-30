@@ -126,7 +126,10 @@ async def _approved(
             gate="publish",
             content_sha256=sha,
             summary="上傳包",
-            payload={"package": _report(judging.SHORTS_PACKAGE_ITEMS, sha)},
+            payload={
+                "package": _report(judging.SHORTS_PACKAGE_ITEMS, sha),
+                "final_review_id": str(final.id),
+            },
         ),
         token,
     )
