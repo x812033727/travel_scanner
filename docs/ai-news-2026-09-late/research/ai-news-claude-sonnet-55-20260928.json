@@ -2,7 +2,7 @@
   "slug": "ai-news-claude-sonnet-55-20260928",
   "event_date": "2026-09-28",
   "event_date_basis": "發布者只印日期、沒有時刻，照發布者日期，不換算台北時間（DELTA-4-10 第 1 條、沿用 DELTA-4-8 第 4 條 Opus 5.5 的判例）。研究代理 2026-09-30 重抓，四處都是 2026-09-28：(1) 公告頁 https://www.anthropic.com/claude-sonnet-5-5 標題下印「September 28, 2026」（正規化後連續字串「Claude Sonnet 5.5 September 28, 2026」，verified_facts 第 1 條）；(2) sources[1] 模型頁 Availability 欄印「Released September 28, 2026」；(3) sources[2] System Card PDF 封面印「September 28, 2026」；(4) sources[3] Sonnet 產品頁 Announcements 區印「Claude Sonnet 5.5 Sep 28, 2026」。另外，Claude Platform 版本說明 RSS https://platform.claude.com/docs/en/release-notes/feed.xml（不在 sources[]）的條目〈Claude Platform release notes — September 28, 2026〉pubDate 是「Mon, 28 Sep 2026 00:00:00 GMT」，這是整點佔位值（每一則都是 00:00:00 GMT），日期可用、時刻不可用（BRIEF 第 11 條）。公告頁 HTML 沒有 datePublished、article:published_time 或 publishedOn；頁內只有 CMS 物件的 _createdAt／_updatedAt（例如 2026-09-27T22:00:06Z、2026-09-28T16:17:47Z、_updatedAt 最晚 2026-09-28T18:20:04Z），那是編輯系統的存檔時間，不是發布時刻，不能拿來換算。沒有在一手頁找到發布時刻，所以不回報台北時刻。正文寫「2026 年 9 月 28 日」，不寫時刻、不寫「台北時間」或「美國時間」。",
-  "title": "Claude Sonnet 5.5 推出：牌價與 Sonnet 5 相同，API、三家雲端與 Claude.ai 都能用",
+  "title": "Claude Sonnet 5.5 推出：牌價與 Sonnet 5 相同，API、雲端平台與 Claude.ai 都能用",
   "checked_on": "2026-09-30",
   "sources": [
     {
@@ -440,12 +440,54 @@
       ],
       [
         "開發者",
-        "API 與三家雲端"
+        "API 與雲端平台"
       ],
       [
         "安全門檻",
         "未跨新 RSP 門檻"
       ]
+    ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent (round 1, claude-opus-5-5)",
+    "checked_on": "2026-09-30",
+    "method": "2026-09-30 UTC 11:44–11:45 以 curl -sSL --compressed -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 重抓 sources[] 四條（每次間隔 1.2 秒，請求不含任何人的姓名、email 或個資），落地檔在 /root/news49/s55/agents/fc1/。公告頁 430,222 bytes、產品頁 405,412 bytes、System Card PDF 13,101,289 bytes（148 頁，pdfenv 的 pypdf 抽字）與研究代理的落地檔逐位元組相同；模型頁 429,111 bytes（研究代理 429,120，可見文字相同）。HTML 刪 script／style 後做三種正規化（行內標籤→無、所有標籤→空格、所有標籤→無）加 RAW；44 條 verbatim_quote 以程式做連續子字串比對，44 條全部通過，url 全在 sources[]。正文、summary、FAQ、callout、表格每格與 caption、圖解 caption 與 diagram 四格、title、description 拆成約 110 條主張逐條回原文比對；否定句以詞界查 Taiwan、September 22、Haiku 5.5、retire、deprecat、ASL、Azure、Foundry、Bedrock。報告：docs/news-2026-batch-4/factcheck-draft/ai-news-claude-sonnet-55-20260928-round1.md。",
+    "verdict": "needs_second_round",
+    "edits_to_the_pack": [
+      "title：「API、三家雲端與 Claude.ai」→「API、雲端平台與 Claude.ai」。「三家」是編輯清點：公告寫 all platforms, including AWS、Google Cloud、Microsoft Azure（including 不是全清單），模型頁列五個平台，來源沒印「三家」（HANDOVER §3）。研究紀錄 title 同步。",
+      "diagram.nodes 第三格「API 與三家雲端」→「API 與雲端平台」（同一個清點；圖由 build_assets 從這裡讀）。",
+      "第一段「第一個是 9 月 22 日的 Opus 5.5」→「同家族還有 Opus 5.5」：四條 sources[] 以 September 22／Sep 22 查 0 次，公告只寫 second model in the Claude 5.5 family。",
+      "第一段 30%：改成「公告說每個任務的成本比前一代『最多少 30%』，那是 Anthropic 在自己測試裡量到的結果」，對應 In our testing, it costs up to 30% less per task than its predecessor。",
+      "第二段「也不建議換模型或訂閱」→「也不提供換模型或訂閱的建議」（原句可讀成勸讀者不要換）；「沒有列地區限制」→「沒有列出開放或限制的地區」（避免被讀成台灣可用）；「讀的是」→「依據」。",
+      "summary 第 5 點：資安退回改成「公告說較高風險的資安任務會退回 Sonnet 5 處理」（歸因、照原文 higher-risk cybersecurity tasks）。",
+      "第一節第二段：刪推論句「Sonnet 5 目前也還會用到」，改為「公告另寫，較高風險的資安任務會退回 Sonnet 5 處理（見最後一節）」。",
+      "第二節第一段：刪「快取寫入與 Batch 是否相同，這幾頁沒有寫」（暗示可能不同）；牌價明細移進表格，段落只留「公告明寫與 Sonnet 5 相同的是輸入、輸出與快取讀取三項」。",
+      "第二節第二段：產品頁的 30% 補回原文條件 for typical workloads billed by token 與 estimated；「實際省多少」→「實際成本要看」（原句預設一定會省）。",
+      "第二節第三段：US-only inference 補回 For workloads that need to run in the US；刪「下表的 Opus 5.5 欄是公告同一張價格表印的」。",
+      "表格：刪 Opus 5.5 欄（DELTA-4-10 第 3 條），改為三欄「項目｜Sonnet 5.5 牌價｜列在哪裡」六列（輸入、輸出、快取讀取、5 分鐘快取寫入、1 小時快取寫入、Batch API）；caption 改寫並保留查核日。",
+      "第三節第三段：「這些頁面沒有寫 Sonnet 5 的規格，所以不比較」→「這些頁面沒有 Sonnet 5 的規格可對照」。",
+      "第四節第一段：刪「表上三格都帶 partial 標記」（公告沒有解釋 partial 的意思）。",
+      "第四節第二段：FrontierCode 註腳「有兩個任務逾時」→「在 Cognition 檢視的兩個案例裡導致逾時或改到任務範圍外」（原文 in two cases Cognition examined）；GDPval 註腳「有影響結構化輸出的 bug」→「有一個可能影響結構化輸出回應的 bug」（原文 could degrade）。",
+      "第五節第二段：提示注入補回限定 particularly in coding environments and browser use。",
+      "第五節第三段與 FAQ 第 4 題：「其他平台可能不同」→「透過其他平台與供應商使用時可能不同」（原文 via other platforms and providers may experience different behavior）。",
+      "FAQ 第 1 題：「它測試或估計的每任務成本」→「它測試的每任務成本或對一般工作負載的估計」（產品頁的估計不是每任務）。"
+    ],
+    "checked_and_correct": [
+      "事件日 2026-09-28：公告頁、模型頁 Released、System Card 封面、產品頁 Announcements 四處都印 9 月 28 日，沒有時刻。",
+      "牌價 2／10／0.20 美元與 Sonnet 5 相同（公告 priced the same as Sonnet 5）；模型頁 5 分鐘快取寫入 2.50、1 小時 4、Batch 五折；產品頁快取最多省 90%、批次省 50%、US-only 1.1 倍。",
+      "30%+ faster、clear upgrade、faster, lower-cost complement、Haiku 5.5 in the coming weeks，均已歸因給 Anthropic。",
+      "API 名稱 claude-sonnet-5-5、Bedrock 為 anthropic.claude-sonnet-5-5；模型頁五個平台；公告 Azure、模型頁 Foundry 各照各的來源，沒有混用。",
+      "規格 1M／128K、可靠知識截止 Jun 2026；退役不早於 2027-09-28；五項破壞性變更；between_tools；effort 預設 Medium／High。",
+      "評測：Terminal-Bench 70.6／10.3／66.4（註 1）、CursorBench 55.5／34.1／57.8、OSWorld 80.1／57.0／81.8、FrontierCode 46.2 Max／52.1 Xhigh／42.4／54.4、GDPval-AA 1844／1449／1846（分數制）；Anthropic 的但書照原文。全文沒有 GPT、OpenAI 或 GPT-6.1 Sol。",
+      "System Card：does not cross any new RSP thresholds；Opus 5.5 未跨 CB-2／Autonomy-2 的判定同樣適用；treat as meeting CB-1 與 Autonomy-1 並套用緩解；misalignment risks low；拒絕率與 Opus 5.5 相當、比部分較早模型退步；退回適用第一方產品與 API opt-in。全文沒有 ASL-n 分級字樣（今天抽字以詞首 ASL 查只命中 ASLR 1 次；研究紀錄記 2 次，抽字差異，不影響結論）。",
+      "資安防護：公告 large improvement over Sonnet 5's、safeguards similar to those on Opus 5.5、visibly fall back to Sonnet 5、first Sonnet model to launch with cyber safeguards and fallbacks；沒有攻擊細節。",
+      "Claude.ai：產品頁 Anyone can chat … on Claude.ai, available on web, iOS, and Android；方案層級照寫「官方未說明」，沒有推論某方案不能用。四條 sources[] 以詞界查 Taiwan 0 次。"
+    ],
+    "left_for_the_owner": [
+      "產品頁頁首仍是「Claude Sonnet 4.6 Hybrid reasoning model…」、FAQ 仍停在 Sonnet 5：活頁面部分落後，文章只引用 Availability and pricing 一節；發布當天重讀。",
+      "Sonnet 5 的退役承諾（deprecations 頁：Not sooner than June 30, 2027）與「快取寫入、Batch 也同價」（What's new 頁、docs 定價頁）不在 sources[]，文章不寫；若站主要寫，需換來源。",
+      "System Card 內部不一致照舊不裁定：摘要 three-stage cyber safeguards as they are to Opus 5.5 對 §1.5 similar blocking classifiers to those on Opus 5；生物防護公告寫同 Sonnet 5、System Card 寫同 Opus 5。文章不提生物防護，資安照公告寫。",
+      "版本說明 RSS 9/28 那則沒有列 Amazon Bedrock，模型頁有；發布當天重讀模型頁 Platforms。"
     ]
   }
 }
