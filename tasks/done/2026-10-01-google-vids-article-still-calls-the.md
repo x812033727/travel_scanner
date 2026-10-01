@@ -1,13 +1,13 @@
 ---
 id: 2026-10-01-google-vids-article-still-calls-the
 title: Google Vids article still calls the Gemini 3.8 Flash-Lite voiceover Coming soon
-status: in-progress
+status: done
 priority: P3
 area: docs
 owner: claude-opus-5-5-vids-voiceover
 claimed_at: 2026-10-01T12:36:43Z
 created_at: 2026-10-01T04:14:03Z
-completed_at:
+completed_at: 2026-10-01T12:49:24Z
 branch: claude/google-vids-voiceover-available
 depends_on: []
 scope:
