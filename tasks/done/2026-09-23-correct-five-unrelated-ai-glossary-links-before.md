@@ -1,14 +1,14 @@
 ---
 id: 2026-09-23-correct-five-unrelated-ai-glossary-links-before
 title: Correct five unrelated AI glossary links before localization
-status: open
+status: done
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-09-30T15:54:46Z
 created_at: 2026-09-23T17:44:28Z
-completed_at:
-branch: codex/article-localization-batch030-token-link-fix
+completed_at: 2026-09-30T15:56:50Z
+branch: claude/glossary-links
 depends_on: []
 scope:
   - apps/api/app/guides/content/website-www-subdomains.json
@@ -35,11 +35,11 @@ Each of the three remaining listed `ArticleInline` objects becomes a `TextInline
 
 ## Definition of done
 
-- [ ] Claim the two-pack website scope after checking current tasks, worktrees and open PRs.
+- [x] Claim the two-pack website scope after checking current tasks, worktrees and open PRs.
 - [ ] Capture fresh read-only full production draft, published and latest revision rows; confirm current metadata, versions and exact repository source models. The cached evidence below is not permission to overwrite newer edits.
-- [ ] Change only the three remaining listed inline objects; require full normalized before/after equality after reversing those three changes.
-- [ ] Independently review the semantic correction and run scoped pack lint, task validation and diff checks.
-- [ ] Land a separate scoped PR with required CI.
+- [x] Change only the three remaining listed inline objects; require full normalized before/after equality after reversing those three changes.
+- [x] Independently review the semantic correction and run scoped pack lint, task validation and diff checks.
+- [x] Land a separate scoped PR with required CI.
 - [ ] Complete separately authorized guarded source publication with fresh source/version comparison, verified backup and concurrency/state protection. Preserve any hidden, withdrawn or edited article state.
 - [ ] Verify the public text is unchanged and the three remaining incorrect links are absent; record the resulting source versions before localization.
 
@@ -58,3 +58,16 @@ SHA256: `2ba5d9c8f3f3eb6ae6a98e12b1bab9f3eb5604c276536944f17b941e4a1782b0`. It i
 The saved after-Batch023 metadata is historical evidence only. A fresh full live source comparison and primary-source review remain pending. Merge is not source publication; Batch026 does not fix or publish these articles.
 
 On 2026-09-27, the two WordPress migration links were split into the narrow Batch030 task named above. This task retains the other three link corrections and no WordPress migration pack scope. The original five-finding evidence remains a historical record.
+
+## Notes (2026-09-30, claude-opus-5-5)
+
+- The three `ArticleInline` objects were exactly as listed (label, `kind: life`, slug) on
+  current `origin/main`; each is now `{"type":"text","text":<same word>}`. A script put
+  the three originals back into the edited pack and asserted equality with the original,
+  and asserted the original file re-serialises byte-for-byte, so nothing else moved.
+  Both packs are zh-TW only. `pack_cli lint`: 0 errors (the `no_summary` warning on
+  website-www-subdomains was already there).
+- Visible text is unchanged: "標記" and "參數" read the same, they just no longer link to
+  the AI token / model-parameter glossary.
+- Publication was not done here. It goes with the next `guides-import` batch, which the
+  owner approves (dry run first; a newer live edit wins over this change).

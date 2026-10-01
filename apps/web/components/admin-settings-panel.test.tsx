@@ -848,27 +848,64 @@ describe("AdminSettingsPanel", () => {
   });
 
   it("restores provider, field focus and audit panel from Back/Forward URL state", async () => {
+    // Focus follows the URL in animation frames; don't race jsdom's frame timer under load.
+    const frames = new Map<number, FrameRequestCallback>();
+    let nextFrame = 0;
+    vi.stubGlobal("requestAnimationFrame", (callback: FrameRequestCallback) => {
+      const id = ++nextFrame;
+      frames.set(id, callback);
+      return id;
+    });
+    vi.stubGlobal("cancelAnimationFrame", (id: number) => { frames.delete(id); });
+    async function flushFrames() {
+      for (let frame = 0; frame < 10; frame += 1) {
+        await act(async () => {
+          // A panel change can queue a later frame. Honor cancellations within this batch.
+          const timestamp = performance.now();
+          for (const [id, callback] of [...frames]) {
+            if (frames.delete(id)) callback(timestamp);
+          }
+        });
+        if (!frames.size) return;
+      }
+      throw new Error("Settings focus did not settle within ten animation frames");
+    }
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue(
       new Response(JSON.stringify(providerTabsSnapshot), { status: 200 }),
     ));
     window.history.replaceState(null, "", "/zh-TW/admin/settings?provider=google_maps&field=route_cache_ttl_seconds");
-    render(<AdminSettingsPanel scope="providers" />);
-    const timeout = await screen.findByLabelText(/^路線快取秒數/);
-    await waitFor(() => expect(document.activeElement).toBe(timeout));
+    const view = render(<AdminSettingsPanel scope="providers" />);
+    try {
+      const timeout = await screen.findByLabelText(/^路線快取秒數/);
+      await flushFrames();
+      await waitFor(() => expect(document.activeElement).toBe(timeout));
 
-    window.history.pushState(null, "", "/zh-TW/admin/settings?provider=google_maps&field=google_maps_api_key");
-    window.dispatchEvent(new PopStateEvent("popstate"));
-    const key = screen.getByLabelText("伺服器 API Key");
-    await waitFor(() => expect(document.activeElement).toBe(key));
+      act(() => {
+        window.history.pushState(null, "", "/zh-TW/admin/settings?provider=google_maps&field=google_maps_api_key");
+        window.dispatchEvent(new PopStateEvent("popstate"));
+      });
+      const key = screen.getByLabelText("伺服器 API Key");
+      await flushFrames();
+      await waitFor(() => expect(document.activeElement).toBe(key));
 
-    window.history.pushState(null, "", "/zh-TW/admin/settings?provider=__audit");
-    window.dispatchEvent(new PopStateEvent("popstate"));
-    await screen.findByRole("heading", { name: "最近管理紀錄" });
+      act(() => {
+        window.history.pushState(null, "", "/zh-TW/admin/settings?provider=__audit");
+        window.dispatchEvent(new PopStateEvent("popstate"));
+      });
+      await flushFrames();
+      await screen.findByRole("heading", { name: "最近管理紀錄" });
 
-    window.history.pushState(null, "", "/zh-TW/admin/settings");
-    window.dispatchEvent(new PopStateEvent("popstate"));
-    await screen.findByRole("heading", { name: "Google Maps" });
-    expect(screen.queryByRole("heading", { name: "最近管理紀錄" })).toBeNull();
+      act(() => {
+        window.history.pushState(null, "", "/zh-TW/admin/settings");
+        window.dispatchEvent(new PopStateEvent("popstate"));
+      });
+      await flushFrames();
+      await screen.findByRole("heading", { name: "Google Maps" });
+      expect(screen.queryByRole("heading", { name: "最近管理紀錄" })).toBeNull();
+    } finally {
+      view.unmount();
+      vi.unstubAllGlobals();
+    }
   });
 
   it("keeps provider mutations disabled for a settings viewer", async () => {

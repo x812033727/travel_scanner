@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-30T12:42:30Z
 completed_at:
-branch:
+branch: codex/vps-settings-browser-acceptance-20261001
 depends_on:
   - 2026-09-30-youtube-vps-web-settings
 scope:
@@ -34,7 +34,7 @@ an isolated local mock before treating the UI as visually accepted.
 
 ## Steps
 
-- [ ] Start the unchanged runtime mock plus a local proxy for the new settings routes.
+- [x] Start the unchanged runtime mock plus a local proxy for the new settings routes.
 - [ ] Run the site with API_INTERNAL_URL pointing only to the local proxy.
 - [ ] Sign in with a synthetic fixture, inspect both viewports and exercise the form.
 - [ ] Record acceptance and shut down only the test servers created for this run.
@@ -58,3 +58,12 @@ Production deployment, Google login and real upload remain under the existing
 - Reacquiring the same browser binding or attempting new tabs did not repair the
   attachment/focus failure. Wait for an attached active tab before resuming UI work.
 - Do not put real channel credentials, cookies or service secrets in the receipt.
+- 2026-10-01 local attempt on `76b39a25e3819d5ef97648e10a5b8c6bb1bfbd74`:
+  production `next build` passed with Node 24.21.0, but automatic approval review
+  rejected the hidden Next startup command with `blocked by policy` before it
+  executed. No alternate launcher was tried; browser assertions and screenshots
+  remain unexecuted. The owned fixture/proxy processes were stopped and ports
+  18780, 18781 and 3016 were confirmed without listeners. See
+  [the attempt receipt](../../docs/videos/vps-web-settings-acceptance/README.md).
+  Prepared private helpers are syntax-checked only; all browser DoD items remain
+  open. This is neither a product failure nor successful visual acceptance.

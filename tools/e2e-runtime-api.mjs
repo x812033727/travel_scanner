@@ -84,6 +84,7 @@ adminCapabilities.owner = [...new Set(Object.values(adminCapabilities).flat()), 
 const adminNavigation = [
   ["dashboard", "overview", "/admin", "dashboard.read"],
   ["guides", "content", "/admin/guides", "content.read"],
+  ["news", "content", "/admin/news", "content.read", "news_review_pending"],
   ["videos", "content", "/admin/videos", "content.read", "video_reviews_pending"],
   ["hotspots", "content", "/admin/hotspots", "content.read", "hotspots_pending"],
   ["foods", "content", "/admin/foods", "content.read", "foods_pending"],
@@ -131,7 +132,7 @@ function adminBootstrap(request) {
     },
     environment: "e2e-isolated",
     navigation: adminNavigation.filter((item) => capabilitySet.has(item.capability)),
-    pending: { users: 3, hotspots_pending: 2, foods_pending: 1, hotels_pending: 1, community_jobs_pending: 0, video_reviews_pending: 0 },
+    pending: { users: 3, hotspots_pending: 2, foods_pending: 1, hotels_pending: 1, community_jobs_pending: 0, news_review_pending: 0, video_reviews_pending: 0 },
     system: {
       database: { status: "healthy", detail: "fixture schema current" },
       redis: { status: "healthy" },
