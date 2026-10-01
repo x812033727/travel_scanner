@@ -9,7 +9,7 @@ from __future__ import annotations
 import hashlib
 import os
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlsplit
@@ -23,7 +23,7 @@ from app.config import Settings
 from app.models import User, VideoProject
 from app.video_reviews import admin_service as reviews
 from app.video_reviews.storage import ReviewStore, valid_slug
-from app.video_youtube import sync
+from app.video_youtube import sync, vps_settings
 from app.video_youtube.errors import Refused
 from app.video_youtube.requests import text_problem
 from app.video_youtube.state import running
@@ -47,12 +47,12 @@ class ResumeIn(BaseModel):
 @dataclass(frozen=True)
 class Config:
     url: str
-    secret: str
+    secret: str = field(repr=False)
     channel: str
 
 
 def config() -> Config | None:
-    """Operator-owned deployment config; never returned to the browser or written to logs."""
+    """Legacy environment fallback; request handlers resolve database overrides first."""
     url = os.getenv("MOKAAIR_VPS_UPLOADER_URL", "").rstrip("/")
     if not url:
         return None
@@ -74,17 +74,16 @@ def config() -> Config | None:
         or not CHANNEL.fullmatch(channel)
     ):
         raise Refused(503, "vps_not_configured", "VPS 上傳服務設定不完整")
-    return Config(url, secret, channel)
+    return Config(vps_settings.rpc_url(url), secret, channel)
 
 
 def http_client() -> httpx.AsyncClient:
     return httpx.AsyncClient(timeout=25, follow_redirects=False)
 
 
-async def remote(method: str, route: str, **kwargs: Any) -> dict[str, Any]:
-    settings = config()
-    if settings is None:
-        raise Refused(503, "vps_not_configured", "VPS 上傳服務尚未啟用")
+async def remote(
+    method: str, route: str, *, settings: Config, **kwargs: Any
+) -> dict[str, Any]:
     try:
         async with http_client() as client:
             response = await client.request(
@@ -122,16 +121,15 @@ async def remote(method: str, route: str, **kwargs: Any) -> dict[str, Any]:
         raise Refused(503, "vps_unavailable", "暫時無法連線到 VPS，工作紀錄會保留") from None
 
 
-async def latest(slug: str) -> dict[str, Any] | None:
+async def latest(slug: str, *, settings: Config) -> dict[str, Any] | None:
     if not valid_slug(slug):
         raise Refused(422, "vps_invalid_slug", "影片識別資料不正確")
-    settings = config()
-    value = (await remote("GET", f"/projects/{slug}")).get("job")
+    value = (await remote("GET", f"/projects/{slug}", settings=settings)).get("job")
     if value is not None and not isinstance(value, dict):
         raise Refused(502, "vps_invalid_response", "VPS 回覆格式不正確")
     if value and (
         value.get("slug") != slug
-        or value.get("channel_id") != (settings.channel if settings else None)
+        or value.get("channel_id") != settings.channel
         or not HASH.fullmatch(str(value.get("id", "")))
         or not HASH.fullmatch(str(value.get("review_sha256", "")))
     ):
@@ -139,21 +137,22 @@ async def latest(slug: str) -> dict[str, Any] | None:
     return value
 
 
-async def assert_idle(slug: str, *, upload: bool = False) -> None:
+async def assert_idle(session: AsyncSession, slug: str, *, upload: bool = False) -> None:
     """Called under the project row lock by the existing API sender as well."""
-    if config() is None:
+    settings = await vps_settings.resolve(session, lock=True)
+    if settings is None:
         return
-    job = await latest(slug)
+    job = await latest(slug, settings=settings)
     if job and (job.get("state") in ACTIVE or (upload and job.get("video_id"))):
         raise Refused(409, "vps_job_exists", "這支影片已有 VPS 工作，請先查看或記錄它的結果")
 
 
 async def status(session: AsyncSession, slug: str) -> dict[str, Any]:
     project = await reviews.project_view(session, slug)
-    settings = config()
+    settings = await vps_settings.resolve(session)
     if settings is None:
         return {"configured": False, "job": None, "linked": False}
-    job = await latest(slug)
+    job = await latest(slug, settings=settings)
     approved = max(
         (
             review
@@ -232,14 +231,15 @@ async def assets(
 
 
 async def start(session: AsyncSession, slug: str, user: User, payload: StartIn) -> dict[str, Any]:
-    settings = config()
+    # Match the API sender's order: project lock, then configuration lock.
+    project = await sync._locked_project(session, slug)
+    settings = await vps_settings.resolve(session, lock=True)
     if settings is None:
         raise Refused(503, "vps_not_configured", "VPS 上傳服務尚未啟用")
-    project = await sync._locked_project(session, slug)
     if running(project.youtube_sync):
         raise Refused(409, "vps_api_running", "API 同步還在進行，請等它停止")
     runtime, store, pack = await package(session, slug)
-    old = await latest(slug)
+    old = await latest(slug, settings=settings)
     if old and old.get("state") in ACTIVE:
         if old.get("review_sha256") != pack.sha256:
             raise Refused(409, "vps_package_changed", "舊版 VPS 工作尚未結束，請先處理原工作")
@@ -301,6 +301,7 @@ async def start(session: AsyncSession, slug: str, user: User, payload: StartIn) 
     job = await remote(
         "PUT",
         f"/jobs/{key}",
+        settings=settings,
         json={
             "version": 1,
             "slug": slug,
@@ -316,14 +317,19 @@ async def start(session: AsyncSession, slug: str, user: User, payload: StartIn) 
     return {"configured": True, "job": job, "linked": False}
 
 
-async def current_job(session: AsyncSession, slug: str) -> tuple[VideoProject, dict[str, Any]]:
+async def current_job(
+    session: AsyncSession, slug: str
+) -> tuple[VideoProject, dict[str, Any], Config]:
     project = await sync._locked_project(session, slug)
+    settings = await vps_settings.resolve(session, lock=True)
+    if settings is None:
+        raise Refused(503, "vps_not_configured", "VPS 上傳服務尚未啟用")
     if running(project.youtube_sync):
         raise Refused(409, "vps_api_running", "API 同步還在進行，請等它停止")
-    job = await latest(slug)
+    job = await latest(slug, settings=settings)
     if not job:
         raise Refused(404, "vps_job_missing", "這支影片尚未建立 VPS 工作")
-    return project, job
+    return project, job, settings
 
 
 def read_chunk(file: Path, offset: int) -> bytes:
@@ -333,7 +339,7 @@ def read_chunk(file: Path, offset: int) -> bytes:
 
 
 async def stage(session: AsyncSession, slug: str) -> dict[str, Any]:
-    _, job = await current_job(session, slug)
+    _, job, settings = await current_job(session, slug)
     if job.get("state") != "staging":
         return {"configured": True, "job": job, "linked": False}
     runtime, store, pack = await package(session, slug)
@@ -371,10 +377,11 @@ async def stage(session: AsyncSession, slug: str) -> dict[str, Any]:
             job = await remote(
                 "PUT",
                 f"/jobs/{job['id']}/files/{entry['sha256']}?offset={offset}",
+                settings=settings,
                 content=read_chunk(source, offset),
             )
             return {"configured": True, "job": job, "linked": False}
-    job = await remote("POST", f"/jobs/{job['id']}/queue")
+    job = await remote("POST", f"/jobs/{job['id']}/queue", settings=settings)
     return {"configured": True, "job": job, "linked": False}
 
 
@@ -385,7 +392,7 @@ async def action(
     name: str,
     payload: ResumeIn,
 ) -> dict[str, Any]:
-    project, job = await current_job(session, slug)
+    project, job, settings = await current_job(session, slug)
     if name == "record":
         video_id = reviews.youtube_video_id(str(job.get("video_id") or ""))
         if job.get("state") != "done" or not video_id:
@@ -413,7 +420,9 @@ async def action(
         _, _, pack = await package(session, slug)
         if job["review_sha256"] != pack.sha256:
             raise Refused(409, "vps_package_changed", "上傳包已變更，請先處理原工作")
-    result = await remote("POST", f"/jobs/{job['id']}/{name}", json={"video_id": video_id})
+    result = await remote(
+        "POST", f"/jobs/{job['id']}/{name}", settings=settings, json={"video_id": video_id}
+    )
     sync._audit(session, user, f"video_vps_{name}", slug, job_id=job["id"])
     await session.commit()
     return {"configured": True, "job": result, "linked": False}
