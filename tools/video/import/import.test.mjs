@@ -188,3 +188,17 @@ test("the command asks for --from", async () => {
   assert.equal(code, EXIT.usage);
   assert.match(err, /import needs --from DIR/);
 });
+
+test("ordinary import cannot preserve stale approved languages or bypass a renewal with force", async (t) => {
+  for (const review of [
+    { gate: "languages", status: "approved", payload: {} },
+    { gate: "dubs", status: "pending", payload: {} },
+    { gate: "publish", status: "approved", payload: {} },
+    { gate: "final", status: "pending", payload: { _final_renewal: {} } },
+  ]) {
+    const box = fixture(t, { known: { checklist: [{ key: IMPORTED }], reviews: [review] } });
+    await assert.rejects(importLong({ ...box, force: true }), /stage a final-renewal candidate/);
+    assert.deepEqual(box.calls.map(([kind]) => kind), ["project"]);
+    assert.equal(box.encodes.length, 0);
+  }
+});
