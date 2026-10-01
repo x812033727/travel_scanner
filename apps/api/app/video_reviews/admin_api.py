@@ -31,6 +31,8 @@ from app.video_reviews.schemas import (
     DecisionIn,
     DropIn,
     DubLocalesIn,
+    FinalRenewalIn,
+    FinalRenewalState,
     LocalesIn,
     PartOut,
     ProjectIn,
@@ -173,6 +175,21 @@ async def decide(
     slug: str, review_id: UUID, payload: DecisionIn, user: ContentManager, session: Session
 ) -> ReviewOut:
     return await service.decide(session, slug, review_id, user, payload)
+
+
+@admin_router.get("/{slug}/final-renewal", response_model=FinalRenewalState)
+async def final_renewal_state(
+    slug: str, user: ContentManager, session: Session
+) -> FinalRenewalState:
+    _ = user
+    return await service.final_renewal_state(session, slug)
+
+
+@admin_router.post("/{slug}/final-renewal", response_model=ReviewOut, status_code=201)
+async def renew_final(
+    slug: str, payload: FinalRenewalIn, user: ContentManager, session: Session
+) -> ReviewOut:
+    return await service.renew_final(session, await _store(session), slug, user, payload)
 
 
 @admin_router.post("/{slug}/drop", response_model=ProjectOut)

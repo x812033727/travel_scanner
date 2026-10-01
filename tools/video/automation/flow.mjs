@@ -19,7 +19,7 @@ import { emptyLexicon } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
 import { articlePath, SITE } from "../core/metadata.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, UsageError } from "../core/paths.mjs";
-import { eachLine, LINE_ID, spokenText } from "../core/schema.mjs";
+import { eachLine, LINE_ID, NARRATION_LOCALE, narrationLocale, spokenText } from "../core/schema.mjs";
 import { writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckBinding, scriptCheckMatches, scriptCheckUnbound } from "../core/script-check.mjs";
 import { LOCALE_PARTS, readLanguages, writeLanguages } from "../core/stages.mjs";
@@ -27,6 +27,7 @@ import { ARTIFACTS, dubArtifacts, dubsStatus, lintProject, loadProject, pipeline
 import { speechHash } from "../core/timeline.mjs";
 import { MAX_TEMPO } from "../dubs/plan.mjs";
 import { productionForEpisode } from "../production/design.mjs";
+import { buildSheet, SHEET_PARTS } from "../i18n/cli.mjs";
 import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview, sourceGuideOf } from "../review/sync.mjs";
 import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
 import { discussStep } from "./discuss.mjs";
@@ -1815,7 +1816,8 @@ export class Automation {
    * making is made, the captions and the package are written again and the batch goes up as a
    * languages review. Null when there is nothing to do: no choice yet, nothing pending, or the
    * final cut not approved. A video the owner already uploaded takes the same round for the
-   * languages ticked after the fact.
+   * languages ticked after the fact. A video narrated in another language is translated into
+   * zh-TW first, once, whatever was chosen (channelLocale).
    */
   async languages(state) {
     const { ctx } = this;
@@ -1832,14 +1834,28 @@ export class Automation {
     writeLanguages(workdir, { locales: video.locales ?? {}, decided_at: video.locales_decided_at, synced_at: ctx.now().toISOString() });
     const choice = readLanguages(workdir);
     const pending = this.pendingLanguages(video, choice);
-    if (!pending.length) return null;
+    // A zh-TW video reads nothing more than before; one narrated in another language may still
+    // owe its zh-TW, which no choice lists (channelLocale).
+    const zhNarrated = narrationLocale(readJson(path.join(dir, "video.json"), null)) === NARRATION_LOCALE;
+    if (!pending.length && zhNarrated) return null;
     const project = loadProject({ slug, root: ctx.root });
     const doc = project.doc;
-    for (const { locale, parts } of pending) {
+    const channel = zhNarrated ? null : this.channelLocale(project, workdir);
+    if (!pending.length && !channel) return null;
+    for (const { locale, parts } of [...(channel ? [channel] : []), ...pending]) {
       const sheetParts = parts.filter((part) => part !== "dub");
       if (!sheetParts.length) continue;
       const translated = await this.translateLocale(state, locale, sheetParts, doc);
       if (translated) return translated;
+    }
+    // Only zh-TW was owed (the owner chose no other language): write it into the captions and the
+    // package; there is no batch to send, since the panel never offers zh-TW.
+    if (!pending.length) {
+      const captions = await run(ctx, ["captions", "--slug", slug]);
+      if (captions.code !== 0) return this.block(state, `captions failed: ${lastLine(captions.out)}`);
+      const packaged = await run(ctx, ["package", "--slug", slug]);
+      if (packaged.code !== 0) return this.block(state, `package failed: ${lastLine(packaged.out)}`);
+      return `${slug}: ${NARRATION_LOCALE} captions, title and description written into the upload package`;
     }
     const dubs = dubsStatus(project, workdir, speechHash(doc, project.lexicon));
     for (const { locale, parts } of pending) {
@@ -1910,6 +1926,21 @@ export class Automation {
       if (working.length) pending.push({ locale, parts: working });
     }
     return pending;
+  }
+
+  /**
+   * zh-TW, the channel's own language, for a video narrated in another one: captions, package
+   * and qa want its captions, title and description whatever the owner chose (alwaysLocales in
+   * core/stages.mjs), and the panel never offers it, so the site never reports it as in the
+   * making. Owed, as { locale, parts } like a pending choice, while its translation is not
+   * current or while an upload package written before it lacks it; null once both are in.
+   */
+  channelLocale(project, workdir) {
+    const translated = sheetDone(buildSheet(project.doc, project.translations[NARRATION_LOCALE], NARRATION_LOCALE, null, SHEET_PARTS));
+    const upload = path.join(workdir, "upload");
+    const packaged = !existsSync(path.join(upload, "metadata.json"))
+      || (existsSync(path.join(upload, `description.${NARRATION_LOCALE}.txt`)) && existsSync(path.join(upload, "captions", `${NARRATION_LOCALE}.srt`)));
+    return translated && packaged ? null : { locale: NARRATION_LOCALE, parts: [...SHEET_PARTS] };
   }
 
   /**

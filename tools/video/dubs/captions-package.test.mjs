@@ -13,7 +13,7 @@ import { dubArtifacts, loadProject } from "../core/state.mjs";
 import { estimateTimeline, frameToMs, speechHash } from "../core/timeline.mjs";
 import { composeMetadata, dubSteps, uploadChecklist } from "../package/metadata.mjs";
 import { finalReviewHtml } from "../review/pages.mjs";
-import { dubScript, translationHash } from "./plan.mjs";
+import { dubFingerprint, dubScript, translationHash } from "./plan.mjs";
 
 const TOKEN = `mkv_${"t".repeat(43)}`;
 
@@ -68,7 +68,7 @@ function writeDub(box, project, locale, timeline, { shift = 5, stale = false, fo
   const files = dubArtifacts(box.workdir, locale);
   const lines = timeline.lines.map((line) => ({ id: line.id, start_frame: line.start_frame + shift, end_frame: line.start_frame + shift + Math.ceil(line.audio_samples / 2 / 1600), audio_samples: Math.floor(line.audio_samples / 2), tempo: 1 }));
   const words = translationHash(dubScript(project.doc, project.translations[locale], locale).doc);
-  const dub = { locale, format, file: `${locale}.${format}`, speech_hash: timeline.speech_hash, translation_hash: stale ? "0000000000000000" : words, total_frames: timeline.total_frames, tempo_max: 1.07, windows: [], lines };
+  const dub = { locale, format, file: `${locale}.${format}`, speech_hash: timeline.speech_hash, translation_hash: stale ? "0000000000000000" : words, speech_fingerprint: dubFingerprint(project, locale), total_frames: timeline.total_frames, tempo_max: 1.07, windows: [], lines };
   mkdirSync(files.dir, { recursive: true });
   writeFileSync(files.timeline, JSON.stringify(dub));
   writeFileSync(files.track(format), "not really audio");

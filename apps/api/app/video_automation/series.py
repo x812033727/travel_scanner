@@ -34,7 +34,8 @@ import re
 from collections.abc import Sequence
 from dataclasses import dataclass
 from datetime import UTC, date, datetime
-from typing import Any, Literal, cast
+from itertools import pairwise
+from typing import Any, Literal, TypeGuard, cast
 from uuid import uuid4
 from zoneinfo import ZoneInfo
 
@@ -224,6 +225,69 @@ def _explainer_bible_problem(body: dict[str, Any]) -> str | None:
         isinstance(url, str) and url.startswith("https://") for url in sources
     ):
         return "an explainer's outline lists the https pages its facts rest on"
+    return None
+
+
+LOOK_ID = re.compile(r"[a-z][a-z0-9-]{1,23}")
+
+
+def _is_text(value: object) -> bool:
+    return isinstance(value, str) and bool(value.strip())
+
+
+def _is_whole(value: object) -> TypeGuard[int]:
+    return isinstance(value, int) and not isinstance(value, bool)
+
+
+def _looks_problem(series: VideoDramaSeries, character: dict[str, Any]) -> str | None:
+    """A character's looks (docs/videos/SERIES.md, 換裝與變化), checked as the worker's
+    looksProblem in tools/video/automation/series.mjs checks them: each look has an id and a
+    full appearance and covers episodes `from` to `to` (to the end without `to`), and no two
+    looks of one character cover the same episode. A character without looks has none to check."""
+    if "looks" not in character:
+        return None
+    who = f"character {character['id']}"
+    looks = character["looks"]
+    if not isinstance(looks, list):
+        return f"{who}: looks must be a list"
+    seen: set[str] = set()
+    for look in looks:
+        if not isinstance(look, dict) or not all(
+            _is_text(look.get(key)) for key in ("id", "appearance")
+        ):
+            return f"{who}: every look needs an id and an appearance"
+        where = f"{who}, look {look['id']}"
+        if not LOOK_ID.fullmatch(look["id"]):
+            return f"{where}: the id must be lowercase ascii, 2 to 24 characters"
+        if look["id"] in seen:
+            return f"{who}: two looks are called {look['id']}"
+        seen.add(look["id"])
+        start, end = look.get("from"), look.get("to")
+        if not _is_whole(start) or start < 1:
+            return f"{where}: from must be the number of the first episode it covers"
+        if end is not None and (not _is_whole(end) or end < start):
+            return (
+                f"{where}: to must be the number of the last episode it covers, not before from "
+                "(leave it out to cover the rest of the series)"
+            )
+        if start > series.planned_episodes:
+            return f"{where}: from {start} is after the last episode ({series.planned_episodes})"
+        for key in ("sheet_prompt", "voice_style"):
+            if key in look and not _is_text(look[key]):
+                return f"{where}: {key} must be text when it is given"
+        voice = character.get("voice")
+        if "voice_style" in look and not (
+            isinstance(voice, dict) and voice.get("provider") == "gemini"
+        ):
+            return f"{where}: voice_style needs the character's own Gemini voice"
+    ordered = sorted(looks, key=lambda look: look["from"])
+    for before, after in pairwise(ordered):
+        last = before.get("to")
+        if last is None or after["from"] <= last:
+            return (
+                f"{who}: looks {before['id']} and {after['id']} both cover episode "
+                f"{after['from']}; one look per episode"
+            )
     return None
 
 
@@ -427,8 +491,8 @@ def doc_problem(series: VideoDramaSeries, payload: SeriesDocSubmitIn) -> str | N
     """Why a document the worker sends cannot be filed, in the worker's words; None when it can.
 
     The shapes are the contract with tools/video/automation/series.mjs: a setting book names
-    its characters; an outline lists every chapter with its episodes; a chapter outline gives
-    every episode of its range the beats the owner reads.
+    its characters and the looks they wear in some episodes; an outline lists every chapter with
+    its episodes; a chapter outline gives every episode of its range the beats the owner reads.
     """
     body = payload.body_json
     if is_story(series):
@@ -456,6 +520,9 @@ def doc_problem(series: VideoDramaSeries, payload: SeriesDocSubmitIn) -> str | N
             look_problem = shot_looks_problem(character)
             if look_problem:
                 return f"character {character['id']}: {look_problem}"
+            looks = _looks_problem(series, character)
+            if looks:
+                return looks
         if payload.kind == "bible":
             for key in BIBLE_LISTS:
                 if not isinstance(body.get(key), list) or not body[key]:

@@ -214,7 +214,7 @@ YouTube 的開發人員政策對「代替使用者寫入」有三條要求（原
 
 ### 誰在什麼時候動手
 
-審核檔案區只掛在 API 容器，OAuth 權杖也只在那裡，所以送 YouTube 的工作跑在 API 行程（沿用 `app/video_youtube/sync.py` 的 `run_sync`，連同它的租約、續傳與重試）。影片這一塊在 API 沒有背景排程（媒體工作靠輪詢推進、預覽清理掛在讀清單的請求上），時間到了由工人來敲門：工人每一輪（5 分鐘）一開始就呼叫 `POST /video/automation/shorts/tick`，排在「自動產線有沒有開」的檢查之前，所以教學影片的自動草稿關著時 Shorts 的排程照走。伺服器在這個請求裡照順序做到期的事——把已經排上 YouTube 的那幾格標成已排程、鎖定時段、啟動該送的同步、讀該讀的成效、檢查授權——並記下這次敲門的時間（先標記再鎖定：工人停了一陣子再回來時，已經排上去的那一格不會被當成錯過）；頂列顯示「工人上次回報」，超過 15 分鐘沒有回報就進「需要你」。`tick` 只回做了幾件事，不回任何權杖或影片內容；工人的權杖本來就能送審，這裡沒有擴大它能做的事。
+審核檔案區只掛在 API 容器，OAuth 權杖也只在那裡，所以送 YouTube 的工作跑在 API 行程（沿用 `app/video_youtube/sync.py` 的 `run_sync`，連同它的租約、續傳與重試）。影片這一塊在 API 沒有背景排程（媒體工作靠輪詢推進、預覽清理掛在讀清單的請求上），時間到了由工人來敲門：工人的迴圈腳本（`ops/video/worker.sh`）在 `auto` 旁邊另開一個背景迴圈，照自己的計時每 5 分鐘（`VIDEO_SHORTS_KNOCK_SECONDS`，預設 300 秒）跑一次 `shorts/cli.mjs tick`，也就是呼叫 `POST /video/automation/shorts/tick`。它不等 `auto` 的一輪跑完（一輪可能跑上快一小時），也不看「自動產線有沒有開」，所以教學影片的自動草稿關著時 Shorts 的排程照走；工作區裡有 `STOP` 檔時它就暫停敲門，刪掉後下一次恢復（見 [AUTOMATION.md](AUTOMATION.md)）。伺服器在這個請求裡照順序做到期的事——把已經排上 YouTube 的那幾格標成已排程、鎖定時段、啟動該送的同步、讀該讀的成效、檢查授權——並記下這次敲門的時間（先標記再鎖定：工人停了一陣子再回來時，已經排上去的那一格不會被當成錯過）；頂列顯示「工人上次回報」，超過 15 分鐘沒有回報就進「需要你」。`tick` 只回做了幾件事，不回任何權杖或影片內容；工人的權杖本來就能送審，這裡沒有擴大它能做的事。
 
 站主按的「送到 YouTube」記在 audit log 的是站主本人；自動送出的那幾筆，操作者記成授權的那一位，metadata 帶 `auto: true` 與授權的 id（欄位名稱不要含 `token`、`secret`，audit 面板會把那些鍵濾掉）。
 
@@ -358,7 +358,7 @@ YouTube 的開發人員政策對「代替使用者寫入」有三條要求（原
 | `motion.mjs`（2026-09-29，票 `video-shorts-motion-music`） | 畫面不再是每句一張不透明字卡硬切：**一個場景一段**，底層是這個場景的圖（長片的關鍵影格，16:9 裁成 9:16 只留中間 56%，依 `camera` 運鏡：push in／pull out／pan left／pan right／tilt up／tilt down／drift）或主題的底色與光暈（純字卡場景，慢慢漂移），上層是每句的**透明字卡**（`sceneHtml` 的 `transparent`：有圖時內容放在半透明面板上、上下加漸層遮罩；`.content`、字幕條、計數與進度條的幾何不變，`measurePage` 與 qa 的 layout 項照舊）；場景之間從上一段的最後一格溶接 15 格，第一個場景硬切。運鏡表達式與溶接長度直接 import `assemble/drama.mjs`，跟長片一致。`checks.json` 多 `motion`（每景的 camera、背景種類、有沒有溶接）。實測線的證據圖（`asset` 沒有 `camera`）仍放在卡片裡，清楚可讀，底下是漂移的底色 |
 | 腳本格式第 2 版的 `camera`、`music`、`sfx` | 場景可寫 `camera`（上面七個詞）；文件層可寫 `music {track, sha256?, gain_db?, duck_db?}` 與 `sfx {set, gain_db?}`，都是站主放在工人主機 `<VIDEO_WORKDIR>/_music/`、`_sfx/<set>/` 的授權檔（跟長片同一份，`docs/videos/ILLUSTRATED.md` §配樂與音效），Shorts 不生成音樂。有配樂或音效時 `build` 走長片的 `measureMixArgs`／`mixArgs`（床壓在旁白下、側鏈壓低、成片 −14 LUFS、床 ≤ −24 LUFS 否則失敗），音效依 `shortSfxPlan` 放：每個場景開頭一個 stamp（第一景除外）、有 `big` 的句子一個 pop、1.5 秒內不重複。`buildId` 加配樂 sha 與音效組雜湊；`checks.json` 多 `music {track, sha256, bed_lufs}`、`sfx {set, events}`。第 1 版腳本一個位元組都不用改 |
 | `from-episode` 接任何有 shot 的長片 | 原來如此事務所的漫劇與插圖投影片影片都行：`episodeShort` 把每個 shot 換成長片的關鍵影格（雜湊綁定，不另外生圖），並帶上長片那個 shot 的 `camera`（Short 自己寫了就用自己的）；系列依長片決定（`episodeSeries`）：explainer → `sothatswhy`、插圖投影片 → `illustrated`（主題 `cut:illustrated`，深青、奶油白、琥珀，每張卡指回長片）；沒有 shot 的長片直接拒絕 |
-| `tools/video/automation/shorts.mjs` | 工人的 `shortsStep()`：先 `tick`，再依 `next` 做 `plan`、`brief`、`make`、`report`。`make` 依內容線走 `lab.mjs`、`cut.mjs`、`vertical.mjs`（漫劇）。`auto` 現在一讀到自動產線沒開就結束；`tick` 與 `shortsStep()` 要排在那個檢查之前，由 Shorts 自己的開關決定做不做 |
+| `tools/video/automation/shorts.mjs` | 工人的 `shortsStep()`：依 `next` 做 `plan`、`brief`、`make`、`report`。`make` 依內容線走 `lab.mjs`、`cut.mjs`、`vertical.mjs`（漫劇）。`auto` 現在一讀到自動產線沒開就結束；`shortsStep()` 要排在那個檢查之前，由 Shorts 自己的開關決定做不做。`tick` 不在這裡：工人的迴圈腳本另外每 5 分鐘敲一次（見「誰在什麼時候動手」） |
 | `track-init`、`report` | 留著給離線使用；伺服器是正本 |
 | CI | `video-tooling.yml` 的煙霧測試加一支 Shorts：用程式產生的正弦波當旁白（`--audio-dir`），從腳本做到上傳包，檢查尺寸、格數、響度 |
 
@@ -438,7 +438,7 @@ YouTube 的開發人員政策對「代替使用者寫入」有三條要求（原
 | 期 | 票 | 做什麼 | scope | 依賴 |
 | --- | --- | --- | --- | --- |
 | 一 | `video-shorts-api`（A1） | 遷移（`video_projects` 三欄與 `format`、設定、時段、成效、花費）、`shorts_qa_passed` 與自動核准、時段指派的規則、後台端點（總覽、月曆、花費、設定、授權、暫停）、清單篩選與上限 | `apps/api/app/video_shorts`（models、schemas、settings、slots、costs、rules、overview、errors、admin_api，以及兩個空的路由檔 admin_publish_api、admin_automation_api）、`apps/api/app/models.py`、`apps/api/app/video_reviews`、`apps/api/app/video_automation`（judge、admin_api）、`apps/api/app/main.py`、`apps/api/app/admin/operations_service.py`、遷移、測試 | — |
-| 一 | `video-shorts-tools-push`（T1） | 腳本格式第 2 版、三個系列各自的版面、伺服器旁白、`check-audio`、`qa`、`package`、`push`、`import`、CI 的煙霧測試；工人每一輪先敲門（`shorts/cli.mjs tick`，由工人的迴圈腳本呼叫） | `tools/video/shorts`、`ops/video/worker.sh`、`.github/workflows/video-tooling.yml` | A1 |
+| 一 | `video-shorts-tools-push`（T1） | 腳本格式第 2 版、三個系列各自的版面、伺服器旁白、`check-audio`、`qa`、`package`、`push`、`import`、CI 的煙霧測試；工人的迴圈腳本在 `auto` 旁邊每 5 分鐘敲一次門（`shorts/cli.mjs tick`，有 `STOP` 檔時暫停） | `tools/video/shorts`、`ops/video/worker.sh`、`.github/workflows/video-tooling.yml` | A1 |
 | 一 | `video-shorts-web-routes`（A2） | 工人與工具端點的網站轉送；影片清單的轉送把篩選參數帶過去（原本的轉送不帶查詢字串） | `apps/web/app/api/video/automation/shorts`、`apps/web/app/api/video/automation/videos` | — |
 | 一 | `video-shorts-admin-tab`（W1） | Shorts 分頁：頂列、需要你、等你上傳、月曆、片庫、成效、花費、設定與授權；9:16 預覽與遮擋範圍；五語字串 | `apps/web/components/admin-video-shorts*`、`admin-video-reviews.tsx`、`admin-video-review-card.tsx`、`apps/web/app/api/admin-video-shorts`、`apps/web/messages` | A1；PR #870 合併之後 |
 | 一 | `video-shorts-youtube-auto`（Y1） | `tick`、照授權自動送出、依檔名認領、Shorts 的欄位、撤回、Data API 的成效快照、每 30 天驗證 | `apps/api/app/video_shorts`（publish、claim、stats、tick、admin_publish_api）、`apps/api/app/video_youtube`、測試 | A1 |
