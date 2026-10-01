@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-shorts-automation-api
 title: Video shorts A3: the topic library, the weekly plan, the next job and the weekly report on the server
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-shorts-a3
 claimed_at: 2026-10-01T13:42:09Z
 created_at: 2026-09-28T03:40:00Z
-completed_at:
+completed_at: 2026-10-01T14:52:37Z
 branch: claude/video-shorts-automation-api
 depends_on:
   - 2026-09-28-video-shorts-api
