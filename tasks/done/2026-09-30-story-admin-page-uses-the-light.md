@@ -1,13 +1,13 @@
 ---
 id: 2026-09-30-story-admin-page-uses-the-light
 title: Story admin page uses the light series read
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5-5-story-light-web
 claimed_at: 2026-10-01T03:39:08Z
 created_at: 2026-09-30T04:21:19Z
-completed_at:
+completed_at: 2026-10-01T03:56:10Z
 branch: claude/story-admin-light-read
 depends_on:
   - 2026-09-28-video-story-light-series-read
