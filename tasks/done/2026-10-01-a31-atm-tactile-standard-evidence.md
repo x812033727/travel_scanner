@@ -1,13 +1,13 @@
 ---
 id: 2026-10-01-a31-atm-tactile-standard-evidence
 title: 修正 A31 舊查核把 ATM 5 鍵觸覺規定誤寫成電梯凸點規定
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: codex-a31-evidence
 claimed_at: 2026-10-01T05:16:26Z
 created_at: 2026-10-01T05:16:24Z
-completed_at:
+completed_at: 2026-10-01T05:39:24Z
 branch: codex/sothatswhy-season2-batch01
 depends_on: []
 scope:

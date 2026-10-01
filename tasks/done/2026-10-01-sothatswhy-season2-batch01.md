@@ -1,13 +1,13 @@
 ---
 id: 2026-10-01-sothatswhy-season2-batch01
 title: 原來如此第二季首批：B26 S26 T26 A31 四集製作包與獨立審稿
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: codex-sothatswhy-batch01
 claimed_at: 2026-10-01T05:10:09Z
 created_at: 2026-10-01T05:10:08Z
-completed_at:
+completed_at: 2026-10-01T05:39:20Z
 branch: codex/sothatswhy-season2-batch01
 depends_on:
   - 2026-09-29-so-that-s-why-vet-the
