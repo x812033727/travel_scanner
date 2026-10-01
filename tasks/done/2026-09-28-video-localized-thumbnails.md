@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-localized-thumbnails
 title: Video localized thumbnails: render one thumbnail per caption locale and upload it under Languages
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-localized-thumbs
 claimed_at: 2026-10-01T15:02:27Z
 created_at: 2026-09-28T02:30:47Z
-completed_at:
+completed_at: 2026-10-01T15:24:38Z
 branch: claude/video-localized-thumbnails
 depends_on: []
 scope:
