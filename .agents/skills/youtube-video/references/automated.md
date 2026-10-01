@@ -90,11 +90,12 @@ node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整�
   - 章節至少 3 個，每個至少 10 秒；lint 先用估計值檢查，`tts` 之後再用實際時間檢查一次。
   - 名稱寫內容，要是觀眾會搜尋的說法，例如「它能回答的三種題型」。第一個（00:00）和最後一個也一樣，不用「開場」「結論」。
   - 畫面左上會顯示「02 / 06 章節名」，頂部有一條分段進度條，都由工具自動畫。
-- **版型**：共 15 種，資料欄位與可以逐條出現的數量定義在 `tools/video/templates/templates.mjs` 的 `TEMPLATE_SPECS`。`**文字**` 會變成強調色，`\n` 是手動斷行。2026-09-26 參考一支同類影片後加了四種：
+- **版型**：共 16 種，資料欄位與可以逐條出現的數量定義在 `tools/video/templates/templates.mjs` 的 `TEMPLATE_SPECS`。`**文字**` 會變成強調色，`\n` 是手動斷行。2026-09-26 參考一支同類影片後加了四種：
   - `chat`：對話泡泡，例如提問與回答、客戶來信；
   - `quote`：官方原文加翻譯與來源；
   - `stats`：2–4 格大數字；
   - `cta`：影片中段一張卡，指向說明欄第一行的文章。
+  - `terminal`（2026-10-01 加入，第 16 種）：模擬終端機，提示字元只能是 `$` 或 `>`，指令逐字打出、`output` 一段一段出現；指令與輸出必須照抄真的執行結果，並附 `ran_on`（執行日期）與 `tool_version`（工具自報的版本），缺一 lint 就擋，家目錄、user@host、email 也擋；範例 `tools/video/templates/terminal/fixtures/claude-code/video.json`。
 - **畫面節奏**：純投影片同一個畫面最好不要停超過 15 秒左右。長段說明拆成幾個場景，或一句帶出一個項目；具體例子優先用 `chat`、`quote`、`stats`，不要一張條列從頭講到尾。
 - **插圖投影片**（2026-09-29 定案，設計在 `docs/videos/ILLUSTRATED.md`；範例 `tools/video/core/fixtures/illustrated/video.json`）：卡片之間放 `shot` 場景——一張 AI 插圖加運鏡，`data.prompt`（英文 ≤1000 字：物件、場景、無臉人物、構圖；不畫字、logo、真人）、`data.camera`（push in／pull out／pan left／pan right／tilt up／tilt down／drift）、`data.visual: "still"`、可選 `data.transition`（cut／dissolve）。要有 `look`（預設 `tech-story`），可帶 `music.track`（站主放在 `<VIDEO_WORKDIR>/_music/` 的授權檔）與 `sfx.set`（`_sfx/<set>/` 的授權音效組）。節奏：每 5–8 秒換一張畫面、卡片狀態 ≤8 秒、插圖至少佔一半時間、開場 20 秒內落鉤；一個 shot 帶一到兩句；相鄰的 shot 提示詞不能相似；構圖以中央為主（Shorts 裁 9:16 只剩 56% 寬）。lint 先當警告，最終 QA 的 `pace` 項在真實時間軸上擋。主幹在「旁白核准」後多 `keyframes`（生圖，judge 自動核准分鏡）、在 `render` 後多 `music`；`assemble` 自動把單狀態卡片做成漂移、畫面間溶接、章節卡硬切、配樂壓在旁白下、音效放在章節卡、溶接與逐條出現上。
 - **圖片與圖解**：只能用 `apps/web/public/` 或 `docs/videos/` 底下的檔案，並列在 `assets`，寫清楚來源與授權。

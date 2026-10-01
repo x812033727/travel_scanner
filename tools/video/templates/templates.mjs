@@ -4,6 +4,8 @@
 // with three items and three reveals starts empty and gains one item per reveal; with no reveals
 // every item is there from the start. Elements that appear in a state get the `enter` class, and
 // the renderer freezes that entrance animation frame by frame (tools/video/render/browser.mjs).
+import { TERMINAL_CSS, TERMINAL_SPEC, terminalBody } from "./terminal/terminal.mjs";
+
 export const ORIGIN = "https://video.local";
 export const SIZE = { width: 1920, height: 1080 };
 export const THUMB_SIZE = { width: 1280, height: 720 };
@@ -144,6 +146,8 @@ export const TEMPLATE_SPECS = {
     ],
     capacity: (data) => data.stats.length,
   },
+  // A command and what it printed, from a real run with its date and version (terminal/terminal.mjs).
+  terminal: TERMINAL_SPEC,
   cta: {
     check: (data) => [!isText(data.title) && "title is required", data.kicker !== undefined && !isText(data.kicker) && "kicker must be text", data.sub !== undefined && !isText(data.sub) && "sub must be text"],
     capacity: () => 0,
@@ -208,6 +212,10 @@ function enterClass(first, extra = "", index = 0) {
 const heading = (data, first) => (data.title ? `<h2 ${enterClass(first, "heading fit")}>${richText(data.title)}</h2>` : "");
 const pad = (number) => String(number).padStart(2, "0");
 const knowsChapters = (state) => (state.chapterCount ?? 0) >= 2 && (state.chapterNumber ?? 0) >= 1;
+
+// CSS a template carries in its own page instead of the theme, so that adding the template moved
+// no other video's frame keys.
+const TEMPLATE_CSS = { terminal: TERMINAL_CSS };
 
 const RENDERERS = {
   title(data, state) {
@@ -302,6 +310,9 @@ const RENDERERS = {
     );
     return `${heading(data, state.first)}<div class="grid" style="--n:${data.stats.length}">${cards.join("")}</div>${data.source ? `<div class="caption-line">${richText(data.source)}</div>` : ""}`;
   },
+  terminal(data, state) {
+    return terminalBody(data, state, heading(data, state.first));
+  },
   cta(data, state) {
     return `<div ${enterClass(state.first, "cta-card", 0)}>${data.kicker ? `<div class="kicker">${richText(data.kicker)}</div>` : ""}<h2 class="fit">${richText(data.title)}</h2>${data.sub ? `<div class="sub fit">${richText(data.sub)}</div>` : ""}<div class="site">${SITE_LABEL}</div></div>`;
   },
@@ -355,7 +366,7 @@ export function slideHtml(scene, state) {
     ...state,
     visible: (count) => visibility(count, state.totalReveals, state.reveal, state.previousReveal, state.first),
   };
-  return page(`${chrome(scene, state)}<main class="content t-${scene.template}">${renderer(scene.data, context)}</main>`, SIZE);
+  return page(`${chrome(scene, state)}<main class="content t-${scene.template}">${renderer(scene.data, context)}</main>`, SIZE, TEMPLATE_CSS[scene.template] ?? "");
 }
 
 /**
