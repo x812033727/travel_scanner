@@ -4,6 +4,9 @@ import { editorFixture, editorPlaceOptions } from "./fixtures/itinerary-editor";
 
 const routePreviewExpiresAt = () => new Date(Date.now() + 60 * 60_000).toISOString();
 
+// Keep the first failed attempt of this no-retry investigation without tracing other cases.
+const comparisonTest = test.extend({ trace: "retain-on-failure" });
+
 test("contextual itinerary picker adds repeatedly, undoes, moves across meals and days, and reloads", async ({ page }) => {
   let trip = structuredClone(editorFixture);
   const discovered: string[] = [];
@@ -989,7 +992,7 @@ test("back-to-back fare comparison renders both strategy modes", async ({ page }
   await expect(page.getByText(/外站兩段票估算省下.*2,000/).first()).toBeVisible();
 });
 
-test("different destinations can complete an external two-segment comparison", async ({ page }) => {
+comparisonTest("different destinations can complete an external two-segment comparison", async ({ page }) => {
   await page.route("**/api/travel/crawlers/airlines/status", (route) => route.fulfill({
     status: 200,
     contentType: "application/json",
@@ -1050,18 +1053,27 @@ test("different destinations can complete an external two-segment comparison", a
     });
   });
 
-  await page.goto("/zh-TW/labs/airlines");
-  await page.getByRole("tab", { name: "倒買法" }).click();
-  await page.getByLabel("第二次目的地").selectOption("SEL");
-  await page.getByLabel("頭段單程每人價格").fill("3000");
-  await page.getByLabel("中段反向兩航段每人價格").fill("9000");
-  await page.getByLabel("尾段單程每人價格").fill("4000");
-  await page.getByLabel("第一次一般來回每人價格").fill("12000");
-  await page.getByLabel("第二次一般來回每人價格").fill("10000");
-  await page.getByRole("button", { name: /^比較倒買價格 · 消耗 1 次$/ }).click();
+  await test.step("Open the airline lab and comparison form", async () => {
+    await page.goto("/zh-TW/labs/airlines");
+    await page.getByRole("tab", { name: "倒買法" }).click();
+  });
+  await test.step("Choose the second destination and enter five manual fares", async () => {
+    await page.getByLabel("第二次目的地").selectOption("SEL");
+    await page.getByLabel("頭段單程每人價格").fill("3000");
+    await page.getByLabel("中段反向兩航段每人價格").fill("9000");
+    await page.getByLabel("尾段單程每人價格").fill("4000");
+    await page.getByLabel("第一次一般來回每人價格").fill("12000");
+    await page.getByLabel("第二次一般來回每人價格").fill("10000");
+  });
+  await test.step("Submit the external two-segment comparison", async () => {
+    await page.getByRole("button", { name: /^比較倒買價格 · 消耗 1 次$/ }).click();
+  });
 
   await expect(page.getByText("不同目的地的外站兩段票已支援")).toBeVisible();
-  await expect(page.getByText(/外站兩段票估算省下.*6,000/).first()).toBeVisible();
+  for (const mode of ["最低混搭", "最低同航空公司"]) {
+    const resultCard = page.getByRole("article").filter({ has: page.getByRole("heading", { name: mode, exact: true }) });
+    await expect(resultCard.getByText("外站兩段票估算省下 NT$6,000（27.3%）", { exact: true })).toBeVisible();
+  }
   await expect(page.getByText("SEL").first()).toBeVisible();
   expect(submitted).toMatchObject({
     first_destination: "TYO",

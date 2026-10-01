@@ -1,14 +1,14 @@
 ---
 id: 2026-09-24-e2e-mock-admin-news-navigation
 title: 離線 e2e 的假導覽表沒有 /admin/news，admin-operations.spec 從沒打開新聞後台
-status: open
+status: done
 priority: P3
 area: web
-owner:
-claimed_at:
+owner: codex-b10e-news-e2e
+claimed_at: 2026-10-01T00:17:02Z
 created_at: 2026-09-24T04:52:01Z
-completed_at:
-branch:
+completed_at: 2026-10-01T00:43:04Z
+branch: codex/admin-news-e2e-20261001
 depends_on: []
 scope:
   - tools/e2e-runtime-api.mjs
@@ -63,37 +63,37 @@ fixture 要加在 spec 的 `isolateAdmin`，不是加在 mock API。workspace �
 
 ## Definition of done
 
-- [ ] 離線 mock 回給 owner、viewer、content 的 bootstrap 導覽都含 `/admin/news`，位置跟真的 registry 一樣（guides 之後、hotspots 之前）；`pending` 帶 `news_review_pending`。
-- [ ] `admin-operations.spec.ts` 的 owner 矩陣會打開 `/zh-TW/admin/news`，而且：
+- [x] 離線 mock 回給 owner、viewer、content 的 bootstrap 導覽都含 `/admin/news`，位置跟真的 registry 一樣（guides 之後、videos 之前）；`pending` 帶 `news_review_pending`。
+- [x] `admin-operations.spec.ts` 的 owner 矩陣會打開 `/zh-TW/admin/news`，而且：
   - 回 200，h1 是「AI 每小時自動新聞」；
-  - 看得到資料載入後才會出現的「Pipeline runs: 0」；
+  - 看得到資料載入後才會出現的完整統計「AI 呼叫 0 次 · 失敗 0 次 · tokens 0/0」，以及具名的待審候選卡；
   - 沒有「這個後台頁面載入失敗」標題；
   - 沒有 pageerror、第一方 4xx、站外請求、寫入，桌機寬度也不溢出。
-- [ ] `/zh-TW/admin/news?tab=settings` 畫得出三張 gate 卡片（「AI · 啟用門檻」等），`?tab=sources` 畫得出「新增來源」，兩頁都沒有「這個後台頁面載入失敗」。
-- [ ] 反向：暫時拿掉 candidates fixture，owner 矩陣會紅，不會綠著放過錯誤面板。
-- [ ] 角色矩陣：content 和 viewer 看得到 `/admin/news`；support、operations、database_operator、deployer 看不到。
-- [ ] 以後 `fallbackAdminNavigation` 多一列而 mock 沒跟上時，`npm run test:web` 會紅，而且訊息裡直接列出缺的 href。
+- [x] `/zh-TW/admin/news?tab=settings` 畫得出 AI、TECH、CRYPTO 三張 gate 卡片（「Jev 一致率（參考）」），`?tab=sources` 畫得出「新增來源」，兩頁都沒有錯誤標題或工作區 alert。
+- [x] 反向：暫時拿掉 candidates fixture，owner 矩陣會紅在具名候選卡斷言，不會綠著放過空清單。
+- [x] 角色矩陣：content 和 viewer 看得到 `/admin/news`；support、operations、database_operator、deployer 看不到。
+- [x] 以後 `fallbackAdminNavigation` 多一列而 mock 沒跟上時，`npm run test:web` 會紅，而且訊息裡直接列出缺的 href。
 
 ## Steps
 
-- [ ] `tools/e2e-runtime-api.mjs`：在 `:85` 的 guides 列後面加 `["news", "content", "/admin/news", "content.read", "news_review_pending"]`。`:131` 的 `pending` 補上 `news_review_pending: 0`。側欄只在數字大於 0 時才畫 badge（`components/admin-nav.tsx:121-123`），所以不會多出 badge，`readability.spec.ts` 量的東西也不會變。
-- [ ] `apps/web/e2e/admin-operations.spec.ts`：在 `ADMIN_PAGES` 的 `"/admin/guides"` 後面插入 `"/admin/news"`，`ROLE_NAVIGATION.content` 在同樣位置插入。viewer 和 owner 是從 `ADMIN_PAGES` 推出來的，不用改。
-- [ ] 在 `isolateAdmin` 的 GET 分支加四個 fixture，放在 `:212-215` 的 guides fixture 旁邊。形狀照 `apps/api/app/news_automation/schemas.py`：
-  - `/admin/news/candidates`：回 `{ candidates: [], total: 0, page: 1, pages: 1 }`。route 用 `url.pathname` 比對，`?limit=100` 不影響。
+- [x] `tools/e2e-runtime-api.mjs`：在 guides 列後面加 `["news", "content", "/admin/news", "content.read", "news_review_pending"]`；`pending` 補上 `news_review_pending: 0`。既有影片導覽與 fixture 保留。
+- [x] `apps/web/e2e/admin-operations.spec.ts`：在 `ADMIN_PAGES` 的 `"/admin/guides"` 後面插入 `"/admin/news"`，`ROLE_NAVIGATION.content` 在同樣位置插入。viewer 和 owner 是從 `ADMIN_PAGES` 推出來的，不用改。
+- [x] 在 `isolateAdmin` 的 GET 分支加四個 fixture，形狀照目前新聞 API／前端型別：
+  - `/admin/news/candidates`：回一筆 synthetic manual_review 候選，`total: 1, page: 1, pages: 1`。route 用 `url.pathname` 比對，query 不影響。
   - `/admin/news/sources`：回 `[]`。
   - `/admin/news/settings`：回完整的 SettingsView。可以直接照抄 `apps/web/components/admin-news-workspace.test.tsx:32-52` 的 `settings`，裡面有 ai、tech、crypto 三個 `gates`，以及 `model_options`、`default_models`、`updated_at`。
-  - `/admin/news/stats`：回 `{ pending_review: 0, failed: 0, published: 0, queue_by_status: {}, pipeline_runs: 0, pipeline_failures: 0, input_tokens: 0, output_tokens: 0 }`。
-- [ ] 在 owner 迴圈裡替 `/admin/news` 加專屬斷言：
+  - `/admin/news/stats`：回完整 StatsView，`pending_review: 1`、`queue_by_status: { manual_review: 1 }`，其他計數 0。
+- [x] 在 owner 迴圈裡替 `/admin/news` 加專屬斷言：
   1. heading「AI 每小時自動新聞」可見；
-  2. 文字「Pipeline runs: 0」可見，只有 stats 載入而且 render 沒丟錯時才會出現；
-  3. 然後斷言「這個後台頁面載入失敗」heading `toHaveCount(0)`。
-- [ ] 迴圈結束後，另外打開 `/zh-TW/admin/news?tab=settings` 和 `?tab=sources`：
-  - 先等「Pipeline runs: 0」出現；
-  - 再斷言 settings 看得到「AI · 啟用門檻」或「儲存設定」，sources 看得到「新增來源」（字串見 `lib/admin-news-copy.ts:28-31`）；
-  - 錯誤標題數量為 0。
+  2. 完整的目前文案統計可見，待審區的具名候選按鈕可見；
+  3. 「這個後台頁面載入失敗」heading 和 main 內 alert 均 `toHaveCount(0)`。
+- [x] 迴圈結束後，另外打開 `/zh-TW/admin/news?tab=settings` 和 `?tab=sources`：
+  - 先等完整統計出現；
+  - 再斷言 settings 的三張 gate 卡片、sources 的「新增來源」；
+  - 錯誤標題與 main 內 alert 數量為 0。
   - 不要把帶 `?tab=` 的網址加進 `ADMIN_PAGES`，那份清單要跟導覽的 href 逐一相等。
-- [ ] 評估要不要把「錯誤標題為 0」的斷言放進整個 owner 迴圈，讓每一頁都檢查。先在本機跑一次：如果其他頁面在 fixture 底下也掉進錯誤面板，這張票只保留 `/admin/news` 的斷言，那些頁面另開一張票列出來，不要順手擴大 scope。
-- [ ] 新增 `apps/web/lib/admin-navigation-e2e-fixture.test.ts`，做法照 `apps/web/lib/usage-catalog-e2e-fixture.test.ts`：
+- [x] 評估後將新增錯誤標題／alert 斷言限於新聞工作區；整個既有 owner 矩陣通過，不擴大其他頁面的驗收。
+- [x] 新增 `apps/web/lib/admin-navigation-e2e-fixture.test.ts`，做法照 `apps/web/lib/usage-catalog-e2e-fixture.test.ts`：
   - 讀 `tools/e2e-runtime-api.mjs` 的原始碼，抽出 `adminNavigation` 每一列的 href；
   - 跟 `fallbackAdminNavigation`（`lib/admin-operations.ts:31`）的 href 做集合比對，不比順序，因為兩邊本來就不是同一個順序；
   - 失敗訊息要列出缺了哪些 href。
@@ -129,6 +129,11 @@ kill $pid
 
 ## Notes
 
+- 2026-10-01 完成：三個 scope 檔案已實作並經獨立覆核。mock 與 role 導覽補齊；四個讀取 fixture 和具名候選防止缺 candidates 時空清單假綠；目前 zh-TW 統計／gate 文案替代開票時的舊文案。JSON 直接用 `with { type: "json" }` 匯入，符合 Node 24 的 Playwright ESM 載入。
+- 本機 production build、全 web TypeScript、scoped ESLint、node syntax check 通過；新增 drift guard 先 RED（缺 `/admin/news`），實作後與既有 usage fixture 共 3 項 PASS。production build 下的 admin-operations、admin-domains、readability 兩個 project 合計 77 PASS／9 個原有 SKIP；owner／role 全矩陣沿用 desktop-only，手機沿用原有 focused acceptance。
+- 三個有效負例均失敗在預期斷言：缺候選 fixture → 指定候選卡不可見；缺 news tuple → unit 的 missing `/admin/news`；缺 news tuple → owner 導覽陣列不相等。負例之後來源 bytes／SHA256 完整還原。早期 JSON loader 失敗及 Next route announcer 空 alert 不算負例證據；已修正載入方式及 main 範圍後重驗。
+- 完整 tools 測試使用 bundled Node 24.21.0、`--test-concurrency=1`：1000 PASS／2 個平台 SKIP，無失敗。
+- 統計及三個分頁都保留 pageerror、第一方錯誤、站外請求、寫入與 overflow 檢查；沒有點任何新聞動作。這張票只驗證本機合成 fixture，未連正式站、啟動新聞自動化或發布內容。
 - 來源：2026-09-23 修 PR #694 的 full-stack-smoke 時發現。當時只改了 full-stack spec 的兩份清單，mock 和離線 spec 都沒跟上。2026-09-24 在 main `692dcf5a` 重驗，問題還在，mock 也實際跑過。
 - 先例：`tasks/done/2026-09-12-guides-admin-entry-unreachable.md` 是 `/admin/guides` 的同一組修法。drift guard 的先例是 `apps/web/lib/usage-catalog-e2e-fixture.test.ts`。
 - 既有盲點，不只新聞頁有：owner 迴圈的「有 h1」「側欄在」「沒有 pageerror」三項，任何頁面掉進 `app/[locale]/admin/error.tsx` 都照樣會過。full-stack spec 因為另外收了 `consoleErrors`（`admin-operations-full-stack.spec.ts:107`）才看得到這種錯。處理方式見 Steps 倒數第二項。

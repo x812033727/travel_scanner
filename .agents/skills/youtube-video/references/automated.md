@@ -1,6 +1,6 @@
 # 全自動路線：AI 撰稿、台灣口音旁白、自動做成片
 
-這條路線的成品是一支投影片加旁白的影片。旁白由伺服器代為合成（頻道聲音是 Gemini 的 Sulafat；Azure 是另一個供應商，站主覺得它的聲音太平），畫面由 HTML 版型截圖，合成用 ffmpeg。每支先只出繁體中文（CC 與標題說明）；其他語言（en、ja、ko、zh-CN 的標題說明、CC、配音）由站主在成片核准後為每支影片勾選才做（`docs/videos/LANGUAGES.md`，下面第 13 步）。關卡有四個，2026-09-27 起（`docs/videos/HANDS-OFF.md`）前三個由 AI 決定，站主決定的是語言與上架時間：
+這條路線的成品是一支投影片加旁白的影片。旁白由伺服器代為合成（頻道聲音是 Gemini 的 Sulafat；Azure 是另一個供應商，站主覺得它的聲音太平），畫面由 HTML 版型截圖，合成用 ffmpeg。每支先只出繁體中文（CC 與標題說明）；其他語言（en、ja、ko、zh-CN 的標題說明、CC、配音）由站主在成片核准後為每支影片勾選才做（`docs/videos/LANGUAGES.md`，下面第 13 步）。關卡有四個（`docs/videos/HANDS-OFF.md`），前三個由 AI 決定，站主決定的是語言與上架時間：
 
 | 關卡 | 誰決定 | 什麼時候才輪到站主 |
 | --- | --- | --- |
@@ -90,7 +90,7 @@ node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整�
   - 章節至少 3 個，每個至少 10 秒；lint 先用估計值檢查，`tts` 之後再用實際時間檢查一次。
   - 名稱寫內容，要是觀眾會搜尋的說法，例如「它能回答的三種題型」。第一個（00:00）和最後一個也一樣，不用「開場」「結論」。
   - 畫面左上會顯示「02 / 06 章節名」，頂部有一條分段進度條，都由工具自動畫。
-- **版型**：共 15 種，資料欄位與可以逐條出現的數量定義在 `tools/video/templates/templates.mjs` 的 `TEMPLATE_SPECS`。`**文字**` 會變成強調色，`\n` 是手動斷行。2026-09-26 參考一支同類影片後加了四種：
+- **版型**：共 15 種，資料欄位與可以逐條出現的數量定義在 `tools/video/templates/templates.mjs` 的 `TEMPLATE_SPECS`。`**文字**` 會變成強調色，`\n` 是手動斷行。放具體例子的四種：
   - `chat`：對話泡泡，例如提問與回答、客戶來信；
   - `quote`：官方原文加翻譯與來源；
   - `stats`：2–4 格大數字；
@@ -154,7 +154,7 @@ node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整�
 
 - 看紀錄：`docker compose -f docker-compose.prod.yml logs --timestamps video-worker`；`top video-worker` 看它是不是在 `sleep 300`。
 - 一輪同時推兩支影片（compose 的 `VIDEO_WORKER_LANES: "2"`，上限 3，設 1 回到一次一支）：第一條線照舊處理放棄、重試、貼網址、討論、作品與新稿，第二條只推已經在做的影片；兩條線不會拿同一支，紀錄裡第二條線的行前面有 `[lane 2]`。
-- 緊急停止：`docker compose -f docker-compose.prod.yml exec -T video-worker touch /var/lib/mokaair/video-work/STOP`，做完手上那一段就停；要恢復時刪掉這個檔。
+- 緊急停止：`docker compose -f docker-compose.prod.yml exec -T video-worker touch /var/lib/mokaair/video-work/STOP`，做完手上那一段就停；要恢復時刪掉這個檔。Shorts 的敲門（在 `auto` 旁邊另外每 5 分鐘跑一次）也看這個檔，有 STOP 就不敲門，網站也就不鎖定時段、不再開始送 Shorts，紀錄印一行 `video-worker: shorts: STOP found`。
 - `video_docs` volume 只在第一次建立時從映像填入，之後映像裡的 `docs/videos` 更新不會進去。
 - 工人只看得到自己的 volume，可能重做本機已經做過的題目：本機或分支上的影片用 `review-push --report-only` 登記到審核頁。
 - 換新模型前先更新主機的 Claude CLI（`claude update`；2.1.259 對 Opus 5.5 回 400，要 2.1.280 以上）。
