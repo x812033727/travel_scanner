@@ -14,7 +14,7 @@ import { build, loudnessProblems, profileProblems } from './build.mjs';
 import { audioHash, checkPhrases, phrasesHash } from './check.mjs';
 import { main } from './cli.mjs';
 import { PROFILE, buildTimeline, lineOf, parseSrt, phrasesOf, sceneHtml, sha256, srt, validate } from './core.mjs';
-import { captionTimingProblems, scriptFromImport, timelineFromCaptions } from './import.mjs';
+import { captionTimingProblems, frameRateProblem, importShort, scriptFromImport, timelineFromCaptions } from './import.mjs';
 import { THEMES, themeOf } from './layouts.mjs';
 import { composeDescription, composeMetadata, disclosureOf, metadataProblems, packageBuild, packageItems, packageReport, PACKAGE_ITEM_IDS } from './package.mjs';
 import { PART_BYTES, evidenceRole, finalReview, projectBody, publishReview, push } from './push.mjs';
@@ -613,6 +613,38 @@ test('a finished cut\'s captions become its narration and its timeline', () => {
   assert.deepEqual(captionTimingProblems(cues, 30), []);
   assert.deepEqual(captionTimingProblems(cues, 25), ['the captions run to 30.00s, the cut to 25.00s']);
   assert.deepEqual(captionTimingProblems([{ start: 0, end: 3 }, { start: 2, end: 5 }], 10), ['caption 2 starts before caption 1 ends']);
+});
+
+test('a cut that is not 30 fps is refused for its frame rate, and captions are held to its real length', async (t) => {
+  // The captions run to 28.97s, as the season-one review cuts did.
+  const from = temp(t, 'shorts-import-from-');
+  const lines = Array.from({ length: 9 }, (_x, i) => `${i + 1}\n00:00:${String(i * 3).padStart(2, '0')},000 --> 00:00:${String(i * 3 + 3).padStart(2, '0')},000\n第 ${i + 1} 句旁白`);
+  lines.push('10\n00:00:27,000 --> 00:00:28,970\n第 10 句旁白');
+  writeFileSync(path.join(from, 'zh-TW.srt'), lines.join('\n\n'));
+  writeFileSync(path.join(from, 'meta.json'), JSON.stringify({ slug: 'cut-imported', line: 'cut', series: 'ai-model-choice', titles: ['怎麼挑模型', '挑模型的三件事'], description: '從長片切出來的重點。', source: { slug: 'ai-model-choice' } }));
+  writeFileSync(path.join(from, 'final.mp4'), 'not a real cut');
+  // Stand-ins that cannot run: an import let past its checks fails at its first ffmpeg call.
+  const tools = { ffmpeg: path.join(from, 'no-ffmpeg'), ffprobe: path.join(from, 'no-ffprobe') };
+  const importWith = (probe) => importShort({ from, workdir: temp(t, 'shorts-import-work-'), tools, measureImpl: async () => probe });
+
+  // 695 frames at 24 fps is 28.96s; read on the 30 fps grid it was 23.17s and the captions were blamed.
+  const at24 = measured({ video: { r_frame_rate: '24/1', nb_frames: '695', duration: '28.958333' } });
+  await assert.rejects(importWith(at24), (error) => {
+    assert.match(error.message, /24 fps \(24\/1\)/);
+    assert.match(error.message, /re-encode it to 30 fps/);
+    assert.doesNotMatch(error.message, /captions run to/);
+    return true;
+  });
+  assert.match(frameRateProblem({ r_frame_rate: '30000/1001' }), /29\.97 fps \(30000\/1001\)/);
+  assert.match(frameRateProblem({}), /unreadable frame rate \(none\)/);
+  assert.equal(frameRateProblem({ r_frame_rate: '30/1' }), '');
+
+  // At 30 fps the captions are held to the stream's own duration: a cut that covers them gets past
+  // the comparison to the stand-in ffmpeg, and one that ends early is named with its real length.
+  const at30 = measured({ video: { nb_frames: '870', duration: '29.000000' } });
+  await assert.rejects(importWith(at30), /^Error: no-ffmpeg failed/);
+  const short30 = measured({ video: { nb_frames: '870', duration: '25.500000' } });
+  await assert.rejects(importWith(short30), /the captions run to 28\.97s, the cut to 25\.50s/);
 });
 
 // --- the site ------------------------------------------------------------------------------------

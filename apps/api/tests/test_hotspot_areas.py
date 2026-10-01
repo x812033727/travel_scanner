@@ -1,5 +1,7 @@
 from collections import Counter
 
+import pytest
+
 from app.hotspots.areas import (
     HOTSPOT_AREAS,
     area_by_code,
@@ -10,6 +12,7 @@ from app.hotspots.areas import (
 )
 from app.hotspots.catalog import HOTSPOT_SEEDS
 from app.hotspots.cities import CITY_BY_CODE
+from app.i18n import Locale
 
 # Seeds whose stored coordinates do not match the place they name, so no honest area
 # contains them. They are tracked here instead of widening a circle to swallow them;
@@ -33,18 +36,7 @@ AREA_OUT_OF_TOWN_SEEDS = {
     "nrt-mitsui-outlet-tama-minami-osawa",  # NRT: Hachioji, 8 km west of the 多摩 circle
 }
 
-# In the city, but in a district the area catalog has never had to name: both are
-# electronics quarters, and both sit a few hundred metres outside the nearest circle.
-# Drawing circles for them moves neighbouring seeds between areas, which is a change to
-# the area catalog rather than to these seeds — filed as a separate task.
-AREA_NO_CIRCLE_YET_SEEDS = {
-    "icn-yongsan-electronics-market",  # 800 m past 龍理團街's 600 m circle
-    "tpe-syntrend-creative-park",  # 160 m past 台北車站's 1.2 km circle
-}
-
-AREA_UNASSIGNED_SEEDS = (
-    AREA_MISPLACED_SEEDS | AREA_OUT_OF_TOWN_SEEDS | AREA_NO_CIRCLE_YET_SEEDS
-)
+AREA_UNASSIGNED_SEEDS = AREA_MISPLACED_SEEDS | AREA_OUT_OF_TOWN_SEEDS
 
 
 def test_every_city_has_a_reviewed_area_catalog() -> None:
@@ -101,9 +93,11 @@ def test_seed_spot_checks() -> None:
         "wikidata-q11650434": "kawaramachi",  # 錦市場
         "gyeongbokgung": "jongno",
         "wikidata-q484407": "myeongdong",  # 明洞
+        "icn-yongsan-electronics-market": "yongsan-electronics",
         "wat-arun": "thonburi",
         "grand-palace-bangkok": "rattanakosin",
         "wikidata-q83101": "xinyi",  # 台北 101
+        "tpe-syntrend-creative-park": "guanghua",
         "wikidata-q17541": "peak",  # 太平山
         "wikidata-q7698673": "mong-kok",  # 廟街夜市
         "khh-q701113": "qianjin",  # 六合夜市
@@ -122,6 +116,65 @@ def test_seed_spot_checks() -> None:
     for slug, code in expected.items():
         seed = by_slug[slug]
         assert resolve_area_code(seed.city_code, seed.latitude, seed.longitude) == code, slug
+
+
+def test_electronics_circles_preserve_neighbouring_areas() -> None:
+    by_slug = {seed.slug: seed for seed in HOTSPOT_SEEDS}
+    expected = {
+        "wikidata-q494407": "yongsan",  # National Museum of Korea
+        "wikidata-q540794": "taipei-station",  # Chiang Kai-shek Memorial Hall
+        "tpe-taipei-city-mall": "taipei-station",
+    }
+    for slug, code in expected.items():
+        seed = by_slug[slug]
+        assert resolve_area_code(seed.city_code, seed.latitude, seed.longitude) == code, slug
+    # No current seed represents Yongnidan-gil itself. Its established center must
+    # retain its own label rather than becoming part of the electronics quarter.
+    assert resolve_area_code("ICN", 37.532, 126.972) == "yongnidan"
+
+
+def test_guanghua_covers_the_huashan_quarter_named_in_its_label() -> None:
+    # Huashan 1914, Wikidata Q14594864 (OSM relation 5177809).
+    # This point has no catalog seed; checking only Syntrend
+    # would allow a circle too small to cover the other half of the area name.
+    assert resolve_area_code("TPE", 25.044609, 121.529183) == "guanghua"
+
+
+@pytest.mark.parametrize(
+    ("city_code", "code", "names"),
+    [
+        (
+            "ICN",
+            "yongsan-electronics",
+            {
+                "zh-TW": "龍山電子商街",
+                "en": "Yongsan Electronics Market",
+                "ja": "龍山電子商街",
+                "ko": "용산전자상가",
+                "zh-CN": "龙山电子商街",
+            },
+        ),
+        (
+            "TPE",
+            "guanghua",
+            {
+                "zh-TW": "光華商圈／華山",
+                "en": "Guanghua & Huashan",
+                "ja": "Guanghua & Huashan",
+                "ko": "Guanghua & Huashan",
+                "zh-CN": "光华商圈／华山",
+            },
+        ),
+    ],
+)
+def test_electronics_area_payloads_in_all_locales(
+    city_code: str, code: str, names: dict[Locale, str]
+) -> None:
+    area = area_by_code(city_code, code)
+    assert area is not None
+    for locale, expected in names.items():
+        assert area_name(area, locale) == expected
+        assert area_payload(area, locale) == {"code": code, "name": expected}
 
 
 def test_area_names_fall_back_per_locale() -> None:

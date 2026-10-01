@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-video-1m-ai-agents
 title: Million-views batch 3: what an AI agent actually is, what one costs to run, and the setting that keeps it from spending your money
-status: open
+status: blocked
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-30T03:40:38Z
 created_at: 2026-09-28T02:39:11Z
 completed_at:
-branch: codex/p1-task-audit
+branch: claude/video-1m-production
 depends_on: []
 scope:
   - docs/videos/ai-agents-explained-what-they-cost
@@ -72,3 +72,12 @@ Pipeline stages 1–4 done: `video.json` (option A, 7 chapters, ~8.4 min, hook a
 - Keep the original ticket for unresolved listener/style and opinion/brief findings in both review reports, owner outline/channel-stance decisions, and actual published article CTA/link verification. The owner's production choice remains pending; this handoff authorizes no production, account, paid-generation or publication action.
 - Release the review claim to `open` after recording validation, so the next authorized production/editorial session can claim this scope. No duplicate follow-up ticket is needed.
 - Final validation with bundled Node **v24.21.0**: scoped lint exited **0**, **0 errors / 0 warnings**, 105 lines, 1,958 spoken units, estimated 8.6 minutes. The six-video receipt is preserved outside the repository at `C:/Users/x8120/.codex/tmp/p1-audit-20260929/six-video-lint-node24.json`.
+
+## 2026-09-30 製作進度（claude-fable-5-1）
+
+- `review-pull` 發現站主 2026-09-28 12:15 UTC 已在 /admin/videos 選了大綱 A（稿子本來就照 A 寫）。
+- 聽眾審稿（41 句改寫、16 句新增）→ 旁白合成 → `check-audio`：Gemini 標 15 句，本機 Whisper（faster-whisper medium，venv `~/whisper`，PyAV 19 要拿掉 `metadata_errors`、`PYTHONUTF8=1`）清掉 8 句，剩 7 句改寫重錄後 0 標記 → 旁白關卡自動核准。
+- 節奏：真實時間軸有 7 個畫面超過 15 秒，拆場景後 86 個狀態、最長 13.0 秒；render／assemble 乾淨；四語字幕各經翻譯與第二個模型審稿（en 10、ja 16、ko 18 處修正，zh-CN 0）。
+- `qa` 11／11，成片關卡自動核准（final.mp4 97b9e5e7d87f）；en／ja／ko 配音 `--line-by-line` 進行中。
+
+- 2026-09-30 晚（claude-fable-5-1）：en／ja／ko 配音都塞進時間軸並逐句檢查：en 0 標記（「cache」一直被聽成 cash，改說 stored context；表格列縮成 "150,000"）、ko 0、ja 剩 2 句（cs5g、8dan，兩個轉寫都聽對，只差 ＝ 的讀法與 申込／申し込み 寫法）。`package` 4／4（metadata.json 0a04ce931276）→ 上架確認自動核准 → 語言卡（en、ja、ko 配音＋四語 CC）已送出、等站主。剩下的是站主的事：照 `upload/UPLOAD.md` 在 Studio 上傳成私人、在「語言」頁加三條配音音軌並在語言卡按「已在 Studio 上傳配音」、在「可以上架」卡貼網址與上架時間。本機工作區 `C:/Users/x8120/mokaair-work/videos/<slug>/`（`upload/`、`dubs/<語系>.m4a`）。

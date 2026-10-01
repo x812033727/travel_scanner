@@ -1,0 +1,455 @@
+{
+  "title": "Claude、ChatGPT、Gemini 哪个最适合做第一个网站？不会写代码也能免费上线",
+  "description": "不会写代码，也想用对话做一页自己的网站：Claude、ChatGPT、Gemini 差在哪，免费账号能用到哪一家。\n给想做个人网站或作品集、但不想先学 HTML 的人。\n\n这期视频用同一段需求，比较三家的入口、方案与限制，再一步步教你怎么一次只改一件事、用 GitHub Pages 或 Cloudflare Pages 免费上线，以及上线前搜一遍自己的电话、地址与密钥。方案与限制以官网当天为准，2026 年 9 月 30 日查证。",
+  "tags": [
+    "vibe coding",
+    "AI 做网站",
+    "不会写代码",
+    "Claude",
+    "ChatGPT",
+    "Gemini",
+    "Claude Artifacts",
+    "Gemini Canvas",
+    "ChatGPT Sites",
+    "GitHub Pages",
+    "Cloudflare Pages",
+    "no code website",
+    "AI 建站",
+    "免费建站",
+    "个人网站",
+    "作品集网站"
+  ],
+  "chapters": {
+    "hook": "Claude、ChatGPT、Gemini 差在哪",
+    "three-tools": "三家官方页面怎么写",
+    "five-parts": "做网站的需求怎么写",
+    "entrances": "三家 AI 做网站的入口",
+    "get-file": "AI 做的网站怎么修改",
+    "hosting": "网站免费上线",
+    "answer": "哪个 AI 最适合做第一个网站"
+  },
+  "source_hashes": {
+    "chapters": {
+      "hook": "fec5881d6d35",
+      "three-tools": "7d023440f6c7",
+      "five-parts": "b015fa7ff0f6",
+      "entrances": "89330f7c5d33",
+      "get-file": "de047e6e364d",
+      "hosting": "f58896117014",
+      "answer": "f2b17dd80a8b"
+    },
+    "title": "cec32571556b",
+    "description": "0b5244e06bde",
+    "tags": "dc96d8a4df8e"
+  },
+  "lines": {
+    "6jm7": {
+      "source_hash": "fc03f6a2a280",
+      "text": "三家 AI 都能用对话做网站，可是你的免费账号，不一定用得上。"
+    },
+    "9acq": {
+      "source_hash": "7b7fdb3dc301",
+      "text": "这期用同一个需求比较三家，最后带你免费上线。"
+    },
+    "32bz": {
+      "source_hash": "e8f5615c5880",
+      "text": "你以为选工具，是在比哪个模型更强。"
+    },
+    "yck8": {
+      "source_hash": "a84e4b29b6f7",
+      "text": "其实第一关是你的账号，能不能用得上。"
+    },
+    "hsiq": {
+      "source_hash": "6876c8b30ba1",
+      "text": "那三家的官方页面是怎么写的？"
+    },
+    "z52a": {
+      "source_hash": "bd36b1c24d65",
+      "text": "Claude 的功能叫 Artifacts，免费方案也能在对话里创建。"
+    },
+    "3rhn": {
+      "source_hash": "b2d908aecfb8",
+      "text": "Gemini 的叫 Canvas，官方写明所有 Gemini 用户都能用。"
+    },
+    "swky": {
+      "source_hash": "6b3896367396",
+      "text": "ChatGPT 的叫 Sites，官方写明免费和 Go 方案都没有。"
+    },
+    "aini": {
+      "source_hash": "e5efee176cc5",
+      "text": "三家看起来一样，差别在你手上的账号。"
+    },
+    "sbwf": {
+      "source_hash": "8d409a396424",
+      "text": "官方写明免费方案能用的，有 Claude 和 Gemini 两家。"
+    },
+    "7up6": {
+      "source_hash": "92e2c21c3292",
+      "text": "ChatGPT 那边写明，免费和 Go 方案都没有。"
+    },
+    "x9sq": {
+      "source_hash": "21f077fe3382",
+      "text": "同一个需求要三家都试一遍，这个需求该怎么写？"
+    },
+    "tm5t": {
+      "source_hash": "71b79df06150",
+      "text": "先写目的：这页网站给谁看，看完要做什么。"
+    },
+    "q87a": {
+      "source_hash": "8ebeb71d3e13",
+      "text": "再写内容：要出现的文字，由你自己贴进去。"
+    },
+    "9unv": {
+      "source_hash": "e625da978e18",
+      "text": "风格要具体，比如米白底、深绿色重点。"
+    },
+    "u297": {
+      "source_hash": "5efdb7ccede1",
+      "text": "第四项最容易被跳过：不要什么。"
+    },
+    "2b4k": {
+      "source_hash": "f84c93ecd641",
+      "text": "最后加一段技术边界，说明文件要长什么样。"
+    },
+    "hti7": {
+      "source_hash": "566e6ccb70bb",
+      "text": "没写清楚不要什么，AI 会自己补一堆你不需要的东西。"
+    },
+    "s5hs": {
+      "source_hash": "2e117a441f13",
+      "text": "先看这一种：“帮我做一个网站”，AI 只能乱猜。"
+    },
+    "t4ni": {
+      "source_hash": "c7ef2a4622c7",
+      "text": "再看这一种，四个方面都写到，出来的东西才会接近你想要的。"
+    },
+    "pjat": {
+      "source_hash": "81d9430800c3",
+      "text": "我的看法是，不会写代码不是门槛，把需求讲清楚才是。"
+    },
+    "dv87": {
+      "source_hash": "d08e2c0f5f98",
+      "text": "告诉它只要一个 HTML 文件，文件名叫 index.html。"
+    },
+    "ztfe": {
+      "source_hash": "75f7071cb028",
+      "text": "样式也写在同一个文件里。"
+    },
+    "wm55": {
+      "source_hash": "95b840339b6b",
+      "text": "不连外部图片和字体，也不用框架。"
+    },
+    "frv7": {
+      "source_hash": "d4008a2d3c0e",
+      "text": "把整份模板贴进三个工具，括号里换成你自己的内容。"
+    },
+    "ctf9": {
+      "source_hash": "36cc557ede47",
+      "text": "需求写好了，三家的入口分别在哪里？"
+    },
+    "iret": {
+      "source_hash": "7500b422daa7",
+      "text": "Claude 最直接：贴上需求，成品会在对话旁边的窗口打开。"
+    },
+    "tyw4": {
+      "source_hash": "81e0bf374c52",
+      "text": "Gemini 要先在文本框下方选 Canvas，再贴上需求。"
+    },
+    "8jfe": {
+      "source_hash": "3497430f8cac",
+      "text": "ChatGPT 在网页版，要先选 Work。"
+    },
+    "xvtz": {
+      "source_hash": "0245d3a139ce",
+      "text": "提示词里写上英文的 website，或者提到 Sites。"
+    },
+    "7haj": {
+      "source_hash": "751a5c58a898",
+      "text": "用 Claude 之前，先打开设置。"
+    },
+    "uww9": {
+      "source_hash": "dd46cc00b024",
+      "text": "进入 Capabilities 那一页。"
+    },
+    "wpkd": {
+      "source_hash": "74fe57e6964b",
+      "text": "确认“云端代码执行与文件创建”这个开关是开着的。"
+    },
+    "j3xg": {
+      "source_hash": "776068d59479",
+      "text": "官方写明 Artifacts 需要它，免费方案默认就是开的。"
+    },
+    "39ct": {
+      "source_hash": "e12d5f9d65ec",
+      "text": "Claude 的好处是免费方案就能创建，只要确认一个设置已开启。"
+    },
+    "yrac": {
+      "source_hash": "7de36a1e8b73",
+      "text": "Gemini 可以打开代码直接改，预览出错还能打开控制台看信息。"
+    },
+    "6x9c": {
+      "source_hash": "a78f3df059ee",
+      "text": "不过它的官方说明里，导出选项没写可以下载网页文件。"
+    },
+    "i6k9": {
+      "source_hash": "62d23de65ec8",
+      "text": "ChatGPT 从描述到发布都在同一处，但还在公开测试。"
+    },
+    "e4kn": {
+      "source_hash": "d05a50e7b13a",
+      "text": "ChatGPT 的官方常见问题，写得很直接。"
+    },
+    "epsd": {
+      "source_hash": "f8618a243655",
+      "text": "Sites 在免费方案和 Go 方案里，都不能用。"
+    },
+    "uyi5": {
+      "source_hash": "fb393f422c8e",
+      "text": "做法很简单：每一家都开新的对话，贴同一段需求。"
+    },
+    "3aaf": {
+      "source_hash": "204b5d6ade46",
+      "text": "各家的成品存进各自的文件夹，文件名都叫 index.html。"
+    },
+    "djbb": {
+      "source_hash": "5cd28a61acb2",
+      "text": "最后把文件并排打开，账号用不上的那家，直接跳过。"
+    },
+    "wskr": {
+      "source_hash": "d4073af3e450",
+      "text": "谁更接近你想要的，用眼睛就看得出来。"
+    },
+    "fvv9": {
+      "source_hash": "6b64f7f26ce2",
+      "text": "三家的名称和方案变动很快，决定前以官网当天为准。"
+    },
+    "p2zu": {
+      "source_hash": "bbce6ea1ccfc",
+      "text": "工具选好、文件拿到手，怎么改才不会越改越乱？"
+    },
+    "x9y8": {
+      "source_hash": "ee7f8ca9576a",
+      "text": "先把成品变成文件：有下载键就下载，没有就复制全部代码。"
+    },
+    "y8wd": {
+      "source_hash": "723066002755",
+      "text": "贴进纯文本编辑器，存成 index.html，放进一个新文件夹。"
+    },
+    "cbym": {
+      "source_hash": "950448c36c36",
+      "text": "双击，用浏览器打开，这才是别人真正会看到的样子。"
+    },
+    "fi98": {
+      "source_hash": "6d1b89b35d68",
+      "text": "各家按钮的位置会变，找不到就用复制的。"
+    },
+    "9e6i": {
+      "source_hash": "67fe2e0018bc",
+      "text": "预览面板看起来没问题，不代表文件本身没问题。"
+    },
+    "4hsz": {
+      "source_hash": "c85082495e71",
+      "text": "先把文字读一遍，再点每一个链接，确认都连到对的地方。"
+    },
+    "zhva": {
+      "source_hash": "e0a389337efd",
+      "text": "最后把窗口拉窄，看手机版有没有挤在一起。"
+    },
+    "izrh": {
+      "source_hash": "060b328cf891",
+      "text": "这一关看的是画面和文字，不是代码。"
+    },
+    "g5pn": {
+      "source_hash": "13740f447dfd",
+      "text": "需求模板和三组修改提示词，都在文章里。"
+    },
+    "39fm": {
+      "source_hash": "0e37a8ac4d0e",
+      "text": "文章链接就在简介栏第一行。"
+    },
+    "dftp": {
+      "source_hash": "c6beeb241894",
+      "text": "模板直接复制，括号里换成你的内容就能用。"
+    },
+    "2zbn": {
+      "source_hash": "a878c6c7563d",
+      "text": "修改的时候，不要一次丢五个要求。"
+    },
+    "nieh": {
+      "source_hash": "f57bead282d9",
+      "text": "第一次只换配色，指清楚是哪一块、换成什么颜色。"
+    },
+    "6ijm": {
+      "source_hash": "c25c9f1909ff",
+      "text": "第二次加一段内容，说清楚要放在哪里。"
+    },
+    "sxwe": {
+      "source_hash": "eee45d5f1926",
+      "text": "第三次才修手机版，说明窄屏幕要怎么排。"
+    },
+    "fgdh": {
+      "source_hash": "7a4aba4ae5aa",
+      "text": "一次改太多，它常常改好一个、弄坏另一个。"
+    },
+    "x464": {
+      "source_hash": "8b6827b1db79",
+      "text": "慢一点，反而更快做完。"
+    },
+    "98ag": {
+      "source_hash": "ab213e5f0356",
+      "text": "第三次是手机版的提示词，指明范围，也指明结果。"
+    },
+    "4tvp": {
+      "source_hash": "e35a8ab5014f",
+      "text": "最后一行要它说出用了哪个断点，你才知道有没有动到别的地方。"
+    },
+    "9ppa": {
+      "source_hash": "59622c7a4732",
+      "text": "描述也要具体，别说“好看一点”。"
+    },
+    "i69p": {
+      "source_hash": "5a2ffd22e242",
+      "text": "说标题改成深绿色、作品区改成两栏，它才知道要做什么。"
+    },
+    "3r7m": {
+      "source_hash": "ff585adb071f",
+      "text": "每改完一轮，就重新下载、重新打开来看。"
+    },
+    "tjmt": {
+      "source_hash": "542f9b77d641",
+      "text": "改了几轮之后，最容易把中途某一版传上网。"
+    },
+    "qfg7": {
+      "source_hash": "18704eb04e14",
+      "text": "所以每满意一次，就另存一份备份。"
+    },
+    "yqcj": {
+      "source_hash": "7e29f815816c",
+      "text": "备份好了，这一版怎么免费放上网？"
+    },
+    "a4vh": {
+      "source_hash": "6de3fa2b6632",
+      "text": "文件准备好，就放到免费的静态网站服务上。"
+    },
+    "hvjf": {
+      "source_hash": "5e0ea8a20b7f",
+      "text": "GitHub Pages 的网站上限是 1 GB，每月带宽软性上限 100 GB。"
+    },
+    "bguq": {
+      "source_hash": "5c5f8af48e8f",
+      "text": "Cloudflare Pages 每月可以构建 500 次，每个网站最多 2 万个文件。"
+    },
+    "knvi": {
+      "source_hash": "9abda1ab5c21",
+      "text": "软性上限和硬性上限要分清楚。"
+    },
+    "wyvs": {
+      "source_hash": "54a02f6e763a",
+      "text": "像 GitHub 的网站，就不能超过 1 GB。"
+    },
+    "4raw": {
+      "source_hash": "4799789f39ba",
+      "text": "GitHub Pages 每小时的构建，有 10 次的软性上限。"
+    },
+    "svsx": {
+      "source_hash": "aac924998b0c",
+      "text": "用自定义的 GitHub Actions 流程构建和发布，就不受这个限制。"
+    },
+    "sitm": {
+      "source_hash": "3c72ba20e72b",
+      "text": "上线前，先把文件夹整理成最简单的样子。"
+    },
+    "5ymd": {
+      "source_hash": "0d4d7ff86889",
+      "text": "这份单页 HTML 的首页叫 index.html，上传后才能当网站入口。"
+    },
+    "5y3q": {
+      "source_hash": "04e98230ca41",
+      "text": "图片放在同一个文件夹，文件名全用英文小写、不要有空格。"
+    },
+    "z4ax": {
+      "source_hash": "2ce13ed527e5",
+      "text": "文件名或路径不一致，可能让上线后的网页打不开。"
+    },
+    "7g2d": {
+      "source_hash": "1faf82cbdd28",
+      "text": "在 Cloudflare 新建一个直接上传的项目，就能拖放整个文件夹。"
+    },
+    "25nv": {
+      "source_hash": "62c34095f2bb",
+      "text": "拖放一次，最多 1000 个文件。"
+    },
+    "zt9w": {
+      "source_hash": "c34aafadd4e4",
+      "text": "有一点要特别注意。"
+    },
+    "ihai": {
+      "source_hash": "77abb9e37a4e",
+      "text": "GitHub 规定，Pages 不能拿来免费经营在线生意或电商。"
+    },
+    "5azv": {
+      "source_hash": "256021fd90e2",
+      "text": "个人介绍、作品集没问题，要卖东西就得另找服务。"
+    },
+    "7f5w": {
+      "source_hash": "66152eb78385",
+      "text": "用 GitHub 免费方案，Pages 只能开在公开仓库。"
+    },
+    "vy3f": {
+      "source_hash": "78ab8ecf84c9",
+      "text": "放上去的东西，谁都看得到。"
+    },
+    "wvvw": {
+      "source_hash": "74c6ab90e224",
+      "text": "我的做法是，上线前用纯文本编辑器打开 index.html。"
+    },
+    "kuii": {
+      "source_hash": "89390964ff23",
+      "text": "先搜自己的电话和地址。"
+    },
+    "2gnu": {
+      "source_hash": "c618d6910471",
+      "text": "接着，搜身份证号。"
+    },
+    "d4hc": {
+      "source_hash": "0fe6680e28dd",
+      "text": "还有任何看起来像密钥的字符串，也要搜一遍。"
+    },
+    "ykf6": {
+      "source_hash": "771cb95c8304",
+      "text": "这一步要自己仔细看，别只相信 AI 说文件没问题。"
+    },
+    "e4d8": {
+      "source_hash": "ef20234a7e5d",
+      "text": "网页源代码所有人都看得到，删掉之后也可能留在别人的缓存里。"
+    },
+    "m8xm": {
+      "source_hash": "51ca31b82a5d",
+      "text": "上线了，三家到底哪一家适合你？"
+    },
+    "k26g": {
+      "source_hash": "520f0c3ef573",
+      "text": "如果只有免费账号，官方写明能用的是 Claude 和 Gemini。"
+    },
+    "sbpk": {
+      "source_hash": "10df11347f18",
+      "text": "已经有 Gemini 账号，就先试 Canvas，方案限制再看官网。"
+    },
+    "6yd4": {
+      "source_hash": "ade97369cd96",
+      "text": "有 Plus、Pro 或工作区，ChatGPT Sites 也能试。"
+    },
+    "tie9": {
+      "source_hash": "5957cd880246",
+      "text": "回到开头：先决定结果的，是你的账号能不能用得上。"
+    },
+    "s5cf": {
+      "source_hash": "dc2933883c59",
+      "text": "剩下的是同一套做法：需求写满、一次改一件、上线前搜索个人信息。"
+    },
+    "cuqe": {
+      "source_hash": "8305e228fe2c",
+      "text": "答案就是挑你能用上的那家，再照简介栏的文章，做出第一页。"
+    }
+  }
+}

@@ -41,6 +41,10 @@ function stub(answer: (url: string, method: string, body: unknown) => unknown) {
     const method = init?.method ?? "GET";
     const body = init?.body ? JSON.parse(String(init.body)) : undefined;
     calls.push({ url, method, body });
+    if (url.endsWith("/admin/video-youtube/vps/settings")) return Promise.resolve(Response.json({
+      enabled: false, url: null, channel_id: null, desktop_url: null, secret_set: false, configured: false,
+      source: "none", updated_at: null, last_test_status: null, last_test_message: null, last_tested_at: null,
+    }));
     // The catalog under the groups (admin-video-browser.tsx) is not what these tests look at.
     const value = url.includes("/admin/videos/browse") ? { items: [], total: 0, page: 1, pages: 0, facets: { category: [], state: [] } } : answer(url, method, body);
     return Promise.resolve(value instanceof Response ? value : Response.json(value));
@@ -56,6 +60,16 @@ afterEach(() => {
 });
 
 describe("YoutubeChannelCard", () => {
+  it("keeps VPS configuration available when the separate OAuth card cannot load", async () => {
+    stub(() => Response.json({ detail: "OAuth unavailable" }, { status: 503 }));
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "settings.manage"])}><YoutubeChannelCard /></AdminOperationsProvider>);
+    const vps = await screen.findByRole("region", { name: "VPS 上傳服務" });
+    await within(vps).findByLabelText("服務密鑰");
+    expect(vps.id).toBe("youtube-vps-settings");
+    expect(vps.previousElementSibling?.getAttribute("aria-labelledby")).toBe("video-settings-youtube");
+    expect((await screen.findByRole("alert")).textContent).toContain("OAuth unavailable");
+  });
+
   it("walks the owner through Google Cloud, keeps the secret write-only, and only links once the client is saved", async () => {
     let current = empty;
     const calls = stub((url, method, body) => {

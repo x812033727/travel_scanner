@@ -138,6 +138,9 @@ test("HTTP API authenticates every job route and supports staging without exposi
   const base = "http://127.0.0.1:" + server.address().port;
   const id = hash("http-job");
   assert.equal((await fetch(base + "/health")).status, 200);
+  const anonymousStatus = await fetch(base + "/status");
+  assert.equal(anonymousStatus.status, 401);
+  assert.deepEqual(await anonymousStatus.json(), { code: "unauthorized" });
   assert.equal((await fetch(base + "/projects/test-video")).status, 401);
   const headers = { Authorization: "Bearer " + SECRET };
   const create = await fetch(base + "/jobs/" + id, { method: "PUT", headers, body: JSON.stringify(manifest()) });
@@ -149,6 +152,36 @@ test("HTTP API authenticates every job route and supports staging without exposi
   const response = await (await fetch(base + "/projects/test-video", { headers })).text();
   assert.ok(!response.includes(SECRET));
   assert.ok(!response.includes("Description"));
+});
+
+test("status counts unfinished jobs across every project even when the browser worker is idle", async (t) => {
+  const f = fixture(t); const paused = await queued(f.store, manifest({ slug: "paused-video" }));
+  const runner = new Runner(f.store, { connect: async () => { throw new Refused("login_required"); } });
+  await runner.tick();
+  assert.equal(runner.status, "idle");
+  assert.equal(f.store.get(paused).state, "needs_action");
+  const server = createServer({ store: f.store, secret: SECRET, channel: CHANNEL, runner });
+  await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
+  t.after(() => { server.closeAllConnections(); server.close(); });
+  const url = "http://127.0.0.1:" + server.address().port + "/status";
+  const headers = { Authorization: "Bearer " + SECRET };
+  const status = async () => {
+    const response = await fetch(url, { headers });
+    assert.equal(response.status, 200);
+    return response.json();
+  };
+  assert.deepEqual(await status(), { channel_id: CHANNEL, browser: "idle", active_jobs: 1 });
+  const active = [paused];
+  for (const state of ["staging", "queued", "running", "done", "cancelled"]) {
+    const id = hash("status-" + state);
+    f.store.create(id, manifest({ slug: "status-" + state }));
+    f.store.patch(id, { state });
+    if (!["done", "cancelled"].includes(state)) active.push(id);
+  }
+  // An exact shape also proves that slugs, job IDs, metadata and secrets stay private.
+  assert.deepEqual(await status(), { channel_id: CHANNEL, browser: "idle", active_jobs: 4 });
+  for (const id of active) f.store.patch(id, { state: "cancelled" });
+  assert.deepEqual(await status(), { channel_id: CHANNEL, browser: "idle", active_jobs: 0 });
 });
 
 test("cancel before upload can resume staging, while completed video identities cannot change", async (t) => {
