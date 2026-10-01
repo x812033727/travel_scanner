@@ -1,6 +1,6 @@
 # 原來如此事務所第二季：製作包交接
 
-2026-10-01 完成三批共12題文字包：**B26、S26、T26、A31**、**B27、S27、T28、A33**及**B48、S44、T33、A36**。原題庫100題的「checked」是題目查核，本頁的「文字包已審」是本日逐集企劃及獨立審稿；沒有長片完整逐字稿、生成音訊／圖片／成片、正式匯入、核准或上架。
+2026-10-01 完成四批共16題文字包：**B26、S26、T26、A31**、**B27、S27、T28、A33**、**B48、S44、T33、A36**及**B37、S31、T29、A41**。原題庫100題的「checked」是題目查核，本頁的「文字包已審」是本日逐集企劃及獨立審稿；沒有長片完整逐字稿、生成音訊／圖片／成片、正式匯入、核准或上架。
 
 | 順序提案 | 本集問題 | 製作包 | 作者→獨立查核／聽眾文字審稿 |
 | --- | --- | --- | --- |
@@ -27,16 +27,26 @@
 | 3 | UTC偏移也有分鐘，夏令要查日期 | [T33](T33.md) | root→write_b26；[報告](reviews/batch03/T33.md)／[收據](reviews/batch03/T33.json) |
 | 4 | QR錯誤修正的碼字與定位限制 | [A36](A36.md) | write_t26→write_a31；[報告](reviews/batch03/A36.md)／[收據](reviews/batch03/A36.json) |
 
+第四批順序也是本批提案，沒有發布日期。
+
+| 順序提案 | 本集問題 | 製作包 | 作者→獨立查核／聽眾文字審稿 |
+| --- | --- | --- | --- |
+| 1 | Amazon FY2025部門營業利益 | [B37](B37.md) | write_b26→root；[報告](reviews/batch04/B37.md)／[收據](reviews/batch04/B37.json) |
+| 2 | 高山沸點與外壓條件 | [S31](S31.md) | write_a31→write_t26；[報告](reviews/batch04/S31.md)／[收據](reviews/batch04/S31.json) |
+| 3 | 街區、住居號碼及土地地番 | [T29](T29.md) | root→write_b26；[報告](reviews/batch04/T29.md)／[收據](reviews/batch04/T29.json) |
+| 4 | 手套隔層與電容觸控 | [A41](A41.md) | write_t26→write_a31；[報告](reviews/batch04/A41.md)／[收據](reviews/batch04/A41.json) |
+
 每包包含本日來源與限制、前提／備註貼用欄位、480秒六章大綱、兩支180–220中文／英文數字詞單位Shorts、原創插畫／縮圖提示、五語長短片標題與說明。章長和Shorts秒數為估值，實際製作要重新查核新增主張、展開分鏡、審稿、TTS試聽、成片與平台驗收。
 
-五語可解析包：[batch01-packaging.json](batch01-packaging.json)、[batch02-packaging.json](batch02-packaging.json)與[batch03-packaging.json](batch03-packaging.json)，合計12長片企劃＋24Shorts共180組標題／說明。`proposed_order`僅本批順序，不改第一季排程，不設定發布日期。
+五語可解析包：[batch01-packaging.json](batch01-packaging.json)、[batch02-packaging.json](batch02-packaging.json)、[batch03-packaging.json](batch03-packaging.json)與[batch04-packaging.json](batch04-packaging.json)，合計16長片企劃＋32Shorts共240組標題／說明。`proposed_order`僅本批順序，不改第一季排程，不設定發布日期。
 
 ```powershell
 node docs/videos/so-thats-why/season2/validate.mjs
 node docs/videos/so-thats-why/season2/validate.mjs --batch=batch02
 node docs/videos/so-thats-why/season2/validate.mjs --batch=batch03
+node docs/videos/so-thats-why/season2/validate.mjs --batch=batch04
 # 正文與獨立審稿已更新且收據重綁後，才重產包裝：
-node docs/videos/so-thats-why/season2/validate.mjs --batch=batch03 --write
+node docs/videos/so-thats-why/season2/validate.mjs --batch=batch04 --write
 ```
 
 檢查器核100題id、五語、欄位上限、Shorts估時、六章合計、檔案入口及byte SHA256。它不做外部查核或媒體QA，不能自行把新稿視為已審；修改包後必須交不同作者審稿，更新報告與收據。審稿報告與本包各自有雜湊。
@@ -47,13 +57,15 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch03 --write
 
 第三批更正與限制：B48限定信用卡與典型付款，不數固定公司數、不採利息或營收數字；S44依水蒸氣條件說昇華，不給共同天數、不判食安；T33改「地方」並查日期，刪經線動機及時區國家排名；A36四級比例以總碼字計，不換算破損面積、不加入未核圍棋故事。B38與品牌A25同問題，本批未採用；時區品牌A09、浮冰S07及條碼品牌A14的問題與本批不同。
 
+第四批限制：B37指定FY2025與營業利益，不把segment當純網購、數字作投資建議或永久排名；S31不採未重算山峰數值或壓力器具操作；T29改說街區方式，刪全國大多數與未核京都韓國史；A41不說所有手套都失敗，功能例子限定加拿大Samsung支援頁，未核各機型實際UI。
+
 ## 下一批接手
 
-母票仍開放，目前完成12題文字包；其餘88題尚待逐題審選，不能將列出題名當製作完成。開始下批先查分支／worktree／PR碰撞，再開窄scope批次票。現有製作包以本分支草稿PR交接，合併前不要另寫這十二檔。
+母票仍開放，目前完成16題文字包；其餘84題尚待逐題審選，不能將列出題名當製作完成。開始下批先查分支／worktree／PR碰撞，再開窄scope批次票。現有製作包以本分支草稿PR交接，合併前不要另寫這十六檔。
 
 - A26：與既有AI名詞「上下文視窗」題重疊，本批跳過；需選新的可核實角度再採用。
 - S50／第三季S55、A29/A30／第三季A70、A38／第三季A58：下一批挑選前比較原查核與第一季、品牌故事、AI名詞企劃，避免重複同一問題及例子；目前尚未裁決。
-- B26/S26/T26/A31/B27/S27/T28/A33/B48/S44/T33/A36：文字包通過後續還要有完整長片稿與真實製作；不操作正式站或付費生成。
+- B26/S26/T26/A31/B27/S27/T28/A33/B48/S44/T33/A36/B37/S31/T29/A41：文字包通過後續還要有完整長片稿與真實製作；不操作正式站或付費生成。
 
 ## 100題逐題入口
 
@@ -72,7 +84,7 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch03 --write
 | B34 | 為什麼韓國大集團從手機做到遊樂園？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B26-B38.md) |
 | B35 | 為什麼有些精品寧願銷毀庫存也不打折？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B26-B38.md) |
 | B36 | 為什麼鑽石買了就賣不回原價？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B26-B38.md) |
-| B37 | 為什麼 Amazon 最賺錢的不是網購？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B26-B38.md) |
+| B37 | 為什麼 Amazon 最賺錢的不是網購？ | [文字包已審](B37.md)；媒體未製作 | [原報告](../topic-checks/s2-B26-B38.md) |
 | B38 | 為什麼電影院的爆米花那麼貴？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B26-B38.md) |
 | B39 | 為什麼玩具反斗城在美國倒閉，台灣卻還在？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
 | B40 | 為什麼富士軟片沒有像柯達一樣聲請破產？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
@@ -91,7 +103,7 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch03 --write
 | S28 | 為什麼地震還沒搖，手機就先響了？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S26-S38.md) |
 | S29 | 為什麼颱風眼裡反而風小雨停？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S26-S38.md) |
 | S30 | 為什麼溫泉蛋的蛋白比蛋黃還軟？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S26-S38.md) |
-| S31 | 為什麼高山上的水不到 100 度就滾了？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S26-S38.md) |
+| S31 | 為什麼高山上的水不到 100 度就滾了？ | [文字包已審](S31.md)；媒體未製作 | [原報告](../topic-checks/s2-S26-S38.md) |
 | S32 | 為什麼海水是鹹的，河水卻不鹹？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S26-S38.md) |
 | S33 | 為什麼玻璃是透明的？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S26-S38.md) |
 | S34 | 為什麼蚊子特別愛咬某些人？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S26-S38.md) |
@@ -114,7 +126,7 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch03 --write
 | T26 | 為什麼日本人端碗吃飯，韓國人卻不端？ | [文字包已審](T26.md)；媒體未製作 | [原報告](../topic-checks/s2-T26-T38.md) |
 | T27 | 為什麼日本街上很難找到垃圾桶？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T26-T38.md) |
 | T28 | 為什麼台灣的垃圾車會放音樂？ | [文字包已審](T28.md)；媒體未製作 | [原報告](../topic-checks/s2-T26-T38.md) |
-| T29 | 為什麼日本地址大多不寫路名？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T26-T38.md) |
+| T29 | 為什麼日本地址大多不寫路名？ | [文字包已審](T29.md)；媒體未製作 | [原報告](../topic-checks/s2-T26-T38.md) |
 | T30 | 為什麼歐洲的電梯常把地面層標成 0？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T26-T38.md) |
 | T31 | 為什麼有些大樓的樓層跳過 4？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T26-T38.md) |
 | T32 | 為什麼西班牙人晚餐吃得特別晚？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T26-T38.md) |
@@ -151,7 +163,7 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch03 --write
 | A38 | 為什麼 GPS 要用到相對論？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A26-A38.md) |
 | A39 | 為什麼複製是 Ctrl+C、貼上是 Ctrl+V？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A39-A50.md) |
 | A40 | 為什麼網址前面常有 www？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A39-A50.md) |
-| A41 | 為什麼戴手套常滑不動手機？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A39-A50.md) |
+| A41 | 為什麼戴手套常滑不動手機？ | [文字包已審](A41.md)；媒體未製作 | [原報告](../topic-checks/s2-A39-A50.md) |
 | A42 | 為什麼電影 24 格就順，遊戲卻常要 60 幀？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A39-A50.md) |
 | A43 | 為什麼有些詐騙訊息假得很明顯？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A39-A50.md) |
 | A44 | 為什麼雙胞胎可能解鎖彼此的手機？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A39-A50.md) |
