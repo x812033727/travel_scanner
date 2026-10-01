@@ -138,6 +138,17 @@ def _localized(metadata: dict[str, Any], locale: str) -> dict[str, str]:
     return {"title": entry["title"], "description": entry["description"]}
 
 
+def _original(metadata: dict[str, Any]) -> dict[str, str]:
+    title, description = metadata.get("title"), metadata.get("description")
+    if (
+        not isinstance(title, str)
+        or not isinstance(description, str)
+        or text_problem(title, description)
+    ):
+        raise invalid("核准的原語言標題說明缺漏或不正確，請重新送審")
+    return {"title": title, "description": description}
+
+
 def _source(
     manifest: dict[str, Any],
     rows: list[VideoReview],
@@ -211,17 +222,26 @@ def compose(
     pin: dict[str, Any] = {"publish": identity(publish), "languages": None, "choice": current}
     metadata = copy.deepcopy(base)
     captions = dict(base_captions)
+    narration = base.get("default_language", "zh-TW")
+    if not isinstance(narration, str) or not narration:
+        raise invalid("核准上傳包的原旁白語言不正確，請重新送審")
+    automatic = {narration, "zh-TW"}
     batch = _latest(rows, "languages")
     if batch is not None and _stamp(batch.created_at) <= _stamp(publish.created_at):
         batch = None  # A later approved publish already contains its own approved package.
-    # An explicit original-only decision sends no translated material, even if old choices
-    # left complete translations in the publish package. Undecided legacy packages stay valid.
+    # The narration and zh-TW are automatic, independently of optional foreign choices.
+    # Undecided legacy packages keep their complete original publish contents.
     if chosen:
         metadata["localizations"] = {}
+        base_localizations = base.get("localizations")
+        if (
+            narration != "zh-TW"
+            and isinstance(base_localizations, dict)
+            and "zh-TW" in base_localizations
+        ):
+            metadata["localizations"]["zh-TW"] = _localized(base, "zh-TW")
         captions = {
-            key: value
-            for key, value in captions.items()
-            if key == base.get("default_language", "zh-TW")
+            key: value for key, value in captions.items() if key in automatic
         }
     if batch is not None and current:
         if batch.status != "approved":
@@ -284,16 +304,24 @@ def compose(
                     if role in files:
                         raise invalid("略過的語言項目仍附有素材，請重新送審")
                     continue
+                if part == "dub" and locale == narration:
+                    raise invalid("原旁白語言必須明確略過重複配音，請重新送審")
                 allowed_roles.add(role)
                 item = files.get(role)
                 if item is None:
                     raise invalid(f"核准的 {locale} {part} 缺少附件，請重新送審")
                 if part == "metadata":
-                    entry = _localized(translated, locale)
+                    if locale == narration:
+                        entry = _original(base)
+                        if _original(translated) != entry:
+                            raise invalid("原語言標題說明已不是核准的內容，請重新送審")
+                    else:
+                        entry = _localized(translated, locale)
                     expected = f"{entry['title']}\n\n{entry['description']}\n".encode()
                     if checked_file(store, slug, item) != expected:
                         raise invalid("語言 metadata 與核准的標題說明附件不同，請重新送審")
-                    metadata["localizations"][locale] = entry
+                    if locale != narration:
+                        metadata["localizations"][locale] = entry
                 elif part == "captions":
                     if item["content_type"] not in (
                         "text/plain",
@@ -301,6 +329,8 @@ def compose(
                         "text/vtt",
                     ):
                         raise invalid("字幕附件格式不正確，請重新送審")
+                    if locale == narration and item != base_captions.get(locale):
+                        raise invalid("原旁白字幕已不是核准上傳包的時軸，請重新送審")
                     captions[locale] = item
                 elif item["content_type"] not in ("audio/mp4", "audio/mpeg", "audio/wav"):
                     raise invalid("配音附件格式不正確，請重新送審")
@@ -318,7 +348,10 @@ def compose(
             raise invalid("上傳包的語言選擇已過期，請重新產生語言包")
         for locale, selection in current.items():
             if selection["metadata"]:
-                metadata["localizations"][locale] = _localized(base, locale)
+                if locale == narration:
+                    _original(base)
+                else:
+                    metadata["localizations"][locale] = _localized(base, locale)
             if selection["captions"]:
                 if locale in base_captions:
                     captions[locale] = base_captions[locale]
@@ -329,9 +362,14 @@ def compose(
                         raise invalid(f"已選取的 {locale} 字幕尚未核准，請先完成語言包")
             if selection["dub"]:
                 role = f"dub_{locale.lower().replace('-', '_')}"
+                publish_files = files_by_role(publish.files)
+                if locale == narration:
+                    if role in publish_files:
+                        raise invalid("原旁白語言附有重複配音，請重新送審")
+                    continue
                 skipped = base.get("skipped_dub_locales")
                 reason = skipped.get(locale) if isinstance(skipped, dict) else None
-                if role not in files_by_role(publish.files) and not (
+                if role not in publish_files and not (
                     isinstance(reason, str) and reason.strip()
                 ):
                     raise invalid(f"已選取的 {locale} 配音尚未核准，請先完成語言包")
