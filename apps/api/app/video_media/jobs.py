@@ -66,6 +66,7 @@ from app.video_media.schemas import (
 from app.video_media.settings import MediaSettings
 from app.video_media.storage import MediaStore
 from app.video_reviews.storage import StorageRefused
+from app.video_shorts.models import VideoShortsAsset
 
 LOCK_TTL_SECONDS = 240
 LOCK_RETRY_SECONDS = 5
@@ -714,24 +715,34 @@ async def prune(
             continue
         if job.file_sha256:
             keep.setdefault(job.slug, set()).add(job.file_sha256)
+    # The owner's material for a Shorts topic (app.video_shorts.assets) is not a cache: the
+    # photo they took cannot be generated again, so it stays whatever became of the video.
+    owned: dict[str, set[str]] = {}
+    for topic_slug, sha256 in await session.execute(
+        select(VideoShortsAsset.topic_slug, VideoShortsAsset.sha256)
+    ):
+        owned.setdefault(topic_slug, set()).add(sha256)
     for slug in store.slugs():
-        if slug in done_slugs:
+        if slug in done_slugs and slug not in owned:
             for path in store.files(slug).values():
                 freed += path.stat().st_size
                 deleted += 1
             if not dry_run:
                 store.delete_project(slug)
             continue
+        kept = keep.get(slug, set()) | owned.get(slug, set())
+        # A finished video's files go at once, all but the owner's material.
+        before = moment + timedelta(seconds=1) if slug in done_slugs else cutoff
         if dry_run:
             for name, path in store.files(slug).items():
                 if (
-                    name not in keep.get(slug, set())
-                    and datetime.fromtimestamp(path.stat().st_mtime, tz=UTC) < cutoff
+                    name not in kept
+                    and datetime.fromtimestamp(path.stat().st_mtime, tz=UTC) < before
                 ):
                     deleted += 1
                     freed += path.stat().st_size
             continue
-        for _name, size in store.prune_files(slug, keep.get(slug, set()), cutoff):
+        for _name, size in store.prune_files(slug, kept, before):
             deleted += 1
             freed += size
     if not dry_run:
