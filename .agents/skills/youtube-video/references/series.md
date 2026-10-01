@@ -41,6 +41,7 @@
 
 - **人物表逐字沿用**：`series.json` 的 `characters` 來自設定集（單集來自故事聖經）；撰稿把用到的角色逐字複製進 `video.json`，依 id 排序；`settle()` 會用設定集的版本覆蓋同 id 的角色，lint 擋掉任何差異與不在人物表裡的角色。`lookHash` 因此只在 cast 變動時改變。
 - **設定圖沿用**：`<VIDEO_WORKDIR>/_series/<作品>/characters/index.json` 記每個角色核准過的設定圖（鍵＝id＋appearance＋sheet_prompt＋look）。`look` 先查存檔，有就當唯一候選並直接核准 look 關卡，只畫新角色；`review-pull` 核准 look 時把選中的圖存進去。
+- **換裝與變化**：角色某幾集換了樣子或說話方式，寫在設定集該角色的 `looks: [{ id, from, to?, appearance, sheet_prompt?, voice_style? }]`（`appearance` 是那幾集完整的外觀；一集只能有一個 look；同一集內的變化另立角色 id）。`castFrom(setting, 集數)` 把涵蓋這一集的 look 換進 `series.json`，之後的設定圖、關鍵影格、旁白都照它；look 的設定圖第一次用到時畫、站主核准一次，存在基底那張旁邊，之後的集數沿用。規則全文在 `docs/videos/SERIES.md`「換裝與變化」。
 - **前情**：合成完成後查核模型（variant `recap`）寫 150 字摘要與狀態，`POST …/recap`；下一集的撰稿與查核拿最近 3 集全文、更早的一句話。
 
 ## 張力規格（寫在提示詞裡，`tools/video/automation/prompts.mjs` 的 `SERIES_INSTRUCTIONS`）

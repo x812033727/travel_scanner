@@ -879,7 +879,9 @@ export class Automation {
     // A one-off's story bible stands where the setting book does (docs/videos/DRAMA-FLOW.md,
     // section 2): the site hands it over as "setting", and its one outline is the episode's beats.
     const oneOff = isOneOff(series);
-    const cast = castFrom(context.setting?.body_json);
+    // The cast as this episode wears it: a character's look that covers the episode stands in for
+    // the book's appearance, sheet prompt and voice style (docs/videos/SERIES.md, 換裝與變化).
+    const cast = castFrom(context.setting?.body_json, episode.number);
     const beats = episode.beats ?? {};
     const state = {
       slug,
