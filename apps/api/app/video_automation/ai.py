@@ -15,6 +15,7 @@ from typing import Any, cast
 
 import httpx
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.ai.subscription import FULL_PERCENT
@@ -32,8 +33,9 @@ from app.video_automation.usage import (
     slug_has_draft,
     usage_view,
 )
+from app.video_shorts.models import VideoShortsSettings
 
-__all__ = ["StageFailed", "run_stage", "stage_choice"]
+__all__ = ["StageFailed", "run_stage", "stage_choice", "subject_choice"]
 
 # A stage writes a whole script or report without streaming, so the read timeout covers the
 # entire generation. nginx allows 300 s for /api/, and the worker calls the API directly.
@@ -47,13 +49,44 @@ class StageText(BaseModel):
 
 
 def stage_choice(
-    row: VideoAutomationSettings, stage: str, format: str = "slides"
+    row: VideoAutomationSettings,
+    stage: str,
+    format: str = "slides",
+    shorts: VideoShortsSettings | None = None,
 ) -> tuple[str, str]:
-    """The vendor and model a stage runs on: a drama's own choice when the owner made one
-    (docs/videos/DRAMA-FLOW.md §一), else the tutorial's, else the default."""
-    drama = (row.drama_stage_models or {}) if format == "drama" else {}
-    choice = drama.get(stage) or row.stage_models.get(stage) or DEFAULT_STAGE_MODELS[stage]
+    """The vendor and model a stage runs on: a drama's or a Short's own choice when the owner
+    made one (docs/videos/DRAMA-FLOW.md §一, SHORTS.md §資料模型), else the tutorial's, else
+    the default."""
+    if format == "drama":
+        own = row.drama_stage_models or {}
+    elif format == "shorts" and shorts is not None:
+        own = shorts.stage_models or {}
+    else:
+        own = {}
+    choice = own.get(stage) or row.stage_models.get(stage) or DEFAULT_STAGE_MODELS[stage]
     return choice["provider"], choice["model"]
+
+
+def subject_choice(shorts: VideoShortsSettings | None, variant: str | None) -> tuple[str, str]:
+    """The model an experiment Short tests under ``variant`` a or b: the Shorts settings'
+    ``subject_models``, never the caller's choice. ``b`` left unset tests the same model as
+    ``a`` (most experiments ask one model two ways); with no ``a`` nothing runs."""
+    chosen = dict((shorts.subject_models or {}) if shorts is not None else {})
+    choice = chosen.get(variant or "") or (chosen.get("a") if variant == "b" else None)
+    if not isinstance(choice, dict) or not choice.get("provider") or not choice.get("model"):
+        raise StageFailed(
+            409,
+            "video_ai_subject_not_chosen",
+            "Shorts 設定還沒選受測模型（subject_models 的 a），實測不能跑",
+        )
+    return str(choice["provider"]), str(choice["model"])
+
+
+async def _shorts_row(session: AsyncSession) -> VideoShortsSettings | None:
+    return cast(
+        VideoShortsSettings | None,
+        await session.scalar(select(VideoShortsSettings).where(VideoShortsSettings.id == 1)),
+    )
 
 
 def _failure(error: Exception) -> StageFailed:
@@ -114,8 +147,14 @@ async def run_stage(
     request: StageRunIn,
     token_id: Any,
     client: httpx.AsyncClient | None = None,
+    shorts: VideoShortsSettings | None = None,
 ) -> StageRunOut:
-    provider_name, model = stage_choice(row, request.stage, request.format)
+    if request.format == "shorts" and shorts is None:
+        shorts = await _shorts_row(session)
+    if request.stage == "subject":
+        provider_name, model = subject_choice(shorts, request.variant)
+    else:
+        provider_name, model = stage_choice(row, request.stage, request.format, shorts)
     on_plan = provider_name in SUBSCRIPTION_PROVIDERS
     usage = await usage_view(session, row)
     # A series document, an episode planned from an approved chapter, a recap or a fix is not
