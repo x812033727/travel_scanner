@@ -38,6 +38,9 @@ test("each scene lays out transition frames one by one, then its still, adding u
   const timeline = estimateTimeline(fixture());
   const layout = layoutScenes(timeline, manifestFor(timeline));
   for (const [index, scene] of layout.entries()) {
+    // assemble samples only "stills" scenes by PSNR; a plain slides video must not lose its frame checks.
+    assert.equal(scene.kind, "stills");
+    assert.ok(segmentSamples(scene).length > 0);
     assert.equal(scene.entries.reduce((sum, entry) => sum + entry.frames, 0), timeline.scenes[index].end_frame - timeline.scenes[index].start_frame);
   }
   const bullets = layout.find((scene) => scene.id === "questions");
