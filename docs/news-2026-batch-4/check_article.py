@@ -205,6 +205,10 @@ RELATED: dict[str, str] = {
     "crypto-news-japan-onchain-finance-forum-20260925": "crypto-news-jfsa-working-group-20260216",
     "crypto-news-taiwan-cbc-stablecoin-deposit-token-cbdc-20260917": "crypto-news-taiwan-vasp-act-20260630",
     "crypto-news-korea-market-manipulation-referrals-20260923": "crypto-news-fca-p2p-crypto-crackdown-20260917",
+    # 4.9（GPT-6.1 Sol，一篇，五語）：AI 190。自動化沒有發出這一則，站主 2026-09-30 要求手寫。
+    "ai-news-gpt-61-sol-20260929": "ai-news-gpt-6-sol-luna-20260923",
+    # 4.10（Claude Sonnet 5.5，一篇，五語）：AI 191。自動化沒看到 Anthropic 根目錄的發表頁。
+    "ai-news-claude-sonnet-55-20260928": "ai-news-claude-sonnet-5-20260630",
 }
 
 def items_bounds(block: type) -> tuple[int, int]:

@@ -6,7 +6,7 @@ AI 相關的卡片不在 `/admin/settings`，在 **`/admin/ai-accounts` 的「AP
 
 | 卡片 id | 標題 | 放什麼 |
 | --- | --- | --- |
-| `ai_vendors` | AI 供應商與金鑰 | OpenAI、Claude、MiniMax、Gemini、Jev 的金鑰與 Base URL；`jev_daily_call_budget`；`anthropic_connection`（Claude 連線方式：`api_key`／`subscription`）與 `ai_subscription_max_usage_percent`（預設 80）。後兩欄只有站主能改。這張卡永遠啟用（`ALWAYS_ENABLED_PROVIDERS`），所以秘密不會因停用被清空；web 只送有變的欄位 |
+| `ai_vendors` | AI 供應商與金鑰 | OpenAI、Claude、MiniMax、Gemini、Jev 的金鑰與 Base URL；`jev_daily_call_budget`；`anthropic_connection`（Claude 連線方式：`api_key`／`subscription`），這欄只有站主能改；訂閱帳號的用量上限固定 100%，沒有設定欄（見 `ai-accounts.md`）。這張卡永遠啟用（`ALWAYS_ENABLED_PROVIDERS`），所以秘密不會因停用被清空；web 只送有變的欄位 |
 | `ai_planner` | AI 行程規劃 | `ai_planner_mode`（`auto`／`openai`／`anthropic`／`minimax`／`gemini`／`fallback`／`disabled`）、`ai_planner_priority`（程式預設 `openai,anthropic,minimax,gemini`）、各家模型 `openai_model`／`anthropic_model`／`minimax_model`／`gemini_model`、逾時、輸出上限、使用者與 IP 預算。行程文字解析共用這份名單 |
 | `ai_guide_search` | AI 景點介紹搜尋 | `hotspot_guide_ai_default_provider`，各家模型覆寫 `hotspot_guide_ai_{openai,anthropic,minimax,gemini}_model`；留空＝沿用行程規劃那家的模型（`app/hotspots/ai_search.py` 的 `research_model`） |
 | `hotspot_intros` | AI 景點介紹撰寫 | `hotspot_intro_ai_default_provider` 與各家模型；留空＝沿用景點介紹搜尋的模型 |

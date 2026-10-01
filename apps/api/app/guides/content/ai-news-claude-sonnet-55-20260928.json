@@ -1,0 +1,1285 @@
+{
+  "slug": "ai-news-claude-sonnet-55-20260928",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software",
+    "ai-news"
+  ],
+  "valid_until": null,
+  "news_date": "2026-09-28",
+  "featured": false,
+  "display_order": 191,
+  "related": [
+    "ai-news-claude-sonnet-5-20260630",
+    "ai-news-claude-opus-55-20260922"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Sonnet 5.5 推出：牌價與 Sonnet 5 相同，API、雲端平台與 Claude.ai 都能用",
+      "description": "Anthropic 在 2026 年 9 月 28 日推出 Claude Sonnet 5.5，API 牌價與 Sonnet 5 相同（每百萬 tokens 輸入 2 美元、輸出 10 美元）；Claude.ai、API 與多個雲端平台可用，較高風險的資安請求會退回 Sonnet 5 處理（2026 年 9 月查證）。",
+      "hero": {
+        "src": "/guides/ai-news-claude-sonnet-55-20260928/hero.jpg",
+        "alt": "原創插圖：左邊一張虛線卡片代表前一版 Sonnet，等號接著一張實線卡片代表 Sonnet 5.5，表示牌價相同；右邊一台螢幕、一支手機與一朵雲，代表網頁、App 與 API 平台；不含商標或真實人物。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Anthropic 在 2026 年 9 月 28 日推出 Claude Sonnet 5.5，稱它是 Claude 5.5 家族的第二個模型，同家族還有 Opus 5.5。API 牌價與 Sonnet 5 相同，每百萬輸入 tokens 2 美元、輸出 10 美元；公告說每個任務的成本比前一代「最多少 30%」，那是 Anthropic 在自己測試裡量到的結果，不是牌價調降。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這一篇的資料在 2026 年 9 月 30 日查核，依據 Anthropic 的公告、模型頁、產品頁與 System Card。Sonnet 產品頁寫任何人都能在 Claude.ai 使用；開發者用 claude-sonnet-5-5。這幾頁沒有提到台灣，也沒有列出開放或限制的地區。評測與安全分級都是 Anthropic 自己公布，這個網站沒有實測，也不提供換模型或訂閱的建議。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Anthropic 在 2026 年 9 月 28 日推出 Claude Sonnet 5.5，是 Claude 5.5 家族的第二個模型，API 名稱是 claude-sonnet-5-5；截至查核日，這幾頁沒有寫 Sonnet 5 何時停用。",
+            "牌價與 Sonnet 5 相同：每百萬 tokens 輸入 2 美元、輸出 10 美元、快取讀取 0.20 美元。Anthropic 另表示它做同樣的工作通常需要少得多的 tokens，這是 Anthropic 的說法，牌價本身沒有調降。",
+            "Anthropic 的 Sonnet 產品頁寫任何人都能在 Claude.ai 的網頁、iOS 與 Android 使用，各方案的差別沒有逐一列出；模型頁列出的平台有 Claude API、Amazon Bedrock、Google Cloud、Microsoft Foundry 與 Claude Platform on AWS。",
+            "Anthropic 公布的評測裡，Terminal-Bench 4.0 是 Sonnet 5.5 70.6%、Sonnet 5 10.3%；這些分數不代表讀者自己的任務，Anthropic 也說 Opus 5.5 在複雜開放式工作上仍明顯較強。",
+            "System Card 寫 Sonnet 5.5 沒有跨過新的 RSP 門檻，這是 Anthropic 自己政策框架下的判定，不是外部評等；公告說較高風險的資安任務會退回 Sonnet 5 處理。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Sonnet 5.5 是什麼，和 Sonnet 5 的關係"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 說 Sonnet 5.5 是 Opus 5.5 較快、成本較低的搭配。Opus 5.5 為需要審慎判斷的複雜工作打造，Sonnet 5.5 最擅長範圍明確的日常任務、修 bug，以及製作文件、簡報與試算表。公告稱它是 Sonnet 5 的「明確升級」，輸出速度快 30% 以上。這些都是 Anthropic 的自述。"
+        },
+        {
+          "type": "paragraph",
+          "text": "舊版方面，截至查核日，公告、模型頁與產品頁都沒有寫 Sonnet 5 何時停用；模型頁只寫 Sonnet 5.5 自己的退役日「不早於 2027 年 9 月 28 日」，這是 Anthropic 對 Sonnet 5.5 的承諾。公告另寫，較高風險的資安任務會退回 Sonnet 5 處理（見最後一節）。"
+        },
+        {
+          "type": "paragraph",
+          "text": "對開發者，模型頁寫有五項破壞性變更會影響原本在 Sonnet 5 上跑的程式；公告點出其中一項：把思考關掉來跑的人，換到 Sonnet 5.5 前要改用新的 between_tools 設定。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "價格怎麼讀：牌價沒變，Anthropic 說變的是每個任務的用量"
+        },
+        {
+          "type": "paragraph",
+          "text": "下表是公告價格表與模型頁列的 Sonnet 5.5 牌價（每百萬 tokens、美元）。公告明寫與 Sonnet 5 相同的是輸入、輸出與快取讀取三項，並表示它做同樣的工作通常需要少得多的 tokens。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「最多便宜 30%」要小心讀：公告寫的是在 Anthropic 的測試裡，每個任務的成本比前一代最多少 30%；產品頁寫的是對以 token 計費的一般工作負載，估計執行成本比 Sonnet 5 最多少 30%。兩處都是「最多」，都是 Anthropic 自己的測試或估計，牌價沒有降。實際成本要看自己的任務用掉多少 tokens。"
+        },
+        {
+          "type": "paragraph",
+          "text": "產品頁另寫：提示快取最多可省 90%、批次處理可省 50%；需要在美國境內執行的工作負載可選 US-only inference，輸入與輸出 tokens 價格為 1.1 倍。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目（每百萬 tokens）",
+            "Sonnet 5.5 牌價",
+            "列在哪裡"
+          ],
+          "rows": [
+            [
+              "輸入",
+              "$2",
+              "公告、模型頁"
+            ],
+            [
+              "輸出",
+              "$10",
+              "公告、模型頁"
+            ],
+            [
+              "快取讀取",
+              "$0.20",
+              "公告、模型頁"
+            ],
+            [
+              "5 分鐘快取寫入",
+              "$2.50",
+              "模型頁（公告價格表寫「快取寫入」）"
+            ],
+            [
+              "1 小時快取寫入",
+              "$4",
+              "模型頁"
+            ],
+            [
+              "Batch API",
+              "輸入與輸出五折",
+              "模型頁"
+            ]
+          ],
+          "caption": "Claude Sonnet 5.5 牌價，美元／每百萬 tokens，依 Anthropic 公告價格表與模型頁，查核日 2026 年 9 月 30 日；公告寫明與 Sonnet 5 相同的是輸入、輸出、快取讀取三項。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "在哪裡用得到 Sonnet 5.5"
+        },
+        {
+          "type": "paragraph",
+          "text": "聊天這一端，Sonnet 產品頁寫，任何人都能在 Claude.ai 上用 Sonnet 5.5 對話，網頁、iOS、Android 都有。這句沒有逐一列出各方案，也沒有寫用量上限或是否為預設模型；這幾頁在查核日都沒有說明，不能推論成某方案不能用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開發者這一端，公告寫 Sonnet 5.5 已在「所有平台」上線，舉例有 Amazon Web Services、Google Cloud 與 Microsoft Azure；模型頁列的平台是 Claude API、Amazon Bedrock、Google Cloud、Microsoft Foundry、Claude Platform on AWS；模型 ID 除 Amazon Bedrock 是 anthropic.claude-sonnet-5-5，其餘都是 claude-sonnet-5-5。"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型頁列的規格是脈絡視窗 1M tokens、最大輸出 128K tokens、可靠知識截止 2026 年 6 月；這些頁面沒有 Sonnet 5 的規格可對照。公告另寫，Claude Code 與 Claude 應用的預設 effort 是 Medium，Claude Platform 預設 High。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-claude-sonnet-55-20260928/diagram-1.svg",
+          "alt": "四格圖解：牌價與 Sonnet 5 相同、聊天可用範圍、開發者與雲端平台、安全門檻判定",
+          "width": 1600,
+          "height": 900,
+          "caption": "Claude Sonnet 5.5 的牌價、Claude.ai 使用、開發者平台與 System Card 安全門檻判定，依 Anthropic 公告、模型頁、產品頁與 System Card 整理，查核日 2026 年 9 月 30 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Anthropic 公布的評測怎麼看"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是公告評測表裡 Anthropic 公布的分數，不代表讀者自己的任務。Terminal-Bench 4.0（代理式寫程式）：Sonnet 5.5 70.6%、Sonnet 5 10.3%、Opus 5.5 66.4%（註腳：Opus 5.5 取 Xhigh effort 的最高分）。CursorBench 4.0：55.5%、34.1%、57.8%。電腦操作的 OSWorld 2.1：80.1%、57.0%、81.8%。"
+        },
+        {
+          "type": "paragraph",
+          "text": "FrontierCode 1.1 (Main) 要連 effort 一起看：Sonnet 5.5 在 Max effort 是 46.2%、Xhigh effort 是 52.1%，Sonnet 5 是 42.4%，Opus 5.5 是 54.4%；註腳說 Max 較低，是因為它較常跑 Claude Code 的程式審查技能，在 Cognition 檢視的兩個案例裡導致逾時或改到任務範圍外。GDPval-AA v2.1 是分數制、不是百分比：Sonnet 5.5 1844、Sonnet 5 1449、Opus 5.5 1846；註腳說這項由 Artificial Analysis 在上市前部署上執行，Anthropic 發現該部署有一個可能讓使用結構化輸出的請求回應變差的 bug，現已修正。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 自己也寫了但書：評測分數只反映模型能力的一個面向，在 Anthropic 自己與外部測試者的測試中，Opus 5.5 在需要持續判斷的複雜開放式工作上仍明顯較強。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "System Card 與安全防護"
+        },
+        {
+          "type": "paragraph",
+          "text": "System Card 寫，Anthropic 依自己的 Responsible Scaling Policy（RSP，Anthropic 自訂的負責任擴展政策框架，不是外部評等）評估，Sonnet 5.5 整體能力低於 Opus 5.5，沒有跨過任何新的 RSP 門檻。Opus 5.5 沒有跨過 CB-2 與 Autonomy-2 門檻的判定同樣適用；Anthropic 把 Sonnet 5.5 當作已達到 CB-1 與 Autonomy-1 門檻，並套用 RSP 對應的緩解措施。"
+        },
+        {
+          "type": "paragraph",
+          "text": "System Card 摘要的其他結論同樣是 Anthropic 的評估：失準風險低；它是目前對提示注入最穩健的 Sonnet 級模型（特別是寫程式與瀏覽器使用），但在電腦操作環境裡，對有害任務的拒絕率與 Opus 5.5 相當、比部分較早的模型退步。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告說，Sonnet 5.5 的資安能力比 Sonnet 5 大幅提升，是第一個帶資安防護與備援上線的 Sonnet 模型。一般開發中找 bug、修 bug 不受影響，較高風險的資安任務會看得到地退回 Sonnet 5 處理。System Card 提醒，使用者應預期拒絕會變多，即使是無害的資安相關任務也一樣；它也補充，這種退回適用 Anthropic 自家產品與在 API 選擇啟用備援的開發者，透過其他平台與供應商使用時可能不同。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Sonnet 5.5 比 Sonnet 5 貴嗎？",
+              "answer": "牌價相同：每百萬 tokens 輸入 2 美元、輸出 10 美元、快取讀取 0.20 美元。Anthropic 說的「最多便宜 30%」是它測試的每任務成本或對一般工作負載的估計，不是牌價調降，實際用量要看自己的任務。"
+            },
+            {
+              "question": "免費版能用 Sonnet 5.5 嗎？",
+              "answer": "Anthropic 的 Sonnet 產品頁寫，任何人都能在 Claude.ai 的網頁、iOS 與 Android 上用 Sonnet 5.5 對話。這句沒有逐一列出各方案，也沒有寫用量上限；這幾頁在查核日都沒有說明。要確認自己的帳號，登入後看能選哪些模型。"
+            },
+            {
+              "question": "Sonnet 5 會被停用嗎？",
+              "answer": "截至 2026 年 9 月 30 日，Anthropic 的公告、模型頁與 Sonnet 產品頁都沒有寫 Sonnet 5 何時停用。模型頁只寫 Sonnet 5.5 自己的退役日不早於 2027 年 9 月 28 日。"
+            },
+            {
+              "question": "為什麼有些資安相關的請求會由 Sonnet 5 回答？",
+              "answer": "公告寫，Sonnet 5.5 是第一個帶資安防護與備援上線的 Sonnet 模型，較高風險的資安任務會看得到地退回 Sonnet 5 處理；一般開發中找 bug、修 bug 不受影響。System Card 提醒，這種退回做法適用 Anthropic 自家產品與在 API 選擇啟用備援的開發者，透過其他平台與供應商使用時可能不同。"
+            },
+            {
+              "question": "「沒有跨過新的 RSP 門檻」是什麼意思？",
+              "answer": "RSP 是 Anthropic 自己訂的負責任擴展政策框架。System Card 寫 Anthropic 的評估認為 Sonnet 5.5 整體能力低於 Opus 5.5，沒有跨過新的門檻，並把它當作已達到 CB-1 與 Autonomy-1、未跨過 CB-2 與 Autonomy-2。這是 Anthropic 的自我判定，不是外部機構的評等。"
+            },
+            {
+              "question": "Claude Haiku 5.5 推出了嗎？",
+              "answer": "公告寫 Claude Haiku 5.5 會在「未來幾週」加入 Claude 5.5 家族，沒有給日期。截至查核日，公告、模型頁、產品頁與 System Card 都沒有它的上市資訊。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "價格與範圍會改，評測是 Anthropic 自己的",
+          "text": "價格、平台與開放範圍都是截至 2026 年 9 月 30 日的頁面內容，這些頁面隨時可能更新。評測與安全分級都是 Anthropic 自己公布，這一篇沒有實測，也不是換模型或訂閱方案的建議。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Sonnet 5：能力與成本之間，怎麼找日常工作的平衡？",
+              "kind": "life",
+              "slug": "ai-news-claude-sonnet-5-20260630"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic：Introducing Claude Sonnet 5.5",
+          "url": "https://www.anthropic.com/claude-sonnet-5-5",
+          "checked_on": "2026-09-30"
+        },
+        {
+          "title": "Claude Platform Docs：Claude Sonnet 5.5（模型頁）",
+          "url": "https://platform.claude.com/docs/en/models/sonnet-5-5/overview",
+          "checked_on": "2026-09-30"
+        },
+        {
+          "title": "Anthropic：System Card: Claude Sonnet 5.5",
+          "url": "https://www.anthropic.com/claude-sonnet-5-5-system-card",
+          "checked_on": "2026-09-30"
+        },
+        {
+          "title": "Anthropic：Claude Sonnet（產品頁）",
+          "url": "https://www.anthropic.com/claude/sonnet",
+          "checked_on": "2026-09-30"
+        }
+      ]
+    },
+    "en": {
+      "title": "Claude Sonnet 5.5 Launches: Same List Price as Sonnet 5, Available in the API, on Cloud Platforms and in Claude.ai",
+      "description": "Anthropic launched Claude Sonnet 5.5 on September 28, 2026. API list prices are the same as Sonnet 5 ($2 per million input tokens, $10 per million output tokens). It is available in Claude.ai, the API and several cloud platforms, and higher-risk cybersecurity requests fall back to Sonnet 5 (checked September 2026).",
+      "hero": {
+        "src": "/guides/ai-news-claude-sonnet-55-20260928/hero-en.jpg",
+        "alt": "Original illustration: a dashed card for the previous Sonnet, an equals sign and a solid card for Sonnet 5.5 (same list price), then a screen, a phone and a cloud for web, apps and API platforms.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Anthropic launched Claude Sonnet 5.5 on September 28, 2026, calling it the second model in the Claude 5.5 family; Opus 5.5 is the other. API list prices are the same as Sonnet 5: $2 per million input tokens and $10 per million output tokens. The announcement says the cost per task is \"up to 30% less\" than the previous generation. That is a result Anthropic measured in its own testing, not a list-price cut."
+        },
+        {
+          "type": "paragraph",
+          "text": "The information in this article was checked on September 30, 2026, against Anthropic's announcement, model page, product page and System Card. The Sonnet product page says anyone can use it on Claude.ai; developers use claude-sonnet-5-5. These pages do not mention Taiwan and do not list which regions are open or restricted. The evaluations and the safety classification are published by Anthropic itself; this site has not tested them, and we do not recommend switching models or subscribing."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Anthropic launched Claude Sonnet 5.5 on September 28, 2026, the second model in the Claude 5.5 family; its API name is claude-sonnet-5-5. As of the checked date, these pages do not say when Sonnet 5 will be retired.",
+            "List prices are the same as Sonnet 5: $2 per million input tokens, $10 per million output tokens and $0.20 for cache reads. Anthropic adds that it typically needs far fewer tokens to do the same work; that is Anthropic's statement, and the list price itself has not been cut.",
+            "Anthropic's Sonnet product page says anyone can use it on Claude.ai on the web, iOS and Android, without listing the differences between plans; the model page lists the platforms Claude API, Amazon Bedrock, Google Cloud, Microsoft Foundry and Claude Platform on AWS.",
+            "Among the evaluations Anthropic published, Terminal-Bench 4.0 shows 70.6% for Sonnet 5.5 and 10.3% for Sonnet 5; these scores do not represent a reader's own tasks, and Anthropic also says Opus 5.5 remains clearly stronger at complex, open-ended work.",
+            "The System Card says Sonnet 5.5 does not cross any new RSP thresholds. That is a determination under Anthropic's own policy framework, not an external rating; the announcement says higher-risk cybersecurity tasks fall back to Sonnet 5."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What Sonnet 5.5 Is and How It Relates to Sonnet 5"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic says Sonnet 5.5 is a faster, lower-cost complement to Opus 5.5. Opus 5.5 is built for complex work that requires careful judgment, while Sonnet 5.5 is strongest at well-scoped everyday tasks, fixing bugs, and creating polished documents, slides and spreadsheets. The announcement calls it a \"clear upgrade\" over Sonnet 5 that generates outputs 30% or more faster. All of this is Anthropic's own description."
+        },
+        {
+          "type": "paragraph",
+          "text": "On older versions, as of the checked date the announcement, model page and product page do not say when Sonnet 5 will be retired; the model page gives only Sonnet 5.5's own retirement date as \"not sooner than September 28, 2027\", which is Anthropic's commitment for Sonnet 5.5. The announcement also says higher-risk cybersecurity tasks fall back to Sonnet 5 (see the last section)."
+        },
+        {
+          "type": "paragraph",
+          "text": "For developers, the model page lists five breaking changes that affect code already running on Sonnet 5; the announcement calls out one of them: if you run with thinking off, you need to switch to the new between_tools setting before moving to Sonnet 5.5."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Reading the Price: List Prices Are Unchanged, and Anthropic Says the Per-Task Usage Is What Changed"
+        },
+        {
+          "type": "paragraph",
+          "text": "The table below shows the Sonnet 5.5 list prices from the announcement's pricing table and the model page (per million tokens, in US dollars). The announcement states that input, output and cache reads are the same as Sonnet 5, and says it typically needs far fewer tokens to do the same work."
+        },
+        {
+          "type": "paragraph",
+          "text": "\"Up to 30% cheaper\" needs a careful reading. The announcement says that in Anthropic's testing, the cost per task is up to 30% less than the previous generation; the product page says that for typical workloads billed by token, the estimated cost to run is up to 30% less than Sonnet 5. Both say \"up to\", both come from Anthropic's own testing or estimates, and the list price has not been lowered. Your actual cost depends on how many tokens your own tasks use."
+        },
+        {
+          "type": "paragraph",
+          "text": "The product page adds: prompt caching can save up to 90% and batch processing 50%; for workloads that need to run in the US, US-only inference is available at 1.1x pricing for input and output tokens."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Item (per million tokens)",
+            "Sonnet 5.5 list price",
+            "Where it is listed"
+          ],
+          "rows": [
+            [
+              "Input",
+              "$2",
+              "Announcement, model page"
+            ],
+            [
+              "Output",
+              "$10",
+              "Announcement, model page"
+            ],
+            [
+              "Cache reads",
+              "$0.20",
+              "Announcement, model page"
+            ],
+            [
+              "5-minute cache writes",
+              "$2.50",
+              "Model page (the announcement's pricing table says \"Cache writes\")"
+            ],
+            [
+              "1-hour cache writes",
+              "$4",
+              "Model page"
+            ],
+            [
+              "Batch API",
+              "50% discount on input and output",
+              "Model page"
+            ]
+          ],
+          "caption": "Claude Sonnet 5.5 list prices, USD per million tokens, from Anthropic's announcement and model page, checked September 30, 2026; the announcement says input, output and cache reads match Sonnet 5."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Where You Can Use Sonnet 5.5"
+        },
+        {
+          "type": "paragraph",
+          "text": "On the chat side, the Sonnet product page says anyone can chat with Claude using Sonnet 5.5 on Claude.ai, on the web, iOS and Android. That sentence does not list the individual plans, and it does not state usage limits or whether it is the default model; none of these pages address this as of the checked date, so it cannot be read as meaning that some plan cannot use it."
+        },
+        {
+          "type": "paragraph",
+          "text": "On the developer side, the announcement says Sonnet 5.5 is now available on \"all platforms\", with examples including Amazon Web Services, Google Cloud and Microsoft Azure; the model page lists the platforms Claude API, Amazon Bedrock, Google Cloud, Microsoft Foundry and Claude Platform on AWS. The model ID is claude-sonnet-5-5 everywhere except Amazon Bedrock, where it is anthropic.claude-sonnet-5-5."
+        },
+        {
+          "type": "paragraph",
+          "text": "The model page lists a context window of 1M tokens, a maximum output of 128K tokens and a reliable knowledge cutoff of June 2026; these pages have no Sonnet 5 specifications to compare against. The announcement also says the default effort is Medium in Claude Code and Claude apps, and High on the Claude Platform."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-claude-sonnet-55-20260928/diagram-1-en.svg",
+          "alt": "Four-panel diagram: same list price as Sonnet 5, where chat is available, developer and cloud platforms, and the safety threshold determination",
+          "width": 1600,
+          "height": 900,
+          "caption": "Claude Sonnet 5.5's list prices, use in Claude.ai, developer platforms and the System Card's safety threshold determination, compiled from Anthropic's announcement, model page, product page and System Card, checked September 30, 2026.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How to Read the Evaluations Anthropic Published"
+        },
+        {
+          "type": "paragraph",
+          "text": "Below are scores Anthropic published in the announcement's evaluation table; they do not represent a reader's own tasks. Terminal-Bench 4.0 (agentic coding): Sonnet 5.5 70.6%, Sonnet 5 10.3%, Opus 5.5 66.4% (footnote: for Opus 5.5, the highest score at Xhigh effort). CursorBench 4.0: 55.5%, 34.1%, 57.8%. OSWorld 2.1, for computer use: 80.1%, 57.0%, 81.8%."
+        },
+        {
+          "type": "paragraph",
+          "text": "FrontierCode 1.1 (Main) has to be read together with effort: Sonnet 5.5 scores 46.2% at Max effort and 52.1% at Xhigh effort, Sonnet 5 scores 42.4% and Opus 5.5 scores 54.4%; a footnote says Max is lower because it more often ran Claude Code's code-review skill, which in two cases examined by Cognition led to timeouts or edits outside the task scope. GDPval-AA v2.1 is scored in points, not percentages: Sonnet 5.5 1844, Sonnet 5 1449, Opus 5.5 1846; a footnote says Artificial Analysis ran it on a pre-launch deployment, and Anthropic found a bug in that deployment that could degrade responses for requests using structured outputs, which has since been fixed."
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic itself adds a caveat: benchmark scores capture only one facet of a model's capabilities, and in Anthropic's own testing and that of external testers, Opus 5.5 remains clearly stronger at complex, open-ended work requiring sustained judgment."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The System Card and Safeguards"
+        },
+        {
+          "type": "paragraph",
+          "text": "The System Card says that, under Anthropic's own Responsible Scaling Policy (RSP, a responsible-scaling policy framework Anthropic defined itself, not an external rating), its evaluations found Sonnet 5.5 broadly less capable than Opus 5.5, and it does not cross any new RSP thresholds. The determination that Opus 5.5 does not cross the CB-2 or Autonomy-2 thresholds also applies. Anthropic treats Sonnet 5.5 as meeting its CB-1 and Autonomy-1 thresholds and applies the corresponding mitigations from its RSP."
+        },
+        {
+          "type": "paragraph",
+          "text": "The other conclusions in the System Card summary are likewise Anthropic's assessment: misalignment risk is low; it is Anthropic's most robust Sonnet-class model yet against prompt injection (particularly in coding environments and browser use), but in computer use environments its refusal rate on harmful tasks is comparable to Opus 5.5 and a regression relative to some earlier models."
+        },
+        {
+          "type": "paragraph",
+          "text": "The announcement says Sonnet 5.5's cybersecurity capabilities are a large step up from Sonnet 5, and that it is the first Sonnet model to launch with cyber safeguards and fallbacks. Finding and fixing bugs in routine software development is not affected, while higher-risk cybersecurity tasks will visibly fall back to Sonnet 5. The System Card warns that users should expect increased refusals, even on benign cybersecurity-related tasks; it also adds that this fallback applies to Anthropic's first-party products and to developers who opt in to such fallbacks on the API, and that traffic through other platforms and providers may see different behavior."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Is Sonnet 5.5 more expensive than Sonnet 5?",
+              "answer": "The list prices are the same: $2 per million input tokens, $10 per million output tokens and $0.20 for cache reads. The \"up to 30% cheaper\" Anthropic mentions is the cost per task in its testing, or its estimate for typical workloads; it is not a list-price cut, and your actual usage depends on your own tasks."
+            },
+            {
+              "question": "Can the free plan use Sonnet 5.5?",
+              "answer": "Anthropic's Sonnet product page says anyone can chat with Claude using Sonnet 5.5 on Claude.ai, on the web, iOS and Android. That sentence does not list the individual plans or state usage limits; none of these pages address this as of the checked date. To confirm for your own account, sign in and see which models you can choose."
+            },
+            {
+              "question": "Will Sonnet 5 be retired?",
+              "answer": "As of September 30, 2026, Anthropic's announcement, model page and Sonnet product page do not say when Sonnet 5 will be retired. The model page gives only Sonnet 5.5's own retirement date, not sooner than September 28, 2027."
+            },
+            {
+              "question": "Why are some cybersecurity-related requests answered by Sonnet 5?",
+              "answer": "The announcement says Sonnet 5.5 is the first Sonnet model to launch with cyber safeguards and fallbacks, and that higher-risk cybersecurity tasks will visibly fall back to Sonnet 5; finding and fixing bugs in routine software development is not affected. The System Card notes that this fallback applies to Anthropic's first-party products and to developers who opt in to such fallbacks on the API, and that traffic through other platforms and providers may see different behavior."
+            },
+            {
+              "question": "What does \"does not cross any new RSP thresholds\" mean?",
+              "answer": "The RSP is a responsible-scaling policy framework Anthropic defined itself. The System Card says Anthropic's evaluations found Sonnet 5.5 broadly less capable than Opus 5.5 and not crossing any new thresholds, and Anthropic treats it as meeting CB-1 and Autonomy-1 while not crossing CB-2 and Autonomy-2. This is Anthropic's own determination, not a rating by an outside body."
+            },
+            {
+              "question": "Has Claude Haiku 5.5 launched?",
+              "answer": "The announcement says Claude Haiku 5.5 will join the Claude 5.5 family \"in the coming weeks\", without giving a date. As of the checked date, the announcement, model page, product page and System Card contain no launch information for it."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Prices and Scope Change; the Evaluations Are Anthropic's Own",
+          "text": "Prices, platforms and availability reflect the pages as of September 30, 2026, and those pages can be updated at any time. The evaluations and the safety classification are published by Anthropic itself; we have not tested them ourselves, and this article is not a recommendation to switch models or subscribe to a plan."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January to September",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Sonnet 5: Balancing Capability and Cost in Daily Work",
+              "kind": "life",
+              "slug": "ai-news-claude-sonnet-5-20260630"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic: Introducing Claude Sonnet 5.5",
+          "url": "https://www.anthropic.com/claude-sonnet-5-5",
+          "checked_on": "2026-09-30"
+        },
+        {
+          "title": "Claude Platform Docs: Claude Sonnet 5.5 (model page)",
+          "url": "https://platform.claude.com/docs/en/models/sonnet-5-5/overview",
+          "checked_on": "2026-09-30"
+        },
+        {
+          "title": "Anthropic: System Card: Claude Sonnet 5.5",
+          "url": "https://www.anthropic.com/claude-sonnet-5-5-system-card",
+          "checked_on": "2026-09-30"
+        },
+        {
+          "title": "Anthropic: Claude Sonnet (product page)",
+          "url": "https://www.anthropic.com/claude/sonnet",
+          "checked_on": "2026-09-30"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Claude Sonnet 5.5が登場：価格はSonnet 5と同じで、API、クラウドプラットフォーム、Claude.aiで利用可能",
+      "description": "Anthropicは2026年9月28日にClaude Sonnet 5.5を発表しました。APIの定価はSonnet 5と同じ（100万tokensあたり入力2ドル、出力10ドル）で、Claude.ai、API、複数のクラウドプラットフォームで利用でき、リスクの高いサイバーセキュリティ関連のリクエストはSonnet 5にフォールバックされます（2026年9月確認）。",
+      "hero": {
+        "src": "/guides/ai-news-claude-sonnet-55-20260928/hero-ja.jpg",
+        "alt": "オリジナルのイラスト：左の破線のカードが前の Sonnet、等号の先の実線のカードが Sonnet 5.5 で、定価が同じことを表します。右の画面、スマートフォン、雲はウェブ、アプリ、API プラットフォームです。商標は含みません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Anthropicは2026年9月28日にClaude Sonnet 5.5を発表し、Claude 5.5ファミリーの2つ目のモデルで、同ファミリーにはOpus 5.5もあるとしています。APIの定価はSonnet 5と同じで、100万入力tokensあたり2ドル、出力は10ドルです。発表ではタスク1件あたりのコストが前世代より「最大30%少ない」とされていますが、これはAnthropic自身のテストで測定された結果であり、定価の引き下げではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事の情報は2026年9月30日に確認したもので、Anthropicの発表、モデルページ、製品ページ、System Cardに基づいています。Sonnetの製品ページには、誰でもClaude.aiで利用できると書かれており、開発者はclaude-sonnet-5-5を使います。これらのページには台湾への言及はなく、提供地域や制限地域の一覧もありません。評価結果も安全性の分類もAnthropic自身が公表したもので、当サイトは実地の検証を行っておらず、モデルの切り替えや契約を勧めるものでもありません。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Anthropicは2026年9月28日にClaude 5.5ファミリーの2つ目のモデルとしてClaude Sonnet 5.5を発表しました。API名はclaude-sonnet-5-5で、確認日時点でこれらのページにはSonnet 5がいつ終了するかは書かれていません。",
+            "定価はSonnet 5と同じで、100万tokensあたり入力2ドル、出力10ドル、キャッシュ読み取り0.20ドルです。Anthropicはさらに、同じ作業に必要なtokensは通常ずっと少ないと述べていますが、これはAnthropicの説明であり、定価自体は下がっていません。",
+            "AnthropicのSonnet製品ページには、誰でもClaude.aiのウェブ、iOS、Androidで利用できると書かれていますが、プランごとの違いは列挙されておらず、モデルページに載っているプラットフォームはClaude API、Amazon Bedrock、Google Cloud、Microsoft Foundry、Claude Platform on AWSです。",
+            "Anthropicが公表した評価では、Terminal-Bench 4.0はSonnet 5.5が70.6%、Sonnet 5が10.3%ですが、これらのスコアは読者自身のタスクを代表するものではなく、AnthropicもOpus 5.5は複雑で自由度の高い作業では依然として明らかに強いと述べています。",
+            "System Cardには、Sonnet 5.5は新たなRSPのしきい値を超えていないと書かれていますが、これはAnthropic自身の方針枠組みに基づく判定であり外部の格付けではなく、発表によればリスクの高いサイバーセキュリティ関連のタスクはSonnet 5にフォールバックされます。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Sonnet 5.5とは何か、Sonnet 5との関係"
+        },
+        {
+          "type": "paragraph",
+          "text": "AnthropicはSonnet 5.5を、Opus 5.5より高速でコストの低い組み合わせ相手だと説明しています。Opus 5.5は慎重な判断を要する複雑な作業向けに作られ、Sonnet 5.5は範囲の明確な日常タスク、バグ修正、資料・スライド・スプレッドシートの作成を最も得意とするとのことです。発表ではSonnet 5からの「明確なアップグレード」で、出力速度は30%以上速いとしています。これらはいずれもAnthropic自身の説明です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "旧バージョンについては、確認日時点で、発表、モデルページ、製品ページのいずれにもSonnet 5がいつ終了するかは書かれていません。モデルページに書かれているのはSonnet 5.5自身の廃止日が「2027年9月28日より早くはない」（Not sooner than）ということだけで、これはAnthropicがSonnet 5.5について示した約束です。発表にはさらに、リスクの高いサイバーセキュリティ関連のタスクはSonnet 5にフォールバックされるとあります（最後の節を参照）。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開発者向けには、モデルページにSonnet 5で動いている既存コードに影響する破壊的変更が5件挙げられています。発表ではそのうち1つが示されており、思考をオフにして使っている場合は、Sonnet 5.5に移る前に新しいbetween_tools設定へ切り替える必要があります。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "価格の読み方：定価は変わらず、変わるのはタスクあたりの使用量だとAnthropicは説明"
+        },
+        {
+          "type": "paragraph",
+          "text": "次の表は、発表の価格表とモデルページに載っているSonnet 5.5の定価です（100万tokensあたり、米ドル）。発表がSonnet 5と同じだと明記しているのは、入力、出力、キャッシュ読み取りの3項目で、同じ作業に必要なtokensは通常ずっと少ないとも述べています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「最大30%安い」は慎重に読む必要があります。発表に書かれているのは、Anthropicのテストでタスク1件あたりのコストが前世代より最大30%少ないということで、製品ページに書かれているのは、tokens課金の一般的なワークロードでSonnet 5より実行コストが最大30%少ないという見積もりです。どちらも「最大」であり、Anthropic自身のテストまたは見積もりで、定価は下がっていません。実際のコストは、自分のタスクがどれだけtokensを使うかで決まります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "製品ページにはさらに、プロンプトキャッシュで最大90%、バッチ処理で50%節約できるとあり、米国内での実行が必要なワークロードにはUS-only inferenceが選べて、入力・出力tokensの価格は1.1倍とされています。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目（100万tokensあたり）",
+            "Sonnet 5.5の定価",
+            "掲載箇所"
+          ],
+          "rows": [
+            [
+              "入力",
+              "$2",
+              "発表、モデルページ"
+            ],
+            [
+              "出力",
+              "$10",
+              "発表、モデルページ"
+            ],
+            [
+              "キャッシュ読み取り",
+              "$0.20",
+              "発表、モデルページ"
+            ],
+            [
+              "5分キャッシュ書き込み",
+              "$2.50",
+              "モデルページ（発表の価格表は「キャッシュ書き込み」と表記）"
+            ],
+            [
+              "1時間キャッシュ書き込み",
+              "$4",
+              "モデルページ"
+            ],
+            [
+              "Batch API",
+              "入力と出力が50%割引",
+              "モデルページ"
+            ]
+          ],
+          "caption": "Claude Sonnet 5.5の定価（米ドル／100万tokensあたり）。Anthropicの発表の価格表とモデルページに基づく。確認日は2026年9月30日。発表がSonnet 5と同じと明記しているのは入力、出力、キャッシュ読み取りの3項目。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Sonnet 5.5はどこで使えるか"
+        },
+        {
+          "type": "paragraph",
+          "text": "チャット面では、Sonnetの製品ページに、誰でもClaude.aiでSonnet 5.5と会話でき、ウェブ、iOS、Androidに対応していると書かれています。この文にはプランごとの一覧も、利用上限やデフォルトモデルかどうかの記載もなく、確認日時点でこれらのページに説明はないため、特定のプランで使えないと推論することはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "開発者向けには、発表がSonnet 5.5は「すべてのプラットフォーム」で利用可能になったとし、例としてAmazon Web Services、Google Cloud、Microsoft Azureを挙げています。モデルページに載っているプラットフォームはClaude API、Amazon Bedrock、Google Cloud、Microsoft Foundry、Claude Platform on AWSで、モデルIDはAmazon Bedrockがanthropic.claude-sonnet-5-5、それ以外はすべてclaude-sonnet-5-5です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "モデルページに載っている仕様は、コンテキストウィンドウ1M tokens、最大出力128K tokens、信頼できる知識のカットオフ2026年6月です。これらのページには、比較できるSonnet 5の仕様は載っていません。発表にはさらに、Claude CodeとClaudeアプリのデフォルトのeffortはMedium、Claude PlatformのデフォルトはHighとあります。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-claude-sonnet-55-20260928/diagram-1-ja.svg",
+          "alt": "4つの区画の図解：定価はSonnet 5と同じ、チャットでの利用範囲、開発者とクラウドプラットフォーム、安全性しきい値の判定",
+          "width": 1600,
+          "height": 900,
+          "caption": "Claude Sonnet 5.5の定価、Claude.aiでの利用、開発者向けプラットフォーム、System Cardによる安全性しきい値の判定。Anthropicの発表、モデルページ、製品ページ、System Cardに基づいて整理。確認日は2026年9月30日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Anthropicが公表した評価の見方"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下は発表の評価表でAnthropicが公表したスコアで、読者自身のタスクを代表するものではありません。Terminal-Bench 4.0（エージェント型コーディング）：Sonnet 5.5は70.6%、Sonnet 5は10.3%、Opus 5.5は66.4%（脚注：Opus 5.5はXhigh effortの最高スコア）。CursorBench 4.0：55.5%、34.1%、57.8%。コンピュータ操作のOSWorld 2.1：80.1%、57.0%、81.8%。"
+        },
+        {
+          "type": "paragraph",
+          "text": "FrontierCode 1.1 (Main)はeffortとあわせて見る必要があります。Sonnet 5.5はMax effortで46.2%、Xhigh effortで52.1%、Sonnet 5は42.4%、Opus 5.5は54.4%です。脚注によれば、Maxが低いのは、Claude Codeのコードレビュースキルをより頻繁に実行し、Cognitionが確認した2件でタイムアウトやタスク範囲外の変更につながったためです。GDPval-AA v2.1はスコア制でパーセントではなく、Sonnet 5.5は1844、Sonnet 5は1449、Opus 5.5は1846です。脚注によれば、この項目はArtificial Analysisがリリース前のデプロイ環境で実行したもので、Anthropicはそのデプロイに、構造化出力を使うリクエストの応答が悪化しうるバグを見つけ、現在は修正済みとのことです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic自身も但し書きを付けています。評価スコアはモデルの能力の一側面しか反映しておらず、Anthropic自身と外部テスターのテストでは、Opus 5.5は持続的な判断を要する複雑で自由度の高い作業では依然として明らかに強いとのことです。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "System Cardと安全対策"
+        },
+        {
+          "type": "paragraph",
+          "text": "System Cardには、AnthropicがResponsible Scaling Policy（RSP。Anthropicが独自に定めた責任ある拡大のための方針枠組みで、外部の格付けではありません）に基づいて評価した結果、Sonnet 5.5は全体としてOpus 5.5より能力が低く、新たなRSPのしきい値は超えていないと書かれています。Opus 5.5がCB-2とAutonomy-2のしきい値を超えていないという判定はSonnet 5.5にも当てはまり、AnthropicはSonnet 5.5をCB-1とAutonomy-1のしきい値に達しているものとして扱い、RSPの対応する緩和策を適用しています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "System Cardの要約にあるその他の結論も、Anthropicの評価です。ミスアラインメントのリスクは低いとされ、プロンプトインジェクションに対しては現時点でSonnetクラスのモデルの中で最も頑健で（特にコーディングとブラウザ利用で）、一方、コンピュータ操作環境での有害なタスクに対する拒否率はOpus 5.5と同程度で、以前の一部のモデルからは後退しています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "発表によれば、Sonnet 5.5のサイバーセキュリティ能力はSonnet 5から大幅に向上しており、サイバーセキュリティ用の保護策とフォールバックを備えて公開された最初のSonnetモデルです。通常の開発の中でのバグの発見と修正は影響を受けず、リスクの高いサイバーセキュリティ関連のタスクは目に見える形でSonnet 5にフォールバックされます。System Cardは、無害なサイバーセキュリティ関連のタスクであっても、ユーザーは拒否が増えることを想定しておくべきだと注意しています。また、このフォールバックはAnthropic自社の製品と、APIでフォールバックを有効にした開発者に適用され、他のプラットフォームやプロバイダー経由で使う場合は異なる可能性があるとも補足しています。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Sonnet 5.5はSonnet 5より高いですか？",
+              "answer": "定価は同じで、100万tokensあたり入力2ドル、出力10ドル、キャッシュ読み取り0.20ドルです。Anthropicの言う「最大30%安い」は、同社がテストしたタスクあたりのコスト、または一般的なワークロードに対する見積もりであり、定価の引き下げではありません。実際の使用量は自分のタスクによります。"
+            },
+            {
+              "question": "無料プランでSonnet 5.5は使えますか？",
+              "answer": "AnthropicのSonnet製品ページには、誰でもClaude.aiのウェブ、iOS、AndroidでSonnet 5.5と会話できると書かれています。この文にはプランごとの一覧も利用上限の記載もなく、確認日時点でこれらのページに説明はありません。自分のアカウントで確認するには、ログイン後に選べるモデルを見てください。"
+            },
+            {
+              "question": "Sonnet 5は終了しますか？",
+              "answer": "2026年9月30日時点で、Anthropicの発表、モデルページ、Sonnet製品ページのいずれにも、Sonnet 5がいつ終了するかは書かれていません。モデルページに書かれているのは、Sonnet 5.5自身の廃止日が2027年9月28日より早くはないということだけです。"
+            },
+            {
+              "question": "なぜサイバーセキュリティ関連のリクエストの一部はSonnet 5が回答するのですか？",
+              "answer": "発表によれば、Sonnet 5.5はサイバーセキュリティ用の保護策とフォールバックを備えて公開された最初のSonnetモデルで、リスクの高いサイバーセキュリティ関連のタスクは目に見える形でSonnet 5にフォールバックされます。通常の開発の中でのバグの発見と修正は影響を受けません。System Cardは、このフォールバックはAnthropic自社の製品とAPIで有効にした開発者に適用され、他のプラットフォームやプロバイダー経由では異なる可能性があると注意しています。"
+            },
+            {
+              "question": "「新たなRSPのしきい値を超えていない」とはどういう意味ですか？",
+              "answer": "RSPはAnthropicが自ら定めた責任ある拡大のための方針枠組みです。System Cardには、Anthropicの評価ではSonnet 5.5は全体としてOpus 5.5より能力が低く、新たなしきい値を超えておらず、CB-1とAutonomy-1に達しているものとして扱い、CB-2とAutonomy-2は超えていないとされています。これはAnthropic自身による判定で、外部機関の格付けではありません。"
+            },
+            {
+              "question": "Claude Haiku 5.5は発表されましたか？",
+              "answer": "発表には、Claude Haiku 5.5が「今後数週間のうちに」Claude 5.5ファミリーに加わるとあり、日付は示されていません。確認日時点で、発表、モデルページ、製品ページ、System Cardのいずれにも、その提供に関する情報はありません。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "価格と範囲は変わりうる。評価はAnthropic自身のもの",
+          "text": "価格、プラットフォーム、提供範囲は2026年9月30日時点（確認日）のページの内容で、これらのページはいつでも更新される可能性があります。評価結果も安全性の分類もAnthropic自身が公表したもので、当サイトは実地の検証を行っておらず、モデルの切り替えやプランの契約を勧めるものでもありません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月から9月までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Sonnet 5：能力とコストの間で日常業務のバランスをどう取るか？",
+              "kind": "life",
+              "slug": "ai-news-claude-sonnet-5-20260630"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic：Introducing Claude Sonnet 5.5",
+          "url": "https://www.anthropic.com/claude-sonnet-5-5",
+          "checked_on": "2026-09-30"
+        },
+        {
+          "title": "Claude Platform Docs：Claude Sonnet 5.5（モデルページ）",
+          "url": "https://platform.claude.com/docs/en/models/sonnet-5-5/overview",
+          "checked_on": "2026-09-30"
+        },
+        {
+          "title": "Anthropic：System Card: Claude Sonnet 5.5",
+          "url": "https://www.anthropic.com/claude-sonnet-5-5-system-card",
+          "checked_on": "2026-09-30"
+        },
+        {
+          "title": "Anthropic：Claude Sonnet（製品ページ）",
+          "url": "https://www.anthropic.com/claude/sonnet",
+          "checked_on": "2026-09-30"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Claude Sonnet 5.5 출시: 정가는 Sonnet 5와 같고, API·클라우드 플랫폼·Claude.ai에서 사용 가능",
+      "description": "Anthropic은 2026년 9월 28일 Claude Sonnet 5.5를 출시했습니다. API 정가는 Sonnet 5와 같고(100만 tokens당 입력 2달러, 출력 10달러), Claude.ai, API, 여러 클라우드 플랫폼에서 사용할 수 있으며, 위험도가 높은 사이버 보안 요청은 Sonnet 5로 되돌려 처리됩니다(2026년 9월 확인).",
+      "hero": {
+        "src": "/guides/ai-news-claude-sonnet-55-20260928/hero-ko.jpg",
+        "alt": "오리지널 일러스트: 왼쪽 점선 카드는 이전 Sonnet, 등호 뒤 실선 카드는 Sonnet 5.5로 정가가 같다는 뜻입니다. 오른쪽 화면, 휴대전화, 구름은 웹, 앱, API 플랫폼을 나타냅니다. 상표는 포함하지 않습니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Anthropic은 2026년 9월 28일 Claude Sonnet 5.5를 출시하며, Claude 5.5 패밀리의 두 번째 모델이고 같은 패밀리에 Opus 5.5도 있다고 밝혔습니다. API 정가는 Sonnet 5와 같아 100만 입력 tokens당 2달러, 출력은 10달러입니다. 공지는 작업당 비용이 이전 세대보다 '최대 30% 적다'고 하는데, 이는 Anthropic이 자체 테스트에서 측정한 결과이며 정가 인하가 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "본 기사의 자료는 2026년 9월 30일에 확인했으며, Anthropic의 공지, 모델 페이지, 제품 페이지, System Card를 근거로 합니다. Sonnet 제품 페이지에는 누구나 Claude.ai에서 사용할 수 있다고 적혀 있고, 개발자는 claude-sonnet-5-5를 씁니다. 이 페이지들에는 대만에 대한 언급이 없고, 제공 또는 제한 지역 목록도 없습니다. 평가와 안전 등급은 모두 Anthropic이 직접 공개한 것이며, 본 사이트는 직접 시험해 보지 않았고 모델 교체나 구독을 권하지 않습니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Anthropic은 2026년 9월 28일 Claude 5.5 패밀리의 두 번째 모델인 Claude Sonnet 5.5를 출시했으며 API 이름은 claude-sonnet-5-5이고, 확인일 기준으로 이 페이지들에는 Sonnet 5가 언제 종료되는지 적혀 있지 않습니다.",
+            "정가는 Sonnet 5와 같아 100만 tokens당 입력 2달러, 출력 10달러, 캐시 읽기 0.20달러입니다. Anthropic은 Sonnet 5.5가 같은 작업에 필요한 tokens가 보통 훨씬 적다고도 밝혔는데, 이는 Anthropic의 설명이며 정가 자체는 내려가지 않았습니다.",
+            "Anthropic의 Sonnet 제품 페이지에는 누구나 Claude.ai의 웹, iOS, Android에서 사용할 수 있다고 적혀 있고 요금제별 차이는 하나하나 나열되어 있지 않으며, 모델 페이지에 나열된 플랫폼은 Claude API, Amazon Bedrock, Google Cloud, Microsoft Foundry, Claude Platform on AWS입니다.",
+            "Anthropic이 공개한 평가에서 Terminal-Bench 4.0은 Sonnet 5.5가 70.6%, Sonnet 5가 10.3%인데, 이 점수는 독자 자신의 작업을 대표하지 않으며 Anthropic도 Opus 5.5가 복잡하고 열린 작업에서는 여전히 뚜렷하게 더 강하다고 말합니다.",
+            "System Card에는 Sonnet 5.5가 새로운 RSP 임계값을 넘지 않았다고 적혀 있으나 이는 Anthropic 자체 정책 틀에 따른 판정이지 외부 평가가 아니며, 공지에 따르면 위험도가 높은 사이버 보안 작업은 Sonnet 5로 되돌려 처리됩니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Sonnet 5.5는 무엇이고, Sonnet 5와는 어떤 관계인가"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic은 Sonnet 5.5를 Opus 5.5의 더 빠르고 비용이 낮은 짝이라고 설명합니다. Opus 5.5는 신중한 판단이 필요한 복잡한 작업용으로 만들어졌고, Sonnet 5.5는 범위가 분명한 일상 작업, 버그 수정, 문서·프레젠테이션·스프레드시트 제작에 가장 강하다고 합니다. 공지는 Sonnet 5의 '분명한 업그레이드'이며 출력 속도가 30% 이상 빠르다고 적었습니다. 모두 Anthropic의 자체 설명입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이전 버전에 대해서는, 확인일 기준으로 공지, 모델 페이지, 제품 페이지 어디에도 Sonnet 5가 언제 종료되는지 적혀 있지 않습니다. 모델 페이지에는 Sonnet 5.5 자체의 퇴역일이 '2027년 9월 28일보다 이르지 않다'(Not sooner than)고만 적혀 있는데, 이는 Anthropic이 Sonnet 5.5에 대해 내놓은 약속입니다. 공지에는 위험도가 높은 사이버 보안 작업은 Sonnet 5로 되돌려 처리된다는 내용도 있습니다(마지막 절 참조)."
+        },
+        {
+          "type": "paragraph",
+          "text": "개발자에게는 모델 페이지가 Sonnet 5에서 이미 돌아가는 코드에 영향을 주는 호환성 파괴 변경 5가지를 적어 두었습니다. 공지는 그중 하나를 짚는데, 사고(thinking)를 끄고 쓰는 경우 Sonnet 5.5로 옮기기 전에 새로운 between_tools 설정으로 바꿔야 합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "가격 읽는 법: 정가는 그대로이고, Anthropic이 말하는 변화는 작업당 사용량"
+        },
+        {
+          "type": "paragraph",
+          "text": "아래 표는 공지 가격표와 모델 페이지에 나온 Sonnet 5.5 정가입니다(100만 tokens당, 달러). 공지가 Sonnet 5와 같다고 분명히 적은 것은 입력, 출력, 캐시 읽기 세 항목이며, Sonnet 5.5가 같은 작업에 필요한 tokens가 보통 훨씬 적다고도 밝혔습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "'최대 30% 저렴'은 조심해서 읽어야 합니다. 공지에는 Anthropic의 테스트에서 작업당 비용이 이전 세대보다 최대 30% 적다고 적혀 있고, 제품 페이지에는 tokens 단위로 과금되는 일반적인 워크로드에서 실행 비용이 Sonnet 5보다 최대 30% 적을 것으로 추정한다고 적혀 있습니다. 두 곳 모두 '최대'이고 Anthropic 자체의 테스트 또는 추정이며, 정가는 내려가지 않았습니다. 실제 비용은 자신의 작업이 tokens를 얼마나 쓰는지에 달려 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "제품 페이지에는 프롬프트 캐싱으로 최대 90%, 배치 처리로 50%를 절감할 수 있고, 미국 안에서 실행해야 하는 워크로드에는 US-only inference를 고를 수 있으며 입력·출력 tokens 가격은 1.1배라고도 적혀 있습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "항목(100만 tokens당)",
+            "Sonnet 5.5 정가",
+            "게재 위치"
+          ],
+          "rows": [
+            [
+              "입력",
+              "$2",
+              "공지, 모델 페이지"
+            ],
+            [
+              "출력",
+              "$10",
+              "공지, 모델 페이지"
+            ],
+            [
+              "캐시 읽기",
+              "$0.20",
+              "공지, 모델 페이지"
+            ],
+            [
+              "5분 캐시 쓰기",
+              "$2.50",
+              "모델 페이지(공지 가격표에는 '캐시 쓰기'로 표기)"
+            ],
+            [
+              "1시간 캐시 쓰기",
+              "$4",
+              "모델 페이지"
+            ],
+            [
+              "Batch API",
+              "입력과 출력 50% 할인",
+              "모델 페이지"
+            ]
+          ],
+          "caption": "Claude Sonnet 5.5 정가, 달러/100만 tokens당. Anthropic 공지 가격표와 모델 페이지 기준이며 확인일은 2026년 9월 30일입니다. 공지가 Sonnet 5와 같다고 분명히 적은 것은 입력, 출력, 캐시 읽기 세 항목입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Sonnet 5.5는 어디서 쓸 수 있나"
+        },
+        {
+          "type": "paragraph",
+          "text": "채팅 쪽에서는 Sonnet 제품 페이지에 누구나 Claude.ai에서 Sonnet 5.5와 대화할 수 있으며 웹, iOS, Android 모두 가능하다고 적혀 있습니다. 이 문장에는 요금제가 하나하나 나열되어 있지 않고 사용량 한도나 기본 모델 여부도 없으며, 확인일 기준으로 이 페이지들에는 설명이 없으므로 특정 요금제에서 쓸 수 없다고 추론해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "개발자 쪽에서는 공지가 Sonnet 5.5가 '모든 플랫폼'에서 출시되었다고 적고, 예로 Amazon Web Services, Google Cloud, Microsoft Azure를 듭니다. 모델 페이지에 나열된 플랫폼은 Claude API, Amazon Bedrock, Google Cloud, Microsoft Foundry, Claude Platform on AWS이며, 모델 ID는 Amazon Bedrock만 anthropic.claude-sonnet-5-5이고 나머지는 모두 claude-sonnet-5-5입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "모델 페이지에 나온 사양은 컨텍스트 윈도우 1M tokens, 최대 출력 128K tokens, 신뢰할 수 있는 지식 기준일 2026년 6월입니다. 이 페이지들에는 Sonnet 5의 사양이 없어 비교할 수 없습니다. 공지에는 Claude Code와 Claude 앱의 기본 effort는 Medium, Claude Platform의 기본값은 High라고도 적혀 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-claude-sonnet-55-20260928/diagram-1-ko.svg",
+          "alt": "네 칸 도해: 정가는 Sonnet 5와 같음, 채팅 사용 범위, 개발자와 클라우드 플랫폼, 안전 임계값 판정",
+          "width": 1600,
+          "height": 900,
+          "caption": "Claude Sonnet 5.5의 정가, Claude.ai 사용, 개발자 플랫폼, System Card의 안전 임계값 판정. Anthropic 공지, 모델 페이지, 제품 페이지, System Card를 바탕으로 정리했으며 확인일은 2026년 9월 30일입니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Anthropic이 공개한 평가를 보는 법"
+        },
+        {
+          "type": "paragraph",
+          "text": "다음은 공지의 평가표에서 Anthropic이 공개한 점수이며, 독자 자신의 작업을 대표하지 않습니다. Terminal-Bench 4.0(에이전트형 코딩): Sonnet 5.5 70.6%, Sonnet 5 10.3%, Opus 5.5 66.4%(각주: Opus 5.5는 Xhigh effort의 최고 점수). CursorBench 4.0: 55.5%, 34.1%, 57.8%. 컴퓨터 사용 OSWorld 2.1: 80.1%, 57.0%, 81.8%."
+        },
+        {
+          "type": "paragraph",
+          "text": "FrontierCode 1.1 (Main)은 effort와 함께 봐야 합니다. Sonnet 5.5는 Max effort에서 46.2%, Xhigh effort에서 52.1%, Sonnet 5는 42.4%, Opus 5.5는 54.4%입니다. 각주에 따르면 Max가 낮은 것은 Claude Code의 코드 리뷰 스킬을 더 자주 실행해, Cognition이 살펴본 두 사례에서 시간 초과나 작업 범위 밖 수정으로 이어졌기 때문입니다. GDPval-AA v2.1은 백분율이 아닌 점수제로, Sonnet 5.5 1844, Sonnet 5 1449, Opus 5.5 1846입니다. 각주에 따르면 이 항목은 Artificial Analysis가 출시 전 배포 환경에서 실행했고, Anthropic은 그 배포에서 구조화된 출력을 쓰는 요청의 응답이 나빠질 수 있는 버그를 발견했으며 현재는 수정되었다고 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 스스로 단서도 달았습니다. 평가 점수는 모델 능력의 한 측면만 반영하며, Anthropic 자체 테스트와 외부 테스터의 테스트에서 Opus 5.5는 지속적인 판단이 필요한 복잡하고 열린 작업에서 여전히 뚜렷하게 더 강했다고 합니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "System Card와 안전 장치"
+        },
+        {
+          "type": "paragraph",
+          "text": "System Card에는 Anthropic이 자체 Responsible Scaling Policy(RSP, Anthropic이 스스로 정한 책임 있는 확장 정책 틀이며 외부 평가가 아닙니다)에 따라 평가한 결과, Sonnet 5.5는 전반적으로 Opus 5.5보다 능력이 낮고 새로운 RSP 임계값을 넘지 않았다고 적혀 있습니다. Opus 5.5가 CB-2와 Autonomy-2 임계값을 넘지 않았다는 판정은 Sonnet 5.5에도 똑같이 적용되며, Anthropic은 Sonnet 5.5를 CB-1과 Autonomy-1 임계값에 도달한 것으로 간주하고 RSP의 해당 완화 조치를 적용합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "System Card 요약의 나머지 결론도 Anthropic의 평가입니다. 정렬 실패(misalignment) 위험은 낮고, 프롬프트 인젝션에는 현재 Sonnet급 모델 가운데 가장 견고하지만(특히 코딩과 브라우저 사용), 컴퓨터 사용 환경에서 유해한 작업에 대한 거부율은 Opus 5.5와 비슷하고 이전 일부 모델보다는 후퇴했다고 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공지는 Sonnet 5.5의 사이버 보안 능력이 Sonnet 5보다 크게 향상되었으며, 사이버 보안 안전 장치와 폴백(되돌림)을 갖추고 출시된 첫 Sonnet 모델이라고 밝혔습니다. 일반적인 개발 중 버그를 찾고 고치는 일은 영향을 받지 않고, 위험도가 높은 사이버 보안 작업은 눈에 보이게 Sonnet 5로 되돌려 처리됩니다. System Card는 무해한 사이버 보안 관련 작업이라도 사용자가 거부가 늘어날 것을 예상해야 한다고 짚습니다. 또한 이런 되돌림은 Anthropic 자사 제품과 API에서 폴백을 켠 개발자에게 적용되며, 다른 플랫폼과 공급업체를 통해 쓰면 다를 수 있다고 덧붙입니다."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Sonnet 5.5가 Sonnet 5보다 비싼가요?",
+              "answer": "정가는 같습니다. 100만 tokens당 입력 2달러, 출력 10달러, 캐시 읽기 0.20달러입니다. Anthropic이 말한 '최대 30% 저렴'은 Anthropic이 테스트한 작업당 비용 또는 일반적인 워크로드에 대한 추정이며 정가 인하가 아닙니다. 실제 사용량은 자신의 작업에 달려 있습니다."
+            },
+            {
+              "question": "무료 요금제로도 Sonnet 5.5를 쓸 수 있나요?",
+              "answer": "Anthropic의 Sonnet 제품 페이지에는 누구나 Claude.ai의 웹, iOS, Android에서 Sonnet 5.5와 대화할 수 있다고 적혀 있습니다. 이 문장에는 요금제가 하나하나 나열되어 있지 않고 사용량 한도도 없으며, 확인일 기준으로 이 페이지들에는 설명이 없습니다. 자신의 계정을 확인하려면 로그인한 뒤 고를 수 있는 모델을 보세요."
+            },
+            {
+              "question": "Sonnet 5는 종료되나요?",
+              "answer": "2026년 9월 30일 기준으로 Anthropic의 공지, 모델 페이지, Sonnet 제품 페이지 어디에도 Sonnet 5가 언제 종료되는지 적혀 있지 않습니다. 모델 페이지에는 Sonnet 5.5 자체의 퇴역일이 2027년 9월 28일보다 이르지 않다고만 적혀 있습니다."
+            },
+            {
+              "question": "왜 일부 사이버 보안 관련 요청은 Sonnet 5가 답하나요?",
+              "answer": "공지에 따르면 Sonnet 5.5는 사이버 보안 안전 장치와 폴백을 갖추고 출시된 첫 Sonnet 모델이며, 위험도가 높은 사이버 보안 작업은 눈에 보이게 Sonnet 5로 되돌려 처리됩니다. 일반적인 개발 중 버그를 찾고 고치는 일은 영향을 받지 않습니다. System Card는 이런 되돌림이 Anthropic 자사 제품과 API에서 폴백을 켠 개발자에게 적용되며, 다른 플랫폼과 공급업체를 통해 쓰면 다를 수 있다고 짚습니다."
+            },
+            {
+              "question": "'새로운 RSP 임계값을 넘지 않았다'는 무슨 뜻인가요?",
+              "answer": "RSP는 Anthropic이 스스로 정한 책임 있는 확장 정책 틀입니다. System Card에는 Anthropic의 평가상 Sonnet 5.5가 전반적으로 Opus 5.5보다 능력이 낮고 새로운 임계값을 넘지 않았으며, CB-1과 Autonomy-1에 도달한 것으로 간주하고 CB-2와 Autonomy-2는 넘지 않았다고 적혀 있습니다. 이는 Anthropic의 자체 판정이며 외부 기관의 평가가 아닙니다."
+            },
+            {
+              "question": "Claude Haiku 5.5는 나왔나요?",
+              "answer": "공지에는 Claude Haiku 5.5가 '앞으로 몇 주 안에' Claude 5.5 패밀리에 추가된다고 적혀 있으며 날짜는 없습니다. 확인일 기준으로 공지, 모델 페이지, 제품 페이지, System Card 어디에도 출시 정보는 없습니다."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "가격과 범위는 바뀔 수 있고, 평가는 Anthropic 자체 평가입니다",
+          "text": "가격, 플랫폼, 제공 범위는 2026년 9월 30일(확인일) 기준 페이지 내용이며 이 페이지들은 언제든 업데이트될 수 있습니다. 평가와 안전 등급은 모두 Anthropic이 직접 공개한 것이고, 본 사이트는 직접 시험해 보지 않았으며 모델 교체나 구독 요금제를 권하지 않습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월부터 9월까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Sonnet 5: 역량과 비용 사이, 일상 업무의 균형을 찾는 방법은?",
+              "kind": "life",
+              "slug": "ai-news-claude-sonnet-5-20260630"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic: Introducing Claude Sonnet 5.5",
+          "url": "https://www.anthropic.com/claude-sonnet-5-5",
+          "checked_on": "2026-09-30"
+        },
+        {
+          "title": "Claude Platform Docs: Claude Sonnet 5.5(모델 페이지)",
+          "url": "https://platform.claude.com/docs/en/models/sonnet-5-5/overview",
+          "checked_on": "2026-09-30"
+        },
+        {
+          "title": "Anthropic: System Card: Claude Sonnet 5.5",
+          "url": "https://www.anthropic.com/claude-sonnet-5-5-system-card",
+          "checked_on": "2026-09-30"
+        },
+        {
+          "title": "Anthropic: Claude Sonnet(제품 페이지)",
+          "url": "https://www.anthropic.com/claude/sonnet",
+          "checked_on": "2026-09-30"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Claude Sonnet 5.5 推出：标价与 Sonnet 5 相同，API、云平台与 Claude.ai 都能用",
+      "description": "Anthropic 在 2026 年 9 月 28 日推出 Claude Sonnet 5.5，API 标价与 Sonnet 5 相同（每百万 tokens 输入 2 美元、输出 10 美元）；Claude.ai、API 与多个云平台可用，较高风险的网络安全请求会退回 Sonnet 5 处理（2026 年 9 月查证）。",
+      "hero": {
+        "src": "/guides/ai-news-claude-sonnet-55-20260928/hero-zh-cn.jpg",
+        "alt": "原创插图：左边一张虚线卡片代表前一版 Sonnet，等号接着一张实线卡片代表 Sonnet 5.5，表示标价相同；右边一台屏幕、一部手机与一朵云，代表网页、应用与 API 平台；不含商标或真实人物。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Anthropic 在 2026 年 9 月 28 日推出 Claude Sonnet 5.5，称它是 Claude 5.5 家族的第二个模型，同家族还有 Opus 5.5。API 标价与 Sonnet 5 相同，每百万输入 tokens 2 美元、输出 10 美元；公告说每个任务的成本比上一代“最多少 30%”，那是 Anthropic 在自己测试里量到的结果，不是标价下调。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这一篇的资料在 2026 年 9 月 30 日查核，依据 Anthropic 的公告、模型页、产品页与 System Card。Sonnet 产品页写任何人都能在 Claude.ai 使用；开发者用 claude-sonnet-5-5。这几页没有提到台湾，也没有列出开放或限制的地区。评测与安全分级都是 Anthropic 自己公布，本站没有实测，也不提供换模型或订阅的建议。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Anthropic 在 2026 年 9 月 28 日推出 Claude Sonnet 5.5，是 Claude 5.5 家族的第二个模型，API 名称是 claude-sonnet-5-5；截至查核日，这几页没有写 Sonnet 5 何时停用。",
+            "标价与 Sonnet 5 相同：每百万 tokens 输入 2 美元、输出 10 美元、缓存读取 0.20 美元。Anthropic 另表示它做同样的工作通常需要少得多的 tokens，这是 Anthropic 的说法，标价本身没有下调。",
+            "Anthropic 的 Sonnet 产品页写任何人都能在 Claude.ai 的网页、iOS 与 Android 使用，各方案的差别没有逐一列出；模型页列出的平台有 Claude API、Amazon Bedrock、Google Cloud、Microsoft Foundry 与 Claude Platform on AWS。",
+            "Anthropic 公布的评测里，Terminal-Bench 4.0 是 Sonnet 5.5 70.6%、Sonnet 5 10.3%；这些分数不代表读者自己的任务，Anthropic 也说 Opus 5.5 在复杂开放式工作上仍明显更强。",
+            "System Card 写 Sonnet 5.5 没有跨过新的 RSP 门槛，这是 Anthropic 自己政策框架下的判定，不是外部评级；公告说较高风险的网络安全任务会退回 Sonnet 5 处理。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Sonnet 5.5 是什么，和 Sonnet 5 的关系"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 说 Sonnet 5.5 是 Opus 5.5 更快、成本更低的搭档。Opus 5.5 为需要审慎判断的复杂工作打造，Sonnet 5.5 最擅长范围明确的日常任务、修 bug，以及制作文档、演示文稿与电子表格。公告称它是 Sonnet 5 的“明确升级”，输出速度快 30% 以上。这些都是 Anthropic 的自述。"
+        },
+        {
+          "type": "paragraph",
+          "text": "旧版方面，截至查核日，公告、模型页与产品页都没有写 Sonnet 5 何时停用；模型页只写 Sonnet 5.5 自己的退役日“不早于 2027 年 9 月 28 日”，这是 Anthropic 对 Sonnet 5.5 的承诺。公告另写，较高风险的网络安全任务会退回 Sonnet 5 处理（见最后一节）。"
+        },
+        {
+          "type": "paragraph",
+          "text": "对开发者，模型页写有五项破坏性变更会影响原本在 Sonnet 5 上运行的代码；公告点出其中一项：把思考关掉来运行的人，换到 Sonnet 5.5 前要改用新的 between_tools 设置。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "价格怎么读：标价没变，Anthropic 说变的是每个任务的用量"
+        },
+        {
+          "type": "paragraph",
+          "text": "下表是公告价格表与模型页列的 Sonnet 5.5 标价（每百万 tokens、美元）。公告明写与 Sonnet 5 相同的是输入、输出与缓存读取三项，并表示它做同样的工作通常需要少得多的 tokens。"
+        },
+        {
+          "type": "paragraph",
+          "text": "“最多便宜 30%”要小心读：公告写的是在 Anthropic 的测试里，每个任务的成本比上一代最多少 30%；产品页写的是对按 token 计费的一般工作负载，估计运行成本比 Sonnet 5 最多少 30%。两处都是“最多”，都是 Anthropic 自己的测试或估计，标价没有降。实际成本要看自己的任务用掉多少 tokens。"
+        },
+        {
+          "type": "paragraph",
+          "text": "产品页另写：提示缓存最多可省 90%、批处理可省 50%；需要在美国境内运行的工作负载可选 US-only inference，输入与输出 tokens 价格为 1.1 倍。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "项目（每百万 tokens）",
+            "Sonnet 5.5 标价",
+            "列在哪里"
+          ],
+          "rows": [
+            [
+              "输入",
+              "$2",
+              "公告、模型页"
+            ],
+            [
+              "输出",
+              "$10",
+              "公告、模型页"
+            ],
+            [
+              "缓存读取",
+              "$0.20",
+              "公告、模型页"
+            ],
+            [
+              "5 分钟缓存写入",
+              "$2.50",
+              "模型页（公告价格表写“缓存写入”）"
+            ],
+            [
+              "1 小时缓存写入",
+              "$4",
+              "模型页"
+            ],
+            [
+              "Batch API",
+              "输入与输出五折",
+              "模型页"
+            ]
+          ],
+          "caption": "Claude Sonnet 5.5 标价，美元／每百万 tokens，依 Anthropic 公告价格表与模型页，查核日 2026 年 9 月 30 日；公告写明与 Sonnet 5 相同的是输入、输出、缓存读取三项。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "在哪里用得到 Sonnet 5.5"
+        },
+        {
+          "type": "paragraph",
+          "text": "聊天这一端，Sonnet 产品页写，任何人都能在 Claude.ai 上用 Sonnet 5.5 对话，网页、iOS、Android 都有。这句没有逐一列出各方案，也没有写用量上限或是否为默认模型；这几页在查核日都没有说明，不能推论成某方案不能用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "开发者这一端，公告写 Sonnet 5.5 已在“所有平台”上线，举例有 Amazon Web Services、Google Cloud 与 Microsoft Azure；模型页列的平台是 Claude API、Amazon Bedrock、Google Cloud、Microsoft Foundry、Claude Platform on AWS；模型 ID 除 Amazon Bedrock 是 anthropic.claude-sonnet-5-5，其余都是 claude-sonnet-5-5。"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型页列的规格是上下文窗口 1M tokens、最大输出 128K tokens、可靠知识截止 2026 年 6 月；这些页面没有 Sonnet 5 的规格可对照。公告另写，Claude Code 与 Claude 应用的默认 effort 是 Medium，Claude Platform 默认 High。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-claude-sonnet-55-20260928/diagram-1-zh-cn.svg",
+          "alt": "四格图解：标价与 Sonnet 5 相同、聊天可用范围、开发者与云平台、安全门槛判定",
+          "width": 1600,
+          "height": 900,
+          "caption": "Claude Sonnet 5.5 的标价、Claude.ai 使用、开发者平台与 System Card 安全门槛判定，依 Anthropic 公告、模型页、产品页与 System Card 整理，查核日 2026 年 9 月 30 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Anthropic 公布的评测怎么看"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是公告评测表里 Anthropic 公布的分数，不代表读者自己的任务。Terminal-Bench 4.0（智能体式编程）：Sonnet 5.5 70.6%、Sonnet 5 10.3%、Opus 5.5 66.4%（脚注：Opus 5.5 取 Xhigh effort 的最高分）。CursorBench 4.0：55.5%、34.1%、57.8%。计算机操作的 OSWorld 2.1：80.1%、57.0%、81.8%。"
+        },
+        {
+          "type": "paragraph",
+          "text": "FrontierCode 1.1 (Main) 要连 effort 一起看：Sonnet 5.5 在 Max effort 是 46.2%、Xhigh effort 是 52.1%，Sonnet 5 是 42.4%，Opus 5.5 是 54.4%；脚注说 Max 较低，是因为它较常运行 Claude Code 的代码审查技能，在 Cognition 查看的两个案例里导致超时或改到任务范围之外。GDPval-AA v2.1 是分数制、不是百分比：Sonnet 5.5 1844、Sonnet 5 1449、Opus 5.5 1846；脚注说这项由 Artificial Analysis 在上市前部署上运行，Anthropic 发现该部署有一个可能让使用结构化输出的请求响应变差的 bug，现已修复。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 自己也写了但书：评测分数只反映模型能力的一个方面，在 Anthropic 自己与外部测试者的测试中，Opus 5.5 在需要持续判断的复杂开放式工作上仍明显更强。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "System Card 与安全防护"
+        },
+        {
+          "type": "paragraph",
+          "text": "System Card 写，Anthropic 依自己的 Responsible Scaling Policy（RSP，Anthropic 自行制定的负责任扩展政策框架，不是外部评级）评估，Sonnet 5.5 整体能力低于 Opus 5.5，没有跨过任何新的 RSP 门槛。Opus 5.5 没有跨过 CB-2 与 Autonomy-2 门槛的判定同样适用；Anthropic 把 Sonnet 5.5 当作已达到 CB-1 与 Autonomy-1 门槛，并套用 RSP 对应的缓解措施。"
+        },
+        {
+          "type": "paragraph",
+          "text": "System Card 摘要的其他结论同样是 Anthropic 的评估：失准风险低；它是目前对提示注入最稳健的 Sonnet 级模型（特别是编程与浏览器使用），但在计算机操作环境里，对有害任务的拒绝率与 Opus 5.5 相当、比部分较早的模型退步。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告说，Sonnet 5.5 的网络安全能力比 Sonnet 5 大幅提升，是第一个带网络安全防护与回退机制上线的 Sonnet 模型。一般开发中找 bug、修 bug 不受影响，较高风险的网络安全任务会看得到地退回 Sonnet 5 处理。System Card 提醒，用户应预期拒绝会变多，即使是无害的网络安全相关任务也一样；它也补充，这种退回适用 Anthropic 自家产品与在 API 选择启用回退机制的开发者，通过其他平台与供应商使用时可能不同。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Sonnet 5.5 比 Sonnet 5 贵吗？",
+              "answer": "标价相同：每百万 tokens 输入 2 美元、输出 10 美元、缓存读取 0.20 美元。Anthropic 说的“最多便宜 30%”是它测试的每任务成本或对一般工作负载的估计，不是标价下调，实际用量要看自己的任务。"
+            },
+            {
+              "question": "免费版能用 Sonnet 5.5 吗？",
+              "answer": "Anthropic 的 Sonnet 产品页写，任何人都能在 Claude.ai 的网页、iOS 与 Android 上用 Sonnet 5.5 对话。这句没有逐一列出各方案，也没有写用量上限；这几页在查核日都没有说明。要确认自己的账号，登录后看能选哪些模型。"
+            },
+            {
+              "question": "Sonnet 5 会被停用吗？",
+              "answer": "截至 2026 年 9 月 30 日，Anthropic 的公告、模型页与 Sonnet 产品页都没有写 Sonnet 5 何时停用。模型页只写 Sonnet 5.5 自己的退役日不早于 2027 年 9 月 28 日。"
+            },
+            {
+              "question": "为什么有些网络安全相关的请求会由 Sonnet 5 回答？",
+              "answer": "公告写，Sonnet 5.5 是第一个带网络安全防护与回退机制上线的 Sonnet 模型，较高风险的网络安全任务会看得到地退回 Sonnet 5 处理；一般开发中找 bug、修 bug 不受影响。System Card 提醒，这种退回做法适用 Anthropic 自家产品与在 API 选择启用回退机制的开发者，通过其他平台与供应商使用时可能不同。"
+            },
+            {
+              "question": "“没有跨过新的 RSP 门槛”是什么意思？",
+              "answer": "RSP 是 Anthropic 自己制定的负责任扩展政策框架。System Card 写 Anthropic 的评估认为 Sonnet 5.5 整体能力低于 Opus 5.5，没有跨过新的门槛，并把它当作已达到 CB-1 与 Autonomy-1、未跨过 CB-2 与 Autonomy-2。这是 Anthropic 的自我判定，不是外部机构的评级。"
+            },
+            {
+              "question": "Claude Haiku 5.5 推出了吗？",
+              "answer": "公告写 Claude Haiku 5.5 会在“未来几周”加入 Claude 5.5 家族，没有给日期。截至查核日，公告、模型页、产品页与 System Card 都没有它的上市信息。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "价格与范围会改，评测是 Anthropic 自己的",
+          "text": "价格、平台与开放范围都是截至 2026 年 9 月 30 日的页面内容，这些页面随时可能更新。评测与安全分级都是 Anthropic 自己公布，这一篇没有实测，也不是换模型或订阅方案的建议。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月至 9 月的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Sonnet 5：能力与成本之间，如何寻找日常工作的平衡？",
+              "kind": "life",
+              "slug": "ai-news-claude-sonnet-5-20260630"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic：Introducing Claude Sonnet 5.5",
+          "url": "https://www.anthropic.com/claude-sonnet-5-5",
+          "checked_on": "2026-09-30"
+        },
+        {
+          "title": "Claude Platform Docs：Claude Sonnet 5.5（模型页）",
+          "url": "https://platform.claude.com/docs/en/models/sonnet-5-5/overview",
+          "checked_on": "2026-09-30"
+        },
+        {
+          "title": "Anthropic：System Card: Claude Sonnet 5.5",
+          "url": "https://www.anthropic.com/claude-sonnet-5-5-system-card",
+          "checked_on": "2026-09-30"
+        },
+        {
+          "title": "Anthropic：Claude Sonnet（产品页）",
+          "url": "https://www.anthropic.com/claude/sonnet",
+          "checked_on": "2026-09-30"
+        }
+      ]
+    }
+  }
+}

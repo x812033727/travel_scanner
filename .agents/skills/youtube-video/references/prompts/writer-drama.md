@@ -45,6 +45,6 @@ Lint must show zero errors. Read every warning (long shots, near-duplicate promp
 
 When the launch message names shots to fix, you are rewriting only those shots' `data` (prompt, camera, motion, characters, fit) and, if a shot is too long, splitting its lines across a new shot with fresh ids. The judge's problems tell you what the model drew wrong: a character not matching the sheet (name the visible features from `appearance` in the prompt), a crowded frame (fewer subjects, a simpler action), text in the picture (say "no text"), a subject in the bottom subtitle band (raise the framing), a clip that froze or cut (a simpler camera move, a shorter shot). Keep every line id; do not touch shots that passed; report each change in one line.
 
-## Report (at most 40 lines, pasted back)
+## Report (pasted back; the coordinator scans it, one line per item)
 
 status; estimated minutes and narration characters; acts, chapters and shot count with the shot-size spread; which lines are characters' and their emotions; dictionary terms you added; lint warnings that remain and why; differences from the chosen outline; things you suspected but did not change.

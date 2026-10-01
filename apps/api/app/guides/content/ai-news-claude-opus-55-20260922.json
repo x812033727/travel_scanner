@@ -1159,7 +1159,7 @@
         },
         {
           "type": "paragraph",
-          "text": "换模型时画面会出现通知，回复也会标出是哪个模型回答；换过之后，这个对话的模型菜单会停在较弱的模型，可以自己从菜单换回来，但原请求还在对话里时可能再被换掉。要关掉自动换模型，可以到 Settings 里的 Capabilities（Claude Code 是 Config 里的 MODEL & OUTPUT）关掉消息被标记时换模型的开关，关掉后被挡的请求会暂停对话，而不是换模型；API 则默认不开，需自行设置备援。"
+          "text": "换模型时画面会出现通知，回复也会标出是哪个模型回答；换过之后，这个对话的模型菜单会停在较弱的模型，可以自己从菜单换回来，但原请求还在对话里时可能再被换掉。要关掉自动换模型，可以到 Settings 里的 Capabilities（Claude Code 是 Config 里的 MODEL & OUTPUT）关掉消息被标记时换模型的开关，关掉后被挡的请求会暂停对话，而不是换模型；API 则默认不开，需自行设置回退机制。"
         },
         {
           "type": "paragraph",
@@ -1176,7 +1176,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Opus 5.5 是在开着正式防护的情况下评测的；防护介入时，网络安全题由 Opus 4.8 完成、生物与前沿 LLM 开发题由 Opus 5 完成（AutomationBench 除外：它没开备援，防护介入就算失败），Anthropic 说这可能拉低 Opus 5.5 的评测分数。Anthropic 也承认，它看到 Opus 5.5 常常怀疑自己正在被评估的迹象，这让它更难判断模型在真实环境会怎么做。"
+          "text": "Opus 5.5 是在开着正式防护的情况下评测的；防护介入时，网络安全题由 Opus 4.8 完成、生物与前沿 LLM 开发题由 Opus 5 完成（AutomationBench 除外：它没开回退机制，防护介入就算失败），Anthropic 说这可能拉低 Opus 5.5 的评测分数。Anthropic 也承认，它看到 Opus 5.5 常常怀疑自己正在被评估的迹象，这让它更难判断模型在真实环境会怎么做。"
         },
         {
           "type": "paragraph",
@@ -1207,7 +1207,7 @@
             },
             {
               "question": "可以关掉自动换模型吗？",
-              "answer": "可以，在 Settings 里的 Capabilities（Claude Code 是 Config 里的 MODEL & OUTPUT）关掉“Switch models when a message is flagged”（消息被标记时切换模型）这个选项；关掉后，被分类器挡下的请求会暂停对话，而不是换成别的模型回答。使用 Claude API 的话，自动换模型默认不开，需要客户自己选择并设置备援。"
+              "answer": "可以，在 Settings 里的 Capabilities（Claude Code 是 Config 里的 MODEL & OUTPUT）关掉“Switch models when a message is flagged”（消息被标记时切换模型）这个选项；关掉后，被分类器挡下的请求会暂停对话，而不是换成别的模型回答。使用 Claude API 的话，自动换模型默认不开，需要客户自己选择并设置回退机制。"
             },
             {
               "question": "Opus 5.5 的评测分数可以直接拿来跟其他公司的模型比较吗？",

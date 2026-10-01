@@ -22,4 +22,4 @@ WRITE ONLY: `<VIDEO_WORKDIR>/<SLUG>/i18n/<LOCALE>.review.md`.
 
 ## Output
 
-`<LOCALE>.review.md`: one row per fix — `id (or title/description/tags/chapter:<scene>) ｜ problem ｜ current ｜ suggested` — most serious first, then a one-line verdict: ready, or ready after the fixes. Paste the verdict and the number of fixes by kind (at most 10 lines) as your reply. Say plainly when there is nothing to fix; do not invent style changes to fill the list.
+`<LOCALE>.review.md`: one row per fix — `id (or title/description/tags/chapter:<scene>) ｜ problem ｜ current ｜ suggested` — most serious first, then a one-line verdict: ready, or ready after the fixes. Paste the verdict and the number of fixes by kind as your reply. Say plainly when there is nothing to fix; do not invent style changes to fill the list.

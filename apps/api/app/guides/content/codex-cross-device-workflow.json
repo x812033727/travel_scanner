@@ -1154,8 +1154,8 @@
       ]
     },
     "zh-CN": {
-      "title": "跨装置交接：核对档案与环境",
-      "description": "追踪对话、主机、工作目录与分支，用交接纪录确认接续的是同一份工作。",
+      "title": "跨设备交接：核对文件与环境",
+      "description": "追踪对话、主机、工作目录与分支，用交接记录确认接续的是同一份工作。",
       "hero": {
         "src": "/guides/codex-cross-device-workflow/hero.jpg",
         "width": 1600,
@@ -1170,8 +1170,8 @@
         {
           "type": "summary",
           "items": [
-            "追踪对话、主机、工作目录与分支，用交接纪录确认接续的是同一份工作。",
-            "完成一张交接纪录，从另一个支援 Remote 的装置接续读取，再用新档案标记验证工作位置。"
+            "追踪对话、主机、工作目录与分支，用交接记录确认接续的是同一份工作。",
+            "完成一张交接记录，从另一个支持 Remote 的设备接续读取，再用新文件标记验证工作位置。"
           ]
         },
         {
@@ -1188,38 +1188,38 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "目标：换装置后仍能确认同一份工作"
+          "text": "目标：换设备后仍能确认同一份工作"
         },
         {
           "type": "callout",
           "tone": "info",
-          "text": "完成一张交接纪录，从另一个支援 Remote 的装置接续读取，再用新档案标记验证工作位置。阅读约 12 分钟，操作约 25 分钟。先完成 Remote 主机设定，准备自己的 Mac／Windows 主机和已配对的 iPhone／Android；若有第二部支援远端控制的电脑，可再练习桌面接续。Handoff 是后半段的进一步练习，需要另一台已连接且有相同 Git 专案的主机。"
+          "text": "完成一张交接记录，从另一个支持 Remote 的设备接续读取，再用新文件标记验证工作位置。阅读约 12 分钟，操作约 25 分钟。先完成 Remote 主机设置，准备自己的 Mac／Windows 主机和已配对的 iPhone／Android；若有第二台支持远程控制的电脑，可再练习桌面接续。Handoff 是后半段的进一步练习，需要另一台已连接且有相同 Git 项目的主机。"
         },
         {
           "type": "paragraph",
-          "text": "先分开三件事：你拿在手上的控制装置、对话所在的任务、实际提供档案与终端机的主机。手机换成笔电，可能只是换了控制装置；把任务 Handoff 到另一主机，才改变执行位置。云端又是另一种环境。只看到相同任务标题或相同资料夹名称，不能判断目前读到哪一份资料。"
+          "text": "先分开三件事：你拿在手上的控制设备、对话所在的任务、实际提供文件与终端的主机。手机换成笔记本电脑，可能只是换了控制设备；把任务 Handoff 到另一主机，才改变执行位置。云端又是另一种环境。只看到相同任务标题或相同文件夹名称，不能判断目前读到哪一份数据。"
         },
         {
           "type": "paragraph",
-          "text": "本篇流程图的 1 代表确认主机与工作目录，2 代表送出一次新的唯读要求，3 代表用档案内容核对结果。三个步骤依序完成；看到主机出现在清单，只完成第 1 步的一部分，还不能证明第 2、3 步成功。"
+          "text": "本篇流程图的 1 代表确认主机与工作目录，2 代表发送一次新的只读要求，3 代表用文件内容核对结果。三个步骤依序完成；看到主机出现在清单，只完成第 1 步的一部分，还不能证明第 2、3 步成功。"
         },
         {
           "type": "table",
           "header": [
             "动作",
             "执行位置",
-            "档案如何取得"
+            "文件如何取得"
           ],
           "rows": [
             [
               "手机 Remote 接续",
               "原连接主机",
-              "直接读该主机档案"
+              "直接读该主机文件"
             ],
             [
               "另一桌面控制同主机",
               "原连接主机",
-              "仍用该主机的专案"
+              "仍用该主机的项目"
             ],
             [
               "Handoff 到另一主机",
@@ -1229,14 +1229,14 @@
             [
               "新云端任务",
               "云端环境",
-              "从选定储存库版本建立"
+              "从选定仓库版本创建"
             ]
           ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤一：留下可核对的交接纪录"
+          "text": "步骤一：留下可核对的交接记录"
         },
         {
           "type": "rich_paragraph",
@@ -1247,42 +1247,42 @@
             },
             {
               "type": "article",
-              "text": "Remote 设定篇",
+              "text": "Remote 设置篇",
               "kind": "life",
               "slug": "codex-remote-setup"
             },
             {
               "type": "text",
-              "text": "建立的 codex-remote-lab 里，确认 host-marker.txt 有 REMOTE-LAB-A 和 Revision: 1，request.txt 保持原样。主机上用文字编辑器新增 handoff.md，依下面范本填入自己看到的结果。主机名称可用自订代号，私人绝对路径只留在自己的纪录，不要直接放到公开截图。"
+              "text": "创建的 codex-remote-lab 里，确认 host-marker.txt 有 REMOTE-LAB-A 和 Revision: 1，request.txt 保持原样。主机上用文本编辑器新增 handoff.md，依下面模板填入自己看到的结果。主机名称可用自定义代号，私人绝对路径只留在自己的记录，不要直接放到公开截图。"
             }
           ]
         },
         {
           "type": "code",
-          "label": "主机档案范本：填妥后存为 handoff.md",
+          "label": "主机文件范本：填妥后存为 handoff.md",
           "language": "markdown",
           "code": "# Remote reading handoff\n\nGoal: read this practice folder without modifying files.\nController: record the device currently sending requests.\nExecution host: record the host shown by Remote.\nProject: codex-remote-lab\nWorking directory: record the actual directory reported by the host.\nTask: record the exact task title or identifier.\nMarker: REMOTE-LAB-A / Revision: 1\nGit state: not initialized for this basic Remote exercise.\nVerified: record only checks actually performed, with time.\nPending: fresh read from the second controller.\nNext action: read host-marker.txt again and compare the revision.\n"
         },
         {
           "type": "paragraph",
-          "text": "这是要填写的表单，不能原封不动把 record… 当成已验证内容。任务标题相同时，用介面能提供的识别方式、专案和最近讯息一起核对；若无法取得内部 ID，记下可辨识的实际标题与时间即可。此练习还没有 Git，所以写明未初始化；不要杜撰分支或 commit。正式 Git 专案则另外记分支、commit 与未提交差异。"
+          "text": "这是要填写的表单，不能原封不动把 record… 当成已验证内容。任务标题相同时，用界面能提供的识别方式、项目和最近消息一起核对；若无法取得内部 ID，记下可识别的实际标题与时间即可。此练习还没有 Git，所以写明未初始化；不要杜撰分支或 commit。正式 Git 项目则另外记分支、commit 与未提交差异。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤二：换控制装置，先做新读取"
+          "text": "步骤二：换控制设备，先做新读取"
         },
         {
           "type": "paragraph",
-          "text": "从手机 Remote 选原主机与原任务。若改用另一部支援的 Mac／Windows 桌面版，到 Settings → Connections → Control other devices 加入该主机，完成配对后开同一任务；这个入口依推出范围可能尚未出现，没有时先用已配对手机完成练习。每个控制装置都需与要控制的主机建立连线，不能只靠相同登入推定已配好。"
+          "text": "从手机 Remote 选原主机与原任务。若改用另一台支持的 Mac／Windows 桌面版，到 Settings → Connections → Control other devices 加入该主机，完成配对后开同一任务；这个入口依推出范围可能尚未出现，没有时先用已配对手机完成练习。每个控制设备都需与要控制的主机建立连接，不能只靠相同登录推定已配好。"
         },
         {
           "type": "paragraph",
-          "text": "先看交接纪录，不立刻要求写档。在新的控制装置送出下列要求，确认回复真的来自当下读档。正常应报 REMOTE-LAB-A、Revision: 1、目前目录，以及正在原主机执行。主机名若工具无法取得，应说无法确认，再由你对照 Remote 介面；不应把档案内的 REMOTE-LAB-A 冒充真实电脑名称。"
+          "text": "先看交接记录，不立刻要求写入文件。在新的控制设备发送下列要求，确认回复真的来自当下读取文件。正常应报 REMOTE-LAB-A、Revision: 1、目前目录，以及正在原主机执行。主机名若工具无法取得，应说无法确认，再由你对照 Remote 界面；不应把文件内的 REMOTE-LAB-A 冒充真实电脑名称。"
         },
         {
           "type": "code",
-          "label": "自然语言提示词：从接手的控制装置送到原任务",
+          "label": "自然语言提示词：从接手的控制设备送到原任务",
           "language": "text",
           "code": "Continue this exact Remote reading task. Read handoff.md and host-marker.txt from disk now, without modifying files. Report the current working directory and both marker lines. Identify the execution host if the tools expose it; otherwise state that it is unverified. Distinguish this fresh read from facts copied from earlier messages.\n"
         },
@@ -1293,7 +1293,7 @@
         },
         {
           "type": "paragraph",
-          "text": "回主机的文字编辑器，只把 host-marker.txt 第二行改为 Revision: 2 并储存，保留第一行和 request.txt。不更新 handoff.md，让它暂时保留旧纪录，再从另一控制装置要求重新读两个档案。预期它指出实际档案是 2，而交接文件仍是 1；若只照聊天回复 1，先核对资料夹、主机与是否真的重新读档。"
+          "text": "回主机的文本编辑器，只把 host-marker.txt 第二行改为 Revision: 2 并保存，保留第一行和 request.txt。不更新 handoff.md，让它暂时保留旧记录，再从另一控制设备要求重新读两个文件。预期它指出实际文件是 2，而交接文件仍是 1；若只照聊天回复 1，先核对文件夹、主机与是否真的重新读取文件。"
         },
         {
           "type": "code",
@@ -1303,7 +1303,7 @@
         },
         {
           "type": "paragraph",
-          "text": "确认差异后，由你把 handoff.md 的 Marker 更新为 2，并在 Verified 写明这次由哪个控制装置、何时完成新读取。只记录看到的结果，不填「测试全部通过」，因为这次并没有执行程式测试。要还原练习时，将标记与纪录一起改回 1，再读一次确认；这种精确还原不会撤销其他程式或远端任务。"
+          "text": "确认差异后，由你把 handoff.md 的 Marker 更新为 2，并在 Verified 写明这次由哪个控制设备、何时完成新读取。只记录看到的结果，不填「测试全部通过」，因为这次并没有执行代码测试。要还原练习时，将标记与记录一起改回 1，再读一次确认；这种精确还原不会撤销其他程序或远程任务。"
         },
         {
           "type": "heading",
@@ -1315,7 +1315,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "前面只换控制装置。若需要让别台电脑接手执行，先看"
+              "text": "前面只换控制设备。若需要让别台电脑接手执行，先看"
             },
             {
               "type": "article",
@@ -1325,17 +1325,17 @@
             },
             {
               "type": "text",
-              "text": "，准备一个独立 Git 练习储存库。来源与目的主机都需连接，并保存同一个 Git 储存库的专案；如果来源选的是储存库内子资料夹，目的也要保存对应子资料夹。目的地没有相符专案时，先补设定，不是改任务名称就能匹配。"
+              "text": "，准备一个独立 Git 练习仓库。来源与目的主机都需连接，并保存同一个 Git 仓库的项目；如果来源选的是仓库内子文件夹，目的也要保存对应子文件夹。目的地没有相符项目时，先补设置，不是改任务名称就能匹配。"
             }
           ]
         },
         {
           "type": "paragraph",
-          "text": "在来源专案的终端机执行下面的唯读 Git 命令，保存输出及重要差异。这些命令适用 Windows PowerShell、macOS、Linux 终端机，但要先进到正确练习储存库。若显示 not a git repository，这不是可继续 Handoff 的 Git 起点。分支空白可能是 detached HEAD，应记录 commit 并理解状态，不要凭空补一个分支名。"
+          "text": "在来源项目的终端执行下面的只读 Git 命令，保存输出及重要差异。这些命令适用 Windows PowerShell、macOS、Linux 终端，但要先进到正确练习仓库。若显示 not a git repository，这不是可继续 Handoff 的 Git 起点。分支空白可能是 detached HEAD，应记录 commit 并理解状态，不要凭空补一个分支名。"
         },
         {
           "type": "code",
-          "label": "主机终端机：在真正执行工作的 Git 练习储存库查询",
+          "label": "主机终端：在真正执行工作的 Git 练习仓库查询",
           "language": "sh",
           "code": "git rev-parse --show-toplevel\ngit rev-parse HEAD\ngit branch --show-current\ngit status --short\ngit diff --stat\ngit diff --cached --stat\ngit ls-files --others --exclude-standard\n"
         },
@@ -1346,22 +1346,22 @@
         },
         {
           "type": "paragraph",
-          "text": "上面的查询分别记录 Git 根目录、commit、分支、状态、未暂存差异、已暂存差异及未追踪档案。git diff --stat 不包含已暂存或未追踪内容；只记这一行会漏掉工作。若有 ignored 档案、资料库或外部资料，也要依本次需求另记需要的项目；这组查询不会把它们列成已移交。"
+          "text": "上面的查询分别记录 Git 根目录、commit、分支、状态、未暂存差异、已暂存差异及未追踪文件。git diff --stat 不包含已暂存或未追踪内容；只记这一行会漏掉工作。若有 ignored 文件、数据库或外部数据，也要依本次需求另记需要的项目；这组查询不会把它们列成已移交。"
         },
         {
           "type": "paragraph",
-          "text": "判读案例：来源主机有已暂存的 note.md、未暂存的 core.mjs，以及未追踪的 local-note.txt；目的主机的 commit 相同但状态干净，而且缺少 local-note.txt。结论是版本基准相同，三份本次工作尚未获得完整核对，不能宣称交接完成。先停止两端新增修改，比较原交接纪录与需要保留的内容，再处理缺口。只有手机改用笔电控制同一主机时，也要重新读档确认，但不应多做一次档案搬移。"
+          "text": "判读案例：来源主机有已暂存的 note.md、未暂存的 core.mjs，以及未追踪的 local-note.txt；目的主机的 commit 相同但状态干净，而且缺少 local-note.txt。结论是版本基准相同，三份本次工作尚未获得完整核对，不能声称交接完成。先停止两端新增修改，比较原交接记录与需要保留的内容，再处理缺口。只有手机改用笔记本电脑控制同一主机时，也要重新读取文件确认，但不应多做一次文件搬移。"
         },
         {
           "type": "paragraph",
-          "text": "在桌面版开启要移交的任务，从页尾的目前执行位置选目的主机，核对目的地与分支后选 Hand off。官方流程会在目的地建立或使用工作树并移交任务与 Git 状态；若任务正在回复，移交会中断那次回复。为了容易比对，先让练习停在可检查的位置。需要从另一任务用自然语言移交时，要明确指定哪个任务与主机；执行要求的任务不能搬自己。"
+          "text": "在桌面版打开要移交的任务，从页尾的目前执行位置选目的主机，核对目的地与分支后选 Hand off。官方流程会在目的地创建或使用工作树并移交任务与 Git 状态；若任务正在回复，移交会中断那次回复。为了容易比对，先让练习停在可检查的位置。需要从另一任务用自然语言移交时，要明确指定哪个任务与主机；执行要求的任务不能搬自己。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "移交成功后，再核对这个 Git 练习库需要的档案、目录、commit 与差异，以及新的工作树路径。前半段的 host-marker.txt 留在另一个非 Git 练习资料夹，不是这次移交的预期档案。不要假设所有未追踪资料、资料库、环境变数、工具版本或网站登入都已移过去；先确认本次工作需要的档案和工具实际可用，再恢复修改。要回来时在执行位置选 This computer 并再次核对。Handoff 不支援把任务直接搬进 Codex 云端环境，云端要按"
+              "text": "移交成功后，再核对这个 Git 练习库需要的文件、目录、commit 与差异，以及新的工作树路径。前半段的 host-marker.txt 留在另一个非 Git 练习文件夹，不是这次移交的预期文件。不要假设所有未追踪数据、数据库、环境变量、工具版本或网站登录都已移过去；先确认本次工作需要的文件和工具实际可用，再恢复修改。要回来时在执行位置选 This computer 并再次核对。Handoff 不支持把任务直接搬进 Codex 云端环境，云端要按"
             },
             {
               "type": "article",
@@ -1371,25 +1371,25 @@
             },
             {
               "type": "text",
-              "text": "建立相应任务。"
+              "text": "创建相应任务。"
             }
           ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "常见问题与完成判准"
+          "text": "常见问题与完成标准"
         },
         {
           "type": "paragraph",
-          "text": "另一装置看不到任务时，依序查主机、工作区、配对与专案，不先重建同名任务；回复仍是旧版本时，用重新读档和 Revision: 2 验证；Handoff 目的地没有出现时，查相同 Git 储存库及子目录是否已保存；新主机测试不能执行时，查工具与依赖，不能因移交成功就标示测试通过。网路中断时先查实际任务状态，避免在两台主机同时重送会写入的要求。"
+          "text": "另一设备看不到任务时，依序查主机、工作区、配对与项目，不先重建同名任务；回复仍是旧版本时，用重新读取文件和 Revision: 2 验证；Handoff 目的地没有出现时，查相同 Git 仓库及子目录是否已保存；新主机测试不能执行时，查工具与依赖，不能因移交成功就标示测试通过。网络中断时先查实际任务状态，避免在两台主机同时重新发送会写入的要求。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "完成基本练习后应保有填妥的 handoff.md、两次不同版本的新读取、旧纪录与实档不一致的判读，以及明确的还原结果。有第二主机才额外记录 Handoff 前后的版本与工具检查；没做就标未实测。本文 Remote 与 Handoff 入口依官方文件查证，没有用一个本机模拟资料夹宣称完成真实跨主机移交。接著可读"
+              "text": "完成基本练习后应保有填妥的 handoff.md、两次不同版本的新读取、旧记录与实际文件不一致的判读，以及明确的还原结果。有第二主机才额外记录 Handoff 前后的版本与工具检查；没做就标未实测。本文 Remote 与 Handoff 入口依官方文档查证，没有用一个本地模拟文件夹声称完成真实跨主机移交。接着可读"
             },
             {
               "type": "article",
@@ -1399,7 +1399,7 @@
             },
             {
               "type": "text",
-              "text": "，将同样纪录方式用于较长工作。"
+              "text": "，将同样记录方式用于较长工作。"
             }
           ]
         },

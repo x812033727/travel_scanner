@@ -3,6 +3,7 @@ from __future__ import annotations
 import asyncio
 import ipaddress
 import socket
+import ssl
 import time
 from collections.abc import Awaitable, Callable
 from dataclasses import dataclass
@@ -27,6 +28,20 @@ ALLOWED_TYPES = (
 )
 MAX_REDIRECTS = 4
 Resolver = Callable[[str], Awaitable[tuple[str, ...]]]
+
+
+def tls_context() -> ssl.SSLContext:
+    """The verifying TLS context every news fetch uses, without Python 3.13's strict X.509 mode.
+
+    Python 3.13 turned ``VERIFY_X509_STRICT`` on by default, and the TWCA chain that Taiwan's
+    government sites are served with (the central bank, FSC, MODA, NSTC) fails it with
+    "Missing Subject Key Identifier": every Taiwan source failed before its listing was read.
+    The chain, the expiry and the host name are still verified; only the RFC 5280 profile
+    checks that browsers do not enforce are left out.
+    """
+    context = httpx.create_ssl_context()
+    context.verify_flags &= ~ssl.VERIFY_X509_STRICT
+    return context
 RateLimiter = Callable[[str], Awaitable[None]]
 
 
@@ -111,7 +126,9 @@ class SafeNewsFetcher:
         rate_limiter: RateLimiter | None = None,
     ) -> None:
         self._external_client = client
-        self._client = client or httpx.AsyncClient(timeout=timeout_seconds, follow_redirects=False)
+        self._client = client or httpx.AsyncClient(
+            timeout=timeout_seconds, follow_redirects=False, verify=tls_context()
+        )
         self._resolver = resolver
         self._distributed_rate_limiter = rate_limiter
         self._rates: dict[str, _HostRate] = {}

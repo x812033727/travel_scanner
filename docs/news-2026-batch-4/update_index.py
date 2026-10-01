@@ -65,6 +65,14 @@ places -- the description, the opening paragraph and the first summary item. ``e
 could not reach a summary item until now, which is why that item still said four regions
 after 4.5 had made them five; it edits a summary's or a list's items the way it edits a rich
 paragraph's text nodes, one item, once.
+
+Batch 4.9 (one article, GPT-6.1 Sol, 2026-09-29, five locales) touches the AI index alone,
+and batch 4.10 (Claude Sonnet 5.5, 2026-09-28) the same way, with one link and no date:
+
+    update_index.py ai [--dry-run]
+
+One link at the end of September and the three date sentences. The crypto and tech rows of
+4.8 and its inserted blocks are kept as ``_EDITS_4_8`` and ``_INSERT_4_8``, which nothing runs.
 """
 from __future__ import annotations
 
@@ -106,92 +114,105 @@ MAX_SOURCES = next(
 
 # The day this run expands the indexes: the one date the sentences below print, so the next
 # batch changes this constant and the same sentences instead of finding new ones to edit.
-EXPANDED_ON = "2026-09-27"
+EXPANDED_ON = "2026-09-30"
 EXPANDED = {
-    "zh-TW": "2026 年 9 月 27 日",
-    "en": "September 27, 2026",
-    "ja": "2026年9月27日",
-    "ko": "2026년 9월 27일",
-    "zh-CN": "2026 年 9 月 27 日",
+    "zh-TW": "2026 年 9 月 30 日",
+    "en": "September 30, 2026",
+    "ja": "2026年9月30日",
+    "ko": "2026년 9월 30일",
+    "zh-CN": "2026 年 9 月 30 日",
 }
 #: The newest event the AI series covers after this run, which the AI index's callout prints
-#: beside the expansion date: batch 4.8's Google Vids article, 2026-09-24 in Taipei.
-NEWEST_AI_EVENT = "2026-09-24"
+#: beside the expansion date: batch 4.9's GPT-6.1 Sol article, 2026-09-29 in Taipei.
+NEWEST_AI_EVENT = "2026-09-29"
 
 # vertical -> (slug, where to put the link). ``after`` is the existing slug to place the link
 # after (a leading "<" means before it), or an anchor of the ``INSERT`` kind -- per locale,
 # as a dict, when it names a heading whose text differs by locale. Applied in order: an entry
 # may name a slug inserted just before it.
 #
-# Batch 4.8 (2026-09-27): ten articles the hourly automation missed, five locales each. The
-# zh-TW documents carry the zh-TW-only links of 4.4, 4.6 and 4.7 and the other four do not, so
-# a group can end on a different link per locale; those rows name their anchor per locale.
-#
-# * AI: September's group, by event date, after whatever the group ends on in that locale
-#   (09-22 Opus 5.5, then the two 09-23 articles in Taipei order -- GPT-6 at 02:00, the Taiwan
-#   ads rollout at 10:00 -- then 09-24 Vids).
-# * Tech: WordPress and then Synology at the end of Platforms and Software (the coordinator's
-#   order, not event order), Snapdragon at the end of Consumer Hardware and Chips.
-# * Crypto: the central bank at the end of Taiwan, the forum at the end of Japan, and Korea
-#   under the South Korea heading ``INSERT`` adds behind the Japan group. That heading is placed
-#   after the Japan group's last link before this table runs, so the forum's link, placed after
-#   that same link, lands above it.
-_TW_LAST_AI = "ai-news-nvidia-physical-ai-safety-20260921"
-_FIVE_LAST_AI = "ai-news-google-cc-family-agent-20260918"
+# Batch 4.10 (2026-09-30): one article, Claude Sonnet 5.5 (09-28), five locales. By event
+# date it goes between Google Vids (09-24) and 4.9's GPT-6.1 Sol (09-29), i.e. right after
+# Google Vids in all five locales.
 NEW: dict[str, list[tuple[str, object]]] = {
-    "crypto": [
-        (
-            "crypto-news-taiwan-cbc-stablecoin-deposit-token-cbdc-20260917",
-            {
-                "zh-TW": "crypto-news-taiwan-vasp-tax-ruling-20260903",
-                "en": "crypto-news-taiwan-vasp-act-20260630",
-                "ja": "crypto-news-taiwan-vasp-act-20260630",
-                "ko": "crypto-news-taiwan-vasp-act-20260630",
-                "zh-CN": "crypto-news-taiwan-vasp-act-20260630",
-            },
-        ),
-        ("crypto-news-japan-onchain-finance-forum-20260925", "crypto-news-jfsa-cybersecurity-20260723"),
-        (
-            "crypto-news-korea-market-manipulation-referrals-20260923",
-            {
-                "zh-TW": "heading:韓國",
-                "en": "heading:South Korea",
-                "ja": "heading:韓国",
-                "ko": "heading:한국",
-                "zh-CN": "heading:韩国",
-            },
-        ),
-    ],
-    "tech": [
-        (
-            "tech-news-wordpress-712-20260922",
-            {
-                "zh-TW": "tech-news-enisa-threat-landscape-20260922",
-                "en": "tech-news-app-store-bundles-multiseat-20260916",
-                "ja": "tech-news-app-store-bundles-multiseat-20260916",
-                "ko": "tech-news-app-store-bundles-multiseat-20260916",
-                "zh-CN": "tech-news-app-store-bundles-multiseat-20260916",
-            },
-        ),
-        ("tech-news-synology-dsm-sa2613-20260918", "tech-news-wordpress-712-20260922"),
-        ("tech-news-snapdragon-8-elite-gen6-20260922", "tech-news-apple-m6-m5-ultra-20260825"),
-    ],
-    "ai": [
-        (
-            "ai-news-claude-opus-55-20260922",
-            {
-                "zh-TW": _TW_LAST_AI,
-                "en": _FIVE_LAST_AI,
-                "ja": _FIVE_LAST_AI,
-                "ko": _FIVE_LAST_AI,
-                "zh-CN": _FIVE_LAST_AI,
-            },
-        ),
-        ("ai-news-gpt-6-sol-luna-20260923", "ai-news-claude-opus-55-20260922"),
-        ("ai-news-chatgpt-ads-taiwan-20260923", "ai-news-gpt-6-sol-luna-20260923"),
-        ("ai-news-google-vids-omni-free-20260924", "ai-news-chatgpt-ads-taiwan-20260923"),
-    ],
+    "crypto": [],
+    "tech": [],
+    "ai": [("ai-news-claude-sonnet-55-20260928", "ai-news-google-vids-omni-free-20260924")],
 }
+# What batch 4.9 (2026-09-30) added, kept for the record:
+#
+#     "ai": [("ai-news-gpt-61-sol-20260929", "ai-news-google-vids-omni-free-20260924")],
+# What batch 4.8 (2026-09-27) added, kept for the record, as it ran:
+#
+# # Batch 4.8 (2026-09-27): ten articles the hourly automation missed, five locales each. The
+# # zh-TW documents carry the zh-TW-only links of 4.4, 4.6 and 4.7 and the other four do not, so
+# # a group can end on a different link per locale; those rows name their anchor per locale.
+# #
+# # * AI: September's group, by event date, after whatever the group ends on in that locale
+# #   (09-22 Opus 5.5, then the two 09-23 articles in Taipei order -- GPT-6 at 02:00, the Taiwan
+# #   ads rollout at 10:00 -- then 09-24 Vids).
+# # * Tech: WordPress and then Synology at the end of Platforms and Software (the coordinator's
+# #   order, not event order), Snapdragon at the end of Consumer Hardware and Chips.
+# # * Crypto: the central bank at the end of Taiwan, the forum at the end of Japan, and Korea
+# #   under the South Korea heading ``INSERT`` adds behind the Japan group. That heading is placed
+# #   after the Japan group's last link before this table runs, so the forum's link, placed after
+# #   that same link, lands above it.
+# _TW_LAST_AI = "ai-news-nvidia-physical-ai-safety-20260921"
+# _FIVE_LAST_AI = "ai-news-google-cc-family-agent-20260918"
+# NEW: dict[str, list[tuple[str, object]]] = {
+#     "crypto": [
+#         (
+#             "crypto-news-taiwan-cbc-stablecoin-deposit-token-cbdc-20260917",
+#             {
+#                 "zh-TW": "crypto-news-taiwan-vasp-tax-ruling-20260903",
+#                 "en": "crypto-news-taiwan-vasp-act-20260630",
+#                 "ja": "crypto-news-taiwan-vasp-act-20260630",
+#                 "ko": "crypto-news-taiwan-vasp-act-20260630",
+#                 "zh-CN": "crypto-news-taiwan-vasp-act-20260630",
+#             },
+#         ),
+#         ("crypto-news-japan-onchain-finance-forum-20260925", "crypto-news-jfsa-cybersecurity-20260723"),
+#         (
+#             "crypto-news-korea-market-manipulation-referrals-20260923",
+#             {
+#                 "zh-TW": "heading:韓國",
+#                 "en": "heading:South Korea",
+#                 "ja": "heading:韓国",
+#                 "ko": "heading:한국",
+#                 "zh-CN": "heading:韩国",
+#             },
+#         ),
+#     ],
+#     "tech": [
+#         (
+#             "tech-news-wordpress-712-20260922",
+#             {
+#                 "zh-TW": "tech-news-enisa-threat-landscape-20260922",
+#                 "en": "tech-news-app-store-bundles-multiseat-20260916",
+#                 "ja": "tech-news-app-store-bundles-multiseat-20260916",
+#                 "ko": "tech-news-app-store-bundles-multiseat-20260916",
+#                 "zh-CN": "tech-news-app-store-bundles-multiseat-20260916",
+#             },
+#         ),
+#         ("tech-news-synology-dsm-sa2613-20260918", "tech-news-wordpress-712-20260922"),
+#         ("tech-news-snapdragon-8-elite-gen6-20260922", "tech-news-apple-m6-m5-ultra-20260825"),
+#     ],
+#     "ai": [
+#         (
+#             "ai-news-claude-opus-55-20260922",
+#             {
+#                 "zh-TW": _TW_LAST_AI,
+#                 "en": _FIVE_LAST_AI,
+#                 "ja": _FIVE_LAST_AI,
+#                 "ko": _FIVE_LAST_AI,
+#                 "zh-CN": _FIVE_LAST_AI,
+#             },
+#         ),
+#         ("ai-news-gpt-6-sol-luna-20260923", "ai-news-claude-opus-55-20260922"),
+#         ("ai-news-chatgpt-ads-taiwan-20260923", "ai-news-gpt-6-sol-luna-20260923"),
+#         ("ai-news-google-vids-omni-free-20260924", "ai-news-chatgpt-ads-taiwan-20260923"),
+#     ],
+# }
 # What batch 4.4 wave 1 (2026-09-23) added, kept for the record: six AI articles about August and
 # early-September events, zh-TW only, each placed in its month group by event date -- after the
 # existing link whose event date precedes it (the batch-4.3 practice), not at the end of September.
@@ -304,7 +325,8 @@ _CRYPTO_EN_DESCRIPTION = (
     " and South Korea's manipulation referrals. Regulation, technology and industry only, no"
     " prices, with official sources and a check date."
 )
-EDITS: dict[str, dict[str, list[tuple[object, str, str]]]] = {
+# Batch 4.8's table, as it ran (its dates read EXPANDED, which has moved on since).
+_EDITS_4_8: dict[str, dict[str, list[tuple[object, str, str]]]] = {
     "crypto": {
         "zh-TW": [
             ("description", "依台灣、美國、英國、歐盟、日本五個地區", "依台灣、美國、英國、歐盟、日本、韓國六個地區"),
@@ -437,6 +459,65 @@ EDITS: dict[str, dict[str, list[tuple[object, str, str]]]] = {
             ),
         ],
     },
+}
+# Batch 4.9 (2026-09-30) moved the AI index's three date sentences in all five locales, from
+# batch 4.8's 2026-09-27 and 2026-09-24; its table is kept as ``_EDITS_4_9``. Batch 4.10's
+# event (09-28) is older than 4.9's newest (09-29) and it runs the same day, so no date moves.
+_EDITS_4_9: dict[str, dict[str, list[tuple[object, str, str]]]] = {
+    "crypto": {locale: [] for locale in LOCALES},
+    "tech": {locale: [] for locale in LOCALES},
+    "ai": {
+        "zh-TW": [
+            (0, "（最近一次 2026-09-27）", f"（最近一次 {EXPANDED_ON}）"),
+            (24, "（最近一次 2026-09-27）", f"（最近一次 {EXPANDED_ON}）"),
+            (
+                25,
+                "本輯收錄的事件到 2026-09-24 為止，最後增補於 2026-09-27。",
+                f"本輯收錄的事件到 {NEWEST_AI_EVENT} 為止，最後增補於 {EXPANDED_ON}。",
+            ),
+        ],
+        "en": [
+            (0, "(most recently on 2026-09-27)", f"(most recently on {EXPANDED_ON})"),
+            (24, "(most recently on 2026-09-27)", f"(most recently on {EXPANDED_ON})"),
+            (
+                25,
+                "covers events through 2026-09-24 and was last expanded on 2026-09-27.",
+                f"covers events through {NEWEST_AI_EVENT} and was last expanded on {EXPANDED_ON}.",
+            ),
+        ],
+        "ja": [
+            (0, "（最終追補は2026-09-27）", f"（最終追補は{EXPANDED_ON}）"),
+            (24, "（最終追補は2026-09-27）", f"（最終追補は{EXPANDED_ON}）"),
+            (
+                25,
+                "本特集の対象は2026-09-24までの出来事で、最終追補は2026-09-27です。",
+                f"本特集の対象は{NEWEST_AI_EVENT}までの出来事で、最終追補は{EXPANDED_ON}です。",
+            ),
+        ],
+        "ko": [
+            (0, "(마지막 보완 2026-09-27)", f"(마지막 보완 {EXPANDED_ON})"),
+            (24, "(마지막 보완 2026-09-27)", f"(마지막 보완 {EXPANDED_ON})"),
+            (
+                25,
+                "본 특집은 2026-09-24까지의 사건을 다루며, 마지막 보완은 2026-09-27입니다.",
+                f"본 특집은 {NEWEST_AI_EVENT}까지의 사건을 다루며, 마지막 보완은 {EXPANDED_ON}입니다.",
+            ),
+        ],
+        "zh-CN": [
+            (0, "（最近一次 2026-09-27）", f"（最近一次 {EXPANDED_ON}）"),
+            (24, "（最近一次 2026-09-27）", f"（最近一次 {EXPANDED_ON}）"),
+            (
+                25,
+                "本辑收录的事件到 2026-09-24 为止，最后增补于 2026-09-27。",
+                f"本辑收录的事件到 {NEWEST_AI_EVENT} 为止，最后增补于 {EXPANDED_ON}。",
+            ),
+        ],
+    },
+}
+EDITS: dict[str, dict[str, list[tuple[object, str, str]]]] = {
+    "crypto": {locale: [] for locale in LOCALES},
+    "tech": {locale: [] for locale in LOCALES},
+    "ai": {locale: [] for locale in LOCALES},
 }
 
 # vertical -> locale -> (row label in column 0, column index, current cell, new cell). Nothing
@@ -706,7 +787,8 @@ _PF_LAST = {
     "ko": "paragraph:같은 9월 16일, Apple은 iOS 27",
     "zh-CN": "paragraph:9 月 16 日，Apple 另外公告 App Store",
 }
-INSERT: dict[str, dict[str, list[tuple[str, dict]]]] = {
+# Batch 4.8's table, as it ran.
+_INSERT_4_8: dict[str, dict[str, list[tuple[str, dict]]]] = {
     "crypto": {
         locale: [
             (_TW_LAST[locale], _p(_TW_CBC[locale])),
@@ -726,6 +808,12 @@ INSERT: dict[str, dict[str, list[tuple[str, dict]]]] = {
         ]
         for locale in LOCALES
     },
+    "ai": {locale: [] for locale in LOCALES},
+}
+# Batch 4.9 inserts nothing: the AI index names months, not articles (see the 4.8 note above).
+INSERT: dict[str, dict[str, list[tuple[str, dict]]]] = {
+    "crypto": {locale: [] for locale in LOCALES},
+    "tech": {locale: [] for locale in LOCALES},
     "ai": {locale: [] for locale in LOCALES},
 }
 

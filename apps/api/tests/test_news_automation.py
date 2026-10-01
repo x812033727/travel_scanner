@@ -52,6 +52,10 @@ from app.news_automation.schemas import FetchResult
 from app.news_automation.validation import revalidate_evidence, validate_source_configuration
 from app.problems import AppError
 
+# Sources in these tests have been scanned before: a first scan only records its listing
+# as seen (scanner.BASELINE), which test_a_new_source_s_first_scan_files_only_fresh_entries covers.
+SCANNED_BEFORE = datetime(2026, 1, 1, tzinfo=UTC)
+
 
 def test_feed_json_and_configured_html_parsers_are_bounded() -> None:
     rss = b"""<?xml version="1.0"?><rss><channel><item><title>Official update</title>
@@ -285,6 +289,7 @@ async def test_scheduler_claims_one_catchup_scan_and_prevents_overlap() -> None:
         )
     factory = async_sessionmaker(engine, expire_on_commit=False)
     source = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Official",
         url="https://example.com/feed",
         format="rss",
@@ -326,6 +331,7 @@ async def test_scanner_marks_cross_url_exact_duplicate_and_jobs_are_idempotent()
         )
     factory = async_sessionmaker(engine, expire_on_commit=False)
     source = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Official",
         url="https://example.com/feed",
         format="rss",
@@ -386,6 +392,7 @@ async def test_scanner_marks_cross_url_exact_duplicate_and_jobs_are_idempotent()
 @pytest.mark.asyncio
 async def test_source_activation_requires_a_readable_feed() -> None:
     source = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Official",
         url="https://example.com/feed",
         format="rss",
@@ -426,6 +433,7 @@ async def test_source_activation_requires_a_readable_feed() -> None:
 @pytest.mark.asyncio
 async def test_evidence_is_refetched_and_changed_content_fails_closed() -> None:
     source = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Official",
         url="https://example.com/feed",
         format="rss",
@@ -514,6 +522,7 @@ async def test_evidence_stored_by_the_old_extractor_still_matches_until_the_stor
     None
 ):
     source = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Official",
         url="https://example.com/feed",
         format="rss",
@@ -575,6 +584,7 @@ async def test_scanner_skips_unreachable_pages_and_never_refetches_seen_entries(
         )
     factory = async_sessionmaker(engine, expire_on_commit=False)
     lead = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Lead",
         url="https://example.com/feed",
         format="rss",
@@ -583,6 +593,7 @@ async def test_scanner_skips_unreachable_pages_and_never_refetches_seen_entries(
         enabled=True,
     )
     official = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Official",
         url="https://official.example/news",
         format="rss",
@@ -655,6 +666,531 @@ async def test_scanner_skips_unreachable_pages_and_never_refetches_seen_entries(
         "https://example.com/d",
         "https://official.example/down",
     ]
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_scanner_keeps_a_refused_recent_page_as_a_feed_summary_lead() -> None:
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(
+                sync,
+                tables=[
+                    NewsAutomationSettings.__table__,
+                    NewsSource.__table__,
+                    NewsCandidate.__table__,
+                    NewsEvidence.__table__,
+                ],
+            )
+        )
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    official = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
+        name="Official",
+        url="https://official.example/rss.xml",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        is_first_party=True,
+        enabled=True,
+    )
+    now = datetime.now(UTC)
+    recent = (now - timedelta(hours=5)).strftime("%a, %d %b %Y %H:%M:%S GMT")
+    old = (now - timedelta(days=10)).strftime("%a, %d %b %Y %H:%M:%S GMT")
+
+    def item(name: str, published: str | None, summary: str) -> str:
+        date = f"<pubDate>{published}</pubDate>" if published else ""
+        return (
+            f"<item><title>Introducing model {name}</title>"
+            f"<link>https://official.example/index/{name}</link>"
+            f"<description>{summary}</description>{date}</item>"
+        )
+
+    listing = (
+        "<rss><channel>"
+        + item("new", recent, "Meet model new: faster and cheaper.")
+        + item("old", old, "An older launch.")
+        + item("undated", None, "No date on this one.")
+        + item("bare", recent, "")
+        + item("flaky", recent, "The site is briefly down.")
+        + "</channel></rss>"
+    ).encode()
+    requested: list[str] = []
+
+    class Fetcher:
+        async def fetch(self, url: str, **_kwargs: object) -> FetchResult:
+            requested.append(url)
+            if url.endswith("rss.xml"):
+                return FetchResult(
+                    url=url,
+                    status_code=200,
+                    content_type="application/rss+xml",
+                    body=listing,
+                    etag='"listing"',
+                )
+            request = httpx.Request("GET", url)
+            if url.endswith("/flaky"):
+                response = httpx.Response(503, request=request)
+            else:
+                response = httpx.Response(403, request=request)
+            raise httpx.HTTPStatusError("refused", request=request, response=response)
+
+        async def close(self) -> None:
+            return None
+
+    queued: list[UUID] = []
+
+    async def enqueue(candidate_id: UUID) -> None:
+        queued.append(candidate_id)
+
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        session.add(official)
+        await session.commit()
+        created = await scan_source(session, official.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        await session.refresh(official)
+        status, error, etag = official.last_status, official.last_error or "", official.etag
+        candidates = list(await session.scalars(select(NewsCandidate)))
+        evidence = list(await session.scalars(select(NewsEvidence)))
+        requested.clear()
+        again = await scan_source(session, official.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        count = len(list(await session.scalars(select(NewsCandidate))))
+
+    # Only the recent, dated entry with a summary is kept; nothing is queued for drafting.
+    assert created == 0 and queued == []
+    assert [row.canonical_url for row in candidates] == ["https://official.example/index/new"]
+    lead = candidates[0]
+    assert lead.status == "needs_evidence"
+    assert lead.error_code == "news_page_refused"
+    assert "HTTP 403" in (lead.error_detail or "")
+    assert [(row.role, row.is_first_party, row.excerpt) for row in evidence] == [
+        ("lead_only", True, "Meet model new: faster and cheaper.")
+    ]
+    assert status == "partial"
+    assert "Kept 1 refused page(s) as feed summaries: https://official.example/index/new" in error
+    # The old, undated and empty entries are skipped as before, and so is the 503.
+    assert "https://official.example/index/old (HTTPStatusError)" in error
+    assert "https://official.example/index/flaky (HTTPStatusError)" in error
+    assert etag is None
+    # The kept entry is seen from now on; the skipped ones are tried again.
+    assert again == 0 and count == 1
+    assert "https://official.example/index/new" not in requested
+    assert "https://official.example/index/flaky" in requested
+    await engine.dispose()
+
+
+def test_html_listing_filters_by_query_string_and_every_format_by_title_keyword() -> None:
+    # The FSC serves the menu and every news item from one script, /ch/home.jsp.
+    listing = (
+        '<a href="home.jsp?id=36&parentpath=0,6">金融業重大突發性金融事件24小時緊急通報專線</a>'
+        '<a href="home.jsp?id=96&parentpath=0,2&mcustomize=news_view.jsp&dataserno=1">'
+        "金管會開放銀行申請試辦存款代幣業務</a>"
+        '<a href="home.jsp?id=96&parentpath=0,2&mcustomize=news_view.jsp&dataserno=2">'
+        "壽險業115年截至7月底外幣保險商品銷售情形</a>"
+    ).encode()
+    base = "https://www.fsc.gov.tw/ch/home.jsp?id=96&parentpath=0,2"
+    config: dict[str, object] = {
+        "include_path_prefixes": ["/ch/home.jsp"],
+        "include_query_contains": ["mcustomize=news_view.jsp"],
+    }
+    news = parse_entries(listing, "html", base, config)
+    assert [row.url.rsplit("=", 1)[-1] for row in news] == ["1", "2"]
+    config["include_title_keywords"] = ["代幣", "穩定幣"]
+    assert [row.title for row in parse_entries(listing, "html", base, config)] == [
+        "金管會開放銀行申請試辦存款代幣業務"
+    ]
+    rss = (
+        b"<rss><channel>"
+        b"<item><title>Stablecoin rules</title><link>https://example.com/1</link></item>"
+        b"<item><title>Fund approvals</title><link>https://example.com/2</link></item>"
+        b"</channel></rss>"
+    )
+    keywords: dict[str, object] = {"include_title_keywords": ["STABLECOIN"]}
+    kept = parse_entries(rss, "rss", "https://example.com/feed", keywords)
+    assert [row.url for row in kept] == ["https://example.com/1"]
+
+
+def test_news_tls_context_still_verifies_but_drops_python_313_strict_mode() -> None:
+    import ssl
+
+    from app.news_automation.fetch import tls_context
+
+    context = tls_context()
+    # Taiwan's government sites (TWCA chain) fail the strict X.509 profile Python 3.13 turns on.
+    assert not context.verify_flags & ssl.VERIFY_X509_STRICT
+    assert context.verify_mode == ssl.CERT_REQUIRED
+    assert context.check_hostname is True
+
+
+@pytest.mark.asyncio
+async def test_a_feed_whose_summary_is_the_story_is_scanned_and_revalidated_from_the_feed() -> None:
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(
+                sync,
+                tables=[
+                    NewsAutomationSettings.__table__,
+                    NewsSource.__table__,
+                    NewsCandidate.__table__,
+                    NewsEvidence.__table__,
+                ],
+            )
+        )
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    source = NewsSource(
+        name="Release notes",
+        url="https://docs.example/release-notes/feed.xml",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        is_first_party=True,
+        enabled=True,
+        last_scanned_at=SCANNED_BEFORE,
+        config_json={"evidence_from_feed_summary": True},
+    )
+    published = (datetime.now(UTC) - timedelta(hours=2)).strftime("%a, %d %b %Y %H:%M:%S GMT")
+    notes = {
+        "september-28": "We've launched model X on the API. " * 15,
+        "september-24": "Cache diagnostics is out of beta. " * 15,
+    }
+
+    def listing() -> bytes:
+        return (
+            "<rss><channel>"
+            + "".join(
+                f"<item><title>Release notes {day}</title>"
+                f"<link>https://docs.example/release-notes/overview#{day}</link>"
+                f"<description>{text}</description><pubDate>{published}</pubDate></item>"
+                for day, text in notes.items()
+            )
+            + "</channel></rss>"
+        ).encode()
+
+    requested: list[str] = []
+
+    class Fetcher:
+        async def fetch(self, url: str, **_kwargs: object) -> FetchResult:
+            requested.append(url)
+            if url == source.url:
+                return FetchResult(
+                    url=url, status_code=200, content_type="application/rss+xml", body=listing()
+                )
+            # The shared page every entry links to: read only for an entry the feed dropped.
+            page = f"<html><main>{'Every release note on one page. ' * 40}</main></html>"
+            return FetchResult(
+                url=url, status_code=200, content_type="text/html", body=page.encode()
+            )
+
+        async def close(self) -> None:
+            return None
+
+    async def enqueue(_candidate_id: UUID) -> None:
+        return None
+
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        session.add(source)
+        await session.commit()
+        created = await scan_source(session, source.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        rows = list(await session.scalars(select(NewsEvidence).order_by(NewsEvidence.url)))
+        assert created == 2
+        assert [(row.url.rsplit("#", 1)[-1], row.excerpt.strip()) for row in rows] == [
+            ("september-24", notes["september-24"].strip()),
+            ("september-28", notes["september-28"].strip()),
+        ]
+        current, reasons = await revalidate_evidence(session, rows, fetcher=Fetcher())  # type: ignore[arg-type]
+        assert current and reasons == []
+        # The feed rewrites one entry, and drops the other.
+        notes["september-28"] = "We've launched model X on the API and on Bedrock. " * 15
+        del notes["september-24"]
+        current, reasons = await revalidate_evidence(session, rows, fetcher=Fetcher())  # type: ignore[arg-type]
+    assert not current
+    # The rewritten entry is read from the feed; the dropped one from the page, which is not
+    # the story that was stored.
+    assert sorted(reason.split(":", 1)[0] for reason in reasons) == [
+        "source_content_changed",
+        "source_content_changed",
+    ]
+    assert requested.count("https://docs.example/release-notes/overview#september-24") == 1
+    assert "https://docs.example/release-notes/overview#september-28" not in requested
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_a_source_that_keeps_failing_on_a_recent_entry_is_reported_stuck() -> None:
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(
+                sync,
+                tables=[
+                    NewsAutomationSettings.__table__,
+                    NewsSource.__table__,
+                    NewsCandidate.__table__,
+                    NewsEvidence.__table__,
+                ],
+            )
+        )
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    source = NewsSource(
+        name="Flaky",
+        url="https://flaky.example/feed",
+        format="rss",
+        role="evidence",
+        vertical="tech",
+        enabled=True,
+        last_scanned_at=SCANNED_BEFORE,
+    )
+    now = datetime.now(UTC)
+    ages = {"fresh": timedelta(hours=1)}
+
+    def listing() -> bytes:
+        return (
+            "<rss><channel>"
+            + "".join(
+                f"<item><title>Story {name}</title><link>https://flaky.example/{name}</link>"
+                f"<pubDate>{(now - age).strftime('%a, %d %b %Y %H:%M:%S GMT')}</pubDate></item>"
+                for name, age in ages.items()
+            )
+            + "</channel></rss>"
+        ).encode()
+
+    class Fetcher:
+        async def fetch(self, url: str, **_kwargs: object) -> FetchResult:
+            if url.endswith("/feed"):
+                return FetchResult(
+                    url=url, status_code=200, content_type="application/rss+xml", body=listing()
+                )
+            raise httpx.ConnectTimeout("the article server does not answer")
+
+        async def close(self) -> None:
+            return None
+
+    async def enqueue(_candidate_id: UUID) -> None:
+        return None
+
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        session.add(source)
+        await session.commit()
+        await scan_source(session, source.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        await session.refresh(source)
+        # An hour of failures is an ordinary skip.
+        assert source.last_status == "partial"
+        ages["stale"] = timedelta(hours=10)
+        ages["ancient"] = timedelta(days=30)
+        await scan_source(session, source.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        await session.refresh(source)
+    # Ten hours of failures is not; a month-old entry of the back catalogue does not count.
+    assert source.last_status == "stuck"
+    note = source.last_error or ""
+    assert note.startswith("Failing for more than 6 hours: https://flaky.example/stale.")
+    assert "https://flaky.example/ancient (ConnectTimeout)" in note
+    assert "ancient" not in note.split(". ", 1)[0]
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_a_new_source_s_first_scan_files_only_fresh_entries() -> None:
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(
+                sync,
+                tables=[
+                    NewsAutomationSettings.__table__,
+                    NewsSource.__table__,
+                    NewsCandidate.__table__,
+                    NewsEvidence.__table__,
+                ],
+            )
+        )
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    source = NewsSource(
+        name="New",
+        url="https://new.example/feed",
+        format="rss",
+        role="evidence",
+        vertical="tech",
+        enabled=True,
+    )
+    now = datetime.now(UTC)
+
+    def stamp(delta: timedelta) -> str:
+        return (now - delta).strftime("%a, %d %b %Y %H:%M:%S GMT")
+
+    items = [
+        ("fresh", f"<pubDate>{stamp(timedelta(hours=6))}</pubDate>"),
+        ("old", f"<pubDate>{stamp(timedelta(days=40))}</pubDate>"),
+        ("undated", ""),
+    ]
+    listing = (
+        "<rss><channel>"
+        + "".join(
+            f"<item><title>Release {name}</title><link>https://new.example/{name}</link>{date}</item>"
+            for name, date in items
+        )
+        + "</channel></rss>"
+    ).encode()
+    requested: list[str] = []
+
+    class Fetcher:
+        async def fetch(self, url: str, **_kwargs: object) -> FetchResult:
+            requested.append(url)
+            if url.endswith("/feed"):
+                return FetchResult(
+                    url=url, status_code=200, content_type="application/rss+xml", body=listing
+                )
+            body = f"<html><main>{url}: {'The whole release. ' * 30}</main></html>".encode()
+            return FetchResult(url=url, status_code=200, content_type="text/html", body=body)
+
+        async def close(self) -> None:
+            return None
+
+    async def enqueue(_candidate_id: UUID) -> None:
+        return None
+
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        session.add(source)
+        await session.commit()
+        created = await scan_source(session, source.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        rows = {
+            row.canonical_url.rsplit("/", 1)[-1]: (row.status, row.error_code)
+            for row in await session.scalars(select(NewsCandidate))
+        }
+        # The second scan is an ordinary one: the baselined entries count as seen.
+        requested.clear()
+        again = await scan_source(session, source.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+    assert created == 1
+    assert rows == {
+        "fresh": ("discovered", None),
+        "old": ("rejected", "news_baseline"),
+        "undated": ("rejected", "news_baseline"),
+    }
+    assert again == 0 and requested == ["https://new.example/feed"]
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_a_report_linking_to_a_waiting_story_becomes_its_evidence() -> None:
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(
+                sync,
+                tables=[
+                    NewsAutomationSettings.__table__,
+                    NewsSource.__table__,
+                    NewsCandidate.__table__,
+                    NewsEvidence.__table__,
+                ],
+            )
+        )
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    official = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
+        name="Official",
+        url="https://official.example/rss.xml",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        is_first_party=True,
+        enabled=True,
+    )
+    press = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
+        name="Press",
+        url="https://press.example/feed",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        enabled=True,
+    )
+    gossip = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
+        name="Gossip",
+        url="https://gossip.example/feed",
+        format="rss",
+        role="lead_only",
+        vertical="ai",
+        enabled=True,
+    )
+    published = (datetime.now(UTC) - timedelta(hours=3)).strftime("%a, %d %b %Y %H:%M:%S GMT")
+    announcement = "https://official.example/index/new-model"
+
+    def feed(link: str, title: str, summary: str = "") -> bytes:
+        return (
+            f"<rss><channel><item><title>{title}</title><link>{link}</link>"
+            f"<description>{summary}</description><pubDate>{published}</pubDate>"
+            "</item></channel></rss>"
+        ).encode()
+
+    class Fetcher:
+        async def fetch(self, url: str, **_kwargs: object) -> FetchResult:
+            listings = {
+                official.url: feed(announcement, "Introducing new model", "Meet new model."),
+                press.url: feed("https://press.example/story", "The new model, explained"),
+                gossip.url: feed("https://gossip.example/rumour", "Rumour about the new model"),
+            }
+            if url in listings:
+                return FetchResult(
+                    url=url, status_code=200, content_type="application/rss+xml", body=listings[url]
+                )
+            if url.startswith(announcement):
+                request = httpx.Request("GET", url)
+                response = httpx.Response(403, request=request)
+                raise httpx.HTTPStatusError("refused", request=request, response=response)
+            # Both reports link to the announcement, with a tracking query and a slash.
+            body = (
+                f"<html><main>{url}: {'A long report about the new model. ' * 20}"
+                f'<a href="{announcement}/?utm_source=feed">the announcement</a></main></html>'
+            )
+            return FetchResult(
+                url=url, status_code=200, content_type="text/html", body=body.encode()
+            )
+
+        async def close(self) -> None:
+            return None
+
+    queued: list[UUID] = []
+
+    async def enqueue(candidate_id: UUID) -> None:
+        queued.append(candidate_id)
+
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        session.add_all([official, press, gossip])
+        await session.commit()
+        await scan_source(session, official.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        lead = await session.scalar(
+            select(NewsCandidate).where(NewsCandidate.canonical_url == announcement)
+        )
+        assert lead is not None and lead.status == "needs_evidence"
+        # A lead-only site is never evidence, so it files its own candidate as before.
+        await scan_source(session, gossip.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        await session.refresh(lead)
+        assert lead.status == "needs_evidence"
+        attached = await scan_source(session, press.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        await session.refresh(lead)
+        report = await session.scalar(
+            select(NewsCandidate).where(NewsCandidate.canonical_url == "https://press.example/story")
+        )
+        lead_evidence = list(
+            await session.scalars(select(NewsEvidence).where(NewsEvidence.candidate_id == lead.id))
+        )
+    assert attached == 1
+    assert lead.status == "discovered" and lead.error_code is None
+    assert sorted((row.role, row.url) for row in lead_evidence) == [
+        ("evidence", "https://press.example/story"),
+        ("lead_only", announcement),
+    ]
+    # The report does not become a second story, and only the waiting one is queued.
+    assert report is not None and report.status == "duplicate"
+    assert report.error_code == "news_attached_as_evidence"
+    assert queued[-1] == lead.id and report.id not in queued
     await engine.dispose()
 
 
@@ -741,6 +1277,7 @@ async def test_a_feed_link_that_redirects_to_a_seen_page_files_nothing_new() -> 
         )
     factory = async_sessionmaker(engine, expire_on_commit=False)
     source = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Lead",
         url="https://example.com/feed",
         format="rss",
@@ -849,6 +1386,7 @@ def test_pages_of_one_website_are_one_source() -> None:
     # A newsroom the owner trusts to stand alone (2026-09-28), set per source in its config.
     sources = [
         NewsSource(
+            last_scanned_at=SCANNED_BEFORE,
             url="https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
             config_json={"auto_publish_alone": True},
             allowed_redirect_hosts_json=["www.theverge-cdn.example"],
@@ -905,6 +1443,7 @@ async def test_scanner_fetches_only_articles_on_other_websites_as_evidence() -> 
         )
     factory = async_sessionmaker(engine, expire_on_commit=False)
     press = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Press",
         url="https://press.example/feed",
         format="rss",
@@ -913,6 +1452,7 @@ async def test_scanner_fetches_only_articles_on_other_websites_as_evidence() -> 
         enabled=True,
     )
     official = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Official",
         url="https://official.example/news",
         format="rss",
@@ -1101,6 +1641,7 @@ async def test_refreshing_evidence_takes_the_current_text_only_when_every_page_r
     from app.news_automation.validation import refresh_evidence
 
     source = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="Official",
         url="https://example.com/feed",
         format="rss",
@@ -1312,6 +1853,7 @@ async def test_revalidation_compares_the_story_when_both_sides_have_a_body_hash(
 
     config = _source_config("The Verge AI")
     source = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="The Verge AI",
         url="https://www.theverge.com/rss/index.xml",
         format="rss",
@@ -1396,6 +1938,7 @@ async def test_scanner_stores_the_body_hash_and_finds_the_same_story_at_another_
         )
     factory = async_sessionmaker(engine, expire_on_commit=False)
     lead = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
         name="The Verge AI",
         url="https://www.theverge.com/feed",
         format="rss",

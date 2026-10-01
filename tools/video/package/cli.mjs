@@ -9,6 +9,7 @@ import { parseArgs } from "node:util";
 import { approvalState } from "../core/approvals.mjs";
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
 import { compilationChecksCurrent, isCompilation } from "../core/compilation.mjs";
+import { COMPILATION_REVIEW_FILE, publicTexts, reviewCurrent } from "../core/compilation-review.mjs";
 import { illustrated, isDrama, keyframesHash, lookHash, mixHash, sfxHash, subtitlesHash } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { LOCALES } from "../core/schema.mjs";
@@ -135,6 +136,24 @@ export async function run(command, args, ctx) {
   if (problems.length) {
     for (const problem of problems) ctx.stdout.write(`ERROR ${problem}\n`);
     return EXIT.lint;
+  }
+
+  if (compilation) {
+    const context = readJson(path.join(project.dir, "compilation.json"), null)?.spoiler_context;
+    if (!Array.isArray(context?.mysteries)) {
+      ctx.stderr.write("the compilation's mystery context is unknown; resume the worker to restore it and review the public text before package\n");
+      return EXIT.usage;
+    }
+    if (context.mysteries.length) {
+      const receipts = readJson(path.join(project.dir, COMPILATION_REVIEW_FILE), null);
+      const fields = publicTexts({ doc, translations: project.translations, timeline, plan: readJson(path.join(project.dir, "metadata-plan.json"), null), pack: project.pack ?? null });
+      const locales = [metadata.default_language, ...Object.keys(metadata.localizations)];
+      const unreviewed = locales.filter((locale) => !reviewCurrent(receipts, context, locale, fields[locale]));
+      if (unreviewed.length) {
+        ctx.stderr.write(`the compilation's public text needs a current spoiler review for ${unreviewed.join(", ")}; resume the worker before package\n`);
+        return EXIT.owner;
+      }
+    }
   }
 
   const upload = path.join(workdir, "upload");

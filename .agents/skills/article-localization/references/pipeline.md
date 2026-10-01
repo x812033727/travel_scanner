@@ -17,7 +17,7 @@
 | `status` | 看每個 job 的狀態 |
 | `reset` | 明確重設某個 job，**必須** `--reason`；舊 receipt 與原因會留下 |
 | `materialize` | 不呼叫模型，從 `translated-fields.json` 重建 document 與 SVG、重跑全部檢查；手改譯文後用；綁定前的舊 pilot job 升級時必須帶 `--reason` |
-| `migrate-prepared` | 只給「prepare 過但從沒 attempt」的 job 補綁定；拒絕有 lock、有 attempt、失敗或額度狀態的 job |
+| `migrate-prepared` | 只給「prepare 過但從沒 attempt」的 job 補綁定，**必須** `--reason`；拒絕有 lock、有 attempt、失敗或額度狀態的 job |
 
 選擇器：`--batch <id>`（baseline 裡的批次，最多 20 篇）或 `--slugs a,b`（最多 20）；`--locales en,ja,ko,zh-CN` 縮小語系。`--include-existing` 替已經有譯文的語系建「只翻圖」的 job，不重翻正文。
 

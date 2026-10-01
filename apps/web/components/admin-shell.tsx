@@ -2,7 +2,7 @@
 
 import { ChevronDown, Command, HeartPulse, Search, UserRound, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { AdminNav } from "@/components/admin-nav";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { useAdminOperations } from "@/components/admin-operations-provider";
@@ -10,6 +10,7 @@ import { useHeaderSession } from "@/components/header-session";
 import { Link, usePathname } from "@/i18n/navigation";
 import { visibleAdminNavigation } from "@/lib/admin-operations";
 import { adminOperationsCopy } from "@/lib/admin-operations-copy";
+import { useModalSheet } from "@/lib/modal-sheet";
 
 const deepLinks = [
   { key: "foodScans", parent: "/admin/foods", href: "/admin/foods?tab=nearby&section=scans", labels: { "zh-TW": "美食 · 餐廳掃描", "zh-CN": "美食 · 餐厅扫描", ja: "フード · 店舗スキャン", ko: "음식 · 매장 스캔", en: "Food · restaurant scans" } },
@@ -38,8 +39,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
   const [accountOpen, setAccountOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [recent, setRecent] = useState<string[]>([]);
-  const commandTrigger = useRef<HTMLButtonElement>(null);
-  const commandDialog = useRef<HTMLDivElement>(null);
+  const commandInput = useRef<HTMLInputElement>(null);
   const accountMenu = useRef<HTMLDivElement>(null);
   const navigation = useMemo(() => visibleAdminNavigation(bootstrap), [bootstrap]);
   const active = [...navigation].sort((a, b) => b.href.length - a.href.length).find((item) => item.href === "/admin" ? pathname === "/admin" : pathname.startsWith(item.href));
@@ -68,25 +68,12 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
   }, [setCommandOpen]);
 
   const closeCommand = useCallback(() => setCommandOpen(false), [setCommandOpen]);
-  useEffect(() => {
-    if (!commandOpen) return;
-    const prior = document.activeElement as HTMLElement | null;
-    const triggerNode = commandTrigger.current;
-    const root = commandDialog.current;
-    root?.querySelector<HTMLInputElement>("input")?.focus();
-    const keydown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") { event.preventDefault(); closeCommand(); return; }
-      if (event.key !== "Tab" || !root) return;
-      const elements = Array.from(root.querySelectorAll<HTMLElement>("input, button:not([disabled]), a[href]"));
-      const first = elements[0], last = elements[elements.length - 1];
-      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
-      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
-    };
-    document.addEventListener("keydown", keydown);
-    const overflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => { document.removeEventListener("keydown", keydown); document.body.style.overflow = overflow; (triggerNode ?? prior)?.focus(); };
-  }, [closeCommand, commandOpen]);
+  const commandDialog = useModalSheet<HTMLDivElement>(commandOpen, closeCommand);
+  // A command palette starts with typing; other sheets initially focus their close button.
+  // Only focus on opening, so filtering results never steals focus from a selected link.
+  useLayoutEffect(() => {
+    if (commandOpen) commandInput.current?.focus();
+  }, [commandOpen]);
 
   useEffect(() => {
     if (!accountOpen) return;
@@ -116,7 +103,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
           <LanguageSwitcher compact />
           <span className={`admin-health admin-health-${health}`} title={copy[health]}><HeartPulse aria-hidden size={16} /><span>{copy[health]}</span></span>
           <span className="admin-environment"><span>{copy.environment}</span><strong>{bootstrap.environment}</strong></span>
-          <button ref={commandTrigger} type="button" onClick={() => setCommandOpen(true)} aria-label={copy.command} className="admin-command-trigger"><Search aria-hidden size={17} /><span>{copy.command}</span><kbd><Command aria-hidden size={11} />K</kbd></button>
+          <button type="button" onClick={() => setCommandOpen(true)} aria-label={copy.command} className="admin-command-trigger"><Search aria-hidden size={17} /><span>{copy.command}</span><kbd><Command aria-hidden size={11} />K</kbd></button>
           <div ref={accountMenu} className="admin-account-control">
             <button type="button" onClick={() => setAccountOpen((value) => !value)} aria-label={copy.account} aria-expanded={accountOpen} className="admin-account-trigger"><span className="admin-account-avatar"><UserRound aria-hidden size={17} /></span><span className="admin-account-email">{bootstrap.user?.email || user?.email}</span><ChevronDown aria-hidden size={15} /></button>
             {accountOpen && <div className="admin-account-menu"><p className="break-all px-3 py-2 text-xs text-[var(--muted)]">{bootstrap.user?.email || user?.email}</p><Link href="/account" onClick={() => setAccountOpen(false)}>{copy.account}</Link><button type="button" onClick={() => void logout()}>{copy.signOut}</button></div>}
@@ -128,7 +115,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
     {commandOpen && <div className="admin-command-scrim" role="presentation" onMouseDown={(event) => { if (event.currentTarget === event.target) closeCommand(); }}>
       <div ref={commandDialog} role="dialog" aria-modal="true" aria-labelledby="admin-command-title" className="admin-command-dialog">
         <h2 id="admin-command-title" className="sr-only">{copy.command}</h2>
-        <div className="admin-command-input"><Search aria-hidden size={20} /><label className="sr-only" htmlFor="admin-command-query">{copy.command}</label><input id="admin-command-query" value={query} onChange={(event) => setQuery(event.target.value)} placeholder={copy.commandHint} /><button type="button" aria-label={copy.closeMenu} onClick={closeCommand}><X aria-hidden size={19} /></button></div>
+        <div className="admin-command-input"><Search aria-hidden size={20} /><label className="sr-only" htmlFor="admin-command-query">{copy.command}</label><input ref={commandInput} id="admin-command-query" value={query} onChange={(event) => setQuery(event.target.value)} placeholder={copy.commandHint} /><button type="button" aria-label={copy.closeMenu} onClick={closeCommand}><X aria-hidden size={19} /></button></div>
         {!normalizedTerm && recent.length > 0 && <section className="border-b border-[var(--line)] px-3 py-3"><h3 className="px-3 pb-2 text-xs font-bold uppercase tracking-[.12em] text-[var(--muted)]">{copy.recent}</h3><div className="grid gap-1">{recent.map((href) => { const item = navigation.find((entry) => entry.href === href); return item ? <Link key={href} href={href} onClick={closeCommand} className="admin-command-row"><span>{label(item.key, item.label)}</span><span>{copy.groups[item.group]}</span></Link> : null; })}</div></section>}
         <div className="max-h-[min(60vh,34rem)] overflow-y-auto p-3">{commands.length ? commands.map((item) => <Link key={`${item.key}-${item.href}`} href={item.href} onClick={closeCommand} className="admin-command-row"><span>{item.label}</span><span>{item.group}</span></Link>) : <p className="p-6 text-center text-sm text-[var(--muted)]">{copy.noCommand}</p>}</div>
       </div>
