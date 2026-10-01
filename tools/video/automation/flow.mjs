@@ -109,6 +109,17 @@ export function sheetDone(sheet) {
   return captions && metadata;
 }
 
+/**
+ * What a translation payload adds for a video narrated in another language than zh-TW:
+ * { source_locale }, which also picks the translator's and the caption reviewer's texts for that
+ * source (prompts.mjs SOURCE_INSTRUCTIONS). Nothing for a zh-TW video, whose payload and prompts
+ * stay as they were.
+ */
+function sourceLocale(video) {
+  const source = narrationLocale(video);
+  return source === NARRATION_LOCALE ? {} : { source_locale: source };
+}
+
 function titleOf(brief) {
   return (/^#\s+(.+)$/m.exec(brief)?.[1] ?? "").trim().slice(0, 200);
 }
@@ -434,7 +445,10 @@ export class Automation {
     // (docs/videos/DRAMA-FLOW.md, section 1). The server keeps what was sent, per stage, format
     // and variant, for the owner to read.
     const standing = settingsFor(this.settings, format).instructions?.[stage] ?? "";
-    const answer = await this.api.run(stage, slug, instructionsFor(stage, format, standing, variant, this.stance, series), payload, maxOutputTokens, format, variant);
+    // A translation of a video narrated in another language than zh-TW carries that language as
+    // "source_locale" (sourceLocale), and the instructions name the same source the payload shows.
+    const source = typeof payload?.source_locale === "string" ? payload.source_locale : null;
+    const answer = await this.api.run(stage, slug, instructionsFor(stage, format, standing, variant, this.stance, series, source), payload, maxOutputTokens, format, variant);
     this.log(`  ${stage}: ${answer.model}, ${answer.input_tokens + answer.output_tokens} tokens; month ${answer.usage.tokens}/${answer.usage.token_budget}`);
     this.lastAnswer = answer.text;
     try {
@@ -1934,10 +1948,10 @@ export class Automation {
     if (sheetDone(sheet)) return null;
     // The sheet's identity travels with it, whatever the model leaves out.
     const keep = (worksheet) => ({ ...worksheet, locale, slug: sheet.slug, parts: sheet.parts });
-    const translated = await this.stage("translator", state.slug, { locale, parts, worksheet: sheet, video }, 32_000, state.format);
+    const translated = await this.stage("translator", state.slug, { locale, parts, worksheet: sheet, video, ...sourceLocale(video) }, 32_000, state.format);
     if (!Array.isArray(translated.worksheet?.lines)) return this.retryLater(state, "translator", `the ${locale} translation returned no worksheet`);
     writeFileSync(sheetFile, `${JSON.stringify(keep(translated.worksheet), null, 2)}\n`);
-    const reviewed = await this.stage("caption_reviewer", state.slug, { locale, parts, worksheet: keep(translated.worksheet), video }, 32_000, state.format);
+    const reviewed = await this.stage("caption_reviewer", state.slug, { locale, parts, worksheet: keep(translated.worksheet), video, ...sourceLocale(video) }, 32_000, state.format);
     if (Array.isArray(reviewed.worksheet?.lines)) writeFileSync(sheetFile, `${JSON.stringify(keep(reviewed.worksheet), null, 2)}\n`);
     const merged = await run(ctx, ["i18n-merge", "--slug", state.slug, "--locale", locale]);
     if (merged.code !== 0) return this.retryLater(state, "translator", `the ${locale} translation does not merge: ${lastLine(merged.out, 2)}`);
@@ -2069,7 +2083,7 @@ export class Automation {
       .filter((entry) => sources.has(entry.id) && typeof translation.lines?.[entry.id]?.text === "string")
       .map((entry) => ({ id: entry.id, source: sources.get(entry.id), text: translation.lines[entry.id].text, chars: entry.chars, max_chars: entry.max_chars, ...(entry.seconds === undefined ? {} : { seconds: entry.seconds }), window_over_seconds: entry.window_over_seconds }));
     if (!lines.length) return { ids: [], problems: ["no line to shorten has a current translation"] };
-    const answer = await this.stage("translator", slug, { locale, lines, video }, 16_000, state.format, "shorten");
+    const answer = await this.stage("translator", slug, { locale, lines, video, ...sourceLocale(video) }, 16_000, state.format, "shorten");
     if (!Array.isArray(answer?.lines)) return { stopped: await this.retryLater(state, "translator", `the ${locale} shortening pass answered without a lines array`) };
     this.cleared(state, "translator");
     const accepted = new Map();
@@ -2138,7 +2152,7 @@ export class Automation {
         return { id, source: sources.get(id), text, heard: String(heard[id]?.heard ?? ""), max_chars: Math.max(budget, [...text].length) };
       });
     if (!lines.length) return { ids: [], problems: ["no flagged line has a current translation"] };
-    const answer = await this.stage("translator", slug, { locale, lines, video }, 16_000, state.format, "reword");
+    const answer = await this.stage("translator", slug, { locale, lines, video, ...sourceLocale(video) }, 16_000, state.format, "reword");
     if (!Array.isArray(answer?.lines)) return { stopped: await this.retryLater(state, "translator", `the ${locale} rewording pass answered without a lines array`) };
     this.cleared(state, "translator");
     const accepted = new Map();

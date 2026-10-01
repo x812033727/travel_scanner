@@ -23,7 +23,7 @@ import { PART_BYTES } from "../review/sync.mjs";
 import { automationClient } from "./client.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
 import { Automation, automatedVideos, mainGuide, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, settingsFor, settle, sheetDone, siteArticleUrl, siteSources } from "./flow.mjs";
-import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, STANCE_HEADING, TRANSLATOR_REWORD, TRANSLATOR_SHORTEN } from "./prompts.mjs";
+import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, SOURCE_INSTRUCTIONS, STANCE_HEADING, TRANSLATOR_REWORD, TRANSLATOR_SHORTEN } from "./prompts.mjs";
 import { tidyRound } from "./tidy.mjs";
 
 const TOKEN = `mkv_${"t".repeat(43)}`;
@@ -1431,6 +1431,79 @@ test("an English-narrated video the owner gives no other language gets zh-TW onc
   assert.equal(await video.step(), null, "zh-TW is in: nothing more to do");
   assert.equal(video.calls("translator").length, 1);
   assert.equal(video.reviews("languages").length, 0, "no batch: the panel never offers zh-TW");
+});
+
+// The SHA-256 of the translator's and the caption reviewer's texts as a zh-TW video has always
+// been sent them, taken before the source-language texts existed. A zh-TW video's prompts must stay
+// these bytes; change a hash only when you mean to change what every zh-TW video is told.
+const ZH_TW_PROMPT_SHA256 = {
+  translator: "da0f9a0677742018dac05ee7da3f7018f8e9fed769b151e4341e91c5ba006e5a",
+  caption_reviewer: "92a50b60d3f47905c8912f3adb4e648f8313ebff909d8711b442707d437109c7",
+  "translator:shorten": "eb96a8de3915d89bed631a93463d0b22344f44e442b5465abe57fcc06b1d6ac6",
+  "translator:reword": "627d9729bd01b766d025ed82b9edde4dc5fd4f051372a14f8e1bad3b88a9eb6a",
+};
+const promptSha = (text) => createHash("sha256").update(text).digest("hex");
+
+test("a zh-TW video's translator and caption reviewer prompts are the same bytes as before; another narration language gets its own, naming that source and the zh-TW register", () => {
+  for (const [key, hash] of Object.entries(ZH_TW_PROMPT_SHA256)) {
+    const [stage, variant = null] = key.split(":");
+    for (const format of ["slides", "drama"]) {
+      for (const source of [undefined, null, "zh-TW", "fr"]) {
+        assert.equal(promptSha(instructionsFor(stage, format, "", variant, "", null, source)), hash, `${key} ${format} from ${source}`);
+      }
+    }
+  }
+  assert.deepEqual([INSTRUCTIONS.translator, INSTRUCTIONS.caption_reviewer, TRANSLATOR_SHORTEN, TRANSLATOR_REWORD].map(promptSha), Object.values(ZH_TW_PROMPT_SHA256));
+
+  assert.deepEqual(Object.keys(SOURCE_INSTRUCTIONS), ["en", "ja", "ko", "zh-CN"], "every narration language but zh-TW");
+  const names = { en: "English", ja: "Japanese", ko: "Korean", "zh-CN": "Simplified Chinese (mainland China)" };
+  for (const [source, texts] of Object.entries(SOURCE_INSTRUCTIONS)) {
+    assert.deepEqual(Object.keys(texts), Object.keys(ZH_TW_PROMPT_SHA256));
+    for (const [key, text] of Object.entries(texts)) {
+      const [stage, variant = null] = key.split(":");
+      assert.equal(instructionsFor(stage, "slides", "", variant, "", null, source), text, `${source} ${key}`);
+      assert.match(text, new RegExp(`^You work on ONE YouTube video for the Mokaair channel narrated in ${names[source].replace(/[()]/g, "\\$&")} \\("${source}"\\)`), `${source} ${key} names its source`);
+      assert.doesNotMatch(text, /ONE zh-TW|Taiwanese Mandarin narrator|the zh-TW line|zh-TW "source"|reads Traditional\nChinese/, `${source} ${key} never calls zh-TW the source`);
+      assert.match(text, /zh-TW Taiwanese wording in Traditional characters and the zh-TW interface's own names, 「軟體」「影片」「設定」 never 「軟件」「視頻」「設置」/, `${source} ${key} has a zh-TW target rule`);
+      assert.match(text, /Rules that never bend:\n- Numbers, prices/, "the rules every stage keeps");
+    }
+    assert.match(texts.translator, new RegExp(`tags from ${names[source].replace(/[()]/g, "\\$&")}, the narration language \\("source_locale"\\), into "locale"\\.`));
+    assert.match(texts.translator, /in the time the source line takes/);
+    assert.match(texts.caption_reviewer, /meaning that differs from the .+ source line;/);
+    assert.match(texts["translator:shorten"], /fits the time the source line takes/);
+  }
+  assert.equal(instructionsFor("translator", "slides", " 用台灣用語 ", null, "", null, "en"), `${SOURCE_INSTRUCTIONS.en.translator}\n\n## The owner's standing instructions\nThe site owner wrote these on the settings tab for every video this stage works on. Follow them;\nwhere they contradict a rule above, they win. They may be in Chinese.\n用台灣用語`, "the owner's standing instructions still end it");
+  for (const stage of ["planner", "writer", "verifier", "listener"]) assert.equal(instructionsFor(stage, "slides", "", null, "", null, "en"), INSTRUCTIONS[stage], `${stage} has no source-language text`);
+  assert.equal(instructionsFor("listener", "slides", "", "rewrite", "", null, "en"), LISTENER_REWRITE);
+});
+
+test("an English-narrated video's translator and caption reviewer, its dub's shortening and rewording included, are told English is the source and shown source_locale; a zh-TW video's are sent the same prompt and payload as before", async () => {
+  const video = await finishedVideo({ script: enFixture(), dubs: { ja: { over: 1 } }, checks: { ja: (text) => !text.endsWith("!") } });
+  video.choose({ ja: { metadata: false, captions: true, dub: true } });
+  for (let round = 0; round < 6 && !video.calls("translator", "reword").length; round++) await video.step();
+  const calls = [...video.calls("translator"), ...video.calls("caption_reviewer"), ...video.calls("translator", "shorten"), ...video.calls("translator", "reword")];
+  assert.deepEqual(calls.map((call) => [call.stage, call.variant ?? null, call.payload.locale]), [
+    ["translator", null, "zh-TW"],
+    ["translator", null, "ja"],
+    ["caption_reviewer", null, "zh-TW"],
+    ["caption_reviewer", null, "ja"],
+    ["translator", "shorten", "ja"],
+    ["translator", "reword", "ja"],
+  ]);
+  for (const call of calls) {
+    assert.equal(call.payload.source_locale, "en", `${call.stage} ${call.variant} payload`);
+    assert.equal(call.instructions, SOURCE_INSTRUCTIONS.en[call.variant ? `${call.stage}:${call.variant}` : call.stage], `${call.stage} ${call.variant} prompt`);
+  }
+
+  const zh = await finishedVideo({ dubs: { en: { over: 1 } }, checks: { en: (text) => !text.endsWith("!") } });
+  zh.choose({ en: { metadata: false, captions: true, dub: true } });
+  for (let round = 0; round < 6 && !zh.calls("translator", "reword").length; round++) await zh.step();
+  const zhCalls = [...zh.calls("translator"), ...zh.calls("caption_reviewer"), ...zh.calls("translator", "shorten"), ...zh.calls("translator", "reword")];
+  assert.deepEqual(zhCalls.map((call) => [call.stage, call.variant ?? null]), [["translator", null], ["caption_reviewer", null], ["translator", "shorten"], ["translator", "reword"]]);
+  for (const call of zhCalls) {
+    assert.equal("source_locale" in call.payload, false, `${call.stage} ${call.variant}: a zh-TW payload gains no field`);
+    assert.equal(promptSha(call.instructions), ZH_TW_PROMPT_SHA256[call.variant ? `${call.stage}:${call.variant}` : call.stage], `${call.stage} ${call.variant}: the same bytes as before`);
+  }
 });
 
 /** Reject only the language review POST; reports, files and other videos keep working. */

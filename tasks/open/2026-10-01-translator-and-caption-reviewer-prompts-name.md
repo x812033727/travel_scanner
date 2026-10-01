@@ -1,14 +1,14 @@
 ---
 id: 2026-10-01-translator-and-caption-reviewer-prompts-name
 title: Translator and caption reviewer prompts name the narration locale as the source
-status: open
+status: in-progress
 priority: P3
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-translator-source
+claimed_at: 2026-10-01T15:01:58Z
 created_at: 2026-10-01T10:49:31Z
 completed_at:
-branch:
+branch: claude/translator-source-locale
 depends_on:
   - 2026-10-01-worker-translates-zh-tw-for-an
 scope:
@@ -37,16 +37,16 @@ Nothing is wrong today for zh-TW videos, and no video in docs/videos sets `narra
 
 ## Definition of done
 
-- [ ] A translator or caption reviewer call for a video narrated in another locale says what the
+- [x] A translator or caption reviewer call for a video narrated in another locale says what the
       source language is, and zh-TW as a target gets its own register rule.
-- [ ] Prompts for zh-TW-narrated videos are unchanged byte for byte (a test shows it).
+- [x] Prompts for zh-TW-narrated videos are unchanged byte for byte (a test shows it).
 
 ## Steps
 
-- [ ] Pass the narration locale in the payload (`translateLocale`, `shortenDub`, `rewordDub` in
+- [x] Pass the narration locale in the payload (`translateLocale`, `shortenDub`, `rewordDub` in
       `flow.mjs`), or pick an instruction variant, and word the rules around "the source line".
-- [ ] Add a zh-TW target rule beside en / ja / ko / zh-CN.
-- [ ] Tests: the en fixture (`tools/video/core/fixtures/load.mjs` `enFixture`, used by
+- [x] Add a zh-TW target rule beside en / ja / ko / zh-CN.
+- [x] Tests: the en fixture (`tools/video/core/fixtures/load.mjs` `enFixture`, used by
       `finishedVideo({ script: enFixture() })` in `automation.test.mjs`).
 
 ## How to verify
@@ -58,3 +58,29 @@ Nothing is wrong today for zh-TW videos, and no video in docs/videos sets `narra
 - Filed by claude-opus-5-5-zh-tw-translation while finishing
   `2026-10-01-worker-translates-zh-tw-for-an`, which was scoped to the worker's language step and
   the final-review payload, not the prompts.
+- Claimed with `--force` by claude-opus-5-5-translator-source: the claim was refused only for
+  stale claims on `automation.test.mjs` / `flow.mjs` whose PRs are merged
+  (`2026-09-28-drama-listener-stale-check` from PR #978, `2026-09-28-sothatswhy-shorts-from-episode`
+  from PRs #904/#950/#962, `2026-09-30-video-worker-moves-two-videos-at` from PR #999).
+- Decision: no new variant. The payload carries `source_locale` (only when the video is not
+  zh-TW-narrated, so a zh-TW payload gains no field), and `stage()` in `flow.mjs` hands the same
+  value to `instructionsFor(..., source)`, so the instructions can never name a different source
+  than the payload shows. The variant stays `null` / `shorten` / `reword`, so the site's run
+  records (`translator/shorten`) and its prompt-as-sent rows keep their keys; the row for
+  `translator` simply shows whichever source was sent last.
+- `prompts.mjs` `SOURCE_INSTRUCTIONS[source]` (en, ja, ko, zh-CN) is built from the zh-TW texts
+  with `swap()`: a source-language opening instead of COMMON's first paragraph (COMMON's rules
+  kept), "from <language>, the narration language" in the translator's first line, "the source
+  line" for "the zh-TW line", `the <language> "source"` in shorten/reword, line lengths "ja, ko,
+  zh-CN and zh-TW about 40" (zh-CN "about as long as the source" only fits a Chinese source), and a
+  zh-TW register (Taiwanese wording in Traditional characters, the zh-TW interface's names,
+  軟體/影片/設定 never 軟件/視頻/設置) in the translator's, reviewer's, shorten's and reword's
+  register lists. A rule changed in a zh-TW text follows automatically; `swap()` throws at import
+  when a phrase it replaces disappears, so the tests catch a drift.
+- zh-TW unchanged, shown two ways in `automation.test.mjs`: SHA-256 of the four texts
+  (translator, caption_reviewer, translator:shorten, translator:reword) captured from origin/main
+  before the change and pinned, checked for source undefined / null / zh-TW / an unknown locale in
+  both formats; and an end-to-end zh-TW video whose translator, reviewer, shorten and reword calls
+  carry those exact bytes and no `source_locale`. The en fixture's video (zh-TW + ja with a dub
+  that over-runs once and is misheard) shows all six calls with `source_locale: "en"` and the
+  English texts; that test fails on the old `flow.mjs`.
