@@ -1,18 +1,18 @@
 ---
 id: 2026-09-22-correct-llms-txt-evaluation-token-link
 title: Correct llms.txt evaluation token link semantics after localization draft
-status: open
+status: done
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-10-01T12:36:30Z
 created_at: 2026-09-22T05:44:07Z
-completed_at:
-branch:
+completed_at: 2026-10-01T12:37:11Z
+branch: claude/llms-txt-token-link
 depends_on:
   - 2026-09-22-localize-llms-txt-evaluation-draft-only
 scope:
-  - tasks/open/2026-09-22-correct-llms-txt-evaluation-token-link.md
+  - apps/api/app/guides/content/llms-txt-evaluation.json
 ---
 
 # Correct llms.txt evaluation token link semantics after localization draft
@@ -28,19 +28,19 @@ so this semantic source issue needs a separate editorial decision later.
 
 ## Definition of done
 
-- [ ] A future editor independently decides whether the inline should be plain
+- [x] A future editor independently decides whether the inline should be plain
       text, use different linked text, or target another published article.
-- [ ] Any approved source correction updates zh-TW first and rebinds every
+- [x] Any approved source correction updates zh-TW first and rebinds every
       affected locale and review artifact.
-- [ ] The duplicate-topic publication exclusion for `llms-txt-evaluation`
+- [x] The duplicate-topic publication exclusion for `llms-txt-evaluation`
       remains in force unless separately reviewed and authorized.
 
 ## Steps
 
-- [ ] Claim a new narrow pack/editorial scope after the batch016 draft task is
+- [x] Claim a new narrow pack/editorial scope after the batch016 draft task is
       complete; do not extend this placeholder's task-file-only scope.
-- [ ] Review the surrounding Lighthouse sentence and the intended destination.
-- [ ] Apply the approved source-first correction and repeat localization review.
+- [x] Review the surrounding Lighthouse sentence and the intended destination.
+- [x] Apply the approved source-first correction and repeat localization review.
 
 ## How to verify
 
@@ -55,3 +55,12 @@ same identity and intended meaning.
 - Batch016 translations retain the source `kind: life`,
   `slug: ai-term-token` and translate only the visible verb in context.
 - Do not modify the original zh-TW document inside the localization draft.
+- 2026-10-01 (claude-opus-5-5): decision: plain text. The sentence says Lighthouse flags a
+  server error; "標記" there is a verb, and no published article explains Lighthouse
+  flags, so there is no better destination. `/blocks/21/inlines/1` is now a text inline
+  with the same visible word in all five locales (標記 / flagged / 警告の対象 /
+  문제로 표시 / 标记). A script restored the five original inlines and asserted equality
+  with the original pack. Scope moved from this task file to the pack. `pack_cli lint`
+  0 errors. The batch016 localization receipts are historical records of the frozen
+  source and were not rewritten. Nothing was imported or published: the
+  duplicate-topic publication exclusion for `llms-txt-evaluation` still stands.
