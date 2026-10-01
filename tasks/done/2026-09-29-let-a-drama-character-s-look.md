@@ -1,13 +1,13 @@
 ---
 id: 2026-09-29-let-a-drama-character-s-look
 title: Let a drama character's look change between episodes
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-drama-look
 claimed_at: 2026-10-01T03:37:46Z
 created_at: 2026-09-29T00:34:04Z
-completed_at:
+completed_at: 2026-10-01T03:53:13Z
 branch: claude/drama-character-look-change
 depends_on: []
 scope:
