@@ -9,6 +9,10 @@ import { dramaFixture, explainerFixture, sandbox } from "../core/fixtures/load.m
 import { shortsFile } from "../shorts/episode.mjs";
 import { readJson } from "../core/paths.mjs";
 import { keepSheets, readStore, reuseSheets, sheetKey } from "../media/series-store.mjs";
+import { shotPrompt } from "../media/keyframes.mjs";
+import { sheetPrompt } from "../media/look.mjs";
+import { resolveLook } from "../core/drama.mjs";
+import { planRequests } from "../tts/requests.mjs";
 import { automationClient } from "./client.mjs";
 import { answerProblem, discussStep, documentDiscussionPayload, parseSubject, revisedDocumentProblem, unusableReply } from "./discuss.mjs";
 import { Automation, automatedVideos, settle } from "./flow.mjs";
@@ -402,6 +406,99 @@ test("a series keeps the sheets the owner chose, and the next episode reuses the
   const settled = settle({ ...dramaFixture(), characters: [...dramaFixture().characters].reverse() }, { slug: "wenjian-e002", settings: { voice: { provider: "gemini", name: "Sulafat" }, drama: {} }, sourceGuide: null, root: box.root, format: "drama", series: { slug: "wenjian", episode: 2, chapter: 1 }, cast: doc.characters });
   assert.deepEqual(settled.characters.map((character) => character.id), ["jingwei", "yandi"]);
   assert.deepEqual(settled.series, { slug: "wenjian", episode: 2, chapter: 1 });
+});
+
+test("a character's look in the setting book is checked before it is filed", () => {
+  const withLooks = (looks, voice = CAST[0].voice) => ({ ...SETTING, body_json: { ...SETTING.body_json, characters: [{ ...CAST[0], voice, looks }, CAST[1]] } });
+  const look = { id: "no-coat", from: 12, to: 20, appearance: "a young man of twenty, lean, long black hair loose, a torn white under-robe", voice_style: "虛弱、斷續" };
+  assert.equal(documentProblem("setting", withLooks([look, { id: "aged", from: 21, appearance: "an old man of seventy" }]), job("setting")), null, "a bounded look and one to the series' end");
+  assert.equal(documentProblem("setting", withLooks([]), job("setting")), null);
+  assert.match(documentProblem("setting", withLooks({ id: "x" }), job("setting")), /shen-lan: looks must be a list/);
+  assert.match(documentProblem("setting", withLooks([{ id: "no-coat", from: 12 }]), job("setting")), /every look needs an id and an appearance/);
+  assert.match(documentProblem("setting", withLooks([{ ...look, id: "No Coat" }]), job("setting")), /lowercase ascii/);
+  assert.match(documentProblem("setting", withLooks([look, { ...look, from: 30, to: null }]), job("setting")), /two looks are called no-coat/);
+  assert.match(documentProblem("setting", withLooks([{ ...look, from: 0 }]), job("setting")), /from must be the number of the first episode/);
+  assert.match(documentProblem("setting", withLooks([{ ...look, to: 11 }]), job("setting")), /to must be the number of the last episode/);
+  assert.match(documentProblem("setting", withLooks([{ ...look, from: 26, to: 30 }]), job("setting")), /after the last episode \(25\)/);
+  assert.match(documentProblem("setting", withLooks([{ ...look, sheet_prompt: "" }]), job("setting")), /sheet_prompt must be text/);
+  assert.match(documentProblem("setting", withLooks([look], { provider: "azure", name: "zh-TW-YunJheNeural" }), job("setting")), /voice_style needs the character's own Gemini voice/);
+  assert.match(documentProblem("setting", withLooks([look, { id: "aged", from: 20, appearance: "an old man" }]), job("setting")), /looks no-coat and aged both cover episode 20/);
+});
+
+test("a look covering an episode changes that episode's sheet, keyframes and voice, and no other episode's", () => {
+  const box = sandbox("wenjian-e001", "drama");
+  const example = dramaFixture();
+  const drenched = { id: "drenched", from: 2, to: 2, appearance: "a girl of about twelve, soaked black hair loose over her shoulders, torn pale green hanfu dark with seawater, small and slight", voice_style: "嗆水後沙啞、斷續" };
+  const book = { characters: example.characters.map((character) => (character.id === "jingwei" ? { ...character, looks: [drenched] } : character)), mysteries: [{ id: "m1", question: "?" }] };
+  assert.equal(documentProblem("setting", { body_md: "x", body_json: book }, job("setting")), null);
+  // Without a look, or outside it, the cast is the book's as before: same prompts, same sheet keys.
+  const plain = castFrom({ characters: example.characters });
+  assert.deepEqual(castFrom(book), plain, "no episode, no look");
+  assert.deepEqual(castFrom(book, 1), plain);
+  assert.deepEqual(castFrom(book, 3), plain, "the look ends with its last episode");
+  assert.deepEqual(castFrom({ characters: example.characters }, 2), plain, "a book without looks gives every episode the same cast");
+  const second = castFrom(book, 2);
+  const jingwei = (cast) => cast.find((character) => character.id === "jingwei");
+  assert.deepEqual(Object.keys(jingwei(second)), ["id", "name", "appearance", "voice"], "still only video.json's keys");
+  assert.equal(jingwei(second).appearance, drenched.appearance);
+  assert.deepEqual(jingwei(second).voice, { ...jingwei(plain).voice, style: drenched.voice_style });
+  assert.deepEqual(second.find((character) => character.id === "yandi"), plain.find((character) => character.id === "yandi"));
+
+  // Two episodes of one series, each settled with the cast its series.json carries.
+  const episode = (number, cast) => settle(structuredClone(example), { slug: `wenjian-e00${number}`, settings: { voice: { provider: "gemini", name: "Sulafat" }, drama: {} }, sourceGuide: null, root: box.root, format: "drama", series: { slug: "wenjian", episode: number, chapter: 1 }, cast });
+  const first = episode(1, castFrom(book, 1));
+  const later = episode(2, second);
+  const shot = (doc) => {
+    const scene = doc.scenes.find((each) => each.id === "opening");
+    return shotPrompt(scene, resolveLook(doc.look), doc.characters.filter((character) => scene.data.characters.includes(character.id)));
+  };
+  assert.ok(shot(later).includes(drenched.appearance), "the second episode's keyframe prompt names the look");
+  assert.ok(!shot(first).includes(drenched.appearance) && shot(first).includes(jingwei(plain).appearance), "the first episode's names the book's appearance");
+  assert.ok(sheetPrompt(jingwei(later.characters), resolveLook(later.look)).includes(drenched.appearance));
+  assert.ok(sheetPrompt(jingwei(first.characters), resolveLook(first.look)).includes(jingwei(plain).appearance));
+  const style = (doc) => planRequests(doc, {}).find((request) => request.speaker === "jingwei").body.style;
+  assert.match(style(later), /^嗆水後沙啞、斷續。/, "her lines in the look's episode take its voice style");
+  assert.match(style(first), /^清亮、倔強的少女聲/);
+  assert.equal(planRequests(episode(1, plain), {}).map((request) => request.key).join(), planRequests(first, {}).map((request) => request.key).join(), "an episode outside the look narrates as before");
+
+  // The look's sheet is kept beside the base one and approved once: the next episode it covers
+  // reuses it, and an episode after it reuses the base sheet again.
+  assert.notEqual(sheetKey(jingwei(later.characters), later.look), sheetKey(jingwei(first.characters), first.look));
+  const keep = (doc, file, content) => {
+    const workdir = path.join(box.work, doc.slug);
+    mkdirSync(path.join(workdir, "characters", "jingwei"), { recursive: true });
+    writeFileSync(path.join(workdir, file), content);
+    const manifest = { look_hash: "h", characters: { jingwei: { candidates: [{ n: 1, seed: 1, file, sha256: createHash("sha256").update(content).digest("hex"), judge: { overall: 9, passed: true, problems: [] } }] } } };
+    return keepSheets({ workBase: box.work, workdir, seriesSlug: "wenjian", doc, manifest, chosen: { jingwei: 1 } });
+  };
+  assert.equal(keep(first, "characters/jingwei/001.png", "png-base"), 1);
+  assert.equal(keep(later, "characters/jingwei/001.png", "png-drenched"), 1);
+  const store = readStore(box.work, "wenjian");
+  assert.deepEqual(Object.values(store.sheets).map((sheet) => [sheet.id, sheet.from]), [["jingwei", "wenjian-e001"], ["jingwei", "wenjian-e002"]], "the base sheet is kept, the look's beside it");
+  const third = episode(3, castFrom(book, 3));
+  const reused = reuseSheets({ workBase: box.work, workdir: path.join(box.work, "wenjian-e003"), seriesSlug: "wenjian", characters: third.characters, look: third.look });
+  assert.equal(readFileSync(path.join(box.work, "wenjian-e003", reused.reused.jingwei.file), "utf8"), "png-base");
+  const again = reuseSheets({ workBase: box.work, workdir: path.join(box.work, "wenjian-e004"), seriesSlug: "wenjian", characters: castFrom({ characters: [{ ...book.characters[0], looks: [{ ...drenched, to: 4 }] }] }, 4), look: later.look });
+  assert.equal(readFileSync(path.join(box.work, "wenjian-e004", again.reused.jingwei.file), "utf8"), "png-drenched", "a later episode the look covers reuses its approved sheet");
+});
+
+test("the worker drafts an episode with the looks that cover it, in series.json and the brief", async () => {
+  const box = sandbox();
+  const site = fakeSite();
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-09-27T01:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  const loose = "a young man of twenty, lean, long black hair loose, a torn white under-robe, no bell";
+  const setting = { ...SETTING, body_json: { ...SETTING.body_json, characters: [{ ...CAST[0], looks: [{ id: "no-bell", from: 2, appearance: loose }] }, CAST[1]] } };
+  const cast = {};
+  for (const number of [1, 2]) {
+    const slug = episodeSlug("wenjian", number);
+    await automation.draftEpisode({ id: `r${number}`, slug, title: "", premise: SERIES.premise, target_minutes: 3 }, { series: SERIES, setting, episodes: [], recaps: [], mysteries: [] }, { ...beats(number), chapter_number: 1, beats: beats(number) });
+    cast[number] = readJson(path.join(box.root, "docs", "videos", slug, "series.json")).characters.find((character) => character.id === "shen-lan");
+    assert.equal(readFileSync(path.join(box.root, "docs", "videos", slug, "brief.md"), "utf8").includes(loose), number === 2, `episode ${number}'s brief`);
+  }
+  assert.equal(cast[1].appearance, CAST[0].appearance);
+  assert.equal(cast[2].appearance, loose);
+  assert.equal(cast[1].looks, undefined, "series.json carries the cast as video.json wants it");
 });
 
 test("a story bible has the cast, the acts and one outline, and only a one-off has one", () => {

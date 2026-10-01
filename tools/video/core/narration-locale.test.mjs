@@ -1,18 +1,29 @@
 // An English narration (`narration_locale: "en"`): the same pipeline, with English as the source
 // language of captions, translations, dubs and the description, and a lighter dictionary rule.
 import assert from "node:assert/strict";
+import { randomBytes } from "node:crypto";
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import path from "node:path";
 import test from "node:test";
 
+import { EXIT, main } from "../cli.mjs";
 import { defaultRate, dubLocales, speechLexicon } from "../dubs/plan.mjs";
 import { targetLocales } from "../i18n/cli.mjs";
+import { packageLocalesWanted } from "../package/check.mjs";
+import { captionsCurrent } from "../package/cli.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
+import { jpegBytes } from "../qa/test-images.mjs";
 import { parseDubLocale } from "../tts/check.mjs";
-import { enBrief, enFixture, fixture, fixtureLexicon } from "./fixtures/load.mjs";
+import { approve } from "./approvals.mjs";
+import { enBrief, enFixture, fixture, fixtureLexicon, sandbox } from "./fixtures/load.mjs";
 import { hasAcronym, unknownTermsFor } from "./lexicon.mjs";
 import { lintVideo } from "./lint.mjs";
-import { narrationLocale, validateVideo } from "./schema.mjs";
-import { localeTexts } from "./stages.mjs";
-import { estimateTimeline } from "./timeline.mjs";
+import { atomicWrite } from "./paths.mjs";
+import { eachLine, narrationLocale, textHash, validateVideo } from "./schema.mjs";
+import { alwaysLocales, captionLocalesOf, dubLocalesOf, localeTexts, metadataLocalesOf, readLanguages, runCaptions, writeLanguages } from "./stages.mjs";
+import { loadProject } from "./state.mjs";
+import { buildTimeline, estimateTimeline, SAMPLE_RATE, speechHash, visualHash } from "./timeline.mjs";
+import { sourceHashes } from "./translations.mjs";
 
 const context = (overrides = {}) => ({ lexicon: fixtureLexicon(), brief: enBrief(), others: [], translations: {}, ...overrides });
 const messages = (problems) => problems.map((problem) => problem.message).join("\n");
@@ -101,4 +112,98 @@ test("the upload metadata of an English video defaults to English and localizes 
   assert.equal(metadata.title, doc.youtube.title);
   assert.match(metadata.description, /📌 Chapters/);
   assert.deepEqual(Object.keys(metadata.localizations), ["zh-TW"]);
+});
+
+test("the owner's language choice keeps the narration's own locale and zh-TW, whatever is ticked", () => {
+  const en = enFixture();
+  assert.deepEqual(alwaysLocales(), ["zh-TW"]);
+  assert.deepEqual(alwaysLocales("en"), ["en", "zh-TW"]);
+  const jaCaptions = { locales: { ja: { metadata: false, captions: true, dub: false } }, decided_at: "2026-10-01T00:00:00Z" };
+  assert.deepEqual(captionLocalesOf(jaCaptions), ["zh-TW", "ja"], "a zh-TW video, as before");
+  assert.deepEqual(captionLocalesOf(jaCaptions, "en"), ["en", "zh-TW", "ja"]);
+  assert.deepEqual(metadataLocalesOf(jaCaptions, "en"), ["en", "zh-TW"]);
+  assert.deepEqual(metadataLocalesOf(null, "en"), null, "without a choice, every translated locale");
+  assert.deepEqual(captionLocalesOf(null, "en"), ["zh-TW", "en", "ja", "ko", "zh-CN"]);
+  // The panel offers English to an English video too: ticking it adds nothing and dubs nothing.
+  const enTicked = { locales: { en: { metadata: true, captions: true, dub: true }, ko: { metadata: true, captions: true, dub: true } }, decided_at: null };
+  assert.deepEqual(captionLocalesOf(enTicked, "en"), ["en", "zh-TW", "ko"]);
+  assert.deepEqual(metadataLocalesOf(enTicked, "en"), ["en", "zh-TW", "ko"]);
+  assert.deepEqual(dubLocalesOf(enTicked, en), ["ko"]);
+  assert.deepEqual(dubLocalesOf(null, en), ["zh-TW", "ja", "ko"], "the English video's default dubs");
+  assert.deepEqual(dubLocalesOf(null, fixture()), ["en", "ja", "ko"], "the zh-TW default, as before");
+  // The narration always has captions; an untranslated locale cannot.
+  const manifest = { speech_hash: "s", locales: { en: {}, ja: {} }, skipped: {} };
+  assert.equal(captionsCurrent(manifest, "s", ["en", "zh-TW", "ja"], { ja: {} }, null, "en"), true, "zh-TW has no translation to cut");
+  assert.equal(captionsCurrent({ ...manifest, locales: { ja: {} } }, "s", ["en", "zh-TW", "ja"], { ja: {} }, null, "en"), false, "the narration's captions are missing");
+});
+
+/** The English example after every stage up to the approved cut, translated into every other locale. */
+function finishedEnglishVideo() {
+  const box = sandbox("fixture-en", "en");
+  const doc = enFixture();
+  for (const locale of targetLocales(doc)) {
+    const lines = Object.fromEntries([...eachLine(doc)].map(({ line }) => [line.id, { source_hash: textHash(line.text), text: `${locale} line ${line.id}` }]));
+    const chapters = Object.fromEntries(doc.scenes.filter((scene) => scene.chapter).map((scene) => [scene.id, `${locale} ${scene.id}`]));
+    atomicWrite(path.join(box.dir, "i18n", `${locale}.json`), `${JSON.stringify({ title: `${locale} title`, description: `${locale} description`, tags: [`${locale} tag`], chapters, source_hashes: sourceHashes(doc), lines }, null, 2)}\n`);
+  }
+  const project = loadProject({ slug: box.slug, root: box.root });
+  const samples = Object.fromEntries([...eachLine(doc)].map(({ line }) => [line.id, 5 * SAMPLE_RATE]));
+  const timeline = { ...buildTimeline(doc, samples), speech_hash: speechHash(project.doc, project.lexicon) };
+  mkdirSync(box.workdir, { recursive: true });
+  atomicWrite(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
+  writeFileSync(path.join(box.workdir, "thumbnail.jpg"), jpegBytes(1280, 720, 4000));
+  writeFileSync(path.join(box.workdir, "final.mp4"), randomBytes(2048));
+  atomicWrite(path.join(box.workdir, "checks.json"), JSON.stringify({ ok: true, speech_hash: timeline.speech_hash, visual_hash: visualHash(project.doc), problems: [], metrics: { frames: timeline.total_frames, loudness: { integrated: -14 }, psnr: [] } }));
+  return box;
+}
+
+function englishContext(box) {
+  const out = { stdout: "", stderr: "" };
+  const fetchImpl = async (url) => (url.endsWith("/judge/policy") ? Response.json({ detail: "Not Found" }, { status: 404 }) : new Response("", { status: 200 }));
+  const ctx = {
+    root: box.root,
+    env: { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: `mkv_${"q".repeat(43)}`, MOKAAIR_SITE: "https://site.test" },
+    home: box.base,
+    fetch: fetchImpl,
+    sleep: async () => {},
+    stdout: { write: (text) => (out.stdout += text) },
+    stderr: { write: (text) => (out.stderr += text) },
+    now: () => new Date("2026-10-01T02:00:00Z"),
+  };
+  return { out, ctx };
+}
+
+test("an English video whose choice ticks only Japanese captions keeps its own captions and description, and zh-TW's, through captions, qa and package", async (t) => {
+  const box = finishedEnglishVideo();
+  t.after(() => rmSync(box.base, { recursive: true, force: true }));
+  writeLanguages(box.workdir, { locales: { ja: { metadata: false, captions: true, dub: false } }, decided_at: "2026-10-01T00:00:00Z" });
+  assert.deepEqual(readLanguages(box.workdir).locales, { ja: { metadata: false, captions: true, dub: false } });
+
+  const manifest = runCaptions({ slug: box.slug, root: box.root, workdir: box.workdir, now: new Date("2026-10-01T01:00:00Z") });
+  assert.deepEqual(Object.keys(manifest.locales), ["en", "zh-TW", "ja"], "ko and zh-CN are translated but not chosen");
+
+  await approve({ gate: "audio", docDir: box.dir, workdir: box.workdir, now: new Date("2026-10-01T01:00:00Z") });
+  const qa = englishContext(box);
+  await main(["qa", "--slug", box.slug], qa.ctx);
+  const items = Object.fromEntries(JSON.parse(readFileSync(path.join(box.workdir, "review", "qa.json"), "utf8")).items.map((item) => [item.id, item]));
+  assert.equal(items.captions.ok, true, items.captions.detail);
+  assert.match(items.captions.detail, /^caption files for en, zh-TW, ja, every translation current/);
+  assert.equal(items.metadata.ok, true, items.metadata.detail);
+  assert.match(items.metadata.detail, /for en, zh-TW; 3 chapters$/);
+
+  await approve({ gate: "final", docDir: box.dir, workdir: box.workdir, now: new Date("2026-10-01T01:30:00Z") });
+  const packaged = englishContext(box);
+  assert.equal(await main(["package", "--slug", box.slug], packaged.ctx), EXIT.ok, packaged.out.stderr + packaged.out.stdout);
+  const upload = path.join(box.workdir, "upload");
+  const metadata = JSON.parse(readFileSync(path.join(upload, "metadata.json"), "utf8"));
+  assert.equal(metadata.default_language, "en");
+  assert.deepEqual(Object.keys(metadata.localizations), ["zh-TW"]);
+  assert.deepEqual(metadata.captions, ["captions/en.srt", "captions/ja.srt", "captions/zh-TW.srt"]);
+  assert.deepEqual(metadata.skipped_caption_locales, {});
+  assert.deepEqual(metadata.dubs, []);
+  assert.ok(existsSync(path.join(upload, "description.en.txt")) && existsSync(path.join(upload, "description.zh-TW.txt")));
+  assert.ok(!existsSync(path.join(upload, "description.ja.txt")), "Japanese titles were not chosen");
+  assert.match(packaged.out.stdout, /\[x\] descriptions: descriptions for en, zh-TW/);
+  assert.match(packaged.out.stdout, /\[x\] captions: caption files for en, zh-TW, ja/);
+  assert.deepEqual(packageLocalesWanted(box.workdir).locales, ["en", "zh-TW", "ja"], "the package check reads the narration from metadata.json");
 });

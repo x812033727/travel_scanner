@@ -70,7 +70,7 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 2026-09-25 曾經有一輪在兩分鐘內重問撰稿模型 6 次，花了約 10.6 萬 token，所以加上這條規則。
 
-要讓工人整個停下來，在工作區放一個 `STOP` 檔：`docker compose -f docker-compose.prod.yml exec -T video-worker touch /var/lib/mokaair/video-work/STOP`。刪掉這個檔，下一輪就會繼續。
+要讓工人整個停下來，在工作區放一個 `STOP` 檔：`docker compose -f docker-compose.prod.yml exec -T video-worker touch /var/lib/mokaair/video-work/STOP`。刪掉這個檔，下一輪就會繼續。Shorts 的敲門（`shorts/cli.mjs tick`，工人在 `auto` 旁邊另外每 5 分鐘跑一次）也看這個檔：有 STOP 就不敲門，網站也就不鎖定時段、不再開始送 Shorts 上 YouTube，紀錄印一行 `video-worker: shorts: STOP found`，刪掉後下一次就恢復；有活動在跑的話，這段時間 Shorts 分頁會說工人沒有回報。
 
 ## 一支影片的自動流程
 

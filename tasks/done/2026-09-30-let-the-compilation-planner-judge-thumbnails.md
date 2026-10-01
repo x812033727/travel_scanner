@@ -1,14 +1,14 @@
 ---
 id: 2026-09-30-let-the-compilation-planner-judge-thumbnails
 title: Let the compilation planner judge thumbnails instead of re-ranking scores
-status: open
+status: done
 priority: P3
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-10-01T03:15:00Z
 created_at: 2026-09-30T09:40:07Z
-completed_at:
-branch:
+completed_at: 2026-10-01T03:16:36Z
+branch: claude/audit-followups
 depends_on: []
 scope:
   - tools/video/automation/prompts.mjs
@@ -28,13 +28,13 @@ is doing a lookup and not the judgment it is there for: which picture carries th
 
 ## Definition of done
 
-- [ ] Both texts say the candidates come best-judged first and ask for the picture that best
+- [x] Both texts say the candidates come best-judged first and ask for the picture that best
   carries the headline's promise.
 
 ## Steps
 
-- [ ] Wait for #1030 (compilation spoilers), which rewrites the same prompt block, then rebase.
-- [ ] Edit both texts; keep the output shape unchanged.
+- [x] Wait for #1030 (compilation spoilers), which rewrites the same prompt block, then rebase.
+- [x] Edit both texts; keep the output shape unchanged.
 
 ## How to verify
 
@@ -45,3 +45,8 @@ node --test tools/video/automation/*.test.mjs
 ## Notes
 
 Found by the 2026-09-30 prompt audit (medium confidence, Group 4).
+
+Done 2026-10-01 after #1030 merged. Claimed with `--force`: `2026-09-28-sothatswhy-shorts-from-episode`
+holds `prompts.mjs`, but its claim is more than 24 hours old, its branch is gone from origin and its
+PRs (#904, #950, #962) are merged. The output shape is unchanged; `compilation.mjs` still falls back
+to `candidates[0]`.
