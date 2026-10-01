@@ -1,13 +1,13 @@
 ---
 id: 2026-10-01-youtube-narration-request-transport
 title: Use approved narration language in YouTube request transport
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5-yt-transport
 claimed_at: 2026-10-01T15:57:29Z
 created_at: 2026-10-01T10:31:19Z
-completed_at:
+completed_at: 2026-10-01T16:08:01Z
 branch: claude/youtube-narration-transport
 depends_on: []
 scope:
