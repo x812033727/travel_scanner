@@ -32,7 +32,7 @@
 | CC（`captions`） | 翻每一句；有配音時字幕跟配音的時間軸（`DUBS.md`） | T8 的 `captions.insert`；T8 沒好之前站主上傳 `.srt` |
 | 配音（`dub`） | 同一個頻道聲音唸翻譯（`DUBS.md` 全套：視窗、加速、縮短、Jev） | 只能站主在 Studio「語言」頁上傳 |
 
-依賴：配音要先有 CC 的翻譯；勾了配音會自動連 CC 一起做（面板上會勾起來且不能取消）。標題與說明可以單獨勾。漫劇的配音是第二期（多角色要重新混音，`DUBS.md` §已知限制），面板上灰掉；漫劇燒錄的字幕永遠是繁中。
+依賴：配音要先有 CC 的翻譯；勾了配音會自動連 CC 一起做（面板上會勾起來且不能取消）。標題與說明可以單獨勾。漫劇的配音是第二期（多角色要重新混音，`DUBS.md` §已知限制），面板上灰掉。2026-10-01 起新漫劇對白全為可開關 CC，正片不燒字幕；這次十部先完成 zh-TW，再製作 ja／ko／en 配音與各自 CC，[製作規格](series-plans/production-20261001/profile.json) 的多角色多語狀態仍為待實作。
 
 ### 資料模型
 
@@ -84,6 +84,8 @@
 2. 勾配音：`dub --locale <l>` → 塞不下的句子交翻譯模型縮短（最多 2 輪）→ `check-audio --locale <l>` → Jev 標記 → `dub --redo`（最多 2 輪）→ 仍不行寫 `dubs/<l>/skipped.json`，不擋。
 3. 全部語言做完：`captions`（只寫 zh-TW 與勾了 CC 的語系；有配音的跟配音時間軸）→ `package`（`upload/` 只放 zh-TW 與勾了的：`description.<l>.txt`、`captions/<l>.srt`、`dubs/<l>.m4a`；`metadata.json` 的 `locales` 照決定）→ `review-push --gate languages`。
 4. `qa` 的 `captions` 與 `metadata` 項、`package` 的 `captions` 與 `descriptions` 項都改成「zh-TW 加勾了的」；跳過的算過、列成警告。
+
+旁白不是 zh-TW 的影片（`narration_locale`，例如 `en`）：面板不會列 zh-TW，但 `captions`、`package`、`qa` 永遠要它（`alwaysLocales`），所以語言一決定，工人先把 zh-TW 的標題說明與 CC 翻一次（不配音），再做勾了的；什麼都沒勾時只把 `captions` 與 `package` 重寫一次，不送語言批次。成片審核卡也永遠帶旁白語言與 zh-TW 的標題說明。
 
 沒勾語言、或按了「只出繁體中文」的影片：`captions` 只寫 zh-TW，`package` 只有 zh-TW，跟現在比少了四個語系的檔案，其餘一個位元組都不變。`caption_locales` 不再驅動任何工作。
 

@@ -1,0 +1,2892 @@
+{
+  "schema_version": 1,
+  "slug": "taste-of-the-throne",
+  "source_binding": {
+    "source_sha256": "7a2368145d3ead124172d8034d89ba49468c4649d25501df31aede49278dfa4f"
+  },
+  "delivery_profile_ref": "../../production-20261001/profile.json",
+  "review_status": "design-only-not-render-tested",
+  "visual_direction": {
+    "style": "架空宮廷懸疑動畫，以銀匙、墨、井水與手帕的細節推案；灰黑主角衣色和右頸疤保持辨識。宮殿要有真實可走的尺度，不能用每句一張華美立繪。",
+    "screen_direction": "紫宸龍案/三排矮案/朱門固定主軸；司膳院三灶左勺位置固定；井的第七石与引水道第三石分开建模；圜丘九阶先做走位。",
+    "performance": "含章吞咽後的停頓、皇帝帕的摺數、公主把手爐放下、太后指间珠子的停转要代替大量旁白。每種毒的虛構後果有代價，不演成免疫。",
+    "continuity": "葉形原匙與圓形備匙、兩種/三種湯、名冊與御膳簿、半虎符/全虎符、璽匣分別版控。文書讀出不等於當場有新說話者。"
+  },
+  "opening_30s": [
+    {
+      "id": "o01",
+      "in_s": 0,
+      "out_s": 4,
+      "scale": "ECU",
+      "camera": "沿葉匙到嘴，慢推",
+      "action": "第三口魚羹前含章指尖停一下，匙面反出宴燈",
+      "characters": [
+        "hanzhang"
+      ],
+      "props": [
+        "葉形銀匙",
+        "魚羹"
+      ],
+      "dialogue_intent": "內心短句「第三口，有毒」的意圖；實詞按原文核",
+      "sound": "湯匙輕碰、吞咽前停",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:317",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:338",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "id": "o02",
+      "in_s": 4,
+      "out_s": 8,
+      "scale": "CU",
+      "camera": "含章眼神越過匙",
+      "action": "她判斷後仍依嘗使規矩吞下，手不演神奇治癒",
+      "characters": [
+        "hanzhang"
+      ],
+      "props": [
+        "葉匙"
+      ],
+      "dialogue_intent": "不塞毒名和身世長解說",
+      "sound": "一口吞咽、殿內聲拉遠",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:317",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:338",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "id": "o03",
+      "in_s": 8,
+      "out_s": 12,
+      "scale": "WS",
+      "camera": "先殿軸線再移向皇家案",
+      "action": "太后看她，公主手邊白玉爐；背景官員不辨臉，鏡頭只辨識兩位皇家人物",
+      "characters": [
+        "yanhou",
+        "yuanji"
+      ],
+      "props": [
+        "念珠",
+        "白玉手爐"
+      ],
+      "dialogue_intent": "無新增朝臣台詞",
+      "sound": "殿內衣料/珠聲，無群眾齊喊",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:317",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:338",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "id": "o04",
+      "in_s": 12,
+      "out_s": 16,
+      "scale": "MS",
+      "camera": "含章與太后分反打",
+      "action": "含章站穩先報「雪蠶散」，太后手珠一停再問廚房",
+      "characters": [
+        "hanzhang",
+        "yanhou"
+      ],
+      "props": [
+        "銀匙",
+        "念珠"
+      ],
+      "dialogue_intent": "含章「雪蠶散」後，太后短問「哪個廚房？」；不重疊配音",
+      "sound": "太后近聲乾淨，背景收低",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:317",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:338",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "id": "o05",
+      "in_s": 16,
+      "out_s": 20,
+      "scale": "CU",
+      "camera": "殿角手部，不正面多人",
+      "action": "老陶握缺口菜刀的左手縮進圍裙陰影，不拍刀刃碰到身體",
+      "characters": [
+        "laotao"
+      ],
+      "props": [
+        "缺口菜刀",
+        "圍裙"
+      ],
+      "dialogue_intent": "不配他的驚慌獨白，不提前說刀印",
+      "sound": "布摩擦、刀柄輕碰",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:317",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:338",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "id": "o06",
+      "in_s": 20,
+      "out_s": 24,
+      "scale": "CU",
+      "camera": "回含章正面，緩慢失去重心",
+      "action": "含章報出慈寧宮小廚，字短而准，雙膝漸軟",
+      "characters": [
+        "hanzhang"
+      ],
+      "props": [
+        "葉形銀匙"
+      ],
+      "dialogue_intent": "報廚房，不是閉嘴；病弱句尾留氣",
+      "sound": "一句清晰，人声不被音乐盖",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:317",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:338",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "id": "o07",
+      "in_s": 24,
+      "out_s": 27,
+      "scale": "ECU",
+      "camera": "跟銀匙離手，鏡頭不追傷害",
+      "action": "銀匙落向太后裙邊；手離開後才切地面",
+      "characters": [
+        "hanzhang"
+      ],
+      "props": [
+        "葉匙",
+        "地磚",
+        "太后裙邊"
+      ],
+      "dialogue_intent": "無台詞",
+      "sound": "一聲金屬落地，沒有摔身巨響",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:317",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:338",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "id": "o08",
+      "in_s": 27,
+      "out_s": 30,
+      "scale": "CU",
+      "camera": "地面固定構圖，跟住銀匙落地回彈，接觸影格作硬切點，不延長定格",
+      "action": "銀匙落至裙邊，回彈逐步收小、衣角仍在動；末格硬切倒回開席正文，整段保留動態",
+      "characters": [
+        "yanhou"
+      ],
+      "props": [
+        "葉匙"
+      ],
+      "dialogue_intent": "不用字卡燒錄「倒回」；正文用自然接續和CC可選提示",
+      "sound": "金屬尾音接開席餐具聲",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:317",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:338",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:322",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1460"
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "id": "hanzhang",
+      "voice_name": "Kore",
+      "performance": "台灣國語，低而穩，句子短，說毒名時像在念一份帳單；只有在說「我認得」時放慢。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "姜含章：Jiāng Hánzhāng。來源注音：含章，ㄏㄢˊ ㄓㄤ；全名照字面。台灣口音，聲調候選待聽校。",
+        "ja": "ジアン・ハンジャン",
+        "ko": "장한장",
+        "en": "Jiang Hanzhang; jyahng hahn-jahng"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "hanzhang-base",
+          "episodes": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ],
+          "appearance": "A 22-year-old woman, slight and straight-backed, 160 cm, pale from years indoors. Oval face, calm dark eyes that rest on objects longer than on people, small mouth kept closed. Black hair in a low tight knot with one plain silver pin, no ornament. Wears a plain palace kitchen robe: narrow-sleeved, undyed ash grey, with a black collar band and a black apron sash tied at the left hip, plain cloth shoes. Signature detail: a small pale crescent-shaped burn scar on the right side of her neck just below the jaw; her hands are always visible, very clean and unmarked.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:51",
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+          ]
+        },
+        {
+          "id": "hanzhang-coronation",
+          "episodes": [
+            40
+          ],
+          "appearance": "A 22-year-old woman, slight and straight-backed, 160 cm, pale from years indoors. Oval face, calm dark eyes that rest on objects longer than on people, small mouth kept closed. Black hair in a low tight knot with one plain silver pin, no ornament. Wears a plain palace kitchen robe: narrow-sleeved, undyed ash grey, with a black collar band and a black apron sash tied at the left hip, plain cloth shoes. Signature detail: a small pale crescent-shaped burn scar on the right side of her neck just below the jaw; her hands are always visible, very clean and unmarked.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：原灰窄袖袍黑領黑圍腰之上加登基外袍；右頸下顎疤，不手疤，不自動佩銀匙。生效點：回紫宸殿受朝，不在圜丘擺龍椅。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "回紫宸殿受朝，不在圜丘擺龍椅",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450",
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1396"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yuanji",
+      "voice_name": "Leda",
+      "performance": "台灣國語，輕、慢、帶笑，像身體不好的人省著力氣說話；每句話的最後一個字往下沉。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "元霽：Yuán Jì。來源注音：霽讀ㄐㄧˋ，同「季」音。台灣口音，聲調候選待聽校。",
+        "ja": "ユエン・ジー",
+        "ko": "위안지",
+        "en": "Yuan Ji; ywen jee"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "yuanji-base",
+          "episodes": [
+            1,
+            2,
+            7,
+            10,
+            11,
+            12,
+            13,
+            20,
+            26,
+            31,
+            34,
+            37,
+            39,
+            40
+          ],
+          "appearance": "A 21-year-old princess, tall and thin, 168 cm, with a delicate, deliberately fragile bearing that hides sharp watchfulness. Long face, high cheekbones, half-lidded eyes, pale lips. Black hair in loose court loops with a jade phoenix hairpin and pale gold ribbons. Wears layered robes of pale lotus pink over ivory with a white fox-fur collar in every season and a thin gold chain belt. Signature object: a small white jade hand warmer.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:72",
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+          ]
+        },
+        {
+          "id": "yuanji-warmer-away",
+          "episodes": [
+            12,
+            13,
+            37
+          ],
+          "appearance": "A 21-year-old princess, tall and thin, 168 cm, with a delicate, deliberately fragile bearing that hides sharp watchfulness. Long face, high cheekbones, half-lidded eyes, pale lips. Black hair in loose court loops with a jade phoenix hairpin and pale gold ribbons. Wears layered robes of pale lotus pink over ivory with a white fox-fur collar in every season and a thin gold chain belt.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：白玉手爐不在手；E12交含章至E13放回膝，E37雙手捧璽匣不可再捧爐。生效點：依各交接拍點生效。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "依各交接拍點生效",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450",
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:637",
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:663"
+          ]
+        },
+        {
+          "id": "yuanji-injured",
+          "episodes": [
+            39,
+            40
+          ],
+          "appearance": "A 21-year-old princess, tall and thin, 168 cm, with a delicate, deliberately fragile bearing that hides sharp watchfulness. Long face, high cheekbones, half-lidded eyes, pale lips. Black hair in loose court loops with a jade phoenix hairpin and pale gold ribbons. Wears layered robes of pale lotus pink over ivory with a white fox-fur collar in every season and a thin gold chain belt.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：E39左肩中箭後包布，不露傷；手爐碎後空手，E40無手爐。生效點：中箭/包紮/手爐落地各是不同切點。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "中箭/包紮/手爐落地各是不同切點",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450",
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1370",
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1396"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yanhou",
+      "voice_name": "Gacrux",
+      "performance": "台灣國語，溫和、圓潤、永遠帶笑，語速很慢；最狠的話說得最像關心。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "嚴太后：Yán Tàihòu。來源注音：未填，需補完整人名試聽。台灣口音，聲調候選待聽校。",
+        "ja": "イエン皇太后（仮）",
+        "ko": "옌 태후（가안）",
+        "en": "Empress Dowager Yan; yen"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "yanhou-base",
+          "episodes": [
+            1,
+            6,
+            8,
+            10,
+            16,
+            18,
+            22,
+            24,
+            25,
+            26,
+            28,
+            29,
+            30,
+            31,
+            32,
+            35,
+            37,
+            38
+          ],
+          "appearance": "A 58-year-old empress dowager, medium height, upright and well-fed, with a soft round face that smiles by default and cold steady eyes. Grey-streaked black hair swept into a tall formal crown of dark gold with red coral drops. Wears heavy robes of deep crimson and black brocade embroidered with gold cranes, long sleeves that cover her hands. Signature object: a string of dark amber prayer beads.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:100",
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+          ]
+        },
+        {
+          "id": "yanhou-beads-broken",
+          "episodes": [
+            24,
+            25
+          ],
+          "appearance": "A 58-year-old empress dowager, medium height, upright and well-fed, with a soft round face that smiles by default and cold steady eyes. Grey-streaked black hair swept into a tall formal crown of dark gold with red coral drops. Wears heavy robes of deep crimson and black brocade embroidered with gold cranes, long sleeves that cover her hands.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：念珠斷落滿地，不仍握完整串；E25重串後恢復。生效點：E24結尾斷線到E25重串。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "E24結尾斷線到E25重串",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450",
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:963",
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:990"
+          ]
+        },
+        {
+          "id": "yanhou-beads-left",
+          "episodes": [
+            38
+          ],
+          "appearance": "A 58-year-old empress dowager, medium height, upright and well-fed, with a soft round face that smiles by default and cold steady eyes. Grey-streaked black hair swept into a tall formal crown of dark gold with red coral drops. Wears heavy robes of deep crimson and black brocade embroidered with gold cranes, long sleeves that cover her hands.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：空碗推出後珠串留碗邊，手上無珠。生效點：E38結尾。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "E38結尾",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450",
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1344"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "huanqi",
+      "voice_name": "Algenib",
+      "performance": "台灣國語，低沉、沙啞、慢條斯理，句尾帶笑意；不急，因為他以為時間在他那邊。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "桓祁：Huán Qí。來源注音：桓讀ㄏㄨㄢˊ，同「環」音；祁讀ㄑㄧˊ，同「祈」音。台灣口音，聲調候選待聽校。",
+        "ja": "ホワン・チー",
+        "ko": "환치",
+        "en": "Huan Qi; hwahn chee"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "huanqi-base",
+          "episodes": [
+            5,
+            13,
+            23,
+            24,
+            26,
+            29,
+            33
+          ],
+          "appearance": "A 45-year-old prince regent, broad-shouldered, 182 cm, heavy build, square jaw with a trimmed black beard, thick brows, small pleased eyes. Black hair under a dark iron-grey court cap with a single sapphire. Wears a robe of storm-blue silk with silver cloud-and-wave embroidery at hem and cuffs and a wide black leather belt with a silver buckle. Signature object: a heavy silver thumb ring on his right hand. Cuffs faintly greyed as if by smoke.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:120",
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yuansheng",
+      "voice_name": "Enceladus",
+      "performance": "台灣國語，氣音多、句子短、常停下來吸氣；只有說「長姐」那兩個字時聲音是穩的。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "元晟：Yuán Shèng。來源注音：晟讀ㄕㄥˋ，同「聖」音。台灣口音，聲調候選待聽校。",
+        "ja": "ユエン・ション",
+        "ko": "위안성",
+        "en": "Yuan Sheng; ywen shung"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "yuansheng-base",
+          "episodes": [
+            3,
+            5,
+            8,
+            9,
+            10,
+            12,
+            16,
+            21,
+            24,
+            25,
+            29,
+            30,
+            35,
+            40
+          ],
+          "appearance": "A 20-year-old emperor, tall but stooped and thin, 176 cm, sallow skin, hollow cheeks, gentle tired eyes with dark circles, thin lips. Black hair under a simple black gauze crown with one row of pearls. Wears an imperial robe of muted yellow-gold with faded dragon roundels and an outer coat of dark brown fur even indoors. Signature object: a white silk handkerchief. His right thumb is ink-stained.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:139",
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+          ]
+        },
+        {
+          "id": "yuansheng-onefold",
+          "episodes": [
+            25
+          ],
+          "appearance": "A 20-year-old emperor, tall but stooped and thin, 176 cm, sallow skin, hollow cheeks, gentle tired eyes with dark circles, thin lips. Black hair under a simple black gauze crown with one row of pearls. Wears an imperial robe of muted yellow-gold with faded dragon roundels and an outer coat of dark brown fur even indoors. Signature object: a white silk handkerchief. His right thumb is ink-stained.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：白帕一摺，演病不能畫三摺。生效點：手掩口鏡。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "手掩口鏡",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450",
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:990"
+          ]
+        },
+        {
+          "id": "yuansheng-unfolded",
+          "episodes": [
+            30,
+            35,
+            40
+          ],
+          "appearance": "A 20-year-old emperor, tall but stooped and thin, 176 cm, sallow skin, hollow cheeks, gentle tired eyes with dark circles, thin lips. Black hair under a simple black gauze crown with one row of pearls. Wears an imperial robe of muted yellow-gold with faded dragon roundels and an outer coat of dark brown fur even indoors. Signature object: a white silk handkerchief. His right thumb is ink-stained.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：白帕無摺：E30地上，E35/40膝上，不同時持在手。生效點：E30倒下後；E35/40指定坐姿。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "E30倒下後；E35/40指定坐姿",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450",
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1122",
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1265"
+          ]
+        },
+        {
+          "id": "yuansheng-retired",
+          "episodes": [
+            40
+          ],
+          "appearance": "A 20-year-old emperor, tall but stooped and thin, 176 cm, sallow skin, hollow cheeks, gentle tired eyes with dark circles, thin lips. Black hair under a simple black gauze crown with one row of pearls. Wears an imperial robe of muted yellow-gold with faded dragon roundels and an outer coat of dark brown fur even indoors. Signature object: a white silk handkerchief. His right thumb is ink-stained.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：退位後不再龍椅主位，原病後疲態；服制需美術確認。生效點：新皇受朝時。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "新皇受朝時",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450",
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1396"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yanjue",
+      "voice_name": "Alnilam",
+      "performance": "台灣國語，字少、聲音平、不帶情緒；每句話都像下令，包括道歉。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "嚴決：Yán Jué。來源注音：未填，需補完整人名試聽。台灣口音，聲調候選待聽校。",
+        "ja": "イエン・ジュエ",
+        "ko": "옌쥐에",
+        "en": "Yan Jue; yen jweh"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "yanjue-base",
+          "episodes": [
+            6,
+            15,
+            22,
+            27,
+            28,
+            30,
+            32,
+            33,
+            35,
+            36,
+            39
+          ],
+          "appearance": "A 36-year-old guard commander, lean and hard, 180 cm, weathered face with a straight nose, a thin old scar across the left eyebrow, narrow unreadable eyes. Black hair pulled tight under a black lacquered helmet-cap with a red tassel. Wears black lamellar armor over a dark red under-robe, a grey cloak, a long straight sword with a plain iron guard at the left hip. Signature detail: the old scar across his left eyebrow and the red tassel of his helmet-cap.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:158",
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "liugugu",
+      "voice_name": "Vindemiatrix",
+      "performance": "台灣國語，溫厚、慢、像在哄孩子；說到「妳母親」時聲音會斷一下。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "柳姑姑：Liǔ Gūgu。來源注音：未填，需補完整人名試聽。台灣口音，聲調候選待聽校。",
+        "ja": "リウ姑姑（仮）",
+        "ko": "류 고모님（가안）",
+        "en": "Aunt Liu; lyoh"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "liugugu-base",
+          "episodes": [
+            2,
+            3,
+            4,
+            5,
+            8,
+            11,
+            14,
+            15,
+            17,
+            18,
+            22,
+            23,
+            31,
+            37,
+            38,
+            40
+          ],
+          "appearance": "A 46-year-old head cook of the imperial kitchen, medium build, strong forearms, a plain kind face lined around the mouth, watchful brown eyes. Black hair greying at the temples in a neat bun under a dark blue kerchief. Wears a dark blue work robe with sleeves bound by white cords, a long stained hemp apron and a ring of small bronze keys at the waist. Signature detail: the dark blue kerchief and the white cords binding her sleeves.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:177",
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "peike",
+      "voice_name": "Iapetus",
+      "performance": "台灣國語，清楚、快、興奮起來會連珠炮；報驗毒結果時像在念實驗紀錄。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "裴恪：Péi Kè。來源注音：裴讀ㄆㄟˊ，恪讀ㄎㄜˋ。台灣口音，聲調候選待聽校。",
+        "ja": "ペイ・コー",
+        "ko": "페이커",
+        "en": "Pei Ke; pay kuh"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "peike-base",
+          "episodes": [
+            9,
+            14,
+            16,
+            18,
+            19,
+            28,
+            33,
+            34,
+            36
+          ],
+          "appearance": "A 28-year-old court physician, slim, 172 cm, a scholar's pale face with round eyes, thin straight brows and an eager mouth. Black hair in a plain topknot under a small grey scholar's cap. Wears a physician's robe of moss green with a white inner collar, sleeves rolled once, and a leather satchel across the chest full of small glass vials. Signature object: a brass magnifying lens on a cord around his neck. Ink smudges on his fingers.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:195",
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "laotao",
+      "voice_name": "Algieba",
+      "performance": "台灣國語，油滑、討好、聲音壓得低；被逼問時尾音會發抖。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "陶大：Táo Dà；老陶 Lǎo Táo。來源注音：陶大照字面；「老陶」是眾人對他的稱呼。台灣口音，聲調候選待聽校。",
+        "ja": "タオ・ダー／ラオタオ",
+        "ko": "타오다 / 라오타오",
+        "en": "Tao Da; tow dah; Lao Tao"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "laotao-base",
+          "episodes": [
+            1,
+            3
+          ],
+          "appearance": "A 50-year-old palace cook, short and thick, 165 cm, a red flushed face with heavy jowls, small darting eyes and a sparse grey moustache. Bald crown with grey hair at the sides under a brown cloth cap. Wears a brown cook's robe with sleeves tied up by grey cords, a greasy dark apron and cloth shoes. Signature detail: his left thumb has no nail.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:213",
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "huanyan",
+      "voice_name": "Puck",
+      "performance": "台灣國語，明亮、殷勤、講話像在敬酒；被揭穿時聲音一下子變薄。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "桓琰：Huán Yǎn。來源注音：桓讀ㄏㄨㄢˊ，同「環」音；琰讀ㄧㄢˇ，同「眼」音。台灣口音，聲調候選待聽校。",
+        "ja": "ホワン・イエン",
+        "ko": "환옌",
+        "en": "Huan Yan; hwahn yen"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "huanyan-base",
+          "episodes": [
+            11,
+            13,
+            23,
+            25,
+            36
+          ],
+          "appearance": "A 24-year-old noble heir, tall and smoothly handsome, 178 cm, a fair face with a ready smile that never reaches the eyes, a thin moustache, sleek black hair under a gold-trimmed white court cap. Wears a robe of pale silver-white silk with pale blue cloud embroidery, a jade pendant belt and polished black boots. Signature object: a white folding fan painted with a single red plum branch.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:231",
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+          ]
+        },
+        {
+          "id": "huanyan-fan-dropped",
+          "episodes": [
+            36
+          ],
+          "appearance": "A 24-year-old noble heir, tall and smoothly handsome, 178 cm, a fair face with a ready smile that never reaches the eyes, a thin moustache, sleek black hair under a gold-trimmed white court cap. Wears a robe of pale silver-white silk with pale blue cloud embroidery, a jade pendant belt and polished black boots.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：跪後白扇紅梅落地，手空；靴跟青泥仍在。生效點：跪下那拍後。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "跪下那拍後",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450",
+            "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1291"
+          ]
+        }
+      ]
+    }
+  ],
+  "prop_rules": [
+    {
+      "id": "spoons",
+      "identity": "葉形原匙/圓備匙兩個資產",
+      "states": "葉1太后收→38歸還→40簿夾；圓2起用→20放公主几",
+      "ownership": "每鏡用物歸屬核；不自動從腰生匙",
+      "insert_rules": "匙形可讀但不給醫學檢測幻光；無匙鏡從角色描述排除",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "id": "cloth-beads-warmer",
+      "identity": "帕摺數、琥珀念珠、白玉爐是三條語意軸",
+      "states": "帕3真危/1演病/0放鬆或昏迷；24珠斷25重串38留；39爐碎",
+      "ownership": "E12爐在含章，E13回公主；E37公主手捧璽不能雙持",
+      "insert_rules": "每手最多實際可握的物件；物離手先演放置/交接",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "id": "soups",
+      "identity": "真忘憂苦湯、壽宴後替換紅棗陳皮、主動試驗湯",
+      "states": "2–17無害；18才再喝真苦；20才說忘憂名；29證物包現煎",
+      "ownership": "湯都給故事證据而非真可複製配方；一口不立即抹記憶",
+      "insert_rules": "顏色只能輔助，需容器/時點/对白区别",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "id": "records-seals",
+      "identity": "皇籍名冊、淑妃御膳簿、硬紙遺詔、半/全虎符、璽匣",
+      "states": "名冊9取16搜25罪證；簿21灰出23搶30回；虎30合",
+      "ownership": "璽32含章→37公主蓋→嚴決；帳證34比兩日",
+      "insert_rules": "關鍵正字獨立合成；不把全部物件合成一本道具書",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "id": "ink-well",
+      "identity": "雲紋墨、新硯、井包為不同證物",
+      "states": "硯送前三天/重膠前兩天/30當日首用；兩種毒非同批",
+      "ownership": "第七石藏匣；引水道第三石藥包不在同位置",
+      "insert_rules": "證物圖使用靜定近鏡但水流/手/墨滲仍動；不做投毒步驟教學",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "id": "knife-fan",
+      "identity": "老陶缺口刀/磨慈字；桓琰白扇紅梅/青泥",
+      "states": "刀2轉司膳，3露慈；扇36落；泥23和36才出",
+      "ownership": "來源角色只在規定集入鏡，匿名跑腿不新增聲線",
+      "insert_rules": "手縮圍裙只E1開場一次/E3指認，不每鏡重演",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    }
+  ],
+  "episodes": [
+    {
+      "episode": 1,
+      "title": "第三口",
+      "characters": [
+        "hanzhang",
+        "yanhou",
+        "yuanji",
+        "laotao"
+      ],
+      "locations": [
+        "zichen-hall"
+      ],
+      "hero_shot": {
+        "action": "第三口吞→報慈寧→匙落→太后收",
+        "camera": "銀匙ECU、反應反打",
+        "sound": "匙落清晰，老陶無新增獨白"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：預告重播/吞後閉嘴誤讀",
+          "solution": "首30秒與正文第二次問答用不同反應鏡；已報廚房"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "預告落匙與動畫動態交付",
+          "solution": "開場末段保持銀匙落下、回彈與衣角微動，接觸落地的那一格作精準硬切點，立刻切回開席正文；原稿「定格」保留其段落標點功能，不複製影格延長，不靠 freeze 填滿秒數。若來源金屬接觸已在前一鏡，後鏡接回彈／停穩並縮短，仍 0–30 秒連續。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yuanji-base",
+        "yanhou-base",
+        "laotao-base"
+      ],
+      "prop_checks": [
+        "葉匙",
+        "魚羹",
+        "手爐",
+        "三摺帕"
+      ],
+      "voice_notes": [
+        "匙落清晰，老陶無新增獨白",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集葉匙、魚羹、手爐、三摺帕涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:338",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 2,
+      "title": "解毒湯",
+      "characters": [
+        "hanzhang",
+        "liugugu",
+        "yuanji"
+      ],
+      "locations": [
+        "kitchen"
+      ],
+      "hero_shot": {
+        "action": "溫木勺→刀柄新磨→銀賞退回",
+        "camera": "廚房左灶固定軸",
+        "sound": "木勺刮鍋與銀落桌"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：原葉匙已被收仍掛腰",
+          "solution": "只圓備匙，刀有新磨但未全露慈字"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yuanji-base",
+        "liugugu-base"
+      ],
+      "prop_checks": [
+        "木勺",
+        "缺口菜刀",
+        "備圓匙"
+      ],
+      "voice_notes": [
+        "木勺刮鍋與銀落桌",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集木勺、缺口菜刀、備圓匙涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:364",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 3,
+      "title": "手",
+      "characters": [
+        "hanzhang",
+        "laotao",
+        "liugugu",
+        "yuansheng"
+      ],
+      "locations": [
+        "kitchen",
+        "study"
+      ],
+      "hero_shot": {
+        "action": "三魚盤辨刀痕→押老陶→墨茶",
+        "camera": "俯視三盤位置先定",
+        "sound": "陶聲油滑至抖，刀放台"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：食物形變阻破案",
+          "solution": "三盘独立贴图/形状，刀痕ECU定格不可拖时"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yuansheng-base",
+        "liugugu-base",
+        "laotao-base"
+      ],
+      "prop_checks": [
+        "三盤",
+        "刀慈半字",
+        "名冊線索"
+      ],
+      "voice_notes": [
+        "陶聲油滑至抖，刀放台",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集三盤、刀慈半字、名冊線索涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:390",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 4,
+      "title": "廚房的孩子",
+      "characters": [
+        "hanzhang",
+        "liugugu"
+      ],
+      "locations": [
+        "kitchen"
+      ],
+      "hero_shot": {
+        "action": "蒸汽旧味→懿旨→空碗",
+        "camera": "蒸汽遮切梦手/现实",
+        "sound": "汤气声，不复制其他作配乐"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：梦里新增儿童脸/配音",
+          "solution": "只手碗，无儿童；旨由旁白"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "liugugu-base"
+      ],
+      "prop_checks": [
+        "木勺夢手",
+        "碗",
+        "懿旨"
+      ],
+      "voice_notes": [
+        "汤气声，不复制其他作配乐",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集木勺夢手、碗、懿旨涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:416",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 5,
+      "title": "攝政王",
+      "characters": [
+        "hanzhang",
+        "huanqi",
+        "yuansheng",
+        "liugugu"
+      ],
+      "locations": [
+        "zichen-hall"
+      ],
+      "hero_shot": {
+        "action": "七口→攝政三敲→帝三摺帕",
+        "camera": "嘴/手/桌三镜",
+        "sound": "三敲前后不再加三连打击乐"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：敲击暗号與数口混",
+          "solution": "七口剪摘要，三敲保持真次数，帕另清楚"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "huanqi-base",
+        "yuansheng-base",
+        "liugugu-base"
+      ],
+      "prop_checks": [
+        "七口",
+        "扳指",
+        "三摺帕"
+      ],
+      "voice_notes": [
+        "三敲前后不再加三连打击乐",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集七口、扳指、三摺帕涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:442",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 6,
+      "title": "慈寧宮",
+      "characters": [
+        "hanzhang",
+        "yanhou",
+        "yanjue"
+      ],
+      "locations": [
+        "cining-kitchen"
+      ],
+      "hero_shot": {
+        "action": "老陶死訊→缺刀手法→守門決定",
+        "camera": "空案與含章反應",
+        "sound": "吞气、灶火，死亡不恐怖爆点"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：新尸体/狱卒声",
+          "solution": "死在画外，旁白转述，不加尸体特写"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yanhou-base",
+        "yanjue-base"
+      ],
+      "prop_checks": [
+        "刀",
+        "转述卷"
+      ],
+      "voice_notes": [
+        "吞气、灶火，死亡不恐怖爆点",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集刀、转述卷涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:468",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 7,
+      "title": "第一口",
+      "characters": [
+        "hanzhang",
+        "yuanji"
+      ],
+      "locations": [
+        "mingluan-palace"
+      ],
+      "hero_shot": {
+        "action": "第一勺/第二碗→留瓷瓶",
+        "camera": "碗固定编号俯视",
+        "sound": "勺碰不同碗的瓷声"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：深度/碗身份混",
+          "solution": "先全景确立，勺走表/底分镜；无毒光晕"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yuanji-base"
+      ],
+      "prop_checks": [
+        "兩碗",
+        "湯面與底",
+        "留樣瓶"
+      ],
+      "voice_notes": [
+        "勺碰不同碗的瓷声",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集兩碗、湯面與底、留樣瓶涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:328",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 8,
+      "title": "舊人",
+      "characters": [
+        "hanzhang",
+        "liugugu",
+        "yuansheng",
+        "yanhou"
+      ],
+      "locations": [
+        "kitchen",
+        "study"
+      ],
+      "hero_shot": {
+        "action": "淑香囊入磚→公開訓斥→私助",
+        "camera": "灶边手细节到殿上",
+        "sound": "公开帝声弱但稳，私下更近"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：柳姑姑冷宮扩第三景",
+          "solution": "冷宫只旁白；不新增宫人声"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yanhou-base",
+        "yuansheng-base",
+        "liugugu-base"
+      ],
+      "prop_checks": [
+        "淑字香囊",
+        "磚縫"
+      ],
+      "voice_notes": [
+        "公开帝声弱但稳，私下更近",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集淑字香囊、磚縫涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:520",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 9,
+      "title": "墨",
+      "characters": [
+        "hanzhang",
+        "peike",
+        "yuansheng"
+      ],
+      "locations": [
+        "study"
+      ],
+      "hero_shot": {
+        "action": "名冊塗字刮開→塞袖→門響",
+        "camera": "纸与袖接手镜",
+        "sound": "刮纸细声到门压响"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：可读隐藏字生成错误",
+          "solution": "人工字图；藏物先后分拍，太后此集不赐汤"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yuansheng-base",
+        "peike-base"
+      ],
+      "prop_checks": [
+        "12年名冊",
+        "墨",
+        "杯"
+      ],
+      "voice_notes": [
+        "刮纸细声到门压响",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集12年名冊、墨、杯涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:546",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 10,
+      "title": "借刀",
+      "characters": [
+        "hanzhang",
+        "yanhou",
+        "yuanji",
+        "yuansheng"
+      ],
+      "locations": [
+        "zichen-hall"
+      ],
+      "hero_shot": {
+        "action": "公主站到身前→落匙无人捡",
+        "camera": "两人站位侧面，不跨皇家轴",
+        "sound": "站起衣料，匙落后停"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：加摄政在席打破不来",
+          "solution": "摄政称病不入场；叶匙不可回手"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yuanji-base",
+        "yanhou-base",
+        "yuansheng-base"
+      ],
+      "prop_checks": [
+        "圓匙",
+        "手爐",
+        "魚羹"
+      ],
+      "voice_notes": [
+        "站起衣料，匙落后停",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集圓匙、手爐、魚羹涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:572",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 11,
+      "title": "名冊",
+      "characters": [
+        "hanzhang",
+        "liugugu",
+        "huanyan",
+        "yuanji"
+      ],
+      "locations": [
+        "ledger-vault",
+        "mingluan-palace"
+      ],
+      "hero_shot": {
+        "action": "兩本簿→十二禮盤→紅梅白扇",
+        "camera": "礼盘远景/簿特写",
+        "sound": "礼器底音，桓琰敬酒式亮声"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：两本书混與12盘重复幻灯",
+          "solution": "书封形制分开；搬盘动作持续，选代表3盘"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yuanji-base",
+        "liugugu-base",
+        "huanyan-base"
+      ],
+      "prop_checks": [
+        "皇籍/膳簿",
+        "白扇紅梅"
+      ],
+      "voice_notes": [
+        "礼器底音，桓琰敬酒式亮声",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集皇籍/膳簿、白扇紅梅涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:611",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 12,
+      "title": "遺詔的味道",
+      "characters": [
+        "hanzhang",
+        "yuansheng",
+        "yuanji"
+      ],
+      "locations": [
+        "ledger-vault"
+      ],
+      "hero_shot": {
+        "action": "書架左第三格→字跡→爐交含章",
+        "camera": "书架全景定位后交手",
+        "sound": "炉壳轻碰，帝长姐稳声未到21不加"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：公主与含章同时持爐",
+          "solution": "交出/接住/空手三镜；只一个资产"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yuanji-base",
+        "yuanji-warmer-away",
+        "yuansheng-base"
+      ],
+      "prop_checks": [
+        "名冊",
+        "白玉爐"
+      ],
+      "voice_notes": [
+        "炉壳轻碰，帝长姐稳声未到21不加",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集名冊、白玉爐涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:637",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 13,
+      "title": "提親",
+      "characters": [
+        "hanzhang",
+        "huanqi",
+        "yuanji",
+        "huanyan"
+      ],
+      "locations": [
+        "zichen-hall",
+        "kitchen"
+      ],
+      "hero_shot": {
+        "action": "酒杯倒扣→三敲→掌心掐",
+        "camera": "宴席侧轴，杯先倒扣",
+        "sound": "三敲低沉，含章呼吸克制"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：政治圈套拍成醉态/爐未還",
+          "solution": "E13开席前明确爐放回；无人醉倒，帝仅帕和咳"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yuanji-base",
+        "yuanji-warmer-away",
+        "huanqi-base",
+        "huanyan-base"
+      ],
+      "prop_checks": [
+        "藥酒",
+        "爐回膝",
+        "三敲"
+      ],
+      "voice_notes": [
+        "三敲低沉，含章呼吸克制",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集藥酒、爐回膝、三敲涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:663",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 14,
+      "title": "苦湯",
+      "characters": [
+        "hanzhang",
+        "liugugu",
+        "peike"
+      ],
+      "locations": [
+        "kitchen"
+      ],
+      "hero_shot": {
+        "action": "旧苦湯記憶→無害瓶→久服舌利",
+        "camera": "瓶列与残方独立ECU",
+        "sound": "闻汤停顿，梦只手碗"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：提早说忘忧/配方全露",
+          "solution": "只读久服舌利，不显示方名或剂量"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "liugugu-base",
+        "peike-base"
+      ],
+      "prop_checks": [
+        "小瓶样本",
+        "撕名殘方"
+      ],
+      "voice_notes": [
+        "闻汤停顿，梦只手碗",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集小瓶样本、撕名殘方涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:689",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 15,
+      "title": "禁衛司",
+      "characters": [
+        "hanzhang",
+        "yanjue",
+        "liugugu"
+      ],
+      "locations": [
+        "kitchen"
+      ],
+      "hero_shot": {
+        "action": "刀半出鞘→放了她口諭→泥靴",
+        "camera": "刀柄至门口靴，不多人",
+        "sound": "金属一短擦，泥步湿"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：皇帝不在但新增本嗓",
+          "solution": "口谕旁白，帝不入镜；拔刀只半段"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yanjue-base",
+        "liugugu-base"
+      ],
+      "prop_checks": [
+        "刀",
+        "靴跟泥"
+      ],
+      "voice_notes": [
+        "金属一短擦，泥步湿",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集刀、靴跟泥涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:715",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 16,
+      "title": "十二條墨",
+      "characters": [
+        "hanzhang",
+        "yuansheng",
+        "peike",
+        "yanhou"
+      ],
+      "locations": [
+        "study",
+        "cining-kitchen"
+      ],
+      "hero_shot": {
+        "action": "十二墨試甜→太后搜走名冊→司膳院上鎖门局部收到紙；不把紙條門接成御書房門",
+        "camera": "桌俯视，门插镜独立",
+        "sound": "轻咳/墨沾声，纸塞门"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：三场/12条全在一镜",
+          "solution": "3代表味道+完整12格，门缝属司膳院；无柳脸声"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "紙條門與下一集室內空間",
+          "solution": "E16 結尾僅拍司膳院上鎖門的紙與手，照 source.continuity_notes 保留為局部插鏡，不把它做成御書房門或另開大廚房全景。E17 用夜色／爐邊雙人建立鏡明確重建司膳院室內；柳姑姑進入的過程省略，來源沒有禁止掌膳進出，無需加破鎖、逃禁或守兵放行台詞。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yanhou-base",
+        "yuansheng-base",
+        "peike-base"
+      ],
+      "prop_checks": [
+        "12墨條",
+        "三摺帕入袖",
+        "名冊搜"
+      ],
+      "voice_notes": [
+        "轻咳/墨沾声，纸塞门",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集12墨條、三摺帕入袖、名冊搜涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:741",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 17,
+      "title": "淑妃",
+      "characters": [
+        "hanzhang",
+        "liugugu"
+      ],
+      "locations": [
+        "kitchen"
+      ],
+      "hero_shot": {
+        "action": "夜色後以司膳院爐邊雙人鏡重建室內→香囊→皇長女玉牌交還；柳入室省略",
+        "camera": "内室两人短轴/门外只影",
+        "sound": "母亲话题声音断一下"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：柳进门过程缺/童年具象化",
+          "solution": "入门桥接待定；历史只布/物不新增孩童戏"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "紙條門與下一集室內空間",
+          "solution": "E16 結尾僅拍司膳院上鎖門的紙與手，照 source.continuity_notes 保留為局部插鏡，不把它做成御書房門或另開大廚房全景。E17 用夜色／爐邊雙人建立鏡明確重建司膳院室內；柳姑姑進入的過程省略，來源沒有禁止掌膳進出，無需加破鎖、逃禁或守兵放行台詞。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "liugugu-base"
+      ],
+      "prop_checks": [
+        "皇長女玉牌",
+        "布"
+      ],
+      "voice_notes": [
+        "母亲话题声音断一下",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集皇長女玉牌、布涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:767",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 18,
+      "title": "換湯的人",
+      "characters": [
+        "hanzhang",
+        "yanhou",
+        "liugugu",
+        "peike"
+      ],
+      "locations": [
+        "kitchen",
+        "cining-kitchen"
+      ],
+      "hero_shot": {
+        "action": "新苦湯入口→留底沉渣→押柳",
+        "camera": "碗/含章反應/门外三切",
+        "sound": "吞咽费力、碗底轻刮"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：一碗立即失忆/药名提前",
+          "solution": "不画瞬失记忆；只证明非解毒，不叫忘忧"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yanhou-base",
+        "liugugu-base",
+        "peike-base"
+      ],
+      "prop_checks": [
+        "真苦湯",
+        "沉渣"
+      ],
+      "voice_notes": [
+        "吞咽费力、碗底轻刮",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集真苦湯、沉渣涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:793",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 19,
+      "title": "第八口",
+      "characters": [
+        "hanzhang",
+        "peike"
+      ],
+      "locations": [
+        "spring-well"
+      ],
+      "hero_shot": {
+        "action": "第八次水→第三石新泥→桓燈",
+        "camera": "水渠长轴，石序号清晰",
+        "sound": "滴水由远近，灯船桨声"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：水道第三石混井第七",
+          "solution": "环境资产不同；不讲可实作投毒路线"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "peike-base"
+      ],
+      "prop_checks": [
+        "水樣瓶",
+        "第三石",
+        "桓字灯"
+      ],
+      "voice_notes": [
+        "滴水由远近，灯船桨声",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集水樣瓶、第三石、桓字灯涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:819",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 20,
+      "title": "第二碗",
+      "characters": [
+        "hanzhang",
+        "yuanji"
+      ],
+      "locations": [
+        "mingluan-palace"
+      ],
+      "hero_shot": {
+        "action": "第二碗未喝→公主放爐→湯名揭",
+        "camera": "几上物件平面图",
+        "sound": "公主尾音弱，名字只此集首说"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：公主凭空拿折扇/匙仍在腰",
+          "solution": "爐先放旁，折扇可在旁但不拿；圆匙留下"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yuanji-base"
+      ],
+      "prop_checks": [
+        "圓匙置几",
+        "白玉爐",
+        "第二碗"
+      ],
+      "voice_notes": [
+        "公主尾音弱，名字只此集首说",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集圓匙置几、白玉爐、第二碗涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:845",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 21,
+      "title": "灶灰",
+      "characters": [
+        "hanzhang",
+        "yuansheng"
+      ],
+      "locations": [
+        "study",
+        "kitchen"
+      ],
+      "hero_shot": {
+        "action": "帝長姐→三摺帕接回→灰中簿",
+        "camera": "帕掉/折/还与出簿分镜",
+        "sound": "帕布细声，炉灰落地"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：翻簿库添第三场与人物",
+          "solution": "库查找仅旁白；后半在厨房取灰"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yuansheng-base"
+      ],
+      "prop_checks": [
+        "三摺帕",
+        "灰封膳簿"
+      ],
+      "voice_notes": [
+        "帕布细声，炉灰落地",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集三摺帕、灰封膳簿涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:885",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 22,
+      "title": "舊人的證詞",
+      "characters": [
+        "hanzhang",
+        "yanhou",
+        "liugugu",
+        "yanjue"
+      ],
+      "locations": [
+        "cell",
+        "cining-kitchen"
+      ],
+      "hero_shot": {
+        "action": "八菜56口摘要→第六味停→证词",
+        "camera": "桌面选3代表盘，味觉反应串",
+        "sound": "吞咽留间隔，配乐不每口升调"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：56个口部重复拖慢",
+          "solution": "原情节计数保留，关键6th停住，疲劳逐增"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yanhou-base",
+        "yanjue-base",
+        "liugugu-base"
+      ],
+      "prop_checks": [
+        "8盘",
+        "56计数",
+        "太后墨"
+      ],
+      "voice_notes": [
+        "吞咽留间隔，配乐不每口升调",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集8盘、56计数、太后墨涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:911",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 23,
+      "title": "密碼",
+      "characters": [
+        "hanzhang",
+        "liugugu",
+        "huanqi",
+        "huanyan"
+      ],
+      "locations": [
+        "ledger-vault"
+      ],
+      "hero_shot": {
+        "action": "簿庫拆封皮讀菜名→省略畫外製作→四碟成菜逐一驗味→王奪簿；庫內不加灶",
+        "camera": "书与餐具旁侧，抢前建出口",
+        "sound": "木勺落地、书布划声"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：库房突然有灶/多人抢乱",
+          "solution": "食物预制携入待确认；勺离手后不回手"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "烹調／視線／搬移被誤畫成空間矛盾",
+          "solution": "E23 封皮菜名→四只盛菜碟的省略時間跳接：製作發生畫外，畫面只在簿庫驗味，不憑空加灶或宣稱即席生菜變熟；含章與柳姑姑既有烹調能力即可成立。E31 牢內視線向御書房方向，燈作含章主觀記憶的孤立近鏡，不給穿牆／穿地的客觀連續視線，不另建立御書房全景；回到獄門柳姑姑影子收尾。E35 殿側睡著→E36 御書房床邊重新建立場景，以普通時間省略表示畫外搬移，不拍瞬移、不新增運送事件或對白。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "huanqi-base",
+        "liugugu-base",
+        "huanyan-base"
+      ],
+      "prop_checks": [
+        "膳簿",
+        "木勺",
+        "白扇",
+        "青泥"
+      ],
+      "voice_notes": [
+        "木勺落地、书布划声",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集膳簿、木勺、白扇、青泥涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:937",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 24,
+      "title": "墨莊",
+      "characters": [
+        "hanzhang",
+        "yuansheng",
+        "huanqi",
+        "yanhou"
+      ],
+      "locations": [
+        "zichen-hall"
+      ],
+      "hero_shot": {
+        "action": "三箱雲墨→念珠斷→一珠被拾",
+        "camera": "殿门轴，珠滚低机位",
+        "sound": "珠落分散，摄政本集不敲"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：搬箱两具名多入镜",
+          "solution": "背影手搬无声；只紫宸殿，无墨庄场"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yanhou-base",
+        "yanhou-beads-broken",
+        "huanqi-base",
+        "yuansheng-base"
+      ],
+      "prop_checks": [
+        "3箱墨",
+        "斷珠"
+      ],
+      "voice_notes": [
+        "珠落分散，摄政本集不敲",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集3箱墨、斷珠涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:963",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 25,
+      "title": "不信任",
+      "characters": [
+        "hanzhang",
+        "yuansheng",
+        "yanhou",
+        "huanyan"
+      ],
+      "locations": [
+        "zichen-hall"
+      ],
+      "hero_shot": {
+        "action": "罪證名冊→一摺帕→井字紙",
+        "camera": "帝手特写/纸交接",
+        "sound": "纸轻折，宫人旁白转述"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：基准三摺掩盖演戏",
+          "solution": "一摺明确可数，摄政只朝臣远影不脸声"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yanhou-base",
+        "yanhou-beads-broken",
+        "yuansheng-base",
+        "yuansheng-onefold",
+        "huanyan-base"
+      ],
+      "prop_checks": [
+        "重串珠",
+        "1摺帕",
+        "井紙"
+      ],
+      "voice_notes": [
+        "纸轻折，宫人旁白转述",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集重串珠、1摺帕、井紙涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:990",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 26,
+      "title": "聯姻與棋",
+      "characters": [
+        "hanzhang",
+        "yuanji",
+        "huanqi",
+        "yanhou"
+      ],
+      "locations": [
+        "zichen-hall",
+        "kitchen"
+      ],
+      "hero_shot": {
+        "action": "殿外聽附議→三敲廊柱→封門",
+        "camera": "主角殿外视点，殿内远影",
+        "sound": "三敲距离感，隔门语音模糊不可辨新词"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：新增皇帝/朝臣多嘴",
+          "solution": "帝不脸声，群众动作由旁白；宫门拦人不另景"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yuanji-base",
+        "yanhou-base",
+        "huanqi-base"
+      ],
+      "prop_checks": [
+        "門",
+        "柱",
+        "扳指"
+      ],
+      "voice_notes": [
+        "三敲距离感，隔门语音模糊不可辨新词",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集門、柱、扳指涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1016",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 27,
+      "title": "選第二次",
+      "characters": [
+        "hanzhang",
+        "yanjue"
+      ],
+      "locations": [
+        "kitchen"
+      ],
+      "hero_shot": {
+        "action": "半虎符桌→讀密函→試淨水掩口",
+        "camera": "洗碗桌两人，水样单插",
+        "sound": "吐气扶灶，半符落木"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：角色边站变立即到处自由",
+          "solution": "含章不进慈宁；严决仍按旧命守门，药在画外"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yanjue-base"
+      ],
+      "prop_checks": [
+        "半虎符",
+        "密函",
+        "濃淨水"
+      ],
+      "voice_notes": [
+        "吐气扶灶，半符落木",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集半虎符、密函、濃淨水涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1042",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 28,
+      "title": "玄泉井",
+      "characters": [
+        "hanzhang",
+        "peike",
+        "yanjue",
+        "yanhou"
+      ],
+      "locations": [
+        "spring-well",
+        "zichen-hall"
+      ],
+      "hero_shot": {
+        "action": "第三石包→認罪狀→新硯初用",
+        "camera": "物证桌和井渠分场",
+        "sound": "湿包滴水，字卷展声"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：无cast帝摄政近脸/投毒过程",
+          "solution": "帝只手/背；药包取证无投毒教学"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yanhou-base",
+        "yanjue-base",
+        "peike-base"
+      ],
+      "prop_checks": [
+        "藥包",
+        "口供",
+        "新硯"
+      ],
+      "voice_notes": [
+        "湿包滴水，字卷展声",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集藥包、口供、新硯涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1068",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 29,
+      "title": "對質",
+      "characters": [
+        "hanzhang",
+        "yanhou",
+        "huanqi",
+        "yuansheng"
+      ],
+      "locations": [
+        "zichen-hall"
+      ],
+      "hero_shot": {
+        "action": "墨/苦湯/水三杯→手抖→殿門閉",
+        "camera": "桌面三杯固定位置再反应",
+        "sound": "杯缘震动，声音轻不神奇识毒"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：同日多毒完全无后果",
+          "solution": "颤抖累积；严决只有刀柄/背影无新声"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yanhou-base",
+        "huanqi-base",
+        "yuansheng-base"
+      ],
+      "prop_checks": [
+        "三杯",
+        "刀柄背影"
+      ],
+      "voice_notes": [
+        "杯缘震动，声音轻不神奇识毒",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集三杯、刀柄背影涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1095",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 30,
+      "title": "同一刻",
+      "characters": [
+        "hanzhang",
+        "yanjue",
+        "yanhou",
+        "yuansheng"
+      ],
+      "locations": [
+        "zichen-hall"
+      ],
+      "hero_shot": {
+        "action": "虎符合→门封→帝倒→硯",
+        "camera": "一动作一镜，回主轴",
+        "sound": "三敲源门外，与倒下音分离"
+      },
+      "risk_controls": [
+        {
+          "risk": "最高：五动作塞8秒/摄政多加脸",
+          "solution": "拼5段动作片；摄政三敲只画外，帕不得仍在手"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yanhou-base",
+        "yuansheng-base",
+        "yuansheng-unfolded",
+        "yanjue-base"
+      ],
+      "prop_checks": [
+        "整虎符",
+        "无摺落地帕",
+        "硯"
+      ],
+      "voice_notes": [
+        "三敲源门外，与倒下音分离",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集整虎符、无摺落地帕、硯涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1122",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 31,
+      "title": "遺詔",
+      "characters": [
+        "hanzhang",
+        "liugugu",
+        "yuanji",
+        "yanhou"
+      ],
+      "locations": [
+        "kitchen",
+        "cell"
+      ],
+      "hero_shot": {
+        "action": "十六味讀遺詔→公主提示小廚水→內獄交易；燈只作孤立的主觀記憶插鏡，不穿地直視",
+        "camera": "书案/牢门/院外分景",
+        "sound": "书页，牢门铁声到夜风"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：地牢直看御書房灯",
+          "solution": "出门视线桥接待定，不能透墙光"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "烹調／視線／搬移被誤畫成空間矛盾",
+          "solution": "E23 封皮菜名→四只盛菜碟的省略時間跳接：製作發生畫外，畫面只在簿庫驗味，不憑空加灶或宣稱即席生菜變熟；含章與柳姑姑既有烹調能力即可成立。E31 牢內視線向御書房方向，燈作含章主觀記憶的孤立近鏡，不給穿牆／穿地的客觀連續視線，不另建立御書房全景；回到獄門柳姑姑影子收尾。E35 殿側睡著→E36 御書房床邊重新建立場景，以普通時間省略表示畫外搬移，不拍瞬移、不新增運送事件或對白。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yuanji-base",
+        "yanhou-base",
+        "liugugu-base"
+      ],
+      "prop_checks": [
+        "16菜",
+        "遺詔硬紙"
+      ],
+      "voice_notes": [
+        "书页，牢门铁声到夜风",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集16菜、遺詔硬紙涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1161",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 32,
+      "title": "璽",
+      "characters": [
+        "hanzhang",
+        "yanjue",
+        "yanhou"
+      ],
+      "locations": [
+        "cining-kitchen",
+        "cell"
+      ],
+      "hero_shot": {
+        "action": "井第七石→落璽匣→火中抱匣",
+        "camera": "井口俯视/绳/双手分拍",
+        "sound": "绳绷/木匣/火衣声"
+      },
+      "risk_controls": [
+        {
+          "risk": "最高：手和盒穿模/非同井",
+          "solution": "青石小井独立图；绳持点标清；不一镜全落全接"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yanhou-base",
+        "yanjue-base"
+      ],
+      "prop_checks": [
+        "繩",
+        "第7石",
+        "璽匣"
+      ],
+      "voice_notes": [
+        "绳绷/木匣/火衣声",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集繩、第7石、璽匣涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1187",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 33,
+      "title": "第八口的規矩",
+      "characters": [
+        "hanzhang",
+        "peike",
+        "huanqi",
+        "yanjue"
+      ],
+      "locations": [
+        "spring-well",
+        "cell"
+      ],
+      "hero_shot": {
+        "action": "兩毒不同比→三敲鐵格→硯底鳴鸞",
+        "camera": "证据桌/牢格反打",
+        "sound": "牢响短，裴快而字清"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：舌能识谎超能力",
+          "solution": "只比物证，摄政最后三敲不变信号"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "huanqi-base",
+        "yanjue-base",
+        "peike-base"
+      ],
+      "prop_checks": [
+        "两样粉",
+        "新硯",
+        "铁格"
+      ],
+      "voice_notes": [
+        "牢响短，裴快而字清",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集两样粉、新硯、铁格涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1213",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 34,
+      "title": "最後一劑",
+      "characters": [
+        "hanzhang",
+        "yuanji",
+        "peike"
+      ],
+      "locations": [
+        "mingluan-palace",
+        "study"
+      ],
+      "hero_shot": {
+        "action": "送前三日/收前兩日→重膠→謝語",
+        "camera": "两账同桌俯视，字可读",
+        "sound": "纸翻后公主轻谢"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：靠舌辨胶确切日期",
+          "solution": "日期来自两本账，胶只发现新；口型不给画外帝声"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yuanji-base",
+        "peike-base"
+      ],
+      "prop_checks": [
+        "出帳",
+        "收帳",
+        "硯膠",
+        "爐放旁"
+      ],
+      "voice_notes": [
+        "纸翻后公主轻谢",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集出帳、收帳、硯膠、爐放旁涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1239",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 35,
+      "title": "七個字",
+      "characters": [
+        "hanzhang",
+        "yuansheng",
+        "yanjue",
+        "yanhou"
+      ],
+      "locations": [
+        "zichen-hall",
+        "cell"
+      ],
+      "hero_shot": {
+        "action": "皇帝上殿改口諭→殿側屏後寫字睡著；留時間省略供下一集搬回御書房",
+        "camera": "殿中至屏影，不轉成书房",
+        "sound": "呼吸保留，仪式底声停"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：35/36地点切换不明",
+          "solution": "转移桥接待定；皇帝未死，别用临终乐"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "烹調／視線／搬移被誤畫成空間矛盾",
+          "solution": "E23 封皮菜名→四只盛菜碟的省略時間跳接：製作發生畫外，畫面只在簿庫驗味，不憑空加灶或宣稱即席生菜變熟；含章與柳姑姑既有烹調能力即可成立。E31 牢內視線向御書房方向，燈作含章主觀記憶的孤立近鏡，不給穿牆／穿地的客觀連續視線，不另建立御書房全景；回到獄門柳姑姑影子收尾。E35 殿側睡著→E36 御書房床邊重新建立場景，以普通時間省略表示畫外搬移，不拍瞬移、不新增運送事件或對白。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yanhou-base",
+        "yuansheng-base",
+        "yuansheng-unfolded",
+        "yanjue-base"
+      ],
+      "prop_checks": [
+        "膝上帕",
+        "虎符仍嚴決身"
+      ],
+      "voice_notes": [
+        "呼吸保留，仪式底声停",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集膝上帕、虎符仍嚴決身涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1265",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 36,
+      "title": "解砂之方",
+      "characters": [
+        "hanzhang",
+        "peike",
+        "huanyan",
+        "yanjue"
+      ],
+      "locations": [
+        "study",
+        "zichen-hall"
+      ],
+      "hero_shot": {
+        "action": "御書房床邊建立鏡確認畫外搬移→試藥找藥引→紫宸殿驗青泥",
+        "camera": "药盘/颤手/靴/扇4镜",
+        "sound": "扇落清楚，含章句短费力"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：抗毒无代价/桓仍持扇",
+          "solution": "3毒代价留时；跪后空手，帝只昏迷远影"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "烹調／視線／搬移被誤畫成空間矛盾",
+          "solution": "E23 封皮菜名→四只盛菜碟的省略時間跳接：製作發生畫外，畫面只在簿庫驗味，不憑空加灶或宣稱即席生菜變熟；含章與柳姑姑既有烹調能力即可成立。E31 牢內視線向御書房方向，燈作含章主觀記憶的孤立近鏡，不給穿牆／穿地的客觀連續視線，不另建立御書房全景；回到獄門柳姑姑影子收尾。E35 殿側睡著→E36 御書房床邊重新建立場景，以普通時間省略表示畫外搬移，不拍瞬移、不新增運送事件或對白。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yanjue-base",
+        "peike-base",
+        "huanyan-base",
+        "huanyan-fan-dropped"
+      ],
+      "prop_checks": [
+        "12味",
+        "3毒",
+        "青泥",
+        "白扇"
+      ],
+      "voice_notes": [
+        "扇落清楚，含章句短费力",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集12味、3毒、青泥、白扇涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1291",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 37,
+      "title": "以味為字",
+      "characters": [
+        "hanzhang",
+        "liugugu",
+        "yuanji",
+        "yanhou"
+      ],
+      "locations": [
+        "zichen-hall",
+        "cell"
+      ],
+      "hero_shot": {
+        "action": "讀遺詔→公主雙手匣→璽印→囚太后",
+        "camera": "每镜≤3演员，封条印特写",
+        "sound": "宣读音乐duck，印盖一声"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：公主同时手爐/匣",
+          "solution": "双手只匣；交严决若无cast用物/旁白不露脸"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yuanji-base",
+        "yuanji-warmer-away",
+        "yanhou-base",
+        "liugugu-base"
+      ],
+      "prop_checks": [
+        "璽匣",
+        "遺詔",
+        "太后断簪"
+      ],
+      "voice_notes": [
+        "宣读音乐duck，印盖一声",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集璽匣、遺詔、太后断簪涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1317",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 38,
+      "title": "太后的最後一口",
+      "characters": [
+        "hanzhang",
+        "yanhou",
+        "liugugu"
+      ],
+      "locations": [
+        "cell"
+      ],
+      "hero_shot": {
+        "action": "葉匙與雞湯→七口→珠留空碗",
+        "camera": "鐵格两侧手轴",
+        "sound": "太后慢聲破气，匙碰碗轻"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：匙归还不演/珠仍手上",
+          "solution": "推碗并匙有镜；最后珠留外，手空"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yanhou-base",
+        "yanhou-beads-left",
+        "liugugu-base"
+      ],
+      "prop_checks": [
+        "原葉匙",
+        "雞湯",
+        "念珠"
+      ],
+      "voice_notes": [
+        "太后慢聲破气，匙碰碗轻",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集原葉匙、雞湯、念珠涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1344",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 39,
+      "title": "那一箭",
+      "characters": [
+        "hanzhang",
+        "yuanji",
+        "yanjue"
+      ],
+      "locations": [
+        "round-mound"
+      ],
+      "hero_shot": {
+        "action": "箭來→推開→爐碎→跪→背下九階",
+        "camera": "树林/壇侧地图先定，接触遮",
+        "sound": "弦一响、玉碎，两声不要齐爆"
+      },
+      "risk_controls": [
+        {
+          "risk": "最高：箭伤/九階/多人连动",
+          "solution": "5动作镜；不拍伤口，左肩一贯；预典礼夜非白天登基"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "yuanji-base",
+        "yuanji-injured",
+        "yanjue-base"
+      ],
+      "prop_checks": [
+        "白玉爐兩半",
+        "左肩布",
+        "火把"
+      ],
+      "voice_notes": [
+        "弦一响、玉碎，两声不要齐爆",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集白玉爐兩半、左肩布、火把涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1370",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    },
+    {
+      "episode": 40,
+      "title": "葉形銀匙",
+      "characters": [
+        "hanzhang",
+        "yuanji",
+        "liugugu",
+        "yuansheng"
+      ],
+      "locations": [
+        "zichen-hall",
+        "ledger-vault"
+      ],
+      "hero_shot": {
+        "action": "原灰袍加帝袍→第一口自嘗→葉匙入簿",
+        "camera": "紫宸殿主轴，圆丘不摆龙椅",
+        "sound": "仪式乐退让废嘗使旨意，匙入簿轻声"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：公主无伤持爐/退位帝仍主位",
+          "solution": "公主空手端菜，帝退位帕膝上；桓琰流放只旁白"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "hanzhang-base",
+        "hanzhang-coronation",
+        "yuanji-base",
+        "yuanji-injured",
+        "yuansheng-base",
+        "yuansheng-unfolded",
+        "yuansheng-retired",
+        "liugugu-base"
+      ],
+      "prop_checks": [
+        "帝袍",
+        "左肩布",
+        "無爐",
+        "葉匙"
+      ],
+      "voice_notes": [
+        "仪式乐退让废嘗使旨意，匙入簿轻声",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集帝袍、左肩布、無爐、葉匙涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1396",
+        "docs/videos/series-plans/claude-binge-five-20260928/taste-of-the-throne/source.mjs:1450"
+      ]
+    }
+  ],
+  "audio_plan": {
+    "motifs": [
+      "角色主題限短音型，先寫原創音樂需求；情緒轉折前讓表演先到、配樂後到。不得引用相似影劇旋律。",
+      "關鍵物件有可辨實物音，不用每個線索都上同一聲懸疑撞擊。"
+    ],
+    "perspective": [
+      "對白、旁白、Foley、環境、音樂分軌；shot間保留房間底聲，轉主觀聲時要有明確視點。",
+      "畫外具名台詞也須列入本集characters；匿名人物只有動作/無可辨詞背景音，消息用來源允許的旁白。"
+    ],
+    "dynamic_rules": [
+      "先測輕聲對白可懂度；配樂在台詞時自動化讓位，不能只把人聲全面拉高。尖銳器物聲/警報不蓋關鍵字。",
+      "左右聲像服務空間；台詞保中心，手機單聲道合併後仍清楚。長停頓保持呼吸/衣料活動，不以freeze延長畫面。",
+      "Veo原片的native audio不直接入正片混音；任何意外人聲/擬配樂須移除。嘴型、FOLEY、字幕時間碼以最終中文字幕版聲軌為基準。"
+    ],
+    "locale_constraints": [
+      "先完成zh-TW台灣國語表演/人名試聽及picture lock；ja/ko/en僅保留設計和詞表，這一輪不自動生成三語。",
+      "四語各有獨立voice track與可關CC；subtitles.burn_in=false。角色、說話者和無障礙聲效提示進CC，不做永久字幕畫在底部。",
+      "劇內證據文字（紙、鐘、介面）是敘事資產，保持清晰並提供對應翻譯詞表/CC；不能因不燒字幕而刪掉證據，也不能把外語翻譯當永久畫面字幕。",
+      "ja/ko/en人名用此表候選音譯，不自動把漢字改日語音讀或韓國本土姓名。稱謂先翻譯語用，保留身份尊卑與熟識距離。",
+      "各語分開錄完整表演、對齊剪輯點；不硬壓縮英文/日文到中文每字同時長。若譯句過長先重寫等義短句或調非關鍵反應鏡，倒數絕不拉長。",
+      "目前所有voice_name沿用source作待試聽候選；不是四語皆有相同音色/口音的保證。母語監聽前禁止標示配音驗收通過。"
+    ]
+  },
+  "acceptance_checks": [
+    "本件是source-bound製作設計，不是video.json、成片驗收、上傳批准或正式站匯入。未呼叫任何付費圖/片/語音生成。",
+    "角色動畫預設高品質動態表演。3–6秒剪成鏡頭可由8秒原片截取；鏡內須見重心、視線、手/衣料/呼吸的意圖變化。靜圖縮放不得假稱動畫。",
+    "當前根代理選定Veo3.1Lite 1080p/24fps/8秒原片；本設計不假設referenceImages或extension可用，也不假設上一片最後一格必能無縫延續。實際供應商契約由共用profile鎖定。",
+    "按character.shot_looks與scene.data.character_looks選定單一完整look；同一episode可列多個候選look，正式每shot必選一個，不把同集所有狀態疊加。外觀狀態不clone新聲線。",
+    "每鏡最多3個具名人物，多人對話先建立全景再單/雙人反打；角色聲音與畫外出場名單都核對。群眾不代替主角表演，背景不得複製主角臉。",
+    "首30秒先做無付費animatic/timecode與臨時讀稿：連續0–30，不擠長旁白。正式zh-TW語音產出後按實際秒數重剪，不把候選時長標成實測。",
+    "關鍵道具文字、數字、日期、簽名以核准文字圖層合成並校對。人物拿取要先有接觸/承重再移動，手與物不可換側、穿模、變件。",
+    "鏡頭切點須比對頭尾角色ID/衣物/手持物/光位/場景軸；8秒素材含多個不相容狀態時拆採不同shot，不以freeze/slow補成長講述。",
+    "同一製作的四語CC要能完全開/關；影片畫素沒有字幕，檢查所有語言/合輯路徑。CC要對齊最終台詞，不把人名當品牌翻譯。",
+    "zh-TW台灣口音、每位角色的正常/低聲/壓力三句必試聽；未來ja/ko/en各由母語聽校。角色年齡、性別呈現、喘氣/哭/唱不能只靠voice名通過。",
+    "最終手機、耳機與單聲道播放檢查台詞、暗部、劇內文字、跳剪、嘴型、字幕開關和聲畫同步；本轮仅文件层检查，没有完成这些媒体检查。"
+  ],
+  "unresolved": [
+    {
+      "issue": "已由設計處理（未 render）：E1預告末定格為明文設計，與本輪禁止靠freeze填時需區分",
+      "why": "開場末段保持銀匙落下、回彈與衣角微動，接觸落地的那一格作精準硬切點，立刻切回開席正文；原稿「定格」保留其段落標點功能，不複製影格延長，不靠 freeze 填滿秒數。若來源金屬接觸已在前一鏡，後鏡接回彈／停穩並縮短，仍 0–30 秒連續。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+      "episode_refs": [
+        1
+      ]
+    },
+    {
+      "issue": "已由設計處理（未 render）：E16結尾門縫與E17入室的空間連接",
+      "why": "E16 結尾僅拍司膳院上鎖門的紙與手，照 source.continuity_notes 保留為局部插鏡，不把它做成御書房門或另開大廚房全景。E17 用夜色／爐邊雙人建立鏡明確重建司膳院室內；柳姑姑進入的過程省略，來源沒有禁止掌膳進出，無需加破鎖、逃禁或守兵放行台詞。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+      "episode_refs": [
+        16,
+        17
+      ]
+    },
+    {
+      "issue": "已由設計處理（未 render）：E23庫房無灶、E31地下監牢看御書房燈、E35屏後到E36書房",
+      "why": "E23 封皮菜名→四只盛菜碟的省略時間跳接：製作發生畫外，畫面只在簿庫驗味，不憑空加灶或宣稱即席生菜變熟；含章與柳姑姑既有烹調能力即可成立。E31 牢內視線向御書房方向，燈作含章主觀記憶的孤立近鏡，不給穿牆／穿地的客觀連續視線，不另建立御書房全景；回到獄門柳姑姑影子收尾。E35 殿側睡著→E36 御書房床邊重新建立場景，以普通時間省略表示畫外搬移，不拍瞬移、不新增運送事件或對白。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+      "episode_refs": [
+        23,
+        31,
+        35,
+        36
+      ]
+    },
+    {
+      "issue": "同題材相似度只被前輪列為未上網核查",
+      "why": "本輪不作法律結論；原創服裝/分鏡/音樂獨立設計，發行前另做實際權利與相似素材核查",
+      "episode_refs": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ]
+}
