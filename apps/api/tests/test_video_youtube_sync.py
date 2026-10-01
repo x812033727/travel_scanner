@@ -26,7 +26,14 @@ from app.video_youtube import sync
 from app.video_youtube.client import YoutubeClient
 from app.video_youtube.errors import Refused
 from app.video_youtube.schemas import PublishIn
-from tests.test_video_youtube import CHANNEL, METADATA, UPLOADED_ID, Site, open_site
+from tests.test_video_youtube import (
+    CHANNEL,
+    ENGLISH_METADATA,
+    METADATA,
+    UPLOADED_ID,
+    Site,
+    open_site,
+)
 
 SLUG = "ai-model-choice"
 STUDIO_ID = "StudioVid01"
@@ -53,17 +60,26 @@ def _entry(role: str, sha: str, body: bytes, content_type: str) -> dict[str, Any
     return {"role": role, "sha256": sha, "size": len(body), "content_type": content_type}
 
 
-async def _package(site: Site, *, youtube_video_id: str | None = None) -> Package:
-    """A video whose upload confirmation is approved, its package in the review store."""
+async def _package(
+    site: Site,
+    *,
+    youtube_video_id: str | None = None,
+    metadata: dict[str, Any] | None = None,
+) -> Package:
+    """A video whose upload confirmation is approved, its package in the review store.
+
+    ``metadata`` replaces the zh-TW narrated ``METADATA`` as the approved metadata.json.
+    """
     store = review_store(site.settings)
     final_sha = _put(store, MP4)
-    metadata = json.dumps({**METADATA, "final_sha256": final_sha}, ensure_ascii=False).encode()
-    metadata_sha = _put(store, metadata)
+    approved = METADATA if metadata is None else metadata
+    metadata_json = json.dumps({**approved, "final_sha256": final_sha}, ensure_ascii=False).encode()
+    metadata_sha = _put(store, metadata_json)
     captions = {locale: SRT + locale.encode() for locale in ("zh-TW", "en", "ja")}
     files = [
         _entry("final", final_sha, MP4, "video/mp4"),
         _entry("thumbnail", _put(store, JPEG), JPEG, "image/jpeg"),
-        _entry("metadata", metadata_sha, metadata, "application/json"),
+        _entry("metadata", metadata_sha, metadata_json, "application/json"),
         *(
             _entry(f"captions_{locale}", _put(store, body), body, "text/plain")
             for locale, body in captions.items()
@@ -407,6 +423,76 @@ async def test_an_upload_before_the_audit_needs_the_owners_yes(
             )
     assert refused.value.code == "video_youtube_private_lock"
     assert launched == []
+
+
+# --- the approved narration language -------------------------------------------------------------
+
+
+async def test_an_english_narration_reaches_a_studio_video_as_its_defaults(
+    site: Site, launched: list[str]
+) -> None:
+    await site.link()
+    await _package(site, metadata=ENGLISH_METADATA)
+    _studio_video(site)
+    await _request(site, _publish(title="Picking an AI model", description="How to pick."))
+    await sync.run_sync(SLUG, site.factory)
+    project = await _project(site)
+    assert project.youtube_sync is not None
+    assert project.youtube_sync["status"] == "done", project.youtube_sync
+    sent = site.google.updates[-1]
+    assert sent["snippet"]["defaultLanguage"] == "en"
+    assert sent["snippet"]["defaultAudioLanguage"] == "en"
+    assert sent["localizations"] == {
+        "zh-TW": ENGLISH_METADATA["localizations"]["zh-TW"],
+        "ja": ENGLISH_METADATA["localizations"]["ja"],
+    }
+
+
+async def test_an_english_narration_is_uploaded_and_detailed_as_english(
+    site: Site, launched: list[str]
+) -> None:
+    await site.link()
+    await _package(site, metadata=ENGLISH_METADATA)
+    await _request(
+        site,
+        _publish(
+            mode="upload",
+            url=None,
+            accept_private_lock=True,
+            title="Picking an AI model",
+            description="How to pick.",
+        ),
+    )
+    await sync.run_sync(SLUG, site.factory)
+    project = await _project(site)
+    assert project.youtube_sync is not None
+    assert project.youtube_sync["status"] == "done", project.youtube_sync
+    (inserted,) = site.google.session_bodies.values()
+    assert inserted["snippet"]["defaultLanguage"] == "en"
+    assert inserted["snippet"]["defaultAudioLanguage"] == "en"
+    assert inserted["status"]["privacyStatus"] == "private"
+    sent = site.google.updates[-1]
+    assert (sent["snippet"]["defaultLanguage"], sent["snippet"]["defaultAudioLanguage"]) == (
+        "en",
+        "en",
+    )
+    assert set(sent["localizations"]) == {"zh-TW", "ja"}
+
+
+async def test_a_package_narrated_in_a_language_the_site_does_not_make_is_refused(
+    site: Site, launched: list[str]
+) -> None:
+    await site.link()
+    await _package(site, metadata={**METADATA, "default_language": "fr"})
+    _studio_video(site)
+    async with site.factory() as session:
+        with pytest.raises(Refused) as refused:
+            await sync.request_sync(
+                session, review_store(site.settings), SLUG, site.owner, _publish()
+            )
+    assert refused.value.code == "video_youtube_languages_invalid"
+    assert (await _project(site)).youtube_sync is None
+    assert launched == [] and site.google.updates == []
 
 
 # --- checks before anything is sent ---------------------------------------------------------------
