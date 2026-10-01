@@ -987,8 +987,8 @@ then the stakes without revealing a mystery's answer, the mid-series flip or the
 "tags": ≤ 500 characters in total, including 漫劇,
 AI漫劇, 一口氣看完 and the genre's; "thumbnail": {"headline": ≤ 12 characters of the biggest
 promise, "tag": ≤ 6 characters or null, "episode": the chosen candidate's "episode" value (its
-slug, copied as written), "shot": its "shot"} picking the candidate with a character's face and
-the highest judge score}.`,
+slug, copied as written), "shot": its "shot"}: the candidates come best-judged first, each
+showing a character; pick the one whose picture best carries the headline's promise}.`,
 
   "verifier:compilation": `${SERIES_COMMON}
 
