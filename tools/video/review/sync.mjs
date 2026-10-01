@@ -20,8 +20,9 @@ import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } 
 import { isCompilation } from "../core/compilation.mjs";
 import { hasCast, illustrated, isDrama, shotScenes } from "../core/drama.mjs";
 import { atomicWrite, docDir, isInside, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
-import { chosenLocales, dubRole, dubsForUpload, LANGUAGES_FILE, readLanguages } from "../core/stages.mjs";
+import { chosenLocales, dubRole, dubsForUpload, LANGUAGES_FILE, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
 import { ARTIFACTS, loadProject, pipelineStatus } from "../core/state.mjs";
+import { narrationLocale } from "../core/schema.mjs";
 import { narrativeHash, scriptScenes, writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckMatches } from "../core/script-check.mjs";
 import { estimateTimeline, formatClock } from "../core/timeline.mjs";
@@ -471,9 +472,10 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     if (await sha256File(file) !== sha) throw new UsageError("final.mp4 changed during the quality check; run review-push --gate final again");
     const qa = report?.final_sha256 === sha ? report : null;
     if (!qa) ctx.stdout.write(`${slug}: no quality check report for this final.mp4; the review goes up without one\n`);
-    // The owner's language choice, when there is one already (docs/videos/LANGUAGES.md).
+    // The owner's language choice, when there is one already (docs/videos/LANGUAGES.md), with
+    // the narration's own locale and zh-TW, which every choice keeps (alwaysLocales).
     const languages = readLanguages(workdir);
-    const { metadata } = composeMetadata({ doc, timeline, translations: project.translations, pack: project.pack, locales: chosenLocales(languages, "metadata") });
+    const { metadata } = composeMetadata({ doc, timeline, translations: project.translations, pack: project.pack, locales: metadataLocalesOf(languages, narrationLocale(doc)) });
     const files = [await upload(request, slug, await preview(ctx, workdir, "preview", file, { compilation }), "preview", "video/mp4")];
     const sheet = path.join(workdir, ARTIFACTS.contactSheet);
     if (existsSync(sheet)) files.push(await upload(request, slug, sheet, "contact_sheet", "image/png"));
