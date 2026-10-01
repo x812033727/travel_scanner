@@ -32,6 +32,7 @@ from app.config import get_settings
 from app.i18n import LOCALES, Locale
 from app.models import AdminAuditLog, UiTextOverride, User
 from app.problems import AppError
+from app.ui_text.icu import IcuSyntaxError, describe_argument, parse_icu
 from app.ui_text.schemas import (
     UI_TEXT_LOCKED_NAMESPACES,
     UI_TEXT_NAMESPACES,
@@ -88,10 +89,8 @@ def normalize_value(value: str, default_value: str | None, *, key: str) -> str:
 
     Line endings become LF and nothing else is touched: 47 catalog defaults are
     separators such as ", " whose leading or trailing space is the whole point, so the
-    value is never stripped, only rejected when it is blank. Seven English defaults use
-    ICU plural syntax; the placeholder regex still finds their argument name, but only
-    the brace check catches a plural that lost its closing brace, which next-intl would
-    otherwise turn into the raw key path on the page.
+    value is never stripped, only rejected when it is blank. ICU syntax, argument roles
+    in every branch, and deliberate literal template tokens must match the default.
     """
 
     normalized = value.replace("\r\n", "\n").replace("\r", "\n")
@@ -99,19 +98,33 @@ def normalize_value(value: str, default_value: str | None, *, key: str) -> str:
         raise AppError(422, "ui_text_value_empty", f"{key}：文案不能留空；要移除覆寫請用還原預設")
     if CONTROL_CHARACTERS.search(normalized):
         raise AppError(422, "ui_text_value_control_chars", f"{key}：文案含有不支援的控制字元")
-    if not braces_balanced(normalized):
-        raise AppError(422, "ui_text_braces_unbalanced", f"{key}：大括號沒有成對")
     if default_value is None:
         raise AppError(422, "ui_text_default_required", f"{key}：驗證覆寫需要提供預設文案")
-    expected = icu_parameters(default_value)
-    actual = icu_parameters(normalized)
+    try:
+        expected = parse_icu(default_value)
+        actual = parse_icu(normalized)
+    except IcuSyntaxError as error:
+        raise AppError(
+            422, "ui_text_braces_unbalanced", f"{key}：ICU 語法無效（{error}）"
+        ) from error
     if actual != expected:
-        missing = "、".join(sorted(expected - actual)) or "無"
-        extra = "、".join(sorted(actual - expected)) or "無"
+        missing = sorted(map(describe_argument, expected.arguments - actual.arguments))
+        extra = sorted(map(describe_argument, actual.arguments - expected.arguments))
+        missing.extend(
+            f"字面範本 {{{name}}}"
+            for name in sorted(expected.literal_parameters - actual.literal_parameters)
+        )
+        extra.extend(
+            f"字面範本 {{{name}}}"
+            for name in sorted(actual.literal_parameters - expected.literal_parameters)
+        )
+        missing_text = "、".join(missing)[:500] or "無"
+        extra_text = "、".join(extra)[:500] or "無"
         raise AppError(
             422,
             "ui_text_parameters_mismatch",
-            f"{key}：參數必須與預設相同（缺少：{missing}；多出：{extra}）",
+            f"{key}：ICU 參數用途、分支與字面範本必須與預設相同；勿用單引號包住參數"
+            f"（缺少：{missing_text}；多出：{extra_text}）",
         )
     return normalized
 

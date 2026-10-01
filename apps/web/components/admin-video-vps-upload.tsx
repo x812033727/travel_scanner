@@ -1,11 +1,13 @@
 "use client";
 
 import { Server, RefreshCw, ExternalLink } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { type ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/community/ui";
 import { control } from "@/components/admin-video-review-card";
+import { VPS_SETTINGS_PATH, YoutubeVpsDesktopLink, type YoutubeVpsSettingsView, youtubeVpsSettingsHref } from "@/components/admin-video-vps-settings";
 import { api } from "@/lib/api";
+import { videoVpsCopy } from "@/lib/video-vps-copy";
 
 type Job = {
   id: string; state: "staging" | "queued" | "running" | "needs_action" | "done" | "cancelled";
@@ -19,7 +21,10 @@ type Props = { slug?: string; draft?: Draft; onChange?: () => void; children?: R
 
 function JobPanel({ slug, draft, onChange }: Required<Pick<Props, "slug">> & Pick<Props, "draft" | "onChange">) {
   const t = useTranslations("admin.videoYoutube.vps");
+  const locale = useLocale();
+  const copy = videoVpsCopy(locale);
   const [view, setView] = useState<View | null>(null);
+  const [desktopUrl, setDesktopUrl] = useState<string | null>(null);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   const [url, setUrl] = useState(draft?.video_id ?? "");
@@ -56,6 +61,14 @@ function JobPanel({ slug, draft, onChange }: Required<Pick<Props, "slug">> & Pic
     return () => { abort.abort(); clearTimeout(timer); };
   }, [refresh, t, view?.job?.state]);
   useEffect(() => () => controller.current?.abort(), []);
+  useEffect(() => {
+    if (view?.job?.state !== "needs_action") return;
+    const abort = new AbortController();
+    api<YoutubeVpsSettingsView>(VPS_SETTINGS_PATH, { signal: abort.signal })
+      .then((settings) => { if (!abort.signal.aborted) setDesktopUrl(settings.desktop_url); })
+      .catch(() => { /* The settings link remains available when the desktop address cannot be read. */ });
+    return () => abort.abort();
+  }, [view?.job?.state]);
   const action = async (name: "start" | "stage" | "resume" | "cancel" | "refresh" | "record") => {
     if (busy) return;
     setBusy(true); setError("");
@@ -86,7 +99,7 @@ function JobPanel({ slug, draft, onChange }: Required<Pick<Props, "slug">> & Pic
     <p className="text-sm leading-6 text-[var(--muted)]">{t("help")}</p>
     {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
     {!view && !error && <p role="status">{t("loading")}</p>}
-    {view && !view.configured && <p className="text-sm">{t("notConfigured")}</p>}
+    {view && !view.configured && <div className="grid gap-2 text-sm"><p>{t("notConfigured")}</p><a href={youtubeVpsSettingsHref(locale)} className="inline-flex min-h-11 items-center font-semibold text-[var(--teal)] underline">{copy.settingsLink}</a></div>}
     {view?.configured && !job && <>
       <label className="grid gap-2 text-sm">{t("existingUrl")}<input className={control} value={url} disabled={busy || Boolean(draft?.video_id)} onChange={(e) => setUrl(e.target.value)} placeholder="https://youtu.be/…" /></label>
       <Button disabled={busy} onClick={() => void action("start")}>{busy ? t("sending") : t("send")}</Button>
@@ -103,6 +116,7 @@ function JobPanel({ slug, draft, onChange }: Required<Pick<Props, "slug">> & Pic
       {job.state === "needs_action" && <>
         <p role="alert" className="text-sm text-amber-900">{t.has(`problems.${job.code}`) ? t(`problems.${job.code}`) : t("problems.studio_changed")}</p>
         <p className="text-sm">{t("desktopHelp")}</p>
+        <div className="flex flex-wrap gap-3"><YoutubeVpsDesktopLink url={desktopUrl} /><a href={youtubeVpsSettingsHref(locale)} className="inline-flex min-h-11 items-center text-sm font-semibold text-[var(--teal)] underline">{copy.settingsLink}</a></div>
         {needsId && <label className="grid gap-2 text-sm">{t("reconcileUrl")}<input className={control} value={url} onChange={(e) => setUrl(e.target.value)} disabled={busy} placeholder="https://youtu.be/…" /></label>}
         <Button disabled={busy || (needsId && !url.trim())} onClick={() => void action("resume")}>{t("resume")}</Button>
       </>}

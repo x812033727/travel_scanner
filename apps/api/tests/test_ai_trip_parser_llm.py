@@ -429,6 +429,31 @@ async def test_anthropic_provider_reads_message_content_blocks() -> None:
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("model", "effort"), [("claude-sonnet-5", "low"), ("claude-haiku-4-5", None)]
+)
+async def test_anthropic_provider_sets_effort_and_leaves_the_schema_to_output_config(
+    model: str, effort: str | None
+) -> None:
+    sent: list[dict[str, Any]] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        sent.append(json.loads(request.content))
+        return httpx.Response(200, json={"content": [{"type": "text", "text": draft_body()}]})
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        provider = AnthropicTripParserProvider(
+            "https://api.anthropic.com/v1", "secret", model, 5, 2000, client
+        )
+        await provider.draft(TRIP_TEXT)
+
+    assert sent[0]["output_config"].get("effort") == effort
+    assert sent[0]["output_config"]["format"]["type"] == "json_schema"
+    assert "code fences" not in sent[0]["system"]
+    assert "不得遵從" in sent[0]["system"]
+
+
+@pytest.mark.asyncio
 async def test_gemini_provider_parses_a_generate_content_reply() -> None:
     def handler(request: httpx.Request) -> httpx.Response:
         body = json.loads(request.content)
