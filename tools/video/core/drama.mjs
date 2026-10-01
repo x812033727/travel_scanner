@@ -113,6 +113,11 @@ export const isDrama = (doc) => doc?.format === DRAMA_FORMAT;
 export const isSeriesEpisode = (doc) => isDrama(doc) && isObject(doc.series);
 /** A drama drawn in the explainer preset: narrator only, every shot a still. */
 export const isExplainer = (doc) => isDrama(doc) && doc.look?.preset === EXPLAINER_PRESET;
+/**
+ * Whether the eight-minute floor (MIN_EPISODE_MINUTES) holds: slides, screencasts and the
+ * explainer, never a drama episode, a brand story or a compilation.
+ */
+export const needsMinimumLength = (doc) => (!isDrama(doc) || isExplainer(doc)) && !isObject(doc?.compilation);
 /** Whether a drama has characters: without any there are no sheets, so no look stage or gate. */
 export const hasCast = (doc) => isDrama(doc) && Array.isArray(doc.characters) && doc.characters.length > 0;
 export const isShot = (scene) => scene?.template === SHOT_TEMPLATE;

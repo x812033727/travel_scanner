@@ -26,6 +26,9 @@ import { Automation, automatedVideos, mainGuide, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_
 import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, STANCE_HEADING, TRANSLATOR_REWORD, TRANSLATOR_SHORTEN } from "./prompts.mjs";
 import { tidyRound } from "./tidy.mjs";
 
+// The fixture videos run seconds; the eight-minute floor has tests of its own.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
+
 const TOKEN = `mkv_${"t".repeat(43)}`;
 const SITE = "https://site.test";
 

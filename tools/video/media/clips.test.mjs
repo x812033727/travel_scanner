@@ -15,6 +15,9 @@ import { readLedger } from "./ledger.mjs";
 import { MIN_TRACK_SECONDS, trackSeconds } from "./music.mjs";
 import { chosenModel, clipSecondPrice, statusProblem, trackPrice } from "./stages.mjs";
 
+// The fixture videos run seconds; the eight-minute floor has tests of its own.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
+
 const TOKEN = `mkv_${"c".repeat(43)}`;
 const SHA = (data) => createHash("sha256").update(data).digest("hex");
 const PNG = (text) => Buffer.concat([Buffer.from("\x89PNG\r\n\x1a\n", "binary"), Buffer.from(text)]);
