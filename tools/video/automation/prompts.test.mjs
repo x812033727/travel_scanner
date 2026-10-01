@@ -32,7 +32,8 @@ test("the planner outlines story beats and the listener keeps the register; the 
   assert.ok(planner.includes(REGISTER_RULES));
   const listener = instructionsFor("listener", "slides");
   assert.match(listener, /keep the storytelling register below/);
-  assert.match(listener, /the facts, the scenes, the pictures' prompts and the line ids are not/);
+  assert.match(listener, /the facts, the scenes, the pictures' prompts, the pauses and\s+the line ids are not/);
+  assert.match(listener, /the tool sets the pause beats/);
   assert.ok(listener.endsWith(REGISTER_RULES));
   for (const stage of ["verifier", "translator", "caption_reviewer"]) assert.equal(INSTRUCTIONS[stage].includes(REGISTER_RULES), false, `${stage} reads no register rules`);
 });
@@ -45,7 +46,9 @@ test("the listener's register pass is a variant for any format, beside the rewri
   assert.ok(LISTENER_REGISTER.includes(REGISTER_RULES));
   assert.match(LISTENER_REGISTER, /"lines" lists every narration line as \{id, scene, chapter\?, text\}/);
   assert.match(LISTENER_REGISTER, /add, drop, merge, split or move a line/);
-  assert.match(LISTENER_REGISTER, /\{"lines": \[\{"id": "<line id>", "text": "<the retold line>", "pause_after_ms"\?: <integer>\}\]\}/);
+  assert.match(LISTENER_REGISTER, /\{"lines": \[\{"id": "<line id>", "text": "<the retold line>"\}\]\}/);
+  // The tool sets the beats (register.mjs setPauseBeats); the only mention left is the rule telling the model so.
+  assert.equal(LISTENER_REGISTER.replace(REGISTER_RULES, "").includes("pause_after_ms"), false);
   assert.match(instructionsFor("listener", "slides", "先講結論", "register"), /## The owner's standing instructions\n[\s\S]*先講結論$/, "the standing instructions still follow");
 });
 

@@ -15,7 +15,7 @@ import { readApprovals, sha256File } from "../core/approvals.mjs";
 import { appliedBranding, brandingCurrent, readBranding } from "../core/branding.mjs";
 import { readJson } from "../core/paths.mjs";
 import { LOCALES, NARRATION_LOCALE } from "../core/schema.mjs";
-import { captionLocalesOf, chosenLocales, readLanguages } from "../core/stages.mjs";
+import { captionLocalesOf, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
 
 /** The four items, in the order the report lists them; the server requires every one of them. */
 export const PACKAGE_ITEM_IDS = ["files", "descriptions", "captions", "disclosure"];
@@ -70,8 +70,9 @@ export function packageLocales(metadata) {
 
 /**
  * descriptions: a non-empty description.<locale>.txt for the default language and every
- * localization, or, with `locales` (zh-TW and the locales the owner chose titles and descriptions
- * for), for exactly those: a chosen locale without its file fails, whatever metadata.json lists.
+ * localization, or, with `locales` (the narration, zh-TW and the locales the owner chose titles
+ * and descriptions for), for exactly those: a chosen locale without its file fails, whatever
+ * metadata.json lists.
  */
 export function descriptionsItem({ files, metadata, locales = null }) {
   if (!metadata) return item("descriptions", false, `${METADATA_FILE} is missing`);
@@ -125,8 +126,9 @@ export function disclosureItem({ metadata }) {
 /**
  * The whole check, pure: `files` maps upload/ paths to sizes; `metadataSha256` binds the report.
  * `locales` are the caption locales wanted and `descriptionLocales` the description locales
- * (docs/videos/LANGUAGES.md: zh-TW plus what the owner chose); without a choice every locale
- * needs captions or a reason, and the descriptions are what metadata.json lists.
+ * (docs/videos/LANGUAGES.md: the narration and zh-TW plus what the owner chose); without a
+ * choice every locale needs captions or a reason, and the descriptions are what metadata.json
+ * lists.
  */
 export function checkPackage({ files, metadata, finalSha256, approvedSha256, metadataSha256, locales = LOCALES, descriptionLocales = null, brandingMatches = true }) {
   return packageReport(
@@ -135,11 +137,15 @@ export function checkPackage({ files, metadata, finalSha256, approvedSha256, met
   );
 }
 
-/** The caption and description locales the owner's choice in the work directory asks for; the defaults without one. */
-export function packageLocalesWanted(workdir) {
+/**
+ * The caption and description locales the owner's choice in the work directory asks for, around
+ * the narration locale metadata.json names as its default_language (zh-TW without one); the
+ * defaults without a choice.
+ */
+export function packageLocalesWanted(workdir, metadata = readJson(path.join(workdir, UPLOAD_DIR, METADATA_FILE), null)) {
   const languages = readLanguages(workdir);
-  const metadata = chosenLocales(languages, "metadata");
-  return { languages, locales: captionLocalesOf(languages), descriptionLocales: metadata ? [NARRATION_LOCALE, ...metadata] : null };
+  const narration = LOCALES.includes(metadata?.default_language) ? metadata.default_language : NARRATION_LOCALE;
+  return { languages, locales: captionLocalesOf(languages, narration), descriptionLocales: metadataLocalesOf(languages, narration) };
 }
 
 /**
@@ -184,13 +190,13 @@ export function listFiles(dir) {
  * since there is nothing a review could bind to.
  */
 export async function readPackageReport(workdir, given = {}) {
-  const wanted = packageLocalesWanted(workdir);
-  const locales = given.locales ?? wanted.locales;
-  const descriptionLocales = given.descriptionLocales === undefined ? wanted.descriptionLocales : given.descriptionLocales;
   const dir = path.join(workdir, UPLOAD_DIR);
   const files = listFiles(dir);
   const metadataFile = path.join(dir, METADATA_FILE);
   const metadata = readJson(metadataFile, null);
+  const wanted = packageLocalesWanted(workdir, metadata);
+  const locales = given.locales ?? wanted.locales;
+  const descriptionLocales = given.descriptionLocales === undefined ? wanted.descriptionLocales : given.descriptionLocales;
   const finalFile = path.join(dir, FINAL_FILE);
   const finalSha256 = existsSync(finalFile) ? await sha256File(finalFile) : null;
   const approvedSha256 = readApprovals(workdir).approvals.filter((entry) => entry.gate === "final").at(-1)?.sha256 ?? null;
