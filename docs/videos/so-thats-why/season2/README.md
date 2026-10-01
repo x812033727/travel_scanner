@@ -1,6 +1,6 @@
 # 原來如此事務所第二季：製作包交接
 
-2026-10-01 完成五批共20題文字包：**B26、S26、T26、A31**、**B27、S27、T28、A33**、**B48、S44、T33、A36**、**B37、S31、T29、A41**及**B46、S32、T41、A40**。原題庫100題的「checked」是題目查核，本頁的「文字包已審」是本日逐集企劃及獨立審稿；沒有長片完整逐字稿、生成音訊／圖片／成片、正式匯入、核准或上架。
+2026-10-01 完成六批共24題文字包：**B26、S26、T26、A31**、**B27、S27、T28、A33**、**B48、S44、T33、A36**、**B37、S31、T29、A41**、**B46、S32、T41、A40**及**B44、S43、T43、A46**。原題庫100題的「checked」是題目查核，本頁的「文字包已審」是本日逐集企劃及獨立審稿；沒有長片完整逐字稿、生成音訊／圖片／成片、正式匯入、核准或上架。
 
 | 順序提案 | 本集問題 | 製作包 | 作者→獨立查核／聽眾文字審稿 |
 | --- | --- | --- | --- |
@@ -45,9 +45,18 @@
 | 3 | 廁所禁菸與菸灰缸為何並存 | [T41](T41.md) | root→write_b26；[報告](reviews/batch05/T41.md)／[收據](reviews/batch05/T41.json) |
 | 4 | www命名與站方服務安排 | [A40](A40.md) | write_t26→write_a31；[報告](reviews/batch05/A40.md)／[收據](reviews/batch05/A40.json) |
 
+第六批順序也是本批提案，沒有發布日期。
+
+| 順序提案 | 本集問題 | 製作包 | 作者→獨立查核／聽眾文字審稿 |
+| --- | --- | --- | --- |
+| 1 | 汽車旅行指南與料理星級 | [B44](B44.md) | write_b26→root；[報告](reviews/batch06/B44.md)／[收據](reviews/batch06/B44.json) |
+| 2 | 閃爍與角大小，不作辨識保證 | [S43](S43.md) | write_a31→write_t26；[報告](reviews/batch06/S43.md)／[收據](reviews/batch06/S43.json) |
+| 3 | Knowledge路線、周邊與考核 | [T43](T43.md) | root→write_b26；[報告](reviews/batch06/T43.md)／[收據](reviews/batch06/T43.json) |
+| 4 | USB寫入與移除政策的條件 | [A46](A46.md) | write_t26→write_a31；[報告](reviews/batch06/A46.md)／[收據](reviews/batch06/A46.json) |
+
 每包包含本日來源與限制、前提／備註貼用欄位、480秒六章大綱、兩支180–220中文／英文數字詞單位Shorts、原創插畫／縮圖提示、五語長短片標題與說明。章長和Shorts秒數為估值，實際製作要重新查核新增主張、展開分鏡、審稿、TTS試聽、成片與平台驗收。
 
-五語可解析包：[batch01-packaging.json](batch01-packaging.json)、[batch02-packaging.json](batch02-packaging.json)、[batch03-packaging.json](batch03-packaging.json)、[batch04-packaging.json](batch04-packaging.json)與[batch05-packaging.json](batch05-packaging.json)，合計20長片企劃＋40Shorts共300組標題／說明。`proposed_order`僅本批順序，不改第一季排程，不設定發布日期。
+五語可解析包：[batch01-packaging.json](batch01-packaging.json)、[batch02-packaging.json](batch02-packaging.json)、[batch03-packaging.json](batch03-packaging.json)、[batch04-packaging.json](batch04-packaging.json)、[batch05-packaging.json](batch05-packaging.json)與[batch06-packaging.json](batch06-packaging.json)，合計24長片企劃＋48Shorts共360組標題／說明。`proposed_order`僅本批順序，不改第一季排程，不設定發布日期。
 
 ```powershell
 node docs/videos/so-thats-why/season2/validate.mjs
@@ -55,8 +64,9 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch02
 node docs/videos/so-thats-why/season2/validate.mjs --batch=batch03
 node docs/videos/so-thats-why/season2/validate.mjs --batch=batch04
 node docs/videos/so-thats-why/season2/validate.mjs --batch=batch05
+node docs/videos/so-thats-why/season2/validate.mjs --batch=batch06
 # 正文與獨立審稿已更新且收據重綁後，才重產包裝：
-node docs/videos/so-thats-why/season2/validate.mjs --batch=batch05 --write
+node docs/videos/so-thats-why/season2/validate.mjs --batch=batch06 --write
 ```
 
 檢查器核100題id、五語、欄位上限、Shorts估時、六章合計、檔案入口及byte SHA256。它不做外部查核或媒體QA，不能自行把新稿視為已審；修改包後必須交不同作者審稿，更新報告與收據。審稿報告與本包各自有雜湊。
@@ -71,13 +81,15 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch05 --write
 
 第五批限制：B46的黃色故事歸屬品牌，不採精確發現年、失敗發明或普遍性能；S32把溶解物來源、蒸發保留及移除分開，不採固定河水值/占比；T41限定美國運輸類飛機設計規範及2012官方摘要，不講缺件放行或罰款；A40不將www可省當全網站保證，不混DNS與HTTP轉址，CERN2013重建與原站歷史分開。
 
+第六批限制：B44旅途出版目的歸屬品牌，不當銷售歸因或1936原件；S43不以閃爍保證辨識，保留大氣與視角條件；T43分牌照區域與兩半徑中心，320非街總數，scooter非必須，不採腦部/GPS比較或舊考規；A46依政策與正在寫入的條件說移除，不把Quick removal當隨時拔無損保證或泛化所有app/device快取。
+
 ## 下一批接手
 
-母票仍開放，目前完成20題文字包；其餘80題尚待逐題審選，不能將列出題名當製作完成。開始下批先查分支／worktree／PR碰撞，再開窄scope批次票。現有製作包以本分支草稿PR交接，合併前不要另寫這二十檔。
+母票仍開放，目前完成24題文字包；其餘76題尚待逐題審選，不能將列出題名當製作完成。開始下批先查分支／worktree／PR碰撞，再開窄scope批次票。現有製作包以本分支草稿PR交接，合併前不要另寫這二十四檔。
 
 - A26：與既有AI名詞「上下文視窗」題重疊，本批跳過；需選新的可核實角度再採用。
 - S50／第三季S55、A29/A30／第三季A70、A38／第三季A58：下一批挑選前比較原查核與第一季、品牌故事、AI名詞企劃，避免重複同一問題及例子；目前尚未裁決。
-- B26/S26/T26/A31/B27/S27/T28/A33/B48/S44/T33/A36/B37/S31/T29/A41/B46/S32/T41/A40：文字包通過後續還要有完整長片稿與真實製作；不操作正式站或付費生成。
+- B26/S26/T26/A31/B27/S27/T28/A33/B48/S44/T33/A36/B37/S31/T29/A41/B46/S32/T41/A40/B44/S43/T43/A46：文字包通過後續還要有完整長片稿與真實製作；不操作正式站或付費生成。
 
 ## 100題逐題入口
 
@@ -103,7 +115,7 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch05 --write
 | B41 | 為什麼 Walmart 在德國賣不起來？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
 | B42 | 為什麼 Sega 不再推出新的家用主機？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
 | B43 | 為什麼賣飲料的 Red Bull 要自己辦比賽、拍影片？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
-| B44 | 為什麼輪胎公司要替餐廳評星星？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
+| B44 | 為什麼輪胎公司要替餐廳評星星？ | [文字包已審](B44.md)；媒體未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
 | B45 | 為什麼百圓商店賣一百圓還能賺？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
 | B46 | 為什麼一種黏不牢的膠，變成了便利貼？ | [文字包已審](B46.md)；媒體未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
 | B47 | 為什麼 KitKat 在日本出過幾百種口味？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
@@ -127,7 +139,7 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch05 --write
 | S40 | 為什麼頭髮會變白？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S39-S50.md) |
 | S41 | 為什麼蜜蜂的巢格是六角形？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S39-S50.md) |
 | S42 | 為什麼雲有幾百噸水，還能飄在天上？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S39-S50.md) |
-| S43 | 為什麼星星會一閃一閃，行星卻不太閃？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S39-S50.md) |
+| S43 | 為什麼星星會一閃一閃，行星卻不太閃？ | [文字包已審](S43.md)；媒體未製作 | [原報告](../topic-checks/s2-S39-S50.md) |
 | S44 | 為什麼冷凍庫的冰塊放久會變小？ | [文字包已審](S44.md)；媒體未製作 | [原報告](../topic-checks/s2-S39-S50.md) |
 | S45 | 為什麼很多人覺得長大後時間變快？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S39-S50.md) |
 | S46 | 為什麼煮義大利麵要在水裡加鹽？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S39-S50.md) |
@@ -152,7 +164,7 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch05 --write
 | T40 | 為什麼飛機上要開飛航模式？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T39-T50.md) |
 | T41 | 為什麼飛機禁菸，廁所門邊卻有菸灰缸？ | [文字包已審](T41.md)；媒體未製作 | [原報告](../topic-checks/s2-T39-T50.md) |
 | T42 | 為什麼搭飛機大多從左邊登機？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T39-T50.md) |
-| T43 | 為什麼倫敦計程車司機要背幾千條街？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T39-T50.md) |
+| T43 | 為什麼倫敦計程車司機要背幾千條街？ | [文字包已審](T43.md)；媒體未製作 | [原報告](../topic-checks/s2-T39-T50.md) |
 | T44 | 為什麼阿姆斯特丹的運河屋又窄又往前傾？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T39-T50.md) |
 | T45 | 為什麼日本計程車的門會自己打開？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T39-T50.md) |
 | T46 | 為什麼越南咖啡常加煉乳？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T39-T50.md) |
@@ -180,7 +192,7 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch05 --write
 | A43 | 為什麼有些詐騙訊息假得很明顯？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A39-A50.md) |
 | A44 | 為什麼雙胞胎可能解鎖彼此的手機？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A39-A50.md) |
 | A45 | 為什麼無線充電通常比較慢又比較熱？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A39-A50.md) |
-| A46 | 為什麼隨身碟要先「安全移除」？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A39-A50.md) |
+| A46 | 為什麼隨身碟要先「安全移除」？ | [文字包已審](A46.md)；媒體未製作 | [原報告](../topic-checks/s2-A39-A50.md) |
 | A47 | 為什麼 Wi-Fi 叫 Wi-Fi？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A39-A50.md) |
 | A48 | 為什麼飛機早有自動駕駛儀，汽車自駕卻這麼難？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A39-A50.md) |
 | A49 | 為什麼吹遊戲卡帶好像真的有用？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A39-A50.md) |
