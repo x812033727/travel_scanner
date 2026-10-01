@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-admin-video-review-the-owner-s
 title: Admin video review: the owner's final-cut approvals did not register on 2026-09-28
-status: in-progress
+status: done
 priority: P3
 area: web
 owner: claude-opus-5-5-review-card
 claimed_at: 2026-10-01T03:38:03Z
 created_at: 2026-09-28T09:46:06Z
-completed_at:
+completed_at: 2026-10-01T03:52:31Z
 branch: claude/review-card-approvals
 depends_on: []
 scope:
