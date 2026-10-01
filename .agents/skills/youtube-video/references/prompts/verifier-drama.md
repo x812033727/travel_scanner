@@ -21,6 +21,6 @@ DRAFT: `<VIDEO_DOCS>/` (`video.json`, `claims.md`, `brief.md`, and `verify-1.md`
 
 ## Output
 
-Write `<VIDEO_DOCS>/verify-<ROUND>.md` with the bible table, the continuity table (shot ｜ characters ｜ names in prompt ｜ setting ｜ finding ｜ verdict ｜ before → after) and, for an adaptation, the claim table of the tutorial verifier; then a summary: findings fixed and reported, names unified, prompts changed, facts confirmed or changed, listener findings, the lint result, and whether a SECOND ROUND is required (rule: more than three continuity or fact changes → yes). Paste the summary (at most 40 lines) as your reply.
+Write `<VIDEO_DOCS>/verify-<ROUND>.md` with the bible table, the continuity table (shot ｜ characters ｜ names in prompt ｜ setting ｜ finding ｜ verdict ｜ before → after) and, for an adaptation, the claim table of the tutorial verifier; then a summary: findings fixed and reported, names unified, prompts changed, facts confirmed or changed, listener findings, the lint result, and whether a SECOND ROUND is required (rule: more than three continuity or fact changes → yes). Paste the summary as your reply, one line per item; the tables stay in the file.
 
 Round 2 (when told so): re-check every shot and line round 1 changed plus a random third of the rest; write `verify-2.md`.

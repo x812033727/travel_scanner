@@ -153,6 +153,26 @@ describe("AdminUiTextPanel", () => {
     expect(screen.getByText("大括號沒有成對。")).toBeTruthy();
   });
 
+  it("blocks a quoted-away argument until it is active again", async () => {
+    renderPanel();
+    const greeting = await screen.findByRole("textbox", { name: "greeting" });
+
+    fireEvent.change(greeting, { target: { value: "Hello '{name}'" } });
+    expect(greeting.getAttribute("aria-invalid")).toBe("true");
+    expect(screen.getByText("參數必須與預設相同：name")).toBeTruthy();
+    const fix = screen.getByRole("button", { name: "請先修正 1 筆錯誤" }) as HTMLButtonElement;
+    expect(fix.disabled).toBe(true);
+    fireEvent.click(fix);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+
+    for (const value of ["Hello ‘{name}’", "Hello ''{name}''"]) {
+      fireEvent.change(greeting, { target: { value } });
+      expect(greeting.getAttribute("aria-invalid")).toBeNull();
+      expect(screen.queryByText("參數必須與預設相同：name")).toBeNull();
+      expect((screen.getByRole("button", { name: "儲存 1 筆變更" }) as HTMLButtonElement).disabled).toBe(false);
+    }
+  });
+
   it("saves the dirty rows as one batch and reports the propagation delay", async () => {
     renderPanel();
     const greeting = await screen.findByRole("textbox", { name: "greeting" });

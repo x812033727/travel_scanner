@@ -387,6 +387,45 @@ published 65、taxonomy_updated 10、failed null；`guides-links-rebuild` unreso
 - 本 session 只能寫自己的 worktree（hook），第二個 worktree 開了也不能用；批次要在同一個 worktree 開新分支做。
 - 用量（Max）：十篇從研究到審稿，5 小時窗約用了 55%、週額度約 13%；opus 研究與查核每篇約 25–33 萬 tokens，sonnet 撰稿與翻譯約 25–40 萬。
 
+## 1i. GPT-6.1 Sol（批次 4.9，2026-09-30）：一篇 AI，五語
+
+OpenAI 在 9/29 10:00Z 發了〈Introducing GPT-6.1 Sol〉，別的中文站當天就報了，本站沒有。原因是每小時自動化讀得到 OpenAI 的 RSS，
+卻抓不到 `openai.com/index/*`（Cloudflare 挑戰頁，HTTP 403）：抓不到的條目每小時跳過一次、從來沒有變成候選，所以後台也看不到。
+同一個 PR 修了這件事（見票 `2026-09-30-news-scanner-keeps-a-refused-article` 與 `2026-09-30-add-openai-deployment-safety-hub-as`）。
+規則差異在 [`agents/DELTA-4-9.md`](agents/DELTA-4-9.md)：opus 研究代理、sonnet 撰稿、兩輪不同的 opus 查核、sonnet 翻譯
+（en＋zh-CN 一位、ja＋ko 一位，只交檔、協調者合併）、逐語審稿（en／zh-CN sonnet、ja／ko 各一位 opus），`display_order` 190。
+
+| slug | order | zh-TW 字數 | 第一輪 主張／事實改動 | 第二輪 主張／改動 | 審稿採用（en／ja／ko／zh-CN） |
+| --- | --- | --- | --- | --- | --- |
+| `ai-news-gpt-61-sol-20260929` | 190 | 2,992 | 131／10 | 74／9 | 0／2／3／0 |
+
+- **來源只有 OpenAI 自己的四頁**：API 模型頁、價目表、learn.chatgpt.com 的 Models 說明、Deployment Safety Hub 的 system card 增補。
+  公告頁與 DevDay recap 讀不到，不用。第三方文章（aiposthub、maplefeather、myclaw、鉅亨號）只當線索；它們寫的 DeepSWE、OSWorld 等評測分數、
+  「45 頁 system card」「循環模型架構」在一手頁讀不到，都不寫。
+- **裁決**：「五分之一」只出現一次，寫成「由編輯以牌價換算」（OpenAI 的 RSS 印了 one-fifth，但 RSS 不在 `sources[]`）；
+  272K 長脈絡加價只屬 GPT-6.1 Sol；Chat 那句不加「還沒」；CoT 可控性的 44.8%／16.1% 不寫；資安 Critical 照 system card 第 9 節並歸因。
+- **協調者對原稿與譯文的修訂**：圖說補「其中 Enterprise 與 Edu 要管理員啟用」（第二輪指出圖上沒有這個條件）；五語 hero alt 改成描述實際畫面；
+  ko 標題依審稿建議改成「GPT-6.1 Sol 출시: 새 버전 Sol, API·Codex·ChatGPT Work에서 제공, Chat에는 없음」。
+- **發布當天要重讀**：價目表（GPT-6 Sol 那列在「All models」收合清單裡）、模型頁、Models 說明頁的方案範圍。
+- **自動化那筆候選**：部署後 Safety Hub 來源的第一筆就是 GPT-6.1 Sol 的 system card。手寫這篇先發布的話，Jev 的重複檢查應該會擋；沒擋就在
+  `/admin/news` 退件。OpenAI News 來源在部署後的第一次掃描，會把 72 小時內被擋的條目各留一筆 `news_page_refused`，那些是提示，不是稿件。
+
+## 1j. Claude Sonnet 5.5（批次 4.10，2026-09-30）：一篇 AI，五語
+
+Anthropic 9/28 發表 Claude Sonnet 5.5，自動化沒看到：Anthropic 來源只收 `/news/`，模型發表頁在網站根目錄（同一個 PR 修了 prefix）。
+規則在 [`agents/DELTA-4-10.md`](agents/DELTA-4-10.md)，做法與 4.9 相同，`display_order` 191，索引連結放在 Google Vids 與 GPT-6.1 Sol 之間。
+
+| slug | order | zh-TW 字數 | 第一輪 主張／改動 | 第二輪 主張／改動 | 審稿採用（en／ja／ko／zh-CN） |
+| --- | --- | --- | --- | --- | --- |
+| `ai-news-claude-sonnet-55-20260928` | 191 | 2,925 | 約 110／21 | 62／11 | 0／4／3／6 |
+
+- **來源四條**：公告頁、Claude 開發者文件的 Sonnet 5.5 模型頁、System Card（148 頁 PDF）、Sonnet 產品頁。44／45 條引文逐字比對通過（第二輪補一條）。
+- **裁決**：30% 不是降價（牌價與 Sonnet 5 相同，30% 是 Anthropic 的「最多」估計）；不寫與 OpenAI 的任何比較；安全分級照 System Card 原文、沒有 ASL；
+  System Card 對資安防護比照 Opus 5 或 5.5 前後不一，正文兩者都不寫；標題的「三家雲端」是編輯清點，改成「雲端平台」；表格不放 Opus 5.5 欄。
+- **發布當天要重讀**：模型頁的平台清單（Amazon Bedrock）、產品頁（頁首與 FAQ 還停在舊版）。
+- **ja 審稿提醒**：淘汰頁寫 Sonnet 5「Not sooner than June 30, 2027」，但它不在 `sources[]`；正文「這幾頁沒有寫 Sonnet 5 何時停用」限縮在四頁，沒有錯，站主想寫停用日就把淘汰頁換進來源。
+- **zh-CN 審稿提醒**：「备援」在 opus-55、fable-5-access、gpt-6-sol-luna、nvidia-rubin 的 zh-CN 也有，要統一另開票。
+
 ## 2. 還沒做完的事
 
 ### 2.1 上線後仍可修訂的原稿用詞（都不是事實錯誤）

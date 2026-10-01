@@ -2007,3 +2007,35 @@ async def test_final_source_and_verification_survive_translation_failure_and_own
                    for row in await session.scalars(select(GuideArticleLocale))]
     assert factors == [8] * 5
     mocks["draft"].assert_awaited_once()
+
+
+@pytest.mark.asyncio
+async def test_duplicate_question_tells_jev_a_new_model_version_is_a_new_event(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from app.ai.jev import NoulAnswer
+
+    asked: list[dict[str, Any]] = []
+
+    class Client:
+        async def ask(self, state: dict[str, Any], questions: dict[str, Any]) -> tuple[dict, Any]:
+            asked.append({"state": state, "questions": questions})
+            return {"duplicate": NoulAnswer(type="noul", noul=0.1)}, None
+
+        async def close(self) -> None:
+            return None
+
+    monkeypatch.setattr(ai, "consume_jev_call", AsyncMock(return_value=True))
+    monkeypatch.setattr(ai, "jev_client", lambda _environment: Client())
+    verdict, _probability, _reasons = await ai.jev_duplicate_check(
+        cast(Any, None),
+        get_settings(),
+        "Introducing GPT-6.1 Sol",
+        "GPT-6.1 Sol is the latest model family in the GPT-6 series.",
+        ["GPT-6 Sol and Luna launch: API price cuts, available in Codex"],
+    )
+    instructions = asked[0]["questions"]["duplicate"].instructions
+    # The pair that the check was likely to hold as "the same event" (task 2026-09-30).
+    assert "new version or successor" in instructions
+    assert "GPT-6.1 Sol after GPT-6 Sol" in instructions
+    assert verdict == "distinct"

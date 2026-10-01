@@ -44,6 +44,10 @@ export const MAX_PAUSE_MS = 5000;
 export const DEFAULT_TARGET_MINUTES = [8, 12];
 
 export const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+// What kind of video this is, for /admin/videos' filters: the same list as
+// apps/api/app/models.py VIDEO_CATEGORIES. The site takes it from the first report that
+// carries it and leaves a category the owner set on the page alone.
+export const VIDEO_CATEGORIES = ["ai-terms", "ai-news", "tutorial", "comparison", "explainer", "story", "drama", "long-drama", "travel", "other"];
 // Short and random, never positional: inserting a line must not renumber the ones after it,
 // because translations, the audio cache and the owner's audio flags all key on these ids.
 export const LINE_ID = /^[a-z0-9]{4,8}$/;
@@ -58,6 +62,7 @@ const TOP_KEYS = new Set([
   // The language the voice reads and the captions translate from; zh-TW when absent.
   "narration_locale",
   "source_guide",
+  "category",
   "target_minutes",
   "voice",
   "youtube",
@@ -263,6 +268,9 @@ export function validateVideo(doc) {
   const locale = narrationLocale(doc);
   if (doc.source_guide !== undefined && (typeof doc.source_guide !== "string" || !SLUG.test(doc.source_guide))) {
     errors.push({ path: "source_guide", message: "must be the slug of a Mokaair content pack" });
+  }
+  if (doc.category !== undefined && !VIDEO_CATEGORIES.includes(doc.category)) {
+    errors.push({ path: "category", message: `must be one of ${VIDEO_CATEGORIES.join(", ")}` });
   }
   if (
     doc.target_minutes !== undefined &&

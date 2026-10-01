@@ -1,6 +1,6 @@
 # 子指令一覽
 
-以 `apps/api/app/cli.py` 的 `argparse` 與各 `*_cli` 模組為準（2026-09-25 核對）。`--destination` 都是 destination id（`tokyo`、`seoul`），可重複；`--limit` 都是「處理到第 N 筆就停」。
+以 `apps/api/app/cli.py` 的 `argparse` 與各 `*_cli` 模組為準（2026-09-30 核對）。`--destination` 都是 destination id（`tokyo`、`seoul`），可重複；`--limit` 都是「處理到第 N 筆就停」。
 
 **寫入旗標是哪一種**：不帶 `--apply` 只報告的是預設；**反過來預設就寫、要自己加 `--dry-run` 的**是 `seed-foods`（沒有 dry-run）、`collect-hotspots`（沒有）、`backfill-trip-item-names`、`guides-search-reindex`、`guides-aliases-seed`、`guides-links-rebuild`、`fill-hotspot-labels`、`match-hotspot-places`、`guides-import`、`python -m app.hotspots.themes`（沒有）。
 
@@ -53,6 +53,9 @@
 | `add-usage-package --email E --package CODE --reference R` | 手動發用量包 | `TRIAL_3` 不能用 |
 | `verify-airline-crawlers`、`verify-live-provider [--origin TPE] [--destination NRT] [--strict]`、`verify-naver-maps [--strict]` | 對外部來源做一次連線驗證 | `--strict` 失敗時 exit 1 |
 | `backfill-trip-item-names [--dry-run]` | migration 0039 前存的行程項目補五語系名，旅客改過的不動 | 預設就寫 |
+| `refresh-holidays --country tw\|jp --year Y [--file F] [--apply]` | 更新 repo 裡 vendored 的假日 JSON | 本機跑、結果走 PR；tw 要 `--file`；見 `other-data.md` |
+| `video-media-prune [--dry-run]` | 讓舊的媒體生成工作過期、刪掉沒有活工作指向的檔 | 預設就寫；屬 skill `youtube-video` |
+| `video-story-import --series S [--limit N] [--episodes-per-day N] [--apply]` | 從 stdin 匯入編譯好的品牌故事 `stories.json` | 不帶 `--apply` 只報告；屬 skill `youtube-video` |
 
 ## 不在 app.cli 的入口
 

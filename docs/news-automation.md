@@ -32,6 +32,39 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    fails is skipped and listed on the source (`partial`), and the listing's ETag is kept
    back so the next scan tries it again. Exact URL, title or content matches are closed as
    duplicates at once.
+   A first-party page that *refuses* the scanner (HTTP 401 or 403: `openai.com/index/*`
+   answers every request with a Cloudflare challenge) is not skipped forever when its entry is
+   dated within
+   the last 72 hours and the feed carries a summary: it becomes a candidate in
+   `needs_evidence` (`news_page_refused`) holding that summary as its only `lead_only`
+   evidence. Nothing is drafted from it; it is there so the story shows up in the review
+   queue, to be written by hand from the publisher's other pages or rejected. Before this
+   (2026-09-30), every OpenAI announcement was skipped every hour and never seen.
+   Such a story does not wait for a person when a later scan reads a page from an
+   `evidence` source that links to it (a press report linking to the refused announcement,
+   compared without query string, fragment or trailing slash): that page and the evidence
+   linked from it are attached to the waiting candidate, which goes back to `discovered`
+   and is queued, and the report itself is closed as `duplicate`
+   (`news_attached_as_evidence`) instead of filing the same story twice. This applies to
+   any candidate in `needs_evidence`, including one that had only `lead_only` pages.
+   A source with `evidence_from_feed_summary` (the Claude Platform release notes, whose
+   entries all link to anchors on one page) is not fetched page by page: each entry's feed
+   summary is its evidence, its anchor URL the canonical URL, and revalidation and
+   「用最新來源重新查核」 read the entry from the feed again. A URL of that site the feed does
+   not list (an aged-out entry, a page linked from another source) is read as a page.
+   A source whose dated entries of the last week keep failing for more than six hours is
+   reported `stuck` instead of `partial` (the note names those URLs first); `/admin/news`
+   lists stuck sources first under a warning, so a publisher that starts refusing the
+   scanner is noticed the same day.
+   A source's **first scan** (`last_scanned_at` empty) records every listed entry older than
+   72 hours, or undated, as seen (`rejected`, `news_baseline`) without fetching it, so
+   adding a source files only its news of the last days, never its back catalogue.
+   Every fetch uses `fetch.tls_context()`: it verifies the chain, the expiry and the host
+   name, but not Python 3.13's strict X.509 profile, which the TWCA chain of Taiwan's
+   government sites fails ("Missing Subject Key Identifier"). Before this no `gov.tw` page
+   could be read at all. Listings can be narrowed with `include_query_contains` (sites that
+   serve every page from one script, like the FSC's `/ch/home.jsp`) and
+   `include_title_keywords` (a publisher mostly outside the three verticals).
 2. **Evidence gate.** At least one page from an evidence source (owner decision,
    2026-09-25: every enabled source is an official or trusted feed, and a person confirms
    each story before it is translated). Only a candidate with nothing but `lead_only` pages

@@ -385,8 +385,14 @@ export function documentPayload(automation, job, problem = null) {
   };
   if (job.kind === "setting" || job.kind === "bible") return base;
   const setting = context.setting ? { body_md: context.setting.body_md, body_json: context.setting.body_json } : null;
+  // Keep the authors' answers and schedule units intact. The API's live mystery state is
+  // not a replacement for the approved setting, and missing evidence is not an empty list.
+  const publicTextContext = {
+    mystery_answers: setting?.body_json?.mysteries ?? null,
+    reveal_schedule: context.outline?.body_json?.reveal_schedule ?? null,
+  };
   if (job.kind === "outline") {
-    return { ...base, setting, chapter_ranges: Array.from({ length: series.chapters }, (_, index) => chapterRange(series, index + 1)) };
+    return { ...base, setting, ...publicTextContext, chapter_ranges: Array.from({ length: series.chapters }, (_, index) => chapterRange(series, index + 1)) };
   }
   const outline = context.outline?.body_json ?? {};
   const chapter = job.chapter_number;
@@ -394,6 +400,7 @@ export function documentPayload(automation, job, problem = null) {
   return {
     ...base,
     setting,
+    ...publicTextContext,
     outline: { body_md: context.outline?.body_md ?? "", body_json: outline },
     chapter_number: chapter,
     chapter_range: chapterRange(series, chapter),
