@@ -29,15 +29,15 @@ export function discoveryDetailHref(item: Pick<DiscoveryItem, "kind" | "id">, re
 const languageNames = new Map<string, Intl.DisplayNames>();
 /** The content language in the reader's own words: "Japanese" for an en reader, and the zh-TW,
  *  zh-CN, ja or ko name for those readers. CLDR does the translating, so there is no five-way
- *  table to keep in step. Null when the two locales match, when the tag has no name or cannot be
- *  parsed, or when the runtime has no Intl.DisplayNames: in every one of those cases the card
- *  stays exactly as it was. Locales compare as whole canonical tags, the same test the feed's
- *  ordering key applies, so a zh-TW reader still sees simplified-Chinese content named. */
-export function contentLanguageName(readerLocale: string, contentLocale: string | null | undefined): string | null {
+ *  table to keep in step. Cards omit matching locales; details opt in to naming them. Null
+ *  when the tag has no name or cannot be parsed, or when the runtime has no Intl.DisplayNames.
+ *  Locales compare as whole canonical tags, the same test the feed's ordering key applies,
+ *  so a zh-TW reader still sees simplified-Chinese content named. */
+export function contentLanguageName(readerLocale: string, contentLocale: string | null | undefined, { includeSameLocale = false }: { includeSameLocale?: boolean } = {}): string | null {
   try {
     if (typeof contentLocale !== "string" || !contentLocale.trim()) return null;
     const [reader] = Intl.getCanonicalLocales(readerLocale); const [content] = Intl.getCanonicalLocales(contentLocale.trim());
-    if (reader === content) return null;
+    if (reader === content && !includeSameLocale) return null;
     let names = languageNames.get(reader);
     if (!names) { names = new Intl.DisplayNames(reader, { type: "language", fallback: "none" }); languageNames.set(reader, names); }
     return names.of(content) ?? null;
@@ -142,7 +142,7 @@ export function DiscoveryDetails({ kind, id, returnTo = "/explore" }: { kind: st
       })}</section> : null}
       {detail?.hotel && <HotelDetails product={detail.hotel} />}
       {item.content?.itinerary && <ItineraryPreview itinerary={item.content.itinerary} />}
-      <section className={styles.detailSection}><h3 className="mb-3 font-bold">{f.sources}</h3><p className="text-sm leading-6 text-[var(--muted)]">{c.sourceKinds[item.source.kind]} · {item.author?.display_name || item.source.label}<br />{c.originalLanguage}: {item.locale} · {item.published_at ? <time dateTime={item.published_at}>{new Date(item.published_at).toLocaleDateString(locale)}</time> : c.undated}{item.updated_at && <><br />{getDiscoveryFeedback(locale).updated}: <time dateTime={item.updated_at}>{new Date(item.updated_at).toLocaleString(locale)}</time></>}</p>
+      <section className={styles.detailSection}><h3 className="mb-3 font-bold">{f.sources}</h3><p className="text-sm leading-6 text-[var(--muted)]">{c.sourceKinds[item.source.kind]} · {item.author?.display_name || item.source.label}<br />{c.originalLanguage}: {contentLanguageName(locale, item.locale, { includeSameLocale: true }) ?? item.locale} · {item.published_at ? <time dateTime={item.published_at}>{new Date(item.published_at).toLocaleDateString(locale)}</time> : c.undated}{item.updated_at && <><br />{getDiscoveryFeedback(locale).updated}: <time dateTime={item.updated_at}>{new Date(item.updated_at).toLocaleString(locale)}</time></>}</p>
         {item.author?.handle && <Link href={`/community/profiles/${encodeURIComponent(item.author.handle)}`} className="inline-flex min-h-11 items-center text-[var(--teal)] underline">{item.author.display_name}</Link>}
         {source && <ExternalLink href={source}>{c.source}</ExternalLink>}
         {item.href && !item.href.includes("/explore?content=") && <Link href={safeNextPath(item.href, "/explore").replace(/^\/(?:zh-TW|zh-CN|en|ja|ko)(?=\/)/, "")} className="flex min-h-11 items-center text-[var(--teal)] underline">{c.details}</Link>}
