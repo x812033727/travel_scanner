@@ -550,25 +550,35 @@
     {
       "id": "B48",
       "pillar": "business",
-      "title": "為什麼刷 Visa 卡，借你錢的卻不是 Visa？",
-      "hook": "你刷 Visa 卡，但借你錢的不是 Visa。",
-      "answer": "Visa 自己說它不是金融機構：不發卡、不放款、不訂卡友的利率。它經營付款網路，處理授權、清算與結算，向銀行收網路費用；發卡、核額度、收循環利息的是你的銀行，刷卡的交換手續費也是由收單行付給發卡行。",
+      "title": "刷Visa信用卡，為什麼不是Visa借你錢？",
+      "hook": "卡面有Visa，信用卡的信用由誰提供？先把網路與發卡機構分開。",
+      "answer": "Visa不發卡、不授信、不訂持卡人利率。典型付款四方是消費者、發卡、收單、商家，Visa網路連接角色；四角色不是四家公司。金融卡通常動用存款，信用卡動用信用額度。不數固定公司數，不談費率分配或營收。",
       "shorts": [
-        "刷一次卡經過了幾家公司",
-        "它原名 BankAmericard"
+        "卡面有Visa，提供信用的是誰？",
+        "四方模式，不等於四家公司"
       ],
       "key_visuals": [
-        "刷卡訊號在銀行、網路、商店之間傳遞的流程圖",
-        "泛稱信用卡（無 logo）",
-        "收據上拆成幾份的手續費"
+        "泛稱信用卡與金融卡分流",
+        "四角色與網路連接層",
+        "授權與後續清算結算分開"
       ],
       "facts_to_verify": [
-        "Visa 最新年報收入結構（FY2025 淨營收 400 億美元）",
-        "台灣信用卡手續費分配（若提到）"
+        "2025 SEC10-K的角色、典型VisaNet路徑與不授信聲明",
+        "官方Debit及Credit教學的存款／信用額度區分；不套各地條款",
+        "1976品牌改名，不推法人年或營收"
       ],
       "status": "checked",
       "verdict": "修正",
-      "check": "topic-checks/s2-B39-B50.md"
+      "check": "topic-checks/s2-B39-B50.md",
+      "original_title": "為什麼刷 Visa 卡，借你錢的卻不是 Visa？",
+      "production": {
+        "status": "package-reviewed",
+        "batch": "batch03",
+        "source_checked_on": "2026-10-01",
+        "package": "season2/B48.md",
+        "packaging": "season2/batch03-packaging.json",
+        "review": "season2/reviews/batch03/B48.json"
+      }
     },
     {
       "id": "B49",
@@ -1084,25 +1094,34 @@
       "id": "S44",
       "pillar": "science",
       "title": "為什麼冷凍庫的冰塊放久會變小？",
-      "hook": "冷凍庫裡的冰塊放久了，沒融化卻變小了。",
-      "answer": "冰會不經融化，直接昇華成水蒸氣。自動除霜的冷凍庫為了不結霜，讓空氣保持不飽和，冰塊就一直慢慢昇華，放一個月左右就看得出變小。食物表面的冰晶昇華、變乾，就是「凍傷」：吃了不會不安全，只是口感變差。",
+      "hook": "冰仍保持結冰，放久卻可能變小；水不必先融化才能離開。",
+      "answer": "固態冰可直接昇華為水蒸氣；同溫下周圍水蒸氣少於與冰平衡所需時，可有淨失水，相變需要能量。氣態水蒸氣不可見。冷凍包裝可減少食品乾燥；密封冰塊只作原理延伸，不保證永久、不給共同天數、不診斷設備或食品安全。",
       "shorts": [
-        "冰塊沒融化卻變小了",
-        "凍傷的肉能吃，只是乾掉"
+        "冰沒有融化，也可能慢慢變小",
+        "密封存冰，減少交換，但不是永久保證"
       ],
       "key_visuals": [
-        "冰盒裡一週前後的冰塊對比",
-        "冰塊表面水分子直接飛走",
-        "蓋滿霜的冷凍肉"
+        "同一冰格前後概念示意，沒有天數與比例",
+        "固到氣與固到液到氣兩條路",
+        "已凍好冰塊與冷凍容器的交換邊界"
       ],
       "facts_to_verify": [
-        "Indiana Public Media〈A Moment of Science〉：無霜冷凍庫空氣不飽和、約一個月可見變小",
-        "USDA FSIS：凍傷不影響安全、切掉即可",
-        "Iowa State 推廣處：凍傷是表面冰晶昇華"
+        "OpenStax13.5昇華、冰蒸氣壓與水蒸氣分壓、相變能量",
+        "NWS氣態水蒸氣不可見，分子點是示意",
+        "Iowa State2024失水與冷凍包裝建議；不採食安或未核除霜機理"
       ],
       "status": "checked",
       "verdict": "修正",
-      "check": "topic-checks/s2-S39-S50.md"
+      "check": "topic-checks/s2-S39-S50.md",
+      "original_title": "為什麼冷凍庫的冰塊放久會變小？",
+      "production": {
+        "status": "package-reviewed",
+        "batch": "batch03",
+        "source_checked_on": "2026-10-01",
+        "package": "season2/S44.md",
+        "packaging": "season2/batch03-packaging.json",
+        "review": "season2/reviews/batch03/S44.json"
+      }
     },
     {
       "id": "S45",
@@ -1440,25 +1459,35 @@
     {
       "id": "T33",
       "pillar": "travel",
-      "title": "為什麼有些國家的時差不是整點？",
-      "hook": "台灣和印度差兩個半小時，尼泊爾又比印度快 15 分鐘。",
-      "answer": "時區由各國自己決定，不一定要整點。印度全國只用一個時間，選了國土中央附近的東經 82.5 度，換算正好是 UTC+5:30；尼泊爾 1986 年改用東經 86.25 度附近的時間，就是 UTC+5:45。",
+      "title": "為什麼有些地方的時差不是整點？",
+      "hook": "同一刻UTC06:00，印度11:30、尼泊爾11:45；偏移不必是整小時。",
+      "answer": "民用UTC偏移由政治機構決定，IANA記錄其規則。現行印度UTC+05:30、尼泊爾+05:45，後者快15分鐘；查塔姆標準+12:45、夏令+13:45。換算要查地點與日期；不推經線歷史、國家時區數或主島切換鐘面時刻。",
       "shorts": [
-        "有 45 分鐘時差的地方",
-        "時區最多的國家不是俄羅斯"
+        "時差也有分鐘格",
+        "四十五分加夏令，仍是四十五分"
       ],
       "key_visuals": [
-        "世界時區地圖上幾塊特別的顏色",
-        "兩個錶面差半格",
-        "國土中央的經線"
+        "空白時鐘，時間與分鐘由後製填入",
+        "印度與尼泊爾同一UTC基準的比較",
+        "查塔姆標準與夏令欄加日期"
       ],
       "facts_to_verify": [
-        "各國時區有沒有變動（時區資料庫最新版）",
-        "各地夏令時間起訖日"
+        "IANA2026e及Asia末行、NPL當日偏移標示",
+        "尼泊爾2012GMT FAQ僅早期旁證，現行UTC依IANA",
+        "NZ政府2026-09-27到2027-04-04季節表及查塔姆45分；不用主島鐘面時刻"
       ],
       "status": "checked",
       "verdict": "修正",
-      "check": "topic-checks/s2-T26-T38.md"
+      "check": "topic-checks/s2-T26-T38.md",
+      "original_title": "為什麼有些國家的時差不是整點？",
+      "production": {
+        "status": "package-reviewed",
+        "batch": "batch03",
+        "source_checked_on": "2026-10-01",
+        "package": "season2/T33.md",
+        "packaging": "season2/batch03-packaging.json",
+        "review": "season2/reviews/batch03/T33.json"
+      }
     },
     {
       "id": "T34",
@@ -2137,27 +2166,35 @@
     {
       "id": "A36",
       "pillar": "tech",
-      "title": "為什麼 QR Code 破了一塊還可能掃得到？",
-      "hook": "QR Code 髒了、破了一塊，手機可能還是掃得出來。",
-      "answer": "QR Code 內建錯誤修正碼，依等級最多可還原約 30% 的碼字；三個角的定位圖形讓手機從任何角度都找得到它。但定位圖形被毀、或破損超過上限就讀不出來。它是 1994 年電裝（DENSO）開發部門為管理汽車零件設計的。",
+      "title": "QR Code 髒了為什麼還能讀？30%到底在算什麼？",
+      "hook": "QR Code有錯誤修正，但30%不是能撕掉三成畫面。",
+      "answer": "QR Code以Reed-Solomon等錯誤修正資料協助恢復；L/M/Q/H約7/15/25/30%指總碼字恢復率，總碼字含錯誤修正碼字，不是圖形面積。定位圖形協助找位置、大小及傾斜；仍有結構與破損限制，不能保證任意遮擋都能讀。不加入圍棋起源或掃描實測。",
       "shorts": [
-        "QR Code 會自己補資料",
-        "靈感和圍棋有關"
+        "QR Code 的30%，不是畫面面積",
+        "角落定位，不是任意可擦的資料區"
       ],
       "key_visuals": [
-        "缺角的方格碼與手機掃描框",
-        "三個定位方塊放大",
-        "汽車零件箱上的標籤"
+        "原創不可掃的方格示意，碼字與面積分開",
+        "資料與額外錯誤修正資訊的概念",
+        "定位角落獨立放大與限制"
       ],
       "facts_to_verify": [
-        "Denso Wave：L／M／Q／H 約 7／15／25／30%，是碼字比例",
-        "1994 年由原昌宏等人在當時 DENSO 的部門開發（2001 年獨立為 DENSO WAVE）",
-        "專利不行使的說明（Denso Wave 歷史頁）；ISO 2000 年標準化",
-        "圍棋靈感：IEEE Spectrum 2020-11-13 Hara 受訪（官方歷史頁沒寫）"
+        "DENSO WAVE四級比例圖及total codewords分母備註",
+        "官方about與version的錯誤修正與碼字概念",
+        "feature5定位作用與feature4注2不保證修復；未逐核完整標準或實掃"
       ],
       "status": "checked",
       "verdict": "修正",
-      "check": "topic-checks/s2-A26-A38.md"
+      "check": "topic-checks/s2-A26-A38.md",
+      "original_title": "為什麼 QR Code 破了一塊還可能掃得到？",
+      "production": {
+        "status": "package-reviewed",
+        "batch": "batch03",
+        "source_checked_on": "2026-10-01",
+        "package": "season2/A36.md",
+        "packaging": "season2/batch03-packaging.json",
+        "review": "season2/reviews/batch03/A36.json"
+      }
     },
     {
       "id": "A37",

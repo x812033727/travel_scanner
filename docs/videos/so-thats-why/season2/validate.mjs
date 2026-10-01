@@ -8,6 +8,7 @@ const base = dirname(fileURLToPath(import.meta.url));
 const batches = {
   batch01: ['B26', 'S26', 'T26', 'A31'],
   batch02: ['B27', 'S27', 'T28', 'A33'],
+  batch03: ['B48', 'S44', 'T33', 'A36'],
 };
 const batch = process.argv.find((arg) => arg.startsWith('--batch='))?.slice(8) ?? 'batch01';
 if (!Object.hasOwn(batches, batch)) {

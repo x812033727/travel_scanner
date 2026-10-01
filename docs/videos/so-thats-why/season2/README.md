@@ -1,6 +1,6 @@
 # 原來如此事務所第二季：製作包交接
 
-2026-10-01 完成兩批共8題文字包：**B26、S26、T26、A31**及**B27、S27、T28、A33**。原題庫100題的「checked」是題目查核，本頁的「文字包已審」是本日逐集企劃及獨立審稿；沒有長片完整逐字稿、生成音訊／圖片／成片、正式匯入、核准或上架。
+2026-10-01 完成三批共12題文字包：**B26、S26、T26、A31**、**B27、S27、T28、A33**及**B48、S44、T33、A36**。原題庫100題的「checked」是題目查核，本頁的「文字包已審」是本日逐集企劃及獨立審稿；沒有長片完整逐字稿、生成音訊／圖片／成片、正式匯入、核准或上架。
 
 | 順序提案 | 本集問題 | 製作包 | 作者→獨立查核／聽眾文字審稿 |
 | --- | --- | --- | --- |
@@ -18,15 +18,25 @@
 | 3 | 垃圾車音樂：提醒功能與地方案例 | [T28](T28.md) | root→write_b26；[報告](reviews/batch02/T28.md)／[收據](reviews/batch02/T28.json) |
 | 4 | bug：較早用例與飛蛾事件 | [A33](A33.md) | write_t26→write_a31；[報告](reviews/batch02/A33.md)／[收據](reviews/batch02/A33.json) |
 
+第三批順序也是本批提案，沒有安排發布日期。
+
+| 順序提案 | 本集問題 | 製作包 | 作者→獨立查核／聽眾文字審稿 |
+| --- | --- | --- | --- |
+| 1 | Visa網路與提供信用的機構 | [B48](B48.md) | write_b26→root；[報告](reviews/batch03/B48.md)／[收據](reviews/batch03/B48.json) |
+| 2 | 冰塊昇華與失水條件 | [S44](S44.md) | write_a31→write_t26；[報告](reviews/batch03/S44.md)／[收據](reviews/batch03/S44.json) |
+| 3 | UTC偏移也有分鐘，夏令要查日期 | [T33](T33.md) | root→write_b26；[報告](reviews/batch03/T33.md)／[收據](reviews/batch03/T33.json) |
+| 4 | QR錯誤修正的碼字與定位限制 | [A36](A36.md) | write_t26→write_a31；[報告](reviews/batch03/A36.md)／[收據](reviews/batch03/A36.json) |
+
 每包包含本日來源與限制、前提／備註貼用欄位、480秒六章大綱、兩支180–220中文／英文數字詞單位Shorts、原創插畫／縮圖提示、五語長短片標題與說明。章長和Shorts秒數為估值，實際製作要重新查核新增主張、展開分鏡、審稿、TTS試聽、成片與平台驗收。
 
-五語可解析包：[batch01-packaging.json](batch01-packaging.json)與[batch02-packaging.json](batch02-packaging.json)，合計8長片企劃＋16Shorts共120組標題／說明。`proposed_order`僅本批順序，不改第一季排程，不設定發布日期。
+五語可解析包：[batch01-packaging.json](batch01-packaging.json)、[batch02-packaging.json](batch02-packaging.json)與[batch03-packaging.json](batch03-packaging.json)，合計12長片企劃＋24Shorts共180組標題／說明。`proposed_order`僅本批順序，不改第一季排程，不設定發布日期。
 
 ```powershell
 node docs/videos/so-thats-why/season2/validate.mjs
 node docs/videos/so-thats-why/season2/validate.mjs --batch=batch02
+node docs/videos/so-thats-why/season2/validate.mjs --batch=batch03
 # 正文與獨立審稿已更新且收據重綁後，才重產包裝：
-node docs/videos/so-thats-why/season2/validate.mjs --batch=batch02 --write
+node docs/videos/so-thats-why/season2/validate.mjs --batch=batch03 --write
 ```
 
 檢查器核100題id、五語、欄位上限、Shorts估時、六章合計、檔案入口及byte SHA256。它不做外部查核或媒體QA，不能自行把新稿視為已審；修改包後必須交不同作者審稿，更新報告與收據。審稿報告與本包各自有雜湊。
@@ -35,13 +45,15 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch02 --write
 
 第二批更正與限制：B27刪單品銷量數字與防偷錢起源；S27改透明片翻面示範，認知解釋不視作唯一結論；T28保留臺北現行與宜蘭2013年的區別，音樂問答更新日以本日直接重取確認；A33以Rutgers原信scan確認1878用例，不說最早造詞或Hopper親手抓蟲。
 
+第三批更正與限制：B48限定信用卡與典型付款，不數固定公司數、不採利息或營收數字；S44依水蒸氣條件說昇華，不給共同天數、不判食安；T33改「地方」並查日期，刪經線動機及時區國家排名；A36四級比例以總碼字計，不換算破損面積、不加入未核圍棋故事。B38與品牌A25同問題，本批未採用；時區品牌A09、浮冰S07及條碼品牌A14的問題與本批不同。
+
 ## 下一批接手
 
-母票仍開放，目前完成8題文字包；其餘92題尚待逐題審選，不能將列出題名當製作完成。開始下批先查分支／worktree／PR碰撞，再開窄scope批次票。現有製作包以本分支草稿PR交接，合併前不要另寫這八檔。
+母票仍開放，目前完成12題文字包；其餘88題尚待逐題審選，不能將列出題名當製作完成。開始下批先查分支／worktree／PR碰撞，再開窄scope批次票。現有製作包以本分支草稿PR交接，合併前不要另寫這十二檔。
 
 - A26：與既有AI名詞「上下文視窗」題重疊，本批跳過；需選新的可核實角度再採用。
 - S50／第三季S55、A29/A30／第三季A70、A38／第三季A58：下一批挑選前比較原查核與第一季、品牌故事、AI名詞企劃，避免重複同一問題及例子；目前尚未裁決。
-- B26/S26/T26/A31/B27/S27/T28/A33：文字包通過後續還要有完整長片稿與真實製作；不操作正式站或付費生成。
+- B26/S26/T26/A31/B27/S27/T28/A33/B48/S44/T33/A36：文字包通過後續還要有完整長片稿與真實製作；不操作正式站或付費生成。
 
 ## 100題逐題入口
 
@@ -71,7 +83,7 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch02 --write
 | B45 | 為什麼百圓商店賣一百圓還能賺？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
 | B46 | 為什麼一種黏不牢的膠，變成了便利貼？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
 | B47 | 為什麼 KitKat 在日本出過幾百種口味？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
-| B48 | 為什麼刷 Visa 卡，借你錢的卻不是 Visa？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
+| B48 | 為什麼刷 Visa 卡，借你錢的卻不是 Visa？ | [文字包已審](B48.md)；媒體未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
 | B49 | 為什麼泡麵會在日本被發明出來？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
 | B50 | 為什麼日本的聖誕節流行吃肯德基？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
 | S26 | 為什麼自己錄音的聲音聽起來很怪？ | [文字包已審](S26.md)；媒體未製作 | [原報告](../topic-checks/s2-S26-S38.md) |
@@ -92,7 +104,7 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch02 --write
 | S41 | 為什麼蜜蜂的巢格是六角形？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S39-S50.md) |
 | S42 | 為什麼雲有幾百噸水，還能飄在天上？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S39-S50.md) |
 | S43 | 為什麼星星會一閃一閃，行星卻不太閃？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S39-S50.md) |
-| S44 | 為什麼冷凍庫的冰塊放久會變小？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S39-S50.md) |
+| S44 | 為什麼冷凍庫的冰塊放久會變小？ | [文字包已審](S44.md)；媒體未製作 | [原報告](../topic-checks/s2-S39-S50.md) |
 | S45 | 為什麼很多人覺得長大後時間變快？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S39-S50.md) |
 | S46 | 為什麼煮義大利麵要在水裡加鹽？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S39-S50.md) |
 | S47 | 為什麼貓會發出呼嚕聲？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S39-S50.md) |
@@ -106,7 +118,7 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch02 --write
 | T30 | 為什麼歐洲的電梯常把地面層標成 0？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T26-T38.md) |
 | T31 | 為什麼有些大樓的樓層跳過 4？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T26-T38.md) |
 | T32 | 為什麼西班牙人晚餐吃得特別晚？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T26-T38.md) |
-| T33 | 為什麼有些國家的時差不是整點？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T26-T38.md) |
+| T33 | 為什麼有些國家的時差不是整點？ | [文字包已審](T33.md)；媒體未製作 | [原報告](../topic-checks/s2-T26-T38.md) |
 | T34 | 為什麼日本不少溫泉拒絕刺青？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T26-T38.md) |
 | T35 | 為什麼日本人跨年習慣吃蕎麥麵？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T26-T38.md) |
 | T36 | 為什麼韓國人生日習慣喝海帶湯？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T26-T38.md) |
@@ -134,7 +146,7 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch02 --write
 | A33 | 為什麼程式錯誤叫 bug？ | [文字包已審](A33.md)；媒體未製作 | [原報告](../topic-checks/s2-A26-A38.md) |
 | A34 | 為什麼「儲存」圖示還是一張磁碟片？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A26-A38.md) |
 | A35 | 為什麼硬碟容量標示曾經鬧上法院？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A26-A38.md) |
-| A36 | 為什麼 QR Code 破了一塊還可能掃得到？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A26-A38.md) |
+| A36 | 為什麼 QR Code 破了一塊還可能掃得到？ | [文字包已審](A36.md)；媒體未製作 | [原報告](../topic-checks/s2-A26-A38.md) |
 | A37 | 為什麼充電器功率變大，體積卻變小？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A26-A38.md) |
 | A38 | 為什麼 GPS 要用到相對論？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A26-A38.md) |
 | A39 | 為什麼複製是 Ctrl+C、貼上是 Ctrl+V？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A39-A50.md) |
