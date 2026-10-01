@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-api-flat-explainer-any-series
 title: API 讓任何系列都能設 flat-explainer
-status: in-progress
+status: done
 priority: P3
 area: api
 owner: claude-opus-5-5-flat-explainer
 claimed_at: 2026-10-01T05:05:53Z
 created_at: 2026-09-28T16:51:44Z
-completed_at:
+completed_at: 2026-10-01T05:18:23Z
 branch: claude/flat-explainer-series-guard
 depends_on: []
 scope:
