@@ -8,7 +8,7 @@ import { fixture, fixtureLexicon } from "../core/fixtures/load.mjs";
 import { validateBranding, presentationTimeline } from "../core/branding.mjs";
 import { buildCues, toSrt } from "../core/captions.mjs";
 import { eachLine, textHash } from "../core/schema.mjs";
-import { localeTexts } from "../core/stages.mjs";
+import { captionLocalesOf, localeTexts, metadataLocalesOf } from "../core/stages.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
 import { dubScript, translationHash } from "../dubs/plan.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
@@ -130,6 +130,91 @@ export function languageFixture(base) {
   const uploaded = new Map();
   const upload = async (_request, _slug, file, role, type) => { const item = fileEntry(file, role, type); uploaded.set(item.sha256, readFileSync(file)); return item; };
   return { project, workdir, remote, body, upload, uploaded };
+}
+
+/** Narration-aware bytes exported for the real Python consumer probe, not a second contract. */
+export function narrationFixture(base, { locales = { ja: { metadata: false, captions: true, dub: false } } } = {}) {
+  const sample = languageFixture(base), { project, workdir, remote } = sample;
+  project.doc.narration_locale = "en";
+  project.doc.youtube.title = "A renewed English story";
+  project.doc.youtube.description = "The original English narration.";
+  for (const { line } of eachLine(project.doc)) line.text = `Original English narration for ${line.id}.`;
+  project.translations = Object.fromEntries(["zh-TW", "ja", "ko", "zh-CN"].map((locale) => [locale, {
+    title: `${locale} translated title`, description: `${locale} translated description`,
+    lines: Object.fromEntries([...eachLine(project.doc)].map(({ line }) => [line.id, { text: `${locale} translation of ${line.id}`, source_hash: textHash(line.text) }])),
+  }]));
+  const timeline = JSON.parse(readFileSync(path.join(workdir, "timeline.json")));
+  timeline.speech_hash = speechHash(project.doc, project.lexicon);
+  const checks = JSON.parse(readFileSync(path.join(workdir, "checks.json")));
+  Object.assign(checks, { speech_hash: timeline.speech_hash, visual_hash: visualHash(project.doc) });
+  json(path.join(workdir, "timeline.json"), timeline); json(path.join(workdir, "checks.json"), checks);
+  const languages = { locales: structuredClone(locales), decided_at: "2026-10-01T00:00:00Z" };
+  remote.locales = structuredClone(locales);
+  json(path.join(workdir, "languages.json"), languages);
+  json(path.join(workdir, "captions", "manifest.json"), { speech_hash: timeline.speech_hash, branding_hash: checks.branding.hash });
+  const presented = presentationTimeline(timeline, checks.branding);
+  const metadata = { ...composeMetadata({ ...project, timeline: presented, locales: metadataLocalesOf(languages, "en") }).metadata,
+    final_sha256: remote.reviews[1].content_sha256, branding_hash: checks.branding.hash,
+    language_choice: languages.locales, captions: captionLocalesOf(languages, "en").map((locale) => `captions/${locale}.srt`),
+  };
+  const metadataFile = path.join(workdir, "upload", "metadata.json"); json(metadataFile, metadata);
+  const allFiles = [fileEntry(metadataFile, "metadata", "application/json"), fileEntry(path.join(workdir, "upload", "final.mp4"), "final", "video/mp4")];
+  const { texts } = localeTexts(project.doc, project.translations);
+  for (const locale of captionLocalesOf(languages, "en")) {
+    const caption = path.join(workdir, "upload", "captions", `${locale}.srt`);
+    writeFileSync(caption, toSrt(buildCues(presented, texts[locale], locale).cues));
+    allFiles.push(fileEntry(caption, `captions_${locale}`));
+  }
+  for (const locale of metadataLocalesOf(languages, "en")) {
+    const fields = locale === "en" ? metadata : metadata.localizations[locale];
+    const description = path.join(workdir, "upload", `description.${locale}.txt`);
+    writeFileSync(description, `${fields.title}\n\n${fields.description}\n`);
+    allFiles.push(fileEntry(description, `description_${locale}`));
+  }
+  remote.reviews[0].content_sha256 = allFiles[0].sha256;
+  const languageFiles = allFiles.filter((file) => Object.entries(locales).some(([locale, choice]) => choice.metadata && file.role === `description_${locale}` || (choice.captions || choice.dub) && file.role === `captions_${locale}`));
+  sample.body = { gate: "languages", content_sha256: sha("unbound language review"), payload: { locales: Object.fromEntries(Object.entries(locales).map(([locale, choice]) => [locale, { ...(choice.metadata ? { metadata: "ready" } : {}), ...(choice.captions || choice.dub ? { captions: "ready" } : {}) }])) }, files: languageFiles };
+  const publishBody = { gate: "publish", content_sha256: allFiles[0].sha256, payload: { package: { ok: true } }, files: allFiles };
+  return { ...sample, publishBody };
+}
+
+for (const selection of ["ja captions", "none", "own metadata and dub"]) {
+  test(`renewed English narration follows package locale helpers (${selection})`, async (t) => {
+    const base = mkdtempSync(path.join(os.tmpdir(), "renewal-narration-")); t.after(() => rmSync(base, { recursive: true, force: true }));
+    const locales = selection === "none" ? {} : selection === "own metadata and dub" ? { en: { metadata: true, captions: true, dub: true } } : { ja: { metadata: false, captions: true, dub: false } };
+    const sample = narrationFixture(base, { locales });
+    const publish = await bindRenewalSubmission({ ...sample, body: sample.publishBody });
+    assert.equal(publish.payload.final_review_id, finalId);
+    assert.ok(publish.files.some((file) => file.role === "captions_en"));
+    assert.ok(publish.files.some((file) => file.role === "captions_zh-TW"));
+    const result = await bindRenewalSubmission(sample);
+    const manifest = JSON.parse(sample.uploaded.get(result.content_sha256));
+    assert.deepEqual(manifest.choice.locales, locales);
+    if (selection === "own metadata and dub") {
+      assert.equal(manifest.locales.en.dub.status, "skipped");
+      assert.match(manifest.locales.en.dub.reason, /original narration/);
+      assert.equal(result.files.some((file) => file.role === "dub_en"), false);
+    }
+  });
+}
+
+for (const broken of ["automatic CC missing", "automatic CC stale", "automatic CC attachment missing", "automatic metadata missing", "duplicate original dub"]) {
+  test(`renewed English narration refuses ${broken} before submission`, async (t) => {
+    const base = mkdtempSync(path.join(os.tmpdir(), "renewal-narration-refuse-")); t.after(() => rmSync(base, { recursive: true, force: true }));
+    const sample = narrationFixture(base, { locales: { en: { metadata: true, captions: true, dub: true }, ja: { metadata: false, captions: true, dub: false } } });
+    const caption = path.join(sample.workdir, "upload", "captions", "zh-TW.srt");
+    if (broken === "automatic CC missing") rmSync(caption);
+    if (broken === "automatic CC stale") writeFileSync(caption, readFileSync(caption, "utf8").replace("00:00:05,000", "00:00:00,000"));
+    if (broken === "automatic CC attachment missing") sample.publishBody.files = sample.publishBody.files.filter((file) => file.role !== "captions_zh-TW");
+    if (broken === "automatic metadata missing") {
+      const file = path.join(sample.workdir, "upload", "metadata.json"), metadata = JSON.parse(readFileSync(file));
+      delete metadata.localizations["zh-TW"]; json(file, metadata);
+      const entry = fileEntry(file, "metadata", "application/json"); sample.publishBody.files[0] = entry; sample.publishBody.content_sha256 = entry.sha256;
+    }
+    if (broken === "duplicate original dub") sample.publishBody.files.push({ role: "dub_en", sha256: sha("duplicate"), size: 9, content_type: "audio/mp4" });
+    await assert.rejects(bindRenewalSubmission({ ...sample, body: sample.publishBody }));
+    assert.equal(sample.uploaded.size, 0);
+  });
 }
 
 test("renewed five-language output binds real metadata/manifest bytes and new final identity", async (t) => {

@@ -90,3 +90,10 @@ Check that only this operation's hold/STOP is removed and original worker is liv
   handoff after owner review remains the separate unclaimed dependent ticket.
 - Leaving this activation task open and released at that deployment boundary;
   do not mark all existing production cuts changed based on local candidates.
+- Rebased compatibility checks: 177 API tests, full ruff and mypy app447/tests340,
+  93 focused tools, 1046 full tools with 2 existing skips, 40 focused web tests and
+  136 actual producer/consumer scenarios passed. Full local web remains incomplete
+  (terminated -1), so exact-head CI is a gate. Follow-up tickets retain canonical
+  handoff and non-zh-TW request-transport limitations; neither is silently enabled.
+- Latest complete candidate rehash receipt at 10:19:40 UTC binds 10:14 UTC channel
+  and review reads. All 17 original/candidate files and Windows assets match.

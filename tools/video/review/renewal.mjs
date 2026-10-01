@@ -11,7 +11,8 @@ import { appliedBranding, brandingCurrent, presentationTimeline, readBranding, v
 import { buildCues, toSrt } from "../core/captions.mjs";
 import { isCompilation } from "../core/compilation.mjs";
 import { atomicWrite, isInside, readJson, UsageError } from "../core/paths.mjs";
-import { captionTimelineOf, currentDub, dubsForUpload, localeTexts, readLanguages } from "../core/stages.mjs";
+import { narrationLocale } from "../core/schema.mjs";
+import { captionLocalesOf, captionTimelineOf, currentDub, dubLocalesOf, dubRole, dubsForUpload, localeTexts, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
 import { speechHash, FPS } from "../core/timeline.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
 
@@ -187,17 +188,28 @@ export async function bindRenewalSubmission({ body, remote, project, workdir, re
   const selected = Object.fromEntries(Object.entries(choices(languages.locales)).filter(([, choice]) => choice.metadata || choice.captions || choice.dub));
   requireThat(Object.keys(metadata.language_choice ?? {}).length === Object.keys(selected).length && Object.keys(selected).every((locale) => Object.keys(metadata.language_choice[locale]).length === 3 && Object.entries(selected[locale]).every(([part, value]) => metadata.language_choice[locale][part] === value)), "metadata language choice is not the current compact choice; rebuild the package");
   const presented = presentationTimeline(timeline, applied);
-  const expectedMetadata = composeMetadata({ ...project, timeline: presented, locales: Object.keys(languages.locales).filter((locale) => languages.locales[locale].metadata) });
+  const narration = narrationLocale(project.doc);
+  const wantedDubs = dubLocalesOf(languages, project.doc);
+  const expectedMetadata = composeMetadata({ ...project, timeline: presented, locales: metadataLocalesOf(languages, narration) });
   requireThat(expectedMetadata.problems.length === 0 && JSON.stringify(metadata.chapters) === JSON.stringify(expectedMetadata.metadata.chapters) && metadata.description === expectedMetadata.metadata.description && JSON.stringify(metadata.localizations) === JSON.stringify(expectedMetadata.metadata.localizations), "the package description/chapters still use another presentation timeline");
   const { texts, skipped } = localeTexts(project.doc, project.translations);
   const defaultLocale = expectedMetadata.metadata.default_language;
   requireThat(metadata.default_language === defaultLocale && texts[defaultLocale], "the package changed the narration language");
   const defaultCaption = toSrt(buildCues(presented, texts[defaultLocale], defaultLocale).cues);
   requireThat(readFileSync(path.join(workdir, "upload", "captions", `${defaultLocale}.srt`), "utf8") === defaultCaption, "the narration captions still use another presentation timeline");
-  const payload = { ...body.payload, final_review_id: final.id };
+  const captionManifest = readJson(path.join(workdir, "captions", "manifest.json"), null);
+  const expectedCaptions = { [defaultLocale]: defaultCaption };
+  for (const locale of captionLocalesOf(languages, narration).filter((locale) => locale !== defaultLocale)) {
+    requireThat(captionManifest?.speech_hash === timeline.speech_hash && (captionManifest.branding_hash ?? null) === brand && texts[locale] && !skipped[locale]?.length, `${locale} captions need regeneration for this timeline`);
+    const dub = wantedDubs.includes(locale) ? currentDub(project, workdir, locale, timeline.speech_hash) : null;
+    requireThat(!dub?.stale, `${locale} dub is stale`);
+    expectedCaptions[locale] = toSrt(buildCues(dub ? captionTimelineOf(dub) : presented, texts[locale], locale).cues);
+    requireThat(readFileSync(path.join(workdir, "upload", "captions", `${locale}.srt`), "utf8") === expectedCaptions[locale], `${locale} caption bytes have stale offsets or text`);
+  }
+  const payload = { ...body.payload, ...(body.gate !== "publish" ? { locales: structuredClone(body.payload.locales ?? {}) } : {}), final_review_id: final.id };
   if (body.gate === "publish") {
     requireThat(body.files.some((file) => file.role === "metadata" && file.sha256 === hash(metadataBytes)) && body.content_sha256 === hash(metadataBytes) && body.payload.package?.ok === true, "publish proof no longer matches the package");
-    requireThat(body.files.some((file) => file.role === `captions_${defaultLocale}` && file.sha256 === hash(defaultCaption)), "published narration caption attachment is stale");
+    for (const [locale, expected] of Object.entries(expectedCaptions)) requireThat(body.files.some((file) => file.role === `captions_${locale}` && file.sha256 === hash(expected)), `${locale} published caption attachment is stale`);
   }
   const rows = remote.reviews ?? [];
   const publish = latest(rows, "publish");
@@ -206,34 +218,36 @@ export async function bindRenewalSubmission({ body, remote, project, workdir, re
   requireThat(!script || script.status === "approved", "the source screenplay is not approved");
   requireThat(project.doc.format !== "drama" || isCompilation(project.doc) || script, "the source screenplay review is missing");
   const files = [...body.files];
-  const captionManifest = readJson(path.join(workdir, "captions", "manifest.json"), null);
   for (const [locale, choice] of Object.entries(languages.locales)) {
     const entry = payload.locales?.[locale] ?? {};
+    if (choice.dub && locale === narration) {
+      requireThat(!files.some((file) => file.role === dubRole(locale)), "the narration's original audio must not be submitted as a duplicate dub");
+      if (body.gate !== "publish") {
+        const skipped = { status: "skipped", reason: "This language is the original narration; no duplicate dub is generated." };
+        payload.locales[locale] = body.gate === "dubs" ? skipped : { ...entry, dub: skipped };
+      }
+    }
     if (body.gate === "dubs") {
-      if (!choice.dub) continue;
+      if (!wantedDubs.includes(locale)) continue;
       const current = currentDub(project, workdir, locale, timeline.speech_hash);
       requireThat(entry.status === "skipped" && typeof entry.reason === "string" && entry.reason.trim() || entry.status === "ready" && current && !current.stale && (current.branding_hash ?? null) === brand && await sha256File(current.file) === entry.sha256 && files.some((file) => file.role === entry.file_role && file.sha256 === entry.sha256), `${locale} dub needs regeneration for the renewed final`);
       continue;
     }
     if (choice.metadata) {
-      requireThat((body.gate === "publish" || entry.metadata === "ready") && metadata.localizations?.[locale], `${locale} metadata is not ready`);
-      const expected = `${metadata.localizations[locale].title}\n\n${metadata.localizations[locale].description}\n`;
+      const localized = locale === defaultLocale ? metadata : metadata.localizations?.[locale];
+      requireThat((body.gate === "publish" || entry.metadata === "ready") && localized, `${locale} metadata is not ready`);
+      const expected = `${localized.title}\n\n${localized.description}\n`;
       requireThat(files.some((file) => file.role === `description_${locale}` && file.sha256 === hash(expected)), `${locale} description bytes differ from metadata`);
     }
     if (choice.captions) {
-      requireThat(!isCompilation(project.doc), "renewed compilation captions need a source-bound episode manifest; do not reuse their old language package");
-      requireThat((body.gate === "publish" || entry.captions === "ready") && captionManifest?.speech_hash === timeline.speech_hash && (captionManifest.branding_hash ?? null) === brand && texts[locale] && !skipped[locale]?.length, `${locale} captions need regeneration for this timeline`);
-      const dub = choice.dub ? currentDub(project, workdir, locale, timeline.speech_hash) : null;
-      requireThat(!dub?.stale, `${locale} dub is stale`);
-      const presented = dub ? captionTimelineOf(dub) : presentationTimeline(timeline, applied);
-      const expected = toSrt(buildCues(presented, texts[locale], locale).cues);
-      requireThat(files.some((file) => file.role === `captions_${locale}` && file.sha256 === hash(expected)), `${locale} caption bytes have stale offsets or text`);
+      requireThat(body.gate === "publish" || entry.captions === "ready", `${locale} captions are not ready`);
+      requireThat(files.some((file) => file.role === `captions_${locale}` && file.sha256 === hash(expectedCaptions[locale])), `${locale} caption bytes have stale offsets or text`);
     }
-    if (choice.dub && entry.dub === "ready") {
+    if (wantedDubs.includes(locale) && entry.dub === "ready") {
       const current = currentDub(project, workdir, locale, timeline.speech_hash);
       requireThat(current && !current.stale && files.some((file) => file.role === entry.file_role && file.sha256 === entry.sha256) && await sha256File(current.file) === entry.sha256 && current.branding_hash === brand, `${locale} dub has another timeline`);
     }
-    if (body.gate === "publish" && choice.dub) {
+    if (body.gate === "publish" && wantedDubs.includes(locale)) {
       const available = dubsForUpload(project, workdir, timeline.speech_hash, [locale]);
       const current = available.dubs.find((dub) => dub.locale === locale);
       const skippedReason = metadata.skipped_dub_locales?.[locale];

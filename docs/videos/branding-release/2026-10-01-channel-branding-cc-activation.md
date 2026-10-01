@@ -49,7 +49,7 @@ installed with the same selection. The previous current was preserved in history
 55 existing cut metadata files remained identical, and both installed assets
 passed full decode. Existing per-video pins are deliberately preserved.
 
-A fresh read-only worker readback at 09:24:17 UTC still selected the same package
+A fresh read-only worker readback at 10:14:24 UTC still selected the same package
 and exact intro/outro hashes. The original container was running, with no global
 STOP and no release hold. The production code revision remained `7606ff50`.
 
@@ -71,7 +71,7 @@ At 08:02:34 UTC the linked channel's complete upload playlist was read successfu
 unlisted OAuth demonstration. No additional entry matched the 11 pending projects'
 exact title/campaign identity. Shared article URLs alone were not treated as video
 identity; Google Vids, AI plans and AI pricing have distinct cuts using shared sources.
-The complete channel was read again at 09:26:31 UTC: the same 12 entries, 11 public
+The complete channel was read again at 10:14:26 UTC: the same 12 entries, 11 public
 project IDs and no active project upload sessions or VPS jobs.
 
 The 11 pending projects' `stage="on YouTube"` is a **next-step** report from
@@ -86,7 +86,7 @@ Media and account evidence stay outside Git under
 `C:/Users/x8120/mokaair-work/channel-intro-20260930/brand-package-v2-cc/`.
 
 `rollout/final-coverage.json` rehashed all 17 original/candidate full files and
-the Windows current/assets at 09:40:56 UTC. It binds the fresh review and complete
+the Windows current/assets at 10:19:40 UTC. It binds the fresh review and complete
 channel inventories. All 17 completed unuploaded long cuts have new local finals;
 three new finals are present on the site (one approved externally, two pending),
 and 14 await explicit owner renewal after code deployment. This operation uploaded
@@ -191,13 +191,16 @@ owner state, submits the replacement once, then reads back its manual-pending
 identity. Publish/language/dub producers bind the new final review, current choices,
 branding and actual attachment hashes; old worker snapshots remain held.
 
-Validation passed: 129 related API tests, full API ruff, full mypy app (447 files)
-and tests (340 files); 85 focused tools tests; 1,027 complete tools tests with two
-existing skips; 38 focused web tests; web lint, typecheck and five-locale i18n.
-An independent probe fed actual Node manifests to the Python consumer: 83 compose
-calls and two producer rejections, 85 scenarios with no unexpected result. Its
-final R3 report SHA is
-`a419b9ce9b3cb24f7b16aa2743d87a169f482774c6668f9eb58a51c074581010`.
+Validation passed after narration-locale compatibility: 177 related API tests,
+full API ruff, full mypy app (447 files) and tests (340 files); 93 focused tools
+tests; 1,046 complete tools tests with two existing skips before the final main
+update; 40 rebased focused web tests; web lint, typecheck and five-locale i18n.
+Independent probes fed actual Node manifests to the Python consumer: 136 scenarios
+across English and Traditional Chinese, including 130 compose calls and six producer
+rejections, with no unexpected result. The final English R4 report SHA is
+`a2cc9f698a53dd3ace9d3e4406a069c7d53181946ed52024e7486b311ca77671`;
+the exact producer/consumer source hashes and both R4 reports are bound in
+`rollout/renewal-narration-validation.json`.
 The complete local web run stalled without completed-suite evidence and was
 terminated with exit -1; full web acceptance remains a CI gate. These checks do
 not establish owner playback or live website acceptance.
@@ -207,6 +210,15 @@ Canonical worker adoption after owner approval, imported manual-package transfer
 and compilation source handoff remain explicitly held in the unclaimed dependent
 task `2026-10-01-hand-off-owner-approved-renewed-finals`. This release does not
 manufacture missing production evidence or automatically continue those projects.
+
+Main's narration-aware packaging is reconciled with both the renewal guard and
+language consumer. Approved narration and automatic zh-TW files are retained;
+selected original-language metadata must match the approved default text, and
+an original-language dub is explicitly skipped without attaching a duplicate track.
+The actual YouTube transport still hardcodes zh-TW default-language fields; that
+pre-existing non-zh-TW limitation is recorded in the unclaimed task
+`2026-10-01-youtube-narration-request-transport`. All 17 cuts in this rollout are
+zh-TW. Offline consumer acceptance is not real YouTube acceptance for other narration.
 
 All 14 renewal staging inputs and body hashes were prepared outside the repository
 in `rollout/renewal-stage-inputs.json`. Legacy metadata adapters only copy verified
