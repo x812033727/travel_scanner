@@ -1,13 +1,13 @@
 ---
 id: 2026-10-01-api-checks-the-looks-of-a
 title: API checks the looks of a setting book's characters
-status: in-progress
+status: done
 priority: P3
 area: api
 owner: claude-opus-5-5-api-looks
 claimed_at: 2026-10-01T12:21:51Z
 created_at: 2026-10-01T03:45:56Z
-completed_at:
+completed_at: 2026-10-01T12:30:47Z
 branch: claude/api-checks-character-looks
 depends_on: []
 scope:
