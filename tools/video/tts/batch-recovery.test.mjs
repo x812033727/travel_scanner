@@ -8,6 +8,9 @@ import { fixture, sandbox } from "../core/fixtures/load.mjs";
 import { hintTerms } from "./check.mjs";
 import { encodeWav } from "./wav.mjs";
 
+// The fixture videos run seconds; the eight-minute floor has tests of its own.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
+
 test("check-audio preserves a paid cross-scene batch and resumes only the unjudged lines", async () => {
   const box = sandbox();
   const doc = fixture();

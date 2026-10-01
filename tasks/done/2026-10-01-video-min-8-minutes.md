@@ -61,6 +61,10 @@ scope:
   - tools/video/screencast/screencast.test.mjs
   - tools/video/templates/terminal/terminal.test.mjs
   - tools/video/tts/check.test.mjs
+  - tools/video/dubs/dubs.test.mjs
+  - tools/video/dubs/plan.test.mjs
+  - tools/video/tts/batch-recovery.test.mjs
+  - tools/video/tts/tts.test.mjs
 ---
 
 # 影片每集至少 8 分鐘（漫劇除外，原來如此事務所也要）
