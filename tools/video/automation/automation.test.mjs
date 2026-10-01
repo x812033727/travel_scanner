@@ -16,7 +16,7 @@ import { atomicWrite, readJson, ROOT } from "../core/paths.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { dubArtifacts, loadProject, pipelineStatus } from "../core/state.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
-import { dubScript, translationHash } from "../dubs/plan.mjs";
+import { dubFingerprint, dubScript, translationHash } from "../dubs/plan.mjs";
 import { ITEM_IDS } from "../qa/checks.mjs";
 import { jpegBytes } from "../qa/test-images.mjs";
 import { PART_BYTES } from "../review/sync.mjs";
@@ -593,6 +593,26 @@ test("a drama stage ends its prompt with the drama part's standing instructions,
   assert.equal(slidesVerifier.instructions.includes("## The owner's standing instructions"), false, "the tutorial part has none for the verifier");
 });
 
+test("the Chinese production profile fixes its distinct narrator casting and Taiwan direction without changing legacy defaults", () => {
+  const source = { ...dramaFixture(), narration_locale: "en", youtube: { ...dramaFixture().youtube, default_language: "en" } };
+  const options = { slug: "jingwei", settings: { voice: { provider: "gemini", name: "Sulafat", style: "沉穩低聲" }, drama: {} }, root: ROOT, format: "drama", production: { profile: { phases: { primary: { locale: "zh-TW" } } }, narrator: { voice_name: "Erinome", performance: "低聲說書，有留白" } } };
+  const settled = settle(source, options);
+  assert.equal(settled.voice.provider, "gemini");
+  assert.equal(settled.voice.name, "Erinome");
+  assert.equal(settled.voice.style, "台灣國語，自然台灣口音。低聲說書，有留白");
+  assert.equal(settled.narration_locale, "zh-TW");
+  assert.equal(settled.youtube.default_language, "zh-TW");
+  assert.deepEqual(settled.characters, source.characters, "narrator instructions never replace character voices");
+  assert.equal(settle(source, { ...options, production: null }).voice.style, "沉穩低聲");
+  assert.equal(settle(source, { ...options, production: null }).narration_locale, "en");
+  const azure = { ...options, settings: { voice: { provider: "azure", name: "en-US-JennyNeural", rate: "+0%" }, drama: {} } };
+  assert.equal(settle(source, azure).voice.name, "Erinome", "the approved narrator wins over unrelated site defaults");
+  assert.equal(settle(source, { ...azure, production: null }).voice.name, "en-US-JennyNeural");
+  for (const narrator of [null, { voice_name: "Kore", performance: "旁白" }]) {
+    assert.throws(() => settle(source, { ...options, production: { ...options.production, narrator } }), (error) => error.who === "owner" && error.code === "video_production_voice_mismatch");
+  }
+});
+
 test("a drama is settled with the settings tab's preset, subtitles and music, and its brief has the bible's sections", () => {
   const settings = { voice: { provider: "gemini", name: "Sulafat", style: "s", model: null, rate: "+0%" }, drama: DRAMA_SETTINGS };
   const video = { ...dramaFixture(), slug: "x" };
@@ -601,7 +621,7 @@ test("a drama is settled with the settings tab's preset, subtitles and music, an
   assert.equal(settled.format, "drama");
   assert.equal(settled.look.preset, "ink-wash", "the settings tab's preset when the writer named none");
   assert.equal(settled.look.style, video.look.style, "the writer's own style stays");
-  assert.equal(settled.subtitles.burn_in, true);
+  assert.equal(settled.subtitles.burn_in, false, "new automation uses selectable CC despite legacy setting and writer burn-in requests");
   assert.equal(settled.music, undefined, "music is off in the settings");
   assert.equal(settled.voice.name, "Sulafat");
   const kept = settle({ ...dramaFixture(), slug: "x" }, { slug: "y", settings: { ...settings, drama: { ...DRAMA_SETTINGS, music_enabled: true } }, sourceGuide: null, root: ROOT, format: "drama" });
@@ -1225,7 +1245,7 @@ function fakeDub(box, slug, workdir, plan, checks) {
       const words = translationHash(dubScript(project.doc, project.translations[locale], locale).doc);
       const redo = command.includes("--redo");
       if (!redo) overRuns[locale] = (overRuns[locale] ?? 0) + 1;
-      const base = { locale, speech_hash: timeline.speech_hash, translation_hash: words, rates: { default: 15, measured: 14.2 } };
+      const base = { locale, speech_hash: timeline.speech_hash, translation_hash: words, speech_fingerprint: dubFingerprint(project, locale), rates: { default: 15, measured: 14.2 } };
       mkdirSync(files.dir, { recursive: true });
       const overrun = () => {
         const text = project.translations[locale].lines[first].text;

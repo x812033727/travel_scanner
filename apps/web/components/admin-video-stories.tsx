@@ -92,6 +92,21 @@ const ROLE_COPY_KEYS: Record<string, string> = {
   database_operator: "rolesDatabase", deployer: "rolesDeployer", owner: "rolesOwner",
 };
 
+// A dropped story may be made again (POST .../redo, redo_episode in the API's series.py): the
+// remake's video slug is the planned slug plus -redo<n>, n from 1, and STORY_REDO_LIMIT remakes are
+// allowed. The API does not say how many are left, so the row reads them from the episode's slug;
+// the dropped video keeps the slug before it (the planned one, or the remake before it).
+const STORY_REDO_LIMIT = 1;
+const REDO_SLUG = /^(.+)-redo([1-9][0-9]*)$/;
+
+/** How many times a story was remade, and the slug of the video the latest remake replaced. */
+export function storyRedo(slug: string | null): { count: number; earlier: string } {
+  const match = slug ? REDO_SLUG.exec(slug) : null;
+  if (!match) return { count: 0, earlier: "" };
+  const count = Number(match[2]);
+  return { count, earlier: count > 1 ? `${match[1]}-redo${count - 1}` : match[1] };
+}
+
 const message = (problem: unknown) => (problem instanceof Error ? problem.message : "");
 const beatsOf = (episode: SeriesEpisode) => record(episode.beats);
 const storyId = (episode: SeriesEpisode) => text(beatsOf(episode).id);
@@ -416,7 +431,9 @@ function StoryPlan({ episode }: { episode: SeriesEpisode }) {
  * The list of stories: each one's id, title, category and region, its slot in the plan, where it
  * is and its video once there is one; filtered by category and by where they are (both in the
  * URL), with the plan of one story opened under its row (read on its own, useStoryPlan). A story
- * not started yet may be skipped and a skipped one that never started brought back.
+ * not started yet may be skipped and a skipped one that never started brought back; one whose
+ * video was dropped may be made again, up to STORY_REDO_LIMIT times, and a remade one still opens
+ * the video it replaced.
  */
 function StoryList({ series, now, generation, canManage, onOpenVideo, onChanged }: { series: StorySeries; now: number; generation: number; canManage: boolean; onOpenVideo: (slug: string) => void; onChanged: () => void }) {
   const t = useTranslations("admin.videoStories");
@@ -435,6 +452,7 @@ function StoryList({ series, now, generation, canManage, onOpenVideo, onChanged 
   const act = async (what: string, episode: SeriesEpisode) => {
     const id = storyId(episode) || String(episode.number);
     if (what === "skip" && !window.confirm(t("list.skipConfirm", { id, title: episode.title }))) return;
+    if (what === "redo" && !window.confirm(t("list.redoConfirm", { id, title: episode.title }))) return;
     setBusy(`${what}-${episode.number}`);
     setError("");
     try {
@@ -475,6 +493,11 @@ function StoryList({ series, now, generation, canManage, onOpenVideo, onChanged 
         day !== null && slot ? t("list.slot", { day, slot }) : "", t("list.number", { number: episode.number }),
       ].filter(Boolean);
       const working = busy.endsWith(`-${episode.number}`);
+      // Dropped as the API means it: skipped after it started (the "dropped" state is a video
+      // dropped before its episode was marked skipped, which the API does not redo yet).
+      const dropped = episode.status === "skipped" && Boolean(episode.started_at);
+      const redo = storyRedo(episode.slug);
+      const redoable = dropped && redo.count < STORY_REDO_LIMIT;
       return <li key={episode.number} className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-3">
         <div className="flex flex-wrap items-start gap-x-3 gap-y-2">
           <span className="font-mono text-sm font-bold">{id || `#${episode.number}`}</span>
@@ -485,10 +508,12 @@ function StoryList({ series, now, generation, canManage, onOpenVideo, onChanged 
         <div className="mt-2 flex flex-wrap items-center gap-2">
           {id && <Button secondary aria-expanded={open} onClick={() => setOpened(open ? "" : id)}>{open ? t("list.closePlan") : t("list.openPlan")}</Button>}
           {video && <Button secondary onClick={() => onOpenVideo(video.slug)}>{t("list.openVideo")}</Button>}
+          {redo.earlier && <Button secondary onClick={() => onOpenVideo(redo.earlier)}>{t("list.earlierVideo")}</Button>}
           {video?.youtube_video_id && <a href={`https://www.youtube.com/watch?v=${encodeURIComponent(video.youtube_video_id)}`} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-1 rounded-xl border border-[var(--line)] px-3 text-sm font-semibold hover:border-[var(--teal)]">{t("list.youtube")}<ExternalLink aria-hidden size={14} /></a>}
           {canManage && (episode.status === "planned" || episode.status === "ready") && <Button secondary disabled={working} onClick={() => void act("skip", episode)}>{t("list.skip")}</Button>}
           {canManage && episode.status === "skipped" && !episode.started_at && <Button secondary disabled={working} onClick={() => void act("restore", episode)}>{t("list.restore")}</Button>}
-          {episode.status === "skipped" && episode.started_at && <span className="text-sm text-[var(--muted)]">{t("list.startedSkipped")}</span>}
+          {canManage && redoable && <Button secondary disabled={working} onClick={() => void act("redo", episode)}>{t("list.redo")}</Button>}
+          {dropped && <span className="text-sm text-[var(--muted)]">{redoable ? t("list.redoable") : t("list.startedSkipped")}</span>}
         </div>
         {open && <StoryPlanPanel id={id} plan={plan} />}
       </li>;

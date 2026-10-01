@@ -15,7 +15,7 @@
 | 題材 | 六個題材預設（仙俠羈絆保留今天的規則；重生復仇、系統遊戲、都市歸來、女帝崛起、自訂帶節奏規格）；主角女／男／雙男主 |
 | 上架 | 仍由站主在 Studio 上傳（HANDS-OFF 第一步）；合集多一條「從後台下載 1080p 成片」的路徑 |
 
-**不變的前提**：旁白台灣國語（Gemini Sulafat＋角色聲音）、燒錄繁中字幕、en／ja／ko／zh-CN CC、合成內容揭露一律勾、原創規則（不用任何既有作品的人物、名詞、情節，查核有雷同檢查）、`STOP` 檔、預算由伺服器以 429 擋。舊作品不受影響：`genre=xianxia-bonds`、`hands_off=false`、`visual_tier=clips` 是預設，提示詞在該題材保留原文，lint 對沒有 `visual` 的鏡頭視為 clip。
+**2026-10-01 製作規格更新**：新自動製作字幕全為 CC，`burn_in: false`。這次十部依[製作資料](series-plans/production-20261001/README.md)，先完成繁中台灣口音聲音與成片，再做日／韓／英角色配音及各自 CC；四語聲音不混在同一對白主軌。這批正片全為動態片段，Veo Lite 1080p 每次八秒，需先通過試音與代表小樣。一般作品既有畫面等級仍可選，不能用 `visual_tier=clips` 字樣單獨證明完成高品質動畫。原創、STOP 與預算守門繼續適用。
 
 ## 名稱
 
@@ -250,7 +250,7 @@ payload 是 `tools/video/review/sync.mjs` 送審 `script` 關卡時的 `coverage
  "scenes": [{"id": "card-1", "template": "chapter", "chapter": "第 1 集 〈標題〉", …}, …, {"id": "outro", "template": "outro", "data": {"title": "全集完", "cta": "每一集都在頻道裡"}}]}
 ```
 
-合集是「有卡片與縮圖的漫劇」：不能有 `characters`、`look`、`music`、`series`、鏡頭場景，不能 `burn_in`（每集成片已燒錄）；場景由 `compilation` 區塊推出（每集一張 `chapter` 卡 `card-<N>`「第 N 集 〈標題〉」，最後一張 `outro`），`numbers` 讓跳過的集數留空號。章節卡 2 秒（`CARD_FRAMES = 60`）、片尾 4 秒（`OUTRO_FRAMES = 120`）；`chapter_cards: false`／`outro: false` 就不放。`category_id` 是 24（娛樂），不是教學片的 28。`lintCompilation` 對佔位標題只警告（工人先建文件再由企劃命名；`status` 會等）。
+合集是「有卡片與縮圖的漫劇」：不能有 `characters`、`look`、`music`、`series`、鏡頭場景，不能 `burn_in`（沿用每集畫面，另產合集 CC）；場景由 `compilation` 區塊推出（每集一張 `chapter` 卡 `card-<N>`「第 N 集 〈標題〉」，最後一張 `outro`），`numbers` 讓跳過的集數留空號。章節卡 2 秒（`CARD_FRAMES = 60`）、片尾 4 秒（`OUTRO_FRAMES = 120`）；`chapter_cards: false`／`outro: false` 就不放。`category_id` 是 24（娛樂），不是教學片的 28。`lintCompilation` 對佔位標題只警告（工人先建文件再由企劃命名；`status` 會等）。
 
 **步驟** `COMPILATION_STEPS`（`core/state.mjs` 的 `stepsFor(doc)`；後台標籤在 `review/sync.mjs` 的 `STEP_LABELS`）：
 

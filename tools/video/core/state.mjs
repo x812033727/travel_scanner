@@ -12,8 +12,8 @@ import { appliedBranding, brandingCurrent, readBranding } from "./branding.mjs";
 import { COMPILATION_HEADLINE_PLACEHOLDER, COMPILATION_STEPS, compilationChecksCurrent, isCompilation, lintCompilation, PLACEHOLDER_TITLE } from "./compilation.mjs";
 import { burnIn, illustrated, isDrama, keyframesHash, lookHash, mixHash, picturesHash, resolveMusic, resolveSfx, sfxHash, subtitlesHash } from "./drama.mjs";
 import { emptyLexicon } from "./lexicon.mjs";
-import { lintVideo } from "./lint.mjs";
-import { dubLocales, dubScript, speechLexicon, translationHash } from "../dubs/plan.mjs";
+import { lintVideo, productionClipProblems } from "./lint.mjs";
+import { dubLocales, dubScript, speechCurrent, speechLexicon, translationHash } from "../dubs/plan.mjs";
 import { atomicWrite, contentPackFile, docDir, readJson, readText, stopRequested, videoFile } from "./paths.mjs";
 import { LOCALES, narrationLocale } from "./schema.mjs";
 import { speechHash, visualHash } from "./timeline.mjs";
@@ -60,8 +60,8 @@ export function dubArtifacts(workdir, locale) {
     audio: path.join(dir, "audio"), // one WAV per line id, plus <id>.x<tempo>.wav for sped-up takes
     cache: path.join(dir, "audio", "cache.json"), // { lines: { id: key }, stretched: { id: key@tempo } }
     narration: path.join(dir, "narration.wav"), // the whole track, frame-aligned, before loudness
-    timeline: path.join(dir, "timeline.json"), // { speech_hash, translation_hash, total_frames, windows, lines }
-    fit: path.join(dir, "fit.json"), // { rates, windows, over: [{ id, chars, max_chars }] }
+    timeline: path.join(dir, "timeline.json"), // { speech_hash, translation_hash, speech_fingerprint, style_override, total_frames, windows, lines }
+    fit: path.join(dir, "fit.json"), // { speech_hash, translation_hash, speech_fingerprint, style_override, rates, windows, over: [{ id, chars, max_chars }] }
     skipped: path.join(dir, "skipped.json"), // the worker gave up on this locale: { reason, at }
     track: (format) => path.join(workdir, ARTIFACTS.dubs, `${locale}.${format}`),
   };
@@ -184,6 +184,7 @@ export function loadProject({ slug, file, root }) {
     if (translation) translations[locale] = translation;
   }
   const shelf = path.dirname(dir);
+  const shelfLexicon = readJson(path.join(shelf, "lexicon.json"), emptyLexicon());
   const others = [];
   if (existsSync(shelf)) {
     for (const entry of readdirSync(shelf, { withFileTypes: true })) {
@@ -206,7 +207,10 @@ export function loadProject({ slug, file, root }) {
     series: readJson(path.join(dir, "series.json"), null),
     // The dictionary as this narration's voice may use it: an English narration drops the
     // Chinese-character aliases, like a dub does (docs/videos/DUBS.md).
-    lexicon: speechLexicon(readJson(path.join(shelf, "lexicon.json"), emptyLexicon()), narrationLocale(doc)),
+    lexicon: speechLexicon(shelfLexicon, narrationLocale(doc)),
+    // The dictionary as the shelf has it, for the dubs, which filter it by their own language
+    // (dubRequests): a Chinese dub of an English video needs the aliases the narration dropped.
+    shelfLexicon,
     pack: doc.source_guide ? readJson(contentPackFile(doc.source_guide, root), null) : undefined,
     translations,
     others,
@@ -265,10 +269,41 @@ export function lookChosen(manifest, choice, look) {
 
 const needsReview = (manifest) => Object.values(manifest?.shots ?? {}).some((shot) => shot?.needs_review);
 
+const readOptional = (file) => {
+  try {
+    return readJson(file, null);
+  } catch {
+    return null;
+  }
+};
+
 /**
- * Each dub locale's state: "current" (a track made from this script and this translation),
- * "stale", "over" (the last run found windows that do not fit; no track), "skipped" (the worker
- * gave up, with its reason) or "missing". A video with no dubs is all "missing".
+ * Whether a dub record was made with the speech `dub` would ask for now (speechCurrent). A record
+ * with a fingerprint is compared by it; one from before fingerprints by the locale's clip cache.
+ * For a track (`track: true`) that evidence is void once a newer run left a fingerprinted
+ * fit.json without replacing the timeline: that run synthesized clips the track does not hold.
+ */
+export function dubSpeechCurrent(project, workdir, locale, record, { track = true } = {}) {
+  if (typeof record?.speech_fingerprint === "string") return speechCurrent(project, locale, record);
+  const files = dubArtifacts(workdir, locale);
+  const legacyGuard = !track || typeof readOptional(files.fit)?.speech_fingerprint !== "string";
+  return speechCurrent(project, locale, record, { cache: readOptional(files.cache), legacyGuard });
+}
+
+/** Why a dub record's speech is not current: recorded before fingerprints, or asked for differently. */
+function speechStaleNote(record, what = "made") {
+  return typeof record?.speech_fingerprint === "string"
+    ? `${what} with an older voice or pronunciation; run dub again (unchanged clips are reused)`
+    : `${what} before dubs recorded their pronunciation; run dub again (unchanged clips are reused)`;
+}
+
+/**
+ * Each dub locale's state: "current" (a track made from this script and this translation, with
+ * the voice and pronunciation `dub` would use now), "stale", "over" (the last run found windows
+ * that do not fit; no track), "skipped" (the worker gave up, with its reason) or "missing". A video
+ * with no dubs is all "missing". A record from before the speech fingerprint (a track or an
+ * over-budget fit.json) is judged by its clip cache (dubSpeechCurrent): current when every planned
+ * line still has its clip key, else "stale", and `dub` again pays only for the changed lines.
  */
 export function dubsStatus(project, workdir, speech) {
   const result = {};
@@ -294,12 +329,20 @@ export function dubsStatus(project, workdir, speech) {
       const soundCurrent = !doc || ((timeline.mix_hash ?? null) === (resolveMusic(doc) ? mixHash(doc) : null) && (timeline.sfx_hash ?? null) === (resolveSfx(doc) ? sfxHash(doc) : null));
       const frameCurrent = !branding || (timeline.body_total_frames === branding.body_frames && timeline.content_end_frame === branding.intro_frames + branding.body_frames && timeline.total_frames === branding.intro_frames + branding.body_frames + branding.outro_frames);
       const brandCurrent = selectionCurrent && bodyCurrent && frameCurrent && (timeline.branding_hash ?? null) === (branding?.hash ?? null);
-      const current = timeline.speech_hash === speech && timeline.translation_hash === hash && soundCurrent && brandCurrent;
-      result[locale] = { status: current ? "current" : "stale", note: current ? timeline.file : !brandCurrent ? "made for different channel branding; run dub again" : soundCurrent ? "made from an older script or translation" : "made without the video's music or sound effects; run dub again" };
+      const wordsCurrent = timeline.speech_hash === speech && timeline.translation_hash === hash;
+      // The same words can be asked for differently (a target alias, the dub voice): the
+      // fingerprint binds what the voice was asked to say; older records answer by their clip cache.
+      const voiceCurrent = dubSpeechCurrent(project, workdir, locale, timeline);
+      const current = wordsCurrent && voiceCurrent && soundCurrent && brandCurrent;
+      result[locale] = { status: current ? "current" : "stale", note: current ? timeline.file : !brandCurrent ? "made for different channel branding; run dub again" : !soundCurrent ? "made without the video's music or sound effects; run dub again" : !wordsCurrent ? "made from an older script or translation" : speechStaleNote(timeline) };
       continue;
     }
     if (fit?.over?.length && fit.speech_hash === speech && fit.translation_hash === hash) {
-      result[locale] = { status: "over", note: `${fit.over.length} lines to shorten (dubs/${locale}/fit.json)` };
+      // An over-budget run measured clips of the speech it asked for; with another pronunciation
+      // (or none recorded) its budgets may be wrong, so the locale is stale, not over.
+      result[locale] = dubSpeechCurrent(project, workdir, locale, fit, { track: false })
+        ? { status: "over", note: `${fit.over.length} lines to shorten (dubs/${locale}/fit.json)` }
+        : { status: "stale", note: speechStaleNote(fit, "the last run was over budget") };
       continue;
     }
     result[locale] = { status: "missing", note: "" };
@@ -358,6 +401,7 @@ export async function pipelineStatus({ slug, root, workdir }) {
   const assembledIllustrated = !(pictures && !drama) || (checks?.look_hash === lookNow && checks.pictures_hash === keyframesHash(doc, keyframes));
   const assembledSound = compilation || ((!doc?.music || checks?.mix_hash === mix) && (!doc?.sfx || checks?.sfx_hash === sfxHash(doc)));
   const assembledMedia = assembledDrama && assembledIllustrated && assembledSound && brandCurrent && brandBodyCurrent;
+  const productionClips = productionClipProblems(doc, project?.series, timeline, clips);
 
   const definitions = {
     brief: { done: existsSync(path.join(dir, "brief.md")), todo: `the planner agent writes docs/videos/${slug}/brief.md` },
@@ -409,8 +453,8 @@ export async function pipelineStatus({ slug, root, workdir }) {
     },
     "frames rendered": { done: framesDone, todo: cli("render", slug) },
     "clips generated": {
-      done: Boolean(speech) && clips?.speech_hash === speech && clips.visual_hash === visual && clips.look_hash === lookNow && !needsReview(clips),
-      note: clips && needsReview(clips) ? "some shots failed the clip checks (needs_review in clips/manifest.json)" : undefined,
+      done: Boolean(speech) && clips?.speech_hash === speech && clips.visual_hash === visual && clips.look_hash === lookNow && !needsReview(clips) && !productionClips.length,
+      note: productionClips.length ? productionClips[0].message : clips && needsReview(clips) ? "some shots failed the clip checks (needs_review in clips/manifest.json)" : undefined,
       todo: cli("clips", slug),
     },
     "music generated": { done: Boolean(mix) && music?.mix_hash === mix, todo: cli("music", slug) },

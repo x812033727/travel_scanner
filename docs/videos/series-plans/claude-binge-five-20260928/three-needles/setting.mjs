@@ -209,6 +209,15 @@ export default {
           { with: "guodahai", kind: "付錢、握著他女兒的人" },
           { with: "heting", kind: "七年前威脅他的人" },
         ],
+        looks: [
+          {
+            id: "hospital-bed",
+            from: 32,
+            to: 39,
+            appearance:
+              "Taiwanese man, 56, broad-shouldered, silver-gray hair swept back, heavy brows, slow eyes; lying in a hospital bed under a gray cashmere blanket pulled up to his shoulders, only his face and hands showing; no suit, tie or lapel pin in view.",
+          },
+        ],
       },
       {
         id: "weicheng",

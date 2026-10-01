@@ -26,6 +26,7 @@ import { LOCALE_PARTS, readLanguages, writeLanguages } from "../core/stages.mjs"
 import { ARTIFACTS, dubArtifacts, dubsStatus, lintProject, loadProject, pipelineStatus } from "../core/state.mjs";
 import { speechHash } from "../core/timeline.mjs";
 import { MAX_TEMPO } from "../dubs/plan.mjs";
+import { productionForEpisode } from "../production/design.mjs";
 import { buildSheet, SHEET_PARTS } from "../i18n/cli.mjs";
 import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview, sourceGuideOf } from "../review/sync.mjs";
 import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
@@ -257,13 +258,25 @@ export function settledVoice(voice) {
 
 /**
  * video.json as the owner's settings say it must be, whatever the model returned. A drama
- * (docs/videos/DRAMA.md) also takes the settings tab's style preset, subtitle burn-in and
- * whether music is made at all, and its narrator voice is the drama part's when the owner chose
+ * (docs/videos/DRAMA.md) also takes the settings tab's style preset and whether music is made,
+ * uses selectable CC, and its narrator voice is the drama part's when the owner chose
  * one; the writer's own look fields stay. The owner's request's preset (`stylePreset`) wins over
  * the settings tab's; an explainer's preset is not the writer's to change, and it has no characters.
  */
-export function settle(video, { slug, settings, sourceGuide, root, format = "slides", series = null, cast = null, stylePreset = null }) {
+export function settle(video, { slug, settings, sourceGuide, root, format = "slides", series = null, cast = null, stylePreset = null, production = null }) {
   const settled = { ...video, slug, voice: settledVoice(settingsFor(settings, format).voice) };
+  if (format === "drama" && production?.profile?.phases?.primary?.locale === "zh-TW") {
+    const narrator = production.narrator;
+    if (typeof narrator?.voice_name !== "string" || !narrator.voice_name.trim() || typeof narrator.performance !== "string" || !narrator.performance.trim()) {
+      throw new AutomationError("the approved Chinese production needs a selected narrator voice and performance direction", { code: "video_production_voice_mismatch", who: "owner" });
+    }
+    if ((cast ?? video.characters ?? []).some((character) => character.voice?.provider === "gemini" && character.voice.name === narrator.voice_name)) {
+      throw new AutomationError("the production narrator must have a voice distinct from every character; revise the approved narrator selection", { code: "video_production_voice_mismatch", who: "owner" });
+    }
+    settled.voice = { provider: "gemini", name: narrator.voice_name, style: `台灣國語，自然台灣口音。${narrator.performance}`.slice(0, 400) };
+    settled.narration_locale = "zh-TW";
+    if (settled.youtube) settled.youtube = { ...settled.youtube, default_language: "zh-TW" };
+  }
   // The description links the article through its content pack. An article the news automation
   // published lives only in the database, so without a pack the script names it in sources instead.
   if (sourceGuide && existsSync(contentPackFile(sourceGuide, root))) settled.source_guide = sourceGuide;
@@ -279,7 +292,9 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
       settled.look.preset = EXPLAINER_PRESET;
       settled.characters = [];
     }
-    settled.subtitles = { burn_in: drama.subtitle_burn_in ?? true, ...(video.subtitles ?? {}) };
+    // New automatic productions use selectable CC, even if an old site setting or writer
+    // asks for burn-in. Explicit legacy video.json files remain readable by assemble.
+    settled.subtitles = { ...(video.subtitles ?? {}), burn_in: false };
   } else if (illustrated(video)) {
     // Illustrated slides (docs/videos/ILLUSTRATED.md): the channel's look unless the writer named
     // one, and the owner's licensed music file and sound-effect set from the settings tab's
@@ -897,6 +912,8 @@ export class Automation {
     // The cast as this episode wears it: a character's look that covers the episode stands in for
     // the book's appearance, sheet prompt and voice style (docs/videos/SERIES.md, 換裝與變化).
     const cast = castFrom(context.setting?.body_json, episode.number);
+    const production = productionForEpisode(context.setting?.body_json, episode.number);
+    const visualTier = production?.profile ? "clips" : series.visual_tier ?? "clips";
     const beats = episode.beats ?? {};
     const state = {
       slug,
@@ -921,7 +938,7 @@ export class Automation {
           : {
               genre: series.genre ?? "xianxia-bonds",
               lead: series.lead ?? "dual-male",
-              visual_tier: series.visual_tier ?? "clips",
+              visual_tier: visualTier,
               compilation: Boolean(series.compilation),
               hands_off: Boolean(series.hands_off),
             }),
@@ -949,6 +966,7 @@ export class Automation {
       title: episode.title,
       logline: episode.logline,
       characters: cast,
+      ...(production ? { production } : {}),
       beats,
       recaps: context.recaps ?? [],
       earlier: episodes.filter((each) => each.number < episode.number).map(({ number, title, logline }) => ({ number, title, logline })),
@@ -956,8 +974,8 @@ export class Automation {
       mysteries: context.mysteries ?? [],
       setting_md: context.setting?.body_md ?? "",
       chapter_md: context.chapter?.body_md ?? "",
-      series: { title: series.title, premise: series.premise, tone: series.tone, aspects: series.aspects, note: series.note, style_preset: series.style_preset, open_ended: series.open_ended, genre: series.genre ?? "xianxia-bonds", lead: series.lead ?? "dual-male", visual_tier: series.visual_tier ?? "clips", compilation: Boolean(series.compilation), hands_off: Boolean(series.hands_off), total_minutes: series.total_minutes ?? null },
-      visual_tier: series.visual_tier ?? "clips",
+      series: { title: series.title, premise: series.premise, tone: series.tone, aspects: series.aspects, note: series.note, style_preset: series.style_preset, open_ended: series.open_ended, genre: series.genre ?? "xianxia-bonds", lead: series.lead ?? "dual-male", visual_tier: visualTier, compilation: Boolean(series.compilation), hands_off: Boolean(series.hands_off), total_minutes: series.total_minutes ?? null },
+      visual_tier: visualTier,
       compilation: Boolean(series.compilation),
     }, null, 2)}\n`);
     writeFileSync(path.join(dir, "brief.md"), episodeBrief(series, episode, cast, beats));
@@ -1274,11 +1292,18 @@ export class Automation {
   seriesPayload(state) {
     const info = readJson(path.join(docDir(state.slug, this.ctx.root), "series.json"), null);
     if (!info) return {};
+    // The approved book stays intact on disk. Its generated whole-series appendix
+    // repeats future episode direction; each model receives that only through the
+    // current episode's production payload. Keep owner notes outside the markers.
+    const settingMd = info.production
+      ? (info.setting_md ?? "").replace(/<!-- BEGIN GENERATED PRODUCTION DIRECTION -->[\s\S]*?<!-- END GENERATED PRODUCTION DIRECTION -->/g, "")
+      : info.setting_md ?? "";
     return {
       series: { ...(info.series ?? {}), slug: state.series.slug, episode: state.series.episode, chapter: state.series.chapter, title_of_episode: info.title, logline: info.logline },
       series_reference: this.reference().series,
       cast: info.characters ?? [],
-      setting_md: info.setting_md ?? "",
+      ...(info.production ? { production: info.production } : {}),
+      setting_md: settingMd,
       chapter_md: info.chapter_md ?? "",
       beats: info.beats ?? {},
       recaps: info.recaps ?? [],
@@ -1290,8 +1315,9 @@ export class Automation {
 
   /** A stage's video.json as it is saved: the owner's settings and the series' cast over what the model returned. */
   settled(state, video) {
-    const cast = state.series ? readJson(path.join(docDir(state.slug, this.ctx.root), "series.json"), {}).characters ?? [] : null;
-    const settledVideo = settle(video, { slug: state.slug, settings: this.settings, sourceGuide: state.source_guide, root: this.ctx.root, format: state.format, series: state.series ?? null, cast, stylePreset: state.style_preset ?? null });
+    const info = state.series ? readJson(path.join(docDir(state.slug, this.ctx.root), "series.json"), {}) : null;
+    const cast = info ? info.characters ?? [] : null;
+    const settledVideo = settle(video, { slug: state.slug, settings: this.settings, sourceGuide: state.source_guide, root: this.ctx.root, format: state.format, series: state.series ?? null, cast, stylePreset: state.style_preset ?? null, production: info?.production ?? null });
     // The storytelling register's pause beats are the tool's (register.mjs setPauseBeats): set on
     // every save of a script whose prompts carry the register, before lint, whichever stage wrote it.
     return this.usesRegister(state) ? setPauseBeats(settledVideo) : settledVideo;
