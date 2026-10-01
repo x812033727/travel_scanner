@@ -1,13 +1,13 @@
 ---
 id: 2026-09-30-video-worker-and-review-push-report
 title: Video worker and review-push report the video's category
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-report-category
 claimed_at: 2026-10-01T23:53:03Z
 created_at: 2026-09-30T10:00:16Z
-completed_at:
+completed_at: 2026-10-01T23:59:01Z
 branch: claude/video-report-category
 depends_on:
   - 2026-09-30-video-review-categories-column-browse-endpoint
