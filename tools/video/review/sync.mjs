@@ -31,6 +31,7 @@ import { packageFiles, packageLocales, readPackageReport, UPLOAD_DIR } from "../
 import { composeMetadata } from "../package/metadata.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { USER_AGENT } from "../tts/client.mjs";
+import { bindRenewalSubmission } from "./renewal.mjs";
 
 // Mirrors PART_BYTES in apps/api/app/video_reviews/storage.py: under nginx's 6 MB request cap.
 export const PART_BYTES = 4 * 1024 * 1024;
@@ -854,7 +855,11 @@ export async function reviewPush(args, ctx) {
       return ctx.EXIT.ok;
     }
     const bodies = await submissions(gate, { ctx, request, project, workdir, dir, flags: values.workdir ? ["--workdir", values.workdir] : [], manualReview: values["manual-review"] ?? false });
-    for (const body of bodies) {
+    for (const candidate of bodies) {
+      // An owner renewal invalidates old downstream approvals. Resolve its identity from
+      // the site, then verify bytes/timing before adding the new final-review binding.
+      const remote = ["publish", "languages", "dubs"].includes(candidate.gate) ? await request("GET", values.slug) : null;
+      const body = await bindRenewalSubmission({ body: candidate, remote, project, workdir, request, upload });
       const review = await request("POST", `${values.slug}/reviews`, { json: body });
       const what = body.subject ? `${gate} (${body.subject})` : gate;
       ctx.stdout.write(`${values.slug}: ${what} submitted for review (${review.status}); the owner decides on /admin/videos, then run review-pull\n`);

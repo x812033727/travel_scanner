@@ -532,6 +532,21 @@ test("without a token the push needs the owner", async () => {
   assert.match(out.out.stderr, /login/);
 });
 
+test("a worker holding the old package cannot submit while the owner's replacement is pending", async (t) => {
+  const box = sandbox(); t.after(() => rmSync(box.base, { recursive: true, force: true }));
+  const { final } = cutVideo(box);
+  const uploadDir = path.join(box.workdir, "upload"); mkdirSync(uploadDir, { recursive: true });
+  writeFileSync(path.join(uploadDir, "final.mp4"), final);
+  writeFileSync(path.join(uploadDir, "metadata.json"), JSON.stringify({ final_sha256: sha(final), title: "old title", description: "old description", default_language: "zh-TW" }));
+  const server = site();
+  server.state.reviews.push({ id: "renewed", gate: "final", status: "pending", content_sha256: sha("new-final"), payload: { _final_renewal: { previous_review_id: "old" } } });
+  const push = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "publish"], push.ctx), EXIT.usage);
+  assert.match(push.out.stderr, /still needs the owner's review/);
+  assert.equal(server.state.calls.some((call) => call.method === "POST"), false);
+  assert.equal(server.state.reviews.length, 1);
+});
+
 test("language reviews fit the summary limit without losing any locale, files or full skip reasons", async (t) => {
   const emptyReasonSummary = "語言：en 標題說明、CC、配音跳過（）。沒有要你上傳的配音";
   const boundaryReason = "𠮷".repeat(500 - [...emptyReasonSummary].length);

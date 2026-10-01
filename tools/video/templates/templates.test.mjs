@@ -110,6 +110,18 @@ test("the new templates check their data and reveal one element at a time", () =
   assert.match(slideHtml(scene("article-card"), state()), /<div class="site">mokaair\.com<\/div><\/div>/);
 });
 
+test("the terminal slide brings its own CSS; every other slide's head is what it was, so their frame keys hold", () => {
+  for (const each of showcase.scenes) {
+    const head = /<style>([^<]*)<\/style>/.exec(slideHtml(each, state()))[1];
+    if (each.template === "terminal") assert.match(head, /^:root\{--width:1920px;--height:1080px\}\.t-terminal /);
+    else assert.equal(head, ":root{--width:1920px;--height:1080px}", each.id);
+  }
+  const terminal = scene("check-version");
+  assert.match(slideHtml(terminal, state({ totalReveals: 1 })), /<span class="ps">\$<\/span> <span class="cmd"><span class="k" style="animation-delay:0ms">c<\/span>/);
+  delete terminal.data.tool_version;
+  assert.match(sceneProblems(terminal)[0], /^tool_version is required/);
+});
+
 test("chat lint keeps every accepted bubble within the 1080p layout budget", () => {
   const chat = scene("ask-once");
   assert.deepEqual(sceneProblems(chat), [], "the two long named bubbles are renderable");
