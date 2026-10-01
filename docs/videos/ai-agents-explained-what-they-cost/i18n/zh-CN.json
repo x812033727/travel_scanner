@@ -1,0 +1,526 @@
+{
+  "title": "AI 代理是什么、跑一次多少钱，以及控制预算前该确认的设置",
+  "description": "AI 代理（也常被叫作智能体）到底是什么、多轮调用如何增加费用、委托前该问什么。这期用一个五轮代理的账单示意，把钱花在哪讲清楚。\n给常听到“AI 代理”“自动化”，但分不清它跟聊天差在哪、又怕账单失控的人。\n\n涵盖聊天、固定流程与代理的区别，模型、指令、工具与运行环境等常见组成部分，反复处理历史可能如何增加成本，委托时要问的权限、日志、停止与预算，以及数据驻留与零数据保留两个合规限制。表格数字为示意，用来说明结构。\n五轮账单是 token 费用示例，未计缓存、工具、沙箱或第三方费用。OpenAI API 硬性支出上限须启用且可能有延迟，不能保证完全不超额。",
+  "tags": [
+    "AI 代理",
+    "AI 智能体",
+    "AI agent",
+    "AI agent cost",
+    "OpenAI Agents API",
+    "AI 自动化",
+    "agentic AI",
+    "代理成本",
+    "token"
+  ],
+  "chapters": {
+    "hook": "AI 代理是什么、跑一次多少钱",
+    "chat-vs-agent": "代理跟聊天差在哪",
+    "what-makes-agent": "一个代理由什么组成",
+    "why-expensive": "为什么跑一次这么贵",
+    "bill-table": "实算：五轮的账单",
+    "four-questions": "委托前先问四件事",
+    "start-safe": "怎么开始最安全",
+    "wrap-three": "三句话收尾"
+  },
+  "source_hashes": {
+    "chapters": {
+      "hook": "a8b4d8a7d76f",
+      "chat-vs-agent": "457cbb2aaa3b",
+      "what-makes-agent": "6971fe12751b",
+      "why-expensive": "31c5b798a294",
+      "bill-table": "cddc5aadc500",
+      "four-questions": "b164ec1ef5db",
+      "start-safe": "e36d1728939b",
+      "wrap-three": "129cfefc4e1b"
+    },
+    "title": "7bc89124273b",
+    "description": "cb1d2d0a71f2",
+    "tags": "64d5b05f180a"
+  },
+  "lines": {
+    "2892": {
+      "source_hash": "93ef86f97b95",
+      "text": "估费用时，重试、工具，还有沙箱环境的钱，也要算进去。"
+    },
+    "jrpz": {
+      "source_hash": "d78f4564aedb",
+      "text": "同一件事，做成 AI 代理，可能贵上十几倍。"
+    },
+    "rhcy": {
+      "source_hash": "8754ffbb3f10",
+      "text": "这期告诉你它贵在哪，还有哪些设置能帮你控制费用。"
+    },
+    "w977": {
+      "source_hash": "938f43954bc9",
+      "text": "顺便教你一句话分辨：眼前这个，到底是不是真的代理？"
+    },
+    "cs5g": {
+      "source_hash": "26ea9d0cad2c",
+      "text": "你可能以为，有聊天框的就是 AI 代理。"
+    },
+    "j3jv": {
+      "source_hash": "bbf8d81ef3bc",
+      "text": "其实重点不在聊天框，而在决定权放在谁手上。"
+    },
+    "83wx": {
+      "source_hash": "d955d630dfe8",
+      "text": "你问问题、它给你步骤，那是聊天。"
+    },
+    "vegh": {
+      "source_hash": "90c415dad037",
+      "text": "每次都照写死的步骤跑，那是固定流程。"
+    },
+    "quyv": {
+      "source_hash": "5f6e2f912f98",
+      "text": "代理不一样，它自己决定下一步、自己选工具。"
+    },
+    "t86a": {
+      "source_hash": "5f00eeba4d1f",
+      "text": "调用过一次工具，也不等于它就是完整的代理。"
+    },
+    "yxd7": {
+      "source_hash": "27a54fc1cd5d",
+      "text": "规则稳定的工作，用固定流程反而更好预测。"
+    },
+    "8dan": {
+      "source_hash": "e2b5cbe41526",
+      "text": "举个例子，你让它整理报名资料，找出重复的。"
+    },
+    "g6hk": {
+      "source_hash": "c4d0b647d01e",
+      "text": "它先读字段，发现同名不一定是同一个人。"
+    },
+    "q3cg": {
+      "source_hash": "e4e4e9f7f78b",
+      "text": "于是改用你允许的字段来比对。"
+    },
+    "gich": {
+      "source_hash": "6157fee1a9ad",
+      "text": "这个转弯，就是代理的特征。"
+    },
+    "3iur": {
+      "source_hash": "dd8c69ec0bec",
+      "text": "它没有擅自删数据，只是换了比对的方法。"
+    },
+    "t4e7": {
+      "source_hash": "e02ab5b291be",
+      "text": "它的自主，是换个做法，不是自己扩大权限。"
+    },
+    "b672": {
+      "source_hash": "3d78eab9371f",
+      "text": "那一个代理，到底是由哪些东西组成的？"
+    },
+    "z3xv": {
+      "source_hash": "ce6b1d7340db",
+      "text": "代理可以拆成四个部分来看。"
+    },
+    "x2sc": {
+      "source_hash": "d7355e47aba8",
+      "text": "模型，负责判断。"
+    },
+    "e889": {
+      "source_hash": "a5ab849d277f",
+      "text": "指令，是你交代的目标。"
+    },
+    "7gj6": {
+      "source_hash": "cb99cf08cf09",
+      "text": "工具才是真正去读数据、改文件的手。"
+    },
+    "trh6": {
+      "source_hash": "3aaf9b2a707e",
+      "text": "需要运行程序的工具，可以在沙箱里动手。"
+    },
+    "2z76": {
+      "source_hash": "1d71fe926b0e",
+      "text": "不过，不是每一种代理都需要沙箱。"
+    },
+    "dep5": {
+      "source_hash": "3b2c640316d7",
+      "text": "也有工具直接连外部服务，关键是功能和授权有没有接好。"
+    },
+    "wfy8": {
+      "source_hash": "3d01fe0cd436",
+      "text": "所以评估代理，先问它接了哪些工具、有什么权限。"
+    },
+    "bszf": {
+      "source_hash": "aed7dfa0eab1",
+      "text": "工具的范围也有限，能读一个文件夹，不等于能读整台电脑。"
+    },
+    "naw5": {
+      "source_hash": "0a16e5a7551d",
+      "text": "这里有个重点：它说“我已经帮你更新”，不代表真的做了。"
+    },
+    "677u": {
+      "source_hash": "036ed46b3df6",
+      "text": "没有对应的工具或授权，它一个字都改不了。"
+    },
+    "vbtd": {
+      "source_hash": "ec5f11b05502",
+      "text": "所以要看实际结果，不是看它说得多有把握。"
+    },
+    "8wag": {
+      "source_hash": "e550eac3bf06",
+      "text": "没有文件、或文件跟说明对不上，都要算没完成。"
+    },
+    "c68n": {
+      "source_hash": "75bfb86c3767",
+      "text": "完成要有证据，不是一句“我做好了”。"
+    },
+    "5a79": {
+      "source_hash": "8bfb00ead06e",
+      "text": "状态不确定时，宁可再查一次，也不要直接算完成。"
+    },
+    "n3m5": {
+      "source_hash": "cd9fcf02ebe2",
+      "text": "代理靠一个循环运转，一直转到事情做完。"
+    },
+    "dgnj": {
+      "source_hash": "87ee7d352ec9",
+      "text": "先判断下一步要做什么。"
+    },
+    "rqdt": {
+      "source_hash": "dafa8ffba09e",
+      "text": "再用工具去操作。"
+    },
+    "hwmy": {
+      "source_hash": "08005d56f2ac",
+      "text": "看到结果之后，再决定接下来怎么走。"
+    },
+    "rjcw": {
+      "source_hash": "55445dd2010d",
+      "text": "每转一圈，就多一次调用模型，也就多一笔钱。"
+    },
+    "erz6": {
+      "source_hash": "2fe7f7846986",
+      "text": "那循环多转几圈，账单到底会变成多少？"
+    },
+    "un5z": {
+      "source_hash": "c79bad3396a5",
+      "text": "代理为什么比一次问答贵那么多？"
+    },
+    "qfq7": {
+      "source_hash": "1723965228e2",
+      "text": "因为它做一件事，会调用模型好几次。"
+    },
+    "mhbv": {
+      "source_hash": "b891233109e8",
+      "text": "每次调用，都可能把前面的对话和工具结果再处理一遍。"
+    },
+    "gixc": {
+      "source_hash": "5d850e0e8d98",
+      "text": "每次送进去的，还包括指令、工具定义和工具返回的结果。"
+    },
+    "6pn5": {
+      "source_hash": "85bfdede1ce9",
+      "text": "如果它还开了子代理，每个子代理又各自算一遍。"
+    },
+    "tik7": {
+      "source_hash": "fb5dfd20456a",
+      "text": "任务做得越久、来回越多，费用就越难只凭名称估算。"
+    },
+    "nuez": {
+      "source_hash": "c4682d93b8a9",
+      "text": "我的看法是，没先算过就用代理，账单很容易吓到你。"
+    },
+    "9hqz": {
+      "source_hash": "8d4913b967cf",
+      "text": "同一件事，用一次问答大概 6 美分。"
+    },
+    "th3u": {
+      "source_hash": "e74787d796e0",
+      "text": "做成会来回五轮的代理，变成约 0.95 美元。"
+    },
+    "36u6": {
+      "source_hash": "320eccc9ba6c",
+      "text": "差了大约 16 倍，这还没算子代理。"
+    },
+    "k7aw": {
+      "source_hash": "b65e14725bdb",
+      "text": "这是示意数字，用来说明结构，不是某个产品的实际账单。"
+    },
+    "nwfx": {
+      "source_hash": "4a1c3fee6d7b",
+      "text": "而且真实任务常常不止五轮。"
+    },
+    "e2ux": {
+      "source_hash": "a7ec154715dc",
+      "text": "差距来自结构，不是模型变贵。"
+    },
+    "59w3": {
+      "source_hash": "d6d6e8c2b5d5",
+      "text": "再说子代理，它们也有各自的模型用量。"
+    },
+    "rjzv": {
+      "source_hash": "07d048da8f8b",
+      "text": "主代理会把工作拆给好几个子代理分头做。"
+    },
+    "t2rw": {
+      "source_hash": "fae4c858bbe7",
+      "text": "子代理会自己调用模型，费用要按实际用量加总。"
+    },
+    "6nza": {
+      "source_hash": "4c520092805c",
+      "text": "把这五轮摊开来看，账单到底长什么样？"
+    },
+    "gq6q": {
+      "source_hash": "a69de7bdb3b8",
+      "text": "把五轮摊开看，你就懂钱花在哪。"
+    },
+    "bjcd": {
+      "source_hash": "985950301570",
+      "text": "这个例子的第一轮，输入两万 token。"
+    },
+    "utze": {
+      "source_hash": "c34cf4170c5e",
+      "text": "这里假设每一轮都重读前面的内容，所以输入越滚越大。"
+    },
+    "we3p": {
+      "source_hash": "1bd0ccf5bd65",
+      "text": "到第五轮，输入十五万。"
+    },
+    "bgnm": {
+      "source_hash": "bb1f4ac3346e",
+      "text": "五轮加起来，输入四十万、输出一万四千五百 token。"
+    },
+    "eugj": {
+      "source_hash": "a358d4ec8381",
+      "text": "总共将近 1 美元。"
+    },
+    "i28v": {
+      "source_hash": "44b32a5b4f6f",
+      "text": "注意输出其实不多，是输入在一直变大。"
+    },
+    "3bfe": {
+      "source_hash": "78cd54f3172a",
+      "text": "这个例子的费用，主要花在反复处理的输入上。"
+    },
+    "yuae": {
+      "source_hash": "b003f89d89e5",
+      "text": "换了模型，就要用新的单价重算，倍数不保证一样。"
+    },
+    "yug2": {
+      "source_hash": "0d607bcfde9e",
+      "text": "这张表假设没有命中缓存。"
+    },
+    "ucxc": {
+      "source_hash": "930c303e8f4c",
+      "text": "命中缓存可能省下输入费，但读取和写入，还是按各自的单价算。"
+    },
+    "t5sk": {
+      "source_hash": "b6afccc9674b",
+      "text": "也没算进工具和沙箱这些费用。"
+    },
+    "3n94": {
+      "source_hash": "7e7c4b890d96",
+      "text": "这句话，是 OpenAI 自己的文档写的。"
+    },
+    "nhwz": {
+      "source_hash": "52cd97460493",
+      "text": "它说代理完成一个任务，可能调用模型好几次。"
+    },
+    "bqbk": {
+      "source_hash": "e2d2c6e9b0df",
+      "text": "文档还写到，重复的调用可能一再处理很长的历史。"
+    },
+    "e633": {
+      "source_hash": "a23417c931c9",
+      "text": "所以我的看法是，总价很难只看任务名称来估。"
+    },
+    "mhmx": {
+      "source_hash": "ae5c5435b5e2",
+      "text": "怎么把这个算法用到自己的工作上，完整版在说明栏第一行的文章里。"
+    },
+    "avps": {
+      "source_hash": "087f876d1fca",
+      "text": "你只要换成自己的轮数和字数，就能估出自己的账单。"
+    },
+    "ni5n": {
+      "source_hash": "f2c5764cb8d9",
+      "text": "算一次，你就知道该不该把这件事交给代理。"
+    },
+    "kj63": {
+      "source_hash": "a0d013610359",
+      "text": "那如果要请人帮你做代理，签约前该问什么？"
+    },
+    "bh3n": {
+      "source_hash": "b244b0729776",
+      "text": "签约前，先问这四件事。"
+    },
+    "grrh": {
+      "source_hash": "ce11f6df2065",
+      "text": "第一，它能读写哪些数据、连了哪些服务。"
+    },
+    "ntt6": {
+      "source_hash": "2f38345cca70",
+      "text": "第二，日志谁能看、留多久。"
+    },
+    "zjhh": {
+      "source_hash": "e3c7b8235d52",
+      "text": "第三，跑错的时候，谁能喊停。"
+    },
+    "8qcn": {
+      "source_hash": "d73dc73c5d7f",
+      "text": "第四，先用真实数据试跑一周，记下实际费用。"
+    },
+    "vzet": {
+      "source_hash": "765f9f3c924c",
+      "text": "我的建议是，这四题答不出来的外包，先不要签。"
+    },
+    "jj2b": {
+      "source_hash": "3bffa20ea2f9",
+      "text": "答得出来，才代表对方真的想过出事怎么办。"
+    },
+    "3xde": {
+      "source_hash": "feb9890c117a",
+      "text": "这四件事，也是你自己用代理时的检查清单。"
+    },
+    "48gr": {
+      "source_hash": "954897d8dfee",
+      "text": "在我看来，问清楚这些，比比较哪个模型聪明更重要。"
+    },
+    "wxkd": {
+      "source_hash": "c9eeab8e1760",
+      "text": "我的看法是，这四件事里最能救命的，是预算上限。"
+    },
+    "f5f8": {
+      "source_hash": "129e78320fc4",
+      "text": "OpenAI API 可以另外开启每月硬性上限。"
+    },
+    "i86p": {
+      "source_hash": "1761c7eb0a93",
+      "text": "到了上限，相关的请求就会被拒绝。"
+    },
+    "ix3h": {
+      "source_hash": "1051bd924b4e",
+      "text": "不过，警示只会通知。"
+    },
+    "qb7f": {
+      "source_hash": "185c4fa4088c",
+      "text": "硬性上限也可能有延迟，造成少量超额。"
+    },
+    "twky": {
+      "source_hash": "bb2b863b8c5b",
+      "text": "所以还要搭配单次任务限制，和能随时停止的流程。"
+    },
+    "ghc5": {
+      "source_hash": "b9ab0d921a86",
+      "text": "设置时，要确认硬性上限真的开了，别把警示当成会自动停。"
+    },
+    "tzx5": {
+      "source_hash": "e3cd67e0e16a",
+      "text": "我建议先设低一点，跑顺了再慢慢调高。"
+    },
+    "yhq4": {
+      "source_hash": "ee5e11602b5b",
+      "text": "跑错的时候，你会想知道它到底做了什么。"
+    },
+    "72vw": {
+      "source_hash": "e2e8329d88c4",
+      "text": "这时候靠的是会话日志，每一轮都查得到。"
+    },
+    "97dz": {
+      "source_hash": "05e236745e65",
+      "text": "所以委托时，一定要问清楚日志在哪、谁看得到。"
+    },
+    "wtui": {
+      "source_hash": "3ab994c69383",
+      "text": "而且日志里的用量数字是尽力记录的，不是最终账单。"
+    },
+    "grtm": {
+      "source_hash": "704ef461ad5b",
+      "text": "公司有数据规定的话，OpenAI 的 Agents API 有两个限制。"
+    },
+    "6k39": {
+      "source_hash": "7fa91d8edb45",
+      "text": "到 2026 年 9 月，它的数据驻留只支持美国。"
+    },
+    "r35n": {
+      "source_hash": "c5bc2d425ef2",
+      "text": "而且不支持零数据保留，改用自建沙箱也一样。"
+    },
+    "e65x": {
+      "source_hash": "ee159f54e488",
+      "text": "这两点要在开发前确认，别做到一半才发现不能上线。"
+    },
+    "dx6f": {
+      "source_hash": "c78a723e8767",
+      "text": "连了哪些外部服务，数据就适用对方的规则。"
+    },
+    "y4j5": {
+      "source_hash": "c02b8990a785",
+      "text": "数据规定比功能更早决定你能不能用。"
+    },
+    "8zn8": {
+      "source_hash": "49911c0c3590",
+      "text": "那真的要用，第一步该从哪里开始？"
+    },
+    "gfgy": {
+      "source_hash": "8e458ee537b1",
+      "text": "我的建议是，先从安全的工作开始。"
+    },
+    "rjnj": {
+      "source_hash": "aee9dabc130b",
+      "text": "只读、能回查的先做，例如整理公开数据、产出草稿。"
+    },
+    "3auf": {
+      "source_hash": "31bfc23d9809",
+      "text": "会改数据的操作，先留人工确认再放手。"
+    },
+    "igut": {
+      "source_hash": "beb9eb19a5cb",
+      "text": "等费用记录、删除流程和人工确认都跑顺了，再扩大。"
+    },
+    "kmqx": {
+      "source_hash": "ee7f086a118f",
+      "text": "不是因为产品写着代理，就要一次给它全部权限。"
+    },
+    "9yif": {
+      "source_hash": "4cc5a7c94df1",
+      "text": "不涉及客户机密的内部工作，最适合先试。"
+    },
+    "jfu4": {
+      "source_hash": "b08c31f32b18",
+      "text": "最后一个观念：自主程度越高，不代表越可靠。"
+    },
+    "mhmq": {
+      "source_hash": "6866a7b503b5",
+      "text": "代理会把上一步的结果，当成后面每一步的依据。"
+    },
+    "pdfe": {
+      "source_hash": "3dad94550167",
+      "text": "第一步读错，后面去重、统计、报告可能全部跟着错。"
+    },
+    "5g7p": {
+      "source_hash": "e7eb406b180e",
+      "text": "好的流程，会在重要的转折点停下来检查。"
+    },
+    "2xyf": {
+      "source_hash": "6e0f3a2fbb62",
+      "text": "停在待确认，不是它能力不够，而是它处理得对。"
+    },
+    "69tt": {
+      "source_hash": "f9417f63c328",
+      "text": "所以回到一开始的问题：代理贵在哪、又该怎么管住它？"
+    },
+    "2xgp": {
+      "source_hash": "1cc6cbb07be4",
+      "text": "第一，分得出代理：看它是不是自己决定下一步。"
+    },
+    "sknr": {
+      "source_hash": "1a5e17013927",
+      "text": "第二，算得出成本：多轮调用可能反复处理历史。"
+    },
+    "t344": {
+      "source_hash": "02c111744c8b",
+      "text": "第三，控制预算：要有硬性上限、警示和停止流程。"
+    },
+    "7e7i": {
+      "source_hash": "7a3e6789a8cd",
+      "text": "把任务交给代理，是减少手动操作，不是放弃掌控。"
+    },
+    "jd27": {
+      "source_hash": "56422ec9d171",
+      "text": "我们下期视频见。"
+    }
+  }
+}

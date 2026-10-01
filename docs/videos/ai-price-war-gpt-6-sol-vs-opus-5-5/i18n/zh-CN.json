@@ -1,0 +1,575 @@
+{
+  "title": "GPT-6 Sol 与 Claude Opus 5.5 同一天降价，你的 AI 账单能少多少？",
+  "description": "GPT-6 Sol 的价目表上，同一个模型有八个价格。这期视频逐格读懂它，再用三种每月用量，估算 GPT-6 Sol、Luna、Opus 5.5 等五个模型的 token 费用。\n给使用 API 或订阅 AI、想搞懂“便宜五成”“少四成”到底跟自己账单有没有关系的人。\n\n视频从 GPT-6 Sol 标准价的八个格子读起：输入、缓存读取、缓存写入、输出，各有短上下文与长上下文两组价；接着看批处理、快速模式与促销价，再算聊天型、代理型、大批量整理三种示范用量的每月账单，最后拆开 Anthropic 的四成、两成、六成各自在比什么。\n\n金额是短上下文、标准处理的 token 费用示意，未含缓存写入、存储、工具或其他服务费；大批量整理一栏未使用批处理折扣。价格会变，以官网当天为准。\n\n延伸阅读：API 价格对比：每百万 token 各家多少钱（9月中旬的官网价目表）\nhttps://mokaair.com/zh-TW/life/ai-api-pricing-comparison-2026?utm_source=youtube&utm_medium=video&utm_campaign=ai-price-war-gpt-6-sol-vs-opus-5-5",
+  "tags": [
+    "GPT-6 Sol",
+    "GPT-6 Luna",
+    "Claude Opus 5.5",
+    "AI API 价格",
+    "OpenAI 降价",
+    "Anthropic",
+    "Gemini 3.8 Flash",
+    "AI 账单",
+    "token 成本",
+    "AI 模型对比",
+    "AI 降价",
+    "上下文缓存"
+  ],
+  "chapters": {
+    "eight-prices": "GPT-6 Sol 为什么有八个价格",
+    "promise": "GPT-6 Sol 价目表八格怎么读",
+    "four-tokens": "缓存读取和缓存写入是什么",
+    "batch-half": "批处理折扣和促销价怎么看",
+    "scenario-walk": "三种用量的每月账单怎么算",
+    "news-three-numbers": "Opus 5.5 少四成是真的吗",
+    "switch-or-not": "AI 降价后要不要换模型"
+  },
+  "source_hashes": {
+    "chapters": {
+      "eight-prices": "0d131805c628",
+      "promise": "47349373d2a4",
+      "four-tokens": "5115fb3e3a7e",
+      "batch-half": "df98981e3274",
+      "scenario-walk": "89360fe59d97",
+      "news-three-numbers": "30ae172a97b6",
+      "switch-or-not": "ee53eba733aa"
+    },
+    "title": "8ff41785abfb",
+    "description": "29af3c3ad50f",
+    "tags": "c55b2c448d4a"
+  },
+  "lines": {
+    "ki36": {
+      "source_hash": "5a4dea3204c1",
+      "text": "价目表上，同一个 GPT-6 Sol，有八个价格。"
+    },
+    "ibpp": {
+      "source_hash": "4ef8309da494",
+      "text": "哪一个，才是你真正要付的？"
+    },
+    "8nqw": {
+      "source_hash": "a9dca792f535",
+      "text": "你以为，一个模型就只有一个价格。"
+    },
+    "pc4t": {
+      "source_hash": "fb65e9f3f663",
+      "text": "其实光是标准价这张表，GPT-6 Sol 就有八个价格。"
+    },
+    "fvdq": {
+      "source_hash": "08175ae5d0b0",
+      "text": "那这八个价格，到底是什么样的？"
+    },
+    "xf3x": {
+      "source_hash": "e1cb26664dfd",
+      "text": "这期视频，我们跟着价目表一格一格地读。"
+    },
+    "vcu8": {
+      "source_hash": "eb668bb1a860",
+      "text": "先读懂这八个价格。"
+    },
+    "p6w3": {
+      "source_hash": "7ad51190a7ae",
+      "text": "再算三种用量的每月账单。"
+    },
+    "gm9p": {
+      "source_hash": "90907bfb95e6",
+      "text": "最后拆开新闻里的三个数字。"
+    },
+    "tigr": {
+      "source_hash": "e760791f69d4",
+      "text": "八个价格，先分成两组。"
+    },
+    "ippg": {
+      "source_hash": "e93e618ba085",
+      "text": "输入不超过 27.2 万个 token，算短上下文。"
+    },
+    "vyp2": {
+      "source_hash": "1321badb996e",
+      "text": "超过这条线，就是长上下文。"
+    },
+    "qfj6": {
+      "source_hash": "bf423eff9493",
+      "text": "先把四种 token 的价格，逐格读一遍。"
+    },
+    "qjec": {
+      "source_hash": "40d11aa679fe",
+      "text": "输入，短上下文 2 美元，长上下文 4 美元。"
+    },
+    "xr9r": {
+      "source_hash": "c78ed8610fe4",
+      "text": "缓存读取，短上下文 0.2 美元，长上下文 0.4 美元。"
+    },
+    "p683": {
+      "source_hash": "f9e549da23be",
+      "text": "缓存写入，短上下文 2.5 美元，长上下文 5 美元。"
+    },
+    "ja6c": {
+      "source_hash": "2fadf9dfaf15",
+      "text": "输出，短上下文 10 美元，长上下文 15 美元，八格凑齐。"
+    },
+    "qjk4": {
+      "source_hash": "dfa6d9e9459d",
+      "text": "可是，缓存读取和缓存写入，到底是什么？"
+    },
+    "s7fy": {
+      "source_hash": "6c8f85042dcb",
+      "text": "先把四种 token 各自什么时候出现讲清楚。"
+    },
+    "ma9h": {
+      "source_hash": "0e7696f91f37",
+      "text": "输入，是你发给模型、第一次处理的内容。"
+    },
+    "q2in": {
+      "source_hash": "807401c66673",
+      "text": "缓存写入，是第一次把一段开头存起来，要多付一点。"
+    },
+    "7u9g": {
+      "source_hash": "be036ae136cb",
+      "text": "缓存读取，是同样的开头再次出现时直接读取，便宜很多。"
+    },
+    "b3y9": {
+      "source_hash": "3d99f77f457a",
+      "text": "输出，是模型回复你的文字，连看不见的思考也算。"
+    },
+    "6kug": {
+      "source_hash": "e618fcc04eae",
+      "text": "同一个输入 token，只会算成其中一种，不会重复收费。"
+    },
+    "me45": {
+      "source_hash": "392eefb58d14",
+      "text": "这就像复印店，第一次制版要多付一点，之后同一份直接印。"
+    },
+    "4by8": {
+      "source_hash": "f03448dbb750",
+      "text": "缓存写入，是普通输入价的 1.25 倍。"
+    },
+    "wh3j": {
+      "source_hash": "ca726441ae03",
+      "text": "缓存读取，只有十分之一。"
+    },
+    "x4fd": {
+      "source_hash": "a67c98c9154a",
+      "text": "同一段开头用十次，写一次、读九次，是 2.15 倍。"
+    },
+    "spkw": {
+      "source_hash": "6798a34f33c4",
+      "text": "没有缓存，同样十次要付十倍。"
+    },
+    "c32b": {
+      "source_hash": "12d2744c6f70",
+      "text": "所以第一次存缓存，比直接发送输入还贵。"
+    },
+    "599y": {
+      "source_hash": "67457509038b",
+      "text": "存进去却没人再读，就白白多付了两成五。"
+    },
+    "66qr": {
+      "source_hash": "951532572501",
+      "text": "但缓存不是自动就有效，同一份文件问十次，也不保证每次命中。"
+    },
+    "4b3g": {
+      "source_hash": "51a678b4c230",
+      "text": "开头得一模一样，中间改一个字，后面就对不上了。"
+    },
+    "medc": {
+      "source_hash": "bb08bdcdec3a",
+      "text": "长度也要够，至少 1024 个 token。"
+    },
+    "xrwh": {
+      "source_hash": "415dc59e80fe",
+      "text": "而且放太久会过期，过期了就要重新计算一次。"
+    },
+    "4y9a": {
+      "source_hash": "9f646009a4a4",
+      "text": "那批处理折扣和促销价，又是怎么回事？"
+    },
+    "c46x": {
+      "source_hash": "35a5615dcaf0",
+      "text": "就像网购选不赶时间的普通快递，等一等，运费就对折。"
+    },
+    "kex8": {
+      "source_hash": "71a5d64f5920",
+      "text": "价目表上有一排标签页。"
+    },
+    "cjya": {
+      "source_hash": "6ac53d7490ea",
+      "text": "标准页，Sol 的输入 2 美元、输出 10 美元。"
+    },
+    "vk96": {
+      "source_hash": "d753dfbc2568",
+      "text": "点到批处理页，正好对折，输入 1 美元、输出 5 美元。"
+    },
+    "x5cg": {
+      "source_hash": "4b6d8ff9c700",
+      "text": "代价是不能马上拿到答案，官方说 24 小时内完成。"
+    },
+    "kp2s": {
+      "source_hash": "0110c80835e9",
+      "text": "所以标签页上的价格，你得先选对是哪一种。"
+    },
+    "4dbt": {
+      "source_hash": "e3acf232c49a",
+      "text": "批处理，是标准价的一半。"
+    },
+    "eniv": {
+      "source_hash": "0e6306e1f622",
+      "text": "快速模式反过来，是标准价的两倍，Sol 的输出要 20 美元。"
+    },
+    "teb4": {
+      "source_hash": "227c88bf8518",
+      "text": "这期视频里的账单，一律用标准价。"
+    },
+    "gb49": {
+      "source_hash": "612782f4f67c",
+      "text": "再往表格下面看，有一行小字。"
+    },
+    "v74j": {
+      "source_hash": "7ca4473cc628",
+      "text": "GPT-5.6 Sol 的促销价，至少维持到 11 月 21 日。"
+    },
+    "fges": {
+      "source_hash": "a9dbca776b2e",
+      "text": "GPT-6 Sol 短上下文的四格，全都是促销价的一半。"
+    },
+    "ym8g": {
+      "source_hash": "ac7e280c9d90",
+      "text": "输入，4 美元变 2 美元。"
+    },
+    "m5fk": {
+      "source_hash": "6cbd141fc239",
+      "text": "缓存读取，0.4 美元变 0.2 美元。"
+    },
+    "r3k9": {
+      "source_hash": "4490406865a2",
+      "text": "缓存写入这一栏，从 5 美元变成 2.5 美元。"
+    },
+    "ef3k": {
+      "source_hash": "e3b01446d102",
+      "text": "输出，20 美元变 10 美元。"
+    },
+    "tuik": {
+      "source_hash": "074cc4563ce0",
+      "text": "所以新闻里讲的五成，是跟这个会到期的价格比。"
+    },
+    "ntee": {
+      "source_hash": "d7fd8b60f43b",
+      "text": "还有一件事。"
+    },
+    "76fk": {
+      "source_hash": "5c0a8c0d93c7",
+      "text": "价目表旗舰区里的 Sol，已经换成新版了。"
+    },
+    "mzxf": {
+      "source_hash": "fa7a2436c386",
+      "text": "GPT-6 Sol 的缓存读取，每百万 token 0.2 美元。"
+    },
+    "mvrg": {
+      "source_hash": "3a42094213b5",
+      "text": "9 月 29 日发布的 GPT-6.1 Sol，只要 0.1 美元。"
+    },
+    "2djf": {
+      "source_hash": "043fa626068a",
+      "text": "输入和输出价都没变。"
+    },
+    "ntq5": {
+      "source_hash": "56a4cb8acfc1",
+      "text": "要找 GPT-6 Sol，得展开全部模型才看得到。"
+    },
+    "443u": {
+      "source_hash": "a6b8bf86f828",
+      "text": "我的看法是，新版本不用急着追，先用自己的用量算。"
+    },
+    "9tsk": {
+      "source_hash": "2cbcc8453050",
+      "text": "那把这些单价套进你的用量，账单会是多少？"
+    },
+    "3h7y": {
+      "source_hash": "acb806772549",
+      "text": "账单是用量乘单价，先说好三种示范用量。"
+    },
+    "gt4x": {
+      "source_hash": "84b4035986c7",
+      "text": "聊天型，每月 500 万输入、100 万输出 token。"
+    },
+    "ssvn": {
+      "source_hash": "e642bbddef67",
+      "text": "代理型，新的输入 1200 万，缓存读取 4800 万。"
+    },
+    "sjsy": {
+      "source_hash": "3c98c605e2b7",
+      "text": "再加上 400 万输出。"
+    },
+    "747h": {
+      "source_hash": "9d18b5bfe372",
+      "text": "大批量整理，2 亿输入、1000 万输出。"
+    },
+    "wcfz": {
+      "source_hash": "51212baf3f11",
+      "text": "这只是示范，你的用量要去用量页面查看。"
+    },
+    "m5xb": {
+      "source_hash": "e03cab130346",
+      "text": "五个模型套进去，账单是这样的。"
+    },
+    "hjxw": {
+      "source_hash": "b0cabb49f366",
+      "text": "GPT-6 Sol，聊天型 20 美元。"
+    },
+    "87h7": {
+      "source_hash": "70cd3db3ff07",
+      "text": "代理型 73.6 美元，大批量整理 500 美元。"
+    },
+    "bazf": {
+      "source_hash": "a241fb5aa1ef",
+      "text": "GPT-6 Luna 便宜很多。"
+    },
+    "afjr": {
+      "source_hash": "7cda100a4f23",
+      "text": "聊天型一个月才 1 美元，不到一杯咖啡。"
+    },
+    "vpac": {
+      "source_hash": "1db011caea0c",
+      "text": "Opus 5.5 的聊天型和大批量整理，正好是 Sol 的两倍。"
+    },
+    "e9gz": {
+      "source_hash": "b95c080e76ca",
+      "text": "Sonnet 5.5 的单价跟 Sol 相同，三种用量的账单也相同。"
+    },
+    "6jr2": {
+      "source_hash": "3a712075fc12",
+      "text": "Gemini 3.8 Flash 介于中间。"
+    },
+    "227a": {
+      "source_hash": "a83060d4363c",
+      "text": "但这是促销价，2026 年底一过，单价就翻倍。"
+    },
+    "yvvp": {
+      "source_hash": "0df5e660007e",
+      "text": "三种用量，最便宜的都是 GPT-6 Luna。"
+    },
+    "8ika": {
+      "source_hash": "ca5077587f6e",
+      "text": "这张表只比价格，没有比谁答得好。"
+    },
+    "zg43": {
+      "source_hash": "6bd6feaca894",
+      "text": "够不够用，只有拿你自己的题目跑一次才知道。"
+    },
+    "ikjd": {
+      "source_hash": "eee28b245e21",
+      "text": "再拿上一代来对照，看降价降在哪。"
+    },
+    "jeek": {
+      "source_hash": "31f3d42229b9",
+      "text": "聊天型，GPT-5.6 Sol 促销价是 40 美元。"
+    },
+    "gbzh": {
+      "source_hash": "8498cf9ed196",
+      "text": "GPT-6 Sol 只要 20 美元，正好一半。"
+    },
+    "kqwi": {
+      "source_hash": "c13267e86892",
+      "text": "代理型，Opus 5 一个月是 184 美元。"
+    },
+    "giy7": {
+      "source_hash": "b26eea3ce6a3",
+      "text": "Opus 5.5 是 137.6 美元。"
+    },
+    "6kqy": {
+      "source_hash": "3783e2e4bbff",
+      "text": "只少了约两成五，不是新闻里说的四成。"
+    },
+    "5sv5": {
+      "source_hash": "2f404dbe6e4a",
+      "text": "这次 GPT-6 发布的相关报道，见说明栏第一行的文章。"
+    },
+    "kdtw": {
+      "source_hash": "4246a3f72f75",
+      "text": "代理型这一格，Sol 的 73.6 美元里，40 美元是输出。"
+    },
+    "rfmv": {
+      "source_hash": "18bedf3303d1",
+      "text": "超过一半，缓存读取只有 9.6 美元，约一成三。"
+    },
+    "4hmf": {
+      "source_hash": "01674a3c06d4",
+      "text": "Anthropic 自己的说法，恰恰相反。"
+    },
+    "j3qt": {
+      "source_hash": "7d6cfb8121a9",
+      "text": "它写道，代理型和写代码的工作，缓存读取占了成本的大头。"
+    },
+    "jkds": {
+      "source_hash": "2eeb034bdb94",
+      "text": "两种都可能对，差别在于缓存读取是输出的几倍。"
+    },
+    "inzr": {
+      "source_hash": "42b8d5841692",
+      "text": "我这组例子里，缓存读取是输出的 12 倍。"
+    },
+    "d5j2": {
+      "source_hash": "047f8c5a9526",
+      "text": "那新闻里的五成、四成、两成，各自在比什么？"
+    },
+    "x5eq": {
+      "source_hash": "4c08e350f22a",
+      "text": "9 月 22 日，OpenAI 和 Anthropic 同一天降价。"
+    },
+    "86x9": {
+      "source_hash": "6f7948785fbf",
+      "text": "GPT-6 Sol 的单价，只有前代促销价的一半。"
+    },
+    "ha6t": {
+      "source_hash": "39bd70d7c797",
+      "text": "Anthropic 说，Opus 5.5 的运行成本少四成。"
+    },
+    "tq5v": {
+      "source_hash": "32044797c429",
+      "text": "而它的输入和输出标价，少了两成。"
+    },
+    "giku": {
+      "source_hash": "49a76db77132",
+      "text": "五成前面讲过了，剩下两个，先看四成。"
+    },
+    "dz5g": {
+      "source_hash": "b49ff476c3b7",
+      "text": "Anthropic 这边的四成，用的词是“运行成本”，不是价格。"
+    },
+    "vnit": {
+      "source_hash": "317eccf4cb99",
+      "text": "它自己也写了，这是在默认设置、一般工作负载下估算出来的。"
+    },
+    "hcrz": {
+      "source_hash": "5e60e227ded1",
+      "text": "这个估算，包含单价和每个任务用量的变化。"
+    },
+    "z2j6": {
+      "source_hash": "af6309e7a7bb",
+      "text": "所以不能保证，每个人都省四成。"
+    },
+    "zr58": {
+      "source_hash": "55c339fe5eec",
+      "text": "左边是价目表上印的标价，输入输出少两成，缓存读取少六成。"
+    },
+    "gxii": {
+      "source_hash": "365c827e91e8",
+      "text": "右边的四成，是厂商测出来的成本，包含每个任务用的 token 变少。"
+    },
+    "s7ng": {
+      "source_hash": "2f27e85d48fd",
+      "text": "标价你看得到；成本估算，得看你自己的任务。"
+    },
+    "pxgf": {
+      "source_hash": "a337df59aac3",
+      "text": "如果只记一种降价幅度，就记价目表上印出来的这三个。"
+    },
+    "njxt": {
+      "source_hash": "3eb82f9a0dbd",
+      "text": "输入，从 5 美元变 4 美元，少两成。"
+    },
+    "7xsg": {
+      "source_hash": "196c27b023d0",
+      "text": "输出，从 25 美元变 20 美元，也少两成。"
+    },
+    "virh": {
+      "source_hash": "922aa317cf26",
+      "text": "缓存读取，从 0.5 美元变 0.2 美元，少了六成。"
+    },
+    "5kqm": {
+      "source_hash": "c2930a0712a7",
+      "text": "看到便宜了多少，先问一句：跟什么比？"
+    },
+    "s9bb": {
+      "source_hash": "e49e8a2c25c8",
+      "text": "跟促销价比，那是有期限的临时价。"
+    },
+    "pder": {
+      "source_hash": "bc96b0c2d701",
+      "text": "跟标价比，那是价目表上写的价格，但也可能调整。"
+    },
+    "bu8a": {
+      "source_hash": "a4c8e8ecc3f4",
+      "text": "成本估算是厂商自己算的，跟你的账单是两回事。"
+    },
+    "uukx": {
+      "source_hash": "b1d0f79a1d29",
+      "text": "那降价之后，到底要不要换模型？"
+    },
+    "q6sw": {
+      "source_hash": "d84aa8c9c871",
+      "text": "那到底该不该换？先看你落在哪一边。"
+    },
+    "id4m": {
+      "source_hash": "187b13bf257d",
+      "text": "我的看法是，左边这几种，才值得花时间算一次。"
+    },
+    "avk5": {
+      "source_hash": "8db9a74de440",
+      "text": "右边这几种，先别动。"
+    },
+    "ycu2": {
+      "source_hash": "f51df9a96b8d",
+      "text": "降价不是换工具的理由，账要自己算。"
+    },
+    "r2f7": {
+      "source_hash": "a3d5aaf996fb",
+      "text": "有人问，我每月 API 账单 30 美元，要换吗？"
+    },
+    "8egg": {
+      "source_hash": "8c86d89740d1",
+      "text": "示范用量里没有正好 30 美元的，先借聊天型那组来算。"
+    },
+    "bxsk": {
+      "source_hash": "a5420d859ab2",
+      "text": "聊天型用 Sol 一个月 20 美元，换 Luna 省 19 美元。"
+    },
+    "9wrt": {
+      "source_hash": "dbbc1edfbba8",
+      "text": "可是换模型要重新测一轮质量，时间也是成本。"
+    },
+    "3vii": {
+      "source_hash": "a6b555990c80",
+      "text": "我的看法是，每月省 19 美元，未必值得你重测一轮。"
+    },
+    "5snu": {
+      "source_hash": "a097807b130a",
+      "text": "真要换，先做两件事，别凭感觉。"
+    },
+    "gkup": {
+      "source_hash": "6c0607e65b3b",
+      "text": "第一，打开自己的用量页面，看三种 token 各花了多少。"
+    },
+    "za36": {
+      "source_hash": "c64a6dd53209",
+      "text": "第二，拿自己的真实问题，在两个模型上各跑一次做比较。"
+    },
+    "gvft": {
+      "source_hash": "1a69820c2008",
+      "text": "这两件事做完，换不换就很清楚了。"
+    },
+    "m7k4": {
+      "source_hash": "c33f2eef4bbe",
+      "text": "所以回到开头：哪一个才是你要付的价格？"
+    },
+    "qimv": {
+      "source_hash": "ef12f914d051",
+      "text": "先看你的请求长不长，决定按短上下文还是长上下文计价。"
+    },
+    "mvch": {
+      "source_hash": "27c795c79384",
+      "text": "再看有没有缓存，能不能改用批处理。"
+    },
+    "gqv4": {
+      "source_hash": "676651331304",
+      "text": "最后，把你自己的三种 token 用量乘上去。"
+    },
+    "y3mp": {
+      "source_hash": "ebf330cacf98",
+      "text": "更多家的对比在我们网站上的“API 价格对比”里，数字还是回官网核对。"
+    },
+    "uhfk": {
+      "source_hash": "e50e0fed31ab",
+      "text": "你要付的钱，就是你用到的那几格，乘上你的用量。"
+    }
+  }
+}

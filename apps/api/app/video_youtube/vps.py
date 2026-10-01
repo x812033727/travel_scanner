@@ -6,6 +6,7 @@ The service owns durable jobs; once queued it works without the website/browser 
 
 from __future__ import annotations
 
+import asyncio
 import hashlib
 import os
 import re
@@ -16,6 +17,7 @@ from urllib.parse import urlsplit
 
 import httpx
 from pydantic import BaseModel, Field
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
@@ -153,32 +155,49 @@ async def status(session: AsyncSession, slug: str) -> dict[str, Any]:
     if settings is None:
         return {"configured": False, "job": None, "linked": False}
     job = await latest(slug, settings=settings)
-    approved = max(
-        (
-            review
-            for review in project.reviews
-            if review.gate == "publish" and review.status == "approved"
-        ),
-        key=lambda review: review.created_at,
-        default=None,
-    )
+    # The job identifies the entire approved package, including a later language batch.
+    # Reading progress stays available when that batch needs resubmission.
+    new_package = False
+    if job:
+        runtime = await load_runtime_settings(session)
+        row = await session.scalar(select(VideoProject).where(VideoProject.slug == slug))
+        if row is not None:
+            try:
+                rows = await sync._project_reviews(session, row)
+                pack = await asyncio.to_thread(
+                    sync.read_approved_package,
+                    reviews.review_store(runtime),
+                    slug,
+                    row,
+                    rows,
+                    verify_files=False,
+                )
+                new_package = pack.sha256 != job["review_sha256"]
+            except Refused:
+                new_package = True
     return {
         "configured": True,
         "job": job,
         "linked": bool(job and job.get("video_id") and job["video_id"] == project.youtube_video_id),
-        "new_package": bool(job and approved and approved.content_sha256 != job["review_sha256"]),
+        "new_package": new_package,
     }
 
 
-async def package(session: AsyncSession, slug: str) -> tuple[Settings, ReviewStore, sync.Package]:
+async def package(
+    session: AsyncSession, slug: str, *, verify_files: bool = True
+) -> tuple[Settings, ReviewStore, sync.Package]:
     runtime = await load_runtime_settings(session)
     store = reviews.review_store(runtime)
     # The caller already holds the project's row lock for mutations.
     project = await sync._locked_project(session, slug)
-    review = sync.approved_confirmation(await sync._project_reviews(session, project))
+    rows = await sync._project_reviews(session, project)
+    review = sync.approved_confirmation(rows)
     if review is None:
         raise Refused(409, "vps_not_ready", "這支影片還沒有已核准的上傳包")
-    return runtime, store, sync.read_package(store, slug, review)
+    pack = await asyncio.to_thread(
+        sync.read_approved_package, store, slug, project, rows, verify_files=verify_files
+    )
+    return runtime, store, pack
 
 
 async def assets(
@@ -342,7 +361,10 @@ async def stage(session: AsyncSession, slug: str) -> dict[str, Any]:
     _, job, settings = await current_job(session, slug)
     if job.get("state") != "staging":
         return {"configured": True, "job": job, "linked": False}
-    runtime, store, pack = await package(session, slug)
+    # start() verified all source bytes. Each stage revalidates approvals and the
+    # manifest; the VPS verifies each complete file's hash before allowing queue.
+    # Rehashing a multi-gigabyte original on every 4 MiB chunk would stall staging.
+    runtime, store, pack = await package(session, slug, verify_files=False)
     if job["review_sha256"] != pack.sha256:
         raise Refused(409, "vps_package_changed", "核准的上傳包已變更，請先取消舊工作")
     entries = job.get("files", [])

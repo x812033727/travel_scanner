@@ -6,15 +6,15 @@
 
 ## 可執行的本機流程
 
-在 repo 根目錄先執行 `npm ci`。需要 Node 22+、ffmpeg（含 libx264）、ffprobe 與 Playwright Chromium；Windows ARM64 可用已安裝的 Edge。產物必須在 repo 外。
+在 repo 根目錄先執行 `npm ci`。需要 Node 22+、ffmpeg（含 libx264）、ffprobe 與 Playwright Chromium；Windows ARM64 可用已安裝的 Edge。產物必須在 repo 外：下面的 `<VIDEO_WORKDIR>` 是你自己選的 repo 外持久工作區，換成該處的路徑。
 
 本次完整測試使用 Node 24.19.0。這台機器的 Node 24.13.0 執行既有工具測試會崩潰；請使用已驗證的較新 runtime，不要把程序崩潰當成測試通過。
 
 ```powershell
 node tools/video/shorts/cli.mjs validate --file docs/videos/ai-shorts/pilots/shorts-receipt-total.json
-node tools/video/shorts/cli.mjs build --file docs/videos/ai-shorts/pilots/shorts-receipt-total.json --workdir C:/Users/x8120/mokaair-work/shorts
-node tools/video/shorts/cli.mjs build --file docs/videos/ai-shorts/pilots/shorts-poster-blind.json --workdir C:/Users/x8120/mokaair-work/shorts
-node tools/video/shorts/cli.mjs build --file docs/videos/ai-shorts/pilots/shorts-prompt-check.json --workdir C:/Users/x8120/mokaair-work/shorts
+node tools/video/shorts/cli.mjs build --file docs/videos/ai-shorts/pilots/shorts-receipt-total.json --workdir <VIDEO_WORKDIR>/shorts
+node tools/video/shorts/cli.mjs build --file docs/videos/ai-shorts/pilots/shorts-poster-blind.json --workdir <VIDEO_WORKDIR>/shorts
+node tools/video/shorts/cli.mjs build --file docs/videos/ai-shorts/pilots/shorts-prompt-check.json --workdir <VIDEO_WORKDIR>/shorts
 node --test tools/video/shorts/*.test.mjs
 ```
 
@@ -48,8 +48,8 @@ node --test tools/video/shorts/*.test.mjs
 正式首支公開當天才設定 campaign 的第 1 天。下面的日期只是命令範例，不代表頻道已發布。
 
 ```powershell
-node tools/video/shorts/cli.mjs track-init --dir C:/Users/x8120/mokaair-work/shorts-tracking --start 2026-09-28
-node tools/video/shorts/cli.mjs report --dir C:/Users/x8120/mokaair-work/shorts-tracking
+node tools/video/shorts/cli.mjs track-init --dir <VIDEO_WORKDIR>/shorts-tracking --start 2026-09-28
+node tools/video/shorts/cli.mjs report --dir <VIDEO_WORKDIR>/shorts-tracking
 ```
 
 init 不覆寫既有資料。從 Studio 匯出的原檔留在 repo 外，依 campaign README 映射到 metrics.csv；缺值留在待補資料檔，不可填零或假裝已取得私人 Analytics。尚無資料時報告顯示 no_metrics。比較以最早 7–9 日快照為準，每支至少 1,000 engaged views、每系列至少 5 支，否則顯示樣本不足。YouTube 的公開觀看與 engaged views 分別記錄。

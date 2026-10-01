@@ -15,7 +15,8 @@ refuse is refused. One bad story refuses the whole file, and nothing is written.
 production order, the chapter is 1, the title, the logline and the video slug become columns,
 and everything else stays in ``beats`` for the worker. A story is known by its ``id``: importing
 it again updates its row only while the row has not started (``planned`` or ``ready``); a row
-that started, finished or was skipped is left alone and counted. When the schedule moved a
+that started, finished or was skipped is left alone and counted, and a dropped story being made
+again keeps the remake's slug (``series.redo_episode``). When the schedule moved a
 story, the rows that have not started are renumbered through temporary numbers, so
 ``uq_video_drama_episode_number`` never sees two rows on one number; a started row keeps its
 number, and a story the file puts on it is a problem, not something settled silently. The dry
@@ -42,7 +43,7 @@ from app.video_automation.models import (
     VideoDramaSeries,
 )
 from app.video_automation.schemas import STORY_MAX_PER_DAY, SeriesIn
-from app.video_automation.series import add_series
+from app.video_automation.series import add_series, is_redo_of
 
 # --- the backlog checker's rules (tools/video/story-plans/plan.mjs) ----------------------------
 
@@ -648,6 +649,10 @@ def plan_rows(
         if found is None:
             plans.append(RowPlan(story["id"], "create", values))
         elif found.status in NOT_STARTED:
+            if is_redo_of(found.slug, values["slug"]):
+                # A dropped story being made again (``redo_episode``): the planned slug is the
+                # dropped video's, and the remake keeps its own.
+                values["slug"] = found.slug
             action: Action = "update" if _differs(found, values) else "unchanged"
             plans.append(RowPlan(story["id"], action, values, found))
         else:
