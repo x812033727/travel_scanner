@@ -20,6 +20,10 @@ import { contactSheetHtml, SHEET_WIDTH } from "./contact.mjs";
 import { bundledCoverage, uncovered } from "./fonts.mjs";
 import { renderPlan, renderProblems, stillFile, themeHash, thumbnailVariantFile, transitionFile } from "./plan.mjs";
 import { BLANK_STRIP, blankStripHtml, blankStripKey, STRIP_SIZE, stripFile, subtitlePlan } from "./subtitles.mjs";
+import { BrowserMissing } from "../screencast/browser.mjs";
+import { ensureCaptures } from "../screencast/capture.mjs";
+import { NetworkError, StepError } from "../screencast/runner.mjs";
+import { isScreencast } from "../screencast/steps.mjs";
 
 export const THUMBNAIL_FILE = "thumbnail.jpg";
 export const THUMBNAIL_MAX_BYTES = 2 * 1024 * 1024;
@@ -58,7 +62,9 @@ export async function run(command, args, ctx) {
   const { EXIT } = ctx;
   const values = parseArgs({
     args,
-    options: { slug: { type: "string" }, file: { type: "string" }, workdir: { type: "string" }, channel: { type: "string" }, force: { type: "boolean" } },
+    // --recapture takes the screencast scenes' pages again; --profile points their browser at a
+    // persistent profile the owner signed in to himself (agents never pass it).
+    options: { slug: { type: "string" }, file: { type: "string" }, workdir: { type: "string" }, channel: { type: "string" }, force: { type: "boolean" }, recapture: { type: "boolean" }, profile: { type: "string" } },
     strict: true,
   }).values;
   if (!values.slug && !values.file) throw new UsageError("render needs --slug (or --file for an example outside docs/videos)");
@@ -91,9 +97,37 @@ export async function run(command, args, ctx) {
     }
     subtitles = subtitlePlan(doc, timeline);
   }
+  const channel = values.channel ?? ctx.env.VIDEO_BROWSER_CHANNEL;
+  // Screencast scenes (tools/video/screencast) draw stills a browser takes from their steps on a
+  // public page; they are cached by the steps, so this opens a browser only for new or changed ones.
+  let screencasts = {};
+  if (doc.scenes.some(isScreencast)) {
+    try {
+      const taken = await ensureCaptures(doc, workdir, {
+        channel,
+        profile: values.profile ?? ctx.env.VIDEO_SCREENCAST_PROFILE,
+        recapture: values.recapture,
+        now: ctx.now,
+        log: (text) => ctx.stdout.write(text),
+      });
+      screencasts = taken.manifests;
+    } catch (error) {
+      if (error instanceof BrowserMissing) {
+        ctx.stderr.write(`${error.message}\n`);
+        return EXIT.missing;
+      }
+      if (error instanceof NetworkError) {
+        ctx.stderr.write(`${error.message}\n`);
+        return EXIT.external;
+      }
+      if (!(error instanceof StepError)) throw error;
+      ctx.stdout.write(`ERROR screencast ${error.message}\n`);
+      return EXIT.lint;
+    }
+  }
   // A drama's thumbnail and an illustrated slides video's may sit on a keyframe (docs/videos/ILLUSTRATED.md).
   const keyframes = hasPictures(doc) ? (readJson(path.join(workdir, ARTIFACTS.keyframes), null)?.shots ?? {}) : {};
-  const plan = renderPlan(doc, themeHash(), ctx.root, { keyframes });
+  const plan = renderPlan(doc, themeHash(), ctx.root, { keyframes, screencasts });
   const undrawn = (plan.thumbnail?.variants ?? []).find((variant) => variant.shot && !variant.keyframe);
   if (undrawn) {
     ctx.stderr.write(`thumbnail variant ${undrawn.id}'s background is the keyframe of shot ${undrawn.shot}, which is not drawn yet; run keyframes first\n`);
@@ -118,7 +152,6 @@ export async function run(command, args, ctx) {
   let drawn = 0;
   let reused = 0;
   let stopped = false;
-  const channel = values.channel ?? ctx.env.VIDEO_BROWSER_CHANNEL;
   // The contact sheet shows the slide states; a drama's shots get theirs from the keyframes
   // stage, so a drama with no cards has no sheet here.
   const tiles = plan.scenes.flatMap((scene) => scene.states.map((state, index) => ({ file: stillFile(state.key), label: `${scene.id} · ${scene.template} · ${index + 1}/${scene.states.length}` })));

@@ -15,7 +15,7 @@ import { eachLine, textHash } from "../core/schema.mjs";
 import { runCaptions, writeLanguages } from "../core/stages.mjs";
 import { COMPILATION_STEPS, DRAMA_STEPS, dubArtifacts, loadProject, SLIDES_STEPS } from "../core/state.mjs";
 import { formatClock, SAMPLE_RATE, visualHash } from "../core/timeline.mjs";
-import { dubScript, translationHash } from "../dubs/plan.mjs";
+import { dubFingerprint, dubScript, translationHash } from "../dubs/plan.mjs";
 import { COMPILATION_ITEM_IDS, ITEM_IDS } from "../qa/checks.mjs";
 import { encodeWav } from "../tts/wav.mjs";
 import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeTranslations } from "../compile/fixture.mjs";
@@ -313,7 +313,7 @@ test("a branded final submission reports the full duration and shifted chapters 
   const project = loadProject({ slug: box.slug, root: box.root });
   const files = dubArtifacts(box.workdir, "en");
   mkdirSync(files.dir, { recursive: true });
-  const dub = presentationTimeline({ ...timeline, locale: "en", format: "m4a", translation_hash: translationHash(dubScript(project.doc, project.translations.en, "en").doc), tempo_max: 1 }, applied);
+  const dub = presentationTimeline({ ...timeline, locale: "en", format: "m4a", translation_hash: translationHash(dubScript(project.doc, project.translations.en, "en").doc), speech_fingerprint: dubFingerprint(project, "en"), tempo_max: 1 }, applied);
   writeFileSync(files.timeline, JSON.stringify(dub));
   const track = Buffer.from("already branded English audio");
   writeFileSync(files.track("m4a"), track);
@@ -444,6 +444,26 @@ test("review-push --gate final runs the quality check and sends its report; a ch
   assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], later.ctx), EXIT.external);
   assert.match(later.out.stderr, /the quality check could not finish/);
   assert.equal(down.state.reviews.length, 0);
+});
+
+test("the final review carries the narration's and zh-TW's titles whatever the choice ticks; a zh-TW video's carries its own alone, as before", async () => {
+  const titles = async (name, slug) => {
+    const box = sandbox(slug, name);
+    const { final } = cutVideo(box);
+    mkdirSync(path.join(box.dir, "i18n"), { recursive: true });
+    for (const locale of ["zh-TW", "en", "ja"]) writeFileSync(path.join(box.dir, "i18n", `${locale}.json`), JSON.stringify({ title: `${locale} title`, description: `${locale} description` }));
+    // Japanese captions alone: no title is chosen for any language.
+    writeLanguages(box.workdir, { locales: { ja: { metadata: false, captions: true, dub: false } }, decided_at: "2026-10-01T00:00:00Z" });
+    const server = site();
+    const push = context(box, server.fetchImpl, { encode, runCommand: passingQualityCheck(box, final) });
+    assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], push.ctx), EXIT.ok, push.out.stderr);
+    const { metadata } = server.state.reviews[0].payload;
+    rmSync(box.base, { recursive: true, force: true });
+    return Object.fromEntries(Object.entries(metadata).map(([locale, fields]) => [locale, fields.title]));
+  };
+  assert.deepEqual(await titles("en", "fixture-en"), { en: "Which AI model is worth paying for? Three questions", "zh-TW": "zh-TW title" });
+  const zh = await titles("minimal", "fixture-minimal");
+  assert.deepEqual(Object.keys(zh), ["zh-TW"], "a zh-TW video sends its own title alone, as before");
 });
 
 test("review-push --gate publish attaches every file of the package with the package check and what the card shows", async () => {

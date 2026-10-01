@@ -10,13 +10,13 @@ import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { EXIT, main } from "../cli.mjs";
 import { readApprovals } from "../core/approvals.mjs";
 import { lookHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
-import { dramaFixture, fixture, sandbox } from "../core/fixtures/load.mjs";
+import { dramaFixture, enFixture, fixture, sandbox } from "../core/fixtures/load.mjs";
 import { shortsFile } from "../shorts/episode.mjs";
 import { atomicWrite, readJson, ROOT } from "../core/paths.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { dubArtifacts, loadProject, pipelineStatus } from "../core/state.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
-import { dubScript, translationHash } from "../dubs/plan.mjs";
+import { dubFingerprint, dubScript, translationHash } from "../dubs/plan.mjs";
 import { ITEM_IDS } from "../qa/checks.mjs";
 import { jpegBytes } from "../qa/test-images.mjs";
 import { PART_BYTES } from "../review/sync.mjs";
@@ -349,8 +349,8 @@ function context(box, fetchImpl, clock) {
 
 const smallRefs = { script_writing: "short sentences", formats: "tutorial", channel: "Mokaair", showcase: { scenes: [] }, minimal: fixture() };
 
-function answersFor(slug, { applies = null } = {}) {
-  const video = { ...fixture(), slug };
+function answersFor(slug, { applies = null, script = fixture() } = {}) {
+  const video = { ...script, slug };
   return {
     planner: (body) => ({ slug, title: "ChatGPT 廣告怎麼關", source_guide: "chatgpt-ads-status", source_urls: ["https://openai.com/a"], brief: body.payload.owner_note ? brief(["A", "C"], { applies }) : brief(["A", "B"], { applies }) }),
     writer: () => ({ video, claims: "c1｜Go 每月 270 元｜https://openai.com/a｜2026-09-25｜hook\n", lexicon_additions: { Sulafat: null, "bad term!": "x" } }),
@@ -1225,7 +1225,7 @@ function fakeDub(box, slug, workdir, plan, checks) {
       const words = translationHash(dubScript(project.doc, project.translations[locale], locale).doc);
       const redo = command.includes("--redo");
       if (!redo) overRuns[locale] = (overRuns[locale] ?? 0) + 1;
-      const base = { locale, speech_hash: timeline.speech_hash, translation_hash: words, rates: { default: 15, measured: 14.2 } };
+      const base = { locale, speech_hash: timeline.speech_hash, translation_hash: words, speech_fingerprint: dubFingerprint(project, locale), rates: { default: 15, measured: 14.2 } };
       mkdirSync(files.dir, { recursive: true });
       const overrun = () => {
         const text = project.translations[locale].lines[first].text;
@@ -1267,12 +1267,12 @@ const rewordAnswer = (body) => ({ lines: body.payload.lines.map((line) => ({ id:
  * with the dub and its check played by `fakeDub`; the languages then wait for the owner's
  * choice on /admin/videos (docs/videos/LANGUAGES.md), which `choose` makes.
  */
-async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, reword = rewordAnswer } = {}) {
+async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, reword = rewordAnswer, script = fixture() } = {}) {
   const box = sandbox();
   const slug = "chatgpt-ads-off";
   const passes = { shorten, reword };
   const answers = {
-    ...answersFor(slug, { applies: "1、2" }),
+    ...answersFor(slug, { applies: "1、2", script }),
     translator: (body) => (passes[body.variant] ? passes[body.variant](body) : { worksheet: filledSheet(body.payload.worksheet) }),
     caption_reviewer: (body) => ({ worksheet: body.payload.worksheet, fixes: [] }),
   };
@@ -1345,8 +1345,10 @@ test("the languages wait for the owner: an undecided video is translated into no
   const before = Object.fromEntries(["final.mp4", "thumbnail.jpg", "description.zh-TW.txt", path.join("captions", "zh-TW.srt")].map((name) => [name, readFileSync(video.upload(name))]));
 
   video.choose({});
+  const ran = video.runs.length;
   assert.equal(await video.step(), null, "Traditional Chinese only: nothing to translate, dub or send");
   assert.equal(video.calls("translator").length, 0);
+  assert.equal(video.runs.length, ran, "a zh-TW video owes no zh-TW translation: no sheet, captions or package is run");
   assert.deepEqual(readJson(path.join(video.workdir, "languages.json")).locales, {}, "the choice is copied for captions, package, qa and review-push");
   assert.equal(video.onSite().ready_to_upload, true, "decided and nothing to make: the video may be scheduled");
 
@@ -1387,6 +1389,48 @@ test("a language chosen for its title and description alone is translated withou
   assert.equal(video.calls("translator").length, 1, "a part the site reports ready is not translated again");
   assert.deepEqual(video.onSite().languages.en, { metadata: { state: "ready", reason: null } });
   assert.equal(video.onSite().ready_to_upload, true);
+});
+
+test("an English-narrated video is translated into zh-TW once, before the language it was chosen, and its batch and package carry zh-TW beside it", async () => {
+  const video = await finishedVideo({ script: enFixture() });
+  assert.equal(video.calls("translator").length, 0, "nothing is translated before the choice");
+  assert.deepEqual(Object.keys(readJson(video.upload("metadata.json")).localizations), [], "the package before the choice is English alone");
+  video.choose({ ja: { metadata: true, captions: false, dub: false } });
+
+  assert.match(await video.step(), /^chatgpt-ads-off: zh-TW metadata and captions translated and reviewed$/);
+  assert.ok(video.runs.includes(`i18n-sheet --slug ${video.slug} --locale zh-TW --parts metadata,captions`));
+  const [zh] = video.calls("translator");
+  assert.deepEqual([zh.payload.locale, zh.payload.parts], ["zh-TW", ["metadata", "captions"]]);
+  assert.equal(zh.payload.worksheet.lines[0].source, enFixture().scenes[0].lines[0].text, "translated from the English narration");
+  assert.deepEqual(video.calls("caption_reviewer").map((call) => call.payload.locale), ["zh-TW"]);
+  const translation = readJson(path.join(video.box.root, "docs", "videos", video.slug, "i18n", "zh-TW.json"));
+  assert.equal(translation.title, "zh-TW title");
+
+  assert.match(await video.step(), /^chatgpt-ads-off: ja metadata translated and reviewed$/);
+  assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(ja metadata\)$/);
+  assert.deepEqual(video.calls("translator").map((call) => call.payload.locale), ["zh-TW", "ja"], "zh-TW is translated once");
+  const [batch] = video.reviews("languages");
+  assert.deepEqual(batch.payload, { locales: { ja: { metadata: "ready" } } }, "the batch names only what the owner chose");
+  const metadata = readJson(video.upload("metadata.json"));
+  assert.equal(metadata.default_language, "en");
+  assert.deepEqual([Object.keys(metadata.localizations), metadata.captions], [["zh-TW", "ja"], ["captions/en.srt", "captions/zh-TW.srt"]]);
+  assert.ok(existsSync(video.upload("description.zh-TW.txt")) && !existsSync(video.upload("dubs")), "zh-TW gets a title and captions, no dub");
+
+  assert.equal(await video.step(), null, "everything is made");
+  assert.equal(video.calls("translator").length, 2);
+});
+
+test("an English-narrated video the owner gives no other language gets zh-TW once and a package written again with it, and sends no batch", async () => {
+  const video = await finishedVideo({ script: enFixture() });
+  video.choose({});
+  assert.match(await video.step(), /^chatgpt-ads-off: zh-TW metadata and captions translated and reviewed$/);
+  assert.match(await video.step(), /^chatgpt-ads-off: zh-TW captions, title and description written into the upload package$/);
+  assert.deepEqual(video.runs.slice(-2).map((run) => run.split(" ")[0]), ["captions", "package"]);
+  const metadata = readJson(video.upload("metadata.json"));
+  assert.deepEqual([Object.keys(metadata.localizations), metadata.captions, metadata.language_choice], [["zh-TW"], ["captions/en.srt", "captions/zh-TW.srt"], {}]);
+  assert.equal(await video.step(), null, "zh-TW is in: nothing more to do");
+  assert.equal(video.calls("translator").length, 1);
+  assert.equal(video.reviews("languages").length, 0, "no batch: the panel never offers zh-TW");
 });
 
 /** Reject only the language review POST; reports, files and other videos keep working. */
