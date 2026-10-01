@@ -1,13 +1,13 @@
 ---
 id: 2026-10-01-sothatswhy-season2-batch02
 title: 原來如此第二季第二批：B27 S27 T28 A33 製作包與獨立審稿
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: codex-sothatswhy-batch02
 claimed_at: 2026-10-01T05:43:43Z
 created_at: 2026-10-01T05:43:41Z
-completed_at:
+completed_at: 2026-10-01T06:04:09Z
 branch: codex/sothatswhy-season2-batch01
 depends_on:
   - 2026-09-29-so-that-s-why-vet-the
