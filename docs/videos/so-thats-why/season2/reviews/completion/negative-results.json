@@ -1,0 +1,141 @@
+{
+  "checked_on": "2026-10-01",
+  "scope": "TEXT_ONLY",
+  "baseline_pass": true,
+  "restored_baseline_pass": true,
+  "negative_cases": [
+    {
+      "name": "package-drift",
+      "pass": true,
+      "exit_code": 1,
+      "expected": "stale review"
+    },
+    {
+      "name": "report-drift",
+      "pass": true,
+      "exit_code": 1,
+      "expected": "stale review"
+    },
+    {
+      "name": "bundle-drift",
+      "pass": true,
+      "exit_code": 1,
+      "expected": "bundle differs"
+    },
+    {
+      "name": "original-inventory-drift",
+      "pass": true,
+      "exit_code": 1,
+      "expected": "original topic inventory changed"
+    },
+    {
+      "name": "original-row-title-drift",
+      "pass": true,
+      "exit_code": 1,
+      "expected": "original title, check and verdict"
+    },
+    {
+      "name": "unresolved-disposition",
+      "pass": true,
+      "exit_code": 1,
+      "expected": "unresolved disposition"
+    },
+    {
+      "name": "self-review",
+      "pass": true,
+      "exit_code": 1,
+      "expected": "independent text review"
+    },
+    {
+      "name": "fabricated-rejected-package",
+      "pass": true,
+      "exit_code": 1,
+      "expected": "fabricated production package"
+    },
+    {
+      "name": "unknown-duplicate-record",
+      "pass": true,
+      "exit_code": 1,
+      "expected": "duplicate record ID not found"
+    },
+    {
+      "name": "duplicate-source-hash-drift",
+      "pass": true,
+      "exit_code": 1,
+      "expected": "duplicate source changed"
+    },
+    {
+      "name": "preserved-artifact-drift",
+      "pass": true,
+      "exit_code": 1,
+      "expected": "preservation: changed B26.md"
+    },
+    {
+      "name": "missing-plain-science-prompt",
+      "pass": true,
+      "exit_code": 1,
+      "expected": "six chapter, ten Short and two thumbnail prompts required"
+    },
+    {
+      "name": "wrong-prompt-group-with-total-18",
+      "pass": true,
+      "exit_code": 1,
+      "expected": "six chapter, ten Short and two thumbnail prompts required"
+    },
+    {
+      "name": "crlf-new-package",
+      "pass": true,
+      "exit_code": 1,
+      "expected": "LF text with a single final newline required"
+    },
+    {
+      "name": "consecutive-ending-punctuation",
+      "pass": true,
+      "exit_code": 1,
+      "expected": "sentence exceeds 40 characters"
+    },
+    {
+      "name": "metadata-title-limit",
+      "pass": true,
+      "exit_code": 1,
+      "expected": "title length must be 1..100"
+    },
+    {
+      "name": "wrong-totals",
+      "pass": true,
+      "exit_code": 1,
+      "expected": "totals differ"
+    },
+    {
+      "name": "duplicate-proposed-order",
+      "pass": true,
+      "exit_code": 1,
+      "expected": "proposed order must contain"
+    },
+    {
+      "name": "unsupported-publication-claim",
+      "pass": true,
+      "exit_code": 1,
+      "expected": "must remain unaccepted"
+    },
+    {
+      "name": "selection-drift",
+      "pass": true,
+      "exit_code": 1,
+      "expected": "disposition report must bind current selection"
+    },
+    {
+      "name": "missing-pillar-review",
+      "pass": true,
+      "exit_code": 1,
+      "expected": "four pillar reviews required"
+    },
+    {
+      "name": "unknown-batch",
+      "pass": true,
+      "exit_code": 1,
+      "expected": "unknown batch"
+    }
+  ],
+  "fixture_strategy": "Isolated os.tmpdir copy; checkout content never mutated"
+}
