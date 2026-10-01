@@ -29,6 +29,9 @@ import {
 } from "./check.mjs";
 import { concatSamples, downsample, encodeWav } from "./wav.mjs";
 
+// The fixture videos run seconds; the eight-minute floor has tests of its own.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
+
 const TOKEN = `mkv_${"t".repeat(43)}`;
 const sine = (rate, hz, seconds) => Int16Array.from({ length: Math.round(rate * seconds) }, (_, index) => Math.round(8000 * Math.sin((2 * Math.PI * hz * index) / rate)));
 const rms = (samples, from = 0, to = samples.length) => {

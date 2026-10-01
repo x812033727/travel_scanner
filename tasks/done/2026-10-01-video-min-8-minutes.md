@@ -47,6 +47,7 @@ scope:
   - tools/video/core/lint.mjs
   - tools/video/core/lint.test.mjs
   - tools/video/core/schema.mjs
+  - tools/video/core/narration-locale.test.mjs
   - tools/video/core/stages.test.mjs
   - tools/video/core/state.test.mjs
   - tools/video/dubs/captions-package.test.mjs
@@ -59,6 +60,7 @@ scope:
   - tools/video/review/sync.test.mjs
   - tools/video/screencast/screencast.test.mjs
   - tools/video/templates/terminal/terminal.test.mjs
+  - tools/video/tts/check.test.mjs
 ---
 
 # 影片每集至少 8 分鐘（漫劇除外，原來如此事務所也要）
@@ -94,6 +96,6 @@ cd apps/api && uv run ruff check . && uv run mypy app && uv run mypy tests && uv
 ## Notes
 
 - 測試用範例影片只有幾秒；各測試檔與 `assemble/smoke.mjs` 開頭設 `VIDEO_MIN_EPISODE_MINUTES ??= "0"` 關掉這條規矩，下限本身在 `core/lint.test.mjs` 與 `qa/checks.test.mjs` 測。正式環境不設這個變數。
-- 本機（沒有字型與 ffmpeg 的雲端容器）`node --test "tools/video/**/*.test.mjs"` 在 main 上就有 30 個失敗；這次改動前後失敗清單完全相同。
+- 比對方式：每個 `tools/**/*.test.mjs` 檔各在這條分支與 main 的 worktree 跑一次，只看「分支失敗、main 通過」的檔案。先 `npm ci`，不然有些檔案在 main 上就載入失敗，會蓋掉真正的差異。
 - migration 0117 的第一版先後兩句 UPDATE，設定 (3, 5) 時會撞舊約束的 min <= max；整合測試抓到後改成一句 `GREATEST`。在本機 PostgreSQL 16 跑過 upgrade → downgrade → upgrade。
 - 認領時以 `--force` 蓋過四張還開著的票（2026-09-27-video-drama-room-withdraw-a-one、2026-09-28-drama-preloaded-document-approval-order、2026-09-28-sothatswhy-shorts-from-episode、2026-09-30-video-worker-blocks-on-scene-data）在 schemas.py、lint.mjs、prompts.mjs、so-thats-why/README.md 的範圍；這裡對每個檔只動幾行，合併時注意。
