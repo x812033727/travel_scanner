@@ -767,12 +767,29 @@ antagonist, "appearance": English, concrete, ≤ 800 chars (age, build, face, ha
 colours, one signature object; this text is copied word for word into every episode and drawn
 by an image model), "voice": {"provider": "gemini", "name": one of "drama_settings.voices" when
 any, "style": a Taiwan Mandarin direction}, "personality", "want", "fear", "secret",
-"speech": the verbal habit, "relationships": [{"with": id, "kind": text}]}], "world": {"era",
+"speech": the verbal habit, "relationships": [{"with": id, "kind": text}], "looks": optional, see
+below}], "world": {"era",
 "places": [...], "factions": [{"name", "wants", "hides"}]}, "rules": [text], "mysteries":
 [{"id", "question", "planted_chapter": int, "reveal_chapter": int|null, "reserved": bool}],
 "tone": text, "naming": [text], "never": [text], "lexicon": {"<name or term>": "<how it is read
 aloud, or null when the characters already read right>"}}. The leads' ids come first in the
-list, then the rest; ids never change once the owner approves.`,
+list, then the rest; ids never change once the owner approves.
+
+"appearance" is the look the whole series keeps: no episode numbers, no time words (later, at
+first, no longer), no occasions, no other character's name. A shot prompt can add a thing to a
+character but cannot take one off, so a change that lasts a run of episodes (a coat taken off, a
+cord cut, a wheelchair, a hospital gown, a dress worn only in the first episodes, a voice changed
+by a stroke) is a LOOK, written on that character: "looks": [{"id": lowercase ascii 2–24 chars,
+unique within the character, "from": the first episode it covers, "to": the last episode it
+covers (leave it out to run to the series' last episode), "appearance": the WHOLE look in those
+episodes, under the same rules as "appearance" (it replaces the base one and the image model
+reads it alone, so restate the age, build, face and hair; never write it as "the base plus a
+cast"), "sheet_prompt": optional, "voice_style": optional, a Taiwan Mandarin direction that
+replaces "voice.style" in those episodes (Gemini voices only)}]. One look per episode: two looks
+of the same character never cover the same episode, and the episodes no look covers use the base.
+A change inside one episode (aged decades within a scene) is not a look: make it a second
+character id (for example "lin-old") and cast both in that episode. A character who never changes
+has no "looks".`,
 
   "planner:bible": `${DRAMA_COMMON}
 

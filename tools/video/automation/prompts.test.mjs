@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 
 import { DRAMA_INSTRUCTIONS, EXPLAINER_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REGISTER, LISTENER_REWRITE, parseAnswer, VARIANT_INSTRUCTIONS } from "./prompts.mjs";
@@ -172,4 +173,19 @@ test("source-bound animation writing and independent checking receive motion, lo
     assert.match(prompt, /lip-sync is not implemented/);
     assert.doesNotMatch(prompt, /burn_in: true/);
   }
+});
+
+test("the setting planner is told how to write a character's looks, and its reference file says the same", () => {
+  const prompt = instructionsFor("planner", "drama", "", "setting");
+  assert.match(prompt, /"looks": \[\{"id": lowercase ascii 2–24 chars/);
+  for (const key of ['"from"', '"to"', '"appearance"', '"sheet_prompt"', '"voice_style"']) assert.ok(prompt.includes(key), key);
+  assert.match(prompt, /the WHOLE look in those\s+episodes/);
+  assert.match(prompt, /One look per episode: two looks\s+of the same character never cover the same episode/);
+  assert.match(prompt, /A change inside one episode \(aged decades within a scene\) is not a look: make it a second\s+character id/);
+  assert.match(prompt, /A shot prompt can add a thing to a\s+character but cannot take one off/);
+  const reference = readFileSync(new URL("../../../.agents/skills/youtube-video/references/prompts/series-setting.md", import.meta.url), "utf8");
+  assert.match(reference, /"looks": \[\{"id", "from", "to"\?, "appearance", "sheet_prompt"\?, "voice_style"\?\}\]/);
+  assert.match(reference, /whole look/);
+  assert.match(reference, /one look per episode/);
+  assert.match(reference, /second character id/);
 });
