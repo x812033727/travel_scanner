@@ -1,13 +1,13 @@
 ---
 id: 2026-10-01-translator-and-caption-reviewer-prompts-name
 title: Translator and caption reviewer prompts name the narration locale as the source
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-translator-source
 claimed_at: 2026-10-01T15:01:58Z
 created_at: 2026-10-01T10:49:31Z
-completed_at:
+completed_at: 2026-10-01T15:14:15Z
 branch: claude/translator-source-locale
 depends_on:
   - 2026-10-01-worker-translates-zh-tw-for-an
