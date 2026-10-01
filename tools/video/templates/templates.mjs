@@ -326,7 +326,8 @@ const RENDERERS = {
   },
 };
 
-function page(body, size, extraCss = "") {
+// Exported for the screencast template (tools/video/screencast/scene.mjs), which draws its own body.
+export function page(body, size, extraCss = "") {
   return [
     "<!doctype html>",
     '<html lang="zh-Hant"><head><meta charset="utf-8">',
@@ -343,7 +344,7 @@ function page(body, size, extraCss = "") {
  * current one marked, and "02 / 06 chapter" in the corner. The owner asked for both after a
  * reference video on 2026-09-26. The title card opens the video and carries neither.
  */
-function chrome(scene, state) {
+export function chrome(scene, state) {
   const bar = knowsChapters(state) && scene.template !== "title"
     ? `<div class="chrome-progress">${Array.from({ length: state.chapterCount }, (_, index) => {
       const place = index + 1 < state.chapterNumber ? ' class="done"' : index + 1 === state.chapterNumber ? ' class="now"' : "";
