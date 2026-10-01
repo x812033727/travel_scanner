@@ -86,6 +86,7 @@ function stubFetch(answers: Answers = {}) {
     if (path === "/admin/video-shorts/costs") return Promise.resolve(Response.json({ items: [], budget: overview.budget, periods: [] }));
     if (path === "/admin/videos?shorts=only") return Promise.resolve(Response.json(answers.shorts ?? shorts));
     if (path.startsWith("/admin/videos?")) return Promise.resolve(Response.json(answers.tutorials ?? []));
+    if (path.startsWith("/admin/videos/browse")) return Promise.resolve(Response.json({ items: [], total: 0, page: 1, pages: 0, facets: { category: [], state: [] } }));
     if (path.startsWith("/admin/videos/")) return Promise.resolve(Response.json(answers.project ?? { ...shorts[2], reviews: [finalReview] }));
     return Promise.resolve(Response.json({}, { status: 404 }));
   }));

@@ -86,21 +86,18 @@ async def test_without_object_storage_images_live_in_the_row_and_are_served_from
         rendered = await assets.ensure_assets(session, candidate, documents())
         await session.commit()
         rows = list(await session.scalars(select(NewsAsset)))
-        assert len(rows) == 7
+        assert len(rows) == 2
         assert all(row.content for row in rows)
-        diagram_src = next(
-            block.src
-            for block in rendered["en"].blocks
-            if getattr(block, "type", "") == "image"
-        )
-        filename = diagram_src.rsplit("/", 1)[-1]
+        hero = rendered["en"].hero
+        assert hero is not None
+        filename = hero.src.rsplit("/", 1)[-1]
         with pytest.raises(AppError):
             await assets.public_asset(session, filename)
         await assets.mark_assets_public(session, candidate.id)
         await session.commit()
         body, content_type, _ = await assets.public_asset(session, filename)
-    assert content_type == "image/svg+xml"
-    assert body.startswith(b"<svg")
+    assert content_type == "image/webp"
+    assert body[:4] == b"RIFF"
 
 
 @pytest.mark.asyncio
@@ -115,7 +112,7 @@ async def test_with_object_storage_images_go_to_s3_and_not_the_row(
         await assets.ensure_assets(session, candidate, documents())
         await session.commit()
         rows = list(await session.scalars(select(NewsAsset)))
-    assert client.put_object.call_count == 7
+    assert client.put_object.call_count == 2
     assert all(row.content is None for row in rows)
 
 
@@ -138,5 +135,58 @@ async def test_retention_clears_row_images_without_needing_object_storage(
         rows = list(
             await session.scalars(select(NewsAsset).where(NewsAsset.candidate_id == candidate_id))
         )
-    assert result["deleted_assets"] == 7
+    assert result["deleted_assets"] == 2
     assert all(row.content is None and row.deleted_at is not None for row in rows)
+
+
+@pytest.mark.asyncio
+async def test_no_process_figure_and_an_old_one_is_dropped(monkeypatch: pytest.MonkeyPatch) -> None:
+    """The fixed "editorial verification flow" figure named an internal tool and used the
+    article title as alt text. New articles get no body figure, and a candidate processed
+    again loses the one it already had, in the text and as a public asset."""
+    factory = await database()
+    monkeypatch.setattr(assets, "storage", no_object_storage)
+    async with factory() as session:
+        candidate = await seed_candidate(session)
+        old = NewsAsset(
+            candidate_id=candidate.id,
+            variant="diagram",
+            locale="en",
+            storage_key=f"news/{candidate.id}/old-diagram-en.svg",
+            public_filename="old-diagram-en.svg",
+            content_type="image/svg+xml",
+            sha256="c" * 64,
+            size=5,
+            width=1600,
+            height=900,
+            content=b"<svg/>",
+            is_public=True,
+        )
+        session.add(old)
+        await session.commit()
+        drafted = documents()
+        drafted["en"] = GuideDocument.model_validate(
+            {
+                "title": "Release en",
+                "description": "What changed.",
+                "blocks": [
+                    {"type": "paragraph", "text": "Body."},
+                    {
+                        "type": "image",
+                        "src": f"{assets.PUBLIC_PREFIX}/old-diagram-en.svg",
+                        "alt": "Release en",
+                        "width": 1600,
+                        "height": 900,
+                    },
+                ],
+                "sources": [],
+            }
+        )
+        rendered = await assets.ensure_assets(session, candidate, drafted)
+        await session.commit()
+        for document in rendered.values():
+            assert [block.type for block in document.blocks] == ["paragraph"]
+        await session.refresh(old)
+        assert old.deleted_at is not None and old.is_public is False
+        with pytest.raises(AppError):
+            await assets.public_asset(session, "old-diagram-en.svg")

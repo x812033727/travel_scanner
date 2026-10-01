@@ -303,7 +303,7 @@ async def request_sync(
         raise Refused(409, "video_youtube_sync_running", "這支影片正在送 YouTube，等它跑完再送")
     from app.video_youtube.vps import assert_idle
 
-    await assert_idle(slug, upload=payload.mode == "upload")
+    await assert_idle(session, slug, upload=payload.mode == "upload")
     package = await asyncio.to_thread(
         read_approved_package, store, slug, project, await _project_reviews(session, project)
     )
@@ -393,7 +393,7 @@ async def retry_sync(
     project = await _locked_project(session, slug)
     from app.video_youtube.vps import assert_idle
 
-    await assert_idle(slug)
+    await assert_idle(session, slug)
     state = project.youtube_sync
     if not state:
         raise Refused(409, "video_youtube_sync_missing", "這支影片還沒有送過 YouTube")

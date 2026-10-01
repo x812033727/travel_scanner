@@ -40,7 +40,7 @@ export function SearchResultCard({ hit, labels }: { hit: GuideSearchHit; labels:
       ) : null}
       <div className="min-w-0 flex-1">
         <p className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">
-          <span className="rounded-full bg-[var(--line)] px-2 py-1 text-[var(--fg)]">{labels[hit.kind]}</span>
+          <span className="rounded-full bg-[var(--line)] px-2 py-1 text-[var(--ink)]">{labels[hit.kind]}</span>
           {hit.destination_label ? <span>{hit.destination_label}</span> : null}
           {hit.topics.slice(0, 2).map((topic) => <span key={topic.slug}>{topic.label}</span>)}
         </p>

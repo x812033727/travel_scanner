@@ -144,7 +144,7 @@ export function GuideArticle({
       {geminiMember && geminiSeries ? <GeminiNavigation series={geminiSeries} number={geminiMember.number} position="top" /> : null}
       <header>
         <p className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">
-          <span className="rounded-full bg-[var(--line)] px-2 py-1 text-[var(--fg)]">
+          <span className="rounded-full bg-[var(--line)] px-2 py-1 text-[var(--ink)]">
             {labels[state.kind]}
           </span>
           {state.destination_label ? (

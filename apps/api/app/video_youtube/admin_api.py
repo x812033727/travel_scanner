@@ -24,7 +24,7 @@ from app.models import User
 from app.problems import AppError
 from app.video_reviews.admin_service import review_store
 from app.video_reviews.schemas import ProjectOut
-from app.video_youtube import connection, sync, vps
+from app.video_youtube import connection, sync, vps, vps_settings
 from app.video_youtube.errors import Refused
 from app.video_youtube.schemas import (
     ClientIn,
@@ -95,6 +95,27 @@ async def unlink(user: SettingsManager, session: Session) -> UnlinkOut:
     with answered():
         revoked, view = await connection.unlink(session, user)
     return UnlinkOut(revoked=revoked, connection=view)
+
+
+@connection_router.get("/vps/settings", response_model=vps_settings.SettingsView)
+async def read_vps_settings(user: ContentReader, session: Session) -> vps_settings.SettingsView:
+    _ = user
+    with answered():
+        return await vps_settings.view(session)
+
+
+@connection_router.put("/vps/settings", response_model=vps_settings.SettingsView)
+async def save_vps_settings(
+    payload: vps_settings.SettingsIn, user: SettingsManager, session: Session
+) -> vps_settings.SettingsView:
+    with answered():
+        return await vps_settings.save(session, user, payload)
+
+
+@connection_router.post("/vps/settings/test", response_model=vps_settings.SettingsView)
+async def test_vps_connection(user: SettingsManager, session: Session) -> vps_settings.SettingsView:
+    with answered():
+        return await vps_settings.test_connection(session, user)
 
 
 @publish_router.post("/{slug}/youtube/publish", response_model=ProjectOut, status_code=202)

@@ -9,7 +9,7 @@
 // Shorts twin is tools/video/shorts/import.mjs.
 //
 // meta.json: { slug, title | titles: [a, b], description, chapters?: [{ time, title }],
-//              source_guide?, note? }
+//              source_guide?, category?, note? }
 // Chapters left out are read from the description's "00:00 title" lines.
 import { existsSync, mkdirSync, readFileSync } from "node:fs";
 import path from "node:path";
@@ -18,6 +18,7 @@ import { locateFfmpeg, runTool } from "../assemble/ffmpeg.mjs";
 import { ebur128Args, HEIGHT, LOUDNESS, LOUDNESS_TOLERANCE, parseEbur128, probeArgs, WIDTH } from "../assemble/plan.mjs";
 import { sha256File } from "../core/approvals.mjs";
 import { resolveWorkdir, UsageError } from "../core/paths.mjs";
+import { VIDEO_CATEGORIES } from "../core/schema.mjs";
 import { FPS, formatClock } from "../core/timeline.mjs";
 import { previewArgs } from "../review/sync.mjs";
 import { upload } from "../shorts/push.mjs";
@@ -60,9 +61,10 @@ export function readMeta(meta) {
   const chapters = meta?.chapters === undefined ? chaptersFrom(meta?.description) : meta.chapters;
   if (!Array.isArray(chapters) || chapters.some((chapter) => !CLOCK.test(chapter?.time ?? "") || !text(chapter?.title))) problems.push('chapters: [{ time: "00:00", title }]');
   if (meta?.source_guide !== undefined && !GUIDE_SLUG.test(meta.source_guide)) problems.push("source_guide must be an article slug");
+  if (meta?.category !== undefined && !VIDEO_CATEGORIES.includes(meta.category)) problems.push(`category must be one of ${VIDEO_CATEGORIES.join(", ")}`);
   if (meta?.note !== undefined && (!text(meta.note) || [...meta.note].length > NOTE_MAX)) problems.push(`note: 1–${NOTE_MAX} characters`);
   if (problems.length) throw new UsageError(`meta.json cannot be imported:\n  ${problems.join("\n  ")}`);
-  return { slug: meta.slug, titles: titles.map((title) => title.trim()), description: meta.description, chapters, source_guide: meta.source_guide ?? null, note: meta.note ?? null };
+  return { slug: meta.slug, titles: titles.map((title) => title.trim()), description: meta.description, chapters, source_guide: meta.source_guide ?? null, category: meta.category ?? null, note: meta.note ?? null };
 }
 
 const rate = (value) => {
@@ -115,6 +117,8 @@ export function projectBody(meta) {
     ],
     format: "slides",
     ...(meta.source_guide ? { source_guide: meta.source_guide } : {}),
+    // Filed on /admin/videos under it; left out, the owner files it on the page.
+    ...(meta.category ? { category: meta.category } : {}),
   };
 }
 
