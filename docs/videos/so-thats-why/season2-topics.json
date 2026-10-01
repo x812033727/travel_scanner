@@ -7,24 +7,32 @@
       "pillar": "business",
       "title": "為什麼超市常把牛奶放在最裡面？",
       "hook": "最常買的牛奶，為什麼常常要走到最裡面才拿得到？",
-      "answer": "業者自己兩種說法都講：一是讓你沿路多看貨架、順手多買（業界叫「養購物籃」）；二是牛奶從後場卸貨、存進冷藏庫，冷藏櫃放後面最好補貨、不斷冷鏈。美國記者訪問多家超市與顧問，沒人拿得出研究分出比例（NPR，2014、2016）。",
+      "answer": "本日重讀的NPR 2014採訪出現購物籃與冷藏補貨兩種說法，BJ's公關強調冷鏈；不能分出比例或外推全球。2016節目是2014重播；蔬果研究不是牛奶動機的驗證。",
       "shorts": [
-        "牛奶放後面，業者兩種說法都認",
-        "英國實驗：蔬果搬到門口賣更多"
+        "牛奶放後面，只有一個原因嗎？",
+        "蔬果搬到門口，就一定賣更多？"
       ],
       "key_visuals": [
-        "超市平面圖與走到冷藏櫃的路線",
-        "冷藏櫃背後連著後場倉庫的剖面",
-        "購物籃沿路多了幾樣東西"
+        "原創超市概念圖，顧客與商品路線分色",
+        "冷藏補貨概念剖面，並非每家店結構",
+        "購物籃只是採訪說法的示意，不是實測銷售"
       ],
       "facts_to_verify": [
-        "NPR 2014-08-01 與 Planet Money #555（2016-09-21）逐字稿引句",
-        "Vogel et al. 2021 PLoS Med 數字（1.71 SD、6,170 份）",
-        "台灣／日本超市牛奶位置若要入片需另找來源"
+        "NPR 2014原始採訪與2016重播歸屬；NCPR受限時可讀NPR Illinois同份逐字稿",
+        "Vogel 2021/2026原文的非隨機、多項介入、店級結果與追蹤限制；本包不用增幅數字",
+        "台灣／日本或全球配置尚無本包可用證據，不外推"
       ],
       "status": "checked",
       "verdict": "修正",
-      "check": "topic-checks/s2-B26-B38.md"
+      "check": "topic-checks/s2-B26-B38.md",
+      "production": {
+        "status": "package-reviewed",
+        "batch": "batch01",
+        "source_checked_on": "2026-10-01",
+        "package": "season2/B26.md",
+        "packaging": "season2/batch01-packaging.json",
+        "review": "season2/reviews/batch01/B26.json"
+      }
     },
     {
       "id": "B27",
@@ -606,25 +614,32 @@
       "id": "S26",
       "pillar": "science",
       "title": "為什麼自己錄音的聲音聽起來很怪？",
-      "hook": "你每天聽到的自己的聲音，別人其實沒聽過。",
-      "answer": "說話時，你聽到的是空氣傳進耳朵、加上頭骨振動傳到內耳的混合聲；錄音只收到空氣那一路，音色不同。一項研究量到骨傳導在 1–2 kHz 最明顯（Reinfeldt 2010）。再加上聽不慣，就覺得怪。",
+      "hook": "同一個人說話和重播录音，为什么聽起來不一样？",
+      "answer": "說話時自己的聽覺包含空氣與骨傳導路徑；普通錄音重播不能重現本人直接感受到的同一路徑。不是固定各半或固定變低。2013研究80人未被告知自己的聲音也在樣本，平均給自己的聲音較高吸引力評價；不能說全員沒認出或人人討厭錄音。",
       "shorts": [
-        "錄音少了頭骨傳來的那一半",
-        "不知道是自己時，反而覺得好聽"
+        "錄音少了一條聲音路徑",
+        "不是人人都討厭自己的錄音"
       ],
       "key_visuals": [
-        "頭部剖面，空氣與骨頭兩條聲音路徑",
-        "聲波低頻與高頻的比較圖",
-        "錄音機與皺眉的無臉人物"
+        "空氣／身體振動兩條概念路徑，不填固定比例",
+        "匿名聲音卡，只示意評價不編造分數",
+        "手機與無臉人物，不畫未測頻譜"
       ],
       "facts_to_verify": [
-        "Reinfeldt et al. 2010 JASA 128(2):751 骨傳導主導 1–2 kHz 的原文與適用範圍",
-        "Hughes & Harrison 2013 Perception 42(9):941 受試人數 80 與評分設計",
-        "Stenfelt & Goode 2005 骨傳導機制綜述"
+        "Reinfeldt2010作者postprint空氣／骨傳導路徑與多音素研究限定",
+        "Hughes/Harrison2013原始摘要：80人、未被告知及平均評價，不推論辨認成功率"
       ],
       "status": "checked",
       "verdict": "修正",
-      "check": "topic-checks/s2-S26-S38.md"
+      "check": "topic-checks/s2-S26-S38.md",
+      "production": {
+        "status": "package-reviewed",
+        "batch": "batch01",
+        "source_checked_on": "2026-10-01",
+        "package": "season2/S26.md",
+        "packaging": "season2/batch01-packaging.json",
+        "review": "season2/reviews/batch01/S26.json"
+      }
     },
     {
       "id": "S27",
@@ -1224,25 +1239,35 @@
     {
       "id": "T26",
       "pillar": "travel",
-      "title": "為什麼日本人端碗吃飯，韓國人卻不端？",
-      "hook": "在日本，端起飯碗吃是規矩；在韓國，把碗端起來反而可能被說沒家教。",
-      "answer": "常見解釋是吃法不同：日本傳統上一手端飯碗、一手拿筷子，湯也就著碗喝；韓國飯和湯一向用湯匙舀，碗放在桌上就好，傳統禮儀也認為端碗不雅。另一個常被提到的原因是韓國以前的銅碗導熱快、很燙。這些是習慣，不是規定。",
+      "title": "為什麼日本常端飯碗，韓國卻常放桌上？",
+      "hook": "同樣一碗飯，為什麼常見的拿碗和餐具動作不同？",
+      "answer": "和食禮儀專欄示範端飯碗配筷；首爾旅遊指南說飯碗通常留桌，韓國觀光公社介紹匙可吃飯湯。這些是常見動作與工具線索，不是人人規定或歷史起因證明；不採金屬燙手、政府碗規格及家教評判。",
       "shorts": [
-        "韓國人飯湯都用湯匙",
-        "韓國鐵碗曾有政府規格"
+        "同一碗飯，兩種常見動作",
+        "湯匙不只喝湯"
       ],
       "key_visuals": [
-        "日式木碗與韓式金屬碗並排",
-        "端碗與碗放桌上的兩個手勢剪影",
-        "兩國餐桌俯視圖"
+        "相同無標誌飯碗一拿一放，不依材質分國家",
+        "筷與匙的用途示例，不畫成絕對分界",
+        "傳統擺位以用餐者視角，保留常見限定"
       ],
       "facts_to_verify": [
-        "首爾標準飯碗的年份、尺寸與罰則（一手公告）",
-        "補國立民俗博物館「식사예절」條目原文"
+        "和食文化國民會議／JNTO拿碗動作、首爾指南usually限定、VISITKOREA匙的用途",
+        "國家遺產廳傳統飯左湯右以用餐者視角；政府網站2011學生文化文僅工具示例",
+        "起源史料與政府碗規格本次未確認，排除"
       ],
       "status": "checked",
       "verdict": "修正",
-      "check": "topic-checks/s2-T26-T38.md"
+      "check": "topic-checks/s2-T26-T38.md",
+      "original_title": "為什麼日本人端碗吃飯，韓國人卻不端？",
+      "production": {
+        "status": "package-reviewed",
+        "batch": "batch01",
+        "source_checked_on": "2026-10-01",
+        "package": "season2/T26.md",
+        "packaging": "season2/batch01-packaging.json",
+        "review": "season2/reviews/batch01/T26.json"
+      }
     },
     {
       "id": "T27",
@@ -1948,24 +1973,32 @@
       "pillar": "tech",
       "title": "為什麼鍵盤的 F 和 J 上有凸點？",
       "hook": "你的食指每天都摸到它，卻可能沒注意過。",
-      "answer": "F 和 J 是打字時左右食指放的基準鍵，凸點讓你不看鍵盤也能摸到位置、把手放回原處，也幫助視障者找鍵。歐洲電信標準協會 1998 年的標準就規定 F、J 要有凸條，數字鍵的 5 要有凸點。",
+      "answer": "F、J觸覺標記讓示範QWERTY指法的食指找回基準位置。1998 ETSI電信鍵盤文件要求F/J與數字5有觸覺識別，凸條／圓凸點形狀是偏好；ADA707.6.2的ATM與票務機5要求觸覺可區辨，並沒有指定單一凸點。不能擴成現今全球法律或發明史。",
       "shorts": [
-        "F 和 J 為什麼有凸點",
-        "ATM 的 5 也有一個凸點"
+        "F和J的小凸條，是手指的路標",
+        "數字鍵5為什麼也需要觸覺標記？"
       ],
       "key_visuals": [
-        "鍵盤特寫，F、J 兩個凸點發光",
-        "兩隻手的剪影放在基準列",
-        "數字鍵盤與電話鍵盤並排"
+        "無標誌示範QWERTY鍵盤，凸條是實體觸覺標記",
+        "抽象食指離開再回位，不放速度效果",
+        "兩種三乘三數字矩陣重畫，數字由後製核對"
       ],
       "facts_to_verify": [
-        "ETSI ES 201 381 V1.1.1（1998-12）：F、J 凸條，5 凸點",
-        "美國 2010 ADA 標準 707.6.2：ATM 數字鍵的 5 要有單一凸點",
-        "June E. Botich 專利 US 6,667,697（2002 申請、2003 核准）內容：不是發明 F／J 凸點"
+        "Peter's／Typing.com示範F/J指法與定位",
+        "ETSI ES201381 V1.1.1(1998) §5/§6的適用範圍、要求與偏好",
+        "ADA707.6.2 ATM／票務機tactilely distinct；single raised dot在電梯407.4.7.2，勿混引"
       ],
       "status": "checked",
       "verdict": "修正",
-      "check": "topic-checks/s2-A26-A38.md"
+      "check": "topic-checks/s2-A26-A38.md",
+      "production": {
+        "status": "package-reviewed",
+        "batch": "batch01",
+        "source_checked_on": "2026-10-01",
+        "package": "season2/A31.md",
+        "packaging": "season2/batch01-packaging.json",
+        "review": "season2/reviews/batch01/A31.json"
+      }
     },
     {
       "id": "A32",

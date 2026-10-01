@@ -8,11 +8,11 @@ owner:
 claimed_at:
 created_at: 2026-10-01T04:54:16Z
 completed_at:
-branch:
+branch: codex/sothatswhy-season2-batch01
 depends_on:
   - 2026-09-29-so-that-s-why-vet-the
 scope:
-  - docs/videos/so-thats-why/season2/
+  - docs/videos/so-thats-why/season2/README.md
   - docs/videos/so-thats-why/season2-topics.json
 ---
 
@@ -34,7 +34,7 @@ scope:
 
 ## Steps
 
-- [ ] claim 前查 worktree、遠端分支、PR；讀 youtube-video 技能與 `week1/B08.md`、`week15/A25.md` 的完整包格式。
+- [x] claim 前查 worktree、遠端分支、PR；讀 youtube-video 技能與 `week1/B08.md`、`week15/A25.md` 的完整包格式。
 - [ ] 讀 100 列的 `check`，對第一季、第三季、品牌故事與 AI 名詞題庫去重。先列處置與批次再逐批寫作，選題變更留理由。
 - [ ] 處理跨季重疊：S50/S55、A29/A30/A70、A38/A58 的切入點先決定，記在本季交接，不能把同一解釋拆成新題目。
 - [ ] 從既有查核報告寫大綱、兩支 Shorts、圖像／縮圖與包裝；新增事實與會變動的數字用製作當天的一手來源確認。
@@ -46,6 +46,11 @@ scope:
 `npm run check:tasks`；JSON 能解析、100 個 id 不變且處置完整，所有包與查核連結存在。核對 `DramaRequestIn` 當前欄位限制（舊包為前提 ≤4,000 字元、備註 ≤2,000），兩支 Shorts 稿符合原長度規格；審稿收據綁當次內容雜湊。沒有真實媒體就不填 QA、費用或播放結果。
 
 ## Notes
+
+- 2026-10-01 首批交接：B26/S26/T26/A31四份文字企劃通過不同作者的事實／聽眾／五語複審，入口與byte SHA256收據已回寫；4長片企劃＋8Shorts＋60組包裝通過機械檢查。僅首批完成，其餘96題待逐題審選，README逐題保存原來源，母票不結案。
+- 本母票釋出供後续接手；先合併本分支草稿與依賴的#1073，再由最新索引挑下一批。不要重寫正在本草稿審查的四份製作包。剩餘跨季重疊、長片完整稿與媒體製作均未完成，不把文字PASS當站主或平台核准。
+
+- 2026-10-01 開工：母票只持有本季索引與候選題入口；逐集製作包由窄 scope 批次票承接。第一批 B26、S26、T26、A31；A26 與既有上下文視窗影片重疊，先保留待選題。
 
 - 2026-10-01 補票，來源是已完成的 `2026-09-29-so-that-s-why-vet-the`；本次未重查 100 題外部事實。
 - 候選題已查核不等於已有完整稿或發布許可；本票交付文字包，不付費生成、匯入正式站或上架。
