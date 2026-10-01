@@ -38,17 +38,24 @@ const cleared = (dir) => MEDIA.every((name) => !existsSync(path.join(dir, ...nam
 const untouched = (dir) => MEDIA.every((name) => existsSync(path.join(dir, ...name.split("/")))) && !JSON.parse(readFileSync(path.join(dir, STATE_FILE), "utf8")).tidied_at;
 
 /** The site as `auto` reads it here: the settings and the video list. No draft is due (no room). */
-function fakeSite({ settings = {}, videos = [], down = false } = {}) {
+function fakeSite({ settings = {}, videos = [], down = false, reviews = false } = {}) {
   const calls = [];
+  const sent = [];
   const fetchImpl = async (url, init = {}) => {
     const { pathname } = new URL(url);
     calls.push(`${init.method ?? "GET"} ${pathname}`);
     if (down) throw new Error("connect ECONNREFUSED");
     if (pathname === "/api/video/automation/settings") return Response.json({ enabled: true, max_waiting_drafts: 0, draft_interval_hours: 72, ...settings });
     if (pathname === "/api/video/automation/videos") return Response.json(videos);
+    // With `reviews`, the site takes a review and a report and keeps what was sent.
+    if (reviews && pathname.startsWith("/api/video/reviews/") && ["POST", "PUT"].includes(init.method)) {
+      const body = JSON.parse(init.body);
+      sent.push({ method: init.method, pathname, body });
+      return Response.json(init.method === "POST" ? { id: `r${sent.length}`, status: "approved", ...body } : { reviews: [] });
+    }
     return Response.json({ code: "not_found", detail: pathname }, { status: 404 });
   };
-  return { calls, fetchImpl };
+  return { calls, sent, fetchImpl };
 }
 
 /** A context for `main`: the sandbox's repository and work base, the fake site, and a stage runner that records. */
@@ -224,12 +231,15 @@ test("a tidied video is not made again, and status says it was cleared instead o
   assert.match(after.out.stdout, /\nOn YouTube as dQw4w9WgXcQ; the work files were cleared on 2026-10-20 \(800 bytes freed\)\. The steps above that read those files show as not done; nothing makes them again\.\n$/);
 
   // The owner ticks English captions after the tidy: the worker neither advances the video nor
-  // starts its languages, which need the cut that is gone.
-  const later = fakeSite({ videos: [listing(box.slug, { locales: { en: { metadata: true, captions: true, dub: false } }, languages: { en: { metadata: { state: "working" }, captions: { state: "working" } } } })] });
+  // makes its languages, which need the cut that is gone; it reports the parts as skipped with
+  // the date the files were cleared, and runs no stage.
+  const later = fakeSite({ reviews: true, videos: [listing(box.slug, { locales: { en: { metadata: true, captions: true, dub: false } }, languages: { en: { metadata: { state: "working" }, captions: { state: "working" } } } })] });
   const round = context(box, later);
   assert.equal(await main(["auto"], round.ctx), EXIT.ok);
-  assert.equal(round.out.stdout, "nothing to do now: every video waits on the owner, or the next draft is not due\n");
+  assert.match(round.out.stdout, new RegExp(`^${box.slug}: work files cleared on 2026-10-20; en metadata\\+captions reported to /admin/videos as skipped, not made\\n`));
   assert.deepEqual(round.commands, []);
   assert.ok(cleared(dir), "nothing was made again");
-  assert.deepEqual(later.calls, ["GET /api/video/automation/settings", "GET /api/video/automation/videos"], "no report, no review, no stage");
+  const [review] = later.sent.filter((each) => each.method === "POST");
+  const skipped = { status: "skipped", reason: "工作檔已在 2026-10-20 清掉，成片與旁白都不在了，清理後才勾的部件做不出來；要這個語言得重做影片" };
+  assert.deepEqual([review.pathname, review.body.gate, review.body.payload, review.body.files], [`/api/video/reviews/${box.slug}/reviews`, "languages", { locales: { en: { metadata: skipped, captions: skipped } } }, []]);
 });
