@@ -452,6 +452,10 @@ def test_an_outdated_cli_refusal_does_not_rotate_or_leave_the_account_busy(
     application = AgentApplication(
         config, claude=Accounts({"a": 10, "b": 20}), codex=Accounts({})  # type: ignore[arg-type]
     )
+    # The first overview starts both accounts' usage probes in the background. Let them end, so
+    # a run with no time to queue never finds both accounts probing (none is due for a minute).
+    application.overview(False)
+    _wait_until(lambda: not application._usage_running)
     run = {
         "tool": "claude", "model": "claude-opus-5-5", "system": "Write.", "prompt": "{}",
         "queue_seconds": 0,

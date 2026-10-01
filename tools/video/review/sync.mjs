@@ -20,8 +20,9 @@ import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } 
 import { isCompilation } from "../core/compilation.mjs";
 import { hasCast, illustrated, isDrama, shotScenes } from "../core/drama.mjs";
 import { atomicWrite, docDir, isInside, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
-import { chosenLocales, dubRole, dubsForUpload, LANGUAGES_FILE, readLanguages } from "../core/stages.mjs";
+import { chosenLocales, dubRole, dubsForUpload, LANGUAGES_FILE, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
 import { ARTIFACTS, loadProject, pipelineStatus } from "../core/state.mjs";
+import { narrationLocale } from "../core/schema.mjs";
 import { narrativeHash, scriptScenes, writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckMatches } from "../core/script-check.mjs";
 import { estimateTimeline, formatClock } from "../core/timeline.mjs";
@@ -30,6 +31,7 @@ import { packageFiles, packageLocales, readPackageReport, UPLOAD_DIR } from "../
 import { composeMetadata } from "../package/metadata.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { USER_AGENT } from "../tts/client.mjs";
+import { bindRenewalSubmission } from "./renewal.mjs";
 
 // Mirrors PART_BYTES in apps/api/app/video_reviews/storage.py: under nginx's 6 MB request cap.
 export const PART_BYTES = 4 * 1024 * 1024;
@@ -471,9 +473,10 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     if (await sha256File(file) !== sha) throw new UsageError("final.mp4 changed during the quality check; run review-push --gate final again");
     const qa = report?.final_sha256 === sha ? report : null;
     if (!qa) ctx.stdout.write(`${slug}: no quality check report for this final.mp4; the review goes up without one\n`);
-    // The owner's language choice, when there is one already (docs/videos/LANGUAGES.md).
+    // The owner's language choice, when there is one already (docs/videos/LANGUAGES.md), with
+    // the narration's own locale and zh-TW, which every choice keeps (alwaysLocales).
     const languages = readLanguages(workdir);
-    const { metadata } = composeMetadata({ doc, timeline, translations: project.translations, pack: project.pack, locales: chosenLocales(languages, "metadata") });
+    const { metadata } = composeMetadata({ doc, timeline, translations: project.translations, pack: project.pack, locales: metadataLocalesOf(languages, narrationLocale(doc)) });
     const files = [await upload(request, slug, await preview(ctx, workdir, "preview", file, { compilation }), "preview", "video/mp4")];
     const sheet = path.join(workdir, ARTIFACTS.contactSheet);
     if (existsSync(sheet)) files.push(await upload(request, slug, sheet, "contact_sheet", "image/png"));
@@ -852,7 +855,11 @@ export async function reviewPush(args, ctx) {
       return ctx.EXIT.ok;
     }
     const bodies = await submissions(gate, { ctx, request, project, workdir, dir, flags: values.workdir ? ["--workdir", values.workdir] : [], manualReview: values["manual-review"] ?? false });
-    for (const body of bodies) {
+    for (const candidate of bodies) {
+      // An owner renewal invalidates old downstream approvals. Resolve its identity from
+      // the site, then verify bytes/timing before adding the new final-review binding.
+      const remote = ["publish", "languages", "dubs"].includes(candidate.gate) ? await request("GET", values.slug) : null;
+      const body = await bindRenewalSubmission({ body: candidate, remote, project, workdir, request, upload });
       const review = await request("POST", `${values.slug}/reviews`, { json: body });
       const what = body.subject ? `${gate} (${body.subject})` : gate;
       ctx.stdout.write(`${values.slug}: ${what} submitted for review (${review.status}); the owner decides on /admin/videos, then run review-pull\n`);

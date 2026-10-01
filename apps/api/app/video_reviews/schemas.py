@@ -159,6 +159,28 @@ class ReviewOut(BaseModel):
     created_at: datetime
 
 
+class FinalRenewalState(BaseModel):
+    version: str
+    final_review_id: UUID
+    final_sha256: str
+
+
+class FinalRenewalIn(BaseModel):
+    expected_version: str = Field(pattern=SHA256_PATTERN)
+    expected_final_review_id: UUID
+    expected_final_sha256: str = Field(pattern=SHA256_PATTERN)
+    reason: str = Field(min_length=1, max_length=2000)
+    review: ReviewIn
+
+    @model_validator(mode="after")
+    def _final_only(self) -> Self:
+        if self.review.gate != "final" or self.review.subject is not None:
+            raise ValueError("renewal requires a final review without a subject")
+        if not self.reason.strip():
+            raise ValueError("renewal requires a reason")
+        return self
+
+
 class LocaleChoice(BaseModel):
     """What the owner chose of one language; a dub track brings the captions with it."""
 
