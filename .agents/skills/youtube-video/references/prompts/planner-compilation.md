@@ -16,7 +16,7 @@ Episode outline and chapter planners receive `mystery_answers` from the setting'
 - `description`: zh-TW, within `description_budget_bytes`: the story's question and stakes without their answers, the mid-series flip or the ending. The tool appends chapter lines, article link and sources within YouTube's 5,000-byte budget.
 - `chapters`: exactly the supplied episode keys, each a non-spoiling title. Required when the context contains mysteries; keep safe titles and replace spoiling ones without changing episode numbers or story content. Optional for an explicitly no-mysteries series, whose existing titles may stay.
 - `tags`: at most 500 characters in all, including 漫劇, AI漫劇, 一口氣看完 and the genre's.
-- `thumbnail`: `{"headline": ≤ 12 characters of the biggest promise, "tag": ≤ 6 characters or null, "episode": the chosen candidate's "episode" value (its slug; the tool also accepts its number), "shot": its "shot"}`, naming one of `thumbnail_candidates` (`[{episode, number, shot, judge, characters, prompt}]`) with a character's face and the highest judge score. The `thumb` template draws the headline and tag over that keyframe.
+- `thumbnail`: `{"headline": ≤ 12 characters of the biggest promise, "tag": ≤ 6 characters or null, "episode": the chosen candidate's "episode" value (its slug; the tool also accepts its number), "shot": its "shot"}`, naming one of `thumbnail_candidates` (`[{episode, number, shot, judge, characters, prompt}]`). The candidates come best-judged first and each shows a character; pick the one whose picture best carries the headline's promise. The `thumb` template draws the headline and tag over that keyframe.
 
 ## Answer
 

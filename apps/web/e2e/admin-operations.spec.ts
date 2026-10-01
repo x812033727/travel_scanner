@@ -1,9 +1,12 @@
 import { expect, test, type Page, type Route } from "@playwright/test";
+import type { NewsCandidatePage, NewsCandidateSummary, NewsSettings, NewsSource, NewsStats } from "../lib/admin-news";
+import newsCopy from "../lib/admin-news-messages/zh-TW.json" with { type: "json" };
 import type { SitePageDetail } from "../lib/site-pages";
 
 const ADMIN_PAGES = [
   "/admin",
   "/admin/guides",
+  "/admin/news",
   "/admin/videos",
   "/admin/hotspots",
   "/admin/foods",
@@ -30,7 +33,7 @@ const ADMIN_PAGES = [
 const ROLE_NAVIGATION = {
   viewer: ADMIN_PAGES.filter((path) => !["/admin/database", "/admin/deployments"].includes(path)),
   support: ["/admin", "/admin/community", "/admin/pet-friendly", "/admin/users", "/admin/audit"],
-  content: ["/admin", "/admin/guides", "/admin/videos", "/admin/hotspots", "/admin/foods", "/admin/hotels", "/admin/travel-services", "/admin/catalog-review", "/admin/community", "/admin/pet-friendly", "/admin/partners", "/admin/audit"],
+  content: ["/admin", "/admin/guides", "/admin/news", "/admin/videos", "/admin/hotspots", "/admin/foods", "/admin/hotels", "/admin/travel-services", "/admin/catalog-review", "/admin/community", "/admin/pet-friendly", "/admin/partners", "/admin/audit"],
   operations: ["/admin", "/admin/analytics", "/admin/settings", "/admin/usage-settings", "/admin/layout-settings", "/admin/ui-text", "/admin/site-pages", "/admin/system-settings", "/admin/audit", "/admin/ai-accounts"],
   database_operator: ["/admin", "/admin/database", "/admin/audit"],
   deployer: ["/admin", "/admin/deployments", "/admin/audit"],
@@ -39,6 +42,45 @@ const ROLE_NAVIGATION = {
 
 const now = "2026-09-09T00:00:00Z";
 const memberId = "00000000-0000-4000-8000-000000000010";
+const newsCandidate: NewsCandidateSummary = {
+  id: "00000000-0000-4000-8000-000000000030", vertical: "ai", status: "manual_review",
+  source_title: "Synthetic pending news navigation candidate",
+  canonical_url: "https://example.test/synthetic-news", event_date: "2026-09-09",
+  would_publish: false, human_decision: null, error_code: null, error_detail: null,
+  guide_article_id: null, created_at: now, updated_at: now,
+};
+const newsGate = {
+  days: 0, labelled_candidates: 0, agreements: 0, agreement_rate: 0,
+  serious_false_positives: 0, eligible: false, reasons: [],
+};
+const newsSettings: NewsSettings = {
+  enabled: false, mode: "shadow", writer_provider: "openai", writer_model: null,
+  verifier_provider: "openai", verifier_model: null, editor_provider: "anthropic", editor_model: null,
+  global_concurrency: 2, per_vertical_concurrency: 1, min_shadow_days: 14,
+  min_shadow_candidates: 50, min_human_agreement: 0.95, jev_act_confidence: 0.9,
+  auto_publish_ai: false, auto_publish_tech: false, auto_publish_crypto: false,
+  prompt_version: "fixture-news-v1", policy_version: "fixture-news-policy-v1", updated_at: now,
+  gates: {
+    ai: { ...newsGate, vertical: "ai" }, tech: { ...newsGate, vertical: "tech" },
+    crypto: { ...newsGate, vertical: "crypto" },
+  },
+  model_options: {
+    openai: [{ value: "fixture-writer", label: "Synthetic writer", description: null, status: "stable" }],
+    anthropic: [{ value: "fixture-editor", label: "Synthetic editor", description: null, status: "stable" }],
+    minimax: [], gemini: [],
+  },
+  default_models: {
+    openai: "fixture-writer", anthropic: "fixture-editor", minimax: "fixture-minimax", gemini: "fixture-gemini",
+  },
+};
+const newsStats: NewsStats = {
+  pending_review: 1, failed: 0, published: 0, queue_by_status: { manual_review: 1 },
+  pipeline_runs: 0, pipeline_failures: 0, input_tokens: 0, output_tokens: 0,
+};
+const newsRunsSummary = Object.entries({
+  runs: newsStats.pipeline_runs, failures: newsStats.pipeline_failures,
+  input: newsStats.input_tokens, output: newsStats.output_tokens,
+}).reduce((template, [key, value]) => template.replaceAll(`{${key}}`, String(value)), newsCopy.runsSummary);
 
 const user = {
   id: memberId,
@@ -217,6 +259,14 @@ async function isolateAdmin(page: Page, role = "owner") {
       response = { articles: [], total: 0, page: 1, pages: 0, facets: { status: [], kind: [] } };
     } else if (path === "/admin/guides/topics") {
       response = { topics: [] };
+    } else if (path === "/admin/news/candidates") {
+      response = { candidates: [newsCandidate], total: 1, page: 1, pages: 1 } satisfies NewsCandidatePage;
+    } else if (path === "/admin/news/sources") {
+      response = [] satisfies NewsSource[];
+    } else if (path === "/admin/news/settings") {
+      response = newsSettings;
+    } else if (path === "/admin/news/stats") {
+      response = newsStats;
     } else if (path === "/admin/videos") {
       response = [];
     } else if (path === "/admin/videos/browse") {
@@ -242,6 +292,13 @@ function navigationHrefs(page: Page) {
   );
 }
 
+async function expectNewsWorkspace(page: Page) {
+  await expect(page.getByRole("heading", { name: newsCopy.title, level: 1, exact: true })).toBeVisible();
+  await expect(page.getByText(newsRunsSummary, { exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "這個後台頁面載入失敗", exact: true })).toHaveCount(0);
+  await expect(page.getByRole("main").getByRole("alert")).toHaveCount(0);
+}
+
 test("bootstrap registry drives every owner page without first-party failures", async ({ page }, info) => {
   test.skip(info.project.name !== "desktop-chromium", "The full page matrix runs once; mobile layout has a focused acceptance below.");
   test.setTimeout(180_000);
@@ -261,6 +318,28 @@ test("bootstrap registry drives every owner page without first-party failures", 
     await expect(page.getByRole("navigation", { name: "營運控制台" }), path).toBeVisible();
     if (path === "/admin/site-pages") {
       await expect(page.getByRole("textbox", { name: "文件標題", exact: true })).toHaveValue("Synthetic privacy draft");
+    }
+    if (path === "/admin/news") {
+      await expectNewsWorkspace(page);
+      // A missing candidates fixture falls back to an empty list without a pageerror.
+      await expect(page.getByRole("region", { name: newsCopy.review, exact: true })
+        .getByRole("button", { name: new RegExp(newsCandidate.source_title) })).toBeVisible();
+    }
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+    expect(overflow, `${path} must not overflow the desktop viewport`).toBeLessThanOrEqual(0);
+  }
+
+  for (const tab of ["settings", "sources"]) {
+    const path = `/zh-TW/admin/news?tab=${tab}`;
+    const response = await page.goto(path);
+    expect(response?.status(), path).toBe(200);
+    await expectNewsWorkspace(page);
+    if (tab === "settings") {
+      for (const vertical of ["AI", "TECH", "CRYPTO"]) {
+        await expect(page.getByRole("heading", { name: `${vertical} · ${newsCopy.agreement}`, exact: true })).toBeVisible();
+      }
+    } else {
+      await expect(page.getByRole("heading", { name: newsCopy.addSource, exact: true })).toBeVisible();
     }
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     expect(overflow, `${path} must not overflow the desktop viewport`).toBeLessThanOrEqual(0);

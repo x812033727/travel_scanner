@@ -96,10 +96,21 @@ function importReport(overrides: Row = {}) {
 }
 
 type Call = { url: string; method: string; body?: Row };
-/** The site as the story pages see it: the story list, the series, the videos, the import. */
-function stubFetch(options: { series?: Row; listed?: unknown[]; linked?: boolean; importAnswer?: (body: Row) => Response; restoreRefused?: boolean } = {}) {
+type Story = (typeof stories)[number];
+// What ?beats=summary keeps of a story's beats (SUMMARY_BEAT_KEYS in the API's series.py).
+const SUMMARY_KEYS = ["id", "category", "region", "subject", "publish"];
+const light = (each: Story) => ({ ...each, beats: Object.fromEntries(Object.entries(each.beats).filter(([key]) => SUMMARY_KEYS.includes(key))) });
+type StubOptions = { series?: Row; listed?: unknown[]; linked?: boolean; importAnswer?: (body: Row) => Response; restoreRefused?: boolean; planRefused?: boolean };
+/**
+ * The site as the story pages see it: the story list, the series (whole, or each story's list
+ * fields only at ?beats=summary), one story's whole episode, the videos, the import. A skip or a
+ * restore changes the story's status, as the server does; options may be changed between steps.
+ */
+function stubFetch(options: StubOptions = {}) {
   const calls: Call[] = [];
   let current: Row = { ...summary, ...options.series };
+  const statuses = new Map<number, string>();
+  const episodes = () => stories.map((each) => (statuses.has(each.number) ? { ...each, status: statuses.get(each.number) as string } : each));
   vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
     const url = String(input);
     const method = init?.method ?? "GET";
@@ -110,9 +121,19 @@ function stubFetch(options: { series?: Row; listed?: unknown[]; linked?: boolean
     if (url.includes("/admin/video-automation/series?kind=")) return json({ series: [] });
     if (url.endsWith("/stories/import")) return Promise.resolve(options.importAnswer ? options.importAnswer(body ?? {}) : Response.json(importReport({ dry_run: !body?.apply, written: Boolean(body?.apply) })));
     if (url.endsWith("/restore") && options.restoreRefused) return json({ code: "video_series_episode_was_started", detail: "第 7 個故事在 09/27 開始做過、影片已經放棄" }, 409);
+    const change = /\/series\/brand-stories\/episodes\/(\d+)\/(skip|restore)$/.exec(url);
+    if (change && method === "POST") {
+      statuses.set(Number(change[1]), change[2] === "skip" ? "skipped" : "ready");
+      return json({ ...current, docs: [], episodes: episodes() });
+    }
+    const one = /\/series\/brand-stories\/episodes\/(\d+)$/.exec(url);
+    if (one && method === "GET") {
+      if (options.planRefused) return json({ code: "internal_error", detail: "伺服器暫時無法回應" }, 503);
+      return json(episodes().find((each) => each.number === Number(one[1])));
+    }
     if (url.includes("/admin/video-automation/series/brand-stories")) {
       if (method === "PATCH") current = { ...current, ...body };
-      return json({ ...current, docs: [], episodes: stories });
+      return json({ ...current, docs: [], episodes: url.endsWith("?beats=summary") ? episodes().map(light) : episodes() });
     }
     if (url.endsWith("/admin/video-youtube")) return json(connection(Boolean(options.linked)));
     const detail = /\/admin\/videos\/(story-[a-z0-9]+)$/.exec(url);
@@ -120,8 +141,15 @@ function stubFetch(options: { series?: Row; listed?: unknown[]; linked?: boolean
     if (/\/admin\/videos\/story-[a-z0-9]+\/youtube$/.test(url) && method === "POST") return json({ slug: url.split("/").at(-2) });
     return json([]);
   }));
-  return { calls };
+  return { calls, options };
 }
+const seriesReads = (calls: Call[]) => calls.filter((call) => call.method === "GET" && /\/admin\/video-automation\/series\/brand-stories(\?|$)/.test(call.url)).map((call) => call.url.split("brand-stories")[1]);
+const planReads = (calls: Call[], number: number) => calls.filter((call) => call.method === "GET" && call.url.endsWith(`/series/brand-stories/episodes/${number}`)).length;
+/** The opened plan once its own read came back. */
+const loadedPlan = async (id: string) => {
+  await waitFor(() => expect(screen.getByRole("region", { name: `${id} 的企劃` }).textContent).toContain(`${id} 為什麼等了那麼久才賣得起來？`));
+  return screen.getByRole("region", { name: `${id} 的企劃` });
+};
 
 const renderTab = (capabilities = MANAGER, roles: string[] = [], opened: string[] = []) => render(<AdminOperationsProvider bootstrap={bootstrap(capabilities, roles)}>
   <AdminVideoSeries onOpenVideo={(slug) => opened.push(slug)} />
@@ -242,9 +270,12 @@ describe("AdminVideoStorySeries and StorySeriesPage", () => {
     await waitFor(() => expect(rows()).toHaveLength(8));
 
     fireEvent.click(within(row("A01")).getByRole("button", { name: "看企劃" }));
-    const plan = await screen.findByRole("region", { name: "A01 的企劃" });
+    expect((await screen.findByRole("region", { name: "A01 的企劃" })).textContent).toBe("正在讀企劃…");
+    const plan = await loadedPlan("A01");
     expect(window.location.search).toContain("story=A01");
-    expect(plan.textContent).toContain("A01 為什麼等了那麼久才賣得起來？");
+    // The plan is read from its own episode, once; the series is not read again for it.
+    expect(planReads(calls, 1)).toBe(1);
+    expect(seriesReads(calls)).toEqual([""]);
     expect([...plan.querySelectorAll("ol")[0].querySelectorAll("li")].map((item) => item.querySelector("span")?.textContent)).toEqual(["鉤子", "起點與人物", "關鍵點子", "生意怎麼運作", "代價或反轉", "現況與一句觀察"]);
     expect(plan.textContent).toContain("A01 留給觀眾的觀察");
     expect(plan.textContent).toContain("必查事實（3 條）");
@@ -258,6 +289,84 @@ describe("AdminVideoStorySeries and StorySeriesPage", () => {
     expect(plan.textContent).toContain("A01：某個軼事查不到出處，不要講。");
     expect(within(plan).queryByRole("button")).toBeNull();
     expect(within(plan).queryByRole("textbox")).toBeNull();
+  });
+
+  it("reads the series with each story's list fields only once it knows it is a story series, and each opened plan on its own", async () => {
+    const { calls } = stubFetch();
+    vi.spyOn(window, "confirm").mockReturnValue(true);
+    openStories();
+    renderTab();
+    await screen.findByRole("list", { name: "故事清單" });
+    // The first read cannot know the kind, so it is whole.
+    expect(seriesReads(calls)).toEqual([""]);
+
+    // A skip reads the series again, now with the list's fields only; the list looks the same.
+    fireEvent.click(within(row("K04")).getByRole("button", { name: "略過" }));
+    await waitFor(() => expect(row("K04").textContent).toContain("已略過"));
+    expect(seriesReads(calls)).toEqual(["", "?beats=summary"]);
+    expect(rows().map((item) => item.textContent?.slice(0, 3))).toEqual(["A01", "B18", "A03", "C20", "T01", "K04", "A05", "T02"]);
+    expect(row("A01").textContent).toContain("日常用品與隱形標準 · 全球 · 第 1 天 12:00 · 第 1 個");
+    expect(row("A01").textContent).toContain("可以上架");
+    expect(row("C20").textContent).toContain("已排程");
+    const ready = screen.getByRole("region", { name: "可以上架" });
+    expect(within(ready).getAllByRole("article").map((item) => item.getAttribute("aria-label")?.slice(0, 3))).toEqual(["A01", "B18", "A03"]);
+    expect(within(ready).getAllByRole("article")[0].textContent).toContain(`下一個空的時段：${slotText("2026-09-30T04:00:00Z")}（台北時間）`);
+    fireEvent.change(screen.getByRole("combobox", { name: "分類" }), { target: { value: "tech" } });
+    await waitFor(() => expect(rows().map((item) => item.textContent?.slice(0, 3))).toEqual(["T01", "T02"]));
+    fireEvent.change(screen.getByRole("combobox", { name: "分類" }), { target: { value: "" } });
+    await waitFor(() => expect(rows()).toHaveLength(8));
+
+    // The whole plan comes from the story's own read, though the list no longer carries it.
+    fireEvent.click(within(row("A01")).getByRole("button", { name: "看企劃" }));
+    const plan = await loadedPlan("A01");
+    expect(plan.textContent).toContain("鉤子");
+    expect(plan.textContent).toContain("必查事實（3 條）");
+    expect(plan.textContent).toContain("A01：某個軼事查不到出處，不要講。");
+    expect(planReads(calls, 1)).toBe(1);
+    // Closed and opened again, it is shown at once without another read.
+    fireEvent.click(within(row("A01")).getByRole("button", { name: "收起企劃" }));
+    await waitFor(() => expect(screen.queryByRole("region", { name: "A01 的企劃" })).toBeNull());
+    fireEvent.click(within(row("A01")).getByRole("button", { name: "看企劃" }));
+    expect(screen.getByRole("region", { name: "A01 的企劃" }).textContent).toContain("A01 為什麼等了那麼久才賣得起來？");
+    expect(planReads(calls, 1)).toBe(1);
+
+    // A story whose row changed in the list is read again when it opens.
+    fireEvent.click(within(row("A01")).getByRole("button", { name: "收起企劃" }));
+    fireEvent.click(within(row("K04")).getByRole("button", { name: "看企劃" }));
+    await loadedPlan("K04");
+    expect(planReads(calls, 6)).toBe(1);
+    fireEvent.click(within(row("K04")).getByRole("button", { name: "收起企劃" }));
+    fireEvent.click(within(row("K04")).getByRole("button", { name: "恢復" }));
+    await waitFor(() => expect(row("K04").textContent).toContain("待做"));
+    fireEvent.click(within(row("K04")).getByRole("button", { name: "看企劃" }));
+    await loadedPlan("K04");
+    expect(planReads(calls, 6)).toBe(2);
+    expect(seriesReads(calls)).toEqual(["", "?beats=summary", "?beats=summary"]);
+  });
+
+  it("says why a plan could not be read and reads it again on request", async () => {
+    const { calls, options } = stubFetch({ planRefused: true });
+    openStories();
+    renderTab();
+    await screen.findByRole("list", { name: "故事清單" });
+    fireEvent.click(within(row("B18")).getByRole("button", { name: "看企劃" }));
+    const failed = await screen.findByRole("region", { name: "B18 的企劃" });
+    expect((await within(failed).findByRole("alert")).textContent).toBe("企劃讀不到：伺服器暫時無法回應");
+    options.planRefused = false;
+    fireEvent.click(within(failed).getByRole("button", { name: "再試一次" }));
+    const plan = await loadedPlan("B18");
+    expect(within(plan).queryByRole("alert")).toBeNull();
+    expect(planReads(calls, 2)).toBe(2);
+  });
+
+  it("keeps a drama series' whole read: its beats are the chapter outlines the page shows", async () => {
+    const { calls } = stubFetch({ series: { kind: "long" } });
+    openStories();
+    renderTab();
+    fireEvent.click(await screen.findByRole("button", { name: "暫停" }));
+    await waitFor(() => expect(seriesReads(calls)).toHaveLength(2));
+    expect(seriesReads(calls)).toEqual(["", ""]);
+    expect(calls.some((call) => call.url.includes("/episodes/") && call.method === "GET")).toBe(false);
   });
 
   it("lets a manager change the daily count, pause the series, skip a story that has not started and bring a skipped one back", async () => {

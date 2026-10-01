@@ -21,8 +21,9 @@ export class StageError extends Error {
 
 // The owner's language choice for this video, as the worker copies it from the site each round
 // (docs/videos/LANGUAGES.md): { locales: { en: { metadata, captions, dub } }, decided_at }. Only
-// the languages with something ticked are listed; zh-TW is always made. The captions, package,
-// qa and review-push commands read it from the work directory, so a hand run on the owner's
+// the languages with something ticked are listed; zh-TW and the narration's own locale always get
+// captions, a title and a description (alwaysLocales), so a zh-TW entry is dropped. The captions,
+// package, qa and review-push commands read it from the work directory, so a hand run on the owner's
 // machine and the worker's run agree; without the file (a video from before the panel, an
 // example outside the site) every locale with a translation is made, as before.
 export const LANGUAGES_FILE = "languages.json";
@@ -57,10 +58,29 @@ export function chosenLocales(languages, part) {
   return LOCALES.filter((locale) => languages.locales[locale]?.[part]);
 }
 
-/** The caption locales a video is made in: zh-TW, then the chosen ones; every locale without a choice. */
-export function captionLocalesOf(languages) {
+/**
+ * The locales a video gets captions, a title and a description in whatever the owner chose: its
+ * narration, and zh-TW, the channel's own language, which the site's panel never offers. A zh-TW
+ * video has just the one; an English-narrated video has both, English first.
+ */
+export const alwaysLocales = (narration = NARRATION_LOCALE) => [...new Set([narration, NARRATION_LOCALE])];
+
+/** The caption locales a video is made in: its narration and zh-TW, then the chosen ones; every locale without a choice. */
+export function captionLocalesOf(languages, narration = NARRATION_LOCALE) {
   const chosen = chosenLocales(languages, "captions");
-  return chosen ? [NARRATION_LOCALE, ...chosen] : [...LOCALES];
+  return chosen ? [...new Set([...alwaysLocales(narration), ...chosen])] : [...LOCALES];
+}
+
+/** The title and description locales asked for: its narration and zh-TW, then the chosen ones; null without a choice (every translated locale). */
+export function metadataLocalesOf(languages, narration = NARRATION_LOCALE) {
+  const chosen = chosenLocales(languages, "metadata");
+  return chosen ? [...new Set([...alwaysLocales(narration), ...chosen])] : null;
+}
+
+/** The dub tracks asked for: the chosen ones but the narration's own, or the video's default without a choice. */
+export function dubLocalesOf(languages, doc) {
+  const chosen = chosenLocales(languages, "dub");
+  return chosen ? chosen.filter((locale) => locale !== narrationLocale(doc)) : defaultDubLocales(doc);
 }
 
 /** The text each locale shows for each line; translations older than their narration line are left out. */
@@ -168,8 +188,8 @@ export function runCaptions({ slug, file, root, workdir, now = new Date() }) {
   const presented = presentationTimeline(timeline, applied);
 
   const languages = readLanguages(workdir);
-  const wanted = new Set([narrationLocale(project.doc), ...captionLocalesOf(languages)]);
-  const dubbed = chosenLocales(languages, "dub") ?? defaultDubLocales(project.doc);
+  const wanted = new Set(captionLocalesOf(languages, narrationLocale(project.doc)));
+  const dubbed = dubLocalesOf(languages, project.doc);
   const { texts, skipped } = localeTexts(project.doc, project.translations);
   const manifest = { speech_hash: speech, ...(applied ? { branding_hash: applied.hash } : {}), chapters: checkChapters(presented), locales: {}, skipped: {} };
   for (const [locale, byLine] of Object.entries(texts)) {

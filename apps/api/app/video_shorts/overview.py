@@ -288,6 +288,7 @@ async def metrics_view(
                 youtube_video_id=str(project.youtube_video_id),
                 published_at=project.youtube_publish_at,
                 removed_at=project.youtube_removed_at,
+                dropped_at=project.dropped_at,
                 snapshots=[
                     metric_out(row)
                     for row in sorted(

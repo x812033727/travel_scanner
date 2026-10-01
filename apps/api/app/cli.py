@@ -643,19 +643,16 @@ def _read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8")
 
 
-async def fill_simplified_names(
+def fill_simplified_names(
     *,
-    provider: str | None,
     apply: bool,
-    max_output_tokens: int | None,
     mapping_file: Path | None,
     source: str = "seeds",
 ) -> dict[str, Any]:
-    """Convert, or apply a mapping produced by an earlier run.
+    """Convert with OpenCC, or apply a mapping produced by an earlier run.
 
-    The API key lives in the admin database, so the conversion runs where that
-    database is; the bootstrap files it edits are checked into the repository. So
-    the two halves are separable: emit the mapping on the server, apply it here.
+    The conversion needs neither the database nor a key, so it runs wherever the
+    repository is; a mapping file is still accepted for hand-reviewed corrections.
     """
     if source == "areas":
         # The area catalog is Python, not JSON, so this half only ever emits a mapping;
@@ -683,17 +680,11 @@ async def fill_simplified_names(
         )
         report.rejected = [(k, v) for k, v in pairs.items() if not acceptable(k, v)]
     else:
-        async with SessionFactory() as session:
-            settings = await load_runtime_settings(session)
-        if max_output_tokens:
-            settings = settings.model_copy(
-                update={"hotspot_guide_ai_max_output_tokens": max_output_tokens}
-            )
-        report = await convert_names(names, settings, provider_name=cast(Any, provider))
+        report = convert_names(names)
     written = 0
     # Writing a run that converted nothing would strip every existing label, which is
     # how a failed vendor call once looked identical to a successful no-op.
-    refused = apply and (source == "areas" or bool(report.errors) or not report.converted)
+    refused = apply and (source == "areas" or not report.converted)
     if apply and not refused:
         for path, rows in loaded:
             written += apply_conversions(rows, report.converted)
@@ -711,7 +702,7 @@ async def fill_simplified_names(
     if refused:
         print(
             "refusing to write: "
-            + (f"{len(report.errors)} batch error(s)" if report.errors else "no conversions")
+            + ("areas only emit a mapping" if source == "areas" else "no conversions")
             + f"; {before} existing zh-CN label(s) left untouched"
         )
     return {
@@ -722,10 +713,7 @@ async def fill_simplified_names(
         "converted": len(report.converted),
         "unchanged": len(report.unchanged),
         "rejected": len(report.rejected),
-        "missing": len(report.missing),
         "written": written,
-        "ai_calls": report.calls,
-        "errors": report.errors,
     }
 
 
@@ -1205,21 +1193,19 @@ def main() -> None:
     simplified = subparsers.add_parser(
         "fill-simplified-names",
         help=(
-            "Derive every seed's zh-CN label from its Traditional name with the configured "
-            "AI vendor, dropping any reply that is not a character-for-character conversion"
+            "Derive every seed's zh-CN label from its Traditional name with OpenCC t2s, "
+            "dropping any result that is not a character-for-character conversion"
         ),
     )
-    simplified.add_argument("--provider", help="AI vendor (default: the configured one)")
     simplified.add_argument(
         "--source",
         choices=("seeds", "areas"),
         default="seeds",
         help="What to convert: the hotspot seed files, or the area catalog (emit only)",
     )
-    simplified.add_argument("--max-output-tokens", type=int)
     simplified.add_argument(
         "--from-mapping",
-        help="Apply a conversions mapping emitted by an earlier run instead of calling the AI",
+        help="Apply a conversions mapping emitted by an earlier run instead of converting",
     )
     simplified.add_argument(
         "--apply", action="store_true", help="Write the bootstrap files instead of reporting"
@@ -1419,14 +1405,10 @@ def main() -> None:
         )
         print(json.dumps(english_summary, ensure_ascii=False, indent=2))
     elif args.command == "fill-simplified-names":
-        simplified_summary = asyncio.run(
-            fill_simplified_names(
-                provider=args.provider,
-                apply=args.apply,
-                max_output_tokens=args.max_output_tokens,
-                mapping_file=Path(args.from_mapping) if args.from_mapping else None,
-                source=args.source,
-            )
+        simplified_summary = fill_simplified_names(
+            apply=args.apply,
+            mapping_file=Path(args.from_mapping) if args.from_mapping else None,
+            source=args.source,
         )
         print(json.dumps(simplified_summary, ensure_ascii=False, indent=2))
         if simplified_summary.get("refused"):

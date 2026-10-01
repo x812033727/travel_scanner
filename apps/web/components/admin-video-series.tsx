@@ -656,10 +656,15 @@ function SeriesPage({ slug, onBack, onOpenVideo }: { slug: string; onBack: () =>
   const [error, setError] = useState("");
   const [actionError, setActionError] = useState("");
   const [busy, setBusy] = useState("");
-  // A brand-story series is never compiled: once the page knows this one is, it skips that read.
+  // A brand-story series is never compiled: once the page knows this one is, it skips that read,
+  // and reads each story's beats as the list's few fields only (?beats=summary), since a hundred
+  // whole plans are over a megabyte a minute; the story page reads the one plan the owner opens.
+  // The first read cannot know the kind, so it is whole; a drama's beats are its chapter outlines
+  // the page shows, so a drama series is always read whole.
   const storySlug = useRef("");
   const load = useCallback(() => {
-    const refreshed = api<Series>(`/admin/video-automation/series/${slug}`).then((value) => { storySlug.current = value.kind === "story" ? slug : ""; setSeries(value); setError(""); }).catch((problem: unknown) => setError(message(problem)));
+    const beats = storySlug.current === slug ? "?beats=summary" : "";
+    const refreshed = api<Series>(`/admin/video-automation/series/${slug}${beats}`).then((value) => { storySlug.current = value.kind === "story" ? slug : ""; setSeries(value); setError(""); }).catch((problem: unknown) => setError(message(problem)));
     if (storySlug.current === slug) return refreshed;
     // The compilation is the series' one video without an episode number (docs/videos/BINGE.md);
     // the episodes come with the series itself. An older site ignores the filter and is filtered here.
