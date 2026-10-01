@@ -4,7 +4,7 @@
 import { existsSync, rmSync } from "node:fs";
 import path from "node:path";
 
-import { defaultDubLocales, dubScript, translationHash } from "../dubs/plan.mjs";
+import { defaultDubLocales, dubScript, speechCurrent, translationHash } from "../dubs/plan.mjs";
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "./branding.mjs";
 import { buildCues, checkCues, toSrt, toVtt } from "./captions.mjs";
 import { atomicWrite, readJson } from "./paths.mjs";
@@ -105,8 +105,9 @@ export function localeTexts(doc, translations) {
 
 /**
  * A locale's dub (docs/videos/DUBS.md) when its track exists and was made from this script and
- * this translation: the dub timeline plus `file`, the track's path. Null when there is no dub, or
- * an older one; `stale` tells the two apart for the caption manifest.
+ * this translation, with the voice and pronunciation `dub` would use now (speechCurrent): the dub
+ * timeline plus `file`, the track's path. Null when there is no dub, or an older one; `stale`
+ * tells the two apart for the caption manifest.
  */
 export function currentDub(project, workdir, locale, speech) {
   const files = dubArtifacts(workdir, locale);
@@ -121,7 +122,9 @@ export function currentDub(project, workdir, locale, speech) {
       || (applied && (checks.speech_hash !== speech || bodyTimeline?.speech_hash !== speech || applied.body_frames !== bodyTimeline?.total_frames))
       || (applied && (dub.body_total_frames !== applied.body_frames || dub.content_end_frame !== applied.intro_frames + applied.body_frames
         || dub.total_frames !== applied.intro_frames + applied.body_frames + applied.outro_frames))
-      || dub.speech_hash !== speech || dub.translation_hash !== words || !existsSync(file)) return { stale: true };
+      || dub.speech_hash !== speech || dub.translation_hash !== words || !existsSync(file)
+      // A target alias or the dub voice changed, or the track predates the fingerprint (state.mjs).
+      || !speechCurrent(project, locale, dub)) return { stale: true };
   return { ...dub, file };
 }
 
@@ -205,7 +208,7 @@ export function runCaptions({ slug, file, root, workdir, now = new Date() }) {
     atomicWrite(path.join(workdir, "captions", `${locale}.srt`), toSrt(cues));
     atomicWrite(path.join(workdir, "captions", `${locale}.vtt`), toVtt(cues));
     const problems = checkCues(cues, locale);
-    if (dub?.stale) problems.unshift(`the ${locale} dub track is older than the script or its translation, or does not match the branding; these cues follow the narration, run dub again`);
+    if (dub?.stale) problems.unshift(`the ${locale} dub track is older than the script or its translation (or how they are pronounced), or does not match the branding; these cues follow the narration, run dub again`);
     manifest.locales[locale] = { cues: cues.length, problems, timing: timed ? "dub" : "narration" };
   }
   for (const locale of LOCALES) {
