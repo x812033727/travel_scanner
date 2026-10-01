@@ -79,3 +79,49 @@ node tools/video/cli.mjs qa --slug VIDEO --workdir /video-work
 已刪除及 Shorts，並核對是否有同時運作的影片／語系 worker。
 將實際套用 slug、前後成片 SHA、字幕／章節／音軌驗證、新的待審紀錄及回讀結果
 保存在外部工作目錄。API/檔案檢查不能代替站主驗看或手機驗聽。
+
+## 已核准、尚未上傳的長片換版
+
+已核准成片使用獨立的 owner renewal 流程。它保留原核准決策與附件，將舊的
+final／publish／languages／dubs 標為 superseded，再建立必須人工審看的新 final。
+不使用 `--force` 改 pin、不刪除批准紀錄，也不由一般 import 偷換已核准語言包。
+已記錄 YouTube id、上傳／同步歷史、排程、刪除紀錄或進行中的 VPS job 仍會拒絕。
+`on YouTube` 是產線的下一步；只有單一明確 `on_youtube.done=false` 才表示尚待上傳。
+正式執行前還需核對完整頻道影片與外部操作紀錄，避免漏掉未回填的人工上傳。
+
+候選目錄至少包含 `meta.json` 與 `final.mp4`，可附 `thumbnail.png`／`.jpg`／`.jpeg`
+及 `zh-TW.srt`。先把原核准完整影片、保留正文與新 branding pin 放在 repository 外，
+以工具憑證暫存附件。下列操作會寫入網站附件儲存，正式站須另獲明確授權：
+
+```bash
+node tools/video/review/renewal.mjs stage \
+  --from /outside/candidate --out /outside/new-staged-directory \
+  --original /outside/original-approved-final.mp4 \
+  --body /outside/retained-body.mp4 --branding /outside/branding.json
+```
+
+`stage` 讀取目前原 final id/hash，核對原檔、正文與片頭片尾 SHA，檢查新片長是
+正文加新片頭片尾，產生預覽並分段暫存附件。它只在全新的輸出目錄建立
+`renewal-candidate.json` 和檔案副本；不 report、送審、核准或改原工作區。
+正文 hash 是來源追溯，片長檢查不等於證明畫面或聲音完全相同，仍需人工審看。
+
+站主在後台影片詳情的「成片換版」選取該 JSON，可另選同目錄 `preview.mp4`。
+預覽先在瀏覽器核對收據的大小與 SHA，再本機播放；不會因選檔自動上傳。
+按「核對目前審核」、填換版原因，再按「送出新版，交由我審看」。送出前重新 GET
+版本與原 final id/hash，POST 只送一次；之後再次 GET 影片確認新 id/hash 確為 manual
+pending 才顯示成功。版本衝突或不明網路結果須回讀現況，不自動重試。
+
+需要 CLI 時可用 `submit --receipt /outside/staged/renewal-candidate.json --reason TEXT`，
+站主目前 session 只由 `MOKAAIR_OWNER_SESSION` 讀取，不能存入收據或貼到終端紀錄。
+預設 `MOKAAIR_SITE=https://mokaair.com`；憑證只送往驗證過的 origin，不跟隨 redirect。
+網站操作較適合一般站主。新 final 待審後仍須於審片卡確認畫面、CC 提醒及片頭正文接點，
+人工核准與後續上傳是另外的決策。
+
+**本階段沒有自動切換正式 worker 的工作目錄。** 新 final 核准後，舊工作區仍會被
+producer 的 final SHA、branding、原語及外語字幕偏移／章節驗證擋住。只有具備完整
+可信 timeline/checks 的新套件才可送出帶新 final id 與 source manifest 的
+publish／languages／dubs；canonical gate proof 的 SHA 也必須等於送審附件。
+純外部 imported／legacy 成片不得假造 timeline；合集先保持停止接續。
+正常工作區採用、外部人工上架包交接與合集來源驗證另列
+[換版核准後交接任務](../../tasks/open/2026-10-01-hand-off-owner-approved-renewed-finals.md)。
+建立待審入口不代表這些影片已完成交接、上傳或發布。

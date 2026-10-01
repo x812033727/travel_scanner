@@ -165,6 +165,9 @@ export async function importLong({ from, workdir, env = process.env, home, force
   const meta = readMeta(JSON.parse(readFileSync(metaFile, "utf8")));
   const site = client ?? siteClient({ env, home });
   const known = await site.project(meta.slug);
+  if (known?.reviews?.some((review) => review.payload?._final_renewal || (["publish", "languages", "dubs"].includes(review.gate) && ["approved", "pending"].includes(review.status)))) {
+    throw new UsageError(`${meta.slug} has downstream reviews or an owner renewal: stage a final-renewal candidate instead of importing over retained approvals`);
+  }
   if (known && !force && !(known.checklist ?? []).some((item) => item.key === IMPORTED)) {
     throw new UsageError(`${meta.slug} is already on the site and was not imported: pick another slug, or pass --force to replace what it says`);
   }
