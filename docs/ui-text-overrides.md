@@ -50,15 +50,39 @@ and enforces, in this order:
   of defaults are separators such as `", "` whose surrounding space is the point;
 - CRLF becomes LF and no other control character is allowed
   (`ui_text_value_control_chars`);
-- braces are balanced (`ui_text_braces_unbalanced`) — seven English defaults use ICU
-  plural syntax, and a plural missing its closing brace would render as the raw key;
-- the set of `{placeholder}` names equals the default's (`ui_text_parameters_mismatch`),
-  extracted with the same expression `tools/check-i18n.mjs` uses.
+- both the override and its default parse as valid ICU messages
+  (`ui_text_braces_unbalanced`), including nested plural/select branches. A missing
+  `other` branch, duplicate selector or unknown argument format is a syntax error;
+- runtime arguments retain their names and types in each branch, including plural
+  offsets and `#` references (`ui_text_parameters_mismatch`). Reordering prose or
+  repeating an argument in the same branch is allowed; moving it to another branch,
+  changing a number to a date or dropping a selector is not;
+- literal `{token}` URL-template names remain the same. These are extracted from
+  parsed literal text separately from runtime arguments, so compact plural prose
+  such as `one{hello}` is not mistaken for a parameter named `hello`.
+
+ASCII apostrophes have ICU escaping semantics: `Hello '{name}'` prints the literal
+`Hello {name}`, so it cannot override `Hello {name}`. Use curly quotation marks
+(`Hello ‘{name}’`) or doubled ASCII apostrophes (`Hello ''{name}''`) to keep the
+argument active. Ordinary contractions such as `You're {name}` remain valid.
+Intentionally quoted URL tokens stay literal: Travelpayouts help can keep
+`'{destination}'`, `'{departure_date}'`, `'{return_date}'` and `'{sub_id}'`.
+Quoted standalone brace symbols such as `'{'` are also valid; raw brace counting
+does not decide whether a message parses.
+
+HTML-like help paths such as `<slug>` remain literal (`ignoreTag: true`); validation
+does not add rich-text callbacks. Number/date/time presentation styles can change
+while their argument types stay the same. The web uses the installed FormatJS
+parser, and the API uses a pure Python syntax validator with the same contract.
+`docs/ui-text-icu-cases.json` supplies shared acceptance and rejection cases to both
+test suites; web tests also check the actual formatted text.
 
 An empty value is not a delete. Restoring the default is an explicit `DELETE`, or
 `"value": null` in a batch, so an accidentally cleared field cannot silently remove an
-override. The web loader repeats the placeholder check against the live default when it
-merges, so this validation protects the person typing; the loader protects the page.
+override. The web loader repeats the syntax, runtime and literal-template checks
+against the live default when it merges. An invalid row already saved in the database
+is skipped and the valid catalog default is displayed, including when the row comes
+from an existing API cache. This change does not delete or rewrite saved rows.
 
 ## API
 
@@ -121,8 +145,8 @@ catalog on the same request.
 Each row shows the key, the default, the same sentence in a reference locale, and the
 placeholders it has to keep. **An empty box means "use the default"**: a field that
 trims to nothing is sent as `value: null`, the same delete the API's `DELETE` performs, so
-restoring and editing are one path and the save bar counts them the same way. Placeholder and brace
-parity are checked as you type with the same rules the API applies, and the save button
+restoring and editing are one path and the save bar counts them the same way. ICU syntax and
+argument compatibility are checked as you type with the same rules the API applies, and the save button
 turns into a count of what needs fixing while anything is wrong — next-intl renders the
 raw key path when an argument it needs has gone, and that would land on the public page.
 

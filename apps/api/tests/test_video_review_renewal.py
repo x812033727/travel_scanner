@@ -199,7 +199,10 @@ async def test_new_failed_qa_replaces_a_pass_without_reusing_its_approval(site: 
     audits = await _audits(site)
     assert [row.action for row in audits].count("video_review_auto_approved") == 1
     assert any(row.action == "video_review_superseded" for row in audits)
-    site.idle.assert_awaited_with(SLUG, upload=True)
+    assert site.idle.await_args is not None
+    assert isinstance(site.idle.await_args.args[0], AsyncSession)
+    assert site.idle.await_args.args[1:] == (SLUG,)
+    assert site.idle.await_args.kwargs == {"upload": True}
 
 
 @pytest.mark.asyncio

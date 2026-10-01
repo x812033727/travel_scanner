@@ -93,6 +93,34 @@ async def test_override_reaches_the_public_payload_and_restores_cleanly() -> Non
         assert after.json()["entries"][f"common.{key}"] == "テスト {count}"
         assert after.json()["version"] != before.json()["version"]
 
+        quoted = await client.put(
+            f"/api/v1/admin/ui-text/ja/common/{key}",
+            json={"value": "テスト '{count}'", "default_value": "Test {count}"},
+            headers=headers,
+        )
+        assert quoted.status_code == 422
+        assert quoted.json()["code"] == "ui_text_parameters_mismatch"
+        invalid_batch = await client.post(
+            "/api/v1/admin/ui-text/batch",
+            json={
+                "locale": "ja",
+                "namespace": "common",
+                "entries": [
+                    {"key": key, "value": "変更 {count}", "default_value": "Test {count}"},
+                    {
+                        "key": f"{key}-bad",
+                        "value": "テスト '{count}'",
+                        "default_value": "Test {count}",
+                    },
+                ],
+            },
+            headers=headers,
+        )
+        assert invalid_batch.status_code == 422
+        assert invalid_batch.json()["code"] == "ui_text_parameters_mismatch"
+        unchanged = await client.get("/api/v1/runtime/ui-text", params={"locale": "ja"})
+        assert unchanged.json() == after.json()
+
         other_locale = await client.get("/api/v1/runtime/ui-text", params={"locale": "en"})
         assert f"common.{key}" not in other_locale.json()["entries"]
 
@@ -102,7 +130,10 @@ async def test_override_reaches_the_public_payload_and_restores_cleanly() -> Non
             headers=headers,
         )
         assert listed.status_code == 200
-        assert any(item["key"] == key for item in listed.json()["entries"])
+        stored = next(item for item in listed.json()["entries"] if item["key"] == key)
+        assert stored["value"] == "テスト {count}"
+        assert stored["default_snapshot"] == "Test {count}"
+        assert not any(item["key"] == f"{key}-bad" for item in listed.json()["entries"])
 
         restored = await client.delete(f"/api/v1/admin/ui-text/ja/common/{key}", headers=headers)
         assert restored.status_code == 200

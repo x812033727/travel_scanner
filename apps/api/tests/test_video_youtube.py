@@ -31,6 +31,7 @@ from app.config import Settings
 from app.db import Base, get_session
 from app.models import (
     AdminAuditLog,
+    ProviderConfig,
     User,
     VideoProject,
     VideoReview,
@@ -243,7 +244,10 @@ class Site:
 
 
 # The video page reads the drama route's spend from the media jobs, so that table is here too.
-MODELS = (User, VideoProject, VideoReview, VideoYoutubeConnection, AdminAuditLog, VideoMediaJob)
+MODELS = (
+    User, VideoProject, VideoReview, VideoYoutubeConnection, AdminAuditLog, VideoMediaJob,
+    ProviderConfig,
+)
 
 
 @asynccontextmanager

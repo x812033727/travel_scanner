@@ -8,10 +8,11 @@ snapshot — without PostgreSQL. ``test_ui_text_integration.py`` drives the real
 
 from __future__ import annotations
 
+import json
 from collections.abc import AsyncIterator, Iterator
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, TypedDict, cast
 from uuid import uuid4
 
 import fakeredis.aioredis
@@ -29,6 +30,7 @@ from app.i18n import ERROR_DETAILS
 from app.main import app
 from app.models import AdminAuditLog, UiTextOverride, User
 from app.problems import AppError
+from app.ui_text.icu import parse_icu
 from app.ui_text.schemas import (
     UI_TEXT_LOCKED_NAMESPACES,
     UI_TEXT_NAMESPACES,
@@ -158,6 +160,101 @@ def error_code(exc_info: pytest.ExceptionInfo[AppError]) -> str:
 # --- pure rules -------------------------------------------------------------------------
 
 
+class IcuCase(TypedDict):
+    id: str
+    default: str
+    override: str
+    problem: str | None
+
+
+ICU_CASES = cast(
+    list[IcuCase],
+    json.loads(
+        (Path(__file__).resolve().parents[3] / "docs/ui-text-icu-cases.json").read_text(
+            encoding="utf-8"
+        )
+    ),
+)
+
+
+@pytest.mark.parametrize("case", ICU_CASES, ids=lambda case: case["id"])
+def test_override_icu_contract_matches_shared_formatjs_cases(case: IcuCase) -> None:
+    if case["problem"] is None:
+        assert (
+            normalize_value(case["override"], case["default"], key=case["id"]) == case["override"]
+        )
+        return
+    with pytest.raises(AppError) as error:
+        normalize_value(case["override"], case["default"], key=case["id"])
+    assert (
+        error.value.code
+        == {
+            "braces": "ui_text_braces_unbalanced",
+            "parameters": "ui_text_parameters_mismatch",
+        }[case["problem"]]
+    )
+    assert case["id"] in error.value.detail
+
+
+def test_branch_usage_cannot_hide_behind_same_global_runtime_and_literal_names() -> None:
+    default = "Help: '{name}'. {mode, select, short {{name}} other {{name}}}"
+    changed = "Help: '{name}'. {mode, select, short {'{name}'} other {{name}}}"
+    assert parse_icu(default).literal_parameters == parse_icu(changed).literal_parameters
+    with pytest.raises(AppError) as error:
+        normalize_value(changed, default, key="branch-local-name")
+    assert error.value.code == "ui_text_parameters_mismatch"
+
+
+def test_nested_select_keeps_bounded_structured_signatures() -> None:
+    default = "Hello {name}"
+    changed = "Welcome {name}"
+    hidden = "Welcome '{name}'"
+    for _ in range(30):
+        default = "{mode, select, other {" + default + "}}"
+        changed = "{mode, select, other {" + changed + "}}"
+        hidden = "{mode, select, other {" + hidden + "}}"
+    assert normalize_value(changed, default, key="nested") == changed
+    with pytest.raises(AppError) as error:
+        normalize_value(hidden, default, key="nested")
+    assert error.value.code == "ui_text_parameters_mismatch"
+
+
+@pytest.mark.parametrize(
+    "style",
+    ["::#", "::+", "::r", "::.00/+", "::/foo", "::unit", "::integer-width/00", "::E"],
+)
+def test_rejects_formatjs_skeleton_parser_errors(style: str) -> None:
+    with pytest.raises(AppError) as error:
+        normalize_value("{value, number, " + style + "}", "{value, number}", key="format")
+    assert error.value.code == "ui_text_braces_unbalanced"
+    assert "第 " in error.value.detail
+
+
+def test_named_style_closing_brace_matches_formatjs_argument_boundary() -> None:
+    # FormatJS consumes foo{x as the style, leaving {y} as an actual argument.
+    default = "{value, number, foo{x} {y}}"
+    assert normalize_value("{value, number} {y}", default, key="style")
+    with pytest.raises(AppError) as error:
+        normalize_value("{value, number, foo{x} text}", default, key="style")
+    assert error.value.code == "ui_text_parameters_mismatch"
+
+
+def test_current_catalog_defaults_are_valid_icu() -> None:
+    def messages(value: object) -> Iterator[str]:
+        if isinstance(value, str):
+            yield value
+        elif isinstance(value, dict):
+            for child in value.values():
+                yield from messages(child)
+
+    catalog_root = Path(__file__).resolve().parents[3] / "apps/web/messages"
+    catalogs = list(catalog_root.glob("*/*.json"))
+    assert catalogs
+    for catalog in catalogs:
+        for message in messages(json.loads(catalog.read_text(encoding="utf-8"))):
+            parse_icu(message)
+
+
 def test_icu_parameters_extract_what_the_catalog_checker_extracts() -> None:
     assert icu_parameters("{count, plural, one {# day} other {# days}}") == {"count"}
     assert icu_parameters("Hello {name}, {name}!") == {"name"}
@@ -207,6 +304,23 @@ def test_parameter_mismatch_names_both_directions() -> None:
         normalize_value("Hi {who}", "Hi {name}", key="k")
     assert "name" in exc_info.value.detail
     assert "who" in exc_info.value.detail
+
+
+def test_parameter_mismatch_explains_roles_branches_and_offsets() -> None:
+    with pytest.raises(AppError) as error:
+        normalize_value(
+            "{count, plural, offset:2 one {'{name}'} other {#}}",
+            "{count, plural, offset:1 one {{name} #} other {#}}",
+            key="guests",
+        )
+    detail = error.value.detail
+    for expected in ("guests", "count", "plural", "offset:1", "offset:2", "one:", "other:"):
+        assert expected in detail
+    assert "{name} (argument)" in detail
+    assert "#" in detail
+    assert "勿用單引號包住參數" in detail
+    assert "frozenset" not in detail
+    assert "(6," not in detail
 
 
 def test_namespace_allowlist_excludes_legacy_and_unknown_groups() -> None:
@@ -399,6 +513,50 @@ async def test_upsert_rejects_bad_input_before_touching_rows(fake_table: None, a
         assert error_code(exc_info) == code
     assert session.rows == []
     assert session.commits == 0
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("batch", [False, True], ids=["single-write", "batch-write"])
+async def test_quoted_parameter_rejection_preserves_rows_audit_and_cache(
+    fake_table: None, actor: User, batch: bool
+) -> None:
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    session = FakeSession([override("common", "greeting", "en", "Hello {name}")])
+    before = await public_ui_text(session, redis, "en")  # type: ignore[arg-type]
+    cached_before = await redis.get(CACHE_KEY.format(locale="en"))
+    with pytest.raises(AppError) as error:
+        if batch:
+            await batch_ui_text(
+                session,  # type: ignore[arg-type]
+                redis,
+                actor,
+                UiTextBatchWrite(
+                    locale="en",
+                    namespace="common",
+                    entries=[
+                        {"key": "greeting", "value": "Hi {name}", "default_value": "Hi {name}"},
+                        {"key": "later", "value": "Hi '{name}'", "default_value": "Hi {name}"},
+                    ],
+                ),
+            )
+        else:
+            await upsert_ui_text(
+                session,  # type: ignore[arg-type]
+                redis,
+                actor,
+                "en",
+                "common",
+                "greeting",
+                UiTextWrite(value="Hi '{name}'", default_value="Hi {name}"),
+            )
+    assert error.value.code == "ui_text_parameters_mismatch"
+    assert [(row.key, row.value) for row in session.rows] == [("greeting", "Hello {name}")]
+    assert session.rows[0].default_snapshot == "Hello {name}"
+    assert session.commits == 0
+    assert session.audit == []
+    assert await redis.get(CACHE_KEY.format(locale="en")) == cached_before
+    assert await public_ui_text(session, redis, "en") == before  # type: ignore[arg-type]
+    assert session.public_queries == 1
 
 
 @pytest.mark.asyncio
