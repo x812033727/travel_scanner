@@ -1,13 +1,13 @@
 ---
 id: 2026-09-30-invalidate-dubs-when-target-pronunciation-changes
 title: Invalidate dubs when target pronunciation changes
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-dubs-fingerprint
 claimed_at: 2026-10-01T12:54:00Z
 created_at: 2026-09-30T04:26:12Z
-completed_at:
+completed_at: 2026-10-01T13:11:50Z
 branch: claude/dubs-target-fingerprint
 depends_on:
   - 2026-09-29-dubs-spell-out-app-as-a
