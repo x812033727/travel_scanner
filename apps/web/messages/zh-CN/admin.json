@@ -2091,6 +2091,32 @@
     "pairCodeInvalid": "验证码是 8 个英文字母，例如 BCDF-GHJK。",
     "pairFailed": "无法处理这组验证码"
   },
+  "videoRenewal": {
+    "duration": "新版时长：{seconds} 秒",
+    "previewFile": "可选择本机 preview.mp4（须与收据一致）",
+    "previewPlayer": "已核对的新版本机预览",
+    "previewInvalid": "预览文件与收据不符，或超过本机预览的 256 MB 限制。",
+    "proof": "查看来源与文件标识",
+    "title": "成片换版",
+    "help": "选择视频工具生成的候选收据，视频附件已先暂存。提交后创建新的成片待审，保留之前的决定与附件；这一步不会批准或发布视频。",
+    "file": "候选收据（.json）",
+    "original": "原成片 SHA-256",
+    "replacement": "新版成片 SHA-256",
+    "branding": "新版品牌 SHA-256",
+    "attachments": "包含 {count} 条已验证附件记录；提交后即可在待审卡播放预览。",
+    "reason": "换版原因",
+    "check": "核对当前审核",
+    "submit": "提交新版，由我审看",
+    "busy": "处理中…",
+    "checked": "原成片匹配。提交前会再次核对当前版本。",
+    "invalid": "收据格式不符、属于其他视频或网站，或缺少成片与预览的文件证明。",
+    "stale": "视频或审核已变更，请重新核对；如果原成片已更换，请重新生成候选收据。",
+    "conflict": "当前无法换版：{message}",
+    "failed": "无法核对候选，请重新加载页面后再核对。",
+    "uncertain": "提交结果尚未确认。请重新加载视频并查看审核记录，再决定下一步；系统没有自动重试。",
+    "submitted": "新版已提交，等待人工审看。之前的决定与附件保留在历史记录中。",
+    "pending": "这个新版正在等待你在下方审看成片。旧版的发布与语言批准已不能用于上传。"
+  },
   "videoReviews": {
     "categories": {
       "ai-terms": "AI 名词解释",

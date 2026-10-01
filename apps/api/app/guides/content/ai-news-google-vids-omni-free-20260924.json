@@ -14,7 +14,7 @@
   "locales": {
     "zh-TW": {
       "title": "Google Vids 開放免費用 Gemini Omni 1.1 做影片：誰能用、額度怎麼讀、使用前的限制",
-      "description": "台北時間 9 月 24 日凌晨（美國時間 9 月 23 日），Google 讓任何 Google 帳號都能在電腦版 Google Vids 免費生成影片；兩份官方說明頁對每月額度的寫法不同，年齡限制與中文提示，公告與說明頁都沒有寫（2026 年 9 月查證）。",
+      "description": "台北時間 9 月 24 日凌晨（美國時間 9 月 23 日），Google 讓任何 Google 帳號都能在電腦版 Google Vids 免費生成影片；兩份官方說明頁對每月額度的寫法不同，Google 的說明頁另寫明使用者須年滿 18 歲，AI 短片生成的官方支援語言只有英文（2026 年 9 月查證）。",
       "hero": {
         "src": "/guides/ai-news-google-vids-omni-free-20260924/hero.jpg",
         "alt": "原創插圖：一台桌上型電腦螢幕，畫面上有一段膠捲圖案與一個播放符號；右側兩個各自獨立的量表，代表兩份說明頁不同的額度說法，填充高度不同，下方各有一張小卡片；不含商標或真實人物。",
@@ -41,7 +41,7 @@
             "Google 台北時間 2026 年 9 月 24 日凌晨（美國時間 2026 年 9 月 23 日）宣布，任何 Google 帳號或 Google Workspace 帳號都能在電腦上用 Google Vids 的 Gemini Omni 1.1 免費生成 3 到 10 秒的影片片段，支援 720p 與 1080p。",
             "Google 指定的兩份說明頁對每月額度寫法不同：一份寫個人帳號每月 6 部 AI 短片、與 AI 虛擬化身合併計算，另一份寫多數使用者每月最多 50 部，兩者都是截至 2026 年 9 月 26 日的狀態。",
             "Google Workspace Frontline 不包含這項功能，公司或學校帳號能不能用由管理員決定。",
-            "這次的公告與說明頁都沒有寫年齡限制、中文提示能不能用；Gemini 3.8 Flash-Lite 旁白，Vids 的公告寫的是 Coming soon，也沒有寫上線日期。"
+            "Google 的 Gemini 入門說明頁寫使用者須年滿 18 歲；支援語言頁沒有列出 AI 短片生成，並寫明沒列出的 Gemini 功能只支援英文，中文提示不在官方支援範圍內；Gemini 3.8 Flash-Lite 旁白，Vids 的公告寫的是 Coming soon，也沒有寫上線日期。"
           ]
         },
         {
@@ -133,7 +133,7 @@
         },
         {
           "type": "paragraph",
-          "text": "語言與年齡的部分：Vids 的許多 AI 功能目前只支援英文，AI 短片生成支援哪些提示語言則沒有另外列出；中文提示能不能用、這項功能是否有年齡限制，四份官方文件都沒有寫。"
+          "text": "語言與年齡的部分：Vids 的許多 AI 功能目前只支援英文。Google 的支援語言頁在 Vids 底下列出圖片生成、AI 旁白、AI 虛擬化身與把 Google 簡報轉成 Vids，沒有 AI 短片生成，並寫明沒列出的 Gemini 功能只支援英文，建議把 Google 帳號語言改成英文；因此中文提示不在官方支援範圍內。年齡方面，生成說明頁連到的 Gemini 入門說明頁，列出的第一項條件是年滿 18 歲。"
         },
         {
           "type": "image",
@@ -207,7 +207,7 @@
             },
             {
               "question": "可以用中文下提示詞嗎？",
-              "answer": "Google 的說明頁只寫 Vids 的許多 AI 功能目前只支援英文，沒有特別列出 AI 短片生成支援哪些提示語言；中文提示能不能用，也沒有寫。"
+              "answer": "Google 的支援語言頁沒有列出 AI 短片生成，並寫明沒列出的 Gemini 功能只支援英文，建議把 Google 帳號語言改成英文；中文提示不在官方支援範圍內。"
             },
             {
               "question": "生成的影片可以拿去別的地方用嗎？",
@@ -268,12 +268,22 @@
           "title": "Google 說明中心：Use AI to generate video clips in Google Vids",
           "url": "https://support.google.com/docs/answer/16143507",
           "checked_on": "2026-09-30"
+        },
+        {
+          "title": "Google 說明中心：Get started with Google Workspace with Gemini",
+          "url": "https://support.google.com/docs/answer/13952129",
+          "checked_on": "2026-10-01"
+        },
+        {
+          "title": "Google 說明中心：Supported languages for Google Workspace with Gemini",
+          "url": "https://support.google.com/docs/answer/14925782",
+          "checked_on": "2026-10-01"
         }
       ]
     },
     "en": {
       "title": "Google Vids Opens Free Gemini Omni 1.1 Video Generation: Who Can Use It, How to Read the Quota, and What to Know First",
-      "description": "In the early hours of September 24, 2026, Taipei time (September 23, 2026, US time), Google let any Google account generate video for free in desktop Google Vids; its two official help pages disagree on the monthly quota, and neither the announcement nor the help pages say whether there is an age limit or whether Chinese-language prompts work (verified September 2026).",
+      "description": "In the early hours of September 24, 2026, Taipei time (September 23, 2026, US time), Google let any Google account generate video for free in desktop Google Vids; its two official help pages disagree on the monthly quota, and Google's help pages say users must be 18 or over and give English as the only supported language for AI video generation (verified September 2026).",
       "hero": {
         "src": "/guides/ai-news-google-vids-omni-free-20260924/hero-en.jpg",
         "alt": "Illustration: a desktop screen showing a film strip with a play mark; right, two gauges filled to different levels, one per help page's quota, each with a small card below. No trademarks or people.",
@@ -300,7 +310,7 @@
             "Google announced, in the early hours of September 24, 2026, Taipei time (September 23, 2026, US time), that any Google account or Google Workspace account can generate 3-to-10-second video clips for free with Gemini Omni 1.1 in Google Vids on desktop, supporting 720p and 1080p.",
             "The two help pages Google names for this feature disagree on the monthly quota: one says personal accounts get 6 AI video clips per month combined with AI avatars, the other says most users can generate up to 50 videos per month — both as of September 26, 2026.",
             "Google Workspace Frontline does not include this feature; whether a work or school account can use it is up to the admin.",
-            "Neither the announcement nor the help pages say whether there is an age limit or whether Chinese-language prompts work; the Vids announcement lists Gemini 3.8 Flash-Lite voiceover as \"Coming soon\" with no launch date given."
+            "Google's help pages say users must be 18 or over and give English as the only supported language for AI video generation, so Chinese-language prompts are not officially supported; the Vids announcement lists Gemini 3.8 Flash-Lite voiceover as \"Coming soon\" with no launch date given."
           ]
         },
         {
@@ -392,7 +402,7 @@
         },
         {
           "type": "paragraph",
-          "text": "On language and age: many of Vids' AI features currently only support English, and the help page does not separately list which prompt languages are supported for AI video clip generation; none of the four official documents say whether Chinese-language prompts work, or whether there is an age limit for this feature."
+          "text": "On language and age: many of Vids' AI features currently only support English. Google's supported-languages page lists image generation, AI voiceovers, AI avatars and converting Google Slides into Vids under Vids, but not AI video clip generation, and says English is the only supported language for the Gemini features it does not list, advising users to set their Google Account language to English; Chinese-language prompts are therefore not officially supported. On age, the Gemini get-started page that the generation help page links to lists being 18 or over as its first requirement."
         },
         {
           "type": "image",
@@ -466,7 +476,7 @@
             },
             {
               "question": "Can I use Chinese-language prompts?",
-              "answer": "Google's help page only says many of Vids' AI features currently support English only, without separately listing which prompt languages AI video clip generation supports; whether Chinese prompts work is not stated either."
+              "answer": "Google's supported-languages page does not list AI video clip generation and says English is the only supported language for the Gemini features it does not list, advising users to set their Google Account language to English; Chinese-language prompts are not officially supported."
             },
             {
               "question": "Can I use the generated video somewhere else?",
@@ -527,12 +537,22 @@
           "title": "Google Help Center: Use AI to generate video clips in Google Vids",
           "url": "https://support.google.com/docs/answer/16143507",
           "checked_on": "2026-09-30"
+        },
+        {
+          "title": "Google Help Center: Get started with Google Workspace with Gemini",
+          "url": "https://support.google.com/docs/answer/13952129",
+          "checked_on": "2026-10-01"
+        },
+        {
+          "title": "Google Help Center: Supported languages for Google Workspace with Gemini",
+          "url": "https://support.google.com/docs/answer/14925782",
+          "checked_on": "2026-10-01"
         }
       ]
     },
     "ja": {
       "title": "Google Vids、Gemini Omni 1.1による動画の無料生成を開放：誰が使えるか、上限の読み方、使う前の制限",
-      "description": "台北時間9月24日未明（米国時間9月23日）、GoogleはあらゆるGoogleアカウントでデスクトップ版Google Vidsの動画を無料生成できるようにしました。2つの公式ヘルプページは月間上限の説明が異なり、年齢制限や中国語プロンプトについては発表もヘルプページも記載していません（2026年9月確認）。",
+      "description": "台北時間9月24日未明（米国時間9月23日）、GoogleはあらゆるGoogleアカウントでデスクトップ版Google Vidsの動画を無料生成できるようにしました。2つの公式ヘルプページは月間上限の説明が異なり、Googleのヘルプページでは利用条件は18歳以上、AI動画生成の対応言語は英語のみとされています（2026年9月確認）。",
       "hero": {
         "src": "/guides/ai-news-google-vids-omni-free-20260924/hero-ja.jpg",
         "alt": "オリジナルイラスト：フィルムストリップと再生マークが表示されたデスクトップ画面。右側には独立したゲージが2つあり、それぞれ2つのヘルプページで異なる上限を表し高さが異なる。それぞれの下に小さなカードがある。商標や実在の人物は含まない。",
@@ -559,7 +579,7 @@
             "Googleは台北時間2026年9月24日未明（米国時間2026年9月23日）、GoogleアカウントまたはGoogle WorkspaceアカウントがあればGoogle VidsのGemini Omni 1.1でデスクトップから無料で3〜10秒の動画クリップを生成でき、720pと1080pに対応すると発表しました。",
             "Googleが指定する2つのヘルプページは月間の上限について書き方が異なり、一方は個人アカウントが毎月AI動画クリップを6本（AIアバターと合算）、もう一方は大半のユーザーが毎月最大50本生成できるとしており、いずれも2026年9月26日時点の内容です。",
             "Google Workspace Frontlineはこの機能を含んでおらず、会社や学校のアカウントで使えるかどうかは管理者が決定します。",
-            "今回の発表とヘルプページには年齢制限や中国語プロンプトが使えるかどうかの記載はなく、Gemini 3.8 Flash-Liteのナレーションについて、Vidsの発表では「Coming soon」とされ、提供開始日も記載されていません。"
+            "GoogleのGemini利用開始ガイドのヘルプページには18歳以上という条件があります。対応言語のページにはAI動画クリップ生成の記載がなく、記載のないGemini機能は英語のみ対応とされているため、中国語のプロンプトは公式の対応範囲外です。Gemini 3.8 Flash-Liteのナレーションについて、Vidsの発表では「Coming soon」とされ、提供開始日も記載されていません。"
           ]
         },
         {
@@ -651,7 +671,7 @@
         },
         {
           "type": "paragraph",
-          "text": "言語と年齢については、Vidsの多くのAI機能は現時点では英語のみに対応しており、AI動画クリップ生成でどのプロンプト言語に対応しているかは別途記載がありません。中国語のプロンプトが使えるかどうか、この機能に年齢制限があるかどうかについても、4つの公式文書のいずれにも記載がありません。"
+          "text": "言語と年齢については、Vidsの多くのAI機能は現時点では英語のみに対応しています。Googleの対応言語のページでは、Vidsの項目に画像生成、AIナレーション、AIアバター、GoogleスライドからVidsへの変換が並んでいますが、AI動画クリップ生成はありません。記載のないGemini機能は英語のみ対応とされ、Googleアカウントの言語を英語に設定するよう案内されているため、中国語のプロンプトは公式の対応範囲外です。年齢については、生成のヘルプページからリンクされているGemini利用開始ガイドのページが、最初の条件として18歳以上であることを挙げています。"
         },
         {
           "type": "image",
@@ -725,7 +745,7 @@
             },
             {
               "question": "中国語のプロンプトは使えますか？",
-              "answer": "Googleのヘルプページには、Vidsの多くのAI機能が現時点では英語のみに対応しているとしか書かれておらず、AI動画クリップ生成がどのプロンプト言語に対応しているかは別途記載がありません。中国語のプロンプトが使えるかどうかも記載がありません。"
+              "answer": "Googleの対応言語のページにはAI動画クリップ生成の記載がなく、記載のないGemini機能は英語のみ対応とされ、Googleアカウントの言語を英語に設定するよう案内されています。中国語のプロンプトは公式の対応範囲外です。"
             },
             {
               "question": "生成した動画を他の場所で使うことはできますか？",
@@ -786,12 +806,22 @@
           "title": "Googleヘルプセンター：Use AI to generate video clips in Google Vids",
           "url": "https://support.google.com/docs/answer/16143507",
           "checked_on": "2026-09-30"
+        },
+        {
+          "title": "Googleヘルプセンター：Get started with Google Workspace with Gemini",
+          "url": "https://support.google.com/docs/answer/13952129",
+          "checked_on": "2026-10-01"
+        },
+        {
+          "title": "Googleヘルプセンター：Supported languages for Google Workspace with Gemini",
+          "url": "https://support.google.com/docs/answer/14925782",
+          "checked_on": "2026-10-01"
         }
       ]
     },
     "ko": {
       "title": "Google Vids, Gemini Omni 1.1로 무료 동영상 생성 개방: 누가 쓸 수 있나, 한도 읽는 법, 사용 전 제한",
-      "description": "타이베이 시간 9월 24일 새벽(미국 시간 9월 23일), Google은 모든 Google 계정이 데스크톱 버전 Google Vids에서 무료로 동영상을 생성할 수 있게 했습니다. 두 공식 도움말 페이지는 월간 한도 설명이 서로 다르며, 연령 제한과 중국어 프롬프트에 대해서는 발표와 도움말 페이지 모두 언급하지 않았습니다(2026년 9월 확인).",
+      "description": "타이베이 시간 9월 24일 새벽(미국 시간 9월 23일), Google은 모든 Google 계정이 데스크톱 버전 Google Vids에서 무료로 동영상을 생성할 수 있게 했습니다. 두 공식 도움말 페이지는 월간 한도 설명이 서로 다르며, Google 도움말 페이지에 따르면 18세 이상이어야 하고 AI 동영상 생성의 지원 언어는 영어뿐입니다(2026년 9월 확인).",
       "hero": {
         "src": "/guides/ai-news-google-vids-omni-free-20260924/hero-ko.jpg",
         "alt": "오리지널 일러스트: 필름 스트립과 재생 표시가 있는 데스크톱 화면입니다. 오른쪽에는 독립된 게이지 두 개가 있는데, 각각 두 도움말 페이지의 서로 다른 한도를 나타내며 채워진 높이가 다릅니다. 각각 아래에 작은 카드가 있습니다. 상표나 실존 인물은 포함되어 있지 않습니다.",
@@ -818,7 +848,7 @@
             "Google은 타이베이 시간 2026년 9월 24일 새벽(미국 시간 2026년 9월 23일), Google 계정이나 Google Workspace 계정이 있으면 컴퓨터에서 Google Vids의 Gemini Omni 1.1로 3~10초 분량의 동영상 클립을 무료로 생성할 수 있으며 720p와 1080p를 지원한다고 발표했습니다.",
             "Google이 지정한 두 개의 도움말 페이지는 월간 한도에 대한 설명이 서로 다릅니다. 하나는 개인 계정이 매달 AI 동영상 클립 6개(AI 아바타와 합산)까지 생성할 수 있다고 하고, 다른 하나는 대다수 사용자가 매달 최대 50개까지 생성할 수 있다고 하며, 두 수치 모두 2026년 9월 26일 기준입니다.",
             "Google Workspace Frontline에는 이 기능이 포함되어 있지 않으며, 회사나 학교 계정에서 사용할 수 있는지는 관리자가 결정합니다.",
-            "이번 발표와 도움말 페이지 모두 연령 제한이나 중국어 프롬프트 사용 가능 여부를 언급하지 않았으며, Gemini 3.8 Flash-Lite 내레이션은 Vids 공지에서 'Coming soon'이라고만 되어 있고 출시일도 적혀 있지 않습니다."
+            "Google의 Gemini 시작하기 도움말 페이지는 18세 이상이어야 한다고 적고 있습니다. 지원 언어 페이지에는 AI 동영상 클립 생성이 없고, 목록에 없는 Gemini 기능은 영어만 지원한다고 되어 있어 중국어 프롬프트는 공식 지원 범위 밖입니다. Gemini 3.8 Flash-Lite 내레이션은 Vids 공지에서 'Coming soon'이라고만 되어 있고 출시일도 적혀 있지 않습니다."
           ]
         },
         {
@@ -910,7 +940,7 @@
         },
         {
           "type": "paragraph",
-          "text": "언어와 연령에 관해서는, Vids의 많은 AI 기능이 현재 영어만 지원하며, AI 동영상 클립 생성이 어떤 프롬프트 언어를 지원하는지는 별도로 나와 있지 않습니다. 중국어 프롬프트를 사용할 수 있는지, 이 기능에 연령 제한이 있는지는 4개의 공식 문서 어디에도 적혀 있지 않습니다."
+          "text": "언어와 연령에 관해서는, Vids의 많은 AI 기능이 현재 영어만 지원합니다. Google의 지원 언어 페이지는 Vids 항목에 이미지 생성, AI 내레이션, AI 아바타, Google Slides를 Vids로 변환하기를 올려 두었지만 AI 동영상 클립 생성은 없으며, 목록에 없는 Gemini 기능은 영어만 지원한다면서 Google 계정 언어를 영어로 설정하라고 안내합니다. 따라서 중국어 프롬프트는 공식 지원 범위 밖입니다. 연령은 생성 도움말 페이지가 연결해 둔 Gemini 시작하기 페이지가 첫 번째 조건으로 18세 이상을 들고 있습니다."
         },
         {
           "type": "image",
@@ -984,7 +1014,7 @@
             },
             {
               "question": "중국어 프롬프트를 사용할 수 있나요?",
-              "answer": "Google 도움말 페이지에는 Vids의 많은 AI 기능이 현재 영어만 지원한다고만 되어 있고, AI 동영상 클립 생성이 어떤 프롬프트 언어를 지원하는지는 별도로 나와 있지 않습니다. 중국어 프롬프트 사용 가능 여부도 적혀 있지 않습니다."
+              "answer": "Google 지원 언어 페이지에는 AI 동영상 클립 생성이 없고, 목록에 없는 Gemini 기능은 영어만 지원한다며 Google 계정 언어를 영어로 설정하라고 안내합니다. 중국어 프롬프트는 공식 지원 범위 밖입니다."
             },
             {
               "question": "생성한 동영상을 다른 곳에서도 사용할 수 있나요?",
@@ -1045,12 +1075,22 @@
           "title": "Google 고객센터: Use AI to generate video clips in Google Vids",
           "url": "https://support.google.com/docs/answer/16143507",
           "checked_on": "2026-09-30"
+        },
+        {
+          "title": "Google 고객센터: Get started with Google Workspace with Gemini",
+          "url": "https://support.google.com/docs/answer/13952129",
+          "checked_on": "2026-10-01"
+        },
+        {
+          "title": "Google 고객센터: Supported languages for Google Workspace with Gemini",
+          "url": "https://support.google.com/docs/answer/14925782",
+          "checked_on": "2026-10-01"
         }
       ]
     },
     "zh-CN": {
       "title": "Google Vids 开放免费用 Gemini Omni 1.1 做视频：谁能用、额度怎么读、使用前的限制",
-      "description": "台北时间 9 月 24 日凌晨（美国时间 9 月 23 日），Google 让任何 Google 账号都能在电脑版 Google Vids 免费生成视频；两份官方说明页对每月额度的写法不同，年龄限制与中文提示，公告与说明页都没有写（2026 年 9 月查证）。",
+      "description": "台北时间 9 月 24 日凌晨（美国时间 9 月 23 日），Google 让任何 Google 账号都能在电脑版 Google Vids 免费生成视频；两份官方说明页对每月额度的写法不同，Google 的说明页另写明用户须年满 18 岁，AI 短片生成的官方支持语言只有英文（2026 年 9 月查证）。",
       "hero": {
         "src": "/guides/ai-news-google-vids-omni-free-20260924/hero-zh-cn.jpg",
         "alt": "原创插图：一台桌面电脑屏幕，画面上有一段胶卷图案与一个播放符号；右侧两个各自独立的量表，代表两份说明页不同的额度说法，填充高度不同，下方各有一张小卡片；不含商标或真实人物。",
@@ -1077,7 +1117,7 @@
             "Google 台北时间 2026 年 9 月 24 日凌晨（美国时间 2026 年 9 月 23 日）宣布，任何 Google 账号或 Google Workspace 账号都能在电脑上用 Google Vids 的 Gemini Omni 1.1 免费生成 3 到 10 秒的视频片段，支持 720p 与 1080p。",
             "Google 指定的两份说明页对每月额度写法不同：一份写个人账号每月 6 部 AI 短片、与 AI 虚拟化身合并计算，另一份写多数用户每月最多 50 部，两者都是截至 2026 年 9 月 26 日的状态。",
             "Google Workspace Frontline 不包含这项功能，公司或学校账号能不能用由管理员决定。",
-            "这次的公告与说明页都没有写年龄限制、中文提示能不能用；Gemini 3.8 Flash-Lite 旁白，Vids 的公告写的是 Coming soon，也没有写上线日期。"
+            "Google 的 Gemini 入门说明页写用户须年满 18 岁；支持语言页没有列出 AI 短片生成，并写明没列出的 Gemini 功能只支持英文，中文提示不在官方支持范围内；Gemini 3.8 Flash-Lite 旁白，Vids 的公告写的是 Coming soon，也没有写上线日期。"
           ]
         },
         {
@@ -1169,7 +1209,7 @@
         },
         {
           "type": "paragraph",
-          "text": "语言与年龄的部分：Vids 的许多 AI 功能目前只支持英文，AI 短片生成支持哪些提示语言则没有另外列出；中文提示能不能用、这项功能是否有年龄限制，四份官方文件都没有写。"
+          "text": "语言与年龄的部分：Vids 的许多 AI 功能目前只支持英文。Google 的支持语言页在 Vids 下面列出图片生成、AI 旁白、AI 虚拟化身与把 Google 幻灯片转成 Vids，没有 AI 短片生成，并写明没列出的 Gemini 功能只支持英文，建议把 Google 账号语言改成英文；因此中文提示不在官方支持范围内。年龄方面，生成说明页链接到的 Gemini 入门说明页，列出的第一项条件是年满 18 岁。"
         },
         {
           "type": "image",
@@ -1243,7 +1283,7 @@
             },
             {
               "question": "可以用中文下提示词吗？",
-              "answer": "Google 的说明页只写 Vids 的许多 AI 功能目前只支持英文，没有特别列出 AI 短片生成支持哪些提示语言；中文提示能不能用，也没有写。"
+              "answer": "Google 的支持语言页没有列出 AI 短片生成，并写明没列出的 Gemini 功能只支持英文，建议把 Google 账号语言改成英文；中文提示不在官方支持范围内。"
             },
             {
               "question": "生成的视频可以拿去别的地方用吗？",
@@ -1304,6 +1344,16 @@
           "title": "Google 帮助中心：Use AI to generate video clips in Google Vids",
           "url": "https://support.google.com/docs/answer/16143507",
           "checked_on": "2026-09-30"
+        },
+        {
+          "title": "Google 帮助中心：Get started with Google Workspace with Gemini",
+          "url": "https://support.google.com/docs/answer/13952129",
+          "checked_on": "2026-10-01"
+        },
+        {
+          "title": "Google 帮助中心：Supported languages for Google Workspace with Gemini",
+          "url": "https://support.google.com/docs/answer/14925782",
+          "checked_on": "2026-10-01"
         }
       ]
     }

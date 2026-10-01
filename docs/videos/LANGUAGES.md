@@ -85,6 +85,8 @@
 3. 全部語言做完：`captions`（只寫 zh-TW 與勾了 CC 的語系；有配音的跟配音時間軸）→ `package`（`upload/` 只放 zh-TW 與勾了的：`description.<l>.txt`、`captions/<l>.srt`、`dubs/<l>.m4a`；`metadata.json` 的 `locales` 照決定）→ `review-push --gate languages`。
 4. `qa` 的 `captions` 與 `metadata` 項、`package` 的 `captions` 與 `descriptions` 項都改成「zh-TW 加勾了的」；跳過的算過、列成警告。
 
+旁白不是 zh-TW 的影片（`narration_locale`，例如 `en`）：面板不會列 zh-TW，但 `captions`、`package`、`qa` 永遠要它（`alwaysLocales`），所以語言一決定，工人先把 zh-TW 的標題說明與 CC 翻一次（不配音），再做勾了的；什麼都沒勾時只把 `captions` 與 `package` 重寫一次，不送語言批次。成片審核卡也永遠帶旁白語言與 zh-TW 的標題說明。
+
 沒勾語言、或按了「只出繁體中文」的影片：`captions` 只寫 zh-TW，`package` 只有 zh-TW，跟現在比少了四個語系的檔案，其餘一個位元組都不變。`caption_locales` 不再驅動任何工作。
 
 之後多勾的：工人看到 `locales` 裡有 ready／skipped 都沒有的部件就再做一批，送新的 `languages` 審核（舊的 superseded）。
