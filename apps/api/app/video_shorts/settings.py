@@ -85,6 +85,8 @@ def settings_values(row: VideoShortsSettings) -> SettingsWrite:
         budget_ntd_30d=row.budget_ntd_30d,
         budget_soft_ntd=row.budget_soft_ntd,
         budget_total_ntd=row.budget_total_ntd,
+        subject_models=cast(Any, dict(row.subject_models or {})),
+        max_per_month=row.max_per_month,
     )
 
 

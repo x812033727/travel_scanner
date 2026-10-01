@@ -5,6 +5,27 @@ The owner approved the v2 opening and selected “先改尚未上架與之後影
 default. A default change alone does not replace an existing cut or its approvals.
 The existing three-second like/share/bell outro is unchanged.
 
+At the final audit on **2026-10-01 13:59:48 UTC**, all 17 rebuilt finals are present
+on the site: **14 owner-renewal finals pending review and three prior new finals
+approved externally by the owner**. No cut awaits explicit renewal. The 11 public
+YouTube videos and their URLs are preserved. This operation made no final-approval,
+YouTube-upload or publication decision.
+
+| Completed milestone | Evidence |
+| --- | --- |
+| PR #1077 merged; all 11 checks passed | Tested head `a2b40dc5108f786a79d1ba009e4a1bb7802492d2`; tested/merged tree `478b1b06d8b212f626cfd0a5d9bf5a63ab9e215b` |
+| Exact code deployment, exit 0 at 13:31:01 UTC | `16272d006ddc72bea0ef57eaaf2570cc3faf132c`; external `rollout/deploy1077/receipt-live-16272d00/` |
+| All 14 owner-authenticated website renewals persisted pending | Each submission had a fresh owner-version check, one POST and an immediate pending ID/hash readback; external `rollout/owner-renewals-20261001-guarded-ui/` |
+| Final source/review/channel/default audit | `rollout/final-coverage-renewed-2026-10-01T13-59-04-107Z.json`; SHA-256 `106f1d6e7c0d17af9fc650e24f00a26454815efdfa3403861fdfa5e468f15bec` |
+
+Deployment used a fresh 173,567,560-byte PGDMP backup whose SHA matched its receipt;
+a fresh `pg_restore --list` verified 1,201 entries. All 13 services were running,
+health/readiness returned 200, migration head was `0116_video_project_category`,
+and persistent Postgres/Redis identities and mounts were unchanged. Only this
+deployment's hold and STOP were cleared; the worker was running. The independent
+safe host proof SHA is `f23adcc3d3d974558d2994d24ca522d3a83e99e2cd44dfb035ebd8b1fd23fe1a`.
+Raw database, media and account receipts remain outside Git.
+
 ## Selected assets
 
 | Identity | Value |
@@ -19,7 +40,7 @@ decoded PCM were verified unchanged. Package preparation, desktop/mobile frames
 and the synthetic integration test are recorded in
 [the preview receipt](2026-10-01-channel-branding-cc-preview.md).
 
-## Default installation actually performed
+## Historical asset-only default installation
 
 Production activation completed at **2026-10-01 08:11:19 UTC**, exit 0. The
 already-deployed installer ran against the exact existing worker image and work
@@ -49,22 +70,28 @@ installed with the same selection. The previous current was preserved in history
 55 existing cut metadata files remained identical, and both installed assets
 passed full decode. Existing per-video pins are deliberately preserved.
 
-A fresh read-only worker readback at 10:14:24 UTC still selected the same package
+The historical worker readback at 10:14:24 UTC still selected the same package
 and exact intro/outro hashes. The original container was running, with no global
 STOP and no release hold. The production code revision remained `7606ff50`.
 
 ## Coverage and publication identity
 
-The fresh production inventory contains 55 rows:
+The **historical 07:46:55 UTC baseline** contains 55 rows:
 
 | Group | Count | Treatment |
 | --- | ---: | --- |
 | Long videos with confirmed published YouTube IDs | 11 | Preserve videos and URLs |
-| Existing completed long cuts without uploaded IDs | 17 | Prepare new independent cuts; renew approvals before use |
+| Existing completed long cuts without uploaded IDs | 17 | All rebuilt finals now on site: 14 pending, three externally approved |
 | First-build long projects | 7 | Next first build uses v2; missing source/visual stages remain their own work |
 | Long project without a local source project (`ai-model-choice`) | 1 | No existing opening established; source work remains incomplete |
 | Shorts | 15 | Outside the agreed long-video branding workflow |
 | Dropped projects | 4 | Preserve dropped state |
+
+The final fresh inventory also includes one added first-build long project,
+`gemini-4-argon-who-can-use-it`: its worker state is `assembled=false` with no pin.
+It uses the same future default and is separate from the 17 existing-cut revisions.
+The observed total is therefore **56 rows: the historical 55 plus this added row**;
+the baseline groups above have not been silently reclassified.
 
 At 08:02:34 UTC the linked channel's complete upload playlist was read successfully:
 12 entries, comprising the 11 public videos matching stored project IDs and one
@@ -74,10 +101,12 @@ identity; Google Vids, AI plans and AI pricing have distinct cuts using shared s
 The complete channel was read again at 10:14:26 UTC: the same 12 entries, 11 public
 project IDs and no active project upload sessions or VPS jobs.
 
-The 11 pending projects' `stage="on YouTube"` is a **next-step** report from
-`reviewPush`, not publication evidence: each has exactly one `on_youtube` checklist
-item with `done=false`. They have no YouTube ID, publication timestamp, upload
-session, API sync state or VPS job. The new renewal guard accepts this explicit
+Before renewal, the 11 pending projects' `stage="on YouTube"` was a **next-step**
+report from `reviewPush`, not publication evidence: each had exactly one `on_youtube` checklist
+item with `done=false`. The final 13:57 UTC audit confirms all 17 target projects
+have no YouTube ID, schedule, upload session, API sync state or VPS job. The complete
+channel inventory retains the same 12 ID/privacy pairs, including 11 public videos.
+The new renewal guard accepts this explicit
 pending checklist, while refusing completed or ambiguous upload states.
 
 ## Independent existing-cut candidates
@@ -85,12 +114,15 @@ pending checklist, while refusing completed or ambiguous upload states.
 Media and account evidence stay outside Git under
 `C:/Users/x8120/mokaair-work/channel-intro-20260930/brand-package-v2-cc/`.
 
-`rollout/final-coverage.json` rehashed all 17 original/candidate full files and
-the Windows current/assets at 10:19:40 UTC. It binds the fresh review and complete
-channel inventories. All 17 completed unuploaded long cuts have new local finals;
-three new finals are present on the site (one approved externally, two pending),
-and 14 await explicit owner renewal after code deployment. This operation uploaded
-and published no YouTube videos.
+The historical `rollout/final-coverage.json` rehashed all 17 original/candidate
+full files and Windows assets at 10:19:40 UTC, when only three new site finals
+existed. The final receipt above supersedes that completion snapshot: all 17 new
+finals are now on the site, with 14 pending and three externally approved.
+Canonical sources and all candidates were rehashed unchanged, and production and
+Windows defaults retain the exact selected assets. Fourteen staged previews passed
+complete AV decoding; all 56 staged attachments matched host size/SHA verification
+in `rollout/staged-attachments-verification-2026-10-01T13-03-25-587Z.json`
+(SHA `e634c6d5695d095076efd23595d4129354e1a3d4deeebeec948dff9d26e685b9`).
 
 | Source group | Count | External evidence |
 | --- | ---: | --- |
@@ -143,17 +175,20 @@ playback seek windows, including three after gaps, align at +5 seconds with zero
 best lag and correlation at least 0.9999928. This is not a claim of bit-identical
 audio or a sample-exact complete timeline.
 
-## Review and remaining execution boundary
+## Review history and completed owner renewals
 
 Imported episode 04 has new final review `404dfcb2-6041-4fef-843e-65b305f7f0cd`,
 content SHA `bfbda5ac2783bc5ead96a9b0d6a9dd98e9edd4c28ff983dc12092846e76c59ea`.
 Episode 06 has new final review `593ebdc1-d249-4a69-80da-5fd1ea1ac87f`, content SHA
 `917525ff5d1a371aa0ce1c6c7987f38d411e8c3fb9f57d20890ce6e2d03c54bd`.
 Both previews, thumbnails and shifted captions persisted with their exact submitted
-hashes and were pending on submission. A subsequent read-only review refresh found
-episode 04's new review had been approved externally; episode 06 remained pending.
-This operation did not make that approval or infer full playback from it. Original
-approved final decisions and their attachments remain available as history.
+hashes and were pending on submission. A historical read-only refresh found
+episode 04 approved and episode 06 pending.
+The final refresh preserves all three existing owner approvals: episode 04 at
+08:48:25.908007 UTC, corrected episode 05 at 10:46:04.212690 UTC and episode 06 at
+10:46:14.960020 UTC, with their original new-review IDs and hashes unchanged.
+This operation did not make those approvals or infer full playback from them.
+Original approved final decisions and their attachments remain available as history.
 
 Episode 05's first pending revision reported true peak +0.3 dBFS. A new isolated
 candidate gently attenuates only body 413.30–413.60 seconds by 2 dB with 50 ms ramps.
@@ -168,12 +203,14 @@ Its guarded replacement was submitted and read back at 09:31:28 UTC as pending
 review `68ea82d7-ed07-42f8-9895-17ec30db9856`, with no technical profile problems.
 All three submitted attachment hashes/sizes persisted exactly. The failed prior
 pending review `db1c0946-8ffb-4c6d-a875-a6df5b344759` is superseded; the original
-approved final remains in history. The new cut is not upload-ready.
+approved final remains in history. Upload readiness is not claimed for this revision.
 
-Episodes 01/02/03 have already-approved language batches. The 11 other cuts have
-approved publish packages. Ordinary import or a new final alone cannot revoke
-those old approvals, so these 14 require the explicit renewal operation; old
-approval files are never deleted and `--force` is not used.
+Before renewal, episodes 01/02/03 had approved language batches and the 11 other
+cuts had approved publish packages. All 14 explicit owner renewals have now
+superseded their old authorizations and persisted human-pending finals. All 17 old
+source review IDs, hashes, decisions and files remain in history: 14 source finals
+are superseded and the three prior import sources retain their approved status.
+No old approval file was deleted and `--force` was not used.
 
 The backend implementation adds owner `GET/POST /admin/videos/{slug}/final-renewal`:
 complete-state version, old final ID/SHA and uploaded attachment bytes are checked
@@ -184,8 +221,8 @@ evidence, auto-approve it or restore a completed stage. Later package/language
 submissions must bind the new final review and media/branding hashes.
 
 The backend, candidate CLI, five-locale owner control and downstream source guards
-are implemented and independently reviewed in draft PR #1077, **not merged or
-code-deployed**. Staging uses a new output directory and preserves original media,
+were independently reviewed, merged in PR #1077 and deployed at the exact revision
+recorded above. Staging uses a new output directory and preserves original media,
 pins and approvals. The website verifies a local preview's bytes, checks fresh
 owner state, submits the replacement once, then reads back its manual-pending
 identity. Publish/language/dub producers bind the new final review, current choices,
@@ -201,9 +238,11 @@ rejections, with no unexpected result. The final English R4 report SHA is
 `a2cc9f698a53dd3ace9d3e4406a069c7d53181946ed52024e7486b311ca77671`;
 the exact producer/consumer source hashes and both R4 reports are bound in
 `rollout/renewal-narration-validation.json`.
-The complete local web run stalled without completed-suite evidence and was
-terminated with exit -1; full web acceptance remains a CI gate. These checks do
-not establish owner playback or live website acceptance.
+The earlier incomplete local web run was terminated with exit -1; that historical
+run is not a pass. The final exact-head CI completed all 11 checks successfully,
+including API and full web validation. The later 14 actual owner-authenticated
+website submissions and persisted pending readbacks verify the renewal interface;
+full owner playback/listening is not established by those checks.
 
 The implementation task `2026-10-01-long-video-renewal-tools-and-ui` is complete.
 Canonical worker adoption after owner approval, imported manual-package transfer
@@ -220,16 +259,18 @@ pre-existing non-zh-TW limitation is recorded in the unclaimed task
 `2026-10-01-youtube-narration-request-transport`. All 17 cuts in this rollout are
 zh-TW. Offline consumer acceptance is not real YouTube acceptance for other narration.
 
-All 14 renewal staging inputs and body hashes were prepared outside the repository
-in `rollout/renewal-stage-inputs.json`. Legacy metadata adapters only copy verified
-caption bytes and map chapter fields in candidate directories. No staging upload
-or renewal POST for these 14 has been performed. A final read-only refresh at
-10:14 UTC confirmed the same three site revisions (04 externally approved, 05/06
-pending), 11 public project videos, zero upload sessions/VPS jobs and the unchanged
-v2 default in the original running worker, with no hold or STOP.
+All 14 renewal inputs and retained-body hashes remain outside Git in
+`rollout/renewal-stage-inputs.json`. Legacy adapters copied verified caption bytes
+and mapped chapter fields only in candidate directories. Completed staging is bound
+by `rollout/renewal-staging-complete-index.json`
+(SHA `591f43494716b3302741282e518b02e1cee653c4660c8e4c5c71c9985f05da97`).
+All 14 website renewals were submitted once and read back immediately as pending;
+the final audit independently binds each receipt, persisted identity and retained
+source history. The admin pending-review interface was actually observed, including
+the final jobs-chart submission. At 13:57:53 UTC, the running production revision
+was still `16272d00`, with the exact v2 default and no hold or STOP.
 
-Before each renewal, refresh both publication/activity evidence and owner version;
-submit once and inspect persisted review IDs, hashes, pending state and retained
-history. Stale or ambiguous outcomes require a readback, not a blind retry. Owner
-full playback/listening, new approval, language-package acceptance and YouTube
-upload/publication have not been performed by this operation.
+Owner full playback/listening, new final approval, language-package acceptance and
+YouTube upload/publication were not performed by this operation. Canonical worker
+and imported manual-package handoff after review remains the separate task named
+above; these site revisions are not a claim of automatic upload readiness.

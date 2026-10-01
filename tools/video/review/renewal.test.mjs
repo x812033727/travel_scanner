@@ -10,7 +10,7 @@ import { buildCues, toSrt } from "../core/captions.mjs";
 import { eachLine, textHash } from "../core/schema.mjs";
 import { captionLocalesOf, localeTexts, metadataLocalesOf } from "../core/stages.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
-import { dubScript, translationHash } from "../dubs/plan.mjs";
+import { dubFingerprint, dubScript, translationHash } from "../dubs/plan.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
 import { bindRenewalSubmission, ownerClient, stageRenewal, submitRenewal, uploadCandidate, validateCandidate } from "./renewal.mjs";
 
@@ -284,7 +284,7 @@ for (const wrong of ["none", "default captions", "foreign captions", "chapters",
       if (["current dub", "old packaged dub"].includes(wrong)) {
         const timeline = JSON.parse(readFileSync(path.join(fixture.workdir, "timeline.json")));
         const branding = JSON.parse(readFileSync(path.join(fixture.workdir, "checks.json"))).branding;
-        const dub = { ...presentationTimeline(timeline, branding), content_end_frame: 150 + timeline.total_frames, body_total_frames: timeline.total_frames, speech_hash: timeline.speech_hash, translation_hash: translationHash(dubScript(fixture.project.doc, fixture.project.translations.en, "en").doc), branding_hash: branding.hash, format: "m4a" };
+        const dub = { ...presentationTimeline(timeline, branding), content_end_frame: 150 + timeline.total_frames, body_total_frames: timeline.total_frames, speech_hash: timeline.speech_hash, translation_hash: translationHash(dubScript(fixture.project.doc, fixture.project.translations.en, "en").doc), speech_fingerprint: dubFingerprint(fixture.project, "en"), branding_hash: branding.hash, format: "m4a" };
         json(path.join(fixture.workdir, "dubs", "en", "timeline.json"), dub);
         writeFileSync(path.join(fixture.workdir, "dubs", "en.m4a"), "new dub track");
         mkdirSync(path.join(uploadDir, "dubs"));

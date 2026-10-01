@@ -3,7 +3,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
-import { dubScript, translationHash } from "../dubs/plan.mjs";
+import { dubFingerprint, dubScript, translationHash } from "../dubs/plan.mjs";
 import { pinBranding, presentationTimeline, validateBranding } from "./branding.mjs";
 import { parseSrt } from "./captions.mjs";
 import { sandbox } from "./fixtures/load.mjs";
@@ -39,7 +39,7 @@ function writeDub(box, project, locale, timeline) {
   const lines = timeline.lines.map((line) => ({ id: line.id, start_frame: line.start_frame + 5, end_frame: line.start_frame + 5 + Math.ceil(line.audio_samples / 2 / 1600), audio_samples: Math.floor(line.audio_samples / 2), tempo: 1 }));
   const words = translationHash(dubScript(project.doc, project.translations[locale], locale).doc);
   mkdirSync(files.dir, { recursive: true });
-  writeFileSync(files.timeline, JSON.stringify({ locale, format: "m4a", file: `${locale}.m4a`, speech_hash: timeline.speech_hash, translation_hash: words, total_frames: timeline.total_frames, tempo_max: 1.05, windows: [], lines }));
+  writeFileSync(files.timeline, JSON.stringify({ locale, format: "m4a", file: `${locale}.m4a`, speech_hash: timeline.speech_hash, translation_hash: words, speech_fingerprint: dubFingerprint(project, locale), total_frames: timeline.total_frames, tempo_max: 1.05, windows: [], lines }));
   writeFileSync(files.track("m4a"), "not really audio");
 }
 
