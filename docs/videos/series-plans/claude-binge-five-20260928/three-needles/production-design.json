@@ -1,0 +1,3293 @@
+{
+  "schema_version": 1,
+  "slug": "three-needles",
+  "source_binding": {
+    "source_sha256": "7a582b004b969931bbb2678da0c66504b935054574a42b3edd2b30a898a3a8d6"
+  },
+  "delivery_profile_ref": "../../production-20261001/profile.json",
+  "review_status": "design-only-not-render-tested",
+  "visual_direction": {
+    "style": "當代家族懸疑動畫；木匾、舊藥櫃與醫院塑膠光形成材質對照。手指猶豫、呼吸和家屬反應是演技核心；針不以刺入或魔法光束代替表演。",
+    "screen_direction": "守方堂門楣/廣場/藥库/后院床位固定方位；青山7號房、走廊與地下室分色但不用新增地點。先定病床兩侧，再拍手部。",
+    "performance": "陸謹的三次數針應穩而不神化；姜曼先急救再有針的畫面。鶴亭右手寫字有病後不穩，E16之外不替他加完整聲線。",
+    "continuity": "完整12味與初试10味分开；每回三針重算，第四針一生3次E33用1次。札記與日期讓四天監測/十幾天療程可見，實際醫療效果只屬虛構劇情。"
+  },
+  "opening_30s": [
+    {
+      "id": "o01",
+      "in_s": 0,
+      "out_s": 4,
+      "scale": "CU",
+      "camera": "貼匾側邊，跟吊繩繃緊",
+      "action": "舊匾緩緩離門楣、背面只讓陸謹瞥到，不先讀出全文",
+      "characters": [
+        "lujin"
+      ],
+      "props": [
+        "舊匾",
+        "吊繩"
+      ],
+      "dialogue_intent": "無旁白，讓觀眾看清匾被換",
+      "sound": "繩張力、木摩擦",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:418",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:14",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "id": "o02",
+      "in_s": 4,
+      "out_s": 8,
+      "scale": "MS",
+      "camera": "台側視線平行",
+      "action": "仲謙執剪站在典禮台，霍手杖在另一構圖",
+      "characters": [
+        "zhongqian",
+        "huoqingshan"
+      ],
+      "props": [
+        "剪刀",
+        "銀頭杖"
+      ],
+      "dialogue_intent": "仲謙「今天，我們換匾」；不新增司儀",
+      "sound": "剪刀輕開合、廣場風",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:418",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:14",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "id": "o03",
+      "in_s": 8,
+      "out_s": 12,
+      "scale": "CU",
+      "camera": "陸謹眼神→匿名老人膝失力",
+      "action": "老人倒下，陸謹轉身，吊匾仍懸",
+      "characters": [
+        "lujin"
+      ],
+      "props": [
+        "懸匾",
+        "老人衣袖"
+      ],
+      "dialogue_intent": "先呼救/叫救護車意圖，不給老人新台詞",
+      "sound": "人群抽氣與鞋步",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:418",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:14",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "id": "o04",
+      "in_s": 12,
+      "out_s": 16,
+      "scale": "MS",
+      "camera": "低位側跟蹲下",
+      "action": "陸謹越過阻擋的手、蹲到老人旁，急救呼叫已發出",
+      "characters": [
+        "lujin"
+      ],
+      "props": [
+        "針包"
+      ],
+      "dialogue_intent": "「先把脈」短句，保留先呼救",
+      "sound": "衣料、拉開針包",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:418",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:14",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "id": "o05",
+      "in_s": 16,
+      "out_s": 20,
+      "scale": "ECU",
+      "camera": "手與眼分開，固定側光",
+      "action": "確認手腕、準備第一針；不呈現穴位定位教程",
+      "characters": [
+        "lujin"
+      ],
+      "props": [
+        "針包",
+        "第一針"
+      ],
+      "dialogue_intent": "第一個數字清楚；非醫學解說",
+      "sound": "呼吸、金屬極輕聲",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:418",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:14",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "id": "o06",
+      "in_s": 20,
+      "out_s": 24,
+      "scale": "CU",
+      "camera": "上半身與手位置替代刺入",
+      "action": "第二針的動作被袖口/景深遮住；觀眾看陸謹判斷",
+      "characters": [
+        "lujin"
+      ],
+      "props": [
+        "第二針"
+      ],
+      "dialogue_intent": "第二個數字，針與呼吸有間隔",
+      "sound": "廣場聲拉遠，但急救活動仍在",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:418",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:14",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "id": "o07",
+      "in_s": 24,
+      "out_s": 27,
+      "scale": "CU",
+      "camera": "老人胸口衣料與陸謹眼神切接",
+      "action": "第三次動作後老人呼吸回來，陸謹不微笑邀功",
+      "characters": [
+        "lujin"
+      ],
+      "props": [
+        "第三針",
+        "衣料"
+      ],
+      "dialogue_intent": "第三個數字後安靜",
+      "sound": "衣料隨吸氣動，無神蹟合唱",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:418",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:14",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "id": "o08",
+      "in_s": 27,
+      "out_s": 30,
+      "scale": "MS",
+      "camera": "沿吊繩抬回匾與主角",
+      "action": "匾懸半空，陸謹抬眼，儀式被救人打斷",
+      "characters": [
+        "lujin"
+      ],
+      "props": [
+        "懸匾",
+        "針包"
+      ],
+      "dialogue_intent": "以行動留下誰保得住堂的問題，不念全背文",
+      "sound": "繩微響接下場",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:418",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:14",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "id": "lujin",
+      "voice_name": "Schedar",
+      "performance": "台灣國語，低而平穩，句子短，幾乎不提高音量；說「先把脈」時語速放慢，像在對病人也對自己說。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "陸謹：Lù Jǐn。來源注音：ㄌㄨˋ ㄐㄧㄣˇ。台灣口音，聲調候選待聽校。",
+        "ja": "ルー・ジン",
+        "ko": "루진",
+        "en": "Lu Jin; loo jin"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "lujin-base",
+          "episodes": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ],
+          "appearance": "Taiwanese man, 29, lean and wiry, 178 cm, weathered tan skin, calm narrow eyes with a steady unblinking gaze, straight nose, thin lips usually pressed shut; short black hair cut plainly with a few strands over the forehead; wears a faded indigo cotton shirt with sleeves rolled to the forearm, dark gray work trousers, worn brown canvas shoes; always carries a slim rolled oxblood leather needle case with a brass clasp slung across his chest on a strap; very steady hands, a thin white scar across the back of the left hand.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:109",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+          ]
+        },
+        {
+          "id": "lujin-herb-dust",
+          "episodes": [
+            3
+          ],
+          "appearance": "Taiwanese man, 29, lean and wiry, 178 cm, weathered tan skin, calm narrow eyes with a steady unblinking gaze, straight nose, thin lips usually pressed shut; short black hair cut plainly with a few strands over the forehead; wears a faded indigo cotton shirt with sleeves rolled to the forearm, dark gray work trousers, worn brown canvas shoes; always carries a slim rolled oxblood leather needle case with a brass clasp slung across his chest on a strap; very steady hands, a thin white scar across the back of the left hand.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：頭髮/布衫沾藥渣，落下後留碎屑。生效點：藥渣倒下之後。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "藥渣倒下之後",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:61"
+          ]
+        },
+        {
+          "id": "lujin-swollen",
+          "episodes": [
+            13,
+            14,
+            15
+          ],
+          "appearance": "Taiwanese man, 29, lean and wiry, 178 cm, weathered tan skin, calm narrow eyes with a steady unblinking gaze, straight nose, thin lips usually pressed shut; short black hair cut plainly with a few strands over the forehead; wears a faded indigo cotton shirt with sleeves rolled to the forearm, dark gray work trousers, worn brown canvas shoes; always carries a slim rolled oxblood leather needle case with a brass clasp slung across his chest on a strap; very steady hands, a thin white scar across the back of the left hand.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：左臉腫，無傷口。生效點：E13挨拳後。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "E13挨拳後",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:60",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:83"
+          ]
+        },
+        {
+          "id": "lujin-bruise",
+          "episodes": [
+            16,
+            17
+          ],
+          "appearance": "Taiwanese man, 29, lean and wiry, 178 cm, weathered tan skin, calm narrow eyes with a steady unblinking gaze, straight nose, thin lips usually pressed shut; short black hair cut plainly with a few strands over the forehead; wears a faded indigo cotton shirt with sleeves rolled to the forearm, dark gray work trousers, worn brown canvas shoes; always carries a slim rolled oxblood leather needle case with a brass clasp slung across his chest on a strap; very steady hands, a thin white scar across the back of the left hand.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：左顴骨淡青瘀痕，腫已消。生效點：E16起；E18恢復基準。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "E16起；E18恢復基準",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:129",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:153"
+          ]
+        },
+        {
+          "id": "lujin-hospital",
+          "episodes": [
+            34
+          ],
+          "appearance": "Taiwanese man, 29, lean and wiry, 178 cm, weathered tan skin, calm narrow eyes with a steady unblinking gaze, straight nose, thin lips usually pressed shut; short black hair cut plainly with a few strands over the forehead; wears a faded indigo cotton shirt with sleeves rolled to the forearm, dark gray work trousers, worn brown canvas shoes;  very steady hands, a thin white scar across the back of the left hand.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：急診床點滴、針包在枕邊、不背在胸前。生效點：第四針之後。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "第四針之後",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:84"
+          ]
+        },
+        {
+          "id": "lujin-final-pouch",
+          "episodes": [
+            40
+          ],
+          "appearance": "Taiwanese man, 29, lean and wiry, 178 cm, weathered tan skin, calm narrow eyes with a steady unblinking gaze, straight nose, thin lips usually pressed shut; short black hair cut plainly with a few strands over the forehead; wears a faded indigo cotton shirt with sleeves rolled to the forearm, dark gray work trousers, worn brown canvas shoes;  very steady hands, a thin white scar across the back of the left hand.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：末鏡針包已從肩取下放膝，只露角；上身無背帶。生效點：結尾雙手鏡之前。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "結尾雙手鏡之前",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:222"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yiwei",
+      "voice_name": "Kore",
+      "performance": "台灣國語，直接、利落，語尾不拖；哼搖籃曲時放輕放慢，帶一點氣音。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "沈亦微：Shěn Yìwēi。來源注音：沈是姓，讀ㄕㄣˇ，不讀ㄔㄣˊ。台灣口音，聲調候選待聽校。",
+        "ja": "シェン・イーウェイ",
+        "ko": "선이웨이",
+        "en": "Shen Yiwei; shun ee-way"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "yiwei-base",
+          "episodes": [
+            1,
+            2,
+            4,
+            5,
+            6,
+            9,
+            15,
+            16,
+            17,
+            18,
+            23,
+            24,
+            25,
+            26,
+            36,
+            38,
+            40
+          ],
+          "appearance": "Taiwanese woman, 26, slim, 165 cm, fair skin, alert almond eyes, straight brows, small firm mouth; black hair in a low practical ponytail tied with a plain black band; wears a short white pharmacist coat over a dark green cotton blouse and black slacks, flat black shoes; sleeves pushed up, an ink smudge on the right index finger.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:131",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+          ]
+        },
+        {
+          "id": "yiwei-scale-given",
+          "episodes": [
+            26,
+            36,
+            38,
+            40
+          ],
+          "appearance": "Taiwanese woman, 26, slim, 165 cm, fair skin, alert almond eyes, straight brows, small firm mouth; black hair in a low practical ponytail tied with a plain black band; wears a short white pharmacist coat over a dark green cotton blouse and black slacks, flat black shoes; sleeves pushed up, an ink smudge on the right index finger.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：腰間無黃銅秤；E26先從腰上解下交陸謹。生效點：交出那一拍後。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "交出那一拍後",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-3.mjs:129",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:130"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "heting",
+      "voice_name": "Enceladus",
+      "performance": "台灣國語，氣音很重、每個字都費力，中風後只在第 16 集開口說幾句；其餘全靠手指在掌心寫字，由旁白讀出。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "沈鶴亭：Shěn Hètíng。來源注音：沈讀ㄕㄣˇ。台灣口音，聲調候選待聽校。",
+        "ja": "シェン・ホーティン",
+        "ko": "선허팅",
+        "en": "Shen Heting; shun huh-ting"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "heting-base",
+          "episodes": [
+            2,
+            9,
+            15,
+            16,
+            26,
+            27,
+            37,
+            40
+          ],
+          "appearance": "Taiwanese elderly man, 73, thin and frail stroke survivor, always seated or reclining and never standing, the left side of the face slightly slack, deep-set watery eyes that stay sharp; sparse white hair combed back, white stubble; wears a gray mandarin-collar cotton jacket over a white undershirt, a dark blue wool blanket over the knees; the right hand thin with long fingers, always resting palm-up; a pair of old round reading glasses folded on the blanket.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:151",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+          ]
+        },
+        {
+          "id": "heting-bed",
+          "episodes": [
+            2,
+            9,
+            15,
+            16,
+            26,
+            27
+          ],
+          "appearance": "Taiwanese elderly man, 73, thin and frail stroke survivor, always seated or reclining and never standing, the left side of the face slightly slack, deep-set watery eyes that stay sharp; sparse white hair combed back, white stubble; wears a gray mandarin-collar cotton jacket over a white undershirt, a dark blue wool blanket over the knees; the right hand thin with long fingers, always resting palm-up; a pair of old round reading glasses folded on the blanket.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：半躺床，深藍毯，右手顫/短暫穩定，左手不替換右手字。生效點：依當次針前後分拍。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "依當次針前後分拍",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:38",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:200"
+          ]
+        },
+        {
+          "id": "heting-chair",
+          "episodes": [
+            37,
+            40
+          ],
+          "appearance": "Taiwanese elderly man, 73, thin and frail stroke survivor, always seated or reclining and never standing, the left side of the face slightly slack, deep-set watery eyes that stay sharp; sparse white hair combed back, white stubble; wears a gray mandarin-collar cotton jacket over a white undershirt, a dark blue wool blanket over the knees; the right hand thin with long fingers, always resting palm-up; a pair of old round reading glasses folded on the blanket.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：坐輪椅蓋深藍毯，以右手掌心/空中寫字。生效點：從床切輪椅後。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "從床切輪椅後",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:153",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:222"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zhongqian",
+      "voice_name": "Fenrir",
+      "performance": "台灣國語，語速快、容易拔高，理虧時會突然壓低變小聲；喊「我沒有」時聲音會裂。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "沈仲謙：Shěn Zhòngqiān。來源注音：沈讀ㄕㄣˇ。台灣口音，聲調候選待聽校。",
+        "ja": "シェン・ジョンチエン",
+        "ko": "선중첸",
+        "en": "Shen Zhongqian; shun jong-chyen"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "zhongqian-base",
+          "episodes": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            9,
+            10,
+            11,
+            12,
+            14,
+            16,
+            17,
+            25,
+            26,
+            35
+          ],
+          "appearance": "Taiwanese man, 34, medium build gone soft, 175 cm, pale face, anxious eyes that avoid contact, neat eyebrows, clean-shaven; black hair slicked back with gel; wears a slim navy business suit slightly too tight, a white shirt, a red silk tie with a gold tie clip, polished black leather shoes; a gold watch on the left wrist that he keeps checking.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:172",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+          ]
+        },
+        {
+          "id": "zhongqian-no-badge",
+          "episodes": [
+            16,
+            17,
+            25,
+            26,
+            35
+          ],
+          "appearance": "Taiwanese man, 34, medium build gone soft, 175 cm, pale face, anxious eyes that avoid contact, neat eyebrows, clean-shaven; black hair slicked back with gel; wears a slim navy business suit slightly too tight, a white shirt, a red silk tie with a gold tie clip, polished black leather shoes; a gold watch on the left wrist that he keeps checking.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：總經理綠松枝證已放水缸沿，胸前無掛繩。生效點：E16摘證後。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "E16摘證後",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:129",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:153"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "huoqingshan",
+      "voice_name": "Algenib",
+      "performance": "台灣國語，低沉帶砂，慢，每句話結尾都像已經算好；從不喊，越生氣越輕。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "霍青山：Huò Qīngshān。來源注音：未填，需補完整人名試聽。台灣口音，聲調候選待聽校。",
+        "ja": "フオ・チンシャン",
+        "ko": "훠칭산",
+        "en": "Huo Qingshan; hwoh ching-shahn"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "huoqingshan-base",
+          "episodes": [
+            1,
+            6,
+            12,
+            14,
+            15,
+            19,
+            20,
+            21,
+            22,
+            27,
+            28,
+            30,
+            31,
+            32,
+            36,
+            39
+          ],
+          "appearance": "Taiwanese man, 56, tall and broad-shouldered, 182 cm, silver-gray hair swept back, heavy brows, slow confident eyes, a thin controlled smile; wears a charcoal three-piece suit, a dark green tie, a small silver pine-branch pin on the lapel.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:193",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+          ]
+        },
+        {
+          "id": "huo-chair",
+          "episodes": [
+            19,
+            20,
+            21,
+            22,
+            27,
+            28
+          ],
+          "appearance": "Taiwanese man, 56, tall and broad-shouldered, 182 cm, silver-gray hair swept back, heavy brows, slow confident eyes, a thin controlled smile; wears a charcoal three-piece suit, a dark green tie, a small silver pine-branch pin on the lapel.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：輪椅灰毯蓋膝，无銀杖。生效點：E28服藥前。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "E28服藥前",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:200",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:223"
+          ]
+        },
+        {
+          "id": "huo-walking",
+          "episodes": [
+            28,
+            30
+          ],
+          "appearance": "Taiwanese man, 56, tall and broad-shouldered, 182 cm, silver-gray hair swept back, heavy brows, slow confident eyes, a thin controlled smile; wears a charcoal three-piece suit, a dark green tie, a small silver pine-branch pin on the lapel.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：服藥隔天站立行走，無手杖或輪椅。生效點：E28隔天起至E30倒下前。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "E28隔天起至E30倒下前",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-3.mjs:175",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-3.mjs:221"
+          ]
+        },
+        {
+          "id": "huo-bed",
+          "episodes": [
+            31,
+            32,
+            36,
+            39
+          ],
+          "appearance": "Taiwanese man, 56, tall and broad-shouldered, 182 cm, silver-gray hair swept back, heavy brows, slow confident eyes, a thin controlled smile; wears a charcoal three-piece suit, a dark green tie, a small silver pine-branch pin on the lapel.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：先擔架後病床，灰毯到肩蓋西裝/領帶/松枝胸針，只露臉手。生效點：E31倒下後。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "E31倒下後",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:14",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:38"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "weicheng",
+      "voice_name": "Algieba",
+      "performance": "台灣國語，圓滑、輕、有禮，每句都像在念合約；反水後聲音變乾、變快。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "韋承：Wéi Chéng。來源注音：ㄨㄟˊ ㄔㄥˊ。台灣口音，聲調候選待聽校。",
+        "ja": "ウェイ・チョン",
+        "ko": "웨이청",
+        "en": "Wei Cheng; way chung"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "weicheng-base",
+          "episodes": [
+            8,
+            11,
+            22,
+            24,
+            29,
+            32
+          ],
+          "appearance": "Taiwanese man, 39, slim, 176 cm, sharp jaw, watchful eyes behind thin rimless glasses, thin lips; short black hair neatly parted; wears a plain black suit without a tie, a white shirt buttoned to the collar, black leather gloves; a silver ring on the right little finger.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:223",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+          ]
+        },
+        {
+          "id": "wei-bare-hands",
+          "episodes": [
+            8,
+            22,
+            32
+          ],
+          "appearance": "Taiwanese man, 39, slim, 176 cm, sharp jaw, watchful eyes behind thin rimless glasses, thin lips; short black hair neatly parted; wears a plain black suit without a tie, a white shirt buttoned to the collar, bare hands without gloves; a silver ring on the right little finger.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：手套已脫，手皮裸露，手套在手或帳上依拍點。生效點：E8遞約前/E22遞信時到戴回/E32脫下放帳。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "E8遞約前/E22遞信時到戴回/E32脫下放帳",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:176",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-3.mjs:37"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zhoubo",
+      "voice_name": "Orus",
+      "performance": "台灣國語，粗、硬、大聲，帶一點台語腔的咬字；生氣時會拍桌子再說話。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "周大成：Zhōu Dàchéng；周伯 Zhōu Bó。來源注音：未填，需補完整人名試聽。台灣口音，聲調候選待聽校。",
+        "ja": "ジョウ・ダーチョン／ジョウおじさん",
+        "ko": "저우다청 / 저우 아저씨",
+        "en": "Zhou Dacheng; joh dah-chung; Uncle Zhou"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "zhoubo-base",
+          "episodes": [
+            4,
+            5,
+            10,
+            11,
+            12,
+            14,
+            17,
+            23,
+            24,
+            25,
+            27,
+            29,
+            32,
+            35,
+            36,
+            37,
+            38
+          ],
+          "appearance": "Taiwanese man, 61, stocky and strong, 170 cm, sun-darkened square face, bushy gray eyebrows, a stubborn set jaw; gray hair cropped short; wears a dark brown canvas apron over a white short-sleeve shirt with a pack of throat lozenges in the pocket, black trousers, black cloth shoes; a bunch of brass storeroom keys on a leather cord at the belt; thick forearms, fingernails stained brown by herbs.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:242",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jiangman",
+      "voice_name": "Pulcherrima",
+      "performance": "台灣國語，快、清楚、帶命令句；說「數據說話」時放慢，一字一頓。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "姜曼：Jiāng Màn。來源注音：未填，需補完整人名試聽。台灣口音，聲調候選待聽校。",
+        "ja": "ジアン・マン",
+        "ko": "장만",
+        "en": "Jiang Man; jyahng mahn"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "jiangman-base",
+          "episodes": [
+            3,
+            7,
+            8,
+            13,
+            18,
+            21,
+            22,
+            28,
+            30,
+            31,
+            33,
+            34,
+            35
+          ],
+          "appearance": "Taiwanese woman, 41, athletic, 168 cm, tired but sharp eyes, high cheekbones, no makeup; black hair with a few gray strands cut in a short bob tucked behind the ears; wears a white doctor coat over dark blue scrubs, a stethoscope around the neck, three pens of different colors (red, blue, black) in the breast pocket, an ID badge on a clip, white sneakers; a black digital sports watch on the left wrist.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:261",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+          ]
+        },
+        {
+          "id": "jiangman-one",
+          "episodes": [
+            33,
+            34
+          ],
+          "appearance": "Taiwanese woman, 41, athletic, 168 cm, tired but sharp eyes, high cheekbones, no makeup; black hair with a few gray strands cut in a short bob tucked behind the ears; wears a white doctor coat over dark blue scrubs, a stethoscope around the neck, three pens of different colors (red, blue, black) in the breast pocket, an ID badge on a clip, white sneakers; a black digital sports watch on the left wrist.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：手背寫一字，其他服裝/身份不變。生效點：數第四針使用次數後。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "數第四針使用次數後",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:61",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:84"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "guodahai",
+      "voice_name": "Charon",
+      "performance": "台灣國語，沙啞、大聲、罵到破音；一到療養院走廊就變成幾乎聽不見的低語。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "郭大海：Guō Dàhǎi。來源注音：未填，需補完整人名試聽。台灣口音，聲調候選待聽校。",
+        "ja": "グオ・ダーハイ",
+        "ko": "궈다하이",
+        "en": "Guo Dahai; gwoh dah-high"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "guodahai-base",
+          "episodes": [
+            3,
+            7,
+            13,
+            19,
+            20,
+            29,
+            33,
+            34,
+            39,
+            40
+          ],
+          "appearance": "Taiwanese man, 51, gaunt with a stooped back, 172 cm, hollow cheeks, red-rimmed eyes, gray stubble; graying hair uncombed; wears a faded brown windbreaker over a checked shirt, loose gray trousers, worn sandals with socks.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:280",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sisi",
+      "voice_name": "Leda",
+      "performance": "台灣國語，很輕、很慢，像剛學會說話；第 34 集第一個字是「爸」。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "郭思思：Guō Sīsī。來源注音：未填，需補完整人名試聽。台灣口音，聲調候選待聽校。",
+        "ja": "グオ・スースー",
+        "ko": "궈쓰쓰",
+        "en": "Guo Sisi; gwoh suh-suh"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "sisi-base",
+          "episodes": [
+            20,
+            21,
+            33,
+            34,
+            39
+          ],
+          "appearance": "Taiwanese young woman, 19, very thin and frail with the wasted look of a long coma, pale nearly translucent skin, long straight black hair, faint lashes, a small mole under the left eye; wears a white hospital gown with pale blue dots and a white hospital wristband on the left wrist.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:299",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+          ]
+        },
+        {
+          "id": "sisi-coma",
+          "episodes": [
+            20,
+            21,
+            33
+          ],
+          "appearance": "Taiwanese young woman, 19, very thin and frail with the wasted look of a long coma, pale nearly translucent skin, long straight black hair, faint lashes, a small mole under the left eye; wears a white hospital gown with pale blue dots and a white hospital wristband on the left wrist.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：病床昏迷，散髮枕上，腕帶七年前入院日期。生效點：E34睜眼前。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "E34睜眼前",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:223",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-3.mjs:14"
+          ]
+        },
+        {
+          "id": "sisi-wakes",
+          "episodes": [
+            34
+          ],
+          "appearance": "Taiwanese young woman, 19, very thin and frail with the wasted look of a long coma, pale nearly translucent skin, long straight black hair, faint lashes, a small mole under the left eye; wears a white hospital gown with pale blue dots and a white hospital wristband on the left wrist.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：急診床睜眼，微動唇，無早期流利台詞。生效點：首次爸。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "首次爸",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:84"
+          ]
+        },
+        {
+          "id": "sisi-yellow",
+          "episodes": [
+            39
+          ],
+          "appearance": "Taiwanese young woman, 19, very thin and frail with the wasted look of a long coma, pale nearly translucent skin, long straight black hair, faint lashes, a small mole under the left eye; wears a white hospital gown with pale blue dots and a white hospital wristband on the left wrist.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：病人服外淺黃開襟外套，扶門雙手端溫水。生效點：急診門口結尾。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "急診門口結尾",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:199"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "adou",
+      "voice_name": "Achird",
+      "performance": "台灣國語，十二歲男孩的聲音：音調放高、放輕、放軟，句子短，常常喘一下再說完；叫陸謹「針叔叔」。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "杜小豆：Dù Xiǎodòu；阿豆 Ā Dòu。來源注音：未填，需補完整人名試聽。台灣口音，聲調候選待聽校。",
+        "ja": "ドゥー・シャオドウ／アードウ",
+        "ko": "두샤오더우 / 아더우",
+        "en": "Du Xiaodou; doo shyaow-doh; A-dou"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "adou-base",
+          "episodes": [
+            5,
+            7,
+            8,
+            18,
+            38
+          ],
+          "appearance": "Taiwanese boy, 12, small and thin for his age, 140 cm, pale round face, big dark eyes, chapped lips; short black hair with a cowlick; wears an oversized light blue hoodie, gray shorts, white socks, blue sneakers with velcro straps; a red string bracelet on the left wrist.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:318",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+          ]
+        }
+      ],
+      "video_constraints": {
+        "min_visual_age_years": 12,
+        "veo_lite_i2v": "not-verified-under-18"
+      }
+    },
+    {
+      "id": "xiweng",
+      "voice_name": "Sadaltager",
+      "performance": "台灣國語，蒼老、慢、有笑意；信裡的話由旁白讀，本人第 37 集才開口。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "谿翁：Xī Wēng。來源注音：谿讀ㄒㄧ，同溪；翁ㄨㄥ。台灣口音，聲調候選待聽校。",
+        "ja": "シー・ウォン",
+        "ko": "시웡",
+        "en": "Xi Weng; shee wung"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "xiweng-base",
+          "episodes": [
+            37
+          ],
+          "appearance": "Taiwanese elderly man, 76, tall and upright for his age, 178 cm, deeply lined brown face, bright clear eyes, long white beard, white hair tied back with a hemp cord; wears a rough gray hemp robe over black trousers, straw sandals, a bamboo hat hanging on his back; carries a bamboo staff; a thin jade ring on the left thumb.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:337",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+          ]
+        }
+      ]
+    }
+  ],
+  "prop_rules": [
+    {
+      "id": "needles-count",
+      "identity": "普通一次診療≤3；第四針不同機制",
+      "states": "E21針懸被阻未使用；E31一針；E33特殊1/3；E39普通3停",
+      "ownership": "陸謹原針包全季；E37另接谿翁舊黑裂包",
+      "insert_rules": "數字依當次處置；不拍刺入手腕，不混另一作品借命符術",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "id": "board",
+      "identity": "守方堂匾與背刻方在人在堂歸持方者",
+      "states": "1懸→9地→15押→19廊→25還→30展台→31堂→38待掛→40兩人掛",
+      "ownership": "重量需要兩個人與吊繩，不憑空輕飄",
+      "insert_rules": "背字核准字形後合成，E25才全文揭",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "id": "song-herbs",
+      "identity": "10段零散歌詞、末2段、12味秩序",
+      "states": "18前10味主角試；23末2味；24完整試；28過四天；36公開",
+      "ownership": "霧藤12帶一包26用完；37再帶新包",
+      "insert_rules": "歌由原創旋律/演唱專項製作，不直接用一般TTS拼唱",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "id": "letters-palm",
+      "identity": "2封谿翁信、鶴亭右手字、姜曼手背一",
+      "states": "12第四不可用；21一生三次代價；37仇人禁令第一次當面",
+      "ownership": "鶴亭走/霍/藥/川/去/歌/兄/留按集；不讓所有台詞变他的声",
+      "insert_rules": "E5 亦微翻出的死亡證明影本留在共用桌面供陸謹看，E13 姜曼另外交來查得的醫师紀錄，兩份紙不合成同一件。E11 以陸謹收起現場信封的小插鏡接 carry，無新持有人。E21 長廊開信前，先拍他從既有針包取出未拆的第二封信，再拆封看到代價；信何日寄達不另編，鏡頭不可提早露出內文，姜曼也不在先前按手時預知信內容。",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "id": "sisi-cup",
+      "identity": "杯身思思、舊布兔、7號病房腕帶",
+      "states": "13杯現→19溫水→29兔落地→34醒→39端杯→40接水",
+      "ownership": "E40思思不出聲不露臉；郭接杯鏡只郭/陸",
+      "insert_rules": "不把7年前日期讀成年齡；她19歲非兒童",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "id": "evidence",
+      "identity": "病例/死亡證/藥帳/鑰匙/錄音",
+      "states": "32韋帳→34警方；38封存副件/簽名",
+      "ownership": "按來源 E32 carry 保留帳與鑰匙在原針包：將未限定大小的「一本帳」設計成普通薄軟口袋小冊，寬度小於展開針包內幅；先拍針套封好、薄冊平放包入皮革餘幅、鑰匙置於不接觸針尖的內折，再扣合原黃銅扣，外形仍是窄捲。E33 開門先取鑰匙、取針前取出薄冊放乾淨檯邊，E34 證物同路交出。不新增大袋、硬殼厚帳或超自然收納；lookdev 須按實際資產尺寸驗證能扣合，未驗證不能宣稱物理動畫已過。",
+      "insert_rules": "證據交接以手/袋/桌面分鏡而非多件一次消失",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    }
+  ],
+  "episodes": [
+    {
+      "episode": 1,
+      "title": "他還沒死",
+      "characters": [
+        "lujin",
+        "zhongqian",
+        "yiwei",
+        "huoqingshan"
+      ],
+      "locations": [
+        "plaza"
+      ],
+      "hero_shot": {
+        "action": "懸匾→老人倒→呼救→三針後呼吸",
+        "camera": "绳低位/病人側面/反應分镜",
+        "sound": "繩張力与三次數針"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：救人和换匾空间混",
+          "solution": "建立舞台与地面距离；先急救呼叫；針不刺入特寫"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "yiwei-base",
+        "zhongqian-base",
+        "huoqingshan-base"
+      ],
+      "prop_checks": [
+        "匾",
+        "剪刀",
+        "針包"
+      ],
+      "voice_notes": [
+        "繩張力与三次數針",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集匾、剪刀、針包涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:14",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 2,
+      "title": "父親",
+      "characters": [
+        "lujin",
+        "zhongqian",
+        "yiwei",
+        "heting"
+      ],
+      "locations": [
+        "hall",
+        "courtyard"
+      ],
+      "hero_shot": {
+        "action": "床前握右手→走字→大門遠聲",
+        "camera": "掌心俯視接父女反應",
+        "sound": "衣毯、笔划皮肤极轻"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：掌字难读/鶴亭提前說話",
+          "solution": "字图与手動畫对齐；旁白读不配老人聲"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "yiwei-base",
+        "heting-base",
+        "heting-bed",
+        "zhongqian-base"
+      ],
+      "prop_checks": [
+        "床",
+        "藍毯",
+        "右手字"
+      ],
+      "voice_notes": [
+        "衣毯、笔划皮肤极轻",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集床、藍毯、右手字涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:38",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 3,
+      "title": "郭大海",
+      "characters": [
+        "lujin",
+        "guodahai",
+        "jiangman",
+        "zhongqian"
+      ],
+      "locations": [
+        "hall",
+        "plaza"
+      ],
+      "hero_shot": {
+        "action": "藥渣潑身→五歲孩子倒→姜曼處置",
+        "camera": "動作侧背遮挡后医护反应",
+        "sound": "抽氣、呼叫；霍只手杖不加脸声"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：童病人被認成阿豆",
+          "solution": "独立匿名5岁造型无台词；先姜曼急救"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "無角色 ID 的 5 歲兒童不能只靠 character gate 檢出",
+          "solution": "本集 clips profile 保守拒絕付費；目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "lujin-herb-dust",
+        "zhongqian-base",
+        "jiangman-base",
+        "guodahai-base"
+      ],
+      "prop_checks": [
+        "藥渣",
+        "無名男孩",
+        "銀杖窗影"
+      ],
+      "voice_notes": [
+        "抽氣、呼叫；霍只手杖不加脸声",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集藥渣、無名男孩、銀杖窗影涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:61",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:67"
+      ],
+      "video_constraints": {
+        "veo_lite_i2v": "unverified-minor-on-screen",
+        "reason": "packaging.mjs:67 明定 E3 男孩為五歲、不是阿豆；chapter-1.mjs:61 起有病童救治視覺。無 cast ID 仍是未成年可見人物，不得由匿名背景繞過年齡檢查。 目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。"
+      }
+    },
+    {
+      "episode": 4,
+      "title": "搖籃曲",
+      "characters": [
+        "lujin",
+        "yiwei",
+        "zhoubo",
+        "zhongqian"
+      ],
+      "locations": [
+        "storeroom",
+        "hall"
+      ],
+      "hero_shot": {
+        "action": "歌旋律→黃銅秤→缺的藥名",
+        "camera": "秤与歌者嘴型分拍",
+        "sound": "乾聲歌入場后才轻配乐"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：TTS假唱與配方误教學",
+          "solution": "原创录唱后做口型；不展示可照做剂量"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "yiwei-base",
+        "zhongqian-base",
+        "zhoubo-base"
+      ],
+      "prop_checks": [
+        "秤",
+        "歌",
+        "合约"
+      ],
+      "voice_notes": [
+        "乾聲歌入場后才轻配乐",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集秤、歌、合约涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:84",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 5,
+      "title": "換過的藥",
+      "characters": [
+        "lujin",
+        "zhoubo",
+        "adou",
+        "yiwei"
+      ],
+      "locations": [
+        "hall",
+        "storeroom"
+      ],
+      "hero_shot": {
+        "action": "假藥抽屜→阿豆發作→死亡證",
+        "camera": "抽屉纹理/监测器/纸三镜",
+        "sound": "仪器声短，外脚步另层"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：孩子痛苦与证据同时过量",
+          "solution": "只手抖唇色仪表；救护先行，不露呕吐"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "杜小豆／阿豆可見年齡 12 歲，當前 Lite I2V 未驗證支援",
+          "solution": "目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。"
+        },
+        {
+          "risk": "紙件持有與資訊時點",
+          "solution": "E5 亦微翻出的死亡證明影本留在共用桌面供陸謹看，E13 姜曼另外交來查得的醫师紀錄，兩份紙不合成同一件。E11 以陸謹收起現場信封的小插鏡接 carry，無新持有人。E21 長廊開信前，先拍他從既有針包取出未拆的第二封信，再拆封看到代價；信何日寄達不另編，鏡頭不可提早露出內文，姜曼也不在先前按手時預知信內容。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "yiwei-base",
+        "zhoubo-base",
+        "adou-base"
+      ],
+      "prop_checks": [
+        "真假药",
+        "死亡證",
+        "窗外泥鞋"
+      ],
+      "voice_notes": [
+        "仪器声短，外脚步另层",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集真假药、死亡證、窗外泥鞋涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:107",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:321",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:323"
+      ]
+    },
+    {
+      "episode": 6,
+      "title": "兩億",
+      "characters": [
+        "lujin",
+        "zhongqian",
+        "huoqingshan",
+        "yiwei"
+      ],
+      "locations": [
+        "hall"
+      ],
+      "hero_shot": {
+        "action": "兩億借據貼玻璃→霍收手",
+        "camera": "玻璃两侧反打",
+        "sound": "纸贴玻璃声，霍慢而低"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：巨款字亂生成",
+          "solution": "数字正式字图；霍手缩动作独立"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "yiwei-base",
+        "zhongqian-base",
+        "huoqingshan-base"
+      ],
+      "prop_checks": [
+        "借據",
+        "銀杖"
+      ],
+      "voice_notes": [
+        "纸贴玻璃声，霍慢而低",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集借據、銀杖涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:130",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 7,
+      "title": "門口的人",
+      "characters": [
+        "lujin",
+        "guodahai",
+        "jiangman",
+        "adou"
+      ],
+      "locations": [
+        "plaza",
+        "er"
+      ],
+      "hero_shot": {
+        "action": "廣場等人→阿豆警急→銀杖窗影",
+        "camera": "人群遠景后车窗局部",
+        "sound": "急诊警音起于转场，郭大声"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：三个地点节奏混",
+          "solution": "以报警声过桥，不给霍尚未计划的脸镜"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "杜小豆／阿豆可見年齡 12 歲，當前 Lite I2V 未驗證支援",
+          "solution": "目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "jiangman-base",
+        "guodahai-base",
+        "adou-base"
+      ],
+      "prop_checks": [
+        "紙板牌",
+        "車窗",
+        "急診"
+      ],
+      "voice_notes": [
+        "急诊警音起于转场，郭大声",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集紙板牌、車窗、急診涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:153",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:321",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:323"
+      ]
+    },
+    {
+      "episode": 8,
+      "title": "急診",
+      "characters": [
+        "lujin",
+        "jiangman",
+        "adou",
+        "weicheng"
+      ],
+      "locations": [
+        "er"
+      ],
+      "hero_shot": {
+        "action": "常規急救→數字穩→500萬約",
+        "camera": "急救侧背、监测、合同手",
+        "sound": "警报逐停，韋礼貌声不庆功"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：針代替所有醫護/手套忽有忽无",
+          "solution": "先医护有效处置；韋遞約前明确脱套"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "杜小豆／阿豆可見年齡 12 歲，當前 Lite I2V 未驗證支援",
+          "solution": "目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "weicheng-base",
+        "wei-bare-hands",
+        "jiangman-base",
+        "adou-base"
+      ],
+      "prop_checks": [
+        "合约",
+        "黑手套",
+        "监测器"
+      ],
+      "voice_notes": [
+        "警报逐停，韋礼貌声不庆功",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集合约、黑手套、监测器涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:176",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:321",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:323"
+      ]
+    },
+    {
+      "episode": 9,
+      "title": "走",
+      "characters": [
+        "lujin",
+        "heting",
+        "yiwei",
+        "zhongqian"
+      ],
+      "locations": [
+        "courtyard",
+        "hall"
+      ],
+      "hero_shot": {
+        "action": "撕合同→針包襯紙→掌走霍",
+        "camera": "纸面与掌心分景",
+        "sound": "撕纸后静，旁白读掌字"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：多張紙身分混",
+          "solution": "合同/旧襯纸纹理分开，老父只右手"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "yiwei-base",
+        "heting-base",
+        "heting-bed",
+        "zhongqian-base"
+      ],
+      "prop_checks": [
+        "撕約",
+        "匾倒地",
+        "針包"
+      ],
+      "voice_notes": [
+        "撕纸后静，旁白读掌字",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集撕約、匾倒地、針包涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:200",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 10,
+      "title": "內鬼",
+      "characters": [
+        "lujin",
+        "zhoubo",
+        "zhongqian"
+      ],
+      "locations": [
+        "storeroom"
+      ],
+      "hero_shot": {
+        "action": "設誘餌藥櫃→抓腕→紅封信落",
+        "camera": "窄室机位先示出口",
+        "sound": "抽屉、信落地，无学徒TTS"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：抓腕动作扭曲/新增学徒声",
+          "solution": "抓前/接觸/鬆手三鏡，学徒仅写/点头"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "zhongqian-base",
+        "zhoubo-base"
+      ],
+      "prop_checks": [
+        "藥櫃",
+        "紅封信"
+      ],
+      "voice_notes": [
+        "抽屉、信落地，无学徒TTS",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集藥櫃、紅封信涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:223",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 11,
+      "title": "印章",
+      "characters": [
+        "lujin",
+        "weicheng",
+        "zhongqian",
+        "zhoubo"
+      ],
+      "locations": [
+        "hall"
+      ],
+      "hero_shot": {
+        "action": "真假罐比聞→字條→空學徒房",
+        "camera": "罐宏观后空门框",
+        "sound": "罐蓋/空房风声"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：信从地到桌省略",
+          "solution": "依已明定持有人加拾起／放桌小插鏡，不改資訊揭曉時點"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "紙件持有與資訊時點",
+          "solution": "E5 亦微翻出的死亡證明影本留在共用桌面供陸謹看，E13 姜曼另外交來查得的醫师紀錄，兩份紙不合成同一件。E11 以陸謹收起現場信封的小插鏡接 carry，無新持有人。E21 長廊開信前，先拍他從既有針包取出未拆的第二封信，再拆封看到代價；信何日寄達不另編，鏡頭不可提早露出內文，姜曼也不在先前按手時預知信內容。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "zhongqian-base",
+        "weicheng-base",
+        "zhoubo-base"
+      ],
+      "prop_checks": [
+        "真伪药罐",
+        "紅封信"
+      ],
+      "voice_notes": [
+        "罐蓋/空房风声",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集真伪药罐、紅封信涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:14",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 12,
+      "title": "谿翁的信",
+      "characters": [
+        "lujin",
+        "zhoubo",
+        "huoqingshan",
+        "zhongqian"
+      ],
+      "locations": [
+        "hall",
+        "yunling"
+      ],
+      "hero_shot": {
+        "action": "霧藤包到→第四不可用→銅扣",
+        "camera": "桌面拆包三鏡",
+        "sound": "信由旁白，谿翁不先开口"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：本集信写出未来全部禁令",
+          "solution": "只不可用；一生3次到21，仇人禁令到37"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "zhongqian-base",
+        "huoqingshan-base",
+        "zhoubo-base"
+      ],
+      "prop_checks": [
+        "第一包霧藤",
+        "第一信",
+        "針包扣"
+      ],
+      "voice_notes": [
+        "信由旁白，谿翁不先开口",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集第一包霧藤、第一信、針包扣涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:37",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 13,
+      "title": "簽名",
+      "characters": [
+        "lujin",
+        "jiangman",
+        "guodahai"
+      ],
+      "locations": [
+        "er",
+        "plaza"
+      ],
+      "hero_shot": {
+        "action": "死亡證→拳揮/臉偏→思思杯",
+        "camera": "侧面遮住接触，后杯近景",
+        "sound": "衣料冲击非肉声，郭尾音断"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：击打细节与提前揭女儿活",
+          "solution": "只举拳/偏脸，郭求别问不说活着"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "紙件持有與資訊時點",
+          "solution": "E5 亦微翻出的死亡證明影本留在共用桌面供陸謹看，E13 姜曼另外交來查得的醫师紀錄，兩份紙不合成同一件。E11 以陸謹收起現場信封的小插鏡接 carry，無新持有人。E21 長廊開信前，先拍他從既有針包取出未拆的第二封信，再拆封看到代價；信何日寄達不另編，鏡頭不可提早露出內文，姜曼也不在先前按手時預知信內容。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "lujin-swollen",
+        "jiangman-base",
+        "guodahai-base"
+      ],
+      "prop_checks": [
+        "证",
+        "纸牌",
+        "思思杯"
+      ],
+      "voice_notes": [
+        "衣料冲击非肉声，郭尾音断",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集证、纸牌、思思杯涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:60",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 14,
+      "title": "夜班",
+      "characters": [
+        "lujin",
+        "zhoubo",
+        "zhongqian",
+        "huoqingshan"
+      ],
+      "locations": [
+        "storeroom",
+        "hall"
+      ],
+      "hero_shot": {
+        "action": "學徒寫字→錄音耳機→印章",
+        "camera": "同桌资料分件近景",
+        "sound": "必要转述由现有讲者，耳机窄频"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：畫外錄音增韋聲或新嘴",
+          "solution": "按当集cast核录音内容；不可新配未授权角色"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "lujin-swollen",
+        "zhongqian-base",
+        "huoqingshan-base",
+        "zhoubo-base"
+      ],
+      "prop_checks": [
+        "學徒紗布",
+        "耳機",
+        "印章"
+      ],
+      "voice_notes": [
+        "必要转述由现有讲者，耳机窄频",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集學徒紗布、耳機、印章涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:83",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 15,
+      "title": "借據",
+      "characters": [
+        "lujin",
+        "huoqingshan",
+        "heting",
+        "yiwei"
+      ],
+      "locations": [
+        "hall",
+        "courtyard"
+      ],
+      "hero_shot": {
+        "action": "匾上車→錯藥掌霍藥→叫救护",
+        "camera": "匾搬运远景后卧房",
+        "sound": "车引擎与呼救分层"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：父親急病只等針",
+          "solution": "先求援明确，药送验有袋；鶴亭此集不出声"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "lujin-swollen",
+        "yiwei-base",
+        "heting-base",
+        "heting-bed",
+        "huoqingshan-base"
+      ],
+      "prop_checks": [
+        "抵押匾",
+        "被換藥",
+        "手機"
+      ],
+      "voice_notes": [
+        "车引擎与呼救分层",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集抵押匾、被換藥、手機涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:106",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 16,
+      "title": "第一句話",
+      "characters": [
+        "lujin",
+        "heting",
+        "yiwei",
+        "zhongqian"
+      ],
+      "locations": [
+        "courtyard"
+      ],
+      "hero_shot": {
+        "action": "醫護留單→三針→短句→摘證",
+        "camera": "注意单先，床側右手，水缸",
+        "sound": "喘息留间隔，无长句硬赶"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：固定声线变全季能说",
+          "solution": "仅此集短断句，摘证后胸前空；手写由旁白"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "lujin-bruise",
+        "yiwei-base",
+        "heting-base",
+        "heting-bed",
+        "zhongqian-base",
+        "zhongqian-no-badge"
+      ],
+      "prop_checks": [
+        "注意事项",
+        "右掌川",
+        "经理证"
+      ],
+      "voice_notes": [
+        "喘息留间隔，无长句硬赶",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集注意事项、右掌川、经理证涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:129",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 17,
+      "title": "二十年前",
+      "characters": [
+        "lujin",
+        "yiwei",
+        "zhongqian",
+        "zhoubo"
+      ],
+      "locations": [
+        "storeroom"
+      ],
+      "hero_shot": {
+        "action": "十張歌頁→末兩空→被遮匾照",
+        "camera": "桌面逐页，手指遮照片角",
+        "sound": "歌只轻哼片段不全曲"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：自动补全全部歌词",
+          "solution": "只10段且编号撕去；展示缺页物理空位"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "lujin-bruise",
+        "yiwei-base",
+        "zhongqian-base",
+        "zhongqian-no-badge",
+        "zhoubo-base"
+      ],
+      "prop_checks": [
+        "10歌页",
+        "2空位",
+        "舊照片"
+      ],
+      "voice_notes": [
+        "歌只轻哼片段不全曲",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集10歌页、2空位、舊照片涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:153",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 18,
+      "title": "順序",
+      "characters": [
+        "lujin",
+        "jiangman",
+        "adou",
+        "yiwei"
+      ],
+      "locations": [
+        "hall"
+      ],
+      "hero_shot": {
+        "action": "前10味自試→四日記錄→第五日數據",
+        "camera": "日历/监测/手拿碗蒙太奇",
+        "sound": "4次环境声变化，旁白明确时间"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：四天被剪成当晚/給孩子試",
+          "solution": "只陆谨本人，姜曼每日在；day4完→day5核"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "杜小豆／阿豆可見年齡 12 歲，當前 Lite I2V 未驗證支援",
+          "solution": "目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。"
+        },
+        {
+          "risk": "試藥與救援的不同時間尺度",
+          "solution": "沿用來源的相對天數，沒有必要另定虛構月日：E18 試前十味→監測跨四天→第五天攤數據；E24 完整方首次試藥→E28 第四天過完的單子→隔天阿豆才服。E29 霍服藥第二天、E30 第四天；E32 深夜到 E33 搶救接同夜，不能為湊療程拉長救援；E34 復原到 E35–38 的法院／執行程序以明暗、換頁及既有「月底」台詞交代過日，E38 阿豆「十幾天」維持來源，不剪成通宵全完成。監測單的相對日數須後製校字，沒有必要新增說明字幕或編絕對日期。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "yiwei-base",
+        "jiangman-base",
+        "adou-base"
+      ],
+      "prop_checks": [
+        "第一包霧藤",
+        "監測单"
+      ],
+      "voice_notes": [
+        "4次环境声变化，旁白明确时间",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集第一包霧藤、監測单涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:176",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:321",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:323"
+      ]
+    },
+    {
+      "episode": 19,
+      "title": "出診",
+      "characters": [
+        "lujin",
+        "huoqingshan",
+        "guodahai"
+      ],
+      "locations": [
+        "sanatorium"
+      ],
+      "hero_shot": {
+        "action": "霍輪椅三針→郭溫水→七號門",
+        "camera": "沿长廊轴推，杯递不入病房",
+        "sound": "轮椅轴、杯水，郭变轻"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：霍仍带银杖",
+          "solution": "19起无杖；匾非已挂；郭此处无牌"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "huoqingshan-base",
+        "huo-chair",
+        "guodahai-base"
+      ],
+      "prop_checks": [
+        "灰毯",
+        "無杖",
+        "匾靠牆",
+        "杯"
+      ],
+      "voice_notes": [
+        "轮椅轴、杯水，郭变轻",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集灰毯、無杖、匾靠牆、杯涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:200",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 20,
+      "title": "7 號房",
+      "characters": [
+        "lujin",
+        "sisi",
+        "guodahai",
+        "huoqingshan"
+      ],
+      "locations": [
+        "sanatorium"
+      ],
+      "hero_shot": {
+        "action": "腕帶七年前→布兔→霍自己轉輪",
+        "camera": "病床局部/郭表情/轮圈",
+        "sound": "郭低语后不加惊吓音"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：思思画成7岁/多出推椅韋承",
+          "solution": "19岁女性卧床；霍自己推，韋不见不声"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "huoqingshan-base",
+        "huo-chair",
+        "guodahai-base",
+        "sisi-base",
+        "sisi-coma"
+      ],
+      "prop_checks": [
+        "腕帶",
+        "布兔",
+        "溫水杯"
+      ],
+      "voice_notes": [
+        "郭低语后不加惊吓音",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集腕帶、布兔、溫水杯涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:223",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 21,
+      "title": "三針之外",
+      "characters": [
+        "lujin",
+        "sisi",
+        "jiangman",
+        "huoqingshan"
+      ],
+      "locations": [
+        "sanatorium"
+      ],
+      "hero_shot": {
+        "action": "三針後數值動又回落→姜曼按手→長廊取未拆第二封信才看借脈代價",
+        "camera": "监测与手部三个单镜",
+        "sound": "仪器变，按手不是强撞声"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：誤算已用特殊一针",
+          "solution": "悬而未刺，使用0/3；第二信到手桥接待定"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "紙件持有與資訊時點",
+          "solution": "E5 亦微翻出的死亡證明影本留在共用桌面供陸謹看，E13 姜曼另外交來查得的醫师紀錄，兩份紙不合成同一件。E11 以陸謹收起現場信封的小插鏡接 carry，無新持有人。E21 長廊開信前，先拍他從既有針包取出未拆的第二封信，再拆封看到代價；信何日寄達不另編，鏡頭不可提早露出內文，姜曼也不在先前按手時預知信內容。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "huoqingshan-base",
+        "huo-chair",
+        "jiangman-base",
+        "sisi-base",
+        "sisi-coma"
+      ],
+      "prop_checks": [
+        "第二信",
+        "第四針"
+      ],
+      "voice_notes": [
+        "仪器变，按手不是强撞声",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集第二信、第四針涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-3.mjs:14",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 22,
+      "title": "三天",
+      "characters": [
+        "lujin",
+        "jiangman",
+        "huoqingshan",
+        "weicheng"
+      ],
+      "locations": [
+        "er",
+        "sanatorium"
+      ],
+      "hero_shot": {
+        "action": "三日期限→空轉院單→夜門信",
+        "camera": "桌面文書位置固定",
+        "sound": "韋合同式语气，门风"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：白手和黑手套跳",
+          "solution": "递信时脱着，说完戴回要一镜或剪点"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "huoqingshan-base",
+        "huo-chair",
+        "weicheng-base",
+        "wei-bare-hands",
+        "jiangman-base"
+      ],
+      "prop_checks": [
+        "轉院單",
+        "信封",
+        "韋手套"
+      ],
+      "voice_notes": [
+        "韋合同式语气，门风",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集轉院單、信封、韋手套涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-3.mjs:37",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 23,
+      "title": "母親",
+      "characters": [
+        "lujin",
+        "yiwei",
+        "zhoubo"
+      ],
+      "locations": [
+        "storeroom"
+      ],
+      "hero_shot": {
+        "action": "歌末兩段→左掌11/12→母親轉述",
+        "camera": "唱脸/黄秤/左掌排位",
+        "sound": "录唱母题完成但不高潮全奏"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：新母亲回忆配音与真配方",
+          "solution": "只有亦微说/唱，母亲只照；无具体剂量"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "yiwei-base",
+        "zhoubo-base"
+      ],
+      "prop_checks": [
+        "12藥名",
+        "歌词",
+        "旧照"
+      ],
+      "voice_notes": [
+        "录唱母题完成但不高潮全奏",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集12藥名、歌词、旧照涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-3.mjs:60",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 24,
+      "title": "曲子",
+      "characters": [
+        "lujin",
+        "yiwei",
+        "zhoubo",
+        "weicheng"
+      ],
+      "locations": [
+        "storeroom"
+      ],
+      "hero_shot": {
+        "action": "完整版首碗→監測→夜拦路",
+        "camera": "白天碗到夜手电分场",
+        "sound": "药室静和巷口风两声场"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：完全药四日未过就成功宣称",
+          "solution": "本集只day1；韋阻挡动作分手電/腳/凳"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "試藥與救援的不同時間尺度",
+          "solution": "沿用來源的相對天數，沒有必要另定虛構月日：E18 試前十味→監測跨四天→第五天攤數據；E24 完整方首次試藥→E28 第四天過完的單子→隔天阿豆才服。E29 霍服藥第二天、E30 第四天；E32 深夜到 E33 搶救接同夜，不能為湊療程拉長救援；E34 復原到 E35–38 的法院／執行程序以明暗、換頁及既有「月底」台詞交代過日，E38 阿豆「十幾天」維持來源，不剪成通宵全完成。監測單的相對日數須後製校字，沒有必要新增說明字幕或編絕對日期。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "yiwei-base",
+        "weicheng-base",
+        "zhoubo-base"
+      ],
+      "prop_checks": [
+        "12味版本",
+        "監測",
+        "手電凳"
+      ],
+      "voice_notes": [
+        "药室静和巷口风两声场",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集12味版本、監測、手電凳涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-3.mjs:83",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 25,
+      "title": "匾額背面",
+      "characters": [
+        "lujin",
+        "zhongqian",
+        "zhoubo",
+        "yiwei"
+      ],
+      "locations": [
+        "hall"
+      ],
+      "hero_shot": {
+        "action": "搬重匾→背文全文→門前落位",
+        "camera": "双人抬匾宽景后文字",
+        "sound": "木落地回响，别给挑夫台词"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：九字内容錯字/重量像纸",
+          "solution": "字图固定；抬者肩胯受重，落位有顿"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "yiwei-base",
+        "zhongqian-base",
+        "zhongqian-no-badge",
+        "zhoubo-base"
+      ],
+      "prop_checks": [
+        "匾",
+        "背文"
+      ],
+      "voice_notes": [
+        "木落地回响，别给挑夫台词",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集匾、背文涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-3.mjs:106",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 26,
+      "title": "兩億的真相",
+      "characters": [
+        "lujin",
+        "zhongqian",
+        "heting",
+        "yiwei"
+      ],
+      "locations": [
+        "courtyard",
+        "storeroom"
+      ],
+      "hero_shot": {
+        "action": "右掌去→秤交接→順序暗改",
+        "camera": "床→手交物→药台三段",
+        "sound": "呼吸/秤碰，配乐不英雄"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：以毒复仇被美化/秤复制",
+          "solution": "只后果与伦理冲突，不可实作配比；26后亦微腰无秤"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "yiwei-base",
+        "yiwei-scale-given",
+        "heting-base",
+        "heting-bed",
+        "zhongqian-base",
+        "zhongqian-no-badge"
+      ],
+      "prop_checks": [
+        "右掌",
+        "黃秤",
+        "末份霧藤"
+      ],
+      "voice_notes": [
+        "呼吸/秤碰，配乐不英雄",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集右掌、黃秤、末份霧藤涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-3.mjs:129",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 27,
+      "title": "谿翁",
+      "characters": [
+        "lujin",
+        "heting",
+        "zhoubo",
+        "huoqingshan"
+      ],
+      "locations": [
+        "courtyard",
+        "sanatorium"
+      ],
+      "hero_shot": {
+        "action": "兄弟合照→父親默認→40分鐘",
+        "camera": "照片/父手/钟分镜",
+        "sound": "父无台词，陆语句短"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：揭晓点推到31",
+          "solution": "此处画清认同，31只是敌人确认"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "heting-base",
+        "heting-bed",
+        "huoqingshan-base",
+        "huo-chair",
+        "zhoubo-base"
+      ],
+      "prop_checks": [
+        "旧照",
+        "針包",
+        "右掌川"
+      ],
+      "voice_notes": [
+        "父无台词，陆语句短",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集旧照、針包、右掌川涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-3.mjs:152",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 28,
+      "title": "午夜",
+      "characters": [
+        "lujin",
+        "huoqingshan",
+        "jiangman"
+      ],
+      "locations": [
+        "sanatorium",
+        "storeroom"
+      ],
+      "hero_shot": {
+        "action": "完整四日核→錯序给霍→隔天站起",
+        "camera": "记录固定日期，轮椅/站姿断点",
+        "sound": "姜曼数据干净，站起不神奇升调"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：兩條四日倒數混同",
+          "solution": "镜内记录分陆试验/霍服药，站起是次日"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "試藥與救援的不同時間尺度",
+          "solution": "沿用來源的相對天數，沒有必要另定虛構月日：E18 試前十味→監測跨四天→第五天攤數據；E24 完整方首次試藥→E28 第四天過完的單子→隔天阿豆才服。E29 霍服藥第二天、E30 第四天；E32 深夜到 E33 搶救接同夜，不能為湊療程拉長救援；E34 復原到 E35–38 的法院／執行程序以明暗、換頁及既有「月底」台詞交代過日，E38 阿豆「十幾天」維持來源，不剪成通宵全完成。監測單的相對日數須後製校字，沒有必要新增說明字幕或編絕對日期。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "huoqingshan-base",
+        "huo-chair",
+        "huo-walking",
+        "jiangman-base"
+      ],
+      "prop_checks": [
+        "监测单",
+        "药碗",
+        "灰毯"
+      ],
+      "voice_notes": [
+        "姜曼数据干净，站起不神奇升调",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集监测单、药碗、灰毯涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-3.mjs:175",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 29,
+      "title": "門口",
+      "characters": [
+        "lujin",
+        "guodahai",
+        "zhoubo",
+        "weicheng"
+      ],
+      "locations": [
+        "hall",
+        "sanatorium"
+      ],
+      "hero_shot": {
+        "action": "門口攤匯款單→訊息只說叫救護車→空七號房與布兔；不畫車離院或揭目的地",
+        "camera": "走廊固定轴与地面低位",
+        "sound": "远引擎与空调，郭声发颤"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：转院后再地下室瞬移",
+          "solution": "路徑待定；只空房结果，不拍外院到达"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "移送目的地被過早拍死",
+          "solution": "E29 只呈現姜曼訊息「叫了一台私人救護車」與空 7 號房，不拍車開出院區、不指認目的外院，也不稱假救護車／障眼法。E32 帳上第一次揭出同療養院地下二樓無編號舊病房，E33 由後門用鑰匙下去；移送過程不在鏡頭內，未知資訊留給 E32 揭曉，不需要創造交通路線或瞬移。"
+        },
+        {
+          "risk": "試藥與救援的不同時間尺度",
+          "solution": "沿用來源的相對天數，沒有必要另定虛構月日：E18 試前十味→監測跨四天→第五天攤數據；E24 完整方首次試藥→E28 第四天過完的單子→隔天阿豆才服。E29 霍服藥第二天、E30 第四天；E32 深夜到 E33 搶救接同夜，不能為湊療程拉長救援；E34 復原到 E35–38 的法院／執行程序以明暗、換頁及既有「月底」台詞交代過日，E38 阿豆「十幾天」維持來源，不剪成通宵全完成。監測單的相對日數須後製校字，沒有必要新增說明字幕或編絕對日期。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "weicheng-base",
+        "zhoubo-base",
+        "guodahai-base"
+      ],
+      "prop_checks": [
+        "7年收據",
+        "布兔",
+        "救护车线索"
+      ],
+      "voice_notes": [
+        "远引擎与空调，郭声发颤",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集7年收據、布兔、救护车线索涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-3.mjs:198",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 30,
+      "title": "拿到了",
+      "characters": [
+        "lujin",
+        "huoqingshan",
+        "jiangman"
+      ],
+      "locations": [
+        "expo"
+      ],
+      "hero_shot": {
+        "action": "12:40台上交匾→霍倒→杯落",
+        "camera": "台全景，手/杯/人三切",
+        "sound": "杯破不与人倒重叠爆音"
+      },
+      "risk_controls": [
+        {
+          "risk": "最高：倒人翻匾掉杯一个8秒片段",
+          "solution": "逐个动作镜：松手→倒下被接→杯滚；先呼援"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "試藥與救援的不同時間尺度",
+          "solution": "沿用來源的相對天數，沒有必要另定虛構月日：E18 試前十味→監測跨四天→第五天攤數據；E24 完整方首次試藥→E28 第四天過完的單子→隔天阿豆才服。E29 霍服藥第二天、E30 第四天；E32 深夜到 E33 搶救接同夜，不能為湊療程拉長救援；E34 復原到 E35–38 的法院／執行程序以明暗、換頁及既有「月底」台詞交代過日，E38 阿豆「十幾天」維持來源，不剪成通宵全完成。監測單的相對日數須後製校字，沒有必要新增說明字幕或編絕對日期。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "huoqingshan-base",
+        "huo-walking",
+        "jiangman-base"
+      ],
+      "prop_checks": [
+        "匾",
+        "杯",
+        "典禮台"
+      ],
+      "voice_notes": [
+        "杯破不与人倒重叠爆音",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集匾、杯、典禮台涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-3.mjs:221",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 31,
+      "title": "展台",
+      "characters": [
+        "lujin",
+        "huoqingshan",
+        "jiangman"
+      ],
+      "locations": [
+        "expo"
+      ],
+      "hero_shot": {
+        "action": "急救先→一針→抬擔架→兄仇證實",
+        "camera": "床側屏外接力",
+        "sound": "救援明确，私仇台词压低"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：一针誤画第四针",
+          "solution": "本次普通第1针，交医护；霍醒未痊癒"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "huoqingshan-base",
+        "huo-bed",
+        "jiangman-base"
+      ],
+      "prop_checks": [
+        "單針",
+        "擔架",
+        "匾"
+      ],
+      "voice_notes": [
+        "救援明确，私仇台词压低",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集單針、擔架、匾涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:14",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 32,
+      "title": "交換",
+      "characters": [
+        "lujin",
+        "weicheng",
+        "huoqingshan",
+        "zhoubo"
+      ],
+      "locations": [
+        "sanatorium",
+        "storeroom"
+      ],
+      "hero_shot": {
+        "action": "韋承落下鑰匙與薄軟小帳→脫手套→陸謹把小冊與鑰匙包入原皮針包、扣合→看未被封的後窗",
+        "camera": "帳桌俯視後出口全景",
+        "sound": "手套软落/匙硬声，韋转干快"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：帳硬塞窄針包",
+          "solution": "承載方案待定；四车堵正门，后窗先建立"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "帳冊與針包容量／交接",
+          "solution": "按來源 E32 carry 保留帳與鑰匙在原針包：將未限定大小的「一本帳」設計成普通薄軟口袋小冊，寬度小於展開針包內幅；先拍針套封好、薄冊平放包入皮革餘幅、鑰匙置於不接觸針尖的內折，再扣合原黃銅扣，外形仍是窄捲。E33 開門先取鑰匙、取針前取出薄冊放乾淨檯邊，E34 證物同路交出。不新增大袋、硬殼厚帳或超自然收納；lookdev 須按實際資產尺寸驗證能扣合，未驗證不能宣稱物理動畫已過。"
+        },
+        {
+          "risk": "移送目的地被過早拍死",
+          "solution": "E29 只呈現姜曼訊息「叫了一台私人救護車」與空 7 號房，不拍車開出院區、不指認目的外院，也不稱假救護車／障眼法。E32 帳上第一次揭出同療養院地下二樓無編號舊病房，E33 由後門用鑰匙下去；移送過程不在鏡頭內，未知資訊留給 E32 揭曉，不需要創造交通路線或瞬移。"
+        },
+        {
+          "risk": "試藥與救援的不同時間尺度",
+          "solution": "沿用來源的相對天數，沒有必要另定虛構月日：E18 試前十味→監測跨四天→第五天攤數據；E24 完整方首次試藥→E28 第四天過完的單子→隔天阿豆才服。E29 霍服藥第二天、E30 第四天；E32 深夜到 E33 搶救接同夜，不能為湊療程拉長救援；E34 復原到 E35–38 的法院／執行程序以明暗、換頁及既有「月底」台詞交代過日，E38 阿豆「十幾天」維持來源，不剪成通宵全完成。監測單的相對日數須後製校字，沒有必要新增說明字幕或編絕對日期。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "huoqingshan-base",
+        "huo-bed",
+        "weicheng-base",
+        "wei-bare-hands",
+        "zhoubo-base"
+      ],
+      "prop_checks": [
+        "账",
+        "钥匙",
+        "黑手套"
+      ],
+      "voice_notes": [
+        "手套软落/匙硬声，韋转干快",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集账、钥匙、黑手套涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:38",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:57"
+      ]
+    },
+    {
+      "episode": 33,
+      "title": "第四針",
+      "characters": [
+        "lujin",
+        "sisi",
+        "jiangman",
+        "guodahai"
+      ],
+      "locations": [
+        "sanatorium",
+        "er"
+      ],
+      "hero_shot": {
+        "action": "後窗離開→療養院後門會合→取鑰匙開地下二樓→先取出薄冊再取針，急救與借脈分鏡",
+        "camera": "腕不刺入，脸/监测/手帕",
+        "sound": "仪器与喘息，無神蹟合唱"
+      },
+      "risk_controls": [
+        {
+          "risk": "最高：奇針替代急救/使用數跳",
+          "solution": "抢救先进行，再3镜付价；只1/3已用"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "帳冊與針包容量／交接",
+          "solution": "按來源 E32 carry 保留帳與鑰匙在原針包：將未限定大小的「一本帳」設計成普通薄軟口袋小冊，寬度小於展開針包內幅；先拍針套封好、薄冊平放包入皮革餘幅、鑰匙置於不接觸針尖的內折，再扣合原黃銅扣，外形仍是窄捲。E33 開門先取鑰匙、取針前取出薄冊放乾淨檯邊，E34 證物同路交出。不新增大袋、硬殼厚帳或超自然收納；lookdev 須按實際資產尺寸驗證能扣合，未驗證不能宣稱物理動畫已過。"
+        },
+        {
+          "risk": "移送目的地被過早拍死",
+          "solution": "E29 只呈現姜曼訊息「叫了一台私人救護車」與空 7 號房，不拍車開出院區、不指認目的外院，也不稱假救護車／障眼法。E32 帳上第一次揭出同療養院地下二樓無編號舊病房，E33 由後門用鑰匙下去；移送過程不在鏡頭內，未知資訊留給 E32 揭曉，不需要創造交通路線或瞬移。"
+        },
+        {
+          "risk": "試藥與救援的不同時間尺度",
+          "solution": "沿用來源的相對天數，沒有必要另定虛構月日：E18 試前十味→監測跨四天→第五天攤數據；E24 完整方首次試藥→E28 第四天過完的單子→隔天阿豆才服。E29 霍服藥第二天、E30 第四天；E32 深夜到 E33 搶救接同夜，不能為湊療程拉長救援；E34 復原到 E35–38 的法院／執行程序以明暗、換頁及既有「月底」台詞交代過日，E38 阿豆「十幾天」維持來源，不剪成通宵全完成。監測單的相對日數須後製校字，沒有必要新增說明字幕或編絕對日期。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "jiangman-base",
+        "jiangman-one",
+        "guodahai-base",
+        "sisi-base",
+        "sisi-coma"
+      ],
+      "prop_checks": [
+        "第四針",
+        "帕血一口",
+        "姜手一"
+      ],
+      "voice_notes": [
+        "仪器与喘息，無神蹟合唱",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集第四針、帕血一口、姜手一涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:61",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:57"
+      ]
+    },
+    {
+      "episode": 34,
+      "title": "反咬",
+      "characters": [
+        "lujin",
+        "sisi",
+        "guodahai",
+        "jiangman"
+      ],
+      "locations": [
+        "er"
+      ],
+      "hero_shot": {
+        "action": "思思睜眼爸→陸病床→警方證物",
+        "camera": "兩張床分镜不幻影转移",
+        "sound": "爸前停半秒，其他人不盖她"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：針包仍斜背/思思流利说话",
+          "solution": "床上包在枕边；只首次短字，舌唇细动"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "試藥與救援的不同時間尺度",
+          "solution": "沿用來源的相對天數，沒有必要另定虛構月日：E18 試前十味→監測跨四天→第五天攤數據；E24 完整方首次試藥→E28 第四天過完的單子→隔天阿豆才服。E29 霍服藥第二天、E30 第四天；E32 深夜到 E33 搶救接同夜，不能為湊療程拉長救援；E34 復原到 E35–38 的法院／執行程序以明暗、換頁及既有「月底」台詞交代過日，E38 阿豆「十幾天」維持來源，不剪成通宵全完成。監測單的相對日數須後製校字，沒有必要新增說明字幕或編絕對日期。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "lujin-hospital",
+        "jiangman-base",
+        "jiangman-one",
+        "guodahai-base",
+        "sisi-base",
+        "sisi-wakes"
+      ],
+      "prop_checks": [
+        "枕邊針包",
+        "点滴",
+        "杯",
+        "手背一"
+      ],
+      "voice_notes": [
+        "爸前停半秒，其他人不盖她",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集枕邊針包、点滴、杯、手背一涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:84",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 35,
+      "title": "假藥",
+      "characters": [
+        "lujin",
+        "zhongqian",
+        "zhoubo",
+        "jiangman"
+      ],
+      "locations": [
+        "court"
+      ],
+      "hero_shot": {
+        "action": "法庭證據屏→證人→周伯轉寫歌",
+        "camera": "屏幕/证人不拍全员近景",
+        "sound": "法庭轻混响，录音來源核对"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：多声超cast/法官新声",
+          "solution": "法官无台词，译文显示；父字由周轉述"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "試藥與救援的不同時間尺度",
+          "solution": "沿用來源的相對天數，沒有必要另定虛構月日：E18 試前十味→監測跨四天→第五天攤數據；E24 完整方首次試藥→E28 第四天過完的單子→隔天阿豆才服。E29 霍服藥第二天、E30 第四天；E32 深夜到 E33 搶救接同夜，不能為湊療程拉長救援；E34 復原到 E35–38 的法院／執行程序以明暗、換頁及既有「月底」台詞交代過日，E38 阿豆「十幾天」維持來源，不剪成通宵全完成。監測單的相對日數須後製校字，沒有必要新增說明字幕或編絕對日期。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "zhongqian-base",
+        "zhongqian-no-badge",
+        "zhoubo-base",
+        "jiangman-base"
+      ],
+      "prop_checks": [
+        "证据录音",
+        "歌字",
+        "书状"
+      ],
+      "voice_notes": [
+        "法庭轻混响，录音來源核对",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集证据录音、歌字、书状涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:107",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 36,
+      "title": "藥庫的歌",
+      "characters": [
+        "lujin",
+        "yiwei",
+        "zhoubo",
+        "huoqingshan"
+      ],
+      "locations": [
+        "storeroom",
+        "sanatorium"
+      ],
+      "hero_shot": {
+        "action": "12抽屜→公開原創歌→霍床上平板",
+        "camera": "每段歌对应少量抽屉，床另场",
+        "sound": "人声领唱，配乐让位；角色原音色专录唱"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：只换静画仍像MV幻灯",
+          "solution": "手指开柜、身体呼吸、口型持续；歌词用CC而非画面烧字"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "試藥與救援的不同時間尺度",
+          "solution": "沿用來源的相對天數，沒有必要另定虛構月日：E18 試前十味→監測跨四天→第五天攤數據；E24 完整方首次試藥→E28 第四天過完的單子→隔天阿豆才服。E29 霍服藥第二天、E30 第四天；E32 深夜到 E33 搶救接同夜，不能為湊療程拉長救援；E34 復原到 E35–38 的法院／執行程序以明暗、換頁及既有「月底」台詞交代過日，E38 阿豆「十幾天」維持來源，不剪成通宵全完成。監測單的相對日數須後製校字，沒有必要新增說明字幕或編絕對日期。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "yiwei-base",
+        "yiwei-scale-given",
+        "huoqingshan-base",
+        "huo-bed",
+        "zhoubo-base"
+      ],
+      "prop_checks": [
+        "歌",
+        "抽屉标签",
+        "平板"
+      ],
+      "voice_notes": [
+        "人声领唱，配乐让位；角色原音色专录唱",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集歌、抽屉标签、平板涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:130",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 37,
+      "title": "谿翁下山",
+      "characters": [
+        "lujin",
+        "xiweng",
+        "heting",
+        "zhoubo"
+      ],
+      "locations": [
+        "hall",
+        "courtyard"
+      ],
+      "hero_shot": {
+        "action": "谿翁舊包交→空中兄→餘2次",
+        "camera": "脸/两包/父右手分镜",
+        "sound": "老人两声线不共混，短气音"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：同款包变同件/老人突然走",
+          "solution": "两包磨损不同；鶴亭轮椅；谿翁首次真人开口"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "試藥與救援的不同時間尺度",
+          "solution": "沿用來源的相對天數，沒有必要另定虛構月日：E18 試前十味→監測跨四天→第五天攤數據；E24 完整方首次試藥→E28 第四天過完的單子→隔天阿豆才服。E29 霍服藥第二天、E30 第四天；E32 深夜到 E33 搶救接同夜，不能為湊療程拉長救援；E34 復原到 E35–38 的法院／執行程序以明暗、換頁及既有「月底」台詞交代過日，E38 阿豆「十幾天」維持來源，不剪成通宵全完成。監測單的相對日數須後製校字，沒有必要新增說明字幕或編絕對日期。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "heting-base",
+        "heting-chair",
+        "zhoubo-base",
+        "xiweng-base"
+      ],
+      "prop_checks": [
+        "旧黑包",
+        "新霧藤",
+        "輪椅藍毯"
+      ],
+      "voice_notes": [
+        "老人两声线不共混，短气音",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集旧黑包、新霧藤、輪椅藍毯涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:153",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 38,
+      "title": "持方者",
+      "characters": [
+        "lujin",
+        "zhoubo",
+        "yiwei",
+        "adou"
+      ],
+      "locations": [
+        "hall"
+      ],
+      "hero_shot": {
+        "action": "匾待吉日→阿豆說十幾天→查封表",
+        "camera": "门楣下存放，不提前悬挂",
+        "sound": "歌哼小段，阿豆童音待听"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：日程过短/牢中仲謙多入cast",
+          "solution": "明确药程10+日；牢收照只照片/转述不露脸"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "杜小豆／阿豆可見年齡 12 歲，當前 Lite I2V 未驗證支援",
+          "solution": "目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。"
+        },
+        {
+          "risk": "試藥與救援的不同時間尺度",
+          "solution": "沿用來源的相對天數，沒有必要另定虛構月日：E18 試前十味→監測跨四天→第五天攤數據；E24 完整方首次試藥→E28 第四天過完的單子→隔天阿豆才服。E29 霍服藥第二天、E30 第四天；E32 深夜到 E33 搶救接同夜，不能為湊療程拉長救援；E34 復原到 E35–38 的法院／執行程序以明暗、換頁及既有「月底」台詞交代過日，E38 阿豆「十幾天」維持來源，不剪成通宵全完成。監測單的相對日數須後製校字，沒有必要新增說明字幕或編絕對日期。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "yiwei-base",
+        "yiwei-scale-given",
+        "zhoubo-base",
+        "adou-base"
+      ],
+      "prop_checks": [
+        "匾",
+        "法院文件",
+        "新霧藤"
+      ],
+      "voice_notes": [
+        "歌哼小段，阿豆童音待听",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集匾、法院文件、新霧藤涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:176",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:321",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:323"
+      ]
+    },
+    {
+      "episode": 39,
+      "title": "仇人的針",
+      "characters": [
+        "lujin",
+        "huoqingshan",
+        "guodahai",
+        "sisi"
+      ],
+      "locations": [
+        "sanatorium",
+        "er"
+      ],
+      "hero_shot": {
+        "action": "霍普通三針停→刀举→思思端水",
+        "camera": "床/急诊门两场，刀在外",
+        "sound": "三次计数后停，爸水凉了清楚"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：余2次耗尽误读/刺刀实拍",
+          "solution": "只普通疗程，刀只举；思思从门出来有支撑"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "huoqingshan-base",
+        "huo-bed",
+        "guodahai-base",
+        "sisi-base",
+        "sisi-yellow"
+      ],
+      "prop_checks": [
+        "普通3针",
+        "刀",
+        "杯",
+        "黄外套"
+      ],
+      "voice_notes": [
+        "三次计数后停，爸水凉了清楚",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集普通3针、刀、杯、黄外套涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:199",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    },
+    {
+      "episode": 40,
+      "title": "掛匾",
+      "characters": [
+        "lujin",
+        "heting",
+        "guodahai",
+        "yiwei"
+      ],
+      "locations": [
+        "er",
+        "plaza"
+      ],
+      "hero_shot": {
+        "action": "刀落陆收→30日後雙繩掛匾→掌留",
+        "camera": "斜坡低机位到挂牌双人宽景",
+        "sound": "刀轻落后接水，终场原曲器乐"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：思思多加声/最后歌又有唱者",
+          "solution": "开头只郭陆；30日跳时；结尾仅器乐，父右掌留"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "lujin-base",
+        "lujin-final-pouch",
+        "yiwei-base",
+        "yiwei-scale-given",
+        "heting-base",
+        "heting-chair",
+        "guodahai-base"
+      ],
+      "prop_checks": [
+        "刀",
+        "杯",
+        "匾",
+        "兩吊繩",
+        "膝上包"
+      ],
+      "voice_notes": [
+        "刀轻落后接水，终场原曲器乐",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集刀、杯、匾、兩吊繩、膝上包涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:222",
+        "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+      ]
+    }
+  ],
+  "audio_plan": {
+    "motifs": [
+      "角色主題限短音型，先寫原創音樂需求；情緒轉折前讓表演先到、配樂後到。不得引用相似影劇旋律。",
+      "關鍵物件有可辨實物音，不用每個線索都上同一聲懸疑撞擊。"
+    ],
+    "perspective": [
+      "對白、旁白、Foley、環境、音樂分軌；shot間保留房間底聲，轉主觀聲時要有明確視點。",
+      "畫外具名台詞也須列入本集characters；匿名人物只有動作/無可辨詞背景音，消息用來源允許的旁白。"
+    ],
+    "dynamic_rules": [
+      "先測輕聲對白可懂度；配樂在台詞時自動化讓位，不能只把人聲全面拉高。尖銳器物聲/警報不蓋關鍵字。",
+      "左右聲像服務空間；台詞保中心，手機單聲道合併後仍清楚。長停頓保持呼吸/衣料活動，不以freeze延長畫面。",
+      "Veo原片的native audio不直接入正片混音；任何意外人聲/擬配樂須移除。嘴型、FOLEY、字幕時間碼以最終中文字幕版聲軌為基準。"
+    ],
+    "locale_constraints": [
+      "先完成zh-TW台灣國語表演/人名試聽及picture lock；ja/ko/en僅保留設計和詞表，這一輪不自動生成三語。",
+      "四語各有獨立voice track與可關CC；subtitles.burn_in=false。角色、說話者和無障礙聲效提示進CC，不做永久字幕畫在底部。",
+      "劇內證據文字（紙、鐘、介面）是敘事資產，保持清晰並提供對應翻譯詞表/CC；不能因不燒字幕而刪掉證據，也不能把外語翻譯當永久畫面字幕。",
+      "ja/ko/en人名用此表候選音譯，不自動把漢字改日語音讀或韓國本土姓名。稱謂先翻譯語用，保留身份尊卑與熟識距離。",
+      "各語分開錄完整表演、對齊剪輯點；不硬壓縮英文/日文到中文每字同時長。若譯句過長先重寫等義短句或調非關鍵反應鏡，倒數絕不拉長。",
+      "目前所有voice_name沿用source作待試聽候選；不是四語皆有相同音色/口音的保證。母語監聽前禁止標示配音驗收通過。"
+    ]
+  },
+  "acceptance_checks": [
+    "本件是source-bound製作設計，不是video.json、成片驗收、上傳批准或正式站匯入。未呼叫任何付費圖/片/語音生成。",
+    "角色動畫預設高品質動態表演。3–6秒剪成鏡頭可由8秒原片截取；鏡內須見重心、視線、手/衣料/呼吸的意圖變化。靜圖縮放不得假稱動畫。",
+    "當前根代理選定Veo3.1Lite 1080p/24fps/8秒原片；本設計不假設referenceImages或extension可用，也不假設上一片最後一格必能無縫延續。實際供應商契約由共用profile鎖定。",
+    "按character.shot_looks與scene.data.character_looks選定單一完整look；同一episode可列多個候選look，正式每shot必選一個，不把同集所有狀態疊加。外觀狀態不clone新聲線。",
+    "每鏡最多3個具名人物，多人對話先建立全景再單/雙人反打；角色聲音與畫外出場名單都核對。群眾不代替主角表演，背景不得複製主角臉。",
+    "首30秒先做無付費animatic/timecode與臨時讀稿：連續0–30，不擠長旁白。正式zh-TW語音產出後按實際秒數重剪，不把候選時長標成實測。",
+    "關鍵道具文字、數字、日期、簽名以核准文字圖層合成並校對。人物拿取要先有接觸/承重再移動，手與物不可換側、穿模、變件。",
+    "鏡頭切點須比對頭尾角色ID/衣物/手持物/光位/場景軸；8秒素材含多個不相容狀態時拆採不同shot，不以freeze/slow補成長講述。",
+    "同一製作的四語CC要能完全開/關；影片畫素沒有字幕，檢查所有語言/合輯路徑。CC要對齊最終台詞，不把人名當品牌翻譯。",
+    "zh-TW台灣口音、每位角色的正常/低聲/壓力三句必試聽；未來ja/ko/en各由母語聽校。角色年齡、性別呈現、喘氣/哭/唱不能只靠voice名通過。",
+    "最終手機、耳機與單聲道播放檢查台詞、暗部、劇內文字、跳剪、嘴型、字幕開關和聲畫同步；本轮仅文件层检查，没有完成这些媒体检查。",
+    "未成年可見角色與匿名兒童必核對來源年齡及 video_constraints；Lite I2V 受限鏡頭不得付費生成。手繪或替代供應商先確認題材適用條款，再獨立 pilot 與人工驗收；畫外配音不等同可見人物。"
+  ],
+  "unresolved": [
+    {
+      "issue": "已由設計處理（未 render）：E32帳本與鑰匙塞入捲針包的物理容量",
+      "why": "按來源 E32 carry 保留帳與鑰匙在原針包：將未限定大小的「一本帳」設計成普通薄軟口袋小冊，寬度小於展開針包內幅；先拍針套封好、薄冊平放包入皮革餘幅、鑰匙置於不接觸針尖的內折，再扣合原黃銅扣，外形仍是窄捲。E33 開門先取鑰匙、取針前取出薄冊放乾淨檯邊，E34 證物同路交出。不新增大袋、硬殼厚帳或超自然收納；lookdev 須按實際資產尺寸驗證能扣合，未驗證不能宣稱物理動畫已過。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+      "episode_refs": [
+        32
+      ]
+    },
+    {
+      "issue": "已由設計處理（未 render）：E29轉走後E32仍青山地下室的移送路徑",
+      "why": "E29 只呈現姜曼訊息「叫了一台私人救護車」與空 7 號房，不拍車開出院區、不指認目的外院，也不稱假救護車／障眼法。E32 帳上第一次揭出同療養院地下二樓無編號舊病房，E33 由後門用鑰匙下去；移送過程不在鏡頭內，未知資訊留給 E32 揭曉，不需要創造交通路線或瞬移。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+      "episode_refs": [
+        29,
+        32,
+        33
+      ]
+    },
+    {
+      "issue": "已由設計處理（未 render）：E21第二封信到手、死亡證明/信封轉移的連接",
+      "why": "E5 亦微翻出的死亡證明影本留在共用桌面供陸謹看，E13 姜曼另外交來查得的醫师紀錄，兩份紙不合成同一件。E11 以陸謹收起現場信封的小插鏡接 carry，無新持有人。E21 長廊開信前，先拍他從既有針包取出未拆的第二封信，再拆封看到代價；信何日寄達不另編，鏡頭不可提早露出內文，姜曼也不在先前按手時預知信內容。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+      "episode_refs": [
+        5,
+        11,
+        13,
+        21
+      ]
+    },
+    {
+      "issue": "已由設計處理（未 render）：四天兩次監測與阿豆十幾天療程",
+      "why": "沿用來源的相對天數，沒有必要另定虛構月日：E18 試前十味→監測跨四天→第五天攤數據；E24 完整方首次試藥→E28 第四天過完的單子→隔天阿豆才服。E29 霍服藥第二天、E30 第四天；E32 深夜到 E33 搶救接同夜，不能為湊療程拉長救援；E34 復原到 E35–38 的法院／執行程序以明暗、換頁及既有「月底」台詞交代過日，E38 阿豆「十幾天」維持來源，不剪成通宵全完成。監測單的相對日數須後製校字，沒有必要新增說明字幕或編絕對日期。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+      "episode_refs": [
+        18,
+        24,
+        28,
+        32,
+        38
+      ]
+    },
+    {
+      "issue": "兒童男聲與歌唱能力未驗收",
+      "why": "Achird只沿用來源候選；歌唱和童音需單獨試聽，不能提高音調就宣稱12歲",
+      "episode_refs": [
+        4,
+        5,
+        7,
+        23,
+        36,
+        38
+      ]
+    },
+    {
+      "issue": "杜小豆／阿豆未成年視覺生成路徑尚未驗證",
+      "why": "12 歲阿豆（adou）在 E5、7、8、18、38 出場。E3 的匿名病童另為 5 歲，並非阿豆，沒有角色 ID。 來源：docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:321；docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:323。目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。",
+      "episode_refs": [
+        5,
+        7,
+        8,
+        18,
+        38
+      ]
+    },
+    {
+      "issue": "E3 匿名 5 歲兒童需替代動畫路徑",
+      "why": "packaging.mjs:67 明定 E3 男孩為五歲、不是阿豆；chapter-1.mjs:61 起有病童救治視覺。無 cast ID 仍是未成年可見人物，不得由匿名背景繞過年齡檢查。 本集 clips profile 保守拒絕付費；目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。",
+      "episode_refs": [
+        3
+      ]
+    }
+  ]
+}

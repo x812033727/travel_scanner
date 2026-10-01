@@ -21,7 +21,7 @@ metadata:
 | 路線 | 成品 | 誰做什麼 | 從哪裡開始 |
 | --- | --- | --- | --- |
 | **全自動** | 深色投影片＋台灣口音合成旁白＋繁中 CC，其他語言（標題說明、CC、配音）由站主每支勾選，8–12 分鐘 | 代理企劃、撰稿、查核，工具合成旁白、畫面與成片；站主選大綱、聽旁白、看成片、自己上傳 | 下面「全自動路線」與 `.agents/skills/youtube-video/references/automated.md` |
-| **AI 漫劇**（單集與作品） | AI 生成的鏡頭片段＋旁白與角色配音＋燒錄繁中字幕＋配樂＋繁中 CC（其他語言的標題說明與 CC 由站主每支勾選），2–4 分鐘一集；單集是一集的作品，長篇是一部約 100 集、分篇章的原創故事，一集接一集地做，角色設定圖與人物表跨集沿用 | 站主發起，在兩個關卡討論並核准：**文件**（單集的故事聖經；作品的設定集、總綱、每篇細綱）與**劇本**；之後的設定圖、分鏡由 judge 決定（`auto_pick_look`、`auto_approve_storyboard` 開了才自動，預設關）、旁白 Jev 全過與成片自動品管自動核准；出錯才找站主；站主再選語言、自己上傳。代理或工人規劃文件、寫劇本與分鏡、依細綱寫每一集並自動接續，工具生成設定圖、關鍵影格、片段、音樂並合成 | `.agents/skills/youtube-video/references/drama.md`（每一集的步驟；設計在 `docs/videos/DRAMA.md`）與 `.agents/skills/youtube-video/references/series.md`（作品的文件、討論串、一致性；設計在 `docs/videos/SERIES.md`）；一條流程與討論在 `docs/videos/DRAMA-FLOW.md` |
+| **AI 漫劇**（單集與作品） | AI 生成的鏡頭片段＋台灣口音旁白與角色配音＋配樂＋可開關繁中 CC（不燒字幕）；先完成中文版，其他語言音軌與 CC 另依核定製作規格分期，2–4 分鐘一集；單集是一集的作品，長篇是一部約 100 集、分篇章的原創故事，一集接一集地做，角色設定圖與人物表跨集沿用 | 站主發起，在兩個關卡討論並核准：**文件**（單集的故事聖經；作品的設定集、總綱、每篇細綱）與**劇本**；之後的設定圖、分鏡由 judge 決定（`auto_pick_look`、`auto_approve_storyboard` 開了才自動，預設關）、旁白 Jev 全過與成片自動品管自動核准；出錯才找站主；站主再選語言、自己上傳。代理或工人規劃文件、寫劇本與分鏡、依細綱寫每一集並自動接續，工具生成設定圖、關鍵影格、片段、音樂並合成 | `.agents/skills/youtube-video/references/drama.md`（每一集的步驟；設計在 `docs/videos/DRAMA.md`）與 `.agents/skills/youtube-video/references/series.md`（作品的文件、討論串、一致性；設計在 `docs/videos/SERIES.md`）；一條流程與討論在 `docs/videos/DRAMA-FLOW.md` |
 | **一鍵合集** | 一部約兩小時（30–480 分鐘可設）一口氣看完的原創爽文漫劇：六個題材預設、節奏規格（鉤子、爽點、懸念）、混合畫面（四成片段、其餘關鍵影格加運鏡），全部集數做完接成一支長片，1080p 成片從後台下載 | 站主在後台按「一鍵開拍」（題材、主角、長度、畫面等級）、最後上傳與選上架時間；文件由查核模型判、伺服器依規則核准或退回，每集免關卡，工人做合集 | `.agents/skills/youtube-video/references/series.md` 的「合集作品（一鍵）」（設計在 `docs/videos/BINGE.md`） |
 | **品牌故事** | 12–15 分鐘的非虛構短片：只有旁白、約 90 張卡通靜態圖加緩慢運鏡、燒錄字幕；講一個品牌、日用品或天天在用的標準怎麼來、生意怎麼運作。影片是漫劇，100 個故事是一部 `kind: "story"` 作品的 100 集 | 企劃清單事先查核、由站主匯入；主機工人逐章撰稿、逐章查核、逐章聽眾審稿（一次呼叫一章），之後照漫劇的步驟做到上架確認，全程免關卡；站主只決定上架 | `.agents/skills/youtube-video/references/story.md`（設計在 `docs/videos/STORY.md`，企劃在 `docs/videos/story-plans/brand-stories-100`） |
 | **人工錄製** | 站主出鏡或配音、螢幕錄影、剪輯 | 代理交稿子、分鏡、字卡、上架文字；站主錄音、錄影、剪輯 | 下面「人工錄製路線」 |
@@ -29,6 +29,8 @@ metadata:
 站主沒指定時：AI／科技資訊、工具介紹、概念解說走全自動；故事（神話、民間傳說、原創玄幻、站上文章改成的故事）走 AI 漫劇；要一部一口氣看完、不想逐份核准的爽文合集走一鍵合集；要真人示範操作、或站主想自己出鏡的走人工錄製。全自動的螢幕錄影手把手還在做（票 `2026-09-24-video-screencast-steps`、`2026-09-24-video-terminal-template`、`2026-09-24-video-obs-import`），做好之前這類影片走人工錄製。
 
 知識科普三季、品牌故事與 AI 名詞的長片另以 `docs/videos/long-form/README.md` 的有效企劃為準：科普及 AI 名詞目標10分鐘，品牌保留13分鐘；當前旁白正文及成片各至少8分鐘，片頭片尾不能補足正文。扁平解說後台8–20整數分鐘、預設10；Shorts、普通漫劇及合集保留原格式。計畫秒數不代表媒體實測，不以停頓、重複或慢播補時。
+
+此批十部動畫的製作規格以 `docs/videos/series-plans/production-20261001/profile.json` 與每部 `production-design.json` 為準：全部動態鏡頭、Veo 3.1 Lite 1080p 每段 8 秒、字幕只做 CC；先定案完成台灣口音中文版，再做 ja/ko/en 配音與各自 CC。漫劇多語角色配音仍是規劃中的後續工作，不能把教學影片已有的配音流程當成漫劇已支援。詳細試音、樣片與交付順序讀 `references/animation-production.md`。
 
 ## 再讀對應的 reference
 
@@ -43,6 +45,7 @@ metadata:
 | 全自動的代理提示 | `.agents/skills/youtube-video/references/prompts/`（`planner.md`、`writer-video.md`、`verifier-video.md`、`listener-rewrite.md`、`listener-register.md`（既有影片改成說書式，`restyle --slug`）、`caption-translate.md`、`caption-review.md`） |
 | AI 漫劇的每一集：一次性設定、關卡（文件、劇本，加四個自動的）、主幹與指令、`video.json` 的角色與鏡頭、品檢與重做、成本、坑、站主怎麼從後台發起單集 | `.agents/skills/youtube-video/references/drama.md` |
 | AI 漫劇的代理提示（單集的故事聖經、劇本與分鏡、連貫性查核、修鏡頭；討論串的回覆） | `.agents/skills/youtube-video/references/prompts/series-bible.md`、`writer-drama.md`、`verifier-drama.md`、`discuss.md`（`planner-drama.md` 只給單集變成作品之前排進的舊請求） |
+| 動畫製作：source-bound 設計、逐鏡造型、試音、對時animatic、pilot、動態攝製、CC與後續配音 | `.agents/skills/youtube-video/references/animation-production.md` |
 | 作品：名稱、主幹（每個核准點的討論）、討論串、劇本關卡、一致性（人物表、設定圖存檔、前情）、張力規格、指令、坑 | `.agents/skills/youtube-video/references/series.md` |
 | 作品的代理提示（設定集、總綱、篇章細綱、每集撰稿與查核、前情） | `.agents/skills/youtube-video/references/prompts/series-setting.md`、`series-outline.md`、`series-chapter.md`、`writer-series.md`、`verifier-series.md` |
 | 一鍵合集：一鍵表單與報價、免關卡的規則、節奏規格與爽點、畫面等級上限、`compile` 指令、下載、坑 | `.agents/skills/youtube-video/references/series.md` 的「合集作品（一鍵）」；still 鏡頭的 `visual` 與運鏡關鍵字在 `drama.md` |

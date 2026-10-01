@@ -219,6 +219,54 @@ def test_episodes_start_one_at_a_time_after_the_previous_is_done_unless_the_owne
     )
 
 
+@pytest.mark.parametrize(
+    "looks",
+    [
+        None,
+        {},
+        [{"id": "present", "appearance": ""}],
+        [{"id": "present", "appearance": "x", "voice": {"name": "other"}}],
+        [{"id": "present", "appearance": "x"}] * 2,
+        [{"id": "../bad", "appearance": "x"}],
+        [{"id": "present", "appearance": "x" * 801}],
+    ],
+)
+def test_setting_refuses_invalid_shot_looks(looks: Any) -> None:
+    payload = SeriesDocSubmitIn(
+        kind="setting",
+        body_md="# setting",
+        body_json={
+            "characters": [
+                {"id": "lead", "name": "主角", "appearance": "base", "shot_looks": looks}
+            ]
+        },
+    )
+    assert service.doc_problem(_series(), payload) is not None
+
+
+def test_setting_accepts_named_visual_variants_without_replacing_character_identity() -> None:
+    payload = SeriesDocSubmitIn(
+        kind="setting",
+        body_md="# setting",
+        body_json={
+            "characters": [
+                {
+                    "id": "lead",
+                    "name": "主角",
+                    "appearance": "base face",
+                    "voice": {"provider": "gemini", "name": "Kore"},
+                    "shot_looks": [
+                        {"id": "past", "appearance": "young woman in an ancient robe"},
+                        {"id": "present", "appearance": "adult woman in a business suit"},
+                    ],
+                }
+            ]
+        },
+    )
+    assert service.doc_problem(_series(), payload) is None
+    assert payload.body_json["characters"][0]["voice"]["name"] == "Kore"
+
+
 def test_a_document_the_worker_sends_must_have_the_shape_the_owner_reads() -> None:
     series = _series()
 

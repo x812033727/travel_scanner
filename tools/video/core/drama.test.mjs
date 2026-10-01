@@ -20,6 +20,8 @@ import {
   promptSimilarity,
   resolveLook,
   resolveSubtitles,
+  shotCast,
+  shotLooksProblem,
   shotProblems,
   shotVisual,
   stillShotScenes,
@@ -219,7 +221,43 @@ test("a preset fills the look in, and a look's own fields win", () => {
   assert.match(own.style, /jade/);
   assert.match(own.negative, /extra fingers/);
   assert.deepEqual(resolveSubtitles(dramaFixture()), { burn_in: true, style: "drama", speaker_prefix: false });
+  const ccOnly = dramaFixture();
+  delete ccOnly.subtitles;
+  assert.equal(resolveSubtitles(ccOnly).burn_in, false, "default is CC only; explicit legacy burn-in remains readable");
   assert.equal(resolveSubtitles(fixture()).burn_in, false);
+});
+
+test("shot looks validate names and keep face-sheet and speech identity while invalidating selected visuals", () => {
+  const doc = dramaFixture();
+  const baseLook = lookHash(doc);
+  const baseSpeech = speechHash(doc, fixtureLexicon());
+  const baseVisual = visualHash(doc);
+  doc.characters[0].shot_looks = [{ id: "present", appearance: "adult woman in a dark business suit, short black hair" }];
+  assert.equal(shotLooksProblem(doc.characters[0]), null);
+  assert.equal(visualHash(doc), baseVisual, "an unused catalog entry changes no picture");
+  const scene = doc.scenes.find((item) => item.id === "farewell");
+  scene.data.character_looks = { jingwei: "present" };
+  assert.deepEqual(paths(validateVideo(doc)), []);
+  assert.equal(shotCast(doc, scene)[0].appearance, doc.characters[0].shot_looks[0].appearance);
+  assert.deepEqual(shotCast(doc, scene)[0].voice, doc.characters[0].voice);
+  assert.equal(lookHash(doc), baseLook, "the approved base face sheet is reused");
+  assert.equal(speechHash(doc, fixtureLexicon()), baseSpeech, "a visual variant never changes a speaker");
+  const selected = visualHash(doc);
+  assert.notEqual(selected, baseVisual);
+  doc.characters[0].shot_looks[0].appearance = "adult woman in a red suit";
+  assert.notEqual(visualHash(doc), selected, "catalog edits invalidate even when the selected id stays the same");
+  scene.data.character_looks = { jingwei: "unknown" };
+  assert.ok(paths(validateVideo(doc)).includes("scenes[1].data.character_looks.jingwei"));
+  scene.data.character_looks = { ghost: "present" };
+  assert.ok(paths(validateVideo(doc)).includes("scenes[1].data.character_looks.ghost"));
+  doc.characters[0].shot_looks = [{ id: "xx", appearance: "coat", voice: { name: "other" } }];
+  assert.match(shotLooksProblem(doc.characters[0]), /only id/);
+  doc.characters[0].shot_looks = [{ id: "xx", appearance: "coat" }, { id: "xx", appearance: "hat" }];
+  assert.match(shotLooksProblem(doc.characters[0]), /duplicate/);
+  doc.characters[0].shot_looks = {};
+  assert.doesNotThrow(() => validateVideo(doc), "invalid catalogs produce lint errors rather than crashing");
+  assert.doesNotThrow(() => visualHash(doc), "status can hash a malformed script before reporting its lint errors");
+  assert.match(shotLooksProblem({ shot_looks: [{ id: ["present"], appearance: "coat" }] }), /only id/);
 });
 
 test("each line gets its speaker's voice, and a Gemini voice takes the emotion in its style", () => {

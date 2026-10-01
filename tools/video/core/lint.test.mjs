@@ -2,7 +2,8 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { dramaBrief, dramaFixture, explainerBrief, explainerFixture, fixture, fixtureBrief, fixtureLexicon, storyBrief, storyFixture, storySeries } from "./fixtures/load.mjs";
-import { billableEstimate, briefSections, checkBrief, lintVideo, stancePoints, stanceProblems, templateSimilarity } from "./lint.mjs";
+import { billableEstimate, briefSections, checkBrief, lintVideo, productionShotProblems, stancePoints, stanceProblems, templateSimilarity } from "./lint.mjs";
+import { estimateTimeline } from "./timeline.mjs";
 import { MIN_EPISODE_MINUTES, minEpisodeMinutes, textHash } from "./schema.mjs";
 import { sourceHashes } from "./translations.mjs";
 
@@ -17,6 +18,31 @@ test("the minimal example lints clean", () => {
   assert.deepEqual(result.errors, []);
   assert.deepEqual(result.warnings, []);
   assert.equal(result.summary.chapters.length, 3);
+});
+
+test("the production profile blocks stills, frozen tails and estimated or measured shots over eight seconds", () => {
+  const doc = dramaFixture();
+  const series = { production: { profile: { visual_tier: "clips" } } };
+  for (const scene of doc.scenes) delete scene.data.fit;
+  for (const scene of doc.scenes) for (const line of scene.lines) line.text = "走。";
+  const short = estimateTimeline(doc);
+  assert.deepEqual(productionShotProblems(doc, series, short), []);
+  doc.scenes[1].data.visual = "still";
+  doc.scenes[2].data.fit = "freeze";
+  const changed = structuredClone(short);
+  changed.scenes[0].end_frame = changed.scenes[0].start_frame + 241;
+  const errors = productionShotProblems(doc, series, changed);
+  assert.match(messages(errors), /animated clips, not stills/);
+  assert.match(messages(errors), /does not allow freeze-frame padding/);
+  assert.match(messages(errors), /8 seconds including pauses/);
+  assert.deepEqual(productionShotProblems(doc, null, changed), [], "legacy dramas retain their existing fitting rules");
+  const result = lintVideo(doc, context({ brief: dramaBrief(), series }));
+  assert.match(messages(result.errors), /animated clips, not stills/);
+  assert.match(messages(result.errors), /freeze-frame padding/);
+  delete doc.scenes[1].data.visual;
+  delete doc.scenes[2].data.fit;
+  doc.scenes[0].lines[0].text = "風".repeat(40);
+  assert.match(messages(lintVideo(doc, context({ brief: dramaBrief(), series })).errors), /8 seconds including pauses/);
 });
 
 test("schema errors stop lint before any other rule runs", () => {

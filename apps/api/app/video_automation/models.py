@@ -378,12 +378,16 @@ class VideoStagePrompt(Base):
 
     __tablename__ = "video_stage_prompts"
     __table_args__ = (
+        # A Short's experiment runs on the one stage the tutorials do not have, ``subject``,
+        # and the Shorts' prompts are kept under their own format (migration 0117).
         CheckConstraint(
             "stage IN ('planner', 'writer', 'verifier', 'listener', 'translator', "
-            "'caption_reviewer')",
+            "'caption_reviewer', 'subject')",
             name="ck_video_stage_prompt_stage",
         ),
-        CheckConstraint("format IN ('slides', 'drama')", name="ck_video_stage_prompt_format"),
+        CheckConstraint(
+            "format IN ('slides', 'drama', 'shorts')", name="ck_video_stage_prompt_format"
+        ),
     )
 
     stage: Mapped[str] = mapped_column(String(20), primary_key=True)
