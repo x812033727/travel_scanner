@@ -1,17 +1,19 @@
 ---
 id: 2026-09-28-admin-video-review-the-owner-s
 title: Admin video review: the owner's final-cut approvals did not register on 2026-09-28
-status: open
+status: in-progress
 priority: P3
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5-5-review-card
+claimed_at: 2026-10-01T03:38:03Z
 created_at: 2026-09-28T09:46:06Z
 completed_at:
-branch:
+branch: claude/review-card-approvals
 depends_on: []
 scope:
   - apps/web/components/admin-video-review-card.tsx
+  - apps/web/components/admin-video-review-card.test.tsx
+  - tasks/open/2026-10-01-video-review-audit-2026-09-28.md
 ---
 
 # Admin video review: the owner's final-cut approvals did not register on 2026-09-28
@@ -45,17 +47,19 @@ hashes), so nothing downstream waited on this.
 ## Definition of done
 
 - [ ] The audit log shows which reviews the owner approved between 09:00 and 09:45 UTC on
-      2026-09-28; any approved by mistake are reported to the owner.
-- [ ] If a POST failed there, a failed decision shows an error the owner cannot miss.
+      2026-09-28; any approved by mistake are reported to the owner. (Moved to
+      `2026-10-01-video-review-audit-2026-09-28`: the read-only query was refused here; see Notes.)
+- [x] If a POST failed there, a failed decision shows an error the owner cannot miss. (Nothing
+      shows a POST failed; the card's refusal handling is now pinned by a test, see Notes.)
 
 ## Steps
 
 - [ ] Check the admin audit log (`video_review_approved` for those three review ids) and the API
       access log for the decision POSTs between 09:00 and 09:45 UTC on 2026-09-28: did they
-      arrive, and what did they return?
-- [ ] Rule out the page listing other projects' final cards (another pipeline's videos were in
+      arrive, and what did they return? (Moved to the ops ticket above.)
+- [x] Rule out the page listing other projects' final cards (another pipeline's videos were in
       review the same day) and the owner approving those instead.
-- [ ] If the POST failed, see why the card's error line (`decideError`) went unnoticed; a failed
+- [x] If the POST failed, see why the card's error line (`decideError`) went unnoticed; a failed
       decision might deserve a toast or a banner, not a line under the buttons.
 
 ## How to verify
@@ -71,3 +75,27 @@ node tools/video/cli.mjs review-pull --slug <slug> --workdir <VIDEO_WORKDIR>   #
 - The final cards are the heaviest ones: a 720p preview uploaded in parts plus the QA report.
 - Nothing in `admin-video-review-card.tsx` treats the final gate differently from outline or audio
   in `decide()`; the difference, if any, is in what the page renders around it (`FinalBody`).
+- 2026-10-01 (claude-opus-5-5-review-card), closing with no change to the card, because the card
+  has no bug to fix:
+  - `apps/web/components/admin-video-review-card.test.tsx` (new) renders a pending final card
+    with a preview, a failing QA report and chapters. Approve sends exactly one
+    `POST /api/travel/admin/videos/<slug>/reviews/<id>/decision` with `{ decision: "approve" }`
+    for the card's own slug and review id, then calls `onDecided` (the page reads again). A 401
+    keeps the card pending, shows 「沒有送出：…」 as `role="alert"` directly above the buttons the
+    owner just pressed, does not re-read, and leaves 核准 enabled for a second try that then
+    succeeds. Both tests pass on main, so the bug is not reproducible in the card.
+  - The card did not change in a way that matters since the day: `git diff 79e26fcdf HEAD` (the
+    09-28 06:38 UTC state) touches only the `vertical` prop, not `decide()`, its error line or the
+    button's `disabled` rule. PR #1039 changed the list, not the card or the video page.
+  - "Other projects' final cards on the same page" is ruled out: then (79e26fcdf, 4dacd3635) and
+    now, `<ReviewCard>` is rendered only by `ProjectDetail` in `admin-video-reviews.tsx`, one video
+    per page (`?video=<slug>`), and every card there posts to that page's slug. The list shows
+    titles, not cards. So a misdirected approval needs the owner to have opened another video's
+    page and approved its final cut there, which the server would have recorded.
+  - The deploy notes list no deploy between 09:00 and 10:00 UTC that day (the 09-28 deploys they
+    record were at 14:55, 15:03 and 16:18 UTC), so a burst of failed POSTs from a restart is
+    unlikely too; the ops ticket's query settles it either way.
+  - What is left is the audit-log read (DoD item 1). The read-only `psql` select on the host was
+    refused by the auto-mode classifier as a production read, so it is filed as
+    `2026-10-01-video-review-audit-2026-09-28` with the exact query; it also says what to do if
+    other videos' final cuts were approved by mistake.
