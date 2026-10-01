@@ -1,13 +1,13 @@
 ---
 id: 2026-09-30-google-vids-zh-cn-article-still
 title: Google Vids zh-CN article still says the official pages give no age limit or Chinese-prompt answer
-status: in-progress
+status: done
 priority: P3
 area: docs
 owner: claude-opus-5-5-vids-article
 claimed_at: 2026-10-01T04:02:24Z
 created_at: 2026-09-30T14:15:20Z
-completed_at:
+completed_at: 2026-10-01T04:14:54Z
 branch: claude/google-vids-article-age-language
 depends_on: []
 scope:
