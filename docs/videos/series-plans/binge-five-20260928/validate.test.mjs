@@ -26,6 +26,16 @@ test('rejects an appearance that only holds for some episodes',()=>{
   }
 });
 
+test('accepts a look for some episodes and refuses one that is malformed or overlaps',()=>{
+  const look={id:'no-veil',from:4,to:12,appearance:'East Asian woman, 28, short black hair pinned back, a plain navy suit, no veil.',voice_style:'台灣國語；壓低聲音'};
+  const s=clone();s.setting.characters[0].looks=[look];
+  assert.deepEqual(validateSource(s),[]);
+  const overlap=clone();overlap.setting.characters[0].looks=[look,{...look,id:'veil',from:12,to:null}];
+  assert.ok(validateSource(overlap).some(e=>e.includes('both cover episode 12')));
+  const timed=clone();timed.setting.characters[0].looks=[{...look,appearance:`${look.appearance} Later a cane.`}];
+  assert.ok(validateSource(timed).some(e=>e.includes('look no-veil: appearance must not depend on the episode')));
+});
+
 test('rejects a missing required compilation tag',()=>{const s=clone();s.packaging.tags=s.packaging.tags.filter(t=>t!=='AI漫劇');assert.ok(validateSource(s).includes('missing required tag: AI漫劇'));});
 
 test('renders structured narrator casting in the human-readable setting',()=>{const s=clone();s.setting.world.narrator={provider:'gemini',name:'Sulafat',style:'沉穩台灣國語'};assert.ok(compile(s)['setting.md'].includes('gemini / Sulafat / 沉穩台灣國語'));});

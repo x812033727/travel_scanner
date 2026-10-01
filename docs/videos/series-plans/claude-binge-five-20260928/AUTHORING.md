@@ -30,6 +30,7 @@ export default {
       voice: { provider: "gemini", name, style },  // name 是 Gemini 內建聲音（Sulafat 留給旁白）；style 台灣國語的語氣指示
       personality, want, fear, secret, speech,     // speech 是口頭禪或說話習慣，一句話
       relationships: [{ with: id, kind }],
+      looks: [{ id, from, to, appearance, sheet_prompt, voice_style }],  // 可省略：某幾集換的樣子與聲音，見「換裝與變化」
     }],
     mysteries: [{ id: "m01", question, answer, planted, advanced: [], revealed, reserved: false }],
                                        // 8–12 條；planted/advanced/revealed 都是集數；answer 是確定答案
@@ -96,9 +97,19 @@ export default {
 
 - 只寫整部都不變的：年齡、體型、臉、髮型、基本衣著、不離身的辨識物。
 - 不寫集數、時間先後（later、at first、after episode…）、場合條件（in hospital、only during…）、別的角色名字；`validate.mjs` 會擋集數與時間字眼，其餘靠覆核。
-- 會出現、消失、易手或改變的衣物與道具（外套、徽章、輪椅、病人服、信物…）不寫進去；在 `continuity_notes` 逐集寫清楚在誰身上、哪一集換手或消失，由該集的鏡頭提示詞加上去。基底選「沒有那樣東西」的樣子，鏡頭只做加法。
+- 會出現、消失、易手或改變的衣物與道具（外套、徽章、輪椅、病人服、信物…）不寫進去；寫進下一節的 `looks`，或（只是某一鏡多一樣東西時）在 `continuity_notes` 逐集寫清楚在誰身上、哪一集換手或消失，由該集的鏡頭提示詞加上去。
 - 例外：幾乎每場都帶在身上、觀眾靠它認人的小物件（念珠、手錶）可以留，只寫物件本身、不寫動作條件；離身的那一拍寫進 `continuity_notes`，那幾拍用構圖避開。
-- 讓一集帶自己的外觀與聲音，是 `tasks/open/2026-09-29-let-a-drama-character-s-look.md` 要做的事；做好之前照上面寫。
+
+## 換裝與變化（`looks`）
+
+角色在連續幾集換了樣子（脫下制服、坐輪椅、穿病人服、婚紗只穿前三集）或換了說話方式（中風後），寫在那個角色底下的 `looks`。產線開始一集時，涵蓋這一集的 look 取代基底的 `appearance`（與給了的 `sheet_prompt`、`voice_style`），設定圖畫一次、站主核准一次，它涵蓋的其他集沿用（`docs/videos/SERIES.md`「換裝與變化」）。
+
+- `id`：小寫英數 2–24 字，同一角色內不重複，例如 `no-coat`、`wheelchair`。
+- `from`、`to`：集數，含頭尾；沒有 `to` 就到第 40 集。同一角色的兩個 look 不能涵蓋同一集。
+- `appearance`：那幾集**完整的**外觀，規則同基底（英文、ASCII、≤ 800 字元、不寫集數與時間字眼）；不是「基底再加什麼」，生圖模型每一鏡都整段讀它。
+- `sheet_prompt`、`voice_style`：可省略；`voice_style` 是那幾集台詞的 Gemini 語氣指示，取代基底的 `voice.style`。
+- 同一集之內的變化（同一場戲裡老了幾十歲）不是 look：另立一個角色（例如 `lin-old`），那一集兩個都列進 `characters`。
+- `validate.mjs` 用產線送設定集前的同一個檢查（`documentProblem`）擋形狀錯的 look。
 
 ## 原創與尺度
 

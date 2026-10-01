@@ -599,6 +599,19 @@ async def restore_video_series_episode(
         raise _series_refused(error) from error
 
 
+@admin_router.post("/series/{slug}/episodes/{number}/redo", response_model=SeriesOut)
+async def redo_video_series_episode(
+    slug: str, number: int, user: ContentManager, session: Session
+) -> SeriesOut:
+    """Make a story whose video was dropped again, under a new video slug: the way back that
+    ``/restore`` refuses, for a story series only and ``STORY_REDO_LIMIT`` times a story
+    (``redo_episode`` says why)."""
+    try:
+        return await drama_series.redo_episode(session, user, slug, number)
+    except SeriesRefused as error:
+        raise _series_refused(error) from error
+
+
 # The brand-story backlog (docs/videos/STORY.md §企劃清單與集數列): the admin page's way to what
 # the host command video-story-import does. The file's rules, the report and the audit record
 # are app.video_automation.stories'; this only carries the file there and the report back.

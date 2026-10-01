@@ -91,7 +91,16 @@ export function validateSource(source, expectedSlug = source?.series?.slug) {
       check(ROLES.has(c.role), p + "role must be lead, support or antagonist");
       check(chars(c.appearance ?? "") <= 800, p + "appearance over 800 characters");
       check(/^[\x20-\x7E]+$/.test(c.appearance ?? ""), p + "appearance must be English (ASCII) for the image model");
-      check(!TIMED_APPEARANCE.test(c.appearance ?? ""), p + `appearance must not depend on the episode ("${(c.appearance ?? "").match(TIMED_APPEARANCE)?.[0]}"); put changes in continuity_notes`);
+      check(!TIMED_APPEARANCE.test(c.appearance ?? ""), p + `appearance must not depend on the episode ("${(c.appearance ?? "").match(TIMED_APPEARANCE)?.[0]}"); put changes in the character's looks or continuity_notes`);
+      // A look's appearance stands in for the base one in the episodes it covers (AUTHORING.md,
+      // 換裝與變化): its shape is documentProblem's to check below, its words the base's rules.
+      for (const look of Array.isArray(c.looks) ? c.looks : []) {
+        if (!isText(look?.appearance)) continue;
+        const q = `${p}look ${look.id}: `;
+        check(chars(look.appearance) <= 800, q + "appearance over 800 characters");
+        check(/^[\x20-\x7E]+$/.test(look.appearance), q + "appearance must be English (ASCII) for the image model");
+        check(!TIMED_APPEARANCE.test(look.appearance), q + `appearance must not depend on the episode ("${look.appearance.match(TIMED_APPEARANCE)?.[0]}"); the look's from and to say when it is worn`);
+      }
       check(c.voice?.provider === "gemini" && GEMINI_VOICES.has(c.voice?.name) && isText(c.voice?.style), p + "voice must be a Gemini prebuilt voice with a style");
       check(Array.isArray(c.relationships) && c.relationships.length >= 1, p + "at least one relationship");
       check(Object.hasOwn(st.lexicon ?? {}, c.name), p + `name "${c.name}" must be in the lexicon`);

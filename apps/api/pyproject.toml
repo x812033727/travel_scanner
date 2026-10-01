@@ -23,6 +23,7 @@ dependencies = [
   "sqlalchemy>=2.0.43,<3",
   "uvicorn[standard]>=0.35,<1",
   "unidecode>=1.4,<2",
+  "opencc-python-reimplemented>=0.1.7,<0.2",
 ]
 
 [dependency-groups]
@@ -159,6 +160,11 @@ disable_error_code = [
 # exception classes.
 [[tool.mypy.overrides]]
 module = ["asyncpg", "asyncpg.*"]
+ignore_missing_imports = true
+
+# opencc-python-reimplemented ships no type information.
+[[tool.mypy.overrides]]
+module = ["opencc", "opencc.*"]
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]
