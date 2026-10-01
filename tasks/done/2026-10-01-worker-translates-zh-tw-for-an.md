@@ -1,13 +1,13 @@
 ---
 id: 2026-10-01-worker-translates-zh-tw-for-an
 title: Worker translates zh-TW for an English-narrated video and the final review sends its zh-TW title
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-zh-tw-translation
 claimed_at: 2026-10-01T10:41:13Z
 created_at: 2026-10-01T03:50:41Z
-completed_at:
+completed_at: 2026-10-01T10:52:06Z
 branch: claude/worker-zh-tw-for-english-narration
 depends_on:
   - 2026-09-29-language-choice-assumes-zh-tw-narration
