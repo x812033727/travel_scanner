@@ -2,45 +2,14 @@ from typing import Any
 
 import pytest
 
-from app.config import Settings
 from app.hotspots import simplified_names as module
 from app.hotspots.simplified_names import (
-    SimplifiedBatch,
-    SimplifiedName,
     acceptable,
     apply_conversions,
     convert_names,
     stored_label_count,
+    to_simplified,
 )
-
-
-class FakeProvider:
-    name = "gemini"
-    model = "gemini-3.8-flash"
-
-    def __init__(self, batches: list[SimplifiedBatch | Exception]) -> None:
-        self.batches = batches
-        self.payloads: list[dict[str, Any]] = []
-        self.closed = False
-
-    async def structured(
-        self, _schema: type, _name: str, instructions: str, payload: dict[str, Any]
-    ) -> tuple[SimplifiedBatch, dict[str, int]]:
-        self.payloads.append(payload)
-        self.instructions = instructions
-        result = self.batches[len(self.payloads) - 1]
-        if isinstance(result, Exception):
-            raise result
-        return result, {"input_tokens": 10, "output_tokens": 5}
-
-    async def close(self) -> None:
-        self.closed = True
-
-
-def batch(*pairs: tuple[str, str]) -> SimplifiedBatch:
-    return SimplifiedBatch(
-        items=[SimplifiedName(traditional=t, simplified=s) for t, s in pairs]
-    )
 
 
 def test_acceptable_keeps_conversions_and_rejects_rewrites() -> None:
@@ -57,67 +26,63 @@ def test_acceptable_keeps_conversions_and_rejects_rewrites() -> None:
     assert acceptable("中部電力 MIRAI TOWER", "中部电力_MIRAI_TOWER") is False
 
 
-@pytest.mark.asyncio
-async def test_only_replies_that_pass_the_check_are_kept(
-    monkeypatch: pytest.MonkeyPatch,
+def test_opencc_converts_characters_and_never_renames() -> None:
+    # The case the old model prompt had to forbid by name.
+    assert to_simplified("鄭王廟") == "郑王庙"
+    assert to_simplified("中部電力 MIRAI TOWER") == "中部电力 MIRAI TOWER"
+
+
+@pytest.mark.parametrize(
+    ("seeded", "simplified"),
+    [
+        # Seed names of Japanese places keep Japanese forms OpenCC does not know;
+        # these are the five the AI conversion got right and plain t2s did not.
+        ("楽水園", "乐水园"),
+        ("桜井二見ヶ浦", "樱井二见ヶ浦"),
+        ("円頓寺商店街", "圆顿寺商店街"),
+        ("有楽苑", "有乐苑"),
+        ("天神／薬院", "天神／药院"),
+    ],
+)
+def test_japanese_forms_are_simplified_like_their_traditional_ones(
+    seeded: str, simplified: str
 ) -> None:
-    provider = FakeProvider(
-        [
-            batch(
-                ("曼谷大皇宮", "曼谷大皇宫"),
-                ("高尾山", "高尾山"),
-                ("倫披尼公園", "是樂園"),
-                ("東京鐵塔", "东京铁塔"),
-            )
-        ]
-    )
-    monkeypatch.setattr(module, "research_provider", lambda *_a, **_k: provider)
+    assert to_simplified(seeded) == simplified
+    assert acceptable(seeded, simplified) is True
 
-    report = await convert_names(
-        ["曼谷大皇宮", "高尾山", "倫披尼公園", "東京鐵塔"], Settings()
-    )
 
-    assert report.converted == {"曼谷大皇宮": "曼谷大皇宫", "東京鐵塔": "东京铁塔"}
+def test_the_shinjitai_table_leaves_chinese_characters_and_kana_alone() -> None:
+    # 浜 is also a Chinese character (沙家浜); kana are never mapped.
+    assert to_simplified("沙家浜") == "沙家浜"
+    assert to_simplified("ヶ浦") == "ヶ浦"
+
+
+def test_names_are_sorted_into_converted_unchanged_and_rejected() -> None:
+    report = convert_names(["曼谷大皇宮", "高尾山", "東京鐵塔", "鄭王廟", "", "高尾山"])
+
+    assert report.converted == {
+        "曼谷大皇宮": "曼谷大皇宫",
+        "東京鐵塔": "东京铁塔",
+        "鄭王廟": "郑王庙",
+    }
+    # Deduplicated, and a blank name is skipped rather than reported.
     assert report.unchanged == ["高尾山"]
-    assert [pair[0] for pair in report.rejected] == ["倫披尼公園"]
-    assert report.calls == 1
-    assert provider.closed is True
-    assert "never 黎明寺" in provider.instructions
+    assert report.rejected == []
 
 
-@pytest.mark.asyncio
-async def test_a_name_the_model_skipped_is_reported_not_guessed(
+def test_a_conversion_that_fails_the_shape_check_is_rejected(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    provider = FakeProvider([batch(("曼谷大皇宮", "曼谷大皇宫"))])
-    monkeypatch.setattr(module, "research_provider", lambda *_a, **_k: provider)
+    # OpenCC's phrase table never rewrites a name like this; the check is what would
+    # catch it if it did, so stand in for a bad table entry.
+    bad = {"倫披尼公園": "是樂園"}
+    monkeypatch.setattr(module, "to_simplified", lambda name: bad.get(name, name))
 
-    report = await convert_names(["曼谷大皇宮", "還劍湖"], Settings())
+    report = convert_names(["倫披尼公園", "高尾山"])
 
-    assert report.converted == {"曼谷大皇宮": "曼谷大皇宫"}
-    assert report.missing == ["還劍湖"]
-
-
-@pytest.mark.asyncio
-async def test_names_are_batched_and_deduplicated(monkeypatch: pytest.MonkeyPatch) -> None:
-    provider = FakeProvider([batch(("甲", "甲")), batch(("乙", "乙"))])
-    monkeypatch.setattr(module, "research_provider", lambda *_a, **_k: provider)
-
-    report = await convert_names(["甲", "甲", "乙"], Settings(), batch_size=1)
-
-    assert [payload["names"] for payload in provider.payloads] == [["甲"], ["乙"]]
-    assert report.calls == 2
-
-
-@pytest.mark.asyncio
-async def test_one_failed_batch_does_not_end_the_run(monkeypatch: pytest.MonkeyPatch) -> None:
-    provider = FakeProvider([ValueError("boom"), batch(("曼谷大皇宮", "曼谷大皇宫"))])
-    monkeypatch.setattr(module, "research_provider", lambda *_a, **_k: provider)
-
-    report = await convert_names(["甲", "曼谷大皇宮"], Settings(), batch_size=1)
-
-    assert report.converted == {"曼谷大皇宮": "曼谷大皇宫"}
-    assert len(report.errors) == 1
+    assert report.converted == {}
+    assert report.unchanged == ["高尾山"]
+    assert report.rejected == [("倫披尼公園", "是樂園")]
 
 
 def test_stored_label_count_reports_what_a_run_would_touch() -> None:

@@ -165,6 +165,23 @@ test("an appearance that only holds for some episodes is refused", () => {
   }
 });
 
+test("a character's look for some episodes is accepted, and a malformed one refused", () => {
+  const look = { id: "no-coat", from: 27, appearance: "a woman of thirty with short black hair, a grey sweater, no coat and no badge", voice_style: "壓低、疲憊" };
+  const source = syntheticSource();
+  source.setting.characters[0].looks = [look];
+  assert.deepEqual(validateSource(source).errors, []);
+  for (const [bad, expected] of [
+    [{ ...look, to: 20 }, "to must be the number of the last episode"],
+    [{ ...look, from: 41 }, "after the last episode (40)"],
+    [{ ...look, appearance: "穿灰毛衣" }, "look no-coat: appearance must be English"],
+    [{ ...look, appearance: `${look.appearance}, later a scarf` }, "look no-coat: appearance must not depend on the episode"],
+  ]) {
+    const broken = syntheticSource();
+    broken.setting.characters[0].looks = [bad];
+    assert.ok(validateSource(broken).errors.some((e) => e.includes(expected)), expected);
+  }
+});
+
 test("a mystery must be paid where its schedule says", () => {
   const source = syntheticSource();
   const ep33 = source.chapters[3].episodes[2];

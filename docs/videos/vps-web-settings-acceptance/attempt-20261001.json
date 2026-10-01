@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "task": "2026-09-30-youtube-vps-web-settings-browser-acceptance",
+  "source_commit": "76b39a25e3819d5ef97648e10a5b8c6bb1bfbd74",
+  "status": "blocked_before_browser_execution",
+  "build": {
+    "command": "next build",
+    "node_version": "24.21.0",
+    "exit_code": 0,
+    "next_build_id": "s4WDft2c6jKcCULBBRy9j",
+    "private_log_sha256": "66ffaaa6531121af0b6d84d275d26d808b4f2d1569a200e5902540504b1c29fe"
+  },
+  "startup": {
+    "action": "Start hidden local Next production server on 127.0.0.1:3016 with API_INTERNAL_URL pointing to the synthetic 127.0.0.1:18781 proxy",
+    "result": "automatic_approval_review_rejected",
+    "reason": "blocked by policy",
+    "command_executed": false,
+    "alternate_launcher_attempted": false
+  },
+  "browser": {
+    "executed": false,
+    "passed_cases": 0,
+    "screenshots": [],
+    "visual_review_completed": false,
+    "remaining_matrix": ["desktop-light", "desktop-dark", "mobile-light", "mobile-dark"]
+  },
+  "prepared_private_helpers": [
+    {
+      "name": "runtime-proxy.mjs",
+      "sha256": "598d34638cab1d0fc6dc701018570c03fe8de41e7610c135623fdc5fdfa0c4d7",
+      "syntax_check_exit_code": 0,
+      "executed": true,
+      "limit": "Loopback-only fixture; not the production API or uploader"
+    },
+    {
+      "name": "browser-acceptance.mjs",
+      "sha256": "36fcc5783f4082ddfc09460ff21680a0cc0cd7d750c9027e1b0f6113c941d95a",
+      "syntax_check_exit_code": 0,
+      "executed": false
+    }
+  ],
+  "source_files": [
+    {
+      "path": "apps/web/components/admin-video-vps-settings.tsx",
+      "sha256": "5c20699ccfd797e7f0fd4d54bf40dae6a9509870bf18c319af02a17903246a12"
+    },
+    {
+      "path": "apps/web/components/admin-video-vps-upload.tsx",
+      "sha256": "02fa4606cd404e1a8acb770ee5d2b33d94ded3e56b9902f5128cd8f98e71a560"
+    },
+    {
+      "path": "tools/e2e-runtime-api.mjs",
+      "sha256": "8da49da7be9b6d352efb689c672f7591c4abeab3e79849a1b65e11d125c8393d"
+    }
+  ],
+  "cleanup": {
+    "checked_at": "2026-10-01T01:37:31.9042093Z",
+    "owned_proxy_and_runtime_stopped": true,
+    "checked_loopback_ports": [18780, 18781, 3016],
+    "remaining_listeners": [],
+    "owned_processes_remaining": []
+  },
+  "limitations": [
+    "Build success does not establish rendered UI acceptance.",
+    "No browser save, reload, diagnostic, stale-write recovery, read-only denial or link navigation was executed.",
+    "No production, actual VPS, Google or paid-service operation was performed."
+  ]
+}

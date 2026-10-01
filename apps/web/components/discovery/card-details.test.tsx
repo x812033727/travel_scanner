@@ -43,6 +43,32 @@ function detail(guides: DiscoveryItem[] = []) {
 beforeEach(() => { mock.locale = "zh-TW"; mock.detail = detail(); });
 afterEach(cleanup);
 
+describe("original language in the detail sources", () => {
+  const sourceLine = () => screen.getByRole("heading", { name: getFrontendFlowCopy(mock.locale).sources }).parentElement!.querySelector("p")!;
+
+  it.each([["zh-TW", "ja", "日文"], ["en", "ja", "Japanese"], ["en", "en", "English"]])("names %s readers' %s content instead of displaying its code", (reader, locale, expected) => {
+    mock.locale = reader;
+    mock.detail = { ...detail(), locale };
+    render(<DiscoveryDetails kind="hotspot" id="place" />);
+    expect(sourceLine().textContent).toContain(`${getDiscoveryCopy(reader).originalLanguage}: ${expected} ·`);
+  });
+
+  it.each(["zh-TW", "zh-CN", "en", "ja", "ko"])("names the original language even when it matches the %s reader", (reader) => {
+    mock.locale = reader;
+    mock.detail = { ...detail(), locale: reader.toLowerCase() };
+    render(<DiscoveryDetails kind="hotspot" id="place" />);
+    const expected = new Intl.DisplayNames(reader, { type: "language", fallback: "none" }).of(reader);
+    expect(expected).toBeTruthy();
+    expect(sourceLine().textContent).toContain(`${getDiscoveryCopy(reader).originalLanguage}: ${expected} ·`);
+  });
+
+  it.each(["xx", "und", "x", "not a locale!", "ja_JP", "", "   ", null, undefined])("keeps the original code without throwing when it cannot name %j", (locale) => {
+    mock.detail = { ...detail(), locale: locale as unknown as string };
+    expect(() => render(<DiscoveryDetails kind="hotspot" id="place" />)).not.toThrow();
+    expect(sourceLine().textContent).toContain(`${getDiscoveryCopy(mock.locale).originalLanguage}: ${locale ?? ""} ·`);
+  });
+});
+
 describe("compact discovery cards", () => {
   it.each([null, "", "javascript:alert(1)", "http://images.example.test/photo.jpg", "/photo.jpg"])("omits the entire media link without an authorized image: %s", (thumbnail_url) => {
     const { container } = render(<DiscoveryCard item={{ ...item, thumbnail_url }} />);
