@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-video-1m-ai-price-war
 title: Million-views batch 1: GPT-6 Sol and Luna vs Claude Opus 5.5 price war, what your bill looks like now
-status: open
+status: blocked
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-30T03:40:21Z
 created_at: 2026-09-28T02:30:45Z
 completed_at:
-branch: codex/p1-task-audit
+branch: claude/video-1m-production
 depends_on: []
 scope:
   - docs/videos/ai-price-war-gpt-6-sol-vs-opus-5-5
@@ -87,3 +87,11 @@ Next command once the token is paired and stance stored:
 - Keep the original ticket for unresolved listener/style and opinion/brief findings in both review reports, owner outline/channel-stance decisions, and actual published article CTA/link verification. The owner's production choice remains pending; this handoff authorizes no production, account, paid-generation or publication action.
 - Release the review claim to `open` after recording validation, so the next authorized production/editorial session can claim this scope. No duplicate follow-up ticket is needed.
 - Final validation with bundled Node **v24.21.0**: scoped lint exited **0**, **0 errors / 0 warnings**, 96 lines, 1,921 spoken units, estimated 8.5 minutes. The six-video receipt is preserved outside the repository at `C:/Users/x8120/.codex/tmp/p1-audit-20260929/six-video-lint-node24.json`.
+
+## 2026-09-30 製作進度（claude-fable-5-1／claude-opus-5-5）
+
+- 站主 09-28 選大綱 B（逐格讀價目表）；重寫 → 查核一輪（34 確認、1 修正）→ 聽眾審稿。Sonnet 5 已換成 9-28 發布、同價的 Sonnet 5.5；GPT-6.1 Sol（9-29）加了一段。
+- 旁白：zh-TW 整批合成時有一段切錯（每句聽到的是下一句），逐句重錄後正常；改寫四輪後剩 1 句（pc4t）送旁白卡，站主核准。最長畫面 13.7 秒。
+- `qa` 10／11，站主核准成片（292177691851）。四語字幕翻譯＋審稿（英文用官方的 cache read／cache write／cached input）。
+- 配音 en 剩 7 句（都是 cache 聽成 cash、$9.60 寫成 960 之類）、ja 剩 8 句（短／長 同音、5.5 被聽成 3.5）、ko 剩 1 句。`package` 4／4（metadata.json 867ecef46665）→ 上架確認自動核准 → 語言卡已送出、等站主。剩下的是站主的事：照 `upload/UPLOAD.md` 在 Studio 上傳成私人、在「語言」頁加三條配音音軌並在語言卡按「已在 Studio 上傳配音」、在「可以上架」卡貼網址與上架時間。本機工作區 `C:/Users/x8120/mokaair-work/videos/<slug>/`（`upload/`、`dubs/<語系>.m4a`）。
+- 會過期：GPT-5.6 Sol 促銷價至少到 2026-11-21、Gemini 3.8 Flash 促銷價到 2026-12-31；上架前重查這兩列。
