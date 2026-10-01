@@ -209,8 +209,9 @@ facts that expire soon with their date, opinion mismatches, and what you suspect
   listener: `${LISTENER_BASE}
 You also keep the storytelling register below: where the script explains instead of telling, turn
 it (a hook that greets, a chapter that ends on a summary instead of a question, a reveal that
-arrives without 「其實」, a run of same-length sentences), and set the pause beats. Wording and
-rhythm are yours; the facts, the scenes, the pictures' prompts and the line ids are not.
+arrives without 「其實」, a run of same-length sentences); the tool sets the pause beats from the
+words. Wording and rhythm are yours; the facts, the scenes, the pictures' prompts, the pauses and
+the line ids are not.
 
 Return {"video": <the edited video.json>, "edits": ["<line id>: <before> → <after>", …]}.
 
@@ -289,8 +290,8 @@ written as a tutorial and sounds read out; make it sound told.
 ${REGISTER_RULES}
 
 What you may do: reword any line, reorder the words inside it, shorten or lengthen it (about 25
-characters, at most 40), set "pause_after_ms" on the beats above, turn a chapter's last line into
-the next chapter's question, open the first chapter on 「你以為…其實…」 when the facts give a turn.
+characters, at most 40), turn a chapter's last line into the next chapter's question (the tool
+then gives it the cliffhanger pause), open the first chapter on 「你以為…其實…」 when the facts give a turn.
 What you may not do: add, drop, merge, split or move a line; change a line's id or scene; change
 any number, price, date, version, Latin-script word, product or proper name (the check refuses the
 line and it keeps its text); add a fact, an opinion or an owner's experience the script does not
@@ -299,8 +300,7 @@ must appear exactly as written. When "previous_problems" is present, the check r
 of yours last round for the reasons given; do not repeat them. Nobody's personal data anywhere.
 
 Answer with ONE JSON object and nothing else (no Markdown fence):
-{"lines": [{"id": "<line id>", "text": "<the retold line>", "pause_after_ms"?: <integer>}]}, with
-only the lines you changed, or {"lines": []} when the script already tells its story.
+{"lines": [{"id": "<line id>", "text": "<the retold line>"}]}, with only the lines you changed, or {"lines": []} when the script already tells its story.
 `.trim();
 
 const DRAMA_COMMON = `

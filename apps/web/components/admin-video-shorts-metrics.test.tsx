@@ -19,6 +19,11 @@ const items: ShortMetrics[] = [
     slug: "taken-down", title: "已經拿掉的", line: "lab", series: "daily", youtube_video_id: "ShortVid003", published_at: "2026-10-13T11:30:00Z", removed_at: "2026-10-14T09:00:00Z",
     snapshots: [snapshot("now", 0, 0, 0, "2026-10-13T12:00:00Z")] as ShortMetrics["snapshots"],
   },
+  {
+    // Dropped fifty hours after it went public, while still up on YouTube.
+    slug: "dropped-short", title: "撤掉的那支", line: "cut", series: "daily", youtube_video_id: "ShortVid004", published_at: "2026-10-10T11:30:00Z", removed_at: null, dropped_at: "2026-10-12T13:30:00Z",
+    snapshots: [snapshot("d1", 300, 5, 1, "2026-10-11T12:00:00Z")] as ShortMetrics["snapshots"],
+  },
 ];
 
 function stubFetch(body: unknown, status = 200) {
@@ -67,6 +72,23 @@ describe("why a window has no number", () => {
       expect(blankReason("now", short, now)).toBe("removed");
     }
     expect(blankReason("d1", { published_at: null, removed_at: short.removed_at }, at(61))).toBe("removed");
+  });
+
+  it("is that the Short was dropped, for every window that had not closed by then", () => {
+    // Dropped sixty hours after it went public: day 1 had closed, day 3 and 7 had not.
+    const short = { published_at: published, removed_at: null, dropped_at: new Date(at(60)).toISOString() };
+    for (const now of [at(61), at(30 * 24)]) {
+      expect(blankReason("d1", short, now)).toBe("missed");
+      expect(blankReason("d3", short, now)).toBe("dropped");
+      expect(blankReason("d7", short, now)).toBe("dropped");
+      expect(blankReason("now", short, now)).toBe("dropped");
+    }
+    expect(blankReason("d1", { published_at: null, dropped_at: short.dropped_at }, at(61))).toBe("dropped");
+    // Taken down first and dropped later, or the other way round: the earlier one is why.
+    const both = (removed: number, dropped: number) => ({ published_at: published, removed_at: new Date(at(removed)).toISOString(), dropped_at: new Date(at(dropped)).toISOString() });
+    expect(blankReason("d7", both(80, 90), at(200))).toBe("removed");
+    expect(blankReason("d7", both(90, 80), at(200))).toBe("dropped");
+    expect(blankReason("d3", both(100, 80), at(200))).toBe("dropped");
   });
 });
 
@@ -117,6 +139,18 @@ describe("ShortsMetrics", () => {
     expect(row.textContent).not.toMatch(/時間還沒到|等下一次讀取/);
     fireEvent.click(within(header).getByRole("button", { name: "打開這支" }));
     expect(onOpenVideo).toHaveBeenCalledWith("taken-down");
+  });
+
+  it("marks a Short that was dropped and stops promising its numbers", async () => {
+    vi.useFakeTimers({ now: new Date(NOW), toFake: ["Date"] });
+    stubFetch({ items });
+    render(<ShortsMetrics onOpenVideo={vi.fn()} />);
+    const header = await screen.findByRole("rowheader", { name: /撤掉的那支/ });
+    expect(header.textContent).toContain("放棄");
+    const row = header.closest("tr") as HTMLElement;
+    expect(cell(row, "d1").textContent).toContain("300");
+    for (const period of ["d3", "d7", "now"]) expect(cell(row, period).textContent).toBe("已放棄，不再讀取");
+    expect(row.textContent).not.toMatch(/時間還沒到|等下一次讀取/);
   });
 
   it("makes nothing of the numbers: no sum, no average, no rate, no rank", async () => {

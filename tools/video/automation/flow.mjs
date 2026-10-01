@@ -19,7 +19,7 @@ import { emptyLexicon } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
 import { articlePath, SITE } from "../core/metadata.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, UsageError } from "../core/paths.mjs";
-import { eachLine, LINE_ID, MAX_PAUSE_MS, spokenText } from "../core/schema.mjs";
+import { eachLine, LINE_ID, spokenText } from "../core/schema.mjs";
 import { writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckBinding, scriptCheckMatches, scriptCheckUnbound } from "../core/script-check.mjs";
 import { LOCALE_PARTS, readLanguages, writeLanguages } from "../core/stages.mjs";
@@ -32,7 +32,7 @@ import { discussStep } from "./discuss.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
 import { advanceStory, fixStoryPrompts } from "./story.mjs";
 import { instructionsFor, parseAnswer, references } from "./prompts.mjs";
-import { registerLine, registerSummary } from "./register.mjs";
+import { registerLine, registerSummary, setPauseBeats } from "./register.mjs";
 import { rewriteProblems } from "./rewrite.mjs";
 import { advanceCompilation, startCompilation } from "./compilation.mjs";
 import { castFrom, episodeBrief, isExplainerOneOff, isOneOff, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
@@ -879,7 +879,9 @@ export class Automation {
     // A one-off's story bible stands where the setting book does (docs/videos/DRAMA-FLOW.md,
     // section 2): the site hands it over as "setting", and its one outline is the episode's beats.
     const oneOff = isOneOff(series);
-    const cast = castFrom(context.setting?.body_json);
+    // The cast as this episode wears it: a character's look that covers the episode stands in for
+    // the book's appearance, sheet prompt and voice style (docs/videos/SERIES.md, 換裝與變化).
+    const cast = castFrom(context.setting?.body_json, episode.number);
     const beats = episode.beats ?? {};
     const state = {
       slug,
@@ -1274,7 +1276,15 @@ export class Automation {
   /** A stage's video.json as it is saved: the owner's settings and the series' cast over what the model returned. */
   settled(state, video) {
     const cast = state.series ? readJson(path.join(docDir(state.slug, this.ctx.root), "series.json"), {}).characters ?? [] : null;
-    return settle(video, { slug: state.slug, settings: this.settings, sourceGuide: state.source_guide, root: this.ctx.root, format: state.format, series: state.series ?? null, cast, stylePreset: state.style_preset ?? null });
+    const settledVideo = settle(video, { slug: state.slug, settings: this.settings, sourceGuide: state.source_guide, root: this.ctx.root, format: state.format, series: state.series ?? null, cast, stylePreset: state.style_preset ?? null });
+    // The storytelling register's pause beats are the tool's (register.mjs setPauseBeats): set on
+    // every save of a script whose prompts carry the register, before lint, whichever stage wrote it.
+    return this.usesRegister(state) ? setPauseBeats(settledVideo) : settledVideo;
+  }
+
+  /** Whether a video's planner, writer and listener read REGISTER_RULES (prompts.mjs INSTRUCTIONS): a slides video without a variant. */
+  usesRegister(state) {
+    return state.format !== "drama" && !state.story && this.variantOf(state) === null;
   }
 
   /**
@@ -1584,32 +1594,25 @@ export class Automation {
         refused.push(`${id}: the retold line is empty`);
         continue;
       }
-      const pause = entry.pause_after_ms;
-      if (pause !== undefined && !(Number.isInteger(pause) && pause >= 0 && pause <= MAX_PAUSE_MS)) {
-        refused.push(`${id}: pause_after_ms must be an integer from 0 to ${MAX_PAUSE_MS}`);
-        continue;
-      }
-      if (text === was && (pause === undefined || pause === line.pause_after_ms)) continue;
+      // A "pause_after_ms" in the answer is ignored: the tool sets the beats from the retold text below.
+      if (text === was) continue;
       const problems = rewriteProblems(was, text, { lexicon });
       if (problems.length) {
         refused.push(`${id}: ${problems.join("; ")}`);
         continue;
       }
-      accepted.push({ id, before: was, after: text, ...(pause !== undefined ? { pause_after_ms: pause } : {}) });
+      accepted.push({ id, before: was, after: text });
     }
     if (accepted.length) {
-      for (const { id, after, pause_after_ms } of accepted) {
+      for (const { id, after } of accepted) {
         const line = lines.get(id);
         line.text = after;
         // The retold line is what the voice says now; a spoken form written for the old text would fail lint.
         delete line.say;
         delete line.say_for;
-        if (pause_after_ms !== undefined) {
-          if (pause_after_ms > 0) line.pause_after_ms = pause_after_ms;
-          else delete line.pause_after_ms;
-        }
       }
-      writeVideo(dir, video);
+      // The beats follow the retold text (a new closing question, a 「其實」 moved), and only the tool sets them.
+      writeVideo(dir, setPauseBeats(video));
       const errors = lintErrors(this.ctx, slug);
       if (errors.length) {
         writeFileSync(file, source);

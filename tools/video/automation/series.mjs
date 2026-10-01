@@ -88,6 +88,8 @@ export function documentProblem(kind, answer, job) {
     for (const character of body.characters) {
       if (!isObject(character) || !CHARACTER_KEYS.every((key) => isText(character[key]))) return "every character needs id, name and appearance";
       if (!/^[a-z][a-z0-9-]{1,23}$/.test(character.id)) return `character id "${character.id}" must be lowercase ascii, 2 to 24 characters`;
+      const looks = looksProblem(character, series);
+      if (looks) return looks;
     }
     if (kind === "bible") {
       // The one-off's story bible (apps/api/app/video_automation/series.py doc_problem): the
@@ -252,17 +254,66 @@ export function scriptVerdict(check, series) {
   return { passed: problems.length === 0, problems };
 }
 
-/** The cast as video.json wants it, from the setting book, by id. */
-export function castFrom(setting) {
+/**
+ * A character's looks (docs/videos/SERIES.md, 換裝與變化): `looks: [{ id, from, to?, appearance,
+ * sheet_prompt?, voice_style? }]` on the character in the setting book. A look covers episodes
+ * `from` to `to` (to the series' end without `to`) and, in those episodes, stands in for the
+ * book's appearance (and sheet prompt and voice style, when it has its own): the image prompts
+ * take it word for word, so it is the whole look, not a change to the base one.
+ */
+const LOOK_ID = /^[a-z][a-z0-9-]{1,23}$/;
+const lastEpisodeOf = (look) => (look.to === undefined || look.to === null ? Infinity : look.to);
+const usableLook = (look) => isObject(look) && isText(look.appearance) && Number.isInteger(look.from) && (look.to === undefined || look.to === null || Number.isInteger(look.to));
+
+/** Why a character's looks cannot be filed, or null. A character without looks has nothing to check. */
+export function looksProblem(character, series = null) {
+  if (character.looks === undefined) return null;
+  const who = `character ${character.id}`;
+  if (!Array.isArray(character.looks)) return `${who}: looks must be a list`;
+  const seen = new Set();
+  for (const look of character.looks) {
+    if (!isObject(look) || !isText(look.id) || !isText(look.appearance)) return `${who}: every look needs an id and an appearance`;
+    const where = `${who}, look ${look.id}`;
+    if (!LOOK_ID.test(look.id)) return `${where}: the id must be lowercase ascii, 2 to 24 characters`;
+    if (seen.has(look.id)) return `${who}: two looks are called ${look.id}`;
+    seen.add(look.id);
+    if (!Number.isInteger(look.from) || look.from < 1) return `${where}: from must be the number of the first episode it covers`;
+    if (look.to !== undefined && look.to !== null && (!Number.isInteger(look.to) || look.to < look.from)) return `${where}: to must be the number of the last episode it covers, not before from (leave it out to cover the rest of the series)`;
+    if (Number.isInteger(series?.planned_episodes) && look.from > series.planned_episodes) return `${where}: from ${look.from} is after the last episode (${series.planned_episodes})`;
+    for (const key of ["sheet_prompt", "voice_style"]) if (look[key] !== undefined && !isText(look[key])) return `${where}: ${key} must be text when it is given`;
+    if (look.voice_style !== undefined && character.voice?.provider !== "gemini") return `${where}: voice_style needs the character's own Gemini voice`;
+  }
+  const ordered = [...character.looks].sort((a, b) => a.from - b.from);
+  for (let index = 1; index < ordered.length; index++) {
+    if (ordered[index].from <= lastEpisodeOf(ordered[index - 1])) return `${who}: looks ${ordered[index - 1].id} and ${ordered[index].id} both cover episode ${ordered[index].from}; one look per episode`;
+  }
+  return null;
+}
+
+/** The look a character wears in an episode, or null for the setting book's own appearance. */
+export function lookFor(character, episode) {
+  if (!Number.isInteger(episode) || !Array.isArray(character?.looks)) return null;
+  return character.looks.find((look) => usableLook(look) && look.from <= episode && episode <= lastEpisodeOf(look)) ?? null;
+}
+
+/**
+ * The cast as video.json wants it, from the setting book, by id. Given the episode, a character
+ * with a look covering it takes the look's appearance, sheet prompt and voice style; everything
+ * downstream (the sheet and shot prompts, the series' sheet store, the narration) reads these.
+ */
+export function castFrom(setting, episode = null) {
   const characters = Array.isArray(setting?.characters) ? setting.characters : [];
   return characters
     .filter((character) => isObject(character) && isText(character.id))
     .map((character) => {
-      const entry = { id: character.id, name: String(character.name ?? character.id), appearance: String(character.appearance ?? "").slice(0, 800) };
+      const look = lookFor(character, episode);
+      const entry = { id: character.id, name: String(character.name ?? character.id), appearance: String(look?.appearance ?? character.appearance ?? "").slice(0, 800) };
       if (isObject(character.voice) && isText(character.voice.provider) && isText(character.voice.name)) {
-        entry.voice = { provider: character.voice.provider, name: character.voice.name, ...(isText(character.voice.style) ? { style: character.voice.style.slice(0, 400) } : {}) };
+        const style = isText(look?.voice_style) && character.voice.provider === "gemini" ? look.voice_style : character.voice.style;
+        entry.voice = { provider: character.voice.provider, name: character.voice.name, ...(isText(style) ? { style: style.slice(0, 400) } : {}) };
       }
-      if (isText(character.sheet_prompt)) entry.sheet_prompt = character.sheet_prompt.slice(0, 600);
+      const sheetPrompt = isText(look?.sheet_prompt) ? look.sheet_prompt : character.sheet_prompt;
+      if (isText(sheetPrompt)) entry.sheet_prompt = sheetPrompt.slice(0, 600);
       return entry;
     })
     .sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));

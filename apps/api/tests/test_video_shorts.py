@@ -1656,8 +1656,28 @@ async def test_the_numbers_are_listed_as_they_were_stored(site: Site) -> None:
         "youtube_video_id",
         "published_at",
         "removed_at",
+        "dropped_at",
         "snapshots",
     }, "no score, rank or rate of the site's own"
+    assert first.dropped_at is None
+
+
+@pytest.mark.asyncio
+async def test_a_dropped_public_short_is_listed_with_when_it_was_dropped(site: Site) -> None:
+    """stats.read_due reads a dropped Short no more, so the table has to say why it is empty."""
+    dropped = NOW - timedelta(hours=2)
+    await seed_projects(
+        site,
+        1,
+        "dropped",
+        format="shorts",
+        shorts_line="lab",
+        youtube_video_id="d" * 11,
+        dropped_at=dropped,
+    )
+    async with site.session() as session:
+        view = await overview.metrics_view(session)
+    assert [(item.slug, item.dropped_at) for item in view.items] == [("dropped-000", dropped)]
 
 
 @pytest.mark.asyncio
