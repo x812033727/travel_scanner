@@ -91,7 +91,8 @@ async def test_lite_incompatible_jobs_spend_nothing(
     with pytest.raises(MediaJobFailed) as refused:
         await submit_job(ctx, "clip", payload)
     assert refused.value.code == "video_media_model_not_allowed"
-    assert provider.requests == [] and ctx.session.added == [] and ctx.session.commits == 0
+    assert provider.requests == [] and ctx.session.added == []  # type: ignore[attr-defined]
+    assert ctx.session.commits == 0  # type: ignore[attr-defined]
 
 
 def _row(**changes: Any) -> VideoAutomationSettings:
