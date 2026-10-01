@@ -6,6 +6,9 @@ import test from "node:test";
 import { EXIT, freshIds, main } from "./cli.mjs";
 import { FIXTURE_FILE, sandbox } from "./core/fixtures/load.mjs";
 
+// The fixture videos run seconds; the eight-minute floor has tests of its own.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
+
 function capture(overrides = {}) {
   const out = { stdout: "", stderr: "" };
   const ctx = {

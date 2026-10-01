@@ -9,6 +9,9 @@ import { eachLine } from "../core/schema.mjs";
 import { buildTimeline, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "../core/timeline.mjs";
 import { assembleItem, ITEM_IDS } from "./checks.mjs";
 
+// These short script fixtures exercise the actual timeline floor, not narration estimates.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
+
 test("an old passing assemble item is rechecked against the current long-video floor", () => {
   const doc = { format: "slides", category: "ai-terms", slug: "ai-term-token" };
   const timeline = { fps: 30, total_frames: 14_399, speech_hash: "speech" };

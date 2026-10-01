@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { presentationTimeline } from "./branding.mjs";
-import { isKnowledgeLongform, knowledgeDurationProblems, KNOWLEDGE_MIN_SECONDS, KNOWLEDGE_TARGET_SECONDS } from "./duration.mjs";
+import { effectiveEpisodeMinutes, isKnowledgeLongform, knowledgeDurationProblems, KNOWLEDGE_MIN_SECONDS, KNOWLEDGE_TARGET_SECONDS } from "./duration.mjs";
 import { dramaFixture, explainerFixture, fixture, storyFixture } from "./fixtures/load.mjs";
 
 const doc = { format: "slides", category: "explainer", slug: "catalogue-example" };
@@ -12,6 +12,20 @@ function cut(frames = 14_400, branding = null) {
   const presented = presentationTimeline(timeline, applied);
   return { doc, timeline, presented, timelineCurrent: true, checks: { ok: true, speech_hash: timeline.speech_hash, metrics: { frames: presented.total_frames }, ...(applied ? { branding: applied } : {}) } };
 }
+
+test("legacy explainer targets use ten minutes and explicit valid targets keep their length", () => {
+  for (const legacy of [undefined, null, 0, 3, 7]) assert.equal(effectiveEpisodeMinutes(legacy, "flat-explainer"), 10);
+  for (const target of [8, 9, 10, 13, 20]) assert.equal(effectiveEpisodeMinutes(target, "flat-explainer"), target);
+  assert.equal(effectiveEpisodeMinutes(3, "cinematic-3d"), 3, "ordinary drama keeps its target");
+  assert.equal(effectiveEpisodeMinutes(13, "anime-2d"), 13, "brand stories keep thirteen minutes");
+  assert.equal(effectiveEpisodeMinutes(undefined, "cinematic-3d"), undefined, "the caller retains its ordinary default");
+});
+
+test("malformed explainer targets fail instead of making a writer use a clipped duration", () => {
+  for (const invalid of [21, Infinity, NaN, 8.5, "10", false]) {
+    assert.throws(() => effectiveEpisodeMinutes(invalid, "flat-explainer"), RangeError);
+  }
+});
 
 test("knowledge catalogues are covered without changing ordinary drama, compilations or Shorts", () => {
   assert.equal(KNOWLEDGE_MIN_SECONDS, 480);

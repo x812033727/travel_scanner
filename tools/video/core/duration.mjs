@@ -2,12 +2,27 @@
 // estimates are deliberately not accepted here: QA reads the current TTS timeline and the
 // frame count assemble checked on the finished cut. Channel bookends never count as content.
 import { FPS } from "./timeline.mjs";
+import { EXPLAINER_PRESET } from "./drama.mjs";
 
 export const KNOWLEDGE_MIN_SECONDS = 480;
 export const KNOWLEDGE_TARGET_SECONDS = 600;
 const LONG_FORMATS = new Set(["slides", "screencast", "drama"]);
 const KNOWLEDGE_CATEGORIES = new Set(["ai-terms", "explainer", "story"]);
 const CATALOGUE_SLUG = /^(?:sothatswhy-|ai-term-|story-)/;
+
+/**
+ * The request length used by every explainer writing path, including old auto.json files.
+ * Missing or short legacy targets take the reviewed ten-minute default; an explicit 8–20
+ * minute target stays the owner's choice. Other drama presets and brand stories keep theirs.
+ */
+export function effectiveEpisodeMinutes(minutes, preset) {
+  if (preset !== EXPLAINER_PRESET) return minutes;
+  if (minutes === undefined || minutes === null) return KNOWLEDGE_TARGET_SECONDS / 60;
+  if (!Number.isSafeInteger(minutes) || minutes > 20) {
+    throw new RangeError("an explainer target must be an integer no longer than 20 minutes");
+  }
+  return minutes < KNOWLEDGE_MIN_SECONDS / 60 ? KNOWLEDGE_TARGET_SECONDS / 60 : minutes;
+}
 
 /** Ordinary drama episodes, binge compilations and Shorts retain their own duration rules. */
 export function isKnowledgeLongform(doc) {

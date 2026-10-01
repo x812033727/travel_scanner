@@ -34,6 +34,8 @@ StylePreset = Literal["cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", 
 # The illustrated explainer (docs/videos/so-thats-why/): narrator only, no cast. Only a one-off
 # may use it; a long series and a story series are written from prompts that need a cast.
 EXPLAINER_PRESET: StylePreset = "flat-explainer"
+# The slides route and other long-form videos have an eight-minute minimum (migration 0117).
+EPISODE_MIN_MINUTES = 8
 EXPLAINER_MIN_MINUTES = 8
 EXPLAINER_MAX_MINUTES = 20
 EXPLAINER_DEFAULT_MINUTES = 10
@@ -163,8 +165,8 @@ class _SettingsFields(StrictModel):
     topic_from_site: bool
     topic_from_search: bool
     voice: VoiceSettings
-    target_minutes_min: int = Field(ge=3, le=30)
-    target_minutes_max: int = Field(ge=3, le=30)
+    target_minutes_min: int = Field(ge=EPISODE_MIN_MINUTES, le=30)
+    target_minutes_max: int = Field(ge=EPISODE_MIN_MINUTES, le=30)
     caption_locales: list[CaptionLocale] = Field(max_length=4)
     max_drafts_per_month: int = Field(ge=0, le=60)
     monthly_token_budget_millions: int = Field(ge=1, le=500)

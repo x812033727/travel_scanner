@@ -24,6 +24,9 @@ import { loadProject } from "../core/state.mjs";
 import { locateFfmpeg } from "./ffmpeg.mjs";
 import { writeSyntheticClips, writeSyntheticKeyframes, writeSyntheticMusic, writeSyntheticNarration, writeSyntheticSfx, writeSyntheticTrack } from "./synthetic.mjs";
 
+// The fixtures run seconds, under the eight-minute floor lint and qa keep for real episodes.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
+
 const STEPS = ["render", "assemble", "review", "package"];
 // illustrated (docs/videos/ILLUSTRATED.md): slides with still shots between the cards, the owner's
 // music file and a sound-effect set, so assemble mixes motion segments, drifting cards,

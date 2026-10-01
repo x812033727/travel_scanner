@@ -50,6 +50,8 @@ scope:
   - tools/video/automation/series.test.mjs
   - tools/video/cli.test.mjs
   - tools/video/core/drama.mjs
+  - tools/video/core/duration.mjs
+  - tools/video/core/duration.test.mjs
   - tools/video/core/explainer.test.mjs
   - tools/video/core/lint.mjs
   - tools/video/core/lint.test.mjs
@@ -59,6 +61,7 @@ scope:
   - tools/video/core/state.test.mjs
   - tools/video/dubs/captions-package.test.mjs
   - tools/video/dubs/dubs.test.mjs
+  - tools/video/dubs/freshness.test.mjs
   - tools/video/dubs/plan.test.mjs
   - tools/video/long-form
   - tools/video/media/clips.test.mjs
@@ -66,6 +69,7 @@ scope:
   - tools/video/qa/checks.mjs
   - tools/video/qa/checks.test.mjs
   - tools/video/qa/cli.mjs
+  - tools/video/qa/duration.test.mjs
   - tools/video/qa/qa.test.mjs
   - tools/video/review/sync.test.mjs
   - tools/video/screencast/screencast.test.mjs

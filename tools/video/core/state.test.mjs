@@ -16,6 +16,9 @@ import { approvedEpisodes, COMPILATION_STEPS, lintProject, loadProject, LOOK_STE
 import { estimateTimeline, speechHash, visualHash } from "./timeline.mjs";
 import { compilationSandbox, EPISODES, sha, writeEpisode, writeTranslations } from "../compile/fixture.mjs";
 
+// The fixture videos run seconds; the eight-minute floor has tests of its own.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
+
 /** What the TTS stage will write: a timeline with the hash of the script it was built from. */
 function writeTimeline(box) {
   const project = loadProject({ slug: box.slug, root: box.root });
