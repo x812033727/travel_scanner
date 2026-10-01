@@ -15,7 +15,7 @@ import { eachLine, textHash } from "../core/schema.mjs";
 import { runCaptions, writeLanguages } from "../core/stages.mjs";
 import { COMPILATION_STEPS, DRAMA_STEPS, dubArtifacts, loadProject, SLIDES_STEPS } from "../core/state.mjs";
 import { formatClock, SAMPLE_RATE, visualHash } from "../core/timeline.mjs";
-import { dubScript, translationHash } from "../dubs/plan.mjs";
+import { dubFingerprint, dubScript, translationHash } from "../dubs/plan.mjs";
 import { COMPILATION_ITEM_IDS, ITEM_IDS } from "../qa/checks.mjs";
 import { encodeWav } from "../tts/wav.mjs";
 import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeTranslations } from "../compile/fixture.mjs";
@@ -313,7 +313,7 @@ test("a branded final submission reports the full duration and shifted chapters 
   const project = loadProject({ slug: box.slug, root: box.root });
   const files = dubArtifacts(box.workdir, "en");
   mkdirSync(files.dir, { recursive: true });
-  const dub = presentationTimeline({ ...timeline, locale: "en", format: "m4a", translation_hash: translationHash(dubScript(project.doc, project.translations.en, "en").doc), tempo_max: 1 }, applied);
+  const dub = presentationTimeline({ ...timeline, locale: "en", format: "m4a", translation_hash: translationHash(dubScript(project.doc, project.translations.en, "en").doc), speech_fingerprint: dubFingerprint(project, "en"), tempo_max: 1 }, applied);
   writeFileSync(files.timeline, JSON.stringify(dub));
   const track = Buffer.from("already branded English audio");
   writeFileSync(files.track("m4a"), track);
