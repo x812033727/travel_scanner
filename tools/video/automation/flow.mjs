@@ -13,7 +13,7 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
-import { approvalState, approve, sha256File } from "../core/approvals.mjs";
+import { approvalState, approve, GATES, sha256File } from "../core/approvals.mjs";
 import { EXPLAINER_PRESET, illustrated, SLIDES_PRESET } from "../core/drama.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
@@ -1797,6 +1797,9 @@ export class Automation {
     const dir = docDir(slug, ctx.root);
     const workdir = this.workdir(slug);
     if (!existsSync(path.join(dir, "video.json"))) return null;
+    // A tidied video's final.mp4 is gone, so its final approval reads as absent: say why its new
+    // parts will not be made instead of leaving them in the making for good.
+    if (state.tidied_at) return this.tidiedLanguages(state, video);
     if ((await approvalState({ gate: "final", docDir: dir, workdir })).status !== "approved") return null;
     writeLanguages(workdir, { locales: video.locales ?? {}, decided_at: video.locales_decided_at, synced_at: ctx.now().toISOString() });
     const choice = readLanguages(workdir);
@@ -1830,6 +1833,44 @@ export class Automation {
     await this.pull(slug);
     await report(ctx, this.api, state, "languages sent");
     return `${slug}: language batch sent to /admin/videos (${pending.map(({ locale, parts }) => `${locale} ${parts.join("+")}`).join(", ")})`;
+  }
+
+  /**
+   * The languages ticked after the worker tidied the video (tools/video/automation/tidy.mjs,
+   * docs/videos/AUTOMATION.md §清理工作區): the cut, the narration and the frames are gone, and
+   * `package` cannot be written without final.mp4, so nothing is translated or dubbed. Each part
+   * the site still reports as in the making goes up in a languages batch as {status: "skipped",
+   * reason}, the way a dub the worker gave up does (dubs/<locale>/skipped.json), so the panel
+   * shows 跳過 with the reason and the card leaves 語言製作中. The batch names only those parts,
+   * so the parts made before keep their state (the tidy waits for every batch to be decided, so
+   * no pending one is replaced), and it has no dub track, so the site approves it on arrival.
+   * Null when nothing is pending, which is every round after the batch is in.
+   */
+  async tidiedLanguages(state, video) {
+    const { ctx } = this;
+    const slug = state.slug;
+    const workdir = this.workdir(slug);
+    writeLanguages(workdir, { locales: video.locales ?? {}, decided_at: video.locales_decided_at, synced_at: ctx.now().toISOString() });
+    const pending = this.pendingLanguages(video, readLanguages(workdir));
+    if (!pending.length) return null;
+    const day = String(state.tidied_at).slice(0, 10);
+    const reason = `工作檔已在 ${day} 清掉，成片與旁白都不在了，清理後才勾的部件做不出來；要這個語言得重做影片`;
+    const locales = Object.fromEntries(pending.map(({ locale, parts }) => [locale, Object.fromEntries(parts.map((part) => [part, { status: "skipped", reason }]))]));
+    // What was sent, as languagesSubmission (review/sync.mjs) writes it: the approval binds to it.
+    const file = GATES.languages({ workdir });
+    atomicWrite(file, `${JSON.stringify({ speech_hash: null, decided_at: video.locales_decided_at, tidied_at: state.tidied_at, locales }, null, 2)}\n`);
+    const names = { metadata: "標題說明", captions: "CC", dub: "配音" };
+    const said = pending.map(({ locale, parts }) => `${locale} ${parts.map((part) => names[part]).join("、")}`).join("；");
+    try {
+      await this.api.submit(slug, { gate: "languages", content_sha256: await sha256File(file), summary: `語言：${said} 跳過（${reason}）。沒有要你上傳的配音`, payload: { locales }, files: [] });
+    } catch (error) {
+      if (!(error instanceof AutomationError)) throw error;
+      // A payload the site refuses will be refused again: park only this video, as review-push does.
+      if (error.who !== "owner" && [400, 422].includes(error.status)) return this.block(state, `language submission rejected: ${error.message}`);
+      return this.later(`${slug}: could not send the language batch: ${error.message}`);
+    }
+    await report(ctx, this.api, state, "languages skipped");
+    return `${slug}: work files cleared on ${day}; ${pending.map(({ locale, parts }) => `${locale} ${parts.join("+")}`).join(", ")} reported to /admin/videos as skipped, not made`;
   }
 
   /** The chosen parts the site still reports as in the making, by locale in the page's order. */

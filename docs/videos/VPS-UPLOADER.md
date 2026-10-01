@@ -33,6 +33,7 @@ Chromium 操作 YouTube Studio。服務使用 Node 24、Playwright、SQLite 與�
 管理員的修改。更換服務網址必須提供新密鑰，不會把舊密鑰自動送往新主機。
 
 「測試連線」只確認服務回應與頻道設定相符，不能證明 Google 已登入。
+儲存設定及測試連線都會寫入網站紀錄，須在正式操作授權內進行；測試的是已儲存的設定。
 「開啟遠端桌面登入」使用另外設定的登入網址，由站主在 VPS 專用瀏覽器
 完成登入與驗證；本機 Studio 的登入不會轉移到 VPS。遠端桌面仍須經安全
 連線存取，網址不可包含密碼或權杖。
@@ -79,9 +80,12 @@ Chromium 操作 YouTube Studio。服務使用 Node 24、Playwright、SQLite 與�
 
 待站主核准的執行順序：
 
-1. #890 與 #893 完成檢查並合併；核對實際合併版本，依 `deploy` skill 預檢、備份與部署網站。
-   先保持 `MOKAAIR_VPS_UPLOADER_URL` 未設定，網站部署會建立 RPC 網路，VPS 模式尚未啟用。
-2. 首次建立服務密鑰與 VNC 密碼，另提供 API UID 10001 能讀的同值密鑰檔。
+1. 核對包含 #890／#893 uploader 與 #1046 網頁設定的實際合併版本及其檢查，
+   依 `deploy` skill 預檢、備份與部署網站。首次安裝時保持網頁設定尚未啟用，且
+   `MOKAAIR_VPS_UPLOADER_URL` 未設定；若已有連線或工作，先按下方停用／切換流程處理，
+   不能只移除環境變數。網站部署會建立 RPC 網路。
+2. 首次建立服務密鑰與 VNC 密碼，另保留 API UID 10001 能讀的同值密鑰檔，供舊版環境
+   變數回退使用；網頁設定保存後改讀加密的 DB 密鑰。
    下列初始化只適用於尚無這些檔案的主機；已有檔案時停止，不覆寫或輪換：
 
    ```sh
@@ -108,23 +112,19 @@ Chromium 操作 YouTube Studio。服務使用 Node 24、Playwright、SQLite 與�
    curl --fail http://127.0.0.1:8789/health
    ```
 
-4. 容器啟動驗證後，經站主核准，把網站 `.env` 中這三個設定填入，保留 0600 權限；
-   值只有服務網址、檔案路徑與頻道 ID，不含密鑰。只重建 API 容器套用新設定。
-
-   ```dotenv
-   MOKAAIR_VPS_UPLOADER_URL=http://mokaair-studio-uploader:8789
-   MOKAAIR_VPS_UPLOADER_SECRET_FILE=/run/mokaair-uploader/service-secret
-   MOKAAIR_VPS_UPLOADER_CHANNEL_ID=UC_replace_with_confirmed_channel_id
-   ```
-
-5. 由 API 容器以 UID 10001 驗證 authenticated `/status`，證明 DNS、唯讀檔案權限與
-   頻道設定相符。只回報通過與否，不輸出密鑰、完整環境變數或瀏覽器狀態。
+4. 容器啟動驗證後，經站主核准，由 `settings.manage` 管理員在網頁設定卡填入
+   `http://mokaair-studio-uploader:8789`、已確認的 UC 頻道 ID、同一份服務密鑰及安全的
+   遠端桌面網址，再啟用並儲存。不是填密鑰檔路徑，也不是填 Google 或 VNC 密碼。
+   保存後 API 立即使用 DB 設定，無須為這些欄位重建容器；舊版環境配置見下節。
+5. 按「測試連線」，由 API 使用已保存的密鑰驗證 authenticated `/status` 與頻道設定。
+   若仍採舊版環境配置，另驗 API UID 10001 對唯讀密鑰檔的讀取權限。
+   只回報通過與否，不輸出密鑰、完整環境變數或瀏覽器狀態；成功不代表 Google 已登入。
 6. 站主經 SSH 隧道登入專用瀏覽器，核對頻道，再指定一支私人測試影片進行下方驗收。
 
 同機模式的啟停／升級都須帶上上述兩個 `-f`，保留獨立 volume。不要對網站執行
 `docker compose down`：它會嘗試刪除 uploader 使用中的共享網路；正常網站部署使用 `up`。
-要回退先停止 uploader，保留資料 volume，再移除網站 URL 設定並重建 API；確認遠端工作
-停住後才恢復原 API 上傳。Google 登入與真實上傳仍須獨立驗收，健康檢查不足以啟用自動上傳。
+正常回退須先讓原服務完成空佇列驗證及網站停用，再停止 uploader，詳見下方
+「停用、切換與緊急停止」。Google 登入與真實上傳仍須獨立驗收，健康檢查不足以啟用自動上傳。
 
 ### 另一台獨立 VPS
 
@@ -145,7 +145,7 @@ cp ops/youtube-uploader/.env.example ops/youtube-uploader/.env
 
 編輯 `.env` 的頻道 ID、兩個 secret **路徑**；不得把密鑰內容填進 `.env`。
 容器以 UID 1000 執行；Compose 的本機 file secrets 依來源檔權限掛載，所以檔案必須讓
-容器 UID 1000 可讀。一般操作員不需讀取服務密鑰，Google 帳密不出現在這些檔案中。
+容器 UID 1000 可讀。網站設定使用同一份服務密鑰；Google 帳密不出現在這些檔案中。
 VNC 傳統密碼只使用前 8 個字元，主要存取保護是 SSH 隧道。
 
 ```sh
@@ -177,10 +177,15 @@ Google 若拒絕自動化瀏覽器登入，停止此路線並使用手動模式�
 瀏覽器登入狀態只儲存在 `uploader-data` volume 的 `browser/`，與站主本機 Chrome、主網站
 OAuth 完全分開。保護整個 volume；不要把它打包到一般附件、測試輸出、PR 或公開備份。
 
-## 網站連線設定
+## 網站連線設定與舊版環境回退
 
-在主網站 **API 容器** 加入環境變數，並唯讀掛入密鑰檔。API 容器的實際 UID 必須有讀取權限。
-把同一份密鑰用營運者既有的機密管理流程送到網站主機，不經前端、聊天訊息或 Git：
+目前以「VPS 上傳服務」網頁設定卡為主，保存後即時生效，密鑰加密存入 DB。
+只有尚未保存網頁設定時，才使用以下舊版環境變數回退；只執行過連線測試、尚未保存設定的
+診斷紀錄不會中止回退。網頁明確停用後仍以 DB 為準，不會重新採用環境變數。
+
+保留舊版環境配置時，在主網站 **API 容器** 加入下列環境變數，並唯讀掛入密鑰檔；
+API 容器的實際 UID 必須有讀取權限。檔案經既有機密管理流程提供，不經聊天訊息或 Git。
+這條舊路線變更環境或掛載後才需要依已核准步驟重建 API：
 
 ```dotenv
 MOKAAIR_VPS_UPLOADER_URL=http://10.42.0.2:8789
@@ -188,15 +193,54 @@ MOKAAIR_VPS_UPLOADER_SECRET_FILE=/run/secrets/youtube-uploader
 MOKAAIR_VPS_UPLOADER_CHANNEL_ID=UC_replace_with_your_channel_id
 ```
 
+同機舊版配置改用 `MOKAAIR_VPS_UPLOADER_URL=http://mokaair-studio-uploader:8789` 與
+`MOKAAIR_VPS_UPLOADER_SECRET_FILE=/run/mokaair-uploader/service-secret`，對應既有 API 掛載。
 `10.42.0.2` 是範例，需替換成實際私人 VPN 位址。容器內的 `127.0.0.1` 指容器自己，不能
 直接拿來連另一台 VPS。若服務與網站同機，可由營運者把兩者接入共同的私人 Docker network，
 URL 使用服務名稱；不要因此公開 HTTP port。此功能不需資料庫 migration。
-上述設定不會經 `/admin/settings` 編輯，也不會回傳給瀏覽器。
+網頁設定入口是 `/admin/videos?tab=settings#youtube-vps-settings`，不是通用 `/admin/settings`。
+URL、頻道與來源會顯示在設定卡；服務密鑰只供有權管理員輸入，不會由 API 回傳。
 
-省略 `MOKAAIR_VPS_UPLOADER_URL` 即停用網站入口的提交功能。已存在於 VPS 的工作不會因
-網站移除設定而停止，因此有未完成工作時必須先在後台處理，或停止獨立容器。
+只有仍採環境回退時，省略 `MOKAAIR_VPS_UPLOADER_URL` 才會停用網站入口；已有 DB 設定時，
+移除環境變數不會改變啟用狀態。停用網站入口也不會停止 VPS 已有工作，必須依下節處理。
 VPS 啟用時，網站 API 上傳會先檢查同一影片有沒有 VPS 工作；VPS 連不上時拒絕開始另一筆，
 避免在不知道遠端狀態的情況下建立重複影片。
+
+### 停用、切換與緊急停止
+
+以下操作都須在站主核准的版本與操作範圍內進行，並保留 Google 登入及真人上傳驗收門檻。
+
+正常停用或更換連線、頻道、密鑰時：
+
+1. 與操作人員協調停止提交新工作，先完成或經核准取消原服務的待處理工作，保留影片 ID
+   與素材；等待人工接手的工作也算 active。上傳已開始卻尚無 ID 時先到 Studio 核對，
+   不因取消而建立第二次 MP4 上傳。
+2. **保持原服務可達**，再於網頁設定卡停用或儲存核准的新連線。保存時會認證原服務並要求
+   `active_jobs == 0`；原服務不可達、未提供計數或仍有工作時即拒絕。過期版本須重新讀取、
+   核對後再存，不能盲目覆寫；更換 URL 須提供新服務密鑰。
+3. 保存成功並重讀確認後，只有停用或切換到另一服務時，才按核准步驟停止舊 uploader、
+   保留 volume。同一服務校正頻道或輪換密鑰，則依已核准計畫測試已保存的連線，確認認證與
+   頻道相符；不預設停止目前有效的服務。
+
+DB 停用即時生效，不回退到環境變數。確認原工作與影片 ID 已核對、舊服務已停止後，才可按
+另行批准的步驟恢復原 API 上傳。既有環境配置也可經設定卡保存停用，採用同一個空佇列守門。
+
+如緊急情況必須先停止服務，先保留工作資料、已知影片 ID 與登入 profile，再按核准步驟停止。
+此時網站設定仍可能顯示啟用，後續停用／切換會因無法認證原服務空佇列而拒絕。保留現場，
+待核准的復原流程能確認原佇列後再處理；不直接修改 DB、不清除 volume、不重傳或改走另一
+上傳路線來繞過守門。單純移除網站環境 URL 不能解除 DB 設定或已存在的工作。
+
+同機停止必須保留兩份 Compose 檔：
+
+```sh
+docker compose --env-file ops/youtube-uploader/.env -f ops/youtube-uploader/compose.yml -f ops/youtube-uploader/compose.mokaair.yml stop
+```
+
+只有「另一台獨立 VPS」配置才使用單份檔案：
+
+```sh
+docker compose --env-file ops/youtube-uploader/.env -f ops/youtube-uploader/compose.yml stop
+```
 
 ## Studio 介面變更與復原
 
@@ -225,13 +269,14 @@ JSON 僅接受該常數列出的鍵，例如 `{ "title": "#title-textarea #textb
 取消工作不刪素材。本版沒有自動清理機制，營運者需監看 volume 用量；停止服務後才可備份，
 備份需包含整個資料目錄與工作資料庫，並當作登入機密加密保管。復原到相同版本、相同頻道，
 確認沒有另一個執行中的實例後啟動；檢查所有 needs_action 工作再繼續。
-暫停全部工作可執行 `docker compose --env-file ops/youtube-uploader/.env -f ops/youtube-uploader/compose.yml stop`。
+停止服務的順序與同機／獨立 VPS 命令見「停用、切換與緊急停止」。
 一般停止與升級不要使用 `down -v`；刪除 volume 會失去工作 ID 與登入資料，破壞去重依據。
 
 ## 通訊契約
 
 以下服務端路徑除 `/health` 外全部要求 `Authorization: Bearer <service secret>`。
-瀏覽器只呼叫網站 BFF；不會知道 secret，也不會直接存取 VPS。
+瀏覽器只呼叫網站 BFF，不會直接存取 VPS。設定卡可提交管理員輸入的服務密鑰，
+但網站不會回傳已儲存的密鑰；上傳操作由 API 帶密鑰呼叫服務 RPC。
 
 | 路徑 | 用途 |
 | --- | --- |
