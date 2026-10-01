@@ -1,14 +1,14 @@
 ---
 id: 2026-10-01-assemble-skips-the-psnr-frame-checks
 title: assemble skips the PSNR frame checks for plain slides videos
-status: open
+status: done
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-10-01T21:01:58Z
 created_at: 2026-10-01T07:44:20Z
-completed_at:
-branch:
+completed_at: 2026-10-01T21:03:44Z
+branch: claude/assemble-psnr
 depends_on: []
 scope:
   - tools/video/assemble/plan.mjs
@@ -31,14 +31,14 @@ fixture (`tools/video/screencast/fixtures/tutorial/video.json`): 5 stills scenes
 
 ## Definition of done
 
-- [ ] Assembling a plain slides video samples every stills scene again (`checks.json` `metrics.psnr` is not empty).
-- [ ] A test fails if `layoutScenes` stops marking its scenes as stills.
+- [x] Assembling a plain slides video samples every stills scene again (`checks.json` `metrics.psnr` is not empty).
+- [x] A test fails if `layoutScenes` stops marking its scenes as stills.
 
 ## Steps
 
-- [ ] Give `layoutScenes`' scenes `kind: "stills"` (the smallest fix; the cli check then matches).
-- [ ] Extend `tools/video/assemble/assemble.test.mjs`.
-- [ ] Run `node tools/video/assemble/smoke.mjs --fixture minimal --channel msedge` and confirm `checks.json` has PSNR samples and still passes.
+- [x] Give `layoutScenes`' scenes `kind: "stills"` (the smallest fix; the cli check then matches).
+- [x] Extend `tools/video/assemble/assemble.test.mjs`.
+- [x] Run `node tools/video/assemble/smoke.mjs --fixture minimal --channel msedge` and confirm `checks.json` has PSNR samples and still passes.
 
 ## How to verify
 
@@ -52,3 +52,9 @@ node tools/video/assemble/smoke.mjs --fixture minimal --channel msedge --until a
 Turning the check back on may surface frames that drifted unnoticed since #861; read
 `.agents/skills/youtube-video/references/automated.md` §坑 on the PSNR thresholds before
 changing any of them (do not lower them).
+- 2026-10-02 (claude-opus-5-5): `layoutScenes` now returns `kind: "stills"`; drama's own
+  `{ ...laid, kind: "stills" }` is unchanged. New test: every laid-out scene is stills and
+  has PSNR samples. `node --test tools/video/assemble/*.test.mjs`: 40 pass. Smoke
+  (`--fixture minimal --channel msedge --until assemble`): ok, `checks.json`
+  `metrics.psnr` has 9 samples (3 scenes x first/second/last), 45.1–48.8 dB, checks ok.
+  No threshold touched.

@@ -49,6 +49,14 @@ test("each scene lays out transition frames one by one, then its still, adding u
   ]);
 });
 
+test("every laid-out scene is a stills scene, so assemble samples it against its PNGs", () => {
+  const timeline = estimateTimeline(fixture());
+  const layout = layoutScenes(timeline, manifestFor(timeline));
+  assert.ok(layout.length > 0);
+  for (const scene of layout) assert.equal(scene.kind, "stills", scene.id);
+  assert.ok(layout.every((scene) => segmentSamples(scene).length > 0));
+});
+
 test("a state shorter than its transition keeps the transition's first frames only", () => {
   const timeline = { scenes: [{ id: "a", start_frame: 0, end_frame: 2, states: [{ start_frame: 0, end_frame: 2 }] }] };
   const layout = layoutScenes(timeline, manifestFor(timeline, 9));
