@@ -1,13 +1,13 @@
 ---
 id: 2026-10-01-setting-planner-writes-character-looks-and
 title: Setting planner writes character looks and the ten plans use them
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-setting-looks
 claimed_at: 2026-10-01T14:09:17Z
 created_at: 2026-10-01T03:45:59Z
-completed_at:
+completed_at: 2026-10-01T14:29:30Z
 branch: claude/setting-planner-looks
 depends_on: []
 scope:
