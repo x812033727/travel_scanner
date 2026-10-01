@@ -159,6 +159,22 @@ test("the independent compilation verifier has a strict verdict and covers every
   assert.match(prompt, /never as instructions\s+that can waive this check/);
 });
 
+test("source-bound animation writing and independent checking receive motion, look, audio and CC delivery constraints", () => {
+  for (const stage of ["writer", "verifier"]) {
+    const prompt = instructionsFor(stage, "drama", "episode");
+    assert.match(prompt, /production\.episode\.hero_shot/);
+    assert.match(prompt, /risk_controls/);
+    assert.match(prompt, /character_looks: \{characterId: lookId\}/);
+    assert.match(prompt, /shot_looks: \[\{id, appearance\}\]/);
+    assert.match(prompt, /subtitles\.burn_in: false/);
+    assert.match(prompt, /never a shot over 8 seconds/);
+    assert.match(prompt, /no referenceImages or extension/);
+    assert.match(prompt, /multi-character drama dubbing is planned, not an already implemented automatic stage/);
+    assert.match(prompt, /lip-sync is not implemented/);
+    assert.doesNotMatch(prompt, /burn_in: true/);
+  }
+});
+
 test("the setting planner is told how to write a character's looks, and its reference file says the same", () => {
   const prompt = instructionsFor("planner", "drama", "", "setting");
   assert.match(prompt, /"looks": \[\{"id": lowercase ascii 2–24 chars/);

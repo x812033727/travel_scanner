@@ -462,6 +462,31 @@ def episode_document_problem(
     return None
 
 
+def shot_looks_problem(character: dict[str, Any]) -> str | None:
+    """Named shot appearances keep a character's identity/voice; mirror core/drama.mjs."""
+    if "shot_looks" not in character:
+        return None
+    looks = character["shot_looks"]
+    if not isinstance(looks, list) or len(looks) > 20:
+        return "shot_looks must be a list of at most 20 named appearances"
+    seen: set[str] = set()
+    for look in looks:
+        if (
+            not isinstance(look, dict)
+            or set(look) != {"id", "appearance"}
+            or not isinstance(look["id"], str)
+            or re.fullmatch(r"[a-z][a-z0-9-]{1,23}", look["id"]) is None
+            or not isinstance(look["appearance"], str)
+            or not look["appearance"].strip()
+            or len(look["appearance"]) > 800
+        ):
+            return "each shot look needs only id and appearance (1-800 characters)"
+        if look["id"] in seen:
+            return f"duplicate shot look {look['id']}"
+        seen.add(look["id"])
+    return None
+
+
 def doc_problem(series: VideoDramaSeries, payload: SeriesDocSubmitIn) -> str | None:
     """Why a document the worker sends cannot be filed, in the worker's words; None when it can.
 
@@ -492,6 +517,9 @@ def doc_problem(series: VideoDramaSeries, payload: SeriesDocSubmitIn) -> str | N
                 for key in ("id", "name", "appearance")
             ):
                 return "every character needs an id, a name and an appearance"
+            look_problem = shot_looks_problem(character)
+            if look_problem:
+                return f"character {character['id']}: {look_problem}"
             looks = _looks_problem(series, character)
             if looks:
                 return looks

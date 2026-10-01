@@ -1,0 +1,729 @@
+{
+  "status": "planning-valid-not-approved-for-generation",
+  "chinese_audio_accepted": false,
+  "chinese_final_accepted": false,
+  "localization_started": false,
+  "works": [
+    {
+      "slug": "wedding-reckoning",
+      "title": "喜宴未散，清算開始",
+      "route_status": "requires-pilot-acceptance",
+      "minor_characters": [],
+      "episodes_with_unnamed_children": [],
+      "remaining_pilot_questions": [
+        {
+          "issue": "婚紗／褲裝與E40錶離腕的造型資料和逐鏡選擇工具已備妥，待實際角色圖與切鏡驗收。",
+          "why": "使用zhitang--base、zhitang-bride-veiled、zhitang-bride-unveiled及zhitang-watch-off；E1按前世/現世鏡頭切換，E2–3無頭紗。剩下要以生成畫面查同臉、服裝切點和全場只一只錶。",
+          "episode_refs": [
+            1,
+            2,
+            3,
+            5,
+            15
+          ]
+        },
+        {
+          "issue": "四語聲線與醫護／火場音效尚未試聽或成片驗收。",
+          "why": "目前僅候選voice與敘事資料；20–30秒中文長句須TTS測時再精簡。",
+          "episode_refs": [
+            1,
+            30,
+            31,
+            33,
+            35
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "seventh-passenger",
+      "title": "末班車上的第七個活人",
+      "route_status": "requires-minor-animation-route",
+      "minor_characters": [
+        {
+          "id": "lin-xiaoman",
+          "min_visual_age_years": 17,
+          "veo_lite_i2v": "not-verified-under-18",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:87",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:88"
+          ],
+          "episode_refs": [
+            1,
+            3,
+            7,
+            9,
+            10,
+            12,
+            14,
+            17,
+            21,
+            29,
+            37,
+            38,
+            40
+          ]
+        },
+        {
+          "id": "lu-an",
+          "min_visual_age_years": 9,
+          "veo_lite_i2v": "not-verified-under-18",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:299",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:300"
+          ],
+          "episode_refs": [
+            14
+          ]
+        }
+      ],
+      "episodes_with_unnamed_children": [],
+      "remaining_pilot_questions": [
+        {
+          "issue": "何照E27脫車掌外套與E38四人病人服已具完整命名造型及逐鏡工具，待畫面驗收。",
+          "why": "E27轉折前選he-zhao-coated，脫下後回he-zhao--base；E38用四人的patient造型。需在實際畫面確認員工牌不重生、病人服無旅途配件。",
+          "episode_refs": [
+            27,
+            38
+          ]
+        },
+        {
+          "issue": "程望E15的20歲回望造型已加入目錄，待同一人物的成年年齡連戲驗收。",
+          "why": "cheng-wang-age20僅用七年前短閃回；現時鏡仍用27歲base。20歲為27減7，屬成年造型；不增加新角色、不改小滿/陸安年齡。",
+          "episode_refs": [
+            15
+          ]
+        },
+        {
+          "issue": "七節拍、真假母聲及四語重複句仍待實際mono/耳機/手機試聽。",
+          "why": "文字規則通過不代表觀眾聽得到關鍵證據。",
+          "episode_refs": [
+            2,
+            8,
+            13,
+            14,
+            19
+          ]
+        },
+        {
+          "issue": "林小滿（lin-xiaoman）明確17歲，Veo Lite I2V未驗證可生成其入鏡畫面。",
+          "why": "目前首格I2V的allow_adult能力不代表允許未成年人顯影；不能把角色改為成年人，也不能以背影、局部、卡通風格或不提年齡當可保證捷徑。需經核可的手繪動畫或合法支援該年齡的供應商先做pilot、確認能力與交付再排量。僅畫外配音不因此自動受阻，逐鏡按實際可見人物判斷。",
+          "episode_refs": [
+            1,
+            3,
+            7,
+            9,
+            10,
+            12,
+            14,
+            17,
+            21,
+            29,
+            37,
+            38,
+            40
+          ]
+        },
+        {
+          "issue": "陸安（lu-an）明確9歲，Veo Lite I2V未驗證可生成其入鏡畫面。",
+          "why": "目前首格I2V的allow_adult能力不代表允許未成年人顯影；不能把角色改為成年人，也不能以背影、局部、卡通風格或不提年齡當可保證捷徑。需經核可的手繪動畫或合法支援該年齡的供應商先做pilot、確認能力與交付再排量。僅畫外配音不因此自動受阻，逐鏡按實際可見人物判斷。",
+          "episode_refs": [
+            14
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "scapegoat-empress",
+      "title": "朕不是你們的替死鬼",
+      "route_status": "requires-pilot-acceptance",
+      "minor_characters": [],
+      "episodes_with_unnamed_children": [],
+      "remaining_pilot_questions": [
+        {
+          "issue": "金冠戴／摘／重戴的命名造型與逐鏡工具已備妥，待實際切鏡與人物圖驗收。",
+          "why": "E29摘冠前crowned、摘後uncrowned；E40簽名前uncrowned、簽後recrowned，髮簪保留。需要驗證生成畫面確實按順序切換，毋須再開發造型工具。",
+          "episode_refs": [
+            1,
+            29,
+            40
+          ]
+        },
+        {
+          "issue": "糧批、三枚印與原件／副本的連戲規則已列入prop_rules，待美術素材和動態插鏡驗收。",
+          "why": "按已定的印章輪廓、票據欄位、封袋/縫合邊與各批供應日期製作；剩下核對實際道具文字、唯一性及持有人，不再等待另一份規劃裁定。",
+          "episode_refs": [
+            6,
+            9,
+            17,
+            19,
+            20,
+            24,
+            26,
+            28,
+            34
+          ]
+        },
+        {
+          "issue": "四語敬稱與制度術語尚未母語配音聽校。",
+          "why": "稱謂可壓縮但責任與條件不可減省。",
+          "episode_refs": [
+            10,
+            27,
+            36,
+            40
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "city-owes-a-light",
+      "title": "這座城欠他一盞燈",
+      "route_status": "requires-minor-animation-route",
+      "minor_characters": [
+        {
+          "id": "lin-anan",
+          "min_visual_age_years": 16,
+          "veo_lite_i2v": "not-verified-under-18",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/city-owes-a-light/source.mjs:86",
+            "docs/videos/series-plans/binge-five-20260928/city-owes-a-light/source.mjs:87"
+          ],
+          "episode_refs": [
+            9,
+            17,
+            26,
+            31,
+            38,
+            39,
+            40
+          ]
+        },
+        {
+          "id": "duo-duo",
+          "min_visual_age_years": 8,
+          "veo_lite_i2v": "not-verified-under-18",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/city-owes-a-light/source.mjs:271",
+            "docs/videos/series-plans/binge-five-20260928/city-owes-a-light/source.mjs:272"
+          ],
+          "episode_refs": [
+            17,
+            26
+          ]
+        }
+      ],
+      "episodes_with_unnamed_children": [],
+      "remaining_pilot_questions": [
+        {
+          "issue": "借衣、救援裝備與傷後造型已具完整目錄及逐鏡工具，待可用製作路徑與畫面驗收。",
+          "why": "依現有lin-anan/duo-duo借衣、lin-jiming-entry/bed/recovery及lai-liang-helmet逐鏡選用；核對同臉、交衣後原持有人不再穿、許可後才戴帽。未成年人製作能力限制仍獨立保留。",
+          "episode_refs": [
+            17,
+            26,
+            34,
+            37,
+            38,
+            39,
+            40
+          ]
+        },
+        {
+          "issue": "暴雨、人聲與醫療訊號的手機外放可懂度待實際混音。",
+          "why": "文字能分辨的核實資訊可能在成片被雨聲蓋掉。",
+          "episode_refs": [
+            1,
+            2,
+            27,
+            37
+          ]
+        },
+        {
+          "issue": "林安安（lin-anan）明確16歲，Veo Lite I2V未驗證可生成其入鏡畫面。",
+          "why": "目前首格I2V的allow_adult能力不代表允許未成年人顯影；不能把角色改為成年人，也不能以背影、局部、卡通風格或不提年齡當可保證捷徑。需經核可的手繪動畫或合法支援該年齡的供應商先做pilot、確認能力與交付再排量。僅畫外配音不因此自動受阻，逐鏡按實際可見人物判斷。",
+          "episode_refs": [
+            9,
+            17,
+            26,
+            31,
+            38,
+            39,
+            40
+          ]
+        },
+        {
+          "issue": "朵朵（duo-duo）明確8歲，Veo Lite I2V未驗證可生成其入鏡畫面。",
+          "why": "目前首格I2V的allow_adult能力不代表允許未成年人顯影；不能把角色改為成年人，也不能以背影、局部、卡通風格或不提年齡當可保證捷徑。需經核可的手繪動畫或合法支援該年齡的供應商先做pilot、確認能力與交付再排量。僅畫外配音不因此自動受阻，逐鏡按實際可見人物判斷。",
+          "episode_refs": [
+            17,
+            26
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "remembered-by-rival",
+      "title": "世人忘我，死敵記我",
+      "route_status": "requires-minor-animation-route",
+      "minor_characters": [
+        {
+          "id": "a-yao",
+          "min_visual_age_years": 17,
+          "veo_lite_i2v": "not-verified-under-18",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:147",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:148"
+          ],
+          "episode_refs": [
+            7,
+            8,
+            11,
+            12,
+            14,
+            18,
+            19,
+            22,
+            24,
+            25,
+            27,
+            28,
+            29,
+            32,
+            34,
+            38,
+            39
+          ]
+        }
+      ],
+      "episodes_with_unnamed_children": [
+        {
+          "episode": 1,
+          "veo_lite_i2v": "unverified-minor-on-screen",
+          "reason": "來源開場明確要求江照推孩子上橋、胡娘拉住孩子；孩子無cast id、未給確切歲數。E1整集先等待已驗證可呈現未成年人的動畫製作路徑，不能僅靠有名角色ID檢查漏放。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:505",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2972"
+          ]
+        }
+      ],
+      "remaining_pilot_questions": [
+        {
+          "issue": "紅繩藏／露／切斷、拆徽和交鑰匙已具完整命名造型與逐鏡工具，待實際畫面驗收。",
+          "why": "按qi-yan-cord-hidden/visible/cut、shen-que-injured-badge/hurt-no-badge、qin-lu-no-keys切鏡；生成後查左右側、受傷後持劍手與已交出物件不重生。",
+          "episode_refs": [
+            8,
+            23,
+            26,
+            33,
+            35,
+            36,
+            40
+          ]
+        },
+        {
+          "issue": "三次術法、普通注力、機械卸壓需實際音色/手機外放驗證。",
+          "why": "聽感混同會直接破壞世界規則。",
+          "episode_refs": [
+            1,
+            18,
+            28,
+            34,
+            35,
+            36,
+            37
+          ]
+        },
+        {
+          "issue": "阿杳（a-yao）明確17歲，Veo Lite I2V未驗證可生成其入鏡畫面。",
+          "why": "目前首格I2V的allow_adult能力不代表允許未成年人顯影；不能把角色改為成年人，也不能以背影、局部、卡通風格或不提年齡當可保證捷徑。需經核可的手繪動畫或合法支援該年齡的供應商先做pilot、確認能力與交付再排量。僅畫外配音不因此自動受阻，逐鏡按實際可見人物判斷。",
+          "episode_refs": [
+            7,
+            8,
+            11,
+            12,
+            14,
+            18,
+            19,
+            22,
+            24,
+            25,
+            27,
+            28,
+            29,
+            32,
+            34,
+            38,
+            39
+          ]
+        },
+        {
+          "issue": "E1無cast ID的被救孩子明確入鏡，不能直接以Lite全動態開拍。",
+          "why": "具體年齡未載，不能捏造數字或新增角色年齡。整E1 provider constraint等待合法可支援未成年人的手繪/供應商pilot；無對白、背影或只拍被拉住不構成已驗證捷徑。",
+          "episode_refs": [
+            1
+          ]
+        },
+        {
+          "issue": "江照與祁硯現時28歲，來源另明訂兩人13歲的少年客觀回望。",
+          "why": "來源source.mjs:2954、2961、2965有少年回望與13歲日期；E17、E23是相關往事揭露，但尚未把13歲入鏡分配到具體鏡頭。成人ID不全域標min13，不能把其40集全部誤擋；任何13歲回望須先指定獨立look、集與鏡，再驗證未成年動畫路徑。當前未建立未綁集的child look，亦不得把童年改成成人。",
+          "episode_refs": [
+            17,
+            23
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "reload-first-day",
+      "title": "開服第一天，她的天賦叫讀檔",
+      "route_status": "requires-minor-animation-route",
+      "minor_characters": [
+        {
+          "id": "xiaoshu",
+          "min_visual_age_years": 16,
+          "veo_lite_i2v": "not-verified-under-18"
+        }
+      ],
+      "episodes_with_unnamed_children": [
+        {
+          "episode": 32,
+          "veo_lite_i2v": "unverified-minor-on-screen",
+          "reason": "chapter-4.mjs:33 的 E32 turn 明列通关队伍含「老人、小孩和坡道上的居民」；小孩无 cast ID，确切年龄未给，不擅编年龄。当前 Lite I2V first_frame 仅 allow_adult，不能由背景群众绕过检查，本集 clips profile 保守拒绝付费；保留剧情，不成年化，另行验证手绘或支持题材的供应商。"
+        }
+      ],
+      "remaining_pilot_questions": [
+        {
+          "issue": "已由設計處理（未 render）：05:59紅鐘每次回讀的固定畫面，與後來新檢查點/九層時間不回退並存",
+          "why": "保留同顆同角度 05:59 紅鐘作非實景的記憶剪輯母題：切黑後只短閃既有鐘面素材，與角色所在空間不作視線／環境聲匹配；接回畫面才是最新存檔位置。E4 明示 22:14；未給數字的檢查點不補日期鐘面；E30／九層只重置她，背景動作與聲音順行，不把世界或時間倒回。E1／38 才把 02/11 05:59 拍成當下實景。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+          "episode_refs": [
+            4,
+            6,
+            7,
+            8,
+            9,
+            10,
+            12,
+            13,
+            14,
+            26,
+            30,
+            32
+          ]
+        },
+        {
+          "issue": "已由設計處理（未 render）：部分多次讀檔前沒有明演五秒設檔",
+          "why": "沿用 setting.rules 已有靜止五秒設檔能力，在各集首次危險／試探之前，以同場安全位置的連續五秒呼吸、重心保持和衣料微動完成設檔；面板只顯示既有「存檔點已設定」，不新增能力或未知日期。後續失敗切回同一構圖，復原已在來源明定的存檔狀態。E6 入第二層前、E7 20:58 直播前、E10 說第一個假次數前、E12 入第三層危險前、E13 倉庫試探前、E14 衝院危機前、E26 長廊交戰前、E32 組織最後通關路線前設檔；不得把此規格加到禁止設檔的第七層或九層黑石以外。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+          "episode_refs": [
+            6,
+            7,
+            10,
+            12,
+            13,
+            14,
+            26,
+            32
+          ]
+        },
+        {
+          "issue": "已由設計處理（未 render）：重返06:00的三樓崩塌是否重演",
+          "why": "E39 不展示三樓、也不宣稱崩塌被取消或修好：E1 已示範知道危險後把阿嬤與小雯移出落點，E38 全城拿回三十天記憶，重複的避險處置省略。仍保留舊裂縫在 06:00 塌落的物理因果與三樓損壞狀態；本集直接切鐘塔與地下室，不能插入完好三樓／提前搭好的 E7 支架，更不能讓尚未回來的老鄧先修樓。這不是新增系統免災規則。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+          "episode_refs": [
+            39
+          ]
+        },
+        {
+          "issue": "已由設計處理（未 render）：對講機掉落的持有人",
+          "why": "E14 對講機定為阿坤既有那台：碰撞前胸掛短鏡→扣位鬆開／同一機身離身→落到老鄧腳邊；落地後阿坤胸前掛點空著。以同色殼與磨痕 match cut，不複製第二台、不更動持有人。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+          "episode_refs": [
+            14
+          ]
+        },
+        {
+          "issue": "陳小樹未成年視覺生成路徑尚未驗證",
+          "why": "16 歲陳小樹（xiaoshu）在 E5、7、9、13、17、23、33、35、36 出場。 來源：docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/setting.mjs:96；docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/setting.mjs:97。目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。",
+          "episode_refs": [
+            5,
+            7,
+            9,
+            13,
+            17,
+            23,
+            33,
+            35,
+            36
+          ]
+        },
+        {
+          "issue": "E32 匿名小孩可见镜头需替代动画路径",
+          "why": "chapter-4.mjs:33 的 E32 turn 明列通关队伍含「老人、小孩和坡道上的居民」；小孩无 cast ID，确切年龄未给，不擅编年龄。当前 Lite I2V first_frame 仅 allow_adult，不能由背景群众绕过检查，本集 clips profile 保守拒绝付费；保留剧情，不成年化，另行验证手绘或支持题材的供应商。",
+          "episode_refs": [
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "before-the-hammer",
+      "title": "重生回落槌前一秒",
+      "route_status": "requires-pilot-acceptance",
+      "minor_characters": [],
+      "episodes_with_unnamed_children": [],
+      "remaining_pilot_questions": [
+        {
+          "issue": "已由設計處理（未 render）：羈押中的致遠仍沿用固定三件套金錶金筆",
+          "why": "E33 偵查隊借提、E38 承珩現場指認，均不用法庭／囚服的臆造場面；沿用深藍西裝辨識輪廓，取消金錶、口袋巾與轉金筆習慣。E38 文件簽名只用桌面普通筆，落筆後放回桌面，不把原金筆從拘束狀態自動帶回。這是造型／道具選擇，不宣稱任何司法配物規則。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+          "episode_refs": [
+            33,
+            38
+          ]
+        },
+        {
+          "issue": "字典標準已核對，白薇 TTS 仍待聽校",
+          "why": "白薇採 Bái Wéi／ㄅㄞˊ ㄨㄟˊ，來源二聲正確。2026-10-01 查台灣教育部《國語辭典簡編本》薇條（https://dict.concised.moe.edu.tw/dictView.jsp?ID=43453&la=0&powerMode=0）：ㄨㄟˊ、wéi。修正的是本輪一聲候選誤判，歷史 source 不動；字典核對不等於合成音與台灣口音已聽校。",
+          "episode_refs": [
+            1,
+            3,
+            8,
+            15,
+            23,
+            30,
+            39
+          ]
+        },
+        {
+          "issue": "真偽光紋目前只有文字規則",
+          "why": "必須有同光位茶溫的A/B/C/D lookdev，否則畫面無法讓觀眾判讀證據",
+          "episode_refs": [
+            1,
+            5,
+            15,
+            31,
+            34,
+            35
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "three-needles",
+      "title": "三針",
+      "route_status": "requires-minor-animation-route",
+      "minor_characters": [
+        {
+          "id": "adou",
+          "min_visual_age_years": 12,
+          "veo_lite_i2v": "not-verified-under-18"
+        }
+      ],
+      "episodes_with_unnamed_children": [
+        {
+          "episode": 3,
+          "veo_lite_i2v": "unverified-minor-on-screen",
+          "reason": "packaging.mjs:67 明定 E3 男孩為五歲、不是阿豆；chapter-1.mjs:61 起有病童救治視覺。無 cast ID 仍是未成年可見人物，不得由匿名背景繞過年齡檢查。 目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。"
+        }
+      ],
+      "remaining_pilot_questions": [
+        {
+          "issue": "已由設計處理（未 render）：E32帳本與鑰匙塞入捲針包的物理容量",
+          "why": "按來源 E32 carry 保留帳與鑰匙在原針包：將未限定大小的「一本帳」設計成普通薄軟口袋小冊，寬度小於展開針包內幅；先拍針套封好、薄冊平放包入皮革餘幅、鑰匙置於不接觸針尖的內折，再扣合原黃銅扣，外形仍是窄捲。E33 開門先取鑰匙、取針前取出薄冊放乾淨檯邊，E34 證物同路交出。不新增大袋、硬殼厚帳或超自然收納；lookdev 須按實際資產尺寸驗證能扣合，未驗證不能宣稱物理動畫已過。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+          "episode_refs": [
+            32
+          ]
+        },
+        {
+          "issue": "已由設計處理（未 render）：E29轉走後E32仍青山地下室的移送路徑",
+          "why": "E29 只呈現姜曼訊息「叫了一台私人救護車」與空 7 號房，不拍車開出院區、不指認目的外院，也不稱假救護車／障眼法。E32 帳上第一次揭出同療養院地下二樓無編號舊病房，E33 由後門用鑰匙下去；移送過程不在鏡頭內，未知資訊留給 E32 揭曉，不需要創造交通路線或瞬移。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+          "episode_refs": [
+            29,
+            32,
+            33
+          ]
+        },
+        {
+          "issue": "已由設計處理（未 render）：E21第二封信到手、死亡證明/信封轉移的連接",
+          "why": "E5 亦微翻出的死亡證明影本留在共用桌面供陸謹看，E13 姜曼另外交來查得的醫师紀錄，兩份紙不合成同一件。E11 以陸謹收起現場信封的小插鏡接 carry，無新持有人。E21 長廊開信前，先拍他從既有針包取出未拆的第二封信，再拆封看到代價；信何日寄達不另編，鏡頭不可提早露出內文，姜曼也不在先前按手時預知信內容。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+          "episode_refs": [
+            5,
+            11,
+            13,
+            21
+          ]
+        },
+        {
+          "issue": "已由設計處理（未 render）：四天兩次監測與阿豆十幾天療程",
+          "why": "沿用來源的相對天數，沒有必要另定虛構月日：E18 試前十味→監測跨四天→第五天攤數據；E24 完整方首次試藥→E28 第四天過完的單子→隔天阿豆才服。E29 霍服藥第二天、E30 第四天；E32 深夜到 E33 搶救接同夜，不能為湊療程拉長救援；E34 復原到 E35–38 的法院／執行程序以明暗、換頁及既有「月底」台詞交代過日，E38 阿豆「十幾天」維持來源，不剪成通宵全完成。監測單的相對日數須後製校字，沒有必要新增說明字幕或編絕對日期。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+          "episode_refs": [
+            18,
+            24,
+            28,
+            32,
+            38
+          ]
+        },
+        {
+          "issue": "兒童男聲與歌唱能力未驗收",
+          "why": "Achird只沿用來源候選；歌唱和童音需單獨試聽，不能提高音調就宣稱12歲",
+          "episode_refs": [
+            4,
+            5,
+            7,
+            23,
+            36,
+            38
+          ]
+        },
+        {
+          "issue": "杜小豆／阿豆未成年視覺生成路徑尚未驗證",
+          "why": "12 歲阿豆（adou）在 E5、7、8、18、38 出場。E3 的匿名病童另為 5 歲，並非阿豆，沒有角色 ID。 來源：docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:312；docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:314。目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。",
+          "episode_refs": [
+            5,
+            7,
+            8,
+            18,
+            38
+          ]
+        },
+        {
+          "issue": "E3 匿名 5 歲兒童需替代動畫路徑",
+          "why": "packaging.mjs:67 明定 E3 男孩為五歲、不是阿豆；chapter-1.mjs:61 起有病童救治視覺。無 cast ID 仍是未成年可見人物，不得由匿名背景繞過年齡檢查。 本集 clips profile 保守拒絕付費；目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。",
+          "episode_refs": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "taste-of-the-throne",
+      "title": "她替公主試毒十年",
+      "route_status": "requires-pilot-acceptance",
+      "minor_characters": [],
+      "episodes_with_unnamed_children": [],
+      "remaining_pilot_questions": [
+        {
+          "issue": "已由設計處理（未 render）：E1預告末定格為明文設計，與本輪禁止靠freeze填時需區分",
+          "why": "開場末段保持銀匙落下、回彈與衣角微動，接觸落地的那一格作精準硬切點，立刻切回開席正文；原稿「定格」保留其段落標點功能，不複製影格延長，不靠 freeze 填滿秒數。若來源金屬接觸已在前一鏡，後鏡接回彈／停穩並縮短，仍 0–30 秒連續。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+          "episode_refs": [
+            1
+          ]
+        },
+        {
+          "issue": "已由設計處理（未 render）：E16結尾門縫與E17入室的空間連接",
+          "why": "E16 結尾僅拍司膳院上鎖門的紙與手，照 source.continuity_notes 保留為局部插鏡，不把它做成御書房門或另開大廚房全景。E17 用夜色／爐邊雙人建立鏡明確重建司膳院室內；柳姑姑進入的過程省略，來源沒有禁止掌膳進出，無需加破鎖、逃禁或守兵放行台詞。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+          "episode_refs": [
+            16,
+            17
+          ]
+        },
+        {
+          "issue": "已由設計處理（未 render）：E23庫房無灶、E31地下監牢看御書房燈、E35屏後到E36書房",
+          "why": "E23 封皮菜名→四只盛菜碟的省略時間跳接：製作發生畫外，畫面只在簿庫驗味，不憑空加灶或宣稱即席生菜變熟；含章與柳姑姑既有烹調能力即可成立。E31 牢內視線向御書房方向，燈作含章主觀記憶的孤立近鏡，不給穿牆／穿地的客觀連續視線，不另建立御書房全景；回到獄門柳姑姑影子收尾。E35 殿側睡著→E36 御書房床邊重新建立場景，以普通時間省略表示畫外搬移，不拍瞬移、不新增運送事件或對白。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+          "episode_refs": [
+            23,
+            31,
+            35,
+            36
+          ]
+        },
+        {
+          "issue": "同題材相似度只被前輪列為未上網核查",
+          "why": "本輪不作法律結論；原創服裝/分鏡/音樂獨立設計，發行前另做實際權利與相似素材核查",
+          "episode_refs": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ghost-at-his-side",
+      "title": "符師與他的鬼",
+      "route_status": "requires-minor-animation-route",
+      "minor_characters": [
+        {
+          "id": "aqi",
+          "min_visual_age_years": 15,
+          "veo_lite_i2v": "not-verified-under-18"
+        }
+      ],
+      "episodes_with_unnamed_children": [
+        {
+          "episode": 23,
+          "veo_lite_i2v": "unverified-minor-on-screen",
+          "reason": "source.mjs:650–651 明定八歲孩子半白頭髮、目光追影；可見兒童沒有 cast ID。頭髮／局部鏡仍未驗證相容，不得當成人物或背景放行。 目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。"
+        },
+        {
+          "episode": 37,
+          "veo_lite_i2v": "unverified-minor-on-screen",
+          "reason": "source.mjs:887 燈匠巷孩子頭髮轉黑，為 source.mjs:650 同一八歲孩子；未列 cast ID 的回春插鏡仍需替代動畫流程 pilot。 目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。"
+        }
+      ],
+      "remaining_pilot_questions": [
+        {
+          "issue": "已由設計處理（未 render）：母符的火是否可被敵方再次點亮尚無額外規則",
+          "why": "既有規則只要求用大燈火燒母符；換油爭奪按現場動作演，無咎先排朱砂油再灌老尤清油、阿七點火。敵方是否日後能重點不影響已毀母符，不新增二次點火禁令或專屬火種。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+          "episode_refs": [
+            32,
+            33,
+            35,
+            36,
+            37
+          ]
+        },
+        {
+          "issue": "已由設計處理（未 render）：E31清晏提假答應早於無咎口頭答應",
+          "why": "E31 清晏以私語提出接下來假答應的策略，無咎聽後再向宗澹開口；表演是提議不是回顧已發生的承諾，不改資訊先後。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+          "episode_refs": [
+            31
+          ]
+        },
+        {
+          "issue": "已由設計處理（未 render）：E38溫檀聽不見清晏計數",
+          "why": "E38 清晏數三秒只在無咎主觀聲場；溫檀按她可見的身體反應與自己的急救節奏行動，不給她聽令點頭或跟數字落手的對切。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+          "episode_refs": [
+            38
+          ]
+        },
+        {
+          "issue": "已由設計處理（未 render）：E39同角色青年屍身與淡鬼並存",
+          "why": "E39 同一清晏的鬼與青年屍身用兩個獨立鏡頭和單一 look 各自出現：鬼由無咎視線帶出，屍身用背側／局部插鏡，切換前後保持位置；不能一鏡帶同 ID 的兩套 appearance。片段接合和鬼透明度仍待 render。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+          "episode_refs": [
+            39
+          ]
+        },
+        {
+          "issue": "阿七未成年視覺生成路徑尚未驗證",
+          "why": "15 歲阿七（aqi）在 E1、9、10、11、19、22、27、29、32、36、37 列入來源角色；E32 只聞其聲、鏡頭不出暖閣，畫外配音本身不觸發視覺生成限制。E23 與 E37 的燈匠巷孩子為同一 8 歲匿名兒童，沒有角色 ID。 來源：docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:163；docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:164。目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。 E32 的阿七僅畫外聲，不應整集因這名角色而攔配音。",
+          "episode_refs": [
+            1,
+            9,
+            10,
+            11,
+            19,
+            22,
+            27,
+            29,
+            36,
+            37
+          ]
+        },
+        {
+          "issue": "E23 匿名 8 歲兒童需替代動畫路徑",
+          "why": "source.mjs:650–651 明定八歲孩子半白頭髮、目光追影；可見兒童沒有 cast ID。頭髮／局部鏡仍未驗證相容，不得當成人物或背景放行。 本集 clips profile 保守拒絕付費；目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。",
+          "episode_refs": [
+            23
+          ]
+        },
+        {
+          "issue": "E37 匿名 8 歲兒童需替代動畫路徑",
+          "why": "source.mjs:887 燈匠巷孩子頭髮轉黑，為 source.mjs:650 同一八歲孩子；未列 cast ID 的回春插鏡仍需替代動畫流程 pilot。 本集 clips profile 保守拒絕付費；目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。",
+          "episode_refs": [
+            37
+          ]
+        }
+      ]
+    }
+  ]
+}

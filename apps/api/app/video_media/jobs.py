@@ -264,6 +264,15 @@ def _request_fields(
         )
     elif isinstance(payload, ClipJobIn):
         resolution = payload.resolution or row.clip_resolution
+        if model.id == "veo-3.1-lite-generate-preview":
+            if payload.references:
+                raise MediaJobFailed(
+                    422, "video_media_model_not_allowed", "Veo Lite 不支援角色參考圖，請使用首幀"
+                )
+            if resolution == "1080p" and payload.seconds != 8:
+                raise MediaJobFailed(
+                    422, "video_media_model_not_allowed", "Veo Lite 的 1080p 素材固定為 8 秒"
+                )
         if payload.seconds not in model.durations:
             raise MediaJobFailed(
                 422,
@@ -281,7 +290,9 @@ def _request_fields(
             shot_id=payload.shot_id,
             seconds=payload.seconds,
             resolution=resolution,
-            native_audio=payload.native_audio,
+            native_audio=True
+            if model.id == "veo-3.1-lite-generate-preview"
+            else payload.native_audio,
         )
     else:
         fields.update(seconds=payload.seconds)

@@ -501,6 +501,60 @@ test("the worker drafts an episode with the looks that cover it, in series.json 
   assert.equal(cast[1].looks, undefined, "series.json carries the cast as video.json wants it");
 });
 
+test("an approved production plan reaches each episode's writer/checker/listener context and overrides the old stills tier", async () => {
+  const box = sandbox();
+  const site = fakeSite();
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-09-27T01:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  const production = {
+    schema_version: 1, profile: { visual_tier: "clips", subtitles: { burn_in: false } },
+    visual_direction: "full animation", opening_30s: [{ id: "opening" }], prop_rules: ["keep the ring"],
+    characters: [{ id: CAST[0].id, look_states: [{ id: "present", appearance: "blue coat" }] }],
+    episodes: [1, 2].map((episode) => ({ episode, characters: [CAST[0].id], hero_shot: { action: `action ${episode}` } })),
+    audio_plan: "Taiwan Mandarin", acceptance_checks: ["listen to character names"],
+  };
+  const settingMd = `${SETTING.body_md}\n<!-- BEGIN GENERATED PRODUCTION DIRECTION -->\nFuture episode 40 production spoiler\n<!-- END GENERATED PRODUCTION DIRECTION -->\nOwner note kept after the appendix`;
+  for (const number of [1, 2]) {
+    const slug = episodeSlug("wenjian", number);
+    await automation.draftEpisode({ id: `production${number}`, slug, title: "", premise: SERIES.premise, target_minutes: 3 }, {
+      series: { ...SERIES, visual_tier: "stills" }, setting: { ...SETTING, body_md: settingMd, body_json: { ...SETTING.body_json, production_design: production } }, episodes: [], recaps: [], mysteries: [],
+    }, { ...beats(number), chapter_number: 1, beats: beats(number) });
+    const info = readJson(path.join(box.root, "docs", "videos", slug, "series.json"));
+    const state = readJson(path.join(box.work, slug, "auto.json"));
+    assert.equal(state.series.visual_tier, "clips");
+    assert.equal(info.visual_tier, "clips");
+    assert.equal(info.series.visual_tier, "clips");
+    const payload = automation.seriesPayload(state);
+    assert.equal(payload.production.episode.episode, number);
+    assert.equal(payload.production.opening_30s.length, number === 1 ? 1 : 0);
+    assert.deepEqual(payload.production.audio_plan, production.audio_plan);
+    assert.deepEqual(payload.production.acceptance_checks, production.acceptance_checks);
+    assert.equal(info.setting_md, settingMd, "the complete approved book stays on disk");
+    assert.ok(payload.setting_md.includes(SETTING.body_md));
+    assert.ok(payload.setting_md.includes("Owner note kept after the appendix"));
+    assert.ok(!payload.setting_md.includes("Future episode 40 production spoiler"));
+    assert.equal(payload.setting, undefined, "the full setting JSON never duplicates all production episodes");
+    assert.equal(payload.production.episodes, undefined);
+  }
+});
+
+test("approved shot-look catalogs survive cast preparation and replace writer-invented variants", () => {
+  const example = dramaFixture();
+  const variants = [{ id: "present", appearance: "adult woman, modern blue jacket, short hair" }];
+  example.characters[0].shot_looks = variants;
+  const cast = castFrom({ characters: example.characters }, 1);
+  assert.deepEqual(cast[0].shot_looks, variants);
+  const writer = structuredClone(example);
+  writer.characters[0].shot_looks = [{ id: "invented", appearance: "unapproved" }];
+  writer.scenes[1].data.character_looks = { jingwei: "present" };
+  const settled = settle(writer, { slug: "wenjian-e001", root: ".", settings: { voice: example.voice, drama: {} }, format: "drama", series: { slug: "wenjian", episode: 1, chapter: 1 }, cast });
+  assert.deepEqual(settled.characters[0].shot_looks, variants);
+  assert.deepEqual(settled.characters[0].voice, example.characters[0].voice);
+  assert.deepEqual(settled.scenes[1].data.character_looks, { jingwei: "present" });
+  assert.equal(documentProblem("setting", { ...SETTING, body_json: { ...SETTING.body_json, characters: [{ ...CAST[0], shot_looks: variants }] } }, job("setting")), null);
+  assert.match(documentProblem("setting", { ...SETTING, body_json: { ...SETTING.body_json, characters: [{ ...CAST[0], shot_looks: [{ id: "bad", appearance: "x", voice: {} }] }] } }, job("setting")), /only id/);
+});
+
 test("a story bible has the cast, the acts and one outline, and only a one-off has one", () => {
   const bibleJob = job("bible", { series: ONE_OFF, chapter_number: null, context: { ...job("bible").context, series: ONE_OFF, setting: null, mysteries: [] } });
   assert.equal(documentProblem("bible", BIBLE, bibleJob), null);
