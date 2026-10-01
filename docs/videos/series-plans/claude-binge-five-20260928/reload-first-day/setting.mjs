@@ -106,6 +106,14 @@ export default {
           { with: "suxing", kind: "直播裡的好搭檔；一個聽、一個播" },
           { with: "shaoqing", kind: "被他綁走過，要堵住第二個聲音" },
         ],
+        looks: [
+          {
+            id: "no-bag",
+            from: 36,
+            to: 36,
+            appearance: "16-year-old Taiwanese boy, skinny and quick, 168 cm, narrow face with big anxious eyes, a chipped-tooth grin and a sunburnt nose, messy black hair; bright yellow delivery jacket with reflective piping over a white tee, black joggers, scuffed orange sneakers, nothing on his back; oversized black over-ear headphones around his neck, one earcup cracked and the cord cut short; a faint cold-blue system panel at his right shoulder.",
+          },
+        ],
       },
       {
         id: "ama",
@@ -159,6 +167,14 @@ export default {
           { with: "wanzhao", kind: "第一個把鏡頭對準她的人，最後替她把帳播給全城" },
           { with: "xiaoshu", kind: "直播搭檔；一個聽、一個播" },
           { with: "shaoqing", kind: "他的直播錄下邵擎每一次的「早知道」" },
+        ],
+        looks: [
+          {
+            id: "own-voice",
+            from: 36,
+            appearance: "22-year-old Taiwanese man, slight and restless, 172 cm, sharp fox-like face with quick bright eyes and a lopsided grin, bleached ash-blond undercut with dark roots; oversized white hoodie with a red lightning stripe down one sleeve, black skinny jeans, white high-tops, a black cross-body bag; a phone on a short black gimbal in his right hand with a tiny red REC light; a small clip-on ring light at his collar; a faint cold-blue system panel at his right shoulder.",
+            voice_style: "台灣國語；聲音平，像第一次用自己的聲音說話。",
+          },
         ],
       },
       {
@@ -214,6 +230,14 @@ export default {
           { with: "shaoqing", kind: "名單的來源；他每次都替邵擎先擋人，然後死在第二十八天" },
           { with: "zhouyu", kind: "他的人打的每一棍，都是周嶼接的" },
           { with: "akun", kind: "副手；替他帶隊攻院，最後當著全城念出他的名字" },
+        ],
+        looks: [
+          {
+            id: "heard",
+            from: 32,
+            appearance: "52-year-old Taiwanese man, heavyset and thick-necked, 176 cm, broad jowly face with small hard eyes, a flat nose and a permanent frown, thin greying hair combed straight back; dark grey security-company windbreaker with a red shield patch on the shoulder over a black polo, black trousers, polished black boots; chest out, followed by men in matching grey; a faint cold-blue system panel at his right shoulder.",
+            voice_style: "粗、重的台灣國語；句子短、慢，像第一次聽人講話。",
+          },
         ],
       },
       {
