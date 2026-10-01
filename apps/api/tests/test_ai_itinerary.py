@@ -190,6 +190,8 @@ async def test_openai_responses_uses_schema_store_false_and_rest_output_shape() 
     assert result.days[0].items[0].candidate_key == "hotspot:0"
     assert captured["store"] is False
     assert captured["text"]["format"]["type"] == "json_schema"  # type: ignore[index]
+    # The strict format enforces the shape; only MiniMax needs it written out.
+    assert captured["instructions"] == itinerary_module.SYSTEM_PROMPT
     serialized_input = str(captured["input"])
     assert "不要一直換飯店" in serialized_input
     assert "email" not in serialized_input.lower()
@@ -200,6 +202,7 @@ async def test_responses_provider_accepts_markdown_fenced_json() -> None:
     """MiniMax reasoning models ignore text.format and fence their JSON."""
 
     def handler(request: httpx.Request) -> httpx.Response:
+        assert itinerary_module.MINIMAX_SHAPE in json.loads(request.content)["instructions"]
         return httpx.Response(
             200,
             json={

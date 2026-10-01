@@ -264,6 +264,23 @@ def test_gemini_research_provider_uses_the_shared_key_and_its_own_override() -> 
 
 
 @pytest.mark.asyncio
+async def test_openai_strict_format_carries_the_schema_without_restating_it() -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        body = json.loads(request.content)
+        assert body["instructions"] == "Return JSON"
+        assert body["text"]["format"]["strict"] is True
+        plan = {"article_queries": ["淺草寺 旅遊"], "video_queries": ["淺草寺 vlog"]}
+        return httpx.Response(200, json={"output_text": json.dumps(plan, ensure_ascii=False)})
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        provider = ResponsesResearchProvider(
+            "openai", "https://ai.example", "secret", "model", 10, 1000, client
+        )
+        plan, _ = await provider.structured(QueryPlan, "query_plan", "Return JSON", {})
+    assert plan.article_queries == ["淺草寺 旅遊"]
+
+
+@pytest.mark.asyncio
 async def test_invalid_json_after_one_repair_fails_closed() -> None:
     def handler(_: httpx.Request) -> httpx.Response:
         return httpx.Response(200, json={"output_text": "still-invalid"})

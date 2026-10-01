@@ -1,0 +1,559 @@
+{
+  "title": "Google 계정으로 무료 AI 영상 만들기: Google Vids Gemini Omni 1.1로 뭘 할 수 있나, 한도는 얼마인가",
+  "description": "Google Vids가 모든 Google 계정에 Gemini Omni 1.1 AI 영상 생성을 무료로 열었습니다. 이 영상에서는 한 편을 만드는 방법을 보여 드리고, 공지에 명확히 적히지 않은 다섯 가지를 도움말 페이지가 어떻게 답하는지 정리합니다.\nAI로 영상을 만들고 싶지만 유료 결제도, 편집 공부도 원하지 않는 분을 위한 영상입니다.\n\n다루는 내용: 컴퓨터에서 한 편 만드는 방법, 탭을 닫기 전에 Vid에 먼저 넣어야 하는 이유, 중국어 프롬프트와 연령 조건, 휴대폰에서 생성 가능한지 여부, 영상 업로드 수정의 지역 제한, 새 AI 내레이션 출시 시점, 도움말 두 페이지의 한도가 다르게 적힌 이유, SynthID 워터마크와 'Vids 내에서만 사용' 문구. 이 사이트는 생성 효과를 직접 테스트하지 않았습니다.",
+  "tags": [
+    "Google Vids",
+    "Gemini Omni",
+    "free AI video",
+    "AI 영상",
+    "Omni 1.1",
+    "SynthID",
+    "Google Vids limits",
+    "무료 AI 도구",
+    "AI video generator",
+    "Google Vids 사용법",
+    "Google Vids 무료",
+    "무료 AI 영상 만들기"
+  ],
+  "chapters": {
+    "hook": "무료 AI 영상, 공지에 없는 5가지",
+    "what-is": "Google Vids 무료 AI 영상이란",
+    "how-to": "Google Vids AI 영상 만드는 법",
+    "unclear-table": "Google Vids 공지에 없는 5가지",
+    "who-can": "Google Vids 무료 한도 비교",
+    "watermark": "Google Vids 워터마크·사용 범위",
+    "recap": "Google Vids 무료 AI 영상, 써볼까"
+  },
+  "source_hashes": {
+    "chapters": {
+      "hook": "162c2ce4302b",
+      "what-is": "7dc8d1330c6f",
+      "how-to": "24bd179292d9",
+      "unclear-table": "cc3d0a4df3f4",
+      "who-can": "2a11d59c57db",
+      "watermark": "3de6f54dd457",
+      "recap": "e59a03f67f79"
+    },
+    "title": "ae76a930c629",
+    "description": "8aa9dd75fc07",
+    "tags": "59ac95cab212"
+  },
+  "lines": {
+    "wchu": {
+      "source_hash": "0fec74606424",
+      "text": "이 무료 AI 영상 도구, Google 공지엔 모호한 게 5개입니다."
+    },
+    "gqa7": {
+      "source_hash": "a5aa7762b89c",
+      "text": "공지에 무료라고 적혀도 다 설명한 건 아닙니다."
+    },
+    "chza": {
+      "source_hash": "b34d4fab16f5",
+      "text": "중국어 프롬프트, 휴대폰 제작 여부도 공지엔 없습니다."
+    },
+    "yvre": {
+      "source_hash": "7192d5da63f0",
+      "text": "다른 공식 페이지의 답을 모았습니다."
+    },
+    "yfab": {
+      "source_hash": "728e1ecfa51a",
+      "text": "그래서 이건 정확히 뭘까요?"
+    },
+    "rn39": {
+      "source_hash": "5dbcb33a7da2",
+      "text": "한마디로 말하면"
+    },
+    "5wgf": {
+      "source_hash": "0a23bf3c24d8",
+      "text": "Google Vids의 AI 영상 기능"
+    },
+    "ezrk": {
+      "source_hash": "30c19e0dc5db",
+      "text": "Gemini Omni 1.1 Flash."
+    },
+    "v46f": {
+      "source_hash": "19606383c3f0",
+      "text": "9월 23일 출시"
+    },
+    "ueaj": {
+      "source_hash": "d2d37583ac7b",
+      "text": "Google은 무료, 누구나 쓴다고 합니다."
+    },
+    "a3e7": {
+      "source_hash": "041963ff98f1",
+      "text": "공지부터 봅시다"
+    },
+    "rkgw": {
+      "source_hash": "1c043376724a",
+      "text": "제목은 '누구나 고화질 영상 제작'입니다."
+    },
+    "7kht": {
+      "source_hash": "5f4c09b078c9",
+      "text": "본문에 한 줄 더 있습니다"
+    },
+    "8p6r": {
+      "source_hash": "6e1894eccc3e",
+      "text": "구글·Workspace 계정 무료"
+    },
+    "zbyy": {
+      "source_hash": "1751e49360b8",
+      "text": "무료, 누구나는 홍보 문구입니다."
+    },
+    "gjup": {
+      "source_hash": "6895e9c80b9f",
+      "text": "그럼 실제로 한 편 어떻게 만듭니까?"
+    },
+    "dfmy": {
+      "source_hash": "4fa27d21365d",
+      "text": "Google 도움말 기준으로 총 다섯 단계입니다."
+    },
+    "uhab": {
+      "source_hash": "f48501b6c1d2",
+      "text": "첫째, 컴퓨터에서 Vids를 엽니다."
+    },
+    "rrkk": {
+      "source_hash": "1092ec9f8630",
+      "text": "둘째, 시작 화면 AI 영상 만들기"
+    },
+    "9i94": {
+      "source_hash": "853935b2a597",
+      "text": "셋째, 프롬프트에 주제, 장소, 동작, 카메라를 적습니다."
+    },
+    "qfwd": {
+      "source_hash": "b03da62a3aae",
+      "text": "넷째, 비율·길이 선택. 가로·세로, 3초에서 10초"
+    },
+    "q9te": {
+      "source_hash": "d2e57bdb85c2",
+      "text": "다섯째, 생성 누르고 대기"
+    },
+    "skjm": {
+      "source_hash": "6a76fcaf4051",
+      "text": "처음엔 간단한 장면부터 연습합시다."
+    },
+    "pzf6": {
+      "source_hash": "0666367dcfca",
+      "text": "프롬프트 차이가 큽니다."
+    },
+    "csj2": {
+      "source_hash": "00317cdc2705",
+      "text": "Google은 대사·소리·어조도 권장합니다."
+    },
+    "fe7c": {
+      "source_hash": "a593a40eb7dd",
+      "text": "'아름다운 해변 영상' 한 줄은 모호해 모델이 마구 짐작합니다."
+    },
+    "nz9d": {
+      "source_hash": "6b81012eb393",
+      "text": "황혼, 개 한 마리, 낮은 각도 추적, 따뜻한 빛, 파도 소리면 구체적입니다."
+    },
+    "rnw8": {
+      "source_hash": "8899dbd9e8df",
+      "text": "제 생각엔 프롬프트는 카메라맨용 콘티 같습니다."
+    },
+    "x6hs": {
+      "source_hash": "5cbba908b15d",
+      "text": "클립 사양은 이렇습니다."
+    },
+    "fk7e": {
+      "source_hash": "c83b65eaefbb",
+      "text": "길이는 3초에서 10초"
+    },
+    "3d6b": {
+      "source_hash": "db7db508b243",
+      "text": "최대 풀 HD 1080입니다."
+    },
+    "tw82": {
+      "source_hash": "f9dd787ed4a4",
+      "text": "초당 24프레임입니다"
+    },
+    "nqwj": {
+      "source_hash": "8b6496a1cfd3",
+      "text": "참조 이미지는 최대 7장입니다."
+    },
+    "ruqj": {
+      "source_hash": "55e263fec121",
+      "text": "참조 이미지로 소재를 씁니다."
+    },
+    "ikef": {
+      "source_hash": "39b37c5e2d8e",
+      "text": "개인 계정은 기본 아바타만, 맞춤은 안 됩니다."
+    },
+    "24vb": {
+      "source_hash": "cf05d18b1ae6",
+      "text": "아바타 소재는 현재 영어와 지정 요금제만 되니 자격을 확인합시다."
+    },
+    "xfxp": {
+      "source_hash": "12fe0713f461",
+      "text": "10초는 짧지만 길게 만들 새 컨트롤이 있습니다."
+    },
+    "7ia3": {
+      "source_hash": "0d9575e412c0",
+      "text": "컨트롤 세 가지."
+    },
+    "9meb": {
+      "source_hash": "6cb048349759",
+      "text": "첫째, 장면 연장. Google은 조명·캐릭터가 유지된답니다."
+    },
+    "xep9": {
+      "source_hash": "f65dddc71920",
+      "text": "둘째, 초를 정해 스토리·내레이션에 맞춥니다"
+    },
+    "r44r": {
+      "source_hash": "30d218bd91ae",
+      "text": "셋째, 풀 HD 생성, 기존 클립 업스케일"
+    },
+    "krnz": {
+      "source_hash": "19c660ee2199",
+      "text": "제 생각엔 연장 뒤 보기 좋은지는 직접 봐야 압니다."
+    },
+    "33ji": {
+      "source_hash": "50b48ea67666",
+      "text": "다 만들면 꼭 할 일이 있습니다."
+    },
+    "hsue": {
+      "source_hash": "3e0bf1f79996",
+      "text": "생성 기록은 이번 세션에만 남습니다."
+    },
+    "itua": {
+      "source_hash": "811dca9c9fb0",
+      "text": "탭을 닫으면 방금 생성한 클립이 사라집니다."
+    },
+    "s7f6": {
+      "source_hash": "268c31f9004e",
+      "text": "만든 클립은 내 Vid에 넣어야 저장됩니다."
+    },
+    "tred": {
+      "source_hash": "a0a8a433ffed",
+      "text": "도움말도 나중에 편집하거나 쓰려면 먼저 Vid에 넣으라고 합니다."
+    },
+    "n9n5": {
+      "source_hash": "59d46747e437",
+      "text": "마음에 들 때마다 넣읍시다."
+    },
+    "mrxt": {
+      "source_hash": "2ad20b7c8993",
+      "text": "절차는 이렇고, 공지가 밝히지 않은 건 뭘까요?"
+    },
+    "xi4n": {
+      "source_hash": "2f8a1738ea11",
+      "text": "다섯 가지와 오른쪽의 공식 답입니다."
+    },
+    "u66y": {
+      "source_hash": "1dcda4ae2acd",
+      "text": "첫째, 중국어 프롬프트 가능 여부"
+    },
+    "47u8": {
+      "source_hash": "903a1e4efbfe",
+      "text": "둘째, 연령 조건 유무"
+    },
+    "hyqa": {
+      "source_hash": "935d51a728b0",
+      "text": "셋째, 휴대폰 생성 가능 여부"
+    },
+    "mksp": {
+      "source_hash": "26a51ec8d9be",
+      "text": "넷째, 영상 업로드 수정 지역 제한"
+    },
+    "hqkj": {
+      "source_hash": "3bb3f201fe05",
+      "text": "다섯째, 새 AI 내레이션 출시일"
+    },
+    "qfzs": {
+      "source_hash": "78537f7985cf",
+      "text": "답을 먼저 보고, 하나씩 자세히 봅니다."
+    },
+    "x24z": {
+      "source_hash": "2e1d59c932a6",
+      "text": "먼저 중국어 프롬프트"
+    },
+    "tnsk": {
+      "source_hash": "9538ff2cb562",
+      "text": "중국어로 프롬프트를 써도 됩니까?"
+    },
+    "7xnu": {
+      "source_hash": "934449dacf98",
+      "text": "공식 페이지: 언어 표에 AI 영상이 없고, 없는 기능은 영어만 지원합니다."
+    },
+    "ixne": {
+      "source_hash": "bf5bb1bf0521",
+      "text": "언어 표 링크가 있습니다."
+    },
+    "vzju": {
+      "source_hash": "b348c07b1177",
+      "text": "표에 이미지·내레이션·아바타는 있고, 없는 기능은 영어만 지원한다고 씁니다."
+    },
+    "3gje": {
+      "source_hash": "4f51c4843b7e",
+      "text": "공식 권장: 기능이 영어만 지원하면 계정 언어를 영어로 바꾸라고 합니다."
+    },
+    "jx22": {
+      "source_hash": "45308cfe6cca",
+      "text": "둘째, 연령 조건이 있습니까?"
+    },
+    "fsf9": {
+      "source_hash": "9a8db5547d81",
+      "text": "생성 페이지가 연결한 Gemini 시작 페이지는 만 18세 이상이라고 합니다."
+    },
+    "z7mj": {
+      "source_hash": "0c64f011026b",
+      "text": "셋째, 휴대폰으로 생성됩니까?"
+    },
+    "nrat": {
+      "source_hash": "4cfb7483b79d",
+      "text": "공식 절차는 다 PC에서 시작합니다."
+    },
+    "chsh": {
+      "source_hash": "b65e666c215d",
+      "text": "Vids 시작 페이지: 휴대폰은 보기만 되고 편집은 불가합니다."
+    },
+    "g9ei": {
+      "source_hash": "f4c2761ea54f",
+      "text": "넷째, 내 영상 업로드 수정은 지역 제한"
+    },
+    "9zm2": {
+      "source_hash": "7edb64ce47b1",
+      "text": "EEA·영국·스위스 불가"
+    },
+    "pcqq": {
+      "source_hash": "71f48833302f",
+      "text": "미국 일리노이주와 텍사스도 불가."
+    },
+    "f57c": {
+      "source_hash": "1876c2251e51",
+      "text": "그 외는?"
+    },
+    "nqbw": {
+      "source_hash": "6d78d8bd5935",
+      "text": "사용량 페이지는 Workspace 제공 지역이라고만"
+    },
+    "tjxx": {
+      "source_hash": "a77cfdd8ce22",
+      "text": "10초 넘는 영상은 마지막 10초만 수정됩니다."
+    },
+    "wga7": {
+      "source_hash": "638cee702885",
+      "text": "다섯째, 새 AI 내레이션."
+    },
+    "cysz": {
+      "source_hash": "edea51c4fbcc",
+      "text": "Gemini 3.8 Flash-Lite TTS 예고"
+    },
+    "bp5e": {
+      "source_hash": "c52c381b581f",
+      "text": "100개 넘는 언어라고 합니다"
+    },
+    "u2gj": {
+      "source_hash": "272c13c9d40a",
+      "text": "9월 29일 업데이트 공지: 출시됐고 지정 요금제 한정입니다."
+    },
+    "jm3a": {
+      "source_hash": "7197861817ae",
+      "text": "공지에 없는 건 내 화면을 보는 게 가장 실용적입니다."
+    },
+    "radj": {
+      "source_hash": "97ba8ff611c6",
+      "text": "사용량 페이지는 맞는 Google 계정 로그인이 먼저입니다."
+    },
+    "p83d": {
+      "source_hash": "c5826b2d192d",
+      "text": "없는 기능은 시작 화면에 옵션이 안 뜹니다."
+    },
+    "y76w": {
+      "source_hash": "de447c1589e5",
+      "text": "직장·학교 계정은 관리자가 생성형 AI 기능을 끌 수도 있습니다."
+    },
+    "263x": {
+      "source_hash": "218fb00c78f8",
+      "text": "그럼 공식이 적은 부분은 페이지마다 같은 말일까요?"
+    },
+    "iyr4": {
+      "source_hash": "735e9830d90e",
+      "text": "대상부터 세 페이지가 다릅니다."
+    },
+    "cdjf": {
+      "source_hash": "a73325664b80",
+      "text": "공지: 구글·Workspace 계정 무료"
+    },
+    "ifi6": {
+      "source_hash": "d3fe4f3782b4",
+      "text": "도움말 서두: 자격 있는 Workspace 구독 필요"
+    },
+    "cyxg": {
+      "source_hash": "4c6d13d5f557",
+      "text": "사용량 페이지엔 개인 Google 계정 칸이 따로"
+    },
+    "itx5": {
+      "source_hash": "8be9eb70baf0",
+      "text": "한도: 두 페이지 원문을 나란히"
+    },
+    "3x75": {
+      "source_hash": "3c17c8debe03",
+      "text": "생성 도움말: 대부분 사용자는 월 최대 영상 50개"
+    },
+    "i84s": {
+      "source_hash": "7dceb305b2dc",
+      "text": "사용량 개인 계정 표: 월 6개, 아바타와 합산"
+    },
+    "k25s": {
+      "source_hash": "5178e9a2a89c",
+      "text": "두 숫자 모두 공식 기재입니다."
+    },
+    "42a3": {
+      "source_hash": "85f6f8b2d066",
+      "text": "세 숫자 나란히"
+    },
+    "us6x": {
+      "source_hash": "c449c2439e43",
+      "text": "첫 줄, 생성 도움말: 대부분 사용자는 월 영상 50개"
+    },
+    "jdpm": {
+      "source_hash": "47aceea12800",
+      "text": "둘째 줄, 사용량 페이지 개인 계정: 월 6개, 아바타와 합산"
+    },
+    "evm7": {
+      "source_hash": "f6e31ac03d72",
+      "text": "두 줄 모두 매월 1일 태평양 시간 자정에 초기화됩니다."
+    },
+    "bgex": {
+      "source_hash": "036c85780ef1",
+      "text": "셋째 줄, 사용량 페이지에 별도 한도를 안 적었으면 기본은 500초입니다"
+    },
+    "yuft": {
+      "source_hash": "af581b24d976",
+      "text": "대상·단위가 달라 서로 비교할 수 없습니다."
+    },
+    "pesn": {
+      "source_hash": "fd595bb79800",
+      "text": "저는 숫자 하나 대신 세 단계로 확인합니다."
+    },
+    "artk": {
+      "source_hash": "0e3d50842b1a",
+      "text": "첫째, 내 계정 종류부터 확인"
+    },
+    "3z47": {
+      "source_hash": "d5081c9817f3",
+      "text": "둘째, 사용량 페이지 내 칸이 개수인지 초인지 확인"
+    },
+    "xii4": {
+      "source_hash": "c090f6936021",
+      "text": "셋째, 로그인 후 화면의 한도 확인"
+    },
+    "z9hj": {
+      "source_hash": "ead796c33a8d",
+      "text": "Google도 한도와 기능이 바뀔 수 있대요."
+    },
+    "7b7c": {
+      "source_hash": "b7d907161419",
+      "text": "두 페이지 원문과 모든 제약은 설명란 첫 줄의 글에 정리했습니다."
+    },
+    "ta5k": {
+      "source_hash": "50d675e560f1",
+      "text": "그럼 만든 결과물은 어디에 쓸 수 있을까요?"
+    },
+    "9t34": {
+      "source_hash": "81688ba5ffa6",
+      "text": "도움말 맨 밑에 한 줄"
+    },
+    "ynjh": {
+      "source_hash": "6eaee372cdaf",
+      "text": "생성한 이미지와 영상은 Vids 내 사용 전용이라는 내용입니다."
+    },
+    "mcdr": {
+      "source_hash": "da84fcd0300f",
+      "text": "내보낸 영상에도 적용되는지는 페이지에 더 설명이 없습니다."
+    },
+    "yw2i": {
+      "source_hash": "deaf465c1419",
+      "text": "밖에서 쓰기 전, 사용 정책부터 확인"
+    },
+    "hihz": {
+      "source_hash": "2447b42b7781",
+      "text": "이 기능의 주의점 두 가지"
+    },
+    "vrq8": {
+      "source_hash": "2d618279943a",
+      "text": "첫째, Google 생성형 AI 금지된 사용 정책 준수."
+    },
+    "t46a": {
+      "source_hash": "c69cc0506783",
+      "text": "생성물은 현실 상황과 다를 수 있다고 공식도 알립니다."
+    },
+    "vavj": {
+      "source_hash": "b5167dc923e8",
+      "text": "SynthID는 숨은 워터마크."
+    },
+    "w386": {
+      "source_hash": "71fb192b1e96",
+      "text": "Google 설명: AI 제작 여부 검증 가능"
+    },
+    "t6py": {
+      "source_hash": "73b59a5f3306",
+      "text": "방법은 안 나옵니다."
+    },
+    "vvpv": {
+      "source_hash": "6d0165f76645",
+      "text": "제 생각엔 워터마크가 각국 AI 표시 규정 충족은 아닙니다"
+    },
+    "xtsm": {
+      "source_hash": "72042d99a00b",
+      "text": "여기까지 보면 이 무료 도구, 정말 써 볼 만할까요?"
+    },
+    "jzhk": {
+      "source_hash": "560ce5563fd1",
+      "text": "제 생각엔 한 편 해 볼 만하나 세 가지는 기억해야 합니다."
+    },
+    "nkvm": {
+      "source_hash": "b85aebeefb7b",
+      "text": "첫째, Vid 삽입."
+    },
+    "7d88": {
+      "source_hash": "5b9927c4548f",
+      "text": "둘째, 남의 숫자 말고 내 계정 한도."
+    },
+    "qqjw": {
+      "source_hash": "190c56e4a412",
+      "text": "셋째, 공식은 Vids 내 사용 전용, 워터마크 포함"
+    },
+    "i3s3": {
+      "source_hash": "3120caada88d",
+      "text": "처음 다섯 가지, 이제 답이 있습니다."
+    },
+    "3yjx": {
+      "source_hash": "4eaf82c2b3bd",
+      "text": "중국어 프롬프트: 언어 표에 없고, 없으면 영어만."
+    },
+    "is5i": {
+      "source_hash": "a6f9607dd210",
+      "text": "연령: Gemini 페이지 18세 이상"
+    },
+    "js58": {
+      "source_hash": "e3b2f31af3ca",
+      "text": "휴대폰: 보기만 가능"
+    },
+    "ew36": {
+      "source_hash": "85d2bc72e927",
+      "text": "업로드 수정은 일부 지역 불가"
+    },
+    "y9fj": {
+      "source_hash": "ad476f1a4442",
+      "text": "새 AI 내레이션: 9월 29일 업데이트 공지엔 출시됨, 지정 요금제 한정"
+    },
+    "ri3w": {
+      "source_hash": "5191235432fe",
+      "text": "공식만 정리했고 생성 효과는 실측 안 했습니다."
+    },
+    "knpp": {
+      "source_hash": "759a2305aaee",
+      "text": "한도와 사용 범위는 공식 최신 페이지 기준입니다."
+    },
+    "xqza": {
+      "source_hash": "9ac79e604393",
+      "text": "전체 정리는 설명란 첫 줄의 글에 있습니다."
+    },
+    "cmwf": {
+      "source_hash": "414e3e36d0cb",
+      "text": "무료는 사실이지만 그 다섯 가지를 시작 전에 알면 헛수고를 피합니다."
+    }
+  }
+}
