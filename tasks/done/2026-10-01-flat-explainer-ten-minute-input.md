@@ -1,13 +1,13 @@
 ---
 id: 2026-10-01-flat-explainer-ten-minute-input
 title: Allow ten-minute flat explainers without changing drama episode limits
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: codex-longform-input
 claimed_at: 2026-10-01T16:00:43Z
 created_at: 2026-10-01T15:59:52Z
-completed_at:
+completed_at: 2026-10-01T16:44:05Z
 branch: codex/sothatswhy-season2-complete
 depends_on: []
 scope:
@@ -86,3 +86,14 @@ node ../../node_modules/typescript/bin/tsc --noEmit
   The skips require the PostgreSQL integration environment. UI regression suite **30 passed**,
   exit 0. Ruff, scoped mypy, eslint and full web typecheck also exited 0. No production
   settings, jobs, media or database rows changed.
+
+- After rebase onto `abbc276d`, frozen dependency sync installed urllib3 2.8.0;
+  the same affected API suites again passed 84 tests with three database skips,
+  the two UI suites again passed 30 tests, and scoped ruff/full web typecheck passed.
+  Future shared-branch duration integration is tracked by
+  `2026-10-01-longform-duration-merge-integration`, separate from this completed input change.
+
+- The final rebase onto `eda3b60f` incorporated #1085 character-look validation.
+  The affected API suite then passed 105 tests with three skips; four-file ruff/mypy
+  exited 0. Independent incremental review confirmed the minute-patch blocks are
+  byte-identical; the genuine report and refreshed receipt were installed and checked.

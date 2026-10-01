@@ -39,6 +39,12 @@ Independently executed `node tools/video/long-form/cli.mjs check`: PASS for all 
 
 The three READMEs and KNOWLEDGE-STORIES entry state the revised production targets, preservation of historical fact-review packages, required effective inputs, pending manuscripts/media, and the distinction between a 600-second plan and a measured cut.
 
+## Upstream character-look validation increment
+
+After rebasing onto main commit eda3b60f, an independent increment reviewed the actual change from 8403523a to 4e8f633c in series.py and its upstream regression tests. The upstream addition validates optional character-look IDs, appearances, whole-number episode ranges, non-overlap and Gemini-only voice-style overrides when filing an ordinary setting book or story bible. An explainer bible still returns through its dedicated narrator-only validation before the character-look loop; brand stories still have no such documents. The new helper neither reads nor writes target_minutes. The complete patch_target_minutes, patch_problem and patch_series block is byte-identical to the prior independently reviewed version, so the default-10, whole-minute 8–20 bounds, bible style-crossing rule and legacy correction path remain unchanged. The other 20 reviewed file hashes are unchanged. Only series.py is rebound below after this actual increment review.
+
+The genuine installed receipt passed an independent CLI check and all four targeted Node test files before this upstream increment: 14 passed, 0 failed. The refreshed receipt must be installed again and checked against the newly reviewed series.py bytes; the reviewer did not run or claim the API suite results reported by the author.
+
 ## Reviewed SHA256 bindings
 
 Any change to these bytes requires review of the affected revision before reusing this verdict.
@@ -54,7 +60,7 @@ Any change to these bytes requires review of the affected revision before reusin
 | `tools/video/qa/checks.mjs` | `fed542d7915d2aa84fd0290f7016787dac177195b9a5b999d872365534f28a50` |
 | `tools/video/qa/cli.mjs` | `f2c753158a584a82757f25a60023c37d2449ce72852d9c3b554f8eeafd3b509b` |
 | `apps/api/app/video_automation/schemas.py` | `d175d2815a205598fa8baf88c914c67d33d36dfbd0a93003db4429b0e569fdfb` |
-| `apps/api/app/video_automation/series.py` | `0ecba25a03937a5073771e4471e5050aefe7e28d422d6884a5699738e2da5319` |
+| `apps/api/app/video_automation/series.py` | `2b5d747a1cc4fd285c8722f41f91840af615711065727ae398e5ae84314815d8` |
 | `apps/web/components/admin-video-series.tsx` | `97980f007e7091dab343603c0bb1ada909decab950a5535c9ef50ee8fadba7a1` |
 | `docs/videos/long-form/README.md` | `323a0a35ee8a52cc41f7b3925524ceed8a3b54fa3a5fc4f4b0e1344a45e1472f` |
 | `docs/videos/so-thats-why/README.md` | `19e157f16f9c4007bce509590c443641f24ea637b257e54993ae03aaa1a332c8` |

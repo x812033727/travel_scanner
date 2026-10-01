@@ -1,13 +1,13 @@
 ---
 id: 2026-10-01-knowledge-longform-runtime-floor
 title: Reject knowledge and nonfiction long cuts shorter than eight minutes
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: codex-longform-qa
 claimed_at: 2026-10-01T15:59:57Z
 created_at: 2026-10-01T15:59:55Z
-completed_at:
+completed_at: 2026-10-01T16:44:08Z
 branch: codex/sothatswhy-season2-complete
 depends_on: []
 scope:
@@ -65,3 +65,8 @@ node --test tools/video/core/duration.test.mjs tools/video/qa/duration.test.mjs 
   fixtures have neither that category nor a recognized catalogue slug and stay unchanged.
 - Only the QA CLI's assemble call changed; the thumbnail changes from PR #1100 were not
   touched. No media generation, production setting, publication, Git or PR action ran.
+
+- Root's final post-rebase tools suite passed 1,099 tests with two skips and no failures.
+  The genuine independent duration-only receipt still matches all 21 reviewed files.
+  Parallel general-duration integration is tracked by
+  `2026-10-01-longform-duration-merge-integration`; #1098 remains draft/no-auto-merge.
