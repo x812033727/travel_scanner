@@ -24,6 +24,7 @@ import { automationClient } from "./client.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
 import { Automation, automatedVideos, mainGuide, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, settingsFor, settle, sheetDone, siteArticleUrl, siteSources } from "./flow.mjs";
 import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, STANCE_HEADING, TRANSLATOR_REWORD, TRANSLATOR_SHORTEN } from "./prompts.mjs";
+import { tidyRound } from "./tidy.mjs";
 
 const TOKEN = `mkv_${"t".repeat(43)}`;
 const SITE = "https://site.test";
@@ -1689,6 +1690,46 @@ test("a language ticked after the video is on YouTube is made as a new batch", a
   assert.deepEqual([video.state().status, video.state().youtube_video_id, readJson(video.docFile).youtube.video_id], ["done", "dQw4w9WgXcQ", "dQw4w9WgXcQ"]);
   assert.equal(video.onSite().ready_to_upload, false, "already on YouTube");
   assert.equal(video.onSite().youtube_video_id, "dQw4w9WgXcQ", "the report keeps the id");
+  assert.equal(video.state().tidied_at, undefined, "an untidied video makes its late languages as before");
+});
+
+test("a language ticked after the worker tidied the video is reported as skipped with the date, and nothing is made again", async () => {
+  const video = await finishedVideo();
+  video.choose({ en: { metadata: true, captions: false, dub: false } });
+  assert.match(await video.step(), /en metadata translated and reviewed$/);
+  assert.match(await video.step(), /language batch sent/);
+  video.listed().youtube_video_id = "dQw4w9WgXcQ";
+  assert.match(await video.step(), /on YouTube as dQw4w9WgXcQ/);
+  assert.equal(await video.step(), null);
+
+  // Past the retention the tidy clears the cut, the narration and the frames (docs/videos/AUTOMATION.md §清理工作區).
+  const now = new Date(Date.now() + 8 * 24 * 3600 * 1000);
+  const day = now.toISOString().slice(0, 10);
+  const tidied = tidyRound({ base: video.box.work, repos: [video.box.root], site: video.automation.site, now });
+  assert.equal(tidied.cleared?.slug, video.slug, JSON.stringify(tidied.held.concat(tidied.undated)));
+  assert.ok(!existsSync(path.join(video.workdir, "final.mp4")) && !existsSync(video.upload("final.mp4")));
+  assert.equal(video.state().tidied_at, now.toISOString());
+  assert.equal(await video.step(), null, "nothing new ticked: the tidied video stays quiet");
+
+  video.choose({ en: { metadata: true, captions: false, dub: false }, ja: { metadata: true, captions: true, dub: true } });
+  const [runs, translations, batches] = [video.runs.length, video.calls("translator").length, video.reviews("languages").length];
+  assert.equal(await video.step(), `chatgpt-ads-off: work files cleared on ${day}; ja metadata+captions+dub reported to /admin/videos as skipped, not made`);
+  assert.equal(video.runs.length, runs, "no translation, dub, captions, package or review-push is tried");
+  assert.equal(video.calls("translator").length, translations);
+  assert.equal(video.reviews("languages").length, batches + 1);
+  const [batch] = video.reviews("languages");
+  const reason = `工作檔已在 ${day} 清掉，成片與旁白都不在了，清理後才勾的部件做不出來；要這個語言得重做影片`;
+  const skipped = { status: "skipped", reason };
+  assert.deepEqual(batch.payload, { locales: { ja: { metadata: skipped, captions: skipped, dub: skipped } } }, "only the parts still in the making are named");
+  assert.deepEqual([batch.status, batch.files], ["approved", []], "no dub track: the site approves it on arrival");
+  assert.equal(batch.summary, `語言：ja 標題說明、CC、配音 跳過（${reason}）。沒有要你上傳的配音`);
+  assert.equal(batch.content_sha256, sha(path.join(video.workdir, "review", "languages.json")));
+
+  assert.equal(await video.step(), null, "the parts read as skipped now: nothing is sent again");
+  assert.equal(video.reviews("languages").length, batches + 1);
+  assert.deepEqual(video.onSite().languages.en, { metadata: { state: "ready", reason: null } }, "a part made before the tidy keeps its state");
+  assert.deepEqual(video.onSite().languages.ja, { metadata: { state: "skipped", reason }, captions: { state: "skipped", reason }, dub: { state: "skipped", reason } });
+  assert.deepEqual([video.state().status, video.listed().stage], ["done", "languages skipped"]);
 });
 
 // The narration line Jev keeps hearing wrong (docs/videos/HANDS-OFF.md §旁白): the fixture's
@@ -1875,7 +1916,12 @@ test("illustrated slides walk the picture, storyboard and music steps between th
   const answers = {
     ...answersFor(slug),
     writer: () => ({ video, claims: "c1｜Go 每月 270 元｜https://openai.com/a｜2026-09-25｜hook\n", lexicon_additions: {}, shorts: shortsDraft }),
-    listener: (body) => ({ video: body.payload.video, edits: [] }),
+    // The listener sets a pause of its own: the tool clears it again when the edit is saved.
+    listener: (body) => {
+      const edited = structuredClone(body.payload.video);
+      edited.scenes[4].lines[0].pause_after_ms = 2000;
+      return { video: edited, edits: [] };
+    },
   };
   const site = fakeSite({ answers, settings: { slides: { slides_music_track: "bed.mp3", slides_sfx_set: "studio-a" } } });
   const clock = { now: Date.parse("2026-09-29T09:00:00Z") };
@@ -1940,11 +1986,17 @@ test("illustrated slides walk the picture, storyboard and music steps between th
   const written = readJson(docFile);
   assert.equal(written.format, "slides");
   assert.equal(written.look.preset, "tech-story");
+  // The writer's pauses (600 on the opener, 900 on a4dk) gave way to the tool's beats: the hook
+  // after the first line, which is also the line before 「其實」, and no chapter closes on a question.
+  const pauses = (doc) => Object.fromEntries([...eachLine(doc)].filter(({ line }) => line.pause_after_ms !== undefined).map(({ line }) => [line.id, line.pause_after_ms]));
+  assert.deepEqual(pauses(written), { a1hk: 900 });
   assert.ok(existsSync(shortsFile(slug, box.root)), "an illustrated video's Shorts are saved like an explainer's");
   const writer = site.calls.run.find((call) => call.stage === "writer");
   assert.equal(writer.format, "slides", "the slides writer, not the drama's");
   assert.match(await automation.step(), /fact-check round 1/);
   assert.match(await automation.step(), /listener edit/);
+  assert.deepEqual(pauses(readJson(docFile)), { a1hk: 900 }, "the listener's own pause is cleared on save");
+  assert.equal(automatedVideos(box.work)[0].verified, true, "with its pause cleared the listener's script is the checked one");
   assert.match(await automation.step(), /narration synthesized/);
   assert.match(await automation.step(), /narration checked \(Jev passed every line\) and sent for review/);
   assert.match(await automation.step(), /keyframes done/);
@@ -1976,11 +2028,13 @@ test("restyle retells a worker's slides video in the storytelling register: guar
   const answers = {
     listener: () => ({
       lines: [
-        // Retold and given the cliffhanger beat: accepted.
+        // Retold: accepted; the pause the model set is ignored (a3dk does not close its chapter).
         { id: "a3dk", text: "你桌上那份報告，第一名的模型會怎麼寫？", pause_after_ms: 1200 },
+        // Retold into the chapter's closing question: accepted, and the tool gives it the cliffhanger beat.
+        { id: "a4dk", text: "答案可能讓你意外，三個數字到底說了什麼？" },
         // A Latin word the line did not have: refused, the line keeps its text.
         { id: "a5nm", text: "第一個數字，最快的 GPT 三秒就回答了。" },
-        // A pause outside the schema: refused.
+        // The same text with a pause of the model's (outside the schema, too): nothing to do.
         { id: "a9rl", text: "一句話，先看工作，再看排行榜。", pause_after_ms: 9000 },
         // Not a line of this video.
         { id: "zzzz", text: "多出來的一句。" },
@@ -1999,7 +2053,7 @@ test("restyle retells a worker's slides video in the storytelling register: guar
   assert.equal(site.calls.run.length, 0, "the dry run asks the model nothing");
 
   const line = await automation.restyle(slug);
-  assert.match(line, /^ranking-first: 1 of 11 lines retold, 3 refused \(review\/restyle\.json\); now 11 lines, 1 「你以為」 turn, 0 of 3 chapters closing on a question, 3 pause beats; the worker fact-checks, records and reviews the narration again$/);
+  assert.match(line, /^ranking-first: 2 of 11 lines retold, 2 refused \(review\/restyle\.json\); now 11 lines, 1 「你以為」 turn, 1 of 3 chapters closing on a question, 2 pause beats; the worker fact-checks, records and reviews the narration again$/);
   const call = site.calls.run[0];
   assert.equal(call.stage, "listener");
   assert.equal(call.variant, "register");
@@ -2013,20 +2067,25 @@ test("restyle retells a worker's slides video in the storytelling register: guar
   const video = readJson(docFile);
   const lines = new Map([...eachLine(video)].map(({ line }) => [line.id, line]));
   assert.equal(lines.get("a3dk").text, "你桌上那份報告，第一名的模型會怎麼寫？");
-  assert.equal(lines.get("a3dk").pause_after_ms, 1200);
+  assert.equal(lines.get("a4dk").text, "答案可能讓你意外，三個數字到底說了什麼？");
   assert.equal(lines.get("a5nm").text, "第一個數字，最快的模型三秒就回答了。", "a line that gained a Latin word keeps its text");
-  assert.equal(lines.get("a9rl").pause_after_ms, undefined);
+  // The beats are the tool's, from the retold text: the hook on the opener, the cliffhanger on
+  // a4dk's new closing question; the model's 1200 on a3dk and 9000 on a9rl are not taken.
+  const pauses = Object.fromEntries([...lines].filter(([, each]) => each.pause_after_ms !== undefined).map(([id, each]) => [id, each.pause_after_ms]));
+  assert.deepEqual(pauses, { a1hk: 900, a4dk: 1200 });
   assert.equal(video.scenes.length, 9, "no scene or line added or dropped");
   const record = readJson(path.join(box.workdir, "review", "restyle.json"));
-  assert.deepEqual(record.accepted, [{ id: "a3dk", before: "想像你桌上那份報告，第一名的模型會怎麼寫它？", after: "你桌上那份報告，第一名的模型會怎麼寫？", pause_after_ms: 1200 }]);
-  assert.deepEqual(record.refused.map((entry) => entry.split(":")[0]), ["a5nm", "a9rl", "zzzz"]);
+  assert.deepEqual(record.accepted, [
+    { id: "a3dk", before: "想像你桌上那份報告，第一名的模型會怎麼寫它？", after: "你桌上那份報告，第一名的模型會怎麼寫？" },
+    { id: "a4dk", before: "答案可能讓你意外，先別急著猜，我們用三個數字來看。", after: "答案可能讓你意外，三個數字到底說了什麼？" },
+  ]);
+  assert.deepEqual(record.refused.map((entry) => entry.split(":")[0]), ["a5nm", "zzzz"]);
   assert.match(record.refused[0], /word "GPT" was added/);
-  assert.match(record.refused[1], /pause_after_ms must be an integer from 0 to 5000/);
-  assert.equal(record.after.pauses, 3);
+  assert.equal(record.after.pauses, 2);
   const saved = readJson(stateFile);
   assert.equal(saved.verified, false, "the wording is new: the facts are checked once more");
   assert.equal(saved.listener_done, true, "the register pass was the listener's edit");
-  assert.match(saved.notes.at(-1), /^restyled on 2026-09-30: 1 lines retold in the storytelling register, 3 refused/);
+  assert.match(saved.notes.at(-1), /^restyled on 2026-09-30: 2 lines retold in the storytelling register, 2 refused/);
   assert.match(out.stdout, /listener: claude-sonnet-5/);
 
   // Videos the register is not for.
@@ -2052,6 +2111,17 @@ test("restyle from the command line: --dry-run measures the script without a tok
   assert.match(out.stderr, /restyle needs --slug/);
   assert.equal(await main(["restyle", "--slug", "never-started", "--dry-run"], ctx), EXIT.usage);
   assert.match(out.stderr, /was not started by the worker/);
+});
+
+test("the tool sets the pause beats only on the scripts whose prompts carry the storytelling register", () => {
+  const box = sandbox();
+  const { ctx } = context(box, async () => new Response("{}"), { now: Date.parse("2026-09-30T09:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), {});
+  assert.equal(automation.usesRegister({ format: "slides" }), true, "a slides video reads INSTRUCTIONS, register included");
+  assert.equal(automation.usesRegister({ format: "drama" }), false, "a drama's pauses are the screenplay's");
+  assert.equal(automation.usesRegister({ format: "drama", style_preset: "flat-explainer" }), false, "an explainer has prompts of its own");
+  assert.equal(automation.usesRegister({ format: "slides", series: { kind: "binge" } }), false, "an episode has prompts of its own");
+  assert.equal(automation.usesRegister({ format: "slides", story: { chapter: 1 } }), false, "a brand story has prompts of its own");
 });
 
 test("two lanes move two different videos at once, and only the first lane starts anything new", async () => {

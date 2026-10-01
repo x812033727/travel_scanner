@@ -37,9 +37,10 @@ The narration is TOLD, not explained (the storytelling register, docs/videos/ILL
   a queue at a counter, 「等於一杯咖啡的錢」), and the pictures ("shot" scenes) draw those scenes.
 - Sentences alternate long and short; a reveal is a short sentence. Numbers arrive one at a time,
   each with what it means in the viewer's day.
-- Beats as pauses ("pause_after_ms"): ${PAUSE_BEATS.hook} after the cold open's first sentence,
-  ${PAUSE_BEATS.reveal} on the sentence before 「其實」, ${PAUSE_BEATS.cliffhanger} on a chapter's closing
-  question. Nowhere else, and never over 5000.
+- The pauses are the tool's: it sets "pause_after_ms" from the text after you answer
+  (${PAUSE_BEATS.hook} after the cold open's first sentence, ${PAUSE_BEATS.reveal} on the sentence before
+  「其實」, ${PAUSE_BEATS.cliffhanger} on a chapter's closing question) and clears it everywhere else. Leave
+  "pause_after_ms" out; the beats land where the words put them.
 - Facts stay facts: the register changes wording, order and rhythm, never a number, a name, a
   version or who said what; every claim still rests on "sources".
 `.trim();
@@ -50,6 +51,71 @@ export const STORY_VOICE_STYLE =
 
 const QUESTION = /[？?]\s*$/;
 const GREETING = /大家好|今天(要|來)?跟大家|歡迎(回到|來到)|接下來我們來看/;
+/** The word the register's reveal turns on (「你以為…其實…」). */
+const REVEAL_MARKER = "其實";
+
+/** The script's chapters as scene ranges: the first scene opens one, and so does every scene with a "chapter". */
+function chaptersOf(doc) {
+  const scenes = doc.scenes ?? [];
+  const chapters = [];
+  for (const [index, scene] of scenes.entries()) {
+    if (!scene?.chapter && index !== 0) continue;
+    if (chapters.length) chapters.at(-1).end = index;
+    chapters.push({ start: index, end: scenes.length, name: scene?.chapter ?? null });
+  }
+  return chapters;
+}
+
+/**
+ * The last line of every chapter but the last (the last chapter answers the opening question
+ * instead of asking the next one), or null for a chapter without a line.
+ */
+function closingLines(doc, chapters) {
+  const scenes = doc.scenes ?? [];
+  return chapters.slice(0, -1).map((chapter) => {
+    for (let index = chapter.end - 1; index >= chapter.start; index--) {
+      const own = Array.isArray(scenes[index]?.lines) ? scenes[index].lines : [];
+      if (own.length) return own.at(-1);
+    }
+    return null;
+  });
+}
+
+/**
+ * Set the register's pause beats from the text, in place, and return the script: PAUSE_BEATS.hook
+ * after the first spoken line (the cold open's first sentence), PAUSE_BEATS.reveal on the line
+ * before every line that says 「其實」, PAUSE_BEATS.cliffhanger on a chapter's last line when it is
+ * a question (the chapters and closers registerSummary counts). A line on two beats keeps the
+ * longer pause. One line is one spoken sentence (script-writing.md), so "the sentence before"
+ * is the line before, across scene boundaries.
+ *
+ * Every other "pause_after_ms" is cleared first, a model's included: the rule says the beats sit
+ * there and nowhere else, so the tool owns the field on a register script. The model no longer
+ * sets it (REGISTER_RULES tells it to leave the field out), a stray value from an older prompt or
+ * a model that ignored the rule does not survive a save, and running this twice changes nothing.
+ */
+export function setPauseBeats(doc) {
+  if (!Array.isArray(doc?.scenes)) return doc;
+  // A draft lint has yet to see may hold a scene without lines or a line that is not an object.
+  const lines = doc.scenes.flatMap((scene) => (Array.isArray(scene?.lines) ? scene.lines : [])).filter((line) => line && typeof line === "object");
+  const said = (line) => String(spokenText(line) ?? "");
+  const beats = new Map();
+  const beat = (line, ms) => {
+    if (line) beats.set(line, Math.max(beats.get(line) ?? 0, ms));
+  };
+  beat(lines[0], PAUSE_BEATS.hook);
+  for (const [index, line] of lines.entries()) {
+    if (index > 0 && said(line).includes(REVEAL_MARKER)) beat(lines[index - 1], PAUSE_BEATS.reveal);
+  }
+  for (const line of closingLines(doc, chaptersOf(doc))) {
+    if (line && typeof line === "object" && QUESTION.test(said(line))) beat(line, PAUSE_BEATS.cliffhanger);
+  }
+  for (const line of lines) {
+    if (beats.has(line)) line.pause_after_ms = beats.get(line);
+    else delete line.pause_after_ms;
+  }
+  return doc;
+}
 
 /**
  * How far a script keeps the register, from its text alone (no timeline): the count of
@@ -58,22 +124,9 @@ const GREETING = /大家好|今天(要|來)?跟大家|歡迎(回到|來到)|接�
  * the tests read it; it judges nothing, the listener does.
  */
 export function registerSummary(doc) {
-  const scenes = doc.scenes ?? [];
   const lines = [...eachLine(doc)].map(({ line }) => spokenText(line));
-  const chapters = [];
-  for (const [index, scene] of scenes.entries()) {
-    if (!scene.chapter && index !== 0) continue;
-    if (chapters.length) chapters.at(-1).end = index;
-    chapters.push({ start: index, end: scenes.length, name: scene.chapter ?? null });
-  }
-  const lastLineOf = (chapter) => {
-    for (let index = chapter.end - 1; index >= chapter.start; index--) {
-      const own = scenes[index].lines ?? [];
-      if (own.length) return spokenText(own.at(-1));
-    }
-    return "";
-  };
-  const closers = chapters.slice(0, -1).map(lastLineOf);
+  const chapters = chaptersOf(doc);
+  const closers = closingLines(doc, chapters).map((line) => (line ? spokenText(line) : ""));
   return {
     lines: lines.length,
     twists: lines.filter((text) => text.includes(TWIST_MARKER)).length,

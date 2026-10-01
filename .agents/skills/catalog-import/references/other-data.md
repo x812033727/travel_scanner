@@ -35,7 +35,7 @@ curl -sS -o <tmp>/tw2027.csv "<data.gov.tw 目錄裡的 resourceDownloadUrl>"
 | --- | --- | --- |
 | `backfill-trip-item-names [--dry-run]` | migration 0039 前的行程項目沒有五語系名時；旅客改過名的不動 | 主機，預設就寫 |
 | `backfill-merchant-english-names [--apply] [--reset-drifted]` | `trend_merchants.json` 補了 `name_en` 之後；已匯入的列不會自己更新 | 主機；`--reset-drifted` 會把管理員改過的名字也拉回，先讀 dry-run |
-| `fill-simplified-names [--source seeds] [--apply]` | 景點種子缺 zh-CN 時 | AI 金鑰在後台，所以主機跑產 mapping（不帶 `--apply`），本機 `--from-mapping <file> --apply` 改 bootstrap 檔、PR；`--source areas` 只產 mapping，手寫進 `app/hotspots/areas.py` |
+| `fill-simplified-names [--source seeds] [--apply]` | 景點種子缺 zh-CN 時 | 用 OpenCC 轉換，本機直接跑 `--apply` 改 bootstrap 檔、PR（`--from-mapping <file>` 套用人工審過的對照）；`--source areas` 只產 mapping，手寫進 `app/hotspots/areas.py` |
 | `fill-hotspot-labels [--file NAME] [--overwrite-original] [--dry-run]` | 景點 bootstrap 缺原文名或語系名時 | 本機（要連 Wikidata），看 diff 後 PR；`--overwrite-original` 會蓋掉審過的 `local_name` |
 | `python -m app.hotspots.themes` | 不等 collector 就同步主題種子 | 主機（`docs/hotspot-themes.md`） |
 
