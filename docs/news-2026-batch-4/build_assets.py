@@ -1493,6 +1493,40 @@ def _gpt_6_sol_luna(accent: str) -> str:
     return b
 
 
+def _gpt_61_sol(accent: str) -> str:
+    # The previous Sol as a dashed sun, an arrow, and the new one drawn solid beside it. On the
+    # right four doors: two solid with a tick (the API; Codex and ChatGPT Work on the paid
+    # plans), two dashed and empty (Free and Go at launch; Chat) -- the article's availability
+    # grid, with no price and no number on it.
+    other = second_colour(accent)
+    rays = ((1, 0), (-1, 0), (0, 1), (0, -1), (0.71, 0.71), (-0.71, 0.71), (0.71, -0.71), (-0.71, -0.71))
+    b = f'<circle cx="300" cy="450" r="70" fill="none" stroke="{other}" stroke-width="6" stroke-dasharray="16 12"/>'
+    b += arrow(400, 500, 450, accent, 12)
+    b += circle(640, 450, 95, PALE, accent)
+    b += "".join(line(640 + 125 * c, 450 + 125 * s, 640 + 160 * c, 450 + 160 * s, accent, 10) for c, s in rays)
+    for i, (x, y) in enumerate(((900, 250), (1180, 250), (900, 490), (1180, 490))):
+        if i < 2:
+            b += rect(x, y, 220, 200, "#FFFFFF", accent, 24) + tick(x + 110, y + 100, 50, accent)
+        else:
+            b += f'<rect x="{x}" y="{y}" width="220" height="200" rx="24" fill="none" stroke="{other}" stroke-width="6" stroke-dasharray="16 12"/>'
+    return b
+
+
+def _claude_sonnet_55(accent: str) -> str:
+    # The previous model as a dashed card and the new one solid beside it, joined by an
+    # equals sign: the same list price. On the right, where it runs -- a screen for the web
+    # app, a phone for the mobile apps and a cloud outline for the API platforms.
+    other = second_colour(accent)
+    b = f'<rect x="200" y="300" width="230" height="300" rx="28" fill="none" stroke="{other}" stroke-width="6" stroke-dasharray="16 12"/>'
+    b += line(480, 430, 560, 430, accent, 12) + line(480, 470, 560, 470, accent, 12)
+    b += rect(610, 300, 230, 300, PALE, accent, 28)
+    b += "".join(line(650, 370 + 45 * i, 800, 370 + 45 * i, accent, 10) for i in range(4))
+    b += monitor(930, 250, 300, 190)
+    b += phone(1290, 250, 120, 220, INK)
+    b += f'<path d="M1180 650 a60 60 0 0 1 60 -60 a80 80 0 0 1 150 20 a55 55 0 0 1 20 108 H1210 a50 50 0 0 1 -30 -68 Z" fill="{PALE}" stroke="{other}" stroke-width="6"/>'
+    return b
+
+
 def _claude_opus_55(accent: str) -> str:
     # A clock whose coloured arc runs further than before: the five-hour limit, raised. To the
     # right, three boxes kept apart by dashed dividers -- three different numbers that must not
@@ -1740,6 +1774,10 @@ _DRAWINGS = {
     "crypto-news-japan-onchain-finance-forum-20260925": _japan_onchain_forum,
     "crypto-news-taiwan-cbc-stablecoin-deposit-token-cbdc-20260917": _taiwan_cbc_layers,
     "crypto-news-korea-market-manipulation-referrals-20260923": _korea_market_manipulation,
+    # 4.9
+    "ai-news-gpt-61-sol-20260929": _gpt_61_sol,
+    # 4.10
+    "ai-news-claude-sonnet-55-20260928": _claude_sonnet_55,
 }
 
 

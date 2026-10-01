@@ -7,6 +7,7 @@ import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { AdminStatusPill } from "@/components/admin-ui";
 import { YoutubeManualUpload } from "@/components/admin-video-manual-upload";
 import { YoutubeVpsUpload } from "@/components/admin-video-vps-upload";
+import { YoutubeVpsSettingsCard } from "@/components/admin-video-vps-settings";
 import { control, record, type Review, text, useWhen, type YoutubeSync, type YoutubeSyncStep, youtubeVideoId } from "@/components/admin-video-review-card";
 import { Button, fieldClass, panelClass } from "@/components/community/ui";
 import { ApiError, api } from "@/lib/api";
@@ -79,6 +80,10 @@ function CopyButton({ value, label }: { value: string; label: string }) {
  * is written, never read back; the API keeps it and the grant encrypted and away from the page.
  */
 export function YoutubeChannelCard() {
+  return <div className="grid gap-6"><YoutubeOAuthCard /><YoutubeVpsSettingsCard /></div>;
+}
+
+function YoutubeOAuthCard() {
   const t = useTranslations("admin.videoYoutube");
   const locale = useLocale();
   const when = useWhen();

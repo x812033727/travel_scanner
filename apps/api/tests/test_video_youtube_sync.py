@@ -23,6 +23,7 @@ from app.models import AdminAuditLog, VideoProject, VideoReview
 from app.video_reviews.admin_service import review_store
 from app.video_reviews.storage import ReviewStore
 from app.video_youtube import sync
+from app.video_youtube.client import YoutubeClient
 from app.video_youtube.errors import Refused
 from app.video_youtube.schemas import PublishIn
 from tests.test_video_youtube import CHANNEL, METADATA, UPLOADED_ID, Site, open_site
@@ -491,3 +492,201 @@ async def test_a_run_nobody_queued_does_nothing(site: Site, launched: list[str])
     await _package(site)
     await sync.run_sync(SLUG, site.factory)
     assert (await _project(site)).youtube_sync is None
+
+
+async def test_original_publish_followed_by_approved_languages_sends_all_five(
+    site: Site, launched: list[str]
+) -> None:
+    from tests.test_video_youtube_language_package import LOCALES, _language_batch
+
+    await site.link()
+    batch = await _language_batch(site)
+    _studio_video(site)
+    await _request(site, _publish())
+    project = await _project(site)
+    assert project.youtube_sync is not None
+    pin = project.youtube_sync["request"]["approval_pin"]
+    assert pin["publish"]["review_id"] == str(batch.publish_id)
+    assert pin["languages"]["review_id"] == str(batch.review_id)
+    assert set(pin["choice"]) == set(LOCALES)
+    await sync.run_sync(SLUG, site.factory)
+    project = await _project(site)
+    assert project.youtube_sync is not None and project.youtube_sync["status"] == "done"
+    assert set(site.google.updates[-1]["localizations"]) == set(LOCALES)
+    assert {item["snippet"]["language"] for item in site.google.tracks[STUDIO_ID]} == {
+        "zh-TW",
+        *LOCALES,
+    }
+    assert site.google.updates[-1]["snippet"]["title"] == _publish().title
+    assert site.google.updates[-1]["snippet"]["tags"] == batch.base_metadata["tags"]
+    assert site.google.updates[-1]["status"]["privacyStatus"] == "private"
+    assert site.google.thumbnails[STUDIO_ID] == JPEG
+
+
+@pytest.mark.parametrize("change", ["choice", "revoked", "replacement", "final", "caption"])
+async def test_queued_language_identity_changes_stop_before_any_google_request(
+    site: Site, launched: list[str], change: str
+) -> None:
+    from tests.test_video_youtube_language_package import _language_batch
+
+    await site.link()
+    batch = await _language_batch(site)
+    _studio_video(site)
+    await _request(site, _publish())
+    before = list(site.google.calls)
+    async with site.factory() as session:
+        project = await session.get(VideoProject, batch.project_id)
+        language = await session.get(VideoReview, batch.review_id)
+        assert project is not None and language is not None
+        if change == "choice":
+            project.locales = {}
+        elif change == "revoked":
+            language.status = "rejected"
+        elif change == "replacement":
+            session.add(
+                VideoReview(
+                    id=uuid4(),
+                    project_id=project.id,
+                    gate="languages",
+                    status="approved",
+                    content_sha256=language.content_sha256,
+                    revision=language.revision + 1,
+                    summary="new approval",
+                    payload=language.payload,
+                    files=language.files,
+                    created_at=datetime.now(UTC) + timedelta(seconds=1),
+                )
+            )
+        elif change == "final":
+            final = await session.get(VideoReview, batch.final_id)
+            assert final is not None
+            final.content_sha256 = "f" * 64
+        else:
+            item = next(file for file in language.files if file["role"] == "captions_en")
+            path = review_store(site.settings).path(SLUG, item["sha256"])
+            assert path is not None
+            path.write_bytes(b"x" * item["size"])
+        await session.commit()
+    await sync.run_sync(SLUG, site.factory)
+    result = await _project(site)
+    assert result.youtube_sync is not None and result.youtube_sync["status"] == "failed"
+    assert site.google.calls == before
+    assert site.google.updates == [] and site.google.tracks == {} and site.google.thumbnails == {}
+
+
+async def test_language_changes_during_video_read_stop_the_following_write(
+    site: Site, launched: list[str], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    from tests.test_video_youtube_language_package import _language_batch
+
+    await site.link()
+    batch = await _language_batch(site)
+    _studio_video(site)
+    await _request(site, _publish())
+    original = YoutubeClient.video
+
+    async def changed(client: YoutubeClient, video_id: str) -> dict[str, Any] | None:
+        result = await original(client, video_id)
+        async with site.factory() as session:
+            project = await session.get(VideoProject, batch.project_id)
+            assert project is not None
+            project.locales = {}
+            await session.commit()
+        return result
+
+    monkeypatch.setattr(YoutubeClient, "video", changed)
+    await sync.run_sync(SLUG, site.factory)
+    assert site.google.updates == [] and site.google.tracks == {}
+    result = await _project(site)
+    assert result.youtube_sync is not None and result.youtube_sync["status"] == "failed"
+
+
+async def test_language_changes_between_caption_writes_stop_the_next_caption(
+    site: Site, launched: list[str], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    from tests.test_video_youtube_language_package import _language_batch
+
+    await site.link()
+    batch = await _language_batch(site)
+    _studio_video(site)
+    await _request(site, _publish())
+    original = YoutubeClient.insert_caption
+
+    async def changed(
+        client: YoutubeClient, video_id: str, *, language: str, name: str, data: bytes
+    ) -> dict[str, Any]:
+        result = await original(client, video_id, language=language, name=name, data=data)
+        async with site.factory() as session:
+            project = await session.get(VideoProject, batch.project_id)
+            assert project is not None
+            project.locales = {}
+            await session.commit()
+        return result
+
+    monkeypatch.setattr(YoutubeClient, "insert_caption", changed)
+    await sync.run_sync(SLUG, site.factory)
+    assert len(site.google.updates) == 1
+    assert len(site.google.tracks[STUDIO_ID]) == 1
+    assert site.google.thumbnails == {}
+    result = await _project(site)
+    assert result.youtube_sync is not None and result.youtube_sync["status"] == "failed"
+
+
+@pytest.mark.parametrize("changed", [False, True])
+async def test_partial_language_retry_retains_its_pinned_package_and_done_details(
+    site: Site, launched: list[str], changed: bool
+) -> None:
+    from tests.test_video_youtube_language_package import _language_batch
+
+    await site.link()
+    batch = await _language_batch(site)
+    _studio_video(site)
+    await _request(site, _publish())
+    site.google.refuse["captions.insert"] = (403, "quotaExceeded")
+    await sync.run_sync(SLUG, site.factory)
+    assert len(site.google.updates) == 1
+    if changed:
+        async with site.factory() as session:
+            review = await session.get(VideoReview, batch.review_id)
+            assert review is not None
+            review.status = "pending"
+            await session.commit()
+        async with site.factory() as session:
+            with pytest.raises(Refused):
+                await sync.retry_sync(session, SLUG, site.owner)
+        assert launched == [SLUG]
+        assert site.google.tracks == {} and site.google.thumbnails == {}
+    else:
+        async with site.factory() as session:
+            await sync.retry_sync(session, SLUG, site.owner)
+        site.google.refuse.clear()
+        await sync.run_sync(SLUG, site.factory)
+        assert len(site.google.updates) == 1
+        assert len(site.google.tracks[STUDIO_ID]) == 5
+        result = await _project(site)
+        assert result.youtube_sync is not None and result.youtube_sync["status"] == "done"
+
+
+@pytest.mark.parametrize("asset", ["caption", "thumbnail"])
+async def test_the_exact_small_asset_bytes_are_verified_before_sending(
+    site: Site, launched: list[str], monkeypatch: pytest.MonkeyPatch, asset: str
+) -> None:
+    await site.link()
+    await _package(site)
+    _studio_video(site)
+    await _request(site, _publish())
+    original = sync._read_file
+
+    def changed(path: Path) -> bytes:
+        data = original(path)
+        if (asset == "thumbnail") == (data == JPEG):
+            return b"x" * len(data)
+        return data
+
+    monkeypatch.setattr(sync, "_read_file", changed)
+    await sync.run_sync(SLUG, site.factory)
+    result = await _project(site)
+    assert result.youtube_sync is not None and result.youtube_sync["status"] == "failed"
+    assert "即將送出的附件" in result.youtube_sync["error"]
+    assert site.google.thumbnails == {}
+    assert len(site.google.tracks.get(STUDIO_ID, [])) == (3 if asset == "thumbnail" else 0)

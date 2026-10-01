@@ -10,7 +10,12 @@ from sqlalchemy import or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.news_automation.evidence import evidence_excerpt
-from app.news_automation.feeds import parse_entries, read_article
+from app.news_automation.feeds import (
+    parse_entries,
+    read_article,
+    summary_article,
+    summary_is_evidence,
+)
 from app.news_automation.fetch import SafeNewsFetcher
 from app.news_automation.models import NewsCandidate, NewsEvidence, NewsSource
 from app.news_automation.policy import (
@@ -19,7 +24,7 @@ from app.news_automation.policy import (
     evidence_site,
     normalized_title,
 )
-from app.news_automation.schemas import Vertical
+from app.news_automation.schemas import Entry, FetchResult, Vertical
 from app.news_automation.service import settings_row
 
 Enqueue = Callable[[UUID], Awaitable[None]]
@@ -33,6 +38,30 @@ PAGE_ERRORS: tuple[type[Exception], ...] = (
     ValueError,
 )
 MAX_REPORTED_SKIPS = 5
+# A publisher that refuses the scanner outright (openai.com/index/* answers every request
+# with a Cloudflare challenge, HTTP 403) never becomes a candidate if a refused page is only
+# skipped: the entry is tried and skipped every hour and nobody sees the story. A recent
+# entry is kept instead as a lead holding the feed's own summary, which cannot be drafted
+# from (lead_only evidence stops at needs_evidence) but shows up in the review queue.
+REFUSED_STATUSES = frozenset({401, 403})
+SUMMARY_LEAD_MAX_AGE = timedelta(hours=72)
+# A dated entry that is still skipped this long after it was published has failed on every
+# hourly scan since: the source is reported "stuck", which the admin puts at the top, instead
+# of "partial", which a one-off timeout also produces. Entries older than a week are left out:
+# a feed keeps them for months, and a source whose back catalogue is refused would otherwise
+# read "stuck" for good.
+STUCK_AFTER = timedelta(hours=6)
+STUCK_UNTIL = timedelta(days=7)
+PAGE_REFUSED = "news_page_refused"
+# A readable article (a press report, say) that links to a story still waiting for evidence
+# -- a refused page kept as a lead, or a candidate with lead-only pages -- is attached to that
+# story as its evidence, and the story is drafted instead of the report filing a second one.
+ATTACHED = "news_attached_as_evidence"
+# A source's first scan reads a listing that is mostly its back catalogue. Every entry older
+# than this (or undated: an HTML listing has no dates) is recorded as seen without being
+# fetched or drafted, so adding a source files only its news of the last days.
+BASELINE = "news_baseline"
+WAITING_LOOKUP_LIMIT = 200
 # Links that are plainly not articles. Apple Newsroom's first scan fetched 76 image links
 # as evidence, each one a robots check and a rate-limited request that then failed.
 NON_ARTICLE_SUFFIXES = (
@@ -163,10 +192,150 @@ def _transient(error: Exception) -> bool:
     return isinstance(error, (httpx.TransportError, OSError))
 
 
-def _skip_note(skipped: list[str]) -> str:
-    shown = "; ".join(skipped[:MAX_REPORTED_SKIPS])
-    more = len(skipped) - MAX_REPORTED_SKIPS
-    return f"Skipped {len(skipped)} page(s): {shown}" + (f"; and {more} more" if more > 0 else "")
+def _refused(error: Exception) -> bool:
+    """The page exists and the publisher will not serve it to us: retrying will not help."""
+    return (
+        isinstance(error, httpx.HTTPStatusError)
+        and error.response.status_code in REFUSED_STATUSES
+    )
+
+
+def _summary_lead_ok(entry: Entry, now: datetime) -> bool:
+    """A refused entry worth keeping from its feed summary: recent, dated and not empty.
+    An undated or older entry would put a feed's whole back catalogue in the queue the first
+    time a publisher starts refusing the scanner."""
+    return (
+        bool(entry.summary.strip())
+        and entry.published_at is not None
+        and now - entry.published_at <= SUMMARY_LEAD_MAX_AGE
+    )
+
+
+def _link_key(url: str) -> str:
+    """A URL as two pages link to it: no query, no fragment, no trailing slash, host in
+    lower case. A press report links to the announcement with tracking parameters and
+    sometimes a trailing slash the feed did not have."""
+    parts = urlsplit(url)
+    return f"{(parts.hostname or '').casefold()}{parts.path.rstrip('/')}"
+
+
+async def _waiting_for(
+    session: AsyncSession, links: list[str], canonical: str
+) -> NewsCandidate | None:
+    """The newest candidate still waiting for evidence that this page links to."""
+    keys = {_link_key(link) for link in links} - {_link_key(canonical)}
+    if not keys:
+        return None
+    waiting = await session.scalars(
+        select(NewsCandidate)
+        .where(NewsCandidate.status == "needs_evidence")
+        .order_by(NewsCandidate.created_at.desc())
+        .limit(WAITING_LOOKUP_LIMIT)
+    )
+    return next((row for row in waiting if _link_key(row.canonical_url) in keys), None)
+
+
+def _baseline_candidate(
+    source: NewsSource, entry: Entry, prompt: str, policy: str
+) -> NewsCandidate:
+    """An entry a new source already listed, closed as seen. Its hashes are the URL's, so it
+    never matches a later story's content, only its own URL."""
+    return NewsCandidate(
+        source_id=source.id,
+        vertical=source.vertical if source.vertical != "mixed" else "tech",
+        status="rejected",
+        canonical_url=entry.url,
+        source_title=entry.title[:500],
+        normalized_title="",
+        source_published_at=entry.published_at,
+        content_hash=content_fingerprint("baseline", entry.url),
+        idempotency_key=content_fingerprint("baseline", entry.url, "key"),
+        prompt_version=prompt,
+        policy_version=policy,
+        error_code=BASELINE,
+        error_detail="Listed when the source was first scanned; recorded as seen, not drafted.",
+    )
+
+
+def _skip_note(skipped: list[str], summarized: list[str] | None = None) -> str:
+    notes: list[str] = []
+    if skipped:
+        shown = "; ".join(skipped[:MAX_REPORTED_SKIPS])
+        more = len(skipped) - MAX_REPORTED_SKIPS
+        notes.append(
+            f"Skipped {len(skipped)} page(s): {shown}" + (f"; and {more} more" if more > 0 else "")
+        )
+    if summarized:
+        shown = "; ".join(summarized[:MAX_REPORTED_SKIPS])
+        more = len(summarized) - MAX_REPORTED_SKIPS
+        notes.append(
+            f"Kept {len(summarized)} refused page(s) as feed summaries: {shown}"
+            + (f"; and {more} more" if more > 0 else "")
+        )
+    return ". ".join(notes)
+
+
+async def _keep_summary_lead(
+    session: AsyncSession,
+    source: NewsSource,
+    entry: Entry,
+    error: Exception,
+    prompt_version: str,
+    policy_version: str,
+) -> bool:
+    """Store a refused entry as a candidate waiting for evidence. False when the same URL
+    or title is already a candidate, so a story seen through two feeds is kept once."""
+    title = entry.title
+    normalized = normalized_title(title)[:500]
+    if await session.scalar(
+        select(NewsCandidate.id)
+        .where(
+            or_(
+                NewsCandidate.canonical_url == entry.url,
+                NewsCandidate.normalized_title == normalized,
+            )
+        )
+        .limit(1)
+    ):
+        return False
+    summary = entry.summary.strip()
+    body_hash = content_fingerprint(summary)
+    status = error.response.status_code if isinstance(error, httpx.HTTPStatusError) else None
+    candidate = NewsCandidate(
+        source_id=source.id,
+        vertical=(
+            classify_vertical(title, summary) if source.vertical == "mixed" else source.vertical
+        ),
+        status="needs_evidence",
+        canonical_url=entry.url,
+        source_title=title[:500],
+        normalized_title=normalized,
+        source_published_at=entry.published_at,
+        content_hash=body_hash,
+        idempotency_key=content_fingerprint(entry.url, body_hash),
+        prompt_version=prompt_version,
+        policy_version=policy_version,
+        error_code=PAGE_REFUSED,
+        error_detail=(
+            f"The article page refused the scanner (HTTP {status}); only the feed's summary "
+            "is kept. Write the story from the publisher's other pages, or reject it."
+        ),
+    )
+    session.add(candidate)
+    await session.flush()
+    session.add(
+        NewsEvidence(
+            candidate_id=candidate.id,
+            role="lead_only",
+            is_first_party=source.is_first_party,
+            url=entry.url,
+            title=title[:500],
+            source_date=entry.published_at.date() if entry.published_at else None,
+            content_hash=body_hash,
+            excerpt=evidence_excerpt(summary),
+        )
+    )
+    return True
 
 
 async def scan_source(
@@ -190,7 +359,14 @@ async def scan_source(
     # One unreachable article or linked page is skipped and reported, never allowed to
     # roll back the whole scan: the same entry would then break every later scan too.
     skipped: list[str] = []
+    # Refused entries kept as summary leads (never queued: nothing can be drafted from them).
+    summarized: list[str] = []
+    # Skipped entries published long enough ago that every scan since has failed on them.
+    stuck: list[str] = []
+    # Stories that were waiting for evidence and got it from a page read in this scan.
+    attached_ids: list[UUID] = []
     now = datetime.now(UTC)
+    first_scan = source.last_scanned_at is None
     try:
         listing = await fetcher.fetch(
             source.url,
@@ -219,21 +395,63 @@ async def scan_source(
                 continue
             if await _already_seen(session, entry.url):
                 continue
-            try:
-                detail = await fetcher.fetch(
-                    entry.url,
-                    allowed_hosts=allowed_hosts,
-                    allowed_redirect_hosts=allowed_redirects,
+            if first_scan and not (
+                entry.published_at is not None
+                and now - entry.published_at <= SUMMARY_LEAD_MAX_AGE
+            ):
+                session.add(
+                    _baseline_candidate(
+                        source, entry, settings.prompt_version, settings.policy_version
+                    )
                 )
-            except PAGE_ERRORS as error:
-                skipped.append(f"{entry.url} ({type(error).__name__})")
                 continue
+            if summary_is_evidence(source):
+                # The entry's own text is the story (release notes whose entries all link to
+                # anchors on one shared page): nothing to fetch, and the anchor URL, not the
+                # page, is what tells one entry from the next.
+                if not entry.summary.strip():
+                    continue
+                detail = FetchResult(
+                    url=entry.url, status_code=200, content_type="text/plain", body=b""
+                )
+            else:
+                try:
+                    detail = await fetcher.fetch(
+                        entry.url,
+                        allowed_hosts=allowed_hosts,
+                        allowed_redirect_hosts=allowed_redirects,
+                    )
+                except PAGE_ERRORS as error:
+                    # Only a first-party announcement is worth a lead: a refused press page
+                    # (The Block refuses every article) would fill the queue with them.
+                    if source.is_first_party and _refused(error) and _summary_lead_ok(entry, now):
+                        if await _keep_summary_lead(
+                            session,
+                            source,
+                            entry,
+                            error,
+                            settings.prompt_version,
+                            settings.policy_version,
+                        ):
+                            summarized.append(entry.url)
+                        continue
+                    skipped.append(f"{entry.url} ({type(error).__name__})")
+                    if (
+                        entry.published_at is not None
+                        and STUCK_AFTER < now - entry.published_at <= STUCK_UNTIL
+                    ):
+                        stuck.append(entry.url)
+                    continue
             # Feed links that redirect (tracking, feed proxies) only match after the
             # fetch; without this the same page files a new "duplicate" every hour.
             if detail.url != entry.url and await _already_seen(session, detail.url):
                 continue
             detail_source = by_host.get(_host(detail.url), source)
-            page = read_article(detail.body, detail.url, detail_source.config_json)
+            page = (
+                summary_article(entry)
+                if summary_is_evidence(source)
+                else read_article(detail.body, detail.url, detail_source.config_json)
+            )
             page_title, article_text, links = page.title, page.text, page.links
             body_text = article_text or entry.summary
             title = page_title or entry.title
@@ -324,6 +542,35 @@ async def scan_source(
                     )
             if deferred:
                 continue
+            waiting = (
+                await _waiting_for(session, links, canonical)
+                if not exact_duplicate_id and detail_source.role == "evidence"
+                else None
+            )
+            if waiting is not None:
+                waiting.status = "discovered"
+                waiting.error_code = None
+                waiting.error_detail = None
+                session.add(
+                    NewsEvidence(
+                        candidate_id=waiting.id,
+                        role="evidence",
+                        is_first_party=detail_source.is_first_party,
+                        url=canonical,
+                        title=title[:500],
+                        source_date=entry.published_at.date() if entry.published_at else None,
+                        etag=detail.etag,
+                        last_modified=detail.last_modified,
+                        content_hash=body_hash,
+                        body_hash=story_hash,
+                        excerpt=evidence_excerpt(body_text),
+                    )
+                )
+                for row in linked_rows:
+                    row.candidate_id = waiting.id
+                    session.add(row)
+                linked_rows = []
+                attached_ids.append(waiting.id)
             vertical: Vertical = (
                 classify_vertical(title, body_text)
                 if source.vertical == "mixed"
@@ -332,7 +579,7 @@ async def scan_source(
             candidate = NewsCandidate(
                 source_id=source.id,
                 vertical=vertical,
-                status="duplicate" if exact_duplicate_id else "discovered",
+                status="duplicate" if exact_duplicate_id or waiting else "discovered",
                 canonical_url=canonical,
                 source_title=title[:500],
                 normalized_title=normalized,
@@ -342,10 +589,14 @@ async def scan_source(
                 idempotency_key=idempotency,
                 prompt_version=settings.prompt_version,
                 policy_version=settings.policy_version,
-                error_code="news_exact_duplicate" if exact_duplicate_id else None,
+                error_code=(
+                    "news_exact_duplicate" if exact_duplicate_id else ATTACHED if waiting else None
+                ),
                 error_detail=(
                     f"Exact URL, title or content duplicate of {exact_duplicate_id}"
                     if exact_duplicate_id
+                    else f"Attached as evidence to {waiting.id}"
+                    if waiting
                     else None
                 ),
             )
@@ -369,7 +620,7 @@ async def scan_source(
             for row in linked_rows:
                 row.candidate_id = candidate.id
                 session.add(row)
-            if exact_duplicate_id:
+            if exact_duplicate_id or waiting:
                 continue
             created_ids.append(candidate.id)
         if not skipped:
@@ -377,8 +628,18 @@ async def scan_source(
             # again (a 304 would hide the skipped entries); seen entries cost one query.
             source.etag = listing.etag
             source.last_modified = listing.last_modified
-        source.last_status = "partial" if skipped else "succeeded"
-        source.last_error = _skip_note(skipped)[:4000] if skipped else None
+        source.last_status = (
+            "stuck" if stuck else "partial" if skipped or summarized else "succeeded"
+        )
+        note = _skip_note(skipped, summarized)
+        if stuck:
+            note = (
+                f"Failing for more than {int(STUCK_AFTER.total_seconds() // 3600)} hours: "
+                + "; ".join(stuck[:MAX_REPORTED_SKIPS])
+                + ". "
+                + note
+            )
+        source.last_error = note[:4000] if note else None
         source.consecutive_failures = 0
         await session.commit()
     except Exception as error:
@@ -395,6 +656,6 @@ async def scan_source(
     finally:
         if own_fetcher:
             await fetcher.close()
-    for candidate_id in created_ids:
+    for candidate_id in [*created_ids, *attached_ids]:
         await enqueue(candidate_id)
-    return len(created_ids)
+    return len(created_ids) + len(attached_ids)

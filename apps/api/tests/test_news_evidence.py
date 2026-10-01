@@ -26,6 +26,10 @@ from app.news_automation.scanner import scan_source
 from app.news_automation.schemas import EditorialDraft, FetchResult, VerificationResult
 from app.news_automation.validation import refresh_evidence
 
+# Sources in these tests have been scanned before: a first scan only records its listing
+# as seen (scanner.BASELINE), which test_a_new_source_s_first_scan_files_only_fresh_entries covers.
+SCANNED_BEFORE = datetime(2026, 1, 1, tzinfo=UTC)
+
 
 def document() -> GuideDocument:
     return GuideDocument.model_validate(
@@ -94,6 +98,7 @@ async def test_long_primary_and_linked_pages_reach_factcheck_and_refresh_without
     ).encode()
     sources = [
         NewsSource(
+            last_scanned_at=SCANNED_BEFORE,
             name=host,
             url=f"https://{host}/feed",
             format="rss",

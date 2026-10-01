@@ -1,0 +1,575 @@
+{
+  "title": "GPT-6 SolとClaude Opus 5.5が同じ日に値下げ、AIの請求額はいくら減る？",
+  "description": "GPT-6 Solの価格表では、同じモデルに8つの価格があります。この動画では価格表を1マスずつ読み解き、3種類の月間使用量で、GPT-6 Sol、Luna、Opus 5.5など5つのモデルのトークン料金を試算します。\nAPIやAIの有料プランを使っていて、「5割安い」「4割減」が自分の請求額に関係あるのかを知りたい人向けです。\n\n動画は、GPT-6 Solの標準価格の8マスから読み始めます。入力、キャッシュ読み取り、キャッシュ書き込み、出力に、それぞれ短コンテキストと長コンテキストの2組の価格があります。続いてバッチ、高速モード、プロモーション価格を見て、チャット型、エージェント型、大量整理の3つの使用量例で月額の請求額を計算し、最後にAnthropicの4割、2割、6割がそれぞれ何と比べたものなのかを分解します。\n\n金額は、短コンテキスト・標準処理でのトークン料金の目安です。キャッシュ書き込み、保管、ツールなどのサービス料は含みません。大量整理の列にはバッチ割引を使っていません。価格は変わるため、当日の公式サイトを基準にしてください。\n\n関連記事：API価格比較：100万トークンあたり各社いくら（9月中旬の公式価格表）\nhttps://mokaair.com/zh-TW/life/ai-api-pricing-comparison-2026?utm_source=youtube&utm_medium=video&utm_campaign=ai-price-war-gpt-6-sol-vs-opus-5-5",
+  "tags": [
+    "GPT-6 Sol",
+    "GPT-6 Luna",
+    "Claude Opus 5.5",
+    "AI API 料金",
+    "OpenAI 値下げ",
+    "Anthropic",
+    "Gemini 3.8 Flash",
+    "AI 請求額",
+    "トークン コスト",
+    "AIモデル 比較",
+    "生成AI 料金",
+    "API 料金 比較"
+  ],
+  "chapters": {
+    "eight-prices": "GPT-6 Solの価格が8つある理由",
+    "promise": "GPT-6 Sol価格表の読み方",
+    "four-tokens": "キャッシュ読み取りと書き込みとは",
+    "batch-half": "バッチ割引とプロモ価格の見方",
+    "scenario-walk": "3つの使用量の月額請求の計算",
+    "news-three-numbers": "Opus 5.5は4割減って本当？",
+    "switch-or-not": "AI値下げ後にモデルを替えるべき？"
+  },
+  "source_hashes": {
+    "chapters": {
+      "eight-prices": "0d131805c628",
+      "promise": "47349373d2a4",
+      "four-tokens": "5115fb3e3a7e",
+      "batch-half": "df98981e3274",
+      "scenario-walk": "89360fe59d97",
+      "news-three-numbers": "30ae172a97b6",
+      "switch-or-not": "ee53eba733aa"
+    },
+    "title": "8ff41785abfb",
+    "description": "29af3c3ad50f",
+    "tags": "c55b2c448d4a"
+  },
+  "lines": {
+    "ki36": {
+      "source_hash": "5a4dea3204c1",
+      "text": "価格表には、同じGPT-6 Solに8つの価格があります。"
+    },
+    "ibpp": {
+      "source_hash": "4ef8309da494",
+      "text": "実際に払うのは、どの価格でしょう？"
+    },
+    "8nqw": {
+      "source_hash": "a9dca792f535",
+      "text": "1モデル1価格と思いがちです。"
+    },
+    "pc4t": {
+      "source_hash": "fb65e9f3f663",
+      "text": "標準価格の表だけで、GPT-6 Solには価格が8つあります。"
+    },
+    "fvdq": {
+      "source_hash": "08175ae5d0b0",
+      "text": "その8つの価格は、どんな内容でしょう？"
+    },
+    "xf3x": {
+      "source_hash": "e1cb26664dfd",
+      "text": "この動画では、価格表を1マスずつ読みます。"
+    },
+    "vcu8": {
+      "source_hash": "eb668bb1a860",
+      "text": "まず8つの価格。"
+    },
+    "p6w3": {
+      "source_hash": "7ad51190a7ae",
+      "text": "次に使用量3種の月額を計算。"
+    },
+    "gm9p": {
+      "source_hash": "90907bfb95e6",
+      "text": "最後にニュースの3つの数字を分解します。"
+    },
+    "tigr": {
+      "source_hash": "e760791f69d4",
+      "text": "8つの価格は、まず2組に分けます。"
+    },
+    "ippg": {
+      "source_hash": "e93e618ba085",
+      "text": "入力が27万2000トークン以下なら、短コンテキストです。"
+    },
+    "vyp2": {
+      "source_hash": "1321badb996e",
+      "text": "この線を超えると、長コンテキストです。"
+    },
+    "qfj6": {
+      "source_hash": "bf423eff9493",
+      "text": "まず4種類のトークン価格を、1マスずつ読みます。"
+    },
+    "qjec": {
+      "source_hash": "40d11aa679fe",
+      "text": "入力は、短コンテキストが2ドル、長コンテキストが4ドルです。"
+    },
+    "xr9r": {
+      "source_hash": "c78ed8610fe4",
+      "text": "キャッシュ読み取り、短0.2ドル、長0.4ドル。"
+    },
+    "p683": {
+      "source_hash": "f9e549da23be",
+      "text": "キャッシュ書き込み、短2.5ドル、長5ドル。"
+    },
+    "ja6c": {
+      "source_hash": "2fadf9dfaf15",
+      "text": "出力は短10ドル、長15ドルで、8マスがそろいます。"
+    },
+    "qjk4": {
+      "source_hash": "dfa6d9e9459d",
+      "text": "ところで、キャッシュ読み取りと書き込みとは何でしょう？"
+    },
+    "s7fy": {
+      "source_hash": "6c8f85042dcb",
+      "text": "まず4種類のトークンが出る場面を整理します。"
+    },
+    "ma9h": {
+      "source_hash": "0e7696f91f37",
+      "text": "入力は、モデルに送って最初に処理される内容です。"
+    },
+    "q2in": {
+      "source_hash": "807401c66673",
+      "text": "キャッシュ書き込みは、冒頭を初めて保存する処理で、少し余分に払います。"
+    },
+    "7u9g": {
+      "source_hash": "be036ae136cb",
+      "text": "キャッシュ読み取りは、同じ冒頭を直接読むので、ずっと安くなります。"
+    },
+    "b3y9": {
+      "source_hash": "3d99f77f457a",
+      "text": "出力は、モデルが返す文字で、見えない思考も含みます。"
+    },
+    "6kug": {
+      "source_hash": "e618fcc04eae",
+      "text": "同じ入力トークンは、1種類だけで数え、重複請求はありません。"
+    },
+    "me45": {
+      "source_hash": "392eefb58d14",
+      "text": "コピー店と同じで、最初の版だけ高く、以降は刷るだけです。"
+    },
+    "4by8": {
+      "source_hash": "f03448dbb750",
+      "text": "キャッシュ書き込みは、入力の1.25倍です。"
+    },
+    "wh3j": {
+      "source_hash": "ca726441ae03",
+      "text": "読み取りは10分の1です。"
+    },
+    "x4fd": {
+      "source_hash": "a67c98c9154a",
+      "text": "同じ冒頭を10回なら、書き1回・読み9回で2.15倍です。"
+    },
+    "spkw": {
+      "source_hash": "6798a34f33c4",
+      "text": "キャッシュなしなら、同じ10回で10倍です。"
+    },
+    "c32b": {
+      "source_hash": "12d2744c6f70",
+      "text": "最初の保存は、通常の入力より高いです。"
+    },
+    "599y": {
+      "source_hash": "67457509038b",
+      "text": "保存しても読まれないと、2割5分を余分に払うだけです。"
+    },
+    "66qr": {
+      "source_hash": "951532572501",
+      "text": "ただしキャッシュは自動で効かず、同じ文書を10回聞いても毎回命中するとは限りません。"
+    },
+    "4b3g": {
+      "source_hash": "51a678b4c230",
+      "text": "冒頭は完全一致が必要で、途中1字変えると後ろが合いません。"
+    },
+    "medc": {
+      "source_hash": "bb08bdcdec3a",
+      "text": "長さも必要で、最低1024トークンです。"
+    },
+    "xrwh": {
+      "source_hash": "415dc59e80fe",
+      "text": "長く置くと期限切れになり、再計算が必要です。"
+    },
+    "4y9a": {
+      "source_hash": "9f646009a4a4",
+      "text": "では、バッチ割引とプロモーション価格とは何でしょう？"
+    },
+    "c46x": {
+      "source_hash": "35a5615dcaf0",
+      "text": "急がない宅配のように、待てば送料が半額です。"
+    },
+    "kex8": {
+      "source_hash": "71a5d64f5920",
+      "text": "価格表にはタブが並んでいます。"
+    },
+    "cjya": {
+      "source_hash": "6ac53d7490ea",
+      "text": "標準タブでは、Solは入力2ドル、出力10ドルです。"
+    },
+    "vk96": {
+      "source_hash": "d753dfbc2568",
+      "text": "バッチタブなら半額で、入力1ドル、出力5ドルです。"
+    },
+    "x5cg": {
+      "source_hash": "4b6d8ff9c700",
+      "text": "代わりにすぐには答えが出ず、公式は24時間以内に完了としています。"
+    },
+    "kp2s": {
+      "source_hash": "0110c80835e9",
+      "text": "タブの価格は、まず種類を選びます。"
+    },
+    "4dbt": {
+      "source_hash": "e3acf232c49a",
+      "text": "バッチは標準価格の半額です。"
+    },
+    "eniv": {
+      "source_hash": "0e6306e1f622",
+      "text": "高速モードは逆に標準価格の2倍で、Solの出力は20ドルです。"
+    },
+    "teb4": {
+      "source_hash": "227c88bf8518",
+      "text": "この動画の請求額は、すべて標準価格です。"
+    },
+    "gb49": {
+      "source_hash": "612782f4f67c",
+      "text": "表の下に、小さな注記があります。"
+    },
+    "v74j": {
+      "source_hash": "7ca4473cc628",
+      "text": "GPT-5.6 Solのプロモーション価格は、少なくとも11月21日まで続きます。"
+    },
+    "fges": {
+      "source_hash": "a9dbca776b2e",
+      "text": "GPT-6 Solのショートコンテキスト4マスはプロモ価格の半分です。"
+    },
+    "ym8g": {
+      "source_hash": "ac7e280c9d90",
+      "text": "入力は4ドルが2ドル。"
+    },
+    "m5fk": {
+      "source_hash": "6cbd141fc239",
+      "text": "キャッシュ読取、0.4から0.2ドル"
+    },
+    "r3k9": {
+      "source_hash": "4490406865a2",
+      "text": "キャッシュ書き込みは5ドルが2.5ドル。"
+    },
+    "ef3k": {
+      "source_hash": "e3b01446d102",
+      "text": "出力は20ドルが10ドル。"
+    },
+    "tuik": {
+      "source_hash": "074cc4563ce0",
+      "text": "つまりニュースの5割は、期限付きのこの価格と比べた数字です。"
+    },
+    "ntee": {
+      "source_hash": "d7fd8b60f43b",
+      "text": "もう一つ"
+    },
+    "76fk": {
+      "source_hash": "5c0a8c0d93c7",
+      "text": "価格表の主力欄のSolはすでに新版です。"
+    },
+    "mzxf": {
+      "source_hash": "fa7a2436c386",
+      "text": "GPT-6 Solのキャッシュ読み取りは100万で0.2ドル。"
+    },
+    "mvrg": {
+      "source_hash": "3a42094213b5",
+      "text": "9月29日のGPT-6.1 Sol、0.1ドル"
+    },
+    "2djf": {
+      "source_hash": "043fa626068a",
+      "text": "入出力の価格は同じ。"
+    },
+    "ntq5": {
+      "source_hash": "56a4cb8acfc1",
+      "text": "GPT-6 Solは、全モデルを展開しないと見えません。"
+    },
+    "443u": {
+      "source_hash": "a6b8bf86f828",
+      "text": "私は、新版を急いで追わず、まず自分の使用量で計算すればよいと思います。"
+    },
+    "9tsk": {
+      "source_hash": "2cbcc8453050",
+      "text": "では、これらの単価を自分の使用量に当てはめると、請求額はいくらでしょう？"
+    },
+    "3h7y": {
+      "source_hash": "acb806772549",
+      "text": "請求額は使用量かける単価。まず3種の使用量を決めます。"
+    },
+    "gt4x": {
+      "source_hash": "84b4035986c7",
+      "text": "チャット型は、月に入力500万、出力100万トークンです。"
+    },
+    "ssvn": {
+      "source_hash": "e642bbddef67",
+      "text": "エージェント型は、新規入力1200万、キャッシュ読み取り4800万です。"
+    },
+    "sjsy": {
+      "source_hash": "3c98c605e2b7",
+      "text": "さらに出力400万。"
+    },
+    "747h": {
+      "source_hash": "9d18b5bfe372",
+      "text": "大量整理は、入力2億、出力1000万です。"
+    },
+    "wcfz": {
+      "source_hash": "51212baf3f11",
+      "text": "これは例で、実際の使用量は使用量ページで確認します。"
+    },
+    "m5xb": {
+      "source_hash": "e03cab130346",
+      "text": "5モデルで請求額はこうなります。"
+    },
+    "hjxw": {
+      "source_hash": "b0cabb49f366",
+      "text": "GPT-6 Solは、チャット型が20ドルです。"
+    },
+    "87h7": {
+      "source_hash": "70cd3db3ff07",
+      "text": "エージェント型73.6、大量整理500。"
+    },
+    "bazf": {
+      "source_hash": "a241fb5aa1ef",
+      "text": "GPT-6 Lunaは格安です。"
+    },
+    "afjr": {
+      "source_hash": "7cda100a4f23",
+      "text": "チャット型は月1ドル、コーヒー1杯未満。"
+    },
+    "vpac": {
+      "source_hash": "1db011caea0c",
+      "text": "Opus 5.5はチャットと大量整理がSolの丁度2倍。"
+    },
+    "e9gz": {
+      "source_hash": "b95c080e76ca",
+      "text": "Sonnet 5.5はSolと同じ単価で、3種類の請求額も同じです。"
+    },
+    "6jr2": {
+      "source_hash": "3a712075fc12",
+      "text": "Gemini 3.8 Flashは中間です。"
+    },
+    "227a": {
+      "source_hash": "a83060d4363c",
+      "text": "ただしこれはプロモ価格で、2026年末以降は単価が2倍です。"
+    },
+    "yvvp": {
+      "source_hash": "0df5e660007e",
+      "text": "3種類とも、最安はGPT-6 Lunaです。"
+    },
+    "8ika": {
+      "source_hash": "ca5077587f6e",
+      "text": "この表は価格のみ、品質は未比較。"
+    },
+    "zg43": {
+      "source_hash": "6bd6feaca894",
+      "text": "足りるかは、自分の課題で1回試すしかありません。"
+    },
+    "ikjd": {
+      "source_hash": "eee28b245e21",
+      "text": "前世代と並べて、値下げがどこにあるか見ます。"
+    },
+    "jeek": {
+      "source_hash": "31f3d42229b9",
+      "text": "チャット型で、GPT-5.6 Solのプロモ価格は40ドルです。"
+    },
+    "gbzh": {
+      "source_hash": "8498cf9ed196",
+      "text": "GPT-6 Solは20ドルで、ちょうど半分です。"
+    },
+    "kqwi": {
+      "source_hash": "c13267e86892",
+      "text": "エージェント型で、Opus 5は月184ドルです。"
+    },
+    "giy7": {
+      "source_hash": "b26eea3ce6a3",
+      "text": "Opus 5.5は137.6ドルです。"
+    },
+    "6kqy": {
+      "source_hash": "3783e2e4bbff",
+      "text": "減ったのは約2割5分で、ニュースの4割ではありません。"
+    },
+    "5sv5": {
+      "source_hash": "2f404dbe6e4a",
+      "text": "今回のGPT-6発表の関連記事は、説明欄の1行目にあります。"
+    },
+    "kdtw": {
+      "source_hash": "4246a3f72f75",
+      "text": "エージェント型でSolの73.6ドル中、40ドルが出力です。"
+    },
+    "rfmv": {
+      "source_hash": "18bedf3303d1",
+      "text": "半分超で、キャッシュ読み取りは9.6ドルだけで、約13%です。"
+    },
+    "4hmf": {
+      "source_hash": "01674a3c06d4",
+      "text": "Anthropic自身は逆に言います。"
+    },
+    "j3qt": {
+      "source_hash": "7d6cfb8121a9",
+      "text": "エージェントやコーディングでは、キャッシュ読み取りがコストの大半だと書いています。"
+    },
+    "jkds": {
+      "source_hash": "2eeb034bdb94",
+      "text": "どちらも正しい可能性があります。差は、キャッシュ読み取りが出力の何倍かです。"
+    },
+    "inzr": {
+      "source_hash": "42b8d5841692",
+      "text": "私の例では、キャッシュ読み取りは出力の12倍です。"
+    },
+    "d5j2": {
+      "source_hash": "047f8c5a9526",
+      "text": "では、ニュースの5割、4割、2割は、それぞれ何と比べたものでしょう？"
+    },
+    "x5eq": {
+      "source_hash": "4c08e350f22a",
+      "text": "9月22日、OpenAIとAnthropicが同じ日に値下げしました。"
+    },
+    "86x9": {
+      "source_hash": "6f7948785fbf",
+      "text": "GPT-6 Solの単価は、前世代のプロモ価格の半分だけです。"
+    },
+    "ha6t": {
+      "source_hash": "39bd70d7c797",
+      "text": "Anthropicによると、Opus 5.5の実行コストは4割減。"
+    },
+    "tq5v": {
+      "source_hash": "32044797c429",
+      "text": "そして価格表の入力と出力は、2割減です。"
+    },
+    "giku": {
+      "source_hash": "49a76db77132",
+      "text": "5割は前に説明したので、残る2つのうち、まず4割を見ます。"
+    },
+    "dz5g": {
+      "source_hash": "b49ff476c3b7",
+      "text": "Anthropicの4割は「価格」でなく「実行コスト」の話です。"
+    },
+    "vnit": {
+      "source_hash": "317eccf4cb99",
+      "text": "Anthropicも、デフォルト設定・一般的なワークロードでの推定値だと書いています。"
+    },
+    "hcrz": {
+      "source_hash": "5e60e227ded1",
+      "text": "この推定は、単価とタスク別の使用量変化を含みます。"
+    },
+    "z2j6": {
+      "source_hash": "af6309e7a7bb",
+      "text": "全員が4割節約できる保証はありません。"
+    },
+    "zr58": {
+      "source_hash": "55c339fe5eec",
+      "text": "左は価格表の価格で、入出力は2割減、キャッシュ読み取りは6割減です。"
+    },
+    "gxii": {
+      "source_hash": "365c827e91e8",
+      "text": "右の4割はメーカーが測ったコストで、タスクごとのトークン減も含みます。"
+    },
+    "s7ng": {
+      "source_hash": "2f27e85d48fd",
+      "text": "価格は見えますが、コスト推定は自分のタスク次第です。"
+    },
+    "pxgf": {
+      "source_hash": "a337df59aac3",
+      "text": "値下げ幅を一つ覚えるなら、価格表に載る次の3つです。"
+    },
+    "njxt": {
+      "source_hash": "3eb82f9a0dbd",
+      "text": "入力は5ドルから4ドルで、2割減です。"
+    },
+    "7xsg": {
+      "source_hash": "196c27b023d0",
+      "text": "出力は25から20ドルで、同じ2割減。"
+    },
+    "virh": {
+      "source_hash": "922aa317cf26",
+      "text": "キャッシュ読み取りは0.5ドルから0.2ドルで、6割減です。"
+    },
+    "5kqm": {
+      "source_hash": "c2930a0712a7",
+      "text": "値下げ幅を見たら、まず「何と比べて？」"
+    },
+    "s9bb": {
+      "source_hash": "e49e8a2c25c8",
+      "text": "プロモ価格と比べると、期限付きの暫定価格。"
+    },
+    "pder": {
+      "source_hash": "bc96b0c2d701",
+      "text": "価格表と比べると、掲載価格。変更もあり得ます。"
+    },
+    "bu8a": {
+      "source_hash": "a4c8e8ecc3f4",
+      "text": "コスト推定はメーカーの計算で、請求額とは別物です。"
+    },
+    "uukx": {
+      "source_hash": "b1d0f79a1d29",
+      "text": "では、値下げ後にモデルを替えるべきでしょうか？"
+    },
+    "q6sw": {
+      "source_hash": "d84aa8c9c871",
+      "text": "替えるべき？まず自分の位置から。"
+    },
+    "id4m": {
+      "source_hash": "187b13bf257d",
+      "text": "私は、左側の場合だけ、一度計算する価値があると思います。"
+    },
+    "avk5": {
+      "source_hash": "8db9a74de440",
+      "text": "右側は見送りです。"
+    },
+    "ycu2": {
+      "source_hash": "f51df9a96b8d",
+      "text": "値下げだけで乗り換えず、自分で計算します。"
+    },
+    "r2f7": {
+      "source_hash": "a3d5aaf996fb",
+      "text": "毎月のAPI請求が30ドル、替えるべき？と聞かれました。"
+    },
+    "8egg": {
+      "source_hash": "8c86d89740d1",
+      "text": "例に30ドルちょうどがないので、チャット型で計算します。"
+    },
+    "bxsk": {
+      "source_hash": "a5420d859ab2",
+      "text": "チャット型はSolで月20ドル、Lunaなら19ドル安いです。"
+    },
+    "9wrt": {
+      "source_hash": "dbbc1edfbba8",
+      "text": "ただし替えるには品質の再テストが必要で、時間もコストです。"
+    },
+    "3vii": {
+      "source_hash": "a6b555990c80",
+      "text": "私は、月19ドルの節約では再テストに見合わないかもと思います。"
+    },
+    "5snu": {
+      "source_hash": "a097807b130a",
+      "text": "乗り換えるなら、勘より先に2つやります。"
+    },
+    "gkup": {
+      "source_hash": "6c0607e65b3b",
+      "text": "第一に、使用量ページで3種類のトークンの使用額を見ます。"
+    },
+    "za36": {
+      "source_hash": "c64a6dd53209",
+      "text": "第二に、自分の課題を両モデルで1回ずつ比べます。"
+    },
+    "gvft": {
+      "source_hash": "1a69820c2008",
+      "text": "この2つで、替えるかどうかははっきりします。"
+    },
+    "m7k4": {
+      "source_hash": "c33f2eef4bbe",
+      "text": "では冒頭の問いです。払う価格はどれ？"
+    },
+    "qimv": {
+      "source_hash": "ef12f914d051",
+      "text": "まず、リクエストが長いかで、短コンテキストか長コンテキストが決まります。"
+    },
+    "mvch": {
+      "source_hash": "27c795c79384",
+      "text": "次にキャッシュとバッチの可否です。"
+    },
+    "gqv4": {
+      "source_hash": "676651331304",
+      "text": "最後に、自分の3種類のトークン使用量を掛けます。"
+    },
+    "y3mp": {
+      "source_hash": "ebf330cacf98",
+      "text": "他社の比較はサイトの「API価格比較」で、数字は公式サイトで確認を。"
+    },
+    "uhfk": {
+      "source_hash": "e50e0fed31ab",
+      "text": "払う金額は、使うマスに自分の使用量を掛けたものです。"
+    }
+  }
+}

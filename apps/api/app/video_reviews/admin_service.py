@@ -61,17 +61,23 @@ from app.video_automation.settings import (
 )
 from app.video_media.meter import SlugSpend, spend_by_slug
 from app.video_reviews.schemas import (
+    BROWSE_STATES,
     DUB_LOCALES,
     LOCALE_PARTS,
+    VIDEO_CATEGORY_CODES,
     YOUTUBE_VIDEO_ID_PATTERN,
+    CategoryIn,
     DecisionIn,
     DropIn,
     DubLocalesIn,
+    FacetCount,
     LanguagePartOut,
     LocaleChoice,
     LocalesIn,
+    ProjectFacets,
     ProjectIn,
     ProjectOut,
+    ProjectPage,
     ProjectSummary,
     ReviewFile,
     ReviewIn,
@@ -88,6 +94,11 @@ LIVE = ("pending", "approved", "rejected")
 # only grow, and the older ones are read from the numbers instead (docs/videos/SHORTS.md).
 LIST_LIMIT = 200
 PUBLIC_SHORTS_LIMIT = 60
+# The review tab's catalog (browse_projects): a page of tutorials, the most a page may hold,
+# and the longest search the owner can type.
+BROWSE_PAGE_SIZE = 30
+BROWSE_PAGE_LIMIT = 100
+BROWSE_QUERY_MAX = 80
 # How long the mp4 of a video that is on YouTube stays in the review store, counted from the
 # later of the upload confirmation's decision and the publish time (HANDS-OFF.md). The
 # thumbnail, captions and descriptions are small and stay.
@@ -296,6 +307,7 @@ def _summary(
         "last_synced_at": project.last_synced_at,
         "pending": pending,
         "source_guide": project.source_guide,
+        "category": project.category,
         "dropped_at": project.dropped_at,
         "dropped_note": project.dropped_note,
         "retry_request_id": project.retry_request_id,
@@ -373,6 +385,9 @@ async def upsert_project(
         project.youtube_video_id = payload.youtube_video_id
     if payload.source_guide is not None:
         project.source_guide = payload.source_guide
+    # A report files a video nobody filed yet; the owner's choice on the page sticks.
+    if payload.category is not None and project.category is None:
+        project.category = payload.category
     if payload.format is not None:
         project.format = payload.format
     if payload.series_slug is not None:
@@ -542,18 +557,7 @@ async def list_projects(
     any other).
     """
     now = datetime.now(UTC)
-    pending = (
-        select(VideoReview.project_id, func.count().label("pending"))
-        .where(VideoReview.status == "pending")
-        .group_by(VideoReview.project_id)
-        .subquery()
-    )
-    confirmed = _confirmations()
-    statement = (
-        select(VideoProject, func.coalesce(pending.c.pending, 0), confirmed.c.decided_at)
-        .outerjoin(pending, pending.c.project_id == VideoProject.id)
-        .outerjoin(confirmed, confirmed.c.project_id == VideoProject.id)
-    )
+    statement = _listing_statement()
     if video_format is not None:
         statement = statement.where(VideoProject.format == video_format)
     if series_slug is not None:
@@ -604,13 +608,39 @@ async def list_projects(
                 )
                 + listed
             )
+    summaries = await _summaries(session, listed, work_dir)
+    if shorts == "only" and state is not None:
+        summaries = [item for item in summaries if item.shorts_state == state][:cap]
+    return summaries
+
+
+def _listing_statement() -> Any:
+    """Every video with its pending count and when its upload confirmation was approved."""
+    pending = (
+        select(VideoReview.project_id, func.count().label("pending"))
+        .where(VideoReview.status == "pending")
+        .group_by(VideoReview.project_id)
+        .subquery()
+    )
+    confirmed = _confirmations()
+    return (
+        select(VideoProject, func.coalesce(pending.c.pending, 0), confirmed.c.decided_at)
+        .outerjoin(pending, pending.c.project_id == VideoProject.id)
+        .outerjoin(confirmed, confirmed.c.project_id == VideoProject.id)
+    )
+
+
+async def _summaries(
+    session: AsyncSession, listed: list[Any], work_dir: str | None
+) -> list[ProjectSummary]:
+    """The rows of _listing_statement as the page's summaries, in the rows' order."""
     spend = await spend_by_slug(session, [project.slug for project, _count, _at in listed])
     batches = await _language_batches(session, [project for project, _count, _at in listed])
     compiled = await compilation_slugs(session) if work_dir is not None else set()
     held = await shorts_slots.holds(
         session, [project.slug for project, _count, _at in listed if project.shorts_line]
     )
-    summaries = [
+    return [
         ProjectSummary(
             **_summary(
                 project,
@@ -626,9 +656,138 @@ async def list_projects(
         )
         for project, count, approved_at in listed
     ]
-    if shorts == "only" and state is not None:
-        summaries = [item for item in summaries if item.shorts_state == state][:cap]
-    return summaries
+
+
+def _browse_scope() -> Any:
+    """The review tab's population: every video that is not a Short, tutorials and dramas
+    alike. The Shorts tab groups the Shorts by state and is the only place that lists them."""
+    return VideoProject.shorts_line.is_(None)
+
+
+def _category_filter(category: str) -> Any:
+    if category == "none":
+        return VideoProject.category.is_(None)
+    return VideoProject.category == category
+
+
+def _state_filter(state: str) -> Any:
+    if state == "dropped":
+        return VideoProject.dropped_at.is_not(None)
+    if state == "published":
+        return and_(VideoProject.dropped_at.is_(None), VideoProject.youtube_video_id.is_not(None))
+    return and_(VideoProject.dropped_at.is_(None), VideoProject.youtube_video_id.is_(None))
+
+
+def _search_filter(q: str) -> Any:
+    """The title or the slug contains the words, case-insensitively; % and _ are literal."""
+    escaped = q.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
+    pattern = f"%{escaped}%"
+    return or_(
+        VideoProject.title.ilike(pattern, escape="\\"),
+        VideoProject.slug.ilike(pattern, escape="\\"),
+    )
+
+
+async def browse_projects(
+    session: AsyncSession,
+    *,
+    category: str | None = None,
+    state: str | None = None,
+    q: str | None = None,
+    page: int = 1,
+    limit: int = BROWSE_PAGE_SIZE,
+    work_dir: str | None = None,
+) -> ProjectPage:
+    """One page of the review tab's catalog, newest report first (docs/videos/HANDS-OFF.md
+    §影片分類): the tutorials and the dramas, narrowed by a category (``none`` for the unfiled
+    ones), a state and a search, with how many each other value of the two filters would list."""
+    query = q.strip() if q else ""
+    filters: dict[str, Any] = {"scope": _browse_scope()}
+    if category is not None:
+        filters["category"] = _category_filter(category)
+    if state is not None:
+        filters["state"] = _state_filter(state)
+    if query:
+        filters["q"] = _search_filter(query)
+
+    def without(name: str) -> list[Any]:
+        return [clause for key, clause in filters.items() if key != name]
+
+    total = int(
+        await session.scalar(select(func.count(VideoProject.id)).where(*filters.values())) or 0
+    )
+    pages = (total + limit - 1) // limit
+    listed = list(
+        (
+            await session.execute(
+                _listing_statement()
+                .where(*filters.values())
+                .order_by(VideoProject.last_synced_at.desc(), VideoProject.id.desc())
+                .offset((page - 1) * limit)
+                .limit(limit)
+            )
+        ).all()
+    )
+    category_rows = {
+        (str(value) if value is not None else "none"): int(count)
+        for value, count in (
+            await session.execute(
+                select(VideoProject.category, func.count(VideoProject.id))
+                .where(*without("category"))
+                .group_by(VideoProject.category)
+            )
+        ).all()
+    }
+    state_counts = [
+        FacetCount(
+            code=value,
+            count=int(
+                await session.scalar(
+                    select(func.count(VideoProject.id)).where(
+                        *without("state"), _state_filter(value)
+                    )
+                )
+                or 0
+            ),
+        )
+        for value in BROWSE_STATES
+    ]
+    return ProjectPage(
+        items=await _summaries(session, listed, work_dir),
+        total=total,
+        page=page,
+        pages=pages,
+        facets=ProjectFacets(
+            category=[
+                FacetCount(code=code, count=category_rows.get(code, 0))
+                for code in (*VIDEO_CATEGORY_CODES, "none")
+            ],
+            state=state_counts,
+        ),
+    )
+
+
+async def set_category(
+    session: AsyncSession, slug: str, user: User, payload: CategoryIn
+) -> ProjectOut:
+    """The owner files a video under a category, or under none; logged as
+    ``video_category_set``. A dropped video can be filed too: the catalog lists it."""
+    project = await _project(session, slug)
+    previous = project.category
+    if payload.category != previous:
+        now = datetime.now(UTC)
+        project.category = payload.category
+        project.updated_at = now
+        session.add(
+            AdminAuditLog(
+                actor_user_id=user.id,
+                action="video_category_set",
+                target=f"video_project:{project.id}",
+                metadata_json={"slug": slug, "category": payload.category, "previous": previous},
+            )
+        )
+        await session.commit()
+    return await project_view(session, slug)
 
 
 def _same_qa(first: dict[str, Any], second: dict[str, Any]) -> bool:
@@ -638,7 +797,7 @@ def _same_qa(first: dict[str, Any], second: dict[str, Any]) -> bool:
     )
 
 
-async def _short_revision_allowed(project: VideoProject) -> None:
+async def _short_revision_allowed(session: AsyncSession, project: VideoProject) -> None:
     """Renew only before any uploader can have acted on the old approved package."""
     if (
         project.youtube_video_id is not None
@@ -654,7 +813,7 @@ async def _short_revision_allowed(project: VideoProject) -> None:
     from app.video_youtube.errors import Refused
 
     try:
-        await vps.assert_idle(project.slug, upload=True)
+        await vps.assert_idle(session, project.slug, upload=True)
     except Refused as error:
         raise AppError(error.status, error.code, error.detail) from error
 
@@ -742,7 +901,7 @@ async def submit_review(
         if same is None:
             # Even a pending changed receipt gets a new id, so an owner looking at an
             # older page cannot approve evidence they have not seen.
-            await _short_revision_allowed(project)
+            await _short_revision_allowed(session, project)
             revision = 1 + max(
                 (row.revision or 0 for row in reviews
                  if row.gate == payload.gate and row.content_sha256 == payload.content_sha256),
