@@ -40,6 +40,7 @@ from app.video_automation.schemas import (
     SeriesOut,
     SeriesPatch,
     SeriesWithdrawnOut,
+    StoryLook,
 )
 from app.video_speech import admin_api as speech_api
 
@@ -403,6 +404,63 @@ def test_an_explainer_bible_has_no_cast_and_answers_its_question_from_named_page
     )
 
 
+def test_only_a_one_off_is_started_in_the_explainer_preset() -> None:
+    explainer = SeriesIn(
+        slug="one-off-why", kind="one-off", title="雷聲", premise="p", style_preset="flat-explainer"
+    )
+    assert explainer.style_preset == "flat-explainer"
+    with pytest.raises(ValidationError, match="one-off explainer only"):
+        SeriesIn(slug="xianxia", title="問劍", premise="p", style_preset="flat-explainer")
+    with pytest.raises(ValidationError, match="one-off explainer only"):
+        SeriesIn(
+            slug="stories",
+            kind="story",
+            title="品牌故事",
+            premise="p",
+            style_preset="flat-explainer",
+            hands_off=True,
+            visual_tier="stills",
+            look=StoryLook(style="flat", negative="text"),
+        )
+    for preset in ("cinematic-3d", "anime-2d", "ink-wash", "custom"):
+        assert SeriesIn(slug="xianxia", title="問劍", premise="p", style_preset=preset)
+
+
+def test_a_long_series_never_becomes_an_explainer_and_a_written_bible_fixes_a_one_offs_side() -> (
+    None
+):
+    explainer = {"style_preset": "flat-explainer"}
+    story_row = _series(slug="stories", kind="story", hands_off=True, visual_tier="stills")
+    for row in (_series(), story_row):
+        refused = service.patch_problem(row, explainer)
+        assert refused is not None
+        assert (refused.status, refused.code) == (422, "video_series_explainer_one_off")
+    assert service.patch_problem(_series(), {"style_preset": "anime-2d"}) is None
+    # A one-off crosses the explainer line freely until the worker writes its bible.
+    assert service.patch_problem(_one_off(), explainer) is None
+    assert (
+        service.patch_problem(_one_off(style_preset="flat-explainer"), {"style_preset": "ink-wash"})
+        is None
+    )
+    for status in ("review", "approved", "rejected"):
+        written = [_doc("bible", status=status)]
+        into = service.patch_problem(_one_off(status="active"), explainer, written)
+        assert into is not None and (into.status, into.code) == (
+            409,
+            "video_series_explainer_fixed",
+        )
+        out_of = service.patch_problem(
+            _one_off(style_preset="flat-explainer"), {"style_preset": "anime-2d"}, written
+        )
+        assert out_of is not None and out_of.code == "video_series_explainer_fixed"
+        # A story one-off may still change between the story presets, and an explainer stay one.
+        assert service.patch_problem(_one_off(), {"style_preset": "ink-wash"}, written) is None
+        assert (
+            service.patch_problem(_one_off(style_preset="flat-explainer"), explainer, written)
+            is None
+        )
+
+
 def _app(user: User | None = None) -> FastAPI:
     app = FastAPI()
     app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
@@ -569,6 +627,32 @@ async def test_withdrawing_a_drama_needs_the_manage_capability_and_says_why_it_w
     assert done.json() == {"slug": "one-off-1a2b3c4d", "requests_cancelled": 1}
     assert withdraw.await_args_list[0].args[2] == "one-off-1a2b3c4d"
     assert refused.status_code == 409 and refused.json()["code"] == "video_series_started"
+
+
+@pytest.mark.asyncio
+async def test_the_owner_routes_refuse_the_explainer_preset_on_a_long_series(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    create = AsyncMock()
+    monkeypatch.setattr(service, "create_series", create)
+    long_series = _series()
+    one_off = _one_off(style_preset="flat-explainer", status="active")
+    monkeypatch.setattr(service, "_series", AsyncMock(side_effect=[long_series, one_off]))
+    monkeypatch.setattr(service, "_docs", AsyncMock(return_value=[_doc("bible")]))
+    base = "/api/v1/admin/video-automation/series"
+    async with AsyncClient(
+        transport=ASGITransport(app=_app(_user("owner"))), base_url="http://t"
+    ) as client:
+        created = await client.post(base, json={**_series_in(), "style_preset": "flat-explainer"})
+        patched = await client.patch(f"{base}/xianxia", json={"style_preset": "flat-explainer"})
+        crossed = await client.patch(f"{base}/{one_off.slug}", json={"style_preset": "anime-2d"})
+    assert created.status_code == 422 and "one-off explainer only" in created.text
+    assert create.await_count == 0
+    assert patched.status_code == 422
+    assert patched.json()["code"] == "video_series_explainer_one_off"
+    assert long_series.style_preset == "cinematic-3d", "the refused change was not applied"
+    assert crossed.status_code == 409 and crossed.json()["code"] == "video_series_explainer_fixed"
+    assert one_off.style_preset == "flat-explainer"
 
 
 @pytest.mark.asyncio

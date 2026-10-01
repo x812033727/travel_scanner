@@ -31,6 +31,9 @@ PromptFormat = Literal["slides", "drama"]
 MediaProvider = Literal["gemini", "minimax"]
 ClipResolution = Literal["720p", "768p", "1080p", "2k", "4k"]
 StylePreset = Literal["cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "custom"]
+# The illustrated explainer (docs/videos/so-thats-why/): narrator only, no cast. Only a one-off
+# may use it; a long series and a story series are written from prompts that need a cast.
+EXPLAINER_PRESET: StylePreset = "flat-explainer"
 DramaAspect = Literal["16:9", "9:16"]
 MediaKindName = Literal["image", "clip", "music"]
 
@@ -582,7 +585,9 @@ class SeriesIn(StrictModel):
     premise from the genre preset. The classic form fills everything in as before.
 
     A ``one-off`` is one episode with one story bible: its numbers are fixed at one whatever
-    was sent, and aspects and tone may be left out (docs/videos/DRAMA-FLOW.md §二).
+    was sent, and aspects and tone may be left out (docs/videos/DRAMA-FLOW.md §二). Only a
+    one-off may take EXPLAINER_PRESET: the explainer has no cast, and the other kinds' prompts
+    write one that the drama lint then refuses on every episode.
 
     A ``story`` series (docs/videos/STORY.md) is always hands-off, stills only and never
     compiled, needs its title, premise and shared look, and may run to STORY_MAX_MINUTES; its
@@ -635,6 +640,11 @@ class SeriesIn(StrictModel):
             raise ValueError("note must not be blank")
         if self.title is not None and not self.title:
             raise ValueError("title must not be blank")
+        if self.style_preset == EXPLAINER_PRESET and self.kind != "one-off":
+            raise ValueError(
+                f'style_preset "{EXPLAINER_PRESET}" is for a one-off explainer only: '
+                "a long series and a story series have a cast"
+            )
         # A genre preset carries its own premise seed; a custom series has nothing else.
         if not self.premise and self.genre == "custom":
             raise ValueError("a custom series needs a premise")
@@ -676,7 +686,8 @@ class SeriesPatch(StrictModel):
     The length may reach STORY_MAX_MINUTES and the daily count and the look may be set only on
     a story series; the service refuses them on the other kinds, which keep their limits.
     ``episodes_per_day`` or ``image_model`` sent as null lifts the daily limit or follows the
-    settings tab again.
+    settings tab again. EXPLAINER_PRESET stays a one-off's, and a one-off's bible fixes which
+    side of it the one-off is on (series.patch_problem).
     """
 
     title: str | None = Field(default=None, min_length=1, max_length=200)

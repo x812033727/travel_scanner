@@ -419,6 +419,8 @@ class ShortMetrics(BaseModel):
     youtube_video_id: str
     published_at: datetime | None = None
     removed_at: datetime | None = None
+    # A dropped Short is read no more (stats.read_due), so its open windows stay empty.
+    dropped_at: datetime | None = None
     snapshots: list[MetricOut]
 
 
