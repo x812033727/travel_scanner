@@ -104,6 +104,24 @@ test("scene data the renderer would refuse is a lint error, so the writer fixes 
   assert.deepEqual(lintVideo(doc, context()).errors, []);
 });
 
+test("a terminal scene without the real run's date and tool version is refused, and its reveals count output parts", () => {
+  const doc = fixture();
+  doc.scenes[1].template = "terminal";
+  doc.scenes[1].data = { command: "claude --version", output: ["2.1.285 (Claude Code)", "second part", "third part"], ran_on: "2026-10-01", tool_version: "2.1.285 (Claude Code)" };
+  assert.deepEqual(lintVideo(doc, context()).errors, [], "three reveals over three output parts");
+  const where = `scenes[1] (${doc.scenes[1].id}).data`;
+  delete doc.scenes[1].data.ran_on;
+  delete doc.scenes[1].data.tool_version;
+  const errors = lintVideo(doc, context()).errors;
+  assert.deepEqual(errors.map((error) => error.path), [where, where]);
+  assert.match(errors[0].message, /^ran_on is required: the date \(YYYY-MM-DD\) the command was really run/);
+  assert.match(errors[1].message, /^tool_version is required/);
+  doc.scenes[1].data.ran_on = "2026-10-01";
+  doc.scenes[1].data.tool_version = "2.1.285 (Claude Code)";
+  doc.scenes[1].data.output.pop();
+  assert.match(messages(lintVideo(doc, context()).errors), /reveals 3 elements but the terminal slide has 2/);
+});
+
 test("fewer than three chapters is an error; a short estimated chapter is a warning", () => {
   const doc = fixture();
   delete doc.scenes[1].chapter;

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "slug": "terminal-claude-code",
+  "format": "slides",
+  "target_minutes": [0.5, 5],
+  "voice": { "provider": "azure", "name": "zh-TW-HsiaoChenNeural" },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "終端機版型範例：在終端機確認 Claude Code",
+    "description": "這支只用來看終端機版型：指令逐字打出來，輸出一段一段出現。畫面上的輸出都來自 2026-10-01 真的執行的結果。",
+    "tags": ["Claude Code", "終端機"],
+    "video_id": null
+  },
+  "thumbnail": { "template": "thumb", "data": { "tag": "Claude Code 入門", "headline": "先在終端機**確認版本**", "sub": "一行指令就知道裝好了沒" } },
+  "sources": [{ "title": "Claude Code 說明文件", "url": "https://docs.claude.com/en/docs/claude-code/overview", "checked_on": "2026-10-01" }],
+  "scenes": [
+    {
+      "id": "opening",
+      "chapter": "確認有沒有裝好",
+      "template": "title",
+      "data": { "tag": "Claude Code 入門", "title": "先在終端機**確認版本**", "subtitle": "一行指令就知道裝好了沒" },
+      "lines": [
+        { "id": "tc01", "text": "裝好 Claude Code 之後，第一件事不是急著開始用。" },
+        { "id": "tc02", "text": "先花三秒鐘，確認它真的裝好了，而且是哪一個版本。" }
+      ]
+    },
+    {
+      "id": "version",
+      "template": "terminal",
+      "data": { "title": "查版本", "command": "claude --version", "output": ["2.1.285 (Claude Code)"], "ran_on": "2026-10-01", "tool_version": "2.1.285 (Claude Code)" },
+      "lines": [
+        { "id": "tc03", "text": "打開終端機，輸入這一行指令。" },
+        { "id": "tc04", "text": "按下去之後，它會印出目前的版本號，看到數字就代表裝好了。", "reveal": 1 }
+      ]
+    },
+    {
+      "id": "help-chapter",
+      "chapter": "它還能做什麼",
+      "template": "chapter",
+      "data": { "title": "看說明的開頭" },
+      "lines": [{ "id": "tc05", "text": "接下來看看說明，它會告訴你這個工具平常怎麼用，又有哪些模式。" }]
+    },
+    {
+      "id": "help",
+      "template": "terminal",
+      "data": {
+        "title": "說明的前四行",
+        "command": "claude --help | head -n 4",
+        "output": ["Usage: claude [options] [command] [prompt]", "\nClaude Code - starts an interactive session by default, use -p/--print for\nnon-interactive output"],
+        "ran_on": "2026-10-01",
+        "tool_version": "2.1.285 (Claude Code)"
+      },
+      "lines": [
+        { "id": "tc06", "text": "這次只看說明的前四行。" },
+        { "id": "tc07", "text": "第一行是用法，後面可以接選項、子指令，或直接接一句提示。", "reveal": 1 },
+        { "id": "tc08", "text": "接著它說，預設會開一個對話；只想印出一次回答，就加上 print 選項。", "reveal": 1 }
+      ]
+    },
+    {
+      "id": "closing",
+      "chapter": "下一步",
+      "template": "outro",
+      "data": { "title": "先確認版本，再開始用", "cta": "下一支示範第一次對話", "lines": ["查版本：確認裝好了", "看說明：知道有哪些模式"] },
+      "lines": [
+        { "id": "tc09", "text": "先確認版本，再看一眼說明，遇到問題時你會知道該從哪裡查起。" },
+        { "id": "tc10", "text": "下一支，我們就用它來做第一次對話。" }
+      ]
+    }
+  ]
+}
