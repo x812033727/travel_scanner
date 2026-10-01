@@ -15,6 +15,7 @@ import { verifyBrandingAssets, wrapAudio } from "../assemble/branding.mjs";
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { musicInputs, sfxInputs } from "../assemble/sound.mjs";
 import { isDrama, mixHash, resolveMusic, resolveSfx, sfxHash } from "../core/drama.mjs";
+import { emptyLexicon } from "../core/lexicon.mjs";
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { eachLine, LOCALES } from "../core/schema.mjs";
@@ -28,7 +29,7 @@ import { encodeWav, parseWav, requireNarrationFormat } from "../tts/wav.mjs";
 import { CODECS, encodeArgs, measureLoudnessArgs, parseLoudnorm, stretchArgs } from "./encode.mjs";
 import {
   DEFAULT_FORMAT, DUB_FORMATS, GUARD_MS, MAX_TEMPO,
-  assembleTrack, defaultDubLocales, defaultRate, dubLexicon, dubLocales, dubScript, estimatedLengths, layoutDub, measureRate, placeLines, shrinkBudgets, translationHash,
+  assembleTrack, defaultDubLocales, defaultRate, dubLocales, dubScript, estimatedLengths, layoutDub, measureRate, placeLines, shrinkBudgets, speechLexicon, translationHash,
 } from "./plan.mjs";
 
 // When a stretched window still sticks out (atempo rounds), the next try is this much faster.
@@ -80,7 +81,8 @@ export function rateFor(fit, locale, doc, timeline) {
 /** Everything one locale's dub is made from, before any audio: the script, the requests, the cache. */
 function prepare(project, locale, values, workdir) {
   const { doc: script, missing } = dubScript(project.doc, project.translations[locale], locale, values.style);
-  const lexicon = dubLexicon(project.lexicon);
+  // project.lexicon is filtered for the source narration; a Chinese dub needs its aliases back.
+  const lexicon = speechLexicon(readJson(path.join(path.dirname(project.dir), "lexicon.json"), emptyLexicon()), locale);
   const requests = missing.length ? [] : planRequests(script, lexicon);
   const texts = new Map();
   for (const { line } of eachLine(script)) texts.set(line.id, line.text);

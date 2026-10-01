@@ -1158,8 +1158,8 @@
       ]
     },
     "zh-CN": {
-      "title": "设定优先顺序与故障排除",
-      "description": "从设定来源追查无效或冲突的选项，一次修改一项，验证结果后保留可还原的纪录。",
+      "title": "设置优先顺序与故障排除",
+      "description": "从配置来源追查无效或冲突的选项，一次修改一项，验证结果后保留可还原的记录。",
       "hero": {
         "src": "/guides/codex-config-troubleshooting/hero.jpg",
         "width": 1600,
@@ -1174,8 +1174,8 @@
         {
           "type": "summary",
           "items": [
-            "从设定来源追查无效或冲突的选项，一次修改一项，验证结果后保留可还原的纪录。",
-            "用四份独立样本练习缺引号、重复键、键放错层与不支援的值，再用设定诊断分辨未载入与被覆写，只修正真正有问题的来源。"
+            "从配置来源追查无效或冲突的选项，一次修改一项，验证结果后保留可还原的记录。",
+            "用四份独立样本练习缺引号、重复键、键放错层与不支持的值，再用配置诊断分辨未加载与被覆盖，只修正真正有问题的来源。"
           ]
         },
         {
@@ -1197,34 +1197,34 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "用四份独立样本练习缺引号、重复键、键放错层与不支援的值，再用设定诊断分辨未载入与被覆写，只修正真正有问题的来源。阅读约 12 分钟，操作约 25 分钟。先完成 config.toml 篇；额外使用 Python 3.11 或更新版本做离线档案检查。Windows 用 py -3，macOS／Linux 用 python3；不把故障样本直接贴进自己的使用者设定。"
+          "text": "用四份独立样本练习缺引号、重复键、键放错层与不支持的值，再用配置诊断分辨未加载与被覆盖，只修正真正有问题的来源。阅读约 12 分钟，操作约 25 分钟。先完成 config.toml 篇；额外使用 Python 3.11 或更新版本做离线文件检查。Windows 用 py -3，macOS／Linux 用 python3；不把故障样本直接贴进自己的用户配置。"
         },
         {
           "type": "paragraph",
-          "text": "这个练习的检查器只认识本篇的 web_search，不是 Codex 完整 schema，也不会读其他设定或连网。它通过只代表这个档案的语法与指定键符合练习，不能证明 Codex 已载入、组织允许或其他工具行为已改变。把验证范围先讲清楚，才不会拿一个成功讯息替所有层级背书。"
+          "text": "这个练习的检查器只认识本篇的 web_search，不是 Codex 完整 schema，也不会读其他设置或联网。它通过只代表这个文件的语法与指定键符合练习，不能证明 Codex 已加载、组织允许或其他工具行为已改变。把验证范围先讲清楚，才不会拿一个成功信息替所有层级背书。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤一：建立离线样本与检查器"
+          "text": "步骤一：创建离线样本与检查器"
         },
         {
           "type": "paragraph",
-          "text": "建立新的 codex-config-checks，使用编辑器开启，在根目录新增 check_config.py。下面是完整程式：它只打开命令列指定的档案，显示错误位置或本篇键的结果，不列印整份私人设定。这次检查的都是你另外建立的虚构样本，不要传入有密码的正式档案来截图。"
+          "text": "创建新的 codex-config-checks，使用编辑器打开，在根目录新增 check_config.py。下面是完整程序：它只打开命令行指定的文件，显示错误位置或本篇键的结果，不打印整份私人配置。这次检查的都是你另外创建的虚构样本，不要传入有密码的正式文件来截图。"
         },
         {
           "type": "code",
-          "label": "Python 档案内容：完整存入 check_config.py",
+          "label": "Python 文件内容：完整存入 check_config.py",
           "language": "python",
           "code": "from pathlib import Path\nimport sys\nimport tomllib\n\nif len(sys.argv) != 2:\n    raise SystemExit(\"Usage: check_config.py SAMPLE.toml\")\npath = Path(sys.argv[1])\ntry:\n    with path.open(\"rb\") as stream:\n        data = tomllib.load(stream)\nexcept (OSError, tomllib.TOMLDecodeError) as exc:\n    print(f\"FAIL: {exc}\")\n    raise SystemExit(1)\nif \"web_search\" not in data:\n    print(\"FAIL: missing top-level web_search; inspect table placement\")\n    raise SystemExit(1)\nvalue = data[\"web_search\"]\nif not isinstance(value, str) or value not in {\"disabled\", \"cached\", \"indexed\", \"live\"}:\n    print(\"FAIL: unsupported web_search value for this exercise\")\n    raise SystemExit(1)\nprint(f\"PASS: sample syntax and web_search={value}; Codex loading is not verified\")\n"
         },
         {
           "type": "paragraph",
-          "text": "先新增 good.toml，内容如下。这是正确起点，用来确认检查器和 Python 本身能执行。不要先用坏样本测试工具，否则看到错误时无法分辨是工具缺失还是故障题目。档案和程式都存成 UTF-8，确认副档名不是 .txt。"
+          "text": "先新增 good.toml，内容如下。这是正确起点，用来确认检查器和 Python 本身能执行。不要先用坏样本测试工具，否则看到错误时无法分辨是工具缺失还是故障题目。文件和程序都存成 UTF-8，确认扩展名不是 .txt。"
         },
         {
           "type": "code",
-          "label": "TOML 档案内容：存入 good.toml",
+          "label": "TOML 文件内容：存入 good.toml",
           "language": "toml",
           "code": "web_search = \"disabled\"\n"
         },
@@ -1234,13 +1234,13 @@
         },
         {
           "type": "code",
-          "label": "Windows PowerShell：在样本资料夹执行",
+          "label": "Windows PowerShell：在样本文件夹执行",
           "language": "powershell",
           "code": "py -3 check_config.py good.toml\n"
         },
         {
           "type": "code",
-          "label": "macOS／Linux 终端机：在样本资料夹执行",
+          "label": "macOS／Linux 终端：在样本文件夹执行",
           "language": "sh",
           "code": "python3 check_config.py good.toml\n"
         },
@@ -1251,7 +1251,7 @@
         },
         {
           "type": "paragraph",
-          "text": "每次执行后，立即在同一个终端机查看退出码：Windows PowerShell 用 $LASTEXITCODE，macOS／Linux 用 echo $?。中间不要再跑另一个程式，否则读到的是后一个命令的结果。good.toml 预期为 0，四份未修的故障样本各为 1；将每份另存为 fixed-quote.toml、fixed-duplicate.toml、fixed-scope.toml、fixed-value.toml 再修正，四份修正版都应为 0，原始故障档保留。"
+          "text": "每次执行后，立即在同一个终端查看退出码：Windows PowerShell 用 $LASTEXITCODE，macOS／Linux 用 echo $?。中间不要再跑另一个程序，否则读到的是后一个命令的结果。good.toml 预期为 0，四份未修的故障样本各为 1；将每份另存为 fixed-quote.toml、fixed-duplicate.toml、fixed-scope.toml、fixed-value.toml 再修正，四份修正版都应为 0，原始故障文件保留。"
         },
         {
           "type": "heading",
@@ -1260,17 +1260,17 @@
         },
         {
           "type": "paragraph",
-          "text": "将下一段存成 broken-quote.toml。它缺少结束引号，TOML 解析应失败。把执行命令最后的 good.toml 换成此档名；错误可能指向行尾或下一个字元，不一定直接说「少引号」。先从指出的位置往前看这一行，补上半形引号，再执行一次确认通过。保留原错误内容与修正后副本便于比较。"
+          "text": "将下一段存成 broken-quote.toml。它缺少结束引号，TOML 解析应失败。把执行命令最后的 good.toml 换成此文件名；错误可能指向行尾或下一个字符，不一定直接说「少引号」。先从指出的位置往前看这一行，补上半角引号，再执行一次确认通过。保留原错误内容与修正后副本便于比较。"
         },
         {
           "type": "code",
-          "label": "故障样本：另存 broken-quote.toml，不是正式设定",
+          "label": "故障样本：另存 broken-quote.toml，不是正式配置",
           "language": "toml",
           "code": "web_search = \"disabled\n"
         },
         {
           "type": "paragraph",
-          "text": "broken-duplicate.toml 则有两个相同顶层键。它不是「最后一行赢」；同一份 TOML 重复定义同一个键应报错。先决定这份样本只保留 disabled，再删掉重复那行，确认通过。跨档案的优先顺序与单档内重复键是两个不同问题，不能把它们混用。"
+          "text": "broken-duplicate.toml 则有两个相同顶层键。它不是「最后一行赢」；同一份 TOML 重复定义同一个键应报错。先决定这份样本只保留 disabled，再删掉重复那行，确认通过。跨文件的优先顺序与单个文件内重复键是两个不同问题，不能把它们混用。"
         },
         {
           "type": "code",
@@ -1280,7 +1280,7 @@
         },
         {
           "type": "paragraph",
-          "text": "broken-scope.toml 的 TOML 语法本身有效，但 web_search 被放进 features 表格，变成另一个完整键路径。检查器会指出缺少顶层键；Codex 对错位置或错型别的设定也可能报错，不能把解析通过当成设定可用。本例应将 web_search 放到任何表格标头之前，且不保留这段为了练习加上的 features 内容。"
+          "text": "broken-scope.toml 的 TOML 语法本身有效，但 web_search 被放进 features 表格，变成另一个完整键路径。检查器会指出缺少顶层键；Codex 对错位置或错类型的设置也可能报错，不能把解析通过当成设置可用。本例应将 web_search 放到任何表格标头之前，且不保留这段为了练习加上的 features 内容。"
         },
         {
           "type": "code",
@@ -1290,7 +1290,7 @@
         },
         {
           "type": "paragraph",
-          "text": "broken-value.toml 用了看似合理但本设定不接受的 off。它是合法 TOML 字串，却不是官方 web_search 选项。改成 disabled 后再检查；不要因为别的软体用 on/off，就自行翻译设定值。模型名称、推理选项也必须核对帐号和当前版本，但不要拿本篇小检查器验证那些不同设定。"
+          "text": "broken-value.toml 用了看似合理但本设置不接受的 off。它是合法 TOML 字符串，却不是官方 web_search 选项。改成 disabled 后再检查；不要因为别的软件用 on/off，就自行翻译设置值。模型名称、推理选项也必须核对账号和当前版本，但不要拿本篇小检查器验证那些不同设置。"
         },
         {
           "type": "code",
@@ -1305,11 +1305,11 @@
         },
         {
           "type": "paragraph",
-          "text": "再看一个检查器的界线：下列样本同样会显示 PASS，因为 web_search 符合本篇检查，extra_practice_key 并未被检查。将它另存 limits.toml 只供离线测试，不放进 .codex。这不代表 Codex 接受额外键，也不代表完整 schema 已通过；你要能在纪录中指出本程式根本没有验证的部分。"
+          "text": "再看一个检查器的界线：下列样本同样会显示 PASS，因为 web_search 符合本篇检查，extra_practice_key 并未被检查。将它另存 limits.toml 只供离线测试，不放进 .codex。这不代表 Codex 接受额外键，也不代表完整 schema 已通过；你要能在记录中指出本程序根本没有验证的部分。"
         },
         {
           "type": "code",
-          "label": "离线边界样本：limits.toml，不是 Codex 设定范本",
+          "label": "离线边界样本：limits.toml，不是 Codex 配置范本",
           "language": "toml",
           "code": "web_search = \"disabled\"\nextra_practice_key = \"not checked by this exercise\"\n"
         },
@@ -1327,20 +1327,20 @@
             },
             {
               "type": "article",
-              "text": "设定入门",
+              "text": "设置入门",
               "kind": "life",
               "slug": "codex-config-toml"
             },
             {
               "type": "text",
-              "text": "的真实练习专案，不把故障样本当启动设定。用新 CLI 工作阶段的 /debug-config 看载入路径、是否启用与要求来源。把你编辑的路径和实际载入路径逐字比较；再核对是否从另一个子目录启动、启动命令是否带 --search、-c 或 --profile。只改一项再重启，不同时更换模型、登入、沙盒与工具版本。"
+              "text": "的真实练习项目，不把故障样本当启动配置。用新 CLI 会话的 /debug-config 看加载路径、是否启用与要求来源。把你编辑的路径和实际加载路径逐字比较；再核对是否从另一个子目录启动、启动命令是否带 --search、-c 或 --profile。只改一项再重启，不同时更换模型、登录、沙箱与工具版本。"
             }
           ]
         },
         {
           "type": "table",
           "header": [
-            "一般设定优先序：高到低",
+            "一般配置优先级：高到低",
             "这一步要核对"
           ],
           "rows": [
@@ -1349,49 +1349,49 @@
               "这次启动命令"
             ],
             [
-              "受信任专案设定，较近目录优先",
+              "受信任项目配置，较近目录优先",
               "实际工作目录与启用状态"
             ],
             [
-              "--profile 选定的设定档",
+              "--profile 选定的配置文件",
               "是否选了另一个 profile"
             ],
             [
-              "使用者设定",
+              "用户配置",
               "实际 Codex home"
             ],
             [
-              "工作区云端管理预设",
-              "工作区提供的预设来源"
+              "工作区云端管理默认",
+              "工作区提供的默认来源"
             ],
             [
-              "系统设定与内建预设",
-              "没有更高设定时的来源"
+              "系统配置与内建默认",
+              "没有更高层配置时的来源"
             ]
           ]
         },
         {
           "type": "paragraph",
-          "text": "这张表整理的是一般值的合并，组织 requirements.toml 的强制限制仍需另外遵守。若专案层被标为未信任而略过，先确认来源再处理信任，不要改名或搬档来避开限制。若 Windows 能生效而 WSL 不行，先查你用的是哪个 codex 与哪个家目录；两个环境可有各自设定与登入，不能用档案名称相同推定内容相同。"
+          "text": "这张表整理的是一般值的合并，组织 requirements.toml 的强制限制仍需另外遵守。若项目层被标为未信任而略过，先确认来源再处理信任，不要改名或移动文件来避开限制。若 Windows 能生效而 WSL 不行，先查你用的是哪个 codex 与哪个主目录；两个环境可有各自配置与登录，不能用文件名称相同推定内容相同。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "修正、还原与交付纪录"
+          "text": "修正、还原与交付记录"
         },
         {
           "type": "paragraph",
-          "text": "真正要改设定时，先备份那份确定会载入的档案，只修改已定位的键。保持原来的帐号、供应者及其他设定，不贴上整包范例取代整份档案。重启后核对诊断与本机标记；若无法证明有效值，写「尚未确认」，保留原因。出现新问题就把该键或档案还原，再核对已回到先前状态，不需要清空整个 .codex。"
+          "text": "真正要改设置时，先备份那份确定会加载的文件，只修改已定位的键。保持原来的账号、提供商及其他设置，不粘贴整包示例替换整份文件。重启后核对诊断与本地标记；若无法证明有效值，写「尚未确认」，保留原因。出现新问题就把该键或文件还原，再核对已回到先前状态，不需要清空整个 .codex。"
         },
         {
           "type": "code",
-          "label": "私人排错笔记：填入结果，不是在终端机执行",
+          "label": "私人排错笔记：填入结果，不是在终端执行",
           "language": "text",
           "code": "Symptom: record the actual error or unchanged setting.\nFile and layer: record the relevant path and whether it loaded.\nDiagnosis: syntax / key scope / unsupported value / precedence / trust / policy.\nMinimal change: record exactly one repaired cause.\nValidation: distinguish sample parser checks from actual client diagnostics.\nRestoration: record the backup or original value and the result after restarting.\n"
         },
         {
           "type": "paragraph",
-          "text": "完成后应有一份通过的起点、四份能说明原因的故障样本，以及各自修正后通过的副本。另能用真实工作阶段分清「档案没载入」和「载入但被覆写」，并知道何时仍缺乏证据。本篇 Python 样本以离线解析验证，Codex 的有效层级则依官方诊断流程确认；模型、MCP 或权限的问题再连到相应专篇，不用这个单键检查器替它们下结论。"
+          "text": "完成后应有一份通过的起点、四份能说明原因的故障样本，以及各自修正后通过的副本。另能用真实会话分清「文件没加载」和「加载但被覆盖」，并知道何时仍缺乏证据。本篇 Python 样本以离线解析验证，Codex 的有效层级则依官方诊断流程确认；模型、MCP 或权限的问题再连到相应专篇，不用这个单键检查器替它们下结论。"
         },
         {
           "type": "rich_paragraph",

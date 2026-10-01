@@ -521,6 +521,10 @@ SeriesJobKind = Literal["setting", "outline", "chapter", "bible", "episode", "co
 # What the owner fills in for a one-off drama: every number is fixed at one.
 ONE_OFF_EPISODES = 1
 SeriesAction = Literal["plan-next-chapter", "start-next", "compile"]
+# How much of every episode's ``beats`` a read of a series carries: all of it (the worker and the
+# drama pages), or only what a list of a hundred stories shows (SUMMARY_BEAT_KEYS in series.py);
+# one episode's whole plan is read on its own, from /series/{slug}/episodes/{number}.
+SeriesBeatsRead = Literal["full", "summary"]
 # A binge series (docs/videos/BINGE.md): the genre preset, who leads, and the visual tier.
 SeriesGenre = Literal[
     "xianxia-bonds", "rebirth-revenge", "system-game", "urban-return", "empress-rise", "custom"
