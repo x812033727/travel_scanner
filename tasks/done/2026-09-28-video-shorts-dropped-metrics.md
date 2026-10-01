@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-shorts-dropped-metrics
 title: 撤掉的已公開 Shorts 在成效表一直顯示等待讀取
-status: in-progress
+status: done
 priority: P3
 area: api
 owner: claude-opus-5-5-shorts-metrics
 claimed_at: 2026-10-01T03:39:06Z
 created_at: 2026-09-28T16:52:01Z
-completed_at:
+completed_at: 2026-10-01T03:53:20Z
 branch: claude/shorts-dropped-metrics
 depends_on: []
 scope:
