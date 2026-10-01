@@ -68,6 +68,9 @@ Reveal: a line with "reveal": 1 shows the next item; a scene's reveals must equa
 - quote {quote, source, kicker?, translation?}: 1 reveal when there is a translation. An official
   sentence in its own words, then what it means, and where it is from.
 - stats {title?, stats: 1-4 of {value, label, note?}, source?}: one reveal per number.
+- terminal {title?, prompt?: "$"|">", command, output: 1-6 parts, ran_on, tool_version}: one reveal
+  per output part. Only with a command and output copied from a real run in the sources or brief,
+  with that run's date and tool version; never write or tidy terminal output yourself.
 - cta {title, kicker?, sub?}: no reveals. Once, near the middle, when there is a source article:
   points to the article in the description's first line.
 - outro {title, cta?, lines 1-4}: no reveals. The last scene.

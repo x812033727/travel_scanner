@@ -17,6 +17,8 @@ upload confirmation and the publish time are both at least PREVIEW_RETENTION old
 
 from __future__ import annotations
 
+import asyncio
+import hashlib
 import json
 import re
 from collections.abc import Iterable
@@ -71,6 +73,8 @@ from app.video_reviews.schemas import (
     DropIn,
     DubLocalesIn,
     FacetCount,
+    FinalRenewalIn,
+    FinalRenewalState,
     LanguagePartOut,
     LocaleChoice,
     LocalesIn,
@@ -243,10 +247,19 @@ def ready_to_upload(
 
 def kept_files(reviews: Iterable[VideoReview]) -> set[str]:
     """Keep live previews and evidence for historical decisions, not abandoned drafts."""
+    rows = list(reviews)
+    # Explicit owner renewals preserve even the undecided version they replaced. The
+    # references live on the new review so the original evidence is never rewritten.
+    retained: set[str] = set()
+    for row in rows:
+        renewal = (row.payload or {}).get(RENEWAL_KEY)
+        ids = renewal.get("retained_review_ids") if isinstance(renewal, dict) else None
+        if isinstance(ids, list):
+            retained.update(item for item in ids if isinstance(item, str))
     return {
         str(item["sha256"])
-        for review in reviews
-        if review.status in LIVE or review.decided_at is not None
+        for review in rows
+        if review.status in LIVE or review.decided_at is not None or str(review.id) in retained
         for item in review.files
         if isinstance(item, dict) and item.get("sha256")
     }
@@ -372,7 +385,9 @@ async def upsert_project(
     if not valid_slug(slug):
         raise AppError(422, "video_review_bad_slug", "影片代號只能用小寫英文、數字與連字號")
     now = datetime.now(UTC)
-    project = await session.scalar(select(VideoProject).where(VideoProject.slug == slug))
+    project = await session.scalar(
+        select(VideoProject).where(VideoProject.slug == slug).with_for_update()
+    )
     if project is None:
         project = VideoProject(slug=slug, created_at=now)
         session.add(project)
@@ -413,6 +428,12 @@ async def upsert_project(
         project.retry_acknowledged_id = payload.retry_acknowledged_id
     project.last_synced_at = now
     project.updated_at = now
+    current = _current_final(await _reviews(session, project)) if project.id else None
+    if (
+        current is not None and RENEWAL_KEY in (current.payload or {})
+        and current.status != "approved"
+    ):
+        _hold_final_review(project)
     await _decide_story_locales(session, project, now)
     await session.commit()
     # A video on YouTube keeps its upload package for the owner to download; only the mp4 goes,
@@ -818,6 +839,224 @@ async def _short_revision_allowed(session: AsyncSession, project: VideoProject) 
         raise AppError(error.status, error.code, error.detail) from error
 
 
+RENEWAL_KEY = "_final_renewal"
+RENEWAL_GATES = ("final", "publish", "languages", "dubs")
+
+
+def _current_final(reviews: list[VideoReview]) -> VideoReview | None:
+    return next((row for row in reviews if row.gate == "final" and row.subject is None), None)
+
+
+def _renewable_final(project: VideoProject, reviews: list[VideoReview]) -> VideoReview:
+    _refuse_dropped(project)
+    if project.shorts_line is not None or project.format == "shorts":
+        raise AppError(409, "video_final_renewal_long_only", "這個換版流程只適用長片")
+    upload_items = [item for item in project.checklist or [] if item.get("key") == "on_youtube"]
+    # The producer reports its *next* step as stage. "on YouTube" with a single
+    # explicitly unfinished checklist item is waiting to upload, not a published cut.
+    waiting_upload = len(upload_items) == 1 and upload_items[0].get("done") is False
+    if (
+        project.youtube_video_id is not None or project.youtube_upload_session is not None
+        or project.youtube_sync is not None or project.youtube_publish_at is not None
+        or project.youtube_removed_at is not None
+        or project.stage.strip().lower() in ("published", "uploaded", "done")
+        or (project.stage.strip().lower() == "on youtube" and not waiting_upload)
+        or any(item.get("done") is True for item in upload_items)
+    ):
+        raise AppError(
+            409, "video_final_renewal_upload_started",
+            "影片已有上傳紀錄或完成狀態，請先核對上傳身分；不能直接換版",
+        )
+    final = _current_final(reviews)
+    if final is None or (
+        final.status != "approved"
+        and not (final.status in LIVE and RENEWAL_KEY in (final.payload or {}))
+    ):
+        raise AppError(409, "video_final_renewal_not_ready", "目前沒有可換版的成片審核")
+    return final
+
+
+def _renewal_version(project: VideoProject, reviews: list[VideoReview]) -> str:
+    # Include mutable evidence as well as ids: a tool may update a pending review in place.
+    def values(row: Any) -> dict[str, Any]:
+        return {column.name: getattr(row, column.name) for column in row.__table__.columns}
+
+    state = {"project": values(project), "reviews": [values(row) for row in reviews]}
+    return hashlib.sha256(
+        json.dumps(state, sort_keys=True, separators=(",", ":"), default=str).encode()
+    ).hexdigest()
+
+
+async def final_renewal_state(session: AsyncSession, slug: str) -> FinalRenewalState:
+    project = await _project(session, slug)
+    reviews = await _reviews(session, project)
+    final = _renewable_final(project, reviews)
+    return FinalRenewalState(
+        version=_renewal_version(project, reviews), final_review_id=final.id,
+        final_sha256=final.content_sha256,
+    )
+
+
+def _verify_renewal_files(store: ReviewStore, slug: str, payload: ReviewIn) -> None:
+    roles = [item.role for item in payload.files]
+    if len(roles) != len(set(roles)) or not any(
+        item.role == "preview" and item.content_type == "video/mp4" for item in payload.files
+    ):
+        raise AppError(409, "video_final_renewal_files_invalid", "新版成片需要唯一的預覽附件")
+    for item in payload.files:
+        path = store.path(slug, item.sha256)
+        if path is None:
+            raise AppError(409, "video_review_files_missing", "新版審核附件尚未上傳完")
+        digest = hashlib.sha256()
+        size = 0
+        with path.open("rb") as stream:
+            for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+                size += len(chunk)
+                digest.update(chunk)
+        if size != item.size or digest.hexdigest() != item.sha256:
+            raise AppError(409, "video_final_renewal_files_invalid", "新版審核附件與雜湊不符")
+
+
+def _hold_final_review(project: VideoProject) -> None:
+    project.stage = "final video approved"
+    items = [dict(item) for item in project.checklist or []]
+    after_final = False
+    for item in items:
+        after_final = after_final or item.get("key") == "final_video_approved"
+        if after_final or item.get("key") in ("on_youtube", "package", "publish", "languages"):
+            item["done"] = False
+    if not after_final:
+        items.append({"key": "final_video_approved", "label": "成片核准", "done": False})
+    project.checklist = items
+
+
+async def renew_final(
+    session: AsyncSession, store: ReviewStore, slug: str, user: User, payload: FinalRenewalIn
+) -> ReviewOut:
+    """Replace an unuploaded long cut, retaining every old decision and its evidence."""
+    project = await _project(session, slug, lock=True)
+    reviews = await _reviews(session, project, refresh=True)
+    final = _renewable_final(project, reviews)
+    if (
+        payload.expected_version != _renewal_version(project, reviews)
+        or payload.expected_final_review_id != final.id
+        or payload.expected_final_sha256 != final.content_sha256
+    ):
+        raise AppError(409, "video_final_renewal_stale", "影片或審核已變更，請重新讀取後再換版")
+    candidate = payload.review
+    if candidate.content_sha256 == final.content_sha256 or any(
+        row.gate == "final" and row.content_sha256 == candidate.content_sha256 for row in reviews
+    ):
+        raise AppError(409, "video_final_renewal_same_content", "換版必須提供未送審過的新成片")
+    # The uploaders take the same project lock, then the VPS configuration lock.
+    from app.video_youtube import vps
+    from app.video_youtube.errors import Refused
+
+    try:
+        await vps.assert_idle(session, slug, upload=True)
+    except Refused as error:
+        raise AppError(error.status, error.code, error.detail) from error
+    await asyncio.to_thread(_verify_renewal_files, store, slug, candidate)
+    now = datetime.now(UTC)
+    details = dict(candidate.payload)
+    qa = details.pop("qa", None)
+    if qa is not None:
+        details["manual_review_qa"] = qa
+    details["manual_review"] = True
+    details["manual_review_reason"] = payload.reason.strip()
+    details[RENEWAL_KEY] = {
+        "previous_review_id": str(final.id), "previous_sha256": final.content_sha256,
+        "expected_version": payload.expected_version, "previous_stage": project.stage,
+        "retained_review_ids": [str(row.id) for row in reviews
+                                if row.gate in RENEWAL_GATES and row.status in LIVE],
+    }
+    replacement = VideoReview(
+        id=uuid4(), project_id=project.id, gate="final", subject=None,
+        content_sha256=candidate.content_sha256, revision=0, summary=candidate.summary,
+        payload=details, files=[item.model_dump() for item in candidate.files],
+        status="pending", created_at=now, updated_at=now,
+    )
+    for older in reviews:
+        if older.gate not in RENEWAL_GATES or older.status not in LIVE:
+            continue
+        session.add(AdminAuditLog(
+            actor_user_id=user.id, action="video_review_superseded",
+            target=f"video_review:{older.id}", metadata_json={
+                "slug": slug, "gate": older.gate, "previous_status": older.status,
+                "replacement_review_id": str(replacement.id), "sha256": older.content_sha256,
+                "reason": payload.reason.strip(),
+            },
+        ))
+        older.status = "superseded"
+        older.updated_at = now
+    session.add(replacement)
+    session.add(AdminAuditLog(
+        actor_user_id=user.id, action="video_final_renewed", target=f"video_project:{project.id}",
+        metadata_json={"slug": slug, "review_id": str(replacement.id), **details[RENEWAL_KEY]},
+    ))
+    _hold_final_review(project)
+    project.updated_at = now
+    project.last_synced_at = now
+    await session.commit()
+    # Do not prune: even superseded, never-decided evidence belongs to this explicit revision.
+    return _review_out(replacement)
+
+
+def _renewed_submission(
+    reviews: list[VideoReview], payload: ReviewIn
+) -> VideoReview | None:
+    if RENEWAL_KEY in payload.payload:
+        raise AppError(422, "video_final_renewal_reserved", "換版記錄只能由站主換版流程建立")
+    final = _current_final(reviews)
+    if final is None or RENEWAL_KEY not in (final.payload or {}):
+        return None
+    if payload.gate == "final" and payload.content_sha256 == final.content_sha256:
+        return final  # A worker resend cannot replace the owner's pending evidence or enable QA.
+    if payload.gate in RENEWAL_GATES and (
+        payload.gate == "final" or final.status != "approved"
+        or payload.payload.get("final_review_id") != str(final.id)
+    ):
+        raise AppError(
+            409, "video_final_renewal_review_required",
+            "新版成片須先由站主核准；後續上架與語言審核須綁定這筆成片審核",
+        )
+    return None
+
+
+def _renewed_source(store: ReviewStore, slug: str, payload: ReviewIn, final: VideoReview) -> None:
+    """A new review id alone cannot relabel the old upload package or caption timeline."""
+    role = "metadata" if payload.gate == "publish" else "languages_manifest"
+    item = next((item for item in payload.files if item.role == role), None)
+    if item is None or item.sha256 != payload.content_sha256:
+        raise AppError(409, "video_final_renewal_source_stale", "新上架包或語言須附來源清單")
+    path = store.path(slug, item.sha256)
+    raw = path.read_bytes() if path else b""
+    if len(raw) != item.size or hashlib.sha256(raw).hexdigest() != item.sha256:
+        raise AppError(409, "video_final_renewal_source_stale", "來源清單與審核附件不符")
+    try:
+        metadata = json.loads(raw)
+    except (ValueError, UnicodeError) as error:
+        raise AppError(409, "video_final_renewal_source_stale", "來源清單格式不正確") from error
+    if not isinstance(metadata, dict):
+        raise AppError(409, "video_final_renewal_source_stale", "來源清單格式不正確")
+    if payload.gate == "publish":
+        valid = (
+            metadata.get("final_sha256") == final.content_sha256
+            and metadata.get("branding_hash") == final.payload.get("branding_hash")
+            and all(item.sha256 == final.content_sha256
+                    for item in payload.files if item.role == "final")
+        )
+    else:
+        source = metadata.get("source")
+        valid = isinstance(source, dict) and source.get("final") == {
+            "review_id": str(final.id), "content_sha256": final.content_sha256,
+        } and source.get("branding_hash") == final.payload.get("branding_hash")
+    if not valid:
+        raise AppError(
+            409, "video_final_renewal_source_stale", "來源仍是舊成片，請重製上架包與語言"
+        )
+
+
 def _supersede_short_reviews(
     session: AsyncSession,
     project: VideoProject,
@@ -861,6 +1100,16 @@ async def submit_review(
             409, "video_review_files_missing", f"這些檔案還沒上傳完：{', '.join(missing)}"
         )
     reviews = await _reviews(session, project, refresh=True)
+    renewed = _renewed_submission(reviews, payload)
+    if renewed is not None:
+        await session.commit()
+        return _review_out(renewed)
+    current = _current_final(reviews)
+    if (
+        current is not None and RENEWAL_KEY in (current.payload or {})
+        and payload.gate in ("publish", "languages", "dubs")
+    ):
+        await asyncio.to_thread(_renewed_source, store, slug, payload, current)
     same = next(
         (
             review
