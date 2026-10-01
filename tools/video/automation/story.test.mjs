@@ -506,6 +506,7 @@ test("a story goes from the site's job to its first media step: started from its
   assert.equal(readApprovals(workdir).approvals.find((entry) => entry.gate === "outline").note, OUTLINE_NOTE);
   assert.deepEqual(state().series, { slug: "brand-stories", episode: 1, chapter: 1, kind: "story", visual_tier: "stills", compilation: false, hands_off: true });
   assert.equal(state().category, "story", "a brand story is filed as one on /admin/videos");
+  assert.equal(site.calls.reports[0].category, "story", "the very first report files it, before video.json exists");
   assert.equal(site.calls.reports.at(-1).series_slug, "brand-stories");
   assert.equal(site.calls.run.length, 0, "starting costs no model call");
 

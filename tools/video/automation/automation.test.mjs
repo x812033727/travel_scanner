@@ -456,6 +456,7 @@ test("a video the owner drops is left alone, frees its place and keeps its topic
   automation.refs = smallRefs;
   await automation.step();
   assert.equal(site.calls.reports[0].source_guide, "chatgpt-ads-status", "the site learns the article");
+  assert.equal("category" in site.calls.reports[0], false, "a video with no category leaves the filing to the owner");
   Object.assign(site.listed.get(slug), { dropped_at: "2026-09-25T09:30:00Z", dropped_note: "第二批做過了" });
   assert.match(await automation.step(), /the owner dropped it \(第二批做過了\)/);
   assert.equal(automatedVideos(box.work)[0].status, "dropped");
@@ -1206,12 +1207,16 @@ test("from the picked outline to YouTube without the owner: the final gate sends
   assert.equal(await automation.step(), null, "nothing left but the owner's upload");
 
   // The owner uploaded it and pasted the address on /admin/videos: the id comes back into the script.
+  // A category video.json carries goes with every report (the site fills it only on an unfiled video).
+  writeFileSync(docFile, `${JSON.stringify({ ...readJson(docFile), category: "tutorial" }, null, 2)}
+`);
   site.listed.get(slug).youtube_video_id = "dQw4w9WgXcQ";
   assert.match(await automation.step(), /^chatgpt-ads-off: on YouTube as dQw4w9WgXcQ; video\.json records it and the video is complete$/);
   assert.equal(readJson(docFile).youtube.video_id, "dQw4w9WgXcQ");
   assert.equal(state().youtube_video_id, "dQw4w9WgXcQ");
   const last = site.calls.reports.at(-1);
   assert.deepEqual([last.stage, last.youtube_video_id], ["on YouTube", "dQw4w9WgXcQ"], "the report carries the id, so the site keeps it");
+  assert.equal(last.category, "tutorial", "the report files the video under video.json's category");
   assert.ok(last.checklist.every((item) => item.done), "every step reads as done");
   const status = await pipelineStatus({ slug, root: box.root, workdir });
   assert.equal(status.next, null);
