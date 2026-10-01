@@ -12,9 +12,8 @@ import { compilationChecksCurrent, isCompilation } from "../core/compilation.mjs
 import { COMPILATION_REVIEW_FILE, publicTexts, reviewCurrent } from "../core/compilation-review.mjs";
 import { illustrated, isDrama, keyframesHash, lookHash, mixHash, sfxHash, subtitlesHash } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
-import { LOCALES } from "../core/schema.mjs";
-import { DEFAULT_DUB_LOCALES } from "../dubs/plan.mjs";
-import { captionLocalesOf, chosenLocales, dubsForUpload, readLanguages, runCaptions } from "../core/stages.mjs";
+import { LOCALES, NARRATION_LOCALE, narrationLocale } from "../core/schema.mjs";
+import { captionLocalesOf, dubLocalesOf, dubsForUpload, metadataLocalesOf, readLanguages, runCaptions } from "../core/stages.mjs";
 import { approvedEpisodes, ARTIFACTS, loadProject, recordStage } from "../core/state.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
 import { disclosureDecision } from "../qa/checks.mjs";
@@ -41,12 +40,13 @@ export function skippedCaptionLocales(manifest, written, { locales = LOCALES, co
 /**
  * Whether the caption manifest was cut for this narration and for exactly the caption locales
  * wanted now: the owner's choice may have grown or shrunk since the captions were last written.
+ * A locale with no translation at all cannot have been written; the narration's always is.
  */
-export function captionsCurrent(manifest, speech, wanted, translations, brandingHash = null) {
+export function captionsCurrent(manifest, speech, wanted, translations, brandingHash = null, narration = NARRATION_LOCALE) {
   if (!manifest || manifest.speech_hash !== speech || (manifest.branding_hash ?? null) !== brandingHash) return false;
   const have = Object.keys(manifest.locales ?? {});
   if (have.some((locale) => !wanted.includes(locale))) return false;
-  return wanted.every((locale) => manifest.locales?.[locale] || manifest.skipped?.[locale] || (locale !== "zh-TW" && !translations[locale]));
+  return wanted.every((locale) => manifest.locales?.[locale] || manifest.skipped?.[locale] || (locale !== narration && !translations[locale]));
 }
 
 /**
@@ -117,11 +117,13 @@ export async function run(command, args, ctx) {
   }
 
   // The owner's language choice (docs/videos/LANGUAGES.md): which locales get a description, a
-  // caption file and a dub track; without one, every translated locale, as before.
+  // caption file and a dub track; without one, every translated locale, as before. The
+  // narration's own locale and zh-TW always get captions and a description (alwaysLocales).
   const languages = readLanguages(workdir);
-  const captionLocales = captionLocalesOf(languages);
-  const metadataLocales = chosenLocales(languages, "metadata");
-  const dubLocales = chosenLocales(languages, "dub") ?? DEFAULT_DUB_LOCALES;
+  const narration = narrationLocale(doc);
+  const captionLocales = captionLocalesOf(languages, narration);
+  const metadataLocales = metadataLocalesOf(languages, narration);
+  const dubLocales = dubLocalesOf(languages, doc);
   const timeline = presentationTimeline(bodyTimeline, applied);
   const captionsManifest = readJson(path.join(workdir, ARTIFACTS.captions), null);
   let captions;
@@ -131,7 +133,7 @@ export async function run(command, args, ctx) {
       return EXIT.usage;
     }
     captions = captionsManifest;
-  } else captions = captionsCurrent(captionsManifest, speech, captionLocales, project.translations, applied?.hash ?? null) ? captionsManifest : runCaptions({ slug: values.slug, file: values.file, root: ctx.root, workdir, now: ctx.now() });
+  } else captions = captionsCurrent(captionsManifest, speech, captionLocales, project.translations, applied?.hash ?? null, narration) ? captionsManifest : runCaptions({ slug: values.slug, file: values.file, root: ctx.root, workdir, now: ctx.now() });
   const { problems, metadata } = composeMetadata({ doc, timeline, translations: project.translations, pack: project.pack ?? null, locales: metadataLocales });
   if (problems.length) {
     for (const problem of problems) ctx.stdout.write(`ERROR ${problem}\n`);
