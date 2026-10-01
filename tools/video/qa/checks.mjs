@@ -4,6 +4,7 @@
 import path from "node:path";
 
 import { illustrated, isDrama, resolveLook } from "../core/drama.mjs";
+import { knowledgeDurationProblems } from "../core/duration.mjs";
 
 // Look presets whose pictures could pass for a photograph or a film: YouTube's disclosure covers
 // realistic synthetic people, events and places. Flat, painterly and ink illustrations do not.
@@ -39,11 +40,13 @@ export function qaReport(items, finalSha256, required = ITEM_IDS) {
  * (frame count, audio drift, loudness, the PSNR of every chapter's first frame).
  * `current` is package/cli.mjs's checksCurrent verdict.
  */
-export function assembleItem({ checks, current, finalExists, command = "assemble", stale = "an older script, look or clips" }) {
+export function assembleItem({ checks, current, finalExists, doc, timeline, presented, timelineCurrent, command = "assemble", stale = "an older script, look or clips" }) {
   if (!finalExists) return item("assemble", false, `final.mp4 is missing; run ${command}`);
   if (!checks) return item("assemble", false, `checks.json is missing; run ${command}`);
   if (!checks.ok) return item("assemble", false, `checks failed: ${(checks.problems ?? []).join("; ") || "no reason recorded"}`);
   if (!current) return item("assemble", false, `checks.json was written for ${stale}; run ${command} again`);
+  const durationProblems = knowledgeDurationProblems({ doc, timeline, presented, timelineCurrent, checks });
+  if (durationProblems.length) return item("assemble", false, durationProblems.join("; "));
   const metrics = checks.metrics ?? {};
   const loudness = metrics.loudness?.integrated;
   const psnr = Array.isArray(metrics.psnr) ? `, ${metrics.psnr.length} frames matched their slides` : "";

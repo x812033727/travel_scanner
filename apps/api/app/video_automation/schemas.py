@@ -34,6 +34,9 @@ StylePreset = Literal["cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", 
 # The illustrated explainer (docs/videos/so-thats-why/): narrator only, no cast. Only a one-off
 # may use it; a long series and a story series are written from prompts that need a cast.
 EXPLAINER_PRESET: StylePreset = "flat-explainer"
+EXPLAINER_MIN_MINUTES = 8
+EXPLAINER_MAX_MINUTES = 20
+EXPLAINER_DEFAULT_MINUTES = 10
 DramaAspect = Literal["16:9", "9:16"]
 MediaKindName = Literal["image", "clip", "music"]
 
@@ -395,8 +398,19 @@ class DramaRequestIn(StrictModel):
     title: str | None = Field(default=None, min_length=1, max_length=200)
     source_guide: str | None = Field(default=None, pattern=GUIDE_SLUG_PATTERN)
     style_preset: StylePreset = "cinematic-3d"
-    target_minutes: int = Field(default=3, ge=1, le=8)
+    target_minutes: int = Field(default=3, ge=1, le=EXPLAINER_MAX_MINUTES, strict=True)
     note: str | None = Field(default=None, min_length=1, max_length=2000)
+
+    @model_validator(mode="after")
+    def _episode_length(self) -> Self:
+        if self.style_preset == EXPLAINER_PRESET:
+            if "target_minutes" not in self.model_fields_set:
+                self.target_minutes = EXPLAINER_DEFAULT_MINUTES
+            if self.target_minutes < EXPLAINER_MIN_MINUTES:
+                raise ValueError(f"an explainer is at least {EXPLAINER_MIN_MINUTES} minutes")
+        elif self.target_minutes > SERIES_MAX_MINUTES:
+            raise ValueError(f"a drama episode is at most {SERIES_MAX_MINUTES} minutes")
+        return self
 
     @field_validator("premise", "title", "note")
     @classmethod
@@ -592,7 +606,8 @@ class SeriesIn(StrictModel):
     A ``story`` series (docs/videos/STORY.md) is always hands-off, stills only and never
     compiled, needs its title, premise and shared look, and may run to STORY_MAX_MINUTES; its
     episodes come from the backlog import, not from documents. The daily count and the look
-    belong to a story series only; every other kind stays at SERIES_MAX_MINUTES.
+    belong to a story series only. A one-off explainer runs 8–20 minutes; drama episodes
+    stay at SERIES_MAX_MINUTES.
     """
 
     slug: str | None = Field(default=None, pattern=SERIES_SLUG_PATTERN)
@@ -602,7 +617,7 @@ class SeriesIn(StrictModel):
     aspects: list[SeriesAspect] = Field(default_factory=list, max_length=4)
     tone: SeriesTone = "dual-male-leads-subtext"
     style_preset: StylePreset = "cinematic-3d"
-    target_minutes: int = Field(default=3, ge=1, le=STORY_MAX_MINUTES)
+    target_minutes: int = Field(default=3, ge=1, le=STORY_MAX_MINUTES, strict=True)
     planned_episodes: int = Field(default=100, ge=1, le=500)
     episodes_per_chapter: int = Field(default=10, ge=1, le=20)
     open_ended: bool = True
@@ -645,6 +660,11 @@ class SeriesIn(StrictModel):
                 f'style_preset "{EXPLAINER_PRESET}" is for a one-off explainer only: '
                 "a long series and a story series have a cast"
             )
+        if self.style_preset == EXPLAINER_PRESET:
+            if "target_minutes" not in self.model_fields_set:
+                self.target_minutes = EXPLAINER_DEFAULT_MINUTES
+            if self.target_minutes < EXPLAINER_MIN_MINUTES:
+                raise ValueError(f"an explainer is at least {EXPLAINER_MIN_MINUTES} minutes")
         # A genre preset carries its own premise seed; a custom series has nothing else.
         if not self.premise and self.genre == "custom":
             raise ValueError("a custom series needs a premise")
@@ -662,9 +682,10 @@ class SeriesIn(StrictModel):
             if self.look is None:
                 raise ValueError("a story series needs the look every story shares")
         else:
-            if self.target_minutes > SERIES_MAX_MINUTES:
+            if self.style_preset != EXPLAINER_PRESET and self.target_minutes > SERIES_MAX_MINUTES:
                 raise ValueError(
-                    f"an episode is at most {SERIES_MAX_MINUTES} minutes; only a story runs longer"
+                    f"a drama episode is at most {SERIES_MAX_MINUTES} minutes; "
+                    "a story or a one-off explainer may run longer"
                 )
             if self.episodes_per_day is not None or self.look is not None:
                 raise ValueError("only a story series has a daily count and a shared look")
@@ -695,7 +716,7 @@ class SeriesPatch(StrictModel):
     aspects: list[SeriesAspect] | None = Field(default=None, max_length=4)
     tone: SeriesTone | None = None
     style_preset: StylePreset | None = None
-    target_minutes: int | None = Field(default=None, ge=1, le=STORY_MAX_MINUTES)
+    target_minutes: int | None = Field(default=None, ge=1, le=STORY_MAX_MINUTES, strict=True)
     planned_episodes: int | None = Field(default=None, ge=1, le=500)
     episodes_per_chapter: int | None = Field(default=None, ge=4, le=20)
     open_ended: bool | None = None

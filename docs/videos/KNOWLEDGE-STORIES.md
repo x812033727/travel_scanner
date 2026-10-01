@@ -2,18 +2,20 @@
 
 2026-10-01 整理，基準為 `origin/main` 的 `2596ce7fb5cd832baab2c496fe0ae72962698a4c`。本頁從 repository 的企劃、查核紀錄及任務檔恢復入口；票的狀態是當次看板快照，接手前仍須查看最新 main、PR、worktree 與實際產物。沒有在本次查詢正式後台、工人、YouTube 或付費生成結果。
 
+**2026-10-02時長修訂：五類長片都適用[新版企劃與有效製作輸入](long-form/README.md)，實際正文及成片至少8分鐘；原來較短的企劃以10分鐘製作，品牌故事保留13分鐘，AI名詞保留9–11分鐘。** 新版列出第一季100、第二季92、第三季100、品牌100、AI名詞81，共473個項目；第二季8個判重題不採用，AI名詞1個已覆蓋項目免重做。舊包及接續票中的較短估值是歷史規格，後續製作以此修訂為準；Shorts不變。
+
 ## 已保存的企劃
 
 | 內容線 | 舊企劃與數量 | 規格／接續入口 |
 | --- | --- | --- |
-| 知識科普：「原來如此事務所」第一季 | [系列規格](so-thats-why/README.md)、[100 集題庫](so-thats-why/episodes.json)、[五語標題](so-thats-why/titles.json)、[播放清單](so-thats-why/playlists.md)；100 列都是 `fact-checked`，各列 `fact_check` 指向 week1–week15 的完整包 | 商業品牌、生活科學、旅遊文化、科技 AI 各 25 集；7–9 分鐘插畫解說，每集兩支 Shorts；[每日流程](so-thats-why/operations.md)、[畫風與片頭](so-thats-why/look.md)、[縮圖](so-thats-why/thumbnails.md) |
-| 知識科普：第二季 | [100 個候選題](so-thats-why/season2-topics.json)，100 列都是 `checked`；各列 `check` 指向 topic-checks 的題目查核紀錄 | 題目查核已完成，尚須在選題排程時補完整大綱、兩支 Shorts 稿及後台貼用包；見新接續票 |
+| 知識科普：「原來如此事務所」第一季 | [系列規格](so-thats-why/README.md)、[100 集題庫](so-thats-why/episodes.json)、[五語標題](so-thats-why/titles.json)、[播放清單](so-thats-why/playlists.md)；100 列都是 `fact-checked`，各列 `fact_check` 指向 week1–week15 的完整包 | 商業品牌、生活科學、旅遊文化、科技 AI 各25集；長片10分鐘製作目標、實際至少8分鐘，每集兩支Shorts；[每日流程](so-thats-why/operations.md)、[畫風與片頭](so-thats-why/look.md)、[縮圖](so-thats-why/thumbnails.md) |
+| 知識科普：第二季 | [100個候選題](so-thats-why/season2-topics.json)，100列都是`checked`；[92採用文字包與8判重](so-thats-why/season2/README.md) | 原100題製作層取捨已完成，92包各有兩支Shorts、五語包裝與獨立文字審稿；新版六章600秒，後台目標10分鐘。完整逐字稿與媒體仍待製作 |
 | 知識科普：第三季 | [100 個候選題](so-thats-why/season3-topics.json)，100 列都是 `checked`；各列 `check` 指向 topic-checks | 和第二季一樣屬於候選題庫；不能把 `checked` 寫成已出片或已排程 |
 | 非虛構小故事：品牌、日用品、隱形標準 | [故事路線設計](STORY.md)、[100 個故事企劃與查核](story-plans/brand-stories-100/README.md)、[匯入包](story-plans/brand-stories-100/stories.json)、[50 天順序表](story-plans/brand-stories-100/SCHEDULE.md) | 日常用品 40、亞洲品牌 40、科技軟體 20；12–15 分鐘、只有旁白、卡通靜態圖加運鏡，`format: drama`、`kind: story`；先試 A01 輪子行李箱、B18 迴轉壽司 |
 | 獨立直式小故事／漫劇精華 | [Shorts 三條內容線](SHORTS.md)、[直式製作票](../../tasks/open/2026-09-28-video-shorts-worker-drama.md) | 獨立小故事是 `shorts_line: drama`、`source_slug` 空白；從既有故事或漫劇切出的短篇填來源。這條線已有製作票，本次未另造一份題庫 |
 | 相關科普：「AI 名詞十分鐘」 | [系列規格](ai-terms/README.md)、[81 個名詞](ai-terms/terms.json) | 約 10 分鐘、不編集數；前三個 token／上下文視窗／RAG 已有文字交接，接續既有試片票 |
 
-以上是 300 個科普題目（第一季完整包、後兩季候選題）＋100 個非虛構故事，另有 81 個 AI 名詞。數量是各清單的列數，跨系列有主題重疊，不能當成 481 支互不重複、已製作的影片。
+原始清單共300個科普題目＋100個非虛構故事＋81個AI名詞；第二季取捨後，新版長片規格涵蓋473個項目。數量包含候選題及已覆蓋名詞，不能當成已製作、互不重複的成片。
 
 ## 已有票，沿用原交接
 
@@ -35,7 +37,7 @@
 | 新票 | 交付範圍 | 前置 |
 | --- | --- | --- |
 | [第一季首批庫存與開播交接](../../tasks/open/2026-10-01-sothatswhy-season1-launch-buffer.md) | 以試片實測規劃首 14 集庫存、長片與 Shorts 對應、語言與素材收據、發布提案及後續檢討入口 | 三集試片完成；正式操作與費用仍依已授權範圍執行 |
-| [第二季完整製作包](../../tasks/open/2026-10-01-sothatswhy-season2-production-packages.md) | 從 B/S/T/A 26–50 的已查核候選題分批補選題、完整包、兩支 Shorts 稿、五語包裝及 proposed 排序 | 第二／三季題目查核票已 done；逐批交接並檢查跨季重複 |
+| [第二季完整製作包](../../tasks/done/2026-10-01-sothatswhy-season2-production-packages.md) | 已完成原100題取捨、92採用文字包、184支Shorts、五語包裝及proposed排序；[全季交接](so-thats-why/season2/README.md) | 文字票已done；長片時長依新版，完整逐字稿、媒體與正式驗收仍待製作 |
 | [第三季完整製作包](../../tasks/open/2026-10-01-sothatswhy-season3-production-packages.md) | 同上，範圍為 B/S/T/A 51–75，優先序 P3 | 題目查核票已 done；不能自動沿用第二季日期或重複切入點 |
 
 候選題轉製作包是文字工作，可以先進行；是否採用、何時生成與發布，在對應試片／開播交接確認。新票不重做已完成的 300 題查核，不重開品牌故事 pilot／rollout，也不把程式合併當正式驗收。

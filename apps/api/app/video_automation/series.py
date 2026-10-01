@@ -59,6 +59,9 @@ from app.video_automation.models import (
 )
 from app.video_automation.requests import request_view
 from app.video_automation.schemas import (
+    EXPLAINER_DEFAULT_MINUTES,
+    EXPLAINER_MAX_MINUTES,
+    EXPLAINER_MIN_MINUTES,
     EXPLAINER_PRESET,
     ONE_OFF_EPISODES,
     SERIES_MAX_MINUTES,
@@ -1328,6 +1331,23 @@ async def episode_detail(session: AsyncSession, slug: str, number: int) -> Serie
     return episode_view(episode, video)
 
 
+def patch_target_minutes(series: VideoDramaSeries, changes: dict[str, Any]) -> int | None:
+    """The effective length when a one-off changes between a drama and an explainer.
+
+    A style-only change uses that format's default. Re-selecting the explainer style also
+    repairs a legacy short explainer, while an unrelated edit can still pause or rename it.
+    """
+    if "target_minutes" in changes:
+        return cast(int | None, changes["target_minutes"])
+    if "style_preset" in changes and is_one_off(series):
+        explainer = changes["style_preset"] == EXPLAINER_PRESET
+        if explainer != is_explainer(series):
+            return EXPLAINER_DEFAULT_MINUTES if explainer else 3
+        if explainer and series.target_minutes < EXPLAINER_MIN_MINUTES:
+            return EXPLAINER_DEFAULT_MINUTES
+    return series.target_minutes
+
+
 def patch_problem(
     series: VideoDramaSeries, changes: dict[str, Any], docs: Sequence[VideoDramaDoc] = ()
 ) -> SeriesRefused | None:
@@ -1339,9 +1359,9 @@ def patch_problem(
     bible is a question's with no cast and a story's has one, so the bible already written would
     no longer fit. To change sides after that, the owner withdraws the one-off and files a new one.
 
-    Only a story series has a daily count and a shared look, and only a story runs longer than
-    SERIES_MAX_MINUTES. A story series stays hands-off, stills only and never compiled, keeps a
-    look, and has no chapters to resize.
+    Only a story series has a daily count and a shared look. A one-off explainer runs 8–20
+    minutes; other dramas stay within SERIES_MAX_MINUTES. A story series stays hands-off,
+    stills only and never compiled, keeps a look, and has no chapters to resize.
     """
     if "style_preset" in changes:
         explainer = changes["style_preset"] == EXPLAINER_PRESET
@@ -1362,10 +1382,24 @@ def patch_problem(
             return SeriesRefused(
                 422, "video_series_story_only", "每日支數與共用畫風只有品牌故事作品才有"
             )
-        if (changes.get("target_minutes") or 0) > SERIES_MAX_MINUTES:
-            return SeriesRefused(
-                422, "video_series_too_long", f"漫劇一集最長 {SERIES_MAX_MINUTES} 分鐘"
+        if {"style_preset", "target_minutes"} & changes.keys():
+            minutes = patch_target_minutes(series, changes)
+            explainer = (
+                is_one_off(series)
+                and changes.get("style_preset", series.style_preset) == EXPLAINER_PRESET
             )
+            if minutes is None:
+                return SeriesRefused(422, "video_series_minutes_required", "影片長度不能留空")
+            if explainer and not EXPLAINER_MIN_MINUTES <= minutes <= EXPLAINER_MAX_MINUTES:
+                return SeriesRefused(
+                    422,
+                    "video_series_explainer_minutes",
+                    f"插畫解說須為 {EXPLAINER_MIN_MINUTES}–{EXPLAINER_MAX_MINUTES} 分鐘",
+                )
+            if not explainer and not 1 <= minutes <= SERIES_MAX_MINUTES:
+                return SeriesRefused(
+                    422, "video_series_too_long", f"漫劇一集最長 {SERIES_MAX_MINUTES} 分鐘"
+                )
         return None
     if (
         changes.get("hands_off") is False
@@ -1387,6 +1421,8 @@ async def patch_series(
 ) -> SeriesOut:
     series = await _series(session, slug, lock=True)
     changes = payload.model_dump(exclude_unset=True)
+    if "style_preset" in changes and "target_minutes" not in changes and is_one_off(series):
+        changes["target_minutes"] = patch_target_minutes(series, changes)
     # A one-off's bible decides whether it may still cross the explainer line.
     docs = await _docs(session, series) if is_one_off(series) and "style_preset" in changes else []
     refused = patch_problem(series, changes, docs)
