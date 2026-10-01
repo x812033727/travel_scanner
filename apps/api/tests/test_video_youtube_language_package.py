@@ -42,6 +42,7 @@ async def _language_batch(
     selected: dict[str, Any] | None = None,
     video_format: str = "slides",
     compilation: bool = False,
+    narration: str = "zh-TW",
 ) -> LanguageBatch:
     """A real review-store fixture, shared with VPS tests; all four locales by default."""
     original = await _package(site)
@@ -56,6 +57,12 @@ async def _language_batch(
         base = json.loads(original_file.read_bytes())
         base["localizations"] = {}
         base["language_choice"] = {}
+        if narration != "zh-TW":
+            base["default_language"] = narration
+            base["localizations"]["zh-TW"] = {
+                "title": "自動繁中標題",
+                "description": "自動繁中說明",
+            }
         if compilation:
             base["compilation"] = True
         raw = json.dumps(base, ensure_ascii=False).encode()
@@ -65,6 +72,17 @@ async def _language_batch(
             for file in publish.files
             if file["role"] not in ("metadata", "captions_en", "captions_ja")
         ] + [_entry("metadata", publish.content_sha256, raw, "application/json")]
+        if narration != "zh-TW":
+            native_caption = SRT + narration.encode()
+            publish.files = [
+                *publish.files,
+                _entry(
+                    f"captions_{narration}",
+                    _put(store, native_caption),
+                    native_caption,
+                    "text/plain",
+                ),
+            ]
         publish.payload = {"locales": ["zh-TW"]}
         now = datetime.now(UTC)
         publish.created_at = now - timedelta(seconds=2)
@@ -101,8 +119,13 @@ async def _language_batch(
         for locale, choice in selected.items():
             parts: dict[str, Any] = {}
             if choice.get("metadata"):
-                entry = {"title": f"Title {locale}", "description": f"Description {locale}"}
-                translated["localizations"][locale] = entry
+                entry = (
+                    {"title": base["title"], "description": base["description"]}
+                    if locale == narration
+                    else {"title": f"Title {locale}", "description": f"Description {locale}"}
+                )
+                if locale != narration:
+                    translated["localizations"][locale] = entry
                 body = f"{entry['title']}\n\n{entry['description']}\n".encode()
                 files.append(_entry(f"description_{locale}", _put(store, body), body, "text/plain"))
                 parts["metadata"] = "ready"
@@ -111,10 +134,13 @@ async def _language_batch(
                 files.append(_entry(f"captions_{locale}", _put(store, body), body, "text/plain"))
                 parts["captions"] = "ready"
             if choice.get("dub"):
-                body = f"dub-{locale}".encode()
-                role = f"dub_{locale.lower().replace('-', '_')}"
-                files.append(_entry(role, _put(store, body), body, "audio/mp4"))
-                parts["dub"] = "ready"
+                if locale == narration:
+                    parts["dub"] = {"status": "skipped", "reason": "original narration"}
+                else:
+                    body = f"dub-{locale}".encode()
+                    role = f"dub_{locale.lower().replace('-', '_')}"
+                    files.append(_entry(role, _put(store, body), body, "audio/mp4"))
+                    parts["dub"] = "ready"
             reported[locale] = parts
         raw = json.dumps(translated, ensure_ascii=False).encode()
         files.append(_entry("metadata", _put(store, raw), raw, "application/json"))
@@ -532,3 +558,133 @@ async def test_drama_language_batch_requires_its_script_approval(site: Site, mis
             await session.commit()
     with pytest.raises(Refused):
         await _composed(site)
+
+
+@pytest.mark.parametrize("selection", ["none", "foreign captions", "own metadata and dub", "all"])
+async def test_english_narration_preserves_automatic_assets_and_original_metadata(
+    site: Site, selection: str
+) -> None:
+    selected = {
+        "none": {},
+        "foreign captions": {"ja": {"metadata": False, "captions": True, "dub": False}},
+        "own metadata and dub": {"en": {"metadata": True, "captions": True, "dub": True}},
+        "all": {**CHOICES, "en": {"metadata": True, "captions": True, "dub": True}},
+    }[selection]
+    batch = await _language_batch(site, selected=selected, narration="en")
+    result = await _composed(site)
+    expected_text = {"zh-TW", *(locale for locale, value in selected.items() if value["metadata"])}
+    expected_text.discard("en")
+    assert set(result.metadata["localizations"]) == expected_text
+    assert result.metadata["localizations"]["zh-TW"] == batch.base_metadata["localizations"][
+        "zh-TW"
+    ]
+    assert set(result.captions) == {
+        "en", "zh-TW", *(locale for locale, value in selected.items() if value["captions"])
+    }
+    assert result.approval_pin["choice"] == selected
+    for key in ("title", "description", "tags", "privacy_status", "made_for_kids", "thumbnail"):
+        assert result.metadata.get(key) == batch.base_metadata.get(key)
+    assert result.final and result.final.sha256 == batch.base_metadata["final_sha256"]
+
+
+@pytest.mark.parametrize("field", ["title", "description"])
+async def test_rehashed_own_metadata_cannot_change_the_approved_primary_text(
+    site: Site, field: str
+) -> None:
+    batch = await _language_batch(
+        site,
+        selected={"en": {"metadata": True, "captions": False, "dub": False}},
+        narration="en",
+    )
+    await _replace_metadata(site, batch, lambda metadata: metadata.update({field: "Changed"}))
+    raw = f"{batch.metadata['title']}\n\n{batch.metadata['description']}\n".encode()
+    replacement = _entry(
+        "description_en", _put(review_store(site.settings), raw), raw, "text/plain"
+    )
+
+    def replace(manifest: dict[str, Any]) -> None:
+        manifest["files"] = [
+            replacement if item["role"] == "description_en" else item for item in manifest["files"]
+        ]
+
+    await _replace_manifest(site, batch, replace)
+    with pytest.raises(Refused, match="原語言標題說明"):
+        await _composed(site)
+
+
+async def test_rehashed_own_caption_cannot_replace_the_approved_automatic_timeline(
+    site: Site,
+) -> None:
+    batch = await _language_batch(
+        site,
+        selected={"en": {"metadata": False, "captions": True, "dub": False}},
+        narration="en",
+    )
+    raw = SRT.replace(b"00:00:00", b"00:00:05").replace(b"00:00:02", b"00:00:07") + b"en"
+    replacement = _entry("captions_en", _put(review_store(site.settings), raw), raw, "text/plain")
+
+    def replace(manifest: dict[str, Any]) -> None:
+        manifest["files"] = [
+            replacement if item["role"] == "captions_en" else item for item in manifest["files"]
+        ]
+
+    await _replace_manifest(site, batch, replace)
+    with pytest.raises(Refused, match="原旁白字幕"):
+        await _composed(site)
+
+
+@pytest.mark.parametrize("state", ["ready", "skip with attachment", "skip without reason"])
+async def test_own_dub_requires_explicit_skip_and_no_duplicate_audio(
+    site: Site, state: str
+) -> None:
+    batch = await _language_batch(
+        site,
+        selected={"en": {"metadata": False, "captions": True, "dub": True}},
+        narration="en",
+    )
+
+    def replace(manifest: dict[str, Any]) -> None:
+        if state == "ready":
+            manifest["locales"]["en"]["dub"] = "ready"
+        elif state == "skip without reason":
+            manifest["locales"]["en"]["dub"] = {"status": "skipped", "reason": ""}
+        if state != "skip without reason":
+            raw = b"duplicate English audio"
+            manifest["files"].append(
+                _entry("dub_en", _put(review_store(site.settings), raw), raw, "audio/mp4")
+            )
+
+    await _replace_manifest(site, batch, replace)
+    with pytest.raises(Refused):
+        await _composed(site)
+
+
+@pytest.mark.parametrize("duplicate_dub", [False, True])
+async def test_english_complete_publish_needs_no_own_synthesized_dub(
+    site: Site, duplicate_dub: bool
+) -> None:
+    selected = {"en": {"metadata": True, "captions": True, "dub": True}}
+    batch = await _language_batch(site, selected=selected, narration="en")
+    store = review_store(site.settings)
+    async with site.factory() as session:
+        publish = await session.get(VideoReview, batch.publish_id)
+        language = await session.get(VideoReview, batch.review_id)
+        assert publish is not None and language is not None
+        await session.delete(language)
+        metadata = {**batch.base_metadata, "language_choice": selected}
+        raw = json.dumps(metadata, ensure_ascii=False).encode()
+        item = _entry("metadata", _put(store, raw), raw, "application/json")
+        publish.content_sha256 = item["sha256"]
+        publish.files = [file for file in publish.files if file["role"] != "metadata"] + [item]
+        if duplicate_dub:
+            raw = b"duplicate original track"
+            publish.files = [*publish.files, _entry("dub_en", _put(store, raw), raw, "audio/mp4")]
+        await session.commit()
+    if duplicate_dub:
+        with pytest.raises(Refused, match="重複配音"):
+            await _composed(site)
+    else:
+        result = await _composed(site)
+        assert set(result.captions) == {"en", "zh-TW"}
+        assert set(result.metadata["localizations"]) == {"zh-TW"}
+        assert result.approval_pin["languages"] is None
