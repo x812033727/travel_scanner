@@ -1,13 +1,13 @@
 ---
 id: 2026-09-24-video-screencast-steps
 title: 影片產線 T9：Playwright 步驟腳本的螢幕操作教學
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-screencast
 claimed_at: 2026-10-01T07:05:00Z
 created_at: 2026-09-24T00:41:18Z
-completed_at:
+completed_at: 2026-10-01T07:45:50Z
 branch: claude/video-screencast-steps
 depends_on:
   - 2026-09-24-video-pilot-ai-model-choice
