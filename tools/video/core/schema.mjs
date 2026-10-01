@@ -31,6 +31,7 @@ export const TEMPLATES = [
   "chat",
   "quote",
   "stats",
+  "terminal",
   "cta",
   "outro",
 ];

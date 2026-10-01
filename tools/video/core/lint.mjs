@@ -154,7 +154,7 @@ export function templateSimilarity(a, b) {
 }
 
 function revealCapacity(data) {
-  for (const key of ["items", "rows", "steps", "points"]) if (Array.isArray(data?.[key])) return data[key].length;
+  for (const key of ["items", "rows", "steps", "points", "output"]) if (Array.isArray(data?.[key])) return data[key].length;
   return null;
 }
 
