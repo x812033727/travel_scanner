@@ -29,7 +29,7 @@
 | `import-hotspot-candidates --file F [--limit N] [--apply]` | Google 身分 × 1 km 內維基條目 × Wikidata 名稱與類型三方對上才建列；座標取自維基 | `--apply` | 主機；`--file /dev/stdin`；每筆一次 Text Search Pro |
 | `match-hotspot-places [--destination D] [--slug-prefix P] [--limit N] [--dry-run] [--approve SLUG]...` | 替公開景點補 Place ID；`--approve` 把存著的候選升為正式 | 直接寫（`--dry-run` 不打 Google） | 主機；屬 skill `hotspot-review` |
 | `fill-hotspot-labels [--file NAME]... [--overwrite-original] [--dry-run]` | 從 Wikidata 補 bootstrap 檔的原文名與各語系名 | 改 repo 檔 | 本機（要網路），看 diff 後 PR |
-| `fill-simplified-names [--provider P] [--source seeds\|areas] [--max-output-tokens N] [--from-mapping F] [--apply]` | 由繁體名轉 zh-CN，逐字核對不是純轉換的丟掉 | `--apply` 改 bootstrap 檔 | 主機產 mapping、本機 `--from-mapping` 套用；`areas` 只產 mapping，手寫進 `areas.py` |
+| `fill-simplified-names [--source seeds\|areas] [--from-mapping F] [--apply]` | 用 OpenCC t2s 由繁體名轉 zh-CN，逐字核對不是純轉換的丟掉 | `--apply` 改 bootstrap 檔 | 本機（不打 AI、不連資料庫），看 diff 後 PR；`areas` 只產 mapping，手寫進 `areas.py` |
 | `jev-shadow-report [--limit N] [--examples N]` | 讀 Jev shadow 的一致率（分語言）與分歧清單 | 唯讀 | 主機 |
 
 ## 文章（guides）

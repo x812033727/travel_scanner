@@ -39,7 +39,13 @@ export function validateSource(source, expectedSlug=source?.series?.slug) {
     for(const c of source.setting.characters){
       for(const k of ['id','name','role','appearance','personality','want','fear','secret','speech']) check(text(c[k]),`cast ${c.id}: missing ${k}`);
       check(c.appearance.length<=800,`cast ${c.id}: appearance too long`);
-      check(!TIMED_APPEARANCE.test(c.appearance),`cast ${c.id}: appearance must not depend on the episode ("${c.appearance.match(TIMED_APPEARANCE)?.[0]}"); put changes in continuity_notes`);
+      check(!TIMED_APPEARANCE.test(c.appearance),`cast ${c.id}: appearance must not depend on the episode ("${c.appearance.match(TIMED_APPEARANCE)?.[0]}"); put changes in the character's looks or continuity_notes`);
+      // A look's appearance stands in for the base one in the episodes it covers (AUTHORING.md);
+      // its shape is documentProblem's to check, its words the same rules as the base.
+      for(const l of Array.isArray(c.looks)?c.looks:[]) if(text(l?.appearance)){
+        check(l.appearance.length<=800,`cast ${c.id}, look ${l.id}: appearance too long`);
+        check(!TIMED_APPEARANCE.test(l.appearance),`cast ${c.id}, look ${l.id}: appearance must not depend on the episode ("${l.appearance.match(TIMED_APPEARANCE)?.[0]}"); the look's from and to say when it is worn`);
+      }
       check(c.voice.provider==='gemini' && text(c.voice.name) && text(c.voice.style),`cast ${c.id}: voice proposal missing`);
       for(const r of c.relationships) check(cast.has(r.with) && text(r.kind),`cast ${c.id}: unknown relationship ${r.with}`);
     }

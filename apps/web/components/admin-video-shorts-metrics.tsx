@@ -45,6 +45,7 @@ function Row({ short, onOpenVideo }: { short: ShortMetrics; onOpenVideo: (slug: 
         {short.published_at && <span>{t("metrics.publishedAt", { time: when(short.published_at) })}</span>}
       </span>
       {short.removed_at && <span><AdminStatusPill status="failed">{t("metrics.removed", { time: when(short.removed_at) })}</AdminStatusPill></span>}
+      {short.dropped_at && <span><AdminStatusPill status="inactive">{t("metrics.dropped", { time: when(short.dropped_at) })}</AdminStatusPill></span>}
       <span><Button secondary onClick={() => onOpenVideo(short.slug)}>{t("metrics.open")}</Button></span>
     </div></th>
     {METRIC_PERIODS.map((period) => <td key={period} className="py-3 pr-3" data-period={period}>{cell(period)}</td>)}

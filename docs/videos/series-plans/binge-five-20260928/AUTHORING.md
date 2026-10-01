@@ -14,7 +14,9 @@ export default {
     rules: ["完整世界規則與不可撤銷代價"],
     characters: [{id,name,role,age,appearance,personality,want,fear,secret,speech,
       voice: {provider:"gemini",name:"...",style:"台灣國語；..."},
-      relationships:[{with:"character-id",kind:"關係與改變"}]}],
+      relationships:[{with:"character-id",kind:"關係與改變"}],
+      // 可省略：某幾集換的樣子與聲音，見「必須符合」的 looks 一條
+      looks:[{id:"no-coat",from:28,to:37,appearance:"那幾集完整的英文外觀",voice_style:"可省略"}]}],
     locations:[{id,name,description}],
     mysteries:[{id,question,answer,planted:1,advanced:[4,8],revealed:12,reserved:false}],
     naming:["命名規則"], never:["禁止事項"], lexicon:{"人名":"讀音"},
@@ -51,7 +53,8 @@ export default {
 - 每集 2–4 個具名出場角色、1–2 個主要場景；全部 ID 已在設定集登記。群眾、工作人員可以無台詞背景呈現。
 - 8–12 條長線 mysteries；`planted`、`advanced`、`revealed` 與 episodes.setups/payoffs 對得上。setups 可以是首次埋下或 advanced 排程內的新線索；可以在 advanced 集數付出局部答案，但不可冒稱終局揭曉。文字說清回收了哪一部分，所有謎團在結尾已回收，沒有保留續作。
 - 任意連續四集至少一項 payoffs，包括跨篇；不能連續兩集只有 suffers。tension 五個 1–5、不能全相同、末值至少 4（結局可以是情感濃度）。
-- 每位角色英文 appearance 800 字元內，具備穩定髮型、衣著、輪廓與辨識物。產線把它原文接進每一集每一個鏡頭的生圖提示詞、不帶集數（`tools/video/media/look.mjs`、`keyframes.mjs`），所以只寫整部不變的樣子：不寫集數、時間先後（later、at first、after episode…）、場合條件或別的角色名字，validate.mjs 會擋集數與時間字眼。會出現、消失、易手或改變的衣物與道具不寫進去，改在 continuity_notes 逐集寫明，由鏡頭提示詞加上；幾乎每場都帶在身上、觀眾靠它認人的小物件可以留，離身那一拍寫進 continuity_notes。聲音是擬定 casting，未試聽，先使用現有 Gemini 名稱如 Sulafat、Kore、Aoede、Charon、Fenrir、Puck、Orus、Zephyr，正式開拍先核對主機聲音池。
+- 每位角色英文 appearance 800 字元內，具備穩定髮型、衣著、輪廓與辨識物。產線把它原文接進每一集每一個鏡頭的生圖提示詞、不帶集數（`tools/video/media/look.mjs`、`keyframes.mjs`），所以只寫整部不變的樣子：不寫集數、時間先後（later、at first、after episode…）、場合條件或別的角色名字，validate.mjs 會擋集數與時間字眼。會出現、消失、易手或改變的衣物與道具不寫進去：連續幾集換了樣子寫進該角色的 looks，只是某一鏡多一樣東西才在 continuity_notes 逐集寫明、由鏡頭提示詞加上；幾乎每場都帶在身上、觀眾靠它認人的小物件可以留，離身那一拍寫進 continuity_notes。聲音是擬定 casting，未試聽，先使用現有 Gemini 名稱如 Sulafat、Kore、Aoede、Charon、Fenrir、Puck、Orus、Zephyr，正式開拍先核對主機聲音池。
+- 角色在連續幾集換了樣子（脫下外套、剪斷紅繩、坐輪椅、病人服、婚紗只穿前三集）或換了說話方式，寫在該角色的 `looks`：`id` 小寫英數 2–24 字、同角色不重複；`from`／`to` 是含頭尾的集數（沒有 `to` 就到第 40 集），同一角色兩個 look 不能涵蓋同一集；`appearance` 是那幾集完整的英文外觀（規則同上一條，不是在基底上加減）；`voice_style` 可省略，給了就取代那幾集台詞的 `voice.style`。產線開始一集時用涵蓋它的 look 取代基底，設定圖畫一次、站主核准一次，之後沿用（`docs/videos/SERIES.md`「換裝與變化」）。同一場戲裡的變化（老了幾十歲）另立一個角色 id。validate.mjs 經由產線的 `documentProblem` 擋形狀錯的 look。
 - setting 規則先補完已核定企劃留下的因果空隙，不能改掉人物、主要事件、結局。例如「第七個活人」必須明確成立；失憶仙俠需明確規定抹除範圍與紅繩毀後不再使用守淵之力的解法。
 - 集名、標題候選、縮圖文字、說明欄、置頂留言都是公開文字：合輯每集是一個 YouTube 章節，40 個集名在說明欄一次列出，觀眾開片前就看得到（`tools/video/core/compilation.mjs`）。這些文字只給懸念，不給謎團答案、中段翻轉、篇末揭曉或結局；篇名照同樣標準。
 - metadata、縮圖為文案與構圖規格，沒有現成圖片；完整台詞、TTS、影片、五語字幕檔另屬媒體製作，不能偽造完成。

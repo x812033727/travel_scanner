@@ -20,7 +20,8 @@ import { activeLocale } from "@/lib/locale-format";
 // The brand stories (docs/videos/STORY.md): a drama series of kind "story" whose episodes are the
 // planned backlog, one story each, imported from stories.json and made two a day by the worker. An
 // episode's beats are the story's plan (its id, category, region, publishing slot, the question,
-// six chapters, the facts to verify, the sources and the fact checker's caveats). The drama tab
+// six chapters, the facts to verify, the sources and the fact checker's caveats); after its first
+// read the series page reads only the list's part of them, and a plan is read when it opens. The drama tab
 // shows the story series apart (AdminVideoStorySeries), and a story series opens on its own page
 // (StorySeriesPage): what holds the next story back, the daily count, pause, the stories ready to
 // upload with their next free slot, the list of every story, and the import. The changes ask for
@@ -90,6 +91,21 @@ const ROLE_COPY_KEYS: Record<string, string> = {
   viewer: "rolesViewer", support: "rolesSupport", content: "rolesContent", operations: "rolesOperations",
   database_operator: "rolesDatabase", deployer: "rolesDeployer", owner: "rolesOwner",
 };
+
+// A dropped story may be made again (POST .../redo, redo_episode in the API's series.py): the
+// remake's video slug is the planned slug plus -redo<n>, n from 1, and STORY_REDO_LIMIT remakes are
+// allowed. The API does not say how many are left, so the row reads them from the episode's slug;
+// the dropped video keeps the slug before it (the planned one, or the remake before it).
+const STORY_REDO_LIMIT = 1;
+const REDO_SLUG = /^(.+)-redo([1-9][0-9]*)$/;
+
+/** How many times a story was remade, and the slug of the video the latest remake replaced. */
+export function storyRedo(slug: string | null): { count: number; earlier: string } {
+  const match = slug ? REDO_SLUG.exec(slug) : null;
+  if (!match) return { count: 0, earlier: "" };
+  const count = Number(match[2]);
+  return { count, earlier: count > 1 ? `${match[1]}-redo${count - 1}` : match[1] };
+}
 
 const message = (problem: unknown) => (problem instanceof Error ? problem.message : "");
 const beatsOf = (episode: SeriesEpisode) => record(episode.beats);
@@ -314,6 +330,56 @@ function StoryControls({ series, onChanged }: { series: StorySeries; onChanged: 
   </div>;
 }
 
+// The beats the series' minute read carries for a story (SUMMARY_BEAT_KEYS in the API's
+// video_automation/series.py, ``?beats=summary``); the rest of a plan is read for the story opened.
+const SUMMARY_BEATS = ["id", "category", "region", "subject", "publish"] as const;
+type PlanRead = { key: string; episode: SeriesEpisode | null; error: string };
+type StoryPlanState = { episode: SeriesEpisode | null; error: string; retry: () => void };
+
+/**
+ * The opened story's whole plan, read from its own episode (the series read keeps only the list's
+ * fields). A plan read once is shown again without a new read until the story's row in the list
+ * changes (renamed, renumbered, started, skipped, its summary re-imported) or this page imports a
+ * file, which may rewrite a plan without touching its row; the row's video is left out, as the
+ * plan does not depend on it.
+ */
+function useStoryPlan(slug: string, episode: SeriesEpisode | null, generation: number): StoryPlanState {
+  const [reads, setReads] = useState<ReadonlyMap<number, PlanRead>>(() => new Map());
+  const [round, setRound] = useState(0);
+  const number = episode?.number;
+  const key = episode ? JSON.stringify([slug, generation, { ...episode, video: null, beats: SUMMARY_BEATS.map((name) => beatsOf(episode)[name] ?? null) }]) : "";
+  const read = number === undefined ? undefined : reads.get(number);
+  const current = read?.key === key ? read : undefined;
+  const have = Boolean(current);
+  useEffect(() => {
+    if (number === undefined || have) return;
+    let live = true;
+    const settle = (value: PlanRead) => { if (live) setReads((all) => new Map(all).set(number, value)); };
+    api<SeriesEpisode>(`/admin/video-automation/series/${slug}/episodes/${number}`)
+      .then((value) => settle({ key, episode: value, error: "" }))
+      .catch((problem: unknown) => settle({ key, episode: null, error: message(problem) || String(problem) }));
+    return () => { live = false; };
+  }, [slug, number, key, have, round]);
+  const retry = useCallback(() => {
+    if (number === undefined) return;
+    setReads((all) => { const next = new Map(all); next.delete(number); return next; });
+    setRound((value) => value + 1);
+  }, [number]);
+  return { episode: current?.episode ?? null, error: current?.error ?? "", retry };
+}
+
+/** The opened story's plan as it is read: a line while it loads, the reason and a retry when it fails. */
+function StoryPlanPanel({ id, plan }: { id: string; plan: StoryPlanState }) {
+  const t = useTranslations("admin.videoStories");
+  const ts = useTranslations("admin.videoSeries");
+  if (plan.episode) return <StoryPlan episode={plan.episode} />;
+  return <div role="region" aria-label={t("plan.title", { id })} aria-busy={!plan.error} className="mt-3 grid gap-2 border-t border-[var(--line)] pt-3 text-sm leading-6">
+    {plan.error
+      ? <><p role="alert" className="text-red-800">{t("plan.loadError", { message: plan.error })}</p><div><Button secondary onClick={plan.retry}>{ts("retry")}</Button></div></>
+      : <p className="text-[var(--muted)]">{t("plan.loading")}</p>}
+  </div>;
+}
+
 /** Everything a story's plan says, read-only: what the video will say before it is made. */
 function StoryPlan({ episode }: { episode: SeriesEpisode }) {
   const t = useTranslations("admin.videoStories");
@@ -364,10 +430,12 @@ function StoryPlan({ episode }: { episode: SeriesEpisode }) {
 /**
  * The list of stories: each one's id, title, category and region, its slot in the plan, where it
  * is and its video once there is one; filtered by category and by where they are (both in the
- * URL), with the plan of one story opened under its row. A story not started yet may be skipped
- * and a skipped one that never started brought back.
+ * URL), with the plan of one story opened under its row (read on its own, useStoryPlan). A story
+ * not started yet may be skipped and a skipped one that never started brought back; one whose
+ * video was dropped may be made again, up to STORY_REDO_LIMIT times, and a remade one still opens
+ * the video it replaced.
  */
-function StoryList({ series, now, canManage, onOpenVideo, onChanged }: { series: StorySeries; now: number; canManage: boolean; onOpenVideo: (slug: string) => void; onChanged: () => void }) {
+function StoryList({ series, now, generation, canManage, onOpenVideo, onChanged }: { series: StorySeries; now: number; generation: number; canManage: boolean; onOpenVideo: (slug: string) => void; onChanged: () => void }) {
   const t = useTranslations("admin.videoStories");
   const ts = useTranslations("admin.videoSeries");
   const [category, setCategory] = useAdminQueryValue("story_category", "", isCategory);
@@ -378,10 +446,13 @@ function StoryList({ series, now, canManage, onOpenVideo, onChanged }: { series:
   const rows = useMemo(() => series.episodes.map((episode) => ({ episode, id: storyId(episode), category: text(beatsOf(episode).category), state: storyState(episode, now) })), [series.episodes, now]);
   const byCategory = rows.filter((row) => !category || row.category === category);
   const shown = byCategory.filter((row) => !state || row.state === state);
-  const count = (items: typeof rows, pick: (row: (typeof rows)[number]) => boolean) => items.filter(pick).length;
+  // Only a plan on the screen is read: one whose row the filters hide waits until it shows again.
+  const plan = useStoryPlan(series.slug, shown.find((row) => row.id && row.id === opened)?.episode ?? null, generation);
+  const count =(items: typeof rows, pick: (row: (typeof rows)[number]) => boolean) => items.filter(pick).length;
   const act = async (what: string, episode: SeriesEpisode) => {
     const id = storyId(episode) || String(episode.number);
     if (what === "skip" && !window.confirm(t("list.skipConfirm", { id, title: episode.title }))) return;
+    if (what === "redo" && !window.confirm(t("list.redoConfirm", { id, title: episode.title }))) return;
     setBusy(`${what}-${episode.number}`);
     setError("");
     try {
@@ -422,6 +493,11 @@ function StoryList({ series, now, canManage, onOpenVideo, onChanged }: { series:
         day !== null && slot ? t("list.slot", { day, slot }) : "", t("list.number", { number: episode.number }),
       ].filter(Boolean);
       const working = busy.endsWith(`-${episode.number}`);
+      // Dropped as the API means it: skipped after it started (the "dropped" state is a video
+      // dropped before its episode was marked skipped, which the API does not redo yet).
+      const dropped = episode.status === "skipped" && Boolean(episode.started_at);
+      const redo = storyRedo(episode.slug);
+      const redoable = dropped && redo.count < STORY_REDO_LIMIT;
       return <li key={episode.number} className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-3">
         <div className="flex flex-wrap items-start gap-x-3 gap-y-2">
           <span className="font-mono text-sm font-bold">{id || `#${episode.number}`}</span>
@@ -432,12 +508,14 @@ function StoryList({ series, now, canManage, onOpenVideo, onChanged }: { series:
         <div className="mt-2 flex flex-wrap items-center gap-2">
           {id && <Button secondary aria-expanded={open} onClick={() => setOpened(open ? "" : id)}>{open ? t("list.closePlan") : t("list.openPlan")}</Button>}
           {video && <Button secondary onClick={() => onOpenVideo(video.slug)}>{t("list.openVideo")}</Button>}
+          {redo.earlier && <Button secondary onClick={() => onOpenVideo(redo.earlier)}>{t("list.earlierVideo")}</Button>}
           {video?.youtube_video_id && <a href={`https://www.youtube.com/watch?v=${encodeURIComponent(video.youtube_video_id)}`} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-1 rounded-xl border border-[var(--line)] px-3 text-sm font-semibold hover:border-[var(--teal)]">{t("list.youtube")}<ExternalLink aria-hidden size={14} /></a>}
           {canManage && (episode.status === "planned" || episode.status === "ready") && <Button secondary disabled={working} onClick={() => void act("skip", episode)}>{t("list.skip")}</Button>}
           {canManage && episode.status === "skipped" && !episode.started_at && <Button secondary disabled={working} onClick={() => void act("restore", episode)}>{t("list.restore")}</Button>}
-          {episode.status === "skipped" && episode.started_at && <span className="text-sm text-[var(--muted)]">{t("list.startedSkipped")}</span>}
+          {canManage && redoable && <Button secondary disabled={working} onClick={() => void act("redo", episode)}>{t("list.redo")}</Button>}
+          {dropped && <span className="text-sm text-[var(--muted)]">{redoable ? t("list.redoable") : t("list.startedSkipped")}</span>}
         </div>
-        {open && <StoryPlan episode={episode} />}
+        {open && <StoryPlanPanel id={id} plan={plan} />}
       </li>;
     })}</ul>}
   </section>;
@@ -735,6 +813,9 @@ export function StorySeriesPage({ series, error, onBack, onOpenVideo, onChanged 
   const ts = useTranslations("admin.videoSeries");
   const manage = useAdminActionGuard("content.manage");
   const now = useNow();
+  // Bumped by an import from this page: it may rewrite a plan the list's row does not show.
+  const [generation, setGeneration] = useState(0);
+  const imported = useCallback(() => { setGeneration((value) => value + 1); onChanged(); }, [onChanged]);
   const back = () => {
     // The page's own filters and the opened story stay behind with it.
     const target = new URL(window.location.href);
@@ -755,10 +836,10 @@ export function StorySeriesPage({ series, error, onBack, onOpenVideo, onChanged 
     {series.quota && <StoryQuotaPanel quota={series.quota} status={series.status} />}
     {manage.allowed && <StoryControls series={series} onChanged={onChanged} />}
     <StoryReadyGroup series={series} now={now} canManage={manage.allowed} onOpenVideo={onOpenVideo} onChanged={onChanged} />
-    <StoryList series={series} now={now} canManage={manage.allowed} onOpenVideo={onOpenVideo} onChanged={onChanged} />
+    <StoryList series={series} now={now} generation={generation} canManage={manage.allowed} onOpenVideo={onOpenVideo} onChanged={onChanged} />
     <details className="rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]" open={series.episodes.length === 0}>
       <summary className="cursor-pointer text-lg font-bold">{t("import.again")}</summary>
-      <div className="mt-4"><StoryImportForm seriesSlug={series.slug} canManage={manage.allowed} onImported={onChanged} /></div>
+      <div className="mt-4"><StoryImportForm seriesSlug={series.slug} canManage={manage.allowed} onImported={imported} /></div>
     </details>
   </section>;
 }

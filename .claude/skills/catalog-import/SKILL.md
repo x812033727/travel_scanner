@@ -18,7 +18,7 @@ metadata:
 1. **先 dry-run 再寫入。** 多數寫資料庫的指令不帶 `--apply` 只報告；少數是反過來的 `--dry-run`（清單在 commands.md 最上面）。dry-run 的報告給站主看、在對話裡同意後才 `--apply`；分類器擋就停，不換寫法重試（skill `deploy` 的 pitfalls）。
 2. **批次永遠不寫座標以外的審核狀態，也不發布。** 匯入的店家一律 `pending`、`is_active=false`、`map_match_status=unverified`；補資料只填空欄位；公開要後台核准，核准要耐久座標加精準地圖身分（commands.md 的「公開閘門」）。
 3. **容器裡只有 `apps/api`**（映像的 `/app`）：`docs/`、repo 根目錄的 `candidates/` 都不在，寫到容器 `/tmp` 或 `/app` 的檔案下次部署就沒了。檔案三種給法：已 commit 並部署的用相對路徑 `app/foods/data/...`；沒部署的用 `--file /dev/stdin` 從本機餵（`exec -T` 才接得到 stdin）；要讀多個檔的先 `exec -T api sh -c 'cat > /tmp/x.json' < x.json`。只餵資料檔，不要餵腳本。
-4. **金鑰在後台資料庫。** 要打 Google、Gemini、AI vendor 的指令（`match-*-places`、`generate-hotspot-candidates`、`import-hotspot-candidates`、`enrich-food-merchants`、`review-pending-guides`、`fill-simplified-names`）只能在正式站跑；改 repo 檔的指令（`fill-hotspot-labels`、`refresh-holidays`、`fill-simplified-names --from-mapping`）在本機跑、結果走 PR。
+4. **金鑰在後台資料庫。** 要打 Google、Gemini、AI vendor 的指令（`match-*-places`、`generate-hotspot-candidates`、`import-hotspot-candidates`、`enrich-food-merchants`、`review-pending-guides`）只能在正式站跑；改 repo 檔的指令（`fill-hotspot-labels`、`refresh-holidays`、`fill-simplified-names`，後者用 OpenCC 不打 AI）在本機跑、結果走 PR。
 5. **帳單。** Place ID 比對與景點候選匯入每筆一次 Google Text Search Pro；`review-pending-guides` 預設 `--max-calls 200`；店家補資料受後台 `catalog_review_max_calls`（預設 80）限制。跑全量前先算筆數。
 6. **平台頁只當發現，不當來源。** 食べログ、ぐるなび、ホットペッパー、OpenRice、CatchTable、社群都不能當店家來源（`PLATFORM_HOSTS`）；訂位連結是另一張表，走 `apply-food-platform-reviews`。
 

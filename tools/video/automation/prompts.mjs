@@ -68,6 +68,9 @@ Reveal: a line with "reveal": 1 shows the next item; a scene's reveals must equa
 - quote {quote, source, kicker?, translation?}: 1 reveal when there is a translation. An official
   sentence in its own words, then what it means, and where it is from.
 - stats {title?, stats: 1-4 of {value, label, note?}, source?}: one reveal per number.
+- terminal {title?, prompt?: "$"|">", command, output: 1-6 parts, ran_on, tool_version}: one reveal
+  per output part. Only with a command and output copied from a real run in the sources or brief,
+  with that run's date and tool version; never write or tidy terminal output yourself.
 - cta {title, kicker?, sub?}: no reveals. Once, near the middle, when there is a source article:
   points to the article in the description's first line.
 - outro {title, cta?, lines 1-4}: no reveals. The last scene.
@@ -206,8 +209,9 @@ facts that expire soon with their date, opinion mismatches, and what you suspect
   listener: `${LISTENER_BASE}
 You also keep the storytelling register below: where the script explains instead of telling, turn
 it (a hook that greets, a chapter that ends on a summary instead of a question, a reveal that
-arrives without 「其實」, a run of same-length sentences), and set the pause beats. Wording and
-rhythm are yours; the facts, the scenes, the pictures' prompts and the line ids are not.
+arrives without 「其實」, a run of same-length sentences); the tool sets the pause beats from the
+words. Wording and rhythm are yours; the facts, the scenes, the pictures' prompts, the pauses and
+the line ids are not.
 
 Return {"video": <the edited video.json>, "edits": ["<line id>: <before> → <after>", …]}.
 
@@ -286,8 +290,8 @@ written as a tutorial and sounds read out; make it sound told.
 ${REGISTER_RULES}
 
 What you may do: reword any line, reorder the words inside it, shorten or lengthen it (about 25
-characters, at most 40), set "pause_after_ms" on the beats above, turn a chapter's last line into
-the next chapter's question, open the first chapter on 「你以為…其實…」 when the facts give a turn.
+characters, at most 40), turn a chapter's last line into the next chapter's question (the tool
+then gives it the cliffhanger pause), open the first chapter on 「你以為…其實…」 when the facts give a turn.
 What you may not do: add, drop, merge, split or move a line; change a line's id or scene; change
 any number, price, date, version, Latin-script word, product or proper name (the check refuses the
 line and it keeps its text); add a fact, an opinion or an owner's experience the script does not
@@ -296,8 +300,7 @@ must appear exactly as written. When "previous_problems" is present, the check r
 of yours last round for the reasons given; do not repeat them. Nobody's personal data anywhere.
 
 Answer with ONE JSON object and nothing else (no Markdown fence):
-{"lines": [{"id": "<line id>", "text": "<the retold line>", "pause_after_ms"?: <integer>}]}, with
-only the lines you changed, or {"lines": []} when the script already tells its story.
+{"lines": [{"id": "<line id>", "text": "<the retold line>"}]}, with only the lines you changed, or {"lines": []} when the script already tells its story.
 `.trim();
 
 const DRAMA_COMMON = `
@@ -984,8 +987,8 @@ then the stakes without revealing a mystery's answer, the mid-series flip or the
 "tags": ≤ 500 characters in total, including 漫劇,
 AI漫劇, 一口氣看完 and the genre's; "thumbnail": {"headline": ≤ 12 characters of the biggest
 promise, "tag": ≤ 6 characters or null, "episode": the chosen candidate's "episode" value (its
-slug, copied as written), "shot": its "shot"} picking the candidate with a character's face and
-the highest judge score}.`,
+slug, copied as written), "shot": its "shot"}: the candidates come best-judged first, each
+showing a character; pick the one whose picture best carries the headline's promise}.`,
 
   "verifier:compilation": `${SERIES_COMMON}
 

@@ -10,7 +10,7 @@ import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { EXIT, main } from "../cli.mjs";
 import { readApprovals } from "../core/approvals.mjs";
 import { lookHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
-import { dramaFixture, fixture, sandbox } from "../core/fixtures/load.mjs";
+import { dramaFixture, enFixture, fixture, sandbox } from "../core/fixtures/load.mjs";
 import { shortsFile } from "../shorts/episode.mjs";
 import { atomicWrite, readJson, ROOT } from "../core/paths.mjs";
 import { eachLine } from "../core/schema.mjs";
@@ -349,8 +349,8 @@ function context(box, fetchImpl, clock) {
 
 const smallRefs = { script_writing: "short sentences", formats: "tutorial", channel: "Mokaair", showcase: { scenes: [] }, minimal: fixture() };
 
-function answersFor(slug, { applies = null } = {}) {
-  const video = { ...fixture(), slug };
+function answersFor(slug, { applies = null, script = fixture() } = {}) {
+  const video = { ...script, slug };
   return {
     planner: (body) => ({ slug, title: "ChatGPT 廣告怎麼關", source_guide: "chatgpt-ads-status", source_urls: ["https://openai.com/a"], brief: body.payload.owner_note ? brief(["A", "C"], { applies }) : brief(["A", "B"], { applies }) }),
     writer: () => ({ video, claims: "c1｜Go 每月 270 元｜https://openai.com/a｜2026-09-25｜hook\n", lexicon_additions: { Sulafat: null, "bad term!": "x" } }),
@@ -1267,12 +1267,12 @@ const rewordAnswer = (body) => ({ lines: body.payload.lines.map((line) => ({ id:
  * with the dub and its check played by `fakeDub`; the languages then wait for the owner's
  * choice on /admin/videos (docs/videos/LANGUAGES.md), which `choose` makes.
  */
-async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, reword = rewordAnswer } = {}) {
+async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, reword = rewordAnswer, script = fixture() } = {}) {
   const box = sandbox();
   const slug = "chatgpt-ads-off";
   const passes = { shorten, reword };
   const answers = {
-    ...answersFor(slug, { applies: "1、2" }),
+    ...answersFor(slug, { applies: "1、2", script }),
     translator: (body) => (passes[body.variant] ? passes[body.variant](body) : { worksheet: filledSheet(body.payload.worksheet) }),
     caption_reviewer: (body) => ({ worksheet: body.payload.worksheet, fixes: [] }),
   };
@@ -1345,8 +1345,10 @@ test("the languages wait for the owner: an undecided video is translated into no
   const before = Object.fromEntries(["final.mp4", "thumbnail.jpg", "description.zh-TW.txt", path.join("captions", "zh-TW.srt")].map((name) => [name, readFileSync(video.upload(name))]));
 
   video.choose({});
+  const ran = video.runs.length;
   assert.equal(await video.step(), null, "Traditional Chinese only: nothing to translate, dub or send");
   assert.equal(video.calls("translator").length, 0);
+  assert.equal(video.runs.length, ran, "a zh-TW video owes no zh-TW translation: no sheet, captions or package is run");
   assert.deepEqual(readJson(path.join(video.workdir, "languages.json")).locales, {}, "the choice is copied for captions, package, qa and review-push");
   assert.equal(video.onSite().ready_to_upload, true, "decided and nothing to make: the video may be scheduled");
 
@@ -1387,6 +1389,48 @@ test("a language chosen for its title and description alone is translated withou
   assert.equal(video.calls("translator").length, 1, "a part the site reports ready is not translated again");
   assert.deepEqual(video.onSite().languages.en, { metadata: { state: "ready", reason: null } });
   assert.equal(video.onSite().ready_to_upload, true);
+});
+
+test("an English-narrated video is translated into zh-TW once, before the language it was chosen, and its batch and package carry zh-TW beside it", async () => {
+  const video = await finishedVideo({ script: enFixture() });
+  assert.equal(video.calls("translator").length, 0, "nothing is translated before the choice");
+  assert.deepEqual(Object.keys(readJson(video.upload("metadata.json")).localizations), [], "the package before the choice is English alone");
+  video.choose({ ja: { metadata: true, captions: false, dub: false } });
+
+  assert.match(await video.step(), /^chatgpt-ads-off: zh-TW metadata and captions translated and reviewed$/);
+  assert.ok(video.runs.includes(`i18n-sheet --slug ${video.slug} --locale zh-TW --parts metadata,captions`));
+  const [zh] = video.calls("translator");
+  assert.deepEqual([zh.payload.locale, zh.payload.parts], ["zh-TW", ["metadata", "captions"]]);
+  assert.equal(zh.payload.worksheet.lines[0].source, enFixture().scenes[0].lines[0].text, "translated from the English narration");
+  assert.deepEqual(video.calls("caption_reviewer").map((call) => call.payload.locale), ["zh-TW"]);
+  const translation = readJson(path.join(video.box.root, "docs", "videos", video.slug, "i18n", "zh-TW.json"));
+  assert.equal(translation.title, "zh-TW title");
+
+  assert.match(await video.step(), /^chatgpt-ads-off: ja metadata translated and reviewed$/);
+  assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(ja metadata\)$/);
+  assert.deepEqual(video.calls("translator").map((call) => call.payload.locale), ["zh-TW", "ja"], "zh-TW is translated once");
+  const [batch] = video.reviews("languages");
+  assert.deepEqual(batch.payload, { locales: { ja: { metadata: "ready" } } }, "the batch names only what the owner chose");
+  const metadata = readJson(video.upload("metadata.json"));
+  assert.equal(metadata.default_language, "en");
+  assert.deepEqual([Object.keys(metadata.localizations), metadata.captions], [["zh-TW", "ja"], ["captions/en.srt", "captions/zh-TW.srt"]]);
+  assert.ok(existsSync(video.upload("description.zh-TW.txt")) && !existsSync(video.upload("dubs")), "zh-TW gets a title and captions, no dub");
+
+  assert.equal(await video.step(), null, "everything is made");
+  assert.equal(video.calls("translator").length, 2);
+});
+
+test("an English-narrated video the owner gives no other language gets zh-TW once and a package written again with it, and sends no batch", async () => {
+  const video = await finishedVideo({ script: enFixture() });
+  video.choose({});
+  assert.match(await video.step(), /^chatgpt-ads-off: zh-TW metadata and captions translated and reviewed$/);
+  assert.match(await video.step(), /^chatgpt-ads-off: zh-TW captions, title and description written into the upload package$/);
+  assert.deepEqual(video.runs.slice(-2).map((run) => run.split(" ")[0]), ["captions", "package"]);
+  const metadata = readJson(video.upload("metadata.json"));
+  assert.deepEqual([Object.keys(metadata.localizations), metadata.captions, metadata.language_choice], [["zh-TW"], ["captions/en.srt", "captions/zh-TW.srt"], {}]);
+  assert.equal(await video.step(), null, "zh-TW is in: nothing more to do");
+  assert.equal(video.calls("translator").length, 1);
+  assert.equal(video.reviews("languages").length, 0, "no batch: the panel never offers zh-TW");
 });
 
 /** Reject only the language review POST; reports, files and other videos keep working. */
@@ -1916,7 +1960,12 @@ test("illustrated slides walk the picture, storyboard and music steps between th
   const answers = {
     ...answersFor(slug),
     writer: () => ({ video, claims: "c1｜Go 每月 270 元｜https://openai.com/a｜2026-09-25｜hook\n", lexicon_additions: {}, shorts: shortsDraft }),
-    listener: (body) => ({ video: body.payload.video, edits: [] }),
+    // The listener sets a pause of its own: the tool clears it again when the edit is saved.
+    listener: (body) => {
+      const edited = structuredClone(body.payload.video);
+      edited.scenes[4].lines[0].pause_after_ms = 2000;
+      return { video: edited, edits: [] };
+    },
   };
   const site = fakeSite({ answers, settings: { slides: { slides_music_track: "bed.mp3", slides_sfx_set: "studio-a" } } });
   const clock = { now: Date.parse("2026-09-29T09:00:00Z") };
@@ -1981,11 +2030,17 @@ test("illustrated slides walk the picture, storyboard and music steps between th
   const written = readJson(docFile);
   assert.equal(written.format, "slides");
   assert.equal(written.look.preset, "tech-story");
+  // The writer's pauses (600 on the opener, 900 on a4dk) gave way to the tool's beats: the hook
+  // after the first line, which is also the line before 「其實」, and no chapter closes on a question.
+  const pauses = (doc) => Object.fromEntries([...eachLine(doc)].filter(({ line }) => line.pause_after_ms !== undefined).map(({ line }) => [line.id, line.pause_after_ms]));
+  assert.deepEqual(pauses(written), { a1hk: 900 });
   assert.ok(existsSync(shortsFile(slug, box.root)), "an illustrated video's Shorts are saved like an explainer's");
   const writer = site.calls.run.find((call) => call.stage === "writer");
   assert.equal(writer.format, "slides", "the slides writer, not the drama's");
   assert.match(await automation.step(), /fact-check round 1/);
   assert.match(await automation.step(), /listener edit/);
+  assert.deepEqual(pauses(readJson(docFile)), { a1hk: 900 }, "the listener's own pause is cleared on save");
+  assert.equal(automatedVideos(box.work)[0].verified, true, "with its pause cleared the listener's script is the checked one");
   assert.match(await automation.step(), /narration synthesized/);
   assert.match(await automation.step(), /narration checked \(Jev passed every line\) and sent for review/);
   assert.match(await automation.step(), /keyframes done/);
@@ -2017,11 +2072,13 @@ test("restyle retells a worker's slides video in the storytelling register: guar
   const answers = {
     listener: () => ({
       lines: [
-        // Retold and given the cliffhanger beat: accepted.
+        // Retold: accepted; the pause the model set is ignored (a3dk does not close its chapter).
         { id: "a3dk", text: "你桌上那份報告，第一名的模型會怎麼寫？", pause_after_ms: 1200 },
+        // Retold into the chapter's closing question: accepted, and the tool gives it the cliffhanger beat.
+        { id: "a4dk", text: "答案可能讓你意外，三個數字到底說了什麼？" },
         // A Latin word the line did not have: refused, the line keeps its text.
         { id: "a5nm", text: "第一個數字，最快的 GPT 三秒就回答了。" },
-        // A pause outside the schema: refused.
+        // The same text with a pause of the model's (outside the schema, too): nothing to do.
         { id: "a9rl", text: "一句話，先看工作，再看排行榜。", pause_after_ms: 9000 },
         // Not a line of this video.
         { id: "zzzz", text: "多出來的一句。" },
@@ -2040,7 +2097,7 @@ test("restyle retells a worker's slides video in the storytelling register: guar
   assert.equal(site.calls.run.length, 0, "the dry run asks the model nothing");
 
   const line = await automation.restyle(slug);
-  assert.match(line, /^ranking-first: 1 of 11 lines retold, 3 refused \(review\/restyle\.json\); now 11 lines, 1 「你以為」 turn, 0 of 3 chapters closing on a question, 3 pause beats; the worker fact-checks, records and reviews the narration again$/);
+  assert.match(line, /^ranking-first: 2 of 11 lines retold, 2 refused \(review\/restyle\.json\); now 11 lines, 1 「你以為」 turn, 1 of 3 chapters closing on a question, 2 pause beats; the worker fact-checks, records and reviews the narration again$/);
   const call = site.calls.run[0];
   assert.equal(call.stage, "listener");
   assert.equal(call.variant, "register");
@@ -2054,20 +2111,25 @@ test("restyle retells a worker's slides video in the storytelling register: guar
   const video = readJson(docFile);
   const lines = new Map([...eachLine(video)].map(({ line }) => [line.id, line]));
   assert.equal(lines.get("a3dk").text, "你桌上那份報告，第一名的模型會怎麼寫？");
-  assert.equal(lines.get("a3dk").pause_after_ms, 1200);
+  assert.equal(lines.get("a4dk").text, "答案可能讓你意外，三個數字到底說了什麼？");
   assert.equal(lines.get("a5nm").text, "第一個數字，最快的模型三秒就回答了。", "a line that gained a Latin word keeps its text");
-  assert.equal(lines.get("a9rl").pause_after_ms, undefined);
+  // The beats are the tool's, from the retold text: the hook on the opener, the cliffhanger on
+  // a4dk's new closing question; the model's 1200 on a3dk and 9000 on a9rl are not taken.
+  const pauses = Object.fromEntries([...lines].filter(([, each]) => each.pause_after_ms !== undefined).map(([id, each]) => [id, each.pause_after_ms]));
+  assert.deepEqual(pauses, { a1hk: 900, a4dk: 1200 });
   assert.equal(video.scenes.length, 9, "no scene or line added or dropped");
   const record = readJson(path.join(box.workdir, "review", "restyle.json"));
-  assert.deepEqual(record.accepted, [{ id: "a3dk", before: "想像你桌上那份報告，第一名的模型會怎麼寫它？", after: "你桌上那份報告，第一名的模型會怎麼寫？", pause_after_ms: 1200 }]);
-  assert.deepEqual(record.refused.map((entry) => entry.split(":")[0]), ["a5nm", "a9rl", "zzzz"]);
+  assert.deepEqual(record.accepted, [
+    { id: "a3dk", before: "想像你桌上那份報告，第一名的模型會怎麼寫它？", after: "你桌上那份報告，第一名的模型會怎麼寫？" },
+    { id: "a4dk", before: "答案可能讓你意外，先別急著猜，我們用三個數字來看。", after: "答案可能讓你意外，三個數字到底說了什麼？" },
+  ]);
+  assert.deepEqual(record.refused.map((entry) => entry.split(":")[0]), ["a5nm", "zzzz"]);
   assert.match(record.refused[0], /word "GPT" was added/);
-  assert.match(record.refused[1], /pause_after_ms must be an integer from 0 to 5000/);
-  assert.equal(record.after.pauses, 3);
+  assert.equal(record.after.pauses, 2);
   const saved = readJson(stateFile);
   assert.equal(saved.verified, false, "the wording is new: the facts are checked once more");
   assert.equal(saved.listener_done, true, "the register pass was the listener's edit");
-  assert.match(saved.notes.at(-1), /^restyled on 2026-09-30: 1 lines retold in the storytelling register, 3 refused/);
+  assert.match(saved.notes.at(-1), /^restyled on 2026-09-30: 2 lines retold in the storytelling register, 2 refused/);
   assert.match(out.stdout, /listener: claude-sonnet-5/);
 
   // Videos the register is not for.
@@ -2093,6 +2155,17 @@ test("restyle from the command line: --dry-run measures the script without a tok
   assert.match(out.stderr, /restyle needs --slug/);
   assert.equal(await main(["restyle", "--slug", "never-started", "--dry-run"], ctx), EXIT.usage);
   assert.match(out.stderr, /was not started by the worker/);
+});
+
+test("the tool sets the pause beats only on the scripts whose prompts carry the storytelling register", () => {
+  const box = sandbox();
+  const { ctx } = context(box, async () => new Response("{}"), { now: Date.parse("2026-09-30T09:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), {});
+  assert.equal(automation.usesRegister({ format: "slides" }), true, "a slides video reads INSTRUCTIONS, register included");
+  assert.equal(automation.usesRegister({ format: "drama" }), false, "a drama's pauses are the screenplay's");
+  assert.equal(automation.usesRegister({ format: "drama", style_preset: "flat-explainer" }), false, "an explainer has prompts of its own");
+  assert.equal(automation.usesRegister({ format: "slides", series: { kind: "binge" } }), false, "an episode has prompts of its own");
+  assert.equal(automation.usesRegister({ format: "slides", story: { chapter: 1 } }), false, "a brand story has prompts of its own");
 });
 
 test("two lanes move two different videos at once, and only the first lane starts anything new", async () => {

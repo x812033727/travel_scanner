@@ -2,7 +2,7 @@ import { fireEvent, render, screen, waitFor, within } from "@testing-library/rea
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { AdminOperationsProvider } from "./admin-operations-provider";
 import { AdminVideoSeries } from "./admin-video-series";
-import { nextFreeSlot, planSlots, STORY_IMPORT_MAX_BYTES } from "./admin-video-stories";
+import { nextFreeSlot, planSlots, STORY_IMPORT_MAX_BYTES, storyRedo } from "./admin-video-stories";
 import type { AdminBootstrap } from "@/lib/admin-operations";
 
 vi.mock("@/components/header-session", () => ({ useHeaderSession: () => ({ user: null, sessionIdentity: null, status: undefined }) }));
@@ -96,10 +96,24 @@ function importReport(overrides: Row = {}) {
 }
 
 type Call = { url: string; method: string; body?: Row };
-/** The site as the story pages see it: the story list, the series, the videos, the import. */
-function stubFetch(options: { series?: Row; listed?: unknown[]; linked?: boolean; importAnswer?: (body: Row) => Response; restoreRefused?: boolean } = {}) {
+type Story = (typeof stories)[number];
+// What ?beats=summary keeps of a story's beats (SUMMARY_BEAT_KEYS in the API's series.py).
+const SUMMARY_KEYS = ["id", "category", "region", "subject", "publish"];
+const light = (each: Story) => ({ ...each, beats: Object.fromEntries(Object.entries(each.beats).filter(([key]) => SUMMARY_KEYS.includes(key))) });
+type StubOptions = {
+  series?: Row; listed?: unknown[]; linked?: boolean; importAnswer?: (body: Row) => Response; restoreRefused?: boolean; planRefused?: boolean;
+  more?: Story[]; redoRefused?: { code: string; detail: string };
+};
+/**
+ * The site as the story pages see it: the story list, the series (whole, or each story's list
+ * fields only at ?beats=summary), one story's whole episode, the videos, the import. A skip, a
+ * restore or a redo changes the story, as the server does; options may be changed between steps.
+ */
+function stubFetch(options: StubOptions = {}) {
   const calls: Call[] = [];
   let current: Row = { ...summary, ...options.series };
+  const changed = new Map<number, Partial<Story>>();
+  const episodes = () => [...stories, ...(options.more ?? [])].map((each) => ({ ...each, ...changed.get(each.number) }));
   vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
     const url = String(input);
     const method = init?.method ?? "GET";
@@ -110,9 +124,23 @@ function stubFetch(options: { series?: Row; listed?: unknown[]; linked?: boolean
     if (url.includes("/admin/video-automation/series?kind=")) return json({ series: [] });
     if (url.endsWith("/stories/import")) return Promise.resolve(options.importAnswer ? options.importAnswer(body ?? {}) : Response.json(importReport({ dry_run: !body?.apply, written: Boolean(body?.apply) })));
     if (url.endsWith("/restore") && options.restoreRefused) return json({ code: "video_series_episode_was_started", detail: "第 7 個故事在 09/27 開始做過、影片已經放棄" }, 409);
+    if (url.endsWith("/redo") && options.redoRefused) return json(options.redoRefused, 409);
+    const change = /\/series\/brand-stories\/episodes\/(\d+)\/(skip|restore|redo)$/.exec(url);
+    if (change && method === "POST") {
+      const number = Number(change[1]);
+      // A redo gives the story back to the worker under the planned slug plus -redo1, without the dropped video.
+      const planned = episodes().find((each) => each.number === number)?.slug;
+      changed.set(number, change[2] === "skip" ? { status: "skipped" } : change[2] === "restore" ? { status: "ready" } : { status: "ready", started_at: null, slug: `${planned}-redo1`, video: null });
+      return json({ ...current, docs: [], episodes: episodes() });
+    }
+    const one = /\/series\/brand-stories\/episodes\/(\d+)$/.exec(url);
+    if (one && method === "GET") {
+      if (options.planRefused) return json({ code: "internal_error", detail: "伺服器暫時無法回應" }, 503);
+      return json(episodes().find((each) => each.number === Number(one[1])));
+    }
     if (url.includes("/admin/video-automation/series/brand-stories")) {
       if (method === "PATCH") current = { ...current, ...body };
-      return json({ ...current, docs: [], episodes: stories });
+      return json({ ...current, docs: [], episodes: url.endsWith("?beats=summary") ? episodes().map(light) : episodes() });
     }
     if (url.endsWith("/admin/video-youtube")) return json(connection(Boolean(options.linked)));
     const detail = /\/admin\/videos\/(story-[a-z0-9]+)$/.exec(url);
@@ -120,8 +148,15 @@ function stubFetch(options: { series?: Row; listed?: unknown[]; linked?: boolean
     if (/\/admin\/videos\/story-[a-z0-9]+\/youtube$/.test(url) && method === "POST") return json({ slug: url.split("/").at(-2) });
     return json([]);
   }));
-  return { calls };
+  return { calls, options };
 }
+const seriesReads = (calls: Call[]) => calls.filter((call) => call.method === "GET" && /\/admin\/video-automation\/series\/brand-stories(\?|$)/.test(call.url)).map((call) => call.url.split("brand-stories")[1]);
+const planReads = (calls: Call[], number: number) => calls.filter((call) => call.method === "GET" && call.url.endsWith(`/series/brand-stories/episodes/${number}`)).length;
+/** The opened plan once its own read came back. */
+const loadedPlan = async (id: string) => {
+  await waitFor(() => expect(screen.getByRole("region", { name: `${id} 的企劃` }).textContent).toContain(`${id} 為什麼等了那麼久才賣得起來？`));
+  return screen.getByRole("region", { name: `${id} 的企劃` });
+};
 
 const renderTab = (capabilities = MANAGER, roles: string[] = [], opened: string[] = []) => render(<AdminOperationsProvider bootstrap={bootstrap(capabilities, roles)}>
   <AdminVideoSeries onOpenVideo={(slug) => opened.push(slug)} />
@@ -147,6 +182,18 @@ afterEach(() => {
   vi.unstubAllGlobals();
   vi.restoreAllMocks();
   window.history.replaceState(null, "", "/");
+});
+
+describe("a story's remakes, read from its video slug", () => {
+  it("counts the -redo<n> suffix and names the video each remake replaced", () => {
+    expect(storyRedo("story-rolling-case")).toEqual({ count: 0, earlier: "" });
+    expect(storyRedo(null)).toEqual({ count: 0, earlier: "" });
+    expect(storyRedo("story-rolling-case-redo1")).toEqual({ count: 1, earlier: "story-rolling-case" });
+    expect(storyRedo("story-rolling-case-redo2")).toEqual({ count: 2, earlier: "story-rolling-case-redo1" });
+    // Not a remake: the API counts from 1 and writes no leading zero.
+    expect(storyRedo("story-rolling-case-redo0")).toEqual({ count: 0, earlier: "" });
+    expect(storyRedo("story-redone")).toEqual({ count: 0, earlier: "" });
+  });
 });
 
 describe("the next free publishing slot", () => {
@@ -242,9 +289,12 @@ describe("AdminVideoStorySeries and StorySeriesPage", () => {
     await waitFor(() => expect(rows()).toHaveLength(8));
 
     fireEvent.click(within(row("A01")).getByRole("button", { name: "看企劃" }));
-    const plan = await screen.findByRole("region", { name: "A01 的企劃" });
+    expect((await screen.findByRole("region", { name: "A01 的企劃" })).textContent).toBe("正在讀企劃…");
+    const plan = await loadedPlan("A01");
     expect(window.location.search).toContain("story=A01");
-    expect(plan.textContent).toContain("A01 為什麼等了那麼久才賣得起來？");
+    // The plan is read from its own episode, once; the series is not read again for it.
+    expect(planReads(calls, 1)).toBe(1);
+    expect(seriesReads(calls)).toEqual([""]);
     expect([...plan.querySelectorAll("ol")[0].querySelectorAll("li")].map((item) => item.querySelector("span")?.textContent)).toEqual(["鉤子", "起點與人物", "關鍵點子", "生意怎麼運作", "代價或反轉", "現況與一句觀察"]);
     expect(plan.textContent).toContain("A01 留給觀眾的觀察");
     expect(plan.textContent).toContain("必查事實（3 條）");
@@ -258,6 +308,84 @@ describe("AdminVideoStorySeries and StorySeriesPage", () => {
     expect(plan.textContent).toContain("A01：某個軼事查不到出處，不要講。");
     expect(within(plan).queryByRole("button")).toBeNull();
     expect(within(plan).queryByRole("textbox")).toBeNull();
+  });
+
+  it("reads the series with each story's list fields only once it knows it is a story series, and each opened plan on its own", async () => {
+    const { calls } = stubFetch();
+    vi.spyOn(window, "confirm").mockReturnValue(true);
+    openStories();
+    renderTab();
+    await screen.findByRole("list", { name: "故事清單" });
+    // The first read cannot know the kind, so it is whole.
+    expect(seriesReads(calls)).toEqual([""]);
+
+    // A skip reads the series again, now with the list's fields only; the list looks the same.
+    fireEvent.click(within(row("K04")).getByRole("button", { name: "略過" }));
+    await waitFor(() => expect(row("K04").textContent).toContain("已略過"));
+    expect(seriesReads(calls)).toEqual(["", "?beats=summary"]);
+    expect(rows().map((item) => item.textContent?.slice(0, 3))).toEqual(["A01", "B18", "A03", "C20", "T01", "K04", "A05", "T02"]);
+    expect(row("A01").textContent).toContain("日常用品與隱形標準 · 全球 · 第 1 天 12:00 · 第 1 個");
+    expect(row("A01").textContent).toContain("可以上架");
+    expect(row("C20").textContent).toContain("已排程");
+    const ready = screen.getByRole("region", { name: "可以上架" });
+    expect(within(ready).getAllByRole("article").map((item) => item.getAttribute("aria-label")?.slice(0, 3))).toEqual(["A01", "B18", "A03"]);
+    expect(within(ready).getAllByRole("article")[0].textContent).toContain(`下一個空的時段：${slotText("2026-09-30T04:00:00Z")}（台北時間）`);
+    fireEvent.change(screen.getByRole("combobox", { name: "分類" }), { target: { value: "tech" } });
+    await waitFor(() => expect(rows().map((item) => item.textContent?.slice(0, 3))).toEqual(["T01", "T02"]));
+    fireEvent.change(screen.getByRole("combobox", { name: "分類" }), { target: { value: "" } });
+    await waitFor(() => expect(rows()).toHaveLength(8));
+
+    // The whole plan comes from the story's own read, though the list no longer carries it.
+    fireEvent.click(within(row("A01")).getByRole("button", { name: "看企劃" }));
+    const plan = await loadedPlan("A01");
+    expect(plan.textContent).toContain("鉤子");
+    expect(plan.textContent).toContain("必查事實（3 條）");
+    expect(plan.textContent).toContain("A01：某個軼事查不到出處，不要講。");
+    expect(planReads(calls, 1)).toBe(1);
+    // Closed and opened again, it is shown at once without another read.
+    fireEvent.click(within(row("A01")).getByRole("button", { name: "收起企劃" }));
+    await waitFor(() => expect(screen.queryByRole("region", { name: "A01 的企劃" })).toBeNull());
+    fireEvent.click(within(row("A01")).getByRole("button", { name: "看企劃" }));
+    expect(screen.getByRole("region", { name: "A01 的企劃" }).textContent).toContain("A01 為什麼等了那麼久才賣得起來？");
+    expect(planReads(calls, 1)).toBe(1);
+
+    // A story whose row changed in the list is read again when it opens.
+    fireEvent.click(within(row("A01")).getByRole("button", { name: "收起企劃" }));
+    fireEvent.click(within(row("K04")).getByRole("button", { name: "看企劃" }));
+    await loadedPlan("K04");
+    expect(planReads(calls, 6)).toBe(1);
+    fireEvent.click(within(row("K04")).getByRole("button", { name: "收起企劃" }));
+    fireEvent.click(within(row("K04")).getByRole("button", { name: "恢復" }));
+    await waitFor(() => expect(row("K04").textContent).toContain("待做"));
+    fireEvent.click(within(row("K04")).getByRole("button", { name: "看企劃" }));
+    await loadedPlan("K04");
+    expect(planReads(calls, 6)).toBe(2);
+    expect(seriesReads(calls)).toEqual(["", "?beats=summary", "?beats=summary"]);
+  });
+
+  it("says why a plan could not be read and reads it again on request", async () => {
+    const { calls, options } = stubFetch({ planRefused: true });
+    openStories();
+    renderTab();
+    await screen.findByRole("list", { name: "故事清單" });
+    fireEvent.click(within(row("B18")).getByRole("button", { name: "看企劃" }));
+    const failed = await screen.findByRole("region", { name: "B18 的企劃" });
+    expect((await within(failed).findByRole("alert")).textContent).toBe("企劃讀不到：伺服器暫時無法回應");
+    options.planRefused = false;
+    fireEvent.click(within(failed).getByRole("button", { name: "再試一次" }));
+    const plan = await loadedPlan("B18");
+    expect(within(plan).queryByRole("alert")).toBeNull();
+    expect(planReads(calls, 2)).toBe(2);
+  });
+
+  it("keeps a drama series' whole read: its beats are the chapter outlines the page shows", async () => {
+    const { calls } = stubFetch({ series: { kind: "long" } });
+    openStories();
+    renderTab();
+    fireEvent.click(await screen.findByRole("button", { name: "暫停" }));
+    await waitFor(() => expect(seriesReads(calls)).toHaveLength(2));
+    expect(seriesReads(calls)).toEqual(["", ""]);
+    expect(calls.some((call) => call.url.includes("/episodes/") && call.method === "GET")).toBe(false);
   });
 
   it("lets a manager change the daily count, pause the series, skip a story that has not started and bring a skipped one back", async () => {
@@ -297,7 +425,7 @@ describe("AdminVideoStorySeries and StorySeriesPage", () => {
     fireEvent.click(within(row("A05")).getByRole("button", { name: "恢復" }));
     await waitFor(() => expect(calls.some((call) => call.url.endsWith("/admin/video-automation/series/brand-stories/episodes/7/restore") && call.method === "POST")).toBe(true));
     expect(within(row("T02")).queryByRole("button", { name: "恢復" })).toBeNull();
-    expect(row("T02").textContent).toContain("開始做過、影片已放棄，不能恢復");
+    expect(row("T02").textContent).toContain("開始做過、影片已放棄，可以重做一次");
     // A story series has no compilation: after the first read, the page stops asking for one.
     expect(calls.filter((call) => call.url.includes("/admin/videos?series=")).length).toBe(1);
   });
@@ -309,6 +437,56 @@ describe("AdminVideoStorySeries and StorySeriesPage", () => {
     await screen.findByRole("list", { name: "故事清單" });
     fireEvent.click(within(row("A05")).getByRole("button", { name: "恢復" }));
     expect((await screen.findByRole("alert")).textContent).toContain("第 7 個故事在 09/27 開始做過、影片已經放棄");
+  });
+
+  it("redoes a dropped story once, after saying it costs another production, and still opens the dropped video", async () => {
+    // Remade once already, and that video was dropped too: the limit is spent.
+    const redone = story(9, "B02", "asia-brand", "jp", 5, "12:00", "skipped", { slug: "story-b02-redo1", started_at: "2026-09-27T02:00:00Z", video: video("story-b02-redo1", 9, { dropped_at: "2026-09-27T10:00:00Z" }) });
+    const { calls } = stubFetch({ more: [redone] });
+    const confirm = vi.spyOn(window, "confirm").mockReturnValueOnce(false).mockReturnValue(true);
+    const opened: string[] = [];
+    openStories();
+    renderTab(MANAGER, [], opened);
+    await screen.findByRole("list", { name: "故事清單" });
+    const redos = () => calls.filter((call) => call.method === "POST" && call.url.endsWith("/redo"));
+
+    // A story remade up to the limit offers no redo, says why, and opens the video its remake replaced.
+    expect(within(row("B02")).queryByRole("button", { name: "重做" })).toBeNull();
+    expect(row("B02").textContent).toContain("重做過一次、影片又放棄了，不能再重做；要再做請用新的故事代號匯入");
+    fireEvent.click(within(row("B02")).getByRole("button", { name: "上一支影片" }));
+    expect(opened).toEqual(["story-b02"]);
+    // Neither a story still to make nor one that never started is offered a redo.
+    expect(within(row("K04")).queryByRole("button", { name: "重做" })).toBeNull();
+    expect(within(row("A05")).queryByRole("button", { name: "重做" })).toBeNull();
+
+    // The confirmation names the story and the cost; declined, nothing is sent.
+    fireEvent.click(within(row("T02")).getByRole("button", { name: "重做" }));
+    expect(confirm.mock.calls[0][0]).toContain("T02「T02 的故事」");
+    expect(confirm.mock.calls[0][0]).toContain("再花一次製作的錢（圖片、旁白）");
+    expect(redos()).toHaveLength(0);
+
+    const before = seriesReads(calls).length;
+    fireEvent.click(within(row("T02")).getByRole("button", { name: "重做" }));
+    await waitFor(() => expect(redos().map((call) => call.url)).toEqual([expect.stringMatching(/\/admin\/video-automation\/series\/brand-stories\/episodes\/8\/redo$/)]));
+    // The list is read again as after any change (the light read) and the story waits for the worker.
+    await waitFor(() => expect(within(row("T02")).getByText("待做")).toBeTruthy());
+    expect(seriesReads(calls).slice(before)).toEqual(["?beats=summary"]);
+    expect(within(row("T02")).queryByRole("button", { name: "重做" })).toBeNull();
+    expect(within(row("T02")).queryByRole("button", { name: "打開影片" })).toBeNull();
+    expect(row("T02").textContent).not.toContain("可以重做一次");
+    fireEvent.click(within(row("T02")).getByRole("button", { name: "上一支影片" }));
+    expect(opened).toEqual(["story-b02", "story-t02"]);
+  });
+
+  it("shows the server's reason when it refuses a redo", async () => {
+    stubFetch({ redoRefused: { code: "video_series_redo_limit", detail: "第 8 個故事已經重做過 1 次，每個故事最多重做 1 次" } });
+    vi.spyOn(window, "confirm").mockReturnValue(true);
+    openStories();
+    renderTab();
+    await screen.findByRole("list", { name: "故事清單" });
+    fireEvent.click(within(row("T02")).getByRole("button", { name: "重做" }));
+    expect((await screen.findByRole("alert")).textContent).toContain("第 8 個故事已經重做過 1 次，每個故事最多重做 1 次");
+    expect(row("T02").textContent).toContain("已略過");
   });
 
   it("shows a reader everything, changes nothing, and names the permission and the roles that can", async () => {
@@ -325,6 +503,8 @@ describe("AdminVideoStorySeries and StorySeriesPage", () => {
     expect(screen.queryByRole("button", { name: "暫停" })).toBeNull();
     expect(screen.queryByRole("button", { name: "略過" })).toBeNull();
     expect(screen.queryByRole("button", { name: "恢復" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "重做" })).toBeNull();
+    expect(row("T02").textContent).toContain("開始做過、影片已放棄，可以重做一次");
     // The ready cards show the package but no form to record an upload.
     const ready = screen.getByRole("region", { name: "可以上架" });
     await waitFor(() => expect(within(ready).getAllByLabelText("上傳包")).toHaveLength(3));

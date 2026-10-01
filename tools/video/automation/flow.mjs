@@ -19,20 +19,21 @@ import { emptyLexicon } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
 import { articlePath, SITE } from "../core/metadata.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, UsageError } from "../core/paths.mjs";
-import { eachLine, LINE_ID, MAX_PAUSE_MS, spokenText } from "../core/schema.mjs";
+import { eachLine, LINE_ID, NARRATION_LOCALE, narrationLocale, spokenText } from "../core/schema.mjs";
 import { writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckBinding, scriptCheckMatches, scriptCheckUnbound } from "../core/script-check.mjs";
 import { LOCALE_PARTS, readLanguages, writeLanguages } from "../core/stages.mjs";
 import { ARTIFACTS, dubArtifacts, dubsStatus, lintProject, loadProject, pipelineStatus } from "../core/state.mjs";
 import { speechHash } from "../core/timeline.mjs";
 import { MAX_TEMPO } from "../dubs/plan.mjs";
+import { buildSheet, SHEET_PARTS } from "../i18n/cli.mjs";
 import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview, sourceGuideOf } from "../review/sync.mjs";
 import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
 import { discussStep } from "./discuss.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
 import { advanceStory, fixStoryPrompts } from "./story.mjs";
 import { instructionsFor, parseAnswer, references } from "./prompts.mjs";
-import { registerLine, registerSummary } from "./register.mjs";
+import { registerLine, registerSummary, setPauseBeats } from "./register.mjs";
 import { rewriteProblems } from "./rewrite.mjs";
 import { advanceCompilation, startCompilation } from "./compilation.mjs";
 import { castFrom, episodeBrief, isExplainerOneOff, isOneOff, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
@@ -879,7 +880,9 @@ export class Automation {
     // A one-off's story bible stands where the setting book does (docs/videos/DRAMA-FLOW.md,
     // section 2): the site hands it over as "setting", and its one outline is the episode's beats.
     const oneOff = isOneOff(series);
-    const cast = castFrom(context.setting?.body_json);
+    // The cast as this episode wears it: a character's look that covers the episode stands in for
+    // the book's appearance, sheet prompt and voice style (docs/videos/SERIES.md, 換裝與變化).
+    const cast = castFrom(context.setting?.body_json, episode.number);
     const beats = episode.beats ?? {};
     const state = {
       slug,
@@ -1274,7 +1277,15 @@ export class Automation {
   /** A stage's video.json as it is saved: the owner's settings and the series' cast over what the model returned. */
   settled(state, video) {
     const cast = state.series ? readJson(path.join(docDir(state.slug, this.ctx.root), "series.json"), {}).characters ?? [] : null;
-    return settle(video, { slug: state.slug, settings: this.settings, sourceGuide: state.source_guide, root: this.ctx.root, format: state.format, series: state.series ?? null, cast, stylePreset: state.style_preset ?? null });
+    const settledVideo = settle(video, { slug: state.slug, settings: this.settings, sourceGuide: state.source_guide, root: this.ctx.root, format: state.format, series: state.series ?? null, cast, stylePreset: state.style_preset ?? null });
+    // The storytelling register's pause beats are the tool's (register.mjs setPauseBeats): set on
+    // every save of a script whose prompts carry the register, before lint, whichever stage wrote it.
+    return this.usesRegister(state) ? setPauseBeats(settledVideo) : settledVideo;
+  }
+
+  /** Whether a video's planner, writer and listener read REGISTER_RULES (prompts.mjs INSTRUCTIONS): a slides video without a variant. */
+  usesRegister(state) {
+    return state.format !== "drama" && !state.story && this.variantOf(state) === null;
   }
 
   /**
@@ -1584,32 +1595,25 @@ export class Automation {
         refused.push(`${id}: the retold line is empty`);
         continue;
       }
-      const pause = entry.pause_after_ms;
-      if (pause !== undefined && !(Number.isInteger(pause) && pause >= 0 && pause <= MAX_PAUSE_MS)) {
-        refused.push(`${id}: pause_after_ms must be an integer from 0 to ${MAX_PAUSE_MS}`);
-        continue;
-      }
-      if (text === was && (pause === undefined || pause === line.pause_after_ms)) continue;
+      // A "pause_after_ms" in the answer is ignored: the tool sets the beats from the retold text below.
+      if (text === was) continue;
       const problems = rewriteProblems(was, text, { lexicon });
       if (problems.length) {
         refused.push(`${id}: ${problems.join("; ")}`);
         continue;
       }
-      accepted.push({ id, before: was, after: text, ...(pause !== undefined ? { pause_after_ms: pause } : {}) });
+      accepted.push({ id, before: was, after: text });
     }
     if (accepted.length) {
-      for (const { id, after, pause_after_ms } of accepted) {
+      for (const { id, after } of accepted) {
         const line = lines.get(id);
         line.text = after;
         // The retold line is what the voice says now; a spoken form written for the old text would fail lint.
         delete line.say;
         delete line.say_for;
-        if (pause_after_ms !== undefined) {
-          if (pause_after_ms > 0) line.pause_after_ms = pause_after_ms;
-          else delete line.pause_after_ms;
-        }
       }
-      writeVideo(dir, video);
+      // The beats follow the retold text (a new closing question, a 「其實」 moved), and only the tool sets them.
+      writeVideo(dir, setPauseBeats(video));
       const errors = lintErrors(this.ctx, slug);
       if (errors.length) {
         writeFileSync(file, source);
@@ -1786,7 +1790,8 @@ export class Automation {
    * making is made, the captions and the package are written again and the batch goes up as a
    * languages review. Null when there is nothing to do: no choice yet, nothing pending, or the
    * final cut not approved. A video the owner already uploaded takes the same round for the
-   * languages ticked after the fact.
+   * languages ticked after the fact. A video narrated in another language is translated into
+   * zh-TW first, once, whatever was chosen (channelLocale).
    */
   async languages(state) {
     const { ctx } = this;
@@ -1803,14 +1808,28 @@ export class Automation {
     writeLanguages(workdir, { locales: video.locales ?? {}, decided_at: video.locales_decided_at, synced_at: ctx.now().toISOString() });
     const choice = readLanguages(workdir);
     const pending = this.pendingLanguages(video, choice);
-    if (!pending.length) return null;
+    // A zh-TW video reads nothing more than before; one narrated in another language may still
+    // owe its zh-TW, which no choice lists (channelLocale).
+    const zhNarrated = narrationLocale(readJson(path.join(dir, "video.json"), null)) === NARRATION_LOCALE;
+    if (!pending.length && zhNarrated) return null;
     const project = loadProject({ slug, root: ctx.root });
     const doc = project.doc;
-    for (const { locale, parts } of pending) {
+    const channel = zhNarrated ? null : this.channelLocale(project, workdir);
+    if (!pending.length && !channel) return null;
+    for (const { locale, parts } of [...(channel ? [channel] : []), ...pending]) {
       const sheetParts = parts.filter((part) => part !== "dub");
       if (!sheetParts.length) continue;
       const translated = await this.translateLocale(state, locale, sheetParts, doc);
       if (translated) return translated;
+    }
+    // Only zh-TW was owed (the owner chose no other language): write it into the captions and the
+    // package; there is no batch to send, since the panel never offers zh-TW.
+    if (!pending.length) {
+      const captions = await run(ctx, ["captions", "--slug", slug]);
+      if (captions.code !== 0) return this.block(state, `captions failed: ${lastLine(captions.out)}`);
+      const packaged = await run(ctx, ["package", "--slug", slug]);
+      if (packaged.code !== 0) return this.block(state, `package failed: ${lastLine(packaged.out)}`);
+      return `${slug}: ${NARRATION_LOCALE} captions, title and description written into the upload package`;
     }
     const dubs = dubsStatus(project, workdir, speechHash(doc, project.lexicon));
     for (const { locale, parts } of pending) {
@@ -1881,6 +1900,21 @@ export class Automation {
       if (working.length) pending.push({ locale, parts: working });
     }
     return pending;
+  }
+
+  /**
+   * zh-TW, the channel's own language, for a video narrated in another one: captions, package
+   * and qa want its captions, title and description whatever the owner chose (alwaysLocales in
+   * core/stages.mjs), and the panel never offers it, so the site never reports it as in the
+   * making. Owed, as { locale, parts } like a pending choice, while its translation is not
+   * current or while an upload package written before it lacks it; null once both are in.
+   */
+  channelLocale(project, workdir) {
+    const translated = sheetDone(buildSheet(project.doc, project.translations[NARRATION_LOCALE], NARRATION_LOCALE, null, SHEET_PARTS));
+    const upload = path.join(workdir, "upload");
+    const packaged = !existsSync(path.join(upload, "metadata.json"))
+      || (existsSync(path.join(upload, `description.${NARRATION_LOCALE}.txt`)) && existsSync(path.join(upload, "captions", `${NARRATION_LOCALE}.srt`)));
+    return translated && packaged ? null : { locale: NARRATION_LOCALE, parts: [...SHEET_PARTS] };
   }
 
   /**
