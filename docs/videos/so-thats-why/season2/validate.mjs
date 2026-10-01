@@ -5,7 +5,16 @@ import { fileURLToPath } from 'node:url';
 
 // Text packages only: no remote calls, TTS, images, imports or scheduling.
 const base = dirname(fileURLToPath(import.meta.url));
-const ids = ['B26', 'S26', 'T26', 'A31'];
+const batches = {
+  batch01: ['B26', 'S26', 'T26', 'A31'],
+  batch02: ['B27', 'S27', 'T28', 'A33'],
+};
+const batch = process.argv.find((arg) => arg.startsWith('--batch='))?.slice(8) ?? 'batch01';
+if (!Object.hasOwn(batches, batch)) {
+  console.error(`FAIL: unknown batch ${batch}`);
+  process.exit(1);
+}
+const ids = batches[batch];
 const locales = ['en', 'ja', 'ko', 'zh-CN', 'zh-TW'];
 const errors = [];
 const assert = (ok, message) => { if (!ok) errors.push(message); };
@@ -79,32 +88,33 @@ try {
       const link = match[1].split('#')[0];
       if (link && !/^https?:/.test(link)) assert(existsSync(resolve(base, link)), `${id}: missing local link ${link}`);
     }
-    const receiptPath = `reviews/batch01/${id}.json`;
+    const receiptPath = `reviews/${batch}/${id}.json`;
     const receipt = JSON.parse(read(receiptPath));
     assert(receipt.id === id && receipt.status === 'PASS', `${id}: passing receipt required`);
     assert(receipt.author_agent && receipt.reviewer_agent && receipt.author_agent !== receipt.reviewer_agent,
       `${id}: reviewer must differ from original author`);
     assert(receipt.review_scope === 'TEXT_ONLY', `${id}: review scope must remain text only`);
     assert(receipt.package === path && receipt.package_sha256 === hash(path), `${id}: stale package hash`);
-    assert(receipt.report === `reviews/batch01/${id}.md` && receipt.report_sha256 === hash(receipt.report),
+    assert(receipt.report === `reviews/${batch}/${id}.md` && receipt.report_sha256 === hash(receipt.report),
       `${id}: stale report hash`);
     assert(read(receipt.report).toLowerCase().includes(receipt.package_sha256), `${id}: report must name current package hash`);
     const topic = topics.episodes.find((row) => row.id === id);
     assert(topic.production?.package === `season2/${path}` &&
       topic.production?.review === `season2/${receiptPath}` &&
-      topic.production?.status === 'package-reviewed', `${id}: candidate production pointer missing`);
+      topic.production?.status === 'package-reviewed' && topic.production?.batch === batch,
+      `${id}: candidate production pointer missing`);
     return { id, proposed_order: i + 1, package: path, package_sha256: hash(path),
       review_receipt: receiptPath, target_seconds: 480, localizations: packaging.localizations,
       backend_inputs: { premise: textBlocks[0], note: textBlocks[1] }, shorts };
   });
-  const expected = { schema_version: 1, batch: 'batch01', source_checked_on: '2026-10-01',
+  const expected = { schema_version: 1, batch, source_checked_on: '2026-10-01',
     status: 'TEXT_PACKAGES_REVIEWED', schedule_status: 'PROPOSED_NOT_SCHEDULED',
     media_generated: false, platform_imported: false, published: false, episodes };
   if (process.argv.includes('--write')) {
     if (errors.length) throw new Error('Cannot write bundle with validation errors');
-    writeFileSync(resolve(base, 'batch01-packaging.json'), `${JSON.stringify(expected, null, 2)}\n`);
+    writeFileSync(resolve(base, `${batch}-packaging.json`), `${JSON.stringify(expected, null, 2)}\n`);
   } else {
-    assert(same(JSON.parse(read('batch01-packaging.json')), expected), 'bundle differs from reviewed Markdown; regenerate with --write');
+    assert(same(JSON.parse(read(`${batch}-packaging.json`)), expected), 'bundle differs from reviewed Markdown; regenerate with --write');
   }
 } catch (error) {
   errors.push(error.message);
@@ -113,6 +123,6 @@ if (errors.length) {
   errors.forEach((message) => console.error(`FAIL: ${message}`));
   process.exitCode = 1;
 } else {
-  console.log('PASS: 100 candidate IDs, 4 packages, 8 Shorts, 60 localized title/description pairs, fields, chapters, links and review hashes.');
+  console.log(`PASS ${batch}: 100 candidate IDs, 4 packages, 8 Shorts, 60 localized title/description pairs, fields, chapters, links and review hashes.`);
   console.log('Text only. Timings are estimates; no media, platform or owner acceptance is asserted.');
 }

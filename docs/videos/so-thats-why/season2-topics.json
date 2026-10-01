@@ -38,25 +38,34 @@
       "id": "B27",
       "pillar": "business",
       "title": "為什麼商品價格常用 9 結尾？",
-      "hook": "299 和 300 只差 1 元，為什麼感覺便宜很多？",
-      "answer": "常見解釋是「左位數效應」：人從左邊讀數字，最左邊從 3 變 2，就覺得便宜一截（Thomas & Morwitz 2005）；尾數 9 也常被讀成「有打折、很划算」。實驗顯示效果存在但因商品而異；也有研究發現，高檔餐廳用整數價反而讓人覺得有質感。",
+      "hook": "2.99與3.00美元只差一美分；價格感覺與實際購買要分開。",
+      "answer": "左位數效應與比較條件可影響價格感覺；2003女裝郵購實驗看到情境相依的需求效果。資訊線索是作者解釋，不保證便宜或全球固定增幅，未解歷史起源。",
       "shorts": [
-        "299 和 300，差的不只 1 元",
-        "標價 39 元，比 34 元賣得多"
+        "九結尾，重點可能在左邊",
+        "九結尾不是萬用銷售按鈕"
       ],
       "key_visuals": [
-        "價格標籤 2.99 與 3.00 放大鏡對比",
-        "眼睛由左往右掃過一串數字",
-        "收銀機與找零硬幣"
+        "空白價卡左位數後製",
+        "無品牌女裝郵購示意",
+        "資訊線索與真折扣分開"
       ],
       "facts_to_verify": [
-        "Thomas & Morwitz 2005 書目",
-        "Anderson & Simester 2003 的 34/39/44 美元例子（Simester 講義原文）",
-        "Naipaul & Parsa 2001 結論的原文措辭"
+        "2005原摘要的左位數與比較距離限定",
+        "2003原摘要及PDF p93/108/109研究情境；未核單品數字不採",
+        "2000整數價品質訊號原摘要；不補全文樣本"
       ],
       "status": "checked",
       "verdict": "修正",
-      "check": "topic-checks/s2-B26-B38.md"
+      "check": "topic-checks/s2-B26-B38.md",
+      "original_title": "為什麼商品價格常用 9 結尾？",
+      "production": {
+        "status": "package-reviewed",
+        "batch": "batch02",
+        "source_checked_on": "2026-10-01",
+        "package": "season2/B27.md",
+        "packaging": "season2/batch02-packaging.json",
+        "review": "season2/reviews/batch02/B27.json"
+      }
     },
     {
       "id": "B28",
@@ -645,25 +654,34 @@
       "id": "S27",
       "pillar": "science",
       "title": "為什麼鏡子看起來左右相反，上下卻不反？",
-      "hook": "鏡子好像會把左右反過來，那為什麼不會把上下倒過來？",
-      "answer": "鏡子只把「垂直鏡面的前後方向」反過來，並沒有特別換左右。常見解釋是：我們把鏡中人想成轉身面對我們的人，轉身時頭腳、前後被對齊，剩下的差異就落在左右。心理學界對細節仍有不同說法。",
+      "hook": "先看鏡面方向，再問你把誰轉過來比較。",
+      "answer": "平面鏡將垂直鏡面的方向反向；左右反轉的說法與如何想像自己轉身比較有關，但相關認知解釋有不同取向。",
       "shorts": [
-        "鏡子反的是前後，不是左右",
-        "美國救護車規定車頭字要反寫"
+        "鏡子沒有特別挑左右",
+        "不用鏡子，也能把字翻過來"
       ],
       "key_visuals": [
-        "人與鏡中影像的俯視圖，箭頭標前後",
-        "一隻手套與鏡中另一隻手",
-        "反寫字母的車頭（泛稱）"
+        "鏡面座標與像點原創示意",
+        "虛線後延長與相等距離",
+        "透明片字母R翻面，不把二維類比套到三維人体"
       ],
       "facts_to_verify": [
-        "Corballis 2000 Psychon Bull Rev 7(1):163 原文",
-        "KKK-A-1822F 3.16 前方標示 “AMBULANCE, mirror imaged” 條文與現行版本",
-        "台灣救護車車頭反寫是否有法規（本次未查）"
+        "Corballis2000原PDF與OpenStax理想平面鏡示意",
+        "認知比較為一種解釋，另有不同取向",
+        "救護車法規Short刪除；透明片操作限定二維"
       ],
       "status": "checked",
       "verdict": "修正",
-      "check": "topic-checks/s2-S26-S38.md"
+      "check": "topic-checks/s2-S26-S38.md",
+      "original_title": "為什麼鏡子看起來左右相反，上下卻不反？",
+      "production": {
+        "status": "package-reviewed",
+        "batch": "batch02",
+        "source_checked_on": "2026-10-01",
+        "package": "season2/S27.md",
+        "packaging": "season2/batch02-packaging.json",
+        "review": "season2/reviews/batch02/S27.json"
+      }
     },
     {
       "id": "S28",
@@ -1296,25 +1314,35 @@
     {
       "id": "T28",
       "pillar": "travel",
-      "title": "為什麼台灣的垃圾車會放音樂？",
-      "hook": "在台灣，聽到《給愛麗絲》或《少女的祈禱》，就要衝下樓。",
-      "answer": "台灣很多城市路邊不放大型垃圾桶，而是採「垃圾不落地」：垃圾車定時、定點來，民眾自己拿上車，所以要用音樂告訴大家車來了。不過放音樂比垃圾不落地還早，至於為什麼是這兩首，說法很多，沒有官方紀錄。",
+      "title": "垃圾車的音樂，是在提醒什麼？",
+      "hook": "熟悉旋律提醒車輛接近；知道功能不等於知道最初選曲原因。",
+      "answer": "宜蘭2013公告描述熟悉音樂提醒垃圾車接近；臺北現行問答以定時定點及播放安排提供地方案例，不證明全國曲目或最初選曲起源。",
       "shorts": [
-        "音樂一響，就要衝下樓",
-        "兩首名曲，由來各說各話"
+        "熟悉旋律提醒車快到了",
+        "兩首熟悉曲目，不等於全國規則"
       ],
       "key_visuals": [
-        "黃昏巷口提著垃圾袋的人群剪影",
-        "音符從垃圾車喇叭飄出",
-        "路邊大型垃圾桶被打叉"
+        "安全等候靜止車輛",
+        "音樂、時間與收集點三張概念卡",
+        "宜蘭2013改編邀請原創示意"
       ],
       "facts_to_verify": [
-        "台北市垃圾不落地的起始年份（環保局原頁）",
-        "各縣市現用曲目"
+        "臺北現行服務問答的音樂與定時定點；地方限定",
+        "宜蘭2013改編公告僅募集證據，非採用或2026曲目",
+        "起源史料未取得；官員女兒、進口車及1968故事不採"
       ],
       "status": "checked",
       "verdict": "修正",
-      "check": "topic-checks/s2-T26-T38.md"
+      "check": "topic-checks/s2-T26-T38.md",
+      "original_title": "為什麼台灣的垃圾車會放音樂？",
+      "production": {
+        "status": "package-reviewed",
+        "batch": "batch02",
+        "source_checked_on": "2026-10-01",
+        "package": "season2/T28.md",
+        "packaging": "season2/batch02-packaging.json",
+        "review": "season2/reviews/batch02/T28.json"
+      }
     },
     {
       "id": "T29",
@@ -2028,26 +2056,34 @@
       "id": "A33",
       "pillar": "tech",
       "title": "為什麼程式錯誤叫 bug？",
-      "hook": "程式錯誤叫 bug，真的是因為有蟲？",
-      "answer": "1947 年哈佛 Mark II 電腦的工作日誌上貼了一隻在繼電器裡找到的飛蛾，旁邊寫著這是第一次真的找到蟲；但用 bug 表示機器故障的說法在愛迪生的年代就有了，飛蛾只是讓它出名。",
+      "hook": "有一則真蟲故事，不代表bug這個用語在那天誕生。",
+      "answer": "1947年Mark II團隊的飛蛾日誌是著名事件；1878年Edison原信已有bugs指小毛病與困難的用例。較早用例不等於最早造詞證明，Hopper不確定歸為親手發現者。",
       "shorts": [
-        "那隻飛蛾還在博物館",
-        "愛迪生也在抱怨 bug"
+        "日誌裡真的有蟲，但不是 bug 一詞的起點",
+        "1878 年原信裡，愛迪生就寫過 bugs"
       ],
       "key_visuals": [
-        "繼電器裡的一隻飛蛾",
-        "貼著飛蛾的工作日誌（字由卡片疊上）",
-        "1870 年代發明工坊"
+        "1947飛蛾與日誌原創示意",
+        "1878原信語句的後製短引",
+        "事件與用詞兩條時間線"
       ],
       "facts_to_verify": [
-        "日誌日期 1947-09-09、Mark II、「First actual case of bug being found」（CHM、NMAH）",
-        "日誌收藏在史密森尼美國國家歷史博物館（是否展出易變，只說收藏）",
-        "愛迪生 1878 年給 Puskas 的信（Edison Papers；IEEE Spectrum 2013）",
-        "Grace Hopper：在團隊中，但日誌多半不是她寫的、蟲不是她找到的"
+        "Smithsonian官方同物件與CHM團隊記錄；不指定親手發現者",
+        "Rutgers LB003487官方metadata與第4張原scan，只證較早用例",
+        "日誌可能不是Hopper的；收藏不等於現在展出；不斷言造詞者"
       ],
       "status": "checked",
       "verdict": "保留",
-      "check": "topic-checks/s2-A26-A38.md"
+      "check": "topic-checks/s2-A26-A38.md",
+      "original_title": "為什麼程式錯誤叫 bug？",
+      "production": {
+        "status": "package-reviewed",
+        "batch": "batch02",
+        "source_checked_on": "2026-10-01",
+        "package": "season2/A33.md",
+        "packaging": "season2/batch02-packaging.json",
+        "review": "season2/reviews/batch02/A33.json"
+      }
     },
     {
       "id": "A34",
