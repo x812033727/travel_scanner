@@ -1,6 +1,6 @@
 import http from "node:http";
 import { timingSafeEqual } from "node:crypto";
-import { CHUNK, HASH, Refused, SLUG, VIDEO, validateManifest } from "./contract.mjs";
+import { ACTIVE, CHUNK, HASH, Refused, SLUG, VIDEO, validateManifest } from "./contract.mjs";
 
 async function body(request, limit) {
   const parts = []; let size = 0;
@@ -24,7 +24,10 @@ export function createServer({ store, secret, channel, runner }) {
       if (req.method === "GET" && url.pathname === "/health") return send(200, { ready: true });
       const supplied = Buffer.from(req.headers.authorization || "");
       if (supplied.length !== expected.length || !timingSafeEqual(supplied, expected)) throw new Refused("unauthorized", 401);
-      if (req.method === "GET" && url.pathname === "/status") return send(200, { channel_id: channel, browser: runner?.status ?? "stopped" });
+      if (req.method === "GET" && url.pathname === "/status") return send(200, {
+        channel_id: channel, browser: runner?.status ?? "stopped",
+        active_jobs: store.all().filter((job) => ACTIVE.has(job.state)).length,
+      });
       const project = /^\/projects\/([^/]+)$/.exec(url.pathname);
       if (project && req.method === "GET") {
         if (!SLUG.test(project[1])) throw new Refused("invalid_slug", 422);

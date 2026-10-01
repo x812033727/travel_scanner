@@ -154,7 +154,7 @@ node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整�
 
 - 看紀錄：`docker compose -f docker-compose.prod.yml logs --timestamps video-worker`；`top video-worker` 看它是不是在 `sleep 300`。
 - 一輪同時推兩支影片（compose 的 `VIDEO_WORKER_LANES: "2"`，上限 3，設 1 回到一次一支）：第一條線照舊處理放棄、重試、貼網址、討論、作品與新稿，第二條只推已經在做的影片；兩條線不會拿同一支，紀錄裡第二條線的行前面有 `[lane 2]`。
-- 緊急停止：`docker compose -f docker-compose.prod.yml exec -T video-worker touch /var/lib/mokaair/video-work/STOP`，做完手上那一段就停；要恢復時刪掉這個檔。
+- 緊急停止：`docker compose -f docker-compose.prod.yml exec -T video-worker touch /var/lib/mokaair/video-work/STOP`，做完手上那一段就停；要恢復時刪掉這個檔。Shorts 的敲門（在 `auto` 旁邊另外每 5 分鐘跑一次）也看這個檔，有 STOP 就不敲門，網站也就不鎖定時段、不再開始送 Shorts，紀錄印一行 `video-worker: shorts: STOP found`。
 - `video_docs` volume 只在第一次建立時從映像填入，之後映像裡的 `docs/videos` 更新不會進去。
 - 工人只看得到自己的 volume，可能重做本機已經做過的題目：本機或分支上的影片用 `review-push --report-only` 登記到審核頁。
 - 換新模型前先更新主機的 Claude CLI（`claude update`；2.1.259 對 Opus 5.5 回 400，要 2.1.280 以上）。
