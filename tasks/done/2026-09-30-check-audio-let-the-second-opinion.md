@@ -1,13 +1,13 @@
 ---
 id: 2026-09-30-check-audio-let-the-second-opinion
 title: check-audio: let the second-opinion timeout and model be set per machine
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-second-opinion
 claimed_at: 2026-10-01T03:38:09Z
 created_at: 2026-09-30T10:01:50Z
-completed_at:
+completed_at: 2026-10-01T03:43:23Z
 branch: claude/second-opinion-timeout
 depends_on: []
 scope:
