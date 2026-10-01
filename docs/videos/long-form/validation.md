@@ -2,6 +2,8 @@
 
 Date: 2026-10-02 (Asia/Taipei). This records local planning and code checks; no actual video was rendered, measured, imported, deployed or published.
 
+This is the original pre-integration check history. The current combined implementation and expanded review are recorded in [integration-validation.md](integration-validation.md); its later results supersede the earlier file counts and shared-branch delivery notes below.
+
 ## Planning and independent review
 
 - All 473 effective plans passed `node tools/video/long-form/cli.mjs check`: 100 first-season, 92 adopted second-season, 100 third-season candidates, 100 brand stories and 81 AI terms, including the one covered term.
