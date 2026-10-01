@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { existsSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
 import path from "node:path";
 
 import { EXIT, main } from "../cli.mjs";
@@ -13,8 +14,9 @@ import { DESCRIPTION_MAX_BYTES } from "../core/metadata.mjs";
 import { estimateTimeline } from "../core/timeline.mjs";
 import { audioReviewHtml, finalReviewHtml } from "../review/pages.mjs";
 import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeTranslations } from "../compile/fixture.mjs";
-import { compilationSection, composeMetadata, uploadChecklist } from "./metadata.mjs";
-import { captionsCurrent, linkOrCopy, skippedCaptionLocales } from "./cli.mjs";
+import { localizedThumbnailHash, thumbnailSourceHash } from "../core/translations.mjs";
+import { compilationSection, composeMetadata, localizedThumbnailSteps, uploadChecklist } from "./metadata.mjs";
+import { captionsCurrent, linkOrCopy, localeThumbnails, skippedCaptionLocales } from "./cli.mjs";
 
 const doc = fixture();
 const timeline = { ...estimateTimeline(doc), speech_hash: "abc123" };
@@ -207,4 +209,42 @@ test("package links a compilation's final.mp4, records the download, the size an
   assert.match(stale.out.stderr, /merged for other cuts; run compile again/);
   writeFileSync(manifest, saved);
   assert.equal(linkOrCopy(path.join(box.workdir, "final.mp4"), path.join(box.workdir, "copy.mp4")), "linked");
+});
+
+test("each language's own thumbnail goes into the package only when render drew it from the words i18n has now", () => {
+  const workdir = mkdtempSync(path.join(tmpdir(), "video-thumbs-"));
+  mkdirSync(path.join(workdir, "thumbnails"));
+  for (const locale of ["en", "ja"]) writeFileSync(path.join(workdir, "thumbnails", `${locale}.jpg`), "jpeg");
+  const merged = (headline) => ({ thumbnail: { tag: "Picking a model", headline }, source_hashes: { thumbnail: thumbnailSourceHash(doc) } });
+  const translations = { en: merged("No. 1 is not always best"), ja: merged("一位が最適とは限らない"), ko: merged("1위가 최선은 아니다") };
+  const drawn = (locale, translation) => ({ file: `thumbnails/${locale}.jpg`, hash: localizedThumbnailHash(doc, translation) });
+  const manifest = {
+    thumbnail_locales: { en: drawn("en", translations.en), ja: drawn("ja", merged("an older headline")) },
+    thumbnail_locale_gaps: { ko: "no bundled font has \"최\" U+CD5C" },
+  };
+  const { files, skipped } = localeThumbnails({ doc, translations, manifest, workdir, locales: ["en", "ja", "ko", "zh-CN"] });
+  assert.deepEqual(files, { en: "thumbnails/en.jpg" });
+  assert.deepEqual(Object.keys(skipped), ["ja", "ko", "zh-CN"]);
+  assert.match(skipped.ja, /drawn from other words than i18n has now; run render/);
+  assert.match(skipped.ko, /no bundled font has/);
+  assert.match(skipped["zh-CN"], /i18n\/zh-CN\.json has no thumbnail words/);
+  // A video packaged before render drew any keeps working: every language is a note.
+  assert.deepEqual(localeThumbnails({ doc, translations: {}, manifest: null, workdir, locales: ["en"] }), { files: {}, skipped: { en: "i18n/en.json has no thumbnail words (i18n-sheet --locale en --parts metadata, then i18n-merge)" } });
+  assert.deepEqual(localeThumbnails({ doc, translations, manifest: { thumbnail_locales: { en: drawn("en", translations.en) } }, workdir, locales: ["en", "ko"] }).skipped.ko, "not drawn yet; run render");
+});
+
+test("UPLOAD.md gets a language thumbnails section with Studio's steps only when there is something to say", () => {
+  const { metadata } = composeMetadata({ doc, timeline });
+  const withThumbs = uploadChecklist({ metadata, captions: ["captions/zh-TW.srt"], thumbnail: true, thumbnails: { en: "thumbnails/en.jpg" }, skippedThumbnails: { ja: "i18n/ja.json has no thumbnail words" } });
+  assert.match(withThumbs, /## 4\. 各語言的縮圖/);
+  assert.match(withThumbs, /`thumbnails\/en\.jpg`（en）/);
+  assert.match(withThumbs, /「語言」→ 這支影片 → 點那個語言的名稱 →「縮圖」旁的「新增」→ 選對應的檔案 →「更新」/);
+  assert.match(withThumbs, /長片（不含 Shorts）/);
+  assert.match(withThumbs, /- ja：i18n\/ja\.json has no thumbnail words/);
+  assert.match(withThumbs, /## 5\. 上傳之後/);
+  const plain = uploadChecklist({ metadata, captions: [], thumbnail: true });
+  assert.doesNotMatch(plain, /各語言的縮圖/);
+  assert.match(plain, /## 4\. 上傳之後/);
+  assert.equal(localizedThumbnailSteps({}, {}), "");
+  assert.doesNotMatch(uploadChecklist({ metadata, captions: [], thumbnail: false, skippedThumbnails: { ja: "x" } }), /各語言的縮圖/, "no thumbnail.jpg, nothing to localize");
 });

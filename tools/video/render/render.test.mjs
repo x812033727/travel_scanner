@@ -8,10 +8,11 @@ import { compilationDocument } from "../core/compilation.mjs";
 import { dramaFixture, explainerFixture } from "../core/fixtures/load.mjs";
 import { estimateTimeline } from "../core/timeline.mjs";
 import { resolveRequest } from "./browser.mjs";
-import { coverageProblems } from "./cli.mjs";
+import { localizedThumbnailHash, thumbnailSource, thumbnailSourceHash } from "../core/translations.mjs";
+import { coverageProblems, localizedThumbnails } from "./cli.mjs";
 import { contactSheetHtml } from "./contact.mjs";
 import { bundledCoverage, covers, mergeRanges, parseUnicodeRanges, uncovered } from "./fonts.mjs";
-import { renderPlan, renderProblems, stillFile, themeHash, thumbnailVariantFile, transitionFile } from "./plan.mjs";
+import { localeThumbnailFile, renderPlan, renderProblems, stillFile, themeHash, thumbnailVariantFile, transitionFile } from "./plan.mjs";
 import { BLANK_STRIP, blankStripHtml, blankStripKey, STRIP_SIZE, stripFile, stripHtml, subtitlePlan } from "./subtitles.mjs";
 
 const showcase = JSON.parse(readFileSync(new URL("../templates/fixtures/showcase/video.json", import.meta.url), "utf8"));
@@ -242,4 +243,32 @@ test("an explainer's thumbnail variants are drawn beside A, each on its own keyf
   odd.thumbnail.variants[0].data.headline = "𝕏";
   assert.deepEqual(coverageProblems(renderPlan(odd, "t", null, { keyframes }), bundledCoverage()).map((problem) => problem.path), ["thumbnail variant b"]);
   assert.equal(renderPlan(dramaFixture(), "t").thumbnail.variants, undefined, "no variants: the plan is as it was");
+});
+
+test("each caption locale with current thumbnail words gets its own thumbnail on the same picture; the others are notes", () => {
+  const doc = explainerFixture();
+  const keyframes = { flash: { file: "keyframes/flash-1.png", sha256: "aa" }, race: { file: "keyframes/race-1.png", sha256: "bb" } };
+  const words = (prefix) => Object.fromEntries(Object.keys(thumbnailSource(doc)).map((name) => [name, `${prefix} ${name}`]));
+  const merged = (thumbnail) => ({ thumbnail, source_hashes: { thumbnail: thumbnailSourceHash(doc) } });
+  const translations = { en: merged(words("Why")), ko: merged({ ...words("왜"), headline: "테스트" }), "zh-CN": { thumbnail: words("为何") } };
+  const plan = renderPlan(doc, "t", null, { keyframes, translations });
+  assert.deepEqual(plan.thumbnail.locales.map((own) => [own.locale, own.file]), [["en", "thumbnails/en.jpg"], ["ko", "thumbnails/ko.jpg"]]);
+  const [en] = plan.thumbnail.locales;
+  assert.equal(localeThumbnailFile("ja"), "thumbnails/ja.jpg");
+  assert.match(en.html, /Why headline/);
+  assert.match(en.html, /keyframes\/flash-1\.png/, "the same picture as A");
+  assert.match(en.html, /原來如此事務所/, "and the same series look");
+  assert.equal(en.hash, localizedThumbnailHash(doc, translations.en));
+  assert.notEqual(en.key, plan.thumbnail.key);
+  assert.deepEqual(Object.keys(plan.thumbnail.gaps), ["ja", "zh-CN"]);
+  assert.match(plan.thumbnail.gaps["zh-CN"], /not merged by i18n-merge/);
+  assert.match(plan.thumbnail.gaps.ja, /i18n\/ja\.json has no thumbnail words/);
+  // Hangul the bundled fonts lack is a note for that locale, not a failed render.
+  assert.deepEqual(coverageProblems(plan, bundledCoverage()), []);
+  const localized = localizedThumbnails(plan, bundledCoverage());
+  assert.deepEqual(localized.drawable.map((own) => own.locale), ["en"]);
+  assert.match(localized.gaps.ko, /no bundled font has .*U\+D14C/);
+  // Without translations the plan is as it was.
+  assert.equal(renderPlan(doc, "t", null, { keyframes }).thumbnail.locales, undefined);
+  assert.deepEqual(localizedThumbnails(renderPlan(doc, "t", null, { keyframes }), bundledCoverage()), { drawable: [], drawn: {}, gaps: {} });
 });
