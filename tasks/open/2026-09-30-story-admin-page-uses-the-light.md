@@ -1,20 +1,25 @@
 ---
 id: 2026-09-30-story-admin-page-uses-the-light
 title: Story admin page uses the light series read
-status: open
+status: in-progress
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5-5-story-light-web
+claimed_at: 2026-10-01T03:39:08Z
 created_at: 2026-09-30T04:21:19Z
 completed_at:
-branch:
+branch: claude/story-admin-light-read
 depends_on:
   - 2026-09-28-video-story-light-series-read
 scope:
   - apps/web/components/admin-video-stories.tsx
   - apps/web/components/admin-video-series.tsx
   - apps/web/components/admin-video-stories.test.tsx
+  - apps/web/messages/en/admin.json
+  - apps/web/messages/ja/admin.json
+  - apps/web/messages/ko/admin.json
+  - apps/web/messages/zh-CN/admin.json
+  - apps/web/messages/zh-TW/admin.json
 ---
 
 # Story admin page uses the light series read
@@ -41,23 +46,23 @@ Ticket `2026-09-28-video-story-light-series-read` added the API for this:
 
 ## Definition of done
 
-- [ ] While the page shows a story series, its minute-by-minute read is the `?beats=summary`
+- [x] While the page shows a story series, its minute-by-minute read is the `?beats=summary`
       one; the list, filters, publishing slots and states look the same as before.
-- [ ] Opening a story's plan reads that story from `/episodes/{number}` and shows the whole
+- [x] Opening a story's plan reads that story from `/episodes/{number}` and shows the whole
       plan (question, chapters, facts, sources, caveats, takeaway), with a loading and an
       error state; closing and reopening does not need a new read unless the list changed.
-- [ ] Drama series (long and one-off) keep the whole read: their episodes' beats are the
+- [x] Drama series (long and one-off) keep the whole read: their episodes' beats are the
       chapter outlines the page shows.
 
 ## Steps
 
-- [ ] The series read lives in `admin-video-series.tsx` (`refreshed = api<Series>(...)`, the
+- [x] The series read lives in `admin-video-series.tsx` (`refreshed = api<Series>(...)`, the
       one that sets `storySlug`), not in the stories component: decide how the story view asks
       for `?beats=summary` (for example, read with it once `storySlug.current` is known to be a
       story, since the first read cannot know the kind).
-- [ ] `StoryPlan` fetches `/admin/video-automation/series/{slug}/episodes/{number}` and renders
+- [x] `StoryPlan` fetches `/admin/video-automation/series/{slug}/episodes/{number}` and renders
       the answer's `beats`.
-- [ ] Update `admin-video-stories.test.tsx` for the two reads.
+- [x] Update `admin-video-stories.test.tsx` for the two reads.
 
 ## How to verify
 
@@ -75,3 +80,31 @@ read at `?beats=summary` (under 150 KB) and one `/episodes/{n}` read when a plan
 - Each episode's `video` (a `ProjectSummary`, about 1–3 KB) stays in the light read; once a
   hundred stories all have videos the light read grows by roughly that much per story. If it
   passes 150 KB then, trimming `video` in summary mode is an API follow-up, not this ticket.
+- Claimed with `--force` (2026-10-01): the overlaps were stale claims whose work is on main —
+  `2026-09-27-video-drama-room-withdraw-a-one` (PR #870, merged 2026-09-28; `withdraw_series` is in
+  `series.py`) and the two `codex-ten-drama` tickets (PR #978, merged). No open PR touches these files.
+- Scope also adds `apps/web/messages/*/admin.json`: the plan's loading and error lines are new copy
+  (`admin.videoStories.plan.loading`, `plan.loadError`), in all five locales. The retry button reuses
+  `admin.videoSeries.retry`. No key was renamed, so no owner override is orphaned.
+- No BFF route is needed: `lib/api.ts` sends every admin call through the catch-all
+  `apps/web/app/api/travel/[...path]/route.ts`, which forwards any path and its query string, so
+  both `?beats=summary` and `/episodes/{number}` already reach the API.
+- How the light read is asked for (`admin-video-series.tsx`, `SeriesPage.load`): the first read is
+  whole, since it cannot know the kind; once it said `kind: "story"` (`storySlug.current === slug`,
+  the same ref that already skipped the compilation read) every later read — the minute refresh and
+  the reload after any action — adds `?beats=summary`. A drama series never sets the ref, so it is
+  always read whole. Opening a story series therefore costs one whole read, then light ones.
+- The plan (`useStoryPlan` in `admin-video-stories.tsx`): the opened story's episode is read from
+  `/episodes/{number}`; the answer is kept per episode number under a key made of the story's light
+  row without its `video` (title, logline, status, dates, the summary beats) plus a counter this
+  page's import bumps. Closing and reopening reuses it; a row that changed (skipped, restored,
+  renamed, renumbered) or an import from this page reads it again. An import by someone else that
+  rewrites only a plan's chapters is not seen until the page is reloaded — the light read carries
+  nothing that says a plan changed (episode `updated_at` is not in `SeriesEpisodeOut`). A plan whose
+  row the filters hide is not read. Loading shows `plan.loading`; a failure shows the server's
+  message with a retry.
+- Verified: the three new/changed vitest cases fail with the old components and pass with the new
+  ones; the drama case passes both ways (it guards the whole read). Not checked on a local stack with
+  the real backlog. Needs the API from PR #1026 deployed: an older API ignores `beats=summary` (the
+  page still works, just whole) but answers 404 for `/episodes/{number}`, which shows as the plan's
+  error state.
