@@ -1,6 +1,6 @@
 # 原來如此事務所第二季：製作包交接
 
-2026-10-01 完成四批共16題文字包：**B26、S26、T26、A31**、**B27、S27、T28、A33**、**B48、S44、T33、A36**及**B37、S31、T29、A41**。原題庫100題的「checked」是題目查核，本頁的「文字包已審」是本日逐集企劃及獨立審稿；沒有長片完整逐字稿、生成音訊／圖片／成片、正式匯入、核准或上架。
+2026-10-01 完成五批共20題文字包：**B26、S26、T26、A31**、**B27、S27、T28、A33**、**B48、S44、T33、A36**、**B37、S31、T29、A41**及**B46、S32、T41、A40**。原題庫100題的「checked」是題目查核，本頁的「文字包已審」是本日逐集企劃及獨立審稿；沒有長片完整逐字稿、生成音訊／圖片／成片、正式匯入、核准或上架。
 
 | 順序提案 | 本集問題 | 製作包 | 作者→獨立查核／聽眾文字審稿 |
 | --- | --- | --- | --- |
@@ -36,17 +36,27 @@
 | 3 | 街區、住居號碼及土地地番 | [T29](T29.md) | root→write_b26；[報告](reviews/batch04/T29.md)／[收據](reviews/batch04/T29.json) |
 | 4 | 手套隔層與電容觸控 | [A41](A41.md) | write_t26→write_a31；[報告](reviews/batch04/A41.md)／[收據](reviews/batch04/A41.json) |
 
+第五批順序也是本批提案，沒有發布日期。
+
+| 順序提案 | 本集問題 | 製作包 | 作者→獨立查核／聽眾文字審稿 |
+| --- | --- | --- | --- |
+| 1 | 可移除的膠、書籤與產品化 | [B46](B46.md) | write_b26→root；[報告](reviews/batch05/B46.md)／[收據](reviews/batch05/B46.json) |
+| 2 | 海洋溶解物的來源、保留與移除 | [S32](S32.md) | write_a31→write_t26；[報告](reviews/batch05/S32.md)／[收據](reviews/batch05/S32.json) |
+| 3 | 廁所禁菸與菸灰缸為何並存 | [T41](T41.md) | root→write_b26；[報告](reviews/batch05/T41.md)／[收據](reviews/batch05/T41.json) |
+| 4 | www命名與站方服務安排 | [A40](A40.md) | write_t26→write_a31；[報告](reviews/batch05/A40.md)／[收據](reviews/batch05/A40.json) |
+
 每包包含本日來源與限制、前提／備註貼用欄位、480秒六章大綱、兩支180–220中文／英文數字詞單位Shorts、原創插畫／縮圖提示、五語長短片標題與說明。章長和Shorts秒數為估值，實際製作要重新查核新增主張、展開分鏡、審稿、TTS試聽、成片與平台驗收。
 
-五語可解析包：[batch01-packaging.json](batch01-packaging.json)、[batch02-packaging.json](batch02-packaging.json)、[batch03-packaging.json](batch03-packaging.json)與[batch04-packaging.json](batch04-packaging.json)，合計16長片企劃＋32Shorts共240組標題／說明。`proposed_order`僅本批順序，不改第一季排程，不設定發布日期。
+五語可解析包：[batch01-packaging.json](batch01-packaging.json)、[batch02-packaging.json](batch02-packaging.json)、[batch03-packaging.json](batch03-packaging.json)、[batch04-packaging.json](batch04-packaging.json)與[batch05-packaging.json](batch05-packaging.json)，合計20長片企劃＋40Shorts共300組標題／說明。`proposed_order`僅本批順序，不改第一季排程，不設定發布日期。
 
 ```powershell
 node docs/videos/so-thats-why/season2/validate.mjs
 node docs/videos/so-thats-why/season2/validate.mjs --batch=batch02
 node docs/videos/so-thats-why/season2/validate.mjs --batch=batch03
 node docs/videos/so-thats-why/season2/validate.mjs --batch=batch04
+node docs/videos/so-thats-why/season2/validate.mjs --batch=batch05
 # 正文與獨立審稿已更新且收據重綁後，才重產包裝：
-node docs/videos/so-thats-why/season2/validate.mjs --batch=batch04 --write
+node docs/videos/so-thats-why/season2/validate.mjs --batch=batch05 --write
 ```
 
 檢查器核100題id、五語、欄位上限、Shorts估時、六章合計、檔案入口及byte SHA256。它不做外部查核或媒體QA，不能自行把新稿視為已審；修改包後必須交不同作者審稿，更新報告與收據。審稿報告與本包各自有雜湊。
@@ -59,13 +69,15 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch04 --write
 
 第四批限制：B37指定FY2025與營業利益，不把segment當純網購、數字作投資建議或永久排名；S31不採未重算山峰數值或壓力器具操作；T29改說街區方式，刪全國大多數與未核京都韓國史；A41不說所有手套都失敗，功能例子限定加拿大Samsung支援頁，未核各機型實際UI。
 
+第五批限制：B46的黃色故事歸屬品牌，不採精確發現年、失敗發明或普遍性能；S32把溶解物來源、蒸發保留及移除分開，不採固定河水值/占比；T41限定美國運輸類飛機設計規範及2012官方摘要，不講缺件放行或罰款；A40不將www可省當全網站保證，不混DNS與HTTP轉址，CERN2013重建與原站歷史分開。
+
 ## 下一批接手
 
-母票仍開放，目前完成16題文字包；其餘84題尚待逐題審選，不能將列出題名當製作完成。開始下批先查分支／worktree／PR碰撞，再開窄scope批次票。現有製作包以本分支草稿PR交接，合併前不要另寫這十六檔。
+母票仍開放，目前完成20題文字包；其餘80題尚待逐題審選，不能將列出題名當製作完成。開始下批先查分支／worktree／PR碰撞，再開窄scope批次票。現有製作包以本分支草稿PR交接，合併前不要另寫這二十檔。
 
 - A26：與既有AI名詞「上下文視窗」題重疊，本批跳過；需選新的可核實角度再採用。
 - S50／第三季S55、A29/A30／第三季A70、A38／第三季A58：下一批挑選前比較原查核與第一季、品牌故事、AI名詞企劃，避免重複同一問題及例子；目前尚未裁決。
-- B26/S26/T26/A31/B27/S27/T28/A33/B48/S44/T33/A36/B37/S31/T29/A41：文字包通過後續還要有完整長片稿與真實製作；不操作正式站或付費生成。
+- B26/S26/T26/A31/B27/S27/T28/A33/B48/S44/T33/A36/B37/S31/T29/A41/B46/S32/T41/A40：文字包通過後續還要有完整長片稿與真實製作；不操作正式站或付費生成。
 
 ## 100題逐題入口
 
@@ -93,7 +105,7 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch04 --write
 | B43 | 為什麼賣飲料的 Red Bull 要自己辦比賽、拍影片？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
 | B44 | 為什麼輪胎公司要替餐廳評星星？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
 | B45 | 為什麼百圓商店賣一百圓還能賺？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
-| B46 | 為什麼一種黏不牢的膠，變成了便利貼？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
+| B46 | 為什麼一種黏不牢的膠，變成了便利貼？ | [文字包已審](B46.md)；媒體未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
 | B47 | 為什麼 KitKat 在日本出過幾百種口味？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
 | B48 | 為什麼刷 Visa 卡，借你錢的卻不是 Visa？ | [文字包已審](B48.md)；媒體未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
 | B49 | 為什麼泡麵會在日本被發明出來？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
@@ -104,7 +116,7 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch04 --write
 | S29 | 為什麼颱風眼裡反而風小雨停？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S26-S38.md) |
 | S30 | 為什麼溫泉蛋的蛋白比蛋黃還軟？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S26-S38.md) |
 | S31 | 為什麼高山上的水不到 100 度就滾了？ | [文字包已審](S31.md)；媒體未製作 | [原報告](../topic-checks/s2-S26-S38.md) |
-| S32 | 為什麼海水是鹹的，河水卻不鹹？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S26-S38.md) |
+| S32 | 為什麼海水是鹹的，河水卻不鹹？ | [文字包已審](S32.md)；媒體未製作 | [原報告](../topic-checks/s2-S26-S38.md) |
 | S33 | 為什麼玻璃是透明的？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S26-S38.md) |
 | S34 | 為什麼蚊子特別愛咬某些人？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S26-S38.md) |
 | S35 | 為什麼秋天的葉子會變紅？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S26-S38.md) |
@@ -138,7 +150,7 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch04 --write
 | T38 | 為什麼瑞士不是歐盟國家，卻在申根區？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T26-T38.md) |
 | T39 | 為什麼護照顏色大多是紅藍綠黑？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T39-T50.md) |
 | T40 | 為什麼飛機上要開飛航模式？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T39-T50.md) |
-| T41 | 為什麼飛機禁菸，廁所門邊卻有菸灰缸？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T39-T50.md) |
+| T41 | 為什麼飛機禁菸，廁所門邊卻有菸灰缸？ | [文字包已審](T41.md)；媒體未製作 | [原報告](../topic-checks/s2-T39-T50.md) |
 | T42 | 為什麼搭飛機大多從左邊登機？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T39-T50.md) |
 | T43 | 為什麼倫敦計程車司機要背幾千條街？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T39-T50.md) |
 | T44 | 為什麼阿姆斯特丹的運河屋又窄又往前傾？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T39-T50.md) |
@@ -162,7 +174,7 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch04 --write
 | A37 | 為什麼充電器功率變大，體積卻變小？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A26-A38.md) |
 | A38 | 為什麼 GPS 要用到相對論？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A26-A38.md) |
 | A39 | 為什麼複製是 Ctrl+C、貼上是 Ctrl+V？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A39-A50.md) |
-| A40 | 為什麼網址前面常有 www？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A39-A50.md) |
+| A40 | 為什麼網址前面常有 www？ | [文字包已審](A40.md)；媒體未製作 | [原報告](../topic-checks/s2-A39-A50.md) |
 | A41 | 為什麼戴手套常滑不動手機？ | [文字包已審](A41.md)；媒體未製作 | [原報告](../topic-checks/s2-A39-A50.md) |
 | A42 | 為什麼電影 24 格就順，遊戲卻常要 60 幀？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A39-A50.md) |
 | A43 | 為什麼有些詐騙訊息假得很明顯？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A39-A50.md) |

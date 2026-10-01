@@ -10,6 +10,7 @@ const batches = {
   batch02: ['B27', 'S27', 'T28', 'A33'],
   batch03: ['B48', 'S44', 'T33', 'A36'],
   batch04: ['B37', 'S31', 'T29', 'A41'],
+  batch05: ['B46', 'S32', 'T41', 'A40'],
 };
 const batch = process.argv.find((arg) => arg.startsWith('--batch='))?.slice(8) ?? 'batch01';
 if (!Object.hasOwn(batches, batch)) {
