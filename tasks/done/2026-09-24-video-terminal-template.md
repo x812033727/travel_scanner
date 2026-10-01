@@ -1,13 +1,13 @@
 ---
 id: 2026-09-24-video-terminal-template
 title: 影片產線 T10：模擬終端機版型
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-terminal-template
 claimed_at: 2026-10-01T07:04:43Z
 created_at: 2026-09-24T00:41:18Z
-completed_at:
+completed_at: 2026-10-01T07:29:06Z
 branch: claude/video-terminal-template
 depends_on:
   - 2026-09-24-video-pilot-ai-model-choice
