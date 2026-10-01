@@ -346,7 +346,7 @@
       "description": "有效的需求不是把提示词写得很长，而是让代理知道你要什么、已有哪些材料、有哪些界线，以及怎样算完成。同一个『帮我改善网页』，可以指速度、外观或无障碍；先把目标变成能观察的行为。",
       "hero": {
         "src": "/guides/codex-prompting/hero.jpg",
-        "alt": "实作顺序示意图，非产品介面截图。",
+        "alt": "实操顺序示意图，非产品界面截图。",
         "width": 1600,
         "height": 900,
         "credit": {
@@ -382,7 +382,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "你会把一句模糊需求改成 Codex 可以执行、自己也能验收的任务，并在结果不符合时补充资讯而不必整段重来。阅读约 12 分钟，实作约 20 分钟。本篇使用同一个待办网站修改表单文字；重点是需求的可验证性，不是背诵固定的提示词公式。"
+          "text": "你会把一句模糊需求改成 Codex 可以执行、自己也能验收的任务，并在结果不符合时补充信息而不必整段重来。阅读约 12 分钟，实操约 20 分钟。本篇使用同一个待办网站修改表单文字；重点是需求的可验证性，不是背诵固定的提示词公式。"
         },
         {
           "type": "heading",
@@ -403,7 +403,7 @@
             },
             {
               "type": "text",
-              "text": "复制 expected 到全新的 codex-prompt-lab；不要沿用上一课已改过文字的副本。根目录应有五个档案，先开启 index.html，找到 New task 标签、Add task 按钮与 Read the project README 提示文字。这三个可见字串就是本篇的来源；不需要贴整个专案进对话。"
+              "text": "复制 expected 到全新的 codex-prompt-lab；不要沿用上一课已改过文字的副本。根目录应有五个文件，先打开 index.html，找到 New task 标签、Add task 按钮与 Read the project README 提示文字。这三个可见字符串就是本篇的来源；不需要贴整个项目进对话。"
             }
           ]
         },
@@ -416,13 +416,13 @@
             },
             {
               "type": "article",
-              "text": "第一个小专案",
+              "text": "第一个小项目",
               "kind": "life",
               "slug": "codex-first-project"
             },
             {
               "type": "text",
-              "text": "者可使用相同预览方式。Windows 在副本执行 py -m http.server 4173 --bind 127.0.0.1；macOS／Linux 执行 python3 -m http.server 4173 --bind 127.0.0.1，浏览 http://127.0.0.1:4173。这一课不需要先学 Git，但要保留原版，以便确认差异或取回自己改过的档案。"
+              "text": "者可使用相同预览方式。Windows 在副本执行 py -m http.server 4173 --bind 127.0.0.1；macOS／Linux 执行 python3 -m http.server 4173 --bind 127.0.0.1，浏览 http://127.0.0.1:4173。这一课不需要先学 Git，但要保留原版，以便确认差异或取回自己改过的文件。"
             }
           ]
         },
@@ -433,11 +433,11 @@
         },
         {
           "type": "paragraph",
-          "text": "「帮我把表单改得更好」没有说给谁用、哪里不好、能改哪些地方，或怎样算完成。Codex 可能改色彩、栏位、按钮、资料结构，甚至加入你没需要的新套件；这不一定是它做错，而是需求允许太多不同解读。先用一句话说出读者要做到的事，例如「新使用者能看懂怎么新增一笔小任务」。"
+          "text": "「帮我把表单改得更好」没有说给谁用、哪里不好、能改哪些地方，或怎样算完成。Codex 可能改色彩、字段、按钮、数据结构，甚至加入你没需要的新依赖包；这不一定是它做错，而是需求允许太多不同解读。先用一句话说出读者要做到的事，例如「新用户能看懂怎么新增一条小任务」。"
         },
         {
           "type": "paragraph",
-          "text": "接著补四种资讯：目标、现况来源、限制、验收。它们不是每次都要四个标题的格式，而是防止重要资讯漏掉的检查方式。小幅改字只需几行；跨多个档案的新功能，才需要背景与分段计划。不要为了看起来专业而塞入没用的角色设定、工具清单或假装精确的工时。"
+          "text": "接着补四种信息：目标、现况来源、限制、验收。它们不是每次都要四个标题的格式，而是防止重要信息漏掉的检查方式。小幅改字只需几行；跨多个文件的新功能，才需要背景与分段计划。不要为了看起来专业而塞入没用的角色设置、工具清单或假装精确的工时。"
         },
         {
           "type": "heading",
@@ -446,17 +446,17 @@
         },
         {
           "type": "paragraph",
-          "text": "下方是本篇完整提示词，输入到已选定 codex-prompt-lab 的 Codex 任务，而不是作业系统终端机。它明确指出一个 HTML 档案与两个字串变更，保留无障碍标签、事件系结与资料格式，最后要求实际检查。New task 保持不变是为了保留表单的可见标签，不是要把所有文字强行改成同一个词。"
+          "text": "下方是本篇完整提示词，输入到已选定 codex-prompt-lab 的 Codex 任务，而不是操作系统终端。它明确指出一个 HTML 文件与两个字符串变更，保留无障碍标签、事件绑定与数据格式，最后要求实际检查。New task 保持不变是为了保留表单的可见标签，不是要把所有文字强行改成同一个词。"
         },
         {
           "type": "code",
-          "label": "自然语言提示词：贴入练习专案的 Codex 任务",
+          "label": "自然语言提示词：贴入练习项目的 Codex 任务",
           "language": "text",
           "code": "Goal: make the existing todo form wording clearer for a first-time visitor.\nContext: this folder is the unchanged Small Steps expected practice version.\nIn index.html only:\n- Change the submit button text from \"Add task\" to \"Save task\".\n- Change the input placeholder to \"Plan one small step\".\nKeep the visible \"New task\" label, input id/name, maxlength, required attribute,\nbutton type, JavaScript behavior, stored data and all other files unchanged.\nDo not install packages or deploy anything.\nValidate by adding Read, completing it, checking Completed, and refreshing.\nCheck that whitespace-only input does not create a task.\nRun node --test core.test.mjs. If browser checks are unavailable, list them as not run.\nReport the exact changed strings, files and evidence.\n"
         },
         {
           "type": "paragraph",
-          "text": "背景已经在档案里的资讯，让 Codex 先读档即可；指向精确档名比复制整份历史纪录更有用。如果实际画面没有 Add task，先停下核对是否使用原版。不要将不符合起点的要求硬套上去，或让它在所有档案搜寻相似文字后全部替换。可重现范例的第一个条件就是起点一致。"
+          "text": "背景已经在文件里的信息，让 Codex 先读文件即可；指向精确文件名比复制整份历史记录更有用。如果实际页面没有 Add task，先停下核对是否使用原版。不要将不符合起点的要求硬套上去，或让它在所有文件搜索相似文字后全部替换。可复现示例的第一个条件就是起点一致。"
         },
         {
           "type": "heading",
@@ -465,20 +465,20 @@
         },
         {
           "type": "paragraph",
-          "text": "完成后开启 index.html，应只看到按钮文字与 placeholder 改动。New task 仍是与输入框相连的标签，type=\"submit\"、id、name、maxlength、required 都保留。再开其他四个档案与原版比较，确认没有顺手改架构。若 Codex 回复很短但差异正确、验证完整，这仍然是好交付；很长的说明不能替代缺少的档案与结果。"
+          "text": "完成后打开 index.html，应只看到按钮文字与 placeholder 改动。New task 仍是与输入框相连的标签，type=\"submit\"、id、name、maxlength、required 都保留。再开其他四个文件与原版比较，确认没有顺手改架构。若 Codex 回复很短但差异正确、验证完整，这仍然是好交付；很长的说明不能替代缺少的文件与结果。"
         },
         {
           "type": "paragraph",
-          "text": "在 http 预览新增 Read，勾选完成，Completed 应只显示已完成项目，重新整理后保留。空白输入不能新增项目；Tab 焦点仍可到达输入与提交按钮。这些行为应与修改前一致。若只有文字改对、按钮不能提交，表示验收失败，下一轮要指出实际现象，而不是笼统说「不好用」。"
+          "text": "在 http 预览新增 Read，勾选完成，Completed 应只显示已完成项目，刷新后保留。空白输入不能新增项目；Tab 焦点仍可到达输入与提交按钮。这些行为应与修改前一致。若只有文字改对、按钮不能提交，表示验收失败，下一轮要指出实际现象，而不是笼统说「不好用」。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "结果不符时，补充一个可重现例子"
+          "text": "结果不符时，补充一个可复现例子"
         },
         {
           "type": "paragraph",
-          "text": "假设只看到 Save task 改对，而 placeholder 还是旧文。先确认浏览器重新整理及档案已存档，再发下方追补。这里明列已正确的部分、目前错误与预期，不要求把整个页面重做。若是你在中途改了需求，也要说明哪个条件取代前一版，避免两组相反要求同时留在任务里。"
+          "text": "假设只看到 Save task 改对，而 placeholder 还是旧文。先确认浏览器刷新及文件已保存，再发下方追补。这里明列已正确的部分、目前错误与预期，不要求把整个页面重做。若是你在中途改了需求，也要说明哪个条件取代前一版，避免两组相反要求同时留在任务里。"
         },
         {
           "type": "code",
@@ -501,7 +501,7 @@
             },
             {
               "type": "text",
-              "text": "列出步骤与不确定点，但规划不是验证。计划说会跑测试，不代表测试已执行；回答说会保留资料，也要检查真实资料与程式。当需求有会改变方案的缺口，例如是否需要登入或同步，先回答这种问题，再开始相依功能，通常比做完重工更省事。"
+              "text": "列出步骤与不确定点，但规划不是验证。计划说会跑测试，不代表测试已执行；回答说会保留数据，也要检查真实数据与程序。当需求有会改变方案的缺口，例如是否需要登录或同步，先回答这种问题，再开始依赖功能，通常比做完重工更省事。"
             }
           ]
         },
@@ -512,14 +512,14 @@
         },
         {
           "type": "paragraph",
-          "text": "改太多：检查需求是否用了「全面最佳化」「顺便全部整理」等扩张范围的字句，改为列出指定档案与保留项目，再逐项还原无关差异。一直问问题：补足真正影响决策的条件，普通字型或档名选择可授权它依既有风格决定。回答看似完成却没证据：要求列出实际命令结果与未执行项目，不要求它换句话说「已完成」。"
+          "text": "改太多：检查需求是否用了「全面优化」「顺便全部整理」等扩张范围的字句，改为列出指定文件与保留项目，再逐项还原无关差异。一直问问题：补足真正影响决策的条件，普通字体或文件名选择可授权它依既有风格决定。回答看似完成却没证据：要求列出实际命令结果与未执行项目，不要求它换句话说「已完成」。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "遇到反复失败，先保留最小重现资料、错误文字与最后已知正常状态，再缩小到一个问题；不要每次都重贴整段无关历史。若任务长到需要交接，可用"
+              "text": "遇到反复失败，先保留最小复现数据、错误文字与最后已知正常状态，再缩小到一个问题；不要每次都重贴整段无关历史。若任务长到需要交接，可用"
             },
             {
               "type": "article",
@@ -529,7 +529,7 @@
             },
             {
               "type": "text",
-              "text": "储存目前决策。反复要求的专案惯例则放入 "
+              "text": "保存目前决策。反复要求的项目惯例则放入 "
             },
             {
               "type": "article",
@@ -550,7 +550,7 @@
         },
         {
           "type": "paragraph",
-          "text": "延伸练习请从另一份全新的 expected 副本开始，先确认按钮是 Add task、placeholder 是 Read the project README；不要接著使用刚才已改过的副本。自行写提示词：只把按钮改为 Create task，保留这份副本的原始 placeholder。验收要指出 index.html 唯一改动的字串，并重做新增、空值与重新整理。结束后用保留的 expected 原版恢复各练习副本的 index.html，其他档案不需替换；Python 伺服器用 Ctrl+C 停止。关闭 Codex 对话不会自动撤销改字。"
+          "text": "延伸练习请从另一份全新的 expected 副本开始，先确认按钮是 Add task、placeholder 是 Read the project README；不要接着使用刚才已改过的副本。自行写提示词：只把按钮改为 Create task，保留这份副本的原始 placeholder。验收要指出 index.html 唯一改动的字符串，并重做新增、空值与刷新。结束后用保留的 expected 原版恢复各练习副本的 index.html，其他文件不需替换；Python 服务器用 Ctrl+C 停止。关闭 Codex 对话不会自动撤销改字。"
         },
         {
           "type": "rich_paragraph",
@@ -561,12 +561,12 @@
             },
             {
               "type": "link",
-              "text": "官方 Prompting 文件",
+              "text": "官方 Prompting 文档",
               "url": "https://learn.chatgpt.com/docs/prompting"
             },
             {
               "type": "text",
-              "text": "核对，表单需求、输入范例与验收方法是本系列原创。相同英文提示词在五语内容保持一致；模型回应不保证逐字相同，验收看实际成果。下一步可练"
+              "text": "核对，表单需求、输入示例与验收方法是本系列原创。相同英文提示词在五语内容保持一致；模型回复不保证逐字相同，验收看实际成果。下一步可练"
             },
             {
               "type": "article",
@@ -586,7 +586,7 @@
             },
             {
               "type": "text",
-              "text": "，把可重现输入与预期结果带入更大任务。"
+              "text": "，把可复现输入与预期结果带入更大任务。"
             }
           ]
         },
@@ -599,7 +599,7 @@
           "rows": [
             [
               "目标",
-              "让新使用者理解表单"
+              "让新用户理解表单"
             ],
             [
               "来源",
@@ -607,11 +607,11 @@
             ],
             [
               "限制",
-              "只改两个字串、保留资料与行为"
+              "只改两个字符串、保留数据与行为"
             ],
             [
               "验收",
-              "新增、完成、空值、重新整理"
+              "新增、完成、空值、刷新"
             ]
           ]
         },
@@ -629,10 +629,10 @@
         {
           "type": "image",
           "src": "/guides/codex-prompting/diagram-1.svg",
-          "alt": "07. 如何把需求说清楚 — 实作顺序示意图，非产品介面截图。 Goal → Constraints → Acceptance",
+          "alt": "07. 如何把需求说清楚 — 实操顺序示意图，非产品界面截图。 Goal → Constraints → Acceptance",
           "width": 1600,
           "height": 900,
-          "caption": "07. 如何把需求说清楚 — 实作顺序示意图，非产品介面截图。 Goal → Constraints → Acceptance",
+          "caption": "07. 如何把需求说清楚 — 实操顺序示意图，非产品界面截图。 Goal → Constraints → Acceptance",
           "description": "Goal to Constraints to Acceptance",
           "credit": {
             "author": "Mokaair",

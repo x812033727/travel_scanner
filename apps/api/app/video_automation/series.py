@@ -34,7 +34,7 @@ import re
 from collections.abc import Sequence
 from dataclasses import dataclass
 from datetime import UTC, date, datetime
-from typing import Any, cast
+from typing import Any, Literal, cast
 from uuid import uuid4
 from zoneinfo import ZoneInfo
 
@@ -64,6 +64,7 @@ from app.video_automation.schemas import (
     BudgetLine,
     DramaRequestIn,
     DramaRequestOut,
+    SeriesBeatsRead,
     SeriesCompilationStartOut,
     SeriesContextOut,
     SeriesDocEditIn,
@@ -749,15 +750,35 @@ def doc_view(doc: VideoDramaDoc, unanswered: int = 0) -> SeriesDocOut:
     )
 
 
+# The beats a list of stories reads (``?beats=summary``, docs/videos/STORY.md): the story's id,
+# category, region, subject and publishing slot, which the admin page's rows and filters show.
+# The rest of a plan (chapters, facts to check, sources, the reviewer's caveats) is some 12 KB a
+# story, and the page needs it only for the story the owner opens.
+SUMMARY_BEAT_KEYS = ("id", "category", "region", "subject", "publish")
+EpisodeBeats = Literal["full", "summary", "none"]
+
+
+def _beats(episode: VideoDramaEpisode, beats: EpisodeBeats) -> dict[str, object]:
+    whole: dict[str, object] = episode.beats or {}
+    if beats == "full":
+        return whole
+    if beats == "summary":
+        return {key: whole[key] for key in SUMMARY_BEAT_KEYS if key in whole}
+    return {}
+
+
 def episode_view(
-    episode: VideoDramaEpisode, video: dict[str, object] | None = None, *, beats: bool = True
+    episode: VideoDramaEpisode,
+    video: dict[str, object] | None = None,
+    *,
+    beats: EpisodeBeats = "full",
 ) -> SeriesEpisodeOut:
     return SeriesEpisodeOut(
         number=episode.number,
         chapter_number=episode.chapter_number,
         title=episode.title,
         logline=episode.logline,
-        beats=(episode.beats or {}) if beats else {},
+        beats=_beats(episode, beats),
         status=cast(Any, episode.status),
         slug=episode.slug,
         recap=episode.recap,
@@ -1193,16 +1214,25 @@ async def list_series(session: AsyncSession, *, kind: str | None = None) -> list
     return out
 
 
-async def series_view(session: AsyncSession, slug: str) -> SeriesOut:
+async def _videos(session: AsyncSession, series: VideoDramaSeries) -> dict[str, dict[str, object]]:
+    """The videos the worker made of the series' episodes, by slug, as /admin/videos lists them."""
+    return {
+        project.slug: project.model_dump(mode="json")
+        for project in await list_projects(session, series_slug=series.slug, limit=1000)
+    }
+
+
+async def series_view(
+    session: AsyncSession, slug: str, *, beats: SeriesBeatsRead = "full"
+) -> SeriesOut:
+    """The series with every episode; ``beats="summary"`` keeps only SUMMARY_BEAT_KEYS of each
+    episode's beats, for a list of stories that would otherwise carry every whole plan."""
     series = await _series(session, slug)
     docs = await _docs(session, series)
     episodes = await _episodes(session, series)
     usd, seconds = await _spend(session, series, episodes)
     waiting = await _unanswered(session, series)
-    videos = {
-        project.slug: project.model_dump(mode="json")
-        for project in await list_projects(session, series_slug=series.slug, limit=1000)
-    }
+    videos = await _videos(session, series)
     return SeriesOut(
         **summary_view(
             series,
@@ -1217,8 +1247,20 @@ async def series_view(session: AsyncSession, slug: str) -> SeriesOut:
             doc_view(doc, waiting.get(doc_subject(doc.kind, doc.chapter_number), 0))
             for doc in latest_docs(docs).values()
         ],
-        episodes=[episode_view(episode, videos.get(episode.slug or "")) for episode in episodes],
+        episodes=[
+            episode_view(episode, videos.get(episode.slug or ""), beats=beats)
+            for episode in episodes
+        ],
     )
+
+
+async def episode_detail(session: AsyncSession, slug: str, number: int) -> SeriesEpisodeOut:
+    """One episode with its whole beats and its video: the plan of the story the owner opens,
+    beside the series read with ``beats="summary"``."""
+    series = await _series(session, slug)
+    episode = await _episode(session, series, number, lock=False)
+    video = (await _videos(session, series)).get(episode.slug) if episode.slug else None
+    return episode_view(episode, video)
 
 
 def patch_problem(series: VideoDramaSeries, changes: dict[str, Any]) -> SeriesRefused | None:
@@ -1664,13 +1706,14 @@ async def edit_episode(
 
 
 async def _episode(
-    session: AsyncSession, series: VideoDramaSeries, number: int
+    session: AsyncSession, series: VideoDramaSeries, number: int, *, lock: bool = True
 ) -> VideoDramaEpisode:
-    episode = await session.scalar(
-        select(VideoDramaEpisode)
-        .where(VideoDramaEpisode.series_id == series.id, VideoDramaEpisode.number == number)
-        .with_for_update()
+    statement = select(VideoDramaEpisode).where(
+        VideoDramaEpisode.series_id == series.id, VideoDramaEpisode.number == number
     )
+    if lock:
+        statement = statement.with_for_update()
+    episode = await session.scalar(statement)
     if episode is None:
         raise SeriesRefused(404, "video_series_episode_not_found", f"這部作品沒有第 {number} 集")
     return episode
@@ -1982,7 +2025,7 @@ async def context_view(
         episode=episode_view(episode) if episode else None,
         # A story is written from its own plan alone, and a hundred whole plans are over half a
         # megabyte: the other stories are listed without their beats.
-        episodes=[episode_view(e, beats=not is_story(series)) for e in episodes],
+        episodes=[episode_view(e, beats="none" if is_story(series) else "full") for e in episodes],
         recaps=cast(list[dict[str, object]], recaps),
         mysteries=cast(list[dict[str, object]], mysteries if isinstance(mysteries, list) else []),
         all_recaps=cast(list[dict[str, object]], all_recaps),

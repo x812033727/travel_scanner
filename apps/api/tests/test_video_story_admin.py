@@ -14,6 +14,8 @@ from __future__ import annotations
 import json
 from collections.abc import AsyncIterator
 from datetime import UTC, datetime
+from pathlib import Path
+from typing import Any
 from uuid import uuid4
 
 import pytest
@@ -435,3 +437,108 @@ async def test_only_a_skipped_story_that_never_started_comes_back(
     assert nowhere.status_code == 404
     assert await _episodes(db) == before, "nothing came back"
     assert await _audits(db, "video_series_episode_restored") == []
+
+
+# --- the light read of a story series, and the whole read of one story -----------------------
+
+# The compiled backlog the owner imports (docs/videos/STORY.md): a hundred whole plans.
+BACKLOG = (
+    Path(__file__).resolve().parents[3] / "docs/videos/story-plans/brand-stories-100/stories.json"
+)
+# What the story page may read every minute for a hundred stories; the whole read is over 1 MB.
+LIGHT_READ_MAX_BYTES = 150_000
+
+
+def _without_beats(body: dict[str, Any]) -> dict[str, Any]:
+    return {
+        **body,
+        "episodes": [
+            {key: value for key, value in episode.items() if key != "beats"}
+            for episode in body["episodes"]
+        ],
+    }
+
+
+async def test_the_light_read_keeps_only_the_list_fields_of_every_story(
+    db: async_sessionmaker[AsyncSession],
+) -> None:
+    owner = await _user(db, "owner")
+    viewer = await _user(db, "viewer")
+    support = await _user(db, "support")
+    async with _client(db, owner) as client:
+        assert (await client.post(IMPORT, json={"file": _file(), "apply": True})).is_success
+    async with _client(db, viewer) as client:
+        whole = await client.get(f"{BASE}/stories-test")
+        named = await client.get(f"{BASE}/stories-test", params={"beats": "full"})
+        light = await client.get(f"{BASE}/stories-test", params={"beats": "summary"})
+        unknown = await client.get(f"{BASE}/stories-test", params={"beats": "some"})
+        nowhere = await client.get(f"{BASE}/no-such-series", params={"beats": "summary"})
+    async with _client(db, support) as client:
+        unread = await client.get(f"{BASE}/stories-test", params={"beats": "summary"})
+    assert whole.status_code == light.status_code == 200, light.text
+    # The default is the whole read, as the worker and the drama pages have always had it.
+    assert named.json() == whole.json()
+    for episode, story in zip(whole.json()["episodes"], THREE, strict=True):
+        assert episode["beats"] == {
+            key: value for key, value in story.items() if key not in stories.COLUMN_KEYS
+        }
+    # The light read is the same answer, with only the list fields of each story's beats.
+    assert _without_beats(light.json()) == _without_beats(whole.json())
+    assert service.SUMMARY_BEAT_KEYS == ("id", "category", "region", "subject", "publish")
+    for episode, story in zip(light.json()["episodes"], THREE, strict=True):
+        assert episode["beats"] == {key: story[key] for key in service.SUMMARY_BEAT_KEYS}
+    assert len(light.content) < len(whole.content)
+    assert unknown.status_code == 422 and unknown.json()["code"] == "validation_error"
+    assert nowhere.status_code == 404 and nowhere.json()["code"] == "video_series_not_found"
+    assert unread.status_code == 403 and unread.json()["code"] == "admin_capability_required"
+
+
+async def test_one_story_is_read_whole_on_its_own(db: async_sessionmaker[AsyncSession]) -> None:
+    owner = await _user(db, "owner")
+    viewer = await _user(db, "viewer")
+    support = await _user(db, "support")
+    member = await _user(db, None)
+    async with _client(db, owner) as client:
+        assert (await client.post(IMPORT, json={"file": _file(), "apply": True})).is_success
+    async with _client(db, viewer) as client:
+        whole = await client.get(f"{BASE}/stories-test")
+        second = await client.get(f"{BASE}/stories-test/episodes/2")
+        missing = await client.get(f"{BASE}/stories-test/episodes/9")
+        nowhere = await client.get(f"{BASE}/no-such-series/episodes/1")
+    async with _client(db, support) as client:
+        unread = await client.get(f"{BASE}/stories-test/episodes/2")
+    async with _client(db, member) as client:
+        stranger = await client.get(f"{BASE}/stories-test/episodes/2")
+    assert second.status_code == 200, second.text
+    # The episode exactly as the whole read of the series carries it, plan and all.
+    assert second.json() == whole.json()["episodes"][1]
+    assert (second.json()["number"], second.json()["beats"]["id"]) == (2, "B01")
+    assert second.json()["beats"]["must_verify"] == THREE[1]["must_verify"]
+    assert missing.status_code == 404
+    assert missing.json()["code"] == "video_series_episode_not_found"
+    assert nowhere.status_code == 404 and nowhere.json()["code"] == "video_series_not_found"
+    assert unread.status_code == 403 and unread.json()["code"] == "admin_capability_required"
+    assert stranger.status_code == 403 and stranger.json()["code"] == "admin_required"
+
+
+async def test_the_light_read_of_the_real_backlog_is_under_150_kb(
+    db: async_sessionmaker[AsyncSession],
+) -> None:
+    backlog = json.loads(BACKLOG.read_text(encoding="utf-8"))
+    slug = backlog["series"]["slug"]
+    assert len(backlog["stories"]) == 100
+    owner = await _user(db, "owner")
+    async with _client(db, owner) as client:
+        imported = await client.post(
+            f"{BASE}/{slug}/stories/import", json={"file": backlog, "apply": True}
+        )
+        assert imported.status_code == 200, imported.text
+        assert imported.json()["create"] == 100
+        whole = await client.get(f"{BASE}/{slug}")
+        light = await client.get(f"{BASE}/{slug}", params={"beats": "summary"})
+        opened = await client.get(f"{BASE}/{slug}/episodes/100")
+    assert whole.status_code == light.status_code == opened.status_code == 200
+    assert len(whole.json()["episodes"]) == len(light.json()["episodes"]) == 100
+    assert len(light.content) < LIGHT_READ_MAX_BYTES, len(light.content)
+    assert len(whole.content) > 1_000_000, "the whole read still carries every plan"
+    assert opened.json() == whole.json()["episodes"][99]

@@ -85,6 +85,18 @@ type TripOption = {
   start_date: string;
   end_date: string;
 };
+type MealAttempt = {
+  context: number;
+  path: string;
+  tripName: string;
+  body: {
+    trip_id: string;
+    version: number;
+    day_date: string;
+    mode: "replace_meal";
+    meal: "lunch" | "dinner";
+  };
+};
 
 const PREFERENCE_KEY = "travel-scanner:restaurant-preferences:v1";
 
@@ -125,6 +137,7 @@ export function HotspotRestaurantsPanel({
   onClose: () => void;
 }) {
   const t = useTranslations("restaurants");
+  const common = useTranslations("common");
   const locale = useLocale();
   const [radius, setRadius] = useState<5 | 10>(5);
   const [sort, setSort] = useState<RestaurantSort>("recommended");
@@ -143,6 +156,8 @@ export function HotspotRestaurantsPanel({
   const [tripDate, setTripDate] = useState("");
   const [mealRole, setMealRole] = useState<"lunch" | "dinner">("lunch");
   const [tripSaving, setTripSaving] = useState(false);
+  const [occupiedAttempt, setOccupiedAttempt] = useState<MealAttempt | null>(null);
+  const tripContext = useRef(0);
   const touchStart = useRef<number | null>(null);
   const initialPlaceIds = useRef<string[]>([]);
   // Two layers, two sheets. The nested picker sits inside the panel, so a single trap
@@ -151,9 +166,7 @@ export function HotspotRestaurantsPanel({
   // `useModalSheet` keeps a stack: each layer traps its own Tab, only the top one
   // answers Escape, and the body stays locked until the last one closes.
   const dialogRef = useModalSheet<HTMLDivElement>(true, onClose);
-  const tripDialogRef = useModalSheet<HTMLDivElement>(Boolean(tripRestaurant), () =>
-    setTripRestaurant(null),
-  );
+  const tripDialogRef = useModalSheet<HTMLDivElement>(Boolean(tripRestaurant), closeTripPicker);
   const number = new Intl.NumberFormat(locale);
   const date = new Intl.DateTimeFormat(locale, { dateStyle: "medium", timeStyle: "short" });
 
@@ -274,38 +287,73 @@ export function HotspotRestaurantsPanel({
     }
   }
 
-  async function openTripPicker(restaurant: Restaurant) {
+  function resetMealConfirmation() {
+    // A change away and back still revokes consent and invalidates pending responses.
+    tripContext.current += 1;
+    setOccupiedAttempt(null);
     setActionMessage(null);
+  }
+
+  function closeTripPicker() {
+    resetMealConfirmation();
+    setTripRestaurant(null);
+  }
+
+  async function openTripPicker(restaurant: Restaurant) {
+    resetMealConfirmation();
+    const context = tripContext.current;
     try {
       const result = await api<{ items: TripOption[] }>("/restaurants/trip-options");
+      if (context !== tripContext.current) return;
       setTripOptions(result.items);
       setTripRestaurant(restaurant);
       const first = result.items[0];
       setTripId(first?.trip_id || "");
       setTripDate(first?.start_date || "");
     } catch (reason) {
-      setActionMessage({ text: (reason as Error).message, tone: "error" });
+      if (context === tripContext.current) {
+        setActionMessage({ text: (reason as Error).message, tone: "error" });
+      }
     }
   }
 
-  async function saveToTrip() {
+  async function saveToTrip(confirmedAttempt?: MealAttempt) {
     const option = tripOptions.find((item) => item.trip_id === tripId);
-    if (!tripRestaurant || !option || !tripDate) return;
+    if (tripSaving || !tripRestaurant || !option || !tripDate) return;
+    const attempt: MealAttempt = confirmedAttempt ?? {
+      context: tripContext.current,
+      path: `/restaurants/${tripRestaurant.place_id}/trip-selections`,
+      tripName: option.name,
+      body: {
+        trip_id: option.trip_id,
+        version: option.version,
+        day_date: tripDate,
+        mode: "replace_meal",
+        meal: mealRole,
+      },
+    };
+    if (attempt.context !== tripContext.current) return;
+    setOccupiedAttempt(null);
+    setActionMessage(null);
     setTripSaving(true);
     try {
-      await api(`/restaurants/${tripRestaurant.place_id}/trip-selections`, {
+      await api(attempt.path, {
         method: "POST",
         body: JSON.stringify({
-          trip_id: option.trip_id,
-          version: option.version,
-          day_date: tripDate,
-          meal_role: mealRole,
+          ...attempt.body,
+          ...(confirmedAttempt ? { overwrite: true } : {}),
         }),
       });
-      setActionMessage({ text: t("tripSaved", { trip: option.name }), tone: "success" });
-      setTripRestaurant(null);
+      if (attempt.context !== tripContext.current) return;
+      closeTripPicker();
+      setActionMessage({ text: t("tripSaved", { trip: attempt.tripName }), tone: "success" });
     } catch (reason) {
-      setActionMessage({ text: (reason as Error).message, tone: "error" });
+      if (attempt.context !== tripContext.current) return;
+      if (reason instanceof ApiError && reason.status === 409 && reason.code === "meal_slot_occupied") {
+        setOccupiedAttempt(attempt);
+      } else {
+        setActionMessage({ text: (reason as Error).message, tone: "error" });
+      }
     } finally {
       setTripSaving(false);
     }
@@ -348,7 +396,7 @@ export function HotspotRestaurantsPanel({
           {!loading && !error && data?.next_cursor !== null && data?.next_cursor !== undefined && <button type="button" disabled={loadingMore} onClick={() => void search(data.next_cursor ?? undefined)} className="mt-4 flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl border border-[var(--teal)] bg-white font-semibold text-[var(--teal)] disabled:opacity-50">{loadingMore && <RefreshCw size={16} className="animate-spin" />}{t("loadMore")}</button>}
           {data && <p className="mt-5 text-center text-xs leading-5 text-[var(--muted)]">{t("attributionPrefix")} <span translate="no" className="whitespace-nowrap font-normal">{data.attribution}</span><br />{t("storageNotice")}</p>}
         </div>
-        {tripRestaurant && <div ref={tripDialogRef} className="absolute inset-0 z-10 flex items-end bg-slate-950/35 p-3 md:items-center md:justify-center" role="dialog" aria-modal="true" aria-label={t("tripPickerTitle")}><div className="w-full rounded-[1.75rem] bg-white p-5 shadow-2xl md:max-w-md"><div className="flex items-center justify-between gap-3"><div><p className="text-xs font-bold text-[var(--teal)]">{t("addToTrip")}</p><h3 className="mt-1 text-xl font-bold">{tripRestaurant.editorial?.name || tripRestaurant.name}</h3></div><button type="button" onClick={() => setTripRestaurant(null)} className="grid h-11 w-11 place-items-center rounded-full border border-[var(--line)]" aria-label={t("closeTripPicker")}><X size={18} /></button></div>{tripOptions.length ? <div className="mt-5 grid gap-3"><label className="text-sm font-semibold">{t("tripLabel")}<select value={tripId} onChange={(event) => { const next = tripOptions.find((item) => item.trip_id === event.target.value); setTripId(event.target.value); setTripDate(next?.start_date || ""); }} className="mt-1 h-12 w-full rounded-xl border border-[var(--line)] px-3">{tripOptions.map((item) => <option key={item.trip_id} value={item.trip_id}>{item.name}</option>)}</select></label><label className="text-sm font-semibold">{t("dateLabel")}<input type="date" value={tripDate} min={tripOptions.find((item) => item.trip_id === tripId)?.start_date} max={tripOptions.find((item) => item.trip_id === tripId)?.end_date} onChange={(event) => setTripDate(event.target.value)} className="mt-1 h-12 w-full rounded-xl border border-[var(--line)] px-3" /></label><label className="text-sm font-semibold">{t("mealLabel")}<select value={mealRole} onChange={(event) => setMealRole(event.target.value as "lunch" | "dinner")} className="mt-1 h-12 w-full rounded-xl border border-[var(--line)] px-3"><option value="lunch">{t("lunch")}</option><option value="dinner">{t("dinner")}</option></select></label><button type="button" disabled={tripSaving || !tripDate} onClick={() => void saveToTrip()} className="mt-2 min-h-12 rounded-xl bg-[var(--ink)] px-4 font-semibold text-white disabled:opacity-50">{tripSaving ? t("savingTrip") : t("confirmTrip")}</button></div> : <p className="mt-5 rounded-xl bg-[var(--paper)] p-4 text-sm text-[var(--muted)]">{t("noTrips")}</p>}</div></div>}
+        {tripRestaurant && <div ref={tripDialogRef} className="absolute inset-0 z-10 flex items-end bg-slate-950/35 p-3 md:items-center md:justify-center" role="dialog" aria-modal="true" aria-label={t("tripPickerTitle")}><div className="w-full rounded-[1.75rem] bg-white p-5 shadow-2xl md:max-w-md"><div className="flex items-center justify-between gap-3"><div><p className="text-xs font-bold text-[var(--teal)]">{t("addToTrip")}</p><h3 className="mt-1 text-xl font-bold">{tripRestaurant.editorial?.name || tripRestaurant.name}</h3></div><button type="button" onClick={closeTripPicker} className="grid h-11 w-11 place-items-center rounded-full border border-[var(--line)]" aria-label={t("closeTripPicker")}><X size={18} /></button></div>{tripOptions.length ? <div className="mt-5 grid gap-3"><label className="text-sm font-semibold">{t("tripLabel")}<select value={tripId} onChange={(event) => { resetMealConfirmation(); const next = tripOptions.find((item) => item.trip_id === event.target.value); setTripId(event.target.value); setTripDate(next?.start_date || ""); }} className="mt-1 h-12 w-full rounded-xl border border-[var(--line)] px-3">{tripOptions.map((item) => <option key={item.trip_id} value={item.trip_id}>{item.name}</option>)}</select></label><label className="text-sm font-semibold">{t("dateLabel")}<input type="date" value={tripDate} min={tripOptions.find((item) => item.trip_id === tripId)?.start_date} max={tripOptions.find((item) => item.trip_id === tripId)?.end_date} onChange={(event) => { resetMealConfirmation(); setTripDate(event.target.value); }} className="mt-1 h-12 w-full rounded-xl border border-[var(--line)] px-3" /></label><label className="text-sm font-semibold">{t("mealLabel")}<select value={mealRole} onChange={(event) => { resetMealConfirmation(); setMealRole(event.target.value as "lunch" | "dinner"); }} className="mt-1 h-12 w-full rounded-xl border border-[var(--line)] px-3"><option value="lunch">{t("lunch")}</option><option value="dinner">{t("dinner")}</option></select></label>{occupiedAttempt && <div className="rounded-xl bg-amber-50 p-3 text-sm"><p role="alert">{common("cardActions.mealOccupied")}</p><button type="button" disabled={tripSaving} onClick={() => void saveToTrip(occupiedAttempt)} className="mt-3 min-h-11 rounded-xl bg-[var(--ink)] px-4 font-semibold text-white disabled:opacity-50">{common("cardActions.overwrite")}</button></div>}<button type="button" disabled={tripSaving || !tripDate} onClick={() => void saveToTrip()} className="mt-2 min-h-12 rounded-xl bg-[var(--ink)] px-4 font-semibold text-white disabled:opacity-50">{tripSaving ? t("savingTrip") : t("confirmTrip")}</button></div> : <p className="mt-5 rounded-xl bg-[var(--paper)] p-4 text-sm text-[var(--muted)]">{t("noTrips")}</p>}</div></div>}
       </div>
     </div>
   );

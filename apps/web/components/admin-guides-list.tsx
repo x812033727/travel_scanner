@@ -6,7 +6,7 @@ import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { FilterPills } from "@/components/admin-filter-pills";
 import { AdminEmptyState, AdminErrorState, AdminFilterBar, AdminStatusPill } from "@/components/admin-ui";
 import { Button, Dialog } from "@/components/community/ui";
-import { adminNavigate, useAdminQueryValue } from "@/lib/admin-workspace-navigation";
+import { updateAdminQuery, useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 import { api, ApiError } from "@/lib/api";
 import { type GuideTopic, guideKinds, guideSection, guideSections, isGuideKind, isGuideSection } from "@/lib/guides";
 import {
@@ -22,15 +22,8 @@ const localeTone = { published: "active", draft: "pending", none: "inactive" } a
 
 export type VisibilityAction = "hide" | "unhide";
 
-/** Writes several query keys in one history entry, so a filter change and its page reset are one step back. */
-export function updateAdminQuery(changes: Record<string, string>) {
-  const target = new URL(window.location.href);
-  for (const [key, value] of Object.entries(changes)) {
-    if (value) target.searchParams.set(key, value);
-    else target.searchParams.delete(key);
-  }
-  adminNavigate(target);
-}
+// The URL writer lives with the other URL helpers now; older imports keep working.
+export { updateAdminQuery };
 
 /**
  * The gate every visibility change goes through, single or batch: the same reason and the
