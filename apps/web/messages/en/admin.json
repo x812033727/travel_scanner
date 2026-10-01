@@ -2091,6 +2091,32 @@
     "pairCodeInvalid": "A code is 8 letters, such as BCDF-GHJK.",
     "pairFailed": "This code could not be processed"
   },
+  "videoRenewal": {
+    "duration": "New cut: {seconds} seconds",
+    "previewFile": "Optional local preview.mp4 (must match the receipt)",
+    "previewPlayer": "Verified local replacement preview",
+    "previewInvalid": "This preview does not match the receipt or exceeds the 256 MB local preview limit.",
+    "proof": "Show source and file identities",
+    "title": "Replace the final cut",
+    "help": "Select the candidate receipt prepared by the video tool. Its media is already staged. Submitting creates a new final awaiting your review and retains the previous decisions and files. It does not approve or publish the video.",
+    "file": "Candidate receipt (.json)",
+    "original": "Original final SHA-256",
+    "replacement": "New final SHA-256",
+    "branding": "New branding SHA-256",
+    "attachments": "{count} verified attachment records; the preview becomes available after submission.",
+    "reason": "Reason for replacement",
+    "check": "Check current review",
+    "submit": "Submit replacement for my review",
+    "busy": "Working…",
+    "checked": "The original final matches. Submitting checks this version again.",
+    "invalid": "This receipt is invalid, belongs to another video or site, or lacks its final and preview proof.",
+    "stale": "The video or review changed. Check again; if the original final changed, prepare a new candidate.",
+    "conflict": "Replacement is blocked: {message}",
+    "failed": "Could not check this candidate. Reload the page and try the check again.",
+    "uncertain": "The submission result is uncertain. Reload the video and inspect its reviews before trying again; no automatic retry was sent.",
+    "submitted": "Replacement submitted and awaiting human review. Previous decisions and attachments remain in history.",
+    "pending": "This replacement is waiting for your final-cut review below. Its previous publishing and language approvals no longer authorize an upload."
+  },
   "videoReviews": {
     "categories": {
       "ai-terms": "AI terms explained",
@@ -2932,8 +2958,12 @@
       "youtube": "YouTube",
       "skip": "Skip",
       "restore": "Bring back",
-      "startedSkipped": "Started once and its video was dropped; it cannot come back",
-      "skipConfirm": "Skip {id} “{title}”? The worker will not make it. A story that has not started can be brought back later."
+      "startedSkipped": "Redone once and its video was dropped again; to make it again, import it under a new story id",
+      "skipConfirm": "Skip {id} “{title}”? The worker will not make it. A story that has not started can be brought back later.",
+      "redo": "Redo",
+      "redoable": "Started once and its video was dropped; it can be made again once",
+      "redoConfirm": "Redo {id} “{title}”? The worker makes a new video from the start, which spends one more production (images and narration). A story can be redone only once; the dropped video stays and opens from “Earlier video”.",
+      "earlierVideo": "Earlier video"
     },
     "categories": {
       "everyday": "Everyday things and hidden standards",

@@ -106,6 +106,15 @@
       "lines": [{ "id": "sa14", "text": "用 API 比較模型很簡單，只要改掉模型名稱那一行。" }]
     },
     {
+      "id": "check-version",
+      "template": "terminal",
+      "data": { "title": "先確認裝好的版本", "command": "claude --version", "output": ["2.1.285 (Claude Code)"], "ran_on": "2026-10-01", "tool_version": "2.1.285 (Claude Code)" },
+      "lines": [
+        { "id": "sa29", "text": "打開終端機，輸入查版本的指令。" },
+        { "id": "sa30", "text": "按下去之後，就會看到它印出的版本號。", "reveal": 1 }
+      ]
+    },
+    {
       "id": "cost-diagram",
       "template": "diagram",
       "data": { "svg": "apps/web/public/guides/ai-workflow-cost-quality-latency/diagram-1.svg", "caption": "三種流程處理同一個請求的成本估算" },

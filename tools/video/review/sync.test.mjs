@@ -446,6 +446,26 @@ test("review-push --gate final runs the quality check and sends its report; a ch
   assert.equal(down.state.reviews.length, 0);
 });
 
+test("the final review carries the narration's and zh-TW's titles whatever the choice ticks; a zh-TW video's carries its own alone, as before", async () => {
+  const titles = async (name, slug) => {
+    const box = sandbox(slug, name);
+    const { final } = cutVideo(box);
+    mkdirSync(path.join(box.dir, "i18n"), { recursive: true });
+    for (const locale of ["zh-TW", "en", "ja"]) writeFileSync(path.join(box.dir, "i18n", `${locale}.json`), JSON.stringify({ title: `${locale} title`, description: `${locale} description` }));
+    // Japanese captions alone: no title is chosen for any language.
+    writeLanguages(box.workdir, { locales: { ja: { metadata: false, captions: true, dub: false } }, decided_at: "2026-10-01T00:00:00Z" });
+    const server = site();
+    const push = context(box, server.fetchImpl, { encode, runCommand: passingQualityCheck(box, final) });
+    assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], push.ctx), EXIT.ok, push.out.stderr);
+    const { metadata } = server.state.reviews[0].payload;
+    rmSync(box.base, { recursive: true, force: true });
+    return Object.fromEntries(Object.entries(metadata).map(([locale, fields]) => [locale, fields.title]));
+  };
+  assert.deepEqual(await titles("en", "fixture-en"), { en: "Which AI model is worth paying for? Three questions", "zh-TW": "zh-TW title" });
+  const zh = await titles("minimal", "fixture-minimal");
+  assert.deepEqual(Object.keys(zh), ["zh-TW"], "a zh-TW video sends its own title alone, as before");
+});
+
 test("review-push --gate publish attaches every file of the package with the package check and what the card shows", async () => {
   const box = sandbox();
   const { final } = cutVideo(box);
@@ -510,6 +530,21 @@ test("without a token the push needs the owner", async () => {
   out.ctx.env = { VIDEO_WORKDIR: box.work };
   assert.equal(await main(["review-push", "--slug", box.slug], out.ctx), EXIT.owner);
   assert.match(out.out.stderr, /login/);
+});
+
+test("a worker holding the old package cannot submit while the owner's replacement is pending", async (t) => {
+  const box = sandbox(); t.after(() => rmSync(box.base, { recursive: true, force: true }));
+  const { final } = cutVideo(box);
+  const uploadDir = path.join(box.workdir, "upload"); mkdirSync(uploadDir, { recursive: true });
+  writeFileSync(path.join(uploadDir, "final.mp4"), final);
+  writeFileSync(path.join(uploadDir, "metadata.json"), JSON.stringify({ final_sha256: sha(final), title: "old title", description: "old description", default_language: "zh-TW" }));
+  const server = site();
+  server.state.reviews.push({ id: "renewed", gate: "final", status: "pending", content_sha256: sha("new-final"), payload: { _final_renewal: { previous_review_id: "old" } } });
+  const push = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "publish"], push.ctx), EXIT.usage);
+  assert.match(push.out.stderr, /still needs the owner's review/);
+  assert.equal(server.state.calls.some((call) => call.method === "POST"), false);
+  assert.equal(server.state.reviews.length, 1);
 });
 
 test("language reviews fit the summary limit without losing any locale, files or full skip reasons", async (t) => {
