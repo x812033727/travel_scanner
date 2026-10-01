@@ -20,7 +20,8 @@ start, no documents at all, its episodes the stories of a planned backlog import
 before, unless a limit holds (``story_quota``): the day's count on the Asia/Taipei calendar
 day, the episodes in the making, the month's count, or STORY_UPLOAD_BUFFER stories cleared for
 upload that the owner has not uploaded yet. A skipped story that never started can be brought
-back (``restore_episode``); a skipped episode of the other kinds cannot.
+back (``restore_episode``); one whose video was dropped can be made again, a limited number of
+times, under a new video slug (``redo_episode``); a skipped episode of the other kinds cannot.
 
 The router turns ``SeriesRefused`` into the API's problem response; nothing here raises
 ``AppError``.
@@ -29,13 +30,15 @@ The router turns ``SeriesRefused`` into the API's problem response; nothing here
 from __future__ import annotations
 
 import calendar
+import re
+from collections.abc import Sequence
 from dataclasses import dataclass
 from datetime import UTC, date, datetime
 from typing import Any, Literal, cast
 from uuid import uuid4
 from zoneinfo import ZoneInfo
 
-from sqlalchemy import and_, func, or_, select
+from sqlalchemy import ColumnElement, and_, func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import AdminAuditLog, User, VideoProject, VideoReview, VideoToolToken
@@ -83,7 +86,7 @@ from app.video_automation.schemas import (
 )
 from app.video_media.catalog import JUDGE_USD_PER_CALL, find_model
 from app.video_media.meter import spend_by_slug
-from app.video_reviews.admin_service import list_projects
+from app.video_reviews.admin_service import _cancel_started_request, list_projects
 
 # The episode fields a chapter outline must give every episode, in the order the owner reads
 # them: the hook, the conflict, the turn, the cliffhanger (docs/videos/SERIES.md).
@@ -111,6 +114,14 @@ TAIPEI = ZoneInfo("Asia/Taipei")
 STORY_UPLOAD_BUFFER = 6
 # What the request row of a started story says besides its title and logline.
 STORY_PREMISE_FIELDS = ("question",)
+# A story whose video was dropped may be made again this many times (``redo_episode``): a video
+# costs about US$9 of images alone (docs/videos/STORY.md §上限與成本), and a story that failed
+# twice more likely needs a new plan than a third try. The remake is made under the planned
+# slug plus ``-redo<n>``, n counting the remakes from 1, since the unique
+# ``video_drama_episodes.slug`` and the dropped video's rows keep the planned one.
+STORY_REDO_LIMIT = 1
+REDO_SUFFIX = "-redo"
+REDO_NUMBER = re.compile(r"[1-9][0-9]*")
 
 # A binge series (docs/videos/BINGE.md). The genre presets the planner writes from: the
 # classic xianxia series keeps today's prompts and rules; the others carry the retention
@@ -220,6 +231,18 @@ def _explainer_bible_problem(body: dict[str, Any]) -> str | None:
 
 def is_story(series: VideoDramaSeries) -> bool:
     return series.kind == "story"
+
+
+def redo_slug(planned: str, redo: int) -> str:
+    """The video slug of a story's ``redo``-th remake: ``story-rolling-case-redo1``."""
+    return f"{planned}{REDO_SUFFIX}{redo}"
+
+
+def is_redo_of(slug: str | None, planned: str) -> bool:
+    """Whether ``slug`` is the slug of a remake of the story planned under ``planned``."""
+    if slug is None or not slug.startswith(planned + REDO_SUFFIX):
+        return False
+    return REDO_NUMBER.fullmatch(slug[len(planned) + len(REDO_SUFFIX) :]) is not None
 
 
 def setting_kind(series: VideoDramaSeries) -> str:
@@ -474,6 +497,7 @@ def story_quota(
     now: datetime,
     started_this_month: int,
     awaiting_upload: int,
+    earlier_starts: Sequence[datetime] = (),
 ) -> StoryQuotaOut:
     """Where a story series stands against its limits, and why no story starts now, if one
     does not (docs/videos/STORY.md §每日配額與排程).
@@ -482,12 +506,14 @@ def story_quota(
     (UTC, as for every series); ``awaiting_upload`` its stories cleared for upload without a
     YouTube id (``_awaiting_upload``). The day's count is every episode whose ``started_at``
     falls on today's Asia/Taipei calendar day, whatever became of it since: 15:59:59Z is still
-    that day in Taipei, 16:00:00Z is the next. The first limit that holds is the reason.
+    that day in Taipei, 16:00:00Z is the next. ``earlier_starts`` are the starts of dropped
+    videos whose story is being made again (``_earlier_starts``): the episode no longer carries
+    them, and they count for their day all the same. The first limit that holds is the reason.
     """
     today = taipei_day(now)
     started_today = sum(
         1 for e in episodes if e.started_at is not None and taipei_day(e.started_at) == today
-    )
+    ) + sum(1 for moment in earlier_starts if taipei_day(moment) == today)
     in_flight = sum(1 for e in episodes if e.status == "started")
     ready = sum(1 for e in episodes if e.status == "ready")
     per_day = series.episodes_per_day
@@ -565,6 +591,7 @@ def next_job_for(
     started_this_month: int,
     now: datetime | None = None,
     awaiting_upload: int = 0,
+    earlier_starts: Sequence[datetime] = (),
 ) -> NextJob | None:
     """What the worker should do next for this series, or None when it waits for the owner.
 
@@ -572,8 +599,8 @@ def next_job_for(
     is due), then the next ready episode, in order, one at a time unless the settings allow two.
 
     A story series has no documents and its stories do not wait for one another: the next ready
-    one in number order starts unless ``story_quota`` names a reason not to. ``now`` and
-    ``awaiting_upload`` are read only there.
+    one in number order starts unless ``story_quota`` names a reason not to. ``now``,
+    ``awaiting_upload`` and ``earlier_starts`` are read only there.
     """
     if is_story(series):
         quota = story_quota(
@@ -583,6 +610,7 @@ def next_job_for(
             now=now or _now(),
             started_this_month=started_this_month,
             awaiting_upload=awaiting_upload,
+            earlier_starts=earlier_starts,
         )
         if quota.hold is not None:
             return None
@@ -876,6 +904,37 @@ async def _unanswered(session: AsyncSession, series: VideoDramaSeries) -> dict[s
     return {str(subject): int(count) for subject, count in rows.all()}
 
 
+def _earlier_videos(series: VideoDramaSeries) -> ColumnElement[bool]:
+    """The request rows of a story series' dropped videos whose story is being made again.
+
+    ``redo_episode`` hands the episode a new slug and lets go of the request row the dropped
+    video travelled as, so no episode points at that row any more; it stays, with its slug and
+    its start. Each is a video that was started and cost money, so the day's and the month's
+    counts and the series' spend still read it. A row filed but never started (a one-off's
+    queued request) is not one.
+    """
+    current = select(VideoDramaEpisode.request_id).where(
+        VideoDramaEpisode.series_id == series.id, VideoDramaEpisode.request_id.is_not(None)
+    )
+    return and_(
+        VideoDramaRequest.series_id == series.id,
+        VideoDramaRequest.episode_number.is_not(None),
+        VideoDramaRequest.started_at.is_not(None),
+        VideoDramaRequest.id.not_in(current),
+    )
+
+
+async def _earlier_starts(session: AsyncSession, series: VideoDramaSeries) -> list[datetime]:
+    """When a story series' dropped-then-remade videos started; empty for the other kinds,
+    whose episodes never start twice, and read without a query for them."""
+    if not is_story(series):
+        return []
+    found = await session.scalars(
+        select(VideoDramaRequest.started_at).where(_earlier_videos(series))
+    )
+    return [moment for moment in found.all() if moment is not None]
+
+
 async def _started_this_month(session: AsyncSession, series: VideoDramaSeries) -> int:
     now = _now()
     start = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
@@ -884,6 +943,16 @@ async def _started_this_month(session: AsyncSession, series: VideoDramaSeries) -
         .select_from(VideoDramaEpisode)
         .where(VideoDramaEpisode.series_id == series.id, VideoDramaEpisode.started_at >= start)
     )
+    if is_story(series):
+        # A remade story's dropped video started this month too (``_earlier_videos``).
+        found = int(found or 0) + int(
+            await session.scalar(
+                select(func.count())
+                .select_from(VideoDramaRequest)
+                .where(_earlier_videos(series), VideoDramaRequest.started_at >= start)
+            )
+            or 0
+        )
     return int(found or 0)
 
 
@@ -939,11 +1008,21 @@ async def _story_quota(
         now=_now(),
         started_this_month=await _started_this_month(session, series),
         awaiting_upload=await _awaiting_upload(session, series),
+        earlier_starts=await _earlier_starts(session, series),
     )
 
 
-async def _spend(session: AsyncSession, episodes: list[VideoDramaEpisode]) -> tuple[float, int]:
+async def _spend(
+    session: AsyncSession, series: VideoDramaSeries, episodes: list[VideoDramaEpisode]
+) -> tuple[float, int]:
+    """What the series' videos cost in media: every episode's current video and, on a story
+    series, the dropped videos of the stories being made again (``_earlier_videos``)."""
     slugs = [episode.slug for episode in episodes if episode.slug]
+    if is_story(series):
+        earlier = await session.scalars(
+            select(VideoDramaRequest.slug).where(_earlier_videos(series))
+        )
+        slugs.extend(slug for slug in earlier.all() if slug)
     if not slugs:
         return 0.0, 0
     spend = await spend_by_slug(session, slugs)
@@ -1119,7 +1198,7 @@ async def list_series(session: AsyncSession, *, kind: str | None = None) -> list
     for series in rows:
         docs = await _docs(session, series)
         episodes = await _episodes(session, series)
-        usd, seconds = await _spend(session, episodes)
+        usd, seconds = await _spend(session, series, episodes)
         waiting = await _unanswered(session, series)
         out.append(
             summary_view(
@@ -1151,7 +1230,7 @@ async def series_view(
     series = await _series(session, slug)
     docs = await _docs(session, series)
     episodes = await _episodes(session, series)
-    usd, seconds = await _spend(session, episodes)
+    usd, seconds = await _spend(session, series, episodes)
     waiting = await _unanswered(session, series)
     videos = await _videos(session, series)
     return SeriesOut(
@@ -1749,8 +1828,8 @@ async def restore_episode(session: AsyncSession, actor: User, slug: str, number:
 
     A story that never started only: one that started (``started_at`` set) was skipped when its
     video was dropped, and its slug stays that video's, so it could never start again and, as
-    the lowest ready number, would hold up every story after it. When skipping this story had
-    finished the series, the series is active again.
+    the lowest ready number, would hold up every story after it; ``redo_episode`` is its way
+    back. When skipping this story had finished the series, the series is active again.
     """
     series = await _series(session, slug, lock=True)
     if not is_story(series):
@@ -1787,6 +1866,111 @@ async def restore_episode(session: AsyncSession, actor: User, slug: str, number:
             metadata_json={
                 "number": number,
                 "story": (episode.beats or {}).get("id"),
+                "reopened": reopened,
+            },
+        )
+    )
+    await session.commit()
+    return await series_view(session, slug)
+
+
+async def redo_episode(session: AsyncSession, actor: User, slug: str, number: int) -> SeriesOut:
+    """Make a dropped story again: it is ready once more, under a new video slug, and the
+    worker starts it from the beginning when its turn comes.
+
+    A dropped story is one that started and was skipped when its video was dropped
+    (``started_at`` set, the case ``restore_episode`` refuses). The stories of the backlog were
+    checked before they were imported, and a video usually fails on its pictures or its
+    narration, not its story, so the owner may ask for it again; ``STORY_REDO_LIMIT`` times, so
+    one story cannot keep spending. A story series only, for the reason ``restore_episode``
+    gives, and a story that was not dropped has nothing to redo.
+
+    The dropped video keeps everything it had: its project, its request row (cancelled if the
+    drop left it started) and its planned slug. The remake is made under ``redo_slug``: the
+    planned slug, the one the first video was started under, and ``-redo<n>``. The episode
+    lets go of the old start and the old request row, so the next ``start_episode`` files a
+    new row and starts the clock again; the dropped start still counts for its day and its
+    month (``_earlier_videos``), and the remake waits for the day's count, the episodes in the
+    making and the upload buffer like any other story. When the drop had finished the series,
+    the series is active again.
+    """
+    series = await _series(session, slug, lock=True)
+    if not is_story(series):
+        raise SeriesRefused(
+            409,
+            "video_series_redo_story_only",
+            "只有品牌故事能重做放棄的集數：漫劇一集接著一集寫，後面的劇情已經當這一集不存在，"
+            "重做了會接不上",
+        )
+    episode = await _episode(session, series, number)
+    if episode.status != "skipped" or episode.started_at is None or not episode.slug:
+        hint = "；它從沒開始過，用「恢復」讓它回到待做" if episode.status == "skipped" else ""
+        raise SeriesRefused(
+            409,
+            "video_series_episode_not_dropped",
+            f"第 {number} 個故事的影片沒有被放棄，不用重做{hint}",
+        )
+    starts = list(
+        (
+            await session.scalars(
+                select(VideoDramaRequest)
+                .where(
+                    VideoDramaRequest.series_id == series.id,
+                    VideoDramaRequest.episode_number == number,
+                    VideoDramaRequest.started_at.is_not(None),
+                )
+                .order_by(VideoDramaRequest.started_at)
+            )
+        ).all()
+    )
+    redone = max(len(starts), 1) - 1
+    if redone >= STORY_REDO_LIMIT:
+        raise SeriesRefused(
+            409,
+            "video_series_redo_limit",
+            f"第 {number} 個故事已經重做過 {redone} 次，每個故事最多重做 {STORY_REDO_LIMIT} 次；"
+            "要再做，請用新的企劃代號與 slug 把它加進企劃清單再匯入",
+        )
+    planned = starts[0].slug if starts and starts[0].slug else episode.slug
+    new_slug = redo_slug(planned, redone + 1)
+    taken = (
+        await session.scalar(select(VideoDramaEpisode.id).where(VideoDramaEpisode.slug == new_slug))
+        or await session.scalar(
+            select(VideoDramaRequest.id).where(VideoDramaRequest.slug == new_slug)
+        )
+        or await session.scalar(select(VideoProject.id).where(VideoProject.slug == new_slug))
+    )
+    if taken is not None:
+        raise SeriesRefused(
+            409,
+            "video_series_redo_slug_taken",
+            f"重做的影片代號 {new_slug} 已經是另一支影片或另一集",
+        )
+    now = _now()
+    # Dropped before the drop learned to close it (PR #1023), the row may still say started.
+    await _cancel_started_request(session, episode, now)
+    dropped = episode.slug
+    episode.status = "ready"
+    episode.slug = new_slug
+    episode.request_id = None
+    episode.started_at = None
+    episode.updated_at = now
+    reopened = series.status == "finished"
+    if reopened:
+        series.status = "active"
+    series.updated_at = now
+    session.add(
+        AdminAuditLog(
+            actor_user_id=actor.id,
+            action="video_series_episode_redone",
+            target=f"video-series:{series.slug}",
+            metadata_json={
+                "number": number,
+                "story": (episode.beats or {}).get("id"),
+                "redo": redone + 1,
+                "limit": STORY_REDO_LIMIT,
+                "dropped_video": dropped,
+                "video": new_slug,
                 "reopened": reopened,
             },
         )
@@ -1880,6 +2064,7 @@ async def next_job(session: AsyncSession, settings: VideoAutomationSettings) -> 
             started_this_month=await _started_this_month(session, series),
             now=now,
             awaiting_upload=await _awaiting_upload(session, series) if is_story(series) else 0,
+            earlier_starts=await _earlier_starts(session, series),
         )
         if job is None:
             continue
