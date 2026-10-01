@@ -1,13 +1,13 @@
 ---
 id: 2026-09-30-shorts-md-knock-timer-wording
 title: SHORTS.md still says the worker knocks at the start of each round
-status: in-progress
+status: done
 priority: P3
 area: docs
 owner: claude-opus-5-5-shorts-knock
 claimed_at: 2026-10-01T12:39:29Z
 created_at: 2026-09-30T16:10:39Z
-completed_at:
+completed_at: 2026-10-01T12:45:16Z
 branch: claude/shorts-md-knock-timer
 depends_on:
   - 2026-09-28-video-shorts-knock-long-rounds-and
