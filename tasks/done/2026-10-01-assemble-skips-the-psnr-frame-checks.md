@@ -1,13 +1,13 @@
 ---
 id: 2026-10-01-assemble-skips-the-psnr-frame-checks
 title: assemble skips the PSNR frame checks for plain slides videos
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-assemble-psnr
 claimed_at: 2026-10-01T14:40:05Z
 created_at: 2026-10-01T07:44:20Z
-completed_at:
+completed_at: 2026-10-01T14:47:56Z
 branch: claude/assemble-psnr-slides
 depends_on: []
 scope:
