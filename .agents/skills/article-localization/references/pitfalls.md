@@ -14,7 +14,7 @@
 
 - **部署後內容包的原始位元組可能與 bundle 不同**（欄位順序、預設值序列化），batch008 的 dry-run 因此在寫入前停下；現在以 `ArticlePack` 驗證後的內容比對（PR #642）。其他任何文件或 metadata 差異仍會停。（`tasks/done/2026-09-22-compare-deployed-localization-packs-by-validated.md`）
 - **合併與部署之間 main 往前走了**：batch018 第一次部署在執行前就停下，重新核對新的合併內容與 CI 才部署。發布前一定再匯出一次快照、再比一次。（`docs/article-localization/releases/batch018/README.md`）
-- **CI 的 release-safety 以前只看工具目錄**，純內容 PR 或 API／migration 改動不會跑 PostgreSQL 發布測試；已把 `apps/api/**` 與 npm manifest 加進觸發條件。本機的 PostgreSQL skip 不能當成發布安全的證據。（`tasks/done/2026-09-23-localization-release-ci-content-api.md`）
+- **CI 的 release-safety job 在 `apps/api/**`、npm manifest、`tools/article-localization/**`、`docs/article-localization/**` 變動時跑 PostgreSQL 發布測試**，純內容 PR 也會觸發；以那個 job 的結果為準，本機的 PostgreSQL skip 不能當成發布安全的證據。
 - **失敗的 publish 階段用同一個 state 目錄重跑**，journal 會對帳；換新目錄等於丟掉重複保護。
 - **`publish_bundle.py` 不看 `publish_holds.json`**；那個檔只擋 `guides-import --publish`。要擋某篇就別把它放進 bundle。
 - `migrate-prepared` 不碰任何有 attempt 或失敗狀態的 job；舊 pilot job 要用 `materialize` 加 `--reason` 升級，然後每個語系重新渲染、重新審稿。

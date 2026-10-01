@@ -18,7 +18,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "用 Google 帳號免費做 AI 影片：Google Vids 的 Gemini Omni 1.1 能做什麼、額度到底多少",
-    "description": "Google Vids 開放任何 Google 帳號免費用 Gemini Omni 1.1 生成 AI 影片。這支示範怎麼做一段，並講清楚免費的四個界線。\n給想用 AI 做影片、不想付費也不想學剪輯的人。\n\n涵蓋誰能用、只寫電腦能生成、一段片段的規格、關分頁前一定要先插進 Vid、兩份說明頁的帳號範圍與額度計量方式不同、SynthID 浮水印與「只供在 Vids 內使用」的說法，以及 AI 旁白、本篇公告未列出的中文提示條件。本站沒有實測生成效果。",
+    "description": "Google Vids 開放任何 Google 帳號免費用 Gemini Omni 1.1 生成 AI 影片。這支示範怎麼做一段，並講清楚公告沒寫清楚的五件事，說明頁怎麼回答。\n給想用 AI 做影片、不想付費也不想學剪輯的人。\n\n涵蓋：電腦上怎麼做一段、關分頁前要先插進 Vid、中文提示與年齡條件、手機能不能生成、上傳影片的地區限制、新版 AI 旁白何時上線；兩份說明頁的額度為什麼寫得不一樣、SynthID 浮水印與「只供在 Vids 內使用」。本站沒有實測生成效果。",
     "tags": [
       "Google Vids",
       "Gemini Omni",
@@ -26,6 +26,7 @@
       "AI 影片",
       "Omni 1.1",
       "SynthID",
+      "Google Vids limits",
       "免費 AI 工具",
       "AI video generator"
     ],
@@ -35,7 +36,7 @@
     "template": "thumb",
     "data": {
       "tag": "FREE AI VIDEO",
-      "headline": "Free, but\n**4 limits**",
+      "headline": "Free, but\n**5 catches**",
       "sub": "Google Vids · Omni 1.1"
     }
   },
@@ -43,55 +44,150 @@
     {
       "title": "Google：Anyone can make stunning HD videos with Gemini Omni in Google Vids",
       "url": "https://blog.google/products-and-platforms/products/workspace/gemini-omni-in-google-vids/",
-      "checked_on": "2026-09-29"
+      "checked_on": "2026-09-30"
     },
     {
       "title": "Google Workspace Updates：Gemini Omni 1.1 Flash now in Vids",
       "url": "https://workspaceupdates.googleblog.com/2026/09/gemini-omni-11-flash-now-in-vids-with-improved-extension-quality-1080p-and-duration-control.html",
-      "checked_on": "2026-09-29"
+      "checked_on": "2026-09-30"
     },
     {
       "title": "Google 說明中心：Use AI to generate video clips in Google Vids",
       "url": "https://support.google.com/docs/answer/16143507",
-      "checked_on": "2026-09-29"
+      "checked_on": "2026-09-30"
     },
     {
       "title": "Google 說明中心：Gemini features in Google Vids",
       "url": "https://support.google.com/docs/answer/15609411",
-      "checked_on": "2026-09-29"
+      "checked_on": "2026-09-30"
+    },
+    {
+      "title": "Google 說明中心：Supported languages for Google Workspace with Gemini",
+      "url": "https://support.google.com/docs/answer/14925782",
+      "checked_on": "2026-09-30"
+    },
+    {
+      "title": "Google 說明中心：Get started with Google Workspace with Gemini",
+      "url": "https://support.google.com/docs/answer/13952129",
+      "checked_on": "2026-09-30"
+    },
+    {
+      "title": "Google 說明中心：Get started with Google Vids",
+      "url": "https://support.google.com/docs/answer/15082958",
+      "checked_on": "2026-09-30"
+    },
+    {
+      "title": "Google Workspace Updates：Create more natural, expressive AI voiceovers in Google Vids with upgraded Gemini 3.8 Flash Lite TTS",
+      "url": "https://workspaceupdates.googleblog.com/2026/09/create-more-natural-expressive-ai-voiceovers-in-Google-Vids-with-upgraded-Gemini-3.8-Flash-Lite-TTS.html",
+      "checked_on": "2026-09-30"
     }
   ],
   "scenes": [
     {
       "id": "hook",
-      "chapter": "Google 帳號免費做 AI 影片",
+      "chapter": "免費 AI 影片有五件事沒寫清楚",
       "template": "title",
       "data": {
         "tag": "免費 AI 影片",
-        "title": "Google 帳號**免費做 AI 影片**？",
-        "subtitle": "真的免費，但有四個界線"
+        "title": "免費 AI 影片\n**五件事**沒寫清楚",
+        "subtitle": "Google Vids 的 Gemini Omni 1.1"
       },
+      "claims": [
+        "c7",
+        "c9"
+      ],
       "lines": [
         {
-          "id": "r3vg",
-          "text": "Google 說現在人人都能免費用 AI 做影片，這是真的。"
+          "id": "wchu",
+          "text": "這個免費的 AI 影片工具，有五件事，Google 的公告沒有寫清楚。",
+          "pause_after_ms": 900
         },
         {
-          "id": "h63u",
-          "text": "但免費有四個界線，其中一個沒注意，你生成的片段會直接消失。"
-        },
-        {
-          "id": "fbte",
-          "text": "這支帶你做一段，再把四個界線一次講清楚。"
+          "id": "gqa7",
+          "text": "你以為公告寫了免費，就什麼都講清楚了。",
+          "pause_after_ms": 600
         }
       ]
     },
     {
-      "id": "announcement",
-      "chapter": "Google 宣布了什麼",
+      "id": "hook-proof",
+      "template": "big",
+      "data": {
+        "kicker": "其實",
+        "text": "中文？手機？",
+        "sub": "這兩件事，公告裡一句都沒提"
+      },
+      "claims": [
+        "c7",
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "chza",
+          "text": "其實連中文提示能不能用、手機能不能做，公告都沒寫。"
+        },
+        {
+          "id": "yvre",
+          "text": "答案散在其他官方頁面，這支影片幫你找齊。"
+        },
+        {
+          "id": "yfab",
+          "text": "那它到底是什麼？",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "what-is",
+      "chapter": "Google Vids 免費 AI 影片是什麼",
+      "template": "bullets",
+      "data": {
+        "title": "先講它是什麼",
+        "items": [
+          "Google Vids 裡的 AI 影片生成",
+          "模型：Gemini Omni 1.1 Flash",
+          "9 月 23 日開始推出",
+          "Google 的說法：免費、任何人"
+        ]
+      },
+      "claims": [
+        "c1",
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "rn39",
+          "text": "先用一句話講清楚。"
+        },
+        {
+          "id": "5wgf",
+          "text": "它是 Google Vids 裡的 AI 影片生成功能。",
+          "reveal": 1
+        },
+        {
+          "id": "ezrk",
+          "text": "背後的模型叫 Gemini Omni 1.1 Flash。",
+          "say": "背後的模型叫 Gemini Omni 一點一 Flash。",
+          "say_for": "30c19e0dc5db",
+          "reveal": 1
+        },
+        {
+          "id": "v46f",
+          "text": "九月二十三日開始推出。",
+          "reveal": 1
+        },
+        {
+          "id": "ueaj",
+          "text": "Google 的說法是，免費，而且任何人都能用。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "twist",
       "template": "quote",
       "data": {
-        "kicker": "Google 官方部落格",
+        "kicker": "Google 官方部落格的標題",
         "quote": "Anyone can make stunning HD videos with Gemini Omni in Google Vids",
         "translation": "任何人都能在 Google Vids 用 Gemini Omni 做出高畫質影片",
         "source": "Google 官方部落格，2026-09-23"
@@ -105,113 +201,46 @@
           "text": "先看 Google 怎麼宣布的。"
         },
         {
-          "id": "fvbr",
-          "text": "它說任何人都能在 Google Vids 用 Gemini Omni 做高畫質影片。",
+          "id": "rkgw",
+          "text": "公告的標題寫，任何人都能做高畫質影片。",
           "reveal": 1
         },
         {
-          "id": "wcik",
-          "text": "「任何人」「驚豔」這些字，是 Google 自己的宣傳用語。"
-        },
-        {
-          "id": "zs5i",
-          "text": "背後的模型叫 Gemini Omni 1.1 Flash，美國時間九月二十三號開放。"
-        },
-        {
-          "id": "c9s7",
-          "text": "這次同時發在 Google 官方部落格和 Workspace 更新公告。"
-        },
-        {
-          "id": "4f7e",
-          "text": "簡單說，就是不用付錢、不用剪輯，也能生出一段短影片。"
+          "id": "7kht",
+          "text": "內文還補了一句。"
         }
       ]
     },
     {
-      "id": "who-can",
-      "template": "compare",
-      "data": {
-        "title": "誰能用",
-        "left": {
-          "heading": "個人 Google 帳號",
-          "points": [
-            "免費就能用",
-            "只能用預設虛擬化身"
-          ]
-        },
-        "right": {
-          "heading": "公司或學校帳號",
-          "points": [
-            "多數方案都列在內",
-            "能不能用，管理員決定"
-          ]
-        }
-      },
-      "claims": [
-        "c2"
-      ],
-      "lines": [
-        {
-          "id": "rqze",
-          "text": "誰能用？分兩種帳號。",
-          "reveal": 1
-        },
-        {
-          "id": "tny5",
-          "text": "個人 Google 帳號免費就能用，公司學校的要看管理員。",
-          "reveal": 1
-        },
-        {
-          "id": "cxwz",
-          "text": "台灣沒有被點名，最準的是自己登入看有沒有這個選項。"
-        },
-        {
-          "id": "tvjk",
-          "text": "能不能用生成式 AI 功能，工作帳號由所屬管理員決定。"
-        },
-        {
-          "id": "8k7t",
-          "text": "這次更新本身，沒有另外的管理員開關。"
-        },
-        {
-          "id": "syhv",
-          "text": "帳號類型不同，能用的東西也不一樣。"
-        }
-      ]
-    },
-    {
-      "id": "desktop-only",
+      "id": "promo-words",
       "template": "big",
       "data": {
-        "kicker": "用什麼裝置",
-        "text": "電腦",
-        "sub": "官方步驟都從電腦開始，沒說手機能生成"
+        "kicker": "Google 自己的宣傳用語",
+        "text": "免費・任何人",
+        "sub": "內文寫：有 Google 或 Workspace 帳號，就能免費生成"
       },
       "claims": [
-        "c3"
+        "c1"
       ],
       "lines": [
         {
-          "id": "wvrx",
-          "text": "第一個界線：在電腦上用。"
+          "id": "8p6r",
+          "text": "有 Google 或 Workspace 帳號，就能免費生成。"
         },
         {
-          "id": "nrat",
-          "text": "官方的步驟全部從電腦開啟 Google Vids 開始。"
+          "id": "zbyy",
+          "text": "免費和任何人，都是 Google 的宣傳用語。"
         },
         {
-          "id": "chsh",
-          "text": "手機或平板能不能生成影片，官方沒有說明。"
-        },
-        {
-          "id": "zhhz",
-          "text": "所以想用它，先準備一台電腦。"
+          "id": "gjup",
+          "text": "那實際動手，要怎麼做一段？",
+          "pause_after_ms": 1200
         }
       ]
     },
     {
       "id": "how-to",
-      "chapter": "動手做一段",
+      "chapter": "怎麼用 Google Vids 免費做一段 AI 影片",
       "template": "steps",
       "data": {
         "title": "動手做一段",
@@ -222,7 +251,7 @@
           },
           {
             "title": "Create AI videos",
-            "detail": "開始畫面的選項"
+            "detail": "再選側欄的 Create"
           },
           {
             "title": "寫提示",
@@ -239,41 +268,42 @@
         ]
       },
       "claims": [
+        "c3",
         "c4"
       ],
       "lines": [
         {
-          "id": "9tcd",
-          "text": "接下來動手做一段，照 Google 說明頁的步驟。",
+          "id": "dfmy",
+          "text": "照 Google 說明頁的步驟，一共五步。"
+        },
+        {
+          "id": "uhab",
+          "text": "第一步，在電腦打開 Vids 的網址。",
           "reveal": 1
         },
         {
-          "id": "yj7q",
-          "text": "在電腦打開 Vids 的網址，選建立 AI 影片的選項。",
+          "id": "rrkk",
+          "text": "第二步，開始畫面選建立 AI 影片。",
           "reveal": 1
         },
         {
-          "id": "mqcj",
-          "text": "寫提示時，把主題、地點、動作、鏡頭、光線都寫清楚。",
+          "id": "9i94",
+          "text": "第三步，寫提示，主題、地點、動作、鏡頭都寫進去。",
           "reveal": 1
         },
         {
-          "id": "vnnr",
-          "text": "再選畫面比例和長度，橫的或直的，三到十秒。",
+          "id": "qfwd",
+          "text": "第四步，選畫面比例和長度，橫的直的，三到十秒。",
           "reveal": 1
         },
         {
-          "id": "w5xm",
-          "text": "最後按生成，等它做完。",
+          "id": "q9te",
+          "text": "第五步，按生成，然後等它做完。",
           "reveal": 1
         },
         {
           "id": "skjm",
           "text": "第一次做，先挑一個簡單的畫面練手。"
-        },
-        {
-          "id": "p3f3",
-          "text": "生成需要等待，先把畫面想清楚再開始。"
         }
       ]
     },
@@ -300,26 +330,26 @@
       ],
       "lines": [
         {
-          "id": "5epc",
-          "text": "提示寫得好不好，差別非常大。",
+          "id": "pzf6",
+          "text": "提示怎麼寫，差別很大。"
+        },
+        {
+          "id": "csj2",
+          "text": "Google 說明頁建議，連對白、聲音和語氣也寫進去。"
+        },
+        {
+          "id": "fe7c",
+          "text": "提示只寫一句很美的海邊影片，太模糊，模型只能亂猜。",
           "reveal": 1
         },
         {
-          "id": "e3sj",
-          "text": "「很美的海邊」太模糊，模型只能亂猜。",
+          "id": "nz9d",
+          "text": "換成黃昏、一隻狗、低角度跟拍、暖色光線和海浪聲，就具體多了。",
           "reveal": 1
         },
         {
-          "id": "9abk",
-          "text": "寫清楚時間、主角、動作、鏡頭、光線和聲音，畫面就穩很多。"
-        },
-        {
-          "id": "i74f",
-          "text": "Google 說明頁建議的，也是把這些面向寫進去。"
-        },
-        {
-          "id": "pfxb",
-          "text": "寫提示時，把自己當成在跟攝影師說明分鏡。"
+          "id": "rnw8",
+          "text": "我的看法是，寫提示就像跟攝影師講分鏡。"
         }
       ]
     },
@@ -354,12 +384,16 @@
       "lines": [
         {
           "id": "x6hs",
-          "text": "每一段片段的規格是這樣。",
+          "text": "每一段片段的規格是這樣。"
+        },
+        {
+          "id": "fk7e",
+          "text": "長度三到十秒。",
           "reveal": 1
         },
         {
-          "id": "cz9y",
-          "text": "長度三到十秒，最高一〇八〇 p。",
+          "id": "3d6b",
+          "text": "最高是全高清一〇八〇。",
           "reveal": 1
         },
         {
@@ -368,17 +402,9 @@
           "reveal": 1
         },
         {
-          "id": "d8qg",
-          "text": "生成時最多可以放七張參考圖，讓畫面照你的素材走。",
+          "id": "nqwj",
+          "text": "參考圖的上限是七張。",
           "reveal": 1
-        },
-        {
-          "id": "s5gq",
-          "text": "十秒很短，長一點的故事要靠延長或拼接。"
-        },
-        {
-          "id": "yqxd",
-          "text": "直的九比十六，就是短影音常用的比例。"
         }
       ]
     },
@@ -388,23 +414,19 @@
       "data": {
         "title": "參考圖與虛擬化身",
         "items": [
-          "最多上傳 7 張參考圖",
+          "參考圖：讓畫面照你的素材走",
           "個人帳號只能用預設虛擬化身",
-          "化身作為影片素材：限英文與列名方案"
+          "化身當影片素材：限英文與列名方案"
         ]
       },
       "claims": [
-        "c4"
+        "c4",
+        "c19"
       ],
       "lines": [
         {
           "id": "ruqj",
           "text": "參考圖是讓畫面照你的素材走的方法。",
-          "reveal": 1
-        },
-        {
-          "id": "pm6i",
-          "text": "生成新片段時，最多可以放七張。",
           "reveal": 1
         },
         {
@@ -414,51 +436,17 @@
         },
         {
           "id": "24vb",
-          "text": "把虛擬化身當影片素材，目前另限英文及列名方案，要先查資格。"
-        }
-      ]
-    },
-    {
-      "id": "save-it",
-      "template": "big",
-      "data": {
-        "kicker": "最重要的一步",
-        "text": "先插進 Vid",
-        "sub": "關掉分頁，生成紀錄就消失"
-      },
-      "claims": [
-        "c5"
-      ],
-      "lines": [
-        {
-          "id": "qyty",
-          "text": "第二個界線，也是最容易踩的坑。"
+          "text": "把虛擬化身當影片素材，目前另外限英文和列名方案，要先查資格。",
+          "reveal": 1
         },
         {
-          "id": "hsue",
-          "text": "生成紀錄只存在這一次的工作階段裡。"
-        },
-        {
-          "id": "itua",
-          "text": "你一關掉分頁，剛剛生成的片段就不見了。"
-        },
-        {
-          "id": "s7f6",
-          "text": "所以做好一段，先把它插進你自己的 Vid，才算存下來。"
-        },
-        {
-          "id": "7w3y",
-          "text": "這一點說明頁寫得很清楚，但很多人第一次都會踩到。"
-        },
-        {
-          "id": "n9n5",
-          "text": "養成習慣：滿意一段，就插進一段。"
+          "id": "xfxp",
+          "text": "十秒很短，想做長一點，還有新的控制可以用。"
         }
       ]
     },
     {
       "id": "three-controls",
-      "chapter": "三個新的創作控制",
       "template": "steps",
       "data": {
         "title": "這次新增的三個控制",
@@ -482,8 +470,8 @@
       ],
       "lines": [
         {
-          "id": "89j6",
-          "text": "這次還多了三個控制。"
+          "id": "7ia3",
+          "text": "這次多了三個控制。"
         },
         {
           "id": "9meb",
@@ -496,30 +484,480 @@
           "reveal": 1
         },
         {
-          "id": "3kb5",
-          "text": "第三，直接生成一〇八〇 p，或把舊片段升上去。",
+          "id": "r44r",
+          "text": "第三，直接生成全高清，或把舊片段升上去。",
           "reveal": 1
         },
         {
-          "id": "4vsm",
-          "text": "這三個控制，讓它從玩具變得比較像能用的工具。"
-        },
-        {
           "id": "krnz",
-          "text": "延長之後好不好看，還是要自己看過才知道。"
+          "text": "我的看法是，延長之後好不好看，還是要自己看過才知道。"
+        }
+      ]
+    },
+    {
+      "id": "save-it",
+      "template": "big",
+      "data": {
+        "kicker": "最不能漏的一步",
+        "text": "先插進 Vid",
+        "sub": "關掉分頁，生成紀錄就消失"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "33ji",
+          "text": "做完一段，有一步千萬不能漏。"
         },
         {
-          "id": "k3uh",
-          "text": "想做長一點的影片，延長場景是關鍵。"
+          "id": "hsue",
+          "text": "生成紀錄只存在這一次的工作階段裡。"
+        },
+        {
+          "id": "itua",
+          "text": "你一關掉分頁，剛剛生成的片段就不見了。"
+        }
+      ]
+    },
+    {
+      "id": "save-habit",
+      "template": "bullets",
+      "data": {
+        "title": "存下來的習慣",
+        "items": [
+          "做好一段，先插進自己的 Vid",
+          "事後要編輯或取用，靠這一步",
+          "滿意一段，就插進一段"
+        ]
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "s7f6",
+          "text": "所以做好一段，先把它插進你自己的 Vid，才算存下來。",
+          "reveal": 1
+        },
+        {
+          "id": "tred",
+          "text": "說明頁也寫，事後想再編輯或取用，都得先插進 Vid。",
+          "reveal": 1
+        },
+        {
+          "id": "n9n5",
+          "text": "養成習慣，滿意一段，就插進一段。",
+          "reveal": 1
+        },
+        {
+          "id": "mrxt",
+          "text": "步驟就這幾步，那公告到底哪些事沒寫清楚？",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "unclear-table",
+      "chapter": "Google Vids AI 影片公告沒寫清楚的五件事",
+      "template": "table",
+      "data": {
+        "title": "公告沒寫清楚的五件事",
+        "columns": [
+          "事項",
+          "說明頁怎麼寫"
+        ],
+        "rows": [
+          [
+            "中文提示",
+            "語言表沒列；沒列的只支援英文"
+          ],
+          [
+            "年齡條件",
+            "Gemini 入門頁：滿 18 歲"
+          ],
+          [
+            "手機能不能生成",
+            "手機只能看，不能編輯"
+          ],
+          [
+            "上傳影片來改",
+            "列了不能用的地區"
+          ],
+          [
+            "新版 AI 旁白",
+            "9 月 29 日更新：已上線，限列名方案"
+          ]
+        ]
+      },
+      "claims": [
+        "c7",
+        "c8",
+        "c9",
+        "c10",
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "xi4n",
+          "text": "先把五件事列出來，右邊先放官方頁的答案。"
+        },
+        {
+          "id": "u66y",
+          "text": "第一，中文提示能不能用。",
+          "reveal": 1
+        },
+        {
+          "id": "47u8",
+          "text": "第二，有沒有年齡條件。",
+          "reveal": 1
+        },
+        {
+          "id": "hyqa",
+          "text": "第三，手機能不能生成。",
+          "reveal": 1
+        },
+        {
+          "id": "mksp",
+          "text": "第四，上傳影片來改的地區限制。",
+          "reveal": 1
+        },
+        {
+          "id": "hqkj",
+          "text": "第五，新版 AI 旁白什麼時候上線。",
+          "reveal": 1
+        },
+        {
+          "id": "qfzs",
+          "text": "答案先看一眼，細節一件一件講。"
+        }
+      ]
+    },
+    {
+      "id": "unclear-ask",
+      "template": "chat",
+      "data": {
+        "title": "中文提示，能用嗎？",
+        "messages": [
+          {
+            "side": "right",
+            "name": "你",
+            "text": "我可以用中文寫提示嗎？"
+          },
+          {
+            "side": "left",
+            "name": "官方頁",
+            "text": "語言表沒有 AI 影片；沒列的功能只支援英文"
+          }
+        ]
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "x24z",
+          "text": "先問第一件，中文提示。"
+        },
+        {
+          "id": "tnsk",
+          "text": "你會想問的是，可以用中文寫提示嗎？",
+          "reveal": 1
+        },
+        {
+          "id": "7xnu",
+          "text": "官方頁的回應是，語言表沒有 AI 影片，沒列的只支援英文。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "unclear-lang",
+      "template": "compare",
+      "data": {
+        "title": "語言表與年齡",
+        "left": {
+          "heading": "語言表",
+          "points": [
+            "列了圖片、旁白、虛擬化身",
+            "AI 影片生成不在表上",
+            "沒列的功能：只支援英文"
+          ]
+        },
+        "right": {
+          "heading": "年齡",
+          "points": [
+            "Gemini 入門頁：滿 18 歲",
+            "影片生成頁本身沒寫"
+          ]
+        }
+      },
+      "claims": [
+        "c7",
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "ixne",
+          "text": "說明頁連到一張支援語言的表。"
+        },
+        {
+          "id": "vzju",
+          "text": "表上有圖片、旁白和虛擬化身，表上沒有的功能寫明只支援英文。",
+          "reveal": 1
+        },
+        {
+          "id": "3gje",
+          "text": "官方的建議是，功能只支援英文時，把帳號語言改成英文。"
+        },
+        {
+          "id": "jx22",
+          "text": "第二件，有沒有年齡條件？",
+          "reveal": 1
+        },
+        {
+          "id": "fsf9",
+          "text": "生成頁連到的 Gemini 入門頁，寫要滿十八歲。"
+        }
+      ]
+    },
+    {
+      "id": "unclear-mobile",
+      "template": "big",
+      "data": {
+        "kicker": "第三件：手機",
+        "text": "電腦",
+        "sub": "Vids 入門頁：手機只能看，不能編輯"
+      },
+      "claims": [
+        "c3",
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "z7mj",
+          "text": "第三件事，手機能不能生成影片。"
+        },
+        {
+          "id": "nrat",
+          "text": "官方的步驟，全都從電腦打開 Vids 開始。"
+        },
+        {
+          "id": "chsh",
+          "text": "Vids 入門頁還寫，手機只能看影片，不能編輯。"
+        }
+      ]
+    },
+    {
+      "id": "region-limits",
+      "template": "bullets",
+      "data": {
+        "title": "上傳影片來改：地區限制",
+        "items": [
+          "歐洲經濟區、英國、瑞士不行",
+          "美國伊利諾州、德州也不行",
+          "超過 10 秒只改最後 10 秒"
+        ]
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "g9ei",
+          "text": "第四件，上傳自己的影片來改，有地區限制。"
+        },
+        {
+          "id": "9zm2",
+          "text": "歐洲經濟區、英國、瑞士不能用。",
+          "reveal": 1
+        },
+        {
+          "id": "pcqq",
+          "text": "美國伊利諾州跟德州，也不能用。",
+          "reveal": 1
+        },
+        {
+          "id": "f57c",
+          "text": "那其他地區呢？"
+        },
+        {
+          "id": "nqbw",
+          "text": "講用量的說明頁只概括寫，Workspace 有開放的地方都能用。"
+        },
+        {
+          "id": "tjxx",
+          "text": "上傳的影片超過十秒，只會修改最後十秒。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "voiceover",
+      "template": "bullets",
+      "data": {
+        "title": "新版 AI 旁白：已上線",
+        "items": [
+          "Gemini 3.8 Flash-Lite 文字轉語音",
+          "公告說一百多種語言",
+          "9 月 29 日更新：已上線，限列名方案"
+        ]
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "wga7",
+          "text": "第五件，新版的 AI 旁白。"
+        },
+        {
+          "id": "cysz",
+          "text": "公告寫，Gemini 3.8 Flash-Lite 的文字轉語音即將推出。",
+          "say": "公告寫，Gemini 三點八 Flash-Lite 的文字轉語音即將推出。",
+          "say_for": "edea51c4fbcc",
+          "reveal": 1
+        },
+        {
+          "id": "bp5e",
+          "text": "公告說它會支援一百多種語言。",
+          "reveal": 1
+        },
+        {
+          "id": "u2gj",
+          "text": "九月二十九日，更新公告寫已經上線，限列名的方案。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "check-yourself",
+      "template": "bullets",
+      "data": {
+        "title": "先確認自己的帳號",
+        "items": [
+          "先登入對的 Google 帳號",
+          "沒有這項功能，開始畫面就不顯示選項",
+          "工作或學校帳號，管理員可以關掉"
+        ]
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "jm3a",
+          "text": "公告沒寫的地方，最實際的辦法，是看自己的畫面。"
+        },
+        {
+          "id": "radj",
+          "text": "用量頁說，要先登入對的 Google 帳號。",
+          "reveal": 1
+        },
+        {
+          "id": "p83d",
+          "text": "帳號沒有某項功能，開始畫面就不會出現那個選項。",
+          "reveal": 1
+        },
+        {
+          "id": "y76w",
+          "text": "工作或學校帳號，管理員還可以把生成式 AI 功能關掉。",
+          "reveal": 1
+        },
+        {
+          "id": "263x",
+          "text": "那官方寫了的部分，每一頁都說得一樣嗎？",
+          "pause_after_ms": 1200
+        }
+      ]
+    },
+    {
+      "id": "who-can",
+      "chapter": "Google Vids 免費額度：兩份官方頁怎麼讀",
+      "template": "bullets",
+      "data": {
+        "title": "連誰能用，寫法也不同",
+        "items": [
+          "公告：任何 Google 或 Workspace 帳號",
+          "生成說明頁開頭：需要合格的 Workspace 訂閱",
+          "用量頁：個人帳號也有專用的一格"
+        ]
+      },
+      "claims": [
+        "c1",
+        "c2",
+        "c12",
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "iyr4",
+          "text": "先看誰能用，三個頁面的寫法就不一樣。"
+        },
+        {
+          "id": "cdjf",
+          "text": "公告說，有 Google 或 Workspace 帳號就能免費用。",
+          "reveal": 1
+        },
+        {
+          "id": "ifi6",
+          "text": "生成說明頁的開頭，寫的是需要合格的 Workspace 訂閱。",
+          "reveal": 1
+        },
+        {
+          "id": "cyxg",
+          "text": "用量頁又替個人 Google 帳號，單獨列了一格額度。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "two-pages",
+      "template": "compare",
+      "data": {
+        "title": "兩份頁面的原文",
+        "left": {
+          "heading": "生成說明頁",
+          "points": [
+            "Most users can generate up to 50 videos per month."
+          ]
+        },
+        "right": {
+          "heading": "用量說明頁，個人帳號",
+          "points": [
+            "6 video clips/month combined with AI avatars"
+          ]
+        }
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "itx5",
+          "text": "再看額度，先把兩份頁面的原文並排。"
+        },
+        {
+          "id": "3x75",
+          "text": "生成說明頁寫，多數使用者每月最多生成五十部影片。",
+          "reveal": 1
+        },
+        {
+          "id": "i84s",
+          "text": "用量頁的個人帳號表格寫，每月六部，跟虛擬化身合計。",
+          "reveal": 1
+        },
+        {
+          "id": "k25s",
+          "text": "兩個數字，都是官方寫的。"
         }
       ]
     },
     {
       "id": "quota-table",
-      "chapter": "免費額度到底多少",
       "template": "table",
       "data": {
-        "title": "依帳號類型與計量方式查額度",
+        "title": "依帳號類型查額度（2026 年 9 月）",
         "columns": [
           "官方說明頁",
           "每月上限",
@@ -537,116 +975,120 @@
             "每月 1 日"
           ],
           [
-            "用量頁：未另列限制時的預設",
+            "用量說明頁：未另列限制時的預設",
             "500 秒",
-            "每月 1 日"
+            "頁面沒寫"
           ]
         ]
       },
       "claims": [
-        "c7"
+        "c12",
+        "c13",
+        "c14"
       ],
       "lines": [
         {
-          "id": "ycy7",
-          "text": "第三個界線是額度，要先分清楚帳號類型。"
+          "id": "42a3",
+          "text": "把三個數字排在一起看。"
         },
         {
-          "id": "cess",
-          "text": "兩份說明頁的適用對象和計量方式不同，不能把數字直接當成衝突。"
+          "id": "us6x",
+          "text": "第一列，生成說明頁的說法，多數使用者每月五十部影片。",
+          "reveal": 1
         },
         {
-          "id": "w95t",
-          "text": "影片生成那頁寫，多數使用者每月最多五十部。"
+          "id": "jdpm",
+          "text": "第二列，用量頁的個人帳號，六部，跟虛擬化身合計。",
+          "reveal": 1
         },
         {
-          "id": "rfr9",
-          "text": "用量那頁則依帳號類型分開寫，數字又不一樣。"
+          "id": "evm7",
+          "text": "這兩列都寫，每月一號太平洋時間午夜重設。"
         },
         {
-          "id": "f62z",
-          "text": "個人和 Workspace Individual 都列每月六部，跟虛擬化身合計；其他方案另有秒數上限。"
+          "id": "bgex",
+          "text": "第三列，用量頁沒有另外列限制時的預設，是五百秒。",
+          "reveal": 1
         },
         {
-          "id": "r66b",
-          "text": "五十部是概括說明，六部則列在個人帳號的專用表格。"
-        },
-        {
-          "id": "6gkx",
-          "text": "遇到這種情況，就以你登入後看到的額度為準。"
-        },
-        {
-          "id": "3pgu",
-          "text": "每月一號太平洋時間午夜重設；部數、秒數和其他功能的點數要分開看。"
+          "id": "yuft",
+          "text": "三個數字的對象和單位不同，不能直接拿來互相比。"
         }
       ]
     },
     {
-      "id": "no-pick",
-      "template": "big",
+      "id": "quota-steps",
+      "template": "steps",
       "data": {
-        "kicker": "本站的做法",
-        "text": "先看帳號",
-        "sub": "依帳號專用表格，再確認登入後額度"
+        "title": "我怎麼查自己的額度",
+        "steps": [
+          {
+            "title": "確認帳號類型",
+            "detail": "個人、Workspace、Google AI"
+          },
+          {
+            "title": "找用量頁那一格",
+            "detail": "看是部數還是秒數"
+          },
+          {
+            "title": "登入後看實際顯示",
+            "detail": "以畫面上的為準"
+          }
+        ]
       },
       "claims": [
-        "c7"
+        "c12",
+        "c14"
       ],
       "lines": [
         {
-          "id": "6i7z",
-          "text": "所以先按自己的帳號類型查額度，再確認登入後的顯示。"
+          "id": "pesn",
+          "text": "所以我的做法是，不挑一個數字當答案，照這三個步驟查。"
         },
         {
-          "id": "vnur",
-          "text": "最準的是登入後看你自己的額度顯示。"
+          "id": "artk",
+          "text": "第一步，先確認自己是哪一種帳號。",
+          "reveal": 1
         },
         {
-          "id": "stwn",
-          "text": "個人帳號分頁明列六部，但仍要確認登入後顯示的可用額度。"
+          "id": "3z47",
+          "text": "第二步，到用量頁找自己那一格，看它算部數還是秒數。",
+          "reveal": 1
+        },
+        {
+          "id": "xii4",
+          "text": "第三步，登入後看畫面上顯示的額度。",
+          "reveal": 1
         },
         {
           "id": "z9hj",
-          "text": "額度與功能，Google 也寫之後都可能調整。"
+          "text": "額度和功能，Google 也寫了之後都可能調整。"
         }
       ]
     },
     {
-      "id": "why-quota",
-      "template": "bullets",
+      "id": "cta",
+      "template": "cta",
       "data": {
-        "title": "額度怎麼用比較不浪費",
-        "items": [
-          "先用文字把畫面想清楚",
-          "一次只改一個地方",
-          "滿意的立刻插進 Vid"
-        ]
+        "kicker": "完整整理",
+        "title": "兩份額度頁的原文",
+        "sub": "說明欄第一行就是文章連結"
       },
       "lines": [
         {
-          "id": "x2by",
-          "text": "不管是六部還是五十部，額度都不算多。",
-          "reveal": 1
+          "id": "7b7c",
+          "text": "兩份頁面的原文和完整限制，都整理在說明欄第一行的文章。"
         },
         {
-          "id": "u7c7",
-          "text": "先在腦中把畫面想清楚，再動手生成。",
-          "reveal": 1
-        },
-        {
-          "id": "tp32",
-          "text": "不滿意就只改一個地方，別整段重來。",
-          "reveal": 1
-        },
-        {
-          "id": "4wzr",
-          "text": "滿意的那段立刻插進 Vid，不要讓它跟著分頁消失。"
+          "id": "ta5k",
+          "text": "那做出來的東西，到底能拿去哪裡用？",
+          "pause_after_ms": 1200
         }
       ]
     },
     {
       "id": "watermark",
-      "chapter": "浮水印與使用範圍",
+      "chapter": "Google Vids 浮水印與使用範圍",
       "template": "quote",
       "data": {
         "kicker": "Google 說明頁原文",
@@ -655,34 +1097,56 @@
         "source": "Google 說明中心"
       },
       "claims": [
-        "c8",
-        "c9"
+        "c15"
       ],
       "lines": [
         {
-          "id": "ee8k",
-          "text": "第四個界線，是你能拿它做什麼。"
+          "id": "9t34",
+          "text": "說明頁最底下，有一句話。"
         },
         {
           "id": "ynjh",
-          "text": "說明頁寫，生成的圖片和影片只供在 Vids 裡使用。",
+          "text": "這句話是，生成的圖片和影片，只供在 Vids 裡使用。",
           "reveal": 1
         },
         {
           "id": "mcdr",
-          "text": "這句話對匯出後的影片效力如何，頁面沒有進一步說明。"
-        },
-        {
-          "id": "m8qs",
-          "text": "每段片段也都嵌了看不見的 SynthID 浮水印。"
-        },
+          "text": "匯出以後的影片適不適用這句話，頁面沒有進一步說。"
+        }
+      ]
+    },
+    {
+      "id": "policy",
+      "template": "bullets",
+      "data": {
+        "title": "使用前的兩個提醒",
+        "items": [
+          "受生成式 AI 禁止使用政策約束",
+          "內容可能不代表真實世界"
+        ]
+      },
+      "claims": [
+        "c15",
+        "c16"
+      ],
+      "lines": [
         {
           "id": "yw2i",
           "text": "要拿去別的地方用之前，先看清楚使用政策。"
         },
         {
+          "id": "hihz",
+          "text": "這項功能還有兩個提醒。"
+        },
+        {
+          "id": "vrq8",
+          "text": "第一，使用它要遵守 Google 的生成式 AI 禁止使用政策。",
+          "reveal": 1
+        },
+        {
           "id": "t46a",
-          "text": "官方也提醒，生成的內容可能不代表真實世界的情況。"
+          "text": "官方也提醒，生成的內容可能不代表真實世界的情況。",
+          "reveal": 1
         }
       ]
     },
@@ -698,7 +1162,7 @@
         ]
       },
       "claims": [
-        "c9"
+        "c17"
       ],
       "lines": [
         {
@@ -707,137 +1171,33 @@
           "reveal": 1
         },
         {
-          "id": "azbi",
-          "text": "Google 說它讓人能驗證內容是不是 AI 做的。",
+          "id": "w386",
+          "text": "Google 說，它讓人能驗證內容是不是 AI 做的。",
           "reveal": 1
+        },
+        {
+          "id": "t6py",
+          "text": "但怎麼驗，公告沒寫。"
         },
         {
           "id": "vvpv",
-          "text": "但這不代表它就符合各國的 AI 標示規定。",
+          "text": "我的看法是，有浮水印，也不代表符合各國的 AI 標示規定。",
           "reveal": 1
         },
         {
-          "id": "zb68",
-          "text": "至於怎麼驗證、去哪裡驗證，公告沒有寫。"
+          "id": "xtsm",
+          "text": "看完這些，這個免費工具到底值不值得試？",
+          "pause_after_ms": 1200
         }
       ]
     },
     {
-      "id": "not-yet",
-      "chapter": "還沒定案的地方",
-      "template": "bullets",
-      "data": {
-        "title": "還沒定案的地方",
-        "items": [
-          "AI 旁白：寫著即將推出",
-          "中文提示：這篇公告未列條件",
-          "上傳影片來改：部分地區不行"
-        ]
-      },
-      "claims": [
-        "c10",
-        "c11"
-      ],
-      "lines": [
-        {
-          "id": "m9qi",
-          "text": "還有幾件事還沒定案。",
-          "reveal": 1
-        },
-        {
-          "id": "emyj",
-          "text": "Gemini 3.8 Flash-Lite 的 AI 旁白，公告只寫即將推出。",
-          "reveal": 1
-        },
-        {
-          "id": "ns3z",
-          "text": "這份公告沒列出中文提示與年齡條件，使用前要另查帳號限制。",
-          "reveal": 1
-        },
-        {
-          "id": "wwty",
-          "text": "上傳自己的影片來改，在歐洲經濟區、英國等地不能用。"
-        },
-        {
-          "id": "u2gj",
-          "text": "旁白上線的日期，公告沒有給。"
-        }
-      ]
-    },
-    {
-      "id": "region-limits",
-      "template": "bullets",
-      "data": {
-        "title": "上傳影片來改：地區限制",
-        "items": [
-          "歐洲經濟區、英國、瑞士不行",
-          "美國伊利諾州、德州也不行",
-          "超過 10 秒只改最後 10 秒"
-        ]
-      },
-      "claims": [
-        "c11"
-      ],
-      "lines": [
-        {
-          "id": "uts5",
-          "text": "上傳自己的影片來改，有地區限制。",
-          "reveal": 1
-        },
-        {
-          "id": "frbp",
-          "text": "歐洲經濟區、英國、瑞士，還有美國伊利諾州和德州，都不能用。",
-          "reveal": 1
-        },
-        {
-          "id": "tjxx",
-          "text": "上傳的影片超過十秒，只會修改最後十秒。",
-          "reveal": 1
-        },
-        {
-          "id": "xk74",
-          "text": "這不代表台灣全部功能都能用，只是台灣沒被列在這張排除名單裡。"
-        },
-        {
-          "id": "3i84",
-          "text": "說到底，地區和帳號的條件，都要以你自己的畫面為準。"
-        }
-      ]
-    },
-    {
-      "id": "cta",
-      "template": "cta",
-      "data": {
-        "kicker": "完整整理",
-        "title": "額度、裝置與使用範圍",
-        "sub": "說明欄第一行就是文章連結"
-      },
-      "lines": [
-        {
-          "id": "8hu7",
-          "text": "兩份額度頁的原文和完整限制，都整理在說明欄第一行的文章。"
-        },
-        {
-          "id": "t3pu",
-          "text": "用之前花一分鐘看，能省下很多白做的時間。"
-        },
-        {
-          "id": "3zkk",
-          "text": "特別是要拿去商業用途的人，更要看一遍。"
-        }
-      ]
-    },
-    {
-      "id": "four-limits",
-      "chapter": "四個界線總整理",
+      "id": "recap",
+      "chapter": "Google Vids 免費 AI 影片值得試嗎",
       "template": "stats",
       "data": {
-        "title": "四個界線，記這樣就好",
+        "title": "帶走這三件事",
         "stats": [
-          {
-            "value": "電腦",
-            "label": "官方只寫電腦能生成"
-          },
           {
             "value": "插進 Vid",
             "label": "關分頁前先存"
@@ -853,66 +1213,125 @@
         ],
         "source": "依 Google 官方頁整理，2026-09"
       },
+      "claims": [
+        "c5",
+        "c12",
+        "c15",
+        "c17"
+      ],
       "lines": [
         {
-          "id": "7nz6",
-          "text": "最後把四個界線收一次。",
+          "id": "jzhk",
+          "text": "那值不值得試？我的看法是，值得先做一段，但要記住三件事。"
+        },
+        {
+          "id": "nkvm",
+          "text": "第一，做好一段，先插進 Vid。",
           "reveal": 1
         },
         {
-          "id": "xtm6",
-          "text": "第一，用電腦；第二，關分頁前先插進 Vid。",
+          "id": "7d88",
+          "text": "第二，額度依你的帳號看，不拿別人的數字當保證。",
           "reveal": 1
         },
         {
-          "id": "5fdi",
-          "text": "第三，依帳號看額度，不把多數使用者的數字當成個人保證。",
+          "id": "qqjw",
+          "text": "第三，官方寫生成的東西只供 Vids 內使用，還帶浮水印。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "recap-five",
+      "template": "bullets",
+      "data": {
+        "title": "那五件事，現在的答案",
+        "items": [
+          "中文提示：沒列的功能只支援英文",
+          "年齡條件：Gemini 入門頁寫滿 18 歲",
+          "手機：只能看，不能編輯",
+          "上傳影片來改：有不能用的地區",
+          "新版 AI 旁白：9 月 29 日更新寫已上線"
+        ]
+      },
+      "claims": [
+        "c7",
+        "c8",
+        "c9",
+        "c10",
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "i3s3",
+          "text": "另外，開頭那五件事，現在你手上有答案了。"
+        },
+        {
+          "id": "3yjx",
+          "text": "中文提示，語言表沒列，沒列的功能只支援英文。",
           "reveal": 1
         },
         {
-          "id": "52dq",
-          "text": "第四，生成的東西官方寫只供 Vids 內使用，還帶浮水印。",
+          "id": "is5i",
+          "text": "年齡條件，Gemini 入門頁寫要滿十八歲。",
           "reveal": 1
         },
         {
-          "id": "env3",
-          "text": "這四點記住，你就不會白做工。"
+          "id": "js58",
+          "text": "手機，只能看，不能編輯。",
+          "reveal": 1
         },
         {
-          "id": "wqpi",
-          "text": "這些都是官方頁面的說法，之後可能再調整。"
+          "id": "ew36",
+          "text": "上傳影片來改，有幾個地方不能用。",
+          "reveal": 1
+        },
+        {
+          "id": "y9fj",
+          "text": "新版 AI 旁白，九月二十九日的更新寫已上線，限列名方案。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "caveat",
+      "template": "big",
+      "data": {
+        "kicker": "最後提醒",
+        "text": "以官方頁為準",
+        "sub": "本站沒有實測生成效果"
+      },
+      "lines": [
+        {
+          "id": "ri3w",
+          "text": "這支只整理官方說法，我沒有實測生成效果。"
+        },
+        {
+          "id": "knpp",
+          "text": "額度和使用範圍，以官方最新的頁面為準。"
         }
       ]
     },
     {
       "id": "wrap",
-      "chapter": "免費不等於沒有條件",
       "template": "outro",
       "data": {
-        "title": "先插進 Vid，記住界線",
+        "title": "先插進 Vid，再看那五件事",
         "cta": "完整限制與兩份額度原文在說明欄的文章裡",
         "lines": [
-          "用電腦做，手機沒寫能生成",
+          "用電腦做，手機只能看",
           "做好一段先插進 Vid",
           "額度與使用範圍以官方頁為準"
         ]
       },
       "lines": [
         {
-          "id": "rsj4",
-          "text": "免費是真的，但免費不等於沒有條件。"
+          "id": "xqza",
+          "text": "完整的整理，在說明欄第一行的文章。"
         },
         {
-          "id": "qkcr",
-          "text": "記得先插進 Vid，額度和使用範圍以官方最新頁面為準。"
-        },
-        {
-          "id": "a6im",
-          "text": "我們沒有實測生成效果，這支只整理官方說法，下一支影片見。"
-        },
-        {
-          "id": "zzbx",
-          "text": "先照著做一段，你就知道這個免費工具適不適合你。"
+          "id": "cmwf",
+          "text": "免費是真的，但那五件事，動手之前先知道，就不會白做工。"
         }
       ]
     }

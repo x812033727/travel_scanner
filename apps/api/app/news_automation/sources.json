@@ -1,5 +1,5 @@
 {
-  "reviewed_on": "2026-09-26",
+  "reviewed_on": "2026-09-30",
   "sources": [
     {
       "name": "OpenAI News",
@@ -11,6 +11,18 @@
       "enabled": true,
       "scan_interval_minutes": 60,
       "note": "Company announcements; about 2 a day. Press articles link here as the primary source."
+    },
+    {
+      "name": "OpenAI Deployment Safety Hub",
+      "url": "https://deploymentsafety.openai.com/",
+      "format": "html",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"minimum_title_length": 25, "max_entries_per_scan": 1},
+      "note": "System cards, one per OpenAI model launch, newest first. openai.com/index/* refuses the scanner (403), this host does not. One entry per scan so the first scan takes only the newest card, never the back catalogue."
     },
     {
       "name": "Google AI blog",
@@ -43,8 +55,32 @@
       "is_first_party": true,
       "enabled": true,
       "scan_interval_minutes": 60,
-      "config": {"include_path_prefixes": ["/news/"], "minimum_title_length": 12},
-      "note": "No RSS feed; the news index page is read as an HTML listing."
+      "config": {"include_path_prefixes": ["/news/", "/claude-"], "exclude_path_prefixes": ["/claude-in-", "/claude-for-", "/claude-corps"], "minimum_title_length": 12},
+      "note": "No RSS feed; the news index page is read as an HTML listing. Model launches live at the site root (/claude-opus-5-5, /claude-sonnet-5-5), not under /news/, hence the second prefix (2026-09-30)."
+    },
+    {
+      "name": "Claude blog",
+      "url": "https://claude.com/blog",
+      "format": "html",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"include_path_prefixes": ["/blog/"], "minimum_title_length": 12},
+      "note": "Anthropic's product blog (Claude apps, Claude Code, connectors); no RSS. Separate from anthropic.com/news, which carries company and model announcements. HTML listings keep the default 20 entries per scan: several blogs pin older posts first, and a source's first scan only records its listing as seen (scanner.BASELINE)."
+    },
+    {
+      "name": "Claude Platform release notes",
+      "url": "https://platform.claude.com/docs/en/release-notes/feed.xml",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"evidence_from_feed_summary": true},
+      "note": "Anthropic's API release notes. Every entry links to an anchor on one shared page, so the entry's feed summary (about 1,200 characters, the day's notes in full) is the evidence and revalidation reads the feed, not the page."
     },
     {
       "name": "Hugging Face blog",
@@ -182,10 +218,10 @@
       "role": "evidence",
       "vertical": "crypto",
       "is_first_party": false,
-      "enabled": true,
+      "enabled": false,
       "scan_interval_minutes": 60,
       "config": {"max_entries_per_scan": 10},
-      "note": "Press; policy and industry coverage."
+      "note": "Press; policy and industry coverage. Disabled 2026-09-30: every article page answers 403 (Cloudflare) to the scanner and to curl alike, so no story could be read; CoinDesk and Decrypt cover the same news."
     },
     {
       "name": "Meta Newsroom",
@@ -302,6 +338,234 @@
       "scan_interval_minutes": 60,
       "config": {"max_entries_per_scan": 10},
       "note": "Press; a second website for crypto stories, which automatic publication can count."
+    },
+    {
+      "name": "Taiwan MODA press releases",
+      "url": "https://moda.gov.tw/",
+      "format": "html",
+      "role": "evidence",
+      "vertical": "tech",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"include_path_prefixes": ["/press/press-releases/"], "minimum_title_length": 12, "max_entries_per_scan": 3},
+      "note": "數位發展部新聞稿. The press-release list URL is a 404; the home page lists the five newest, newest first. Needs fetch.tls_context (TWCA chain fails Python 3.13's strict X.509 mode)."
+    },
+    {
+      "name": "Taiwan FSC press releases (crypto)",
+      "url": "https://www.fsc.gov.tw/ch/home.jsp?id=96&parentpath=0,2",
+      "format": "html",
+      "role": "evidence",
+      "vertical": "crypto",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"include_path_prefixes": ["/ch/home.jsp"], "include_query_contains": ["mcustomize=news_view.jsp"], "include_title_keywords": ["虛擬資產", "虛擬通貨", "穩定幣", "代幣", "加密", "區塊鏈"], "minimum_title_length": 12, "max_entries_per_scan": 3, "article_classes": ["maincontent"]},
+      "note": "金管會新聞稿, only the crypto ones: most FSC releases are funds, insurance and statistics. The RSS page lists no feed URL; the news list page is read instead, news items told apart from the menu by their query string. maincontent keeps the release and drops the page's view counter, which would change the evidence hash on every fetch. Needs fetch.tls_context."
+    },
+    {
+      "name": "Taiwan central bank press releases (crypto)",
+      "url": "https://www.cbc.gov.tw/tw/lp-302-1.html",
+      "format": "html",
+      "role": "evidence",
+      "vertical": "crypto",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"include_path_prefixes": ["/tw/cp-302-"], "include_title_keywords": ["穩定幣", "數位貨幣", "數位新臺幣", "CBDC", "代幣", "虛擬資產", "虛擬通貨", "加密"], "minimum_title_length": 8, "article_classes": ["cp"]},
+      "note": "中央銀行新聞稿, only the crypto and digital-currency ones: most are monthly statistics. The RSS feed (rss-302-1.xml) is 3.4 MB, over the fetcher's 2 MB cap, so the 45 KB press-release list page is read instead; .cp is the release body. Needs fetch.tls_context."
+    },
+    {
+      "name": "Taiwan NSTC press releases (technology)",
+      "url": "https://www.nstc.gov.tw/folksonomy/list/9aa56881-8df0-4eb6-a5a7-32a2f72826ff?l=ch",
+      "format": "html",
+      "role": "evidence",
+      "vertical": "tech",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"include_path_prefixes": ["/folksonomy/detail/"], "include_title_keywords": ["AI", "人工智慧", "半導體", "晶片", "資安", "量子", "太空", "衛星", "算力", "5G", "6G", "數位"], "minimum_title_length": 10, "article_ids": ["templateF"]},
+      "note": "國科會新聞資料, only technology titles (the list also carries humanities salons and visits). The RSS feed declares a DTD, which the XML parser refuses by design, so the news list page is read; #templateF is the release with its headline. Needs fetch.tls_context."
+    },
+    {
+      "name": "Mistral AI news",
+      "url": "https://mistral.ai/news/rss",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"max_entries_per_scan": 5},
+      "note": "Mistral's own news feed (models, Le Chat, agents)."
+    },
+    {
+      "name": "Cohere blog",
+      "url": "https://cohere.com/blog",
+      "format": "html",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"include_path_prefixes": ["/blog/"], "exclude_path_prefixes": ["/blog/tag", "/blog/category"], "minimum_title_length": 12},
+      "note": "No feed; the blog index is read as an HTML listing."
+    },
+    {
+      "name": "Cursor blog",
+      "url": "https://cursor.com/blog",
+      "format": "html",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"include_path_prefixes": ["/blog/"], "exclude_path_prefixes": ["/blog/topic"], "minimum_title_length": 12},
+      "note": "Cursor (Anysphere) product and model announcements; no feed."
+    },
+    {
+      "name": "Cognition blog",
+      "url": "https://cognition.com/blog",
+      "format": "html",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"include_path_prefixes": ["/blog/"], "minimum_title_length": 12},
+      "note": "Devin and Windsurf announcements; no feed."
+    },
+    {
+      "name": "Replit blog",
+      "url": "https://replit.com/blog",
+      "format": "html",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"include_path_prefixes": ["/blog/"], "minimum_title_length": 12},
+      "note": "Replit Agent announcements; no feed."
+    },
+    {
+      "name": "Manus blog",
+      "url": "https://manus.im/blog",
+      "format": "html",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"include_path_prefixes": ["/blog/"], "minimum_title_length": 12},
+      "note": "Manus agent announcements; no feed."
+    },
+    {
+      "name": "Amazon news (AI)",
+      "url": "https://www.aboutamazon.com/rss/feed.rss",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"max_entries_per_scan": 5, "include_title_keywords": ["Alexa", "Nova", "Bedrock", "generative AI", "artificial intelligence", "AI agent", "agentic", " AI "]},
+      "note": "aboutamazon.com's feed covers all of Amazon, so only AI titles are read."
+    },
+    {
+      "name": "Stability AI news",
+      "url": "https://stability.ai/news-updates?format=rss",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"max_entries_per_scan": 5},
+      "note": "Stability AI's news feed; updates about monthly."
+    },
+    {
+      "name": "ElevenLabs blog",
+      "url": "https://elevenlabs.io/blog",
+      "format": "html",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"include_path_prefixes": ["/blog/"], "exclude_path_prefixes": ["/blog/category"], "minimum_title_length": 12},
+      "note": "Voice and agent platform announcements; no feed."
+    },
+    {
+      "name": "Intel press releases",
+      "url": "https://www.intc.com/news-events/press-releases/rss",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "tech",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"max_entries_per_scan": 5},
+      "note": "Intel's press releases (investor relations feed)."
+    },
+    {
+      "name": "AMD press releases",
+      "url": "https://ir.amd.com/news-events/press-releases/rss",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "tech",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"max_entries_per_scan": 5},
+      "note": "AMD's press releases (investor relations feed)."
+    },
+    {
+      "name": "MediaTek press room",
+      "url": "https://www.mediatek.com/press-room/rss.xml",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "tech",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"max_entries_per_scan": 5},
+      "note": "MediaTek's press-room feed."
+    },
+    {
+      "name": "Dell blog",
+      "url": "https://www.dell.com/en-us/blog/",
+      "format": "html",
+      "role": "evidence",
+      "vertical": "tech",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"include_path_prefixes": ["/en-us/blog/"], "minimum_title_length": 25},
+      "note": "Dell's blog; no press-release feed found. Marketing-heavy: the writer may declare entries not newsworthy."
+    },
+    {
+      "name": "Lenovo press releases",
+      "url": "https://news.lenovo.com/pressroom/press-releases/",
+      "format": "html",
+      "role": "evidence",
+      "vertical": "tech",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"include_path_prefixes": ["/pressroom/press-releases/"], "minimum_title_length": 30},
+      "note": "Lenovo's press-release index; no feed."
+    },
+    {
+      "name": "ASUS press releases",
+      "url": "https://press.asus.com/rss.xml",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "tech",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"max_entries_per_scan": 5},
+      "note": "ASUS press site feed."
     }
   ]
 }

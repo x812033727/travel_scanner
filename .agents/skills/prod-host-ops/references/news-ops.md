@@ -10,7 +10,7 @@
 | `news-worker`（compose profile `news`） | `news` 佇列唯一的消費者，容器裡跑 `NEWS_WORKER_PROCESSES` 個 RQ worker（預設 3，2026-09-28 起）；同時跑幾個候選仍由後台的全域／每類並行數決定；一般 `worker` 不讀這個佇列。**只能有一個 news-worker 容器**：它啟動時會把所有處理中的候選判失敗重排 |
 | `/admin/news` | 來源、設定、審查清單、執行紀錄、各類別的啟用門檻 |
 
-`news` profile 沒起來時什麼都不會跑：後台按的「立即掃描」「重新執行」都停在 Redis 等 worker。確認兩個服務都在：`docker compose -f docker-compose.prod.yml ps --format '{{.Name}} {{.Status}}' | grep news`。部署腳本要帶 `--profile news` 才會每次一起重建（`docs/news-automation.md` 的「Switching it on」第 1 步仍寫著腳本只帶 `--profile hotspots`，以主機上的腳本為準；少了就是主機變更，站主決定，走 skill `deploy`）。只手動起一次不夠：下次部署會重建別的服務、把它們留在舊映像。
+`news` profile 沒起來時什麼都不會跑：後台按的「立即掃描」「重新執行」都停在 Redis 等 worker。確認兩個服務都在：`docker compose -f docker-compose.prod.yml ps --format '{{.Name}} {{.Status}}' | grep news`。部署腳本要帶 `--profile news` 才會每次一起重建（腳本不在 git 裡，確認用 `grep -- --profile /root/deploy-travel-scanner.sh`；少了就是主機變更，站主決定，走 skill `deploy`）。只手動起一次不夠：下次部署會重建別的服務、把它們留在舊映像。
 
 ## 兩個主機 CLI
 

@@ -1414,8 +1414,8 @@
       ]
     },
     "zh-CN": {
-      "title": "终端机与路径：找到专案根目录",
-      "description": "在 Windows、macOS、Linux 建立练习资料夹，确认目前目录并辨识相对与绝对路径。",
+      "title": "终端与路径：找到项目根目录",
+      "description": "在 Windows、macOS、Linux 创建练习文件夹，确认目前目录并识别相对与绝对路径。",
       "hero": {
         "src": "/guides/codex-terminal-paths/hero.jpg",
         "width": 1600,
@@ -1430,8 +1430,8 @@
         {
           "type": "summary",
           "items": [
-            "在 Windows、macOS、Linux 建立练习资料夹，确认目前目录并辨识相对与绝对路径。",
-            "你会在 Windows、macOS 或 Linux 开启终端机，辨认自己所在的资料夹，读取一个档案，并在启动 Codex 前确认工作位置。"
+            "在 Windows、macOS、Linux 创建练习文件夹，确认目前目录并识别相对与绝对路径。",
+            "你会在 Windows、macOS 或 Linux 打开终端，辨认自己所在的文件夹，读取一个文件，并在启动 Codex 前确认工作位置。"
           ]
         },
         {
@@ -1453,33 +1453,33 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "你会在 Windows、macOS 或 Linux 开启终端机，辨认自己所在的资料夹，读取一个档案，并在启动 Codex 前确认工作位置。阅读约 12 分钟、操作约 20 分钟。本篇只练习路径和唯读命令，没有删除、安装或管理员操作；请只跟自己的作业系统那一段。"
+          "text": "你会在 Windows、macOS 或 Linux 打开终端，辨认自己所在的文件夹，读取一个文件，并在启动 Codex 前确认工作位置。阅读约 12 分钟、操作约 20 分钟。本篇只练习路径和只读命令，没有删除、安装或管理员操作；请只跟自己的操作系统那一段。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "先分清视窗、壳层与输入"
+          "text": "先分清窗口、shell 与输入"
         },
         {
           "type": "paragraph",
-          "text": "终端机是容纳文字互动的视窗；PowerShell、Bash、zsh 等壳层负责解读命令；codex 启动后又进入代理的对话介面。相同视窗会有不同输入位置。看到 PS 与路径时通常是在 PowerShell；看到 Codex 的对话输入区时，文字会成为给代理的要求。不要把文章中的终端机命令、/plan 斜线指令、自然语言提示词混成一串贴入。"
+          "text": "终端是容纳文字交互的窗口；PowerShell、Bash、zsh 等 shell 负责解析命令；codex 启动后又进入代理的对话界面。相同窗口会有不同输入位置。看到 PS 与路径时通常是在 PowerShell；看到 Codex 的对话输入区时，文字会成为给代理的要求。不要把文章中的终端命令、/plan 斜杠命令、自然语言提示词混成一串粘贴。"
         },
         {
           "type": "paragraph",
-          "text": "绝对路径从磁碟或根目录出发，例如 C:\\Work\\demo 或 /home/reader/demo；相对路径从目前位置计算。点号 . 是目前目录，两点 .. 是上一层。移动终端机位置不会搬动档案，也不会把另一个已开启的终端机一起移动。每次新开视窗都先检视位置，不要只凭上一个视窗的记忆执行下一步。"
+          "text": "绝对路径从磁盘或根目录出发，例如 C:\\Work\\demo 或 /home/reader/demo；相对路径从目前位置计算。点号 . 是目前目录，两点 .. 是上一层。移动终端位置不会搬动文件，也不会把另一个已打开的终端一起移动。每次新开窗口都先查看位置，不要只凭上一个窗口的记忆执行下一步。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "准备两层资料夹与文字档"
+          "text": "准备两层文件夹与文本文件"
         },
         {
           "type": "paragraph",
-          "text": "用档案管理员在自己方便找到的位置建立全新的 codex-terminal-lab，里面再建立名称含空白的 lesson one。若已有同名资料夹，换一个新的名称并在后面指令使用实际路径。用纯文字编辑器在 lesson one 里建立 note.txt，内容只写下方一行，储存为 UTF-8。这个动作故意在图形介面完成，让你知道终端机读到的档案原本在哪里。"
+          "text": "用文件管理器在自己方便找到的位置创建全新的 codex-terminal-lab，里面再创建名称含空格的 lesson one。若已有同名文件夹，换一个新的名称并在后面命令使用实际路径。用纯文本编辑器在 lesson one 里创建 note.txt，内容只写下方一行，保存为 UTF-8。这个动作故意在图形界面完成，让你知道终端读到的文件原本在哪里。"
         },
         {
           "type": "code",
-          "label": "档案内容：贴入 lesson one/note.txt",
+          "label": "文件内容：贴入 lesson one/note.txt",
           "language": "text",
           "code": "Terminal practice: this is lesson one.\n"
         },
@@ -1488,7 +1488,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "目录应是下面的形状。Windows 记事本要避免 note.txt.txt，macOS 编辑器要避免 RTF；Linux 档名大小写保持一致。档名含空白并没有错，正好用来练习引号。教学中的灰色范例区只有命令与内容；不要把 "
+              "text": "目录应是下面的形状。Windows 记事本要避免 note.txt.txt，macOS 编辑器要避免 RTF；Linux 文件名大小写保持一致。文件名含空格并没有错，正好用来练习引号。教程中的灰色示例区只有命令与内容；不要把 "
             },
             {
               "type": "code",
@@ -1496,13 +1496,13 @@
             },
             {
               "type": "text",
-              "text": "、$ 等提示字元也加进输入。"
+              "text": "、$ 等提示字符也加进输入。"
             }
           ]
         },
         {
           "type": "code",
-          "label": "资料夹结构示意：用来核对，不是指令",
+          "label": "文件夹结构示意：用来核对，不是指令",
           "language": "text",
           "code": "codex-terminal-lab/\n  lesson one/\n    note.txt\n"
         },
@@ -1513,17 +1513,17 @@
         },
         {
           "type": "paragraph",
-          "text": "从开始选单开启 PowerShell，或在档案总管的 codex-terminal-lab 资料夹中选择「在终端机开启」。若终端机开的是命令提示字元，改开 PowerShell；本段的 Get-Location 并非 cmd.exe 指令。先执行下一组唯读命令，确认目前位置与直下档案与资料夹。没有看到 lesson one 时先别往下读档，回档案总管核对真正所在路径。"
+          "text": "从开始菜单打开 PowerShell，或在文件资源管理器的 codex-terminal-lab 文件夹中选择「在终端打开」。若终端开的是命令提示字符，改开 PowerShell；本段的 Get-Location 并非 cmd.exe 命令。先执行下一组只读命令，确认目前位置与下一层的文件与文件夹。没有看到 lesson one 时先别往下读文件，回文件资源管理器核对真正所在路径。"
         },
         {
           "type": "code",
-          "label": "PowerShell：确认目前位置与档案",
+          "label": "PowerShell：确认目前位置与文件",
           "language": "powershell",
           "code": "Get-Location\nGet-ChildItem -Name\n"
         },
         {
           "type": "paragraph",
-          "text": "需要手动移动时，先在档案总管复制 codex-terminal-lab 的完整路径，把下一行引号内的示例换成它。YOUR_NAME 是占位文字，不能原样执行；档案可能在 OneDrive 或其他磁碟，请使用实际位置。LiteralPath 会按原样解读路径，减少方括号被当成万用字元的问题。移动成功通常不印出结果，所以再查一次位置。"
+          "text": "需要手动移动时，先在文件资源管理器复制 codex-terminal-lab 的完整路径，把下一行引号内的示例换成它。YOUR_NAME 是占位文字，不能原样执行；文件可能在 OneDrive 或其他磁盘，请使用实际位置。LiteralPath 会按原样解读路径，减少方括号被当成万用字符的问题。移动成功通常不输出结果，所以再查一次位置。"
         },
         {
           "type": "code",
@@ -1533,7 +1533,7 @@
         },
         {
           "type": "paragraph",
-          "text": "确认位于实际练习根目录后，移入含空白的子目录并读档，再退回上一层。下方整组命令没有修改档案；预期中间显示完整英文句子，最后位置回到 codex-terminal-lab。不要只看输出最后一行就判定全部成功；任一步有错误都先停下核对。"
+          "text": "确认位于实际练习根目录后，移入含空格的子目录并读文件，再退回上一层。下方整组命令没有修改文件；预期中间显示完整英文句子，最后位置回到 codex-terminal-lab。不要只看输出最后一行就判定全部成功；任一步有错误都先停下核对。"
         },
         {
           "type": "code",
@@ -1544,35 +1544,35 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "macOS 与 Linux：终端机的完整操作"
+          "text": "macOS 与 Linux：终端的完整操作"
         },
         {
           "type": "paragraph",
-          "text": "macOS 从 Spotlight 开启 Terminal，Linux 从应用程式选单开启终端机；也可使用档案管理员提供的在资料夹开启终端机功能。macOS 常见 zsh、Linux 常见 Bash，本段只用两者都能理解的基本命令。先执行 pwd 与 ls -a，前者回报目前路径，后者包括隐藏档案与资料夹。不要把 macOS 的 /Users 路径当成 Linux 一定存在的 /home 路径。"
+          "text": "macOS 从 Spotlight 打开 Terminal，Linux 从应用程序菜单打开终端；也可使用文件管理器提供的在文件夹打开终端功能。macOS 常见 zsh、Linux 常见 Bash，本段只用两者都能理解的基本命令。先执行 pwd 与 ls -a，前者报告目前路径，后者包括隐藏文件与文件夹。不要把 macOS 的 /Users 路径当成 Linux 一定存在的 /home 路径。"
         },
         {
           "type": "code",
-          "label": "macOS／Linux 终端机：确认目前位置与档案",
+          "label": "macOS／Linux 终端：确认目前位置与文件",
           "language": "bash",
           "code": "pwd\nls -a\n"
         },
         {
           "type": "paragraph",
-          "text": "手动移动时，在 cd 后输入一个空白，再贴上用引号包住的实际资料夹绝对路径；下面只是替换示例。也可将资料夹拖入终端机，但要检查终端机是否已自动处理空白，避免再加一层错误引号。若把家目录写成 $HOME，使用双引号才会展开变数；本篇先直接使用完整路径，少混入一种语法。"
+          "text": "手动移动时，在 cd 后输入一个空格，再粘贴用引号包住的实际文件夹绝对路径；下面只是替换示例。也可将文件夹拖入终端，但要检查终端是否已自动处理空格，避免再加一层错误引号。若把主目录写成 $HOME，使用双引号才会展开变量；本篇先直接使用完整路径，少混入一种语法。"
         },
         {
           "type": "code",
-          "label": "macOS／Linux 终端机：先换成自己的完整路径",
+          "label": "macOS／Linux 终端：先换成自己的完整路径",
           "language": "bash",
           "code": "cd '/absolute/path/to/codex-terminal-lab'\npwd\nls -a\n"
         },
         {
           "type": "paragraph",
-          "text": "看到 lesson one 后执行下一组；预期读出同一句话并回到原来根目录。若某一步失败，先修正再逐行继续，不把前一个错误带进下一步。macOS 与 Linux 的基本步骤相同，但档案名称的大小写行为可能依档案系统设定不同；养成完全匹配名称的习惯，就不用依赖宽松比对。"
+          "text": "看到 lesson one 后执行下一组；预期读出同一句话并回到原来根目录。若某一步失败，先修正再逐行继续，不把前一个错误带进下一步。macOS 与 Linux 的基本步骤相同，但文件名称的大小写行为可能依文件系统设置不同；养成完全匹配名称的习惯，就不用依赖宽松比对。"
         },
         {
           "type": "code",
-          "label": "macOS／Linux 终端机：从练习根目录进入、读取，再返回",
+          "label": "macOS／Linux 终端：从练习根目录进入、读取，再返回",
           "language": "bash",
           "code": "cd 'lesson one'\ncat note.txt\ncd ..\npwd\n"
         },
@@ -1583,7 +1583,7 @@
         },
         {
           "type": "paragraph",
-          "text": "在练习根目录尝试移入不存在的 missing-folder。PowerShell 用 Set-Location -LiteralPath '.\\missing-folder'；macOS／Linux 用 cd 'missing-folder'。预期有找不到路径的错误，查位置时仍在原处。错误文字依语言与版本不同，不要求逐字一致。这证明失败的移动不会自动建立资料夹，也提醒你不能在 cd 失败后照常执行修改命令。"
+          "text": "在练习根目录尝试移入不存在的 missing-folder。PowerShell 用 Set-Location -LiteralPath '.\\missing-folder'；macOS／Linux 用 cd 'missing-folder'。预期有找不到路径的错误，查位置时仍在原处。错误文字依语言与版本不同，不要求逐字一致。这证明失败的移动不会自动创建文件夹，也提醒你不能在 cd 失败后照常执行修改命令。"
         },
         {
           "type": "heading",
@@ -1592,7 +1592,7 @@
         },
         {
           "type": "paragraph",
-          "text": "先确认目前在 codex-terminal-lab 根目录，且 note.txt 只放在 lesson one 里。依自己的平台执行下面第一行，预期出现找不到 note.txt 的错误；第二行指定正确的子资料夹，应读到 Terminal practice: this is lesson one.。第一行失败不会自动进入 lesson one，也不应靠建立另一份根目录 note.txt 让错误消失。这个练习只读取资料，原档内容应保持不变。"
+          "text": "先确认目前在 codex-terminal-lab 根目录，且 note.txt 只放在 lesson one 里。依自己的平台执行下面第一行，预期出现找不到 note.txt 的错误；第二行指定正确的子文件夹，应读到 Terminal practice: this is lesson one.。第一行失败不会自动进入 lesson one，也不应靠创建另一份根目录 note.txt 让错误消失。这个练习只读取数据，原文件内容应保持不变。"
         },
         {
           "type": "code",
@@ -1602,7 +1602,7 @@
         },
         {
           "type": "code",
-          "label": "macOS／Linux 终端机：第一行预期失败，第二行修正路径",
+          "label": "macOS／Linux 终端：第一行预期失败，第二行修正路径",
           "language": "bash",
           "code": "cat note.txt\ncat 'lesson one/note.txt'\n"
         },
@@ -1611,7 +1611,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "已安装 CLI 才在确认过的练习根目录执行 codex，并送出下方唯读要求。未安装者到 "
+              "text": "已安装 CLI 才在确认过的练习根目录执行 codex，并发送下方只读要求。未安装者到 "
             },
             {
               "type": "article",
@@ -1621,7 +1621,7 @@
             },
             {
               "type": "text",
-              "text": "继续，不需要在本篇临时改权限。代理应找到 lesson one/note.txt，读到英文句子并回报工作位置；若位置不同，先检查入口是否建立了工作副本，再判断是否选错目录。"
+              "text": "继续，不需要在本篇临时改权限。代理应找到 lesson one/note.txt，读到英文句子并报告工作位置；若位置不同，先检查入口是否创建了工作副本，再判断是否选错目录。"
             }
           ]
         },
@@ -1638,11 +1638,11 @@
         },
         {
           "type": "paragraph",
-          "text": "找不到指令先看目前壳层，Get-Content 不能直接当成 Bash 指令。路径被拆成两段先检查空白与直引号，避免从文书软体复制弯引号。显示拒绝存取时，确认你选的是自己的练习资料夹，不要立刻以管理员身分执行。终端机看不到档案但编辑器看得到，先按储存，再核对副档名、工作目录，以及是否在 WSL 的另一个家目录。"
+          "text": "找不到命令先看目前 shell，Get-Content 不能直接当成 Bash 命令。路径被拆成两段先检查空格与直引号，避免从文字处理软件复制弯引号。显示拒绝访问时，确认你选的是自己的练习文件夹，不要立刻以管理员身份执行。终端看不到文件但编辑器看得到，先按保存，再核对扩展名、工作目录，以及是否在 WSL 的另一个主目录。"
         },
         {
           "type": "paragraph",
-          "text": "本篇没有改动原始档，结束时关闭终端机或离开练习目录即可。正在执行的程式通常可用 Ctrl+C 中断，但中断不等于还原已写入资料。再自行建立 lesson two/note.txt，写不同句子，从根目录分别读取两份内容。能分清路径与档案、正确处理空白、辨认失败后的位置，就完成练习；图中 1、2、3 是定位、读取、验证。"
+          "text": "本篇没有改动原始文件，结束时关闭终端或离开练习目录即可。正在执行的程序通常可用 Ctrl+C 中断，但中断不等于还原已写入的数据。再自行创建 lesson two/note.txt，写不同句子，从根目录分别读取两份内容。能分清路径与文件、正确处理空格、辨认失败后的位置，就完成练习；图中 1、2、3 是定位、读取、验证。"
         },
         {
           "type": "rich_paragraph",
@@ -1653,7 +1653,7 @@
             },
             {
               "type": "link",
-              "text": "Microsoft Set-Location 文件",
+              "text": "Microsoft Set-Location 文档",
               "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-location"
             },
             {
@@ -1662,12 +1662,12 @@
             },
             {
               "type": "link",
-              "text": "CLI 官方文件",
+              "text": "CLI 官方文档",
               "url": "https://learn.chatgpt.com/docs/codex/cli"
             },
             {
               "type": "text",
-              "text": "，查证日 2026-09-14。Windows 命令另外以独立练习资料夹检查；macOS／Linux 段落为通用壳层操作说明，不冒充该平台实机截图。接著可读 "
+              "text": "，查证日 2026-09-14。Windows 命令另外以独立练习文件夹检查；macOS／Linux 段落为通用 shell 操作说明，不冒充该平台实机截图。接着可读 "
             },
             {
               "type": "article",
@@ -1705,7 +1705,7 @@
               "pwd"
             ],
             [
-              "列出档案",
+              "列出文件",
               "Get-ChildItem -Name",
               "ls -a"
             ],
@@ -1715,7 +1715,7 @@
               "cd 'lesson one'"
             ],
             [
-              "读取档案",
+              "读取文件",
               "Get-Content -LiteralPath '.\\note.txt'",
               "cat note.txt"
             ],

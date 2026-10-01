@@ -24,6 +24,7 @@ describe("VPS Studio mode", () => {
     expect(screen.getByText("原來的上傳表單")).toBeTruthy();
     await open();
     await screen.findByText(/VPS 服務尚未設定/);
+    expect(screen.getByRole("link", { name: "設定 VPS 服務" }).getAttribute("href")).toBe("/zh-TW/admin/videos?tab=settings#youtube-vps-settings");
     expect(screen.queryByText("原來的上傳表單")).toBeNull();
     expect(screen.queryByRole("button", { name: "送到 VPS（私人）" })).toBeNull();
     fireEvent.click(screen.getByRole("button", { name: "返回其他上傳模式" }));
@@ -88,6 +89,23 @@ describe("VPS Studio mode", () => {
     fireEvent.change(screen.getByLabelText("核對後的 YouTube 影片網址"), { target: { value: "https://youtu.be/" + id } });
     fireEvent.click(resume);
     await screen.findByText("VPS 已排入佇列");
+  });
+
+  it("offers the saved remote desktop for manual login without posting any job action", async () => {
+    const mock = vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      expect(init?.method).toBeUndefined();
+      return Promise.resolve(Response.json(String(input).endsWith("/vps/settings")
+        ? { desktop_url: "http://127.0.0.1:6080/vnc.html" }
+        : view({ state: "needs_action", code: "login_required" })));
+    });
+    vi.stubGlobal("fetch", mock);
+    render(<YoutubeVpsUpload slug="test-video" />);
+    await open();
+    const desktop = await screen.findByRole("link", { name: "開啟遠端桌面登入" });
+    expect(desktop.getAttribute("href")).toBe("http://127.0.0.1:6080/vnc.html");
+    expect(desktop.getAttribute("rel")).toBe("noopener noreferrer");
+    expect(screen.getByRole("link", { name: "設定 VPS 服務" }).getAttribute("href")).toBe("/zh-TW/admin/videos?tab=settings#youtube-vps-settings");
+    expect(mock.mock.calls.every(([, init]) => !init?.method)).toBe(true);
   });
 
   it("records a completed private result before refreshing the parent", async () => {

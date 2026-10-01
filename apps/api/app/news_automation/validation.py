@@ -7,10 +7,18 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.news_automation.evidence import evidence_excerpt
-from app.news_automation.feeds import Article, extract_article, parse_entries, read_article
+from app.news_automation.feeds import (
+    Article,
+    extract_article,
+    parse_entries,
+    read_article,
+    summary_article,
+    summary_is_evidence,
+)
 from app.news_automation.fetch import RateLimiter, SafeNewsFetcher
 from app.news_automation.models import NewsEvidence, NewsSource
 from app.news_automation.policy import body_fingerprint, content_fingerprint, current_body_hash
+from app.news_automation.schemas import Entry
 from app.problems import AppError
 
 
@@ -37,6 +45,32 @@ async def _source_index(
     return by_host, allowed_hosts, allowed_redirects
 
 
+async def _summary_page(
+    fetcher: SafeNewsFetcher,
+    source: NewsSource,
+    url: str,
+    listings: dict[str, list[Entry]],
+    *,
+    allowed_hosts: set[str],
+    allowed_redirects: set[str],
+) -> Article | None:
+    """The current text of an entry whose feed summary is its evidence, read from the feed
+    (once per source per call), or None when the feed no longer lists that entry."""
+    entries = listings.get(source.url)
+    if entries is None:
+        listing = await fetcher.fetch(
+            source.url, allowed_hosts=allowed_hosts, allowed_redirect_hosts=allowed_redirects
+        )
+        entries = parse_entries(
+            listing.body,
+            source.format,  # type: ignore[arg-type]
+            listing.url,
+            source.config_json or {},
+        )
+        listings[source.url] = entries
+    return next((summary_article(entry) for entry in entries if entry.url == url), None)
+
+
 async def refresh_evidence(
     session: AsyncSession,
     evidence: list[NewsEvidence],
@@ -57,6 +91,7 @@ async def refresh_evidence(
     fetcher = fetcher or SafeNewsFetcher(rate_limiter=rate_limiter)
     problems: list[str] = []
     fetched_rows: list[tuple[NewsEvidence, Article, str | None, str | None]] = []
+    listings: dict[str, list[Entry]] = {}
     try:
         for row in evidence:
             matched_source = by_host.get(source_host(row.url))
@@ -69,6 +104,24 @@ async def refresh_evidence(
             ):
                 problems.append(f"source_policy_changed:{row.url}")
                 continue
+            if summary_is_evidence(matched_source):
+                try:
+                    summary = await _summary_page(
+                        fetcher,
+                        matched_source,
+                        row.url,
+                        listings,
+                        allowed_hosts=allowed_hosts,
+                        allowed_redirects=allowed_redirects,
+                    )
+                except Exception as error:
+                    problems.append(f"source_refetch_failed:{row.url}:{type(error).__name__}")
+                    continue
+                if summary is not None and summary.text:
+                    fetched_rows.append((row, summary, None, None))
+                    continue
+                # Not an entry of the feed (a page of the same site linked from another
+                # source, or an entry that has aged out of the feed): read the page.
             try:
                 fetched = await fetcher.fetch(
                     row.url,
@@ -133,12 +186,18 @@ async def validate_source_configuration(
                 "news_source_unreadable",
                 "來源可以連線，但目前設定無法讀出任何新聞項目",
             )
-        detail = await fetcher.fetch(
-            entries[0].url,
-            allowed_hosts={source_host(source.url)},
-            allowed_redirect_hosts=set(source.allowed_redirect_hosts_json or []),
-        )
-        _, article_text, _ = extract_article(detail.body, detail.url, source.config_json or {})
+        if summary_is_evidence(source):
+            # The feed carries the story; the linked page is not what gets read.
+            article_text = ""
+        else:
+            detail = await fetcher.fetch(
+                entries[0].url,
+                allowed_hosts={source_host(source.url)},
+                allowed_redirect_hosts=set(source.allowed_redirect_hosts_json or []),
+            )
+            _, article_text, _ = extract_article(
+                detail.body, detail.url, source.config_json or {}
+            )
         if not article_text.strip() and not entries[0].summary.strip():
             raise AppError(
                 422,
@@ -216,6 +275,7 @@ async def revalidate_evidence(
     own_fetcher = fetcher is None
     fetcher = fetcher or SafeNewsFetcher(rate_limiter=rate_limiter)
     reasons: list[str] = []
+    listings: dict[str, list[Entry]] = {}
     try:
         for row in evidence:
             matched_source = by_host.get(source_host(row.url))
@@ -228,6 +288,26 @@ async def revalidate_evidence(
             ):
                 reasons.append(f"source_policy_changed:{row.url}")
                 continue
+            if summary_is_evidence(matched_source):
+                try:
+                    summary = await _summary_page(
+                        fetcher,
+                        matched_source,
+                        row.url,
+                        listings,
+                        allowed_hosts=allowed_hosts,
+                        allowed_redirects=allowed_redirects,
+                    )
+                except Exception as error:
+                    reasons.append(f"source_refetch_failed:{row.url}:{type(error).__name__}")
+                    continue
+                if summary is not None and summary.text:
+                    if not _same_story(row, content_fingerprint(summary.text), None):
+                        reasons.append(f"source_content_changed:{row.url}")
+                        continue
+                    row.retrieved_at = datetime.now(UTC)
+                    continue
+                # Not an entry of the feed: read the page, as for any other source.
             try:
                 fetched = await fetcher.fetch(
                     row.url,

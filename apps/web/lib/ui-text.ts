@@ -7,6 +7,7 @@
  *
  * See `docs/ui-text-overrides.md`.
  */
+import { IntlMessageFormat } from "intl-messageformat";
 
 // The namespaces of i18n/request.ts minus `legacy`. Kept in step with the API's own
 // allowlist by tools/check-i18n.mjs.
@@ -49,8 +50,8 @@ export const LOCKED_NAMESPACES = ["legacy"] as const;
 export const UI_TEXT_MAX_LENGTH = 2000;
 export const UI_TEXT_BATCH_LIMIT = 100;
 
-// The same expression tools/check-i18n.mjs uses, so the catalog check, this merge and the
-// API's Python copy all agree on what counts as a placeholder.
+// Retained for the editor's placeholder list and the API's lexical helper. Validation
+// below uses the parser so compact plural branches are not mistaken for arguments.
 const ICU_PARAMETER_PATTERN = /\{([A-Za-z_][\w]*)/g;
 
 export type UiTextEntries = Record<string, string>;
@@ -102,18 +103,69 @@ export function bracesBalanced(message: string): boolean {
   return depth === 0;
 }
 
+type IcuElements = ReturnType<IntlMessageFormat["getAst"]>;
+type IcuSignature = Array<string | number | IcuSignature>;
+
+/** Preserve runtime arguments in each branch, while leaving literal copy editable. */
+function runtimeSignature(elements: IcuElements, literalTokens: Set<string>): IcuSignature {
+  const signatures: IcuSignature[] = [];
+  for (const element of elements) {
+    if (element.type === 0) {
+      // Help text intentionally quotes URL templates; those literal tokens must survive.
+      for (const match of element.value.matchAll(/\{([A-Za-z_]\w*)\}/g)) {
+        literalTokens.add(match[1]);
+      }
+      continue;
+    }
+    if (element.type === 7) {
+      signatures.push([element.type]);
+    } else if (element.type === 5 || element.type === 6) {
+      const branches: IcuSignature = Object.keys(element.options).sort().map((selector) => [
+        selector, runtimeSignature(element.options[selector].value, literalTokens),
+      ]);
+      signatures.push(element.type === 6
+        ? [element.type, element.value, element.pluralType ?? "cardinal", element.offset, branches]
+        : [element.type, element.value, branches]);
+    } else if (element.type === 8) {
+      // ignoreTag makes HTML-like help text literal; no rich-text arguments are expected.
+      throw new Error("Unexpected ICU tag");
+    } else {
+      signatures.push([element.type, element.value]);
+    }
+  }
+  // Repeating a simple argument within the same branch remains a copy choice. Retain
+  // structured children: embedding serialized JSON would multiply escaping per depth.
+  const unique = new Map(signatures.map((signature) => [JSON.stringify(signature), signature]));
+  return [...unique.keys()].sort().map((key) => unique.get(key)!);
+}
+
+function messageSignature(message: string): string {
+  // This is the same parser used by next-intl. Looking at every branch catches
+  // quoted-away arguments that rendering one sample value would miss.
+  const ast = new IntlMessageFormat(message, "en", undefined, { ignoreTag: true }).getAst();
+  const literalTokens = new Set<string>();
+  const runtime = runtimeSignature(ast, literalTokens);
+  return JSON.stringify({ runtime, literalTokens: [...literalTokens].sort() });
+}
+
 /**
- * Why an override cannot replace this default, or undefined when it can. A plural that
- * lost its closing brace keeps its argument name, so only the brace check catches it —
- * and next-intl would render the raw key path in its place.
+ * Why an override cannot replace this default, or undefined when it can. A literal-token
+ * guard also protects intentionally quoted URL templates, while the AST protects
+ * arguments and plural/select behavior that next-intl actually evaluates.
  */
 export function overrideProblem(
   value: string,
   defaultValue: string,
 ): "braces" | "parameters" | undefined {
-  if (!bracesBalanced(value)) return "braces";
-  const expected = messageParameters(defaultValue).join(",");
-  if (messageParameters(value).join(",") !== expected) return "parameters";
+  let expectedSignature: string;
+  let actualSignature: string;
+  try {
+    expectedSignature = messageSignature(defaultValue);
+    actualSignature = messageSignature(value);
+  } catch {
+    return "braces";
+  }
+  if (actualSignature !== expectedSignature) return "parameters";
   return undefined;
 }
 

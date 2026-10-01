@@ -101,7 +101,7 @@ test("a compilation goes from the placeholder document to the confirmed upload w
   // The worker's context file, as startCompilation writes it, and one episode with a drawn
   // keyframe of a shot with a character in it: the thumbnail's picture.
   const episodes = EPISODES.map((each, index) => ({ slug: each, number: index + 1, title: TITLES[each], logline: `L${index + 1}`, recap: `R${index + 1}` }));
-  atomicWrite(path.join(box.dir, "compilation.json"), JSON.stringify({ series: { slug: SERIES, title: "仙門風雲", genre: "rebirth-revenge" }, episodes, all_recaps: episodes.map(({ number, title, recap }) => ({ number, title, recap })), genre: "rebirth-revenge" }));
+  atomicWrite(path.join(box.dir, "compilation.json"), JSON.stringify({ series: { slug: SERIES, title: "仙門風雲", genre: "rebirth-revenge" }, episodes, all_recaps: episodes.map(({ number, title, recap }) => ({ number, title, recap })), genre: "rebirth-revenge", spoiler_context: { mysteries: [], reveal_schedule: [], setting_md: "", outline_md: "" } }));
   const example = dramaFixture();
   const shot = example.scenes.find((scene) => scene.template === "shot" && scene.data?.characters?.length);
   const episodeDocs = path.join(box.root, "docs", "videos", EPISODES[0]);
