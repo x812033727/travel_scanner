@@ -91,7 +91,8 @@ Check that only this operation's hold/STOP is removed and original worker is liv
 - Leaving this activation task open and released at that deployment boundary;
   do not mark all existing production cuts changed based on local candidates.
 - Rebased compatibility checks: 177 API tests, full ruff and mypy app447/tests340,
-  93 focused tools, 1046 full tools with 2 existing skips, 40 focused web tests and
+  93 focused tools, 1049 full tools with 2 existing skips after main3f26 rebase,
+  40 focused web tests and
   136 actual producer/consumer scenarios passed. Full local web remains incomplete
   (terminated -1), so exact-head CI is a gate. Follow-up tickets retain canonical
   handoff and non-zh-TW request-transport limitations; neither is silently enabled.

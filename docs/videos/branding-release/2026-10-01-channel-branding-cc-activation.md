@@ -193,8 +193,8 @@ branding and actual attachment hashes; old worker snapshots remain held.
 
 Validation passed after narration-locale compatibility: 177 related API tests,
 full API ruff, full mypy app (447 files) and tests (340 files); 93 focused tools
-tests; 1,046 complete tools tests with two existing skips before the final main
-update; 40 rebased focused web tests; web lint, typecheck and five-locale i18n.
+tests; 1,049 complete tools tests with two existing skips after rebase onto main
+`3f26b7f8`; 40 rebased focused web tests; web lint, typecheck and five-locale i18n.
 Independent probes fed actual Node manifests to the Python consumer: 136 scenarios
 across English and Traditional Chinese, including 130 compose calls and six producer
 rejections, with no unexpected result. The final English R4 report SHA is
