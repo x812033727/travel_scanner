@@ -1,6 +1,6 @@
 # 全自動路線：AI 撰稿、台灣口音旁白、自動做成片
 
-這條路線的成品是一支投影片加旁白的影片。旁白由伺服器代為合成（頻道聲音是 Gemini 的 Sulafat；Azure 是另一個供應商，站主覺得它的聲音太平），畫面由 HTML 版型截圖，合成用 ffmpeg。每支先只出繁體中文（CC 與標題說明）；其他語言（en、ja、ko、zh-CN 的標題說明、CC、配音）由站主在成片核准後為每支影片勾選才做（`docs/videos/LANGUAGES.md`，下面第 13 步）。關卡有四個，2026-09-27 起（`docs/videos/HANDS-OFF.md`）前三個由 AI 決定，站主決定的是語言與上架時間：
+這條路線的成品是一支投影片加旁白的影片。旁白由伺服器代為合成（頻道聲音是 Gemini 的 Sulafat；Azure 是另一個供應商，站主覺得它的聲音太平），畫面由 HTML 版型截圖，合成用 ffmpeg。每支先只出繁體中文（CC 與標題說明）；其他語言（en、ja、ko、zh-CN 的標題說明、CC、配音）由站主在成片核准後為每支影片勾選才做（`docs/videos/LANGUAGES.md`，下面第 13 步）。關卡有四個（`docs/videos/HANDS-OFF.md`），前三個由 AI 決定，站主決定的是語言與上架時間：
 
 | 關卡 | 誰決定 | 什麼時候才輪到站主 |
 | --- | --- | --- |
@@ -90,13 +90,15 @@ node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整�
   - 章節至少 3 個，每個至少 10 秒；lint 先用估計值檢查，`tts` 之後再用實際時間檢查一次。
   - 名稱寫內容，要是觀眾會搜尋的說法，例如「它能回答的三種題型」。第一個（00:00）和最後一個也一樣，不用「開場」「結論」。
   - 畫面左上會顯示「02 / 06 章節名」，頂部有一條分段進度條，都由工具自動畫。
-- **版型**：共 15 種，資料欄位與可以逐條出現的數量定義在 `tools/video/templates/templates.mjs` 的 `TEMPLATE_SPECS`。`**文字**` 會變成強調色，`\n` 是手動斷行。2026-09-26 參考一支同類影片後加了四種：
+- **版型**：共 16 種，資料欄位與可以逐條出現的數量定義在 `tools/video/templates/templates.mjs` 的 `TEMPLATE_SPECS`。`**文字**` 會變成強調色，`\n` 是手動斷行。放具體例子的四種：
   - `chat`：對話泡泡，例如提問與回答、客戶來信；
   - `quote`：官方原文加翻譯與來源；
   - `stats`：2–4 格大數字；
   - `cta`：影片中段一張卡，指向說明欄第一行的文章。
+  - `terminal`（2026-10-01 加入，第 16 種）：模擬終端機，提示字元只能是 `$` 或 `>`，指令逐字打出、`output` 一段一段出現；指令與輸出必須照抄真的執行結果，並附 `ran_on`（執行日期）與 `tool_version`（工具自報的版本），缺一 lint 就擋，家目錄、user@host、email 也擋；範例 `tools/video/templates/terminal/fixtures/claude-code/video.json`。
 - **畫面節奏**：純投影片同一個畫面最好不要停超過 15 秒左右。長段說明拆成幾個場景，或一句帶出一個項目；具體例子優先用 `chat`、`quote`、`stats`，不要一張條列從頭講到尾。
 - **插圖投影片**（2026-09-29 定案，設計在 `docs/videos/ILLUSTRATED.md`；範例 `tools/video/core/fixtures/illustrated/video.json`）：卡片之間放 `shot` 場景——一張 AI 插圖加運鏡，`data.prompt`（英文 ≤1000 字：物件、場景、無臉人物、構圖；不畫字、logo、真人）、`data.camera`（push in／pull out／pan left／pan right／tilt up／tilt down／drift）、`data.visual: "still"`、可選 `data.transition`（cut／dissolve）。要有 `look`（預設 `tech-story`），可帶 `music.track`（站主放在 `<VIDEO_WORKDIR>/_music/` 的授權檔）與 `sfx.set`（`_sfx/<set>/` 的授權音效組）。節奏：每 5–8 秒換一張畫面、卡片狀態 ≤8 秒、插圖至少佔一半時間、開場 20 秒內落鉤；一個 shot 帶一到兩句；相鄰的 shot 提示詞不能相似；構圖以中央為主（Shorts 裁 9:16 只剩 56% 寬）。lint 先當警告，最終 QA 的 `pace` 項在真實時間軸上擋。主幹在「旁白核准」後多 `keyframes`（生圖，judge 自動核准分鏡）、在 `render` 後多 `music`；`assemble` 自動把單狀態卡片做成漂移、畫面間溶接、章節卡硬切、配樂壓在旁白下、音效放在章節卡、溶接與逐條出現上。
+- **螢幕操作場景**（`template: "screencast"`，2026-10-01；程式在 `tools/video/screencast/`，範例 `tools/video/screencast/fixtures/tutorial/video.json`）：`data.steps` 是宣告式步驟，`render` 照著用 Playwright 操作公開網頁並截靜態圖（1280×720 版面、1.5 倍＝1920×1080；User-Agent 是規矩 5 那串；不登入、不用 `recordVideo`），游標滑過去、框選、點擊波紋與放大由版型畫。步驟有六種：`goto`（只收公開的 https 頁，網址不能帶帳密或 token、code、session 類參數）、`wait`（`selector` 或 `ms`）、`click`、`fill`（只打 `video.json` 寫好的字；密碼、驗證碼、信用卡、email、電話欄位一律拒絕，值像 email、電話、卡號、金鑰也拒絕）、`capture`（可帶 `focus` 與 `zoom` 1–2.5；沒有 `focus` 時游標指向它之後的下一個 `click`）、`mask`（`selector` 或 `rect`，之後每張截圖拍之前都先蓋上；selector 對不到任何元素就整個停下，頁面不一定有的加 `optional: true`）。每次 `capture` 是場景的一個狀態：N 張截圖的場景，台詞的 `reveal` 合計剛好 N−1、第一句不 reveal。選擇器只算看得見的元素，`click`、`fill` 要剛好對到一個（網站常藏一份手機版的同名按鈕；要等用戶端才畫出來的元素，先 `wait` 它再 `mask`）。截圖依步驟的雜湊快取在工作區的 `screencast/` 底下，重跑不再開網頁（`render --recapture` 才重拍）。`render --profile <目錄>`（或 `VIDEO_SCREENCAST_PROFILE`）指向站主自己登入過的瀏覽器設定檔，代理永遠不用；站主用的時候，畫面上的帳號、email 一律 `mask`。
 - **圖片與圖解**：只能用 `apps/web/public/` 或 `docs/videos/` 底下的檔案，並列在 `assets`，寫清楚來源與授權。
 - **說明欄**：`youtube.description` 只寫本文，開頭兩句說這支影片會帶觀眾看什麼。其餘由工具組進去，依序是：
   - 第一行的站內文章連結（依 `source_guide` 自動加 UTM）；
@@ -113,7 +115,7 @@ node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整�
 - **Gemini 沒有 SSML**：字典的唸法直接換進文字裡送出（不是 `<sub alias>`），停頓換成 Gemini 的 `<long pause>`／`<short pause>` 標籤，但長度不像 Azure 的 break 那樣精準。語氣靠 `voice.style`，Gemini 聲音不能寫 `rate`。伺服器回 24 kHz，本機工具用視窗化 sinc 內插升到 48 kHz。
 - **試聽只能經伺服器**：`audition --voices gemini:<聲音>`。站主的 Gemini 金鑰限了伺服器 IP，在 AI Studio 會 403；Cloud 的 Gemini-TTS 只收服務帳號。
 - 內建瀏覽器放不了 repo 外 `file://` 路徑的音檔：試聽檔用 SendUserFile 直接給站主。試聽檔不要放在 scratchpad（代理會清掉）。
-- **收斂旁白**：`check-audio` 先在本機比對，只差同音字（拼音連聲調相同）或語氣詞的句子不送 Jev；Jev 仍然懷疑的句子，可以再交給不看稿的第二個轉寫（`--second-opinion` 或 `VIDEO_SECOND_OPINION`，參考 `tools/video/tts/whisper_second_opinion.py`），它聽對的就排除並寫進旁白審核卡，兩個轉寫都聽錯同一處的才是聲音唸錯（`docs/videos/DUBS.md`）；Jev 的每日次數在「AI 供應商與金鑰」卡片，和自動新聞、景點介紹共用。被標的句子 `tts --redo` 只重錄那幾句（快取按句）。一直被聽錯的句子就改措辭，例如句尾「答」→「回答」、「旗艦」→「旗艦模型」、「分三步走」→「分三個步驟」；工人在重錄到上限後自己做這一步（`prompts/listener-rewrite.md`，`tools/video/automation/rewrite.mjs` 比對改寫前後的數字、拉丁字詞與字典詞，變了就退回），本機也可以照同一份提示請代理改。`check-audio` 遇到轉寫失敗的句子會跳過，連續 3 句失敗才停；工具這邊的修改不用部署就生效。
+- **收斂旁白**：`check-audio` 先在本機比對，只差同音字（拼音連聲調相同）或語氣詞的句子不送 Jev；Jev 仍然懷疑的句子，可以再交給不看稿的第二個轉寫（`--second-opinion` 或 `VIDEO_SECOND_OPINION`，參考 `tools/video/tts/whisper_second_opinion.py`），它聽對的就排除並寫進旁白審核卡，兩個轉寫都聽錯同一處的才是聲音唸錯（`docs/videos/DUBS.md`）。第二個轉寫整批共用一個時限，預設 10 分鐘加每句 2 分鐘，`VIDEO_SECOND_OPINION_TIMEOUT_MS`（毫秒）可以整個改掉；逾時會印出「timed out after … on N clips」。慢的機器（例如 Windows ARM64 跑 Whisper `medium` 約一分鐘一句）用 `WHISPER_MODEL=small`，而且一次只跑一個 `check-audio`，兩個同時跑會互搶 CPU 而一起逾時；Jev 的每日次數在「AI 供應商與金鑰」卡片，和自動新聞、景點介紹共用。被標的句子 `tts --redo` 只重錄那幾句（快取按句）。一直被聽錯的句子就改措辭，例如句尾「答」→「回答」、「旗艦」→「旗艦模型」、「分三步走」→「分三個步驟」；工人在重錄到上限後自己做這一步（`prompts/listener-rewrite.md`，`tools/video/automation/rewrite.mjs` 比對改寫前後的數字、拉丁字詞與字典詞，變了就退回），本機也可以照同一份提示請代理改。`check-audio` 遇到轉寫失敗的句子會跳過，連續 3 句失敗才停；工具這邊的修改不用部署就生效。
 
 ## 成本
 
@@ -154,7 +156,7 @@ node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整�
 
 - 看紀錄：`docker compose -f docker-compose.prod.yml logs --timestamps video-worker`；`top video-worker` 看它是不是在 `sleep 300`。
 - 一輪同時推兩支影片（compose 的 `VIDEO_WORKER_LANES: "2"`，上限 3，設 1 回到一次一支）：第一條線照舊處理放棄、重試、貼網址、討論、作品與新稿，第二條只推已經在做的影片；兩條線不會拿同一支，紀錄裡第二條線的行前面有 `[lane 2]`。
-- 緊急停止：`docker compose -f docker-compose.prod.yml exec -T video-worker touch /var/lib/mokaair/video-work/STOP`，做完手上那一段就停；要恢復時刪掉這個檔。
+- 緊急停止：`docker compose -f docker-compose.prod.yml exec -T video-worker touch /var/lib/mokaair/video-work/STOP`，做完手上那一段就停；要恢復時刪掉這個檔。Shorts 的敲門（在 `auto` 旁邊另外每 5 分鐘跑一次）也看這個檔，有 STOP 就不敲門，網站也就不鎖定時段、不再開始送 Shorts，紀錄印一行 `video-worker: shorts: STOP found`。
 - `video_docs` volume 只在第一次建立時從映像填入，之後映像裡的 `docs/videos` 更新不會進去。
 - 工人只看得到自己的 volume，可能重做本機已經做過的題目：本機或分支上的影片用 `review-push --report-only` 登記到審核頁。
 - 換新模型前先更新主機的 Claude CLI（`claude update`；2.1.259 對 Opus 5.5 回 400，要 2.1.280 以上）。

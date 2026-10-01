@@ -68,7 +68,7 @@ export type Metric = {
 };
 export type ShortMetrics = {
   slug: string; title: string; line: ShortsLine | null; series: string | null; youtube_video_id: string;
-  published_at: string | null; removed_at: string | null; snapshots: Metric[];
+  published_at: string | null; removed_at: string | null; dropped_at?: string | null; snapshots: Metric[];
 };
 export type Metrics = { items: ShortMetrics[] };
 
@@ -119,22 +119,30 @@ const HOUR = 60 * 60 * 1000;
 export const METRIC_WINDOWS: Record<Exclude<MetricPeriod, "now">, readonly [number, number]> = {
   d1: [24 * HOUR, 48 * HOUR], d3: [72 * HOUR, 96 * HOUR], d7: [7 * 24 * HOUR, 9 * 24 * HOUR],
 };
-export type BlankReason = "early" | "waiting" | "missed" | "removed";
+export type BlankReason = "early" | "waiting" | "missed" | "removed" | "dropped";
+type Stop = { reason: "removed" | "dropped"; at: number };
+
+/** When the site stopped reading a Short, and why: the earlier of being taken down and being dropped. */
+function stopped(short: { removed_at?: string | null; dropped_at?: string | null }): Stop | null {
+  const stops = ([["removed", short.removed_at], ["dropped", short.dropped_at]] as const)
+    .map(([reason, time]) => ({ reason, at: time ? Date.parse(time) : Number.NaN }))
+    .filter((stop) => Number.isFinite(stop.at));
+  return stops.reduce<Stop | null>((first, stop) => (first && first.at <= stop.at ? first : stop), null);
+}
 
 /**
  * Why a window has no number: its time has not come, it is open and unread, or it closed unread.
- * A Short that was taken down is read no more (apps/api/app/video_shorts/stats.py), so a window of
- * it that had not closed by then stays empty for that reason, and so does its latest read.
+ * A Short that was taken down or dropped is read no more (apps/api/app/video_shorts/stats.py), so a
+ * window of it that had not closed by then stays empty for that reason, and so does its latest read.
  */
-export function blankReason(period: MetricPeriod, short: { published_at: string | null; removed_at?: string | null }, now = Date.now()): BlankReason {
-  const gone = short.removed_at ? Date.parse(short.removed_at) : Number.NaN;
-  const removed = Number.isFinite(gone);
-  if (period === "now") return removed ? "removed" : "waiting";
+export function blankReason(period: MetricPeriod, short: { published_at: string | null; removed_at?: string | null; dropped_at?: string | null }, now = Date.now()): BlankReason {
+  const stop = stopped(short);
+  if (period === "now") return stop ? stop.reason : "waiting";
   const since = short.published_at ? Date.parse(short.published_at) : Number.NaN;
-  if (!Number.isFinite(since)) return removed ? "removed" : "early";
+  if (!Number.isFinite(since)) return stop ? stop.reason : "early";
   const [opens, closes] = METRIC_WINDOWS[period];
-  // The window closed while the Short was still up: it was missed, whatever happened later.
-  if (removed) return gone - since >= closes ? "missed" : "removed";
+  // The window closed while the Short was still read: it was missed, whatever happened later.
+  if (stop) return stop.at - since >= closes ? "missed" : stop.reason;
   const age = now - since;
   if (age < opens) return "early";
   return age < closes ? "waiting" : "missed";

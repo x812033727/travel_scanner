@@ -13,6 +13,7 @@ import {
 } from "@/components/admin-video-review-card";
 import { AdminVideoSeries, DocPanel, type Series } from "@/components/admin-video-series";
 import { AdminVideoSettings } from "@/components/admin-video-settings";
+import { AdminVideoRenewal } from "@/components/admin-video-renewal";
 import { AdminVideoShorts } from "@/components/admin-video-shorts";
 import { stateTone } from "@/components/admin-video-shorts-data";
 import { DiscussionThread, scriptSubject } from "@/components/admin-video-thread";
@@ -335,6 +336,7 @@ function ProjectDetail({ slug, onBack, onOpen }: { slug: string; onBack: () => v
         <ul className="mt-2 grid gap-1 text-sm sm:grid-cols-2">{project.checklist.map((item) => <li key={item.key} className="flex items-center gap-2">{item.done ? <CheckCircle2 aria-hidden size={16} className="text-[var(--teal)]" /> : <Circle aria-hidden size={16} className="text-[var(--muted)]" />}<span className={item.done ? "" : "text-[var(--muted)]"}>{item.label}</span></li>)}</ul>
       </section>}
       <RetryVideo project={project} canManage={manage.allowed} onRequested={load} />
+      <AdminVideoRenewal key={project.slug} project={project} canManage={manage.allowed} onSubmitted={load} />
       {project.youtube_sync && <YoutubeSyncPanel slug={slug} sync={project.youtube_sync} canManage={manage.allowed && !dropped} onChange={load} />}
       {readyToUpload(project) && manage.allowed && <SendToYoutube slug={slug} confirmation={approvedPackage(project.reviews)} connection={connection} sync={project.youtube_sync} mp4Gone={retired} onSent={load} />}
       {project.youtube_video_id && !dropped && manage.allowed && connection?.linked && !syncRunning(project.youtube_sync) && <details className="rounded-2xl border border-[var(--line)] p-4">
