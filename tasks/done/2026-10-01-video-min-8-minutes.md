@@ -62,6 +62,7 @@ scope:
   - tools/video/templates/terminal/terminal.test.mjs
   - tools/video/tts/check.test.mjs
   - tools/video/dubs/dubs.test.mjs
+  - tools/video/dubs/freshness.test.mjs
   - tools/video/dubs/plan.test.mjs
   - tools/video/tts/batch-recovery.test.mjs
   - tools/video/tts/tts.test.mjs
