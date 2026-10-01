@@ -160,13 +160,28 @@ export function dubFingerprint(project, locale, style = null) {
 /**
  * Whether a dub record (its timeline.json, or the fit.json of a run that was over budget) was
  * made with the speech `dub` would request now, in the style it was made with (`--style`, kept as
- * style_override). A record without a fingerprint was made before dubs recorded one (2026-10-01):
- * nothing proves its pronunciation, so it is not current. Running `dub` again records one and
- * synthesizes only the lines whose clip keys changed; the other clips come from the cache.
+ * style_override).
+ *
+ * A record from before dubs recorded a fingerprint (2026-10-01) is judged by the locale's clip
+ * cache (`cache`, dubs/<locale>/audio/cache.json): current when every line `dub` would plan now
+ * has the clip key it would ask for (the line's or its request's, as `dub` reuses a clip), since
+ * the track was laid from those clips. No cache, an unreadable one, or one key that differs or is
+ * absent leaves it stale; running `dub` again records a fingerprint and synthesizes only the lines
+ * whose keys changed. The cache can run ahead of the track when a later run synthesized new clips
+ * and did not finish; `legacyGuard` is false when a newer run's fit.json shows that happened.
  */
-export function speechCurrent(project, locale, record) {
-  if (typeof record?.speech_fingerprint !== "string") return false;
-  return record.speech_fingerprint === dubFingerprint(project, locale, record.style_override ?? null);
+export function speechCurrent(project, locale, record, { cache = null, legacyGuard = true } = {}) {
+  if (typeof record?.speech_fingerprint === "string") {
+    return record.speech_fingerprint === dubFingerprint(project, locale, record.style_override ?? null);
+  }
+  if (!legacyGuard || !project?.doc || !cache?.lines || typeof cache.lines !== "object") return false;
+  try {
+    const { missing, requests } = dubRequests(project, locale, record?.style_override ?? null);
+    if (missing.length || !requests.length) return false;
+    return requests.every((request) => request.lines.every((line) => [line.key, request.key].includes(cache.lines[line.id])));
+  } catch {
+    return false;
+  }
 }
 
 /** The slide states of the zh-TW timeline as windows, each with the lines spoken inside it. */

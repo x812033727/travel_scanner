@@ -21,6 +21,7 @@ scope:
   - tools/video/dubs/captions-package.test.mjs
   - tools/video/review/sync.test.mjs
   - tools/video/automation/automation.test.mjs
+  - tools/video/review/renewal.test.mjs
 ---
 
 # Invalidate dubs when target pronunciation changes
@@ -83,37 +84,48 @@ Use synthetic clips and mocked speech/encoding services; no production or paid c
   `dubs/<locale>/timeline.json` and into an over-budget `fit.json`, with `style_override` (the
   `--style` it was made with, else null) so a hand-styled dub is compared in its own style.
 - `dubsStatus` (state.mjs) and `currentDub`/`dubsForUpload` (stages.mjs) compare it through
-  `speechCurrent`. A mismatch makes a track `stale` ("made with an older voice or
-  pronunciation"), and an over-budget fit `stale` instead of `over`, because its budgets were
-  measured on the old speech. The worker re-runs `dub` for anything not current or skipped, as
-  before.
-- Legacy decision: a record without `speech_fingerprint` (every dub made before this change)
-  is `stale`. This applies to tracks and to over-budget fits, each with its own note ("made before
-  dubs recorded their pronunciation" / "the last run was over budget before dubs recorded their
-  pronunciation"). Nothing proves which aliases such a track was made with, so it is never
-  packaged until `dub` runs again. That rerun synthesizes only lines whose clip keys changed:
-  the other clips come from `audio/cache.json`, so an unaffected legacy dub costs a status
-  call and an encode. The regression shows zero speech requests for that rerun.
+  `dubSpeechCurrent` (state.mjs), which calls `speechCurrent` (plan.mjs). A mismatch makes a
+  track `stale` ("made with an older voice or pronunciation"). It also makes an over-budget fit
+  `stale` instead of `over`, because its budgets were measured on the old speech. The worker
+  re-runs `dub` for anything not current or skipped, as before.
+- Legacy decision, revised after review: the first version made every record without a
+  fingerprint `stale`. That would have flipped every dub on the host on deploy, including
+  approved and uploaded ones, and kept them out of packages until `dub` was run by hand. Now a
+  record without `speech_fingerprint` is judged by `dubs/<locale>/audio/cache.json`, which
+  holds the clip key each line was synthesized with.
+  - It is current when every line of today's plan (`dubRequests` with the record's
+    `style_override`) has its line key or request key in the cache. Those are the keys `dub`
+    would reuse a clip for.
+  - A missing or unreadable cache, or any absent or different key, makes it `stale` with an
+    explicit note: "made before dubs recorded their pronunciation" for a track, "the last run
+    was over budget before dubs recorded their pronunciation" for an over-budget fit.
+  - The same rule applies to over-budget `fit.json` records. Records with a fingerprint use
+    only the fingerprint.
+  - A `dub` rerun of a stale legacy dub retakes only the lines whose keys changed.
+- One guard: for a legacy track, the cache stops counting as evidence when `fit.json` carries
+  a fingerprint. That combination means a run with this code synthesized and did not write a
+  new timeline (over budget), so the cache may hold clips the track does not.
+- Remaining caveat: the cache can also run ahead of a legacy track when a run did not finish
+  and left no fingerprinted `fit.json`. This covers a STOP file or a crash during synthesis, and
+  an over-budget run of the old code. Such a track whose cached keys match today's plan reads as
+  current although it was laid from older clips. This is rare, and the next `dub` run for that
+  locale resolves it. Recorded dubs on the host have not been audited.
 - Target-language dictionary: `loadProject` now also returns `shelfLexicon`, the raw shelf
   dictionary from the same directory it already used (so `--file` projects use their own shelf).
   `dubRequests` filters that by the target locale for both `dub` and the status and upload
   checks, so they cannot disagree. Before, the CLI re-read the file itself.
-- Scope grew by four test files: `stages.test.mjs`, `captions-package.test.mjs`,
-  `review/sync.test.mjs` and `automation/automation.test.mjs` hand-write dub records to stand in
-  for `dub`. Under the legacy rule those records are stale, so each now records
-  `speech_fingerprint: dubFingerprint(project, locale)` the way `dub` does. `check:tasks`
-  warns that `automation.test.mjs` is also in `2026-09-30-video-worker-moves-two-videos-at`,
-  whose PR #999 is already merged (a stale claim); the edit here is one line in `fakeDub`.
-- Verified: `node --test tools/video/dubs/freshness.test.mjs tools/video/dubs/plan.test.mjs
-  tools/video/dubs/dubs.test.mjs`: 24 pass. `npm run test:tools`: 1032 pass, 1 skipped, 1
-  fail (the known Windows-only `tts/check.test.mjs` "a second transcript clears a line only
-  Gemini misheard..."). All use synthetic clips and mocked speech and ffmpeg.
-- Not done here: existing recorded dubs on the host have not been audited. After deploy,
-  `status` reports every older dub as stale until `dub` runs again for it. Real dubs keep their
-  per-line cache, so that rerun re-encodes; it re-synthesizes only lines whose request changed.
-- Consequence to watch, not verified here: the worker re-dubs only locales the site still
-  reports as in the making. An older dub that is already approved or uploaded stays stale in
-  `status`, and a later `package`, `review-push --gate final` or `languages` batch leaves it
-  out until someone runs `dub --locale <it>` by hand. That is the safe direction (nothing
-  unproven is sent), but a languages batch that omits an already-uploaded dub has not been
-  checked against the site's handling.
+- Scope grew by five test files: `stages.test.mjs`, `captions-package.test.mjs`,
+  `review/sync.test.mjs`, `automation/automation.test.mjs` and `review/renewal.test.mjs` (from
+  #1077, merged meanwhile). They hand-write dub records with no clip cache to stand in for
+  `dub`, so even under the cache rule those records are stale. Each now records
+  `speech_fingerprint: dubFingerprint(project, locale)` the way `dub` does, a one-line change
+  per file. `check:tasks` warns that `automation.test.mjs` is also in
+  `2026-09-30-video-worker-moves-two-videos-at`, whose PR #999 is already merged (a stale claim).
+- Verified with synthetic clips and mocked speech and ffmpeg:
+  - `node --test tools/video/dubs/freshness.test.mjs tools/video/dubs/plan.test.mjs
+    tools/video/dubs/dubs.test.mjs`: 24 pass.
+  - `npm run test:tools`: everything passes except the known Windows-only
+    `tts/check.test.mjs` test "a second transcript clears a line only Gemini misheard...".
+  - The freshness tests cover a legacy record whose cache matches (current), a changed target
+    alias (stale), and an unreadable or missing cache (stale). They also cover the
+    fingerprinted-`fit.json` guard and a rerun that retakes one line.

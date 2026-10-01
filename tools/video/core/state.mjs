@@ -269,6 +269,27 @@ export function lookChosen(manifest, choice, look) {
 
 const needsReview = (manifest) => Object.values(manifest?.shots ?? {}).some((shot) => shot?.needs_review);
 
+const readOptional = (file) => {
+  try {
+    return readJson(file, null);
+  } catch {
+    return null;
+  }
+};
+
+/**
+ * Whether a dub record was made with the speech `dub` would ask for now (speechCurrent). A record
+ * with a fingerprint is compared by it; one from before fingerprints by the locale's clip cache.
+ * For a track (`track: true`) that evidence is void once a newer run left a fingerprinted
+ * fit.json without replacing the timeline: that run synthesized clips the track does not hold.
+ */
+export function dubSpeechCurrent(project, workdir, locale, record, { track = true } = {}) {
+  if (typeof record?.speech_fingerprint === "string") return speechCurrent(project, locale, record);
+  const files = dubArtifacts(workdir, locale);
+  const legacyGuard = !track || typeof readOptional(files.fit)?.speech_fingerprint !== "string";
+  return speechCurrent(project, locale, record, { cache: readOptional(files.cache), legacyGuard });
+}
+
 /** Why a dub record's speech is not current: recorded before fingerprints, or asked for differently. */
 function speechStaleNote(record, what = "made") {
   return typeof record?.speech_fingerprint === "string"
@@ -280,8 +301,9 @@ function speechStaleNote(record, what = "made") {
  * Each dub locale's state: "current" (a track made from this script and this translation, with
  * the voice and pronunciation `dub` would use now), "stale", "over" (the last run found windows
  * that do not fit; no track), "skipped" (the worker gave up, with its reason) or "missing". A video
- * with no dubs is all "missing". A record from before the speech fingerprint is "stale" (an
- * over-budget one too): nothing proves its pronunciation, and `dub` again pays only for changed lines.
+ * with no dubs is all "missing". A record from before the speech fingerprint (a track or an
+ * over-budget fit.json) is judged by its clip cache (dubSpeechCurrent): current when every planned
+ * line still has its clip key, else "stale", and `dub` again pays only for the changed lines.
  */
 export function dubsStatus(project, workdir, speech) {
   const result = {};
@@ -309,8 +331,8 @@ export function dubsStatus(project, workdir, speech) {
       const brandCurrent = selectionCurrent && bodyCurrent && frameCurrent && (timeline.branding_hash ?? null) === (branding?.hash ?? null);
       const wordsCurrent = timeline.speech_hash === speech && timeline.translation_hash === hash;
       // The same words can be asked for differently (a target alias, the dub voice): the
-      // fingerprint binds what the voice was asked to say. See speechCurrent for older records.
-      const voiceCurrent = speechCurrent(project, locale, timeline);
+      // fingerprint binds what the voice was asked to say; older records answer by their clip cache.
+      const voiceCurrent = dubSpeechCurrent(project, workdir, locale, timeline);
       const current = wordsCurrent && voiceCurrent && soundCurrent && brandCurrent;
       result[locale] = { status: current ? "current" : "stale", note: current ? timeline.file : !brandCurrent ? "made for different channel branding; run dub again" : !soundCurrent ? "made without the video's music or sound effects; run dub again" : !wordsCurrent ? "made from an older script or translation" : speechStaleNote(timeline) };
       continue;
@@ -318,7 +340,7 @@ export function dubsStatus(project, workdir, speech) {
     if (fit?.over?.length && fit.speech_hash === speech && fit.translation_hash === hash) {
       // An over-budget run measured clips of the speech it asked for; with another pronunciation
       // (or none recorded) its budgets may be wrong, so the locale is stale, not over.
-      result[locale] = speechCurrent(project, locale, fit)
+      result[locale] = dubSpeechCurrent(project, workdir, locale, fit, { track: false })
         ? { status: "over", note: `${fit.over.length} lines to shorten (dubs/${locale}/fit.json)` }
         : { status: "stale", note: speechStaleNote(fit, "the last run was over budget") };
       continue;

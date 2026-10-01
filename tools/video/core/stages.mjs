@@ -4,12 +4,12 @@
 import { existsSync, rmSync } from "node:fs";
 import path from "node:path";
 
-import { defaultDubLocales, dubScript, speechCurrent, translationHash } from "../dubs/plan.mjs";
+import { defaultDubLocales, dubScript, translationHash } from "../dubs/plan.mjs";
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "./branding.mjs";
 import { buildCues, checkCues, toSrt, toVtt } from "./captions.mjs";
 import { atomicWrite, readJson } from "./paths.mjs";
 import { eachLine, LOCALES, NARRATION_LOCALE, narrationLocale, textHash } from "./schema.mjs";
-import { ARTIFACTS, dubArtifacts, lintProject, loadProject, recordStage } from "./state.mjs";
+import { ARTIFACTS, dubArtifacts, dubSpeechCurrent, lintProject, loadProject, recordStage } from "./state.mjs";
 import { checkChapters, speechHash } from "./timeline.mjs";
 
 export class StageError extends Error {
@@ -105,7 +105,7 @@ export function localeTexts(doc, translations) {
 
 /**
  * A locale's dub (docs/videos/DUBS.md) when its track exists and was made from this script and
- * this translation, with the voice and pronunciation `dub` would use now (speechCurrent): the dub
+ * this translation, with the voice and pronunciation `dub` would use now (dubSpeechCurrent): the dub
  * timeline plus `file`, the track's path. Null when there is no dub, or an older one; `stale`
  * tells the two apart for the caption manifest.
  */
@@ -123,8 +123,8 @@ export function currentDub(project, workdir, locale, speech) {
       || (applied && (dub.body_total_frames !== applied.body_frames || dub.content_end_frame !== applied.intro_frames + applied.body_frames
         || dub.total_frames !== applied.intro_frames + applied.body_frames + applied.outro_frames))
       || dub.speech_hash !== speech || dub.translation_hash !== words || !existsSync(file)
-      // A target alias or the dub voice changed, or the track predates the fingerprint (state.mjs).
-      || !speechCurrent(project, locale, dub)) return { stale: true };
+      // A target alias or the dub voice changed, or an older track's clip cache no longer matches (state.mjs).
+      || !dubSpeechCurrent(project, workdir, locale, dub)) return { stale: true };
   return { ...dub, file };
 }
 

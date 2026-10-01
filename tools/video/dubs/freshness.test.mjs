@@ -3,7 +3,7 @@
 // the fingerprint are stale too, and running `dub` again pays only for the lines that changed.
 // Synthetic clips and mocked speech and ffmpeg only: nothing here reaches a real service.
 import assert from "node:assert/strict";
-import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { copyFileSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
@@ -179,12 +179,23 @@ test("a changed target alias makes only the dubs that say it stale and keeps the
   assert.deepEqual(seen.upload, ["en", "ko"]);
 });
 
-test("records from before the fingerprint are stale, an over-budget one too, and a rerun makes them current without new speech", async () => {
+const LEGACY_TRACK = { status: "stale", note: "made before dubs recorded their pronunciation; run dub again (unchanged clips are reused)" };
+const LEGACY_OVER = { status: "stale", note: "the last run was over budget before dubs recorded their pronunciation; run dub again (unchanged clips are reused)" };
+
+/** What `dub` wrote before 2026-10-01: the same record without the fingerprint fields. */
+function stripFingerprint(file) {
+  const { speech_fingerprint, style_override, ...legacy } = readJson(file);
+  assert.ok(speech_fingerprint);
+  assert.equal(style_override, null);
+  writeJson(file, legacy);
+}
+
+test("records from before the fingerprint answer by their clip cache: current while every key matches, stale once one differs or the cache is gone", async () => {
   const box = videoBox({
     terms: { OpenAI: "Open A I" },
     translations: {
-      en: (line) => `EN ${line.id} OpenAI`,
-      ja: (line) => (line.id === "k7p2" ? "j".repeat(400) : `JA ${line.id}`),
+      en: (line) => (line.id === "k7p2" ? "OpenAI ships it." : `EN ${line.id}`),
+      ja: (line) => (line.id === "k7p2" ? `OpenAI ${"j".repeat(400)}` : `JA ${line.id}`),
     },
   });
   const server = fakeServer();
@@ -192,30 +203,51 @@ test("records from before the fingerprint are stale, an over-budget one too, and
   assert.equal((await dub(box, server, ["--locale", "ja"])).code, EXIT.lint);
   const en = dubArtifacts(box.workdir, "en");
   const ja = dubArtifacts(box.workdir, "ja");
-  // What `dub` wrote before 2026-10-01: the same records without the fingerprint fields.
-  for (const file of [en.timeline, ja.fit]) {
-    const { speech_fingerprint, style_override, ...legacy } = readJson(file);
-    assert.ok(speech_fingerprint);
-    assert.equal(style_override, null);
-    writeJson(file, legacy);
-  }
-  let seen = box.look(["en", "ja"]);
-  assert.deepEqual(seen.status.en, { status: "stale", note: "made before dubs recorded their pronunciation; run dub again (unchanged clips are reused)" });
-  assert.deepEqual(seen.status.ja, { status: "stale", note: "the last run was over budget before dubs recorded their pronunciation; run dub again (unchanged clips are reused)" });
-  assert.deepEqual(seen.upload, [], "an unproven track is not packaged");
+  // A legacy successful run left both files without one.
+  stripFingerprint(en.timeline);
+  stripFingerprint(en.fit);
+  stripFingerprint(ja.fit);
 
-  const before = server.bodies.length;
-  const again = await dub(box, server, ["--locale", "en"]);
-  assert.equal(again.code, EXIT.ok, again.stderr || again.stdout);
-  assert.equal(server.bodies.length, before, "every clip came from the cache");
-  assert.match(again.stdout, /en: 0 requests synthesized \(0 billable characters\)/);
-  const over = await dub(box, server, ["--locale", "ja"]);
-  assert.equal(over.code, EXIT.lint);
-  assert.equal(server.bodies.length, before, "the over-budget locale is measured again from its cached clips");
-  seen = box.look(["en", "ja"]);
+  // Unchanged speech: the cache holds every key the plan asks for, so nothing flips on deploy.
+  let seen = box.look(["en", "ja"]);
   assert.equal(seen.status.en.status, "current");
   assert.equal(seen.status.ja.status, "over");
   assert.deepEqual(seen.upload, ["en"]);
+
+  // A changed target alias: the cached key of the line that says it differs.
+  box.setAlias("OpenAI", "Open AI");
+  seen = box.look(["en", "ja"]);
+  assert.deepEqual(seen.status.en, LEGACY_TRACK);
+  assert.deepEqual(seen.status.ja, LEGACY_OVER);
+  assert.deepEqual(seen.upload, [], "an unproven track is not packaged");
+
+  // The rerun retakes that one line, reuses the rest and records a fingerprint.
+  const before = server.bodies.length;
+  const again = await dub(box, server, ["--locale", "en"]);
+  assert.equal(again.code, EXIT.ok, again.stderr || again.stdout);
+  assert.deepEqual(server.bodies.slice(before).map((body) => body.segments.map((segment) => geminiText([{ ...segment, break_after_ms: 0 }]))), [["Open AI ships it."]]);
+  seen = box.look(["en"]);
+  assert.equal(seen.status.en.status, "current");
+  assert.deepEqual(seen.upload, ["en"]);
+
+  // A legacy track whose evidence is gone or cannot be read is stale.
+  stripFingerprint(en.timeline);
+  stripFingerprint(en.fit);
+  assert.equal(box.look(["en"]).status.en.status, "current");
+  const cache = readFileSync(en.cache, "utf8");
+  writeFileSync(en.cache, "{ not json");
+  assert.deepEqual(box.look(["en"]).status.en, LEGACY_TRACK);
+  rmSync(en.cache);
+  seen = box.look(["en"]);
+  assert.deepEqual(seen.status.en, LEGACY_TRACK);
+  assert.deepEqual(seen.upload, []);
+  assert.equal(currentDub(seen.project, box.workdir, "en", box.speech).stale, true);
+
+  // A newer run's fingerprinted fit.json beside a legacy track: that run may have cached clips
+  // the track does not hold, so the cache proves nothing.
+  writeFileSync(en.cache, cache);
+  writeJson(en.fit, { ...readJson(en.fit), speech_fingerprint: "0000000000000000" });
+  assert.deepEqual(box.look(["en"]).status.en, LEGACY_TRACK);
 });
 
 test("a Chinese dub of an English video opened with --file is bound to the shelf's Chinese aliases", async () => {
@@ -267,5 +299,15 @@ test("the fingerprint binds the dub voice and each line's request, and nothing e
   assert.equal(speechCurrent(project, "en", { speech_fingerprint: dubFingerprint(project, "en", "Whispered."), style_override: "Whispered." }), true);
   assert.equal(speechCurrent(project, "en", { speech_fingerprint: dubFingerprint(project, "en", "Whispered."), style_override: null }), false);
   assert.equal(speechCurrent(project, "en", { speech_fingerprint: en }), true);
-  assert.equal(speechCurrent(project, "en", {}), false, "a record without one is never current");
+  // A record without one answers by the clip cache, and only by a cache that matches every line.
+  const keys = Object.fromEntries(dubRequests(project, "en").requests.flatMap((request) => request.lines.map((line) => [line.id, line.key])));
+  assert.equal(speechCurrent(project, "en", {}), false, "no cache, no evidence");
+  assert.equal(speechCurrent(project, "en", {}, { cache: { lines: keys } }), true);
+  assert.equal(speechCurrent(project, "en", {}, { cache: { lines: keys }, legacyGuard: false }), false);
+  assert.equal(speechCurrent(project, "en", {}, { cache: { lines: { ...keys, k7p2: "0000000000000000" } } }), false);
+  const { k7p2, ...partial } = keys;
+  assert.ok(k7p2);
+  assert.equal(speechCurrent(project, "en", {}, { cache: { lines: partial } }), false);
+  assert.equal(speechCurrent(project, "en", { style_override: "Whispered." }, { cache: { lines: keys } }), false, "the cache is read against the style the dub was made in");
+  assert.equal(speechCurrent(project, "ja", {}, { cache: { lines: keys } }), false, "no plan without a translation");
 });
