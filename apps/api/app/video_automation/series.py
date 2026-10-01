@@ -58,6 +58,7 @@ from app.video_automation.models import (
 )
 from app.video_automation.requests import request_view
 from app.video_automation.schemas import (
+    EXPLAINER_PRESET,
     ONE_OFF_EPISODES,
     SERIES_MAX_MINUTES,
     BingeQuoteOut,
@@ -193,11 +194,8 @@ def is_one_off(series: VideoDramaSeries) -> bool:
     return series.kind == "one-off"
 
 
-# An illustrated explainer (docs/videos/so-thats-why/) is a one-off in this preset: its bible is a
-# question's, with no cast, and its outline carries the answer, the reasons and the sources.
-EXPLAINER_PRESET = "flat-explainer"
-
-
+# An illustrated explainer (docs/videos/so-thats-why/) is a one-off in EXPLAINER_PRESET: its bible
+# is a question's, with no cast, and its outline carries the answer, the reasons and the sources.
 def is_explainer(series: VideoDramaSeries) -> bool:
     return is_one_off(series) and series.style_preset == EXPLAINER_PRESET
 
@@ -1263,13 +1261,35 @@ async def episode_detail(session: AsyncSession, slug: str, number: int) -> Serie
     return episode_view(episode, video)
 
 
-def patch_problem(series: VideoDramaSeries, changes: dict[str, Any]) -> SeriesRefused | None:
+def patch_problem(
+    series: VideoDramaSeries, changes: dict[str, Any], docs: Sequence[VideoDramaDoc] = ()
+) -> SeriesRefused | None:
     """Why a change the schema accepts does not fit this kind of series, or None.
+
+    Only a one-off takes EXPLAINER_PRESET: a long series and a story series are written with a
+    cast, which the explainer's lint refuses on every episode. A one-off may move into or out of
+    the explainer only before the worker wrote its bible (``docs``, any version): an explainer's
+    bible is a question's with no cast and a story's has one, so the bible already written would
+    no longer fit. To change sides after that, the owner withdraws the one-off and files a new one.
 
     Only a story series has a daily count and a shared look, and only a story runs longer than
     SERIES_MAX_MINUTES. A story series stays hands-off, stills only and never compiled, keeps a
     look, and has no chapters to resize.
     """
+    if "style_preset" in changes:
+        explainer = changes["style_preset"] == EXPLAINER_PRESET
+        if explainer and not is_one_off(series):
+            return SeriesRefused(
+                422,
+                "video_series_explainer_one_off",
+                "扁平插畫解說只給單集作品用：長篇與品牌故事都有角色，解說沒有",
+            )
+        if explainer != is_explainer(series) and any(doc.kind == "bible" for doc in docs):
+            return SeriesRefused(
+                409,
+                "video_series_explainer_fixed",
+                "故事聖經已經寫了，不能在解說與故事之間換風格；要換請撤回這部再重新發起",
+            )
     if not is_story(series):
         if changes.get("episodes_per_day") is not None or changes.get("look") is not None:
             return SeriesRefused(
@@ -1300,7 +1320,9 @@ async def patch_series(
 ) -> SeriesOut:
     series = await _series(session, slug, lock=True)
     changes = payload.model_dump(exclude_unset=True)
-    refused = patch_problem(series, changes)
+    # A one-off's bible decides whether it may still cross the explainer line.
+    docs = await _docs(session, series) if is_one_off(series) and "style_preset" in changes else []
+    refused = patch_problem(series, changes, docs)
     if refused is not None:
         raise refused
     if "status" in changes and series.status in ("setting", "outline"):

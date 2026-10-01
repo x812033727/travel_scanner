@@ -87,13 +87,14 @@
 
 ## 工具端（`tools/video`）
 
-- `video.json` 頂層新增可選 `series: { slug, episode, chapter }`；lint：作品集數的 `characters` 必須是設定集人物表的子集且 `appearance`／`voice`／`sheet_prompt` 逐字相同，角色依 id 排序（`lookHash` 只在 cast 變動時改變）。
+- `video.json` 頂層新增可選 `series: { slug, episode, chapter }`；lint：作品集數的 `characters` 必須是設定集人物表（這一集的，見下面「換裝與變化」）的子集且 `appearance`／`voice`／`sheet_prompt` 逐字相同，角色依 id 排序（`lookHash` 只在 cast 變動時改變）。
 - `DRAMA_STEPS` 在 `fact-checked` 之後加 `script approved`；`GATES.script` 綁 `docDir/script.md`；`REVIEW_GATES`、`STEP_LABELS`、`nextGate`（drama：outline → script → look → audio → storyboard → final）、`scriptSubmission`。
 - **劇本檔** `screenplay(doc)` → `docs/videos/<slug>/script.md`。**關卡雜湊只算敘事**（場景順序、每句的 id／文字／說話者／情緒），不算鏡頭提示詞：look／keyframes／clips 的自動修圖不會讓已核准的劇本變 stale；旁白被退回而改了台詞才要再看。送審 payload：`{scenes:[{id, chapter, lines:[{speaker, name, text, emotion}], prompt}], beats, coverage, continuity_problems, minutes}`。
 - `automation/series.mjs`：`seriesStep()` 排在 `dramaNext()` 之前：`setting`／`outline`／`chapter` 跑企劃模型（`stage("planner", "series-<slug>", payload, 32_000, "drama", variant)`）並 `POST docs`；`episode` 就 `POST episodes/{n}/start` 再走 `draftEpisode`。退回帶 `owner_note` 重寫，超過 `series_doc_rewrites` 停在待審。
 - `flow.mjs`：`draftEpisode(request)`：企劃書由細綱生成（`## 故事前提`＝作品前提＋本集一句話、`## 角色` 逐字來自設定集、`## 站主觀點` 來自頻道立場或作品備註、`## 幕`＝beats、`## 大綱` 單一選項），本機直接核准 outline；`scriptPayload` 多帶 `series` 脈絡；`advance()` 在 listener 之後加 `scriptGate`（送審／等／退回→撰稿 FIX 模式）；`video assembled` 後跑 `recap` 並寫回；上架確認後 `POST done`。
 - 提示詞：skill `references/prompts/series-setting.md`、`series-outline.md`、`series-chapter.md`、`writer-series.md`、`verifier-series.md`，規格照上一節；`DRAMA_INSTRUCTIONS.planner` 的「不重複前一支的角色」在作品模式改成「延續作品的角色」。
 - **設定圖沿用**：作品存檔 `<VIDEO_WORKDIR>/_series/<series>/characters/<id>/<sheetKey>.png`＋`index.json`（`sheetKey = hash(id, appearance, sheet_prompt, resolvedLook)`）。`look` 對每個角色先查存檔，有核准過的就放進這一集的 manifest 當唯一候選並寫 `choice.json` 與 approvals（備註「沿用作品設定圖」），只為新角色生成；核准後把選中的圖複製進存檔。`keyframes` 每集本來就會把選中的圖重新上傳到該 slug 的媒體庫。
+- **換裝與變化**（2026-10-01）：角色在某幾集換了樣子（脫下外套、坐上輪椅、穿病人服、老了幾十歲）或換了說話方式，寫在設定集人物表那個角色底下的 `looks`：`[{ id, from, to?, appearance, sheet_prompt?, voice_style? }]`。`id` 小寫英數 2–24 字、同一角色內不重複；`from`／`to` 是集數（含頭尾，沒有 `to` 就到全劇最後一集）；同一角色兩個 look 不能涵蓋同一集。`appearance` 是那幾集**完整的**外觀提示詞（取代基底、不是在基底上加減，因為生圖模型每一鏡都整段讀它），`sheet_prompt`、`voice_style`（只限 Gemini 聲音）給了才取代基底的。工人開始一集時 `castFrom(setting, 集數)` 把涵蓋這一集的 look 換進 `series.json` 的人物表，之後撰稿、`settle()`、lint、`look` 的 `sheetPrompt`、`keyframes` 的 `shotPrompt`、旁白請求的聲音都照舊讀那份人物表，所以不用另外改：外觀不同，`sheetKey` 就不同，look 的設定圖在第一集用到它時畫一次、站主核准一次，存在同一個角色資料夾裡基底那張旁邊，之後它涵蓋的集數都沿用；它結束後的集數又回到基底那張。沒有 `looks` 的作品，每一集的人物表、提示詞、設定圖鍵都跟以前一樣。工人送設定集前用 `documentProblem` 檢查 `looks` 的形狀（伺服器的 `doc_problem` 還不檢查，見票 `2026-10-01-api-checks-the-looks-of-a`；企劃模型的設定集提示詞也還沒教它寫 `looks`，見票 `2026-10-01-setting-planner-writes-character-looks-and`）。同一集之內的變化（同一場戲裡老了幾十歲）不是 look：另立一個角色 id（例如 `lin-old`），那一集兩個都上場。
 - 詞彙表：設定集階段就把人名、門派名、術語連同讀音寫進 `docs/videos/lexicon.json`（`speechHash` 只含這一集的句子用到的條目，所以之後才加的詞，只有唸到它的集要重錄那幾句；2026-09-29 以前的做法是整份詞彙表都算）。
 
 ## 後台（`apps/web`）

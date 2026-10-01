@@ -2091,6 +2091,32 @@
     "pairCodeInvalid": "驗證碼是 8 個英文字母，例如 BCDF-GHJK。",
     "pairFailed": "無法處理這組驗證碼"
   },
+  "videoRenewal": {
+    "duration": "新版片長：{seconds} 秒",
+    "previewFile": "可選取本機 preview.mp4（須與收據一致）",
+    "previewPlayer": "已核對的新版本機預覽",
+    "previewInvalid": "預覽檔與收據不符，或超過本機預覽的 256 MB 限制。",
+    "proof": "查看來源與檔案識別",
+    "title": "成片換版",
+    "help": "選取影片工具產生的候選收據，影片附件已先暫存。送出後建立新的成片待審，保留先前決策與附件；這一步不會核准或發布影片。",
+    "file": "候選收據（.json）",
+    "original": "原成片 SHA-256",
+    "replacement": "新版成片 SHA-256",
+    "branding": "新版品牌 SHA-256",
+    "attachments": "含 {count} 筆已驗證附件記錄；送出後即可在待審卡播放預覽。",
+    "reason": "換版原因",
+    "check": "核對目前審核",
+    "submit": "送出新版，交由我審看",
+    "busy": "處理中…",
+    "checked": "原成片符合。目前版本會在送出前再次核對。",
+    "invalid": "收據格式不符、屬於另一支影片或網站，或缺少成片與預覽的檔案證明。",
+    "stale": "影片或審核已變更，請重新核對；若原成片已更換，請重新產生候選收據。",
+    "conflict": "目前無法換版：{message}",
+    "failed": "無法核對候選，請重新載入頁面後再核對。",
+    "uncertain": "送出結果尚未確認。請重新載入影片並查看審核記錄，再決定下一步；系統沒有自動重送。",
+    "submitted": "新版已送出，等待人工審看。先前決策與附件保留在歷史記錄。",
+    "pending": "這個新版正等待你在下方審看成片。舊版的上架與語言核准已不能用來上傳。"
+  },
   "videoReviews": {
     "categories": {
       "ai-terms": "AI 名詞解釋",
@@ -2912,7 +2938,9 @@
       "reviewerOnly": "只有查核者讀得到證據",
       "sources": "來源（{count} 個）",
       "checked": "{date} 查過",
-      "caveats": "查核者的提醒"
+      "caveats": "查核者的提醒",
+      "loading": "正在讀企劃…",
+      "loadError": "企劃讀不到：{message}"
     },
     "list": {
       "title": "故事清單",
@@ -3475,10 +3503,12 @@
         "early": "時間還沒到",
         "waiting": "等下一次讀取",
         "missed": "沒有在時間窗內讀到",
-        "removed": "已下架，不再讀取"
+        "removed": "已下架，不再讀取",
+        "dropped": "已放棄，不再讀取"
       },
       "publishedAt": "{time} 公開",
       "removed": "已下架（{time} 發現）",
+      "dropped": "已於 {time} 放棄",
       "open": "打開這支",
       "help": "每個數字都是 YouTube 回報的原值，旁邊寫來源與讀取時間。第 1、3、7 天各只存第一次讀到的數字；這裡不顯示任何本站自己算的分數、排名或比率。",
       "empty": "還沒有公開的 Shorts",
