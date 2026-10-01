@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import { IntlMessageFormat } from "intl-messageformat";
 import { describe, expect, it } from "vitest";
 
 import zhTwCommon from "@/messages/zh-TW/common.json";
@@ -26,11 +27,46 @@ function catalog() {
   };
 }
 
+type IcuCase = {
+  id: string;
+  default: string;
+  override: string;
+  problem: "braces" | "parameters" | null;
+  locale?: string;
+  values?: Record<string, string | number>;
+  rendered?: string;
+};
+
+const icuCases = JSON.parse(readFileSync(
+  join(import.meta.dirname, "..", "..", "..", "docs", "ui-text-icu-cases.json"),
+  "utf8",
+)) as IcuCase[];
+
+describe("shared ICU override cases", () => {
+  it.each(icuCases)("$id", (example) => {
+    expect(overrideProblem(example.override, example.default)).toBe(example.problem ?? undefined);
+    const messages = { common: { message: example.default } };
+    const merged = applyUiTextOverrides(messages, { "common.message": example.override });
+    expect(merged.applied).toBe(example.problem ? 0 : 1);
+    expect(merged.skipped).toEqual(example.problem
+      ? [{ key: "common.message", reason: "parameter_mismatch" }]
+      : []);
+    const chosen = (merged.messages.common as Record<string, string>).message;
+    expect(chosen).toBe(example.problem ? example.default : example.override);
+    expect(messages.common.message).toBe(example.default);
+    if (example.rendered !== undefined) {
+      const formatter = new IntlMessageFormat(chosen, example.locale ?? "en", undefined, { ignoreTag: true });
+      expect(formatter.format(example.values)).toBe(example.rendered);
+    }
+  });
+});
+
 describe("messageParameters", () => {
-  it("returns unique sorted names and ignores what ICU does not interpolate", () => {
+  it("keeps the legacy unique sorted lexical placeholder list", () => {
     expect(messageParameters("{count, plural, one {# day} other {# days}}")).toEqual(["count"]);
     expect(messageParameters("{b} {a} {b}")).toEqual(["a", "b"]);
     expect(messageParameters("{名字} and {# thing}")).toEqual([]);
+    expect(messageParameters("'{destination}' is quoted")).toEqual(["destination"]);
     expect(messageParameters("plain")).toEqual([]);
   });
 
@@ -71,6 +107,31 @@ describe("overrideProblem", () => {
     expect(overrideProblem("嗨，{who}", "你好，{name}")).toBe("parameters");
     expect(overrideProblem("{count, plural, one {#}", "{count}")).toBe("braces");
   });
+
+  it("checks a runtime name within each branch even when its literal token already appears elsewhere", () => {
+    const original = "Help: '{name}'. {mode, select, short {{name}} other {{name}}}";
+    const override = "Help: '{name}'. {mode, select, short {'{name}'} other {{name}}}";
+    // A global set of runtime names and a global set of literal tokens both match.
+    // The short branch still lost the only name it actually interpolates.
+    expect(messageParameters(override)).toEqual(messageParameters(original));
+    expect(new IntlMessageFormat(override, "en").format({ mode: "short", name: "Ada" }))
+      .toBe("Help: {name}. {name}");
+    expect(new IntlMessageFormat(override, "en").format({ mode: "other", name: "Ada" }))
+      .toBe("Help: {name}. Ada");
+    expect(overrideProblem(override, original)).toBe("parameters");
+  });
+
+  it("handles a deeply nested message within the editor's length limit", () => {
+    const nest = (message: string) => Array.from({ length: 30 }, (_, index) => index)
+      .reduce((inner, index) => `{choice${index}, select, other {${inner}}}`, message);
+    const original = nest("Hello {name}");
+    const override = nest("Welcome {name}");
+    expect(override.length).toBeLessThan(2000);
+    expect(overrideProblem(override, original)).toBeUndefined();
+    expect(overrideProblem(nest("Welcome '{name}'"), original)).toBe("parameters");
+    const values = { ...Object.fromEntries(Array.from({ length: 30 }, (_, index) => [`choice${index}`, "other"])), name: "Ada" };
+    expect(new IntlMessageFormat(override, "en").format(values)).toBe("Welcome Ada");
+  });
 });
 
 describe("flattenMessages", () => {
@@ -101,6 +162,24 @@ describe("isUiTextPayload", () => {
 });
 
 describe("applyUiTextOverrides", () => {
+  it("keeps the working default when an old saved override quotes its argument away", () => {
+    const original = "Hello {name}";
+    const override = "Hello '{name}'";
+    expect(new IntlMessageFormat(override, "en").format({ name: "Ada" })).toBe("Hello {name}");
+    const messages = { common: { greeting: original, farewell: "Goodbye {name}" } };
+    const merged = applyUiTextOverrides(messages, {
+      "common.greeting": override,
+      "common.farewell": "See you, ‘{name}’!",
+    });
+    const chosen = merged.messages.common as Record<string, string>;
+    expect(merged.applied).toBe(1);
+    expect(merged.skipped).toEqual([{ key: "common.greeting", reason: "parameter_mismatch" }]);
+    expect(new IntlMessageFormat(chosen.greeting, "en").format({ name: "Ada" })).toBe("Hello Ada");
+    expect(new IntlMessageFormat(chosen.farewell, "en").format({ name: "Ada" })).toBe("See you, ‘Ada’!");
+    expect(messages.common.greeting).toBe(original);
+    expect(messages.common.farewell).toBe("Goodbye {name}");
+  });
+
   it("replaces a leaf without touching the input", () => {
     const messages = catalog();
     const snapshot = JSON.parse(JSON.stringify(messages));

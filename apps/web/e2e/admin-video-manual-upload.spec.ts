@@ -66,6 +66,7 @@ async function fixture(page: Page, baseURL: string | undefined, existing: boolea
     const path = url.pathname.replace("/api/travel", "");
     if (path === `/admin/videos/${slug}`) return route.fulfill({ json: project });
     if (path === "/admin/videos") return route.fulfill({ json: [project] });
+    if (path === "/admin/videos/browse") return route.fulfill({ json: { items: [project], total: 1, page: 1, pages: 1, facets: { category: [], state: [] } } });
     if (path === "/admin/video-youtube") return route.fulfill({ json: {
       configured: true, linked: true, audited: false, channel_id: "synthetic-channel", channel_title: "Synthetic channel",
       client_id: null, client_secret_set: false, redirect_uri: "", scope: "", channel_url: null,

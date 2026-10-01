@@ -1263,7 +1263,7 @@
     },
     "zh-CN": {
       "title": "macOS CLI 安装与排错",
-      "description": "在 macOS 终端机完成安装、登入与专案定位，分开处理 shell 环境、更新和权限问题。",
+      "description": "在 macOS 终端完成安装、登录与项目定位，分开处理 shell 环境、更新和权限问题。",
       "hero": {
         "src": "/guides/codex-cli-macos/hero.jpg",
         "width": 1600,
@@ -1278,8 +1278,8 @@
         {
           "type": "summary",
           "items": [
-            "在 macOS 终端机完成安装、登入与专案定位，分开处理 shell 环境、更新和权限问题。",
-            "在 macOS Terminal 完成 CLI 安装、查询实际执行档、登入、定位与唯读验证，最后能用原管道更新。"
+            "在 macOS 终端完成安装、登录与项目定位，分开处理 shell 环境、更新和权限问题。",
+            "在 macOS Terminal 完成 CLI 安装、查询实际可执行文件、登录、定位与只读验证，最后能用原管道更新。"
           ]
         },
         {
@@ -1301,11 +1301,11 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "在 macOS Terminal 完成 CLI 安装、查询实际执行档、登入、定位与唯读验证，最后能用原管道更新。阅读约 12 分钟，操作约 25 分钟，下载时间另计。本篇依 2026-09-14 官方 CLI 与登入文件查证，没有 macOS 实机安装或 Codex 介面截图；所有步骤仍完整列出，供你在自己的 Mac 核对。"
+          "text": "在 macOS Terminal 完成 CLI 安装、查询实际可执行文件、登录、定位与只读验证，最后能用原管道更新。阅读约 12 分钟，操作约 25 分钟，下载时间另计。本篇依 2026-09-14 官方 CLI 与登录文档查证，没有 macOS 实机安装或 Codex 界面截图；所有步骤仍完整列出，供你在自己的 Mac 核对。"
         },
         {
           "type": "paragraph",
-          "text": "按 Command＋Space 开 Spotlight，搜寻 Terminal 并开启。视窗尾端通常显示提示符号；把安装指令贴在这里，不是 ChatGPT 或 Codex 对话方块。你只需一个可写入的新练习资料夹和可登入的帐号；独立安装版不要求先装 npm。图中 1 是确认安装来源，2 是启动正确工作目录，3 是比对档案。"
+          "text": "按 Command＋Space 开 Spotlight，搜索 Terminal 并打开。窗口尾端通常显示提示符；把安装命令贴在这里，不是 ChatGPT 或 Codex 对话框。你只需一个可写入的新练习文件夹和可登录的账号；独立安装版不要求先装 npm。图中 1 是确认安装来源，2 是启动正确工作目录，3 是比对文件。"
         },
         {
           "type": "heading",
@@ -1320,7 +1320,7 @@
         },
         {
           "type": "paragraph",
-          "text": "在 Terminal 逐行执行。command -v 用来看目前 shell 会选哪个 codex；type -a 协助发现多个来源或同名 alias／function。没有安装时可能没有路径或显示找不到，先不要接著执行模型任务。若已找到，跑 codex --version，记录版本及原安装管道，再跳到建立练习资料夹；不要为了跟文章一致而重灌。"
+          "text": "在 Terminal 逐行执行。command -v 用来看目前 shell 会选哪个 codex；type -a 协助发现多个来源或同名 alias／function。没有安装时可能没有路径或显示找不到，先不要接着执行模型任务。若已找到，跑 codex --version，记录版本及原安装管道，再跳到创建练习文件夹；不要为了跟文章一致而重装。"
         },
         {
           "type": "heading",
@@ -1329,7 +1329,7 @@
         },
         {
           "type": "paragraph",
-          "text": "需要新装时，从文末官方 CLI 页核对下列命令。它会下载官方安装指令码并交给 sh 执行，因此先确认来源，等待完成后阅读安装位置与 PATH 提示。出现连线或凭证错误时保留原讯息，先解决网路或受管理凭证，不要把网址换成陌生映象或略过 TLS 检查。"
+          "text": "需要新装时，从文末官方 CLI 页核对下列命令。它会下载官方安装脚本并交给 sh 执行，因此先确认来源，等待完成后阅读安装位置与 PATH 提示。出现连接或证书错误时保留原信息，先解决网络或受管理证书，不要把网址换成陌生镜像或略过 TLS 检查。"
         },
         {
           "type": "code",
@@ -1339,7 +1339,7 @@
         },
         {
           "type": "paragraph",
-          "text": "结束后开新的 Terminal 视窗，重新执行 command -v codex、codex --version 和 codex --help。前者指向已确认的安装，后两者显示版本与说明，才算可以进到下一步。Terminal 内成功不代表你先前已开启的编辑器也立即取得新环境；若 IDE 终端机仍找不到，完整退出编辑器再开启，用相同命令比较。"
+          "text": "结束后开新的 Terminal 窗口，重新执行 command -v codex、codex --version 和 codex --help。前者指向已确认的安装，后两者显示版本与说明，才算可以进到下一步。Terminal 内成功不代表你先前已打开的编辑器也立即取得新环境；若 IDE 终端仍找不到，完整退出编辑器再打开，用相同命令比较。"
         },
         {
           "type": "heading",
@@ -1358,35 +1358,35 @@
         },
         {
           "type": "paragraph",
-          "text": "已具备 Node.js 与 npm，且想沿用 npm 的读者，先确认 node --version、npm --version，再用 npm install -g @openai/codex。若 npm 回报 EACCES，先检查目前 Node.js 管理方式和 npm 全域目录拥有者；不要直接在所有命令前加 sudo。若改选独立版，先记录原来源并检查重复命令，避免之后更新到另一份。"
+          "text": "已具备 Node.js 与 npm，且想沿用 npm 的读者，先确认 node --version、npm --version，再用 npm install -g @openai/codex。若 npm 报错 EACCES，先检查目前 Node.js 管理方式和 npm 全局目录拥有者；不要直接在所有命令前加 sudo。若改选独立版，先记录原来源并检查重复命令，避免之后更新到另一份。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤二：建立、定位与备份练习档"
+          "text": "步骤二：创建、定位与备份练习文件"
         },
         {
           "type": "paragraph",
-          "text": "在 Finder 选一个自己可写入的位置，建立全新的 codex mac lab 资料夹。用纯文字编辑器建立 note.txt，只有 MAC-CLI-01 一行，再另存 note.original.txt。若用 TextEdit，选「格式 > 制作纯文字」（Format > Make Plain Text），存档时核对名称与 .txt 副档名；按住 Option 再选「档案 > 另存新档」（File > Save As）可储存原始副本；不要把 RTF 档案只改名成 .txt。已有同名资料夹时另取新名称，保留旧练习。"
+          "text": "在 Finder 选一个自己可写入的位置，创建全新的 codex mac lab 文件夹。用纯文本编辑器创建 note.txt，只有 MAC-CLI-01 一行，再另存 note.original.txt。若用 TextEdit，选「格式 > 制作纯文本」（Format > Make Plain Text），保存文件时核对名称与 .txt 扩展名；按住 Option 再选「文件 > 另存为」（File > Save As）可保存原始副本；不要把 RTF 文件只改名成 .txt。已有同名文件夹时另取新名称，保留旧练习。"
         },
         {
           "type": "paragraph",
-          "text": "在 Terminal 先输入 cd 和一个空格，再把 Finder 的练习资料夹拖进视窗，确认产生的是它的路径后按 Return。这样可使用自己的真实路径，不需猜使用者名称。也可以自行输入 cd 加上引号括住的完整路径。先执行 pwd 与 ls，再读档；看到 RTF 控制字元或多出 .txt.txt 时回编辑器修正，不能继续假定资料正确。"
+          "text": "在 Terminal 先输入 cd 和一个空格，再把 Finder 的练习文件夹拖进窗口，确认产生的是它的路径后按 Return。这样可使用自己的真实路径，不需猜用户名称。也可以自行输入 cd 加上引号括住的完整路径。先执行 pwd 与 ls，再读取文件；看到 RTF 控制字符或多出 .txt.txt 时回编辑器修正，不能继续假定数据正确。"
         },
         {
           "type": "code",
-          "label": "macOS Terminal：在练习资料夹读档与比较杂凑",
+          "label": "macOS Terminal：在练习文件夹读档与比较杂凑",
           "language": "bash",
           "code": "pwd\nls\ncat note.txt\nshasum -a 256 note.txt note.original.txt\n"
         },
         {
           "type": "paragraph",
-          "text": "预期目前目录是你的练习资料夹，有两个文字档，内容为 MAC-CLI-01。两份档案的 SHA-256 应相同；若不同，先查是否多了空格、不同换行或编码，不要叫 Codex 猜哪一份才正确。记录本机算出的值即可，本文不提供固定杂凑，因为不同编辑器的换行可能不同。"
+          "text": "预期目前目录是你的练习文件夹，有两个文本文件，内容为 MAC-CLI-01。两份文件的 SHA-256 应相同；若不同，先查是否多了空格、不同换行或编码，不要叫 Codex 猜哪一份才正确。记录本地算出的值即可，本文不提供固定哈希，因为不同编辑器的换行可能不同。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤三：登入与唯读任务"
+          "text": "步骤三：登录与只读任务"
         },
         {
           "type": "code",
@@ -1399,11 +1399,11 @@
           "inlines": [
             {
               "type": "text",
-              "text": "逐行执行并等待完成。浏览器登入确认帐号和工作区，回到 Terminal 看 login 是否结束，再查 status。若系统有凭证储存确认，先核对是此次 Codex 登入；不要把认证档内容放进需求或截图。帐号限制与 API 计费差异见"
+              "text": "逐行执行并等待完成。浏览器登录确认账号和工作区，回到 Terminal 看 login 是否结束，再查 status。若系统有凭据存储确认，先核对是此次 Codex 登录；不要把认证文件内容放进需求或截图。账号限制与 API 计费差异见"
             },
             {
               "type": "article",
-              "text": "帐号教学",
+              "text": "账号教学",
               "kind": "life",
               "slug": "codex-account-usage"
             },
@@ -1424,7 +1424,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "检查回复有无 MAC-CLI-01、两个档名和正确路径，并看读档工具记录。用 /exit 回到 Terminal，重跑 cat 和 shasum，确认前后内容、杂凑和档案数量未变。若 Terminal 自己读得到、Codex 读不到，记录沙盒讯息再查"
+              "text": "检查回复有无 MAC-CLI-01、两个文件名和正确路径，并看读取文件工具记录。用 /exit 回到 Terminal，重跑 cat 和 shasum，确认前后内容、哈希和文件数量未变。若 Terminal 自己读得到、Codex 读不到，记录沙箱信息再查"
             },
             {
               "type": "article",
@@ -1434,31 +1434,31 @@
             },
             {
               "type": "text",
-              "text": "；这是不同执行范围，不是档案突然消失。"
+              "text": "；这是不同执行范围，不是文件突然消失。"
             }
           ]
         },
         {
           "type": "heading",
           "level": 3,
-          "text": "补做一次缺档与恢复练习"
+          "text": "补做一次文件缺失与恢复练习"
         },
         {
           "type": "paragraph",
-          "text": "确认已回到 Terminal 的系统提示符号；若仍在 Codex 内才输入 /exit。接著用 Finder 把练习副本的 note.original.txt 暂改名为 note.reference.txt；已有后者时先停止，避免覆盖。在同一个练习资料夹执行 codex --sandbox read-only 重新启动，再送出同一个读档提示词。预期它能读 note.txt，却明确回报 note.original.txt 不存在，不能凭另一份内容宣称两份已比对。结束后退出，把档名恢复成 note.original.txt，再以 cat、ls、shasum 重验；两份档案应回到原来的相同杂凑。这一步只改练习档名，不更动登入或 shell 设定。"
+          "text": "确认已回到 Terminal 的系统提示符；若仍在 Codex 内才输入 /exit。接着用 Finder 把练习副本的 note.original.txt 暂改名为 note.reference.txt；已有后者时先停止，避免覆盖。在同一个练习文件夹执行 codex --sandbox read-only 重新启动，再发送同一个读取文件提示词。预期它能读 note.txt，却明确报告 note.original.txt 不存在，不能凭另一份内容声称两份已比对。结束后退出，把文件名恢复成 note.original.txt，再以 cat、ls、shasum 重验；两份文件应回到原来的相同哈希。这一步只改练习文件名，不改动登录或 shell 设置。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "步骤四：重开终端机仍然有效"
+          "text": "步骤四：重开终端仍然有效"
         },
         {
           "type": "paragraph",
-          "text": "关闭 Terminal 视窗再开启，先查 command -v codex 和版本，再重新 cd 进练习资料夹，执行 codex resume 并核对刚才那笔任务的目录与时间。新 shell 不一定从上一个工作目录开始；找不到 note.txt 时先看 pwd，不要重新建立另一份同名档案。接续对话不会自动把 Finder 的位置、终端机位置或档案内容都恢复。"
+          "text": "关闭 Terminal 窗口再打开，先查 command -v codex 和版本，再重新 cd 进练习文件夹，执行 codex resume 并核对刚才那个任务的目录与时间。新 shell 不一定从上一个工作目录开始；找不到 note.txt 时先看 pwd，不要重新创建另一份同名文件。接续对话不会自动把 Finder 的位置、终端位置或文件内容都恢复。"
         },
         {
           "type": "paragraph",
-          "text": "若新视窗才找不到 CLI，通常要查 shell 启动环境：把安装程式最后的 PATH 说明和 command -v 结果对照。只修改自己实际使用的 shell 设定档，先备份原档并保留原 PATH。不要把网路上的固定 /opt/homebrew 或 /usr/local 路径当成每台 Mac 都适用，也不要同时把设定复制进多个启动档来碰运气。"
+          "text": "若新窗口才找不到 CLI，通常要查 shell 启动环境：把安装程序最后的 PATH 说明和 command -v 结果对照。只修改自己实际使用的 shell 配置文件，先备份原文件并保留原 PATH。不要把网络上的固定 /opt/homebrew 或 /usr/local 路径当成每台 Mac 都适用，也不要同时把设置复制进多个启动文件来碰运气。"
         },
         {
           "type": "heading",
@@ -1476,7 +1476,7 @@
             [
               "官方独立版",
               "重跑同一官方安装命令",
-              "新视窗的路径与版本"
+              "新窗口的路径与版本"
             ],
             [
               "Homebrew cask",
@@ -1492,7 +1492,7 @@
         },
         {
           "type": "paragraph",
-          "text": "先退出工作阶段并储存摘要，更新完成才重新启动。若更新后版本没变，先用 type -a 查重复来源。若已能显示 help，却无法登入，安装通常已过第一关，应记录浏览器回呼、帐号或网路错误；若只在特定资料夹失败，则比较该资料夹的存取权限与目前位置。把不同层级的问题分开，才能知道下一个修正会验证什么。"
+          "text": "先退出会话并保存摘要，更新完成才重新启动。若更新后版本没变，先用 type -a 查重复来源。若已能显示 help，却无法登录，安装通常已过第一关，应记录浏览器回调、账号或网络错误；若只在特定文件夹失败，则比较该文件夹的访问权限与目前位置。把不同层级的问题分开，才能知道下一个修正会验证什么。"
         },
         {
           "type": "rich_paragraph",
@@ -1519,7 +1519,7 @@
             },
             {
               "type": "text",
-              "text": "了解斜线指令和工作阶段。不必完成 Windows 篇才能学本篇；也不要用 Windows 路径或 PowerShell 命令替代 macOS 操作。保留自己的版本、安装来源、前后杂凑与错误纪录，才是这次安装可重现的交付。"
+              "text": "了解斜杠命令和会话。不必完成 Windows 篇才能学本篇；也不要用 Windows 路径或 PowerShell 命令替代 macOS 操作。保留自己的版本、安装来源、前后哈希与错误记录，才是这次安装可重现的交付。"
             }
           ]
         },

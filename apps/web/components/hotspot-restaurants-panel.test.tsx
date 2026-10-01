@@ -1,9 +1,127 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { modalFocusTargets } from "@/lib/modal-sheet";
 import { HotspotRestaurantsPanel } from "./hotspot-restaurants-panel";
 
+const occupiedResponse = () => new Response(JSON.stringify({ code: "meal_slot_occupied", detail: "Occupied meal" }), { status: 409 });
+const selectionBody = { trip_id: "trip-1", version: 4, day_date: "2026-10-01", mode: "replace_meal", meal: "lunch" };
+
+async function openMealPicker(select: (url: string, body: Record<string, unknown>) => Promise<Response>) {
+  const requests: { url: string; body: Record<string, unknown> }[] = [];
+  vi.stubGlobal("fetch", vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+    const url = String(input);
+    if (url.endsWith("/trip-selections")) {
+      const body = JSON.parse(String(init?.body)) as Record<string, unknown>;
+      requests.push({ url, body });
+      return select(url, body);
+    }
+    if (url.endsWith("/restaurants/favorites")) return new Response(JSON.stringify({ place_ids: [] }));
+    if (url.endsWith("/restaurants/trip-options")) return new Response(JSON.stringify({ items: [
+      { trip_id: "trip-1", name: "廣島三日", version: 4, start_date: "2026-10-01", end_date: "2026-10-03" },
+      { trip_id: "trip-2", name: "京都三日", version: 7, start_date: "2026-11-01", end_date: "2026-11-03" },
+    ] }));
+    if (url.endsWith("/restaurant-searches")) return new Response(JSON.stringify({
+      items: ["ChIJ-food", "ChIJ-other"].map((place_id, index) => ({
+        place_id, name: index ? "另一間店" : "廣島燒名店", address: null, latitude: 34.39, longitude: 132.45,
+        distance_km: 1, rating: 4.6, review_count: 2345, recommendation_score: 4.42, opening_hours: [],
+        open_now: true, official_website_url: null, google_maps_url: null, primary_type: null,
+        observed_at: "2026-09-01T12:00:00Z", editorial: null,
+      })),
+      next_cursor: null, coverage: { status: "completed", cells_completed: 1, cells_total: 1, candidate_count: 2 },
+      attribution: "Google Maps",
+    }));
+    throw new Error(`Unexpected fetch: ${url}`);
+  }));
+  render(<HotspotRestaurantsPanel hotspot={{ id: "hotspot-1", name: "平和紀念公園" }} onClose={vi.fn()} />);
+  fireEvent.click((await screen.findAllByRole("button", { name: "加入行程" }))[0]);
+  await screen.findByRole("dialog", { name: "選擇要加入的旅程" });
+  return requests;
+}
+
+async function changeMealContext(context: string) {
+  if (context === "trip") fireEvent.change(screen.getByLabelText("我的旅行"), { target: { value: "trip-2" } });
+  else if (context === "day") fireEvent.change(screen.getByLabelText("日期"), { target: { value: "2026-10-02" } });
+  else if (context === "meal") fireEvent.change(screen.getByLabelText("餐食"), { target: { value: "dinner" } });
+  else {
+    if (context === "escape") fireEvent.keyDown(document.activeElement as HTMLElement, { key: "Escape" });
+    else fireEvent.click(screen.getByRole("button", { name: "關閉行程選擇" }));
+    fireEvent.click(screen.getAllByRole("button", { name: "加入行程" })[context === "restaurant" ? 1 : 0]);
+    await screen.findByRole("dialog", { name: "選擇要加入的旅程" });
+  }
+}
+
 describe("HotspotRestaurantsPanel", () => {
+  it("sends the documented meal selection without an overwrite for an available slot", async () => {
+    const requests = await openMealPicker(async () => new Response("{}"));
+    fireEvent.click(screen.getByRole("button", { name: "確認加入行程" }));
+    expect(await screen.findByText("已加入「廣島三日」。")).toBeTruthy();
+    expect(requests).toEqual([{ url: "/api/travel/restaurants/ChIJ-food/trip-selections", body: selectionBody }]);
+  });
+
+  it("only overwrites an occupied meal after explicit confirmation of the original selection", async () => {
+    const requests = await openMealPicker(async (_url, body) => body.overwrite ? new Response("{}") : occupiedResponse());
+    fireEvent.change(screen.getByLabelText("我的旅行"), { target: { value: "trip-2" } });
+    fireEvent.change(screen.getByLabelText("日期"), { target: { value: "2026-11-02" } });
+    fireEvent.change(screen.getByLabelText("餐食"), { target: { value: "dinner" } });
+    fireEvent.click(screen.getByRole("button", { name: "確認加入行程" }));
+    const overwrite = await screen.findByRole("button", { name: "換成這個" });
+    const dialog = screen.getByRole("dialog", { name: "選擇要加入的旅程" });
+    expect(within(dialog).getByText("這一餐已經有你選好的店家，要換成這個地點嗎？")).toBeTruthy();
+    expect(requests).toHaveLength(1);
+    expect(requests[0].body).toEqual({ ...selectionBody, trip_id: "trip-2", version: 7, day_date: "2026-11-02", meal: "dinner" });
+    fireEvent.click(overwrite);
+    expect(await screen.findByText("已加入「京都三日」。")).toBeTruthy();
+    expect(requests[1]).toEqual({ url: requests[0].url, body: { ...requests[0].body, overwrite: true } });
+    expect(screen.queryByRole("dialog", { name: "選擇要加入的旅程" })).toBeNull();
+  });
+
+  it.each([[409, "trip_version_conflict"], [400, "meal_slot_occupied"], [500, "server_error"]])(
+    "does not authorize overwrite for %s %s", async (status, code) => {
+      const requests = await openMealPicker(async () => new Response(JSON.stringify({ code, detail: "Specific error" }), { status }));
+      fireEvent.click(screen.getByRole("button", { name: "確認加入行程" }));
+      expect(await screen.findByText("Specific error")).toBeTruthy();
+      expect(screen.queryByRole("button", { name: "換成這個" })).toBeNull();
+      expect(requests).toHaveLength(1);
+    },
+  );
+
+  it.each(["trip", "day", "meal", "restaurant", "cancel", "escape"])(
+    "discards occupied confirmation when the %s context changes", async (context) => {
+      const requests = await openMealPicker(async () => occupiedResponse());
+      fireEvent.click(screen.getByRole("button", { name: "確認加入行程" }));
+      await screen.findByRole("button", { name: "換成這個" });
+      await changeMealContext(context);
+      expect(screen.queryByRole("button", { name: "換成這個" })).toBeNull();
+      fireEvent.click(screen.getByRole("button", { name: "確認加入行程" }));
+      await screen.findByRole("button", { name: "換成這個" });
+      expect(requests).toHaveLength(2);
+      expect(requests[1].body).toEqual({
+        ...selectionBody,
+        ...(context === "trip" ? { trip_id: "trip-2", version: 7, day_date: "2026-11-01" } : {}),
+        ...(context === "day" ? { day_date: "2026-10-02" } : {}),
+        ...(context === "meal" ? { meal: "dinner" } : {}),
+      });
+      expect(requests[1].url).toBe(`/api/travel/restaurants/${context === "restaurant" ? "ChIJ-other" : "ChIJ-food"}/trip-selections`);
+    },
+  );
+
+  it.each(["meal", "restaurant", "cancel", "escape"])(
+    "ignores a delayed occupied response after changing %s, even if the same choice is reopened", async (context) => {
+      let respond!: (response: Response) => void;
+      const response = new Promise<Response>((resolve) => { respond = resolve; });
+      const requests = await openMealPicker(async () => response);
+      fireEvent.click(screen.getByRole("button", { name: "確認加入行程" }));
+      await waitFor(() => expect(requests).toHaveLength(1));
+      await changeMealContext(context);
+      if (context === "meal") fireEvent.change(screen.getByLabelText("餐食"), { target: { value: "lunch" } });
+      await act(async () => { respond(occupiedResponse()); await response; });
+      await waitFor(() => expect(screen.getByRole("button", { name: "確認加入行程" }).hasAttribute("disabled")).toBe(false));
+      expect(screen.queryByRole("button", { name: "換成這個" })).toBeNull();
+      expect(screen.queryByText("Occupied meal")).toBeNull();
+      expect(requests).toHaveLength(1);
+    },
+  );
+
   it("shows only qualified live restaurant data and safe external links", async () => {
     let searchCalls = 0;
     const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
