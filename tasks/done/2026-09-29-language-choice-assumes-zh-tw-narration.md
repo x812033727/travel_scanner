@@ -1,13 +1,13 @@
 ---
 id: 2026-09-29-language-choice-assumes-zh-tw-narration
 title: Language choice assumes zh-TW narration: a video with narration_locale loses its own captions and description
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-language-choice
 claimed_at: 2026-10-01T03:38:02Z
 created_at: 2026-09-29T03:24:56Z
-completed_at:
+completed_at: 2026-10-01T03:52:07Z
 branch: claude/language-choice-narration-locale
 depends_on: []
 scope:
