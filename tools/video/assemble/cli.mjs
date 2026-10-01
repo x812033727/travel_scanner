@@ -9,6 +9,7 @@ import { parseArgs } from "node:util";
 
 import { burnIn, hasPictures, illustrated, isDrama, keyframesHash, lookHash, mixHash, picturesHash, sfxHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
 import { presentationTimeline, selectBrandingForBuild } from "../core/branding.mjs";
+import { productionClipProblems } from "../core/lint.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { FPS, speechHash, visualHash } from "../core/timeline.mjs";
@@ -133,6 +134,11 @@ export async function run(command, args, ctx) {
   const inputs = await mediaInputs(doc, workdir, workBase, manifest, speech, visual);
   if (inputs?.problem) {
     ctx.stderr.write(`${inputs.problem}\n`);
+    return EXIT.usage;
+  }
+  const productionProblems = productionClipProblems(doc, project.series, timeline, inputs?.clips);
+  if (productionProblems.length) {
+    ctx.stderr.write(`production clips need review before assembly: ${productionProblems.map((problem) => `${problem.path}: ${problem.message}`).join("; ")}\n`);
     return EXIT.usage;
   }
   let tools;

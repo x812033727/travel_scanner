@@ -18,6 +18,7 @@ from app.config import Settings
 from app.video_automation.models import DEFAULT_DRAMA, DEFAULT_SLIDES, VideoAutomationSettings
 from app.video_media import jobs as service
 from app.video_media import meter
+from app.video_media.catalog import find_model
 from app.video_media.jobs import MediaContext, MediaJobFailed, advance_job, job_view, submit_job
 from app.video_media.models import VideoMediaJob
 from app.video_media.providers import Download, MediaRequest, MediaUpstreamError, Polled, Submitted
@@ -70,6 +71,29 @@ class FakeProvider:
         return download.url, {}
 
 
+@pytest.mark.parametrize(
+    "extra",
+    [{"seconds": 4}, {"seconds": 6}, {"references": [{"sha256": "b" * 64}]}],
+)
+@pytest.mark.asyncio
+async def test_lite_incompatible_jobs_spend_nothing(
+    tmp_path: Path, extra: dict[str, Any]
+) -> None:
+    provider = FakeProvider()
+    ctx = _context(
+        tmp_path, provider,
+        row=_row(clip_model="veo-3.1-lite-generate-preview", clip_resolution="1080p"),
+    )
+    payload = ClipJobIn.model_validate(
+        {"slug": "v", "shot_id": "opening", "prompt": "push in",
+         "first_frame": "a" * 64, "seconds": 8, **extra}
+    )
+    with pytest.raises(MediaJobFailed) as refused:
+        await submit_job(ctx, "clip", payload)
+    assert refused.value.code == "video_media_model_not_allowed"
+    assert provider.requests == [] and ctx.session.added == [] and ctx.session.commits == 0
+
+
 def _row(**changes: Any) -> VideoAutomationSettings:
     values = {
         **copy.deepcopy(DEFAULT_DRAMA),
@@ -78,6 +102,17 @@ def _row(**changes: Any) -> VideoAutomationSettings:
         **changes,
     }
     return VideoAutomationSettings(id=1, **values)
+
+
+def test_lite_job_records_always_on_native_audio_even_when_final_edit_discards_it() -> None:
+    model = find_model("gemini", "clip", "veo-3.1-lite-generate-preview")
+    assert model is not None
+    payload = ClipJobIn.model_validate(
+        {"slug": "v", "shot_id": "opening", "prompt": "push in", "first_frame": "a" * 64,
+         "seconds": 8, "native_audio": False}
+    )
+    fields = service._request_fields(payload, _row(clip_resolution="1080p"), model)
+    assert fields["native_audio"] is True and fields["seconds"] == 8
 
 
 def _context(

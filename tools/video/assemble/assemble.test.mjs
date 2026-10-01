@@ -1,8 +1,13 @@
 import assert from "node:assert/strict";
+import { existsSync, mkdirSync, writeFileSync } from "node:fs";
+import path from "node:path";
 import test from "node:test";
 
-import { fixture } from "../core/fixtures/load.mjs";
-import { estimateTimeline } from "../core/timeline.mjs";
+import { EXIT } from "../cli.mjs";
+import { lookHash } from "../core/drama.mjs";
+import { dramaFixture, fixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
+import { estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
+import { run } from "./cli.mjs";
 import {
   checkLoudness,
   checkProbe,
@@ -33,6 +38,62 @@ function manifestFor(timeline, transitions = 3) {
     })),
   };
 }
+
+test("direct assembly refuses wrong-model, short or non-native-1080p production clips before reaching ffmpeg", async () => {
+  const expected = { provider: "gemini", model: "veo-3.1-lite-generate-preview", resolution: "1080p", aspect: "16:9" };
+  for (const fault of ["model", "duration", "dimensions", "missing dimensions"]) {
+    const box = sandbox("fixture-drama", "drama");
+    const doc = dramaFixture();
+    delete doc.music;
+    delete doc.sfx;
+    doc.subtitles = { burn_in: false };
+    for (const scene of doc.scenes) {
+      delete scene.data.fit;
+      for (const line of scene.lines) {
+        line.text = "走。";
+        delete line.say;
+        delete line.say_for;
+      }
+    }
+    writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+    const seriesFile = path.join(box.dir, "series.json");
+    writeFileSync(seriesFile, JSON.stringify({ production: { profile: { video: expected } } }));
+    const speech = speechHash(doc, fixtureLexicon());
+    const visual = visualHash(doc);
+    const timeline = { ...estimateTimeline(doc), speech_hash: speech };
+    mkdirSync(box.workdir, { recursive: true });
+    writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
+    mkdirSync(path.join(box.workdir, "frames"), { recursive: true });
+    writeFileSync(path.join(box.workdir, "frames", "manifest.json"), JSON.stringify({ visual_hash: visual }));
+    const clips = {
+      speech_hash: speech, visual_hash: visual, look_hash: lookHash(doc), clip: { ...expected },
+      shots: Object.fromEntries(doc.scenes.filter((scene) => scene.template === "shot").map((scene) => [scene.id, { file: `clips/${scene.id}.mp4`, sha256: "a".repeat(64), qc: { ok: true, metrics: { duration: 8, width: 1920, height: 1080 } } }])),
+    };
+    if (fault === "model") clips.clip.model = "gemini-omni-1.1-flash";
+    else if (fault === "duration") clips.shots[doc.scenes[0].id].qc.metrics.duration = 0.1;
+    else if (fault === "dimensions") Object.assign(clips.shots[doc.scenes[0].id].qc.metrics, { width: 1280, height: 720 });
+    else delete clips.shots[doc.scenes[0].id].qc.metrics.width;
+    mkdirSync(path.join(box.workdir, "clips"), { recursive: true });
+    writeFileSync(path.join(box.workdir, "clips", "manifest.json"), JSON.stringify(clips));
+    let ffmpegReached = 0;
+    let stderr = "";
+    const ctx = {
+      root: box.root, home: box.base, EXIT,
+      env: { VIDEO_WORKDIR: box.work, get FFMPEG_PATH() { ffmpegReached += 1; throw new Error("ffmpeg sentinel"); } },
+      stdout: { write() {} }, stderr: { write(value) { stderr += value; } },
+    };
+    assert.equal(await run("assemble", ["--slug", doc.slug], ctx), EXIT.usage, stderr);
+    assert.match(stderr, /production clips need review before assembly/);
+    assert.match(stderr, fault === "model" ? /approved production model/ : fault === "duration" ? /whole dialogue/ : /native 1920x1080/);
+    assert.equal(ffmpegReached, 0, "neither ffmpeg discovery nor any encoding is started");
+    assert.ok(!existsSync(path.join(box.workdir, "segments")));
+    // The same older manifest remains valid for the legacy assembly path; stop
+    // at tool discovery so this control never runs a native command either.
+    writeFileSync(seriesFile, JSON.stringify({}));
+    await assert.rejects(run("assemble", ["--slug", doc.slug], ctx), /ffmpeg sentinel/);
+    assert.equal(ffmpegReached, 1);
+  }
+});
 
 test("each scene lays out transition frames one by one, then its still, adding up to the scene's frames", () => {
   const timeline = estimateTimeline(fixture());

@@ -1,0 +1,3354 @@
+{
+  "schema_version": 1,
+  "slug": "ghost-at-his-side",
+  "source_binding": {
+    "source_sha256": "c22e5c030e49f20251f06fff527ae794cf3ef6404d704c52c0bb59b6580ca6e5"
+  },
+  "delivery_profile_ref": "../../production-20261001/profile.json",
+  "review_status": "design-only-not-render-tested",
+  "visual_direction": {
+    "style": "古風奇幻雙男主動畫；紙張纖維、筆尖阻力、油燈呼吸和袖口空出的觸感主導。靈體半透明必須跟隨表演與遮擋，不能直接把整個角色統一降低透明度。",
+    "screen_direction": "文書桌左袖/燭火、冰窖17級石階/石台/小燈、大燈底座/三層燈心/後側攀繩先建空間圖。無咎與清晏對話保一致視線；旁人視線不追看不見的鬼。",
+    "performance": "清晏平日笑、數三秒時一字一頓；無咎越動情越小聲。想碰卻穿過，要先有靠近意圖再落空；E40第一次真的碰到才有皮膚接觸與重量。",
+    "continuity": "母符/副本/貼身聯/副聯/送行符五類不是同一張黃紙；鬼可碰符紙，不可碰普通紙/筆/人。母符光可見可聽權限按人物和場景切換。年齡與身體/鬼雙形態逐鏡選造型。"
+  },
+  "opening_30s": [
+    {
+      "id": "o01",
+      "in_s": 0,
+      "out_s": 4,
+      "scale": "ECU",
+      "camera": "筆尖移到左袖，固定燭位",
+      "action": "無咎寫字，完整黃符只露角；清晏聲從桌側進來",
+      "characters": [
+        "wujiu"
+      ],
+      "props": [
+        "筆",
+        "墨",
+        "左袖黃符"
+      ],
+      "dialogue_intent": "清晏「沈大人，你袖子裡有我。」",
+      "sound": "筆聲、清晏乾淨近聲；不鬼叫",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:250",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:270",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "id": "o02",
+      "in_s": 4,
+      "out_s": 8,
+      "scale": "MS",
+      "camera": "桌邊側軸兩人，不越線",
+      "action": "無咎抬眼，清晏在桌側微笑；桌上只有無咎物件投影",
+      "characters": [
+        "wujiu",
+        "qingyan"
+      ],
+      "props": [
+        "桌",
+        "燭",
+        "黃符"
+      ],
+      "dialogue_intent": "無咎短答回到規矩，讓熟識關係先成立",
+      "sound": "椅輕响；清晏无脚步",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:250",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:270",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "id": "o03",
+      "in_s": 8,
+      "out_s": 12,
+      "scale": "CU",
+      "camera": "無咎的手伸入前景，跟到空處",
+      "action": "他抓向清晏衣袖，手穿過；清晏仍自然側身",
+      "characters": [
+        "wujiu",
+        "qingyan"
+      ],
+      "props": [
+        "月白袖"
+      ],
+      "dialogue_intent": "清晏短笑，不解說死因",
+      "sound": "只無咎衣摩擦，穿透不加碰擊",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:250",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:270",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "id": "o04",
+      "in_s": 12,
+      "out_s": 16,
+      "scale": "ECU",
+      "camera": "符角和手固定微距",
+      "action": "清晏指尖卻能抬起黃符角，再輕放回袖邊",
+      "characters": [
+        "qingyan"
+      ],
+      "props": [
+        "送行符完好角"
+      ],
+      "dialogue_intent": "「但這個，我碰得到」的意圖，以原文短句為準",
+      "sound": "紙纖維聲可聞，手不碰無咎皮膚",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:250",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:270",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "id": "o05",
+      "in_s": 16,
+      "out_s": 20,
+      "scale": "MS",
+      "camera": "門口向桌推一步",
+      "action": "阿七提未點的小紙燈籠衝入，先找無咎、不看清晏",
+      "characters": [
+        "aqi",
+        "wujiu"
+      ],
+      "props": [
+        "阿七小燈籠"
+      ],
+      "dialogue_intent": "報河上少女一夜白頭；句子留到下鏡完成",
+      "sound": "急腳步/喘，燈籠竹骨",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:250",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:270",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "id": "o06",
+      "in_s": 20,
+      "out_s": 24,
+      "scale": "CU",
+      "camera": "無咎停筆，焦到袖角",
+      "action": "無咎聽案，清晏站旁反應；只有二人知道對方在",
+      "characters": [
+        "wujiu",
+        "qingyan"
+      ],
+      "props": [
+        "筆",
+        "黃符"
+      ],
+      "dialogue_intent": "阿七報案可跨鏡，不再疊旁白一年身世",
+      "sound": "少年聲留距離，筆停",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:250",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:270",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "id": "o07",
+      "in_s": 24,
+      "out_s": 27,
+      "scale": "MS",
+      "camera": "朝門同軸跟無咎起身",
+      "action": "無咎收袖準備去河邊，清晏先行轉身",
+      "characters": [
+        "wujiu",
+        "qingyan"
+      ],
+      "props": [
+        "袖符"
+      ],
+      "dialogue_intent": "清晏一句「走啊」；不加未到場陸崢臉",
+      "sound": "無咎衣步，清晏無步",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:250",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:270",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "id": "o08",
+      "in_s": 27,
+      "out_s": 30,
+      "scale": "WS",
+      "camera": "門框定機，人物出畫",
+      "action": "無咎與鬼出门；阿七看無咎的方向，地上只一道人影",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "aqi"
+      ],
+      "props": [
+        "門影",
+        "紙燈"
+      ],
+      "dialogue_intent": "留下我看不見的他能看見的問題，不額外念主題標語",
+      "sound": "夜河環境聲先入，保持人物動畫不定格",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:250",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:270",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "id": "wujiu",
+      "voice_name": "Charon",
+      "performance": "低而穩的台灣國語，語速偏慢，句子短，說「規矩是」時會頓一下；動情的時候反而更小聲。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "沈無咎：Shěn Wújiù。來源注音：ㄕㄣˇ ㄨˊ ㄐㄧㄡˋ；「咎」讀四聲，不讀一聲。台灣口音，聲調候選待聽校。",
+        "ja": "シェン・ウージウ",
+        "ko": "선우주",
+        "en": "Shen Wujiu; shun woo-jyoh"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "wujiu-base",
+          "episodes": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ],
+          "appearance": "27-year-old man, lean and upright, 178 cm, pale oval face with tired dark eyes and a straight thin mouth, black hair tied high with a plain wooden pin, dark indigo bureau robe with long sleeves, a narrow white collar and a black belt, right sleeve hem faintly stained with cinnabar; ink-stained fingertips; no weapon.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:50",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+          ]
+        },
+        {
+          "id": "wujiu-sleeve-intact",
+          "episodes": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "appearance": "27-year-old man, lean and upright, 178 cm, pale oval face with tired dark eyes and a straight thin mouth, black hair tied high with a plain wooden pin, dark indigo bureau robe with long sleeves, a narrow white collar and a black belt, right sleeve hem faintly stained with cinnabar; ink-stained fingertips; no weapon.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：左袖完好，送行符完好只露一角；右手無燙傷。生效點：E5燒角前。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "E5燒角前",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:270",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:286"
+          ]
+        },
+        {
+          "id": "wujiu-sleeve-charred",
+          "episodes": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35
+          ],
+          "appearance": "27-year-old man, lean and upright, 178 cm, pale oval face with tired dark eyes and a straight thin mouth, black hair tied high with a plain wooden pin, dark indigo bureau robe with long sleeves, a narrow white collar and a black belt, right sleeve hem faintly stained with cinnabar; ink-stained fingertips; no weapon.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：左袖仍完整，露出送行符焦角；E32後右掌白布。生效點：E5焦角後，右手布從32後半另選狀態。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "E5焦角後，右手布從32後半另選狀態",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:334",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:350"
+          ]
+        },
+        {
+          "id": "wujiu-bandaged",
+          "episodes": [
+            32,
+            33,
+            34,
+            35
+          ],
+          "appearance": "27-year-old man, lean and upright, 178 cm, pale oval face with tired dark eyes and a straight thin mouth, black hair tied high with a plain wooden pin, dark indigo bureau robe with long sleeves, a narrow white collar and a black belt, right sleeve hem faintly stained with cinnabar; ink-stained fingertips; no weapon.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：右手掌白布包紮不露傷；E32取鑰匙之前不能套。生效點：E32取爐鑰匙後，E33起全程。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "E32取爐鑰匙後，E33起全程",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:803",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:819"
+          ]
+        },
+        {
+          "id": "wujiu-torn",
+          "episodes": [
+            36,
+            37,
+            38,
+            39,
+            40
+          ],
+          "appearance": "27-year-old man, lean and upright, 178 cm, pale oval face with tired dark eyes and a straight thin mouth, black hair tied high with a plain wooden pin, dark indigo bureau robe with long sleeves, a narrow white collar and a black belt, right sleeve hem faintly stained with cinnabar; ink-stained fingertips; no weapon.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：左袖撕開；E36–39前送行符按胸，E37末臉沾燈灰；E40灰仍在。生效點：E36撕袖後；末集把殘角塞袖打結。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "E36撕袖後；末集把殘角塞袖打結",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:867",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:883"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "qingyan",
+      "voice_name": "Puck",
+      "performance": "輕快帶笑的台灣國語，尾音上揚，叫「沈大人」永遠像在逗人；只有在數「一、二、三」的時候一字一頓。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "謝清晏：Xiè Qīngyàn。來源注音：ㄒㄧㄝˋ ㄑㄧㄥ ㄧㄢˋ；「晏」讀ㄧㄢˋ。台灣口音，聲調候選待聽校。",
+        "ja": "シエ・チンイエン",
+        "ko": "셰칭옌",
+        "en": "Xie Qingyan; shyeh ching-yen"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "qingyan-base",
+          "episodes": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ],
+          "appearance": "26-year-old man, slim and light on his feet, 176 cm, warm face with a slight smile, bright dark eyes, a small mole under the left eye, black hair half tied with a thin red cord and the rest loose past the shoulders, plain moon-white robe with wide sleeves and a pale grey sash.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:69",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+          ]
+        },
+        {
+          "id": "qingyan-ghost",
+          "episodes": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39
+          ],
+          "appearance": "26-year-old East Asian man, slim 176cm, warm oval face, bright dark eyes, small mole below left eye; black hair half tied with thin red cord, rest loose past shoulders; moon-white wide-sleeved robe, pale grey sash, bare feet. Ghost with translucent edges, a soft lantern-like glow and a cool blue-white cuff glow. No cast shadow, no footfalls. Hands touch talisman paper only, never people, cloth, pens or ordinary paper. Facial identity remains stable; brightness is set by the scene lanterns.",
+          "cue": "每次鬼身入鏡；E36入符至E38出符期間不入鏡",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:270",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:286"
+          ]
+        },
+        {
+          "id": "qingyan-inside-paper",
+          "episodes": [
+            36,
+            37,
+            38
+          ],
+          "appearance": "Xie Qingyan is entirely invisible inside Wujiu’s farewell talisman. No face, body, silhouette, hands, feet, ghost figure or character shadow appears. Only existing talisman paper, its faint heat vapour, and Qingyan’s offscreen voice may convey his presence. Do not supply this character as a visible face reference in this shot; keep his sentence speaker without adding him to visible shot characters.",
+          "cue": "E36縮入之後→E38從符出之前",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:867",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:883"
+          ]
+        },
+        {
+          "id": "qingyan-fading",
+          "episodes": [
+            38,
+            39
+          ],
+          "appearance": "26-year-old East Asian man, slim 176cm; warm oval face, dark eyes, mole below left eye, black half-tied hair and thin red cord; moon-white robe, pale grey sash and bare feet. A fading ghost: almost transparent body, very faint outline, residual cool blue-white cuff light. No shadow or footfalls; cannot touch skin. Keep physical young corpse in a separate shot, not another appearance of this ID in one frame.",
+          "cue": "E38寫出真本命符後",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:899",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:915"
+          ]
+        },
+        {
+          "id": "qingyan-body-old",
+          "episodes": [
+            9,
+            15,
+            18,
+            20,
+            25,
+            28,
+            30,
+            34
+          ],
+          "appearance": "The physical deceased body of Xie Qingyan lies still on the ice-cellar stone slab: apparent age 80, white hair, deeply aged face and wrinkled hands, slim frame; same small mole below the left eye. Closed eyes, relaxed still mouth, no smile, no breathing. Moon-white robe beneath the white covering cloth where visible. Completely opaque, normal physical light and occlusion, no aura, no blue cuff light, no transparent edges. Film face, hand or covered-body inserts separately from the young ghost.",
+          "cue": "只屍身插鏡，禁止與鬼身同一shot同一ID",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:398",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:506"
+          ]
+        },
+        {
+          "id": "qingyan-body-young",
+          "episodes": [
+            39,
+            40
+          ],
+          "appearance": "The physical body of Xie Qingyan, apparent age 26, lies on the stone slab. Slim frame, warm oval face, closed dark eyes, small mole under left eye; black hair, thin red tie, moon-white robe beneath white covering cloth. Completely opaque with physical shadows; no blue light, aura or ghost edges. E39 the body remains still; E40 begin with one fingertip moving before the awakening shot. Never show both ghost and body as the same shot character ID.",
+          "cue": "E39掀布後至E40醒",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:915",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:931"
+          ]
+        },
+        {
+          "id": "qingyan-returned",
+          "episodes": [
+            40
+          ],
+          "appearance": "26-year-old East Asian man, slim 176cm, warm oval face, bright dark eyes and a small mole below the left eye; black hair half tied with thin red cord, loose lengths past shoulders. Moon-white wide-sleeved robe, pale grey sash. Living physical person with opaque skin and a normal cast shadow, no cold-blue light and no ghost transparency. His fingers can contact Wujiu’s sleeve/skin and the remaining paper. His expression is curious, with no recollection of the ghost year.",
+          "cue": "E40睜眼後，橋上兩影",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:931"
+          ]
+        },
+        {
+          "id": "qingyan-flashback",
+          "episodes": [
+            14
+          ],
+          "appearance": "26-year-old East Asian man, slim 176cm, warm oval face, dark eyes, mole under left eye; black hair half tied with a thin red cord, moon-white robe and pale grey sash. Alive in the one-year-ago flashback. Fully opaque skin, ordinary cast shadow and physical contact; no translucent edges or blue cuff glow. Match young facial identity to Qingyan, not his aged corpse.",
+          "cue": "E14回憶；其他回憶若作者未寫不新增",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:490"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "luzheng",
+      "voice_name": "Iapetus",
+      "performance": "清楚、慢、有份量的台灣國語，像在講道理；老去之後聲音變沙、變短。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "陸崢：Lù Zhēng。來源注音：ㄌㄨˋ ㄓㄥ；「崢」讀一聲。台灣口音，聲調候選待聽校。",
+        "ja": "ルー・ジョン",
+        "ko": "루정",
+        "en": "Lu Zheng; loo jung"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "luzheng-base",
+          "episodes": [
+            1,
+            4,
+            8,
+            11,
+            15,
+            16,
+            17,
+            20,
+            21,
+            24,
+            28,
+            30
+          ],
+          "appearance": "Man who looks 51, broad-shouldered and straight-backed, 180 cm, square face with deep-set calm eyes and a short grey-streaked beard, hair under a black official cap with a silver pin, black bureau robe with the wide crimson sash of the bureau chief and a bronze fish token at the belt, sleeves long enough to hide his wrists; hands smooth and unlined like a young man's, at odds with his face; a jade thumb ring on the right hand.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:88",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+          ]
+        },
+        {
+          "id": "lu-age51",
+          "episodes": [
+            1,
+            4,
+            8,
+            11,
+            15
+          ],
+          "appearance": "East Asian man, apparent age 51, broad shoulders and upright 180cm frame; square face, deep calm eyes, short grey-streaked beard, black official cap with a silver pin. Black bureau robe, wide crimson sash, bronze fish token at belt, long sleeves hiding wrist talisman; jade thumb ring on right hand. Both hands unusually smooth and young compared with his lined face. No new wrist wrinkles before the E16 extraction beat.",
+          "cue": "E16抽符前",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:270",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:318"
+          ]
+        },
+        {
+          "id": "lu-wrist-aged",
+          "episodes": [
+            16,
+            17,
+            20,
+            21
+          ],
+          "appearance": "East Asian man, face still apparent age 51, broad shoulders, square face, deep calm eyes, short grey-streaked beard, black official cap with silver pin. Black bureau robe, crimson sash, bronze fish token, jade right-thumb ring. Newly wrinkled wrist where the personal talisman is exposed/returned under the long sleeve. Do not age the face ten years yet. Other hands and the exact paper placement follow the extraction/return shot.",
+          "cue": "E16抽腕符那一拍",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:522",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:538"
+          ]
+        },
+        {
+          "id": "lu-age61",
+          "episodes": [
+            24,
+            28,
+            30
+          ],
+          "appearance": "East Asian man, apparent age 61, broad but tiring 180cm frame, deeper-lined square face, deep-set eyes, greying short beard; black official cap with silver pin. Black bureau robe with crimson sash and bronze fish token, jade right-thumb ring. Stooped slightly, needing wall support or slow careful steps; hands visibly older. E30 before the copy burns he is still 61, not the later white-haired 93-year-old.",
+          "cue": "E24入門後至E30副本成灰前",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:663",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:727"
+          ]
+        },
+        {
+          "id": "lu-age93",
+          "episodes": [
+            30
+          ],
+          "appearance": "East Asian man, apparent age 93, deeply wrinkled square face, white hair and short white beard, hunched frail frame, deeply wrinkled hands. Retain the black bureau robe, crimson sash, bronze fish token and right jade thumb ring. After the E30 copy has burned, he sits down and dies beside the ice-cellar lamp; no wound or decay. E37 corpse remains this age, motionless; the mother-talisman burning does not rejuvenate him.",
+          "cue": "E30副本成灰那一刻，鏡間漸變不得只全集老臉",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:759"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wentan",
+      "voice_name": "Kore",
+      "performance": "冷靜直白的台灣國語，不加語助詞，念古籍時像在念驗屍報告。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "溫檀：Wēn Tán。來源注音：ㄨㄣ ㄊㄢˊ；「檀」讀二聲。台灣口音，聲調候選待聽校。",
+        "ja": "ウェン・タン",
+        "ko": "원탄",
+        "en": "Wen Tan; wun tahn"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "wentan-base",
+          "episodes": [
+            3,
+            5,
+            6,
+            7,
+            9,
+            12,
+            15,
+            21,
+            23,
+            25,
+            27,
+            30,
+            34,
+            38,
+            39,
+            40
+          ],
+          "appearance": "24-year-old woman, small and composed, 160 cm, oval face with clear steady eyes and no makeup, black hair in a tight low bun held by a single steel needle, plain grey-green coroner's robe with a white apron and black cloth cuffs tied at the wrists, a brass lens on a cord at her neck; a thin old scar on the left index finger.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:106",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hansong",
+      "voice_name": "Orus",
+      "performance": "硬、快、公事公辦的台灣國語，罵人不提高音量；說到父親的時候會停半拍。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "韓頌：Hán Sòng。來源注音：ㄏㄢˊ ㄙㄨㄥˋ。台灣口音，聲調候選待聽校。",
+        "ja": "ハン・ソン",
+        "ko": "한쑹",
+        "en": "Han Song; hahn song"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "hansong-base",
+          "episodes": [
+            3,
+            8,
+            13,
+            22,
+            26,
+            28,
+            34,
+            38
+          ],
+          "appearance": "32-year-old man, tall and stiff, 182 cm, sharp jaw, narrow eyes with permanent frown lines, thin lips, black hair under a tall black gauze official cap, dark red court robe with a black embroidered chest panel and a white jade belt; a small old scar through the right eyebrow.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:124",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+          ]
+        },
+        {
+          "id": "han-scrape",
+          "episodes": [
+            26,
+            28,
+            34,
+            38
+          ],
+          "appearance": "32-year-old man, tall and stiff, 182 cm, sharp jaw, narrow eyes with permanent frown lines, thin lips, black hair under a tall black gauze official cap, dark red court robe with a black embroidered chest panel and a white jade belt; a small old scar through the right eyebrow.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：臉頰淺擦痕不見紅，非右眉既有舊疤。生效點：E26被撲倒後。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "E26被撲倒後",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:695",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:727"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zongdan",
+      "voice_name": "Algenib",
+      "performance": "慢、沙、幾乎不動氣的台灣國語，每句話都像在算帳；最後老去時只剩氣音。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "宗澹：Zōng Dàn。來源注音：ㄗㄨㄥ ㄉㄢˋ；「澹」讀ㄉㄢˋ，不讀ㄊㄢˊ。台灣口音，聲調候選待聽校。",
+        "ja": "ゾン・ダン",
+        "ko": "쭝단",
+        "en": "Zong Dan; dzong dahn"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "zongdan-base",
+          "episodes": [
+            17,
+            31,
+            32,
+            35,
+            36,
+            37
+          ],
+          "appearance": "Man who looks 30 but carries himself like a very old one, slender, 175 cm, unnaturally smooth pale face with heavy-lidded black eyes and faint eyebrows, long black hair loose over a pale gold silk robe with dark red lining and a wide black belt, long fingernails tinted red; his skin has a faint waxy shine like a candle.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:142",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+          ]
+        },
+        {
+          "id": "zong-age30",
+          "episodes": [
+            17,
+            31,
+            32,
+            35,
+            36,
+            37
+          ],
+          "appearance": "East Asian man with apparent age 30 and the posture of a 120-year-old; slender 175cm frame, unnaturally smooth pale waxy face, heavy-lidded black eyes, faint eyebrows; long loose black hair. Pale gold silk robe with dark red lining and broad black belt, red-tinted long nails. Slow minimal gestures. No visible ageing until the mother talisman ignites in E37.",
+          "cue": "E37母符起燃前",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:538",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:787"
+          ]
+        },
+        {
+          "id": "zong-age120",
+          "episodes": [
+            37
+          ],
+          "appearance": "East Asian man now apparent age 120: very frail slender frame, deeply collapsed lined face, white sparse hair, heavy-lidded dark eyes, aged hands with the same long nails. Retain pale gold silk robe with dark-red lining and broad black belt. This is the brief aged physical state after the mother talisman ignites and before the body becomes lantern ash. No gore, decomposition, visible skeleton or young face. Cut next to the separate empty-robe state.",
+          "cue": "E37母符燃起的老化鏡",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:883"
+          ]
+        },
+        {
+          "id": "zong-ash",
+          "episodes": [
+            37
+          ],
+          "appearance": "Zong Dan is already gone: his pale gold silk robe with dark red lining lies empty on the great-lantern steps; a small cloud of lantern ash drifts out and falls. No face, body, fingers, corpse, skeleton or second actor remains. Preserve the established robe and lantern light. This state begins after the separate 120-year-old ageing shot; do not rebuild a body inside the empty robe.",
+          "cue": "母符起燃同刻，三段shot分别定狀態",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:883"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aqi",
+      "voice_name": "Fenrir",
+      "performance": "亮、快、氣很足的台灣國語少年腔，還沒變完聲，講話像在跑；害怕的時候聲音反而更大。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "阿七：Ā Qī。來源注音：未填，需補完整人名試聽。台灣口音，聲調候選待聽校。",
+        "ja": "アーチー",
+        "ko": "아치",
+        "en": "A Qi; ah chee"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "aqi-base",
+          "episodes": [
+            1,
+            9,
+            10,
+            11,
+            19,
+            22,
+            27,
+            29,
+            32,
+            36,
+            37
+          ],
+          "appearance": "15-year-old boy, small and wiry, 150 cm, round tanned face with a wide grin and a chipped front tooth, short messy black hair under a faded blue headcloth, short brown hemp jacket over grey trousers rolled to the knee, straw sandals; a soot smudge on one cheek.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:160",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+          ]
+        },
+        {
+          "id": "aqi-lantern",
+          "episodes": [
+            1,
+            9,
+            10,
+            11,
+            19,
+            22,
+            27,
+            29
+          ],
+          "appearance": "15-year-old boy, small and wiry, 150 cm, round tanned face with a wide grin and a chipped front tooth, short messy black hair under a faded blue headcloth, short brown hemp jacket over grey trousers rolled to the knee, straw sandals; a soot smudge on one cheek.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：未點小紙燈掛腰；E1開場提在手裡，E10禁卷放風也不點。生效點：阿七每次可見；非全場自動發光。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "阿七每次可見；非全場自動發光",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:270",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:398"
+          ]
+        },
+        {
+          "id": "aqi-injured",
+          "episodes": [
+            36,
+            37
+          ],
+          "appearance": "15-year-old boy, small and wiry, 150 cm, round tanned face with a wide grin and a chipped front tooth, short messy black hair under a faded blue headcloth, short brown hemp jacket over grey trousers rolled to the knee, straw sandals; a soot smudge on one cheek.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：左臂布包紮，腰繩兩圈，E36提小燈爬頂；燈罩碎後E37無燈籠。生效點：E32受傷只聲；E36碎罩前後換prop state。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "E32受傷只聲；E36碎罩前後換prop state",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:867",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:883"
+          ]
+        }
+      ],
+      "video_constraints": {
+        "min_visual_age_years": 15,
+        "veo_lite_i2v": "not-verified-under-18"
+      }
+    },
+    {
+      "id": "laoyou",
+      "voice_name": "Enceladus",
+      "performance": "沙啞、慢、壓著的中年男聲台灣國語，說女兒的時候不看人；後半段話變少、動作變多。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "老尤：Lǎo Yóu。來源注音：ㄌㄠˇ ㄧㄡˊ。台灣口音，聲調候選待聽校。",
+        "ja": "ラオヨウ",
+        "ko": "라오유",
+        "en": "Lao You; laow yo"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "laoyou-base",
+          "episodes": [
+            2,
+            23,
+            29,
+            33,
+            35
+          ],
+          "appearance": "48-year-old man, stocky and stooped, 168 cm, weathered square face with sun lines and reddened eyes, thick grey-black eyebrows, hair tied in a rough knot with a strip of cloth, undyed hemp work robe with rolled sleeves, a leather apron scarred by bamboo splinters, thick calloused hands, a bamboo strip tucked behind one ear; a white paper flower pinned at his chest.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:177",
+            "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+          ]
+        }
+      ]
+    }
+  ],
+  "prop_rules": [
+    {
+      "id": "farewell-paper",
+      "identity": "血寫送行符，完好/焦角/胸前/殘角四版",
+      "states": "1–4完好→5焦角→36胸→39燒→40殘角",
+      "ownership": "無咎左袖；鬼只觸紙不是衣袖皮膚；39貼屍心口燒",
+      "insert_rules": "每個燒焦邊形要一致；乾鏽字不演割手寫血；39與鬼body拆鏡",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "id": "loan-papers",
+      "identity": "母符、陸副本、貼身聯、副聯均有不同印/版",
+      "states": "母符大燈；副本陸胸；貼身聯借出者；副聯暖閣墙",
+      "ownership": "燒副聯不能救人；清晏貼身聯宗袖至36甩→37廢紙",
+      "insert_rules": "用印/磨損/文字区别，不靠全部同黃；普通名單24特別是符紙",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "id": "lamps-oil",
+      "identity": "冰窖小紙燈 vs 三層大燈 vs 阿七腰燈",
+      "states": "冰小燈9未點18初點30燒副本39燒符；大燈7夜亮14夜換油",
+      "ownership": "朱砂油33證實、37先排舊後灌老尤留清油；阿七燈36碎",
+      "insert_rules": "油液高度/塞子/桶/火摺位置先預演；拒把紅火當可重燃新設定",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "id": "key-lock",
+      "identity": "銅蓮座火內鎖孔、宗爐中銅匙",
+      "states": "27鎖住→32取匙→33開座→35舉匙",
+      "ownership": "鑰匙無咎右手燙傷後纏布；不能33又徒手無布",
+      "insert_rules": "鏤空可看讀字取不出；取爐只火一晃和拳收回",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "id": "records",
+      "identity": "裁下符紙批文、十年合畫、韓父白髮匣、黃符紙名單",
+      "states": "10批文11追；13匣宗；24背陸第七；28紅封關閉文撕",
+      "ownership": "清晏只能拿符材批文/名單，普通卷只能無咎翻",
+      "insert_rules": "關閉信一封不等於桌常駐紅公文；字圖逐版本",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "id": "three-seconds",
+      "identity": "兩次三秒：無咎心停與清晏回體",
+      "states": "37倒→38一二三手動；39一→40二三手動",
+      "ownership": "溫檀聽不見清晏數，不能依他的拍子施救",
+      "insert_rules": "真三秒先錄定聲，動作切点按timecode；不長旁白/慢動延長",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    }
+  ],
+  "episodes": [
+    {
+      "episode": 1,
+      "title": "袖裡的鬼",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "aqi",
+        "luzheng"
+      ],
+      "locations": [
+        "bureau",
+        "river-fair"
+      ],
+      "hero_shot": {
+        "action": "抓袖穿過→摸符成功→橋下黃角→燭下比邊",
+        "camera": "兩人桌軸，河邊局部插鏡",
+        "sound": "無鬼腳步，只有無咎听清晏"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：鬼影/碰觸越界",
+          "solution": "手穿身無碰撞聲；符可抬；少女80歲只局部"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "阿七可見年齡 15 歲，當前 Lite I2V 未驗證支援",
+          "solution": "目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-intact",
+        "qingyan-base",
+        "qingyan-ghost",
+        "luzheng-base",
+        "lu-age51",
+        "aqi-base",
+        "aqi-lantern"
+      ],
+      "prop_checks": [
+        "送行符完好",
+        "少女殘紙",
+        "阿七燈"
+      ],
+      "voice_notes": [
+        "無鬼腳步，只有無咎听清晏",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集送行符完好、少女殘紙、阿七燈涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:270",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:163",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:164"
+      ]
+    },
+    {
+      "episode": 2,
+      "title": "一夜白頭",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "laoyou"
+      ],
+      "locations": [
+        "lantern-lane"
+      ],
+      "hero_shot": {
+        "action": "鎖房外問→鬼穿牆讀床下符→追問死因",
+        "camera": "門兩側切，不穿牆長飛鏡",
+        "sound": "墙内声音主观近，不传给老尤"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：鬼拿普通紙/老尤聽鬼",
+          "solution": "符紙才拿；鬼念给无咎，老尤只对无咎"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-intact",
+        "qingyan-base",
+        "qingyan-ghost",
+        "laoyou-base"
+      ],
+      "prop_checks": [
+        "床下貼身聯",
+        "紙魚"
+      ],
+      "voice_notes": [
+        "墙内声音主观近，不传给老尤",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集床下貼身聯、紙魚涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:286",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 3,
+      "title": "官印",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "wentan",
+        "hansong"
+      ],
+      "locations": [
+        "bureau"
+      ],
+      "hero_shot": {
+        "action": "屍齡驗→子符翻面暗記→紅封關閉",
+        "camera": "驗物桌/門口三段",
+        "sound": "溫檀報告平，韩硬短"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：少卿夺尸/多人近景",
+          "solution": "尸只手/白布，收纸证据分镜；匿名衙役不声"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-intact",
+        "qingyan-base",
+        "qingyan-ghost",
+        "wentan-base",
+        "hansong-base"
+      ],
+      "prop_checks": [
+        "80歲手",
+        "子符",
+        "白母紙",
+        "紅封信"
+      ],
+      "voice_notes": [
+        "溫檀報告平，韩硬短",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集80歲手、子符、白母紙、紅封信涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:302",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 4,
+      "title": "恩師",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "luzheng"
+      ],
+      "locations": [
+        "bureau"
+      ],
+      "hero_shot": {
+        "action": "師父茶→清晏揮手無反應→十年合畫",
+        "camera": "同桌三人分鏡≤3",
+        "sound": "唯茶杯真声，喊师父只有无咎听"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：拍桌發碰聲违反鬼规则",
+          "solution": "动作穿空無桌震；师父不追视鬼"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-intact",
+        "qingyan-base",
+        "qingyan-ghost",
+        "luzheng-base",
+        "lu-age51"
+      ],
+      "prop_checks": [
+        "茶杯",
+        "51歲臉/嫩手",
+        "合畫"
+      ],
+      "voice_notes": [
+        "唯茶杯真声，喊师父只有无咎听",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集茶杯、51歲臉/嫩手、合畫涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:318",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 5,
+      "title": "血字",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "wentan"
+      ],
+      "locations": [
+        "bureau"
+      ],
+      "hero_shot": {
+        "action": "鏽字焦角→火邊停→溫檀看影",
+        "camera": "符ECU/主角眼/门口",
+        "sound": "纸受热细响，清晏不恐怖变声"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：火角改变不可重复资产",
+          "solution": "新焦边此后锁；不拍取血；鬼亮一瞬"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "wentan-base"
+      ],
+      "prop_checks": [
+        "焦角初成",
+        "血符乾字"
+      ],
+      "voice_notes": [
+        "纸受热细响，清晏不恐怖变声",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集焦角初成、血符乾字涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:334",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 6,
+      "title": "借入者",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "wentan"
+      ],
+      "locations": [
+        "bureau",
+        "river-fair"
+      ],
+      "hero_shot": {
+        "action": "三壁穿過→空暗格紙條→綢商老去",
+        "camera": "船艙平面定，穿墙分转场",
+        "sound": "船木/水，綢商無台詞"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：80岁形变与31年混",
+          "solution": "借入10年回收，最终80岁；尸不腐坏"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "wentan-base"
+      ],
+      "prop_checks": [
+        "太師紙條",
+        "陸符筆腳",
+        "綢商白髮"
+      ],
+      "voice_notes": [
+        "船木/水，綢商無台詞",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集太師紙條、陸符筆腳、綢商白髮涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:350",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 7,
+      "title": "看得見一點",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "wentan"
+      ],
+      "locations": [
+        "bureau"
+      ],
+      "hero_shot": {
+        "action": "煙影對話→椅拉遠再近→三茶",
+        "camera": "桌位固定，溫檀視點另做可見層",
+        "sound": "清晏聲只主視點，溫檀主觀聽覺沒有清晏的聲音"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：溫檀突然聽鬼",
+          "solution": "她按神情反应而非接他说谢谢；茶不由鬼拿"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "wentan-base"
+      ],
+      "prop_checks": [
+        "三杯茶",
+        "驗簿",
+        "三線圖"
+      ],
+      "voice_notes": [
+        "清晏聲只主視點，溫檀主觀聽覺沒有清晏的聲音",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集三杯茶、驗簿、三線圖涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:366",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 8,
+      "title": "寫不出來",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "luzheng",
+        "hansong"
+      ],
+      "locations": [
+        "bureau"
+      ],
+      "hero_shot": {
+        "action": "三次朱砂散→鬼指壓紙→符亮",
+        "camera": "手/紙/筆尖分鏡",
+        "sound": "沙散与纸轻动，鬼低语"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：鬼握筆或附體手",
+          "solution": "只触纸引动纸，不碰笔/手；观察者错认复力"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "luzheng-base",
+        "lu-age51",
+        "hansong-base"
+      ],
+      "prop_checks": [
+        "鎮符",
+        "朱砂",
+        "紅封信收回"
+      ],
+      "voice_notes": [
+        "沙散与纸轻动，鬼低语",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集鎮符、朱砂、紅封信收回涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:382",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 9,
+      "title": "冰窖",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "wentan",
+        "aqi"
+      ],
+      "locations": [
+        "ice-cellar"
+      ],
+      "hero_shot": {
+        "action": "鐵門阻→推屍→白布前挡",
+        "camera": "17階先建，台最深处固定",
+        "sound": "双鱼环敲，白气呼吸只活人"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：燈自动亮/鬼掀布",
+          "solution": "小燈未點，鬼未掀；工具包仅验尸镜"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "阿七可見年齡 15 歲，當前 Lite I2V 未驗證支援",
+          "solution": "目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "qingyan-body-old",
+        "wentan-base",
+        "aqi-base",
+        "aqi-lantern"
+      ],
+      "prop_checks": [
+        "未點小紙燈",
+        "白布",
+        "冰窖匙"
+      ],
+      "voice_notes": [
+        "双鱼环敲，白气呼吸只活人",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集未點小紙燈、白布、冰窖匙涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:398",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:163",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:164"
+      ]
+    },
+    {
+      "episode": 10,
+      "title": "禁卷",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "aqi"
+      ],
+      "locations": [
+        "archive"
+      ],
+      "hero_shot": {
+        "action": "無燈禁卷→鬼穿架→符紙存根→腳步",
+        "camera": "黑场有有限可辨轮廓，不全黑静图",
+        "sound": "陸靴一步步，無名巡丁無詞"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：鬼拿普通公文/阿七点灯",
+          "solution": "存根纸来自符材；阿七石阶放风腰灯不点"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "阿七可見年齡 15 歲，當前 Lite I2V 未驗證支援",
+          "solution": "目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "aqi-base",
+        "aqi-lantern"
+      ],
+      "prop_checks": [
+        "開鎖符",
+        "裁條存根",
+        "阿七未點燈"
+      ],
+      "voice_notes": [
+        "陸靴一步步，無名巡丁無詞",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集開鎖符、裁條存根、阿七未點燈涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:414",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:163",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:164"
+      ]
+    },
+    {
+      "episode": 11,
+      "title": "大燈",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "aqi",
+        "luzheng"
+      ],
+      "locations": [
+        "great-lantern"
+      ],
+      "hero_shot": {
+        "action": "第七夜大燈→清晏最清→油單",
+        "camera": "地面与灯心高位建立",
+        "sound": "油入槽，灯焰升低频，台词仍清"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：大燈多层高度漂移",
+          "solution": "俯仰同模型；管事只塞字不说话"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "阿七可見年齡 15 歲，當前 Lite I2V 未驗證支援",
+          "solution": "目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "luzheng-base",
+        "lu-age51",
+        "aqi-base",
+        "aqi-lantern"
+      ],
+      "prop_checks": [
+        "銅槽",
+        "大燈母紙",
+        "油單"
+      ],
+      "voice_notes": [
+        "油入槽，灯焰升低频，台词仍清",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集銅槽、大燈母紙、油單涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:442",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:163",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:164"
+      ]
+    },
+    {
+      "episode": 12,
+      "title": "溫檀的古籍",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "wentan"
+      ],
+      "locations": [
+        "bureau"
+      ],
+      "hero_shot": {
+        "action": "古籍規則→陸批注→符折袖",
+        "camera": "书ECU與三人单反打",
+        "sound": "读古书不神谕混响"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：提前揭餘息規則",
+          "solution": "只现血符/复借遮眼；34页注不提前入图"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "wentan-base"
+      ],
+      "prop_checks": [
+        "古籍",
+        "焦角符"
+      ],
+      "voice_notes": [
+        "读古书不神谕混响",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集古籍、焦角符涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:458",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 13,
+      "title": "少卿的父親",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "hansong"
+      ],
+      "locations": [
+        "court"
+      ],
+      "hero_shot": {
+        "action": "巡丁回報→白髮匣開→底宗字",
+        "camera": "韓桌同軸、匣內低角",
+        "sound": "匣盖后半拍静，韩喘息"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：白髮尸戏新增/韩听鬼",
+          "solution": "名字仍无咎转述；只有物件记忆无新父声音"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "hansong-base"
+      ],
+      "prop_checks": [
+        "父白髮",
+        "韓殘符",
+        "木匣"
+      ],
+      "voice_notes": [
+        "匣盖后半拍静，韩喘息",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集父白髮、韓殘符、木匣涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:474",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 14,
+      "title": "死的前一天",
+      "characters": [
+        "wujiu",
+        "qingyan"
+      ],
+      "locations": [
+        "river-fair"
+      ],
+      "hero_shot": {
+        "action": "舊棚灰印→活人回憶→符紙被拍回",
+        "camera": "回忆独立色域，纸飞分镜",
+        "sound": "纸风/火；记忆不加新证词"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：回忆套鬼/拍飞火把",
+          "solution": "回忆实人；鬼只拍飞符纸，火把不被鬼掌击"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "qingyan-flashback"
+      ],
+      "prop_checks": [
+        "活清晏",
+        "陸遞符",
+        "燃棚"
+      ],
+      "voice_notes": [
+        "纸风/火；记忆不加新证词",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集活清晏、陸遞符、燃棚涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:490",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 15,
+      "title": "看得太清楚",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "wentan",
+        "luzheng"
+      ],
+      "locations": [
+        "ice-cellar",
+        "bureau"
+      ],
+      "hero_shot": {
+        "action": "驗屍看清臉→油燈翻→鑰匙交",
+        "camera": "溫檀POV和客观轮廓区分",
+        "sound": "油灯滑声，问答经无咎"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：突然見全鬼像观众视角",
+          "solution": "Went从烟到人渐清，但永远听不到；要问由无咎"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "qingyan-body-old",
+        "luzheng-base",
+        "lu-age51",
+        "wentan-base"
+      ],
+      "prop_checks": [
+        "綢商80歲",
+        "油燈",
+        "冰窖匙"
+      ],
+      "voice_notes": [
+        "油灯滑声，问答经无咎",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集綢商80歲、油燈、冰窖匙涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:506",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 16,
+      "title": "批文",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "luzheng"
+      ],
+      "locations": [
+        "bureau"
+      ],
+      "hero_shot": {
+        "action": "批文攤→腕符抽→皺紋現",
+        "camera": "手腕ECU與師父反應",
+        "sound": "纸拉与师父首次朝空说话"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：鬼拉袖/整臉瞬老十歲",
+          "solution": "只抽符引衣物被带，脸仍51；手腕先变"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "luzheng-base",
+        "lu-wrist-aged"
+      ],
+      "prop_checks": [
+        "貼身聯",
+        "51歲臉",
+        "新腕紋"
+      ],
+      "voice_notes": [
+        "纸拉与师父首次朝空说话",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集貼身聯、51歲臉、新腕紋涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:522",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 17,
+      "title": "太師",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "luzheng",
+        "zongdan"
+      ],
+      "locations": [
+        "warm-chamber"
+      ],
+      "hero_shot": {
+        "action": "暖閣問帳→鬼背屏讀墙→空牌",
+        "camera": "暖阁炉/屏/墙平面先定",
+        "sound": "宗沙聲与30歲脸反差"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：宗暖閣看见鬼/墙挂綢商",
+          "solution": "只能感方向；綢商借入不挂，清晏牌不挂"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "luzheng-base",
+        "lu-wrist-aged",
+        "zongdan-base",
+        "zong-age30"
+      ],
+      "prop_checks": [
+        "副聯牆",
+        "宗帳頭牌",
+        "空牌"
+      ],
+      "voice_notes": [
+        "宗沙聲与30歲脸反差",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集副聯牆、宗帳頭牌、空牌涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:538",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 18,
+      "title": "白布",
+      "characters": [
+        "wujiu",
+        "qingyan"
+      ],
+      "locations": [
+        "ice-cellar"
+      ],
+      "hero_shot": {
+        "action": "鬼抽壓布符→布滑→80歲自己→初點燈",
+        "camera": "鬼与尸拆镜，痣匹配剪辑",
+        "sound": "布落无夸张鼓，点灯细声"
+      },
+      "risk_controls": [
+        {
+          "risk": "最高：鬼掀普通布/同ID两外观",
+          "solution": "只抽符布靠重力滑；尸局部+鬼脸反应分镜"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "qingyan-body-old"
+      ],
+      "prop_checks": [
+        "压布符",
+        "80歲屍",
+        "小燈刻痕"
+      ],
+      "voice_notes": [
+        "布落无夸张鼓，点灯细声",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集压布符、80歲屍、小燈刻痕涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:554",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 19,
+      "title": "燈裡的符",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "aqi"
+      ],
+      "locations": [
+        "great-lantern"
+      ],
+      "hero_shot": {
+        "action": "第十夜爬三层→姓名→五字遮火",
+        "camera": "梯子侧全景后灯心POV",
+        "sound": "火焰遮字，阿七喊从下方"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：母符位置太低/阿七親眼读全",
+          "solution": "阿七留梯下；無咎在燈心高位；只读借不提前五字"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "阿七可見年齡 15 歲，當前 Lite I2V 未驗證支援",
+          "solution": "目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "aqi-base",
+        "aqi-lantern"
+      ],
+      "prop_checks": [
+        "母符",
+        "銅蓮座",
+        "借字",
+        "令紙"
+      ],
+      "voice_notes": [
+        "火焰遮字，阿七喊从下方",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集母符、銅蓮座、借字、令紙涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:570",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:163",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:164"
+      ]
+    },
+    {
+      "episode": 20,
+      "title": "冰窖的真話",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "luzheng"
+      ],
+      "locations": [
+        "great-lantern",
+        "ice-cellar"
+      ],
+      "hero_shot": {
+        "action": "下灯→冰窖陸揭真相→無咎摸胸",
+        "camera": "跨場先門聲，白布/三人反打",
+        "sound": "陸说慢，清晏笑音變而不解说"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：加阿七/溫檀早知真相",
+          "solution": "本集三知情者，阿七画外不插反应；尸鬼拆镜"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "qingyan-body-old",
+        "luzheng-base",
+        "lu-wrist-aged"
+      ],
+      "prop_checks": [
+        "清晏屍",
+        "焦角符"
+      ],
+      "voice_notes": [
+        "陸说慢，清晏笑音變而不解说",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集清晏屍、焦角符涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:586",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 21,
+      "title": "還你",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "luzheng",
+        "wentan"
+      ],
+      "locations": [
+        "bureau"
+      ],
+      "hero_shot": {
+        "action": "求還命→清晏喊全名→空白符",
+        "camera": "雙人距離拉開、紙居中",
+        "sound": "全名硬而非大吼，后沉默"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：赴死浪漫化/已写名字",
+          "solution": "当场反对、纸空白，未完成归还"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "luzheng-base",
+        "lu-wrist-aged",
+        "wentan-base"
+      ],
+      "prop_checks": [
+        "空白借命符",
+        "焦角符"
+      ],
+      "voice_notes": [
+        "全名硬而非大吼，后沉默",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集空白借命符、焦角符涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:615",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 22,
+      "title": "禁卷的來源",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "hansong",
+        "aqi"
+      ],
+      "locations": [
+        "archive",
+        "bureau"
+      ],
+      "hero_shot": {
+        "action": "燒空白→正式提燈開卷→陸椅空",
+        "camera": "笔洗灰→门→椅三场转点",
+        "sound": "灰落、门栓、茶杯无端碰声禁"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：上次禁灯与本次灯混",
+          "solution": "正式共开才有灯；阿七报消息才出现"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "阿七可見年齡 15 歲，當前 Lite I2V 未驗證支援",
+          "solution": "目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "hansong-base",
+        "aqi-base",
+        "aqi-lantern"
+      ],
+      "prop_checks": [
+        "空白符灰",
+        "秘卷",
+        "正式纸灯"
+      ],
+      "voice_notes": [
+        "灰落、门栓、茶杯无端碰声禁",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集空白符灰、秘卷、正式纸灯涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:631",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:163",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:164"
+      ]
+    },
+    {
+      "episode": 23,
+      "title": "燈匠巷",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "laoyou",
+        "wentan"
+      ],
+      "locations": [
+        "lantern-lane"
+      ],
+      "hero_shot": {
+        "action": "半白孩→鬼抽床骨符→無咎燒→停白",
+        "camera": "孩子只髮/追目，符交手",
+        "sound": "老尤关门实声，火小无尖叫"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：鬼抱童/童听鬼",
+          "solution": "孩子只追影抓空；声音不给新童台词"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "無角色 ID 的 8 歲兒童不能只靠 character gate 檢出",
+          "solution": "本集 clips profile 保守拒絕付費；目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "wentan-base",
+        "laoyou-base"
+      ],
+      "prop_checks": [
+        "贴身联",
+        "半白髮",
+        "母符灰名"
+      ],
+      "voice_notes": [
+        "老尤关门实声，火小无尖叫",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集贴身联、半白髮、母符灰名涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:647",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:650",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:651"
+      ],
+      "video_constraints": {
+        "veo_lite_i2v": "unverified-minor-on-screen",
+        "reason": "source.mjs:650–651 明定八歲孩子半白頭髮、目光追影；可見兒童沒有 cast ID。頭髮／局部鏡仍未驗證相容，不得當成人物或背景放行。 目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。"
+      }
+    },
+    {
+      "episode": 24,
+      "title": "皺紋",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "luzheng"
+      ],
+      "locations": [
+        "bureau"
+      ],
+      "hero_shot": {
+        "action": "61歲扶牆→名單正反→陸第七",
+        "camera": "陸手靠牆到符纸翻面",
+        "sound": "老去短气句、纸翻"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：名单普通纸鬼却能翻",
+          "solution": "明确黄色符材纤维；脸十岁变化先全身建立"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "luzheng-base",
+        "lu-age61"
+      ],
+      "prop_checks": [
+        "黃符紙名单",
+        "61歲臉"
+      ],
+      "voice_notes": [
+        "老去短气句、纸翻",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集黃符紙名单、61歲臉涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:663",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 25,
+      "title": "三年",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "wentan"
+      ],
+      "locations": [
+        "ice-cellar"
+      ],
+      "hero_shot": {
+        "action": "古籍心口焚→屍旁符角塞回",
+        "camera": "书→尸局部→袖纸",
+        "sound": "两人轻声，冰窖活人呼吸"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：鬼手真触袖/身体",
+          "solution": "只压纸角入袖，手不碰皮；鬼尸分别shot"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "qingyan-body-old",
+        "wentan-base"
+      ],
+      "prop_checks": [
+        "古籍末頁",
+        "焦角符",
+        "80歲屍"
+      ],
+      "voice_notes": [
+        "两人轻声，冰窖活人呼吸",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集古籍末頁、焦角符、80歲屍涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:679",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 26,
+      "title": "名單",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "hansong"
+      ],
+      "locations": [
+        "court",
+        "river-fair"
+      ],
+      "hero_shot": {
+        "action": "橋上箭→撲倒韓→紙撥箭→紙條",
+        "camera": "桥栏方向固定，箭/符分层",
+        "sound": "弦远、木栏近，韩小声问"
+      },
+      "risk_controls": [
+        {
+          "risk": "最高：鬼打箭本体/多人亂軸",
+          "solution": "纸受鬼力再偏箭，不手挡箭；擦伤不红"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "hansong-base",
+        "han-scrape"
+      ],
+      "prop_checks": [
+        "黃符紙",
+        "箭紙條",
+        "韓淺擦"
+      ],
+      "voice_notes": [
+        "弦远、木栏近，韩小声问",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集黃符紙、箭紙條、韓淺擦涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:695",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 27,
+      "title": "借出者",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "wentan",
+        "aqi"
+      ],
+      "locations": [
+        "great-lantern"
+      ],
+      "hero_shot": {
+        "action": "溫檀爬讀31年→鎖孔→阿七下方",
+        "camera": "三层建立后数字/锁特写",
+        "sound": "Went稳声跨火底音，数字不被遮"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：活借出者读数被鬼代讀",
+          "solution": "31由Went读，清晏只名字，阿七仍下方"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "阿七可見年齡 15 歲，當前 Lite I2V 未驗證支援",
+          "solution": "目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "wentan-base",
+        "aqi-base",
+        "aqi-lantern"
+      ],
+      "prop_checks": [
+        "三十一",
+        "五字借予",
+        "執行陸",
+        "鎖"
+      ],
+      "voice_notes": [
+        "Went稳声跨火底音，数字不被遮",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集三十一、五字借予、執行陸、鎖涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:711",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:163",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:164"
+      ]
+    },
+    {
+      "episode": 28,
+      "title": "少卿",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "hansong",
+        "luzheng"
+      ],
+      "locations": [
+        "court",
+        "ice-cellar"
+      ],
+      "hero_shot": {
+        "action": "韓撕紅封→陸掀新紙→火摺交",
+        "camera": "法堂/冰窖分场",
+        "sound": "撕纸明确，陸让步重喘"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：以为已烧真母符",
+          "solution": "纸太新先视觉线索；本集未点火"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "qingyan-body-old",
+        "luzheng-base",
+        "lu-age61",
+        "hansong-base",
+        "han-scrape"
+      ],
+      "prop_checks": [
+        "關閉原信",
+        "副本新紙",
+        "火摺"
+      ],
+      "voice_notes": [
+        "撕纸明确，陸让步重喘",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集關閉原信、副本新紙、火摺涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:727",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 29,
+      "title": "燒",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "laoyou",
+        "aqi"
+      ],
+      "locations": [
+        "great-lantern"
+      ],
+      "hero_shot": {
+        "action": "火摺留台→送行符墊→鬼托紙→八罩亮",
+        "camera": "纸上下两层ECU/灯全景",
+        "sound": "纸擦与灯八面同亮，代价清晏疲态"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：鬼抓筆/耗31年誤讀",
+          "solution": "手触纸托不是笔，31年不扣；陸不入镜"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "阿七可見年齡 15 歲，當前 Lite I2V 未驗證支援",
+          "solution": "目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "aqi-base",
+        "aqi-lantern",
+        "laoyou-base"
+      ],
+      "prop_checks": [
+        "火摺",
+        "送行符",
+        "上層符",
+        "油槽"
+      ],
+      "voice_notes": [
+        "纸擦与灯八面同亮，代价清晏疲态",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集火摺、送行符、上層符、油槽涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:743",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:163",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:164"
+      ]
+    },
+    {
+      "episode": 30,
+      "title": "胸口的符",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "luzheng",
+        "wentan"
+      ],
+      "locations": [
+        "ice-cellar"
+      ],
+      "hero_shot": {
+        "action": "副本靠小燈→灰→61變93→坐倒",
+        "camera": "手/灰/年龄/坐倒4镜",
+        "sound": "火细声，陸最后短句；清晏回应他听不到"
+      },
+      "risk_controls": [
+        {
+          "risk": "最高：全季老臉覆盖/尸腐化",
+          "solution": "前半61后半93；无咎拒点，陸动作保因果；非母符"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "qingyan-body-old",
+        "luzheng-base",
+        "lu-age61",
+        "lu-age93",
+        "wentan-base"
+      ],
+      "prop_checks": [
+        "副本",
+        "小燈",
+        "93歲屍"
+      ],
+      "voice_notes": [
+        "火细声，陸最后短句；清晏回应他听不到",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集副本、小燈、93歲屍涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:759",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 31,
+      "title": "太師府",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "zongdan"
+      ],
+      "locations": [
+        "warm-chamber"
+      ],
+      "hero_shot": {
+        "action": "副聯墙读→不燒→手腕貼不住",
+        "camera": "手腕与墙隔屏独立镜",
+        "sound": "宗不急，清晏低私语"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：焚墙当解法/宗看到鬼",
+          "solution": "宗仅朝方向；副聯不救人；未来假答应语气待审"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "已收斂的動作／聲場／造型導演選擇",
+          "solution": "E31 清晏以私語提出接下來假答應的策略，無咎聽後再向宗澹開口；表演是提議不是回顧已發生的承諾，不改資訊先後。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "qingyan-base",
+        "qingyan-ghost",
+        "zongdan-base",
+        "zong-age30"
+      ],
+      "prop_checks": [
+        "副聯",
+        "空鉤七",
+        "空牌"
+      ],
+      "voice_notes": [
+        "宗不急，清晏低私语",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集副聯、空鉤七、空牌涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:787",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 32,
+      "title": "暖閣",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "zongdan",
+        "aqi"
+      ],
+      "locations": [
+        "warm-chamber"
+      ],
+      "hero_shot": {
+        "action": "宗換副聯背身→爐火晃→攥匙",
+        "camera": "固定暖阁，不出封窗",
+        "sound": "外脚步/哭、车轮；无韩/温声音"
+      },
+      "risk_controls": [
+        {
+          "risk": "最高：取火细节/少年摔打",
+          "solution": "只火晃/拳回；阿七声在窗外，不另拍外景打人"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "已收斂的動作／聲場／造型導演選擇",
+          "solution": "既有規則只要求用大燈火燒母符；換油爭奪按現場動作演，無咎先排朱砂油再灌老尤清油、阿七點火。敵方是否日後能重點不影響已毀母符，不新增二次點火禁令或專屬火種。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "wujiu-bandaged",
+        "qingyan-base",
+        "qingyan-ghost",
+        "zongdan-base",
+        "zong-age30",
+        "aqi-base"
+      ],
+      "prop_checks": [
+        "铜匙",
+        "换符",
+        "右拳"
+      ],
+      "voice_notes": [
+        "外脚步/哭、车轮；无韩/温声音",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。",
+        "阿七 15 歲，但本集明定只聞其聲，不加入 visual scene cast、不為配音產生兒童 first frame；純畫外聲不因年齡阻擋。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集铜匙、换符、右拳涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:803",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 33,
+      "title": "燈心",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "laoyou"
+      ],
+      "locations": [
+        "great-lantern"
+      ],
+      "hero_shot": {
+        "action": "白布手開鎖→母字→清油桶不倒",
+        "camera": "锁/纸/桶三镜",
+        "sound": "铜锁一声、油瓶晃，别音效泄解法"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：还没换油先燃母符",
+          "solution": "桶蓋按住，母符仍灯心；证油朱砂先特写"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "已收斂的動作／聲場／造型導演選擇",
+          "solution": "既有規則只要求用大燈火燒母符；換油爭奪按現場動作演，無咎先排朱砂油再灌老尤清油、阿七點火。敵方是否日後能重點不影響已毀母符，不新增二次點火禁令或專屬火種。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "wujiu-bandaged",
+        "qingyan-base",
+        "qingyan-ghost",
+        "laoyou-base"
+      ],
+      "prop_checks": [
+        "右掌布",
+        "铜匙",
+        "清油",
+        "朱砂瓶"
+      ],
+      "voice_notes": [
+        "铜锁一声、油瓶晃，别音效泄解法",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集右掌布、铜匙、清油、朱砂瓶涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:819",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 34,
+      "title": "本命",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "wentan",
+        "hansong"
+      ],
+      "locations": [
+        "bureau",
+        "ice-cellar"
+      ],
+      "hero_shot": {
+        "action": "餘息頁注→鬼亮冰窖→三秒約",
+        "camera": "书/石台反打，鬼尸分镜",
+        "sound": "韩门外警报有源，三秒只约定未计时"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：页注推论当已救活",
+          "solution": "只证一年前余息，当前未知；鬼过亮是危险"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "wujiu-bandaged",
+        "qingyan-base",
+        "qingyan-ghost",
+        "qingyan-body-old",
+        "wentan-base",
+        "hansong-base",
+        "han-scrape"
+      ],
+      "prop_checks": [
+        "焦角符",
+        "古籍",
+        "清晏屍"
+      ],
+      "voice_notes": [
+        "韩门外警报有源，三秒只约定未计时",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集焦角符、古籍、清晏屍涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:835",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 35,
+      "title": "宗澹的帳",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "zongdan",
+        "laoyou"
+      ],
+      "locations": [
+        "great-lantern"
+      ],
+      "hero_shot": {
+        "action": "宗指鬼→眾人只見空→底座對峙",
+        "camera": "底座一人高/灯心三层同模型",
+        "sound": "宗可听鬼，群眾無新增词"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：宗暖阁/灯下权限混",
+          "solution": "首次在母符光下眼追鬼；旁人不追清晏"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "已收斂的動作／聲場／造型導演選擇",
+          "solution": "既有規則只要求用大燈火燒母符；換油爭奪按現場動作演，無咎先排朱砂油再灌老尤清油、阿七點火。敵方是否日後能重點不影響已毀母符，不新增二次點火禁令或專屬火種。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-sleeve-charred",
+        "wujiu-bandaged",
+        "qingyan-base",
+        "qingyan-ghost",
+        "zongdan-base",
+        "zong-age30",
+        "laoyou-base"
+      ],
+      "prop_checks": [
+        "母符高處",
+        "清油未倒",
+        "匙"
+      ],
+      "voice_notes": [
+        "宗可听鬼，群眾無新增词",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集母符高處、清油未倒、匙涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:851",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 36,
+      "title": "母符的主人",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "zongdan",
+        "aqi"
+      ],
+      "locations": [
+        "great-lantern"
+      ],
+      "hero_shot": {
+        "action": "子符黏鬼→撕左袖→入送行符→爬燈碎罩",
+        "camera": "4动作镜+灯顶反应",
+        "sound": "清晏声移胸内但无恐怖滤镜"
+      },
+      "risk_controls": [
+        {
+          "risk": "最高：ghost不消/灯碎后还在",
+          "solution": "入符后只声；子符落地；Aqi灯罩碎用纸片不拍箭对人"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "阿七可見年齡 15 歲，當前 Lite I2V 未驗證支援",
+          "solution": "目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。"
+        },
+        {
+          "risk": "已收斂的動作／聲場／造型導演選擇",
+          "solution": "既有規則只要求用大燈火燒母符；換油爭奪按現場動作演，無咎先排朱砂油再灌老尤清油、阿七點火。敵方是否日後能重點不影響已毀母符，不新增二次點火禁令或專屬火種。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-torn",
+        "qingyan-base",
+        "qingyan-ghost",
+        "qingyan-inside-paper",
+        "zongdan-base",
+        "zong-age30",
+        "aqi-base",
+        "aqi-injured"
+      ],
+      "prop_checks": [
+        "贴身聯",
+        "胸前送行符",
+        "腰繩",
+        "左臂布"
+      ],
+      "voice_notes": [
+        "清晏声移胸内但无恐怖滤镜",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集贴身聯、胸前送行符、腰繩、左臂布涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:867",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:163",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:164"
+      ]
+    },
+    {
+      "episode": 37,
+      "title": "點燈",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "zongdan",
+        "aqi"
+      ],
+      "locations": [
+        "great-lantern"
+      ],
+      "hero_shot": {
+        "action": "排朱砂油→灌清油→點→返齡→空袍→接倒",
+        "camera": "油底/灯顶/宗/盾手各独立镜",
+        "sound": "油流→火→抽气；数秒尚未一"
+      },
+      "risk_controls": [
+        {
+          "risk": "最高：高低位与连锁变身一镜失控",
+          "solution": "先空間animatic；鬼整集不现；老尤韩不入声像；93陸不返老"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "阿七可見年齡 15 歲，當前 Lite I2V 未驗證支援",
+          "solution": "目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。"
+        },
+        {
+          "risk": "無角色 ID 的 8 歲兒童不能只靠 character gate 檢出",
+          "solution": "本集 clips profile 保守拒絕付費；目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。"
+        },
+        {
+          "risk": "已收斂的動作／聲場／造型導演選擇",
+          "solution": "既有規則只要求用大燈火燒母符；換油爭奪按現場動作演，無咎先排朱砂油再灌老尤清油、阿七點火。敵方是否日後能重點不影響已毀母符，不新增二次點火禁令或專屬火種。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-torn",
+        "qingyan-base",
+        "qingyan-ghost",
+        "qingyan-inside-paper",
+        "zongdan-base",
+        "zong-age30",
+        "zong-age120",
+        "zong-ash",
+        "aqi-base",
+        "aqi-injured"
+      ],
+      "prop_checks": [
+        "槽塞",
+        "清油桶",
+        "母符",
+        "送行符"
+      ],
+      "voice_notes": [
+        "油流→火→抽气；数秒尚未一",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集槽塞、清油桶、母符、送行符涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:883",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:163",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:164",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:650",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:887"
+      ],
+      "video_constraints": {
+        "veo_lite_i2v": "unverified-minor-on-screen",
+        "reason": "source.mjs:887 燈匠巷孩子頭髮轉黑，為 source.mjs:650 同一八歲孩子；未列 cast ID 的回春插鏡仍需替代動畫流程 pilot。 目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。"
+      }
+    },
+    {
+      "episode": 38,
+      "title": "一瞬",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "wentan",
+        "hansong"
+      ],
+      "locations": [
+        "great-lantern"
+      ],
+      "hero_shot": {
+        "action": "胸內喊→鬼出→一二三→手動→真符",
+        "camera": "实时3秒单轴，之后才对话写符",
+        "sound": "清晏只无咎主观近声；3秒采样锁"
+      },
+      "risk_controls": [
+        {
+          "risk": "最高：温檀按鬼声音/三秒塞长话",
+          "solution": "她自有节奏看不到听不到数；先倒数手动再其他说明"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "已收斂的動作／聲場／造型導演選擇",
+          "solution": "E38 清晏數三秒只在無咎主觀聲場；溫檀按她可見的身體反應與自己的急救節奏行動，不給她聽令點頭或跟數字落手的對切。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-torn",
+        "qingyan-base",
+        "qingyan-ghost",
+        "qingyan-inside-paper",
+        "qingyan-fading",
+        "wentan-base",
+        "hansong-base",
+        "han-scrape"
+      ],
+      "prop_checks": [
+        "胸前送行符",
+        "白布手",
+        "新本命符"
+      ],
+      "voice_notes": [
+        "清晏只无咎主观近声；3秒采样锁",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集胸前送行符、白布手、新本命符涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:899",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 39,
+      "title": "送行",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "wentan"
+      ],
+      "locations": [
+        "great-lantern",
+        "ice-cellar"
+      ],
+      "hero_shot": {
+        "action": "跑冰窖→年轻肉身→心口符燃→鬼沉→一",
+        "camera": "肉身局部/鬼独立反应，禁止同ID双样貌",
+        "sound": "纸燃细、鬼声渐弱不爆音"
+      },
+      "risk_controls": [
+        {
+          "risk": "最高：鬼身和肉身同shot混生成",
+          "solution": "分body/ghost选look；符必须贴心非离体；最后才无咎数一"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "已收斂的動作／聲場／造型導演選擇",
+          "solution": "E39 同一清晏的鬼與青年屍身用兩個獨立鏡頭和單一 look 各自出現：鬼由無咎視線帶出，屍身用背側／局部插鏡，切換前後保持位置；不能一鏡帶同 ID 的兩套 appearance。片段接合和鬼透明度仍待 render。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-torn",
+        "qingyan-base",
+        "qingyan-ghost",
+        "qingyan-fading",
+        "qingyan-body-young",
+        "wentan-base"
+      ],
+      "prop_checks": [
+        "青年屍",
+        "焦符",
+        "小燈",
+        "殘角"
+      ],
+      "voice_notes": [
+        "纸燃细、鬼声渐弱不爆音",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集青年屍、焦符、小燈、殘角涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:915",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    },
+    {
+      "episode": 40,
+      "title": "沈大人",
+      "characters": [
+        "wujiu",
+        "qingyan",
+        "wentan"
+      ],
+      "locations": [
+        "ice-cellar",
+        "river-fair"
+      ],
+      "hero_shot": {
+        "action": "二三指動→摸符角真接觸→橋兩影",
+        "camera": "指/人反应/桥长镜",
+        "sound": "手触衣声第一次可闻，河灯静灭"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：還陽仍透明/找回一年记忆",
+          "solution": "实體有影不蓝；疑惑非重逢全记；真接触独立镜"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "wujiu-base",
+        "wujiu-torn",
+        "qingyan-base",
+        "qingyan-body-young",
+        "qingyan-returned",
+        "wentan-base"
+      ],
+      "prop_checks": [
+        "青年實體",
+        "殘角",
+        "左袖結",
+        "燈灰臉"
+      ],
+      "voice_notes": [
+        "手触衣声第一次可闻，河灯静灭",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集青年實體、殘角、左袖結、燈灰臉涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:931",
+        "docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:975"
+      ]
+    }
+  ],
+  "audio_plan": {
+    "motifs": [
+      "角色主題限短音型，先寫原創音樂需求；情緒轉折前讓表演先到、配樂後到。不得引用相似影劇旋律。",
+      "關鍵物件有可辨實物音，不用每個線索都上同一聲懸疑撞擊。"
+    ],
+    "perspective": [
+      "對白、旁白、Foley、環境、音樂分軌；shot間保留房間底聲，轉主觀聲時要有明確視點。",
+      "畫外具名台詞也須列入本集characters；匿名人物只有動作/無可辨詞背景音，消息用來源允許的旁白。"
+    ],
+    "dynamic_rules": [
+      "先測輕聲對白可懂度；配樂在台詞時自動化讓位，不能只把人聲全面拉高。尖銳器物聲/警報不蓋關鍵字。",
+      "左右聲像服務空間；台詞保中心，手機單聲道合併後仍清楚。長停頓保持呼吸/衣料活動，不以freeze延長畫面。",
+      "Veo原片的native audio不直接入正片混音；任何意外人聲/擬配樂須移除。嘴型、FOLEY、字幕時間碼以最終中文字幕版聲軌為基準。"
+    ],
+    "locale_constraints": [
+      "先完成zh-TW台灣國語表演/人名試聽及picture lock；ja/ko/en僅保留設計和詞表，這一輪不自動生成三語。",
+      "四語各有獨立voice track與可關CC；subtitles.burn_in=false。角色、說話者和無障礙聲效提示進CC，不做永久字幕畫在底部。",
+      "劇內證據文字（紙、鐘、介面）是敘事資產，保持清晰並提供對應翻譯詞表/CC；不能因不燒字幕而刪掉證據，也不能把外語翻譯當永久畫面字幕。",
+      "ja/ko/en人名用此表候選音譯，不自動把漢字改日語音讀或韓國本土姓名。稱謂先翻譯語用，保留身份尊卑與熟識距離。",
+      "各語分開錄完整表演、對齊剪輯點；不硬壓縮英文/日文到中文每字同時長。若譯句過長先重寫等義短句或調非關鍵反應鏡，倒數絕不拉長。",
+      "目前所有voice_name沿用source作待試聽候選；不是四語皆有相同音色/口音的保證。母語監聽前禁止標示配音驗收通過。"
+    ]
+  },
+  "acceptance_checks": [
+    "本件是source-bound製作設計，不是video.json、成片驗收、上傳批准或正式站匯入。未呼叫任何付費圖/片/語音生成。",
+    "角色動畫預設高品質動態表演。3–6秒剪成鏡頭可由8秒原片截取；鏡內須見重心、視線、手/衣料/呼吸的意圖變化。靜圖縮放不得假稱動畫。",
+    "當前根代理選定Veo3.1Lite 1080p/24fps/8秒原片；本設計不假設referenceImages或extension可用，也不假設上一片最後一格必能無縫延續。實際供應商契約由共用profile鎖定。",
+    "按character.shot_looks與scene.data.character_looks選定單一完整look；同一episode可列多個候選look，正式每shot必選一個，不把同集所有狀態疊加。外觀狀態不clone新聲線。",
+    "每鏡最多3個具名人物，多人對話先建立全景再單/雙人反打；角色聲音與畫外出場名單都核對。群眾不代替主角表演，背景不得複製主角臉。",
+    "首30秒先做無付費animatic/timecode與臨時讀稿：連續0–30，不擠長旁白。正式zh-TW語音產出後按實際秒數重剪，不把候選時長標成實測。",
+    "關鍵道具文字、數字、日期、簽名以核准文字圖層合成並校對。人物拿取要先有接觸/承重再移動，手與物不可換側、穿模、變件。",
+    "鏡頭切點須比對頭尾角色ID/衣物/手持物/光位/場景軸；8秒素材含多個不相容狀態時拆採不同shot，不以freeze/slow補成長講述。",
+    "同一製作的四語CC要能完全開/關；影片畫素沒有字幕，檢查所有語言/合輯路徑。CC要對齊最終台詞，不把人名當品牌翻譯。",
+    "zh-TW台灣口音、每位角色的正常/低聲/壓力三句必試聽；未來ja/ko/en各由母語聽校。角色年齡、性別呈現、喘氣/哭/唱不能只靠voice名通過。",
+    "最終手機、耳機與單聲道播放檢查台詞、暗部、劇內文字、跳剪、嘴型、字幕開關和聲畫同步；本轮仅文件层检查，没有完成这些媒体检查。",
+    "未成年可見角色與匿名兒童必核對來源年齡及 video_constraints；Lite I2V 受限鏡頭不得付費生成。手繪或替代供應商先確認題材適用條款，再獨立 pilot 與人工驗收；畫外配音不等同可見人物。"
+  ],
+  "unresolved": [
+    {
+      "issue": "已由設計處理（未 render）：母符的火是否可被敵方再次點亮尚無額外規則",
+      "why": "既有規則只要求用大燈火燒母符；換油爭奪按現場動作演，無咎先排朱砂油再灌老尤清油、阿七點火。敵方是否日後能重點不影響已毀母符，不新增二次點火禁令或專屬火種。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+      "episode_refs": [
+        32,
+        33,
+        35,
+        36,
+        37
+      ]
+    },
+    {
+      "issue": "已由設計處理（未 render）：E31清晏提假答應早於無咎口頭答應",
+      "why": "E31 清晏以私語提出接下來假答應的策略，無咎聽後再向宗澹開口；表演是提議不是回顧已發生的承諾，不改資訊先後。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+      "episode_refs": [
+        31
+      ]
+    },
+    {
+      "issue": "已由設計處理（未 render）：E38溫檀聽不見清晏計數",
+      "why": "E38 清晏數三秒只在無咎主觀聲場；溫檀按她可見的身體反應與自己的急救節奏行動，不給她聽令點頭或跟數字落手的對切。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+      "episode_refs": [
+        38
+      ]
+    },
+    {
+      "issue": "已由設計處理（未 render）：E39同角色青年屍身與淡鬼並存",
+      "why": "E39 同一清晏的鬼與青年屍身用兩個獨立鏡頭和單一 look 各自出現：鬼由無咎視線帶出，屍身用背側／局部插鏡，切換前後保持位置；不能一鏡帶同 ID 的兩套 appearance。片段接合和鬼透明度仍待 render。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+      "episode_refs": [
+        39
+      ]
+    },
+    {
+      "issue": "阿七未成年視覺生成路徑尚未驗證",
+      "why": "15 歲阿七（aqi）在 E1、9、10、11、19、22、27、29、32、36、37 列入來源角色；E32 只聞其聲、鏡頭不出暖閣，畫外配音本身不觸發視覺生成限制。E23 與 E37 的燈匠巷孩子為同一 8 歲匿名兒童，沒有角色 ID。 來源：docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:163；docs/videos/series-plans/claude-binge-five-20260928/ghost-at-his-side/source.mjs:164。目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。 E32 的阿七僅畫外聲，不應整集因這名角色而攔配音。",
+      "episode_refs": [
+        1,
+        9,
+        10,
+        11,
+        19,
+        22,
+        27,
+        29,
+        36,
+        37
+      ]
+    },
+    {
+      "issue": "E23 匿名 8 歲兒童需替代動畫路徑",
+      "why": "source.mjs:650–651 明定八歲孩子半白頭髮、目光追影；可見兒童沒有 cast ID。頭髮／局部鏡仍未驗證相容，不得當成人物或背景放行。 本集 clips profile 保守拒絕付費；目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。",
+      "episode_refs": [
+        23
+      ]
+    },
+    {
+      "issue": "E37 匿名 8 歲兒童需替代動畫路徑",
+      "why": "source.mjs:887 燈匠巷孩子頭髮轉黑，為 source.mjs:650 同一八歲孩子；未列 cast ID 的回春插鏡仍需替代動畫流程 pilot。 本集 clips profile 保守拒絕付費；目前製作 profile 的 Veo 3.1 Lite I2V 必帶 first_frame，僅有 allow_adult 路徑；未滿 18 歲可見人物沒有已驗證的生成路徑。不得把角色擅改成年，也不得將背影、局部、遮擋或照片當成已驗證的供應商相容方案。保留原劇情，需手繪動畫或符合供應商條款、支援該年齡題材的替代流程另行 pilot；未完成前不付費生成這些視覺鏡頭。",
+      "episode_refs": [
+        37
+      ]
+    }
+  ]
+}

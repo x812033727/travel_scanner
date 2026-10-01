@@ -1,0 +1,2951 @@
+{
+  "schema_version": 1,
+  "slug": "seventh-passenger",
+  "source_binding": {
+    "source_sha256": "8da292c58ddf96e4fe4b7ba7af625bcffc8322795afd64b3945c09b874e5701c"
+  },
+  "delivery_profile_ref": "../../production-20261001/profile.json",
+  "review_status": "design-only-not-render-tested",
+  "visual_direction": {
+    "style": "窄車廂綠灰、原始機械乳白、覆寫紅光；紅色不等於每句是假。固定一扇門重用，不生成每站新場景。",
+    "screen_direction": "程望通常在門內畫左，假月台畫右；門底鋼印下、電子牌上，兩層資訊各有insert。六席布局與售票隔間位置全片固定。",
+    "performance": "不以鬼叫演恐怖；相信→核對→選擇看得見。小滿咳嗽逐漸增加，後段不可突然跑跳；母親真偽使用同音色，聲音不能洩露答案。",
+    "continuity": "七名活人、三位亡者；票和白燈不回現實，何照制服E27中段脫下，E38四人是病人服；E34後真母親不再靈異發聲。"
+  },
+  "opening_30s": [
+    {
+      "id": "t-o1",
+      "in_s": 0,
+      "out_s": 5,
+      "scale": "CU",
+      "camera": "門框側面固定",
+      "action": "程望指節扣門框，門外母親伸手；人物不先跨門",
+      "characters": [
+        "cheng-wang",
+        "wen-lanyin"
+      ],
+      "props": [
+        "門框"
+      ],
+      "dialogue_intent": "我媽死了七年，卻叫我下車",
+      "sound": "第一句近乾聲，列車輪聲在底",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:528",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:566",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "id": "t-o2",
+      "in_s": 5,
+      "out_s": 8,
+      "scale": "insert",
+      "camera": "上方電子牌固定",
+      "action": "電子牌亮家字，不能當真月台號",
+      "characters": [
+        "wen-lanyin"
+      ],
+      "props": [
+        "電子站牌"
+      ],
+      "dialogue_intent": "母親聲音到家了從紅廣播出",
+      "sound": "同一母親聲音，不加邪惡變調",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:528",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:566",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "id": "t-o3",
+      "in_s": 8,
+      "out_s": 10,
+      "scale": "ECU",
+      "camera": "向下切而非長掃",
+      "action": "實體04鋼印出現在門底",
+      "characters": [
+        "cheng-wang"
+      ],
+      "props": [
+        "月台04鋼印"
+      ],
+      "dialogue_intent": "無新增台詞",
+      "sound": "車輪聲不中斷，輕金屬聲",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:528",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:566",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "id": "t-o4",
+      "in_s": 10,
+      "out_s": 16,
+      "scale": "MCU",
+      "camera": "門內側平視",
+      "action": "小滿抓住程望衣角，另一手展示他的17原票",
+      "characters": [
+        "cheng-wang",
+        "lin-xiaoman"
+      ],
+      "props": [
+        "程望原票17"
+      ],
+      "dialogue_intent": "你的票，跟這裡不一樣",
+      "sound": "衣料受力、短句清楚",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:528",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:566",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "id": "t-o5",
+      "in_s": 16,
+      "out_s": 20,
+      "scale": "ECU",
+      "camera": "固定雙物件比較",
+      "action": "17原票貼近04實體印，數字在同一清晰焦面",
+      "characters": [
+        "lin-xiaoman"
+      ],
+      "props": [
+        "原票17",
+        "實體04"
+      ],
+      "dialogue_intent": "留讀取時間，不再加規則講解",
+      "sound": "低頻暫退，只有票紙與輪聲",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:528",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:566",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "id": "t-o6",
+      "in_s": 20,
+      "out_s": 25,
+      "scale": "MCU",
+      "camera": "回到原門內軸線",
+      "action": "程望收回腳，母親笑容停住但不變怪物",
+      "characters": [
+        "cheng-wang",
+        "wen-lanyin"
+      ],
+      "props": [
+        "門檻"
+      ],
+      "dialogue_intent": "先別開門",
+      "sound": "聲線維持人性，禁尖銳jump scare",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:528",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:566",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "id": "t-o7",
+      "in_s": 25,
+      "out_s": 30,
+      "scale": "wide",
+      "camera": "門內固定",
+      "action": "門正常合起，把母親隔在外；先證明一次拒絕有效",
+      "characters": [
+        "cheng-wang",
+        "lin-xiaoman"
+      ],
+      "props": [
+        "同一扇前門"
+      ],
+      "dialogue_intent": "不加結果旁白或片頭卡",
+      "sound": "只留車輪聲，門鎖輕響",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:528",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:566",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "id": "cheng-wang",
+      "voice_name": "Schedar",
+      "performance": "先說觀察再下判斷：「先看票。」「這裡對不上。」不作全知解說。 台灣國語；中低音、節奏穩、壓住恐懼，哭戲保留呼吸；擬定 casting 未試聽。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "chéng wàng",
+        "ja": "チョン・ワン",
+        "ko": "청 왕",
+        "en": "Cheng Wang"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "cheng-wang--base",
+          "episodes": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ],
+          "appearance": "Taiwanese man, 27, lean rectangular face, short black hair with a fixed left part, tired dark eyes, charcoal work jacket over a faded grey shirt, dark utility trousers, scuffed brown work shoes, narrow old scar across right thumb. Cinematic 3D; restrained expressions.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:53",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:36",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+          ]
+        },
+        {
+          "id": "cheng-wang-patient",
+          "episodes": [
+            38
+          ],
+          "appearance": "Taiwanese man, 27, lean rectangular face, short black hair with a fixed left part, tired dark eyes, narrow old scar across right thumb. Plain hospital patient clothing, resting in a hospital bed. No travel jacket, raincoat, hoodie, necktie, staff badge, ticket or lantern.",
+          "cue": "院內本人，不沿用旅途外套；右掌敷料與拇指舊疤保留。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:53",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2816",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+          ]
+        },
+        {
+          "id": "cheng-wang-age20",
+          "episodes": [
+            15
+          ],
+          "appearance": "Taiwanese adult man, 20, lean rectangular face, short black hair with the same fixed left part, dark eyes and recognizable adult facial proportions. Charcoal work jacket over a faded grey shirt, dark utility trousers and brown work shoes; narrow old scar across the right thumb. Less facial fatigue than the present-day 27-year-old, no childlike styling. No supernatural ticket, employee badge or guide lantern.",
+          "cue": "僅E15七年前事故的非連續短閃回；現時讀事故條的鏡頭仍選27歲base。由現時27歲減七年為20歲，直接採用已授權成年造型設計；不另造人物ID或變更聲線。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:56",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:1414",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:1463"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lin-xiaoman",
+      "voice_name": "Zephyr",
+      "performance": "句子短、帶反問；不把未成年寫成成人情感拯救者。 台灣國語；年輕清亮、帶氣但不幼態，疲弱段維持同一音色；擬定 casting。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "lín xiǎo mǎn",
+        "ja": "リン・シャオマン",
+        "ko": "린 샤오만",
+        "en": "Lin Xiaoman"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "lin-xiaoman--base",
+          "episodes": [
+            1,
+            3,
+            7,
+            9,
+            10,
+            12,
+            14,
+            17,
+            21,
+            29,
+            37,
+            38,
+            40
+          ],
+          "appearance": "Taiwanese girl, 17, petite wiry build, blunt chin-length black bob tucked behind the right ear, yellow raincoat over a navy school tracksuit, white canvas shoes, red elastic band on left wrist. No glamour styling; alert eyes; keep the raincoat identical.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:84",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:36",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+          ]
+        },
+        {
+          "id": "lin-xiaoman-patient",
+          "episodes": [
+            38
+          ],
+          "appearance": "Taiwanese girl, 17, petite wiry build, blunt chin-length black bob tucked behind the right ear, alert eyes, red elastic band on left wrist. No glamour styling. Plain hospital patient clothing, resting in a hospital bed. No travel jacket, raincoat, hoodie, necktie, staff badge, ticket or lantern.",
+          "cue": "院內本人，不沿用旅途外套；右掌敷料與拇指舊疤保留。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:84",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2816",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+          ]
+        }
+      ],
+      "video_constraints": {
+        "min_visual_age_years": 17,
+        "veo_lite_i2v": "not-verified-under-18",
+        "source_refs": [
+          "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:87",
+          "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:88"
+        ],
+        "episode_refs": [
+          1,
+          3,
+          7,
+          9,
+          10,
+          12,
+          14,
+          17,
+          21,
+          29,
+          37,
+          38,
+          40
+        ]
+      }
+    },
+    {
+      "id": "gu-yong",
+      "voice_name": "Algenib",
+      "performance": "溫和慢句，先向人道謝，關鍵時刻不再道歉。 台灣國語；年長柔厚、略沙啞、清楚不拖拍；擬定 casting。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "gù yǒng",
+        "ja": "グー・ヨン",
+        "ko": "구 융",
+        "en": "Gu Yong"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "gu-yong--base",
+          "episodes": [
+            6,
+            8,
+            9,
+            17,
+            26,
+            29,
+            32,
+            40
+          ],
+          "appearance": "Taiwanese man, 69, slim stooped build, close-cropped silver hair, thick rectangular glasses, moss-green cardigan over a cream shirt, brown trousers, cloth shopping bag, old steel wristwatch with a cracked brown strap. Gentle wrinkled face; trembling right hand; never portrayed as a corpse.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:111",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:36",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "qiao-ning",
+      "voice_name": "Kore",
+      "performance": "明說能知道與不能知道的事：「這只能表示現在，不能決定他的一生。」 台灣國語；沉穩、清晰、安撫但不刻板播報；擬定 casting。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "qiáo níng",
+        "ja": "チャオ・ニン",
+        "ko": "차오 닝",
+        "en": "Qiao Ning"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "qiao-ning--base",
+          "episodes": [
+            4,
+            8,
+            11,
+            15,
+            22,
+            23,
+            29,
+            37,
+            38
+          ],
+          "appearance": "Taiwanese woman, 34, average build, oval face, black hair in a neat low bun, faded blue zip hoodie over dark teal scrubs, black trainers, canvas shoulder bag with a white pen loop, plain silver stud earrings. Capable restrained gestures; clothing remains travel-worn.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:138",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:36",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+          ]
+        },
+        {
+          "id": "qiao-ning-patient",
+          "episodes": [
+            38
+          ],
+          "appearance": "Taiwanese woman, 34, average build, oval face, black hair in a neat low bun, plain silver stud earrings. Capable restrained gestures. Plain hospital patient clothing, resting in a hospital bed. No travel jacket, raincoat, hoodie, necktie, staff badge, ticket or lantern.",
+          "cue": "院內本人，不沿用旅途外套；右掌敷料與拇指舊疤保留。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:138",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2816",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xu-hao",
+      "voice_name": "Fenrir",
+      "performance": "口語快，常以時間催人，後段學會先確認再催。 台灣國語；粗亮、急句但不吼滿全場，後段放低聲量；擬定 casting。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "xú hào",
+        "ja": "シュー・ハオ",
+        "ko": "쉬 하오",
+        "en": "Xu Hao"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "xu-hao--base",
+          "episodes": [
+            2,
+            5,
+            9,
+            11,
+            14,
+            21,
+            22,
+            26,
+            27,
+            31,
+            33
+          ],
+          "appearance": "Taiwanese man, 31, broad shoulders, round face, very short black hair, orange delivery jacket with a blank chest patch, black cargo pants, waterproof boots, green insulated bag, taped left knuckle, black digital watch on right wrist. Original unbranded costume, no real platform logo.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:165",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:36",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tang-qi",
+      "voice_name": "Aoede",
+      "performance": "引用時精準，說自己失去的部分時停頓；不使用神秘術語。 台灣國語；乾淨柔亮、控制顫音，不唱台詞；擬定 casting。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "táng qǐ",
+        "ja": "タン・チー",
+        "ko": "탕 치",
+        "en": "Tang Qi"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "tang-qi--base",
+          "episodes": [
+            2,
+            5,
+            8,
+            13,
+            14,
+            16,
+            19,
+            24,
+            28,
+            32,
+            33,
+            39
+          ],
+          "appearance": "Taiwanese woman, 22, tall slender frame, long straight black hair tied in a low ponytail, cream cable-knit sweater, dark denim jeans, burgundy canvas shoes, narrow black strap worn across her body, amber hair clip.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:192",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:36",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "he-zhao",
+      "voice_name": "Puck",
+      "performance": "前段念固定售票用語，說真話時卡住，後段能完整報出「何照」。 台灣國語；青年中音、前段虛浮吞尾，取回身分後穩定；擬定 casting。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "hé zhào",
+        "ja": "ホー・ジャオ",
+        "ko": "허 자오",
+        "en": "He Zhao"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "he-zhao--base",
+          "episodes": [
+            4,
+            6,
+            10,
+            12,
+            18,
+            20,
+            21,
+            26,
+            27,
+            28,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            37,
+            38
+          ],
+          "appearance": "Taiwanese man, 24, slight build, pale narrow face, short uneven black fringe, plain white shirt, loose maroon tie, dark trousers, worn trainers, bandage on right palm.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:219",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:36",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+          ]
+        },
+        {
+          "id": "he-zhao-coated",
+          "episodes": [
+            4,
+            6,
+            10,
+            12,
+            18,
+            20,
+            21,
+            26,
+            27
+          ],
+          "appearance": "Taiwanese man, 24, slight build, pale narrow face, short uneven black fringe, plain white shirt, loose maroon tie, dark trousers, worn trainers, bandage on right palm. An oversized navy conductor coat over the shirt, crooked brass employee badge on the coat, maroon tie. The right-palm bandage remains.",
+          "cue": "E27中段前才穿；分鏡脫衣後用base，episode override不能整集覆蓋。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:219",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:742",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:859",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:1103",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:1237",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:1594",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:1714",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:1787",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2089",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2150",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+          ]
+        },
+        {
+          "id": "he-zhao-patient",
+          "episodes": [
+            38
+          ],
+          "appearance": "Taiwanese man, 24, slight build, pale narrow face, short uneven black fringe, a clean dressing on the right palm. Plain hospital patient clothing, resting in a hospital bed. No travel jacket, raincoat, hoodie, necktie, staff badge, ticket or lantern.",
+          "cue": "院內本人，不沿用旅途外套；右掌敷料與拇指舊疤保留。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:219",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2816",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lu-xun",
+      "voice_name": "Orus",
+      "performance": "用肯定句包裝沒有依據的交換：「這是規定。」「總得有人留下。」 台灣國語；低沉、整齊停頓，與顧永的鬆軟高齡聲分開；面對遺物時才破句；擬定 casting。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "lù xún",
+        "ja": "ルー・シュン",
+        "ko": "루 쉰",
+        "en": "Lu Xun"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "lu-xun--base",
+          "episodes": [
+            3,
+            5,
+            15,
+            16,
+            17,
+            18,
+            20,
+            22,
+            23,
+            24,
+            25,
+            27,
+            28,
+            33,
+            35,
+            36
+          ],
+          "appearance": "Taiwanese man, appearing 46, tall rigid posture, angular face, neatly slicked black hair with grey temples, immaculate midnight-blue old conductor uniform, brass buttons, black peaked cap held square, left glove with one repaired seam, small key ring at belt. Controlled human expressions rather than a monster face.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:246",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:36",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wen-lanyin",
+      "voice_name": "Sulafat",
+      "performance": "先給可核對的細節再提要求；不直接叫人相信母愛。 台灣國語；溫暖中低女聲、近距離少混響；假廣播可以完全相同，真偽靠規則判斷；擬定 casting。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "wēn lán yīn",
+        "ja": "ウェン・ランイン",
+        "ko": "원 란인",
+        "en": "Wen Lanyin"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "wen-lanyin--base",
+          "episodes": [
+            1,
+            7,
+            13,
+            15,
+            19,
+            20,
+            24,
+            25,
+            30,
+            34,
+            39
+          ],
+          "appearance": "Taiwanese woman, appearing 49, softly lined oval face, short wavy black hair with a silver streak at the right temple, ivory blouse, muted plum cardigan, plain dark skirt, small copper hairpin. Calm, patient expression.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:273",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:36",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lu-an",
+      "voice_name": "Leda",
+      "performance": "只在記憶片段說「爸，這次到家了嗎？」；不替父親突然解釋全套規則。 台灣國語；兒童記憶片段，少量自然台詞，不尖叫、不誘惑；聲音與小滿不同；擬定 casting。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "lù ān",
+        "ja": "ルー・アン",
+        "ko": "루 안",
+        "en": "Lu An"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "lu-an--base",
+          "episodes": [
+            14
+          ],
+          "appearance": "Taiwanese girl, appearing 9, round face, two short black braids tied with yellow ribbons, pale blue rain poncho, red rubber boots, yellow wooden bird whistle on a cotton cord. Limited memory-image performance, ordinary childhood styling, no frightening body transformation.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:296",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:36",
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+          ]
+        }
+      ],
+      "video_constraints": {
+        "min_visual_age_years": 9,
+        "veo_lite_i2v": "not-verified-under-18",
+        "source_refs": [
+          "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:299",
+          "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:300"
+        ],
+        "episode_refs": [
+          14
+        ]
+      }
+    }
+  ],
+  "prop_rules": [
+    {
+      "id": "ticket-system",
+      "identity": "七張原票與陸安亡票",
+      "states": "程望00:31，小滿00:17，其餘各異；票孔跟原主心跳",
+      "ownership": "每人本人持；何照E27取回；小滿E29由老人扶穩但仍在本人衣袋",
+      "insert_rules": "可讀字用後製平面，七組光/嗒不同但不把聲音當醫療教學。",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "id": "platform",
+      "identity": "電子牌、實體月台鋼印、機械箭頭",
+      "states": "E1 04；E3 06；E31電子17但實體09；E37三項吻合17",
+      "ownership": "環境固定物",
+      "insert_rules": "三層分鏡，不把電子17作放行證據。",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "id": "lights",
+      "identity": "工作手電與黃銅白燈兩物",
+      "states": "手電E31交徐浩；白燈E34交程望",
+      "ownership": "E32無徐浩，借檢票座白燈；跨門後兩物都不在現實鏡頭",
+      "insert_rules": "形狀和光源不同，不能把早期手電拍成引導權限。",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "id": "bags",
+      "identity": "小滿藍背包與顧永布購物袋",
+      "states": "小滿包E29交顧；布袋E40由程望代提",
+      "ownership": "每物僅一個",
+      "insert_rules": "交接前後不能複製；顧固定外觀內袋子需構圖/shot override處理。",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "id": "whistle",
+      "identity": "裂木鳥哨與幻景完好哨",
+      "states": "E14陳列盒裂哨對照；E35交陸循",
+      "ownership": "真哨E35後陸循右手；亡票仍歸陸循",
+      "insert_rules": "不修好哨子、不拍女兒新行動暗示復活。",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "id": "belt",
+      "identity": "長安全帶",
+      "states": "E17取得卷收程望衣內；E27再用",
+      "ownership": "程望保管",
+      "insert_rules": "與購物袋短帶不可混換。",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    }
+  ],
+  "episodes": [
+    {
+      "episode": 1,
+      "title": "她在月台等我",
+      "characters": [
+        "cheng-wang",
+        "lin-xiaoman",
+        "wen-lanyin"
+      ],
+      "locations": [
+        "door"
+      ],
+      "hero_shot": {
+        "action": "17票與04鋼印同焦後收腳",
+        "camera": "原門內固定軸線。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "母親真偽同音色"
+      },
+      "risk_controls": [
+        {
+          "risk": "三名全身同鏡導致多手拉扯",
+          "solution": "拉衣、貼票、收腳拆鏡，每鏡只一動作"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "林小滿原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "lin-xiaoman--base",
+        "wen-lanyin--base"
+      ],
+      "prop_checks": [
+        "17/04",
+        "延續來源當集evidence/carry_forward：程望持本人原票，工作燈照見 04。；紅廣播能喊姓名，下一集檢查票面新增的時間。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, lin-xiaoman, wen-lanyin；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "母親真偽同音色",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：17/04；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:566",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 2,
+      "title": "還沒到的死期",
+      "characters": [
+        "cheng-wang",
+        "xu-hao",
+        "tang-qi"
+      ],
+      "locations": [
+        "carriage",
+        "counter"
+      ],
+      "hero_shot": {
+        "action": "六票節拍後移到隔間弱第七拍",
+        "camera": "桌面六票分組，再程望貼壁。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "七組可區分輕嗒，mono仍辨"
+      },
+      "risk_controls": [
+        {
+          "risk": "配樂遮住第七聲或畫第七人",
+          "solution": "一拍一票對位，隔間只暗示不露人"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "xu-hao--base",
+        "tang-qi--base"
+      ],
+      "prop_checks": [
+        "六票與第七弱光",
+        "延續來源當集evidence/carry_forward：唐綺票背有六組節拍；隔間未開。；小滿離開視線，假月台開始播放家人在出口等候的泛用通知。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, xu-hao, tang-qi；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "七組可區分輕嗒，mono仍辨",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：六票與第七弱光；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:624",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 3,
+      "title": "這次換我拉住妳",
+      "characters": [
+        "cheng-wang",
+        "lin-xiaoman",
+        "lu-xun"
+      ],
+      "locations": [
+        "door"
+      ],
+      "hero_shot": {
+        "action": "原票固定扶手後讓小滿自己鬆手",
+        "camera": "近景手、票、扶手分切。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "呼吸與布料摩擦"
+      },
+      "risk_controls": [
+        {
+          "risk": "被拍成程望推小滿出門",
+          "solution": "方向固定向車內，最後腳落內側"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "林小滿原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "lin-xiaoman--base",
+        "lu-xun--base"
+      ],
+      "prop_checks": [
+        "小滿17/實體06",
+        "延續來源當集evidence/carry_forward：兩張本人票仍在本人手中。；需要找到人人都可驗證的原始文字。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, lin-xiaoman, lu-xun；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "呼吸與布料摩擦",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：小滿17/實體06；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:683",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 4,
+      "title": "紅字底下有白字",
+      "characters": [
+        "cheng-wang",
+        "qiao-ning",
+        "he-zhao"
+      ],
+      "locations": [
+        "counter"
+      ],
+      "hero_shot": {
+        "action": "紅漆沾手套與底下返字",
+        "camera": "兩個微距後切何照護牌。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "紙表推回的乾聲"
+      },
+      "risk_controls": [
+        {
+          "risk": "新紅字直接變唯一真假判定",
+          "solution": "返只露一字、資料尚不完整"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "qiao-ning--base",
+        "he-zhao--base",
+        "he-zhao-coated"
+      ],
+      "prop_checks": [
+        "紅漆、白牌拓印",
+        "延續來源當集evidence/carry_forward：程望保存白牌「返」字拓印。；唐綺試圖用交換車票找別的方法。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, qiao-ning, he-zhao；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "紙表推回的乾聲",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：紅漆、白牌拓印；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:742",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 5,
+      "title": "借來的名字",
+      "characters": [
+        "cheng-wang",
+        "tang-qi",
+        "xu-hao",
+        "lu-xun"
+      ],
+      "locations": [
+        "carriage",
+        "counter"
+      ],
+      "hero_shot": {
+        "action": "換回票後小名仍想不起",
+        "camera": "對稱手交換再停在唐綺。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "她停頓，無魔法清空音"
+      },
+      "risk_controls": [
+        {
+          "risk": "把失憶錯誤歸給換票",
+          "solution": "原壓痕在換票前存在，後面再驗"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "tang-qi--base",
+        "xu-hao--base",
+        "lu-xun--base"
+      ],
+      "prop_checks": [
+        "兩張原票、交換壓痕",
+        "延續來源當集evidence/carry_forward：兩人恢復原票，程望記下交換槽壓痕。；廣播將乘客分成生與死，必須核對各人的事故記憶。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, tang-qi, xu-hao, lu-xun；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "她停頓，無魔法清空音",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：兩張原票、交換壓痕；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:799",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 6,
+      "title": "窗上那天不是今晚",
+      "characters": [
+        "cheng-wang",
+        "gu-yong",
+        "he-zhao"
+      ],
+      "locations": [
+        "carriage",
+        "counter"
+      ],
+      "hero_shot": {
+        "action": "收據車組號與牌底同號",
+        "camera": "固定對照，窗上日期另切。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "何照背號後突然收口"
+      },
+      "risk_controls": [
+        {
+          "risk": "日期或停錶直接當死亡證據",
+          "solution": "五月二十七日只月日，不畫當夜同日期"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "gu-yong--base",
+        "he-zhao--base",
+        "he-zhao-coated"
+      ],
+      "prop_checks": [
+        "購票收據、員工牌",
+        "延續來源當集evidence/carry_forward：何照背出的車組號與顧永的購票收據相符，收據仍由顧永收在購物袋；停錶不是死亡證據。；牆內出現熟悉的三短一長敲擊。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, gu-yong, he-zhao；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "何照背號後突然收口",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：購票收據、員工牌；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:859",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 7,
+      "title": "媽媽以前這樣敲門",
+      "characters": [
+        "cheng-wang",
+        "lin-xiaoman",
+        "wen-lanyin"
+      ],
+      "locations": [
+        "connection"
+      ],
+      "hero_shot": {
+        "action": "白燈口聲音引向鉚釘",
+        "camera": "檢票口→手挪布→原鉚釘。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "三短一長留清楚節奏"
+      },
+      "risk_controls": [
+        {
+          "risk": "暗號被配成可信母愛theme",
+          "solution": "此時不建立正確答案音樂；手機不拿出"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "林小滿原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "lin-xiaoman--base",
+        "wen-lanyin--base"
+      ],
+      "prop_checks": [
+        "白燈線、鉚釘",
+        "延續來源當集evidence/carry_forward：白燈線及原始鉚釘露出，尚無引導燈；程望的舊手機留在工作外套口袋，沒拿出來，也沒播放。；票孔光的不同節奏仍需證實與心跳相關。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, lin-xiaoman, wen-lanyin；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "三短一長留清楚節奏",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：白燈線、鉚釘；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:920",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 8,
+      "title": "票跟著誰的心跳",
+      "characters": [
+        "cheng-wang",
+        "qiao-ning",
+        "tang-qi",
+        "gu-yong"
+      ],
+      "locations": [
+        "carriage"
+      ],
+      "hero_shot": {
+        "action": "交換手後票光仍跟同一人",
+        "camera": "票和原主的手分組近景。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "可分辨兩節奏，配樂退出"
+      },
+      "risk_controls": [
+        {
+          "risk": "光跟持票人而非原主走",
+          "solution": "記錄每票節拍對應主人，換手保持"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "qiao-ning--base",
+        "tang-qi--base",
+        "gu-yong--base"
+      ],
+      "prop_checks": [
+        "六原票",
+        "延續來源當集evidence/carry_forward：六張明票各歸本人，第七訊號仍被藏住。；徐浩仍害怕慢心跳拖延返程，下一集會有實際推出危機。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, qiao-ning, tang-qi, gu-yong；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "可分辨兩節奏，配樂退出",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：六原票；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:979",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 9,
+      "title": "把老人帶回座位",
+      "characters": [
+        "cheng-wang",
+        "lin-xiaoman",
+        "gu-yong",
+        "xu-hao"
+      ],
+      "locations": [
+        "door",
+        "carriage"
+      ],
+      "hero_shot": {
+        "action": "購物袋受拉但老人腳留車內",
+        "camera": "手臂分鏡，不拍推人跨門。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "顧永主動拒絕清楚短句"
+      },
+      "risk_controls": [
+        {
+          "risk": "老人危機被誇成受傷墜落",
+          "solution": "只動袋帶、腳步退回，無新傷"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "林小滿原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "lin-xiaoman--base",
+        "gu-yong--base",
+        "xu-hao--base"
+      ],
+      "prop_checks": [
+        "一個布袋、老人原票",
+        "延續來源當集evidence/carry_forward：顧永持原票，購物袋帶完整。；原白牌與藏票都在售票隔間，需要先逼出原路線。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, lin-xiaoman, gu-yong, xu-hao；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "顧永主動拒絕清楚短句",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：一個布袋、老人原票；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:1042",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 10,
+      "title": "覆漆底下那條線",
+      "characters": [
+        "cheng-wang",
+        "lin-xiaoman",
+        "he-zhao"
+      ],
+      "locations": [
+        "counter"
+      ],
+      "hero_shot": {
+        "action": "揭紅覆片，拓下白線到17",
+        "camera": "線條橫移停在目的地。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "鉛筆摩擦作節點"
+      },
+      "risk_controls": [
+        {
+          "risk": "揭太多文字提前完結謎團",
+          "solution": "只返程線，留置完整條文E22才露"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "林小滿原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "lin-xiaoman--base",
+        "he-zhao--base",
+        "he-zhao-coated"
+      ],
+      "prop_checks": [
+        "白線拓印",
+        "延續來源當集evidence/carry_forward：小滿持白線拓印；原牌部分露出。；下一篇從整理已能重複驗證的規則開始。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, lin-xiaoman, he-zhao；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "鉛筆摩擦作節點",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：白線拓印；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:1103",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 11,
+      "title": "只寫驗過的事",
+      "characters": [
+        "cheng-wang",
+        "qiao-ning",
+        "xu-hao"
+      ],
+      "locations": [
+        "carriage",
+        "counter"
+      ],
+      "hero_shot": {
+        "action": "已驗/待驗兩欄各擺一物",
+        "camera": "中景桌面同步視線。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "爭論音量下降"
+      },
+      "risk_controls": [
+        {
+          "risk": "所有紅字皆假被配音講真理",
+          "solution": "喬寧當場糾正，列已驗證據"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "qiao-ning--base",
+        "xu-hao--base"
+      ],
+      "prop_checks": [
+        "清單、空白留置表",
+        "延續來源當集evidence/carry_forward：小滿休息前把第 10 集的白線拓印交給程望；程望拆成清單後，拓印與清單副本交喬寧保管；空白留置表由程望放在售票口，等何照說出來源。；何照必須回答留置表來自誰。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, qiao-ning, xu-hao；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "爭論音量下降",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：清單、空白留置表；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:1177",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 12,
+      "title": "售票人在怕什麼",
+      "characters": [
+        "cheng-wang",
+        "lin-xiaoman",
+        "he-zhao"
+      ],
+      "locations": [
+        "counter"
+      ],
+      "hero_shot": {
+        "action": "員工牌無姓名，鏡頭停在上鎖抽屜",
+        "camera": "牌與抽屜建立前後位置。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "何照說照字前吞尾"
+      },
+      "risk_controls": [
+        {
+          "risk": "誤拍何照不知道全名",
+          "solution": "他是恐懼不敢報，不是失憶"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "林小滿原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "lin-xiaoman--base",
+        "he-zhao--base",
+        "he-zhao-coated"
+      ],
+      "prop_checks": [
+        "車掌外套、員工牌、鎖抽屜",
+        "延續來源當集evidence/carry_forward：正面抽屜鎖仍在，鑰匙由陸循持有；後側卡票槽機械扣在員工廊，何照知道位置但因恐懼尚未開啟。；紅廣播開始仿造剛聽到的母親敲擊節奏。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, lin-xiaoman, he-zhao；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "何照說照字前吞尾",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：車掌外套、員工牌、鎖抽屜；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:1237",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 13,
+      "title": "兩個一樣的敲門聲",
+      "characters": [
+        "cheng-wang",
+        "tang-qi",
+        "wen-lanyin"
+      ],
+      "locations": [
+        "connection",
+        "door"
+      ],
+      "hero_shot": {
+        "action": "同一敲門節奏從兩方向響",
+        "camera": "左右聲源配各自畫面，mono可看。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "母親同一乾聲素材再做空間處理"
+      },
+      "risk_controls": [
+        {
+          "risk": "靠變聲提前判真偽",
+          "solution": "畫面標聲道，內容仍須E19核對"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "tang-qi--base",
+        "wen-lanyin--base"
+      ],
+      "prop_checks": [
+        "紅喇叭遮板、白燈口",
+        "延續來源當集evidence/carry_forward：封存號寫在唐綺清單角落。；唐綺發現窗外另一個人的對白也不斷重複。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, tang-qi, wen-lanyin；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "母親同一乾聲素材再做空間處理",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：紅喇叭遮板、白燈口；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:1296",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 14,
+      "title": "每一站都問同一句",
+      "characters": [
+        "lin-xiaoman",
+        "tang-qi",
+        "xu-hao",
+        "lu-an"
+      ],
+      "locations": [
+        "door"
+      ],
+      "hero_shot": {
+        "action": "女孩同句與完好哨三次重播",
+        "camera": "同構圖不同站牌，切玻璃反射。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "三次使用同一錄音檔"
+      },
+      "risk_controls": [
+        {
+          "risk": "生成三版台詞失去重複證據",
+          "solution": "同語系同一take重用，裂哨倒影非持在手"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "林小滿原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        },
+        {
+          "risk": "陸安原設9歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "lin-xiaoman--base",
+        "tang-qi--base",
+        "xu-hao--base",
+        "lu-an--base"
+      ],
+      "prop_checks": [
+        "完好哨幻影、盒內裂哨",
+        "延續來源當集evidence/carry_forward：唐綺記錄三次相同句子；裂哨尚在駕駛機械室的陳列盒。；程望進一步追查封存號與七年前事故。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：lin-xiaoman, tang-qi, xu-hao, lu-an；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "三次使用同一錄音檔",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：完好哨幻影、盒內裂哨；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:1356",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 15,
+      "title": "玻璃後的事故條",
+      "characters": [
+        "cheng-wang",
+        "qiao-ning",
+        "wen-lanyin",
+        "lu-xun"
+      ],
+      "locations": [
+        "cab"
+      ],
+      "hero_shot": {
+        "action": "事故條與短客觀片段對位",
+        "camera": "最多15秒非連續插敘。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "不增加少年程望台詞"
+      },
+      "risk_controls": [
+        {
+          "risk": "E15同集20歲客觀回望與27歲現時調查混用造型，或把短閃回演成新記憶恢復。",
+          "solution": "短閃回鏡用cheng-wang-age20；現時玻璃前查證回cheng-wang--base。先顯母親推到救援端的原稿動作，再回已有事故條，不另加童年情節。"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "qiao-ning--base",
+        "wen-lanyin--base",
+        "lu-xun--base",
+        "cheng-wang-age20"
+      ],
+      "prop_checks": [
+        "封存事故條、座上白燈",
+        "延續來源當集evidence/carry_forward：事故條還在封存玻璃內，沒被主角取走。；列車長改用有條件交易阻撓查證。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, qiao-ning, wen-lanyin, lu-xun；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "不增加少年程望台詞",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：封存事故條、座上白燈；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:1414",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 16,
+      "title": "團聚的收據",
+      "characters": [
+        "cheng-wang",
+        "tang-qi",
+        "lu-xun"
+      ],
+      "locations": [
+        "counter",
+        "connection"
+      ],
+      "hero_shot": {
+        "action": "三步壓痕依序對照唐綺敘述",
+        "camera": "三插圖不是遊戲教學UI。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "她明確拒絕第二次交易"
+      },
+      "risk_controls": [
+        {
+          "risk": "把被摸票也算交易",
+          "solution": "選段、答應、按票需三步完整"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "tang-qi--base",
+        "lu-xun--base"
+      ],
+      "prop_checks": [
+        "原票三格壓痕",
+        "延續來源當集evidence/carry_forward：原票壓痕保留，急救櫃鑰匙受交換槽控制。；列車長的鎖櫃將在下一集形成實際代價選擇。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, tang-qi, lu-xun；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "她明確拒絕第二次交易",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：原票三格壓痕；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:1474",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 17,
+      "title": "急救櫃要一段回憶",
+      "characters": [
+        "cheng-wang",
+        "lin-xiaoman",
+        "gu-yong",
+        "lu-xun"
+      ],
+      "locations": [
+        "connection"
+      ],
+      "hero_shot": {
+        "action": "長帶拉老人到實地後程望想不起味道",
+        "camera": "短促拉人clip接靜止表情。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "救完人撤樂，留老人道謝"
+      },
+      "risk_controls": [
+        {
+          "risk": "救援只剩動作爽點忽略代價",
+          "solution": "停留程望尋詞失敗，不演已失記憶新回放"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "林小滿原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "lin-xiaoman--base",
+        "gu-yong--base",
+        "lu-xun--base"
+      ],
+      "prop_checks": [
+        "長帶卷回程望、膝擦傷",
+        "延續來源當集evidence/carry_forward：長安全帶救完人後捲好，由程望收在工作外套內側保管到第 27 集；程望原票新增單次交換壓痕。；不能下一集又回想該飯局細節；需調查控制者為何不自己返程。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, lin-xiaoman, gu-yong, lu-xun；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "救完人撤樂，留老人道謝",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：長帶卷回程望、膝擦傷；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:1534",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 18,
+      "title": "他不肯亮出自己的票",
+      "characters": [
+        "cheng-wang",
+        "he-zhao",
+        "lu-xun"
+      ],
+      "locations": [
+        "cab"
+      ],
+      "hero_shot": {
+        "action": "程望先亮己票，何照揭玻璃遮紙",
+        "camera": "三人分正反，年份日期insert。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "紅桿一下後鐘跳兩分"
+      },
+      "risk_controls": [
+        {
+          "risk": "檔案解說沒有行動代價",
+          "solution": "原票冒被扣風險、兩分鐘確實失去"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "he-zhao--base",
+        "he-zhao-coated",
+        "lu-xun--base"
+      ],
+      "prop_checks": [
+        "封存名冊、補線手套",
+        "延續來源當集evidence/carry_forward：死亡紀錄在封存玻璃中，陸循不能修改；程望的原票冒險亮出後仍在自己手上。；被搶走的兩分鐘要在下一集承接：母親白燈聲道須一次拿出與封存記錄相符的驗證，不能再慢慢試。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, he-zhao, lu-xun；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "紅桿一下後鐘跳兩分",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：封存名冊、補線手套；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:1594",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 19,
+      "title": "白燈那頭是誰",
+      "characters": [
+        "cheng-wang",
+        "tang-qi",
+        "wen-lanyin"
+      ],
+      "locations": [
+        "cab"
+      ],
+      "hero_shot": {
+        "action": "母親說號碼，唐綺落筆後才叫媽",
+        "camera": "先不可見聲源再封存號特写。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "真假同音色，此處靠資訊轉折"
+      },
+      "risk_controls": [
+        {
+          "risk": "聲音溫柔就等於真母親",
+          "solution": "編號與票印方向兩證明都入鏡"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "tang-qi--base",
+        "wen-lanyin--base"
+      ],
+      "prop_checks": [
+        "返程副頁",
+        "延續來源當集evidence/carry_forward：唐綺記下返程副頁位置與缺角編號。；下一集從紅拉桿與原路矛盾，查明列車遭挾持。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, tang-qi, wen-lanyin；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "真假同音色，此處靠資訊轉折",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：返程副頁；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:1655",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 20,
+      "title": "紅拉桿壓住了什麼",
+      "characters": [
+        "cheng-wang",
+        "he-zhao",
+        "lu-xun",
+        "wen-lanyin"
+      ],
+      "locations": [
+        "cab"
+      ],
+      "hero_shot": {
+        "action": "紅桿與走紙錯路互相對照",
+        "camera": "上下兩層機構不用炫圖。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "齒輪慢拉，解釋分兩句"
+      },
+      "risk_controls": [
+        {
+          "risk": "給母親新控制紅桿能力",
+          "solution": "她只白燈口聲音，元凶紅桿遮擋有因果"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "he-zhao--base",
+        "he-zhao-coated",
+        "lu-xun--base",
+        "wen-lanyin--base"
+      ],
+      "prop_checks": [
+        "走紙、紅拉桿",
+        "延續來源當集evidence/carry_forward：返程副頁、覆寫時間、亡者名冊三者互證。；第 21 集開始定位真正終點；紅漆留人條文須完整拆穿。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, he-zhao, lu-xun, wen-lanyin；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "齒輪慢拉，解釋分兩句",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：走紙、紅拉桿；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:1714",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 21,
+      "title": "地圖上的十七號",
+      "characters": [
+        "cheng-wang",
+        "lin-xiaoman",
+        "xu-hao",
+        "he-zhao"
+      ],
+      "locations": [
+        "cab"
+      ],
+      "hero_shot": {
+        "action": "普通17月台圖被遮前拓兩份",
+        "camera": "拓紙分兩次交付。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "何照報位置後靜默"
+      },
+      "risk_controls": [
+        {
+          "risk": "陸循遠端回話增加第五聲線",
+          "solution": "只有遮板落下不配陸循聲"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "林小滿原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "lin-xiaoman--base",
+        "xu-hao--base",
+        "he-zhao--base",
+        "he-zhao-coated"
+      ],
+      "prop_checks": [
+        "兩份原路/時限副本",
+        "延續來源當集evidence/carry_forward：小滿持原路副本；何照的副本未帶回售票口。；必須拆除一命換一命作為最後障礙的說法。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, lin-xiaoman, xu-hao, he-zhao；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "何照報位置後靜默",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：兩份原路/時限副本；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:1787",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 22,
+      "title": "壓在白牌上的表框",
+      "characters": [
+        "cheng-wang",
+        "qiao-ning",
+        "xu-hao",
+        "lu-xun"
+      ],
+      "locations": [
+        "counter"
+      ],
+      "hero_shot": {
+        "action": "空表推回，卸表框露完整規則",
+        "camera": "卡榫手部clip後字樣靜態。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "撕假表，不高喊群眾"
+      },
+      "risk_controls": [
+        {
+          "risk": "原文畫成七人湊齊魔法",
+          "solution": "只寫時限內皆可，名單是管理工具"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "qiao-ning--base",
+        "xu-hao--base",
+        "lu-xun--base"
+      ],
+      "prop_checks": [
+        "紅覆片、完整拓本",
+        "延續來源當集evidence/carry_forward：完整原文由喬寧保管拓本，連同第 10 集的白線拓印；卸下的表框與撕碎的假表留在售票口。；要證實亡女本就不在可返程名單裡。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, qiao-ning, xu-hao, lu-xun；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "撕假表，不高喊群眾",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：紅覆片、完整拓本；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:1851",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 23,
+      "title": "他要加進清單的票",
+      "characters": [
+        "cheng-wang",
+        "qiao-ning",
+        "lu-xun"
+      ],
+      "locations": [
+        "cab",
+        "door"
+      ],
+      "hero_shot": {
+        "action": "亡女票截止早已過去再現飯桌",
+        "camera": "票日期短insert，飯桌空景。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "列車長破句不是恐怖尖叫"
+      },
+      "risk_controls": [
+        {
+          "risk": "一瞬無光等同不可救",
+          "solution": "先日期/時限比對，亡女不登場"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "qiao-ning--base",
+        "lu-xun--base"
+      ],
+      "prop_checks": [
+        "陸安亡票、空飯桌",
+        "延續來源當集evidence/carry_forward：陸安原票仍由陸循持有，裂哨仍在駕駛機械室的陳列盒中。；第 24 集程望面對利用他已交記憶造出的飯桌。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, qiao-ning, lu-xun；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "列車長破句不是恐怖尖叫",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：陸安亡票、空飯桌；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:1909",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 24,
+      "title": "飯桌又擺上來了",
+      "characters": [
+        "cheng-wang",
+        "tang-qi",
+        "lu-xun",
+        "wen-lanyin"
+      ],
+      "locations": [
+        "door"
+      ],
+      "hero_shot": {
+        "action": "程望能看湯卻說不出味道",
+        "camera": "門內近景與固定飯桌反打。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "母親只重複既存句"
+      },
+      "risk_controls": [
+        {
+          "risk": "新生成回答會破坏幻景限制",
+          "solution": "新問題後留原句重播，不能回答"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "tang-qi--base",
+        "lu-xun--base",
+        "wen-lanyin--base"
+      ],
+      "prop_checks": [
+        "原票仍自己持",
+        "延續來源當集evidence/carry_forward：程望持原票，不交出他人票。；下一集必須明確拒絕，而非由同伴替他做選擇。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, tang-qi, lu-xun, wen-lanyin；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "母親只重複既存句",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：原票仍自己持；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:1969",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 25,
+      "title": "兩張票換一頓飯",
+      "characters": [
+        "cheng-wang",
+        "lu-xun",
+        "wen-lanyin"
+      ],
+      "locations": [
+        "door",
+        "connection"
+      ],
+      "hero_shot": {
+        "action": "拉下遮光簾轉身向活人",
+        "camera": "簾落一個clip，其他靜鏡。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "拒絕說清，假飯桌聲隨簾淡出"
+      },
+      "risk_controls": [
+        {
+          "risk": "跨門被拍成溫柔團聚",
+          "solution": "決定留現實，沒有跨過假門"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "lu-xun--base",
+        "wen-lanyin--base"
+      ],
+      "prop_checks": [
+        "借來時限副本收衣內",
+        "延續來源當集evidence/carry_forward：時限欄副本是程望向小滿借的那一份，用完收在他工作外套內側，之後不再用到；程望的原票始終在他自己手上，沒有代管任何人的票。；徐浩在倒數下仍可能發起犧牲投票。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, lu-xun, wen-lanyin；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "拒絕說清，假飯桌聲隨簾淡出",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：借來時限副本收衣內；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2029",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 26,
+      "title": "不把誰劃掉",
+      "characters": [
+        "cheng-wang",
+        "xu-hao",
+        "gu-yong",
+        "he-zhao"
+      ],
+      "locations": [
+        "carriage",
+        "counter"
+      ],
+      "hero_shot": {
+        "action": "七行清單不刪人，何照去後槽",
+        "camera": "名單到窄廊方向切。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "顧永不再道歉，徐浩撤回主張"
+      },
+      "risk_controls": [
+        {
+          "risk": "何照突然穿牆取票",
+          "solution": "建立後側機械扣和門關上"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "xu-hao--base",
+        "gu-yong--base",
+        "he-zhao--base",
+        "he-zhao-coated"
+      ],
+      "prop_checks": [
+        "七行清單、檢修口",
+        "延續來源當集evidence/carry_forward：七行清單完整保留；何照找到後側檢修口但票未拿出。；下一集先救出何照，再確認第七個活人的姓名。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, xu-hao, gu-yong, he-zhao；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "顧永不再道歉，徐浩撤回主張",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：七行清單、檢修口；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2089",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 27,
+      "title": "夾在門縫裡的名字",
+      "characters": [
+        "cheng-wang",
+        "he-zhao",
+        "xu-hao",
+        "lu-xun"
+      ],
+      "locations": [
+        "connection",
+        "counter"
+      ],
+      "hero_shot": {
+        "action": "票先滑出，再脫外套出門縫",
+        "camera": "三動作分三鏡避免肢體穿模。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "外套布受力、全名清楚"
+      },
+      "risk_controls": [
+        {
+          "risk": "episode look把脫衣後仍畫制服",
+          "solution": "同集前後兩look、牌落地後不回身"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "he-zhao--base",
+        "he-zhao-coated",
+        "xu-hao--base",
+        "lu-xun--base"
+      ],
+      "prop_checks": [
+        "原票、外套夾縫、長帶",
+        "延續來源當集evidence/carry_forward：何照原票歸還；車掌外套留在夾縫、員工牌留在地面，之後不再穿戴；長安全帶仍由程望保管。；他以實際協助補償，帶路讀取原始復位流程。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, he-zhao, xu-hao, lu-xun；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "外套布受力、全名清楚",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：原票、外套夾縫、長帶；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2150",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 28,
+      "title": "紅廣播一直改站名",
+      "characters": [
+        "cheng-wang",
+        "he-zhao",
+        "tang-qi",
+        "lu-xun"
+      ],
+      "locations": [
+        "cab"
+      ],
+      "hero_shot": {
+        "action": "四步表隨原走紙逐格畫出",
+        "camera": "桌面固定，不加光屏。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "每步一句、紅廣播插在句外"
+      },
+      "risk_controls": [
+        {
+          "risk": "長講解壓垮節奏",
+          "solution": "一格配一個已見實物，最後停未完成欄"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "he-zhao--base",
+        "tang-qi--base",
+        "lu-xun--base"
+      ],
+      "prop_checks": [
+        "四步表唐綺持",
+        "延續來源當集evidence/carry_forward：唐綺持四步表，封存原件留在機械室。；小滿當夜票孔變弱，四步流程必須在時限內完成。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, he-zhao, tang-qi, lu-xun；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "每步一句、紅廣播插在句外",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：四步表唐綺持；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2209",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 29,
+      "title": "她的票快不亮了",
+      "characters": [
+        "cheng-wang",
+        "lin-xiaoman",
+        "qiao-ning",
+        "gu-yong"
+      ],
+      "locations": [
+        "carriage"
+      ],
+      "hero_shot": {
+        "action": "小滿票固定衣袋，老人接背包",
+        "camera": "雙人半身與票孔特写。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "咳嗽累積，白光嗒慢下"
+      },
+      "risk_controls": [
+        {
+          "risk": "看似已死又復活",
+          "solution": "不宣告死亡，保留截止未到台詞"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "林小滿原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "lin-xiaoman--base",
+        "qiao-ning--base",
+        "gu-yong--base"
+      ],
+      "prop_checks": [
+        "藍背包交顧、原票未換主",
+        "延續來源當集evidence/carry_forward：小滿原票固定在她衣袋外，顧永只扶住而不拿去換票；小滿的背包自本集中段轉折起由顧永背著。；母親要說清最後引導交接與時間限制。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, lin-xiaoman, qiao-ning, gu-yong；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "咳嗽累積，白光嗒慢下",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：藍背包交顧、原票未換主；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2269",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 30,
+      "title": "最後一趟，不會再等",
+      "characters": [
+        "cheng-wang",
+        "wen-lanyin",
+        "he-zhao"
+      ],
+      "locations": [
+        "cab"
+      ],
+      "hero_shot": {
+        "action": "母親指鐘，何照拿自己副本核對",
+        "camera": "白燈口與鐘分鏡。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "00:17讀完整，再說各人不同"
+      },
+      "risk_controls": [
+        {
+          "risk": "錯拿程望收藏的另一份副本",
+          "solution": "何照取自己保留的一份，不從主角口袋拿"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "wen-lanyin--base",
+        "he-zhao--base"
+      ],
+      "prop_checks": [
+        "時限鐘、何照副本",
+        "延續來源當集evidence/carry_forward：黃銅白燈仍由母親迴路承載，程望原票在交接座前可隨時取回。；先完成路線與投影兩步，第 34 集才能交燈。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, wen-lanyin, he-zhao；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "00:17讀完整，再說各人不同",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：時限鐘、何照副本；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2329",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 31,
+      "title": "電子牌提前亮了",
+      "characters": [
+        "cheng-wang",
+        "he-zhao",
+        "xu-hao"
+      ],
+      "locations": [
+        "door",
+        "cab"
+      ],
+      "hero_shot": {
+        "action": "電子17切實體09，再交工作燈",
+        "camera": "同E1鏡位回環。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "徐浩收手後接燈聲"
+      },
+      "risk_controls": [
+        {
+          "risk": "兩個17被當核對完成",
+          "solution": "必須等E37實體17和箭頭同符"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "he-zhao--base",
+        "xu-hao--base"
+      ],
+      "prop_checks": [
+        "工作手電交徐浩",
+        "延續來源當集evidence/carry_forward：工作燈（程望原本夾在胸前的手電筒）交徐浩手持；第 21 集那份原路副本由何照拿著。；將所有人安排到能完成四步流程的位置。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, he-zhao, xu-hao；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "徐浩收手後接燈聲",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：工作手電交徐浩；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2401",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 32,
+      "title": "每個人守一件事",
+      "characters": [
+        "cheng-wang",
+        "he-zhao",
+        "tang-qi",
+        "gu-yong"
+      ],
+      "locations": [
+        "cab",
+        "connection"
+      ],
+      "hero_shot": {
+        "action": "三人各守一位置穩住箭頭",
+        "camera": "連續空間主鏡加三插入。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "序號一人報另一人確認"
+      },
+      "risk_controls": [
+        {
+          "risk": "多人同框身份與手交疊",
+          "solution": "每鏡最多三cast；顧永膝傷不跑"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "he-zhao--base",
+        "tang-qi--base",
+        "gu-yong--base"
+      ],
+      "prop_checks": [
+        "四步表、座上白燈",
+        "延續來源當集evidence/carry_forward：四步表第一格由唐綺勾記；全員原票保持本人身上。；必須關掉循環幻景，而非追逐每個新月台。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, he-zhao, tang-qi, gu-yong；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "序號一人報另一人確認",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：四步表、座上白燈；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2463",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 33,
+      "title": "窗外還有好多個家",
+      "characters": [
+        "lu-xun",
+        "tang-qi",
+        "xu-hao",
+        "he-zhao"
+      ],
+      "locations": [
+        "cab",
+        "door"
+      ],
+      "hero_shot": {
+        "action": "徐浩親手關掉像家的普通門景",
+        "camera": "門景消失後停在他臉。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "唐綺敲重複節拍、女兒無聲無臉"
+      },
+      "risk_controls": [
+        {
+          "risk": "偷造徐浩女兒新影像",
+          "solution": "只泛化舊站務門，情緒靠徐浩"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "lu-xun--base",
+        "tang-qi--base",
+        "xu-hao--base",
+        "he-zhao--base"
+      ],
+      "prop_checks": [
+        "工作手電徐浩持",
+        "延續來源當集evidence/carry_forward：四步表前兩格完成，假月台不再出現。；第 34 集一次性交接白燈，母親隨即永久離開。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：lu-xun, tang-qi, xu-hao, he-zhao；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "唐綺敲重複節拍、女兒無聲無臉",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：工作手電徐浩持；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2524",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 34,
+      "title": "檢票座上的那盞燈",
+      "characters": [
+        "cheng-wang",
+        "wen-lanyin",
+        "he-zhao"
+      ],
+      "locations": [
+        "cab"
+      ],
+      "hero_shot": {
+        "action": "貼原票後握燈柄，母影離開",
+        "camera": "手柄CU接空檢票口。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "先收低頻，只留呼吸和金屬"
+      },
+      "risk_controls": [
+        {
+          "risk": "母親在下一集再指路",
+          "solution": "白光倒影永久消失、燈仍亮"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "wen-lanyin--base",
+        "he-zhao--base"
+      ],
+      "prop_checks": [
+        "白燈交程望、票取回",
+        "延續來源當集evidence/carry_forward：黃銅白燈在程望手上，原票取回本人衣袋。；只剩陸循末段拉桿，必須以早已出現的裂哨和亡票面對他。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, wen-lanyin, he-zhao；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "先收低頻，只留呼吸和金屬",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：白燈交程望、票取回；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2585",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 35,
+      "title": "陳列盒裡的木哨",
+      "characters": [
+        "cheng-wang",
+        "he-zhao",
+        "lu-xun"
+      ],
+      "locations": [
+        "cab"
+      ],
+      "hero_shot": {
+        "action": "裂哨從盒到父親右手",
+        "camera": "物件三段交接，不同手同鏡。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "木頭輕碰，列車長停頓"
+      },
+      "risk_controls": [
+        {
+          "risk": "同時左手松桿導致提前通關",
+          "solution": "右手拿哨左手壓桿到E36"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "he-zhao--base",
+        "lu-xun--base"
+      ],
+      "prop_checks": [
+        "陳列盒、裂哨",
+        "延續來源當集evidence/carry_forward：裂哨回到陸循右手，左手仍壓末段拉桿。；最後選擇由陸循自己完成；不以突然死亡解決機械問題。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, he-zhao, lu-xun；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "木頭輕碰，列車長停頓",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：陳列盒、裂哨；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2642",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 36,
+      "title": "最後一根拉桿",
+      "characters": [
+        "cheng-wang",
+        "lu-xun"
+      ],
+      "locations": [
+        "cab"
+      ],
+      "hero_shot": {
+        "action": "亡票與活票並排後陸循放桿",
+        "camera": "兩人固定站位，桿動clip。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "首次廣播報返程而不挽留"
+      },
+      "risk_controls": [
+        {
+          "risk": "拍父女重逢獎勵反派",
+          "solution": "女孩不現身，亡票哨留他手"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "lu-xun--base"
+      ],
+      "prop_checks": [
+        "兩票、末段拉桿",
+        "延續來源當集evidence/carry_forward：末段拉桿釋放，白燈由程望持有；陸安票與裂哨留給陸循。；下一集檢查真正月台及小滿最後一段護送。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, lu-xun；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "首次廣播報返程而不挽留",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：兩票、末段拉桿；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2701",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 37,
+      "title": "門外傳來站聲",
+      "characters": [
+        "cheng-wang",
+        "lin-xiaoman",
+        "qiao-ning",
+        "he-zhao"
+      ],
+      "locations": [
+        "return-platform"
+      ],
+      "hero_shot": {
+        "action": "三條件核對後清單先三後四",
+        "camera": "前門固定，四人分兩組鏡。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "先驗名後普通站聲，切黑接監視器"
+      },
+      "risk_controls": [
+        {
+          "risk": "時限兩秒被看成現實操作時長",
+          "solution": "主觀延時不偷改鐘；先核驗才過門"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "林小滿原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "lin-xiaoman--base",
+        "qiao-ning--base",
+        "he-zhao--base"
+      ],
+      "prop_checks": [
+        "實體17、白燈、七行清單",
+        "延續來源當集evidence/carry_forward：七行清單先核對再逐行勾選，先行三人與最後四人都有通過記號；跨門後靈界票燈不帶進現實，生還以次集醫院事實驗證。；第 38 集交代七人都獲救，不能用本集切黑保留生死懸案。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, lin-xiaoman, qiao-ning, he-zhao；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "先驗名後普通站聲，切黑接監視器",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：實體17、白燈、七行清單；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2757",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 38,
+      "title": "監視器還在響",
+      "characters": [
+        "cheng-wang",
+        "lin-xiaoman",
+        "qiao-ning",
+        "he-zhao"
+      ],
+      "locations": [
+        "hospital"
+      ],
+      "hero_shot": {
+        "action": "七人穩定名單與四張病人面孔",
+        "camera": "醫院自然光，床牌可讀。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "監視器緩和但不全部靜音"
+      },
+      "risk_controls": [
+        {
+          "risk": "旅途外套和靈界物品混入",
+          "solution": "四人病人look，原票白燈清零"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "林小滿原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "cheng-wang-patient",
+        "lin-xiaoman--base",
+        "lin-xiaoman-patient",
+        "qiao-ning--base",
+        "qiao-ning-patient",
+        "he-zhao--base",
+        "he-zhao-patient"
+      ],
+      "prop_checks": [
+        "現實領回物、手機",
+        "延續來源當集evidence/carry_forward：七人名單與領回的私人物品；車上的原票、白燈、清單與副本都沒有帶回現實；舊留言原本就存在手機中。；留言不是靈異新訊息；第 39 集明說它不能填回被交換的飯局記憶。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, lin-xiaoman, qiao-ning, he-zhao；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "監視器緩和但不全部靜音",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：現實領回物、手機；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2816",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 39,
+      "title": "那則沒聽過的留言",
+      "characters": [
+        "cheng-wang",
+        "tang-qi",
+        "wen-lanyin"
+      ],
+      "locations": [
+        "home"
+      ],
+      "hero_shot": {
+        "action": "新晚餐上桌再播放舊留言",
+        "camera": "兩人側面長鏡，手機單插入。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "舊錄音有限頻寬且非新鬼聲"
+      },
+      "risk_controls": [
+        {
+          "risk": "回放等於取回共餐記憶",
+          "solution": "留他依然想不起的反應，這餐是新的"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "tang-qi--base",
+        "wen-lanyin--base"
+      ],
+      "prop_checks": [
+        "新抄名單、現實手機",
+        "延續來源當集evidence/carry_forward：原手機保存著留言，飯桌是新的一餐，不復刻已失去的片段；唐綺重抄的七行名單是現實裡的新紙，不是車上那張。；下一集在正常日間列車完成門與扶手的情感回收，不另開新案。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, tang-qi, wen-lanyin；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "舊錄音有限頻寬且非新鬼聲",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：新抄名單、現實手機；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2872",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    },
+    {
+      "episode": 40,
+      "title": "這一站是今天",
+      "characters": [
+        "cheng-wang",
+        "lin-xiaoman",
+        "gu-yong"
+      ],
+      "locations": [
+        "day-train"
+      ],
+      "hero_shot": {
+        "action": "扶門與第一集扣門框同角度",
+        "camera": "日光門內中景。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "普通站聲、早餐對話、末尾留呼吸"
+      },
+      "risk_controls": [
+        {
+          "risk": "再加恐怖尾音暗示新循環",
+          "solution": "不加鬼影；日常交通票代原票"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "林小滿原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "cheng-wang--base",
+        "lin-xiaoman--base",
+        "gu-yong--base"
+      ],
+      "prop_checks": [
+        "顧永袋轉程望、普通票",
+        "延續來源當集evidence/carry_forward：只有普通交通票與修好的外套；不把黃銅引導燈帶回現實。顧永的購物袋上車時由程望代提。；無後續主線。保留約 15 秒人物呼吸與窗外日光，進合集結束而不插續集預告。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：cheng-wang, lin-xiaoman, gu-yong；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "普通站聲、早餐對話、末尾留呼吸",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：顧永袋轉程望、普通票；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2929",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3034"
+      ]
+    }
+  ],
+  "audio_plan": {
+    "motifs": [
+      "票孔嗒聲與輪聲分頻；七節奏先分組呈現，不要求觀眾從混音中精算七個心跳。",
+      "三短一長的真假是同素材重用；陸安每語系只一個固定句take，三次播出停頓完全相同。",
+      "E34交燈撤低頻，E39舊錄音不使用靈異混響，E40自然日光與站聲結束。"
+    ],
+    "perspective": [
+      "固定旁白依setting.world.narrator，角色使用來源voice；旁白不得說角色尚未知的答案。",
+      "電話/隔門/廣播先聽清再加工；mono仍可分空間；畫外聲不能添加未登錄劇情角色。"
+    ],
+    "dynamic_rules": [
+      "關鍵人聲高於雨、車、火與配樂；證據被讀出的當下主動降低底層而非提高尖峰。",
+      "一次只讓一個人說必要資訊；撞擊、撕紙、敲門不與關鍵音節相撞。",
+      "Loudness/true peak依共享profile與交付實測，不在本設計虛稱已量測。"
+    ],
+    "locale_constraints": [
+      "先定案zh-TW台灣口音正片與獨立可開關CC；ja/ko/en先保留固定名詞、發音與節奏空間，之後各自配音對齊、各自CC，不硬套繁中時間碼。",
+      "字幕全部sidecar CC；不把對白、旁白、翻譯或聲音描述燒進影像。劇內必要文件/鐘/牌是道具，關鍵資訊仍由已登錄角色可聽地傳達。",
+      "角色voice_name沿用來源提案；不同語系先用同一聲音身份試錄，音色/年齡/口音不合則記錄新casting再核准，未試聽不可稱驗收。",
+      "旁白與角色不共用聲線。Veo 3.1 Lite原生聲音不作台詞主軌；分開乾淨人聲、音樂、音效/環境軌。",
+      "句尾保留呼吸和插入鏡空間；每語系先實測再定鏡長，快語速/硬裁句/凍結補秒不得作超時解法。",
+      "17/04/06/09需每語系讀作編號而非時間；00:17/00:31才是時刻。",
+      "死亡時間欄保留角色初期誤解；E30才確認是各人搶救截止，翻譯不可提前解答。",
+      "記不得小名≠不知全名，何照知道姓名只是受脅迫不敢說；返程不譯成亡者回家。"
+    ]
+  },
+  "acceptance_checks": [
+    "source_binding.source_sha256與當前JSON.stringify(source)相同；此為新增製作設計，不冒用舊獨立內容審查或正式核准。",
+    "opening_30s連續覆蓋0–30秒，每鏡<=8秒、具名角色<=3；實測zh-TW TTS完成後才確認5秒鉤子與30秒回報。",
+    "Gemini veo-3.1-lite-generate-preview，1080p、24fps、每次原片8秒；每片只一個主要動作，剪成3–6秒需要的長度，禁止freeze filler；證物用實際手部或環境動作插鏡，文字經查核後合成；靜畫僅限前製animatic。",
+    "Veo Lite不使用referenceImages/extension；角色身份由已核定臉部sheet與最終前景構圖逐鏡檢查，shot_looks只換衣物/物件狀態不換臉。",
+    "每鏡核對人物ID、左右側、持有人、出入口、當前知情、造型先後；外出轉場不得瞬移，原件/副本和手中/桌上物不可複製。",
+    "每集hero動作以獨立鏡頭素材拍攝；表中涉及第二個動作/反應/道具插入須另片，不把整段剪輯描述塞進單次生成。",
+    "字幕全部可開關CC，畫面無台詞燒錄；關CC仍能理解因果。CC開啟時逐條核對說話者、標點、人名、聲音描述和落點。",
+    "zh-TW先行做角色/旁白試聽、手機外放及mono檢查；ja/ko/en後續各有native聽校、獨立TTS時間軸與CC，未測不標完成。",
+    "角色聲線、道具文本、環境音與音樂權利及來源必須可追溯；沒有生成、渲染、聲音、成片或Studio驗收就維持design-only-not-render-tested。",
+    "最終片頭、預告、縮圖不泄露中後段答案；用實際留存與觀看數觀察改進，100萬點閱為目標不保證。",
+    "檢查每鏡實際可見年齡及episode.video_constraints；目前Lite I2V的allow_adult不能視為已支援未成年人。保留原年齡，先驗證手繪或合法支援供應商pilot；畫外聲不等同人物入鏡，不能宣稱400集已可直接全量拍攝。"
+  ],
+  "unresolved": [
+    {
+      "issue": "何照E27脫車掌外套與E38四人病人服已具完整命名造型及逐鏡工具，待畫面驗收。",
+      "why": "E27轉折前選he-zhao-coated，脫下後回he-zhao--base；E38用四人的patient造型。需在實際畫面確認員工牌不重生、病人服無旅途配件。",
+      "episode_refs": [
+        27,
+        38
+      ]
+    },
+    {
+      "issue": "程望E15的20歲回望造型已加入目錄，待同一人物的成年年齡連戲驗收。",
+      "why": "cheng-wang-age20僅用七年前短閃回；現時鏡仍用27歲base。20歲為27減7，屬成年造型；不增加新角色、不改小滿/陸安年齡。",
+      "episode_refs": [
+        15
+      ]
+    },
+    {
+      "issue": "七節拍、真假母聲及四語重複句仍待實際mono/耳機/手機試聽。",
+      "why": "文字規則通過不代表觀眾聽得到關鍵證據。",
+      "episode_refs": [
+        2,
+        8,
+        13,
+        14,
+        19
+      ]
+    },
+    {
+      "issue": "林小滿（lin-xiaoman）明確17歲，Veo Lite I2V未驗證可生成其入鏡畫面。",
+      "why": "目前首格I2V的allow_adult能力不代表允許未成年人顯影；不能把角色改為成年人，也不能以背影、局部、卡通風格或不提年齡當可保證捷徑。需經核可的手繪動畫或合法支援該年齡的供應商先做pilot、確認能力與交付再排量。僅畫外配音不因此自動受阻，逐鏡按實際可見人物判斷。",
+      "episode_refs": [
+        1,
+        3,
+        7,
+        9,
+        10,
+        12,
+        14,
+        17,
+        21,
+        29,
+        37,
+        38,
+        40
+      ]
+    },
+    {
+      "issue": "陸安（lu-an）明確9歲，Veo Lite I2V未驗證可生成其入鏡畫面。",
+      "why": "目前首格I2V的allow_adult能力不代表允許未成年人顯影；不能把角色改為成年人，也不能以背影、局部、卡通風格或不提年齡當可保證捷徑。需經核可的手繪動畫或合法支援該年齡的供應商先做pilot、確認能力與交付再排量。僅畫外配音不因此自動受阻，逐鏡按實際可見人物判斷。",
+      "episode_refs": [
+        14
+      ]
+    }
+  ]
+}

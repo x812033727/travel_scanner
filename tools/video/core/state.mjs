@@ -12,7 +12,7 @@ import { appliedBranding, brandingCurrent, readBranding } from "./branding.mjs";
 import { COMPILATION_HEADLINE_PLACEHOLDER, COMPILATION_STEPS, compilationChecksCurrent, isCompilation, lintCompilation, PLACEHOLDER_TITLE } from "./compilation.mjs";
 import { burnIn, illustrated, isDrama, keyframesHash, lookHash, mixHash, picturesHash, resolveMusic, resolveSfx, sfxHash, subtitlesHash } from "./drama.mjs";
 import { emptyLexicon } from "./lexicon.mjs";
-import { lintVideo } from "./lint.mjs";
+import { lintVideo, productionClipProblems } from "./lint.mjs";
 import { dubLocales, dubScript, speechLexicon, translationHash } from "../dubs/plan.mjs";
 import { atomicWrite, contentPackFile, docDir, readJson, readText, stopRequested, videoFile } from "./paths.mjs";
 import { LOCALES, narrationLocale } from "./schema.mjs";
@@ -358,6 +358,7 @@ export async function pipelineStatus({ slug, root, workdir }) {
   const assembledIllustrated = !(pictures && !drama) || (checks?.look_hash === lookNow && checks.pictures_hash === keyframesHash(doc, keyframes));
   const assembledSound = compilation || ((!doc?.music || checks?.mix_hash === mix) && (!doc?.sfx || checks?.sfx_hash === sfxHash(doc)));
   const assembledMedia = assembledDrama && assembledIllustrated && assembledSound && brandCurrent && brandBodyCurrent;
+  const productionClips = productionClipProblems(doc, project?.series, timeline, clips);
 
   const definitions = {
     brief: { done: existsSync(path.join(dir, "brief.md")), todo: `the planner agent writes docs/videos/${slug}/brief.md` },
@@ -409,8 +410,8 @@ export async function pipelineStatus({ slug, root, workdir }) {
     },
     "frames rendered": { done: framesDone, todo: cli("render", slug) },
     "clips generated": {
-      done: Boolean(speech) && clips?.speech_hash === speech && clips.visual_hash === visual && clips.look_hash === lookNow && !needsReview(clips),
-      note: clips && needsReview(clips) ? "some shots failed the clip checks (needs_review in clips/manifest.json)" : undefined,
+      done: Boolean(speech) && clips?.speech_hash === speech && clips.visual_hash === visual && clips.look_hash === lookNow && !needsReview(clips) && !productionClips.length,
+      note: productionClips.length ? productionClips[0].message : clips && needsReview(clips) ? "some shots failed the clip checks (needs_review in clips/manifest.json)" : undefined,
       todo: cli("clips", slug),
     },
     "music generated": { done: Boolean(mix) && music?.mix_hash === mix, todo: cli("music", slug) },

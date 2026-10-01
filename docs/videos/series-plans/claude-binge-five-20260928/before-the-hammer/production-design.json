@@ -1,0 +1,2825 @@
+{
+  "schema_version": 1,
+  "slug": "before-the-hammer",
+  "source_binding": {
+    "source_sha256": "b0e7af5bc71511c5143e98f22cf6b3152fc458587eef311bac1ed73ee1a28e0e"
+  },
+  "delivery_profile_ref": "../../production-20261001/profile.json",
+  "review_status": "design-only-not-render-tested",
+  "visual_direction": {
+    "style": "當代鑑物懸疑動畫；器物以可控光線、茶的熱氣與手的遲疑建立質感，人物表演克制。真偽證據需可重拍的材質與燈光測試，不能靠發光特效任意判真。",
+    "screen_direction": "承珩台上四盞先建俯視位置圖，觀眾席和台口固定軸；硯山堂四樓、木梯、天井石地要有高度關係，落盞與接盞分鏡。",
+    "performance": "念瑤說狠話不提高音量；致遠笑容消失必須能被看見；師父中風後重點是左手與停頓。懷舟是合作關係，不用曖昧慢鏡。",
+    "continuity": "A–E、另外三件仿品及帳冊原本/複寫/影本都分資產ID；1986材料與当世初一監視器時間另版。缺口一直一點鐘，E27後有金線。"
+  },
+  "opening_30s": [
+    {
+      "id": "o01",
+      "in_s": 0,
+      "out_s": 4,
+      "scale": "ECU",
+      "camera": "槌頭旁低角度，停在未落下",
+      "action": "八千萬競價已到，槌懸在拍品上方，念瑤在背景吸氣",
+      "characters": [
+        "nianyao"
+      ],
+      "props": [
+        "拍賣槌",
+        "E1仿盞"
+      ],
+      "dialogue_intent": "念瑤心聲「這一槌落下去，我會再死一次」需試讀，不念背景史",
+      "sound": "拍賣廳空氣與槌柄輕摩擦",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:351",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:372",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "id": "o02",
+      "in_s": 4,
+      "out_s": 8,
+      "scale": "MS",
+      "camera": "第三排平視推半步",
+      "action": "念瑤站起，看見台上自己的簽名證書",
+      "characters": [
+        "nianyao"
+      ],
+      "props": [
+        "椅",
+        "證書"
+      ],
+      "dialogue_intent": "保留阻止落槌的短句，不加入三年敘述",
+      "sound": "椅腳一響，廳聲降低",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:351",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:372",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "id": "o03",
+      "in_s": 8,
+      "out_s": 12,
+      "scale": "CU",
+      "camera": "證書手寫簽名→致遠手的移焦",
+      "action": "致遠舉手作安撫，另一手轉金筆",
+      "characters": [
+        "zhiyuan"
+      ],
+      "props": [
+        "金筆",
+        "證書"
+      ],
+      "dialogue_intent": "他溫柔壓她：「念瑤……」",
+      "sound": "金筆一次輕碰，不放掌聲罐頭",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:351",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:372",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "id": "o04",
+      "in_s": 12,
+      "out_s": 16,
+      "scale": "MS",
+      "camera": "側向跟念瑤到台，保持觀眾席方向",
+      "action": "她取茶壺，注茶前先看盞口",
+      "characters": [
+        "nianyao"
+      ],
+      "props": [
+        "茶壺",
+        "仿盞"
+      ],
+      "dialogue_intent": "短句「先看手」的動機留到正文，不硬塞口頭禪",
+      "sound": "衣袖、瓷碰木",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:351",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:372",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "id": "o05",
+      "in_s": 16,
+      "out_s": 20,
+      "scale": "ECU",
+      "camera": "固定光位俯斜拍盞底",
+      "action": "熱茶注入，盞底沒有預期居中光紋",
+      "characters": [
+        "nianyao"
+      ],
+      "props": [
+        "同只仿盞",
+        "熱茶"
+      ],
+      "dialogue_intent": "不加冗長教科書旁白；視線確認無光",
+      "sound": "水聲持續自然，不神秘雷擊",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:351",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:372",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "id": "o06",
+      "in_s": 20,
+      "out_s": 24,
+      "scale": "CU",
+      "camera": "盞與她眼神分開兩景，剪在停壺",
+      "action": "她放下茶壺，看向簽名；不提前揭出真盞位置",
+      "characters": [
+        "nianyao"
+      ],
+      "props": [
+        "茶壺",
+        "簽名證書"
+      ],
+      "dialogue_intent": "清晰宣告鑑定有問題的意圖，字句留writer依原作",
+      "sound": "落壺聲後留半秒",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:351",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:372",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "id": "o07",
+      "in_s": 24,
+      "out_s": 27,
+      "scale": "MS",
+      "camera": "致遠單人反打",
+      "action": "致遠對場內示意，笑容未褪",
+      "characters": [
+        "zhiyuan"
+      ],
+      "props": [
+        "金筆"
+      ],
+      "dialogue_intent": "「念瑤太累了，扶她下去」",
+      "sound": "聲音更輕，無匿名保全台詞",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:351",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:372",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "id": "o08",
+      "in_s": 27,
+      "out_s": 30,
+      "scale": "CU",
+      "camera": "平視，不仰拍英雄化",
+      "action": "念瑤直視他，證書邊緣留在前景",
+      "characters": [
+        "nianyao"
+      ],
+      "props": [
+        "證書"
+      ],
+      "dialogue_intent": "「我簽的時候，你就在旁邊。」待試讀，不擠旁白",
+      "sound": "一聲節奏點是配樂/桌面聲，不演成交槌落",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:351",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:372",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "id": "nianyao",
+      "voice_name": "Kore",
+      "performance": "台灣國語，低而平，語速慢半拍，每句話說完會停一下；不提高音量，狠話用最平的語氣說。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "顧念瑤：Gù Niànyáo。來源注音：ㄍㄨˋ ㄋㄧㄢˋ ㄧㄠˊ；瑤讀「搖」。台灣口音，聲調候選待聽校。",
+        "ja": "グー・ニエンヤオ",
+        "ko": "구녠야오",
+        "en": "Gu Nianyao; goo nyen-yaow"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "nianyao-base",
+          "episodes": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ],
+          "appearance": "27-year-old Taiwanese woman, 165 cm, slim and straight-backed, pale oval face with a calm level gaze and almost no expression, dark brown eyes, black hair in a blunt chin-length bob tucked behind the left ear, wears a charcoal-gray high-collared linen work jacket over a white shirt, narrow black trousers and flat black leather shoes; signature object: a slim bronze restorer's spatula worn on a black cord around her neck like a pendant; hands always clean with short nails, a faint white scar across the left palm.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:111",
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+          ]
+        },
+        {
+          "id": "nianyao-knee-after",
+          "episodes": [
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ],
+          "appearance": "27-year-old Taiwanese woman, 165 cm, slim and straight-backed, pale oval face with a calm level gaze and almost no expression, dark brown eyes, black hair in a blunt chin-length bob tucked behind the left ear, wears a charcoal-gray high-collared linen work jacket over a white shirt, narrow black trousers and flat black leather shoes; signature object: a slim bronze restorer's spatula worn on a black cord around her neck like a pendant; hands always clean with short nails, a faint white scar across the left palm.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：E20撞膝後只表演短暫支撐/跪姿困難，不露傷口，不擅加永久跛行。生效點：接住B盞後，不是整集開頭就痛。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "接住B盞後，不是整集開頭就痛",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505",
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:879",
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:919"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zhiyuan",
+      "voice_name": "Achird",
+      "performance": "台灣國語，溫和有禮，永遠像在替對方著想；越狠的話說得越輕，尾音帶笑。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "秦致遠：Qín Zhìyuǎn。來源注音：未填，需補完整人名試聽。台灣口音，聲調候選待聽校。",
+        "ja": "チン・ジーユエン",
+        "ko": "친즈위안",
+        "en": "Qin Zhiyuan; chin jih-ywen"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "zhiyuan-base",
+          "episodes": [
+            1,
+            2,
+            3,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            16,
+            17,
+            19,
+            21,
+            23,
+            26,
+            29,
+            30,
+            33,
+            38
+          ],
+          "appearance": "32-year-old man, 182 cm, tall and lean, handsome symmetrical face with gentle features, warm brown eyes, neat black hair swept back, wears a tailored navy-blue three-piece suit with a dove-gray tie and a white pocket square, polished brown oxford shoes, a thin gold watch on the left wrist; signature object: a gold fountain pen he turns slowly between his fingers.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:134",
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+          ]
+        },
+        {
+          "id": "zhiyuan-custody",
+          "episodes": [
+            33,
+            38
+          ],
+          "appearance": "32-year-old man, 182 cm, tall and lean, handsome symmetrical face with gentle features, warm brown eyes, neatly swept-back black hair now slightly unsettled. He wears a plain navy-blue suit jacket and matching trousers over a white shirt, polished brown oxford shoes. Both wrists are bare. No gold watch, fountain pen, pocket square or jewelry. His tired face, lowered shoulders and still empty hands replace his earlier polished composure. For the signing insert he holds only the plain pen provided on the table, then leaves it there.",
+          "cue": "E30 被捕後；E33 偵查隊與 E38 承珩借提現場指認，無日常金錶／金筆；簽名用桌上普通筆。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505",
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1244",
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1375"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "baiwei",
+      "voice_name": "Leda",
+      "performance": "台灣國語，主持人的亮嗓，語速快、句尾上揚；哭的時候聲音會突然壓低變小。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "白薇：Bái Wéi／ㄅㄞˊ ㄨㄟˊ；薇為二聲。已依台灣教育部《國語辭典簡編本》核對（2026-10-01），符合來源 lexicon；台灣口音與實際 TTS 仍待聽校。",
+        "ja": "バイ・ウェイ",
+        "ko": "바이웨이",
+        "en": "Bai Wei; bye way"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "baiwei-base",
+          "episodes": [
+            2,
+            3,
+            8,
+            13,
+            15,
+            16,
+            23,
+            30,
+            38,
+            39
+          ],
+          "appearance": "28-year-old woman, 168 cm, slender with a television presenter's upright posture, heart-shaped face with large bright eyes, long chestnut-brown hair in loose waves over one shoulder, wears a fitted ivory blazer dress with a thin red belt, red lipstick, small pearl earrings, nude heels; signature object: a red leather phone case with a gold ring holder, always in her right hand.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:155",
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "heqiu",
+      "voice_name": "Charon",
+      "performance": "台灣國語，低沉、慢、字字清楚，像在念拍品說明；生氣時反而更慢。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "邱鶴年：Qiū Hènián。來源注音：鶴讀ㄏㄜˋ。台灣口音，聲調候選待聽校。",
+        "ja": "チウ・ホーニエン",
+        "ko": "추허녠",
+        "en": "Qiu Henian; chyoh huh-nyen"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "heqiu-base",
+          "episodes": [
+            1,
+            2,
+            4,
+            11,
+            17,
+            20,
+            21,
+            22,
+            25,
+            29,
+            31,
+            32,
+            34,
+            35,
+            36
+          ],
+          "appearance": "62-year-old man, 175 cm, heavyset with broad shoulders and a slight stoop, square jowled face with hooded eyes, iron-gray hair combed straight back, silver-rimmed glasses, wears a charcoal double-breasted suit with a burgundy silk scarf tucked at the collar and black leather gloves he seldom removes; signature object: a black walking cane whose handle is a rosewood auctioneer's gavel head.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:174",
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yanshan",
+      "voice_name": "Algenib",
+      "performance": "台灣國語，七十一歲老人的沙啞低嗓；短句、帶命令，常把一句話拆成幾截說，截與截之間停一下；不解釋、不求人。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "秦硯山：Qín Yànshān。來源注音：硯讀ㄧㄢˋ（燄）。台灣口音，聲調候選待聽校。",
+        "ja": "チン・イエンシャン",
+        "ko": "친옌산",
+        "en": "Qin Yanshan; chin yen-shahn"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "yanshan-base",
+          "episodes": [
+            1,
+            4,
+            9,
+            11,
+            12,
+            17,
+            20,
+            22,
+            24,
+            26,
+            32,
+            34,
+            35,
+            36,
+            37,
+            40
+          ],
+          "appearance": "71-year-old man, 170 cm, thin and wiry with a stubborn set to the shoulders, deeply lined narrow face, sharp small eyes under thick white eyebrows, short cropped white hair and white stubble, wears a dark indigo-blue Chinese-collar cotton jacket over a gray undershirt, loose black trousers and black cloth shoes; signature object: a brass jeweler's loupe on a frayed brown cord around his neck.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:195",
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+          ]
+        },
+        {
+          "id": "yanshan-standing",
+          "episodes": [
+            1,
+            4
+          ],
+          "appearance": "71-year-old man, 170 cm, thin and wiry with a stubborn set to the shoulders, deeply lined narrow face, sharp small eyes under thick white eyebrows, short cropped white hair and white stubble, wears a dark indigo-blue Chinese-collar cotton jacket over a gray undershirt, loose black trousers and black cloth shoes; signature object: a brass jeweler's loupe on a frayed brown cord around his neck.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：站立能走，E4末右手縮袖顫抖；無輪椅。生效點：E4顫抖只發生懸念鏡。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "E4顫抖只發生懸念鏡",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505",
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:372",
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:450"
+          ]
+        },
+        {
+          "id": "yanshan-wheelchair",
+          "episodes": [
+            9,
+            11,
+            12,
+            17,
+            20,
+            22,
+            24,
+            26,
+            32,
+            34,
+            35,
+            36,
+            37,
+            40
+          ],
+          "appearance": "71-year-old man, 170 cm, thin and wiry with a stubborn set to the shoulders, deeply lined narrow face, sharp small eyes under thick white eyebrows, short cropped white hair and white stubble, wears a dark indigo-blue Chinese-collar cotton jacket over a gray undershirt, loose black trousers and black cloth shoes; signature object: a brass jeweler's loupe on a frayed brown cord around his neck.\n此鏡完整狀態（與基準習慣物件不同時，以此狀態為準）：樸素鋼輪椅；右手癱垂腿，任何寫字/壺/輪圈/舉牌用左手，不再站起。生效點：E9第一次輪椅入鏡後。禁止生成本狀態已離手、消失或未出現的物件。",
+          "cue": "E9第一次輪椅入鏡後",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505",
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:580",
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:644"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "huaizhou",
+      "voice_name": "Schedar",
+      "performance": "台灣國語，平穩、不快不慢，像在念筆錄；唯一會加重的三個字是「證據說話」。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "沈懷舟：Shěn Huáizhōu。來源注音：沈讀ㄕㄣˇ（審），姓氏音。台灣口音，聲調候選待聽校。",
+        "ja": "シェン・ホワイジョウ",
+        "ko": "선화이저우",
+        "en": "Shen Huaizhou; shun hwye-joh"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "huaizhou-base",
+          "episodes": [
+            6,
+            10,
+            14,
+            18,
+            20,
+            21,
+            26,
+            28,
+            30,
+            31,
+            33,
+            34,
+            36,
+            38,
+            39,
+            40
+          ],
+          "appearance": "31-year-old man, 180 cm, athletic and squarely built, angular face with a strong jaw, steady dark eyes and a faint permanent frown, short black hair cut close at the sides, wears a plain black windbreaker over a light gray crew-neck shirt, dark jeans and black boots; signature object: a scuffed black hardcover notebook closed with a rubber band, held in his hand or tucked under his left arm.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:216",
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xiaozhen",
+      "voice_name": "Laomedeia",
+      "performance": "台灣國語，活潑、語速快、愛接話；緊張時會一口氣說一整段。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "唐蓁：Táng Zhēn。來源注音：蓁讀ㄓㄣ（真）。台灣口音，聲調候選待聽校。",
+        "ja": "タン・ジェン",
+        "ko": "탕전",
+        "en": "Tang Zhen; tahng jen"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "xiaozhen-base",
+          "episodes": [
+            5,
+            6,
+            7,
+            12,
+            13,
+            15,
+            19,
+            23,
+            24,
+            27,
+            28,
+            35,
+            37,
+            40
+          ],
+          "appearance": "19-year-old young woman, 160 cm, small and quick, round face with freckles and wide curious eyes, black hair in a high ponytail with loose strands at the temples, wears an oversized mustard-yellow knit sweater with the sleeves pushed up, denim overalls with clay dust on the knees and white sneakers; signature object: a headband magnifier pushed up onto her forehead like a crown.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:235",
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zhaoma",
+      "voice_name": "Gacrux",
+      "performance": "台灣國語帶一點台語腔，慢、厚、不急；每句話說完會把嘴閉緊。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "趙秀英：Zhào Xiùyīng；趙媽 Zhào Mā。來源注音：未填，需補完整人名試聽。台灣口音，聲調候選待聽校。",
+        "ja": "ジャオ・シウイン／ジャオマー",
+        "ko": "자오슈잉 / 자오마",
+        "en": "Zhao Xiuying; jow shyoh-ying; Zhao-ma"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "zhaoma-base",
+          "episodes": [
+            4,
+            9,
+            13,
+            14,
+            19,
+            22
+          ],
+          "appearance": "56-year-old woman, 158 cm, sturdy and compact, broad kind face with tired eyes and tightly closed lips, gray-streaked black hair in a low bun, wears a dark green cotton apron over a plain beige blouse and brown trousers, gray cloth slippers; signature object: a ring of brass keys on a red cord at her waist.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:254",
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hanyidao",
+      "voice_name": "Enceladus",
+      "performance": "台灣國語，氣音多、句子短、常常說一半停住；笑是從鼻子裡出來的一聲。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "pronunciations": {
+        "zh-TW": "韓一刀：Hán Yīdāo。來源注音：未填，需補完整人名試聽。台灣口音，聲調候選待聽校。",
+        "ja": "ハン・イーダオ",
+        "ko": "한이다오",
+        "en": "Han Yidao; hahn ee-dow"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "hanyidao-base",
+          "episodes": [
+            7,
+            10,
+            24,
+            37
+          ],
+          "appearance": "58-year-old man, 172 cm, gaunt with rounded shoulders, hollow cheeks and a long gray-stubbled face, sunken watchful eyes, long gray hair tied back with a black cord, wears a stained brown canvas work apron over a faded black shirt with the sleeves rolled to the elbow, gray trousers and black rubber boots; signature object: a thin carving knife with a worn bamboo handle tucked behind his right ear; both hands tremble visibly at rest.",
+          "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:273",
+            "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+          ]
+        }
+      ]
+    }
+  ],
+  "prop_rules": [
+    {
+      "id": "cups-abcde",
+      "identity": "A1986仿品/B缺口真盞/C邱父真盞/D念瑤新仿/E韓另練品",
+      "states": "E35台上A/B/C/D；E全劇不入鏡；B E27後金修",
+      "ownership": "E36 A/D警方；B念瑤；C館暫管→E40捐贈；E銀行另扣",
+      "insert_rules": "四盞左右排位鎖；每鏡標字母但正片不加非劇內代號",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "id": "light-test",
+      "identity": "真品B/C中心光，A偏心；D無中心光",
+      "states": "相同茶溫、光源高度、鏡位；冷暖試驗以E15指定狀態",
+      "ownership": "測試台可共用rig，材質資產不可偷換",
+      "insert_rules": "先做動畫材質測試，未測以前不得把參考靜圖視為真偽通過",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "id": "ledger",
+      "identity": "出貨複寫簿/1986單頁/韓仿製記錄為三樣",
+      "states": "E9底座空→E19米缸→E20警方→E38影本",
+      "ownership": "交接在畫外時不另加具名演員；E39只有複製品照片",
+      "insert_rules": "簽名/日期採核准字圖；禁止模型生成亂字",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "id": "rail-camera",
+      "identity": "四樓黃色警示、原鬆欄杆、監視攝影機、保護網",
+      "states": "E16前已由致遠鬆；E30警方架機，掉落只1秒接網",
+      "ownership": "念瑤未改欄杆；從四樓到網的位置預演",
+      "insert_rules": "不拍工具/鬆動手法，手伸→側身→欄斷→網分開",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "id": "hands",
+      "identity": "師父右癱/左寫；證書簽名與A刻仿",
+      "states": "E4顫抖→E6畫外中風→E9輪椅；E40左手舉牌",
+      "ownership": "落槌E40是買回A，不回用E1成交結果",
+      "insert_rules": "手部特寫每次看左右與持物，手寫字另合成",
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    }
+  ],
+  "episodes": [
+    {
+      "episode": 1,
+      "title": "落槌前一秒",
+      "characters": [
+        "nianyao",
+        "zhiyuan",
+        "heqiu",
+        "yanshan"
+      ],
+      "locations": [
+        "auction-hall"
+      ],
+      "hero_shot": {
+        "action": "槌懸停→起身→熱茶无光→指證簽名",
+        "camera": "台側軸線/盞內固定光位",
+        "sound": "注茶停後念瑤低聲"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：瓷器光紋變成魔法",
+          "solution": "拆手/壺/盞/反應，槌聲不可畫成交"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "zhiyuan-base",
+        "heqiu-base",
+        "yanshan-base",
+        "yanshan-standing"
+      ],
+      "prop_checks": [
+        "E1未成交仿盞",
+        "簽名證書"
+      ],
+      "voice_notes": [
+        "注茶停後念瑤低聲",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集E1未成交仿盞、簽名證書涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:372",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 2,
+      "title": "妳瘋了嗎",
+      "characters": [
+        "nianyao",
+        "zhiyuan",
+        "baiwei",
+        "heqiu"
+      ],
+      "locations": [
+        "auction-hall"
+      ],
+      "hero_shot": {
+        "action": "三方封條→空簽新證書→匿名墜落碎片",
+        "camera": "證書桌面俯視、閃回只手",
+        "sound": "紙封摩擦，閃回一瞬低頻"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：閃回提前暴露白薇",
+          "solution": "背影手部不認臉；原件與新證書分色套袋"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "zhiyuan-base",
+        "baiwei-base",
+        "heqiu-base"
+      ],
+      "prop_checks": [
+        "E1盞封條",
+        "新空白鑑定書"
+      ],
+      "voice_notes": [
+        "紙封摩擦，閃回一瞬低頻",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集E1盞封條、新空白鑑定書涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:398",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 3,
+      "title": "一眼見真",
+      "characters": [
+        "nianyao",
+        "baiwei",
+        "zhiyuan"
+      ],
+      "locations": [
+        "tv-studio"
+      ],
+      "hero_shot": {
+        "action": "三件盞排列→底足刀痕→亮投票燈",
+        "camera": "先全排列後手指刀痕",
+        "sound": "白薇主持明亮，觀眾無具名話"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：投票字/盞位亂",
+          "solution": "每一件獨立編號資產，票數人工合成"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "zhiyuan-base",
+        "baiwei-base"
+      ],
+      "prop_checks": [
+        "節目第二仿盞",
+        "三件底足"
+      ],
+      "voice_notes": [
+        "白薇主持明亮，觀眾無具名話",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集節目第二仿盞、三件底足涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:424",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 4,
+      "title": "師父的手",
+      "characters": [
+        "nianyao",
+        "yanshan",
+        "zhaoma",
+        "heqiu"
+      ],
+      "locations": [
+        "studio"
+      ],
+      "hero_shot": {
+        "action": "修復室鎖門→師父站立→袖内右手抖",
+        "camera": "門縫到半身，不拍輪椅",
+        "sound": "鎖響、趙媽鑰匙握緊"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：提早套中風輪椅",
+          "solution": "站姿全身先確立；右手只懸念鏡顫抖"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "heqiu-base",
+        "yanshan-base",
+        "yanshan-standing",
+        "zhaoma-base"
+      ],
+      "prop_checks": [
+        "鑰匙串",
+        "禮盒",
+        "右袖"
+      ],
+      "voice_notes": [
+        "鎖響、趙媽鑰匙握緊",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集鑰匙串、禮盒、右袖涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:450",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 5,
+      "title": "傳世之寶",
+      "characters": [
+        "nianyao",
+        "zhiyuan",
+        "xiaozhen"
+      ],
+      "locations": [
+        "museum",
+        "kitchen"
+      ],
+      "hero_shot": {
+        "action": "博物館偏心→廚房缺口中心",
+        "camera": "同光位匹配盞底，不共用同資產",
+        "sound": "兩次水聲同音量，證據句清晰"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：真假比較條件不一致",
+          "solution": "獨立材質但同茶/鏡位；不把A畫B的缺口"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "zhiyuan-base",
+        "xiaozhen-base"
+      ],
+      "prop_checks": [
+        "A展櫃",
+        "B缺口一點鐘"
+      ],
+      "voice_notes": [
+        "兩次水聲同音量，證據句清晰",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集A展櫃、B缺口一點鐘涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:476",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 6,
+      "title": "證據說話",
+      "characters": [
+        "nianyao",
+        "huaizhou",
+        "xiaozhen"
+      ],
+      "locations": [
+        "police"
+      ],
+      "hero_shot": {
+        "action": "出貨單交換→空簽書收走→電話中風",
+        "camera": "問訊桌軸線後念瑤起身",
+        "sound": "懷舟筆放下，電話短促"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：師父中風在畫外",
+          "solution": "電話聲只小蓁，不擅加醫院畫面/醫師聲"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "huaizhou-base",
+        "xiaozhen-base"
+      ],
+      "prop_checks": [
+        "新鑑定書",
+        "出貨單",
+        "手機"
+      ],
+      "voice_notes": [
+        "懷舟筆放下，電話短促",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集新鑑定書、出貨單、手機涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:502",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 7,
+      "title": "河岸倉庫",
+      "characters": [
+        "nianyao",
+        "xiaozhen",
+        "hanyidao",
+        "zhiyuan"
+      ],
+      "locations": [
+        "workshop"
+      ],
+      "hero_shot": {
+        "action": "窯邊未老化盞→照片→後門塞包",
+        "camera": "後門先建立，車燈掃牆再切手",
+        "sound": "窯火、車門、致遠在前門的聲音"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：窯火/偷拍/躲避同鏡",
+          "solution": "三段交替；韓手抖刻不下去，不演快速熟練"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "zhiyuan-base",
+        "xiaozhen-base",
+        "hanyidao-base"
+      ],
+      "prop_checks": [
+        "半成品",
+        "出貨照片",
+        "包"
+      ],
+      "voice_notes": [
+        "窯火、車門、致遠在前門的聲音",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集半成品、出貨照片、包涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:528",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 8,
+      "title": "閨蜜",
+      "characters": [
+        "nianyao",
+        "baiwei",
+        "zhiyuan"
+      ],
+      "locations": [
+        "kitchen",
+        "studio"
+      ],
+      "hero_shot": {
+        "action": "濕墨頁→白薇杯倒→下一頁假帳址",
+        "camera": "桌面視線接樓梯單人",
+        "sound": "杯倒聲打斷哭聲"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：因果誤成攤牌後偷拍",
+          "solution": "先說明早晨已拍；不拍新增再次拍照"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "zhiyuan-base",
+        "baiwei-base"
+      ],
+      "prop_checks": [
+        "筆記兩頁",
+        "红手機",
+        "茶杯"
+      ],
+      "voice_notes": [
+        "杯倒聲打斷哭聲",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集筆記兩頁、红手機、茶杯涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:554",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 9,
+      "title": "中空的鑑台",
+      "characters": [
+        "nianyao",
+        "zhaoma",
+        "zhiyuan",
+        "yanshan"
+      ],
+      "locations": [
+        "studio"
+      ],
+      "hero_shot": {
+        "action": "空底座油紙印→左手將按印→念瑤擋",
+        "camera": "底座空鏡后輪椅手軸",
+        "sound": "趙媽鑰匙緊響、車到門外"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：師父右手被強按",
+          "solution": "左拇指明確；輪椅第一現身，不站起"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "zhiyuan-base",
+        "yanshan-base",
+        "yanshan-wheelchair",
+        "zhaoma-base"
+      ],
+      "prop_checks": [
+        "底座",
+        "拇指印泥",
+        "鑰匙"
+      ],
+      "voice_notes": [
+        "趙媽鑰匙緊響、車到門外",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集底座、拇指印泥、鑰匙涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:580",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 10,
+      "title": "這雙手",
+      "characters": [
+        "nianyao",
+        "hanyidao",
+        "zhiyuan",
+        "huaizhou"
+      ],
+      "locations": [
+        "studio"
+      ],
+      "hero_shot": {
+        "action": "手機暫停過戶→兩盞比對→韓露疤",
+        "camera": "僅手機/印泥開場，再比對台",
+        "sound": "門縫燈灭，无邱畫外台詞"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：接上集時增加師父等超名單角色",
+          "solution": "師父/趙媽不露臉聲甚至左手；邱僅車/手機字"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "zhiyuan-base",
+        "huaizhou-base",
+        "hanyidao-base"
+      ],
+      "prop_checks": [
+        "半成品",
+        "扣押仿盞",
+        "韓手疤"
+      ],
+      "voice_notes": [
+        "門縫燈灭，无邱畫外台詞",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集半成品、扣押仿盞、韓手疤涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:606",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 11,
+      "title": "過戶",
+      "characters": [
+        "nianyao",
+        "zhiyuan",
+        "yanshan",
+        "heqiu"
+      ],
+      "locations": [
+        "studio"
+      ],
+      "hero_shot": {
+        "action": "左手寫不要他→1986合照",
+        "camera": "手部實寫後焦到照片",
+        "sound": "鉛筆摩擦，師父短氣音"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：左/右互換與年齡错",
+          "solution": "手指動作獨立動畫；照片人物年代另造像"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "zhiyuan-base",
+        "heqiu-base",
+        "yanshan-base",
+        "yanshan-wheelchair"
+      ],
+      "prop_checks": [
+        "紙筆",
+        "旧合照"
+      ],
+      "voice_notes": [
+        "鉛筆摩擦，師父短氣音",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集紙筆、旧合照涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:644",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 12,
+      "title": "師父的秘密",
+      "characters": [
+        "nianyao",
+        "yanshan",
+        "xiaozhen"
+      ],
+      "locations": [
+        "studio"
+      ],
+      "hero_shot": {
+        "action": "凌晨左寫→門外手機偷拍→床邊信",
+        "camera": "房內外兩方向分切",
+        "sound": "筆尖停頓與門外衣響"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：師父說長台詞",
+          "solution": "字由當集在場者讀，師父僅三四字"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "yanshan-base",
+        "yanshan-wheelchair",
+        "xiaozhen-base"
+      ],
+      "prop_checks": [
+        "信",
+        "手機",
+        "床邊燈"
+      ],
+      "voice_notes": [
+        "筆尖停頓與門外衣響",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集信、手機、床邊燈涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:670",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 13,
+      "title": "缺口盞",
+      "characters": [
+        "nianyao",
+        "xiaozhen",
+        "baiwei",
+        "zhaoma"
+      ],
+      "locations": [
+        "kitchen"
+      ],
+      "hero_shot": {
+        "action": "木櫃第二格空→攝影棚B入鏡",
+        "camera": "匹配空位與盞缺口",
+        "sound": "空櫃觸木聲，節目遠場"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：致遠被畫成現場來賓",
+          "solution": "只有公告文字，無臉/聲；缺口仍未金修"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "baiwei-base",
+        "xiaozhen-base",
+        "zhaoma-base"
+      ],
+      "prop_checks": [
+        "B",
+        "官網公告"
+      ],
+      "voice_notes": [
+        "空櫃觸木聲，節目遠場",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集B、官網公告涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:696",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 14,
+      "title": "帳冊的複寫本",
+      "characters": [
+        "nianyao",
+        "huaizhou",
+        "zhaoma"
+      ],
+      "locations": [
+        "police",
+        "studio"
+      ],
+      "hero_shot": {
+        "action": "1986複寫頁→信封米糠→門外聽",
+        "camera": "證據俯視微距",
+        "sound": "紙翻、米糠落桌，旁白不密讀全文"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：混成帳冊正本",
+          "solution": "碳複寫藍灰與原件分層，不画完整册"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "huaizhou-base",
+        "zhaoma-base"
+      ],
+      "prop_checks": [
+        "複寫頁",
+        "米糠信封"
+      ],
+      "voice_notes": [
+        "紙翻、米糠落桌，旁白不密讀全文",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集複寫頁、米糠信封涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:722",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 15,
+      "title": "意外驚喜",
+      "characters": [
+        "nianyao",
+        "baiwei",
+        "xiaozhen"
+      ],
+      "locations": [
+        "tv-studio"
+      ],
+      "hero_shot": {
+        "action": "溫茶拒測→滾茶中心光→B收包",
+        "camera": "一致光位两次對比，反應分拍",
+        "sound": "滚茶水声，光出时不炸音效"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：真假靠换壶魔法",
+          "solution": "同B资产锁；提词文字给白薇看不加导播声"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "baiwei-base",
+        "xiaozhen-base"
+      ],
+      "prop_checks": [
+        "B",
+        "兩壺茶",
+        "提詞螢幕"
+      ],
+      "voice_notes": [
+        "滚茶水声，光出时不炸音效",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集B、兩壺茶、提詞螢幕涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:748",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 16,
+      "title": "樓梯間",
+      "characters": [
+        "nianyao",
+        "baiwei",
+        "zhiyuan"
+      ],
+      "locations": [
+        "studio"
+      ],
+      "hero_shot": {
+        "action": "黃色警示→欄杆微晃→白薇哭",
+        "camera": "楼梯侧面全景先定高度",
+        "sound": "空楼梯混响，哭声压低"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：误写念瑶松栏",
+          "solution": "不出现工具/主动拆栏；她只检查触碰"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "zhiyuan-base",
+        "baiwei-base"
+      ],
+      "prop_checks": [
+        "欄杆",
+        "黃色膠帶"
+      ],
+      "voice_notes": [
+        "空楼梯混响，哭声压低",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集欄杆、黃色膠帶涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:775",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 17,
+      "title": "年鑑會",
+      "characters": [
+        "nianyao",
+        "zhiyuan",
+        "yanshan",
+        "heqiu"
+      ],
+      "locations": [
+        "museum"
+      ],
+      "hero_shot": {
+        "action": "輪椅左手放壺→筆递过来",
+        "camera": "桌面一轴，左手连贯",
+        "sound": "瓷落桌後才说话"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：同手持壺持筆穿幫",
+          "solution": "先放壺再接筆；每动作独立镜头"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "zhiyuan-base",
+        "heqiu-base",
+        "yanshan-base",
+        "yanshan-wheelchair"
+      ],
+      "prop_checks": [
+        "水壺",
+        "筆",
+        "輪椅"
+      ],
+      "voice_notes": [
+        "瓷落桌後才说话",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集水壺、筆、輪椅涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:801",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 18,
+      "title": "送信的人",
+      "characters": [
+        "nianyao",
+        "huaizhou"
+      ],
+      "locations": [
+        "police"
+      ],
+      "hero_shot": {
+        "action": "封信與影本→并肩長椅",
+        "camera": "平行构图，不长对视",
+        "sound": "室外風，紙邊摩擦"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：被拍成戀愛",
+          "solution": "不牽手、不慢轉正對；证据在中間"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "huaizhou-base"
+      ],
+      "prop_checks": [
+        "師父信",
+        "鑑定影本"
+      ],
+      "voice_notes": [
+        "室外風，紙邊摩擦",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集師父信、鑑定影本涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:827",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 19,
+      "title": "帳冊",
+      "characters": [
+        "nianyao",
+        "zhaoma",
+        "xiaozhen",
+        "zhiyuan"
+      ],
+      "locations": [
+        "studio"
+      ],
+      "hero_shot": {
+        "action": "米缸出帳→小蓁拍頁→B二度被帶走",
+        "camera": "米缸與杯柜分场建立",
+        "sound": "米粒、翻頁、包扣"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：兩條道具移動混",
+          "solution": "分出账/盞两条镜组；偷拍不新增发现台词"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "zhiyuan-base",
+        "xiaozhen-base",
+        "zhaoma-base"
+      ],
+      "prop_checks": [
+        "原帳",
+        "手機",
+        "B皮包"
+      ],
+      "voice_notes": [
+        "米粒、翻頁、包扣",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集原帳、手機、B皮包涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:853",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 20,
+      "title": "雙生盞",
+      "characters": [
+        "nianyao",
+        "yanshan",
+        "heqiu",
+        "huaizhou"
+      ],
+      "locations": [
+        "studio"
+      ],
+      "hero_shot": {
+        "action": "B滾木階→護盞撞膝→天井師父長句",
+        "camera": "盞低机位/接住/四人中景",
+        "sound": "撞門在樓上，師父唯一長句留呼吸"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：摔傷/多人/主供詞擠一鏡",
+          "solution": "撞擊只聲，接盞單独；致遠白薇小蓁不入鏡声"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "nianyao-knee-after",
+        "heqiu-base",
+        "yanshan-base",
+        "yanshan-wheelchair",
+        "huaizhou-base"
+      ],
+      "prop_checks": [
+        "B",
+        "皮包識別證",
+        "帳交接畫外"
+      ],
+      "voice_notes": [
+        "撞門在樓上，師父唯一長句留呼吸",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集B、皮包識別證、帳交接畫外涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:879",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 21,
+      "title": "空殼",
+      "characters": [
+        "nianyao",
+        "zhiyuan",
+        "huaizhou",
+        "heqiu"
+      ],
+      "locations": [
+        "police",
+        "auction-hall"
+      ],
+      "hero_shot": {
+        "action": "求償文件→致遠被帶問話",
+        "camera": "告示/警局两场分開",
+        "sound": "紙張重置桌面，致遠笑停"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：把上一世椅子拍閃回新臉",
+          "solution": "只念瑤表情/空椅联想；不扩故事"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "nianyao-knee-after",
+        "zhiyuan-base",
+        "heqiu-base",
+        "huaizhou-base"
+      ],
+      "prop_checks": [
+        "求償文書",
+        "證物封袋"
+      ],
+      "voice_notes": [
+        "紙張重置桌面，致遠笑停",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集求償文書、證物封袋涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:919",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 22,
+      "title": "四十年前",
+      "characters": [
+        "nianyao",
+        "heqiu",
+        "yanshan",
+        "zhaoma"
+      ],
+      "locations": [
+        "studio"
+      ],
+      "hero_shot": {
+        "action": "邱說舊事→師父左寫倒茶→杖懸",
+        "camera": "三個單人反打",
+        "sound": "杖未落的靜默取代提示音"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：師父長篇口供過早",
+          "solution": "保留書寫讀出；手杖停半空不敲"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "nianyao-knee-after",
+        "heqiu-base",
+        "yanshan-base",
+        "yanshan-wheelchair",
+        "zhaoma-base"
+      ],
+      "prop_checks": [
+        "A歷史",
+        "茶",
+        "手杖"
+      ],
+      "voice_notes": [
+        "杖未落的靜默取代提示音",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集A歷史、茶、手杖涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:945",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 23,
+      "title": "驚喜的代價",
+      "characters": [
+        "nianyao",
+        "baiwei",
+        "xiaozhen",
+        "zhiyuan"
+      ],
+      "locations": [
+        "studio"
+      ],
+      "hero_shot": {
+        "action": "四頁供述→錄音→門外威脅",
+        "camera": "地上紙與背門构图",
+        "sound": "哭聲近而小，門外致遠更輕"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：尚未離職掛識別證",
+          "solution": "E23起無節目證；4頁可读不全文念"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "nianyao-knee-after",
+        "zhiyuan-base",
+        "baiwei-base",
+        "xiaozhen-base"
+      ],
+      "prop_checks": [
+        "白薇声明4頁",
+        "錄音筆"
+      ],
+      "voice_notes": [
+        "哭聲近而小，門外致遠更輕",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集白薇声明4頁、錄音筆涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:971",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 24,
+      "title": "收養",
+      "characters": [
+        "nianyao",
+        "yanshan",
+        "xiaozhen",
+        "hanyidao"
+      ],
+      "locations": [
+        "studio",
+        "workshop"
+      ],
+      "hero_shot": {
+        "action": "摹坊模具毀→韓摸真模→後門走",
+        "camera": "空間先示出口，碎片前景遮擋",
+        "sound": "石膏脆響，韓短氣音"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：火與破壞遮住證據",
+          "solution": "只选关键模具破裂，先拍模號留痕"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "nianyao-knee-after",
+        "yanshan-base",
+        "yanshan-wheelchair",
+        "xiaozhen-base",
+        "hanyidao-base"
+      ],
+      "prop_checks": [
+        "石膏模",
+        "刀",
+        "後門"
+      ],
+      "voice_notes": [
+        "石膏脆響，韓短氣音",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集石膏模、刀、後門涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:997",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 25,
+      "title": "第三只盞",
+      "characters": [
+        "nianyao",
+        "heqiu"
+      ],
+      "locations": [
+        "vault"
+      ],
+      "hero_shot": {
+        "action": "藏庫C出光→前世新闻对照",
+        "camera": "C特寫與新聞照片分層",
+        "sound": "藏庫靜，日期由一人讀"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：提早用热茶測真",
+          "solution": "本集只触摸/灯光，真茶到31"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "nianyao-knee-after",
+        "heqiu-base"
+      ],
+      "prop_checks": [
+        "C",
+        "初一日期照片"
+      ],
+      "voice_notes": [
+        "藏庫靜，日期由一人讀",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集C、初一日期照片涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1023",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 26,
+      "title": "舊怨",
+      "characters": [
+        "nianyao",
+        "zhiyuan",
+        "yanshan",
+        "huaizhou"
+      ],
+      "locations": [
+        "studio"
+      ],
+      "hero_shot": {
+        "action": "USB交接→師父左寫→不道歉",
+        "camera": "手與眼神分镜",
+        "sound": "笔刮纸比音乐更响"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：USB交警方過早",
+          "solution": "致遠仍持后续藏匿线；手写不改长对白"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "nianyao-knee-after",
+        "zhiyuan-base",
+        "yanshan-base",
+        "yanshan-wheelchair",
+        "huaizhou-base"
+      ],
+      "prop_checks": [
+        "USB",
+        "紙",
+        "左手筆"
+      ],
+      "voice_notes": [
+        "笔刮纸比音乐更响",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集USB、紙、左手筆涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1049",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 27,
+      "title": "修復",
+      "characters": [
+        "nianyao",
+        "xiaozhen"
+      ],
+      "locations": [
+        "studio"
+      ],
+      "hero_shot": {
+        "action": "B一點鐘金修→內側影字",
+        "camera": "微距固定，不繞盞改方向",
+        "sound": "修復工具細聲，不拍技法教程"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：金修後又缺口/提前揭全字",
+          "solution": "修前后资产切；一刀仅埋阴影不读出"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "nianyao-knee-after",
+        "xiaozhen-base"
+      ],
+      "prop_checks": [
+        "B金線",
+        "一刀隐字"
+      ],
+      "voice_notes": [
+        "修復工具細聲，不拍技法教程",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集B金線、一刀隐字涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1075",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 28,
+      "title": "太遲與剛好",
+      "characters": [
+        "nianyao",
+        "huaizhou",
+        "xiaozhen"
+      ],
+      "locations": [
+        "police"
+      ],
+      "hero_shot": {
+        "action": "攝影機/錄音筆交手→6天板",
+        "camera": "辦公室桌面俯視",
+        "sound": "警局底聲，電話小蓁不擅加臉"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：錄音筆外露暴露佈局",
+          "solution": "貼身藏筆；攝影機到30才架"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "nianyao-knee-after",
+        "huaizhou-base",
+        "xiaozhen-base"
+      ],
+      "prop_checks": [
+        "小機",
+        "筆",
+        "倒數六天"
+      ],
+      "voice_notes": [
+        "警局底聲，電話小蓁不擅加臉",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集小機、筆、倒數六天涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1101",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 29,
+      "title": "買家",
+      "characters": [
+        "nianyao",
+        "zhiyuan",
+        "heqiu"
+      ],
+      "locations": [
+        "auction-hall",
+        "studio"
+      ],
+      "hero_shot": {
+        "action": "D刻暗記→出窯→控制交付",
+        "camera": "多日工序摘要，底足插鏡",
+        "sound": "窯火渐息，暗記刮声"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：一天完成复杂烧制/把D当B",
+          "solution": "蒙太奇标多日；B留木柜第二格；不临摹现实秘方"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "nianyao-knee-after",
+        "zhiyuan-base",
+        "heqiu-base"
+      ],
+      "prop_checks": [
+        "D暗記",
+        "交貨紀錄",
+        "B柜位"
+      ],
+      "voice_notes": [
+        "窯火渐息，暗記刮声",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集D暗記、交貨紀錄、B柜位涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1127",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 30,
+      "title": "那晚",
+      "characters": [
+        "nianyao",
+        "baiwei",
+        "zhiyuan",
+        "huaizhou"
+      ],
+      "locations": [
+        "studio"
+      ],
+      "hero_shot": {
+        "action": "手伸背→側避→欄斷→網兜一秒",
+        "camera": "楼梯平面预演，摄像位置固定",
+        "sound": "断木与网绷，后留喘息"
+      },
+      "risk_controls": [
+        {
+          "risk": "最高：连续长镜难保身重与伤害界限",
+          "solution": "4短镜加1秒网结果；不慢放坠落；当世初一夜非换盞夜"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "nianyao-knee-after",
+        "zhiyuan-base",
+        "baiwei-base",
+        "huaizhou-base"
+      ],
+      "prop_checks": [
+        "機位",
+        "小網",
+        "黃色帶"
+      ],
+      "voice_notes": [
+        "断木与网绷，后留喘息",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集機位、小網、黃色帶涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1153",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 31,
+      "title": "保險櫃",
+      "characters": [
+        "nianyao",
+        "huaizhou",
+        "heqiu"
+      ],
+      "locations": [
+        "vault",
+        "museum"
+      ],
+      "hero_shot": {
+        "action": "清晨展櫃C中心光→早換過",
+        "camera": "与E5同机位材质对照",
+        "sound": "水声與证据句，不使用勝利配樂"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：把凌晨三點拍成昨夜推人时",
+          "solution": "时间铭牌准确；A已离馆，不能反打仍在"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "nianyao-knee-after",
+        "heqiu-base",
+        "huaizhou-base"
+      ],
+      "prop_checks": [
+        "C",
+        "馆藏说明",
+        "搜查文書"
+      ],
+      "voice_notes": [
+        "水声與证据句，不使用勝利配樂",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集C、馆藏说明、搜查文書涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1192",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 32,
+      "title": "三只盞",
+      "characters": [
+        "nianyao",
+        "yanshan",
+        "heqiu"
+      ],
+      "locations": [
+        "studio",
+        "auction-hall"
+      ],
+      "hero_shot": {
+        "action": "左手寫水溫→拒進門",
+        "camera": "门两侧静机位",
+        "sound": "師父氣音与门缝静音"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：右癱又拿壺/站起",
+          "solution": "全程左手；放壺写字顺序拆"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "nianyao-knee-after",
+        "heqiu-base",
+        "yanshan-base",
+        "yanshan-wheelchair"
+      ],
+      "prop_checks": [
+        "紙上供詞",
+        "壺",
+        "輪椅"
+      ],
+      "voice_notes": [
+        "師父氣音与门缝静音",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集紙上供詞、壺、輪椅涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1218",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 33,
+      "title": "棋子",
+      "characters": [
+        "nianyao",
+        "zhiyuan",
+        "huaizhou"
+      ],
+      "locations": [
+        "police"
+      ],
+      "hero_shot": {
+        "action": "借提出供→專場A/C/D公告",
+        "camera": "警局与公告图文分开",
+        "sound": "宣读短，转场无邱声"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：在押角色仍宴會裝",
+          "solution": "致远造型/金笔待确认；邱只公告照片不加现场脸声"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "借提狀態混用日常配件",
+          "solution": "E33 偵查隊借提、E38 承珩現場指認，均不用法庭／囚服的臆造場面；沿用深藍西裝辨識輪廓，取消金錶、口袋巾與轉金筆習慣。E38 文件簽名只用桌面普通筆，落筆後放回桌面，不把原金筆從拘束狀態自動帶回。這是造型／道具選擇，不宣稱任何司法配物規則。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "nianyao-knee-after",
+        "zhiyuan-base",
+        "zhiyuan-custody",
+        "huaizhou-base"
+      ],
+      "prop_checks": [
+        "3盞图",
+        "致遠笔",
+        "紙"
+      ],
+      "voice_notes": [
+        "宣读短，转场无邱声",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集3盞图、致遠笔、紙涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1244",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1249",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1380"
+      ]
+    },
+    {
+      "episode": 34,
+      "title": "專場",
+      "characters": [
+        "nianyao",
+        "heqiu",
+        "huaizhou",
+        "yanshan"
+      ],
+      "locations": [
+        "auction-hall"
+      ],
+      "hero_shot": {
+        "action": "三盞上台→位置圖→觀眾師父",
+        "camera": "俯视定C/A/D后单杯近镜",
+        "sound": "大厅混響轻，落杯清晰"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：三盞位置跳与多人同镜",
+          "solution": "标绝对台位，各反打严格保持；师父观众席左手"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "nianyao-knee-after",
+        "heqiu-base",
+        "yanshan-base",
+        "yanshan-wheelchair",
+        "huaizhou-base"
+      ],
+      "prop_checks": [
+        "C/A/D",
+        "輪椅"
+      ],
+      "voice_notes": [
+        "大厅混響轻，落杯清晰",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集C/A/D、輪椅涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1270",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 35,
+      "title": "手",
+      "characters": [
+        "nianyao",
+        "heqiu",
+        "xiaozhen",
+        "yanshan"
+      ],
+      "locations": [
+        "auction-hall"
+      ],
+      "hero_shot": {
+        "action": "B第四壺到→四種光位→假收據拆",
+        "camera": "锁台位，每杯独立测试镜",
+        "sound": "四注茶声统一响度，邱不敲杖"
+      },
+      "risk_controls": [
+        {
+          "risk": "最高：一次生成四杯四手不可控",
+          "solution": "俯视校位→单盏注茶→结果→反应；E不得上台"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "nianyao-knee-after",
+        "heqiu-base",
+        "yanshan-base",
+        "yanshan-wheelchair",
+        "xiaozhen-base"
+      ],
+      "prop_checks": [
+        "A偏/B中/C中/D无",
+        "假收據"
+      ],
+      "voice_notes": [
+        "四注茶声统一响度，邱不敲杖",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集A偏/B中/C中/D无、假收據涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1296",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 36,
+      "title": "半夜三點",
+      "characters": [
+        "nianyao",
+        "huaizhou",
+        "heqiu",
+        "yanshan"
+      ],
+      "locations": [
+        "auction-hall"
+      ],
+      "hero_shot": {
+        "action": "03:00監視→封袋A/D→B返手",
+        "camera": "监视器窄画幅后各交接",
+        "sound": "监视无对白，原录音若无源不捏造"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：四盞結算與第五E混名",
+          "solution": "镜头资产标签；E不出现，C回馆暫管"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "nianyao-knee-after",
+        "heqiu-base",
+        "yanshan-base",
+        "yanshan-wheelchair",
+        "huaizhou-base"
+      ],
+      "prop_checks": [
+        "A/D证袋",
+        "B",
+        "C",
+        "E仅台词"
+      ],
+      "voice_notes": [
+        "监视无对白，原录音若无源不捏造",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集A/D证袋、B、C、E仅台词涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1323",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 37,
+      "title": "補口",
+      "characters": [
+        "nianyao",
+        "hanyidao",
+        "yanshan",
+        "xiaozhen"
+      ],
+      "locations": [
+        "studio",
+        "kitchen"
+      ],
+      "hero_shot": {
+        "action": "韓摸金線→一刀全字→提皮箱",
+        "camera": "院桌双人，字影转可见",
+        "sound": "韩鼻笑/短句，箱扣响"
+      },
+      "risk_controls": [
+        {
+          "risk": "中：箱当账册、韩父信息过早",
+          "solution": "本集才读一刀；新记录箱不同纸；警方不露脸"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "nianyao-knee-after",
+        "yanshan-base",
+        "yanshan-wheelchair",
+        "xiaozhen-base",
+        "hanyidao-base"
+      ],
+      "prop_checks": [
+        "B一刀",
+        "仿製記錄箱"
+      ],
+      "voice_notes": [
+        "韩鼻笑/短句，箱扣响",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集B一刀、仿製記錄箱涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1349",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 38,
+      "title": "師兄",
+      "characters": [
+        "nianyao",
+        "zhiyuan",
+        "baiwei",
+        "huaizhou"
+      ],
+      "locations": [
+        "auction-hall"
+      ],
+      "hero_shot": {
+        "action": "41證書摘要→USB→致遠問前世",
+        "camera": "文件列阵后双人短反打",
+        "sound": "致远尾笑收掉，念瑶不回答"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：全部全文念拖垮节奏",
+          "solution": "抽3代表行+总数，41其余背景；造型待定"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        },
+        {
+          "risk": "借提狀態混用日常配件",
+          "solution": "E33 偵查隊借提、E38 承珩現場指認，均不用法庭／囚服的臆造場面；沿用深藍西裝辨識輪廓，取消金錶、口袋巾與轉金筆習慣。E38 文件簽名只用桌面普通筆，落筆後放回桌面，不把原金筆從拘束狀態自動帶回。這是造型／道具選擇，不宣稱任何司法配物規則。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "nianyao-knee-after",
+        "zhiyuan-base",
+        "zhiyuan-custody",
+        "baiwei-base",
+        "huaizhou-base"
+      ],
+      "prop_checks": [
+        "41份",
+        "USB",
+        "帳影本"
+      ],
+      "voice_notes": [
+        "致远尾笑收掉，念瑶不回答",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集41份、USB、帳影本涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1375",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1249",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1380"
+      ]
+    },
+    {
+      "episode": 39,
+      "title": "最後一眼",
+      "characters": [
+        "nianyao",
+        "baiwei",
+        "huaizhou"
+      ],
+      "locations": [
+        "tv-studio"
+      ],
+      "hero_shot": {
+        "action": "節目複製品→更正影本→A圖錄",
+        "camera": "电视台与图录分镜",
+        "sound": "主持正常，不加公审群众喊声"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：拿真扣押物上节目",
+          "solution": "正本不入镜；複製品独立资产无证袋"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "nianyao-knee-after",
+        "baiwei-base",
+        "huaizhou-base"
+      ],
+      "prop_checks": [
+        "复制品",
+        "证物照片",
+        "影本",
+        "A目录"
+      ],
+      "voice_notes": [
+        "主持正常，不加公审群众喊声",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集复制品、证物照片、影本、A目录涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1401",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    },
+    {
+      "episode": 40,
+      "title": "最後一槌",
+      "characters": [
+        "nianyao",
+        "yanshan",
+        "xiaozhen",
+        "huaizhou"
+      ],
+      "locations": [
+        "auction-hall",
+        "kitchen"
+      ],
+      "hero_shot": {
+        "action": "A刻仿一元→左手舉牌→廚房B茶",
+        "camera": "A拍卖/B厨房分场，手机才见馆",
+        "sound": "一元槌真实落下，厨房瓷声收尾"
+      },
+      "risk_controls": [
+        {
+          "risk": "高：A/B/C互换与师父站起",
+          "solution": "A归师父B日常C捐馆D仍扣E不出；左手举牌"
+        },
+        {
+          "risk": "把跨場/多動作鏈交給單一生成鏡頭會出現物件穿模、空間跳變或臉漂移。",
+          "solution": "hero_shot.action中的每個箭頭是分鏡切點候選；先做空間/手持物animatic，每鏡只一個主要演技或物理變化。3–6秒剪段來自8秒原片，不能靠靜畫補時。"
+        }
+      ],
+      "look_ids": [
+        "nianyao-base",
+        "nianyao-knee-after",
+        "yanshan-base",
+        "yanshan-wheelchair",
+        "huaizhou-base",
+        "xiaozhen-base"
+      ],
+      "prop_checks": [
+        "A仿字",
+        "B金修",
+        "C手机直播"
+      ],
+      "voice_notes": [
+        "一元槌真实落下，厨房瓷声收尾",
+        "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
+      ],
+      "cc_notes": [
+        "四語均為可關CC，這輪只先做zh-TW；不在影片畫素燒字幕。",
+        "本集A仿字、B金修、C手机直播涉及的劇內文字/數字保留為美術資產；譯義用對應語CC，不替換證據的身份或日期。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1182",
+        "docs/videos/series-plans/claude-binge-five-20260928/before-the-hammer/source.mjs:1505"
+      ]
+    }
+  ],
+  "audio_plan": {
+    "motifs": [
+      "角色主題限短音型，先寫原創音樂需求；情緒轉折前讓表演先到、配樂後到。不得引用相似影劇旋律。",
+      "關鍵物件有可辨實物音，不用每個線索都上同一聲懸疑撞擊。"
+    ],
+    "perspective": [
+      "對白、旁白、Foley、環境、音樂分軌；shot間保留房間底聲，轉主觀聲時要有明確視點。",
+      "畫外具名台詞也須列入本集characters；匿名人物只有動作/無可辨詞背景音，消息用來源允許的旁白。"
+    ],
+    "dynamic_rules": [
+      "先測輕聲對白可懂度；配樂在台詞時自動化讓位，不能只把人聲全面拉高。尖銳器物聲/警報不蓋關鍵字。",
+      "左右聲像服務空間；台詞保中心，手機單聲道合併後仍清楚。長停頓保持呼吸/衣料活動，不以freeze延長畫面。",
+      "Veo原片的native audio不直接入正片混音；任何意外人聲/擬配樂須移除。嘴型、FOLEY、字幕時間碼以最終中文字幕版聲軌為基準。"
+    ],
+    "locale_constraints": [
+      "先完成zh-TW台灣國語表演/人名試聽及picture lock；ja/ko/en僅保留設計和詞表，這一輪不自動生成三語。",
+      "四語各有獨立voice track與可關CC；subtitles.burn_in=false。角色、說話者和無障礙聲效提示進CC，不做永久字幕畫在底部。",
+      "劇內證據文字（紙、鐘、介面）是敘事資產，保持清晰並提供對應翻譯詞表/CC；不能因不燒字幕而刪掉證據，也不能把外語翻譯當永久畫面字幕。",
+      "ja/ko/en人名用此表候選音譯，不自動把漢字改日語音讀或韓國本土姓名。稱謂先翻譯語用，保留身份尊卑與熟識距離。",
+      "各語分開錄完整表演、對齊剪輯點；不硬壓縮英文/日文到中文每字同時長。若譯句過長先重寫等義短句或調非關鍵反應鏡，倒數絕不拉長。",
+      "目前所有voice_name沿用source作待試聽候選；不是四語皆有相同音色/口音的保證。母語監聽前禁止標示配音驗收通過。"
+    ]
+  },
+  "acceptance_checks": [
+    "本件是source-bound製作設計，不是video.json、成片驗收、上傳批准或正式站匯入。未呼叫任何付費圖/片/語音生成。",
+    "角色動畫預設高品質動態表演。3–6秒剪成鏡頭可由8秒原片截取；鏡內須見重心、視線、手/衣料/呼吸的意圖變化。靜圖縮放不得假稱動畫。",
+    "當前根代理選定Veo3.1Lite 1080p/24fps/8秒原片；本設計不假設referenceImages或extension可用，也不假設上一片最後一格必能無縫延續。實際供應商契約由共用profile鎖定。",
+    "按character.shot_looks與scene.data.character_looks選定單一完整look；同一episode可列多個候選look，正式每shot必選一個，不把同集所有狀態疊加。外觀狀態不clone新聲線。",
+    "每鏡最多3個具名人物，多人對話先建立全景再單/雙人反打；角色聲音與畫外出場名單都核對。群眾不代替主角表演，背景不得複製主角臉。",
+    "首30秒先做無付費animatic/timecode與臨時讀稿：連續0–30，不擠長旁白。正式zh-TW語音產出後按實際秒數重剪，不把候選時長標成實測。",
+    "關鍵道具文字、數字、日期、簽名以核准文字圖層合成並校對。人物拿取要先有接觸/承重再移動，手與物不可換側、穿模、變件。",
+    "鏡頭切點須比對頭尾角色ID/衣物/手持物/光位/場景軸；8秒素材含多個不相容狀態時拆採不同shot，不以freeze/slow補成長講述。",
+    "同一製作的四語CC要能完全開/關；影片畫素沒有字幕，檢查所有語言/合輯路徑。CC要對齊最終台詞，不把人名當品牌翻譯。",
+    "zh-TW台灣口音、每位角色的正常/低聲/壓力三句必試聽；未來ja/ko/en各由母語聽校。角色年齡、性別呈現、喘氣/哭/唱不能只靠voice名通過。",
+    "最終手機、耳機與單聲道播放檢查台詞、暗部、劇內文字、跳剪、嘴型、字幕開關和聲畫同步；本轮仅文件层检查，没有完成这些媒体检查。"
+  ],
+  "unresolved": [
+    {
+      "issue": "已由設計處理（未 render）：羈押中的致遠仍沿用固定三件套金錶金筆",
+      "why": "E33 偵查隊借提、E38 承珩現場指認，均不用法庭／囚服的臆造場面；沿用深藍西裝辨識輪廓，取消金錶、口袋巾與轉金筆習慣。E38 文件簽名只用桌面普通筆，落筆後放回桌面，不把原金筆從拘束狀態自動帶回。這是造型／道具選擇，不宣稱任何司法配物規則。 已完成導演設計，尚未 render／動作實測；不需另取例行攝製批准。",
+      "episode_refs": [
+        33,
+        38
+      ]
+    },
+    {
+      "issue": "字典標準已核對，白薇 TTS 仍待聽校",
+      "why": "白薇採 Bái Wéi／ㄅㄞˊ ㄨㄟˊ，來源二聲正確。2026-10-01 查台灣教育部《國語辭典簡編本》薇條（https://dict.concised.moe.edu.tw/dictView.jsp?ID=43453&la=0&powerMode=0）：ㄨㄟˊ、wéi。修正的是本輪一聲候選誤判，歷史 source 不動；字典核對不等於合成音與台灣口音已聽校。",
+      "episode_refs": [
+        1,
+        3,
+        8,
+        15,
+        23,
+        30,
+        39
+      ]
+    },
+    {
+      "issue": "真偽光紋目前只有文字規則",
+      "why": "必須有同光位茶溫的A/B/C/D lookdev，否則畫面無法讓觀眾判讀證據",
+      "episode_refs": [
+        1,
+        5,
+        15,
+        31,
+        34,
+        35
+      ]
+    }
+  ]
+}
