@@ -1,0 +1,525 @@
+{
+  "title": "What Is an AI Agent, What Does One Run Cost, and Which Settings Cap Your Budget",
+  "description": "What an AI agent really is, how multi-round calls add to the cost, and what to ask before you delegate. This video uses a five-round agent cost example to show where the money goes.\nFor people who keep hearing \"AI agent\" and \"automation\" but cannot tell how it differs from chat, and worry about costs getting out of control.\n\nCovers the difference between chat, fixed workflows and agents; the common parts such as the model, instructions, tools and runtime environment; how repeated processing of history may add cost; what to ask when delegating (permissions, logs, stopping and budget); and two compliance limits, data residency and zero data retention. The table numbers are illustrative, used to explain the structure.\nThe five-round figures are an example of token costs and do not include caching, tools, sandbox or third-party charges. The OpenAI API hard spending cap must be enabled and may lag, so it cannot guarantee you never go over.",
+  "tags": [
+    "AI agent",
+    "what is an AI agent",
+    "AI agent cost",
+    "OpenAI Agents API",
+    "AI automation",
+    "agentic AI",
+    "agent cost",
+    "token"
+  ],
+  "chapters": {
+    "hook": "What an AI agent is and what one run costs",
+    "chat-vs-agent": "Agent vs chatbot",
+    "what-makes-agent": "What an agent is made of",
+    "why-expensive": "Why one run costs so much",
+    "bill-table": "Five-round cost, worked out",
+    "four-questions": "Four questions to ask first",
+    "start-safe": "How to start safely",
+    "wrap-three": "Three-line recap"
+  },
+  "source_hashes": {
+    "chapters": {
+      "hook": "a8b4d8a7d76f",
+      "chat-vs-agent": "457cbb2aaa3b",
+      "what-makes-agent": "6971fe12751b",
+      "why-expensive": "31c5b798a294",
+      "bill-table": "cddc5aadc500",
+      "four-questions": "b164ec1ef5db",
+      "start-safe": "e36d1728939b",
+      "wrap-three": "129cfefc4e1b"
+    },
+    "title": "7bc89124273b",
+    "description": "cb1d2d0a71f2",
+    "tags": "64d5b05f180a"
+  },
+  "lines": {
+    "2892": {
+      "source_hash": "93ef86f97b95",
+      "text": "To estimate cost, count retries, tools and sandbox charges too."
+    },
+    "jrpz": {
+      "source_hash": "d78f4564aedb",
+      "text": "The same job done by an AI agent can cost over ten times more."
+    },
+    "rhcy": {
+      "source_hash": "8754ffbb3f10",
+      "text": "Here is where the cost comes from, and which settings keep it in check."
+    },
+    "w977": {
+      "source_hash": "938f43954bc9",
+      "text": "I'll also show you a one-line test: is this thing really an agent?"
+    },
+    "cs5g": {
+      "source_hash": "26ea9d0cad2c",
+      "text": "You may think a chat box means an AI agent."
+    },
+    "j3jv": {
+      "source_hash": "bbf8d81ef3bc",
+      "text": "It's not the chat box. What matters is who decides."
+    },
+    "83wx": {
+      "source_hash": "d955d630dfe8",
+      "text": "Ask and get steps? That's chat."
+    },
+    "vegh": {
+      "source_hash": "90c415dad037",
+      "text": "Same fixed steps every time is a workflow."
+    },
+    "quyv": {
+      "source_hash": "5f6e2f912f98",
+      "text": "An agent picks its own next step and its own tools."
+    },
+    "t86a": {
+      "source_hash": "5f00eeba4d1f",
+      "text": "One tool call isn't a full agent."
+    },
+    "yxd7": {
+      "source_hash": "27a54fc1cd5d",
+      "text": "For stable rules, a fixed workflow is easier to predict."
+    },
+    "8dan": {
+      "source_hash": "e2b5cbe41526",
+      "text": "Ask it to sort sign-ups and find duplicates."
+    },
+    "g6hk": {
+      "source_hash": "c4d0b647d01e",
+      "text": "It reads the fields; one name can be two people."
+    },
+    "q3cg": {
+      "source_hash": "e4e4e9f7f78b",
+      "text": "So it uses fields you allow."
+    },
+    "gich": {
+      "source_hash": "6157fee1a9ad",
+      "text": "That turn is what marks an agent."
+    },
+    "3iur": {
+      "source_hash": "dd8c69ec0bec",
+      "text": "It didn't delete data, just switched methods."
+    },
+    "t4e7": {
+      "source_hash": "e02ab5b291be",
+      "text": "Its autonomy means trying another way, not widening its own permissions."
+    },
+    "b672": {
+      "source_hash": "3d78eab9371f",
+      "text": "So what exactly is an agent made of?"
+    },
+    "z3xv": {
+      "source_hash": "ce6b1d7340db",
+      "text": "You can break an agent into four parts."
+    },
+    "x2sc": {
+      "source_hash": "d7355e47aba8",
+      "text": "The model judges."
+    },
+    "e889": {
+      "source_hash": "a5ab849d277f",
+      "text": "Instructions are the goal you give it."
+    },
+    "7gj6": {
+      "source_hash": "cb99cf08cf09",
+      "text": "Tools are the hands that read data and edit files."
+    },
+    "trh6": {
+      "source_hash": "3aaf9b2a707e",
+      "text": "Tools that run code can work inside a sandbox."
+    },
+    "2z76": {
+      "source_hash": "1d71fe926b0e",
+      "text": "Some agents need no sandbox."
+    },
+    "dep5": {
+      "source_hash": "3b2c640316d7",
+      "text": "Some tools call outside services; features and permissions must be wired up."
+    },
+    "wfy8": {
+      "source_hash": "3d01fe0cd436",
+      "text": "To judge an agent, check its tools and permissions."
+    },
+    "bszf": {
+      "source_hash": "aed7dfa0eab1",
+      "text": "Tool scope is limited: reading one folder doesn't mean reading the whole computer."
+    },
+    "naw5": {
+      "source_hash": "0a16e5a7551d",
+      "text": "Key point: \"I've updated it\" doesn't mean it did."
+    },
+    "677u": {
+      "source_hash": "036ed46b3df6",
+      "text": "No tool or permission? It can't change a word."
+    },
+    "vbtd": {
+      "source_hash": "ec5f11b05502",
+      "text": "So check real results, not how sure it sounds."
+    },
+    "8wag": {
+      "source_hash": "e550eac3bf06",
+      "text": "No file, or one that doesn't match its claim, means not done."
+    },
+    "c68n": {
+      "source_hash": "75bfb86c3767",
+      "text": "Done needs proof, not just \"I did it.\""
+    },
+    "5a79": {
+      "source_hash": "8bfb00ead06e",
+      "text": "When status is unclear, check again rather than call it done."
+    },
+    "n3m5": {
+      "source_hash": "cd9fcf02ebe2",
+      "text": "An agent runs in a loop until the job is done."
+    },
+    "dgnj": {
+      "source_hash": "87ee7d352ec9",
+      "text": "First decide what to do next."
+    },
+    "rqdt": {
+      "source_hash": "dafa8ffba09e",
+      "text": "Use a tool."
+    },
+    "hwmy": {
+      "source_hash": "08005d56f2ac",
+      "text": "Then it sees the result and decides."
+    },
+    "rjcw": {
+      "source_hash": "55445dd2010d",
+      "text": "Every loop is another model call, and another charge."
+    },
+    "erz6": {
+      "source_hash": "2fe7f7846986",
+      "text": "So if the loop runs more turns, what will the cost be?"
+    },
+    "un5z": {
+      "source_hash": "c79bad3396a5",
+      "text": "Why do agents cost more than Q&A?"
+    },
+    "qfq7": {
+      "source_hash": "1723965228e2",
+      "text": "Because for one task it calls the model several times."
+    },
+    "mhbv": {
+      "source_hash": "b891233109e8",
+      "text": "Each call may reprocess earlier chat and tool results."
+    },
+    "gixc": {
+      "source_hash": "5d850e0e8d98",
+      "text": "Each call also sends instructions, tool definitions and tool results."
+    },
+    "6pn5": {
+      "source_hash": "85bfdede1ce9",
+      "text": "If it opens subagents, each one is counted again."
+    },
+    "tik7": {
+      "source_hash": "fb5dfd20456a",
+      "text": "The more time and back-and-forth, the harder to estimate cost from a task's name."
+    },
+    "nuez": {
+      "source_hash": "c4682d93b8a9",
+      "text": "My view: use an agent without the math and the cost can shock you."
+    },
+    "9hqz": {
+      "source_hash": "8d4913b967cf",
+      "text": "The same job as one Q&A costs about $0.06."
+    },
+    "th3u": {
+      "source_hash": "e74787d796e0",
+      "text": "Built as a five-round agent, it costs about $0.95."
+    },
+    "36u6": {
+      "source_hash": "320eccc9ba6c",
+      "text": "That's about 16 times more, without counting subagents."
+    },
+    "k7aw": {
+      "source_hash": "b65e14725bdb",
+      "text": "Sample math to show structure, not any product's real cost."
+    },
+    "nwfx": {
+      "source_hash": "4a1c3fee6d7b",
+      "text": "Real tasks often exceed five rounds."
+    },
+    "e2ux": {
+      "source_hash": "a7ec154715dc",
+      "text": "The gap is structure, not a pricier model."
+    },
+    "59w3": {
+      "source_hash": "d6d6e8c2b5d5",
+      "text": "Then subagents, with their own model usage."
+    },
+    "rjzv": {
+      "source_hash": "07d048da8f8b",
+      "text": "The main agent splits work across subagents."
+    },
+    "t2rw": {
+      "source_hash": "fae4c858bbe7",
+      "text": "Subagents call the model; add up real usage."
+    },
+    "6nza": {
+      "source_hash": "4c520092805c",
+      "text": "Laying out these five rounds, what does the cost look like?"
+    },
+    "gq6q": {
+      "source_hash": "a69de7bdb3b8",
+      "text": "Five rounds show where money goes."
+    },
+    "bjcd": {
+      "source_hash": "985950301570",
+      "text": "Round 1: 20,000 input tokens."
+    },
+    "utze": {
+      "source_hash": "c34cf4170c5e",
+      "text": "Assume each round rereads earlier text; input grows."
+    },
+    "we3p": {
+      "source_hash": "1bd0ccf5bd65",
+      "text": "150,000"
+    },
+    "bgnm": {
+      "source_hash": "bb1f4ac3346e",
+      "text": "Five rounds: 400,000 in, 14,500 out tokens"
+    },
+    "eugj": {
+      "source_hash": "a358d4ec8381",
+      "text": "Nearly $1 total."
+    },
+    "i28v": {
+      "source_hash": "44b32a5b4f6f",
+      "text": "Note: output is small; input keeps growing."
+    },
+    "3bfe": {
+      "source_hash": "78cd54f3172a",
+      "text": "In this example, the cost mostly goes to repeatedly processed input."
+    },
+    "yuae": {
+      "source_hash": "b003f89d89e5",
+      "text": "Switch models and reprice; the multiple may differ."
+    },
+    "yug2": {
+      "source_hash": "0d607bcfde9e",
+      "text": "Assumes no cache hits"
+    },
+    "ucxc": {
+      "source_hash": "930c303e8f4c",
+      "text": "Reusing stored context may save input costs, but reads and writes are priced separately."
+    },
+    "t5sk": {
+      "source_hash": "b6afccc9674b",
+      "text": "Tool and sandbox costs aren't counted either."
+    },
+    "3n94": {
+      "source_hash": "7e7c4b890d96",
+      "text": "That line comes from OpenAI's own documentation."
+    },
+    "nhwz": {
+      "source_hash": "52cd97460493",
+      "text": "It says an agent may call the model several times to finish one task."
+    },
+    "bqbk": {
+      "source_hash": "e2d2c6e9b0df",
+      "text": "Docs also say repeat calls may reprocess long history."
+    },
+    "e633": {
+      "source_hash": "a23417c931c9",
+      "text": "So in my view, the total is hard to guess from the task name."
+    },
+    "mhmx": {
+      "source_hash": "ae5c5435b5e2",
+      "text": "To apply it, see the full article on the description's first line."
+    },
+    "avps": {
+      "source_hash": "087f876d1fca",
+      "text": "Swap in your own rounds and word counts to estimate your own cost."
+    },
+    "ni5n": {
+      "source_hash": "f2c5764cb8d9",
+      "text": "Do the math, then decide on an agent."
+    },
+    "kj63": {
+      "source_hash": "a0d013610359",
+      "text": "If someone builds you an agent, what should you ask before signing?"
+    },
+    "bh3n": {
+      "source_hash": "b244b0729776",
+      "text": "Four questions before signing"
+    },
+    "grrh": {
+      "source_hash": "ce11f6df2065",
+      "text": "First: what it can read, write and connect to."
+    },
+    "ntt6": {
+      "source_hash": "2f38345cca70",
+      "text": "Second: log access and retention."
+    },
+    "zjhh": {
+      "source_hash": "e3c7b8235d52",
+      "text": "Third: who can stop it when it goes wrong?"
+    },
+    "8qcn": {
+      "source_hash": "d73dc73c5d7f",
+      "text": "Fourth: trial-run a week on real data and note the actual cost."
+    },
+    "vzet": {
+      "source_hash": "765f9f3c924c",
+      "text": "My advice: can't answer all four? Don't sign yet."
+    },
+    "jj2b": {
+      "source_hash": "3bffa20ea2f9",
+      "text": "Only answers prove they've planned for trouble."
+    },
+    "3xde": {
+      "source_hash": "feb9890c117a",
+      "text": "These four are also your own agent checklist."
+    },
+    "48gr": {
+      "source_hash": "954897d8dfee",
+      "text": "In my view, asking these matters more than comparing which model is smarter."
+    },
+    "wxkd": {
+      "source_hash": "c9eeab8e1760",
+      "text": "My view: of the four, the budget cap can save you most."
+    },
+    "f5f8": {
+      "source_hash": "129e78320fc4",
+      "text": "The OpenAI API can set a separate monthly hard cap."
+    },
+    "i86p": {
+      "source_hash": "1761c7eb0a93",
+      "text": "At the cap, requests get rejected."
+    },
+    "ix3h": {
+      "source_hash": "1051bd924b4e",
+      "text": "But alerts only notify you."
+    },
+    "qb7f": {
+      "source_hash": "185c4fa4088c",
+      "text": "The hard cap may also lag, causing a small overage."
+    },
+    "twky": {
+      "source_hash": "bb2b863b8c5b",
+      "text": "So add per-task limits and a process that can be stopped any time."
+    },
+    "ghc5": {
+      "source_hash": "b9ab0d921a86",
+      "text": "Check the hard cap is actually on; alerts won't stop it on their own."
+    },
+    "tzx5": {
+      "source_hash": "e3cd67e0e16a",
+      "text": "I suggest starting low, then raising it once runs go well."
+    },
+    "yhq4": {
+      "source_hash": "ee5e11602b5b",
+      "text": "When it goes wrong, know what it did."
+    },
+    "72vw": {
+      "source_hash": "e2e8329d88c4",
+      "text": "Session logs let you check every round."
+    },
+    "97dz": {
+      "source_hash": "05e236745e65",
+      "text": "So when hiring, ask where the logs are and who can see them."
+    },
+    "wtui": {
+      "source_hash": "3ab994c69383",
+      "text": "Also, log usage numbers are best-effort, not the final charge."
+    },
+    "grtm": {
+      "source_hash": "704ef461ad5b",
+      "text": "If your company has data rules, OpenAI's Agents API has two limits."
+    },
+    "6k39": {
+      "source_hash": "7fa91d8edb45",
+      "text": "As of September 2026, data residency is US-only."
+    },
+    "r35n": {
+      "source_hash": "c5bc2d425ef2",
+      "text": "No zero data retention, even on a self-hosted sandbox."
+    },
+    "e65x": {
+      "source_hash": "ee159f54e488",
+      "text": "Check both before building, not when it can't launch."
+    },
+    "dx6f": {
+      "source_hash": "c78a723e8767",
+      "text": "Data follows the rules of each service you connect."
+    },
+    "y4j5": {
+      "source_hash": "c02b8990a785",
+      "text": "Data rules decide if you can use it, before features do."
+    },
+    "8zn8": {
+      "source_hash": "49911c0c3590",
+      "text": "If you do use one, where should you start?"
+    },
+    "gfgy": {
+      "source_hash": "8e458ee537b1",
+      "text": "I suggest starting with safe work."
+    },
+    "rjnj": {
+      "source_hash": "aee9dabc130b",
+      "text": "Start read-only and traceable: sorting public data, drafting."
+    },
+    "3auf": {
+      "source_hash": "31bfc23d9809",
+      "text": "Have a human confirm before it changes data."
+    },
+    "igut": {
+      "source_hash": "beb9eb19a5cb",
+      "text": "Widen it once cost tracking, deletion and human approval run smoothly."
+    },
+    "kmqx": {
+      "source_hash": "ee7f086a118f",
+      "text": "Don't grant full access just for the word \"agent.\""
+    },
+    "9yif": {
+      "source_hash": "4cc5a7c94df1",
+      "text": "Internal tasks without client secrets are best to try first."
+    },
+    "jfu4": {
+      "source_hash": "b08c31f32b18",
+      "text": "Last idea: more autonomy doesn't mean more reliable."
+    },
+    "mhmq": {
+      "source_hash": "6866a7b503b5",
+      "text": "An agent treats each step's result as the basis for the next."
+    },
+    "pdfe": {
+      "source_hash": "3dad94550167",
+      "text": "If step one misreads, deduping, tallying and the report may all go wrong."
+    },
+    "5g7p": {
+      "source_hash": "e7eb406b180e",
+      "text": "A good flow pauses to check at key turning points."
+    },
+    "2xyf": {
+      "source_hash": "6e0f3a2fbb62",
+      "text": "Waiting for confirmation isn't a lack of skill; it's handling it right."
+    },
+    "69tt": {
+      "source_hash": "f9417f63c328",
+      "text": "Back to the first question: why are agents costly, and how do you control them?"
+    },
+    "2xgp": {
+      "source_hash": "1cc6cbb07be4",
+      "text": "First, spot an agent: does it pick its own next step?"
+    },
+    "sknr": {
+      "source_hash": "1a5e17013927",
+      "text": "Second, know the cost: many calls may reprocess history."
+    },
+    "t344": {
+      "source_hash": "02c111744c8b",
+      "text": "Third, control the budget: a hard cap, alerts and a way to stop."
+    },
+    "7e7i": {
+      "source_hash": "7a3e6789a8cd",
+      "text": "Delegating to an agent cuts manual work, not your control."
+    },
+    "jd27": {
+      "source_hash": "56422ec9d171",
+      "text": "See you in the next video."
+    }
+  }
+}

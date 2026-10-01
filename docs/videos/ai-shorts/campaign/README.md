@@ -66,11 +66,11 @@ YouTube 官方列出的訊號包含是否選擇觀看、平均觀看時間與平
 
 每支公開後約 24 小時、72 小時、7 天各存一份快照；以實際觀察時間記錄，不用後來的累積觀看回填成早期數字。每份快照都記公開時間、觀察時間、影片年齡與口徑。觀看可因重播增加，公開觀看與 engaged views 要分開；營利與資格依 YouTube 自身規則，不拿本計畫的千萬公開觀看目標等同門檻。[官方指標說明](https://blog.youtube/inside-youtube/engaged-views-youtube-explained/)（查閱：2026-09-28）
 
-本機追蹤工具從 repo 根目錄執行。`--start` 必須換成站主實際決定的首支公開日，下例日期只示範參數；初始化目錄必須在 repo 外且為空：
+本機追蹤工具從 repo 根目錄執行。`--start` 必須換成站主實際決定的首支公開日，下例日期只示範參數；初始化目錄必須在 repo 外且為空（`<VIDEO_WORKDIR>` 是你自己選的 repo 外持久工作區）：
 
 ```powershell
-node tools/video/shorts/cli.mjs track-init --dir C:/Users/x8120/mokaair-ai-shorts-tracking --start 2026-10-01
-node tools/video/shorts/cli.mjs report --dir C:/Users/x8120/mokaair-ai-shorts-tracking
+node tools/video/shorts/cli.mjs track-init --dir <VIDEO_WORKDIR>/ai-shorts-tracking --start 2026-10-01
+node tools/video/shorts/cli.mjs report --dir <VIDEO_WORKDIR>/ai-shorts-tracking
 ```
 
 `track-init` 產生 120 格 `calendar.csv`、空白 `metrics.csv` 與 `costs.csv`；只有首 15 格已有題目，後 105 格留給每週依數據選題，空格不算製作完成。`report` 讀取 CSV，產生 `report.json`／`report.md`，不登入頻道、不發布影片。需要重現過去報告時，附 `--now 2026-10-08T19:30:00+08:00`，時間不可拿來回填不存在的觀察。

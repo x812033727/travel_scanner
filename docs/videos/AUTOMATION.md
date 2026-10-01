@@ -70,7 +70,7 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 2026-09-25 曾經有一輪在兩分鐘內重問撰稿模型 6 次，花了約 10.6 萬 token，所以加上這條規則。
 
-要讓工人整個停下來，在工作區放一個 `STOP` 檔：`docker compose -f docker-compose.prod.yml exec -T video-worker touch /var/lib/mokaair/video-work/STOP`。刪掉這個檔，下一輪就會繼續。
+要讓工人整個停下來，在工作區放一個 `STOP` 檔：`docker compose -f docker-compose.prod.yml exec -T video-worker touch /var/lib/mokaair/video-work/STOP`。刪掉這個檔，下一輪就會繼續。Shorts 的敲門（`shorts/cli.mjs tick`，工人在 `auto` 旁邊另外每 5 分鐘跑一次）也看這個檔：有 STOP 就不敲門，網站也就不鎖定時段、不再開始送 Shorts 上 YouTube，紀錄印一行 `video-worker: shorts: STOP found`，刪掉後下一次就恢復；有活動在跑的話，這段時間 Shorts 分頁會說工人沒有回報。
 
 ## 一支影片的自動流程
 
@@ -174,7 +174,7 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 - **拒絕**：工作區根目錄是空白、相對路徑、磁碟根目錄、在 repo 裡或包住 repo，整個不跑。要刪的路徑一定在那支影片自己的資料夾裡，而那個資料夾直接在工作區根目錄底下。路上遇到連結（symbolic link、Windows junction）就不穿過；連結本身當成一個名字刪掉，它指到的東西不動。
 - **一輪一支**，最早結束的先清。印一行：哪一支、刪了什麼、釋放多少位元組。刪不掉的檔案（Windows 上被鎖住）與已經不見的，列在同一行，這一輪照常結束。清完在 `auto.json` 原子寫入 `tidied_at` 與 `tidied`（刪了什麼、多少位元組、哪些刪不掉），之後不再看這一支。
 - **什麼時候跑**：每一輪 `auto` 在工作之後跑一次，不管這一輪有沒有進度；設定裡自動草稿關著、或找到 `STOP` 檔，就不跑。
-- **清完之後**：`status` 不再寫「Next: …assemble」，改寫檔案哪天清掉、上面讀那些檔案的步驟會顯示沒做完、不會再做。工人也不會重做：`done` 的影片不再 `advance`，語言那一步要成片核准（`final.mp4`）還在才動。
+- **清完之後**：`status` 不再寫「Next: …assemble」，改寫檔案哪天清掉、上面讀那些檔案的步驟會顯示沒做完、不會再做。工人也不會重做：`done` 的影片不再 `advance`，語言那一步看到 `auto.json` 的 `tidied_at` 就不翻譯、不配音、不打包（見下一段）。
 
 只在工人設定，網站（API、資料庫、後台設定）不用改：
 
@@ -188,7 +188,7 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 清完之後就做不到的事：
 
-- 清理之後才勾的語言做不出來（成片與旁白都不在了），站上那一格會一直是「製作中」。
+- 清理之後才勾的語言做不出來（成片與旁白都不在了，`package` 也要 `final.mp4`）。工人下一輪把每個還在「製作中」的部件送成一筆 `languages` 審核，部件是 `{status: "skipped", reason: "工作檔已在 <日期> 清掉，…"}`（跟放棄的配音 `dubs/<語系>/skipped.json` 同一種回報），沒有音軌所以伺服器直接核准；語言面板那一格顯示「跳過」與原因，卡片不再停在「語言製作中」。這一筆只列新勾的部件，清理前做好的照舊。
 - 合集的 1080p 成片（`upload/final.mp4`）在上 YouTube 滿保留天數後一起清掉，後台的下載按鈕就沒有檔案可下載——跟審核檔案區刪 mp4 的規則一致。
 - 從長片關鍵影格剪 Shorts（`shorts/cli.mjs from-episode`，#904）要在長片清掉之前做。
 

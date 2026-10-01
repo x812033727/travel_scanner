@@ -63,7 +63,21 @@ export function captionTimingProblems(cues, seconds) {
   return problems;
 }
 
-export async function importShort({ from, workdir, tools = null, now = () => new Date() }) {
+/**
+ * Why a finished cut's picture is not on the Shorts frame grid; empty when it is. Checked before
+ * the captions, because a cut at another rate reads as the wrong length on this grid and would be
+ * blamed on its captions.
+ */
+export function frameRateProblem(video) {
+  const rate = String(video?.r_frame_rate ?? '');
+  if (rate === `${PROFILE.fps}/1`) return '';
+  const [numerator, denominator] = rate.split('/').map(Number);
+  const fps = denominator ? numerator / denominator : NaN;
+  const named = Number.isFinite(fps) ? `${Number(fps.toFixed(3))} fps (${rate})` : `an unreadable frame rate (${rate || 'none'})`;
+  return `the cut runs at ${named}, not the Shorts profile's ${PROFILE.fps} fps: re-encode it to ${PROFILE.fps} fps (ffmpeg -vf fps=${PROFILE.fps}) and import it again`;
+}
+
+export async function importShort({ from, workdir, tools = null, measureImpl = measureFinal, now = () => new Date() }) {
   for (const name of ['final.mp4', 'zh-TW.srt', 'meta.json']) if (!existsSync(path.join(from, name))) throw new Error(`${from} has no ${name}`);
   const meta = JSON.parse(readFileSync(path.join(from, 'meta.json'), 'utf8'));
   const cues = parseSrt(readFileSync(path.join(from, 'zh-TW.srt'), 'utf8'));
@@ -79,9 +93,14 @@ export async function importShort({ from, workdir, tools = null, now = () => new
   for (const sub of ['audio', 'upload', 'evidence']) mkdirSync(path.join(directory, sub), { recursive: true });
   const final = path.join(directory, 'upload', 'final.mp4');
   copyFileSync(path.join(from, 'final.mp4'), final);
-  const measured = await measureFinal(final, { ffmpeg, ffprobe });
+  const measured = await measureImpl(final, { ffmpeg, ffprobe });
+  const rateProblem = frameRateProblem(measured.video);
+  if (rateProblem) throw new Error(rateProblem);
   const frames = Number(measured.video?.nb_frames);
-  const seconds = frames / PROFILE.fps;
+  // The cut's own length, as its video stream reports it; the frame count on the grid only when
+  // the stream carries no duration.
+  const streamSeconds = Number(measured.video?.duration);
+  const seconds = Number.isFinite(streamSeconds) && streamSeconds > 0 ? streamSeconds : frames / PROFILE.fps;
   const timing = captionTimingProblems(cues, seconds);
   if (timing.length) throw new Error(timing.join('\n'));
   const timeline = { fps: PROFILE.fps, frames, seconds, cues: timelineFromCaptions(cues, doc.scenes) };
