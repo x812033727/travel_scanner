@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-story-admin-redo-button
 title: 故事清單上的「重做」按鈕：放棄過的故事再做一次
-status: in-progress
+status: done
 priority: P3
 area: web
 owner: claude-opus-5-5-story-redo-button
 claimed_at: 2026-10-01T11:29:28Z
 created_at: 2026-09-28T16:04:54Z
-completed_at:
+completed_at: 2026-10-01T11:39:05Z
 branch: claude/story-redo-button
 depends_on:
   - 2026-09-28-video-story-redo-dropped
