@@ -24,6 +24,7 @@ import { automationClient } from "./client.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
 import { Automation, automatedVideos, mainGuide, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, settingsFor, settle, sheetDone, siteArticleUrl, siteSources } from "./flow.mjs";
 import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, STANCE_HEADING, TRANSLATOR_REWORD, TRANSLATOR_SHORTEN } from "./prompts.mjs";
+import { tidyRound } from "./tidy.mjs";
 
 const TOKEN = `mkv_${"t".repeat(43)}`;
 const SITE = "https://site.test";
@@ -1689,6 +1690,46 @@ test("a language ticked after the video is on YouTube is made as a new batch", a
   assert.deepEqual([video.state().status, video.state().youtube_video_id, readJson(video.docFile).youtube.video_id], ["done", "dQw4w9WgXcQ", "dQw4w9WgXcQ"]);
   assert.equal(video.onSite().ready_to_upload, false, "already on YouTube");
   assert.equal(video.onSite().youtube_video_id, "dQw4w9WgXcQ", "the report keeps the id");
+  assert.equal(video.state().tidied_at, undefined, "an untidied video makes its late languages as before");
+});
+
+test("a language ticked after the worker tidied the video is reported as skipped with the date, and nothing is made again", async () => {
+  const video = await finishedVideo();
+  video.choose({ en: { metadata: true, captions: false, dub: false } });
+  assert.match(await video.step(), /en metadata translated and reviewed$/);
+  assert.match(await video.step(), /language batch sent/);
+  video.listed().youtube_video_id = "dQw4w9WgXcQ";
+  assert.match(await video.step(), /on YouTube as dQw4w9WgXcQ/);
+  assert.equal(await video.step(), null);
+
+  // Past the retention the tidy clears the cut, the narration and the frames (docs/videos/AUTOMATION.md §清理工作區).
+  const now = new Date(Date.now() + 8 * 24 * 3600 * 1000);
+  const day = now.toISOString().slice(0, 10);
+  const tidied = tidyRound({ base: video.box.work, repos: [video.box.root], site: video.automation.site, now });
+  assert.equal(tidied.cleared?.slug, video.slug, JSON.stringify(tidied.held.concat(tidied.undated)));
+  assert.ok(!existsSync(path.join(video.workdir, "final.mp4")) && !existsSync(video.upload("final.mp4")));
+  assert.equal(video.state().tidied_at, now.toISOString());
+  assert.equal(await video.step(), null, "nothing new ticked: the tidied video stays quiet");
+
+  video.choose({ en: { metadata: true, captions: false, dub: false }, ja: { metadata: true, captions: true, dub: true } });
+  const [runs, translations, batches] = [video.runs.length, video.calls("translator").length, video.reviews("languages").length];
+  assert.equal(await video.step(), `chatgpt-ads-off: work files cleared on ${day}; ja metadata+captions+dub reported to /admin/videos as skipped, not made`);
+  assert.equal(video.runs.length, runs, "no translation, dub, captions, package or review-push is tried");
+  assert.equal(video.calls("translator").length, translations);
+  assert.equal(video.reviews("languages").length, batches + 1);
+  const [batch] = video.reviews("languages");
+  const reason = `工作檔已在 ${day} 清掉，成片與旁白都不在了，清理後才勾的部件做不出來；要這個語言得重做影片`;
+  const skipped = { status: "skipped", reason };
+  assert.deepEqual(batch.payload, { locales: { ja: { metadata: skipped, captions: skipped, dub: skipped } } }, "only the parts still in the making are named");
+  assert.deepEqual([batch.status, batch.files], ["approved", []], "no dub track: the site approves it on arrival");
+  assert.equal(batch.summary, `語言：ja 標題說明、CC、配音 跳過（${reason}）。沒有要你上傳的配音`);
+  assert.equal(batch.content_sha256, sha(path.join(video.workdir, "review", "languages.json")));
+
+  assert.equal(await video.step(), null, "the parts read as skipped now: nothing is sent again");
+  assert.equal(video.reviews("languages").length, batches + 1);
+  assert.deepEqual(video.onSite().languages.en, { metadata: { state: "ready", reason: null } }, "a part made before the tidy keeps its state");
+  assert.deepEqual(video.onSite().languages.ja, { metadata: { state: "skipped", reason }, captions: { state: "skipped", reason }, dub: { state: "skipped", reason } });
+  assert.deepEqual([video.state().status, video.listed().stage], ["done", "languages skipped"]);
 });
 
 // The narration line Jev keeps hearing wrong (docs/videos/HANDS-OFF.md §旁白): the fixture's
