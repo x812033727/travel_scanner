@@ -12,6 +12,7 @@ import { isStory, storyProblems } from "./story.mjs";
 import { DEFAULT_CPM, chapterList, checkChapters, estimateTimeline, formatClock, frameToSeconds, spokenUnits } from "./timeline.mjs";
 import { metadataStatus, namedWith } from "./translations.mjs";
 import { TEMPLATE_SPECS } from "../templates/templates.mjs";
+import { isScreencast, screencastSceneProblems } from "../screencast/steps.mjs";
 
 // Phrases that only work on a page. Same list as video_kit.py's WRITTEN_ONLY.
 export const WRITTEN_ONLY = ["本文", "這篇文章", "如上表", "如下表", "上表", "下表", "綜上所述", "值得注意的是", "筆者", "如圖所示"];
@@ -262,6 +263,8 @@ export function lintVideo(doc, context = {}) {
     // audio is paid for, instead of the render blocking the video after the narration gate.
     const spec = !isShot(scene) && TEMPLATE_SPECS[scene.template];
     if (spec) for (const problem of spec.check(scene.data ?? {}).filter(Boolean)) error(`scenes[${index}] (${scene.id}).data`, problem);
+    // A screencast's steps: safe to run (no secret typed, public pages only) and one capture per state.
+    if (isScreencast(scene)) for (const problem of screencastSceneProblems(scene)) error(`scenes[${index}] (${scene.id}).data`, problem);
     const capacity = revealCapacity(scene.data);
     const reveals = scene.lines.reduce((sum, line) => sum + (line.reveal ?? 0), 0);
     if (capacity !== null && reveals > capacity) error(`scenes[${index}]`, `reveals ${reveals} elements but the ${scene.template} slide has ${capacity}`);

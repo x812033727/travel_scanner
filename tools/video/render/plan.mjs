@@ -13,6 +13,8 @@ import { isExplainer, isShot } from "../core/drama.mjs";
 /** The series whose own thumbnail a video wears (templates.mjs THUMB_SERIES), or null. */
 export const thumbnailSeries = (doc) => (isExplainer(doc) ? "sothatswhy" : null);
 import { estimateTimeline } from "../core/timeline.mjs";
+import { screencastHtml, screencastPlan } from "../screencast/scene.mjs";
+import { isScreencast, screencastSceneProblems } from "../screencast/steps.mjs";
 import { ORIGIN, sceneProblems, slideHtml, svgProblems, thumbnailHtml, thumbnailProblems, thumbnailVariants, visibleText } from "../templates/templates.mjs";
 
 export const THEME_FILE = fileURLToPath(new URL("../templates/theme.css", import.meta.url));
@@ -46,7 +48,7 @@ export function renderProblems(doc, root = null) {
   doc.scenes.forEach((scene, index) => {
     if (isShot(scene)) return;
     const where = `scenes[${index}] (${scene.id}).data`;
-    const own = sceneProblems(scene);
+    const own = isScreencast(scene) ? screencastSceneProblems(scene) : sceneProblems(scene);
     for (const message of own) problems.push({ path: where, message });
     if (!root || own.length) return;
     for (const asset of sceneAssets(scene)) {
@@ -73,9 +75,11 @@ export function renderProblems(doc, root = null) {
  * pictures. `keyframes` maps a shot id to its drawn keyframe `{ file, sha256 }` (the keyframes
  * manifest's `shots`); a thumbnail that names a shot uses that picture as its background, and the
  * picture's hash is part of the thumbnail's key. Without the keyframe, `thumbnail.keyframe` is
- * null and the caller says what to run first.
+ * null and the caller says what to run first. `screencasts` maps a screencast scene's id to its
+ * capture manifest (tools/video/screencast/capture.mjs); each state shows one capture, and the
+ * captures' hashes are part of its key.
  */
-export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = {} } = {}) {
+export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = {}, screencasts = {} } = {}) {
   const timeline = estimateTimeline(doc);
   const chapterCount = doc.scenes.filter((scene) => scene.chapter).length;
   let chapter = null;
@@ -86,6 +90,10 @@ export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = 
       chapterNumber += 1;
     }
     if (isShot(scene)) return { id: scene.id, template: scene.template, kind: "clip", states: [] };
+    if (isScreencast(scene)) {
+      const states = screencastStates(scene, timeline.scenes[index].states, screencasts[scene.id], theme, { chapter, chapterNumber, chapterCount });
+      return { id: scene.id, template: scene.template, kind: "stills", states };
+    }
     const totalReveals = scene.lines.reduce((sum, line) => sum + (line.reveal ?? 0), 0);
     const assets = root ? sceneAssets(scene).map((asset) => readFileSync(path.join(root, asset))) : [];
     const assetHash = hash(...assets);
@@ -121,6 +129,15 @@ export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = 
     if (variants.length) thumbnail.variants = variants;
   }
   return { scenes, thumbnail };
+}
+
+/** A screencast scene's states: one capture each, with the cursor and highlight drawn over it. */
+function screencastStates(scene, timelineStates, manifest, theme, chromeState) {
+  if (!manifest) throw new Error(`screencast scene ${scene.id} has no captures yet; the render stage takes them first`);
+  return screencastPlan(manifest, timelineStates).map((plan, stateIndex) => {
+    const html = screencastHtml(scene, plan, { ...chromeState, first: stateIndex === 0 });
+    return { reveal: timelineStates[stateIndex].reveal, first: stateIndex === 0, html, key: hash(theme, html, plan.sha256), text: visibleText(html) };
+  });
 }
 
 /** Where variant B or C of the thumbnail is written, beside thumbnail.jpg (A). */

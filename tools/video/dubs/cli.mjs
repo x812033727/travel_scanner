@@ -15,7 +15,6 @@ import { verifyBrandingAssets, wrapAudio } from "../assemble/branding.mjs";
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { musicInputs, sfxInputs } from "../assemble/sound.mjs";
 import { isDrama, mixHash, resolveMusic, resolveSfx, sfxHash } from "../core/drama.mjs";
-import { emptyLexicon } from "../core/lexicon.mjs";
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { eachLine, LOCALES } from "../core/schema.mjs";
@@ -23,13 +22,13 @@ import { ARTIFACTS, dubArtifacts, lintProject, loadProject, recordStage } from "
 import { FPS, SAMPLES_PER_FRAME, framesFor, msToSamples, speechHash } from "../core/timeline.mjs";
 import { SpeechError, speechStatus, synthesize } from "../tts/client.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
-import { billableForRequest, planRequests } from "../tts/requests.mjs";
+import { billableForRequest } from "../tts/requests.mjs";
 import { flaggedLines, lineBody, synthesizeLines, synthesizeRequest } from "../tts/synthesis.mjs";
 import { encodeWav, parseWav, requireNarrationFormat } from "../tts/wav.mjs";
 import { CODECS, encodeArgs, measureLoudnessArgs, parseLoudnorm, stretchArgs } from "./encode.mjs";
 import {
   DEFAULT_FORMAT, DUB_FORMATS, GUARD_MS, MAX_TEMPO,
-  assembleTrack, defaultDubLocales, defaultRate, dubLocales, dubScript, estimatedLengths, layoutDub, measureRate, placeLines, shrinkBudgets, speechLexicon, translationHash,
+  assembleTrack, defaultDubLocales, defaultRate, dubLocales, dubRequests, estimatedLengths, layoutDub, measureRate, placeLines, shrinkBudgets, speechFingerprint, translationHash,
 } from "./plan.mjs";
 
 // When a stretched window still sticks out (atempo rounds), the next try is this much faster.
@@ -80,16 +79,20 @@ export function rateFor(fit, locale, doc, timeline) {
 
 /** Everything one locale's dub is made from, before any audio: the script, the requests, the cache. */
 function prepare(project, locale, values, workdir) {
-  const { doc: script, missing } = dubScript(project.doc, project.translations[locale], locale, values.style);
-  // project.lexicon is filtered for the source narration; a Chinese dub needs its aliases back.
-  const lexicon = speechLexicon(readJson(path.join(path.dirname(project.dir), "lexicon.json"), emptyLexicon()), locale);
-  const requests = missing.length ? [] : planRequests(script, lexicon);
+  // project.lexicon is filtered for the source narration; dubRequests filters the shelf's raw
+  // dictionary for the target, so a Chinese dub gets its aliases back. Status plans the same way.
+  const { script, missing, requests } = dubRequests(project, locale, values.style);
   const texts = new Map();
   for (const { line } of eachLine(script)) texts.set(line.id, line.text);
   const files = dubArtifacts(workdir, locale);
   const cache = readJson(files.cache, { lines: {}, stretched: {} });
   cache.stretched ??= {};
-  return { locale, script, missing, requests, texts, files, cache, hash: translationHash(script), style: script.voice.style };
+  return {
+    locale, script, missing, requests, texts, files, cache, hash: translationHash(script), style: script.voice.style,
+    // What the voice is asked to say, for status and upload to compare (speechCurrent), and the
+    // --style it was asked in, so a hand-styled dub is compared in its own style.
+    fingerprint: speechFingerprint(requests), styleOverride: values.style ?? null,
+  };
 }
 
 const readClip = (file) => requireNarrationFormat(parseWav(readFileSync(file)));
@@ -232,6 +235,8 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
     locale,
     speech_hash: timeline.speech_hash,
     translation_hash: dub.hash,
+    speech_fingerprint: dub.fingerprint,
+    style_override: dub.styleOverride,
     rates: { default: defaultRate(locale, project.doc, timeline), measured },
     tempo_max: tempoMax,
     windows: windows.map((window) => ({ scene: window.scene, state: window.state, start_frame: window.start_frame, end_frame: window.end_frame, lines: window.lines.map((line) => line.id), tempo: window.tempo, slack_frames: window.slack_frames, over: window.over })),
@@ -280,6 +285,10 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
     file: path.basename(track),
     speech_hash: timeline.speech_hash,
     translation_hash: dub.hash,
+    // The voice and pronunciation the clips were asked for (dubs/plan.mjs speechFingerprint):
+    // a changed target alias or dub voice marks the track stale for status and upload.
+    speech_fingerprint: dub.fingerprint,
+    style_override: dub.styleOverride,
     // What the mix carried beside the voice (docs/videos/ILLUSTRATED.md): dubsStatus compares
     // these with the script's, so a bed or a set changed after the dub marks it stale.
     mix_hash: sound.track ? mixHash(project.doc) : null,

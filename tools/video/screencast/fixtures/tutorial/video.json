@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "slug": "fixture-screencast-tutorial",
+  "format": "screencast",
+  "category": "tutorial",
+  "target_minutes": [0.5, 2],
+  "voice": { "provider": "gemini", "name": "Sulafat", "style": "輕鬆、像跟朋友示範怎麼操作" },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "三步在站上找到旅遊攻略",
+    "description": "從首頁點進攻略區、挑一個主題、再用搜尋找到你要的那一篇。這是螢幕操作場景的範例影片。",
+    "tags": ["旅遊攻略", "操作教學"],
+    "video_id": null
+  },
+  "sources": [{ "title": "旅遊情報與攻略", "url": "https://mokaair.com/zh-TW/guides", "checked_on": "2026-10-01" }],
+  "scenes": [
+    {
+      "id": "hook",
+      "chapter": "要找的攻略在哪裡",
+      "template": "title",
+      "data": { "title": "三步找到旅遊攻略", "subtitle": "首頁、主題、搜尋" },
+      "lines": [
+        { "id": "sc1a", "text": "出發前想查交通怎麼走，但不知道站上的攻略放在哪裡嗎？" },
+        { "id": "sc1b", "text": "接下來用三個步驟，帶你從首頁一路找到想看的那一篇。" }
+      ]
+    },
+    {
+      "id": "find-guides",
+      "chapter": "從首頁點進攻略區",
+      "template": "screencast",
+      "data": {
+        "caption": "帳號區已遮蔽",
+        "steps": [
+          { "action": "goto", "url": "https://mokaair.com/zh-TW" },
+          { "action": "wait", "selector": "a[href=\"/zh-TW/login\"]" },
+          { "action": "mask", "selector": "a[href=\"/zh-TW/login\"]" },
+          { "action": "capture" },
+          { "action": "click", "selector": "role=link[name=\"旅遊情報攻略\" s] >> nth=0" },
+          { "action": "wait", "selector": "a[href=\"/zh-TW/guides/topics/transport\"]" },
+          { "action": "capture", "focus": "a[href=\"/zh-TW/guides/topics/transport\"]" },
+          { "action": "fill", "selector": "input[placeholder=\"搜尋文章與攻略\"]", "value": "東京交通" },
+          { "action": "capture", "focus": "input[placeholder=\"搜尋文章與攻略\"]", "zoom": 1.6 }
+        ]
+      },
+      "lines": [
+        { "id": "sc2a", "text": "第一步，在首頁上方的選單，點旅遊情報攻略。" },
+        { "id": "sc2b", "text": "第二步，攻略區依主題分好了，要查交通就點交通這一格。", "reveal": 1 },
+        { "id": "sc2c", "text": "第三步，已經知道要找什麼的話，直接在上方的搜尋框輸入關鍵字。", "reveal": 1 }
+      ]
+    },
+    {
+      "id": "wrap",
+      "chapter": "下一步",
+      "template": "outro",
+      "data": { "title": "找到了就收藏起來", "cta": "攻略區的網址在說明欄" },
+      "lines": [
+        { "id": "sc3a", "text": "找到想看的攻略之後，記得收藏起來，出發前再打開來看。" },
+        { "id": "sc3b", "text": "攻略區的網址放在說明欄，我們下一支影片見。" }
+      ]
+    }
+  ]
+}

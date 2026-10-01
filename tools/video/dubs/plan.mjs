@@ -9,8 +9,10 @@
 // is exactly as long as the video, to the sample.
 import { createHash } from "node:crypto";
 
+import { emptyLexicon } from "../core/lexicon.mjs";
 import { eachLine, LOCALES, NARRATION_LOCALE, narrationLocale, spokenText, textHash } from "../core/schema.mjs";
 import { FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, framesFor, msToSamples } from "../core/timeline.mjs";
+import { planRequests } from "../tts/requests.mjs";
 
 export const DUB_LOCALES = LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
 /** The locales one video can be dubbed in: every caption locale but the one it is narrated in. */
@@ -118,6 +120,68 @@ export function translationHash(script) {
   const hash = createHash("sha256");
   for (const scene of script.scenes) for (const line of scene.lines) hash.update(JSON.stringify([line.id, line.text]));
   return hash.digest("hex").slice(0, 16);
+}
+
+/**
+ * What `dub` asks the voice for in `locale`: the caption translation in the dub voice, read with
+ * the shelf's raw dictionary filtered by the target language (project.shelfLexicon, so a Chinese
+ * dub of an English video gets its Chinese aliases back, for --file projects too). No requests
+ * while a line has no current translation.
+ */
+export function dubRequests(project, locale, style = null) {
+  const { doc: script, missing } = dubScript(project.doc, project.translations?.[locale], locale, style);
+  const lexicon = speechLexicon(project.shelfLexicon ?? emptyLexicon(), locale);
+  return { script, missing, lexicon, requests: missing.length ? [] : planRequests(script, lexicon) };
+}
+
+/**
+ * Hash of what the voice is asked to say, line by line: each line's clip key, which binds the
+ * effective voice (name, model, style) and the line's words with the aliases actually applied.
+ * An alias the lines do not use, or two aliases the target language discards alike, leave it as
+ * it is; another locale's changes never reach it. Computed from the plan alone: no network.
+ */
+export function speechFingerprint(requests) {
+  const hash = createHash("sha256");
+  for (const request of requests) for (const line of request.lines) hash.update(JSON.stringify([line.id, line.key]));
+  return hash.digest("hex").slice(0, 16);
+}
+
+/** The fingerprint `dub` would record for `locale` now; null when it cannot be planned (no project, a missing translation, a line too long). */
+export function dubFingerprint(project, locale, style = null) {
+  if (!project?.doc) return null;
+  try {
+    const { missing, requests } = dubRequests(project, locale, style);
+    return missing.length ? null : speechFingerprint(requests);
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Whether a dub record (its timeline.json, or the fit.json of a run that was over budget) was
+ * made with the speech `dub` would request now, in the style it was made with (`--style`, kept as
+ * style_override).
+ *
+ * A record from before dubs recorded a fingerprint (2026-10-01) is judged by the locale's clip
+ * cache (`cache`, dubs/<locale>/audio/cache.json): current when every line `dub` would plan now
+ * has the clip key it would ask for (the line's or its request's, as `dub` reuses a clip), since
+ * the track was laid from those clips. No cache, an unreadable one, or one key that differs or is
+ * absent leaves it stale; running `dub` again records a fingerprint and synthesizes only the lines
+ * whose keys changed. The cache can run ahead of the track when a later run synthesized new clips
+ * and did not finish; `legacyGuard` is false when a newer run's fit.json shows that happened.
+ */
+export function speechCurrent(project, locale, record, { cache = null, legacyGuard = true } = {}) {
+  if (typeof record?.speech_fingerprint === "string") {
+    return record.speech_fingerprint === dubFingerprint(project, locale, record.style_override ?? null);
+  }
+  if (!legacyGuard || !project?.doc || !cache?.lines || typeof cache.lines !== "object") return false;
+  try {
+    const { missing, requests } = dubRequests(project, locale, record?.style_override ?? null);
+    if (missing.length || !requests.length) return false;
+    return requests.every((request) => request.lines.every((line) => [line.key, request.key].includes(cache.lines[line.id])));
+  } catch {
+    return false;
+  }
 }
 
 /** The slide states of the zh-TW timeline as windows, each with the lines spoken inside it. */

@@ -8,6 +8,7 @@ import { createHash } from "node:crypto";
 
 import { isCompilation, validateCompilation } from "./compilation.mjs";
 import { DRAMA_FORMAT, SHOT_TEMPLATE, validateDrama } from "./drama.mjs";
+import { SCREENCAST_TEMPLATE } from "../screencast/steps.mjs";
 
 export const SCHEMA_VERSION = 1;
 // drama: AI-generated shots instead of slides (docs/videos/DRAMA.md); its rules live in drama.mjs.
@@ -236,8 +237,9 @@ function validateScenes(scenes, errors, format, compilation = false) {
       errors.push({ path: `${where}.chapter`, message: "the first scene must open a chapter: YouTube needs one at 00:00" });
     }
     // A "shot" is not an HTML template: a drama's clip or still, or a slides video's illustration; drama.mjs checks its data.
-    if (!TEMPLATES.includes(scene.template) && scene.template !== SHOT_TEMPLATE) {
-      errors.push({ path: `${where}.template`, message: `must be one of ${TEMPLATES.join(", ")} or ${SHOT_TEMPLATE}` });
+    // A "screencast" is stills a browser takes from steps on a public page (tools/video/screencast); lint checks its steps.
+    if (!TEMPLATES.includes(scene.template) && scene.template !== SHOT_TEMPLATE && scene.template !== SCREENCAST_TEMPLATE) {
+      errors.push({ path: `${where}.template`, message: `must be one of ${TEMPLATES.join(", ")}, ${SHOT_TEMPLATE} or ${SCREENCAST_TEMPLATE}` });
     }
     if (!isObject(scene.data)) errors.push({ path: `${where}.data`, message: "must be an object (the template's fields)" });
     if (scene.claims !== undefined && (!Array.isArray(scene.claims) || scene.claims.some((claim) => !isText(claim)))) {
