@@ -1,13 +1,13 @@
 ---
 id: 2026-10-01-video-thumbnails-bundle-korean-and-simplified
 title: Video thumbnails bundle Korean and Simplified Chinese fonts for language thumbnails
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-thumb-fonts
 claimed_at: 2026-10-02T00:20:38Z
 created_at: 2026-10-01T15:22:56Z
-completed_at:
+completed_at: 2026-10-02T00:40:25Z
 branch: claude/thumb-fonts-ko-sc
 depends_on:
   - 2026-09-28-video-localized-thumbnails
