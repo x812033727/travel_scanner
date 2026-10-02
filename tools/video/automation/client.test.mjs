@@ -123,7 +123,7 @@ const failed = (code) => Object.assign(new TypeError("fetch failed"), { cause: O
 
 test("a stage run sent and left without its answer is not sent again: the route's deadline, a gateway, a dropped connection, a broken body", async () => {
   const lost = [
-    ["the web route's deadline", () => Response.json({ code: RUN_UNCERTAIN, detail: "模型階段沒有在時限內回覆" }, { status: 504 }), 504],
+    ["the web route's deadline", () => Response.json({ code: RUN_UNCERTAIN, detail: "no answer within the deadline" }, { status: 504 }), 504],
     ["a gateway's timeout page", () => new Response("<html>504 Gateway Time-out</html>", { status: 504, headers: { "Content-Type": "text/html" } }), 504],
     ["an error without the API's code", () => Response.json({ detail: "Internal Server Error" }, { status: 500 }), 500],
     ["a connection dropped mid-way", () => {

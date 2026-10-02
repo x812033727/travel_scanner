@@ -528,7 +528,7 @@ test("a writer that answers without a script is asked once a run, and the video 
 });
 
 /** The web route's answer once its deadline passed while the API kept running the stage (apps/web/app/api/video/automation/run). */
-const lostAnswer = () => Response.json({ code: "video_ai_run_uncertain", detail: "模型階段沒有在時限內回覆" }, { status: 504 });
+const lostAnswer = () => Response.json({ code: "video_ai_run_uncertain", detail: "no answer within the deadline" }, { status: 504 });
 
 test("a writer whose answer is lost after it was sent is not asked again on its own: the video stops for the owner, and the owner's retry asks once more", async () => {
   const box = sandbox();
@@ -549,7 +549,7 @@ test("a writer whose answer is lost after it was sent is not asked again on its 
   const writers = () => site.calls.run.filter((call) => call.stage === "writer").length;
 
   assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
-  assert.match(out.stdout, /blocked — writer may have run on the server without its answer reaching the worker \(HTTP 504: 模型階段沒有在時限內回覆\); it is not asked again until the owner retries/);
+  assert.match(out.stdout, /blocked — writer may have run on the server without its answer reaching the worker \(HTTP 504: no answer within the deadline\); it is not asked again until the owner retries/);
   assert.equal(writers(), 1, "sent once: the client does not send it again");
   assert.equal(automatedVideos(box.work)[0].status, "blocked");
   assert.match(site.calls.reports.at(-1).checklist[0].label, /^卡住，需要人處理：writer may have run on the server without its answer reaching the worker/);
@@ -1673,7 +1673,7 @@ test("a long sheet is translated in units, each reviewed and kept; an answer los
   };
   const worker = new Automation(video.ctx, automationClient(video.ctx), video.site.settings);
   Object.assign(worker, { refs: smallRefs, unitLimits: limits });
-  assert.match(await worker.step(), /blocked — translator \(en part 2 of 4\) may have run on the server without its answer reaching the worker \(HTTP 504: 模型階段沒有在時限內回覆\); it is not asked again until the owner retries$/);
+  assert.match(await worker.step(), /blocked — translator \(en part 2 of 4\) may have run on the server without its answer reaching the worker \(HTTP 504: no answer within the deadline\); it is not asked again until the owner retries$/);
   assert.equal(worker.halted, true, "the run ends");
   assert.deepEqual([video.state().status, video.state().blocked_from_status], ["blocked", "done"]);
   assert.deepEqual(video.calls("translator").map(firstLine), ["metadata", "k7p2"], "sent once, not retried");

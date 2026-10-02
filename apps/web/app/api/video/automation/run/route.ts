@@ -16,7 +16,7 @@ const RUN_TIMEOUT_MS = 295_000;
 const RUN_LOST: LostAnswer = {
   status: 504,
   code: "video_ai_run_uncertain",
-  detail: "模型階段沒有在時限內回覆：伺服器上可能仍在執行或已經完成，但這次的結果收不到了",
+  detail: "no answer within the deadline; the stage may still be running on the server or have finished there",
 };
 
 export async function POST(request: NextRequest) {
