@@ -19,7 +19,8 @@ WRITE ONLY: `<VIDEO_WORKDIR>/<SLUG>/i18n/<LOCALE>.review.md`.
 5. Readability: lines too long to read at speaking pace (en over about 80 characters, ja and ko over about 40), unnatural word order, register slips (ja です／ます, ko 합니다체, zh-CN Simplified with mainland wording).
 6. Budget: a line over its `max_chars` when the worksheet gives one (the dub must fit the zh-TW line's slot); suggest the cut, keeping every number and name.
 7. Title, description, tags and chapter names, when the worksheet holds them: searchable in `<LOCALE>`, title at most 100 characters, no angle brackets. Review only the parts the worksheet holds.
+8. Thumbnail words (`thumbnail` in the worksheet and `thumbnail` in `<LOCALE>.json`, when the video's thumbnail has words): one for each word in `thumbnail.source`, none empty; the same meaning and numbers; the `**` emphasis and `\n` line breaks kept; short enough to read on a phone (the headline at most 2 lines of a few words). When one is too long, suggest a shorter one built on the key noun or number, never an empty one.
 
 ## Output
 
-`<LOCALE>.review.md`: one row per fix — `id (or title/description/tags/chapter:<scene>) ｜ problem ｜ current ｜ suggested` — most serious first, then a one-line verdict: ready, or ready after the fixes. Paste the verdict and the number of fixes by kind as your reply. Say plainly when there is nothing to fix; do not invent style changes to fill the list.
+`<LOCALE>.review.md`: one row per fix — `id (or title/description/tags/chapter:<scene>/thumbnail:<tag|headline|sub>) ｜ problem ｜ current ｜ suggested` — most serious first, then a one-line verdict: ready, or ready after the fixes. Paste the verdict and the number of fixes by kind as your reply. Say plainly when there is nothing to fix; do not invent style changes to fill the list.
