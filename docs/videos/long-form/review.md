@@ -268,9 +268,41 @@ Duration invariants remain unchanged: knowledge/catalog bodies and final cuts re
 Independently executed with Node 24.15.0: `node --test --test-concurrency=2 tools/video/core/duration.test.mjs tools/video/qa/duration.test.mjs tools/video/qa/checks.test.mjs tools/video/long-form/integration.test.mjs tools/video/long-form/plans.test.mjs tools/video/core/drama.test.mjs tools/video/tts/tts.test.mjs tools/video/automation/series.test.mjs`: **112 passed, 0 failed, 0 skipped**, exit 0. The regressions cover the exact 480-second boundary, one frame short, body versus bookends, current measured evidence, ordinary drama/compilation preservation, real mocked TTS repeated bytes and independent CC timing, family retakes, and refusal of corrupt or unverified cached sources. Before rebinding, the actual long-form CLI check failed only on the five expected stale bindings. After installing this genuine increment, the reviewer independently executed `node tools/video/long-form/cli.mjs check`: PASS for all 473 plans, exit 0; and `node --test tools/video/long-form/review.test.mjs`: 2 passed, 0 failed, 0 skipped, exit 0. The final report hash was then refreshed to include these completed results, and both guards were rerun.
 
 Non-claims: no real model/provider/API calls, audio listening, animation generation, production writes, manuscript approval, subtitle playback, browser, PostgreSQL or CI acceptance were performed by this reviewer. This receipt accepts only duration compatibility of the SHA-bound changes; it does not accept actor casting, pronunciations as heard, SFX, complete films, publication, or the separately authored sidecar designs. Required duration fixes remaining: none.
+## Native long-anime duration policy and production guards: 65 bound paths (2026-10-02)
+
+Verdict: **PASS — DURATION_ONLY**. Author: `codex-root`. Independent reviewer: `/root/review_planning_import`; the reviewer did not implement the policy or production changes. Reviewed implementation revision: `9257a45d6dafeb67ec09429eb26675a101eb9a30`, rebased onto `origin/main` `acb935fb4` (including PR #1129's series branding). The original 70-file receipt at that base has SHA256 `245bbde83724e61b460e27aac51d0b2511747577f4cadee71a5f8ab85aaf34f5`; its report SHA256 is `8590b442fcfb1f95913940c972a961d4b06154497eb6da462e4ec9ab44aa1689`. Every preceding report increment above is preserved verbatim, including the planning-import, merge, migration-order, Shorts and drama-voice review history.
+
+This increment independently reviews the duration-relevant API, migration, worker, Node writer/input/assembly/QA/package/review/state and admin UI delta, its regressions and the new long-anime contract document. The registry retains all 70 existing paths, rebinds 26 changed implementation/test/locale files plus the registry itself, and adds 38 critical paths: 36 newly covered changed code/test/document files plus the trusted source validator and its authoring contract. The other 43 historical bindings remain byte-identical to their previous receipt. The resulting 108-file table binds current bytes; it does not claim a new review of those 43 unchanged historical files. Only registry entries were added to `review.mjs`; its independent identity, exact coverage, report/table/file hash and stale-binding validation functions are unchanged. Before rebinding, the actual long-form CLI check failed solely on the 26 expected changed historical bindings.
+
+The exception requires the explicit `long-anime-v1` policy and strict runtime specification on the native series and episode. Category or drawing style alone cannot enable it. The four integer fields require a whole-minute 9–30-minute body, OP/ED budget 0–300 seconds, slot reserve 0–900 seconds, a positive slot at most 3600 seconds and exact body + OP/ED budget + reserve equality. Boolean and incomplete/unknown fields fail closed. Ordinary series retain 1–8/default 3 minutes, ordinary explainers retain 8–20/default 10, and the historical ordinary database duration boundary and existing lead choices remain intact. Additive migration 0122 preserves the planning-only protection from 0121 and the existing ordinary branch; only a valid native profile gains the wider body/ensemble constraint. The old planning row is never promoted by native create.
+
+Borrowed Dawn's source remains 22 minutes of story, 120 episodes, 12 documents and 240 distinct high-tension events. Its separate native draft requests a paused production series with a 1320-second body, 180-second OP/ED budget and 300-second unrendered reserve within an 1800-second slot. The original source files and historical support gaps are unchanged. All 16 source character voice assignments remain pending. The offline adapter checks strict JSON, canonical local paths, complete file hashes, frozen derived rendering and semantic/document twins; refreshed hashes cannot hide changed source semantics. Bundle code stays inert. The only executable semantic validator is the fixed repository import, now bound with the authoring contract it reads. The draft retains false import/production/media/approval/publication readiness flags and supplies no approvals, activation or media.
+
+A measured native body must be within ±60 seconds: 1260–1380 seconds for this source. Estimated timing never supplies actual duration evidence, OP/ED cannot rescue a short body and the reserve is never padded into media. Current 30 fps body/presentation frame arithmetic, actual final SHA256, the 16-hex speech hash and full runtime/context policy hash are required. OP/ED must fit its budget; presentation must fit slot minus reserve. Existing intro and outro limits remain 30 seconds each. The upstream series-specific explainer intro remains scoped to that series, while native silent action offsets shift with scenes and dialogue exactly once without changing the unwrapped body. Ordinary knowledge body/minimum/final checks and ordinary fit behavior remain unchanged.
+
+Native script, audio, final and publish approvals bind current policy/context as well as bytes; policy or action edits invalidate old timeline, script checks, remote review receipts and status. API native identity resolves the authoritative episode/series rather than a worker-mutable series label. Final/publish gates reject missing, estimated, stale or out-of-range proof before idempotency, renewal or manual approval; publication also requires the current approved final. Native script payload capacity is bounded at 1 MiB only after native context validation; ordinary capacity stays 256 KiB. Native automatic approval shortcuts, compilation and unrestricted profile changes remain blocked, and document approval plus explicit planning/resume actions govern a freshly paused series.
+
+Narrative guards retain exactly two distinct first/second-half events with stakes and continuing consequences, valid cast/thread references and five continuity fields. Rolling payoff windows use chronological neighboring chapters, including cached owner edits and episode starts. Only the declared final episode of a closed series with explicit closure can use an emotional ending with last tension 1–3; earlier episodes keep the existing retention ending rule. Source episode 120 retains its actual tension 2 and closed epilogue. The writer divides the long script into bounded acts (at most 300 target seconds per act, 32k output tokens, 180 scenes/180 kB per response), validates every act and binds resumable checkpoints to canonical source/plan/assignment hashes. Verification, listening and discussion use bounded input/output paths.
+
+The independent review identified and confirmed fixes for chronological prior-chapter tail selection; direct episode-edit/start semantic bypasses; authoritative project-to-series identity; silent action position missing from timing hashes; silent action description/motion missing from screenplay and approval evidence; and default auto-fit stretching or freezing short native clips. Directed silent shots require real visible action, motion and strict 1–8-second durations. Their position binds the speech/timeline hash, their content binds screenplay checks and approved script bytes, and narration receives the corresponding real silence. The shared native fit proof requires every shot's current timeline span and actual sufficient media, speed 1, zero padding and consistent source/stretch/trim frame arithmetic; motion stills require an explicit move. Assembly probes all native clips before any segment encoding, so a bad final clip cannot leave earlier encoded segments. QA, package, review and scheduler status use the same fail-closed evidence. Ordinary slow/pad fit remains preserved.
+
+The admin editor retains its ordinary 1–8-minute form and adds an explicit paused native profile. Original planning specifications/documents/episodes remain readable and protected. The review UI separates authored targets, measured body/audio, actual OP/ED and broadcast/reserve budgets; missing/stale/invalid finished-film proof disables approval. Native script cards visibly show silent action description, motion and duration outside collapsed prompts, plus current two-event/consequence/closure coverage. Ordinary, malformed or stale verdicts do not acquire a validated native presentation. The five locale changes retain these distinctions after the main rebase.
+
+Independently executed focused regressions (overlapping suites are not summed as unique tests):
+
+- `node --test --test-concurrency=2 tools/video/core/anime-policy.test.mjs tools/video/core/duration.test.mjs tools/video/core/timeline.test.mjs tools/video/production/anime-input.test.mjs tools/video/automation/anime-write.test.mjs tools/video/automation/series.test.mjs tools/video/qa/duration.test.mjs tools/video/review/sync.test.mjs`: **161 passed, 0 failed, 0 skipped**, exit 0, during the review before the final media fixes.
+- `node --test --test-concurrency=2 tools/video/core/duration.test.mjs tools/video/core/screenplay.test.mjs tools/video/core/approvals.test.mjs tools/video/core/state.test.mjs tools/video/assemble/assemble.test.mjs tools/video/package/package.test.mjs tools/video/qa/duration.test.mjs tools/video/review/sync.test.mjs`: **127 passed, 0 failed, 0 skipped**, exit 0, after the final media and screenplay fixes.
+- In `apps/api`, `RUN_INTEGRATION_TESTS=0 .venv/bin/python -m pytest tests/test_video_anime_production_policy.py tests/test_video_anime_review_policy.py -q -k 'not model_checks and not native_create_and_source_draft_round_trip'`: **114 passed, 9 deselected**, exit 0, after the final API guards. This run excludes eight ephemeral SQLite constraint cases and the real PostgreSQL round trip. An earlier focused run separately passed the isolated SQLite CHECK cases; the reviewer executed no shared/PostgreSQL DDL and no real PostgreSQL integration.
+- At the final rebased revision, `node --test --test-concurrency=2 tools/video/core/branding.test.mjs tools/video/core/duration.test.mjs tools/video/core/state.test.mjs tools/video/core/screenplay.test.mjs`: **42 passed, 0 failed, 0 skipped**, exit 0.
+- At the final rebased revision, in `apps/web`, `npx vitest run components/admin-video-series.test.tsx components/admin-video-reviews.test.tsx components/admin-video-explainer-duration.test.tsx`: **97 passed across 3 files, 0 failed**, exit 0. These are component tests, not browser acceptance.
+
+After installing these bindings, the reviewer independently executed `node tools/video/long-form/cli.mjs check`: **PASS for all 473 plans**, exit 0; `node --test tools/video/long-form/review.test.mjs`: **2 passed, 0 failed, 0 skipped**, exit 0; and `git diff --check`: clean. The checker still rejects self-review, missing registry coverage, a changed report and stale file bytes. The completed guard results are included in this report, and the report SHA and both guards are refreshed and rerun.
+
+Non-claims: this PASS accepts only duration policy compatibility and the source-bound software guards described above. It does not accept story quality, manuscripts, casting or audible performance, actual provider/model calls, completed animation or a measured 120-episode production, browser/media playback, deployment, formal import, paid generation, scheduling or publication. Root's separately executed real-PostgreSQL and broader suites are not claimed as independent execution here. Required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
-These 70 bindings describe the current reviewed bytes after the main-merge and owned migration-order increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
+These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
@@ -278,49 +310,81 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | `.agents/skills/youtube-video/references/automated.md` | `05da9e6045979c5af53164bca6514af624e1858880c1f6370d4f667149322db5` |
 | `.agents/skills/youtube-video/references/formats.md` | `57eb41e88c6456f7ed25be0aa77af9fc28e252bea2792dac68851d0e8406ca67` |
 | `.claude/skills/youtube-video/SKILL.md` | `9f425b6361451c032e56a5ccc2e7e9eef58feacd5c479e16551cc1918f826939` |
-| `apps/api/app/video_automation/models.py` | `a527501908ded6558839f175a047e05b38b9eb9c8a9be9494d079382f99561b7` |
-| `apps/api/app/video_automation/schemas.py` | `084745ef3f022863777b7694a98c168df6415181c30bc84b4ce0a151af7e974c` |
-| `apps/api/app/video_automation/series.py` | `61a6d7b0460ff9b70e656b8025fd7409df2cd912b16acff1d160db98258c0965` |
+| `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
+| `apps/api/app/video_automation/judge.py` | `f27078a3792caed5fb7f0af14bd95d631824c562c37d3aafed375c06dbbc21ca` |
+| `apps/api/app/video_automation/models.py` | `93ee8ee2df1b8711a413e730e982ecd444680d321fc1121b7a90c9b92f1b820f` |
+| `apps/api/app/video_automation/schemas.py` | `18cab46cfbcb5cfe9ab6a2f48a7d9f3ec59eb4f76e5f5e78796315de5a4573b0` |
+| `apps/api/app/video_automation/series.py` | `ca8e61d2431752d78f6e7bc5c98c26dd1c862d8ccb2bf596aa124b088f378dea` |
+| `apps/api/app/video_automation/settings.py` | `381d17d963f365153a39161ace5d9e5de79faa8bf373d6b9ceb2c0861f0bb644` |
+| `apps/api/app/video_reviews/admin_service.py` | `62b65a8e8ec013dc9de2f8bba51a2feda9396b6a5237e9ee15b2f007c2159a08` |
+| `apps/api/app/video_reviews/schemas.py` | `7953a70a195c647638a78b35055ab7b0a9d365d87146b92e9fa568afb3bd759c` |
 | `apps/api/migrations/versions/0118_video_min_8_minutes.py` | `5e254bd11d8e635368880ca3b82e368a58887b5223bf3ac5e71d1a2dedc68266` |
+| `apps/api/migrations/versions/0122_video_anime_production_policy.py` | `91f97905e9a689cc47aef8eac60735175a4048bfb5788fa1d204acb43ee11ea7` |
 | `apps/api/tests/test_migration_0118_video_min_8_minutes.py` | `c479dfd800de1fcbd1fb71d0b47d4fcb922675b314b31b680e8195cac898c28e` |
+| `apps/api/tests/test_migration_0121_video_series_planning.py` | `74d030582ee98a4a05be0b07efb78fcf3a21cae34fca41a7fedaa4eb3a2eb204` |
+| `apps/api/tests/test_migration_0122_video_anime_production_policy.py` | `c0bbfbbb3af79cf98e55569b60c11bc5131811d2915afc51d569605c4ae4a2d8` |
+| `apps/api/tests/test_video_anime_production_policy.py` | `b9fe3f9ff8ffd0b1d36089f2f684d60bb2e2c7712e4549940c472abb4c59efb1` |
+| `apps/api/tests/test_video_anime_review_policy.py` | `eacb78a7e6692e530730b49e3bb89698d1b2a3976ac8f1d836bbc435b16276d8` |
 | `apps/api/tests/test_video_automation_settings.py` | `b7f8a1853a7090d010a648ddb7c262c3c616256b4d6a8913410efab8d40a3707` |
 | `apps/api/tests/test_video_drama_requests.py` | `07ddbcaadf668a13565969ca44e2542dee4f6ad83791bcc8f67d785302734c59` |
 | `apps/api/tests/test_video_explainer_duration.py` | `fbd8aaca7171321dcbe7511f607f61bb21a147640f9e22920db87d2f872ab2fc` |
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
 | `apps/web/components/admin-video-explainer-duration.test.tsx` | `bb888f17b3ef617d788fbed83f5fba280dfe06da008a6f80fca15b15c6916ca0` |
-| `apps/web/components/admin-video-reviews.test.tsx` | `2d4c0b9dc89062a105a61d04ef7c44d25129c4672f06e41bcdcbab2b1b0f10ab` |
-| `apps/web/components/admin-video-series.test.tsx` | `bf1197d8166cdbc32c5316636eb034633c4bd4f167ca639516f32b664f9b1ea0` |
-| `apps/web/components/admin-video-series.tsx` | `22ab2b261f098222d766741c694f74da8a85f46cec7f68188a0e3beddbbf1952` |
+| `apps/web/components/admin-video-review-card.tsx` | `d5548c8bb8218cad84719434bfae1a2acebc1d972b6887cda3e9afaa5088c5e8` |
+| `apps/web/components/admin-video-reviews.test.tsx` | `5d8bf674f9f34f97655666e8b61b556a51720f98638c55587e852d167d3cb824` |
+| `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
+| `apps/web/components/admin-video-series.tsx` | `782f129262ae99bab3b69a152ab2dd8dc3a9c26c0e1fcd44e12e3819819d8461` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `7aad8e5d88b67ebaf0b261a57482fb06044111e86af9cfa43157627c7e671957` |
-| `apps/web/messages/en/admin.json` | `497fb3d75b0da897afaca7848a4580e0aceec0fd5cf20b4e90ae685854da279d` |
-| `apps/web/messages/ja/admin.json` | `934d9347fb9bf0a75ff07b769b9c1fc781bd5e205837a22e25c887757af4512e` |
-| `apps/web/messages/ko/admin.json` | `295b5f07945222f8eae5313a50c754aff79225adea68716750420a8f18f4142d` |
-| `apps/web/messages/zh-CN/admin.json` | `52cf4834571a1db47fceb35cca7052733aeadc2c38bf0da4c33052189ed93d24` |
-| `apps/web/messages/zh-TW/admin.json` | `edfe61a35b79431a3dc93555b27cbe35f9134254123bd2bba8c30c53090e909b` |
+| `apps/web/messages/en/admin.json` | `fec71826c900e68209f170ca580f4c05376e38543ca268f7c3bbdc2c056adf41` |
+| `apps/web/messages/ja/admin.json` | `ee8c921fc06f600dfd5d9744898690b48b41a7b78f26f35a872db69ac0cbe1bb` |
+| `apps/web/messages/ko/admin.json` | `f59e8b36344ba6a4763a0ac8288ec8f488f0af58163d9db74e5e7be95964ae8d` |
+| `apps/web/messages/zh-CN/admin.json` | `ebdf0316ea8b2bbef703b6a32f45af1042c3dc6b28bad0a69c8dc64586e6d779` |
+| `apps/web/messages/zh-TW/admin.json` | `aeef4895b703c7baadf4211d4604febe9ee343ee276ea0ba4593089c81601db9` |
 | `docs/videos/DESIGN.md` | `299449c6c19a40a0e17868615a7d8442771449e0db6e63186ca9c57a0d57ab41` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `ac08a33baedd84f282901594e55758f4b390ee1a8dc798e2c25c4b463081aa80` |
+| `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
 | `docs/videos/README.md` | `928de9f2dcfbe7126654501e0dbc4339dea55f716f875e931ab2df0cae3e219d` |
 | `docs/videos/long-form/README.md` | `dd639c0c85595881d1bda64541d28f29e8d90f1067e541c08eb28dc9c4543c3b` |
 | `docs/videos/long-form/plans.json` | `22023c15fa10a24e4a0141e3fc5930ff6925a84ff5ab5cb5a466a5baa15b7108` |
 | `docs/videos/long-form/policy.json` | `6f08e7cd27b98710dc308bdb7ea44a6db4b1c8891d0731d5387d9b2245636bad` |
+| `docs/videos/series-plans/borrowed-dawn/authoring-contract.json` | `1c98acb9b2e75ec5cce793d5ebe5bb934791f52ac9c63f15babcb4fb577cc46c` |
+| `docs/videos/series-plans/borrowed-dawn/validate.mjs` | `cad0c421ea375c40f28093157b9749c1f7f95524d0f9a8d4ffa1978e61c1df04` |
 | `docs/videos/so-thats-why/README.md` | `00a0f0e5a56d7a492dec69263eab34668e0d334949878bd512b09edacaefd0de` |
 | `docs/videos/so-thats-why/season2/README.md` | `e560411dc91f1928b2cf9506a044e55ae7f5f65450199118bd165464599f1218` |
+| `tools/video/assemble/assemble.test.mjs` | `8bb0943d51fe95aed1d62a12ae590f018f531d9c8253afdb6521015de61366d0` |
+| `tools/video/assemble/cli.mjs` | `23e1e6451f4012f33ef433e87db25f861cc78b7661e3fd9e435db7db37f964d0` |
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
+| `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
+| `tools/video/automation/anime-write.test.mjs` | `67e53a0cf183c3175adac2ce28d8b2fef7792a408b6b49125345e129115e7d05` |
 | `tools/video/automation/automation.test.mjs` | `db52f938be4b33572425f8841da61693dc24c4fb896e304ff57a53017a9abe4a` |
-| `tools/video/automation/flow.mjs` | `577f4574b2ddf581d55e6c30320ddd5ddca653754f86c56bc216eb491bb6a619` |
-| `tools/video/automation/prompts.mjs` | `ba93ae2a05a23fdf72db52a82868efd85a2012f36a97f06f77d7978c8b99c84e` |
-| `tools/video/automation/series.test.mjs` | `bea012ec1bc7295c33763c5d9089877d1efd56662c3d92e2a6610f49c61b1c7b` |
+| `tools/video/automation/discuss.mjs` | `691f6ec55bde0b1c34c54fd38f39681d50617035dab78b0d2c751266a61f43ee` |
+| `tools/video/automation/flow.mjs` | `79418360ab1a1dc018d3fbd4c43de59c318d2788d675dc1a2b086cfa75eb7915` |
+| `tools/video/automation/prompts.mjs` | `e0527f2bb7976efa915cf3719a6d0bcc9d9ff63a505632776f441b20cd410ed7` |
+| `tools/video/automation/series.mjs` | `06fbcd8b8bb2e1eedc134d3f11eab4d1555d3c53039e4663f37a1e0d643e577d` |
+| `tools/video/automation/series.test.mjs` | `0a83a95d14533c37d945e77a8449275e497e843e03c2afb11e33da9f49913fdb` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
-| `tools/video/core/drama.mjs` | `d4f018baeab4bb784d8c16daf0bd5b8174e92761f87fe64056d0565bf1b88a14` |
-| `tools/video/core/duration.mjs` | `406c61d2211781ae571f952cb6239ee7c808f7f603a4be3ed5d61622bfe65d9a` |
-| `tools/video/core/duration.test.mjs` | `49290be2b3f58801532e225ecff8f8b9730746425e6527b50b0c03beee6adc94` |
+| `tools/video/core/anime-policy.mjs` | `2c53db1a18e27780b032a019b37912197c13bb4aadc6a130cecdc60371482ecd` |
+| `tools/video/core/anime-policy.test.mjs` | `74b9f1360829efed4c2f1e529b403024877e255d51430a5a2636ac7c5a24b3c6` |
+| `tools/video/core/approvals.mjs` | `cca74ca01f05971ab7a7d04d786f9403dace990d17d84a2a50fc3530976df508` |
+| `tools/video/core/approvals.test.mjs` | `828a99481e4ec595d5e0d8311baf81b182fc996b1ad1bf4916b4ac195680e2a8` |
+| `tools/video/core/branding.mjs` | `aaad784dc23fe4bc1fc08c2871a5cd122ba483c500a07f128cb836dd8f05c8c7` |
+| `tools/video/core/branding.test.mjs` | `bebfeabcb0855bffc18f0334dd1a6206bb374552467edb036d999ca5398374cb` |
+| `tools/video/core/drama.mjs` | `b1d16f336ac123dd6e67278d67b4798957516babc8a00202706a6b61aa122790` |
+| `tools/video/core/drama.test.mjs` | `529b1b4a468c3f1408c2351070b616fcd4e31fb44010d6526a4a548e7ecec2cb` |
+| `tools/video/core/duration.mjs` | `ea03a4c70e45c069b2b751038a91cbd4ae93790b6e5120d6eaebfedde285d138` |
+| `tools/video/core/duration.test.mjs` | `388bda7c57e548c2f50165a713e038e147645d283409c1f09393e8eef68652ba` |
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
-| `tools/video/core/lint.mjs` | `34b2d059805ceceedd95f56881a13a30a7112e4dcc49864a58fbf7d57e309ed8` |
-| `tools/video/core/lint.test.mjs` | `0cc01210737ee6d3be68018602bd36789c223a6c746b29b5add73f5a3cf28225` |
+| `tools/video/core/lint.mjs` | `74bb8cf6952713f4a356cf1e58109cb7ed7a838e3825b4a913471578188b2af3` |
+| `tools/video/core/lint.test.mjs` | `41d812e5d8a089e92bcbc3f7c089a44ac14d9b73c33d9ac16bc94fc5baa4ca40` |
 | `tools/video/core/narration-locale.test.mjs` | `af0b899f0518ef0f652816a8d53908d002cb805514993ca24d6aca0004640595` |
-| `tools/video/core/schema.mjs` | `608f4f843f301f902c97c7144035f355a5fdf30c58bf658929b3877513a672a2` |
+| `tools/video/core/schema.mjs` | `04462f637fc968993e06a564032564cf5b2242e9a7f8108fe45193c082a991df` |
+| `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |
+| `tools/video/core/screenplay.test.mjs` | `fe2765c5f2fa42d7cfe5a2e542063c32c4349b585c649552a31b2088aaaec180` |
 | `tools/video/core/stages.test.mjs` | `0a409f7a88234c1823146ea65092a95ceb12b69c34ccf1910894712f34859a2e` |
-| `tools/video/core/state.test.mjs` | `23e89658d92b99d0e7dbb64e8ad00f82016795deb38ef732ec9e76013d867522` |
+| `tools/video/core/state.mjs` | `db435beb6db5639bafb491a8ce3c37e6bf1a70f90e74f6e5d238194615e5e9d8` |
+| `tools/video/core/state.test.mjs` | `b7a0e25e00ba1585bf0aa762ffb0162374fb70a110afcfbfa666f56fd8e7ad75` |
+| `tools/video/core/timeline.mjs` | `cce37cc821e8dfc5566abb32a86999a690f0ecb55f6608faf083e408c4e54c45` |
+| `tools/video/core/timeline.test.mjs` | `13c424a9ef87345168f9c3a407ff60543023792b887f2e215562a25741ab1a9a` |
 | `tools/video/dubs/captions-package.test.mjs` | `7eb0a10630b447dd17ffeafe3d99059c0fe3f392d58838dffd10a59373734f28` |
 | `tools/video/dubs/dubs.test.mjs` | `143f7bfa09d2a161c275186464ea2f27c55f37a1e9dc9d5e90dfab7ed69f373b` |
 | `tools/video/dubs/freshness.test.mjs` | `c882af3d55bff72c410e930b0e0f187770782a937952bb9efba3ab40e44a5b30` |
@@ -329,18 +393,24 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | `tools/video/long-form/integration.test.mjs` | `aa69f38653fb7c6a7fd0c6daed93ccde1e031987e3169f6c8d9456f38c8b605c` |
 | `tools/video/long-form/plans.mjs` | `9680960509931642c679a9db9a3a1d6e419280558f9eb431358bfd1ee781e103` |
 | `tools/video/long-form/plans.test.mjs` | `5b7992649fa5384d1758664a2e9b6ccbb104004da499a3d5f73b6665e9f768a6` |
-| `tools/video/long-form/review.mjs` | `69fe791f0b3dd36a1d2070cd3ab1d371d70625d3a5228e90b42d5d48203525b8` |
+| `tools/video/long-form/review.mjs` | `7c8df7615dd87e355d6304fe161a2adafcb90b584093dd30799e32c58d527a44` |
 | `tools/video/long-form/review.test.mjs` | `e753ccc616b589a321473336f71621cd46206edbc0fa4f2b1e59d2167217e06f` |
 | `tools/video/media/clips.test.mjs` | `adba34387121485e6c30a0c15a57c0e9e2c6ef573f00c9a83e4a09ba391c3764` |
 | `tools/video/media/look-keyframes.test.mjs` | `2b92c61e276fd120952512e1752297b4f9dcdc185059095da3517800f8a09348` |
-| `tools/video/qa/checks.mjs` | `dc99682b29b674cfedc12ca67c8809e23c1d99d5635a1cd79970a8180d21cc83` |
+| `tools/video/package/cli.mjs` | `1ed4581ef6ad2e0247aebf5f2080ceb4bfeed7a9f38db6cb5021a2305fa0db6e` |
+| `tools/video/package/package.test.mjs` | `ac036f51c2b941d6b33992e94b31f82c08044bf5eabf0a7cb3046e9d599dd50d` |
+| `tools/video/production/anime-input.mjs` | `515e917f4d06c0117222ce09717345f9d4288c1e0357491e5f1097f782477f13` |
+| `tools/video/production/anime-input.test.mjs` | `a76dba6c2acaa1c9ddcfe55bb9ea784ba3d95e2a902b0ba3a304ca0625edc3b9` |
+| `tools/video/qa/checks.mjs` | `0c13be6eb906f9a322eab71dd18974a2cfa3f9d9b27cc5a9cba9f3570891567b` |
 | `tools/video/qa/checks.test.mjs` | `e93fe80fb6ef0366da6728e397f78e355e6000847836a0a7e31ae63615211317` |
-| `tools/video/qa/cli.mjs` | `d6c50172eca6816266f8c209913970345b42afd72ea9a5a740c4af243be8ff7c` |
-| `tools/video/qa/duration.test.mjs` | `056e8f564c9952b025ea7736b43e41bfc47fcc75a847f840878a093ea61fc681` |
+| `tools/video/qa/cli.mjs` | `ce6bb2b6bfb3bd4aec0f93bec0359426042288d0a333acf5660b11720adb469e` |
+| `tools/video/qa/duration.test.mjs` | `7024004f5d239d10809a365960f4d3c794a17923bbef2b820aaecdd67dc55aee` |
 | `tools/video/qa/qa.test.mjs` | `6bab373f43da2cbc9ff469c771ea561e9075964b9e387340167ff42d8cd10aa5` |
-| `tools/video/review/sync.test.mjs` | `2212d090dc95de655cb37f2a6a263170c8323a7e63fd8522e6a4d90c9b3d0bf1` |
+| `tools/video/review/sync.mjs` | `3e701575673f0167c975abf731808e15d3b8a913a7309295db1d9ac8892117a1` |
+| `tools/video/review/sync.test.mjs` | `a70c67fe476580efcf87f025dafbe5bcd6fcb188e13756546ad245d07daa1f43` |
 | `tools/video/screencast/screencast.test.mjs` | `9bbe23f554a93ee394ec4d0aed18fc030d61b284a42b68487f9c89b0e1ad7e6a` |
 | `tools/video/templates/terminal/terminal.test.mjs` | `fc8c9ca5a76f336b545194a7a009630fe0d227544aa4e9b363c0d655fce4e38d` |
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |
 | `tools/video/tts/check.test.mjs` | `ad385d7df22fd297588dfef8a72b0b3f6261d0fb4619e4c538a30ef8464b1477` |
-| `tools/video/tts/tts.test.mjs` | `aec45cfd3f6a8c9a96545c3aa7964d1cd17c3dae71124749d5b06105b4f9411c` |
+| `tools/video/tts/synthesis.mjs` | `0081296cca9114ec528d8581f29fa553e2b5657a347988bf5b789e5eed2b6680` |
+| `tools/video/tts/tts.test.mjs` | `39843f6533f91c800f9bcad52640604b8e64e5273ba5d2bb31a2beabe6d3798d` |
