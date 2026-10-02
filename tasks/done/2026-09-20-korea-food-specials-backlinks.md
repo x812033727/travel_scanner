@@ -1,13 +1,13 @@
 ---
 id: 2026-09-20-korea-food-specials-backlinks
 title: Link city itineraries and must-eat to the Korea food specials
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5-kfood-links
 claimed_at: 2026-10-02T19:26:02Z
 created_at: 2026-09-20T09:41:00Z
-completed_at:
+completed_at: 2026-10-02T19:50:02Z
 branch: claude/korea-food-specials-backlinks
 depends_on:
   - 2026-09-20-launch-korea-food-specials-1
