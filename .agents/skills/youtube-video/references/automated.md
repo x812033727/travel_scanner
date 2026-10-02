@@ -157,7 +157,8 @@ node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整�
 
 - 看紀錄：`docker compose -f docker-compose.prod.yml logs --timestamps video-worker`；`top video-worker` 看它是不是在 `sleep 300`。
 - 一輪同時推兩支影片（compose 的 `VIDEO_WORKER_LANES: "2"`，上限 3，設 1 回到一次一支）：第一條線照舊處理放棄、重試、貼網址、討論、作品與新稿，第二條只推已經在做的影片；兩條線不會拿同一支，紀錄裡第二條線的行前面有 `[lane 2]`。
-- 緊急停止：`docker compose -f docker-compose.prod.yml exec -T video-worker touch /var/lib/mokaair/video-work/STOP`，做完手上那一段就停；要恢復時刪掉這個檔。Shorts 的敲門（在 `auto` 旁邊另外每 5 分鐘跑一次）也看這個檔，有 STOP 就不敲門，網站也就不鎖定時段、不再開始送 Shorts，紀錄印一行 `video-worker: shorts: STOP found`。
+- 緊急停止：`docker compose -f docker-compose.prod.yml exec -T video-worker touch /var/lib/mokaair/video-work/STOP`，做完手上那一段就停；要恢復時刪掉這個檔。Shorts 的敲門（`ops/video/worker.sh` 在 `auto` 旁邊另開的背景迴圈，每 `VIDEO_SHORTS_KNOCK_SECONDS`（預設 300）秒跑一次 `shorts/cli.mjs tick`）也看這個檔，有 STOP 就不敲門，網站也就不鎖定時段、不再開始送 Shorts，紀錄印一行 `video-worker: shorts: STOP found`。工人的 Shorts 單位在兩個單位之間也看這個檔。
+- **Shorts 在一輪裡的位置**（`tools/video/automation/cli.mjs`、`tools/video/automation/shorts.mjs`）：每輪 `auto` 先讀 Shorts 設定；片庫少於 `stock_days` 天的量時，Shorts 的一個單位排在漫劇與教學之前，否則排在它們之後；教學的自動草稿關著也照做，只看 Shorts 設定的「讓主機工人自己做 Shorts」。一個單位是：先替成片已被站主核准的 Shorts 補送上傳包，再問 `GET /video/automation/shorts/next`，做 `report`（上週的每週報告）、`plan`（排到下週日的時段）、`brief`（補題）或 `make`（做一支實測）其中一件。實測的步驟、自動修與卡住的規則在 `.agents/skills/youtube-video/references/shorts.md` §工人怎麼做；產物在工作區的 `_shorts/`。紀錄裡這些行以 `shorts:` 或那支 Shorts 的代號開頭；Shorts 出錯只印一行，不會中斷這一輪。工人目前只做實測線，精華與漫劇直式短篇的題目先跳過。
 - `video_docs` volume 只在第一次建立時從映像填入，之後映像裡的 `docs/videos` 更新不會進去。
 - 工人只看得到自己的 volume，可能重做本機已經做過的題目：本機或分支上的影片用 `review-push --report-only` 登記到審核頁。
 - 換新模型前先更新主機的 Claude CLI（`claude update`；2.1.259 對 Opus 5.5 回 400，要 2.1.280 以上）。

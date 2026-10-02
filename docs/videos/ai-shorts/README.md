@@ -1,5 +1,7 @@
 # AI 真的可以？Shorts 實作與試片
 
+> **排程、成效、花費的正本已經搬到後台**：`/admin/videos` 的 Shorts 分頁（月曆、片庫、成效、花費、題庫、每週報告、Shorts 設定；設計在 [`../SHORTS.md`](../SHORTS.md)）。下面的本機 `track-init`、`report` 與 repo 外的 `calendar.csv`、`metrics.csv`、`costs.csv` 只剩離線用途：站主想拿 Studio 匯出檔照 #871 的算式自己算一份時才用，不再是排程或帳本。做一支 Shorts 的步驟（`build --speech server` → `check-audio` → `qa` → `package` → `push`）在 skill `youtube-video` 的 `references/shorts.md`；主機工人照題庫自己做實測線，不讀這個資料夾。
+
 繁體中文、台灣一般觀眾、不出鏡；在現有 Mokaair 頻道用真實 AI 實驗說故事。90 天 1,000 萬公開觀看是挑戰目標，不是保證。完整 15 題、120 個時段與每週選題方式見 [campaign/README.md](campaign/README.md)。
 
 三支 MP4 的本機路徑、技術驗證與待完成事項見 [2026-09-28 交付收據](delivery-2026-09-28.md)。
