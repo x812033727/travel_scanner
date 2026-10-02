@@ -117,6 +117,14 @@ Outside increment evidence and SHA256 (not implementation bindings):
 - 20261002-continuation-thumbnail-review.json: 0d928e21815d4c444e03069b343198e00d900a8dd631f18db02c7081691e89a2
 - 20261002-continuation-thumbnail-targeted-tests.log: 37c3a93dde9a4db8d914142005a9fbb9ddbbd1c4b87e72019a79ded94b68647b
 
+## PR #1107 locale-thumbnail increment: 6 files (2026-10-02)
+
+Reviewer: claude-pr-review-1107 (independent; did not write the changes). Author: claude-pr-1107, the Claude session that authored PR #1107 ("feat(web): the publish card offers each language's thumbnail for download"). The reviewer first confirmed that origin/main 6d60a1efb1060d4a3839bf9c7b5a8266507cd59c holds exactly the previously bound bytes for all six files, then read the complete `git diff origin/main HEAD` (HEAD 10b623a1) for them and for the unbound apps/web/components/admin-video-review-card.tsx.
+
+Findings: each of the five admin.json files gains exactly one line, the new key `downloadLocaleThumbnail` ("Thumbnail {locale}" and its four translations) beside the existing download labels; no line is removed or edited, so every duration label and range (drama 1–8, explainer 8–20, settings 8–30) is byte-unchanged in all five locales. admin-video-reviews.test.tsx adds the `Review`/`UploadPackage` imports, one comment and one new test of the upload-package download list for `thumbnail_<locale>` roles; no existing assertion, duration literal or accessible-name label changes. The card change maps `thumbnail_<locale>` file roles to download links and edits a doc comment; it touches no duration input, default, range, validation or QA path. The delta neither changes nor bypasses any duration rule recorded in this report.
+
+Commands: `node tools/video/long-form/cli.mjs check` before rebinding failed only on these six stale bindings; `npm run check:i18n` validated 5 locales across 25 namespaces, exit 0; `npx vitest run components/admin-video-reviews.test.tsx` in apps/web passed 31/31, exit 0. Non-claims: this is DURATION_ONLY review of the six rebound files; it is not a functional or visual acceptance of the locale-thumbnail feature, no CI was rerun, and no media, production write or publication was performed. The other 64 bindings are untouched. Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 70 bindings describe the current reviewed bytes after the main-merge and owned migration-order increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -137,15 +145,15 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | `apps/api/tests/test_video_explainer_duration.py` | `fbd8aaca7171321dcbe7511f607f61bb21a147640f9e22920db87d2f872ab2fc` |
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
 | `apps/web/components/admin-video-explainer-duration.test.tsx` | `bb888f17b3ef617d788fbed83f5fba280dfe06da008a6f80fca15b15c6916ca0` |
-| `apps/web/components/admin-video-reviews.test.tsx` | `98a983a571dcc8ca9e1d5da5cc0bcac3f7d96c6bcd8ed0805c7ca9f55ff5f08d` |
+| `apps/web/components/admin-video-reviews.test.tsx` | `a91451b4be3d5ac7336e7cf55f0e22cf08451ecc36680809c30110c2047789b3` |
 | `apps/web/components/admin-video-series.test.tsx` | `f6b62a1802799e56cd8d64e003a2035b3b2e255a214e41335329ae25069eec8c` |
 | `apps/web/components/admin-video-series.tsx` | `97980f007e7091dab343603c0bb1ada909decab950a5535c9ef50ee8fadba7a1` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `7aad8e5d88b67ebaf0b261a57482fb06044111e86af9cfa43157627c7e671957` |
-| `apps/web/messages/en/admin.json` | `1999afbe94f289230b8491c884ea42e2508c65a79bc9e37e1d2ea07574478fa7` |
-| `apps/web/messages/ja/admin.json` | `71b13a0819eb38d4917186edd56a94d58f249e7d105ef61b1832654d7e6b23db` |
-| `apps/web/messages/ko/admin.json` | `d1960406d5839e61c178b08128f9080ac97a5a7d6ff6d67cc15c7747deda224a` |
-| `apps/web/messages/zh-CN/admin.json` | `be21c3de63820628fc1d3b1f98b3d7904d9b6ade5c7722f01789011dcde05f00` |
-| `apps/web/messages/zh-TW/admin.json` | `4cdb1979b25bebcc1a508b0aa0081b400e024cc6eb1f60a7f5bf07d2c607be70` |
+| `apps/web/messages/en/admin.json` | `8ebf6ee05743bd3c1966438c55a228d2dff3d6b38b9d329f6b39a1154abba040` |
+| `apps/web/messages/ja/admin.json` | `d253f36d33eda6036446a1d1b747f771189bab7b20845c1c984cf34875270270` |
+| `apps/web/messages/ko/admin.json` | `6075cefd63d1b8114cb8eb51dd74410a1b81c9003ddf23c380f93d584334d3f0` |
+| `apps/web/messages/zh-CN/admin.json` | `93eabc0aeff22735fd099ddd2d19ae7def228a5f40711b3d770f8c4e9c03af0f` |
+| `apps/web/messages/zh-TW/admin.json` | `25ffe58777fa937daa8cd946ad01185a1e421f8fe6bdb72dbdeea0c2d741cd0d` |
 | `docs/videos/DESIGN.md` | `299449c6c19a40a0e17868615a7d8442771449e0db6e63186ca9c57a0d57ab41` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `ac08a33baedd84f282901594e55758f4b390ee1a8dc798e2c25c4b463081aa80` |
 | `docs/videos/README.md` | `88a8fcb1e6019d279b790f089feb14abe5dc21d2b1c0624f4d0fe25c73346868` |
