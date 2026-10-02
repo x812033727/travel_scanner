@@ -1,13 +1,13 @@
 ---
 id: 2026-10-02-video-render-settled-layout
 title: Validate video layouts after entrance animations settle
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: codex-t26-render-layout
 claimed_at: 2026-10-02T10:44:22Z
 created_at: 2026-10-02T10:44:14Z
-completed_at:
+completed_at: 2026-10-02T12:18:11Z
 branch: codex/sothatswhy-t26-pilot
 depends_on: []
 scope:
@@ -104,3 +104,12 @@ as evidence; do not edit cached diagnostic flags to make it pass.
   preserved there too. No media, credentials or evidence binary is committed.
 - Root owns final ticket closure together with the finished episode; no commit,
   push or PR is created by this dependency agent.
+- Normal T26 full force render completed 180 drawn / 0 reused / 0 layout problems;
+  two semantic art fixes then rendered incrementally (2 drawn / 178 reused /
+  0 problems). Current manifest independently matches all 180 states and PNG
+  hashes; the actual final passed normal QA 11/11 and package checks 4/4.
+- Final branch rebased onto main `dedcf15d107032c5d561c2ac0e25cb6963aa20b2`;
+  renderer module and test SHA unchanged. Post-rebase complete tools suite:
+  1,221 passed / 3 skipped / 0 failed, exit 0, 198.81 seconds; task validation:
+  1,295 files, exit 0. Final open PR path check found no collision. Logs are in
+  `t26-post-rebase-full-tools.log` and `t26-post-rebase-tasks.log` outside Git.

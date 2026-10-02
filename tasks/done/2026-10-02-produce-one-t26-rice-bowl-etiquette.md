@@ -1,13 +1,13 @@
 ---
 id: 2026-10-02-produce-one-t26-rice-bowl-etiquette
 title: Produce one T26 rice-bowl etiquette episode with measured eight-minute body
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: codex-t26-production
 claimed_at: 2026-10-02T08:17:25Z
 created_at: 2026-10-02T08:17:12Z
-completed_at:
+completed_at: 2026-10-02T12:18:05Z
 branch: codex/sothatswhy-t26-pilot
 depends_on: []
 scope:
@@ -23,8 +23,8 @@ scope:
 ## Definition of done
 
 - [x] 完整繁中逐字稿、原創插畫分鏡與來源通過獨立查核及聽眾審稿。
-- [ ] 依現有核准的語音供應商與額度完成旁白，插畫使用原創 SVG；正文與成片實測皆至少 480 秒。
-- [ ] 繁中可選 CC、成片 QA 與預覽保存，後台可看到這一集的實際製作紀錄。
+- [x] 依現有核准的語音供應商與額度完成旁白，插畫使用原創 SVG；正文與成片實測皆至少 480 秒。
+- [x] 繁中可選 CC、成片 QA 與預覽保存，後台可看到這一集的實際製作紀錄。
 
 ## Steps
 
@@ -32,7 +32,7 @@ scope:
 - [x] 刷新五個一手來源，撰寫完整稿件與分鏡；179 句完成獨立事實與口語覆核。
 - [x] 語音及圖片 dry-run，確認現有設定、額度與重複項目。
 - [x] 完成現行 native 圖解版：180 clips、純講述 714.02 秒；正文時間軸 890.033 秒。正常音訊檢查零旗標，後台核准綁定目前時間軸。
-- [ ] 單集製作、試聽、合成、字幕及實際時長 QA。
+- [x] 單集製作、正常逐句旁白查核、合成、字幕及實際時長 QA；人工完整聽審與播放留給站主交付驗收。
 
 ## How to verify
 
@@ -53,3 +53,8 @@ scope:
 - 完整 180 個 renderer still 與逐句敘事映射覆核另發現 `c5-s01-detail` 餐具出現太早、`c6-s12-detail` 缺少托碗對照；原圖作者僅修正這兩張 SVG，保留已通過的台詞及 WAV，重新綁定 manifest、獨立視覺審查與正常 renderer 輸出後才能合成。
 - 修訂 native manifest 為 `11cd8be93dace7a2775e2b586294c111cb9ece036db0153033c30d27cd36b3a5`。正常全片 force render 零問題，兩新圖再正常增量 render；獨立實看兩新 renderer 圖並核對全部 180 個 states、178 張未變 PNG bytes、2,096 個 transition files 及 current renderPlan，兩項必修已閉合。這不代替完整 MP4／聲音／字幕的後續檢查。
 - 未使用的候選及轉換前完整主稿已逐 byte 複製、SHA256 驗證保存至 repo 外 `_source/native-conversion/`；目前 repo 保留唯一實際 `video.json`。
+- 交付：1080p 成片 `8aa8ad5b2fb7f89ecddf3a020d048e158bdc70195386f100c27e52cee9cc67b3`，26,941 個實際 decoded frames／898.100 秒；正文 26,701 frames／890.100 秒容器，純旁白 714.020 秒，皆超過八分鐘。獨立 runtime receipt `18d0f9f73e7acd8ef7d5ff44763eccb3085acf60882cbde85e13292fce288270`，PASS_ACTUAL_FINAL_MEDIA_AND_NORMAL_QA；既有 PTS 量化及 AAC 尾端差異如實保留，沒有改門檻。
+- 正常繁中 CC 180 cues，獨立 SRT/VTT 重建及 +5000 ms 片頭偏移吻合。正常 QA 11／11、上架包 4／4；final review `e7710905-a3b8-4a13-a231-29de14bd22b1` 及 publish review `3e729749-4dfa-4088-9dfe-119bb9806edb` 都已正常送審、自動核准及 pull，對應實際影片與 metadata 雜湊。
+- 後台 `/zh-TW/admin/videos?video=sothatswhy-t26` 已保存預覽及上架包附件；live GET 確認製作 checklist 皆完成、YouTube ID null／on_youtube false。站主每集語言確認尚未保存，因此 ready_to_upload false；本機只製作繁中，不冒稱已保存後台 owner choice。
+- 完整 still 審查與 13 個成片格實看通過；不聲稱所有動畫、CC player 或完整人工播放／聽審已驗收。媒體、上架包、正常核准與取證收據全部保留 repo 外，詳細交付見 `docs/videos/sothatswhy-t26/production-record.md`。
+- 開 PR 前更新主線後再驗：tools 1,221 passed／3 skipped／0 failed，tasks 1,295 files；主稿 lint 0 errors／0 warnings；diff check 通過。主稿、原創素材與 renderer SHA 未變；最後 open PR path audit 無碰撞。
