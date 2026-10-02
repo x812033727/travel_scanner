@@ -503,7 +503,8 @@ function CopyField({ label, value, rows }: { label: string; value: string; rows:
  *   files[]            { role, sha256, size, content_type } with the roles
  *                        final                 final.mp4                 video/mp4
  *                        thumbnail             thumbnail.jpg             image/jpeg
- *                        captions_<locale>     captions/<locale>.srt     text/plain (application/x-subrip and text/vtt also accepted)
+ *                        thumbnail_<locale>    thumbnails/<locale>.jpg   image/jpeg (a language's own, for Studio's language page)
+ *                        captions_<locale>    captions/<locale>.srt     text/plain (application/x-subrip and text/vtt also accepted)
  *                        description_<locale>  description.<locale>.txt  text/plain
  *                        metadata              metadata.json             application/json
  *                      where <locale> is the locale as listed (captions_zh-TW; a role is [a-z][A-Za-z0-9_-]*).
@@ -529,6 +530,10 @@ export function UploadPackage({ slug, review, mp4Gone = false }: { slug: string;
   const downloads = review.files.flatMap((file) => {
     if (file.role === "final") return mp4Gone ? [] : [{ file, label: t("downloadFinal"), name: "final.mp4" }];
     if (file.role === "thumbnail") return [{ file, label: t("downloadThumbnail"), name: "thumbnail.jpg" }];
+    if (file.role.startsWith("thumbnail_")) {
+      const locale = localeOf(file.role, "thumbnail_");
+      return [{ file, label: t("downloadLocaleThumbnail", { locale }), name: `thumbnail.${locale}.jpg` }];
+    }
     if (file.role.startsWith("captions_")) {
       const locale = localeOf(file.role, "captions_");
       return [{ file, label: t("downloadCaptions", { locale }), name: `${locale}.${file.content_type === "text/vtt" ? "vtt" : "srt"}` }];

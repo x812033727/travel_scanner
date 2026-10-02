@@ -125,6 +125,14 @@ Findings: flow.mjs renames recordedVideoId to recorded(), which reads the same v
 
 Commands: `node tools/video/long-form/cli.mjs check` before rebinding failed only on the four stale bindings, exit 1. The automation, story, review sync, long-form, core duration and QA duration tests ran 148: 147 passed and the one failure was the shipped review-binding test reporting the same four stale bindings. After rebinding, the review test and CLI check are rerun by the reviewer. Non-claims: no CI, browser, real media, provider or PostgreSQL acceptance. This is DURATION_ONLY compatibility review, not acceptance of the category-filing feature itself. Required duration fixes remaining: none.
 
+## PR #1107 locale-thumbnail increment: 6 files (2026-10-02)
+
+Reviewer: claude-pr-review-1107 (independent; did not write the changes). Author: claude-pr-1107, the Claude session that authored PR #1107 ("feat(web): the publish card offers each language's thumbnail for download"). The reviewer first confirmed that origin/main 6d60a1efb1060d4a3839bf9c7b5a8266507cd59c holds exactly the previously bound bytes for all six files, then read the complete `git diff origin/main HEAD` (HEAD 10b623a1) for them and for the unbound apps/web/components/admin-video-review-card.tsx.
+
+Findings: each of the five admin.json files gains exactly one line, the new key `downloadLocaleThumbnail` ("Thumbnail {locale}" and its four translations) beside the existing download labels; no line is removed or edited, so every duration label and range (drama 1–8, explainer 8–20, settings 8–30) is byte-unchanged in all five locales. admin-video-reviews.test.tsx adds the `Review`/`UploadPackage` imports, one comment and one new test of the upload-package download list for `thumbnail_<locale>` roles; no existing assertion, duration literal or accessible-name label changes. The card change maps `thumbnail_<locale>` file roles to download links and edits a doc comment; it touches no duration input, default, range, validation or QA path. The delta neither changes nor bypasses any duration rule recorded in this report.
+
+Commands: `node tools/video/long-form/cli.mjs check` before rebinding failed only on these six stale bindings; `npm run check:i18n` validated 5 locales across 25 namespaces, exit 0; `npx vitest run components/admin-video-reviews.test.tsx` in apps/web passed 31/31, exit 0. Non-claims: this is DURATION_ONLY review of the six rebound files; it is not a functional or visual acceptance of the locale-thumbnail feature, no CI was rerun, and no media, production write or publication was performed. The other 64 bindings are untouched. Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## PR #1110 anime-category increment: 7 files (2026-10-02)
 
 Reviewer: claude-pr-review-1110. Author: claude-pr-1110 (the Claude session that wrote PR #1110, "feat(video): add the anime (動漫) video category"). The reviewer read the complete delta of the seven bound files from origin/main 99ec2fa5 to HEAD 945af94f (branch claude/magical-ptolemy-7ivtcd with origin/main merged in at 8654cf81, then the migration renumbering below). It confirmed that origin/main's bytes of each file equal the preceding bound hashes, so this delta is exactly the unreviewed change. The other 63 bindings are untouched and still match their current bytes. The reviewer also read the non-bound API model/schema, web review-card, schema test, HANDS-OFF.md and migration deltas, and every category consumer under tools/video.
@@ -134,6 +142,14 @@ Findings: schema.mjs adds "anime" to VIDEO_CATEGORIES between long-drama and tra
 Migration finding and fix: at merge 8654cf81 the PR's 0118_video_category_anime and main's bound duration migration 0118_video_min_8_minutes both revised 0117_video_shorts_topics. `alembic heads` reported two heads, so `alembic upgrade head` could not apply the duration migration on an unmigrated database. The reviewer returned FAIL. The merger's commit 945af94f renamed the migration to 0119_video_category_anime, revising 0118_video_min_8_minutes, and renamed its test and the 0116 test's reference. The reviewer re-verified it independently: a single head 0119_video_category_anime with the chain 0117 -> 0118_video_min_8_minutes -> 0119. No stale 0118_video_category_anime reference remains. The migration only rebuilds ck_video_project_category, and its downgrade nulls only anime categories. The bound 0118 duration migration and its test are byte-unchanged.
 
 Commands: `node tools/video/long-form/cli.mjs check` before rebinding failed only on the seven stale bindings. The core, long-form and QA duration tests ran 209: 208 passed, and the one failure was the shipped review-binding test reporting the same stale bindings. `npm run check:i18n` passed for 5 locales and 25 namespaces. The admin-video-reviews vitest file passed 30/30. In apps/api, `alembic heads` showed one head, ruff and mypy (app, tests) were clean, and pytest on the 0116/0118/0119 migration, video-review and schema tests gave 51 passed and 3 skipped (PostgreSQL). After rebinding, the review test and CLI check were rerun by the reviewer. Non-claims: no CI, browser, real media, provider or PostgreSQL acceptance. This is DURATION_ONLY compatibility review, not acceptance of the anime category feature itself. Required duration fixes remaining: none.
+
+## PR #1110 merge with #1107 follow-up: 6 files (2026-10-02)
+
+Reviewer: claude-merge-review-1110. Author: claude-merger (the session that merged origin/main 86946509, carrying PR #1107, into PR #1110's branch claude/magical-ptolemy-7ivtcd). Both PRs changed admin-video-reviews.test.tsx and the five admin.json files and each delta has its own DURATION_ONLY section above; git merged the six files with no textual conflict. For each file the reviewer rebuilt the merge independently with `git merge-file` from the merge-base 99ec2fa5 bytes, #1110's reviewed bytes (origin/claude/magical-ptolemy-7ivtcd) and #1107's reviewed bytes (origin/main): every rebuild exited 0 with no conflict and is byte-identical to the merged working-tree file, so each merged file is exactly the union of the two reviewed deltas and nothing else.
+
+Findings: against the merge base each admin.json adds exactly two lines, #1110's `anime` category label and #1107's `downloadLocaleThumbnail` label, and removes or edits none. All five parse as JSON and a per-object scan finds no duplicate key. The test file differs from the base by the union of the two reviewed changes only: #1107's import line, comment and locale-thumbnail test, and #1110's added 動漫 category option. No duration label, range or expectation changes in any of the six files (drama 1–8, explainer 8–20, settings 8–30 and the existing duration assertions are byte-unchanged), so the combination neither changes nor bypasses any duration rule recorded in this report.
+
+Commands: `node tools/video/long-form/cli.mjs check` before rebinding failed only on the stale report and these six stale bindings; `npm run check:i18n` validated 5 locales across 25 namespaces, exit 0; `npx vitest run components/admin-video-reviews.test.tsx` in apps/web passed 31/31, exit 0. After rebinding, `node --test tools/video/long-form/review.test.mjs` and the CLI check were rerun. Non-claims: DURATION_ONLY review of the six rebound files after the merge; no functional or visual acceptance of either feature, no CI, browser, media, production write or publication. The other bindings are untouched. Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
 ## Reviewed SHA256 bindings
 
@@ -155,15 +171,15 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | `apps/api/tests/test_video_explainer_duration.py` | `fbd8aaca7171321dcbe7511f607f61bb21a147640f9e22920db87d2f872ab2fc` |
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
 | `apps/web/components/admin-video-explainer-duration.test.tsx` | `bb888f17b3ef617d788fbed83f5fba280dfe06da008a6f80fca15b15c6916ca0` |
-| `apps/web/components/admin-video-reviews.test.tsx` | `89f97cce17c37ddb552fa8bd52b6ff1f79f8038c18b4f3a41271e399b45aa9bf` |
+| `apps/web/components/admin-video-reviews.test.tsx` | `2d4c0b9dc89062a105a61d04ef7c44d25129c4672f06e41bcdcbab2b1b0f10ab` |
 | `apps/web/components/admin-video-series.test.tsx` | `f6b62a1802799e56cd8d64e003a2035b3b2e255a214e41335329ae25069eec8c` |
 | `apps/web/components/admin-video-series.tsx` | `97980f007e7091dab343603c0bb1ada909decab950a5535c9ef50ee8fadba7a1` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `7aad8e5d88b67ebaf0b261a57482fb06044111e86af9cfa43157627c7e671957` |
-| `apps/web/messages/en/admin.json` | `e6438f466512de6394df03f641b329014e8fea6baefccb44fe9cba087534c621` |
-| `apps/web/messages/ja/admin.json` | `3ed8561fc6166b97cc7f6f89ae63914c221b778ec775146b7e6970cb3ca69a46` |
-| `apps/web/messages/ko/admin.json` | `1eb68339415196a4e7b84fefeec47166d65b271c10dd77a105d8fefb75e90a89` |
-| `apps/web/messages/zh-CN/admin.json` | `21909fd8e87ecc5cbcb78a7b3ef9fdff1f53ca10b10beb96c6190a22584ddc13` |
-| `apps/web/messages/zh-TW/admin.json` | `c32f3f75068fbe54b74d8a391a4b0957c7fde9b82f2a297df04e973b874338ee` |
+| `apps/web/messages/en/admin.json` | `b8ac8700ee4768cf0541dc3b278a3a5b904a6011520551b391b4c28d5157b4c7` |
+| `apps/web/messages/ja/admin.json` | `ba310be5b3592c93e606935a10cee82184e3fa6feb2e06d873aec8b4ed77ceee` |
+| `apps/web/messages/ko/admin.json` | `4fc259a06f158dd685852bfaa12d238da7908821b1749d77054f2726ee33ee00` |
+| `apps/web/messages/zh-CN/admin.json` | `d1c4ac5cdeb0608a3dc9379cc086e6b6d53c9711a5b096729d87cb68b0908ce7` |
+| `apps/web/messages/zh-TW/admin.json` | `6fc7f75e77a96390280018a2f1022057bd0020b1de2807b7e5a4e680dd64c841` |
 | `docs/videos/DESIGN.md` | `299449c6c19a40a0e17868615a7d8442771449e0db6e63186ca9c57a0d57ab41` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `ac08a33baedd84f282901594e55758f4b390ee1a8dc798e2c25c4b463081aa80` |
 | `docs/videos/README.md` | `88a8fcb1e6019d279b790f089feb14abe5dc21d2b1c0624f4d0fe25c73346868` |
