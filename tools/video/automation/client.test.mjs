@@ -91,6 +91,8 @@ test("auto exits for the owner after one real stage request when Claude Code nee
         return Response.json({ enabled: true, max_waiting_drafts: 1, draft_interval_hours: 72, target_minutes_min: 5, target_minutes_max: 8 });
       }
       if (route === "/api/video/automation/videos") return Response.json([]);
+      // A site from before Shorts (docs/videos/SHORTS.md): the Shorts round has nothing to do.
+      if (route.startsWith("/api/video/automation/shorts/")) return Response.json({ code: "not_found", detail: route }, { status: 404 });
       if (route === "/api/video/automation/topics") return Response.json({ topics: [], notes: "" });
       if (route === "/api/video/automation/run") {
         stages.push(JSON.parse(init.body));
@@ -107,6 +109,7 @@ test("auto exits for the owner after one real stage request when Claude Code nee
   assert.deepEqual(stages.map(({ stage }) => stage), ["planner"]);
   assert.deepEqual(calls, [
     "GET /api/video/automation/settings",
+    "GET /api/video/automation/shorts/settings",
     "GET /api/video/automation/videos",
     "GET /api/video/automation/topics",
     "POST /api/video/automation/run",

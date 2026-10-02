@@ -8,9 +8,10 @@
 // register pass; `--dry-run` only measures the script.
 import { parseArgs } from "node:util";
 
-import { ROOT, stopRequested, UsageError } from "../core/paths.mjs";
+import { resolveWorkBase, ROOT, stopRequested, UsageError } from "../core/paths.mjs";
 import { AutomationError, automationClient } from "./client.mjs";
 import { Automation } from "./flow.mjs";
+import { shortsStep, ShortsWorker } from "./shorts.mjs";
 import { DAYS_ENV, repositories, retentionFrom, roundLines, tidyBase, tidyRound } from "./tidy.mjs";
 
 // A bound on one run, so a stage that keeps "succeeding" without moving cannot spin forever.
@@ -114,7 +115,17 @@ export async function run(command, args, ctx) {
   try {
     const api = automationClient(ctx);
     const settings = await api.settings();
+    // The Shorts go by their own settings (shorts.mjs), before the tutorials' switch is read: first
+    // while the library runs low, otherwise after the tutorials and the dramas.
+    const shorts = new ShortsWorker(ctx, api, settings);
+    const stopNow = () => stopRequested(resolveWorkBase({ env: ctx.env, root: ctx.root, home: ctx.home }));
+    const low = stopNow() ? false : await shorts.low().catch((error) => {
+      ctx.stdout.write(`shorts: could not tell how full the library is (${error.message}); the Shorts go after the other videos\n`);
+      return false;
+    });
+    if (low) await shortsStep(shorts);
     if (!settings.enabled) {
+      if (!low && !stopNow()) await shortsStep(shorts);
       ctx.stdout.write("automatic drafts are off in the settings on /admin/videos; nothing to do\n");
       return EXIT.ok;
     }
@@ -143,6 +154,7 @@ export async function run(command, args, ctx) {
       }
     };
     await Promise.all(lanes.map(drive));
+    if (!low && !stopped && !stopNow()) await shortsStep(shorts);
     // Once a round, after the units and whether or not any moved; a STOP file stops it too.
     if (!stopped && !stopRequested(automation.workBase)) for (const line of tidyAfterRound(ctx, automation.site)) ctx.stdout.write(`${line}\n`);
     return EXIT.ok;

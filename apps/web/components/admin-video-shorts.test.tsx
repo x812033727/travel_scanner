@@ -111,7 +111,7 @@ describe("the Shorts tab of /admin/videos", () => {
     const calls = stubFetch();
     page();
     const tabs = within(screen.getByRole("tablist", { name: "影片審核分頁" })).getAllByRole("tab");
-    expect(tabs.map((each) => each.textContent)).toEqual(["影片", "漫劇", "Shorts", "設定"]);
+    expect(tabs.map((each) => each.textContent)).toEqual(["影片", "漫劇", "Shorts", "設定", "長片企劃"]);
     fireEvent.click(tabs[2]);
     expect(await screen.findByRole("region", { name: "Shorts 現況" })).toBeTruthy();
     expect(window.location.search).toContain("tab=shorts");
