@@ -17,7 +17,7 @@ import { captionLocalesOf, dubLocalesOf, dubsForUpload, metadataLocalesOf, readL
 import { approvedEpisodes, ARTIFACTS, loadProject, recordStage } from "../core/state.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
 import { disclosureDecision } from "../qa/checks.mjs";
-import { readPackageReport } from "./check.mjs";
+import { readPackageReport, thumbnailVariants } from "./check.mjs";
 import { composeMetadata, uploadChecklist } from "./metadata.mjs";
 import { localizedThumbnailHash, thumbnailGap } from "../core/translations.mjs";
 import { localeThumbnailFile } from "../render/plan.mjs";
@@ -190,9 +190,14 @@ export async function run(command, args, ctx) {
   if (!compilation) copyFileSync(path.join(workdir, ARTIFACTS.video), path.join(upload, "final.mp4"));
   const thumbnail = existsSync(path.join(workdir, "thumbnail.jpg"));
   if (thumbnail) copyFileSync(path.join(workdir, "thumbnail.jpg"), path.join(upload, "thumbnail.jpg"));
+  const frames = readJson(path.join(workdir, ARTIFACTS.frames), null);
+  // B and C for Studio's 「測試與比較」, as render listed them; one listed but gone is still
+  // recorded, so the package check names it instead of the package quietly carrying A alone.
+  const variants = thumbnail ? thumbnailVariants(frames) : [];
+  for (const file of variants) if (existsSync(path.join(workdir, file))) copyFileSync(path.join(workdir, file), path.join(upload, file));
   // Each other language's own thumbnail, for Studio's 「語言」 page; it sits beside thumbnail.jpg there.
   const youtubeLocales = LOCALES.filter((locale) => locale !== narration && (captionLocales.includes(locale) || metadataLocales?.includes(locale) || dubLocales.includes(locale)));
-  const localized = thumbnail ? localeThumbnails({ doc, translations: project.translations, manifest: readJson(path.join(workdir, ARTIFACTS.frames), null), workdir, locales: youtubeLocales }) : { files: {}, skipped: {} };
+  const localized = thumbnail ? localeThumbnails({ doc, translations: project.translations, manifest: frames, workdir, locales: youtubeLocales }) : { files: {}, skipped: {} };
   for (const file of Object.values(localized.files)) {
     mkdirSync(path.join(upload, path.dirname(file)), { recursive: true });
     copyFileSync(path.join(workdir, file), path.join(upload, file));
@@ -227,6 +232,8 @@ export async function run(command, args, ctx) {
     thumbnail: thumbnail ? "thumbnail.jpg" : null,
     // Only with a thumbnail: a package written before localized thumbnails reads the same.
     ...(thumbnail ? { thumbnails: localized.files, skipped_thumbnail_locales: localized.skipped } : {}),
+    // Only with variants: a package without them reads byte for byte as before.
+    ...(variants.length ? { thumbnail_variants: variants } : {}),
     captions: captionFiles,
     skipped_caption_locales: skippedCaptionLocales(captions, captionFiles, { locales: captionLocales, compilation }),
     dubs,
@@ -238,10 +245,10 @@ export async function run(command, args, ctx) {
     disclosure_reason: disclosure.reason,
   };
   atomicWrite(path.join(upload, "metadata.json"), `${JSON.stringify(record, null, 2)}\n`);
-  atomicWrite(path.join(upload, "UPLOAD.md"), uploadChecklist({ metadata: record, captions: captionFiles, thumbnail, drama: isDrama(doc), disclosure, dubs, skippedDubs, thumbnails: localized.files, skippedThumbnails: localized.skipped, compilation: compiled ? { episodes: compiled.episodes.length, size_bytes: compiled.size_bytes } : null }));
+  atomicWrite(path.join(upload, "UPLOAD.md"), uploadChecklist({ metadata: record, captions: captionFiles, thumbnail, drama: isDrama(doc), disclosure, dubs, skippedDubs, thumbnails: localized.files, skippedThumbnails: localized.skipped, variants, compilation: compiled ? { episodes: compiled.episodes.length, size_bytes: compiled.size_bytes } : null }));
   recordStage(workdir, "package", { locales: [metadata.default_language, ...Object.keys(metadata.localizations)], captions: captionFiles.length, dubs: dubs.map((dub) => dub.locale), ...(compiled ? { compilation: true, final: finalHow, size_bytes: compiled.size_bytes } : {}) }, ctx.now());
   const ownThumbnails = Object.keys(localized.files);
-  ctx.stdout.write(`upload package: ${upload}\n  final.mp4${compiled ? ` (${finalHow}, ${(compiled.size_bytes / 1024 ** 3).toFixed(2)} GB, ${compiled.episodes.length} episodes)` : ""}, ${thumbnail ? "thumbnail.jpg, " : ""}${ownThumbnails.length ? `${ownThumbnails.length} language thumbnails (${ownThumbnails.join(", ")}), ` : ""}${captionFiles.length} caption files, ${1 + Object.keys(metadata.localizations).length} locales of title and description${dubs.length ? `, ${dubs.length} dub tracks (${dubs.map((dub) => dub.locale).join(", ")})` : ""}\n  follow ${path.join(upload, "UPLOAD.md")}\n`);
+  ctx.stdout.write(`upload package: ${upload}\n  final.mp4${compiled ? ` (${finalHow}, ${(compiled.size_bytes / 1024 ** 3).toFixed(2)} GB, ${compiled.episodes.length} episodes)` : ""}, ${thumbnail ? "thumbnail.jpg, " : ""}${variants.length ? `${variants.join(", ")} (Test & compare), ` : ""}${ownThumbnails.length ? `${ownThumbnails.length} language thumbnails (${ownThumbnails.join(", ")}), ` : ""}${captionFiles.length} caption files, ${1 + Object.keys(metadata.localizations).length} locales of title and description${dubs.length ? `, ${dubs.length} dub tracks (${dubs.map((dub) => dub.locale).join(", ")})` : ""}\n  follow ${path.join(upload, "UPLOAD.md")}\n`);
   for (const [locale, why] of Object.entries(localized.skipped)) ctx.stdout.write(`  note: no ${locale} thumbnail of its own, it keeps thumbnail.jpg: ${why}\n`);
   const { report } = await readPackageReport(workdir);
   for (const each of report.items) ctx.stdout.write(`  [${each.ok ? "x" : " "}] ${each.id}: ${each.detail}\n`);
