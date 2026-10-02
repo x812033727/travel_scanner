@@ -2,7 +2,7 @@
   "schema_version": 1,
   "artifact_type": "source-bound-final-polish-handoff-not-runtime-config",
   "slug": "wedding-reckoning",
-  "status": "prepared-for-script-and-pilot-production",
+  "status": "zh-TW-opening-voice-preview-and-E1-text-ready-animation-blocked",
   "prepared_at": "2026-10-02T15:09:00.693Z",
   "base_git_commit": "acb935fb461e34ee110b725b742179cc22d67770",
   "source_object_sha256": "37328fa1c643e0edfcd1d138a158410653b36d6e02739ce7a9c555b26bc5bb9c",
@@ -52,11 +52,11 @@
   "package_files": [
     {
       "path": "docs/videos/series-plans/competition-20261002/README.md",
-      "sha256": "bd5bd0a26c66f9d9f1bba687080bd24296410da27b3dbcddafcc1ff9dfba6b30"
+      "sha256": "36870c89277b3967d837416eef1f725cf27c784e0adf7d33a06fa8830b6e40f1"
     },
     {
       "path": "docs/videos/series-plans/competition-20261002/budget-and-launch.md",
-      "sha256": "996177dddf030e6e42f1ca4c01d275075026981b4fdb075c4d035c636ce46ca8"
+      "sha256": "64508b131bd98df0b4fd44a16b16584701b3d14531c458de6e3dd1579bb3a218"
     },
     {
       "path": "docs/videos/series-plans/competition-20261002/competition.json",
@@ -64,7 +64,7 @@
     },
     {
       "path": "docs/videos/series-plans/competition-20261002/cost-ledger.csv",
-      "sha256": "51d63260919b0e6c497358485fb8be58f39088fdf3a547bc7273d952926bf52f"
+      "sha256": "54aa2a40327b0df05232e4907f459c682cd73318b83d90709817b421fd69b886"
     },
     {
       "path": "docs/videos/series-plans/competition-20261002/opening-lines.json",
@@ -79,8 +79,48 @@
       "sha256": "403fc2c84b2408807a3fe011cb7ced1de8e22b29263fbb37a9a8c0983a4d2baa"
     },
     {
+      "path": "docs/videos/series-plans/competition-20261002/pilot/brief.md",
+      "sha256": "ac99acfdc5572407439b5e405a5d417675fa9f581ed20d3c59a760d5db31771a"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/pilot/edit-plan.json",
+      "sha256": "6ce6187eda4b6b73c35aba06197d03bf19680baad1880ff4724bbf7df99377ce"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/pilot/episode-01-screenplay.md",
+      "sha256": "82352b248e66810bd217092b6284ea13c0ec688dbb410e6f791107e13781c429"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/pilot/id-map.json",
+      "sha256": "3933526cb621630ebb4c6977eb20ac1ecbb15639c3a65dd86dc905b6f5ca274f"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/pilot/measured-edit.json",
+      "sha256": "cc8a982ceae732d5ea25a6a273165cb14d9d976314ed341711edc3cb2476bd66"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/pilot/review.md",
+      "sha256": "ee14491169994563dd4d915733474269277bda6d2e49133fa92cb5377e5c0981"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/pilot/series.json",
+      "sha256": "36984fea1b22f7846c15e2ff9c67ae6cb36719a67860329f5853ff9c5c9b31ee"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/pilot/timing-report.json",
+      "sha256": "7ead089251c8f6bf7060d4c7499d9eac984168ed951efd80d075bd18b53c3024"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/pilot/validation.json",
+      "sha256": "c8aed9ab0387c764e98a3fcf94a8b95021de45f4190234aa206c43359ac695c9"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/pilot/voice-only.video.json",
+      "sha256": "b198b4839f1777a0d0020a5c706ae27485492b4801371f359d73d8abcce003ef"
+    },
+    {
       "path": "docs/videos/series-plans/competition-20261002/production-readiness.md",
-      "sha256": "ac6ba8c30dd08e5b6a7bbe5f0ecf738b125c2624e62df9f92d5c394d8ab8a1b3"
+      "sha256": "b6f938a9b910da803f2d5e7e46291c43eb4f0453c65100bf2fe5eca83f9af85d"
     },
     {
       "path": "docs/videos/series-plans/competition-20261002/review.md",
@@ -92,7 +132,7 @@
     },
     {
       "path": "docs/videos/series-plans/competition-20261002/selection-and-final-polish.md",
-      "sha256": "7e87076c0b8dce535a728ecebdcbe8129be667ba79758fba55546851fe0bc9af"
+      "sha256": "3452e7259d5338b708434d1e639c04d06600f515086f9535ca44120e48ecc4cb"
     },
     {
       "path": "docs/videos/series-plans/competition-20261002/validation.json",
@@ -101,7 +141,7 @@
   ],
   "precedence": [
     "current user request and confirmed competition/budget choices",
-    "competition four-language delivery/packaging",
+    "current zh-TW-only execution; owner-confirmed entire Chinese film and CC before foreign work",
     "current production profile and source-bound design",
     "original story and continuity constraints"
   ],
@@ -138,31 +178,66 @@
     "required_input_files": [
       "selection-and-final-polish.md",
       "opening-pilot.md",
-      "opening-lines.json"
+      "opening-lines.json",
+      "pilot/episode-01-screenplay.md",
+      "pilot/measured-edit.json",
+      "pilot/timing-report.json",
+      "pilot/review.md"
     ],
     "per_episode": "inject relevant row plus accepted new lines alongside current story/continuity; write executable video.json; run writer/verifier and normal hash-bound review gates",
     "reject_if_source_changed": true,
-    "preserve_original_receipts": true
+    "preserve_original_receipts": true,
+    "measured_timing_precedence": "pilot/measured-edit.json supersedes original planned60 opening; neither is a full runtime video document"
   },
   "local_preproduction": {
     "review_bundle": "/workspace/mokaair-work/competition-20261002/review",
     "audition_texts": "/workspace/mokaair-work/competition-20261002/pilot-preflight",
     "media_outside_git": true,
-    "paid_media_requests_submitted": 0,
     "production_check": "1 work / 40 episode designs; no design errors",
-    "tool_pairing": "missing-at-preflight",
-    "provider_readiness": "unknown-until-authenticated-status",
-    "multilingual_drama_implementation": "not-yet-implemented"
+    "tool_pairing": "authenticated-status-verified-2026-10-02",
+    "provider_readiness": "Chinese Gemini speech configured; drama media disabled and global model is not Lite",
+    "multilingual_drama_implementation": "not-yet-implemented",
+    "media_requests": {
+      "image": 0,
+      "animated_clip": 0,
+      "music": 0,
+      "tts_successful": 11,
+      "tts_billable_characters": 118,
+      "tts_retakes": 0,
+      "transcription_successful": 14,
+      "transcription_size_rejected": 1,
+      "text_judge": 1
+    },
+    "real_media_root": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-pilot-voice-zh-tw",
+    "editorial_voice_preview": "editorial-zh-TW/opening-zh-TW-51s.mp3",
+    "supplier_actual_usd": null,
+    "supplier_actual_usd_status": "not returned by API; ledger awaits invoice reconciliation",
+    "voice_and_check_reservation_usd": 5,
+    "reservation_is_not_actual_spend": true,
+    "full_silent_shot_runtime_support": "pending; existing schema/timeline cannot represent independent no-line scenes; do not generate from voice-only document"
   },
   "acceptance": {
-    "full_screenplays": "not-complete",
-    "editorial_package": "independent-text-review-passed-with-media-gates-pending",
-    "actual_audio": "not-produced",
-    "actual_video": "not-produced",
+    "full_screenplays": "E1 33-line 42-shot text drafted and independently reviewed; E2-E40 not yet written",
+    "editorial_package": "independent-text-and-audio-assembly-review-passed; listening-and-picture-gates-pending",
+    "actual_audio": "11 zh-TW opening lines; 51-second voice preview, no music/SFX; E1 later22 lines unrecorded",
+    "actual_video": "not-produced; 0 animated seconds",
     "native_listening": "not-done",
-    "cc_timing": "not-measured",
+    "cc_timing": "11 zh-TW entries from measured WAV placements; speech onset/offset listening pending",
     "youtube_tracks": "not-verified",
-    "published": "no"
+    "published": "no",
+    "automatic_word_check": "11 checked: 8 exact, 2 same-sound, 1 text-judge accepted, 0 flagged, 0 unchecked",
+    "full_Chinese_film_owner_confirmation": "pending"
   },
-  "next_task": "2026-10-02-wedding-competition-pilot-four-languages"
+  "next_task": "2026-10-02-wedding-competition-pilot-four-languages",
+  "execution_order": {
+    "active_locale": "zh-TW",
+    "foreign_language_generation": "deferred-by-user",
+    "foreign_start_gate": "owner explicitly confirms entire completed Chinese film and its CC; no foreign implementation or generation beforehand",
+    "deferred_locales": [
+      "ja",
+      "ko",
+      "en"
+    ]
+  },
+  "updated_at": "2026-10-02T15:28:59.302376+00:00"
 }
