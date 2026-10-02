@@ -1,7 +1,7 @@
 // The owner's approvals, each bound to the exact file approved.
 //
-// The gates need the site owner: the outline (brief.md), the narration (timeline.json, which
-// changes whenever any line is re-synthesized) and the finished video (final.mp4); a drama adds
+// The gates need the site owner: the outline (brief.md), the narration (timeline.json, binding
+// each take and narration.wav by SHA256) and the finished video (final.mp4); a drama adds
 // the look (characters/manifest.json, the character sheets the owner picks from) and the
 // storyboard (keyframes/manifest.json). Recording the SHA-256 of what was approved means an edit
 // after the approval silently voids it, and the stages after the gate refuse to run instead of
@@ -11,6 +11,7 @@ import { createReadStream, existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 
 import { atomicWrite } from "./paths.mjs";
+import { audioEvidenceProblems } from "./audio-evidence.mjs";
 
 export const GATES = {
   outline: ({ docDir }) => path.join(docDir, "brief.md"),
@@ -61,6 +62,10 @@ function target(gate, places) {
 export async function approve({ gate, docDir, workdir, now = new Date(), note = "" }) {
   const file = target(gate, { docDir, workdir });
   if (!existsSync(file)) throw new Error(`nothing to approve: ${file} does not exist yet`);
+  if (gate === "audio") {
+    const problems = audioEvidenceProblems(JSON.parse(readFileSync(file, "utf8")), workdir);
+    if (problems.length) throw new Error(`audio cannot be approved: ${problems.join("; ")}`);
+  }
   const entry = { gate, file: path.basename(file), sha256: await sha256File(file), approved_at: now.toISOString(), note };
   const record = readApprovals(workdir);
   record.approvals.push(entry);
@@ -74,6 +79,10 @@ export async function approvalState({ gate, docDir, workdir }) {
   if (!existsSync(file)) return { status: "absent", entry: null };
   const entry = readApprovals(workdir).approvals.filter((each) => each.gate === gate).at(-1) ?? null;
   if (!entry) return { status: "missing", entry: null };
+  if (gate === "audio") {
+    const problems = audioEvidenceProblems(JSON.parse(readFileSync(file, "utf8")), workdir);
+    if (problems.length) return { status: "stale", entry, reason: problems.join("; ") };
+  }
   const sha256 = await sha256File(file);
   return { status: entry.sha256 === sha256 ? "approved" : "stale", entry, sha256 };
 }

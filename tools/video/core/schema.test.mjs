@@ -4,6 +4,7 @@ import test from "node:test";
 import { compilationDocument } from "./compilation.mjs";
 import { fixture } from "./fixtures/load.mjs";
 import { eachLine, spokenText, textHash, validateVideo, VIDEO_CATEGORIES } from "./schema.mjs";
+import { localizationPlan } from "../production/retention.mjs";
 
 const paths = (errors) => errors.map((error) => error.path);
 
@@ -27,6 +28,22 @@ test("unknown fields are errors, so a typo cannot pass as an ignored field", () 
   doc.titel = "typo";
   doc.scenes[0].lines[0].txt = "typo";
   assert.deepEqual(paths(validateVideo(doc)), [".titel", "scenes[0].lines[0] (k7p2).txt"]);
+});
+
+test("future Chinese-first localization retains source-bound media and cannot disable its promise", () => {
+  const doc = fixture();
+  doc.localization_plan = localizationPlan({
+    source_binding: { source_sha256: "a".repeat(64) },
+    profile: { phases: {
+      primary: { locale: "zh-TW" },
+      localization: { locales: ["ja", "ko", "en"], start_after: "approved-chinese-final", readiness: "planned-not-implemented-for-drama" },
+    } },
+  });
+  assert.deepEqual(validateVideo(doc), []);
+  for (const override of [{ retain_source_media: false }, { source_sha256: "" }, { status: "approved" }, { planned_locales: [] }]) {
+    const invalid = { ...doc, localization_plan: { ...doc.localization_plan, ...override } };
+    assert.ok(validateVideo(invalid).some((error) => error.path === "localization_plan"), JSON.stringify(override));
+  }
 });
 
 test("line ids must be short, well-formed and unique across the whole video", () => {

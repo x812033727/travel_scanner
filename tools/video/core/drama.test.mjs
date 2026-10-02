@@ -32,7 +32,7 @@ import {
   visualTierProblems,
   voiceFor,
 } from "./drama.mjs";
-import { dramaBrief, dramaFixture, fixture, fixtureLexicon, illustratedFixture, sandbox } from "./fixtures/load.mjs";
+import { writeAudioFixture, dramaBrief, dramaFixture, fixture, fixtureLexicon, illustratedFixture, sandbox } from "./fixtures/load.mjs";
 import { lintVideo } from "./lint.mjs";
 import { atomicWrite } from "./paths.mjs";
 import { validateVideo } from "./schema.mjs";
@@ -408,7 +408,7 @@ test("a drama's status walks the media steps in order, each bound to its hashes"
 
   const speech = speechHash(project.doc, project.lexicon);
   const visual = visualHash(project.doc);
-  write("timeline.json", { ...estimateTimeline(project.doc), speech_hash: speech });
+  const audioTimeline = writeAudioFixture({ ...estimateTimeline(project.doc), speech_hash: speech }, box.workdir);
   await approve({ gate: "audio", ...places });
   assert.equal((await status()).next.id, "keyframes drawn");
   write("keyframes/manifest.json", { look_hash: look, visual_hash: visual, shots: { opening: { needs_review: true } } });
@@ -426,9 +426,9 @@ test("a drama's status walks the media steps in order, each bound to its hashes"
   write("music/manifest.json", { mix_hash: mixHash(project.doc) });
   assert.equal((await status()).next.id, "video assembled");
   writeFileSync(path.join(box.workdir, "final.mp4"), "");
-  write("checks.json", { ok: true, speech_hash: speech, visual_hash: visual, look_hash: look, clips_hash: "c0", subtitles_hash: subtitlesHash(project.doc), mix_hash: mixHash(project.doc) });
+  write("checks.json", { ok: true, narration_sha256: audioTimeline.audio_evidence.narration_sha256, speech_hash: speech, visual_hash: visual, look_hash: look, clips_hash: "c0", subtitles_hash: subtitlesHash(project.doc), mix_hash: mixHash(project.doc) });
   assert.equal((await status()).next.id, "video assembled", "the checks must name the clips that were joined");
-  write("checks.json", { ok: true, speech_hash: speech, visual_hash: visual, look_hash: look, clips_hash: "c1", subtitles_hash: subtitlesHash(project.doc), mix_hash: mixHash(project.doc) });
+  write("checks.json", { ok: true, narration_sha256: audioTimeline.audio_evidence.narration_sha256, speech_hash: speech, visual_hash: visual, look_hash: look, clips_hash: "c1", subtitles_hash: subtitlesHash(project.doc), mix_hash: mixHash(project.doc) });
   assert.equal((await status()).next.id, "captions written");
 });
 

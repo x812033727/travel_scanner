@@ -1,3 +1,4 @@
+import { assembledAudioProblems, audioEvidenceProblems } from "../core/audio-evidence.mjs";
 // `qa`: the eleven checks of a finished cut, collected into <workdir>/<slug>/review/qa.json
 // (docs/videos/HANDS-OFF.md §自動品管). Most of them read what assemble, render, captions, lint
 // and the approvals already recorded; pace, links, thumbnail and facts are computed here; policy
@@ -181,8 +182,9 @@ export async function run(command, args, ctx) {
 
   // What the stages left behind.
   const timeline = readJson(inWork(ARTIFACTS.timeline), null);
-  const timelineCurrent = Boolean(timeline) && timeline.speech_hash === speech;
+  const timelineCurrent = Boolean(timeline) && timeline.speech_hash === speech && !audioEvidenceProblems(timeline, workdir).length;
   const checks = readJson(inWork(ARTIFACTS.checks), null);
+  const audioCurrent = !assembledAudioProblems(timeline, checks, workdir).length;
   const applied = appliedBranding(checks);
   const brandingMatches = brandingCurrent(checks, readBranding(workdir)) && (!applied || (applied.body_frames === timeline?.total_frames && checks.speech_hash === timeline?.speech_hash));
   const presented = presentationTimeline(timeline, brandingMatches ? applied : null);
@@ -209,7 +211,7 @@ export async function run(command, args, ctx) {
 
   const items = [];
   let who = null;
-  items.push(assembleItem({ checks, current: checksCurrent(doc, lexicon, checks, clips, keyframes) && brandingMatches && (!applied || checks.metrics?.frames === presented?.total_frames), finalExists, doc, timeline, presented, timelineCurrent, minMinutes: needsMinimumLength(doc) ? minEpisodeMinutes() : 0, stale: !brandingMatches ? "another branding selection" : pictures ? "an older script, look, pictures, music or effects" : undefined }));
+  items.push(assembleItem({ checks, current: audioCurrent && checksCurrent(doc, lexicon, checks, clips, keyframes) && brandingMatches && (!applied || checks.metrics?.frames === presented?.total_frames), finalExists, doc, timeline, presented, timelineCurrent, minMinutes: needsMinimumLength(doc) ? minEpisodeMinutes() : 0, stale: !brandingMatches ? "another branding selection" : pictures ? "an older script, look, pictures, music or effects" : undefined }));
   items.push(renderItem({ manifest: frames, cache, visual, speech, subtitles: drama ? subtitlesHash(doc) : null, burnIn: drama && burnIn(doc), hasThumbnail: Boolean(doc.thumbnail) }));
   items.push(narrationItem({ approval, current: timelineCurrent }));
   if (!timelineCurrent) {

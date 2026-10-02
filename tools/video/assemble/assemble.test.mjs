@@ -1,11 +1,11 @@
 import assert from "node:assert/strict";
-import { existsSync, mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
 import { EXIT } from "../cli.mjs";
 import { lookHash } from "../core/drama.mjs";
-import { dramaFixture, fixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
+import { writeAudioFixture, dramaFixture, fixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
 import { estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
 import { run } from "./cli.mjs";
 import {
@@ -62,7 +62,7 @@ test("direct assembly refuses wrong-model, short or non-native-1080p production 
     const visual = visualHash(doc);
     const timeline = { ...estimateTimeline(doc), speech_hash: speech };
     mkdirSync(box.workdir, { recursive: true });
-    writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
+    writeAudioFixture(timeline, box.workdir);
     mkdirSync(path.join(box.workdir, "frames"), { recursive: true });
     writeFileSync(path.join(box.workdir, "frames", "manifest.json"), JSON.stringify({ visual_hash: visual }));
     const clips = {
@@ -92,6 +92,26 @@ test("direct assembly refuses wrong-model, short or non-native-1080p production 
     writeFileSync(seriesFile, JSON.stringify({}));
     await assert.rejects(run("assemble", ["--slug", doc.slug], ctx), /ffmpeg sentinel/);
     assert.equal(ffmpegReached, 1);
+  }
+});
+
+test("direct assembly refuses missing or changed audio evidence before any ffmpeg work", async () => {
+  for (const fault of ["legacy", "take", "narration"]) {
+    const box = sandbox("fixture-drama", "drama");
+    const doc = dramaFixture();
+    const timeline = writeAudioFixture({ ...estimateTimeline(doc), speech_hash: speechHash(doc, fixtureLexicon()) }, box.workdir);
+    if (fault === "legacy") {
+      delete timeline.audio_evidence;
+      writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
+    } else {
+      const file = path.join(box.workdir, fault === "take" ? `audio/${timeline.lines[0].id}.wav` : "narration.wav");
+      const bytes = readFileSync(file); bytes[48] ^= 1; writeFileSync(file, bytes);
+    }
+    let ffmpegReached = 0, stderr = "";
+    const ctx = { root: box.root, home: box.base, EXIT, env: { VIDEO_WORKDIR: box.work, get FFMPEG_PATH() { ffmpegReached += 1; throw new Error("ffmpeg sentinel"); } }, stdout: { write() {} }, stderr: { write(value) { stderr += value; } } };
+    assert.equal(await run("assemble", ["--slug", box.slug], ctx), EXIT.usage);
+    assert.match(stderr, /current audio evidence before assembly/);
+    assert.equal(ffmpegReached, 0);
   }
 });
 
