@@ -199,6 +199,20 @@ Ran: `node tools/video/long-form/cli.mjs check` before rebinding failed only on 
 
 Non-claims: this review does not accept the Shorts topic library, asset upload, weekly report or automation settings themselves. It covers no API behaviour, CI, browser, media, production write or publication. PASS is DURATION_ONLY for the five rebound hashes below. Required duration fixes remaining: none.
 
+## Paused anime-planning increment: 10 files (2026-10-02)
+
+Reviewer: `review_planning_import`. Author: `codex-root` and the implementation authors. Scope: DURATION_ONLY. The reviewer did not write the implementation. This increment rebinds only apps/api/app/video_automation/{models,schemas,series}.py, apps/web/components/admin-video-series.tsx and its test, and apps/web/messages/{en,ja,ko,zh-CN,zh-TW}/admin.json. The reviewer also read the unbound 0121_video_series_planning migration, planning importer and duration/guard/migration regressions for compatibility context; they are not additional registry bindings.
+
+Baseline: the reviewer read the complete ten-file delta from a62483cc7 to c773fdd58, then rechecked the rebased delta from origin/main 7f76864f5 to ff9f4936c. All 70 baseline hashes match the upstream receipt, and exactly these ten bindings differ in the current tree. The three API files and two component/test files are byte-identical to their independently reviewed pre-rebase versions. A flattened comparison of each locale against 7f76864f5 confirms that every existing value, including the upstream PR #1118 Shorts additions, is preserved; each locale gains exactly thirteen keys under videoSeries.statuses.planning, videoSeries.leads.ensemble and videoSeries.planning. The preceding independent increments, including #1118, remain intact; the other sixty receipt and report bindings are unchanged.
+
+Findings: ordinary drama request/series creation and patch validation retain strict whole-minute 1–8 bounds and default 3. A flat-explainer remains a one-off with 8–20 bounds and default 10; the existing bible style-crossing restriction, style-only default correction and unrelated legacy pause/title behavior remain. The new summary fields expose planning_only, category, the original planning_spec and an output-only ensemble lead; ordinary input cannot set those importer fields or the ensemble lead. The model and matching 0121 migration retain the prior ordinary database 1–20 branch and permit 21–30 only with planning_only=true. The separate planning CHECK requires kind=series, category=anime, status=paused, hands_off=false, compilation=false, force_next=false and requested_chapter IS NULL. The importer preserves the authored 22-minute story budget and 30-minute broadcast slot as planning data. Those numbers are not measured media or production authorization.
+
+The scheduler query excludes planning-only rows, next_job_for returns no job before normal scheduling, and direct approval, edit, episode/compilation production and worker mutation entries refuse them. patch_problem refuses changes to a planning-only row, including attempts to resume or shorten it. The UI reads the original runtime and distinguishes the broadcast slot, leaves normal duration-form bounds/defaults unchanged, and hides production and approval controls for a planning-only work. The new regression fixture explicitly keeps its 22-minute ensemble plan readable while requiring those controls to remain absent. The five locale additions label saved planning data and the pending production support; none changes an existing duration label. No tools/video duration, lint, QA, frame-proof or production-input checker is changed, and the existing 14,400-frame body/final proof cannot be replaced by this planning budget.
+
+Ran independently: `node tools/video/long-form/cli.mjs check` before rebinding failed only on these ten stale bindings, exit 1. `node --test tools/video/long-form/plans.test.mjs tools/video/core/duration.test.mjs tools/video/qa/duration.test.mjs` passed 14/14, exit 0. In apps/api, `.venv/bin/python -m pytest tests/test_video_explainer_duration.py tests/test_video_anime_planning_guards.py -q` passed 64/64, exit 0, using local mocked and ephemeral SQLite fixtures. The post-rebase hash and flattened-locale comparisons described above also passed. After installing this increment, `node --test tools/video/long-form/review.test.mjs` and the long-form CLI check validate the refreshed receipt and unchanged fail-closed checker.
+
+Non-claims: this increment does not approve a 22-minute production pipeline, manuscripts, factual content, actual audio/video duration, provider or model calls, browser/media acceptance, deployment, formal-database import, scheduling or publication. It does not accept the upstream Shorts feature itself. It is an independent DURATION_ONLY compatibility review of the ten rebound files, not a fresh review of the other sixty historical bindings. Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 70 bindings describe the current reviewed bytes after the main-merge and owned migration-order increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -209,9 +223,9 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | `.agents/skills/youtube-video/references/automated.md` | `de793ad631be8ebe05a22a848adb0c6d0e86980db60092ee879ebc815d8b17ad` |
 | `.agents/skills/youtube-video/references/formats.md` | `17857aae0d529984f25a3360f69a60b4cc51bd715343eeecd051e6686f475875` |
 | `.claude/skills/youtube-video/SKILL.md` | `298f5b0084e3b7c82544d1895234f0a0dac0261caec98d89d7c6a4643ec9406b` |
-| `apps/api/app/video_automation/models.py` | `ff5ba88f0be1efb1923dd1d9a870ac72ed378d851b879b9a68c64b53771ed699` |
-| `apps/api/app/video_automation/schemas.py` | `0cea45c4947831e49194814befd94f8eb9bd5b528e0e99c29c29d67439642894` |
-| `apps/api/app/video_automation/series.py` | `d5e982dcc71465ae076179e3da35c9e87bd3a2138712a2c2d5de9802e421d234` |
+| `apps/api/app/video_automation/models.py` | `a527501908ded6558839f175a047e05b38b9eb9c8a9be9494d079382f99561b7` |
+| `apps/api/app/video_automation/schemas.py` | `084745ef3f022863777b7694a98c168df6415181c30bc84b4ce0a151af7e974c` |
+| `apps/api/app/video_automation/series.py` | `61a6d7b0460ff9b70e656b8025fd7409df2cd912b16acff1d160db98258c0965` |
 | `apps/api/migrations/versions/0118_video_min_8_minutes.py` | `5e254bd11d8e635368880ca3b82e368a58887b5223bf3ac5e71d1a2dedc68266` |
 | `apps/api/tests/test_migration_0118_video_min_8_minutes.py` | `c479dfd800de1fcbd1fb71d0b47d4fcb922675b314b31b680e8195cac898c28e` |
 | `apps/api/tests/test_video_automation_settings.py` | `b7f8a1853a7090d010a648ddb7c262c3c616256b4d6a8913410efab8d40a3707` |
@@ -220,14 +234,14 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
 | `apps/web/components/admin-video-explainer-duration.test.tsx` | `bb888f17b3ef617d788fbed83f5fba280dfe06da008a6f80fca15b15c6916ca0` |
 | `apps/web/components/admin-video-reviews.test.tsx` | `2d4c0b9dc89062a105a61d04ef7c44d25129c4672f06e41bcdcbab2b1b0f10ab` |
-| `apps/web/components/admin-video-series.test.tsx` | `f6b62a1802799e56cd8d64e003a2035b3b2e255a214e41335329ae25069eec8c` |
-| `apps/web/components/admin-video-series.tsx` | `97980f007e7091dab343603c0bb1ada909decab950a5535c9ef50ee8fadba7a1` |
+| `apps/web/components/admin-video-series.test.tsx` | `bf1197d8166cdbc32c5316636eb034633c4bd4f167ca639516f32b664f9b1ea0` |
+| `apps/web/components/admin-video-series.tsx` | `22ab2b261f098222d766741c694f74da8a85f46cec7f68188a0e3beddbbf1952` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `7aad8e5d88b67ebaf0b261a57482fb06044111e86af9cfa43157627c7e671957` |
-| `apps/web/messages/en/admin.json` | `1924c82d4252c09682fb4bd9a660ab38bc1e1fe28f4696bdcd5f9647a9d01349` |
-| `apps/web/messages/ja/admin.json` | `dca6cf23afddbf332d6fe4fa5b4e5d2ef729ef0cc82cf73e0fed935e139d1f8f` |
-| `apps/web/messages/ko/admin.json` | `a3069ff85c7776a02d56fd95477ec695f967633f42beb2a255c6ee34eb8a746c` |
-| `apps/web/messages/zh-CN/admin.json` | `76603e3a40cbfd9fff887a3b63e05fdd7817714c65a1f7ca6994d96f1eef1d27` |
-| `apps/web/messages/zh-TW/admin.json` | `beddd17be53d7e2c60d2e2bb4c41f0a094ec2cae0392b87329204d241633d34d` |
+| `apps/web/messages/en/admin.json` | `64b9b91662d663bcd2735a9e6fbdc52e00a66abee62ca788b1a5c8030bf61dce` |
+| `apps/web/messages/ja/admin.json` | `8f2ec64453e82bc6a8ee474e797a6170b80fb886f97a7f3c6e10cbe335587e2e` |
+| `apps/web/messages/ko/admin.json` | `8ce7160ec08335cf61132a3e6b34394c02b107fee0a64a7bf776cc35d37cd4b2` |
+| `apps/web/messages/zh-CN/admin.json` | `346df3e06eb7571915ca90ff27c2a81ff0f67fb65f087de80bccc871de061356` |
+| `apps/web/messages/zh-TW/admin.json` | `bb7729cab5a8697df55128b970a1d7986b2e75058f9544162c309ab99df4b9e4` |
 | `docs/videos/DESIGN.md` | `299449c6c19a40a0e17868615a7d8442771449e0db6e63186ca9c57a0d57ab41` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `ac08a33baedd84f282901594e55758f4b390ee1a8dc798e2c25c4b463081aa80` |
 | `docs/videos/README.md` | `88a8fcb1e6019d279b790f089feb14abe5dc21d2b1c0624f4d0fe25c73346868` |
