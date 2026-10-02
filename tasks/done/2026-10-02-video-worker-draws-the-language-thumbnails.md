@@ -1,13 +1,13 @@
 ---
 id: 2026-10-02-video-worker-draws-the-language-thumbnails
 title: Video worker draws the language thumbnails before it packages a language batch
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-worker-thumbs
 claimed_at: 2026-10-02T04:18:04Z
 created_at: 2026-10-02T00:29:59Z
-completed_at:
+completed_at: 2026-10-02T04:37:30Z
 branch: claude/worker-draws-thumbnails
 depends_on:
   - 2026-10-01-video-worker-translator-fills-the-thumbnail
