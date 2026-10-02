@@ -1,0 +1,387 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-10-02",
+  "status": "offline-planning-and-tests-only",
+  "profile_sha256": "654aba4b6ecc13d7b0ecd645e0f9ec24c999d1062831ff36e8f148954ffc0a33",
+  "totals": {
+    "works": 10,
+    "episodes": 400,
+    "characters": 95,
+    "performance_states": 55,
+    "sound_cues": 50,
+    "audition_scenes": 23,
+    "audition_entries": 705
+  },
+  "tools_tests": {
+    "tests": 1226,
+    "passed": 1224,
+    "failed": 0,
+    "skipped": 2,
+    "status": "passed"
+  },
+  "source_validation": {
+    "codex_five": true,
+    "claude_five": true,
+    "strict_historical_source_receipts": {
+      "passed": false,
+      "stale_slugs": [
+        "wedding-reckoning",
+        "seventh-passenger"
+      ],
+      "delta_evidence": "source-review-delta.json"
+    }
+  },
+  "generation_performed": false,
+  "audition_performed": false,
+  "media_accepted": false,
+  "approval_granted": false,
+  "localization_started": false,
+  "runtime_deployed": false,
+  "works": [
+    {
+      "slug": "wedding-reckoning",
+      "title": "喜宴未散，清算開始",
+      "source_sha256": "37328fa1c643e0edfcd1d138a158410653b36d6e02739ce7a9c555b26bc5bb9c",
+      "design_sha256": "544174a0350af6822a5cb567f974fd9fc72b0c0af5925709e24c21292e2f2adb",
+      "characters": 8,
+      "episodes": 40,
+      "performance_states": 8,
+      "sound_cues": 5,
+      "audition_scenes": 2,
+      "audition_plan_sha256": "33fe1f204b6bc90710af872b3122eb86deb62339849c0c008e791faa4f5986c2",
+      "audition_entries_by_kind": {
+        "calibration": 27,
+        "pronunciation": 8,
+        "effective-voice-state": 9,
+        "performance-state-calibration": 8,
+        "pronunciation-term": 2,
+        "story-excerpt": 1
+      },
+      "audition_entries": 55,
+      "isolated_terms": [
+        "棠行。",
+        "澄港。"
+      ],
+      "all_transcripts_without_synthesis": true,
+      "silent_checks": []
+    },
+    {
+      "slug": "seventh-passenger",
+      "title": "末班車上的第七個活人",
+      "source_sha256": "e976faae66782ad05892b0e7d438fd79c77cfd137ec060d9561545456c2abb72",
+      "design_sha256": "f1b92a7d272ef8cca6d52c5b637a79326089d40a36ec9eb775329541ea90da47",
+      "characters": 10,
+      "episodes": 40,
+      "performance_states": 8,
+      "sound_cues": 8,
+      "audition_scenes": 3,
+      "audition_plan_sha256": "d768370136692f24b59ac89f1254b3aaa269769b48d19bca29877368584f4784",
+      "audition_entries_by_kind": {
+        "calibration": 33,
+        "pronunciation": 10,
+        "effective-voice-state": 12,
+        "performance-state-calibration": 8,
+        "pronunciation-term": 2,
+        "story-excerpt": 2
+      },
+      "audition_entries": 67,
+      "isolated_terms": [
+        "道岔。",
+        "鋼印。"
+      ],
+      "all_transcripts_without_synthesis": true,
+      "silent_checks": []
+    },
+    {
+      "slug": "scapegoat-empress",
+      "title": "朕不是你們的替死鬼",
+      "source_sha256": "399f468d18158a3938450d95d1cc9b615756cfa686d93c9c3e8afc7bcf34dc28",
+      "design_sha256": "f2c0f912958e4f7619a32a79550bd7f303a27ce048ef09df0b19f74bee0deae0",
+      "characters": 11,
+      "episodes": 40,
+      "performance_states": 8,
+      "sound_cues": 4,
+      "audition_scenes": 2,
+      "audition_plan_sha256": "b1f2f0ced936ef97b9fd0a96412724aebba115ef14409f2a4cd77c2eea7a7dca",
+      "audition_entries_by_kind": {
+        "calibration": 36,
+        "pronunciation": 11,
+        "effective-voice-state": 12,
+        "performance-state-calibration": 8,
+        "pronunciation-term": 2,
+        "story-excerpt": 1
+      },
+      "audition_entries": 70,
+      "isolated_terms": [
+        "糧秤。",
+        "衡京。"
+      ],
+      "all_transcripts_without_synthesis": true,
+      "silent_checks": []
+    },
+    {
+      "slug": "city-owes-a-light",
+      "title": "這座城欠他一盞燈",
+      "source_sha256": "dce3acd2cbeb70c34feb1e1062d6a8d917930f92261f0e3dcb7b9634e894ba43",
+      "design_sha256": "9bba2aa64e43cd9566ec6547e5f9397791fdb8b83c18e1865cbe3fd421edbbda",
+      "characters": 9,
+      "episodes": 40,
+      "performance_states": 7,
+      "sound_cues": 6,
+      "audition_scenes": 2,
+      "audition_plan_sha256": "8f0fc07a52ebc90f17be3ee346855ca0619f07b50f83818c14dc621f608690a0",
+      "audition_entries_by_kind": {
+        "calibration": 30,
+        "pronunciation": 9,
+        "effective-voice-state": 10,
+        "performance-state-calibration": 7,
+        "pronunciation-term": 2,
+        "story-excerpt": 1
+      },
+      "audition_entries": 59,
+      "isolated_terms": [
+        "合序。",
+        "岱恆。"
+      ],
+      "all_transcripts_without_synthesis": true,
+      "silent_checks": []
+    },
+    {
+      "slug": "remembered-by-rival",
+      "title": "世人忘我，死敵記我",
+      "source_sha256": "061c82d31f88119d8cf764765075d6821720861c5dff3f41bc04dad3e473307e",
+      "design_sha256": "87d2826b53f77d47c092ae8ab23e71ba8726753e9c86682b5ab7207aa09e568d",
+      "characters": 8,
+      "episodes": 40,
+      "performance_states": 9,
+      "sound_cues": 7,
+      "audition_scenes": 2,
+      "audition_plan_sha256": "46c7d888364434a3e4f718aea674fe2e0b5f65d958c2204488db949564b0995d",
+      "audition_entries_by_kind": {
+        "calibration": 27,
+        "pronunciation": 8,
+        "effective-voice-state": 9,
+        "performance-state-calibration": 9,
+        "pronunciation-term": 3
+      },
+      "audition_entries": 56,
+      "isolated_terms": [
+        "守淵契。",
+        "天籙。",
+        "照川。"
+      ],
+      "all_transcripts_without_synthesis": true,
+      "silent_checks": []
+    },
+    {
+      "slug": "reload-first-day",
+      "title": "開服第一天，她的天賦叫讀檔",
+      "source_sha256": "547f65666d8efbe94b9ab5cbd667910fce833e0f573673ceda4ccebbe53c5b19",
+      "design_sha256": "a84303cdc6a052f049780c0a56f4d5babeefbea3161b3c25c85182c21fddba5e",
+      "characters": 10,
+      "episodes": 40,
+      "performance_states": 4,
+      "sound_cues": 3,
+      "audition_scenes": 2,
+      "audition_plan_sha256": "db930ef89a855e9d8852433a68a8c2498ce31d15c82e04352569de84cdcff661",
+      "audition_entries_by_kind": {
+        "calibration": 33,
+        "pronunciation": 10,
+        "effective-voice-state": 13,
+        "performance-state-calibration": 4,
+        "pronunciation-term": 32,
+        "story-excerpt": 5
+      },
+      "audition_entries": 97,
+      "isolated_terms": [
+        "老鄧。",
+        "阿嬤。",
+        "小照。",
+        "阿坤。",
+        "周淑芬。",
+        "望汐市。",
+        "星軌。",
+        "鐵幕。",
+        "梯門。",
+        "讀檔。",
+        "存檔。",
+        "存檔點。",
+        "結算。",
+        "首殺。",
+        "首通。",
+        "承擔。",
+        "聆聽。",
+        "開鎖。",
+        "鑑定。",
+        "徵用。",
+        "直播。",
+        "稽核之眼。",
+        "持有者。",
+        "備援持有者。",
+        "先登者。",
+        "重來者。",
+        "名牆。",
+        "帳房。",
+        "帳本。",
+        "影犬。",
+        "唯一命。",
+        "週期。"
+      ],
+      "all_transcripts_without_synthesis": true,
+      "silent_checks": []
+    },
+    {
+      "slug": "before-the-hammer",
+      "title": "重生回落槌前一秒",
+      "source_sha256": "741c9f348e85e0e22b3a6dcf50b82ac24cd574c9fa340b0b8cc4101d6601f78c",
+      "design_sha256": "066d3f8c528d382a09a453fa3636117700534ba1daccfdce020a39f6adc1a9f8",
+      "characters": 9,
+      "episodes": 40,
+      "performance_states": 2,
+      "sound_cues": 2,
+      "audition_scenes": 2,
+      "audition_plan_sha256": "4934988ab59e190c5ba56aa6a16cf21eab4867ca66400cf3727ead741f1ee632",
+      "audition_entries_by_kind": {
+        "calibration": 30,
+        "pronunciation": 9,
+        "effective-voice-state": 11,
+        "performance-state-calibration": 2,
+        "pronunciation-term": 13,
+        "story-excerpt": 4
+      },
+      "audition_entries": 69,
+      "isolated_terms": [
+        "小蓁。",
+        "青釐盞。",
+        "釐光。",
+        "承珩拍賣。",
+        "硯山堂。",
+        "摹坊。",
+        "一眼見真。",
+        "澐港市。",
+        "澐江。",
+        "瀛海貿易。",
+        "落槌。",
+        "鑑台。",
+        "先生。"
+      ],
+      "all_transcripts_without_synthesis": true,
+      "silent_checks": []
+    },
+    {
+      "slug": "three-needles",
+      "title": "三針",
+      "source_sha256": "7a582b004b969931bbb2678da0c66504b935054574a42b3edd2b30a898a3a8d6",
+      "design_sha256": "18c498e9b0626de07c341bca677ef36d935a4b778d7bcc963bee8329c83ed611",
+      "characters": 12,
+      "episodes": 40,
+      "performance_states": 4,
+      "sound_cues": 7,
+      "audition_scenes": 3,
+      "audition_plan_sha256": "f12dac276bef74974464af679911a9a46cacc83c8b85c161af5b8deb8b8ee284",
+      "audition_entries_by_kind": {
+        "calibration": 39,
+        "pronunciation": 12,
+        "effective-voice-state": 13,
+        "nonverbal-performance-check": 1,
+        "performance-state-calibration": 3,
+        "pronunciation-term": 8,
+        "story-excerpt": 6
+      },
+      "audition_entries": 82,
+      "isolated_terms": [
+        "沈鶴川。",
+        "沈氏康健集團。",
+        "安歲散。",
+        "借脈。",
+        "把脈。",
+        "匾。",
+        "換匾。",
+        "持方者。"
+      ],
+      "all_transcripts_without_synthesis": true,
+      "silent_checks": [
+        "heting-performance-silent-writing"
+      ]
+    },
+    {
+      "slug": "taste-of-the-throne",
+      "title": "她替公主試毒十年",
+      "source_sha256": "7a2368145d3ead124172d8034d89ba49468c4649d25501df31aede49278dfa4f",
+      "design_sha256": "d378fffb75e8dd1fdf6bf4389f08b2026cdd2f5eaa081d7b1abc00b47e5b82b0",
+      "characters": 10,
+      "episodes": 40,
+      "performance_states": 2,
+      "sound_cues": 4,
+      "audition_scenes": 2,
+      "audition_plan_sha256": "25189f945e4184ba741fa999b4ceef630321ed2b22f56c7dd23decd36f91053d",
+      "audition_entries_by_kind": {
+        "calibration": 33,
+        "pronunciation": 10,
+        "effective-voice-state": 11,
+        "performance-state-calibration": 2,
+        "pronunciation-term": 14,
+        "story-excerpt": 5
+      },
+      "audition_entries": 75,
+      "isolated_terms": [
+        "大燁。",
+        "嘗使。",
+        "司膳院。",
+        "掌膳。",
+        "雪蠶散。",
+        "烏砂。",
+        "甘霜。",
+        "桓記墨莊。",
+        "紫宸殿。",
+        "鳴鸞宮。",
+        "圜丘。",
+        "御膳簿。",
+        "璽。",
+        "硯。"
+      ],
+      "all_transcripts_without_synthesis": true,
+      "silent_checks": []
+    },
+    {
+      "slug": "ghost-at-his-side",
+      "title": "符師與他的鬼",
+      "source_sha256": "5dec7b3d0f63c88e1a8e3e9007a6b4b543e7535b99dd5cb42d8b168e1cdaf73d",
+      "design_sha256": "8b65d1a7435f3f65fbf5a7e3bfb0b999c2b7e3a05090bbc0750103d63b814d65",
+      "characters": 8,
+      "episodes": 40,
+      "performance_states": 3,
+      "sound_cues": 4,
+      "audition_scenes": 3,
+      "audition_plan_sha256": "f4e2e959e937da444f239e38a4cde5160fd255d4d1c4ca54ff4fcb6cd7027814",
+      "audition_entries_by_kind": {
+        "calibration": 27,
+        "pronunciation": 8,
+        "effective-voice-state": 10,
+        "performance-state-calibration": 3,
+        "pronunciation-term": 15,
+        "story-excerpt": 12
+      },
+      "audition_entries": 75,
+      "isolated_terms": [
+        "臨淵城。",
+        "望淵橋。",
+        "陰陽司。",
+        "司正。",
+        "借命符。",
+        "送行符。",
+        "子符。",
+        "本命。",
+        "冰窖。",
+        "禁卷庫。",
+        "大理寺少卿。",
+        "暖閣。",
+        "昭國。",
+        "燈匠巷。",
+        "還陽。"
+      ],
+      "all_transcripts_without_synthesis": true,
+      "silent_checks": []
+    }
+  ]
+}

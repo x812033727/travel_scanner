@@ -8,6 +8,7 @@
 // It imports nothing from schema.mjs or timeline.mjs: they import it, and a cycle would leave one
 // side's bindings undefined at load time.
 import { createHash } from "node:crypto";
+import { substitutions, termPattern } from "./lexicon.mjs";
 
 export const DRAMA_FORMAT = "drama";
 const FPS = 30;
@@ -360,6 +361,12 @@ function validateSeries(series, errors) {
 
 export function validateDrama(doc, errors, validateVoice) {
   const drama = isDrama(doc);
+  if (doc.pronunciation_hints !== undefined) {
+    const hints = doc.pronunciation_hints;
+    if (!drama || !isObject(hints) || Object.keys(hints).length > 300 || Object.entries(hints).some(([term, hint]) => !isShortText(term, 40) || !/[\u3400-\u9fff]/u.test(term) || (hint !== null && !isShortText(hint, 200)))) {
+      errors.push({ path: "pronunciation_hints", message: "must be a drama-local map of at most 300 Chinese names/terms (1–40 chars) to short reading directions (1–200 chars) or null" });
+    }
+  }
   if (!drama) {
     for (const key of ["characters", "series"]) {
       if (doc[key] !== undefined) errors.push({ path: key, message: `only a video with format "${DRAMA_FORMAT}" has ${key}` });
@@ -388,6 +395,7 @@ export function validateDrama(doc, errors, validateVoice) {
     if (ids.some((id, index) => index > 0 && id < ids[index - 1])) errors.push({ path: "characters", message: "an episode of a series lists its characters by id in order" });
   }
   const earlierShots = new Set();
+  const earlierTakes = new Map();
   let shots = 0;
   doc.scenes.forEach((scene, sceneIndex) => {
     if (!isObject(scene)) return;
@@ -425,7 +433,7 @@ export function validateDrama(doc, errors, validateVoice) {
         const label = `${where}.lines[${lineIndex}]${typeof line.id === "string" ? ` (${line.id})` : ""}`;
         if (shot && line.reveal !== undefined) errors.push({ path: `${label}.reveal`, message: "a shot has nothing to reveal; split the narration into shots instead" });
         if (!drama) {
-          for (const key of ["speaker", "emotion"]) {
+          for (const key of ["speaker", "emotion", "audio_ref"]) {
             if (line[key] !== undefined) errors.push({ path: `${label}.${key}`, message: `only a video with format "${DRAMA_FORMAT}" has line ${key}` });
           }
           return;
@@ -436,6 +444,18 @@ export function validateDrama(doc, errors, validateVoice) {
         if (line.emotion !== undefined && !isShortText(line.emotion, EMOTION_MAX)) {
           errors.push({ path: `${label}.emotion`, message: `must be a short direction for the voice, at most ${EMOTION_MAX} characters` });
         }
+        try {
+          const voice = voiceFor(doc, line);
+          if (line.audio_ref !== undefined) {
+            const original = earlierTakes.get(line.audio_ref);
+            if (!original || original.audio_ref !== undefined || (original.speaker ?? NARRATOR) !== (line.speaker ?? NARRATOR) || String(spoken(original) ?? "").normalize("NFC").trim() !== String(spoken(line) ?? "").normalize("NFC").trim() || JSON.stringify(voiceFor(doc, original)) !== JSON.stringify(voice)) {
+              errors.push({ path: `${label}.audio_ref`, message: "must reference an earlier original take with identical speaker, spoken text and effective voice; pauses may differ" });
+            }
+          }
+        } catch (error) {
+          errors.push({ path: label, message: error.message });
+        }
+        earlierTakes.set(line.id, line);
       });
     }
     if (shot && typeof scene.id === "string") earlierShots.add(scene.id);
@@ -461,10 +481,25 @@ export function voiceFor(doc, line) {
   const character = characterOf(doc, line);
   const base = character ? character.voice : doc.voice;
   const voice = { ...base };
-  if (line?.emotion && voice.provider === "gemini") {
-    voice.style = `${voice.style ? `${voice.style}。` : ""}${line.emotion}`.slice(0, STYLE_MAX);
+  const hints = pronunciationHintsFor(doc, line);
+  if (hints.length && voice.provider !== "gemini") throw new Error("pronunciation_hints require a Gemini voice with speech metadata");
+  if ((line?.emotion || hints.length) && voice.provider === "gemini") {
+    const style = [voice.style, line?.emotion, hints.length ? `發音提示（不唸指示）：${hints.map(([term, hint]) => `${term}＝${hint}`).join("；")}` : null].filter(Boolean).join("。");
+    if (doc.pronunciation_hints !== undefined && style.length > STYLE_MAX) throw new Error(`line ${line?.id ?? "?"}: voice direction plus pronunciation exceeds ${STYLE_MAX} characters; shorten the line or direction without dropping required readings`);
+    voice.style = style.slice(0, STYLE_MAX);
   }
   return voice;
+}
+
+/** Only the names/terms actually spoken by this line, longest match first, never CC replacement. */
+export function pronunciationHintsFor(doc, line) {
+  if (!isObject(doc?.pronunciation_hints)) return [];
+  const entries = substitutions({ terms: doc.pronunciation_hints });
+  const pattern = termPattern(entries);
+  if (!pattern) return [];
+  const readings = new Map(entries);
+  const matched = [...new Set(String(spoken(line) ?? "").normalize("NFC").match(pattern) ?? [])];
+  return matched.map((term) => [term, readings.get(term)]);
 }
 
 /** Everything that changes the character sheets: the resolved look and each character's appearance. */

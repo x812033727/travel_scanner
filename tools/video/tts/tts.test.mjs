@@ -7,7 +7,8 @@ import test from "node:test";
 
 import { EXIT, main } from "../cli.mjs";
 import { fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
-import { SAMPLES_PER_FRAME, SAMPLE_RATE } from "../core/timeline.mjs";
+import { SAMPLES_PER_FRAME, SAMPLE_RATE, speechHash } from "../core/timeline.mjs";
+import { buildCues } from "../core/captions.mjs";
 import { SpeechError, speechStatus, synthesize } from "./client.mjs";
 import { credentialsFile, readCredentials, writeCredentials } from "./credentials.mjs";
 import { MAX_REQUEST_CHARACTERS, billableForRequest, planRequests, spokenParts } from "./requests.mjs";
@@ -137,6 +138,56 @@ test("a drama's requests change with the speaker, and a line's emotion rides in 
   assert.equal(planRequests(verbose, { terms: {} })[1].body.style.length, 400);
 });
 
+test("production readings follow only spoken names, aliases and terms, and bind speech/request caches without changing CC", () => {
+  const doc = {
+    format: "drama", voice: { provider: "gemini", name: "Kore", style: "平靜，台灣國語" },
+    pronunciation_hints: { 沈亦微: "微讀ㄨㄟˊ", 老鄧: "ㄌㄠˇ ㄉㄥˋ", 青釐盞: "釐讀ㄌㄧˊ", 釐: "不得取代完整術語", 秦硯山: "硯四聲", 安歲散: null },
+    scenes: [{ id: "scene", lines: [{ id: "name1", text: "老鄧，把青釐盞交給沈亦微。" }, { id: "plain", text: "先把門關上。" }] }],
+  };
+  const before = JSON.stringify(doc);
+  const planned = planRequests(doc, { terms: { LLM: "L L M" } });
+  assert.equal(planned.length, 2, "only the line saying these terms carries their metadata");
+  assert.match(planned[0].body.style, /老鄧＝ㄌㄠˇ ㄉㄥˋ.*青釐盞＝釐讀ㄌㄧˊ.*沈亦微＝微讀ㄨㄟˊ/);
+  assert.ok(!planned[0].body.style.includes("不得取代完整術語"));
+  assert.ok(!planned[0].body.style.includes("秦硯山"));
+  assert.equal(planned[1].body.style, doc.voice.style);
+  assert.deepEqual(planned[0].body.segments[0].parts, [{ text: doc.scenes[0].lines[0].text }]);
+  assert.equal(JSON.stringify(doc), before);
+  const changed = structuredClone(doc);
+  changed.pronunciation_hints.沈亦微 = "沈三聲，微二聲";
+  const updated = planRequests(changed, { terms: {} });
+  assert.notEqual(updated[0].lines[0].key, planned[0].lines[0].key);
+  assert.equal(updated[1].lines[0].key, planned[1].lines[0].key);
+  assert.notEqual(speechHash(changed, { terms: {} }), speechHash(doc, { terms: {} }));
+  changed.pronunciation_hints = { ...doc.pronunciation_hints, 秦硯山: "未說出的另一讀法" };
+  assert.equal(speechHash(changed, { terms: {} }), speechHash(doc, { terms: {} }));
+  const tooLong = structuredClone(doc);
+  tooLong.voice.style = "字".repeat(390);
+  assert.throws(() => planRequests(tooLong, { terms: {} }), /exceeds 400/);
+});
+
+test("audio_ref requires an earlier original's speaker, spoken content and effective voice, never implicit deduplication", () => {
+  const doc = { format: "drama", voice: { provider: "gemini", name: "Kore" }, scenes: [{ id: "scene", lines: [
+    { id: "base1", text: "你看到我的哨子嗎？" }, { id: "copy1", text: "你看到我的哨子嗎？", audio_ref: "base1", pause_after_ms: 900 },
+  ] }] };
+  assert.equal(planRequests(doc, { terms: {} })[1].audio_ref, "base1");
+  const noRef = structuredClone(doc);
+  delete noRef.scenes[0].lines[1].audio_ref;
+  assert.ok(planRequests(noRef, { terms: {} }).every((request) => !request.audio_ref));
+  assert.notEqual(speechHash(doc, { terms: {} }), speechHash(noRef, { terms: {} }));
+  for (const change of [
+    (copy) => { copy.scenes[0].lines[1].audio_ref = "copy1"; },
+    (copy) => { copy.scenes[0].lines[0].audio_ref = "copy1"; },
+    (copy) => { copy.scenes[0].lines[1].text = "另一句"; },
+    (copy) => { copy.scenes[0].lines[1].speaker = "different"; },
+    (copy) => { copy.scenes[0].lines[1].emotion = "小聲"; },
+    (copy) => { copy.scenes[0].lines.push({ ...copy.scenes[0].lines[1], id: "copy2", audio_ref: "copy1" }); },
+  ]) {
+    const invalid = structuredClone(doc); change(invalid);
+    assert.throws(() => planRequests(invalid, { terms: {} }), /earlier original take/);
+  }
+});
+
 function fakeServer({ status = {}, failures = [] } = {}) {
   const calls = [];
   const fetchImpl = async (url, init) => {
@@ -225,6 +276,72 @@ function capture(overrides) {
     },
   };
 }
+
+test("explicit repeated takes buy only the original, preserve bytes and independent CC timing, and retake as one family", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const file = path.join(box.dir, "video.json");
+  const doc = JSON.parse(readFileSync(file, "utf8"));
+  const original = doc.scenes[1].lines[0];
+  original.text = "父王，我回來了。";
+  doc.pronunciation_hints = { 父王: "ㄈㄨˋ ㄨㄤˊ" };
+  doc.scenes[3].lines = [
+    { ...original, id: "copy1", audio_ref: original.id, pause_after_ms: 100 },
+    { ...original, id: "copy2", audio_ref: original.id, pause_after_ms: 900 },
+  ];
+  writeFileSync(file, JSON.stringify(doc));
+  const server = fakeServer({ status: { gemini_configured: true, gemini_monthly_limit: 300000, gemini_used: 0 } });
+  const env = { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN, MOKAAIR_SITE: "https://mokaair.test" };
+  const run = () => capture({ root: box.root, env, home: box.base, fetch: server.fetchImpl });
+  const posts = () => server.calls.filter((call) => call.url.endsWith("/api/video/speech"));
+  const initial = run();
+  assert.equal(await main(["tts", "--slug", box.slug], initial.ctx), EXIT.ok, initial.out.stderr);
+  assert.equal(posts().length, 5, "the two explicit repeats make no paid request");
+  assert.equal(posts().filter((call) => JSON.parse(call.init.body).style?.includes("父王＝")).length, 1);
+  const audioFile = (id) => path.join(box.workdir, "audio", `${id}.wav`);
+  assert.deepEqual(readFileSync(audioFile("copy1")), readFileSync(audioFile(original.id)));
+  assert.deepEqual(readFileSync(audioFile("copy2")), readFileSync(audioFile(original.id)));
+  const timeline = JSON.parse(readFileSync(path.join(box.workdir, "timeline.json")));
+  const family = timeline.lines.filter((line) => [original.id, "copy1", "copy2"].includes(line.id));
+  assert.equal(new Set(family.map((line) => line.audio_samples)).size, 1);
+  assert.equal(new Set(family.map((line) => line.start_frame)).size, 3);
+  const texts = Object.fromEntries(doc.scenes.flatMap((scene) => scene.lines.map((line) => [line.id, line.text])));
+  const captions = buildCues(timeline, texts, "zh-TW").cues.filter((cue) => [original.id, "copy1", "copy2"].includes(cue.line));
+  assert.equal(captions.length, 3);
+  assert.ok(captions.every((cue) => !cue.text.includes("ㄈ")));
+  assert.ok(captions[0].end_ms < captions[1].start_ms && captions[1].end_ms <= captions[2].start_ms);
+  const cacheFile = path.join(box.workdir, "audio", "cache.json");
+  const cache = JSON.parse(readFileSync(cacheFile));
+  assert.equal(cache.references.copy1.source, original.id);
+  assert.equal(cache.references.copy1.source_sha256, cache.sha256[original.id]);
+  const again = run();
+  assert.equal(await main(["tts", "--slug", box.slug], again.ctx), EXIT.ok, again.out.stderr);
+  assert.equal(posts().length, 5);
+
+  const flags = path.join(box.work, "flags.json");
+  writeFileSync(flags, JSON.stringify({ flags: ["copy2"] }));
+  const retake = run();
+  assert.equal(await main(["tts", "--slug", box.slug, "--redo", flags], retake.ctx), EXIT.ok, retake.out.stderr);
+  assert.equal(posts().length, 6, "a flagged replay retakes its one original, never its own new variant");
+  assert.deepEqual(readFileSync(audioFile("copy2")), readFileSync(audioFile(original.id)));
+
+  // A corrupted source blocks the entire next run before an unrelated changed line is paid for.
+  doc.scenes[0].lines[0].text += "真的。";
+  writeFileSync(file, JSON.stringify(doc));
+  const good = readFileSync(audioFile(original.id));
+  const corrupt = Buffer.from(good); corrupt[corrupt.length - 1] ^= 1;
+  writeFileSync(audioFile(original.id), corrupt);
+  const failed = run();
+  assert.notEqual(await main(["tts", "--slug", box.slug], failed.ctx), EXIT.ok);
+  assert.match(failed.out.stderr, /matching saved WAV SHA256/);
+  assert.equal(posts().length, 6);
+  writeFileSync(audioFile(original.id), good);
+  const oldCache = JSON.parse(readFileSync(cacheFile)); delete oldCache.sha256[original.id];
+  writeFileSync(cacheFile, JSON.stringify(oldCache));
+  const legacy = run();
+  assert.notEqual(await main(["tts", "--slug", box.slug], legacy.ctx), EXIT.ok);
+  assert.match(legacy.out.stderr, /explicitly retake/);
+  assert.equal(posts().length, 6);
+});
 
 test("tts writes frame-aligned narration and a timeline, then only redoes what changed", async () => {
   const box = sandbox();

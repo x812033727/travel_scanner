@@ -269,6 +269,35 @@ test("each line gets its speaker's voice, and a Gemini voice takes the emotion i
   assert.deepEqual(charactersBySpeaker(doc), { narrator: [...doc.scenes[0].lines[0].text, ...doc.scenes[0].lines[1].text, ...doc.scenes[2].lines[0].text, ...doc.scenes[2].lines[1].text, ...doc.scenes[3].lines[0].text, ...doc.scenes[4].lines[0].text, ...doc.scenes[4].lines[1].text].length, jingwei: [...doc.scenes[1].lines[0].text, ...doc.scenes[3].lines[1].text].length, yandi: [...doc.scenes[1].lines[1].text].length });
 });
 
+test("drama-local pronunciation and exact-take references validate before synthesis", () => {
+  const doc = dramaFixture();
+  doc.pronunciation_hints = { 精衛: "ㄐㄧㄥ ㄨㄟˋ", 炎帝: null };
+  const source = doc.scenes[1].lines[0];
+  doc.scenes[3].lines[1] = { ...source, id: "copy1", audio_ref: source.id, pause_after_ms: 900 };
+  assert.deepEqual(validateVideo(doc), []);
+  for (const mutate of [
+    (bad) => { bad.pronunciation_hints = { English: "not a production Chinese term" }; },
+    (bad) => { bad.pronunciation_hints = { 精衛: 42 }; },
+    (bad) => { bad.pronunciation_hints = []; },
+    (bad) => { bad.scenes[3].lines[1].audio_ref = "copy1"; },
+    (bad) => { bad.scenes[1].lines[0].audio_ref = "copy1"; },
+    (bad) => { bad.scenes[3].lines[1].speaker = "yandi"; },
+    (bad) => { bad.scenes[3].lines[1].emotion = "完全不同的演法"; },
+    (bad) => { bad.scenes[3].lines[1].text = "另一句台詞。"; },
+  ]) {
+    const bad = structuredClone(doc); mutate(bad);
+    assert.ok(validateVideo(bad).length);
+  }
+  const overflow = structuredClone(doc);
+  overflow.characters[0].voice.style = "字".repeat(399);
+  assert.ok(validateVideo(overflow).some((error) => error.message.includes("exceeds 400")));
+  const slides = fixture();
+  slides.pronunciation_hints = { 精衛: "ㄐㄧㄥ ㄨㄟˋ" };
+  slides.scenes[0].lines[1].audio_ref = slides.scenes[0].lines[0].id;
+  assert.ok(validateVideo(slides).some((error) => error.path === "pronunciation_hints"));
+  assert.ok(validateVideo(slides).some((error) => error.path.endsWith("audio_ref")));
+});
+
 test("the speech hash follows speakers, emotions and character voices; the slides hash does not change shape", () => {
   const doc = dramaFixture();
   const lexicon = fixtureLexicon();

@@ -203,3 +203,19 @@
 上述勾選保持空白：文件檢查通過不等於媒体條目通過。本輪沒有更動故事來源、角色聲音供應商、正式站狀態或付費設定。
 
 本輪導演釐清的來源定位：[setting.mjs:41](setting.mjs#L41)、[packaging.mjs:53](packaging.mjs#L53)、[packaging.mjs:57](packaging.mjs#L57)、[packaging.mjs:59](packaging.mjs#L59)、[chapter-1.mjs:17](chapter-1.mjs#L17)、[chapter-4.mjs:140](chapter-4.mjs#L140)。上述來源原文保留；製作解讀寫入 production-design 的風險控制、關鍵鏡頭及道具規格。
+
+
+## 配音與聲音細節覆核（2026-10-02）
+
+本次僅校對來源与製作指示，尚無 TTS 試聽、歌曲、Foley 或成片混音驗收。角色聲音身分固定；`performance_states` 是逐集／轉折候選，`audio_plan.audio_cues` 指定聲音線索與聽覺視點，`audio_plan.audition_scenes` 指定接戲材料。每項有來源引用，`source_excerpt` 只供語境，絕不能整段當作角色台詞。只有人工指定且與原欄位逐字核對的 `line_samples` 才是故事試音片段；缺片段時使用另列的非故事校準句。
+
+- **zhouyu／counted-action（E2、E4、E6、E8、E10、E11、E12、E14、E15、E16、E18、E22、E23、E24、E25、E32、E37、E38、E40）**：一般短句與來源指定三秒動作分開。同一 Charon 聲音；平常先呼吸而非每句硬延三秒。 E38 的一／二／三按連續時間軸，不插旁白、長吸氣或慢動作拖長窗口。
+- **suxing／own-voice-transition（E35、E38、E40）**：E35 最後的「好」才轉平；E36 起既有 own-voice 生效。轉折前仍是實況主語氣；「好」短、平、不演成機器。 E38 系統宣告另按 system-broadcast cue，宣告後不把所有日常台詞持續機械化。
+- **suxing／system-broadcast（E38）**：六十萬塊面板同步宣告那一句。保留蘇醒身份；中性、合成質感由專項試音／後製驗證。 先一條乾淨母軌，再做面板遠近聲場，不疊六十萬段或生成無法辨字的人海。
+- **duchengye／power-to-bargain（E31、E34）**：E31 摘下戒指後開始，E32 heard 聲線接續。戒指離手前仍命令；提出條件時收窄氣勢、句子變短，不能當場換另一個演員。
+
+- **live-versus-message（E35）**：蘇醒的「好」是現場聲，小樹複述仍用自己聲音。 邵擎訊息是來源書面文字，不自動添加他的現場嘴型或聲音；若朗讀由當集許可旁白處理。
+- **system-declaration（E38）**：中性合成宣告必須與周嶼計數錯開主頻與音量；系統不加來源沒有的第二句。 宣告／計數分軌，CC 保留說話者，畫面面板文字另校，不燒對白字幕。
+- **real-three-seconds（E38）**：依來源前集接續的一、二、三做連續 timecode；配樂與手錶聲不得額外製造第四拍或另一組三聲。 先量實際中文讀音再剪，未量測不聲稱精準三秒。
+
+試音需比較基礎三種校準、每個 `castFrom(setting, episode)` 的實際聲線狀態、人名，以及上述多人／線索場面。先錄乾聲再驗距離與效果；CC 保留原字並可關閉。中文鎖定前不自動生成日、韓、英文；其他語言讀法仍是母語待校候選。

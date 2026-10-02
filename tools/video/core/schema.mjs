@@ -87,6 +87,7 @@ const TOP_KEYS = new Set([
   "category",
   "target_minutes",
   "voice",
+  "pronunciation_hints",
   "youtube",
   "thumbnail",
   "sources",
@@ -115,7 +116,7 @@ const YOUTUBE_KEYS = new Set([
   "video_id",
 ]);
 const SCENE_KEYS = new Set(["id", "chapter", "template", "data", "claims", "lines"]);
-const LINE_KEYS = new Set(["id", "text", "say", "say_for", "pause_after_ms", "reveal", "speaker", "emotion"]);
+const LINE_KEYS = new Set(["id", "text", "say", "say_for", "pause_after_ms", "reveal", "speaker", "emotion", "audio_ref"]);
 
 /** A short content hash: what `say_for` and translation `source_hash` fields hold. */
 export function textHash(text) {
@@ -200,6 +201,9 @@ function validateLine(line, label, seenLines, errors) {
     return;
   }
   unknownKeys(line, LINE_KEYS, label, errors);
+  if (line.audio_ref !== undefined && !(typeof line.audio_ref === "string" && LINE_ID.test(line.audio_ref) && seenLines.has(line.audio_ref) && line.audio_ref !== line.id)) {
+    errors.push({ path: `${label}.audio_ref`, message: "must name an earlier original line's take; no forward or self references" });
+  }
   if (typeof line.id !== "string" || !LINE_ID.test(line.id)) {
     errors.push({ path: `${label}.id`, message: "must be 4-8 lowercase letters or digits; get fresh ones with `cli.mjs ids`" });
   } else if (seenLines.has(line.id)) {

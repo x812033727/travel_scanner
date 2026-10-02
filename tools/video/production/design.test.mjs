@@ -118,6 +118,24 @@ test("dialogue requests use the fixed actor voices, while shot appearance change
   assert.deepEqual(planRequests(changed, {}), requests);
 });
 
+test("backend-readable appendices carry sound and CC direction, with episode-specific voice-state handoff", () => {
+  for (const work of works) {
+    const { bundle } = buildBundle(work, profile);
+    const setting = bundle.documents[0];
+    const episode = work.design.episodes[0];
+    assert.ok(setting.body_md.includes(episode.hero_shot.sound));
+    assert.ok(setting.body_md.includes(episode.voice_notes[0]));
+    assert.ok(setting.body_md.includes(episode.cc_notes[0]));
+    const production = productionForEpisode(setting.body_json, 1);
+    assert.deepEqual(production.pronunciation_hints, setting.body_json.lexicon);
+    assert.ok(production.tts_instructions.some((entry) => entry.includes("audio_ref")));
+    for (const character of production.characters) {
+      assert.ok((character.performance_states ?? []).every((state) => state.episodes.includes(1)));
+    }
+    assert.ok((production.audio_plan.audio_cues ?? []).every((cue) => cue.episodes.includes(1)));
+  }
+});
+
 test("the local storyboard protects source text in both markup and embedded JSON", () => {
   const injected = structuredClone(first);
   injected.source.series.title = '</script><img src=x onerror="bad()">';

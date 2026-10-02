@@ -76,6 +76,7 @@ export function geminiText(segments) {
  */
 export function planRequests(doc, lexicon) {
   const requests = [];
+  const originals = new Map();
   for (const scene of doc.scenes) {
     let chunk = [];
     let characters = 0;
@@ -96,6 +97,17 @@ export function planRequests(doc, lexicon) {
       if (length > MAX_REQUEST_CHARACTERS) throw new Error(`line ${line.id} has ${length} characters; the server takes ${MAX_REQUEST_CHARACTERS} at once`);
       const voice = voiceFields(voiceFor(doc, line));
       const lineSpeaker = line.speaker ?? NARRATOR;
+      const canonical = parts.map((part) => part.alias || part.text).join("").normalize("NFC").trim();
+      if (line.audio_ref !== undefined) {
+        const original = originals.get(line.audio_ref);
+        if (!original || original.reference || original.speaker !== lineSpeaker || original.canonical !== canonical || JSON.stringify(original.voice) !== JSON.stringify(voice)) throw new Error(`line ${line.id}: audio_ref must name an earlier original take with identical speaker, spoken content and effective voice`);
+        flush();
+        const key = createHash("sha256").update(JSON.stringify([voice, parts])).digest("hex").slice(0, 16);
+        requests.push({ id: `${scene.id}#ref-${line.id}`, scene: scene.id, speaker: lineSpeaker, audio_ref: line.audio_ref, lines: [{ id: line.id, parts, weight: Math.max(1, spokenUnits(spokenText(line))), key }], body: { ...voice, segments: [{ parts, break_after_ms: 0 }] }, key });
+        originals.set(line.id, { reference: true });
+        continue;
+      }
+      originals.set(line.id, { speaker: lineSpeaker, canonical, voice });
       if (characters + length > MAX_REQUEST_CHARACTERS || lineSpeaker !== speaker || JSON.stringify(voice) !== JSON.stringify(fields)) flush();
       fields = voice;
       speaker = lineSpeaker;

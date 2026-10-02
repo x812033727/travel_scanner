@@ -7,7 +7,7 @@
 // which have millisecond precision, subdivide a line.
 import { createHash } from "node:crypto";
 
-import { shotCast } from "./drama.mjs";
+import { pronunciationHintsFor, shotCast } from "./drama.mjs";
 import { termsUsed } from "./lexicon.mjs";
 import { eachLine, spokenText } from "./schema.mjs";
 
@@ -161,6 +161,9 @@ export function speechHash(doc, lexicon) {
   for (const { scene, line, last } of eachLine(doc)) {
     const fields = [scene.id, line.id, spokenText(line), line.pause_after_ms ?? null, last];
     if (drama) fields.push(line.speaker ?? "narrator", line.emotion ?? null);
+    const hints = pronunciationHintsFor(doc, line);
+    if (hints.length) fields.push(["pronunciation_hints", hints]);
+    if (line.audio_ref !== undefined) fields.push(["audio_ref", line.audio_ref]);
     hash.update(JSON.stringify(fields));
   }
   return hash.digest("hex").slice(0, 16);

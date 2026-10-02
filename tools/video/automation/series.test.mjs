@@ -558,6 +558,29 @@ test("approved shot-look catalogs survive cast preparation and replace writer-in
   assert.match(documentProblem("setting", { ...SETTING, body_json: { ...SETTING.body_json, characters: [{ ...CAST[0], shot_looks: [{ id: "bad", appearance: "x", voice: {} }] }] } }, job("setting")), /only id/);
 });
 
+test("production settle preserves canonical local readings for every speaker while retaining the episode's injury voice", () => {
+  const video = dramaFixture();
+  const character = structuredClone(video.characters[0]);
+  character.looks = [{ id: "injured", from: 2, appearance: character.appearance, voice_style: "台灣國語，受傷後短句、停頓，低聲但不換音色" }];
+  const cast = castFrom({ characters: [character, video.characters[1]] }, 2);
+  const canonical = { 精衛: "ㄐㄧㄥ ㄨㄟˋ", 炎帝: "ㄧㄢˊ ㄉㄧˋ" };
+  const production = { profile: { phases: { primary: { locale: "zh-TW" } } }, narrator: { voice_name: "Erinome", performance: "冷靜敘述" }, pronunciation_hints: canonical };
+  video.pronunciation_hints = { 精衛: "writer invented reading" };
+  const settled = settle(video, { slug: "wenjian-e002", root: ".", settings: { voice: video.voice, drama: {} }, format: "drama", series: { slug: "wenjian", episode: 2, chapter: 1 }, cast, production });
+  assert.deepEqual(settled.pronunciation_hints, canonical);
+  assert.notEqual(settled.pronunciation_hints, canonical, "the saved map is independent of the context object");
+  assert.equal(settled.characters.find((entry) => entry.id === character.id).voice.style, character.looks[0].voice_style);
+  const sample = { ...settled, scenes: [{ id: "readings", lines: [
+    { id: "name1", text: "精衛在這裡。", speaker: "narrator" },
+    { id: "name2", text: "炎帝在這裡。", speaker: character.id, emotion: "說完留半拍" },
+  ] }] };
+  const requests = planRequests(sample, { terms: {} });
+  assert.equal(requests[0].body.voice, "gemini:Erinome");
+  assert.match(requests[0].body.style, /精衛＝ㄐㄧㄥ ㄨㄟˋ/);
+  assert.equal(requests[1].body.voice, `gemini:${character.voice.name}`);
+  assert.match(requests[1].body.style, /受傷後短句.*說完留半拍.*炎帝＝ㄧㄢˊ ㄉㄧˋ/);
+});
+
 test("a story bible has the cast, the acts and one outline, and only a one-off has one", () => {
   const bibleJob = job("bible", { series: ONE_OFF, chapter_number: null, context: { ...job("bible").context, series: ONE_OFF, setting: null, mysteries: [] } });
   assert.equal(documentProblem("bible", BIBLE, bibleJob), null);
