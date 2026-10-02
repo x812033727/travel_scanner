@@ -76,7 +76,8 @@ YouTube 要自動產生章節列，說明欄的時間戳必須：第一個是 `0
 - `captions/<語系>.srt`：zh-TW，加上站主勾了 CC 的語系
 - `description.<語系>.txt`：第一行是標題，後面是說明，章節、文章連結、參考資料都已經組好；zh-TW，加上站主勾了標題說明的語系
 - `dubs/<語系>.m4a`：站主勾了配音、工人做好的音軌
-- `metadata.json`（含 `language_choice`：站主每個語言勾了什麼）、`UPLOAD.md`
+- `thumbnails/<語系>.jpg`：各語言自己的縮圖（見下面「多語言縮圖」），只有那個語言的 `i18n` 有縮圖文字時才有
+- `metadata.json`（含 `language_choice`：站主每個語言勾了什麼；`thumbnails` 與 `skipped_thumbnail_locales`：哪些語言有自己的縮圖、其他語言為什麼沒有）、`UPLOAD.md`
 
 `UPLOAD.md` 就是這份清單的自動版本，請站主照著做。沒勾任何語言（或按了「只出繁體中文」）的影片，上傳包只有 zh-TW。
 
@@ -118,3 +119,12 @@ YouTube 要自動產生章節列，說明欄的時間戳必須：第一個是 `0
 - **漫劇**：第一期只能勾標題說明與 CC，配音灰掉（多角色要重新混音，`DUBS.md` §已知限制）。
 
 **待實測**（第一支有配音的影片上傳後，把結果回寫這一段，`DUBS.md` §站主要做的事列了清單）：Studio 收不收 `.m4a`（不收就 `dub --format mp3`）；影片還是私人時能不能加音軌、音軌的「發布」會不會動到影片的瀏覽權限；「語言」頁上原始語言是不是照影片語言（中文（台灣））標成原音。
+
+多語言縮圖（每個語言一張，字換成該語言）：
+
+- **官方怎麼寫**（YouTube 說明「Add Multi-language features to your videos」，support.google.com/youtube/answer/13338784，2026-10-01 重讀）：「Manage localized thumbnails」一節說長片可以上傳不同語言的縮圖，觀眾看到的是符合自己語言設定的縮圖。步驟：Studio 左選單「Content」→ 點影片 →「Upload thumbnail」先傳影片自己的縮圖 → 左選單「Languages」→ 點要加縮圖的那個語言名稱 →「Thumbnail」旁的「Add」選圖 →「Update」。整頁的多語言功能寫的前提是頻道要能使用「進階功能」。
+- **官方沒寫的**：頁面沒有明說「要先有那個語言的配音或字幕」，也沒寫縮圖的尺寸、大小或數量限制，沒提 API。2026-09-28 開票時記的「要先有音軌」這次在頁面上找不到原文；能確定的只有步驟是「點語言名稱」，所以那個語言要先列在影片的「語言」頁——上傳包的字幕、標題說明或配音送上去後就會列出。尺寸照一般縮圖（1280×720、2 MB 以內），`render` 與 `qa` 就是照這個檢查。
+- **只能在 Studio 手動上傳**：頁面只寫了 Studio 的做法，網站也不送它。`UPLOAD.md` 有一節「各語言的縮圖」列檔案與步驟。
+- **怎麼來的**：`i18n-sheet` 的 metadata 部件多一個 `thumbnail`（`tag`、`headline`、`sub`，只列 zh-TW 縮圖有的那幾個字），`i18n-merge` 寫進 `i18n/<語系>.json` 的 `thumbnail`，雜湊在 `source_hashes.thumbnail`（三個字當一筆算，zh-TW 縮圖任何一個字改了就整組過期）。`render` 對每個縮圖文字是最新的語系，用同一張背景與版型畫 `thumbnails/<語系>.jpg`；`package` 只收畫的時候用的字和現在 `i18n` 一樣的那幾張。
+- **不擋上架**：縮圖文字是選配。沒翻、過期、字型沒有那個字（韓文有幾個音節內建字型缺）、版面塞不下的語系只記成 note（`render` 的輸出、`metadata.json` 的 `skipped_thumbnail_locales`、`UPLOAD.md`），那個語言就用 `thumbnail.jpg`。`i18n-merge` 對縮圖文字的問題也只印 note，不讓合併失敗；`qa` 的縮圖項目對每張語言縮圖再跑一次同樣的檢查，有問題只出 warning。
+- **變體**：A/B 測試的 `thumbnail-b.jpg`／`thumbnail-c.jpg` 只有 zh-TW，語言縮圖照 A 版做。

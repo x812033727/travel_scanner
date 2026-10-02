@@ -4,7 +4,9 @@
 // sheet. Frames are cached by content key, so a rerun after editing one scene redraws that scene
 // only. A STOP file ends the run after the current scene; the next run picks up from the cache.
 // A drama's shots are clips the media stages make, so render draws only its cards, its subtitle
-// strips (when they are burned in) and its thumbnail, on the chosen shot's keyframe.
+// strips (when they are burned in) and its thumbnail, on the chosen shot's keyframe. Every other
+// caption locale whose i18n file has current thumbnail words gets its own thumbnail as well, in
+// thumbnails/<locale>.jpg (YouTube Studio's 「語言」 page takes one per language).
 import { existsSync, readFileSync, rmSync, writeFileSync, mkdirSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
@@ -18,7 +20,8 @@ import { SIZE, THUMB_SIZE, THUMB_VARIANT_IDS } from "../templates/templates.mjs"
 import { openRenderer, RendererError } from "./browser.mjs";
 import { contactSheetHtml, SHEET_WIDTH } from "./contact.mjs";
 import { bundledCoverage, uncovered } from "./fonts.mjs";
-import { renderPlan, renderProblems, stillFile, themeHash, thumbnailVariantFile, transitionFile } from "./plan.mjs";
+import { LOCALES } from "../core/schema.mjs";
+import { localeThumbnailFile, renderPlan, renderProblems, stillFile, themeHash, thumbnailVariantFile, transitionFile } from "./plan.mjs";
 import { BLANK_STRIP, blankStripHtml, blankStripKey, STRIP_SIZE, stripFile, subtitlePlan } from "./subtitles.mjs";
 import { BrowserMissing } from "../screencast/browser.mjs";
 import { ensureCaptures } from "../screencast/capture.mjs";
@@ -56,6 +59,22 @@ export function coverageProblems(plan, coverage, subtitles = null) {
     if (missing.length) problems.push({ path: where, message: `no bundled font has ${missing.join(" ")}` });
   }
   return problems;
+}
+
+/**
+ * The caption locales' own thumbnails to draw: { drawable, drawn: {}, gaps }. One whose words a
+ * bundled font cannot draw (Hangul is only partly covered) joins the gaps instead of failing the
+ * render; `drawn` is filled as the files are written.
+ */
+export function localizedThumbnails(plan, coverage) {
+  const gaps = { ...(plan.thumbnail?.gaps ?? {}) };
+  const drawable = [];
+  for (const own of plan.thumbnail?.locales ?? []) {
+    const missing = uncovered(own.text, coverage);
+    if (missing.length) gaps[own.locale] = `no bundled font has ${glyphList(missing)}`;
+    else drawable.push(own);
+  }
+  return { drawable, drawn: {}, gaps };
 }
 
 export async function run(command, args, ctx) {
@@ -127,7 +146,7 @@ export async function run(command, args, ctx) {
   }
   // A drama's thumbnail and an illustrated slides video's may sit on a keyframe (docs/videos/ILLUSTRATED.md).
   const keyframes = hasPictures(doc) ? (readJson(path.join(workdir, ARTIFACTS.keyframes), null)?.shots ?? {}) : {};
-  const plan = renderPlan(doc, themeHash(), ctx.root, { keyframes, screencasts });
+  const plan = renderPlan(doc, themeHash(), ctx.root, { keyframes, screencasts, translations: project.translations });
   const undrawn = (plan.thumbnail?.variants ?? []).find((variant) => variant.shot && !variant.keyframe);
   if (undrawn) {
     ctx.stderr.write(`thumbnail variant ${undrawn.id}'s background is the keyframe of shot ${undrawn.shot}, which is not drawn yet; run keyframes first\n`);
@@ -143,6 +162,9 @@ export async function run(command, args, ctx) {
     print(ctx.stdout, "ERROR", glyphs);
     return EXIT.lint;
   }
+  // A caption locale's own thumbnail is an extra: what keeps one from being drawn is a note, and
+  // the locale keeps the video's own thumbnail in Studio.
+  const localized = localizedThumbnails(plan, bundledCoverage());
 
   mkdirSync(path.join(workdir, "frames"), { recursive: true });
   const cacheFile = path.join(workdir, CACHE_FILE);
@@ -219,6 +241,22 @@ export async function run(command, args, ctx) {
         const file = path.join(workdir, thumbnailVariantFile(id));
         if (!plan.thumbnail.variants?.some((variant) => variant.id === id) && existsSync(file)) rmSync(file);
       }
+      for (const own of localized.drawable) {
+        const thumb = await renderer.capture(own.key, own.html, { size: THUMB_SIZE, type: "jpeg", quality: 90 });
+        const problems = [...thumb.problems, ...(thumb.still.length > THUMBNAIL_MAX_BYTES ? [`${thumb.still.length} bytes; YouTube's limit is 2 MB`] : [])];
+        if (problems.length) {
+          localized.gaps[own.locale] = `its thumbnail did not fit and was not drawn: ${problems.join("; ")}`;
+          continue;
+        }
+        mkdirSync(path.join(workdir, path.dirname(own.file)), { recursive: true });
+        writeFileSync(path.join(workdir, own.file), thumb.still);
+        localized.drawn[own.locale] = { file: own.file, hash: own.hash };
+      }
+      // A locale that lost its words, or whose thumbnail no longer fits, leaves no older picture behind.
+      for (const locale of LOCALES) {
+        const file = path.join(workdir, localeThumbnailFile(locale));
+        if (!localized.drawn[locale] && existsSync(file)) rmSync(file);
+      }
     }
     // Problems found in an earlier run stay problems until the state is redrawn.
     const remembered = (key, where) => {
@@ -262,6 +300,10 @@ export async function run(command, args, ctx) {
     thumbnail: plan.thumbnail ? THUMBNAIL_FILE : null,
     // B and C for YouTube's "Test & compare", when video.json has them; A is `thumbnail`.
     ...(plan.thumbnail?.variants ? { thumbnail_variants: plan.thumbnail.variants.map((variant) => variant.file) } : {}),
+    // Each caption locale's own thumbnail (YouTube Studio's 「語言」 page), with the hash of what it
+    // was drawn from for package to compare; the locales without one and why, for its notes.
+    ...(Object.keys(localized.drawn).length ? { thumbnail_locales: localized.drawn } : {}),
+    ...(Object.keys(localized.gaps).length ? { thumbnail_locale_gaps: localized.gaps } : {}),
     // Burned-in subtitles follow the narration, so status compares these two hashes as well.
     ...(subtitles
       ? {
@@ -281,5 +323,8 @@ export async function run(command, args, ctx) {
   recordStage(workdir, "render", { states: drawn + reused, drawn, reused, strips, seconds, channel: channel ?? "bundled chromium" }, ctx.now());
   const sheet = tiles.length ? `; contact sheet: ${path.join(workdir, ARTIFACTS.contactSheet)}` : "";
   ctx.stdout.write(`${drawn} states drawn, ${reused} reused${subtitles ? ` (${strips} subtitle strips, ${subtitles.cues.length} cues)` : ""}, in ${seconds} s${sheet}\n`);
+  const own = Object.keys(localized.drawn);
+  if (own.length) ctx.stdout.write(`thumbnails of their own: ${own.map((locale) => localized.drawn[locale].file).join(", ")}\n`);
+  for (const [locale, why] of Object.entries(localized.gaps)) ctx.stdout.write(`note: no ${locale} thumbnail of its own (it keeps ${THUMBNAIL_FILE}): ${why}\n`);
   return EXIT.ok;
 }
