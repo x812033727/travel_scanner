@@ -1,13 +1,13 @@
 ---
 id: 2026-09-22-catchtable-one-pass-importer
 title: CatchTable 候選檔一次匯入：店家與平台列同一支指令、稽核記 alias
-status: in-progress
+status: done
 priority: P3
 area: api
 owner: claude-opus-5-5-catchtable-import
 claimed_at: 2026-10-02T17:36:29Z
 created_at: 2026-09-22T16:10:00Z
-completed_at:
+completed_at: 2026-10-02T18:44:52Z
 branch: claude/catchtable-one-pass-import
 depends_on:
   - 2026-09-22-catchtable-ranking-discovery-batch-1
