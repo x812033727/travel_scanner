@@ -69,7 +69,7 @@ class ChecklistItem(BaseModel):
 # "shorts" is the card pipeline of a Short (docs/videos/SHORTS.md). A vertical drama short
 # keeps "drama": what makes a video a Short is its ``shorts_line``, not its format.
 VideoFormat = Literal["slides", "drama", "shorts"]
-# What kind of video a tutorial is (app.models.VIDEO_CATEGORIES; migration 0116), the review
+# What kind of video a tutorial is (app.models.VIDEO_CATEGORIES; migrations 0116, 0118), the review
 # page's first filter. ``none`` in a filter means the videos nobody filed yet.
 VideoCategory = Literal[
     "ai-terms",
@@ -80,6 +80,7 @@ VideoCategory = Literal[
     "story",
     "drama",
     "long-drama",
+    "anime",
     "travel",
     "other",
 ]

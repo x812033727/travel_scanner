@@ -707,7 +707,7 @@ def test_a_report_keeps_the_source_article_an_older_tool_does_not_send() -> None
 
 def test_the_categories_are_one_list_in_the_model_the_schema_and_the_migration() -> None:
     assert set(VIDEO_CATEGORY_CODES) == set(VIDEO_CATEGORIES)
-    assert len(VIDEO_CATEGORY_CODES) == 10
+    assert len(VIDEO_CATEGORY_CODES) == 11
     table = cast(Table, VideoProject.__table__)
     column = table.c.category
     assert isinstance(column.type, String) and column.type.length == 16 and column.nullable
