@@ -548,6 +548,16 @@ def test_only_a_one_off_is_started_in_the_explainer_preset() -> None:
         slug="one-off-why", kind="one-off", title="雷聲", premise="p", style_preset="flat-explainer"
     )
     assert explainer.style_preset == "flat-explainer"
+    assert explainer.target_minutes == 10, "an explainer targets ten minutes by default"
+    with pytest.raises(ValidationError, match="an explainer is at least 8 minutes"):
+        SeriesIn(
+            slug="one-off-why",
+            kind="one-off",
+            title="雷聲",
+            premise="p",
+            style_preset="flat-explainer",
+            target_minutes=7,
+        )
     with pytest.raises(ValidationError, match="one-off explainer only"):
         SeriesIn(slug="xianxia", title="問劍", premise="p", style_preset="flat-explainer")
     with pytest.raises(ValidationError, match="one-off explainer only"):
@@ -575,6 +585,16 @@ def test_a_long_series_never_becomes_an_explainer_and_a_written_bible_fixes_a_on
         assert refused is not None
         assert (refused.status, refused.code) == (422, "video_series_explainer_one_off")
     assert service.patch_problem(_series(), {"style_preset": "anime-2d"}) is None
+    # An explainer's length, when the owner names one, is 8 to 20 minutes.
+    for minutes in (7, 21):
+        short = service.patch_problem(
+            _one_off(style_preset="flat-explainer"), {"target_minutes": minutes}
+        )
+        assert short is not None and short.code == "video_series_explainer_minutes"
+    assert (
+        service.patch_problem(_one_off(style_preset="flat-explainer"), {"target_minutes": 10})
+        is None
+    )
     # A one-off crosses the explainer line freely until the worker writes its bible.
     assert service.patch_problem(_one_off(), explainer) is None
     assert (
@@ -598,6 +618,27 @@ def test_a_long_series_never_becomes_an_explainer_and_a_written_bible_fixes_a_on
             service.patch_problem(_one_off(style_preset="flat-explainer"), explainer, written)
             is None
         )
+
+
+@pytest.mark.asyncio
+async def test_a_one_off_crossing_the_explainer_line_takes_that_sides_length(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    session = AsyncMock()
+    session.add = lambda _row: None
+    owner = User(email="owner@example.com", password_hash="unused")
+    monkeypatch.setattr(service, "_docs", AsyncMock(return_value=[]))
+    monkeypatch.setattr(service, "_episodes", AsyncMock(return_value=[]))
+    monkeypatch.setattr(service, "series_view", AsyncMock(return_value=None))
+    story_one_off = _one_off(target_minutes=3)
+    monkeypatch.setattr(service, "_series", AsyncMock(return_value=story_one_off))
+    patch = SeriesPatch(style_preset="flat-explainer")
+    await service.patch_series(session, owner, story_one_off.slug, patch)
+    assert story_one_off.target_minutes == 10, "a style-only change adopts the explainer default"
+    explainer = _one_off(style_preset="flat-explainer", target_minutes=11)
+    monkeypatch.setattr(service, "_series", AsyncMock(return_value=explainer))
+    await service.patch_series(session, owner, explainer.slug, SeriesPatch(style_preset="ink-wash"))
+    assert explainer.target_minutes == 3, "a style-only change adopts the ordinary drama default"
 
 
 def _app(user: User | None = None) -> FastAPI:
