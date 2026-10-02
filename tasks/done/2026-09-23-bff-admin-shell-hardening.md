@@ -1,13 +1,13 @@
 ---
 id: 2026-09-23-bff-admin-shell-hardening
 title: BFF and admin shell hardening: backslash redirects, dotted-path CSP gap, locale cookie flag, admin soft navigation
-status: in-progress
+status: done
 priority: P3
 area: web
 owner: claude-opus-5-5-bff-hardening
 claimed_at: 2026-10-02T14:27:38Z
 created_at: 2026-09-23T15:57:49Z
-completed_at:
+completed_at: 2026-10-02T16:15:13Z
 branch: claude/bff-admin-shell-hardening
 depends_on: []
 scope:
