@@ -1,13 +1,13 @@
 ---
 id: 2026-09-24-skip-stale-feed-entries-when-a
 title: Skip stale feed entries when a news source is scanned
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-news-stale-feed
 claimed_at: 2026-10-02T14:52:37Z
 created_at: 2026-09-24T02:39:30Z
-completed_at:
+completed_at: 2026-10-02T15:27:06Z
 branch: claude/news-skip-stale-feed-entries
 depends_on: []
 scope:
