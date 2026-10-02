@@ -24,6 +24,7 @@ Shorts 獨立素材位於同一外部工作目錄的 `shorts/`，採直式重新
 
 使用 bundled Node 24.19.0 通過 13 個核心／安裝測試，涵蓋系列路由、disabled、pin、
 已核准／已上傳保護、範圍隔離、來源竄改拒絕與 11.9 秒偏移。
+完整 tools suite：1247 total、1244 pass、0 fail、3 環境 skip。
 本機實際素材安裝完成，全頻道 current bytes 保持不變，新 explainer 選到 357 格。
 
 實際媒體 smoke 把原素材包接在 300 格／10 秒測試正文前後：747 格／24.9 秒，
@@ -37,5 +38,12 @@ Shorts 主檔 `shorts/so-thats-why-shorts-6.9s.mp4` SHA-256：
 390 px 預覽無水平溢出；-14.0 LUFS、-1.8 dBFS peak。
 另保留同尺寸音樂版、無聲版、可重現來源、manifest 及剪輯 ZIP。
 
-正式部署／安裝證據於完成後記錄在此。素材選用與任何單支影片的 final／publish
+程式 PR 為 [#1129](https://github.com/x812033727/travel_scanner/pull/1129)。
+正式部署與安裝的實際結果以主機 `/root/mokaair-sothatswhy-intro-20261002/`
+內的 `completed.json`、`installed.json`、`readback.json`、`routing-verified.json`、
+來源 hash 對照及部署 log 為準；本機副本留在外部素材工作目錄 `approved/production-receipts/`。
+安裝器檢查 merged commit 已在 live HEAD 內、worker image 來源 SHA 與 checkout 一致，
+再以系列 CLI 安裝；全頻道 current 前後 bytes 必須相同，回讀後再次驗證新片路由與 11900 ms 偏移。
+這些證據區分程式合併、部署與素材安裝，檔案存在前不描述為正式啟用。
+素材選用與任何單支影片的 final／publish
 審核仍分開；本次接入不重製既有影片、不生成新語音、不啟用 uploader，也不發布 YouTube 影片。

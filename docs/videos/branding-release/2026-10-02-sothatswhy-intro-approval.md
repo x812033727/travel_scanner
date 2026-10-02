@@ -42,6 +42,7 @@ SHA-256 為 `50a53efa54fe5158a166390c7f46518c052be1af005f99a5f3c57e530b0bb67d`�
 
 現有 `tools/video/core/branding.mjs` 只讀全頻道 `_branding/current.json`，
 沒有依系列挑選預設的入口。若把此包直接安裝為全頻道 current，其他系列也會採用，
-因此系列接入追蹤於 [待辦](../../../tasks/open/2026-10-02-sothatswhy-series-branding-default.md)。
+因此建立系列接入待辦；站主後續要求接入，程式與實際安裝狀態續記於
+[系列接入紀錄](2026-10-02-sothatswhy-series-integration.md)。
 只讓未有既存品牌 pin 的新「原來如此」長片採用本包；保留其他系列、Shorts、
 既有 pin 與已核准／已上傳影片的既有行為。
