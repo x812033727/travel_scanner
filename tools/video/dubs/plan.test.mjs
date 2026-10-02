@@ -14,6 +14,9 @@ import { billableForRequest, geminiText, planRequests } from "../tts/requests.mj
 import { concatSamples, encodeWav } from "../tts/wav.mjs";
 import { dubLexicon, dubScript, speechLexicon } from "./plan.mjs";
 
+// The fixture videos run seconds; the eight-minute floor has tests of its own.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
+
 const WORDS = "App iOS API CBS OpenAI ChatGPT DevDay p95";
 const RAW = {
   schema_version: 1,

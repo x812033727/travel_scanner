@@ -15,6 +15,9 @@ import { chosenSheets, CONTACT_SHEET_TILES, contactSheetPages, keyframeRubric, M
 import { DEFAULT_SHEET_PROMPT, MAX_LOOK_ROUNDS, optionKey, parseChoice, sheetPrompt, suggestedOf } from "./look.mjs";
 import { imagePrice, statusProblem } from "./stages.mjs";
 
+// The fixture videos run seconds; the eight-minute floor has tests of its own.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
+
 const TOKEN = `mkv_${"m".repeat(43)}`;
 const SHA = (data) => createHash("sha256").update(data).digest("hex");
 const PNG = (text) => Buffer.concat([Buffer.from("\x89PNG\r\n\x1a\n", "binary"), Buffer.from(text)]);

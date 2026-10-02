@@ -13,6 +13,9 @@ import { captionLocalesOf, captionTimelineOf, chosenLocales, currentDub, dubsFor
 import { dubArtifacts, loadProject } from "./state.mjs";
 import { estimateTimeline, frameToMs, speechHash } from "./timeline.mjs";
 
+// The fixture videos run seconds; the eight-minute floor has tests of its own.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
+
 function translationFor(doc, prefix) {
   const lines = {};
   for (const { line } of eachLine(doc)) lines[line.id] = { source_hash: textHash(line.text), text: `${prefix} ${line.id}` };
