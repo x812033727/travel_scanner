@@ -1,13 +1,13 @@
 ---
 id: 2026-09-23-scrub-host-details-from-docs
 title: Committed docs carry a host session name, a disposable database password and local machine paths
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5-scrub-docs
 claimed_at: 2026-10-02T16:50:49Z
 created_at: 2026-09-23T15:57:50Z
-completed_at:
+completed_at: 2026-10-02T17:27:34Z
 branch: claude/scrub-host-details
 depends_on: []
 scope:
