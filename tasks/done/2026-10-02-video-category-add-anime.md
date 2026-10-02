@@ -1,13 +1,13 @@
 ---
 id: 2026-10-02-video-category-add-anime
 title: Video category: add anime (動漫)
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-magical-ptolemy
 claimed_at: 2026-10-02T00:26:35Z
 created_at: 2026-10-02T00:26:33Z
-completed_at:
+completed_at: 2026-10-02T00:44:09Z
 branch: claude/magical-ptolemy-7ivtcd
 depends_on: []
 scope:
@@ -19,8 +19,10 @@ scope:
   - apps/api/tests/test_video_reviews.py
   - apps/api/tests/test_video_reviews_integration.py
   - apps/web/components/admin-video-review-card.tsx
+  - apps/web/components/admin-video-reviews.test.tsx
   - apps/web/messages
-  - tools/video/core
+  - tools/video/core/schema.mjs
+  - tools/video/core/schema.test.mjs
   - docs/videos/HANDS-OFF.md
 ---
 

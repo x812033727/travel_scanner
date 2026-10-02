@@ -1001,7 +1001,7 @@ describe("AdminVideoReviews", () => {
     const form = await screen.findByRole("form", { name: "分類" });
     const select = within(form).getByRole("combobox") as HTMLSelectElement;
     expect(select.value).toBe("");
-    expect([...select.options].map((option) => option.textContent)).toEqual(["未分類", "AI 名詞解釋", "AI／科技時事", "教學實作", "比較評測", "觀念解說", "品牌故事", "漫劇", "長篇劇", "旅遊", "其他"]);
+    expect([...select.options].map((option) => option.textContent)).toEqual(["未分類", "AI 名詞解釋", "AI／科技時事", "教學實作", "比較評測", "觀念解說", "品牌故事", "漫劇", "長篇劇", "動漫", "旅遊", "其他"]);
     const save = within(form).getByRole("button", { name: "儲存" });
     expect(save).toHaveProperty("disabled", true);
     fireEvent.change(select, { target: { value: "tutorial" } });
