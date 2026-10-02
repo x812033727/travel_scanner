@@ -106,8 +106,12 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    locale reviews matching the current text. Anything else waits as
    `news_jev_final_hold`, and a Jev quota that ran out counts as anything else. Both holds
    keep the saved article, so 「五語發布」 still publishes it as a person's decision. A
-   failed locale review or hard check keeps the confirmation and waits in manual review
-   for 「重新翻譯並發布」; changed evidence waits for 「用最新來源重新查核」 (below).
+   failed locale review keeps the confirmation and waits in manual review for
+   「重新翻譯並發布」. A failed hard check saves the article too, unpublished, and waits in
+   manual review as `news_hard_checks_failed` with each locale's problems in the lint, so
+   an editor fixes it in the guide editor and presses 「重新查核」 instead of paying for a
+   new draft; Jev's last call is not asked, and the publish button refuses it until the
+   checks pass. Changed evidence waits for 「用最新來源重新查核」 (below).
 7. **Automatic mode** skips step 5 when auto-publish is on for the category, Jev answered
    `act` for the zh-TW draft, and the evidence is two websites or a first-party page;
    anything else waits for a person. There is no shadow gate any more (owner decision,
@@ -206,8 +210,14 @@ Inside 待審查:
   for a new draft, or reject.
 - `news_duplicate_uncertain` — compare with the five closest known titles shown beside
   it; 「不是重複，繼續寫」 or reject.
-- Confirmed, then a locale review or a hard check stopped it — 「重新翻譯並發布」 or
-  reject.
+- Confirmed, then a locale review stopped it — 「重新翻譯並發布」 or reject.
+- `news_hard_checks_failed` — the five-locale article is saved but unpublished; the lint
+  lists each locale's problems. Fix it in the guide editor (links in the preview) and
+  「重新查核」, or reject. A confirmed one publishes once the edited article passes; an
+  unconfirmed one then waits as `news_ready_to_publish`. Until task
+  2026-10-02-offer-re-verify-on-news-articles lands, the page offers 「重新查核」 only on
+  unconfirmed ones; a confirmed one shows 「重新翻譯並發布」, which translates again over
+  the edits.
 - `news_ready_to_publish` — an edited, re-verified article nobody has confirmed yet;
   「五語發布」 or reject.
 - `news_evidence_changed` — a source page changed after the check, so the old check
