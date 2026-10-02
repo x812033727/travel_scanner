@@ -1,6 +1,6 @@
 ---
 name: youtube-video
-description: 製作 YouTube 教學與解說影片的完整流程，分三條路線。全自動：AI 撰稿與查核、伺服器用 Gemini（或 Azure）合成台灣口音旁白、深色投影片版型、ffmpeg 合成、繁中 CC 加站主每支勾選的語言（標題說明、CC、配音），工具在 tools/video。AI 漫劇：故事聖經或設定集、劇本關卡、AI 生成片段與多角色配音，單集與長篇作品同一條流程；品牌故事（只有旁白的非虛構短片，逐章撰稿與查核）是它底下的作品類型。人工錄製：口播稿、分鏡、字卡、螢幕錄影、剪輯交接。三條都涵蓋選題與格式、查核、畫面與縮圖、章節、字幕、上架包與上架前檢查。要做一支 YouTube 影片或 AI 漫劇、把 Mokaair 文章改成影片、寫口播稿或分鏡、合成旁白、做縮圖、排章節、寫影片說明或上字幕時，先讀這個 skill。Produce Mokaair YouTube videos, fully automated through tools/video, as AI drama episodes or recorded by the owner, from topic to upload.
+description: 製作 YouTube 教學與解說影片的完整流程，分三條路線。全自動：AI 撰稿與查核、伺服器用 Gemini（或 Azure）合成台灣口音旁白、深色投影片版型、ffmpeg 合成、繁中 CC 加站主每支勾選的語言（標題說明、CC、配音），工具在 tools/video。AI 漫劇：故事聖經或設定集、劇本關卡、AI 生成片段與多角色配音，單集與長篇作品同一條流程；品牌故事（只有旁白的非虛構短片，逐章撰稿與查核）是它底下的作品類型。人工錄製：口播稿、分鏡、字卡、螢幕錄影、剪輯交接。三條都涵蓋選題與格式、查核、畫面與縮圖、章節、字幕、上架包與上架前檢查。另有 Shorts：25–55 秒的直式短片（AI 實測、長片精華、漫劇直式短篇），工具在 tools/video/shorts，後台的 Shorts 分頁排月曆與上架。要做一支 YouTube 影片、Shorts 或 AI 漫劇、把 Mokaair 文章改成影片、寫口播稿或分鏡、合成旁白、做縮圖、排章節、寫影片說明或上字幕時，先讀這個 skill。Produce Mokaair YouTube videos and Shorts, fully automated through tools/video, as AI drama episodes or recorded by the owner, from topic to upload.
 metadata:
   short-description: YouTube 影片：全自動或人工錄製，從選題到上架
 ---
@@ -25,8 +25,9 @@ metadata:
 | **一鍵合集** | 一部約兩小時（30–480 分鐘可設）一口氣看完的原創爽文漫劇：六個題材預設、節奏規格（鉤子、爽點、懸念）、混合畫面（四成片段、其餘關鍵影格加運鏡），全部集數做完接成一支長片，1080p 成片從後台下載 | 站主在後台按「一鍵開拍」（題材、主角、長度、畫面等級）、最後上傳與選上架時間；文件由查核模型判、伺服器依規則核准或退回，每集免關卡，工人做合集 | `.agents/skills/youtube-video/references/series.md` 的「合集作品（一鍵）」（設計在 `docs/videos/BINGE.md`） |
 | **品牌故事** | 12–15 分鐘的非虛構短片：只有旁白、約 90 張卡通靜態圖加緩慢運鏡、燒錄字幕；講一個品牌、日用品或天天在用的標準怎麼來、生意怎麼運作。影片是漫劇，100 個故事是一部 `kind: "story"` 作品的 100 集 | 企劃清單事先查核、由站主匯入；主機工人逐章撰稿、逐章查核、逐章聽眾審稿（一次呼叫一章），之後照漫劇的步驟做到上架確認，全程免關卡；站主只決定上架 | `.agents/skills/youtube-video/references/story.md`（設計在 `docs/videos/STORY.md`，企劃在 `docs/videos/story-plans/brand-stories-100`） |
 | **人工錄製** | 站主出鏡或配音、螢幕錄影、剪輯 | 代理交稿子、分鏡、字卡、上架文字；站主錄音、錄影、剪輯 | 下面「人工錄製路線」 |
+| **Shorts** | 1080×1920、25–55 秒的直式短片：一句一張繁中字卡加頻道聲音，沒有章節與縮圖；三條內容線：AI 實測、長片精華、漫劇直式短篇 | 實測由主機工人照題庫自己做（凍結題目、受測模型各跑一次、照證據撰稿與查核）；精華本機用 `from-episode` 從長片切、別的工具做的成片用 `import`；12 項自動品管全過就核准，站上照月曆與站主的自動上架授權排上 YouTube；稽核通過前站主每週把一批 mp4 拖進 Studio | `.agents/skills/youtube-video/references/shorts.md`（設計在 `docs/videos/SHORTS.md`） |
 
-站主沒指定時：AI／科技資訊、工具介紹、概念解說走全自動；故事（神話、民間傳說、原創玄幻、站上文章改成的故事）走 AI 漫劇；要一部一口氣看完、不想逐份核准的爽文合集走一鍵合集；要真人示範操作、或站主想自己出鏡的走人工錄製。全自動的螢幕錄影手把手還在做（票 `2026-09-24-video-screencast-steps`、`2026-09-24-video-terminal-template`、`2026-09-24-video-obs-import`），做好之前這類影片走人工錄製。
+站主沒指定時：AI／科技資訊、工具介紹、概念解說走全自動；故事（神話、民間傳說、原創玄幻、站上文章改成的故事）走 AI 漫劇；要一部一口氣看完、不想逐份核准的爽文合集走一鍵合集；要真人示範操作、或站主想自己出鏡的走人工錄製；一分鐘內講完一件事（一次實測、長片的一段）的直式短片走 Shorts。全自動的螢幕錄影手把手還在做（票 `2026-09-24-video-screencast-steps`、`2026-09-24-video-terminal-template`、`2026-09-24-video-obs-import`），做好之前這類影片走人工錄製。
 
 知識科普三季、品牌故事與 AI 名詞的長片另以 `docs/videos/long-form/README.md` 的有效企劃為準：科普及 AI 名詞目標10分鐘，品牌保留13分鐘；當前旁白正文及成片各至少8分鐘，片頭片尾不能補足正文。扁平解說後台8–20整數分鐘、預設10；Shorts、普通漫劇及合集保留原格式。計畫秒數不代表媒體實測，不以停頓、重複或慢播補時。
 
@@ -51,6 +52,8 @@ metadata:
 | 一鍵合集：一鍵表單與報價、免關卡的規則、節奏規格與爽點、畫面等級上限、`compile` 指令、下載、坑 | `.agents/skills/youtube-video/references/series.md` 的「合集作品（一鍵）」；still 鏡頭的 `visual` 與運鏡關鍵字在 `drama.md` |
 | 一鍵合集的代理提示（文件裁決、合集的標題／說明／標籤／縮圖與四語翻譯） | `.agents/skills/youtube-video/references/prompts/verifier-series-doc.md`、`planner-compilation.md`；工人實際送出的文字是 `tools/video/automation/prompts.mjs` |
 | 品牌故事：工人拿到什麼、一步一次呼叫的主幹、長度從哪裡來、查核（段落、PDF、`reviewer_only`、紀年換算）、畫面、卡住時站主怎麼辦 | `.agents/skills/youtube-video/references/story.md` |
+| Shorts：三條內容線、腳本格式、`build`／`check-audio`／`qa`／`package`／`push`／`import` 與結束碼、12 項品管沒過時怎麼修、實測的規範、工人的 Shorts 步驟、坑 | `.agents/skills/youtube-video/references/shorts.md`；上架的做法在 `publish.md` 的「Shorts 的上架」 |
+| Shorts 的代理提示（每週排片、補題、實測的撰稿與查核、每週報告） | `.agents/skills/youtube-video/references/prompts/shorts-plan.md`、`shorts-brief.md`、`shorts-lab.md`、`shorts-report.md`；工人實際送出的文字是 `tools/video/shorts/prompts.mjs` |
 | 品牌故事的代理提示（逐章撰稿、長度修正與圖片修正；逐章查核；逐章聽眾審稿） | `.agents/skills/youtube-video/references/prompts/writer-story.md`、`verifier-story.md`、`listener-story.md`；工人實際送出的文字是 `tools/video/automation/story-prompts.mjs` |
 | 頻道規格：版型、配色、聲音、片頭片尾、說明欄範本 | `docs/videos/README.md` |
 | 全自動的設計理由、YouTube、Azure 與 Gemini 語音的官方規則 | `docs/videos/DESIGN.md` |

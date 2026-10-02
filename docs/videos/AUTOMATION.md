@@ -162,6 +162,17 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 2. **劇本本機裁決**：查核（`verifier:episode`）多回 `coverage.satisfaction` 與 `retention` 指名的句子 id，工人用估計時間軸算秒數（`retentionNumbers`），再用與伺服器同一套規則自己判一次（`scriptVerdict`：四個節拍沒有「無」、「弱」≤ 1、沒有連貫性與雷同問題、鉤子 ≤ 8 秒、第一個爽點 ≤ 30 秒、爽點 ≥ 2、懸念是最後一句）；不過就交撰稿 FIX 模式（最多 `MAX_PROMPT_FIX_ROUNDS` 輪）再查核、再聽眾審稿，過了才 `review-push --gate script`，伺服器依 `script_check_passed` 當場核准。設定圖與分鏡在免關卡作品上視為自動開關開著。每集的 `series.json` 帶 `visual_tier` 與 `compilation`：lint 擋超過等級上限的片段數，合集模式的第一個場景不能是片頭卡；`clips` 只買 `visual: "clip"` 的鏡頭，`assemble` 把 `still` 鏡頭的關鍵影格做成運鏡段。
 3. **合集**：全部集數完成後 `GET …/series/next` 回 `{kind: "compilation"}`，工人 `POST …/series/{slug}/compilation/start`（`{slug: "<作品>-full"}`）拿到每集與脈絡，建 `docs/videos/<作品>-full/video.json`（`compilation` 區塊、章節卡、outro、佔位標題）與 `compilation.json`，之後照 `COMPILATION_STEPS` 走：企劃寫標題／說明／標籤／縮圖（variant `planner:compilation`，縮圖底圖從前三集的關鍵影格挑一張複製到 `keyframes/thumb-source.png`）→ `render` 章節卡與縮圖 → `compile`（`-c copy` 串接每集成片、音訊重編一次、合併五語字幕、寫章節；結束碼 4 下一輪再試，其餘非 0 卡住）→ 翻譯四語標題與說明（variant `translator:compilation`）→ `qa`（6 項）→ 成片與上架確認照 HANDS-OFF 自動核准 → 站主貼網址後 `POST …/compilation/done`。合集的 1080p 成片不進審核檔案區（只送 720p 預覽），站主從後台下載。
 
+## Shorts（2026-09-28 設計，2026-10-02 工人的實測線合併；設計在 [`SHORTS.md`](SHORTS.md)）
+
+工人也做直式短片。Shorts 有自己的設定表 `video_shorts_settings`（後台 `/admin/videos?tab=shorts&view=settings`），不跟上面那一列共用：開關「讓主機工人自己做 Shorts」（`enabled`）、各內容線的每週配額、一個月最多開始做幾支（`max_per_month`，預設 60）、受測模型（`subject_models`）、聲音（預設就是頻道聲音）、長度範圍、預算。操作步驟在 skill 的 `references/shorts.md`。
+
+- **敲門**：`ops/video/worker.sh` 在 `auto` 的迴圈旁邊另開一個背景迴圈，每 `VIDEO_SHORTS_KNOCK_SECONDS`（預設 300）秒跑一次 `shorts/cli.mjs tick`（`POST /video/automation/shorts/tick`）。網站在這個請求裡做月曆上到期的事：標記已經排上 YouTube 的、鎖定時段、照授權送出、讀成效、每天驗一次授權。它不看上面的 `enabled`，也不等 `auto` 的一輪跑完；有 `STOP` 檔時暫停（見上面「設定」最後一段）。
+- **一輪裡的位置**：`auto` 先讀 Shorts 設定。片庫少於 `stock_days` 天的量時，Shorts 的一個單位排在漫劇與教學之前；否則排在它們之後。教學的自動草稿關著時，Shorts 照樣做。
+- **一個單位**：先替成片已經被站主核准的 Shorts 補送上傳包，再問 `GET /video/automation/shorts/next`，照伺服器的順序做一件：`report`（上週的每週報告；企劃模型只寫判斷，原值表由程式照抄伺服器存的數字）、`plan`（週一或片庫不夠時，把題目排進到下週日的空時段）、`brief`（題庫不夠兩週的配額，或站主丟了想法時補題）、`make`（最早一格還沒做的題目，做一支）。卡住的那一支伺服器會跳過，後面的時段照常開工；站主在影片頁按重試之後，工人從卡住的那一步接著做。
+- **實測線的一支**（`tools/video/shorts/lab.mjs`）：凍結題目（`protocol.json` 與雜湊）→ 受測模型在全新對話跑 A、B 各一次（階段 `subject`，模型由 `subject_models` 決定，工人不能指定；技術失敗再送一次，兩次都記下）→ 評分（數字與時間用程式對答案）→ 撰稿（只看規格、證據與分數，lint 擋證據裡沒有的數字）→ 查核（新對話）→ `build --speech server` → `check-audio` → `qa`（12 項）→ `package` → `push`。自動修每種最多 2 輪；同一步連續兩次交不出能用的答案就卡住並在審核頁寫原因。模型階段走 `/video/automation/run` 原有的 `planner`、`writer`、`verifier`，`format: "shorts"` 加 variant（`shorts-plan`、`shorts-brief`、`shorts-lab-key`、`shorts-lab-score`、`shorts-lab`、`shorts-report`）；Shorts 各階段的模型目前跟教學一樣（設定欄位已經在伺服器上，後台的設定頁還在 PR #1124）。
+- **工作區**：`<工作區>/_shorts/`：每支一個資料夾（`lab.json`、`lab/` 的證據與稿子、每次 `build` 的成品目錄、`answers/`），`plans/` 留企劃模型排片的理由，`shorts-state.json` 記排片、補題、報告的失敗次數。清理工作區不碰 `_` 開頭的資料夾。
+- **還沒有的**：長片精華（票 `2026-09-28-video-shorts-worker-cut`）與漫劇直式短篇（`2026-09-28-video-shorts-worker-drama`）的製作，工人與排片都先跳過這兩條線的題目；要看圖、修圖、執行程式或生圖的實測題也不做。稽核通過後由網站自己上傳 mp4（`2026-09-28-video-shorts-auto-upload`）也還沒做，現在要站主每週把一批拖進 Studio。
+
 ## 清理工作區（2026-09-28 加）
 
 工作區（volume `video_work`）原本什麼都不刪，一支品牌故事就留下 1.3–2 GB（`STORY.md` §上限與成本）。工人每一輪做完手上的工作之後清一次（`tools/video/automation/tidy.mjs`）：
