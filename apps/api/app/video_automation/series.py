@@ -43,6 +43,7 @@ from sqlalchemy import ColumnElement, and_, func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import AdminAuditLog, User, VideoProject, VideoReview, VideoToolToken
+from app.video_automation.anime_policy import anime_chapter_problem, is_long_anime
 from app.video_automation.judge import (
     retention_required_for,
     series_doc_note,
@@ -208,7 +209,7 @@ def require_production_series(series: VideoDramaSeries) -> None:
         raise SeriesRefused(
             409,
             "video_series_planning_only",
-            "這部動漫目前只供企劃審閱；22 分鐘長篇製作支援尚未完成，不能核准、改稿或啟動製作",
+            "這部動漫只供企劃審閱；企劃列不能核准、改稿或啟動製作，請另建待審製作作品",
         )
 
 
@@ -373,7 +374,7 @@ def auto_title(genre: str) -> str:
 
 
 def retention_required(series: VideoDramaSeries) -> bool:
-    return retention_required_for(series.genre)
+    return not is_long_anime(series) and retention_required_for(series.genre)
 
 
 def _retention_problem(series: VideoDramaSeries, episodes: list[dict[str, Any]]) -> str | None:
@@ -504,7 +505,10 @@ def shot_looks_problem(character: dict[str, Any]) -> str | None:
     return None
 
 
-def doc_problem(series: VideoDramaSeries, payload: SeriesDocSubmitIn) -> str | None:
+def doc_problem(
+    series: VideoDramaSeries, payload: SeriesDocSubmitIn,
+    docs: Sequence[VideoDramaDoc] = (),
+) -> str | None:
     """Why a document the worker sends cannot be filed, in the worker's words; None when it can.
 
     The shapes are the contract with tools/video/automation/series.mjs: a setting book names
@@ -579,6 +583,33 @@ def doc_problem(series: VideoDramaSeries, payload: SeriesDocSubmitIn) -> str | N
         numbers.append(int(episode["number"]))
     if sorted(numbers) != list(range(first, last + 1)):
         return f"chapter {payload.chapter_number} covers episodes {first} to {last}"
+    if is_long_anime(series):
+        previous_doc = latest_docs(list(docs)).get(("chapter", payload.chapter_number - 1))
+        previous = (previous_doc.body_json or {}).get("episodes", []) if previous_doc else []
+        previous = previous if isinstance(previous, list) else []
+        problem = anime_chapter_problem(series, episodes, previous)
+        if problem:
+            return problem
+        setting = latest_docs(list(docs)).get(("setting", 0))
+        if setting:
+            cast_data = (setting.body_json or {}).get("characters", [])
+            thread_data = (setting.body_json or {}).get("mysteries", [])
+            if not isinstance(cast_data, list) or not isinstance(thread_data, list):
+                return "long-anime setting needs character and mystery lists"
+            known_cast = {
+                character.get("id") for character in cast_data
+                if isinstance(character, dict) and isinstance(character.get("id"), str)
+            }
+            known_threads = {
+                thread.get("id") for thread in thread_data
+                if isinstance(thread, dict) and isinstance(thread.get("id"), str)
+            }
+            for episode in episodes:
+                if not set(episode["characters"]) <= known_cast:
+                    return f"episode {episode['number']} names an unknown character"
+                if not set(episode["setups"] + episode["payoffs"]) <= known_threads:
+                    return f"episode {episode['number']} names an unknown mystery"
+        return None
     if retention_required(series):
         return _retention_problem(series, episodes)
     return None
@@ -920,6 +951,8 @@ def summary_view(
         planning_spec=(
             dict(series.planning_spec) if isinstance(series.planning_spec, dict) else None
         ),
+        production_policy=series.production_policy,
+        runtime_spec=dict(series.runtime_spec) if isinstance(series.runtime_spec, dict) else None,
         title=series.title,
         premise=series.premise,
         aspects=cast(Any, list(series.aspects or [])),
@@ -1198,7 +1231,10 @@ async def add_series(
     row = VideoDramaSeries(
         id=uuid4(),
         **values,
-        status="active" if payload.kind == "story" else "setting",
+        status=(
+            "paused" if is_long_anime(payload)
+            else "active" if payload.kind == "story" else "setting"
+        ),
         created_by_user_id=actor.id if actor else None,
         created_at=now,
         updated_at=now,
@@ -1228,6 +1264,8 @@ async def add_series(
                 "target_minutes": payload.target_minutes,
                 "episodes_per_day": payload.episodes_per_day,
                 "image_model": payload.image_model,
+                "production_policy": payload.production_policy,
+                "runtime_spec": values["runtime_spec"],
             },
         )
     )
@@ -1418,6 +1456,21 @@ def patch_problem(
             "video_series_planning_only",
             "這部動漫目前只供企劃審閱；不能改動企劃、恢復製作或開啟自動核准",
         )
+    if is_long_anime(series):
+        if set(changes) - {"title", "note", "status"}:
+            return SeriesRefused(
+                409, "video_anime_contract_fixed",
+                "長篇動漫的製作政策、時長與結構固定；要改規格請建立新的待審作品",
+            )
+        current = latest_docs(list(docs))
+        if changes.get("status") == "active" and docs and any(
+            current.get((kind, 0)) is None or current[(kind, 0)].status != "approved"
+            for kind in ("setting", "outline")
+        ):
+            return SeriesRefused(
+                409, "video_series_not_planned", "設定集與總綱核准之後，長篇動漫才能恢復製作",
+            )
+        return None
     if "style_preset" in changes:
         explainer = changes["style_preset"] == EXPLAINER_PRESET
         if explainer and not is_one_off(series):
@@ -1479,10 +1532,16 @@ async def patch_series(
     if "style_preset" in changes and "target_minutes" not in changes and is_one_off(series):
         changes["target_minutes"] = patch_target_minutes(series, changes)
     # A one-off's bible decides whether it may still cross the explainer line.
-    docs = await _docs(session, series) if is_one_off(series) and "style_preset" in changes else []
+    docs = await _docs(session, series) if (
+        (is_one_off(series) and "style_preset" in changes) or is_long_anime(series)
+    ) else []
     refused = patch_problem(series, changes, docs)
     if refused is not None:
         raise refused
+    if is_long_anime(series) and changes.get("status") == "active" and not docs:
+        # An explicit owner action may start the document planner. Outline approval pauses
+        # again, so planning consent cannot silently authorize episode production.
+        changes["status"] = "setting"
     if "status" in changes and series.status in ("setting", "outline"):
         raise SeriesRefused(
             409, "video_series_not_planned", "設定集與總綱核准之後，作品才能暫停、繼續或完結"
@@ -1618,7 +1677,7 @@ def _check_document_approval(
     require_production_series(series)
     if not payload.body_json:
         raise SeriesRefused(422, "video_series_structured_data_required", RECONCILIATION_NOTE)
-    problem = doc_problem(series, payload)
+    problem = doc_problem(series, payload, docs)
     if problem:
         raise SeriesRefused(422, "video_series_doc_invalid", problem)
     problem = document_prerequisite_problem(docs, payload.kind, payload.chapter_number)
@@ -1705,7 +1764,8 @@ async def _apply_approval(
         if series.status in ACTIVE_STATUSES:
             current_outline = latest_docs(await _docs(session, series)).get(("outline", 0))
             series.status = (
-                "active" if current_outline and current_outline.status == "approved" else "outline"
+                ("paused" if is_long_anime(series) else "active")
+                if current_outline and current_outline.status == "approved" else "outline"
             )
         # The one-button form left the title to the planner: the setting book names it.
         title = body.get("title")
@@ -1723,7 +1783,7 @@ async def _apply_approval(
                 episode.logline = values["logline"]
                 episode.updated_at = _now()
         if series.status in ACTIVE_STATUSES:
-            series.status = "active"
+            series.status = "paused" if is_long_anime(series) else "active"
     else:
         beats = beats_from_chapter(body)
         episodes = {episode.number: episode for episode in await _episodes(session, series)}
@@ -1865,6 +1925,61 @@ async def edit_doc(
     return await series_view(session, slug)
 
 
+def anime_cached_chapter_problem(
+    series: VideoDramaSeries,
+    episodes: Sequence[VideoDramaEpisode],
+    number: int,
+    docs: Sequence[VideoDramaDoc],
+    changes: dict[str, Any] | None = None,
+) -> str | None:
+    """Validate an owner's candidate and the actual cached rows before any production write.
+
+    Database row numbers and chapters remain authoritative. Adjacent populated rows protect
+    both sides of a chapter boundary; an incomplete chapter is edited through its document.
+    """
+    chapter = chapter_of(series, number)
+    first, last = chapter_range(series, chapter)
+    indexed = {episode.number: episode for episode in episodes}
+    if len(indexed) != len(episodes):
+        return "long-anime episode cache has duplicate numbers"
+    candidate: list[dict[str, Any]] = []
+    prior: list[dict[str, Any]] = []
+    following: list[dict[str, Any]] = []
+    for current in range(max(1, first - 3), min(series.planned_episodes, last + 3) + 1):
+        row = indexed.get(current)
+        if row is None or not row.beats:
+            if current > last:
+                break
+            return "long-anime chapter cache is incomplete; edit and review its chapter document"
+        if row.series_id != series.id or row.chapter_number != chapter_of(series, current):
+            return "long-anime cached episode does not match its series or chapter"
+        override = (changes or {}) if current == number else {}
+        beats = override.get("beats") if override.get("beats") is not None else row.beats
+        if not isinstance(beats, dict):
+            return f"episode {current} has invalid cached beats"
+        for key, expected in (("number", current), ("chapter_number", row.chapter_number)):
+            if key in beats and (type(beats[key]) is not int or beats[key] != expected):
+                return f"episode {current} cannot change its {key} through cached beats"
+        planned = {
+            **beats,
+            "number": current,
+            "title": override.get("title") if override.get("title") is not None else row.title,
+            "logline": (
+                override.get("logline") if override.get("logline") is not None else row.logline
+            ),
+        }
+        (prior if current < first else following if current > last else candidate).append(planned)
+    problem = doc_problem(
+        series,
+        SeriesDocSubmitIn(
+            kind="chapter", chapter_number=chapter, body_md="# cached chapter",
+            body_json={"episodes": candidate},
+        ),
+        docs,
+    )
+    return problem or anime_chapter_problem(series, [*candidate, *following], prior)
+
+
 async def edit_episode(
     session: AsyncSession, actor: User, slug: str, number: int, payload: SeriesEpisodeEditIn
 ) -> SeriesOut:
@@ -1874,6 +1989,12 @@ async def edit_episode(
     if episode.status not in ("planned", "ready"):
         raise SeriesRefused(409, "video_series_episode_started", "這一集已經開始做，不能再改細綱")
     changes = payload.model_dump(exclude_unset=True)
+    if is_long_anime(series):
+        problem = anime_cached_chapter_problem(
+            series, await _episodes(session, series), number, await _docs(session, series), changes
+        )
+        if problem:
+            raise SeriesRefused(422, "video_anime_episode_invalid", problem)
     for key, value in changes.items():
         if value is not None:
             setattr(episode, key, value)
@@ -1924,6 +2045,10 @@ async def act(session: AsyncSession, actor: User, slug: str, action: str) -> tup
         else chapter_count(series.planned_episodes, series.episodes_per_chapter)
     )
     if action == "compile":
+        if is_long_anime(series):
+            raise SeriesRefused(
+                409, "video_anime_contract_fixed", "長篇動漫製作政策不允許合集",
+            )
         if is_one_off(series):
             raise SeriesRefused(409, "video_series_one_off_single", "單集漫劇只有一集，沒有合集")
         # The owner asks for the compilation of a finished series that was not set up to
@@ -2294,9 +2419,11 @@ def auto_doc_status(
     a rewrite while the rewrites the settings allow are not spent (version 2 is the first
     rewrite), and left for the owner with the checker's problems once they are.
     """
-    if not series.hands_off or payload.judge is None:
+    if is_long_anime(series) or not series.hands_off or payload.judge is None:
         return "review", None
-    passed = series_doc_passed(payload.judge, payload.kind)
+    passed = series_doc_passed(
+        payload.judge, payload.kind, production_policy=series.production_policy
+    )
     note = series_doc_note(payload.judge, passed)
     if passed:
         return "approved", note
@@ -2315,10 +2442,10 @@ async def submit_doc(
     on a hands-off series, is decided from the checker's verdict as it arrives."""
     series = await _series(session, slug, lock=True)
     require_production_series(series)
-    problem = doc_problem(series, payload)
+    docs = await _docs(session, series)
+    problem = doc_problem(series, payload, docs)
     if problem:
         raise SeriesRefused(422, "video_series_doc_invalid", problem)
-    docs = await _docs(session, series)
     latest = latest_docs(docs).get((payload.kind, payload.chapter_number))
     if latest is not None and latest.status in ("review", "approved"):
         raise SeriesRefused(
@@ -2387,11 +2514,24 @@ async def start_episode(
             else "這一集的篇章細綱還沒核准",
         )
     if not is_story(series):
-        problem = episode_document_problem(series, await _docs(session, series), number)
+        docs = await _docs(session, series)
+        problem = episode_document_problem(series, docs, number)
         if series.status not in ACTIVE_STATUSES or problem:
             raise SeriesRefused(
                 409, "video_series_episode_documents", problem or "這部作品目前暫停製作"
             )
+        if is_long_anime(series):
+            chapter = latest_docs(docs)[("chapter", chapter_of(series, number))]
+            problem = doc_problem(
+                series, SeriesDocSubmitIn(
+                    kind="chapter", chapter_number=chapter.chapter_number,
+                    body_md="# approved chapter", body_json=chapter.body_json or {},
+                ), docs,
+            ) or anime_cached_chapter_problem(
+                series, await _episodes(session, series), number, docs
+            )
+            if problem:
+                raise SeriesRefused(409, "video_anime_episode_invalid", problem)
     # A story's video slug was planned with it and imported (docs/videos/STORY.md); the video
     # is made under that name or not at all, so the backlog and the video list stay one.
     if is_story(series) and episode.slug and video_slug != episode.slug:

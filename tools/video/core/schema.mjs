@@ -11,6 +11,7 @@ import { fileURLToPath } from "node:url";
 import { isCompilation, validateCompilation } from "./compilation.mjs";
 import { DRAMA_FORMAT, SHOT_TEMPLATE, validateDrama } from "./drama.mjs";
 import { SCREENCAST_TEMPLATE } from "../screencast/steps.mjs";
+import { hasAnimePolicy, isLongAnime, validateAnimePolicy } from "./anime-policy.mjs";
 
 export const SCHEMA_VERSION = 1;
 // drama: AI-generated shots instead of slides (docs/videos/DRAMA.md); its rules live in drama.mjs.
@@ -104,6 +105,8 @@ const TOP_KEYS = new Set([
   "series",
   // A series' compilation, validated in compilation.mjs: the episodes it joins (docs/videos/BINGE.md).
   "compilation",
+  "production_policy",
+  "runtime_spec",
 ]);
 const VOICE_KEYS = new Set(["provider", "name", "rate", "lang", "style", "model"]);
 const YOUTUBE_KEYS = new Set([
@@ -115,7 +118,7 @@ const YOUTUBE_KEYS = new Set([
   "tags",
   "video_id",
 ]);
-const SCENE_KEYS = new Set(["id", "chapter", "template", "data", "claims", "lines"]);
+const SCENE_KEYS = new Set(["id", "chapter", "template", "data", "claims", "lines", "action_seconds"]);
 const LINE_KEYS = new Set(["id", "text", "say", "say_for", "pause_after_ms", "reveal", "speaker", "emotion", "audio_ref"]);
 
 /** A short content hash: what `say_for` and translation `source_hash` fields hold. */
@@ -231,7 +234,7 @@ function validateLine(line, label, seenLines, errors) {
   }
 }
 
-function validateScenes(scenes, errors, format, compilation = false) {
+function validateScenes(scenes, errors, format, compilation = false, doc = null) {
   // A compilation's scenes are its cards, and one without cards or an outro has none at all.
   if (!Array.isArray(scenes) || (scenes.length === 0 && !compilation)) {
     errors.push({ path: "scenes", message: compilation ? "must be an array" : "must be a non-empty array" });
@@ -269,7 +272,15 @@ function validateScenes(scenes, errors, format, compilation = false) {
     if (scene.claims !== undefined && (!Array.isArray(scene.claims) || scene.claims.some((claim) => !isText(claim)))) {
       errors.push({ path: `${where}.claims`, message: "must be an array of claim ids from claims.md" });
     }
-    if (!Array.isArray(scene.lines) || scene.lines.length === 0) {
+    const action = scene.action_seconds !== undefined;
+    const validAnime = isLongAnime(doc) && validateAnimePolicy(doc).length === 0;
+    if (action) {
+      if (!validAnime) errors.push({ path: `${where}.action_seconds`, message: "requires a complete long-anime production policy" });
+      if (!Number.isSafeInteger(scene.action_seconds) || scene.action_seconds < 1 || scene.action_seconds > 8) errors.push({ path: `${where}.action_seconds`, message: "must be an integer from 1 to 8 seconds of visible action" });
+      if (scene.template !== SHOT_TEMPLATE || !isText(scene.data?.prompt) || !isText(scene.data?.motion)) errors.push({ path: `${where}.action_seconds`, message: "requires a directed shot with a visible-action prompt and motion" });
+      if (!Array.isArray(scene.lines) || scene.lines.length !== 0) errors.push({ path: `${where}.lines`, message: "a timed action shot has an empty lines array; dialogue uses measured speech timing" });
+    }
+    if (!Array.isArray(scene.lines) || (scene.lines.length === 0 && !(action && validAnime))) {
       errors.push({ path: `${where}.lines`, message: "must be a non-empty array: a scene lasts as long as its narration" });
       return;
     }
@@ -282,6 +293,11 @@ export function validateVideo(doc) {
   const errors = [];
   if (!isObject(doc)) return [{ path: "", message: "video.json must hold a JSON object" }];
   unknownKeys(doc, TOP_KEYS, "", errors);
+  if (hasAnimePolicy(doc)) {
+    for (const message of validateAnimePolicy(doc)) errors.push({ path: "production_policy", message });
+  } else if (doc.format === DRAMA_FORMAT && doc.category === "anime" && Array.isArray(doc.target_minutes) && doc.target_minutes.some((value) => value > 8)) {
+    errors.push({ path: "production_policy", message: "an anime episode longer than eight minutes requires an explicit long-anime production policy" });
+  }
   if (doc.schema_version !== SCHEMA_VERSION) {
     errors.push({ path: "schema_version", message: `must be ${SCHEMA_VERSION}` });
   }
@@ -341,7 +357,7 @@ export function validateVideo(doc) {
       });
     }
   }
-  validateScenes(doc.scenes, errors, doc.format, compilation);
+  validateScenes(doc.scenes, errors, doc.format, compilation, doc);
   // A compilation is a drama without shots, a cast or a look: compilation.mjs has its rules,
   // and the drama rules (which would demand all three) do not apply.
   if (compilation) validateCompilation(doc, errors);

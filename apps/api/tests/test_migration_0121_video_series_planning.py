@@ -23,8 +23,6 @@ from app.db import engine
 from app.models import VIDEO_CATEGORIES
 from app.video_automation.models import (
     SERIES_CATEGORY_CHECK,
-    SERIES_LEAD_CHECK,
-    SERIES_NUMBERS_CHECK,
     SERIES_PLANNING_CHECK,
 )
 
@@ -53,8 +51,11 @@ def test_migration_and_model_contracts_match() -> None:
     assert len(migration.revision) <= 32
     assert migration.down_revision == "0120_video_dropped_request"
     assert migration.CATEGORIES == VIDEO_CATEGORIES
-    assert migration.NUMBERS_CHECK == SERIES_NUMBERS_CHECK
-    assert migration.LEAD_CHECK == SERIES_LEAD_CHECK
+    # 0122 extends the live model. This historical migration must retain its own bounds.
+    assert "planning_only = true AND target_minutes BETWEEN 21 AND 30" in migration.NUMBERS_CHECK
+    assert migration.LEAD_CHECK == (
+        "lead IN ('female', 'male', 'dual-male') OR (planning_only = true AND lead = 'ensemble')"
+    )
     assert migration.CATEGORY_CHECK == SERIES_CATEGORY_CHECK
     assert migration.PLANNING_CHECK == SERIES_PLANNING_CHECK
 

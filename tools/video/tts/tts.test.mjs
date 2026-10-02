@@ -8,6 +8,8 @@ import test from "node:test";
 import { EXIT, main } from "../cli.mjs";
 import { fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
 import { SAMPLES_PER_FRAME, SAMPLE_RATE, speechHash } from "../core/timeline.mjs";
+import { LONG_ANIME_POLICY, runtimePolicyHash } from "../core/anime-policy.mjs";
+import { lintProject, loadProject } from "../core/state.mjs";
 import { buildCues } from "../core/captions.mjs";
 import { SpeechError, speechStatus, synthesize } from "./client.mjs";
 import { credentialsFile, readCredentials, writeCredentials } from "./credentials.mjs";
@@ -251,7 +253,7 @@ test("a request whose silences do not match its text is redone line by line", as
 });
 
 test("narration is each clip followed by silence up to its end frame", () => {
-  const timeline = { lines: [{ id: "a", start_frame: 0, end_frame: 3, audio_samples: 2000 }, { id: "b", start_frame: 3, end_frame: 4, audio_samples: 1600 }] };
+  const timeline = { total_frames: 4, lines: [{ id: "a", start_frame: 0, end_frame: 3, audio_samples: 2000 }, { id: "b", start_frame: 3, end_frame: 4, audio_samples: 1600 }] };
   const clips = new Map([["a", tone(2000 / 48)], ["b", tone(1600 / 48)]]);
   clips.set("a", clips.get("a").slice(0, 2000));
   clips.set("b", clips.get("b").slice(0, 1600));
@@ -261,6 +263,20 @@ test("narration is each clip followed by silence up to its end frame", () => {
   assert.throws(() => buildNarration(timeline, new Map([["a", new Int16Array(5)], ["b", new Int16Array(1600)]])), /expects 2000/);
   assert.deepEqual([...flaggedLines({ flags: ["a"] })], ["a"]);
   assert.deepEqual([...flaggedLines({ lines: { a: true, b: false } })], ["a"]);
+});
+
+test("natural visual actions align actual narration samples before, between and after spoken clips", () => {
+  const timeline = { total_frames: 12, lines: [{ id: "a", start_frame: 2, end_frame: 5, audio_samples: 2000 }, { id: "b", start_frame: 8, end_frame: 10, audio_samples: 1600 }] };
+  const clips = new Map([["a", new Int16Array(2000).fill(1234)], ["b", new Int16Array(1600).fill(2345)]]);
+  const narration = buildNarration(timeline, clips);
+  assert.equal(narration.length, 12 * SAMPLES_PER_FRAME);
+  assert.ok(narration.subarray(0, 2 * SAMPLES_PER_FRAME).every((sample) => sample === 0));
+  assert.equal(narration[2 * SAMPLES_PER_FRAME], 1234);
+  assert.ok(narration.subarray(5 * SAMPLES_PER_FRAME, 8 * SAMPLES_PER_FRAME).every((sample) => sample === 0));
+  assert.equal(narration[8 * SAMPLES_PER_FRAME], 2345);
+  assert.ok(narration.subarray(10 * SAMPLES_PER_FRAME).every((sample) => sample === 0));
+  assert.throws(() => buildNarration({ ...timeline, lines: [timeline.lines[0], { ...timeline.lines[1], start_frame: 4 }] }, clips), /overlaps/);
+  assert.throws(() => buildNarration({ ...timeline, total_frames: 9 }, clips), /ends before/);
 });
 
 function capture(overrides) {
@@ -276,6 +292,52 @@ function capture(overrides) {
     },
   };
 }
+
+test("long-anime TTS measures directed action without empty synthesis and reuses words when its budget changes", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const file = path.join(box.dir, "video.json");
+  const doc = JSON.parse(readFileSync(file, "utf8"));
+  Object.assign(doc, { category: "anime", production_policy: LONG_ANIME_POLICY, target_minutes: [22, 22],
+    runtime_spec: { body_target_seconds: 1320, op_ed_budget_seconds: 180, broadcast_slot_seconds: 1800, slot_reserve_seconds: 300 },
+    series: { slug: "original-anime", episode: 1, chapter: 1, kind: "series", genre: "custom", lead: "ensemble", planned_episodes: 120, open_ended: false, closed_ending: false } });
+  doc.look.preset = "anime-2d";
+  for (const scene of doc.scenes) delete scene.data.fit;
+  doc.scenes.splice(1, 0, { id: "silent-escape", template: "shot", action_seconds: 3, data: { prompt: "The girl jumps onto a collapsing stone bridge", motion: "stones shatter and fall into the river", characters: ["jingwei"] }, lines: [] });
+  writeFileSync(file, JSON.stringify(doc));
+  const saveSeries = () => writeFileSync(path.join(box.dir, "series.json"), JSON.stringify({ ...doc.series, category: doc.category, style_preset: doc.look.preset, production_policy: doc.production_policy, runtime_spec: doc.runtime_spec, target_minutes: 22, characters: doc.characters }));
+  saveSeries();
+  assert.deepEqual(lintProject(loadProject({ slug: box.slug, root: box.root })).errors, []);
+  const server = fakeServer({ status: { gemini_configured: true, gemini_monthly_limit: 300000, gemini_used: 0 } });
+  const env = { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN, MOKAAIR_SITE: "https://mokaair.test" };
+  const run = () => capture({ root: box.root, env, home: box.base, fetch: server.fetchImpl });
+  const initial = run();
+  assert.equal(await main(["tts", "--slug", box.slug], initial.ctx), EXIT.ok, initial.out.stderr + initial.out.stdout);
+  const posts = () => server.calls.filter((call) => call.url.endsWith("/api/video/speech"));
+  const paidRequests = posts().length;
+  assert.ok(paidRequests > 0, "all calls are local fake-provider fixtures");
+  assert.ok(posts().every((call) => JSON.parse(call.init.body).segments.every((segment) => segment.parts.some((part) => part.text.trim()))));
+  const timeline = JSON.parse(readFileSync(path.join(box.workdir, "timeline.json"), "utf8"));
+  const narration = requireNarrationFormat(parseWav(readFileSync(path.join(box.workdir, "narration.wav"))));
+  assert.equal(timeline.timing_basis, "measured");
+  assert.equal(narration.length, timeline.total_frames * SAMPLES_PER_FRAME);
+  const action = timeline.actions[0];
+  assert.equal(action.end_frame - action.start_frame, 90);
+  assert.ok(narration.subarray(action.start_frame * SAMPLES_PER_FRAME, action.end_frame * SAMPLES_PER_FRAME).every((sample) => sample === 0));
+  assert.equal(timeline.lines.some((line) => line.scene === "silent-escape"), false);
+  assert.equal(existsSync(path.join(box.workdir, "audio", "silent-escape.wav")), false);
+  doc.runtime_spec.op_ed_budget_seconds = 120;
+  doc.runtime_spec.slot_reserve_seconds = 360;
+  writeFileSync(file, JSON.stringify(doc));
+  saveSeries();
+  const again = run();
+  assert.equal(await main(["tts", "--slug", box.slug], again.ctx), EXIT.ok, again.out.stderr);
+  assert.equal(posts().length, paidRequests, "budget changes do not buy unchanged spoken clips again");
+  const updated = JSON.parse(readFileSync(path.join(box.workdir, "timeline.json"), "utf8"));
+  assert.equal(updated.speech_hash, timeline.speech_hash);
+  assert.notEqual(updated.runtime_policy_hash, timeline.runtime_policy_hash);
+  assert.equal(updated.runtime_policy_hash, runtimePolicyHash(doc));
+  assert.deepEqual(readFileSync(path.join(box.workdir, "narration.wav")), encodeWav(narration));
+});
 
 test("explicit repeated takes buy only the original, preserve bytes and independent CC timing, and retake as one family", async () => {
   const box = sandbox("fixture-drama", "drama");
