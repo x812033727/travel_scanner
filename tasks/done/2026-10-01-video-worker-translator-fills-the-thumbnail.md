@@ -1,13 +1,13 @@
 ---
 id: 2026-10-01-video-worker-translator-fills-the-thumbnail
 title: Video worker translator fills the thumbnail words on the metadata sheet
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-thumb-text
 claimed_at: 2026-10-02T00:19:42Z
 created_at: 2026-10-01T15:22:53Z
-completed_at:
+completed_at: 2026-10-02T00:33:12Z
 branch: claude/worker-thumbnail-text
 depends_on:
   - 2026-09-28-video-localized-thumbnails
