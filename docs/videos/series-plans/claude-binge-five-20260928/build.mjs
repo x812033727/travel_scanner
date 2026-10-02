@@ -115,6 +115,11 @@ function characterBlock(c) {
         ["說話習慣", c.speech],
         ["聲音（擬定，未試聽）", `${c.voice.provider} / ${c.voice.name} / ${c.voice.style}`],
         ["外觀提示詞（每集逐字沿用）", c.appearance],
+        // A look (AUTHORING.md, 換裝與變化) replaces the base in the episodes it covers.
+        ...(Array.isArray(c.looks) ? c.looks : []).map((l) => [
+          `換裝 \`${l.id}\`（第 ${(l.to ?? COMMON.planned_episodes) === l.from ? l.from : `${l.from}–${l.to ?? COMMON.planned_episodes}`} 集取代固定外觀）`,
+          [l.appearance, l.voice_style && `聲音：${l.voice_style}`].filter(Boolean).join("\n"),
+        ]),
       ],
     ),
     "",

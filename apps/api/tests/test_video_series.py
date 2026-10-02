@@ -219,6 +219,54 @@ def test_episodes_start_one_at_a_time_after_the_previous_is_done_unless_the_owne
     )
 
 
+@pytest.mark.parametrize(
+    "looks",
+    [
+        None,
+        {},
+        [{"id": "present", "appearance": ""}],
+        [{"id": "present", "appearance": "x", "voice": {"name": "other"}}],
+        [{"id": "present", "appearance": "x"}] * 2,
+        [{"id": "../bad", "appearance": "x"}],
+        [{"id": "present", "appearance": "x" * 801}],
+    ],
+)
+def test_setting_refuses_invalid_shot_looks(looks: Any) -> None:
+    payload = SeriesDocSubmitIn(
+        kind="setting",
+        body_md="# setting",
+        body_json={
+            "characters": [
+                {"id": "lead", "name": "主角", "appearance": "base", "shot_looks": looks}
+            ]
+        },
+    )
+    assert service.doc_problem(_series(), payload) is not None
+
+
+def test_setting_accepts_named_visual_variants_without_replacing_character_identity() -> None:
+    payload = SeriesDocSubmitIn(
+        kind="setting",
+        body_md="# setting",
+        body_json={
+            "characters": [
+                {
+                    "id": "lead",
+                    "name": "主角",
+                    "appearance": "base face",
+                    "voice": {"provider": "gemini", "name": "Kore"},
+                    "shot_looks": [
+                        {"id": "past", "appearance": "young woman in an ancient robe"},
+                        {"id": "present", "appearance": "adult woman in a business suit"},
+                    ],
+                }
+            ]
+        },
+    )
+    assert service.doc_problem(_series(), payload) is None
+    assert payload.body_json["characters"][0]["voice"]["name"] == "Kore"
+
+
 def test_a_document_the_worker_sends_must_have_the_shape_the_owner_reads() -> None:
     series = _series()
 
@@ -365,6 +413,97 @@ def test_a_story_bible_has_the_cast_the_acts_and_one_outline_and_only_a_one_off_
         service.doc_problem(one_off, doc("setting", characters=BIBLE["characters"]))
     )
     assert "setting book" in str(service.doc_problem(_series(), doc("bible", **BIBLE)))
+
+
+# A character with looks (docs/videos/SERIES.md, 換裝與變化); the series has 25 episodes.
+GEMINI_VOICE = {"provider": "gemini", "name": "Kore", "style": "calm"}
+LOOKS = [
+    {"id": "coatless", "from": 3, "to": 5, "appearance": "no coat, white shirt"},
+    {
+        "id": "wheelchair",
+        "from": 6,
+        "to": None,
+        "appearance": "in a wheelchair",
+        "sheet_prompt": "full body, seated",
+        "voice_style": "tired",
+    },
+]
+
+
+def _setting_with(looks: Any, **character: Any) -> SeriesDocSubmitIn:
+    lin = {"id": "lin", "name": "林", "appearance": "a long coat", "voice": GEMINI_VOICE}
+    lin.update(character)
+    if looks is not ...:
+        lin["looks"] = looks
+    return SeriesDocSubmitIn(
+        kind="setting",
+        body_md="# x",
+        body_json={"characters": [{"id": "a", "name": "阿", "appearance": "x"}, lin]},
+    )
+
+
+def test_a_setting_book_may_give_a_character_looks_for_some_episodes() -> None:
+    assert service.doc_problem(_series(), _setting_with(...)) is None, "no looks, as before"
+    assert service.doc_problem(_series(), _setting_with(LOOKS)) is None
+    assert service.doc_problem(_series(), _setting_with([])) is None
+    one_off = _one_off()
+    bible = {**BIBLE, "characters": [{**BIBLE["characters"][0], "looks": [LOOKS[0] | {"from": 1}]}]}
+    assert (
+        service.doc_problem(
+            one_off, SeriesDocSubmitIn(kind="bible", body_md="# x", body_json=bible)
+        )
+        is None
+    )
+    bible["characters"][0]["looks"] = [LOOKS[0] | {"from": 2, "to": None}]
+    assert "from 2 is after the last episode (1)" in str(
+        service.doc_problem(
+            one_off, SeriesDocSubmitIn(kind="bible", body_md="# x", body_json=bible)
+        )
+    )
+
+
+@pytest.mark.parametrize(
+    ("looks", "character", "problem"),
+    [
+        ({"id": "coatless"}, {}, "character lin: looks must be a list"),
+        (["coatless"], {}, "every look needs an id and an appearance"),
+        ([{"id": "coatless", "from": 3}], {}, "every look needs an id and an appearance"),
+        ([{**LOOKS[0], "appearance": "  "}], {}, "every look needs an id and an appearance"),
+        ([{**LOOKS[0], "id": "Coat"}], {}, "look Coat: the id must be lowercase ascii"),
+        ([{**LOOKS[0], "id": "c"}], {}, "look c: the id must be lowercase ascii"),
+        ([LOOKS[0], {**LOOKS[1], "id": "coatless"}], {}, "two looks are called coatless"),
+        ([{**LOOKS[0], "from": 0}], {}, "look coatless: from must be the number of the first"),
+        ([{**LOOKS[0], "from": "3"}], {}, "look coatless: from must be the number of the first"),
+        ([{**LOOKS[0], "from": True}], {}, "look coatless: from must be the number of the first"),
+        ([{k: v for k, v in LOOKS[0].items() if k != "from"}], {}, "from must be the number"),
+        ([{**LOOKS[0], "to": 2}], {}, "look coatless: to must be the number of the last episode"),
+        ([{**LOOKS[0], "to": "5"}], {}, "look coatless: to must be the number of the last episode"),
+        ([{**LOOKS[0], "from": 26, "to": None}], {}, "from 26 is after the last episode (25)"),
+        ([{**LOOKS[0], "sheet_prompt": ""}], {}, "look coatless: sheet_prompt must be text"),
+        ([{**LOOKS[1], "voice_style": None}], {}, "look wheelchair: voice_style must be text"),
+        (
+            LOOKS,
+            {"voice": {"provider": "minimax", "name": "x"}},
+            "look wheelchair: voice_style needs the character's own Gemini voice",
+        ),
+        (LOOKS, {"voice": None}, "voice_style needs the character's own Gemini voice"),
+        (
+            [{**LOOKS[0], "to": 6}, LOOKS[1]],
+            {},
+            "looks coatless and wheelchair both cover episode 6; one look per episode",
+        ),
+        (
+            [LOOKS[1], {**LOOKS[0], "from": 9, "to": 9}],
+            {},
+            "looks wheelchair and coatless both cover episode 9; one look per episode",
+        ),
+    ],
+)
+def test_a_setting_book_refuses_the_looks_the_worker_would_refuse(
+    looks: Any, character: dict[str, Any], problem: str
+) -> None:
+    found = service.doc_problem(_series(), _setting_with(looks, **character))
+    assert found is not None and problem in found, found
 
 
 def test_an_explainer_bible_has_no_cast_and_answers_its_question_from_named_pages() -> None:

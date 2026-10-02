@@ -16,7 +16,8 @@ import { parseArgs } from "node:util";
 
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { approvalState } from "../core/approvals.mjs";
-import { clipKey, clipShotScenes, clipsHash, isDrama, lookHash, resolveLook, shotScenes, stillShotScenes } from "../core/drama.mjs";
+import { clipKey, clipShotScenes, clipsHash, isDrama, lookHash, resolveLook, shotAppearancePrompt, shotCast, shotScenes, stillShotScenes } from "../core/drama.mjs";
+import { productionClipProblems, productionClipSizeProblem, productionShotProblems } from "../core/lint.mjs";
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, lintProject, loadProject, lookChosen, recordStage } from "../core/state.mjs";
 import { FPS, speechHash, visualHash } from "../core/timeline.mjs";
@@ -40,7 +41,9 @@ export function clipRubric(characters) {
   return [
     ...characters.map((character) => ({
       key: `identity_${character.id.replace(/-/g, "_")}`,
-      question: `In the clip's last frame, is ${character.name} still the same person as in the reference sheet labelled "${character.name}": face, hair, clothing, build?`,
+      question: character.shot_look
+        ? `Throughout the clip, does ${character.name} keep the reference sheet's facial identity and recognizable bone structure and the requested look ${character.shot_look}: ${character.appearance}? The requested clothing, hair and age override the sheet's styling; no morphing back to the base outfit.`
+        : `In the clip's last frame, is ${character.name} still the same person as in the reference sheet labelled "${character.name}": face, hair, clothing, build?`,
       weight: 2,
     })),
     { key: "motion", question: "Is the motion natural and continuous: no morphing, no flicker, no limbs or objects drifting or changing shape?", weight: 2 },
@@ -51,15 +54,19 @@ export function clipRubric(characters) {
 }
 
 /** Whole seconds to ask for: the lines' length rounded up, 4 to 10, at a duration the model offers. */
-export function clipSeconds(neededFrames, durations = []) {
+export function clipSeconds(neededFrames, durations = [], { model = "", resolution = null } = {}) {
+  // Veo 3.1 offers 1080p only at eight seconds, including Lite. Do not submit a
+  // rounded four/six-second request which the vendor must reject after queueing.
+  if (/^veo-?3\.1/.test(model) && resolution === "1080p") return 8;
   const need = Math.max(MIN_CLIP_SECONDS, Math.min(MAX_CLIP_SECONDS, Math.ceil(neededFrames / FPS)));
   const allowed = [...durations].filter((each) => Number.isInteger(each)).sort((a, b) => a - b);
   if (!allowed.length) return need;
   return allowed.find((each) => each >= need) ?? allowed.at(-1);
 }
 
-export function clipPrompt(scene, look) {
-  return [scene.data?.motion, scene.data?.camera, look.motion].filter(Boolean).join(". ").slice(0, 4000);
+export function clipPrompt(scene, look, characters = []) {
+  const variants = characters.filter((character) => character.shot_look);
+  return [scene.data?.motion, scene.data?.camera, look.motion, variants.length ? shotAppearancePrompt(variants) : null].filter(Boolean).join(". ").slice(0, 4000);
 }
 
 /** A 720p copy for the judge, whose inline limit a 1080p clip may pass. */
@@ -123,6 +130,8 @@ export async function run(command, args, ctx) {
     ctx.stderr.write("timeline.json is missing or was built for an older script; run tts first (a clip is as long as its lines)\n");
     return EXIT.usage;
   }
+  const productionTiming = productionShotProblems(doc, project.series, timeline);
+  if (productionTiming.length) throw new MediaError(`measured production timeline needs a script revision: ${productionTiming.map((problem) => `${problem.path}: ${problem.message}`).join("; ")}`, { who: "owner" });
   const keyframes = readJson(path.join(workdir, ARTIFACTS.keyframes), null);
   if (!keyframes || keyframes.look_hash !== hash || keyframes.visual_hash !== visual) {
     ctx.stderr.write("keyframes/manifest.json is missing or was drawn for an older script or look; run keyframes first\n");
@@ -145,8 +154,7 @@ export async function run(command, args, ctx) {
   }
   const lookManifest = readJson(path.join(workdir, ARTIFACTS.characters), null);
   const sheets = chosenSheets(lookManifest, lookChosen(lookManifest, readJson(path.join(workdir, ARTIFACTS.characterChoice), null), hash) ?? {});
-  const byId = new Map((doc.characters ?? []).map((character) => [character.id, character]));
-  const cast = (scene) => (scene.data.characters ?? []).map((id) => byId.get(id)).filter(Boolean);
+  const cast = (scene) => shotCast(doc, scene);
   const framesOf = new Map(timeline.scenes.map((scene) => [scene.id, scene.end_frame - scene.start_frame]));
   const takes = values.takes ? Number(values.takes) : MAX_CLIP_TAKES;
   if (!Number.isInteger(takes) || takes < 1 || takes > 5) throw new UsageError("--takes must be 1 to 5");
@@ -164,9 +172,9 @@ export async function run(command, args, ctx) {
         ctx.stdout.write(`${scene.id}: ${lines} s of lines → still, its keyframe under a camera move (no clip to buy)\n`);
         continue;
       }
-      const seconds = clipSeconds(framesOf.get(scene.id) ?? 0, durations);
+      const seconds = clipSeconds(framesOf.get(scene.id) ?? 0, durations, status?.clip);
       total += seconds;
-      ctx.stdout.write(`${scene.id}: ${lines} s of lines → ${seconds} s clip${status ? ` ≈ US$${(seconds * price).toFixed(2)}` : ""}; ${clipPrompt(scene, look)}\n`);
+      ctx.stdout.write(`${scene.id}: ${lines} s of lines → ${seconds} s clip${status ? ` ≈ US$${(seconds * price).toFixed(2)}` : ""}; ${clipPrompt(scene, look, cast(scene))}\n`);
     }
     ctx.stdout.write(`${shots.length + stills.length} shots: ${stills.length} stills (animated keyframes, nothing to buy) and ${shots.length} clips priced, ${total} clip seconds for one take each\n`);
     if (status) {
@@ -179,11 +187,32 @@ export async function run(command, args, ctx) {
     return EXIT.ok;
   }
 
+  const production = project.series?.production;
+  if (production?.profile?.video?.model === "veo-3.1-lite-generate-preview") {
+    const sceneConstraint = production.episode?.video_constraints;
+    if (sceneConstraint?.veo_lite_i2v === "unverified-minor-on-screen") {
+      throw new MediaError(`Veo Lite image-to-video only supports allow_adult; this episode includes an unverified minor on screen: ${sceneConstraint.reason || "see the approved production direction"}. Ask the owner to choose a supported animation route before generating; preserve the approved ages`, { who: "owner" });
+    }
+    const underage = new Map((production.characters ?? [])
+      .filter((character) => Number.isFinite(character.video_constraints?.min_visual_age_years)
+        && character.video_constraints.min_visual_age_years < 18)
+      .map((character) => [character.id, character.video_constraints.min_visual_age_years]));
+    const blocked = shotScenes(doc).flatMap((scene) => (scene.data?.characters ?? [])
+      .filter((id) => underage.has(id)).map((id) => `${scene.id}/${id} (${underage.get(id)})`));
+    if (blocked.length) {
+      throw new MediaError(`Veo Lite image-to-video only supports allow_adult; these visual characters are not verified for this provider: ${blocked.join(", ")}. Ask the owner to choose a supported animation route before generating; preserve the approved ages`, { who: "owner" });
+    }
+  }
+
   const credentials = requireCredentials(ctx);
   const options = clientOptions(ctx, credentials);
   const status = await mediaStatus(options);
   const problem = statusProblem(status, "clip");
   if (problem) throw new MediaError(problem, { who: "owner" });
+  const requiredVideo = project.series?.production?.profile?.video;
+  if (requiredVideo && (status.clip.model !== requiredVideo.model || status.clip.resolution !== requiredVideo.resolution || (requiredVideo.provider && status.clip.provider !== requiredVideo.provider))) {
+    throw new MediaError(`the approved production profile requires ${requiredVideo.provider ?? ""} ${requiredVideo.model} at ${requiredVideo.resolution}; the server selects ${status.clip.provider} ${status.clip.model} at ${status.clip.resolution}. Ask the owner to align the media settings before generating clips`, { who: "owner" });
+  }
   const model = chosenModel(status, "clip");
   const durations = model?.durations ?? [];
   const resolution = status.clip.resolution ?? null;
@@ -200,7 +229,8 @@ export async function run(command, args, ctx) {
   const stage = new Stage({ slug: doc.slug, workdir, options, status, stage: "clips", now: ctx.now });
   mkdirSync(path.join(workdir, "clips"), { recursive: true });
   const existing = readJson(manifestFile(workdir), null);
-  const current = existing?.speech_hash === speech && existing.visual_hash === visual && existing.look_hash === hash && !values.force;
+  const modelCurrent = !project.series?.production?.profile || ["provider", "model", "resolution"].every((key) => (existing?.clip?.[key] ?? null) === (status.clip[key] ?? null));
+  const current = existing?.speech_hash === speech && existing.visual_hash === visual && existing.look_hash === hash && modelCurrent && !values.force;
   const manifest = current ? existing : { speech_hash: speech, visual_hash: visual, look_hash: hash, shots: {} };
   manifest.clip = { provider: status.clip.provider, model: status.clip.model, resolution };
   // The keyframes and the chosen sheets go back to the media store once per run (the server may
@@ -225,13 +255,19 @@ export async function run(command, args, ctx) {
 
   for (const scene of shots) {
     const present = manifest.shots[scene.id];
+    const cachedProblem = present && !present.needs_review
+      ? productionClipProblems(doc, project.series, timeline, manifest).find((problem) => problem.path === `clips.${scene.id}`)
+      : null;
+    if (cachedProblem) {
+      throw new MediaError(`cached clip ${scene.id}: ${cachedProblem.message}; revise or explicitly regenerate it before production can continue`, { who: "owner" });
+    }
     if (present && !present.needs_review && !values.force && existsSync(path.join(workdir, present.file))) {
       ctx.stdout.write(`${scene.id}: kept (${present.seconds} s, judge ${present.judge?.overall ?? "?"}/10)\n`);
       continue;
     }
     const characters = cast(scene);
     const neededFrames = framesOf.get(scene.id) ?? 0;
-    const seconds = clipSeconds(neededFrames, durations);
+    const seconds = clipSeconds(neededFrames, durations, status.clip);
     const keyframe = keyframes.shots[scene.id];
     const firstFrame = await upload(keyframe.file);
     const endFrame = keyframe.end_frame?.file ? await upload(keyframe.end_frame.file) : null;
@@ -257,8 +293,10 @@ export async function run(command, args, ctx) {
       }
       references.push({ sha256: continues.sha256, role: "previous_frame" });
     }
-    const refs = references.slice(0, MAX_REFERENCES);
-    const prompt = clipPrompt(scene, look);
+    // Lite supports first/last frames, not referenceImages. Keep the sheets for
+    // judging below; its approved first frame already carries the face identity.
+    const refs = /^veo-?3\.1-lite/.test(status.clip.model) ? [] : references.slice(0, MAX_REFERENCES);
+    const prompt = clipPrompt(scene, look, characters);
     const neighbours = shotScenes(doc);
     const at = neighbours.findIndex((each) => each.id === scene.id);
     const rivals = [neighbours[at - 1], neighbours[at + 1]].filter(Boolean).map((each) => keyframes.shots[each.id]?.file).filter(Boolean).map((file) => path.join(workdir, file));
@@ -316,6 +354,15 @@ export async function run(command, args, ctx) {
         break;
       }
       const verdict = clipVerdict({ ...inspected, requested_s: seconds, needed_s: neededFrames / FPS, judge });
+      const sizeProblem = productionClipSizeProblem(project.series, inspected.probe);
+      if (sizeProblem) {
+        verdict.ok = false;
+        verdict.problems.push(sizeProblem);
+      }
+      if (project.series?.production?.profile && Math.round((inspected.probe?.duration ?? 0) * FPS) < neededFrames) {
+        verdict.ok = false;
+        verdict.problems.push("the production profile requires motion for the whole shot; this take would need padding or slowing to cover its dialogue");
+      }
       entry.takes.push({ seed, file: clip.file, sha256: clip.sha256, key, seconds, frames: inspected.probe?.frames ?? null, qc: verdict, judge });
       ctx.stdout.write(`${scene.id} take ${take}: ${verdict.ok ? "passed" : `NOT passed: ${verdict.problems.join("; ")}`} (judge ${judge.overall}/10${clip.reused ? ", reused" : ""})\n`);
       if (verdict.ok) break;

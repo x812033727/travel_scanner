@@ -100,6 +100,20 @@ test("the package's files get the review roles the site knows, and UPLOAD.md sta
   assert.deepEqual(packageFiles(["notes.txt", "captions/en.vtt"]), [], "anything unknown is left out");
 });
 
+test("each language's own thumbnail metadata.json lists must be there and travels as thumbnail_<locale>; the skipped ones are only notes", () => {
+  const withThumbs = { ...metadata(), thumbnails: { en: "thumbnails/en.jpg" }, skipped_thumbnail_locales: { ja: "i18n/ja.json has no thumbnail words" } };
+  const present = new Map([...files(), ["thumbnails/en.jpg", 12]]);
+  const ok = filesItem({ files: present, metadata: withThumbs, finalSha256: FINAL, approvedSha256: FINAL });
+  assert.equal(ok.ok, true);
+  assert.match(ok.detail, /^final\.mp4, thumbnail\.jpg, thumbnails\/en\.jpg, metadata\.json;/);
+  const missing = filesItem({ files: files(), metadata: withThumbs, finalSha256: FINAL, approvedSha256: FINAL });
+  assert.deepEqual([missing.ok, missing.detail], [false, "thumbnails/en.jpg is listed but missing"]);
+  assert.deepEqual(packageFiles(["thumbnails/en.jpg", "thumbnails/zh-CN.jpg", "thumbnails/notes.txt"]), [
+    { path: "thumbnails/en.jpg", role: "thumbnail_en", content_type: "image/jpeg" },
+    { path: "thumbnails/zh-CN.jpg", role: "thumbnail_zh-CN", content_type: "image/jpeg" },
+  ]);
+});
+
 test("readPackageReport reads upload/ and compares final.mp4 with the final gate's approval", async () => {
   const box = sandbox();
   const upload = path.join(box.workdir, "upload");

@@ -27,6 +27,8 @@ export const THUMBNAIL_FILE = "thumbnail.jpg";
 const ROLE_TYPES = { final: "video/mp4", thumbnail: "image/jpeg", metadata: "application/json" };
 const CAPTION_FILE = /^captions\/([A-Za-z-]+)\.srt$/;
 const DESCRIPTION_FILE = /^description\.([A-Za-z-]+)\.txt$/;
+// A language's own thumbnail, for Studio's 「語言」 page (role thumbnail_en beside thumbnail).
+const LOCALE_THUMBNAIL_FILE = /^thumbnails\/([A-Za-z-]+)\.jpg$/;
 
 export function item(id, ok, detail) {
   return { id, ok: Boolean(ok), detail: String(detail) };
@@ -57,9 +59,11 @@ export function filesItem({ files, metadata, finalSha256, approvedSha256, brandi
   else if (finalSha256 !== approvedSha256) problems.push(`${FINAL_FILE} is not the approved final (${String(finalSha256).slice(0, 12)} vs ${approvedSha256.slice(0, 12)})`);
   else if (metadata && metadata.final_sha256 !== finalSha256) problems.push(`${METADATA_FILE} records another final (${String(metadata.final_sha256).slice(0, 12)})`);
   if (metadata?.thumbnail && !present(files, THUMBNAIL_FILE)) problems.push(`${THUMBNAIL_FILE} is missing`);
+  // Each language's own thumbnail metadata.json lists is there; the languages without one are only noted.
+  for (const listed of Object.values(metadata?.thumbnails ?? {})) if (!present(files, listed)) problems.push(`${listed} is listed but missing`);
   if (!brandingMatches) problems.push("the upload package does not match the selected and applied branding; rebuild the final and run package again");
   if (problems.length) return item("files", false, problems.join("; "));
-  const named = [FINAL_FILE, ...(metadata.thumbnail ? [THUMBNAIL_FILE] : []), METADATA_FILE];
+  const named = [FINAL_FILE, ...(metadata.thumbnail ? [THUMBNAIL_FILE] : []), ...Object.values(metadata.thumbnails ?? {}), METADATA_FILE];
   return item("files", true, `${named.join(", ")}; ${FINAL_FILE} is the approved final (${finalSha256.slice(0, 12)})`);
 }
 
@@ -164,6 +168,8 @@ export function packageFiles(paths) {
     if (caption) entries.push({ path: file, role: `captions_${caption[1]}`, content_type: "text/plain" });
     const description = DESCRIPTION_FILE.exec(file);
     if (description) entries.push({ path: file, role: `description_${description[1]}`, content_type: "text/plain" });
+    const thumbnail = LOCALE_THUMBNAIL_FILE.exec(file);
+    if (thumbnail) entries.push({ path: file, role: `thumbnail_${thumbnail[1]}`, content_type: "image/jpeg" });
   }
   return entries;
 }

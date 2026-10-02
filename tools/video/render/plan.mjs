@@ -9,6 +9,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { isExplainer, isShot } from "../core/drama.mjs";
+import { LOCALES, narrationLocale } from "../core/schema.mjs";
+import { localizedThumbnail, localizedThumbnailHash, thumbnailGap } from "../core/translations.mjs";
 
 /** The series whose own thumbnail a video wears (templates.mjs THUMB_SERIES), or null. */
 export const thumbnailSeries = (doc) => (isExplainer(doc) ? "sothatswhy" : null);
@@ -77,9 +79,12 @@ export function renderProblems(doc, root = null) {
  * picture's hash is part of the thumbnail's key. Without the keyframe, `thumbnail.keyframe` is
  * null and the caller says what to run first. `screencasts` maps a screencast scene's id to its
  * capture manifest (tools/video/screencast/capture.mjs); each state shows one capture, and the
- * captures' hashes are part of its key.
+ * captures' hashes are part of its key. With `translations` (locale to i18n file), every other
+ * caption locale whose thumbnail words are current gets its own thumbnail in
+ * `thumbnail.locales` ({ locale, file, hash, html, key, text }), the same picture and layout with
+ * its words; `thumbnail.gaps` says why each other locale has none.
  */
-export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = {}, screencasts = {} } = {}) {
+export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = {}, screencasts = {}, translations = null } = {}) {
   const timeline = estimateTimeline(doc);
   const chapterCount = doc.scenes.filter((scene) => scene.chapter).length;
   let chapter = null;
@@ -127,9 +132,23 @@ export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = 
     // B and C for YouTube's test (thumbnailVariants); only a thumbnail that has them carries the key.
     const variants = thumbnailVariants(doc.thumbnail).map(({ id, thumbnail: own }) => ({ id, file: thumbnailVariantFile(id), ...drawThumbnail(own) }));
     if (variants.length) thumbnail.variants = variants;
+    if (translations) {
+      const locales = [];
+      const gaps = {};
+      for (const locale of LOCALES.filter((each) => each !== narrationLocale(doc))) {
+        const own = localizedThumbnail(doc, translations[locale]);
+        if (own) locales.push({ locale, file: localeThumbnailFile(locale), hash: localizedThumbnailHash(doc, translations[locale]), ...drawThumbnail(own) });
+        else gaps[locale] = thumbnailGap(doc, translations[locale], locale);
+      }
+      thumbnail.locales = locales;
+      thumbnail.gaps = gaps;
+    }
   }
   return { scenes, thumbnail };
 }
+
+/** Where a caption locale's own thumbnail is written in the work directory (and in upload/). */
+export const localeThumbnailFile = (locale) => `thumbnails/${locale}.jpg`;
 
 /** A screencast scene's states: one capture each, with the cursor and highlight drawn over it. */
 function screencastStates(scene, timelineStates, manifest, theme, chromeState) {

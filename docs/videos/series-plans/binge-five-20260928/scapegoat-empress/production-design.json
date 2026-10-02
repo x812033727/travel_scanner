@@ -1,0 +1,2948 @@
+{
+  "schema_version": 1,
+  "slug": "scapegoat-empress",
+  "source_binding": {
+    "source_sha256": "399f468d18158a3938450d95d1cc9b615756cfa686d93c9c3e8afc7bcf34dc28"
+  },
+  "delivery_profile_ref": "../../production-20261001/profile.json",
+  "review_status": "design-only-not-render-tested",
+  "visual_direction": {
+    "style": "宮廷糧政懸疑；金冠與粗糧的質地差建立权力距離，明暗可讀的暖土色，公文不浮在空中當解說卡。",
+    "screen_direction": "城北河運／北倉與北門，南三州經南橋關；東公糧倉臨東南河，仍受南關控制。每次糧流只用一張固定朝向地圖。",
+    "performance": "葉穗從先救眼前到承擔程序責任，拒絕喊口號；裴定衡慢、精確、把威脅包成公事；何靜讀數有節奏但不是旁白機器。",
+    "continuity": "Day1到Day30逐日粮食因果；E29末摘冠到E39無冠，E40先簽自己姓名才重新戴冠。三種印、兩種通行牌、兩份身世材料不可合併。"
+  },
+  "opening_30s": [
+    {
+      "id": "e01",
+      "in_s": 0,
+      "out_s": 5,
+      "scale": "特寫",
+      "camera": "冠自上進框、桌面短反打",
+      "action": "冠落下；觀眾在印盒邊看見第30日處決日期，姓名仍被遮住。",
+      "characters": [
+        "ye-sui"
+      ],
+      "props": [
+        "金冠",
+        "印盒",
+        "日期公文"
+      ],
+      "dialogue_intent": "葉穗只問宮外是否有人吃飯，不知道自己的日期。",
+      "sound": "冠珠輕響，遠處空碗敲擊。",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:590",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:626",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:45",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "id": "e02",
+      "in_s": 5,
+      "out_s": 12,
+      "scale": "中景",
+      "camera": "何靜入桌邊停下",
+      "action": "何靜放下一碗賑粥。",
+      "characters": [
+        "he-jing",
+        "ye-sui"
+      ],
+      "props": [
+        "同一碗賑粥"
+      ],
+      "dialogue_intent": "問這是否今日宮外所得。",
+      "sound": "瓷碗落桌，關掉誇張肚餓音效。",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:590",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:626",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:45",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "id": "e03",
+      "in_s": 12,
+      "out_s": 17,
+      "scale": "手部近景",
+      "camera": "側面固定",
+      "action": "葉穗把自己面前御膳撤到一旁。",
+      "characters": [
+        "ye-sui"
+      ],
+      "props": [
+        "自己的御膳"
+      ],
+      "dialogue_intent": "只撤自己的飯，不清全桌。",
+      "sound": "盤沿短摩擦。",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:590",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:626",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:45",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "id": "e04",
+      "in_s": 17,
+      "out_s": 22,
+      "scale": "近景",
+      "camera": "眼平固定",
+      "action": "葉穗先喝一口賑粥。",
+      "characters": [
+        "ye-sui"
+      ],
+      "props": [
+        "同一碗賑粥"
+      ],
+      "dialogue_intent": "以實際嚐味代替演說。",
+      "sound": "吞嚥與小停頓。",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:590",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:626",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:45",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "id": "e05",
+      "in_s": 22,
+      "out_s": 26,
+      "scale": "桌面雙人",
+      "camera": "沿桌低位",
+      "action": "同一碗粥推到裴定衡面前。",
+      "characters": [
+        "ye-sui",
+        "pei-dingheng"
+      ],
+      "props": [
+        "同一碗賑粥"
+      ],
+      "dialogue_intent": "不逼吞、不互換新碗。",
+      "sound": "碗滑動止住。",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:590",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:626",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:45",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "id": "e06",
+      "in_s": 26,
+      "out_s": 30,
+      "scale": "手與臉兩切",
+      "camera": "裴的筷停著再見配額紙",
+      "action": "裴定衡不動筷，只推出可用糧額。",
+      "characters": [
+        "pei-dingheng",
+        "ye-sui"
+      ],
+      "props": [
+        "可用糧額",
+        "筷"
+      ],
+      "dialogue_intent": "明日一萬碗的要求引出真正資源問題。",
+      "sound": "紙落桌取代勝利配樂。",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:590",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:626",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:45",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "id": "ye-sui",
+      "voice_name": "Kore",
+      "performance": "先問「到了沒有？」；遇到權謀會要求把代價講清楚。 臺灣國語；年輕女聲、低而清楚，憤怒時降低音量，未試聽。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "Yè Suì",
+        "ja": "イエ・スイ",
+        "ko": "예 쑤이",
+        "en": "Ye Sui"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "ye-sui--base",
+          "episodes": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ],
+          "appearance": "A 24-year-old East Asian woman with an oval face, focused dark eyes and straight black hair secured in one compact high knot. A narrow bronze hairpin shaped like a rice leaf never changes. She wears a plain deep teal court robe with restrained antique-gold edging, practical dark boots and a short brown counting cord at her waist. Slim, upright silhouette; no heavy makeup or ornamental weapon.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:60",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:45",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+          ]
+        },
+        {
+          "id": "ye-sui-crowned",
+          "episodes": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29
+          ],
+          "appearance": "A 24-year-old East Asian woman with an oval face, focused dark eyes and straight black hair secured in one compact high knot. A narrow bronze hairpin shaped like a rice leaf never changes. She wears a plain deep teal court robe with restrained antique-gold edging, practical dark boots and a short brown counting cord at her waist. Slim, upright silhouette; no heavy makeup or ornamental weapon. A plain gold crown around the unchanged hair knot; the bronze rice-leaf hairpin remains.",
+          "cue": "E29羅杏摘冠前；E1同集戴冠動作需空冠位前態。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:60",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:626",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:684",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:742",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:802",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:862",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:923",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:981",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1042",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1104",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1166",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1238",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1298",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1360",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1420",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1482",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1543",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1605",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1664",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1723",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1782",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1853",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1913",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1975",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2035",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2095",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2155",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2213",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2273",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2332",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+          ]
+        },
+        {
+          "id": "ye-sui-uncrowned",
+          "episodes": [
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ],
+          "appearance": "A 24-year-old East Asian woman with an oval face, focused dark eyes and straight black hair secured in one compact high knot. A narrow bronze hairpin shaped like a rice leaf never changes. She wears a plain deep teal court robe with restrained antique-gold edging, practical dark boots and a short brown counting cord at her waist. Slim, upright silhouette; no heavy makeup or ornamental weapon. No gold crown. Keep the bronze rice-leaf hairpin and the original hair knot.",
+          "cue": "E29末摘下後至E40先簽名；不得每集重生金冠。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:60",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2332",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2393",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2465",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2527",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2585",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2643",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2702",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2760",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2818",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2874",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2935",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2455",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+          ]
+        },
+        {
+          "id": "ye-sui-recrowned",
+          "episodes": [
+            40
+          ],
+          "appearance": "A 24-year-old East Asian woman with an oval face, focused dark eyes and straight black hair secured in one compact high knot. A narrow bronze hairpin shaped like a rice leaf never changes. She wears a plain deep teal court robe with restrained antique-gold edging, practical dark boots and a short brown counting cord at her waist. Slim, upright silhouette; no heavy makeup or ornamental weapon. The same gold crown is worn again only after the signature; keep the rice-leaf hairpin.",
+          "cue": "只E40簽名後鏡頭。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:60",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2455",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pei-dingheng",
+      "voice_name": "Charon",
+      "performance": "常說「為全局計」；越失控越要求遵循格式。 臺灣國語；成熟低男聲，字間留白，少吼叫，未試聽。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "Péi Dìng-héng",
+        "ja": "ペイ・ディンホン",
+        "ko": "페이 딩헝",
+        "en": "Pei Dingheng"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "pei-dingheng--base",
+          "episodes": [
+            1,
+            2,
+            10,
+            11,
+            19,
+            27,
+            30,
+            34,
+            35,
+            36,
+            37
+          ],
+          "appearance": "An East Asian man of 56 with a long angular face, silver at both temples and a neatly trimmed short black-grey beard. He wears a rigid black court cap and layered charcoal robes with a thin burgundy inner collar. An opaque black-stone thumb ring and an ivory tally case are his fixed identifiers. He stands still with hands folded, occupying little motion but much space.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:95",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:45",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "han-duo",
+      "voice_name": "Orus",
+      "performance": "「給我可走的路。」先說兵力與風險，再說立場。 臺灣國語；中低男聲，短句沉穩、救援時加快而不咆哮，未試聽。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "Hán Duó",
+        "ja": "ハン・ドゥオ",
+        "ko": "한 둬",
+        "en": "Han Duo"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "han-duo--base",
+          "episodes": [
+            5,
+            6,
+            12,
+            16,
+            17,
+            18,
+            24,
+            27,
+            32,
+            34,
+            37,
+            40
+          ],
+          "appearance": "An East Asian man of 34 with a broad square face, weathered cheeks and short black hair tied into a small soldier knot. Matte iron lamellar armour over a dark navy tunic, a faded ochre wrist wrap and one old shallow scar across the left eyebrow are constant. A practical sheathed single-edged sabre stays at his left hip. Powerful grounded silhouette; his armour is field-worn, never polished.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:126",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:45",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "luo-xing",
+      "voice_name": "Vindemiatrix",
+      "performance": "談政治時也會先問「手怎麼這麼冷」。 臺灣國語；帶些沙質的成熟女聲，溫和、短促口語，未試聽。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "Luó Xìng",
+        "ja": "ルオ・シン",
+        "ko": "뤄 싱",
+        "en": "Luo Xing"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "luo-xing--base",
+          "episodes": [
+            7,
+            17,
+            18,
+            19,
+            20,
+            29,
+            30,
+            39
+          ],
+          "appearance": "An East Asian woman of 52 with a round lined face and dark hair streaked with grey, coiled low at the nape. She wears a faded plum cross-collar jacket, a slate skirt and a brown cloth medical satchel with a patched corner. Her hands have small old work marks. No jewellery except a plain wooden bead tied to the satchel strap.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:153",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:45",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ye-jun",
+      "voice_name": "Puck",
+      "performance": "「車還在，人就能走。」不擅長長篇辯解。 臺灣國語；明亮青年男聲，急但不油滑，未試聽。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "Yè Jùn",
+        "ja": "イエ・ジュン",
+        "ko": "예 쥔",
+        "en": "Ye Jun"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "ye-jun--base",
+          "episodes": [
+            7,
+            13,
+            22,
+            25,
+            26,
+            39
+          ],
+          "appearance": "A 21-year-old East Asian man with a lean sun-darkened face and untidy short black hair tied with a rust-red cloth band. He wears a patched sand-coloured work jacket, dark trousers and rope-soled boots. His right sleeve has one distinctive pale rectangular repair.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:180",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:45",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "he-jing",
+      "voice_name": "Aoede",
+      "performance": "「這一欄能對，下一欄還不能。」不讓推測冒充結論。 臺灣國語；清晰中音女聲，數字與停頓分明，未試聽。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "Hé Jìng",
+        "ja": "ホー・ジン",
+        "ko": "허 징",
+        "en": "He Jing"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "he-jing--base",
+          "episodes": [
+            1,
+            2,
+            3,
+            4,
+            8,
+            10,
+            11,
+            14,
+            15,
+            16,
+            20,
+            22,
+            24,
+            25,
+            27,
+            29,
+            31,
+            33,
+            34,
+            36,
+            38,
+            40
+          ],
+          "appearance": "An East Asian woman of 36 with a narrow face, tired dark eyes and black hair in a tightly braided low bun. She wears an ink-blue clerk coat with pale cuffs, a small brass abacus pendant and a leather document tube across her back. Ink stains sit on the same two right fingertips; her left cuff has a neatly mended seam.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:207",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:45",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tang-min",
+      "voice_name": "Pulcherrima",
+      "performance": "「這筆誰出？」接著講出能接受的條件。 臺灣國語；較低、較厚的中年女聲，談價直接不拖泥帶水，未試聽。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "Táng Mǐn",
+        "ja": "タン・ミン",
+        "ko": "탕 민",
+        "en": "Tang Min"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "tang-min--base",
+          "episodes": [
+            6,
+            9,
+            12,
+            13,
+            15,
+            16,
+            21,
+            23,
+            26,
+            28,
+            31,
+            32,
+            33,
+            35,
+            38
+          ],
+          "appearance": "An East Asian woman of 45 with a strong jaw, warm brown skin and black hair bound high in a practical spiral bun. She wears a muted aubergine merchant coat over a brown apron and a broad cloth belt carrying an iron key ring. One round copper button on her left shoulder and a chipped measuring scoop identify her. Solid practical build.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:234",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:45",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jia-xun",
+      "voice_name": "Fenrir",
+      "performance": "「沒有副印，過不得。」 臺灣國語；粗中音男聲，官腔刻意、語速偏快，未試聽。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "Jiǎ Xūn",
+        "ja": "ジア・シュン",
+        "ko": "자 쉰",
+        "en": "Jia Xun"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "jia-xun--base",
+          "episodes": [
+            3,
+            4,
+            5,
+            8,
+            9,
+            12,
+            14,
+            24,
+            25,
+            32,
+            33,
+            36
+          ],
+          "appearance": "An East Asian man of 41 with a thick neck, a neat pointed moustache and slick black hair under a short official cap. He wears a dark rust-brown uniform with a rectangular black chest patch and a heavy brass gate-key bundle on his right belt. One pale nick through the moustache identifies his close-ups. Stocky forward-leaning posture.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:261",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:45",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xiao-chengyue",
+      "voice_name": "Algieba",
+      "performance": "「我能讓糧明日就到。」每句承諾後面都有條件。 臺灣國語；平穩清亮男聲，禮貌的壓力勝於嘶喊，未試聽。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "Xiāo Chéng-yuè",
+        "ja": "シャオ・チョンユエ",
+        "ko": "샤오 청웨",
+        "en": "Xiao Chengyue"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "xiao-chengyue--base",
+          "episodes": [
+            21,
+            23,
+            28,
+            35,
+            37
+          ],
+          "appearance": "An East Asian man of 32 with a refined long face and carefully combed black hair in a tall formal knot. He wears ivory robes under a pale steel-blue cloak, a narrow jade belt and a signet ring carved with a three-leaf crest. Clean-shaven, composed shoulders and expensive but travel-worn boots distinguish him from palace courtiers.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:288",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:45",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "han-rui",
+      "voice_name": "Leda",
+      "performance": "「我記了，不用你猜。」 臺灣國語；較輕柔的青年女聲，句尾堅定，未試聽。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "Hán Ruì",
+        "ja": "ハン・ルイ",
+        "ko": "한 루이",
+        "en": "Han Rui"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "han-rui--base",
+          "episodes": [
+            18
+          ],
+          "appearance": "A 20-year-old East Asian woman with a heart-shaped face and straight dark hair in two simple low braids. She wears a pale grey-blue short jacket, a navy skirt and a small embroidered yellow pouch at her waist. A faint pale restraint mark circles her right wrist. No court ornaments.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:315",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:45",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+          ]
+        },
+        {
+          "id": "han-rui-transfer-mark",
+          "episodes": [
+            18
+          ],
+          "appearance": "A 20-year-old East Asian woman with a heart-shaped face and straight dark hair in two simple low braids. She wears a pale grey-blue short jacket, a navy skirt and a small embroidered yellow pouch at her waist. A faint pale restraint mark circles her right wrist. No court ornaments. Only a faint pale mark at the right wrist; no open wound or blood.",
+          "cue": "E18轉移患者群中可見；後續若無本人就不造反應鏡。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:315",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1664",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shen-qiao",
+      "voice_name": "Gacrux",
+      "performance": "「我謝你，也要問你。」 臺灣國語；低沉年長女聲，氣息稍慢、語意清楚，未試聽。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "Shěn Qiǎo",
+        "ja": "シェン・チャオ",
+        "ko": "선 차오",
+        "en": "Shen Qiao"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "shen-qiao--base",
+          "episodes": [
+            4,
+            7,
+            9,
+            13,
+            14,
+            21,
+            22,
+            26,
+            29,
+            30,
+            31,
+            38,
+            39,
+            40
+          ],
+          "appearance": "An East Asian woman of 61 with a broad lined face, silver hair wound into a small low knot and steady dark eyes. She wears a charcoal cotton jacket, faded olive skirt and a cream scarf with a single indigo stripe. A flat bamboo receipt box held against her chest is her recurring identifier. Sturdy stance and deliberate hand movement.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:342",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:45",
+            "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+          ]
+        }
+      ]
+    }
+  ],
+  "prop_rules": [
+    {
+      "id": "crown",
+      "identity": "同一金冠與常在的稻葉銅髮簪",
+      "states": "E1戴→E29末羅杏摘→E30–39無→E40簽後重戴",
+      "ownership": "葉穗戴；羅杏摘時保管，鏡頭不暗示冠被毀",
+      "insert_rules": "金冠是條件地位道具，不把無冠畫成換臉。",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:45",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "id": "soup",
+      "identity": "E1唯一賑粥碗與葉自己的御膳",
+      "states": "何靜端來→葉先喝→推裴；其他桌膳保持",
+      "ownership": "E1桌上連續追蹤，不由罗杏端來",
+      "insert_rules": "碗缺口與湯量同一；E40不重拍虛构換粥結局。",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:45",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "id": "three-seals",
+      "identity": "南關左稅桌印、右借桌印、內廷副印是三枚",
+      "states": "E6/E9對兩張同貨重收證；E17醫票右桌印；內廷副印屬另一條",
+      "ownership": "稅與借兩桌有各自印人；不把內廷印挪去關口",
+      "insert_rules": "取不同輪廓和案桌方位，逐鏡保留印泥/紙張先後。",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:45",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "id": "grain-account",
+      "identity": "糧、現金、借款、專屬採購與欠糧分欄",
+      "states": "E15部分供糧；E23供18–19；E24回糧供20–21；E26預付供22–23；E28新船供24–26；E32續入",
+      "ownership": "每次由各責任人具名，不女帝一簽無限生糧",
+      "insert_rules": "實際袋數按劇情比例與批次，入倉≠已分發，糧食不變銀票。",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:45",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "id": "permits",
+      "identity": "父親舊失效通行牌與E39葉峻新合法牌",
+      "states": "E7舊牌出現→E13知失效→E25扣→E26不返；E39新牌另造",
+      "ownership": "葉峻舊牌被公家扣證；新牌依法核發",
+      "insert_rules": "新牌材質/編號清楚不同，不能只把舊牌翻面再發。",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:45",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "id": "identity-papers",
+      "identity": "身世原件、裴的預寫副本、何靜縫合抄件",
+      "states": "E19原件葉讀，裴帶走COPY；E20原件羅杏封／何靜抄；E30原件公開",
+      "ownership": "羅杏保原件；抄件不能憑空變原件",
+      "insert_rules": "封袋繩與縫合邊不同，讀錯日期才是線索不靠魔法消字。",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:45",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "id": "public-case",
+      "identity": "第30日處決文／罪責文／公開糧務契約／刑枷證物",
+      "states": "E1日期但姓名隱；E10本人知道；E34改同日晨；E37枷當證物；E40簽名先於冠",
+      "ownership": "何靜/聯署人按程序管理；沈巧E33盒在場本人不在",
+      "insert_rules": "日期用場內紙文與口述，CC關閉也不漏關键。",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:45",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    }
+  ],
+  "episodes": [
+    {
+      "episode": 1,
+      "title": "萬歲先喝這碗粥",
+      "characters": [
+        "ye-sui",
+        "pei-dingheng",
+        "he-jing"
+      ],
+      "locations": [
+        "hall"
+      ],
+      "hero_shot": {
+        "action": "一碗粥推到不動筷的人前",
+        "camera": "桌面連續軸。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "冠珠、瓷碗、紙"
+      },
+      "risk_controls": [
+        {
+          "risk": "日期資訊偷渡成女主先知",
+          "solution": "只給觀眾日期且遮姓名，葉尚未知"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "pei-dingheng--base",
+        "he-jing--base"
+      ],
+      "prop_checks": [
+        "soup,crown,public-case",
+        "延續來源當集evidence/carry_forward：祭天簿仍在首輔印盒下；未簽首詔由何靜收存。；東公倉的儀典糧成為次集第一筆可查資源。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, pei-dingheng, he-jing；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "冠珠、瓷碗、紙",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：soup,crown,public-case；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:626",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 2,
+      "title": "先削我的宮宴",
+      "characters": [
+        "ye-sui",
+        "pei-dingheng",
+        "he-jing"
+      ],
+      "locations": [
+        "hall",
+        "records"
+      ],
+      "hero_shot": {
+        "action": "一日宴食配額改成賑糧",
+        "camera": "同張配額刪改近景。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "紙響胜過宮樂"
+      },
+      "risk_controls": [
+        {
+          "risk": "一晚削宴解決全季糧荒",
+          "solution": "只一天份，交單缺內廷副印仍懸而未決"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "pei-dingheng--base",
+        "he-jing--base"
+      ],
+      "prop_checks": [
+        "grain-account,three-seals",
+        "延續來源當集evidence/carry_forward：領糧牘正本由何靜攜帶，副本留宮內。；帶領糧牘去東公倉查實際庫存。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, pei-dingheng, he-jing；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "紙響胜過宮樂",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：grain-account,three-seals；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:684",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 3,
+      "title": "滿帳空倉",
+      "characters": [
+        "ye-sui",
+        "he-jing",
+        "jia-xun"
+      ],
+      "locations": [
+        "granary"
+      ],
+      "hero_shot": {
+        "action": "雙層麻袋露縫與半倉",
+        "camera": "低位袋縫接倉內寬景。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "穀粒落掌"
+      },
+      "risk_controls": [
+        {
+          "risk": "空鏡袋數未減仍報半倉",
+          "solution": "同尺度標示實收，拒簽全額"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "he-jing--base",
+        "jia-xun--base"
+      ],
+      "prop_checks": [
+        "grain-account",
+        "延續來源當集evidence/carry_forward：實點表由女主與何靜各存一份；疑似重複秤號抄在表邊；那張寫著承責字樣、她沒簽的足額收訖由葉穗留存。；必須確認當日午間分糧使用的秤是否也被做手腳。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, he-jing, jia-xun；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "穀粒落掌",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：grain-account；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:742",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 4,
+      "title": "秤砣也會說謊",
+      "characters": [
+        "ye-sui",
+        "jia-xun",
+        "he-jing",
+        "shen-qiao"
+      ],
+      "locations": [
+        "granary"
+      ],
+      "hero_shot": {
+        "action": "標準砝碼在兩秤得到不同結果",
+        "camera": "左右秤固定交替。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "秤盤碰擊"
+      },
+      "risk_controls": [
+        {
+          "risk": "秤自己飄動成法術",
+          "solution": "同一校驗砝碼移位，官驗在場"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "jia-xun--base",
+        "he-jing--base",
+        "shen-qiao--base"
+      ],
+      "prop_checks": [
+        "grain-account",
+        "延續來源當集evidence/carry_forward：偏秤與校砣封存東公倉，由何靜、沈巧雙方記錄。；要讓足額糧走過南糧關，需有限度軍隊護運。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, jia-xun, he-jing, shen-qiao；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "秤盤碰擊",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：grain-account；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:802",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 5,
+      "title": "只護這一趟",
+      "characters": [
+        "ye-sui",
+        "han-duo",
+        "jia-xun"
+      ],
+      "locations": [
+        "granary",
+        "gate"
+      ],
+      "hero_shot": {
+        "action": "韓鐸交出有限護糧許可",
+        "camera": "盔甲手放紙單動作。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "金屬聲後醫票紙聲"
+      },
+      "risk_controls": [
+        {
+          "risk": "掌軍許可等於全軍歸女主",
+          "solution": "只此趟糧隊與指定路，妹妹威脅紙另拍"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "han-duo--base",
+        "jia-xun--base"
+      ],
+      "prop_checks": [
+        "grain-account,public-case",
+        "延續來源當集evidence/carry_forward：拒收回執由葉穗持有；威脅藥單在韓手裡。；韓不能正面撞卡，需在護糧承諾內改車隊走法。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, han-duo, jia-xun；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "金屬聲後醫票紙聲",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：grain-account,public-case；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:862",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 6,
+      "title": "把大車拆成小車",
+      "characters": [
+        "ye-sui",
+        "tang-min",
+        "han-duo"
+      ],
+      "locations": [
+        "depot",
+        "gate"
+      ],
+      "hero_shot": {
+        "action": "小船繩取代巨車出關線",
+        "camera": "船繩收緊與兩票分切。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "水聲、票紙"
+      },
+      "risk_controls": [
+        {
+          "risk": "改運路即免所有關税",
+          "solution": "仍遭同貨兩票，抵押不是皇印"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "tang-min--base",
+        "han-duo--base"
+      ],
+      "prop_checks": [
+        "three-seals,grain-account",
+        "延續來源當集evidence/carry_forward：兩張同車收條由唐敏保管，葉穗只抄編號。；先把糧交給粥場，再由醫棚與戶籍確認誰真正收到。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, tang-min, han-duo；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "水聲、票紙",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：three-seals,grain-account；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:923",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 7,
+      "title": "有粥，也要有人看病",
+      "characters": [
+        "ye-sui",
+        "luo-xing",
+        "ye-jun",
+        "shen-qiao"
+      ],
+      "locations": [
+        "relief"
+      ],
+      "hero_shot": {
+        "action": "沈巧按名單把小車分到戶",
+        "camera": "名冊到米勺兩鏡。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "叫名由已登記角色擔任"
+      },
+      "risk_controls": [
+        {
+          "risk": "饑民群聲擠入未登錄對白",
+          "solution": "群眾只環境聲，羅杏看舊收條另鏡"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "luo-xing--base",
+        "ye-jun--base",
+        "shen-qiao--base"
+      ],
+      "prop_checks": [
+        "permits,grain-account",
+        "延續來源當集evidence/carry_forward：受糧戶簿由沈巧保管；舊運糧牌用繩掛在葉峻胸前，未交給女主。；糧到了但女主發給其他粥場的命令仍未傳出宮。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, luo-xing, ye-jun, shen-qiao；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "叫名由已登記角色擔任",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：permits,grain-account；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:981",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 8,
+      "title": "讓命令走出門",
+      "characters": [
+        "ye-sui",
+        "he-jing",
+        "jia-xun"
+      ],
+      "locations": [
+        "records",
+        "hall"
+      ],
+      "hero_shot": {
+        "action": "賈勳簽下實際交付量",
+        "camera": "公文到簽手近景。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "讀數、筆尖"
+      },
+      "risk_controls": [
+        {
+          "risk": "簽收等於內廷副印到手",
+          "solution": "問題仍問印權，皇族紙批次是另證據"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "he-jing--base",
+        "jia-xun--base"
+      ],
+      "prop_checks": [
+        "three-seals,identity-papers",
+        "延續來源當集evidence/carry_forward：認親冊原件仍在文簿房，紙批記由何靜描錄；賈勳簽收的分糧命令回執載有送達號，由何靜保存。；新到的關卡回執要與唐敏的兩張收條核對。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, he-jing, jia-xun；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "讀數、筆尖",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：three-seals,identity-papers；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1042",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 9,
+      "title": "同一袋糧收兩次",
+      "characters": [
+        "ye-sui",
+        "jia-xun",
+        "tang-min",
+        "shen-qiao"
+      ],
+      "locations": [
+        "gate"
+      ],
+      "hero_shot": {
+        "action": "同一車貨兩張徵收票並置",
+        "camera": "紙面同車號對比。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "兩次敲桌各一理由"
+      },
+      "risk_controls": [
+        {
+          "risk": "稅與借款翻成同一費目",
+          "solution": "兩欄讀清，三車仍被扣作代價"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "jia-xun--base",
+        "tang-min--base",
+        "shen-qiao--base"
+      ],
+      "prop_checks": [
+        "three-seals,grain-account",
+        "延續來源當集evidence/carry_forward：唐敏保運單，沈巧保民間原條，兩人已帶原件離開；兩份互認抄件送文簿房；傳核單在葉穗手上；唐敏的三車糧扣在南糧關欄內待驗。；葉穗利用入文簿房查轉撥的理由追到祭天承責卷；被扣的三車糧成為首輔下一集的籌碼。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, jia-xun, tang-min, shen-qiao；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "兩次敲桌各一理由",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：three-seals,grain-account；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1104",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 10,
+      "title": "祭天名冊上的人",
+      "characters": [
+        "ye-sui",
+        "pei-dingheng",
+        "he-jing"
+      ],
+      "locations": [
+        "records",
+        "hall"
+      ],
+      "hero_shot": {
+        "action": "葉終於讀到自己處決姓名",
+        "camera": "紙上姓名到臉近景。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "房間底噪突然可聞"
+      },
+      "risk_controls": [
+        {
+          "risk": "E1已知道卻再演驚訝",
+          "solution": "此刻第一次讀完整原文，未簽未表態"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "pei-dingheng--base",
+        "he-jing--base"
+      ],
+      "prop_checks": [
+        "public-case",
+        "延續來源當集evidence/carry_forward：罪詔原件在首輔控制的卷內；騎縫抄錄分藏女主與何靜處；追認文書她沒有簽，仍在首輔手中。；次集假裝配合祭天，用有限時間拓寬糧路，並把被扣的三車糧要回來。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, pei-dingheng, he-jing；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "房間底噪突然可聞",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：public-case；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1166",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 11,
+      "title": "照你們的日子祭天",
+      "characters": [
+        "ye-sui",
+        "pei-dingheng",
+        "he-jing"
+      ],
+      "locations": [
+        "hall",
+        "records"
+      ],
+      "hero_shot": {
+        "action": "五州進度變成祭典附件",
+        "camera": "圖與日糧表同北向。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "何靜短報數"
+      },
+      "risk_controls": [
+        {
+          "risk": "五州全經南門地理錯亂",
+          "solution": "南三州與北兩州分路，只准查一關"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "pei-dingheng--base",
+        "he-jing--base"
+      ],
+      "prop_checks": [
+        "grain-account",
+        "延續來源當集evidence/carry_forward：祭天準備簿與核查授權各有抄件。；南糧關將迎來一次有期限的現場核查。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, pei-dingheng, he-jing；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "何靜短報數",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：grain-account；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1238",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 12,
+      "title": "關卡不是誰的錢袋",
+      "characters": [
+        "ye-sui",
+        "jia-xun",
+        "han-duo",
+        "tang-min"
+      ],
+      "locations": [
+        "gate"
+      ],
+      "hero_shot": {
+        "action": "無軍令號的路障被撤",
+        "camera": "韓手停在刀柄、障木移走另鏡。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "木擦地不拔刀"
+      },
+      "risk_controls": [
+        {
+          "risk": "英雄砍關口或取回當天新糧",
+          "solution": "三車晚一天放行，無合法軍令才撤"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "jia-xun--base",
+        "han-duo--base",
+        "tang-min--base"
+      ],
+      "prop_checks": [
+        "grain-account",
+        "延續來源當集evidence/carry_forward：撤欄回執在何靜管理的文簿中，試運約由唐敏持有。；下一集必須讓承諾的試運糧真正抵達，不能只拍拆欄。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, jia-xun, han-duo, tang-min；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "木擦地不拔刀",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：grain-account；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1298",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 13,
+      "title": "讓車替命令作證",
+      "characters": [
+        "ye-sui",
+        "ye-jun",
+        "tang-min",
+        "shen-qiao"
+      ],
+      "locations": [
+        "relief"
+      ],
+      "hero_shot": {
+        "action": "公開車單讓首車先付",
+        "camera": "葉峻手握舊牌再藏。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "紙單與繩扣"
+      },
+      "risk_controls": [
+        {
+          "risk": "後續偽證罪失去知情鋪垫",
+          "solution": "葉明确知道失效並叫停，未上報留下責任"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "ye-jun--base",
+        "tang-min--base",
+        "shen-qiao--base"
+      ],
+      "prop_checks": [
+        "permits",
+        "延續來源當集evidence/carry_forward：新運單正本交唐敏，受糧戶簿交沈巧，首期付款有女主簽名；過期牌由葉峻收在衣內，此後不再外露。；收條公開後，街坊帶來更多被改成借據的原件。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, ye-jun, tang-min, shen-qiao；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "紙單與繩扣",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：permits；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1360",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 14,
+      "title": "誰欠誰的糧",
+      "characters": [
+        "ye-sui",
+        "he-jing",
+        "jia-xun",
+        "shen-qiao"
+      ],
+      "locations": [
+        "records"
+      ],
+      "hero_shot": {
+        "action": "同車號與撕紙邊對上",
+        "camera": "兩紙平放近景。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "何靜承認讀完留空白"
+      },
+      "risk_controls": [
+        {
+          "risk": "一件假借款消所有欠款",
+          "solution": "限定這批偽造部分，真債另列"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "he-jing--base",
+        "jia-xun--base",
+        "shen-qiao--base"
+      ],
+      "prop_checks": [
+        "three-seals,grain-account",
+        "延續來源當集evidence/carry_forward：對照頁公開抄錄，撕口軍糧欄原件仍封在文簿房。；需要商人掌握的外部糧契，補足收糧去向。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, he-jing, jia-xun, shen-qiao；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "何靜承認讀完留空白",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：three-seals,grain-account；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1420",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 15,
+      "title": "糧商不收空頭萬歲",
+      "characters": [
+        "ye-sui",
+        "tang-min",
+        "he-jing"
+      ],
+      "locations": [
+        "depot"
+      ],
+      "hero_shot": {
+        "action": "唐敏只把可付批次推過來",
+        "camera": "實際袋與支付單分開。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "算珠、谷物"
+      },
+      "risk_controls": [
+        {
+          "risk": "商人突然無限供糧",
+          "solution": "支付/存糧上限具體可見，北路專約另揭"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "tang-min--base",
+        "he-jing--base"
+      ],
+      "prop_checks": [
+        "grain-account",
+        "延續來源當集evidence/carry_forward：雙方各持簽名合約，北倉草約由何靜抄錄、唐敏保原件。；追回的糧與省下的銀錢都有限，下一集需選擇如何支付欠餉與貨款。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, tang-min, he-jing；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "算珠、谷物",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：grain-account；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1482",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 16,
+      "title": "先把欠的餉送到手",
+      "characters": [
+        "ye-sui",
+        "han-duo",
+        "tang-min",
+        "he-jing"
+      ],
+      "locations": [
+        "granary"
+      ],
+      "hero_shot": {
+        "action": "軍屬糧單與商款清單分流",
+        "camera": "桌兩侧分手。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "士兵與商戶名目由同角色讀清"
+      },
+      "risk_controls": [
+        {
+          "risk": "糧發軍戶被譯成銀子付商",
+          "solution": "两个物理欄；妹妹明日轉院時間另記"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "han-duo--base",
+        "tang-min--base",
+        "he-jing--base"
+      ],
+      "prop_checks": [
+        "grain-account,public-case",
+        "延續來源當集evidence/carry_forward：逐筆支款表由何靜、韓、唐三方留份，轉送信在韓手中。；韓必須告訴女主北偏院扣著誰，才能規劃合法救人。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, han-duo, tang-min, he-jing；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "士兵與商戶名目由同角色讀清",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：grain-account,public-case；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1543",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 17,
+      "title": "統領收到的那封信",
+      "characters": [
+        "ye-sui",
+        "han-duo",
+        "luo-xing"
+      ],
+      "locations": [
+        "clinic"
+      ],
+      "hero_shot": {
+        "action": "醫療緩轉申請得到一天批示",
+        "camera": "羅杏递纸官印落下。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "印泥音"
+      },
+      "risk_controls": [
+        {
+          "risk": "韓鐸帶兵闖醫院或醫票印錯",
+          "solution": "無軍隊入內，只一天暫緩且右借桌印"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "han-duo--base",
+        "luo-xing--base"
+      ],
+      "prop_checks": [
+        "three-seals,public-case",
+        "延續來源當集evidence/carry_forward：軍餉借據交何靜核實；當日暫緩跨城移送回執與翌日換診名單由羅杏帶往偏院。；次集救援必須連同其他病人安全轉送，不能只偷走韓芮。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, han-duo, luo-xing；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "印泥音",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：three-seals,public-case；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1605",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 18,
+      "title": "換診的那一天",
+      "characters": [
+        "ye-sui",
+        "han-duo",
+        "han-rui",
+        "luo-xing"
+      ],
+      "locations": [
+        "annex",
+        "clinic"
+      ],
+      "hero_shot": {
+        "action": "全體病患按公開名單轉移",
+        "camera": "韓鐸在外護送，妹妹一短特写。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "輪聲、逐名報到"
+      },
+      "risk_controls": [
+        {
+          "risk": "只救妹妹破平等承諾",
+          "solution": "鏡頭先多名患者再她的右腕淡痕"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "han-duo--base",
+        "han-rui--base",
+        "han-rui-transfer-mark",
+        "luo-xing--base"
+      ],
+      "prop_checks": [
+        "public-case",
+        "延續來源當集evidence/carry_forward：移送藥單由韓芮與何靜各存一份，軍餉核帳進入公開程序。；首輔轉而逼羅杏交出認親時留下的真實收養紀錄。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, han-duo, han-rui, luo-xing；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "輪聲、逐名報到",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：public-case；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1664",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 19,
+      "title": "養母沒有燒掉的紙",
+      "characters": [
+        "ye-sui",
+        "luo-xing",
+        "pei-dingheng"
+      ],
+      "locations": [
+        "clinic"
+      ],
+      "hero_shot": {
+        "action": "原件被讀，預寫副本被帶走",
+        "camera": "兩份邊角特徵分切。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "封袋開合"
+      },
+      "risk_controls": [
+        {
+          "risk": "裴拿走唯一原件導致後面復生",
+          "solution": "COPY在裴手，原件仍留可封存"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "luo-xing--base",
+        "pei-dingheng--base"
+      ],
+      "prop_checks": [
+        "identity-papers",
+        "延續來源當集evidence/carry_forward：真實收養簿正本由葉穗帶到文簿房，羅杏預先抄下的副本已被首輔拿走。；女主與何靜將三份時間證據放到同一張桌上。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, luo-xing, pei-dingheng；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "封袋開合",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：identity-papers；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1723",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 20,
+      "title": "把三份日期放在一起",
+      "characters": [
+        "ye-sui",
+        "he-jing",
+        "luo-xing"
+      ],
+      "locations": [
+        "records"
+      ],
+      "hero_shot": {
+        "action": "三個日期來源合成認定",
+        "camera": "日期與葉脸交替。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "羅杏逐點說，不三人搶讀"
+      },
+      "risk_controls": [
+        {
+          "risk": "真姓名也被翻成假名",
+          "solution": "葉穗姓名真、皇族血统假，原件封袋可見"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "he-jing--base",
+        "luo-xing--base"
+      ],
+      "prop_checks": [
+        "identity-papers",
+        "延續來源當集evidence/carry_forward：三份日期證據交叉抄存；收養簿正本由羅杏收回封存，何靜持一份騎縫抄本。；蕭承越帶著真正血統與能立刻供糧的籌碼入城。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, he-jing, luo-xing；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "羅杏逐點說，不三人搶讀",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：identity-papers；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1782",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 21,
+      "title": "有糧的皇族",
+      "characters": [
+        "ye-sui",
+        "xiao-chengyue",
+        "tang-min",
+        "shen-qiao"
+      ],
+      "locations": [
+        "relief"
+      ],
+      "hero_shot": {
+        "action": "兩車卸貨後其餘二十八車停住",
+        "camera": "只一列前兩車通過。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "輪聲停止"
+      },
+      "risk_controls": [
+        {
+          "risk": "北線専約一揭就變強搶軍糧",
+          "solution": "尊重合法文件，未滿足條件車仍停"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "xiao-chengyue--base",
+        "tang-min--base",
+        "shen-qiao--base"
+      ],
+      "prop_checks": [
+        "grain-account",
+        "延續來源當集evidence/carry_forward：兩車公開買賣收條由唐敏持有，排他約未簽。；女主須直接聽街坊的需求與疑問，不能代替他們拒絕援助。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, xiao-chengyue, tang-min, shen-qiao；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "輪聲停止",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：grain-account；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1853",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 22,
+      "title": "讓受災的人自己說",
+      "characters": [
+        "ye-sui",
+        "ye-jun",
+        "shen-qiao",
+        "he-jing"
+      ],
+      "locations": [
+        "relief"
+      ],
+      "hero_shot": {
+        "action": "抱怨聲寫成請願原話",
+        "camera": "何靜記錄與葉峻聽分切。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "一位登錄角色轉述，不人群台词"
+      },
+      "risk_controls": [
+        {
+          "risk": "群眾忽然全都感恩",
+          "solution": "保留不信任與權源疑問"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "ye-jun--base",
+        "shen-qiao--base",
+        "he-jing--base"
+      ],
+      "prop_checks": [
+        "public-case",
+        "延續來源當集evidence/carry_forward：陳情簿向街坊開放抄錄，偏巷收糧日期與葉峻運單一致；過期牌仍收在葉峻衣內，胸前無牌。；公開需求量讓大糧戶知道斷供將造成多大壓力。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, ye-jun, shen-qiao, he-jing；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "一位登錄角色轉述，不人群台词",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：public-case；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1913",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 23,
+      "title": "鎖住的不是空倉",
+      "characters": [
+        "ye-sui",
+        "tang-min",
+        "xiao-chengyue"
+      ],
+      "locations": [
+        "depot",
+        "granary"
+      ],
+      "hero_shot": {
+        "action": "官署配額再縮一格",
+        "camera": "空碗/糧表近景。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "木勺刮薄底"
+      },
+      "risk_controls": [
+        {
+          "risk": "Day18–19庫糧被演成供整月",
+          "solution": "仅剩兩日，零買補缺不解專约"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "tang-min--base",
+        "xiao-chengyue--base"
+      ],
+      "prop_checks": [
+        "grain-account",
+        "延續來源當集evidence/carry_forward：各家短約分別保管，女主只承諾已有來源的支出。；首輔將從軍糧入手，逼韓鐸撤掉護路人手。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, tang-min, xiao-chengyue；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "木勺刮薄底",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：grain-account；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:1975",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 24,
+      "title": "被扣住的軍糧",
+      "characters": [
+        "ye-sui",
+        "han-duo",
+        "he-jing",
+        "jia-xun"
+      ],
+      "locations": [
+        "granary"
+      ],
+      "hero_shot": {
+        "action": "雙收糧沿原單退回",
+        "camera": "谷袋舊號與返還簽單。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "袋落地"
+      },
+      "risk_controls": [
+        {
+          "risk": "退稅被拍成現金發工資",
+          "solution": "是糧供Day20–21，工钱仍未解"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "han-duo--base",
+        "he-jing--base",
+        "jia-xun--base"
+      ],
+      "prop_checks": [
+        "three-seals,grain-account",
+        "延續來源當集evidence/carry_forward：轉撥號抄件與第 19 日歸還實糧的驗收表封存公倉；這批實糧按減配表只支應第 20–21 日。；首輔轉抓葉峻，用個案把救災聯盟寫成劫糧團。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, han-duo, he-jing, jia-xun；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "袋落地",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：three-seals,grain-account；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2035",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 25,
+      "title": "被抓的運糧人",
+      "characters": [
+        "ye-sui",
+        "ye-jun",
+        "jia-xun",
+        "he-jing"
+      ],
+      "locations": [
+        "prison"
+      ],
+      "hero_shot": {
+        "action": "舊通行牌放上罪證桌",
+        "camera": "牌近景到葉承認。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "筆與鎖扣"
+      },
+      "risk_controls": [
+        {
+          "risk": "葉之前不知造牌卻被逼認",
+          "solution": "承接Day8知失效未報，不認莫須有搶劫"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "ye-jun--base",
+        "jia-xun--base",
+        "he-jing--base"
+      ],
+      "prop_checks": [
+        "permits,public-case",
+        "延續來源當集evidence/carry_forward：過期牌在葉峻被捕時交出，與車單一併封存問事房，何靜持封件編號；獄中畫面葉峻身上無牌。；唐敏與沈巧須帶原件證明救災與非法獲利的區別；賈勳的徇私呈報已送進朝議。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, ye-jun, jia-xun, he-jing；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "筆與鎖扣",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：permits,public-case；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2095",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 26,
+      "title": "親人也不能免帳",
+      "characters": [
+        "ye-sui",
+        "ye-jun",
+        "tang-min",
+        "shen-qiao"
+      ],
+      "locations": [
+        "prison"
+      ],
+      "hero_shot": {
+        "action": "三張獨立證詞分別確認",
+        "camera": "每人一張纸一鏡。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "證詞分段保留呼吸"
+      },
+      "risk_controls": [
+        {
+          "risk": "證人同聲串供或舊牌立刻返還",
+          "solution": "各自來源；牌扣證不返，新糧只供22–23"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "ye-jun--base",
+        "tang-min--base",
+        "shen-qiao--base"
+      ],
+      "prop_checks": [
+        "permits,grain-account",
+        "延續來源當集evidence/carry_forward：結案抄件交沈巧公開保管；第 25 集封存的過期牌結案後正式收回，不發還葉峻。唐敏第 21 日押回的一批預付糧已驗收，只支應第 22–23 日。；首輔拿賈勳的徇私呈報與女主介入案件為由召朝議爭奪糧務權。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, ye-jun, tang-min, shen-qiao；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "證詞分段保留呼吸",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：permits,grain-account；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2155",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 27,
+      "title": "不是誰的私印",
+      "characters": [
+        "ye-sui",
+        "pei-dingheng",
+        "han-duo",
+        "he-jing"
+      ],
+      "locations": [
+        "hall"
+      ],
+      "hero_shot": {
+        "action": "自己責任與未付糧款同頁",
+        "camera": "手壓同一頁不換表。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "聲音先低后精確"
+      },
+      "risk_controls": [
+        {
+          "risk": "承錯後責任只剩反派",
+          "solution": "葉先簽自己的部分，裴拒自己的款"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "pei-dingheng--base",
+        "han-duo--base",
+        "he-jing--base"
+      ],
+      "prop_checks": [
+        "public-case,grain-account",
+        "延續來源當集evidence/carry_forward：未完帳與具名接管欄在殿內公開抄錄。；蕭承越以北倉立即卸糧為誘因，提出更私人也更殘酷的條件。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, pei-dingheng, han-duo, he-jing；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "聲音先低后精確",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：public-case,grain-account；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2213",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 28,
+      "title": "一場婚姻，一顆人頭",
+      "characters": [
+        "ye-sui",
+        "xiao-chengyue",
+        "tang-min"
+      ],
+      "locations": [
+        "hall"
+      ],
+      "hero_shot": {
+        "action": "私談婚約威脅完畢才讓唐進",
+        "camera": "內室門關/再開分兩場。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "門聲作明確段落"
+      },
+      "risk_controls": [
+        {
+          "risk": "唐敏偷聽到不该知道血统秘密",
+          "solution": "先完成私談，唐只帶24–26糧批"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "xiao-chengyue--base",
+        "tang-min--base"
+      ],
+      "prop_checks": [
+        "grain-account,identity-papers",
+        "延續來源當集evidence/carry_forward：無簽名婚約副本與見證筆錄分藏唐敏、何靜處。；女主計畫公開困境，首輔也在準備祭天揭露身世。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, xiao-chengyue, tang-min；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "門聲作明確段落",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：grain-account,identity-papers；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2273",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 29,
+      "title": "留給她的最後一頁",
+      "characters": [
+        "ye-sui",
+        "luo-xing",
+        "shen-qiao",
+        "he-jing"
+      ],
+      "locations": [
+        "records",
+        "clinic"
+      ],
+      "hero_shot": {
+        "action": "錯誤與血統知情日期寫完再摘冠",
+        "camera": "羅杏雙手摘冠單動作。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "冠珠不加勝利音"
+      },
+      "risk_controls": [
+        {
+          "risk": "Day14知道被误成Day15才初知",
+          "solution": "區分初知與次日驗證，冠從此離頭"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-crowned",
+        "ye-sui-uncrowned",
+        "luo-xing--base",
+        "shen-qiao--base",
+        "he-jing--base"
+      ],
+      "prop_checks": [
+        "crown,identity-papers",
+        "延續來源當集evidence/carry_forward：含知情時間的聲明由何靜留副本，沈巧持未完救災清單。；次集在群眾能聽見且可抄錄的場合提前承認假身世。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, luo-xing, shen-qiao, he-jing；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "冠珠不加勝利音",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：crown,identity-papers；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2332",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 30,
+      "title": "朕有話要說",
+      "characters": [
+        "ye-sui",
+        "pei-dingheng",
+        "shen-qiao",
+        "luo-xing"
+      ],
+      "locations": [
+        "relief"
+      ],
+      "hero_shot": {
+        "action": "身世原封公開，觀眾有不同反應",
+        "camera": "原封近景、群眾無字反應。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "登記角色說重點，群眾環境"
+      },
+      "risk_controls": [
+        {
+          "risk": "公開立即全體擁戴",
+          "solution": "混合反應，裴停糧的代價落地"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-uncrowned",
+        "pei-dingheng--base",
+        "shen-qiao--base",
+        "luo-xing--base"
+      ],
+      "prop_checks": [
+        "identity-papers,grain-account,crown",
+        "延續來源當集evidence/carry_forward：羅杏當眾出示收養簿正本，與族譜對照供人抄寫，之後交給共管封存；停糧令仍須核查送達與權限。；不能直接接歡呼擁立；第 31 集必須呈現分裂、撤約與剩下的救災選擇。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, pei-dingheng, shen-qiao, luo-xing；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "登記角色說重點，群眾環境",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：identity-papers,grain-account,crown；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2393",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 31,
+      "title": "有人留下，有人轉身",
+      "characters": [
+        "ye-sui",
+        "tang-min",
+        "shen-qiao",
+        "he-jing"
+      ],
+      "locations": [
+        "granary"
+      ],
+      "hero_shot": {
+        "action": "三人共同签而不是再次加冕",
+        "camera": "同桌輪流單簽。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "三次筆尖分開"
+      },
+      "risk_controls": [
+        {
+          "risk": "無冠章節又生成金冠",
+          "solution": "固定無冠look，當天是最後配給日"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-uncrowned",
+        "tang-min--base",
+        "shen-qiao--base",
+        "he-jing--base"
+      ],
+      "prop_checks": [
+        "crown,grain-account,public-case",
+        "延續來源當集evidence/carry_forward：退約與退款按可用現款分列，共管單三方各存一份。；韓鐸必須表明守護的是具體糧路與共同條款。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, tang-min, shen-qiao, he-jing；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "三次筆尖分開",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：crown,grain-account,public-case；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2465",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 32,
+      "title": "刀守的是哪條路",
+      "characters": [
+        "ye-sui",
+        "han-duo",
+        "tang-min",
+        "jia-xun"
+      ],
+      "locations": [
+        "gate"
+      ],
+      "hero_shot": {
+        "action": "小糧車通過依法守住的路",
+        "camera": "韓站界線外、車通過。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "車軸與軍令復誦"
+      },
+      "risk_controls": [
+        {
+          "risk": "韓恢復舊君絕對命令",
+          "solution": "用保城本權，不用女主血統號令"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-uncrowned",
+        "han-duo--base",
+        "tang-min--base",
+        "jia-xun--base"
+      ],
+      "prop_checks": [
+        "grain-account",
+        "延續來源當集evidence/carry_forward：護運條款與抵達車單可公開查，賈勳仍保有私藏底冊。；有了可維持數日的糧，眾人能坐下核帳，不必靠立即承諾赦免換證據。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, han-duo, tang-min, jia-xun；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "車軸與軍令復誦",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：grain-account；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2527",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 33,
+      "title": "三張桌拼成一本帳",
+      "characters": [
+        "ye-sui",
+        "he-jing",
+        "tang-min",
+        "jia-xun"
+      ],
+      "locations": [
+        "granary"
+      ],
+      "hero_shot": {
+        "action": "三份文件封在共同箱",
+        "camera": "三件落箱各一鏡。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "封繩、鈐印"
+      },
+      "risk_controls": [
+        {
+          "risk": "沈巧因道具箱在場變第五人",
+          "solution": "盒代表既有證據，沈巧無臉無新聲"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-uncrowned",
+        "he-jing--base",
+        "tang-min--base",
+        "jia-xun--base"
+      ],
+      "prop_checks": [
+        "public-case,three-seals",
+        "延續來源當集evidence/carry_forward：原件分封保管，三方簽頁與抄本在公倉公開桌。沈巧已簽名的原條盒在場，本人本集不出場說話。；次集查調兵公文，防止證據尚未完成就被斷掉護路。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, he-jing, tang-min, jia-xun；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "封繩、鈐印",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：public-case,three-seals；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2585",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 34,
+      "title": "午間送到的調兵令",
+      "characters": [
+        "ye-sui",
+        "han-duo",
+        "he-jing",
+        "pei-dingheng"
+      ],
+      "locations": [
+        "records",
+        "hall"
+      ],
+      "hero_shot": {
+        "action": "同交付號暴露假軍令",
+        "camera": "舊单與新令並置。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "讀同號碼"
+      },
+      "risk_controls": [
+        {
+          "risk": "祭典提前變成Day29處決",
+          "solution": "只Day30午→晨，何靜被帶問話"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-uncrowned",
+        "han-duo--base",
+        "he-jing--base",
+        "pei-dingheng--base"
+      ],
+      "prop_checks": [
+        "public-case",
+        "延續來源當集evidence/carry_forward：何靜被帶走前，已把第 4 日簽收回執與重複用號的假調兵令在殿內公開封存；首輔收到覆核要求。；祭天原定第 30 日午時改成辰時，倒數縮短數小時而非憑空改成另一日；葉穗得在沒有何靜的一夜裡自己對完北倉附約與底冊。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, han-duo, he-jing, pei-dingheng；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "讀同號碼",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：public-case；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2643",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 35,
+      "title": "同一張約，兩個主人",
+      "characters": [
+        "ye-sui",
+        "xiao-chengyue",
+        "pei-dingheng",
+        "tang-min"
+      ],
+      "locations": [
+        "hall"
+      ],
+      "hero_shot": {
+        "action": "無何靜的桌上比兩份敵方附件",
+        "camera": "葉唐兩手各守一邊。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "翻頁不使用何的聲音"
+      },
+      "risk_controls": [
+        {
+          "risk": "何靜被押仍遠程神解题",
+          "solution": "靠已在手文件，蕭決定自己的私糧封契"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-uncrowned",
+        "xiao-chengyue--base",
+        "pei-dingheng--base",
+        "tang-min--base"
+      ],
+      "prop_checks": [
+        "grain-account,public-case",
+        "延續來源當集evidence/carry_forward：共謀草約已封存；蕭承越掌握最後能比對首輔私倉印的糧契。；蕭選擇交出原件，次集在祭臺完成三套帳與實糧印的公開核對；唐敏與沈巧以共管簽名人的身分，依每日進度簿連夜行文內廷，要求辰時祭天前交回何靜。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, xiao-chengyue, pei-dingheng, tang-min；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "翻頁不使用何的聲音",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：grain-account,public-case；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2702",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 36,
+      "title": "祭天臺上的核帳桌",
+      "characters": [
+        "ye-sui",
+        "pei-dingheng",
+        "he-jing",
+        "jia-xun"
+      ],
+      "locations": [
+        "altar"
+      ],
+      "hero_shot": {
+        "action": "何靜先獲釋再上公開台",
+        "camera": "門外釋放文件接台前。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "聯署文與三帳分段讀"
+      },
+      "risk_controls": [
+        {
+          "risk": "何在台上瞬移或裴突然自愿認罪",
+          "solution": "先建立釋放，蕭封契與欠款链逼出簽字"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-uncrowned",
+        "pei-dingheng--base",
+        "he-jing--base",
+        "jia-xun--base"
+      ],
+      "prop_checks": [
+        "public-case,grain-account",
+        "延續來源當集evidence/carry_forward：校砣、三套帳與帶私倉印的糧契原件在同一核帳桌，抄件已散交各方。；證據成立後仍須真正解除首輔兵權，不能以觀眾震驚替代控制現場。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, pei-dingheng, he-jing, jia-xun；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "聯署文與三帳分段讀",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：public-case,grain-account；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2760",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 37,
+      "title": "交出那枚調兵印",
+      "characters": [
+        "ye-sui",
+        "han-duo",
+        "pei-dingheng",
+        "xiao-chengyue"
+      ],
+      "locations": [
+        "altar"
+      ],
+      "hero_shot": {
+        "action": "韓只收威脅武器，枷成證物",
+        "camera": "武器落架與證物枷分切。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "金属落下，无斬首音"
+      },
+      "risk_controls": [
+        {
+          "risk": "女主直接公開處死反派",
+          "solution": "依法羈押查款，葉也簽知情審查"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-uncrowned",
+        "han-duo--base",
+        "pei-dingheng--base",
+        "xiao-chengyue--base"
+      ],
+      "prop_checks": [
+        "public-case",
+        "延續來源當集evidence/carry_forward：調兵印、罪枷、祭天罪詔與附件（含首輔手上的收養副本）與原始帳冊列入公開保管清單，多方簽封。；次集設立可持續核帳與命令留檔，讓權限不再取決於一個人聲望。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, han-duo, pei-dingheng, xiao-chengyue；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "金属落下，无斬首音",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：public-case；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2818",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 38,
+      "title": "讓下一道命令也能被問",
+      "characters": [
+        "ye-sui",
+        "he-jing",
+        "tang-min",
+        "shen-qiao"
+      ],
+      "locations": [
+        "hall",
+        "granary"
+      ],
+      "hero_shot": {
+        "action": "各地回函有支持也有限制",
+        "camera": "北兩州回函與共同條款。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "讀有條件回覆"
+      },
+      "risk_controls": [
+        {
+          "risk": "Day31–40被剪成瞬間大團圓",
+          "solution": "保留欠款、過失及共同權限制"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-uncrowned",
+        "he-jing--base",
+        "tang-min--base",
+        "shen-qiao--base"
+      ],
+      "prop_checks": [
+        "grain-account,crown",
+        "延續來源當集evidence/carry_forward：公開糧簿、任命抄件與命令回執開始定期存檔，邀請各州的文書留送達紀錄，北面兩州的退件也一併入檔。；數月後才看協商與供應是否站得住；退回邀請的北面兩州要靠實際成果說服，不用蒙太奇假稱災害全消失。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, he-jing, tang-min, shen-qiao；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "讀有條件回覆",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：grain-account,crown；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2874",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 39,
+      "title": "第一批新糧",
+      "characters": [
+        "ye-sui",
+        "ye-jun",
+        "shen-qiao",
+        "luo-xing"
+      ],
+      "locations": [
+        "field",
+        "granary"
+      ],
+      "hero_shot": {
+        "action": "新糧與新合法牌在春光同框",
+        "camera": "新牌独立特寫。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "新穀乾響"
+      },
+      "risk_controls": [
+        {
+          "risk": "把被扣舊牌拿回當赦免",
+          "solution": "新编號新核发，Day120且追款未完"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-uncrowned",
+        "ye-jun--base",
+        "shen-qiao--base",
+        "luo-xing--base"
+      ],
+      "prop_checks": [
+        "permits,grain-account,crown",
+        "延續來源當集evidence/carry_forward：新糧驗收表、各州具名議約與案件公開摘要入檔，不口頭宣告所有債都已還清。；第 40 集只完成公開接受條款與本名宣誓，所有主線都已交代，不加下一季危機。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, ye-jun, shen-qiao, luo-xing；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "新穀乾響",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：permits,grain-account,crown；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2935",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    },
+    {
+      "episode": 40,
+      "title": "先看帳，再叫萬歲",
+      "characters": [
+        "ye-sui",
+        "shen-qiao",
+        "he-jing",
+        "han-duo"
+      ],
+      "locations": [
+        "hall"
+      ],
+      "hero_shot": {
+        "action": "先簽葉穗，再戴金冠",
+        "camera": "簽名與戴冠分成兩鏡。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "筆尖先于冠珠"
+      },
+      "risk_controls": [
+        {
+          "risk": "E40又換粥或先加冕再簽",
+          "solution": "沈巧問糧、何靜答账，不重造E1對話"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "ye-sui--base",
+        "ye-sui-uncrowned",
+        "ye-sui-recrowned",
+        "shen-qiao--base",
+        "he-jing--base",
+        "han-duo--base"
+      ],
+      "prop_checks": [
+        "crown,public-case,grain-account",
+        "延續來源當集evidence/carry_forward：本名議約、糧帳與送達回執公開留檔；秤砣回到公倉使用，不藏成皇室戰利品。；閉合結局，最後畫面完成身分與糧務回收，不留下新的威脅、神秘人物或待解罪案。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：ye-sui, shen-qiao, he-jing, han-duo；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "筆尖先于冠珠",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：crown,public-case,grain-account；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:2455",
+        "docs/videos/series-plans/binge-five-20260928/scapegoat-empress/source.mjs:3106"
+      ]
+    }
+  ],
+  "audio_plan": {
+    "motifs": [
+      "冠珠是權力條件音：E1壓頭、E29離開、E40簽後返回，無冠段不在配樂偷偷重現加冕聲。",
+      "糧袋、秤、算珠、印章各有可辨短音；內廷副印不與南關雙印共享聲標。",
+      "公文段用一個讀數接一個反應，禁止人聲/旁白/配樂三層同時爭理解。"
+    ],
+    "perspective": [
+      "固定旁白依setting.world.narrator，角色使用來源voice；旁白不得說角色尚未知的答案。",
+      "電話/隔門/廣播先聽清再加工；mono仍可分空間；畫外聲不能添加未登錄劇情角色。"
+    ],
+    "dynamic_rules": [
+      "關鍵人聲高於雨、車、火與配樂；證據被讀出的當下主動降低底層而非提高尖峰。",
+      "一次只讓一個人說必要資訊；撞擊、撕紙、敲門不與關鍵音節相撞。",
+      "Loudness/true peak依共享profile與交付實測，不在本設計虛稱已量測。"
+    ],
+    "locale_constraints": [
+      "先定案zh-TW台灣口音正片與獨立可開關CC；ja/ko/en先保留固定名詞、發音與節奏空間，之後各自配音對齊、各自CC，不硬套繁中時間碼。",
+      "字幕全部sidecar CC；不把對白、旁白、翻譯或聲音描述燒進影像。劇內必要文件/鐘/牌是道具，關鍵資訊仍由已登錄角色可聽地傳達。",
+      "角色voice_name沿用來源提案；不同語系先用同一聲音身份試錄，音色/年齡/口音不合則記錄新casting再核准，未試聽不可稱驗收。",
+      "旁白與角色不共用聲線。Veo 3.1 Lite原生聲音不作台詞主軌；分開乾淨人聲、音樂、音效/環境軌。",
+      "句尾保留呼吸和插入鏡空間；每語系先實測再定鏡長，快語速/硬裁句/凍結補秒不得作超時解法。",
+      "粥/御膳是食物，賦稅/借糧/官欠/預付/糧額分開；古風敬稱不能把條件責任譯成絕對赦免。",
+      "Day14知情和Day15驗證、Day30午改晨，日期用四語一致事件表，不能字面本地曆法換算。",
+      "葉穗是真姓名而非皇族假名；借位女帝/血統不實不等於她所有敕令自動作廢。"
+    ]
+  },
+  "acceptance_checks": [
+    "source_binding.source_sha256與當前JSON.stringify(source)相同；此為新增製作設計，不冒用舊獨立內容審查或正式核准。",
+    "opening_30s連續覆蓋0–30秒，每鏡<=8秒、具名角色<=3；實測zh-TW TTS完成後才確認5秒鉤子與30秒回報。",
+    "Gemini veo-3.1-lite-generate-preview，1080p、24fps、每次原片8秒；每片只一個主要動作，剪成3–6秒需要的長度，禁止freeze filler；證物用實際手部或環境動作插鏡，文字經查核後合成；靜畫僅限前製animatic。",
+    "Veo Lite不使用referenceImages/extension；角色身份由已核定臉部sheet與最終前景構圖逐鏡檢查，shot_looks只換衣物/物件狀態不換臉。",
+    "每鏡核對人物ID、左右側、持有人、出入口、當前知情、造型先後；外出轉場不得瞬移，原件/副本和手中/桌上物不可複製。",
+    "每集hero動作以獨立鏡頭素材拍攝；表中涉及第二個動作/反應/道具插入須另片，不把整段剪輯描述塞進單次生成。",
+    "字幕全部可開關CC，畫面無台詞燒錄；關CC仍能理解因果。CC開啟時逐條核對說話者、標點、人名、聲音描述和落點。",
+    "zh-TW先行做角色/旁白試聽、手機外放及mono檢查；ja/ko/en後續各有native聽校、獨立TTS時間軸與CC，未測不標完成。",
+    "角色聲線、道具文本、環境音與音樂權利及來源必須可追溯；沒有生成、渲染、聲音、成片或Studio驗收就維持design-only-not-render-tested。",
+    "最終片頭、預告、縮圖不泄露中後段答案；用實際留存與觀看數觀察改進，100萬點閱為目標不保證。",
+    "檢查每鏡實際可見年齡及episode.video_constraints；目前Lite I2V的allow_adult不能視為已支援未成年人。保留原年齡，先驗證手繪或合法支援供應商pilot；畫外聲不等同人物入鏡，不能宣稱400集已可直接全量拍攝。"
+  ],
+  "unresolved": [
+    {
+      "issue": "金冠戴／摘／重戴的命名造型與逐鏡工具已備妥，待實際切鏡與人物圖驗收。",
+      "why": "E29摘冠前crowned、摘後uncrowned；E40簽名前uncrowned、簽後recrowned，髮簪保留。需要驗證生成畫面確實按順序切換，毋須再開發造型工具。",
+      "episode_refs": [
+        1,
+        29,
+        40
+      ]
+    },
+    {
+      "issue": "糧批、三枚印與原件／副本的連戲規則已列入prop_rules，待美術素材和動態插鏡驗收。",
+      "why": "按已定的印章輪廓、票據欄位、封袋/縫合邊與各批供應日期製作；剩下核對實際道具文字、唯一性及持有人，不再等待另一份規劃裁定。",
+      "episode_refs": [
+        6,
+        9,
+        17,
+        19,
+        20,
+        24,
+        26,
+        28,
+        34
+      ]
+    },
+    {
+      "issue": "四語敬稱與制度術語尚未母語配音聽校。",
+      "why": "稱謂可壓縮但責任與條件不可減省。",
+      "episode_refs": [
+        10,
+        27,
+        36,
+        40
+      ]
+    }
+  ]
+}

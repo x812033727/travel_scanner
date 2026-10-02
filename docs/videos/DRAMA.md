@@ -1,6 +1,8 @@
 # AI 漫劇路線（drama）：設計
 
-2026-09-26 定案。這是既有全自動影片產線（[`DESIGN.md`](DESIGN.md)、[`AUTOMATION.md`](AUTOMATION.md)）的第二種格式：畫面不是投影片，而是 AI 生成的鏡頭片段；一支影片有旁白與多個角色；字幕燒進畫面；有背景音樂。這份只寫**為什麼這樣做**與各部分怎麼接起來；操作步驟在 skill `youtube-video` 的 `references/drama.md`（票 `2026-09-26-video-drama-skill-docs`）。工作分成 16 張票，id 都是 `2026-09-26-video-drama-*`。
+2026-09-26 起草，2026-10-01 更新字幕與動畫交付規格。這是既有全自動影片產線（[`DESIGN.md`](DESIGN.md)、[`AUTOMATION.md`](AUTOMATION.md)）的第二種格式：畫面是 AI 生成的鏡頭片段，一支影片有旁白、多個角色和背景音樂；新製作的對白與旁白字幕全為可開關 CC，`burn_in: false`。操作步驟在 skill `youtube-video` 的 `references/drama.md`。
+
+**這次十部作品**依[動畫製作規格](series-plans/production-20261001/README.md)：先完成 zh-TW 台灣口音版，核准鎖定後才製作 ja／ko／en 配音及各語 CC。採 Veo Lite 的八秒 1080p 動態素材，正片不以靜圖縮放或尾格停格補時；同集造型由核定 `shot_looks`／`character_looks` 選擇。先試音、實測分鏡和代表小樣，再放量。多角色外語配音及自動對嘴尚未因這輪而實作，歷史文件／核准不能代替新製作驗收。
 
 **2026-09-27 起**：單集與作品走同一條流程（單集是一部 `kind = one-off`、只有一集的作品，文件只有一份故事聖經 `bible`），漫劇不再用「選大綱」卡片，每支都有劇本關卡（`DRAMA_STEPS` 在 `fact-checked` 之後多了 `script approved`），站主可以在文件與劇本上跟模型討論（`video_drama_messages`）；設定分頁把漫劇與教學分開。設計在 [`DRAMA-FLOW.md`](DRAMA-FLOW.md)；下面「產線與關卡」改了第 1 步（站主核准故事聖經）、第 3 步（加聽眾審稿）、第 4 步（新的劇本關卡）、第 5 步（`auto_pick_look`）、第 12 步（只做繁中字幕）與第 13 步（成片自動品管），並加了第 15 步（語言）；其餘照舊。操作步驟在 skill 的 `references/drama.md`。
 
@@ -13,7 +15,7 @@
 | 題材 | 原創連載故事（玄幻、古風等）與 Mokaair 內容改編都要；第一支先做原創故事 |
 | 畫風 | 電影感 3D 寫實（同參考影片）；2D 日系之後以風格預設加入 |
 | 預算 | 先不設上限，第一支用最好的模型做，看實際花費再設；設定欄位仍有數字，預設開大 |
-| 格式 | 16:9、每集 2–4 分鐘、燒錄繁中字幕＋五語 CC；之後可合集 |
+| 格式 | 16:9、每集約 2–4 分鐘、可開關繁中 CC；日／韓／英版在繁中鎖定後；之後可合集 |
 | 供應商 | 只用站上已有金鑰的 Gemini 與 MiniMax；Kling 第二期 |
 
 「在參考影片之上」的可量化目標：角色跨鏡頭一致（有選定的設定圖當參考）、1080p 30 fps、每段片段過自動品檢（時長、黑格、凍格、切鏡、第 0 格對關鍵影格、視覺模型評分）不合格就重做、多角色配音、字幕排版乾淨、音樂在對白下自動壓低、名詞用發音字典與故事聖經統一。
@@ -25,7 +27,7 @@
 1. 故事聖經與分鏡的資料模型（`format: "drama"`）。
 2. 圖片、片段、音樂的生成，經伺服器（`apps/api/app/video_media/`）。
 3. 多角色配音（伺服器零改動：`/video/speech` 每次請求本來就帶 `voice`）。
-4. 含動態片段、音樂、燒錄字幕的合成。
+4. 含動態片段與音樂的合成，對白字幕另外交付 CC。
 
 企劃→撰稿→審稿的模型階段、審核頁、字幕翻譯、上架包、主機工人全部沿用。
 
@@ -63,7 +65,7 @@
 | 鏡頭場景 | `template: "shot"`，`data: { prompt (≤1000), camera?, motion?, negative?, characters?: [id]（≤3）, fit?: auto\|freeze\|slow\|trim, seed?, transition?: cut\|dissolve, start_frame?: { shot, at: "last" }, end_frame?: { prompt }, visual?: clip\|still }`；`visual` 預設 `clip`，`still` 不買片段，由 `assemble` 用關鍵影格加運鏡（下面「畫面等級與運鏡」）；句子不能有 `reveal`。`title`／`chapter`／`outro` 卡片仍可用 |
 | 句子 | 多 `speaker?: narrator\|<角色 id>`（預設 narrator）與 `emotion?`（≤80，Gemini 併進 style；Azure 忽略並警告） |
 | `music` | `{ prompt? , track?, sha256?, gain_db (-20), duck_db (-10), fade_in_ms (1500), fade_out_ms (3000) }`：有 `prompt` 由 `music` 階段經伺服器生成；有 `track` 用 `<VIDEO_WORKDIR>/_music/` 的檔案 |
-| `subtitles` | `{ burn_in（drama 預設 true、slides 預設 false）, style: drama\|plain, speaker_prefix (false) }` |
+| `subtitles` | `{ burn_in（預設 false；新自動製作固定 false）, style: drama\|plain, speaker_prefix (false) }`；舊手動影片仍可讀取其明確的燒錄設定 |
 | `thumbnail.data.shot?` | 用該鏡頭的關鍵影格當縮圖底圖 |
 
 **句子仍是時鐘。** 鏡頭長度＝句子音檔＋停頓＋場景間隔，`buildTimeline` 不變。`clips` 在 `tts` 之後跑，所以知道每鏡精確格數，向供應商要 `duration_s = clamp(ceil(frames/30), 4, 10)`，再對齊伺服器回報的可用秒數。片段長短對不上由 assemble 的 `fitPlan` 決定：`auto` 太長從第 0 格截（第 0 格就是關鍵影格，檢查才成立），太短先慢放到 ≥0.85× 再 `tpad` 凍格；凍格超過 60 格算問題。lint 對估計超過 12 秒的鏡頭報錯、超過 10 秒警告：長旁白拆成更多鏡頭。要延續動作用 `start_frame: { shot, at: "last" }`。

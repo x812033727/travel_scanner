@@ -43,6 +43,15 @@ def test_the_defaults_are_stable_catalog_entries_of_their_kind() -> None:
         assert found in media_options(vendor, kind)  # type: ignore[arg-type]
 
 
+def test_lite_uses_the_gemini_api_id_and_conservative_1080p_price() -> None:
+    lite = find_model("gemini", "clip", "veo-3.1-lite-generate-preview")
+    assert lite is not None
+    assert lite.resolutions == ("720p", "1080p") and lite.durations == (4, 6, 8)
+    assert lite.reference_images == 0 and lite.native_audio is True
+    assert PRICES[lite.id] == 0.08
+    assert DEFAULT_CLIP != ("gemini", lite.id), "adding a model must not switch existing jobs"
+
+
 def test_options_leave_retired_models_out_but_find_model_still_names_them(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:

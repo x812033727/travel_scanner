@@ -27,14 +27,22 @@ from app.video_reviews import admin_service as service
 from app.video_reviews.schemas import DecisionIn, ReviewIn, ReviewOut
 from app.video_reviews.storage import ReviewStore
 from app.video_shorts import costs
-from app.video_shorts.models import VideoShortsSlot
+from app.video_shorts.models import VideoShortsSlot, VideoShortsTopic
 from app.video_youtube import vps
 from app.video_youtube.errors import Refused
 
 SLUG = "shorts-review-renewal"
 FINAL_BYTES = b"the same final MP4"
 FINAL_SHA = hashlib.sha256(FINAL_BYTES).hexdigest()
-MODELS = (User, VideoToolToken, VideoProject, VideoReview, AdminAuditLog, VideoShortsSlot)
+MODELS = (
+    User,
+    VideoToolToken,
+    VideoProject,
+    VideoReview,
+    AdminAuditLog,
+    VideoShortsSlot,
+    VideoShortsTopic,
+)
 
 
 @dataclass

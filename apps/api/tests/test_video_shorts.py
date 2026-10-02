@@ -52,6 +52,7 @@ from app.video_shorts.models import (
     VideoShortsMetric,
     VideoShortsSettings,
     VideoShortsSlot,
+    VideoShortsTopic,
 )
 from app.video_shorts.schemas import (
     CostIn,
@@ -499,6 +500,7 @@ MODELS = (
     VideoDramaSeries,
     VideoShortsSettings,
     VideoShortsSlot,
+    VideoShortsTopic,
     VideoShortsMetric,
     VideoShortsCost,
     # The VPS uploader's settings row: the sender reads it (vps_settings.resolve) before it sends.

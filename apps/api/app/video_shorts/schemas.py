@@ -19,9 +19,11 @@ from pydantic import (
     model_validator,
 )
 
-from app.video_automation.schemas import VoiceSettings
+from app.video_automation.schemas import StageModel, VoiceSettings
+from app.video_shorts.models import DEFAULT_MAX_PER_MONTH
 
 ShortsLine = Literal["lab", "cut", "drama"]
+SubjectVariant = Literal["a", "b"]
 ShortsFilter = Literal["only", "exclude"]
 # Where a Short stands, as the tab groups them (docs/videos/SHORTS.md §一支 Shorts 的一生).
 ShortsState = Literal[
@@ -98,6 +100,10 @@ class SettingsWrite(StrictModel):
     budget_ntd_30d: int = Field(ge=0, le=1_000_000)
     budget_soft_ntd: int = Field(ge=0, le=1_000_000)
     budget_total_ntd: int = Field(ge=0, le=10_000_000)
+    # Phase two: the models an experiment tests under a and b (b left out tests a's model),
+    # and how many Shorts the worker may start in a month (docs/videos/SHORTS.md §端點).
+    subject_models: dict[SubjectVariant, StageModel] = Field(default_factory=dict)
+    max_per_month: int = Field(default=DEFAULT_MAX_PER_MONTH, ge=0, le=400)
 
     @field_validator("lines")
     @classmethod
@@ -167,6 +173,8 @@ class SettingsSave(StrictModel):
     budget_ntd_30d: int | None = None
     budget_soft_ntd: int | None = None
     budget_total_ntd: int | None = None
+    subject_models: dict[SubjectVariant, StageModel] | None = None
+    max_per_month: int | None = None
 
     def merged_over(self, current: dict[str, Any]) -> dict[str, Any]:
         sent = self.model_dump(exclude_unset=True)
@@ -544,3 +552,426 @@ class TickOut(BaseModel):
     removed: int = 0
     verified: bool = False
     quota_units: int = 0
+
+
+# --- phase two: topics, the weekly plan, the worker's jobs and the weekly report ----------------
+
+TopicStatus = Literal["idea", "ready", "needs_assets", "making", "made", "dropped"]
+TopicOrigin = Literal["campaign", "planner", "owner", "auto"]
+# What an experiment needs beyond text in and text out. The subscription runner takes text
+# only, so a model that must look at a picture or edit one needs a keyed vision model; a
+# program a model wrote needs an isolated place to run it; a generated picture costs money.
+Requirement = Literal["vision", "image_edit", "sandbox", "image_generation"]
+JobKind = Literal["report", "plan", "brief", "make"]
+# A topic's slug is the Short's video slug, so it follows the Shorts tool's rule (a letter
+# first, at least three characters) and the stores' (no hyphen at the end).
+TOPIC_SLUG_PATTERN = r"^[a-z][a-z0-9-]{1,78}[a-z0-9]$"
+NEED_KEY_PATTERN = r"^[a-z][a-z0-9-]{0,39}$"
+TEST_PROTOCOL_FIELDS: tuple[str, ...] = (
+    "setup",
+    "input",
+    "condition_a",
+    "condition_b",
+    "runs",
+    "scoring",
+    "failure_path",
+)
+SpecText = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=2000)]
+SpecLine = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=600)]
+Title = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=200)]
+Hook = Annotated[str, StringConstraints(strip_whitespace=True, max_length=300)]
+
+
+class ProtocolSpec(StrictModel):
+    """The experiment, frozen before it runs: the setup, the input, the two conditions, how
+    many runs, how it is scored, and what happens when a run fails."""
+
+    setup: SpecText | None = None
+    input: SpecText | None = None
+    condition_a: SpecText | None = None
+    condition_b: SpecText | None = None
+    runs: SpecText | None = None
+    scoring: SpecText | None = None
+    failure_path: SpecText | None = None
+
+
+class OutlineBeat(StrictModel):
+    seconds: str | None = Field(default=None, max_length=20)
+    voice: str | None = Field(default=None, max_length=400)
+    visual: str | None = Field(default=None, max_length=400)
+
+
+class TopicBrief(StrictModel):
+    """A topic's spec. The experiments line needs the seven protocol fields, at least one
+    truth check and at least one acceptance item before it is ready; a highlight or a drama
+    short needs its source video, which is the topic's ``source_slug``."""
+
+    test_protocol: ProtocolSpec = Field(default_factory=ProtocolSpec)
+    truth_check: list[SpecLine] = Field(default_factory=list, max_length=20)
+    acceptance: list[SpecLine] = Field(default_factory=list, max_length=20)
+    narration_outline: list[OutlineBeat] = Field(default_factory=list, max_length=20)
+    titles: list[SpecLine] = Field(default_factory=list, max_length=6)
+    source_material: list[SpecLine] = Field(default_factory=list, max_length=20)
+    source_ids: list[Annotated[str, StringConstraints(max_length=120)]] = Field(
+        default_factory=list, max_length=20
+    )
+    estimated_seconds: int | None = Field(default=None, ge=10, le=180)
+    requires: list[Requirement] = Field(default_factory=list, max_length=4)
+    notes: str | None = Field(default=None, max_length=4000)
+
+    @field_validator("requires")
+    @classmethod
+    def _once(cls, value: list[Requirement]) -> list[Requirement]:
+        return sorted(set(value))
+
+
+class AssetNeed(StrictModel):
+    """Something only the owner can supply: ``count`` files under ``key``."""
+
+    key: str = Field(pattern=NEED_KEY_PATTERN)
+    label: str = Field(min_length=1, max_length=200)
+    count: int = Field(default=1, ge=1, le=10)
+
+
+class TopicIn(StrictModel):
+    """A topic the planner wrote, or an idea the owner typed. The planner names its slug;
+    the owner's idea is given one."""
+
+    slug: str | None = Field(default=None, pattern=TOPIC_SLUG_PATTERN)
+    line: ShortsLine = "lab"
+    series: str | None = Field(default=None, pattern=SHORTS_SERIES_PATTERN)
+    title: Title
+    hook: Hook | None = None
+    brief: TopicBrief = Field(default_factory=TopicBrief)
+    source_slug: str | None = Field(default=None, pattern=SLUG_PATTERN)
+    assets_needed: list[AssetNeed] = Field(default_factory=list, max_length=6)
+    release_order: int | None = Field(default=None, ge=0, le=100_000)
+
+    @model_validator(mode="after")
+    def _needs_once(self) -> Self:
+        keys = [need.key for need in self.assets_needed]
+        if len(set(keys)) != len(keys):
+            raise ValueError("assets_needed keys must not repeat")
+        return self
+
+
+class TopicsIn(StrictModel):
+    topics: list[TopicIn] = Field(min_length=1, max_length=30)
+
+    @model_validator(mode="after")
+    def _named(self) -> Self:
+        slugs = [topic.slug for topic in self.topics]
+        if any(slug is None for slug in slugs):
+            raise ValueError("every topic the planner writes names its slug")
+        if len(set(slugs)) != len(slugs):
+            raise ValueError("a slug appears twice")
+        return self
+
+
+class TopicPatch(StrictModel):
+    """The owner's change to a topic: what is left out stays. ``dropped`` true gives it up,
+    false takes a dropped one back."""
+
+    title: Title | None = None
+    hook: Hook | None = None
+    series: str | None = Field(default=None, pattern=SHORTS_SERIES_PATTERN)
+    brief: TopicBrief | None = None
+    assets_needed: list[AssetNeed] | None = Field(default=None, max_length=6)
+    release_order: int | None = Field(default=None, ge=0, le=100_000)
+    note: Note | None = None
+    dropped: bool | None = None
+
+
+class AssetOut(BaseModel):
+    id: UUID
+    need: str
+    sha256: str
+    filename: str
+    content_type: str
+    size: int
+    author: str
+    taken_on: date | None = None
+    rights_note: str
+    created_at: datetime
+    # Where the worker reads the file with its video tool token.
+    download_path: str
+
+
+class TopicOut(BaseModel):
+    slug: str
+    line: ShortsLine
+    series: str | None = None
+    title: str
+    hook: str | None = None
+    status: TopicStatus
+    brief: dict[str, Any]
+    source_slug: str | None = None
+    origin: TopicOrigin
+    release_order: int | None = None
+    assets_needed: list[dict[str, Any]]
+    assets: list[AssetOut]
+    # Why the topic cannot be made yet, in the owner's words; empty when it can.
+    waiting_for: list[str]
+    paid: bool
+    project_slug: str | None = None
+    started_at: datetime | None = None
+    finished_at: datetime | None = None
+    note: str | None = None
+    created_at: datetime
+    updated_at: datetime
+
+
+class TopicsOut(BaseModel):
+    items: list[TopicOut]
+
+
+class TopicResult(BaseModel):
+    slug: str
+    result: Literal["created", "updated", "exists"]
+    # None when the slug is a video's rather than a topic's.
+    status: TopicStatus | None = None
+
+
+class TopicsWrittenOut(BaseModel):
+    created: int
+    updated: int = 0
+    skipped: int
+    items: list[TopicResult]
+
+
+# campaign.json (docs/videos/ai-shorts/campaign), read leniently: the import takes the file as
+# it is and keeps what a topic needs.
+
+
+class CampaignProtocol(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    setup_zh: str | None = None
+    input_zh: str | None = None
+    condition_a_zh: str | None = None
+    condition_b_zh: str | None = None
+    runs_zh: str | None = None
+    scoring_zh: str | None = None
+    failure_path_zh: str | None = None
+
+
+class CampaignBeat(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    seconds: str | None = None
+    voice_zh: str | None = None
+    visual_zh: str | None = None
+
+
+class CampaignTopic(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    slug: str = Field(pattern=TOPIC_SLUG_PATTERN)
+    series: str | None = Field(default=None, pattern=SHORTS_SERIES_PATTERN)
+    series_id: str | None = Field(default=None, pattern=SHORTS_SERIES_PATTERN)
+    release_order: int | None = Field(default=None, ge=0, le=100_000)
+    topic_zh: str = Field(min_length=1, max_length=200)
+    hook_zh: str | None = Field(default=None, max_length=300)
+    estimated_seconds: int | None = Field(default=None, ge=10, le=180)
+    test_protocol: CampaignProtocol | None = None
+    source_material: list[str] = Field(default_factory=list, max_length=20)
+    truth_check: list[str] = Field(default_factory=list, max_length=20)
+    provisional_titles: list[str] = Field(default_factory=list, max_length=6)
+    narration_outline: list[CampaignBeat] = Field(default_factory=list, max_length=20)
+    acceptance: list[str] = Field(default_factory=list, max_length=20)
+    source_ids: list[str] = Field(default_factory=list, max_length=20)
+
+
+class CampaignIn(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    campaign_id: str | None = Field(default=None, max_length=80)
+    topics: list[CampaignTopic] = Field(min_length=1, max_length=200)
+
+
+# The worker's next job (GET /video/automation/shorts/next).
+
+
+class SlotRef(BaseModel):
+    id: UUID
+    starts_at: datetime
+    local_date: date
+    local_time: str
+    status: SlotStatus
+    line: ShortsLine | None = None
+    series: str | None = None
+    topic_slug: str | None = None
+    project_slug: str | None = None
+
+
+class TopicSummary(BaseModel):
+    slug: str
+    line: ShortsLine
+    series: str | None = None
+    title: str
+    hook: str | None = None
+    status: TopicStatus
+    origin: TopicOrigin
+    release_order: int | None = None
+    paid: bool
+
+
+class PublishedShort(BaseModel):
+    """A Short that went public, with every snapshot YouTube reported for it as stored."""
+
+    slug: str
+    title: str
+    line: ShortsLine | None = None
+    series: str | None = None
+    youtube_video_id: str
+    published_at: datetime | None = None
+    snapshots: list[MetricOut]
+
+
+class ReportJob(BaseModel):
+    week_start: date
+    week_end: date
+    timezone: str
+    published: list[PublishedShort]
+    missed: list[SlotRef]
+    costs: list[CostOut]
+    budget: BudgetOut
+    next_week: list[SlotRef]
+
+
+class PlanJob(BaseModel):
+    window_start: datetime
+    window_end: datetime
+    timezone: str
+    lines: list[ShortsLine]
+    weekly_quota: dict[str, int]
+    open_slots: list[SlotRef]
+    planned: list[SlotRef]
+    topics: list[TopicSummary]
+    last_week: list[PublishedShort]
+    budget: BudgetOut
+
+
+class BriefJob(BaseModel):
+    lines: list[ShortsLine]
+    weekly_quota: dict[str, int]
+    # Topics that could be planned now, against two weeks of the quotas.
+    have: int
+    want: int
+    by_line: dict[str, int]
+    # The owner's ideas and the planner's unfinished ones, to be completed; and every topic
+    # the pool holds, so a new one does not repeat one.
+    ideas: list[TopicOut]
+    existing: list[TopicSummary]
+
+
+class SourceVideo(BaseModel):
+    slug: str
+    title: str
+    format: str
+    youtube_video_id: str | None = None
+    youtube_publish_at: datetime | None = None
+    source_guide: str | None = None
+    category: str | None = None
+    series_slug: str | None = None
+    episode_number: int | None = None
+
+
+class MakeJob(BaseModel):
+    slot: SlotRef
+    topic: TopicOut
+    line: ShortsLine
+    # The video the Short is made under when the worker resumes one it started; a new one is
+    # named by POST shorts/{topic}/start.
+    project_slug: str | None = None
+    resume: bool
+    source: SourceVideo | None = None
+    channel_stance: str
+    seconds_min: int
+    seconds_max: int
+
+
+class NextOut(BaseModel):
+    kind: JobKind | None
+    # Why a job that might have come did not, in the owner's words.
+    holds: list[str]
+    report: ReportJob | None = None
+    plan: PlanJob | None = None
+    brief: BriefJob | None = None
+    make: MakeJob | None = None
+
+
+# What the worker writes back.
+
+
+class PlanItem(StrictModel):
+    slot_id: UUID
+    topic_slug: str = Field(pattern=TOPIC_SLUG_PATTERN)
+
+
+class PlanIn(StrictModel):
+    """The planner's week: a topic for each slot it fills. An empty plan says it found
+    nothing to put in the open slots, and is recorded so it is not asked again at once."""
+
+    items: list[PlanItem] = Field(default_factory=list, max_length=60)
+
+
+class PlanOut(BaseModel):
+    planned: list[SlotOut]
+
+
+class StartOut(BaseModel):
+    topic: TopicOut
+    project_slug: str
+    created: bool
+
+
+class DoneIn(StrictModel):
+    """The worker finished a topic: its Short was pushed (``made``), or the topic turned
+    out not to make one (``dropped``, with the reason)."""
+
+    outcome: Literal["made", "dropped"] = "made"
+    note: Note | None = None
+
+
+class ReportRowIn(StrictModel):
+    """A snapshot the report cites; the server copies its values as they were stored."""
+
+    youtube_video_id: str = Field(pattern=r"^[A-Za-z0-9_-]{6,32}$")
+    period: MetricPeriod
+    source: MetricSource
+
+
+class ReportPlanItem(StrictModel):
+    starts_at: AwareDatetime | None = None
+    topic_slug: str | None = Field(default=None, pattern=TOPIC_SLUG_PATTERN)
+    line: ShortsLine | None = None
+    note: Note | None = None
+
+
+class ReportIn(StrictModel):
+    week_start: date
+    body_md: str = Field(min_length=1, max_length=40_000)
+    rows: list[ReportRowIn] = Field(default_factory=list, max_length=400)
+    plan: list[ReportPlanItem] = Field(default_factory=list, max_length=60)
+    provider: str | None = Field(default=None, max_length=40)
+    model: str | None = Field(default=None, max_length=128)
+
+
+class ReportOut(BaseModel):
+    id: UUID
+    week_start: date
+    body_md: str
+    rows: list[dict[str, Any]]
+    plan: list[dict[str, Any]]
+    provider: str | None = None
+    model: str | None = None
+    generated_at: datetime
+    updated_at: datetime
+
+
+class ReportsOut(BaseModel):
+    items: list[ReportOut]
+
+
+class AssetPartOut(BaseModel):
+    received: list[int]
+    complete: bool
+    asset: AssetOut | None = None
+    topic: TopicOut | None = None

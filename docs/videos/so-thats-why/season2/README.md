@@ -1,6 +1,6 @@
 # 原來如此事務所第二季：製作包交接
 
-2026-10-01 完成八批共32題文字包：**B26、S26、T26、A31**、**B27、S27、T28、A33**、**B48、S44、T33、A36**、**B37、S31、T29、A41**、**B46、S32、T41、A40**、**B44、S43、T43、A46**、**B47、S48、T48、A44**及**B50、S36、T45、A39**。原題庫100題的「checked」是題目查核，本頁的「文字包已審」是本日逐集企劃及獨立審稿；沒有長片完整逐字稿、生成音訊／圖片／成片、正式匯入、核准或上架。
+2026-10-01 完成九批共36題文字包：**B26、S26、T26、A31**、**B27、S27、T28、A33**、**B48、S44、T33、A36**、**B37、S31、T29、A41**、**B46、S32、T41、A40**、**B44、S43、T43、A46**、**B47、S48、T48、A44**、**B50、S36、T45、A39**及**B42、S35、T35、A37**。原題庫100題的「checked」是題目查核，本頁的「文字包已審」是本日逐集企劃及獨立審稿；沒有長片完整逐字稿、生成音訊／圖片／成片、正式匯入、核准或上架。
 
 | 順序提案 | 本集問題 | 製作包 | 作者→獨立查核／聽眾文字審稿 |
 | --- | --- | --- | --- |
@@ -72,9 +72,18 @@
 | 3 | 計程車自動門與有日期的入口設計 | [T45](T45.md) | root→write_b26；[報告](reviews/batch08/T45.md)／[收據](reviews/batch08/T45.json) |
 | 4 | 複製貼上的兩步編輯與專用鍵 | [A39](A39.md) | write_t26→write_a31；[報告](reviews/batch08/A39.md)／[收據](reviews/batch08/A39.json) |
 
+第九批順序也是本批提案，沒有發布日期。
+
+| 順序提案 | 本集問題 | 製作包 | 作者→獨立查核／聽眾文字審稿 |
+| --- | --- | --- | --- |
+| 1 | Sega2001停製與他社遊戲供應 | [B42](B42.md) | write_b26→root；[報告](reviews/batch09/B42.md)／[收據](reviews/batch09/B42.json) |
+| 2 | 部分秋葉紅色的新合成與原有黃色 | [S35](S35.md) | write_a31→write_t26；[報告](reviews/batch09/S35.md)／[收據](reviews/batch09/S35.json) |
+| 3 | 年越蕎麥寓意與地方時間差異 | [T35](T35.md) | root→write_b26；[報告](reviews/batch09/T35.md)／[收據](reviews/batch09/T35.json) |
+| 4 | 電源轉換的有條件縮小空間 | [A37](A37.md) | write_t26→write_a31；[報告](reviews/batch09/A37.md)／[收據](reviews/batch09/A37.json) |
+
 每包包含本日來源與限制、前提／備註貼用欄位、480秒六章大綱、兩支180–220中文／英文數字詞單位Shorts、原創插畫／縮圖提示、五語長短片標題與說明。章長和Shorts秒數為估值，實際製作要重新查核新增主張、展開分鏡、審稿、TTS試聽、成片與平台驗收。
 
-五語可解析包：[batch01-packaging.json](batch01-packaging.json)、[batch02-packaging.json](batch02-packaging.json)、[batch03-packaging.json](batch03-packaging.json)、[batch04-packaging.json](batch04-packaging.json)、[batch05-packaging.json](batch05-packaging.json)、[batch06-packaging.json](batch06-packaging.json)、[batch07-packaging.json](batch07-packaging.json)與[batch08-packaging.json](batch08-packaging.json)，合計32長片企劃＋64Shorts共480組標題／說明。`proposed_order`僅本批順序，不改第一季排程，不設定發布日期。
+五語可解析包：[batch01-packaging.json](batch01-packaging.json)、[batch02-packaging.json](batch02-packaging.json)、[batch03-packaging.json](batch03-packaging.json)、[batch04-packaging.json](batch04-packaging.json)、[batch05-packaging.json](batch05-packaging.json)、[batch06-packaging.json](batch06-packaging.json)、[batch07-packaging.json](batch07-packaging.json)、[batch08-packaging.json](batch08-packaging.json)與[batch09-packaging.json](batch09-packaging.json)，合計36長片企劃＋72Shorts共540組標題／說明。`proposed_order`僅本批順序，不改第一季排程，不設定發布日期。
 
 ```powershell
 node docs/videos/so-thats-why/season2/validate.mjs
@@ -85,8 +94,9 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch05
 node docs/videos/so-thats-why/season2/validate.mjs --batch=batch06
 node docs/videos/so-thats-why/season2/validate.mjs --batch=batch07
 node docs/videos/so-thats-why/season2/validate.mjs --batch=batch08
+node docs/videos/so-thats-why/season2/validate.mjs --batch=batch09
 # 正文與獨立審稿已更新且收據重綁後，才重產包裝：
-node docs/videos/so-thats-why/season2/validate.mjs --batch=batch08 --write
+node docs/videos/so-thats-why/season2/validate.mjs --batch=batch09 --write
 ```
 
 檢查器核100題id、五語、欄位上限、Shorts估時、六章合計、檔案入口及byte SHA256。它不做外部查核或媒體QA，不能自行把新稿視為已審；修改包後必須交不同作者審稿，更新報告與收據。審稿報告與本包各自有雜湊。
@@ -107,13 +117,15 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch08 --write
 
 第八批限制：B50分開1974活動與1985商品，不採起源逸事/營收/2026預訂；S36以乾燥情境與材料接觸分離說明，不普說臺灣冬天乾燥或高濕不起電；T45保留協會「多數」及2017車款範圍，現行頁殼/404不採，不推感應/拉桿通則；A39保留Gypsy專用鍵與參與者回憶歸屬，WindowsCtrl與MacCommand分開，不採V字形/鄰鍵或未核選字動機。
 
+第九批限制：B42限2001宣布與品牌後來回顧，兩官方歷史頁UA403而web正文可讀，未採2001PDF數字或永久新機斷言；S35保留部分紅葉新合成與綠色仍在時的時間重疊，不推唯一用途/養分回收；T35保留寓意、據傳及會津地域例子，刪六成數字與午夜規範；A37採2015工程潛力與整體電路配合，不推所有2026商品小冷安全。
+
 ## 下一批接手
 
-母票仍開放，目前完成32題文字包；其餘68題尚待逐題審選，不能將列出題名當製作完成。開始下批先查分支／worktree／PR碰撞，再開窄scope批次票。現有製作包以本分支草稿PR交接，合併前不要另寫這三十二檔。
+母票仍開放，目前完成36題文字包；其餘64題尚待逐題審選，不能將列出題名當製作完成。開始下批先查分支／worktree／PR碰撞，再開窄scope批次票。現有製作包以本分支草稿PR交接，合併前不要另寫這三十六檔。
 
 - A26：與既有AI名詞「上下文視窗」題重疊，本批跳過；需選新的可核實角度再採用。
 - S50／第三季S55、A29/A30／第三季A70、A38／第三季A58：下一批挑選前比較原查核與第一季、品牌故事、AI名詞企劃，避免重複同一問題及例子；目前尚未裁決。
-- B26/S26/T26/A31/B27/S27/T28/A33/B48/S44/T33/A36/B37/S31/T29/A41/B46/S32/T41/A40/B44/S43/T43/A46/B47/S48/T48/A44/B50/S36/T45/A39：文字包通過後續還要有完整長片稿與真實製作；不操作正式站或付費生成。
+- B26/S26/T26/A31/B27/S27/T28/A33/B48/S44/T33/A36/B37/S31/T29/A41/B46/S32/T41/A40/B44/S43/T43/A46/B47/S48/T48/A44/B50/S36/T45/A39/B42/S35/T35/A37：文字包通過後續還要有完整長片稿與真實製作；不操作正式站或付費生成。
 
 ## 100題逐題入口
 
@@ -137,7 +149,7 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch08 --write
 | B39 | 為什麼玩具反斗城在美國倒閉，台灣卻還在？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
 | B40 | 為什麼富士軟片沒有像柯達一樣聲請破產？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
 | B41 | 為什麼 Walmart 在德國賣不起來？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
-| B42 | 為什麼 Sega 不再推出新的家用主機？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
+| B42 | 為什麼 Sega 不再推出新的家用主機？ | 窄化（2001轉型，不判永久新機現況）；[文字包已審](B42.md)；媒體未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
 | B43 | 為什麼賣飲料的 Red Bull 要自己辦比賽、拍影片？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
 | B44 | 為什麼輪胎公司要替餐廳評星星？ | [文字包已審](B44.md)；媒體未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
 | B45 | 為什麼百圓商店賣一百圓還能賺？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-B39-B50.md) |
@@ -155,7 +167,7 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch08 --write
 | S32 | 為什麼海水是鹹的，河水卻不鹹？ | [文字包已審](S32.md)；媒體未製作 | [原報告](../topic-checks/s2-S26-S38.md) |
 | S33 | 為什麼玻璃是透明的？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S26-S38.md) |
 | S34 | 為什麼蚊子特別愛咬某些人？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S26-S38.md) |
-| S35 | 為什麼秋天的葉子會變紅？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S26-S38.md) |
+| S35 | 為什麼秋天的葉子會變紅？ | 窄化（部分紅葉新合成，不推唯一用途）；[文字包已審](S35.md)；媒體未製作 | [原報告](../topic-checks/s2-S26-S38.md) |
 | S36 | 為什麼冬天摸門把會被電到？ | 窄化（乾燥情境，不以季節代替濕度）；[文字包已審](S36.md)；媒體未製作 | [原報告](../topic-checks/s2-S26-S38.md) |
 | S37 | 為什麼吃完飯會想睡覺？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S26-S38.md) |
 | S38 | 為什麼薄荷會讓嘴巴覺得涼？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-S26-S38.md) |
@@ -180,7 +192,7 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch08 --write
 | T32 | 為什麼西班牙人晚餐吃得特別晚？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T26-T38.md) |
 | T33 | 為什麼有些國家的時差不是整點？ | [文字包已審](T33.md)；媒體未製作 | [原報告](../topic-checks/s2-T26-T38.md) |
 | T34 | 為什麼日本不少溫泉拒絕刺青？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T26-T38.md) |
-| T35 | 為什麼日本人跨年習慣吃蕎麥麵？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T26-T38.md) |
+| T35 | 為什麼日本人跨年習慣吃蕎麥麵？ | 窄化（文化寓意及地域例子，刪比例與午夜規範）；[文字包已審](T35.md)；媒體未製作 | [原報告](../topic-checks/s2-T26-T38.md) |
 | T36 | 為什麼韓國人生日習慣喝海帶湯？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T26-T38.md) |
 | T37 | 為什麼冰島人大多沒有家族姓氏？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T26-T38.md) |
 | T38 | 為什麼瑞士不是歐盟國家，卻在申根區？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-T26-T38.md) |
@@ -207,7 +219,7 @@ node docs/videos/so-thats-why/season2/validate.mjs --batch=batch08 --write
 | A34 | 為什麼「儲存」圖示還是一張磁碟片？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A26-A38.md) |
 | A35 | 為什麼硬碟容量標示曾經鬧上法院？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A26-A38.md) |
 | A36 | 為什麼 QR Code 破了一塊還可能掃得到？ | [文字包已審](A36.md)；媒體未製作 | [原報告](../topic-checks/s2-A26-A38.md) |
-| A37 | 為什麼充電器功率變大，體積卻變小？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A26-A38.md) |
+| A37 | 為什麼充電器功率變大，體積卻變小？ | 窄化（同功率設計潛力，不推商品性能）；[文字包已審](A37.md)；媒體未製作 | [原報告](../topic-checks/s2-A26-A38.md) |
 | A38 | 為什麼 GPS 要用到相對論？ | 待後續審選；本批未製作 | [原報告](../topic-checks/s2-A26-A38.md) |
 | A39 | 為什麼複製是 Ctrl+C、貼上是 Ctrl+V？ | 換角度（兩步編輯，未採字母選擇動機）；[文字包已審](A39.md)；媒體未製作 | [原報告](../topic-checks/s2-A39-A50.md) |
 | A40 | 為什麼網址前面常有 www？ | [文字包已審](A40.md)；媒體未製作 | [原報告](../topic-checks/s2-A39-A50.md) |
