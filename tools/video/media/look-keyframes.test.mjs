@@ -272,6 +272,38 @@ test("keyframes need the approved look, draw each shot from the chosen sheets, r
   assert.match(again.out.stdout, /WARN shots opening and farewell look alike/);
 });
 
+test("two looks in one episode share the approved face sheet and carry appearance into image judging", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const doc = dramaFixture();
+  doc.characters[0].shot_looks = [
+    { id: "present", appearance: "adult woman in a navy business suit with short hair" },
+    { id: "past", appearance: "young woman in a white ancient robe with braided hair" },
+  ];
+  doc.scenes[1].data.character_looks = { jingwei: "past" };
+  doc.scenes[2].data.character_looks = { jingwei: "present" };
+  doc.scenes[1].data.end_frame = { prompt: "the woman turns away" };
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+  const site = mediaSite({ verdicts: () => ({ overall: 9, passed: true, problems: [] }) });
+  assert.equal(await main(["look", "--slug", box.slug], context(box, site.fetchImpl).ctx), EXIT.ok);
+  const sheets = manifestOf(box, "characters");
+  assert.deepEqual(Object.keys(sheets.characters), ["jingwei", "yandi"], "no duplicate cast or per-shot faces");
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr || run.out.stdout);
+  const images = site.state.images.filter((request) => request.purpose === "keyframe");
+  const past = images.find((request) => request.shot_id === "farewell");
+  const present = images.find((request) => request.shot_id === "sea-storm");
+  assert.equal(past.references[0].sha256, present.references[0].sha256, "both ages use the same approved identity anchor");
+  assert.match(past.prompt, /white ancient robe/);
+  assert.match(present.prompt, /navy business suit/);
+  assert.match(present.prompt, /same facial identity/);
+  assert.ok(images.some((request) => request.prompt.includes("the woman turns away") && request.prompt.includes("white ancient robe")), "end frame uses the same selected look");
+  const verdict = site.state.judges.find((request) => request.kind === "keyframe" && request.context.shot.id === "sea-storm");
+  assert.match(verdict.rubric[0].question, /override the sheet/);
+  assert.equal(verdict.context.characters[0].description, doc.characters[0].shot_looks[0].appearance);
+  assert.equal((await approvalState({ gate: "look", docDir: box.dir, workdir: box.workdir })).status, "approved");
+});
+
 test("a shot that never passes is left for a prompt fix after the last take", async () => {
   const box = sandbox("fixture-drama", "drama");
   const site = mediaSite({ verdicts: (kind, request) => (kind === "keyframe" && request.context.shot.id === "bird" ? { overall: 3, passed: false, problems: ["no bird"] } : { overall: 9, passed: true }) });

@@ -10,7 +10,7 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 
 import { approvalState } from "../core/approvals.mjs";
-import { burnIn, hasCast, hasPictures, illustrated, lookHash, picturesHash, resolveLook, shotScenes } from "../core/drama.mjs";
+import { burnIn, hasCast, hasPictures, illustrated, lookHash, picturesHash, resolveLook, shotAppearancePrompt, shotCast, shotScenes } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, lintProject, loadProject, lookChosen, recordStage } from "../core/state.mjs";
 import { visualHash } from "../core/timeline.mjs";
@@ -51,7 +51,9 @@ export function keyframeRubric(characters, { subtitleBand = true } = {}) {
   return [
     ...characters.map((character) => ({
       key: `identity_${character.id.replace(/-/g, "_")}`,
-      question: `Is ${character.name} in the keyframe the same person as in the reference sheet labelled "${character.name}": face, hair, clothing, build?`,
+      question: character.shot_look
+        ? `Is ${character.name} the same facial identity and recognizable bone structure as the reference sheet, while matching the requested look ${character.shot_look}: ${character.appearance}? The requested clothing, hair and age override the sheet's styling.`
+        : `Is ${character.name} in the keyframe the same person as in the reference sheet labelled "${character.name}": face, hair, clothing, build?`,
       weight: 2,
     })),
     { key: "prompt", question: "Does the picture show what the shot prompt describes: subjects, setting, action, framing?", weight: 2 },
@@ -67,7 +69,7 @@ export function keyframeRubric(characters, { subtitleBand = true } = {}) {
 }
 
 export function shotPrompt(scene, look, characters) {
-  const cast = characters.map((character) => `${character.name}: ${character.appearance}`).join("; ");
+  const cast = shotAppearancePrompt(characters);
   return `${scene.data.prompt}. Style: ${look.style}${scene.data.camera ? `. Camera: ${scene.data.camera}` : ""}${cast ? `. Characters: ${cast}` : ""}`.slice(0, 4000);
 }
 
@@ -125,8 +127,7 @@ export async function run(command, args, ctx) {
   if (!shots.length) throw new UsageError(`--shot ${values.shot} names no shot of ${doc.slug}`);
   const takes = values.takes ? Number(values.takes) : MAX_KEYFRAME_TAKES;
   if (!Number.isInteger(takes) || takes < 1 || takes > 6) throw new UsageError("--takes must be 1 to 6");
-  const byId = new Map((doc.characters ?? []).map((character) => [character.id, character]));
-  const cast = (scene) => (scene.data.characters ?? []).map((id) => byId.get(id)).filter(Boolean);
+  const cast = (scene) => shotCast(doc, scene);
 
   // The look must be approved as it stands, with a sheet chosen (or suggested) for every
   // character. A narrator-only drama has no character, so no sheet to wait for.
@@ -248,7 +249,7 @@ export async function run(command, args, ctx) {
     // An end frame guides the clip's last picture; it is not judged, only drawn.
     if (scene.data.end_frame?.prompt) {
       try {
-        const end = await stage.image({ id: `${scene.id}/end`, purpose: "keyframe", prompt: `${scene.data.end_frame.prompt}. Style: ${look.style}`.slice(0, 4000), negative: look.negative, references, seed: 1, shotId: scene.id, target: `keyframes/${scene.id}-end` });
+        const end = await stage.image({ id: `${scene.id}/end`, purpose: "keyframe", prompt: shotPrompt({ ...scene, data: { ...scene.data, prompt: scene.data.end_frame.prompt } }, look, characters), negative: look.negative, references, seed: 1, shotId: scene.id, target: `keyframes/${scene.id}-end` });
         if (!end.reused) generated += 1;
         record.end_frame = { file: end.file, sha256: end.sha256, key: end.key };
       } catch (error) {

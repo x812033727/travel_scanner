@@ -45,6 +45,11 @@ class GeminiVideo:
     def request_body(self, request: MediaRequest) -> dict[str, Any]:
         if request.first_frame is None:
             raise MediaUpstreamError(422, "a clip needs its first frame", "invalid")
+        lite = request.model == "veo-3.1-lite-generate-preview"
+        if lite and request.references:
+            raise MediaUpstreamError(422, "Veo Lite does not support referenceImages", "invalid")
+        if lite and request.resolution == "1080p" and request.seconds != 8:
+            raise MediaUpstreamError(422, "Veo Lite 1080p requires eight seconds", "invalid")
         instance: dict[str, Any] = {"prompt": request.prompt, "image": _image(request.first_frame)}
         if request.last_frame is not None:
             instance["lastFrame"] = _image(request.last_frame)
@@ -56,8 +61,11 @@ class GeminiVideo:
             "aspectRatio": request.aspect,
             "durationSeconds": request.seconds,
             "personGeneration": "allow_adult",
-            "generateAudio": request.native_audio,
         }
+        # Lite always generates audio. Its API has no generateAudio switch; the final
+        # edit discards that track and uses separately recorded dialogue/music/effects.
+        if not lite:
+            parameters["generateAudio"] = request.native_audio
         if request.resolution:
             parameters["resolution"] = request.resolution
         if request.negative_prompt:

@@ -66,6 +66,14 @@ METRIC_PERIODS: tuple[str, ...] = ("d1", "d3", "d7", "now")
 METRIC_SOURCES: tuple[str, ...] = ("data_api", "analytics_api", "studio_export")
 COST_STATUSES: tuple[str, ...] = ("confirmed", "reserved", "unknown")
 COST_SOURCES: tuple[str, ...] = ("auto", "manual")
+# A topic's life (migration 0117): written down (idea), its spec complete (ready), waiting for
+# the owner's material or a tool the site does not have (needs_assets), being made, made, or
+# given up. Where it came from: the fifteen-topic campaign, the planner model, the owner, or
+# the server itself from a public tutorial or an approved drama episode.
+TOPIC_STATUSES: tuple[str, ...] = ("idea", "ready", "needs_assets", "making", "made", "dropped")
+TOPIC_ORIGINS: tuple[str, ...] = ("campaign", "planner", "owner", "auto")
+# How many Shorts the worker may start in a calendar month (UTC), whatever the calendar asks.
+DEFAULT_MAX_PER_MONTH = 60
 # The pace of the pilot (docs/videos/ai-shorts, PR #871): one a day at 19:30 for thirty days,
 # then sixty days alternating two (12:30 added) and one; 120 slots in ninety days.
 DEFAULT_WEEKLY_QUOTA: dict[str, int] = {"lab": 5, "cut": 2, "drama": 0}
@@ -102,6 +110,7 @@ class VideoShortsSettings(Base):
             "AND budget_soft_ntd <= budget_ntd_30d AND budget_total_ntd BETWEEN 0 AND 10000000",
             name="ck_video_shorts_settings_budget",
         ),
+        CheckConstraint("max_per_month BETWEEN 0 AND 400", name="ck_video_shorts_settings_month"),
     )
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, default=1)
@@ -162,6 +171,14 @@ class VideoShortsSettings(Base):
     # When the worker last knocked (POST shorts/tick) and what that round did.
     last_tick_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     last_tick: Mapped[dict[str, Any] | None] = mapped_column(JSON, nullable=True)
+    # Phase two (migration 0117): how many Shorts the worker may start in a month, and when
+    # it last wrote a weekly plan and new topics, so a plan or a brief that left slots open
+    # is not asked for again on every round.
+    max_per_month: Mapped[int] = mapped_column(
+        Integer, default=DEFAULT_MAX_PER_MONTH, server_default=text(str(DEFAULT_MAX_PER_MONTH))
+    )
+    last_plan_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    last_brief_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     updated_by_user_id: Mapped[UUID | None] = mapped_column(
         ForeignKey("users.id", ondelete="SET NULL"), nullable=True
     )
@@ -306,6 +323,112 @@ class VideoShortsCost(Base):
     created_by_user_id: Mapped[UUID | None] = mapped_column(
         ForeignKey("users.id", ondelete="SET NULL"), nullable=True
     )
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=utcnow, onupdate=utcnow
+    )
+
+
+class VideoShortsTopic(Base):
+    """A Short still to be made (docs/videos/SHORTS.md §資料模型; migration 0117).
+
+    ``brief`` is the topic's whole spec as the worker gets it from ``shorts/next``: the
+    experiment's seven protocol fields, the truth checks and the acceptance list for the
+    experiments line, the narration outline, title options and sources; ``requires`` in it
+    names tools the experiment needs beyond text. ``assets_needed`` lists what only the owner
+    can supply (``[{"key", "label", "count"}]``), filled by ``video_shorts_assets`` rows.
+    ``dedupe_key`` names what an automatic topic was made from, so a source gives its topics
+    once. The Short made from a topic is the video under ``project_slug``.
+    """
+
+    __tablename__ = "video_shorts_topics"
+    __table_args__ = (
+        UniqueConstraint("slug", name="uq_video_shorts_topic_slug"),
+        UniqueConstraint("dedupe_key", name="uq_video_shorts_topic_dedupe"),
+        CheckConstraint(
+            "status IN ('idea', 'ready', 'needs_assets', 'making', 'made', 'dropped')",
+            name="ck_video_shorts_topic_status",
+        ),
+        CheckConstraint(
+            "origin IN ('campaign', 'planner', 'owner', 'auto')",
+            name="ck_video_shorts_topic_origin",
+        ),
+        CheckConstraint("line IN ('lab', 'cut', 'drama')", name="ck_video_shorts_topic_line"),
+    )
+
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    slug: Mapped[str] = mapped_column(String(80))
+    line: Mapped[str] = mapped_column(String(8))
+    series: Mapped[str | None] = mapped_column(String(40), nullable=True)
+    title: Mapped[str] = mapped_column(String(200))
+    hook: Mapped[str | None] = mapped_column(Text, nullable=True)
+    status: Mapped[str] = mapped_column(String(12), default="idea")
+    brief: Mapped[dict[str, Any]] = mapped_column(JSON, default=_default({}))
+    source_slug: Mapped[str | None] = mapped_column(String(80), nullable=True)
+    origin: Mapped[str] = mapped_column(String(12))
+    release_order: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    assets_needed: Mapped[list[dict[str, Any]]] = mapped_column(JSON, default=_default([]))
+    dedupe_key: Mapped[str | None] = mapped_column(String(160), nullable=True)
+    project_slug: Mapped[str | None] = mapped_column(String(80), nullable=True)
+    started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    note: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=utcnow, onupdate=utcnow
+    )
+
+
+class VideoShortsAsset(Base):
+    """A file the owner supplied for a topic: a photo they took, a sketch they drew.
+
+    The file itself is in the media store under the topic's slug and its SHA-256, where the
+    worker downloads it (``/video/media/files``); this row says who made it, when, and on
+    what terms it may be used. ``need`` is the ``assets_needed`` key it fills.
+    """
+
+    __tablename__ = "video_shorts_assets"
+    __table_args__ = (UniqueConstraint("topic_slug", "sha256", name="uq_video_shorts_asset_file"),)
+
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    topic_slug: Mapped[str] = mapped_column(String(80), index=True)
+    need: Mapped[str] = mapped_column(String(40))
+    sha256: Mapped[str] = mapped_column(String(64))
+    filename: Mapped[str] = mapped_column(String(200))
+    content_type: Mapped[str] = mapped_column(String(40))
+    size: Mapped[int] = mapped_column(BigInteger)
+    author: Mapped[str] = mapped_column(String(120))
+    taken_on: Mapped[date | None] = mapped_column(Date, nullable=True)
+    rights_note: Mapped[str] = mapped_column(Text)
+    uploaded_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class VideoShortsReport(Base):
+    """The planner's report on one week, Monday to Sunday in the settings' timezone.
+
+    ``rows`` are the numbers YouTube reported that the report cites, copied from
+    ``video_shorts_metrics`` with their source and read time when the report arrived; the
+    server derives nothing from them. ``plan`` is the next week's slots as the planner
+    described them. A week has one report: sending it again replaces it.
+    """
+
+    __tablename__ = "video_shorts_reports"
+    __table_args__ = (UniqueConstraint("week_start", name="uq_video_shorts_report_week"),)
+
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    week_start: Mapped[date] = mapped_column(Date)
+    body_md: Mapped[str] = mapped_column(Text)
+    rows: Mapped[list[dict[str, Any]]] = mapped_column(JSON, default=_default([]))
+    plan: Mapped[list[dict[str, Any]]] = mapped_column(JSON, default=_default([]))
+    provider: Mapped[str | None] = mapped_column(String(40), nullable=True)
+    model: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    generated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), default=utcnow, onupdate=utcnow

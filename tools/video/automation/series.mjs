@@ -9,7 +9,7 @@
 // episode whose only document is its story bible (docs/videos/DRAMA-FLOW.md, section 2).
 import path from "node:path";
 
-import { EXPLAINER_PRESET } from "../core/drama.mjs";
+import { EXPLAINER_PRESET, shotLooksProblem } from "../core/drama.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { estimateTimeline, framesFor, frameToSeconds } from "../core/timeline.mjs";
 import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
@@ -90,6 +90,8 @@ export function documentProblem(kind, answer, job) {
       if (!/^[a-z][a-z0-9-]{1,23}$/.test(character.id)) return `character id "${character.id}" must be lowercase ascii, 2 to 24 characters`;
       const looks = looksProblem(character, series);
       if (looks) return looks;
+      const shotLooks = shotLooksProblem(character);
+      if (shotLooks) return `character ${character.id}: ${shotLooks}`;
     }
     if (kind === "bible") {
       // The one-off's story bible (apps/api/app/video_automation/series.py doc_problem): the
@@ -308,6 +310,7 @@ export function castFrom(setting, episode = null) {
     .map((character) => {
       const look = lookFor(character, episode);
       const entry = { id: character.id, name: String(character.name ?? character.id), appearance: String(look?.appearance ?? character.appearance ?? "").slice(0, 800) };
+      if (Array.isArray(character.shot_looks)) entry.shot_looks = character.shot_looks.map(({ id, appearance }) => ({ id, appearance }));
       if (isObject(character.voice) && isText(character.voice.provider) && isText(character.voice.name)) {
         const style = isText(look?.voice_style) && character.voice.provider === "gemini" ? look.voice_style : character.voice.style;
         entry.voice = { provider: character.voice.provider, name: character.voice.name, ...(isText(style) ? { style: style.slice(0, 400) } : {}) };

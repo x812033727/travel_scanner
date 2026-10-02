@@ -14,6 +14,7 @@ import pytest
 import pytest_asyncio
 from fastapi import FastAPI
 from httpx import ASGITransport, AsyncClient
+from pydantic import ValidationError
 from sqlalchemy import delete
 
 import app.video_automation.admin_api as automation_api
@@ -27,6 +28,7 @@ from app.models import VideoToolToken
 from app.problems import AppError, app_error_handler
 from app.video_automation.models import DEFAULT_STAGE_MODELS, VideoAiRun, VideoAutomationSettings
 from app.video_automation.schemas import StageRunIn, UsageView
+from app.video_shorts.models import VideoShortsSettings
 from app.video_speech import admin_api as speech_api
 
 KEYS = Settings(anthropic_api_key="a", hotspot_guide_gemini_api_key="g")
@@ -164,6 +166,68 @@ async def test_a_drama_runs_on_its_own_models_when_the_owner_chose_them(
     assert stage["asked"][1]["model"] == "claude-opus-5-5"
     await ai.run_stage(_session(), KEYS, row, _request("writer"), None)
     assert stage["asked"][1]["model"] == "claude-sonnet-5", "a tutorial keeps its own"
+
+
+def _subject(variant: str | None = "a", **changes: Any) -> StageRunIn:
+    values: dict[str, Any] = {
+        "stage": "subject",
+        "slug": "shorts-receipt-total",
+        "instructions": "核對這張收據。",
+        "payload": {"input": "湯 85 元 × 2"},
+        "format": "shorts",
+        "variant": variant,
+    }
+    values.update(changes)
+    return StageRunIn(**values)
+
+
+def test_the_subject_runs_only_for_a_short_under_a_or_b() -> None:
+    assert _subject("b").variant == "b"
+    for changes in ({"variant": None}, {"variant": "c"}, {"format": "slides"}):
+        with pytest.raises(ValidationError):
+            _subject(**changes)
+    with pytest.raises(ValidationError, match="names its variant"):
+        StageRunIn(stage="writer", slug="s", instructions="x", payload={}, format="shorts")
+    with pytest.raises(ValidationError):
+        StageRunIn.model_validate(
+            {**_subject().model_dump(), "provider": "openai", "model": "gpt-6-sol"}
+        )
+
+
+@pytest.mark.asyncio
+async def test_the_subject_s_model_is_the_shorts_settings_and_is_reported_back(
+    stage: dict[str, Any],
+) -> None:
+    """The experiment's model comes from the Shorts settings, never the caller; b left unset
+    tests a's model; the answer names the vendor and the model that ran (SHORTS.md §端點)."""
+    row = VideoAutomationSettings(stage_models=API_MODELS, monthly_token_budget_millions=20)
+    shorts = VideoShortsSettings(
+        subject_models={"a": {"provider": "anthropic", "model": "claude-opus-5-5"}},
+        stage_models={"writer": {"provider": "anthropic", "model": "claude-haiku-5"}},
+    )
+    session = _session()
+    out = await ai.run_stage(session, KEYS, row, _subject("a"), None, shorts=shorts)
+    assert (out.provider, out.model) == ("anthropic", "claude-opus-5-5")
+    assert stage["asked"][1]["model"] == "claude-opus-5-5"
+    recorded = session.add.call_args.args[0]
+    assert (recorded.stage, recorded.slug) == ("subject/a", "shorts-receipt-total")
+    assert out.usage.drafts == 2, "a Short's call is not one of the month's drafts"
+    await ai.run_stage(_session(), KEYS, row, _subject("b"), None, shorts=shorts)
+    assert stage["asked"][1]["model"] == "claude-opus-5-5", "b follows a"
+    shorts.subject_models = {
+        **shorts.subject_models,
+        "b": {"provider": "anthropic", "model": "claude-sonnet-5"},
+    }
+    out = await ai.run_stage(_session(), KEYS, row, _subject("b"), None, shorts=shorts)
+    assert out.model == "claude-opus-5-5", "the vendor's own name for what ran"
+    assert stage["asked"][1]["model"] == "claude-sonnet-5"
+    writer = _subject(stage="writer", variant="shorts-lab")
+    await ai.run_stage(_session(), KEYS, row, writer, None, shorts=shorts)
+    assert stage["asked"][1]["model"] == "claude-haiku-5", "a Short's own stage model"
+    assert ai.stage_choice(row, "verifier", "shorts", shorts) == ("anthropic", "claude-opus-5-5")
+    with pytest.raises(ai.StageFailed) as unchosen:
+        await ai.run_stage(_session(), KEYS, row, _subject(), None, shorts=VideoShortsSettings())
+    assert (unchosen.value.status, unchosen.value.code) == (409, "video_ai_subject_not_chosen")
 
 
 @pytest.mark.asyncio

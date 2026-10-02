@@ -26,7 +26,14 @@ TopicWord = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1
 # The owner's standing instructions for one stage: the settings tab's text, which the worker
 # appends to that stage's prompt. Which prompt a stage gets depends on the video's format.
 StandingText = Annotated[str, StringConstraints(strip_whitespace=True, max_length=4000)]
-PromptFormat = Literal["slides", "drama"]
+PromptFormat = Literal["slides", "drama", "shorts"]
+# What /video/automation/run takes: the writing stages, plus the model an experiment Short
+# tests (docs/videos/SHORTS.md §端點). ``subject`` is not one of ``Stage``: its model comes
+# from the Shorts settings, never from the tutorials' or the drama's stage models.
+RunStage = Literal[
+    "planner", "writer", "verifier", "listener", "translator", "caption_reviewer", "subject"
+]
+SUBJECT_VARIANTS = ("a", "b")
 # The drama format's media settings (docs/videos/DRAMA.md); the vendors are the site's keys.
 MediaProvider = Literal["gemini", "minimax"]
 ClipResolution = Literal["720p", "768p", "1080p", "2k", "4k"]
@@ -459,7 +466,7 @@ class NextDramaRequestOut(BaseModel):
 
 
 class StageRunIn(StrictModel):
-    stage: Stage
+    stage: RunStage
     slug: str = Field(pattern=SLUG_PATTERN)
     # The stage's prompt (the skill's references/prompts/*.md with the video's context) and
     # its inputs. The model is not the caller's to choose: the stage's setting decides.
@@ -472,6 +479,20 @@ class StageRunIn(StrictModel):
     # A series document (setting, outline, chapter), an episode, a recap or a fix: kept under
     # its own heading, and not counted as one of the month's drafts (docs/videos/SERIES.md).
     variant: str | None = Field(default=None, pattern=r"^[a-z][a-z0-9_-]{0,31}$")
+
+    @model_validator(mode="after")
+    def _shorts_calls_name_their_variant(self) -> Self:
+        """A Short's calls always carry a variant (shorts-plan, shorts-lab… or the subject's
+        a and b), so none of them is counted as one of the month's tutorial drafts; the
+        experiment's subject runs only for a Short (docs/videos/SHORTS.md §端點)."""
+        if self.stage == "subject":
+            if self.format != "shorts":
+                raise ValueError("the subject stage runs only with format shorts")
+            if self.variant not in SUBJECT_VARIANTS:
+                raise ValueError("the subject stage takes variant a or b")
+        elif self.format == "shorts" and not self.variant:
+            raise ValueError("a Short's stage call names its variant, such as shorts-lab")
+        return self
 
 
 class StageRunOut(StrictModel):
@@ -487,7 +508,7 @@ class StageRunOut(StrictModel):
 class StagePromptView(StrictModel):
     """The instructions a stage was last sent for a format, as the worker composed them."""
 
-    stage: Stage
+    stage: RunStage
     format: PromptFormat
     variant: str = ""
     slug: str

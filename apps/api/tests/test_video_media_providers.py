@@ -129,6 +129,27 @@ def test_gemini_video_body_carries_frames_references_and_parameters() -> None:
         GeminiVideo(GEMINI, "k").request_body(_clip_request(first_frame=None))
 
 
+def test_lite_keeps_first_last_frames_without_unsupported_audio_or_reference_switches() -> None:
+    provider = GeminiVideo(GEMINI, "k")
+    body = provider.request_body(
+        _clip_request(model="veo-3.1-lite-generate-preview", references=(), last_frame=FRAME)
+    )
+    assert "image" in body["instances"][0] and "lastFrame" in body["instances"][0]
+    assert "referenceImages" not in body["instances"][0]
+    assert "generateAudio" not in body["parameters"]
+    assert body["parameters"]["durationSeconds"] == 8
+
+
+@pytest.mark.parametrize("extra", [{"references": (SHEET,)}, {"seconds": 6}])
+def test_lite_refuses_incompatible_parameters_before_submit(extra: dict[str, Any]) -> None:
+    request = _clip_request(
+        **{"model": "veo-3.1-lite-generate-preview", "references": (), **extra}
+    )
+    with pytest.raises(MediaUpstreamError) as refused:
+        GeminiVideo(GEMINI, "k").request_body(request)
+    assert refused.value.kind == "invalid" and refused.value.status == 422
+
+
 @pytest.mark.asyncio
 async def test_gemini_video_is_submitted_polled_and_fetched_only_from_its_own_host() -> None:
     calls: list[str] = []

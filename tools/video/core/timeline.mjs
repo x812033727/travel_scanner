@@ -7,6 +7,7 @@
 // which have millisecond precision, subdivide a line.
 import { createHash } from "node:crypto";
 
+import { shotCast } from "./drama.mjs";
 import { termsUsed } from "./lexicon.mjs";
 import { eachLine, spokenText } from "./schema.mjs";
 
@@ -171,6 +172,8 @@ export function visualHash(doc) {
   hash.update(JSON.stringify(doc.thumbnail ?? null));
   for (const scene of doc.scenes) {
     hash.update(JSON.stringify([scene.id, scene.template, scene.chapter ?? null, scene.data, scene.lines.map((line) => [line.id, line.reveal ?? 0])]));
+    // Only selected variants change the picture. The base face sheet and speech stay current.
+    if (scene.data?.character_looks) hash.update(JSON.stringify(shotCast(doc, scene).filter((character) => character.shot_look).map((character) => [character.id, character.shot_look, character.appearance])));
   }
   return hash.digest("hex").slice(0, 16);
 }
