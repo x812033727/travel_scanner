@@ -9,8 +9,10 @@
 // the sheet against the script as it is now and writes the translation file, hashes included.
 // Anything whose zh-TW text changed after the sheet was made is left out and reported, so it
 // cannot be merged against the wrong source. `--parts` narrows a sheet to what the owner chose for
-// the locale (docs/videos/LANGUAGES.md): "metadata" is the title, description, tags and chapter
-// names, "captions" the lines; a part left out keeps whatever translation it had.
+// the locale (docs/videos/LANGUAGES.md): "metadata" is the title, description, tags, chapter
+// names and the thumbnail's words, "captions" the lines; a part left out keeps whatever
+// translation it had. The thumbnail's words (render draws the locale's own thumbnail from them)
+// are optional: a sheet without them merges, with a note, and the locale keeps the video's own.
 import path from "node:path";
 import { parseArgs } from "node:util";
 
@@ -20,7 +22,7 @@ import { readLanguages } from "../core/stages.mjs";
 import { ARTIFACTS, dubArtifacts, loadProject } from "../core/state.mjs";
 import { TITLE_MAX_CHARS } from "../core/metadata.mjs";
 import { speechHash } from "../core/timeline.mjs";
-import { chapterScenes, METADATA_FIELDS, metadataStatus, sourceHashes } from "../core/translations.mjs";
+import { chapterScenes, METADATA_FIELDS, metadataStatus, sourceHashes, thumbnailSource, thumbnailSourceHash, thumbnailStatus } from "../core/translations.mjs";
 import { defaultRate, lineBudgets } from "../dubs/plan.mjs";
 
 export const TARGET_LOCALES = LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
@@ -33,7 +35,9 @@ const sheetFile = (workdir, locale) => path.join(workdir, "i18n", `${locale}.tod
 const translationFile = (dir, locale) => path.join(dir, "i18n", `${locale}.json`);
 
 const SHEET_NOTE = "Fill the `text` of everything marked todo: lines, chapters, the title, the description, the tags. The rest already has a current translation. Keep `id`, `scene`, `source` and `todo` as they are.";
-const PART_NOTES = { metadata: "This sheet holds only the title, the description, the tags and the chapter names; the lines are not wanted for this locale.", captions: "This sheet holds only the lines; the title, description, tags and chapter names are not wanted for this locale." };
+// The thumbnail's words are optional: without them the locale keeps the zh-TW thumbnail.
+const THUMBNAIL_NOTE = " `thumbnail.text` holds the words of this locale's own thumbnail, one for each word in `thumbnail.source` (tag, headline, sub): short enough to read on a phone, with the same `**` emphasis and line breaks.";
+const PART_NOTES = { metadata: "This sheet holds only the title, the description, the tags, the chapter names and the thumbnail's words; the lines are not wanted for this locale.", captions: "This sheet holds only the lines; the title, description, tags, chapter names and thumbnail words are not wanted for this locale." };
 const BUDGET_NOTE = " `max_chars` is how many characters a line's dub may have (docs/videos/DUBS.md): the translation is also read aloud in the time the narration line takes, so stay under it.";
 
 const partsOf = (sheet) => (Array.isArray(sheet?.parts) && sheet.parts.length ? sheet.parts : SHEET_PARTS);
@@ -66,17 +70,25 @@ export function buildSheet(doc, translation, locale, budgets = null, parts = SHE
     return { todo: !fresh, source: doc.youtube[name], text: fresh ? current[name] ?? empty : empty };
   };
   const only = parts.length === 1 ? ` ${PART_NOTES[parts[0]]}` : "";
+  const words = thumbnailSource(doc);
+  const thumbnail = wantMetadata && words ? thumbnailEntry(words, thumbnailStatus(doc, current) === "current" ? current.thumbnail : null) : null;
   return {
     locale,
     slug: doc.slug,
     parts: [...parts],
-    note: `${SHEET_NOTE}${only}${budgets ? BUDGET_NOTE : ""}`,
+    note: `${SHEET_NOTE}${thumbnail ? THUMBNAIL_NOTE : ""}${only}${budgets ? BUDGET_NOTE : ""}`,
     title: wantMetadata ? field("title", "") : null,
     description: wantMetadata ? field("description", "") : null,
     tags: wantMetadata ? field("tags", []) : null,
+    thumbnail,
     chapters: wantMetadata ? chapters : [],
     lines,
   };
+}
+
+/** The sheet's thumbnail entry: the script's words, and each one's current translation or "". */
+function thumbnailEntry(source, current) {
+  return { todo: !current, source, text: Object.fromEntries(Object.keys(source).map((name) => [name, current ? current[name] : ""])) };
 }
 
 /** What a sheet leaves to translate, for the CLI's report. */
@@ -85,6 +97,7 @@ export function sheetTodo(sheet) {
   const parts = partsOf(sheet).includes("captions") ? [`${count(sheet.lines)} lines`] : [];
   if (sheet.chapters?.length) parts.push(`${count(sheet.chapters)} chapters`);
   for (const name of METADATA_FIELDS) if (sheet[name]?.todo) parts.push(`the ${name}`);
+  if (sheet.thumbnail?.todo) parts.push("the thumbnail's words");
   return parts.join(", ") || "nothing";
 }
 
@@ -133,7 +146,7 @@ export function mergeSheet(doc, sheet, previous) {
     const translation = { title: before.title, description: before.description, tags: before.tags, chapters: { ...(before.chapters ?? {}) }, source_hashes: { ...kept, chapters: { ...(kept.chapters ?? {}) } }, lines };
     for (const [key, value] of Object.entries(before)) if (!Object.hasOwn(translation, key)) translation[key] = value;
     for (const key of METADATA_FIELDS) if (translation[key] === undefined) delete translation[key];
-    return { translation, problems };
+    return { translation, problems, notes: [] };
   }
   const lines = parts.includes("captions") ? mergeLines(doc, sheet, before, problems) : { ...(before.lines ?? {}) };
   const title = String(sheet.title?.text ?? "").trim();
@@ -177,9 +190,36 @@ export function mergeSheet(doc, sheet, previous) {
     }
   }
 
+  // The thumbnail's words are optional, so what keeps them out is a note, not a problem: the
+  // locale keeps its previous words and hash (or none), and the worker's merge still succeeds.
+  const notes = [];
+  const thumbnail = mergeThumbnail(doc, sheet.thumbnail, notes);
+  if (thumbnail) {
+    values.thumbnail = thumbnail;
+    recorded.thumbnail = thumbnailSourceHash(doc);
+  } else if (before.thumbnail !== undefined && thumbnailSource(doc)) {
+    values.thumbnail = before.thumbnail;
+    if (kept.thumbnail !== undefined) recorded.thumbnail = kept.thumbnail;
+  }
+
   const translation = { ...values, chapters, source_hashes: recorded, lines };
-  for (const [key, value] of Object.entries(before)) if (!Object.hasOwn(translation, key)) translation[key] = value;
-  return { translation, problems };
+  for (const [key, value] of Object.entries(before)) if (!Object.hasOwn(translation, key) && key !== "thumbnail") translation[key] = value;
+  return { translation, problems, notes };
+}
+
+/** The thumbnail words a sheet carries, trimmed, or null with the reason in `notes`. */
+function mergeThumbnail(doc, entry, notes) {
+  const source = thumbnailSource(doc);
+  if (!source) return null;
+  const text = entry?.text && typeof entry.text === "object" ? entry.text : {};
+  const words = Object.fromEntries(Object.keys(source).map((name) => [name, typeof text[name] === "string" ? text[name].trim() : ""]));
+  const empty = Object.keys(words).filter((name) => !words[name]);
+  if (empty.length === Object.keys(words).length) notes.push("thumbnail: not translated; this locale keeps the video's own thumbnail");
+  else if (empty.length) notes.push(`thumbnail: ${empty.join(", ")} not translated; this locale keeps the video's own thumbnail`);
+  else if (!sameSource(entry.source, source)) notes.push(`thumbnail: the ${narrationLocale(doc)} thumbnail changed after the sheet was made; make a new sheet`);
+  else if (Object.values(words).some((word) => /[<>]/.test(word))) notes.push("thumbnail: no angle brackets");
+  else return words;
+  return null;
 }
 
 function options(args) {
@@ -228,10 +268,12 @@ export async function run(command, args, ctx) {
   for (const locale of locales) {
     const sheet = readJson(sheetFile(workdir, locale), null);
     if (!sheet) throw new UsageError(`no sheet for ${locale}; run i18n-sheet first`);
-    const { translation, problems } = mergeSheet(doc, sheet, project.translations[locale]);
+    const { translation, problems, notes } = mergeSheet(doc, sheet, project.translations[locale]);
     atomicWrite(translationFile(project.dir, locale), `${JSON.stringify(translation, null, 2)}\n`);
     ctx.stdout.write(`${locale}: ${Object.keys(translation.lines).length} lines written to ${translationFile(project.dir, locale)}${problems.length ? `; ${problems.length} problems` : ""}\n`);
     for (const problem of problems) ctx.stdout.write(`  ${problem}\n`);
+    // A note does not fail the merge: the thumbnail's words are optional.
+    for (const note of notes) ctx.stdout.write(`  note: ${note}\n`);
     incomplete ||= problems.length > 0;
   }
   return incomplete ? EXIT.lint : EXIT.ok;
