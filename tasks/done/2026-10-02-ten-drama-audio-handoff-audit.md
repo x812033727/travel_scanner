@@ -1,13 +1,13 @@
 ---
 id: 2026-10-02-ten-drama-audio-handoff-audit
 title: Preserve drama voice acceptance and future localization sources
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: codex-ten-drama-handoff
 claimed_at: 2026-10-02T13:50:03Z
 created_at: 2026-10-02T13:49:15Z
-completed_at:
+completed_at: 2026-10-02T14:56:22Z
 branch: codex/ten-drama-audio-handoff-20261002
 depends_on: []
 scope:
@@ -76,7 +76,7 @@ wrong or ambiguous speaker/recording clues in City E13 and Reload E23/E25.
 - [x] Check ten source/design and runtime voice handoffs.
 - [x] Fix confirmed defects and test with local mock speech only.
 - [x] Run source/design/tools checks and independently renew affected duration bindings.
-- [ ] Verify live preconditions, preserve history, and submit a draft PR.
+- [x] Verify live preconditions, preserve history, and submit a draft PR.
 
 ## How to verify
 
@@ -114,3 +114,7 @@ must match without changing story hashes, approvals or generation settings.
   and three skips, with no unresolved failure; this is not a second full run.
 - Root verified all 95 duration/independent bindings against both actual files
   and staged Git bytes. Source hashes are unchanged; mirrored skill refs are LF.
+- Submitted draft PR https://github.com/x812033727/travel_scanner/pull/1132 on
+  codex/ten-drama-audio-handoff-20261002. GitHub reports it mergeable but behind
+  unrelated main changes; checks are pending. This completed audit does not
+  authorize or claim merge, runtime deployment or real media acceptance.
