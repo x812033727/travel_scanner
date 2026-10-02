@@ -36,7 +36,11 @@ test("assemble holds a slides cut or an explainer to the eight-minute floor, mea
   assert.match(short.detail, /07:59, under the 8-minute floor/);
   assert.equal(assembleItem({ ...cut(8 * 60 * 30), minMinutes: 8 }).ok, true);
   assert.equal(assembleItem({ ...cut(3 * 60 * 30), minMinutes: 0 }).ok, true, "a drama has no floor");
-  assert.match(assembleItem({ checks: { ok: true, problems: [], metrics: {} }, current: true, finalExists: true, minMinutes: 8 }).detail, /no frame count/);
+  assert.match(assembleItem({ checks: { ok: true, problems: [], metrics: {} }, current: true, finalExists: true, minMinutes: 8 }).detail, /positive integer frame count/);
+  for (const frames of ["14400", 14400.5, -14400]) {
+    assert.equal(assembleItem({ ...cut(frames), minMinutes: 8 }).ok, false, "coerced or noninteger evidence is rejected");
+  }
+  assert.match(assembleItem({ ...cut(14400), checks: { ok: true, metrics: { frames: 14400, fps: 60 } }, minMinutes: 8 }).detail, /must be 30 fps/);
 });
 
 test("render reads the manifest and the cache the renderer left", () => {

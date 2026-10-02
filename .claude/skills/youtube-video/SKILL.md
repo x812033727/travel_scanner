@@ -28,6 +28,8 @@ metadata:
 
 站主沒指定時：AI／科技資訊、工具介紹、概念解說走全自動；故事（神話、民間傳說、原創玄幻、站上文章改成的故事）走 AI 漫劇；要一部一口氣看完、不想逐份核准的爽文合集走一鍵合集；要真人示範操作、或站主想自己出鏡的走人工錄製。全自動的螢幕錄影手把手還在做（票 `2026-09-24-video-screencast-steps`、`2026-09-24-video-terminal-template`、`2026-09-24-video-obs-import`），做好之前這類影片走人工錄製。
 
+知識科普三季、品牌故事與 AI 名詞的長片另以 `docs/videos/long-form/README.md` 的有效企劃為準：科普及 AI 名詞目標10分鐘，品牌保留13分鐘；當前旁白正文及成片各至少8分鐘，片頭片尾不能補足正文。扁平解說後台8–20整數分鐘、預設10；Shorts、普通漫劇及合集保留原格式。計畫秒數不代表媒體實測，不以停頓、重複或慢播補時。
+
 此批十部動畫的製作規格以 `docs/videos/series-plans/production-20261001/profile.json` 與每部 `production-design.json` 為準：全部動態鏡頭、Veo 3.1 Lite 1080p 每段 8 秒、字幕只做 CC；先定案完成台灣口音中文版，再做 ja/ko/en 配音與各自 CC。漫劇多語角色配音仍是規劃中的後續工作，不能把教學影片已有的配音流程當成漫劇已支援。詳細試音、樣片與交付順序讀 `references/animation-production.md`。
 
 ## 再讀對應的 reference

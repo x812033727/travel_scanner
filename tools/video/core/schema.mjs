@@ -5,6 +5,8 @@
 // dependencies near zero, and an error that names the scene and the line id ("scenes[3].lines[2]
 // (k7p2)") is what a writer agent needs to fix its draft, which a generic validator does not give.
 import { createHash } from "node:crypto";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 import { isCompilation, validateCompilation } from "./compilation.mjs";
 import { DRAMA_FORMAT, SHOT_TEMPLATE, validateDrama } from "./drama.mjs";
@@ -48,13 +50,19 @@ export const DEFAULT_TARGET_MINUTES = [8, 12];
 // The explainer (原來如此事務所) is held to it too; drama.mjs's needsMinimumLength says which.
 export const MIN_EPISODE_MINUTES = 8;
 /**
- * The floor in force: MIN_EPISODE_MINUTES, or VIDEO_MIN_EPISODE_MINUTES when set. The variable is
- * for the tests, whose fixture videos run seconds; production never sets it.
+ * Short fixtures may override the estimate/final-only floor inside Node's test runner or the
+ * repository's stand-in media smoke entry point. An ordinary worker/CLI ignores an override,
+ * including zero. The catalogue's actual-body floor is fixed separately in duration.mjs.
  */
-export function minEpisodeMinutes(env = process.env) {
+export function minEpisodeMinutes(env = process.env, entrypoint = process.argv[1]) {
+  const smoke = fileURLToPath(new URL("../assemble/smoke.mjs", import.meta.url));
+  const tools = fileURLToPath(new URL("../../", import.meta.url));
+  const relative = entrypoint ? path.relative(tools, path.resolve(entrypoint)) : "";
+  const repoTest = relative.endsWith(".test.mjs") && !relative.startsWith(`..${path.sep}`) && !path.isAbsolute(relative);
+  const fixtures = (env.NODE_TEST_CONTEXT === "child-v8" && repoTest) || (entrypoint && path.resolve(entrypoint) === path.resolve(smoke));
   const raw = env.VIDEO_MIN_EPISODE_MINUTES;
   const value = raw === undefined || raw === "" ? NaN : Number(raw);
-  return Number.isFinite(value) && value >= 0 ? value : MIN_EPISODE_MINUTES;
+  return fixtures && Number.isFinite(value) && value >= 0 ? value : MIN_EPISODE_MINUTES;
 }
 
 export const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;

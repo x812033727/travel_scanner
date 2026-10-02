@@ -114,9 +114,9 @@ def test_a_request_needs_a_premise_and_keeps_to_the_presets_and_lengths() -> Non
         {"premise": "p", "style_preset": "noir"},
         {"premise": "p", "target_minutes": 0},
         {"premise": "p", "target_minutes": 9},
-        # An explainer runs 8 to 12 minutes, like every episode but a drama's.
+        # Explainers have a long-form target; ordinary drama limits remain unchanged.
         {"premise": "p", "style_preset": "flat-explainer", "target_minutes": 7},
-        {"premise": "p", "style_preset": "flat-explainer", "target_minutes": 13},
+        {"premise": "p", "style_preset": "flat-explainer", "target_minutes": 21},
         {"premise": "p", "source_guide": "Not A Slug"},
         {"premise": "p", "title": ""},
         {"premise": "p", "unknown": 1},
@@ -124,7 +124,7 @@ def test_a_request_needs_a_premise_and_keeps_to_the_presets_and_lengths() -> Non
         with pytest.raises(ValidationError):
             DramaRequestIn(**bad)
     explainer = DramaRequestIn(premise="為什麼雷聲總比閃電晚到？", style_preset="flat-explainer")
-    assert explainer.target_minutes == 8, "an explainer with no length starts at the floor"
+    assert explainer.target_minutes == 10, "the production target leaves room above the floor"
     longer = DramaRequestIn(premise="p", style_preset="flat-explainer", target_minutes=12)
     assert longer.target_minutes == 12
 
@@ -354,7 +354,7 @@ async def test_the_owner_files_a_request_only_while_the_drama_route_is_on(
     assert (payload.style_preset, payload.target_minutes) == ("ink-wash", 2)
     assert explainer.status_code == 201, explainer.text
     assert create.await_args.args[2].style_preset == "flat-explainer"
-    assert create.await_args.args[2].target_minutes == 8
+    assert create.await_args.args[2].target_minutes == 10
     assert unknown.status_code == 422
     assert bad.status_code == 422
     assert too_late.status_code == 409

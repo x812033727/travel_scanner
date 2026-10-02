@@ -354,7 +354,8 @@ test("illustrated slides lint clean, warn on cadence, and are compared by their 
 test("every episode but a drama's runs at least eight minutes: slides and the explainer are held to it, a drama is not", () => {
   assert.equal(MIN_EPISODE_MINUTES, 8);
   assert.equal(minEpisodeMinutes({}), 8);
-  assert.equal(minEpisodeMinutes({ VIDEO_MIN_EPISODE_MINUTES: "0" }), 0);
+  assert.equal(minEpisodeMinutes({ VIDEO_MIN_EPISODE_MINUTES: "0" }), 8, "an ordinary process cannot lower the floor");
+  assert.equal(minEpisodeMinutes({ NODE_TEST_CONTEXT: "child-v8", VIDEO_MIN_EPISODE_MINUTES: "0" }), 0, "only fixture runners may use short test videos");
   assert.equal(minEpisodeMinutes({ VIDEO_MIN_EPISODE_MINUTES: "nonsense" }), 8);
   const saved = process.env.VIDEO_MIN_EPISODE_MINUTES;
   delete process.env.VIDEO_MIN_EPISODE_MINUTES;

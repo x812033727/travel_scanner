@@ -50,6 +50,8 @@ def run(connection: Connection, direction: str) -> None:
 
 def test_the_migration_writes_the_models_check() -> None:
     migration = load_migration()
+    assert migration.revision == MIGRATION
+    assert migration.down_revision == "0117_video_shorts_topics"
     assert len(migration.revision) <= 32
     checks = {
         constraint.name: str(constraint.sqltext)

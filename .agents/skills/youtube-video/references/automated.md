@@ -123,7 +123,7 @@ node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整�
 - `tts --dry-run` 會印出這支影片的估計字數，以及伺服器回報的本月用量。
 - 每月上限由站主在後台卡片設定。超過時伺服器以 429 拒絕，請求不會送到 Azure，所以不會產生費用。
 - Gemini 以送出的文字字數計，和 Azure 分開算，預設每月 300,000 字（約一百支 10 分鐘影片）。
-- 實測合成語速約每分鐘 300 字（48 kHz 單聲道），工具估計用 250，所以 `lint` 估的長度偏長；要 8–12 分鐘的成片，旁白字數要比估計多寫一些。每集至少 8 分鐘（漫劇除外）：`lint` 估計不足 8 分鐘、`target_minutes` 下限低於 8 都是錯誤；成片品管的 `assemble` 項量到成片不足 8 分鐘就不過，要加寫旁白後重跑 `tts` 與 `assemble`。測試用的短範例靠環境變數 `VIDEO_MIN_EPISODE_MINUTES=0` 關掉這條，正式環境不設。
+- 實測合成語速約每分鐘 300 字（48 kHz 單聲道），工具估計用 250，所以 `lint` 估的長度偏長；要 8–12 分鐘的成片，旁白字數要比估計多寫一些。每集至少 8 分鐘（普通漫劇除外）：`lint` 估計不足 8 分鐘、`target_minutes` 下限低於 8 都是錯誤；成片品管的 `assemble` 項量到成片不足 8 分鐘就不過，要加寫旁白後重跑 `tts` 與 `assemble`。知識科普／AI名詞用10分鐘製作目標，品牌故事保留13分鐘；五類長片另外核對當前正文及成片各480秒、speech hash與影格綁定，片頭片尾不計正文。普通工人／CLI會忽略 `VIDEO_MIN_EPISODE_MINUTES=0`；只有 Node test runner 及 repository 的 `assemble/smoke.mjs` 短範例入口可放寬估算／通用成片門檻，五類長片的實測正文門檻始終不受該變數影響。
 - 配音音軌（`dub`）以送出的翻譯字數計：一支 10 分鐘的影片，en 約 10,000、ja 約 6,000、ko 約 6,500、zh-CN 約 5,000 個 Gemini 字元，四條約 28,000（含場景切分的標記）。額度不夠時把 `video_speech_gemini_monthly_character_limit` 調高。翻譯與審稿的模型呼叫只花在站主勾了的語言上（每語一次翻譯加一次審稿）。
 
 ## 坑

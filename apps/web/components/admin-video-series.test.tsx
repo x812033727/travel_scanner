@@ -211,7 +211,7 @@ describe("AdminVideoSeries", () => {
     expect(screen.queryByRole("button", { name: "撤回" }), "its episode has started").toBeNull();
   });
 
-  it("holds an explainer request to eight to twelve minutes, like every episode but a drama's", async () => {
+  it("defaults explainers to ten minutes within the eight-to-twenty-minute range", async () => {
     const { calls } = stubFetch({});
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
     fireEvent.click(await screen.findByText("新的漫劇", { selector: "summary" }));
@@ -220,14 +220,14 @@ describe("AdminVideoSeries", () => {
     expect(minutes.value).toBe("3");
     expect(minutes.max).toBe("8");
     fireEvent.change(form.getByRole("combobox", { name: "風格" }), { target: { value: "flat-explainer" } });
-    expect(minutes.value).toBe("8");
+    expect(minutes.value).toBe("10");
     expect(minutes.min).toBe("8");
-    expect(minutes.max).toBe("12");
+    expect(minutes.max).toBe("20");
     fireEvent.change(form.getByRole("textbox", { name: "故事前提（必填）" }), { target: { value: "為什麼雷聲總比閃電晚到？" } });
     fireEvent.click(form.getByRole("button", { name: "排進製作" }));
     await waitFor(() => expect(calls.some((call) => call.method === "POST")).toBe(true));
     const sent = calls.find((call) => call.method === "POST");
-    expect(sent?.body).toMatchObject({ style_preset: "flat-explainer", target_minutes: 8 });
+    expect(sent?.body).toMatchObject({ style_preset: "flat-explainer", target_minutes: 10 });
   });
 
   it("withdraws a one-off the worker has not started, from its card or its page, and says why when refused", async () => {
