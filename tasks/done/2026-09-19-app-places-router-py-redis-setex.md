@@ -1,13 +1,13 @@
 ---
 id: 2026-09-19-app-places-router-py-redis-setex
 title: app/places/router.py 的 redis.setex 在 redis-py 8.1 已標 deprecated，改成 set(..., ex=)
-status: in-progress
+status: done
 priority: P3
 area: api
 owner: claude-opus-5-5-redis-set
 claimed_at: 2026-10-02T14:30:09Z
 created_at: 2026-09-19T11:33:47Z
-completed_at:
+completed_at: 2026-10-02T15:11:34Z
 branch: claude/places-redis-set-ex
 depends_on: []
 scope:
