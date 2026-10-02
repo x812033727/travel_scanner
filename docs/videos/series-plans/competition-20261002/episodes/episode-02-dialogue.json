@@ -1,0 +1,1510 @@
+{
+  "schema_version": 1,
+  "artifact_type": "editorial-episode-dialogue-and-shot-draft-not-runtime-video-json",
+  "runtime_video_json": false,
+  "slug": "wedding-reckoning",
+  "episode": 2,
+  "title": "替妳著想",
+  "locale": "zh-TW",
+  "status": "draft-awaiting-independent-verifier-and-TTS",
+  "source_binding": {
+    "source_path": "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/source.mjs",
+    "source_object_sha256": "37328fa1c643e0edfcd1d138a158410653b36d6e02739ce7a9c555b26bc5bb9c",
+    "source_episode": "chapters[0].episodes[1]",
+    "previous_screenplay": "../pilot/episode-01-screenplay.md",
+    "overlay": "../selection-and-final-polish.md",
+    "source_unchanged": true
+  },
+  "production_scope": {
+    "current": "Chinese first two episodes",
+    "foreign_languages": "deferred until owner confirms complete Chinese film and CC",
+    "narrator_used": false,
+    "cc": "switchable zh-TW sidecar CC timed to actual speech; no burn-in",
+    "audio": "separate cast dialogue / SFX / room / music stems; discard model-native audio"
+  },
+  "timing": {
+    "status": "planned-not-measured",
+    "target_natural_duration_s": [
+      120,
+      240
+    ],
+    "planned_edit_duration_s": 178,
+    "planned_shot_count": 41,
+    "planned_raw_seconds_without_retakes": 328,
+    "measured_audio_duration_s": null,
+    "measured_picture_duration_s": null,
+    "overflow_policy": "shorten wording or recut from moving material after TTS; never speed speech, freeze, slow delivery, repeat or pad to target"
+  },
+  "generation_contract": {
+    "provider": "gemini",
+    "model": "veo-3.1-lite-generate-preview",
+    "resolution": "1080p",
+    "aspect_ratio": "16:9",
+    "fps": 24,
+    "source_duration_s": 8,
+    "planned_used_seconds_range": [
+      2,
+      8
+    ],
+    "single_primary_action_per_clip": true,
+    "referenceImages": false,
+    "extension": false,
+    "paid_request_status": "not-issued-by-this-editorial-step"
+  },
+  "speakers": {
+    "zhitang": {
+      "name": "沈知棠",
+      "age": 28,
+      "provider": "gemini",
+      "voice_name": "Kore",
+      "locale": "zh-TW",
+      "status": "inherited-casting-pending-episode-listening",
+      "appearance": "Adult East Asian woman, age 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, ivory wedding gown with NO VEIL, one small silver rectangular watch on the same wrist as the approved previous episode. Uninjured, no wedding ring.",
+      "canonical_appearance": "East Asian woman, 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, small silver rectangular watch; ivory tailored trouser suit.",
+      "voice_style": "台灣國語，自然台灣口音；先問數字，決定後短句不解釋。 台灣國語；清晰沉著，受傷時降低音量，不變尖銳。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "canonical_character_source": "productionSetting(setting.json, production-design.json, profile.json)"
+    },
+    "chengchuan": {
+      "name": "顧承川",
+      "age": 31,
+      "provider": "gemini",
+      "voice_name": "Puck",
+      "locale": "zh-TW",
+      "status": "inherited-casting-pending-episode-listening",
+      "appearance": "Adult East Asian man, age 31, narrow clean-shaven face, neat side-part black hair, navy three-piece suit, brushed gold tie clip, polished shoes, controlled expression and immaculate cuffs.",
+      "canonical_appearance": "East Asian man, 31, narrow clean-shaven face, neat side-part black hair, navy three-piece suit, brushed gold tie clip, polished shoes; controlled smile and immaculate cuffs.",
+      "voice_style": "台灣國語，自然台灣口音；句首先叫暱稱，再把要求說成替妳著想。 台灣國語；親和表面下帶算計，不以低吼演反派。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "canonical_character_source": "productionSetting(setting.json, production-design.json, profile.json)"
+    },
+    "chongyue": {
+      "name": "沈崇岳",
+      "age": 57,
+      "provider": "gemini",
+      "voice_name": "Charon",
+      "locale": "zh-TW",
+      "status": "inherited-casting-pending-episode-listening",
+      "appearance": "Adult East Asian man, age 57, square face, salt-and-pepper hair brushed back, thin metal glasses, charcoal mandarin-collar jacket, one amber cuff button on right wrist.",
+      "canonical_appearance": "East Asian man, 57, square face, salt-and-pepper hair brushed back, thin metal glasses, charcoal mandarin-collar jacket, amber cuff button on right wrist.",
+      "voice_style": "台灣國語，自然台灣口音；先叫大家坐下，從不主動把命令說完整。 台灣國語；低、緩、像在談家常；敗局才出現呼吸失序。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "canonical_character_source": "productionSetting(setting.json, production-design.json, profile.json)"
+    }
+  },
+  "lines": [
+    {
+      "id": "WR-E02-L001",
+      "speaker_id": "zhitang",
+      "text": "你要娶我，為什麼連公司的事，都要由你決定？",
+      "emotion": "平穩追問，不悲憤喊叫；由婚禮切入真正控制權。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S01"
+      ],
+      "runtime_id": "4f5a6b65"
+    },
+    {
+      "id": "WR-E02-L002",
+      "speaker_id": "chengchuan",
+      "text": "棠棠，附件只是替妳省事。",
+      "emotion": "親暱安撫，試圖把具體文件說成小事。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S02"
+      ],
+      "runtime_id": "585129ad"
+    },
+    {
+      "id": "WR-E02-L003",
+      "speaker_id": "zhitang",
+      "text": "那就念出來。這裡，授權給誰？",
+      "emotion": "指向一處文字，短句，不替他回答。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S03"
+      ],
+      "runtime_id": "7f869663"
+    },
+    {
+      "id": "WR-E02-L004",
+      "speaker_id": "chengchuan",
+      "text": "受託人……顧承川。",
+      "emotion": "看清自己的名字才念；短停不超演。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S04"
+      ],
+      "runtime_id": "6e3c27ab"
+    },
+    {
+      "id": "WR-E02-L005",
+      "speaker_id": "zhitang",
+      "text": "再念下一項。",
+      "emotion": "克制，讓他把話說完。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S05"
+      ],
+      "runtime_id": "8b4d0a7b"
+    },
+    {
+      "id": "WR-E02-L006",
+      "speaker_id": "chengchuan",
+      "text": "代為行使表決權。",
+      "emotion": "勉強照讀，字音清楚；不是朗讀整份合約。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S06"
+      ],
+      "runtime_id": "da7b754c"
+    },
+    {
+      "id": "WR-E02-L007",
+      "speaker_id": "zhitang",
+      "text": "所以，不只是結婚。公司的事，也要由你代我表決。",
+      "emotion": "把內容翻成觀眾聽得懂的後果，不宣稱授權已生效。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S07"
+      ],
+      "runtime_id": "3c2a1cc2"
+    },
+    {
+      "id": "WR-E02-L008",
+      "speaker_id": "chengchuan",
+      "text": "我幫妳做這些，有什麼不好？",
+      "emotion": "先維持和氣，將問題重新說成人情。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S08"
+      ],
+      "runtime_id": "e71ea610"
+    },
+    {
+      "id": "WR-E02-L009",
+      "speaker_id": "zhitang",
+      "text": "我還沒答應，你就已經替我決定好了？",
+      "emotion": "重音在沒答應，不添新指控。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S09"
+      ],
+      "runtime_id": "62eec78b"
+    },
+    {
+      "id": "WR-E02-L010",
+      "speaker_id": "chongyue",
+      "text": "大家先坐下。棠棠，有話好好說。",
+      "emotion": "低緩像談家常；第一次加入，沒有怒氣。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S10"
+      ],
+      "runtime_id": "3f100dd2"
+    },
+    {
+      "id": "WR-E02-L011",
+      "speaker_id": "chengchuan",
+      "text": "兩家的親友都在。妳這樣問，讓我怎麼交代？",
+      "emotion": "轉向體面施壓，音量依舊受控。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S11"
+      ],
+      "runtime_id": "c3ba746c"
+    },
+    {
+      "id": "WR-E02-L012",
+      "speaker_id": "zhitang",
+      "text": "我問文件，你卻只問我讓誰難看。",
+      "emotion": "平視承川，回到問題，不連續提高張力。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S12"
+      ],
+      "runtime_id": "f30fa2e0"
+    },
+    {
+      "id": "WR-E02-L013",
+      "speaker_id": "chongyue",
+      "text": "他也是想替妳分擔。今天不用把話說得這麼重。",
+      "emotion": "用長輩口吻包住要求，不演成已暴露的主使者。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S13"
+      ],
+      "runtime_id": "b1ac905b"
+    },
+    {
+      "id": "WR-E02-L014",
+      "speaker_id": "zhitang",
+      "text": "舅舅，表決權是我的。我得知道要交給誰。",
+      "emotion": "叫舅舅仍有禮貌，立場清楚。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S14"
+      ],
+      "runtime_id": "f2016028"
+    },
+    {
+      "id": "WR-E02-L015",
+      "speaker_id": "zhitang",
+      "text": "這份授權書，是你拿來的，對嗎？",
+      "emotion": "重新看顧，問題單一。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S15"
+      ],
+      "runtime_id": "c4427b3d"
+    },
+    {
+      "id": "WR-E02-L016",
+      "speaker_id": "chengchuan",
+      "text": "是我準備的。不是怕妳太累嗎？",
+      "emotion": "先承認來源，再用關心卸掉責任。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S16"
+      ],
+      "runtime_id": "fccfbc0e"
+    },
+    {
+      "id": "WR-E02-L017",
+      "speaker_id": "zhitang",
+      "text": "好。那今天放在這裡的原件，就先留下。",
+      "emotion": "接住明確說法，沒有勝利嘲諷。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S17"
+      ],
+      "runtime_id": "138330a2"
+    },
+    {
+      "id": "WR-E02-L018",
+      "speaker_id": "chengchuan",
+      "text": "婚禮已經停了，文件還留著做什麼？",
+      "emotion": "想結束話題，盯原件而非戒盒。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S18"
+      ],
+      "runtime_id": "9fa4827e"
+    },
+    {
+      "id": "WR-E02-L019",
+      "speaker_id": "zhitang",
+      "text": "你說只是省事，我也想找人把它看清楚。",
+      "emotion": "不指名稽核員，不假裝已查出條文問題。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S19"
+      ],
+      "runtime_id": "303aced7"
+    },
+    {
+      "id": "WR-E02-L020",
+      "speaker_id": "chongyue",
+      "text": "拿出去，別人會怎麼想沈家？",
+      "emotion": "低聲、緩，家族名聲成為壓力。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S20"
+      ],
+      "runtime_id": "7fb21181"
+    },
+    {
+      "id": "WR-E02-L021",
+      "speaker_id": "zhitang",
+      "text": "讓我不看、不問，才叫替我著想嗎？",
+      "emotion": "留一個可回答的反問；不吼，不加勝利音樂。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S21"
+      ],
+      "runtime_id": "3485f962"
+    },
+    {
+      "id": "WR-E02-L022",
+      "speaker_id": "zhitang",
+      "text": "請把這份完整原件封存。附件也一起。",
+      "emotion": "向桌側既有公證見證人員，清楚正常句速。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S22"
+      ],
+      "runtime_id": "059a0c43"
+    },
+    {
+      "id": "WR-E02-L023",
+      "speaker_id": "chengchuan",
+      "text": "妳連這點信任都不肯給？",
+      "emotion": "壓低聲，以感情要求她撤回決定。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S24"
+      ],
+      "runtime_id": "13d7f541"
+    },
+    {
+      "id": "WR-E02-L024",
+      "speaker_id": "zhitang",
+      "text": "原件不交給你，也不交給我。",
+      "emotion": "不把封存說成抓到犯罪，只說文件去向。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S25"
+      ],
+      "runtime_id": "2e8e9caf"
+    },
+    {
+      "id": "WR-E02-L025",
+      "speaker_id": "zhitang",
+      "text": "請你們帶回保管，給我一張保管收據。",
+      "emotion": "禮貌，不能說成她自己封存的收據。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S26"
+      ],
+      "runtime_id": "b22d86aa"
+    },
+    {
+      "id": "WR-E02-L026",
+      "speaker_id": "zhitang",
+      "text": "我手上這份完整副本，我自己留著。",
+      "emotion": "區別她的副本和將由見證人帶走的原件。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S28"
+      ],
+      "runtime_id": "ffd6bd8e"
+    },
+    {
+      "id": "WR-E02-L027",
+      "speaker_id": "chengchuan",
+      "text": "棠棠，非得在今天走到這一步嗎？",
+      "emotion": "不再親暱自信，仍未低吼或威脅暴力。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S30"
+      ],
+      "runtime_id": "a4fa1702"
+    },
+    {
+      "id": "WR-E02-L028",
+      "speaker_id": "zhitang",
+      "text": "是你選在今天，叫我把字簽下去。",
+      "emotion": "短而清晰，回收婚禮簽字的具體觸發。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S31"
+      ],
+      "runtime_id": "2e2bab84"
+    },
+    {
+      "id": "WR-E02-L029",
+      "speaker_id": "chongyue",
+      "text": "先讓客人安心。文件的事，我來跟妳說。",
+      "emotion": "安撫表象，第一次正眼衡量知棠。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S35"
+      ],
+      "runtime_id": "838cbadc"
+    },
+    {
+      "id": "WR-E02-L030",
+      "speaker_id": "zhitang",
+      "text": "可以。但我不會再沒看清楚就簽。",
+      "emotion": "接受聽解釋，不放棄核對；不談前世。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S36"
+      ],
+      "runtime_id": "cf075fb6"
+    },
+    {
+      "id": "WR-E02-L031",
+      "speaker_id": "chongyue",
+      "text": "妳就這麼信不過自己人？",
+      "emotion": "低緩追問，沒有憤怒失控。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S37"
+      ],
+      "runtime_id": "e174c140"
+    },
+    {
+      "id": "WR-E02-L032",
+      "speaker_id": "zhitang",
+      "text": "我信過。所以這一次，我要問清楚。",
+      "emotion": "不是重生坦白；說的是過去對家人的信任。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S38"
+      ],
+      "runtime_id": "f093949d"
+    },
+    {
+      "id": "WR-E02-L033",
+      "speaker_id": "chongyue",
+      "text": "好，我願意解釋。",
+      "emotion": "表面讓步，停頓留給下一個條件。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S39"
+      ],
+      "runtime_id": "92cd5bfe"
+    },
+    {
+      "id": "WR-E02-L034",
+      "speaker_id": "chongyue",
+      "text": "先把相機都關掉。",
+      "emotion": "不加重低音；越像平常吩咐越有壓力。",
+      "locale": "zh-TW",
+      "text_origin": "new-adaptation-draft-from-episode-outline-not-source-verbatim",
+      "measured_duration_s": null,
+      "shot_ids": [
+        "WR-E02-S40"
+      ],
+      "runtime_id": "97b494f9"
+    }
+  ],
+  "shots": [
+    {
+      "id": "WR-E02-S01",
+      "planned_start_s": 0,
+      "planned_end_s": 6,
+      "planned_used_seconds": 6,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "zhitang": "zhitang-bride-unveiled"
+      },
+      "summary_zh_TW": "知棠把完整副本轉向承川。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The intact unsigned original including attachments stays at the far edge of the same table. The bride has a separate complete paper copy including attachments. Torn display-copy fragments remain near her; the returned bride-ring box stays at the groom side. Do not merge these documents. Adult East Asian woman, age 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, ivory wedding gown with NO VEIL, one small silver rectangular watch on the same wrist as the approved previous episode. Uninjured, no wedding ring.",
+      "motion": "She turns the retained complete copy toward Chengchuan.",
+      "camera": "Locked medium close-up from the bride side.",
+      "line_ids": [
+        "WR-E02-L001"
+      ],
+      "prop_state": "paper-pre-seal",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked medium close-up from the bride side. Frame for this one action: She turns the retained complete copy toward Chengchuan. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: zhitang. Locked medium close-up from the bride side."
+    },
+    {
+      "id": "WR-E02-S02",
+      "planned_start_s": 6,
+      "planned_end_s": 10,
+      "planned_used_seconds": 4,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "chengchuan": "chengchuan--base"
+      },
+      "summary_zh_TW": "承川微微攤開一隻手。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The intact unsigned original including attachments stays at the far edge of the same table. The bride has a separate complete paper copy including attachments. Torn display-copy fragments remain near her; the returned bride-ring box stays at the groom side. Do not merge these documents. Adult East Asian man, age 31, narrow clean-shaven face, neat side-part black hair, navy three-piece suit, brushed gold tie clip, polished shoes, controlled expression and immaculate cuffs.",
+      "motion": "He opens one palm in reassurance.",
+      "camera": "Locked medium close-up on the groom.",
+      "line_ids": [
+        "WR-E02-L002"
+      ],
+      "prop_state": "paper-pre-seal",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked medium close-up on the groom. Frame for this one action: He opens one palm in reassurance. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: chengchuan. Locked medium close-up on the groom."
+    },
+    {
+      "id": "WR-E02-S03",
+      "planned_start_s": 10,
+      "planned_end_s": 14,
+      "planned_used_seconds": 4,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "zhitang": "zhitang-bride-unveiled"
+      },
+      "summary_zh_TW": "知棠指向副本受託人欄。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The intact unsigned original including attachments stays at the far edge of the same table. The bride has a separate complete paper copy including attachments. Torn display-copy fragments remain near her; the returned bride-ring box stays at the groom side. Do not merge these documents. Adult East Asian woman, age 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, ivory wedding gown with NO VEIL, one small silver rectangular watch on the same wrist as the approved previous episode. Uninjured, no wedding ring.",
+      "motion": "She points once to the intended recipient field on the copy.",
+      "camera": "Locked oblique close-up of the copy and one pointing hand.",
+      "line_ids": [
+        "WR-E02-L003"
+      ],
+      "prop_state": "paper-pre-seal",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked oblique close-up of the copy and one pointing hand. Frame for this one action: She points once to the intended recipient field on the copy. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: zhitang. Locked oblique close-up of the copy and one pointing hand."
+    },
+    {
+      "id": "WR-E02-S04",
+      "planned_start_s": 14,
+      "planned_end_s": 17.5,
+      "planned_used_seconds": 3.5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "chengchuan": "chengchuan--base"
+      },
+      "summary_zh_TW": "承川低眼讀名字。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The intact unsigned original including attachments stays at the far edge of the same table. The bride has a separate complete paper copy including attachments. Torn display-copy fragments remain near her; the returned bride-ring box stays at the groom side. Do not merge these documents. Adult East Asian man, age 31, narrow clean-shaven face, neat side-part black hair, navy three-piece suit, brushed gold tie clip, polished shoes, controlled expression and immaculate cuffs.",
+      "motion": "His gaze lowers to the recipient field as he reads.",
+      "camera": "Locked close-up with the copy edge soft in foreground.",
+      "line_ids": [
+        "WR-E02-L004"
+      ],
+      "prop_state": "paper-pre-seal",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked close-up with the copy edge soft in foreground. Frame for this one action: His gaze lowers to the recipient field as he reads. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: chengchuan. Locked close-up with the copy edge soft in foreground."
+    },
+    {
+      "id": "WR-E02-S05",
+      "planned_start_s": 17.5,
+      "planned_end_s": 20,
+      "planned_used_seconds": 2.5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "zhitang": "zhitang-bride-unveiled"
+      },
+      "summary_zh_TW": "知棠食指移到下一項。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The intact unsigned original including attachments stays at the far edge of the same table. The bride has a separate complete paper copy including attachments. Torn display-copy fragments remain near her; the returned bride-ring box stays at the groom side. Do not merge these documents. Adult East Asian woman, age 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, ivory wedding gown with NO VEIL, one small silver rectangular watch on the same wrist as the approved previous episode. Uninjured, no wedding ring.",
+      "motion": "Her index finger moves once to the next item.",
+      "camera": "Locked oblique paper insert.",
+      "line_ids": [
+        "WR-E02-L005"
+      ],
+      "prop_state": "paper-pre-seal",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked oblique paper insert. Frame for this one action: Her index finger moves once to the next item. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: zhitang. Locked oblique paper insert."
+    },
+    {
+      "id": "WR-E02-S06",
+      "planned_start_s": 20,
+      "planned_end_s": 23.5,
+      "planned_used_seconds": 3.5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "chengchuan": "chengchuan--base"
+      },
+      "summary_zh_TW": "承川讀出表決權事項。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The intact unsigned original including attachments stays at the far edge of the same table. The bride has a separate complete paper copy including attachments. Torn display-copy fragments remain near her; the returned bride-ring box stays at the groom side. Do not merge these documents. Adult East Asian man, age 31, narrow clean-shaven face, neat side-part black hair, navy three-piece suit, brushed gold tie clip, polished shoes, controlled expression and immaculate cuffs.",
+      "motion": "He reads the indicated voting-rights item aloud with restrained mouth movement.",
+      "camera": "Locked close-up; verify mouth synchronization before use.",
+      "line_ids": [
+        "WR-E02-L006"
+      ],
+      "prop_state": "paper-pre-seal",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked close-up; verify mouth synchronization before use. Frame for this one action: He reads the indicated voting-rights item aloud with restrained mouth movement. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: chengchuan. Locked close-up; verify mouth synchronization before use."
+    },
+    {
+      "id": "WR-E02-S07",
+      "planned_start_s": 23.5,
+      "planned_end_s": 29.5,
+      "planned_used_seconds": 6,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "zhitang": "zhitang-bride-unveiled"
+      },
+      "summary_zh_TW": "知棠抬眼看承川。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The intact unsigned original including attachments stays at the far edge of the same table. The bride has a separate complete paper copy including attachments. Torn display-copy fragments remain near her; the returned bride-ring box stays at the groom side. Do not merge these documents. Adult East Asian woman, age 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, ivory wedding gown with NO VEIL, one small silver rectangular watch on the same wrist as the approved previous episode. Uninjured, no wedding ring.",
+      "motion": "She raises her gaze from the copy to Chengchuan.",
+      "camera": "Locked medium close-up without crossing the table axis.",
+      "line_ids": [
+        "WR-E02-L007"
+      ],
+      "prop_state": "paper-pre-seal",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked medium close-up without crossing the table axis. Frame for this one action: She raises her gaze from the copy to Chengchuan. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: zhitang. Locked medium close-up without crossing the table axis."
+    },
+    {
+      "id": "WR-E02-S08",
+      "planned_start_s": 29.5,
+      "planned_end_s": 33.5,
+      "planned_used_seconds": 4,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "chengchuan": "chengchuan--base"
+      },
+      "summary_zh_TW": "承川將手掌收回桌邊。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The intact unsigned original including attachments stays at the far edge of the same table. The bride has a separate complete paper copy including attachments. Torn display-copy fragments remain near her; the returned bride-ring box stays at the groom side. Do not merge these documents. Adult East Asian man, age 31, narrow clean-shaven face, neat side-part black hair, navy three-piece suit, brushed gold tie clip, polished shoes, controlled expression and immaculate cuffs.",
+      "motion": "He withdraws his open palm to his own table edge.",
+      "camera": "Locked medium close-up.",
+      "line_ids": [
+        "WR-E02-L008"
+      ],
+      "prop_state": "paper-pre-seal",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked medium close-up. Frame for this one action: He withdraws his open palm to his own table edge. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: chengchuan. Locked medium close-up."
+    },
+    {
+      "id": "WR-E02-S09",
+      "planned_start_s": 33.5,
+      "planned_end_s": 38,
+      "planned_used_seconds": 4.5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "zhitang": "zhitang-bride-unveiled"
+      },
+      "summary_zh_TW": "知棠把副本收回自己面前。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The intact unsigned original including attachments stays at the far edge of the same table. The bride has a separate complete paper copy including attachments. Torn display-copy fragments remain near her; the returned bride-ring box stays at the groom side. Do not merge these documents. Adult East Asian woman, age 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, ivory wedding gown with NO VEIL, one small silver rectangular watch on the same wrist as the approved previous episode. Uninjured, no wedding ring.",
+      "motion": "She draws her retained copy back to her own side.",
+      "camera": "Locked table-height two-position framing; only bride identifiable.",
+      "line_ids": [
+        "WR-E02-L009"
+      ],
+      "prop_state": "paper-pre-seal",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked table-height two-position framing; only bride identifiable. Frame for this one action: She draws her retained copy back to her own side. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: zhitang. Locked table-height two-position framing; only bride identifiable."
+    },
+    {
+      "id": "WR-E02-S10",
+      "planned_start_s": 38,
+      "planned_end_s": 43,
+      "planned_used_seconds": 5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "chongyue": "chongyue--base"
+      },
+      "summary_zh_TW": "崇岳在桌側坐定。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The intact unsigned original including attachments stays at the far edge of the same table. The bride has a separate complete paper copy including attachments. Torn display-copy fragments remain near her; the returned bride-ring box stays at the groom side. Do not merge these documents. Adult East Asian man, age 57, square face, salt-and-pepper hair brushed back, thin metal glasses, charcoal mandarin-collar jacket, one amber cuff button on right wrist.",
+      "motion": "He settles into the existing chair at the head-side of the signing table.",
+      "camera": "Locked medium shot, preserving bride-left and groom-right axis.",
+      "line_ids": [
+        "WR-E02-L010"
+      ],
+      "prop_state": "paper-pre-seal",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked medium shot, preserving bride-left and groom-right axis. Frame for this one action: He settles into the existing chair at the head-side of the signing table. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: chongyue. Locked medium shot, preserving bride-left and groom-right axis."
+    },
+    {
+      "id": "WR-E02-S11",
+      "planned_start_s": 43,
+      "planned_end_s": 48.5,
+      "planned_used_seconds": 5.5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "chengchuan": "chengchuan--base"
+      },
+      "summary_zh_TW": "承川看向成年賓客方向。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The intact unsigned original including attachments stays at the far edge of the same table. The bride has a separate complete paper copy including attachments. Torn display-copy fragments remain near her; the returned bride-ring box stays at the groom side. Do not merge these documents. Adult East Asian man, age 31, narrow clean-shaven face, neat side-part black hair, navy three-piece suit, brushed gold tie clip, polished shoes, controlled expression and immaculate cuffs.",
+      "motion": "He glances once toward the adult guests off frame.",
+      "camera": "Locked close-up on his face; no new identifiable guests.",
+      "line_ids": [
+        "WR-E02-L011"
+      ],
+      "prop_state": "paper-pre-seal",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked close-up on his face; no new identifiable guests. Frame for this one action: He glances once toward the adult guests off frame. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: chengchuan. Locked close-up on his face; no new identifiable guests."
+    },
+    {
+      "id": "WR-E02-S12",
+      "planned_start_s": 48.5,
+      "planned_end_s": 53.5,
+      "planned_used_seconds": 5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "zhitang": "zhitang-bride-unveiled"
+      },
+      "summary_zh_TW": "知棠將副本平放在自己桌側。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The intact unsigned original including attachments stays at the far edge of the same table. The bride has a separate complete paper copy including attachments. Torn display-copy fragments remain near her; the returned bride-ring box stays at the groom side. Do not merge these documents. Adult East Asian woman, age 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, ivory wedding gown with NO VEIL, one small silver rectangular watch on the same wrist as the approved previous episode. Uninjured, no wedding ring.",
+      "motion": "She lays the retained copy flat on her own side of the table.",
+      "camera": "Locked medium close-up including her face and copy.",
+      "line_ids": [
+        "WR-E02-L012"
+      ],
+      "prop_state": "paper-pre-seal",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked medium close-up including her face and copy. Frame for this one action: She lays the retained copy flat on her own side of the table. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: zhitang. Locked medium close-up including her face and copy."
+    },
+    {
+      "id": "WR-E02-S13",
+      "planned_start_s": 53.5,
+      "planned_end_s": 59,
+      "planned_used_seconds": 5.5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "chongyue": "chongyue--base"
+      },
+      "summary_zh_TW": "崇岳將手掌平放桌邊。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The intact unsigned original including attachments stays at the far edge of the same table. The bride has a separate complete paper copy including attachments. Torn display-copy fragments remain near her; the returned bride-ring box stays at the groom side. Do not merge these documents. Adult East Asian man, age 57, square face, salt-and-pepper hair brushed back, thin metal glasses, charcoal mandarin-collar jacket, one amber cuff button on right wrist.",
+      "motion": "He places one palm flat on his own table edge.",
+      "camera": "Locked medium close-up.",
+      "line_ids": [
+        "WR-E02-L013"
+      ],
+      "prop_state": "paper-pre-seal",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked medium close-up. Frame for this one action: He places one palm flat on his own table edge. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: chongyue. Locked medium close-up."
+    },
+    {
+      "id": "WR-E02-S14",
+      "planned_start_s": 59,
+      "planned_end_s": 64.5,
+      "planned_used_seconds": 5.5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "zhitang": "zhitang-bride-unveiled"
+      },
+      "summary_zh_TW": "知棠轉頭看舅舅。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The intact unsigned original including attachments stays at the far edge of the same table. The bride has a separate complete paper copy including attachments. Torn display-copy fragments remain near her; the returned bride-ring box stays at the groom side. Do not merge these documents. Adult East Asian woman, age 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, ivory wedding gown with NO VEIL, one small silver rectangular watch on the same wrist as the approved previous episode. Uninjured, no wedding ring.",
+      "motion": "She turns her head toward her maternal uncle.",
+      "camera": "Locked medium close-up; no veil visible.",
+      "line_ids": [
+        "WR-E02-L014"
+      ],
+      "prop_state": "paper-pre-seal",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked medium close-up; no veil visible. Frame for this one action: She turns her head toward her maternal uncle. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: zhitang. Locked medium close-up; no veil visible."
+    },
+    {
+      "id": "WR-E02-S15",
+      "planned_start_s": 64.5,
+      "planned_end_s": 69,
+      "planned_used_seconds": 4.5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "zhitang": "zhitang-bride-unveiled"
+      },
+      "summary_zh_TW": "知棠轉回承川。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The intact unsigned original including attachments stays at the far edge of the same table. The bride has a separate complete paper copy including attachments. Torn display-copy fragments remain near her; the returned bride-ring box stays at the groom side. Do not merge these documents. Adult East Asian woman, age 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, ivory wedding gown with NO VEIL, one small silver rectangular watch on the same wrist as the approved previous episode. Uninjured, no wedding ring.",
+      "motion": "She turns her gaze back to Chengchuan.",
+      "camera": "Locked over-table medium close-up.",
+      "line_ids": [
+        "WR-E02-L015"
+      ],
+      "prop_state": "paper-pre-seal",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked over-table medium close-up. Frame for this one action: She turns her gaze back to Chengchuan. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: zhitang. Locked over-table medium close-up."
+    },
+    {
+      "id": "WR-E02-S16",
+      "planned_start_s": 69,
+      "planned_end_s": 73.5,
+      "planned_used_seconds": 4.5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "chengchuan": "chengchuan--base"
+      },
+      "summary_zh_TW": "承川點頭承認。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The intact unsigned original including attachments stays at the far edge of the same table. The bride has a separate complete paper copy including attachments. Torn display-copy fragments remain near her; the returned bride-ring box stays at the groom side. Do not merge these documents. Adult East Asian man, age 31, narrow clean-shaven face, neat side-part black hair, navy three-piece suit, brushed gold tie clip, polished shoes, controlled expression and immaculate cuffs.",
+      "motion": "He gives one small confirming nod.",
+      "camera": "Locked medium close-up with gold tie clip visible.",
+      "line_ids": [
+        "WR-E02-L016"
+      ],
+      "prop_state": "paper-pre-seal",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked medium close-up with gold tie clip visible. Frame for this one action: He gives one small confirming nod. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: chengchuan. Locked medium close-up with gold tie clip visible."
+    },
+    {
+      "id": "WR-E02-S17",
+      "planned_start_s": 73.5,
+      "planned_end_s": 78,
+      "planned_used_seconds": 4.5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "zhitang": "zhitang-bride-unveiled"
+      },
+      "summary_zh_TW": "知棠指向遠端完整原件。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The intact unsigned original including attachments stays at the far edge of the same table. The bride has a separate complete paper copy including attachments. Torn display-copy fragments remain near her; the returned bride-ring box stays at the groom side. Do not merge these documents. Adult East Asian woman, age 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, ivory wedding gown with NO VEIL, one small silver rectangular watch on the same wrist as the approved previous episode. Uninjured, no wedding ring.",
+      "motion": "She points to the intact original at the far side without taking it.",
+      "camera": "Locked wide enough to separate original and retained copy.",
+      "line_ids": [
+        "WR-E02-L017"
+      ],
+      "prop_state": "paper-pre-seal",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked wide enough to separate original and retained copy. Frame for this one action: She points to the intact original at the far side without taking it. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: zhitang. Locked wide enough to separate original and retained copy."
+    },
+    {
+      "id": "WR-E02-S18",
+      "planned_start_s": 78,
+      "planned_end_s": 82.5,
+      "planned_used_seconds": 4.5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "chengchuan": "chengchuan--base"
+      },
+      "summary_zh_TW": "承川視線移到原件。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The intact unsigned original including attachments stays at the far edge of the same table. The bride has a separate complete paper copy including attachments. Torn display-copy fragments remain near her; the returned bride-ring box stays at the groom side. Do not merge these documents. Adult East Asian man, age 31, narrow clean-shaven face, neat side-part black hair, navy three-piece suit, brushed gold tie clip, polished shoes, controlled expression and immaculate cuffs.",
+      "motion": "His eyes shift to the intact original.",
+      "camera": "Locked close-up; original stays blurred in foreground.",
+      "line_ids": [
+        "WR-E02-L018"
+      ],
+      "prop_state": "paper-pre-seal",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked close-up; original stays blurred in foreground. Frame for this one action: His eyes shift to the intact original. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: chengchuan. Locked close-up; original stays blurred in foreground."
+    },
+    {
+      "id": "WR-E02-S19",
+      "planned_start_s": 82.5,
+      "planned_end_s": 88,
+      "planned_used_seconds": 5.5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "zhitang": "zhitang-bride-unveiled"
+      },
+      "summary_zh_TW": "知棠把手放回副本上。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The intact unsigned original including attachments stays at the far edge of the same table. The bride has a separate complete paper copy including attachments. Torn display-copy fragments remain near her; the returned bride-ring box stays at the groom side. Do not merge these documents. Adult East Asian woman, age 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, ivory wedding gown with NO VEIL, one small silver rectangular watch on the same wrist as the approved previous episode. Uninjured, no wedding ring.",
+      "motion": "She rests one hand on her retained copy.",
+      "camera": "Locked medium close-up; copy remains flat.",
+      "line_ids": [
+        "WR-E02-L019"
+      ],
+      "prop_state": "paper-pre-seal",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked medium close-up; copy remains flat. Frame for this one action: She rests one hand on her retained copy. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: zhitang. Locked medium close-up; copy remains flat."
+    },
+    {
+      "id": "WR-E02-S20",
+      "planned_start_s": 88,
+      "planned_end_s": 92,
+      "planned_used_seconds": 4,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "chongyue": "chongyue--base"
+      },
+      "summary_zh_TW": "崇岳眼神移向知棠。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The intact unsigned original including attachments stays at the far edge of the same table. The bride has a separate complete paper copy including attachments. Torn display-copy fragments remain near her; the returned bride-ring box stays at the groom side. Do not merge these documents. Adult East Asian man, age 57, square face, salt-and-pepper hair brushed back, thin metal glasses, charcoal mandarin-collar jacket, one amber cuff button on right wrist.",
+      "motion": "His gaze turns deliberately toward Zhitang.",
+      "camera": "Locked close-up with glasses and amber cuff at frame edge.",
+      "line_ids": [
+        "WR-E02-L020"
+      ],
+      "prop_state": "paper-pre-seal",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked close-up with glasses and amber cuff at frame edge. Frame for this one action: His gaze turns deliberately toward Zhitang. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: chongyue. Locked close-up with glasses and amber cuff at frame edge."
+    },
+    {
+      "id": "WR-E02-S21",
+      "planned_start_s": 92,
+      "planned_end_s": 96.5,
+      "planned_used_seconds": 4.5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "zhitang": "zhitang-bride-unveiled"
+      },
+      "summary_zh_TW": "知棠看住舅舅。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The intact unsigned original including attachments stays at the far edge of the same table. The bride has a separate complete paper copy including attachments. Torn display-copy fragments remain near her; the returned bride-ring box stays at the groom side. Do not merge these documents. Adult East Asian woman, age 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, ivory wedding gown with NO VEIL, one small silver rectangular watch on the same wrist as the approved previous episode. Uninjured, no wedding ring.",
+      "motion": "She holds his gaze while answering with restrained facial movement.",
+      "camera": "Locked medium close-up; natural breathing remains visible.",
+      "line_ids": [
+        "WR-E02-L021"
+      ],
+      "prop_state": "paper-pre-seal",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked medium close-up; natural breathing remains visible. Frame for this one action: She holds his gaze while answering with restrained facial movement. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: zhitang. Locked medium close-up; natural breathing remains visible."
+    },
+    {
+      "id": "WR-E02-S22",
+      "planned_start_s": 96.5,
+      "planned_end_s": 101.5,
+      "planned_used_seconds": 5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "zhitang": "zhitang-bride-unveiled"
+      },
+      "summary_zh_TW": "知棠向桌側見證位置示意。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The intact unsigned original including attachments stays at the far edge of the same table. The bride has a separate complete paper copy including attachments. Torn display-copy fragments remain near her; the returned bride-ring box stays at the groom side. Do not merge these documents. Adult East Asian woman, age 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, ivory wedding gown with NO VEIL, one small silver rectangular watch on the same wrist as the approved previous episode. Uninjured, no wedding ring.",
+      "motion": "She makes one small open-hand gesture toward the existing witness position.",
+      "camera": "Locked medium close-up with the intact original far in frame.",
+      "line_ids": [
+        "WR-E02-L022"
+      ],
+      "prop_state": "paper-pre-seal",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked medium close-up with the intact original far in frame. Frame for this one action: She makes one small open-hand gesture toward the existing witness position. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: zhitang. Locked medium close-up with the intact original far in frame."
+    },
+    {
+      "id": "WR-E02-S23",
+      "planned_start_s": 101.5,
+      "planned_end_s": 105,
+      "planned_used_seconds": 3.5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {},
+      "summary_zh_TW": "無台詞見證人員核對原件附件。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The existing silent witness checks the complete unsigned original at the far table edge. It has not been sealed yet. The bride retains the separate complete copy. No custody receipt has been handed over.  Only the adult hands of the already-established silent witness are visible; do not invent a face, costume identity, name, or voice.",
+      "motion": "The existing silent witness turns one attachment page of the intact original to check it.",
+      "camera": "Locked overhead close-up of adult hands and original only.",
+      "line_ids": [],
+      "prop_state": "original-check",
+      "single_primary_action": true,
+      "silent_witness_hands_only": true,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Same approved E1 ivory and ice-blue banquet environment, anime-2d, same signing/witnessing table. Bride left, groom right; no veil or worn wedding rings. No Zhixia, gift bag, Xuwen, mother, children or extra speaking character. No burned text. Existing silent adult witness checks intact unsigned original with attachments; not yet sealed. Bride holds a separate complete copy. Receipt not issued. Only existing silent adult witness hands are identifiable; no new face or voice. Locked overhead close-up of adult hands and original only."
+    },
+    {
+      "id": "WR-E02-S24",
+      "planned_start_s": 105,
+      "planned_end_s": 109,
+      "planned_used_seconds": 4,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "chengchuan": "chengchuan--base"
+      },
+      "summary_zh_TW": "承川身體略向前。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The existing silent witness checks the complete unsigned original at the far table edge. It has not been sealed yet. The bride retains the separate complete copy. No custody receipt has been handed over. Adult East Asian man, age 31, narrow clean-shaven face, neat side-part black hair, navy three-piece suit, brushed gold tie clip, polished shoes, controlled expression and immaculate cuffs.",
+      "motion": "He leans forward slightly without touching any documents.",
+      "camera": "Locked medium close-up.",
+      "line_ids": [
+        "WR-E02-L023"
+      ],
+      "prop_state": "original-check",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked medium close-up. Frame for this one action: He leans forward slightly without touching any documents. Same approved E1 wedding setting and table axis; no veil. Existing silent adult witness checks intact unsigned original with attachments; not yet sealed. Bride holds a separate complete copy. Receipt not issued. Frame only the named approved adult looks: chengchuan. Locked medium close-up."
+    },
+    {
+      "id": "WR-E02-S25",
+      "planned_start_s": 109,
+      "planned_end_s": 113,
+      "planned_used_seconds": 4,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "zhitang": "zhitang-bride-unveiled"
+      },
+      "summary_zh_TW": "知棠輕輕搖頭。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The existing silent witness checks the complete unsigned original at the far table edge. It has not been sealed yet. The bride retains the separate complete copy. No custody receipt has been handed over. Adult East Asian woman, age 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, ivory wedding gown with NO VEIL, one small silver rectangular watch on the same wrist as the approved previous episode. Uninjured, no wedding ring.",
+      "motion": "She gives one small refusal shake of her head.",
+      "camera": "Locked close-up.",
+      "line_ids": [
+        "WR-E02-L024"
+      ],
+      "prop_state": "original-check",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked close-up. Frame for this one action: She gives one small refusal shake of her head. Same approved E1 wedding setting and table axis; no veil. Existing silent adult witness checks intact unsigned original with attachments; not yet sealed. Bride holds a separate complete copy. Receipt not issued. Frame only the named approved adult looks: zhitang. Locked close-up."
+    },
+    {
+      "id": "WR-E02-S26",
+      "planned_start_s": 113,
+      "planned_end_s": 119,
+      "planned_used_seconds": 6,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {},
+      "summary_zh_TW": "見證人員將完整原件裝入保管袋。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The complete unsigned original and its attachments enter one open custody envelope. The bride retains a separate complete copy. The envelope is still open in this shot.  Only the adult hands of the already-established silent witness are visible; do not invent a face, costume identity, name, or voice.",
+      "motion": "The existing silent adult witness slides the complete unsigned original including attachments into one custody envelope.",
+      "camera": "Locked overhead insert; retained copy stays untouched at bride side.",
+      "line_ids": [
+        "WR-E02-L025"
+      ],
+      "prop_state": "original-bag-open",
+      "single_primary_action": true,
+      "silent_witness_hands_only": true,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked overhead insert; retained copy stays untouched at bride side. Frame for this one action: The existing silent adult witness slides the complete unsigned original including attachments into one custody envelope. Same approved E1 wedding setting and table axis; no veil. One complete unsigned original with its attachments enters one open custody envelope. Bride keeps her separate complete copy; envelope is not sealed yet. Only existing silent adult witness hands are identifiable; no new face or voice. Locked overhead insert; retained copy stays untouched at bride side."
+    },
+    {
+      "id": "WR-E02-S27",
+      "planned_start_s": 119,
+      "planned_end_s": 122.5,
+      "planned_used_seconds": 3.5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {},
+      "summary_zh_TW": "見證人員封住保管袋。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The complete unsigned original including attachments is inside one sealed custody envelope at the witness side. The bride retains her separate complete copy. No original pages remain exposed on the table.  Only the adult hands of the already-established silent witness are visible; do not invent a face, costume identity, name, or voice.",
+      "motion": "The existing silent adult witness seals the custody envelope once.",
+      "camera": "Locked close-up of seal and adult hands.",
+      "line_ids": [],
+      "prop_state": "original-sealed",
+      "single_primary_action": true,
+      "silent_witness_hands_only": true,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Same approved E1 ivory and ice-blue banquet environment, anime-2d, same signing/witnessing table. Bride left, groom right; no veil or worn wedding rings. No Zhixia, gift bag, Xuwen, mother, children or extra speaking character. No burned text. One original including attachments is sealed in a single custody envelope at witness side. Bride retains her complete copy. No exposed original remains. Only existing silent adult witness hands are identifiable; no new face or voice. Locked close-up of seal and adult hands."
+    },
+    {
+      "id": "WR-E02-S28",
+      "planned_start_s": 122.5,
+      "planned_end_s": 127,
+      "planned_used_seconds": 4.5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "zhitang": "zhitang-bride-unveiled"
+      },
+      "summary_zh_TW": "知棠拿起自己完整副本。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The complete unsigned original including attachments is inside one sealed custody envelope at the witness side. The bride retains her separate complete copy. No original pages remain exposed on the table. Adult East Asian woman, age 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, ivory wedding gown with NO VEIL, one small silver rectangular watch on the same wrist as the approved previous episode. Uninjured, no wedding ring.",
+      "motion": "She lifts her retained complete copy from her own table side.",
+      "camera": "Locked medium close-up separating copy from sealed envelope.",
+      "line_ids": [
+        "WR-E02-L026"
+      ],
+      "prop_state": "original-sealed",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked medium close-up separating copy from sealed envelope. Frame for this one action: She lifts her retained complete copy from her own table side. Same approved E1 wedding setting and table axis; no veil. One original including attachments is sealed in a single custody envelope at witness side. Bride retains her complete copy. No exposed original remains. Frame only the named approved adult looks: zhitang. Locked medium close-up separating copy from sealed envelope."
+    },
+    {
+      "id": "WR-E02-S29",
+      "planned_start_s": 127,
+      "planned_end_s": 130.5,
+      "planned_used_seconds": 3.5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {},
+      "summary_zh_TW": "見證人員填寫保管收據。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The original is sealed in one custody envelope at the witness side. One custody receipt is prepared there. The bride holds her complete copy; the receipt has not yet reached her.  Only the adult hands of the already-established silent witness are visible; do not invent a face, costume identity, name, or voice.",
+      "motion": "The existing silent adult witness writes one short confirmation on the prepared custody receipt.",
+      "camera": "Locked close-up; leave receipt typography for verified prop compositing.",
+      "line_ids": [],
+      "prop_state": "receipt-prepared",
+      "single_primary_action": true,
+      "silent_witness_hands_only": true,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Same approved E1 ivory and ice-blue banquet environment, anime-2d, same signing/witnessing table. Bride left, groom right; no veil or worn wedding rings. No Zhixia, gift bag, Xuwen, mother, children or extra speaking character. No burned text. Sealed original remains at witness side. One custody receipt is prepared there, not handed over yet. Bride keeps her complete copy. Only existing silent adult witness hands are identifiable; no new face or voice. Locked close-up; leave receipt typography for verified prop compositing."
+    },
+    {
+      "id": "WR-E02-S30",
+      "planned_start_s": 130.5,
+      "planned_end_s": 135,
+      "planned_used_seconds": 4.5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "chengchuan": "chengchuan--base"
+      },
+      "summary_zh_TW": "承川看向知棠持副本的手。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The original is sealed in one custody envelope at the witness side. One custody receipt is prepared there. The bride holds her complete copy; the receipt has not yet reached her. Adult East Asian man, age 31, narrow clean-shaven face, neat side-part black hair, navy three-piece suit, brushed gold tie clip, polished shoes, controlled expression and immaculate cuffs.",
+      "motion": "He looks at the retained copy in her hand.",
+      "camera": "Locked medium close-up, no document contact.",
+      "line_ids": [
+        "WR-E02-L027"
+      ],
+      "prop_state": "receipt-prepared",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked medium close-up, no document contact. Frame for this one action: He looks at the retained copy in her hand. Same approved E1 wedding setting and table axis; no veil. Sealed original remains at witness side. One custody receipt is prepared there, not handed over yet. Bride keeps her complete copy. Frame only the named approved adult looks: chengchuan. Locked medium close-up, no document contact."
+    },
+    {
+      "id": "WR-E02-S31",
+      "planned_start_s": 135,
+      "planned_end_s": 139.5,
+      "planned_used_seconds": 4.5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "zhitang": "zhitang-bride-unveiled"
+      },
+      "summary_zh_TW": "知棠轉回承川。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The original is sealed in one custody envelope at the witness side. One custody receipt is prepared there. The bride holds her complete copy; the receipt has not yet reached her. Adult East Asian woman, age 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, ivory wedding gown with NO VEIL, one small silver rectangular watch on the same wrist as the approved previous episode. Uninjured, no wedding ring.",
+      "motion": "She turns her face back to Chengchuan.",
+      "camera": "Locked medium close-up.",
+      "line_ids": [
+        "WR-E02-L028"
+      ],
+      "prop_state": "receipt-prepared",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked medium close-up. Frame for this one action: She turns her face back to Chengchuan. Same approved E1 wedding setting and table axis; no veil. Sealed original remains at witness side. One custody receipt is prepared there, not handed over yet. Bride keeps her complete copy. Frame only the named approved adult looks: zhitang. Locked medium close-up."
+    },
+    {
+      "id": "WR-E02-S32",
+      "planned_start_s": 139.5,
+      "planned_end_s": 142.5,
+      "planned_used_seconds": 3,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {},
+      "summary_zh_TW": "見證人員將收據推到知棠面前。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The sealed original stays with the silent witness. Only one custody receipt slides to the bride; she continues to hold her complete copy.  Only the adult hands of the already-established silent witness are visible; do not invent a face, costume identity, name, or voice.",
+      "motion": "The existing silent adult witness slides the custody receipt to the bride side.",
+      "camera": "Locked table-level insert of receipt moving, not the sealed envelope.",
+      "line_ids": [],
+      "prop_state": "receipt-handoff",
+      "single_primary_action": true,
+      "silent_witness_hands_only": true,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Same approved E1 ivory and ice-blue banquet environment, anime-2d, same signing/witnessing table. Bride left, groom right; no veil or worn wedding rings. No Zhixia, gift bag, Xuwen, mother, children or extra speaking character. No burned text. Only the custody receipt moves to bride side. Sealed original stays with silent witness; complete copy stays with bride. Only existing silent adult witness hands are identifiable; no new face or voice. Locked table-level insert of receipt moving, not the sealed envelope."
+    },
+    {
+      "id": "WR-E02-S33",
+      "planned_start_s": 142.5,
+      "planned_end_s": 145.5,
+      "planned_used_seconds": 3,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "zhitang": "zhitang-bride-unveiled"
+      },
+      "summary_zh_TW": "知棠接起收據。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The bride now holds the custody receipt and her separate complete copy. The sealed original remains at the witness side; it is not handed to any named character. Adult East Asian woman, age 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, ivory wedding gown with NO VEIL, one small silver rectangular watch on the same wrist as the approved previous episode. Uninjured, no wedding ring.",
+      "motion": "She picks up the custody receipt with her free hand while retaining the complete copy.",
+      "camera": "Locked close-up of receipt and copy held separately.",
+      "line_ids": [],
+      "prop_state": "receipt-held",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Same approved E1 ivory and ice-blue banquet environment, anime-2d, same signing/witnessing table. Bride left, groom right; no veil or worn wedding rings. No Zhixia, gift bag, Xuwen, mother, children or extra speaking character. No burned text. Bride holds both receipt and retained complete copy. Sealed original still belongs at the witness side, never with groom or uncle. Frame only the named approved adult looks: zhitang. Locked close-up of receipt and copy held separately."
+    },
+    {
+      "id": "WR-E02-S34",
+      "planned_start_s": 145.5,
+      "planned_end_s": 148.5,
+      "planned_used_seconds": 3,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {},
+      "summary_zh_TW": "見證人員將封存袋收入自己的保管提袋。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The complete unsigned original and its attachments are sealed inside one custody envelope. At the start of this shot, the existing silent adult witness holds that sealed envelope just outside their own open custody bag, ready to place it inside for return custody. The bride holds her separate complete copy and the custody receipt. Neither the groom nor the uncle holds any original or envelope. Torn display pages and returned bride-ring box remain at their established table positions.  Only the adult hands of the already-established silent witness are visible; do not invent a face, costume identity, name, or voice.",
+      "motion": "The existing silent adult witness places the sealed original envelope into their own custody bag.",
+      "camera": "Locked insert; only adult hands and custody bag are visible.",
+      "line_ids": [],
+      "prop_state": "original-in-witness-custody",
+      "single_primary_action": true,
+      "silent_witness_hands_only": true,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Same approved E1 ivory and ice-blue banquet environment, anime-2d, same signing/witnessing table. Bride left, groom right; no veil or worn wedding rings. No Zhixia, gift bag, Xuwen, mother, children or extra speaking character. No burned text. Complete unsigned original and attachments are sealed in one custody envelope, held by the existing silent adult witness just outside their own open custody bag at the start of the shot. Bride holds receipt and separate complete copy. Groom and uncle possess neither original nor envelope. Returned ring box stays at groom side. Only existing silent adult witness hands are identifiable; no new face or voice. Locked insert; only adult hands and custody bag are visible."
+    },
+    {
+      "id": "WR-E02-S35",
+      "planned_start_s": 148.5,
+      "planned_end_s": 154,
+      "planned_used_seconds": 5.5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "chongyue": "chongyue--base"
+      },
+      "summary_zh_TW": "崇岳向知棠略側身。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The complete original is sealed inside the existing silent witness own custody bag for their return custody. The bride holds her separate complete copy and the custody receipt. Neither the groom nor the uncle holds any original or envelope. Torn display pages and returned bride-ring box remain at their established table positions. Adult East Asian man, age 57, square face, salt-and-pepper hair brushed back, thin metal glasses, charcoal mandarin-collar jacket, one amber cuff button on right wrist.",
+      "motion": "He turns slightly toward Zhitang with an apparently reassuring posture.",
+      "camera": "Locked medium close-up.",
+      "line_ids": [
+        "WR-E02-L029"
+      ],
+      "prop_state": "original-in-witness-custody",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked medium close-up. Frame for this one action: He turns slightly toward Zhitang with an apparently reassuring posture. Same approved E1 wedding setting and table axis; no veil. Sealed original is in silent witness custody bag. Bride holds receipt and separate complete copy. Groom and uncle possess neither original nor envelope. Returned ring box stays at groom side. Frame only the named approved adult looks: chongyue. Locked medium close-up."
+    },
+    {
+      "id": "WR-E02-S36",
+      "planned_start_s": 154,
+      "planned_end_s": 159,
+      "planned_used_seconds": 5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "zhitang": "zhitang-bride-unveiled"
+      },
+      "summary_zh_TW": "知棠握穩收據。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The complete original is sealed inside the existing silent witness own custody bag for their return custody. The bride holds her separate complete copy and the custody receipt. Neither the groom nor the uncle holds any original or envelope. Torn display pages and returned bride-ring box remain at their established table positions. Adult East Asian woman, age 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, ivory wedding gown with NO VEIL, one small silver rectangular watch on the same wrist as the approved previous episode. Uninjured, no wedding ring.",
+      "motion": "She closes her fingers once around the receipt without crumpling it.",
+      "camera": "Locked medium close-up including her face and receipt.",
+      "line_ids": [
+        "WR-E02-L030"
+      ],
+      "prop_state": "original-in-witness-custody",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked medium close-up including her face and receipt. Frame for this one action: She closes her fingers once around the receipt without crumpling it. Same approved E1 wedding setting and table axis; no veil. Sealed original is in silent witness custody bag. Bride holds receipt and separate complete copy. Groom and uncle possess neither original nor envelope. Returned ring box stays at groom side. Frame only the named approved adult looks: zhitang. Locked medium close-up including her face and receipt."
+    },
+    {
+      "id": "WR-E02-S37",
+      "planned_start_s": 159,
+      "planned_end_s": 163,
+      "planned_used_seconds": 4,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "chongyue": "chongyue--base"
+      },
+      "summary_zh_TW": "崇岳第一次正眼打量知棠。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The complete original is sealed inside the existing silent witness own custody bag for their return custody. The bride holds her separate complete copy and the custody receipt. Neither the groom nor the uncle holds any original or envelope. Torn display pages and returned bride-ring box remain at their established table positions. Adult East Asian man, age 57, square face, salt-and-pepper hair brushed back, thin metal glasses, charcoal mandarin-collar jacket, one amber cuff button on right wrist.",
+      "motion": "He studies Zhitang with a small measured change of expression.",
+      "camera": "Locked close-up.",
+      "line_ids": [
+        "WR-E02-L031"
+      ],
+      "prop_state": "original-in-witness-custody",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked close-up. Frame for this one action: He studies Zhitang with a small measured change of expression. Same approved E1 wedding setting and table axis; no veil. Sealed original is in silent witness custody bag. Bride holds receipt and separate complete copy. Groom and uncle possess neither original nor envelope. Returned ring box stays at groom side. Frame only the named approved adult looks: chongyue. Locked close-up."
+    },
+    {
+      "id": "WR-E02-S38",
+      "planned_start_s": 163,
+      "planned_end_s": 168,
+      "planned_used_seconds": 5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "zhitang": "zhitang-bride-unveiled"
+      },
+      "summary_zh_TW": "知棠把副本貼在身前。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The complete original is sealed inside the existing silent witness own custody bag for their return custody. The bride holds her separate complete copy and the custody receipt. Neither the groom nor the uncle holds any original or envelope. Torn display pages and returned bride-ring box remain at their established table positions. Adult East Asian woman, age 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, ivory wedding gown with NO VEIL, one small silver rectangular watch on the same wrist as the approved previous episode. Uninjured, no wedding ring.",
+      "motion": "She settles the retained complete copy against her torso while keeping the receipt visible in the other hand.",
+      "camera": "Locked medium close-up; same gown without veil.",
+      "line_ids": [
+        "WR-E02-L032"
+      ],
+      "prop_state": "original-in-witness-custody",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked medium close-up; same gown without veil. Frame for this one action: She settles the retained complete copy against her torso while keeping the receipt visible in the other hand. Same approved E1 wedding setting and table axis; no veil. Sealed original is in silent witness custody bag. Bride holds receipt and separate complete copy. Groom and uncle possess neither original nor envelope. Returned ring box stays at groom side. Frame only the named approved adult looks: zhitang. Locked medium close-up; same gown without veil."
+    },
+    {
+      "id": "WR-E02-S39",
+      "planned_start_s": 168,
+      "planned_end_s": 171.5,
+      "planned_used_seconds": 3.5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "chongyue": "chongyue--base"
+      },
+      "summary_zh_TW": "崇岳輕點頭。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The complete original is sealed inside the existing silent witness own custody bag for their return custody. The bride holds her separate complete copy and the custody receipt. Neither the groom nor the uncle holds any original or envelope. Torn display pages and returned bride-ring box remain at their established table positions. Adult East Asian man, age 57, square face, salt-and-pepper hair brushed back, thin metal glasses, charcoal mandarin-collar jacket, one amber cuff button on right wrist.",
+      "motion": "He gives one restrained nod as if conceding.",
+      "camera": "Locked medium close-up.",
+      "line_ids": [
+        "WR-E02-L033"
+      ],
+      "prop_state": "original-in-witness-custody",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked medium close-up. Frame for this one action: He gives one restrained nod as if conceding. Same approved E1 wedding setting and table axis; no veil. Sealed original is in silent witness custody bag. Bride holds receipt and separate complete copy. Groom and uncle possess neither original nor envelope. Returned ring box stays at groom side. Frame only the named approved adult looks: chongyue. Locked medium close-up."
+    },
+    {
+      "id": "WR-E02-S40",
+      "planned_start_s": 171.5,
+      "planned_end_s": 175.5,
+      "planned_used_seconds": 4,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "chongyue": "chongyue--base"
+      },
+      "summary_zh_TW": "崇岳把視線移向拍攝的手機方向。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The complete original is sealed inside the existing silent witness own custody bag for their return custody. The bride holds her separate complete copy and the custody receipt. Neither the groom nor the uncle holds any original or envelope. Torn display pages and returned bride-ring box remain at their established table positions. Adult East Asian man, age 57, square face, salt-and-pepper hair brushed back, thin metal glasses, charcoal mandarin-collar jacket, one amber cuff button on right wrist.",
+      "motion": "He turns his gaze toward an adult guest camera position off frame.",
+      "camera": "Locked close-up; no camera is shown switching off.",
+      "line_ids": [
+        "WR-E02-L034"
+      ],
+      "prop_state": "original-in-witness-custody",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Locked close-up; no camera is shown switching off. Frame for this one action: He turns his gaze toward an adult guest camera position off frame. Same approved E1 wedding setting and table axis; no veil. Sealed original is in silent witness custody bag. Bride holds receipt and separate complete copy. Groom and uncle possess neither original nor envelope. Returned ring box stays at groom side. Frame only the named approved adult looks: chongyue. Locked close-up; no camera is shown switching off."
+    },
+    {
+      "id": "WR-E02-S41",
+      "planned_start_s": 175.5,
+      "planned_end_s": 178,
+      "planned_used_seconds": 2.5,
+      "source_duration_s": 8,
+      "timing_status": "planned-not-measured",
+      "character_looks": {
+        "zhitang": "zhitang-bride-unveiled"
+      },
+      "summary_zh_TW": "知棠看向舅舅。",
+      "prompt": "Original contemporary East Asian 2D animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces, grounded dramatic acting, cinematic 16:9 staging. Use the same approved episode-1 wedding banquet environment with its ivory and ice-blue palette; do not introduce a new wall, table design, or room layout. The central signing table IS the witnessing table, not a second location. Bride remains screen-left, Chengchuan screen-right; preserve the table axis. No veil in any episode-2 frame. No wedding rings worn. No Zhixia, no gift bag, no Xuwen, no mother, no child, and no new speaking person. Use only indistinct adult background guests if required. No subtitles, no captions, no overlay text. No generated dialogue audio as final stem. The complete original is sealed inside the existing silent witness own custody bag for their return custody. The bride holds her separate complete copy and the custody receipt. Neither the groom nor the uncle holds any original or envelope. Torn display pages and returned bride-ring box remain at their established table positions. Adult East Asian woman, age 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, ivory wedding gown with NO VEIL, one small silver rectangular watch on the same wrist as the approved previous episode. Uninjured, no wedding ring.",
+      "motion": "She raises her eyes toward her uncle, still holding her copy and receipt.",
+      "camera": "Locked close-up; end on her response without another action.",
+      "line_ids": [],
+      "prop_state": "original-in-witness-custody",
+      "single_primary_action": true,
+      "silent_witness_hands_only": false,
+      "mouth_sync_status": "not-generated-not-verified",
+      "runtime_prompt": "Same approved E1 ivory and ice-blue banquet environment, anime-2d, same signing/witnessing table. Bride left, groom right; no veil or worn wedding rings. No Zhixia, gift bag, Xuwen, mother, children or extra speaking character. No burned text. Sealed original is in silent witness custody bag. Bride holds receipt and separate complete copy. Groom and uncle possess neither original nor envelope. Returned ring box stays at groom side. Frame only the named approved adult looks: zhitang. Locked close-up; end on her response without another action."
+    }
+  ],
+  "payoffs": [
+    {
+      "id": "WR-E02-P01",
+      "meaning": "顧親口念出受託人為自己及代行表決權，替妳省事不再遮住公司決策內容。",
+      "shot_ids": [
+        "WR-E02-S04",
+        "WR-E02-S06"
+      ],
+      "planned_complete_by_s": 23.5,
+      "measured_at_s": null
+    },
+    {
+      "id": "WR-E02-P02",
+      "meaning": "顧明確承認文件由他提供；完整未簽原件含附件由見證人封存保管，知棠取得保管收據。",
+      "shot_ids": [
+        "WR-E02-S16",
+        "WR-E02-S26",
+        "WR-E02-S27",
+        "WR-E02-S32",
+        "WR-E02-S33",
+        "WR-E02-S34"
+      ],
+      "planned_receipt_held_at_s": 145.5,
+      "source_original_planned_seconds": 118,
+      "note": "118秒是來源目標，不是本稿TTS結果；自然演出後重排，不為對齊而灌字。",
+      "measured_at_s": null
+    }
+  ],
+  "continuity_guards": [
+    "E2 first frame onward bride gown has no veil; do not show veil removal or restore it.",
+    "Original, display fragments, and retained complete copy are three different objects; only intact unsigned original plus attachments is sealed.",
+    "Silent existing witness seals and retains original, issues receipt; no new voice is introduced.",
+    "Bride retains E1 complete copy and receipt; no transfer to Xuwen occurs until E3.",
+    "Zhixia, her unoffered gift bag, recorder and mother voice do not appear in E2.",
+    "The bride ring remains returned; no marriage, divorce or exchange of rings is invented.",
+    "Only Zhitang knows rebirth; uncle is not exposed as mastermind here.",
+    "Reading recipient and voting-rights scope does not establish guilt or cancel pre-existing mandates.",
+    "Final uncle line requests cameras off; no compliance, confiscation, deletion or confrontation is added.",
+    "Uncle agrees to explain as continuation hook; attachment investigation proceeds to E3 without announcing its conclusions."
+  ],
+  "visual_style_binding": {
+    "reference": "./episode-01-voice.video.json#look",
+    "preset": "anime-2d",
+    "style": "Original contemporary East Asian animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces; ivory and ice-blue wedding palette, dusty grey warehouse with reflected warm firelight; grounded dramatic acting, cinematic 16:9 staging.",
+    "notes": "Use the same approved E1 environment reference. Do not infer extra set details from this dialogue draft."
+  },
+  "runtime_mapping": {
+    "voice_file": "./episode-02-voice.video.json",
+    "brief_file": "./episode-02-brief.md",
+    "series_file": "./episode-02-series.json",
+    "line_id_algorithm": "sha256(UTF-8(wedding-reckoning:episode:2:zh-TW:<editorial line id>)).slice(0,8)",
+    "voice_scope": "34 spoken lines only; seven silent editorial shots omitted from voice runtime",
+    "runtime_prompt_note": "Compact scene prompt inherits full canonical appearance/shot looks and global E1 look; state/action/camera preserved.",
+    "status": "offline-only-not-recorded"
+  }
+}
