@@ -1,12 +1,13 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
+import { EXIT, main } from "../cli.mjs";
 import { compilationDocument } from "../core/compilation.mjs";
-import { dramaFixture, explainerFixture } from "../core/fixtures/load.mjs";
-import { estimateTimeline } from "../core/timeline.mjs";
+import { dramaFixture, explainerFixture, sandbox } from "../core/fixtures/load.mjs";
+import { estimateTimeline, visualHash } from "../core/timeline.mjs";
 import { resolveRequest } from "./browser.mjs";
 import { localizedThumbnailHash, thumbnailSource, thumbnailSourceHash } from "../core/translations.mjs";
 import { coverageProblems, localizedThumbnails } from "./cli.mjs";
@@ -14,6 +15,9 @@ import { contactSheetHtml } from "./contact.mjs";
 import { bundledCoverage, covers, mergeRanges, parseUnicodeRanges, uncovered } from "./fonts.mjs";
 import { localeThumbnailFile, renderPlan, renderProblems, stillFile, themeHash, thumbnailVariantFile, transitionFile } from "./plan.mjs";
 import { BLANK_STRIP, blankStripHtml, blankStripKey, STRIP_SIZE, stripFile, stripHtml, subtitlePlan } from "./subtitles.mjs";
+
+// The fixture videos run seconds; the eight-minute floor has tests of its own.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
 
 const showcase = JSON.parse(readFileSync(new URL("../templates/fixtures/showcase/video.json", import.meta.url), "utf8"));
 
@@ -314,6 +318,62 @@ test("a Simplified Chinese thumbnail with a Simplified-only form is drawable in 
   assert.match(sc.html, /<html lang="zh-Hans">.*fonts\/noto-sans-sc\/index\.css.*--font:"Noto Sans SC Variable"/);
   assert.deepEqual(localizedThumbnails(plan).drawable.map((own) => own.locale), ["zh-CN"]);
   assert.match(localizedThumbnails(plan, () => bundledCoverage()).gaps["zh-CN"], /U\+4F65/, "the slide fonts alone lack it");
+});
+
+test("render --thumbnails-only draws the language thumbnails alone, and only over frames rendered for this script", async () => {
+  const box = sandbox();
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  const words = Object.fromEntries(Object.keys(thumbnailSource(doc)).map((name) => [name, `Why ${name}`]));
+  mkdirSync(path.join(box.dir, "i18n"), { recursive: true });
+  writeFileSync(path.join(box.dir, "i18n", "en.json"), JSON.stringify({ thumbnail: words, source_hashes: { thumbnail: thumbnailSourceHash(doc) } }));
+  const captures = [];
+  let out = "";
+  const ctx = {
+    root: box.root,
+    env: { VIDEO_WORKDIR: box.work },
+    stdout: { write: (text) => (out += text) },
+    stderr: { write: (text) => (out += text) },
+    now: () => new Date("2026-10-02T00:00:00Z"),
+    openRenderer: async () => ({
+      capture: async (key, html) => {
+        captures.push({ key, html });
+        return { still: Buffer.from(`jpeg ${key}`), frames: [], problems: [] };
+      },
+      close: async () => {},
+    }),
+  };
+  const args = ["render", "--slug", box.slug, "--thumbnails-only"];
+  const work = (...parts) => path.join(box.workdir, ...parts);
+
+  // No frames yet, or frames of an older script: the full render comes first.
+  assert.equal(await main(args, ctx), EXIT.usage);
+  mkdirSync(work("frames"), { recursive: true });
+  const manifest = { visual_hash: "older", scenes: [{ id: "hook", states: [{ still: "frames/a.png" }] }], thumbnail: "thumbnail.jpg", thumbnail_locale_gaps: { en: "i18n/en.json has no thumbnail words" } };
+  writeFileSync(work("frames", "manifest.json"), JSON.stringify(manifest));
+  assert.equal(await main(args, ctx), EXIT.usage);
+  assert.match(out, /run render without --thumbnails-only first/);
+  assert.equal(captures.length, 0);
+
+  // What the approved final.mp4 was cut from, as a full render and assemble leave it.
+  manifest.visual_hash = visualHash(doc);
+  writeFileSync(work("frames", "manifest.json"), JSON.stringify(manifest));
+  const kept = [["thumbnail.jpg", "the approved A"], [path.join("frames", "cache.json"), "{}"], [path.join("frames", "a.png"), "a slide"], ["final.mp4", "the approved cut"]];
+  for (const [name, bytes] of kept) writeFileSync(work(name), bytes);
+  mkdirSync(work("thumbnails"), { recursive: true });
+  writeFileSync(work("thumbnails", "ja.jpg"), "words ja no longer has");
+  assert.equal(await main(args, ctx), EXIT.ok);
+  assert.deepEqual(captures.map(({ html }) => /Why headline/.test(html)), [true], "one picture: the en thumbnail");
+  assert.equal(readFileSync(work("thumbnails", "en.jpg"), "utf8"), `jpeg ${captures[0].key}`);
+  assert.ok(!existsSync(work("thumbnails", "ja.jpg")), "a locale without current words keeps no older picture");
+  const { thumbnail_locales: drawn, thumbnail_locale_gaps: gaps, ...rest } = JSON.parse(readFileSync(work("frames", "manifest.json"), "utf8"));
+  const before = { ...manifest };
+  delete before.thumbnail_locale_gaps;
+  assert.deepEqual(rest, before, "visual_hash and the scenes are as they were");
+  assert.deepEqual(Object.keys(drawn), ["en"]);
+  assert.deepEqual(Object.keys(gaps), ["ja", "ko", "zh-CN"]);
+  for (const [name, bytes] of kept) assert.equal(readFileSync(work(name), "utf8"), bytes, `${name} untouched`);
+  assert.ok(!existsSync(work("contact-sheet.png")), "no contact sheet is drawn");
+  assert.match(out, /1 language thumbnails drawn .*; the frames are as they were/);
 });
 
 test("a Japanese thumbnail is set in Noto Sans JP, so its kanji take the Japanese forms", () => {
