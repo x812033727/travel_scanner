@@ -1,13 +1,13 @@
 ---
 id: 2026-10-02-video-japanese-thumbnails-set-in-noto
 title: Video Japanese thumbnails set in Noto Sans JP instead of the Traditional Chinese font
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-thumb-font-ja
 claimed_at: 2026-10-02T02:55:20Z
 created_at: 2026-10-02T00:38:49Z
-completed_at:
+completed_at: 2026-10-02T03:21:20Z
 branch: claude/thumb-font-ja
 depends_on:
   - 2026-10-01-video-thumbnails-bundle-korean-and-simplified
