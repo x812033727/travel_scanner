@@ -17,6 +17,7 @@ import path from "node:path";
 
 import { atomicWrite, lexiconFile, readJson, resolveWorkBase, ROOT, stopRequested } from "../core/paths.mjs";
 import { LAB_SERIES } from "../shorts/core.mjs";
+import { CutShort } from "../shorts/cut.mjs";
 import { defaultTools, LAB_FILE, LabShort, labRefusal, numbersIn } from "../shorts/lab.mjs";
 import { shortsInstructions } from "../shorts/prompts.mjs";
 import { siteClient } from "../shorts/site.mjs";
@@ -25,9 +26,10 @@ import { parseAnswer } from "./prompts.mjs";
 
 export const SHORTS_DIR = "_shorts";
 export const SHORTS_STATE = "shorts-state.json";
-// The content lines this worker makes so far; the highlights (cut) and the vertical dramas come
-// with their own tickets, so the plan leaves their topics to them.
-export const MAKES = Object.freeze(["lab"]);
+// The content lines this worker makes so far: the experiments (lab.mjs) and the highlights of the
+// published tutorials (cut.mjs). The vertical dramas come with their own ticket, so the plan
+// leaves their topics to it.
+export const MAKES = Object.freeze(["lab", "cut"]);
 const MAX_PLANNER_TRIES = 2;
 const MAX_JOB_FAILURES = 2;
 // New topics that failed twice wait as long as the server waits between two briefs.
@@ -279,9 +281,12 @@ export class ShortsWorker {
     return this.shortTools;
   }
 
-  async lab(job, slug) {
-    return new LabShort({
+  /** The Short a make job is for: an experiment, or a highlight of a tutorial (`line` cut). */
+  async lab(job, slug, line = "lab") {
+    const Short = line === "cut" ? CutShort : LabShort;
+    return new Short({
       ctx: this.ctx,
+      root: this.ctx.root ?? ROOT,
       api: this.api,
       // Every request to the tested model is one the evidence records: the client never repeats one.
       subjectApi: this.ctx.subjectApi ?? automationClient(this.ctx, { attempts: 1 }),
@@ -323,7 +328,7 @@ export class ShortsWorker {
     for (const name of names.sort()) {
       const state = readJson(path.join(this.base, name, LAB_FILE), null);
       if (state?.status !== "awaiting") continue;
-      const lab = await this.lab({ topic: { slug: state.topic, title: state.title }, channel_stance: "" }, name);
+      const lab = await this.lab({ topic: { slug: state.topic, title: state.title }, channel_stance: "" }, name, state.line ?? "lab");
       const line = await lab.follow();
       if (line) lines.push(line);
     }
@@ -484,12 +489,15 @@ export class ShortsWorker {
 
   async make(job) {
     const topic = job.topic;
-    if (!MAKES.includes(job.line)) return [`shorts: ${topic.slug} is a ${job.line} topic; this worker makes the experiments line only so far`];
-    const refusal = labRefusal(topic);
+    if (!MAKES.includes(job.line)) return [`shorts: ${topic.slug} is a ${job.line} topic; this worker makes the experiments and the highlights only so far`];
+    // An experiment that needs what the worker lacks is not started. A highlight is started
+    // whatever its source: one it cannot be cut from is blocked with the reason (cut.mjs), so its
+    // slot goes to the next Short instead of asking for it every round.
+    const refusal = job.line === "lab" ? labRefusal(topic) : null;
     if (refusal) return [`shorts: cannot make ${topic.slug}: ${refusal}`];
     let slug = job.resume ? job.project_slug : null;
     if (!slug) slug = (await this.api.shortsStart(topic.slug)).project_slug;
-    const lab = await this.lab(job, slug);
+    const lab = await this.lab(job, slug, job.line);
     if (lab.state.status === "blocked" && !(await this.retried(lab))) return [];
     const line = await lab.run();
     return line ? [line] : [];

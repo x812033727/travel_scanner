@@ -1,7 +1,7 @@
 // The worker's Shorts round (shorts.mjs): where it goes in `auto`, and the weekly plan, the new
 // topics and the weekly report it writes back. The site and the models are a fake fetch.
 import assert from "node:assert/strict";
-import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
@@ -21,7 +21,7 @@ const BUDGET = { period_start: "2026-10-01T00:00:00Z", period_end: "2026-10-31T0
 const PLAN_JOB = {
   window_start: NOW.toISOString(), window_end: "2026-10-18T16:00:00Z", timezone: "Asia/Taipei", lines: ["lab", "cut"], weekly_quota: { lab: 5, cut: 2 },
   open_slots: [slot("11111111-1111-4111-8111-111111111111", "2026-10-06"), slot("22222222-2222-4222-8222-222222222222", "2026-10-07"), slot("33333333-3333-4333-8333-333333333333", "2026-10-08")],
-  planned: [], topics: [summary("shorts-self-check"), summary("shorts-cut-model-choice-1", "cut"), summary("shorts-image-specificity", "lab", { paid: true }), summary("shorts-taiwan-phrases")],
+  planned: [], topics: [summary("shorts-self-check"), summary("shorts-cut-model-choice-1", "cut"), summary("shorts-image-specificity", "lab", { paid: true }), summary("shorts-taiwan-phrases"), summary("drama-episode-1-vertical", "drama")],
   last_week: [], budget: BUDGET,
 };
 const REPORT_JOB = {
@@ -122,10 +122,11 @@ test("the plan keeps only what the server can take and this worker can make", ()
     { slot_id: third, topic_slug: "shorts-self-check" },
     { slot_id: "99999999-9999-4999-8999-999999999999", topic_slug: "shorts-taiwan-phrases" },
     { slot_id: third, topic_slug: "shorts-invented" },
+    { slot_id: third, topic_slug: "drama-episode-1-vertical" },
   ] }, PLAN_JOB);
   assert.equal(problem, null);
-  assert.deepEqual(items, [{ slot_id: first, topic_slug: "shorts-self-check" }], "the reason stays with the worker: the server takes slot and slug only");
-  assert.deepEqual(dropped.map((line) => line.split(":")[1].trim()), ["the worker does not make cut yet", "needs a generated picture", "twice in the plan", "not an open slot", "not a topic of the pool"]);
+  assert.deepEqual(items, [{ slot_id: first, topic_slug: "shorts-self-check" }, { slot_id: second, topic_slug: "shorts-cut-model-choice-1" }], "the reason stays with the worker: the server takes slot and slug only; a highlight is made too");
+  assert.deepEqual(dropped.map((line) => line.split(":")[1].trim()), ["needs a generated picture", "twice in the plan", "not an open slot", "not a topic of the pool", "the worker does not make drama yet"]);
   assert.equal(planItems({ note: "nothing" }, PLAN_JOB).problem, "the answer has no items list");
 });
 
@@ -216,11 +217,11 @@ test("a report that cannot be written twice in a row is saved saying so, with th
 test("the plan goes to the server as slots and slugs; refused twice, an empty plan is recorded", async () => {
   const box = sandbox();
   const [first] = PLAN_JOB.open_slots.map((each) => each.id);
-  const answers = { "planner:shorts-plan": { items: [{ slot_id: first, topic_slug: "shorts-self-check", reason: "已驗證" }, { slot_id: PLAN_JOB.open_slots[1].id, topic_slug: "shorts-cut-model-choice-1" }], note: "其餘留空" } };
+  const answers = { "planner:shorts-plan": { items: [{ slot_id: first, topic_slug: "shorts-self-check", reason: "已驗證" }, { slot_id: PLAN_JOB.open_slots[1].id, topic_slug: "drama-episode-1-vertical" }], note: "其餘留空" } };
   const site = fakeSite({ settings: { enabled: false }, jobs: [{ kind: "plan", holds: [], plan: PLAN_JOB }], answers });
   const { ctx, out } = context(box, site);
   await main(["auto"], ctx);
-  assert.match(out.stdout, /^shorts: planned 1 of 3 open slots until 2026-10-19 00:00 \(left out: shorts-cut-model-choice-1: the worker does not make cut yet\)\n/);
+  assert.match(out.stdout, /^shorts: planned 1 of 3 open slots until 2026-10-19 00:00 \(left out: drama-episode-1-vertical: the worker does not make drama yet\)\n/);
   assert.deepEqual(site.calls.plan, [{ items: [{ slot_id: first, topic_slug: "shorts-self-check" }] }]);
   assert.equal(site.calls.run[0].payload.today, "2026-10-05");
   assert.deepEqual(site.calls.run[0].payload.topics, PLAN_JOB.topics);
@@ -322,6 +323,31 @@ test("a Short to make starts its topic and goes to the lab; one that needs a san
   assert.match(refused.out.stdout, /^shorts: cannot make shorts-boba-game: 「shorts-boba-game」要真的執行模型寫的程式/);
   assert.deepEqual(sandboxed.calls.start, []);
   assert.equal(sandboxed.calls.run.length, 0);
+});
+
+test("a highlight to make starts its topic and goes to cut.mjs; one from a source not public yet is blocked, not asked every round", async () => {
+  const source = { slug: "ai-model-choice", title: "怎麼選模型", format: "slides", youtube_video_id: "dQw4w9WgXcQ", youtube_publish_at: "2026-10-01T11:30:00Z", source_guide: null, category: null, series_slug: null, episode_number: null };
+  const topic = { slug: "ai-model-choice-cut-1", line: "cut", series: "ai-model-choice", title: "怎麼選模型（精華 1）", status: "ready", brief: { notes: "挑一段" }, source_slug: "ai-model-choice" };
+  const make = { slot: PLAN_JOB.open_slots[0], topic, line: "cut", project_slug: null, resume: false, source, channel_stance: "", seconds_min: 25, seconds_max: 55 };
+  const box = sandbox();
+  const tutorial = path.join(box.root, "docs", "videos", "ai-model-choice");
+  mkdirSync(tutorial, { recursive: true });
+  writeFileSync(path.join(tutorial, "video.json"), JSON.stringify({ slug: "ai-model-choice", scenes: [{ id: "a", chapter: "開場", lines: [{ id: "m1", text: "第一句。" }, { id: "m2", text: "第二句。" }] }] }));
+  writeFileSync(path.join(tutorial, "verify-1.md"), "全部對得上。\n");
+  const site = fakeSite({ settings: { enabled: false }, jobs: [{ kind: "make", holds: [], make }], answers: { "planner:shorts-cut": { segments: "none" } } });
+  const { ctx, out } = context(box, site, { shortsTools: {} });
+  await main(["auto"], ctx);
+  assert.deepEqual(site.calls.start, ["ai-model-choice-cut-1"]);
+  assert.deepEqual(site.calls.run.map((call) => [call.stage, call.variant, call.slug]), [["planner", "shorts-cut", "ai-model-choice-cut-1-2"], ["planner", "shorts-cut", "ai-model-choice-cut-1-2"]], "made under the video the server named, asked again at once with the problems");
+  assert.match(out.stdout, /^ai-model-choice-cut-1-2: source frozen: ai-model-choice \(2 lines, verify-1\.md; no article to link\)\nai-model-choice-cut-1-2: pick gave nothing usable/);
+  assert.equal(JSON.parse(readFileSync(path.join(box.work, SHORTS_DIR, "ai-model-choice-cut-1-2", "lab.json"), "utf8")).line, "cut");
+
+  const later = fakeSite({ settings: { enabled: false }, jobs: [{ kind: "make", holds: [], make: { ...make, source: { ...source, youtube_publish_at: "2026-10-09T11:30:00Z" } } }] });
+  const scheduled = context(sandbox(), later, { shortsTools: {} });
+  await main(["auto"], scheduled.ctx);
+  assert.deepEqual(later.calls.start, ["ai-model-choice-cut-1"], "started, so the calendar can pass it by");
+  assert.match(scheduled.out.stdout, /^ai-model-choice-cut-1-2: blocked — 來源 ai-model-choice 還沒公開/);
+  assert.equal(later.calls.run.length, 0);
 });
 
 test("a Shorts problem is a line, never the end of the tutorials' round", async () => {
