@@ -106,6 +106,37 @@ export function dubSteps(dubs = [], skippedDubs = {}) {
 }
 
 /**
+ * The Studio steps for each language's own thumbnail, as YouTube Help "Add Multi-language
+ * features to your videos" (support.google.com/youtube/answer/13338784, read 2026-10-01) gives
+ * them under 「Manage localized thumbnails」: long-form videos only, on a channel with access to
+ * advanced features, the video's own thumbnail first, then Studio's 「語言」 page, the language's
+ * name, 「新增」 beside 「縮圖」. The page names no API for it, so the owner uploads them by hand.
+ */
+export function localizedThumbnailSteps(thumbnails = {}, skipped = {}) {
+  const lines = [];
+  const files = Object.entries(thumbnails);
+  if (files.length) {
+    lines.push("要上傳的縮圖（每個語言一張，字換成該語言，畫面與版型同 `thumbnail.jpg`）：", "");
+    for (const [locale, file] of files) lines.push(`- \`${file}\`（${locale}）`);
+    lines.push(
+      "",
+      "先照第 1 節傳好 `thumbnail.jpg`。每個語言做一次：Studio 左選單「語言」→ 這支影片 → 點那個語言的名稱 →「縮圖」旁的「新增」→ 選對應的檔案 →「更新」。要點的是語言名稱，所以那個語言要先列在這支影片的「語言」頁：第 2、3 節的字幕、配音或標題說明傳上去後就會列出。",
+      "",
+      "- YouTube 說明頁寫的條件：只適用長片（不含 Shorts），頻道要能使用「進階功能」。",
+      "- 觀眾看到的是符合他語言設定的縮圖；沒有自己縮圖的語言看到 `thumbnail.jpg`。",
+      "- 說明頁只寫了 Studio 的做法、沒提到 API，網站也不送它：只能在 Studio 手動傳。",
+    );
+  }
+  const left = Object.entries(skipped);
+  if (left.length) {
+    if (lines.length) lines.push("");
+    lines.push("沒有自己縮圖的語言（用 `thumbnail.jpg`，不用等）：");
+    for (const [locale, reason] of left) lines.push(`- ${locale}：${reason}`);
+  }
+  return lines.join("\n");
+}
+
+/**
  * The 合集 section of a compilation's UPLOAD.md (docs/videos/BINGE.md): the 1080p file is too
  * big for the review store, so the owner downloads it from the site's 「可以上架」 card; the
  * chapters, one per episode, are already in the description.
@@ -126,8 +157,11 @@ export function compilationSection(metadata, { episodes = 0, size_bytes: sizeByt
  * in metadata.json and this page only says how to tick it. The dub tracks (docs/videos/DUBS.md)
  * keep their own section: which file goes where in Studio's 「語言」.
  */
-export function uploadChecklist({ metadata, captions, thumbnail, drama = false, disclosure = null, dubs = [], skippedDubs = {}, compilation = null }) {
+export function uploadChecklist({ metadata, captions, thumbnail, drama = false, disclosure = null, dubs = [], skippedDubs = {}, thumbnails = {}, skippedThumbnails = {}, compilation = null }) {
   const captionLines = captions.length ? captions.map((file) => `   - \`${file}\``).join("\n") : "   - （還沒有字幕檔：先跑 captions）";
+  // Each language's own thumbnail gets a section of its own when there is one or a note about one.
+  const languageThumbnails = thumbnail ? localizedThumbnailSteps(thumbnails, skippedThumbnails) : "";
+  const thumbnailSection = languageThumbnails ? `## 4. 各語言的縮圖\n\n${languageThumbnails}\n\n` : "";
   const synthetic = typeof disclosure?.synthetic === "boolean" ? disclosure.synthetic : typeof metadata.contains_synthetic_media === "boolean" ? metadata.contains_synthetic_media : drama;
   const reason = disclosure?.reason ?? metadata.disclosure_reason ?? (drama ? "AI-generated shots and voices" : "slides read by a synthesized narration");
   return `# 上傳步驟：${metadata.title}
@@ -154,7 +188,7 @@ ${captionLines}
 
 ${dubSteps(dubs, skippedDubs)}
 
-## 4. 上傳之後
+${thumbnailSection}## ${thumbnailSection ? 5 : 4}. 上傳之後
 
 回到 /admin/videos 這支影片的「可以上架」卡片貼上 YouTube 網址，並選上架時間；影片 ID 會寫進 \`video.json\`，影片就算完成。不要自己按公開：公開由站主選的時間決定。
 `;

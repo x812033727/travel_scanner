@@ -9,7 +9,7 @@ import { eachLine, textHash } from "../core/schema.mjs";
 import { writeLanguages } from "../core/stages.mjs";
 import { lintProject, loadProject } from "../core/state.mjs";
 import { estimateTimeline, speechHash } from "../core/timeline.mjs";
-import { sourceHashes } from "../core/translations.mjs";
+import { localizedThumbnail, sourceHashes, thumbnailGap, thumbnailSourceHash, thumbnailStatus } from "../core/translations.mjs";
 import { buildSheet, mergeSheet, sheetTodo } from "./cli.mjs";
 
 function context(box) {
@@ -42,6 +42,7 @@ const fillTodo = (sheet, prefix = "EN") => ({
   title: sheet.title.todo ? { ...sheet.title, text: `${prefix} title` } : sheet.title,
   description: sheet.description.todo ? { ...sheet.description, text: `${prefix} description` } : sheet.description,
   tags: sheet.tags.todo ? { ...sheet.tags, text: sheet.tags.source.map((tag) => `${prefix} ${tag}`) } : sheet.tags,
+  thumbnail: sheet.thumbnail?.todo ? { ...sheet.thumbnail, text: Object.fromEntries(Object.entries(sheet.thumbnail.source).map(([name, word]) => [name, `${prefix} ${word}`])) } : sheet.thumbnail,
   chapters: sheet.chapters.map((chapter) => (chapter.todo ? { ...chapter, text: `${prefix} ${chapter.source}` } : chapter)),
   lines: sheet.lines.map((line) => (line.todo ? { ...line, text: `${prefix} ${line.id}` } : line)),
 });
@@ -98,7 +99,7 @@ test("after a re-pace, renamed and new chapters, a new description and reordered
   const { translation, problems } = mergeSheet(repaced, fillTodo(sheet, "EN2"), merged);
   assert.deepEqual(problems, []);
   assert.deepEqual(translation.chapters, { hook: "EN2 ChatGPT 開始有廣告了", ask: "EN2 三個問題", wrap: "EN 結論" }, "no entry is left under the scene the chapter moved from");
-  assert.deepEqual(translation.source_hashes, sourceHashes(repaced));
+  assert.deepEqual(translation.source_hashes, { ...sourceHashes(repaced), thumbnail: thumbnailSourceHash(repaced) });
   assert.equal(translation.title, "EN title");
   assert.deepEqual(todoOf(buildSheet(repaced, translation, "en")), { title: false, description: false, tags: false, chapters: { hook: false, ask: false, wrap: false }, lines: [] });
 });
@@ -178,7 +179,7 @@ test("an i18n file from before source hashes loads; lint calls its metadata poss
 
   const make = context(box);
   assert.equal(await main(["i18n-sheet", "--slug", box.slug, "--locale", "en"], make.ctx), EXIT.ok, make.out.stderr);
-  assert.match(make.out.stdout, /^en: to translate 0 of 7 lines, 3 of 3 chapters, the title, the description, the tags; /);
+  assert.match(make.out.stdout, /^en: to translate 0 of 7 lines, 3 of 3 chapters, the title, the description, the tags, the thumbnail's words; /);
   const sheetPath = path.join(box.workdir, "i18n", "en.todo.json");
   writeFileSync(sheetPath, JSON.stringify(fillTodo(JSON.parse(readFileSync(sheetPath, "utf8")))));
   const merge = context(box);
@@ -186,7 +187,7 @@ test("an i18n file from before source hashes loads; lint calls its metadata poss
   assert.deepEqual(lintOf(), []);
   const written = JSON.parse(readFileSync(path.join(box.dir, "i18n", "en.json"), "utf8"));
   assert.deepEqual(Object.keys(written.chapters), ["hook", "questions", "wrap"]);
-  assert.deepEqual(Object.keys(written), ["title", "description", "tags", "chapters", "source_hashes", "lines"]);
+  assert.deepEqual(Object.keys(written), ["title", "description", "tags", "thumbnail", "chapters", "source_hashes", "lines"]);
 });
 
 test("a sheet narrowed with --parts holds only that part, merging keeps the rest untouched, and the dub budget comes only with a dub chosen", async () => {
@@ -203,10 +204,10 @@ test("a sheet narrowed with --parts holds only that part, merging keeps the rest
   // Metadata only: no lines on the sheet; a merge keeps the lines as they were.
   const meta = context(box);
   assert.equal(await main(["i18n-sheet", "--slug", box.slug, "--locale", "en", "--parts", "metadata"], meta.ctx), EXIT.ok, meta.out.stderr);
-  assert.match(meta.out.stdout, /^en: to translate 0 of 3 chapters; .*\(metadata only\)\n$/);
+  assert.match(meta.out.stdout, /^en: to translate 0 of 3 chapters, the thumbnail's words; .*\(metadata only\)\n$/);
   const metaSheet = JSON.parse(readFileSync(sheetPath, "utf8"));
   assert.deepEqual([metaSheet.parts, metaSheet.lines, metaSheet.title.text, metaSheet.chapters.length], [["metadata"], [], "How to choose an AI model", 3]);
-  assert.match(metaSheet.note, /only the title, the description, the tags and the chapter names/);
+  assert.match(metaSheet.note, /only the title, the description, the tags, the chapter names and the thumbnail's words/);
   metaSheet.title.text = "A better English title";
   writeFileSync(sheetPath, JSON.stringify(metaSheet));
   assert.equal(await main(["i18n-merge", "--slug", box.slug, "--locale", "en"], context(box).ctx), EXIT.ok);
@@ -247,4 +248,58 @@ test("a sheet narrowed with --parts holds only that part, merging keeps the rest
   const bad = context(box);
   assert.equal(await main(["i18n-sheet", "--slug", box.slug, "--locale", "en", "--parts", "dub"], bad.ctx), EXIT.usage);
   assert.match(bad.out.stderr, /--parts must be among metadata, captions/);
+});
+
+test("the thumbnail's words go on the sheet with the metadata, merge with their hash, and turn stale with the thumbnail", () => {
+  const doc = fixture();
+  const sheet = buildSheet(doc, null, "en");
+  assert.deepEqual(sheet.thumbnail, { todo: true, source: { tag: doc.thumbnail.data.tag, headline: doc.thumbnail.data.headline }, text: { tag: "", headline: "" } });
+  assert.equal(buildSheet(doc, null, "en", null, ["captions"]).thumbnail, null, "a captions-only sheet has no thumbnail");
+  const filledSheet = { ...filled(sheet), thumbnail: { ...sheet.thumbnail, text: { tag: " Picking an AI model ", headline: "No. 1 is not\n**always best**" } } };
+  const { translation, problems, notes } = mergeSheet(doc, filledSheet, null);
+  assert.deepEqual([problems, notes], [[], []]);
+  assert.deepEqual(translation.thumbnail, { tag: "Picking an AI model", headline: "No. 1 is not\n**always best**" });
+  assert.equal(translation.source_hashes.thumbnail, thumbnailSourceHash(doc));
+  assert.equal(thumbnailStatus(doc, translation), "current");
+  assert.deepEqual(localizedThumbnail(doc, translation), { template: "thumb", data: { ...doc.thumbnail.data, tag: "Picking an AI model", headline: "No. 1 is not\n**always best**" } });
+  assert.equal(buildSheet(doc, translation, "en").thumbnail.todo, false);
+
+  // A new zh-TW headline: the words are stale, drawn by nobody, and the next sheet asks again.
+  const changed = structuredClone(doc);
+  changed.thumbnail.data.headline = "排行榜不是答案";
+  assert.equal(thumbnailStatus(changed, translation), "stale");
+  assert.equal(localizedThumbnail(changed, translation), null);
+  assert.match(thumbnailGap(changed, translation, "en"), /older thumbnail/);
+  assert.equal(buildSheet(changed, translation, "en").thumbnail.todo, true);
+  // The old sheet no longer matches the script: a note, the previous words and hash kept, the merge still clean.
+  const again = mergeSheet(changed, filledSheet, translation);
+  assert.deepEqual(again.problems, []);
+  assert.match(again.notes[0], /thumbnail changed after the sheet was made/);
+  assert.deepEqual([again.translation.thumbnail, again.translation.source_hashes.thumbnail], [translation.thumbnail, translation.source_hashes.thumbnail]);
+});
+
+test("a sheet without the thumbnail's words still merges: a note, and the locale keeps the video's own thumbnail", () => {
+  const doc = fixture();
+  const sheet = filled(buildSheet(doc, null, "en"));
+  const { translation, problems, notes } = mergeSheet(doc, sheet, null);
+  assert.deepEqual(problems, []);
+  assert.deepEqual(notes, ["thumbnail: not translated; this locale keeps the video's own thumbnail"]);
+  assert.equal(translation.thumbnail, undefined);
+  assert.equal(translation.source_hashes.thumbnail, undefined);
+  assert.equal(thumbnailStatus(doc, translation), "missing");
+  assert.match(thumbnailGap(doc, translation, "en"), /i18n\/en\.json has no thumbnail words/);
+  // Half a thumbnail is no thumbnail; a sheet written before the field existed merges as before.
+  const half = mergeSheet(doc, { ...sheet, thumbnail: { ...sheet.thumbnail, text: { tag: "", headline: "Only a headline" } } }, null);
+  assert.deepEqual(half.notes, ["thumbnail: tag not translated; this locale keeps the video's own thumbnail"]);
+  const { thumbnail, ...older } = sheet;
+  assert.equal(thumbnail.todo, true);
+  assert.deepEqual(mergeSheet(doc, older, null).problems, []);
+  // Words written by hand, without i18n-merge, have no source hash: not drawn until merged.
+  assert.equal(thumbnailStatus(doc, { thumbnail: { tag: "t", headline: "h" } }), "unknown");
+  // A video without a thumbnail has nothing to translate there.
+  const bare = structuredClone(doc);
+  delete bare.thumbnail;
+  assert.equal(buildSheet(bare, null, "en").thumbnail, null);
+  assert.equal(thumbnailStatus(bare, null), "none");
+  assert.equal(thumbnailGap(bare, null, "en"), null);
 });
