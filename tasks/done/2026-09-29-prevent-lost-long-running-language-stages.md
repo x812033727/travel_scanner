@@ -1,13 +1,13 @@
 ---
 id: 2026-09-29-prevent-lost-long-running-language-stages
 title: Prevent lost long-running language stages and duplicate model retries
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-opus-5-5-lang-stages
 claimed_at: 2026-10-02T14:43:36Z
 created_at: 2026-09-29T11:52:23Z
-completed_at:
+completed_at: 2026-10-02T15:55:44Z
 branch: claude/video-language-stage-timeouts
 depends_on: []
 scope:
@@ -141,5 +141,8 @@ reviews and the existing automation/client regression tests.
   per-token rate limit (120 runs/hour) apply per unit; a long locale is about ten
   calls instead of two.
 - Verified: `node --test tools/video/automation/*.test.mjs` (new tests fail on the old
-  flow/client), the run route's vitest (2 of 5 fail on the old route), the bound-file
-  check fails only for flow.mjs and automation.test.mjs (author does not rebind).
+  flow/client), the run route's vitest (2 of 5 fail on the old route), typecheck, lint,
+  check:i18n (the route's lost-answer detail is English: new Han text in apps/web
+  needs a catalog), `npm run test:tools` with only the known Windows tts failure and
+  the bound-file check left, which fails only for flow.mjs and automation.test.mjs
+  (author does not rebind; an independent reviewer must).
