@@ -1842,6 +1842,56 @@ async def test_the_routes_answer_in_the_owner_s_words(site: Site, runtime: None)
 
 
 @pytest.mark.asyncio
+async def test_the_shorts_stage_models_save_clear_and_stay_when_not_sent(
+    site: Site, runtime: None, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The AI settings page's Shorts block: a choice for every stage is stored, null follows
+    the tutorial's again, a save without the field leaves it alone, and a vendor without a key
+    keeps automatic making off (ticket 2026-10-02-shorts-stage-models-the-api-saves)."""
+    stages = ("planner", "writer", "verifier", "listener", "translator", "caption_reviewer")
+    opus = {"provider": "anthropic", "model": "claude-opus-5-5"}
+    chosen = {stage: opus for stage in stages}
+    app = _app(_with_roles("owner"), site)
+    path = "/api/v1/admin/video-shorts/settings"
+
+    async def stored() -> dict[str, Any]:
+        return dict((await rows(site, VideoShortsSettings))[0].stage_models)
+
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        assert (await client.get(path)).json()["stage_models"] is None, "follows by default"
+        saved = await client.put(path, json={"stage_models": chosen})
+        assert saved.status_code == 200 and saved.json()["stage_models"] == chosen
+        assert await stored() == chosen
+        kept = await client.put(path, json={"stock_days": 6})
+        assert kept.status_code == 200 and kept.json()["stage_models"] == chosen
+        assert await stored() == chosen, "a save without stage_models leaves them"
+        partial = await client.put(path, json={"stage_models": {"writer": opus}})
+        assert partial.status_code == 422
+        assert partial.json()["code"] == "video_shorts_settings_invalid"
+        assert "missing" in partial.json()["detail"]
+        unknown = {**chosen, "writer": {"provider": "anthropic", "model": "no-such-model"}}
+        refused = await client.put(path, json={"stage_models": unknown})
+        assert refused.status_code == 422 and "no-such-model" in refused.json()["detail"]
+        # Gemini speaks, but the site holds no Anthropic key: automatic making stays off.
+        monkeypatch.setattr(admin_api, "configured_providers", lambda _runtime: ["gemini"])
+        keyless = await client.put(path, json={"enabled": True})
+        assert keyless.status_code == 422
+        assert keyless.json()["code"] == "video_shorts_settings_invalid"
+        assert "anthropic 的金鑰" in keyless.json()["detail"]
+        assert await stored() == chosen
+        cleared = await client.put(path, json={"enabled": True, "stage_models": None})
+        assert cleared.status_code == 200
+        assert (cleared.json()["enabled"], cleared.json()["stage_models"]) == (True, None)
+        assert await stored() == {}, "the column holds {} for following the tutorial's"
+    audit = sorted(
+        row.metadata_json["changed"]
+        for row in await rows(site, AdminAuditLog)
+        if row.action == "video_shorts_settings_updated"
+    )
+    assert audit == [["enabled", "stage_models"], ["stage_models"], ["stock_days"]]
+
+
+@pytest.mark.asyncio
 async def test_the_tool_reads_the_shorts_settings_with_its_token(site: Site) -> None:
     app = _app(None, site)
     path = "/api/v1/video/automation/shorts/settings"

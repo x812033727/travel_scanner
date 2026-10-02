@@ -22,10 +22,11 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
 from app.auth.service import require_capability
+from app.config import Settings
 from app.db import get_session
 from app.models import User
 from app.problems import AppError
-from app.video_automation.settings import configured_providers
+from app.video_automation.settings import configured_providers, model_options
 from app.video_shorts import costs, overview, slots
 from app.video_shorts import settings as service
 from app.video_shorts.errors import ShortsRefused
@@ -76,10 +77,37 @@ def _validated(values: dict[str, Any]) -> SettingsWrite:
         raise AppError(422, "video_shorts_settings_invalid", problems) from error
 
 
-async def _voice_problem(session: AsyncSession, payload: SettingsWrite) -> str | None:
+async def _settings_problem(session: AsyncSession, payload: SettingsWrite) -> str | None:
+    """What the server cannot run as saved, in the owner's words: the voice, then the stage
+    models."""
+    runtime = await load_runtime_settings(session)
+    return _voice_problem(payload, runtime) or _stage_models_problem(payload, runtime)
+
+
+def _stage_models_problem(payload: SettingsWrite, runtime: Settings) -> str | None:
+    """A Shorts stage model no vendor serves, or, with automatic making on, one whose vendor
+    the site holds no key for (as the drama's are checked, app/video_automation/settings.py)."""
+    if payload.stage_models is None:
+        return None
+    options = model_options()
+    configured = set(configured_providers(runtime))
+    problems: list[str] = []
+    for stage, choice in payload.stage_models.items():
+        if choice.model not in {option.value for option in options[choice.provider]}:
+            problems.append(
+                f"Shorts 的 {stage}：{choice.provider} 沒有 {choice.model} 這個可用的模型"
+            )
+        elif payload.enabled and choice.provider not in configured:
+            problems.append(
+                f"Shorts 的 {stage}：網站還沒有 {choice.provider} 的金鑰，"
+                "不能開啟 Shorts 的自動製作"
+            )
+    return "；".join(problems) or None
+
+
+def _voice_problem(payload: SettingsWrite, runtime: Settings) -> str | None:
     """A voice the server cannot speak in, in the owner's words."""
     voice = payload.voice
-    runtime = await load_runtime_settings(session)
     if voice.provider == "gemini":
         if voice.name not in PREBUILT_VOICES:
             return f"Gemini 沒有 {voice.name} 這個聲音"
@@ -191,7 +219,7 @@ async def put_shorts_settings(
     """Save the fields the tab sent; the rest keep their stored values."""
     current = service.settings_values(await service.settings_row(session)).model_dump()
     merged = _validated(payload.merged_over(current))
-    problem = await _voice_problem(session, merged)
+    problem = await _settings_problem(session, merged)
     if problem:
         raise AppError(422, "video_shorts_settings_invalid", problem)
     return await service.update_settings(session, user, merged)

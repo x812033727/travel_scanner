@@ -199,6 +199,18 @@ Ran: `node tools/video/long-form/cli.mjs check` before rebinding failed only on 
 
 Non-claims: this review does not accept the Shorts topic library, asset upload, weekly report or automation settings themselves. It covers no API behaviour, CI, browser, media, production write or publication. PASS is DURATION_ONLY for the five rebound hashes below. Required duration fixes remaining: none.
 
+## PR #1124 Shorts stage-models increment: 5 files (2026-10-02)
+
+Reviewer: `claude-pr-review-1124`. Author: `claude-opus-5-5-shorts-stage-models` (the Claude session that wrote PR #1124, "the Shorts settings save per-stage models, and the AI settings page sets them", branch claude/shorts-stage-models, HEAD cbc61cbb). Scope: DURATION_ONLY. The reviewer did not write these changes.
+
+Baseline: the bytes of the five apps/web/messages/{en,ja,ko,zh-CN,zh-TW}/admin.json files at the merge base 7f76864f (main, #1118) equal the hashes bound before this increment, and origin/main has not changed any bound file or this report since then. So `git diff 7f76864f cbc61cbb` of those files is exactly the unreviewed change. The other 65 bindings are untouched. The reviewer read the full delta of all five files and, for context, the unbound delta of apps/api/app/video_shorts (admin_api.py, schemas.py, settings.py) and apps/web/components/admin-video-model-settings.tsx.
+
+Findings: each admin.json adds 6 lines and removes or edits none. A flattened key comparison shows the same 6 added keys in every locale, all under `videoSettings`: `shortsModelsTitle`, `shortsModelsHelp`, `shortsModelsFollow`, `shortsStage`, `saveShortsModels` and `shortsModelsLoadError`. There are 0 removed keys and 0 changed values, and no added key name repeats in its file. They label the Shorts block of the per-stage model picker on the AI settings page: its title, help, the "same as the tutorials" checkbox, the stage legend, the save button and a load error. The only numeral is the "6 段階" (six stages) in Japanese; it counts pipeline stages, not minutes. No label states a video length, and no existing duration label or range changes: general slides 8–30, explainer 8–20 default 10 and drama 1–8 default 3 keep their bytes. In the context delta, `stage_models` is a map of the six stages to a provider and model. The API checks that each model exists and that its vendor has a key when automation is on, and stores following the tutorial as {}. Nothing in it reads or writes target_minutes, episode minutes, minEpisodeMinutes or any long-form duration field.
+
+Ran: `node tools/video/long-form/cli.mjs check` before rebinding failed only on these five stale bindings (exit 1). `node --test tools/video/long-form/*.test.mjs` ran 23 tests: 22 passed and 1 failed. The one failure was the shipped binding regression, failing on those same five paths. `npm run check:i18n` validated 5 locales across 25 namespaces (exit 0). After rebinding, the CLI check and `node --test tools/video/long-form/*.test.mjs` were rerun.
+
+Non-claims: this review does not accept the Shorts per-stage model choice itself, its API validation or the settings page block. It covers no API behaviour, CI, browser, media, production write or publication. PASS is DURATION_ONLY for the five rebound hashes below. Required duration fixes remaining: none.
+
 ## PR #1126 Shorts skill-docs increment: 5 files (2026-10-02)
 
 Reviewer: `claude-pr-review-1126`. Author: `claude-opus-5-5-shorts-d1` (the Claude session that wrote PR #1126, "the Shorts route in the youtube-video skill, the channel spec and the automation design", branch claude/video-shorts-skill-docs, HEAD f5878612). Scope: DURATION_ONLY. The reviewer did not write these changes.
@@ -235,11 +247,11 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | `apps/web/components/admin-video-series.test.tsx` | `f6b62a1802799e56cd8d64e003a2035b3b2e255a214e41335329ae25069eec8c` |
 | `apps/web/components/admin-video-series.tsx` | `97980f007e7091dab343603c0bb1ada909decab950a5535c9ef50ee8fadba7a1` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `7aad8e5d88b67ebaf0b261a57482fb06044111e86af9cfa43157627c7e671957` |
-| `apps/web/messages/en/admin.json` | `1924c82d4252c09682fb4bd9a660ab38bc1e1fe28f4696bdcd5f9647a9d01349` |
-| `apps/web/messages/ja/admin.json` | `dca6cf23afddbf332d6fe4fa5b4e5d2ef729ef0cc82cf73e0fed935e139d1f8f` |
-| `apps/web/messages/ko/admin.json` | `a3069ff85c7776a02d56fd95477ec695f967633f42beb2a255c6ee34eb8a746c` |
-| `apps/web/messages/zh-CN/admin.json` | `76603e3a40cbfd9fff887a3b63e05fdd7817714c65a1f7ca6994d96f1eef1d27` |
-| `apps/web/messages/zh-TW/admin.json` | `beddd17be53d7e2c60d2e2bb4c41f0a094ec2cae0392b87329204d241633d34d` |
+| `apps/web/messages/en/admin.json` | `edf81603b16111e1d40a00657448e3404f32d48acec96f8cedc0af1380c67b68` |
+| `apps/web/messages/ja/admin.json` | `6cfe992f0b0036bd21b2f892347cd506ae4f3ec4866ed2e52c98b2ea87b8225d` |
+| `apps/web/messages/ko/admin.json` | `a7621e4e299b700733771e806b28debc274f8f62e9ac3460857750b5a89532d0` |
+| `apps/web/messages/zh-CN/admin.json` | `e6567cce96bc840e20b21e9f8766e8ad9b8413c0922a294bc9c674d623a4bb0c` |
+| `apps/web/messages/zh-TW/admin.json` | `89693b0a3d93d00e8490c2ba746c9e11badde4108b7abc7addef41e73373c5ca` |
 | `docs/videos/DESIGN.md` | `299449c6c19a40a0e17868615a7d8442771449e0db6e63186ca9c57a0d57ab41` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `ac08a33baedd84f282901594e55758f4b390ee1a8dc798e2c25c4b463081aa80` |
 | `docs/videos/README.md` | `928de9f2dcfbe7126654501e0dbc4339dea55f716f875e931ab2df0cae3e219d` |
