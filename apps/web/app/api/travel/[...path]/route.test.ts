@@ -181,6 +181,43 @@ describe("travel BFF session renewal", () => {
   });
 });
 
+describe("travel BFF sign-in cookies", () => {
+  afterEach(() => { vi.unstubAllEnvs(); });
+
+  async function signIn() {
+    vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify({
+      access_token: "user.jwt.value", expires_in: 3600, user: { preferred_locale: "ja" },
+    }), { status: 200, headers: { "Content-Type": "application/json" } })));
+    const request = new NextRequest("https://mokaair.test/api/travel/auth/login", {
+      method: "POST", headers: { Origin: "https://mokaair.test", "Content-Type": "application/json" },
+      body: JSON.stringify({ email: "member@example.test", password: "not-observed" }),
+    });
+    const response = await POST(request, { params: Promise.resolve({ path: ["auth", "login"] }) });
+    const cookies = response.headers.getSetCookie();
+    return {
+      session: cookies.find((cookie) => cookie.startsWith("travel_access=")) ?? "",
+      locale: cookies.find((cookie) => cookie.startsWith("travel_locale=")) ?? "",
+    };
+  }
+
+  it("marks the locale cookie Secure wherever the session cookie is", async () => {
+    vi.stubEnv("NODE_ENV", "production");
+    const { session, locale } = await signIn();
+    expect(session).toMatch(/;\s*Secure/i);
+    expect(locale).toContain("travel_locale=ja");
+    expect(locale).toMatch(/;\s*Secure/i);
+    expect(locale).toMatch(/SameSite=Lax/i);
+  });
+
+  it("leaves both cookies usable on a development server over plain HTTP", async () => {
+    vi.stubEnv("NODE_ENV", "development");
+    const { session, locale } = await signIn();
+    expect(locale).toContain("travel_locale=ja");
+    expect(session).not.toMatch(/Secure/i);
+    expect(locale).not.toMatch(/Secure/i);
+  });
+});
+
 describe("travel BFF admin step-up", () => {
   it("accepts only a bounded signed HttpOnly cookie and caps its browser lifetime", () => {
     expect(stepUpSession(upstreamWith("admin_step_up=header.payload.signature; HttpOnly; Max-Age=9999"))).toEqual({

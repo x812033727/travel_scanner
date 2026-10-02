@@ -21,6 +21,11 @@ scope:
   - apps/web/lib/csp.ts
   - apps/web/app/ads.txt/route.ts
   - apps/web/app/llms.txt/route.ts
+  - apps/web/i18n/routing.ts
+  - apps/web/i18n/routing.test.ts
+  - apps/web/app/api/auth/oauth/_shared.ts
+  - apps/web/components/auth-form.tsx
+  - apps/web/components/header-session.tsx
   - apps/web/app/[locale]/admin/template.tsx
   - apps/web/app/[locale]/admin/layout.tsx
 ---
