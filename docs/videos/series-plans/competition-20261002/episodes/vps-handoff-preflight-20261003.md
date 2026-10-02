@@ -7,6 +7,26 @@
 
 本紀錄是上述時間的快照；後續執行前須重讀最新版本和核准，不可把它當成批准或供應商試拍成功。
 
+**02:07 接手補充：原音檔包已經由 VPS 取回，下文 01:32 的「音檔尚缺」已解除。**
+來源是後台 media store 的 `wedding-reckoning-transfer-20261003`；實體檔名是內容 hash，
+不是 `.tar.gz`，因此只搜尋 archive 名稱找不到。依既有私人 SSH 設定使用 SCP，沒有重新配對、
+沒有搬 credentials、沒有修改或刪除 VPS 原檔。
+
+- 整包 79,095,367 bytes，SHA-256：
+  `48d6c4ccfb7d59cdc6349a4a69abef80e931f23950968de6bc5db710e7856e29`。
+- 包內 147 個一般檔案＝146 個 manifest 列出的交接檔＋`transfer-manifest.json`。
+  146/146 的 bytes、SHA 和檔案集合全部相符，沒有多餘檔案、重複路徑或不安全路徑。
+- Manifest SHA：`66f218dcdc60d14a07b3195be087214dff40c2031881051da9e5ec1d50ef45f1`；
+  來源 commit 仍是 `117a867ac`，原錄音、快取及新舊 take 一起保存在 repo 外的新解壓目錄。
+- 取回後獨立內容核驗 **539/539 通過**：67 WAV 的 hash／格式／samples／cache、
+  2 個 master 與 7 個角色 stems 的完整 PCM、SRT/VTT 各 67 cues、pilot 前 51 秒與
+  「姐。」新舊 take 均相符。純 request planner 顯示 67/67 cache 命中，沒有搬移造成的重錄需求。
+  兩集 MP3 完整解碼成功，master 實測為 144.86／159.05 秒；驗後 147 個原檔 bytes 完全未變。
+- 獨立內容收據 SHA：`b554963308805669c0cca59b3f16310bb5793a884d2f5b9571c799884bac9e4f`。
+  沒有新增 TTS、供應商或其他付費請求。原四個 ASR 旗標保留，仍待真人聽校，未用雜湊驗證替代聽感驗收。
+- 02:07 再讀正式站：原作品仍為 setting，三份 v3 原文件仍 review，E1/E2 劇本仍 pending，
+  production media jobs 仍 0，全域 drama 仍 OFF。取回音檔沒有替任何關卡核准。
+
 ## 已核對的主機條件
 
 - VPS checkout 為 `acb935fb461e34ee110b725b742179cc22d67770`；未部署 PR #1135。
@@ -78,7 +98,7 @@ GitHub 新 head 的 CI 應另查，不能沿用原 `117a867ac` 的 10 綠燈。
 
 ## 下一次執行
 
-1. 取回原 media tar.gz 和 checksum，驗整包及包內原 WAV／cache／收據；沿用原有 67 句與既有補錄版本。
+1. 原 media tar.gz 已取回並通過整包與逐檔 hash 檢查；沿用原有 67 句、快取與既有補錄版本。
 2. 站主完成上述文件及兩集劇本的正常後台核准；重新核對 active 狀態、最新 IDs、bytes 和決策時間。
 3. 依 [scoped-production-runbook.md](scoped-production-runbook.md) 建逐階段 manifest：
    角色設定圖 → 真實選圖 → 首鏡 keyframe → storyboard 核准。

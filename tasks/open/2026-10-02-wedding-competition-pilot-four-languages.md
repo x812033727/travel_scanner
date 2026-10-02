@@ -147,3 +147,22 @@ Current two-episode checkpoint, 2026-10-02 (supersedes opening-only next steps):
   Public continuation details: `episodes/vps-handoff-preflight-20261003.md`.
 - Four listening flags remain and no animation, native listening, full-film
   owner acceptance, foreign work or publication is claimed.
+
+2026-10-03 02:07 Taipei transfer recovery (supersedes the missing-media blocker):
+- Original production chat had uploaded the archive to the authenticated media
+  store as `wedding-reckoning-transfer-20261003`; the physical filename is its
+  SHA, explaining why searching for the archive's original name missed it.
+- Retrieved directly with existing SSH/SCP access, no pairing, token transfer or
+  TTS requests. Original VPS bytes retained. Archive is 79,095,367 bytes and SHA
+  `48d6c4ccfb7d59cdc6349a4a69abef80e931f23950968de6bc5db710e7856e29`.
+- All 146 transfer-manifest entries passed size/hash/set equality. Archive has
+  147 regular files including the manifest, no unsafe or duplicate paths; safely
+  extracted into a new private repo-external directory.
+- Refreshed live DB read still shows source series setting, v3 documents review,
+  both scripts pending, no production media jobs, global drama OFF. Media
+  recovery does not authorize or satisfy any pending owner review.
+- Independent recovered-content verification passed 539/539 checks: all 67
+  source WAVs/cache, 2 masters, 7 cast stems, SRT/VTT 67 cues each, the 51-second
+  pilot and old/new take match. Pure request planning is 67/67 cache hits. MP3s
+  decode completely, all 147 recovered files remain byte-identical, and no new
+  TTS/provider request was made. Four listening flags remain unchanged.

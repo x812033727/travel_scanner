@@ -443,9 +443,36 @@
   "updated_at": "2026-10-02T16:09:24.283407+00:00",
   "latest_handoff_preflight": {
     "path": "docs/videos/series-plans/competition-20261002/episodes/vps-handoff-preflight-20261003.md",
-    "sha256": "18cba3dd6abd75a180ae251849d9bfc0225b66650bb0c10f7ebdf1c7e233438d",
-    "checked_at_utc": "2026-10-02T17:32:32.048619+00:00",
+    "sha256": "df8c85d247aa23d94693b5ed56d9af6ba98ae7b86051318c6375b8ff8e521a2f",
+    "checked_at_utc": "2026-10-02T18:07:51.030973+00:00",
     "scope": "read-only Windows/VPS takeover; no approvals, paid generation, deployment or publication",
-    "original_media_transfer_available": false
+    "original_media_transfer_available": true
+  },
+  "latest_media_transfer": {
+    "verified_at_utc": "2026-10-02T18:06:59.417389+00:00",
+    "media_store_slug": "wedding-reckoning-transfer-20261003",
+    "archive_bytes": 79095367,
+    "archive_sha256": "48d6c4ccfb7d59cdc6349a4a69abef80e931f23950968de6bc5db710e7856e29",
+    "archive_regular_files": 147,
+    "verified_manifest_files": 146,
+    "manifest_sha256": "66f218dcdc60d14a07b3195be087214dff40c2031881051da9e5ec1d50ef45f1",
+    "source_git_commit": "117a867ac57634c8e01e6f513abc48a4bcffd294",
+    "tts_requests": 0,
+    "receiving_environment": "Windows private repo-external media directory; existing SSH/SCP access",
+    "paired_again": false,
+    "source_vps_file_preserved": true,
+    "content_verification": {
+      "checks_passed": 539,
+      "checks_failed": 0,
+      "wav_lines": 67,
+      "cache_hits": 67,
+      "masters": 2,
+      "cast_stems": 7,
+      "srt_cues": 67,
+      "vtt_cues": 67,
+      "original_files_unchanged": 147,
+      "human_listening": "pending; original four flags retained",
+      "receipt_sha256": "b554963308805669c0cca59b3f16310bb5793a884d2f5b9571c799884bac9e4f"
+    }
   }
 }
