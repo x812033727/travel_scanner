@@ -289,8 +289,11 @@ reached Jev because its budget was spent (207 on 2026-09-26). With `--apply` the
 
 ## Known limits
 
-- Gemini cannot yet serve as writer or checker: the shared `gemini_response_schema`
-  keeps only the first option of an `anyOf`, which collapses the block union.
+- Gemini as writer or checker has not been tried against the live API. The shared
+  `gemini_response_schema` used to keep only the first option of an `anyOf`, which told
+  Gemini every block was a heading; it now sends all 13 block types as an `anyOf`. The
+  settings CLI still refuses Gemini until one live stage shows the API accepts that
+  schema (task 2026-10-02-confirm-a-live-gemini-news-stage).
 - Evidence is compared by the hash of the extracted page text. A page whose extracted
   area carries changing text (view counters, "related" lists) will look changed at
   publication; narrow it with the source's `article_ids`/`article_classes`.
