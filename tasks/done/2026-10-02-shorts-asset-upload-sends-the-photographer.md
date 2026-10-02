@@ -1,13 +1,13 @@
 ---
 id: 2026-10-02-shorts-asset-upload-sends-the-photographer
 title: Shorts asset upload sends the photographer and rights note in the body, not the URL
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-asset-privacy
 claimed_at: 2026-10-02T08:33:04Z
 created_at: 2026-10-02T08:32:07Z
-completed_at:
+completed_at: 2026-10-02T08:43:25Z
 branch: claude/shorts-asset-metadata-body
 depends_on: []
 scope:
