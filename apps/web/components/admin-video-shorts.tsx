@@ -13,16 +13,19 @@ import {
   stateTone, type Uploads, type View, VIEWS,
 } from "@/components/admin-video-shorts-data";
 import { ShortsMetrics } from "@/components/admin-video-shorts-metrics";
+import { ShortsReport } from "@/components/admin-video-shorts-report";
 import { ShortsSettingsPanel } from "@/components/admin-video-shorts-settings";
+import { ShortsTopics } from "@/components/admin-video-shorts-topics";
 import { Button, Tabs } from "@/components/community/ui";
 import { adminNavigate, useAdminQueryState } from "@/lib/admin-workspace-navigation";
 import { api } from "@/lib/api";
 
 // The Shorts tab of /admin/videos (docs/videos/SHORTS.md): the top row says where publishing
 // stands, "needs you" lists what waits for the owner with the button that does it, the files to
-// upload are listed until the API audit passes, and five views hold the rest: the calendar
+// upload are listed until the API audit passes, and seven views hold the rest: the calendar
 // (admin-video-shorts-calendar.tsx), the library, the numbers (…-metrics.tsx), the ledger
-// (…-costs.tsx) and the settings with the standing consent (…-settings.tsx). One Short opens
+// (…-costs.tsx), the topic library with the owner's material (…-topics.tsx), the weekly report
+// (…-report.tsx) and the settings with the standing consent (…-settings.tsx). One Short opens
 // on the video page, like every other video (admin-video-reviews.tsx).
 
 // Where the batch of files to upload downloads from: a route of its own, since the generic
@@ -320,6 +323,8 @@ export function AdminVideoShorts({ onOpenVideo }: { onOpenVideo: (slug: string) 
       {view === "library" && <ShortsLibrary onOpenVideo={onOpenVideo} />}
       {view === "metrics" && <ShortsMetrics onOpenVideo={onOpenVideo} />}
       {view === "costs" && <ShortsCosts canManage={manage.allowed} onChanged={load} />}
+      {view === "topics" && <ShortsTopics canManage={manage.allowed} />}
+      {view === "report" && <ShortsReport />}
       {view === "settings" && <ShortsSettingsPanel onChanged={load} />}
     </Tabs>
   </div>;

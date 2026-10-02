@@ -187,6 +187,18 @@ Ran: `node tools/video/long-form/cli.mjs check` before rebinding failed only on 
 
 Non-claims. This review does not accept the language-thumbnail drawing itself: not its layout, fonts or glyph coverage, a real browser, media, upload or publication, and not CI. PASS is DURATION_ONLY for the two rebound hashes below. Required duration fixes remaining: none.
 
+## PR #1118 Shorts-admin increment: 5 files (2026-10-02)
+
+Reviewer: `claude-pr-review-1118`. Author: `claude-pr-1118` (the Claude session that wrote PR #1118, "feat(web): the Shorts tab gets the topic library, asset box, weekly report and automation settings", branch claude/video-shorts-admin-automation, HEAD 850edc04 with current origin/main merged in). Scope: DURATION_ONLY. The reviewer did not write these changes.
+
+Baseline: origin/main's bytes of the five apps/web/messages/{en,ja,ko,zh-CN,zh-TW}/admin.json files equal the hashes bound before this increment, so `git diff origin/main HEAD` of those files is exactly the unreviewed change. The other 65 bindings are untouched. The reviewer read the full delta of all five files and, for context, the unbound web component delta (admin-video-shorts-data.ts, -report, -settings, -topics, admin-video-shorts.tsx and their tests).
+
+Findings: each admin.json adds 138 lines and removes or edits none. A flattened key comparison shows 112 added keys in every locale, the same set in all five, with 0 removed and 0 changed values. The additions are all under `videoShorts`: `topics` (topic library, statuses, origins, spec and test-protocol labels, idea form, 15-topic campaign import, asset box), `report` (weekly report and its YouTube metric columns), two `views` tabs, and in `settings` a `scopeConfirm` consent warning, a `subjects` group-A/B model picker and `fields.max_per_month`. The only numerals are the 15-topic campaign, the 2,048 px photo long edge, "1" in Japanese phrasing, and 0 in the monthly-limit help. `max_per_month` is a count of Shorts started per month, validated 0–400 in the settings test; it is not a length. `avg_view_seconds` and `avg_view_percent` label raw YouTube analytics values and set no rule. No label states a video length, and no existing duration label or range changes: general slides 8–30, explainer 8–20 default 10 and drama 1–8 default 3 keep their bytes. All of this is Shorts-only. Shorts keep their own separate duration rules, which this PR's copy does not mention. Nothing in the component delta reads or writes target_minutes, episode minutes or any long-form duration field.
+
+Ran: `node tools/video/long-form/cli.mjs check` before rebinding failed only on these five stale bindings (exit 1). `npm run check:i18n` validated 5 locales across 25 namespaces (exit 0). In apps/web, `npx vitest run` of admin-video-shorts-report, -settings, -topics and admin-video-shorts tests passed 43/43, and the bound admin-video-explainer-duration, admin-video-series and admin-video-reviews tests passed 62/62. After rebinding, `node --test tools/video/long-form/review.test.mjs` and the CLI check were rerun.
+
+Non-claims: this review does not accept the Shorts topic library, asset upload, weekly report or automation settings themselves. It covers no API behaviour, CI, browser, media, production write or publication. PASS is DURATION_ONLY for the five rebound hashes below. Required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 70 bindings describe the current reviewed bytes after the main-merge and owned migration-order increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -211,11 +223,11 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | `apps/web/components/admin-video-series.test.tsx` | `f6b62a1802799e56cd8d64e003a2035b3b2e255a214e41335329ae25069eec8c` |
 | `apps/web/components/admin-video-series.tsx` | `97980f007e7091dab343603c0bb1ada909decab950a5535c9ef50ee8fadba7a1` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `7aad8e5d88b67ebaf0b261a57482fb06044111e86af9cfa43157627c7e671957` |
-| `apps/web/messages/en/admin.json` | `b8ac8700ee4768cf0541dc3b278a3a5b904a6011520551b391b4c28d5157b4c7` |
-| `apps/web/messages/ja/admin.json` | `ba310be5b3592c93e606935a10cee82184e3fa6feb2e06d873aec8b4ed77ceee` |
-| `apps/web/messages/ko/admin.json` | `4fc259a06f158dd685852bfaa12d238da7908821b1749d77054f2726ee33ee00` |
-| `apps/web/messages/zh-CN/admin.json` | `d1c4ac5cdeb0608a3dc9379cc086e6b6d53c9711a5b096729d87cb68b0908ce7` |
-| `apps/web/messages/zh-TW/admin.json` | `6fc7f75e77a96390280018a2f1022057bd0020b1de2807b7e5a4e680dd64c841` |
+| `apps/web/messages/en/admin.json` | `1924c82d4252c09682fb4bd9a660ab38bc1e1fe28f4696bdcd5f9647a9d01349` |
+| `apps/web/messages/ja/admin.json` | `dca6cf23afddbf332d6fe4fa5b4e5d2ef729ef0cc82cf73e0fed935e139d1f8f` |
+| `apps/web/messages/ko/admin.json` | `a3069ff85c7776a02d56fd95477ec695f967633f42beb2a255c6ee34eb8a746c` |
+| `apps/web/messages/zh-CN/admin.json` | `76603e3a40cbfd9fff887a3b63e05fdd7817714c65a1f7ca6994d96f1eef1d27` |
+| `apps/web/messages/zh-TW/admin.json` | `beddd17be53d7e2c60d2e2bb4c41f0a094ec2cae0392b87329204d241633d34d` |
 | `docs/videos/DESIGN.md` | `299449c6c19a40a0e17868615a7d8442771449e0db6e63186ca9c57a0d57ab41` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `ac08a33baedd84f282901594e55758f4b390ee1a8dc798e2c25c4b463081aa80` |
 | `docs/videos/README.md` | `88a8fcb1e6019d279b790f089feb14abe5dc21d2b1c0624f4d0fe25c73346868` |

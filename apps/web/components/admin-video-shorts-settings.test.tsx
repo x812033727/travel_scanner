@@ -24,9 +24,15 @@ const settings = {
   stock_days: 5, lock_hours: 24, upload_ahead_days: 10, max_per_day: 2, seconds_min: 25, seconds_max: 55,
   voice: { provider: "gemini", name: "Sulafat", style: null, model: null, rate: "+0%" }, locales: [], made_for_kids: false, auto_approve: true,
   budget_ntd_30d: 3000, budget_soft_ntd: 2400, budget_total_ntd: 9000,
+  subject_models: { a: { provider: "claude_code", model: "claude-opus-5-5" } }, max_per_month: 120,
   campaign_start: null, autopublish: false, paused_at: null, consent: none, updated_at: "2026-10-01T00:00:00Z",
 };
-const tutorial = { voice_options: { gemini: ["Sulafat", "Kore"], gemini_models: ["gemini-3.8-flash-tts"], azure: [] } };
+const option = (value: string) => ({ value, label: value, description: null, status: "ok" });
+const tutorial = {
+  voice_options: { gemini: ["Sulafat", "Kore"], gemini_models: ["gemini-3.8-flash-tts"], azure: [] },
+  model_options: { claude_code: [option("claude-opus-5-5"), option("claude-sonnet-5")], codex: [option("gpt-6-codex")], anthropic: [], openai: [option("gpt-6"), option("gpt-6-mini")], gemini: [option("gemini-3.5-pro")], minimax: [] },
+  configured_providers: ["claude_code", "codex", "gemini"],
+};
 
 type Call = { url: string; method: string; body: unknown };
 
@@ -88,9 +94,42 @@ describe("ShortsSettingsPanel", () => {
       stock_days: 7, lock_hours: 24, upload_ahead_days: 10, max_per_day: 2, seconds_min: 25, seconds_max: 55,
       voice: settings.voice, locales: ["ja"], made_for_kids: false, auto_approve: true,
       budget_ntd_30d: 3000, budget_soft_ntd: 2400, budget_total_ntd: 9000,
+      subject_models: settings.subject_models, max_per_month: 120,
     });
     expect(await screen.findByRole("status")).toBeTruthy();
     expect(onChanged).toHaveBeenCalledTimes(1);
+  });
+
+  it("chooses the models under test from the AI settings page's menus, and how many Shorts a month", async () => {
+    const calls = stubFetch();
+    mount();
+    const panel = await screen.findByRole("region", { name: "受測模型" });
+    const a = within(panel).getByRole("group", { name: "A 組" });
+    const b = within(panel).getByRole("group", { name: "B 組" });
+    await waitFor(() => expect(within(a).getByLabelText("模型")).toHaveProperty("value", "claude-opus-5-5"));
+    expect(within(b).getByLabelText("供應商")).toHaveProperty("value", "");
+    expect(within(b).queryByLabelText("模型")).toBeNull();
+    // A vendor the site has no key for says so in the menu, as on the AI settings page.
+    expect(within(within(b).getByLabelText("供應商")).getByRole("option", { name: "OpenAI API (還不能用)" })).toBeTruthy();
+
+    fireEvent.change(within(b).getByLabelText("供應商"), { target: { value: "openai" } });
+    expect(within(b).getByLabelText("模型")).toHaveProperty("value", "gpt-6");
+    fireEvent.change(within(b).getByLabelText("模型"), { target: { value: "gpt-6-mini" } });
+    fireEvent.change(within(panel).getByLabelText("一個月最多開始做幾支"), { target: { value: "90" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存 Shorts 設定" }));
+    await waitFor(() => expect(writes(calls)).toHaveLength(1));
+    expect(writes(calls)[0].body).toMatchObject({
+      subject_models: { a: { provider: "claude_code", model: "claude-opus-5-5" }, b: { provider: "openai", model: "gpt-6-mini" } },
+      max_per_month: 90,
+    });
+
+    // Back to "same as A": b is left out, and the server tests a's model both ways.
+    await screen.findByRole("status");
+    fireEvent.change(within(b).getByLabelText("供應商"), { target: { value: "" } });
+    fireEvent.change(within(a).getByLabelText("供應商"), { target: { value: "" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存 Shorts 設定" }));
+    await waitFor(() => expect(writes(calls)).toHaveLength(2));
+    expect((writes(calls)[1].body as { subject_models: unknown }).subject_models).toEqual({});
   });
 
   it("does not save a pattern it cannot read, and a line that is off carries no quota", async () => {
@@ -117,15 +156,29 @@ describe("ShortsSettingsPanel", () => {
     expect((await screen.findByRole("alert")).textContent).toContain("max_per_day");
   });
 
-  it("warns that a change of what the consent names can end it", async () => {
-    stubFetch({ ...settings, autopublish: true, consent: valid });
+  it("warns that a change of what the consent names can end it, and asks again before saving it", async () => {
+    const calls = stubFetch({ ...settings, autopublish: true, consent: valid });
+    const confirm = vi.spyOn(window, "confirm").mockReturnValueOnce(false).mockReturnValue(true);
     mount();
     const pace = await screen.findByRole("region", { name: "節奏與時段" });
     expect(screen.queryByText(/自動上架授權可能失效/)).toBeNull();
     fireEvent.change(within(pace).getByLabelText("片庫希望有幾天的量"), { target: { value: "6" } });
     expect(screen.queryByText(/自動上架授權可能失效/)).toBeNull();
+    // Not a field the consent names: saved without a question.
+    fireEvent.click(screen.getByRole("button", { name: "儲存 Shorts 設定" }));
+    await waitFor(() => expect(writes(calls)).toHaveLength(1));
+    expect(confirm).not.toHaveBeenCalled();
+
+    await screen.findByRole("status");
     fireEvent.change(within(pace).getByLabelText("公開時間（24 小時制，用逗號分開）"), { target: { value: "19:30, 13:00" } });
     expect(screen.getByText(/自動上架授權可能失效/)).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "儲存 Shorts 設定" }));
+    expect(confirm).toHaveBeenCalledWith(expect.stringContaining("存了之後要重新授權"));
+    expect(writes(calls)).toHaveLength(1);
+    fireEvent.click(screen.getByRole("button", { name: "儲存 Shorts 設定" }));
+    await waitFor(() => expect(writes(calls)).toHaveLength(2));
+    expect(writes(calls)[1].body).toMatchObject({ slot_times: ["19:30", "13:00"] });
+    confirm.mockRestore();
   });
 
   it("takes the owner's agreement only to the wording they read, named by its hash", async () => {
