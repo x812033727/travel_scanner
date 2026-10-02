@@ -67,6 +67,14 @@ describe("saved service clickout BFF", () => {
     expect((await POST(request, { params: Promise.resolve({ path: ["affiliates", "offers", "fixture", "clickout"] }) })).status).toBe(403);
     expect(fetcher).not.toHaveBeenCalled();
   });
+
+  it("refuses an upstream redirect a browser would read as another host", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () => new Response(null, { status: 302, headers: { Location: "/\\evil.example/x" } })));
+    const response = await GET(new NextRequest("https://mokaair.test/api/travel/places/photo"), { params: Promise.resolve({ path: ["places", "photo"] }) });
+    expect(response.status).toBe(502);
+    expect(response.headers.get("location")).toBeNull();
+    expect(await response.json()).toMatchObject({ code: "unsafe_upstream_redirect" });
+  });
 });
 
 describe("travel BFF request tracing", () => {
