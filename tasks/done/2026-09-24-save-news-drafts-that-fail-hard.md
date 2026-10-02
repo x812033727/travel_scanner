@@ -1,13 +1,13 @@
 ---
 id: 2026-09-24-save-news-drafts-that-fail-hard
 title: Save news drafts that fail hard checks as editable articles
-status: in-progress
+status: done
 priority: P3
 area: api
 owner: claude-opus-5-5-news-drafts
 claimed_at: 2026-10-02T14:28:59Z
 created_at: 2026-09-24T11:21:15Z
-completed_at:
+completed_at: 2026-10-02T15:08:53Z
 branch: claude/news-save-failed-drafts
 depends_on: []
 scope:
