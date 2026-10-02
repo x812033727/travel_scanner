@@ -27,6 +27,7 @@ scope:
   - apps/web/components/auth-form.tsx
   - apps/web/components/header-session.tsx
   - apps/web/app/[locale]/admin/template.tsx
+  - apps/web/app/[locale]/admin/template.test.tsx
   - apps/web/app/[locale]/admin/layout.tsx
 ---
 
