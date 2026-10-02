@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-thumbnail-variants-in-the-upload-package
 title: Thumbnail variants in the upload package and the review page
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-thumb-variants
 claimed_at: 2026-10-02T06:11:56Z
 created_at: 2026-09-28T12:28:35Z
-completed_at:
+completed_at: 2026-10-02T06:24:49Z
 branch: claude/thumbnail-variants-package
 depends_on:
   - 2026-09-28-so-that-s-why-thumbnail-template
