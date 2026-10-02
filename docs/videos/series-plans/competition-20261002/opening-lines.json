@@ -1,0 +1,946 @@
+{
+  "schema_version": 1,
+  "artifact_type": "editorial-opening-pilot-draft-not-runtime-video-json",
+  "slug": "wedding-reckoning",
+  "episode": 1,
+  "title": "喜宴未散，清算開始｜這次不簽",
+  "prepared_date": "2026-10-02",
+  "status": "design-only-not-render-tested",
+  "source_binding": {
+    "source_path": "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/source.mjs",
+    "source_sha256": "37328fa1c643e0edfcd1d138a158410653b36d6e02739ce7a9c555b26bc5bb9c",
+    "source_refs": [
+      "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/source.mjs:36",
+      "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/source.mjs:534",
+      "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/source.mjs:570"
+    ],
+    "production_design_path": "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/production-design.json",
+    "binding_note": "來源設定與事件約束；下列台詞是新改寫草稿，不是來源原句，沒有改動source或production-design。"
+  },
+  "timing": {
+    "status": "planned-not-measured",
+    "planned_edit_duration_s": 60,
+    "planned_raw_clip_count": 15,
+    "planned_raw_seconds_without_retakes": 120,
+    "measured_audio_duration_s": null,
+    "measured_picture_duration_s": null,
+    "caption_format": "no SRT/VTT generated; all windows are planning reservations"
+  },
+  "video_contract": {
+    "provider": "gemini",
+    "model": "veo-3.1-lite-generate-preview",
+    "resolution": "1080p",
+    "aspect_ratio": "16:9",
+    "source_duration_s": 8,
+    "source_fps": 24,
+    "planned_used_range_s": [
+      2,
+      8
+    ],
+    "single_primary_action_per_clip": true,
+    "reference_images": false,
+    "extension": false,
+    "native_audio": "discard; use independent cast/narrator/SFX/music stems",
+    "capability_status": "inherited repository profile; verify service availability and limits before paid rendering"
+  },
+  "speakers": {
+    "narrator": {
+      "provider": "gemini",
+      "voice_name": "Erinome",
+      "source": "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/source.mjs#setting.world.narrator",
+      "runtime_mapping": "reserved speaker=narrator; do not add to characters[]",
+      "status": "candidate-not-auditioned"
+    },
+    "zhitang": {
+      "provider": "gemini",
+      "voice_name": "Kore",
+      "age": 28,
+      "source": "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/production-design.json#characters[id=zhitang]",
+      "status": "candidate-not-auditioned"
+    },
+    "chengchuan": {
+      "provider": "gemini",
+      "voice_name": "Puck",
+      "age": 31,
+      "source": "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/production-design.json#characters[id=chengchuan]",
+      "status": "candidate-not-auditioned"
+    }
+  },
+  "locale_workflow": {
+    "first_master": "zh-TW",
+    "follow_up_locales": [
+      "ja",
+      "ko",
+      "en"
+    ],
+    "multicharacter_dubbing_status": "planned-not-implemented-for-drama",
+    "voice_identity": "try inherited voice per character in each locale; record replacement casting if it fails native listening",
+    "cc_policy": "sidecar switchable CC; no burned dialogue/narration/translations; time each locale against its own final audio",
+    "timing_overflow_policy": "shorten wording or recut from valid moving source; remeasure; no fast speech, frozen padding, slowed delivery, or reused zh-TW SRT times"
+  },
+  "pronunciation_drafts": {
+    "zhitang": {
+      "zh-TW": "shěn zhī táng",
+      "ja": "シェン・ジータン",
+      "ko": "선 즈탕",
+      "en": "Shen Zhitang"
+    },
+    "chengchuan": {
+      "zh-TW": "gù chéng chuān",
+      "ja": "グー・チョンチュアン",
+      "ko": "구 청촨",
+      "en": "Gu Chengchuan"
+    },
+    "status": "from production-design; native-listening-required"
+  },
+  "terms": [
+    {
+      "concept": "display_copy",
+      "zh-TW": "展示副本",
+      "ja": "展示用の写し",
+      "ko": "전시용 사본",
+      "en": "display copy",
+      "guard": "主文與簽名頁、沒有附件；本段撕掉的唯一文件。"
+    },
+    {
+      "concept": "complete_unsigned_original",
+      "zh-TW": "完整未簽原件",
+      "ja": "未署名の原本一式",
+      "ko": "서명하지 않은 원본 전체",
+      "en": "complete unsigned original",
+      "guard": "含附件，始終留中央簽署席；口語明確時可簡稱原件/原本/원본/the original。"
+    },
+    {
+      "concept": "retained_complete_copy",
+      "zh-TW": "另存完整副本",
+      "ja": "別途保管する写し一式",
+      "ko": "별도로 보관하는 전체 사본",
+      "en": "retained complete copy",
+      "guard": "本段不出場、不拍取得；E1後半取得，E3交許聞簽收。"
+    },
+    {
+      "concept": "voting_rights",
+      "zh-TW": "表決權",
+      "ja": "議決権",
+      "ko": "의결권",
+      "en": "voting rights",
+      "guard": "不要擴大成股份所有權、公司已出售或已移轉。"
+    },
+    {
+      "concept": "brides_ring",
+      "zh-TW": "顧家準備的新娘婚戒",
+      "ja": "グー家が用意した花嫁の指輪",
+      "ko": "구씨 집안에서 준비한 신부 반지",
+      "en": "the bride’s ring provided by the Gu family",
+      "guard": "本段歸盒退回，尚未交換；不是E23她付款的男方婚戒。"
+    }
+  ],
+  "lines": [
+    {
+      "id": "WR-E01-L001",
+      "speaker_id": "narrator",
+      "shot_ids": [
+        "WR-E01-S01"
+      ],
+      "text_origin": "new-adaptation-draft-not-source-quotation",
+      "emotion": "冷開場；貼近知棠的第三人稱，平靜短句，死局不用鬼故事腔。",
+      "meaning_guard": "親歷前世；不增加兇手、起火方法或母親事件。",
+      "planned_voice_window_s": {
+        "start": 0.2,
+        "end": 4.8,
+        "status": "planned-not-measured",
+        "applies_to": "shared editorial reservation only; independently measure each locale"
+      },
+      "measured_duration_s": {
+        "zh-TW": null,
+        "ja": null,
+        "ko": null,
+        "en": null
+      },
+      "localized": {
+        "zh-TW": {
+          "text": "上一世，她簽了字，再也沒能走出這扇門。",
+          "cc_text_draft": "上一世，她簽了字，再也沒能走出這扇門。",
+          "status": "draft-native-listening-required"
+        },
+        "ja": {
+          "text": "前世、この署名が彼女を死に追いやった。",
+          "cc_text_draft": "前世、この署名が彼女を死に追いやった。",
+          "status": "draft-native-listening-required"
+        },
+        "ko": {
+          "text": "전생에 그녀는 서명 한 번에 목숨을 잃었다.",
+          "cc_text_draft": "전생에 그녀는 서명 한 번에 목숨을 잃었다.",
+          "status": "draft-native-listening-required"
+        },
+        "en": {
+          "text": "In her past life, that signature led to her death.",
+          "cc_text_draft": "In her past life, that signature led to her death.",
+          "status": "draft-native-listening-required"
+        }
+      }
+    },
+    {
+      "id": "WR-E01-L002",
+      "speaker_id": "chengchuan",
+      "shot_ids": [
+        "WR-E01-S02"
+      ],
+      "text_origin": "new-adaptation-draft-not-source-quotation",
+      "emotion": "前世；平淡結算、沒有低吼，門外聲先乾錄再輕度遮蔽。",
+      "meaning_guard": "只改寫來源門外的蔑視，不加鎖門動作或殺人自白。",
+      "planned_voice_window_s": {
+        "start": 5.2,
+        "end": 9.5,
+        "status": "planned-not-measured",
+        "applies_to": "shared editorial reservation only; independently measure each locale"
+      },
+      "measured_duration_s": {
+        "zh-TW": null,
+        "ja": null,
+        "ko": null,
+        "en": null
+      },
+      "localized": {
+        "zh-TW": {
+          "text": "字簽了，妳也就沒用了。",
+          "cc_text_draft": "字簽了，妳也就沒用了。",
+          "status": "draft-native-listening-required"
+        },
+        "ja": {
+          "text": "署名した時点で、お前の役目は終わった。",
+          "cc_text_draft": "署名した時点で、お前の役目は終わった。",
+          "status": "draft-native-listening-required"
+        },
+        "ko": {
+          "text": "서명했으니, 네 쓸모도 끝났어.",
+          "cc_text_draft": "서명했으니, 네 쓸모도 끝났어.",
+          "status": "draft-native-listening-required"
+        },
+        "en": {
+          "text": "Once you signed, you were no use to me.",
+          "cc_text_draft": "Once you signed, you were no use to me.",
+          "status": "draft-native-listening-required"
+        }
+      }
+    },
+    {
+      "id": "WR-E01-L003",
+      "speaker_id": "narrator",
+      "shot_ids": [
+        "WR-E01-S03"
+      ],
+      "text_origin": "new-adaptation-draft-not-source-quotation",
+      "emotion": "重生落點清楚；不用宣傳片驚嘆聲。",
+      "meaning_guard": "只有知棠記得；旁白告訴觀眾重生，不讓場內人物聽到。",
+      "planned_voice_window_s": {
+        "start": 10.2,
+        "end": 14.8,
+        "status": "planned-not-measured",
+        "applies_to": "shared editorial reservation only; independently measure each locale"
+      },
+      "measured_duration_s": {
+        "zh-TW": null,
+        "ja": null,
+        "ko": null,
+        "en": null
+      },
+      "localized": {
+        "zh-TW": {
+          "text": "再睜眼，她回到婚禮，還沒簽字。",
+          "cc_text_draft": "再睜眼，她回到婚禮，還沒簽字。",
+          "status": "draft-native-listening-required"
+        },
+        "ja": {
+          "text": "気づけば、署名前の結婚式に戻っていた。",
+          "cc_text_draft": "気づけば、署名前の結婚式に戻っていた。",
+          "status": "draft-native-listening-required"
+        },
+        "ko": {
+          "text": "눈을 뜨니, 서명하기 전 결혼식으로 돌아와 있었다.",
+          "cc_text_draft": "눈을 뜨니, 서명하기 전 결혼식으로 돌아와 있었다.",
+          "status": "draft-native-listening-required"
+        },
+        "en": {
+          "text": "She was back at her wedding, before she had signed.",
+          "cc_text_draft": "She was back at her wedding, before she had signed.",
+          "status": "draft-native-listening-required"
+        }
+      }
+    },
+    {
+      "id": "WR-E01-L004",
+      "speaker_id": "chengchuan",
+      "shot_ids": [
+        "WR-E01-S04"
+      ],
+      "text_origin": "new-adaptation-draft-not-source-quotation",
+      "emotion": "現世；親暱催促、表面溫和，保留與前世同一聲音身份。",
+      "meaning_guard": "暱稱在日韓英用知棠名字；讀法沿用候選表，須母語聽校。",
+      "planned_voice_window_s": {
+        "start": 15.1,
+        "end": 17.8,
+        "status": "planned-not-measured",
+        "applies_to": "shared editorial reservation only; independently measure each locale"
+      },
+      "measured_duration_s": {
+        "zh-TW": null,
+        "ja": null,
+        "ko": null,
+        "en": null
+      },
+      "localized": {
+        "zh-TW": {
+          "text": "棠棠，簽了就好。",
+          "cc_text_draft": "棠棠，簽了就好。",
+          "status": "draft-native-listening-required"
+        },
+        "ja": {
+          "text": "ジータン、署名するだけだよ。",
+          "cc_text_draft": "ジータン、署名するだけだよ。",
+          "status": "draft-native-listening-required"
+        },
+        "ko": {
+          "text": "즈탕, 서명만 하면 돼.",
+          "cc_text_draft": "즈탕, 서명만 하면 돼.",
+          "status": "draft-native-listening-required"
+        },
+        "en": {
+          "text": "Just sign it, Zhitang.",
+          "cc_text_draft": "Just sign it, Zhitang.",
+          "status": "draft-native-listening-required"
+        }
+      }
+    },
+    {
+      "id": "WR-E01-L005",
+      "speaker_id": "zhitang",
+      "shot_ids": [
+        "WR-E01-S05"
+      ],
+      "text_origin": "new-adaptation-draft-not-source-quotation",
+      "emotion": "害怕收住，拒絕簡短確定，不吼。",
+      "meaning_guard": "只拒絕本次授權，不宣稱其他既有契約已失效。",
+      "planned_voice_window_s": {
+        "start": 18.2,
+        "end": 20.8,
+        "status": "planned-not-measured",
+        "applies_to": "shared editorial reservation only; independently measure each locale"
+      },
+      "measured_duration_s": {
+        "zh-TW": null,
+        "ja": null,
+        "ko": null,
+        "en": null
+      },
+      "localized": {
+        "zh-TW": {
+          "text": "這份授權，我不簽。",
+          "cc_text_draft": "這份授權，我不簽。",
+          "status": "draft-native-listening-required"
+        },
+        "ja": {
+          "text": "この委任状には署名しない。",
+          "cc_text_draft": "この委任状には署名しない。",
+          "status": "draft-native-listening-required"
+        },
+        "ko": {
+          "text": "이 위임장엔 서명 안 해.",
+          "cc_text_draft": "이 위임장엔 서명 안 해.",
+          "status": "draft-native-listening-required"
+        },
+        "en": {
+          "text": "I will not sign this authorization.",
+          "cc_text_draft": "I will not sign this authorization.",
+          "status": "draft-native-listening-required"
+        }
+      }
+    },
+    {
+      "id": "WR-E01-L006",
+      "speaker_id": "zhitang",
+      "shot_ids": [
+        "WR-E01-S08"
+      ],
+      "text_origin": "new-adaptation-draft-not-source-quotation",
+      "emotion": "冷靜有重量，落在公司與陪嫁，不拖尾哭腔。",
+      "meaning_guard": "保留資產與婚姻分開的意思；不是說公司已轉讓或母親當場出聲。",
+      "planned_voice_window_s": {
+        "start": 26.1,
+        "end": 29.8,
+        "status": "planned-not-measured",
+        "applies_to": "shared editorial reservation only; independently measure each locale"
+      },
+      "measured_duration_s": {
+        "zh-TW": null,
+        "ja": null,
+        "ko": null,
+        "en": null
+      },
+      "localized": {
+        "zh-TW": {
+          "text": "媽媽的公司，不拿來陪嫁。",
+          "cc_text_draft": "媽媽的公司，不拿來陪嫁。",
+          "status": "draft-native-listening-required"
+        },
+        "ja": {
+          "text": "母の会社は、嫁入り道具じゃない。",
+          "cc_text_draft": "母の会社は、嫁入り道具じゃない。",
+          "status": "draft-native-listening-required"
+        },
+        "ko": {
+          "text": "엄마 회사는 혼수가 아니야.",
+          "cc_text_draft": "엄마 회사는 혼수가 아니야.",
+          "status": "draft-native-listening-required"
+        },
+        "en": {
+          "text": "My mother’s company is not my dowry.",
+          "cc_text_draft": "My mother’s company is not my dowry.",
+          "status": "draft-native-listening-required"
+        }
+      }
+    },
+    {
+      "id": "WR-E01-L007",
+      "speaker_id": "chengchuan",
+      "shot_ids": [
+        "WR-E01-S09"
+      ],
+      "text_origin": "new-adaptation-draft-not-source-quotation",
+      "emotion": "笑容收斂後才施壓，仍想維持體面。",
+      "meaning_guard": "條件句必須保留；婚禮未完成、未登記，不用離婚。",
+      "planned_voice_window_s": {
+        "start": 30.2,
+        "end": 34.6,
+        "status": "planned-not-measured",
+        "applies_to": "shared editorial reservation only; independently measure each locale"
+      },
+      "measured_duration_s": {
+        "zh-TW": null,
+        "ja": null,
+        "ko": null,
+        "en": null
+      },
+      "localized": {
+        "zh-TW": {
+          "text": "不簽，這婚就別結了。",
+          "cc_text_draft": "不簽，這婚就別結了。",
+          "status": "draft-native-listening-required"
+        },
+        "ja": {
+          "text": "署名しないなら、この結婚はなしだ。",
+          "cc_text_draft": "署名しないなら、この結婚はなしだ。",
+          "status": "draft-native-listening-required"
+        },
+        "ko": {
+          "text": "서명 안 할 거면, 결혼도 없던 일이야.",
+          "cc_text_draft": "서명 안 할 거면, 결혼도 없던 일이야.",
+          "status": "draft-native-listening-required"
+        },
+        "en": {
+          "text": "If you will not sign, the wedding is off.",
+          "cc_text_draft": "If you will not sign, the wedding is off.",
+          "status": "draft-native-listening-required"
+        }
+      }
+    },
+    {
+      "id": "WR-E01-L008",
+      "speaker_id": "zhitang",
+      "shot_ids": [
+        "WR-E01-S10"
+      ],
+      "text_origin": "new-adaptation-draft-not-source-quotation",
+      "emotion": "接受代價，乾脆平穩；不是負氣賭他挽留。",
+      "meaning_guard": "戒指只是拿起再歸盒退回，從未交換或戴上。",
+      "planned_voice_window_s": {
+        "start": 35.2,
+        "end": 38.5,
+        "status": "planned-not-measured",
+        "applies_to": "shared editorial reservation only; independently measure each locale"
+      },
+      "measured_duration_s": {
+        "zh-TW": null,
+        "ja": null,
+        "ko": null,
+        "en": null
+      },
+      "localized": {
+        "zh-TW": {
+          "text": "那婚禮就到這裡。",
+          "cc_text_draft": "那婚禮就到這裡。",
+          "status": "draft-native-listening-required"
+        },
+        "ja": {
+          "text": "じゃあ、式はここで終わりね。",
+          "cc_text_draft": "じゃあ、式はここで終わりね。",
+          "status": "draft-native-listening-required"
+        },
+        "ko": {
+          "text": "그럼 결혼식도 여기까지야.",
+          "cc_text_draft": "그럼 결혼식도 여기까지야.",
+          "status": "draft-native-listening-required"
+        },
+        "en": {
+          "text": "Then this wedding is over.",
+          "cc_text_draft": "Then this wedding is over.",
+          "status": "draft-native-listening-required"
+        }
+      }
+    },
+    {
+      "id": "WR-E01-L009",
+      "speaker_id": "zhitang",
+      "shot_ids": [
+        "WR-E01-S13"
+      ],
+      "text_origin": "new-adaptation-draft-not-source-quotation",
+      "emotion": "讓全場聽明白，稍慢讀展示副本，不念法律報告。",
+      "meaning_guard": "明確區分展示副本與完整原件；此處沒有取得另存完整副本。",
+      "planned_voice_window_s": {
+        "start": 47.2,
+        "end": 51.4,
+        "status": "planned-not-measured",
+        "applies_to": "shared editorial reservation only; independently measure each locale"
+      },
+      "measured_duration_s": {
+        "zh-TW": null,
+        "ja": null,
+        "ko": null,
+        "en": null
+      },
+      "localized": {
+        "zh-TW": {
+          "text": "撕掉的，只是展示副本。",
+          "cc_text_draft": "撕掉的，只是展示副本。",
+          "status": "draft-native-listening-required"
+        },
+        "ja": {
+          "text": "破ったのは、展示用の写しだけ。",
+          "cc_text_draft": "破ったのは、展示用の写しだけ。",
+          "status": "draft-native-listening-required"
+        },
+        "ko": {
+          "text": "찢은 건 전시용 사본뿐이야.",
+          "cc_text_draft": "찢은 건 전시용 사본뿐이야.",
+          "status": "draft-native-listening-required"
+        },
+        "en": {
+          "text": "I only tore the display copy.",
+          "cc_text_draft": "I only tore the display copy.",
+          "status": "draft-native-listening-required"
+        }
+      }
+    },
+    {
+      "id": "WR-E01-L010",
+      "speaker_id": "zhitang",
+      "shot_ids": [
+        "WR-E01-S14"
+      ],
+      "text_origin": "new-adaptation-draft-not-source-quotation",
+      "emotion": "對桌上原件作當下交代；不宣布封存已完成。",
+      "meaning_guard": "E1原件完整留中央簽署席；E2才由公證見證人員封存。",
+      "planned_voice_window_s": {
+        "start": 52.1,
+        "end": 54.4,
+        "status": "planned-not-measured",
+        "applies_to": "shared editorial reservation only; independently measure each locale"
+      },
+      "measured_duration_s": {
+        "zh-TW": null,
+        "ja": null,
+        "ko": null,
+        "en": null
+      },
+      "localized": {
+        "zh-TW": {
+          "text": "原件留在這裡。",
+          "cc_text_draft": "原件留在這裡。",
+          "status": "draft-native-listening-required"
+        },
+        "ja": {
+          "text": "原本はここに置く。",
+          "cc_text_draft": "原本はここに置く。",
+          "status": "draft-native-listening-required"
+        },
+        "ko": {
+          "text": "원본은 여기 둘 거야.",
+          "cc_text_draft": "원본은 여기 둘 거야.",
+          "status": "draft-native-listening-required"
+        },
+        "en": {
+          "text": "The original stays here.",
+          "cc_text_draft": "The original stays here.",
+          "status": "draft-native-listening-required"
+        }
+      }
+    },
+    {
+      "id": "WR-E01-L011",
+      "speaker_id": "zhitang",
+      "shot_ids": [
+        "WR-E01-S14"
+      ],
+      "text_origin": "new-adaptation-draft-not-source-quotation",
+      "emotion": "最後短句，重音在不交，不作勝利歡呼。",
+      "meaning_guard": "授權/表決權不翻成所有權或公司出售；此句不等於全案勝訴。",
+      "planned_voice_window_s": {
+        "start": 54.6,
+        "end": 57.0,
+        "status": "planned-not-measured",
+        "applies_to": "shared editorial reservation only; independently measure each locale"
+      },
+      "measured_duration_s": {
+        "zh-TW": null,
+        "ja": null,
+        "ko": null,
+        "en": null
+      },
+      "localized": {
+        "zh-TW": {
+          "text": "表決權，我不交。",
+          "cc_text_draft": "表決權，我不交。",
+          "status": "draft-native-listening-required"
+        },
+        "ja": {
+          "text": "議決権は渡さない。",
+          "cc_text_draft": "議決権は渡さない。",
+          "status": "draft-native-listening-required"
+        },
+        "ko": {
+          "text": "의결권은 안 넘겨.",
+          "cc_text_draft": "의결권은 안 넘겨.",
+          "status": "draft-native-listening-required"
+        },
+        "en": {
+          "text": "My voting rights stay mine.",
+          "cc_text_draft": "My voting rights stay mine.",
+          "status": "draft-native-listening-required"
+        }
+      }
+    }
+  ],
+  "shots": [
+    {
+      "id": "WR-E01-S01",
+      "planned_edit_window_s": {
+        "start": 0,
+        "end": 5,
+        "status": "planned-not-measured"
+      },
+      "source_duration_s": 8,
+      "planned_used_duration_s": 5,
+      "time_context": "past-memory",
+      "character_looks": {
+        "zhitang": "zhitang--base"
+      },
+      "composition": "封閉的南主門內側固定中近景；知棠完整臉部、象牙白褲裝的肩胸與握筆手同框可辨，冷門框與火光反射保留；無婚紗、頭紗或新增傷勢。",
+      "single_action": "握筆的手指收緊一次。",
+      "camera_intent": "固定中近景；保持完整臉部、褲裝肩胸與握筆手同框，供與現世 S08 比對同一張臉。",
+      "line_ids": [
+        "WR-E01-L001"
+      ]
+    },
+    {
+      "id": "WR-E01-S02",
+      "planned_edit_window_s": {
+        "start": 5,
+        "end": 10,
+        "status": "planned-not-measured"
+      },
+      "source_duration_s": 8,
+      "planned_used_duration_s": 5,
+      "time_context": "past-memory",
+      "character_looks": {
+        "chengchuan": "chengchuan--base"
+      },
+      "composition": "沿原門縫只見承川半臉與金色領帶夾；門保持關閉。",
+      "single_action": "承川嘴角的笑意收起。",
+      "camera_intent": "固定門縫視角",
+      "line_ids": [
+        "WR-E01-L002"
+      ]
+    },
+    {
+      "id": "WR-E01-S03",
+      "planned_edit_window_s": {
+        "start": 10,
+        "end": 15,
+        "status": "planned-not-measured"
+      },
+      "source_duration_s": 8,
+      "planned_used_duration_s": 5,
+      "time_context": "present",
+      "character_looks": {
+        "zhitang": "zhitang-bride-veiled"
+      },
+      "composition": "婚宴中央簽署席；與前世同角度的完好筆懸在未簽原件上，婚紗與頭紗邊緣可見。",
+      "single_action": "握筆手輕抖後穩住，筆尖不接觸紙。",
+      "camera_intent": "固定近景；跨鏡硬切完成轉場",
+      "line_ids": [
+        "WR-E01-L003"
+      ]
+    },
+    {
+      "id": "WR-E01-S04",
+      "planned_edit_window_s": {
+        "start": 15,
+        "end": 18,
+        "status": "planned-not-measured"
+      },
+      "source_duration_s": 8,
+      "planned_used_duration_s": 3,
+      "time_context": "present",
+      "character_looks": {
+        "zhitang": "zhitang-bride-veiled"
+      },
+      "composition": "完整未簽原件含附件在中央桌遠端，展示副本在近端；右手仍持筆。",
+      "single_action": "左手食指沿原件一個既有頁碼滑過。",
+      "camera_intent": "固定道具近景",
+      "line_ids": [
+        "WR-E01-L004"
+      ]
+    },
+    {
+      "id": "WR-E01-S05",
+      "planned_edit_window_s": {
+        "start": 18,
+        "end": 21,
+        "status": "planned-not-measured"
+      },
+      "source_duration_s": 8,
+      "planned_used_duration_s": 3,
+      "time_context": "present",
+      "character_looks": {
+        "zhitang": "zhitang-bride-veiled"
+      },
+      "composition": "筆懸在桌面；原件未簽；畫面左是知棠，承川在鏡外右。",
+      "single_action": "知棠將筆放到原件旁的桌面。",
+      "camera_intent": "固定斜俯拍",
+      "line_ids": [
+        "WR-E01-L005"
+      ]
+    },
+    {
+      "id": "WR-E01-S06",
+      "planned_edit_window_s": {
+        "start": 21,
+        "end": 23,
+        "status": "planned-not-measured"
+      },
+      "source_duration_s": 8,
+      "planned_used_duration_s": 2,
+      "time_context": "present",
+      "character_looks": {
+        "zhitang": "zhitang-bride-veiled"
+      },
+      "composition": "雙手接近近端展示副本，遠端完整原件可辨。",
+      "single_action": "知棠拿起薄的展示副本。",
+      "camera_intent": "固定手部近景",
+      "line_ids": []
+    },
+    {
+      "id": "WR-E01-S07",
+      "planned_edit_window_s": {
+        "start": 23,
+        "end": 26,
+        "status": "planned-not-measured"
+      },
+      "source_duration_s": 8,
+      "planned_used_duration_s": 3,
+      "time_context": "present",
+      "character_looks": {
+        "zhitang": "zhitang-bride-veiled"
+      },
+      "composition": "雙手已持展示副本；完整原件仍平放遠端，不在手中。",
+      "single_action": "雙手把展示副本撕開一次。",
+      "camera_intent": "固定斜俯拍",
+      "line_ids": []
+    },
+    {
+      "id": "WR-E01-S08",
+      "planned_edit_window_s": {
+        "start": 26,
+        "end": 30,
+        "status": "planned-not-measured"
+      },
+      "source_duration_s": 8,
+      "planned_used_duration_s": 4,
+      "time_context": "present",
+      "character_looks": {
+        "zhitang": "zhitang-bride-veiled"
+      },
+      "composition": "知棠畫面左，完整臉部清楚可辨，婚紗與頭紗仍在，供與前世 S01 比對同一張臉；碎展示副本在手，完整原件在桌。",
+      "single_action": "將碎展示副本放回桌面近端。",
+      "camera_intent": "固定中近景，避免說話嘴部大特寫",
+      "line_ids": [
+        "WR-E01-L006"
+      ]
+    },
+    {
+      "id": "WR-E01-S09",
+      "planned_edit_window_s": {
+        "start": 30,
+        "end": 35,
+        "status": "planned-not-measured"
+      },
+      "source_duration_s": 8,
+      "planned_used_duration_s": 5,
+      "time_context": "present",
+      "character_looks": {
+        "chengchuan": "chengchuan--base"
+      },
+      "composition": "承川畫面右，鏡頭越過知棠肩後；中央桌原件保持完整。",
+      "single_action": "承川收起現世的禮貌笑容。",
+      "camera_intent": "固定越肩反應鏡",
+      "line_ids": [
+        "WR-E01-L007"
+      ]
+    },
+    {
+      "id": "WR-E01-S10",
+      "planned_edit_window_s": {
+        "start": 35,
+        "end": 39,
+        "status": "planned-not-measured"
+      },
+      "source_duration_s": 8,
+      "planned_used_duration_s": 4,
+      "time_context": "present",
+      "character_looks": {
+        "zhitang": "zhitang-bride-veiled"
+      },
+      "composition": "顧家準備的新娘婚戒尚在禮儀托盤，旁有打開的戒盒；知棠手上沒有婚戒。",
+      "single_action": "從托盤拿起新娘婚戒。",
+      "camera_intent": "固定手部近景",
+      "line_ids": [
+        "WR-E01-L008"
+      ]
+    },
+    {
+      "id": "WR-E01-S11",
+      "planned_edit_window_s": {
+        "start": 39,
+        "end": 43,
+        "status": "planned-not-measured"
+      },
+      "source_duration_s": 8,
+      "planned_used_duration_s": 4,
+      "time_context": "present",
+      "character_looks": {
+        "zhitang": "zhitang-bride-veiled"
+      },
+      "composition": "新娘婚戒已在知棠指間，打開的戒盒置桌上。",
+      "single_action": "將新娘婚戒放回戒盒。",
+      "camera_intent": "固定道具近景",
+      "line_ids": []
+    },
+    {
+      "id": "WR-E01-S12",
+      "planned_edit_window_s": {
+        "start": 43,
+        "end": 47,
+        "status": "planned-not-measured"
+      },
+      "source_duration_s": 8,
+      "planned_used_duration_s": 4,
+      "time_context": "present",
+      "character_looks": {
+        "zhitang": "zhitang-bride-veiled"
+      },
+      "composition": "婚戒已在打開的戒盒內；承川所在右側桌位空出，文件在原固定位置。",
+      "single_action": "將裝著戒指的盒子推到承川側桌位。",
+      "camera_intent": "固定中近景",
+      "line_ids": []
+    },
+    {
+      "id": "WR-E01-S13",
+      "planned_edit_window_s": {
+        "start": 47,
+        "end": 52,
+        "status": "planned-not-measured"
+      },
+      "source_duration_s": 8,
+      "planned_used_duration_s": 5,
+      "time_context": "present",
+      "character_looks": {
+        "zhitang": "zhitang-bride-veiled"
+      },
+      "composition": "知棠手靠近桌面近端的碎展示副本；完整原件仍在遠端。",
+      "single_action": "食指輕點碎頁上的展示副本字角一次。",
+      "camera_intent": "固定手部與文件插鏡",
+      "line_ids": [
+        "WR-E01-L009"
+      ]
+    },
+    {
+      "id": "WR-E01-S14",
+      "planned_edit_window_s": {
+        "start": 52,
+        "end": 57,
+        "status": "planned-not-measured"
+      },
+      "source_duration_s": 8,
+      "planned_used_duration_s": 5,
+      "time_context": "present",
+      "character_looks": {
+        "zhitang": "zhitang-bride-veiled"
+      },
+      "composition": "完整未簽原件與附件平放中央簽署席；知棠在左、承川在鏡外右。",
+      "single_action": "左手掌輕按完整原件邊緣。",
+      "camera_intent": "固定人物與原件同框",
+      "line_ids": [
+        "WR-E01-L010",
+        "WR-E01-L011"
+      ]
+    },
+    {
+      "id": "WR-E01-S15",
+      "planned_edit_window_s": {
+        "start": 57,
+        "end": 60,
+        "status": "planned-not-measured"
+      },
+      "source_duration_s": 8,
+      "planned_used_duration_s": 3,
+      "time_context": "present",
+      "character_looks": {
+        "chengchuan": "chengchuan--base"
+      },
+      "composition": "承川右側，戒盒已在其桌位；完整原件仍在中央桌遠端。",
+      "single_action": "承川目光從戒盒轉向未簽原件。",
+      "camera_intent": "固定反應中近景",
+      "line_ids": []
+    }
+  ],
+  "acceptance_status": {
+    "zh-TW": {
+      "tts": "not-run",
+      "native_listening": "pending",
+      "cc_timing": "pending"
+    },
+    "ja": {
+      "tts": "not-run",
+      "native_listening": "pending",
+      "cc_timing": "pending"
+    },
+    "ko": {
+      "tts": "not-run",
+      "native_listening": "pending",
+      "cc_timing": "pending"
+    },
+    "en": {
+      "tts": "not-run",
+      "native_listening": "pending",
+      "cc_timing": "pending"
+    },
+    "pilot_render": "not-run",
+    "lip_sync": "not-implemented-or-validated",
+    "source_and_continuity_review": "draft-for-independent-review"
+  },
+  "subtitles": {
+    "burn_in": false,
+    "format_status": "planned-sidecar-cc-no-timestamps-exported"
+  }
+}

@@ -7,6 +7,12 @@ import { USER_AGENT } from "../tts/client.mjs";
 
 // A stage answered something that is not the JSON it was asked for; flow.mjs retries it later.
 export const OUTPUT_INVALID = "video_ai_output_invalid";
+// A stage run was sent and no answer came back: the connection dropped, or a deadline passed (the
+// web route's 504 under this same code, a gateway's 5xx). The model may still have run, and been
+// paid for, on the server, which keeps no answer to fetch again: on 2026-09-29 a translation
+// finished after 302 s, past the web route's 295 s, and was recorded as ok. The run is not sent
+// again here; flow.mjs stops the video for a person instead of paying twice.
+export const RUN_UNCERTAIN = "video_ai_run_uncertain";
 
 export class AutomationError extends Error {
   constructor(message, { status = 0, code = "", who = "service" } = {}) {
@@ -34,6 +40,14 @@ const RETRYABLE_CODES = new Set(["video_ai_upstream_busy", "video_ai_upstream_un
 // Every subscription account is at the owner's cap: nothing ran, and retrying within minutes will
 // not help. This run of `auto` ends; the worker's loop tries again on its next round.
 const PAUSE_CODES = new Set(["video_ai_subscription_paused"]);
+// A stage run's 5xx that settles it: the API's own answer once the run is over (it is recorded as
+// failed, no answer was lost), or the web route's 502 for an API it never reached. Any other 5xx
+// after a stage run was sent leaves its outcome unknown (RUN_UNCERTAIN).
+const SETTLED_RUN_CODES = new Set(["video_ai_upstream_busy", "video_ai_upstream_unreachable", "video_ai_upstream_failed", OUTPUT_INVALID, "upstream_unavailable"]);
+// Connection errors that mean the request never reached a server, so nothing it asks has started.
+const NEVER_SENT = new Set(["ECONNREFUSED", "ENOTFOUND", "EAI_AGAIN", "EHOSTUNREACH", "ENETUNREACH", "UND_ERR_CONNECT_TIMEOUT"]);
+
+const neverSent = (error) => NEVER_SENT.has(error?.cause?.code ?? error?.code);
 
 async function problemOf(response) {
   try {
@@ -50,13 +64,19 @@ function delayMs(response, attempt) {
   return Math.min(2 ** attempt * 5, 120) * 1000;
 }
 
-/** A client bound to the stored site and token; `attempts` covers busy vendors and restarts. */
+/**
+ * A client bound to the stored site and token; `attempts` covers busy vendors and restarts. A
+ * stage run (`paid`) is sent again only when nothing ran or the API settled it: never after a
+ * request that went out and lost its answer (RUN_UNCERTAIN).
+ */
 export function automationClient(ctx, { attempts = 4 } = {}) {
   const { site, token } = readCredentials({ env: ctx.env, home: ctx.home });
   if (!token) throw new AutomationError("no video tool token yet: run `node tools/video/cli.mjs login`", { who: "owner" });
   const fetchImpl = ctx.fetch ?? globalThis.fetch;
   const sleep = ctx.sleep ?? ((ms) => new Promise((resolve) => setTimeout(resolve, ms)));
-  async function request(method, route, json) {
+  const uncertain = (route, why, status = 0) =>
+    Object.assign(new AutomationError(`${route} was sent and no answer came back (${why}); the model may have run, so it is not sent again`, { status, code: RUN_UNCERTAIN }), { why });
+  async function request(method, route, json, { paid = false } = {}) {
     let last;
     for (let attempt = 0; attempt < attempts; attempt++) {
       let response;
@@ -72,15 +92,25 @@ export function automationClient(ctx, { attempts = 4 } = {}) {
           body: json ? JSON.stringify(json) : undefined,
         });
       } catch (error) {
+        if (paid && !neverSent(error)) throw uncertain(route, error.cause?.message ?? error.message);
         last = new AutomationError(`cannot reach ${site}: ${error.message}`, { code: "network" });
         await sleep(delayMs(null, attempt));
         continue;
       }
-      if (response.ok) return response.json();
+      if (response.ok) {
+        if (!paid) return response.json();
+        try {
+          return await response.json();
+        } catch (error) {
+          // The stage ran and its answer broke off on the way: it is not paid for again either.
+          throw uncertain(route, `the answer could not be read: ${error.message}`, response.status);
+        }
+      }
       const problem = await problemOf(response);
       const message = problem.detail || `HTTP ${response.status}`;
       if (response.status === 401 || OWNER_CODES.has(problem.code)) throw new AutomationError(message, { status: response.status, code: problem.code, who: "owner" });
       if (PAUSE_CODES.has(problem.code)) throw new AutomationError(message, { status: response.status, code: problem.code });
+      if (paid && response.status >= 500 && !SETTLED_RUN_CODES.has(problem.code)) throw uncertain(route, `HTTP ${response.status}${problem.detail ? `: ${problem.detail}` : ""}`, response.status);
       last = new AutomationError(message, { status: response.status, code: problem.code });
       if (!(RETRYABLE_CODES.has(problem.code) || response.status === 429 || response.status >= 500)) throw last;
       await sleep(delayMs(response, attempt));
@@ -95,9 +125,12 @@ export function automationClient(ctx, { attempts = 4 } = {}) {
      * no query the Shorts are left out (TUTORIAL_LIST); the Shorts round asks { shorts: "only" }.
      */
     videos: (query = TUTORIAL_LIST) => request("GET", `automation/videos?${new URLSearchParams(query)}`),
-    /** One stage: the server answers with the model the owner chose; returns { text, usage, … }. */
+    /**
+     * One stage: the server answers with the model the owner chose; returns { text, usage, … }.
+     * An answer lost on the way throws RUN_UNCERTAIN instead of paying for the stage again.
+     */
     run: (stage, slug, instructions, payload, maxOutputTokens = 16_000, format = "slides", variant = null) =>
-      request("POST", "automation/run", { stage, slug, instructions, payload, max_output_tokens: maxOutputTokens, format, ...(variant ? { variant } : {}) }),
+      request("POST", "automation/run", { stage, slug, instructions, payload, max_output_tokens: maxOutputTokens, format, ...(variant ? { variant } : {}) }, { paid: true }),
     /** Report the video's title, stage and checklist to /admin/videos. */
     report: (slug, project) => request("PUT", `reviews/${slug}`, project),
     /** Submit one review; the same content twice returns the review that exists. */

@@ -1,0 +1,2066 @@
+{
+  "schema_version": 1,
+  "status": "assembled-audio-preview-no-animation",
+  "runtime_video_json": false,
+  "duration_s": 144.86,
+  "total_samples": 6953280,
+  "sample_rate": 48000,
+  "source_binding": {
+    "source_object_sha256": "37328fa1c643e0edfcd1d138a158410653b36d6e02739ce7a9c555b26bc5bb9c",
+    "screenplay_path": "/workspace/travel_scanner/docs/videos/series-plans/competition-20261002/pilot/episode-01-screenplay.md",
+    "screenplay_sha256": "82352b248e66810bd217092b6284ea13c0ec688dbb410e6f791107e13781c429",
+    "opening_voice_document_sha256": "b198b4839f1777a0d0020a5c706ae27485492b4801371f359d73d8abcce003ef",
+    "opening_timing_report_sha256": "7ead089251c8f6bf7060d4c7499d9eac984168ed951efd80d075bd18b53c3024",
+    "opening_measured_edit_sha256": "cc8a982ceae732d5ea25a6a273165cb14d9d976314ed341711edc3cb2476bd66",
+    "dialogue": {
+      "path": "/workspace/travel_scanner/docs/videos/series-plans/competition-20261002/episodes/episode-01-dialogue.json",
+      "sha256": "855b0f7a0a336c32fb5a6ac73de5d48867bf77efb89649ad0575ba2f345a7af5"
+    },
+    "edit_plan": {
+      "path": "/workspace/travel_scanner/docs/videos/series-plans/competition-20261002/episodes/episode-01-edit-plan.json",
+      "sha256": "d0269e9e67196f88b33394b8a117e36ddbdd4927d638874b64b64c42a1c2afb3"
+    },
+    "id_map": null,
+    "builder_sha256": "a2e886a0d3f86956e76754d1568aadfd1a195b30762eb3bf5aeaa16edf91bb79"
+  },
+  "shots": [
+    {
+      "shot_id": "WR-E01-S01",
+      "scene_id": "wr-e01-s01",
+      "data": {
+        "prompt": "Locked medium close-up inside the already closed south main door of the old warehouse. Zhitang is 28. Her complete identifiable face, ivory trouser-suit shoulders and chest, and the hand already holding one intact metal pen share the frame. Firelight reflects on the pen and cold door frame. No bridal clothes, veil, or new injury. Her face will be compared with present-day S08.",
+        "motion": "Her fingers tighten once around the pen.",
+        "camera": "Locked medium close-up; full face, suit and pen-holding hand remain visible.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S01"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S01"
+      ],
+      "line_ids": [
+        "WR-E01-L001"
+      ],
+      "start_sample": 0,
+      "end_sample": 240000,
+      "start_s": 0.0,
+      "end_s": 5.0,
+      "editorial_duration_s": 5.0,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L001",
+          "runtime_id": "afd1ed57",
+          "speaker_id": "narrator",
+          "text": "上一世，她簽了字，再也沒能走出這扇門。",
+          "start_sample": 9600,
+          "end_sample": 221280,
+          "start_s": 0.2,
+          "end_s": 4.61,
+          "measured_voice_duration_s": 4.41,
+          "audio_samples": 211680,
+          "source_wav_sha256": "793d5da630cd48ae2c31af0d971421dfddc05b707b605a834d420c61856b373e",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/afd1ed57.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "locked-existing-51s-audio-edit",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S02",
+      "scene_id": "wr-e01-s02",
+      "data": {
+        "prompt": "From inside the already closed south main door, the narrow door gap reveals only part of adult Chengchuan’s face and his brushed gold tie clip. Same approved navy suit. The door remains shut. No locking operation or new character appears.",
+        "motion": "The trace of a smile leaves his face.",
+        "camera": "Locked view through the door gap.",
+        "characters": [
+          "chengchuan"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S02"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S02"
+      ],
+      "line_ids": [
+        "WR-E01-L002"
+      ],
+      "start_sample": 240000,
+      "end_sample": 432000,
+      "start_s": 5.0,
+      "end_s": 9.0,
+      "editorial_duration_s": 4.0,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L002",
+          "runtime_id": "0c782990",
+          "speaker_id": "chengchuan",
+          "text": "字簽了，妳也就沒用了。",
+          "start_sample": 249600,
+          "end_sample": 388800,
+          "start_s": 5.2,
+          "end_s": 8.1,
+          "measured_voice_duration_s": 2.9,
+          "audio_samples": 139200,
+          "source_wav_sha256": "10564cbafa86aebb8627a023fe5a21e2abc18e394759689fe60f172c7ebf55f2",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/0c782990.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "locked-existing-51s-audio-edit",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S03",
+      "scene_id": "wr-e01-s03",
+      "data": {
+        "prompt": "Present-day wedding central signing table. Zhitang’s intact pen hovers over the complete unsigned original and its attachments. The approved ivory bridal gown and veil are visible. Establish the pen position to echo the preceding memory by an editorial cut, never an in-clip costume transformation.",
+        "motion": "Her pen-holding hand trembles briefly and steadies without touching the paper.",
+        "camera": "Locked close-up of the pen hand.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S03"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S03"
+      ],
+      "line_ids": [
+        "WR-E01-L003"
+      ],
+      "start_sample": 432000,
+      "end_sample": 648000,
+      "start_s": 9.0,
+      "end_s": 13.5,
+      "editorial_duration_s": 4.5,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L003",
+          "runtime_id": "0945b87f",
+          "speaker_id": "narrator",
+          "text": "再睜眼，她回到婚禮，還沒簽字。",
+          "start_sample": 441600,
+          "end_sample": 620160,
+          "start_s": 9.2,
+          "end_s": 12.92,
+          "measured_voice_duration_s": 3.72,
+          "audio_samples": 178560,
+          "source_wav_sha256": "f8cf76dc040b3a312efca24edd24d308272bb571fccf16fe26e04e89e3963749",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/0945b87f.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "locked-existing-51s-audio-edit",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S04",
+      "scene_id": "wr-e01-s04",
+      "data": {
+        "prompt": "At the wedding signing table, the complete unsigned original and attachments lie at the far edge; the thin unsigned display copy lies separately at the near edge. Bride Zhitang retains her veil. Her right hand still holds the pen; her left index finger is next to one existing page number.",
+        "motion": "Her left index finger traces one existing page number on the original.",
+        "camera": "Locked insert of the hand and original.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S04"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S04"
+      ],
+      "line_ids": [
+        "WR-E01-L004"
+      ],
+      "start_sample": 648000,
+      "end_sample": 768000,
+      "start_s": 13.5,
+      "end_s": 16.0,
+      "editorial_duration_s": 2.5,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L004",
+          "runtime_id": "c1ee7ed5",
+          "speaker_id": "chengchuan",
+          "text": "棠棠，簽了就好。",
+          "start_sample": 652800,
+          "end_sample": 736800,
+          "start_s": 13.6,
+          "end_s": 15.35,
+          "measured_voice_duration_s": 1.75,
+          "audio_samples": 84000,
+          "source_wav_sha256": "4934ea1d9a0253e066273dd53c717a73aa4ef8b2dfa5c637d3d0b059d05bb3ae",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/c1ee7ed5.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "locked-existing-51s-audio-edit",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S05",
+      "scene_id": "wr-e01-s05",
+      "data": {
+        "prompt": "Bride Zhitang on screen left holds the pen above the tabletop, beside the still unsigned original. Chengchuan is off screen to the right. The thin display copy remains near the bride. Her gown, veil and unique silver watch remain unchanged.",
+        "motion": "She sets the pen down beside the original.",
+        "camera": "Locked oblique overhead hand shot.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S05"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S05"
+      ],
+      "line_ids": [
+        "WR-E01-L005"
+      ],
+      "start_sample": 768000,
+      "end_sample": 912000,
+      "start_s": 16.0,
+      "end_s": 19.0,
+      "editorial_duration_s": 3.0,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L005",
+          "runtime_id": "677ac0bc",
+          "speaker_id": "zhitang",
+          "text": "這份授權，我不簽。",
+          "start_sample": 777600,
+          "end_sample": 874560,
+          "start_s": 16.2,
+          "end_s": 18.22,
+          "measured_voice_duration_s": 2.02,
+          "audio_samples": 96960,
+          "source_wav_sha256": "aa3b95eeb84873718b2847078d773a76c640bdfe96a94df7273f3c35d2bc68bc",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/677ac0bc.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "locked-existing-51s-audio-edit",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S06",
+      "scene_id": "wr-e01-s06",
+      "data": {
+        "prompt": "Bride Zhitang’s two empty hands are next to the thin unsigned display copy at the near edge. The complete unsigned original with attachments remains intact at the far edge; the pen lies beside it. Her approved wedding gown and veil remain unchanged.",
+        "motion": "She picks up the thin display copy with both hands.",
+        "camera": "Locked hand close-up.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S06"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S06"
+      ],
+      "line_ids": [],
+      "start_sample": 912000,
+      "end_sample": 1008000,
+      "start_s": 19.0,
+      "end_s": 21.0,
+      "editorial_duration_s": 2.0,
+      "source_duration_s": 8,
+      "voice_placements": [],
+      "has_dialogue": false,
+      "timing_basis": "locked-existing-51s-audio-edit",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S07",
+      "scene_id": "wr-e01-s07",
+      "data": {
+        "prompt": "Both hands of bride Zhitang already hold the thin unsigned display copy over the near edge of the wedding signing table. A separate complete unsigned original with all attachments lies intact at the far edge, untouched and clearly visible. Exactly two hands and two distinct documents. Blank prop-label area for checked tracked typography.",
+        "motion": "She tears the thin display copy once with both hands.",
+        "camera": "Locked oblique overhead close-up.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S07"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S07"
+      ],
+      "line_ids": [],
+      "start_sample": 1008000,
+      "end_sample": 1152000,
+      "start_s": 21.0,
+      "end_s": 24.0,
+      "editorial_duration_s": 3.0,
+      "source_duration_s": 8,
+      "voice_placements": [],
+      "has_dialogue": false,
+      "timing_basis": "locked-existing-51s-audio-edit",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S08",
+      "scene_id": "wr-e01-s08",
+      "data": {
+        "prompt": "Present-day Zhitang is on screen left. Her complete identifiable face, ivory bridal gown and veil are clearly visible for comparison with the face in S01. Torn display pages are already in her hands; the complete unsigned original remains on the far side of the central table.",
+        "motion": "She places the torn display pages on the near side of the table.",
+        "camera": "Locked medium close-up; no tight speaking-mouth close-up.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S08"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S08"
+      ],
+      "line_ids": [
+        "WR-E01-L006"
+      ],
+      "start_sample": 1152000,
+      "end_sample": 1344000,
+      "start_s": 24.0,
+      "end_s": 28.0,
+      "editorial_duration_s": 4.0,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L006",
+          "runtime_id": "a390c745",
+          "speaker_id": "zhitang",
+          "text": "媽媽的公司，不拿來陪嫁。",
+          "start_sample": 1156800,
+          "end_sample": 1294080,
+          "start_s": 24.1,
+          "end_s": 26.96,
+          "measured_voice_duration_s": 2.86,
+          "audio_samples": 137280,
+          "source_wav_sha256": "5033bae054b3f7c9b0ceed1c73b0f19932afe3f221fcd46647a3d002a420720a",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/a390c745.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "locked-existing-51s-audio-edit",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S09",
+      "scene_id": "wr-e01-s09",
+      "data": {
+        "prompt": "Adult Chengchuan remains on screen right in the same navy three-piece suit and gold tie clip. Over-the-shoulder composition from behind the bride preserves the table axis; the complete unsigned original remains intact on the central table. The bridal shoulder and veil at frame left belong to Zhitang.",
+        "motion": "His polite smile fades.",
+        "camera": "Locked over-the-shoulder reaction shot.",
+        "characters": [
+          "chengchuan",
+          "zhitang"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base",
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S09"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S09"
+      ],
+      "line_ids": [
+        "WR-E01-L007"
+      ],
+      "start_sample": 1344000,
+      "end_sample": 1512000,
+      "start_s": 28.0,
+      "end_s": 31.5,
+      "editorial_duration_s": 3.5,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L007",
+          "runtime_id": "6a480238",
+          "speaker_id": "chengchuan",
+          "text": "不簽，這婚就別結了。",
+          "start_sample": 1353600,
+          "end_sample": 1461600,
+          "start_s": 28.2,
+          "end_s": 30.45,
+          "measured_voice_duration_s": 2.25,
+          "audio_samples": 108000,
+          "source_wav_sha256": "0976d56b31f0439e2279f3624a10271d84de56af8e022646c1a326e8eb5c3f94",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/6a480238.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "locked-existing-51s-audio-edit",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S10",
+      "scene_id": "wr-e01-s10",
+      "data": {
+        "prompt": "At the central wedding table, the Gu family’s bride’s ring rests on a ceremony tray beside its open ring box. Zhitang wears no wedding ring. Her gown and veil remain on. The torn display copy stays near her; the intact original stays at the far edge.",
+        "motion": "She picks up the bride’s ring from the tray.",
+        "camera": "Locked hand close-up.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S10"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S10"
+      ],
+      "line_ids": [
+        "WR-E01-L008"
+      ],
+      "start_sample": 1512000,
+      "end_sample": 1656000,
+      "start_s": 31.5,
+      "end_s": 34.5,
+      "editorial_duration_s": 3.0,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L008",
+          "runtime_id": "548a5cb2",
+          "speaker_id": "zhitang",
+          "text": "那婚禮就到這裡。",
+          "start_sample": 1521600,
+          "end_sample": 1618560,
+          "start_s": 31.7,
+          "end_s": 33.72,
+          "measured_voice_duration_s": 2.02,
+          "audio_samples": 96960,
+          "source_wav_sha256": "b769a1919bc311a9186e6ec0591b37e6abcd98b64114204d21e1ee3621933192",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/548a5cb2.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "locked-existing-51s-audio-edit",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S11",
+      "scene_id": "wr-e01-s11",
+      "data": {
+        "prompt": "The bride’s ring is already between Zhitang’s fingers above its open ring box. It has never been worn or exchanged. The central table and the separate document positions remain unchanged. Her wedding gown and veil remain on.",
+        "motion": "She places the bride’s ring into its box.",
+        "camera": "Locked prop close-up.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S11"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S11"
+      ],
+      "line_ids": [],
+      "start_sample": 1656000,
+      "end_sample": 1776000,
+      "start_s": 34.5,
+      "end_s": 37.0,
+      "editorial_duration_s": 2.5,
+      "source_duration_s": 8,
+      "voice_placements": [],
+      "has_dialogue": false,
+      "timing_basis": "locked-existing-51s-audio-edit",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S12",
+      "scene_id": "wr-e01-s12",
+      "data": {
+        "prompt": "The bride’s ring is already inside its open box on the central table. Bride Zhitang stays on screen left; Chengchuan’s table position is on screen right. Torn display pages remain near her; the complete unsigned original remains at the far edge. No ring on her fingers.",
+        "motion": "She slides the open ring box to Chengchuan’s side of the table.",
+        "camera": "Locked medium close-up.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S12"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S12"
+      ],
+      "line_ids": [],
+      "start_sample": 1776000,
+      "end_sample": 1920000,
+      "start_s": 37.0,
+      "end_s": 40.0,
+      "editorial_duration_s": 3.0,
+      "source_duration_s": 8,
+      "voice_placements": [],
+      "has_dialogue": false,
+      "timing_basis": "locked-existing-51s-audio-edit",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S13",
+      "scene_id": "wr-e01-s13",
+      "data": {
+        "prompt": "Zhitang’s hand is beside the torn display pages at the near edge of the central wedding table. The intact original remains separately at the far edge. The torn display page has a blank corner reserved for checked prop typography. Her gown and veil remain unchanged.",
+        "motion": "Her index finger taps the display-copy label corner once.",
+        "camera": "Locked insert of the hand and torn pages.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S13"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S13"
+      ],
+      "line_ids": [
+        "WR-E01-L009"
+      ],
+      "start_sample": 1920000,
+      "end_sample": 2088000,
+      "start_s": 40.0,
+      "end_s": 43.5,
+      "editorial_duration_s": 3.5,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L009",
+          "runtime_id": "087d01cb",
+          "speaker_id": "zhitang",
+          "text": "撕掉的，只是展示副本。",
+          "start_sample": 1929600,
+          "end_sample": 2054880,
+          "start_s": 40.2,
+          "end_s": 42.81,
+          "measured_voice_duration_s": 2.61,
+          "audio_samples": 125280,
+          "source_wav_sha256": "f179b807ce3c403ed029983063876a104a4c62fd2d187c3a71bd3f3683f2fb72",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/087d01cb.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "locked-existing-51s-audio-edit",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S14",
+      "scene_id": "wr-e01-s14",
+      "data": {
+        "prompt": "The complete unsigned original and attachments lie at the far edge of the central signing table. Zhitang stays on screen left in the approved gown and veil; Chengchuan is off screen right. The returned ring box stays on his side and the torn display pages near her.",
+        "motion": "She gently rests her left palm against the edge of the complete original.",
+        "camera": "Locked medium close-up with Zhitang and the intact original together.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S14"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S14"
+      ],
+      "line_ids": [
+        "WR-E01-L010",
+        "WR-E01-L011"
+      ],
+      "start_sample": 2088000,
+      "end_sample": 2328000,
+      "start_s": 43.5,
+      "end_s": 48.5,
+      "editorial_duration_s": 5.0,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L010",
+          "runtime_id": "b9acfedc",
+          "speaker_id": "zhitang",
+          "text": "原件留在這裡。",
+          "start_sample": 2092800,
+          "end_sample": 2171040,
+          "start_s": 43.6,
+          "end_s": 45.23,
+          "measured_voice_duration_s": 1.63,
+          "audio_samples": 78240,
+          "source_wav_sha256": "7e373d2a3e74e1717205982a8883491f19f0422b271a72e5419dd5930992a57f",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/b9acfedc.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        },
+        {
+          "line_id": "WR-E01-L011",
+          "runtime_id": "e24854f2",
+          "speaker_id": "zhitang",
+          "text": "表決權，我不交。",
+          "start_sample": 2183040,
+          "end_sample": 2270880,
+          "start_s": 45.48,
+          "end_s": 47.31,
+          "measured_voice_duration_s": 1.83,
+          "audio_samples": 87840,
+          "source_wav_sha256": "a48bedabe1f959d26b2f3c7c5fd2fe3628989a18e6b3a58d46ea31c14dbdeff8",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/e24854f2.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "locked-existing-51s-audio-edit",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S15",
+      "scene_id": "wr-e01-s15",
+      "data": {
+        "prompt": "Chengchuan stays on screen right. The returned open ring box is already on his table position; the complete unsigned original remains at the far edge of the central table. No document moves and no new evidence is revealed.",
+        "motion": "His gaze shifts from the ring box to the unsigned original.",
+        "camera": "Locked medium close-up reaction shot.",
+        "characters": [
+          "chengchuan"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S15"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S15"
+      ],
+      "line_ids": [],
+      "start_sample": 2328000,
+      "end_sample": 2448000,
+      "start_s": 48.5,
+      "end_s": 51.0,
+      "editorial_duration_s": 2.5,
+      "source_duration_s": 8,
+      "voice_placements": [],
+      "has_dialogue": false,
+      "timing_basis": "locked-existing-51s-audio-edit",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S16",
+      "scene_id": "wr-e01-s16",
+      "data": {
+        "prompt": "Chengchuan stays on screen right at the same central wedding table. The returned ring box remains on his side; the unsigned original and torn display pages retain their separate positions. Adult guests in the paused wedding are distant and silent.",
+        "motion": "His gaze moves toward the paused wedding guests.",
+        "camera": "Locked medium close-up.",
+        "characters": [
+          "chengchuan"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S16"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S16"
+      ],
+      "line_ids": [
+        "WR-E01-L012"
+      ],
+      "start_sample": 2448000,
+      "end_sample": 2646240,
+      "start_s": 51.0,
+      "end_s": 55.13,
+      "editorial_duration_s": 4.13,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L012",
+          "runtime_id": "697ed8c3",
+          "speaker_id": "chengchuan",
+          "text": "這麼多人看著，妳非要現在讓我難堪？",
+          "start_sample": 2457600,
+          "end_sample": 2631840,
+          "start_s": 51.2,
+          "end_s": 54.83,
+          "measured_voice_duration_s": 3.63,
+          "audio_samples": 174240,
+          "source_wav_sha256": "14e67fc3c103826f5fe720a7c1e5f63853baf5936bbe174b27a82df1d8c58008",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/697ed8c3.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "actual-WAVs-with-padding",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S17",
+      "scene_id": "wr-e01-s17",
+      "data": {
+        "prompt": "Zhitang remains on screen left, wearing her approved ivory wedding gown and veil. The intact unsigned original stays far on the central table and the torn display copy near her. No document moves.",
+        "motion": "She turns her gaze directly back to Chengchuan.",
+        "camera": "Locked medium close-up of her full face.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S17"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S17"
+      ],
+      "line_ids": [
+        "WR-E01-L013"
+      ],
+      "start_sample": 2646240,
+      "end_sample": 2877600,
+      "start_s": 55.13,
+      "end_s": 59.95,
+      "editorial_duration_s": 4.82,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L013",
+          "runtime_id": "2f1c26d4",
+          "speaker_id": "zhitang",
+          "text": "你剛才說，不簽就別結。我聽清楚了。",
+          "start_sample": 2655840,
+          "end_sample": 2863200,
+          "start_s": 55.33,
+          "end_s": 59.65,
+          "measured_voice_duration_s": 4.32,
+          "audio_samples": 207360,
+          "source_wav_sha256": "2289b164f25eb025512f9d93ed8a1c821ac8c2455fa4f1c5a26c69b1f811ce42",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/2f1c26d4.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "actual-WAVs-with-padding",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S18",
+      "scene_id": "wr-e01-s18",
+      "data": {
+        "prompt": "Chengchuan remains at the same right-hand table position, in his approved navy suit and gold tie clip. His hands do not touch either document or ring box.",
+        "motion": "He leans slightly toward Zhitang.",
+        "camera": "Locked medium close-up.",
+        "characters": [
+          "chengchuan"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S18"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S18"
+      ],
+      "line_ids": [
+        "WR-E01-L014"
+      ],
+      "start_sample": 2877600,
+      "end_sample": 3055200,
+      "start_s": 59.95,
+      "end_s": 63.65,
+      "editorial_duration_s": 3.7,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L014",
+          "runtime_id": "c9db2b4d",
+          "speaker_id": "chengchuan",
+          "text": "棠棠，剩下的事，我們回去再說。",
+          "start_sample": 2887200,
+          "end_sample": 3040800,
+          "start_s": 60.15,
+          "end_s": 63.35,
+          "measured_voice_duration_s": 3.2,
+          "audio_samples": 153600,
+          "source_wav_sha256": "4a141c995db83b4da514d2f3736a85bb055890814323bea965259e07fba45646",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/c9db2b4d.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "actual-WAVs-with-padding",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S19",
+      "scene_id": "wr-e01-s19",
+      "data": {
+        "prompt": "The veiled bride remains beside the central table. Her phone is at her own side of the table, just outside the earlier camera crop. The complete original stays at the far edge and the torn display pages near her. No phone image has yet been captured.",
+        "motion": "She lifts her phone into view from her side of the table.",
+        "camera": "Locked medium close-up including hand and phone.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S19"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S19"
+      ],
+      "line_ids": [
+        "WR-E01-L015"
+      ],
+      "start_sample": 3055200,
+      "end_sample": 3213600,
+      "start_s": 63.65,
+      "end_s": 66.95,
+      "editorial_duration_s": 3.3,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L015",
+          "runtime_id": "87fb4d12",
+          "speaker_id": "zhitang",
+          "text": "就在這裡。先讓我把頁碼拍下來。",
+          "start_sample": 3064800,
+          "end_sample": 3199200,
+          "start_s": 63.85,
+          "end_s": 66.65,
+          "measured_voice_duration_s": 2.8,
+          "audio_samples": 134400,
+          "source_wav_sha256": "f28b2f3de3f441f0f313d4a26dea998e0084c99e5dc31cc1e339e7989d70a676",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/87fb4d12.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "actual-WAVs-with-padding",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S20",
+      "scene_id": "wr-e01-s20",
+      "data": {
+        "prompt": "The phone is already held above one existing page number on the complete unsigned original, which remains flat on the table. Her other hand keeps the page flat. The checked page number will be tracked on the real prop surface in post.",
+        "motion": "Her thumb taps the camera shutter once.",
+        "camera": "Locked oblique close-up of phone and page.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S20"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S20"
+      ],
+      "line_ids": [],
+      "start_sample": 3213600,
+      "end_sample": 3357600,
+      "start_s": 66.95,
+      "end_s": 69.95,
+      "editorial_duration_s": 3.0,
+      "source_duration_s": 8,
+      "voice_placements": [],
+      "has_dialogue": false,
+      "timing_basis": "retained-planned-silent-action-duration",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S21",
+      "scene_id": "wr-e01-s21",
+      "data": {
+        "prompt": "The original lies on the same central table; Zhitang holds the phone in one hand, and the other hand is already at the page edge. The display copy remains torn separately.",
+        "motion": "She turns the original to its attachment section.",
+        "camera": "Locked oblique paper insert.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S21"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S21"
+      ],
+      "line_ids": [
+        "WR-E01-L016"
+      ],
+      "start_sample": 3357600,
+      "end_sample": 3515520,
+      "start_s": 69.95,
+      "end_s": 73.24,
+      "editorial_duration_s": 3.29,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L016",
+          "runtime_id": "7410ddec",
+          "speaker_id": "chengchuan",
+          "text": "妳還怕我把文件換了？",
+          "start_sample": 3367200,
+          "end_sample": 3501120,
+          "start_s": 70.15,
+          "end_s": 72.94,
+          "measured_voice_duration_s": 2.79,
+          "audio_samples": 133920,
+          "source_wav_sha256": "f62e02f210d5304e025a8aab620a9ea55afdec99327df6c9a6e2a109c5710c01",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/7410ddec.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "actual-WAVs-with-padding",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S22",
+      "scene_id": "wr-e01-s22",
+      "data": {
+        "prompt": "The original attachment is already open on the central table with its existing page number visible. The phone is positioned above it. Do not invent a page count, clause or signature.",
+        "motion": "Her thumb taps the camera shutter once to photograph that attachment page number.",
+        "camera": "Locked oblique close-up of phone and attachment.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S22"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S22"
+      ],
+      "line_ids": [
+        "WR-E01-L017"
+      ],
+      "start_sample": 3515520,
+      "end_sample": 3759360,
+      "start_s": 73.24,
+      "end_s": 78.32,
+      "editorial_duration_s": 5.08,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L017",
+          "runtime_id": "105882b7",
+          "speaker_id": "zhitang",
+          "text": "我只要今天擺在這張桌上的這一份。",
+          "start_sample": 3525120,
+          "end_sample": 3744960,
+          "start_s": 73.44,
+          "end_s": 78.02,
+          "measured_voice_duration_s": 4.58,
+          "audio_samples": 219840,
+          "source_wav_sha256": "f1667604195aecfe14c9f2ab4dd364ece3f228e3a5a2f2186c5250ac9168c556",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/105882b7.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "actual-WAVs-with-padding",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S23",
+      "scene_id": "wr-e01-s23",
+      "data": {
+        "prompt": "The original and attachments remain complete and unsigned on the central wedding table. Zhitang is left of frame, holding her phone separately. The witness position is at the far edge of this same table.",
+        "motion": "She slides the complete original back to the far-side witness position on the same table.",
+        "camera": "Locked view of the hands and table.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S23"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S23"
+      ],
+      "line_ids": [
+        "WR-E01-L018"
+      ],
+      "start_sample": 3759360,
+      "end_sample": 4055040,
+      "start_s": 78.32,
+      "end_s": 84.48,
+      "editorial_duration_s": 6.16,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L018",
+          "runtime_id": "f7f86c90",
+          "speaker_id": "zhitang",
+          "text": "請照原件，另留一份完整副本給我。附件也要。",
+          "start_sample": 3768960,
+          "end_sample": 4040640,
+          "start_s": 78.52,
+          "end_s": 84.18,
+          "measured_voice_duration_s": 5.66,
+          "audio_samples": 271680,
+          "source_wav_sha256": "188dc14cbdb5be58035bb0928a4935ce168248cb28887377b08cd30b291d0200",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/f7f86c90.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "actual-WAVs-with-padding",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S24",
+      "scene_id": "wr-e01-s24",
+      "data": {
+        "prompt": "Only the hands of the existing adult silent wedding witness are visible at the same central table. The complete original is flat at the far edge. The separate prepared copy is beside it for comparison; the original never leaves the table.",
+        "motion": "One witness hand turns a single page of the copy against the already exposed original page number.",
+        "camera": "Locked overhead hand-and-paper insert.",
+        "characters": [],
+        "character_looks": {},
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S24"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S24"
+      ],
+      "line_ids": [
+        "WR-E01-L019"
+      ],
+      "start_sample": 4055040,
+      "end_sample": 4271520,
+      "start_s": 84.48,
+      "end_s": 88.99,
+      "editorial_duration_s": 4.51,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L019",
+          "runtime_id": "824e2f7a",
+          "speaker_id": "chengchuan",
+          "text": "婚禮都停了，妳還要留這些做什麼？",
+          "start_sample": 4064640,
+          "end_sample": 4257120,
+          "start_s": 84.68,
+          "end_s": 88.69,
+          "measured_voice_duration_s": 4.01,
+          "audio_samples": 192480,
+          "source_wav_sha256": "8d4fc898ceeb6a4e5518cb45f380790eb05034e96601950856f94dfa29c21cf2",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/824e2f7a.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "actual-WAVs-with-padding",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S25",
+      "scene_id": "wr-e01-s25",
+      "data": {
+        "prompt": "Only the existing adult silent witness hands and papers are visible. The complete unsigned original remains in its far-side table position. The separate copy already has the same attachment set beside its main pages.",
+        "motion": "The witness squares the copy attachment pages into the copy stack.",
+        "camera": "Locked overhead paper insert.",
+        "characters": [],
+        "character_looks": {},
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S25"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S25"
+      ],
+      "line_ids": [
+        "WR-E01-L020"
+      ],
+      "start_sample": 4271520,
+      "end_sample": 4504320,
+      "start_s": 88.99,
+      "end_s": 93.84,
+      "editorial_duration_s": 4.85,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L020",
+          "runtime_id": "a645c999",
+          "speaker_id": "zhitang",
+          "text": "你要我簽的東西，我總該留著看清楚。",
+          "start_sample": 4281120,
+          "end_sample": 4489920,
+          "start_s": 89.19,
+          "end_s": 93.54,
+          "measured_voice_duration_s": 4.35,
+          "audio_samples": 208800,
+          "source_wav_sha256": "b2c36d8f6ca7442a08a147fabac82cb30f3a0cf91988f92b91557610aeb59721",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/a645c999.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "actual-WAVs-with-padding",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S26",
+      "scene_id": "wr-e01-s26",
+      "data": {
+        "prompt": "At the central wedding table, the complete separate copy with attachments is already a single stack at the witness side. The complete original remains separately at its fixed far-side position. No envelope, seal or receipt exists yet.",
+        "motion": "The witness slides the complete copy toward Zhitang’s position.",
+        "camera": "Locked table-level prop insert.",
+        "characters": [],
+        "character_looks": {},
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S26"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S26"
+      ],
+      "line_ids": [],
+      "start_sample": 4504320,
+      "end_sample": 4648320,
+      "start_s": 93.84,
+      "end_s": 96.84,
+      "editorial_duration_s": 3.0,
+      "source_duration_s": 8,
+      "voice_placements": [],
+      "has_dialogue": false,
+      "timing_basis": "retained-planned-silent-action-duration",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S27",
+      "scene_id": "wr-e01-s27",
+      "data": {
+        "prompt": "The separate complete copy now lies in front of Zhitang. Her phone with the earlier page-number photograph is beside the copy for comparison, held steadily in her other hand. The original and torn display pages remain separately on the table.",
+        "motion": "She lifts the complete copy from the table.",
+        "camera": "Locked hand-and-copy close-up.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S27"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S27"
+      ],
+      "line_ids": [],
+      "start_sample": 4648320,
+      "end_sample": 4792320,
+      "start_s": 96.84,
+      "end_s": 99.84,
+      "editorial_duration_s": 3.0,
+      "source_duration_s": 8,
+      "voice_placements": [],
+      "has_dialogue": false,
+      "timing_basis": "retained-planned-silent-action-duration",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S28",
+      "scene_id": "wr-e01-s28",
+      "data": {
+        "prompt": "Zhitang already holds the complete copy; its attachment section is ready to be checked. Her phone remains visible beside it. The original remains on the table; no sealing or receipt is shown.",
+        "motion": "She turns one copy page to confirm its attachments.",
+        "camera": "Locked hand-and-copy insert.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S28"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S28"
+      ],
+      "line_ids": [
+        "WR-E01-L021"
+      ],
+      "start_sample": 4792320,
+      "end_sample": 4975200,
+      "start_s": 99.84,
+      "end_s": 103.65,
+      "editorial_duration_s": 3.81,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L021",
+          "runtime_id": "0d053763",
+          "speaker_id": "zhitang",
+          "text": "頁碼對得上。這份我收著。",
+          "start_sample": 4801920,
+          "end_sample": 4960800,
+          "start_s": 100.04,
+          "end_s": 103.35,
+          "measured_voice_duration_s": 3.31,
+          "audio_samples": 158880,
+          "source_wav_sha256": "0ff5635ca01ead375396863f9188a6f6c4b2dafb79a840be709adad213738537",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/0d053763.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "actual-WAVs-with-padding",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S29",
+      "scene_id": "wr-e01-s29",
+      "data": {
+        "prompt": "The veiled bride holds the verified complete copy in one hand and her phone in the other. The central table space next to her is clear. The original and torn display pages remain in their fixed separate places.",
+        "motion": "She places the phone on her side of the table while keeping the copy.",
+        "camera": "Locked medium close-up including both hands.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S29"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S29"
+      ],
+      "line_ids": [],
+      "start_sample": 4975200,
+      "end_sample": 5119200,
+      "start_s": 103.65,
+      "end_s": 106.65,
+      "editorial_duration_s": 3.0,
+      "source_duration_s": 8,
+      "voice_placements": [],
+      "has_dialogue": false,
+      "timing_basis": "retained-planned-silent-action-duration",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S30",
+      "scene_id": "wr-e01-s30",
+      "data": {
+        "prompt": "Adult Zhixia, age 23, is beside the left-rear approach to Zhitang’s table position. Her approved teal cardigan, cream shirt, right copper hair clip and canvas shoulder bag remain unchanged. A separate closed gift bag is already in her hand; its contents remain unseen.",
+        "motion": "She approaches Zhitang from the left rear.",
+        "camera": "Locked medium shot.",
+        "characters": [
+          "zhixia"
+        ],
+        "character_looks": {
+          "zhixia": "zhixia--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S30"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S30"
+      ],
+      "line_ids": [
+        "WR-E01-L022"
+      ],
+      "start_sample": 5119200,
+      "end_sample": 5215200,
+      "start_s": 106.65,
+      "end_s": 108.65,
+      "editorial_duration_s": 2.0,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L022",
+          "runtime_id": "aa839f9a",
+          "speaker_id": "zhixia",
+          "text": "姐。",
+          "start_sample": 5128800,
+          "end_sample": 5144160,
+          "start_s": 106.85,
+          "end_s": 107.17,
+          "measured_voice_duration_s": 0.32,
+          "audio_samples": 15360,
+          "source_wav_sha256": "50e5803f96ccd1d9bb62cff3b9bc426f3eb9fb04edebfdea0e2c2f65c1688b1e",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/aa839f9a.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "actual-WAVs-with-padding",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S31",
+      "scene_id": "wr-e01-s31",
+      "data": {
+        "prompt": "Zhixia has reached her sister’s side. The canvas shoulder bag remains on her shoulder and the separate closed gift bag stays in her hand. The bag opening is closed and its contents are hidden.",
+        "motion": "She raises the closed gift bag into her sister’s sight.",
+        "camera": "Locked medium close-up.",
+        "characters": [
+          "zhixia"
+        ],
+        "character_looks": {
+          "zhixia": "zhixia--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S31"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S31"
+      ],
+      "line_ids": [
+        "WR-E01-L023"
+      ],
+      "start_sample": 5215200,
+      "end_sample": 5372160,
+      "start_s": 108.65,
+      "end_s": 111.92,
+      "editorial_duration_s": 3.27,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L023",
+          "runtime_id": "f60cc415",
+          "speaker_id": "zhixia",
+          "text": "這個，我本來想今天給妳。",
+          "start_sample": 5224800,
+          "end_sample": 5357760,
+          "start_s": 108.85,
+          "end_s": 111.62,
+          "measured_voice_duration_s": 2.77,
+          "audio_samples": 132960,
+          "source_wav_sha256": "c6732c07199e3a5080542118337d3e865ff297fcc76bd8ed121c970aef2f92c3",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/f60cc415.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "actual-WAVs-with-padding",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S32",
+      "scene_id": "wr-e01-s32",
+      "data": {
+        "prompt": "Zhitang keeps the complete copy against her body, wearing her wedding gown and veil. She faces Zhixia near her left-rear side. Only Zhixia’s closed gift bag is in the lower foreground; Zhitang’s empty hand does not reach for it.",
+        "motion": "Zhitang lifts her gaze from the gift bag toward Zhixia.",
+        "camera": "Locked medium close-up on Zhitang.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S32"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S32"
+      ],
+      "line_ids": [
+        "WR-E01-L024"
+      ],
+      "start_sample": 5372160,
+      "end_sample": 5468160,
+      "start_s": 111.92,
+      "end_s": 113.92,
+      "editorial_duration_s": 2.0,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L024",
+          "runtime_id": "f78ef77f",
+          "speaker_id": "zhitang",
+          "text": "先別給我。",
+          "start_sample": 5381760,
+          "end_sample": 5432640,
+          "start_s": 112.12,
+          "end_s": 113.18,
+          "measured_voice_duration_s": 1.06,
+          "audio_samples": 50880,
+          "source_wav_sha256": "119de78732b7b56cf88661febde9d3b881b9c794086d7eac02797d778de0539c",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/f78ef77f.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "actual-WAVs-with-padding",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S33",
+      "scene_id": "wr-e01-s33",
+      "data": {
+        "prompt": "Zhixia still holds the closed gift bag herself; Zhitang has not touched it. Her canvas shoulder bag, copper hair clip and adult face remain unchanged. She stays beside the table.",
+        "motion": "She draws the closed gift bag back against her own body.",
+        "camera": "Locked medium close-up.",
+        "characters": [
+          "zhixia"
+        ],
+        "character_looks": {
+          "zhixia": "zhixia--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S33"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S33"
+      ],
+      "line_ids": [
+        "WR-E01-L025"
+      ],
+      "start_sample": 5468160,
+      "end_sample": 5568000,
+      "start_s": 113.92,
+      "end_s": 116.0,
+      "editorial_duration_s": 2.08,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L025",
+          "runtime_id": "b4fa3234",
+          "speaker_id": "zhixia",
+          "text": "好，我先留著。",
+          "start_sample": 5477760,
+          "end_sample": 5553600,
+          "start_s": 114.12,
+          "end_s": 115.7,
+          "measured_voice_duration_s": 1.58,
+          "audio_samples": 75840,
+          "source_wav_sha256": "7c40fab127ff13ffce6984626eda27632e5a65ddc9e431d14773b19c94414bd0",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/b4fa3234.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "actual-WAVs-with-padding",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S34",
+      "scene_id": "wr-e01-s34",
+      "data": {
+        "prompt": "Chengchuan remains on screen right. The edge of the complete copy held by Zhitang is in the foreground; the unsigned original and torn display copy remain on the central table and the returned ring box remains at his place.",
+        "motion": "He turns his gaze back to Zhitang.",
+        "camera": "Locked medium close-up reaction shot.",
+        "characters": [
+          "chengchuan"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S34",
+        "WR-E01-S35"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S34",
+        "WR-E01-S35"
+      ],
+      "line_ids": [
+        "WR-E01-L026",
+        "WR-E01-L027"
+      ],
+      "start_sample": 5568000,
+      "end_sample": 5916480,
+      "start_s": 116.0,
+      "end_s": 123.26,
+      "editorial_duration_s": 7.26,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L026",
+          "runtime_id": "8704bfd6",
+          "speaker_id": "chengchuan",
+          "text": "棠棠，妳連我也信不過？",
+          "start_sample": 5577600,
+          "end_sample": 5706720,
+          "start_s": 116.2,
+          "end_s": 118.89,
+          "measured_voice_duration_s": 2.69,
+          "audio_samples": 129120,
+          "source_wav_sha256": "f70b972d242fb6aa4cb5ef20f10e4a73520ebb6b1fabe2218b4b568567e0f121",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/8704bfd6.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        },
+        {
+          "line_id": "WR-E01-L027",
+          "runtime_id": "dfa350c2",
+          "speaker_id": "zhitang",
+          "text": "我信過。所以這次，我要自己看。",
+          "start_sample": 5718720,
+          "end_sample": 5902080,
+          "start_s": 119.14,
+          "end_s": 122.96,
+          "measured_voice_duration_s": 3.82,
+          "audio_samples": 183360,
+          "source_wav_sha256": "2969a770c5186a3d33faa8c3bff41a5514eea164a18ce6ba6b6d20d63ddc2167",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/dfa350c2.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "actual-WAVs-with-padding",
+      "animated_video_seconds": 0,
+      "picture_policy": "Keep the target shot's original single action, prompt and visible cast. Carry the merged reply as off-screen dialogue; do not combine both source actions or freeze the picture.",
+      "merged_reply_speaker_ids": [
+        "zhitang"
+      ]
+    },
+    {
+      "shot_id": "WR-E01-S36",
+      "scene_id": "wr-e01-s36",
+      "data": {
+        "prompt": "The complete copy and its attachment edge are visible in the foreground while Chengchuan remains on screen right. The copy is still held by Zhitang.",
+        "motion": "His gaze drops to the attachments of the copy.",
+        "camera": "Locked medium close-up reaction shot.",
+        "characters": [
+          "chengchuan"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S36"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S36"
+      ],
+      "line_ids": [
+        "WR-E01-L028"
+      ],
+      "start_sample": 5916480,
+      "end_sample": 6012480,
+      "start_s": 123.26,
+      "end_s": 125.26,
+      "editorial_duration_s": 2.0,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L028",
+          "runtime_id": "9620459e",
+          "speaker_id": "chengchuan",
+          "text": "妳打算拿去給誰？",
+          "start_sample": 5926080,
+          "end_sample": 5988960,
+          "start_s": 123.46,
+          "end_s": 124.77,
+          "measured_voice_duration_s": 1.31,
+          "audio_samples": 62880,
+          "source_wav_sha256": "bc0dd8e6b846731ec31383e9d54430a37538d80ce4fe271795ab40b1ec055716",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/9620459e.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "actual-WAVs-with-padding",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S37",
+      "scene_id": "wr-e01-s37",
+      "data": {
+        "prompt": "The veiled bride holds the complete copy herself, facing Chengchuan at the same table. Her phone remains on her side of the table. No third party is called or introduced.",
+        "motion": "She raises her eyes to answer Chengchuan.",
+        "camera": "Locked medium close-up.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S37"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S37"
+      ],
+      "line_ids": [
+        "WR-E01-L029"
+      ],
+      "start_sample": 6012480,
+      "end_sample": 6201120,
+      "start_s": 125.26,
+      "end_s": 129.19,
+      "editorial_duration_s": 3.93,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L029",
+          "runtime_id": "e2e66148",
+          "speaker_id": "zhitang",
+          "text": "找一個，肯把每一頁都看完的人。",
+          "start_sample": 6022080,
+          "end_sample": 6186720,
+          "start_s": 125.46,
+          "end_s": 128.89,
+          "measured_voice_duration_s": 3.43,
+          "audio_samples": 164640,
+          "source_wav_sha256": "f0f39269c505688a63f72e22640bfbf50a15d2f14d131792103f8d17974586ba",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/e2e66148.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "actual-WAVs-with-padding",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S38",
+      "scene_id": "wr-e01-s38",
+      "data": {
+        "prompt": "Chengchuan stays at the right-hand table position. He has neither a signature nor possession of Zhitang’s complete copy. The same adult faces and wedding table axis are preserved.",
+        "motion": "He leans slightly toward Zhitang once more.",
+        "camera": "Locked medium close-up reaction shot.",
+        "characters": [
+          "chengchuan"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S38",
+        "WR-E01-S39"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S38",
+        "WR-E01-S39"
+      ],
+      "line_ids": [
+        "WR-E01-L030",
+        "WR-E01-L031"
+      ],
+      "start_sample": 6201120,
+      "end_sample": 6549600,
+      "start_s": 129.19,
+      "end_s": 136.45,
+      "editorial_duration_s": 7.26,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L030",
+          "runtime_id": "9b4fa778",
+          "speaker_id": "chengchuan",
+          "text": "我們自己的事，需要別人來看嗎？",
+          "start_sample": 6210720,
+          "end_sample": 6381600,
+          "start_s": 129.39,
+          "end_s": 132.95,
+          "measured_voice_duration_s": 3.56,
+          "audio_samples": 170880,
+          "source_wav_sha256": "e484c2ee2856de5f5c4b586605b006cd5616c8857a7b6d02a732b436ecb49dac",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/9b4fa778.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        },
+        {
+          "line_id": "WR-E01-L031",
+          "runtime_id": "b11c001c",
+          "speaker_id": "zhitang",
+          "text": "我需要知道，自己差點簽了什麼。",
+          "start_sample": 6393600,
+          "end_sample": 6535200,
+          "start_s": 133.2,
+          "end_s": 136.15,
+          "measured_voice_duration_s": 2.95,
+          "audio_samples": 141600,
+          "source_wav_sha256": "f2082166a99a844e8e81c21898ae1dcf2ad1eab19ed2d73f47d6c0b1d7338bdb",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/b11c001c.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "actual-WAVs-with-padding",
+      "animated_video_seconds": 0,
+      "picture_policy": "Keep the target shot's original single action, prompt and visible cast. Carry the merged reply as off-screen dialogue; do not combine both source actions or freeze the picture.",
+      "merged_reply_speaker_ids": [
+        "zhitang"
+      ]
+    },
+    {
+      "shot_id": "WR-E01-S40",
+      "scene_id": "wr-e01-s40",
+      "data": {
+        "prompt": "The complete copy is already in Zhitang’s hands at the central table. The attachment section is next; no new readable clause, authorization target or page count is introduced.",
+        "motion": "She turns the copy to the first attachment page.",
+        "camera": "Locked close-up of hands and copy.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S40"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S40"
+      ],
+      "line_ids": [
+        "WR-E01-L032"
+      ],
+      "start_sample": 6549600,
+      "end_sample": 6697920,
+      "start_s": 136.45,
+      "end_s": 139.54,
+      "editorial_duration_s": 3.09,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L032",
+          "runtime_id": "3ec2e067",
+          "speaker_id": "zhitang",
+          "text": "這幾頁，也一樣。",
+          "start_sample": 6559200,
+          "end_sample": 6683520,
+          "start_s": 136.65,
+          "end_s": 139.24,
+          "measured_voice_duration_s": 2.59,
+          "audio_samples": 124320,
+          "source_wav_sha256": "120c040e352deb7e7ec99ac5afad52365dd24427f93cf77ecb724c670ef9e5d1",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/3ec2e067.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "actual-WAVs-with-padding",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S41",
+      "scene_id": "wr-e01-s41",
+      "data": {
+        "prompt": "Chengchuan remains on screen right, looking toward the attachment copy held by Zhitang. Avoid a tight speaking-mouth shot unless separately synchronized. No hand moves toward her copy.",
+        "motion": "His remaining polite expression vanishes.",
+        "camera": "Locked medium close-up reaction shot.",
+        "characters": [
+          "chengchuan"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S41"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S41"
+      ],
+      "line_ids": [
+        "WR-E01-L033"
+      ],
+      "start_sample": 6697920,
+      "end_sample": 6809280,
+      "start_s": 139.54,
+      "end_s": 141.86,
+      "editorial_duration_s": 2.32,
+      "source_duration_s": 8,
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L033",
+          "runtime_id": "f72ff4f4",
+          "speaker_id": "chengchuan",
+          "text": "附件別給外人看。",
+          "start_sample": 6707520,
+          "end_sample": 6794880,
+          "start_s": 139.74,
+          "end_s": 141.56,
+          "measured_voice_duration_s": 1.82,
+          "audio_samples": 87360,
+          "source_wav_sha256": "74cd3cd74e84f4752732d56f165144b0b9d9f88b8252779699cc1a1df0ea8347",
+          "source_wav_path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/f72ff4f4.wav",
+          "trim_applied": false,
+          "time_stretch": false
+        }
+      ],
+      "has_dialogue": true,
+      "timing_basis": "actual-WAVs-with-padding",
+      "animated_video_seconds": 0
+    },
+    {
+      "shot_id": "WR-E01-S42",
+      "scene_id": "wr-e01-s42",
+      "data": {
+        "prompt": "At the same wedding table, Zhitang wears the same gown and veil and holds the complete copy open at its attachments. The original remains at the far edge, torn display pages near her, ring box by Chengchuan. The closed gift bag remains held by Zhixia off screen.",
+        "motion": "Zhitang lifts her eyes from the attachments toward Chengchuan.",
+        "camera": "Locked medium close-up on her full face.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "source_ids": [
+        "WR-E01-S42"
+      ],
+      "merged_shot_ids": [
+        "WR-E01-S42"
+      ],
+      "line_ids": [],
+      "start_sample": 6809280,
+      "end_sample": 6953280,
+      "start_s": 141.86,
+      "end_s": 144.86,
+      "editorial_duration_s": 3.0,
+      "source_duration_s": 8,
+      "voice_placements": [],
+      "has_dialogue": false,
+      "timing_basis": "retained-planned-silent-action-duration",
+      "animated_video_seconds": 0
+    }
+  ],
+  "merge_decisions": [
+    {
+      "shot_id": "WR-E01-S35",
+      "candidate_merge_into": "WR-E01-S34",
+      "applied": true,
+      "reason": "fits-eight-seconds"
+    },
+    {
+      "shot_id": "WR-E01-S39",
+      "candidate_merge_into": "WR-E01-S38",
+      "applied": true,
+      "reason": "fits-eight-seconds"
+    }
+  ],
+  "actual_animated_video_seconds": 0
+}
