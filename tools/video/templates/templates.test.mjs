@@ -167,6 +167,23 @@ test("the thumbnail is its own 1280x720 page", () => {
   assert.doesNotMatch(visibleText(onKeyframe), /object-fit/);
 });
 
+test("a Korean or Simplified Chinese thumbnail is set in its own font first; every other page keeps its head byte for byte", () => {
+  const head = '<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><link rel="stylesheet" href="https://video.local/fonts/noto-sans-tc/index.css"><link rel="stylesheet" href="https://video.local/fonts/jetbrains-mono/index.css"><link rel="stylesheet" href="https://video.local/theme.css"><style>:root{--width:1280px;--height:720px}';
+  const plain = thumbnailHtml(showcase.thumbnail);
+  assert.ok(plain.startsWith(head), "the video's own thumbnail: the frame keys of existing videos do not move");
+  assert.equal(thumbnailHtml(showcase.thumbnail, { locale: "en" }), plain, "a locale without its own font draws the same page");
+  assert.equal(thumbnailHtml(showcase.thumbnail, { locale: "ja" }), plain);
+  const ko = thumbnailHtml(showcase.thumbnail, { locale: "ko" });
+  assert.ok(ko.startsWith('<!doctype html><html lang="ko"><head><meta charset="utf-8"><link rel="stylesheet" href="https://video.local/fonts/noto-sans-kr/index.css"><link rel="stylesheet" href="https://video.local/fonts/noto-sans-tc/index.css">'));
+  assert.match(ko, /<style>:root\{--width:1280px;--height:720px;--font:"Noto Sans KR Variable","Noto Sans TC Variable",sans-serif\}/);
+  const sc = thumbnailHtml(showcase.thumbnail, { locale: "zh-CN" });
+  assert.match(sc, /^<!doctype html><html lang="zh-Hans">.*fonts\/noto-sans-sc\/index\.css/);
+  assert.match(sc, /--font:"Noto Sans SC Variable","Noto Sans TC Variable",sans-serif\}/);
+  const body = (html) => html.slice(html.indexOf("<body>"));
+  assert.equal(body(ko), body(plain), "the same body, only the font differs");
+  assert.doesNotMatch(slideHtml(scene("opening"), state()), /noto-sans-(kr|sc)|--font:/, "slides never load the other fonts");
+});
+
 test("visibleText is what the font check sees: text without markup or the head", () => {
   const text = visibleText(slideHtml(scene("keyword"), state({ chapter: "章" })));
   assert.match(text, /MMLU-Pro/);

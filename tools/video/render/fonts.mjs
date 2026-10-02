@@ -1,9 +1,15 @@
-// The two fonts slides are drawn with, and which characters they cover.
+// The fonts pages are drawn with, and which characters they cover.
 //
 // A character no bundled font has would silently fall back to whatever the machine has installed,
 // so the same video would render differently on Windows and in CI, and a Simplified form or an
 // emoji could slip into a Traditional Chinese slide unnoticed. Render refuses such a slide.
 // Coverage comes from the fontsource CSS: each @font-face subset declares its unicode-range.
+//
+// Slides and the video's own thumbnail are Traditional Chinese, set in Noto Sans TC with
+// JetBrains Mono for code. A caption locale whose script that font lacks or draws in another
+// font's weight gets its own font, first in the stack, on its own thumbnail only (LOCALE_FONTS):
+// Korean (Hangul) and Simplified Chinese. Coverage is judged per language, so a Traditional
+// Chinese slide still refuses the Simplified forms only the SC font has.
 import { readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import path from "node:path";
@@ -11,6 +17,18 @@ import path from "node:path";
 export const FONT_PACKAGES = {
   "noto-sans-tc": "@fontsource-variable/noto-sans-tc",
   "jetbrains-mono": "@fontsource-variable/jetbrains-mono",
+  "noto-sans-kr": "@fontsource-variable/noto-sans-kr",
+  "noto-sans-sc": "@fontsource-variable/noto-sans-sc",
+};
+
+/** The fonts every page loads: the slide font and the code font. */
+export const SLIDE_FONTS = ["noto-sans-tc", "jetbrains-mono"];
+export const SLIDE_FAMILY = "Noto Sans TC Variable";
+
+/** Caption locales whose thumbnail is set in a font of its own, with the page's lang attribute. */
+export const LOCALE_FONTS = {
+  ko: { font: "noto-sans-kr", family: "Noto Sans KR Variable", lang: "ko" },
+  "zh-CN": { font: "noto-sans-sc", family: "Noto Sans SC Variable", lang: "zh-Hans" },
 };
 
 const require = createRequire(import.meta.url);
@@ -81,12 +99,23 @@ export function uncovered(text, ranges) {
   return [...missing];
 }
 
-let cached = null;
-/** The union of what the bundled fonts cover. */
-export function bundledCoverage() {
-  if (!cached) {
-    const css = Object.keys(FONT_PACKAGES).map((name) => readFileSync(path.join(fontDir(name), "index.css"), "utf8"));
-    cached = mergeRanges(css.flatMap((sheet) => parseUnicodeRanges(sheet)));
+/** The fonts a page in `locale` is set in; without a locale of its own, the slide fonts. */
+export function pageFonts(locale = null) {
+  const own = LOCALE_FONTS[locale]?.font;
+  return own ? [own, ...SLIDE_FONTS] : SLIDE_FONTS;
+}
+
+const cached = new Map();
+/**
+ * The union of what a page's fonts cover: the slide fonts by default (slides, the video's own
+ * thumbnail), plus the locale's own font for a caption locale's thumbnail.
+ */
+export function bundledCoverage(locale = null) {
+  const fonts = pageFonts(locale);
+  const key = fonts.join(",");
+  if (!cached.has(key)) {
+    const css = fonts.map((name) => readFileSync(path.join(fontDir(name), "index.css"), "utf8"));
+    cached.set(key, mergeRanges(css.flatMap((sheet) => parseUnicodeRanges(sheet))));
   }
-  return cached;
+  return cached.get(key);
 }

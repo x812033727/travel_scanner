@@ -62,15 +62,16 @@ export function coverageProblems(plan, coverage, subtitles = null) {
 }
 
 /**
- * The caption locales' own thumbnails to draw: { drawable, drawn: {}, gaps }. One whose words a
- * bundled font cannot draw (Hangul is only partly covered) joins the gaps instead of failing the
- * render; `drawn` is filled as the files are written.
+ * The caption locales' own thumbnails to draw: { drawable, drawn: {}, gaps }. `coverageOf(locale)`
+ * is what that locale's thumbnail fonts cover (bundledCoverage: Korean and Simplified Chinese have
+ * their own font). One whose words they cannot draw joins the gaps instead of failing the render;
+ * `drawn` is filled as the files are written.
  */
-export function localizedThumbnails(plan, coverage) {
+export function localizedThumbnails(plan, coverageOf = bundledCoverage) {
   const gaps = { ...(plan.thumbnail?.gaps ?? {}) };
   const drawable = [];
   for (const own of plan.thumbnail?.locales ?? []) {
-    const missing = uncovered(own.text, coverage);
+    const missing = uncovered(own.text, coverageOf(own.locale));
     if (missing.length) gaps[own.locale] = `no bundled font has ${glyphList(missing)}`;
     else drawable.push(own);
   }
@@ -164,7 +165,7 @@ export async function run(command, args, ctx) {
   }
   // A caption locale's own thumbnail is an extra: what keeps one from being drawn is a note, and
   // the locale keeps the video's own thumbnail in Studio.
-  const localized = localizedThumbnails(plan, bundledCoverage());
+  const localized = localizedThumbnails(plan);
 
   mkdirSync(path.join(workdir, "frames"), { recursive: true });
   const cacheFile = path.join(workdir, CACHE_FILE);
