@@ -182,7 +182,11 @@ describe("ShortsTopics", () => {
   it("takes a photo only with its author, the day it was taken and its terms, in parts of 4 MiB", async () => {
     shrunk.size = PART_BYTES + 10;
     const ready = { ...location, status: "ready", waiting_for: [], assets: [{ id: "a1", need: "landmarks", sha256: "f".repeat(64), filename: "landmark-near.jpg", content_type: "image/jpeg", size: PART_BYTES + 10, author: "站主", taken_on: "2026-09-30", rights_note: "自己拍的", created_at: "2026-10-01T00:00:00Z", download_path: "x" }] };
-    const calls = stubFetch([location], (call) => (new URL(call.url, "http://x").searchParams.get("part") === "1" ? { received: [0, 1], complete: true, asset: ready.assets[0], topic: ready } : { received: [0], complete: false, asset: null, topic: null }));
+    const calls = stubFetch([location], (call) => {
+      const url = new URL(call.url, "http://x");
+      if (url.pathname.endsWith("/assets/finish")) return { received: [0, 1], complete: true, asset: ready.assets[0], topic: ready };
+      return url.searchParams.get("part") === "1" ? { received: [0, 1], complete: true, asset: null, topic: null } : { received: [0], complete: false, asset: null, topic: null };
+    });
     render(<ShortsTopics canManage />);
     const box = await screen.findByRole("region", { name: "三張景點照片" });
     expect(box.textContent).toContain("0／3");
@@ -194,19 +198,28 @@ describe("ShortsTopics", () => {
     fireEvent.change(within(box).getByLabelText("拍攝日期"), { target: { value: "2026-09-30" } });
     expect(upload).toHaveProperty("disabled", false);
     fireEvent.click(upload);
-    await waitFor(() => expect(writes(calls)).toHaveLength(2));
-    const [first, second] = writes(calls).map((call) => new URL(call.url, "http://x"));
+    await waitFor(() => expect(writes(calls)).toHaveLength(3));
+    const [first, second, finish] = writes(calls).map((call) => new URL(call.url, "http://x"));
     expect(first.pathname).toBe("/api/travel/admin/video-shorts/topics/shorts-taiwan-location/assets");
-    expect(Object.fromEntries(first.searchParams)).toMatchObject({
-      part: "0", parts: "2", size: String(PART_BYTES + 10), need: "landmarks", filename: "landmark-near.jpg",
-      author: "站主", rights_note: "自己拍的", taken_on: "2026-09-30",
-    });
+    // A URL is kept in access logs and browser history: the parts name the bytes and nothing about a person.
+    expect(Object.fromEntries(first.searchParams)).toEqual({ sha256: first.searchParams.get("sha256"), part: "0", parts: "2", size: String(PART_BYTES + 10), need: "landmarks" });
     expect(first.searchParams.get("sha256")).toMatch(/^[0-9a-f]{64}$/);
     expect(second.searchParams.get("part")).toBe("1");
     expect(second.searchParams.get("sha256")).toBe(first.searchParams.get("sha256"));
+    for (const call of writes(calls)) {
+      for (const leak of ["站主", "自己拍的", "landmark-near", "2026-09-30", "author", "rights_note", "filename", "taken_on"]) {
+        expect(decodeURIComponent(call.url)).not.toContain(leak);
+      }
+    }
     expect((writes(calls)[0].body as Blob).size).toBe(PART_BYTES);
     expect((writes(calls)[1].body as Blob).size).toBe(10);
     expect(writes(calls)[0].headers["Content-Type"]).toBe("application/octet-stream");
+    // Once every part is in, who made it and on what terms go once, as JSON.
+    expect(finish.pathname).toBe("/api/travel/admin/video-shorts/topics/shorts-taiwan-location/assets/finish");
+    expect(finish.search).toBe("");
+    expect(json(writes(calls)[2])).toEqual({
+      sha256: first.searchParams.get("sha256"), need: "landmarks", filename: "landmark-near.jpg", author: "站主", rights_note: "自己拍的", taken_on: "2026-09-30",
+    });
     // The topic comes back as the server settled it: the file is in, and nothing is said to be missing.
     const card = screen.getByRole("listitem", { name: "AI 認景點" });
     await waitFor(() => expect(card.textContent).toContain("可以做"));

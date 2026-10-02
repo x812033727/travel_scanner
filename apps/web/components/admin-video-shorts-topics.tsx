@@ -141,18 +141,19 @@ function NeedBox({ topic, need, canManage, onTopic }: { topic: Topic; need: Asse
       const { blob, filename } = await shrinkImage(file);
       const sha256 = await sha256Hex(blob);
       const parts = Math.max(1, Math.ceil(blob.size / PART_BYTES));
-      let answer: AssetPart | null = null;
+      // The URL of a part names the bytes and nothing else: a URL stays in nginx's access log, the
+      // proxy's log and the browser's history. Who made the file and on what terms go once, in the body.
       for (let part = 0; part < parts; part += 1) {
         setProgress({ part: part + 1, parts });
-        const query = new URLSearchParams({
-          sha256, part: String(part), parts: String(parts), size: String(blob.size), need: need.key, filename,
-          author: author.trim(), rights_note: rights.trim(), taken_on: takenOn,
-        });
-        answer = await api<AssetPart>(`${PATH}/${topic.slug}/assets?${query}`, {
+        const query = new URLSearchParams({ sha256, part: String(part), parts: String(parts), size: String(blob.size), need: need.key });
+        await api<AssetPart>(`${PATH}/${topic.slug}/assets?${query}`, {
           method: "POST", headers: { "Content-Type": "application/octet-stream" }, body: blob.slice(part * PART_BYTES, (part + 1) * PART_BYTES),
         });
       }
-      if (answer?.topic) onTopic(answer.topic);
+      const answer = await api<AssetPart>(`${PATH}/${topic.slug}/assets/finish`, {
+        method: "POST", body: JSON.stringify({ sha256, need: need.key, filename, author: author.trim(), rights_note: rights.trim(), taken_on: takenOn }),
+      });
+      if (answer.topic) onTopic(answer.topic);
       setFile(null);
       if (fileInput.current) fileInput.current.value = "";
       setDone(true);

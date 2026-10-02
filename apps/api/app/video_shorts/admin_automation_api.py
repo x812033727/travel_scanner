@@ -18,6 +18,7 @@ from datetime import date
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, Query, Request
+from pydantic import Field
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.service import require_capability
@@ -44,6 +45,7 @@ from app.video_shorts.schemas import (
     ReportsOut,
     ShortsLine,
     StartOut,
+    StrictModel,
     TopicIn,
     TopicOut,
     TopicPatch,
@@ -64,6 +66,22 @@ tool_router = APIRouter(prefix="/video/automation/shorts", tags=["video shorts (
 Session = Annotated[AsyncSession, Depends(get_session)]
 ContentReader = Annotated[User, Depends(require_capability("content.read"))]
 ContentManager = Annotated[User, Depends(require_capability("content.manage"))]
+
+
+class AssetInfoIn(StrictModel):
+    """What the owner writes about a file once its parts are in: a person's name and the
+    terms of use, so it travels in a body and never in a URL."""
+
+    sha256: str = Field(pattern=r"^[0-9a-f]{64}$")
+    need: str = Field(pattern=NEED_KEY_PATTERN)
+    filename: str = Field(min_length=1, max_length=200)
+    author: str = Field(min_length=1, max_length=120)
+    rights_note: str = Field(min_length=1, max_length=2000)
+    taken_on: date | None = None
+
+
+# What the part upload refuses to find in its URL.
+INFO_FIELDS = frozenset({"filename", "author", "rights_note", "taken_on"})
 
 
 def refused(error: ShortsRefused) -> AppError:
@@ -132,13 +150,20 @@ async def upload_shorts_asset(
     parts: Annotated[int, Query(ge=1, le=100)],
     size: Annotated[int, Query(ge=1)],
     need: Annotated[str, Query(pattern=NEED_KEY_PATTERN)],
-    filename: Annotated[str, Query(min_length=1, max_length=200)],
-    author: Annotated[str, Query(min_length=1, max_length=120)],
-    rights_note: Annotated[str, Query(min_length=1, max_length=2000)],
-    taken_on: date | None = None,
 ) -> AssetPartOut:
-    """One part (4 MiB at most) of a file the owner supplies for a topic. Every part names
-    the file's author and the terms it may be used on; the last part completes it."""
+    """One part (4 MiB at most) of a file the owner supplies for a topic; the URL names the
+    bytes and nothing else. The file is the topic's material once ``…/assets/finish`` says
+    who made it and on what terms."""
+    _ = user
+    held = sorted(INFO_FIELDS & request.query_params.keys())
+    if held:
+        # A URL lands in nginx's access log, the site's proxy log and the browser's history:
+        # an old page that still puts a person's name there is stopped, not quietly obeyed.
+        raise AppError(
+            422,
+            "video_shorts_asset_info_in_url",
+            f"{'、'.join(held)} 要放在 …/assets/finish 的 JSON 內容，不能放在網址",
+        )
     body = await request.body()
     if len(body) > PART_BYTES:
         raise AppError(413, "video_shorts_asset_part_too_large", f"每一段最多 {PART_BYTES} 位元組")
@@ -146,20 +171,28 @@ async def upload_shorts_asset(
         return await assets.upload_part(
             session,
             media_store(get_media_settings()),
-            user,
             _checked_slug(slug),
             assets.AssetPart(
-                sha256=sha256,
-                part=part,
-                parts=parts,
-                size=size,
-                data=body,
-                need=need,
-                filename=filename,
-                author=author,
-                rights_note=rights_note,
-                taken_on=taken_on,
+                sha256=sha256, part=part, parts=parts, size=size, data=body, need=need
             ),
+        )
+    except ShortsRefused as error:
+        raise refused(error) from error
+
+
+@admin_router.post("/topics/{slug}/assets/finish", response_model=AssetPartOut)
+async def finish_shorts_asset(
+    slug: str, payload: AssetInfoIn, user: ContentManager, session: Session
+) -> AssetPartOut:
+    """A file whose parts are all in becomes the topic's material, with who made it and on
+    what terms, sent once in the body."""
+    try:
+        return await assets.add_asset(
+            session,
+            media_store(get_media_settings()),
+            user,
+            _checked_slug(slug),
+            assets.AssetInfo(**payload.model_dump()),
         )
     except ShortsRefused as error:
         raise refused(error) from error

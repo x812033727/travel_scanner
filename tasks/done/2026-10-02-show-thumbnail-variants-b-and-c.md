@@ -1,20 +1,19 @@
 ---
 id: 2026-10-02-show-thumbnail-variants-b-and-c
 title: Show thumbnail variants B and C on the final and publish review cards
-status: open
+status: done
 priority: P3
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-10-02T08:24:10Z
 created_at: 2026-10-02T06:23:06Z
-completed_at:
-branch:
+completed_at: 2026-10-02T08:29:03Z
+branch: claude/thumb-variants-web
 depends_on:
   - 2026-09-28-thumbnail-variants-in-the-upload-package
 scope:
   - apps/web/components/admin-video-review-card.tsx
   - apps/web/components/admin-video-review-card.test.tsx
-  - apps/web/messages
 ---
 
 # Show thumbnail variants B and C on the final and publish review cards
@@ -42,17 +41,17 @@ language (`localeOf`), so `thumbnail_b` would have been labelled as a language "
 
 ## Definition of done
 
-- [ ] The final card shows A, B and C side by side (labelled A/B/C) when the review has
+- [x] The final card shows A, B and C side by side (labelled A/B/C) when the review has
       `thumbnail-b`/`thumbnail-c` files; a review without them looks exactly as before.
-- [ ] The publish card offers B and C as downloads named `thumbnail-b.jpg` / `thumbnail-c.jpg`,
+- [x] The publish card offers B and C as downloads named `thumbnail-b.jpg` / `thumbnail-c.jpg`,
       not as a language thumbnail.
-- [ ] New strings in all five locales; `npm run check:i18n` passes.
+- [x] New strings in all five locales; `npm run check:i18n` passes.
 
 ## Steps
 
-- [ ] Final card: a small A/B/C strip under the player, from `fileFor(review, "thumbnail-b")` etc.
-- [ ] Publish card: a branch for `/^thumbnail-[a-z]$/` before the `thumbnail_` one.
-- [ ] Tests in `admin-video-review-card.test.tsx`.
+- [x] Final card: a small A/B/C strip under the player, from `fileFor(review, "thumbnail-b")` etc.
+- [x] Publish card: a branch for `/^thumbnail-[a-z]$/` before the `thumbnail_` one.
+- [x] Tests in `admin-video-review-card.test.tsx`.
 
 ## How to verify
 
@@ -66,3 +65,11 @@ language (`localeOf`), so `thumbnail_b` would have been labelled as a language "
   in `docs/videos/long-form/review.json`; changing them makes `tools/video/long-form/review.test.mjs`
   fail until that review is redone. Say so in the PR and leave the rebinding to its reviewer, or
   put the new strings where they are not bound.
+- 2026-10-02 (claude-opus-5-5): no new strings. Labels reuse `downloadLocaleThumbnail`
+  ("縮圖 {locale}" / "Thumbnail {locale}" …) with A, B or C, which reads naturally in all
+  five locales, so `apps/web/messages` (held by other tasks and bound in
+  `docs/videos/long-form/review.json`) was left out of scope and untouched.
+  Final card: an A/B/C strip under the player only when `thumbnail-b` or `thumbnail-c`
+  exists. Publish card: `/^thumbnail-([a-z])$/` is matched before `thumbnail_`, download
+  names `thumbnail-b.jpg` / `thumbnail-c.jpg`. Tests: 5 pass in the card test (3 new);
+  typecheck, lint, check:i18n clean; `tools/video/long-form/review.test.mjs` still passes.
