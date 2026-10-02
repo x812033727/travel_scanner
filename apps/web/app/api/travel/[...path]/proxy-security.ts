@@ -1,3 +1,5 @@
+import { safeNextPath } from "@/lib/navigation";
+
 export { forwardedClientAddress } from "@/lib/client-address";
 
 const SAFE_METHODS = new Set(["GET", "HEAD", "OPTIONS"]);
@@ -50,7 +52,12 @@ export function safeRedirectLocation(
   location: string,
   requestOrigin: string,
 ): string | undefined {
-  if (location.startsWith("/") && !location.startsWith("//")) return location;
+  if (location.startsWith("/")) {
+    // The same test a `next` parameter gets. A browser resolving an http(s) URL reads `\` as
+    // `/` and drops tab and newline first, so `/\host`, `/\/host` and `/<tab>/host` all leave
+    // the site exactly as `//host` would; a same-site path never needs either.
+    return safeNextPath(location, "") || undefined;
+  }
   try {
     const target = new URL(location);
     if (target.protocol === "https:") return target.toString();
