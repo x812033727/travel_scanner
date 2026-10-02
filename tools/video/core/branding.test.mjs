@@ -4,7 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 
-import { adoptionRefusal, appliedBranding, brandingCurrent, brandingHash, pinBranding, presentationTimeline, readBranding, selectBrandingForBuild, shiftBrandingCues, validateBranding } from "./branding.mjs";
+import { adoptionRefusal, appliedBranding, brandingCurrent, brandingHash, currentBrandingFile, pinBranding, presentationTimeline, readBranding, selectBrandingForBuild, shiftBrandingCues, validateBranding } from "./branding.mjs";
 
 const preset = (n = "a") => ({ schema_version: 1, id: `mokaair-${n}`, intro: { file: "intro.mp4", sha256: n.repeat(64), frames: 150 }, outro: { file: "outro.mp4", sha256: "b".repeat(64), frames: 90 } });
 const doc = { format: "slides", youtube: { video_id: null } };
@@ -14,7 +14,11 @@ function box(t) {
   mkdirSync(workdir);
   mkdirSync(path.join(workBase, "_branding"));
   t.after(() => rmSync(workBase, { recursive: true, force: true }));
-  const current = (value) => writeFileSync(path.join(workBase, "_branding", "current.json"), JSON.stringify(value));
+  const current = (value, series = null) => {
+    const file = path.join(workBase, currentBrandingFile(series));
+    mkdirSync(path.dirname(file), { recursive: true });
+    writeFileSync(file, JSON.stringify(value));
+  };
   return { workdir, workBase, current };
 }
 
@@ -27,6 +31,68 @@ test("only first builds adopt the current package; an unapproved old cut needs e
   writeFileSync(path.join(b.workdir, "checks.json"), JSON.stringify({ ok: true }));
   assert.equal(await selectBrandingForBuild({ ...b, doc }), null);
   assert.equal((await selectBrandingForBuild({ ...b, doc, adoptCurrent: true })).hash, selected.hash);
+});
+
+const explainer = { format: "drama", look: { preset: "flat-explainer" } };
+const seriesPreset = () => ({ ...preset("c"), intro: { ...preset("c").intro, frames: 357 } });
+
+test("only new explainers use the series default; absent, disabled and invalid registries differ", async (t) => {
+  const b = box(t);
+  b.current(preset());
+  assert.equal((await selectBrandingForBuild({ ...b, doc: explainer })).intro.frames, 150);
+  b.current(seriesPreset(), "sothatswhy");
+  assert.equal((await selectBrandingForBuild({ ...b, doc: explainer })).intro.frames, 357);
+  assert.equal((await selectBrandingForBuild({ ...b, doc: explainer, adoptCurrent: true })).intro.frames, 357);
+  for (const other of [doc, { format: "screencast" }, { format: "drama", look: { preset: "anime" } }, { ...doc, title: "原來如此", look: { preset: "flat-explainer" } }]) {
+    assert.equal((await selectBrandingForBuild({ ...b, doc: other })).intro.frames, 150);
+  }
+  assert.equal(await selectBrandingForBuild({ ...b, doc: { format: "shorts", look: explainer.look } }), null);
+  b.current({ enabled: false }, "sothatswhy");
+  assert.equal(await selectBrandingForBuild({ ...b, doc: explainer }), null);
+  await assert.rejects(selectBrandingForBuild({ ...b, doc: explainer, adoptCurrent: true }), /no current branding/);
+  b.current({ invalid: true }, "sothatswhy");
+  await assert.rejects(selectBrandingForBuild({ ...b, doc: explainer }), /schema_version/);
+  assert.equal((await selectBrandingForBuild({ ...b, doc })).intro.frames, 150);
+});
+
+test("series defaults cannot alter existing pins or protected and legacy explainers", async (t) => {
+  const b = box(t);
+  b.current(preset());
+  const pinned = await selectBrandingForBuild({ ...b, doc: explainer });
+  pinBranding(b.workdir, pinned);
+  b.current({ invalid: true }, "sothatswhy");
+  b.current({ invalid: true });
+  assert.equal((await selectBrandingForBuild({ ...b, doc: explainer })).hash, pinned.hash);
+  for (const proof of ["final", "publish", "youtube", "auto", "package", "history", "checks"]) {
+    const c = box(t);
+    c.current({ invalid: true }, "sothatswhy");
+    let source = explainer;
+    if (["final", "publish"].includes(proof)) writeFileSync(path.join(c.workdir, "approvals.json"), JSON.stringify({ approvals: [{ gate: proof, sha256: "old" }] }));
+    if (proof === "youtube") source = { ...explainer, youtube: { video_id: "abcdefghijk" } };
+    if (proof === "auto") writeFileSync(path.join(c.workdir, "auto.json"), JSON.stringify({ status: "done" }));
+    if (proof === "package") { mkdirSync(path.join(c.workdir, "upload")); writeFileSync(path.join(c.workdir, "upload", "metadata.json"), "{}"); }
+    if (proof === "history") writeFileSync(path.join(c.workdir, "state.json"), JSON.stringify({ runs: [{ stage: "assemble" }] }));
+    if (proof === "checks") writeFileSync(path.join(c.workdir, "checks.json"), "{}");
+    assert.equal(await selectBrandingForBuild({ ...c, doc: source }), null, proof);
+    if (!["history", "checks"].includes(proof)) await assert.rejects(selectBrandingForBuild({ ...c, doc: source, adoptCurrent: true }), /unchanged/);
+  }
+});
+
+test("11.9-second series presentation offsets captions, windows and chapters once", () => {
+  const body = { total_frames: 900, lines: [{ start_frame: 0, end_frame: 120 }], windows: [{ start_frame: 0, end_frame: 900 }], chapters: [{ start_frame: 0 }, { start_frame: 600 }] };
+  const original = structuredClone(body);
+  const applied = { hash: brandingHash(seriesPreset()), intro_frames: 357, outro_frames: 90 };
+  const full = presentationTimeline(body, applied);
+  assert.deepEqual(body, original);
+  assert.equal(full.total_frames, 1347);
+  assert.equal(full.content_end_frame, 1257);
+  assert.deepEqual(full.lines, [{ start_frame: 357, end_frame: 477 }]);
+  assert.deepEqual(full.windows, [{ start_frame: 357, end_frame: 1257 }]);
+  assert.deepEqual(full.chapters.map(chapter => chapter.start_frame), [0, 957]);
+  assert.equal(presentationTimeline(full, applied), full);
+  const cues = [{ start_ms: 0, end_ms: 4000, text: "正文" }];
+  assert.deepEqual(shiftBrandingCues(cues, applied), [{ start_ms: 11900, end_ms: 15900, text: "正文" }]);
+  assert.deepEqual(shiftBrandingCues(shiftBrandingCues(cues, applied), applied, -1), cues);
 });
 
 test("a first candidate that failed QA still adopts branding on retry; historical completed builds stay legacy", async (t) => {

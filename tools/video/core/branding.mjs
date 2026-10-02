@@ -5,11 +5,17 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 
 import { readApprovals } from "./approvals.mjs";
+import { isExplainer } from "./drama.mjs";
 import { atomicWrite, readJson, UsageError } from "./paths.mjs";
 import { FPS, frameToMs } from "./timeline.mjs";
 
 export const BRANDING_FILE = "branding.json";
 export const CURRENT_BRANDING_FILE = path.join("_branding", "current.json");
+export function currentBrandingFile(series = null) {
+  if (series === null) return CURRENT_BRANDING_FILE;
+  if (series !== "sothatswhy") throw new UsageError("branding --series supports only sothatswhy");
+  return path.join("_branding", "series", series, "current.json");
+}
 const SHA256 = /^[a-f0-9]{64}$/i;
 const LONG_FORMATS = new Set(["slides", "screencast", "drama"]);
 
@@ -46,8 +52,16 @@ export function readBranding(workdir) {
   return validateBranding(readJson(file, null), { base: workdir });
 }
 
-export function readCurrentBranding(workBase) {
-  return validateBranding(readJson(path.join(workBase, CURRENT_BRANDING_FILE), null), { base: path.join(workBase, "_branding") });
+export function readCurrentBranding(workBase, { series = null } = {}) {
+  const file = path.join(workBase, currentBrandingFile(series));
+  return validateBranding(readJson(file, null), { base: path.dirname(file) });
+}
+
+/** Only an absent series registry falls back; an explicit disabled choice stays disabled. */
+export function readDefaultBranding(workBase, doc) {
+  const series = isExplainer(doc) ? "sothatswhy" : null;
+  if (series && existsSync(path.join(workBase, currentBrandingFile(series)))) return readCurrentBranding(workBase, { series });
+  return readCurrentBranding(workBase);
 }
 
 /** This check never reads the channel default or hashes source media of completed videos. */
@@ -79,15 +93,15 @@ export async function selectBrandingForBuild({ doc, workdir, workBase, adoptCurr
   if (adoptCurrent) {
     const refusal = adoptionRefusal({ doc, workdir });
     if (refusal) throw new UsageError(refusal);
-    const current = readCurrentBranding(workBase);
-    if (!current) throw new UsageError("no current channel branding package is installed");
+    const current = readDefaultBranding(workBase, doc);
+    if (!current) throw new UsageError("no current branding package is installed for this video");
     return current;
   }
   if (!LONG_FORMATS.has(doc?.format)) return null;
   const pinned = readBranding(workdir);
   if (pinned) return pinned;
   if (adoptionRefusal({ doc, workdir }) || previouslyBuilt(workdir)) return null;
-  return readCurrentBranding(workBase);
+  return readDefaultBranding(workBase, doc);
 }
 
 /** Save only after a completed replacement, never while the old final is still in use. */

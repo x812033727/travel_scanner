@@ -527,6 +527,41 @@ test("a writer that answers without a script is asked once a run, and the video 
   assert.equal(writers(), 4, "an acknowledged request cannot trigger another paid retry");
 });
 
+/** The web route's answer once its deadline passed while the API kept running the stage (apps/web/app/api/video/automation/run). */
+const lostAnswer = () => Response.json({ code: "video_ai_run_uncertain", detail: "no answer within the deadline" }, { status: 504 });
+
+test("a writer whose answer is lost after it was sent is not asked again on its own: the video stops for the owner, and the owner's retry asks once more", async () => {
+  const box = sandbox();
+  const slug = "chatgpt-ads-off";
+  const site = fakeSite({ answers: answersFor(slug) });
+  // The site runs the writer (the model is paid for) and the answer never reaches the worker.
+  let lose = true;
+  const fetchImpl = async (url, init = {}) => {
+    const answer = await site.fetchImpl(url, init);
+    return lose && new URL(url).pathname === "/api/video/automation/run" && JSON.parse(init.body).stage === "writer" ? lostAnswer() : answer;
+  };
+  const clock = { now: Date.parse("2026-09-25T09:00:00Z") };
+  const { ctx, out } = context(box, fetchImpl, clock);
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  await automation.step();
+  Object.assign(site.reviewsOf(slug)[0], { status: "approved", choice: "B" });
+  const writers = () => site.calls.run.filter((call) => call.stage === "writer").length;
+
+  assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
+  assert.match(out.stdout, /blocked — writer may have run on the server without its answer reaching the worker \(HTTP 504: no answer within the deadline\); it is not asked again until the owner retries/);
+  assert.equal(writers(), 1, "sent once: the client does not send it again");
+  assert.equal(automatedVideos(box.work)[0].status, "blocked");
+  assert.match(site.calls.reports.at(-1).checklist[0].label, /^卡住，需要人處理：writer may have run on the server without its answer reaching the worker/);
+  assert.equal(await main(["auto"], ctx), EXIT.ok);
+  assert.equal(writers(), 1, "nor does the next round");
+
+  lose = false;
+  Object.assign(site.listed.get(slug), { retry_request_id: "2b06f60f-1026-477a-9d40-28683b00a22e", retry_acknowledged_id: null });
+  assert.match(await automation.step(), /script drafted and passes lint/);
+  assert.equal(writers(), 2, "the owner's retry asks once more");
+});
+
 test("an outline sent back is re-planned with the owner's note, and a spent budget stops auto for the owner", async () => {
   const box = sandbox();
   const slug = "chatgpt-ads-off";
@@ -1611,6 +1646,86 @@ test("a translator that returns no thumbnail words still completes the locale: i
   assert.equal(video.calls("translator").length, 1);
   assert.equal(video.calls("caption_reviewer").length, 1);
   assert.equal(await video.step(), null, "everything chosen is made");
+});
+
+test("a long sheet is translated in units, each reviewed and kept; an answer lost past the deadline stops the video instead of paying again, and the owner's retry resumes at that unit", async () => {
+  const video = await finishedVideo();
+  // The fixture's seven lines in units of three: the metadata, then k7p2-x9fe, b3tn-h2cz and p5vs.
+  const limits = { lines: 3, chars: 10_000 };
+  video.automation.unitLimits = limits;
+  video.choose({ en: { metadata: true, captions: true, dub: false } });
+  const unitsFile = path.join(video.workdir, "i18n", "en.units.json");
+  const firstLine = (call) => call.payload.worksheet.lines[0]?.id ?? "metadata";
+
+  assert.match(await video.step(), /^chatgpt-ads-off: en part 1 of 4 translated and reviewed; the next part follows$/);
+  const [metadata] = video.calls("translator");
+  assert.deepEqual([metadata.payload.parts, metadata.payload.worksheet.parts, metadata.payload.worksheet.lines], [["metadata"], ["metadata"], []]);
+  assert.equal(metadata.payload.video.scenes.length, 3, "the metadata sees the whole video");
+  assert.equal(Object.values(readJson(unitsFile).units).filter((unit) => unit.reviewed).length, 1, "the reviewed unit is kept");
+
+  // The next translator run finishes on the server after the web route gave up: recorded, paid
+  // for, and its answer lost (2026-09-29, 302 s against 295 s).
+  let lose = true;
+  const fetch = video.ctx.fetch;
+  video.ctx.fetch = async (url, init = {}) => {
+    const answer = await fetch(url, init);
+    return lose && new URL(url).pathname === "/api/video/automation/run" && JSON.parse(init.body).stage === "translator" ? lostAnswer() : answer;
+  };
+  const worker = new Automation(video.ctx, automationClient(video.ctx), video.site.settings);
+  Object.assign(worker, { refs: smallRefs, unitLimits: limits });
+  assert.match(await worker.step(), /blocked — translator \(en part 2 of 4\) may have run on the server without its answer reaching the worker \(HTTP 504: no answer within the deadline\); it is not asked again until the owner retries$/);
+  assert.equal(worker.halted, true, "the run ends");
+  assert.deepEqual([video.state().status, video.state().blocked_from_status], ["blocked", "done"]);
+  assert.deepEqual(video.calls("translator").map(firstLine), ["metadata", "k7p2"], "sent once, not retried");
+  const calls = video.site.calls.run.length;
+  assert.equal(await worker.step(), null);
+  assert.equal(video.site.calls.run.length, calls, "a blocked video is not asked again on the next round either");
+
+  // The owner's retry asks the lost unit once more and goes on from there; the metadata is not asked again.
+  lose = false;
+  Object.assign(video.listed(), { retry_request_id: "2b06f60f-1026-477a-9d40-28683b00a22e", retry_acknowledged_id: null });
+  assert.match(await worker.step(), /^chatgpt-ads-off: en part 2 of 4 translated and reviewed; the next part follows$/);
+  assert.match(await worker.step(), /^chatgpt-ads-off: en part 3 of 4 translated and reviewed; the next part follows$/);
+  assert.match(await worker.step(), /^chatgpt-ads-off: en metadata and captions translated and reviewed$/);
+  assert.deepEqual(video.calls("translator").map(firstLine), ["metadata", "k7p2", "k7p2", "b3tn", "p5vs"]);
+  assert.deepEqual(video.calls("caption_reviewer").map(firstLine), ["metadata", "k7p2", "b3tn", "p5vs"], "each unit reviewed once, by its own reviewer");
+  for (const call of video.calls("translator").slice(1)) {
+    assert.deepEqual([call.payload.parts, call.payload.worksheet.parts], [["captions"], ["captions"]]);
+    assert.ok(call.payload.worksheet.lines.length <= 3 && call.payload.worksheet.lines.every((line) => line.todo));
+    assert.deepEqual(call.payload.video.scenes.map((scene) => scene.id), [...new Set(call.payload.worksheet.lines.map((line) => line.scene))], "a lines unit sees its own scenes");
+  }
+
+  const translation = readJson(path.join(video.box.root, "docs", "videos", video.slug, "i18n", "en.json"));
+  assert.deepEqual(Object.keys(translation.lines), ["k7p2", "m4qa", "x9fe", "b3tn", "r8wd", "h2cz", "p5vs"]);
+  assert.equal(translation.lines.p5vs.text, "en pxvs");
+  assert.equal(translation.title, "en title");
+  assert.ok(!existsSync(unitsFile), "nothing is kept once the locale is merged");
+  assert.match(await worker.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(en metadata\+captions\)$/);
+  assert.equal(video.calls("translator").length, 5);
+});
+
+test("a caption review without its own worksheet, or with lines left out, never puts the translation in unreviewed: the translation is kept for the next reviewer", async () => {
+  let review = () => undefined;
+  const video = await finishedVideo({ review: (worksheet) => review(worksheet) });
+  video.choose({ en: { metadata: true, captions: true, dub: false } });
+  const merges = () => video.runs.filter((run) => run.startsWith("i18n-merge")).length;
+
+  assert.match(await video.step(), /^chatgpt-ads-off: caption_reviewer gave nothing usable \(the en review returned no worksheet; the translation waits for its review; the answer is in answers[\\/]caption-reviewer-.*\); the next run tries once more$/);
+  assert.equal(merges(), 0, "the translator's worksheet is not merged as if it had been reviewed");
+  assert.equal(loadProject({ slug: video.slug, root: video.box.root }).translations.en, undefined);
+
+  review = (worksheet) => ({ ...worksheet, lines: worksheet.lines.slice(1) });
+  assert.match(await video.step(), /blocked — caption_reviewer failed 2 times in a row: the en review left 1 of 7 lines out or empty \(k7p2\); the translation waits for its review/);
+  assert.equal(merges(), 0);
+  assert.deepEqual([video.calls("translator").length, video.calls("caption_reviewer").length], [1, 2], "the reviewer is asked again, the translator is not");
+
+  review = (worksheet) => ({ ...worksheet, lines: worksheet.lines.map((line) => ({ ...line, text: `${line.text} (reviewed)` })) });
+  Object.assign(video.listed(), { retry_request_id: "2b06f60f-1026-477a-9d40-28683b00a22e", retry_acknowledged_id: null });
+  assert.match(await video.step(), /^chatgpt-ads-off: en metadata and captions translated and reviewed$/);
+  assert.deepEqual([video.calls("translator").length, video.calls("caption_reviewer").length], [1, 3], "the kept translation is reviewed after the retry");
+  const translation = readJson(path.join(video.box.root, "docs", "videos", video.slug, "i18n", "en.json"));
+  assert.ok(Object.values(translation.lines).every((line) => line.text.endsWith(" (reviewed)")), "what goes in is the reviewer's worksheet");
+  assert.equal(video.state().failures?.caption_reviewer, undefined);
 });
 
 test("an English-narrated video is translated into zh-TW once, before the language it was chosen, and its batch and package carry zh-TW beside it", async () => {

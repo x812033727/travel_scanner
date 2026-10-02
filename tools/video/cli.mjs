@@ -88,7 +88,7 @@ Usage: node tools/video/cli.mjs <command> [options]
   audition, tts, review, render, assemble, package, youtube-sync
                                                    media stages, each built by its own ticket
   look, keyframes, clips, music, media-status      the drama format's generation stages (docs/videos/DRAMA.md)
-  branding [--install DIR] [--workdir D] [--dry-run] [--json]
+  branding [--install DIR] [--series sothatswhy] [--workdir D] [--dry-run] [--json]
                                                    inspect or install a fixed intro/outro package for new long videos
   assemble --slug S [--workdir D] [--adopt-branding]
                                                    explicitly add current branding to an existing unapproved cut
