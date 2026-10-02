@@ -1,13 +1,13 @@
 ---
 id: 2026-10-02-a-dropped-shorts-topic-frees-its
 title: A dropped Shorts topic frees its planned slot and does not count toward the monthly cap
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-shorts-gaps
 claimed_at: 2026-10-02T19:56:23Z
 created_at: 2026-10-02T19:56:10Z
-completed_at:
+completed_at: 2026-10-02T20:07:37Z
 branch: claude/shorts-dropped-topic-slots
 depends_on: []
 scope:
