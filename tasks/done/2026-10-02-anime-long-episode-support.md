@@ -5,9 +5,9 @@ status: done
 priority: P2
 area: tools
 owner: codex-root
-claimed_at: 2026-10-02T14:30:31Z
+claimed_at: 2026-10-02T16:14:44Z
 created_at: 2026-10-02T04:47:57Z
-completed_at: 2026-10-02T15:39:38Z
+completed_at: 2026-10-02T16:17:12Z
 branch: codex/anime-long-production
 depends_on: []
 scope:
@@ -24,6 +24,8 @@ scope:
   - apps/api/app/video_reviews/schemas.py
   - apps/api/app/video_reviews/admin_service.py
   - apps/api/tests/test_video_anime_review_policy.py
+  - apps/api/tests/test_video_review_renewal.py
+  - apps/api/tests/test_video_shorts.py
   - tools/video/automation/series.mjs
   - tools/video/automation/series.test.mjs
   - tools/video/automation/prompts.mjs
@@ -119,3 +121,7 @@ Independent review expanded the concrete consumer scope to cover scheduler statu
 Concurrent PR #1132 later appeared with separate drama audio-evidence and localization retention work on overlapping pipeline paths and the shared duration receipt. This branch does not copy its unmerged implementation or change its task. Rebase and rerun the current-file duration receipt if either draft lands first. PR #1131 still owns story polish; the original borrowed-dawn source package remains untouched here. The final branch incorporates merged branding PR #1129 before installing its independent receipt.
 
 Completed validation: 540 affected API/database tests passed with RUN_INTEGRATION_TESTS=1 on an isolated PostgreSQL 17; the final post-rebase native/create/review batch passed 131 tests without skips. Full Python Ruff and Mypy passed (815 files). Full web suite passed 3,795 tests; the final silent-action/coverage UI change passed 64 focused tests and the independent reviewer separately passed 97 current component tests. Web lint, all five locales/25 namespaces, typecheck and production build passed. Final npm run test:tools passed 1,336 tests, failed zero and retained one pre-existing optional smoke skip. The independent DURATION_ONLY increment binds 108 current files, preserves the 70 historical paths and checker logic, and passed all 473 plans plus the receipt regressions. npm run check:tasks and git diff --check passed. The concrete offline draft was regenerated and still has ready_for_production=false. The owned PostgreSQL test container was stopped and removed; no real provider, production host, activation or publication was used.
+
+Full API CI follow-up: run 37028620116 found 71 failures caused by isolated SQLite fixtures missing video_drama_series/video_drama_episodes, while 6,420 tests passed. Reopened this own ticket and narrowly expanded scope to the two fixture owners above; test_video_long_review_renewal.py reuses the renewal fixture and needs no source edit. Preserve the real database episode-authority guard and fix the fixture schema, then run all three affected modules and independently verify ordinary/native behavior before reclosing.
+
+Resolved CI follow-up: only the two existing SQLite fixtures changed their model imports/table lists; all test bodies and assertions, the shared long-review fixture alias and every production guard remain unchanged. All three affected suites now pass 126 tests with no skips, independently rerun by the separate reviewer (126 passed), plus scoped Ruff, Mypy and task/whitespace checks. The independent reviewer confirmed all 108 current duration bindings, all 473 plans and receipt tests 2/2 still pass; fixture-only paths require no receipt rebinding. Initial CI passed 6,420 other API tests; the same draft PR will rerun the complete required checks on these fixed bytes.
