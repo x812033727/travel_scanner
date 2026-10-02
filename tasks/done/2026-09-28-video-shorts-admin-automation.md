@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-shorts-admin-automation
 title: Video shorts W2: the topic library, the asset box, the weekly report and the automation settings on the Shorts tab
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5-5-shorts-w2
 claimed_at: 2026-10-02T06:11:51Z
 created_at: 2026-09-28T04:00:00Z
-completed_at:
+completed_at: 2026-10-02T06:33:52Z
 branch: claude/video-shorts-admin-automation
 depends_on:
   - 2026-09-28-video-shorts-automation-api
