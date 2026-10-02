@@ -29,6 +29,24 @@ const CAPTION_FILE = /^captions\/([A-Za-z-]+)\.srt$/;
 const DESCRIPTION_FILE = /^description\.([A-Za-z-]+)\.txt$/;
 // A language's own thumbnail, for Studio's 「語言」 page (role thumbnail_en beside thumbnail).
 const LOCALE_THUMBNAIL_FILE = /^thumbnails\/([A-Za-z-]+)\.jpg$/;
+// Variants B and C for Studio's 「測試與比較」, beside thumbnail.jpg (A); render's
+// thumbnailVariantFile names them. Their role keeps the file's hyphen (thumbnail-b), so the
+// site's cards, which read thumbnail_<locale> as a language, never take one for a locale.
+const VARIANT_THUMBNAIL_FILE = /^thumbnail-([a-z])\.jpg$/;
+// YouTube's limit for a thumbnail, which every image in the package keeps.
+export const THUMBNAIL_MAX_BYTES = 2 * 1024 * 1024;
+
+/**
+ * The thumbnail variants render listed in frames/manifest.json (`thumbnail_variants`), as file
+ * names beside thumbnail.jpg; anything else in that list is ignored. Empty without variants.
+ */
+export function thumbnailVariants(framesManifest) {
+  const listed = framesManifest?.thumbnail_variants;
+  return Array.isArray(listed) ? listed.filter((file) => typeof file === "string" && VARIANT_THUMBNAIL_FILE.test(file)) : [];
+}
+
+/** The review role of a variant's file: thumbnail-b.jpg goes up as thumbnail-b. */
+export const variantRole = (file) => path.posix.basename(file, ".jpg");
 
 export function item(id, ok, detail) {
   return { id, ok: Boolean(ok), detail: String(detail) };
@@ -61,9 +79,16 @@ export function filesItem({ files, metadata, finalSha256, approvedSha256, brandi
   if (metadata?.thumbnail && !present(files, THUMBNAIL_FILE)) problems.push(`${THUMBNAIL_FILE} is missing`);
   // Each language's own thumbnail metadata.json lists is there; the languages without one are only noted.
   for (const listed of Object.values(metadata?.thumbnails ?? {})) if (!present(files, listed)) problems.push(`${listed} is listed but missing`);
+  // So is each "Test & compare" variant, B and C beside A.
+  const variants = Array.isArray(metadata?.thumbnail_variants) ? metadata.thumbnail_variants : [];
+  for (const listed of variants) if (!present(files, listed)) problems.push(`${listed} is listed but missing`);
+  // Every thumbnail stays within YouTube's 2 MB, A as much as its variants and languages.
+  for (const image of [...(metadata?.thumbnail ? [THUMBNAIL_FILE] : []), ...variants, ...Object.values(metadata?.thumbnails ?? {})]) {
+    if (sizeOf(files, image) > THUMBNAIL_MAX_BYTES) problems.push(`${image} is ${sizeOf(files, image)} bytes; YouTube's limit is 2 MB`);
+  }
   if (!brandingMatches) problems.push("the upload package does not match the selected and applied branding; rebuild the final and run package again");
   if (problems.length) return item("files", false, problems.join("; "));
-  const named = [FINAL_FILE, ...(metadata.thumbnail ? [THUMBNAIL_FILE] : []), ...Object.values(metadata.thumbnails ?? {}), METADATA_FILE];
+  const named = [FINAL_FILE, ...(metadata.thumbnail ? [THUMBNAIL_FILE] : []), ...variants, ...Object.values(metadata.thumbnails ?? {}), METADATA_FILE];
   return item("files", true, `${named.join(", ")}; ${FINAL_FILE} is the approved final (${finalSha256.slice(0, 12)})`);
 }
 
@@ -170,6 +195,7 @@ export function packageFiles(paths) {
     if (description) entries.push({ path: file, role: `description_${description[1]}`, content_type: "text/plain" });
     const thumbnail = LOCALE_THUMBNAIL_FILE.exec(file);
     if (thumbnail) entries.push({ path: file, role: `thumbnail_${thumbnail[1]}`, content_type: "image/jpeg" });
+    if (VARIANT_THUMBNAIL_FILE.test(file)) entries.push({ path: file, role: variantRole(file), content_type: "image/jpeg" });
   }
   return entries;
 }
