@@ -1,4 +1,4 @@
-"""0117 raises the slides route's length to at least eight minutes and narrows its check.
+"""0118 raises the slides route's length to at least eight minutes and narrows its check.
 
 ``0001_initial`` builds a fresh database from the current models, so CI never sees the old
 check; the PostgreSQL test puts it back, stores a three-minute setting, and runs both directions
@@ -25,7 +25,7 @@ from app.db import engine
 from app.video_automation.models import VideoAutomationSettings
 
 VERSIONS = Path(__file__).resolve().parents[1] / "migrations" / "versions"
-MIGRATION = "0117_video_min_8_minutes"
+MIGRATION = "0118_video_min_8_minutes"
 SETTINGS = "video_automation_settings"
 CHECK = "ck_video_automation_minutes"
 POSTGRES = pytest.mark.skipif(
