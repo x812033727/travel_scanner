@@ -1,13 +1,13 @@
 ---
 id: 2026-09-27-link-each-published-news-candidate-to
 title: Link each published news candidate to its live article from /admin/news
-status: in-progress
+status: done
 priority: P3
 area: web
 owner: claude-opus-5-5-news-live-link
 claimed_at: 2026-10-02T15:17:24Z
 created_at: 2026-09-27T08:06:09Z
-completed_at:
+completed_at: 2026-10-02T15:59:17Z
 branch: claude/news-candidate-live-link
 depends_on: []
 scope:
