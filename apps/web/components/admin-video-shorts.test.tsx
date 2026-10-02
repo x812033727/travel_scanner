@@ -83,6 +83,7 @@ function stubFetch(answers: Answers = {}) {
     if (path === "/admin/video-shorts/uploads") return Promise.resolve(Response.json(answers.uploads ?? uploads));
     if (path.startsWith("/admin/video-shorts/slots")) return Promise.resolve(Response.json({ timezone: "Asia/Taipei", slots: [] }));
     if (path === "/admin/video-shorts/metrics") return Promise.resolve(Response.json({ items: [] }));
+    if (path === "/admin/video-shorts/topics" || path === "/admin/video-shorts/reports") return Promise.resolve(Response.json({ items: [] }));
     if (path === "/admin/video-shorts/costs") return Promise.resolve(Response.json({ items: [], budget: overview.budget, periods: [] }));
     if (path === "/admin/videos?shorts=only") return Promise.resolve(Response.json(answers.shorts ?? shorts));
     if (path.startsWith("/admin/videos?")) return Promise.resolve(Response.json(answers.tutorials ?? []));
@@ -117,7 +118,7 @@ describe("the Shorts tab of /admin/videos", () => {
     expect(paths(calls)).toContain("GET /admin/video-shorts/overview");
     // The calendar is the first view; the others are asked for by name.
     const views = within(screen.getByRole("tablist", { name: "Shorts 的畫面" })).getAllByRole("tab");
-    expect(views.map((each) => each.textContent)).toEqual(["月曆", "片庫與製作中", "成效", "花費", "Shorts 設定"]);
+    expect(views.map((each) => each.textContent)).toEqual(["月曆", "片庫與製作中", "成效", "花費", "題庫", "每週報告", "Shorts 設定"]);
     expect(views[0].getAttribute("aria-selected")).toBe("true");
     fireEvent.click(views[2]);
     await waitFor(() => expect(window.location.search).toContain("view=metrics"));
@@ -125,6 +126,14 @@ describe("the Shorts tab of /admin/videos", () => {
     fireEvent.click(views[3]);
     expect(await screen.findByRole("region", { name: "這 30 天" })).toBeTruthy();
     expect(window.location.search).toContain("view=costs");
+    fireEvent.click(views[4]);
+    expect(await screen.findByText("題庫還是空的")).toBeTruthy();
+    expect(window.location.search).toContain("view=topics");
+    expect(paths(calls)).toContain("GET /admin/video-shorts/topics");
+    fireEvent.click(views[5]);
+    expect(await screen.findByText("還沒有每週報告")).toBeTruthy();
+    expect(window.location.search).toContain("view=report");
+    expect(paths(calls)).toContain("GET /admin/video-shorts/reports");
   });
 
   it("opens on the view the address names, and a video in the address comes first", async () => {

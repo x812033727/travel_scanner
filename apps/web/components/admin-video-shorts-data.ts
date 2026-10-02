@@ -7,7 +7,7 @@ export type ShortsLine = (typeof SHORTS_LINES)[number];
 export const SHORTS_STATES = ["needs_you", "making", "library", "missed", "slotted", "scheduled", "published", "dropped"] as const;
 export type ShortsState = (typeof SHORTS_STATES)[number];
 export type SlotStatus = "open" | "planned" | "assigned" | "locked" | "scheduled" | "published" | "missed" | "skipped";
-export const VIEWS = ["calendar", "library", "metrics", "costs", "settings"] as const;
+export const VIEWS = ["calendar", "library", "metrics", "costs", "topics", "report", "settings"] as const;
 export type View = (typeof VIEWS)[number];
 export const SHORTS_LOCALES = ["en", "ja", "ko", "zh-CN"] as const;
 export type ShortsLocale = (typeof SHORTS_LOCALES)[number];
@@ -74,12 +74,17 @@ export type Metrics = { items: ShortMetrics[] };
 
 export type Voice = { provider: "azure" | "gemini"; name: string; style: string | null; model: string | null; rate: string };
 export type PatternSegment = { days: number; counts: number[] };
+// The models an experiment tests under a and b; b left out tests a's model (app/video_automation/ai.py subject_choice).
+export const SUBJECT_VARIANTS = ["a", "b"] as const;
+export type SubjectVariant = (typeof SUBJECT_VARIANTS)[number];
+export type SubjectModel = { provider: string; model: string };
 export type ShortsSettingsBody = {
   enabled: boolean; lines: ShortsLine[]; weekly_quota: Partial<Record<ShortsLine, number>>;
   daily_pattern: PatternSegment[]; slot_times: string[]; timezone: string;
   stock_days: number; lock_hours: number; upload_ahead_days: number; max_per_day: number; seconds_min: number; seconds_max: number;
   voice: Voice; locales: ShortsLocale[]; made_for_kids: boolean; auto_approve: boolean;
   budget_ntd_30d: number; budget_soft_ntd: number; budget_total_ntd: number;
+  subject_models: Partial<Record<SubjectVariant, SubjectModel>>; max_per_month: number;
 };
 export type ConsentState = "none" | "valid" | "expiring" | "expired" | "invalid";
 export type ConsentOffer = { text: string; text_sha256: string; scope: Record<string, unknown> };
@@ -96,7 +101,89 @@ export const SCOPE_FIELDS = ["lines", "max_per_day", "slot_times", "timezone"] a
 export const SETTINGS_KEYS = [
   "enabled", "lines", "weekly_quota", "daily_pattern", "slot_times", "timezone", "stock_days", "lock_hours", "upload_ahead_days", "max_per_day",
   "seconds_min", "seconds_max", "voice", "locales", "made_for_kids", "auto_approve", "budget_ntd_30d", "budget_soft_ntd", "budget_total_ntd",
+  "subject_models", "max_per_month",
 ] as const satisfies ReadonlyArray<keyof ShortsSettingsBody>;
+
+// The topic library, the owner's material and the weekly report (apps/api/app/video_shorts/schemas.py, phase two).
+export const TOPIC_STATUSES = ["idea", "ready", "needs_assets", "making", "made", "dropped"] as const;
+export type TopicStatus = (typeof TOPIC_STATUSES)[number];
+export type TopicOrigin = "campaign" | "planner" | "owner" | "auto";
+// The protocol of an experiment, frozen before it runs (TEST_PROTOCOL_FIELDS).
+export const PROTOCOL_FIELDS = ["setup", "input", "condition_a", "condition_b", "runs", "scoring", "failure_path"] as const;
+export type AssetNeed = { key: string; label: string; count?: number };
+export type Asset = {
+  id: string; need: string; sha256: string; filename: string; content_type: string; size: number;
+  author: string; taken_on: string | null; rights_note: string; created_at: string; download_path: string;
+};
+export type TopicBrief = {
+  test_protocol?: Partial<Record<(typeof PROTOCOL_FIELDS)[number], string | null>>;
+  truth_check?: string[]; acceptance?: string[]; notes?: string | null; requires?: string[];
+};
+export type Topic = {
+  slug: string; line: ShortsLine; series: string | null; title: string; hook: string | null; status: TopicStatus;
+  brief: TopicBrief; source_slug: string | null; origin: TopicOrigin; release_order: number | null;
+  assets_needed: AssetNeed[]; assets: Asset[]; waiting_for: string[]; paid: boolean;
+  project_slug: string | null; started_at: string | null; finished_at: string | null; note: string | null; created_at: string; updated_at: string;
+};
+export type TopicsWritten = { created: number; updated: number; skipped: number; items: Array<{ slug: string; result: "created" | "updated" | "exists"; status: TopicStatus | null }> };
+export type AssetPart = { received: number[]; complete: boolean; asset: Asset | null; topic: Topic | null };
+// A topic the owner may still change, give up or supply material for (topics.py EDITABLE, assets.py TAKES_ASSETS).
+export const EDITABLE_TOPICS: readonly TopicStatus[] = ["idea", "ready", "needs_assets"];
+export const topicTone: Record<TopicStatus, string> = { idea: "inactive", ready: "ok", needs_assets: "warning", making: "running", made: "active", dropped: "inactive" };
+
+// The values a report row keeps, as YouTube gave them (apps/api/app/video_shorts/reports.py ROW_FIELDS).
+export const REPORT_VALUES = ["views", "engaged_views", "likes", "comments", "shares", "subscribers_gained", "avg_view_seconds", "avg_view_percent", "stayed_percent"] as const;
+export type ReportValue = (typeof REPORT_VALUES)[number];
+export type ReportRow = {
+  slug: string; title: string | null; youtube_video_id: string; period: MetricPeriod; source: MetricSource; captured_at: string;
+  range_start: string | null; range_end: string | null;
+} & Partial<Record<ReportValue, number | null>>;
+export type ReportPlanItem = { starts_at?: string; topic_slug?: string; line?: ShortsLine; note?: string };
+export type Report = {
+  id: string; week_start: string; body_md: string; rows: ReportRow[]; plan: ReportPlanItem[];
+  provider: string | null; model: string | null; generated_at: string; updated_at: string;
+};
+export type Reports = { items: Report[] };
+
+// A file goes up in parts of 4 MiB (PART_BYTES in apps/api/app/video_reviews/storage.py): under the
+// same-origin proxy's 5 MiB request cap and nginx's 6 MB.
+export const PART_BYTES = 4 * 1024 * 1024;
+// A photo is drawn again at most this long on its long edge before it goes up.
+export const LONG_EDGE = 2048;
+
+/** The SHA-256 of a file as 64 hex digits, which names it to the API. */
+export async function sha256Hex(blob: Blob): Promise<string> {
+  const digest = await crypto.subtle.digest("SHA-256", await blob.arrayBuffer());
+  return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+
+/** How a picture's sides scale so the long edge is at most `edge`; never enlarged. */
+export function fitted(width: number, height: number, edge = LONG_EDGE): { width: number; height: number } {
+  const scale = Math.min(1, edge / Math.max(width, height, 1));
+  return { width: Math.max(1, Math.round(width * scale)), height: Math.max(1, Math.round(height * scale)) };
+}
+
+/**
+ * The photo as it goes up: drawn again in the browser at most 2,048 px on its long edge, which also
+ * leaves its EXIF (where and with what it was taken) behind, since a canvas carries pixels only. A
+ * PNG stays a PNG (a sketch keeps its lines); anything else becomes a JPEG.
+ */
+export async function shrinkImage(file: File): Promise<{ blob: Blob; filename: string }> {
+  const bitmap = await createImageBitmap(file, { imageOrientation: "from-image" });
+  const size = fitted(bitmap.width, bitmap.height);
+  const canvas = document.createElement("canvas");
+  canvas.width = size.width;
+  canvas.height = size.height;
+  const context = canvas.getContext("2d");
+  if (!context) throw new Error("canvas");
+  context.drawImage(bitmap, 0, 0, size.width, size.height);
+  bitmap.close();
+  const png = file.type === "image/png";
+  const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, png ? "image/png" : "image/jpeg", 0.9));
+  if (!blob) throw new Error("canvas");
+  const stem = file.name.replace(/\.[^.]*$/, "").slice(0, 180) || "photo";
+  return { blob, filename: `${stem}.${png ? "png" : "jpg"}` };
+}
 
 /** What a save sends: the settings without the consent and the run, every field present. */
 export function settingsBody(view: ShortsSettings | ShortsSettingsBody): ShortsSettingsBody {
