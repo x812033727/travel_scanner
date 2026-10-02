@@ -1,13 +1,13 @@
 ---
 id: 2026-10-01-zh-cn-taiwan-vocabulary-in-the
 title: zh-CN Taiwan vocabulary in the 11 packs other tasks held on 2026-10-02
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5-zh-cn-vocab
 claimed_at: 2026-10-02T19:26:27Z
 created_at: 2026-10-01T21:09:49Z
-completed_at:
+completed_at: 2026-10-02T19:36:06Z
 branch: claude/zh-cn-taiwan-vocabulary
 depends_on: []
 scope:
