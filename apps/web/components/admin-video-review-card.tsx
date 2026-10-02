@@ -39,10 +39,10 @@ export type LocaleChoice = Partial<Record<LocalePart, boolean>>;
 // Where a chosen part stands, from the server: not reported yet, made, given up on (with the
 // worker's reason), or, for a dub track, uploaded by the owner in Studio.
 export type LanguagePart = { state: "working" | "ready" | "skipped" | "uploaded" | string; reason?: string | null };
-// What kind of video a tutorial is (apps/api/app/models.py VIDEO_CATEGORIES; migration 0116), the
+// What kind of video a tutorial is (apps/api/app/models.py VIDEO_CATEGORIES; migrations 0116, 0118), the
 // list's first filter; a video nobody filed yet has null. The pipeline reports it from video.json
 // once, the owner changes it on the video's page.
-export const VIDEO_CATEGORIES = ["ai-terms", "ai-news", "tutorial", "comparison", "explainer", "story", "drama", "long-drama", "travel", "other"] as const;
+export const VIDEO_CATEGORIES = ["ai-terms", "ai-news", "tutorial", "comparison", "explainer", "story", "drama", "long-drama", "anime", "travel", "other"] as const;
 export type VideoCategory = (typeof VIDEO_CATEGORIES)[number];
 export type FacetCount = { code: string; count: number };
 // One page of the list's catalog (GET /admin/videos/browse): the tutorials that match, how many

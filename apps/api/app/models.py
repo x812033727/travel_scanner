@@ -2177,6 +2177,7 @@ class VideoToolToken(Timestamped, Base):
 
 # What kind of video a tutorial is, for the list's filters (migration 0116): the pipeline
 # reports it from video.json, the owner changes it on /admin/videos; NULL is "uncategorized".
+# Migration 0118 added "anime".
 VIDEO_CATEGORIES: tuple[str, ...] = (
     "ai-terms",
     "ai-news",
@@ -2188,6 +2189,7 @@ VIDEO_CATEGORIES: tuple[str, ...] = (
     # dramas planned next (episodes of forty to sixty minutes, forty to fifty of them).
     "drama",
     "long-drama",
+    "anime",
     "travel",
     "other",
 )
