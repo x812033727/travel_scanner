@@ -102,6 +102,21 @@ Outside evidence files and SHA256 (not implementation bindings):
 - 20261002-continuation-media-core-increment-review.json: 6d3a3eaf4a3a8d908f6bd2a5aaed7bd441fc9a1caede78660567c88c08e9a560
 - 20261002-continuation-media-core-targeted-tests.log: 0e883b8e27489a08654861aca1a37e97fd9ec33212b59337ede8b8c9b60ef36f
 
+## Localized-thumbnail QA compatibility increment (2026-10-02)
+
+After preserving the intervening remote history and merging main a8f0833ea8e36442ce84581abbfdbebc9ec54a08 (#1100), the reviewer read the actual resulting qa/cli.mjs delta and the added thumbnail test, translation helpers, i18n merge and package/metadata interactions. Only tools/video/qa/cli.mjs has a changed hash among the 70 accepted bindings; the other 69 remain byte-exact to the preceding genuine continuation at SHA256 97a79eb4299ba2f27a8ea7f0beff41420b8dad12ed814436b760c036b3a84768. That prior continuation is preserved outside as review-longform-continuation-before-thumbnail.md. This increment supersedes its binding/report hash rather than weakening or removing the source review gate.
+
+Localized thumbnail checks stay inside the existing thumbnail item. The original primary-thumbnail result still determines that item's pass; missing or invalid optional locale thumbnails add warnings. The normal QA path retains the original eleven item IDs and order, and the separate compilation path retains its original six items. The complete assembleItem call line is byte-identical to the accepted 7c version: checks, current, finalExists, doc, timeline, presented, timelineCurrent and minMinutes are all forwarded. The current speech-hash reader, unwrapped body reader, branding/currentness logic and presentationTimeline call are unchanged. The package checksCurrent function is also byte-identical. Optional thumbnail words use their own current source hash and update only translation/package metadata; they do not alter narration, body/final frames, target_minutes or the fixed duration rule. The strict fixture isolation, immutable 480-second body/final boundary, brand bookend checks and existing runtime input rules retain their previous reviewed bytes.
+
+Independent QA duration, production-like fixture integration and complete QA tests passed 17/17 with zero failed/skipped, exit 0. Those cases execute the real QA command, confirm the exact eleven-item report, reject a 14,399-frame body, accept exactly 14,400, reject mismatched final frame proof, measure pacing on the original body and preserve compilation handling. A second independent reviewer read the thumbnail/i18n context and ran the complete thumbnail and i18n test files: 15/15 passed, zero failed/skipped, exit 0, including language-thumbnail warnings, legacy manifests, source-hash freshness and optional missing translation behavior. The new candidate receipt/report simulation passes; the preceding candidate is rejected for the changed QA CLI hash. This is duration-compatibility review, not a complete acceptance of all new localized-thumbnail production/render/upload behavior. The author must reinstall this genuine report and its receipt, then rerun the shipped review tests and CLI. Required duration fixes remaining: none for the current bindings below.
+
+Outside increment evidence and SHA256 (not implementation bindings):
+
+- 20261002-continuation-thumbnail-forwarding-audit.json: be74f9359289b3cc989d714b4187eeb0741551f7642ac63a8a4864c2ecdbb17e
+- 20261002-continuation-thumbnail-duration-integration-qa.log: 8fc1d52b169a1501f757d9557d98b6243495606c0738fb20034dc1ade7fb0ed7
+- 20261002-continuation-thumbnail-review.json: 0d928e21815d4c444e03069b343198e00d900a8dd631f18db02c7081691e89a2
+- 20261002-continuation-thumbnail-targeted-tests.log: 37c3a93dde9a4db8d914142005a9fbb9ddbbd1c4b87e72019a79ded94b68647b
+
 ## Reviewed SHA256 bindings
 
 These 70 bindings describe the current reviewed bytes after the main-merge and owned migration-order increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -169,7 +184,7 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | `tools/video/media/look-keyframes.test.mjs` | `2b92c61e276fd120952512e1752297b4f9dcdc185059095da3517800f8a09348` |
 | `tools/video/qa/checks.mjs` | `dc99682b29b674cfedc12ca67c8809e23c1d99d5635a1cd79970a8180d21cc83` |
 | `tools/video/qa/checks.test.mjs` | `e93fe80fb6ef0366da6728e397f78e355e6000847836a0a7e31ae63615211317` |
-| `tools/video/qa/cli.mjs` | `49d3b6813773cff589872d3952945879e6814b567806c0c0448c044277128b4e` |
+| `tools/video/qa/cli.mjs` | `d6c50172eca6816266f8c209913970345b42afd72ea9a5a740c4af243be8ff7c` |
 | `tools/video/qa/duration.test.mjs` | `056e8f564c9952b025ea7736b43e41bfc47fcc75a847f840878a093ea61fc681` |
 | `tools/video/qa/qa.test.mjs` | `6bab373f43da2cbc9ff469c771ea561e9075964b9e387340167ff42d8cd10aa5` |
 | `tools/video/review/sync.test.mjs` | `ea897ad959288ec195f6a909172041174b1023d9dca0e78adf6ad34d4d9d8974` |
