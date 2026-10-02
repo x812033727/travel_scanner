@@ -413,6 +413,88 @@ def test_the_upload_itself_is_private_with_no_time_and_carries_the_disclosure() 
     assert requests.insert_body({"title": "t"}, "t", "d")["snippet"]["categoryId"] == "28"
 
 
+ENGLISH_METADATA: dict[str, Any] = {
+    **METADATA,
+    "default_language": "en",
+    "title": "Picking an AI model",
+    "description": "How to pick.",
+    "localizations": {
+        "zh-TW": {"title": "AI 模型怎麼挑", "description": "這支影片回答怎麼挑 AI 模型。"},
+        "ja": {"title": "AIモデルの選び方", "description": "選び方。"},
+        "en": {"title": "should not be copied", "description": "x"},
+    },
+}
+
+
+def test_an_english_narration_is_both_defaults_and_keeps_zh_tw_as_a_localization() -> None:
+    inserted = requests.insert_body(ENGLISH_METADATA, "Picking an AI model", "How to pick.")
+    assert inserted["snippet"]["defaultLanguage"] == "en"
+    assert inserted["snippet"]["defaultAudioLanguage"] == "en"
+    assert inserted["status"]["privacyStatus"] == "private"
+    current = {
+        "id": "vid00000001",
+        "snippet": {"title": "t", "defaultLanguage": "zh-TW", "defaultAudioLanguage": "zh-TW"},
+        "status": {"privacyStatus": "private"},
+        "localizations": {
+            "en": {"title": "stale English copy", "description": "x"},
+            "ko": {"title": "k", "description": "d"},
+        },
+    }
+    body = requests.update_body(
+        current,
+        ENGLISH_METADATA,
+        title="Picking an AI model",
+        description="How to pick.",
+        visibility="unlisted",
+        publish_at=None,
+    )
+    assert body["snippet"]["defaultLanguage"] == "en"
+    assert body["snippet"]["defaultAudioLanguage"] == "en"
+    assert body["status"]["privacyStatus"] == "unlisted"
+    # The own language is the snippet, so its copies go; the foreign zh-TW one is sent.
+    assert body["localizations"] == {
+        "ko": {"title": "k", "description": "d"},
+        "zh-TW": {"title": "AI 模型怎麼挑", "description": "這支影片回答怎麼挑 AI 模型。"},
+        "ja": {"title": "AIモデルの選び方", "description": "選び方。"},
+    }
+
+
+def test_a_legacy_package_without_a_language_is_zh_tw_as_before() -> None:
+    legacy = {key: value for key, value in METADATA.items() if key != "default_language"}
+    assert requests.narration_language(legacy) == "zh-TW"
+    assert requests.localizations(legacy) == requests.localizations(METADATA)
+    assert "zh-TW" not in requests.localizations(legacy)
+    for metadata in (legacy, METADATA):
+        snippet = requests.insert_body(metadata, "t", "d")["snippet"]
+        assert (snippet["defaultLanguage"], snippet["defaultAudioLanguage"]) == ("zh-TW", "zh-TW")
+        body = requests.update_body(
+            {"id": "v", "localizations": {"zh-TW": {"title": "old"}, "en": {"title": "e"}}},
+            metadata,
+            title="t",
+            description="d",
+            visibility="private",
+            publish_at=None,
+        )
+        assert body["snippet"]["defaultLanguage"] == "zh-TW"
+        assert body["snippet"]["defaultAudioLanguage"] == "zh-TW"
+        assert set(body["localizations"]) == {"en", "ja"}
+
+
+@pytest.mark.parametrize("language", ["fr", "", "EN", 7])
+def test_a_narration_language_the_site_does_not_make_is_refused_not_mislabelled(
+    language: object,
+) -> None:
+    metadata = {**METADATA, "default_language": language}
+    with pytest.raises(ValueError):
+        requests.narration_language(metadata)
+    with pytest.raises(ValueError):
+        requests.insert_body(metadata, "t", "d")
+    with pytest.raises(ValueError):
+        requests.update_body(
+            {"id": "v"}, metadata, title="t", description="d", visibility="private", publish_at=None
+        )
+
+
 def test_automatic_tracks_do_not_count_and_language_tags_are_compared_loosely() -> None:
     tracks: list[dict[str, Any]] = [
         {"snippet": {"language": "zh-TW", "trackKind": "asr"}},
