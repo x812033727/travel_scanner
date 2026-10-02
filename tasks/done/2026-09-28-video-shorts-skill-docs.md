@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-shorts-skill-docs
 title: Video shorts D1: the Shorts route in the youtube-video skill, the channel spec and the automation design
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5-shorts-d1
 claimed_at: 2026-10-02T09:05:45Z
 created_at: 2026-09-28T04:05:00Z
-completed_at:
+completed_at: 2026-10-02T09:23:08Z
 branch: claude/video-shorts-skill-docs
 depends_on:
   - 2026-09-28-video-shorts-worker-lab
