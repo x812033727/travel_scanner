@@ -1,13 +1,13 @@
 ---
 id: 2026-09-20-chiang-mai-old-city-chedi-luang
 title: chiang-mai-old-city-slow-day：「柴迪隆寺」改成目錄寫法「契迪龍寺」
-status: in-progress
+status: done
 priority: P3
 area: docs
 owner: claude-opus-5-5-content-names
 claimed_at: 2026-10-02T18:52:36Z
 created_at: 2026-09-20T03:13:23Z
-completed_at:
+completed_at: 2026-10-02T18:58:00Z
 branch: claude/chiang-mai-chedi-luang-name
 depends_on: []
 scope:
