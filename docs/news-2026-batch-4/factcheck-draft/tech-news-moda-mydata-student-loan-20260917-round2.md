@@ -13,7 +13,7 @@
 
 全部以 `curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'` 重抓，同一主機間隔 ≥1 秒。
 請求的 UA、標頭、查詢字串裡沒有任何人的姓名、email 或個人資料。原始 HTML 與抽出的純文字在
-`C:\Users\x8120\mokaair-work\news47\_tools\tech-news-moda-mydata-student-loan-20260917-r2\fetch\`。
+`<home>\mokaair-work\news47\_tools\tech-news-moda-mydata-student-loan-20260917-r2\fetch\`。
 
 | # | 來源 | 今日狀態 | bytes | 第一輪量到 | 是否正文 |
 | --- | --- | --- | --- | --- | --- |
@@ -163,7 +163,7 @@ pack_cli lint exit=1
 ```
 
 兩項都在預期內（同第一輪）：`check_article.py`（不帶 `--full`）OK；lint 只剩 `image_missing`（圖還沒畫）與 `raw_internal_url`（還沒 relink）。
-退出碼另存 `C:\Users\x8120\mokaair-work\news47\factcheck\tech-news-moda-mydata-student-loan-20260917-round2.exitcodes.txt`。
+退出碼另存 `<home>\mokaair-work\news47\factcheck\tech-news-moda-mydata-student-loan-20260917-round2.exitcodes.txt`。
 
 ## 8. 留給協調者／站主的事
 

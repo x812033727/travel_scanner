@@ -36,7 +36,7 @@ From apps/api: python -m pytest tests/test_database_operations_center.py -q. Ret
 ## Notes
 
 - Discovered during discovery-card-details validation on 2026-09-09. Full local API run: 2,265 passed, 139 skipped, one failure at test_deployment_backup_is_visible_in_verified_catalog (line 152, overview.available).
-- Reproduced with an unchanged detached main 59c86438e3100129bbff554f9dce3df95e25a2ac in C:/Users/x8120/.codex/worktrees/mokaair-card-baseline-59c86438. No deployment-agent files changed in the discovery task.
+- Reproduced with an unchanged detached main 59c86438e3100129bbff554f9dce3df95e25a2ac in `<home>/.codex/worktrees/mokaair-card-baseline-59c86438`. No deployment-agent files changed in the discovery task.
 - Read-only investigation: AgentConfig.min_free_bytes defaults to 5,368,709,120 bytes; database_overview calls shutil.disk_usage for tmp_path. Host C: free space was about 4.1 GB during the failed run. This is an environment-coupled test, not a confirmed Windows-specific runtime defect.
 - Single-variable confirmation on unchanged base: actual free=4,065,091,584 bytes yielded only backup_disk failed, available=false and backup_count=1; mocking just shutil.disk_usage.free to 10 GiB made the original test pass and kept backup_count=1. No production commands or network were executed. Include a low-space assertion that verified backups remain visible even when operations are unavailable.
 

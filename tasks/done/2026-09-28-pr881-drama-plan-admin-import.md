@@ -72,7 +72,7 @@ not duplicate records, and the worker cannot take an imported review-only work.
 | --- | --- | --- |
 | #881 | Five Codex dramas, forty episodes and six core documents each | Live drama page has no works; import is missing. |
 | #894 | Five Claude dramas, forty episodes and six core documents each | Same missing import. |
-| #867 | `ai-agent-vs-chatbot`, `ai-citation-check` | Neither original title is in the live video list. Both local `final.mp4` files exist under `C:/Users/x8120/mokaair-work/videos/`; full QA and review push remain separate gates. |
+| #867 | `ai-agent-vs-chatbot`, `ai-citation-check` | Neither original title is in the live video list. Both local `final.mp4` files exist under `<home>/mokaair-work/videos/`; full QA and review push remain separate gates. |
 | #868 | `ai-coding-tools-same-task`, `ai-bug-fix-pr-review` | Neither title is in the live list. PR reports historical rendered cuts, but `final.mp4` was not found at the corresponding standard local paths in this audit; recover the actual artifacts before submission. |
 | #880 | `docs/ai-video-season-01`: six long cuts and twelve Shorts review cuts | Source and historical media receipts were merged; no matching production projects. The packaging worktree `ai-video-season-pr` contains zero MP4s from its manifest. Find/check the original production exports, then integrate review submission. |
 | #871 | Three Shorts pilots and fifteen detailed campaign briefs | All three local final files exist and SHA-256 matches the delivery receipt. No Shorts tab appears on the live admin page; Shorts backend/web/push work is in open PRs #898, #901 and #906. Do not label all fifteen briefs as finished videos. |
@@ -136,7 +136,7 @@ no media was generated, and no YouTube upload/publication occurred in that audit
 - Before the owner's import approval, production apply and browser verification
   were pending. The authorized import receipt below records the later result.
 - Conventional outline bundle prepared and validated for all ten source videos:
-  `C:/Users/x8120/AppData/Local/Temp/mokaair-outline-recovery-f8Ofsn/bundle.json`,
+  `<home>/AppData/Local/Temp/mokaair-outline-recovery-f8Ofsn/bundle.json`,
   SHA-256 `60deef472e42fdb99090ce21cfac3f37478ec1d1149d958a394e4b5460665604`.
   Real source validation and mocked first apply, replay, final-item collision,
   interrupted report recovery, bad hash/pick refusal, and one-second pacing pass.

@@ -15,7 +15,7 @@
 
 Batch007 的 16 份新增語言於 2026-09-23 14:56（臺灣時間）發布；Batch017 於 14:57 發布。新增語言均為 locale／published v2；[evidence.json](evidence.json) 的 `/articles` 列出完整標題與發布時間範圍，並以精確 JSON pointer 指向外部 `final-evidence.json` 的逐語言時間、版本與正文 SHA256。
 
-內容 PR [#660](https://github.com/x812033727/travel_scanner/pull/660)（Batch007）與 [#659](https://github.com/x812033727/travel_scanner/pull/659)（Batch017）已於 2026-09-22 合併，各自在確切提交上完成 8 項 CI。這次使用既有 hostinger2 發布流程，先取得並驗證新資料庫備份，再沿用已部署的 `6b2339ec89eda90ad37c9e99009723dfca89ba4a`；沒有重新部署或重啟應用服務。匯入預演通過後，分別完成兩批各 16 筆草稿與 16 筆文章發布；本批無總目錄發布操作。
+內容 PR [#660](https://github.com/x812033727/travel_scanner/pull/660)（Batch007）與 [#659](https://github.com/x812033727/travel_scanner/pull/659)（Batch017）已於 2026-09-22 合併，各自在確切提交上完成 8 項 CI。這次使用既有 `<saved-session>` 發布流程，先取得並驗證新資料庫備份，再沿用已部署的 `6b2339ec89eda90ad37c9e99009723dfca89ba4a`；沒有重新部署或重啟應用服務。匯入預演通過後，分別完成兩批各 16 筆草稿與 16 筆文章發布；本批無總目錄發布操作。
 
 8 篇既有繁中資料列與文章 metadata 均保持原狀；東京住宿篇未發布的 repository description 編輯也保留。Narita 與東京票券的原始 SVG 修正透過已部署資產生效，另行核對正式站雜湊，未重新匯入或發布繁中。其他既有圖片與授權資訊照既定來源保留。
 

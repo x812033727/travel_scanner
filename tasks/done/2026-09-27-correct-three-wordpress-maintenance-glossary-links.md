@@ -56,7 +56,7 @@ normalized models, allowing only `/blocks/9/inlines/1`,
 
 ## Notes
 
-Inventory: `C:\Users\x8120\.codex\article-localization-release\batch032-inventory\batch032-candidate-inventory.json`,
+Inventory: `<home>\.codex\article-localization-release\batch032-inventory\batch032-candidate-inventory.json`,
 SHA-256 `fa3262b33c0948c125f4a46b93caeade730723d1428ffed0ee8d5d6ccd3a4d73`.
 Source published zh-TW v4 hashes: comment-spam
 `ef124872b2da725961846d3bb941f65a51b953f8a2c6ed9ac8f0df88467da98d`,
@@ -70,7 +70,7 @@ translations rebound to the new published source. This task does not perform
 that production write.
 
 Exact semantic validation receipt:
-`C:\Users\x8120\.codex\article-localization-release\batch032-inventory\batch032-source-link-fix-validation.json`,
+`<home>\.codex\article-localization-release\batch032-inventory\batch032-source-link-fix-validation.json`,
 SHA-256 `848c102856ec4094270d0e074e2ed465820543d81ac8e7cd10905455ed975553`.
 It proves only the three specified inline objects changed; all metadata,
 sources, dates, images and nine original asset hashes match the published-v4

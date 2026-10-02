@@ -22,7 +22,7 @@
 
 ## 檔案與來源綁定
 
-影片工作區：`C:/Users/x8120/mokaair-work/videos/sothatswhy-t26/`。媒體及付費輸出保留於 repo 外，公開 Git 只存主稿、事實與驗收文件、原創 SVG 及必要工具修正。
+影片工作區：`<home>/mokaair-work/videos/sothatswhy-t26/`。媒體及付費輸出保留於 repo 外，公開 Git 只存主稿、事實與驗收文件、原創 SVG 及必要工具修正。
 
 - `final.mp4`：完整 1080p 成片；`upload/final.mp4` 為核准成片的 byte-identical 複本。
 - `upload/`：上架包；操作流程依 `upload/UPLOAD.md`。

@@ -63,7 +63,7 @@ the exact CI lint command now passes, and deployed-pack regressions pass (8 pass
 Root reconciliation on 2026-09-22 verified PR #642 merged as
 `7195fef5a6bfc4fdff50a1e9f8ff06bcc710bd47` with 9/9 CI checks passing. The exact
 merge was deployed and exercised by batches 008/009. The production receipt at
-`C:\Users\x8120\.codex\article-localization-release\batch008-009-release-receipt-20260922.md`
+`<home>\.codex\article-localization-release\batch008-009-release-receipt-20260922.md`
 (SHA-256 `96c8e7418ac40452e0fb6b498c0df09505f6ed926682f97ef4b22199b3f3cc33`)
 records the deployed checkout, guarded dry runs, completed publication, clean
 journals, idempotent reruns and public QA.

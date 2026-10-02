@@ -2,13 +2,13 @@
   "config": {
     "argv": [
       "C:\\Program Files\\nodejs\\node.exe",
-      "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\node_modules\\@playwright\\test\\cli.js",
+      "<home>\\.codex\\worktrees\\1cff\\travel_scanㄐ\\node_modules\\@playwright\\test\\cli.js",
       "test",
       "--config",
       "tools/claude-code-series/advanced/playwright.config.mjs"
     ],
-    "configFile": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\tools\\claude-code-series\\advanced\\playwright.config.mjs",
-    "rootDir": "C:/Users/x8120/.codex/worktrees/1cff/travel_scanㄐ/apps/web/e2e",
+    "configFile": "<home>\\.codex\\worktrees\\1cff\\travel_scanㄐ\\tools\\claude-code-series\\advanced\\playwright.config.mjs",
+    "rootDir": "<home>/.codex/worktrees/1cff/travel_scanㄐ/apps/web/e2e",
     "failOnFlakyTests": false,
     "forbidOnly": false,
     "fullyParallel": false,
@@ -24,7 +24,7 @@
     "preserveOutput": "always",
     "projects": [
       {
-        "outputDir": "C:/Users/x8120/.codex/worktrees/1cff/travel_scanㄐ/docs/claude-code-series/advanced/evidence/browser-runs",
+        "outputDir": "<home>/.codex/worktrees/1cff/travel_scanㄐ/docs/claude-code-series/advanced/evidence/browser-runs",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -32,7 +32,7 @@
         },
         "id": "",
         "name": "",
-        "testDir": "C:/Users/x8120/.codex/worktrees/1cff/travel_scanㄐ/apps/web/e2e",
+        "testDir": "<home>/.codex/worktrees/1cff/travel_scanㄐ/apps/web/e2e",
         "testIgnore": [],
         "testMatch": [
           "claude-code-series.spec.ts"
@@ -49,7 +49,7 @@
       [
         "json",
         {
-          "outputFile": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\/browser-tests.json"
+          "outputFile": "<home>\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\/browser-tests.json"
         }
       ]
     ],
@@ -125,9 +125,9 @@
                   "duration": 11068,
                   "error": {
                     "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('region', { name: 'Claude Code 教學目錄', exact: true }).locator('a[href=\"/zh-TW/life/claude-code-structured-cli-pipeline\"]')\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Claude Code 教學目錄', exact: true }).locator('a[href=\"/zh-TW/life/claude-code-structured-cli-pipeline\"]')\u001b[22m\n\u001b[2m    13 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n",
-                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('region', { name: 'Claude Code 教學目錄', exact: true }).locator('a[href=\"/zh-TW/life/claude-code-structured-cli-pipeline\"]')\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Claude Code 教學目錄', exact: true }).locator('a[href=\"/zh-TW/life/claude-code-structured-cli-pipeline\"]')\u001b[22m\n\u001b[2m    13 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n    at C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\apps\\web\\e2e\\claude-code-series.spec.ts:34:82",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('region', { name: 'Claude Code 教學目錄', exact: true }).locator('a[href=\"/zh-TW/life/claude-code-structured-cli-pipeline\"]')\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Claude Code 教學目錄', exact: true }).locator('a[href=\"/zh-TW/life/claude-code-structured-cli-pipeline\"]')\u001b[22m\n\u001b[2m    13 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n    at <home>\\.codex\\worktrees\\1cff\\travel_scanㄐ\\apps\\web\\e2e\\claude-code-series.spec.ts:34:82",
                     "location": {
-                      "file": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\apps\\web\\e2e\\claude-code-series.spec.ts",
+                      "file": "<home>\\.codex\\worktrees\\1cff\\travel_scanㄐ\\apps\\web\\e2e\\claude-code-series.spec.ts",
                       "column": 82,
                       "line": 34
                     },
@@ -136,11 +136,11 @@
                   "errors": [
                     {
                       "location": {
-                        "file": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\apps\\web\\e2e\\claude-code-series.spec.ts",
+                        "file": "<home>\\.codex\\worktrees\\1cff\\travel_scanㄐ\\apps\\web\\e2e\\claude-code-series.spec.ts",
                         "column": 82,
                         "line": 34
                       },
-                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('region', { name: 'Claude Code 教學目錄', exact: true }).locator('a[href=\"/zh-TW/life/claude-code-structured-cli-pipeline\"]')\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Claude Code 教學目錄', exact: true }).locator('a[href=\"/zh-TW/life/claude-code-structured-cli-pipeline\"]')\u001b[22m\n\u001b[2m    13 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n\n  32 |   for (const [term, slug] of [[\"MD\", \"claude-md-guide\"], [\"手機\", \"mobile-ios\"], [\"權限\", \"permissions-plan-mode\"], [\"/compact\", \"context-compact-clear\"], [\"MCP\", \"mcp-servers\"], [\"Monorepo\", \"monorepo-rules-workshop\"], [\"SOP\", \"skill-sop-workshop\"], [\"--json-schema\", \"structured-cli-pipeline\"]]) {\n  33 |     await search.fill(term);\n> 34 |     await expect(directory.locator(`a[href=\"/zh-TW/life/claude-code-${slug}\"]`)).toHaveCount(1);\n     |                                                                                  ^\n  35 |     await expect(page).toHaveURL(new RegExp(`q=${encodeURIComponent(term).replaceAll(\"%20\", \"\\\\+\")}`));\n  36 |   }\n  37 |   await search.fill(\"/compact\");\n    at C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\apps\\web\\e2e\\claude-code-series.spec.ts:34:82"
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('region', { name: 'Claude Code 教學目錄', exact: true }).locator('a[href=\"/zh-TW/life/claude-code-structured-cli-pipeline\"]')\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Claude Code 教學目錄', exact: true }).locator('a[href=\"/zh-TW/life/claude-code-structured-cli-pipeline\"]')\u001b[22m\n\u001b[2m    13 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n\n  32 |   for (const [term, slug] of [[\"MD\", \"claude-md-guide\"], [\"手機\", \"mobile-ios\"], [\"權限\", \"permissions-plan-mode\"], [\"/compact\", \"context-compact-clear\"], [\"MCP\", \"mcp-servers\"], [\"Monorepo\", \"monorepo-rules-workshop\"], [\"SOP\", \"skill-sop-workshop\"], [\"--json-schema\", \"structured-cli-pipeline\"]]) {\n  33 |     await search.fill(term);\n> 34 |     await expect(directory.locator(`a[href=\"/zh-TW/life/claude-code-${slug}\"]`)).toHaveCount(1);\n     |                                                                                  ^\n  35 |     await expect(page).toHaveURL(new RegExp(`q=${encodeURIComponent(term).replaceAll(\"%20\", \"\\\\+\")}`));\n  36 |   }\n  37 |   await search.fill(\"/compact\");\n    at <home>\\.codex\\worktrees\\1cff\\travel_scanㄐ\\apps\\web\\e2e\\claude-code-series.spec.ts:34:82"
                     }
                   ],
                   "stdout": [],
@@ -152,21 +152,21 @@
                     {
                       "name": "error-context",
                       "contentType": "text/markdown",
-                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-search--61550-URL-reload-and-browser-back\\error-context.md"
+                      "path": "<home>\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-search--61550-URL-reload-and-browser-back\\error-context.md"
                     },
                     {
                       "name": "error-context",
                       "contentType": "text/markdown",
-                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-search--61550-URL-reload-and-browser-back\\error-context.md"
+                      "path": "<home>\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-search--61550-URL-reload-and-browser-back\\error-context.md"
                     },
                     {
                       "name": "trace",
                       "contentType": "application/zip",
-                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-search--61550-URL-reload-and-browser-back\\trace.zip"
+                      "path": "<home>\\.codex\\worktrees\\1cff\\travel_scanㄐ\\docs\\claude-code-series\\advanced\\evidence\\browser-runs\\claude-code-series-search--61550-URL-reload-and-browser-back\\trace.zip"
                     }
                   ],
                   "errorLocation": {
-                    "file": "C:\\Users\\x8120\\.codex\\worktrees\\1cff\\travel_scanㄐ\\apps\\web\\e2e\\claude-code-series.spec.ts",
+                    "file": "<home>\\.codex\\worktrees\\1cff\\travel_scanㄐ\\apps\\web\\e2e\\claude-code-series.spec.ts",
                     "column": 82,
                     "line": 34
                   }

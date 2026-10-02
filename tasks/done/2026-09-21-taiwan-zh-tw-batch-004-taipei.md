@@ -75,7 +75,7 @@ git diff --check
 A target-only script also loads each `ArticlePack`, runs `lint_document`, `check_svg` and
 `missing_diagram_numbers` for zh-TW, and compares block/type/source/image metadata against the
 captured production source. The external evidence directory is
-`C:\Users\x8120\.codex\article-localization-release\taiwan-zh-tw-batch004`.
+`<home>\.codex\article-localization-release\taiwan-zh-tw-batch004`.
 
 ## Notes
 

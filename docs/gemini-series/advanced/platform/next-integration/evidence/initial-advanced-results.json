@@ -1,14 +1,14 @@
 {
   "config": {
     "argv": [
-      "C:\\Users\\x8120\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
-      "C:\\Users\\x8120\\.codex\\worktrees\\3281\\travel_scanㄐ\\node_modules\\@playwright\\test\\cli.js",
+      "<home>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "<home>\\.codex\\worktrees\\3281\\travel_scanㄐ\\node_modules\\@playwright\\test\\cli.js",
       "test",
       "--config",
       "docs/gemini-series/advanced/platform/next-integration/playwright.config.ts"
     ],
-    "configFile": "C:\\Users\\x8120\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\playwright.config.ts",
-    "rootDir": "C:/Users/x8120/.codex/worktrees/3281/travel_scanㄐ/docs/gemini-series/advanced/platform/next-integration/.workspaces/next-1789400503873/apps/web/e2e",
+    "configFile": "<home>\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\playwright.config.ts",
+    "rootDir": "<home>/.codex/worktrees/3281/travel_scanㄐ/docs/gemini-series/advanced/platform/next-integration/.workspaces/next-1789400503873/apps/web/e2e",
     "failOnFlakyTests": false,
     "forbidOnly": false,
     "fullyParallel": false,
@@ -24,7 +24,7 @@
     "preserveOutput": "always",
     "projects": [
       {
-        "outputDir": "C:/Users/x8120/.codex/worktrees/3281/travel_scanㄐ/docs/gemini-series/advanced/platform/next-integration/.workspaces/advanced-results",
+        "outputDir": "<home>/.codex/worktrees/3281/travel_scanㄐ/docs/gemini-series/advanced/platform/next-integration/.workspaces/advanced-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -32,7 +32,7 @@
         },
         "id": "desktop",
         "name": "desktop",
-        "testDir": "C:/Users/x8120/.codex/worktrees/3281/travel_scanㄐ/docs/gemini-series/advanced/platform/next-integration/.workspaces/next-1789400503873/apps/web/e2e",
+        "testDir": "<home>/.codex/worktrees/3281/travel_scanㄐ/docs/gemini-series/advanced/platform/next-integration/.workspaces/next-1789400503873/apps/web/e2e",
         "testIgnore": [],
         "testMatch": [
           "gemini-series.spec.ts"
@@ -40,7 +40,7 @@
         "timeout": 45000
       },
       {
-        "outputDir": "C:/Users/x8120/.codex/worktrees/3281/travel_scanㄐ/docs/gemini-series/advanced/platform/next-integration/.workspaces/advanced-results",
+        "outputDir": "<home>/.codex/worktrees/3281/travel_scanㄐ/docs/gemini-series/advanced/platform/next-integration/.workspaces/advanced-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -48,7 +48,7 @@
         },
         "id": "mobile",
         "name": "mobile",
-        "testDir": "C:/Users/x8120/.codex/worktrees/3281/travel_scanㄐ/docs/gemini-series/advanced/platform/next-integration/.workspaces/next-1789400503873/apps/web/e2e",
+        "testDir": "<home>/.codex/worktrees/3281/travel_scanㄐ/docs/gemini-series/advanced/platform/next-integration/.workspaces/next-1789400503873/apps/web/e2e",
         "testIgnore": [],
         "testMatch": [
           "gemini-series.spec.ts"
@@ -65,7 +65,7 @@
       [
         "json",
         {
-          "outputFile": "C:\\Users\\x8120\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\advanced-results.json"
+          "outputFile": "<home>\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\advanced-results.json"
         }
       ]
     ],
@@ -141,9 +141,9 @@
                   "duration": 70177,
                   "error": {
                     "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('h1')\nExpected: \u001b[32m\"Connected Apps：Drive、日曆與地圖整合\"\u001b[39m\nReceived: \u001b[31m\"This page couldn’t load\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1')\u001b[22m\n\u001b[2m    14 × locator resolved to <h1>This page couldn’t load</h1>\u001b[22m\n\u001b[2m       - unexpected value \"This page couldn’t load\"\u001b[22m\n",
-                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('h1')\nExpected: \u001b[32m\"Connected Apps：Drive、日曆與地圖整合\"\u001b[39m\nReceived: \u001b[31m\"This page couldn’t load\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1')\u001b[22m\n\u001b[2m    14 × locator resolved to <h1>This page couldn’t load</h1>\u001b[22m\n\u001b[2m       - unexpected value \"This page couldn’t load\"\u001b[22m\n\n    at C:\\Users\\x8120\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\.workspaces\\next-1789400503873\\apps\\web\\e2e\\gemini-series.spec.ts:144:38",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('h1')\nExpected: \u001b[32m\"Connected Apps：Drive、日曆與地圖整合\"\u001b[39m\nReceived: \u001b[31m\"This page couldn’t load\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1')\u001b[22m\n\u001b[2m    14 × locator resolved to <h1>This page couldn’t load</h1>\u001b[22m\n\u001b[2m       - unexpected value \"This page couldn’t load\"\u001b[22m\n\n    at <home>\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\.workspaces\\next-1789400503873\\apps\\web\\e2e\\gemini-series.spec.ts:144:38",
                     "location": {
-                      "file": "C:\\Users\\x8120\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\.workspaces\\next-1789400503873\\apps\\web\\e2e\\gemini-series.spec.ts",
+                      "file": "<home>\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\.workspaces\\next-1789400503873\\apps\\web\\e2e\\gemini-series.spec.ts",
                       "column": 38,
                       "line": 144
                     },
@@ -152,11 +152,11 @@
                   "errors": [
                     {
                       "location": {
-                        "file": "C:\\Users\\x8120\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\.workspaces\\next-1789400503873\\apps\\web\\e2e\\gemini-series.spec.ts",
+                        "file": "<home>\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\.workspaces\\next-1789400503873\\apps\\web\\e2e\\gemini-series.spec.ts",
                         "column": 38,
                         "line": 144
                       },
-                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('h1')\nExpected: \u001b[32m\"Connected Apps：Drive、日曆與地圖整合\"\u001b[39m\nReceived: \u001b[31m\"This page couldn’t load\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1')\u001b[22m\n\u001b[2m    14 × locator resolved to <h1>This page couldn’t load</h1>\u001b[22m\n\u001b[2m       - unexpected value \"This page couldn’t load\"\u001b[22m\n\n\n  142 |   for (const article of series.articles) {\n  143 |     await page.goto(`${canonical}/zh-TW/life/${article.slug}`);\n> 144 |     await expect(page.locator(\"h1\")).toHaveText(article.title);\n      |                                      ^\n  145 |     await expect(page.getByRole(\"navigation\", { name: \"Gemini 系列導覽\", exact: true }).getByRole(\"link\", { name: \"返回 Gemini 教學總目錄\" })).toHaveAttribute(\"href\", hub);\n  146 |     const bottom = page.getByRole(\"navigation\", { name: \"繼續閱讀 Gemini 系列\" });\n  147 |     await expect(bottom.locator('a[rel=\"prev\"]')).toHaveCount(article.number > 1 ? 1 : 0);\n    at C:\\Users\\x8120\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\.workspaces\\next-1789400503873\\apps\\web\\e2e\\gemini-series.spec.ts:144:38"
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('h1')\nExpected: \u001b[32m\"Connected Apps：Drive、日曆與地圖整合\"\u001b[39m\nReceived: \u001b[31m\"This page couldn’t load\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1')\u001b[22m\n\u001b[2m    14 × locator resolved to <h1>This page couldn’t load</h1>\u001b[22m\n\u001b[2m       - unexpected value \"This page couldn’t load\"\u001b[22m\n\n\n  142 |   for (const article of series.articles) {\n  143 |     await page.goto(`${canonical}/zh-TW/life/${article.slug}`);\n> 144 |     await expect(page.locator(\"h1\")).toHaveText(article.title);\n      |                                      ^\n  145 |     await expect(page.getByRole(\"navigation\", { name: \"Gemini 系列導覽\", exact: true }).getByRole(\"link\", { name: \"返回 Gemini 教學總目錄\" })).toHaveAttribute(\"href\", hub);\n  146 |     const bottom = page.getByRole(\"navigation\", { name: \"繼續閱讀 Gemini 系列\" });\n  147 |     await expect(bottom.locator('a[rel=\"prev\"]')).toHaveCount(article.number > 1 ? 1 : 0);\n    at <home>\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\.workspaces\\next-1789400503873\\apps\\web\\e2e\\gemini-series.spec.ts:144:38"
                     }
                   ],
                   "stdout": [],
@@ -168,16 +168,16 @@
                     {
                       "name": "error-context",
                       "contentType": "text/markdown",
-                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\.workspaces\\advanced-results\\gemini-series-all-visible--3bfa2-opy-render-without-overflow-desktop\\error-context.md"
+                      "path": "<home>\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\.workspaces\\advanced-results\\gemini-series-all-visible--3bfa2-opy-render-without-overflow-desktop\\error-context.md"
                     },
                     {
                       "name": "trace",
                       "contentType": "application/zip",
-                      "path": "C:\\Users\\x8120\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\.workspaces\\advanced-results\\gemini-series-all-visible--3bfa2-opy-render-without-overflow-desktop\\trace.zip"
+                      "path": "<home>\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\.workspaces\\advanced-results\\gemini-series-all-visible--3bfa2-opy-render-without-overflow-desktop\\trace.zip"
                     }
                   ],
                   "errorLocation": {
-                    "file": "C:\\Users\\x8120\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\.workspaces\\next-1789400503873\\apps\\web\\e2e\\gemini-series.spec.ts",
+                    "file": "<home>\\.codex\\worktrees\\3281\\travel_scanㄐ\\docs\\gemini-series\\advanced\\platform\\next-integration\\.workspaces\\next-1789400503873\\apps\\web\\e2e\\gemini-series.spec.ts",
                     "column": 38,
                     "line": 144
                   }

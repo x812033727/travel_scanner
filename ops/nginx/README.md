@@ -138,7 +138,7 @@ nginx -c /root/nginxtest/test.conf -p /root/nginxtest -s quit; kill "$echo_pid"
 ```
 
 Expected output. The two address lines and the missing `X-Travel-Client-IP` are what the
-2026-09-12 run on `hostinger2` (nginx 1.28.3) recorded; the rest follows from the snippet and
+2026-09-12 run on `<saved-session>` (nginx 1.28.3) recorded; the rest follows from the snippet and
 curl's defaults, and the header order and curl version are incidental:
 
 ```
@@ -355,7 +355,7 @@ be uncommented and filled in before any of these limits mean anything.
 
 ## Trust boundary
 
-- **Applied to production once, by hand, on 2026-09-12** (`hostinger2`, nginx 1.28.3): the
+- **Applied to production once, by hand, on 2026-09-12** (`<saved-session>`, nginx 1.28.3): the
   three owned files through `install.sh`, the server blocks merged into the host's
   `sites-available/mokaair.com`. The numbers quoted in the checks above are from that run; the
   record, including where the previous `/etc/nginx` was backed up, is in task
