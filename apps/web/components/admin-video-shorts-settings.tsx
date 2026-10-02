@@ -5,10 +5,10 @@ import { useCallback, useEffect, useState } from "react";
 import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { AdminErrorState, AdminStatusPill } from "@/components/admin-ui";
 import { useWhen } from "@/components/admin-video-review-card";
-import { Panel, SaveRow, SettingsPermissionNotice, type VideoSettingsView, VoiceFields, type VoiceOptions } from "@/components/admin-video-settings";
+import { type ModelOption, Panel, PROVIDERS, providerLabels, SaveRow, SettingsPermissionNotice, type VideoSettingsView, VoiceFields, type VoiceOptions } from "@/components/admin-video-settings";
 import {
   type Campaign, type Consent, type ConsentState, countsOf, message, type PatternSegment, SCOPE_FIELDS, settingsBody, SHORTS_LINES, SHORTS_LOCALES,
-  type ShortsSettings, type ShortsSettingsBody, timesOf,
+  type ShortsSettings, type ShortsSettingsBody, SUBJECT_VARIANTS, type SubjectModel, type SubjectVariant, timesOf,
 } from "@/components/admin-video-shorts-data";
 import { Button, fieldClass } from "@/components/community/ui";
 import { api } from "@/lib/api";
@@ -23,7 +23,10 @@ const NUMBERS = {
   calendar: [["max_per_day", 1, 4], ["lock_hours", 1, 72], ["stock_days", 0, 30], ["upload_ahead_days", 1, 30]],
   length: [["seconds_min", 10, 180], ["seconds_max", 10, 180]],
   budget: [["budget_ntd_30d", 0, 1_000_000], ["budget_soft_ntd", 0, 1_000_000], ["budget_total_ntd", 0, 10_000_000]],
+  automation: [["max_per_month", 0, 400]],
 } as const;
+// The model menus of the AI settings page, read with the tutorial's settings.
+type ModelMenus = { options: Partial<Record<string, ModelOption[]>>; configured: string[] };
 type NumberField = (typeof NUMBERS)[keyof typeof NUMBERS][number][0];
 type Draft = ShortsSettingsBody & { times: string; pattern: Array<{ days: number; counts: string }> };
 
@@ -58,6 +61,48 @@ function bodyOf(draft: Draft): ShortsSettingsBody | null {
   if (!pattern) return null;
   const quota = Object.fromEntries(SHORTS_LINES.filter((line) => draft.lines.includes(line)).map((line) => [line, draft.weekly_quota[line] ?? 0]));
   return { ...settingsBody(draft), weekly_quota: quota, daily_pattern: pattern, slot_times: timesOf(draft.times) };
+}
+
+/**
+ * The models an experiment tests, under a and b, from the AI settings page's menus. The worker cannot
+ * name one: the server runs the subject stage on these (app/video_automation/ai.py subject_choice).
+ * No a means no experiment runs; no b tests a's model both ways.
+ */
+function SubjectModels({ value, menus, disabled, onChange }: { value: ShortsSettingsBody["subject_models"]; menus: ModelMenus | null; disabled: boolean; onChange: (value: ShortsSettingsBody["subject_models"]) => void }) {
+  const t = useTranslations("admin.videoShorts");
+  const set = (variant: SubjectVariant, choice: SubjectModel | null) => {
+    const next = { ...value };
+    if (choice) next[variant] = choice;
+    else delete next[variant];
+    onChange(next);
+  };
+  return <div className="grid gap-3 md:grid-cols-2">{SUBJECT_VARIANTS.map((variant) => {
+    const choice = value[variant];
+    const options = (choice && menus?.options[choice.provider]) || [];
+    // A model saved before it left the menu still shows as what is saved.
+    const listed = choice && !options.some((option) => option.value === choice.model) && choice.model ? [{ value: choice.model, label: choice.model }, ...options] : options;
+    return <fieldset key={variant} className="grid gap-2 rounded-xl border border-[var(--line)] p-3">
+      <legend className="px-1 font-bold">{t(`settings.subjects.${variant}`)}</legend>
+      <label className="block text-sm">{t("settings.subjects.provider")}
+        <select className={fieldClass} value={choice?.provider ?? ""} disabled={disabled} onChange={(event) => {
+          const provider = event.target.value;
+          set(variant, provider ? { provider, model: menus?.options[provider]?.[0]?.value ?? "" } : null);
+        }}>
+          <option value="">{t(variant === "a" ? "settings.subjects.none" : "settings.subjects.sameAsA")}</option>
+          {PROVIDERS.map((provider) => <option key={provider} value={provider}>{providerLabels[provider]}{menus && !menus.configured.includes(provider) ? ` (${t("settings.subjects.notReady")})` : ""}</option>)}
+        </select>
+      </label>
+      {choice && (listed.length > 0
+        ? <label className="block text-sm">{t("settings.subjects.model")}
+          <select className={fieldClass} value={choice.model} disabled={disabled} onChange={(event) => set(variant, { ...choice, model: event.target.value })}>
+            {listed.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
+          </select>
+        </label>
+        : <label className="block text-sm">{t("settings.subjects.model")}
+          <input className={fieldClass} value={choice.model} disabled={disabled} onChange={(event) => set(variant, { ...choice, model: event.target.value.trim() })} />
+        </label>)}
+    </fieldset>;
+  })}</div>;
 }
 
 /** The consent card: where the consent stands, the wording to agree to, and taking it back. */
@@ -144,6 +189,7 @@ export function ShortsSettingsPanel({ onChanged }: { onChanged: () => void }) {
   const [view, setView] = useState<ShortsSettings | null>(null);
   const [draft, setDraft] = useState<Draft | null>(null);
   const [voices, setVoices] = useState<VoiceOptions | null>(null);
+  const [menus, setMenus] = useState<ModelMenus | null>(null);
   const [loadError, setLoadError] = useState("");
   const [busy, setBusy] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -151,8 +197,11 @@ export function ShortsSettingsPanel({ onChanged }: { onChanged: () => void }) {
   const take = useCallback((value: ShortsSettings) => { setView(value); setDraft(draftOf(value)); }, []);
   const load = useCallback(() => {
     api<ShortsSettings>("/admin/video-shorts/settings").then((value) => { take(value); setLoadError(""); }).catch((problem: unknown) => setLoadError(message(problem)));
-    // The voices the site can speak in are listed with the tutorial's settings.
-    api<VideoSettingsView>("/admin/video-automation/settings").then((value) => setVoices(value.voice_options)).catch(() => setVoices(null));
+    // The voices the site can speak in, and the AI settings page's model menus, are listed with the tutorial's settings.
+    api<VideoSettingsView>("/admin/video-automation/settings").then((value) => {
+      setVoices(value.voice_options);
+      setMenus(value.model_options ? { options: value.model_options, configured: value.configured_providers ?? [] } : null);
+    }).catch(() => { setVoices(null); setMenus(null); });
   }, [take]);
   useEffect(load, [load]);
   if (loadError) return <AdminErrorState title={t("loadError")} detail={loadError} retry={load} retryLabel={t("retry")} />;
@@ -168,6 +217,8 @@ export function ShortsSettingsPanel({ onChanged }: { onChanged: () => void }) {
   const size = body ? patternSize(body.daily_pattern) : null;
   const save = async () => {
     if (!body) return;
+    // Said again at the moment it happens: the save itself is what ends the consent.
+    if (widens && !window.confirm(t("settings.scopeConfirm"))) return;
     setBusy(true);
     setError("");
     try {
@@ -240,6 +291,13 @@ export function ShortsSettingsPanel({ onChanged }: { onChanged: () => void }) {
       <label className="flex min-h-11 items-center gap-2 font-semibold"><input type="checkbox" checked={draft.made_for_kids} disabled={disabled} onChange={(event) => edit({ made_for_kids: event.target.checked })} />{t("settings.fields.made_for_kids")}</label>
       <label className="flex min-h-11 items-center gap-2 font-semibold"><input type="checkbox" checked={draft.enabled} disabled={disabled} onChange={(event) => edit({ enabled: event.target.checked })} />{t("settings.fields.enabled")}</label>
       <p className="text-sm leading-6 text-[var(--muted)]">{t("settings.enabledHelp")}</p>
+    </Panel>
+
+    <Panel title={t("settings.subjects.title")}>
+      <p className="text-sm leading-6 text-[var(--muted)]">{t("settings.subjects.help")}</p>
+      <SubjectModels value={draft.subject_models ?? {}} menus={menus} disabled={disabled} onChange={(subject_models) => edit({ subject_models })} />
+      <div className="grid gap-3 md:grid-cols-2">{NUMBERS.automation.map(numberInput)}</div>
+      <p className="text-sm leading-6 text-[var(--muted)]">{t("settings.subjects.monthHelp")}</p>
     </Panel>
 
     <Panel title={t("settings.budgetTitle")}>
