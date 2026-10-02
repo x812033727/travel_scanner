@@ -30,6 +30,7 @@ from app.models import AdminAuditLog, AdminRoleAssignment, User, VideoProject, V
 from app.video_automation.models import (
     VideoAutomationSettings,
     VideoDramaDoc,
+    VideoDramaEpisode,
     VideoDramaSeries,
 )
 from app.video_media import jobs, meter
@@ -434,6 +435,49 @@ async def test_other_caller_racing_with_submit_cannot_trigger_implicit_failed_re
     async with case.factory() as session:
         job = await session.scalar(select(VideoMediaJob))
         assert job.status == "failed" and job.attempts == 1
+
+
+@pytest.mark.parametrize("changed_model", ["gemini-3-pro-image", "gemini-3.1-flash-image"])
+async def test_series_image_override_is_checked_at_service_lookup(
+    case, monkeypatch, changed_model
+):
+    async with case.factory() as session:
+        series = await session.scalar(select(VideoDramaSeries))
+        series.image_model = case.runner.MODELS["image"]
+        session.add(
+            VideoDramaEpisode(
+                series_id=series.id,
+                number=1,
+                chapter_number=1,
+                title="Episode 1",
+                slug=case.runner.SLUGS[0],
+            )
+        )
+        await session.commit()
+
+    original = jobs.submit_job
+
+    async def racing(ctx, kind, payload):
+        # A settings writer can commit after preflight/reservation but before
+        # submit_job's own series-model lookup. Exercise that final lookup.
+        series = await ctx.session.scalar(select(VideoDramaSeries))
+        series.image_model = changed_model
+        await ctx.session.commit()
+        return await original(ctx, kind, payload)
+
+    monkeypatch.setattr(jobs, "submit_job", racing)
+    if changed_model == case.runner.MODELS["image"]:
+        result = await run(case, execute=True)
+        assert result["status"] == "ready" and len(case.provider.calls) == 1
+        assert case.provider.calls[0].model == changed_model
+        return
+    with pytest.raises(case.runner.Refused, match="series image override"):
+        await run(case, execute=True)
+    assert case.provider.calls == [] and await meter.used(case.redis, meter.IMAGES) == 0
+    assert await count(case, VideoMediaJob) == 0 and await count(case, AdminAuditLog) == 1
+    with pytest.raises(case.runner.Refused):
+        await run(case, execute=True)
+    assert case.provider.calls == [] and await count(case, AdminAuditLog) == 1
 
 
 @pytest.mark.parametrize("status", ["queued", "failed", "expired", "submitted"])

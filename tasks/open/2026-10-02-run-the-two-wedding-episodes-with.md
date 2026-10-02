@@ -44,7 +44,8 @@ while retaining job accounting, idempotency, review evidence and budget limits.
 - [x] Inspect existing service, tool permissions and concurrent PR #1132.
 - [x] Implement the isolated runner and meaningful safety/cost/resume tests.
 - [x] Independently review the change and prepare the draft manifest/runbook; no approved manifest yet.
-- [ ] Run a live preflight and first-shot test only when host access is available.
+- [x] Run a live read-only preflight after host access is available.
+- [ ] Run the first-shot test only after current document/script/look/storyboard approvals.
 
 ## How to verify
 
@@ -71,3 +72,22 @@ local behavior, not live deployment. PostgreSQL advisory locks, provider region
 and actual footage remain untested. Draft manifest is intentionally non-executable
 until actual current approvals are available; full scripts are now pending review.
 The live-preflight step remains unfinished, so this ticket stays open.
+
+2026-10-03 Windows takeover (supersedes the historical host-access blocker):
+SSH is available using the existing private local connection. Live read-only DB
+preflight found global drama OFF, music ON, usable administrator capabilities and
+a configured Gemini key. The source series remains `setting`; latest setting,
+outline and chapter 1 are v3/review, and both submitted scripts remain pending.
+No look/storyboard reviews or production media jobs exist. Five runtime API
+dependency files match the pinned PR bytes. No deployment, settings write,
+document approval, provider request or lock validation was performed.
+See `docs/videos/series-plans/competition-20261002/episodes/vps-handoff-preflight-20261003.md`.
+
+The original 42 runner tests and 19 audio-builder tests passed again locally.
+The series-image-model race between reservation and the service's final model
+selection was reproduced with a fake provider, then fixed inside ScopedSession:
+the service's final series-model SELECT refuses an unreviewed override before
+the vendor call, retains the reservation and never retries it. Tests also cover
+the permitted pinned Pro model. Final validation: 44 runner tests, Ruff and mypy
+passed (all exit 0), with independent diff review. First-shot and provider/output acceptance remain
+unfinished; retain this ticket in open rather than declaring production complete.

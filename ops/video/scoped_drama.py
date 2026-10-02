@@ -71,16 +71,31 @@ class Refused(ValueError):
 
 
 class ScopedSession(AsyncSession):
-    """Guard submit_job's own dedupe SELECT against a racing non-runner caller.
+    """Guard submit_job's final model and dedupe SELECTs against concurrent writes.
 
     Ordinary HTTP callers do not share this campaign lock. An unexpectedly found
-    row must never reach the service's implicit retry/advance branch.
+    row must never reach the service's implicit retry/advance branch, and a series
+    override changed after preflight must never select an unreviewed image model.
     """
 
     async def scalar(self, *args: Any, **kwargs: Any) -> Any:
         result = await super().scalar(*args, **kwargs)
-        if self.info.get("scoped_drama_new_only") and isinstance(result, VideoMediaJob):
-            raise Refused("another caller created this job; inspect/resume it, never retry here")
+        if self.info.get("scoped_drama_new_only"):
+            if isinstance(result, VideoMediaJob):
+                raise Refused(
+                    "another caller created this job; inspect/resume it, never retry here"
+                )
+            statement = args[0] if args else kwargs.get("statement")
+            if (
+                any(
+                    column.get("expr") is VideoDramaSeries.image_model
+                    for column in getattr(statement, "column_descriptions", ())
+                )
+                and result not in (None, "", MODELS["image"])
+            ):
+                raise Refused(
+                    "series image override changed before submission; inspect reservation"
+                )
         return result
 
 

@@ -127,3 +127,23 @@ Current two-episode checkpoint, 2026-10-02 (supersedes opening-only next steps):
 - Continue from episodes/scoped-production-runbook.md after actual doc/script
   approval and admin host access; look/storyboard acceptance then first clip.
   No full-film owner acceptance, foreign work, publication or competition start.
+
+2026-10-03 Windows takeover:
+- Checked out PR #1135 at 117a867ac; its 10 CI checks were successful and it was
+  still a draft. Host connectivity is now verified; prior missing-host text above
+  describes the cloud environment, not this new execution environment.
+- Revalidated 10 source and 49 package hashes, 15 required inputs, both measured
+  edits and source binding. All match Git and working-tree bytes. Original runner
+  42 tests and audio-builder 19 tests passed without provider requests.
+- Live source series is still `setting`; latest setting/outline/chapter 1 v3 are
+  `review`, and E1/E2 script reviews remain `pending`. No look/storyboard or media
+  jobs exist for the production slugs. Global drama stays OFF.
+- The original `/workspace/.../transfer/` media tar.gz and checksum are absent
+  from this Windows environment; checked local media/download locations and VPS
+  `/root` did not contain that bundle. The owner has been asked for a reachable
+  path/link. Do not rerun TTS to replace the missing transfer.
+- Exact source archive, runtime schema, safe live snapshot and offline evidence
+  are preserved outside Git under the local competition handoff directory.
+  Public continuation details: `episodes/vps-handoff-preflight-20261003.md`.
+- Four listening flags remain and no animation, native listening, full-film
+  owner acceptance, foreign work or publication is claimed.

@@ -365,13 +365,17 @@
     ],
     "scoped_runner": {
       "path": "ops/video/scoped_drama.py",
-      "tests_passed": 42,
+      "tests_passed": 44,
       "deployed": false,
       "global_drama_enabled": false,
-      "production_host_endpoint": "not-provided",
+      "production_host_endpoint": "verified via existing private local connection; no endpoint in public repo",
       "live_script_reviews": "pending",
       "source_document_approvals": "pending",
-      "first_live_clip": "not-submitted"
+      "first_live_clip": "not-submitted",
+      "source_series_status": "setting",
+      "latest_source_documents_status": "v3 review, undecided",
+      "image_model_race_guard": "final service lookup rejects unreviewed override; reservation retained",
+      "runner_sha256": "fd98588d18123ef96f5acbe95cbea60ea0e42c0a65ba5c3722bf7d0f17d83844"
     }
   },
   "acceptance": {
@@ -436,5 +440,12 @@
     ],
     "requires_first_live_clip_before_batch": true
   },
-  "updated_at": "2026-10-02T16:09:24.283407+00:00"
+  "updated_at": "2026-10-02T16:09:24.283407+00:00",
+  "latest_handoff_preflight": {
+    "path": "docs/videos/series-plans/competition-20261002/episodes/vps-handoff-preflight-20261003.md",
+    "sha256": "18cba3dd6abd75a180ae251849d9bfc0225b66650bb0c10f7ebdf1c7e233438d",
+    "checked_at_utc": "2026-10-02T17:32:32.048619+00:00",
+    "scope": "read-only Windows/VPS takeover; no approvals, paid generation, deployment or publication",
+    "original_media_transfer_available": false
+  }
 }
