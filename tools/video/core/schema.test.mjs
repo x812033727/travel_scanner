@@ -19,7 +19,7 @@ test("a category is one of the site's eight, and a video may have none", () => {
   doc.category = "news";
   assert.deepEqual(paths(validateVideo(doc)), ["category"]);
   assert.match(validateVideo(doc)[0].message, /ai-terms, ai-news, tutorial/);
-  assert.equal(VIDEO_CATEGORIES.length, 10);
+  assert.equal(VIDEO_CATEGORIES.length, 11);
 });
 
 test("unknown fields are errors, so a typo cannot pass as an ignored field", () => {
