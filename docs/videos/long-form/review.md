@@ -117,6 +117,18 @@ Outside increment evidence and SHA256 (not implementation bindings):
 - 20261002-continuation-thumbnail-review.json: 0d928e21815d4c444e03069b343198e00d900a8dd631f18db02c7081691e89a2
 - 20261002-continuation-thumbnail-targeted-tests.log: 37c3a93dde9a4db8d914142005a9fbb9ddbbd1c4b87e72019a79ded94b68647b
 
+## PR #1108 thumbnail-text increment: 3 files (2026-10-02)
+
+Reviewer: `claude-pr-review-1108`. Author: PR #1108's author (a Claude session, `claude-pr-1108`). Scope: DURATION_ONLY. The reviewer did not write these changes.
+
+Baseline: the bytes of tools/video/automation/automation.test.mjs, flow.mjs and prompts.mjs at 6d60a1ef (main, #1098) equal the hashes bound before this increment. The reviewer read the full `git diff 6d60a1ef 037f7997` of those three files, and the two changed skill prompt references (caption-translate.md, caption-review.md) for context. The other 67 bindings are unchanged.
+
+Findings. flow.mjs adds `textHash` to the schema import. The merge kept main's `minEpisodeMinutes` in that import, and its existing uses are unchanged. The new `thumbnailAskHash` and `keptWorksheet` helpers, the optional `askedThumbnail` argument to `sheetDone`, the `state` passed to `channelLocale` and the `thumbnails_asked` state entry only decide whether a translation worksheet's optional thumbnail words still need asking for, and keep those words when a caption reviewer drops them. None of them reads or writes target_minutes, effectiveEpisodeMinutes, minEpisodeMinutes or VIDEO_MIN_EPISODE_MINUTES, frame counts or the 14,400-frame body/final proof. None touches narration lines, the format defaults or ranges (explainer 10 and 8–20, drama 1–8 default 3, brand 13), or the fixture opt-out. The prompts.mjs change touches only the translator and caption-reviewer texts. They gain thumbnail-word instructions; the dub `max_chars` budget sentence is reflowed with its wording intact. The script-writing, listener, shortening and rewording prompts, and every duration instruction, are unchanged. In the test file, the zh-TW prompt hashes change only for translator and caption_reviewer, which is the intended change described above; the hashes for translator:shorten and translator:reword are kept. The new tests cover worksheet completion and the worker's thumbnail-word round trip. No test changes a duration expectation, and no test sets VIDEO_MIN_EPISODE_MINUTES.
+
+Ran: `node tools/video/long-form/cli.mjs check` before rebinding failed only on the three stale bindings (exit 1). `node --test tools/video/automation/*.test.mjs tools/video/long-form/*.test.mjs tools/video/core/duration.test.mjs tools/video/qa/duration.test.mjs` ran 229 tests: 228 passed and 1 failed. The one failure was the shipped binding regression, failing on those same three paths. Both commands are rerun after rebinding.
+
+Non-claims. This review does not cover the localized-thumbnail rendering, layout fitting or translation quality, real provider or model calls, media, upload or publication. PASS is DURATION_ONLY for the three rebound hashes below. Required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 70 bindings describe the current reviewed bytes after the main-merge and owned migration-order increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -155,9 +167,9 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | `docs/videos/so-thats-why/README.md` | `00a0f0e5a56d7a492dec69263eab34668e0d334949878bd512b09edacaefd0de` |
 | `docs/videos/so-thats-why/season2/README.md` | `e560411dc91f1928b2cf9506a044e55ae7f5f65450199118bd165464599f1218` |
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
-| `tools/video/automation/automation.test.mjs` | `d79fb934cb2a5114402e182acc7a3ab9e6cff9e803c92e6519fbf3851e7ad6e6` |
-| `tools/video/automation/flow.mjs` | `27d762c5d35d482444a6013b89aedbc338ea667cbedf23323e23f36caf2431ee` |
-| `tools/video/automation/prompts.mjs` | `f6462deca2cb78ba7a5cb05471eeda4941522f24e33e3f442079cfacf1d82a79` |
+| `tools/video/automation/automation.test.mjs` | `2d3ee3017be4b1c49bc71bdb26a4f3797c6a8b9d4357aacdcf8d3b30b5e5d106` |
+| `tools/video/automation/flow.mjs` | `6781888a32bedb5795bab61b77671d18b11b0024303e181f3b112b0beb45bd17` |
+| `tools/video/automation/prompts.mjs` | `ba93ae2a05a23fdf72db52a82868efd85a2012f36a97f06f77d7978c8b99c84e` |
 | `tools/video/automation/series.test.mjs` | `8288b63fa55024cb9305f13fdb8714bf690fb01a2d505e424c3d505359ca654c` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
 | `tools/video/core/drama.mjs` | `db0f08c3f386497367e3a228e00bc6a26552f33db11146a9c00a5cb32747f04e` |
