@@ -43,6 +43,11 @@ test("coverage is judged per language: Korean and Simplified Chinese thumbnails 
   assert.deepEqual(uncovered("바이브 코딩 코드 없이", slides), ["바", "브", "코", "딩", "드", "없"]);
   assert.deepEqual(uncovered("바이브 코딩 코드 없이 AI 2026", bundledCoverage("ko")), []);
   assert.deepEqual(uncovered("佥", bundledCoverage("ko")), ["佥"], "each locale adds only its own font");
+  // 侭 (U+4FAD) is a Japanese form of 儘: only the JP font's ranges hold it.
+  assert.deepEqual(uncovered("侭", slides), ["侭"], "a Traditional Chinese slide refuses it");
+  assert.deepEqual(uncovered("直す 骨 写す 侭 バイブ AI 2026", bundledCoverage("ja")), []);
+  assert.deepEqual(uncovered("佥 바", bundledCoverage("ja")), ["佥", "바"], "Japanese adds only the JP font");
+  assert.deepEqual(uncovered("侭", bundledCoverage("zh-CN")), ["侭"]);
   assert.equal(bundledCoverage("en"), slides, "a locale without a font of its own is the slides' coverage");
   assert.equal(bundledCoverage(), bundledCoverage(null), "and is read once");
 });
@@ -126,7 +131,8 @@ test("the fake origin serves pages, theme, fonts and allowed assets, and nothing
   assert.match(at("https://video.local/fonts/noto-sans-tc/files/x.woff2").file, /noto-sans-tc[\\/]files[\\/]x\.woff2$/);
   assert.match(at("https://video.local/fonts/noto-sans-kr/index.css").file, /noto-sans-kr[\\/]index\.css$/);
   assert.match(at("https://video.local/fonts/noto-sans-sc/files/y.woff2").file, /noto-sans-sc[\\/]files[\\/]y\.woff2$/);
-  assert.equal(at("https://video.local/fonts/noto-sans-jp/index.css"), null, "only the bundled fonts");
+  assert.match(at("https://video.local/fonts/noto-sans-jp/index.css").file, /noto-sans-jp[\\/]index\.css$/);
+  assert.equal(at("https://video.local/fonts/noto-serif-jp/index.css"), null, "only the bundled fonts");
   assert.equal(at("https://video.local/fonts/constructor/index.css"), null);
   assert.equal(at("https://video.local/repo/apps/web/public/a.svg").file, path.join(root, "apps/web/public/a.svg"));
   assert.equal(at("https://video.local/repo/apps/api/.env"), null);
@@ -368,4 +374,18 @@ test("render --thumbnails-only draws the language thumbnails alone, and only ove
   for (const [name, bytes] of kept) assert.equal(readFileSync(work(name), "utf8"), bytes, `${name} untouched`);
   assert.ok(!existsSync(work("contact-sheet.png")), "no contact sheet is drawn");
   assert.match(out, /1 language thumbnails drawn .*; the frames are as they were/);
+});
+
+test("a Japanese thumbnail is set in Noto Sans JP, so its kanji take the Japanese forms", () => {
+  const doc = explainerFixture();
+  const keyframes = { flash: { file: "keyframes/flash-1.png", sha256: "aa" }, race: { file: "keyframes/race-1.png", sha256: "bb" } };
+  const words = Object.fromEntries(Object.keys(thumbnailSource(doc)).map((name) => [name, `直す 骨 写す 侭 ${name}`]));
+  const translations = { ja: { thumbnail: words, source_hashes: { thumbnail: thumbnailSourceHash(doc) } } };
+  const plan = renderPlan(doc, "t", null, { keyframes, translations });
+  const [ja] = plan.thumbnail.locales;
+  assert.equal(ja.locale, "ja");
+  assert.match(ja.html, /<html lang="ja">.*fonts\/noto-sans-jp\/index\.css.*--font:"Noto Sans JP Variable","Noto Sans TC Variable",sans-serif/);
+  assert.doesNotMatch(plan.thumbnail.html, /noto-sans-jp|lang="ja"/, "the video's own thumbnail is as it was");
+  assert.deepEqual(localizedThumbnails(plan).drawable.map((own) => own.locale), ["ja"]);
+  assert.match(localizedThumbnails(plan, () => bundledCoverage()).gaps.ja, /U\+4FAD/, "the slide fonts alone lack it");
 });

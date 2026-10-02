@@ -69,8 +69,8 @@ export function coverageProblems(plan, coverage, subtitles = null) {
 
 /**
  * The caption locales' own thumbnails to draw: { drawable, drawn: {}, gaps }. `coverageOf(locale)`
- * is what that locale's thumbnail fonts cover (bundledCoverage: Korean and Simplified Chinese have
- * their own font). One whose words they cannot draw joins the gaps instead of failing the render;
+ * is what that locale's thumbnail fonts cover (bundledCoverage: Korean, Simplified Chinese and
+ * Japanese have their own font). One whose words they cannot draw joins the gaps instead of failing the render;
  * `drawn` is filled as the files are written.
  */
 export function localizedThumbnails(plan, coverageOf = bundledCoverage) {
