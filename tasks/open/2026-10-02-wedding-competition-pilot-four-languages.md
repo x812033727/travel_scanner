@@ -166,3 +166,42 @@ Current two-episode checkpoint, 2026-10-02 (supersedes opening-only next steps):
   pilot and old/new take match. Pure request planning is 67/67 cache hits. MP3s
   decode completely, all 147 recovered files remain byte-identical, and no new
   TTS/provider request was made. Four listening flags remain unchanged.
+
+2026-10-03 production closing checkpoint (supersedes earlier next steps):
+- The owner's repeated two-episode request is still in progress, zh-TW only.
+  Source setting/outline/chapter 1 v3 and both scripts now have normal approvals;
+  chapter 1 marked E1-E10 ready, but execution remains scoped to E1/E2 only.
+- Zhitang pantsuit look B and Gu Chengchuan look A are normally approved. The
+  latest approved storyboard contains S01 R02 and S03 R03 first frames only.
+  Existing voice/audio/source/timing artifacts were reused, not regenerated.
+  E2 S34 first-frame visual metadata alone was corrected; its timing is unchanged.
+- S01 R03 was rejected for a second watch and extra hand action. R04 yielded an
+  actual five-second existing-voice preview and a sampled usable-window opinion,
+  but the normal judge remains 6.72/failed. The 37-frame blink audit did not change
+  that result. The owner has not answered the retain-or-retake choice; pilot is
+  not accepted, and no full batch is released.
+- S03 R01 clip was rejected for extra hand/pen/watch and prop changes. R02 remains
+  ready as a generated file but fails the planned 0-4.5 second window: the hand
+  lifts and rotates the pen near horizontal at about 0.75-1.75 seconds, beyond
+  the required small tremor. Independent QA decoded all 192 frames and viewed
+  45 unique frames; no full playback or audio acceptance is claimed.
+- S04 R01 was rejected for framing/hair drift; R02 was rejected because its
+  page-pointing wrist wears the watch while the accepted S03 pen-holding wrist
+  wears it. The source does not prescribe wrist side. Neither frame was approved.
+- Final read-only audit at 2026-10-02 19:42:44 UTC found 16 generation jobs, all
+  terminal (14 ready, 2 failed), global drama OFF and unchanged settings hash.
+  All jobs are E1; E2 has no generated images/clips. There are no final/publish
+  reviews. The round stopped additional paid requests after the begun retake.
+- Ledger adds 10 image and 6 clip reservation rows plus 2 actual judge calls.
+  Conservative exposure is USD 15.180 = 1.340 images + 3.840 clips + 10 manual
+  reserve. The judges' USD 0.02 estimate is covered by that manual reserve; do not
+  add it twice. Actual provider bills remain unknown; failed/rejected reserves
+  are retained. The fsync-before-POST abort and one explicit recovery are preserved.
+- Follow `episodes/production-run-20261003.md` and `handoff.json.current_production_run`
+  for exact job/review/image hashes and repo-external receipt locations. The
+  coordinator's latest GitHub read reports PR #1135 is no longer a draft; this
+  checkpoint does not merge, deploy, publish, or complete the production task.
+- Remaining: owner S01 quality decision, bounded S03 motion correction and S04
+  reference-continuity plan, then each remaining shot and final audiovisual QA.
+  Four listening flags and E2 S06 lip sync remain; foreign work still waits for
+  owner acceptance of the entire Chinese film and CC. Keep this ticket open.

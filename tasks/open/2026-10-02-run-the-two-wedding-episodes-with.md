@@ -91,3 +91,33 @@ the vendor call, retains the reservation and never retries it. Tests also cover
 the permitted pinned Pro model. Final validation: 44 runner tests, Ruff and mypy
 passed (all exit 0), with independent diff review. First-shot and provider/output acceptance remain
 unfinished; retain this ticket in open rather than declaring production complete.
+
+2026-10-03 controlled same-shot keyframe repair proposal (design only):
+S04 R02 is a paid `ready` image but its watch wrist differs from the accepted
+S03 frame. The current selected-look-only reference gate prevents reusing that
+known output for a localized repair and forces a fresh redraw. Existing public
+`ImageJobIn.references` already supports `previous_frame`; no schema migration
+or provider change is required. Reuse this ticket's existing narrow runner/test
+scope rather than creating an overlapping task. Keep it open and unclaimed;
+no reference exception or implementation has been applied.
+
+- [ ] After the production quality decision, consider at most one previous-frame
+  reference only for an explicit same-campaign, same-slug/shot image-keyframe
+  `retake_of` with a ready job, real output hash/bytes and known reservation.
+- [ ] Require a concrete correction reason, changed prompt/request and new pinned
+  manifest; retain the source, script/edit, current selected-look approvals,
+  admin/settings checks, campaign lock, budget, no-auto-retry and normal storyboard
+  approval. Failed/expired/unknown/no-output jobs are not eligible image sources.
+- [ ] Validate live target identity and actual MediaStore bytes both before and
+  after reservation; stop on drift without a provider call and retain any reserve.
+- [ ] Cover eligibility, invalid reference/state/identity, stale approval,
+  post-reservation drift, cost and idempotency with fake-provider tests; recognize
+  that image references do not guarantee a pixel-preserving localized edit.
+
+Full repo-external design: `production-20261003/controlled-keyframe-retake-reference-proposal.md`.
+The existing private storyboard preparation helper will also need a narrow
+provenance-aware check if this feature is later implemented; its current guard
+also refuses non-look references. At this checkpoint only PR #1135/current wedding
+branch touches the runner/test paths among open PRs; collision checks must be
+repeated before editing. S01 R04 remains normal judge 6.72/failed with the owner's
+quality choice pending. This note does not approve footage or resume paid work.

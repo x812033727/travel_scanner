@@ -64,7 +64,7 @@
     },
     {
       "path": "docs/videos/series-plans/competition-20261002/cost-ledger.csv",
-      "sha256": "0c7e49c17a835ae314566e4efdcc70ef3a1fb0258ef0d7bebaf36a679ba63b71"
+      "sha256": "82db04b7237d2982a9bdc142f91c0dea7517b4aca3de2dcd3e23111d5d5e4e51"
     },
     {
       "path": "docs/videos/series-plans/competition-20261002/episodes/audio-check-summary.json",
@@ -124,11 +124,11 @@
     },
     {
       "path": "docs/videos/series-plans/competition-20261002/episodes/episode-02-dialogue.json",
-      "sha256": "6e0c9cc6f22c5e9b3b425ae03fecc6eb3db83878b41d44af3cdffb710e3b264b"
+      "sha256": "b51f61ede3c5108ad9455b68db7201133b4e94b20f72d005d77bf1541161246f"
     },
     {
       "path": "docs/videos/series-plans/competition-20261002/episodes/episode-02-measured-edit.json",
-      "sha256": "f3bf26329c8795f5bf4c033fb542703cead9da4fa5739235dffbbedde8fb37bf"
+      "sha256": "eca4d156b1879fb566e48131a24492efd13b59b4a7a3f3d7d4985dbe69b407a5"
     },
     {
       "path": "docs/videos/series-plans/competition-20261002/episodes/episode-02-screenplay.md",
@@ -144,7 +144,7 @@
     },
     {
       "path": "docs/videos/series-plans/competition-20261002/episodes/episode-02-timing-report.json",
-      "sha256": "050af8466aeabdab115273e82ebc0b6067a9db3d16e8c04f2e3be8a9e35d4368"
+      "sha256": "a8d7768ce746f366c8b2dd441337423f498e11866f07fc2a1b8e2b88240c290b"
     },
     {
       "path": "docs/videos/series-plans/competition-20261002/episodes/episode-02-voice.video.json",
@@ -164,7 +164,7 @@
     },
     {
       "path": "docs/videos/series-plans/competition-20261002/episodes/scoped-production-manifest.draft.json",
-      "sha256": "e396fff8eec743d0799c3f2c24d4d7cefa9b1de43d4f949adc7fc99bd8c915f1"
+      "sha256": "df4edef7a69af3ff2b396887dc37e846ceca69e855009685971504f8bc7622d3"
     },
     {
       "path": "docs/videos/series-plans/competition-20261002/episodes/scoped-production-runbook.md",
@@ -245,6 +245,14 @@
     {
       "path": "docs/videos/series-plans/competition-20261002/validation.json",
       "sha256": "ae1103f587e7966f62f94be472077542ac3d7a1a0cfb0afcb9fa8d807db0bd66"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/episode-02-s34-visual-metadata-revision-20261003.json",
+      "sha256": "f01e7508be7052f80b5e33d3ebd80e8b39c8646bb35e4b654ebb822191f59d99"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/production-run-20261003.md",
+      "sha256": "cf295a17f7c9ab623755e8a914e822df7bdf70f7ce38ade457fbf9fe34547331"
     }
   ],
   "precedence": [
@@ -474,5 +482,128 @@
       "human_listening": "pending; original four flags retained",
       "receipt_sha256": "b554963308805669c0cca59b3f16310bb5793a884d2f5b9571c799884bac9e4f"
     }
+  },
+  "current_visual_metadata_revision": {
+    "path": "docs/videos/series-plans/competition-20261002/episodes/episode-02-s34-visual-metadata-revision-20261003.json",
+    "sha256": "f01e7508be7052f80b5e33d3ebd80e8b39c8646bb35e4b654ebb822191f59d99",
+    "episode": 2,
+    "scene_id": "wr-e02-s34",
+    "measured_edit_sha256": "eca4d156b1879fb566e48131a24492efd13b59b4a7a3f3d7d4985dbe69b407a5",
+    "scope": "S34 first-frame prompt and derived hashes only; audio, screenplay, source and timing unchanged"
+  },
+  "current_production_run": {
+    "path": "docs/videos/series-plans/competition-20261002/episodes/production-run-20261003.md",
+    "sha256": "cf295a17f7c9ab623755e8a914e822df7bdf70f7ce38ade457fbf9fe34547331",
+    "checked_at_utc": "2026-10-02T19:50:09.089Z",
+    "scope": "E1/E2 unfinished; awaiting owner quality decision: approved Zhitang B, Gu Chengchuan A and S01/S03 storyboard; S01 R04 owner decision pending after normal judge failed; S03 clips and S04 first frames rejected; this round stopped new paid requests",
+    "status": "unfinished-awaiting-owner-quality-decision",
+    "active_episodes": [
+      1,
+      2
+    ],
+    "global_drama_enabled": false,
+    "historical_fields_note": "Earlier status, local_preproduction, acceptance and latest_handoff_preflight retain their original snapshot meaning. This pointer records the current production checkpoint without changing those receipts.",
+    "latest_completed_visual_gate": "storyboard:wr-e01-s01,wr-e01-s03",
+    "latest_look": {
+      "subject": "chengchuan",
+      "review_id": "da447d14-1310-4ca2-81dd-8a8eabde6b28",
+      "status": "approved",
+      "choice": "A",
+      "content_sha256": "67cb6317f3df600a3e8c7fd99a165a577f1556d53dbd813105e3c31cf4d0890f",
+      "decided_at": "2026-10-02T19:25:21.368378+00:00",
+      "receipt": "chengchuan-look-approval.json",
+      "receipt_sha256": "c31390a3bf33c9cd69d039b846f8b68b03aa3407dd1b9ee943d50d01f5629476"
+    },
+    "latest_storyboard": {
+      "review_id": "4ab00bce-395d-4ba9-94d3-89339e1fa3d4",
+      "status": "approved",
+      "content_sha256": "2ccc8aef0b0d8ab60a7a08e9edd77b97e66fd483853709723b8e824704abe0a0",
+      "decided_at": "2026-10-02T19:27:10.006733+00:00",
+      "shots": [
+        "wr-e01-s01",
+        "wr-e01-s03"
+      ],
+      "receipt": "storyboard-s01-s03-approval.json",
+      "receipt_sha256": "1e4e11ad772dab7cae17a67013c805db33c83453bfd0f2cb5bd62bae29f38681"
+    },
+    "latest_clip_job": {
+      "id": "7d697602-0883-4b8a-9722-5bc2bd8c86d0",
+      "status": "ready",
+      "attempts": 1,
+      "file_sha256": "1bf6147f03a1330edd75074dfd288cf7188cffbfc0a3653937240c0c04543c5e"
+    },
+    "clip_quality": {
+      "shot_id": "wr-e01-s03",
+      "normal_judge_performed": false,
+      "root_visual_assessment": "rejected",
+      "independent_visual_assessment": "rejected_for_planned_four_point_five_second_edit",
+      "independent_receipt_sha256": "15a3d600233ebc20205016a4b55dd2d244e3311bfd4d12adcb2b16b3c132f894",
+      "all_video_frames_decoded": 192,
+      "unique_visually_reviewed_frames": 45,
+      "full_realtime_playback": false,
+      "audio_accepted": false,
+      "planned_window_s": [
+        0,
+        4.5
+      ],
+      "reason": "Large pen rotation and hand lift around 0.75-1.75 seconds instead of subtle tremor",
+      "review_preview_sha256": "09450b91cc7a49142ae961e650ca684e9ac45f75df089fcacf276e61b93ebb86",
+      "quality_accepted": false
+    },
+    "latest_keyframe": {
+      "shot_id": "wr-e01-s04",
+      "job_id": "11ecc10d-958d-410a-bab7-2c19ecdf612e",
+      "status": "ready",
+      "file_sha256": "1e829a0fc8ebad001b2b9c733eb1d7558ac70397ca8100db88b45fdfbb763fb2",
+      "visual_qc": "rejected: watch moved from accepted S03 pen-holding wrist to page-pointing wrist; source itself does not prescribe wrist side"
+    },
+    "animation_visual_acceptance_recorded": false,
+    "conservative_reserve_usd": "15.180",
+    "completed_normal_judge_requests": 2,
+    "normal_judge_estimate_within_manual_reserve_usd": "0.02",
+    "actual_billed_usd": null,
+    "s01_clip_quality": {
+      "rejected_previous_clip": "340951d1-4f13-43fb-91fe-c6f42c40f032",
+      "independent_visual_assessment": "passed_for_planned_five_second_edit; 48 unique sampled frames, no full realtime playback or audio acceptance",
+      "normal_judge_overall": 6.72,
+      "normal_judge_passed": false,
+      "eye_audit": "Frames 0-36 support a natural blink interpretation; original failed judge verdict unchanged",
+      "existing_voice_preview_sha256": "65128501affa7a25c9b8accb73d6a6dbf8f9ea825074ee977451b70882c6dd96",
+      "owner_decision": "pending; actual five-second preview presented for retain-or-retake decision",
+      "pilot_accepted": false
+    },
+    "live_closing_audit": {
+      "observed_at_utc": "2026-10-02T19:42:44.894824+00:00",
+      "receipt": "final-live-audit.json",
+      "receipt_sha256": "13f9d8ddda76028e4803b2caabe54107a3e703b4b40bb0944c26484abcee5da3",
+      "jobs": 16,
+      "ready": 14,
+      "failed": 2,
+      "nonterminal": 0,
+      "settings_sha256": "7fbbe241ff8ad931b6ab414e2ed0438ad5f052a5a450b9cbb7d36031b35acd71",
+      "global_drama_enabled": false,
+      "all_generation_jobs_episode": 1,
+      "episode_2_generation_jobs": 0,
+      "final_or_publish_reviews": 0
+    },
+    "new_paid_requests_this_round": "stopped after S03 R02 terminal output; no third normal judge",
+    "episode_complete": false,
+    "verified_checkpoint_archive": {
+      "archive": "/root/mokaair-work/competition-20261002/transfer/wedding-e01-e02-production-checkpoint-20261003.tar.gz",
+      "archive_sha256": "9ce2b61d6e45af86756ad80d89c3b9fd1db871750b6ea3baf14487cd0933f4e0",
+      "bytes": 188576365,
+      "payload_file_count": 415,
+      "archive_member_count": 416,
+      "inventory_sha256": "e5faa31ec8099ef2ae61bb8e21eaf02e17938b458cc608c96123b8d483e33543",
+      "every_member_hash_verified": true,
+      "mode": "0o600",
+      "verified_at_utc": "2026-10-02T19:48:41.344911+00:00",
+      "verification_receipt": "transfer/production-checkpoint-vps-verification.json",
+      "verification_receipt_sha256": "fa9f3b11dade0c864d9b3492b3b54c815cb73dd19b6b8e3f786e941e302a936c",
+      "production_directory_frozen": true,
+      "episode_complete": false,
+      "pilot_accepted": false
+    },
+    "task_queue_status": "open; released while awaiting owner quality decision; not completed"
   }
 }
