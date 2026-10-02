@@ -17,6 +17,16 @@ export const TRANSCRIBE_MAX_BODY_BYTES = 3 * 1024 * 1024;
 const TIMEOUT_MS = Number(process.env.VIDEO_SPEECH_PROXY_TIMEOUT_MS || 180_000);
 const TOKEN = /^Bearer mkv_[A-Za-z0-9_-]{36,76}$/;
 const PASSED_BACK = ["content-type", "x-billable-characters", "retry-after", "www-authenticate"];
+// Connection errors that mean the request never reached the API, so nothing it does has started.
+const NEVER_CONNECTED = new Set(["ECONNREFUSED", "ENOTFOUND", "EAI_AGAIN", "EHOSTUNREACH", "ENETUNREACH", "UND_ERR_CONNECT_TIMEOUT"]);
+
+/** What a route answers when its request reached the API and no answer came back. */
+export type LostAnswer = { status: number; code: string; detail: string };
+
+function neverConnected(error: unknown) {
+  const code = (error as { cause?: { code?: unknown } } | null)?.cause?.code;
+  return typeof code === "string" && NEVER_CONNECTED.has(code);
+}
 
 export function problem(status: number, code: string, detail: string) {
   return NextResponse.json(
@@ -25,7 +35,13 @@ export function problem(status: number, code: string, detail: string) {
   );
 }
 
-export async function forwardToSpeech(request: NextRequest, path: string, method: "GET" | "POST", maxBodyBytes = MAX_BODY_BYTES, timeoutMs = TIMEOUT_MS) {
+/**
+ * `lost` is what the route answers when the API was reached and its answer never came back (the
+ * deadline passed, or the connection dropped mid-way); without it that is the same 502
+ * `upstream_unavailable` as an API that could not be reached. A route whose POST starts paid work
+ * names its own, so the caller can tell a request never sent from one that may have run.
+ */
+export async function forwardToSpeech(request: NextRequest, path: string, method: "GET" | "POST", maxBodyBytes = MAX_BODY_BYTES, timeoutMs = TIMEOUT_MS, lost: LostAnswer | null = null) {
   const authorization = request.headers.get("authorization") ?? "";
   if (!TOKEN.test(authorization)) {
     return problem(401, "video_tool_token_invalid", "缺少或格式不對的影片工具權杖");
@@ -60,7 +76,8 @@ export async function forwardToSpeech(request: NextRequest, path: string, method
       if (value) headers.set(name, value);
     }
     return new NextResponse(await upstream.arrayBuffer(), { status: upstream.status, headers });
-  } catch {
+  } catch (error) {
+    if (lost && !neverConnected(error)) return problem(lost.status, lost.code, lost.detail);
     return problem(502, "upstream_unavailable", "API 服務目前無法回應");
   } finally {
     clearTimeout(timeout);
