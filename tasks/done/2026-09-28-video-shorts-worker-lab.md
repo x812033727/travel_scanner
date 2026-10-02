@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-shorts-worker-lab
 title: Video shorts T2: the worker makes experiment Shorts by itself, plans the week and writes the weekly report
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-shorts-t2
 claimed_at: 2026-10-02T06:12:06Z
 created_at: 2026-09-28T03:45:00Z
-completed_at:
+completed_at: 2026-10-02T06:47:14Z
 branch: claude/video-shorts-worker-lab
 depends_on:
   - 2026-09-28-video-shorts-automation-api
