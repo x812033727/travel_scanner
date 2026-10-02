@@ -24,7 +24,12 @@ const OWNER_CODES = new Set([
   "video_ai_budget_exhausted",
   "video_ai_subscription_cli_outdated",
   "video_automation_settings_invalid",
+  // The Shorts settings name no tested model yet (docs/videos/SHORTS.md §端點): nothing ran.
+  "video_ai_subject_not_chosen",
 ]);
+// What the tutorial and drama rounds ask the video list for: every video but the Shorts, so ninety
+// days of Shorts do not push them past the list's cap of 200 (docs/videos/SHORTS.md §資料模型).
+export const TUTORIAL_LIST = Object.freeze({ shorts: "exclude" });
 const RETRYABLE_CODES = new Set(["video_ai_upstream_busy", "video_ai_upstream_unreachable", "rate_limit_exceeded", "upstream_unavailable"]);
 // Every subscription account is at the owner's cap: nothing ran, and retrying within minutes will
 // not help. This run of `auto` ends; the worker's loop tries again on its next round.
@@ -85,8 +90,11 @@ export function automationClient(ctx, { attempts = 4 } = {}) {
   return {
     settings: () => request("GET", "automation/settings"),
     topics: () => request("GET", "automation/topics"),
-    /** Every video on /admin/videos, dropped ones too: slug, title, source_guide, dropped_at. */
-    videos: () => request("GET", "automation/videos"),
+    /**
+     * Every video on /admin/videos, dropped ones too: slug, title, source_guide, dropped_at. With
+     * no query the Shorts are left out (TUTORIAL_LIST); the Shorts round asks { shorts: "only" }.
+     */
+    videos: (query = TUTORIAL_LIST) => request("GET", `automation/videos?${new URLSearchParams(query)}`),
     /** One stage: the server answers with the model the owner chose; returns { text, usage, … }. */
     run: (stage, slug, instructions, payload, maxOutputTokens = 16_000, format = "slides", variant = null) =>
       request("POST", "automation/run", { stage, slug, instructions, payload, max_output_tokens: maxOutputTokens, format, ...(variant ? { variant } : {}) }),
@@ -146,5 +154,35 @@ export function automationClient(ctx, { attempts = 4 } = {}) {
     // every episode is cleared for upload, reported done when the compilation is.
     compilationStart: (slug, videoSlug) => request("POST", `automation/series/${slug}/compilation/start`, { slug: videoSlug }),
     compilationDone: (slug) => request("POST", `automation/series/${slug}/compilation/done`),
+    // The Shorts worker (docs/videos/SHORTS.md §端點; apps/api/app/video_shorts/admin_automation_api.py
+    // through apps/web/app/api/video/automation/shorts). A site from before Shorts answers 404.
+    /** The Shorts settings the tools read (ToolSettingsView), or null on a site without Shorts. */
+    shortsSettings: async () => {
+      try {
+        return await request("GET", "automation/shorts/settings");
+      } catch (error) {
+        if (error.status === 404) return null;
+        throw error;
+      }
+    },
+    /** The next job (NextOut): { kind: report|plan|brief|make|null, holds, report|plan|brief|make }; null without Shorts. */
+    shortsNext: async () => {
+      try {
+        return await request("GET", "automation/shorts/next");
+      } catch (error) {
+        if (error.status === 404) return null;
+        throw error;
+      }
+    },
+    /** The planner's week (PlanIn): items [{ slot_id, topic_slug }]; an empty list says nothing fit. */
+    shortsPlan: (items) => request("POST", "automation/shorts/plan", { items }),
+    /** New topics and completed ideas (TopicsIn): every topic names its slug. */
+    shortsTopics: (topics) => request("POST", "automation/shorts/topics", { topics }),
+    /** The week's report (ReportIn): week_start, body_md, rows, plan, provider, model. */
+    shortsReport: (body) => request("POST", "automation/shorts/report", body),
+    /** Start a topic: answers { topic, project_slug, created }. */
+    shortsStart: (topic) => request("POST", `automation/shorts/${topic}/start`),
+    /** The topic is done (DoneIn): { outcome: "made" | "dropped", note? }. */
+    shortsDone: (topic, body = { outcome: "made" }) => request("POST", `automation/shorts/${topic}/done`, body),
   };
 }
