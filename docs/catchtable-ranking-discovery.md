@@ -180,10 +180,13 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli \
   apply-food-platform-reviews --file <BATCH>/platform-reviews.json
 ```
 
-三個會踩到的點：`import-trend-merchants` 的稽核來源會標成 `trend-merchant-sweep`（它是為潮流街區寫的，
-檔案格式通用；要改就是票 `2026-09-22-catchtable-one-pass-importer`）；平台列的 `verified` 與 `disabled`
+2026-10 起（票 `2026-09-22-catchtable-one-pass-importer`）第 4、6 步合成一支
+`import-catchtable-candidates --file <BATCH>/candidates.json [--limit N] [--apply]`：店家與平台列一次寫、
+一筆一交易，稽核來源是 `catchtable-ranking-sweep` 並帶 alias 與名次證據（只在後台）；本機 `--check`
+取代轉檔腳本的檢查。上面的兩段式指令留作備援（稽核來源仍是潮流街區的 `trend-merchant-sweep`），
+用法在 skill `catchtable-discovery`。兩條路都會踩到的點：平台列的 `verified` 與 `disabled`
 都**強制要有 `evidence`**，一筆壞掉整個檔案被拒；管理員在後台審過的列會被跳過，除非帶精確的
-`expected_checked_at`。
+`expected_checked_at`。這支指令不接 Jev、不寫 Naver 精準頁（理由見文末與待決事項 2）。
 
 ## 本機瀏覽器：收集榜單、看店頁、找官方來源
 
