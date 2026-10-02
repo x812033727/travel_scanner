@@ -7,7 +7,7 @@ import { parseArgs } from "node:util";
 import { verifyBrandingAssets } from "../assemble/branding.mjs";
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { sha256File } from "../core/approvals.mjs";
-import { CURRENT_BRANDING_FILE, readCurrentBranding, validateBranding } from "../core/branding.mjs";
+import { currentBrandingFile, readCurrentBranding, validateBranding } from "../core/branding.mjs";
 import { atomicWrite, isInside, readJson, resolveWorkBase, UsageError } from "../core/paths.mjs";
 
 /** Read a selected package without trusting the descriptive/provenance fields as media proof. */
@@ -25,7 +25,9 @@ export function packageSelection(directory) {
   return validateBranding(selected);
 }
 
-export async function installPackage({ directory, workBase, dryRun = false, now = new Date(), tools, exec = runTool }) {
+export async function installPackage({ directory, workBase, series = null, dryRun = false, now = new Date(), tools, exec = runTool }) {
+  const currentFile = path.join(workBase, currentBrandingFile(series));
+  const currentDir = path.dirname(currentFile);
   const selection = packageSelection(directory);
   await verifyBrandingAssets(selection, { tools, exec });
   if (dryRun) return { selection, installed: false };
@@ -38,35 +40,36 @@ export async function installPackage({ directory, workBase, dryRun = false, now 
     const destination = path.join(packageDir, `${role}.mp4`);
     if (!existsSync(destination)) copyFileSync(clip.file, destination, constants.COPYFILE_EXCL);
     if (await sha256File(destination) !== clip.sha256) throw new UsageError(`installed ${role} hash differs; refusing to overwrite immutable branding assets`);
-    current[role] = { ...clip, file: `${selection.hash}/${role}.mp4` };
+    current[role] = { ...clip, file: path.relative(currentDir, destination).split(path.sep).join("/") };
   }
-  const currentFile = path.join(workBase, CURRENT_BRANDING_FILE);
   const before = readJson(currentFile, null);
   if (before) {
-    const old = validateBranding(before, { base: brandingDir });
+    const old = validateBranding(before, { base: currentDir });
     const historyId = old?.hash ?? "disabled";
-    atomicWrite(path.join(brandingDir, "history", `${now.toISOString().replace(/[:.]/g, "-")}-${historyId}.json`), `${JSON.stringify(before, null, 2)}\n`);
+    atomicWrite(path.join(currentDir, "history", `${now.toISOString().replace(/[:.]/g, "-")}-${historyId}.json`), `${JSON.stringify(before, null, 2)}\n`);
   }
   atomicWrite(currentFile, `${JSON.stringify(current, null, 2)}\n`);
-  return { selection: readCurrentBranding(workBase), installed: true };
+  return { selection: readCurrentBranding(workBase, { series }), installed: true };
 }
 
 export async function run(command, args, ctx) {
-  const values = parseArgs({ args, options: { install: { type: "string" }, workdir: { type: "string" }, "dry-run": { type: "boolean" }, json: { type: "boolean" } }, strict: true }).values;
+  const values = parseArgs({ args, options: { install: { type: "string" }, series: { type: "string" }, workdir: { type: "string" }, "dry-run": { type: "boolean" }, json: { type: "boolean" } }, strict: true }).values;
+  const series = values.series ?? null;
+  currentBrandingFile(series);
   if (values["dry-run"] && !values.install) throw new UsageError("branding --dry-run needs --install DIR");
   const workBase = resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home });
   try {
     let result;
     if (values.install) {
       const tools = await (ctx.ffmpeg?.locate ?? locateFfmpeg)(ctx.env);
-      result = await installPackage({ directory: values.install, workBase, dryRun: values["dry-run"], now: ctx.now(), tools, exec: ctx.ffmpeg?.run ?? runTool });
-    } else result = { selection: readCurrentBranding(workBase), installed: false };
-    if (values.json) ctx.stdout.write(`${JSON.stringify({ work_base: workBase, ...result }, null, 2)}\n`);
-    else if (!result.selection) ctx.stdout.write("No channel branding default is installed.\n");
+      result = await installPackage({ directory: values.install, workBase, series, dryRun: values["dry-run"], now: ctx.now(), tools, exec: ctx.ffmpeg?.run ?? runTool });
+    } else result = { selection: readCurrentBranding(workBase, { series }), installed: false };
+    if (values.json) ctx.stdout.write(`${JSON.stringify({ work_base: workBase, series, ...result }, null, 2)}\n`);
+    else if (!result.selection) ctx.stdout.write(`No ${series ?? "channel"} branding default is installed.\n`);
     else {
       const { selection } = result;
       ctx.stdout.write(`${values["dry-run"] ? "Validated" : result.installed ? "Installed" : "Current"}: ${selection.id} (${selection.hash})\n`);
-      ctx.stdout.write(`intro ${selection.intro.frames / 30}s, outro ${selection.outro.frames / 30}s; first long-video builds adopt this package.\n`);
+      ctx.stdout.write(`intro ${selection.intro.frames / 30}s, outro ${selection.outro.frames / 30}s; first ${series ? `${series} ` : ""}long-video builds adopt this package.\n`);
       if (result.installed) ctx.stdout.write("Existing cuts keep their pinned choice; rebuild a selected unapproved cut with assemble/compile --adopt-branding.\n");
     }
     return ctx.EXIT.ok;
