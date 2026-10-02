@@ -3,7 +3,7 @@ import test from "node:test";
 
 import { EXIT, main as runCli } from "../cli.mjs";
 import { sandbox } from "../core/fixtures/load.mjs";
-import { AutomationError, automationClient } from "./client.mjs";
+import { AutomationError, automationClient, RUN_UNCERTAIN } from "./client.mjs";
 
 const SITE = "https://site.test";
 const TOKEN = `mkv_${"t".repeat(43)}`;
@@ -115,4 +115,82 @@ test("auto exits for the owner after one real stage request when Claude Code nee
     "POST /api/video/automation/run",
   ]);
   assert.deepEqual(sleeps, []);
+});
+
+// A stage run's answer lost on the way (2026-09-29: a translation finished on the server after
+// 302 s, past the web route's 295 s, recorded as ok): the run is sent once, never again on its own.
+const failed = (code) => Object.assign(new TypeError("fetch failed"), { cause: Object.assign(new Error(`socket ${code}`), { code }) });
+
+test("a stage run sent and left without its answer is not sent again: the route's deadline, a gateway, a dropped connection, a broken body", async () => {
+  const lost = [
+    ["the web route's deadline", () => Response.json({ code: RUN_UNCERTAIN, detail: "模型階段沒有在時限內回覆" }, { status: 504 }), 504],
+    ["a gateway's timeout page", () => new Response("<html>504 Gateway Time-out</html>", { status: 504, headers: { "Content-Type": "text/html" } }), 504],
+    ["an error without the API's code", () => Response.json({ detail: "Internal Server Error" }, { status: 500 }), 500],
+    ["a connection dropped mid-way", () => {
+      throw failed("UND_ERR_SOCKET");
+    }, 0],
+    ["Node's five minutes for the headers", () => {
+      throw failed("UND_ERR_HEADERS_TIMEOUT");
+    }, 0],
+    ["an answer that breaks off", () => new Response('{"text": "{\\"worksheet\\"', { status: 200, headers: { "Content-Type": "application/json" } }), 200],
+  ];
+  for (const [what, answer, status] of lost) {
+    const box = sandbox();
+    let calls = 0;
+    const sleeps = [];
+    const client = automationClient({
+      ...credentials(box),
+      fetch: async () => {
+        calls++;
+        return answer();
+      },
+      sleep: async (ms) => sleeps.push(ms),
+    });
+    await assert.rejects(client.run("translator", "long-video", "Translate", { locale: "en" }), (error) => {
+      assert.ok(error instanceof AutomationError, what);
+      assert.equal(error.code, RUN_UNCERTAIN, what);
+      assert.equal(error.who, "service", what);
+      assert.equal(error.status, status, what);
+      assert.match(error.message, /no answer came back.*not sent again/, what);
+      return true;
+    });
+    assert.equal(calls, 1, `${what}: sent once`);
+    assert.deepEqual(sleeps, [], `${what}: no wait for a second try`);
+  }
+});
+
+test("a stage run that never reached a server, or that the API settled, is still tried again as before", async () => {
+  const settled = [
+    ["a refused connection", () => {
+      throw failed("ECONNREFUSED");
+    }],
+    ["an unknown host", () => {
+      throw failed("ENOTFOUND");
+    }],
+    ["the web route that never reached the API", () => Response.json({ code: "upstream_unavailable", detail: "API 服務目前無法回應" }, { status: 502 })],
+    ["the API's rate limit", () => Response.json({ code: "rate_limit_exceeded", detail: "slow down" }, { status: 429 })],
+    ["a busy vendor", () => Response.json({ code: "video_ai_upstream_busy", detail: "busy" }, { status: 503 })],
+  ];
+  for (const [what, answer] of settled) {
+    const box = sandbox();
+    let calls = 0;
+    const client = automationClient({ ...credentials(box), fetch: async () => (++calls === 1 ? answer() : Response.json({ text: "{}", model: "m" })), sleep: async () => {} });
+    assert.deepEqual(await client.run("translator", "long-video", "Translate", {}), { text: "{}", model: "m" }, what);
+    assert.equal(calls, 2, `${what}: tried again`);
+  }
+});
+
+test("the other requests keep their retries after a dropped connection", async () => {
+  const box = sandbox();
+  let calls = 0;
+  const client = automationClient({
+    ...credentials(box),
+    fetch: async () => {
+      if (++calls === 1) throw failed("UND_ERR_SOCKET");
+      return Response.json({ enabled: true });
+    },
+    sleep: async () => {},
+  });
+  assert.deepEqual(await client.settings(), { enabled: true });
+  assert.equal(calls, 2);
 });
