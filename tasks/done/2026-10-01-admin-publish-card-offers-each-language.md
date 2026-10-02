@@ -1,13 +1,13 @@
 ---
 id: 2026-10-01-admin-publish-card-offers-each-language
 title: Admin publish card offers each language thumbnail for download
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5-5-card-thumbs
 claimed_at: 2026-10-02T00:20:30Z
 created_at: 2026-10-01T15:22:58Z
-completed_at:
+completed_at: 2026-10-02T00:28:04Z
 branch: claude/publish-card-locale-thumbs
 depends_on:
   - 2026-09-28-video-localized-thumbnails
