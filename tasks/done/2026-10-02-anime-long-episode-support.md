@@ -1,13 +1,13 @@
 ---
 id: 2026-10-02-anime-long-episode-support
 title: Support long anime episodes and closed finales
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: codex-root
 claimed_at: 2026-10-02T14:30:31Z
 created_at: 2026-10-02T04:47:57Z
-completed_at:
+completed_at: 2026-10-02T15:39:38Z
 branch: codex/anime-long-production
 depends_on: []
 scope:
@@ -90,17 +90,17 @@ The Borrowed Dawn anime plan preserves the owner's 22-minute story / 30-minute b
 
 ## Definition of done
 
-- [ ] An explicit long-anime production policy accepts the intended body duration without relaxing existing shorts, knowledge-video or ordinary-drama guards.
-- [ ] Ensemble tragedy and a closed final episode can retain their actual beat and ending policies while ordinary serial episodes keep meaningful checks.
-- [ ] The API, writer budgets, narration timeline, media QA and admin UI agree on body, OP/ED and broadcast-slot duration.
-- [ ] The plan can be converted into a documented, validated input without claiming that its current planning JSON is an executable SeriesIn request.
+- [x] An explicit long-anime production policy accepts the intended body duration without relaxing existing shorts, knowledge-video or ordinary-drama guards.
+- [x] Ensemble tragedy and a closed final episode can retain their actual beat and ending policies while ordinary serial episodes keep meaningful checks.
+- [x] The API, writer budgets, narration timeline, media QA and admin UI agree on body, OP/ED and broadcast-slot duration.
+- [x] The plan can be converted into a documented, validated input without claiming that its current planning JSON is an executable SeriesIn request.
 
 ## Steps
 
-- [ ] Read docs/videos/series-plans/borrowed-dawn/plan.json and the independent content review before designing the policy.
-- [ ] Trace all duration and retention consumers and narrow the implementation scopes before claiming this task.
-- [ ] Add meaningful acceptance and boundary regressions; verify the final-episode exception is restricted to the declared last episode of a closed series.
-- [ ] Document body versus OP/ED/slot budgets and prepare a validated draft input; leave media generation, activation and publication to their separately authorized workflows.
+- [x] Read docs/videos/series-plans/borrowed-dawn/plan.json and the independent content review before designing the policy.
+- [x] Trace all duration and retention consumers and narrow the implementation scopes before claiming this task.
+- [x] Add meaningful acceptance and boundary regressions; verify the final-episode exception is restricted to the declared last episode of a closed series.
+- [x] Document body versus OP/ED/slot budgets and prepare a validated draft input; leave media generation, activation and publication to their separately authorized workflows.
 
 ## How to verify
 
@@ -117,3 +117,5 @@ Frozen implementation contract: production_policy is the explicit string long-an
 Independent review expanded the concrete consumer scope to cover scheduler status, byte-identical approval renewal, silent-action screenplay content, action position, natural-speed clip fitting and neighboring cached episode edits. Runtime approvals bind actual server episode identity and strict measured frame proof; changing a worker label cannot downgrade a native episode to ordinary rules. All native reviews remain manual despite global shortcuts. Changed budgets do not buy unchanged voice clips again. The offline adapter retains all 12 source documents, 120 episodes and 240 distinct tension events, and explicitly lists 16 missing cast voices with ready_for_production=false.
 
 Concurrent PR #1132 later appeared with separate drama audio-evidence and localization retention work on overlapping pipeline paths and the shared duration receipt. This branch does not copy its unmerged implementation or change its task. Rebase and rerun the current-file duration receipt if either draft lands first. PR #1131 still owns story polish; the original borrowed-dawn source package remains untouched here. The final branch incorporates merged branding PR #1129 before installing its independent receipt.
+
+Completed validation: 540 affected API/database tests passed with RUN_INTEGRATION_TESTS=1 on an isolated PostgreSQL 17; the final post-rebase native/create/review batch passed 131 tests without skips. Full Python Ruff and Mypy passed (815 files). Full web suite passed 3,795 tests; the final silent-action/coverage UI change passed 64 focused tests and the independent reviewer separately passed 97 current component tests. Web lint, all five locales/25 namespaces, typecheck and production build passed. Final npm run test:tools passed 1,336 tests, failed zero and retained one pre-existing optional smoke skip. The independent DURATION_ONLY increment binds 108 current files, preserves the 70 historical paths and checker logic, and passed all 473 plans plus the receipt regressions. npm run check:tasks and git diff --check passed. The concrete offline draft was regenerated and still has ready_for_production=false. The owned PostgreSQL test container was stopped and removed; no real provider, production host, activation or publication was used.
