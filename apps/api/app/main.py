@@ -87,6 +87,7 @@ from app.usage.router import router as usage_router
 from app.video_automation.admin_api import admin_router as admin_video_automation_router
 from app.video_automation.admin_api import tool_router as video_automation_router
 from app.video_media.admin_api import media_router as video_media_router
+from app.video_plans.router import router as admin_video_plans_router
 from app.video_reviews.admin_api import admin_router as admin_video_reviews_router
 from app.video_reviews.admin_api import tool_router as video_reviews_router
 from app.video_shorts.admin_api import admin_router as admin_video_shorts_router
@@ -210,6 +211,7 @@ app.include_router(video_youtube_publish_router, prefix="/api/v1")
 app.include_router(video_automation_router, prefix="/api/v1")
 app.include_router(admin_video_automation_router, prefix="/api/v1")
 app.include_router(video_media_router, prefix="/api/v1")
+app.include_router(admin_video_plans_router, prefix="/api/v1")
 # The Shorts tab (docs/videos/SHORTS.md). The publish and the jobs routers start empty: the
 # tickets that fill them add routes to their own file and leave this one alone.
 app.include_router(video_shorts_router, prefix="/api/v1")
