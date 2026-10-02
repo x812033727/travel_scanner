@@ -31,6 +31,18 @@ test("the bundled fonts cover Traditional Chinese, Latin and full-width punctuat
   assert.deepEqual(uncovered("好用 🤖", coverage), ["🤖"]);
 });
 
+test("coverage is judged per language: Korean and Simplified Chinese thumbnails have their own font, slides still refuse what only those have", () => {
+  const slides = bundledCoverage();
+  // 佥 (U+4F65) is the Simplified form of 僉: only the SC font's ranges hold it.
+  assert.deepEqual(uncovered("佥", slides), ["佥"], "a Traditional Chinese slide still refuses it");
+  assert.deepEqual(uncovered("佥", bundledCoverage("zh-CN")), []);
+  assert.deepEqual(uncovered("바이브 코딩 코드 없이", slides), ["바", "브", "코", "딩", "드", "없"]);
+  assert.deepEqual(uncovered("바이브 코딩 코드 없이 AI 2026", bundledCoverage("ko")), []);
+  assert.deepEqual(uncovered("佥", bundledCoverage("ko")), ["佥"], "each locale adds only its own font");
+  assert.equal(bundledCoverage("en"), slides, "a locale without a font of its own is the slides' coverage");
+  assert.equal(bundledCoverage(), bundledCoverage(null), "and is read once");
+});
+
 test("a glyph no bundled font has is reported with its code point", () => {
   const doc = structuredClone(showcase);
   doc.scenes[0].data.subtitle = "好用 🤖";
@@ -108,6 +120,10 @@ test("the fake origin serves pages, theme, fonts and allowed assets, and nothing
   assert.equal(at("https://video.local/state/ffff.html"), null);
   assert.match(at("https://video.local/theme.css").file, /theme\.css$/);
   assert.match(at("https://video.local/fonts/noto-sans-tc/files/x.woff2").file, /noto-sans-tc[\\/]files[\\/]x\.woff2$/);
+  assert.match(at("https://video.local/fonts/noto-sans-kr/index.css").file, /noto-sans-kr[\\/]index\.css$/);
+  assert.match(at("https://video.local/fonts/noto-sans-sc/files/y.woff2").file, /noto-sans-sc[\\/]files[\\/]y\.woff2$/);
+  assert.equal(at("https://video.local/fonts/noto-sans-jp/index.css"), null, "only the bundled fonts");
+  assert.equal(at("https://video.local/fonts/constructor/index.css"), null);
   assert.equal(at("https://video.local/repo/apps/web/public/a.svg").file, path.join(root, "apps/web/public/a.svg"));
   assert.equal(at("https://video.local/repo/apps/api/.env"), null);
   assert.equal(at("https://video.local/repo/apps/web/public/../../api/.env"), null);
@@ -263,12 +279,33 @@ test("each caption locale with current thumbnail words gets its own thumbnail on
   assert.deepEqual(Object.keys(plan.thumbnail.gaps), ["ja", "zh-CN"]);
   assert.match(plan.thumbnail.gaps["zh-CN"], /not merged by i18n-merge/);
   assert.match(plan.thumbnail.gaps.ja, /i18n\/ja\.json has no thumbnail words/);
-  // Hangul the bundled fonts lack is a note for that locale, not a failed render.
+  // Korean is set in its own font, which has the Hangul the slide font lacks.
+  const [, ko] = plan.thumbnail.locales;
+  assert.match(ko.html, /<html lang="ko">.*fonts\/noto-sans-kr\/index\.css/);
+  assert.doesNotMatch(en.html, /noto-sans-kr/);
+  assert.doesNotMatch(plan.thumbnail.html, /noto-sans-kr/, "the video's own thumbnail is as it was");
   assert.deepEqual(coverageProblems(plan, bundledCoverage()), []);
-  const localized = localizedThumbnails(plan, bundledCoverage());
-  assert.deepEqual(localized.drawable.map((own) => own.locale), ["en"]);
-  assert.match(localized.gaps.ko, /no bundled font has .*U\+D14C/);
+  const localized = localizedThumbnails(plan);
+  assert.deepEqual(localized.drawable.map((own) => own.locale), ["en", "ko"]);
+  assert.deepEqual(localized.gaps, plan.thumbnail.gaps);
+  // Words a locale's fonts cannot draw are a note for that locale, not a failed render.
+  const slideFontsOnly = localizedThumbnails(plan, () => bundledCoverage());
+  assert.deepEqual(slideFontsOnly.drawable.map((own) => own.locale), ["en"]);
+  assert.match(slideFontsOnly.gaps.ko, /no bundled font has .*U\+D14C/);
   // Without translations the plan is as it was.
   assert.equal(renderPlan(doc, "t", null, { keyframes }).thumbnail.locales, undefined);
-  assert.deepEqual(localizedThumbnails(renderPlan(doc, "t", null, { keyframes }), bundledCoverage()), { drawable: [], drawn: {}, gaps: {} });
+  assert.deepEqual(localizedThumbnails(renderPlan(doc, "t", null, { keyframes })), { drawable: [], drawn: {}, gaps: {} });
+});
+
+test("a Simplified Chinese thumbnail with a Simplified-only form is drawable in its own font", () => {
+  const doc = explainerFixture();
+  const keyframes = { flash: { file: "keyframes/flash-1.png", sha256: "aa" }, race: { file: "keyframes/race-1.png", sha256: "bb" } };
+  const words = Object.fromEntries(Object.keys(thumbnailSource(doc)).map((name) => [name, `写码 佥 ${name}`]));
+  const translations = { "zh-CN": { thumbnail: words, source_hashes: { thumbnail: thumbnailSourceHash(doc) } } };
+  const plan = renderPlan(doc, "t", null, { keyframes, translations });
+  const [sc] = plan.thumbnail.locales;
+  assert.equal(sc.locale, "zh-CN");
+  assert.match(sc.html, /<html lang="zh-Hans">.*fonts\/noto-sans-sc\/index\.css.*--font:"Noto Sans SC Variable"/);
+  assert.deepEqual(localizedThumbnails(plan).drawable.map((own) => own.locale), ["zh-CN"]);
+  assert.match(localizedThumbnails(plan, () => bundledCoverage()).gaps["zh-CN"], /U\+4F65/, "the slide fonts alone lack it");
 });
