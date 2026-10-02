@@ -3314,6 +3314,128 @@
     }
   },
   "videoShorts": {
+    "topics": {
+      "help": "コンテンツラインごとに、作る順に並べています。順番のあるものが先で、残りは追加日時の順です。ステータスはサーバーが仕様と素材から決めます。",
+      "empty": "テーマはまだありません",
+      "emptyDetail": "アイデアを追加するか、15 テーマの企画をインポートしてください。チュートリアルが公開されるか、ドラマの完成版が承認されると、サーバーがハイライトと縦型ショートのテーマを自動で追加します。",
+      "statuses": {
+        "idea": "アイデア",
+        "ready": "制作可能",
+        "needs_assets": "素材待ち",
+        "making": "制作中",
+        "made": "完成",
+        "dropped": "見送り"
+      },
+      "origins": {
+        "campaign": "企画",
+        "planner": "企画モデル",
+        "owner": "サイト管理者",
+        "auto": "自動"
+      },
+      "paid": "費用あり",
+      "order": "順番 {order}",
+      "project": "動画 {slug}",
+      "updated": "{time} 更新",
+      "hook": "フック：",
+      "waitingFor": "まだ作れない理由：",
+      "note": "メモ：{note}",
+      "showSpec": "仕様をすべて見る",
+      "hideSpec": "仕様を閉じる",
+      "front": "先頭に移動",
+      "drop": "このテーマを見送る",
+      "restore": "元に戻す",
+      "dropConfirm": "「{title}」を見送りますか？あとで元に戻せます。",
+      "actionError": "変更できませんでした：{message}",
+      "spec": {
+        "title": "{title} の仕様",
+        "protocol": "テスト仕様",
+        "truthCheck": "正解の確認",
+        "acceptance": "完成条件",
+        "none": "未記入",
+        "missing": "未記入",
+        "source": "元の動画：{slug}",
+        "noSource": "元の動画がまだありません",
+        "requires": "ほかに必要なもの："
+      },
+      "protocol": {
+        "setup": "準備",
+        "input": "入力",
+        "condition_a": "A グループ",
+        "condition_b": "B グループ",
+        "runs": "実行回数",
+        "scoring": "採点方法",
+        "failure_path": "失敗したとき"
+      },
+      "requires": {
+        "vision": "画像を読めるモデル",
+        "image_edit": "画像を編集できるモデル",
+        "sandbox": "隔離された実行環境",
+        "image_generation": "画像生成（費用あり）"
+      },
+      "idea": {
+        "title": "アイデアを追加",
+        "help": "アイデアを 1 文で書き、コンテンツラインを選びます。「アイデア」として保存され、企画モデルが次の回に完全な仕様にします。",
+        "text": "アイデア",
+        "line": "コンテンツライン",
+        "submit": "アイデアとして保存",
+        "saved": "保存しました。企画モデルが次の回に仕様を仕上げます。",
+        "error": "保存できませんでした：{message}"
+      },
+      "import": {
+        "title": "15 テーマの企画をインポート",
+        "help": "docs/videos/ai-shorts/campaign/campaign.json を選ぶと、そのまま送信します。すでにあるテーマはスキップされるので、もう一度インポートしても増えません。",
+        "file": "campaign.json ファイル",
+        "button": "15 テーマの企画をインポート",
+        "busy": "インポート中…",
+        "done": "{created} 件をインポートし、{skipped} 件をスキップしました（すでにあるテーマ）。",
+        "notJson": "このファイルは JSON ではありません。campaign.json を選んでください。",
+        "error": "インポートできませんでした：{message}"
+      },
+      "assets": {
+        "box": "素材ボックス",
+        "title": "{title} の素材",
+        "count": "{have}／{count}",
+        "madeBy": "撮影者 {author}",
+        "file": "写真（PNG、JPEG、WebP）",
+        "author": "撮影者（または作者）",
+        "takenOn": "撮影日",
+        "rights": "権利の説明（誰が撮ったか、どう使えるか）",
+        "help": "写真はブラウザーで長辺 2,048 px に縮小し、EXIF（撮影場所やカメラの情報）を取り除いてから分割してアップロードします。",
+        "upload": "アップロード",
+        "sending": "アップロード中（{parts} 個中 {part} 個目）",
+        "done": "アップロードしました。",
+        "error": "アップロードできませんでした：{message}"
+      }
+    },
+    "report": {
+      "help": "週に 1 本、新しいものが上です。本文は企画モデルが書き、その下に引用した数字を載せます。どの数字も YouTube が返した元の値で、取得元と取得時刻を添えています。このページでは数字を計算しません。",
+      "empty": "週次レポートはまだありません",
+      "emptyDetail": "ホストのワーカーが毎週、企画モデルに前の週のレポートを書かせます。書き終わるとここに表示されます。",
+      "week": "{start}〜{end} の週",
+      "writtenBy": "{model}、{time} 作成",
+      "modelUnknown": "モデル名の報告なし",
+      "rowsTitle": "レポートが引用した数字（YouTube の元の値）",
+      "noRows": "このレポートは数字を引用していません。",
+      "columns": {
+        "short": "Shorts",
+        "period": "期間",
+        "read": "取得元と取得時刻"
+      },
+      "range": "{start}〜{end}",
+      "values": {
+        "views": "視聴回数",
+        "engaged_views": "Engaged views",
+        "likes": "高評価",
+        "comments": "コメント",
+        "shares": "共有",
+        "subscribers_gained": "登録者の増加",
+        "avg_view_seconds": "平均視聴秒数",
+        "avg_view_percent": "平均視聴率",
+        "stayed_percent": "視聴を続けた割合"
+      },
+      "planTitle": "来週の予定",
+      "planEmpty": "レポートに来週の予定はありません。"
+    },
     "loading": "読み込み中…",
     "loadError": "Shorts のデータを読み込めません",
     "retry": "再試行",
@@ -3321,6 +3443,8 @@
     "seconds": "{seconds} 秒",
     "viewsLabel": "Shorts タブの画面",
     "views": {
+      "topics": "テーマ",
+      "report": "週次レポート",
       "calendar": "カレンダー",
       "library": "ライブラリと制作中",
       "metrics": "成果",
@@ -3594,10 +3718,24 @@
       }
     },
     "settings": {
+      "scopeConfirm": "コンテンツライン、1 日の上限、公開時刻、タイムゾーンのいずれかを変更しました。保存すると現在の自動公開の同意は無効になり、新しい文面を読んで同意し直すまで自動公開は止まります。保存しますか？",
+      "subjects": {
+        "title": "テスト対象のモデル",
+        "help": "検証ラインの各テーマは A グループと B グループでそれぞれ新しい会話で 1 回ずつ実行します。選択肢は AI 設定ページと同じです。ワーカーはモデルを指定できません。",
+        "a": "A グループ",
+        "b": "B グループ",
+        "provider": "プロバイダー",
+        "model": "モデル",
+        "none": "未選択（検証は実行されません）",
+        "sameAsA": "A グループと同じ",
+        "notReady": "まだ使えません",
+        "monthHelp": "ホストのワーカーが 1 か月に作り始める Shorts の上限です。0 なら作り始めません。"
+      },
       "help": "Shorts には、解説動画や漫画ドラマとは別の設定があります。保存、開始、同意には「設定の管理」の権限が必要です。",
       "paceTitle": "ペースと枠",
       "paceHelp": "区間ごとに書きます：何日間、1 日に何本。本数は交互にできます。「2, 1」は 1 日 2 本、翌日 1 本です。その日の本数だけ、下の公開時刻を順番に使います。",
       "fields": {
+        "max_per_month": "1 か月に作り始める本数の上限",
         "pattern_days": "何日間",
         "pattern_counts": "1 日の本数（交互にする場合はカンマ区切り）",
         "slot_times": "公開時刻（24 時間制、カンマ区切り）",
