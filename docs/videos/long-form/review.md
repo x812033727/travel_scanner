@@ -199,16 +199,28 @@ Ran: `node tools/video/long-form/cli.mjs check` before rebinding failed only on 
 
 Non-claims: this review does not accept the Shorts topic library, asset upload, weekly report or automation settings themselves. It covers no API behaviour, CI, browser, media, production write or publication. PASS is DURATION_ONLY for the five rebound hashes below. Required duration fixes remaining: none.
 
+## PR #1126 Shorts skill-docs increment: 5 files (2026-10-02)
+
+Reviewer: `claude-pr-review-1126`. Author: `claude-opus-5-5-shorts-d1` (the Claude session that wrote PR #1126, "the Shorts route in the youtube-video skill, the channel spec and the automation design", branch claude/video-shorts-skill-docs, HEAD f5878612). Scope: DURATION_ONLY. The reviewer did not write these changes.
+
+Baseline: the merge base a3917a93 is origin/main's tip (`git diff a3917a93 origin/main` is empty), and its bytes of .agents/skills/youtube-video/SKILL.md, .claude/skills/youtube-video/SKILL.md, .agents/skills/youtube-video/references/automated.md, .agents/skills/youtube-video/references/formats.md and docs/videos/README.md equal the hashes bound before this increment. So `git diff a3917a93 f5878612` of those five files is exactly the unreviewed change. The other 65 bindings are untouched. The reviewer read the full delta of all five files and, for context, the unbound delta of references/shorts.md (new), references/publish.md, docs/videos/AUTOMATION.md and docs/videos/ai-shorts/README.md.
+
+Findings. The two SKILL.md copies are byte-identical before and after. Each extends the frontmatter description with a Shorts sentence (25–55 second vertical videos, tools/video/shorts), adds a Shorts row to the route table (1080×1920, 25–55 seconds), adds "a vertical short that says one thing within a minute goes to Shorts" to the default-route paragraph, and adds two reference-table rows pointing at shorts.md and the shorts prompts. The unchanged paragraph after them still states the long-form rules: knowledge seasons and AI terms target 10 minutes, brand stories keep 13, narration body and final cut at least 8 minutes each, flat explainers 8–20 whole minutes default 10, and Shorts, ordinary drama and compilations keep their own formats. The existing brand-story row (12–15 minutes) is unchanged. formats.md changes one clause of its 8-minute rule from "short videos (Shorts within 60 seconds) are not an episode" to "vertical shorts (25–55 second Shorts) are not an episode"; the rule itself ("every episode except drama is at least 8 minutes") and the following long-form paragraph are byte-unchanged. Its Shorts section is rewritten (1080×1920, 30 fps, 25–55 seconds from the Shorts settings, JSON script, opening and closing rules, the lab, cut and drama lines). The cut line takes at most two Shorts from a published long video and attaches two at writing time for illustrated-slides and So-That's-Why videos; it adds Shorts, never shortens or trims the long video. automated.md rewrites the STOP bullet's Shorts knock detail (worker.sh loop, VIDEO_SHORTS_KNOCK_SECONDS default 300) and adds a bullet on where a Shorts unit sits in an `auto` round (report, plan, brief, make). Those seconds are a polling interval, not a length, and nothing in either bullet touches a long-form target or floor. docs/videos/README.md adds a Shorts row to the format table (25–55 seconds, −14 LUFS, safe area) and changes the voice table: the provider becomes Gemini with Azure as an alternative, and the channel voice becomes Gemini Sulafat (owner's 2026-09-24 choice), also used for Shorts. The speech-rate row (+0%, 250 characters a minute) and the whole-frame padding sentence are unchanged, so the voice change is about the voice only. All new length figures are scoped to Shorts. No changed line states or alters a long-form length: explainer 10 default and 8–20, ordinary drama 1–8 default 3, brand stories 13 minutes / 720–900 s, AI terms 600 s / 540–660 s, the 8-minute general final-cut floor, the 14,400-frame catalog body proof and the 480-second measured minimums keep their wording. In the context files, shorts.md says Shorts are not bound by the 8-minute-per-episode rule, and nothing there or in publish.md, AUTOMATION.md or ai-shorts/README.md states a different long-form length.
+
+Ran: `node tools/video/long-form/cli.mjs check` before rebinding failed only on these five stale bindings (exit 1). `node --test tools/video/long-form/*.test.mjs tools/skills.test.mjs` ran 29 tests: 28 passed and 1 failed. The one failure was the shipped binding regression, failing on those same five paths. After rebinding, the CLI check and the same test command were rerun.
+
+Non-claims: this review does not accept the Shorts route, the worker's Shorts unit, the publish steps or the voice choice themselves, and it does not check that the docs match the Shorts code. It covers no CI, browser, media, provider call, production write or publication. PASS is DURATION_ONLY for the five rebound hashes below. Required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 70 bindings describe the current reviewed bytes after the main-merge and owned migration-order increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
-| `.agents/skills/youtube-video/SKILL.md` | `298f5b0084e3b7c82544d1895234f0a0dac0261caec98d89d7c6a4643ec9406b` |
-| `.agents/skills/youtube-video/references/automated.md` | `de793ad631be8ebe05a22a848adb0c6d0e86980db60092ee879ebc815d8b17ad` |
-| `.agents/skills/youtube-video/references/formats.md` | `17857aae0d529984f25a3360f69a60b4cc51bd715343eeecd051e6686f475875` |
-| `.claude/skills/youtube-video/SKILL.md` | `298f5b0084e3b7c82544d1895234f0a0dac0261caec98d89d7c6a4643ec9406b` |
+| `.agents/skills/youtube-video/SKILL.md` | `9f425b6361451c032e56a5ccc2e7e9eef58feacd5c479e16551cc1918f826939` |
+| `.agents/skills/youtube-video/references/automated.md` | `05da9e6045979c5af53164bca6514af624e1858880c1f6370d4f667149322db5` |
+| `.agents/skills/youtube-video/references/formats.md` | `57eb41e88c6456f7ed25be0aa77af9fc28e252bea2792dac68851d0e8406ca67` |
+| `.claude/skills/youtube-video/SKILL.md` | `9f425b6361451c032e56a5ccc2e7e9eef58feacd5c479e16551cc1918f826939` |
 | `apps/api/app/video_automation/models.py` | `ff5ba88f0be1efb1923dd1d9a870ac72ed378d851b879b9a68c64b53771ed699` |
 | `apps/api/app/video_automation/schemas.py` | `0cea45c4947831e49194814befd94f8eb9bd5b528e0e99c29c29d67439642894` |
 | `apps/api/app/video_automation/series.py` | `d5e982dcc71465ae076179e3da35c9e87bd3a2138712a2c2d5de9802e421d234` |
@@ -230,7 +242,7 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | `apps/web/messages/zh-TW/admin.json` | `beddd17be53d7e2c60d2e2bb4c41f0a094ec2cae0392b87329204d241633d34d` |
 | `docs/videos/DESIGN.md` | `299449c6c19a40a0e17868615a7d8442771449e0db6e63186ca9c57a0d57ab41` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `ac08a33baedd84f282901594e55758f4b390ee1a8dc798e2c25c4b463081aa80` |
-| `docs/videos/README.md` | `88a8fcb1e6019d279b790f089feb14abe5dc21d2b1c0624f4d0fe25c73346868` |
+| `docs/videos/README.md` | `928de9f2dcfbe7126654501e0dbc4339dea55f716f875e931ab2df0cae3e219d` |
 | `docs/videos/long-form/README.md` | `dd639c0c85595881d1bda64541d28f29e8d90f1067e541c08eb28dc9c4543c3b` |
 | `docs/videos/long-form/plans.json` | `22023c15fa10a24e4a0141e3fc5930ff6925a84ff5ab5cb5a466a5baa15b7108` |
 | `docs/videos/long-form/policy.json` | `6f08e7cd27b98710dc308bdb7ea44a6db4b1c8891d0731d5387d9b2245636bad` |
