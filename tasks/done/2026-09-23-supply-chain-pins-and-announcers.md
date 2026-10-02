@@ -1,13 +1,13 @@
 ---
 id: 2026-09-23-supply-chain-pins-and-announcers
 title: Supply chain: base images by digest, uv pin, mailpit latest, red-main fork filter, audit announcer
-status: in-progress
+status: done
 priority: P3
 area: ops
 owner: claude-opus-5-5-supply-chain
 claimed_at: 2026-10-02T17:38:09Z
 created_at: 2026-09-23T15:57:51Z
-completed_at:
+completed_at: 2026-10-02T18:08:05Z
 branch: claude/supply-chain-pins
 depends_on: []
 scope:
