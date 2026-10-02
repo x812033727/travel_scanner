@@ -24,10 +24,11 @@ from zoneinfo import ZoneInfo
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.models import VideoProject
+from app.models import AdminAuditLog, VideoProject, VideoReview
 from app.video_automation.models import VideoAutomationSettings
 from app.video_automation.usage import month_start
 from app.video_shorts import costs, rules
+from app.video_shorts import slots as shorts_slots
 from app.video_shorts.errors import ShortsRefused
 from app.video_shorts.models import VideoShortsSettings, VideoShortsSlot, VideoShortsTopic
 from app.video_shorts.plan import is_open, local_week, plan_window
@@ -537,5 +538,38 @@ async def finish_topic(
     if payload.note is not None:
         topic.note = payload.note or None
     topic.updated_at = moment
+    if final == "dropped" and topic.project_slug:
+        await _drop_empty_video(session, topic.project_slug, topic.note, moment)
     await session.commit()
     return await topic_view(session, topic)
+
+
+async def _drop_empty_video(
+    session: AsyncSession, slug: str, note: str | None, moment: datetime
+) -> None:
+    """A topic given up before anything reached the owner leaves its video with nothing in it
+    (a tutorial with one highlight: start_topic made the video, the worker found no passage).
+    Drop that video too, as the owner would, so it leaves 製作中 and the calendar. A video
+    that already has a review is the owner's to judge and stays. The caller commits."""
+    project = await session.scalar(
+        select(VideoProject).where(VideoProject.slug == slug).with_for_update()
+    )
+    if project is None or project.dropped_at is not None:
+        return
+    reviews = await session.scalar(
+        select(func.count()).select_from(VideoReview).where(VideoReview.project_id == project.id)
+    )
+    if reviews:
+        return
+    project.dropped_at = moment
+    project.dropped_note = note or "Shorts 題目放棄，影片還沒有任何內容"
+    project.updated_at = moment
+    await shorts_slots.release(session, slug, moment)
+    session.add(
+        AdminAuditLog(
+            actor_user_id=None,
+            action="video_project_dropped",
+            target=f"video_project:{project.id}",
+            metadata_json={"slug": slug, "by": "shorts_topic_dropped"},
+        )
+    )
