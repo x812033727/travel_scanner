@@ -7,6 +7,12 @@
 // strips (when they are burned in) and its thumbnail, on the chosen shot's keyframe. Every other
 // caption locale whose i18n file has current thumbnail words gets its own thumbnail as well, in
 // thumbnails/<locale>.jpg (YouTube Studio's 「語言」 page takes one per language).
+//
+// --thumbnails-only draws those language thumbnails alone, for words translated after the frames
+// were rendered (the worker's language batch runs after the final cut is approved): it needs a
+// frames manifest for this very script, adds only thumbnail_locales and thumbnail_locale_gaps to
+// it, and leaves the slide states, their cache, thumbnail.jpg, the variants and the contact sheet
+// as they are, so nothing the approved final.mp4 was cut from is drawn again.
 import { existsSync, readFileSync, rmSync, writeFileSync, mkdirSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
@@ -78,13 +84,99 @@ export function localizedThumbnails(plan, coverageOf = bundledCoverage) {
   return { drawable, drawn: {}, gaps };
 }
 
+/**
+ * Draw `localized.drawable` into thumbnails/<locale>.jpg, filling `localized.drawn`; one that does
+ * not fit joins the gaps. A locale left undrawn loses any older picture, so package never takes it.
+ */
+async function drawLocalized(renderer, localized, workdir) {
+  for (const own of localized.drawable) {
+    const thumb = await renderer.capture(own.key, own.html, { size: THUMB_SIZE, type: "jpeg", quality: 90 });
+    const problems = [...thumb.problems, ...(thumb.still.length > THUMBNAIL_MAX_BYTES ? [`${thumb.still.length} bytes; YouTube's limit is 2 MB`] : [])];
+    if (problems.length) {
+      localized.gaps[own.locale] = `its thumbnail did not fit and was not drawn: ${problems.join("; ")}`;
+      continue;
+    }
+    mkdirSync(path.join(workdir, path.dirname(own.file)), { recursive: true });
+    writeFileSync(path.join(workdir, own.file), thumb.still);
+    localized.drawn[own.locale] = { file: own.file, hash: own.hash };
+  }
+  for (const locale of LOCALES) {
+    const file = path.join(workdir, localeThumbnailFile(locale));
+    if (!localized.drawn[locale] && existsSync(file)) rmSync(file);
+  }
+}
+
+/** The manifest's language thumbnail fields as `localized` has them; empty ones are left out. */
+const localizedFields = (localized) => ({
+  ...(Object.keys(localized.drawn).length ? { thumbnail_locales: localized.drawn } : {}),
+  ...(Object.keys(localized.gaps).length ? { thumbnail_locale_gaps: localized.gaps } : {}),
+});
+
+function reportLocalized(out, localized) {
+  const own = Object.keys(localized.drawn);
+  if (own.length) out.write(`thumbnails of their own: ${own.map((locale) => localized.drawn[locale].file).join(", ")}\n`);
+  for (const [locale, why] of Object.entries(localized.gaps)) out.write(`note: no ${locale} thumbnail of its own (it keeps ${THUMBNAIL_FILE}): ${why}\n`);
+}
+
+/**
+ * `render --thumbnails-only`: the caption locales' own thumbnails and nothing else. The frames
+ * manifest must be this script's (its visual_hash); its other fields, every slide state, the cache,
+ * thumbnail.jpg and the contact sheet stay as they are. Screencast scenes are left out of the plan
+ * (their stills are not drawn here, so their captures are not taken again).
+ */
+async function thumbnailsOnly({ ctx, project, workdir, channel }) {
+  const { EXIT } = ctx;
+  const { doc } = project;
+  const manifestFile = path.join(workdir, ARTIFACTS.frames);
+  const manifest = readJson(manifestFile, null);
+  if (!manifest || manifest.visual_hash !== visualHash(doc)) {
+    ctx.stderr.write("frames/manifest.json is missing or was rendered for an older script; run render without --thumbnails-only first\n");
+    return EXIT.usage;
+  }
+  if (!doc.thumbnail) {
+    ctx.stdout.write("the script has no thumbnail; no language has one of its own\n");
+    return EXIT.ok;
+  }
+  const keyframes = hasPictures(doc) ? (readJson(path.join(workdir, ARTIFACTS.keyframes), null)?.shots ?? {}) : {};
+  const plan = renderPlan({ ...doc, scenes: doc.scenes.filter((scene) => !isScreencast(scene)) }, themeHash(), ctx.root, { keyframes, translations: project.translations });
+  if (plan.thumbnail.shot && !plan.thumbnail.keyframe) {
+    ctx.stderr.write(`the thumbnail's background is the keyframe of shot ${plan.thumbnail.shot}, which is not drawn yet; run keyframes first\n`);
+    return EXIT.usage;
+  }
+  const localized = localizedThumbnails(plan);
+  const started = Date.now();
+  let renderer;
+  try {
+    renderer = await (ctx.openRenderer ?? openRenderer)({ root: ctx.root, workdir, channel });
+  } catch (error) {
+    if (!(error instanceof RendererError)) throw error;
+    ctx.stderr.write(`${error.message}\n`);
+    return EXIT.missing;
+  }
+  try {
+    await drawLocalized(renderer, localized, workdir);
+  } finally {
+    await renderer.close();
+  }
+  const kept = { ...manifest };
+  delete kept.thumbnail_locales;
+  delete kept.thumbnail_locale_gaps;
+  atomicWrite(manifestFile, `${JSON.stringify({ ...kept, ...localizedFields(localized) }, null, 2)}\n`);
+  const seconds = Math.round((Date.now() - started) / 1000);
+  recordStage(workdir, "render", { thumbnails_only: true, drawn: Object.keys(localized.drawn), seconds, channel: channel ?? "bundled chromium" }, ctx.now());
+  ctx.stdout.write(`${Object.keys(localized.drawn).length} language thumbnails drawn in ${seconds} s; the frames are as they were\n`);
+  reportLocalized(ctx.stdout, localized);
+  return EXIT.ok;
+}
+
 export async function run(command, args, ctx) {
   const { EXIT } = ctx;
   const values = parseArgs({
     args,
     // --recapture takes the screencast scenes' pages again; --profile points their browser at a
-    // persistent profile the owner signed in to himself (agents never pass it).
-    options: { slug: { type: "string" }, file: { type: "string" }, workdir: { type: "string" }, channel: { type: "string" }, force: { type: "boolean" }, recapture: { type: "boolean" }, profile: { type: "string" } },
+    // persistent profile the owner signed in to himself (agents never pass it). --thumbnails-only
+    // draws the language thumbnails alone (thumbnailsOnly).
+    options: { slug: { type: "string" }, file: { type: "string" }, workdir: { type: "string" }, channel: { type: "string" }, force: { type: "boolean" }, recapture: { type: "boolean" }, profile: { type: "string" }, "thumbnails-only": { type: "boolean" } },
     strict: true,
   }).values;
   if (!values.slug && !values.file) throw new UsageError("render needs --slug (or --file for an example outside docs/videos)");
@@ -102,6 +194,7 @@ export async function run(command, args, ctx) {
     return EXIT.lint;
   }
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug, root: ctx.root });
+  if (values["thumbnails-only"]) return thumbnailsOnly({ ctx, project, workdir, channel: values.channel ?? ctx.env.VIDEO_BROWSER_CHANNEL });
   // A series' compilation (docs/videos/BINGE.md) is a drama with cards and a thumbnail only:
   // the episodes' cuts already carry their subtitles, so nothing is timed to a narration here.
   const compilation = isCompilation(doc);
@@ -242,22 +335,8 @@ export async function run(command, args, ctx) {
         const file = path.join(workdir, thumbnailVariantFile(id));
         if (!plan.thumbnail.variants?.some((variant) => variant.id === id) && existsSync(file)) rmSync(file);
       }
-      for (const own of localized.drawable) {
-        const thumb = await renderer.capture(own.key, own.html, { size: THUMB_SIZE, type: "jpeg", quality: 90 });
-        const problems = [...thumb.problems, ...(thumb.still.length > THUMBNAIL_MAX_BYTES ? [`${thumb.still.length} bytes; YouTube's limit is 2 MB`] : [])];
-        if (problems.length) {
-          localized.gaps[own.locale] = `its thumbnail did not fit and was not drawn: ${problems.join("; ")}`;
-          continue;
-        }
-        mkdirSync(path.join(workdir, path.dirname(own.file)), { recursive: true });
-        writeFileSync(path.join(workdir, own.file), thumb.still);
-        localized.drawn[own.locale] = { file: own.file, hash: own.hash };
-      }
       // A locale that lost its words, or whose thumbnail no longer fits, leaves no older picture behind.
-      for (const locale of LOCALES) {
-        const file = path.join(workdir, localeThumbnailFile(locale));
-        if (!localized.drawn[locale] && existsSync(file)) rmSync(file);
-      }
+      await drawLocalized(renderer, localized, workdir);
     }
     // Problems found in an earlier run stay problems until the state is redrawn.
     const remembered = (key, where) => {
@@ -303,8 +382,7 @@ export async function run(command, args, ctx) {
     ...(plan.thumbnail?.variants ? { thumbnail_variants: plan.thumbnail.variants.map((variant) => variant.file) } : {}),
     // Each caption locale's own thumbnail (YouTube Studio's 「語言」 page), with the hash of what it
     // was drawn from for package to compare; the locales without one and why, for its notes.
-    ...(Object.keys(localized.drawn).length ? { thumbnail_locales: localized.drawn } : {}),
-    ...(Object.keys(localized.gaps).length ? { thumbnail_locale_gaps: localized.gaps } : {}),
+    ...localizedFields(localized),
     // Burned-in subtitles follow the narration, so status compares these two hashes as well.
     ...(subtitles
       ? {
@@ -324,8 +402,6 @@ export async function run(command, args, ctx) {
   recordStage(workdir, "render", { states: drawn + reused, drawn, reused, strips, seconds, channel: channel ?? "bundled chromium" }, ctx.now());
   const sheet = tiles.length ? `; contact sheet: ${path.join(workdir, ARTIFACTS.contactSheet)}` : "";
   ctx.stdout.write(`${drawn} states drawn, ${reused} reused${subtitles ? ` (${strips} subtitle strips, ${subtitles.cues.length} cues)` : ""}, in ${seconds} s${sheet}\n`);
-  const own = Object.keys(localized.drawn);
-  if (own.length) ctx.stdout.write(`thumbnails of their own: ${own.map((locale) => localized.drawn[locale].file).join(", ")}\n`);
-  for (const [locale, why] of Object.entries(localized.gaps)) ctx.stdout.write(`note: no ${locale} thumbnail of its own (it keeps ${THUMBNAIL_FILE}): ${why}\n`);
+  reportLocalized(ctx.stdout, localized);
   return EXIT.ok;
 }
