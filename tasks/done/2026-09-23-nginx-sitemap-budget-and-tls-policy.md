@@ -1,13 +1,13 @@
 ---
 id: 2026-09-23-nginx-sitemap-budget-and-tls-policy
 title: Edge: sitemap and well-known locations have no request budget and TLS policy lives only on the host
-status: in-progress
+status: done
 priority: P3
 area: ops
 owner: claude-opus-5-5-nginx-edge
 claimed_at: 2026-10-02T16:35:04Z
 created_at: 2026-09-23T15:57:50Z
-completed_at:
+completed_at: 2026-10-02T16:47:12Z
 branch: claude/nginx-sitemap-budget-tls
 depends_on: []
 scope:
