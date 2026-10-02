@@ -44,6 +44,8 @@ const ROUTES = [
   "/zh-TW/explore", "/zh-TW/search", "/zh-TW/trips", "/zh-TW/trips/new",
   "/zh-TW/hotspots", "/zh-TW/pet-friendly", "/zh-TW/community",
   "/zh-TW/login", "/zh-TW/register", "/zh-TW/account", "/zh-TW/my", "/zh-TW/admin",
+  // The [...rest] 404 document, reached through a dotted path the matcher used to skip.
+  "/zh-TW/no-such.page",
 ];
 
 test("every route loads with no refusal and no report, under either policy", async ({ page }) => {
@@ -101,6 +103,11 @@ test("documents carry the enforced policy and static assets keep the baseline", 
   for (const directive of ["object-src 'none'", "base-uri 'self'", "form-action 'self' https:", "frame-ancestors 'none'"]) {
     expect(enforced).toContain(directive);
   }
+  // A dot alone does not make a path a file: this 404 document mounts the provider tree and the
+  // third-party scripts like any page, so it carries the nonce like any page.
+  const missing = await page.goto("/zh-TW/no-such.page");
+  expect(missing?.status()).toBe(404);
+  expect(missing?.headers()["content-security-policy"] ?? "").toMatch(/script-src [^;]*'nonce-/);
   // The middleware matcher skips files, so these keep the static baseline and never a nonce.
   const asset = await page.goto("/icon.svg");
   expect(asset?.headers()["content-security-policy"]).toBe(

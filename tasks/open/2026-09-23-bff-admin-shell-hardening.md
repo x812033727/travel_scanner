@@ -16,6 +16,11 @@ scope:
   - apps/web/app/api/travel/[...path]/route.ts
   - apps/web/app/api/travel/[...path]/route.test.ts
   - apps/web/proxy.ts
+  - apps/web/proxy.test.ts
+  - apps/web/e2e/csp.spec.ts
+  - apps/web/lib/csp.ts
+  - apps/web/app/ads.txt/route.ts
+  - apps/web/app/llms.txt/route.ts
   - apps/web/app/[locale]/admin/template.tsx
   - apps/web/app/[locale]/admin/layout.tsx
 ---

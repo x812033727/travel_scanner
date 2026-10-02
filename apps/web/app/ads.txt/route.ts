@@ -21,8 +21,8 @@ import { ADS_TXT_FALLBACK_PUBLISHER_ID, adsTxtLine } from "./ads-txt";
  * must never give.
  *
  * Next has no file convention for this one, so it is a Route Handler in a dotted folder,
- * the pattern `app/llms.txt/route.ts` uses. `proxy.ts`'s matcher excludes any path with a
- * dot in it, so next-intl never sees the request and nothing redirects it to a locale. A
+ * the pattern `app/llms.txt/route.ts` uses. `proxy.ts`'s matcher excludes any path ending
+ * in `.txt`, so next-intl never sees the request and nothing redirects it to a locale. A
  * `public/ads.txt` would win over this route, which is why there is no longer one.
  */
 
