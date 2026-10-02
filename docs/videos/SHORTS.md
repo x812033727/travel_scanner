@@ -325,7 +325,7 @@ YouTube 的開發人員政策對「代替使用者寫入」有三條要求（原
 | 後台（content.manage） | `PATCH /admin/video-shorts/slots/{id}` | 一次一個動作（`action`）：`move` 換時段、`assign` 指定影片、`clear` 抽掉、`skip` 標成不發、`reopen` 重新開啟、`note` 寫備註 |
 | 後台（content.read） | `GET /admin/video-shorts/metrics`、`…/costs`、`…/reports`、`…/topics` | 成效、花費帳、每週報告、題庫 |
 | 後台（content.manage） | `POST /admin/video-shorts/costs`、`PATCH`／`DELETE …/costs/{id}` | 補一筆、改一筆（替 `unknown` 補上金額）、刪掉自己補錯的；自動記的帳不能刪，預留的不能改 |
-| 後台（content.manage） | `POST …/topics`、`PATCH …/topics/{slug}`、`POST …/topics/{slug}/assets` | 新增想法、改題目、上傳素材 |
+| 後台（content.manage） | `POST …/topics`、`PATCH …/topics/{slug}`、`POST …/topics/{slug}/assets`、`POST …/topics/{slug}/assets/finish` | 新增想法、改題目、上傳素材：每一段 4 MiB 的原始位元組，網址只帶 `sha256`、`part`、`parts`、`size`、`need`；傳完再用 `finish` 的 JSON 送檔名、拍攝者、拍攝日期、授權說明（人名不進網址，所以不進 access log 和瀏覽器歷史） |
 | 後台（content.read） | `GET /admin/video-shorts/uploads` | 等你上傳：接下來 `upload_ahead_days` 天排了時段、YouTube 上還沒有影片的 Shorts，每一支的檔名、大小、長度、時段 |
 | 後台（content.manage） | `GET /admin/video-shorts/uploads/batch.zip`、`POST …/uploads/claim` | 下載這一批、我上傳好了（回每一支的結果：`matched`、`duplicate`、`not_found`、`not_private`、`length_differs`） |
 | 後台（settings.manage） | `GET`／`PUT /admin/video-shorts/settings`、`POST …/campaign/start` | 設定、開跑 |

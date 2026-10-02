@@ -14,7 +14,9 @@ import { api } from "@/lib/api";
  * The model of each video stage, on the AI settings page. It saves through its own route, so
  * the rest of the video settings stay on /admin/videos and neither page overwrites the other.
  * The drama has its own six choices (docs/videos/DRAMA-FLOW.md, section 1), or follows the tutorial's
- * when "same as the tutorial" is ticked: the route then receives null.
+ * when "same as the tutorial" is ticked: the route then receives null. The Shorts have the same
+ * block (docs/videos/SHORTS.md), stored on the Shorts settings and saved on its own: it sends
+ * only `stage_models` to /admin/video-shorts/settings, so the Shorts tab's settings stay as they are.
  */
 export function AdminVideoModelSettings({ onSaved }: { onSaved?: (view: VideoSettingsView) => void }) {
   const t = useTranslations("admin.videoSettings");
@@ -26,6 +28,10 @@ export function AdminVideoModelSettings({ onSaved }: { onSaved?: (view: VideoSet
   const [saveError, setSaveError] = useState("");
   const [saved, setSaved] = useState(false);
   const [busy, setBusy] = useState(false);
+  // undefined until the Shorts settings answer; null follows the tutorial's models.
+  const [shorts, setShorts] = useState<StageModels | null | undefined>(undefined);
+  const [shortsError, setShortsError] = useState("");
+  const [shortsSaved, setShortsSaved] = useState(false);
   const show = useCallback((value: VideoSettingsView) => { setView(value); setDraft(value.stage_models); setDrama(value.drama?.drama_stage_models ?? null); }, []);
   const load = useCallback(() => {
     api<VideoSettingsView>("/admin/video-automation/settings").then((value) => {
@@ -34,6 +40,11 @@ export function AdminVideoModelSettings({ onSaved }: { onSaved?: (view: VideoSet
       setError("");
     })
       .catch((problem: unknown) => setError(problem instanceof Error ? problem.message : ""));
+    api<ShortsStageModels>("/admin/video-shorts/settings").then((value) => {
+      setShorts(value.stage_models ?? null);
+      setShortsError("");
+    })
+      .catch((problem: unknown) => setShortsError(problem instanceof Error && problem.message ? problem.message : t("shortsModelsLoadError")));
   }, [show, t]);
   useEffect(load, [load]);
 
@@ -42,6 +53,7 @@ export function AdminVideoModelSettings({ onSaved }: { onSaved?: (view: VideoSet
   const disabled = !manage.allowed || busy;
   const edit = (models: StageModels) => { setDraft(models); setSaved(false); };
   const editDrama = (models: StageModels | null) => { setDrama(models); setSaved(false); };
+  const editShorts = (models: StageModels | null) => { setShorts(models); setShortsSaved(false); };
 
   async function save() {
     if (!draft) return;
@@ -54,6 +66,21 @@ export function AdminVideoModelSettings({ onSaved }: { onSaved?: (view: VideoSet
       onSaved?.(next);
     } catch (problem) {
       setSaveError(problem instanceof Error ? problem.message : t("saveError"));
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function saveShorts() {
+    if (shorts === undefined) return;
+    setBusy(true);
+    setShortsError("");
+    try {
+      const next = await api<ShortsStageModels>("/admin/video-shorts/settings", { method: "PUT", body: JSON.stringify({ stage_models: shorts }) });
+      setShorts(next.stage_models ?? null);
+      setShortsSaved(true);
+    } catch (problem) {
+      setShortsError(problem instanceof Error ? problem.message : t("saveError"));
     } finally {
       setBusy(false);
     }
@@ -97,5 +124,19 @@ export function AdminVideoModelSettings({ onSaved }: { onSaved?: (view: VideoSet
     {saveError && <p role="alert" className="text-sm text-red-800">{saveError}</p>}
     {saved && <p role="status" className="text-sm text-[var(--teal)]">{t("saved")}</p>}
     <div><Button disabled={disabled} onClick={() => void save()}>{busy ? t("saving") : t("saveModels")}</Button></div>
+    <section aria-label={t("shortsModelsTitle")} className="grid gap-3 border-t border-[var(--line)] pt-4">
+      <h3 className="text-lg font-bold">{t("shortsModelsTitle")}</h3>
+      <p className="text-sm leading-6 text-[var(--muted)]">{t("shortsModelsHelp")}</p>
+      {shorts !== undefined && <>
+        <label className="flex min-h-11 items-center gap-2 font-semibold"><input type="checkbox" checked={shorts === null} disabled={disabled} onChange={(event) => editShorts(event.target.checked ? null : { ...draft })} />{t("shortsModelsFollow")}</label>
+        {shorts && <div className="grid gap-3 md:grid-cols-2">{stageFields(shorts, (stage) => t("shortsStage", { stage: t(`stages.${stage}`) }), editShorts)}</div>}
+      </>}
+      {shortsError && <p role="alert" className="text-sm text-red-800">{shortsError}</p>}
+      {shortsSaved && <p role="status" className="text-sm text-[var(--teal)]">{t("saved")}</p>}
+      {shorts !== undefined && <div><Button disabled={disabled} onClick={() => void saveShorts()}>{busy ? t("saving") : t("saveShortsModels")}</Button></div>}
+    </section>
   </section>;
 }
+
+/** The part of the Shorts settings this block reads and writes (apps/api/app/video_shorts/schemas.py). */
+type ShortsStageModels = { stage_models: StageModels | null };

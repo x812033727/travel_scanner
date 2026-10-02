@@ -199,6 +199,18 @@ Ran: `node tools/video/long-form/cli.mjs check` before rebinding failed only on 
 
 Non-claims: this review does not accept the Shorts topic library, asset upload, weekly report or automation settings themselves. It covers no API behaviour, CI, browser, media, production write or publication. PASS is DURATION_ONLY for the five rebound hashes below. Required duration fixes remaining: none.
 
+## PR #1124 Shorts stage-models increment: 5 files (2026-10-02)
+
+Reviewer: `claude-pr-review-1124`. Author: `claude-opus-5-5-shorts-stage-models` (the Claude session that wrote PR #1124, "the Shorts settings save per-stage models, and the AI settings page sets them", branch claude/shorts-stage-models, HEAD cbc61cbb). Scope: DURATION_ONLY. The reviewer did not write these changes.
+
+Baseline: the bytes of the five apps/web/messages/{en,ja,ko,zh-CN,zh-TW}/admin.json files at the merge base 7f76864f (main, #1118) equal the hashes bound before this increment, and origin/main has not changed any bound file or this report since then. So `git diff 7f76864f cbc61cbb` of those files is exactly the unreviewed change. The other 65 bindings are untouched. The reviewer read the full delta of all five files and, for context, the unbound delta of apps/api/app/video_shorts (admin_api.py, schemas.py, settings.py) and apps/web/components/admin-video-model-settings.tsx.
+
+Findings: each admin.json adds 6 lines and removes or edits none. A flattened key comparison shows the same 6 added keys in every locale, all under `videoSettings`: `shortsModelsTitle`, `shortsModelsHelp`, `shortsModelsFollow`, `shortsStage`, `saveShortsModels` and `shortsModelsLoadError`. There are 0 removed keys and 0 changed values, and no added key name repeats in its file. They label the Shorts block of the per-stage model picker on the AI settings page: its title, help, the "same as the tutorials" checkbox, the stage legend, the save button and a load error. The only numeral is the "6 段階" (six stages) in Japanese; it counts pipeline stages, not minutes. No label states a video length, and no existing duration label or range changes: general slides 8–30, explainer 8–20 default 10 and drama 1–8 default 3 keep their bytes. In the context delta, `stage_models` is a map of the six stages to a provider and model. The API checks that each model exists and that its vendor has a key when automation is on, and stores following the tutorial as {}. Nothing in it reads or writes target_minutes, episode minutes, minEpisodeMinutes or any long-form duration field.
+
+Ran: `node tools/video/long-form/cli.mjs check` before rebinding failed only on these five stale bindings (exit 1). `node --test tools/video/long-form/*.test.mjs` ran 23 tests: 22 passed and 1 failed. The one failure was the shipped binding regression, failing on those same five paths. `npm run check:i18n` validated 5 locales across 25 namespaces (exit 0). After rebinding, the CLI check and `node --test tools/video/long-form/*.test.mjs` were rerun.
+
+Non-claims: this review does not accept the Shorts per-stage model choice itself, its API validation or the settings page block. It covers no API behaviour, CI, browser, media, production write or publication. PASS is DURATION_ONLY for the five rebound hashes below. Required duration fixes remaining: none.
+
 ## Paused anime-planning increment: 10 files (2026-10-02)
 
 Reviewer: `review_planning_import`. Author: `codex-root` and the implementation authors. Scope: DURATION_ONLY. The reviewer did not write the implementation. This increment rebinds only apps/api/app/video_automation/{models,schemas,series}.py, apps/web/components/admin-video-series.tsx and its test, and apps/web/messages/{en,ja,ko,zh-CN,zh-TW}/admin.json. The reviewer also read the unbound 0121_video_series_planning migration, planning importer and duration/guard/migration regressions for compatibility context; they are not additional registry bindings.
@@ -212,6 +224,18 @@ The scheduler query excludes planning-only rows, next_job_for returns no job bef
 Ran independently: `node tools/video/long-form/cli.mjs check` before rebinding failed only on these ten stale bindings, exit 1. `node --test tools/video/long-form/plans.test.mjs tools/video/core/duration.test.mjs tools/video/qa/duration.test.mjs` passed 14/14, exit 0. In apps/api, `.venv/bin/python -m pytest tests/test_video_explainer_duration.py tests/test_video_anime_planning_guards.py -q` passed 64/64, exit 0, using local mocked and ephemeral SQLite fixtures. The post-rebase hash and flattened-locale comparisons described above also passed. After installing this increment, `node --test tools/video/long-form/review.test.mjs` and the long-form CLI check validate the refreshed receipt and unchanged fail-closed checker.
 
 Non-claims: this increment does not approve a 22-minute production pipeline, manuscripts, factual content, actual audio/video duration, provider or model calls, browser/media acceptance, deployment, formal-database import, scheduling or publication. It does not accept the upstream Shorts feature itself. It is an independent DURATION_ONLY compatibility review of the ten rebound files, not a fresh review of the other sixty historical bindings. Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
+## PR #1125 merge with #1124 follow-up: 5 files (2026-10-02)
+
+Reviewer: `claude-merge-review-1125`. Author: `claude-merger` (the session that merged origin/main d8f8b31f, which carries PR #1124, into PR #1125's branch codex/anime-planning-import at 87648204). Scope: DURATION_ONLY. The reviewer did not write these changes.
+
+Compared: both PRs changed the five apps/web/messages/{en,ja,ko,zh-CN,zh-TW}/admin.json files, and each delta has its own DURATION_ONLY section above. Git merged the five with no textual conflict. For each file the reviewer rebuilt the merge with `git merge-file` from the merge-base 7f76864f bytes, #1125's reviewed bytes (origin/codex/anime-planning-import) and #1124's reviewed bytes (origin/main). Every rebuild exited 0 with no conflict and is byte-identical to the merged working-tree file, which has no unstaged change. So each merged file is exactly the union of the two reviewed deltas and nothing else. The working-tree hashes of #1125's other five bound files (apps/api/app/video_automation/{models,schemas,series}.py, apps/web/components/admin-video-series.tsx and its test) equal their bound hashes and #1125's bytes; #1124 did not touch them. Every other binding still matches its current bytes.
+
+Findings: a flattened comparison against the merge base shows 3,056 base keys in each locale, none removed or changed by either delta. Each merged locale has 3,075 keys: the base plus #1124's 6 `videoSettings` Shorts model keys plus #1125's 13 `videoSeries` planning keys (`statuses.planning`, `leads.ensemble`, `planning.*`), with every value equal to its reviewed source. The two sets sit in different objects and do not overlap. All five files parse as JSON, and a per-object scan finds no duplicate key. No duration label, range or expectation changes: general slides 8–30, explainer 8–20 default 10 and drama 1–8 default 3 keep their bytes. #1125's planning runtime labels still only show saved planning data, and #1124's keys contain no length. So the combination neither changes nor bypasses any duration rule recorded in this report.
+
+Ran: `node tools/video/long-form/cli.mjs check` before rebinding failed only on the stale report and these five stale bindings (exit 1). `npm run check:i18n` validated 5 locales across 25 namespaces (exit 0). In apps/web, `npx vitest run` of admin-video-series, admin-video-model-settings, admin-video-review-card and admin-video-shorts-topics (the web tests the two PRs touched), plus the bound admin-video-explainer-duration and admin-video-reviews tests, passed 82/82 in 6 files (exit 0). After rebinding, `node --test tools/video/long-form/review.test.mjs` and the CLI check were rerun.
+
+Non-claims: DURATION_ONLY review of the five rebound files after the merge. It gives no functional or visual acceptance of the Shorts per-stage models or the anime planning import. It covers no API behaviour, CI, browser, media, production write or publication, and is not a fresh review of the other bindings. Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
 ## Reviewed SHA256 bindings
 
@@ -237,11 +261,11 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | `apps/web/components/admin-video-series.test.tsx` | `bf1197d8166cdbc32c5316636eb034633c4bd4f167ca639516f32b664f9b1ea0` |
 | `apps/web/components/admin-video-series.tsx` | `22ab2b261f098222d766741c694f74da8a85f46cec7f68188a0e3beddbbf1952` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `7aad8e5d88b67ebaf0b261a57482fb06044111e86af9cfa43157627c7e671957` |
-| `apps/web/messages/en/admin.json` | `64b9b91662d663bcd2735a9e6fbdc52e00a66abee62ca788b1a5c8030bf61dce` |
-| `apps/web/messages/ja/admin.json` | `8f2ec64453e82bc6a8ee474e797a6170b80fb886f97a7f3c6e10cbe335587e2e` |
-| `apps/web/messages/ko/admin.json` | `8ce7160ec08335cf61132a3e6b34394c02b107fee0a64a7bf776cc35d37cd4b2` |
-| `apps/web/messages/zh-CN/admin.json` | `346df3e06eb7571915ca90ff27c2a81ff0f67fb65f087de80bccc871de061356` |
-| `apps/web/messages/zh-TW/admin.json` | `bb7729cab5a8697df55128b970a1d7986b2e75058f9544162c309ab99df4b9e4` |
+| `apps/web/messages/en/admin.json` | `497fb3d75b0da897afaca7848a4580e0aceec0fd5cf20b4e90ae685854da279d` |
+| `apps/web/messages/ja/admin.json` | `934d9347fb9bf0a75ff07b769b9c1fc781bd5e205837a22e25c887757af4512e` |
+| `apps/web/messages/ko/admin.json` | `295b5f07945222f8eae5313a50c754aff79225adea68716750420a8f18f4142d` |
+| `apps/web/messages/zh-CN/admin.json` | `52cf4834571a1db47fceb35cca7052733aeadc2c38bf0da4c33052189ed93d24` |
+| `apps/web/messages/zh-TW/admin.json` | `edfe61a35b79431a3dc93555b27cbe35f9134254123bd2bba8c30c53090e909b` |
 | `docs/videos/DESIGN.md` | `299449c6c19a40a0e17868615a7d8442771449e0db6e63186ca9c57a0d57ab41` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `ac08a33baedd84f282901594e55758f4b390ee1a8dc798e2c25c4b463081aa80` |
 | `docs/videos/README.md` | `88a8fcb1e6019d279b790f089feb14abe5dc21d2b1c0624f4d0fe25c73346868` |
