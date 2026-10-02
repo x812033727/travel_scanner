@@ -1,0 +1,401 @@
+{
+  "world": {
+    "name": "瑟曦亞",
+    "premise": "以四座天錨維持人工調候與高度催序生產的文明，累積了無法再轉嫁的休止債。",
+    "geography": [
+      {
+        "name": "階鐘山脈",
+        "description": "礦區、關隘與天衡軍的工業運輸線；降雪和坡道限制救援。"
+      },
+      {
+        "name": "鹽鏡海",
+        "description": "潮盟港口與糧運網路；船舶、季風、保險與倉儲決定實際交付。"
+      },
+      {
+        "name": "環根森林",
+        "description": "長壽林族的季眠地、藥圃與種源庫；超額催種使林地失去復春。"
+      },
+      {
+        "name": "無晝邊境",
+        "description": "調候薄弱、交通困難的邊區；存在可測量的自然季候及古代維護設施。"
+      }
+    ],
+    "hidden_history": "九百年前黑冬造成真實災難，先民以現有材料與能源提前完成救援工程，計畫自然恢復後分期退場。後人先因旱災、戰爭延期，再因軍需與利益長期延續。自然區域恢復不均，舊人口、農業與醫療已依賴人工氣候，退出仍需準備。",
+    "reveal_policy": "48只證實超期運轉與基礎欠額；60自然日輪不是外界全面安全證明；88-91才以古代紀錄、多處觀測與當代樣區互證黑冬、局部恢復與延期歷史。"
+  },
+  "rules": [
+    {
+      "id": "acceleration",
+      "name": "催序術",
+      "rule": "只加速原本可完成的過程；材料、能源、氧氣、營養與必要處理不能省。不能造物、逆因果或復活。",
+      "dramatic_cost": "越快完成，越早必須休止；錯誤加速會放大原本的感染或結構風險。"
+    },
+    {
+      "id": "rest-debt",
+      "name": "休止債",
+      "rule": "附著實際具名的生物、設備或生長場。拆毀、改名、換主、換礦均不清債。按載體能力與實際有效休止時間償還，不能以低功率工作冒充停工。",
+      "dramatic_cost": "休止會減少產能；普通替代設施需投入材料、勞務、燃料與時間。"
+    },
+    {
+      "id": "compatible-transfer",
+      "name": "相容轉移",
+      "rule": "需要實體連接及同類相容載體，並有真實剩餘容量。熱、植生、動勢與人身欠額分別記錄。人體療債只留患者及自願人類醫護，不能轉入森林。",
+      "dramatic_cost": "可轉移不等於有權轉移；有限授權不能擴成永久徵收。"
+    },
+    {
+      "id": "clock-ore",
+      "name": "鐘礦",
+      "rule": "只有有限延後結算容量，不是能量電池。延期期間欠額仍在原載體帳上；換新礦不洗債，容量耗盡後仍須真正休止。",
+      "dramatic_cost": "戰爭爭的是剩餘延結餘裕，無法靠更多施術產生新的餘裕。"
+    },
+    {
+      "id": "shared-interlocks",
+      "name": "共用安全聯鎖",
+      "rule": "不同類型欠額不混轉，但控制、迴流與散熱設施可共同失效。北錨隔離在緩衝不足時引發迴流失效與實體結構毀損。終局保留必要回流，只解除強制控制與未授權轉債。",
+      "dramatic_cost": "正確止債也可能造成傷害；安全程序不能被主角直覺取代。"
+    },
+    {
+      "id": "ordinary-replacement",
+      "name": "普通接替",
+      "rule": "獨立且已確認可用的載體可以負擔基本維生，原載體則真正停工。不可只換標籤，把同一載體繼續工作說成已還債。",
+      "dramatic_cost": "磨粉不等於供熱，少量試驗不等於世界產能；醫療、運輸與農業需各自測試。"
+    },
+    {
+      "id": "zero-order",
+      "name": "歸零令",
+      "rule": "把可移動欠額分別移至相容外圍載體，再集中停用並削減外區配額，使外圍承擔休止。歸零的是生產與供應配額，欠額仍存在；人體療債不參與。",
+      "dramatic_cost": "失去收成與供熱迫使居民遷移，還會破壞核心依賴的迴流。"
+    },
+    {
+      "id": "cross-world-station",
+      "name": "外界檢修站",
+      "rule": "獨立古代設施沿用首次召喚留下的原界座標，不能憑催序任意造門或選落點。訊息探針與人體通行條件不同；訊息由原界接應轉交家人。105-107的48小時人體窗口提前以舊紀錄與實測核驗，專材與救災供應分開。",
+      "dramatic_cost": "兩界經過時間由家人及站內時記核對；沒有時間倒流。107先選擇再自然到期，不破壞門也不保證未驗證的下一窗口。"
+    }
+  ],
+  "factions": [
+    {
+      "id": "crown",
+      "name": "天衡王庭",
+      "resources": "軍事、鐘礦、重型工程、陸路糧運",
+      "need": "維持糧供與國家安全",
+      "conflict": "軍需優先、迫遷與隱瞞欠額傷及平民",
+      "final_contribution": "縮減軍需、交出舟艇與普通燃料、承擔返地及國家賠償"
+    },
+    {
+      "id": "see",
+      "name": "白晝聖座",
+      "resources": "醫療、校準、檔案、跨區調度",
+      "need": "避免醫院與城市同時失效",
+      "conflict": "伊瑟爾以集中權力保護核心，越權迫使外圍承債",
+      "final_contribution": "普通照護、有限催序、醫護訓練與公開承債名冊，系統不因個人定罪消失"
+    },
+    {
+      "id": "tide",
+      "name": "潮路同盟",
+      "resources": "船隊、糧倉、融資、運輸保證",
+      "need": "維持可交付的航運與信用",
+      "conflict": "封港與條件援助可能迫使飢民放棄權利",
+      "final_contribution": "履行保險儲備、承擔延期、有限過渡給付與普通運輸"
+    },
+    {
+      "id": "forest",
+      "name": "環林諸邦",
+      "resources": "種源、生長網路、土地與地方知識",
+      "need": "恢復林地並保護族群生活",
+      "conflict": "內部對醫藥供應、自願承債及激進報復有分歧",
+      "final_contribution": "有限援藥、試種、輪休、逐戶返地與自主移居"
+    }
+  ],
+  "characters": [
+    {
+      "id": "shen-che",
+      "name": "沈澈",
+      "age_at_start": 19,
+      "role": "主角／現代維修學徒",
+      "appearance": "Original 2D anime young man, short uneven black hair, dark eyes, lean build, charcoal work jacket with ochre repair patches, canvas tool pouch and worn boots; calm observation, no regal costume or franchise motifs.",
+      "background": "被舊緊急外界檢修介面意外召喚；語言逐步學會，當地材料、醫療與政治須向本地人學習。",
+      "ability": "感知停拍及已接通的欠額流向，能提出檢修線索。",
+      "limits": "不能讀心、讀歷史或取消債；過度使用會暈眩與誤判。契約只提供檢修紀錄資格，不授予政治主權。",
+      "arc": "從急於找到答案，到公開錯誤、接受核驗、傳授方法。57低估風險，70判責，83被糾正，106可被接替，107選擇留下。",
+      "ending": "八年後為維修教師，保留地球家書與兩個家的記憶。"
+    },
+    {
+      "id": "lyne",
+      "name": "莉涅・瓦爾",
+      "age_at_start": 22,
+      "role": "主角／白晝聖座巡行醫師",
+      "appearance": "Original 2D anime woman, ash-blond hair tied low, grey-green eyes, practical ivory and muted blue medic layers, rolled sleeves, linen satchel and plain copper medical badge; no halo or franchise costume.",
+      "background": "曾救回大量患者，自己的有限救援被後來的植生徵收附件引用。",
+      "ability": "在清創、養分、氧氣與人體條件允許時加速修復。",
+      "limits": "不能復活、無限承債或治癒所有不可逆損傷；催序感染傷口會加重病情。",
+      "arc": "從只求救下眼前人，到維護患者與承債者的知情選擇，培養普通照護與接替醫護。",
+      "ending": "主持普通醫療與有限催序並行的診所，照護無法完全治癒的人。"
+    },
+    {
+      "id": "oren",
+      "name": "奧倫・葛雷",
+      "age_at_start": 27,
+      "role": "主角／王庭護送軍官，後為受監督修復協調員",
+      "appearance": "Original 2D anime broad-shouldered man, short dark brown hair, weathered eyes, small old cheek scar, dull iron military coat at first; later plain civilian layers, lower-body braces or wheelchair, same face and scar.",
+      "background": "知情執行青芒谷封糧與拆屋，迫使居民接受遷移；後續安置造假不知情，不抵銷此前責任。",
+      "ability": "戰甲短時加速動作與施力，特定關節須休止。",
+      "limits": "30停職封甲；51只獲監督救援特許；64剝軍籍、三年修復役及賠償；66永久神經損害，往後不再穿甲。",
+      "arc": "英雄救援與刑責分開，接受不被原諒，改以覈查與撤離協調履責。",
+      "ending": "使用輔具，服完修復役仍按收入賠償，返地家庭拒見時退席。"
+    },
+    {
+      "id": "sera",
+      "name": "瑟菈・苔冠",
+      "age_at_start": 142,
+      "role": "主角／季眠林族嚮導與種源保管者",
+      "appearance": "Original 2D anime long-lived forest woman, copper-brown skin, moss-green braided hair, amber eyes, layered bark-brown travelling cloth and seed cases, practical leaf-pattern cloak; no borrowed elf design.",
+      "background": "見過林地逐年失去復春，祖族也曾參與古代生命網路設計。",
+      "ability": "判讀生長痕跡、土壤與季眠條件，保存和試驗種源。",
+      "limits": "不能讀出誰犯案或令作物瞬間成功；種子需土壤、季節與試驗。合作不等於替族人原諒。",
+      "arc": "維護族群，也尊重族人的自願選擇；拒絕報復平民，接受不利祖族的完整史料。",
+      "ending": "逐戶返地、重建新的森林；舊家園不會一夜復原。"
+    },
+    {
+      "id": "tara",
+      "name": "塔拉",
+      "role": "村落工匠與沈澈的本地師傅",
+      "appearance": "Original elderly 2D anime craftswoman, silver cropped hair, heavy dark apron, practical gloves and small round spectacles.",
+      "arc": "存活，留下地方檢修與日常維護技術；尾聲教新人保養。"
+    },
+    {
+      "id": "reko",
+      "name": "蕾珂・帆礁",
+      "role": "雙尾燕船長",
+      "appearance": "Original 2D anime sea captain, dark wavy hair, sun-browned face, navy weather coat, teal neck scarf and rope belt.",
+      "arc": "第二季失桅後留港實際維修；後來履行有限航運保證並訓練接班船員。"
+    },
+    {
+      "id": "nale",
+      "name": "娜蕾・晴汐",
+      "role": "港口藥師與批次紀錄保管者",
+      "appearance": "Original 2D anime pharmacist, neat chestnut bob, plain cream tunic, green apron and glass medicine cases.",
+      "arc": "辨別藥物流量、留下港口照護，後赴冬籬培訓普通醫療。"
+    },
+    {
+      "id": "vir",
+      "name": "維爾・洛薩",
+      "role": "藥材與鐘礦中介",
+      "appearance": "Original middle-aged 2D anime merchant, swept black hair, russet formal vest, polished ledger clasp and narrow spectacles.",
+      "arc": "第二季被捕，48偽造與重複授權定罪，扣押所得修復受害地；不免除現實欠額。"
+    },
+    {
+      "id": "rug",
+      "name": "魯格・赫賽恩",
+      "role": "王庭邊境指揮官、奧倫舊上司",
+      "appearance": "Original older 2D anime commander, iron-grey hair, angular face, restrained slate officer coat and plain rank bars.",
+      "arc": "戰略需要不能豁免知情封糧逼遷，104命令鏈公開，119上級責任定罪。"
+    },
+    {
+      "id": "sami",
+      "name": "薩彌・葉崗",
+      "role": "林地邊境指揮官",
+      "appearance": "Original 2D anime forest commander, deep brown skin, short braided dark hair, olive travelling uniform and seedwood insignia.",
+      "arc": "協助有限停火與人道通道，101返地協商，尾聲邊境重建。"
+    },
+    {
+      "id": "lod",
+      "name": "洛德・芬恩",
+      "role": "出身饑荒村落的王庭士兵",
+      "appearance": "Original young 2D anime soldier, sandy hair, tired hazel eyes, patched brown uniform and simple convoy gloves.",
+      "arc": "第三季為民用車隊違令而受處分，後公佈真實耗用紀錄並參與普通運輸。"
+    },
+    {
+      "id": "ada",
+      "name": "艾妲",
+      "role": "林地醫師",
+      "appearance": "Original middle-aged 2D anime doctor, dark hair in a bun, linen field coat, blue hand cloth and wooden medicine case.",
+      "arc": "37登場，47接掌地方照護、供水與有限供藥，尾聲培訓醫護。"
+    },
+    {
+      "id": "cen-luo",
+      "name": "岑洛",
+      "role": "北錨本地技師",
+      "appearance": "Original adult 2D anime engineer, close-cropped black hair, soot-marked amber work coat, pressure gauge pouch and broad hands.",
+      "arc": "51登場並建立家人與工坊生活，55警告保守估值，59死亡；63家屬追責，120紀念。"
+    },
+    {
+      "id": "mila",
+      "name": "米菈",
+      "role": "患慢性肺病的難民麵包師",
+      "appearance": "Original middle-aged 2D anime baker, soft auburn hair under a pale kerchief, flour-dusted beige apron and warm tired eyes.",
+      "arc": "61登場、持續治療，82充分照護後因感染惡化死亡；配方與護理紀錄傳承。"
+    },
+    {
+      "id": "iser",
+      "name": "伊瑟爾",
+      "role": "白晝聖座攝政",
+      "appearance": "Original mature 2D anime regent, pale silver hair, composed dark eyes, ivory ceremonial coat with restrained geometric stitching and plain brass clasp.",
+      "arc": "第二季提供真實醫援，44正面分歧，68提出歸零，108限權，109明知越權，115撤令交權，119起訴、120已定罪服刑失去調度權。",
+      "limits": "新隔離只通過低負載測試；其刑責針對本人越權強制，不代替九百年所有歷史責任。"
+    },
+    {
+      "id": "shen-family",
+      "name": "沈澈的地球家人",
+      "role": "原界接應與返鄉情感線",
+      "appearance": "Original contemporary 2D anime family in ordinary muted everyday clothing; age progresses across the five-year disappearance and eight-year coda, with no fantasy uniforms.",
+      "arc": "95收到經接應轉交的身分訊息後回覆，105說明失蹤後的生活，107尊重且仍難過，尾聲保存他的最後訊息。"
+    }
+  ],
+  "mysteries": [
+    {
+      "id": "m01",
+      "question": "地方帳冊為何看似平衡，載體卻超限？",
+      "answer": "超授權轉債與偽造、重複契約把真實欠額藏到地方之外。",
+      "introduced_in": 1,
+      "resolved_in": 48
+    },
+    {
+      "id": "m02",
+      "question": "莉涅救援藥量為何解釋不了整片森林欠額？",
+      "answer": "有限救援被追加附件用來替後續擴大催種背書。",
+      "introduced_in": 13,
+      "resolved_in": 47
+    },
+    {
+      "id": "m03",
+      "question": "青芒谷迫遷誰下令、誰知情執行、誰補償？",
+      "answer": "奧倫、魯格與政府分別承擔執行、命令與國家責任，返地不強迫原諒。",
+      "introduced_in": 25,
+      "resolved_in": 120
+    },
+    {
+      "id": "m04",
+      "question": "四錨為何不能各自停下，毀錨後怎樣退出？",
+      "answer": "共享安全迴流與超期基礎欠額，三錨須與替代樞紐協同，北錨永不復原。",
+      "introduced_in": 12,
+      "resolved_in": 118
+    },
+    {
+      "id": "m05",
+      "question": "沈澈為何被召來，世界是否必須靠他？",
+      "answer": "舊外界檢修召喚非預言，感知可核驗、操作可傳授，團隊能接替。",
+      "introduced_in": 1,
+      "resolved_in": 106
+    },
+    {
+      "id": "m06",
+      "question": "天錨何時、為何建立，外界是否能活？",
+      "answer": "黑冬救援真實必要；自然區域恢復不均，須多年紀錄與當代樣區互證。",
+      "introduced_in": 60,
+      "resolved_in": 91
+    },
+    {
+      "id": "m07",
+      "question": "先民留下的退場計畫為何沒有完成？",
+      "answer": "早期困境、失敗改革與後來利益挪用共同造成延期；當代需重測並分區輪休。",
+      "introduced_in": 36,
+      "resolved_in": 119
+    },
+    {
+      "id": "m08",
+      "question": "鐘礦能否無限延後危機？",
+      "answer": "有限容量只延結，欠額不消失；剩餘量只夠安全切換，之後載體仍須休止。",
+      "introduced_in": 2,
+      "resolved_in": 117
+    },
+    {
+      "id": "m09",
+      "question": "沈澈能回家嗎，知道答案後會怎樣選？",
+      "answer": "既有站保存原界座標，安全窗口真實可用；在可回去時選擇留下並完成兩家告別。",
+      "introduced_in": 1,
+      "resolved_in": 107
+    },
+    {
+      "id": "m10",
+      "question": "森林與種源能否找回失去的春天？",
+      "answer": "需試種、實際輪休與逐戶返地；八年後局部恢復，舊林仍未全回。",
+      "introduced_in": 4,
+      "resolved_in": 120
+    },
+    {
+      "id": "m11",
+      "question": "普通設備與醫療能否供養真實的人？",
+      "answer": "冬籬完整四季顯示可行但有限，需要糧、燃料、人力與訓練；死人不復活，技術與生活傳承。",
+      "introduced_in": 1,
+      "resolved_in": 120
+    },
+    {
+      "id": "m12",
+      "question": "誰有權替誰承債，拒絕在危機時是否有效？",
+      "answer": "知情同意、上限、最低維生、公開核驗與可執行拒新增權，必須一起落地。",
+      "introduced_in": 5,
+      "resolved_in": 119
+    }
+  ],
+  "chronology": [
+    {
+      "seasons": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "elapsed_months": 12,
+      "label": "適應、港口、邊境與森林"
+    },
+    {
+      "seasons": [
+        5,
+        6
+      ],
+      "elapsed_months": 18,
+      "label": "戰爭、毀錨、災後調查與分散修復"
+    },
+    {
+      "seasons": [
+        7
+      ],
+      "elapsed_months": 12,
+      "label": "初春到次年春的完整四季"
+    },
+    {
+      "seasons": [
+        8
+      ],
+      "elapsed_months": 7,
+      "label": "古代資料、自然樣區與返程站；暮春至初冬"
+    },
+    {
+      "seasons": [
+        9
+      ],
+      "elapsed_months": 3,
+      "label": "結盟、交接與末段48小時通行窗口"
+    },
+    {
+      "seasons": [
+        10
+      ],
+      "elapsed_months": 4,
+      "label": "提前寒潮、首輪切換與數月驗表；120另跳八年"
+    }
+  ],
+  "narrative_constraints": [
+    "每集兩段具體張力，代價延續；安靜日常用爐、麵包、工具、種子與照護呈現羈絆。",
+    "兩小時危機使用並行本地測量與已設訊號臺，不用跨國瞬移。",
+    "地方居民有加入、退出與拒債權，主角不能代投票。",
+    "118完成第一輪安全降載，119纔有實測償債；欠額仍需數代還，不能宣稱世界無債。",
+    "原創人名、勢力、場景與外觀；既有動畫只參考世界深度及群像敘事，不借用角色、情節或識別設計。"
+  ],
+  "visual_style": "日式2D動畫、清楚輪廓與剋制色塊；森林季眠灰白與小片復春、港口普通燈火、北錨玻璃溫廊與毀損遺址形成持續視覺記憶。",
+  "finale": {
+    "closed": true,
+    "epilogue_years": 8,
+    "last_line": "往後的黎明，我們一起承擔。",
+    "permanent_costs": [
+      "北錨不復原",
+      "岑洛與米菈不復活",
+      "奧倫傷殘與賠償保留",
+      "舊林未全恢復",
+      "歷史欠額未還清",
+      "仍有人拒絕原諒"
+    ],
+    "new_crisis_or_sequel_hook": false
+  }
+}
