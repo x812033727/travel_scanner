@@ -60,6 +60,15 @@ class MessageRefused(Exception):
         self.detail = detail
 
 
+def _require_production(series: VideoDramaSeries) -> None:
+    if series_module.is_planning_only(series):
+        raise MessageRefused(
+            409,
+            "video_series_planning_only",
+            "這部動漫目前只供企劃審閱；長篇製作支援尚未完成，不能啟動模型討論或改稿",
+        )
+
+
 def _now() -> datetime:
     return datetime.now(UTC)
 
@@ -193,6 +202,7 @@ async def post_message(
     """The owner's line on a thread; refused once the document is approved or the screenplay
     gate is passed, since nothing would answer it."""
     series = await series_module._series(session, slug, lock=True)  # noqa: SLF001
+    _require_production(series)
     problem = subject_problem(series, payload.subject)
     if problem:
         raise MessageRefused(404, "video_drama_thread_not_found", problem)
@@ -274,7 +284,12 @@ async def next_message(session: AsyncSession) -> MessageJobOut:
     is answered."""
     row = await session.scalar(
         select(VideoDramaMessage)
-        .where(VideoDramaMessage.author == "owner", VideoDramaMessage.answered_at.is_(None))
+        .join(VideoDramaSeries, VideoDramaSeries.id == VideoDramaMessage.series_id)
+        .where(
+            VideoDramaMessage.author == "owner",
+            VideoDramaMessage.answered_at.is_(None),
+            VideoDramaSeries.planning_only.is_(False),
+        )
         .order_by(VideoDramaMessage.created_at, VideoDramaMessage.id)
         .limit(1)
     )
@@ -283,7 +298,7 @@ async def next_message(session: AsyncSession) -> MessageJobOut:
     # Document edits take the same lock, so the target, parent context and fingerprint
     # belong to one snapshot, even when a queued message predates the latest edit.
     series = await session.get(VideoDramaSeries, row.series_id, with_for_update=True)
-    if series is None:
+    if series is None or series_module.is_planning_only(series):
         return MessageJobOut(job=None)
     doc, episode, _review = await _target(session, series, row.subject)
     docs = await series_module._docs(session, series)  # noqa: SLF001
@@ -325,6 +340,7 @@ async def _revise_doc(
     """The revised document as a new version waiting for the owner; the version it replaces
     is closed with the discussion's note, so it never counts as one of the owner's rewrites.
     None when the document was approved meanwhile: the reply is kept, the revision dropped."""
+    _require_production(series)
     kind, chapter = parse_subject(subject)
     docs = await series_module._docs(session, series)  # noqa: SLF001
     latest = series_module.latest_docs(docs).get((kind, chapter))
@@ -370,6 +386,7 @@ async def answer_message(
     if row.author != "owner" or row.answered_at is not None:
         raise MessageRefused(409, "video_drama_message_answered", "這則訊息已經回覆過了")
     series = await series_module._series_by_id(session, row.series_id)  # noqa: SLF001
+    _require_production(series)
     now = _now()
     revision: VideoDramaDoc | None = None
     revision_refused: str | None = None
