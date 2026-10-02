@@ -7,6 +7,9 @@ import { renderPlan } from "../../render/plan.mjs";
 import { sceneProblems, slideHtml } from "../templates.mjs";
 import { columns, TERMINAL_COLUMNS, TERMINAL_OUTPUT_LINES } from "./terminal.mjs";
 
+// The fixture videos run seconds; the eight-minute floor has tests of its own.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
+
 // A Claude Code tutorial whose two terminal scenes are copied from real runs on 2026-10-01.
 const read = (file) => readFileSync(new URL(file, import.meta.url), "utf8");
 const tutorial = JSON.parse(read("./fixtures/claude-code/video.json"));
