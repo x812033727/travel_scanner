@@ -78,6 +78,8 @@ const PRESETS = ["cinematic-3d", "anime-2d", "ink-wash", "custom"] as const;
 // A one-off episode may also be an illustrated explainer (narrator only, all stills); a series
 // runs the story prompts, which need a cast, so its forms keep the story presets.
 const REQUEST_PRESETS = ["cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "custom"] as const;
+const DRAMA_MINUTES = { min: 1, max: 8, default: 3 } as const;
+const EXPLAINER_MINUTES = { min: 8, max: 20, default: 10 } as const;
 const GUIDE_SLUG = /^[a-z0-9][a-z0-9-]{0,118}[a-z0-9]$/;
 const GENRES: readonly SeriesGenre[] = ["xianxia-bonds", "rebirth-revenge", "system-game", "urban-return", "empress-rise", "custom"];
 const LEADS: readonly SeriesLead[] = ["female", "male", "dual-male"];
@@ -324,6 +326,13 @@ function NewDramaForm({ onFiled }: { onFiled: (seriesSlug: string | null) => voi
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const guideOk = !guide.trim() || GUIDE_SLUG.test(guide.trim());
+  const duration = preset === "flat-explainer" ? EXPLAINER_MINUTES : DRAMA_MINUTES;
+  const changePreset = (next: (typeof REQUEST_PRESETS)[number]) => {
+    if ((next === "flat-explainer") !== (preset === "flat-explainer")) {
+      setMinutes(next === "flat-explainer" ? EXPLAINER_MINUTES.default : DRAMA_MINUTES.default);
+    }
+    setPreset(next);
+  };
   const file = async () => {
     setBusy(true);
     setError("");
@@ -351,15 +360,15 @@ function NewDramaForm({ onFiled }: { onFiled: (seriesSlug: string | null) => voi
         <label className="grid gap-2 text-sm font-semibold">{t("workingTitle")}<input className={control} value={title} disabled={busy} maxLength={200} onChange={(event) => setTitle(event.target.value)} /></label>
         <label className="grid gap-2 text-sm font-semibold">{t("sourceGuide")}<input className={control} value={guide} disabled={busy} placeholder={t("sourceGuidePlaceholder")} aria-invalid={!guideOk} onChange={(event) => setGuide(event.target.value)} /></label>
         <label className="grid gap-2 text-sm font-semibold">{t("stylePreset")}
-          <select className={control} value={preset} disabled={busy} onChange={(event) => setPreset(event.target.value as (typeof REQUEST_PRESETS)[number])}>
+          <select className={control} value={preset} disabled={busy} onChange={(event) => changePreset(event.target.value as (typeof REQUEST_PRESETS)[number])}>
             {REQUEST_PRESETS.map((each) => <option key={each} value={each}>{t(`presets.${each}`)}</option>)}
           </select>
         </label>
-        <label className="grid gap-2 text-sm font-semibold">{t("targetMinutes")}<input className={control} type="number" min={1} max={8} value={minutes} disabled={busy} onChange={(event) => setMinutes(Number(event.target.value))} /></label>
+        <label className="grid gap-2 text-sm font-semibold">{preset === "flat-explainer" ? t("minutes", { minutes: `${duration.min}–${duration.max}` }) : t("targetMinutes")}<input className={control} type="number" min={duration.min} max={duration.max} value={minutes} disabled={busy} onChange={(event) => setMinutes(Number(event.target.value))} /></label>
       </div>
       <label className="grid gap-2 text-sm font-semibold">{t("requestNote")}<textarea className={control} rows={2} value={note} disabled={busy} maxLength={2000} placeholder={t("requestNotePlaceholder")} onChange={(event) => setNote(event.target.value)} /></label>
       {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
-      <div><Button type="submit" disabled={busy || !premise.trim() || !guideOk || minutes < 1 || minutes > 8}>{busy ? t("saving") : t("fileRequest")}</Button></div>
+      <div><Button type="submit" disabled={busy || !premise.trim() || !guideOk || !Number.isInteger(minutes) || minutes < duration.min || minutes > duration.max}>{busy ? t("saving") : t("fileRequest")}</Button></div>
     </form>
   </details>;
 }

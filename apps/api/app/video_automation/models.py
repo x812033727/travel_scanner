@@ -157,7 +157,7 @@ class VideoAutomationSettings(Base):
         CheckConstraint("topics_per_run BETWEEN 1 AND 3", name="ck_video_automation_topics"),
         CheckConstraint("max_waiting_drafts BETWEEN 1 AND 10", name="ck_video_automation_waiting"),
         CheckConstraint(
-            "target_minutes_min BETWEEN 3 AND 30 AND target_minutes_max BETWEEN 3 AND 30 "
+            "target_minutes_min BETWEEN 8 AND 30 AND target_minutes_max BETWEEN 8 AND 30 "
             "AND target_minutes_min <= target_minutes_max",
             name="ck_video_automation_minutes",
         ),
