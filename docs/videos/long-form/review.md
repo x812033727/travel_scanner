@@ -1,6 +1,6 @@
 # Long-form duration revision: independent review
 
-Reviewer: review_longform. Author: codex-root and the implementation authors. Review date: 2026-10-02. Verdict: **PASS — DURATION_ONLY**. Required fixes remaining: **none** for the SHA-bound revision below.
+Reviewer: review_longform. Author: codex-root and the implementation authors. Main-merge and migration-renumbering increment reviewer: claude-merge-review (author: claude-merger, the merging Claude session). Review date: 2026-10-02. Verdict: **PASS — DURATION_ONLY**. Required fixes remaining: **none** for the SHA-bound revision below.
 
 The initial 21-file review and the integrated 70-file increment below independently inspected the implementation, planning records, original source bytes, duration guards and API/UI changes. It does not claim a fresh factual review of the underlying topics, completion of full long-video manuscripts, approval of rewritten manuscripts, human audio listening, image QA or verification of actual media. No real provider/model/media calls, production media generation, production writes, imports, activation, scheduling or publication were performed. Unit regressions use local synthetic and mocked fixtures.
 
@@ -59,6 +59,8 @@ The reviewer found that a first integration used NODE_TEST_CONTEXT alone to auth
 
 Migration 0117_video_min_8_minutes connects to the actual current chain's 0116_video_project_category. It raises both legacy settings bounds together using GREATEST(8), recreates the same named 8–30/min<=max check, and is idempotent; downgrade widens the check to 3 and deliberately preserves raised values. The reviewed PostgreSQL regression restores the old check and 3/5 data inside a rollback transaction and exercises both directions. Independently executed alembic heads returned exactly 0117_video_min_8_minutes (head), exit 0. This reviewer did not execute that PostgreSQL integration exercise. Pending PR #1097 independently proposes 0117_video_shorts_topics off the same 0116: it is not part of this workspace or receipt. Whichever PR lands second must rebase and renumber/reconnect to the actual landed head, followed by fresh migration review; blindly including both siblings would create two heads. No migration was applied to production.
 
+Note added 2026-10-02 by claude-merge-review (main-merge increment below): the paragraph above describes the earlier bound bytes. Main has since landed #1097's 0117_video_shorts_topics on 0116_video_project_category, and this migration is now renumbered 0118_video_min_8_minutes with down_revision 0117_video_shorts_topics; alembic heads now returns exactly 0118_video_min_8_minutes. The paragraph's statements about the 0117 revision id, its 0116 parent and its head result apply only to that earlier revision.
+
 The unchanged plans.json SHA remains 22023c15fa10a24e4a0141e3fc5930ff6925a84ff5ab5cb5a466a5baa15b7108. The reviewer reran the independent source audit after integration: all 473 record/package/source hashes, 307 preserved baseline files, 92 continuous 600-second chapter budgets, 184 original Shorts hashes and 460 allowed locale metadata revisions passed. No effective old 480-second six-chapter instruction remained; the eight duplicate rejections and covered ai-agent status remain intact. Brand targets remain 780 with 720–900; AI targets remain 600 with 540–660.
 
 The registry now demands the exact 70-file binding set in both receipt and genuine report, in addition to independent author/reviewer identities and the report hash. check, plan and inputs still enforce it; build still only rebuilds the local manifest. An independent outside-repository pure-function simulation of this actual 70-file registry accepts a matching receipt and rejects self-review, missing identity, missing receipt binding, missing report binding even after report rehash, changed report and changed file SHA. The current repository receipt must be mechanically installed from this genuine report before the shipped receipt tests and CLI can pass. The reviewer wrote only outside-repository review artifacts and did not edit implementation files, stage, fetch, push, import or publish.
@@ -73,25 +75,54 @@ The full web suite exposed a remaining stale accessible-name literal at admin-vi
 
 The reviewer independently executed the complete corrected admin-video-reviews.test.tsx file through Vitest: 30 passed, zero failed, exit 0. The corrected accessible name agrees with the five-locale UI and strict API 8–20 explainer range; its scenario still submits an ordinary ink-wash drama at 2 minutes. Runtime input defaults, worker rules, measured-body/final QA, plans and all existing media evidence are unchanged. This increment revises only the genuine outside report and the one test binding; the author must reinstall the report/receipt and rerun the shipped review checks. The 70-file registry remains unchanged. Verdict remains PASS — DURATION_ONLY after this actual increment; required fixes remaining: none for the bound bytes.
 
+## Main merge and migration renumbering increment: 18 files
+
+Reviewer: claude-merge-review. Author: claude-merger (the merging Claude session, which merged origin/main and PR #1103's renumbering branch into this branch and updated the registry); the underlying duration implementation remains codex-root's. The reviewer did not write any of the changes under review and edited only this report and its receipt.
+
+Scope. The previous bindings were the bytes at commit 84f2775ebf6e7bf6826483c28e0c65bead8cc491; every one of the 18 stale bound hashes was confirmed to equal that commit's bytes (for the migration and its test, the 84f2775e 0117 paths). The reviewer read the complete `git diff 84f2775e HEAD` (HEAD d7145a2e) of each of the 18 files, comparing the migration and its test across the rename. The other 52 bindings are unchanged and remain bound to their earlier independently reviewed bytes. For context the reviewer also read main's non-registry changes that the merged code calls: core/state.mjs, core/timeline.mjs, media/clips.mjs, automation/series.mjs, the new 0117_video_shorts_topics migration and the duration-related lines of ai.py (none touch target_minutes or episode length).
+
+What changed, and its duration effect:
+
+- Both youtube-video SKILL.md copies remain byte-identical. The merge changes only the drama row's media wording (switchable CC instead of burned-in subtitles, Chinese master first) and adds a production-profile paragraph and reference row (Veo 3.1 Lite 1080p eight-second source clips). The duration paragraph (explainers target 10, brands 13, eight-minute body and final minimum, explainer admin 8–20 default 10, Shorts/ordinary drama/compilations unchanged) is byte-identical. The pre-existing "8–12 分鐘" overview cell of the full-auto row is untouched by this delta and was already in the previously accepted bytes.
+- models.py and schemas.py add the Shorts `subject` stage and `shorts` prompt format (stage-prompt check constraint, RunStage, a variant validator). No minutes field, default, bound or settings check is touched; the VideoAutomationSettings 8–30/min<=max model constraint is unchanged.
+- series.py adds shot_looks validation inside the setting/bible character loop. It neither reads nor writes target_minutes; patch_target_minutes, patch_problem and the explainer/brand paths are unchanged. test_video_series.py adds only shot-look accept/refuse regressions.
+- flow.mjs adds production-profile narrator settling, forced selectable CC, a clips-only visual tier for productions, source_locale translator payloads, and a production payload for episodes. None of these paths touch target_minutes or effectiveEpisodeMinutes; the explainer planner/writer/state-repair normalization lines are byte-identical. prompts.mjs adds a production guide (per-shot ≤8 s clip rules, not episode length), source-language translator/caption-reviewer texts, and character-look prompt text; the drama "2 to 4 minutes unless target_minutes says otherwise" line and every explainer/brand duration instruction are unchanged.
+- drama.mjs adds shot_looks/character_looks validation and helpers and changes resolveSubtitles' default burn_in to false. needsMinimumLength (non-drama or explainer, excluding compilations) is byte-identical. lint.mjs adds productionShotProblems/productionClipProblems: they apply only to dramas with an approved production profile and cap a single shot at 8 s (240 frames); they never relax or replace the episode floor. The target_minutes, needsMinimumLength and minEpisodeMinutes block is unchanged and both sides of the merge conflict are present.
+- lint.test.mjs, series.test.mjs, automation.test.mjs, clips.test.mjs and look-keyframes.test.mjs add production, shot-look and source-locale regressions. The set of files and per-file counts of VIDEO_MIN_EPISODE_MINUTES references across tools/ and apps/ is identical at 84f2775e and HEAD, so the merge adds no new fixture opt-out; schema.mjs, duration.mjs, qa/checks.mjs and qa/cli.mjs (the fixture boundary, the general eight-minute floor and the 14,400-frame knowledge/body guard) are not stale and keep their bound bytes.
+- review.mjs changes only the two migration paths 0117 to 0118 in REVIEW_FILES; the receipt rules are unchanged.
+
+Migration renumbering. 0118_video_min_8_minutes differs from the bound 0117 bytes only in the docstring Revision ID/Revises lines and the `revision`/`down_revision` values (now 0117_video_shorts_topics, whose own down_revision is 0116_video_project_category). upgrade (GREATEST(8) on both bounds in one statement, recreate the named 8–30/min<=max check) and downgrade (widen to 3, keep raised values) are byte-identical. 0117_video_shorts_topics does not touch video_automation_settings or ck_video_automation_minutes. The test differs only in its docstring number and the MIGRATION constant. No remaining code reference to 0117_video_min_8_minutes exists outside this report's history and completed tickets. This is the fresh migration review the earlier paragraph required of the PR landing second.
+
+Executed by this reviewer (Linux, node_modules symlinked temporarily from the main checkout and removed afterwards):
+
+- alembic ScriptDirectory heads: exactly ['0118_video_min_8_minutes']; 0118's down_revision 0117_video_shorts_topics; 0117's down_revision 0116_video_project_category.
+- `uv run pytest -q tests/test_schema.py tests/test_migration_0118_video_min_8_minutes.py tests/test_video_series.py tests/test_video_automation_settings.py tests/test_video_drama_requests.py`: 104 passed, 6 skipped. All six skips are "requires PostgreSQL", including the migration's both-direction PostgreSQL exercise; that exercise was not run and is not claimed.
+- `node --test tools/video/long-form/*.test.mjs tools/video/core/duration.test.mjs tools/video/qa/duration.test.mjs tools/video/core/lint.test.mjs` before rebinding: 44 passed, 1 failed; the one failure was the shipped-receipt test reporting exactly the 18 stale bindings, as was `node tools/video/long-form/cli.mjs check`. After the reviewer installed this report and its receipt, `node --test tools/video/long-form/review.test.mjs` passed 2/2 and `node tools/video/long-form/cli.mjs check` returned PASS for all 473 plans, exit 0.
+- `node --test` of automation.test.mjs, series.test.mjs, prompts.test.mjs, clips.test.mjs, look-keyframes.test.mjs, drama.test.mjs, explainer.test.mjs, qa/checks.test.mjs and qa/qa.test.mjs: 203 passed, 0 failed.
+
+Findings: no duration rule is changed or bypassed. Flat explainers keep default 10 and whole-minute 8–20; ordinary drama keeps 1–8 default 3; brand stories keep 13 minutes and 720–900 s; general slides settings keep 8–30 with min<=max; the eight-minute general floor, the 14,400-frame knowledge/body guard, the fixture opt-out boundary and effectiveEpisodeMinutes normalization are unchanged; dramas, compilations and Shorts keep their own rules, and the new production profile adds only per-shot limits on top of drama rules. Required fixes remaining: none for the bound bytes.
+
+Non-claims: no PostgreSQL migration run, no full API/web/CI suite, no browser acceptance, no provider or media calls, no measured video duration, no production migration, deployment or publication, and no review of the production designs, Shorts or translation features beyond their duration effect.
+
 ## Reviewed SHA256 bindings
 
 Any change to these bytes requires review of the affected revision before reusing this verdict. The earlier 21-file history above remains evidence of its own revision; this 70-file table is the current acceptance binding.
 
 | File | SHA256 |
 | --- | --- |
-| `.agents/skills/youtube-video/SKILL.md` | `162ef6dc4ef7d4248afd8a9102575b725f5acf234a2127cee30b791b323db2ae` |
+| `.agents/skills/youtube-video/SKILL.md` | `298f5b0084e3b7c82544d1895234f0a0dac0261caec98d89d7c6a4643ec9406b` |
 | `.agents/skills/youtube-video/references/automated.md` | `07c4bf0c63109e8f5eff1e8fa999659faf39e6d43f18f7a3d18b74010782f92f` |
 | `.agents/skills/youtube-video/references/formats.md` | `17857aae0d529984f25a3360f69a60b4cc51bd715343eeecd051e6686f475875` |
-| `.claude/skills/youtube-video/SKILL.md` | `162ef6dc4ef7d4248afd8a9102575b725f5acf234a2127cee30b791b323db2ae` |
-| `apps/api/app/video_automation/models.py` | `58013e5f73d53f1968fd417ffddf6349c2223b7d1639070db8bb95a36cf166c2` |
-| `apps/api/app/video_automation/schemas.py` | `6db7ffc536a05c990602255f4e7b4771fdb0f3d4c259990be4edc554c1d5144a` |
-| `apps/api/app/video_automation/series.py` | `2b5d747a1cc4fd285c8722f41f91840af615711065727ae398e5ae84314815d8` |
-| `apps/api/migrations/versions/0117_video_min_8_minutes.py` | `e1d7cf7166994ff700290c285a22e3708a150dde4c47c1bec78ed6a7fa078089` |
-| `apps/api/tests/test_migration_0117_video_min_8_minutes.py` | `6ecd7ac554f79357f1cd92e5758eb7708660905912dd50caba18762b99aa71c3` |
+| `.claude/skills/youtube-video/SKILL.md` | `298f5b0084e3b7c82544d1895234f0a0dac0261caec98d89d7c6a4643ec9406b` |
+| `apps/api/app/video_automation/models.py` | `ff5ba88f0be1efb1923dd1d9a870ac72ed378d851b879b9a68c64b53771ed699` |
+| `apps/api/app/video_automation/schemas.py` | `0cea45c4947831e49194814befd94f8eb9bd5b528e0e99c29c29d67439642894` |
+| `apps/api/app/video_automation/series.py` | `d5e982dcc71465ae076179e3da35c9e87bd3a2138712a2c2d5de9802e421d234` |
+| `apps/api/migrations/versions/0118_video_min_8_minutes.py` | `5e254bd11d8e635368880ca3b82e368a58887b5223bf3ac5e71d1a2dedc68266` |
+| `apps/api/tests/test_migration_0118_video_min_8_minutes.py` | `d7105af8334bc797c2d474a59ae56575b1d2b9ab04d404790d796608d22076c1` |
 | `apps/api/tests/test_video_automation_settings.py` | `b7f8a1853a7090d010a648ddb7c262c3c616256b4d6a8913410efab8d40a3707` |
 | `apps/api/tests/test_video_drama_requests.py` | `07ddbcaadf668a13565969ca44e2542dee4f6ad83791bcc8f67d785302734c59` |
 | `apps/api/tests/test_video_explainer_duration.py` | `fbd8aaca7171321dcbe7511f607f61bb21a147640f9e22920db87d2f872ab2fc` |
-| `apps/api/tests/test_video_series.py` | `9c762fbef8eec2f9be92de461ca5434ca658e75cc20a22cbccf661b702d531b6` |
+| `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
 | `apps/web/components/admin-video-explainer-duration.test.tsx` | `bb888f17b3ef617d788fbed83f5fba280dfe06da008a6f80fca15b15c6916ca0` |
 | `apps/web/components/admin-video-reviews.test.tsx` | `98a983a571dcc8ca9e1d5da5cc0bcac3f7d96c6bcd8ed0805c7ca9f55ff5f08d` |
 | `apps/web/components/admin-video-series.test.tsx` | `f6b62a1802799e56cd8d64e003a2035b3b2e255a214e41335329ae25069eec8c` |
@@ -111,17 +142,17 @@ Any change to these bytes requires review of the affected revision before reusin
 | `docs/videos/so-thats-why/README.md` | `00a0f0e5a56d7a492dec69263eab34668e0d334949878bd512b09edacaefd0de` |
 | `docs/videos/so-thats-why/season2/README.md` | `e560411dc91f1928b2cf9506a044e55ae7f5f65450199118bd165464599f1218` |
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
-| `tools/video/automation/automation.test.mjs` | `762edc17b105e3986c950894d2e06d4e09dd44f065ba91288a55aba6b104eae8` |
-| `tools/video/automation/flow.mjs` | `8204b2d10ca6350952e90f8cc7420a7814f709310e2b283b16aa6a337213c330` |
-| `tools/video/automation/prompts.mjs` | `dd8a8530a0c44073e915c2092d27442bb5b6949019c5d0e7fd7d7b3321ab93d9` |
-| `tools/video/automation/series.test.mjs` | `85aaf1f5dabc78058603ad3c1167d950d353731f02a160a5d17be82597e09925` |
+| `tools/video/automation/automation.test.mjs` | `d79fb934cb2a5114402e182acc7a3ab9e6cff9e803c92e6519fbf3851e7ad6e6` |
+| `tools/video/automation/flow.mjs` | `27d762c5d35d482444a6013b89aedbc338ea667cbedf23323e23f36caf2431ee` |
+| `tools/video/automation/prompts.mjs` | `f6462deca2cb78ba7a5cb05471eeda4941522f24e33e3f442079cfacf1d82a79` |
+| `tools/video/automation/series.test.mjs` | `8288b63fa55024cb9305f13fdb8714bf690fb01a2d505e424c3d505359ca654c` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
-| `tools/video/core/drama.mjs` | `08c881a09b0043eb6844c875c7d498dc9a5b99e0f569c36d76fb41081bee9b8e` |
+| `tools/video/core/drama.mjs` | `db0f08c3f386497367e3a228e00bc6a26552f33db11146a9c00a5cb32747f04e` |
 | `tools/video/core/duration.mjs` | `406c61d2211781ae571f952cb6239ee7c808f7f603a4be3ed5d61622bfe65d9a` |
 | `tools/video/core/duration.test.mjs` | `49290be2b3f58801532e225ecff8f8b9730746425e6527b50b0c03beee6adc94` |
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
-| `tools/video/core/lint.mjs` | `a10cfdbd4361e62fbc264b6d312f466c9a3d0ae6d97baa3f4dc6288ca0d1ac12` |
-| `tools/video/core/lint.test.mjs` | `61ee2e6d74564753c54312fd10d8151643dbb4c458f17e15e3679aef4df6d56a` |
+| `tools/video/core/lint.mjs` | `34b2d059805ceceedd95f56881a13a30a7112e4dcc49864a58fbf7d57e309ed8` |
+| `tools/video/core/lint.test.mjs` | `0cc01210737ee6d3be68018602bd36789c223a6c746b29b5add73f5a3cf28225` |
 | `tools/video/core/narration-locale.test.mjs` | `af0b899f0518ef0f652816a8d53908d002cb805514993ca24d6aca0004640595` |
 | `tools/video/core/schema.mjs` | `d072cccea0eb2156d462225edf61cec6d732cb79d1b4d8e9caf2571bc830622e` |
 | `tools/video/core/stages.test.mjs` | `0a409f7a88234c1823146ea65092a95ceb12b69c34ccf1910894712f34859a2e` |
@@ -134,10 +165,10 @@ Any change to these bytes requires review of the affected revision before reusin
 | `tools/video/long-form/integration.test.mjs` | `aa69f38653fb7c6a7fd0c6daed93ccde1e031987e3169f6c8d9456f38c8b605c` |
 | `tools/video/long-form/plans.mjs` | `9680960509931642c679a9db9a3a1d6e419280558f9eb431358bfd1ee781e103` |
 | `tools/video/long-form/plans.test.mjs` | `5b7992649fa5384d1758664a2e9b6ccbb104004da499a3d5f73b6665e9f768a6` |
-| `tools/video/long-form/review.mjs` | `9ccf5b14a178dbf80ee699b0b6ddfa6abeda240844845f005042806a2240ce27` |
+| `tools/video/long-form/review.mjs` | `69fe791f0b3dd36a1d2070cd3ab1d371d70625d3a5228e90b42d5d48203525b8` |
 | `tools/video/long-form/review.test.mjs` | `e753ccc616b589a321473336f71621cd46206edbc0fa4f2b1e59d2167217e06f` |
-| `tools/video/media/clips.test.mjs` | `a7679d5b7a7224d5417201cc21bdb093f500cdc8aeeb1af043640200e13cf0ff` |
-| `tools/video/media/look-keyframes.test.mjs` | `43311eb4248ea1504e853193f242455beaabb05c224abc6f51f5c6949619187b` |
+| `tools/video/media/clips.test.mjs` | `adba34387121485e6c30a0c15a57c0e9e2c6ef573f00c9a83e4a09ba391c3764` |
+| `tools/video/media/look-keyframes.test.mjs` | `2b92c61e276fd120952512e1752297b4f9dcdc185059095da3517800f8a09348` |
 | `tools/video/qa/checks.mjs` | `dc99682b29b674cfedc12ca67c8809e23c1d99d5635a1cd79970a8180d21cc83` |
 | `tools/video/qa/checks.test.mjs` | `e93fe80fb6ef0366da6728e397f78e355e6000847836a0a7e31ae63615211317` |
 | `tools/video/qa/cli.mjs` | `49d3b6813773cff589872d3952945879e6814b567806c0c0448c044277128b4e` |
