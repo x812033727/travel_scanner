@@ -17,6 +17,9 @@ import {
   assembleTrack, defaultRate, dubLexicon, dubScript, estimatedLengths, layoutDub, layoutWindow, lineBudgets, measureRate, narrationRate, placeLines, shrinkBudgets, translationHash, windowsOf,
 } from "./plan.mjs";
 
+// The fixture videos run seconds; the eight-minute floor has tests of its own.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
+
 const TOKEN = `mkv_${"t".repeat(43)}`;
 const ms = (value) => Math.round((value / 1000) * SAMPLE_RATE);
 const tone = (milliseconds) => Int16Array.from({ length: ms(milliseconds) }, (_, index) => Math.round(8000 * Math.sin(index / 7)));

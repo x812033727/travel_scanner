@@ -26,6 +26,9 @@ import {
   VIEWPORT,
 } from "./steps.mjs";
 
+// The fixture videos run seconds; the eight-minute floor has tests of its own.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
+
 const fixture = JSON.parse(readFileSync(new URL("./fixtures/tutorial/video.json", import.meta.url), "utf8"));
 const lexicon = JSON.parse(readFileSync(new URL("./fixtures/lexicon.json", import.meta.url), "utf8"));
 const brief = readFileSync(new URL("./fixtures/tutorial/brief.md", import.meta.url), "utf8");

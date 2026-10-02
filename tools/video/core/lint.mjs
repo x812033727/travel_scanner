@@ -4,12 +4,12 @@
 // The written-language list is the one the recorded route's video_kit.py uses, so a script that
 // passes one route's check does not fail the other's.
 import { cadenceProblems, HOOK_SECONDS as ILLUSTRATED_HOOK_SECONDS } from "./cadence.mjs";
-import { emotionProblems, EXPLAINER_PRESET, illustrated, isDrama, isShot, shotProblems, visualTierProblems } from "./drama.mjs";
+import { emotionProblems, EXPLAINER_PRESET, illustrated, isDrama, isShot, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription } from "./metadata.mjs";
-import { DEFAULT_TARGET_MINUTES, LOCALES, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
+import { DEFAULT_TARGET_MINUTES, LOCALES, minEpisodeMinutes, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
 import { isStory, storyProblems } from "./story.mjs";
-import { DEFAULT_CPM, chapterList, checkChapters, estimateTimeline, formatClock, frameToSeconds, spokenUnits } from "./timeline.mjs";
+import { DEFAULT_CPM, FPS, chapterList, checkChapters, estimateTimeline, formatClock, frameToSeconds, spokenUnits } from "./timeline.mjs";
 import { metadataStatus, namedWith } from "./translations.mjs";
 import { TEMPLATE_SPECS } from "../templates/templates.mjs";
 import { isScreencast, screencastSceneProblems } from "../screencast/steps.mjs";
@@ -198,6 +198,7 @@ function seriesProblems(doc, series, error, warn) {
       if ((character[key] ?? null) !== (known[key] ?? null)) error(`characters[${index}].${key}`, "differs from the series' setting book; copy it as written so the character sheets are reused");
     }
     if (JSON.stringify(character.voice ?? null) !== JSON.stringify(known.voice ?? null)) error(`characters[${index}].voice`, "differs from the series' setting book; copy it as written");
+    if (JSON.stringify(character.shot_looks ?? []) !== JSON.stringify(known.shot_looks ?? [])) error(`characters[${index}].shot_looks`, "differs from the series' approved look catalog; copy it as written");
   });
   // A binge series (docs/videos/BINGE.md) buys clips by tier: the worker copies the series'
   // visual_tier into series.json, and a script over its cap is caught here, before the clips
@@ -271,6 +272,7 @@ export function lintVideo(doc, context = {}) {
   });
 
   const timeline = estimateTimeline(doc, context.cpm ?? DEFAULT_CPM);
+  for (const problem of productionShotProblems(doc, context.series, timeline)) error(problem.path, problem.message);
   if (drama || pictures) {
     const shots = shotProblems(doc, timeline);
     for (const problem of shots.errors) error(problem.path, problem.message);
@@ -298,7 +300,13 @@ export function lintVideo(doc, context = {}) {
   }
   const minutes = frameToSeconds(timeline.total_frames) / 60;
   const [low, high] = doc.target_minutes ?? DEFAULT_TARGET_MINUTES;
-  if (minutes < low || minutes > high) warn("scenes", `about ${minutes.toFixed(1)} minutes; the target is ${low}-${high}`);
+  // Every episode but a drama's runs at least eight minutes. The estimate reads 250 characters a
+  // minute and the voice speaks about 300, so a script that clears it here can still come out
+  // short: qa's assemble item measures the cut.
+  const floor = needsMinimumLength(doc) ? minEpisodeMinutes() : 0;
+  if (low < floor) error("target_minutes", `starts at ${low} minutes; every episode but a drama's runs at least ${floor}`);
+  if (minutes < floor) error("scenes", `about ${minutes.toFixed(1)} minutes; every episode but a drama's runs at least ${floor}: write more narration`);
+  else if (minutes < low || minutes > high) warn("scenes", `about ${minutes.toFixed(1)} minutes; the target is ${low}-${high}`);
 
   const article = context.pack ? articleUrl(context.pack, narration, doc.slug) : null;
   const description = composeDescription({ body: doc.youtube.description, timeline, article, sources: doc.sources ?? [], locale: narration, tags: doc.youtube.tags });
@@ -356,4 +364,46 @@ export function lintVideo(doc, context = {}) {
     chapters: chapters.map((chapter) => `${formatClock(chapter.start)} ${chapter.title}`),
   };
   return { errors, warnings, summary };
+}
+
+/** The animation profile's rules apply to both estimated and measured voice timelines. */
+export function productionShotProblems(doc, series, timeline) {
+  if (!isDrama(doc) || !series?.production?.profile) return [];
+  const errors = [];
+  const timed = new Map((timeline?.scenes ?? []).map((scene) => [scene.id, scene]));
+  doc.scenes.forEach((scene, index) => {
+    if (!isShot(scene)) return;
+    const where = `scenes[${index}] (${scene.id})`;
+    if (shotVisual(scene) !== "clip") errors.push({ path: `${where}.data.visual`, message: "the production profile requires animated clips, not stills; put checked text graphics over an animated shot" });
+    if (scene.data?.fit === "freeze") errors.push({ path: `${where}.data.fit`, message: "the production profile does not allow freeze-frame padding; split the shot or shorten its dialogue" });
+    const duration = timed.get(scene.id);
+    if (duration && duration.end_frame - duration.start_frame > 8 * FPS) errors.push({ path: where, message: "the production profile limits a shot to 8 seconds including pauses; split the shot or shorten its dialogue instead of holding the last frame" });
+  });
+  return errors;
+}
+
+/** Native source dimensions, before assembly can scale the picture. */
+export function productionClipSizeProblem(series, metrics) {
+  const video = series?.production?.profile?.video;
+  if (video?.resolution !== "1080p" || (video.aspect ?? "16:9") !== "16:9") return null;
+  if (metrics?.width === 1920 && metrics?.height === 1080) return null;
+  return `the production profile requires a native 1920x1080 source; measured ${metrics?.width ?? "unknown"}x${metrics?.height ?? "unknown"} cannot be accepted by upscaling`;
+}
+
+/** Saved clip evidence must meet the current production profile on resume as well. */
+export function productionClipProblems(doc, series, timeline, clips) {
+  if (!isDrama(doc) || !series?.production?.profile) return [];
+  const errors = productionShotProblems(doc, series, timeline);
+  const expected = series.production.profile.video;
+  if (expected && ["provider", "model", "resolution"].some((key) => expected[key] && clips?.clip?.[key] !== expected[key])) errors.push({ path: "clips", message: "saved clips do not match the approved production model and resolution" });
+  const timed = new Map((timeline?.scenes ?? []).map((scene) => [scene.id, scene]));
+  doc.scenes.filter(isShot).forEach((scene) => {
+    const entry = clips?.shots?.[scene.id];
+    const duration = entry?.qc?.metrics?.duration;
+    const time = timed.get(scene.id);
+    if (entry?.still || entry?.qc?.ok !== true || !Number.isFinite(duration) || !time || Math.round(duration * FPS) < time.end_frame - time.start_frame) errors.push({ path: `clips.${scene.id}`, message: "saved clip has no passing evidence of motion covering its whole dialogue; recheck the production clip" });
+    const sizeProblem = productionClipSizeProblem(series, entry?.qc?.metrics);
+    if (sizeProblem) errors.push({ path: `clips.${scene.id}`, message: sizeProblem });
+  });
+  return errors;
 }

@@ -19,13 +19,14 @@ import { emptyLexicon } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
 import { articlePath, SITE } from "../core/metadata.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, UsageError } from "../core/paths.mjs";
-import { eachLine, LINE_ID, NARRATION_LOCALE, narrationLocale, spokenText } from "../core/schema.mjs";
+import { eachLine, LINE_ID, minEpisodeMinutes, NARRATION_LOCALE, narrationLocale, spokenText } from "../core/schema.mjs";
 import { writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckBinding, scriptCheckMatches, scriptCheckUnbound } from "../core/script-check.mjs";
 import { LOCALE_PARTS, readLanguages, writeLanguages } from "../core/stages.mjs";
 import { ARTIFACTS, dubArtifacts, dubsStatus, lintProject, loadProject, pipelineStatus } from "../core/state.mjs";
 import { speechHash } from "../core/timeline.mjs";
 import { MAX_TEMPO } from "../dubs/plan.mjs";
+import { productionForEpisode } from "../production/design.mjs";
 import { buildSheet, SHEET_PARTS } from "../i18n/cli.mjs";
 import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview, sourceGuideOf } from "../review/sync.mjs";
 import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
@@ -38,6 +39,14 @@ import { rewriteProblems } from "./rewrite.mjs";
 import { advanceCompilation, startCompilation } from "./compilation.mjs";
 import { castFrom, episodeBrief, isExplainerOneOff, isOneOff, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
 import { episodeSeries, episodeShortFields, episodeShortsProblems, shortsFile } from "../shorts/episode.mjs";
+
+// The eight-minute floor (core/schema.mjs MIN_EPISODE_MINUTES): a slides video and an explainer
+// start at it whatever an older settings row or request says; a drama episode keeps its length.
+const slidesMinutes = (settings) => {
+  const low = Math.max(minEpisodeMinutes(), settings.target_minutes_min);
+  return [low, Math.max(low, settings.target_minutes_max)];
+};
+const episodeMinutes = (minutes, preset) => (preset === EXPLAINER_PRESET ? Math.max(minEpisodeMinutes(), minutes) : minutes);
 
 export const STATE_FILE = "auto.json";
 const GLOBAL_FILE = "auto-state.json";
@@ -107,6 +116,17 @@ export function sheetDone(sheet) {
   const captions = !parts.includes("captions") || !(sheet.lines ?? []).some((line) => line.todo);
   const metadata = !parts.includes("metadata") || (filled(sheet.title) && filled(sheet.description) && (sheet.chapters ?? []).every(filled) && Array.isArray(sheet.tags?.text) && sheet.tags.text.length > 0);
   return captions && metadata;
+}
+
+/**
+ * What a translation payload adds for a video narrated in another language than zh-TW:
+ * { source_locale }, which also picks the translator's and the caption reviewer's texts for that
+ * source (prompts.mjs SOURCE_INSTRUCTIONS). Nothing for a zh-TW video, whose payload and prompts
+ * stay as they were.
+ */
+function sourceLocale(video) {
+  const source = narrationLocale(video);
+  return source === NARRATION_LOCALE ? {} : { source_locale: source };
 }
 
 function titleOf(brief) {
@@ -246,13 +266,25 @@ export function settledVoice(voice) {
 
 /**
  * video.json as the owner's settings say it must be, whatever the model returned. A drama
- * (docs/videos/DRAMA.md) also takes the settings tab's style preset, subtitle burn-in and
- * whether music is made at all, and its narrator voice is the drama part's when the owner chose
+ * (docs/videos/DRAMA.md) also takes the settings tab's style preset and whether music is made,
+ * uses selectable CC, and its narrator voice is the drama part's when the owner chose
  * one; the writer's own look fields stay. The owner's request's preset (`stylePreset`) wins over
  * the settings tab's; an explainer's preset is not the writer's to change, and it has no characters.
  */
-export function settle(video, { slug, settings, sourceGuide, root, format = "slides", series = null, cast = null, stylePreset = null }) {
+export function settle(video, { slug, settings, sourceGuide, root, format = "slides", series = null, cast = null, stylePreset = null, production = null }) {
   const settled = { ...video, slug, voice: settledVoice(settingsFor(settings, format).voice) };
+  if (format === "drama" && production?.profile?.phases?.primary?.locale === "zh-TW") {
+    const narrator = production.narrator;
+    if (typeof narrator?.voice_name !== "string" || !narrator.voice_name.trim() || typeof narrator.performance !== "string" || !narrator.performance.trim()) {
+      throw new AutomationError("the approved Chinese production needs a selected narrator voice and performance direction", { code: "video_production_voice_mismatch", who: "owner" });
+    }
+    if ((cast ?? video.characters ?? []).some((character) => character.voice?.provider === "gemini" && character.voice.name === narrator.voice_name)) {
+      throw new AutomationError("the production narrator must have a voice distinct from every character; revise the approved narrator selection", { code: "video_production_voice_mismatch", who: "owner" });
+    }
+    settled.voice = { provider: "gemini", name: narrator.voice_name, style: `台灣國語，自然台灣口音。${narrator.performance}`.slice(0, 400) };
+    settled.narration_locale = "zh-TW";
+    if (settled.youtube) settled.youtube = { ...settled.youtube, default_language: "zh-TW" };
+  }
   // The description links the article through its content pack. An article the news automation
   // published lives only in the database, so without a pack the script names it in sources instead.
   if (sourceGuide && existsSync(contentPackFile(sourceGuide, root))) settled.source_guide = sourceGuide;
@@ -268,7 +300,9 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
       settled.look.preset = EXPLAINER_PRESET;
       settled.characters = [];
     }
-    settled.subtitles = { burn_in: drama.subtitle_burn_in ?? true, ...(video.subtitles ?? {}) };
+    // New automatic productions use selectable CC, even if an old site setting or writer
+    // asks for burn-in. Explicit legacy video.json files remain readable by assemble.
+    settled.subtitles = { ...(video.subtitles ?? {}), burn_in: false };
   } else if (illustrated(video)) {
     // Illustrated slides (docs/videos/ILLUSTRATED.md): the channel's look unless the writer named
     // one, and the owner's licensed music file and sound-effect set from the settings tab's
@@ -434,7 +468,10 @@ export class Automation {
     // (docs/videos/DRAMA-FLOW.md, section 1). The server keeps what was sent, per stage, format
     // and variant, for the owner to read.
     const standing = settingsFor(this.settings, format).instructions?.[stage] ?? "";
-    const answer = await this.api.run(stage, slug, instructionsFor(stage, format, standing, variant, this.stance, series), payload, maxOutputTokens, format, variant);
+    // A translation of a video narrated in another language than zh-TW carries that language as
+    // "source_locale" (sourceLocale), and the instructions name the same source the payload shows.
+    const source = typeof payload?.source_locale === "string" ? payload.source_locale : null;
+    const answer = await this.api.run(stage, slug, instructionsFor(stage, format, standing, variant, this.stance, series, source), payload, maxOutputTokens, format, variant);
     this.log(`  ${stage}: ${answer.model}, ${answer.input_tokens + answer.output_tokens} tokens; month ${answer.usage.tokens}/${answer.usage.token_budget}`);
     this.lastAnswer = answer.text;
     try {
@@ -706,7 +743,7 @@ export class Automation {
       // A drama's own topic scope (the drama part's), the topics to avoid shared by both.
       scope: settingsFor(this.settings, format).topicScope,
       avoid: this.settings.topic_avoid,
-      target_minutes: [this.settings.target_minutes_min, this.settings.target_minutes_max],
+      target_minutes: slidesMinutes(this.settings),
       channel: refs.channel,
       formats: refs.formats,
       script_writing: refs.script_writing,
@@ -814,7 +851,7 @@ export class Automation {
     const earlier = this.earlierVideos();
     const taken = new Set(earlier.map((video) => video.slug));
     const usedGuides = new Set(earlier.map((video) => video.source_guide).filter(Boolean));
-    const minutes = Number(request.target_minutes) || 3;
+    const minutes = episodeMinutes(Number(request.target_minutes) || 3, request.style_preset);
     const stateBase = { format: "drama", request_id: request.id, premise: request.premise, style_preset: request.style_preset ?? null, target_minutes: minutes, source_guide: request.source_guide ?? null };
     const sources = request.source_guide ? await readSources(this.read, [siteArticleUrl(request.source_guide, this.ctx.root)]) : [];
     let plan = null;
@@ -883,6 +920,8 @@ export class Automation {
     // The cast as this episode wears it: a character's look that covers the episode stands in for
     // the book's appearance, sheet prompt and voice style (docs/videos/SERIES.md, 換裝與變化).
     const cast = castFrom(context.setting?.body_json, episode.number);
+    const production = productionForEpisode(context.setting?.body_json, episode.number);
+    const visualTier = production?.profile ? "clips" : series.visual_tier ?? "clips";
     const beats = episode.beats ?? {};
     const state = {
       slug,
@@ -893,7 +932,7 @@ export class Automation {
       request_id: request.id,
       premise: request.premise,
       style_preset: series.style_preset ?? null,
-      target_minutes: Number(request.target_minutes) || series.target_minutes || 3,
+      target_minutes: episodeMinutes(Number(request.target_minutes) || series.target_minutes || 3, series.style_preset),
       source_guide: request.source_guide ?? null,
       // The binge fields (docs/videos/BINGE.md) travel with a series' episode: the genre section
       // of every prompt, the visual tier lint holds the script to, whether the gates are
@@ -907,7 +946,7 @@ export class Automation {
           : {
               genre: series.genre ?? "xianxia-bonds",
               lead: series.lead ?? "dual-male",
-              visual_tier: series.visual_tier ?? "clips",
+              visual_tier: visualTier,
               compilation: Boolean(series.compilation),
               hands_off: Boolean(series.hands_off),
             }),
@@ -935,6 +974,7 @@ export class Automation {
       title: episode.title,
       logline: episode.logline,
       characters: cast,
+      ...(production ? { production } : {}),
       beats,
       recaps: context.recaps ?? [],
       earlier: episodes.filter((each) => each.number < episode.number).map(({ number, title, logline }) => ({ number, title, logline })),
@@ -942,8 +982,8 @@ export class Automation {
       mysteries: context.mysteries ?? [],
       setting_md: context.setting?.body_md ?? "",
       chapter_md: context.chapter?.body_md ?? "",
-      series: { title: series.title, premise: series.premise, tone: series.tone, aspects: series.aspects, note: series.note, style_preset: series.style_preset, open_ended: series.open_ended, genre: series.genre ?? "xianxia-bonds", lead: series.lead ?? "dual-male", visual_tier: series.visual_tier ?? "clips", compilation: Boolean(series.compilation), hands_off: Boolean(series.hands_off), total_minutes: series.total_minutes ?? null },
-      visual_tier: series.visual_tier ?? "clips",
+      series: { title: series.title, premise: series.premise, tone: series.tone, aspects: series.aspects, note: series.note, style_preset: series.style_preset, open_ended: series.open_ended, genre: series.genre ?? "xianxia-bonds", lead: series.lead ?? "dual-male", visual_tier: visualTier, compilation: Boolean(series.compilation), hands_off: Boolean(series.hands_off), total_minutes: series.total_minutes ?? null },
+      visual_tier: visualTier,
       compilation: Boolean(series.compilation),
     }, null, 2)}\n`);
     writeFileSync(path.join(dir, "brief.md"), episodeBrief(series, episode, cast, beats));
@@ -1243,7 +1283,7 @@ export class Automation {
       slug: state.slug,
       voice: settingsFor(this.settings, state.format).voice,
       source_guide: state.source_guide,
-      target_minutes: drama ? [state.target_minutes ?? 3, state.target_minutes ?? 3] : [this.settings.target_minutes_min, this.settings.target_minutes_max],
+      target_minutes: drama ? [state.target_minutes ?? 3, state.target_minutes ?? 3] : slidesMinutes(this.settings),
       lexicon: Object.keys(lexicon.terms),
       script_writing: refs.script_writing,
       channel: refs.channel,
@@ -1260,11 +1300,18 @@ export class Automation {
   seriesPayload(state) {
     const info = readJson(path.join(docDir(state.slug, this.ctx.root), "series.json"), null);
     if (!info) return {};
+    // The approved book stays intact on disk. Its generated whole-series appendix
+    // repeats future episode direction; each model receives that only through the
+    // current episode's production payload. Keep owner notes outside the markers.
+    const settingMd = info.production
+      ? (info.setting_md ?? "").replace(/<!-- BEGIN GENERATED PRODUCTION DIRECTION -->[\s\S]*?<!-- END GENERATED PRODUCTION DIRECTION -->/g, "")
+      : info.setting_md ?? "";
     return {
       series: { ...(info.series ?? {}), slug: state.series.slug, episode: state.series.episode, chapter: state.series.chapter, title_of_episode: info.title, logline: info.logline },
       series_reference: this.reference().series,
       cast: info.characters ?? [],
-      setting_md: info.setting_md ?? "",
+      ...(info.production ? { production: info.production } : {}),
+      setting_md: settingMd,
       chapter_md: info.chapter_md ?? "",
       beats: info.beats ?? {},
       recaps: info.recaps ?? [],
@@ -1276,8 +1323,9 @@ export class Automation {
 
   /** A stage's video.json as it is saved: the owner's settings and the series' cast over what the model returned. */
   settled(state, video) {
-    const cast = state.series ? readJson(path.join(docDir(state.slug, this.ctx.root), "series.json"), {}).characters ?? [] : null;
-    const settledVideo = settle(video, { slug: state.slug, settings: this.settings, sourceGuide: state.source_guide, root: this.ctx.root, format: state.format, series: state.series ?? null, cast, stylePreset: state.style_preset ?? null });
+    const info = state.series ? readJson(path.join(docDir(state.slug, this.ctx.root), "series.json"), {}) : null;
+    const cast = info ? info.characters ?? [] : null;
+    const settledVideo = settle(video, { slug: state.slug, settings: this.settings, sourceGuide: state.source_guide, root: this.ctx.root, format: state.format, series: state.series ?? null, cast, stylePreset: state.style_preset ?? null, production: info?.production ?? null });
     // The storytelling register's pause beats are the tool's (register.mjs setPauseBeats): set on
     // every save of a script whose prompts carry the register, before lint, whichever stage wrote it.
     return this.usesRegister(state) ? setPauseBeats(settledVideo) : settledVideo;
@@ -1934,10 +1982,10 @@ export class Automation {
     if (sheetDone(sheet)) return null;
     // The sheet's identity travels with it, whatever the model leaves out.
     const keep = (worksheet) => ({ ...worksheet, locale, slug: sheet.slug, parts: sheet.parts });
-    const translated = await this.stage("translator", state.slug, { locale, parts, worksheet: sheet, video }, 32_000, state.format);
+    const translated = await this.stage("translator", state.slug, { locale, parts, worksheet: sheet, video, ...sourceLocale(video) }, 32_000, state.format);
     if (!Array.isArray(translated.worksheet?.lines)) return this.retryLater(state, "translator", `the ${locale} translation returned no worksheet`);
     writeFileSync(sheetFile, `${JSON.stringify(keep(translated.worksheet), null, 2)}\n`);
-    const reviewed = await this.stage("caption_reviewer", state.slug, { locale, parts, worksheet: keep(translated.worksheet), video }, 32_000, state.format);
+    const reviewed = await this.stage("caption_reviewer", state.slug, { locale, parts, worksheet: keep(translated.worksheet), video, ...sourceLocale(video) }, 32_000, state.format);
     if (Array.isArray(reviewed.worksheet?.lines)) writeFileSync(sheetFile, `${JSON.stringify(keep(reviewed.worksheet), null, 2)}\n`);
     const merged = await run(ctx, ["i18n-merge", "--slug", state.slug, "--locale", locale]);
     if (merged.code !== 0) return this.retryLater(state, "translator", `the ${locale} translation does not merge: ${lastLine(merged.out, 2)}`);
@@ -2069,7 +2117,7 @@ export class Automation {
       .filter((entry) => sources.has(entry.id) && typeof translation.lines?.[entry.id]?.text === "string")
       .map((entry) => ({ id: entry.id, source: sources.get(entry.id), text: translation.lines[entry.id].text, chars: entry.chars, max_chars: entry.max_chars, ...(entry.seconds === undefined ? {} : { seconds: entry.seconds }), window_over_seconds: entry.window_over_seconds }));
     if (!lines.length) return { ids: [], problems: ["no line to shorten has a current translation"] };
-    const answer = await this.stage("translator", slug, { locale, lines, video }, 16_000, state.format, "shorten");
+    const answer = await this.stage("translator", slug, { locale, lines, video, ...sourceLocale(video) }, 16_000, state.format, "shorten");
     if (!Array.isArray(answer?.lines)) return { stopped: await this.retryLater(state, "translator", `the ${locale} shortening pass answered without a lines array`) };
     this.cleared(state, "translator");
     const accepted = new Map();
@@ -2138,7 +2186,7 @@ export class Automation {
         return { id, source: sources.get(id), text, heard: String(heard[id]?.heard ?? ""), max_chars: Math.max(budget, [...text].length) };
       });
     if (!lines.length) return { ids: [], problems: ["no flagged line has a current translation"] };
-    const answer = await this.stage("translator", slug, { locale, lines, video }, 16_000, state.format, "reword");
+    const answer = await this.stage("translator", slug, { locale, lines, video, ...sourceLocale(video) }, 16_000, state.format, "reword");
     if (!Array.isArray(answer?.lines)) return { stopped: await this.retryLater(state, "translator", `the ${locale} rewording pass answered without a lines array`) };
     this.cleared(state, "translator");
     const accepted = new Map();

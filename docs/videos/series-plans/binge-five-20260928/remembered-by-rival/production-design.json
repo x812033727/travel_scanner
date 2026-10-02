@@ -1,0 +1,3150 @@
+{
+  "schema_version": 1,
+  "slug": "remembered-by-rival",
+  "source_binding": {
+    "source_sha256": "061c82d31f88119d8cf764765075d6821720861c5dff3f41bc04dad3e473307e"
+  },
+  "delivery_profile_ref": "../../production-20261001/profile.json",
+  "review_status": "design-only-not-render-tested",
+  "visual_direction": {
+    "style": "山門記憶懸疑武俠；石、木、紙的實物可信度高於光效，法術僅關鍵三次；失憶用行為距離演，不用白眼與畫面反覆閃白。",
+    "screen_direction": "橋的安全側與破口側固定；十二節點沿同一盆地地圖，緩壓、拔銷、儲能裂開分開因果。江照左掌、祁硯右腕紅繩全劇不鏡像。",
+    "performance": "江照在被忘記時不每集哭求；祁硯的精確記憶藏在順手照顧，傷後轉左手劍要有重量；阿杳用自己寫下的事重新建立信任。",
+    "continuity": "只E1/18/28借淵施契；E34普通修為注石，E37機械拆除不施契。祁硯童年空白是頭傷，紅繩切斷不逆向抹去已存記憶，結局不補回所有記憶。"
+  },
+  "opening_30s": [
+    {
+      "id": "r01",
+      "in_s": 0,
+      "out_s": 5,
+      "scale": "中近景",
+      "camera": "橋面安全側同軸",
+      "action": "江照把孩子推到母親安全側，左掌契痕僅作剛施術後消退。",
+      "characters": [
+        "jiang-zhao",
+        "hu-niang"
+      ],
+      "props": [
+        "破橋",
+        "左掌契痕"
+      ],
+      "dialogue_intent": "胡娘問你是誰；內心短句表達剛救過。",
+      "sound": "木裂後收音，孩子只喘息無新增聲線。",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:502",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:540",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "id": "r02",
+      "in_s": 5,
+      "out_s": 12,
+      "scale": "雙人中景",
+      "camera": "祁硯落地後停機位",
+      "action": "祁硯拔劍叫江照姓名，右腕紅繩仍在袖內。",
+      "characters": [
+        "qi-yan",
+        "jiang-zhao"
+      ],
+      "props": [
+        "祁硯劍"
+      ],
+      "dialogue_intent": "江照問你還記得我，不先宣布他是唯一例外。",
+      "sound": "落地與劍出鞘各短，不連續打鬥。",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:502",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:540",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "id": "r03",
+      "in_s": 12,
+      "out_s": 18,
+      "scale": "手部近景",
+      "camera": "江照左側固定",
+      "action": "江照用劍鞘支住鬆木，不再施法。",
+      "characters": [
+        "jiang-zhao"
+      ],
+      "props": [
+        "江照劍鞘",
+        "鬆木"
+      ],
+      "dialogue_intent": "先讓人離開破口。",
+      "sound": "木壓聲，不再出契印音。",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:502",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:540",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "id": "r04",
+      "in_s": 18,
+      "out_s": 22,
+      "scale": "中景",
+      "camera": "祁硯同側固定",
+      "action": "祁硯抓住繩索穩住安全側。",
+      "characters": [
+        "qi-yan"
+      ],
+      "props": [
+        "橋繩"
+      ],
+      "dialogue_intent": "動作代對白。",
+      "sound": "繩緊與呼吸。",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:502",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:540",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "id": "r05",
+      "in_s": 22,
+      "out_s": 26,
+      "scale": "中景",
+      "camera": "母子已在穩定區",
+      "action": "母亲抱緊孩子離開危險邊界。",
+      "characters": [
+        "hu-niang"
+      ],
+      "props": [
+        "安全橋面"
+      ],
+      "dialogue_intent": "不再讓孩子突然回到破口。",
+      "sound": "脚步離場。",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:502",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:540",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "id": "r06",
+      "in_s": 26,
+      "out_s": 30,
+      "scale": "令牌與雙人分切",
+      "camera": "眼平",
+      "action": "祁硯亮出真追緝令。",
+      "characters": [
+        "qi-yan",
+        "jiang-zhao"
+      ],
+      "props": [
+        "追緝令牌"
+      ],
+      "dialogue_intent": "你救了人，但這道令是真的。",
+      "sound": "令牌硬響，末尾留懸問不用假打斷。",
+      "transition": "cut",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:502",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:540",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "id": "jiang-zhao",
+      "voice_name": "Charon",
+      "performance": "短句、用具體物件說心事；『先把人放下來。』 臺灣國語；偏低、克制、有疲倦的乾笑；擬定 casting 未試聽。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "Jiāng Zhào",
+        "ja": "ジアン・ジャオ",
+        "ko": "장 자오",
+        "en": "Jiang Zhao"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "jiang-zhao--base",
+          "episodes": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ],
+          "appearance": "Adult East Asian man, 28, lean angular silhouette, long black hair tied low with a charcoal cloth band, narrow calm eyes, weathered indigo cross-collar robe, grey trousers and dark cloth boots. A pale branching contract mark sits on his left palm. He carries a plain iron sword with a chipped oval guard and wears no crown or jewellery. Keep the same face, low ponytail and indigo robe in every shot.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:51",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:36",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "qi-yan",
+      "voice_name": "Orus",
+      "performance": "先問證據在哪，後來學會說『我來承擔。』 臺灣國語；字尾穩、語速稍慢，不靠大吼演情緒；擬定 casting 未試聽。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "Qí Yàn",
+        "ja": "チー・イエン",
+        "ko": "치 옌",
+        "en": "Qi Yan"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "qi-yan--base",
+          "episodes": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            23,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40
+          ],
+          "appearance": "Adult East Asian man, 28, upright lean silhouette, straight black hair in a high neat knot with a matte dark pin, defined brows and a small old scar above the right temple. He wears an ivory-grey fitted robe with long narrow sleeves, a black narrow belt and practical black boots. His sword has a plain rectangular guard. No crown or ornate shoulder armour.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:82",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:36",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+          ]
+        },
+        {
+          "id": "qi-yan-cord-hidden",
+          "episodes": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            23,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35
+          ],
+          "appearance": "Adult East Asian man, 28, upright lean silhouette, straight black hair in a high neat knot with a matte dark pin, defined brows and a small old scar above the right temple. He wears an ivory-grey fitted robe with long narrow sleeves, a black narrow belt and practical black boots. His sword has a plain rectangular guard. No crown or ornate shoulder armour. An intact red cord is fully hidden at the RIGHT wrist under the narrow sleeve. It must not be visible.",
+          "cue": "除E8洗衣、E23對圖、E26被瞥見局部揭露及E35切斷鏡頭外。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:82",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:540",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:598",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:655",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:715",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:771",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:830",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:889",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:949",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1008",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1065",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1134",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1192",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1253",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1369",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1426",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1487",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1544",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1602",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1660",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1733",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1849",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2024",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2083",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2142",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2198",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2257",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2326",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2383",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2442",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2499",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2558",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+          ]
+        },
+        {
+          "id": "qi-yan-cord-visible",
+          "episodes": [
+            8,
+            23,
+            26,
+            35
+          ],
+          "appearance": "Adult East Asian man, 28, upright lean silhouette, straight black hair in a high neat knot with a matte dark pin, defined brows and a small old scar above the right temple. He wears an ivory-grey fitted robe with long narrow sleeves, a black narrow belt and practical black boots. His sword has a plain rectangular guard. No crown or ornate shoulder armour. An intact red cord is briefly visible at the RIGHT wrist where the sleeve is raised.",
+          "cue": "只指定揭露鏡；E8/23/26隨後再遮。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:82",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:949",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1849",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2024",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2558",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+          ]
+        },
+        {
+          "id": "qi-yan-cord-cut",
+          "episodes": [
+            35,
+            36,
+            37,
+            38
+          ],
+          "appearance": "Adult East Asian man, 28, upright lean silhouette, straight black hair in a high neat knot with a matte dark pin, defined brows and a small old scar above the right temple. He wears an ivory-grey fitted robe with long narrow sleeves, a black narrow belt and practical black boots. His sword has a plain rectangular guard. No crown or ornate shoulder armour. No red cord on either wrist; a shallow right-wrist injury is covered discreetly. Use the sword in his LEFT hand.",
+          "cue": "E35切后；紅繩另入江照紙包。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:82",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2558",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2615",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2671",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2726",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+          ]
+        },
+        {
+          "id": "qi-yan-healed-no-cord",
+          "episodes": [
+            39,
+            40
+          ],
+          "appearance": "Adult East Asian man, 28, upright lean silhouette, straight black hair in a high neat knot with a matte dark pin, defined brows and a small old scar above the right temple. He wears an ivory-grey fitted robe with long narrow sleeves, a black narrow belt and practical black boots. His sword has a plain rectangular guard. No crown or ornate shoulder armour. No red cord on the body. Only a faint healed right-wrist mark, no fresh wound.",
+          "cue": "數周/三个月后日常。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:82",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2784",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2843",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yuan-heng",
+      "voice_name": "Fenrir",
+      "performance": "以『你要多少人付代價』把自己的選擇偽裝成天命。 臺灣國語；平聲威壓、少量氣音，不用誇張奸笑；擬定 casting 未試聽。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "Yuán Héng",
+        "ja": "ユエン・ホン",
+        "ko": "위안 헝",
+        "en": "Yuan Heng"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "yuan-heng--base",
+          "episodes": [
+            15,
+            16,
+            26,
+            30,
+            35,
+            36,
+            37
+          ],
+          "appearance": "East Asian man appearing 61, tall spare frame, long silver-grey hair in a severe topknot, smooth narrow face and thin brows. He wears a structured pale gold robe with dark geometric borders, a square bronze seal at his waist and a rigid amber-coloured cuff on the left wrist. His hands move very little. Always outwardly immaculate and calm.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:113",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:36",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a-yao",
+      "voice_name": "Kore",
+      "performance": "不說空泛感謝，會問『下一個人從哪裡走？』 臺灣國語；清楚、警覺，不作幼童音；擬定 casting 未試聽。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "Ā Yǎo",
+        "ja": "アー・ヤオ",
+        "ko": "아 야오",
+        "en": "A Yao"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "a-yao--base",
+          "episodes": [
+            7,
+            8,
+            11,
+            12,
+            14,
+            18,
+            19,
+            22,
+            24,
+            25,
+            27,
+            28,
+            29,
+            32,
+            34,
+            38,
+            39
+          ],
+          "appearance": "East Asian teenage girl, 17, small wiry frame, short uneven black bob tucked behind one ear, wide alert eyes, a patched dusty plum jacket over grey cotton trousers and woven shoes. A healed crescent scar sits on her right forearm; she carries a flat cloth pouch with a broken wooden name tag. Practical, fully covered clothing; no glamorous makeup or sexualised styling.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:144",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:36",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+          ]
+        },
+        {
+          "id": "a-yao-fresh-wrist",
+          "episodes": [
+            7,
+            8,
+            11,
+            12,
+            14,
+            18,
+            19,
+            22,
+            24,
+            25,
+            27,
+            28,
+            29
+          ],
+          "appearance": "East Asian teenage girl, 17, small wiry frame, short uneven black bob tucked behind one ear, wide alert eyes, a patched dusty plum jacket over grey cotton trousers and woven shoes. A healed crescent scar sits on her right forearm; she carries a flat cloth pouch with a broken wooden name tag. Practical, fully covered clothing; no glamorous makeup or sexualised styling. A separate recent RIGHT-wrist chafe is discreetly dressed and healing; the permanent crescent forearm scar remains distinct.",
+          "cue": "兩標記距離分開，不把舊疤塗成新血傷。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:144",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:889",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:949",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1134",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1192",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1311",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1544",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1602",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1791",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1907",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1966",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2083",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2142",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2198",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+          ]
+        },
+        {
+          "id": "a-yao-wrist-healed",
+          "episodes": [
+            32,
+            38,
+            39
+          ],
+          "appearance": "East Asian teenage girl, 17, small wiry frame, short uneven black bob tucked behind one ear, wide alert eyes, a patched dusty plum jacket over grey cotton trousers and woven shoes. A healed crescent scar sits on her right forearm; she carries a flat cloth pouch with a broken wooden name tag. Practical, fully covered clothing; no glamorous makeup or sexualised styling. The right-wrist chafe has healed. Keep only the permanent crescent scar on the right forearm.",
+          "cue": "依鏡頭實際出場選用。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:144",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2383",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2726",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2784",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+          ]
+        }
+      ],
+      "video_constraints": {
+        "min_visual_age_years": 17,
+        "veo_lite_i2v": "not-verified-under-18",
+        "source_refs": [
+          "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:147",
+          "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:148"
+        ],
+        "episode_refs": [
+          7,
+          8,
+          11,
+          12,
+          14,
+          18,
+          19,
+          22,
+          24,
+          25,
+          27,
+          28,
+          29,
+          32,
+          34,
+          38,
+          39
+        ]
+      }
+    },
+    {
+      "id": "chen-du",
+      "voice_name": "Puck",
+      "performance": "『先量，再敲。』談規則一律指給人看。 臺灣國語；粗礪溫暖、偶爾短促幽默，避免滑稽老頭；擬定 casting 未試聽。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "Chén Dù",
+        "ja": "チェン・ドゥー",
+        "ko": "천 두",
+        "en": "Chen Du"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "chen-du--base",
+          "episodes": [
+            5,
+            6,
+            10,
+            12,
+            14,
+            16,
+            17,
+            18,
+            19,
+            21,
+            22,
+            23,
+            24,
+            27,
+            29,
+            31,
+            34,
+            38,
+            39
+          ],
+          "appearance": "East Asian man, 58, stocky silhouette, cropped greying hair, short salt-and-pepper beard, left knee supported by a dark wooden brace. He wears a faded brown work coat, rolled linen sleeves and a heavy canvas tool belt. A brass sliding gauge and a square-headed wooden mallet are always visible at his belt. Weathered hands, no magical staff or formal sect robes.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:175",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:36",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shen-que",
+      "voice_name": "Iapetus",
+      "performance": "起初報編號，後來先問人名。 臺灣國語；年輕男聲，清朗而節制，疑惑時不拖長尾音；擬定 casting 未試聽。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "Shěn Què",
+        "ja": "シェン・チュエ",
+        "ko": "선 취에",
+        "en": "Shen Que"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "shen-que--base",
+          "episodes": [
+            2,
+            8,
+            9,
+            15,
+            20,
+            21,
+            25,
+            26,
+            28,
+            33,
+            36,
+            40
+          ],
+          "appearance": "East Asian man, 22, compact athletic build, short tied-back black hair with a broad fabric band, round face and a healed cut on the lower lip. He wears a slate-grey trainee robe with white shoulder piping and plain leather forearm guards. A narrow practice sword hangs on his left hip.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:206",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:36",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+          ]
+        },
+        {
+          "id": "shen-que-badge",
+          "episodes": [
+            2,
+            8,
+            9,
+            15,
+            20,
+            21,
+            25,
+            26,
+            28,
+            33
+          ],
+          "appearance": "East Asian man, 22, compact athletic build, short tied-back black hair with a broad fabric band, round face and a healed cut on the lower lip. He wears a slate-grey trainee robe with white shoulder piping and plain leather forearm guards. A narrow practice sword hangs on his left hip. The sect badge is pinned on the LEFT chest.",
+          "cue": "E33拆徽前；其它沒出場集不為展示徽章造鏡。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:206",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:598",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:949",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1008",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1369",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1660",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1733",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1966",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2024",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2142",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2442",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+          ]
+        },
+        {
+          "id": "shen-que-injured-badge",
+          "episodes": [
+            28,
+            33
+          ],
+          "appearance": "East Asian man, 22, compact athletic build, short tied-back black hair with a broad fabric band, round face and a healed cut on the lower lip. He wears a slate-grey trainee robe with white shoulder piping and plain leather forearm guards. A narrow practice sword hangs on his left hip. A LEFT-leg injury and LEFT-chest sect badge. After the injury, a cane supports him; no running.",
+          "cue": "E33使用杖，拆徽那一拍後改injured-no-badge。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:206",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2142",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2442",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+          ]
+        },
+        {
+          "id": "shen-que-hurt-no-badge",
+          "episodes": [
+            33,
+            36
+          ],
+          "appearance": "East Asian man, 22, compact athletic build, short tied-back black hair with a broad fabric band, round face and a healed cut on the lower lip. He wears a slate-grey trainee robe with white shoulder piping and plain leather forearm guards. A narrow practice sword hangs on his left hip. A LEFT-leg injury requires a cane. No sect badge on the chest after removal; he stays at a fixed signal post.",
+          "cue": "E33拆徽後、E36固定信號站不奔跑，E40才康復。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:206",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2442",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2615",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+          ]
+        },
+        {
+          "id": "shen-que-recovered",
+          "episodes": [
+            40
+          ],
+          "appearance": "East Asian man, 22, compact athletic build, short tied-back black hair with a broad fabric band, round face and a healed cut on the lower lip. He wears a slate-grey trainee robe with white shoulder piping and plain leather forearm guards. A narrow practice sword hangs on his left hip. His left leg has healed after three months. No cane and no sect badge.",
+          "cue": "三月後，不自動復職。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:206",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2843",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "qin-lu",
+      "voice_name": "Algenib",
+      "performance": "『我只照冊。』最後必須具名說出自己的行為。 臺灣國語；沙啞、急促斷句，照冊念時語調平板；擬定 casting 未試聽。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "Qín Lù",
+        "ja": "チン・ルー",
+        "ko": "친 루",
+        "en": "Qin Lu"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "qin-lu--base",
+          "episodes": [
+            7,
+            9,
+            11,
+            20,
+            22,
+            25,
+            33
+          ],
+          "appearance": "East Asian man, 43, broad-shouldered heavy frame, receding slicked-back black hair, close-shaven square face. He wears a dark rust robe under a short black sleeveless coat, carries a bundle of rectangular bronze keys and has ink stains on his right thumb. His left sleeve has three parallel repair stitches. No mask, flowing hair or ceremonial crown.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:233",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:36",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+          ]
+        },
+        {
+          "id": "qin-lu-no-keys",
+          "episodes": [
+            33
+          ],
+          "appearance": "East Asian man, 43, broad-shouldered heavy frame, receding slicked-back black hair, close-shaven square face. He wears a dark rust robe under a short black sleeveless coat, has ink stains on his right thumb. His left sleeve has three parallel repair stitches. No mask, flowing hair or ceremonial crown. No keys in his hands or at his belt after handing them over.",
+          "cue": "E33交鑰匙後鏡頭；E39只有書面證詞不造本人回憶鏡。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:233",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2442",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hu-niang",
+      "voice_name": "Aoede",
+      "performance": "『先坐，麵要冷了。』不把市井角色寫成無知笑料。 臺灣國語；俐落溫厚、自然生活感；擬定 casting 未試聽。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。",
+      "pronunciations": {
+        "zh-TW": "Hú Niáng",
+        "ja": "フー・ニアン",
+        "ko": "후 냥",
+        "en": "Hu Niang"
+      },
+      "pronunciation_status": "proposed-native-listen-required",
+      "look_states": [
+        {
+          "id": "hu-niang--base",
+          "episodes": [
+            1,
+            3,
+            31,
+            32,
+            40
+          ],
+          "appearance": "East Asian woman, 37, sturdy build, black hair braided into a low coil under a navy cloth scarf, sun-weathered cheeks. She wears an ochre cotton blouse, dark skirt, a faded blue apron and flat woven shoes. A small brass ladle hangs from the apron cord. Keep the same scarf, apron and ladle in every shot.",
+          "cue": "基底身份候選，固定臉/年齡/髮型；不是覆蓋整集的指令。遇換裝、傷勢、道具交出，逐鏡改選下列state，不能把固定卡配件自動補回。",
+          "source_refs": [
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:260",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:36",
+            "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+          ]
+        }
+      ]
+    }
+  ],
+  "prop_rules": [
+    {
+      "id": "contract",
+      "identity": "江照左掌契印／借淵口令／施後痛；只三次",
+      "states": "E1第一次、E18第二次、E28第三次；E35停手未施，E34/37不是契術",
+      "ownership": "江照施術；盆地十二節點只抹別人對江照的個人記憶",
+      "insert_rules": "左掌按+口令+痛三件同集核對；法術音不可在普通注力/拆機復用。",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "id": "red-cord",
+      "identity": "祁硯右腕完整紅繩與完整例外效力",
+      "states": "E1–7藏；E8露再藏；E23露收；E26瞥見收；E35斷→紙包；E39抽屜；E40無",
+      "ownership": "祁硯佩→元衡切→江照紙包→抽屜；切斷不追溯抹記憶",
+      "insert_rules": "避免鏡像或外露全劇；特寫有袖遮/取出/收回三態且不增加施術。",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "id": "written-memory",
+      "identity": "紙證不消失、技能不消失，私人情感/經歷才被域内抹除",
+      "states": "阿杳E18後讀自己的記錄；沈闕E28後讀傷前筆記；E39不寫假回憶",
+      "ownership": "各人寫自己的事，見證不能充當主觀恢復",
+      "insert_rules": "記錄與重建關係反應分鏡；小孩畫背面E32加日期再交回。",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "id": "prison-history",
+      "identity": "羈押採集囚犯自傳記憶與江照域術兩種機制",
+      "states": "母親姓名E14已找到；E24是死日對照；祁童年空白為頭傷不由契印治好",
+      "ownership": "秦錄原件E20帶走留副本；E33原件安全保管",
+      "insert_rules": "文件真相分層讀，禁止用滿段回憶重演把失去記憶補回。",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "id": "tools",
+      "identity": "陳渡自用腰尺槌與給江照的備用工具袋兩套",
+      "states": "E12備袋到江→E30還到袋；E36袋出第一銅銷；E37其餘兩銷",
+      "ownership": "陳腰工具從未空，江袋尺/木槌/拔銷器不凭空变金屬重鎚",
+      "insert_rules": "先放壓為零再拔；每鏡只一操作，無導火索式瞬間全域崩塌。",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "id": "authority",
+      "identity": "追緝令、祁私人印/繼承令、沈左胸徽、秦鑰匙是四套",
+      "states": "E9祁交私人印；E26交繼承令；E33沈拆徽秦交鑰匙；E40無徽",
+      "ownership": "各本人交自己的物，不混稱門派令牌",
+      "insert_rules": "不同材質大小；沈徽左胸，秦钥右腰，交出後不重生。",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "id": "network",
+      "identity": "十二原有節點與70/30能量帳、普通修為能量石",
+      "states": "E20才知分配；E27模型試失敗；E34注力失大部分修為；E38回報板延遲不是節點故障",
+      "ownership": "阿杳/陳渡等按本份守位，沈傷腿在固定信號站",
+      "insert_rules": "零壓读值→拔三銷→儲能裂→逐節點檢查，少一环不能剪成奇蹟。",
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:36",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    }
+  ],
+  "episodes": [
+    {
+      "episode": 1,
+      "title": "救過她，她卻問我是誰",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "hu-niang"
+      ],
+      "locations": [
+        "bridge"
+      ],
+      "hero_shot": {
+        "action": "救人後被母親當陌生人",
+        "camera": "同軸救推與問話分鏡。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "契術尾聲一次，後續只木裂"
+      },
+      "risk_controls": [
+        {
+          "risk": "E1第二次塌橋又施一次法",
+          "solution": "支木抓繩普通動作，不再口令契印"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "hu-niang--base"
+      ],
+      "prop_checks": [
+        "contract,red-cord",
+        "延續來源當集evidence/carry_forward：真印追捕令由祁硯持有；胡娘留有孩子救援圖尚未展示。；二人帶著令書離開擁擠橋面對質，不省略救援善後。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, hu-niang；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "契術尾聲一次，後續只木裂",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：contract,red-cord；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:540",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ],
+      "video_constraints": {
+        "veo_lite_i2v": "unverified-minor-on-screen",
+        "reason": "來源開場明確要求江照推孩子上橋、胡娘拉住孩子；孩子無cast id、未給確切歲數。E1整集先等待已驗證可呈現未成年人的動畫製作路徑，不能僅靠有名角色ID檢查漏放。",
+        "source_refs": [
+          "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:505",
+          "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2972"
+        ]
+      }
+    },
+    {
+      "episode": 2,
+      "title": "真印不替內容作證",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "shen-que"
+      ],
+      "locations": [
+        "road"
+      ],
+      "hero_shot": {
+        "action": "真令牌與內容疑問分開",
+        "camera": "令刻近景接沈的臉。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "石碰聲"
+      },
+      "risk_controls": [
+        {
+          "risk": "證明令真等於指控也真",
+          "solution": "祁只承認令格式，爭取一天查證"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "shen-que--base",
+        "shen-que-badge"
+      ],
+      "prop_checks": [
+        "authority",
+        "延續來源當集evidence/carry_forward：祁硯保存原令與自行記下的救援時間；血衣仍由江照穿著。；不把期限當無成本放行；二人必須找出一項更硬的矛盾。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, shen-que；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "石碰聲",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：authority；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:598",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 3,
+      "title": "把名字再說一次",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "hu-niang"
+      ],
+      "locations": [
+        "bridge"
+      ],
+      "hero_shot": {
+        "action": "祁說出未寫過的救人動作",
+        "camera": "江與祁眼平對切。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "停頓讓具體細節落地"
+      },
+      "risk_controls": [
+        {
+          "risk": "胡娘短期見過被當舊記憶復活",
+          "solution": "區分新見面與舊情感，畫仍保存"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "hu-niang--base"
+      ],
+      "prop_checks": [
+        "written-memory",
+        "延續來源當集evidence/carry_forward：江照持孩子畫，祁硯保管追捕令。；記憶例外不能直接當免罪證明，仍須處理令上的罪名。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, hu-niang；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "停頓讓具體細節落地",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：written-memory；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:655",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 4,
+      "title": "劍停在舊地方",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan"
+      ],
+      "locations": [
+        "road"
+      ],
+      "hero_shot": {
+        "action": "過招在卸肩步法停住",
+        "camera": "肩與腳各一鏡。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "鞘碰不做傷骨音"
+      },
+      "risk_controls": [
+        {
+          "risk": "製造原稿沒有的新傷",
+          "solution": "只有示範卸力，祁右肩無新增傷"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden"
+      ],
+      "prop_checks": [
+        "tools",
+        "延續來源當集evidence/carry_forward：劍路只能作熟識線索，不能獨立證明契約機制。；必須承接封路，用祁硯的限日查證身份通行，不突然瞬移。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "鞘碰不做傷骨音",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：tools；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:715",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 5,
+      "title": "不是字自己消失",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "chen-du"
+      ],
+      "locations": [
+        "stele"
+      ],
+      "hero_shot": {
+        "action": "石碑凿痕被尺量出",
+        "camera": "斜光近景。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "尺碰石"
+      },
+      "risk_controls": [
+        {
+          "risk": "字跡魔法消失破紙證規則",
+          "solution": "物理磨凿與舊新工具痕對比"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "chen-du--base"
+      ],
+      "prop_checks": [
+        "written-memory,tools",
+        "延續來源當集evidence/carry_forward：封條由祁硯保管，拓片與量尺由陳渡帶回坊。；回坊查封條用途與舊修繕底稿，不能直接推論元衡已是主謀。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, chen-du；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "尺碰石",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：written-memory,tools；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:771",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 6,
+      "title": "罪狀比裂縫還新",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "chen-du"
+      ],
+      "locations": [
+        "workshop"
+      ],
+      "hero_shot": {
+        "action": "舊封條與新罪日並排",
+        "camera": "原封邊近景。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "陳渡只讲已知模型"
+      },
+      "risk_controls": [
+        {
+          "risk": "此時已知70/30或全域解法",
+          "solution": "只提示壓力與取圖條件，數據留E20"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "chen-du--base"
+      ],
+      "prop_checks": [
+        "prison-history,network",
+        "延續來源當集evidence/carry_forward：底圖副本先交祁硯，正本留坊、待阿杳帶回才交出；模型不具真正結界容量。；須用合法複核與現場證據救阿杳，不能立即大破囚所。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, chen-du；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "陳渡只讲已知模型",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：prison-history,network；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:830",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 7,
+      "title": "妖物的家戶木牌",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "a-yao",
+        "qin-lu"
+      ],
+      "locations": [
+        "road"
+      ],
+      "hero_shot": {
+        "action": "阿杳被帶走時藏家庭木牌",
+        "camera": "右腕與衣袋分鏡。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "繩摩擦，短吸氣"
+      },
+      "risk_controls": [
+        {
+          "risk": "新腕傷變永久月牙疤",
+          "solution": "腕與前臂分開畫，原牌藏袋內"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "阿杳原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "a-yao--base",
+        "a-yao-fresh-wrist",
+        "qin-lu--base"
+      ],
+      "prop_checks": [
+        "prison-history",
+        "延續來源當集evidence/carry_forward：木牌由阿杳保管；封存的押送單在祁硯手中。；阿杳暫避坊內，秦錄有具名複核單可向元衡告狀。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, a-yao, qin-lu；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "繩摩擦，短吸氣",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：prison-history；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:889",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 8,
+      "title": "袖裡那條褪色紅繩",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "a-yao",
+        "shen-que"
+      ],
+      "locations": [
+        "workshop"
+      ],
+      "hero_shot": {
+        "action": "洗袖露出右腕紅繩又遮住",
+        "camera": "右側近景。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "水、布，音樂不宣告答案"
+      },
+      "risk_controls": [
+        {
+          "risk": "紅繩從此每鏡外露",
+          "solution": "露一次再藏，圖樣僅提示未知關聯"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "阿杳原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "qi-yan-cord-visible",
+        "a-yao--base",
+        "a-yao-fresh-wrist",
+        "shen-que--base",
+        "shen-que-badge"
+      ],
+      "prop_checks": [
+        "red-cord",
+        "延續來源當集evidence/carry_forward：紅繩拓印在江照紙包；召回令由沈闕留下。；祁硯必須面對自己先前簽押的文書，不能無代價忽略召回。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, a-yao, shen-que；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "水、布，音樂不宣告答案",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：red-cord；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:949",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 9,
+      "title": "我簽過這張令",
+      "characters": [
+        "qi-yan",
+        "qin-lu",
+        "shen-que"
+      ],
+      "locations": [
+        "archive"
+      ],
+      "hero_shot": {
+        "action": "私人印放到檔案桌上",
+        "camera": "手離印单鏡。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "石印落桌"
+      },
+      "risk_controls": [
+        {
+          "risk": "繼承令提前於E9交掉",
+          "solution": "只是私人印，繼承令留到E26"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "qin-lu--base",
+        "shen-que--base",
+        "shen-que-badge"
+      ],
+      "prop_checks": [
+        "authority",
+        "延續來源當集evidence/carry_forward：名印封存於檔房；祁硯帶走經沈闕核對的騎縫拓號。；第 10 集把封冊時日和獨立的橋市日誌對上，不以一眼看紙就斷案。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：qi-yan, qin-lu, shen-que；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "石印落桌",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：authority；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1008",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 10,
+      "title": "橋市日誌與騎縫號",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "chen-du"
+      ],
+      "locations": [
+        "workshop"
+      ],
+      "hero_shot": {
+        "action": "連號與日記證明先下令三日",
+        "camera": "三證据各短切。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "讀三天而非連串年份"
+      },
+      "risk_controls": [
+        {
+          "risk": "紙證找到就取消追令",
+          "solution": "追令仍在，人物行動仍受限"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "chen-du--base"
+      ],
+      "prop_checks": [
+        "prison-history",
+        "延續來源當集evidence/carry_forward：三份對讀副本分放坊與祁硯紙包，原卷仍在院內。；按後頁位置潛查囚所，開始第三日；第一篇問題已答，新的受害者範圍擴大。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, chen-du；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "讀三天而非連串年份",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：prison-history；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1065",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 11,
+      "title": "這裡不問姓名",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "a-yao",
+        "qin-lu"
+      ],
+      "locations": [
+        "prison"
+      ],
+      "hero_shot": {
+        "action": "阿杳帶兩成人走換班外廊",
+        "camera": "門框固定分層。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "腳步與遠處換班節奏"
+      },
+      "risk_controls": [
+        {
+          "risk": "三人穿過只有小孩能過的通風道",
+          "solution": "此集是外門路，窄道單人留E12"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "阿杳原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "a-yao--base",
+        "a-yao-fresh-wrist",
+        "qin-lu--base"
+      ],
+      "prop_checks": [
+        "prison-history",
+        "延續來源當集evidence/carry_forward：祁硯抄下接收編號；阿杳保有木牌；秦錄掌原冊。；出口仍封著，下一集必須付代價把囚徒帶出去。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, a-yao, qin-lu；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "腳步與遠處換班節奏",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：prison-history；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1134",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 12,
+      "title": "一塊護身佩換兩道門",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "a-yao",
+        "chen-du"
+      ],
+      "locations": [
+        "prison",
+        "workshop"
+      ],
+      "hero_shot": {
+        "action": "阿杳獨穿舊通風口拿到工具",
+        "camera": "出口固定，工具交接另鏡。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "衣擦石、工具袋扣"
+      },
+      "risk_controls": [
+        {
+          "risk": "成人縮身鑽同洞或陳工具消失",
+          "solution": "只有阿杳通過；給江為備用一套"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "阿杳原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "a-yao--base",
+        "a-yao-fresh-wrist",
+        "chen-du--base"
+      ],
+      "prop_checks": [
+        "tools",
+        "延續來源當集evidence/carry_forward：陳渡有典押單與供料碼拓印；他把備用的一套拔銷器、木槌、量尺裝入江照工具包，後段沿用，自己腰間那套量尺與木槌不離身。；護身佩不能後來無解釋回到身上；須先照顧逃出者、整理編碼。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, a-yao, chen-du；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "衣擦石、工具袋扣",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：tools；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1192",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 13,
+      "title": "你一直不吃那一口",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan"
+      ],
+      "locations": [
+        "workshop"
+      ],
+      "hero_shot": {
+        "action": "祁順手挑走碗中苦葉",
+        "camera": "雙手與碗近景。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "筷聲後江呼吸"
+      },
+      "risk_controls": [
+        {
+          "risk": "習慣變回憶完全恢復",
+          "solution": "不補童年畫面，保留祁說不清"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden"
+      ],
+      "prop_checks": [
+        "written-memory",
+        "延續來源當集evidence/carry_forward：典押單已加上二人的編碼對照筆記；苦葉只是湯裡一味常見的野菜。；以陣腳尾號對舊拓本，進一步追無名者與家戶來源。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "筷聲後江呼吸",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：written-memory；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1253",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 14,
+      "title": "拓本比名冊老",
+      "characters": [
+        "jiang-zhao",
+        "a-yao",
+        "chen-du"
+      ],
+      "locations": [
+        "archive"
+      ],
+      "hero_shot": {
+        "action": "家戶紀錄第一次露出母名",
+        "camera": "紙文和阿杳手分切。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "名字由在場者讀"
+      },
+      "risk_controls": [
+        {
+          "risk": "母親新增回憶聲線",
+          "solution": "不造母親對白，只讀客觀紀錄"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "阿杳原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "a-yao--base",
+        "a-yao-fresh-wrist",
+        "chen-du--base"
+      ],
+      "prop_checks": [
+        "prison-history",
+        "延續來源當集evidence/carry_forward：副簿留檔房，抄本分放坊與阿杳布袋；江照不獨佔。；公開副本後元衡必須作出回應，不能讓反派一直被動。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, a-yao, chen-du；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "名字由在場者讀",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：prison-history；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1311",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 15,
+      "title": "這份賞，我不領",
+      "characters": [
+        "qi-yan",
+        "yuan-heng",
+        "shen-que"
+      ],
+      "locations": [
+        "hall"
+      ],
+      "hero_shot": {
+        "action": "未開賞瓶與牢房瓶批號一致",
+        "camera": "兩瓶短插入。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "瓶蓋不開"
+      },
+      "risk_controls": [
+        {
+          "risk": "演員喝藥才發現毒多新情節",
+          "solution": "拒收且未開封，比號即可"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "yuan-heng--base",
+        "shen-que--base",
+        "shen-que-badge"
+      ],
+      "prop_checks": [
+        "prison-history",
+        "延續來源當集evidence/carry_forward：未開封賞瓶留在院內，批號由沈闕見證、祁硯記下。；元衡的淵霧警告須有真實現場，不把他寫成每句都假的笨反派。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：qi-yan, yuan-heng, shen-que；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "瓶蓋不開",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：prison-history；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1369",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 16,
+      "title": "南渡陣腳在滲霧",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "yuan-heng",
+        "chen-du"
+      ],
+      "locations": [
+        "node"
+      ],
+      "hero_shot": {
+        "action": "元衡把真危險和控制混在一起",
+        "camera": "封閉對话眼平。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "平穩聲線比咆哮更壓迫"
+      },
+      "risk_controls": [
+        {
+          "risk": "把真裂霧危險全判造假",
+          "solution": "留真威脅，機械分管只為方案"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "yuan-heng--base",
+        "chen-du--base"
+      ],
+      "prop_checks": [
+        "network",
+        "延續來源當集evidence/carry_forward：祁硯記下分流盤讀數；元衡仍掌中心總帳，七成的比例眾人還不知道。；回坊追問江照契印與舊陣關聯；臨時封口只有一夜效力。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, yuan-heng, chen-du；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "平穩聲線比咆哮更壓迫",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：network；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1426",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 17,
+      "title": "那年是我簽的",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "chen-du"
+      ],
+      "locations": [
+        "workshop"
+      ],
+      "hero_shot": {
+        "action": "江承認十五年前救男孩簽契",
+        "camera": "左掌與舊記錄對切。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "口述壓住配樂"
+      },
+      "risk_controls": [
+        {
+          "risk": "祁當場恢復童年 ",
+          "solution": "仍有頭傷空白，客觀記錄不當主觀回想"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "chen-du--base"
+      ],
+      "prop_checks": [
+        "contract,prison-history",
+        "延續來源當集evidence/carry_forward：守淵契存根在祁硯紙包，互保底簿尚未拼全。；臨時封口將到期，下一集須處理陣腳現場，不讓情感戲延誤已知倒數。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, chen-du；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "口述壓住配樂",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：contract,prison-history；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1487",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 18,
+      "title": "先寫下你看見的",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "a-yao",
+        "chen-du"
+      ],
+      "locations": [
+        "node"
+      ],
+      "hero_shot": {
+        "action": "第二次借淵後阿杳讀自己字跡",
+        "camera": "施契三件分鏡，讀字另鏡。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "口令一次與痛，後留陌生距離"
+      },
+      "risk_controls": [
+        {
+          "risk": "失憶把技能/文字全抹掉",
+          "solution": "保留她能讀與能行動，只關係生疏"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "阿杳原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "a-yao--base",
+        "a-yao-fresh-wrist",
+        "chen-du--base"
+      ],
+      "prop_checks": [
+        "contract,written-memory",
+        "延續來源當集evidence/carry_forward：實驗紙條由阿杳保管，時間與筆跡由陳渡旁證。；下一集確切區分親歷、技能與紙面知識，不加第三次抹除混淆實驗。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, a-yao, chen-du；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "口令一次與痛，後留陌生距離",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：contract,written-memory；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1544",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 19,
+      "title": "自己寫的那張紙條",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "a-yao",
+        "chen-du"
+      ],
+      "locations": [
+        "workshop"
+      ],
+      "hero_shot": {
+        "action": "模型操作熟練但情感陌生",
+        "camera": "手做熟事、臉看陌生人。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "木件聲與短問句"
+      },
+      "risk_controls": [
+        {
+          "risk": "能做事就等於記得江",
+          "solution": "事實讀取和情感無法回來並列"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "阿杳原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "a-yao--base",
+        "a-yao-fresh-wrist",
+        "chen-du--base"
+      ],
+      "prop_checks": [
+        "written-memory,tools",
+        "延續來源當集evidence/carry_forward：實驗紙條連同時間封存於坊；阿杳從本集起每天寫的紙條收在她的布袋；江照帶雙管路副圖。；潛取總帳須利用第 12 集檢修口技能，不突然精通仙門密術。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, a-yao, chen-du；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "木件聲與短問句",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：written-memory,tools；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1602",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 20,
+      "title": "分流總帳上的兩條管路",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "qin-lu",
+        "shen-que"
+      ],
+      "locations": [
+        "tower"
+      ],
+      "hero_shot": {
+        "action": "兩管70/30帳與獎賞名單亮出",
+        "camera": "清楚兩欄，人物反應分切。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "读比例後停頓"
+      },
+      "risk_controls": [
+        {
+          "risk": "比例早於本集解出或原件留桌",
+          "solution": "秦帶原件走，已保存複本仍在"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "qin-lu--base",
+        "shen-que--base",
+        "shen-que-badge"
+      ],
+      "prop_checks": [
+        "prison-history,network",
+        "延續來源當集evidence/carry_forward：總帳抄本與受賞頁由祁硯帶出；原冊被秦錄帶走但已知其藏匿方向。；祁硯必須核對並承認自己的受益，不能用『當時不知』直接跳過。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, qin-lu, shen-que；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "读比例後停頓",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：prison-history,network；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1660",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 21,
+      "title": "三筆賞賜的日期",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "chen-du",
+        "shen-que"
+      ],
+      "locations": [
+        "workshop"
+      ],
+      "hero_shot": {
+        "action": "祁保留自己收賞日期不擦去",
+        "camera": "筆圈自己的名字。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "紙沙沙"
+      },
+      "risk_controls": [
+        {
+          "risk": "自證清白改删不利記錄",
+          "solution": "原數據完整，後面才正式轉移能量"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "chen-du--base",
+        "shen-que--base",
+        "shen-que-badge"
+      ],
+      "prop_checks": [
+        "prison-history",
+        "延續來源當集evidence/carry_forward：受賞頁不刪名，與私人練功記錄副本一起放入公開包。；轉存需實際陣腳與材料，不會立刻解決全城問題；阿杳仍面臨秦錄的新拘令。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, chen-du, shen-que；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "紙沙沙",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：prison-history；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1733",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 22,
+      "title": "她的名字不能再收走",
+      "characters": [
+        "jiang-zhao",
+        "a-yao",
+        "chen-du",
+        "qin-lu"
+      ],
+      "locations": [
+        "node"
+      ],
+      "hero_shot": {
+        "action": "先前審查紙挡住再拘捕",
+        "camera": "紙向門口單動作。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "封條聲"
+      },
+      "risk_controls": [
+        {
+          "risk": "未有任何程序卻敵人突然停手",
+          "solution": "靠已有審查效力，阿杳保下半账"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "阿杳原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "a-yao--base",
+        "a-yao-fresh-wrist",
+        "chen-du--base",
+        "qin-lu--base"
+      ],
+      "prop_checks": [
+        "authority,prison-history",
+        "延續來源當集evidence/carry_forward：互保底簿下頁與材料收據交江照；秦錄仍持接收冊。；下一集將兩頁、頭傷診記與實際繩結核對；本集不先宣告完整契約答案。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, a-yao, chen-du, qin-lu；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "封條聲",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：authority,prison-history；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1791",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 23,
+      "title": "底簿下頁與頭傷診記",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "chen-du"
+      ],
+      "locations": [
+        "workshop"
+      ],
+      "hero_shot": {
+        "action": "下半帳與頭傷日對上紅繩圖",
+        "camera": "右腕短露、紙並排。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "陳說資料不說親历"
+      },
+      "risk_controls": [
+        {
+          "risk": "陳渡成親見童年全知角色",
+          "solution": "來源是記錄，紅繩不治頭傷"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "qi-yan-cord-visible",
+        "chen-du--base"
+      ],
+      "prop_checks": [
+        "red-cord,prison-history",
+        "延續來源當集evidence/carry_forward：兩頁底簿與診記分存副本；原繩不拆、不為測試剪斷。；具體規則已定，後段不得追加『繩斷仍永久免疫』；開始把同等保護轉為保存普通人的名字。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, chen-du；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "陳說資料不說親历",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：red-cord,prison-history；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1849",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 24,
+      "title": "把空白一格一格填回去",
+      "characters": [
+        "jiang-zhao",
+        "a-yao",
+        "chen-du"
+      ],
+      "locations": [
+        "archive",
+        "workshop"
+      ],
+      "hero_shot": {
+        "action": "死日對照母親已知姓名",
+        "camera": "日期特写而不重新揭名。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "阿杳低聲讀日期"
+      },
+      "risk_controls": [
+        {
+          "risk": "E14已知姓名E24又當首揭",
+          "solution": "新資訊是死日；陳新碗不靠記得舊餐"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "阿杳原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "a-yao--base",
+        "a-yao-fresh-wrist",
+        "chen-du--base"
+      ],
+      "prop_checks": [
+        "prison-history,written-memory",
+        "延續來源當集evidence/carry_forward：三套名單副本分放坊、阿杳布袋與廣場見證箱；敏感路線不寫在公開件。；公開名單觸發元衡禁令，群眾不能毫無阻力立即全信。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, a-yao, chen-du；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "阿杳低聲讀日期",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：prison-history,written-memory；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1907",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 25,
+      "title": "禁止你記得",
+      "characters": [
+        "jiang-zhao",
+        "a-yao",
+        "qin-lu",
+        "shen-que"
+      ],
+      "locations": [
+        "square"
+      ],
+      "hero_shot": {
+        "action": "證物箱封上而未焚毀",
+        "camera": "封繩拉緊单動作。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "無火聲"
+      },
+      "risk_controls": [
+        {
+          "risk": "箱已封卻又留散頁給對手",
+          "solution": "沈堅持封存，人證材料交代清楚"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "阿杳原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "a-yao--base",
+        "a-yao-fresh-wrist",
+        "qin-lu--base",
+        "shen-que--base",
+        "shen-que-badge"
+      ],
+      "prop_checks": [
+        "prison-history",
+        "延續來源當集evidence/carry_forward：見證箱保持原封，秦錄具名回答由沈闕記下；其他兩份副本未被搜到。；新命令撤許可會影響材料來源，祁硯下一集必須作真選擇。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, a-yao, qin-lu, shen-que；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "無火聲",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：prison-history；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:1966",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 26,
+      "title": "把位置還給你",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "yuan-heng",
+        "shen-que"
+      ],
+      "locations": [
+        "hall",
+        "road"
+      ],
+      "hero_shot": {
+        "action": "祁把繼承令交回後全價買材料",
+        "camera": "交令和付款分鏡。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "令落下、錢落下各不同音"
+      },
+      "risk_controls": [
+        {
+          "risk": "紅繩跟權力一同失效",
+          "solution": "只是權力失去，紅繩完整仍保記憶"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "qi-yan-cord-visible",
+        "yuan-heng--base",
+        "shen-que--base",
+        "shen-que-badge"
+      ],
+      "prop_checks": [
+        "authority,red-cord",
+        "延續來源當集evidence/carry_forward：令牌留院；公開證詞副本由沈闕見證、祁硯持有。；材料須靠已付典押款與店家實際墊付，不突然憑正義取得無限資源。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, yuan-heng, shen-que；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "令落下、錢落下各不同音",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：authority,red-cord；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2024",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 27,
+      "title": "先保住這一尺",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "a-yao",
+        "chen-du"
+      ],
+      "locations": [
+        "node"
+      ],
+      "hero_shot": {
+        "action": "歪銷在零壓後被尺量出",
+        "camera": "壓表歸零再量別鏡。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "泄壓尾音停後尺落"
+      },
+      "risk_controls": [
+        {
+          "risk": "帶壓拔銷或首測就成功",
+          "solution": "失敗先撤壓，修正需再測"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "阿杳原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "a-yao--base",
+        "a-yao-fresh-wrist",
+        "chen-du--base"
+      ],
+      "prop_checks": [
+        "tools,network",
+        "延續來源當集evidence/carry_forward：實驗表、耗材用量與天籙卸壓圖由陳渡保管，副本進工具袋。；必須面對真實衝擊，不把小試成功當全城可行證據。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, a-yao, chen-du；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "泄壓尾音停後尺落",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：tools,network；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2083",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 28,
+      "title": "忘了也能把字留下",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "shen-que",
+        "a-yao"
+      ],
+      "locations": [
+        "node"
+      ],
+      "hero_shot": {
+        "action": "第三次借淵救下沈的左腿",
+        "camera": "施術與倒地分鏡。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "口令痛一次，沈筆記先寫"
+      },
+      "risk_controls": [
+        {
+          "risk": "左腿受傷成右腿或第四次施術",
+          "solution": "前筆記後遺忘，江此後不能站穩"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "阿杳原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "shen-que--base",
+        "shen-que-badge",
+        "shen-que-injured-badge",
+        "a-yao--base",
+        "a-yao-fresh-wrist"
+      ],
+      "prop_checks": [
+        "contract,written-memory",
+        "延續來源當集evidence/carry_forward：沈闕持血跡現場紙條，阿杳保留試驗表；祁硯記得全部救援。；江照此後不再啟動守淵；沈闕必須自行對讀證據後才倒戈，不能用感動代替邏輯。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, shen-que, a-yao；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "口令痛一次，沈筆記先寫",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：contract,written-memory；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2142",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 29,
+      "title": "第一輪交班",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "a-yao",
+        "chen-du"
+      ],
+      "locations": [
+        "node"
+      ],
+      "hero_shot": {
+        "action": "阿杳維持材料班次",
+        "camera": "交班表與裂雾远景。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "報班短句"
+      },
+      "risk_controls": [
+        {
+          "risk": "元衡已交記憶箱但E30又取",
+          "solution": "此時只发索引，箱仍在堂內"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "阿杳原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "a-yao--base",
+        "a-yao-fresh-wrist",
+        "chen-du--base"
+      ],
+      "prop_checks": [
+        "network,prison-history",
+        "延續來源當集evidence/carry_forward：十二處材料、班次、緩衝缺口明列；送來的只有封存匣的可驗索引籤，匣子仍在元衡手中，未把舊記憶還給任何人。；江照會見元衡須保留自己的選擇，祁硯不得以保護名義代替答覆。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, a-yao, chen-du；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "報班短句",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：network,prison-history；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2198",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 30,
+      "title": "拿他，換回你的一生",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "yuan-heng"
+      ],
+      "locations": [
+        "hall"
+      ],
+      "hero_shot": {
+        "action": "江隔匣驗看仍接儲層的真記憶",
+        "camera": "固定近景，工具袋交回另鏡。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "封箱低音不演聲音復活"
+      },
+      "risk_controls": [
+        {
+          "risk": "箱取到等於失憶已治",
+          "solution": "匣內記憶片段未離儲層，江隔匣驗看並拒換；祁只交回備用工具袋"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "yuan-heng--base"
+      ],
+      "prop_checks": [
+        "tools,prison-history",
+        "延續來源當集evidence/carry_forward：封存匣留元衡手中，工具袋有量尺、木槌、拔銷器與卸壓副圖。；第 31 集立即分發工法並籌備撤離，不再重複是否接受交易的討論。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, yuan-heng；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "封箱低音不演聲音復活",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：tools,prison-history；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2257",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 31,
+      "title": "店家墊料的那一夜",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "chen-du",
+        "hu-niang"
+      ],
+      "locations": [
+        "workshop",
+        "square"
+      ],
+      "hero_shot": {
+        "action": "十二節點由各人出資認領",
+        "camera": "地圖一人一欄。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "店铺環境聲不新群台詞"
+      },
+      "risk_controls": [
+        {
+          "risk": "江重傷仍扛梁奔跑",
+          "solution": "他說方案與條件，其他人搬運"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "chen-du--base",
+        "hu-niang--base"
+      ],
+      "prop_checks": [
+        "network",
+        "延續來源當集evidence/carry_forward：工法、風險表、備料帳與墊付簽收分送十二處；原件仍可追溯。；備料不能憑空滿足所有需求，仍須主角修為作一次緩衝與居民先撤離。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, chen-du, hu-niang；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "店铺環境聲不新群台詞",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：network；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2326",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 32,
+      "title": "先走出去的人",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "a-yao",
+        "hu-niang"
+      ],
+      "locations": [
+        "bridge",
+        "square"
+      ],
+      "hero_shot": {
+        "action": "畫背新日期留下又還回去",
+        "camera": "翻面寫日期再交单獨鏡。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "筆尖、紙折"
+      },
+      "risk_controls": [
+        {
+          "risk": "加日期改畫原內容或阿杳腕仍新血",
+          "solution": "背面落日，腕已好舊前臂疤仍在"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "阿杳原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "a-yao--base",
+        "a-yao-wrist-healed",
+        "hu-niang--base"
+      ],
+      "prop_checks": [
+        "written-memory",
+        "延續來源當集evidence/carry_forward：搬運清單由胡娘留存；江照自第 3 集起持有的救援圖由胡娘當面添寫日期後仍放回他紙包，仍歸江照保管；訊號表已在十二班手中。；疏散完成以班次回牌確認，不能只看一群人跑就宣佈全城安全。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, a-yao, hu-niang；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "筆尖、紙折",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：written-memory；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2383",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 33,
+      "title": "我不記得，但這是我的字",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "shen-que",
+        "qin-lu"
+      ],
+      "locations": [
+        "road",
+        "tower"
+      ],
+      "hero_shot": {
+        "action": "沈拆左胸徽，秦交右腰鑰匙",
+        "camera": "兩人各自單交接。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "徽針與鑰匙分音"
+      },
+      "risk_controls": [
+        {
+          "risk": "同一令牌代表所有人身份",
+          "solution": "各自物件獨立，秦交後不再掛腰"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "shen-que--base",
+        "shen-que-badge",
+        "shen-que-injured-badge",
+        "shen-que-hurt-no-badge",
+        "qin-lu--base",
+        "qin-lu-no-keys"
+      ],
+      "prop_checks": [
+        "authority",
+        "延續來源當集evidence/carry_forward：接收原冊、元衡親押的轉移單與斷料令由祁硯交安全見證點封存，入塔只帶必要副本；沈闕的徽章收進他的袖袋。；檢修路已通，但十二處仍須同步改接；不能以找到帳冊自動停止災難。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, shen-que, qin-lu；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "徽針與鑰匙分音",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：authority；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2442",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 34,
+      "title": "兩處遲到的回牌",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "chen-du",
+        "a-yao"
+      ],
+      "locations": [
+        "node",
+        "tower"
+      ],
+      "hero_shot": {
+        "action": "普通修為注石讓兩人失大部分力量",
+        "camera": "注石一人一鏡再信號板。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "不用借淵聲標"
+      },
+      "risk_controls": [
+        {
+          "risk": "被畫成第四次契印抹記憶",
+          "solution": "無左掌按/口令；損大部分非全部功力"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "阿杳原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "chen-du--base",
+        "a-yao--base"
+      ],
+      "prop_checks": [
+        "network,contract",
+        "延續來源當集evidence/carry_forward：十二處回牌由阿杳在固定訊號點持有，陳渡記每次耗材更換；工具包在江照。；元衡身上外供被截，只剩有限自身修為；戰鬥必須遵守雙方狀態，不出突然大法術。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, chen-du, a-yao；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "不用借淵聲標",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：network,contract；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2499",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 35,
+      "title": "窄梯前放下的手",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "yuan-heng"
+      ],
+      "locations": [
+        "tower"
+      ],
+      "hero_shot": {
+        "action": "右腕繩被切後江停在施契前",
+        "camera": "切繩、左掌停、紙包分鏡。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "繩斷短音后留呼吸"
+      },
+      "risk_controls": [
+        {
+          "risk": "切繩追溯抹祁記憶或江再施",
+          "solution": "没有新施術，祁已有記憶仍存，改左手持劍"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-hidden",
+        "qi-yan-cord-visible",
+        "qi-yan-cord-cut",
+        "yuan-heng--base"
+      ],
+      "prop_checks": [
+        "red-cord,contract",
+        "延續來源當集evidence/carry_forward：紅繩斷片在江照紙包，從此不再成完整環；拔銷器在手。；第 36 集先替江照爭取維修時間，第 37 集只用普通方法，不得偷開守淵。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, yuan-heng；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "繩斷短音后留呼吸",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：red-cord,contract；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2558",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 36,
+      "title": "不用護盾的那一劍",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "yuan-heng",
+        "shen-que"
+      ],
+      "locations": [
+        "tower"
+      ],
+      "hero_shot": {
+        "action": "沈固定站給信號後零壓拔第一銷",
+        "camera": "信號、表、拔銷三个單鏡。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "压力零后木拔器響"
+      },
+      "risk_controls": [
+        {
+          "risk": "沈傷腿奔跑或有壓硬拔",
+          "solution": "拄杖固定岗，工具袋第一銷有來源"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-cut",
+        "yuan-heng--base",
+        "shen-que--base",
+        "shen-que-hurt-no-badge"
+      ],
+      "prop_checks": [
+        "network,tools",
+        "延續來源當集evidence/carry_forward：第一枚銅銷在江照工具袋，另兩枚仍在原位；讀數由沈闕與外部回牌互證。；最後兩銷與儲層須於下一集完成，不在收尾偷算天籙已毀。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, yuan-heng, shen-que；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "压力零后木拔器響",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：network,tools；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2615",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 37,
+      "title": "最後兩枚銅銷",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "yuan-heng"
+      ],
+      "locations": [
+        "tower"
+      ],
+      "hero_shot": {
+        "action": "其餘兩銷拔出才讓儲能裂開",
+        "camera": "一銷一鏡，裂箱另一鏡。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "木槌、零壓環境、裂聲"
+      },
+      "risk_controls": [
+        {
+          "risk": "新法術大爆炸救所有記憶",
+          "solution": "機械拆除，元衡活擒，舊記憶不返"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-cut",
+        "yuan-heng--base"
+      ],
+      "prop_checks": [
+        "tools,network",
+        "延續來源當集evidence/carry_forward：三銷在工具袋、儲層碎片原地封存；帳冊早已在安全點，不隨塔一起毀；偏殿的封存匣已空。；仍需第 38 集觀察十二陣腳與居民狀態，不能破塔畫面一亮就宣佈全城得救。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, yuan-heng；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "木槌、零壓環境、裂聲",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：tools,network；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2671",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 38,
+      "title": "十二處的第一輪測片",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "a-yao",
+        "chen-du"
+      ],
+      "locations": [
+        "node"
+      ],
+      "hero_shot": {
+        "action": "一塊遲到回報板補齊巡檢",
+        "camera": "信號板補入空格。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "延遲報信而非警報"
+      },
+      "risk_controls": [
+        {
+          "risk": "通信延遲又造新節點故障",
+          "solution": "十二節點已驗，遲到是繩路通訊"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "阿杳原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-cord-cut",
+        "a-yao--base",
+        "a-yao-wrist-healed",
+        "chen-du--base"
+      ],
+      "prop_checks": [
+        "network",
+        "延續來源當集evidence/carry_forward：十二處測片與班次簽收成為公開運作帳；塔碎片封存待受害者見證。；接下來處理司法責任、受害者與生計，不另開更強敵人。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, a-yao, chen-du；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "延遲報信而非警報",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：network；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2726",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 39,
+      "title": "公開對帳的那一天",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "a-yao",
+        "chen-du"
+      ],
+      "locations": [
+        "square",
+        "workshop"
+      ],
+      "hero_shot": {
+        "action": "抽屜放斷繩，新日記只寫真事",
+        "camera": "抽屜與筆記兩鏡。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "紙、抽屉木聲"
+      },
+      "risk_controls": [
+        {
+          "risk": "秦本人忽现或假回憶當治療",
+          "solution": "秦僅書面證詞，未記得的事不冒寫"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        },
+        {
+          "risk": "阿杳原設17歲：出聲角色名單不等於可直接送Lite入鏡。",
+          "solution": "未成年實際入鏡先停留在未驗證狀態，選定並驗收支援該年齡的動畫製作路徑後才拍；不改年齡，不以遮臉或換稱呼繞過。單純畫外聲與無該人物的鏡頭依實際畫面分開。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-healed-no-cord",
+        "a-yao--base",
+        "a-yao-wrist-healed",
+        "chen-du--base"
+      ],
+      "prop_checks": [
+        "red-cord,written-memory",
+        "延續來源當集evidence/carry_forward：三套原始證據與新刻碑並存，轉移單與斷料令原件當眾出示後送回見證點封存；生活簿只記未來；斷繩封存於抽屜，不修復。；第 40 集從日常完成關係重建，不出異象、新追捕令或復活聲音。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, a-yao, chen-du；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "紙、抽屉木聲",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：red-cord,written-memory；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2784",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    },
+    {
+      "episode": 40,
+      "title": "橋市的兩碗麵",
+      "characters": [
+        "jiang-zhao",
+        "qi-yan",
+        "hu-niang",
+        "shen-que"
+      ],
+      "locations": [
+        "bridge"
+      ],
+      "hero_shot": {
+        "action": "苦葉由江自己要求挑掉",
+        "camera": "日常兩碗中景。以單一主動作為hero；反應、交接後狀態或第二操作分成獨立鏡頭，每片8秒原素材再剪，不延長凍結。",
+        "sound": "街聲與筷聲，沒有契術尾音"
+      },
+      "risk_controls": [
+        {
+          "risk": "最後以記憶全回來大團圓",
+          "solution": "祁無紅繩、沈無徽已康復；新的熟悉是三月相處"
+        },
+        {
+          "risk": "表演與生成同鏡過載／語音長度未知",
+          "solution": "以hero主動作獨立拍，其餘分insert/反應鏡；先量zh-TW台詞，再剪3–6秒有效片段。尚無成片測試。"
+        }
+      ],
+      "look_ids": [
+        "jiang-zhao--base",
+        "qi-yan--base",
+        "qi-yan-healed-no-cord",
+        "hu-niang--base",
+        "shen-que--base",
+        "shen-que-recovered"
+      ],
+      "prop_checks": [
+        "red-cord,authority,written-memory",
+        "延續來源當集evidence/carry_forward：新點單簿只記新口味與名字，公共維修帳持續更新，舊證據仍受保管。；完結；無新增懸案、神秘來客、主線反派復出或復活暗示。"
+      ],
+      "voice_notes": [
+        "出聲角色限本集登記：jiang-zhao, qi-yan, hu-niang, shen-que；場外訊息只照來源資格轉述，群眾不另生具名對白。",
+        "街聲與筷聲，沒有契術尾音",
+        "zh-TW先定台灣口音與正常句速；ja/ko/en後做獨立口語化配音，不改知情或證據答案。"
+      ],
+      "cc_notes": [
+        "只做可開關CC；角色對白/旁白/翻譯不燒錄。",
+        "本集關鍵證物/方位/時間：red-cord,authority,written-memory；字幕關閉仍由鏡頭與原稿台詞傳達。"
+      ],
+      "source_refs": [
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2843",
+        "docs/videos/series-plans/binge-five-20260928/remembered-by-rival/source.mjs:2951"
+      ]
+    }
+  ],
+  "audio_plan": {
+    "motifs": [
+      "借淵聲標只三次，普通能量石使用不同低而穩定聲；E35預備動作不觸發完整聲標。",
+      "紅繩沒有持續心跳式超能力提示；揭露時使用真布/繩摩擦，避免前段聲音劇透。",
+      "E36/37先卸壓歸靜再木槌/拔銷，因果可在單聲道聽懂；結尾用煮食自然聲。"
+    ],
+    "perspective": [
+      "固定旁白依setting.world.narrator，角色使用來源voice；旁白不得說角色尚未知的答案。",
+      "電話/隔門/廣播先聽清再加工；mono仍可分空間；畫外聲不能添加未登錄劇情角色。"
+    ],
+    "dynamic_rules": [
+      "關鍵人聲高於雨、車、火與配樂；證據被讀出的當下主動降低底層而非提高尖峰。",
+      "一次只讓一個人說必要資訊；撞擊、撕紙、敲門不與關鍵音節相撞。",
+      "Loudness/true peak依共享profile與交付實測，不在本設計虛稱已量測。"
+    ],
+    "locale_constraints": [
+      "先定案zh-TW台灣口音正片與獨立可開關CC；ja/ko/en先保留固定名詞、發音與節奏空間，之後各自配音對齊、各自CC，不硬套繁中時間碼。",
+      "字幕全部sidecar CC；不把對白、旁白、翻譯或聲音描述燒進影像。劇內必要文件/鐘/牌是道具，關鍵資訊仍由已登錄角色可聽地傳達。",
+      "角色voice_name沿用來源提案；不同語系先用同一聲音身份試錄，音色/年齡/口音不合則記錄新casting再核准，未試聽不可稱驗收。",
+      "旁白與角色不共用聲線。Veo 3.1 Lite原生聲音不作台詞主軌；分開乾淨人聲、音樂、音效/環境軌。",
+      "句尾保留呼吸和插入鏡空間；每語系先實測再定鏡長，快語速/硬裁句/凍結補秒不得作超時解法。",
+      "忘記江照的個人記憶≠失去識字、技能、客觀證據；四語術語表必須把記憶/記錄/認識/回想分開。",
+      "借淵保留固定專名與同一口令take；普通注力不可翻成借淵或spell同義。",
+      "紅繩右腕、契印左掌、沈左腿與左胸徽、阿杳右腕/右前臂每語系方向一致，不翻鏡。"
+    ]
+  },
+  "acceptance_checks": [
+    "source_binding.source_sha256與當前JSON.stringify(source)相同；此為新增製作設計，不冒用舊獨立內容審查或正式核准。",
+    "opening_30s連續覆蓋0–30秒，每鏡<=8秒、具名角色<=3；實測zh-TW TTS完成後才確認5秒鉤子與30秒回報。",
+    "Gemini veo-3.1-lite-generate-preview，1080p、24fps、每次原片8秒；每片只一個主要動作，剪成3–6秒需要的長度，禁止freeze filler；證物用實際手部或環境動作插鏡，文字經查核後合成；靜畫僅限前製animatic。",
+    "Veo Lite不使用referenceImages/extension；角色身份由已核定臉部sheet與最終前景構圖逐鏡檢查，shot_looks只換衣物/物件狀態不換臉。",
+    "每鏡核對人物ID、左右側、持有人、出入口、當前知情、造型先後；外出轉場不得瞬移，原件/副本和手中/桌上物不可複製。",
+    "每集hero動作以獨立鏡頭素材拍攝；表中涉及第二個動作/反應/道具插入須另片，不把整段剪輯描述塞進單次生成。",
+    "字幕全部可開關CC，畫面無台詞燒錄；關CC仍能理解因果。CC開啟時逐條核對說話者、標點、人名、聲音描述和落點。",
+    "zh-TW先行做角色/旁白試聽、手機外放及mono檢查；ja/ko/en後續各有native聽校、獨立TTS時間軸與CC，未測不標完成。",
+    "角色聲線、道具文本、環境音與音樂權利及來源必須可追溯；沒有生成、渲染、聲音、成片或Studio驗收就維持design-only-not-render-tested。",
+    "最終片頭、預告、縮圖不泄露中後段答案；用實際留存與觀看數觀察改進，100萬點閱為目標不保證。",
+    "檢查每鏡實際可見年齡及episode.video_constraints；目前Lite I2V的allow_adult不能視為已支援未成年人。保留原年齡，先驗證手繪或合法支援供應商pilot；畫外聲不等同人物入鏡，不能宣稱400集已可直接全量拍攝。"
+  ],
+  "unresolved": [
+    {
+      "issue": "紅繩藏／露／切斷、拆徽和交鑰匙已具完整命名造型與逐鏡工具，待實際畫面驗收。",
+      "why": "按qi-yan-cord-hidden/visible/cut、shen-que-injured-badge/hurt-no-badge、qin-lu-no-keys切鏡；生成後查左右側、受傷後持劍手與已交出物件不重生。",
+      "episode_refs": [
+        8,
+        23,
+        26,
+        33,
+        35,
+        36,
+        40
+      ]
+    },
+    {
+      "issue": "三次術法、普通注力、機械卸壓需實際音色/手機外放驗證。",
+      "why": "聽感混同會直接破壞世界規則。",
+      "episode_refs": [
+        1,
+        18,
+        28,
+        34,
+        35,
+        36,
+        37
+      ]
+    },
+    {
+      "issue": "阿杳（a-yao）明確17歲，Veo Lite I2V未驗證可生成其入鏡畫面。",
+      "why": "目前首格I2V的allow_adult能力不代表允許未成年人顯影；不能把角色改為成年人，也不能以背影、局部、卡通風格或不提年齡當可保證捷徑。需經核可的手繪動畫或合法支援該年齡的供應商先做pilot、確認能力與交付再排量。僅畫外配音不因此自動受阻，逐鏡按實際可見人物判斷。",
+      "episode_refs": [
+        7,
+        8,
+        11,
+        12,
+        14,
+        18,
+        19,
+        22,
+        24,
+        25,
+        27,
+        28,
+        29,
+        32,
+        34,
+        38,
+        39
+      ]
+    },
+    {
+      "issue": "E1無cast ID的被救孩子明確入鏡，不能直接以Lite全動態開拍。",
+      "why": "具體年齡未載，不能捏造數字或新增角色年齡。整E1 provider constraint等待合法可支援未成年人的手繪/供應商pilot；無對白、背影或只拍被拉住不構成已驗證捷徑。",
+      "episode_refs": [
+        1
+      ]
+    },
+    {
+      "issue": "江照與祁硯現時28歲，來源另明訂兩人13歲的少年客觀回望。",
+      "why": "來源source.mjs:2954、2961、2965有少年回望與13歲日期；E17、E23是相關往事揭露，但尚未把13歲入鏡分配到具體鏡頭。成人ID不全域標min13，不能把其40集全部誤擋；任何13歲回望須先指定獨立look、集與鏡，再驗證未成年動畫路徑。當前未建立未綁集的child look，亦不得把童年改成成人。",
+      "episode_refs": [
+        17,
+        23
+      ]
+    }
+  ]
+}

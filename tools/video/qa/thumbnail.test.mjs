@@ -1,8 +1,14 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import path from "node:path";
 import test from "node:test";
 
+import { fixture } from "../core/fixtures/load.mjs";
+import { ARTIFACTS } from "../core/state.mjs";
+import { thumbnailSourceHash } from "../core/translations.mjs";
 import { THUMBNAIL_MAX_BYTES } from "../render/cli.mjs";
+import { thumbnailItem } from "./cli.mjs";
 import { THEME_FILE } from "../render/plan.mjs";
 import { jpegBytes, pngBytes } from "./test-images.mjs";
 import { atPhoneWidth, HEADLINE, headlineLayout, headlineSizeEstimate, headlineTokens, imageSize, MAX_BYTES, MIN_HEADLINE_PX_AT_PHONE, PHONE_WIDTH, thumbnailChecks } from "./thumbnail.mjs";
@@ -68,4 +74,29 @@ test("the thumbnail item checks the size, the bytes and the headline's height on
   assert.match(heavy.detail, /bytes; YouTube's limit is 2 MB/);
   assert.match(thumbnailChecks({ bytes: Buffer.from("not an image"), headline: "短" }).detail, /not a JPEG or PNG/);
   assert.equal(thumbnailChecks({ bytes: jpegBytes(1280, 720), headline: undefined }).ok, true);
+});
+
+test("the thumbnail item checks each language's own thumbnail too, and what is wrong with one only warns", () => {
+  const doc = fixture();
+  const workdir = mkdtempSync(path.join(tmpdir(), "video-qa-thumbs-"));
+  mkdirSync(path.join(workdir, "frames"));
+  mkdirSync(path.join(workdir, "thumbnails"));
+  writeFileSync(path.join(workdir, "thumbnail.jpg"), jpegBytes(1280, 720, 2000));
+  const merged = (headline) => ({ thumbnail: { tag: "Picking a model", headline }, source_hashes: { thumbnail: thumbnailSourceHash(doc) } });
+  const translations = { en: merged("No. 1 is not always best"), ja: merged("一位".repeat(40)) };
+  writeFileSync(path.join(workdir, "thumbnails", "en.jpg"), jpegBytes(1280, 720, 2000));
+  writeFileSync(path.join(workdir, "thumbnails", "ja.jpg"), jpegBytes(1280, 720, 2000));
+  const drawn = { en: { file: "thumbnails/en.jpg", hash: "x" }, ja: { file: "thumbnails/ja.jpg", hash: "y" }, ko: { file: "thumbnails/ko.jpg", hash: "z" } };
+  writeFileSync(path.join(workdir, ARTIFACTS.frames), JSON.stringify({ thumbnail: "thumbnail.jpg", thumbnail_locales: drawn }));
+  const result = thumbnailItem(doc, workdir, translations);
+  assert.equal(result.ok, true, "the video's own thumbnail decides the item");
+  assert.match(result.detail, /; language thumbnails checked: en, ja$/);
+  assert.equal(result.warnings.length, 2);
+  assert.match(result.warnings[0], /^ja thumbnail \(thumbnails\/ja\.jpg\): the headline shrinks to about \d+ px/);
+  assert.match(result.warnings[1], /^ko thumbnail: thumbnails\/ko\.jpg is missing; run render$/);
+  // A render from before localized thumbnails: the item reads as it always did.
+  writeFileSync(path.join(workdir, ARTIFACTS.frames), JSON.stringify({ thumbnail: "thumbnail.jpg" }));
+  const plain = thumbnailItem(doc, workdir, translations);
+  assert.deepEqual([plain.ok, plain.warnings], [true, undefined], "no warnings key, as before");
+  assert.match(plain.detail, /^1280x720 JPEG, 2 KB; the headline is about \d+ px tall at 320 px wide$/);
 });

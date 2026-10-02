@@ -15,7 +15,8 @@ import { fieldClass } from "@/components/community/ui";
 // the drama and the shared parts are their own components.
 const numberFields = {
   schedule: [["draft_interval_hours", 6, 720], ["topics_per_run", 1, 3], ["max_waiting_drafts", 1, 10]],
-  length: [["target_minutes_min", 3, 30], ["target_minutes_max", 3, 30]],
+  // Every slides video runs at least eight minutes (apps/api migration 0117).
+  length: [["target_minutes_min", 8, 30], ["target_minutes_max", 8, 30]],
   budget: [["max_drafts_per_month", 0, 60], ["max_verify_rounds", 1, 5], ["max_retake_rounds", 0, 5]],
 } as const;
 type NumberField = (typeof numberFields)[keyof typeof numberFields][number][0];

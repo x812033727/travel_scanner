@@ -21,7 +21,12 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.models import AdminAuditLog, User, VideoProject, VideoReview
 from app.video_shorts import rules
 from app.video_shorts.errors import ShortsRefused
-from app.video_shorts.models import HOLDING_STATUSES, VideoShortsSettings, VideoShortsSlot
+from app.video_shorts.models import (
+    HOLDING_STATUSES,
+    VideoShortsSettings,
+    VideoShortsSlot,
+    VideoShortsTopic,
+)
 from app.video_shorts.schemas import CampaignOut, SlotOut, SlotPatch, SlotsOut
 from app.video_shorts.settings import channel_facts, settings_row
 
@@ -231,9 +236,13 @@ async def assign_approved(
     moment = now or datetime.now(UTC)
     with session.no_autoflush:
         found = await _slots_for(session, project.slug, moment)
+        # A Short the worker made from a topic goes to the slot the weekly plan gave the topic.
+        topic = await session.scalar(
+            select(VideoShortsTopic.slug).where(VideoShortsTopic.project_slug == project.slug)
+        )
     chosen = rules.assign_slot(
         [slot_facts(slot) for slot in found],
-        rules.LibraryShort(project.slug, project.shorts_line, moment),
+        rules.LibraryShort(project.slug, project.shorts_line, moment, topic_slug=topic),
         moment,
     )
     if chosen is None:

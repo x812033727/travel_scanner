@@ -100,6 +100,22 @@ MEDIA_CATALOG: tuple[MediaModel, ...] = (
         usd_per_second=0.15,
     ),
     MediaModel(
+        "veo-3.1-lite-generate-preview",
+        "gemini",
+        "clip",
+        "Veo 3.1 Lite",
+        note=(
+            "Gemini API（2026-10-01 核對）；1080p 固定 8 秒、每秒 US$0.08；"
+            "720p 每秒 US$0.05，預算採 1080p 上限；首尾幀可用，無角色參考圖；原生音訊必開"
+        ),
+        status="preview",
+        resolutions=("720p", "1080p"),
+        durations=(4, 6, 8),
+        reference_images=0,
+        native_audio=True,
+        usd_per_second=0.08,
+    ),
+    MediaModel(
         "veo-3.1-generate-001",
         "gemini",
         "clip",

@@ -44,6 +44,18 @@ const GEMINI_VOICE = /^[A-Za-z][A-Za-z0-9_-]{1,79}$/;
 const STYLE_MAX = 400;
 export const MAX_PAUSE_MS = 5000;
 export const DEFAULT_TARGET_MINUTES = [8, 12];
+// The owner's rule (2026-10-01): every episode runs at least eight minutes, except a drama's.
+// The explainer (原來如此事務所) is held to it too; drama.mjs's needsMinimumLength says which.
+export const MIN_EPISODE_MINUTES = 8;
+/**
+ * The floor in force: MIN_EPISODE_MINUTES, or VIDEO_MIN_EPISODE_MINUTES when set. The variable is
+ * for the tests, whose fixture videos run seconds; production never sets it.
+ */
+export function minEpisodeMinutes(env = process.env) {
+  const raw = env.VIDEO_MIN_EPISODE_MINUTES;
+  const value = raw === undefined || raw === "" ? NaN : Number(raw);
+  return Number.isFinite(value) && value >= 0 ? value : MIN_EPISODE_MINUTES;
+}
 
 export const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 // What kind of video this is, for /admin/videos' filters: the same list as

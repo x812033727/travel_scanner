@@ -9,11 +9,15 @@ import { EXIT, main } from "../cli.mjs";
 import { approve } from "../core/approvals.mjs";
 import { clipsHash, lookHash, mixHash } from "../core/drama.mjs";
 import { dramaFixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
-import { FPS, visualHash } from "../core/timeline.mjs";
+import { pipelineStatus } from "../core/state.mjs";
+import { buildTimeline, estimatedSamples, FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "../core/timeline.mjs";
 import { clipPrompt, clipRubric, clipSeconds, lastFrameArgs, MAX_CLIP_TAKES, proxyArgs } from "./clips.mjs";
 import { readLedger } from "./ledger.mjs";
 import { MIN_TRACK_SECONDS, trackSeconds } from "./music.mjs";
 import { chosenModel, clipSecondPrice, statusProblem, trackPrice } from "./stages.mjs";
+
+// The fixture videos run seconds; the eight-minute floor has tests of its own.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
 
 const TOKEN = `mkv_${"c".repeat(43)}`;
 const SHA = (data) => createHash("sha256").update(data).digest("hex");
@@ -160,6 +164,17 @@ function context(box, fetchImpl, extra = {}) {
 
 const manifestOf = (box, name) => JSON.parse(readFileSync(path.join(box.workdir, name, "manifest.json"), "utf8"));
 
+const shortDialogue = (doc) => {
+  for (const scene of doc.scenes) {
+    delete scene.data.fit;
+    for (const line of scene.lines) {
+      line.text = "走。";
+      delete line.say;
+      delete line.say_for;
+    }
+  }
+};
+
 test("clip seconds, prompts, rubric and ffmpeg arguments", () => {
   assert.equal(clipSeconds(30, [4, 6, 8]), 4);
   assert.equal(clipSeconds(150, [4, 6, 8]), 6, "5 s of lines takes the next offered duration");
@@ -181,6 +196,200 @@ test("clip seconds, prompts, rubric and ffmpeg arguments", () => {
   assert.equal(statusProblem(STATUS, "clip"), null);
   assert.equal(trackSeconds(1275), 48, "42.5 s of video plus the tail");
   assert.equal(trackSeconds(30), MIN_TRACK_SECONDS);
+});
+
+test("a production model or resolution mismatch stops before any paid clip submission", async () => {
+  const required = { provider: "gemini", model: "veo-3.1-lite-generate-preview", resolution: "1080p" };
+  for (const choice of [{ ...required, model: "gemini-omni-1.1-flash" }, { ...required, resolution: "720p" }]) {
+    const { box } = prepared(shortDialogue);
+    writeFileSync(path.join(box.dir, "series.json"), JSON.stringify({ production: { profile: { video: required } } }));
+    await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+    await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+    const site = mediaSite({ status: { ...STATUS, clip: { ...STATUS.clip, ...choice } } });
+    const run = context(box, site.fetchImpl);
+    assert.equal(await main(["clips", "--slug", box.slug], run.ctx), EXIT.owner, run.out.stderr || run.out.stdout);
+    assert.match(run.out.stderr, /approved production profile requires/);
+    assert.equal(site.state.clips.length, 0);
+    assert.equal(site.state.uploads.length, 0);
+  }
+});
+
+test("a production child's visual shots stop before uploads or paid Veo Lite calls", async () => {
+  const { box } = prepared(shortDialogue);
+  const video = { provider: "gemini", model: "veo-3.1-lite-generate-preview", resolution: "1080p" };
+  writeFileSync(path.join(box.dir, "series.json"), JSON.stringify({ production: {
+    profile: { video },
+    characters: [{ id: "jingwei", video_constraints: { min_visual_age_years: 12, veo_lite_i2v: "not-verified-under-18" } }],
+  } }));
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+  const site = mediaSite({ status: { ...STATUS, clip: { ...STATUS.clip, ...video } } });
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["clips", "--slug", box.slug], run.ctx), EXIT.owner, run.out.stderr || run.out.stdout);
+  assert.match(run.out.stderr, /allow_adult.*jingwei \(12\)/);
+  assert.match(run.out.stderr, /preserve the approved ages/);
+  assert.equal(site.state.uploads.length, 0);
+  assert.equal(site.state.clips.length, 0);
+  assert.equal(site.state.judges.length, 0);
+});
+
+test("the production age guard permits offscreen voices and leaves legacy projects unchanged", async () => {
+  const video = { provider: "gemini", model: "veo-3.1-lite-generate-preview", resolution: "1080p" };
+  const status = { ...STATUS, clip: { ...STATUS.clip, ...video }, models: { ...STATUS.models, clips: { gemini: [{ ...STATUS.models.clips.gemini[0], value: video.model, durations: [4, 6, 8], reference_images: 0 }] } } };
+  for (const legacy of [false, true]) {
+    const { box, doc } = prepared((doc) => {
+      shortDialogue(doc);
+      if (!legacy) for (const scene of doc.scenes) scene.data.characters = (scene.data.characters ?? []).filter((id) => id !== "jingwei");
+    });
+    assert.ok(doc.scenes.some((scene) => scene.lines.some((line) => line.speaker === "jingwei")), "the child still has a spoken line");
+    writeFileSync(path.join(box.dir, "series.json"), JSON.stringify({ production: {
+      ...(legacy ? {} : { profile: { video } }),
+      characters: [{ id: "jingwei", video_constraints: { min_visual_age_years: 12, veo_lite_i2v: "not-verified-under-18" } }],
+    } }));
+    await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+    await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+    const site = mediaSite({ status });
+    const run = context(box, site.fetchImpl);
+    assert.equal(await main(["clips", "--slug", box.slug], run.ctx), EXIT.ok, `${legacy ? "legacy" : "offscreen"}: ${run.out.stderr || run.out.stdout}`);
+    assert.equal(site.state.clips.length, doc.scenes.filter((scene) => scene.template === "shot").length);
+  }
+});
+
+test("an episode's unnamed child in the picture stops Veo Lite even without a child cast id", async () => {
+  const { box } = prepared(shortDialogue);
+  const video = { provider: "gemini", model: "veo-3.1-lite-generate-preview", resolution: "1080p" };
+  writeFileSync(path.join(box.dir, "series.json"), JSON.stringify({ production: {
+    profile: { video }, characters: [],
+    episode: { video_constraints: { veo_lite_i2v: "unverified-minor-on-screen", reason: "a child stands in the opening crowd" } },
+  } }));
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+  const site = mediaSite({ status: { ...STATUS, clip: { ...STATUS.clip, ...video } } });
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["clips", "--slug", box.slug], run.ctx), EXIT.owner, run.out.stderr || run.out.stdout);
+  assert.match(run.out.stderr, /child stands in the opening crowd/);
+  assert.equal(site.state.uploads.length, 0);
+  assert.equal(site.state.clips.length, 0);
+  assert.equal(site.state.judges.length, 0);
+});
+
+test("a short written shot whose recorded dialogue exceeds eight seconds stops before media submission", async () => {
+  const { box, doc } = prepared(shortDialogue);
+  writeFileSync(path.join(box.dir, "series.json"), JSON.stringify({ production: { profile: {} } }));
+  const measured = estimatedSamples(doc);
+  measured[doc.scenes[0].lines[0].id] = 8 * SAMPLE_RATE;
+  writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify({ ...buildTimeline(doc, measured), speech_hash: speechHash(doc, fixtureLexicon()) }));
+  const site = mediaSite();
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["clips", "--slug", box.slug], run.ctx), EXIT.owner, run.out.stderr || run.out.stdout);
+  assert.match(run.out.stderr, /measured production timeline needs a script revision/);
+  assert.match(run.out.stderr, /8 seconds including pauses/);
+  assert.equal(site.state.clips.length, 0);
+  assert.equal(site.state.uploads.length, 0);
+});
+
+test("the production profile refuses a slightly short source take instead of padding the last frame", async () => {
+  const { box, doc } = prepared(shortDialogue);
+  writeFileSync(path.join(box.dir, "series.json"), JSON.stringify({ production: { profile: {} } }));
+  const measured = estimatedSamples(doc);
+  measured[doc.scenes[0].lines[0].id] = 101 * SAMPLES_PER_FRAME;
+  measured[doc.scenes[0].lines[1].id] = 100 * SAMPLES_PER_FRAME;
+  const timeline = buildTimeline(doc, measured);
+  assert.equal(timeline.scenes[0].end_frame, 240);
+  writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify({ ...timeline, speech_hash: speechHash(doc, fixtureLexicon()) }));
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+  const site = mediaSite();
+  const run = context(box, site.fetchImpl, { clipQc: async (file, wanted) => ({ probe: goodProbe(path.basename(file).startsWith("opening-") ? 7.9 : wanted.requested), black: [], freezes: [], cuts: [], keyframe_psnr: 40, rival_psnr: 20 }) });
+  assert.equal(await main(["clips", "--slug", box.slug], run.ctx), EXIT.lint, run.out.stderr || run.out.stdout);
+  const opening = manifestOf(box, "clips").shots.opening;
+  assert.equal(opening.needs_review, true);
+  assert.match(opening.problems.join("; "), /would need padding or slowing/);
+  assert.equal(site.state.clips.filter((request) => request.shot_id === "opening").length, MAX_CLIP_TAKES, "the existing paid-retake bound remains in force");
+});
+
+test("1080p production rejects a native 720p take with bounded retakes while legacy QC stays unchanged", async () => {
+  for (const production of [true, false]) {
+    const { box } = prepared(shortDialogue);
+    if (production) writeFileSync(path.join(box.dir, "series.json"), JSON.stringify({ production: { profile: { video: { ...STATUS.clip, aspect: "16:9" } } } }));
+    await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+    await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+    const site = mediaSite();
+    const run = context(box, site.fetchImpl, { clipQc: async (file, wanted) => ({
+      probe: { ...goodProbe(wanted.requested), ...(path.basename(file).startsWith("opening-") ? { width: 1280, height: 720 } : {}) },
+      black: [], freezes: [], cuts: [], keyframe_psnr: 40, rival_psnr: 20,
+    }) });
+    assert.equal(await main(["clips", "--slug", box.slug], run.ctx), production ? EXIT.lint : EXIT.ok, run.out.stderr || run.out.stdout);
+    const opening = manifestOf(box, "clips").shots.opening;
+    assert.equal(opening.needs_review, production);
+    if (production) assert.match(opening.problems.join("; "), /native 1920x1080.*1280x720/);
+    assert.equal(site.state.clips.filter((request) => request.shot_id === "opening").length, production ? MAX_CLIP_TAKES : 1);
+  }
+});
+
+test("resuming a production checks cached model, native size and motion evidence rather than trusting old clip hashes", async () => {
+  const { box } = prepared(shortDialogue);
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+  const site = mediaSite();
+  const first = context(box, site.fetchImpl);
+  assert.equal(await main(["clips", "--slug", box.slug], first.ctx), EXIT.ok, first.out.stderr);
+  const status = async () => (await pipelineStatus({ slug: box.slug, root: box.root, workdir: box.workdir })).steps.find((step) => step.id === "clips generated");
+  const select = (model) => writeFileSync(path.join(box.dir, "series.json"), JSON.stringify({ production: { profile: { video: { ...STATUS.clip, model } } } }));
+  select("veo-3.1-lite-generate-preview");
+  assert.equal((await status()).done, false);
+  assert.match((await status()).note, /do not match the approved production/);
+  select(STATUS.clip.model);
+  assert.equal((await status()).done, true);
+  const original = manifestOf(box, "clips");
+  for (const fault of ["duration", "dimensions"]) {
+    const clips = structuredClone(original);
+    if (fault === "duration") clips.shots.opening.qc.metrics.duration = 0.1;
+    else Object.assign(clips.shots.opening.qc.metrics, { width: 1280, height: 720 });
+    writeFileSync(path.join(box.workdir, "clips", "manifest.json"), JSON.stringify(clips));
+    assert.equal((await status()).done, false);
+    assert.match((await status()).note, fault === "duration" ? /whole dialogue/ : /native 1920x1080/);
+    const paidBefore = site.state.clips.length;
+    const resumed = context(box, site.fetchImpl);
+    assert.equal(await main(["clips", "--slug", box.slug], resumed.ctx), EXIT.owner, resumed.out.stderr);
+    assert.match(resumed.out.stderr, /cached clip opening/);
+    assert.equal(site.state.clips.length, paidBefore, "a resume never silently replaces untrusted evidence with a paid retry");
+  }
+});
+
+test("Veo 3.1 Lite 1080p requests eight seconds and first frames, with sheets only for the judge", async () => {
+  const { box, shots } = prepared();
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+  const model = "veo-3.1-lite-generate-preview";
+  const status = { ...STATUS, clip: { ...STATUS.clip, model }, models: { ...STATUS.models, clips: { gemini: [{ ...STATUS.models.clips.gemini[0], value: model, durations: [4, 6, 8], reference_images: 0 }] } } };
+  const site = mediaSite({ status });
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["clips", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr || run.out.stdout);
+  assert.ok(site.state.clips.every((request) => request.seconds === 8 && request.references.length === 0 && request.native_audio === false));
+  assert.equal(site.state.clips.find((request) => request.shot_id === "farewell").first_frame, shots.farewell.sha256);
+  assert.ok(site.state.judges.find((request) => request.context.shot?.id === "farewell").files.some((file) => file.label === "sheet 精衛"));
+  assert.equal(clipSeconds(30, [4, 6, 8], { model, resolution: "720p" }), 4);
+  assert.equal(clipSeconds(30, [4, 6, 8], { model: "veo-3.1-fast-generate-preview", resolution: "1080p" }), 8);
+});
+
+test("clips keep the face reference while using the shot's named outfit in generation and judging", async () => {
+  const { box, characters } = prepared((doc) => {
+    doc.characters[0].shot_looks = [{ id: "present", appearance: "adult woman wearing a navy business suit" }];
+    doc.scenes[1].data.character_looks = { jingwei: "present" };
+  });
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+  const site = mediaSite();
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["clips", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr || run.out.stdout);
+  const request = site.state.clips.find((entry) => entry.shot_id === "farewell");
+  assert.match(request.prompt, /navy business suit/);
+  assert.match(request.prompt, /same facial identity/);
+  assert.equal(request.references[0].sha256, characters.jingwei.candidates[0].sha256);
+  const judge = site.state.judges.find((entry) => entry.context.shot?.id === "farewell");
+  assert.match(judge.rubric[0].question, /no morphing back to the base outfit/);
+  assert.match(judge.context.characters[0].description, /navy business suit/);
 });
 
 test("clips need an approved storyboard, then each shot gets a clip from its keyframe, checked and retaken", async () => {

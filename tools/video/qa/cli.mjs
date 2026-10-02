@@ -15,10 +15,10 @@ import { approvalState, sha256File } from "../core/approvals.mjs";
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
 import { compilationChecksCurrent, compilationHash, estimatedCompilationTimeline, isCompilation } from "../core/compilation.mjs";
 import { cadenceProblems, cadenceSummary, illustrationShare, MAX_PICTURE_SECONDS, MIN_ILLUSTRATION_SHARE } from "../core/cadence.mjs";
-import { burnIn, illustrated, isDrama, subtitlesHash } from "../core/drama.mjs";
+import { burnIn, illustrated, isDrama, needsMinimumLength, subtitlesHash } from "../core/drama.mjs";
 import { checkYoutubeFields } from "../core/metadata.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
-import { LOCALES, narrationLocale } from "../core/schema.mjs";
+import { LOCALES, minEpisodeMinutes, narrationLocale } from "../core/schema.mjs";
 import { captionLocalesOf, chosenLocales, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
 import { approvedEpisodes, ARTIFACTS, dubArtifacts, lintProject, loadProject } from "../core/state.mjs";
 import { chapterList, checkChapters, estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
@@ -31,6 +31,7 @@ import { checkLinks, descriptionUrls, linkChecker, linksDetail } from "./links.m
 import { paceDetail, paceProblems, slideStates } from "./pace.mjs";
 import { policyRequest, policyVerdict } from "./policy.mjs";
 import { thumbnailChecks } from "./thumbnail.mjs";
+import { localizedThumbnail } from "../core/translations.mjs";
 
 export const QA_FILE = path.join("review", "qa.json");
 
@@ -79,12 +80,31 @@ function writeReport(ctx, doc, workdir, report, finalSha256) {
   ctx.stdout.write(`${doc.slug}: ${passed} of ${report.items.length} checks passed${finalSha256 ? ` (final.mp4 sha256 ${finalSha256.slice(0, 12)})` : ""}; ${file}\n`);
 }
 
-/** The thumbnail item, from the file render drew. */
-function thumbnailItem(doc, thumbnailFile) {
+/**
+ * The thumbnail item, from the file render drew; then the same check once for each language's
+ * own thumbnail render drew (frames/manifest.json thumbnail_locales). Those are extras the owner
+ * uploads by hand on Studio's 「語言」 page, so what is wrong with one is a warning, never a fail:
+ * the language still has the video's own thumbnail.
+ */
+export function thumbnailItem(doc, workdir, translations = {}) {
+  const thumbnailFile = path.join(workdir, THUMBNAIL_FILE);
   if (!doc.thumbnail) return item("thumbnail", false, "video.json has no thumbnail; add one with the thumb template");
   if (!existsSync(thumbnailFile)) return item("thumbnail", false, `${THUMBNAIL_FILE} is missing; run render`);
   const verdict = thumbnailChecks({ bytes: readFileSync(thumbnailFile), headline: doc.thumbnail.data?.headline });
-  return item("thumbnail", verdict.ok, verdict.detail, verdict.warnings);
+  const warnings = [...verdict.warnings];
+  const checked = [];
+  for (const [locale, drawn] of Object.entries(readJson(path.join(workdir, ARTIFACTS.frames), null)?.thumbnail_locales ?? {})) {
+    const file = path.join(workdir, drawn.file);
+    if (!existsSync(file)) {
+      warnings.push(`${locale} thumbnail: ${drawn.file} is missing; run render`);
+      continue;
+    }
+    const own = thumbnailChecks({ bytes: readFileSync(file), headline: localizedThumbnail(doc, translations[locale])?.data.headline });
+    checked.push(locale);
+    if (!own.ok) warnings.push(`${locale} thumbnail (${drawn.file}): ${own.detail}`);
+  }
+  const detail = checked.length ? `${verdict.detail}; language thumbnails checked: ${checked.join(", ")}` : verdict.detail;
+  return item("thumbnail", verdict.ok, detail, warnings);
 }
 
 /**
@@ -133,7 +153,7 @@ async function compilationQa(ctx, { project, lint, workdir, workBase }) {
   }));
   const links = await checkLinks(descriptionUrls(descriptions), linkChecker({ fetchImpl: ctx.fetch ?? globalThis.fetch, sleep: ctx.sleep, now: () => Number(ctx.now ? ctx.now() : Date.now()) }));
   items.push(item("links", links.every((result) => result.ok), linksDetail(links)));
-  items.push(thumbnailItem(doc, inWork(THUMBNAIL_FILE)));
+  items.push(thumbnailItem(doc, workdir, project.translations));
   const decision = disclosureDecision(doc);
   items.push(disclosureItem(decision, recordDisclosure(inWork(ARTIFACTS.upload), decision)));
   const report = qaReport(items, finalSha256, COMPILATION_ITEM_IDS);
@@ -177,7 +197,6 @@ export async function run(command, args, ctx) {
   const cache = readJson(inWork(path.join("frames", "cache.json")), null);
   const captions = readJson(inWork(ARTIFACTS.captions), null);
   const approval = await approvalState({ gate: "audio", docDir: project.dir, workdir });
-  const thumbnailFile = inWork(THUMBNAIL_FILE);
   const reports = readdirSync(project.dir).filter((name) => VERIFY_FILE.test(name));
   // The owner's language choice (docs/videos/LANGUAGES.md): the captions and metadata items look
   // at the narration, zh-TW and the chosen locales; a dub track given up on only warns.
@@ -190,7 +209,7 @@ export async function run(command, args, ctx) {
 
   const items = [];
   let who = null;
-  items.push(assembleItem({ checks, current: checksCurrent(doc, lexicon, checks, clips, keyframes) && brandingMatches && (!applied || checks.metrics?.frames === presented?.total_frames), finalExists, stale: !brandingMatches ? "another branding selection" : pictures ? "an older script, look, pictures, music or effects" : undefined }));
+  items.push(assembleItem({ checks, current: checksCurrent(doc, lexicon, checks, clips, keyframes) && brandingMatches && (!applied || checks.metrics?.frames === presented?.total_frames), finalExists, minMinutes: needsMinimumLength(doc) ? minEpisodeMinutes() : 0, stale: !brandingMatches ? "another branding selection" : pictures ? "an older script, look, pictures, music or effects" : undefined }));
   items.push(renderItem({ manifest: frames, cache, visual, speech, subtitles: drama ? subtitlesHash(doc) : null, burnIn: drama && burnIn(doc), hasThumbnail: Boolean(doc.thumbnail) }));
   items.push(narrationItem({ approval, current: timelineCurrent }));
   if (!timelineCurrent) {
@@ -229,7 +248,7 @@ export async function run(command, args, ctx) {
   items.push(item("facts", facts.ok, facts.detail));
   const links = await checkLinks(descriptionUrls(descriptions), linkChecker({ fetchImpl: ctx.fetch ?? globalThis.fetch, sleep: ctx.sleep, now: () => Number(ctx.now ? ctx.now() : Date.now()) }));
   items.push(item("links", links.every((result) => result.ok), linksDetail(links)));
-  items.push(thumbnailItem(doc, thumbnailFile));
+  items.push(thumbnailItem(doc, workdir, project.translations));
   const policy = await policyItem(ctx, policyRequest({ doc, brief: project.brief }));
   items.push(policy.item);
   who = policy.who ?? null;

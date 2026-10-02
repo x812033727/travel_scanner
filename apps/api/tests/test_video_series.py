@@ -219,6 +219,54 @@ def test_episodes_start_one_at_a_time_after_the_previous_is_done_unless_the_owne
     )
 
 
+@pytest.mark.parametrize(
+    "looks",
+    [
+        None,
+        {},
+        [{"id": "present", "appearance": ""}],
+        [{"id": "present", "appearance": "x", "voice": {"name": "other"}}],
+        [{"id": "present", "appearance": "x"}] * 2,
+        [{"id": "../bad", "appearance": "x"}],
+        [{"id": "present", "appearance": "x" * 801}],
+    ],
+)
+def test_setting_refuses_invalid_shot_looks(looks: Any) -> None:
+    payload = SeriesDocSubmitIn(
+        kind="setting",
+        body_md="# setting",
+        body_json={
+            "characters": [
+                {"id": "lead", "name": "主角", "appearance": "base", "shot_looks": looks}
+            ]
+        },
+    )
+    assert service.doc_problem(_series(), payload) is not None
+
+
+def test_setting_accepts_named_visual_variants_without_replacing_character_identity() -> None:
+    payload = SeriesDocSubmitIn(
+        kind="setting",
+        body_md="# setting",
+        body_json={
+            "characters": [
+                {
+                    "id": "lead",
+                    "name": "主角",
+                    "appearance": "base face",
+                    "voice": {"provider": "gemini", "name": "Kore"},
+                    "shot_looks": [
+                        {"id": "past", "appearance": "young woman in an ancient robe"},
+                        {"id": "present", "appearance": "adult woman in a business suit"},
+                    ],
+                }
+            ]
+        },
+    )
+    assert service.doc_problem(_series(), payload) is None
+    assert payload.body_json["characters"][0]["voice"]["name"] == "Kore"
+
+
 def test_a_document_the_worker_sends_must_have_the_shape_the_owner_reads() -> None:
     series = _series()
 
@@ -500,6 +548,16 @@ def test_only_a_one_off_is_started_in_the_explainer_preset() -> None:
         slug="one-off-why", kind="one-off", title="雷聲", premise="p", style_preset="flat-explainer"
     )
     assert explainer.style_preset == "flat-explainer"
+    assert explainer.target_minutes == 8, "an explainer runs at least eight minutes"
+    with pytest.raises(ValidationError, match="an explainer runs 8 to 12 minutes"):
+        SeriesIn(
+            slug="one-off-why",
+            kind="one-off",
+            title="雷聲",
+            premise="p",
+            style_preset="flat-explainer",
+            target_minutes=7,
+        )
     with pytest.raises(ValidationError, match="one-off explainer only"):
         SeriesIn(slug="xianxia", title="問劍", premise="p", style_preset="flat-explainer")
     with pytest.raises(ValidationError, match="one-off explainer only"):
@@ -527,6 +585,16 @@ def test_a_long_series_never_becomes_an_explainer_and_a_written_bible_fixes_a_on
         assert refused is not None
         assert (refused.status, refused.code) == (422, "video_series_explainer_one_off")
     assert service.patch_problem(_series(), {"style_preset": "anime-2d"}) is None
+    # An explainer's length, when the owner names one, is 8 to 12 minutes.
+    for minutes in (7, 13):
+        short = service.patch_problem(
+            _one_off(style_preset="flat-explainer"), {"target_minutes": minutes}
+        )
+        assert short is not None and short.code == "video_series_explainer_length"
+    assert (
+        service.patch_problem(_one_off(style_preset="flat-explainer"), {"target_minutes": 10})
+        is None
+    )
     # A one-off crosses the explainer line freely until the worker writes its bible.
     assert service.patch_problem(_one_off(), explainer) is None
     assert (
@@ -550,6 +618,27 @@ def test_a_long_series_never_becomes_an_explainer_and_a_written_bible_fixes_a_on
             service.patch_problem(_one_off(style_preset="flat-explainer"), explainer, written)
             is None
         )
+
+
+@pytest.mark.asyncio
+async def test_a_one_off_crossing_the_explainer_line_takes_that_sides_length(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    session = AsyncMock()
+    session.add = lambda _row: None
+    owner = User(email="owner@example.com", password_hash="unused")
+    monkeypatch.setattr(service, "_docs", AsyncMock(return_value=[]))
+    monkeypatch.setattr(service, "_episodes", AsyncMock(return_value=[]))
+    monkeypatch.setattr(service, "series_view", AsyncMock(return_value=None))
+    story_one_off = _one_off(target_minutes=3)
+    monkeypatch.setattr(service, "_series", AsyncMock(return_value=story_one_off))
+    patch = SeriesPatch(style_preset="flat-explainer")
+    await service.patch_series(session, owner, story_one_off.slug, patch)
+    assert story_one_off.target_minutes == 8, "an explainer runs at least eight minutes"
+    explainer = _one_off(style_preset="flat-explainer", target_minutes=11)
+    monkeypatch.setattr(service, "_series", AsyncMock(return_value=explainer))
+    await service.patch_series(session, owner, explainer.slug, SeriesPatch(style_preset="ink-wash"))
+    assert explainer.target_minutes == 8, "a drama episode runs at most eight"
 
 
 def _app(user: User | None = None) -> FastAPI:

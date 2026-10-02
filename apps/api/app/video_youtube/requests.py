@@ -1,10 +1,11 @@
 """What the site sends YouTube, built from the approved upload package. Pure functions.
 
 The package is the approved upload confirmation (gate ``publish``) the worker submitted
-(docs/videos/HANDS-OFF.md §上傳包與「可以上架」): ``metadata.json`` with the zh-TW title and
-description, the other locales' ``localizations``, the tags, the category and the disclosure
-answer, plus the caption files and the thumbnail. The owner may rewrite the zh-TW title and
-description on the card before sending (YouTube's Required Minimum Functionality asks that the
+(docs/videos/HANDS-OFF.md §上傳包與「可以上架」): ``metadata.json`` with the title and
+description in the narration language (``default_language``, zh-TW when absent), the other
+locales' ``localizations``, the tags, the category and the disclosure answer, plus the caption
+files and the thumbnail. The owner may rewrite that title and description on the card before
+sending (YouTube's Required Minimum Functionality asks that the
 uploader can set them), and chooses the visibility and the time.
 """
 
@@ -14,7 +15,12 @@ import copy
 from datetime import UTC, datetime
 from typing import Any, cast
 
+from app.video_reviews.schemas import DUB_LOCALES
+
+# The narration language of a package that names none: every video made before the dubs.
 DEFAULT_LANGUAGE = "zh-TW"
+# What a package may be narrated in: the languages the site makes videos in.
+NARRATION_LANGUAGES: tuple[str, ...] = (DEFAULT_LANGUAGE, *DUB_LOCALES)
 # snippet.title: 100 characters; snippet.description: 5000 bytes; neither may hold < or >.
 TITLE_MAX_CHARS = 100
 DESCRIPTION_MAX_BYTES = 5000
@@ -82,14 +88,33 @@ def _category(metadata: dict[str, Any], current: str | None = None) -> str:
     return current or DEFAULT_CATEGORY
 
 
+def narration_language(metadata: dict[str, Any]) -> str:
+    """The language the approved package is narrated in: the video's default and audio language.
+
+    ``default_language`` is in metadata.json, which the approval binds by its SHA-256, and a
+    language batch cannot change it; the owner's request never carries one. A package without
+    it is zh-TW, as every video was before the dubs. Any other value is refused rather than sent
+    to YouTube under a language the site does not make.
+    """
+    value = metadata.get("default_language")
+    if value is None:
+        return DEFAULT_LANGUAGE
+    if not isinstance(value, str) or value not in NARRATION_LANGUAGES:
+        raise ValueError(f"unsupported narration language: {value!r}")
+    return value
+
+
 def localizations(metadata: dict[str, Any]) -> dict[str, dict[str, str]]:
-    """The package's other locales, {locale: {title, description}}; the default is the snippet."""
+    """The package's other locales, {locale: {title, description}}; the narration language is
+    the snippet itself, so its own copy is left out (a zh-TW copy stays for English narration).
+    """
+    own = narration_language(metadata)
     found = metadata.get("localizations")
     result: dict[str, dict[str, str]] = {}
     if not isinstance(found, dict):
         return result
     for locale, values in found.items():
-        if locale == DEFAULT_LANGUAGE or not isinstance(values, dict):
+        if locale == own or not isinstance(values, dict):
             continue
         title, description = values.get("title"), values.get("description")
         if isinstance(title, str) and title.strip() and isinstance(description, str):
@@ -103,6 +128,7 @@ def insert_body(metadata: dict[str, Any], title: str, description: str) -> dict[
     The details step right after the upload sends the whole of it again with the time and the
     localizations, so what the upload itself carries only has to be valid and private.
     """
+    language = narration_language(metadata)
     status: dict[str, Any] = {
         "privacyStatus": "private",
         "selfDeclaredMadeForKids": bool(metadata.get("made_for_kids", False)),
@@ -116,8 +142,8 @@ def insert_body(metadata: dict[str, Any], title: str, description: str) -> dict[
             "description": description,
             "tags": _tags(metadata),
             "categoryId": _category(metadata),
-            "defaultLanguage": DEFAULT_LANGUAGE,
-            "defaultAudioLanguage": DEFAULT_LANGUAGE,
+            "defaultLanguage": language,
+            "defaultAudioLanguage": language,
         },
         "status": status,
     }
@@ -139,6 +165,7 @@ def update_body(
     replaced. ``visibility`` is "scheduled" (private until ``publish_at``, when YouTube makes it
     public), "unlisted" or "private"; the site never sets public itself.
     """
+    language = narration_language(metadata)
     snippet_now = as_dict(current.get("snippet"))
     status_now = as_dict(current.get("status"))
     snippet = {key: copy.deepcopy(snippet_now[key]) for key in SNIPPET_FIELDS if key in snippet_now}
@@ -147,9 +174,9 @@ def update_body(
         description=description,
         tags=_tags(metadata),
         categoryId=_category(metadata, snippet_now.get("categoryId")),
-        defaultLanguage=DEFAULT_LANGUAGE,
-        # Every video is narrated in Traditional Chinese (the dubs are separate audio tracks).
-        defaultAudioLanguage=DEFAULT_LANGUAGE,
+        defaultLanguage=language,
+        # The approved narration language (the dubs are separate audio tracks).
+        defaultAudioLanguage=language,
     )
     status = {key: status_now[key] for key in STATUS_FIELDS if key in status_now}
     status["selfDeclaredMadeForKids"] = bool(metadata.get("made_for_kids", False))
@@ -167,7 +194,7 @@ def update_body(
     existing = current.get("localizations")
     merged: dict[str, Any] = copy.deepcopy(existing) if isinstance(existing, dict) else {}
     # A copy of the default language would go stale beside the snippet it duplicates.
-    merged.pop(DEFAULT_LANGUAGE, None)
+    merged.pop(language, None)
     merged.update(localizations(metadata))
     return {"id": current.get("id"), "snippet": snippet, "status": status, "localizations": merged}
 

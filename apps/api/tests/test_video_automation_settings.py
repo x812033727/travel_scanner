@@ -225,6 +225,9 @@ async def test_a_sheet_is_picked_only_with_the_switch_on() -> None:
     "changes",
     [
         {"target_minutes_min": 13, "target_minutes_max": 12},
+        # Every episode but a drama's runs at least eight minutes (migration 0117).
+        {"target_minutes_min": 7},
+        {"target_minutes_min": 3, "target_minutes_max": 5},
         {"topic_from_site": False, "topic_from_search": False},
         {"caption_locales": ["en", "en"]},
         {"caption_locales": ["zh-TW"]},

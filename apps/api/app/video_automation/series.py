@@ -59,6 +59,8 @@ from app.video_automation.models import (
 )
 from app.video_automation.requests import request_view
 from app.video_automation.schemas import (
+    EPISODE_MIN_MINUTES,
+    EXPLAINER_MAX_MINUTES,
     EXPLAINER_PRESET,
     ONE_OFF_EPISODES,
     SERIES_MAX_MINUTES,
@@ -85,6 +87,7 @@ from app.video_automation.schemas import (
     SeriesWithdrawnOut,
     StoryHold,
     StoryQuotaOut,
+    episode_minutes_problem,
 )
 from app.video_media.catalog import JUDGE_USD_PER_CALL, find_model
 from app.video_media.meter import spend_by_slug
@@ -462,6 +465,31 @@ def episode_document_problem(
     return None
 
 
+def shot_looks_problem(character: dict[str, Any]) -> str | None:
+    """Named shot appearances keep a character's identity/voice; mirror core/drama.mjs."""
+    if "shot_looks" not in character:
+        return None
+    looks = character["shot_looks"]
+    if not isinstance(looks, list) or len(looks) > 20:
+        return "shot_looks must be a list of at most 20 named appearances"
+    seen: set[str] = set()
+    for look in looks:
+        if (
+            not isinstance(look, dict)
+            or set(look) != {"id", "appearance"}
+            or not isinstance(look["id"], str)
+            or re.fullmatch(r"[a-z][a-z0-9-]{1,23}", look["id"]) is None
+            or not isinstance(look["appearance"], str)
+            or not look["appearance"].strip()
+            or len(look["appearance"]) > 800
+        ):
+            return "each shot look needs only id and appearance (1-800 characters)"
+        if look["id"] in seen:
+            return f"duplicate shot look {look['id']}"
+        seen.add(look["id"])
+    return None
+
+
 def doc_problem(series: VideoDramaSeries, payload: SeriesDocSubmitIn) -> str | None:
     """Why a document the worker sends cannot be filed, in the worker's words; None when it can.
 
@@ -492,6 +520,9 @@ def doc_problem(series: VideoDramaSeries, payload: SeriesDocSubmitIn) -> str | N
                 for key in ("id", "name", "appearance")
             ):
                 return "every character needs an id, a name and an appearance"
+            look_problem = shot_looks_problem(character)
+            if look_problem:
+                return f"character {character['id']}: {look_problem}"
             looks = _looks_problem(series, character)
             if looks:
                 return looks
@@ -1362,7 +1393,21 @@ def patch_problem(
             return SeriesRefused(
                 422, "video_series_story_only", "每日支數與共用畫風只有品牌故事作品才有"
             )
-        if (changes.get("target_minutes") or 0) > SERIES_MAX_MINUTES:
+        # An explainer's length is held to EPISODE_MIN_MINUTES..EXPLAINER_MAX_MINUTES when the
+        # owner names one; a one-off moving into the preset is raised to the floor in
+        # patch_series instead of refused.
+        if changes.get("target_minutes") is not None:
+            preset = changes.get("style_preset") or series.style_preset
+            minutes = changes["target_minutes"]
+            if preset == EXPLAINER_PRESET and episode_minutes_problem(preset, minutes):
+                return SeriesRefused(
+                    422,
+                    "video_series_explainer_length",
+                    f"原來如此事務所一集 {EPISODE_MIN_MINUTES} 到 {EXPLAINER_MAX_MINUTES} 分鐘",
+                )
+        if (changes.get("target_minutes") or 0) > SERIES_MAX_MINUTES and (
+            changes.get("style_preset") or series.style_preset
+        ) != EXPLAINER_PRESET:
             return SeriesRefused(
                 422, "video_series_too_long", f"漫劇一集最長 {SERIES_MAX_MINUTES} 分鐘"
             )
@@ -1410,6 +1455,13 @@ async def patch_series(
         raise SeriesRefused(409, "video_series_tier_fixed", "已經有集數開始做，畫面等級不能再改")
     for key, value in changes.items():
         setattr(series, key, value)
+    # Every episode but a drama's runs at least eight minutes (schemas.EPISODE_MIN_MINUTES).
+    # Every episode but a drama's runs at least eight minutes (schemas.EPISODE_MIN_MINUTES), and
+    # a drama's at most SERIES_MAX_MINUTES: a one-off crossing the explainer line keeps to its side.
+    if series.style_preset == EXPLAINER_PRESET:
+        series.target_minutes = max(series.target_minutes, EPISODE_MIN_MINUTES)
+    elif not is_story(series):
+        series.target_minutes = min(series.target_minutes, SERIES_MAX_MINUTES)
     series.updated_at = _now()
     # A story series' episodes are its imported stories, so its count changes no rows.
     if "planned_episodes" in changes and episodes and not is_story(series):

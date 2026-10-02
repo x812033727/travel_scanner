@@ -26,7 +26,14 @@ TopicWord = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1
 # The owner's standing instructions for one stage: the settings tab's text, which the worker
 # appends to that stage's prompt. Which prompt a stage gets depends on the video's format.
 StandingText = Annotated[str, StringConstraints(strip_whitespace=True, max_length=4000)]
-PromptFormat = Literal["slides", "drama"]
+PromptFormat = Literal["slides", "drama", "shorts"]
+# What /video/automation/run takes: the writing stages, plus the model an experiment Short
+# tests (docs/videos/SHORTS.md §端點). ``subject`` is not one of ``Stage``: its model comes
+# from the Shorts settings, never from the tutorials' or the drama's stage models.
+RunStage = Literal[
+    "planner", "writer", "verifier", "listener", "translator", "caption_reviewer", "subject"
+]
+SUBJECT_VARIANTS = ("a", "b")
 # The drama format's media settings (docs/videos/DRAMA.md); the vendors are the site's keys.
 MediaProvider = Literal["gemini", "minimax"]
 ClipResolution = Literal["720p", "768p", "1080p", "2k", "4k"]
@@ -34,6 +41,11 @@ StylePreset = Literal["cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", 
 # The illustrated explainer (docs/videos/so-thats-why/): narrator only, no cast. Only a one-off
 # may use it; a long series and a story series are written from prompts that need a cast.
 EXPLAINER_PRESET: StylePreset = "flat-explainer"
+# The owner's rule (2026-10-01): every episode runs at least eight minutes, except a drama's. The
+# slides route's settings start at it (migration 0117); the explainer is held to it as well and
+# may run to twelve. The tools' floor is MIN_EPISODE_MINUTES in tools/video/core/schema.mjs.
+EPISODE_MIN_MINUTES = 8
+EXPLAINER_MAX_MINUTES = 12
 DramaAspect = Literal["16:9", "9:16"]
 MediaKindName = Literal["image", "clip", "music"]
 
@@ -160,8 +172,8 @@ class _SettingsFields(StrictModel):
     topic_from_site: bool
     topic_from_search: bool
     voice: VoiceSettings
-    target_minutes_min: int = Field(ge=3, le=30)
-    target_minutes_max: int = Field(ge=3, le=30)
+    target_minutes_min: int = Field(ge=EPISODE_MIN_MINUTES, le=30)
+    target_minutes_max: int = Field(ge=EPISODE_MIN_MINUTES, le=30)
     caption_locales: list[CaptionLocale] = Field(max_length=4)
     max_drafts_per_month: int = Field(ge=0, le=60)
     monthly_token_budget_millions: int = Field(ge=1, le=500)
@@ -395,7 +407,9 @@ class DramaRequestIn(StrictModel):
     title: str | None = Field(default=None, min_length=1, max_length=200)
     source_guide: str | None = Field(default=None, pattern=GUIDE_SLUG_PATTERN)
     style_preset: StylePreset = "cinematic-3d"
-    target_minutes: int = Field(default=3, ge=1, le=8)
+    # A drama episode runs 1 to SERIES_MAX_MINUTES; an explainer EPISODE_MIN_MINUTES to
+    # EXPLAINER_MAX_MINUTES, and starts at the minimum when the request names no length.
+    target_minutes: int = Field(default=3, ge=1, le=EXPLAINER_MAX_MINUTES)
     note: str | None = Field(default=None, min_length=1, max_length=2000)
 
     @field_validator("premise", "title", "note")
@@ -407,6 +421,15 @@ class DramaRequestIn(StrictModel):
         if not text:
             raise ValueError("must not be blank")
         return text
+
+    @model_validator(mode="after")
+    def _length(self) -> Self:
+        if self.style_preset == EXPLAINER_PRESET and "target_minutes" not in self.model_fields_set:
+            self.target_minutes = EPISODE_MIN_MINUTES
+        problem = episode_minutes_problem(self.style_preset, self.target_minutes)
+        if problem:
+            raise ValueError(problem)
+        return self
 
 
 class DramaRequestStart(StrictModel):
@@ -443,7 +466,7 @@ class NextDramaRequestOut(BaseModel):
 
 
 class StageRunIn(StrictModel):
-    stage: Stage
+    stage: RunStage
     slug: str = Field(pattern=SLUG_PATTERN)
     # The stage's prompt (the skill's references/prompts/*.md with the video's context) and
     # its inputs. The model is not the caller's to choose: the stage's setting decides.
@@ -456,6 +479,20 @@ class StageRunIn(StrictModel):
     # A series document (setting, outline, chapter), an episode, a recap or a fix: kept under
     # its own heading, and not counted as one of the month's drafts (docs/videos/SERIES.md).
     variant: str | None = Field(default=None, pattern=r"^[a-z][a-z0-9_-]{0,31}$")
+
+    @model_validator(mode="after")
+    def _shorts_calls_name_their_variant(self) -> Self:
+        """A Short's calls always carry a variant (shorts-plan, shorts-lab… or the subject's
+        a and b), so none of them is counted as one of the month's tutorial drafts; the
+        experiment's subject runs only for a Short (docs/videos/SHORTS.md §端點)."""
+        if self.stage == "subject":
+            if self.format != "shorts":
+                raise ValueError("the subject stage runs only with format shorts")
+            if self.variant not in SUBJECT_VARIANTS:
+                raise ValueError("the subject stage takes variant a or b")
+        elif self.format == "shorts" and not self.variant:
+            raise ValueError("a Short's stage call names its variant, such as shorts-lab")
+        return self
 
 
 class StageRunOut(StrictModel):
@@ -471,7 +508,7 @@ class StageRunOut(StrictModel):
 class StagePromptView(StrictModel):
     """The instructions a stage was last sent for a format, as the worker composed them."""
 
-    stage: Stage
+    stage: RunStage
     format: PromptFormat
     variant: str = ""
     slug: str
@@ -510,6 +547,21 @@ SeriesKind = Literal["series", "one-off", "story"]
 # database allows the longer one for every kind (migration 0111); the schemas hold the rest to 8.
 SERIES_MAX_MINUTES = 8
 STORY_MAX_MINUTES = 20
+
+
+def episode_minutes_problem(style_preset: str | None, minutes: int) -> str | None:
+    """Why an episode of this preset may not run this long, or None; a story is checked apart."""
+    if style_preset == EXPLAINER_PRESET:
+        if not EPISODE_MIN_MINUTES <= minutes <= EXPLAINER_MAX_MINUTES:
+            return (
+                f"an explainer runs {EPISODE_MIN_MINUTES} to {EXPLAINER_MAX_MINUTES} minutes: "
+                "every episode but a drama's runs at least eight"
+            )
+    elif minutes > SERIES_MAX_MINUTES:
+        return f"an episode is at most {SERIES_MAX_MINUTES} minutes; only a story runs longer"
+    return None
+
+
 # How many stories may start on one Asia/Taipei calendar day, at most.
 STORY_MAX_PER_DAY = 12
 SeriesStatus = Literal["setting", "outline", "active", "paused", "finished"]
@@ -592,7 +644,8 @@ class SeriesIn(StrictModel):
     A ``story`` series (docs/videos/STORY.md) is always hands-off, stills only and never
     compiled, needs its title, premise and shared look, and may run to STORY_MAX_MINUTES; its
     episodes come from the backlog import, not from documents. The daily count and the look
-    belong to a story series only; every other kind stays at SERIES_MAX_MINUTES.
+    belong to a story series only; every other kind stays at SERIES_MAX_MINUTES, except the
+    explainer, which runs EPISODE_MIN_MINUTES to EXPLAINER_MAX_MINUTES (episode_minutes_problem).
     """
 
     slug: str | None = Field(default=None, pattern=SERIES_SLUG_PATTERN)
@@ -662,10 +715,14 @@ class SeriesIn(StrictModel):
             if self.look is None:
                 raise ValueError("a story series needs the look every story shares")
         else:
-            if self.target_minutes > SERIES_MAX_MINUTES:
-                raise ValueError(
-                    f"an episode is at most {SERIES_MAX_MINUTES} minutes; only a story runs longer"
-                )
+            if (
+                self.style_preset == EXPLAINER_PRESET
+                and "target_minutes" not in self.model_fields_set
+            ):
+                self.target_minutes = EPISODE_MIN_MINUTES
+            problem = episode_minutes_problem(self.style_preset, self.target_minutes)
+            if problem:
+                raise ValueError(problem)
             if self.episodes_per_day is not None or self.look is not None:
                 raise ValueError("only a story series has a daily count and a shared look")
         if self.kind == "one-off":

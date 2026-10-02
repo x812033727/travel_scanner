@@ -49,7 +49,9 @@ export function layoutScenes(timeline, manifest) {
       for (const file of transition) entries.push({ file, frames: 1 });
       if (frames - transition.length > 0) entries.push({ file: picture.still, frames: frames - transition.length });
     });
-    return { id: scene.id, frames: scene.end_frame - scene.start_frame, start_frame: scene.start_frame, entries };
+    // kind "stills" is what assemble samples by PSNR against the source PNGs; without it a plain
+    // slides video gets no frame checks at all.
+    return { id: scene.id, kind: "stills", frames: scene.end_frame - scene.start_frame, start_frame: scene.start_frame, entries };
   });
 }
 

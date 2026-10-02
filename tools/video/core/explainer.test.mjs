@@ -11,6 +11,9 @@ import { validateVideo } from "./schema.mjs";
 import { writeScreenplay } from "./screenplay.mjs";
 import { DRAMA_STEPS, pipelineStatus, stepsFor } from "./state.mjs";
 
+// The fixture videos run seconds; the eight-minute floor has tests of its own.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
+
 const paths = (errors) => errors.map((error) => error.path).sort();
 const context = (overrides = {}) => ({ lexicon: fixtureLexicon(), brief: explainerBrief(), others: [], translations: {}, ...overrides });
 

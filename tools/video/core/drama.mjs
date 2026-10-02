@@ -2,7 +2,7 @@
 //
 // A drama video.json adds a look (the style every image and clip shares), characters with their
 // own voices, "shot" scenes whose data is a prompt instead of slide fields, a speaker per line,
-// music and burned-in subtitles. Everything the format adds is validated here, so schema.mjs
+// music and optional legacy burned-in subtitles (new productions use CC). Everything the format adds is validated here, so schema.mjs
 // stays the slides validator plus one call. The hashes below decide what the media stages may
 // reuse: a look edit redraws the character sheets, keyframes and clips; a music edit never does.
 // It imports nothing from schema.mjs or timeline.mjs: they import it, and a cycle would leave one
@@ -88,8 +88,8 @@ export const DEFAULT_LOOK_CANDIDATES = 3;
 export const DEFAULT_MUSIC = { gain_db: -20, duck_db: -10, fade_in_ms: 1500, fade_out_ms: 3000 };
 
 const LOOK_KEYS = new Set(["preset", "style", "negative", "motion", "candidates", "style_frames"]);
-const CHARACTER_KEYS = new Set(["id", "name", "appearance", "voice", "sheet_prompt"]);
-const SHOT_KEYS = new Set(["prompt", "camera", "motion", "negative", "characters", "fit", "seed", "transition", "start_frame", "end_frame", "visual"]);
+const CHARACTER_KEYS = new Set(["id", "name", "appearance", "voice", "sheet_prompt", "shot_looks"]);
+const SHOT_KEYS = new Set(["prompt", "camera", "motion", "negative", "characters", "character_looks", "fit", "seed", "transition", "start_frame", "end_frame", "visual"]);
 const MUSIC_KEYS = new Set(["prompt", "track", "sha256", "gain_db", "duck_db", "fade_in_ms", "fade_out_ms"]);
 const SUBTITLE_KEYS = new Set(["burn_in", "style", "speaker_prefix"]);
 // Sound effects (docs/videos/ILLUSTRATED.md): a licensed set under <work base>/_sfx/<set>/, placed
@@ -113,6 +113,11 @@ export const isDrama = (doc) => doc?.format === DRAMA_FORMAT;
 export const isSeriesEpisode = (doc) => isDrama(doc) && isObject(doc.series);
 /** A drama drawn in the explainer preset: narrator only, every shot a still. */
 export const isExplainer = (doc) => isDrama(doc) && doc.look?.preset === EXPLAINER_PRESET;
+/**
+ * Whether the eight-minute floor (MIN_EPISODE_MINUTES) holds: slides, screencasts and the
+ * explainer, never a drama episode, a brand story or a compilation.
+ */
+export const needsMinimumLength = (doc) => (!isDrama(doc) || isExplainer(doc)) && !isObject(doc?.compilation);
 /** Whether a drama has characters: without any there are no sheets, so no look stage or gate. */
 export const hasCast = (doc) => isDrama(doc) && Array.isArray(doc.characters) && doc.characters.length > 0;
 export const isShot = (scene) => scene?.template === SHOT_TEMPLATE;
@@ -164,7 +169,39 @@ export function resolveLook(look) {
 
 export function resolveSubtitles(doc) {
   const own = doc?.subtitles ?? {};
-  return { burn_in: own.burn_in ?? isDrama(doc), style: own.style ?? "drama", speaker_prefix: own.speaker_prefix ?? false };
+  return { burn_in: own.burn_in ?? false, style: own.style ?? "drama", speaker_prefix: own.speaker_prefix ?? false };
+}
+
+/** Named visual variants share one approved face sheet and one voice. */
+export function shotLooksProblem(character) {
+  if (character?.shot_looks === undefined) return null;
+  const looks = character.shot_looks;
+  if (!Array.isArray(looks) || looks.length > 20) return "shot_looks must be a list of at most 20 named appearances";
+  const seen = new Set();
+  for (const look of looks) {
+    if (!isObject(look) || Object.keys(look).some((key) => !["id", "appearance"].includes(key)) || typeof look.id !== "string" || !CHARACTER_ID.test(look.id) || !isShortText(look.appearance, LIMITS.appearance)) return "each shot look needs only id (2-24 lowercase letters, digits or hyphens) and appearance (1-800 characters)";
+    if (seen.has(look.id)) return `duplicate shot look ${look.id}`;
+    seen.add(look.id);
+  }
+  return null;
+}
+
+/** The shot's appearance, with the original character identity and voice intact. */
+export function shotCast(doc, scene) {
+  const byId = new Map((Array.isArray(doc.characters) ? doc.characters : []).filter(isObject).map((character) => [character.id, character]));
+  return (Array.isArray(scene.data?.characters) ? scene.data.characters : []).map((id) => {
+    const character = byId.get(id);
+    if (!character) return null;
+    const chosen = scene.data?.character_looks?.[id];
+    const look = Array.isArray(character.shot_looks) ? character.shot_looks.find((item) => item?.id === chosen) : null;
+    return look ? { ...character, appearance: look.appearance, shot_look: look.id } : character;
+  }).filter(Boolean);
+}
+
+export function shotAppearancePrompt(characters) {
+  return characters.map((character) => character.shot_look
+    ? `${character.name}: keep the same facial identity and recognizable bone structure as the approved reference sheet; use look ${character.shot_look} for clothing, hair and age instead of the sheet's styling: ${character.appearance}`
+    : `${character.name}: ${character.appearance}`).join("; ");
 }
 
 export function resolveMusic(doc) {
@@ -215,6 +252,8 @@ function validateCharacters(characters, errors, validateVoice) {
       return;
     }
     unknownKeys(character, CHARACTER_KEYS, where, errors);
+    const looksProblem = shotLooksProblem(character);
+    if (looksProblem) errors.push({ path: `${where}.shot_looks`, message: looksProblem });
     if (typeof character.id !== "string" || !CHARACTER_ID.test(character.id) || character.id === NARRATOR) {
       errors.push({ path: `${where}.id`, message: `must be 2-24 lowercase letters, digits or hyphens, and not "${NARRATOR}"` });
     } else if (ids.has(character.id)) {
@@ -357,6 +396,16 @@ export function validateDrama(doc, errors, validateVoice) {
     if (shot) {
       shots += 1;
       validateShotData(scene.data, `${where}.data`, characterIds, earlierShots, errors);
+      if (isObject(scene.data) && scene.data.character_looks !== undefined) {
+        const selected = scene.data.character_looks;
+        if (!drama || !isObject(selected)) errors.push({ path: `${where}.data.character_looks`, message: "must map a drama shot's character ids to their named shot_looks" });
+        else for (const [id, lookId] of Object.entries(selected)) {
+          const character = (doc.characters ?? []).find((item) => item?.id === id);
+          if (!Array.isArray(scene.data.characters) || !scene.data.characters.includes(id) || !Array.isArray(character?.shot_looks) || !character.shot_looks.some((look) => look?.id === lookId)) {
+            errors.push({ path: `${where}.data.character_looks.${id}`, message: "must name a shot_look of a character present in this shot" });
+          }
+        }
+      }
       if (explainer && isObject(scene.data) && shotVisual(scene) !== "still") {
         errors.push({ path: `${where}.data.visual`, message: `an explainer's shots are all "still": its keyframe under a camera move, no clip` });
       }
