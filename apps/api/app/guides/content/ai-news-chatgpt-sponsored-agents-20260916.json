@@ -13,8 +13,8 @@
   "display_order": 161,
   "locales": {
     "zh-TW": {
-      "title": "ChatGPT 廣告新增 Sponsored Agents：美國測試中，台灣未列入開放名單",
-      "description": "2026 年 9 月 16 日，OpenAI 公布 ChatGPT 廣告新增 Sponsored Agents，使用者點開廣告後可以選擇進入由廣告主代理人回應的獨立對話，同日並公布 Ads Manager 的 AI 工具。本文依官方公告與說明頁，於 9 月 18 日查核這項功能只在美國與特定廣告主之間測試、廣告測試只對 Free 與 Go 方案的登入成年使用者顯示，且官方市場清單還沒有列入台灣。",
+      "title": "ChatGPT 廣告新增 Sponsored Agents：美國測試中，只限特定廣告主",
+      "description": "2026 年 9 月 16 日，OpenAI 公布 ChatGPT 廣告新增 Sponsored Agents，使用者點開廣告後可以選擇進入由廣告主代理人回應的獨立對話，同日並公布 Ads Manager 的 AI 工具。依官方公告與說明頁，9 月 18 日時此功能只和美國特定廣告主測試，廣告只給 Free 與 Go 方案的登入成年使用者；OpenAI 於 9 月 23 日宣布廣告在台灣開始推出。",
       "hero": {
         "src": "/guides/ai-news-chatgpt-sponsored-agents-20260916/hero.jpg",
         "alt": "原創插圖：左邊一個對話框圖示，框內疊著一個較小的對話框，代表另外開啟的贊助對話；一條虛線把兩個對話框隔開，右邊是一個由大到小排列的三層漏斗形狀，代表方案與地區篩選誰看得到廣告",
@@ -39,7 +39,7 @@
           "type": "summary",
           "items": [
             "OpenAI 公布 ChatGPT 廣告新增 Sponsored Agents：使用者點開一則廣告後，可以選擇進入一段由廣告主的代理人回應、和原本對話分開的獨立對話。",
-            "官方寫明這項功能目前只和美國的特定廣告主一起測試，沒有交代測試什麼時候結束；官方公布的市場清單上也還沒有台灣。",
+            "官方寫明這項功能目前只和美國的特定廣告主一起測試，沒有交代測試什麼時候結束；9 月 18 日查核時官方市場清單上還沒有台灣，OpenAI 之後在 9 月 23 日宣布 ChatGPT 廣告開始在台灣逐步推出，那則公告沒有提到 Sponsored Agents。",
             "官方說明頁針對這次廣告測試寫的是：廣告只對登入的成年使用者、而且方案是 Free 或 Go 的人顯示，Plus、Pro、Business、Enterprise 與 Education 方案不會有廣告。",
             "同一天公布的還有可以用提示詞操作的 Ads Manager、會自動改寫並翻譯廣告文字的客製化功能，以及和 HubSpot、Shopify 的整合。"
           ]
@@ -144,8 +144,23 @@
           "text": "同一頁疊了好幾次更新，最新一次寫在最上面，日期是 2026 年 8 月 11 日：ChatGPT 廣告已經開放到英國、墨西哥、巴西、日本與南韓；再往前一次是 5 月 7 日，寫的是接下來幾週「計畫」把廣告試辦擴大到同樣這五個市場；更前面的 3 月 26 日寫的是接下來幾週要先在加拿大、澳洲與紐西蘭試辦；最早的版本是 2026 年 2 月 9 日，從美國開始測試。這些日期疊起來看，開放的地區是一次次加上去的，不是一開始就全部打開。"
         },
         {
-          "type": "paragraph",
-          "text": "本文查核的三個頁面，從頭到尾沒有提到台灣，也沒有出現任何排除清單。以查核到 2026 年 9 月 18 日的內容來說，台灣不在官方列出的開放市場裡，但這不等於官方說不會開放——頁面自己寫的是會繼續擴大到更多市場。這份市場清單會持續更新，不是定案的名單；想知道現在的狀態，最可靠的做法是直接看官方這一頁當下寫的更新日期。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本文查核的三個頁面，從頭到尾沒有提到台灣，也沒有出現任何排除清單。以查核到 2026 年 9 月 18 日的內容來說，台灣不在官方列出的開放市場裡，但這不等於官方說不會開放——頁面自己寫的是會繼續擴大到更多市場。10 月 3 日更新：OpenAI 已在 9 月 23 日宣布廣告在台灣逐步推出，見"
+            },
+            {
+              "type": "article",
+              "text": "這則新聞",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-ads-taiwan-20260923"
+            },
+            {
+              "type": "text",
+              "text": "；那則公告沒有提到 Sponsored Agents。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -203,7 +218,7 @@
             },
             {
               "question": "台灣看得到這些廣告嗎？",
-              "answer": "本文查核的三個官方頁面都沒有提到台灣，也沒有把台灣列進已經開放的市場。截至 2026 年 9 月 18 日讀到的內容，這一頁最新一次更新（2026 年 8 月 11 日）寫的是廣告「已經開放」到英國、墨西哥、巴西、日本與南韓，而測試最早是 2 月 9 日從美國開始；至於加拿大、澳洲與紐西蘭，官方寫的是 3 月 26 日更新裡「接下來幾週」要去試辦的計畫，後續更新沒有再回頭確認結果，所以不能和已經開放的市場算成同一份清單。官方同時寫明會繼續擴大到更多市場，因此「不在清單上」只能寫成目前還沒被列入，不能寫成官方說不會開放。"
+              "answer": "本文查核的三個官方頁面都沒有提到台灣，也沒有把台灣列進已經開放的市場。截至 2026 年 9 月 18 日讀到的內容，這一頁最新一次更新（2026 年 8 月 11 日）寫的是廣告「已經開放」到英國、墨西哥、巴西、日本與南韓，而測試最早是 2 月 9 日從美國開始；至於加拿大、澳洲與紐西蘭，官方寫的是 3 月 26 日更新裡「接下來幾週」要去試辦的計畫，後續更新沒有再回頭確認結果，所以不能和已經開放的市場算成同一份清單。官方同時寫明會繼續擴大到更多市場，因此「不在清單上」只能寫成目前還沒被列入，不能寫成官方說不會開放。2026 年 10 月 3 日更新：OpenAI 已在 2026 年 9 月 23 日宣布 ChatGPT 廣告開始在台灣逐步推出，Free 與 Go 方案的使用者可能陸續看到廣告；那則公告沒有提到 Sponsored Agents。"
             },
             {
               "question": "什麼樣的訂閱方案會看到廣告？",
@@ -227,7 +242,7 @@
           "type": "callout",
           "tone": "info",
           "title": "查核範圍與這篇文章的界線",
-          "text": "本文查核日期是 2026 年 9 月 18 日，依據是 OpenAI 2026 年 9 月 16 日的公告原文、廣告測試現況說明頁，以及廣告主介紹頁。文中關於 Sponsored Agents、AI 文字客製化與市場範圍的敘述，都是 OpenAI 自己的說法，本站沒有登入 ChatGPT 廣告後台，沒有點開過贊助對話，也沒有建立或購買過廣告；本文不提供採購或投放建議。廣告測試說明頁是一頁會持續疊加更新的頁面，上面的市場清單，以及廣告主介紹頁列出的品牌名稱，都會隨頁面更新而改變，想確認當下狀態，請直接查 openai.com 官方頁面；ChatGPT 廣告怎麼買、帳戶架構與出價方式，請見文末連結的另一篇文章。"
+          "text": "本文查核日期是 2026 年 9 月 18 日，依據是 OpenAI 2026 年 9 月 16 日的公告原文、廣告測試現況說明頁，以及廣告主介紹頁。文中關於 Sponsored Agents、AI 文字客製化與市場範圍的敘述，都是 OpenAI 自己的說法，本站沒有登入 ChatGPT 廣告後台，沒有點開過贊助對話，也沒有建立或購買過廣告；本文不提供採購或投放建議。廣告測試說明頁是一頁會持續疊加更新的頁面，上面的市場清單，以及廣告主介紹頁列出的品牌名稱，都會隨頁面更新而改變，想確認當下狀態，請直接查 openai.com 官方頁面；ChatGPT 廣告怎麼買、帳戶架構與出價方式，請見文末連結的另一篇文章。台灣狀態的段落、摘要與問答已在 2026 年 10 月 3 日補上更新，其餘內容仍是 9 月 18 日的查核。"
         },
         {
           "type": "rich_paragraph",
@@ -271,8 +286,8 @@
       ]
     },
     "en": {
-      "title": "ChatGPT Ads Add Sponsored Agents: Testing in the US, Taiwan Not on the Rollout List",
-      "description": "On September 16, 2026, OpenAI announced Sponsored Agents for ChatGPT ads: after opening an ad, a user can choose a separate conversation with the advertiser's own agent; the same day it also announced new Ads Manager AI tools. Checked September 18 against the announcement and OpenAI's ads pages: the feature is tested only in the US with select advertisers, the ad test shows only to logged-in adult users on Free and Go, and Taiwan is not yet on OpenAI's market list.",
+      "title": "ChatGPT Ads Add Sponsored Agents: Testing in the US with Select Advertisers Only",
+      "description": "On September 16, 2026, OpenAI announced Sponsored Agents for ChatGPT ads: after opening an ad, a user can choose a separate conversation with the advertiser's own agent; the same day it also announced new Ads Manager AI tools. Checked September 18 against the announcement and OpenAI's ads pages: the feature is tested only in the US with select advertisers, the ad test shows only to logged-in adult users on Free and Go; on September 23 OpenAI announced ads beginning to roll out in Taiwan.",
       "hero": {
         "src": "/guides/ai-news-chatgpt-sponsored-agents-20260916/hero-en.jpg",
         "alt": "Speech-bubble icon with a smaller bubble inside for a separate Sponsored Agent chat, split by a dashed line; at right, a three-tier funnel for plan and region filtering who sees ads.",
@@ -297,7 +312,7 @@
           "type": "summary",
           "items": [
             "OpenAI announced Sponsored Agents for ChatGPT ads: after opening an ad, a user can choose to enter a separate conversation, answered by the advertiser's own agent, that is kept apart from their original conversation.",
-            "OpenAI states this feature is currently being tested only with select advertisers in the United States, without saying when the test will end; Taiwan is also not yet on OpenAI's published market list.",
+            "OpenAI states this feature is currently being tested only with select advertisers in the United States, without saying when the test will end; Taiwan was not on that list on September 18, but on September 23 OpenAI announced ChatGPT ads rolling out in Taiwan, without mentioning Sponsored Agents.",
             "For this ad test, OpenAI's page states that ads are shown only to logged-in adult users on the Free or Go plans; the Plus, Pro, Business, Enterprise, and Education plans have no ads.",
             "Announced the same day were a prompt-driven Ads Manager, a customization feature that automatically rewrites and translates ad copy, and integrations with HubSpot and Shopify."
           ]
@@ -402,8 +417,23 @@
           "text": "The same page stacks several updates, with the newest at the top, dated August 11, 2026: ChatGPT ads have now launched in the United Kingdom, Mexico, Brazil, Japan, and South Korea. Before that, an update from May 7 says that in the coming weeks OpenAI 'plans' to expand the ads pilot to those same five markets. Earlier still, the March 26 update says that in the coming weeks it would begin with pilots in Canada, Australia, and New Zealand; the earliest version, from February 9, 2026, is where the US test began. Stacked together, these dates show the covered regions being added one at a time, not opened all at once from the start."
         },
         {
-          "type": "paragraph",
-          "text": "None of the three pages checked for this article mentions Taiwan anywhere, and none carries an exclusion list either. Based on what was there as of the September 18, 2026 check, Taiwan is not among the markets OpenAI lists as open — but that is not the same as OpenAI saying it won't open there; the page itself says it is continuing to expand to more markets. This market list keeps getting updated and is not a finalized roster; the most reliable way to check the current state is to look at the update date OpenAI's own page carries at the time you read it."
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "None of the three pages checked for this article mentions Taiwan anywhere, and none carries an exclusion list either. Based on what was there as of the September 18, 2026 check, Taiwan is not among the markets OpenAI lists as open — but that is not the same as OpenAI saying it won't open there; the page itself says it is continuing to expand to more markets. Update, October 3: on September 23 OpenAI announced that ads were beginning to roll out gradually in Taiwan (see "
+            },
+            {
+              "type": "article",
+              "text": "this report",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-ads-taiwan-20260923"
+            },
+            {
+              "type": "text",
+              "text": "); that announcement does not mention Sponsored Agents."
+            }
+          ]
         },
         {
           "type": "image",
@@ -461,7 +491,7 @@
             },
             {
               "question": "Can people in Taiwan see these ads?",
-              "answer": "None of the three official pages checked for this article mentions Taiwan, and none lists Taiwan among the markets already opened. As read on September 18, 2026, this page's newest update (August 11, 2026) says ads have 'now launched' in the United Kingdom, Mexico, Brazil, Japan, and South Korea, and the test itself first began in the US on February 9. Canada, Australia, and New Zealand appear only in the March 26 update, described as pilots planned for 'the coming weeks'; no later update confirms an outcome for them, so they cannot be counted as part of the same list as the already-launched markets. OpenAI also states it will continue expanding to more markets, so 'not on the list' can only be written as not yet included — not as OpenAI saying it won't open there."
+              "answer": "None of the three official pages checked for this article mentions Taiwan, and none lists Taiwan among the markets already opened. As read on September 18, 2026, this page's newest update (August 11, 2026) says ads have 'now launched' in the United Kingdom, Mexico, Brazil, Japan, and South Korea, and the test itself first began in the US on February 9. Canada, Australia, and New Zealand appear only in the March 26 update, described as pilots planned for 'the coming weeks'; no later update confirms an outcome for them, so they cannot be counted as part of the same list as the already-launched markets. OpenAI also states it will continue expanding to more markets, so 'not on the list' can only be written as not yet included — not as OpenAI saying it won't open there. Update, October 3, 2026: on September 23, 2026, OpenAI announced that ChatGPT ads were beginning to roll out in Taiwan, where Free and Go users may gradually see ads; that announcement does not mention Sponsored Agents."
             },
             {
               "question": "Which subscription plans see ads?",
@@ -485,7 +515,7 @@
           "type": "callout",
           "tone": "info",
           "title": "The Scope and Limits of This Fact-Check",
-          "text": "This article was fact-checked on September 18, 2026, based on the original text of OpenAI's September 16, 2026 announcement, its ads-test status page, and its advertiser introduction page. Everything here about Sponsored Agents, AI text customization, and market coverage is OpenAI's own description; this site has never logged into the ChatGPT ads dashboard, never opened a Sponsored Agent conversation, and never created or bought an ad, so this article offers no purchasing or ad-placement advice. The ads-test status page keeps stacking new updates, and the market list on it, along with the brand names listed on the advertiser page, will change as those pages are updated; to confirm the current state, check openai.com's own pages directly. For how ChatGPT ads are bought, the account structure, and bidding, see the linked article at the end of this piece."
+          "text": "This article was fact-checked on September 18, 2026, based on the original text of OpenAI's September 16, 2026 announcement, its ads-test status page, and its advertiser introduction page. Everything here about Sponsored Agents, AI text customization, and market coverage is OpenAI's own description; this site has never logged into the ChatGPT ads dashboard, never opened a Sponsored Agent conversation, and never created or bought an ad, so this article offers no purchasing or ad-placement advice. The ads-test status page keeps stacking new updates, and the market list on it, along with the brand names listed on the advertiser page, will change as those pages are updated; to confirm the current state, check openai.com's own pages directly. For how ChatGPT ads are bought, the account structure, and bidding, see the linked article at the end of this piece. The Taiwan passages, summary and FAQ answer were updated on October 3, 2026; everything else still reflects the September 18 check."
         },
         {
           "type": "rich_paragraph",
@@ -529,8 +559,8 @@
       ]
     },
     "ja": {
-      "title": "ChatGPT広告にSponsored Agentsが追加：米国でテスト中、台湾は公式の市場リストに未掲載",
-      "description": "2026年9月16日、OpenAIはChatGPT広告にSponsored Agentsを追加すると発表しました。ユーザーは広告を開くと、広告主のエージェントが応答する別の会話に入るかどうかを選べます。同日、Ads ManagerのAIツールも発表されました。本記事は公式発表と説明ページに基づき、9月18日時点でこの機能が米国の特定の広告主とのみテスト中であること、この広告テストがFreeまたはGoプランのログイン済み成人ユーザーにのみ表示されること、そして台湾が公式の市場リストにまだ含まれていないことを確認しました。",
+      "title": "ChatGPT広告にSponsored Agentsが追加：米国で特定の広告主とテスト中",
+      "description": "2026年9月16日、OpenAIはChatGPT広告にSponsored Agentsを追加すると発表しました。ユーザーは広告を開くと、広告主のエージェントが応答する別の会話に入るかどうかを選べます。同日、Ads ManagerのAIツールも発表されました。本記事は公式発表と説明ページに基づき、9月18日時点でこの機能が米国の特定の広告主とのみテスト中であること、この広告テストがFreeまたはGoプランのログイン済み成人ユーザーにのみ表示されることを確認しました。台湾では、OpenAIが9月23日に広告の順次展開を始めると発表しています。",
       "hero": {
         "src": "/guides/ai-news-chatgpt-sponsored-agents-20260916/hero-ja.jpg",
         "alt": "オリジナルイラスト：左側は吹き出しのアイコンで、その中に一回り小さな吹き出しが重なっており、別に開かれたスポンサー会話を表す。点線が2つの吹き出しを隔てている。右側は大きい順から小さい順に並んだ3段の漏斗の形で、プランと地域が誰に広告が表示されるかを絞り込むことを表す。",
@@ -555,7 +585,7 @@
           "type": "summary",
           "items": [
             "OpenAIはChatGPT広告にSponsored Agentsを追加すると発表しました。ユーザーは広告を開いた後、広告主自身のエージェントが応答する、元の会話とは別の会話に入るかどうかを選べます。",
-            "公式はこの機能について、現在は米国の特定の広告主とのみテストしていると明記しており、テストがいつ終わるかは記載がありません。台湾もまだ公式が公表する市場リストに含まれていません。",
+            "公式はこの機能について、現在は米国の特定の広告主とのみテストしていると明記しており、テストがいつ終わるかは記載がありません。9月18日の確認時点では台湾も公式の市場リストに含まれていませんでしたが、OpenAIは9月23日に台湾でChatGPT広告の順次展開を始めると発表しました（この発表はSponsored Agentsに触れていません）。",
             "公式説明ページはこの広告テストについて、ログイン済みの成人ユーザーで、プランがFreeまたはGoの人にのみ表示されるとしています。Plus、Pro、Business、Enterprise、Educationの各プランには広告は表示されません。",
             "同日にはプロンプトで操作できるAds Manager、広告文を自動的に書き換えて翻訳するAI text customization、そしてHubSpotとShopifyとの連携も発表されました。"
           ]
@@ -660,8 +690,23 @@
           "text": "同じページには複数回の更新が積み重なっており、最新のものが一番上に書かれています。日付は2026年8月11日で、ChatGPT広告はすでに英国、メキシコ、ブラジル、日本、韓国で開始されたとあります。その一つ前は5月7日の更新で、今後数週間でこの同じ5つの市場に広告の試験展開を拡大する「計画」だと書かれています。さらにその前の3月26日の更新では、今後数週間でまずカナダ、オーストラリア、ニュージーランドで試験展開を始めるとされています。最も古いバージョンは2026年2月9日で、米国でのテストが始まった時点です。これらの日付を重ねて見ると、対象地域は一度に全部開放されたのではなく、一つずつ追加されてきたことが分かります。"
         },
         {
-          "type": "paragraph",
-          "text": "本記事が確認した3つのページには、台湾についての記載は最初から最後まで一切なく、除外リストも見当たりません。2026年9月18日時点で確認した内容では、台湾は公式が挙げる開放市場には含まれていませんが、これは公式が「開放しない」と言っていることと同じではありません——ページ自体には、今後も市場を拡大し続けるとだけ書かれています。この市場リストは今後も更新され続けるものであり、確定した一覧ではありません。現在の状況を知りたい場合、最も確実な方法は、公式のこのページがその時点で示している更新日を直接確認することです。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本記事が確認した3つのページには、台湾についての記載は最初から最後まで一切なく、除外リストも見当たりません。2026年9月18日時点で確認した内容では、台湾は公式が挙げる開放市場には含まれていませんが、これは公式が「開放しない」と言っていることと同じではありません——ページ自体には、今後も市場を拡大し続けるとだけ書かれています。10月3日更新：OpenAIは9月23日、台湾で広告の順次展開を始めると発表しました（"
+            },
+            {
+              "type": "article",
+              "text": "こちらの記事",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-ads-taiwan-20260923"
+            },
+            {
+              "type": "text",
+              "text": "を参照）。この発表はSponsored Agentsに触れていません。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -719,7 +764,7 @@
             },
             {
               "question": "台湾でもこれらの広告は見られますか？",
-              "answer": "本記事が確認した3つの公式ページはいずれも台湾に触れておらず、台湾をすでに開放された市場として挙げてもいません。2026年9月18日時点で確認した内容では、このページの最新の更新（2026年8月11日）に、広告が英国、メキシコ、ブラジル、日本、韓国に「すでに開始された」と書かれており、テスト自体は2月9日に米国から始まりました。カナダ、オーストラリア、ニュージーランドについては、公式は3月26日の更新で「今後数週間」で試験展開を行う計画だと書いているだけで、その後の更新で結果が確認された記載はないため、すでに開放された市場と同じリストとして数えることはできません。公式は同時に、今後も市場を拡大し続けるとも書いているため、「リストに載っていない」というのは現時点でまだ含まれていないという意味にとどまり、公式が開放しないと言っているわけではありません。"
+              "answer": "本記事が確認した3つの公式ページはいずれも台湾に触れておらず、台湾をすでに開放された市場として挙げてもいません。2026年9月18日時点で確認した内容では、このページの最新の更新（2026年8月11日）に、広告が英国、メキシコ、ブラジル、日本、韓国に「すでに開始された」と書かれており、テスト自体は2月9日に米国から始まりました。カナダ、オーストラリア、ニュージーランドについては、公式は3月26日の更新で「今後数週間」で試験展開を行う計画だと書いているだけで、その後の更新で結果が確認された記載はないため、すでに開放された市場と同じリストとして数えることはできません。公式は同時に、今後も市場を拡大し続けるとも書いているため、「リストに載っていない」というのは現時点でまだ含まれていないという意味にとどまり、公式が開放しないと言っているわけではありません。2026年10月3日更新：OpenAIは2026年9月23日、台湾でChatGPT広告の順次展開を始めると発表しました。FreeとGoプランのユーザーには順次広告が表示される可能性があります。この発表はSponsored Agentsに触れていません。"
             },
             {
               "question": "どのようなプランで広告が表示されますか？",
@@ -743,7 +788,7 @@
           "type": "callout",
           "tone": "info",
           "title": "確認の範囲とこの記事の限界",
-          "text": "本記事の確認日は2026年9月18日で、根拠はOpenAIの2026年9月16日の発表原文、広告テストの現状を説明するページ、そして広告主向け紹介ページです。Sponsored Agents、AI text customization、市場範囲についての記述は、すべてOpenAI自身の説明であり、当サイトはChatGPT広告の管理画面にログインしたことも、スポンサー会話を開いたことも、広告を作成・購入したこともありません。本記事は広告の購入や出稿に関する助言は行いません。広告テストの説明ページは更新が繰り返し積み重なっていくページであり、そこに書かれている市場リストや、広告主向けページに挙げられているブランド名は、ページの更新に伴って変わっていきます。現時点の状況を確認したい場合は、openai.comの公式ページを直接ご確認ください。ChatGPT広告の購入方法、アカウント構造、入札方法については、記事末のリンク先の別記事をご覧ください。"
+          "text": "本記事の確認日は2026年9月18日で、根拠はOpenAIの2026年9月16日の発表原文、広告テストの現状を説明するページ、そして広告主向け紹介ページです。Sponsored Agents、AI text customization、市場範囲についての記述は、すべてOpenAI自身の説明であり、当サイトはChatGPT広告の管理画面にログインしたことも、スポンサー会話を開いたことも、広告を作成・購入したこともありません。本記事は広告の購入や出稿に関する助言は行いません。広告テストの説明ページは更新が繰り返し積み重なっていくページであり、そこに書かれている市場リストや、広告主向けページに挙げられているブランド名は、ページの更新に伴って変わっていきます。現時点の状況を確認したい場合は、openai.comの公式ページを直接ご確認ください。ChatGPT広告の購入方法、アカウント構造、入札方法については、記事末のリンク先の別記事をご覧ください。台湾に関する段落、要約、FAQは2026年10月3日に更新しました。それ以外の内容は9月18日の確認に基づいています。"
         },
         {
           "type": "rich_paragraph",
@@ -787,8 +832,8 @@
       ]
     },
     "ko": {
-      "title": "ChatGPT 광고에 Sponsored Agents 추가: 미국에서 테스트 중, 대만은 공식 시장 목록에 미포함",
-      "description": "2026년 9월 16일, OpenAI는 ChatGPT 광고에 Sponsored Agents를 추가한다고 발표했습니다. 사용자는 광고를 연 뒤 광고주의 에이전트가 응답하는 별도의 대화로 들어갈지 선택할 수 있습니다. 같은 날 Ads Manager의 AI 도구도 함께 발표되었습니다. 본 기사는 공식 발표문과 안내 페이지를 근거로, 9월 18일 기준 이 기능이 미국의 특정 광고주와만 테스트 중이라는 점, 이번 광고 테스트가 Free 또는 Go 요금제의 로그인한 성인 사용자에게만 표시된다는 점, 그리고 대만이 아직 공식 시장 목록에 포함되지 않았다는 점을 확인했습니다.",
+      "title": "ChatGPT 광고에 Sponsored Agents 추가: 미국에서 특정 광고주와 테스트 중",
+      "description": "2026년 9월 16일, OpenAI는 ChatGPT 광고에 Sponsored Agents를 추가한다고 발표했습니다. 사용자는 광고를 연 뒤 광고주의 에이전트가 응답하는 별도의 대화로 들어갈지 선택할 수 있습니다. 같은 날 Ads Manager의 AI 도구도 함께 발표되었습니다. 본 기사는 공식 발표문과 안내 페이지를 근거로, 9월 18일 기준 이 기능이 미국의 특정 광고주와만 테스트 중이라는 점, 이번 광고 테스트가 Free 또는 Go 요금제의 로그인한 성인 사용자에게만 표시된다는 점을 확인했습니다. 대만에서는 OpenAI가 9월 23일 광고를 단계적으로 도입하기 시작한다고 발표했습니다.",
       "hero": {
         "src": "/guides/ai-news-chatgpt-sponsored-agents-20260916/hero-ko.jpg",
         "alt": "오리지널 일러스트: 왼쪽은 말풍선 아이콘 안에 한층 작은 말풍선이 겹쳐 있어 따로 열린 스폰서 대화를 나타내며, 점선이 두 말풍선을 나누고 있다. 오른쪽은 크기가 큰 것에서 작은 것 순으로 배열된 3단 깔때기 모양으로, 요금제와 지역이 누가 광고를 보는지를 걸러낸다는 것을 나타낸다.",
@@ -813,7 +858,7 @@
           "type": "summary",
           "items": [
             "OpenAI는 ChatGPT 광고에 Sponsored Agents를 추가한다고 발표했습니다. 사용자는 광고를 연 뒤, 광고주 자신의 에이전트가 응답하며 원래 대화와는 분리된 별도의 대화로 들어갈지 선택할 수 있습니다.",
-            "OpenAI는 이 기능이 현재 미국의 특정 광고주와만 테스트되고 있다고 명시했으며, 테스트가 언제 끝나는지는 밝히지 않았습니다. 대만 역시 아직 OpenAI가 공개한 시장 목록에 포함되어 있지 않습니다.",
+            "OpenAI는 이 기능이 현재 미국의 특정 광고주와만 테스트되고 있다고 명시했으며, 테스트가 언제 끝나는지는 밝히지 않았습니다. 9월 18일 확인 당시 대만은 OpenAI가 공개한 시장 목록에 없었지만, OpenAI는 9월 23일 대만에서 ChatGPT 광고를 단계적으로 도입하기 시작한다고 발표했습니다(이 발표는 Sponsored Agents를 언급하지 않습니다).",
             "공식 설명 페이지는 이번 광고 테스트에 대해, 로그인한 성인 사용자이면서 요금제가 Free 또는 Go인 경우에만 광고가 표시된다고 밝혔습니다. Plus, Pro, Business, Enterprise, Education 요금제에는 광고가 표시되지 않습니다.",
             "같은 날 프롬프트로 조작할 수 있는 Ads Manager, 광고 문구를 자동으로 다시 쓰고 번역하는 AI text customization, 그리고 HubSpot·Shopify와의 연동도 함께 발표되었습니다."
           ]
@@ -918,8 +963,23 @@
           "text": "같은 페이지에는 여러 차례의 업데이트가 쌓여 있으며, 가장 최근 것이 맨 위에 적혀 있습니다. 날짜는 2026년 8월 11일로, ChatGPT 광고가 영국, 멕시코, 브라질, 일본, 한국에서 이미 시작되었다고 되어 있습니다. 그 바로 앞은 5월 7일 업데이트로, 앞으로 몇 주 안에 이 같은 다섯 개 시장으로 광고 시범 운영을 확대할 '계획'이라고 적혀 있습니다. 더 앞선 3월 26일 업데이트에는 앞으로 몇 주 안에 캐나다, 호주, 뉴질랜드에서 먼저 시범 운영을 시작한다고 되어 있습니다. 가장 오래된 버전은 2026년 2월 9일로, 미국에서 테스트가 시작된 시점입니다. 이 날짜들을 겹쳐 보면, 해당 지역이 한 번에 전부 열린 것이 아니라 하나씩 추가되어 왔음을 알 수 있습니다."
         },
         {
-          "type": "paragraph",
-          "text": "본 기사가 확인한 세 페이지에는 대만에 관한 언급이 처음부터 끝까지 전혀 없으며, 제외 목록도 나와 있지 않습니다. 2026년 9월 18일 기준으로 확인한 내용으로는, 대만은 OpenAI가 제시하는 개방된 시장에 포함되어 있지 않지만, 이는 OpenAI가 '열지 않겠다'고 말한 것과는 다릅니다——페이지 자체에는 앞으로도 시장을 계속 확대해 나가겠다고만 적혀 있습니다. 이 시장 목록은 앞으로도 계속 업데이트되는 것이며 확정된 목록이 아닙니다. 현재 상황을 알고 싶다면 가장 확실한 방법은 공식 페이지가 그 시점에 보여 주는 업데이트 날짜를 직접 확인하는 것입니다."
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "본 기사가 확인한 세 페이지에는 대만에 관한 언급이 처음부터 끝까지 전혀 없으며, 제외 목록도 나와 있지 않습니다. 2026년 9월 18일 기준으로 확인한 내용으로는, 대만은 OpenAI가 제시하는 개방된 시장에 포함되어 있지 않지만, 이는 OpenAI가 '열지 않겠다'고 말한 것과는 다릅니다——페이지 자체에는 앞으로도 시장을 계속 확대해 나가겠다고만 적혀 있습니다. 10월 3일 업데이트: OpenAI는 9월 23일 대만에서 광고를 단계적으로 도입하기 시작한다고 발표했습니다("
+            },
+            {
+              "type": "article",
+              "text": "관련 기사",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-ads-taiwan-20260923"
+            },
+            {
+              "type": "text",
+              "text": " 참고). 이 발표는 Sponsored Agents를 언급하지 않습니다."
+            }
+          ]
         },
         {
           "type": "image",
@@ -977,7 +1037,7 @@
             },
             {
               "question": "대만에서도 이 광고를 볼 수 있나요?",
-              "answer": "본 기사가 확인한 세 개의 공식 페이지 모두 대만을 언급하지 않으며, 대만을 이미 열린 시장으로 꼽지도 않습니다. 2026년 9월 18일 기준으로 확인한 내용에 따르면, 이 페이지의 가장 최근 업데이트(2026년 8월 11일)에는 광고가 영국, 멕시코, 브라질, 일본, 한국에서 '이미 시작되었다'고 적혀 있으며, 테스트 자체는 2월 9일 미국에서 시작되었습니다. 캐나다, 호주, 뉴질랜드는 3월 26일 업데이트에서 '앞으로 몇 주' 안에 시범 운영을 하겠다는 계획으로만 언급되며, 이후 업데이트에서 그 결과가 확인된 적은 없으므로 이미 열린 시장과 같은 목록으로 셀 수는 없습니다. OpenAI는 동시에 앞으로도 시장을 계속 확대하겠다고 밝히고 있으므로, '목록에 없다'는 것은 현재까지 아직 포함되지 않았다는 뜻일 뿐, OpenAI가 열지 않겠다고 말한 것은 아닙니다."
+              "answer": "본 기사가 확인한 세 개의 공식 페이지 모두 대만을 언급하지 않으며, 대만을 이미 열린 시장으로 꼽지도 않습니다. 2026년 9월 18일 기준으로 확인한 내용에 따르면, 이 페이지의 가장 최근 업데이트(2026년 8월 11일)에는 광고가 영국, 멕시코, 브라질, 일본, 한국에서 '이미 시작되었다'고 적혀 있으며, 테스트 자체는 2월 9일 미국에서 시작되었습니다. 캐나다, 호주, 뉴질랜드는 3월 26일 업데이트에서 '앞으로 몇 주' 안에 시범 운영을 하겠다는 계획으로만 언급되며, 이후 업데이트에서 그 결과가 확인된 적은 없으므로 이미 열린 시장과 같은 목록으로 셀 수는 없습니다. OpenAI는 동시에 앞으로도 시장을 계속 확대하겠다고 밝히고 있으므로, '목록에 없다'는 것은 현재까지 아직 포함되지 않았다는 뜻일 뿐, OpenAI가 열지 않겠다고 말한 것은 아닙니다. 2026년 10월 3일 업데이트: OpenAI는 2026년 9월 23일 대만에서 ChatGPT 광고를 단계적으로 도입하기 시작한다고 발표했으며, Free와 Go 요금제 사용자에게 광고가 차례로 표시될 수 있습니다. 이 발표는 Sponsored Agents를 언급하지 않습니다."
             },
             {
               "question": "어떤 요금제에서 광고가 표시되나요?",
@@ -1001,7 +1061,7 @@
           "type": "callout",
           "tone": "info",
           "title": "검증 범위와 이 기사의 한계",
-          "text": "본 기사의 확인일은 2026년 9월 18일이며, 근거는 OpenAI의 2026년 9월 16일 발표문 원문, 광고 테스트 현황을 설명하는 페이지, 그리고 광고주 소개 페이지입니다. Sponsored Agents, AI text customization, 시장 범위에 관한 서술은 모두 OpenAI 자신의 설명이며, 본 사이트는 ChatGPT 광고 관리 화면에 로그인한 적도, 스폰서 대화를 열어본 적도, 광고를 만들거나 구매한 적도 없습니다. 본 기사는 구매나 광고 집행에 관한 조언을 제공하지 않습니다. 광고 테스트 안내 페이지는 업데이트가 계속 쌓여 가는 페이지이며, 그 위에 적힌 시장 목록과 광고주 페이지에 나온 브랜드명은 페이지가 업데이트될 때마다 바뀔 수 있습니다. 현재 상황을 확인하고 싶다면 openai.com의 공식 페이지를 직접 확인하시기 바랍니다. ChatGPT 광고를 구매하는 방법, 계정 구조, 입찰 방식에 대해서는 글 끝에 연결된 다른 글을 참고하시기 바랍니다."
+          "text": "본 기사의 확인일은 2026년 9월 18일이며, 근거는 OpenAI의 2026년 9월 16일 발표문 원문, 광고 테스트 현황을 설명하는 페이지, 그리고 광고주 소개 페이지입니다. Sponsored Agents, AI text customization, 시장 범위에 관한 서술은 모두 OpenAI 자신의 설명이며, 본 사이트는 ChatGPT 광고 관리 화면에 로그인한 적도, 스폰서 대화를 열어본 적도, 광고를 만들거나 구매한 적도 없습니다. 본 기사는 구매나 광고 집행에 관한 조언을 제공하지 않습니다. 광고 테스트 안내 페이지는 업데이트가 계속 쌓여 가는 페이지이며, 그 위에 적힌 시장 목록과 광고주 페이지에 나온 브랜드명은 페이지가 업데이트될 때마다 바뀔 수 있습니다. 현재 상황을 확인하고 싶다면 openai.com의 공식 페이지를 직접 확인하시기 바랍니다. ChatGPT 광고를 구매하는 방법, 계정 구조, 입찰 방식에 대해서는 글 끝에 연결된 다른 글을 참고하시기 바랍니다. 대만 관련 단락, 요약, FAQ는 2026년 10월 3일에 업데이트했으며, 나머지 내용은 9월 18일 확인 기준입니다."
         },
         {
           "type": "rich_paragraph",
@@ -1045,8 +1105,8 @@
       ]
     },
     "zh-CN": {
-      "title": "ChatGPT广告新增Sponsored Agents：美国测试中，台湾未列入开放名单",
-      "description": "2026年9月16日，OpenAI公布ChatGPT广告新增Sponsored Agents，用户点开广告后可以选择进入由广告主代理人回应的独立对话，同日并公布Ads Manager的AI工具。本文依官方公告与说明页，于9月18日查核这项功能只在美国与特定广告主之间测试、广告测试只对Free或Go方案的登录成年用户显示，且官方市场清单还没有列入台湾。",
+      "title": "ChatGPT广告新增Sponsored Agents：美国测试中，仅限特定广告主",
+      "description": "2026年9月16日，OpenAI公布ChatGPT广告新增Sponsored Agents，用户点开广告后可以选择进入由广告主代理人回应的独立对话，同日并公布Ads Manager的AI工具。依官方公告与说明页，9月18日时此功能只和美国特定广告主测试，广告只给Free或Go方案的登录成年用户；OpenAI于9月23日宣布广告在台湾开始推出。",
       "hero": {
         "src": "/guides/ai-news-chatgpt-sponsored-agents-20260916/hero-zh-cn.jpg",
         "alt": "原创插图：左边一个对话框图标，框内叠着一个较小的对话框，代表另外开启的赞助对话；一条虚线把两个对话框隔开，右边是一个由大到小排列的三层漏斗形状，代表方案与地区筛选谁看得到广告",
@@ -1071,7 +1131,7 @@
           "type": "summary",
           "items": [
             "OpenAI公布ChatGPT广告新增Sponsored Agents：用户点开一则广告后，可以选择进入一段由广告主的代理人回应、和原本对话分开的独立对话。",
-            "官方写明这项功能目前只和美国的特定广告主一起测试，没有交代测试什么时候结束；官方公布的市场清单上也还没有台湾。",
+            "官方写明这项功能目前只和美国的特定广告主一起测试，没有交代测试什么时候结束；9月18日查核时官方市场清单上还没有台湾，OpenAI之后在9月23日宣布ChatGPT广告开始在台湾逐步推出，那则公告没有提到Sponsored Agents。",
             "官方说明页针对这次广告测试写的是：广告只对登录的成年用户、而且方案是Free或Go的人显示，Plus、Pro、Business、Enterprise与Education方案不会有广告。",
             "同一天公布的还有可以用提示词操作的Ads Manager、会自动改写并翻译广告文字的定制功能，以及和HubSpot、Shopify的整合。"
           ]
@@ -1176,8 +1236,23 @@
           "text": "同一页叠了好几次更新，最新一次写在最上面，日期是2026年8月11日：ChatGPT广告已经开放到英国、墨西哥、巴西、日本与韩国；再往前一次是5月7日，写的是接下来几周“计划”把广告试点扩大到同样这五个市场；更前面的3月26日写的是接下来几周要先在加拿大、澳大利亚与新西兰试点；最早的版本是2026年2月9日，从美国开始测试。这些日期叠起来看，开放的地区是一次次加上去的，不是一开始就全部打开。"
         },
         {
-          "type": "paragraph",
-          "text": "本文查核的三个页面，从头到尾没有提到台湾，也没有出现任何排除清单。以查核到2026年9月18日的内容来说，台湾不在官方列出的开放市场里，但这不等于官方说不会开放——页面自己写的是会继续扩大到更多市场。这份市场清单会持续更新，不是定案的名单；想知道现在的状态，最可靠的做法是直接看官方这一页当下写的更新日期。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本文查核的三个页面，从头到尾没有提到台湾，也没有出现任何排除清单。以查核到2026年9月18日的内容来说，台湾不在官方列出的开放市场里，但这不等于官方说不会开放——页面自己写的是会继续扩大到更多市场。10月3日更新：OpenAI已在9月23日宣布广告在台湾逐步推出，见"
+            },
+            {
+              "type": "article",
+              "text": "这则新闻",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-ads-taiwan-20260923"
+            },
+            {
+              "type": "text",
+              "text": "；那则公告没有提到Sponsored Agents。"
+            }
+          ]
         },
         {
           "type": "image",
@@ -1235,7 +1310,7 @@
             },
             {
               "question": "台湾看得到这些广告吗？",
-              "answer": "本文查核的三个官方页面都没有提到台湾，也没有把台湾列进已经开放的市场。截至2026年9月18日读到的内容，这一页最新一次更新（2026年8月11日）写的是广告“已经开放”到英国、墨西哥、巴西、日本与韩国，而测试最早是2月9日从美国开始；至于加拿大、澳大利亚与新西兰，官方写的是3月26日更新里“接下来几周”要去试点的计划，后续更新没有再回头确认结果，所以不能和已经开放的市场算成同一份清单。官方同时写明会继续扩大到更多市场，因此“不在清单上”只能写成目前还没被列入，不能写成官方说不会开放。"
+              "answer": "本文查核的三个官方页面都没有提到台湾，也没有把台湾列进已经开放的市场。截至2026年9月18日读到的内容，这一页最新一次更新（2026年8月11日）写的是广告“已经开放”到英国、墨西哥、巴西、日本与韩国，而测试最早是2月9日从美国开始；至于加拿大、澳大利亚与新西兰，官方写的是3月26日更新里“接下来几周”要去试点的计划，后续更新没有再回头确认结果，所以不能和已经开放的市场算成同一份清单。官方同时写明会继续扩大到更多市场，因此“不在清单上”只能写成目前还没被列入，不能写成官方说不会开放。2026年10月3日更新：OpenAI已在2026年9月23日宣布ChatGPT广告开始在台湾逐步推出，Free与Go方案的用户可能陆续看到广告；那则公告没有提到Sponsored Agents。"
             },
             {
               "question": "什么样的订阅方案会看到广告？",
@@ -1259,7 +1334,7 @@
           "type": "callout",
           "tone": "info",
           "title": "查核范围与这篇文章的界线",
-          "text": "本文查核日期是2026年9月18日，依据是OpenAI 2026年9月16日的公告原文、广告测试现状说明页，以及广告主介绍页。文中关于Sponsored Agents、AI文字定制与市场范围的叙述，都是OpenAI自己的说法，本站没有登录ChatGPT广告后台，没有点开过赞助对话，也没有创建或购买过广告；本文不提供采购或投放建议。广告测试说明页是一页会持续叠加更新的页面，上面的市场清单，以及广告主介绍页列出的品牌名称，都会随页面更新而改变，想确认当下状态，请直接查openai.com官方页面；ChatGPT广告怎么买、账户架构与出价方式，请见文末链接的另一篇文章。"
+          "text": "本文查核日期是2026年9月18日，依据是OpenAI 2026年9月16日的公告原文、广告测试现状说明页，以及广告主介绍页。文中关于Sponsored Agents、AI文字定制与市场范围的叙述，都是OpenAI自己的说法，本站没有登录ChatGPT广告后台，没有点开过赞助对话，也没有创建或购买过广告；本文不提供采购或投放建议。广告测试说明页是一页会持续叠加更新的页面，上面的市场清单，以及广告主介绍页列出的品牌名称，都会随页面更新而改变，想确认当下状态，请直接查openai.com官方页面；ChatGPT广告怎么买、账户架构与出价方式，请见文末链接的另一篇文章。台湾状态的段落、摘要与问答已在2026年10月3日补上更新，其余内容仍是9月18日的查核。"
         },
         {
           "type": "rich_paragraph",
