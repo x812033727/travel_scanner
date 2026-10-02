@@ -79,6 +79,9 @@ class TopicFacts:
     paid: bool = False
     # The video it is being made under is dropped: the Short gave up, not the topic.
     project_dropped: bool = False
+    # Its video is blocked and the owner has not asked for a retry the worker has yet to take:
+    # the worker would do nothing with the make job, and the slots after it would wait.
+    project_blocked: bool = False
 
 
 @dataclass(frozen=True)
@@ -178,6 +181,9 @@ def next_job_for(facts: JobFacts) -> Decision:
             continue
         if topic.status not in MAKEABLE or (topic.status == "making" and topic.project_dropped):
             continue
+        if topic.status == "making" and topic.project_blocked:
+            holds.append(f"「{topic.slug}」卡住了，等站主處理")
+            continue
         new = topic.status == "ready"
         if new and facts.started_this_month >= facts.max_per_month:
             holds.append(
@@ -223,6 +229,15 @@ async def _projects(session: AsyncSession, slugs: Sequence[str]) -> dict[str, Vi
         return {}
     rows = await session.scalars(select(VideoProject).where(VideoProject.slug.in_(wanted)))
     return {row.slug: row for row in rows}
+
+
+def _waits_for_owner(project: VideoProject) -> bool:
+    """Blocked with no retry the worker still has to pick up."""
+    pending_retry = (
+        project.retry_request_id is not None
+        and project.retry_request_id != project.retry_acknowledged_id
+    )
+    return project.stage == "blocked" and not pending_retry
 
 
 def source_video(project: VideoProject | None) -> SourceVideo | None:
@@ -311,6 +326,10 @@ async def next_job(session: AsyncSession, now: datetime | None = None) -> NextOu
                 project_dropped=(
                     topic.project_slug in projects
                     and projects[topic.project_slug].dropped_at is not None
+                ),
+                project_blocked=(
+                    topic.project_slug in projects
+                    and _waits_for_owner(projects[topic.project_slug])
                 ),
             )
             for topic in topics
