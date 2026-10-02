@@ -1,14 +1,14 @@
 ---
 id: 2026-10-02-sothatswhy-series-branding-default
 title: Apply approved So Thats Why intro only to its series
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: codex-sothatswhy-integration
+claimed_at: 2026-10-02T13:51:30Z
 created_at: 2026-10-02T13:39:56Z
 completed_at:
-branch:
+branch: codex/sothatswhy-intro-approval-20261002
 depends_on: []
 scope:
   - tools/video/core/branding.mjs
@@ -16,6 +16,8 @@ scope:
   - tools/video/branding/cli.mjs
   - tools/video/branding/branding.test.mjs
   - docs/videos/BRANDING.md
+  - tools/video/cli.mjs
+  - docs/videos/branding-release/2026-10-02-sothatswhy-series-integration.md
 ---
 
 # Apply approved So Thats Why intro only to its series
@@ -35,10 +37,10 @@ scope:
 
 ## Steps
 
-- [ ] 先查同範圍活躍任務、PR 與 worktree，再認領；核對已選素材包與文件。
-- [ ] 在品牌讀取與安裝工具加入系列 registry，保留全頻道 fallback 與 pin 優先序。
-- [ ] 驗證 assemble/compile 入口共同選擇，以及 caption/dub/章節共用 presentation timeline 的正確偏移。
-- [ ] 加入會驗出路由、pin 與時間偏移錯誤的測試，更新 BRANDING.md。
+- [x] 先查同範圍活躍任務、PR 與 worktree，再認領；核對已選素材包與文件。
+- [x] 在品牌讀取與安裝工具加入系列 registry，保留全頻道 fallback 與 pin 優先序。
+- [x] 驗證 assemble/compile 入口共同選擇，以及 caption/dub/章節共用 presentation timeline 的正確偏移。
+- [x] 加入會驗出路由、pin 與時間偏移錯誤的測試，更新 BRANDING.md。
 
 ## How to verify
 
@@ -53,3 +55,5 @@ scope:
 intro SHA-256：`208ff0300b463f6f71f9c059586837accbeb22e28a8eccc7dfad0af6145c5337`。
 series-intro SHA-256：`2d4d21618d9519eaa17c47c68e0f9bd9384167ed8348d77001c509c907a61930`。
 素材已經站主選用，但尚未部署／安裝系列預設。本待辦不授權重新生成語音、付費生成、啟動 uploader 或排入影片工作；需要的正式安裝與驗收另以實際行動及證據確認。
+
+2026-10-02 站主續下「接入」，並要求只有系列動畫的 Shorts 版本。已完成程式與本機系列安裝；13 focused tests 及真實 ffmpeg 音軌逐 sample 接點檢查通過，Shorts 直式版 1080×1920/207 格也已完成。相關證據在外部工作目錄及接入紀錄。合集沒有 explainer look，沿用全頻道預設；本次不拓展合集分類。
