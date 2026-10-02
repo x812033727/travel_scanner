@@ -1,13 +1,13 @@
 ---
 id: 2026-10-02-ten-drama-voice-detail-review
 title: Review ten drama voices and production detail contracts
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: codex-ten-drama-voice-review
 claimed_at: 2026-10-02T09:11:14Z
 created_at: 2026-10-02T08:57:04Z
-completed_at:
+completed_at: 2026-10-02T10:05:25Z
 branch: codex/ten-drama-backend-sync-20261002
 depends_on: []
 scope:
@@ -68,14 +68,14 @@ injury/aging states, and pronunciation directions do not reach TTS requests.
 - [x] Prepare auditions using actual episode voice styles and source-bound cues.
 - [x] Carry pronunciation hints and explicit same-take references to TTS safely.
 - [x] Validate offline; retain selectable CC and independent future language audio.
-- [ ] Sync a fresh pending backend revision if live preconditions still hold.
+- [x] Sync a fresh pending backend revision if live preconditions still hold.
 
 ## Steps
 
 - [x] Review all ten works and implement confirmed corrections.
 - [x] Test pronunciation/cache binding and explicit recorded-take reuse.
 - [x] Build review bundles and record remaining actual-audio acceptance questions.
-- [ ] Refresh production state, sync under guards, and update draft PR #1122.
+- [x] Refresh production state, sync under guards, and update draft PR #1122.
 
 ## How to verify
 
@@ -106,3 +106,12 @@ hashes, generation disabled, preserved historical rows and full readback.
   stale after #1095; independent delta evidence preserves that honest boundary.
   Duration-only review renewed by a different agent for the five changed bound
   files, with the original report and receipt archived byte-for-byte.
+- Production v3 synchronization: source a47f0d1c6e8d4a0c9b8948cf55ed2dba006178fb,
+  canonical plan 5e3d105d878d3cb79c3bfb2428f0e1c31cfb10d84d029b02389567d87ababb32.
+  All 60 new pending revisions and normal admin serializer bodies matched;
+  120 historical v1/v2 rows remained exact. Ten read-only replays were unchanged.
+  Global settings, target episodes, approvals and publication stayed unchanged.
+  Browser rendering and runtime deployment were not performed.
+- Other open PRs #1124/#1125/#1126 also update the shared duration report.
+  Their branches/claims are untouched; central receipt bindings must be reconciled
+  when these drafts merge. This task's own checked branch is preserved.

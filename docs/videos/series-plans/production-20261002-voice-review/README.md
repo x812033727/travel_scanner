@@ -74,5 +74,7 @@ node tools/tasks.mjs check
 六部有未成年人物／兒童入鏡路徑待驗，不能宣稱 400 集已能直接用 Lite 全量製作。
 百萬點閱是目標，不是這輪文字或工具檢查能保證的結果。
 
-後台同步結果與歷史保留檢查另記 [backend-verification.json](backend-verification.json)。
+後台已追加十部的 v3 待審文件，共 60 份；v1／v2 共 120 份歷史文件保留原樣。
+逐份正文與正常後台 serializer 的版本／雜湊皆符合，唯讀重放十部都為 unchanged。
+同步結果與歷史保留檢查另記 [backend-verification.json](backend-verification.json)；未在登入瀏覽器驗畫面。
 工具程式在草稿 [PR #1122](https://github.com/x812033727/travel_scanner/pull/1122)，本輪未部署 runtime、未試音、未生成或發布。
