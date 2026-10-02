@@ -306,7 +306,6 @@ const outside = (error) => typeof error?.who === 'string';
 const transient = (error) => outside(error) && !owner(error) && (!error.status || error.status === 429 || error.status >= 500);
 // Where a Short stands, in order, and the steps /admin/videos shows for it.
 const ORDER = Object.freeze(['freeze', 'subject-a', 'subject-b', 'score', 'write', 'verify', 'build', 'audio', 'qa', 'package', 'push', 'awaiting', 'done']);
-const MOVING = new Set(ORDER.slice(0, ORDER.indexOf('awaiting')));
 const CHECKLIST = Object.freeze([
   ['freeze', '凍結題目', ['freeze']],
   ['subject', '受測模型各跑一次', ['subject-a', 'subject-b']],
@@ -322,8 +321,17 @@ const CHECKLIST = Object.freeze([
  * the video it is made under; `api` the automation client (and `subjectApi`, one that never
  * repeats a request on its own, for the tested model); `site` the Shorts tool's client; `base` the
  * Shorts work base (<work base>/_shorts). Returns the round's line.
+ *
+ * Another content line made the same way (cut.mjs, the highlights) extends this class with its own
+ * `line`, `order` and `checklist`, its own phases before `build`, and its own `instructions` and
+ * `protocol` (the frozen input the build checks); building, hearing, checking, packaging, pushing
+ * and following the owner's decision stay the same.
  */
 export class LabShort {
+  static line = 'lab';
+  static order = ORDER;
+  static checklist = CHECKLIST;
+
   constructor({ ctx, api, subjectApi = api, site, job, slug, base, settings = {}, shortsSettings = {}, tools, lexicon = null }) {
     this.ctx = ctx;
     this.api = api;
@@ -388,9 +396,14 @@ export class LabShort {
     return JSON.parse(readFileSync(file, 'utf8'));
   }
 
+  /** What a stage of this Short is told. */
+  instructions(stage, variant) {
+    return shortsInstructions(stage, variant, this.job.channel_stance ?? '');
+  }
+
   /** A writing or checking stage of the Short: its answer as JSON, its usage recorded. */
   async ask(stage, variant, payload, maxOutputTokens = 16_000) {
-    const answer = await this.api.run(stage, this.slug, shortsInstructions(stage, variant, this.job.channel_stance ?? ''), payload, maxOutputTokens, 'shorts', variant);
+    const answer = await this.api.run(stage, this.slug, this.instructions(stage, variant), payload, maxOutputTokens, 'shorts', variant);
     this.count(`${stage}/${variant}`, answer);
     this.lastAnswer = answer.text;
     try {
@@ -441,17 +454,18 @@ export class LabShort {
 
   /** Tell /admin/videos where the Short stands: its stage, why it stopped, the steps done. */
   async tellSite(stage, label = null, extra = {}) {
-    const at = ORDER.indexOf(this.state.phase);
+    const { order, checklist, line } = this.constructor;
+    const at = order.indexOf(this.state.phase);
     await this.api.report(this.slug, {
       ...extra,
       title: String(this.state.title || this.slug).slice(0, 200),
       stage,
       checklist: [
         ...(label ? [{ key: 'blocked', label: label.slice(0, 120), done: false }] : []),
-        ...CHECKLIST.map(([key, text, phases]) => ({ key, label: text, done: at > Math.max(...phases.map((phase) => ORDER.indexOf(phase))) })),
+        ...checklist.map(([key, text, phases]) => ({ key, label: text, done: at > Math.max(...phases.map((phase) => order.indexOf(phase))) })),
       ],
       format: 'shorts',
-      shorts_line: 'lab',
+      shorts_line: line,
       shorts_series: this.state.series,
     });
   }
@@ -461,6 +475,8 @@ export class LabShort {
     if (this.state.status === 'blocked') return null;
     if (this.state.status === 'done' || this.state.status === 'returned') return null;
     const lines = [];
+    const { order } = this.constructor;
+    const moving = new Set(order.slice(0, order.indexOf('awaiting')));
     for (let step = 0; step < MAX_PHASES_PER_ROUND; step++) {
       if (['done', 'awaiting', 'blocked', 'returned'].includes(this.state.status)) break;
       if (stopRequested(this.base)) {
@@ -472,7 +488,7 @@ export class LabShort {
       this.lastAnswer = null;
       let outcome;
       try {
-        if (!MOVING.has(phase)) throw new LabBlocked(`lab.json names a step the worker does not know: ${phase}`);
+        if (!moving.has(phase)) throw new LabBlocked(`lab.json names a step the worker does not know: ${phase}`);
         outcome = await this[phase]();
       } catch (error) {
         if (error instanceof LabBlocked) return [...lines, await this.block(error.message)].join('\n');
