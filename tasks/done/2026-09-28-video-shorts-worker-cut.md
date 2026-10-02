@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-shorts-worker-cut
 title: Video shorts T3: highlights cut from the published tutorials, rewritten for the vertical frame
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-shorts-t3
 claimed_at: 2026-10-02T09:05:29Z
 created_at: 2026-09-28T03:50:00Z
-completed_at:
+completed_at: 2026-10-02T09:29:32Z
 branch: claude/video-shorts-worker-cut
 depends_on:
   - 2026-09-28-video-shorts-worker-lab
@@ -73,4 +73,4 @@ npm run test:tools
 - **旁白快取**：成片前把長片 `<work base>/<source>/audio/<line id>.wav` 複製進 Shorts 的 `_shorts/.speech-server/<phraseKey>.wav`，條件是那一句跟長片的某一句一字不差，而且長片 `audio/cache.json` 記的 key 等於用 Shorts 的聲音算出的 `[voiceFields(voice), spokenParts(text)]`（也就是同一個聲音、同樣的字）；build 之後就不會為那句合成。聲音或 style 不同、改寫過的句子照常合成。
 - **品管**：`qa.mjs` 原本就有 cut 的 evidence（來源存在、已公開或已核准、沒被放棄）與 links（說明欄每個網址 200、完整影片連結要有）；測試確認兩個連結都被檢查、來源被放棄或沒公開時不過。
 - **離線試做**（不打模型、不打站、不合成）：用本 repo 的 `ai-agent-vs-chatbot`（142 句、`verify-1.md`、內容包 `ai-agents-explained` 是 life）手挑 ag012–ag015、ag083–ag086 一段，照撰稿規則手寫 5 景 9 句（8 句與長片一字不差、159 字約 40 秒）；`cutProblems` 沒有問題，說明欄是 `完整影片：https://youtu.be/…`、空行、`完整文章：https://mokaair.com/zh-TW/life/ai-agents-explained?utm_source=youtube&utm_medium=shorts&utm_campaign=ai-agent-vs-chatbot-cut-1`。真正的整支成片（企劃、撰稿、查核模型、伺服器旁白、ffmpeg）要等主機部署後第一個精華題目；本機這輪規定不能打真的模型與站。
-- 驗證：`node --test tools/video/shorts/*.test.mjs tools/video/automation/*.test.mjs` 全過；`npm run test:tools`、`npm run check:tasks` 結果見 PR。
+- 驗證：`node --test tools/video/shorts/*.test.mjs tools/video/automation/*.test.mjs` 378 項 377 過、1 略過、0 失敗；`npm run test:tools` 1235 項只有已知 Windows 才失敗的 `tts/check.test.mjs`「a second transcript clears a line only Gemini misheard…」；`node --test tools/video/long-form/review.test.mjs` 過（沒動到綁定的檔案）；`npm run check:tasks` 過。
