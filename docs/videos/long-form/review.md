@@ -175,6 +175,18 @@ Findings: against the merge base each admin.json adds exactly two lines, #1110's
 
 Commands: `node tools/video/long-form/cli.mjs check` before rebinding failed only on the stale report and these six stale bindings; `npm run check:i18n` validated 5 locales across 25 namespaces, exit 0; `npx vitest run components/admin-video-reviews.test.tsx` in apps/web passed 31/31, exit 0. After rebinding, `node --test tools/video/long-form/review.test.mjs` and the CLI check were rerun. Non-claims: DURATION_ONLY review of the six rebound files after the merge; no functional or visual acceptance of either feature, no CI, browser, media, production write or publication. The other bindings are untouched. Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1112 worker-thumbnails increment: 2 files (2026-10-02)
+
+Reviewer: `claude-pr-review-1112`. Author: `claude-opus-5-5-worker-thumbs` (the Claude session that wrote PR #1112, "the worker draws the language thumbnails before a language batch", branch claude/worker-draws-thumbnails). Scope: DURATION_ONLY. The reviewer did not write these changes.
+
+Baseline: the bytes of tools/video/automation/flow.mjs and automation.test.mjs at the merge base a775b753 (main, the #1108 follow-up) equal the hashes bound before this increment. The reviewer read the full `git diff a775b753 2f456077` of those two files, and the unbound tools/video/render/cli.mjs delta (the new `render --thumbnails-only`) for context. origin/main has since gained #1111 (b11e01eb), which touches no bound file. The other 68 bindings are unchanged.
+
+Findings. flow.mjs adds `LOCALES` to the schema import beside the unchanged `minEpisodeMinutes`, and imports `localizedThumbnailHash`. The new `drawLanguageThumbnails` runs before `captions` and `package` in both language-batch paths. It compares each locale's `localizedThumbnailHash` with the frames manifest's `thumbnail_locales` and, when one is owed, runs `render --slug <slug> --thumbnails-only` (plus `--channel` from VIDEO_BROWSER_CHANNEL). A failed or throwing render is logged as a note and the batch goes on. render's `--thumbnails-only` refuses a manifest whose visual_hash is not the current script's, draws only thumbnails/<locale>.jpg and rewrites the manifest with only `thumbnail_locales`/`thumbnail_locale_gaps` replaced; slide states, scenes, fps, thumbnail.jpg and final.mp4 are left as they are. None of this reads or writes target_minutes, effectiveEpisodeMinutes, minEpisodeMinutes or VIDEO_MIN_EPISODE_MINUTES, frame counts or the 14,400-frame body/final proof. None touches narration lines, the format defaults or ranges (explainer 10 and 8–20, drama 1–8 default 3, brand 13), or the fixture opt-out. In the test file, `finishedVideo` gains an `openRenderer` stand-in and its render stub skips `--thumbnails-only`. Two new tests cover the draw and the not-drawn note. They assert that the manifest gains only the language fields, that final.mp4 and thumbnail.jpg are byte-identical, and that the pipeline steps (frames rendered, video assembled, final approved) are unchanged. Two existing tests gain assertions that render is not run when a locale has no thumbnail words or the video's work files were tidied; the tidied test now translates with #1108's `withThumbnail` helper. No test changes a duration expectation, and no test sets VIDEO_MIN_EPISODE_MINUTES.
+
+Ran: `node tools/video/long-form/cli.mjs check` before rebinding failed only on the two stale bindings (exit 1). `node --test tools/video/automation/*.test.mjs tools/video/long-form/*.test.mjs tools/video/core/duration.test.mjs tools/video/qa/duration.test.mjs` ran 231 tests: 229 passed, 1 skipped and 1 failed. The one failure was the shipped binding regression, failing on those same two paths. Both commands are rerun after rebinding.
+
+Non-claims. This review does not accept the language-thumbnail drawing itself: not its layout, fonts or glyph coverage, a real browser, media, upload or publication, and not CI. PASS is DURATION_ONLY for the two rebound hashes below. Required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 70 bindings describe the current reviewed bytes after the main-merge and owned migration-order increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -213,8 +225,8 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | `docs/videos/so-thats-why/README.md` | `00a0f0e5a56d7a492dec69263eab34668e0d334949878bd512b09edacaefd0de` |
 | `docs/videos/so-thats-why/season2/README.md` | `e560411dc91f1928b2cf9506a044e55ae7f5f65450199118bd165464599f1218` |
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
-| `tools/video/automation/automation.test.mjs` | `3981f19992f4a1270c911001ae16cd09553b8d04585ea66b0fc50b972fdd53a4` |
-| `tools/video/automation/flow.mjs` | `cca1c02420611f28dceb14c398445b9cb92f4bff059e33a3b222368199fb4f98` |
+| `tools/video/automation/automation.test.mjs` | `db52f938be4b33572425f8841da61693dc24c4fb896e304ff57a53017a9abe4a` |
+| `tools/video/automation/flow.mjs` | `73111bb904a24ac82315df35a590de0adb7f9c9e99f12499c9ba0fb8967ade84` |
 | `tools/video/automation/prompts.mjs` | `ba93ae2a05a23fdf72db52a82868efd85a2012f36a97f06f77d7978c8b99c84e` |
 | `tools/video/automation/series.test.mjs` | `8288b63fa55024cb9305f13fdb8714bf690fb01a2d505e424c3d505359ca654c` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |

@@ -20,12 +20,13 @@ import { emptyLexicon } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
 import { articlePath, SITE } from "../core/metadata.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, UsageError } from "../core/paths.mjs";
-import { eachLine, LINE_ID, minEpisodeMinutes, NARRATION_LOCALE, narrationLocale, spokenText, textHash, VIDEO_CATEGORIES } from "../core/schema.mjs";
+import { eachLine, LINE_ID, LOCALES, minEpisodeMinutes, NARRATION_LOCALE, narrationLocale, spokenText, textHash, VIDEO_CATEGORIES } from "../core/schema.mjs";
 import { writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckBinding, scriptCheckMatches, scriptCheckUnbound } from "../core/script-check.mjs";
 import { LOCALE_PARTS, readLanguages, writeLanguages } from "../core/stages.mjs";
 import { ARTIFACTS, dubArtifacts, dubsStatus, lintProject, loadProject, pipelineStatus } from "../core/state.mjs";
 import { speechHash } from "../core/timeline.mjs";
+import { localizedThumbnailHash } from "../core/translations.mjs";
 import { MAX_TEMPO } from "../dubs/plan.mjs";
 import { productionForEpisode } from "../production/design.mjs";
 import { buildSheet, SHEET_PARTS } from "../i18n/cli.mjs";
@@ -1919,6 +1920,7 @@ export class Automation {
     // Only zh-TW was owed (the owner chose no other language): write it into the captions and the
     // package; there is no batch to send, since the panel never offers zh-TW.
     if (!pending.length) {
+      await this.drawLanguageThumbnails(slug, project, workdir);
       const captions = await run(ctx, ["captions", "--slug", slug]);
       if (captions.code !== 0) return this.block(state, `captions failed: ${lastLine(captions.out)}`);
       const packaged = await run(ctx, ["package", "--slug", slug]);
@@ -1933,6 +1935,7 @@ export class Automation {
     // Every chosen part is made: cut the captions on the dubs, write the package with the chosen
     // locales, and send the batch; the site marks the parts ready (or waits for the owner's
     // "uploaded" when a dub track is among them).
+    await this.drawLanguageThumbnails(slug, project, workdir);
     const captions = await run(ctx, ["captions", "--slug", slug]);
     if (captions.code !== 0) return this.block(state, `captions failed: ${lastLine(captions.out)}`);
     const packaged = await run(ctx, ["package", "--slug", slug]);
@@ -1983,6 +1986,39 @@ export class Automation {
     }
     await report(ctx, this.api, state, "languages skipped");
     return `${slug}: work files cleared on ${day}; ${pending.map(({ locale, parts }) => `${locale} ${parts.join("+")}`).join(", ")} reported to /admin/videos as skipped, not made`;
+  }
+
+  /**
+   * The languages' own thumbnails (thumbnails/<locale>.jpg, YouTube Studio's 「語言」 page), for
+   * thumbnail words the translator merged after the frames were rendered: `render
+   * --thumbnails-only` draws just those, so the slide states, thumbnail.jpg and the approved
+   * final.mp4 stay as they are. It runs only while a locale's current words are not what its
+   * drawn thumbnail was made from (the hash package compares). A thumbnail that cannot be drawn
+   * (a glyph no font has, words that do not fit, no browser) is a note: that locale keeps the
+   * video's own thumbnail, package says why, and the batch goes up regardless.
+   */
+  async drawLanguageThumbnails(slug, project, workdir) {
+    const { doc, translations } = project;
+    if (!doc.thumbnail) return;
+    const drawn = readJson(path.join(workdir, ARTIFACTS.frames), null)?.thumbnail_locales ?? {};
+    const owed = LOCALES.filter((locale) => {
+      const hash = localizedThumbnailHash(doc, translations[locale]);
+      return hash && (drawn[locale]?.hash !== hash || !existsSync(path.join(workdir, drawn[locale].file)));
+    });
+    if (!owed.length) return;
+    const channel = this.ctx.env.VIDEO_BROWSER_CHANNEL ? ["--channel", this.ctx.env.VIDEO_BROWSER_CHANNEL] : [];
+    let result;
+    try {
+      result = await run(this.ctx, ["render", "--slug", slug, "--thumbnails-only", ...channel]);
+    } catch (error) {
+      // A browser that dies mid-draw is no reason to hold the languages back either.
+      result = { code: -1, out: String(error?.message ?? error) };
+    }
+    if (result.code !== 0) {
+      this.log(`  ${owed.join(", ")} thumbnails not drawn, they keep the video's own: ${lastLine(result.out)}`);
+      return;
+    }
+    for (const note of result.out.split("\n").filter((line) => line.startsWith("note: "))) this.log(`  ${note.trim()}`);
   }
 
   /** The chosen parts the site still reports as in the making, by locale in the page's order. */

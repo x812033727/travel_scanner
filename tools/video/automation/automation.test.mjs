@@ -16,6 +16,8 @@ import { atomicWrite, readJson, ROOT, UsageError } from "../core/paths.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { dubArtifacts, loadProject, pipelineStatus } from "../core/state.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
+import { localizedThumbnailHash } from "../core/translations.mjs";
+import { RendererError } from "../render/browser.mjs";
 import { dubFingerprint, dubScript, translationHash } from "../dubs/plan.mjs";
 import { ITEM_IDS } from "../qa/checks.mjs";
 import { jpegBytes } from "../qa/test-images.mjs";
@@ -1376,7 +1378,7 @@ const rewordAnswer = (body) => ({ lines: body.payload.lines.map((line) => ({ id:
  * with the dub and its check played by `fakeDub`; the languages then wait for the owner's
  * choice on /admin/videos (docs/videos/LANGUAGES.md), which `choose` makes.
  */
-async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, reword = rewordAnswer, script = fixture(), translate = filledSheet, review = (worksheet) => worksheet } = {}) {
+async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, reword = rewordAnswer, script = fixture(), translate = filledSheet, review = (worksheet) => worksheet, renderer = null } = {}) {
   const box = sandbox();
   const slug = "chatgpt-ads-off";
   const passes = { shorten, reword };
@@ -1389,6 +1391,15 @@ async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, 
   const clock = { now: Date.parse("2026-09-27T09:00:00Z") };
   const { ctx, out } = context(box, site.fetchImpl, clock);
   ctx.encode = async (kind, source, target) => writeFileSync(target, Buffer.from(`${kind} of ${path.basename(source)}`));
+  // `render --thumbnails-only` is the real command, drawing with this browser stand-in.
+  const captures = [];
+  ctx.openRenderer = renderer ?? (async () => ({
+    capture: async (key, html) => {
+      captures.push({ key, html });
+      return { still: jpegBytes(1280, 720), frames: [], problems: [] };
+    },
+    close: async () => {},
+  }));
   const workdir = path.join(box.work, slug);
   const docFile = path.join(box.root, "docs", "videos", slug, "video.json");
   const lexicon = () => readJson(path.join(box.root, "docs", "videos", "lexicon.json"));
@@ -1409,7 +1420,7 @@ async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, 
       write("review/check.json", { lines: Object.fromEntries([...eachLine(video)].map(({ line }) => [line.id, { match: true, match_kind: "exact" }])) });
       return { code: 0, out: "every line passed" };
     }
-    if (name === "render") {
+    if (name === "render" && !command.includes("--thumbnails-only")) {
       write("frames/manifest.json", { visual_hash: visualHash(video), theme_hash: "t", fps: 30, size: { width: 1920, height: 1080 }, scenes: [], thumbnail: "thumbnail.jpg" });
       writeFileSync(path.join(workdir, "thumbnail.jpg"), jpegBytes(1280, 720));
       return { code: 0, out: "rendered" };
@@ -1435,7 +1446,7 @@ async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, 
   for (const line of expected) assert.match(await automation.step(), line);
   assert.equal(await automation.step(), null, "the languages wait for the owner's choice");
   return {
-    box, site, automation, ctx, out, workdir, docFile, runs, slug,
+    box, site, automation, ctx, out, workdir, docFile, runs, slug, captures,
     step: () => automation.step(),
     listed: () => site.listed.get(slug),
     onSite: () => automation.site.find((video) => video.slug === slug),
@@ -1528,6 +1539,62 @@ test("the worker's metadata translation carries the thumbnail's words into i18n 
   assert.equal(video.calls("translator").length, 1, "current words: the translation is not asked again");
 });
 
+test("the worker draws a language's own thumbnail before its batch with render --thumbnails-only: the frames, thumbnail.jpg and the approved final stay as they were", async () => {
+  const video = await finishedVideo({ translate: withThumbnail });
+  video.choose({ en: { metadata: true, captions: false, dub: false } });
+  assert.match(await video.step(), /^chatgpt-ads-off: en metadata translated and reviewed$/);
+  const work = (...parts) => path.join(video.workdir, ...parts);
+  const statusOf = async () => (await pipelineStatus({ slug: video.slug, root: video.box.root, workdir: video.workdir })).steps.map((step) => [step.id, step.done]);
+  const kept = ["final.mp4", "thumbnail.jpg"];
+  const bytes = Object.fromEntries(kept.map((name) => [name, readFileSync(work(name))]));
+  const manifest = readJson(work("frames", "manifest.json"));
+  const steps = await statusOf();
+  assert.deepEqual(steps.filter(([id]) => ["frames rendered", "video assembled", "final video approved", "upload package"].includes(id)).map(([, done]) => done), [true, true, true, true]);
+
+  assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(en metadata\)$/);
+  assert.deepEqual(video.runs.slice(-5).map((run) => run.split(" ")[0]), ["render", "captions", "package", "review-push", "review-pull"]);
+  assert.equal(video.runs.at(-5), `render --slug ${video.slug} --thumbnails-only`);
+  assert.equal(video.captures.length, 1, "the en thumbnail alone is drawn: no slide state, no thumbnail.jpg");
+  assert.ok(video.captures[0].html.includes(`en ${fixture().thumbnail.data.tag}`), "in the translated words");
+
+  const project = loadProject({ slug: video.slug, root: video.box.root });
+  const { thumbnail_locales: drawn, thumbnail_locale_gaps: gaps, ...rest } = readJson(work("frames", "manifest.json"));
+  assert.deepEqual(rest, manifest, "the manifest gains the language thumbnails and nothing else");
+  assert.deepEqual(drawn, { en: { file: "thumbnails/en.jpg", hash: localizedThumbnailHash(project.doc, project.translations.en) } });
+  assert.deepEqual(Object.keys(gaps), ["ja", "ko", "zh-CN"], "the untranslated languages are notes");
+  for (const name of kept) assert.ok(readFileSync(work(name)).equals(bytes[name]), `${name} is not touched`);
+  assert.deepEqual(await statusOf(), steps, "the final stays approved and the frames current");
+  const metadata = readJson(video.upload("metadata.json"));
+  assert.deepEqual([metadata.thumbnails, metadata.skipped_thumbnail_locales], [{ en: "thumbnails/en.jpg" }, {}]);
+  assert.ok(readFileSync(video.upload("thumbnails", "en.jpg")).equals(readFileSync(work("thumbnails", "en.jpg"))));
+
+  assert.equal(await video.step(), null, "everything chosen is made");
+  assert.equal(video.runs.filter((run) => run.startsWith("render ")).length, 2, "the frames step, then the thumbnails once");
+});
+
+test("a language thumbnail that cannot be drawn is a note: the batch goes up with the locale on the video's own thumbnail, and render is not tried again", async () => {
+  const overflowing = async () => ({ capture: async () => ({ still: jpegBytes(1280, 720), frames: [], problems: ["the headline overflows its box"] }), close: async () => {} });
+  const noBrowser = async () => {
+    throw new RendererError('the "msedge" browser could not start');
+  };
+  for (const [renderer, skipped, logged] of [
+    [overflowing, /did not fit and was not drawn: the headline overflows its box/, /note: no en thumbnail of its own/],
+    [noBrowser, /not drawn yet; run render/, /en thumbnails not drawn, they keep the video's own: the "msedge" browser could not start/],
+  ]) {
+    const video = await finishedVideo({ translate: withThumbnail, renderer });
+    video.choose({ en: { metadata: true, captions: false, dub: false } });
+    assert.match(await video.step(), /^chatgpt-ads-off: en metadata translated and reviewed$/);
+    assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(en metadata\)$/);
+    assert.match(video.out.stdout, logged);
+    const metadata = readJson(video.upload("metadata.json"));
+    assert.deepEqual(metadata.thumbnails, {});
+    assert.match(metadata.skipped_thumbnail_locales.en, skipped);
+    assert.ok(!existsSync(video.upload("thumbnails", "en.jpg")));
+    assert.equal(await video.step(), null);
+    assert.equal(video.runs.filter((run) => run.startsWith("render ")).length, 2, "tried once, not retried");
+  }
+});
+
 test("a translator that returns no thumbnail words still completes the locale: i18n-merge only notes it, the words are asked once, and the batch goes up next", async () => {
   const video = await finishedVideo({ translate: (sheet) => ({ ...filledSheet(sheet), thumbnail: undefined }) });
   video.choose({ en: { metadata: true, captions: false, dub: false } });
@@ -1540,6 +1607,7 @@ test("a translator that returns no thumbnail words still completes the locale: i
   assert.equal(video.state().thumbnails_asked.en, thumbnailAskHash(call.payload.worksheet), "the ask is recorded against these words");
 
   assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(en metadata\)$/, "no second translation round for the missing words");
+  assert.ok(!video.runs.some((run) => run.includes("--thumbnails-only")), "no words, no thumbnail to draw");
   assert.equal(video.calls("translator").length, 1);
   assert.equal(video.calls("caption_reviewer").length, 1);
   assert.equal(await video.step(), null, "everything chosen is made");
@@ -1968,10 +2036,13 @@ test("a language ticked after the video is on YouTube is made as a new batch", a
 });
 
 test("a language ticked after the worker tidied the video is reported as skipped with the date, and nothing is made again", async () => {
-  const video = await finishedVideo();
+  // en has thumbnail words: once the frames are cleared its drawn thumbnail no longer reads as
+  // current, and still nothing, render included, is run for a tidied video.
+  const video = await finishedVideo({ translate: withThumbnail });
   video.choose({ en: { metadata: true, captions: false, dub: false } });
   assert.match(await video.step(), /en metadata translated and reviewed$/);
   assert.match(await video.step(), /language batch sent/);
+  assert.ok(existsSync(video.upload("thumbnails", "en.jpg")));
   video.listed().youtube_video_id = "dQw4w9WgXcQ";
   assert.match(await video.step(), /on YouTube as dQw4w9WgXcQ/);
   assert.equal(await video.step(), null);
@@ -1988,7 +2059,7 @@ test("a language ticked after the worker tidied the video is reported as skipped
   video.choose({ en: { metadata: true, captions: false, dub: false }, ja: { metadata: true, captions: true, dub: true } });
   const [runs, translations, batches] = [video.runs.length, video.calls("translator").length, video.reviews("languages").length];
   assert.equal(await video.step(), `chatgpt-ads-off: work files cleared on ${day}; ja metadata+captions+dub reported to /admin/videos as skipped, not made`);
-  assert.equal(video.runs.length, runs, "no translation, dub, captions, package or review-push is tried");
+  assert.equal(video.runs.length, runs, "no translation, dub, render, captions, package or review-push is tried");
   assert.equal(video.calls("translator").length, translations);
   assert.equal(video.reviews("languages").length, batches + 1);
   const [batch] = video.reviews("languages");
