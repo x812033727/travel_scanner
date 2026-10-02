@@ -1,7 +1,7 @@
 """Every slides video runs at least eight minutes.
 
-Revision ID: 0117_video_min_8_minutes
-Revises: 0116_video_project_category
+Revision ID: 0118_video_min_8_minutes
+Revises: 0117_video_shorts_topics
 
 The owner's rule (2026-10-01): every episode runs eight minutes or more, except a drama's. The
 slides route takes its length from ``video_automation_settings.target_minutes_min``/``max``, so
@@ -17,8 +17,8 @@ from collections.abc import Sequence
 import sqlalchemy as sa
 from alembic import op
 
-revision: str = "0117_video_min_8_minutes"
-down_revision: str | None = "0116_video_project_category"
+revision: str = "0118_video_min_8_minutes"
+down_revision: str | None = "0117_video_shorts_topics"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 
