@@ -48,9 +48,9 @@ def run(connection: Connection, direction: str) -> None:
         getattr(load_migration(), direction)()
 
 
-def test_the_migration_lists_the_categories_0118_widens() -> None:
+def test_the_migration_lists_the_categories_0119_widens() -> None:
     migration = load_migration()
-    later = load_migration("0118_video_category_anime")
+    later = load_migration("0119_video_category_anime")
     assert migration.CATEGORIES == later.OLD_CATEGORIES
     assert migration.CHECK_TEXT == later.OLD_CHECK_TEXT
     assert len(migration.revision) <= 32

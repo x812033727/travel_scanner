@@ -13,9 +13,9 @@ depends_on: []
 scope:
   - apps/api/app/models.py
   - apps/api/app/video_reviews/schemas.py
-  - apps/api/migrations/versions/0118_video_category_anime.py
+  - apps/api/migrations/versions/0119_video_category_anime.py
   - apps/api/tests/test_migration_0116_video_project_category.py
-  - apps/api/tests/test_migration_0118_video_category_anime.py
+  - apps/api/tests/test_migration_0119_video_category_anime.py
   - apps/api/tests/test_video_reviews.py
   - apps/api/tests/test_video_reviews_integration.py
   - apps/web/components/admin-video-review-card.tsx
@@ -51,7 +51,7 @@ The owner asked for one more video category: anime (動漫). The review page on
 ## How to verify
 
 ```bash
-cd apps/api && uv run pytest tests/test_migration_0116_video_project_category.py tests/test_migration_0118_video_category_anime.py tests/test_video_reviews.py -q
+cd apps/api && uv run pytest tests/test_migration_0116_video_project_category.py tests/test_migration_0119_video_category_anime.py tests/test_video_reviews.py -q
 npm run check:i18n && npm run typecheck:web && npm run test:tools
 ```
 

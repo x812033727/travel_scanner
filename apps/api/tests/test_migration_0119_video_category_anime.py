@@ -1,4 +1,4 @@
-"""0118 rebuilds the video category check so it takes anime.
+"""0119 rebuilds the video category check so it takes anime.
 
 Guard and offline SQL tests run without a database. The PostgreSQL test creates a temporary
 video_projects table with 0116's check, shadowing the shared table in its own connection, so
@@ -27,7 +27,7 @@ from sqlalchemy.exc import IntegrityError
 from app.db import engine
 from app.models import VIDEO_CATEGORIES, VIDEO_CATEGORY_CHECK
 
-MIGRATION = "0118_video_category_anime"
+MIGRATION = "0119_video_category_anime"
 PROJECTS = "video_projects"
 CATEGORY_CHECK = "ck_video_project_category"
 POSTGRES = pytest.mark.skipif(

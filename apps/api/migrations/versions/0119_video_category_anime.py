@@ -1,7 +1,7 @@
 """Add anime to the video categories.
 
-Revision ID: 0118_video_category_anime
-Revises: 0117_video_shorts_topics
+Revision ID: 0119_video_category_anime
+Revises: 0118_video_min_8_minutes
 
 The owner files anime videos under their own category (docs/videos/HANDS-OFF.md §影片分類),
 so ``ck_video_project_category`` takes ``anime`` as well. The check is rebuilt under its name
@@ -18,8 +18,8 @@ from collections.abc import Sequence
 import sqlalchemy as sa
 from alembic import op
 
-revision: str = "0118_video_category_anime"
-down_revision: str | None = "0117_video_shorts_topics"
+revision: str = "0119_video_category_anime"
+down_revision: str | None = "0118_video_min_8_minutes"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 
