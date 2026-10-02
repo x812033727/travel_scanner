@@ -1,13 +1,13 @@
 ---
 id: 2026-09-11-fare-lab-warnings-and-copy
 title: 航班票價實驗室三個畫面的多語系與警告代碼
-status: in-progress
+status: done
 priority: P3
 area: web
 owner: claude-opus-5-5-fare-lab
 claimed_at: 2026-10-02T16:22:36Z
 created_at: 2026-09-11T20:41:05Z
-completed_at:
+completed_at: 2026-10-02T17:08:48Z
 branch: claude/fare-lab-warning-codes
 depends_on: []
 scope:
