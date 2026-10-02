@@ -466,7 +466,7 @@ const THUMB_RIGHT_CSS =
  * keyframe, served from the work directory); without one the theme's ring decorates it.
  * `series` names a series' own look (THUMB_SERIES); without one, and without `data.layout`,
  * the page is byte for byte what it always was. `locale` is the caption locale a translated
- * thumbnail is for: Korean and Simplified Chinese are set in their own font (page).
+ * thumbnail is for: Korean, Simplified Chinese and Japanese are set in their own font (page).
  */
 export function thumbnailHtml(thumbnail, { background = null, series = null, locale = null } = {}) {
   const data = thumbnail.data;
