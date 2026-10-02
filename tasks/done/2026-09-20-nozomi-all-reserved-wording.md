@@ -1,13 +1,13 @@
 ---
 id: 2026-09-20-nozomi-all-reserved-wording
 title: のぞみ「全席指定席」統一：五個內容包與一張圖把「全車指定席」改成官方原文
-status: in-progress
+status: done
 priority: P3
 area: docs
 owner: claude-opus-5-5-content-names
 claimed_at: 2026-10-02T19:07:23Z
 created_at: 2026-09-20T03:12:48Z
-completed_at:
+completed_at: 2026-10-02T19:13:41Z
 branch: claude/nozomi-all-reserved-wording
 depends_on: []
 scope:
