@@ -33,7 +33,7 @@ views and actual production cost are evaluated separately after three months.
 - [x] Pair the video tool without exposing keys; verify provider status and quota.
 - [ ] Author and verify an executable pilot from the source-bound competition package.
 - [ ] Produce/listen/revise Chinese cast auditions and a timed animatic; record actual cost.
-- [ ] Render and review the representative pilot (currently 51 seconds by audio edit) within USD 100, then E1-3 within cumulative USD 350 if accepted.
+- [ ] Render and review the representative pilot (currently 51 seconds by audio edit) within USD 100, then the currently requested E1-2 within cumulative USD 350 if accepted; do not automatically add E3.
 - [ ] Support locale x speaker casting, stable line IDs, translation revisions, measured per-line TTS timing and separate music/effects mix.
 - [ ] After owner confirmation of the entire Chinese film and CC, produce ja/ko/en pilot voice tracks and CC timed to each accepted track; get native listening.
 - [ ] Compile matched-duration multi-language cast tracks and captions with stale-input invalidation and no Chinese speech underneath.
@@ -72,7 +72,7 @@ model Gemini Omni 1.1 Flash, not Lite. Tool token cannot change global settings.
 A setting change is not isolated to this work; do not assume an empty next-job
 snapshot makes all-worker activation safe. Chinese TTS can proceed.
 
-2026-10-02 completed Chinese preproduction in PR #1135:
+Historical opening-only checkpoint before the subsequent two-episode request (PR #1135):
 - Full E1 text: 33 lines / 42 shots, independent causal/prop review passed. Later
   22 lines and sister voice remain unrecorded; other 39 full scripts remain unwritten.
 - Existing CLI-compatible voice-only document: 10 voiced scenes / 11 unchanged
@@ -93,7 +93,7 @@ snapshot makes all-worker activation safe. Chinese TTS can proceed.
   USD 5 reserved for this voice/check batch is not actual spending.
 - Animated video generated: 0 s. No foreign-generation/implementation requests.
 
-Next Chinese work: listen to this sample, record E1 L012-L033, retime the entire
+Historical next work at that checkpoint: listen to this sample, record E1 L012-L033, retime the entire
 episode, and build an executable full visual plan that retains silent shots.
 Existing schema requires nonempty scene lines and current timeline follows lines;
 do not add dummy TTS or silently lose S06/S07/S11/S12/S15. Coordinate shared code
@@ -102,3 +102,28 @@ then establish isolated production using Veo 3.1 Lite 1080p / 8 s before images
 or clips. The current tool token cannot modify global settings, and simply enabling
 global drama may start other works. No final video or owner full-film acceptance
 has been obtained; foreign work remains deferred by the owner's instruction.
+
+Current two-episode checkpoint, 2026-10-02 (supersedes opening-only next steps):
+- Owner explicitly requested all optimization followed by two episodes, Chinese only.
+- All 40 editorial directives independently checked; E1/E2 full scripts complete.
+  E3-E40 full dialogue and actual film are still unfinished.
+- E1 33 lines / 40 editorial shots / 144.86 s; E2 34 / 41 / 159.05 s.
+  All 83 original shot IDs and 17 silent action windows retained; two E1 merges
+  fit measured voice and keep the reply offscreen. No freeze/voice stretching.
+- 67 unique spoken lines; first 11 reused. Total 68 successful TTS requests,
+  900 billable characters including one 2-character retake. Both old/new takes
+  preserved. Two ASR flags per episode remain; human listening has not happened.
+- Sample-exact assembly/stem/CC independent review passed; MP3 previews and raw
+  media remain outside Git. 81 x 8-second Veo first-pass estimate is USD 51.84,
+  not spent. Actual provider USD unknown, USD 10 reserve includes the earlier 5.
+  The prior USD 3,000 included unmeasured high retakes; it is not a spend target.
+- Full script review submissions created for the two competition slugs only:
+  E1 b909e8f3-0cfd-4488-b323-1d81dbaa0dce; E2 e0c54172-1349-40fa-b29f-0da3422e84cb.
+  Both read back pending, subject null, no decision. No source doc approval,
+  Series/worker/global setting change, images or animation generation occurred.
+- Isolated runner in sibling task has 42 focused offline tests and independent
+  review; not deployed. Host/port and permitted connection are unavailable in
+  this workspace. Existing backend series_script_gate remains true.
+- Continue from episodes/scoped-production-runbook.md after actual doc/script
+  approval and admin host access; look/storyboard acceptance then first clip.
+  No full-film owner acceptance, foreign work, publication or competition start.

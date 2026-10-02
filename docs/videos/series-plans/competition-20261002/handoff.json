@@ -2,7 +2,7 @@
   "schema_version": 1,
   "artifact_type": "source-bound-final-polish-handoff-not-runtime-config",
   "slug": "wedding-reckoning",
-  "status": "zh-TW-opening-voice-preview-and-E1-text-ready-animation-blocked",
+  "status": "zh-TW-E1-E2-voice-previews-and-pending-script-reviews-animation-blocked",
   "prepared_at": "2026-10-02T15:09:00.693Z",
   "base_git_commit": "acb935fb461e34ee110b725b742179cc22d67770",
   "source_object_sha256": "37328fa1c643e0edfcd1d138a158410653b36d6e02739ce7a9c555b26bc5bb9c",
@@ -52,11 +52,11 @@
   "package_files": [
     {
       "path": "docs/videos/series-plans/competition-20261002/README.md",
-      "sha256": "36870c89277b3967d837416eef1f725cf27c784e0adf7d33a06fa8830b6e40f1"
+      "sha256": "9c750518dc86efe0e0beb108bfd99a02049f5be80aed11db997a6dc6ad093e45"
     },
     {
       "path": "docs/videos/series-plans/competition-20261002/budget-and-launch.md",
-      "sha256": "64508b131bd98df0b4fd44a16b16584701b3d14531c458de6e3dd1579bb3a218"
+      "sha256": "cf5f13383c982556383321893f8e4b22e8d43806b1ce94204ecdbc431edf7cfd"
     },
     {
       "path": "docs/videos/series-plans/competition-20261002/competition.json",
@@ -64,7 +64,115 @@
     },
     {
       "path": "docs/videos/series-plans/competition-20261002/cost-ledger.csv",
-      "sha256": "54aa2a40327b0df05232e4907f459c682cd73318b83d90709817b421fd69b886"
+      "sha256": "0c7e49c17a835ae314566e4efdcc70ef3a1fb0258ef0d7bebaf36a679ba63b71"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/audio-check-summary.json",
+      "sha256": "1945c26f3328288e5214b4ac5e1991637d500dbe944e4b107dc1dc735786a672"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/build-audio-preview.py",
+      "sha256": "a2e886a0d3f86956e76754d1568aadfd1a195b30762eb3bf5aeaa16edf91bb79"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/episode-01-brief.md",
+      "sha256": "465be3d24960f555aceed7df961d33bf6014eb35a4b6d09fd6afa97725d6871d"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/episode-01-dialogue.json",
+      "sha256": "855b0f7a0a336c32fb5a6ac73de5d48867bf77efb89649ad0575ba2f345a7af5"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/episode-01-edit-plan.json",
+      "sha256": "d0269e9e67196f88b33394b8a117e36ddbdd4927d638874b64b64c42a1c2afb3"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/episode-01-measured-edit.json",
+      "sha256": "34438e1c64cc6535a1ad1cbee685027801483f33783093c5038941f1d9917bb6"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/episode-01-script-review-receipt.json",
+      "sha256": "bf99d1c4d60525434f02b22d20b3b643921a5ad11601e09f8cab89f1e496390d"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/episode-01-series.json",
+      "sha256": "b7f880ac764ad07c4e0fe75b489a72a30cb61aec767e87cd056127973878972c"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/episode-01-timing-report.json",
+      "sha256": "0d6445470b374a185b77490ad7cc297051a62c295a12479f84ddaf904bb9bbe6"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/episode-01-validation.json",
+      "sha256": "a60b8cfa860cbd2568ce0041b50d759d2cb3d7729a373fead3b3395415f7a143"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/episode-01-voice.video.json",
+      "sha256": "949f6c51dc944e3ef972b859822fb5d5d87d9938effa4c9e93fc8e0eae4b408c"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/episode-01-zh-TW.srt",
+      "sha256": "9d79f0077fddcf7fb2f4fe6cda1f5e0b4aa419d79f9c46fa7e733c973705e053"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/episode-01-zh-TW.vtt",
+      "sha256": "5f7da2474e2c6084098c872fe92d02348698dffc172d81f373b81c43ae66fc14"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/episode-02-brief.md",
+      "sha256": "f559b612cd85136b39543f6b2a9f3876d4dd81b17c9b31990bc489195bc4cfc3"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/episode-02-dialogue.json",
+      "sha256": "6e0c9cc6f22c5e9b3b425ae03fecc6eb3db83878b41d44af3cdffb710e3b264b"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/episode-02-measured-edit.json",
+      "sha256": "f3bf26329c8795f5bf4c033fb542703cead9da4fa5739235dffbbedde8fb37bf"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/episode-02-screenplay.md",
+      "sha256": "3e1d8461cd7013ea646dd517e1f7bc35b960e191f9ac005df039c112e1468bdd"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/episode-02-script-review-receipt.json",
+      "sha256": "e6f9e49112d6ebb301746cb8ffe9126097cdd01500b8eb38fde62d16a4ddaa74"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/episode-02-series.json",
+      "sha256": "b275a799d87f01fb1343c19a49316b61f236f145b24bb8fd6020aa458616a4d2"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/episode-02-timing-report.json",
+      "sha256": "050af8466aeabdab115273e82ebc0b6067a9db3d16e8c04f2e3be8a9e35d4368"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/episode-02-voice.video.json",
+      "sha256": "58475bb8c46424777f5e7e5e8e720b653ac30dbab890bdf6f72bb60b9692ad43"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/episode-02-zh-TW.srt",
+      "sha256": "166e5f2f11db3033bc365df2b17c4b2d4f314fc1bf12e0d798ffb3cd1401d023"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/episode-02-zh-TW.vtt",
+      "sha256": "21cf0c661e68b6fa4d37b4279ca54eeae7811a3731bc93d4c1bf173dceddf978"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/review.md",
+      "sha256": "83049a7a618a8819e670f9d39f09dfaf65df519bbd9bd3d470a83394811acf26"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/scoped-production-manifest.draft.json",
+      "sha256": "e396fff8eec743d0799c3f2c24d4d7cefa9b1de43d4f949adc7fc99bd8c915f1"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/scoped-production-runbook.md",
+      "sha256": "f3880617a20ecad02fb349521330a6b9dd476e3b9e33ff8c8828c18acff24ccc"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/test_build_audio_preview.py",
+      "sha256": "d8572871e20febece8cd27efd8544f2efb07844085d1febceeba079affe5e518"
     },
     {
       "path": "docs/videos/series-plans/competition-20261002/opening-lines.json",
@@ -120,11 +228,11 @@
     },
     {
       "path": "docs/videos/series-plans/competition-20261002/production-readiness.md",
-      "sha256": "b6f938a9b910da803f2d5e7e46291c43eb4f0453c65100bf2fe5eca83f9af85d"
+      "sha256": "a5f9c82cbd586578113a66e8d1410dd5429b153d0ae81446b949eda6bc696793"
     },
     {
       "path": "docs/videos/series-plans/competition-20261002/review.md",
-      "sha256": "08e4389df16439b7b99bbf762045f8e5a1800f9fcac440b71da70d8b05e5cf59"
+      "sha256": "9443c699b9c2092a11a66c76e60894fe52a5322a9f405af5b889984aa62cde31"
     },
     {
       "path": "docs/videos/series-plans/competition-20261002/scoreboard.csv",
@@ -132,7 +240,7 @@
     },
     {
       "path": "docs/videos/series-plans/competition-20261002/selection-and-final-polish.md",
-      "sha256": "3452e7259d5338b708434d1e639c04d06600f515086f9535ca44120e48ecc4cb"
+      "sha256": "8ee94b3d12f576b646717885e3e08dda58dea7299c2cf612e5eab306786525f0"
     },
     {
       "path": "docs/videos/series-plans/competition-20261002/validation.json",
@@ -154,7 +262,27 @@
     "pilot_cumulative_cap": 100,
     "first_three_episodes_cumulative_cap": 350,
     "external_paid_review": "must fit total cap; reallocate before ordering",
-    "scoring": "views and actual production cost separately; no weighted overall score"
+    "scoring": "views and actual production cost separately; no weighted overall score",
+    "current_episode_scope": [
+      1,
+      2
+    ],
+    "current_batch_cumulative_cap": 350,
+    "original_target_is_not_current_estimated_spend": true,
+    "first_pass_veo_estimate": {
+      "shots": 81,
+      "generated_seconds": 648,
+      "usd_per_generated_second": 0.08,
+      "usd": 51.84,
+      "spent": false,
+      "excludes": [
+        "images",
+        "speech",
+        "music",
+        "judging",
+        "necessary_rejected_successful_takes"
+      ]
+    }
   },
   "deliverables": {
     "picture_master": "one 1080p 16:9 full-motion film, target 120 minutes, measure actual 115-125",
@@ -182,12 +310,20 @@
       "pilot/episode-01-screenplay.md",
       "pilot/measured-edit.json",
       "pilot/timing-report.json",
-      "pilot/review.md"
+      "pilot/review.md",
+      "episodes/episode-02-screenplay.md",
+      "episodes/episode-01-dialogue.json",
+      "episodes/episode-02-dialogue.json",
+      "episodes/episode-01-measured-edit.json",
+      "episodes/episode-02-measured-edit.json",
+      "episodes/review.md",
+      "episodes/scoped-production-runbook.md",
+      "episodes/scoped-production-manifest.draft.json"
     ],
     "per_episode": "inject relevant row plus accepted new lines alongside current story/continuity; write executable video.json; run writer/verifier and normal hash-bound review gates",
     "reject_if_source_changed": true,
     "preserve_original_receipts": true,
-    "measured_timing_precedence": "pilot/measured-edit.json supersedes original planned60 opening; neither is a full runtime video document"
+    "measured_timing_precedence": "Each episode measured-edit/timing-report supersedes planned edit windows; E1 first51 seconds remain PCM-equal to original pilot. These are voice previews, not visual acceptance."
   },
   "local_preproduction": {
     "review_bundle": "/workspace/mokaair-work/competition-20261002/review",
@@ -201,32 +337,88 @@
       "image": 0,
       "animated_clip": 0,
       "music": 0,
-      "tts_successful": 11,
-      "tts_billable_characters": 118,
-      "tts_retakes": 0,
-      "transcription_successful": 14,
+      "tts_successful": 68,
+      "tts_billable_characters": 900,
+      "tts_retakes": 1,
+      "transcription_successful": 71,
       "transcription_size_rejected": 1,
-      "text_judge": 1
+      "text_judge": 7,
+      "tts_unique_lines": 67
     },
-    "real_media_root": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-pilot-voice-zh-tw",
-    "editorial_voice_preview": "editorial-zh-TW/opening-zh-TW-51s.mp3",
+    "real_media_root": "/workspace/mokaair-work/competition-20261002/media",
     "supplier_actual_usd": null,
     "supplier_actual_usd_status": "not returned by API; ledger awaits invoice reconciliation",
-    "voice_and_check_reservation_usd": 5,
+    "voice_and_check_reservation_usd": 10,
     "reservation_is_not_actual_spend": true,
-    "full_silent_shot_runtime_support": "pending; existing schema/timeline cannot represent independent no-line scenes; do not generate from voice-only document"
+    "full_silent_shot_runtime_support": "Independent measured edit retains 17 silent windows and 83 original shot IDs. Scoped admin runner implemented and independently tested offline; not deployed; current shared timeline remains voice-only.",
+    "editorial_voice_previews": [
+      {
+        "episode": 1,
+        "duration_s": 144.86,
+        "path": "wedding-reckoning-e01-voice-zh-tw/editorial-zh-TW/episode-01-voice-preview.mp3"
+      },
+      {
+        "episode": 2,
+        "duration_s": 159.05,
+        "path": "wedding-reckoning-e02-voice-zh-tw/editorial-zh-TW/episode-02-voice-preview.mp3"
+      }
+    ],
+    "scoped_runner": {
+      "path": "ops/video/scoped_drama.py",
+      "tests_passed": 42,
+      "deployed": false,
+      "global_drama_enabled": false,
+      "production_host_endpoint": "not-provided",
+      "live_script_reviews": "pending",
+      "source_document_approvals": "pending",
+      "first_live_clip": "not-submitted"
+    }
   },
   "acceptance": {
-    "full_screenplays": "E1 33-line 42-shot text drafted and independently reviewed; E2-E40 not yet written",
-    "editorial_package": "independent-text-and-audio-assembly-review-passed; listening-and-picture-gates-pending",
-    "actual_audio": "11 zh-TW opening lines; 51-second voice preview, no music/SFX; E1 later22 lines unrecorded",
+    "full_screenplays": "E1 33 lines /42 original shots and E2 34/41 drafted and independently reviewed; E3-E40 not yet written",
+    "editorial_package": "Independent story/continuity and sample-exact voice/stem/CC review passed; human listening and picture gates pending",
+    "actual_audio": "67 unique zh-TW lines; 144.86 +159.05 second voice previews; 1 bounded short-word retake still unresolved; no music/SFX",
     "actual_video": "not-produced; 0 animated seconds",
     "native_listening": "not-done",
-    "cc_timing": "11 zh-TW entries from measured WAV placements; speech onset/offset listening pending",
+    "cc_timing": "67 zh-TW cues from actual WAV placements, sample/time validation passed; human listening pending",
     "youtube_tracks": "not-verified",
     "published": "no",
-    "automatic_word_check": "11 checked: 8 exact, 2 same-sound, 1 text-judge accepted, 0 flagged, 0 unchecked",
-    "full_Chinese_film_owner_confirmation": "pending"
+    "automatic_word_check": "E1 2 flags and E2 2 flags remain; no automatic all-clear; name/pronoun homophones not blindly retaken",
+    "full_Chinese_film_owner_confirmation": "pending",
+    "script_reviews": [
+      {
+        "episode": 1,
+        "slug": "wedding-reckoning-competition-e01",
+        "id": "b909e8f3-0cfd-4488-b323-1d81dbaa0dce",
+        "gate": "script",
+        "subject": null,
+        "status": "pending",
+        "decided_at": null,
+        "created_at": "2026-10-02T16:04:56.475524Z",
+        "content_sha256": "82352b248e66810bd217092b6284ea13c0ec688dbb410e6f791107e13781c429",
+        "script_path": "/workspace/travel_scanner/docs/videos/series-plans/competition-20261002/pilot/episode-01-screenplay.md",
+        "script_url": "https://mokaair.com/api/admin-video-files/wedding-reckoning-competition-e01/82352b248e66810bd217092b6284ea13c0ec688dbb410e6f791107e13781c429",
+        "review_url": "https://mokaair.com/zh-TW/admin/videos?video=wedding-reckoning-competition-e01",
+        "source_object_sha256": "37328fa1c643e0edfcd1d138a158410653b36d6e02739ce7a9c555b26bc5bb9c",
+        "note": "Script submission only; no approval, series status change or media generation."
+      },
+      {
+        "episode": 2,
+        "slug": "wedding-reckoning-competition-e02",
+        "id": "e0c54172-1349-40fa-b29f-0da3422e84cb",
+        "gate": "script",
+        "subject": null,
+        "status": "pending",
+        "decided_at": null,
+        "created_at": "2026-10-02T16:04:58.254490Z",
+        "content_sha256": "3e1d8461cd7013ea646dd517e1f7bc35b960e191f9ac005df039c112e1468bdd",
+        "script_path": "/workspace/travel_scanner/docs/videos/series-plans/competition-20261002/episodes/episode-02-screenplay.md",
+        "script_url": "https://mokaair.com/api/admin-video-files/wedding-reckoning-competition-e02/3e1d8461cd7013ea646dd517e1f7bc35b960e191f9ac005df039c112e1468bdd",
+        "review_url": "https://mokaair.com/zh-TW/admin/videos?video=wedding-reckoning-competition-e02",
+        "source_object_sha256": "37328fa1c643e0edfcd1d138a158410653b36d6e02739ce7a9c555b26bc5bb9c",
+        "note": "Script submission only; no approval, series status change or media generation."
+      }
+    ]
   },
   "next_task": "2026-10-02-wedding-competition-pilot-four-languages",
   "execution_order": {
@@ -237,7 +429,12 @@
       "ja",
       "ko",
       "en"
-    ]
+    ],
+    "active_episodes": [
+      1,
+      2
+    ],
+    "requires_first_live_clip_before_batch": true
   },
-  "updated_at": "2026-10-02T15:28:59.302376+00:00"
+  "updated_at": "2026-10-02T16:09:24.283407+00:00"
 }

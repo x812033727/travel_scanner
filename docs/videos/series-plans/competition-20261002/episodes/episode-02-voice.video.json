@@ -1,0 +1,1035 @@
+{
+  "schema_version": 1,
+  "slug": "wedding-reckoning-e02-voice-zh-tw",
+  "format": "drama",
+  "narration_locale": "zh-TW",
+  "category": "drama",
+  "target_minutes": [
+    2,
+    4
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Erinome",
+    "style": "台灣國語，自然台灣口音；第三人稱貼近當集主角，語氣清楚克制；只講角色已知的必要資訊，不搶角色對白，情緒轉折留出呼吸"
+  },
+  "pronunciation_hints": {
+    "沈知棠": "shěn zhī táng；沈讀第三聲，知棠讀第一聲、第二聲。",
+    "顧承川": "gù chéng chuān。",
+    "棠棠": "táng táng；兩字都是第二聲。",
+    "沈崇岳": "shěn chóng yuè；沈讀第三聲，崇讀第二聲，岳讀第四聲。"
+  },
+  "youtube": {
+    "category_id": 1,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "喜宴未散，清算開始｜E2 替妳著想｜繁中聲音預演",
+    "description": "完整E2繁中角色錄音工作稿；34句供逐句測時與聽校，7個無聲動作鏡另在editorial計畫，不是完整動畫runtime。",
+    "tags": [
+      "原創漫劇",
+      "重生",
+      "繁中"
+    ],
+    "video_id": null
+  },
+  "series": {
+    "slug": "wedding-reckoning",
+    "episode": 2,
+    "chapter": 1
+  },
+  "characters": [
+    {
+      "id": "chengchuan",
+      "name": "顧承川",
+      "appearance": "East Asian man, 31, narrow clean-shaven face, neat side-part black hair, navy three-piece suit, brushed gold tie clip, polished shoes; controlled smile and immaculate cuffs.",
+      "voice": {
+        "provider": "gemini",
+        "name": "Puck",
+        "style": "台灣國語，自然台灣口音；句首先叫暱稱，再把要求說成替妳著想。 台灣國語；親和表面下帶算計，不以低吼演反派。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。"
+      },
+      "shot_looks": [
+        {
+          "id": "chengchuan--base",
+          "appearance": "East Asian man, 31, narrow clean-shaven face, neat side-part black hair, navy three-piece suit, brushed gold tie clip, polished shoes; controlled smile and immaculate cuffs."
+        }
+      ]
+    },
+    {
+      "id": "chongyue",
+      "name": "沈崇岳",
+      "appearance": "East Asian man, 57, square face, salt-and-pepper hair brushed back, thin metal glasses, charcoal mandarin-collar jacket, amber cuff button on right wrist.",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "台灣國語，自然台灣口音；先叫大家坐下，從不主動把命令說完整。 台灣國語；低、緩、像在談家常；敗局才出現呼吸失序。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。"
+      },
+      "shot_looks": [
+        {
+          "id": "chongyue--base",
+          "appearance": "East Asian man, 57, square face, salt-and-pepper hair brushed back, thin metal glasses, charcoal mandarin-collar jacket, amber cuff button on right wrist."
+        }
+      ]
+    },
+    {
+      "id": "zhitang",
+      "name": "沈知棠",
+      "appearance": "East Asian woman, 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, small silver rectangular watch; ivory tailored trouser suit.",
+      "voice": {
+        "provider": "gemini",
+        "name": "Kore",
+        "style": "台灣國語，自然台灣口音；先問數字，決定後短句不解釋。 台灣國語；清晰沉著，受傷時降低音量，不變尖銳。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。"
+      },
+      "shot_looks": [
+        {
+          "id": "zhitang--base",
+          "appearance": "East Asian woman, 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, small silver rectangular watch; ivory tailored trouser suit."
+        },
+        {
+          "id": "zhitang-bride-veiled",
+          "appearance": "East Asian woman, 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, small silver rectangular watch; An ivory wedding gown and veil; veil remains on in every present-time shot of E1."
+        },
+        {
+          "id": "zhitang-bride-unveiled",
+          "appearance": "East Asian woman, 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, small silver rectangular watch; An ivory wedding gown without a veil."
+        },
+        {
+          "id": "zhitang-watch-off",
+          "appearance": "East Asian woman, 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, ivory tailored trouser suit. No watch on either wrist; the unique silver rectangular watch has been removed to the table."
+        }
+      ]
+    }
+  ],
+  "look": {
+    "preset": "anime-2d",
+    "style": "Original contemporary East Asian animated drama, clean controlled linework, restrained cel shading, detailed fabric, stable adult faces; ivory and ice-blue wedding palette, dusty grey warehouse with reflected warm firelight; grounded dramatic acting, cinematic 16:9 staging.",
+    "negative": "burned subtitles, dialogue text, watermark, logo, extra fingers, duplicate documents, duplicate jewellery, distorted face, extra characters, minors, wardrobe morphing",
+    "motion": "One clearly motivated character or prop action per clip, consistent adult identity, no morphing, no internal cuts.",
+    "candidates": 2
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama",
+    "speaker_prefix": true
+  },
+  "sources": [],
+  "scenes": [
+    {
+      "id": "wr-e02-s01",
+      "chapter": "把名字念出來",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked medium close-up from the bride side. Frame for this one action: She turns the retained complete copy toward Chengchuan. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: zhitang. Locked medium close-up from the bride side.",
+        "motion": "She turns the retained complete copy toward Chengchuan.",
+        "camera": "Locked medium close-up from the bride side.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-unveiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "4f5a6b65",
+          "text": "你要娶我，為什麼連公司的事，都要由你決定？",
+          "speaker": "zhitang",
+          "emotion": "平穩追問，不悲憤喊叫；由婚禮切入真正控制權。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s02",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked medium close-up on the groom. Frame for this one action: He opens one palm in reassurance. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: chengchuan. Locked medium close-up on the groom.",
+        "motion": "He opens one palm in reassurance.",
+        "camera": "Locked medium close-up on the groom.",
+        "characters": [
+          "chengchuan"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "585129ad",
+          "text": "棠棠，附件只是替妳省事。",
+          "speaker": "chengchuan",
+          "emotion": "親暱安撫，試圖把具體文件說成小事。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s03",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked oblique close-up of the copy and one pointing hand. Frame for this one action: She points once to the intended recipient field on the copy. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: zhitang. Locked oblique close-up of the copy and one pointing hand.",
+        "motion": "She points once to the intended recipient field on the copy.",
+        "camera": "Locked oblique close-up of the copy and one pointing hand.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-unveiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "7f869663",
+          "text": "那就念出來。這裡，授權給誰？",
+          "speaker": "zhitang",
+          "emotion": "指向一處文字，短句，不替他回答。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s04",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked close-up with the copy edge soft in foreground. Frame for this one action: His gaze lowers to the recipient field as he reads. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: chengchuan. Locked close-up with the copy edge soft in foreground.",
+        "motion": "His gaze lowers to the recipient field as he reads.",
+        "camera": "Locked close-up with the copy edge soft in foreground.",
+        "characters": [
+          "chengchuan"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "6e3c27ab",
+          "text": "受託人……顧承川。",
+          "speaker": "chengchuan",
+          "emotion": "看清自己的名字才念；短停不超演。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s05",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked oblique paper insert. Frame for this one action: Her index finger moves once to the next item. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: zhitang. Locked oblique paper insert.",
+        "motion": "Her index finger moves once to the next item.",
+        "camera": "Locked oblique paper insert.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-unveiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "8b4d0a7b",
+          "text": "再念下一項。",
+          "speaker": "zhitang",
+          "emotion": "克制，讓他把話說完。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s06",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked close-up; verify mouth synchronization before use. Frame for this one action: He reads the indicated voting-rights item aloud with restrained mouth movement. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: chengchuan. Locked close-up; verify mouth synchronization before use.",
+        "motion": "He reads the indicated voting-rights item aloud with restrained mouth movement.",
+        "camera": "Locked close-up; verify mouth synchronization before use.",
+        "characters": [
+          "chengchuan"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "da7b754c",
+          "text": "代為行使表決權。",
+          "speaker": "chengchuan",
+          "emotion": "勉強照讀，字音清楚；不是朗讀整份合約。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s07",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked medium close-up without crossing the table axis. Frame for this one action: She raises her gaze from the copy to Chengchuan. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: zhitang. Locked medium close-up without crossing the table axis.",
+        "motion": "She raises her gaze from the copy to Chengchuan.",
+        "camera": "Locked medium close-up without crossing the table axis.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-unveiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "3c2a1cc2",
+          "text": "所以，不只是結婚。公司的事，也要由你代我表決。",
+          "speaker": "zhitang",
+          "emotion": "把內容翻成觀眾聽得懂的後果，不宣稱授權已生效。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s08",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked medium close-up. Frame for this one action: He withdraws his open palm to his own table edge. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: chengchuan. Locked medium close-up.",
+        "motion": "He withdraws his open palm to his own table edge.",
+        "camera": "Locked medium close-up.",
+        "characters": [
+          "chengchuan"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "e71ea610",
+          "text": "我幫妳做這些，有什麼不好？",
+          "speaker": "chengchuan",
+          "emotion": "先維持和氣，將問題重新說成人情。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s09",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked table-height two-position framing; only bride identifiable. Frame for this one action: She draws her retained copy back to her own side. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: zhitang. Locked table-height two-position framing; only bride identifiable.",
+        "motion": "She draws her retained copy back to her own side.",
+        "camera": "Locked table-height two-position framing; only bride identifiable.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-unveiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "62eec78b",
+          "text": "我還沒答應，你就已經替我決定好了？",
+          "speaker": "zhitang",
+          "emotion": "重音在沒答應，不添新指控。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s10",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked medium shot, preserving bride-left and groom-right axis. Frame for this one action: He settles into the existing chair at the head-side of the signing table. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: chongyue. Locked medium shot, preserving bride-left and groom-right axis.",
+        "motion": "He settles into the existing chair at the head-side of the signing table.",
+        "camera": "Locked medium shot, preserving bride-left and groom-right axis.",
+        "characters": [
+          "chongyue"
+        ],
+        "character_looks": {
+          "chongyue": "chongyue--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "3f100dd2",
+          "text": "大家先坐下。棠棠，有話好好說。",
+          "speaker": "chongyue",
+          "emotion": "低緩像談家常；第一次加入，沒有怒氣。",
+          "pause_after_ms": 300
+        }
+      ],
+      "chapter": "替誰著想"
+    },
+    {
+      "id": "wr-e02-s11",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked close-up on his face; no new identifiable guests. Frame for this one action: He glances once toward the adult guests off frame. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: chengchuan. Locked close-up on his face; no new identifiable guests.",
+        "motion": "He glances once toward the adult guests off frame.",
+        "camera": "Locked close-up on his face; no new identifiable guests.",
+        "characters": [
+          "chengchuan"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "c3ba746c",
+          "text": "兩家的親友都在。妳這樣問，讓我怎麼交代？",
+          "speaker": "chengchuan",
+          "emotion": "轉向體面施壓，音量依舊受控。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s12",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked medium close-up including her face and copy. Frame for this one action: She lays the retained copy flat on her own side of the table. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: zhitang. Locked medium close-up including her face and copy.",
+        "motion": "She lays the retained copy flat on her own side of the table.",
+        "camera": "Locked medium close-up including her face and copy.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-unveiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "f30fa2e0",
+          "text": "我問文件，你卻只問我讓誰難看。",
+          "speaker": "zhitang",
+          "emotion": "平視承川，回到問題，不連續提高張力。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s13",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked medium close-up. Frame for this one action: He places one palm flat on his own table edge. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: chongyue. Locked medium close-up.",
+        "motion": "He places one palm flat on his own table edge.",
+        "camera": "Locked medium close-up.",
+        "characters": [
+          "chongyue"
+        ],
+        "character_looks": {
+          "chongyue": "chongyue--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "b1ac905b",
+          "text": "他也是想替妳分擔。今天不用把話說得這麼重。",
+          "speaker": "chongyue",
+          "emotion": "用長輩口吻包住要求，不演成已暴露的主使者。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s14",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked medium close-up; no veil visible. Frame for this one action: She turns her head toward her maternal uncle. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: zhitang. Locked medium close-up; no veil visible.",
+        "motion": "She turns her head toward her maternal uncle.",
+        "camera": "Locked medium close-up; no veil visible.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-unveiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "f2016028",
+          "text": "舅舅，表決權是我的。我得知道要交給誰。",
+          "speaker": "zhitang",
+          "emotion": "叫舅舅仍有禮貌，立場清楚。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s15",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked over-table medium close-up. Frame for this one action: She turns her gaze back to Chengchuan. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: zhitang. Locked over-table medium close-up.",
+        "motion": "She turns her gaze back to Chengchuan.",
+        "camera": "Locked over-table medium close-up.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-unveiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "c4427b3d",
+          "text": "這份授權書，是你拿來的，對嗎？",
+          "speaker": "zhitang",
+          "emotion": "重新看顧，問題單一。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s16",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked medium close-up with gold tie clip visible. Frame for this one action: He gives one small confirming nod. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: chengchuan. Locked medium close-up with gold tie clip visible.",
+        "motion": "He gives one small confirming nod.",
+        "camera": "Locked medium close-up with gold tie clip visible.",
+        "characters": [
+          "chengchuan"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "fccfbc0e",
+          "text": "是我準備的。不是怕妳太累嗎？",
+          "speaker": "chengchuan",
+          "emotion": "先承認來源，再用關心卸掉責任。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s17",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked wide enough to separate original and retained copy. Frame for this one action: She points to the intact original at the far side without taking it. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: zhitang. Locked wide enough to separate original and retained copy.",
+        "motion": "She points to the intact original at the far side without taking it.",
+        "camera": "Locked wide enough to separate original and retained copy.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-unveiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "138330a2",
+          "text": "好。那今天放在這裡的原件，就先留下。",
+          "speaker": "zhitang",
+          "emotion": "接住明確說法，沒有勝利嘲諷。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s18",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked close-up; original stays blurred in foreground. Frame for this one action: His eyes shift to the intact original. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: chengchuan. Locked close-up; original stays blurred in foreground.",
+        "motion": "His eyes shift to the intact original.",
+        "camera": "Locked close-up; original stays blurred in foreground.",
+        "characters": [
+          "chengchuan"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "9fa4827e",
+          "text": "婚禮已經停了，文件還留著做什麼？",
+          "speaker": "chengchuan",
+          "emotion": "想結束話題，盯原件而非戒盒。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s19",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked medium close-up; copy remains flat. Frame for this one action: She rests one hand on her retained copy. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: zhitang. Locked medium close-up; copy remains flat.",
+        "motion": "She rests one hand on her retained copy.",
+        "camera": "Locked medium close-up; copy remains flat.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-unveiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "303aced7",
+          "text": "你說只是省事，我也想找人把它看清楚。",
+          "speaker": "zhitang",
+          "emotion": "不指名稽核員，不假裝已查出條文問題。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s20",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked close-up with glasses and amber cuff at frame edge. Frame for this one action: His gaze turns deliberately toward Zhitang. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: chongyue. Locked close-up with glasses and amber cuff at frame edge.",
+        "motion": "His gaze turns deliberately toward Zhitang.",
+        "camera": "Locked close-up with glasses and amber cuff at frame edge.",
+        "characters": [
+          "chongyue"
+        ],
+        "character_looks": {
+          "chongyue": "chongyue--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "7fb21181",
+          "text": "拿出去，別人會怎麼想沈家？",
+          "speaker": "chongyue",
+          "emotion": "低聲、緩，家族名聲成為壓力。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s21",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked medium close-up; natural breathing remains visible. Frame for this one action: She holds his gaze while answering with restrained facial movement. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: zhitang. Locked medium close-up; natural breathing remains visible.",
+        "motion": "She holds his gaze while answering with restrained facial movement.",
+        "camera": "Locked medium close-up; natural breathing remains visible.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-unveiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "3485f962",
+          "text": "讓我不看、不問，才叫替我著想嗎？",
+          "speaker": "zhitang",
+          "emotion": "留一個可回答的反問；不吼，不加勝利音樂。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s22",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked medium close-up with the intact original far in frame. Frame for this one action: She makes one small open-hand gesture toward the existing witness position. Same approved E1 wedding setting and table axis; no veil. Intact unsigned original with attachments stays at far table edge; retained complete copy is on bride side. Torn display pages remain near her, returned bride-ring box at groom side. Frame only the named approved adult looks: zhitang. Locked medium close-up with the intact original far in frame.",
+        "motion": "She makes one small open-hand gesture toward the existing witness position.",
+        "camera": "Locked medium close-up with the intact original far in frame.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-unveiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "059a0c43",
+          "text": "請把這份完整原件封存。附件也一起。",
+          "speaker": "zhitang",
+          "emotion": "向桌側既有公證見證人員，清楚正常句速。",
+          "pause_after_ms": 300
+        }
+      ],
+      "chapter": "原件留下，收據到手"
+    },
+    {
+      "id": "wr-e02-s24",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked medium close-up. Frame for this one action: He leans forward slightly without touching any documents. Same approved E1 wedding setting and table axis; no veil. Existing silent adult witness checks intact unsigned original with attachments; not yet sealed. Bride holds a separate complete copy. Receipt not issued. Frame only the named approved adult looks: chengchuan. Locked medium close-up.",
+        "motion": "He leans forward slightly without touching any documents.",
+        "camera": "Locked medium close-up.",
+        "characters": [
+          "chengchuan"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "13d7f541",
+          "text": "妳連這點信任都不肯給？",
+          "speaker": "chengchuan",
+          "emotion": "壓低聲，以感情要求她撤回決定。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s25",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked close-up. Frame for this one action: She gives one small refusal shake of her head. Same approved E1 wedding setting and table axis; no veil. Existing silent adult witness checks intact unsigned original with attachments; not yet sealed. Bride holds a separate complete copy. Receipt not issued. Frame only the named approved adult looks: zhitang. Locked close-up.",
+        "motion": "She gives one small refusal shake of her head.",
+        "camera": "Locked close-up.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-unveiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "2e8e9caf",
+          "text": "原件不交給你，也不交給我。",
+          "speaker": "zhitang",
+          "emotion": "不把封存說成抓到犯罪，只說文件去向。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s26",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked overhead insert; retained copy stays untouched at bride side. Frame for this one action: The existing silent adult witness slides the complete unsigned original including attachments into one custody envelope. Same approved E1 wedding setting and table axis; no veil. One complete unsigned original with its attachments enters one open custody envelope. Bride keeps her separate complete copy; envelope is not sealed yet. Only existing silent adult witness hands are identifiable; no new face or voice. Locked overhead insert; retained copy stays untouched at bride side.",
+        "motion": "The existing silent adult witness slides the complete unsigned original including attachments into one custody envelope.",
+        "camera": "Locked overhead insert; retained copy stays untouched at bride side.",
+        "characters": [],
+        "character_looks": {},
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "b22d86aa",
+          "text": "請你們帶回保管，給我一張保管收據。",
+          "speaker": "zhitang",
+          "emotion": "禮貌，不能說成她自己封存的收據。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s28",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked medium close-up separating copy from sealed envelope. Frame for this one action: She lifts her retained complete copy from her own table side. Same approved E1 wedding setting and table axis; no veil. One original including attachments is sealed in a single custody envelope at witness side. Bride retains her complete copy. No exposed original remains. Frame only the named approved adult looks: zhitang. Locked medium close-up separating copy from sealed envelope.",
+        "motion": "She lifts her retained complete copy from her own table side.",
+        "camera": "Locked medium close-up separating copy from sealed envelope.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-unveiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "ffd6bd8e",
+          "text": "我手上這份完整副本，我自己留著。",
+          "speaker": "zhitang",
+          "emotion": "區別她的副本和將由見證人帶走的原件。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s30",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked medium close-up, no document contact. Frame for this one action: He looks at the retained copy in her hand. Same approved E1 wedding setting and table axis; no veil. Sealed original remains at witness side. One custody receipt is prepared there, not handed over yet. Bride keeps her complete copy. Frame only the named approved adult looks: chengchuan. Locked medium close-up, no document contact.",
+        "motion": "He looks at the retained copy in her hand.",
+        "camera": "Locked medium close-up, no document contact.",
+        "characters": [
+          "chengchuan"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "a4fa1702",
+          "text": "棠棠，非得在今天走到這一步嗎？",
+          "speaker": "chengchuan",
+          "emotion": "不再親暱自信，仍未低吼或威脅暴力。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s31",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked medium close-up. Frame for this one action: She turns her face back to Chengchuan. Same approved E1 wedding setting and table axis; no veil. Sealed original remains at witness side. One custody receipt is prepared there, not handed over yet. Bride keeps her complete copy. Frame only the named approved adult looks: zhitang. Locked medium close-up.",
+        "motion": "She turns her face back to Chengchuan.",
+        "camera": "Locked medium close-up.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-unveiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "2e2bab84",
+          "text": "是你選在今天，叫我把字簽下去。",
+          "speaker": "zhitang",
+          "emotion": "短而清晰，回收婚禮簽字的具體觸發。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s35",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked medium close-up. Frame for this one action: He turns slightly toward Zhitang with an apparently reassuring posture. Same approved E1 wedding setting and table axis; no veil. Sealed original is in silent witness custody bag. Bride holds receipt and separate complete copy. Groom and uncle possess neither original nor envelope. Returned ring box stays at groom side. Frame only the named approved adult looks: chongyue. Locked medium close-up.",
+        "motion": "He turns slightly toward Zhitang with an apparently reassuring posture.",
+        "camera": "Locked medium close-up.",
+        "characters": [
+          "chongyue"
+        ],
+        "character_looks": {
+          "chongyue": "chongyue--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "838cbadc",
+          "text": "先讓客人安心。文件的事，我來跟妳說。",
+          "speaker": "chongyue",
+          "emotion": "安撫表象，第一次正眼衡量知棠。",
+          "pause_after_ms": 300
+        }
+      ],
+      "chapter": "先把相機關掉"
+    },
+    {
+      "id": "wr-e02-s36",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked medium close-up including her face and receipt. Frame for this one action: She closes her fingers once around the receipt without crumpling it. Same approved E1 wedding setting and table axis; no veil. Sealed original is in silent witness custody bag. Bride holds receipt and separate complete copy. Groom and uncle possess neither original nor envelope. Returned ring box stays at groom side. Frame only the named approved adult looks: zhitang. Locked medium close-up including her face and receipt.",
+        "motion": "She closes her fingers once around the receipt without crumpling it.",
+        "camera": "Locked medium close-up including her face and receipt.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-unveiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "cf075fb6",
+          "text": "可以。但我不會再沒看清楚就簽。",
+          "speaker": "zhitang",
+          "emotion": "接受聽解釋，不放棄核對；不談前世。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s37",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked close-up. Frame for this one action: He studies Zhitang with a small measured change of expression. Same approved E1 wedding setting and table axis; no veil. Sealed original is in silent witness custody bag. Bride holds receipt and separate complete copy. Groom and uncle possess neither original nor envelope. Returned ring box stays at groom side. Frame only the named approved adult looks: chongyue. Locked close-up.",
+        "motion": "He studies Zhitang with a small measured change of expression.",
+        "camera": "Locked close-up.",
+        "characters": [
+          "chongyue"
+        ],
+        "character_looks": {
+          "chongyue": "chongyue--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "e174c140",
+          "text": "妳就這麼信不過自己人？",
+          "speaker": "chongyue",
+          "emotion": "低緩追問，沒有憤怒失控。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s38",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked medium close-up; same gown without veil. Frame for this one action: She settles the retained complete copy against her torso while keeping the receipt visible in the other hand. Same approved E1 wedding setting and table axis; no veil. Sealed original is in silent witness custody bag. Bride holds receipt and separate complete copy. Groom and uncle possess neither original nor envelope. Returned ring box stays at groom side. Frame only the named approved adult looks: zhitang. Locked medium close-up; same gown without veil.",
+        "motion": "She settles the retained complete copy against her torso while keeping the receipt visible in the other hand.",
+        "camera": "Locked medium close-up; same gown without veil.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-unveiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "f093949d",
+          "text": "我信過。所以這一次，我要問清楚。",
+          "speaker": "zhitang",
+          "emotion": "不是重生坦白；說的是過去對家人的信任。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s39",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked medium close-up. Frame for this one action: He gives one restrained nod as if conceding. Same approved E1 wedding setting and table axis; no veil. Sealed original is in silent witness custody bag. Bride holds receipt and separate complete copy. Groom and uncle possess neither original nor envelope. Returned ring box stays at groom side. Frame only the named approved adult looks: chongyue. Locked medium close-up.",
+        "motion": "He gives one restrained nod as if conceding.",
+        "camera": "Locked medium close-up.",
+        "characters": [
+          "chongyue"
+        ],
+        "character_looks": {
+          "chongyue": "chongyue--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "92cd5bfe",
+          "text": "好，我願意解釋。",
+          "speaker": "chongyue",
+          "emotion": "表面讓步，停頓留給下一個條件。",
+          "pause_after_ms": 300
+        }
+      ]
+    },
+    {
+      "id": "wr-e02-s40",
+      "template": "shot",
+      "data": {
+        "prompt": "Locked close-up; no camera is shown switching off. Frame for this one action: He turns his gaze toward an adult guest camera position off frame. Same approved E1 wedding setting and table axis; no veil. Sealed original is in silent witness custody bag. Bride holds receipt and separate complete copy. Groom and uncle possess neither original nor envelope. Returned ring box stays at groom side. Frame only the named approved adult looks: chongyue. Locked close-up; no camera is shown switching off.",
+        "motion": "He turns his gaze toward an adult guest camera position off frame.",
+        "camera": "Locked close-up; no camera is shown switching off.",
+        "characters": [
+          "chongyue"
+        ],
+        "character_looks": {
+          "chongyue": "chongyue--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "lines": [
+        {
+          "id": "97b494f9",
+          "text": "先把相機都關掉。",
+          "speaker": "chongyue",
+          "emotion": "不加重低音；越像平常吩咐越有壓力。",
+          "pause_after_ms": 300
+        }
+      ]
+    }
+  ]
+}
