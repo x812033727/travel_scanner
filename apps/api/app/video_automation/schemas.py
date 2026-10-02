@@ -570,6 +570,8 @@ SeriesGenre = Literal[
     "xianxia-bonds", "rebirth-revenge", "system-game", "urban-return", "empress-rise", "custom"
 ]
 SeriesLead = Literal["female", "male", "dual-male"]
+# The importer can preserve an ensemble on a planning-only row; create/patch remain narrower.
+SeriesLeadOut = Literal["female", "male", "dual-male", "ensemble"]
 VisualTier = Literal["clips", "hybrid", "stills"]
 MAX_DOC_MD_CHARS = 200_000
 MAX_DOC_JSON_BYTES = 512 * 1024
@@ -837,6 +839,9 @@ class SeriesSummary(BaseModel):
     id: UUID
     slug: str
     kind: SeriesKind = "series"
+    planning_only: bool = False
+    category: str | None = None
+    planning_spec: dict[str, object] | None = None
     title: str
     premise: str
     aspects: list[SeriesAspect]
@@ -861,7 +866,7 @@ class SeriesSummary(BaseModel):
     clip_seconds: int = 0
     # The binge columns (docs/videos/BINGE.md); an older row reads as the classic series.
     genre: SeriesGenre = "xianxia-bonds"
-    lead: SeriesLead = "dual-male"
+    lead: SeriesLeadOut = "dual-male"
     hands_off: bool = False
     compilation: bool = False
     visual_tier: VisualTier = "clips"

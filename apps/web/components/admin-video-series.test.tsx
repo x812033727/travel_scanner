@@ -1,5 +1,7 @@
 import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { AdminOperationsProvider } from "./admin-operations-provider";
 import { REFRESH_MS } from "./admin-video-review-card";
 import { AdminVideoSeries, DocPanel, type SeriesDoc } from "./admin-video-series";
@@ -38,6 +40,26 @@ const episodes = [
 const oneOffEpisodes = [
   { number: 1, chapter_number: 1, title: "精衛填海", logline: "L1", beats: beats(1), status: "started", slug: "one-off-1a2b3c4d-e001", recap: null, started_at: "2026-09-27T02:05:00Z", finished_at: null, video: { slug: "one-off-1a2b3c4d-e001", title: "精衛填海", format: "drama", stage: "script", checklist: [{ key: "script", label: "劇本核准", done: false }], youtube_video_id: null, last_synced_at: "2026-09-27T02:10:00Z", pending: 1, media_usd: 12.5, clip_seconds: 96 } },
 ];
+
+// Use the saved project itself: importing it must preserve every outline and all 120 episodes.
+const planDirectory = join(import.meta.dirname, "../../../docs/videos/series-plans/borrowed-dawn");
+const planningSpec = JSON.parse(readFileSync(join(planDirectory, "plan.json"), "utf8")) as Record<string, unknown>;
+type PlanDoc = { kind: string; chapter_number?: number; body_md: string; body_json: { episodes?: Record<string, unknown>[] } };
+const planDocuments = (JSON.parse(readFileSync(join(planDirectory, "documents.json"), "utf8")) as { documents: PlanDoc[] }).documents;
+const planningDocs = planDocuments.map((doc, index) => ({
+  ...doc, id: `plan-doc-${index}`, chapter_number: doc.chapter_number ?? 0, version: 1, status: "review", note: null,
+  decided_at: null, created_at: summary.created_at, unanswered: 0,
+}));
+const planningEpisodes = planDocuments.filter((doc) => doc.kind === "chapter").flatMap((doc) => (doc.body_json.episodes ?? []).map((episode) => ({
+  number: episode.number, title: episode.title, logline: episode.logline, chapter_number: doc.chapter_number, beats: episode,
+  status: "planned", slug: null, recap: null, started_at: null, finished_at: null, video: null,
+})));
+const planningSummary = {
+  ...summary, slug: "borrowed-dawn", title: planningSpec.title, premise: planningSpec.logline, kind: "series", planning_only: true, category: "anime", planning_spec: planningSpec,
+  status: "paused", genre: "custom", lead: "ensemble", tone: "no-romance", style_preset: "anime-2d", target_minutes: 22,
+  planned_episodes: 120, episodes_per_chapter: 12, chapters: 10, open_ended: false, note: null,
+  episodes_done: 0, episodes_started: 0, episodes_ready: 0, docs_pending: 12, media_usd: 0, clip_seconds: 0,
+};
 
 // What the server quotes for the form's defaults (120 minutes of 3-minute hybrid episodes) against a
 // month whose clip, image and episode budgets are too small for it; only the judge budget fits.
@@ -84,7 +106,7 @@ type Call = { url: string; method: string; body?: Record<string, unknown> };
  * threads by subject (an owner's line posted here shows up on the next read), the requests.
  * `answer` plays the model: it answers every waiting line and, when given, files the new documents.
  */
-function stubFetch(options: { docs?: Doc[]; threads?: Record<string, Line[]>; oneOffs?: (typeof oneOff)[]; withdrawRefused?: boolean ; settings?: Record<string, unknown>; series?: Record<string, unknown>; seriesVideos?: unknown[] } = {}) {
+function stubFetch(options: { docs?: Doc[]; threads?: Record<string, Line[]>; oneOffs?: (typeof oneOff)[]; withdrawRefused?: boolean ; settings?: Record<string, unknown>; series?: Record<string, unknown>; seriesVideos?: unknown[]; seriesEpisodes?: Record<string, unknown>[]; summaries?: Record<string, unknown>[] } = {}) {
   const calls: Call[] = [];
   let currentDocs = options.docs ?? docs;
   const threads = options.threads ?? {};
@@ -106,7 +128,7 @@ function stubFetch(options: { docs?: Doc[]; threads?: Record<string, Line[]>; on
       return Promise.resolve(Response.json({ slug: url.split("/").pop(), requests_cancelled: 1 }));
     }
     if (url.endsWith("/admin/video-automation/series") && method === "POST") return Promise.resolve(Response.json(newOne, { status: 201 }));
-    if (url.endsWith("/admin/video-automation/series?kind=series")) return Promise.resolve(Response.json({ series: [summary] }));
+    if (url.endsWith("/admin/video-automation/series?kind=series")) return Promise.resolve(Response.json({ series: options.summaries ?? [summary] }));
     if (url.endsWith("/admin/video-automation/series?kind=one-off")) return Promise.resolve(Response.json({ series: options.oneOffs ?? [] }));
     if (url.endsWith("/messages") && method === "POST") {
       const subject = String(body?.subject);
@@ -121,6 +143,7 @@ function stubFetch(options: { docs?: Doc[]; threads?: Record<string, Line[]>; on
     if (url.includes("/admin/video-automation/series/new-one")) return Promise.resolve(Response.json(newOne));
     if (url.includes("/admin/video-automation/series/one-off-9f8e7d6c")) return Promise.resolve(Response.json({ ...oneOff, slug: "one-off-9f8e7d6c", title: "大禹治水", status: "setting", episodes_started: 0, docs: [], episodes: [{ ...oneOffEpisodes[0], status: "planned", slug: null, started_at: null, video: null }] }));
     if (url.includes("/admin/video-automation/series/one-off-1a2b3c4d")) return Promise.resolve(Response.json({ ...oneOff, docs: [bible], episodes: oneOffEpisodes }));
+    if (url.includes("/admin/video-automation/series/borrowed-dawn")) return Promise.resolve(Response.json({ ...planningSummary, ...options.series, docs: currentDocs, episodes: options.seriesEpisodes ?? planningEpisodes }));
     if (url.includes("/admin/video-automation/series/wenjian")) return Promise.resolve(Response.json({ ...summary, ...options.series, docs: currentDocs, episodes }));
     if (url.endsWith("/drama-requests") && method === "POST") return Promise.resolve(Response.json({ id: "r1", premise: body?.premise, title: null, source_guide: null, style_preset: body?.style_preset, target_minutes: body?.target_minutes, note: null, status: "queued", slug: null, series_slug: "one-off-1a2b3c4d", episode_number: 1, created_at: "2026-09-27T04:00:00Z", started_at: null, finished_at: null, cancelled_at: null }, { status: 201 }));
     if (url.endsWith("/drama-requests")) return Promise.resolve(Response.json({ requests: [] }));
@@ -143,6 +166,75 @@ afterEach(() => {
 });
 
 describe("AdminVideoSeries", () => {
+  it("shows the saved anime plan with its original runtime, 120 episodes and every document, without production controls", async () => {
+    const { calls } = stubFetch({ docs: planningDocs, summaries: [planningSummary], seriesEpisodes: planningEpisodes });
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+    const card = await screen.findByRole("button", { name: /借來的黎明/ });
+    for (const label of ["動漫", "企劃待製作", "群像主角", "0/120 集 · 10 季", "正文 22 分鐘", "播出時段 30 分鐘", "12 份企劃文件"]) expect(card.textContent).toContain(label);
+    expect(card.textContent).not.toContain("等你核准");
+    expect(card.textContent).not.toContain("全片段");
+    // Read support for ensemble and 22 minutes does not expand the ordinary production forms.
+    fireEvent.click(screen.getByText("新的作品", { selector: "summary" }));
+    expect(screen.getByRole("spinbutton", { name: "每集分鐘（1–8）" })).toHaveProperty("max", "8");
+    expect(screen.queryByRole("radio", { name: "群像主角" })).toBeNull();
+    fireEvent.click(card);
+    const heading = await screen.findByRole("heading", { name: /借來的黎明/ });
+    expect(heading.textContent).toContain("企劃待製作");
+    expect(screen.getByText("企劃已建立，等待長篇製作支援。設定、總綱與各季細綱可在下方閱讀。")).toBeTruthy();
+    expect(screen.getByText(String(planningSpec.tone))).toBeTruthy();
+    const episodesRegion = screen.getByRole("region", { name: "集數" });
+    expect(episodesRegion.querySelectorAll("tbody tr")).toHaveLength(120);
+    expect(episodesRegion.querySelector("tbody tr:last-child")?.textContent).toContain(String(planningEpisodes[119].title));
+    const docsRegion = screen.getByRole("region", { name: "文件" });
+    const docPanels = docsRegion.querySelectorAll(":scope > details");
+    expect(docPanels).toHaveLength(12);
+    planningDocs.forEach((doc, index) => {
+      const panel = docPanels[index] as HTMLElement;
+      expect(panel.querySelector(".whitespace-pre-wrap")?.textContent).toBe(doc.body_md);
+      expect(within(panel).getByText("已保存")).toBeTruthy();
+      expect(within(panel).getByText("查看企劃資料", { selector: "summary" })).toBeTruthy();
+    });
+    expect(within(docsRegion).getByText("第 10 季細綱")).toBeTruthy();
+    const readFull = within(docPanels[0] as HTMLElement).getByText("看全文", { selector: "summary" });
+    fireEvent.click(readFull);
+    expect(readFull.closest("details")).toHaveProperty("open", true);
+    for (const name of ["繼續", "暫停", "先規劃下一篇", "現在開始下一集", "做合集", "核准", "退回", "跳過", "送出", "請 AI 同步製作資料"]) expect(screen.queryByRole("button", { name })).toBeNull();
+    expect(screen.queryByRole("checkbox", { name: "免關卡" })).toBeNull();
+    expect(screen.queryByText("自己改", { selector: "summary" })).toBeNull();
+    expect(screen.queryByRole("textbox", { name: "給模型的話" })).toBeNull();
+    expect(calls.filter((call) => call.url.includes("/messages"))).toHaveLength(0);
+    expect(calls.every((call) => call.method === "GET")).toBe(true);
+    expect(screen.getByRole("button", { name: "撤回" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "回作品列表" })).toBeTruthy();
+  });
+
+  it("can withdraw a planning-only project before production and returns to the list", async () => {
+    window.history.replaceState(null, "", "/?series=borrowed-dawn");
+    const { calls } = stubFetch({ docs: planningDocs, summaries: [planningSummary], seriesEpisodes: planningEpisodes });
+    const confirm = vi.spyOn(window, "confirm").mockReturnValue(true);
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+    await screen.findByRole("heading", { name: /借來的黎明/ });
+    fireEvent.click(screen.getByRole("button", { name: "撤回" }));
+    await waitFor(() => expect(calls.some((call) => call.method === "DELETE" && call.url.endsWith("/series/borrowed-dawn"))).toBe(true));
+    await waitFor(() => expect(window.location.search).not.toContain("series="));
+    expect(calls.filter((call) => call.method === "POST" || call.method === "PATCH" || call.method === "PUT")).toHaveLength(0);
+    confirm.mockRestore();
+  });
+
+  it("keeps resume and document review available for ordinary paused series", async () => {
+    window.history.replaceState(null, "", "/?series=wenjian");
+    const { calls } = stubFetch({ series: { status: "paused", category: "anime", planning_only: false } });
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+    const heading = await screen.findByRole("heading", { name: /問劍/ });
+    expect(heading.textContent).toContain("動漫");
+    expect(heading.textContent).toContain("已暫停");
+    expect(screen.getByRole("checkbox", { name: "免關卡" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "核准" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "跳過" })).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "繼續" }));
+    await waitFor(() => expect(calls.some((call) => call.method === "PATCH" && call.body?.status === "active")).toBe(true));
+  });
+
   it("lists the series with their progress and starts a new one from the form", async () => {
     const { calls } = stubFetch();
     const opened: string[] = [];

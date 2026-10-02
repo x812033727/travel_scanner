@@ -42,7 +42,7 @@ type SeriesEpisode = {
 // how much of the picture is paid clips; hands_off lets the checker approve the documents, and
 // compilation joins the finished episodes into one cut the owner downloads from the series page.
 type SeriesGenre = "xianxia-bonds" | "rebirth-revenge" | "system-game" | "urban-return" | "empress-rise" | "custom";
-type SeriesLead = "female" | "male" | "dual-male";
+type SeriesLead = "female" | "male" | "dual-male" | "ensemble";
 type VisualTier = "clips" | "hybrid" | "stills";
 type SeriesSummary = {
   id: string; slug: string; title: string; premise: string; aspects: string[]; tone: string; style_preset: string; target_minutes: number;
@@ -51,6 +51,8 @@ type SeriesSummary = {
   media_usd: number; clip_seconds: number; created_at: string; updated_at: string;
   // Both absent from an API older than one-offs and threads: a series then, with nothing waiting.
   kind?: SeriesKind; messages_pending?: number;
+  // Imported long-form plans are readable here while production support is being prepared.
+  planning_only?: boolean; category?: string | null; planning_spec?: Record<string, unknown> | null;
   // The binge columns; absent from an API older than this page, which reads as the classic series.
   genre?: SeriesGenre; lead?: SeriesLead; hands_off?: boolean; compilation?: boolean; visual_tier?: VisualTier; total_minutes?: number | null;
   compilation_slug?: string | null; compilation_started_at?: string | null; compilation_finished_at?: string | null;
@@ -105,7 +107,7 @@ const oneOffWithdrawable = (series: SeriesSummary) => series.status === "setting
 const withdraw = (series: SeriesSummary) => api(`/admin/video-automation/series/${series.slug}`, { method: "DELETE" });
 // The status pill's key: a one-off waiting on its first document (the server starts it at "setting",
 // apps/api/app/video_automation/series.py create_one_off) waits for a story bible, not a setting book.
-const statusKey = (series: SeriesSummary) => (series.kind === "one-off" && series.status === "setting" ? "bible" : series.status);
+const statusKey = (series: SeriesSummary) => (series.planning_only ? "planning" : series.kind === "one-off" && series.status === "setting" ? "bible" : series.status);
 // Where a series' compilation stands, from the summary's compilation columns: not asked for, waiting
 // for the episodes, waiting for the worker to pick it up, being cut, or cleared for upload.
 type CompilationState = "none" | "waiting" | "queued" | "making" | "done";
@@ -237,12 +239,25 @@ function NewBingeForm({ onCreated }: { onCreated: (slug: string) => void }) {
 function BingePills({ series }: { series: SeriesSummary }) {
   const t = useTranslations("admin.videoSeries");
   const state = compilationState(series);
+  if (series.planning_only) return <>
+    {series.category === "anime" && <AdminStatusPill status="inactive">{t("planning.anime")}</AdminStatusPill>}
+    {series.lead && <AdminStatusPill status="inactive">{t(`leads.${series.lead}`)}</AdminStatusPill>}
+  </>;
   return <>
+    {series.category === "anime" && <AdminStatusPill status="inactive">{t("planning.anime")}</AdminStatusPill>}
     <AdminStatusPill status="inactive">{t(`genres.${series.genre ?? "xianxia-bonds"}.name`)}</AdminStatusPill>
     <AdminStatusPill status="inactive">{t(`tiers.${series.visual_tier ?? "clips"}.name`)}</AdminStatusPill>
     {series.hands_off && <AdminStatusPill status="active">{t("handsOff")}</AdminStatusPill>}
     {state !== "none" && <AdminStatusPill status={compilationTone[state]}>{t(`compilationStatuses.${state}`)}</AdminStatusPill>}
   </>;
+}
+
+function PlanningRuntime({ series }: { series: SeriesSummary }) {
+  const t = useTranslations("admin.videoSeries");
+  const runtime = record(series.planning_spec?.runtime);
+  const story = typeof runtime.story_minutes === "number" && runtime.story_minutes > 0 ? runtime.story_minutes : series.target_minutes;
+  const slot = runtime.broadcast_slot_minutes;
+  return <span>{typeof slot === "number" && slot > 0 ? t("planning.runtime", { story, slot }) : t("planning.storyMinutes", { story })}</span>;
 }
 
 /** Start a series: the premise and the shape; the worker plans the setting book from it. */
@@ -416,6 +431,7 @@ function DramaQueue({ requests, canManage, onChanged, onOpen }: { requests: Dram
 /** What waits on a series card: documents for the owner, lines for the model. */
 function WaitingPills({ series }: { series: SeriesSummary }) {
   const t = useTranslations("admin.videoSeries");
+  if (series.planning_only) return series.docs_pending > 0 ? <AdminStatusPill status="inactive">{t("planning.documents", { count: series.docs_pending })}</AdminStatusPill> : null;
   return <>
     {series.docs_pending > 0 && <AdminStatusPill status="pending">{t("docsPending", { count: series.docs_pending })}</AdminStatusPill>}
     {(series.messages_pending ?? 0) > 0 && <AdminStatusPill status="running">{t("messagesPending", { count: series.messages_pending ?? 0 })}</AdminStatusPill>}
@@ -490,7 +506,7 @@ function SeriesList({ onOpenSeries, onOpenVideo }: { onOpenSeries: (slug: string
           <WaitingPills series={each} />
           <BingePills series={each} />
         </span>
-        <span className="text-sm text-[var(--muted)]">{t("progress", { done: each.episodes_done, total: each.planned_episodes, chapters: each.chapters })}{each.total_minutes ? ` · ${t("totalMinutesLabel", { minutes: each.total_minutes })}` : ""} · {t("spend", { usd: Number(each.media_usd ?? 0).toFixed(2), seconds: each.clip_seconds ?? 0 })}</span>
+        <span className="text-sm text-[var(--muted)]">{each.planning_only ? <>{t("planning.progress", { done: each.episodes_done, total: each.planned_episodes, seasons: each.chapters })} · <PlanningRuntime series={each} /></> : <>{t("progress", { done: each.episodes_done, total: each.planned_episodes, chapters: each.chapters })}{each.total_minutes ? ` · ${t("totalMinutesLabel", { minutes: each.total_minutes })}` : ""} · {t("spend", { usd: Number(each.media_usd ?? 0).toFixed(2), seconds: each.clip_seconds ?? 0 })}</>}</span>
         <span className="line-clamp-2 text-sm leading-6">{each.premise}</span>
       </button>
     </li>)}</ul>}
@@ -550,7 +566,7 @@ function BeatsTable({ episodes }: { episodes: Record<string, unknown>[] }) {
  * One document of a series: read it, discuss it with the model, approve it or send it back with a
  * note, or rewrite it yourself. The video page of a one-off shows its story bible through this too.
  */
-export function DocPanel({ slug, doc, canManage, onChanged, approvalBlocked = false }: { slug: string; doc: SeriesDoc; canManage: boolean; onChanged: () => void | Promise<void>; approvalBlocked?: boolean }) {
+export function DocPanel({ slug, doc, canManage, onChanged, approvalBlocked = false, planningOnly = false }: { slug: string; doc: SeriesDoc; canManage: boolean; onChanged: () => void | Promise<void>; approvalBlocked?: boolean; planningOnly?: boolean }) {
   const t = useTranslations("admin.videoSeries");
   const when = useWhen();
   const [note, setNote] = useState("");
@@ -571,7 +587,8 @@ export function DocPanel({ slug, doc, canManage, onChanged, approvalBlocked = fa
       setReconciliationRequested((current) => current?.messageId === pendingMessageId ? null : current);
     }
   }, [pendingMessageId]);
-  const title = doc.kind === "chapter" ? t("chapterN", { n: doc.chapter_number }) : t(`docKinds.${doc.kind}`);
+  const canEdit = canManage && !planningOnly;
+  const title = doc.kind === "chapter" ? t(planningOnly ? "planning.seasonN" : "chapterN", { n: doc.chapter_number }) : t(`docKinds.${doc.kind}`);
   const decide = async (decision: "approve" | "reject") => {
     setBusy(true);
     setError("");
@@ -617,22 +634,22 @@ export function DocPanel({ slug, doc, canManage, onChanged, approvalBlocked = fa
   return <details open={doc.status === "review"} className="rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]">
     <summary className="flex cursor-pointer flex-wrap items-center gap-3">
       <span className="text-lg font-bold">{title}</span>
-      <AdminStatusPill status={docTone[doc.status]}>{t(`docStatuses.${doc.status}`)}</AdminStatusPill>
+      <AdminStatusPill status={planningOnly ? "inactive" : docTone[doc.status]}>{planningOnly ? t("planning.docStatus") : t(`docStatuses.${doc.status}`)}</AdminStatusPill>
       {(doc.unanswered ?? 0) > 0 && <AdminStatusPill status="running">{t("thread.waiting")}</AdminStatusPill>}
       <span className="text-sm text-[var(--muted)]">{t("version", { n: doc.version })} · {when(doc.created_at)}</span>
     </summary>
     <div className="mt-4 grid gap-4">
       {doc.note && <p className="rounded-xl bg-[var(--paper)] p-3 text-sm leading-6"><strong>{doc.status === "rejected" ? t("sentBack") : t("docNote")}</strong> {doc.note}</p>}
-      {doc.needs_reconciliation && <div className="grid gap-3 rounded-xl bg-[var(--paper)] p-3 text-sm leading-6">
+      {!planningOnly && doc.needs_reconciliation && <div className="grid gap-3 rounded-xl bg-[var(--paper)] p-3 text-sm leading-6">
         <p>{t("reconcileHelp")}</p>
-        {canManage && <Button secondary disabled={busy || reconciliationPending || (doc.unanswered ?? 0) > 0} onClick={() => void reconcile()}>{t("reconcileAction")}</Button>}
+        {canEdit && <Button secondary disabled={busy || reconciliationPending || (doc.unanswered ?? 0) > 0} onClick={() => void reconcile()}>{t("reconcileAction")}</Button>}
       </div>}
       {episodes.length > 0 && <BeatsTable episodes={episodes} />}
       <details className="rounded-2xl border border-[var(--line)] p-4"><summary className="cursor-pointer font-bold">{t("readDoc")}</summary><div className="mt-3 max-h-[40rem] overflow-y-auto whitespace-pre-wrap text-sm leading-7">{doc.body_md}</div></details>
-      <details className="rounded-2xl border border-[var(--line)] p-4"><summary className="cursor-pointer font-bold">{t("readProductionData")}</summary><p className="mt-3 text-sm leading-6 text-[var(--muted)]">{t("productionDataHelp")}</p><pre className="mt-3 max-h-[32rem] overflow-auto whitespace-pre-wrap break-words text-xs leading-6">{JSON.stringify(doc.body_json, null, 2)}</pre></details>
+      <details className="rounded-2xl border border-[var(--line)] p-4"><summary className="cursor-pointer font-bold">{t(planningOnly ? "planning.readData" : "readProductionData")}</summary><p className="mt-3 text-sm leading-6 text-[var(--muted)]">{t(planningOnly ? "planning.dataHelp" : "productionDataHelp")}</p><pre className="mt-3 max-h-[32rem] overflow-auto whitespace-pre-wrap break-words text-xs leading-6">{JSON.stringify(doc.body_json, null, 2)}</pre></details>
       {/* An approved document keeps its thread as a record; a new version the model writes from the discussion arrives through onChanged. */}
-      <DiscussionThread seriesSlug={slug} subject={docSubject(doc.kind, doc.chapter_number)} canManage={canManage} readOnly={doc.status === "approved"} waiting={(doc.unanswered ?? 0) > 0} onPosted={onChanged} onMessagesLoaded={onMessagesLoaded} />
-      {canManage && doc.status === "review" && <div className="grid gap-3 border-t border-[var(--line)] pt-4">
+      {!planningOnly && <DiscussionThread seriesSlug={slug} subject={docSubject(doc.kind, doc.chapter_number)} canManage={canEdit} readOnly={doc.status === "approved"} waiting={(doc.unanswered ?? 0) > 0} onPosted={onChanged} onMessagesLoaded={onMessagesLoaded} />}
+      {canEdit && doc.status === "review" && <div className="grid gap-3 border-t border-[var(--line)] pt-4">
         {approvalBlocked && <p className="text-sm text-[var(--muted)]">{t("approvalOrder")}</p>}
         <label className="grid gap-2 text-sm font-semibold">{t("note")}<textarea className={control} rows={3} value={note} disabled={busy} placeholder={t("notePlaceholder")} onChange={(event) => setNote(event.target.value)} /></label>
         <div className="flex flex-wrap gap-3">
@@ -640,7 +657,7 @@ export function DocPanel({ slug, doc, canManage, onChanged, approvalBlocked = fa
           <Button secondary disabled={busy || !note.trim()} onClick={() => void decide("reject")}>{t("reject")}</Button>
         </div>
       </div>}
-      {canManage && <details className="rounded-2xl border border-[var(--line)] p-4" onToggle={(event) => { if ((event.target as HTMLDetailsElement).open && draft === null) setDraft(doc.body_md); }}>
+      {canEdit && <details className="rounded-2xl border border-[var(--line)] p-4" onToggle={(event) => { if ((event.target as HTMLDetailsElement).open && draft === null) setDraft(doc.body_md); }}>
         <summary className="cursor-pointer font-bold">{t("editDoc")}</summary>
         <div className="mt-3 grid gap-3">
           <p className="text-sm leading-6 text-[var(--muted)]">{t("editHelp")}</p>
@@ -716,11 +733,13 @@ function SeriesPage({ slug, onBack, onOpenVideo }: { slug: string; onBack: () =>
   const order = (doc: SeriesDoc) => (doc.kind === "setting" || doc.kind === "bible" ? 0 : doc.kind === "outline" ? 1 : 1 + doc.chapter_number);
   // A one-off is one episode planned from its bible: no chapters to plan, no episode count worth showing.
   const oneOff = series?.kind === "one-off";
-  const state = series && !oneOff ? compilationState(series) : "none";
+  const planningOnly = Boolean(series?.planning_only);
+  const canProduce = manage.allowed && !planningOnly;
+  const state = series && !oneOff && !planningOnly ? compilationState(series) : "none";
   // The current compilation first; an earlier one (the owner asked for another) only when nothing newer exists.
   const compilation = series ? (compilations.find((video) => video.slug === series.compilation_slug) ?? compilations[0] ?? null) : null;
   // One compilation per series: the worker names it <series>-full, so a second cannot start. A one-off has none.
-  const canCompile = !oneOff && series?.status === "finished" && state === "none";
+  const canCompile = !oneOff && !planningOnly && series?.status === "finished" && state === "none";
   if (series?.kind === "story") return <StorySeriesPage series={series} error={error} onBack={onBack} onOpenVideo={onOpenVideo} onChanged={load} />;
   return <section className="mt-6 grid gap-5">
     <div><Button secondary onClick={onBack}><ArrowLeft aria-hidden size={18} />{t("back")}</Button></div>
@@ -728,25 +747,27 @@ function SeriesPage({ slug, onBack, onOpenVideo }: { slug: string; onBack: () =>
     {series && <>
       <header className="grid gap-2">
         <h2 className="flex flex-wrap items-center gap-3 text-2xl font-bold">{series.title}{oneOff && <AdminStatusPill status="active">{t("oneOff")}</AdminStatusPill>}<AdminStatusPill status={seriesTone[series.status]}>{t(`statuses.${statusKey(series)}`)}</AdminStatusPill><WaitingPills series={series} /><BingePills series={series} /></h2>
-        <p className="text-sm text-[var(--muted)]">{oneOff ? "" : `${t("progress", { done: series.episodes_done, total: series.planned_episodes, chapters: series.chapters })}${series.total_minutes ? ` · ${t("totalMinutesLabel", { minutes: series.total_minutes })}` : ""} · `}{t("spend", { usd: Number(series.media_usd ?? 0).toFixed(2), seconds: series.clip_seconds ?? 0 })} · {oneOff ? "" : `${t(`leads.${series.lead ?? "dual-male"}`)} · `}{t(`tones.${series.tone}`)} · {t(`presets.${series.style_preset}`)} · {t("minutesEach", { minutes: series.target_minutes })}</p>
+        <p className="text-sm text-[var(--muted)]">{planningOnly ? <>{t("planning.progress", { done: series.episodes_done, total: series.planned_episodes, seasons: series.chapters })} · <PlanningRuntime series={series} /> · {t(`presets.${series.style_preset}`)}</> : <>{oneOff ? "" : `${t("progress", { done: series.episodes_done, total: series.planned_episodes, chapters: series.chapters })}${series.total_minutes ? ` · ${t("totalMinutesLabel", { minutes: series.total_minutes })}` : ""} · `}{t("spend", { usd: Number(series.media_usd ?? 0).toFixed(2), seconds: series.clip_seconds ?? 0 })} · {oneOff ? "" : `${t(`leads.${series.lead ?? "dual-male"}`)} · `}{t(`tones.${series.tone}`)} · {t(`presets.${series.style_preset}`)} · {t("minutesEach", { minutes: series.target_minutes })}</>}</p>
+        {planningOnly && <p role="status" className="rounded-xl bg-[var(--paper)] p-3 text-sm leading-6">{t("planning.help")}</p>}
+        {planningOnly && typeof series.planning_spec?.tone === "string" && <p className="text-sm text-[var(--muted)]">{series.planning_spec.tone}</p>}
         <p className="whitespace-pre-wrap text-sm leading-6">{series.premise}</p>
         {series.note && <p className="text-sm text-[var(--muted)]">{t("fields.note")}: {series.note}</p>}
         {manage.allowed && <div className="flex flex-wrap gap-3">
-          {series.status === "active" && <Button secondary disabled={busy === "pause"} onClick={() => void act("pause", () => patch({ status: "paused" }))}>{t("pause")}</Button>}
-          {series.status === "paused" && <Button secondary disabled={busy === "resume"} onClick={() => void act("resume", () => patch({ status: "active" }))}>{t("resume")}</Button>}
-          {series.status === "active" && !oneOff && <Button secondary disabled={busy === "plan"} onClick={() => void act("plan", () => api(`/admin/video-automation/series/${slug}/actions/plan-next-chapter`, { method: "POST" }))}>{t("planNextChapter")}</Button>}
-          {series.status === "active" && <Button secondary disabled={busy === "start"} onClick={() => void act("start", () => api(`/admin/video-automation/series/${slug}/actions/start-next`, { method: "POST" }))}>{t("startNext")}</Button>}
+          {canProduce && series.status === "active" && <Button secondary disabled={busy === "pause"} onClick={() => void act("pause", () => patch({ status: "paused" }))}>{t("pause")}</Button>}
+          {canProduce && series.status === "paused" && <Button secondary disabled={busy === "resume"} onClick={() => void act("resume", () => patch({ status: "active" }))}>{t("resume")}</Button>}
+          {canProduce && series.status === "active" && !oneOff && <Button secondary disabled={busy === "plan"} onClick={() => void act("plan", () => api(`/admin/video-automation/series/${slug}/actions/plan-next-chapter`, { method: "POST" }))}>{t("planNextChapter")}</Button>}
+          {canProduce && series.status === "active" && <Button secondary disabled={busy === "start"} onClick={() => void act("start", () => api(`/admin/video-automation/series/${slug}/actions/start-next`, { method: "POST" }))}>{t("startNext")}</Button>}
           {withdrawable(series) && <Button secondary disabled={busy === "withdraw"} onClick={() => void takeBack(series)}>{busy === "withdraw" ? t("saving") : t("withdraw")}</Button>}
           {canCompile && <Button secondary disabled={busy === "compile"} onClick={() => void act("compile", () => api(`/admin/video-automation/series/${slug}/actions/compile`, { method: "POST" }))}>{t("compile")}</Button>}
         </div>}
-        {manage.allowed && !oneOff && <div className="grid gap-1">
+        {canProduce && !oneOff && <div className="grid gap-1">
           <label className="flex min-h-11 items-center gap-2 text-sm font-semibold"><input type="checkbox" checked={Boolean(series.hands_off)} disabled={busy === "hands-off"} onChange={(event) => void act("hands-off", () => patch({ hands_off: event.target.checked }))} />{t("handsOff")}</label>
           <p className="text-sm leading-6 text-[var(--muted)]">{t("handsOffHelp")}</p>
         </div>}
-        {(series.requested_chapter || series.force_next) && <p className="text-sm text-[var(--muted)]">{series.requested_chapter ? t("chapterRequested", { n: series.requested_chapter }) : ""}{series.force_next ? ` ${t("nextForced")}` : ""}</p>}
+        {!planningOnly && (series.requested_chapter || series.force_next) && <p className="text-sm text-[var(--muted)]">{series.requested_chapter ? t("chapterRequested", { n: series.requested_chapter }) : ""}{series.force_next ? ` ${t("nextForced")}` : ""}</p>}
         {actionError && <p role="alert" className="text-sm text-red-800">{actionError}</p>}
       </header>
-      {!oneOff && (state !== "none" || series.status === "finished" || compilation) && <section className="grid gap-3 rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]" aria-label={t("compilation")}>
+      {!oneOff && !planningOnly && (state !== "none" || series.status === "finished" || compilation) && <section className="grid gap-3 rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]" aria-label={t("compilation")}>
         <h3 className="flex flex-wrap items-center gap-3 text-lg font-bold">{t("compilation")}{state !== "none" && <AdminStatusPill status={compilationTone[state]}>{t(`compilationStatuses.${state}`)}</AdminStatusPill>}</h3>
         {state === "none" && !compilation && <p className="text-sm leading-6 text-[var(--muted)]">{t("compilationNone")}</p>}
         {state === "waiting" && <p className="text-sm leading-6 text-[var(--muted)]">{t("compilationWaiting")}</p>}
@@ -765,7 +786,7 @@ function SeriesPage({ slug, onBack, onOpenVideo }: { slug: string; onBack: () =>
       <section className="grid gap-4" aria-label={t("docsTitle")}>
         <h3 className="text-lg font-bold">{t("docsTitle")}</h3>
         {series.docs.length === 0 && <p className="text-sm text-[var(--muted)]">{oneOff ? t("bibleEmpty") : t("docsEmpty")}</p>}
-        {[...series.docs].sort((a, b) => order(a) - order(b)).map((doc) => <DocPanel key={doc.id} slug={slug} doc={doc} canManage={manage.allowed} onChanged={load} approvalBlocked={!oneOff && doc.kind !== "setting" && (
+        {[...series.docs].sort((a, b) => order(a) - order(b)).map((doc) => <DocPanel key={doc.id} slug={slug} doc={doc} canManage={canProduce} planningOnly={planningOnly} onChanged={load} approvalBlocked={!oneOff && doc.kind !== "setting" && (
           !series.docs.some((parent) => parent.kind === "setting" && parent.status === "approved" && !parent.needs_reconciliation)
           || (doc.kind === "chapter" && !series.docs.some((parent) => parent.kind === "outline" && parent.status === "approved" && !parent.needs_reconciliation))
           || (doc.kind === "chapter" && doc.chapter_number > 1 && !series.docs.some((parent) => parent.kind === "chapter" && parent.chapter_number === doc.chapter_number - 1 && parent.status === "approved" && !parent.needs_reconciliation))
@@ -774,7 +795,7 @@ function SeriesPage({ slug, onBack, onOpenVideo }: { slug: string; onBack: () =>
       <section className="grid gap-3" aria-label={t("episodesTitle")}>
         <h3 className="text-lg font-bold">{t("episodesTitle")}</h3>
         {series.episodes.length === 0 ? <p className="text-sm text-[var(--muted)]">{t("episodesEmpty")}</p> : <div className="overflow-x-auto rounded-2xl border border-[var(--line)] bg-[var(--surface)]"><table className="min-w-full text-sm">
-          <thead><tr className="text-left text-xs text-[var(--muted)]">{(["number", "chapter", "title", "status", "step", "pending", "spend", "actions"] as const).map((key) => <th key={key} className="px-3 py-2 font-semibold">{t(`episodeColumns.${key}`)}</th>)}</tr></thead>
+          <thead><tr className="text-left text-xs text-[var(--muted)]">{(["number", "chapter", "title", "status", "step", "pending", "spend", "actions"] as const).map((key) => <th key={key} className="px-3 py-2 font-semibold">{t(planningOnly && key === "chapter" ? "planning.season" : `episodeColumns.${key}`)}</th>)}</tr></thead>
           <tbody>{series.episodes.map((episode) => {
             const video = episode.video;
             const step = video ? (video.checklist.find((item) => !item.done)?.label ?? video.stage) : "";
@@ -787,8 +808,8 @@ function SeriesPage({ slug, onBack, onOpenVideo }: { slug: string; onBack: () =>
               <td className="px-3 py-2">{video?.pending ? t("pendingCount", { count: video.pending }) : ""}</td>
               <td className="px-3 py-2">{video && typeof video.media_usd === "number" ? `US$${video.media_usd.toFixed(2)}` : ""}</td>
               <td className="px-3 py-2"><span className="flex flex-wrap gap-2">
-                {episode.slug && <Button secondary onClick={() => onOpenVideo(episode.slug as string)}>{t("openVideo")}</Button>}
-                {manage.allowed && (episode.status === "planned" || episode.status === "ready") && <Button secondary disabled={busy === `skip-${episode.number}`} onClick={() => skip(episode.number)}>{t("skip")}</Button>}
+                {!planningOnly && episode.slug && <Button secondary onClick={() => onOpenVideo(episode.slug as string)}>{t("openVideo")}</Button>}
+                {canProduce && (episode.status === "planned" || episode.status === "ready") && <Button secondary disabled={busy === `skip-${episode.number}`} onClick={() => skip(episode.number)}>{t("skip")}</Button>}
               </span></td>
             </tr>;
           })}</tbody>
