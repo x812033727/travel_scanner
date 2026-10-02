@@ -1,13 +1,13 @@
 ---
 id: 2026-09-26-update-chatgpt-ads-taiwan-status-openai
 title: Update ChatGPT ads Taiwan status: OpenAI opened ads in Taiwan on 2026-09-23
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5-chatgpt-ads-tw
 claimed_at: 2026-10-02T18:51:19Z
 created_at: 2026-09-26T14:06:20Z
-completed_at:
+completed_at: 2026-10-02T19:19:53Z
 branch: claude/chatgpt-ads-taiwan-status
 depends_on: []
 scope:
