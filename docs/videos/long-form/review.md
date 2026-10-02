@@ -1,6 +1,6 @@
 # Long-form duration revision: independent review
 
-Reviewer: review_longform. Author: codex-root and the implementation authors. Review date: 2026-10-02. Verdict: **PASS — DURATION_ONLY**. The PR #1105 category-report increment was reviewed by claude-pr-review-1105. Required fixes remaining: **none** for the SHA-bound revision below.
+Reviewer: review_longform. Author: codex-root and the implementation authors. Review date: 2026-10-02. Verdict: **PASS — DURATION_ONLY**. The PR #1105 category-report increment was reviewed by claude-pr-review-1105. The PR #1110 anime-category increment was reviewed by claude-pr-review-1110. Required fixes remaining: **none** for the SHA-bound revision below.
 
 The initial 21-file review and the integrated 70-file increment below independently inspected the implementation, planning records, original source bytes, duration guards and API/UI changes. It does not claim a fresh factual review of the underlying topics, completion of full long-video manuscripts, approval of rewritten manuscripts, human audio listening, image QA or verification of actual media. No real provider/model/media calls, production media generation, production writes, imports, activation, scheduling or publication were performed. Unit regressions use local synthetic and mocked fixtures.
 
@@ -125,6 +125,16 @@ Findings: flow.mjs renames recordedVideoId to recorded(), which reads the same v
 
 Commands: `node tools/video/long-form/cli.mjs check` before rebinding failed only on the four stale bindings, exit 1. The automation, story, review sync, long-form, core duration and QA duration tests ran 148: 147 passed and the one failure was the shipped review-binding test reporting the same four stale bindings. After rebinding, the review test and CLI check are rerun by the reviewer. Non-claims: no CI, browser, real media, provider or PostgreSQL acceptance. This is DURATION_ONLY compatibility review, not acceptance of the category-filing feature itself. Required duration fixes remaining: none.
 
+## PR #1110 anime-category increment: 7 files (2026-10-02)
+
+Reviewer: claude-pr-review-1110. Author: claude-pr-1110 (the Claude session that wrote PR #1110, "feat(video): add the anime (動漫) video category"). The reviewer read the complete delta of the seven bound files from origin/main 99ec2fa5 to HEAD 945af94f (branch claude/magical-ptolemy-7ivtcd with origin/main merged in at 8654cf81, then the migration renumbering below). It confirmed that origin/main's bytes of each file equal the preceding bound hashes, so this delta is exactly the unreviewed change. The other 63 bindings are untouched and still match their current bytes. The reviewer also read the non-bound API model/schema, web review-card, schema test, HANDS-OFF.md and migration deltas, and every category consumer under tools/video.
+
+Findings: schema.mjs adds "anime" to VIDEO_CATEGORIES between long-drama and travel. Each of the five admin.json files adds one category label (Anime, アニメ, 애니메이션, 动漫, 動漫); no duration label changes. The test's expected category options gain 動漫. duration.mjs, drama.mjs, lint.mjs, qa/ and automation/ are byte-unchanged. KNOWLEDGE_CATEGORIES stays ai-terms/explainer/story. effectiveEpisodeMinutes, needsMinimumLength, minEpisodeMinutes (8-minute floor), explainer default 10 and 8–20, drama 1–8 default 3, brand 13 minutes and the 14,400-frame body/final guard keep their accepted bytes. No test changes a duration expectation and there is no new VIDEO_MIN_EPISODE_MINUTES assignment. "anime" is not a knowledge category, so an anime-category video keeps the rules of its format and look. It gets the 14,400-frame guard only as a non-compilation slides/screencast/drama with look.preset flat-explainer or a sothatswhy-/ai-term-/story- slug. Otherwise a slides or screencast video keeps the 8-minute lint/QA floor, a non-explainer drama keeps the ordinary drama exemption, and a compilation keeps its own rules. Classification never keyed on "anime", so no video loses a floor it had before. The category is unrelated to the anime-2d look preset that brand stories use. Brand stories are emitted as category "story", and the site's category is never read back into video.json.
+
+Migration finding and fix: at merge 8654cf81 the PR's 0118_video_category_anime and main's bound duration migration 0118_video_min_8_minutes both revised 0117_video_shorts_topics. `alembic heads` reported two heads, so `alembic upgrade head` could not apply the duration migration on an unmigrated database. The reviewer returned FAIL. The merger's commit 945af94f renamed the migration to 0119_video_category_anime, revising 0118_video_min_8_minutes, and renamed its test and the 0116 test's reference. The reviewer re-verified it independently: a single head 0119_video_category_anime with the chain 0117 -> 0118_video_min_8_minutes -> 0119. No stale 0118_video_category_anime reference remains. The migration only rebuilds ck_video_project_category, and its downgrade nulls only anime categories. The bound 0118 duration migration and its test are byte-unchanged.
+
+Commands: `node tools/video/long-form/cli.mjs check` before rebinding failed only on the seven stale bindings. The core, long-form and QA duration tests ran 209: 208 passed, and the one failure was the shipped review-binding test reporting the same stale bindings. `npm run check:i18n` passed for 5 locales and 25 namespaces. The admin-video-reviews vitest file passed 30/30. In apps/api, `alembic heads` showed one head, ruff and mypy (app, tests) were clean, and pytest on the 0116/0118/0119 migration, video-review and schema tests gave 51 passed and 3 skipped (PostgreSQL). After rebinding, the review test and CLI check were rerun by the reviewer. Non-claims: no CI, browser, real media, provider or PostgreSQL acceptance. This is DURATION_ONLY compatibility review, not acceptance of the anime category feature itself. Required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 70 bindings describe the current reviewed bytes after the main-merge and owned migration-order increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -145,15 +155,15 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | `apps/api/tests/test_video_explainer_duration.py` | `fbd8aaca7171321dcbe7511f607f61bb21a147640f9e22920db87d2f872ab2fc` |
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
 | `apps/web/components/admin-video-explainer-duration.test.tsx` | `bb888f17b3ef617d788fbed83f5fba280dfe06da008a6f80fca15b15c6916ca0` |
-| `apps/web/components/admin-video-reviews.test.tsx` | `98a983a571dcc8ca9e1d5da5cc0bcac3f7d96c6bcd8ed0805c7ca9f55ff5f08d` |
+| `apps/web/components/admin-video-reviews.test.tsx` | `89f97cce17c37ddb552fa8bd52b6ff1f79f8038c18b4f3a41271e399b45aa9bf` |
 | `apps/web/components/admin-video-series.test.tsx` | `f6b62a1802799e56cd8d64e003a2035b3b2e255a214e41335329ae25069eec8c` |
 | `apps/web/components/admin-video-series.tsx` | `97980f007e7091dab343603c0bb1ada909decab950a5535c9ef50ee8fadba7a1` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `7aad8e5d88b67ebaf0b261a57482fb06044111e86af9cfa43157627c7e671957` |
-| `apps/web/messages/en/admin.json` | `1999afbe94f289230b8491c884ea42e2508c65a79bc9e37e1d2ea07574478fa7` |
-| `apps/web/messages/ja/admin.json` | `71b13a0819eb38d4917186edd56a94d58f249e7d105ef61b1832654d7e6b23db` |
-| `apps/web/messages/ko/admin.json` | `d1960406d5839e61c178b08128f9080ac97a5a7d6ff6d67cc15c7747deda224a` |
-| `apps/web/messages/zh-CN/admin.json` | `be21c3de63820628fc1d3b1f98b3d7904d9b6ade5c7722f01789011dcde05f00` |
-| `apps/web/messages/zh-TW/admin.json` | `4cdb1979b25bebcc1a508b0aa0081b400e024cc6eb1f60a7f5bf07d2c607be70` |
+| `apps/web/messages/en/admin.json` | `e6438f466512de6394df03f641b329014e8fea6baefccb44fe9cba087534c621` |
+| `apps/web/messages/ja/admin.json` | `3ed8561fc6166b97cc7f6f89ae63914c221b778ec775146b7e6970cb3ca69a46` |
+| `apps/web/messages/ko/admin.json` | `1eb68339415196a4e7b84fefeec47166d65b271c10dd77a105d8fefb75e90a89` |
+| `apps/web/messages/zh-CN/admin.json` | `21909fd8e87ecc5cbcb78a7b3ef9fdff1f53ca10b10beb96c6190a22584ddc13` |
+| `apps/web/messages/zh-TW/admin.json` | `c32f3f75068fbe54b74d8a391a4b0957c7fde9b82f2a297df04e973b874338ee` |
 | `docs/videos/DESIGN.md` | `299449c6c19a40a0e17868615a7d8442771449e0db6e63186ca9c57a0d57ab41` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `ac08a33baedd84f282901594e55758f4b390ee1a8dc798e2c25c4b463081aa80` |
 | `docs/videos/README.md` | `88a8fcb1e6019d279b790f089feb14abe5dc21d2b1c0624f4d0fe25c73346868` |
@@ -175,7 +185,7 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | `tools/video/core/lint.mjs` | `34b2d059805ceceedd95f56881a13a30a7112e4dcc49864a58fbf7d57e309ed8` |
 | `tools/video/core/lint.test.mjs` | `0cc01210737ee6d3be68018602bd36789c223a6c746b29b5add73f5a3cf28225` |
 | `tools/video/core/narration-locale.test.mjs` | `af0b899f0518ef0f652816a8d53908d002cb805514993ca24d6aca0004640595` |
-| `tools/video/core/schema.mjs` | `d072cccea0eb2156d462225edf61cec6d732cb79d1b4d8e9caf2571bc830622e` |
+| `tools/video/core/schema.mjs` | `4133e8aec14099b8b15f0d47faaf9ee6d242b30a7f6e2da35de60b8c504476b4` |
 | `tools/video/core/stages.test.mjs` | `0a409f7a88234c1823146ea65092a95ceb12b69c34ccf1910894712f34859a2e` |
 | `tools/video/core/state.test.mjs` | `23e89658d92b99d0e7dbb64e8ad00f82016795deb38ef732ec9e76013d867522` |
 | `tools/video/dubs/captions-package.test.mjs` | `7eb0a10630b447dd17ffeafe3d99059c0fe3f392d58838dffd10a59373734f28` |
