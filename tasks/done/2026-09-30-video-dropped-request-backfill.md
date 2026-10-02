@@ -1,13 +1,13 @@
 ---
 id: 2026-09-30-video-dropped-request-backfill
 title: 放棄影片前卡在 started 的漫劇請求列要回填成 cancelled
-status: in-progress
+status: done
 priority: P3
 area: api
 owner: claude-opus-5-5-request-backfill
 claimed_at: 2026-10-02T05:57:32Z
 created_at: 2026-09-30T03:55:50Z
-completed_at:
+completed_at: 2026-10-02T06:03:58Z
 branch: claude/drama-request-backfill
 depends_on: []
 scope:
