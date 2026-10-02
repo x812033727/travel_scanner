@@ -1,13 +1,13 @@
 ---
 id: 2026-09-20-da-nang-hoi-an-naming-fixes
 title: da-nang-hoi-an-4-day-itinerary：「會安古鎮」改目錄的「會安古城」、「峴港觀光局」改成該站署名
-status: in-progress
+status: done
 priority: P3
 area: docs
 owner: claude-opus-5-5-content-names
 claimed_at: 2026-10-02T18:59:07Z
 created_at: 2026-09-20T03:12:49Z
-completed_at:
+completed_at: 2026-10-02T19:06:21Z
 branch: claude/da-nang-hoi-an-names
 depends_on: []
 scope:
