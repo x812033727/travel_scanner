@@ -1020,16 +1020,21 @@ async def _second_stage(
     candidate.draft_bundle_json = {
         locale: item.model_dump(mode="json") for locale, item in documents.items()
     }
-    if any(problems.values()):
-        await _needs_redraft(
+    # Saved even when a check failed: a missing FAQ block or a forbidden word in one locale
+    # is an edit in the guide editor and a re-verify, not a whole new draft (task
+    # 2026-09-24-save-news-drafts-that-fail-hard). Saving publishes nothing; the publish
+    # button and this stage both go through publication_bundle, which runs the checks again.
+    await _save_guide_bundle(session, candidate, slug, event_date, documents)
+    failing = [locale for locale, found in problems.items() if found]
+    if failing:
+        await _manual(
             session,
             candidate,
             "news_hard_checks_failed",
-            "One or more locales failed hard checks.",
+            f"Hard checks failed in {', '.join(failing)}; the article is saved unpublished. "
+            "Fix it in the guide editor and re-verify.",
         )
-        return candidate.status
-
-    await _save_guide_bundle(session, candidate, slug, event_date, documents)
+        return "manual_review"
     confirmed = candidate.human_decision == "publish"
     if final_holds:
         await _manual(
