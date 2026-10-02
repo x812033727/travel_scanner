@@ -1,14 +1,14 @@
 ---
 id: 2026-10-02-video-render-stills-differ-run-to
 title: Video render stills differ run to run at the same frame key
-status: open
+status: in-progress
 priority: P3
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-render-determinism
+claimed_at: 2026-10-02T04:46:32Z
 created_at: 2026-10-02T03:19:35Z
 completed_at:
-branch:
+branch: claude/render-deterministic-stills
 depends_on: []
 scope:
   - tools/video/render/browser.mjs
