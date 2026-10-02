@@ -247,6 +247,32 @@ def test_the_earliest_planned_slot_whose_topic_has_no_short_is_made() -> None:
     assert jobs.next_job_for(_facts(planned=[])).kind is None
 
 
+def test_a_blocked_short_does_not_hold_up_the_calendar_until_the_owner_retries_it() -> None:
+    blocked = jobs.TopicFacts("receipt", "lab", "making", project_blocked=True)
+    decision = jobs.next_job_for(_facts(topics={**_facts().topics, "receipt": blocked}))
+    assert (decision.kind, decision.topic_slug) == ("make", "poster")
+    assert decision.holds == ("「receipt」卡住了，等站主處理",)
+    # A retry the worker has not acknowledged yet is not blocked: the make job comes back.
+    retried = jobs.TopicFacts("receipt", "lab", "making")
+    again = jobs.next_job_for(_facts(topics={**_facts().topics, "receipt": retried}))
+    assert again.topic_slug == "receipt"
+
+
+def test_a_project_waits_for_the_owner_only_while_blocked_with_no_retry_to_take() -> None:
+    first, second = UUID(int=7), UUID(int=8)
+
+    def project(stage: str, request: UUID | None, acknowledged: UUID | None) -> VideoProject:
+        return VideoProject(
+            stage=stage, retry_request_id=request, retry_acknowledged_id=acknowledged
+        )
+
+    assert jobs._waits_for_owner(project("blocked", None, None))
+    assert jobs._waits_for_owner(project("blocked", first, first)), "the old retry was taken"
+    assert not jobs._waits_for_owner(project("blocked", second, first)), "a new retry"
+    assert not jobs._waits_for_owner(project("blocked", first, None))
+    assert not jobs._waits_for_owner(project("making", None, None))
+
+
 def test_pause_the_month_s_cap_the_budget_and_the_subject_hold_back_making() -> None:
     paused = jobs.next_job_for(_facts(paused=True))
     assert paused.kind is None and paused.holds == ("Shorts 暫停中，不開始新的製作",)

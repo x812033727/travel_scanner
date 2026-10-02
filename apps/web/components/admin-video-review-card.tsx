@@ -503,6 +503,7 @@ function CopyField({ label, value, rows }: { label: string; value: string; rows:
  *   files[]            { role, sha256, size, content_type } with the roles
  *                        final                 final.mp4                 video/mp4
  *                        thumbnail             thumbnail.jpg             image/jpeg
+ *                        thumbnail-b, -c       thumbnail-b.jpg, -c.jpg   image/jpeg (Test & compare variants B and C)
  *                        thumbnail_<locale>    thumbnails/<locale>.jpg   image/jpeg (a language's own, for Studio's language page)
  *                        captions_<locale>    captions/<locale>.srt     text/plain (application/x-subrip and text/vtt also accepted)
  *                        description_<locale>  description.<locale>.txt  text/plain
@@ -530,6 +531,9 @@ export function UploadPackage({ slug, review, mp4Gone = false }: { slug: string;
   const downloads = review.files.flatMap((file) => {
     if (file.role === "final") return mp4Gone ? [] : [{ file, label: t("downloadFinal"), name: "final.mp4" }];
     if (file.role === "thumbnail") return [{ file, label: t("downloadThumbnail"), name: "thumbnail.jpg" }];
+    // A Test & compare variant keeps its hyphen, so it is never read as a language below.
+    const variant = /^thumbnail-([a-z])$/.exec(file.role);
+    if (variant) return [{ file, label: t("downloadLocaleThumbnail", { locale: variant[1].toUpperCase() }), name: `thumbnail-${variant[1]}.jpg` }];
     if (file.role.startsWith("thumbnail_")) {
       const locale = localeOf(file.role, "thumbnail_");
       return [{ file, label: t("downloadLocaleThumbnail", { locale }), name: `thumbnail.${locale}.jpg` }];
@@ -616,6 +620,8 @@ export function UploadedForm({ slug, onLinked, publishAt: suggested = "" }: { sl
   </form>;
 }
 
+const THUMBNAIL_VARIANTS = [["A", "thumbnail"], ["B", "thumbnail-b"], ["C", "thumbnail-c"]] as const;
+
 function FinalBody({ slug, review, mp4Gone, vertical }: { slug: string; review: Review; mp4Gone: boolean; vertical: boolean }) {
   const t = useTranslations("admin.videoReviews");
   const checks = record(review.payload.checks);
@@ -625,12 +631,21 @@ function FinalBody({ slug, review, mp4Gone, vertical }: { slug: string; review: 
   const video = mp4Gone ? undefined : fileUrl(slug, fileFor(review, "preview"));
   const sheet = fileUrl(slug, fileFor(review, "contact_sheet"));
   const poster = fileUrl(slug, fileFor(review, "thumbnail"));
+  // YouTube "Test & compare" variants (docs/videos/so-thats-why/thumbnails.md): B and C come as
+  // thumbnail-b / thumbnail-c beside thumbnail (A). Without them the card stays as it was.
+  const variants = THUMBNAIL_VARIANTS.map(([letter, role]) => ({ letter, src: fileUrl(slug, fileFor(review, role)) })).filter((variant) => variant.src);
+  const hasVariants = variants.some((variant) => variant.letter !== "A");
   // What an experiment's claims rest on (tools/video/shorts/push.mjs names each file evidence_<path>).
   const evidence = review.files.filter((file) => file.role.startsWith("evidence_"));
   const titles = list(review.payload.titles).map(text).filter(Boolean);
   return <div className="grid gap-4">
     {video && vertical && <ShortsPlayer src={video} poster={poster} />}
     {video && !vertical && <label className="grid gap-2 font-bold">{t("preview")}<video controls preload="metadata" src={video} poster={poster} className="aspect-video w-full rounded-xl bg-black" /></label>}
+    {hasVariants && <ul className="grid grid-cols-3 gap-2">{variants.map(({ letter, src }) => <li key={letter} className="grid gap-1 text-center text-sm font-bold">
+      {/* A private, session-bound preview: the image optimizer cannot fetch it. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={src} alt={t("downloadLocaleThumbnail", { locale: letter })} className="aspect-video w-full rounded-lg object-cover" loading="lazy" />{letter}
+    </li>)}</ul>}
     {titles.length > 0 && <div><p className="font-bold">{t("titles")}</p><ol className="mt-2 grid gap-1 text-sm leading-6">{titles.map((title, index) => <li key={title} className="flex flex-wrap items-center gap-2"><span>{title}</span><AdminStatusPill status={index === 0 ? "active" : "inactive"}>{index === 0 ? t("titleInUse") : t("titleSpare")}</AdminStatusPill></li>)}</ol></div>}
     <CheckItems report={review.payload.qa} title={t("qaTitle")} />
     <ShortsEvidence files={evidence} urlOf={(file) => fileUrl(slug, file)} />
