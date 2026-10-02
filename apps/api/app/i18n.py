@@ -2149,6 +2149,31 @@ for _news_locale, _news_errors in _NEWS_AUTOMATION_ERRORS.items():
     ERROR_DETAILS[_news_locale].update(_news_errors)
 
 
+_VIDEO_PLAN_ERRORS: dict[Locale, dict[str, str]] = {
+    "en": {
+        "video_plans_unavailable": (
+            "The video planning catalog is missing or invalid. Check the deployed version."
+        ),
+    },
+    "ja": {
+        "video_plans_unavailable": (
+            "動画企画カタログが見つからないか、検証に失敗しました。"
+            "デプロイされたバージョンを確認してください"
+        ),
+    },
+    "ko": {
+        "video_plans_unavailable": (
+            "영상 기획 카탈로그가 없거나 검증에 실패했습니다. 배포된 버전을 확인해 주세요"
+        ),
+    },
+    "zh-CN": {
+        "video_plans_unavailable": "视频企划数据包缺失或验证失败，请检查部署版本",
+    },
+}
+for _video_plan_locale, _video_plan_errors in _VIDEO_PLAN_ERRORS.items():
+    ERROR_DETAILS[_video_plan_locale].update(_video_plan_errors)
+
+
 def active_locale() -> Locale:
     """The locale of the request being served, or the site default outside a request."""
 

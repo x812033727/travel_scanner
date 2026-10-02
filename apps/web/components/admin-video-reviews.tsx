@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowLeft, CheckCircle2, Circle, Clapperboard, Upload } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { type ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { AdminErrorState, AdminStatusPill } from "@/components/admin-ui";
@@ -15,12 +15,14 @@ import { AdminVideoSeries, DocPanel, type Series } from "@/components/admin-vide
 import { AdminVideoSettings } from "@/components/admin-video-settings";
 import { AdminVideoRenewal } from "@/components/admin-video-renewal";
 import { AdminVideoShorts } from "@/components/admin-video-shorts";
+import { AdminVideoPlans } from "@/components/admin-video-plans";
 import { stateTone } from "@/components/admin-video-shorts-data";
 import { DiscussionThread, scriptSubject } from "@/components/admin-video-thread";
 import { syncRunning, useYoutubeConnection, YoutubeChannelCard, type YoutubeConnection, YoutubeLinkHint, YoutubePublishForm, YoutubeSyncPanel } from "@/components/admin-video-youtube";
 import { Button, Tabs } from "@/components/community/ui";
 import { useAdminQueryState, useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 import { api } from "@/lib/api";
+import { videoPlansCopy } from "@/lib/video-plans-copy";
 
 // The review card, the gate bodies and the shared types live in admin-video-review-card.tsx;
 // these two are re-exported so older imports keep working. The drama tab (series and one-off
@@ -454,19 +456,21 @@ function ProjectList({ onOpen }: { onOpen: (slug: string) => void }) {
   </div>;
 }
 
-const TABS = ["reviews", "drama", "shorts", "settings"] as const;
+const TABS = ["reviews", "drama", "shorts", "settings", "plans"] as const;
 
 export function AdminVideoReviews() {
   const t = useTranslations("admin.videoReviews");
+  const plans = videoPlansCopy(useLocale());
   const [slug, setSlug] = useAdminQueryValue("video", "", (value) => SLUG.test(value));
   const [tab, setTab] = useAdminQueryState("tab", TABS, "reviews");
   if (slug) return <ProjectDetail slug={slug} onBack={() => setSlug("")} onOpen={setSlug} />;
   return <div className="mt-6">
     <Tabs value={tab} onChange={(value) => setTab(value as (typeof TABS)[number])} label={t("tabsLabel")}
-      items={[{ value: "reviews", label: t("tabReviews") }, { value: "drama", label: t("tabDrama") }, { value: "shorts", label: t("tabShorts") }, { value: "settings", label: t("tabSettings") }]}>
+      items={[{ value: "reviews", label: t("tabReviews") }, { value: "drama", label: t("tabDrama") }, { value: "shorts", label: t("tabShorts") }, { value: "settings", label: t("tabSettings") }, { value: "plans", label: plans.tab }]}>
       {tab === "reviews" && <ProjectList onOpen={setSlug} />}
       {tab === "drama" && <AdminVideoSeries onOpenVideo={setSlug} />}
       {tab === "shorts" && <AdminVideoShorts onOpenVideo={setSlug} />}
+      {tab === "plans" && <AdminVideoPlans />}
       {tab === "settings" && <><div className="mt-6"><YoutubeChannelCard /></div><AdminVideoSettings /></>}
     </Tabs>
   </div>;
