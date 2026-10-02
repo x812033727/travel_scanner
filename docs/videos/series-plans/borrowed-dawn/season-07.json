@@ -1,0 +1,760 @@
+{
+  "number": 7,
+  "title": "真正的冬天",
+  "theme": "重建必須容許失敗、離開與被替代",
+  "core_conflict": "有限難民聚落嘗試普通能源、自然農業與照護，須真實償債並驗證歸零風險，而不是借更大奇跡掩蓋損失。",
+  "time_span": "第72集後初春至次年春，共完整一年；約三年廣泛失效只是動態風險估值。",
+  "season_resolution": "冬籬在明確容量、有限外援與縮減規模下經歷四季；舊載體實際休止，低欠額田恢復，長債田仍停。米菈充分照護仍死亡，本地技師可以糾正與接替沈澈。",
+  "season_hook": "已覆核的資料顯示歸零令會危及必要回流，團隊完成地方交接後前往外緣尋找古代退場條件。",
+  "episodes": [
+    {
+      "number": 73,
+      "title": "回到同一張桌",
+      "logline": "分散的四人在冬籬救援重逢，居民要求先說明毀錨責任。",
+      "hook": "融雪洪水截斷難民進入聚落的木橋。",
+      "conflict": "糧食容量有限，居民不願再接受未說明風險的宏大計畫。",
+      "turn": "沈澈接受公開追問，提出只做有容量上限的限期試居。",
+      "cliffhanger": {
+        "type": "choice",
+        "text": "瑟菈同意試居，條件是各戶保有拒絕新增承債的權利。"
+      },
+      "tension": [
+        3,
+        4,
+        2,
+        4,
+        4
+      ],
+      "setups": [
+        "m11",
+        "m12"
+      ],
+      "payoffs": [],
+      "characters": [
+        "shen-che",
+        "lyne",
+        "oren",
+        "sera",
+        "mila"
+      ],
+      "locations": [
+        "冬籬渡口",
+        "冬籬議事棚"
+      ],
+      "theme": "重新取得信任",
+      "high_tension": [
+        {
+          "beat": "first_half",
+          "event": "奧倫在無甲狀態指揮繩索救援，莉涅接應失溫者。",
+          "stakes": "橋上難民與搬運者可能被洪水帶走。",
+          "consequence": "人員救回，部分物資落水。"
+        },
+        {
+          "beat": "second_half",
+          "event": "居民當面要求沈澈交代北錨決策，不接受救援抵銷責任。",
+          "stakes": "團隊可能失去試居許可與信任。",
+          "consequence": "沈澈公佈已知錯誤與未明風險。"
+        }
+      ],
+      "consequence": "四人重聚但不恢復舊權威；米菈安排公共炊事，試居接受地方監督。",
+      "state": {
+        "time": "初春；第72集評估後數週",
+        "knowledge": "失效風險約三年是估值，不是安全期限。",
+        "character_state": "奧倫永久神經損傷，不能穿甲；四人仍有分歧。",
+        "evidence": "洪水損失與試居人口具名登記。",
+        "carry_forward": "聚落須先確認容量與拒債條件。"
+      },
+      "closed_ending": false,
+      "general_payoffs": [
+        "洪水中受困難民被救回，四人重新建立合作條件。"
+      ]
+    },
+    {
+      "number": 74,
+      "title": "數清每一袋糧",
+      "logline": "公開盤點推翻沈澈的估算，冬籬必須縮小試驗規模。",
+      "hook": "米菈稱重後發現帳面糧袋含潮損與空袋。",
+      "conflict": "收成前的庫存不足，最弱者不能只依勞動量分糧。",
+      "turn": "居民制定最低保障、可選勞務與搬遷援助，個人承債另行同意。",
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "原定人口上限被削減，團隊自己的配給也必須降低。"
+      },
+      "tension": [
+        2,
+        4,
+        3,
+        4,
+        4
+      ],
+      "setups": [
+        "m11",
+        "m12"
+      ],
+      "payoffs": [],
+      "characters": [
+        "shen-che",
+        "lyne",
+        "oren",
+        "sera",
+        "mila"
+      ],
+      "locations": [
+        "冬籬糧棚",
+        "冬籬議事棚"
+      ],
+      "theme": "容量與分配",
+      "high_tension": [
+        {
+          "beat": "first_half",
+          "event": "盤點揭露庫存不足，隊伍必須在晚餐發放前更正配糧。",
+          "stakes": "若繼續按舊表，數週後會無糧可發。",
+          "consequence": "公佈潮損量並調低可用估值。"
+        },
+        {
+          "beat": "second_half",
+          "event": "居民反對以勞務換取全部口糧，米菈要求保護病弱者。",
+          "stakes": "分配衝突可能拆散互助體系。",
+          "consequence": "基本量與勞務分開，額外負擔須同意。"
+        }
+      ],
+      "consequence": "本地農人修正產量模型；試驗停止接收超量人口，轉介需有實際接收地。",
+      "state": {
+        "time": "初春末",
+        "knowledge": "普通生活也受糧食、搬運和人口容量限制。",
+        "character_state": "沈澈接受估算被推翻；米菈教徒弟記帳。",
+        "evidence": "實秤庫存、潮損與人口表公開保存。",
+        "carry_forward": "下階段先恢復磨粉，不能假設水車能供暖。"
+      },
+      "closed_ending": false,
+      "general_payoffs": [
+        "庫存由實秤更正，最低配糧與可選勞務形成可執行表。"
+      ]
+    },
+    {
+      "number": 75,
+      "title": "水車不能取暖",
+      "logline": "暮春修復水車只能恢復磨粉，供熱仍需有限炭火。",
+      "hook": "急流沖壞固定支架，維修工人被困在水道。",
+      "conflict": "沈澈設計可用，但本地技師指出木材耐壓與水位不符。",
+      "turn": "團隊改用本地方案，分開計算磨粉能力與取暖需求。",
+      "cliffhanger": {
+        "type": "danger",
+        "text": "修復後水車開始轉動，炭棚卻只夠維持少數暖房。"
+      },
+      "tension": [
+        3,
+        5,
+        2,
+        4,
+        4
+      ],
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [],
+      "characters": [
+        "shen-che",
+        "lyne",
+        "oren",
+        "sera"
+      ],
+      "locations": [
+        "冬籬水車",
+        "冬籬炭棚"
+      ],
+      "theme": "專業與用途",
+      "high_tension": [
+        {
+          "beat": "first_half",
+          "event": "急流令支架再次鬆動，奧倫按技師指示固定撤離繩。",
+          "stakes": "被困工人與救援者都有落水危險。",
+          "consequence": "救回工人，停修直到水位安全。"
+        },
+        {
+          "beat": "second_half",
+          "event": "居民以為水車復轉便能全面供熱，團隊公開實際用途。",
+          "stakes": "錯配燃料會讓病人暖房提前耗盡。",
+          "consequence": "磨粉與供熱分帳，執行輪班及燃料上限。"
+        }
+      ],
+      "consequence": "本地技師決定施工安全；水車服務小型磨坊，沒有增加發電或無限熱源。",
+      "state": {
+        "time": "暮春",
+        "knowledge": "水車提供機械動力，不能自動取代熱源。",
+        "character_state": "奧倫以組織與工具協助，不再靠戰甲。",
+        "evidence": "施工圖、耐壓量與炭庫實數由技師簽認。",
+        "carry_forward": "普通設備可接替部分需求，舊載體仍須真休止。"
+      },
+      "closed_ending": false,
+      "general_payoffs": [
+        "工人安全撤出，水車恢復有限磨粉功能。"
+      ]
+    },
+    {
+      "number": 76,
+      "title": "留給下一季的種子",
+      "logline": "試種失敗使瑟菈面對保存種源與眼前飢餓的衝突。",
+      "hook": "初夏種苗大批枯死，本地土質與原林地不同。",
+      "conflict": "有人要求喫掉全部留種，卻會失去下一季恢復機會。",
+      "turn": "瑟菈接受本地農人的小區對照，縮減試種而非催成全部作物。",
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "耐寒種子仍有存量，但第一季可食收成大幅低於預期。"
+      },
+      "tension": [
+        2,
+        4,
+        3,
+        4,
+        4
+      ],
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [],
+      "characters": [
+        "shen-che",
+        "lyne",
+        "oren",
+        "sera",
+        "mila"
+      ],
+      "locations": [
+        "冬籬試驗田",
+        "冬籬種棚"
+      ],
+      "theme": "承認失敗",
+      "high_tension": [
+        {
+          "beat": "first_half",
+          "event": "幼苗接連枯死，農人必須停下擴種並辨識土壤條件。",
+          "stakes": "繼續播種會耗盡不可立即補回的種源。",
+          "consequence": "保留樣本，建立小面積對照。"
+        },
+        {
+          "beat": "second_half",
+          "event": "配糧壓力使居民要求將全部留種作食物。",
+          "stakes": "家庭面對當下飢餓與下季無種的雙重風險。",
+          "consequence": "同意保留最低種源，其餘依法採購與互助補足。"
+        }
+      ],
+      "consequence": "米菈改配方降低耗糧；舊欠額田仍停用，沒有換地改名清債。",
+      "state": {
+        "time": "初夏",
+        "knowledge": "種源適應須經本地試驗；低欠額舊田按原期休止。",
+        "character_state": "瑟菈承認自己的栽培經驗有地域限制。",
+        "evidence": "失敗樣本、土質記錄與留種數量封存。",
+        "carry_forward": "秋季收益下調；採購須計入實際成本。"
+      },
+      "closed_ending": false,
+      "general_payoffs": [
+        "留種未被耗盡，對照試種記錄開始累積。"
+      ]
+    },
+    {
+      "number": 77,
+      "title": "慢慢好起來的人",
+      "logline": "盛夏感染逼近照護上限，莉涅建立不靠連續催序的醫療安排。",
+      "hook": "飲水污染引起多名居民感染，病牀與護理人力不足。",
+      "conflict": "患者要求立即催序，部分感染尚未處理，加速只會惡化。",
+      "turn": "娜蕾送藥並培訓照護者，莉涅依適應條件使用有限醫療。",
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "一名患者感染受控卻留下永久損傷，家人仍願學習照護。"
+      },
+      "tension": [
+        3,
+        4,
+        3,
+        5,
+        4
+      ],
+      "setups": [
+        "m11",
+        "m12"
+      ],
+      "payoffs": [],
+      "characters": [
+        "shen-che",
+        "lyne",
+        "oren",
+        "sera",
+        "nale",
+        "mila"
+      ],
+      "locations": [
+        "冬籬醫棚",
+        "冬籬取水口"
+      ],
+      "theme": "照護也需要時間",
+      "high_tension": [
+        {
+          "beat": "first_half",
+          "event": "多人高燒，莉涅先處理污染來源並分級安排病牀。",
+          "stakes": "若只加速癒合，感染可能擴散並傷害更多人。",
+          "consequence": "水源隔離，病人依傷情得到治療。"
+        },
+        {
+          "beat": "second_half",
+          "event": "患者要求無限制催序，莉涅公開說明自身承債上限。",
+          "stakes": "冒進可能令患者惡化、醫護失去工作能力。",
+          "consequence": "同意者接受有限處置，其餘轉入普通照護。"
+        }
+      ],
+      "consequence": "娜蕾帶來有批次來源的普通藥材；培訓本地照護，但永久傷害無法抹去。",
+      "state": {
+        "time": "盛夏",
+        "knowledge": "人體療債由患者及自願人類醫護承擔，不入森林。",
+        "character_state": "莉涅減少獨攬工作；米菈慢性肺病持續追蹤。",
+        "evidence": "藥材批次、病程與同意範圍均有紀錄。",
+        "carry_forward": "照護人力成為冬季容量的一項硬限制。"
+      },
+      "closed_ending": false,
+      "general_payoffs": [
+        "污染水源被隔離，本地照護者完成第一輪培訓。"
+      ]
+    },
+    {
+      "number": 78,
+      "title": "最後一船炭",
+      "logline": "補給受阻，蕾珂協助運輸，冬籬拒絕以強制承債換取無限援助。",
+      "hook": "既有燃料合約到期，陸路檢查使送貨延誤。",
+      "conflict": "額外補貼要求居民接受未載明上限的調度，地方不能盲簽。",
+      "turn": "蕾珂轉運並提出有數量、到期日的合法交易，聚落縮減用量。",
+      "cliffhanger": {
+        "type": "choice",
+        "text": "較充足但附強制條款的補貼被拒，居民必須按少量炭過冬。"
+      },
+      "tension": [
+        3,
+        4,
+        2,
+        4,
+        4
+      ],
+      "setups": [
+        "m12",
+        "m11"
+      ],
+      "payoffs": [],
+      "characters": [
+        "shen-che",
+        "lyne",
+        "oren",
+        "sera",
+        "reko",
+        "nale"
+      ],
+      "locations": [
+        "補給渡口",
+        "冬籬炭棚"
+      ],
+      "theme": "保障與拒絕",
+      "high_tension": [
+        {
+          "beat": "first_half",
+          "event": "送貨隊被截停，蕾珂安排新路線卻損失船期與收入。",
+          "stakes": "冬籬暖房燃料可能不能按期抵達。",
+          "consequence": "只送達已付款及擔保的有限份額。"
+        },
+        {
+          "beat": "second_half",
+          "event": "補貼代表要求預先同意額外調度，居民逐條拒絕空白授權。",
+          "stakes": "接受會失去拒債權，拒絕則必須減少取暖。",
+          "consequence": "建立暖房優先序與最低備用燃料。"
+        }
+      ],
+      "consequence": "雙尾燕經長期實修後才復航；蕾珂不能承諾每場風暴都送達。",
+      "state": {
+        "time": "夏末",
+        "knowledge": "燃料有限，援助有來源、數量與期限。",
+        "character_state": "居民為拒絕條款付出真實便利成本。",
+        "evidence": "運輸合約、修船紀錄與燃料上限公開。",
+        "carry_forward": "秋收若不足，必須及早減額與轉介。"
+      },
+      "closed_ending": false,
+      "general_payoffs": [
+        "有限炭貨依具數量與期限的合約送達。"
+      ]
+    },
+    {
+      "number": 79,
+      "title": "少了一半的秋天",
+      "logline": "早霜摧毀部分收成，居民重新選擇去留，試驗接受縮小。",
+      "hook": "成熟前的冷害使外圈作物大量損失。",
+      "conflict": "留下與離開都有風險，團隊不能禁止居民選擇有保障的接收地。",
+      "turn": "公開成本與可接收名額，保存種源，購糧並削減試驗人口。",
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "帳冊顯示能存活的規模比宣傳少得多，沈澈拒絕隱瞞。"
+      },
+      "tension": [
+        3,
+        5,
+        2,
+        4,
+        4
+      ],
+      "setups": [
+        "m10",
+        "m11"
+      ],
+      "payoffs": [],
+      "characters": [
+        "shen-che",
+        "lyne",
+        "oren",
+        "sera",
+        "mila"
+      ],
+      "locations": [
+        "冬籬試驗田",
+        "冬籬糧棚"
+      ],
+      "theme": "不把人留下作證明",
+      "high_tension": [
+        {
+          "beat": "first_half",
+          "event": "早霜來臨，居民連夜搶收仍無法保住全部田地。",
+          "stakes": "不撤人會造成失溫，搶收不足又威脅冬糧。",
+          "consequence": "優先保人與成熟作物，記錄實際損失。"
+        },
+        {
+          "beat": "second_half",
+          "event": "多戶決定離開，團隊面對勞力減少與計畫失敗的指責。",
+          "stakes": "強留會侵犯選擇，放行則降低產能。",
+          "consequence": "按有核實的接收安排離開，調整最低容量。"
+        }
+      ],
+      "consequence": "試驗仍繼續，但靠有限採購與縮減規模，沒有用新催序掩蓋失敗。",
+      "state": {
+        "time": "秋季",
+        "knowledge": "本地氣候有早霜風險，試驗不能保證所有作物成功。",
+        "character_state": "沈澈不以成果要求居民留下；瑟菈保存失敗樣本。",
+        "evidence": "搶收量、採購成本、人口變更同步公開。",
+        "carry_forward": "歸零支持者要求停止試驗，須用實測回應。"
+      },
+      "closed_ending": false,
+      "general_payoffs": [
+        "成熟作物搶收、種源保存，選擇離開者抵達已確認接收地。"
+      ]
+    },
+    {
+      "number": 80,
+      "title": "歸零之後",
+      "logline": "公開覆核證實集中休止會危及必要回流，歸零令缺乏安全依據。",
+      "hook": "支持歸零的人要求以資料證明試驗不是拖延。",
+      "conflict": "模型不能代替量測，毀錨事故也不能直接套用每個區域。",
+      "turn": "本地技師用實測與縮比連接試驗重建迴流關係，公開誤差。",
+      "cliffhanger": {
+        "type": "danger",
+        "text": "歸零令預設的外區停擺，會先切斷仍運作核心的必要回流。"
+      },
+      "tension": [
+        2,
+        4,
+        3,
+        5,
+        5
+      ],
+      "setups": [
+        "m12",
+        "m04"
+      ],
+      "payoffs": [],
+      "characters": [
+        "shen-che",
+        "lyne",
+        "oren",
+        "sera",
+        "nale"
+      ],
+      "locations": [
+        "冬籬覆核棚",
+        "小型熱迴路試臺"
+      ],
+      "theme": "證據與不確定性",
+      "high_tension": [
+        {
+          "beat": "first_half",
+          "event": "試臺連接在低負載測試中失穩，技師須按界線停止。",
+          "stakes": "越界會傷及觀測者並讓試驗不再可信。",
+          "consequence": "停測保全紀錄，修正連接模型。"
+        },
+        {
+          "beat": "second_half",
+          "event": "歸零支持者質疑結論，團隊逐項對照毀錨與當代資料。",
+          "stakes": "未證明的口號可能使更多外區遭強制休止。",
+          "consequence": "兩方同閱原始數值，確認未處理的連鎖風險。"
+        }
+      ],
+      "consequence": "縮比試驗只驗證連接，欠額來自實測；風險高於官方估計，不等同全世界必然同時毀滅。",
+      "state": {
+        "time": "秋末",
+        "knowledge": "外圍熱載體休止可能中斷迴流，生命與熱債仍分別計算。",
+        "character_state": "沈澈接受公開質疑及資料誤差。",
+        "evidence": "試臺紀錄、歷史事故與現測附來源供覆核。",
+        "carry_forward": "需尋找原退場工程，不能用歸零代替計畫。"
+      },
+      "closed_ending": false,
+      "general_payoffs": [
+        "公開覆核證實歸零令尚未處理必要回流的失效風險。"
+      ]
+    },
+    {
+      "number": 81,
+      "title": "第一場雪",
+      "logline": "暴雪堵住補給路，居民面對加入核心收編或留下的選擇。",
+      "hook": "送糧車停在崩落坡道，冬籬可用糧天數開始縮短。",
+      "conflict": "收編代表提供確定配給但限制地方拒債權，團隊不能替所有人選。",
+      "turn": "奧倫指揮救援，居民分別簽署去留安排，留下者重核容量。",
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "糧車進入聚落，幾戶也決定離開，冬籬不再追求完整保留。"
+      },
+      "tension": [
+        3,
+        5,
+        3,
+        4,
+        4
+      ],
+      "setups": [
+        "m11",
+        "m12"
+      ],
+      "payoffs": [],
+      "characters": [
+        "shen-che",
+        "lyne",
+        "oren",
+        "sera",
+        "reko",
+        "mila"
+      ],
+      "locations": [
+        "山道補給坡",
+        "冬籬議事棚"
+      ],
+      "theme": "承擔自己的選擇",
+      "high_tension": [
+        {
+          "beat": "first_half",
+          "event": "奧倫與本地隊員固定危坡，搶運貨車上可用糧。",
+          "stakes": "繼續拖車可能失去人命，棄車會損失物資。",
+          "consequence": "卸糧分段搬運，車體放棄。"
+        },
+        {
+          "beat": "second_half",
+          "event": "收編方案分裂居民，有人願付出權利換取配給。",
+          "stakes": "團隊若阻攔，便違背自己保障的選擇。",
+          "consequence": "交代條款與接收條件，允許各戶決定。"
+        }
+      ],
+      "consequence": "米菈選擇留在已熟悉的照護體系；離開者仍能通信與返訪，不成背叛者。",
+      "state": {
+        "time": "初冬",
+        "knowledge": "本期安全容量隨人口與新庫存再計算。",
+        "character_state": "奧倫以協作救援，無法恢復神經或穿甲。",
+        "evidence": "去留同意、接收回執與卸糧數量留存。",
+        "carry_forward": "最冷時期必須保全暖房、照護與最低口糧。"
+      },
+      "closed_ending": false,
+      "general_payoffs": [
+        "受困糧車卸糧送達，居民去留依條件完成。"
+      ]
+    },
+    {
+      "number": 82,
+      "title": "米菈的爐火",
+      "logline": "深冬救援保住暖房，米菈仍因肺病與感染去世。",
+      "hook": "積雪壓壞外圈屋頂，病人必須在入夜前轉入完好暖房。",
+      "conflict": "米菈肺部已有不可逆損傷，催序無法創造完整器官或復活。",
+      "turn": "莉涅提供適當藥物與支持照護，陪米菈完成最後安排。",
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "徒弟按米菈留下的配方烤麵包，空下的位子再也沒人坐。"
+      },
+      "tension": [
+        3,
+        5,
+        2,
+        5,
+        5
+      ],
+      "setups": [],
+      "payoffs": [
+        "m11"
+      ],
+      "characters": [
+        "shen-che",
+        "lyne",
+        "oren",
+        "sera",
+        "nale",
+        "mila"
+      ],
+      "locations": [
+        "冬籬暖房",
+        "冬籬炊事棚"
+      ],
+      "theme": "照護與失去",
+      "high_tension": [
+        {
+          "beat": "first_half",
+          "event": "屋頂下陷，奧倫帶人轉移病者，瑟菈搬運照護用品。",
+          "stakes": "病人若在雪中滯留會失溫。",
+          "consequence": "全員轉入已備妥暖房，燃料優先醫療。"
+        },
+        {
+          "beat": "second_half",
+          "event": "米菈感染惡化，莉涅與娜蕾充分處置仍無法逆轉。",
+          "stakes": "米菈將失去生命，夥伴須接受醫療的界線。",
+          "consequence": "完成陪伴與告別，死亡正式記錄。"
+        }
+      ],
+      "consequence": "死亡並非拒絕魔法的懲罰；暖房、藥材與適應處置均提供，徒弟繼承炊事工作。",
+      "state": {
+        "time": "深冬",
+        "knowledge": "治療不能消除全部器官損傷，也不能逆轉死亡。",
+        "character_state": "米菈去世；莉涅悲痛但沒有以自傷換假希望。",
+        "evidence": "完整病程與處置留檔，麵包配方交徒弟。",
+        "carry_forward": "冬季成本必須包含失去的人，不能只報告糧產。"
+      },
+      "closed_ending": false,
+      "general_payoffs": [
+        "病人完成暖房轉移；米菈配方交給徒弟，照護沒有抹除死亡。"
+      ]
+    },
+    {
+      "number": 83,
+      "title": "不再只有他能看見",
+      "logline": "感知與儀器出現差異，沈澈交出判讀權讓本地技師糾正。",
+      "hook": "修復後的暖水支線測值互相矛盾，當夜需完成安全查驗。",
+      "conflict": "沈澈看見停拍，但寒冷與疲勞影響判讀，不能以感知壓過測量。",
+      "turn": "本地技師復測找到具體接點與負載差，夥伴獨立完成隔離。",
+      "cliffhanger": {
+        "type": "choice",
+        "text": "沈澈選擇不簽未驗證判讀，讓受訓者承擔檢修主導。"
+      },
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        4
+      ],
+      "setups": [
+        "m05"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "characters": [
+        "shen-che",
+        "lyne",
+        "oren",
+        "sera"
+      ],
+      "locations": [
+        "冬籬熱支線",
+        "冬籬檢修棚"
+      ],
+      "theme": "願意被替代",
+      "high_tension": [
+        {
+          "beat": "first_half",
+          "event": "測值矛盾阻止復供，技師逐段重測尋找異常。",
+          "stakes": "誤接可能讓暖房失去安全供熱。",
+          "consequence": "在低負載界線內找到接點偏差。"
+        },
+        {
+          "beat": "second_half",
+          "event": "沈澈須在自身感知與可覆核紀錄之間選擇。",
+          "stakes": "堅持會傷人，也會讓制度再次依賴單一權威。",
+          "consequence": "接受本地技師糾正並交出操作主導。"
+        }
+      ],
+      "consequence": "能力仍有用但不是唯一證據；故障判讀、隔離與交班都可訓練他人完成。",
+      "state": {
+        "time": "暮冬",
+        "knowledge": "實測可驗證感知，兩者不合時需找原因。",
+        "character_state": "沈澈承認錯判；奧倫維持無甲勤務。",
+        "evidence": "盲讀記錄與技師獨立復測結果一同存檔。",
+        "carry_forward": "遠徵前須證明生活與檢修均有在地接替。"
+      },
+      "closed_ending": false,
+      "general_payoffs": [
+        "本地技師糾正錯判並獨立完成隔離，檢修可以接替。"
+      ]
+    },
+    {
+      "number": 84,
+      "title": "真正的春天",
+      "logline": "全年試驗結束，低欠額田復萌，長債田仍保持真正休止。",
+      "hook": "次春第一批新芽出現，外來宣傳者準備稱試驗全面成功。",
+      "conflict": "一年只能證明局部條件，收成損失、死亡與外援都不能隱去。",
+      "turn": "居民公佈完整成本，獨立完成交班，授權隊伍尋訪退場檔案。",
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "舊維護索引指向調候外緣，原始退場方法可能仍留在那裡。"
+      },
+      "tension": [
+        2,
+        4,
+        3,
+        4,
+        4
+      ],
+      "setups": [
+        "m07",
+        "m06"
+      ],
+      "payoffs": [
+        "m10",
+        "m11"
+      ],
+      "characters": [
+        "shen-che",
+        "lyne",
+        "oren",
+        "sera",
+        "nale",
+        "reko"
+      ],
+      "locations": [
+        "冬籬低欠額田",
+        "冬籬長債田",
+        "冬籬議事棚"
+      ],
+      "theme": "有限但真實的成功",
+      "high_tension": [
+        {
+          "beat": "first_half",
+          "event": "有人試圖啟用未滿休止期的長債田，農人立即阻止。",
+          "stakes": "提前復工會否定既有償還並新增風險。",
+          "consequence": "低欠額田按實測復用，長債田保持停用。"
+        },
+        {
+          "beat": "second_half",
+          "event": "居民拒絕片面的成功宣傳，要求將米菈與損失寫進紀錄。",
+          "stakes": "虛報會誤導下一批人遷入並再製造危機。",
+          "consequence": "完整公開成本及容量，由在地人獨立接班。"
+        }
+      ],
+      "consequence": "冬籬完整跨越四季，證明有限規模可生活並實際減債；主要世界欠額仍需多年。",
+      "state": {
+        "time": "次年春；第73–84集完整一年",
+        "knowledge": "局部恢復不代表長債區或全球問題解決。",
+        "character_state": "四人有正式交接才能出發；聚落保有拒債權。",
+        "evidence": "全年庫存、疾病、死亡、外援與減債曲線公開。",
+        "carry_forward": "攜帶互證資料，尋訪古工程原始退場條件。"
+      },
+      "closed_ending": false,
+      "general_payoffs": [
+        "全年紀錄完成，低欠額田恢復，本地人獨立接掌生活與檢修。"
+      ]
+    }
+  ]
+}
