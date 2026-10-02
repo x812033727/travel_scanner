@@ -1,13 +1,13 @@
 ---
 id: 2026-09-06-oka-amerikamura-wrong-qid
 title: 沖繩美國村的 Wikidata QID 指到大阪，座標也是
-status: in-progress
+status: done
 priority: P3
 area: api
 owner: claude-opus-5-5-oka-qid
 claimed_at: 2026-10-02T19:27:19Z
 created_at: 2026-09-06T20:29:26Z
-completed_at:
+completed_at: 2026-10-02T19:49:02Z
 branch: claude/oka-american-village-qid
 depends_on: []
 scope:
