@@ -213,10 +213,8 @@ export async function openRenderer({ root, workdir, channel }) {
     const family = await page.evaluate(pageFamily, SLIDE_FAMILY);
     const unloadable = await page.evaluate(loadFaces, family);
     await page.evaluate(fitText);
-    const problems = await page.evaluate(layoutProblems, family);
-    for (const failure of unloadable) problems.push(`a slide font face would not load: ${failure}`);
     pages.delete(key);
-    return problems;
+    return { family, unloadable };
   }
 
   let sheets = 0;
@@ -229,7 +227,7 @@ export async function openRenderer({ root, workdir, channel }) {
      */
     async capture(key, html, { size = SIZE, transition = false, type = "png", quality, omitBackground = false } = {}) {
       const refusedBefore = refused.length;
-      const problems = await load(key, html, size);
+      const { family, unloadable } = await load(key, html, size);
       const end = await page.evaluate(pauseAnimations);
       const frames = [];
       if (transition && end > 0) {
@@ -240,6 +238,10 @@ export async function openRenderer({ root, workdir, channel }) {
         }
       }
       await page.evaluate(seekAnimations, end + 1);
+      // An entrance may temporarily move a full-height paper below its content box. Judge the
+      // settled layout shown by the still, not a wall-clock-dependent point in that entrance.
+      const problems = await page.evaluate(layoutProblems, family);
+      for (const failure of unloadable) problems.push(`a slide font face would not load: ${failure}`);
       const still = await page.screenshot({ type, quality, omitBackground });
       for (const url of refused.slice(refusedBefore)) problems.push(`refused a request for ${url}`);
       return { frames, still, problems };

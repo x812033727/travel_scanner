@@ -26,6 +26,7 @@
 | 合集 | 每集成片 `-c copy` 串接、音訊重編一次；集間 2 秒章節卡、片尾 4 秒卡；章節＝每集；五語字幕合併。審核頁只放 720p 預覽（`-crf 26 -maxrate 2M`，兩小時約 ≤ 2 GB）；1080p 成片從後台的作品頁或「可以上架」卡下載（`GET /admin/videos/{slug}/download`，API 唯讀掛載工人的 `video_work`）再上傳。合集的 `category_id` 是 24（娛樂） | `tools/video/core/compilation.mjs`、`tools/video/compile/cli.mjs` |
 | 字幕 | zh-TW 的 CC 一定有。en、ja、ko、zh-CN 的 CC 與標題說明是每支影片的選擇：成片核准後站主在 `/admin/videos` 那支影片的「這支影片的語言」面板勾了才做，工人只做勾了的、做好才排上架（[`LANGUAGES.md`](LANGUAGES.md)；設定分頁的 `caption_locales` 只是面板的預先勾選）。投影片影片**不燒錄**；漫劇預設把繁中字幕燒進畫面（漫劇頻道的慣例），由 `video.json` 的 `subtitles.burn_in` 決定 | `tools/video/core/captions.mjs`、`tools/video/core/stages.mjs`、`tools/video/core/drama.mjs` |
 | 配音音軌 | 語言的第三個部件：投影片影片可以多掛 en、ja、ko、zh-CN 四條 YouTube 多語言音軌，同一個頻道聲音唸字幕的翻譯，塞在 zh-TW 的畫面時間軸裡。站主在同一個面板勾了配音才做（勾配音會一起勾 CC），做好後由站主在 Studio「語言」上傳、在「語言」卡片按「已在 Studio 上傳配音」；做不出來的語系跳過並寫原因，不擋上架。漫劇第一期不做。音軌怎麼做在 [`DUBS.md`](DUBS.md) | `tools/video/dubs`、`tools/video/automation/flow.mjs` |
+| Shorts | 直式短片（[`SHORTS.md`](SHORTS.md)）：1080×1920、30 fps、25–55 秒（後台 Shorts 設定可調）、H.264／AAC 48 kHz、兩段式 loudnorm 到 −14 LUFS（成片要在 ±1 內、真峰值 ≤ −0.8 dBTP）。字幕是畫面上的字卡，另外上傳一條 zh-TW CC；沒有章節、沒有縮圖（第一格就是封面）、不套頻道片頭片尾。安全區：內容在 x 78–902、下緣 1380 以內，字幕條下緣 1600 以內 | `tools/video/shorts/core.mjs`（`PROFILE`）、`tools/video/shorts/build.mjs` |
 | 配樂與音效 | 任何格式都可以帶 `music`（站主提供有授權的檔案放 `<VIDEO_WORKDIR>/_music/`，或由 Lyria 生成），在旁白下自動壓低到 ≤ −24 LUFS；插圖投影片另可帶 `sfx`（授權音效組放 `_sfx/<set>/`：章節卡蓋章、溶接 whoosh、逐條出現 pop）。純投影片預設兩者都沒有 | `tools/video/core/drama.mjs`、`tools/video/assemble/sfx.mjs` |
 
 每句旁白和它後面的停頓，都補到整格（48,000 Hz ÷ 30 fps ＝ 每格 1,600 個取樣），所以十分鐘的影片不會有影音漂移。
@@ -72,8 +73,8 @@
 
 | 項目 | 值 |
 | --- | --- |
-| 供應商 | Azure 語音，由正式站伺服器代為合成（金鑰在後台「API 與供應商設定 → AI 服務 → Azure 語音（影片旁白）」） |
-| 頻道聲音 | **還沒選**。第一支影片開工前，用 `audition` 讓站主聽同一段旁白比較：曉臻、雲哲、曉雨，以及 Ava、Andrew 講台灣國語。選定後寫在這裡，之後每支影片都用同一個聲音 |
+| 供應商 | Gemini 語音，由正式站伺服器代為合成（用網站既有的 Gemini 金鑰）；Azure 語音是另一個可選的供應商（金鑰在後台「API 與供應商設定 → AI 服務 → Azure 語音（影片旁白）」） |
+| 頻道聲音 | Gemini 的 **Sulafat**（站主 2026-09-24 選定），每支影片都用同一個聲音。**Shorts 也用這個聲音**：Shorts 設定的聲音預設就是頻道聲音，`shorts/cli.mjs build --speech server` 經伺服器合成；本機試片用的 Windows Hanhan 不上架 |
 | 語速 | `+0%`；稿子的長度以每分鐘 250 字估計 |
 | 口吻 | 2026-09-29 起是**說書式**（Gemini `voice.style`：有起伏、揭曉前停一拍、「你以為」放慢、「其實」亮起來；全文在 [`ILLUSTRATED.md`](ILLUSTRATED.md)），站主在 `/admin/videos` 設定分頁貼上；改了 style 全部重錄 |
 | 停頓 | 句與句之間 0.3 秒，換場景多 0.7 秒；單句可以用 `pause_after_ms` 改 |

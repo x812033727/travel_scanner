@@ -2593,6 +2593,12 @@
     "dramaModelsTitle": "Drama stages",
     "dramaModelsHelp": "A drama's six stages (planning, writing, checking, listening, translating, caption review) may run on other models than a tutorial's. Tick \"same as the tutorials\" to keep the choices above.",
     "dramaStage": "Drama: {stage}",
+    "shortsModelsTitle": "Shorts stages",
+    "shortsModelsHelp": "A Short's six stages may run on other models than a tutorial's. Tick \"same as the tutorials\" to keep the choices above. This block saves on its own and changes only the Shorts' models, not the other settings on the Shorts tab.",
+    "shortsModelsFollow": "Same stage models for Shorts as the tutorials",
+    "shortsStage": "Shorts: {stage}",
+    "saveShortsModels": "Save Shorts models",
+    "shortsModelsLoadError": "Could not load the Shorts settings",
     "voiceTitle": "Narrator and character voices",
     "dramaVoiceHelp": "The drama's narrator: the channel voice, or one of its own. Characters speak with voices from the pool below.",
     "flowTitle": "Rounds",
@@ -2663,7 +2669,8 @@
       "outline": "Outline",
       "active": "In the making",
       "paused": "Paused",
-      "finished": "Finished"
+      "finished": "Finished",
+      "planning": "Awaiting production"
     },
     "docsPending": "{count} to approve",
     "messagesPending": "{count} waiting for the model",
@@ -2830,7 +2837,8 @@
     "leads": {
       "female": "Female lead",
       "male": "Male lead",
-      "dual-male": "Two male leads"
+      "dual-male": "Two male leads",
+      "ensemble": "Ensemble leads"
     },
     "tiers": {
       "clips": {
@@ -2867,7 +2875,20 @@
     "reconcileRequest": "Use the latest text draft to synchronize the full production data and submit a new version for my review. Preserve unchanged settings and continuity rules. If essential information is missing, explain it in the discussion before changing the story.",
     "approvalOrder": "Approve the latest setting book, overall outline and preceding chapter outline in that order.",
     "readProductionData": "Review production data",
-    "productionDataHelp": "These characters, episodes and story beats drive production. Check that they agree with the document before approving."
+    "productionDataHelp": "These characters, episodes and story beats drive production. Check that they agree with the document before approving.",
+    "planning": {
+      "anime": "Anime",
+      "help": "The plan has been saved and is awaiting support for long-form production. Read the setting, series outline and season outlines below.",
+      "progress": "{done}/{total} episodes · {seasons} seasons",
+      "runtime": "Story {story} min per episode · {slot} min broadcast slot",
+      "storyMinutes": "Story {story} min per episode",
+      "documents": "{count} planning documents",
+      "docStatus": "Saved",
+      "seasonN": "Season {n} outline",
+      "season": "Season",
+      "readData": "View planning data",
+      "dataHelp": "This data preserves the original characters, episode count and story structure. The plan remains read-only until support for long-form production is available."
+    }
   },
   "videoStories": {
     "title": "Brand stories",
@@ -3314,6 +3335,128 @@
     }
   },
   "videoShorts": {
+    "topics": {
+      "help": "Topics by line, in the order they are made: ordered ones first, the rest by when they were added. The server sets each status from the spec and the material.",
+      "empty": "The topic library is empty",
+      "emptyDetail": "Add an idea or import the 15-topic campaign. Once a tutorial goes public or a drama episode's final cut is approved, the server also adds highlight and vertical-short topics itself.",
+      "statuses": {
+        "idea": "Idea",
+        "ready": "Ready",
+        "needs_assets": "Needs material",
+        "making": "In the making",
+        "made": "Made",
+        "dropped": "Dropped"
+      },
+      "origins": {
+        "campaign": "Campaign",
+        "planner": "Planner model",
+        "owner": "Owner",
+        "auto": "Automatic"
+      },
+      "paid": "Costs money",
+      "order": "Order {order}",
+      "project": "Video {slug}",
+      "updated": "Updated {time}",
+      "hook": "Hook:",
+      "waitingFor": "Cannot be made yet because:",
+      "note": "Note: {note}",
+      "showSpec": "Show the full spec",
+      "hideSpec": "Hide the spec",
+      "front": "Move to the front",
+      "drop": "Drop this topic",
+      "restore": "Take it back",
+      "dropConfirm": "Drop “{title}”? You can take it back later.",
+      "actionError": "Not changed: {message}",
+      "spec": {
+        "title": "Spec of {title}",
+        "protocol": "Test protocol",
+        "truthCheck": "Truth check",
+        "acceptance": "Done when",
+        "none": "Not written yet",
+        "missing": "Not written yet",
+        "source": "Source video: {slug}",
+        "noSource": "No source video yet",
+        "requires": "Also needs:"
+      },
+      "protocol": {
+        "setup": "Setup",
+        "input": "Input",
+        "condition_a": "Group A",
+        "condition_b": "Group B",
+        "runs": "Runs",
+        "scoring": "Scoring",
+        "failure_path": "When a run fails"
+      },
+      "requires": {
+        "vision": "a model that reads images",
+        "image_edit": "a model that edits images",
+        "sandbox": "an isolated place to run code",
+        "image_generation": "generated images (paid)"
+      },
+      "idea": {
+        "title": "Add an idea",
+        "help": "Write the idea in a sentence and choose its line. It is kept as an idea, and the planner model turns it into a full spec on its next round.",
+        "text": "Idea",
+        "line": "Line",
+        "submit": "Save as an idea",
+        "saved": "Saved: the planner model completes its spec on its next round.",
+        "error": "Not saved: {message}"
+      },
+      "import": {
+        "title": "Import the 15-topic campaign",
+        "help": "Choose docs/videos/ai-shorts/campaign/campaign.json; it is sent as it is. Topics already in the library are skipped, so importing again adds nothing.",
+        "file": "campaign.json file",
+        "button": "Import the 15-topic campaign",
+        "busy": "Importing…",
+        "done": "Imported {created} topics, skipped {skipped} already in the library.",
+        "notJson": "This file is not JSON. Choose campaign.json.",
+        "error": "Not imported: {message}"
+      },
+      "assets": {
+        "box": "Material box",
+        "title": "Material for {title}",
+        "count": "{have}/{count}",
+        "madeBy": "by {author}",
+        "file": "Photo (PNG, JPEG or WebP)",
+        "author": "Photographer (or author)",
+        "takenOn": "Date taken",
+        "rights": "Rights note (who made it, how it may be used)",
+        "help": "The browser shrinks the photo to 2,048 px on its long edge and removes its EXIF (location and camera data) before it goes up in parts.",
+        "upload": "Upload",
+        "sending": "Uploading (part {part} of {parts})",
+        "done": "Uploaded.",
+        "error": "Not uploaded: {message}"
+      }
+    },
+    "report": {
+      "help": "One report a week, the newest on top. The planner model writes the text; below it are the numbers it cites, each the raw value YouTube reported, with its source and when it was read. This page computes no numbers of its own.",
+      "empty": "No weekly report yet",
+      "emptyDetail": "Each week the host worker asks the planner model to report on the week before; it appears here once written.",
+      "week": "Week of {start} to {end}",
+      "writtenBy": "{model}, written {time}",
+      "modelUnknown": "model name not reported",
+      "rowsTitle": "Numbers the report cites (YouTube's raw values)",
+      "noRows": "This report cites no numbers.",
+      "columns": {
+        "short": "Short",
+        "period": "Window",
+        "read": "Source and read time"
+      },
+      "range": "{start} to {end}",
+      "values": {
+        "views": "Views",
+        "engaged_views": "Engaged views",
+        "likes": "Likes",
+        "comments": "Comments",
+        "shares": "Shares",
+        "subscribers_gained": "Subscribers gained",
+        "avg_view_seconds": "Average view seconds",
+        "avg_view_percent": "Average percentage viewed",
+        "stayed_percent": "Stayed to watch (%)"
+      },
+      "planTitle": "Next week's plan",
+      "planEmpty": "The report has no plan for next week."
+    },
     "loading": "Loading…",
     "loadError": "Could not read the Shorts",
     "retry": "Try again",
@@ -3321,6 +3464,8 @@
     "seconds": "{seconds} s",
     "viewsLabel": "Views of the Shorts tab",
     "views": {
+      "topics": "Topics",
+      "report": "Weekly report",
       "calendar": "Calendar",
       "library": "Library and in the making",
       "metrics": "Results",
@@ -3594,10 +3739,24 @@
       }
     },
     "settings": {
+      "scopeConfirm": "You changed the lines, the daily limit, the publish times or the time zone. Saving ends the current auto-publish consent: auto-publishing stops until you read the new wording and agree again. Save anyway?",
+      "subjects": {
+        "title": "Models under test",
+        "help": "Each experiment runs once under A and once under B, each in a fresh conversation. The menus are the AI settings page's; the worker cannot choose a model itself.",
+        "a": "Group A",
+        "b": "Group B",
+        "provider": "Provider",
+        "model": "Model",
+        "none": "Not chosen (no experiment runs)",
+        "sameAsA": "Same as group A",
+        "notReady": "not available yet",
+        "monthHelp": "The most Shorts the host worker may start in a month; 0 starts none."
+      },
       "help": "Shorts have settings of their own, apart from the tutorials' and the dramas'. Saving, starting the run and the consent take the right to manage settings.",
       "paceTitle": "Pace and slots",
       "paceHelp": "One stretch at a time: for how many days, how many a day. The counts can take turns: \"2, 1\" is two one day and one the next. A day's count takes that many of the publish times below, in their order.",
       "fields": {
+        "max_per_month": "Most Shorts to start in a month",
         "pattern_days": "For how many days",
         "pattern_counts": "How many a day (commas between turns)",
         "slot_times": "Publish times (24-hour, commas between)",

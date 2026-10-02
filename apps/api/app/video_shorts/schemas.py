@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 from datetime import date, datetime
 from decimal import Decimal
-from typing import Annotated, Any, Literal, Self
+from typing import Annotated, Any, Literal, Self, get_args
 from uuid import UUID
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
@@ -19,7 +19,7 @@ from pydantic import (
     model_validator,
 )
 
-from app.video_automation.schemas import StageModel, VoiceSettings
+from app.video_automation.schemas import Stage, StageModel, VoiceSettings
 from app.video_shorts.models import DEFAULT_MAX_PER_MONTH
 
 ShortsLine = Literal["lab", "cut", "drama"]
@@ -104,6 +104,22 @@ class SettingsWrite(StrictModel):
     # and how many Shorts the worker may start in a month (docs/videos/SHORTS.md §端點).
     subject_models: dict[SubjectVariant, StageModel] = Field(default_factory=dict)
     max_per_month: int = Field(default=DEFAULT_MAX_PER_MONTH, ge=0, le=400)
+    # The Shorts' own model for each of the six stages, chosen on the AI settings page; None
+    # follows the tutorial's (app/video_automation/ai.py stage_choice). Like the drama's, a
+    # choice names every stage.
+    stage_models: dict[Stage, StageModel] | None = None
+
+    @field_validator("stage_models")
+    @classmethod
+    def _every_stage_or_none(
+        cls, value: dict[Stage, StageModel] | None
+    ) -> dict[Stage, StageModel] | None:
+        if not value:
+            return None
+        missing = set(get_args(Stage)) - set(value)
+        if missing:
+            raise ValueError(f"stage_models is missing {', '.join(sorted(missing))}")
+        return value
 
     @field_validator("lines")
     @classmethod
@@ -152,7 +168,8 @@ class SettingsWrite(StrictModel):
 
 
 class SettingsSave(StrictModel):
-    """A save from the Shorts settings: a field left out (or null) keeps its stored value."""
+    """A save from the Shorts settings: a field left out (or null) keeps its stored value,
+    except ``stage_models``, where null means the Shorts follow the tutorial's models."""
 
     enabled: bool | None = None
     lines: list[ShortsLine] | None = None
@@ -175,10 +192,14 @@ class SettingsSave(StrictModel):
     budget_total_ntd: int | None = None
     subject_models: dict[SubjectVariant, StageModel] | None = None
     max_per_month: int | None = None
+    stage_models: dict[Stage, StageModel] | None = None
 
     def merged_over(self, current: dict[str, Any]) -> dict[str, Any]:
         sent = self.model_dump(exclude_unset=True)
-        return {**current, **{key: value for key, value in sent.items() if value is not None}}
+        values = {**current, **{key: value for key, value in sent.items() if value is not None}}
+        if "stage_models" in self.model_fields_set and self.stage_models is None:
+            values["stage_models"] = None
+        return values
 
 
 class ConsentOffer(BaseModel):

@@ -23,6 +23,7 @@ from sqlalchemy import (
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db import Base
+from app.models import VIDEO_CATEGORIES
 from app.video_media.catalog import DEFAULT_CLIP, DEFAULT_IMAGE, DEFAULT_MUSIC
 
 
@@ -504,6 +505,22 @@ SERIES_GENRES = (
 )
 SERIES_LEADS = ("female", "male", "dual-male")
 VISUAL_TIERS = ("clips", "hybrid", "stills")
+SERIES_NUMBERS_CHECK = (
+    "planned_episodes BETWEEN 1 AND 500 AND episodes_per_chapter BETWEEN 1 AND 20 "
+    "AND (target_minutes BETWEEN 1 AND 20 OR "
+    "(planning_only = true AND target_minutes BETWEEN 21 AND 30))"
+)
+SERIES_LEAD_CHECK = (
+    "lead IN ('female', 'male', 'dual-male') OR (planning_only = true AND lead = 'ensemble')"
+)
+SERIES_CATEGORY_CHECK = "category IS NULL OR category IN ({})".format(
+    ", ".join(f"'{code}'" for code in VIDEO_CATEGORIES)
+)
+SERIES_PLANNING_CHECK = (
+    "planning_only = false OR (kind = 'series' AND category IS NOT NULL AND category = 'anime' "
+    "AND status = 'paused' AND hands_off = false AND compilation = false AND force_next = false "
+    "AND requested_chapter IS NULL)"
+)
 MIN_TOTAL_MINUTES = 30
 MAX_TOTAL_MINUTES = 480
 DOC_KINDS = ("setting", "outline", "chapter", "bible")
@@ -518,11 +535,10 @@ class VideoDramaSeries(Base):
             "status IN ('setting', 'outline', 'active', 'paused', 'finished')",
             name="ck_video_drama_series_status",
         ),
-        # A story runs 12 to 15 minutes (migration 0111); the schemas still hold the other kinds
-        # to 8.
+        # Planning-only anime preserves its authored runtime without authorizing production.
+        # Existing production limits stay in the API and in the ordinary branch of this check.
         CheckConstraint(
-            "planned_episodes BETWEEN 1 AND 500 AND episodes_per_chapter BETWEEN 1 AND 20 "
-            "AND target_minutes BETWEEN 1 AND 20",
+            SERIES_NUMBERS_CHECK,
             name="ck_video_drama_series_numbers",
         ),
         CheckConstraint(
@@ -542,8 +558,10 @@ class VideoDramaSeries(Base):
             name="ck_video_drama_series_genre",
         ),
         CheckConstraint(
-            "lead IN ('female', 'male', 'dual-male')", name="ck_video_drama_series_lead"
+            SERIES_LEAD_CHECK, name="ck_video_drama_series_lead"
         ),
+        CheckConstraint(SERIES_CATEGORY_CHECK, name="ck_video_drama_series_category"),
+        CheckConstraint(SERIES_PLANNING_CHECK, name="ck_video_drama_series_planning"),
         CheckConstraint(
             "visual_tier IN ('clips', 'hybrid', 'stills')", name="ck_video_drama_series_tier"
         ),
@@ -558,6 +576,10 @@ class VideoDramaSeries(Base):
 
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     slug: Mapped[str] = mapped_column(String(40), unique=True)
+    # These are written only by the reviewed-plan importer, never by the ordinary create API.
+    planning_only: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")
+    category: Mapped[str | None] = mapped_column(String(24), nullable=True)
+    planning_spec: Mapped[dict[str, Any] | None] = mapped_column(JSON, nullable=True)
     # "series": the documents are the setting book, the outline and the chapters' outlines;
     # "one-off": one episode, one story bible (docs/videos/DRAMA-FLOW.md §二); "story": no
     # documents, the episodes are imported from a planned backlog (docs/videos/STORY.md).

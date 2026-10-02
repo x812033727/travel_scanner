@@ -198,6 +198,20 @@ def is_one_off(series: VideoDramaSeries) -> bool:
     return series.kind == "one-off"
 
 
+def is_planning_only(series: VideoDramaSeries) -> bool:
+    """An imported authored plan is readable, but is never a production authorization."""
+    return bool(series.planning_only)
+
+
+def require_production_series(series: VideoDramaSeries) -> None:
+    if is_planning_only(series):
+        raise SeriesRefused(
+            409,
+            "video_series_planning_only",
+            "這部動漫目前只供企劃審閱；22 分鐘長篇製作支援尚未完成，不能核准、改稿或啟動製作",
+        )
+
+
 # An illustrated explainer (docs/videos/so-thats-why/) is a one-off in EXPLAINER_PRESET: its bible
 # is a question's, with no cast, and its outline carries the answer, the reasons and the sources.
 def is_explainer(series: VideoDramaSeries) -> bool:
@@ -698,6 +712,8 @@ def next_job_for(
     one in number order starts unless ``story_quota`` names a reason not to. ``now``,
     ``awaiting_upload`` and ``earlier_starts`` are read only there.
     """
+    if is_planning_only(series):
+        return None
     if is_story(series):
         quota = story_quota(
             series,
@@ -899,6 +915,11 @@ def summary_view(
         id=series.id,
         slug=series.slug,
         kind=cast(Any, series.kind or "series"),
+        planning_only=is_planning_only(series),
+        category=series.category,
+        planning_spec=(
+            dict(series.planning_spec) if isinstance(series.planning_spec, dict) else None
+        ),
         title=series.title,
         premise=series.premise,
         aspects=cast(Any, list(series.aspects or [])),
@@ -1391,6 +1412,12 @@ def patch_problem(
     minutes; other dramas stay within SERIES_MAX_MINUTES. A story series stays hands-off,
     stills only and never compiled, keeps a look, and has no chapters to resize.
     """
+    if is_planning_only(series):
+        return SeriesRefused(
+            409,
+            "video_series_planning_only",
+            "這部動漫目前只供企劃審閱；不能改動企劃、恢復製作或開啟自動核准",
+        )
     if "style_preset" in changes:
         explainer = changes["style_preset"] == EXPLAINER_PRESET
         if explainer and not is_one_off(series):
@@ -1588,6 +1615,7 @@ async def _doc(
 def _check_document_approval(
     series: VideoDramaSeries, docs: list[VideoDramaDoc], payload: SeriesDocSubmitIn
 ) -> None:
+    require_production_series(series)
     if not payload.body_json:
         raise SeriesRefused(422, "video_series_structured_data_required", RECONCILIATION_NOTE)
     problem = doc_problem(series, payload)
@@ -1653,6 +1681,7 @@ async def _apply_approval(
     session: AsyncSession, series: VideoDramaSeries, doc: VideoDramaDoc
 ) -> None:
     """What an approved document changes: the series moves on, the episode table fills in."""
+    require_production_series(series)
     body = doc.body_json or {}
     if doc.kind == "bible":
         # The one-off's only document: its episode is ready, with the bible's outline as its
@@ -1729,6 +1758,7 @@ async def decide_doc(
     expected_version: int,
 ) -> SeriesOut:
     series = await _series(session, slug, lock=True)
+    require_production_series(series)
     doc = await _doc(session, series, kind, chapter)
     if doc.version != expected_version:
         raise SeriesRefused(
@@ -1781,6 +1811,7 @@ async def edit_doc(
 ) -> SeriesOut:
     """The owner's own version of a document: a new version, approved at once when asked."""
     series = await _series(session, slug, lock=True)
+    require_production_series(series)
     docs = await _docs(session, series)
     latest = latest_docs(docs).get((kind, chapter))
     if latest is None:
@@ -1838,6 +1869,7 @@ async def edit_episode(
     session: AsyncSession, actor: User, slug: str, number: int, payload: SeriesEpisodeEditIn
 ) -> SeriesOut:
     series = await _series(session, slug, lock=True)
+    require_production_series(series)
     episode = await _episode(session, series, number)
     if episode.status not in ("planned", "ready"):
         raise SeriesRefused(409, "video_series_episode_started", "這一集已經開始做，不能再改細綱")
@@ -1876,6 +1908,7 @@ async def act(session: AsyncSession, actor: User, slug: str, action: str) -> tup
     """The owner pushes the series along: plan the next chapter now, or start the next episode
     without waiting for the previous one."""
     series = await _series(session, slug, lock=True)
+    require_production_series(series)
     if is_story(series):
         # No chapter to plan, no compilation, and a story never waits for the one before it.
         raise SeriesRefused(
@@ -1947,6 +1980,7 @@ async def act(session: AsyncSession, actor: User, slug: str, action: str) -> tup
 
 async def skip_episode(session: AsyncSession, actor: User, slug: str, number: int) -> SeriesOut:
     series = await _series(session, slug, lock=True)
+    require_production_series(series)
     episode = await _episode(session, series, number)
     if episode.status not in ("planned", "ready"):
         raise SeriesRefused(409, "video_series_episode_started", "這一集已經開始做，不能跳過")
@@ -1985,6 +2019,7 @@ async def restore_episode(session: AsyncSession, actor: User, slug: str, number:
     back. When skipping this story had finished the series, the series is active again.
     """
     series = await _series(session, slug, lock=True)
+    require_production_series(series)
     if not is_story(series):
         raise SeriesRefused(
             409,
@@ -2048,6 +2083,7 @@ async def redo_episode(session: AsyncSession, actor: User, slug: str, number: in
     the series is active again.
     """
     series = await _series(session, slug, lock=True)
+    require_production_series(series)
     if not is_story(series):
         raise SeriesRefused(
             409,
@@ -2192,6 +2228,7 @@ async def next_job(session: AsyncSession, settings: VideoAutomationSettings) -> 
             await session.scalars(
                 select(VideoDramaSeries)
                 .where(
+                    VideoDramaSeries.planning_only.is_(False),
                     or_(
                         VideoDramaSeries.status.in_(ACTIVE_STATUSES),
                         and_(
@@ -2277,6 +2314,7 @@ async def submit_doc(
     """The worker files a planned document as a new version that waits for the owner, or,
     on a hands-off series, is decided from the checker's verdict as it arrives."""
     series = await _series(session, slug, lock=True)
+    require_production_series(series)
     problem = doc_problem(series, payload)
     if problem:
         raise SeriesRefused(422, "video_series_doc_invalid", problem)
@@ -2336,6 +2374,7 @@ async def start_episode(
     """The worker starts an episode: a request row is filed as started under the video's slug,
     so the episode travels through the same path as a one-off request."""
     series = await _series(session, slug, lock=True)
+    require_production_series(series)
     episode = await _episode(session, series, number)
     if episode.status != "ready":
         raise SeriesRefused(
@@ -2450,6 +2489,7 @@ async def recap_episode(
     session: AsyncSession, slug: str, number: int, payload: SeriesEpisodeRecapIn
 ) -> SeriesEpisodeOut:
     series = await _series(session, slug, lock=True)
+    require_production_series(series)
     episode = await _episode(session, series, number)
     if episode.status not in ("started", "done"):
         raise SeriesRefused(409, "video_series_episode_not_started", "這一集還沒開始做")
@@ -2464,7 +2504,7 @@ def finish_if_complete(
     series: VideoDramaSeries, episodes: list[VideoDramaEpisode], now: datetime
 ) -> bool:
     """Mark the series finished once every planned episode is done or skipped; true if it did."""
-    if series.status != "active":
+    if is_planning_only(series) or series.status != "active":
         return False
     if len(episodes) < series.planned_episodes or not all(
         e.status in ("done", "skipped") for e in episodes
@@ -2478,6 +2518,7 @@ def finish_if_complete(
 async def finish_episode(session: AsyncSession, slug: str, number: int) -> SeriesEpisodeOut:
     """The worker reports the episode is cleared for upload: the next one may start."""
     series = await _series(session, slug, lock=True)
+    require_production_series(series)
     episode = await _episode(session, series, number)
     if episode.status != "started":
         raise SeriesRefused(409, "video_series_episode_not_started", "這一集還沒開始做")
@@ -2504,6 +2545,7 @@ async def start_compilation(
     (docs/videos/BINGE.md); the episodes come back in play order."""
     _ = token
     series = await _series(session, slug, lock=True)
+    require_production_series(series)
     if series.status != "finished" or not series.compilation:
         raise SeriesRefused(409, "video_series_not_finished", "每一集都完成之後才能做合集")
     if series.compilation_slug is not None:
@@ -2532,6 +2574,7 @@ async def start_compilation(
 async def finish_compilation(session: AsyncSession, slug: str) -> SeriesSummary:
     """The worker reports the compilation is cleared for upload."""
     series = await _series(session, slug, lock=True)
+    require_production_series(series)
     if series.compilation_slug is None:
         raise SeriesRefused(409, "video_series_not_compiling", "這部作品沒有在做合集")
     now = _now()

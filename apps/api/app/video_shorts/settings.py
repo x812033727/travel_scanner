@@ -87,6 +87,8 @@ def settings_values(row: VideoShortsSettings) -> SettingsWrite:
         budget_total_ntd=row.budget_total_ntd,
         subject_models=cast(Any, dict(row.subject_models or {})),
         max_per_month=row.max_per_month,
+        # Stored as {} when the Shorts follow the tutorial's models; read back as None.
+        stage_models=cast(Any, dict(row.stage_models or {}) or None),
     )
 
 
@@ -180,6 +182,9 @@ async def update_settings(
     before = settings_values(row).model_dump(mode="json")
     after = payload.model_dump(mode="json")
     for key, value in after.items():
+        if key == "stage_models" and value is None:
+            # The column holds no null: following the tutorial's models is stored as {}.
+            value = {}
         setattr(row, key, value)
     row.updated_by_user_id = actor.id
     changed = sorted(key for key in after if after[key] != before.get(key))

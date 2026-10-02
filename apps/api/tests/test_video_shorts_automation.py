@@ -30,8 +30,9 @@ from app.models import AdminAuditLog, User, VideoProject, VideoReview, VideoTool
 from app.problems import AppError, app_error_handler
 from app.video_automation.models import VideoAutomationSettings
 from app.video_media.storage import MediaStore
+from app.video_reviews.storage import PART_BYTES
 from app.video_shorts import admin_automation_api, jobs, plan, reports, rules, slots, topics
-from app.video_shorts.assets import AssetPart, upload_part
+from app.video_shorts.assets import AssetInfo, AssetPart, add_asset, upload_part
 from app.video_shorts.errors import ShortsRefused
 from app.video_shorts.models import (
     VideoShortsAsset,
@@ -244,6 +245,32 @@ def test_the_earliest_planned_slot_whose_topic_has_no_short_is_made() -> None:
     off_line = _facts(lines=("cut",), weekly_quota={"cut": 2}, pool={"cut": 9})
     assert jobs.next_job_for(off_line).kind is None
     assert jobs.next_job_for(_facts(planned=[])).kind is None
+
+
+def test_a_blocked_short_does_not_hold_up_the_calendar_until_the_owner_retries_it() -> None:
+    blocked = jobs.TopicFacts("receipt", "lab", "making", project_blocked=True)
+    decision = jobs.next_job_for(_facts(topics={**_facts().topics, "receipt": blocked}))
+    assert (decision.kind, decision.topic_slug) == ("make", "poster")
+    assert decision.holds == ("「receipt」卡住了，等站主處理",)
+    # A retry the worker has not acknowledged yet is not blocked: the make job comes back.
+    retried = jobs.TopicFacts("receipt", "lab", "making")
+    again = jobs.next_job_for(_facts(topics={**_facts().topics, "receipt": retried}))
+    assert again.topic_slug == "receipt"
+
+
+def test_a_project_waits_for_the_owner_only_while_blocked_with_no_retry_to_take() -> None:
+    first, second = UUID(int=7), UUID(int=8)
+
+    def project(stage: str, request: UUID | None, acknowledged: UUID | None) -> VideoProject:
+        return VideoProject(
+            stage=stage, retry_request_id=request, retry_acknowledged_id=acknowledged
+        )
+
+    assert jobs._waits_for_owner(project("blocked", None, None))
+    assert jobs._waits_for_owner(project("blocked", first, first)), "the old retry was taken"
+    assert not jobs._waits_for_owner(project("blocked", second, first)), "a new retry"
+    assert not jobs._waits_for_owner(project("blocked", first, None))
+    assert not jobs._waits_for_owner(project("making", None, None))
 
 
 def test_pause_the_month_s_cap_the_budget_and_the_subject_hold_back_making() -> None:
@@ -559,44 +586,55 @@ async def test_the_owner_s_material_makes_a_topic_ready(site: Site) -> None:
     assert made.status == "needs_assets"
     sha = hashlib.sha256(PNG).hexdigest()
 
-    def part(data: bytes = PNG, need: str = "photo", **changes: Any) -> AssetPart:
+    def part(data: bytes = PNG, need: str = "photo") -> AssetPart:
+        digest = hashlib.sha256(data).hexdigest()
+        return AssetPart(sha256=digest, part=0, parts=1, size=len(data), data=data, need=need)
+
+    def info(**changes: Any) -> AssetInfo:
         values: dict[str, Any] = {
-            "sha256": hashlib.sha256(data).hexdigest(),
-            "part": 0,
-            "parts": 1,
-            "size": len(data),
-            "data": data,
-            "need": need,
+            "sha256": sha,
+            "need": "photo",
             "filename": "menu.png",
             "author": "站主",
             "rights_note": "自己拍的，授權本站使用",
             "taken_on": date(2026, 10, 1),
         }
         values.update(changes)
-        return AssetPart(**values)
+        return AssetInfo(**values)
 
     async with site.session() as session:
         with pytest.raises(ShortsRefused) as unknown:
-            await upload_part(session, site.store, site.owner, "menu-photo", part(need="sketch"))
+            await upload_part(session, site.store, "menu-photo", part(need="sketch"))
         assert unknown.value.code == "video_shorts_asset_need_unknown"
-        with pytest.raises(ShortsRefused) as unsigned:
-            await upload_part(session, site.store, site.owner, "menu-photo", part(author=" "))
-        assert unsigned.value.code == "video_shorts_asset_rights_missing"
         text = b"not a picture at all"
         with pytest.raises(ShortsRefused) as wrong:
-            await upload_part(session, site.store, site.owner, "menu-photo", part(text))
+            await upload_part(session, site.store, "menu-photo", part(text))
         assert wrong.value.code == "video_shorts_asset_type"
         assert site.store.path("menu-photo", hashlib.sha256(text).hexdigest()) is None
-        out = await upload_part(session, site.store, site.owner, "menu-photo", part(), NOW)
+        with pytest.raises(ShortsRefused) as early:
+            await add_asset(session, site.store, site.owner, "menu-photo", info(), NOW)
+        assert early.value.code == "video_shorts_asset_not_uploaded"
+        stored = await upload_part(session, site.store, "menu-photo", part())
+        assert stored.complete and stored.asset is None, "the bytes alone are no asset yet"
+        assert (await topic(site, "menu-photo")).status == "needs_assets"
+        with pytest.raises(ShortsRefused) as unsigned:
+            await add_asset(session, site.store, site.owner, "menu-photo", info(author=" "), NOW)
+        assert unsigned.value.code == "video_shorts_asset_rights_missing"
+        with pytest.raises(ShortsRefused) as elsewhere:
+            await add_asset(session, site.store, site.owner, "menu-photo", info(need="sketch"), NOW)
+        assert elsewhere.value.code == "video_shorts_asset_need_unknown"
+        out = await add_asset(session, site.store, site.owner, "menu-photo", info(), NOW)
     assert out.complete and out.asset is not None and out.topic is not None
     assert out.topic.status == "ready" and out.topic.waiting_for == []
     assert out.asset.download_path == f"video/media/files/menu-photo/{sha}"
     assert (out.asset.author, out.asset.content_type) == ("站主", "image/png")
+    assert (out.asset.size, out.asset.taken_on) == (len(PNG), date(2026, 10, 1))
     assert site.store.path("menu-photo", sha) is not None
     async with site.session() as session:
-        again = await upload_part(session, site.store, site.owner, "menu-photo", part())
+        again = await upload_part(session, site.store, "menu-photo", part())
+        twice = await add_asset(session, site.store, site.owner, "menu-photo", info(), NOW)
         count = await session.scalar(select(func.count(VideoShortsAsset.id)))
-    assert again.complete and count == 1, "the same file twice is one asset"
+    assert again.complete and twice.asset == out.asset and count == 1, "one file is one asset"
 
 
 @pytest.mark.asyncio
@@ -605,17 +643,22 @@ async def test_photos_alone_do_not_make_an_image_topic_ready(site: Site) -> None
         await topics.import_campaign(session, site.owner, campaign(), NOW)
         for index in range(3):
             data = PNG + bytes([index])
-            out = await upload_part(
+            digest = hashlib.sha256(data).hexdigest()
+            await upload_part(
+                session,
+                site.store,
+                "shorts-taiwan-location",
+                AssetPart(
+                    sha256=digest, part=0, parts=1, size=len(data), data=data, need="landmarks"
+                ),
+            )
+            out = await add_asset(
                 session,
                 site.store,
                 site.owner,
                 "shorts-taiwan-location",
-                AssetPart(
-                    sha256=hashlib.sha256(data).hexdigest(),
-                    part=0,
-                    parts=1,
-                    size=len(data),
-                    data=data,
+                AssetInfo(
+                    sha256=digest,
                     need="landmarks",
                     filename=f"{index}.png",
                     author="站主",
@@ -942,6 +985,7 @@ async def test_every_tab_route_asks_for_its_capability(site: Site) -> None:
         ("POST", "topics/import", {"topics": []}),
         ("PATCH", "topics/shorts-receipt-total", {"release_order": 1}),
         ("POST", "topics/shorts-receipt-total/assets?sha256=" + "0" * 64, None),
+        ("POST", "topics/shorts-receipt-total/assets/finish", {}),
     ]
     base = "/api/v1/admin/video-shorts/"
 
@@ -964,6 +1008,88 @@ async def test_every_tab_route_asks_for_its_capability(site: Site) -> None:
         for method in route.methods  # type: ignore[attr-defined]
     }
     assert len(listed) == len(reads + manage), "a new route is added to this test"
+
+
+@pytest.mark.asyncio
+async def test_a_photo_goes_up_in_parts_and_its_author_only_in_a_body(
+    site: Site, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A URL lands in nginx's access log, the proxy's log and the browser's history, so the
+    parts carry only what names the bytes, and the person's name and the terms go in JSON."""
+    monkeypatch.setattr(admin_automation_api, "media_store", lambda _media: site.store)
+    needs = [{"key": "photo", "label": "自己拍的菜單照片"}]
+    async with site.session() as session:
+        await topics.add_idea(
+            session,
+            site.owner,
+            TopicIn.model_validate(
+                {"slug": "menu-photo", "title": "菜單", "brief": WHOLE, "assets_needed": needs}
+            ),
+            NOW,
+        )
+    data = PNG + b"\1" * PART_BYTES
+    sha = hashlib.sha256(data).hexdigest()
+    base = "/api/v1/admin/video-shorts/topics/menu-photo/assets"
+    technical = {"sha256": sha, "parts": "2", "size": str(len(data)), "need": "photo"}
+    personal = {
+        "author": "站主",
+        "rights_note": "自己拍的",
+        "filename": "m.png",
+        "taken_on": "2026-10-01",
+    }
+    info = {
+        "sha256": sha,
+        "need": "photo",
+        "filename": "menu.png",
+        "author": "站主",
+        "rights_note": "自己拍的，授權本站使用",
+        "taken_on": "2026-10-01",
+    }
+    async with AsyncClient(
+        transport=ASGITransport(app=_app(_with_roles("content"), site)), base_url="http://test"
+    ) as client:
+        for field, value in personal.items():
+            leaked = await client.post(
+                base, params={**technical, "part": "0", field: value}, content=data[:PART_BYTES]
+            )
+            assert (leaked.status_code, leaked.json()["code"]) == (
+                422,
+                "video_shorts_asset_info_in_url",
+            ), field
+        assert site.store.path("menu-photo", sha) is None, "a refused part is not kept"
+        early = await client.post(base + "/finish", json=info)
+        assert (early.status_code, early.json()["code"]) == (409, "video_shorts_asset_not_uploaded")
+        first = await client.post(
+            base, params={**technical, "part": "0"}, content=data[:PART_BYTES]
+        )
+        assert first.status_code == 200 and first.json()["complete"] is False
+        last = await client.post(base, params={**technical, "part": "1"}, content=data[PART_BYTES:])
+        assert last.status_code == 200
+        assert (last.json()["complete"], last.json()["asset"]) == (True, None)
+        stray = await client.post(base + "/finish", json={**info, "uploader": "x"})
+        assert stray.status_code == 422, "the body takes the six fields and nothing else"
+        unsigned = await client.post(base + "/finish", json={**info, "rights_note": " "})
+        assert unsigned.json()["code"] == "video_shorts_asset_rights_missing"
+        done = await client.post(base + "/finish", json=info)
+    assert done.status_code == 200, done.text
+    answer = done.json()
+    assert answer["complete"] and answer["received"] == [0, 1]
+    assert answer["topic"]["status"] == "ready"
+    asset = answer["asset"]
+    assert (asset["author"], asset["rights_note"], asset["filename"], asset["taken_on"]) == (
+        "站主",
+        "自己拍的，授權本站使用",
+        "menu.png",
+        "2026-10-01",
+    )
+    assert asset["size"] == len(data) and asset["content_type"] == "image/png"
+    async with site.session() as session:
+        rows = list(await session.scalars(select(VideoShortsAsset)))
+        logged = await session.scalar(
+            select(AdminAuditLog).where(AdminAuditLog.action == "video_shorts_asset_added")
+        )
+    assert [(row.author, row.filename) for row in rows] == [("站主", "menu.png")]
+    assert logged is not None and "站主" not in json.dumps(logged.metadata_json, ensure_ascii=False)
 
 
 # The worker's paths as the site relays them (apps/web/app/api/video/automation/shorts).

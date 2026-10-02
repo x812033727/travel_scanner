@@ -2593,6 +2593,12 @@
     "dramaModelsTitle": "漫剧各阶段",
     "dramaModelsHelp": "漫剧的六个阶段（策划、撰稿、核查、听众审稿、字幕翻译、字幕审稿）可以用跟教学视频不一样的模型；勾“跟教学一样”就沿用上面的选择。",
     "dramaStage": "漫剧：{stage}",
+    "shortsModelsTitle": "Shorts 各阶段",
+    "shortsModelsHelp": "Shorts 的六个阶段可以用跟教学视频不一样的模型；勾“跟教学一样”就沿用上面的选择。这一块单独保存，只改 Shorts 的模型，不动视频页 Shorts 分页的其他设置。",
+    "shortsModelsFollow": "Shorts 各阶段模型跟教学一样",
+    "shortsStage": "Shorts：{stage}",
+    "saveShortsModels": "保存 Shorts 模型",
+    "shortsModelsLoadError": "无法读取 Shorts 设置",
     "voiceTitle": "旁白与角色声音",
     "dramaVoiceHelp": "漫剧的旁白用频道声音，或自己选一个；角色的声音从下面的声音池分配。",
     "flowTitle": "流程上限",
@@ -2663,7 +2669,8 @@
       "outline": "总纲",
       "active": "制作中",
       "paused": "已暂停",
-      "finished": "已完结"
+      "finished": "已完结",
+      "planning": "企划待制作"
     },
     "docsPending": "{count} 份等你核准",
     "messagesPending": "{count} 则等模型回复",
@@ -2830,7 +2837,8 @@
     "leads": {
       "female": "女主",
       "male": "男主",
-      "dual-male": "双男主"
+      "dual-male": "双男主",
+      "ensemble": "群像主角"
     },
     "tiers": {
       "clips": {
@@ -2867,7 +2875,20 @@
     "reconcileRequest": "请以当前最新文字草稿为准，同步完整制作数据并提交新版供我审核。保留未修改的设定与连贯规则；若缺少必要信息，先在讨论中说明，不要自行改变故事。",
     "approvalOrder": "请先依次批准最新版设定集、整部大纲与前篇细纲。",
     "readProductionData": "检查制作数据",
-    "productionDataHelp": "制作时会使用这份角色、集数与情节节拍数据。批准前请确认它与全文一致。"
+    "productionDataHelp": "制作时会使用这份角色、集数与情节节拍数据。批准前请确认它与全文一致。",
+    "planning": {
+      "anime": "动漫",
+      "help": "企划已建立，等待长篇制作支持。设定、总纲与各季细纲可在下方阅读。",
+      "progress": "{done}/{total} 集 · {seasons} 季",
+      "runtime": "每集正文 {story} 分钟 · 播出时段 {slot} 分钟",
+      "storyMinutes": "每集正文 {story} 分钟",
+      "documents": "{count} 份企划文件",
+      "docStatus": "已保存",
+      "seasonN": "第 {n} 季细纲",
+      "season": "季",
+      "readData": "查看企划数据",
+      "dataHelp": "这份数据保留原定角色、集数与情节安排。长篇制作支持完成前，企划保持只读。"
+    }
   },
   "videoStories": {
     "title": "品牌故事",
@@ -3314,6 +3335,128 @@
     }
   },
   "videoShorts": {
+    "topics": {
+      "help": "按内容线列出选题，照制作的顺序排：有排序的在前，其余按创建时间。状态由服务器根据规格与素材决定。",
+      "empty": "选题库还是空的",
+      "emptyDetail": "新增一个想法，或导入 15 题策划。长视频公开、漫剧成片批准之后，服务器也会自己加精华与竖版短篇的选题。",
+      "statuses": {
+        "idea": "想法",
+        "ready": "可以做",
+        "needs_assets": "缺素材",
+        "making": "制作中",
+        "made": "做好了",
+        "dropped": "放弃了"
+      },
+      "origins": {
+        "campaign": "策划",
+        "planner": "策划模型",
+        "owner": "站长",
+        "auto": "自动"
+      },
+      "paid": "要花钱",
+      "order": "顺序 {order}",
+      "project": "视频 {slug}",
+      "updated": "{time} 更新",
+      "hook": "钩子：",
+      "waitingFor": "还不能做，因为：",
+      "note": "备注：{note}",
+      "showSpec": "看完整规格",
+      "hideSpec": "收起规格",
+      "front": "排到最前面",
+      "drop": "放弃这题",
+      "restore": "取回这题",
+      "dropConfirm": "放弃“{title}”？之后还可以取回。",
+      "actionError": "没有改成：{message}",
+      "spec": {
+        "title": "{title} 的规格",
+        "protocol": "测试规格",
+        "truthCheck": "真值核对",
+        "acceptance": "完成条件",
+        "none": "还没有写",
+        "missing": "还没有写",
+        "source": "来源视频：{slug}",
+        "noSource": "还没有来源视频",
+        "requires": "另外需要："
+      },
+      "protocol": {
+        "setup": "准备",
+        "input": "输入",
+        "condition_a": "A 组",
+        "condition_b": "B 组",
+        "runs": "跑几次",
+        "scoring": "怎么评分",
+        "failure_path": "失败时怎么办"
+      },
+      "requires": {
+        "vision": "会看图的模型",
+        "image_edit": "会修图的模型",
+        "sandbox": "隔离的执行环境",
+        "image_generation": "生成图片（要花钱）"
+      },
+      "idea": {
+        "title": "新增想法",
+        "help": "写一句想法、选内容线。它会存成“想法”，策划模型下一轮把它补成完整的规格。",
+        "text": "想法",
+        "line": "内容线",
+        "submit": "存成想法",
+        "saved": "存好了：策划模型下一轮会把它补成完整的规格。",
+        "error": "没有存：{message}"
+      },
+      "import": {
+        "title": "导入 15 题策划",
+        "help": "选 docs/videos/ai-shorts/campaign/campaign.json，照原样发送。已经在选题库里的题目会跳过，再导入一次不会多出题目。",
+        "file": "campaign.json 文件",
+        "button": "导入 15 题策划",
+        "busy": "导入中…",
+        "done": "导入了 {created} 题，跳过 {skipped} 题（已经在选题库里）。",
+        "notJson": "这个文件不是 JSON，请选 campaign.json。",
+        "error": "没有导入：{message}"
+      },
+      "assets": {
+        "box": "素材箱",
+        "title": "{title} 的素材",
+        "count": "{have}／{count}",
+        "madeBy": "拍摄者 {author}",
+        "file": "照片（PNG、JPEG 或 WebP）",
+        "author": "拍摄者（或作者）",
+        "takenOn": "拍摄日期",
+        "rights": "授权说明（谁拍的、可以怎么用）",
+        "help": "照片会先在浏览器缩到长边 2,048 px，并去掉 EXIF（拍摄地点与相机资料），再分段上传。",
+        "upload": "上传",
+        "sending": "上传中（第 {part}／{parts} 段）",
+        "done": "上传好了。",
+        "error": "没有上传：{message}"
+      }
+    },
+    "report": {
+      "help": "每周一份，最新的在最上面。正文是策划模型写的；下面是它引用的数字，每一个都是 YouTube 返回的原值，附来源与读取时间。这一页不自己算任何数字。",
+      "empty": "还没有每周报告",
+      "emptyDetail": "主机工人每周请策划模型写上一周的报告，写好就会出现在这里。",
+      "week": "{start} 到 {end} 那一周",
+      "writtenBy": "{model}，{time} 写好",
+      "modelUnknown": "没有返回模型名称",
+      "rowsTitle": "报告引用的数字（YouTube 原值）",
+      "noRows": "这份报告没有引用数字。",
+      "columns": {
+        "short": "Shorts",
+        "period": "时间窗",
+        "read": "来源与读取时间"
+      },
+      "range": "{start} 到 {end}",
+      "values": {
+        "views": "观看",
+        "engaged_views": "Engaged views",
+        "likes": "点赞",
+        "comments": "评论",
+        "shares": "分享",
+        "subscribers_gained": "新增订阅",
+        "avg_view_seconds": "平均观看秒数",
+        "avg_view_percent": "平均观看百分比",
+        "stayed_percent": "留下来看的百分比"
+      },
+      "planTitle": "下周的排期",
+      "planEmpty": "报告没有写下周的排期。"
+    },
     "loading": "读取中…",
     "loadError": "读不到 Shorts 的数据",
     "retry": "重试",
@@ -3321,6 +3464,8 @@
     "seconds": "{seconds} 秒",
     "viewsLabel": "Shorts 的画面",
     "views": {
+      "topics": "选题库",
+      "report": "每周报告",
       "calendar": "日历",
       "library": "片库与制作中",
       "metrics": "成效",
@@ -3594,10 +3739,24 @@
       }
     },
     "settings": {
+      "scopeConfirm": "你改了内容线、每天上限、发布时间或时区。保存之后要重新授权：现在的自动发布授权会失效，自动发布停下来，直到你读过新的条文再同意一次。确定要保存吗？",
+      "subjects": {
+        "title": "受测模型",
+        "help": "实测线的每一题，A 组与 B 组各在全新的对话里跑一次。选项跟 AI 设置页一样；工人不能自己指定模型。",
+        "a": "A 组",
+        "b": "B 组",
+        "provider": "供应商",
+        "model": "模型",
+        "none": "还没选（实测不会跑）",
+        "sameAsA": "跟 A 组一样",
+        "notReady": "还不能用",
+        "monthHelp": "主机工人一个月最多开始做几条 Shorts；填 0 就一条都不开始。"
+      },
       "help": "Shorts 有自己的设置，跟教学视频、漫剧分开。保存、开跑与授权要有“管理设置”的权限。",
       "paceTitle": "节奏与时段",
       "paceHelp": "一段一段写：连续几天、每天几个。每天的数量可以轮流，例如“2, 1”是一天两个、隔天一个。当天有几个，就照下面公开时间的顺序取几个。",
       "fields": {
+        "max_per_month": "一个月最多开始做几条",
         "pattern_days": "连续几天",
         "pattern_counts": "每天几个（轮流的话用逗号分开）",
         "slot_times": "公开时间（24 小时制，用逗号分开）",

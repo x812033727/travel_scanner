@@ -2593,6 +2593,12 @@
     "dramaModelsTitle": "漫劇各階段",
     "dramaModelsHelp": "漫劇的六個階段（企劃、撰稿、查核、聽眾審稿、字幕翻譯、字幕審稿）可以用跟教學影片不一樣的模型；勾「跟教學一樣」就沿用上面的選擇。",
     "dramaStage": "漫劇：{stage}",
+    "shortsModelsTitle": "Shorts 各階段",
+    "shortsModelsHelp": "Shorts 的六個階段可以用跟教學影片不一樣的模型；勾「跟教學一樣」就沿用上面的選擇。這一塊單獨儲存，只改 Shorts 的模型，不動影片頁 Shorts 分頁的其他設定。",
+    "shortsModelsFollow": "Shorts 各階段模型跟教學一樣",
+    "shortsStage": "Shorts：{stage}",
+    "saveShortsModels": "儲存 Shorts 模型",
+    "shortsModelsLoadError": "讀不到 Shorts 設定",
     "voiceTitle": "旁白與角色聲音",
     "dramaVoiceHelp": "漫劇的旁白用頻道聲音，或自己選一個；角色的聲音從下面的聲音池分配。",
     "flowTitle": "流程上限",
@@ -2663,7 +2669,8 @@
       "outline": "總綱",
       "active": "製作中",
       "paused": "已暫停",
-      "finished": "已完結"
+      "finished": "已完結",
+      "planning": "企劃待製作"
     },
     "docsPending": "{count} 份等你核准",
     "messagesPending": "{count} 則等模型回覆",
@@ -2830,7 +2837,8 @@
     "leads": {
       "female": "女主",
       "male": "男主",
-      "dual-male": "雙男主"
+      "dual-male": "雙男主",
+      "ensemble": "群像主角"
     },
     "tiers": {
       "clips": {
@@ -2867,7 +2875,20 @@
     "reconcileRequest": "請以目前最新文字草稿為準，同步完整製作資料並提交新版供我審核。保留未修改的設定與連貫規則；若缺少必要資訊，先在討論中說明，不要自行改變故事。",
     "approvalOrder": "請先依序核准最新版設定集、整部大綱與前篇細綱。",
     "readProductionData": "檢查製作資料",
-    "productionDataHelp": "製作時會使用這份角色、集數與情節節拍資料。核准前請確認它與全文一致。"
+    "productionDataHelp": "製作時會使用這份角色、集數與情節節拍資料。核准前請確認它與全文一致。",
+    "planning": {
+      "anime": "動漫",
+      "help": "企劃已建立，等待長篇製作支援。設定、總綱與各季細綱可在下方閱讀。",
+      "progress": "{done}/{total} 集 · {seasons} 季",
+      "runtime": "每集正文 {story} 分鐘 · 播出時段 {slot} 分鐘",
+      "storyMinutes": "每集正文 {story} 分鐘",
+      "documents": "{count} 份企劃文件",
+      "docStatus": "已保存",
+      "seasonN": "第 {n} 季細綱",
+      "season": "季",
+      "readData": "查看企劃資料",
+      "dataHelp": "這份資料保留原定角色、集數與情節安排。長篇製作支援完成前，企劃維持唯讀。"
+    }
   },
   "videoStories": {
     "title": "品牌故事",
@@ -3314,6 +3335,128 @@
     }
   },
   "videoShorts": {
+    "topics": {
+      "help": "依內容線列出題目，照製作的順序排：有排序的在前，其餘照建立時間。狀態由伺服器依規格與素材決定。",
+      "empty": "題庫還是空的",
+      "emptyDetail": "新增一個想法，或匯入 15 題企劃。長片公開、漫劇成片核准之後，伺服器也會自己加精華與直式短篇的題目。",
+      "statuses": {
+        "idea": "想法",
+        "ready": "可以做",
+        "needs_assets": "缺素材",
+        "making": "製作中",
+        "made": "做好了",
+        "dropped": "放棄了"
+      },
+      "origins": {
+        "campaign": "企劃",
+        "planner": "企劃模型",
+        "owner": "站主",
+        "auto": "自動"
+      },
+      "paid": "要花錢",
+      "order": "順序 {order}",
+      "project": "影片 {slug}",
+      "updated": "{time} 更新",
+      "hook": "鉤子：",
+      "waitingFor": "還不能做，因為：",
+      "note": "備註：{note}",
+      "showSpec": "看完整規格",
+      "hideSpec": "收起規格",
+      "front": "排到最前面",
+      "drop": "放棄這題",
+      "restore": "取回這題",
+      "dropConfirm": "放棄「{title}」？之後還可以取回。",
+      "actionError": "沒有改成：{message}",
+      "spec": {
+        "title": "{title} 的規格",
+        "protocol": "測試規格",
+        "truthCheck": "真值核對",
+        "acceptance": "完成條件",
+        "none": "還沒有寫",
+        "missing": "還沒有寫",
+        "source": "來源影片：{slug}",
+        "noSource": "還沒有來源影片",
+        "requires": "另外需要："
+      },
+      "protocol": {
+        "setup": "準備",
+        "input": "輸入",
+        "condition_a": "A 組",
+        "condition_b": "B 組",
+        "runs": "跑幾次",
+        "scoring": "怎麼評分",
+        "failure_path": "失敗時怎麼辦"
+      },
+      "requires": {
+        "vision": "會看圖的模型",
+        "image_edit": "會修圖的模型",
+        "sandbox": "隔離的執行環境",
+        "image_generation": "生成圖片（要花錢）"
+      },
+      "idea": {
+        "title": "新增想法",
+        "help": "寫一句想法、選內容線。它會存成「想法」，企劃模型下一輪把它補成完整的規格。",
+        "text": "想法",
+        "line": "內容線",
+        "submit": "存成想法",
+        "saved": "存好了：企劃模型下一輪會把它補成完整的規格。",
+        "error": "沒有存：{message}"
+      },
+      "import": {
+        "title": "匯入 15 題企劃",
+        "help": "選 docs/videos/ai-shorts/campaign/campaign.json，照原樣送出。已經在題庫裡的題目會略過，再匯入一次不會多出題目。",
+        "file": "campaign.json 檔案",
+        "button": "匯入 15 題企劃",
+        "busy": "匯入中…",
+        "done": "匯入了 {created} 題，略過 {skipped} 題（已經在題庫裡）。",
+        "notJson": "這個檔案不是 JSON，請選 campaign.json。",
+        "error": "沒有匯入：{message}"
+      },
+      "assets": {
+        "box": "素材箱",
+        "title": "{title} 的素材",
+        "count": "{have}／{count}",
+        "madeBy": "拍攝者 {author}",
+        "file": "照片（PNG、JPEG 或 WebP）",
+        "author": "拍攝者（或作者）",
+        "takenOn": "拍攝日期",
+        "rights": "授權說明（誰拍的、可以怎麼用）",
+        "help": "照片會先在瀏覽器縮到長邊 2,048 px，並拿掉 EXIF（拍攝地點與相機資料），再分段上傳。",
+        "upload": "上傳",
+        "sending": "上傳中（第 {part}／{parts} 段）",
+        "done": "上傳好了。",
+        "error": "沒有上傳：{message}"
+      }
+    },
+    "report": {
+      "help": "每週一份，最新的在最上面。內文是企劃模型寫的；底下是它引用的數字，每一個都是 YouTube 回報的原值，附來源與讀取時間。這一頁不自己算任何數字。",
+      "empty": "還沒有每週報告",
+      "emptyDetail": "主機工人每週請企劃模型寫上一週的報告，寫好就會出現在這裡。",
+      "week": "{start} 到 {end} 那一週",
+      "writtenBy": "{model}，{time} 寫好",
+      "modelUnknown": "沒有回報模型名稱",
+      "rowsTitle": "報告引用的數字（YouTube 原值）",
+      "noRows": "這份報告沒有引用數字。",
+      "columns": {
+        "short": "Shorts",
+        "period": "時間窗",
+        "read": "來源與讀取時間"
+      },
+      "range": "{start} 到 {end}",
+      "values": {
+        "views": "觀看",
+        "engaged_views": "Engaged views",
+        "likes": "喜歡",
+        "comments": "留言",
+        "shares": "分享",
+        "subscribers_gained": "新增訂閱",
+        "avg_view_seconds": "平均觀看秒數",
+        "avg_view_percent": "平均觀看百分比",
+        "stayed_percent": "留下來看的百分比"
+      },
+      "planTitle": "下週的排片",
+      "planEmpty": "報告沒有寫下週的排片。"
+    },
     "loading": "讀取中…",
     "loadError": "讀不到 Shorts 的資料",
     "retry": "重試",
@@ -3321,6 +3464,8 @@
     "seconds": "{seconds} 秒",
     "viewsLabel": "Shorts 的畫面",
     "views": {
+      "topics": "題庫",
+      "report": "每週報告",
       "calendar": "月曆",
       "library": "片庫與製作中",
       "metrics": "成效",
@@ -3594,10 +3739,24 @@
       }
     },
     "settings": {
+      "scopeConfirm": "你改了內容線、每天上限、公開時間或時區。存了之後要重新授權：現在的自動上架授權會失效，自動上架停下來，直到你讀過新的條文再同意一次。確定要儲存嗎？",
+      "subjects": {
+        "title": "受測模型",
+        "help": "實測線的每一題，A 組與 B 組各在全新的對話裡跑一次。選單跟 AI 設定頁一樣；工人不能自己指定模型。",
+        "a": "A 組",
+        "b": "B 組",
+        "provider": "供應商",
+        "model": "模型",
+        "none": "還沒選（實測不會跑）",
+        "sameAsA": "跟 A 組一樣",
+        "notReady": "還不能用",
+        "monthHelp": "主機工人一個月最多開始做幾支 Shorts；填 0 就一支都不開始。"
+      },
       "help": "Shorts 有自己的設定，跟教學影片、漫劇分開。儲存、開跑與授權要有「管理設定」的權限。",
       "paceTitle": "節奏與時段",
       "paceHelp": "一段一段寫：連續幾天、每天幾支。每天的支數可以輪流，例如「2, 1」是一天兩支、隔天一支。當天有幾支，就照下面公開時間的順序取幾個。",
       "fields": {
+        "max_per_month": "一個月最多開始做幾支",
         "pattern_days": "連續幾天",
         "pattern_counts": "每天幾支（輪流的話用逗號分開）",
         "slot_times": "公開時間（24 小時制，用逗號分開）",
