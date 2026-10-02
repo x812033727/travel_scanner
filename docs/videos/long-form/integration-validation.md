@@ -37,7 +37,7 @@ The original full web run was started before the review-form expectation was cor
 
 ## Migration order and delivery gate
 
-The adopted `0117_video_min_8_minutes` follows `0116_video_project_category` and raises both generic settings bounds in one update before replacing the constraint with 8–30 minutes. A downgrade widens the constraint while retaining raised values. The local migration graph has a single head.
+The adopted migration, renumbered `0118_video_min_8_minutes` after main landed `0117_video_shorts_topics` (#1097) on the same `0116_video_project_category`, now follows `0117_video_shorts_topics` and raises both generic settings bounds in one update before replacing the constraint with 8–30 minutes. A downgrade widens the constraint while retaining raised values. The local migration graph has a single head.
 
 Unmerged Shorts PR #1097 also currently adds an 0117 revision after 0116. Before either later merge, the second implementation must rebase its own migration onto the actual landed head. If Shorts lands first, this duration migration and its regression test must be renumbered to 0118 with the Shorts revision as parent, then independently reviewed again. If this implementation lands first, the Shorts owner must rebase that revision onto this one. Never introduce a dependency on an unlanded migration or leave two unplanned heads; CI checks the graph and runs real PostgreSQL upgrades.
 

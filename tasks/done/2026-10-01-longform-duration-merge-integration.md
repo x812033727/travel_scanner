@@ -18,9 +18,9 @@ scope:
   - apps/api/app/video_automation/models.py
   - apps/api/app/video_automation/schemas.py
   - apps/api/app/video_automation/series.py
-  - apps/api/migrations/versions/0117_video_min_8_minutes.py
   - apps/api/migrations/versions/0118_video_min_8_minutes.py
-  - apps/api/tests/test_migration_0117_video_min_8_minutes.py
+  - apps/api/migrations/versions/0118_video_min_8_minutes.py
+  - apps/api/tests/test_migration_0118_video_min_8_minutes.py
   - apps/api/tests/test_migration_0118_video_min_8_minutes.py
   - apps/api/tests/test_video_automation_settings.py
   - apps/api/tests/test_video_drama_requests.py
@@ -124,3 +124,5 @@ The combined API/UI preserve 8–20/default 10 for flat explainers and original 
 Current checks: all 473 plans and ten explicit second-season validators pass; 307 historical files and 184 Shorts are preserved. Tools: 1,113 passed/2 skipped; API: 5,485 passed/427 skipped; worker/core: 67 passed; scoped API: 149 passed/5 skipped; scoped series/explainer UI: 31 passed. Full API ruff/mypy and web lint/i18n/typecheck pass. The full web run found one obsolete test accessible-name expectation (8–12 versus the actual 8–20); its deterministic reproduction and single-line correction yield 30/30 review-form passes. The genuine 70-file independent review is being incrementally refreshed for that correction. Detailed, stage-specific evidence lives in `docs/videos/long-form/integration-validation.md`.
 
 Final implementation handoff: the genuine incremental review is installed, report SHA `9d01f55e57f1469e43d17a3f25b305641cc28e0d296d3373379e3e7ef463df62`. Independent reinspection confirms exact installed bytes, all 70 current bindings, CLI 473/473 and 19/19 regressions. Full web's original run finished with 3,743 passes and the sole now-corrected label failure; both author and independent reviewer repeat the corrected file's 30/30 passes. Peer #1103 now exists at the incorporated 6523 head; this task does not change or close it. Required CI for this new combined push is still pending at archive time and must be checked on the live PR head before any separately authorized merge. Draft/no-auto-merge remains in place. Closing this ticket archives the implemented integration and its review, not a merge, database deployment or actual media acceptance.
+
+2026-10-02 merge of main after #1094–#1099: main landed `0117_video_shorts_topics` (#1097) on the same `0116`, so #1103 and this branch renumber the eight-minute migration to `0118_video_min_8_minutes`, revising `0117_video_shorts_topics`. Main also changed 15 reviewed files (skills, video_automation models/schemas/series, flow/prompts/drama/lint and their tests), so the duration review needs a fresh independent increment before its receipt can bind them.
