@@ -326,14 +326,15 @@
             "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:222"
           ]
         }
-      ]
+      ],
+      "performance_states": []
     },
     {
       "id": "yiwei",
       "voice_name": "Kore",
       "performance": "台灣國語，直接、利落，語尾不拖；哼搖籃曲時放輕放慢，帶一點氣音。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
       "pronunciations": {
-        "zh-TW": "沈亦微：Shěn Yìwēi。來源注音：沈是姓，讀ㄕㄣˇ，不讀ㄔㄣˊ。台灣口音，聲調候選待聽校。",
+        "zh-TW": "沈亦微：Shěn Yìwéi／ㄕㄣˇ ㄧˋ ㄨㄟˊ；微為二聲。依台灣教育部《國語辭典簡編本》核對（2026-10-02），實際 TTS 待聽校。",
         "ja": "シェン・イーウェイ",
         "ko": "선이웨이",
         "en": "Shen Yiwei; shun ee-way"
@@ -384,7 +385,8 @@
             "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:130"
           ]
         }
-      ]
+      ],
+      "performance_states": []
     },
     {
       "id": "heting",
@@ -449,6 +451,55 @@
             "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:222"
           ]
         }
+      ],
+      "performance_states": [
+        {
+          "id": "silent-writing",
+          "episodes": [
+            2,
+            9,
+            15,
+            26,
+            27,
+            37,
+            40
+          ],
+          "cue": "E16 之外的掌心／空中寫字",
+          "source_excerpt": "說不出話，用手指在人掌心寫字，一次一個字：「走」、「霍」、「留」。",
+          "instructions": [
+            "不產生可辨詞的鶴亭台詞；手指、衣毯與必要呼吸可分軌。",
+            "字義由旁白克制讀出，且只在該字完成、人物已可理解之後；E37「兄」不能用老人聲說。"
+          ],
+          "status": "proposed",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:38",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:200",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:106",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-3.mjs:129",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-3.mjs:152",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:153",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:222"
+          ],
+          "speech_mode": "nonverbal"
+        },
+        {
+          "id": "brief-speech",
+          "episodes": [
+            16
+          ],
+          "cue": "醫護評估穩定、天亮後短暫開口",
+          "source_excerpt": "救護車的醫護人員到場處置，評估鶴亭的呼吸、血壓與意識都穩定，可以在家觀察，留給亦微一張注意事項單：整夜每小時量一次血壓、有任何變化立刻回撥，底下寫著急診的直撥電話；把喝剩的半碗藥封進藥罈帶回急診給姜曼化驗；醫護處置完、確認穩定離開之後，陸謹才下三針，守了一夜；天亮鶴亭的嘴唇動了，第一個聲音是「對……不起」；陸謹把耳朵貼近，鶴亭一個字一個字說出七年前：霍青山坐在這張藤椅上說「陸謹留下就死」。",
+          "instructions": [
+            "每字費力，短句之間留呼吸；不能把霍當年的威脅直接用霍新配音重演。",
+            "此集末掌心「川」仍是手寫，下一集起恢復不說話。"
+          ],
+          "status": "proposed",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:129",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+          ]
+        }
       ]
     },
     {
@@ -506,7 +557,8 @@
             "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:153"
           ]
         }
-      ]
+      ],
+      "performance_states": []
     },
     {
       "id": "huoqingshan",
@@ -595,7 +647,8 @@
             "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:38"
           ]
         }
-      ]
+      ],
+      "performance_states": []
     },
     {
       "id": "weicheng",
@@ -641,7 +694,8 @@
             "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-3.mjs:37"
           ]
         }
-      ]
+      ],
+      "performance_states": []
     },
     {
       "id": "zhoubo",
@@ -683,7 +737,8 @@
             "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
           ]
         }
-      ]
+      ],
+      "performance_states": []
     },
     {
       "id": "jiangman",
@@ -735,7 +790,8 @@
             "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:84"
           ]
         }
-      ]
+      ],
+      "performance_states": []
     },
     {
       "id": "guodahai",
@@ -770,12 +826,13 @@
             "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
           ]
         }
-      ]
+      ],
+      "performance_states": []
     },
     {
       "id": "sisi",
       "voice_name": "Leda",
-      "performance": "台灣國語，很輕、很慢，像剛學會說話；第 34 集第一個字是「爸」。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "performance": "台灣國語，19 歲成年女性；七年昏迷後很輕、很慢，聲氣虛弱而非幼兒高音。E34 第一個字只有「爸」，之後依來源保留短句與呼吸；不得為表演自行增加哭喊。候選聲音尚未 TTS 試聽。",
       "pronunciations": {
         "zh-TW": "郭思思：Guō Sīsī。來源注音：未填，需補完整人名試聽。台灣口音，聲調候選待聽校。",
         "ja": "グオ・スースー",
@@ -839,6 +896,25 @@
             "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:199"
           ]
         }
+      ],
+      "performance_states": [
+        {
+          "id": "adult-awakening",
+          "episodes": [
+            34
+          ],
+          "cue": "十九歲思思睜眼後第一字",
+          "source_excerpt": "急診綠簾裡思思睜開眼，第一個聲音是「爸」；郭大海抱著水杯站在床邊不敢動，姜曼把他推過去；陸謹躺在隔壁床吊點滴，臉色比思思白；門外記者堵滿走廊，「死了七年的女孩」上了全城的新聞。",
+          "instructions": [
+            "成年女性原聲身分，弱气、短字；不能為七年前十二歲經歷降成童音。",
+            "「爸」前留約半秒試剪空間，正式依音檔量測；其他角色不蓋住這個字。"
+          ],
+          "status": "proposed",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:84",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+          ]
+        }
       ]
     },
     {
@@ -873,7 +949,8 @@
       "video_constraints": {
         "min_visual_age_years": 12,
         "veo_lite_i2v": "not-verified-under-18"
-      }
+      },
+      "performance_states": []
     },
     {
       "id": "xiweng",
@@ -896,6 +973,25 @@
           "cue": "只有沒有選中較精確shot state時使用；不把固定習慣手勢連續重演。",
           "source_refs": [
             "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:337",
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+          ]
+        }
+      ],
+      "performance_states": [
+        {
+          "id": "first-live-voice",
+          "episodes": [
+            37
+          ],
+          "cue": "到堂前信件為旁白；此集本人第一次說話",
+          "source_excerpt": "谿翁走進第三進，鶴亭坐在輪椅上等他，兩個老人隔著天井看了很久，鶴亭的手指在空中寫「兄」；谿翁蹲下握住那隻手：「你把他送來，我把他送回來。」他對陸謹說：「還剩兩次，都不許用在仇人身上。」",
+          "instructions": [
+            "蒼老、穩、帶笑但不裝神秘；與周伯粗硬的起句拉開。",
+            "鶴亭只用手寫與呼吸，不因兩老人同鏡就加第二段老人对白。"
+          ],
+          "status": "proposed",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:153",
             "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
           ]
         }
@@ -2968,7 +3064,7 @@
       "hero_shot": {
         "action": "谿翁舊包交→空中兄→餘2次",
         "camera": "脸/两包/父右手分镜",
-        "sound": "老人两声线不共混，短气音"
+        "sound": "谿翁蒼老穩聲、周伯粗硬聲分開；鶴亭只呼吸，空中「兄」由旁白讀。"
       },
       "risk_controls": [
         {
@@ -2997,7 +3093,7 @@
         "輪椅藍毯"
       ],
       "voice_notes": [
-        "老人两声线不共混，短气音",
+        "谿翁蒼老穩聲、周伯粗硬聲分開；鶴亭只呼吸，空中「兄」由旁白讀。",
         "依當集characters配聲；source carry及continuity_notes優先。無台詞角色不可因出現在遠景就新增TTS；每個關鍵句先錄表演再調切點。"
       ],
       "cc_notes": [
@@ -3196,7 +3292,10 @@
     "dynamic_rules": [
       "先測輕聲對白可懂度；配樂在台詞時自動化讓位，不能只把人聲全面拉高。尖銳器物聲/警報不蓋關鍵字。",
       "左右聲像服務空間；台詞保中心，手機單聲道合併後仍清楚。長停頓保持呼吸/衣料活動，不以freeze延長畫面。",
-      "Veo原片的native audio不直接入正片混音；任何意外人聲/擬配樂須移除。嘴型、FOLEY、字幕時間碼以最終中文字幕版聲軌為基準。"
+      "Veo原片的native audio不直接入正片混音；任何意外人聲/擬配樂須移除。嘴型、FOLEY、字幕時間碼以最終中文字幕版聲軌為基準。",
+      "聲音線索只在來源指定的動作與次數發生；配樂、轉場與環境音不得偽造倒數、敲擊、腳步或病人恢復的額外證據。",
+      "角色聲線身分固定；病傷、年齡、聲音距離與逐句沉默按 performance_states/audio_cues 分別試音，不把狀態指示本身唸出。",
+      "旁白只補當集視點已可知且觀眾看不清的必要資訊；先保留角色反應與環境底聲，不把下一集揭露、人物 secret 或 source_excerpt 直接變成解說。"
     ],
     "locale_constraints": [
       "先完成zh-TW台灣國語表演/人名試聽及picture lock；ja/ko/en僅保留設計和詞表，這一輪不自動生成三語。",
@@ -3205,7 +3304,298 @@
       "ja/ko/en人名用此表候選音譯，不自動把漢字改日語音讀或韓國本土姓名。稱謂先翻譯語用，保留身份尊卑與熟識距離。",
       "各語分開錄完整表演、對齊剪輯點；不硬壓縮英文/日文到中文每字同時長。若譯句過長先重寫等義短句或調非關鍵反應鏡，倒數絕不拉長。",
       "目前所有voice_name沿用source作待試聽候選；不是四語皆有相同音色/口音的保證。母語監聽前禁止標示配音驗收通過。"
-    ]
+    ],
+    "audio_cues": [
+      {
+        "id": "song-4",
+        "episodes": [
+          4
+        ],
+        "speaker_ids": [
+          "yiwei",
+          "zhoubo"
+        ],
+        "source_kind": "effect",
+        "source_excerpt": "陸謹聽亦微邊秤藥邊哼搖籃曲，聽出歌詞裡有「雲根」「霧藤」，正是谿翁教過的十二味；他問配方在哪，周伯說老東家從不寫，「寫在紙上的方子會被拿走」；亦微停下來：「這歌是我媽教的。」",
+        "instructions": [
+          "原創旋律、歌詞順序與允許段落先鎖同一 master cue；歌唱專項製作，不用普通 TTS 拼唱。",
+          "只取本集已揭露片段，配樂與哼唱均不可提前唱出最後兩味。"
+        ],
+        "status": "proposed",
+        "source_refs": [
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:84",
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+        ]
+      },
+      {
+        "id": "song-17",
+        "episodes": [
+          17
+        ],
+        "speaker_ids": [
+          "yiwei",
+          "zhoubo"
+        ],
+        "source_kind": "effect",
+        "source_excerpt": "仲謙走進藥庫，把股份轉讓書放在藥單旁邊，「你們拿去守」，說他要去見霍，「有些帳是我欠的」；他轉身要走，西裝口袋滑出一張照片，陸謹看見了：匾額背面刻字的特寫，一半被手指擋住——仲謙早就拍過匾的背面；仲謙撿起照片塞回口袋，走了。",
+        "instructions": [
+          "原創旋律、歌詞順序與允許段落先鎖同一 master cue；歌唱專項製作，不用普通 TTS 拼唱。",
+          "只取本集已揭露片段，配樂與哼唱均不可提前唱出最後兩味。"
+        ],
+        "status": "proposed",
+        "source_refs": [
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:153",
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+        ]
+      },
+      {
+        "id": "song-23",
+        "episodes": [
+          23
+        ],
+        "speaker_ids": [
+          "yiwei",
+          "zhoubo"
+        ],
+        "source_kind": "effect",
+        "source_excerpt": "陸謹不催，把黃銅秤放在她面前，依序擺好已確定的前十味；末兩味分開放在秤外，誰也沒有先選。亦微閉眼哼過「霧藤」，這次沒有停，她唱出的下一味才被陸謹放到第十一位；秤桿一沉，她接著唱出最後一句「石心花」。末兩位第一次排定，陸謹把十二個藥名依序寫在左手掌上。",
+        "instructions": [
+          "原創旋律、歌詞順序與允許段落先鎖同一 master cue；歌唱專項製作，不用普通 TTS 拼唱。",
+          "按本集來源允許段落，不改十二味的既定順序。"
+        ],
+        "status": "proposed",
+        "source_refs": [
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-3.mjs:60",
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+        ]
+      },
+      {
+        "id": "song-36",
+        "episodes": [
+          36
+        ],
+        "speaker_ids": [
+          "yiwei",
+          "zhoubo"
+        ],
+        "source_kind": "effect",
+        "source_excerpt": "陸謹把寫滿十二味的紙貼在百子櫃正中，唸出匾額背面那九個字：「方在人在，堂歸持方者。方公開了，持方者就是所有人，誰也接管不了所有人。」亦微說出母親死在這裡的原因：霍逼她交方——二十年後她在同一個地方，把方交給了全城。",
+        "instructions": [
+          "原創旋律、歌詞順序與允許段落先鎖同一 master cue；歌唱專項製作，不用普通 TTS 拼唱。",
+          "公開完整曲；周伯最後一句另演走音，不複製亦微的人聲。"
+        ],
+        "status": "proposed",
+        "source_refs": [
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:130",
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+        ]
+      },
+      {
+        "id": "song-38",
+        "episodes": [
+          38
+        ],
+        "speaker_ids": [
+          "zhoubo",
+          "yiwei"
+        ],
+        "source_kind": "effect",
+        "source_excerpt": "陸謹當著執行官說：配方已公開登記，人人都是持方者，就沒有人能憑配方獨占接管；接管申請不成立，守方堂維持原登記人沈鶴亭，由全堂的人守；周伯與亦微把舊匾抬回門楣下，亦微拍下照片，寫上「給哥」，寄去監獄；阿豆抱著新畫來送，說他喝安歲散十幾天，一次急診都沒進；亦微蹲下把母親的搖籃曲哼給他聽。",
+        "instructions": [
+          "原創旋律、歌詞順序與允許段落先鎖同一 master cue；歌唱專項製作，不用普通 TTS 拼唱。",
+          "按本集來源允許段落，不改十二味的既定順序。"
+        ],
+        "status": "proposed",
+        "source_refs": [
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:176",
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:321",
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/setting.mjs:323"
+        ]
+      },
+      {
+        "id": "song-40",
+        "episodes": [
+          40
+        ],
+        "speaker_ids": [
+          "yiwei"
+        ],
+        "source_kind": "effect",
+        "source_excerpt": "三十天後廣場重擺了折疊椅，紅布下是黑底金字的舊匾；鶴亭坐輪椅在第一排；門邊貼出守方堂的登記公告：負責人沈鶴亭，董事長一欄空著，陸謹在職稱欄只寫了「坐堂醫」；郭大海把那杯溫水放到陸謹手上，鞠了一個躬；亦微走到匾的另一頭，拿起另一條吊繩。",
+        "instructions": [
+          "原創旋律、歌詞順序與允許段落先鎖同一 master cue；歌唱專項製作，不用普通 TTS 拼唱。",
+          "結尾只用已鎖旋律器樂版，不新增來源沒有的演唱。"
+        ],
+        "status": "proposed",
+        "source_refs": [
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:222",
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+        ]
+      },
+      {
+        "id": "palm-not-speech",
+        "episodes": [
+          2,
+          9,
+          26,
+          37,
+          40
+        ],
+        "speaker_ids": [
+          "heting"
+        ],
+        "source_kind": "message-read",
+        "source_excerpt": "鶴亭看見陸謹，右手抖著抬起來摸他的臉，眼淚下來卻一個字都說不出；陸謹三針之後那隻手穩了，養父的手指在他掌心慢慢寫了一個「走」——不是「留」，陸謹才明白七年前的指控後面有事。",
+        "instructions": [
+          "掌字由旁白讀、鶴亭不得配可辨詞；字出現前不先說破。",
+          "E37 能說話的老人是谿翁與周伯；鶴亭僅呼吸。"
+        ],
+        "status": "proposed",
+        "source_refs": [
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:38",
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58",
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-1.mjs:200",
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-3.mjs:129",
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:153",
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:222"
+        ]
+      }
+    ],
+    "audition_scenes": [
+      {
+        "id": "father-brief-voice",
+        "episode": 16,
+        "speaker_ids": [
+          "heting"
+        ],
+        "source_excerpt": "鶴亭說指控是他寫的，「假的，全是假的」，把針包塞給他那晚就是送他去山上；陸謹跪在床前，額頭抵著養父的手；門外仲謙站著沒進來，聽見父親說「他比你像沈家人」，手從門框上滑下去。",
+        "instructions": [
+          "確認同一老人費力短聲；不把書寫字補成台詞。"
+        ],
+        "acceptance": [
+          "停頓未被剪掉",
+          "只 E16 使用說話片段"
+        ],
+        "status": "proposed",
+        "source_refs": [
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:129",
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+        ],
+        "line_samples": [
+          {
+            "speaker": "heting",
+            "text": "對……不起",
+            "source_field": "conflict",
+            "source_kind": "dialogue",
+            "source_refs": [
+              "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:129",
+              "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+            ]
+          },
+          {
+            "speaker": "heting",
+            "text": "假的，全是假的",
+            "source_field": "turn",
+            "source_kind": "dialogue",
+            "source_refs": [
+              "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-2.mjs:129",
+              "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "adult-first-word",
+        "episode": 34,
+        "speaker_ids": [
+          "sisi"
+        ],
+        "source_excerpt": "警方憑莊維的簽名紀錄與韋承的帳在機場攔下莊維，也把圍住沈家老宅的四輛黑車請走；姜曼把她從 7 號房那天起記下的思思數據交給警方；霍青山在病床上發出聲明，附上一批「守方堂假藥」的檢驗報告——正是他自己換進去的那批，反咬守方堂多年用假藥害死病人。",
+        "instructions": [
+          "成人甦醒後微弱單字；試音三段校準不屬於這場戲，不得塞進正片。"
+        ],
+        "acceptance": [
+          "成年音色未幼兒化",
+          "爸可懂且無追加詞"
+        ],
+        "status": "proposed",
+        "source_refs": [
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:84",
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+        ],
+        "line_samples": [
+          {
+            "speaker": "sisi",
+            "text": "爸",
+            "source_field": "conflict",
+            "source_kind": "dialogue",
+            "source_refs": [
+              "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:84",
+              "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "two-speaking-elders",
+        "episode": 37,
+        "speaker_ids": [
+          "zhoubo",
+          "xiweng",
+          "heting"
+        ],
+        "source_excerpt": "谿翁走進第三進，鶴亭坐在輪椅上等他，兩個老人隔著天井看了很久，鶴亭的手指在空中寫「兄」；谿翁蹲下握住那隻手：「你把他送來，我把他送回來。」他對陸謹說：「還剩兩次，都不許用在仇人身上。」",
+        "instructions": [
+          "周伯認出舊人，谿翁回答；鶴亭保持無可辨詞，手寫由旁白。"
+        ],
+        "acceptance": [
+          "周伯／谿翁可盲聽區別",
+          "鶴亭沒有說出兄",
+          "不是三名老人同聲"
+        ],
+        "status": "proposed",
+        "source_refs": [
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:153",
+          "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+        ],
+        "line_samples": [
+          {
+            "speaker": "zhoubo",
+            "text": "鶴川師兄？",
+            "source_field": "conflict",
+            "source_kind": "dialogue",
+            "source_refs": [
+              "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:153",
+              "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+            ]
+          },
+          {
+            "speaker": "xiweng",
+            "text": "你用了一次。",
+            "source_field": "conflict",
+            "source_kind": "dialogue",
+            "source_refs": [
+              "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:153",
+              "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+            ]
+          },
+          {
+            "speaker": "xiweng",
+            "text": "你把他送來，我把他送回來。",
+            "source_field": "turn",
+            "source_kind": "dialogue",
+            "source_refs": [
+              "docs/videos/series-plans/claude-binge-five-20260928/three-needles/chapter-4.mjs:153",
+              "docs/videos/series-plans/claude-binge-five-20260928/three-needles/packaging.mjs:58"
+            ]
+          }
+        ]
+      }
+    ],
+    "pronunciation_terms": {
+      "沈亦微": "ㄕㄣˇ ㄧˋ ㄨㄟˊ；微讀二聲"
+    }
   },
   "acceptance_checks": [
     "本件是source-bound製作設計，不是video.json、成片驗收、上傳批准或正式站匯入。未呼叫任何付費圖/片/語音生成。",

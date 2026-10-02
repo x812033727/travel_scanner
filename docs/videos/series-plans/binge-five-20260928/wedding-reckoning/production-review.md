@@ -116,7 +116,7 @@ E1現世婚紗有頭紗、E2–3婚紗無頭紗、E4後褲裝；E1/5/15前世火
 | 沈崇岳 / chongyue | Charon；台灣國語；低、緩、像在談家常；敗局才出現呼吸失序。 | shěn chóng yuè / シェン・チョンユエ / 선 충웨 / Shen Chongyue |
 | 許聞 / xuwen | Orus；台灣國語；平穩中低音，數字咬字清楚。 | xǔ wén / シュー・ウェン / 쉬 원 / Xu Wen |
 | 周啟德 / qide | Fenrir；台灣國語；粗啞但不誇張，關鍵時間慢說。 | zhōu qǐ dé / ジョウ・チードー / 저우 치더 / Zhou Qide |
-| 杜淑雲 / shuyun | Sulafat；台灣國語；沉著、成熟，像可信的師傅。 | dù shū yún / ドゥー・シューユン / 두 수윈 / Du Shuyun |
+| 杜淑雲 / shuyun | Sulafat；台灣國語；沉著、成熟，像可信的師傅。 | dù shú yún / ドゥー・シューユン / 두 수윈 / Du Shuyun |
 | 沈雲禾 / yunhe | Vindemiatrix；台灣國語；溫和、先說人再談數字；舊錄音的質地由後製加上。 | shěn yún hé / シェン・ユンホー / 선 윈허 / Shen Yunhe |
 
 - 撕紙斷琴是唯一開場強停；後續拒絕交易改用停筆與呼吸，避免每次都重複同招。
@@ -154,3 +154,38 @@ E6–24每次證據段先給人的代價（失聯、半量訂單、凍結、追�
 沈知夏現時23歲。來源提到母親交錄音筆時她15歲（source.mjs:264、2960），但現稿只以錄音來源與保管史交代，未安排15歲本人入鏡；不能只因背景史就把現時成人ID全域標成未成年。若後續新增年少回望，須先獨立確認年齡、集/鏡與供應能力，不能沿用成年look冒拍。
 
 character.video_constraints標記實際未成年人物；只有畫外聲不自動禁止中文配音。分鏡需區分說話者與畫面內人物，但不能靠背影、局部、卡通畫風或省略年齡宣稱繞過限制成功。必須保留原設年齡，先選手繪動畫或合法可支援相應年齡的供應商，做含該人物的pilot確認能力與效果再放量。此批不能宣稱已可直接全400集拍完；通過離線設計檢查也不代表供應商或成片已驗收。
+
+## 2026-10-02 配音與聲音細節覆核
+
+本輪只有來源文字與製作設計覆核，沒有實際TTS、試音、SFX音檔或成片驗收。新增performance_states、audio_cues、audition_scenes每筆均為proposed，綁定集數與來源。source_excerpt只供語境，不能整段念成台詞；line_samples僅逐字引用已有原台詞，其餘試音段落待本集定稿取樣。
+
+- 杜淑雲依來源lexicon改為dù shú yún（淑，二聲），不換Sulafat聲音身份。
+- E19修復錄音不能補造缺字成完整指控；E33/E35聲源維持固定對講點，離點後不通話。
+
+### 角色表演狀態
+
+| 角色 / state | 集數 | 演出重點 | 來源 |
+| --- | --- | --- | --- |
+| zhitang / zhitang-triggered | E5 | 回想火場短暫拉高音量，隨即壓住；只在來源指定的回想反應短暫失控，核實匯款時恢復短句；她的主觀誤認不是全知真相。 | [source.mjs:849](./source.mjs#L849) |
+| zhitang / zhitang-hoarse | E12 | 兩天跟車排班，嗓子沙啞、無傷；以少氣和換氣表現疲倦，簽收數字仍清楚；不增加煙嗆或尖銳嘶吼。 | [source.mjs:1270](./source.mjs#L1270) |
+| zhitang / zhitang-grief-to-evidence | E19 | 聽母親錄音崩潰一次，再拆證據；呼吸斷一次後回到日期、款項、現場三件事；不演成已確定兇手的勝利宣言。 | [source.mjs:1675](./source.mjs#L1675) |
+| zhitang / zhitang-private-apology | E25 | 姐妹私下道歉，仍未向妹妹透露重生；哭意與完整句尾並存；不添加前世電話另一端的結果。 | [source.mjs:2028](./source.mjs#L2028) |
+| zhixia / zhixia-smoke-radio | E33、E35 | 煙嗆但能報告，E35撤出後有輕微擦傷；咳聲放句外，不能蓋住人數和位置；E33沒有新傷，E35左前臂擦傷不演成重傷。 離開固定點後無沿路通話；E36未登錄她，不新增台詞。 | [source.mjs:2497](./source.mjs#L2497)、[source.mjs:2612](./source.mjs#L2612) |
+| zhixia / zhixia-recovered | E39 | 數月後已恢復；回復Aoede正常句長，不沿用火場咳嗽；左前臂疤痕是畫面資訊。 | [source.mjs:2837](./source.mjs#L2837) |
+| shuyun / shuyun-safe-endpoint | E26、E33、E35 | 安全側固定點的成熟穩定回覆；先讓知夏報完，再短句確認；與煙中知夏區隔，不在安全側添加嗆咳或消防指揮新台詞。 | [source.mjs:2087](./source.mjs#L2087)、[source.mjs:2497](./source.mjs#L2497)、[source.mjs:2612](./source.mjs#L2612) |
+| yunhe / yunhe-damaged-recording | E19 | 生前錄音，非現場對話；保留來源Vindemiatrix身份；只用定稿中可辨字句，缺損不能生成新證詞。 先乾聲再做錄音透視，無鬼魂回音或母親肉身。 | [source.mjs:1630](./source.mjs#L1630) |
+
+### 聲音提示
+
+- **wedding-e10-original（E10；recording）**：舊筆只播破損質地，本集未登錄母親，不能新增可懂母親台詞；許聞封存原件，另製備份修復。 來源：[source.mjs:1097](./source.mjs#L1097)。
+- **wedding-e19-restored-copy（E19；recording）**：母聲來自E10同一錄音事件的修復副本；兩版的關係待實際音檔建立，本設計沒有audio_ref。 缺字保持缺字；知棠與許聞分別查日期、款項、現場時不疊播母親。 來源：[source.mjs:1630](./source.mjs#L1630)。
+- **wedding-e26-intercom-test（E26；dialogue）**：固定點通訊先聽清再加工，E33沿用同一空间識別，不是假定手持對講。 來源：[source.mjs:2042](./source.mjs#L2042)。
+- **wedding-e33-position-report（E33；dialogue）**：知夏在東側固定點報三人與顧的位置，淑雲在安全側；數字時降低火與警報。 工人只留非語詞環境反應，不新增未登錄證詞。 來源：[source.mjs:2456](./source.mjs#L2456)。
+- **wedding-e35-end-call-before-walk（E35；dialogue）**：完成位置確認才斷聲；往北側撤出後只留腳步／環境，不能繼續通話。 知棠在警戒線外聽消息，不混成通話點內的人。 來源：[source.mjs:2569](./source.mjs#L2569)。
+
+### 待實作的試音段落
+
+- **wedding-sisters／E25**：zhitang、zhixia。從定稿選姐妹道歉與共同決定段，先乾聲；Kore／Aoede的區隔不靠妹妹幼兒化。 驗收要聽：不看CC能分誰承認隱瞞、誰收回誤解。 淚音不遮意思，沒有重生坦白或前世電話新資訊。 來源：[source.mjs:1985](./source.mjs#L1985)。
+- **wedding-radio／E35**：zhitang、zhixia、shuyun。用定稿分煙中固定點、安全側、警戒線外三個位置；乾聲通過後才做通訊處理。 驗收要聽：mono與手機外放可分知夏的短呼吸、淑雲的穩定確認。 北側出口清楚，知夏離點後沒有移動通話。 來源：[source.mjs:2569](./source.mjs#L2569)。
+
+先完成zh-TW台灣口音乾聲與多人辨識，再做通訊／環境／音樂處理、mono與手機外放。不同voice_name或文字規則不能代替試聽。逐鏡聲音、造型、道具須和實際演出對上，CC只作獨立可開關軌；ja/ko/en在中文版定案後各自配音、重新配時及母語聽校。本輪沒有修改來源、歷史版本或正式站，不代表新增設計已同步後台。

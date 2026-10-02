@@ -1,6 +1,7 @@
 // A source-bound director's plan travels inside the approved setting book. No network,
 // media generation or approvals here: this module only checks and selects planning data.
 import { createHash } from "node:crypto";
+import { audioDetailProblems, audioForEpisode, productionPronunciations } from "./audio-contract.mjs";
 
 export const designHash = (value) => createHash("sha256").update(typeof value === "string" ? value : JSON.stringify(value)).digest("hex");
 const text = (value) => typeof value === "string" && value.trim().length > 0;
@@ -62,12 +63,16 @@ export function designProblems(design, source, profile) {
   }
   if (end !== 30) errors.push("opening must cover exactly zero to thirty planned seconds");
   const named = new Set();
+  const voiceNames = new Set();
   for (const character of array(design.characters)) {
     if (!object(character)) { errors.push("each character must be an object"); continue; }
     if (!cast.has(character.id) || named.has(character.id)) errors.push(`unknown or duplicate character ${character.id}`);
     named.add(character.id);
     if (character.video_constraints && (!object(character.video_constraints) || !Number.isInteger(character.video_constraints.min_visual_age_years) || character.video_constraints.min_visual_age_years < 1 || character.video_constraints.min_visual_age_years >= 18 || character.video_constraints.veo_lite_i2v !== "not-verified-under-18")) errors.push(`${character.id}: invalid visual-age provider limitation`);
     if (!PRODUCTION_VOICES.has(character.voice_name) || !text(character.performance)) errors.push(`${character.id}: missing supported selected voice or performance`);
+    if (voiceNames.has(character.voice_name)) errors.push(`${character.id}: production actors need distinguishable voice selections`);
+    voiceNames.add(character.voice_name);
+    if (`台灣國語，自然台灣口音；${character.performance ?? ""}`.length > 400) errors.push(`${character.id}: production voice style exceeds 400 characters; shorten explicitly`);
     if (character.pronunciation_status !== "proposed-native-listen-required") errors.push(`${character.id}: pronunciation must not pretend to have been auditioned`);
     for (const locale of ["zh-TW", "ja", "ko", "en"]) if (!text(character.pronunciations?.[locale])) errors.push(`${character.id}: missing ${locale} pronunciation proposal`);
     const looks = new Set();
@@ -85,7 +90,7 @@ export function designProblems(design, source, profile) {
   if (named.size !== cast.size) errors.push("every cast member needs a production voice and identity plan");
   if (!strings(design.acceptance_checks) || !design.acceptance_checks.length) errors.push("missing finished-film acceptance checks");
   if (!Array.isArray(design.prop_rules) || !design.prop_rules.length || !Array.isArray(design.unresolved)) errors.push("missing prop rules or honest unresolved checks");
-  return errors;
+  return [...errors, ...audioDetailProblems(design, source)];
 }
 
 /** Only the current episode's plan is sent to the writer, checker and listener. */
@@ -100,10 +105,19 @@ export function productionForEpisode(setting, number) {
     source_binding: design.source_binding,
     visual_direction: design.visual_direction,
     opening_30s: number === 1 ? design.opening_30s : [],
-    characters: design.characters.filter((entry) => episode.characters.includes(entry.id)),
+    characters: design.characters.filter((entry) => episode.characters.includes(entry.id)).map((entry) => ({
+      ...entry,
+      ...(entry.performance_states ? { performance_states: entry.performance_states.filter((state) => state.episodes.includes(number)) } : {}),
+    })),
     prop_rules: design.prop_rules,
     episode,
-    audio_plan: design.audio_plan,
+    pronunciation_hints: setting.lexicon ?? {},
+    tts_instructions: [
+      "pronunciation_hints 由已審設定發音表固定提供，只作 metadata；不改 CC text、不把拼音注音唸成台詞。",
+      "只在來源要求同一 take 重播時，後續 line 設 audio_ref 為前文未引用的原始 line id；保留獨立 id、text、pause_after_ms。speaker、有效 voice 與實際唸法必須相同；不得自指、前向或串接 reference。",
+      "同聲線不同台詞分錄；同句不同表演分錄。audio_cues 與 performance_states 是待製作指示，不是逐字台詞或已驗收音訊。",
+    ],
+    audio_plan: audioForEpisode(design.audio_plan, number),
     acceptance_checks: design.acceptance_checks,
   };
 }
@@ -113,27 +127,38 @@ export function productionSetting(setting, design, profile) {
   const selected = new Map(design.characters.map((entry) => [entry.id, entry]));
   const characters = setting.body_json.characters.map((character) => {
     const direction = selected.get(character.id);
+    const style = `台灣國語，自然台灣口音；${direction.performance}`;
+    if (style.length > 400) throw new Error(`${character.id}: production voice style exceeds 400 characters; shorten explicitly`);
     const catalog = (direction.look_states ?? []).map(({ id, appearance }) => ({ id, appearance }));
     return {
       ...character,
-      voice: { ...character.voice, provider: "gemini", name: direction.voice_name, style: `台灣國語，自然台灣口音；${direction.performance}`.slice(0, 400) },
+      voice: { ...character.voice, provider: "gemini", name: direction.voice_name, style },
       ...(catalog.length ? { shot_looks: catalog } : {}),
     };
   });
   const narrator = productionNarrator(setting.body_json, design);
   const production = { ...design, profile, narrator };
   const appendix = [
-    "", "<!-- BEGIN GENERATED PRODUCTION DIRECTION -->", "", "## 動畫攝製規格（2026-10-01，新待審版本）", "",
+    "", "<!-- BEGIN GENERATED PRODUCTION DIRECTION -->", "", "## 動畫攝製規格（2026-10-02，配音與細節待審版本）", "",
     "先完成繁中台灣口音版本。所有對白字幕為可開關 CC；正片不燒錄字幕。日／韓／英的音軌與 CC 在中文版核准鎖定後製作。",
     "Veo 3.1 Lite 1080p：八秒生成素材，一鏡一個動作，依配音實測剪接。正片使用獨立配音，排除片段原生人聲。",
     "此製作資料包含分鏡、角色聲線與命名造型目錄；試音、畫面與成片尚未驗收。造型按鏡頭選擇，角色身分與聲音不更換。",
     `旁白固定 Gemini ${narrator.voice_name}；${narrator.performance}。不和角色共用聲線，尚未試聽。`,
-    ...design.characters.map((character) => `- ${character.id}：${character.voice_name}；${character.performance}。造型：${(character.look_states ?? []).map((look) => `${look.id}（${look.cue}）`).join("；") || "固定基底"}。`),
+    ...design.characters.flatMap((character) => [
+      `- ${setting.body_json.characters.find((entry) => entry.id === character.id)?.name ?? character.id}（${character.id}）：${character.voice_name}；${character.performance}。中文讀音候選：${character.pronunciations["zh-TW"]}。造型：${(character.look_states ?? []).map((look) => `${look.id}（${look.cue}）`).join("；") || "固定基底"}。`,
+      ...(character.performance_states ?? []).map((state) => `  - 聲音狀態 ${state.id}／第 ${state.episodes.join("、")} 集，${state.cue}：${state.instructions.join("；")}。來源：${state.source_refs.join("、")}。尚未試聽。`),
+    ]),
+    "", "## 配音與錄音線索", "",
+    "發音表只提供配音 metadata，不改 CC 原字，也不把注音／拼音唸成台詞。旁白與角色各自套用當句命中的提示。來源敘述是排戲語境，不是逐字對白。",
+    "只有來源明確要求完全同一 take 重播，才在後續台詞設 audio_ref 為前文原始 line id；保留各自 line id、原文與停頓。說話者、有效聲線與實際唸法必須相同，不得自指、前向引用或引用另一個重播。相同角色說不同台詞須分錄；同句不同表演也須分錄。",
+    "audio_cues 是待製作的聲音計畫，尚未自動產生或混入所有情節音效。敲擊、倒數、歌詞與重播線索需要另做時間軸及聽校；配樂不可仿造必要線索。",
+    ...(design.audio_plan.audio_cues ?? []).map((cue) => `- ${cue.id}／第 ${cue.episodes.join("、")} 集，${cue.source_kind}，說話者 ${cue.speaker_ids.join("、") || "無人聲"}：${cue.instructions.join("；")}。來源：${cue.source_refs.join("、")}。待製作與聽審。`),
+    ...(design.audio_plan.audition_scenes ?? []).map((scene) => `- 接戲試音 ${scene.id}／第 ${scene.episode} 集：${scene.instructions.join("；")}。聽審：${scene.acceptance.join("；")}。來源：${scene.source_refs.join("、")}。尚未試聽。`),
     "", "## 每集攝製重點", "",
-    ...design.episodes.map((episode) => `- 第 ${episode.episode} 集：${episode.hero_shot.action}｜${episode.hero_shot.camera}｜${episode.risk_controls.map((control) => `${control.risk}：${control.solution}`).join("；")}`),
+    ...design.episodes.map((episode) => `- 第 ${episode.episode} 集：${episode.hero_shot.action}｜${episode.hero_shot.camera}｜聲音：${episode.hero_shot.sound}｜配音：${episode.voice_notes.join("；")}｜CC：${episode.cc_notes.join("；")}｜${episode.risk_controls.map((control) => `${control.risk}：${control.solution}`).join("；")}`),
     "", "<!-- END GENERATED PRODUCTION DIRECTION -->", "",
   ].join("\n");
-  return { body_md: setting.body_md + appendix, body_json: { ...setting.body_json, characters, production_design: production } };
+  return { body_md: setting.body_md + appendix, body_json: { ...setting.body_json, characters, lexicon: productionPronunciations(setting.body_json, design), production_design: production } };
 }
 
 export function productionNarrator(settingBody, design) {

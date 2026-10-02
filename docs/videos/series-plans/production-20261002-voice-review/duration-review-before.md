@@ -187,25 +187,6 @@ Ran: `node tools/video/long-form/cli.mjs check` before rebinding failed only on 
 
 Non-claims. This review does not accept the language-thumbnail drawing itself: not its layout, fonts or glyph coverage, a real browser, media, upload or publication, and not CI. PASS is DURATION_ONLY for the two rebound hashes below. Required duration fixes remaining: none.
 
-## PR #1122 voice-detail duration increment: 5 files (2026-10-02)
-
-Reviewer: `/root/claude_five_audit`. Author: `codex-ten-drama-voice-review` and the runtime implementation authors. Verdict: **PASS — DURATION_ONLY**. This reviewer authored the Codex production-design sidecars, but did not author or modify any of the five runtime/test changes rebound by this independent duration increment.
-
-Baseline and preservation: independently recomputed all 70 original receipt bindings against Git HEAD `524e5075283833f0d87da19a8edd1c97a9b69ea7`; all 70 match that baseline. Exactly the five files below differ in the working tree, while the other 65 retain their previously reviewed hashes. The original report and receipt were copied byte-for-byte, before revision, to `docs/videos/series-plans/production-20261002-voice-review/duration-review-before.md` (SHA256 c33b7aed0cec2c3d8c792217eaca07b202781ab120c9dca6d7a37f12cda4b0d7) and `duration-review-before.json` (SHA256 5b22b33c1291aa3f2f358b5f508cf37d2bc70500f98923cd0ab42367be62693c). Their prior review identities, report hash and bindings remain preserved in those copies.
-
-Method and scope: read the complete current HEAD-to-worktree diffs of `tools/video/automation/flow.mjs`, `tools/video/automation/series.test.mjs`, `tools/video/core/drama.mjs`, `tools/video/core/schema.mjs` and `tools/video/tts/tts.test.mjs`. Also read the related unbound changes and surrounding paths in `core/timeline.mjs`, `tts/requests.mjs` and `tts/cli.mjs`, and traced the unchanged duration, QA and freshness consumers. No implementation file was edited by this reviewer.
-
-Findings: the flow change copies the approved production pronunciation map into a drama script; it does not change target_minutes, category, format or planning ranges. Schema and drama validation allow a bounded drama-local reading map and explicit audio_ref only for an earlier original take with the same speaker, spoken content and effective voice; self, forward and reference-to-reference reuse is rejected. Non-drama lines cannot acquire audio_ref. Matching reading hints become Gemini speech metadata, not extra spoken text or burned captions; overlong combined directions fail rather than discard the required reading. The added tests exercise propagation and reuse without changing prior duration expectations or fixture opt-outs.
-
-The TTS planner excludes explicit repeats from paid synthesis, verifies a cached original against its current request/line key, saved SHA256 and WAV format, and copies its bytes to every independently identified repeat. Retaking a repeat retakes its original once, then refreshes that family. Every repeated line remains in the actual sample map, timeline and assembled narration with its own pause and position; reuse does not collapse runtime to unique-take duration. The untouched buildTimeline uses each line ID's WAV sample count plus its pause and existing scene/tail gap on the 30 fps grid. An independent synthetic probe used three one-second clips with 0/100/900 ms pauses and observed 30/33/102 frames at starts 0/30/63, totaling 165 frames including the existing 1500 ms final tail. This is synthetic evidence, not a measured production film.
-
-The speech hash now binds the matched reading hints and audio_ref target, so changing a spoken reading or reuse relationship makes the old narration timeline, checks and dependent acceptance stale. Unused reading entries do not invalidate unrelated audio. An independent pure-function probe confirmed a previously matching 14,400-frame body/check pair is rejected as stale after either a matched reading change or an audio_ref change. QA still computes timelineCurrent from the current speech hash and calls the unchanged knowledgeDurationProblems; an earlier passing checks.json cannot substitute for current measured proof.
-
-Duration invariants remain unchanged: knowledge/catalog bodies and final cuts require at least 480 seconds / 14,400 frames at 30 fps; intro/outro cannot rescue a shorter body. Positive safe-integer frame proof, matching unwrapped and presentation timelines, branding selection and speech hashes are still required. General non-drama eight-minute final minimum, explainer default 10 with whole-minute 8–20 bounds, ordinary drama 1–8/default 3, brand 13-minute targets, compilation and Shorts handling, and the narrow fixture exemption are unaffected. No VIDEO_MIN_EPISODE_MINUTES assignment was added by this delta.
-
-Independently executed with Node 24.15.0: `node --test --test-concurrency=2 tools/video/core/duration.test.mjs tools/video/qa/duration.test.mjs tools/video/qa/checks.test.mjs tools/video/long-form/integration.test.mjs tools/video/long-form/plans.test.mjs tools/video/core/drama.test.mjs tools/video/tts/tts.test.mjs tools/video/automation/series.test.mjs`: **112 passed, 0 failed, 0 skipped**, exit 0. The regressions cover the exact 480-second boundary, one frame short, body versus bookends, current measured evidence, ordinary drama/compilation preservation, real mocked TTS repeated bytes and independent CC timing, family retakes, and refusal of corrupt or unverified cached sources. Before rebinding, the actual long-form CLI check failed only on the five expected stale bindings. After installing this genuine increment, the reviewer independently executed `node tools/video/long-form/cli.mjs check`: PASS for all 473 plans, exit 0; and `node --test tools/video/long-form/review.test.mjs`: 2 passed, 0 failed, 0 skipped, exit 0. The final report hash was then refreshed to include these completed results, and both guards were rerun.
-
-Non-claims: no real model/provider/API calls, audio listening, animation generation, production writes, manuscript approval, subtitle playback, browser, PostgreSQL or CI acceptance were performed by this reviewer. This receipt accepts only duration compatibility of the SHA-bound changes; it does not accept actor casting, pronunciations as heard, SFX, complete films, publication, or the separately authored sidecar designs. Required duration fixes remaining: none.
 ## Reviewed SHA256 bindings
 
 These 70 bindings describe the current reviewed bytes after the main-merge and owned migration-order increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -245,18 +226,18 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | `docs/videos/so-thats-why/season2/README.md` | `e560411dc91f1928b2cf9506a044e55ae7f5f65450199118bd165464599f1218` |
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/automation.test.mjs` | `db52f938be4b33572425f8841da61693dc24c4fb896e304ff57a53017a9abe4a` |
-| `tools/video/automation/flow.mjs` | `577f4574b2ddf581d55e6c30320ddd5ddca653754f86c56bc216eb491bb6a619` |
+| `tools/video/automation/flow.mjs` | `73111bb904a24ac82315df35a590de0adb7f9c9e99f12499c9ba0fb8967ade84` |
 | `tools/video/automation/prompts.mjs` | `ba93ae2a05a23fdf72db52a82868efd85a2012f36a97f06f77d7978c8b99c84e` |
-| `tools/video/automation/series.test.mjs` | `bea012ec1bc7295c33763c5d9089877d1efd56662c3d92e2a6610f49c61b1c7b` |
+| `tools/video/automation/series.test.mjs` | `8288b63fa55024cb9305f13fdb8714bf690fb01a2d505e424c3d505359ca654c` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
-| `tools/video/core/drama.mjs` | `d4f018baeab4bb784d8c16daf0bd5b8174e92761f87fe64056d0565bf1b88a14` |
+| `tools/video/core/drama.mjs` | `db0f08c3f386497367e3a228e00bc6a26552f33db11146a9c00a5cb32747f04e` |
 | `tools/video/core/duration.mjs` | `406c61d2211781ae571f952cb6239ee7c808f7f603a4be3ed5d61622bfe65d9a` |
 | `tools/video/core/duration.test.mjs` | `49290be2b3f58801532e225ecff8f8b9730746425e6527b50b0c03beee6adc94` |
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
 | `tools/video/core/lint.mjs` | `34b2d059805ceceedd95f56881a13a30a7112e4dcc49864a58fbf7d57e309ed8` |
 | `tools/video/core/lint.test.mjs` | `0cc01210737ee6d3be68018602bd36789c223a6c746b29b5add73f5a3cf28225` |
 | `tools/video/core/narration-locale.test.mjs` | `af0b899f0518ef0f652816a8d53908d002cb805514993ca24d6aca0004640595` |
-| `tools/video/core/schema.mjs` | `608f4f843f301f902c97c7144035f355a5fdf30c58bf658929b3877513a672a2` |
+| `tools/video/core/schema.mjs` | `4133e8aec14099b8b15f0d47faaf9ee6d242b30a7f6e2da35de60b8c504476b4` |
 | `tools/video/core/stages.test.mjs` | `0a409f7a88234c1823146ea65092a95ceb12b69c34ccf1910894712f34859a2e` |
 | `tools/video/core/state.test.mjs` | `23e89658d92b99d0e7dbb64e8ad00f82016795deb38ef732ec9e76013d867522` |
 | `tools/video/dubs/captions-package.test.mjs` | `7eb0a10630b447dd17ffeafe3d99059c0fe3f392d58838dffd10a59373734f28` |
@@ -281,4 +262,4 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | `tools/video/templates/terminal/terminal.test.mjs` | `fc8c9ca5a76f336b545194a7a009630fe0d227544aa4e9b363c0d655fce4e38d` |
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |
 | `tools/video/tts/check.test.mjs` | `ad385d7df22fd297588dfef8a72b0b3f6261d0fb4619e4c538a30ef8464b1477` |
-| `tools/video/tts/tts.test.mjs` | `aec45cfd3f6a8c9a96545c3aa7964d1cd17c3dae71124749d5b06105b4f9411c` |
+| `tools/video/tts/tts.test.mjs` | `cb2cc2508c4b394b43db21201a1efe44676a21a186621a18f5c0c2b5a9d983b3` |

@@ -301,12 +301,13 @@
             "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-4.mjs:159"
           ]
         }
-      ]
+      ],
+      "performance_states": []
     },
     {
       "id": "zhouyu",
       "voice_name": "Charon",
-      "performance": "低、穩、慢的台灣國語，每句話之前像先數了三秒；數「一、二、三」時一字一頓，不提高音量。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
+      "performance": "低、穩、慢的台灣國語，平常句前是沉著的短呼吸，不把每句前硬插三秒靜音；來源明寫出手前、答應前、說謊前數三秒或限時倒數時，才保留那段實際計數；數「一、二、三」時一字一頓，不提高音量。 此為來源聲線候選，未做TTS試聽；逐集情緒/沉默限制見episodes.voice_notes。中文先鎖，三語後製另校。",
       "pronunciations": {
         "zh-TW": "周嶼：Zhōu Yǔ。來源注音：ㄓㄡ ㄩˇ；「嶼」讀ㄩˇ，不讀ㄒㄩˋ。台灣口音，聲調候選待聽校。",
         "ja": "ジョウ・ユー",
@@ -372,6 +373,67 @@
             "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-4.mjs:159"
           ]
         }
+      ],
+      "performance_states": [
+        {
+          "id": "counted-action",
+          "episodes": [
+            2,
+            4,
+            6,
+            8,
+            10,
+            11,
+            12,
+            14,
+            15,
+            16,
+            18,
+            22,
+            23,
+            24,
+            25,
+            32,
+            37,
+            38,
+            40
+          ],
+          "cue": "一般短句與來源指定三秒動作分開",
+          "source_excerpt": "「三秒。」——出手前、答應前、說謊前都先數三秒。",
+          "instructions": [
+            "同一 Charon 聲音；平常先呼吸而非每句硬延三秒。",
+            "E38 的一／二／三按連續時間軸，不插旁白、長吸氣或慢動作拖長窗口。"
+          ],
+          "status": "proposed",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-1.mjs:29",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/packaging.mjs:51",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-1.mjs:61",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/setting.mjs:41",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/packaging.mjs:53",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/packaging.mjs:57",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-1.mjs:93",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-1.mjs:125",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-1.mjs:157",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-2.mjs:13",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-2.mjs:29",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-2.mjs:61",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-2.mjs:77",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-2.mjs:93",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-2.mjs:125",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-3.mjs:29",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-3.mjs:45",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/setting.mjs:96",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/setting.mjs:97",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-3.mjs:61",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-3.mjs:77",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-4.mjs:29",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-4.mjs:33",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-4.mjs:110",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-4.mjs:126",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-4.mjs:159"
+          ]
+        }
       ]
     },
     {
@@ -424,7 +486,8 @@
       "video_constraints": {
         "min_visual_age_years": 16,
         "veo_lite_i2v": "not-verified-under-18"
-      }
+      },
+      "performance_states": []
     },
     {
       "id": "ama",
@@ -472,7 +535,8 @@
             "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-4.mjs:159"
           ]
         }
-      ]
+      ],
+      "performance_states": []
     },
     {
       "id": "laodeng",
@@ -503,7 +567,8 @@
             "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/packaging.mjs:51"
           ]
         }
-      ]
+      ],
+      "performance_states": []
     },
     {
       "id": "suxing",
@@ -591,6 +656,48 @@
             "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-4.mjs:159"
           ]
         }
+      ],
+      "performance_states": [
+        {
+          "id": "own-voice-transition",
+          "episodes": [
+            35,
+            38,
+            40
+          ],
+          "cue": "E35 最後的「好」才轉平；E36 起既有 own-voice 生效",
+          "source_excerpt": "晚照懂了：被他看見的事記在存檔外面，重讀抹不掉；只要帳結清，三十天裡直播過的一切，全城都拿得回來。她說：「那就讓全城看著，他的存檔被刪。」蘇醒第一次用很平的聲音說：「好。」",
+          "instructions": [
+            "轉折前仍是實況主語氣；「好」短、平、不演成機器。",
+            "E38 系統宣告另按 system-broadcast cue，宣告後不把所有日常台詞持續機械化。"
+          ],
+          "status": "proposed",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-4.mjs:77",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/packaging.mjs:51",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/setting.mjs:96",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/setting.mjs:97",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-4.mjs:126",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-4.mjs:159"
+          ]
+        },
+        {
+          "id": "system-broadcast",
+          "episodes": [
+            38
+          ],
+          "cue": "六十萬塊面板同步宣告那一句",
+          "source_excerpt": "蘇醒的聲音忽然變成中性的合成聲，從六十萬塊面板同時響起：「第七次存檔，即全額刪除。」邵擎的手第一次在發抖，他看了一眼塔下的人，還是沒有停下存檔。",
+          "instructions": [
+            "保留蘇醒身份；中性、合成質感由專項試音／後製驗證。",
+            "先一條乾淨母軌，再做面板遠近聲場，不疊六十萬段或生成無法辨字的人海。"
+          ],
+          "status": "proposed",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-4.mjs:126",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/packaging.mjs:51"
+          ]
+        }
       ]
     },
     {
@@ -663,7 +770,8 @@
             "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-2.mjs:157"
           ]
         }
-      ]
+      ],
+      "performance_states": []
     },
     {
       "id": "helan",
@@ -698,7 +806,8 @@
             "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/packaging.mjs:51"
           ]
         }
-      ]
+      ],
+      "performance_states": []
     },
     {
       "id": "duchengye",
@@ -731,6 +840,26 @@
             "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/packaging.mjs:51"
           ]
         }
+      ],
+      "performance_states": [
+        {
+          "id": "power-to-bargain",
+          "episodes": [
+            31,
+            34
+          ],
+          "cue": "E31 摘下戒指後開始，E32 heard 聲線接續",
+          "source_excerpt": "杜承業把金戒指拔下來放在名單上，第一次沒說徵用：「鐵幕跟妳。條件一個——第 28 天，妳為我讀檔一次。」晚照看著手臂上最後一行空白，還沒回答。",
+          "instructions": [
+            "戒指離手前仍命令；提出條件時收窄氣勢、句子變短，不能當場換另一個演員。"
+          ],
+          "status": "proposed",
+          "source_refs": [
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-4.mjs:13",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/packaging.mjs:51",
+            "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-4.mjs:61"
+          ]
+        }
       ]
     },
     {
@@ -760,7 +889,8 @@
             "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/packaging.mjs:51"
           ]
         }
-      ]
+      ],
+      "performance_states": []
     }
   ],
   "prop_rules": [
@@ -3074,7 +3204,10 @@
     "dynamic_rules": [
       "先測輕聲對白可懂度；配樂在台詞時自動化讓位，不能只把人聲全面拉高。尖銳器物聲/警報不蓋關鍵字。",
       "左右聲像服務空間；台詞保中心，手機單聲道合併後仍清楚。長停頓保持呼吸/衣料活動，不以freeze延長畫面。",
-      "Veo原片的native audio不直接入正片混音；任何意外人聲/擬配樂須移除。嘴型、FOLEY、字幕時間碼以最終中文字幕版聲軌為基準。"
+      "Veo原片的native audio不直接入正片混音；任何意外人聲/擬配樂須移除。嘴型、FOLEY、字幕時間碼以最終中文字幕版聲軌為基準。",
+      "聲音線索只在來源指定的動作與次數發生；配樂、轉場與環境音不得偽造倒數、敲擊、腳步或病人恢復的額外證據。",
+      "角色聲線身分固定；病傷、年齡、聲音距離與逐句沉默按 performance_states/audio_cues 分別試音，不把狀態指示本身唸出。",
+      "旁白只補當集視點已可知且觀眾看不清的必要資訊；先保留角色反應與環境底聲，不把下一集揭露、人物 secret 或 source_excerpt 直接變成解說。"
     ],
     "locale_constraints": [
       "先完成zh-TW台灣國語表演/人名試聽及picture lock；ja/ko/en僅保留設計和詞表，這一輪不自動生成三語。",
@@ -3083,6 +3216,177 @@
       "ja/ko/en人名用此表候選音譯，不自動把漢字改日語音讀或韓國本土姓名。稱謂先翻譯語用，保留身份尊卑與熟識距離。",
       "各語分開錄完整表演、對齊剪輯點；不硬壓縮英文/日文到中文每字同時長。若譯句過長先重寫等義短句或調非關鍵反應鏡，倒數絕不拉長。",
       "目前所有voice_name沿用source作待試聽候選；不是四語皆有相同音色/口音的保證。母語監聽前禁止標示配音驗收通過。"
+    ],
+    "audio_cues": [
+      {
+        "id": "live-versus-message",
+        "episodes": [
+          35
+        ],
+        "speaker_ids": [
+          "suxing",
+          "xiaoshu",
+          "shaoqing"
+        ],
+        "source_kind": "message-read",
+        "source_excerpt": "晚照懂了：被他看見的事記在存檔外面，重讀抹不掉；只要帳結清，三十天裡直播過的一切，全城都拿得回來。她說：「那就讓全城看著，他的存檔被刪。」蘇醒第一次用很平的聲音說：「好。」",
+        "instructions": [
+          "蘇醒的「好」是現場聲，小樹複述仍用自己聲音。",
+          "邵擎訊息是來源書面文字，不自動添加他的現場嘴型或聲音；若朗讀由當集許可旁白處理。"
+        ],
+        "status": "proposed",
+        "source_refs": [
+          "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-4.mjs:77",
+          "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/packaging.mjs:51",
+          "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/setting.mjs:96",
+          "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/setting.mjs:97"
+        ]
+      },
+      {
+        "id": "system-declaration",
+        "episodes": [
+          38
+        ],
+        "speaker_ids": [
+          "suxing"
+        ],
+        "source_kind": "effect",
+        "source_excerpt": "蘇醒的聲音忽然變成中性的合成聲，從六十萬塊面板同時響起：「第七次存檔，即全額刪除。」邵擎的手第一次在發抖，他看了一眼塔下的人，還是沒有停下存檔。",
+        "instructions": [
+          "中性合成宣告必須與周嶼計數錯開主頻與音量；系統不加來源沒有的第二句。",
+          "宣告／計數分軌，CC 保留說話者，畫面面板文字另校，不燒對白字幕。"
+        ],
+        "status": "proposed",
+        "source_refs": [
+          "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-4.mjs:126",
+          "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/packaging.mjs:51"
+        ]
+      },
+      {
+        "id": "real-three-seconds",
+        "episodes": [
+          38
+        ],
+        "speaker_ids": [
+          "zhouyu"
+        ],
+        "source_kind": "dialogue",
+        "source_excerpt": "周嶼數：「二。」晚照打開可選存檔點，最底下一行「02/11 05:59・持有者：邵擎」。周嶼數：「三。」她踏上天梯最底下那一階——帳本只在這一階上對持有者攤開——面板的「出局」兩個字還沒浮完，她已經按下讀檔，畫面切黑。",
+        "instructions": [
+          "依來源前集接續的一、二、三做連續 timecode；配樂與手錶聲不得額外製造第四拍或另一組三聲。",
+          "先量實際中文讀音再剪，未量測不聲稱精準三秒。"
+        ],
+        "status": "proposed",
+        "source_refs": [
+          "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-4.mjs:126",
+          "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/packaging.mjs:51"
+        ]
+      }
+    ],
+    "audition_scenes": [
+      {
+        "id": "suxing-turn",
+        "episode": 35,
+        "speaker_ids": [
+          "wanzhao",
+          "suxing"
+        ],
+        "source_excerpt": "晚照懂了：被他看見的事記在存檔外面，重讀抹不掉；只要帳結清，三十天裡直播過的一切，全城都拿得回來。她說：「那就讓全城看著，他的存檔被刪。」蘇醒第一次用很平的聲音說：「好。」",
+        "instructions": [
+          "晚照決定後，留蘇醒吸氣、抬眼，再短答；不把同集前段都演平。"
+        ],
+        "acceptance": [
+          "「好」仍能認出蘇醒",
+          "沒有提前宣讀綁架訊息"
+        ],
+        "status": "proposed",
+        "source_refs": [
+          "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-4.mjs:77",
+          "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/packaging.mjs:51",
+          "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/setting.mjs:96",
+          "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/setting.mjs:97"
+        ],
+        "line_samples": [
+          {
+            "speaker": "wanzhao",
+            "text": "那就讓全城看著，他的存檔被刪。",
+            "source_field": "turn",
+            "source_kind": "dialogue",
+            "source_refs": [
+              "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-4.mjs:77",
+              "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/packaging.mjs:51",
+              "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/setting.mjs:96",
+              "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/setting.mjs:97"
+            ]
+          },
+          {
+            "speaker": "suxing",
+            "text": "好。",
+            "source_field": "turn",
+            "source_kind": "dialogue",
+            "source_refs": [
+              "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-4.mjs:77",
+              "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/packaging.mjs:51",
+              "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/setting.mjs:96",
+              "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/setting.mjs:97"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "panel-and-count",
+        "episode": 38,
+        "speaker_ids": [
+          "suxing",
+          "zhouyu"
+        ],
+        "source_excerpt": "周嶼數：「二。」晚照打開可選存檔點，最底下一行「02/11 05:59・持有者：邵擎」。周嶼數：「三。」她踏上天梯最底下那一階——帳本只在這一階上對持有者攤開——面板的「出局」兩個字還沒浮完，她已經按下讀檔，畫面切黑。",
+        "instructions": [
+          "先校面板宣告與近聲倒數的可懂度；片段按來源順序，不在三秒窗口塞校準句。"
+        ],
+        "acceptance": [
+          "計數不被面板聲蓋住",
+          "同角色乾聲與效果版可比較",
+          "無額外數字"
+        ],
+        "status": "proposed",
+        "source_refs": [
+          "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-4.mjs:126",
+          "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/packaging.mjs:51"
+        ],
+        "line_samples": [
+          {
+            "speaker": "suxing",
+            "text": "第七次存檔，即全額刪除。",
+            "source_field": "conflict",
+            "source_kind": "dialogue",
+            "source_refs": [
+              "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-4.mjs:126",
+              "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/packaging.mjs:51"
+            ]
+          },
+          {
+            "speaker": "zhouyu",
+            "text": "二。",
+            "source_field": "turn",
+            "source_kind": "dialogue",
+            "source_refs": [
+              "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-4.mjs:126",
+              "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/packaging.mjs:51"
+            ]
+          },
+          {
+            "speaker": "zhouyu",
+            "text": "三。",
+            "source_field": "turn",
+            "source_kind": "dialogue",
+            "source_refs": [
+              "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-4.mjs:126",
+              "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/packaging.mjs:51"
+            ]
+          }
+        ]
+      }
     ]
   },
   "acceptance_checks": [

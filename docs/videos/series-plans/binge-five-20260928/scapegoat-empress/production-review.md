@@ -160,3 +160,37 @@ E1日期遮名、E3雙袋縫、E10讀到姓名，至「第30日」停；不要�
 本劇登記角色年齡皆為20歲以上，現稿未確認任何未成年命名造型或必拍年少回望。因此不推測新增minor旗標；背景群眾若後續安排兒童，仍需在分鏡前明列並驗證該製作路徑。
 
 character.video_constraints標記實際未成年人物；只有畫外聲不自動禁止中文配音。分鏡需區分說話者與畫面內人物，但不能靠背影、局部、卡通畫風或省略年齡宣稱繞過限制成功。必須保留原設年齡，先選手繪動畫或合法可支援相應年齡的供應商，做含該人物的pilot確認能力與效果再放量。此批不能宣稱已可直接全400集拍完；通過離線設計檢查也不代表供應商或成片已驗收。
+
+## 2026-10-02 配音與聲音細節覆核
+
+本輪只有來源文字與製作設計覆核，沒有實際TTS、試音、SFX音檔或成片驗收。新增performance_states、audio_cues、audition_scenes每筆均為proposed，綁定集數與來源。source_excerpt只供語境，不能整段念成台詞；line_samples僅逐字引用已有原台詞，其餘試音段落待本集定稿取樣。
+
+- 葉穗借位、摘冠、公開承擔與受問責各有演法，但始終24歲同一聲線。
+- E29四名女性及E40問帳場新增多人試音提案；韓芮的休養不改成幼童聲或失語。
+
+### 角色表演狀態
+
+| 角色 / state | 集數 | 演出重點 | 來源 |
+| --- | --- | --- | --- |
+| ye-sui / ye-borrowed-authority | E1 | 尚無盟友，先問可動糧額；問句真正等待回覆，不是天生全知的帝王腔；不靠降八度代表掌權。 | [source.mjs:675](./source.mjs#L675) |
+| ye-sui / ye-uncrowned | E29 | 怕坦白斷糧，摘冠後讓母親抱住；縮短權威停頓，保留遲疑但日期、承諾及自己犯的錯清楚；摘冠不換聲線。 | [source.mjs:2384](./source.mjs#L2384) |
+| ye-sui / ye-public-accountability | E30 | 失去血統保護，仍把承諾講完；公開投射而非吼叫；重心是完成發糧，不是要求無條件擁戴。 | [source.mjs:2444](./source.mjs#L2444) |
+| ye-sui / ye-answerable | E40 | 先簽本名，接受發問；等沈巧問、何靜答完再接；不以勝利宣言蓋過持續問責。 | [source.mjs:3045](./source.mjs#L3045) |
+| luo-xing / luo-mother-witness | E29、E30 | 私下想逃，次日以本名作證；E29親密且遲疑，E30逐項承擔、句尾清楚；怕與愛不等於全程虛弱哭聲。 | [source.mjs:2384](./source.mjs#L2384)、[source.mjs:2444](./source.mjs#L2444) |
+| he-jing / he-ledger | E1、E29、E40 | 以可查糧額和簿册回答；先核資料再說，日期數额不連珠炮；不機械播報或越界補秘案。 | [source.mjs:631](./source.mjs#L631)、[source.mjs:2337](./source.mjs#L2337)、[source.mjs:3001](./source.mjs#L3001) |
+| han-rui / han-rui-adult-rest | E18 | 20歲，能步行但需休養；成年人聲，短句和有限氣息保留不丟下病患的主動性；不捏幼童音。 | [source.mjs:1714](./source.mjs#L1714) |
+| shen-qiao / shen-questions | E29、E40 | 61歲，要求完整揭露與持續發問；成熟音質不等於每字拖長或顫抖；沉著等答覆，不用怒吼壓人。 | [source.mjs:2336](./source.mjs#L2336)、[source.mjs:3000](./source.mjs#L3000) |
+
+### 聲音提示
+
+- **empress-e01-grain（E1；dialogue）**：停筆／紙／冠珠只在動作時短響，宮宴糧回答置前景，不做已掌全面軍政權的勝利音樂。 來源：[source.mjs:631](./source.mjs#L631)。
+- **empress-e29-crown-off（E29；foley）**：摘冠一次輕冠珠接觸，無冠段不持續冠珠聲；抱住的布料聲不帶無來源新台詞。 來源：[source.mjs:2340](./source.mjs#L2340)。
+- **empress-e30-statement（E30；dialogue）**：公開說話的投射與空間，母女分開說，不疊全知旁白；群眾有人離去，不能剪成一致歡呼。 來源：[source.mjs:2398](./source.mjs#L2398)。
+- **empress-e40-ledger（E40；dialogue）**：問、翻簿、答依序分開，章印／算珠不壓數額；糧秤依lexicon讀liáng chèng，各語CC將另配時。 來源：[source.mjs:3001](./source.mjs#L3001)。
+
+### 待實作的試音段落
+
+- **empress-four-women／E29**：ye-sui、luo-xing、shen-qiao、he-jing。從定稿選列責任、提逃、反對選擇性揭露及核數的相接段；原敘述不是四人的現成台詞。 驗收要聽：閉眼可分年輕決策者、母親、長者、糧吏。 第14日聽到／第15日確證不混，擁抱不抹公開後果。 來源：[source.mjs:2337](./source.mjs#L2337)。
+- **empress-open-ledger／E40**：ye-sui、shen-qiao、he-jing、han-duo。四人乾聲對讀，留發問空間，不作儀式齊誦；韓鐸不增新軍令。 驗收要聽：低音軍官不蓋數額，沈巧與何靜可分。 最後一句不靠喊叫壓過音樂，冠冕聲只在簽名後。 來源：[source.mjs:3001](./source.mjs#L3001)。
+
+先完成zh-TW台灣口音乾聲與多人辨識，再做通訊／環境／音樂處理、mono與手機外放。不同voice_name或文字規則不能代替試聽。逐鏡聲音、造型、道具須和實際演出對上，CC只作獨立可開關軌；ja/ko/en在中文版定案後各自配音、重新配時及母語聽校。本輪沒有修改來源、歷史版本或正式站，不代表新增設計已同步後台。

@@ -1,5 +1,6 @@
 // `login`, `audition` and `tts`: narration through the Mokaair server, which holds the Azure key.
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { createHash } from "node:crypto";
 import path from "node:path";
 import readline from "node:readline";
 import { parseArgs } from "node:util";
@@ -18,6 +19,7 @@ import { buildNarration, flaggedLines, lineBody, synthesizeLines, synthesizeRequ
 import { encodeWav, parseWav, requireNarrationFormat } from "./wav.mjs";
 
 const FREE_TIER = 500_000;
+const wavHash = (bytes) => createHash("sha256").update(bytes).digest("hex");
 
 const escapeHtml = (text) => String(text).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
 
@@ -241,12 +243,16 @@ async function tts(args, ctx) {
     return EXIT.lint;
   }
   const { doc, lexicon } = project;
-  const requests = planRequests(doc, lexicon);
+  const planned = planRequests(doc, lexicon);
+  const requests = planned.filter((request) => !request.audio_ref);
+  const references = planned.filter((request) => request.audio_ref);
   const voices = voicesUsed(doc, requests);
   const estimate = requests.reduce((sum, request) => sum + billableForRequest(request.body), 0);
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
   const cache = readCache(workdir);
   const redo = values.redo ? flaggedLines(readJson(path.resolve(values.redo))) : new Set();
+  // A flagged repeat belongs to the same take: retake its original once, then replace all repeats.
+  for (const reference of references) if (redo.has(reference.lines[0].id)) redo.add(reference.audio_ref);
   const audioDir = path.join(workdir, ARTIFACTS.audio);
   // A clip is current when its line's own key matches, or the key of the request it came from
   // (caches written before clips had their own keys).
@@ -275,9 +281,25 @@ async function tts(args, ctx) {
   const pendingVoices = voices.filter((entry) => pending.some((request) => request.body.voice === entry.voice));
   // Record current clips under their own keys, so a later edit elsewhere in the scene keeps them.
   const migrated = requests.flatMap((request) => request.lines.filter((line) => clipCurrent(request, line) && cache.lines[line.id] !== line.key));
+  const originalLines = new Map(requests.flatMap((request) => request.lines.map((line) => [line.id, { request, line }])));
+  const checkedOriginal = (id) => {
+    const { request, line } = originalLines.get(id);
+    if (![line.key, request.key].includes(cache.lines[id])) throw new UsageError(`audio_ref source ${id} is not current`);
+    const bytes = readFileSync(path.join(audioDir, `${id}.wav`));
+    requireNarrationFormat(parseWav(bytes));
+    const hash = wavHash(bytes);
+    if (!cache.sha256?.[id] || cache.sha256[id] !== hash) throw new UsageError(`audio_ref source ${id} has no matching saved WAV SHA256; restore the verified source or explicitly retake it before reuse`);
+    return { bytes, hash };
+  };
+  // Refuse an unverifiable cached source before making any unrelated paid request.
+  for (const reference of references) {
+    const { request, line } = originalLines.get(reference.audio_ref);
+    if (!redo.has(line.id) && clipCurrent(request, line)) checkedOriginal(line.id);
+  }
 
   if (values["dry-run"]) {
     ctx.stdout.write(`${requests.length} requests, ${pending.length} to synthesize; about ${pendingEstimate} billable characters now (${estimate} for the whole video, ${((estimate / FREE_TIER) * 100).toFixed(1)}% of the free tier)\n`);
+    if (references.length) ctx.stdout.write(`${references.length} explicit same-take repeats; no extra synthesis for these line ids\n`);
     ctx.stdout.write(`voices: ${voices.map((entry) => `${entry.voice} ${entry.billable} characters (${entry.speakers.join(", ")})`).join("; ")}\n`);
     const credentials = readCredentials({ env: ctx.env, home: ctx.home });
     if (credentials.token) {
@@ -325,8 +347,12 @@ async function tts(args, ctx) {
     billable += result.billable;
     if (result.fallback) fallbacks.push(request.id);
     for (const [id, clip] of result.clips) {
-      atomicWrite(path.join(audioDir, `${id}.wav`), encodeWav(clip));
+      const bytes = encodeWav(clip);
+      requireNarrationFormat(parseWav(bytes));
+      atomicWrite(path.join(audioDir, `${id}.wav`), bytes);
       cache.lines[id] = request.lines.find((line) => line.id === id).key;
+      cache.sha256 ??= {};
+      cache.sha256[id] = wavHash(bytes);
     }
     atomicWrite(path.join(audioDir, "cache.json"), `${JSON.stringify(cache, null, 2)}\n`);
     const done = lines ? `${lines.length} of ${request.lines.length} lines retaken` : `${request.lines.length} lines`;
@@ -334,8 +360,20 @@ async function tts(args, ctx) {
     ctx.stdout.write(`${request.id}${who}: ${done}${result.fallback ? " (split did not match the text; synthesized line by line)" : ""}\n`);
   }
 
+  for (const reference of references) {
+    const { bytes, hash } = checkedOriginal(reference.audio_ref);
+    const line = reference.lines[0];
+    atomicWrite(path.join(audioDir, `${line.id}.wav`), bytes);
+    cache.lines[line.id] = line.key;
+    cache.sha256 ??= {};
+    cache.sha256[line.id] = hash;
+    cache.references ??= {};
+    cache.references[line.id] = { source: reference.audio_ref, source_sha256: hash, key: line.key };
+  }
+  if (references.length) atomicWrite(path.join(audioDir, "cache.json"), `${JSON.stringify(cache, null, 2)}\n`);
+
   const clips = new Map();
-  for (const request of requests) {
+  for (const request of planned) {
     for (const line of request.lines) clips.set(line.id, requireNarrationFormat(parseWav(readFileSync(path.join(audioDir, `${line.id}.wav`)))));
   }
   const samplesById = Object.fromEntries([...clips].map(([id, clip]) => [id, Math.max(1, clip.length)]));

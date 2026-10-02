@@ -1,0 +1,343 @@
+{
+  "schema_version": 1,
+  "evidence_type": "independent-source-delta-review",
+  "reviewer": "/root/drama_audit_map",
+  "reviewed_at": "2026-10-02T09:39:53.646Z",
+  "status": "delta-reviewed-not-approved-not-gate-renewed",
+  "scope": "Two stale source receipts only: exact baseline binding and all structured changes introduced by #1095, with affected continuity context. No original receipt edited.",
+  "method": {
+    "hash_algorithm": "SHA-256 over JSON.stringify(imported source default export), identical to the plan builder",
+    "baseline_refs": [
+      "9656d0d9e42225c19fc0b2e05e64e26d7881f09a",
+      "9481d5fc8bd693a9673ff4a87430cb7b693cef28"
+    ],
+    "change_commit": "bb86373c9d4d07792ff1dd896bddd672c3ab0e43",
+    "diff": "Recursive object/array-index comparison; an absent added looks array is recorded with its complete after value. Every non-equal field is listed, with both old/new values and a human delta judgment.",
+    "review_contract_ref": "docs/videos/series-plans/binge-five-20260928/validate.mjs:128",
+    "review_contract": "Current validator requires exact current source_sha256 plus independent reviewer, scope/limitations, no open findings, and six document verdicts. This companion is deliberately not a replacement editorial receipt."
+  },
+  "original_receipts_modified": false,
+  "story_sources_modified": false,
+  "full_story_fresh_review": false,
+  "generation_performed": false,
+  "approval_granted": false,
+  "works": [
+    {
+      "slug": "wedding-reckoning",
+      "source_path": "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/source.mjs",
+      "baseline": {
+        "commit": "9481d5fc8bd693a9673ff4a87430cb7b693cef28",
+        "matching_earlier_commit": "9656d0d9e42225c19fc0b2e05e64e26d7881f09a",
+        "source_sha256": "f64f1b02f5cd04d95675fabe1dca6af27fd0cae983bb23ca3a6f4fc22cfdf701"
+      },
+      "current": {
+        "source_sha256": "37328fa1c643e0edfcd1d138a158410653b36d6e02739ce7a9c555b26bc5bb9c",
+        "equals_post_change_commit": "bb86373c9d4d07792ff1dd896bddd672c3ab0e43",
+        "inspected_head": "524e5075283833f0d87da19a8edd1c97a9b69ea7"
+      },
+      "prior_receipt": {
+        "path": "docs/videos/series-plans/binge-five-20260928/reviews/wedding-reckoning.json",
+        "file_sha256": "b4876520885391a373bf6bec9a4848542263557a71bef8a7212509f7179caadb",
+        "source_sha256": "f64f1b02f5cd04d95675fabe1dca6af27fd0cae983bb23ca3a6f4fc22cfdf701",
+        "reviewer": "claude-fable-5-1/closeout-wedding-reckoning",
+        "evidence_type": "independent-editorial-review",
+        "exact_baseline_match": true,
+        "modified": false
+      },
+      "structured_diff_count": 2,
+      "fields_diffs": [
+        {
+          "path": "$.setting.characters[0].looks",
+          "operation": "add",
+          "before": null,
+          "after": [
+            {
+              "id": "wedding-gown",
+              "from": 1,
+              "to": 3,
+              "appearance": "East Asian woman, 28, oval face, straight shoulder-length black hair tucked behind the left ear, dark brown eyes, small silver rectangular watch; ivory wedding gown."
+            }
+          ],
+          "examined_refs": [
+            "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/source.mjs:84"
+          ],
+          "delta_review": "新增 zhitang wedding-gown E1–3。臉型、28歲、髮型、眼睛、銀方錶與基底相同，只有婚紗替代褲裝；符合既有 E1/2/3 character_state 與 baseline continuity_notes[14]。沒有新增角色、年齡、情節或聲線。",
+          "verdict": "consistent-with-existing-story-no-new-plot-fact"
+        },
+        {
+          "path": "$.continuity_notes[14]",
+          "operation": "replace",
+          "before": "知棠的穿著（鏡頭提示詞要照這裡寫，固定外觀提示詞不含婚紗與頭紗，基底是象牙白褲裝）：第1至3集是同一天（重生當日），現世鏡頭一律穿象牙白婚紗；第1、2集在婚宴廳，第3集在會談室，她沒有換裝。頭紗只在第1集的現世婚宴鏡頭出現，戴到該集最後一個鏡頭；第2集第一個鏡頭起沒有頭紗，摘下的動作原稿沒有安排演出。從第4集第一個鏡頭（重生後第1至2日，車隊裝卸場）起改穿象牙白褲裝，到第40集不變。前世火場片段（第1集冷開場、第5與15集短閃回）不在婚禮當天，不穿婚紗，沿用固定外觀。第38集的婚禮合照是道具，照片裡的她穿婚紗，她本人仍穿褲裝。銀色方錶全季戴在手上，只有第40集簽約那一拍取下放在桌中央；那一拍用構圖避開她的手腕，只拍桌面上的錶與兩人落筆的手，審圖時檢查畫面裡沒有出現兩只錶。",
+          "after": "知棠的穿著（固定外觀提示詞是象牙白褲裝；第1至3集的婚紗寫在她的 look「wedding-gown」，產線在這三集用它取代固定外觀；頭紗、錶與閃回由鏡頭提示詞照這裡寫）：第1至3集是同一天（重生當日），現世鏡頭一律穿象牙白婚紗；第1、2集在婚宴廳，第3集在會談室，她沒有換裝。頭紗只在第1集的現世婚宴鏡頭出現，戴到該集最後一個鏡頭，由該集鏡頭提示詞加在婚紗上；第2集第一個鏡頭起沒有頭紗，摘下的動作原稿沒有安排演出。從第4集第一個鏡頭（重生後第1至2日，車隊裝卸場）起改穿象牙白褲裝（回到固定外觀），到第40集不變。前世火場片段（第1集冷開場、第5與15集短閃回）不在婚禮當天，不穿婚紗：第5、15集沿用固定外觀；第1集冷開場與婚紗在同一集，look 涵蓋整集，同一集之內的換裝產線要另立角色 id，所以冷開場拍到她本人的那幾拍（開場0–5秒貼住主門）還待站主決定是另立前世的角色 id，還是以構圖只拍筆、手與門。第38集的婚禮合照是道具，照片裡的她穿婚紗，她本人仍穿褲裝。銀色方錶全季戴在手上，只有第40集簽約那一拍取下放在桌中央；那一拍用構圖避開她的手腕，只拍桌面上的錶與兩人落筆的手，審圖時檢查畫面裡沒有出現兩只錶。",
+          "examined_refs": [
+            "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/source.mjs:2966"
+          ],
+          "delta_review": "衣著時序與錶交接不變；新增如何使用 episode looks、頭紗逐鏡添加及 E1 同集前世/現世的舊runtime限制說明。核讀 E1 冷開場、E1–5、15、38、40，故事仍是前世褲裝/現世婚紗、E4後褲裝、E40錶移桌。新增「同集換裝需另ID/待站主」屬歷史工具限制，不能誤當新故事規則或現行必須另建角色的批准要求；目前production-design E1已用同一ID逐鏡base/bride look處理。此delta不宣稱生成畫面已驗收。",
+          "verdict": "consistent-with-existing-story-no-new-plot-fact"
+        }
+      ],
+      "unchanged_sections": [
+        {
+          "field": "$.series",
+          "sha256": "e4af1b3ec4bd9df4f98216755d7a2433f9432cd68733402f8b9d4d05315e8599",
+          "equal": true
+        },
+        {
+          "field": "$.chapters",
+          "sha256": "9c7a7ef6a5fa364517e48c8bdec98bb53fd1fefee6f94da02493a59fa151de04",
+          "equal": true
+        },
+        {
+          "field": "$.packaging",
+          "sha256": "062a3a7740b88313bdb0c132c835a6395e563590d6e649810375fe10cbd5ce53",
+          "equal": true
+        }
+      ],
+      "all_40_episode_objects_unchanged": true,
+      "examined_refs": [
+        "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/source.mjs:534",
+        "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/source.mjs:569",
+        "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/source.mjs:627",
+        "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/source.mjs:684",
+        "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/source.mjs:741",
+        "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/source.mjs:798",
+        "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/source.mjs:1391",
+        "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/source.mjs:2732",
+        "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/source.mjs:2844",
+        "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/source.mjs:2966",
+        "docs/videos/series-plans/binge-five-20260928/reviews/wedding-reckoning.json:1",
+        "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/production-design.json:13",
+        "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/production-design.json:231",
+        "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/production-design.json:640"
+      ],
+      "context_scope": "Read every changed value and old/new costume note, fixed identity, E1 opening, and full E1–5,15,38,40 episode objects. Did not reread the other unchanged episodes.",
+      "supplemental_design": {
+        "path": "docs/videos/series-plans/binge-five-20260928/wedding-reckoning/production-design.json",
+        "sha256": "544174a0350af6822a5cb567f974fd9fc72b0c0af5925709e24c21292e2f2adb",
+        "role": "Production context only; outside the old source receipt hash. No media acceptance inferred."
+      },
+      "conclusion": {
+        "bounded_delta_review_complete": true,
+        "plot_or_world_rule_change_found": false,
+        "prior_unchanged_story_verdicts_may_be_cited_with_attribution": true,
+        "full_story_rereview_required_for_this_specific_diff": false,
+        "blind_receipt_hash_replacement_allowed": false,
+        "formal_review_gate_renewed": false,
+        "recommendation": "A new explicitly scoped delta-review renewal may cite the exact hash-matched prior full review for unchanged material and this independent review for all changed fields. Preserve the original receipt/history and disclose inherited verdicts, delta-only scope, limitations and current source hash. Root must decide and implement renewal; this companion does not itself satisfy validateReview or approve production."
+      },
+      "limitations": [
+        "Historical source still mentions a former same-episode look limitation and owner choice. Current production overlay supplies shot-level look selection; this review preserves the historical source text and does not approve unrendered cold-open shots.",
+        "No whole-story fresh review claimed; unchanged episodes were hash-compared, not reread.",
+        "No image, audio, timing, legal/professional, minor-provider route, production import or owner approval reviewed."
+      ]
+    },
+    {
+      "slug": "seventh-passenger",
+      "source_path": "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs",
+      "baseline": {
+        "commit": "9481d5fc8bd693a9673ff4a87430cb7b693cef28",
+        "matching_earlier_commit": "9656d0d9e42225c19fc0b2e05e64e26d7881f09a",
+        "source_sha256": "8da292c58ddf96e4fe4b7ba7af625bcffc8322795afd64b3945c09b874e5701c"
+      },
+      "current": {
+        "source_sha256": "e976faae66782ad05892b0e7d438fd79c77cfd137ec060d9561545456c2abb72",
+        "equals_post_change_commit": "bb86373c9d4d07792ff1dd896bddd672c3ab0e43",
+        "inspected_head": "524e5075283833f0d87da19a8edd1c97a9b69ea7"
+      },
+      "prior_receipt": {
+        "path": "docs/videos/series-plans/binge-five-20260928/reviews/seventh-passenger.json",
+        "file_sha256": "c82794724ace061378d96ce746dbb0a72a2bef459d23bd7fbb171d673f2abda9",
+        "source_sha256": "8da292c58ddf96e4fe4b7ba7af625bcffc8322795afd64b3945c09b874e5701c",
+        "reviewer": "claude-fable-5-1/closeout-seventh-passenger",
+        "evidence_type": "independent-editorial-review",
+        "exact_baseline_match": true,
+        "modified": false
+      },
+      "structured_diff_count": 8,
+      "fields_diffs": [
+        {
+          "path": "$.setting.characters[0].looks",
+          "operation": "add",
+          "before": null,
+          "after": [
+            {
+              "id": "patient",
+              "from": 38,
+              "to": 38,
+              "appearance": "Taiwanese man, 27, lean rectangular face, short black hair with a fixed left part, tired dark eyes, plain hospital patient gown, narrow old scar across right thumb. Cinematic 3D; restrained expressions."
+            }
+          ],
+          "examined_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:82"
+          ],
+          "delta_review": "程望 E38 patient look：27歲、臉、髮型與右拇指舊疤保留；旅途工作服換病人服，符合 baseline continuity_notes[20] 與 E38 醫院場景。",
+          "verdict": "consistent-with-existing-story-no-new-plot-fact"
+        },
+        {
+          "path": "$.setting.characters[1].looks",
+          "operation": "add",
+          "before": null,
+          "after": [
+            {
+              "id": "patient",
+              "from": 38,
+              "to": 38,
+              "appearance": "Taiwanese girl, 17, petite wiry build, blunt chin-length black bob tucked behind the right ear, plain hospital patient gown, red elastic band on left wrist. No glamour styling; alert eyes; no raincoat."
+            }
+          ],
+          "examined_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:117"
+          ],
+          "delta_review": "小滿 E38 patient look：17歲與紅腕帶不變，雨衣改病人服，符合 E38 住院觀察。未成年仍未成年，本delta沒有成年化或可拍provider核准。",
+          "verdict": "consistent-with-existing-story-no-new-plot-fact"
+        },
+        {
+          "path": "$.setting.characters[3].looks",
+          "operation": "add",
+          "before": null,
+          "after": [
+            {
+              "id": "patient",
+              "from": 38,
+              "to": 38,
+              "appearance": "Taiwanese woman, 34, average build, oval face, black hair in a neat low bun, plain hospital patient gown, plain silver stud earrings. Capable restrained gestures; no hoodie, scrubs or bag."
+            }
+          ],
+          "examined_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:179"
+          ],
+          "delta_review": "喬寧 E38 patient look：34歲、髮髻、耳釘保留，移除hoodie/scrubs/bag，符合她也是生還病人的既有E38名單與衣著原則。",
+          "verdict": "consistent-with-existing-story-no-new-plot-fact"
+        },
+        {
+          "path": "$.setting.characters[6].voice.style",
+          "operation": "replace",
+          "before": "台灣國語；青年中音、前段虛浮吞尾，取回身分後穩定；擬定 casting。",
+          "after": "台灣國語；青年中音、說話穩定；擬定 casting。",
+          "examined_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:256"
+          ],
+          "delta_review": "何照 Puck/provider均不變。原voice.style「前段虛浮吞尾，取回身分後穩定」拆為基底穩定＋E1–26 look.voice_style虛浮吞尾。讀E26–28，E27原票推出/脫外套/報全名後才有明確台詞，並未新增未取回身份就從容發言的情節。逐句新增表演仍應維持救出前壓力，不把整集穩定誤讀成沒有恐懼。",
+          "verdict": "consistent-with-existing-story-no-new-plot-fact"
+        },
+        {
+          "path": "$.setting.characters[6].looks",
+          "operation": "add",
+          "before": null,
+          "after": [
+            {
+              "id": "conductor-coat",
+              "from": 1,
+              "to": 26,
+              "appearance": "Taiwanese man, 24, slight build, pale narrow face, short uneven black fringe, oversized navy conductor coat over a plain white shirt and loose maroon tie, brass STAFF badge pinned crookedly on the coat with its name painted over in red, dark trousers, worn trainers, bandage on right palm.",
+              "voice_style": "台灣國語；青年中音、虛浮吞尾；擬定 casting。"
+            },
+            {
+              "id": "patient",
+              "from": 38,
+              "to": 38,
+              "appearance": "Taiwanese man, 24, slight build, pale narrow face, short uneven black fringe, plain hospital patient gown, no tie, bandage on right palm."
+            }
+          ],
+          "examined_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:268"
+          ],
+          "delta_review": "何照兩個looks：E1–26 conductor-coat按舊道具表保留右掌繃帶、制服/歪員工牌/姓名紅漆；E38 patient保留同臉右掌敷料、無領帶。E27不被整集coat覆蓋，仍以來源既有中段脫衣為界；E38不帶列車物件回現實。讀E6、26–28、38–40與規則49，無新物件歸屬或身份變更。",
+          "verdict": "consistent-with-existing-story-no-new-plot-fact"
+        },
+        {
+          "path": "$.continuity_notes[14]",
+          "operation": "replace",
+          "before": "道具狀態表（總則）：固定外觀提示詞只寫整部不變的臉、髮型、體型與基本衣著，不含下列（一）至（六）會出現、消失或易手的東西；鏡頭提示詞要照這張表寫，該鏡頭的人身上有那樣東西時才加上去，沒有就不寫。（七）顧永的購物袋是留在固定外觀的招牌物件，照那一條寫。交接發生在一集中間的，以那一拍為界，同一集前後的鏡頭分開寫。",
+          "after": "道具狀態表（總則）：固定外觀提示詞只寫整部不變的臉、髮型、體型與基本衣著，不含下列（一）至（六）會出現、消失或易手的東西；鏡頭提示詞要照這張表寫，該鏡頭的人身上有那樣東西時才加上去，沒有就不寫。例外是整集都換了樣子的兩處，寫在角色的 looks、產線在那幾集用它取代固定外觀，鏡頭提示詞不必再加：（一）何照第 1–26 集的車掌外套與員工牌（look「conductor-coat」），（六）第 38 集四人的病人服（各自的 look「patient」）。（七）顧永的購物袋是留在固定外觀的招牌物件，照那一條寫。交接發生在一集中間的，以那一拍為界，同一集前後的鏡頭分開寫。",
+          "examined_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3088"
+          ],
+          "delta_review": "道具總則增加兩種整集look例外，保留同集中途轉移要逐鏡分開與顧永唯一購物袋規則。不是允許整集把E27外套或E40購物袋自動畫回。",
+          "verdict": "consistent-with-existing-story-no-new-plot-fact"
+        },
+        {
+          "path": "$.continuity_notes[15]",
+          "operation": "replace",
+          "before": "道具狀態表（一）何照的車掌外套與員工牌：各集一律稱「車掌外套」「員工牌」，不另稱制服外套、工作牌或 STAFF 牌。員工牌是何照現實中當夜值勤別的見習牌，陸循用紅漆蓋掉上面的姓名、別到車掌外套上；牌底原本印的當夜車組號沒被蓋住，所以第 6 集會露出來；它不是票，沒有心跳光。車掌外套是列車上才有的東西，不帶回現實。第 1–26 集全程穿著過大的深藍車掌外套，胸前歪別著黃銅員工牌，牌面刻 STAFF（oversized navy conductor coat, brass STAFF badge pinned crookedly）。第 27 集從開場到中段轉折之前仍穿著，外套被連接門夾住；中段轉折他脫下外套離開夾縫、員工牌落地之後，外套留在夾縫、牌留在地面。第 27 集其餘鏡頭與第 28–37 集只有固定外觀的白襯衫、酒紅領帶與右掌繃帶，外套與牌不再出現。第 38 集穿病人服，沒有領帶。",
+          "after": "道具狀態表（一）何照的車掌外套與員工牌：各集一律稱「車掌外套」「員工牌」，不另稱制服外套、工作牌或 STAFF 牌。員工牌是何照現實中當夜值勤別的見習牌，陸循用紅漆蓋掉上面的姓名、別到車掌外套上；牌底原本印的當夜車組號沒被蓋住，所以第 6 集會露出來；它不是票，沒有心跳光。車掌外套是列車上才有的東西，不帶回現實。第 1–26 集全程穿著過大的深藍車掌外套，胸前歪別著黃銅員工牌，牌面刻 STAFF（oversized navy conductor coat, brass STAFF badge pinned crookedly），這一段寫在何照的 look「conductor-coat」（第 1–26 集），那一段的聲音也照它的 voice_style 虛浮吞尾。第 27 集回到固定外觀與基底聲音，從開場到中段轉折之前仍穿著，由鏡頭提示詞加上外套與牌，外套被連接門夾住；中段轉折他脫下外套離開夾縫、員工牌落地之後，外套留在夾縫、牌留在地面。第 27 集其餘鏡頭與第 28–37 集只有固定外觀的白襯衫、酒紅領帶與右掌繃帶，外套與牌不再出現。第 38 集穿病人服，沒有領帶（look「patient」）。",
+          "examined_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3089"
+          ],
+          "delta_review": "外套/員工牌道具表增加look與voice_style的使用說明；衣/牌/票身分及E27中段丟下的位置、E28後不回身等事實不變。E27回基底後仍明文要求前半逐鏡加coat，並非開場已脫。",
+          "verdict": "consistent-with-existing-story-no-new-plot-fact"
+        },
+        {
+          "path": "$.continuity_notes[20]",
+          "operation": "replace",
+          "before": "道具狀態表（六）現實集數的穿著原則：第 38 集霧灣醫院出場的程望、小滿、喬寧、何照都是住院病人，一律穿素色病人服，鏡頭提示詞要明寫，並寫明不穿列車上的外套、雨衣或連帽外套；臉、髮型、體型、程望的拇指舊疤與何照的右掌敷料照固定外觀。第 39 集程望家、第 40 集白天列車沒有另立服裝設定，沿用固定外觀的基本衣著。第 38–40 集都不出現原票、工作燈、白燈、員工牌與車掌外套；第 40 集顧永另帶一件修好的外套，只有普通交通票。",
+          "after": "道具狀態表（六）現實集數的穿著原則：第 38 集霧灣醫院出場的程望、小滿、喬寧、何照都是住院病人，一律穿素色病人服，不穿列車上的外套、雨衣或連帽外套；四人各有一個只涵蓋第 38 集的 look「patient」，寫著病人服與同一張臉、髮型、體型、程望的拇指舊疤與何照的右掌敷料，產線這一集用它取代固定外觀。第 39 集程望家、第 40 集白天列車沒有另立服裝設定，沿用固定外觀的基本衣著。第 38–40 集都不出現原票、工作燈、白燈、員工牌與車掌外套；第 40 集顧永另帶一件修好的外套，只有普通交通票。",
+          "examined_refs": [
+            "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3094"
+          ],
+          "delta_review": "E38四人病人服改由獨立patient look承載，基底臉/傷勢保持；E39–40回基底、禁帶列車原票/燈/制服的要求不變。",
+          "verdict": "consistent-with-existing-story-no-new-plot-fact"
+        }
+      ],
+      "unchanged_sections": [
+        {
+          "field": "$.series",
+          "sha256": "5e0334cae5d698cc127022db0141824862f1eff6974159373cad1374863f38b2",
+          "equal": true
+        },
+        {
+          "field": "$.chapters",
+          "sha256": "169a00dab73043044afaa7d46de99075a281185d133927ab4d75e56cf7c6f37f",
+          "equal": true
+        },
+        {
+          "field": "$.packaging",
+          "sha256": "063114391654e0dc6c9ebd29b1636b879dc510c76a7b541194b5681a84fd5eea",
+          "equal": true
+        }
+      ],
+      "all_40_episode_objects_unchanged": true,
+      "examined_refs": [
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:49",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:53",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:92",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:154",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:243",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:897",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2127",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2188",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2247",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2854",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2910",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:2967",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3088",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3089",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/source.mjs:3094",
+        "docs/videos/series-plans/binge-five-20260928/reviews/seventh-passenger.json:1",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/production-design.json:509",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/production-design.json:562",
+        "docs/videos/series-plans/binge-five-20260928/seventh-passenger/production-design.json:2716"
+      ],
+      "context_scope": "Read every changed value, four affected character identities, reality/prop rule, and full E6,26–28,38–40 episode objects. Did not reread the other unchanged episodes.",
+      "supplemental_design": {
+        "path": "docs/videos/series-plans/binge-five-20260928/seventh-passenger/production-design.json",
+        "sha256": "f1b92a7d272ef8cca6d52c5b637a79326089d40a36ec9eb775329541ea90da47",
+        "role": "Production context only; outside the old source receipt hash. No media acceptance inferred."
+      },
+      "conclusion": {
+        "bounded_delta_review_complete": true,
+        "plot_or_world_rule_change_found": false,
+        "prior_unchanged_story_verdicts_may_be_cited_with_attribution": true,
+        "full_story_rereview_required_for_this_specific_diff": false,
+        "blind_receipt_hash_replacement_allowed": false,
+        "formal_review_gate_renewed": false,
+        "recommendation": "A new explicitly scoped delta-review renewal may cite the exact hash-matched prior full review for unchanged material and this independent review for all changed fields. Preserve the original receipt/history and disclose inherited verdicts, delta-only scope, limitations and current source hash. Root must decide and implement renewal; this companion does not itself satisfy validateReview or approve production."
+      },
+      "limitations": [
+        "E27 is a within-episode identity/costume transition. The source excerpt has no explicit spoken line before retrieving identity, but future script performance must retain pre-rescue tension; episode-level style is not proof of rendered acting.",
+        "No whole-story fresh review claimed; unchanged episodes were hash-compared, not reread.",
+        "No image, audio, timing, legal/professional, minor-provider route, production import or owner approval reviewed."
+      ]
+    }
+  ]
+}

@@ -84,7 +84,7 @@
 | 16 團聚的收據 | 三步壓痕依序對照唐綺敘述 | 把被摸票也算交易 → 選段、答應、按票需三步完整 | [source.mjs:1474](./source.mjs#L1474) |
 | 17 急救櫃要一段回憶 | 長帶拉老人到實地後程望想不起味道 | 救援只剩動作爽點忽略代價 → 停留程望尋詞失敗，不演已失記憶新回放 | [source.mjs:1534](./source.mjs#L1534) |
 | 18 他不肯亮出自己的票 | 程望先亮己票，何照揭玻璃遮紙 | 檔案解說沒有行動代價 → 原票冒被扣風險、兩分鐘確實失去 | [source.mjs:1594](./source.mjs#L1594) |
-| 19 白燈那頭是誰 | 母親說號碼，唐綺落筆後才叫媽 | 聲音溫柔就等於真母親 → 編號與票印方向兩證明都入鏡 | [source.mjs:1655](./source.mjs#L1655) |
+| 19 白燈那頭是誰 | 程望核對編號與票印方向後才低聲叫媽；唐綺只記錄 | 聲音溫柔就等於真母親 → 編號與票印方向兩證明都入鏡 | [source.mjs:1655](./source.mjs#L1655) |
 | 20 紅拉桿壓住了什麼 | 紅桿與走紙錯路互相對照 | 給母親新控制紅桿能力 → 她只白燈口聲音，元凶紅桿遮擋有因果 | [source.mjs:1714](./source.mjs#L1714) |
 | 21 地圖上的十七號 | 普通17月台圖被遮前拓兩份 | 陸循遠端回話增加第五聲線 → 只有遮板落下不配陸循聲 | [source.mjs:1787](./source.mjs#L1787) |
 | 22 壓在白牌上的表框 | 空表推回，卸表框露完整規則 | 原文畫成七人湊齊魔法 → 只寫時限內皆可，名單是管理工具 | [source.mjs:1851](./source.mjs#L1851) |
@@ -166,3 +166,43 @@ E11–23把每份文件對照配一個物理行動與代價：遮板、讓票靠
 程望27歲，E15事故回望在七年前，算得當時20歲，不能把「年少回望」字眼誤標為未成年；已補cheng-wang-age20完整造型，僅用E15短閃回，現時鏡仍27歲。陸安是「顯影9歲」，亡者或記憶影像身份不改變視覺年齡限制。
 
 character.video_constraints標記實際未成年人物；只有畫外聲不自動禁止中文配音。分鏡需區分說話者與畫面內人物，但不能靠背影、局部、卡通畫風或省略年齡宣稱繞過限制成功。必須保留原設年齡，先選手繪動畫或合法可支援相應年齡的供應商，做含該人物的pilot確認能力與效果再放量。此批不能宣稱已可直接全400集拍完；通過離線設計檢查也不代表供應商或成片已驗收。
+
+## 2026-10-02 配音與聲音細節覆核
+
+本輪只有來源文字與製作設計覆核，沒有實際TTS、試音、SFX音檔或成片驗收。新增performance_states、audio_cues、audition_scenes每筆均為proposed，綁定集數與來源。source_excerpt只供語境，不能整段念成台詞；line_samples僅逐字引用已有原台詞，其餘試音段落待本集定稿取樣。
+
+- E13紅廣播催前門、白燈口報編號同聲線但不同台詞take；只共用三短一長節奏，不能複製不同內容。
+- E14陸安三次同句才是同一take重播，和E13分開。
+- E19是程望查證後叫媽；E34後不新增靈異母聲，E39為另一時刻普通生前留言。
+
+### 角色表演狀態
+
+| 角色 / state | 集數 | 演出重點 | 來源 |
+| --- | --- | --- | --- |
+| cheng-wang / cheng-proof-then-mom | E19 | 兩項證據核對後才叫媽；查證前觀察節奏，確認後低音量放下防備；叫媽主體只能程望，唐綺只記錄。 | [source.mjs:1744](./source.mjs#L1744) |
+| lin-xiaoman / xiaoman-cough | E14 | 17歲，咳嗽加重但清醒；咳在句間，仍能判斷重複句；不演已瀕死昏迷。 | [source.mjs:1444](./source.mjs#L1444) |
+| lin-xiaoman / xiaoman-intermittent | E29 | 意識時斷時續，尚未截止；短氣息與少量反應依定稿，不長篇流暢獨白、持續慘叫或死亡音效。 | [source.mjs:2359](./source.mjs#L2359) |
+| he-zhao / he-fears-name | E12 | 記得全名，只因威脅不敢報；吞嚥和避開姓名，不演真的失憶；保持24歲Puck。 | [source.mjs:1281](./source.mjs#L1281) |
+| he-zhao / he-reclaimed-name | E27 | 拿票、報名並承認洩密；起句完整但氣息仍緊，不突然換成無畏人格或抹掉責任。 | [source.mjs:2194](./source.mjs#L2194) |
+| wen-lanyin / mother-same-identity | E13、E19 | 真假通道同音色，靠證據確認；同一Sulafat與基本溫度，不能邪惡降調或善良耳語先判真假；E13兩內容分錄take。 | [source.mjs:1386](./source.mjs#L1386)、[source.mjs:1744](./source.mjs#L1744) |
+| wen-lanyin / mother-release | E34 | 确认程望握燈後結束迴路；簡短平常，不擴成新告別演說；迴路斷後无新低語或呼名。 | [source.mjs:2672](./source.mjs#L2672) |
+| wen-lanyin / mother-voicemail | E39 | 生前另一時刻的普通晚歸留言；同聲線平常口吻，非E34告別；手機透視後製無靈異混響，也不恢復失去的共餐記憶。 | [source.mjs:2959](./source.mjs#L2959) |
+
+### 聲音提示
+
+- **train-e13-red-content（E13；dialogue）**：紅廣播只錄本集催前門內容；同聲線但與白燈編號不同take，遮板位置對應空間。 不反派變聲；母親仿聲限E1／E13，其餘紅廣播仍陸循。 來源：[source.mjs:1339](./source.mjs#L1339)。
+- **train-e13-white-content（E13；dialogue）**：白燈提供不完整編號，是独立台詞take，不能重播催門或提前說完E19證據。 紅遮板關後白燈仍響，不只靠立體聲理解。 來源：[source.mjs:1339](./source.mjs#L1339)。
+- **train-e13-knock-pattern（E13；foley）**：三短一長同基礎pattern分聲源處理；遮板關後另一側持續，不與編號關鍵音節撞。 來源：[source.mjs:1340](./source.mjs#L1340)。
+- **train-e14-exact-repeat（E14；recording）**：各語定稿後只錄一份「爸，這次到家了嗎」，三次重用同take含停頓，非三次獨立TTS。 尚無音檔或audio_ref，runtime需保存實際引用；顯影9歲與未成年影像限制不變。 來源：[source.mjs:1400](./source.mjs#L1400)。
+- **train-e19-speaker（E19；dialogue）**：母親報號、唐綺筆聲、程望核對依序，程望才低聲叫媽；不可由唐綺說。 兩證據吻合才放鬆，母聲溫柔不能代替查證或恢復記憶。 來源：[source.mjs:1699](./source.mjs#L1699)。
+- **train-e27-name（E27；dialogue）**：原票與本人全名對上，完整報名而無變聲；員工牌落地聲錯開姓名。 來源：[source.mjs:2194](./source.mjs#L2194)。
+- **train-e34-final-guide（E34；dialogue）**：驗名接燈→確認握穩→迴路終止，之後不生成幽靈母聲；撤低頻仍保留列車環境。 來源：[source.mjs:2629](./source.mjs#L2629)。
+- **train-e39-archive（E39；recording）**：普通晚歸留言與最後共餐不同時，不重用E34告別當留言；手機小喇叭透視無鬼聲。 程望唐綺是現場餐桌，不為錄音新增來回答話。 來源：[source.mjs:2916](./source.mjs#L2916)。
+
+### 待實作的試音段落
+
+- **train-mother-channels／E13**：cheng-wang、tang-qi、wen-lanyin。取定稿兩內容與程望查證段，同聲線不同take，乾聲後才加紅／白空間。 驗收要聽：證據未給前不能靠音色判真。 mono可聽紅遮板關後白敲擊仍響，不能把不同台詞重用成一句。 來源：[source.mjs:1340](./source.mjs#L1340)。
+- **train-repeated-child／E14**：lin-xiaoman、tang-qi、xu-hao、lu-an。同一陸安句take三播，再接定稿辨認段；小滿咳在句間，唐綺非全知。 驗收要聽：實際音檔三次連停頓一致，不能只寫提示詞。 女孩和年輕女性可分，輪聲／咳聲不蓋爸爸線索。 來源：[source.mjs:1400](./source.mjs#L1400)。
+- **train-proof-before-mom／E19**：cheng-wang、tang-qi、wen-lanyin。先編號／票印核對，才程望叫媽；唐綺只用定稿提醒與記錄。 驗收要聽：盲聽可分報號、提醒、母子確認的說話者。 情緒不早於證據，無恢復記憶或提前真相。 來源：[source.mjs:1699](./source.mjs#L1699)。
+
+先完成zh-TW台灣口音乾聲與多人辨識，再做通訊／環境／音樂處理、mono與手機外放。不同voice_name或文字規則不能代替試聽。逐鏡聲音、造型、道具須和實際演出對上，CC只作獨立可開關軌；ja/ko/en在中文版定案後各自配音、重新配時及母語聽校。本輪沒有修改來源、歷史版本或正式站，不代表新增設計已同步後台。

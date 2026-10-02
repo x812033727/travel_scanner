@@ -319,6 +319,7 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
       throw new AutomationError("the production narrator must have a voice distinct from every character; revise the approved narrator selection", { code: "video_production_voice_mismatch", who: "owner" });
     }
     settled.voice = { provider: "gemini", name: narrator.voice_name, style: `台灣國語，自然台灣口音。${narrator.performance}`.slice(0, 400) };
+    settled.pronunciation_hints = { ...(production.pronunciation_hints ?? {}) };
     settled.narration_locale = "zh-TW";
     if (settled.youtube) settled.youtube = { ...settled.youtube, default_language: "zh-TW" };
   }

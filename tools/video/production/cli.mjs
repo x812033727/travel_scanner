@@ -4,8 +4,9 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 import { pathToFileURL } from "node:url";
 import { UsageError } from "../core/paths.mjs";
-import { designHash, designProblems, productionNarrator, productionSetting } from "./design.mjs";
+import { designHash, designProblems, productionSetting } from "./design.mjs";
 import { storyboardHtml } from "./preview.mjs";
+import { buildAuditionPlan } from "./voice-audit.mjs";
 
 const BATCHES = ["binge-five-20260928", "claude-binge-five-20260928"];
 const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
@@ -54,32 +55,19 @@ export function buildBundle(work, profile) {
   return { bundle, request, manifest };
 }
 
-function auditions(work, folder, root) {
-  const samples = [
-    { id: "controlled", direction: "平靜對峙；有對手、先吸氣再說，語尾收住", line: "我聽清楚了。你先別急，把話說完。" },
-    { id: "quiet", direction: "近距離低聲；氣息清楚、低音量但不含糊", line: "先別出聲。看著我，跟著我走。" },
-    { id: "turn", direction: "情緒反轉；先忍住再作決定，不嘶吼、不破音", line: "這一次，我不會再讓你替我作決定。" },
-  ];
-  const entries = [];
-  const narrator = productionNarrator(work.source.setting, work.design);
-  const cast = [...work.design.characters, { id: "narrator", ...narrator, pronunciations: { "zh-TW": "旁白試音" } }];
-  for (const character of cast) {
-    const name = character.id === "narrator" ? "旁白" : work.source.setting.characters.find((entry) => entry.id === character.id).name;
-    for (const sample of samples) {
-      const file = path.join(folder, `${character.id}-${sample.id}.txt`);
-      const transcript = `${name}。${sample.line}\n`;
-      writeFileSync(file, transcript, "utf8");
-      const style = `台灣國語，自然台灣口音；${character.performance}；${sample.direction}；人名發音提示（不唸出指示）：${character.pronunciations["zh-TW"]}`;
-      entries.push({
-        character: character.id, voice: character.voice_name, sample: sample.id,
-        text_sha256: designHash(transcript), pronunciation_hint: character.pronunciations["zh-TW"],
-        purpose: "audition material, not an added story scene",
-        args: ["audition", "--text-file", path.relative(root, file).split(path.sep).join("/"), "--voices", `gemini:${character.voice_name}`, "--style", style],
-        accept: ["人名正確", "聲線可辨識且符合角色", "三段仍為同一人", "情緒有層次", "低聲仍清晰", "無破音與多餘字"],
-      });
-    }
+function auditions(work, profile, folder, root) {
+  const plan = buildAuditionPlan(work, profile);
+  for (const entry of plan.entries) {
+    if (entry.synthesis_allowed === false || !entry.transcript?.trim()) continue;
+    const file = path.join(folder, `${entry.id}.txt`);
+    const transcript = `${entry.transcript.trim()}\n`;
+    writeFileSync(file, transcript, "utf8");
+    const style = entry.audition_style;
+    if (!style || style.length > 400) throw new UsageError(`${work.slug}/${entry.id}: audition style exceeds TTS limits`);
+    entry.text_sha256 = designHash(transcript);
+    entry.args = ["audition", "--text-file", path.relative(root, file).split(path.sep).join("/"), "--voices", `gemini:${entry.voice}`, "--style", style];
   }
-  return { locale: "zh-TW", status: "samples-prepared-not-synthesized", entries };
+  return plan;
 }
 
 export async function run(command, args, ctx) {
@@ -102,7 +90,7 @@ export async function run(command, args, ctx) {
       writeFileSync(path.join(folder, "manifest.json"), json(manifest));
       const auditionFolder = path.join(folder, "auditions");
       mkdirSync(auditionFolder, { recursive: true });
-      writeFileSync(path.join(folder, "audition-plan.json"), json(auditions(work, auditionFolder, ctx.root)));
+      writeFileSync(path.join(folder, "audition-plan.json"), json(auditions(work, profile, auditionFolder, ctx.root)));
       receipt.push(manifest);
     }
     writeFileSync(path.join(out, "build-receipt.json"), json({ status: "local-build-not-imported", works: receipt }));
