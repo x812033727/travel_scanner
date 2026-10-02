@@ -56,9 +56,25 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    reported `stuck` instead of `partial` (the note names those URLs first); `/admin/news`
    lists stuck sources first under a warning, so a publisher that starts refusing the
    scanner is noticed the same day.
-   A source's **first scan** (`last_scanned_at` empty) records every listed entry older than
-   72 hours, or undated, as seen (`rejected`, `news_baseline`) without fetching it, so
-   adding a source files only its news of the last days, never its back catalogue.
+   **Old entries.** Each source has a freshness window, `max_entry_age_hours` in its config
+   (72 hours unless set; `0` or `null` switches it off, and a value that is not a number
+   keeps 72). A source's **first scan** (`last_scanned_at` empty) records every listed
+   entry older than the window (72 hours when it is off), or undated, as seen (`rejected`,
+   `news_baseline`) without fetching it, so adding a source files only its news of the
+   last days, never its back catalogue. On every later scan a dated entry older than the
+   window is left out before its page is fetched: no request, no candidate, nothing
+   stored, so switching the window off or widening it reads it after all. Those entries are
+   counted in the source's note ("Left out 3 feed entries older than 72 hours, without
+   fetching them") but do not make the scan `partial` or keep the listing's ETag back:
+   `partial` still means a page failed. Before this (2026-10-02) an old entry that reached
+   the scanner (a republished post, a renamed URL, a page that failed until now) became a
+   candidate like a new one; the switch-on on 2026-09-24 filed 87 candidates from the first
+   three sources, most of them old posts.
+   **Undated entries** (HTML listings, a feed item without a date) are judged by the
+   listing instead: the first scan records them as seen, and after that an undated entry
+   is one the listing did not show before, so it is read as new. Reading the article's own
+   date after the fetch was the other option; it was not taken because it cannot save the
+   request and would need a date extractor per publisher.
    Every fetch uses `fetch.tls_context()`: it verifies the chain, the expiry and the host
    name, but not Python 3.13's strict X.509 profile, which the TWCA chain of Taiwan's
    government sites fails ("Missing Subject Key Identifier"). Before this no `gov.tw` page
@@ -161,7 +177,9 @@ reply, and the dropped bounds are written into the field descriptions.
    disable or edit any of them. A source is `evidence` or `lead_only` (discovery only,
    never counted as evidence), optionally first-party, and may list redirect hosts and
    parser settings (`items_path`, `article_ids`, `include_path_prefixes`,
-   `max_entries_per_scan`, …). One evidence page is enough to draft; automatic
+   `max_entries_per_scan`, `max_entry_age_hours`, …). Every source in the file keeps the
+   72-hour window; raise it only for a feed that adds posts days after their own date.
+   One evidence page is enough to draft; automatic
    publication needs a second website, which the scanner only finds through the article's
    own links, so the list pairs press feeds with the first-party hosts they cite. A link
    is followed only when its host is exactly a source's host: a link to
@@ -294,3 +312,8 @@ reached Jev because its budget was spent (207 on 2026-09-26). With `--apply` the
 - Evidence is compared by the hash of the extracted page text. A page whose extracted
   area carries changing text (view counters, "related" lists) will look changed at
   publication; narrow it with the source's `article_ids`/`article_classes`.
+- The freshness window trusts the feed's date. The parser takes the first of `published`,
+  `updated`, `pubDate` or `date` it finds, and an `updated` date (or a post republished
+  with a new date) can be newer than the event, so the window is not a freshness guard for
+  the writer. An undated listing that renames its article URLs makes every listed entry
+  look new.
