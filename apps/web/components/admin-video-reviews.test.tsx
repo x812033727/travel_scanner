@@ -2,7 +2,7 @@ import { act, fireEvent, render, screen, waitFor, within } from "@testing-librar
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AdminOperationsProvider } from "./admin-operations-provider";
 import { BROWSE_STATES } from "./admin-video-browser";
-import { VIDEO_CATEGORIES, youtubeVideoId } from "./admin-video-review-card";
+import { type Review, UploadPackage, VIDEO_CATEGORIES, youtubeVideoId } from "./admin-video-review-card";
 import { AdminVideoReviews, REFRESH_MS } from "./admin-video-reviews";
 import type { AdminBootstrap } from "@/lib/admin-operations";
 
@@ -873,6 +873,7 @@ describe("AdminVideoReviews", () => {
     await waitFor(() => expect(card.textContent).toContain("9.5 分鐘"));
     expect(card.textContent).toContain("6 章");
     expect(card.textContent).toContain("5 個語系");
+    // A package without thumbnail_<locale> files (every one before #1100) keeps exactly these buttons.
     const downloads = [...card.querySelectorAll("a[download]")];
     expect(downloads.map((link) => link.getAttribute("download"))).toEqual(["final.mp4", "thumbnail.jpg", "zh-TW.srt", "zh-CN.srt", "description.zh-TW.txt", "metadata.json"]);
     expect(downloads[0].getAttribute("href")).toBe(`/api/admin-video-files/upload-ready/${"6".repeat(64)}`);
@@ -902,6 +903,27 @@ describe("AdminVideoReviews", () => {
     // Linking the video reads the groups and the catalog again: the card goes, its line says it is on YouTube.
     await waitFor(() => expect(screen.queryByRole("region", { name: "可以上架" })).toBeNull());
     await waitFor(() => expect(tableRows(screen.getByRole("table", { name: "全部影片" })).find((row) => row.includes("上傳包影片"))).toContain("YouTube 影片 dQw4w9WgXcQ"));
+  });
+
+  it("offers each language's own thumbnail from the upload package, beside the main one", () => {
+    // tools/video/package/check.mjs attaches thumbnails/<locale>.jpg as thumbnail_<locale>; an older
+    // spelling (thumbnail_zh_cn) maps back to the listed locale the way captions do.
+    const review = {
+      id: "77777777-7777-4777-8777-777777777777", gate: "publish", content_sha256: "5".repeat(64), summary: "上傳包",
+      payload: { locales: ["zh-TW", "zh-CN", "en"] },
+      files: [
+        { role: "thumbnail", sha256: "7".repeat(64), size: 180_000, content_type: "image/jpeg" },
+        { role: "thumbnail_en", sha256: "c".repeat(64), size: 170_000, content_type: "image/jpeg" },
+        { role: "thumbnail_zh_cn", sha256: "d".repeat(64), size: 175_000, content_type: "image/jpeg" },
+        { role: "captions_en", sha256: "e".repeat(64), size: 9_000, content_type: "text/plain" },
+      ],
+      status: "approved", choice: null, note: null, decided_at: "2026-10-01T05:00:00Z", created_at: "2026-10-01T05:00:00Z",
+    } as Review;
+    render(<UploadPackage slug="upload-ready" review={review} />);
+    const downloads = [...screen.getByLabelText("上傳包").querySelectorAll("a[download]")];
+    expect(downloads.map((link) => link.getAttribute("download"))).toEqual(["thumbnail.jpg", "thumbnail.en.jpg", "thumbnail.zh-CN.jpg", "en.srt"]);
+    expect(downloads.map((link) => link.textContent)).toEqual([expect.stringContaining("縮圖 thumbnail.jpg"), expect.stringContaining("縮圖 en"), expect.stringContaining("縮圖 zh-CN"), expect.stringContaining("字幕 en")]);
+    expect(downloads[1].getAttribute("href")).toBe(`/api/admin-video-files/upload-ready/${"c".repeat(64)}`);
   });
 
   it("filters the catalog by category and state, searches it, and keeps the typed search across reloads", async () => {
