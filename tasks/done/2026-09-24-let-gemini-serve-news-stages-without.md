@@ -1,13 +1,13 @@
 ---
 id: 2026-09-24-let-gemini-serve-news-stages-without
 title: Let Gemini serve news stages without collapsing block unions
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-gemini-unions
 claimed_at: 2026-10-02T15:23:58Z
 created_at: 2026-09-24T00:27:41Z
-completed_at:
+completed_at: 2026-10-02T16:00:58Z
 branch: claude/gemini-structured-unions
 depends_on: []
 scope:
