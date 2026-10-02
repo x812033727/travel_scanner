@@ -1,13 +1,13 @@
 ---
 id: 2026-10-02-shorts-stage-models-the-api-saves
 title: Shorts stage models: the API saves them and the AI settings page gets a Shorts stages block
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-shorts-stage-models
 claimed_at: 2026-10-02T08:29:15Z
 created_at: 2026-10-02T06:31:32Z
-completed_at:
+completed_at: 2026-10-02T08:44:09Z
 branch: claude/shorts-stage-models
 depends_on:
   - 2026-09-28-video-shorts-admin-automation
