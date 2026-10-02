@@ -195,7 +195,7 @@ async def place_photo(
     if not photo_uri:
         raise AppError(404, "photo_not_found", "目前沒有可用的地點照片")
     try:
-        await redis.setex(cache_key, settings.place_photo_cache_ttl_seconds, photo_uri)
+        await redis.set(cache_key, photo_uri, ex=settings.place_photo_cache_ttl_seconds)
     except RedisError:
         pass
     return RedirectResponse(photo_uri, status_code=302)
