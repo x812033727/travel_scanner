@@ -1,0 +1,1745 @@
+{
+  "schema_version": 1,
+  "artifact_type": "editorial-shot-plan-not-runtime-video-json",
+  "episode": 1,
+  "locale": "zh-TW",
+  "source_binding": {
+    "source_object_sha256": "37328fa1c643e0edfcd1d138a158410653b36d6e02739ce7a9c555b26bc5bb9c",
+    "screenplay_path": "docs/videos/series-plans/competition-20261002/pilot/episode-01-screenplay.md",
+    "screenplay_sha256": "82352b248e66810bd217092b6284ea13c0ec688dbb410e6f791107e13781c429",
+    "opening_voice_document_sha256": "b198b4839f1777a0d0020a5c706ae27485492b4801371f359d73d8abcce003ef",
+    "opening_timing_report_sha256": "7ead089251c8f6bf7060d4c7499d9eac984168ed951efd80d075bd18b53c3024",
+    "opening_measured_edit_sha256": "cc8a982ceae732d5ea25a6a273165cb14d9d976314ed341711edc3cb2476bd66"
+  },
+  "voice_document": "episode-01-voice.video.json",
+  "dialogue_document": "episode-01-dialogue.json",
+  "status": "opening-audio-cut-measured-remaining-timing-planned-no-animation",
+  "opening": {
+    "duration_s": 51,
+    "voice_total_s": 28,
+    "source": "../pilot/measured-edit.json",
+    "human_listening": "pending",
+    "animation_seconds": 0
+  },
+  "continuation_start_s": 51,
+  "planned_total_duration_s": 153.5,
+  "measured_complete_episode_duration_s": null,
+  "shot_reference_count": 42,
+  "silent_shot_ids": [
+    "WR-E01-S06",
+    "WR-E01-S07",
+    "WR-E01-S11",
+    "WR-E01-S12",
+    "WR-E01-S15",
+    "WR-E01-S20",
+    "WR-E01-S26",
+    "WR-E01-S27",
+    "WR-E01-S29",
+    "WR-E01-S42"
+  ],
+  "source_generation": {
+    "seconds_each": 8,
+    "reference_plan_sources": 42,
+    "reference_plan_seconds": 336,
+    "committed_clip_requests": 0,
+    "candidate_merges": [
+      {
+        "shot_id": "WR-E01-S35",
+        "into": "WR-E01-S34"
+      },
+      {
+        "shot_id": "WR-E01-S39",
+        "into": "WR-E01-S38"
+      }
+    ],
+    "note": "42 is the preserved screenplay reference count, not a must-buy count. Final source count depends on measured dialogue, necessary motion and the two merge decisions; retakes are separately bounded."
+  },
+  "localization_gate": {
+    "start_after": "owner-confirmed-complete-chinese-film-and-cc",
+    "approval_authority": "owner",
+    "status": "pending",
+    "pilot_or_two_episode_acceptance_is_sufficient": false
+  },
+  "shots": [
+    {
+      "shot_id": "WR-E01-S01",
+      "scene_id": "wr-e01-s01",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "前世知棠完整臉、褲裝肩胸與握筆手同框；手指收緊一次",
+      "data": {
+        "prompt": "Locked medium close-up inside the already closed south main door of the old warehouse. Zhitang is 28. Her complete identifiable face, ivory trouser-suit shoulders and chest, and the hand already holding one intact metal pen share the frame. Firelight reflects on the pen and cold door frame. No bridal clothes, veil, or new injury. Her face will be compared with present-day S08.",
+        "motion": "Her fingers tighten once around the pen.",
+        "camera": "Locked medium close-up; full face, suit and pen-holding hand remain visible.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L001"
+      ],
+      "runtime_line_ids": [
+        "afd1ed57"
+      ],
+      "edit_window_s": {
+        "start": 0,
+        "end": 5,
+        "status": "existing-measured-audio-edit-no-animation"
+      },
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L001",
+          "runtime_id": "afd1ed57",
+          "speaker_id": "narrator",
+          "start_s": 0.2,
+          "end_s": 4.61,
+          "measured_voice_duration_s": 4.41,
+          "text": "上一世，她簽了字，再也沒能走出這扇門。",
+          "source_wav_sha256": "793d5da630cd48ae2c31af0d971421dfddc05b707b605a834d420c61856b373e",
+          "time_stretch": false,
+          "trim_applied": false
+        }
+      ],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S02",
+      "scene_id": "wr-e01-s02",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "門縫外承川笑意收起，不開關門",
+      "data": {
+        "prompt": "From inside the already closed south main door, the narrow door gap reveals only part of adult Chengchuan’s face and his brushed gold tie clip. Same approved navy suit. The door remains shut. No locking operation or new character appears.",
+        "motion": "The trace of a smile leaves his face.",
+        "camera": "Locked view through the door gap.",
+        "characters": [
+          "chengchuan"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L002"
+      ],
+      "runtime_line_ids": [
+        "0c782990"
+      ],
+      "edit_window_s": {
+        "start": 5,
+        "end": 9,
+        "status": "existing-measured-audio-edit-no-animation"
+      },
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L002",
+          "runtime_id": "0c782990",
+          "speaker_id": "chengchuan",
+          "start_s": 5.2,
+          "end_s": 8.1,
+          "measured_voice_duration_s": 2.9,
+          "text": "字簽了，妳也就沒用了。",
+          "source_wav_sha256": "10564cbafa86aebb8627a023fe5a21e2abc18e394759689fe60f172c7ebf55f2",
+          "time_stretch": false,
+          "trim_applied": false
+        }
+      ],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S03",
+      "scene_id": "wr-e01-s03",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "現世婚紗頭紗，握筆手微抖後穩住",
+      "data": {
+        "prompt": "Present-day wedding central signing table. Zhitang’s intact pen hovers over the complete unsigned original and its attachments. The approved ivory bridal gown and veil are visible. Establish the pen position to echo the preceding memory by an editorial cut, never an in-clip costume transformation.",
+        "motion": "Her pen-holding hand trembles briefly and steadies without touching the paper.",
+        "camera": "Locked close-up of the pen hand.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L003"
+      ],
+      "runtime_line_ids": [
+        "0945b87f"
+      ],
+      "edit_window_s": {
+        "start": 9,
+        "end": 13.5,
+        "status": "existing-measured-audio-edit-no-animation"
+      },
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L003",
+          "runtime_id": "0945b87f",
+          "speaker_id": "narrator",
+          "start_s": 9.2,
+          "end_s": 12.92,
+          "measured_voice_duration_s": 3.72,
+          "text": "再睜眼，她回到婚禮，還沒簽字。",
+          "source_wav_sha256": "f8cf76dc040b3a312efca24edd24d308272bb571fccf16fe26e04e89e3963749",
+          "time_stretch": false,
+          "trim_applied": false
+        }
+      ],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S04",
+      "scene_id": "wr-e01-s04",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "知棠食指沿原件既有頁碼滑過",
+      "data": {
+        "prompt": "At the wedding signing table, the complete unsigned original and attachments lie at the far edge; the thin unsigned display copy lies separately at the near edge. Bride Zhitang retains her veil. Her right hand still holds the pen; her left index finger is next to one existing page number.",
+        "motion": "Her left index finger traces one existing page number on the original.",
+        "camera": "Locked insert of the hand and original.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L004"
+      ],
+      "runtime_line_ids": [
+        "c1ee7ed5"
+      ],
+      "edit_window_s": {
+        "start": 13.5,
+        "end": 16,
+        "status": "existing-measured-audio-edit-no-animation"
+      },
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L004",
+          "runtime_id": "c1ee7ed5",
+          "speaker_id": "chengchuan",
+          "start_s": 13.6,
+          "end_s": 15.35,
+          "measured_voice_duration_s": 1.75,
+          "text": "棠棠，簽了就好。",
+          "source_wav_sha256": "4934ea1d9a0253e066273dd53c717a73aa4ef8b2dfa5c637d3d0b059d05bb3ae",
+          "time_stretch": false,
+          "trim_applied": false
+        }
+      ],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S05",
+      "scene_id": "wr-e01-s05",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "知棠放下筆",
+      "data": {
+        "prompt": "Bride Zhitang on screen left holds the pen above the tabletop, beside the still unsigned original. Chengchuan is off screen to the right. The thin display copy remains near the bride. Her gown, veil and unique silver watch remain unchanged.",
+        "motion": "She sets the pen down beside the original.",
+        "camera": "Locked oblique overhead hand shot.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L005"
+      ],
+      "runtime_line_ids": [
+        "677ac0bc"
+      ],
+      "edit_window_s": {
+        "start": 16,
+        "end": 19,
+        "status": "existing-measured-audio-edit-no-animation"
+      },
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L005",
+          "runtime_id": "677ac0bc",
+          "speaker_id": "zhitang",
+          "start_s": 16.2,
+          "end_s": 18.22,
+          "measured_voice_duration_s": 2.02,
+          "text": "這份授權，我不簽。",
+          "source_wav_sha256": "aa3b95eeb84873718b2847078d773a76c640bdfe96a94df7273f3c35d2bc68bc",
+          "time_stretch": false,
+          "trim_applied": false
+        }
+      ],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S06",
+      "scene_id": "wr-e01-s06",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "知棠拿起展示副本",
+      "data": {
+        "prompt": "Bride Zhitang’s two empty hands are next to the thin unsigned display copy at the near edge. The complete unsigned original with attachments remains intact at the far edge; the pen lies beside it. Her approved wedding gown and veil remain unchanged.",
+        "motion": "She picks up the thin display copy with both hands.",
+        "camera": "Locked hand close-up.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [],
+      "runtime_line_ids": [],
+      "edit_window_s": {
+        "start": 19,
+        "end": 21,
+        "status": "existing-measured-audio-edit-no-animation"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S07",
+      "scene_id": "wr-e01-s07",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "雙手撕開展示副本一次；原件留遠端",
+      "data": {
+        "prompt": "Both hands of bride Zhitang already hold the thin unsigned display copy over the near edge of the wedding signing table. A separate complete unsigned original with all attachments lies intact at the far edge, untouched and clearly visible. Exactly two hands and two distinct documents. Blank prop-label area for checked tracked typography.",
+        "motion": "She tears the thin display copy once with both hands.",
+        "camera": "Locked oblique overhead close-up.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [],
+      "runtime_line_ids": [],
+      "edit_window_s": {
+        "start": 21,
+        "end": 24,
+        "status": "existing-measured-audio-edit-no-animation"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S08",
+      "scene_id": "wr-e01-s08",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "知棠放回碎頁；完整臉、婚紗頭紗可辨",
+      "data": {
+        "prompt": "Present-day Zhitang is on screen left. Her complete identifiable face, ivory bridal gown and veil are clearly visible for comparison with the face in S01. Torn display pages are already in her hands; the complete unsigned original remains on the far side of the central table.",
+        "motion": "She places the torn display pages on the near side of the table.",
+        "camera": "Locked medium close-up; no tight speaking-mouth close-up.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L006"
+      ],
+      "runtime_line_ids": [
+        "a390c745"
+      ],
+      "edit_window_s": {
+        "start": 24,
+        "end": 28,
+        "status": "existing-measured-audio-edit-no-animation"
+      },
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L006",
+          "runtime_id": "a390c745",
+          "speaker_id": "zhitang",
+          "start_s": 24.1,
+          "end_s": 26.96,
+          "measured_voice_duration_s": 2.86,
+          "text": "媽媽的公司，不拿來陪嫁。",
+          "source_wav_sha256": "5033bae054b3f7c9b0ceed1c73b0f19932afe3f221fcd46647a3d002a420720a",
+          "time_stretch": false,
+          "trim_applied": false
+        }
+      ],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S09",
+      "scene_id": "wr-e01-s09",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "承川收起現世禮貌笑容",
+      "data": {
+        "prompt": "Adult Chengchuan remains on screen right in the same navy three-piece suit and gold tie clip. Over-the-shoulder composition from behind the bride preserves the table axis; the complete unsigned original remains intact on the central table. The bridal shoulder and veil at frame left belong to Zhitang.",
+        "motion": "His polite smile fades.",
+        "camera": "Locked over-the-shoulder reaction shot.",
+        "characters": [
+          "chengchuan",
+          "zhitang"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base",
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L007"
+      ],
+      "runtime_line_ids": [
+        "6a480238"
+      ],
+      "edit_window_s": {
+        "start": 28,
+        "end": 31.5,
+        "status": "existing-measured-audio-edit-no-animation"
+      },
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L007",
+          "runtime_id": "6a480238",
+          "speaker_id": "chengchuan",
+          "start_s": 28.2,
+          "end_s": 30.45,
+          "measured_voice_duration_s": 2.25,
+          "text": "不簽，這婚就別結了。",
+          "source_wav_sha256": "0976d56b31f0439e2279f3624a10271d84de56af8e022646c1a326e8eb5c3f94",
+          "time_stretch": false,
+          "trim_applied": false
+        }
+      ],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S10",
+      "scene_id": "wr-e01-s10",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "知棠從托盤拿起新娘婚戒",
+      "data": {
+        "prompt": "At the central wedding table, the Gu family’s bride’s ring rests on a ceremony tray beside its open ring box. Zhitang wears no wedding ring. Her gown and veil remain on. The torn display copy stays near her; the intact original stays at the far edge.",
+        "motion": "She picks up the bride’s ring from the tray.",
+        "camera": "Locked hand close-up.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L008"
+      ],
+      "runtime_line_ids": [
+        "548a5cb2"
+      ],
+      "edit_window_s": {
+        "start": 31.5,
+        "end": 34.5,
+        "status": "existing-measured-audio-edit-no-animation"
+      },
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L008",
+          "runtime_id": "548a5cb2",
+          "speaker_id": "zhitang",
+          "start_s": 31.7,
+          "end_s": 33.72,
+          "measured_voice_duration_s": 2.02,
+          "text": "那婚禮就到這裡。",
+          "source_wav_sha256": "b769a1919bc311a9186e6ec0591b37e6abcd98b64114204d21e1ee3621933192",
+          "time_stretch": false,
+          "trim_applied": false
+        }
+      ],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S11",
+      "scene_id": "wr-e01-s11",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "婚戒歸盒",
+      "data": {
+        "prompt": "The bride’s ring is already between Zhitang’s fingers above its open ring box. It has never been worn or exchanged. The central table and the separate document positions remain unchanged. Her wedding gown and veil remain on.",
+        "motion": "She places the bride’s ring into its box.",
+        "camera": "Locked prop close-up.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [],
+      "runtime_line_ids": [],
+      "edit_window_s": {
+        "start": 34.5,
+        "end": 37,
+        "status": "existing-measured-audio-edit-no-animation"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S12",
+      "scene_id": "wr-e01-s12",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "裝戒指的盒子推到承川桌側",
+      "data": {
+        "prompt": "The bride’s ring is already inside its open box on the central table. Bride Zhitang stays on screen left; Chengchuan’s table position is on screen right. Torn display pages remain near her; the complete unsigned original remains at the far edge. No ring on her fingers.",
+        "motion": "She slides the open ring box to Chengchuan’s side of the table.",
+        "camera": "Locked medium close-up.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [],
+      "runtime_line_ids": [],
+      "edit_window_s": {
+        "start": 37,
+        "end": 40,
+        "status": "existing-measured-audio-edit-no-animation"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S13",
+      "scene_id": "wr-e01-s13",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "知棠點碎頁的展示副本字角",
+      "data": {
+        "prompt": "Zhitang’s hand is beside the torn display pages at the near edge of the central wedding table. The intact original remains separately at the far edge. The torn display page has a blank corner reserved for checked prop typography. Her gown and veil remain unchanged.",
+        "motion": "Her index finger taps the display-copy label corner once.",
+        "camera": "Locked insert of the hand and torn pages.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L009"
+      ],
+      "runtime_line_ids": [
+        "087d01cb"
+      ],
+      "edit_window_s": {
+        "start": 40,
+        "end": 43.5,
+        "status": "existing-measured-audio-edit-no-animation"
+      },
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L009",
+          "runtime_id": "087d01cb",
+          "speaker_id": "zhitang",
+          "start_s": 40.2,
+          "end_s": 42.81,
+          "measured_voice_duration_s": 2.61,
+          "text": "撕掉的，只是展示副本。",
+          "source_wav_sha256": "f179b807ce3c403ed029983063876a104a4c62fd2d187c3a71bd3f3683f2fb72",
+          "time_stretch": false,
+          "trim_applied": false
+        }
+      ],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S14",
+      "scene_id": "wr-e01-s14",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "知棠輕按完整原件邊緣",
+      "data": {
+        "prompt": "The complete unsigned original and attachments lie at the far edge of the central signing table. Zhitang stays on screen left in the approved gown and veil; Chengchuan is off screen right. The returned ring box stays on his side and the torn display pages near her.",
+        "motion": "She gently rests her left palm against the edge of the complete original.",
+        "camera": "Locked medium close-up with Zhitang and the intact original together.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L010",
+        "WR-E01-L011"
+      ],
+      "runtime_line_ids": [
+        "b9acfedc",
+        "e24854f2"
+      ],
+      "edit_window_s": {
+        "start": 43.5,
+        "end": 48.5,
+        "status": "existing-measured-audio-edit-no-animation"
+      },
+      "voice_placements": [
+        {
+          "line_id": "WR-E01-L010",
+          "runtime_id": "b9acfedc",
+          "speaker_id": "zhitang",
+          "start_s": 43.6,
+          "end_s": 45.23,
+          "measured_voice_duration_s": 1.63,
+          "text": "原件留在這裡。",
+          "source_wav_sha256": "7e373d2a3e74e1717205982a8883491f19f0422b271a72e5419dd5930992a57f",
+          "time_stretch": false,
+          "trim_applied": false
+        },
+        {
+          "line_id": "WR-E01-L011",
+          "runtime_id": "e24854f2",
+          "speaker_id": "zhitang",
+          "start_s": 45.48,
+          "end_s": 47.31,
+          "measured_voice_duration_s": 1.83,
+          "text": "表決權，我不交。",
+          "source_wav_sha256": "a48bedabe1f959d26b2f3c7c5fd2fe3628989a18e6b3a58d46ea31c14dbdeff8",
+          "time_stretch": false,
+          "trim_applied": false
+        }
+      ],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S15",
+      "scene_id": "wr-e01-s15",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "承川目光由戒盒移向原件",
+      "data": {
+        "prompt": "Chengchuan stays on screen right. The returned open ring box is already on his table position; the complete unsigned original remains at the far edge of the central table. No document moves and no new evidence is revealed.",
+        "motion": "His gaze shifts from the ring box to the unsigned original.",
+        "camera": "Locked medium close-up reaction shot.",
+        "characters": [
+          "chengchuan"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [],
+      "runtime_line_ids": [],
+      "edit_window_s": {
+        "start": 48.5,
+        "end": 51,
+        "status": "existing-measured-audio-edit-no-animation"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S16",
+      "scene_id": "wr-e01-s16",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "承川看向停住的婚宴，留在原桌位",
+      "data": {
+        "prompt": "Chengchuan stays on screen right at the same central wedding table. The returned ring box remains on his side; the unsigned original and torn display pages retain their separate positions. Adult guests in the paused wedding are distant and silent.",
+        "motion": "His gaze moves toward the paused wedding guests.",
+        "camera": "Locked medium close-up.",
+        "characters": [
+          "chengchuan"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L012"
+      ],
+      "runtime_line_ids": [
+        "697ed8c3"
+      ],
+      "edit_window_s": {
+        "start": 51,
+        "end": 56,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S17",
+      "scene_id": "wr-e01-s17",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "知棠轉回直視承川，紙不動",
+      "data": {
+        "prompt": "Zhitang remains on screen left, wearing her approved ivory wedding gown and veil. The intact unsigned original stays far on the central table and the torn display copy near her. No document moves.",
+        "motion": "She turns her gaze directly back to Chengchuan.",
+        "camera": "Locked medium close-up of her full face.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L013"
+      ],
+      "runtime_line_ids": [
+        "2f1c26d4"
+      ],
+      "edit_window_s": {
+        "start": 56,
+        "end": 60.5,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S18",
+      "scene_id": "wr-e01-s18",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "承川向知棠微傾身，以私語收回談話",
+      "data": {
+        "prompt": "Chengchuan remains at the same right-hand table position, in his approved navy suit and gold tie clip. His hands do not touch either document or ring box.",
+        "motion": "He leans slightly toward Zhitang.",
+        "camera": "Locked medium close-up.",
+        "characters": [
+          "chengchuan"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L014"
+      ],
+      "runtime_line_ids": [
+        "c9db2b4d"
+      ],
+      "edit_window_s": {
+        "start": 60.5,
+        "end": 64.5,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S19",
+      "scene_id": "wr-e01-s19",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "知棠拿出手機",
+      "data": {
+        "prompt": "The veiled bride remains beside the central table. Her phone is at her own side of the table, just outside the earlier camera crop. The complete original stays at the far edge and the torn display pages near her. No phone image has yet been captured.",
+        "motion": "She lifts her phone into view from her side of the table.",
+        "camera": "Locked medium close-up including hand and phone.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L015"
+      ],
+      "runtime_line_ids": [
+        "87fb4d12"
+      ],
+      "edit_window_s": {
+        "start": 64.5,
+        "end": 69,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S20",
+      "scene_id": "wr-e01-s20",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "手機拍原件既有頁碼",
+      "data": {
+        "prompt": "The phone is already held above one existing page number on the complete unsigned original, which remains flat on the table. Her other hand keeps the page flat. The checked page number will be tracked on the real prop surface in post.",
+        "motion": "Her thumb taps the camera shutter once.",
+        "camera": "Locked oblique close-up of phone and page.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [],
+      "runtime_line_ids": [],
+      "edit_window_s": {
+        "start": 69,
+        "end": 72,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S21",
+      "scene_id": "wr-e01-s21",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "知棠翻原件到附件",
+      "data": {
+        "prompt": "The original lies on the same central table; Zhitang holds the phone in one hand, and the other hand is already at the page edge. The display copy remains torn separately.",
+        "motion": "She turns the original to its attachment section.",
+        "camera": "Locked oblique paper insert.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L016"
+      ],
+      "runtime_line_ids": [
+        "7410ddec"
+      ],
+      "edit_window_s": {
+        "start": 72,
+        "end": 75.5,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S22",
+      "scene_id": "wr-e01-s22",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "手機拍附件既有頁碼",
+      "data": {
+        "prompt": "The original attachment is already open on the central table with its existing page number visible. The phone is positioned above it. Do not invent a page count, clause or signature.",
+        "motion": "Her thumb taps the camera shutter once to photograph that attachment page number.",
+        "camera": "Locked oblique close-up of phone and attachment.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L017"
+      ],
+      "runtime_line_ids": [
+        "105882b7"
+      ],
+      "edit_window_s": {
+        "start": 75.5,
+        "end": 80.5,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S23",
+      "scene_id": "wr-e01-s23",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "知棠將原件推回同桌遠端見證位置",
+      "data": {
+        "prompt": "The original and attachments remain complete and unsigned on the central wedding table. Zhitang is left of frame, holding her phone separately. The witness position is at the far edge of this same table.",
+        "motion": "She slides the complete original back to the far-side witness position on the same table.",
+        "camera": "Locked view of the hands and table.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L018"
+      ],
+      "runtime_line_ids": [
+        "f7f86c90"
+      ],
+      "edit_window_s": {
+        "start": 80.5,
+        "end": 86,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S24",
+      "scene_id": "wr-e01-s24",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "既有無台詞見證人員對照原件，翻副本核頁",
+      "data": {
+        "prompt": "Only the hands of the existing adult silent wedding witness are visible at the same central table. The complete original is flat at the far edge. The separate prepared copy is beside it for comparison; the original never leaves the table.",
+        "motion": "One witness hand turns a single page of the copy against the already exposed original page number.",
+        "camera": "Locked overhead hand-and-paper insert.",
+        "characters": [],
+        "character_looks": {},
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L019"
+      ],
+      "runtime_line_ids": [
+        "824e2f7a"
+      ],
+      "edit_window_s": {
+        "start": 86,
+        "end": 90.5,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S25",
+      "scene_id": "wr-e01-s25",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "見證人員整理副本所含附件",
+      "data": {
+        "prompt": "Only the existing adult silent witness hands and papers are visible. The complete unsigned original remains in its far-side table position. The separate copy already has the same attachment set beside its main pages.",
+        "motion": "The witness squares the copy attachment pages into the copy stack.",
+        "camera": "Locked overhead paper insert.",
+        "characters": [],
+        "character_looks": {},
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L020"
+      ],
+      "runtime_line_ids": [
+        "a645c999"
+      ],
+      "edit_window_s": {
+        "start": 90.5,
+        "end": 95.5,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S26",
+      "scene_id": "wr-e01-s26",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "見證人員把另存完整副本推到知棠面前",
+      "data": {
+        "prompt": "At the central wedding table, the complete separate copy with attachments is already a single stack at the witness side. The complete original remains separately at its fixed far-side position. No envelope, seal or receipt exists yet.",
+        "motion": "The witness slides the complete copy toward Zhitang’s position.",
+        "camera": "Locked table-level prop insert.",
+        "characters": [],
+        "character_looks": {},
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [],
+      "runtime_line_ids": [],
+      "edit_window_s": {
+        "start": 95.5,
+        "end": 98.5,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S27",
+      "scene_id": "wr-e01-s27",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "知棠拿起完整副本，手機照片在其旁作比對",
+      "data": {
+        "prompt": "The separate complete copy now lies in front of Zhitang. Her phone with the earlier page-number photograph is beside the copy for comparison, held steadily in her other hand. The original and torn display pages remain separately on the table.",
+        "motion": "She lifts the complete copy from the table.",
+        "camera": "Locked hand-and-copy close-up.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [],
+      "runtime_line_ids": [],
+      "edit_window_s": {
+        "start": 98.5,
+        "end": 101.5,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S28",
+      "scene_id": "wr-e01-s28",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "知棠翻副本確認附件，原件仍在桌上",
+      "data": {
+        "prompt": "Zhitang already holds the complete copy; its attachment section is ready to be checked. Her phone remains visible beside it. The original remains on the table; no sealing or receipt is shown.",
+        "motion": "She turns one copy page to confirm its attachments.",
+        "camera": "Locked hand-and-copy insert.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L021"
+      ],
+      "runtime_line_ids": [
+        "0d053763"
+      ],
+      "edit_window_s": {
+        "start": 101.5,
+        "end": 105,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S29",
+      "scene_id": "wr-e01-s29",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "知棠放下手機，另一手仍持副本",
+      "data": {
+        "prompt": "The veiled bride holds the verified complete copy in one hand and her phone in the other. The central table space next to her is clear. The original and torn display pages remain in their fixed separate places.",
+        "motion": "She places the phone on her side of the table while keeping the copy.",
+        "camera": "Locked medium close-up including both hands.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [],
+      "runtime_line_ids": [],
+      "edit_window_s": {
+        "start": 105,
+        "end": 108,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S30",
+      "scene_id": "wr-e01-s30",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "知夏靠近，肩袋與手持禮袋各自固定",
+      "data": {
+        "prompt": "Adult Zhixia, age 23, is beside the left-rear approach to Zhitang’s table position. Her approved teal cardigan, cream shirt, right copper hair clip and canvas shoulder bag remain unchanged. A separate closed gift bag is already in her hand; its contents remain unseen.",
+        "motion": "She approaches Zhitang from the left rear.",
+        "camera": "Locked medium shot.",
+        "characters": [
+          "zhixia"
+        ],
+        "character_looks": {
+          "zhixia": "zhixia--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L022"
+      ],
+      "runtime_line_ids": [
+        "aa839f9a"
+      ],
+      "edit_window_s": {
+        "start": 108,
+        "end": 111,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S31",
+      "scene_id": "wr-e01-s31",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "知夏抬起閉口禮袋",
+      "data": {
+        "prompt": "Zhixia has reached her sister’s side. The canvas shoulder bag remains on her shoulder and the separate closed gift bag stays in her hand. The bag opening is closed and its contents are hidden.",
+        "motion": "She raises the closed gift bag into her sister’s sight.",
+        "camera": "Locked medium close-up.",
+        "characters": [
+          "zhixia"
+        ],
+        "character_looks": {
+          "zhixia": "zhixia--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L023"
+      ],
+      "runtime_line_ids": [
+        "f60cc415"
+      ],
+      "edit_window_s": {
+        "start": 111,
+        "end": 114.5,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S32",
+      "scene_id": "wr-e01-s32",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "知棠從禮袋抬眼看知夏，沒有伸手",
+      "data": {
+        "prompt": "Zhitang keeps the complete copy against her body, wearing her wedding gown and veil. She faces Zhixia near her left-rear side. Only Zhixia’s closed gift bag is in the lower foreground; Zhitang’s empty hand does not reach for it.",
+        "motion": "Zhitang lifts her gaze from the gift bag toward Zhixia.",
+        "camera": "Locked medium close-up on Zhitang.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L024"
+      ],
+      "runtime_line_ids": [
+        "f78ef77f"
+      ],
+      "edit_window_s": {
+        "start": 114.5,
+        "end": 117.5,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S33",
+      "scene_id": "wr-e01-s33",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "知夏把禮袋收回身前",
+      "data": {
+        "prompt": "Zhixia still holds the closed gift bag herself; Zhitang has not touched it. Her canvas shoulder bag, copper hair clip and adult face remain unchanged. She stays beside the table.",
+        "motion": "She draws the closed gift bag back against her own body.",
+        "camera": "Locked medium close-up.",
+        "characters": [
+          "zhixia"
+        ],
+        "character_looks": {
+          "zhixia": "zhixia--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L025"
+      ],
+      "runtime_line_ids": [
+        "b4fa3234"
+      ],
+      "edit_window_s": {
+        "start": 117.5,
+        "end": 120.5,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S34",
+      "scene_id": "wr-e01-s34",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "承川看回知棠，附件在視線前景",
+      "data": {
+        "prompt": "Chengchuan remains on screen right. The edge of the complete copy held by Zhitang is in the foreground; the unsigned original and torn display copy remain on the central table and the returned ring box remains at his place.",
+        "motion": "He turns his gaze back to Zhitang.",
+        "camera": "Locked medium close-up reaction shot.",
+        "characters": [
+          "chengchuan"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L026"
+      ],
+      "runtime_line_ids": [
+        "8704bfd6"
+      ],
+      "edit_window_s": {
+        "start": 120.5,
+        "end": 124,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S35",
+      "scene_id": "wr-e01-s35",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "知棠以拇指穩住副本邊緣，留正常呼吸",
+      "data": {
+        "prompt": "Zhitang holds the complete copy against her body in the same veiled wedding look. No new clause is shown. Her thumb is already near the copy edge.",
+        "motion": "Her thumb steadies the edge of the copy.",
+        "camera": "Locked medium close-up; candidate to carry this reply over S34 instead.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L027"
+      ],
+      "runtime_line_ids": [
+        "dfa350c2"
+      ],
+      "edit_window_s": {
+        "start": 124,
+        "end": 128,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review",
+      "candidate_merge_into": "WR-E01-S34",
+      "merge_status": "candidate-not-decided",
+      "merge_conditions": [
+        "preserve this shot id as an editorial reference and preserve its line id",
+        "measure adjacent accepted WAVs plus pauses; combined moving source use must stay within 8 seconds",
+        "carry the reply over the adjacent dynamic reaction shot without frozen tail or extra meaningless hand action",
+        "if it does not fit, re-evaluate dialogue wording or a necessary reaction insert; do not blindly buy this source"
+      ]
+    },
+    {
+      "shot_id": "WR-E01-S36",
+      "scene_id": "wr-e01-s36",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "承川視線落到副本附件",
+      "data": {
+        "prompt": "The complete copy and its attachment edge are visible in the foreground while Chengchuan remains on screen right. The copy is still held by Zhitang.",
+        "motion": "His gaze drops to the attachments of the copy.",
+        "camera": "Locked medium close-up reaction shot.",
+        "characters": [
+          "chengchuan"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L028"
+      ],
+      "runtime_line_ids": [
+        "9620459e"
+      ],
+      "edit_window_s": {
+        "start": 128,
+        "end": 131,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S37",
+      "scene_id": "wr-e01-s37",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "知棠抬眼回答承川，沒有聯絡第三人",
+      "data": {
+        "prompt": "The veiled bride holds the complete copy herself, facing Chengchuan at the same table. Her phone remains on her side of the table. No third party is called or introduced.",
+        "motion": "She raises her eyes to answer Chengchuan.",
+        "camera": "Locked medium close-up.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L029"
+      ],
+      "runtime_line_ids": [
+        "e2e66148"
+      ],
+      "edit_window_s": {
+        "start": 131,
+        "end": 135.5,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S38",
+      "scene_id": "wr-e01-s38",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "承川再微傾身，壓低聲線",
+      "data": {
+        "prompt": "Chengchuan stays at the right-hand table position. He has neither a signature nor possession of Zhitang’s complete copy. The same adult faces and wedding table axis are preserved.",
+        "motion": "He leans slightly toward Zhitang once more.",
+        "camera": "Locked medium close-up reaction shot.",
+        "characters": [
+          "chengchuan"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L030"
+      ],
+      "runtime_line_ids": [
+        "9b4fa778"
+      ],
+      "edit_window_s": {
+        "start": 135.5,
+        "end": 140,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S39",
+      "scene_id": "wr-e01-s39",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "知棠手從副本頁角鬆開，仍由另一手持穩",
+      "data": {
+        "prompt": "Zhitang keeps the complete copy supported in one hand. Her other hand rests lightly at the page corner; her veil remains on. Documents and ring box retain their established owners and positions.",
+        "motion": "Her free hand releases the page corner while the other hand supports the copy.",
+        "camera": "Locked medium close-up; candidate to carry this reply over S38 instead.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L031"
+      ],
+      "runtime_line_ids": [
+        "b11c001c"
+      ],
+      "edit_window_s": {
+        "start": 140,
+        "end": 144.5,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review",
+      "candidate_merge_into": "WR-E01-S38",
+      "merge_status": "candidate-not-decided",
+      "merge_conditions": [
+        "preserve this shot id as an editorial reference and preserve its line id",
+        "measure adjacent accepted WAVs plus pauses; combined moving source use must stay within 8 seconds",
+        "carry the reply over the adjacent dynamic reaction shot without frozen tail or extra meaningless hand action",
+        "if it does not fit, re-evaluate dialogue wording or a necessary reaction insert; do not blindly buy this source"
+      ]
+    },
+    {
+      "shot_id": "WR-E01-S40",
+      "scene_id": "wr-e01-s40",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "知棠翻副本到附件首頁",
+      "data": {
+        "prompt": "The complete copy is already in Zhitang’s hands at the central table. The attachment section is next; no new readable clause, authorization target or page count is introduced.",
+        "motion": "She turns the copy to the first attachment page.",
+        "camera": "Locked close-up of hands and copy.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L032"
+      ],
+      "runtime_line_ids": [
+        "3ec2e067"
+      ],
+      "edit_window_s": {
+        "start": 144.5,
+        "end": 147.5,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S41",
+      "scene_id": "wr-e01-s41",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "承川笑容完全消失，嘴型或越肩反應擇一核對",
+      "data": {
+        "prompt": "Chengchuan remains on screen right, looking toward the attachment copy held by Zhitang. Avoid a tight speaking-mouth shot unless separately synchronized. No hand moves toward her copy.",
+        "motion": "His remaining polite expression vanishes.",
+        "camera": "Locked medium close-up reaction shot.",
+        "characters": [
+          "chengchuan"
+        ],
+        "character_looks": {
+          "chengchuan": "chengchuan--base"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [
+        "WR-E01-L033"
+      ],
+      "runtime_line_ids": [
+        "f72ff4f4"
+      ],
+      "edit_window_s": {
+        "start": 147.5,
+        "end": 150.5,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    },
+    {
+      "shot_id": "WR-E01-S42",
+      "scene_id": "wr-e01-s42",
+      "source_duration_s": 8,
+      "source_fps": 24,
+      "master_fps": 30,
+      "script_action": "知棠從附件抬眼看承川；頭紗仍在",
+      "data": {
+        "prompt": "At the same wedding table, Zhitang wears the same gown and veil and holds the complete copy open at its attachments. The original remains at the far edge, torn display pages near her, ring box by Chengchuan. The closed gift bag remains held by Zhixia off screen.",
+        "motion": "Zhitang lifts her eyes from the attachments toward Chengchuan.",
+        "camera": "Locked medium close-up on her full face.",
+        "characters": [
+          "zhitang"
+        ],
+        "character_looks": {
+          "zhitang": "zhitang-bride-veiled"
+        },
+        "fit": "trim",
+        "transition": "cut",
+        "visual": "clip"
+      },
+      "line_ids": [],
+      "runtime_line_ids": [],
+      "edit_window_s": {
+        "start": 150.5,
+        "end": 153.5,
+        "status": "planned-after-51s-opening-not-voice-measured"
+      },
+      "voice_placements": [],
+      "actual_generated_clip_path": null,
+      "visual_acceptance": "not-generated",
+      "generation_decision": "await-measured-dialogue-and-storyboard-review"
+    }
+  ],
+  "continuity_checks": [
+    "S01 past-life trouser suit, all present-day Zhitang shots veiled wedding look",
+    "intact original remains unsigned at the same central table; not sealed or removed in E1",
+    "display copy is torn and remains near bride; separate complete copy with attachments reaches Zhitang in S26/S27 and is checked in S28",
+    "existing witness hands are silent adult background roles, with no new speaker or testimony",
+    "phone page photos do not replace the complete paper copy",
+    "Zhixia first appears S30 with a closed gift bag retained by her; no contents or mother voice",
+    "bride ring stays returned by Chengchuan; no ring exchange or marriage registration",
+    "S35/S39 optional source reductions preserve all lines and prop continuity"
+  ],
+  "revision_notes": [
+    "S24 phrased as one copy-page turn against an already exposed original page number; comparison is setup, not a second generated action.",
+    "S27 is only lifting the complete copy; phone comparison remains visible setup. Actual attachment check occurs separately in S28.",
+    "S19 locates the previously off-camera phone at the bride’s own table side and lifts it into view; no new bag, costume change or plot event is introduced.",
+    "Do not inherit the old 60/125/150/180-second section boundaries; S16 starts directly at the measured audio edit end, 51 seconds."
+  ]
+}

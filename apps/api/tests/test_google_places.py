@@ -1,10 +1,17 @@
+import hashlib
 import json
+from typing import Any
+from unittest.mock import AsyncMock
+from uuid import uuid4
 
 import fakeredis.aioredis
 import httpx
 import pytest
+from starlette.requests import Request
 
 from app.config import Settings
+from app.models import User
+from app.places import router as places_router
 from app.places.google import GoogleTravelService
 from app.places.router import PHOTO_NAME_PATTERN, _safe_photo_uri
 
@@ -16,6 +23,70 @@ def test_photo_proxy_only_accepts_google_resource_names_and_https_targets() -> N
     assert _safe_photo_uri("javascript:alert(1)") is None
     assert _safe_photo_uri("http://example.com/photo") is None
     assert _safe_photo_uri("https://example.com:invalid/photo") is None
+
+
+@pytest.mark.asyncio
+@pytest.mark.filterwarnings("error::DeprecationWarning")
+async def test_photo_uri_cache_is_written_with_set_ex_and_the_configured_ttl(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """redis-py 8.1 deprecates `setex`; `set(..., ex=)` must keep the key, value and TTL.
+
+    The warning filter turns a `setex` call back into a failure here, and the recorded
+    `set` call plus the TTL Redis reports show the expiry still comes from
+    `place_photo_cache_ttl_seconds`, in seconds.
+    """
+    name = "places/ChIJ-test/photos/AZm-test"
+    photo_uri = "https://lh3.googleusercontent.com/photo"
+    ttl_seconds = 900  # not the 3,600 default, so a hardcoded TTL would show
+    redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
+    writes: list[tuple[tuple[Any, ...], dict[str, Any]]] = []
+    real_set = redis.set
+
+    async def recording_set(*args: Any, **kwargs: Any) -> Any:
+        writes.append((args, kwargs))
+        return await real_set(*args, **kwargs)
+
+    real_client = httpx.AsyncClient
+
+    async def google_media(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(200, json={"photoUri": photo_uri})
+
+    def google_client(**kwargs: Any) -> httpx.AsyncClient:
+        return real_client(transport=httpx.MockTransport(google_media), **kwargs)
+
+    monkeypatch.setattr(redis, "set", recording_set)
+    monkeypatch.setattr(places_router, "get_redis", lambda: redis)
+    monkeypatch.setattr(
+        places_router,
+        "load_runtime_settings",
+        AsyncMock(
+            return_value=Settings(
+                google_maps_api_key="key", place_photo_cache_ttl_seconds=ttl_seconds
+            )
+        ),
+    )
+    monkeypatch.setattr(places_router, "enforce_named_rate_limit", AsyncMock())
+    monkeypatch.setattr(places_router, "record_google_maps_request", AsyncMock())
+    monkeypatch.setattr(httpx, "AsyncClient", google_client)
+    request = Request(
+        {
+            "type": "http",
+            "method": "GET",
+            "path": "/api/v1/places/photo",
+            "headers": [],
+            "client": ("127.0.0.1", 1234),
+        }
+    )
+    user = User(id=uuid4(), email="member@example.com", password_hash="not-used", auth_version=1)
+
+    response = await places_router.place_photo(name, request, AsyncMock(), user)
+
+    cache_key = f"places:photo-uri:{hashlib.sha256(name.encode()).hexdigest()}"
+    assert response.headers["location"] == photo_uri
+    assert writes == [((cache_key, photo_uri), {"ex": ttl_seconds})]
+    assert await redis.get(cache_key) == photo_uri
+    assert ttl_seconds - 5 <= await redis.ttl(cache_key) <= ttl_seconds
 
 
 @pytest.mark.asyncio

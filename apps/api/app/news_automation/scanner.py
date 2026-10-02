@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import math
 from collections.abc import Awaitable, Callable
 from datetime import UTC, datetime, timedelta
 from urllib.parse import urlsplit
@@ -58,9 +59,17 @@ PAGE_REFUSED = "news_page_refused"
 # story as its evidence, and the story is drafted instead of the report filing a second one.
 ATTACHED = "news_attached_as_evidence"
 # A source's first scan reads a listing that is mostly its back catalogue. Every entry older
-# than this (or undated: an HTML listing has no dates) is recorded as seen without being
-# fetched or drafted, so adding a source files only its news of the last days.
+# than the source's freshness window (or undated: an HTML listing has no dates) is recorded as
+# seen without being fetched or drafted, so adding a source files only its news of the last
+# days. After that, an undated entry is one the listing did not show before, so it is read.
 BASELINE = "news_baseline"
+# A feed keeps weeks or months of posts (OpenAI's 100 entries over 44 days, Hugging Face's 100
+# over five months). On every later scan, a dated entry older than the source's window is left
+# out before its page is fetched: it is old news whether the feed republished it, renamed its
+# URL or only now served its page. `config.max_entry_age_hours` sets the window per source;
+# 0 or null switches the check off, and anything that is not a number keeps the default.
+DEFAULT_MAX_ENTRY_AGE = timedelta(hours=72)
+MAX_ENTRY_AGE_HOURS = 24 * 366 * 10
 WAITING_LOOKUP_LIMIT = 200
 # Links that are plainly not articles. Apple Newsroom's first scan fetched 76 image links
 # as evidence, each one a robots check and a rate-limited request that then failed.
@@ -235,6 +244,27 @@ async def _waiting_for(
     return next((row for row in waiting if _link_key(row.canonical_url) in keys), None)
 
 
+def max_entry_age(source: NewsSource) -> timedelta | None:
+    """The source's freshness window (``config.max_entry_age_hours``), None when it is off."""
+    config = source.config_json or {}
+    if "max_entry_age_hours" not in config:
+        return DEFAULT_MAX_ENTRY_AGE
+    hours = config["max_entry_age_hours"]
+    if hours is None:
+        return None
+    if isinstance(hours, bool) or not isinstance(hours, int | float) or not math.isfinite(hours):
+        return DEFAULT_MAX_ENTRY_AGE
+    if hours <= 0:
+        return None
+    return timedelta(hours=min(hours, MAX_ENTRY_AGE_HOURS))
+
+
+def _stale_note(count: int, window: timedelta) -> str:
+    entries = "entry" if count == 1 else "entries"
+    hours = window.total_seconds() / 3600
+    return f"Left out {count} feed {entries} older than {hours:g} hours, without fetching them"
+
+
 def _baseline_candidate(
     source: NewsSource, entry: Entry, prompt: str, policy: str
 ) -> NewsCandidate:
@@ -390,20 +420,24 @@ async def scan_source(
             source.config_json,
         )
         maximum = min(max(int(source.config_json.get("max_entries_per_scan", 20)), 1), 50)
+        window = max_entry_age(source)
+        # Dated entries left out as too old: reported, but neither a failure nor seen.
+        stale = 0
         for entry in entries[:maximum]:
             if _host(entry.url) not in allowed_hosts | allowed_redirects:
                 continue
             if await _already_seen(session, entry.url):
                 continue
-            if first_scan and not (
-                entry.published_at is not None
-                and now - entry.published_at <= SUMMARY_LEAD_MAX_AGE
-            ):
+            age = None if entry.published_at is None else now - entry.published_at
+            if first_scan and (age is None or age > (window or DEFAULT_MAX_ENTRY_AGE)):
                 session.add(
                     _baseline_candidate(
                         source, entry, settings.prompt_version, settings.policy_version
                     )
                 )
+                continue
+            if window is not None and age is not None and age > window:
+                stale += 1
                 continue
             if summary_is_evidence(source):
                 # The entry's own text is the story (release notes whose entries all link to
@@ -632,6 +666,8 @@ async def scan_source(
             "stuck" if stuck else "partial" if skipped or summarized else "succeeded"
         )
         note = _skip_note(skipped, summarized)
+        if stale and window is not None:
+            note = ". ".join(part for part in (note, _stale_note(stale, window)) if part)
         if stuck:
             note = (
                 f"Failing for more than {int(STUCK_AFTER.total_seconds() // 3600)} hours: "

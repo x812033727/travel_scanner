@@ -1,0 +1,740 @@
+{
+  "schema_version": 1,
+  "artifact_type": "episode-dialogue-with-stable-runtime-mapping",
+  "episode": 1,
+  "title": "這次不簽",
+  "locale": "zh-TW",
+  "status": "33-line-script-opening-audio-measured-new-22-not-synthesized",
+  "source_binding": {
+    "source_object_sha256": "37328fa1c643e0edfcd1d138a158410653b36d6e02739ce7a9c555b26bc5bb9c",
+    "screenplay_path": "docs/videos/series-plans/competition-20261002/pilot/episode-01-screenplay.md",
+    "screenplay_sha256": "82352b248e66810bd217092b6284ea13c0ec688dbb410e6f791107e13781c429",
+    "opening_voice_document_sha256": "b198b4839f1777a0d0020a5c706ae27485492b4801371f359d73d8abcce003ef",
+    "opening_timing_report_sha256": "7ead089251c8f6bf7060d4c7499d9eac984168ed951efd80d075bd18b53c3024",
+    "opening_measured_edit_sha256": "cc8a982ceae732d5ea25a6a273165cb14d9d976314ed341711edc3cb2476bd66"
+  },
+  "current_scope": "Chinese first two episodes only; no foreign-language requests",
+  "localization_gate": {
+    "start_after": "owner-confirmed-complete-chinese-film-and-cc",
+    "approval_authority": "owner",
+    "status": "pending",
+    "pilot_or_two_episode_acceptance_is_sufficient": false
+  },
+  "speakers": {
+    "narrator": {
+      "provider": "gemini",
+      "name": "Erinome",
+      "style": "台灣國語，自然台灣口音；第三人稱貼近當集主角，語氣清楚克制；只講角色已知的必要資訊，不搶角色對白，情緒轉折留出呼吸"
+    },
+    "chengchuan": {
+      "provider": "gemini",
+      "name": "Puck",
+      "style": "台灣國語，自然台灣口音；句首先叫暱稱，再把要求說成替妳著想。 台灣國語；親和表面下帶算計，不以低吼演反派。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。"
+    },
+    "zhitang": {
+      "provider": "gemini",
+      "name": "Kore",
+      "style": "台灣國語，自然台灣口音；先問數字，決定後短句不解釋。 台灣國語；清晰沉著，受傷時降低音量，不變尖銳。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。"
+    },
+    "zhixia": {
+      "provider": "gemini",
+      "name": "Aoede",
+      "style": "台灣國語，自然台灣口音；先說沒事，再把最重要的話留到最後。 台灣國語；年輕、克制，敢說真話後語速放穩。 目前為casting提案，尚未實際四語試聽；先交付zh-TW台灣口音。"
+    }
+  },
+  "lines": [
+    {
+      "line_id": "WR-E01-L001",
+      "runtime_id": "afd1ed57",
+      "speaker_id": "narrator",
+      "text": "上一世，她簽了字，再也沒能走出這扇門。",
+      "emotion": "冷開場；貼近知棠的第三人稱，平靜短句，死局不用鬼故事腔。",
+      "screenplay_performance_direction": "平靜、貼近知棠的第三人稱",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S01"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "existing-WAV-measured-not-human-listening-approved",
+        "audio_duration_s": 4.41,
+        "source_wav_sha256": "793d5da630cd48ae2c31af0d971421dfddc05b707b605a834d420c61856b373e",
+        "opening_audio_edit_window_s": {
+          "start": 0.2,
+          "end": 4.61
+        },
+        "source": "../pilot/timing-report.json",
+        "visual_approval": "no-animation-yet"
+      }
+    },
+    {
+      "line_id": "WR-E01-L002",
+      "runtime_id": "0c782990",
+      "speaker_id": "chengchuan",
+      "text": "字簽了，妳也就沒用了。",
+      "emotion": "前世；平淡結算、沒有低吼，門外聲先乾錄再輕度遮蔽。",
+      "screenplay_performance_direction": "前世，低調蔑視；門外聲先乾錄",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S02"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "existing-WAV-measured-not-human-listening-approved",
+        "audio_duration_s": 2.9,
+        "source_wav_sha256": "10564cbafa86aebb8627a023fe5a21e2abc18e394759689fe60f172c7ebf55f2",
+        "opening_audio_edit_window_s": {
+          "start": 5.2,
+          "end": 8.1
+        },
+        "source": "../pilot/timing-report.json",
+        "visual_approval": "no-animation-yet"
+      }
+    },
+    {
+      "line_id": "WR-E01-L003",
+      "runtime_id": "0945b87f",
+      "speaker_id": "narrator",
+      "text": "再睜眼，她回到婚禮，還沒簽字。",
+      "emotion": "重生落點清楚；不用宣傳片驚嘆聲。",
+      "screenplay_performance_direction": "重生落點清楚，不用驚嘆",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S03"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "existing-WAV-measured-not-human-listening-approved",
+        "audio_duration_s": 3.72,
+        "source_wav_sha256": "f8cf76dc040b3a312efca24edd24d308272bb571fccf16fe26e04e89e3963749",
+        "opening_audio_edit_window_s": {
+          "start": 9.2,
+          "end": 12.92
+        },
+        "source": "../pilot/timing-report.json",
+        "visual_approval": "no-animation-yet"
+      }
+    },
+    {
+      "line_id": "WR-E01-L004",
+      "runtime_id": "c1ee7ed5",
+      "speaker_id": "chengchuan",
+      "text": "棠棠，簽了就好。",
+      "emotion": "現世；親暱催促、表面溫和，保留與前世同一聲音身份。",
+      "screenplay_performance_direction": "現世，親暱催促",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S04"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "existing-WAV-measured-not-human-listening-approved",
+        "audio_duration_s": 1.75,
+        "source_wav_sha256": "4934ea1d9a0253e066273dd53c717a73aa4ef8b2dfa5c637d3d0b059d05bb3ae",
+        "opening_audio_edit_window_s": {
+          "start": 13.6,
+          "end": 15.35
+        },
+        "source": "../pilot/timing-report.json",
+        "visual_approval": "no-animation-yet"
+      }
+    },
+    {
+      "line_id": "WR-E01-L005",
+      "runtime_id": "677ac0bc",
+      "speaker_id": "zhitang",
+      "text": "這份授權，我不簽。",
+      "emotion": "害怕收住，拒絕簡短確定，不吼。",
+      "screenplay_performance_direction": "收住害怕，乾脆",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S05"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "existing-WAV-measured-not-human-listening-approved",
+        "audio_duration_s": 2.02,
+        "source_wav_sha256": "aa3b95eeb84873718b2847078d773a76c640bdfe96a94df7273f3c35d2bc68bc",
+        "opening_audio_edit_window_s": {
+          "start": 16.2,
+          "end": 18.22
+        },
+        "source": "../pilot/timing-report.json",
+        "visual_approval": "no-animation-yet"
+      }
+    },
+    {
+      "line_id": "WR-E01-L006",
+      "runtime_id": "a390c745",
+      "speaker_id": "zhitang",
+      "text": "媽媽的公司，不拿來陪嫁。",
+      "emotion": "冷靜有重量，落在公司與陪嫁，不拖尾哭腔。",
+      "screenplay_performance_direction": "正常音量，落在公司與陪嫁",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S08"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "existing-WAV-measured-not-human-listening-approved",
+        "audio_duration_s": 2.86,
+        "source_wav_sha256": "5033bae054b3f7c9b0ceed1c73b0f19932afe3f221fcd46647a3d002a420720a",
+        "opening_audio_edit_window_s": {
+          "start": 24.1,
+          "end": 26.96
+        },
+        "source": "../pilot/timing-report.json",
+        "visual_approval": "no-animation-yet"
+      }
+    },
+    {
+      "line_id": "WR-E01-L007",
+      "runtime_id": "6a480238",
+      "speaker_id": "chengchuan",
+      "text": "不簽，這婚就別結了。",
+      "emotion": "笑容收斂後才施壓，仍想維持體面。",
+      "screenplay_performance_direction": "收起笑容後才施壓",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S09"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "existing-WAV-measured-not-human-listening-approved",
+        "audio_duration_s": 2.25,
+        "source_wav_sha256": "0976d56b31f0439e2279f3624a10271d84de56af8e022646c1a326e8eb5c3f94",
+        "opening_audio_edit_window_s": {
+          "start": 28.2,
+          "end": 30.45
+        },
+        "source": "../pilot/timing-report.json",
+        "visual_approval": "no-animation-yet"
+      }
+    },
+    {
+      "line_id": "WR-E01-L008",
+      "runtime_id": "548a5cb2",
+      "speaker_id": "zhitang",
+      "text": "那婚禮就到這裡。",
+      "emotion": "接受代價，乾脆平穩；不是負氣賭他挽留。",
+      "screenplay_performance_direction": "接受代價，不等他挽留",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S10"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "existing-WAV-measured-not-human-listening-approved",
+        "audio_duration_s": 2.02,
+        "source_wav_sha256": "b769a1919bc311a9186e6ec0591b37e6abcd98b64114204d21e1ee3621933192",
+        "opening_audio_edit_window_s": {
+          "start": 31.7,
+          "end": 33.72
+        },
+        "source": "../pilot/timing-report.json",
+        "visual_approval": "no-animation-yet"
+      }
+    },
+    {
+      "line_id": "WR-E01-L009",
+      "runtime_id": "087d01cb",
+      "speaker_id": "zhitang",
+      "text": "撕掉的，只是展示副本。",
+      "emotion": "讓全場聽明白，稍慢讀展示副本，不念法律報告。",
+      "screenplay_performance_direction": "讓全場聽明白，道具詞清楚",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S13"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "existing-WAV-measured-not-human-listening-approved",
+        "audio_duration_s": 2.61,
+        "source_wav_sha256": "f179b807ce3c403ed029983063876a104a4c62fd2d187c3a71bd3f3683f2fb72",
+        "opening_audio_edit_window_s": {
+          "start": 40.2,
+          "end": 42.81
+        },
+        "source": "../pilot/timing-report.json",
+        "visual_approval": "no-animation-yet"
+      }
+    },
+    {
+      "line_id": "WR-E01-L010",
+      "runtime_id": "b9acfedc",
+      "speaker_id": "zhitang",
+      "text": "原件留在這裡。",
+      "emotion": "對桌上原件作當下交代；不宣布封存已完成。",
+      "screenplay_performance_direction": "交代當下位置，非宣布封存",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S14"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "existing-WAV-measured-not-human-listening-approved",
+        "audio_duration_s": 1.63,
+        "source_wav_sha256": "7e373d2a3e74e1717205982a8883491f19f0422b271a72e5419dd5930992a57f",
+        "opening_audio_edit_window_s": {
+          "start": 43.6,
+          "end": 45.23
+        },
+        "source": "../pilot/timing-report.json",
+        "visual_approval": "no-animation-yet"
+      }
+    },
+    {
+      "line_id": "WR-E01-L011",
+      "runtime_id": "e24854f2",
+      "speaker_id": "zhitang",
+      "text": "表決權，我不交。",
+      "emotion": "最後短句，重音在不交，不作勝利歡呼。",
+      "screenplay_performance_direction": "重音在「不交」，無歡呼",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S14"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "existing-WAV-measured-not-human-listening-approved",
+        "audio_duration_s": 1.83,
+        "source_wav_sha256": "a48bedabe1f959d26b2f3c7c5fd2fe3628989a18e6b3a58d46ea31c14dbdeff8",
+        "opening_audio_edit_window_s": {
+          "start": 45.48,
+          "end": 47.31
+        },
+        "source": "../pilot/timing-report.json",
+        "visual_approval": "no-animation-yet"
+      }
+    },
+    {
+      "line_id": "WR-E01-L012",
+      "runtime_id": "697ed8c3",
+      "speaker_id": "chengchuan",
+      "text": "這麼多人看著，妳非要現在讓我難堪？",
+      "emotion": "壓低音量，以眾目施壓",
+      "screenplay_performance_direction": "壓低音量，以眾目施壓",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S16"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "not-synthesized",
+        "audio_duration_s": null,
+        "source_wav_sha256": null
+      }
+    },
+    {
+      "line_id": "WR-E01-L013",
+      "runtime_id": "2f1c26d4",
+      "speaker_id": "zhitang",
+      "text": "你剛才說，不簽就別結。我聽清楚了。",
+      "emotion": "看他，不提高音量",
+      "screenplay_performance_direction": "看他，不提高音量",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S17"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "not-synthesized",
+        "audio_duration_s": null,
+        "source_wav_sha256": null
+      }
+    },
+    {
+      "line_id": "WR-E01-L014",
+      "runtime_id": "c9db2b4d",
+      "speaker_id": "chengchuan",
+      "text": "棠棠，剩下的事，我們回去再說。",
+      "emotion": "把親暱稱呼撿回來，想收回談話",
+      "screenplay_performance_direction": "把親暱稱呼撿回來，想收回談話",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S18"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "not-synthesized",
+        "audio_duration_s": null,
+        "source_wav_sha256": null
+      }
+    },
+    {
+      "line_id": "WR-E01-L015",
+      "runtime_id": "87fb4d12",
+      "speaker_id": "zhitang",
+      "text": "就在這裡。先讓我把頁碼拍下來。",
+      "emotion": "短拒絕，接具體行動",
+      "screenplay_performance_direction": "短拒絕，接具體行動",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S19"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "not-synthesized",
+        "audio_duration_s": null,
+        "source_wav_sha256": null
+      }
+    },
+    {
+      "line_id": "WR-E01-L016",
+      "runtime_id": "7410ddec",
+      "speaker_id": "chengchuan",
+      "text": "妳還怕我把文件換了？",
+      "emotion": "故作受傷，沒有真的換頁動作",
+      "screenplay_performance_direction": "故作受傷，沒有真的換頁動作",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S21"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "not-synthesized",
+        "audio_duration_s": null,
+        "source_wav_sha256": null
+      }
+    },
+    {
+      "line_id": "WR-E01-L017",
+      "runtime_id": "105882b7",
+      "speaker_id": "zhitang",
+      "text": "我只要今天擺在這張桌上的這一份。",
+      "emotion": "視線留在原件，不跟他爭感情",
+      "screenplay_performance_direction": "視線留在原件，不跟他爭感情",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S22"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "not-synthesized",
+        "audio_duration_s": null,
+        "source_wav_sha256": null
+      }
+    },
+    {
+      "line_id": "WR-E01-L018",
+      "runtime_id": "f7f86c90",
+      "speaker_id": "zhitang",
+      "text": "請照原件，另留一份完整副本給我。附件也要。",
+      "emotion": "向桌側既有見證人員，正常禮貌",
+      "screenplay_performance_direction": "向桌側既有見證人員，正常禮貌",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S23"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "not-synthesized",
+        "audio_duration_s": null,
+        "source_wav_sha256": null
+      }
+    },
+    {
+      "line_id": "WR-E01-L019",
+      "runtime_id": "824e2f7a",
+      "speaker_id": "chengchuan",
+      "text": "婚禮都停了，妳還要留這些做什麼？",
+      "emotion": "催她放棄留下文件，仍保有體面",
+      "screenplay_performance_direction": "催她放棄留下文件，仍保有體面",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S24"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "not-synthesized",
+        "audio_duration_s": null,
+        "source_wav_sha256": null
+      }
+    },
+    {
+      "line_id": "WR-E01-L020",
+      "runtime_id": "a645c999",
+      "speaker_id": "zhitang",
+      "text": "你要我簽的東西，我總該留著看清楚。",
+      "emotion": "平穩，不念法律報告",
+      "screenplay_performance_direction": "平穩，不念法律報告",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S25"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "not-synthesized",
+        "audio_duration_s": null,
+        "source_wav_sha256": null
+      }
+    },
+    {
+      "line_id": "WR-E01-L021",
+      "runtime_id": "0d053763",
+      "speaker_id": "zhitang",
+      "text": "頁碼對得上。這份我收著。",
+      "emotion": "確認後才說，不急著宣布勝利",
+      "screenplay_performance_direction": "確認後才說，不急著宣布勝利",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S28"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "not-synthesized",
+        "audio_duration_s": null,
+        "source_wav_sha256": null
+      }
+    },
+    {
+      "line_id": "WR-E01-L022",
+      "runtime_id": "aa839f9a",
+      "speaker_id": "zhixia",
+      "text": "姐。",
+      "emotion": "輕聲確認姐姐願不願聽",
+      "screenplay_performance_direction": "輕聲確認姐姐願不願聽",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S30"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "not-synthesized",
+        "audio_duration_s": null,
+        "source_wav_sha256": null
+      }
+    },
+    {
+      "line_id": "WR-E01-L023",
+      "runtime_id": "f60cc415",
+      "speaker_id": "zhixia",
+      "text": "這個，我本來想今天給妳。",
+      "emotion": "略停頓，想把事情做好",
+      "screenplay_performance_direction": "略停頓，想把事情做好",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S31"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "not-synthesized",
+        "audio_duration_s": null,
+        "source_wav_sha256": null
+      }
+    },
+    {
+      "line_id": "WR-E01-L024",
+      "runtime_id": "f78ef77f",
+      "speaker_id": "zhitang",
+      "text": "先別給我。",
+      "emotion": "比對承川更低，戒備而非羞辱",
+      "screenplay_performance_direction": "比對承川更低，戒備而非羞辱",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S32"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "not-synthesized",
+        "audio_duration_s": null,
+        "source_wav_sha256": null
+      }
+    },
+    {
+      "line_id": "WR-E01-L025",
+      "runtime_id": "b4fa3234",
+      "speaker_id": "zhixia",
+      "text": "好，我先留著。",
+      "emotion": "受傷但不辯解，未暴露秘密",
+      "screenplay_performance_direction": "受傷但不辯解，未暴露秘密",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S33"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "not-synthesized",
+        "audio_duration_s": null,
+        "source_wav_sha256": null
+      }
+    },
+    {
+      "line_id": "WR-E01-L026",
+      "runtime_id": "8704bfd6",
+      "speaker_id": "chengchuan",
+      "text": "棠棠，妳連我也信不過？",
+      "emotion": "親暱失去效果，尾句帶試探",
+      "screenplay_performance_direction": "親暱失去效果，尾句帶試探",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S34"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "not-synthesized",
+        "audio_duration_s": null,
+        "source_wav_sha256": null
+      }
+    },
+    {
+      "line_id": "WR-E01-L027",
+      "runtime_id": "dfa350c2",
+      "speaker_id": "zhitang",
+      "text": "我信過。所以這次，我要自己看。",
+      "emotion": "「信過」僅表達關係，不洩漏另一人生",
+      "screenplay_performance_direction": "「信過」僅表達關係，不洩漏另一人生",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S35"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "not-synthesized",
+        "audio_duration_s": null,
+        "source_wav_sha256": null
+      }
+    },
+    {
+      "line_id": "WR-E01-L028",
+      "runtime_id": "9620459e",
+      "speaker_id": "chengchuan",
+      "text": "妳打算拿去給誰？",
+      "emotion": "目光落在完整副本的附件上",
+      "screenplay_performance_direction": "目光落在完整副本的附件上",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S36"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "not-synthesized",
+        "audio_duration_s": null,
+        "source_wav_sha256": null
+      }
+    },
+    {
+      "line_id": "WR-E01-L029",
+      "runtime_id": "e2e66148",
+      "speaker_id": "zhitang",
+      "text": "找一個，肯把每一頁都看完的人。",
+      "emotion": "選擇查證，還未指定或聯絡任何人",
+      "screenplay_performance_direction": "選擇查證，還未指定或聯絡任何人",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S37"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "not-synthesized",
+        "audio_duration_s": null,
+        "source_wav_sha256": null
+      }
+    },
+    {
+      "line_id": "WR-E01-L030",
+      "runtime_id": "9b4fa778",
+      "speaker_id": "chengchuan",
+      "text": "我們自己的事，需要別人來看嗎？",
+      "emotion": "最後一次要求她讓步，不喊叫",
+      "screenplay_performance_direction": "最後一次要求她讓步，不喊叫",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S38"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "not-synthesized",
+        "audio_duration_s": null,
+        "source_wav_sha256": null
+      }
+    },
+    {
+      "line_id": "WR-E01-L031",
+      "runtime_id": "b11c001c",
+      "speaker_id": "zhitang",
+      "text": "我需要知道，自己差點簽了什麼。",
+      "emotion": "短停後回答，說清她要做的事",
+      "screenplay_performance_direction": "短停後回答，說清她要做的事",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S39"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "not-synthesized",
+        "audio_duration_s": null,
+        "source_wav_sha256": null
+      }
+    },
+    {
+      "line_id": "WR-E01-L032",
+      "runtime_id": "3ec2e067",
+      "speaker_id": "zhitang",
+      "text": "這幾頁，也一樣。",
+      "emotion": "低聲，看附件再看他",
+      "screenplay_performance_direction": "低聲，看附件再看他",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S40"
+      ],
+      "text_origin": "adaptation-draft-not-source-quotation",
+      "source_field": null,
+      "measurement": {
+        "status": "not-synthesized",
+        "audio_duration_s": null,
+        "source_wav_sha256": null
+      }
+    },
+    {
+      "line_id": "WR-E01-L033",
+      "runtime_id": "f72ff4f4",
+      "speaker_id": "chengchuan",
+      "text": "附件別給外人看。",
+      "emotion": "真正的戒備第一次漏出，短而硬",
+      "screenplay_performance_direction": "真正的戒備第一次漏出，短而硬",
+      "pause_after_ms": 300,
+      "shot_ids": [
+        "WR-E01-S41"
+      ],
+      "text_origin": "quoted-source-E1-cliffhanger",
+      "source_field": "chapters[0].episodes[0].cliffhanger.text",
+      "measurement": {
+        "status": "not-synthesized",
+        "audio_duration_s": null,
+        "source_wav_sha256": null
+      }
+    }
+  ]
+}
