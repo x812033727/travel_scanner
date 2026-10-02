@@ -85,6 +85,7 @@ node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整�
 寫作重點：
 
 - **旁白語言**：預設 zh-TW。英文影片在 `video.json` 頂層寫 `"narration_locale": "en"`（2026-09-28 起，英文第一季 `docs/ai-video-en-season-01/`），`youtube.default_language` 也要是 `en`。這時：lint 只要求全大寫的縮寫（SEC、GPT、API）進字典，一般英文字照寫；字典裡含中文的唸法（`p95 → P 九十五`）自動不套用，跟配音一樣；`voice.style` 寫英文版的語氣（`tools/video/dubs/plan.mjs` 的 `DUB_STYLES.en` 可以直接抄）；`check-audio` 以 `en` 轉寫與判斷，同音字與語助詞規則不用；`i18n-sheet` 以英文為原文翻成 zh-TW、ja、ko、zh-CN，配音也可以做 zh-TW；說明欄的標籤文字用英文版。長度估算沿用每分鐘 250 個「單位」（一個英文字算兩單位，約 125 字／分），Gemini 實唸約 150 字／分，所以估計偏長兩成，跟中文一樣。
+- **分類**（`category`，可省略；2026-10 起）：`/admin/videos` 篩選用，代碼與站上的 `VIDEO_CATEGORIES`（`tools/video/core/schema.mjs`，同 `apps/api/app/models.py`）一致，共十個：`ai-terms`（AI 名詞解釋）、`ai-news`（AI／科技時事）、`tutorial`（教學實作）、`comparison`（比較評測）、`explainer`（觀念解說）、`story`（品牌故事）、`drama`（漫劇）、`long-drama`（長篇劇）、`travel`（旅遊）、`other`（其他）；寫別的 lint 會擋。worker 的每次回報（`flow.mjs` 的 `report()`，狀態檔的 `category` 優先，其次 `video.json`）與 `review-push` 都會帶上它；站上只替還沒分類的影片填，站主在頁面上改過的分類不會被回報蓋掉，所以每個階段都送是安全的。品牌故事由 story 流程自動寫 `"story"`，第一次回報就帶；其他影片沒寫就是「未分類」，等站主在頁面上歸類。
 - **句子 id**：用 `ids` 產生，是穩定的短碼。插入新句子時不要重新編號，翻譯、快取和站主的唸錯標記都靠它對齊。
 - **章節**：有 `chapter` 的場景會開一個 YouTube 章節，也就是進度條上可以點選的段落。
   - 章節至少 3 個，每個至少 10 秒；lint 先用估計值檢查，`tts` 之後再用實際時間檢查一次。
@@ -123,7 +124,7 @@ node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整�
 - `tts --dry-run` 會印出這支影片的估計字數，以及伺服器回報的本月用量。
 - 每月上限由站主在後台卡片設定。超過時伺服器以 429 拒絕，請求不會送到 Azure，所以不會產生費用。
 - Gemini 以送出的文字字數計，和 Azure 分開算，預設每月 300,000 字（約一百支 10 分鐘影片）。
-- 實測合成語速約每分鐘 300 字（48 kHz 單聲道），工具估計用 250，所以 `lint` 估的長度偏長；要 8–12 分鐘的成片，旁白字數要比估計多寫一些。
+- 實測合成語速約每分鐘 300 字（48 kHz 單聲道），工具估計用 250，所以 `lint` 估的長度偏長；要 8–12 分鐘的成片，旁白字數要比估計多寫一些。每集至少 8 分鐘（普通漫劇除外）：`lint` 估計不足 8 分鐘、`target_minutes` 下限低於 8 都是錯誤；成片品管的 `assemble` 項量到成片不足 8 分鐘就不過，要加寫旁白後重跑 `tts` 與 `assemble`。知識科普／AI名詞用10分鐘製作目標，品牌故事保留13分鐘；五類長片另外核對當前正文及成片各480秒、speech hash與影格綁定，片頭片尾不計正文。普通工人／CLI會忽略 `VIDEO_MIN_EPISODE_MINUTES=0`；只有 Node test runner 及 repository 的 `assemble/smoke.mjs` 短範例入口可放寬估算／通用成片門檻，五類長片的實測正文門檻始終不受該變數影響。
 - 配音音軌（`dub`）以送出的翻譯字數計：一支 10 分鐘的影片，en 約 10,000、ja 約 6,000、ko 約 6,500、zh-CN 約 5,000 個 Gemini 字元，四條約 28,000（含場景切分的標記）。額度不夠時把 `video_speech_gemini_monthly_character_limit` 調高。翻譯與審稿的模型呼叫只花在站主勾了的語言上（每語一次翻譯加一次審稿）。
 
 ## 坑

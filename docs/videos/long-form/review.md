@@ -1,0 +1,203 @@
+# Long-form duration revision: independent review
+
+Reviewer: review_longform. Author: codex-root and the implementation authors. Review date: 2026-10-02. Verdict: **PASS — DURATION_ONLY**. The PR #1105 category-report increment was reviewed by claude-pr-review-1105. Required fixes remaining: **none** for the SHA-bound revision below.
+
+The initial 21-file review and the integrated 70-file increment below independently inspected the implementation, planning records, original source bytes, duration guards and API/UI changes. It does not claim a fresh factual review of the underlying topics, completion of full long-video manuscripts, approval of rewritten manuscripts, human audio listening, image QA or verification of actual media. No real provider/model/media calls, production media generation, production writes, imports, activation, scheduling or publication were performed. Unit regressions use local synthetic and mocked fixtures.
+
+Current continuation: this report supersedes the prior 70-file receipt for the bindings at the end of this document. The preceding review sections below are preserved historical evidence for earlier SHA-bound revisions, including the former sibling-migration risk; they are not current migration or CI status. The original outside report remains unchanged at SHA256 9d01f55e57f1469e43d17a3f25b305641cc28e0d296d3373379e3e7ef463df62. The new increment records the actual main merge and reconnects the owned migration to the now-landed Shorts head.
+
+## Findings and fixes
+
+1. The initial effective backend notes still instructed 480-second six-chapter outlines despite target_minutes=10. The author corrected only explicit outline-duration statements and preserved minimum-480-second requirements, factual numbers and source URLs. Independent reinspection found no operative old 480-second outline instructions in the effective requests. Historical packages and receipts remain unchanged.
+2. T28 and T33 initially retained the original eight-minute chapter time ranges in their effective headings. The author removed those stale heading suffixes and rebuilt the manifest. All 92 effective chapter sets now have continuous budgets totaling 600 seconds and no old MM:SS heading ranges. T33's factual UTC and time-offset examples remain unchanged in the chapter content.
+
+## Independent planning and source audit
+
+- 473 unique catalog/ID records: first season 100, second season 92, third season 100, brand stories 100 and AI terms 81. Every current source_record_sha256 was recomputed from its source record; all source-file and package SHA256 values matched the current bytes.
+- 307 historical planning-source files were compared byte-for-byte against Git commit `282a7b1160b3a561d8fe89596ff1a0f595c30d65`. All are preserved. The added policy is separately bound below.
+- First- and second-season effective requests use flat-explainer and target_minutes=10, stay within the 4000-character premise and 2000-character note limits, and preserve the original premises.
+- All 92 second-season proposed chapter budgets sum to 600 seconds. Their chapter content remains present verbatim in the original Markdown after whitespace normalization. Only budget allocations and stale heading timestamps change.
+- All 184 second-season Shorts are hash-identical to their original bundles. The 460 effective long-video locale titles are unchanged; long descriptions differ only in the explicit outline-duration digits 480 to 600. Shorts packaging remains in the preserved source bundles.
+- The eight duplicate rejections B30/B32/B33/B38/T39/A26/A27/A30 remain absent from the effective adopted catalog. AI term ai-agent remains COVERED_DO_NOT_REMAKE; production lookup rejects it.
+- Brand stories retain 780-second targets and the 720–900-second range. AI terms retain a 600-second target and the 540–660-second range. Third-season items remain checked candidates requiring outlines; they do not acquire fabricated one-off inputs or media acceptance.
+
+## Runtime and input review
+
+The QA assemble item now checks the current unwrapped TTS timeline, checked final-frame count and their speech hash. It requires at least 14,400 frames at 30 fps for both body and final cut. One frame below the minimum fails; intro/outro frames cannot make a short body pass. Brand selections must match the body and presentation timeline. Missing or stale proof cannot use target_minutes or an earlier passing checks.json as measured acceptance. Ordinary drama, compilations and Shorts keep their existing rules.
+
+Catalog slugs, the flat-explainer look and explicit knowledge/story categories cover the requested producers. The story worker explicitly emits format=drama and category=story. A missing format or unknown category is already a lint error before QA, so it cannot use classifier fallback as a legal bypass. The final-review push runs QA again for the current final cut.
+
+API and UI source review confirms flat-explainer requests default to 10 minutes and accept only whole minutes in the 8–20 range. Ordinary drama retains the 1–8 range and default 3. Style-only patches preserve the rule about an existing bible, choose the appropriate format default and repair a legacy short explainer when its style is explicitly reselected; unrelated edits can still pause or rename it. This independent review did not execute a browser acceptance run or the API/UI suites.
+
+## Initial 21-file independent review drift guard
+
+A second independent increment inspected review.mjs, review.test.mjs, the CLI check call and the README review links. The initial receipt required an independent PASS with DURATION_ONLY scope, matched the then-current report hash, covered exactly all 21 implementation/plan/document/test paths, and agreed with both the report table and actual file hashes. check, plan and inputs enforce the guard before returning effective production inputs; build remains a neutral local rebuild. Missing files and malformed receipts fail closed through the CLI error path. No circular hash is introduced: the receipt hashes the report, while the report binds implementation, plans, documents and tests.
+
+Before repository receipt installation, an independent outside-repository simulation exercised a valid 21-file receipt and six invalid revisions: self-review, missing author identity, a removed receipt binding, a removed report binding even after rehashing that report, a changed report and a later source-file hash. Each invalid revision was rejected. The 17 prior files outside this four-file increment retained their earlier independently reviewed SHA. No workspace files were modified by this reviewer. The new two shipped regression tests and the full CLI check require the author to install this genuine report and its receipt before a final execution.
+
+## Initial local validation
+
+Independently executed `node tools/video/long-form/cli.mjs check`: PASS for all 473 current plans. Independently executed `node --test tools/video/long-form/plans.test.mjs tools/video/core/duration.test.mjs tools/video/qa/duration.test.mjs`: **12 passed, 0 failed**, exit 0. These include actual QA command forwarding, precise frame boundaries, branded-body handling and malformed/stale evidence. A separate independent source audit recomputed record/file/package/Shorts hashes and compared preserved files with Git; it also checked chapter-content preservation and the exact description changes.
+
+The three READMEs and KNOWLEDGE-STORIES entry state the revised production targets, preservation of historical fact-review packages, required effective inputs, pending manuscripts/media, and the distinction between a 600-second plan and a measured cut.
+
+## Upstream character-look validation increment
+
+After rebasing onto main commit eda3b60f, an independent increment reviewed the actual change from 8403523a to 4e8f633c in series.py and its upstream regression tests. The upstream addition validates optional character-look IDs, appearances, whole-number episode ranges, non-overlap and Gemini-only voice-style overrides when filing an ordinary setting book or story bible. An explainer bible still returns through its dedicated narrator-only validation before the character-look loop; brand stories still have no such documents. The new helper neither reads nor writes target_minutes. The complete patch_target_minutes, patch_problem and patch_series block is byte-identical to the prior independently reviewed version, so the default-10, whole-minute 8–20 bounds, bible style-crossing rule and legacy correction path remain unchanged. The other 20 reviewed file hashes are unchanged. Only series.py is rebound below after this actual increment review.
+
+The genuine installed receipt passed an independent CLI check and all four targeted Node test files before this upstream increment: 14 passed, 0 failed. The refreshed receipt must be installed again and checked against the newly reviewed series.py bytes; the reviewer did not run or claim the API suite results reported by the author.
+
+## Integrated peer and worker increment: 70 files
+
+The reviewer read the complete 55-file change from peer commit 5851bd8b0fce16ff2efd0da055a8c099f329cfe0 against its common ancestor 874e70099444c7646ffaa0f55e1033aae61e5c12, then independently inspected the actual integrated workspace revisions and regression tests. The later peer increment 6523a44f0c89a82baaa844941d62afa4b7a61788 merges current main and adds only the same three-line short-fixture override to the landed dub freshness regression (plus its historical completed-ticket scope); the reviewer read that actual delta and the complete current test file. Its dub fingerprints, legacy clip-cache proof and changed-line-only re-take assertions remain verbatim. This increment includes the original 21 paths, the peer implementation/docs/tests excluding its completed-ticket historical record, the new integration regression and that freshness test. The final bindings below contain exactly 70 unique registry paths. It is a DURATION_ONLY review of planning data, runtime rules, inputs, fixtures, migration source and regressions; it is not a fresh topic fact check, manuscript approval, provider acceptance, actual video-duration measurement, browser acceptance, CI acceptance or production activation.
+
+The integrated API/UI keeps the reviewed flat-explainer default of 10 and strict whole-minute 8–20 bounds. Ordinary drama keeps 1–8 and default 3. The peer's 8-default/12-maximum behavior and unconditional clamp on unrelated series edits were not retained. The existing bible crossing restriction and legacy pause/title behavior remain; the reviewed series.py and admin-video-series.tsx bytes are unchanged from the previous accepted revision. The peer API/UI duration expectations were reconciled with 10/8–20 and all five locale labels match 8–20; the later correction of one remaining stale test accessible-name literal is recorded below. General slides settings and their model constraint now require 8–30 with min <= max.
+
+The new effectiveEpisodeMinutes helper is shared by every explainer planner/writer route. Missing or old integer targets below 8 become 10, while explicit 8–20 values remain. Invalid over-20, noninteger, string, Boolean and nonfinite explainer inputs raise before a paid model request. New requests, draft episodes, existing script writes, lint/script repair and replanning normalize and persist the state. Ordinary drama targets and the brand-story 13-minute target pass through unchanged. This repairs the peer's omission of existing auto.json, replan and writer payloads without rewriting approved manuscripts or claiming their new duration has been measured.
+
+Both QA rules coexist: general non-drama cuts have an eight-minute final-cut floor, and the five knowledge/nonfiction catalogs independently require the current unwrapped body and final cut to reach 14,400 frames at 30 fps with matching speech/timeline/bookend evidence. General checked frames must be positive safe integers; a supplied FPS must be 30. The immutable knowledge/body guard runs first and never reads the fixture variable, so even minMinutes=0 cannot accept a 14,399-frame explainer or brand body padded to 15,000 final frames. Ordinary dramas, compilations and the separate Shorts QA route retain their existing duration rules. The brand-story producer emits category=story, so the peer's broader generic classifier does not exempt it from the catalog body rule.
+
+The reviewer found that a first integration used NODE_TEST_CONTEXT alone to authorize short fixtures: an ordinary CLI inheriting child-v8 plus VIDEO_MIN_EPISODE_MINUTES=0 could then return a zero general floor. The author fixed this boundary. A fixture now requires exactly child-v8 and an entrypoint inside repository tools ending in .test.mjs, or the exact repository assemble/smoke.mjs entrypoint. Independent child-process regressions show that missing, child-v8 and arbitrary markers still yield floor=8 and reject 14,399 frames for an ordinary process; the real CLI path also cannot opt out. The reviewer additionally identified general final proof accepting string/fractional frames or non-30 FPS; the author added strict checks and corresponding regressions. These issues are resolved in the SHA-bound files below. The retained 20 test-only env assignments (including the later freshness test) and one smoke assignment now only relax fixture estimates/general final checks, never the fixed catalog body proof.
+
+Migration 0117_video_min_8_minutes connects to the actual current chain's 0116_video_project_category. It raises both legacy settings bounds together using GREATEST(8), recreates the same named 8–30/min<=max check, and is idempotent; downgrade widens the check to 3 and deliberately preserves raised values. The reviewed PostgreSQL regression restores the old check and 3/5 data inside a rollback transaction and exercises both directions. Independently executed alembic heads returned exactly 0117_video_min_8_minutes (head), exit 0. This reviewer did not execute that PostgreSQL integration exercise. Pending PR #1097 independently proposes 0117_video_shorts_topics off the same 0116: it is not part of this workspace or receipt. Whichever PR lands second must rebase and renumber/reconnect to the actual landed head, followed by fresh migration review; blindly including both siblings would create two heads. No migration was applied to production.
+
+The unchanged plans.json SHA remains 22023c15fa10a24e4a0141e3fc5930ff6925a84ff5ab5cb5a466a5baa15b7108. The reviewer reran the independent source audit after integration: all 473 record/package/source hashes, 307 preserved baseline files, 92 continuous 600-second chapter budgets, 184 original Shorts hashes and 460 allowed locale metadata revisions passed. No effective old 480-second six-chapter instruction remained; the eight duplicate rejections and covered ai-agent status remain intact. Brand targets remain 780 with 720–900; AI targets remain 600 with 540–660.
+
+The registry now demands the exact 70-file binding set in both receipt and genuine report, in addition to independent author/reviewer identities and the report hash. check, plan and inputs still enforce it; build still only rebuilds the local manifest. An independent outside-repository pure-function simulation of this actual 70-file registry accepts a matching receipt and rejects self-review, missing identity, missing receipt binding, missing report binding even after report rehash, changed report and changed file SHA. The current repository receipt must be mechanically installed from this genuine report before the shipped receipt tests and CLI can pass. The reviewer wrote only outside-repository review artifacts and did not edit implementation files, stage, fetch, push, import or publish.
+
+Independent executions before the final four-file gate/proof correction: the seven selected plans, body, QA, integration, lint, checks and automation test files passed 115/115, exit 0, including real mocked planner/writer/state-repair payload paths. After the final correction, the five affected core-duration/lint/integration/QA-checks/actual-QA test files passed 50/50, exit 0. A second independent read-only reviewer reran core-duration/integration/QA-checks/actual-QA tests after correction: 25/25, exit 0. The reviewer additionally executed the final freshness regression: 4/4, exit 0. The final two shipped receipt regression tests and CLI check are intentionally left for execution after the author installs this genuine 70-file report and receipt. API/UI and PostgreSQL suite outcomes reported by the author are not relabeled here as independently executed results.
+
+The current READMEs, five locale labels and both byte-identical youtube-video SKILL.md copies explain the 10-minute target, 13-minute brands, general eight-minute final minimum, fixed catalog body minimum and the narrow fixture exceptions. They distinguish planned length from measured media and preserve the need to re-check revised manuscripts and actual audio/video. Required fixes remaining: none for these bound bytes.
+
+## Admin reviews accessible-label regression increment
+
+The full web suite exposed a remaining stale accessible-name literal at admin-video-reviews.test.tsx line 270 in the previous 70-file revision. The earlier integration source review missed this test literal. The author's deterministic reproduction log identifies expected “長度（分鐘：漫劇 1–8，解說 8–12）” and the actual rendered “長度（分鐘：漫劇 1–8，解說 8–20）”. The author corrected exactly that one test literal. This reviewer independently read the failure log and source delta, then reconstructed the previous file bytes by replacing the single 8–20 label back with 8–12: its SHA exactly equals the prior bound 9b5a45fbebd41941d264d817caa8bdeba47249a944de8cc32d3808999b7cff7b. The corrected file's SHA is 98a983a571dcc8ca9e1d5da5cc0bcac3f7d96c6bcd8ed0805c7ca9f55ff5f08d. Every other 69 accepted file hashes matches the previous independent table byte-for-byte.
+
+The reviewer independently executed the complete corrected admin-video-reviews.test.tsx file through Vitest: 30 passed, zero failed, exit 0. The corrected accessible name agrees with the five-locale UI and strict API 8–20 explainer range; its scenario still submits an ordinary ink-wash drama at 2 minutes. Runtime input defaults, worker rules, measured-body/final QA, plans and all existing media evidence are unchanged. This increment revises only the genuine outside report and the one test binding; the author must reinstall the report/receipt and rerun the shipped review checks. The 70-file registry remains unchanged. Verdict remains PASS — DURATION_ONLY after this actual increment; required fixes remaining: none for the bound bytes.
+
+## Main-merge drift and migration-order continuation (2026-10-02)
+
+The reviewer read the complete failed web job 110638274301 (run 36942894925) and video-unit/smoke job 110638273823 (run 36942894889), both at 7c7a917bdc2592c84fb310a3e584f8a1d7c4be78. Web lint, i18n, task checks, typecheck and test:web succeeded; test:tools failed its shipped independent-duration-review regression. Video unit tests failed the same regression, and all five actual media smoke stages were skipped. The guard identified exactly 15 stale source bindings. Raw Git blob SHA256 comparison proved that their old values matched the prior accepted head 84f2775ebf6e7bf6826483c28e0c65bead8cc491 and their new values came from the merged main; the genuine report hash still matched. Current local bytes equal the new Git blobs, all are LF, and converting them to CRLF does not recreate the old values. This is real reviewed-source drift, not a newline or environment flake. No CI was rerun by this reviewer.
+
+The actual 15-file upstream delta was reviewed against 84f2775e. The API models/schemas addition accepts Shorts-specific prompt format and subject stage with required variants; it does not alter duration constants, strict integer inputs, series targets or slides bounds. The series.py addition validates named shot_looks for ordinary character documents; explainer narrator-only validation still returns before that loop. Its entire patch_target_minutes-and-later tail remains byte-identical to the accepted version. Production cast/shot-look and CC additions to drama/lint/worker/prompts coexist with the five-catalog duration rule. The production helper selects only the current episode, does not write target_minutes, and production clip restrictions run only for drama with an approved production profile. No-profile slides/explainers/story paths preserve their duration behavior. The translation addition sends source_locale only for non-zh-TW narration; tests preserve the existing zh-TW translator/caption-reviewer/shortening/rewording prompt hashes. These are compatibility checks for the duration change, not full acceptance of every upstream production or Shorts feature.
+
+The flat-explainer API/UI still uses strict whole-minute 8–20 and default 10. The core effectiveEpisodeMinutes helper retains its exact accepted hash and still repairs missing or legacy-short targets to 10, preserves explicit 8–20, and rejects malformed or over-20 targets before a model request. Independent actual mock workflow tests exercised new requests, old 3-minute states, draftEpisode, writing, lint repair, script fixes and replanning; ordinary drama remains 3 and brand stories preserve 13. The fixed knowledge body/final rule remains 480 seconds (14,400 frames at 30fps), bound to current speech hash, checked final frames and matching bookends. Bookends cannot pad a short body. The strict fixture entrypoint gate, QA frame/FPS validation, duration helper and QA paths retain their accepted bytes. Production-like child tests still reject env=0 opt-out in an ordinary CLI, including inherited child-v8 markers; permitted fixtures cannot bypass fixed body proof.
+
+Main now contains 0117_video_shorts_topics. The owned duration migration/test were renamed to 0118_video_min_8_minutes, with down_revision=0117_video_shorts_topics; revision ID remains within 32 characters. Reversing the migration ID/parent changes exactly reconstructs the accepted old SQL bytes: GREATEST raises both settings bounds together, the named 8–30/min<=max check is recreated, and downgrade only widens to 3. The renamed test retains its prior rollback exercise and length assertion and adds exact revision/parent assertions. Independent alembic heads returned only 0118_video_min_8_minutes. The review registry changes only the two filename keys; the acceptance rules are byte-identical after reversing those key renames. All 70 bindings remain required: 15 upstream files plus those three owned files have new hashes, and the other 52 bindings match the previous genuine report exactly. No production migration was applied.
+
+Independent local validation: six Node files (automation, series, core duration, QA duration, plans and integration) passed 122 tests with zero failures/skips, exit 0. A second independent reviewer ran seven media/core/QA/fixture files: 91 passed, zero failed/skipped, exit 0; these overlap the first group and are not an additive total. The API schema, SQL dialect, owned migration, explainer duration, drama request and series files passed 85 tests, with four skipped database/integration cases, exit 0. Those skipped cases were not executed or claimed as PostgreSQL acceptance. The reviewer reran the independent planning audit: all 473 records/package/source hashes, 307 byte-preserved original files against baseline 282a7b1160b3a561d8fe89596ff1a0f595c30d65, 92 continuous 600-second chapter budgets, 184 preserved original Shorts and 460 allowed locale metadata revisions passed. Eight duplicate rejections and covered ai-agent remain intact; brand target is 780/range720–900, AI target600/range540–660, and no stale effective 480-second six-chapter instruction remains.
+
+The outside-report simulation accepts this exact new 70-file candidate receipt and rejects self-review, missing identity, dropped receipt/report bindings (including a rehashed incomplete report), changed report and changed file bytes. The old installed receipt is intentionally stale until the author installs this genuine continuation and mechanically rebinds it; shipped receipt tests and CLI check must then be independently rerun. The reviewer has not weakened the guard, removed upstream bindings, edited repository code, staged, fetched, checked out, pushed, imported, generated production media or published. PASS is DURATION_ONLY for the SHA-bound current bytes below; it does not re-review every original fact, accept new production media, prove final runtime or claim skipped CI smoke stages ran. Required duration implementation fixes remaining: none.
+
+Outside evidence files and SHA256 (not implementation bindings):
+
+- 20261002-continuation-web-110638274301.log: 0749779b95926c4ce3b61e7441a4fe9ed97fc27ff200d67ac0977a9013dc7855
+- 20261002-continuation-video-smoke-110638273823.log: ddd359885e0037554246b0234cb47f0c8ed555d1c997c23d7fba97a385f3620b
+- 20261002-continuation-gitblob-duration-audit.json: e78a4f6f151bafea4d259579750835c88cd696f498cacc4d9fcd36547c1ef49a
+- 20261002-continuation-duration-drift-history.json: 5039d5f817cadd7bfc1db9a4c3d72d796c82cf3a74c9f48390380cf240073c12
+- 20261002-continuation-independent-api.log: 4a044b36a51093dda58a2b64d41fa22a1418eec4edd73b0bf87ea25f31ddef0c
+- 20261002-continuation-independent-node.log: 6aa5b63c827e4d54a2809de636fd97cde7e5cba10b157377a284faf19fc743b8
+- 20261002-continuation-planning-audit.json: b9a61e3475c565b489ab7cdce50900cba370b8eeaa5a643d510432d4aa2a9db2
+- 20261002-continuation-migration-registry-audit.json: 4cbcb4ce3b5ff902d1a5b3fa22867f5064c8c1e78d1e3bc8cc3cb134924b7378
+- 20261002-continuation-media-core-increment-review.json: 6d3a3eaf4a3a8d908f6bd2a5aaed7bd441fc9a1caede78660567c88c08e9a560
+- 20261002-continuation-media-core-targeted-tests.log: 0e883b8e27489a08654861aca1a37e97fd9ec33212b59337ede8b8c9b60ef36f
+
+## Localized-thumbnail QA compatibility increment (2026-10-02)
+
+After preserving the intervening remote history and merging main a8f0833ea8e36442ce84581abbfdbebc9ec54a08 (#1100), the reviewer read the actual resulting qa/cli.mjs delta and the added thumbnail test, translation helpers, i18n merge and package/metadata interactions. Only tools/video/qa/cli.mjs has a changed hash among the 70 accepted bindings; the other 69 remain byte-exact to the preceding genuine continuation at SHA256 97a79eb4299ba2f27a8ea7f0beff41420b8dad12ed814436b760c036b3a84768. That prior continuation is preserved outside as review-longform-continuation-before-thumbnail.md. This increment supersedes its binding/report hash rather than weakening or removing the source review gate.
+
+Localized thumbnail checks stay inside the existing thumbnail item. The original primary-thumbnail result still determines that item's pass; missing or invalid optional locale thumbnails add warnings. The normal QA path retains the original eleven item IDs and order, and the separate compilation path retains its original six items. The complete assembleItem call line is byte-identical to the accepted 7c version: checks, current, finalExists, doc, timeline, presented, timelineCurrent and minMinutes are all forwarded. The current speech-hash reader, unwrapped body reader, branding/currentness logic and presentationTimeline call are unchanged. The package checksCurrent function is also byte-identical. Optional thumbnail words use their own current source hash and update only translation/package metadata; they do not alter narration, body/final frames, target_minutes or the fixed duration rule. The strict fixture isolation, immutable 480-second body/final boundary, brand bookend checks and existing runtime input rules retain their previous reviewed bytes.
+
+Independent QA duration, production-like fixture integration and complete QA tests passed 17/17 with zero failed/skipped, exit 0. Those cases execute the real QA command, confirm the exact eleven-item report, reject a 14,399-frame body, accept exactly 14,400, reject mismatched final frame proof, measure pacing on the original body and preserve compilation handling. A second independent reviewer read the thumbnail/i18n context and ran the complete thumbnail and i18n test files: 15/15 passed, zero failed/skipped, exit 0, including language-thumbnail warnings, legacy manifests, source-hash freshness and optional missing translation behavior. The new candidate receipt/report simulation passes; the preceding candidate is rejected for the changed QA CLI hash. This is duration-compatibility review, not a complete acceptance of all new localized-thumbnail production/render/upload behavior. The author must reinstall this genuine report and its receipt, then rerun the shipped review tests and CLI. Required duration fixes remaining: none for the current bindings below.
+
+Outside increment evidence and SHA256 (not implementation bindings):
+
+- 20261002-continuation-thumbnail-forwarding-audit.json: be74f9359289b3cc989d714b4187eeb0741551f7642ac63a8a4864c2ecdbb17e
+- 20261002-continuation-thumbnail-duration-integration-qa.log: 8fc1d52b169a1501f757d9557d98b6243495606c0738fb20034dc1ade7fb0ed7
+- 20261002-continuation-thumbnail-review.json: 0d928e21815d4c444e03069b343198e00d900a8dd631f18db02c7081691e89a2
+- 20261002-continuation-thumbnail-targeted-tests.log: 37c3a93dde9a4db8d914142005a9fbb9ddbbd1c4b87e72019a79ded94b68647b
+
+## PR #1105 category-report increment: 4 files (2026-10-02)
+
+Reviewer: claude-pr-review-1105. Author: claude-pr-1105 (the Claude session that wrote PR #1105, "fix(video): the worker and review-push report the video's category"). The reviewer read the complete delta of the four bound files from origin/main to HEAD d22c1927 (branch claude/video-report-category, which has origin/main merged in) and checked that origin/main's bytes of each file equal the preceding bound hashes, so this delta is exactly the unreviewed change. The other 66 bindings are untouched and still match their current bytes. The reviewer also read the non-bound tools/video/review/sync.mjs and story.test.mjs deltas, and every `category` use under tools/video, to judge duration reach.
+
+Findings: flow.mjs renames recordedVideoId to recorded(), which reads the same video.json and additionally returns `state.category ?? video.category` when it is in VIDEO_CATEGORIES. report() adds that value to the /admin/videos payload only. review-push (sync.mjs) adds video.json's category to its report payload the same way. Neither path writes category into video.json, the automation state or any duration input, and nothing reads the site's category back. The only duration consumer of category, isKnowledgeLongform in core/duration.mjs (knowledge categories ai-terms, explainer, story), still reads only the local doc and keeps its accepted bytes. The new VIDEO_CATEGORIES import sits beside the unchanged minEpisodeMinutes import. The planning-range code, effectiveEpisodeMinutes calls, explainer default 10 and 8–20, drama 1–8 default 3, brand 13 minutes, minEpisodeMinutes floor, 14,400-frame body/final guard and fixture opt-out boundary are byte-unchanged, and there is no new VIDEO_MIN_EPISODE_MINUTES assignment. The test fixtures set category "tutorial", which is not a knowledge category. In automation.test.mjs it is written only after QA, publish and done, before the YouTube-id sync, so no fixture's knowledge/body-guard or drama classification changes. The automated.md line documents only the reported filing field.
+
+Commands: `node tools/video/long-form/cli.mjs check` before rebinding failed only on the four stale bindings, exit 1. The automation, story, review sync, long-form, core duration and QA duration tests ran 148: 147 passed and the one failure was the shipped review-binding test reporting the same four stale bindings. After rebinding, the review test and CLI check are rerun by the reviewer. Non-claims: no CI, browser, real media, provider or PostgreSQL acceptance. This is DURATION_ONLY compatibility review, not acceptance of the category-filing feature itself. Required duration fixes remaining: none.
+
+## Reviewed SHA256 bindings
+
+These 70 bindings describe the current reviewed bytes after the main-merge and owned migration-order increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
+
+| File | SHA256 |
+| --- | --- |
+| `.agents/skills/youtube-video/SKILL.md` | `298f5b0084e3b7c82544d1895234f0a0dac0261caec98d89d7c6a4643ec9406b` |
+| `.agents/skills/youtube-video/references/automated.md` | `de793ad631be8ebe05a22a848adb0c6d0e86980db60092ee879ebc815d8b17ad` |
+| `.agents/skills/youtube-video/references/formats.md` | `17857aae0d529984f25a3360f69a60b4cc51bd715343eeecd051e6686f475875` |
+| `.claude/skills/youtube-video/SKILL.md` | `298f5b0084e3b7c82544d1895234f0a0dac0261caec98d89d7c6a4643ec9406b` |
+| `apps/api/app/video_automation/models.py` | `ff5ba88f0be1efb1923dd1d9a870ac72ed378d851b879b9a68c64b53771ed699` |
+| `apps/api/app/video_automation/schemas.py` | `0cea45c4947831e49194814befd94f8eb9bd5b528e0e99c29c29d67439642894` |
+| `apps/api/app/video_automation/series.py` | `d5e982dcc71465ae076179e3da35c9e87bd3a2138712a2c2d5de9802e421d234` |
+| `apps/api/migrations/versions/0118_video_min_8_minutes.py` | `5e254bd11d8e635368880ca3b82e368a58887b5223bf3ac5e71d1a2dedc68266` |
+| `apps/api/tests/test_migration_0118_video_min_8_minutes.py` | `c479dfd800de1fcbd1fb71d0b47d4fcb922675b314b31b680e8195cac898c28e` |
+| `apps/api/tests/test_video_automation_settings.py` | `b7f8a1853a7090d010a648ddb7c262c3c616256b4d6a8913410efab8d40a3707` |
+| `apps/api/tests/test_video_drama_requests.py` | `07ddbcaadf668a13565969ca44e2542dee4f6ad83791bcc8f67d785302734c59` |
+| `apps/api/tests/test_video_explainer_duration.py` | `fbd8aaca7171321dcbe7511f607f61bb21a147640f9e22920db87d2f872ab2fc` |
+| `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
+| `apps/web/components/admin-video-explainer-duration.test.tsx` | `bb888f17b3ef617d788fbed83f5fba280dfe06da008a6f80fca15b15c6916ca0` |
+| `apps/web/components/admin-video-reviews.test.tsx` | `98a983a571dcc8ca9e1d5da5cc0bcac3f7d96c6bcd8ed0805c7ca9f55ff5f08d` |
+| `apps/web/components/admin-video-series.test.tsx` | `f6b62a1802799e56cd8d64e003a2035b3b2e255a214e41335329ae25069eec8c` |
+| `apps/web/components/admin-video-series.tsx` | `97980f007e7091dab343603c0bb1ada909decab950a5535c9ef50ee8fadba7a1` |
+| `apps/web/components/admin-video-settings-tutorial.tsx` | `7aad8e5d88b67ebaf0b261a57482fb06044111e86af9cfa43157627c7e671957` |
+| `apps/web/messages/en/admin.json` | `1999afbe94f289230b8491c884ea42e2508c65a79bc9e37e1d2ea07574478fa7` |
+| `apps/web/messages/ja/admin.json` | `71b13a0819eb38d4917186edd56a94d58f249e7d105ef61b1832654d7e6b23db` |
+| `apps/web/messages/ko/admin.json` | `d1960406d5839e61c178b08128f9080ac97a5a7d6ff6d67cc15c7747deda224a` |
+| `apps/web/messages/zh-CN/admin.json` | `be21c3de63820628fc1d3b1f98b3d7904d9b6ade5c7722f01789011dcde05f00` |
+| `apps/web/messages/zh-TW/admin.json` | `4cdb1979b25bebcc1a508b0aa0081b400e024cc6eb1f60a7f5bf07d2c607be70` |
+| `docs/videos/DESIGN.md` | `299449c6c19a40a0e17868615a7d8442771449e0db6e63186ca9c57a0d57ab41` |
+| `docs/videos/KNOWLEDGE-STORIES.md` | `ac08a33baedd84f282901594e55758f4b390ee1a8dc798e2c25c4b463081aa80` |
+| `docs/videos/README.md` | `88a8fcb1e6019d279b790f089feb14abe5dc21d2b1c0624f4d0fe25c73346868` |
+| `docs/videos/long-form/README.md` | `dd639c0c85595881d1bda64541d28f29e8d90f1067e541c08eb28dc9c4543c3b` |
+| `docs/videos/long-form/plans.json` | `22023c15fa10a24e4a0141e3fc5930ff6925a84ff5ab5cb5a466a5baa15b7108` |
+| `docs/videos/long-form/policy.json` | `6f08e7cd27b98710dc308bdb7ea44a6db4b1c8891d0731d5387d9b2245636bad` |
+| `docs/videos/so-thats-why/README.md` | `00a0f0e5a56d7a492dec69263eab34668e0d334949878bd512b09edacaefd0de` |
+| `docs/videos/so-thats-why/season2/README.md` | `e560411dc91f1928b2cf9506a044e55ae7f5f65450199118bd165464599f1218` |
+| `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
+| `tools/video/automation/automation.test.mjs` | `ca42182998133d32fbefc8ee31595fa151f7f6ed978e04fd34ab7a2130204a17` |
+| `tools/video/automation/flow.mjs` | `e195eb9762728362743f512debd42f590930f694e359dc8081f53a0356097bb0` |
+| `tools/video/automation/prompts.mjs` | `f6462deca2cb78ba7a5cb05471eeda4941522f24e33e3f442079cfacf1d82a79` |
+| `tools/video/automation/series.test.mjs` | `8288b63fa55024cb9305f13fdb8714bf690fb01a2d505e424c3d505359ca654c` |
+| `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
+| `tools/video/core/drama.mjs` | `db0f08c3f386497367e3a228e00bc6a26552f33db11146a9c00a5cb32747f04e` |
+| `tools/video/core/duration.mjs` | `406c61d2211781ae571f952cb6239ee7c808f7f603a4be3ed5d61622bfe65d9a` |
+| `tools/video/core/duration.test.mjs` | `49290be2b3f58801532e225ecff8f8b9730746425e6527b50b0c03beee6adc94` |
+| `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
+| `tools/video/core/lint.mjs` | `34b2d059805ceceedd95f56881a13a30a7112e4dcc49864a58fbf7d57e309ed8` |
+| `tools/video/core/lint.test.mjs` | `0cc01210737ee6d3be68018602bd36789c223a6c746b29b5add73f5a3cf28225` |
+| `tools/video/core/narration-locale.test.mjs` | `af0b899f0518ef0f652816a8d53908d002cb805514993ca24d6aca0004640595` |
+| `tools/video/core/schema.mjs` | `d072cccea0eb2156d462225edf61cec6d732cb79d1b4d8e9caf2571bc830622e` |
+| `tools/video/core/stages.test.mjs` | `0a409f7a88234c1823146ea65092a95ceb12b69c34ccf1910894712f34859a2e` |
+| `tools/video/core/state.test.mjs` | `23e89658d92b99d0e7dbb64e8ad00f82016795deb38ef732ec9e76013d867522` |
+| `tools/video/dubs/captions-package.test.mjs` | `7eb0a10630b447dd17ffeafe3d99059c0fe3f392d58838dffd10a59373734f28` |
+| `tools/video/dubs/dubs.test.mjs` | `143f7bfa09d2a161c275186464ea2f27c55f37a1e9dc9d5e90dfab7ed69f373b` |
+| `tools/video/dubs/freshness.test.mjs` | `c882af3d55bff72c410e930b0e0f187770782a937952bb9efba3ab40e44a5b30` |
+| `tools/video/dubs/plan.test.mjs` | `94e61419eda766e722c07675f1f75a569f3eb07fdeecce5c03dc862db1a0d572` |
+| `tools/video/long-form/cli.mjs` | `3a0b26f900daaf1a08f7ed210ad1239d7f172035fa1e14c6dafc28bf55dedfa4` |
+| `tools/video/long-form/integration.test.mjs` | `aa69f38653fb7c6a7fd0c6daed93ccde1e031987e3169f6c8d9456f38c8b605c` |
+| `tools/video/long-form/plans.mjs` | `9680960509931642c679a9db9a3a1d6e419280558f9eb431358bfd1ee781e103` |
+| `tools/video/long-form/plans.test.mjs` | `5b7992649fa5384d1758664a2e9b6ccbb104004da499a3d5f73b6665e9f768a6` |
+| `tools/video/long-form/review.mjs` | `69fe791f0b3dd36a1d2070cd3ab1d371d70625d3a5228e90b42d5d48203525b8` |
+| `tools/video/long-form/review.test.mjs` | `e753ccc616b589a321473336f71621cd46206edbc0fa4f2b1e59d2167217e06f` |
+| `tools/video/media/clips.test.mjs` | `adba34387121485e6c30a0c15a57c0e9e2c6ef573f00c9a83e4a09ba391c3764` |
+| `tools/video/media/look-keyframes.test.mjs` | `2b92c61e276fd120952512e1752297b4f9dcdc185059095da3517800f8a09348` |
+| `tools/video/qa/checks.mjs` | `dc99682b29b674cfedc12ca67c8809e23c1d99d5635a1cd79970a8180d21cc83` |
+| `tools/video/qa/checks.test.mjs` | `e93fe80fb6ef0366da6728e397f78e355e6000847836a0a7e31ae63615211317` |
+| `tools/video/qa/cli.mjs` | `d6c50172eca6816266f8c209913970345b42afd72ea9a5a740c4af243be8ff7c` |
+| `tools/video/qa/duration.test.mjs` | `056e8f564c9952b025ea7736b43e41bfc47fcc75a847f840878a093ea61fc681` |
+| `tools/video/qa/qa.test.mjs` | `6bab373f43da2cbc9ff469c771ea561e9075964b9e387340167ff42d8cd10aa5` |
+| `tools/video/review/sync.test.mjs` | `2212d090dc95de655cb37f2a6a263170c8323a7e63fd8522e6a4d90c9b3d0bf1` |
+| `tools/video/screencast/screencast.test.mjs` | `9bbe23f554a93ee394ec4d0aed18fc030d61b284a42b68487f9c89b0e1ad7e6a` |
+| `tools/video/templates/terminal/terminal.test.mjs` | `fc8c9ca5a76f336b545194a7a009630fe0d227544aa4e9b363c0d655fce4e38d` |
+| `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |
+| `tools/video/tts/check.test.mjs` | `ad385d7df22fd297588dfef8a72b0b3f6261d0fb4619e4c538a30ef8464b1477` |
+| `tools/video/tts/tts.test.mjs` | `cb2cc2508c4b394b43db21201a1efe44676a21a186621a18f5c0c2b5a9d983b3` |

@@ -15,10 +15,10 @@ import { approvalState, sha256File } from "../core/approvals.mjs";
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
 import { compilationChecksCurrent, compilationHash, estimatedCompilationTimeline, isCompilation } from "../core/compilation.mjs";
 import { cadenceProblems, cadenceSummary, illustrationShare, MAX_PICTURE_SECONDS, MIN_ILLUSTRATION_SHARE } from "../core/cadence.mjs";
-import { burnIn, illustrated, isDrama, subtitlesHash } from "../core/drama.mjs";
+import { burnIn, illustrated, isDrama, needsMinimumLength, subtitlesHash } from "../core/drama.mjs";
 import { checkYoutubeFields } from "../core/metadata.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
-import { LOCALES, narrationLocale } from "../core/schema.mjs";
+import { LOCALES, minEpisodeMinutes, narrationLocale } from "../core/schema.mjs";
 import { captionLocalesOf, chosenLocales, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
 import { approvedEpisodes, ARTIFACTS, dubArtifacts, lintProject, loadProject } from "../core/state.mjs";
 import { chapterList, checkChapters, estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
@@ -209,7 +209,7 @@ export async function run(command, args, ctx) {
 
   const items = [];
   let who = null;
-  items.push(assembleItem({ checks, current: checksCurrent(doc, lexicon, checks, clips, keyframes) && brandingMatches && (!applied || checks.metrics?.frames === presented?.total_frames), finalExists, stale: !brandingMatches ? "another branding selection" : pictures ? "an older script, look, pictures, music or effects" : undefined }));
+  items.push(assembleItem({ checks, current: checksCurrent(doc, lexicon, checks, clips, keyframes) && brandingMatches && (!applied || checks.metrics?.frames === presented?.total_frames), finalExists, doc, timeline, presented, timelineCurrent, minMinutes: needsMinimumLength(doc) ? minEpisodeMinutes() : 0, stale: !brandingMatches ? "another branding selection" : pictures ? "an older script, look, pictures, music or effects" : undefined }));
   items.push(renderItem({ manifest: frames, cache, visual, speech, subtitles: drama ? subtitlesHash(doc) : null, burnIn: drama && burnIn(doc), hasThumbnail: Boolean(doc.thumbnail) }));
   items.push(narrationItem({ approval, current: timelineCurrent }));
   if (!timelineCurrent) {

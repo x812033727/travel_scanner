@@ -22,7 +22,7 @@ import { hasCast, illustrated, isDrama, shotScenes } from "../core/drama.mjs";
 import { atomicWrite, docDir, isInside, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { chosenLocales, dubRole, dubsForUpload, LANGUAGES_FILE, metadataLocalesOf, readLanguages } from "../core/stages.mjs";
 import { ARTIFACTS, loadProject, pipelineStatus } from "../core/state.mjs";
-import { narrationLocale } from "../core/schema.mjs";
+import { narrationLocale, VIDEO_CATEGORIES } from "../core/schema.mjs";
 import { narrativeHash, scriptScenes, writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckMatches } from "../core/script-check.mjs";
 import { estimateTimeline, formatClock } from "../core/timeline.mjs";
@@ -841,6 +841,8 @@ export async function reviewPush(args, ctx) {
         // docs/videos/ILLUSTRATED.md); the worker reports it too (automation/flow.mjs).
         format: project.doc.format ?? "slides",
         ...(sourceGuide ? { source_guide: sourceGuide } : {}),
+        // The site files an unfiled video under it and never overwrites the owner's choice.
+        ...(VIDEO_CATEGORIES.includes(project.doc.category) ? { category: project.doc.category } : {}),
         // An episode names its series and number; a compilation only its series (docs/videos/BINGE.md).
         ...(isCompilation(project.doc) ? { series_slug: project.doc.compilation.series } : project.doc.series ? { series_slug: project.doc.series.slug, episode_number: project.doc.series.episode } : {}),
       },

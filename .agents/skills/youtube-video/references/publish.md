@@ -126,5 +126,5 @@ YouTube 要自動產生章節列，說明欄的時間戳必須：第一個是 `0
 - **官方沒寫的**：頁面沒有明說「要先有那個語言的配音或字幕」，也沒寫縮圖的尺寸、大小或數量限制，沒提 API。2026-09-28 開票時記的「要先有音軌」這次在頁面上找不到原文；能確定的只有步驟是「點語言名稱」，所以那個語言要先列在影片的「語言」頁——上傳包的字幕、標題說明或配音送上去後就會列出。尺寸照一般縮圖（1280×720、2 MB 以內），`render` 與 `qa` 就是照這個檢查。
 - **只能在 Studio 手動上傳**：頁面只寫了 Studio 的做法，網站也不送它。`UPLOAD.md` 有一節「各語言的縮圖」列檔案與步驟。
 - **怎麼來的**：`i18n-sheet` 的 metadata 部件多一個 `thumbnail`（`tag`、`headline`、`sub`，只列 zh-TW 縮圖有的那幾個字），`i18n-merge` 寫進 `i18n/<語系>.json` 的 `thumbnail`，雜湊在 `source_hashes.thumbnail`（三個字當一筆算，zh-TW 縮圖任何一個字改了就整組過期）。`render` 對每個縮圖文字是最新的語系，用同一張背景與版型畫 `thumbnails/<語系>.jpg`；`package` 只收畫的時候用的字和現在 `i18n` 一樣的那幾張。
-- **不擋上架**：縮圖文字是選配。沒翻、過期、字型沒有那個字（韓文有幾個音節內建字型缺）、版面塞不下的語系只記成 note（`render` 的輸出、`metadata.json` 的 `skipped_thumbnail_locales`、`UPLOAD.md`），那個語言就用 `thumbnail.jpg`。`i18n-merge` 對縮圖文字的問題也只印 note，不讓合併失敗；`qa` 的縮圖項目對每張語言縮圖再跑一次同樣的檢查，有問題只出 warning。
+- **不擋上架**：縮圖文字是選配。沒翻、過期、字型沒有那個字（ko 與 zh-CN 的縮圖各用自己的 Noto Sans KR／SC 排在第一，其他語系用投影片的 Noto Sans TC）、版面塞不下的語系只記成 note（`render` 的輸出、`metadata.json` 的 `skipped_thumbnail_locales`、`UPLOAD.md`），那個語言就用 `thumbnail.jpg`。`i18n-merge` 對縮圖文字的問題也只印 note，不讓合併失敗；`qa` 的縮圖項目對每張語言縮圖再跑一次同樣的檢查，有問題只出 warning。
 - **變體**：A/B 測試的 `thumbnail-b.jpg`／`thumbnail-c.jpg` 只有 zh-TW，語言縮圖照 A 版做。

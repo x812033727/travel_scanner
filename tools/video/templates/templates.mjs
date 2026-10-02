@@ -4,6 +4,7 @@
 // with three items and three reveals starts empty and gains one item per reveal; with no reveals
 // every item is there from the start. Elements that appear in a state get the `enter` class, and
 // the renderer freezes that entrance animation frame by frame (tools/video/render/browser.mjs).
+import { LOCALE_FONTS, SLIDE_FAMILY } from "../render/fonts.mjs";
 import { TERMINAL_CSS, TERMINAL_SPEC, terminalBody } from "./terminal/terminal.mjs";
 
 export const ORIGIN = "https://video.local";
@@ -327,14 +328,19 @@ const RENDERERS = {
 };
 
 // Exported for the screencast template (tools/video/screencast/scene.mjs), which draws its own body.
-export function page(body, size, extraCss = "") {
+// `locale` is a caption locale's thumbnail set in a font of its own (fonts.mjs LOCALE_FONTS): that
+// font is loaded and put first, before the slide font. Every other page is byte for byte what it
+// was, so no frame key of an existing video moves.
+export function page(body, size, extraCss = "", { locale = null } = {}) {
+  const own = LOCALE_FONTS[locale] ?? null;
   return [
     "<!doctype html>",
-    '<html lang="zh-Hant"><head><meta charset="utf-8">',
+    `<html lang="${own ? own.lang : "zh-Hant"}"><head><meta charset="utf-8">`,
+    own ? `<link rel="stylesheet" href="${ORIGIN}/fonts/${own.font}/index.css">` : "",
     `<link rel="stylesheet" href="${ORIGIN}/fonts/noto-sans-tc/index.css">`,
     `<link rel="stylesheet" href="${ORIGIN}/fonts/jetbrains-mono/index.css">`,
     `<link rel="stylesheet" href="${ORIGIN}/theme.css">`,
-    `<style>:root{--width:${size.width}px;--height:${size.height}px}${extraCss}</style>`,
+    `<style>:root{--width:${size.width}px;--height:${size.height}px${own ? `;--font:"${own.family}","${SLIDE_FAMILY}",sans-serif` : ""}}${extraCss}</style>`,
     `</head><body>${body}</body></html>`,
   ].join("");
 }
@@ -459,9 +465,10 @@ const THUMB_RIGHT_CSS =
  * The thumbnail as a page. `background` is the URL of a picture to fill it with (a drama's
  * keyframe, served from the work directory); without one the theme's ring decorates it.
  * `series` names a series' own look (THUMB_SERIES); without one, and without `data.layout`,
- * the page is byte for byte what it always was.
+ * the page is byte for byte what it always was. `locale` is the caption locale a translated
+ * thumbnail is for: Korean and Simplified Chinese are set in their own font (page).
  */
-export function thumbnailHtml(thumbnail, { background = null, series = null } = {}) {
+export function thumbnailHtml(thumbnail, { background = null, series = null, locale = null } = {}) {
   const data = thumbnail.data;
   const own = THUMB_SERIES[series] ?? null;
   const right = data.layout === "right";
@@ -478,7 +485,7 @@ export function thumbnailHtml(thumbnail, { background = null, series = null } = 
     own ? `<div class="thumb-stamp" aria-hidden="true">${own.stamp.map((row) => `<span>${escapeHtml(row)}</span>`).join("")}</div>` : "",
   ].join("");
   const css = [background ? THUMB_BACKGROUND_CSS : "", right ? THUMB_RIGHT_CSS : "", own ? THUMB_SERIES_CSS[series] : ""].join("");
-  return page(body, THUMB_SIZE, css);
+  return page(body, THUMB_SIZE, css, { locale });
 }
 
 /** The characters a slide will draw, for the font coverage check. */

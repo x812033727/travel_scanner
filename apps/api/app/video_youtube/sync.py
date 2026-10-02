@@ -61,6 +61,7 @@ from app.video_youtube.requests import (
     insert_body,
     language_key,
     locale_of_role,
+    narration_language,
     text_problem,
     update_body,
 )
@@ -183,6 +184,14 @@ def read_approved_package(
     if review is None:
         raise Refused(409, "video_youtube_not_ready", "這支影片還沒有核准的上傳包")
     base = read_package(store, slug, review)
+    try:
+        # The defaults YouTube gets are the approved narration language; refuse here, on the
+        # owner's card, a language the request bodies could only mislabel.
+        narration_language(base.metadata)
+    except ValueError as error:
+        raise language_package.invalid(
+            "核准上傳包的原旁白語言不是網站製作的語言，請重新產生上傳包"
+        ) from error
     final = next((row for row in rows if row.gate == "final" and row.subject is None), None)
     if final is not None and (
         final.status != "approved" or final.content_sha256 != base.metadata.get("final_sha256")

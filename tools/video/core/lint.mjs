@@ -4,10 +4,10 @@
 // The written-language list is the one the recorded route's video_kit.py uses, so a script that
 // passes one route's check does not fail the other's.
 import { cadenceProblems, HOOK_SECONDS as ILLUSTRATED_HOOK_SECONDS } from "./cadence.mjs";
-import { emotionProblems, EXPLAINER_PRESET, illustrated, isDrama, isShot, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
+import { emotionProblems, EXPLAINER_PRESET, illustrated, isDrama, isShot, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription } from "./metadata.mjs";
-import { DEFAULT_TARGET_MINUTES, LOCALES, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
+import { DEFAULT_TARGET_MINUTES, LOCALES, minEpisodeMinutes, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
 import { isStory, storyProblems } from "./story.mjs";
 import { DEFAULT_CPM, FPS, chapterList, checkChapters, estimateTimeline, formatClock, frameToSeconds, spokenUnits } from "./timeline.mjs";
 import { metadataStatus, namedWith } from "./translations.mjs";
@@ -300,7 +300,13 @@ export function lintVideo(doc, context = {}) {
   }
   const minutes = frameToSeconds(timeline.total_frames) / 60;
   const [low, high] = doc.target_minutes ?? DEFAULT_TARGET_MINUTES;
-  if (minutes < low || minutes > high) warn("scenes", `about ${minutes.toFixed(1)} minutes; the target is ${low}-${high}`);
+  // Every episode but a drama's runs at least eight minutes. The estimate reads 250 characters a
+  // minute and the voice speaks about 300, so a script that clears it here can still come out
+  // short: qa's assemble item measures the cut.
+  const floor = needsMinimumLength(doc) ? minEpisodeMinutes() : 0;
+  if (low < floor) error("target_minutes", `starts at ${low} minutes; every episode but a drama's runs at least ${floor}`);
+  if (minutes < floor) error("scenes", `about ${minutes.toFixed(1)} minutes; every episode but a drama's runs at least ${floor}: write more narration`);
+  else if (minutes < low || minutes > high) warn("scenes", `about ${minutes.toFixed(1)} minutes; the target is ${low}-${high}`);
 
   const article = context.pack ? articleUrl(context.pack, narration, doc.slug) : null;
   const description = composeDescription({ body: doc.youtube.description, timeline, article, sources: doc.sources ?? [], locale: narration, tags: doc.youtube.tags });

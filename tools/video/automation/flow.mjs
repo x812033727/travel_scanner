@@ -15,11 +15,12 @@ import path from "node:path";
 
 import { approvalState, approve, GATES, sha256File } from "../core/approvals.mjs";
 import { EXPLAINER_PRESET, illustrated, SLIDES_PRESET } from "../core/drama.mjs";
+import { effectiveEpisodeMinutes } from "../core/duration.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
 import { articlePath, SITE } from "../core/metadata.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, UsageError } from "../core/paths.mjs";
-import { eachLine, LINE_ID, NARRATION_LOCALE, narrationLocale, spokenText } from "../core/schema.mjs";
+import { eachLine, LINE_ID, minEpisodeMinutes, NARRATION_LOCALE, narrationLocale, spokenText, VIDEO_CATEGORIES } from "../core/schema.mjs";
 import { writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckBinding, scriptCheckMatches, scriptCheckUnbound } from "../core/script-check.mjs";
 import { LOCALE_PARTS, readLanguages, writeLanguages } from "../core/stages.mjs";
@@ -39,6 +40,21 @@ import { rewriteProblems } from "./rewrite.mjs";
 import { advanceCompilation, startCompilation } from "./compilation.mjs";
 import { castFrom, episodeBrief, isExplainerOneOff, isOneOff, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
 import { episodeSeries, episodeShortFields, episodeShortsProblems, shortsFile } from "../shorts/episode.mjs";
+
+// Slides keep the general eight-minute floor. Explainers use the reviewed ten-minute default
+// when an older request or saved state still names a shorter length.
+const slidesMinutes = (settings) => {
+  const low = Math.max(minEpisodeMinutes(), settings.target_minutes_min);
+  return [low, Math.max(low, settings.target_minutes_max)];
+};
+const episodeMinutes = (minutes, preset) => {
+  try {
+    return effectiveEpisodeMinutes(minutes, preset) ?? 3;
+  } catch (error) {
+    if (error instanceof RangeError) throw new UsageError(error.message);
+    throw error;
+  }
+};
 
 export const STATE_FILE = "auto.json";
 const GLOBAL_FILE = "auto-state.json";
@@ -342,18 +358,24 @@ const digitsOf = (text) => (String(text).match(/\d+(?:[.,]\d+)*/g) ?? []).join("
 /** A unit's report line names its video once: a phrase gets the slug, a line that has it stays. */
 const lineFor = (slug, text) => (text.startsWith(`${slug}: `) ? text : `${slug}: ${text}`);
 
-/** The YouTube id the script records, or null: a report without it would clear the site's. */
-function recordedVideoId(state, root) {
+/**
+ * What the script records for the site: the YouTube id, or null (a report without it would clear
+ * the site's), and the video's category, the state's first (a brand story has it before its
+ * video.json exists), or null. The site fills a category only on a video nobody has filed yet.
+ */
+function recorded(state, root) {
   const video = readJson(path.join(docDir(state.slug, root), "video.json"), null);
   const id = video?.youtube?.video_id;
-  return YOUTUBE_ID.test(id ?? "") ? id : null;
+  const category = state.category ?? video?.category;
+  return { videoId: YOUTUBE_ID.test(id ?? "") ? id : null, category: VIDEO_CATEGORIES.includes(category) ? category : null };
 }
 
-/** Hand everything the automation knows to /admin/videos: title, stage, checklist, article, format, YouTube id. */
+/** Hand everything the automation knows to /admin/videos: title, stage, checklist, article, format, category, YouTube id. */
 async function report(ctx, api, state, stage) {
   const workdir = resolveWorkdir({ env: ctx.env, slug: state.slug, root: ctx.root, home: ctx.home });
   const status = await pipelineStatus({ slug: state.slug, root: ctx.root, workdir });
   const guide = mainGuide(state);
+  const { videoId, category } = recorded(state, ctx.root);
   // The page has no field for why a video stopped; the checklist is what the owner reads.
   const blocked = state.status === "blocked" && state.blocked ? [{ key: "blocked", label: `卡住，需要人處理：${state.blocked}`.slice(0, 120), done: false }] : [];
   await api.report(state.slug, {
@@ -361,8 +383,9 @@ async function report(ctx, api, state, stage) {
     stage: stage.slice(0, 40),
     checklist: [...blocked, ...checklistFrom(status.steps)],
     format: state.format ?? "slides",
-    youtube_video_id: recordedVideoId(state, ctx.root),
+    youtube_video_id: videoId,
     ...(guide ? { source_guide: guide } : {}),
+    ...(category ? { category } : {}),
     ...(state.series ? { series_slug: state.series.slug, ...(Number.isInteger(state.series.episode) ? { episode_number: state.series.episode } : {}) } : {}),
     ...(state.retry_request_id ? { retry_acknowledged_id: state.retry_request_id } : {}),
   });
@@ -735,7 +758,7 @@ export class Automation {
       // A drama's own topic scope (the drama part's), the topics to avoid shared by both.
       scope: settingsFor(this.settings, format).topicScope,
       avoid: this.settings.topic_avoid,
-      target_minutes: [this.settings.target_minutes_min, this.settings.target_minutes_max],
+      target_minutes: slidesMinutes(this.settings),
       channel: refs.channel,
       formats: refs.formats,
       script_writing: refs.script_writing,
@@ -843,7 +866,7 @@ export class Automation {
     const earlier = this.earlierVideos();
     const taken = new Set(earlier.map((video) => video.slug));
     const usedGuides = new Set(earlier.map((video) => video.source_guide).filter(Boolean));
-    const minutes = Number(request.target_minutes) || 3;
+    const minutes = episodeMinutes(request.target_minutes, request.style_preset);
     const stateBase = { format: "drama", request_id: request.id, premise: request.premise, style_preset: request.style_preset ?? null, target_minutes: minutes, source_guide: request.source_guide ?? null };
     const sources = request.source_guide ? await readSources(this.read, [siteArticleUrl(request.source_guide, this.ctx.root)]) : [];
     let plan = null;
@@ -924,7 +947,7 @@ export class Automation {
       request_id: request.id,
       premise: request.premise,
       style_preset: series.style_preset ?? null,
-      target_minutes: Number(request.target_minutes) || series.target_minutes || 3,
+      target_minutes: episodeMinutes(request.target_minutes ?? series.target_minutes, series.style_preset),
       source_guide: request.source_guide ?? null,
       // The binge fields (docs/videos/BINGE.md) travel with a series' episode: the genre section
       // of every prompt, the visual tier lint holds the script to, whether the gates are
@@ -1251,7 +1274,8 @@ export class Automation {
     const usedGuides = new Set(earlier.map((video) => video.source_guide).filter(Boolean));
     const drama = state.format === "drama";
     const { topics } = drama ? { topics: [] } : await this.api.topics();
-    const extra = drama ? { premise: state.premise, target_minutes: [state.target_minutes ?? 3, state.target_minutes ?? 3], source_guide: state.source_guide, ...this.dramaPayload(state) } : { topics };
+    if (drama) state.target_minutes = episodeMinutes(state.target_minutes, state.style_preset);
+    const extra = drama ? { premise: state.premise, target_minutes: [state.target_minutes, state.target_minutes], source_guide: state.source_guide, ...this.dramaPayload(state) } : { topics };
     const answer = await this.stage("planner", state.slug, this.planPayload({ ...extra, owner_note: note, sent_back_by: by === "Jev" ? "jev" : "owner", previous_brief: previous, slug: state.slug }, earlier, state.format), 16_000, state.format, drama ? this.variantOf(state) : null);
     const problem = planProblem({ ...answer, slug: state.slug }, taken, drama && state.source_guide ? new Set() : usedGuides, state.format, this.stance, state.style_preset ?? null);
     state.replans += 1;
@@ -1270,12 +1294,13 @@ export class Automation {
     const refs = this.reference();
     const lexicon = readJson(lexiconFile(this.ctx.root), { terms: {} });
     const drama = state.format === "drama";
+    if (drama) state.target_minutes = episodeMinutes(state.target_minutes, state.style_preset);
     return {
       today: today(this.ctx),
       slug: state.slug,
       voice: settingsFor(this.settings, state.format).voice,
       source_guide: state.source_guide,
-      target_minutes: drama ? [state.target_minutes ?? 3, state.target_minutes ?? 3] : [this.settings.target_minutes_min, this.settings.target_minutes_max],
+      target_minutes: drama ? [state.target_minutes, state.target_minutes] : slidesMinutes(this.settings),
       lexicon: Object.keys(lexicon.terms),
       script_writing: refs.script_writing,
       channel: refs.channel,
@@ -1485,6 +1510,7 @@ export class Automation {
   }
 
   async write(state) {
+    if (state.format === "drama") state.target_minutes = episodeMinutes(state.target_minutes, state.style_preset);
     const dir = docDir(state.slug, this.ctx.root);
     if (existsSync(path.join(dir, "video.json"))) {
       // A draft exists and only fails lint: fix it rather than write a new one.

@@ -25,6 +25,9 @@ import { loadProject } from "./state.mjs";
 import { buildTimeline, estimateTimeline, SAMPLE_RATE, speechHash, visualHash } from "./timeline.mjs";
 import { sourceHashes } from "./translations.mjs";
 
+// The fixture videos run seconds; the eight-minute floor has tests of its own.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
+
 const context = (overrides = {}) => ({ lexicon: fixtureLexicon(), brief: enBrief(), others: [], translations: {}, ...overrides });
 const messages = (problems) => problems.map((problem) => problem.message).join("\n");
 

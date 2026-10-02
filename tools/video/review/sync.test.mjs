@@ -21,6 +21,9 @@ import { encodeWav } from "../tts/wav.mjs";
 import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeTranslations } from "../compile/fixture.mjs";
 import { audioCheck, checklistFrom, clearedSummary, downloadNote, guideSlugs, judgeBody, MAX_REVIEW_FILES, outlineOptions, PART_BYTES, previewArgs, REVIEW_GATES, sourceGuideOf, STEP_LABELS, storyboardSheets, uploadItems } from "./sync.mjs";
 
+// The fixture videos run seconds; the eight-minute floor has tests of its own.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
+
 const TOKEN = `mkv_${"r".repeat(43)}`;
 const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");
 
@@ -216,10 +219,11 @@ test("the article a video retells is its source_guide, or else the first site ar
   assert.equal(sourceGuideOf({ sources: [{ url: served[0] }] }), "ai-news-gpt-6-sol-luna-20260923");
 });
 
-test("review-push --report-only lists the video on the site with its article and submits nothing", async () => {
+test("review-push --report-only lists the video on the site with its article and category and submits nothing", async () => {
   const box = sandbox();
   const file = path.join(box.dir, "video.json");
   const doc = JSON.parse(readFileSync(file, "utf8"));
+  doc.category = "tutorial";
   doc.sources.push({ title: "站內文章", url: "https://mokaair.com/zh-TW/guides/ai-workflow-cost-quality-latency", checked_on: "2026-09-24" });
   writeFileSync(file, `${JSON.stringify(doc, null, 2)}\n`);
   const server = site();
@@ -231,6 +235,7 @@ test("review-push --report-only lists the video on the site with its article and
   assert.equal(await main(["review-push", "--slug", box.slug, "--report-only"], push.ctx), EXIT.ok, push.out.stderr);
   assert.deepEqual(server.state.calls.map((call) => call.method), ["PUT"]);
   assert.equal(reported.source_guide, "ai-workflow-cost-quality-latency");
+  assert.equal(reported.category, "tutorial", "video.json's category files the video on the site");
   assert.match(push.out.stdout, /nothing submitted/);
 });
 

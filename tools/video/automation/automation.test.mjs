@@ -10,9 +10,9 @@ import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { EXIT, main } from "../cli.mjs";
 import { readApprovals } from "../core/approvals.mjs";
 import { lookHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
-import { dramaFixture, enFixture, fixture, sandbox } from "../core/fixtures/load.mjs";
+import { dramaFixture, enFixture, explainerBrief, explainerFixture, fixture, sandbox } from "../core/fixtures/load.mjs";
 import { shortsFile } from "../shorts/episode.mjs";
-import { atomicWrite, readJson, ROOT } from "../core/paths.mjs";
+import { atomicWrite, readJson, ROOT, UsageError } from "../core/paths.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { dubArtifacts, loadProject, pipelineStatus } from "../core/state.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
@@ -25,6 +25,9 @@ import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs"
 import { Automation, automatedVideos, mainGuide, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, settingsFor, settle, sheetDone, siteArticleUrl, siteSources } from "./flow.mjs";
 import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, SOURCE_INSTRUCTIONS, STANCE_HEADING, TRANSLATOR_REWORD, TRANSLATOR_SHORTEN } from "./prompts.mjs";
 import { tidyRound } from "./tidy.mjs";
+
+// The fixture videos run seconds; the eight-minute floor has tests of its own.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
 
 const TOKEN = `mkv_${"t".repeat(43)}`;
 const SITE = "https://site.test";
@@ -456,6 +459,7 @@ test("a video the owner drops is left alone, frees its place and keeps its topic
   automation.refs = smallRefs;
   await automation.step();
   assert.equal(site.calls.reports[0].source_guide, "chatgpt-ads-status", "the site learns the article");
+  assert.equal("category" in site.calls.reports[0], false, "a video with no category leaves the filing to the owner");
   Object.assign(site.listed.get(slug), { dropped_at: "2026-09-25T09:30:00Z", dropped_note: "第二批做過了" });
   assert.match(await automation.step(), /the owner dropped it \(第二批做過了\)/);
   assert.equal(automatedVideos(box.work)[0].status, "dropped");
@@ -735,10 +739,83 @@ test("an explainer request plans, writes and checks with the explainer prompts, 
   assert.equal(planner.variant, "explainer");
   assert.match(planner.instructions, /illustrated "why" explainer/);
   assert.equal(planner.payload.drama_settings.style_preset, "flat-explainer");
+  assert.deepEqual(planner.payload.target_minutes, [8, 8], "the owner's explicit valid target is retained");
   const state = automatedVideos(box.work).find((each) => each.slug === "why-thunder-is-late");
   assert.equal(automation.variantOf(state), "explainer");
   assert.equal(automation.variantOf({ ...state, style_preset: "ink-wash" }), null);
   assert.equal(automation.variantOf({ ...state, series: { slug: "s", episode: 1 } }), "episode", "a series episode keeps its own variant");
+});
+
+test("new legacy or missing explainer requests plan ten minutes and reject an invalid target before asking a model", async () => {
+  const plannedBrief = `${explainerBrief()}\n### 選項 B：從賽跑講起\n一行說明：光聲賽跑。\n開場鉤子：「誰先到？」\n`;
+  for (const target of [undefined, 3]) {
+    const box = sandbox();
+    const slug = "legacy-thunder-request";
+    const request = { id: "8b2e3d4c-5b6a-4f7e-9b8c-0d1e2f3a4b5c", premise: "為什麼雷聲晚到？", style_preset: "flat-explainer", target_minutes: target };
+    const site = fakeSite({ dramaRequests: [request], answers: { planner: () => ({ slug, brief: plannedBrief, source_urls: [] }) } });
+    const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-02T02:00:00Z") });
+    const automation = new Automation(ctx, automationClient(ctx), site.settings);
+    automation.refs = smallRefs;
+    assert.match(await automation.draftDrama(request), /planned from the owner's request/);
+    assert.deepEqual(site.calls.run[0].payload.target_minutes, [10, 10]);
+    assert.equal(readJson(path.join(box.work, slug, "auto.json")).target_minutes, 10);
+    await assert.rejects(automation.draftDrama({ ...request, target_minutes: 21 }), UsageError);
+    assert.equal(site.calls.run.length, 1, "an invalid target never reaches the model or starts a second request");
+  }
+});
+
+test("an approved legacy explainer episode keeps the ten-minute target for its writer", async () => {
+  const box = sandbox();
+  const slug = "legacy-thunder-episode";
+  const site = fakeSite();
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-02T02:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  const series = { slug: "thunder", kind: "one-off", title: "雷聲", premise: "雷聲為什麼晚到？", style_preset: "flat-explainer", target_minutes: 3 };
+  const episode = { number: 1, chapter_number: 0, title: "雷聲", beats: { question: "雷聲為什麼晚到？", answer: "光速遠快於聲速。", reasons: ["光速", "聲速"] } };
+  await automation.draftEpisode({ id: "request", slug, premise: series.premise, target_minutes: 3 }, { series, setting: { body_json: { characters: [] } }, episodes: [episode] }, episode);
+  const state = readJson(path.join(box.work, slug, "auto.json"));
+  assert.equal(state.target_minutes, 10);
+  assert.deepEqual(automation.scriptPayload(state, {}).target_minutes, [10, 10]);
+});
+
+test("a saved three-minute explainer uses ten in lint fixes, script fixes and replanning, then persists the repaired target", async () => {
+  const slug = "legacy-thunder-state";
+  const box = sandbox(slug, "explainer");
+  const plannedBrief = `${explainerBrief()}\n### 選項 B：從賽跑講起\n一行說明：光聲賽跑。\n開場鉤子：「誰先到？」\n`;
+  const site = fakeSite({ answers: {
+    writer: () => ({ video: explainerFixture() }),
+    planner: () => ({ slug, brief: plannedBrief, source_urls: [] }),
+  } });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-02T02:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  const original = { slug, title: "雷聲", format: "drama", style_preset: "flat-explainer", target_minutes: 3, source_urls: [], replans: 0, notes: [], status: "active" };
+  automation.persist(original);
+  const state = readJson(path.join(box.work, slug, "auto.json"));
+  const invalid = explainerFixture();
+  invalid.youtube.title = "";
+  assert.equal(await automation.saveAndLint(state, { video: invalid }), null, "the real lint failure is fixed by the writer");
+  assert.deepEqual(site.calls.run[0].payload.target_minutes, [10, 10]);
+  assert.ok(site.calls.run[0].payload.lint_errors.length > 0);
+
+  state.target_minutes = 3;
+  assert.match(await automation.write(state), /script fixed and passes lint/);
+  assert.equal(readJson(path.join(box.work, slug, "auto.json")).target_minutes, 10, "an existing valid script also repairs its old writer state");
+
+  state.target_minutes = 3;
+  assert.match(await automation.fixScript(state, "展開每個原因"), /screenplay rewritten/);
+  assert.deepEqual(site.calls.run.at(-1).payload.target_minutes, [10, 10]);
+  assert.equal(readJson(path.join(box.work, slug, "auto.json")).target_minutes, 10);
+
+  state.target_minutes = 3;
+  assert.match(await automation.replan(state, "多補一個具體例子"), /brief rewritten/);
+  assert.deepEqual(site.calls.run.at(-1).payload.target_minutes, [10, 10]);
+  assert.equal(readJson(path.join(box.work, slug, "auto.json")).target_minutes, 10);
+  for (const [preset, target] of [["cinematic-3d", 3], ["anime-2d", 13], ["flat-explainer", 20]]) {
+    assert.deepEqual(automation.scriptPayload({ ...state, style_preset: preset, target_minutes: target }, {}).target_minutes, [target, target]);
+  }
+  assert.throws(() => automation.scriptPayload({ ...state, target_minutes: 21 }, {}), UsageError);
 });
 
 test("an owner's drama request is planned first, its failed sheets go back to the writer, the gates wait for the owner, and a spent cap blocks the clips", async () => {
@@ -1206,12 +1283,16 @@ test("from the picked outline to YouTube without the owner: the final gate sends
   assert.equal(await automation.step(), null, "nothing left but the owner's upload");
 
   // The owner uploaded it and pasted the address on /admin/videos: the id comes back into the script.
+  // A category video.json carries goes with every report (the site fills it only on an unfiled video).
+  writeFileSync(docFile, `${JSON.stringify({ ...readJson(docFile), category: "tutorial" }, null, 2)}
+`);
   site.listed.get(slug).youtube_video_id = "dQw4w9WgXcQ";
   assert.match(await automation.step(), /^chatgpt-ads-off: on YouTube as dQw4w9WgXcQ; video\.json records it and the video is complete$/);
   assert.equal(readJson(docFile).youtube.video_id, "dQw4w9WgXcQ");
   assert.equal(state().youtube_video_id, "dQw4w9WgXcQ");
   const last = site.calls.reports.at(-1);
   assert.deepEqual([last.stage, last.youtube_video_id], ["on YouTube", "dQw4w9WgXcQ"], "the report carries the id, so the site keeps it");
+  assert.equal(last.category, "tutorial", "the report files the video under video.json's category");
   assert.ok(last.checklist.every((item) => item.done), "every step reads as done");
   const status = await pipelineStatus({ slug, root: box.root, workdir });
   assert.equal(status.next, null);
