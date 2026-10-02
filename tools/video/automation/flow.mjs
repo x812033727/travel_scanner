@@ -19,7 +19,7 @@ import { emptyLexicon } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
 import { articlePath, SITE } from "../core/metadata.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, UsageError } from "../core/paths.mjs";
-import { eachLine, LINE_ID, NARRATION_LOCALE, narrationLocale, spokenText } from "../core/schema.mjs";
+import { eachLine, LINE_ID, NARRATION_LOCALE, narrationLocale, spokenText, textHash } from "../core/schema.mjs";
 import { writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckBinding, scriptCheckMatches, scriptCheckUnbound } from "../core/script-check.mjs";
 import { LOCALE_PARTS, readLanguages, writeLanguages } from "../core/stages.mjs";
@@ -101,13 +101,41 @@ function saveState(workdir, state) {
   atomicWrite(path.join(workdir, STATE_FILE), `${JSON.stringify(state, null, 2)}\n`);
 }
 
-/** Whether a translation worksheet has nothing left to fill, for the parts it holds (i18n-sheet --parts). */
-export function sheetDone(sheet) {
+/**
+ * Whether a translation worksheet has nothing left to fill, for the parts it holds (i18n-sheet
+ * --parts). The thumbnail's words count only when the sheet has a `thumbnail` entry and the
+ * translator has not been asked for those words yet: `askedThumbnail` is the hash
+ * (thumbnailAskHash) recorded when it was. They are optional (i18n-merge only notes them), so
+ * a translator that leaves them empty is asked once per thumbnail, not every round.
+ */
+export function sheetDone(sheet, askedThumbnail = null) {
   const filled = (entry) => typeof entry?.text === "string" && entry.text.trim() !== "";
   const parts = Array.isArray(sheet.parts) && sheet.parts.length ? sheet.parts : ["metadata", "captions"];
   const captions = !parts.includes("captions") || !(sheet.lines ?? []).some((line) => line.todo);
   const metadata = !parts.includes("metadata") || (filled(sheet.title) && filled(sheet.description) && (sheet.chapters ?? []).every(filled) && Array.isArray(sheet.tags?.text) && sheet.tags.text.length > 0);
-  return captions && metadata;
+  const words = sheet.thumbnail?.source;
+  const thumbnail = !parts.includes("metadata") || !words || thumbnailAskHash(sheet) === askedThumbnail
+    || Object.keys(words).every((name) => typeof sheet.thumbnail.text?.[name] === "string" && sheet.thumbnail.text[name].trim() !== "");
+  return captions && metadata && thumbnail;
+}
+
+/** The hash of the thumbnail words a sheet asks for (its `thumbnail.source`), or null without them. */
+export function thumbnailAskHash(sheet) {
+  const words = sheet?.thumbnail?.source;
+  return words && typeof words === "object" ? textHash(JSON.stringify(words)) : null;
+}
+
+/**
+ * The worksheet a model hands back, with the sheet's identity and its thumbnail's `source` and
+ * `todo` whatever the model left out. A model that drops the thumbnail keeps `fallback`'s words
+ * (the translator's, when the caption reviewer answers without them), else the sheet's own.
+ */
+function keptWorksheet(worksheet, sheet, locale, fallback = null) {
+  const kept = { ...worksheet, locale, slug: sheet.slug, parts: sheet.parts };
+  if (!sheet.thumbnail) return kept;
+  const words = (entry) => (entry?.text && typeof entry.text === "object" && !Array.isArray(entry.text) ? entry.text : null);
+  kept.thumbnail = { ...sheet.thumbnail, text: words(worksheet.thumbnail) ?? words(fallback?.thumbnail) ?? sheet.thumbnail.text };
+  return kept;
 }
 
 /**
@@ -1854,7 +1882,7 @@ export class Automation {
     if (!pending.length && zhNarrated) return null;
     const project = loadProject({ slug, root: ctx.root });
     const doc = project.doc;
-    const channel = zhNarrated ? null : this.channelLocale(project, workdir);
+    const channel = zhNarrated ? null : this.channelLocale(project, workdir, state);
     if (!pending.length && !channel) return null;
     for (const { locale, parts } of [...(channel ? [channel] : []), ...pending]) {
       const sheetParts = parts.filter((part) => part !== "dub");
@@ -1949,8 +1977,8 @@ export class Automation {
    * making. Owed, as { locale, parts } like a pending choice, while its translation is not
    * current or while an upload package written before it lacks it; null once both are in.
    */
-  channelLocale(project, workdir) {
-    const translated = sheetDone(buildSheet(project.doc, project.translations[NARRATION_LOCALE], NARRATION_LOCALE, null, SHEET_PARTS));
+  channelLocale(project, workdir, state) {
+    const translated = sheetDone(buildSheet(project.doc, project.translations[NARRATION_LOCALE], NARRATION_LOCALE, null, SHEET_PARTS), state.thumbnails_asked?.[NARRATION_LOCALE] ?? null);
     const upload = path.join(workdir, "upload");
     const packaged = !existsSync(path.join(upload, "metadata.json"))
       || (existsSync(path.join(upload, `description.${NARRATION_LOCALE}.txt`)) && existsSync(path.join(upload, "captions", `${NARRATION_LOCALE}.srt`)));
@@ -1971,17 +1999,22 @@ export class Automation {
     const sheetFile = path.join(workdir, "i18n", `${locale}.todo.json`);
     const sheet = readJson(sheetFile, null);
     if (!sheet) return this.block(state, `no ${locale} worksheet was written`);
-    if (sheetDone(sheet)) return null;
-    // The sheet's identity travels with it, whatever the model leaves out.
-    const keep = (worksheet) => ({ ...worksheet, locale, slug: sheet.slug, parts: sheet.parts });
+    if (sheetDone(sheet, state.thumbnails_asked?.[locale] ?? null)) return null;
+    // The sheet's identity and its thumbnail's source travel with it, whatever the model leaves out.
     const translated = await this.stage("translator", state.slug, { locale, parts, worksheet: sheet, video, ...sourceLocale(video) }, 32_000, state.format);
     if (!Array.isArray(translated.worksheet?.lines)) return this.retryLater(state, "translator", `the ${locale} translation returned no worksheet`);
-    writeFileSync(sheetFile, `${JSON.stringify(keep(translated.worksheet), null, 2)}\n`);
-    const reviewed = await this.stage("caption_reviewer", state.slug, { locale, parts, worksheet: keep(translated.worksheet), video, ...sourceLocale(video) }, 32_000, state.format);
-    if (Array.isArray(reviewed.worksheet?.lines)) writeFileSync(sheetFile, `${JSON.stringify(keep(reviewed.worksheet), null, 2)}\n`);
+    const draft = keptWorksheet(translated.worksheet, sheet, locale);
+    writeFileSync(sheetFile, `${JSON.stringify(draft, null, 2)}\n`);
+    const reviewed = await this.stage("caption_reviewer", state.slug, { locale, parts, worksheet: draft, video, ...sourceLocale(video) }, 32_000, state.format);
+    if (Array.isArray(reviewed.worksheet?.lines)) writeFileSync(sheetFile, `${JSON.stringify(keptWorksheet(reviewed.worksheet, sheet, locale, draft), null, 2)}\n`);
     const merged = await run(ctx, ["i18n-merge", "--slug", state.slug, "--locale", locale]);
     if (merged.code !== 0) return this.retryLater(state, "translator", `the ${locale} translation does not merge: ${lastLine(merged.out, 2)}`);
     this.cleared(state, "translator");
+    // The thumbnail's words were asked for once: words i18n-merge left out (its note) keep the
+    // video's own thumbnail for this locale instead of sending the translation round again.
+    const asked = thumbnailAskHash(sheet);
+    if (asked) state.thumbnails_asked = { ...(state.thumbnails_asked ?? {}), [locale]: asked };
+    for (const note of merged.out.split("\n").filter((line) => /^\s*note: thumbnail:/.test(line))) this.log(`  ${locale} ${note.trim()}`);
     saveState(workdir, state);
     await report(ctx, this.api, state, "languages");
     return `${state.slug}: ${locale} ${parts.join(" and ")} translated and reviewed`;

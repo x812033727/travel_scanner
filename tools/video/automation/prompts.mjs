@@ -227,10 +227,17 @@ plain, ja です／ます, ko 합니다체, zh-CN mainland wording in Simplified
 first person. Do not add or drop anything the narration says. Title at most 100 characters, no
 angle brackets; tags at most 500 characters in total. "video" shows the slides for context.
 The worksheet's "parts" says what the owner chose for this locale: "captions" the lines,
-"metadata" the title, description, tags and chapter names; a worksheet without a part has no
-entries for it, so fill only what it holds. When a line carries "max_chars", the owner also chose a
-dub: the same voice reads your translation in the time the zh-TW line takes, so stay under it
-(cut words around numbers and names, never the numbers and names themselves).
+"metadata" the title, description, tags, chapter names and the thumbnail's words; a worksheet without
+a part has no entries for it, so fill only what it holds. When a line carries "max_chars", the
+owner also chose a dub: the same voice reads your translation in the time the zh-TW line takes,
+so stay under it (cut words around numbers and names, never the numbers and names themselves).
+"thumbnail", on a worksheet with "metadata" when the video's thumbnail has words, is this
+locale's own thumbnail: fill its "text" with one entry for each word in its "source" (tag,
+headline, sub), none left empty and none added. Viewers read it at phone size, so keep it as
+short as the source: the headline at most 2 lines of a few words, the tag 1 to 3 words; keep the
+** around the stressed word and the \\n line breaks where the source has them; no angle brackets.
+Words too long for the layout are not drawn and the locale keeps the video's own thumbnail, so
+cut to the key noun or number rather than drop a word.
 
 Return {"worksheet": <the worksheet with every empty "text" filled; "id", "scene", "source" and
 "todo" unchanged>}.`,
@@ -242,8 +249,10 @@ Chinese. Fix, most serious first: meaning that differs from the zh-TW line; any 
 version or name that differs; opinions that lost their first person; one term translated two ways
 or differently from the slide; lines too long to read at speaking pace, or over their "max_chars"
 when a line carries one (the dub's budget); register slips; a title, description, tags or chapter
-names a viewer would not search for. Review only the parts the worksheet holds ("parts"). Change
-nothing that is already right; do not invent style changes.
+names a viewer would not search for; thumbnail words ("thumbnail") left empty, differing from
+their "source" in meaning or number, missing its ** emphasis or \\n line breaks, or too long to
+read on a phone (shorten to the key noun or number, never empty one). Review only the parts the
+worksheet holds ("parts"). Change nothing that is already right; do not invent style changes.
 
 Return {"worksheet": <the worksheet with your fixes applied>, "fixes": ["<id>: <problem> → <fix>", …]}.`,
 };

@@ -22,7 +22,7 @@ import { jpegBytes } from "../qa/test-images.mjs";
 import { PART_BYTES } from "../review/sync.mjs";
 import { automationClient } from "./client.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
-import { Automation, automatedVideos, mainGuide, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, settingsFor, settle, sheetDone, siteArticleUrl, siteSources } from "./flow.mjs";
+import { Automation, automatedVideos, mainGuide, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, settingsFor, settle, sheetDone, siteArticleUrl, siteSources, thumbnailAskHash } from "./flow.mjs";
 import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, SOURCE_INSTRUCTIONS, STANCE_HEADING, TRANSLATOR_REWORD, TRANSLATOR_SHORTEN } from "./prompts.mjs";
 import { tidyRound } from "./tidy.mjs";
 
@@ -152,12 +152,20 @@ test("the CLI entry does not await at its top level, so auto can run sub-command
   assert.doesNotMatch(entry, /\bawait\b/);
 });
 
-test("a worksheet is done only when every line, chapter, title, description and tag is filled", () => {
+test("a worksheet is done only when every line, chapter, title, description and tag is filled, and its thumbnail's words are filled or were asked for once", () => {
   const sheet = { lines: [{ id: "k7p2", todo: false, text: "Hi" }], chapters: [{ scene: "hook", text: "Intro" }], title: { text: "T" }, description: { text: "D" }, tags: { text: ["ai"] } };
   assert.equal(sheetDone(sheet), true);
   assert.equal(sheetDone({ ...sheet, lines: [{ id: "k7p2", todo: true, text: "" }] }), false);
   assert.equal(sheetDone({ ...sheet, chapters: [{ scene: "hook", text: "" }] }), false);
   assert.equal(sheetDone({ ...sheet, tags: { text: [] } }), false);
+
+  const words = { ...sheet, thumbnail: { todo: true, source: { tag: "AI 模型", headline: "第一名\n不一定**最好**" }, text: { tag: "AI models", headline: "" } } };
+  assert.equal(sheetDone(words), false, "a word the thumbnail has is still empty");
+  assert.equal(sheetDone({ ...words, thumbnail: { ...words.thumbnail, text: { tag: "AI models", headline: "Not the\n**best**" } } }), true);
+  assert.equal(sheetDone(words, thumbnailAskHash(words)), true, "asked once for these words: an empty one does not send the translation round again");
+  assert.equal(sheetDone(words, thumbnailAskHash({ thumbnail: { source: { headline: "別的標題" } } })), false, "a thumbnail changed since it was asked is asked again");
+  assert.equal(sheetDone({ ...words, parts: ["captions"] }), true, "a captions-only sheet owes no thumbnail");
+  assert.equal(thumbnailAskHash(sheet), null);
 });
 
 // The items the site requires on a final cut and on an upload package (judge.py QA_ITEMS, PACKAGE_ITEMS).
@@ -1287,18 +1295,18 @@ const rewordAnswer = (body) => ({ lines: body.payload.lines.map((line) => ({ id:
  * with the dub and its check played by `fakeDub`; the languages then wait for the owner's
  * choice on /admin/videos (docs/videos/LANGUAGES.md), which `choose` makes.
  */
-async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, reword = rewordAnswer, script = fixture() } = {}) {
+async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, reword = rewordAnswer, script = fixture(), translate = filledSheet, review = (worksheet) => worksheet } = {}) {
   const box = sandbox();
   const slug = "chatgpt-ads-off";
   const passes = { shorten, reword };
   const answers = {
     ...answersFor(slug, { applies: "1、2", script }),
-    translator: (body) => (passes[body.variant] ? passes[body.variant](body) : { worksheet: filledSheet(body.payload.worksheet) }),
-    caption_reviewer: (body) => ({ worksheet: body.payload.worksheet, fixes: [] }),
+    translator: (body) => (passes[body.variant] ? passes[body.variant](body) : { worksheet: translate(body.payload.worksheet) }),
+    caption_reviewer: (body) => ({ worksheet: review(body.payload.worksheet), fixes: [] }),
   };
   const site = fakeSite({ answers, settings: { channel_stance: STANCE }, judge: () => jevPick("B") });
   const clock = { now: Date.parse("2026-09-27T09:00:00Z") };
-  const { ctx } = context(box, site.fetchImpl, clock);
+  const { ctx, out } = context(box, site.fetchImpl, clock);
   ctx.encode = async (kind, source, target) => writeFileSync(target, Buffer.from(`${kind} of ${path.basename(source)}`));
   const workdir = path.join(box.work, slug);
   const docFile = path.join(box.root, "docs", "videos", slug, "video.json");
@@ -1346,7 +1354,7 @@ async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, 
   for (const line of expected) assert.match(await automation.step(), line);
   assert.equal(await automation.step(), null, "the languages wait for the owner's choice");
   return {
-    box, site, automation, ctx, workdir, docFile, runs, slug,
+    box, site, automation, ctx, out, workdir, docFile, runs, slug,
     step: () => automation.step(),
     listed: () => site.listed.get(slug),
     onSite: () => automation.site.find((video) => video.slug === slug),
@@ -1411,6 +1419,51 @@ test("a language chosen for its title and description alone is translated withou
   assert.equal(video.onSite().ready_to_upload, true);
 });
 
+/** filledSheet plus the thumbnail's words: each source word with the locale in front, its ** and line breaks kept. */
+function withThumbnail(sheet) {
+  const filled = filledSheet(sheet);
+  if (!sheet.thumbnail) return filled;
+  return { ...filled, thumbnail: { ...sheet.thumbnail, text: Object.fromEntries(Object.entries(sheet.thumbnail.source).map(([name, word]) => [name, `${sheet.locale} ${word}`])) } };
+}
+
+test("the worker's metadata translation carries the thumbnail's words into i18n with their hash and no merge note, even when the caption reviewer answers without them", async () => {
+  const video = await finishedVideo({ translate: withThumbnail, review: ({ thumbnail, ...rest }) => rest });
+  video.choose({ en: { metadata: true, captions: false, dub: false } });
+  assert.match(await video.step(), /^chatgpt-ads-off: en metadata translated and reviewed$/);
+  const { tag, headline } = fixture().thumbnail.data;
+  const [call] = video.calls("translator");
+  assert.deepEqual(call.payload.worksheet.thumbnail, { todo: true, source: { tag, headline }, text: { tag: "", headline: "" } }, "the sheet asks for the thumbnail's words");
+  assert.match(call.instructions, /"thumbnail", on a worksheet with "metadata"/, "and the translator is told how to fill them");
+  const [review] = video.calls("caption_reviewer");
+  assert.deepEqual(review.payload.worksheet.thumbnail.text, { tag: `en ${tag}`, headline: `en ${headline}` }, "the reviewer reads the translator's words");
+  assert.match(review.instructions, /thumbnail words \("thumbnail"\)/);
+
+  const translation = readJson(path.join(video.box.root, "docs", "videos", video.slug, "i18n", "en.json"));
+  assert.deepEqual(translation.thumbnail, { tag: `en ${tag}`, headline: `en ${headline}` }, "the reviewer's answer without them keeps the translator's words");
+  assert.match(translation.source_hashes.thumbnail, /^[0-9a-f]+$/);
+  assert.doesNotMatch(video.out.stdout, /note: thumbnail/, "i18n-merge had nothing to say about them");
+
+  assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(en metadata\)$/);
+  assert.equal(video.calls("translator").length, 1, "current words: the translation is not asked again");
+});
+
+test("a translator that returns no thumbnail words still completes the locale: i18n-merge only notes it, the words are asked once, and the batch goes up next", async () => {
+  const video = await finishedVideo({ translate: (sheet) => ({ ...filledSheet(sheet), thumbnail: undefined }) });
+  video.choose({ en: { metadata: true, captions: false, dub: false } });
+  assert.match(await video.step(), /^chatgpt-ads-off: en metadata translated and reviewed$/);
+  const [call] = video.calls("translator");
+  assert.equal(call.payload.worksheet.thumbnail.todo, true);
+  const translation = readJson(path.join(video.box.root, "docs", "videos", video.slug, "i18n", "en.json"));
+  assert.deepEqual([translation.title, translation.thumbnail, translation.source_hashes.thumbnail], ["en title", undefined, undefined], "the rest merged; no thumbnail words");
+  assert.match(video.out.stdout, /en note: thumbnail: not translated; this locale keeps the video's own thumbnail/, "the worker logs i18n-merge's note");
+  assert.equal(video.state().thumbnails_asked.en, thumbnailAskHash(call.payload.worksheet), "the ask is recorded against these words");
+
+  assert.match(await video.step(), /^chatgpt-ads-off: language batch sent to \/admin\/videos \(en metadata\)$/, "no second translation round for the missing words");
+  assert.equal(video.calls("translator").length, 1);
+  assert.equal(video.calls("caption_reviewer").length, 1);
+  assert.equal(await video.step(), null, "everything chosen is made");
+});
+
 test("an English-narrated video is translated into zh-TW once, before the language it was chosen, and its batch and package carry zh-TW beside it", async () => {
   const video = await finishedVideo({ script: enFixture() });
   assert.equal(video.calls("translator").length, 0, "nothing is translated before the choice");
@@ -1456,9 +1509,12 @@ test("an English-narrated video the owner gives no other language gets zh-TW onc
 // The SHA-256 of the translator's and the caption reviewer's texts as a zh-TW video has always
 // been sent them, taken before the source-language texts existed. A zh-TW video's prompts must stay
 // these bytes; change a hash only when you mean to change what every zh-TW video is told.
+// 2026-10-02: the translator and the caption reviewer were told about the thumbnail's words
+// (2026-10-01-video-worker-translator-fills-the-thumbnail); the shortening and rewording passes
+// hold no thumbnail and kept their bytes.
 const ZH_TW_PROMPT_SHA256 = {
-  translator: "da0f9a0677742018dac05ee7da3f7018f8e9fed769b151e4341e91c5ba006e5a",
-  caption_reviewer: "92a50b60d3f47905c8912f3adb4e648f8313ebff909d8711b442707d437109c7",
+  translator: "1e3a4cfb65dc7bf33b98d85777a7db4d6fcd55dd50c2e3526ee7d60eb124f1dd",
+  caption_reviewer: "a0ad349317f907def87ce0cfbf260a2f9a14168910eee6fad5dece8f8b40aad5",
   "translator:shorten": "eb96a8de3915d89bed631a93463d0b22344f44e442b5465abe57fcc06b1d6ac6",
   "translator:reword": "627d9729bd01b766d025ed82b9edde4dc5fd4f051372a14f8e1bad3b88a9eb6a",
 };
