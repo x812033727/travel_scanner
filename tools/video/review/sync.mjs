@@ -27,7 +27,7 @@ import { narrativeHash, scriptScenes, writeScreenplay } from "../core/screenplay
 import { scriptCheckMatches } from "../core/script-check.mjs";
 import { estimateTimeline, formatClock } from "../core/timeline.mjs";
 import { keepSheets } from "../media/series-store.mjs";
-import { packageFiles, packageLocales, readPackageReport, UPLOAD_DIR } from "../package/check.mjs";
+import { packageFiles, packageLocales, readPackageReport, thumbnailVariants, UPLOAD_DIR, variantRole } from "../package/check.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { USER_AGENT } from "../tts/client.mjs";
@@ -481,7 +481,14 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     const sheet = path.join(workdir, ARTIFACTS.contactSheet);
     if (existsSync(sheet)) files.push(await upload(request, slug, sheet, "contact_sheet", "image/png"));
     const thumbnail = path.join(workdir, "thumbnail.jpg");
-    if (existsSync(thumbnail)) files.push(await upload(request, slug, thumbnail, "thumbnail", "image/jpeg"));
+    if (existsSync(thumbnail)) {
+      files.push(await upload(request, slug, thumbnail, "thumbnail", "image/jpeg"));
+      // B and C for Studio's 「測試與比較」 go up beside A (role thumbnail-b), as render listed them.
+      for (const variant of thumbnailVariants(readJson(path.join(workdir, ARTIFACTS.frames), null))) {
+        const own = path.join(workdir, variant);
+        if (existsSync(own)) files.push(await upload(request, slug, own, variantRole(variant), "image/jpeg"));
+      }
+    }
     // The dub tracks made so far go up beside the cut, so the owner can hear them on the site
     // (docs/videos/DUBS.md). Only the m4a form: it is the audio type the review store takes.
     // A compilation has none of its own: its episodes' dubs are theirs.
