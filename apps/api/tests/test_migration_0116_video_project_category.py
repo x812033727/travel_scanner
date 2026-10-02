@@ -25,7 +25,6 @@ from sqlalchemy.engine import Connection
 from sqlalchemy.exc import IntegrityError
 
 from app.db import engine
-from app.models import VIDEO_CATEGORIES, VIDEO_CATEGORY_CHECK
 
 MIGRATION = "0116_video_project_category"
 PROJECTS = "video_projects"
@@ -35,9 +34,9 @@ POSTGRES = pytest.mark.skipif(
 )
 
 
-def load_migration() -> ModuleType:
-    file = Path(__file__).resolve().parents[1] / "migrations" / "versions" / f"{MIGRATION}.py"
-    spec = importlib.util.spec_from_file_location(f"migration_{MIGRATION}", file)
+def load_migration(name: str = MIGRATION) -> ModuleType:
+    file = Path(__file__).resolve().parents[1] / "migrations" / "versions" / f"{name}.py"
+    spec = importlib.util.spec_from_file_location(f"migration_{name}", file)
     assert spec is not None and spec.loader is not None
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -49,10 +48,11 @@ def run(connection: Connection, direction: str) -> None:
         getattr(load_migration(), direction)()
 
 
-def test_the_migration_lists_the_same_categories_as_the_model() -> None:
+def test_the_migration_lists_the_categories_0118_widens() -> None:
     migration = load_migration()
-    assert migration.CATEGORIES == VIDEO_CATEGORIES
-    assert migration.CHECK_TEXT == VIDEO_CATEGORY_CHECK
+    later = load_migration("0118_video_category_anime")
+    assert migration.CATEGORIES == later.OLD_CATEGORIES
+    assert migration.CHECK_TEXT == later.OLD_CHECK_TEXT
     assert len(migration.revision) <= 32
 
 

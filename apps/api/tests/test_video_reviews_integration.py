@@ -727,7 +727,8 @@ async def test_the_catalog_files_tutorials_by_category_state_and_search(tmp_path
         counts = {facet.code: facet.count for facet in everything.facets.category}
         assert counts == {
             "ai-terms": 1, "ai-news": 1, "tutorial": 2, "comparison": 1, "explainer": 0,
-            "story": 1, "drama": 0, "long-drama": 0, "travel": 0, "other": 0, "none": 0,
+            "story": 1, "drama": 0, "long-drama": 0, "anime": 0, "travel": 0, "other": 0,
+            "none": 0,
         }
         assert {f.code: f.count for f in everything.facets.state} == {
             "working": 4, "published": 1, "dropped": 1
