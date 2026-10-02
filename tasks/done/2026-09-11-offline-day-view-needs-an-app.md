@@ -1,13 +1,13 @@
 ---
 id: 2026-09-11-offline-day-view-needs-an-app
 title: 當日檢視要真的離線可用，需要預先快取 app shell
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5-5-offline-day
 claimed_at: 2026-10-02T16:26:35Z
 created_at: 2026-09-11T22:18:30Z
-completed_at:
+completed_at: 2026-10-02T17:17:23Z
 branch: claude/offline-day-view-shell
 depends_on: []
 scope:
