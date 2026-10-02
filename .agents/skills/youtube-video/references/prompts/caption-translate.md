@@ -2,7 +2,7 @@
 
 Fill the placeholders before dispatch: `<ROOT>`, `<VIDEO_WORKDIR>`, `<SLUG>`, `<VIDEO_DOCS>` (`<ROOT>/docs/videos/<SLUG>`), `<LOCALE>` (en, ja, ko or zh-CN). Run `node <ROOT>/tools/video/cli.mjs i18n-sheet --slug <SLUG> --locale <LOCALE> [--parts metadata,captions]` first; it writes the worksheet this prompt names. Everything below the rule is the prompt.
 
-**Which parts, and the dub budget** (`docs/videos/LANGUAGES.md`, `docs/videos/DUBS.md`). A language is made of three parts the owner ticks per video on `/admin/videos` after the final cut: the title, description, tags and chapter names (`metadata`), the captions (`captions`), and a dub track (`dub`, which reads the captions' translation aloud). `--parts` narrows the sheet to what was ticked: `--parts metadata` writes a sheet with no lines, `--parts captions` one with no title, description, tags or chapters (those fields are `null`); `i18n-merge` leaves a part the sheet does not hold exactly as it was. The sheet says which parts it holds in `parts`. When the owner also ticked a dub, and the narration is timed, every line carries `max_chars`: the same voice reads the translation in the time the zh-TW line takes, so a translation over its budget has to be shortened later; stay under it from the start. The worker (`tools/video/automation`) dispatches the same prompt with `parts` and the worksheet in the payload; a hand run passes the flags.
+**Which parts, and the dub budget** (`docs/videos/LANGUAGES.md`, `docs/videos/DUBS.md`). A language is made of three parts the owner ticks per video on `/admin/videos` after the final cut: the title, description, tags, chapter names and the thumbnail's words (`metadata`), the captions (`captions`), and a dub track (`dub`, which reads the captions' translation aloud). `--parts` narrows the sheet to what was ticked: `--parts metadata` writes a sheet with no lines, `--parts captions` one with no title, description, tags, chapters or thumbnail (those fields are `null`); `i18n-merge` leaves a part the sheet does not hold exactly as it was. The thumbnail's words are optional (`publish.md`「多語言縮圖」): `i18n-merge` only prints a `note: thumbnail: …` when they are missing or unusable and never fails on them; the worker asks for them once per thumbnail and does not send the translation round again for them. The sheet says which parts it holds in `parts`. When the owner also ticked a dub, and the narration is timed, every line carries `max_chars`: the same voice reads the translation in the time the zh-TW line takes, so a translation over its budget has to be shortened later; stay under it from the start. The worker (`tools/video/automation`) dispatches the same prompt with `parts` and the worksheet in the payload; a hand run passes the flags.
 
 ---
 
@@ -14,7 +14,7 @@ WRITE HERE ONLY: `<VIDEO_WORKDIR>/<SLUG>/i18n/<LOCALE>.todo.json`, the worksheet
 ## Read first
 
 1. `<VIDEO_DOCS>/video.json`: the slides (`data`) show what the viewer sees while a line plays; use them for context and keep the terms consistent with what is on screen.
-2. The worksheet. Every entry with `todo: true` needs a translation: lines, chapters, the title, the description and the tags. Its `text` is empty because it is missing, or because its zh-TW source changed since the last merge (a renamed chapter, a new paragraph, reordered tags). The others already have a current one, which you may improve only if it is wrong.
+2. The worksheet. Every entry with `todo: true` needs a translation: lines, chapters, the title, the description, the tags and the thumbnail's words (`thumbnail`, present on a sheet with `metadata` when the video's thumbnail has words). Its `text` is empty because it is missing, or because its zh-TW source changed since the last merge (a renamed chapter, a new paragraph, reordered tags). The others already have a current one, which you may improve only if it is wrong.
 3. `<ROOT>/apps/api/app/guides/content/<SOURCE>.json` when `video.json` names a `source_guide`: its `<LOCALE>` version, if any, is the site's own wording for the same terms.
 
 ## Rules
@@ -30,13 +30,15 @@ WRITE HERE ONLY: `<VIDEO_WORKDIR>/<SLUG>/i18n/<LOCALE>.todo.json`, the worksheet
 - `title`: at most 100 characters, no angle brackets, searchable in `<LOCALE>`; not a word-for-word copy if a natural title reads better.
 - `description`: the body only, same structure as the source; the tool appends chapters, the article link and the references. No angle brackets.
 - `tags`: the product names plus the terms `<LOCALE>` viewers search for; the whole list at most 500 characters.
+- `thumbnail`: the words drawn on this locale's own thumbnail (`thumbnails/<LOCALE>.jpg`, same picture and layout as the video's). Fill `thumbnail.text` with one entry for each word in `thumbnail.source` (`tag`, `headline`, `sub`, whichever it has), none left empty and none added. Viewers read it at phone size, so keep it as short as the source: the headline at most 2 lines of a few words, the tag 1 to 3 words. Keep the `**` around the stressed word and the `\n` line breaks where the source has them; no angle brackets.
+- When `render` prints `note: no <LOCALE> thumbnail of its own … did not fit` (or `qa` warns about the language thumbnail), the words are too long for the layout: cut them to the key noun or number in a new metadata sheet, merge, and run `render` again. Never empty a word to skip it; a locale without thumbnail words keeps the video's own thumbnail.
 - Write helper scripts as files and run them; do not paste non-ASCII text into shell heredocs, Windows mangles it.
 
 ## Check before reporting
 
     node <ROOT>/tools/video/cli.mjs i18n-merge --slug <SLUG> --locale <LOCALE>
 
-It writes `<VIDEO_DOCS>/i18n/<LOCALE>.json` and lists anything not translated or not mergeable; fix the worksheet until it lists nothing.
+It writes `<VIDEO_DOCS>/i18n/<LOCALE>.json` and lists anything not translated or not mergeable; fix the worksheet until it lists nothing. A `note: thumbnail: …` line does not fail the merge, but fix it too: the file then carries `thumbnail` and `source_hashes.thumbnail`.
 
 ## Report (the coordinator scans it, one line per item)
 
