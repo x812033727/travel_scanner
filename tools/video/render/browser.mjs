@@ -19,6 +19,14 @@ export class RendererError extends Error {}
 // The longest entrance the renderer captures frame by frame; the theme's stay well under it.
 export const MAX_TRANSITION_FRAMES = 18;
 
+// A frame key promises the same picture every time it is drawn. With the GPU and the compositor
+// thread, it did not hold: two runs on one machine drew 55 or 56 of 68 stills and a third to
+// four fifths of the transition frames alike, the rest off by antialiasing on the entering text
+// (an element that animates gets a layer of its own, rastered at a scale and moment the
+// compositor picks) or showing an earlier seek. Software raster and main-thread animations draw every frame the
+// same; `node tools/video/render/repeat.mjs --slug <slug>` checks it (2026-10-02).
+export const LAUNCH_ARGS = ["--disable-gpu", "--disable-threaded-animation"];
+
 const TYPES = { ".css": "text/css", ".woff2": "font/woff2", ".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp", ".html": "text/html" };
 
 /** Map a URL on the fake origin to a file, or null when nothing may be served for it. */
@@ -153,8 +161,14 @@ function pauseAnimations() {
   return end;
 }
 
+// Runs in the page: move every animation to `time`, and resolve once a frame showing that time
+// has been produced. A screenshot taken straight after the seek could show the time before it:
+// frame 0 caught at the moment the animations were paused, half faded in, or a still caught a
+// step short of the end, its code panel half a pixel low with a seam between two highlighted
+// rows. Two animation frames: the first draws the seek, the second starts after it.
 function seekAnimations(time) {
   for (const animation of document.getAnimations()) animation.currentTime = time;
+  return new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
 }
 
 /**
@@ -165,7 +179,7 @@ export async function openRenderer({ root, workdir, channel }) {
   const { chromium } = await import("@playwright/test");
   let browser;
   try {
-    browser = await chromium.launch({ headless: true, ...(channel ? { channel } : {}) });
+    browser = await chromium.launch({ headless: true, args: LAUNCH_ARGS, ...(channel ? { channel } : {}) });
   } catch (error) {
     const hint = channel
       ? `the "${channel}" browser could not start`

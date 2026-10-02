@@ -8,7 +8,8 @@ import { EXIT, main } from "../cli.mjs";
 import { compilationDocument } from "../core/compilation.mjs";
 import { dramaFixture, explainerFixture, sandbox } from "../core/fixtures/load.mjs";
 import { estimateTimeline, visualHash } from "../core/timeline.mjs";
-import { resolveRequest } from "./browser.mjs";
+import { LAUNCH_ARGS, resolveRequest } from "./browser.mjs";
+import { compareRuns } from "./repeat.mjs";
 import { localizedThumbnailHash, thumbnailSource, thumbnailSourceHash } from "../core/translations.mjs";
 import { coverageProblems, localizedThumbnails } from "./cli.mjs";
 import { contactSheetHtml } from "./contact.mjs";
@@ -139,6 +140,25 @@ test("the fake origin serves pages, theme, fonts and allowed assets, and nothing
   assert.equal(at("https://video.local/repo/apps/web/public/../../api/.env"), null);
   assert.equal(at("https://video.local/work/frames/a.png").file, path.join(path.resolve("/work"), "frames/a.png"));
   assert.equal(at("https://fonts.googleapis.com/css"), null);
+});
+
+test("the renderer draws in software with main-thread animations, so a frame key draws the same bytes", () => {
+  // With the GPU and compositor-thread animations, two runs drew 55/68 stills and about a third
+  // of the transition frames alike; with both off, every frame of a whole video matched.
+  assert.ok(LAUNCH_ARGS.includes("--disable-gpu"));
+  assert.ok(LAUNCH_ARGS.includes("--disable-threaded-animation"));
+});
+
+test("repeat compares runs frame by frame and names the states that differ", () => {
+  const run = (still, frames) => new Map([["k1", { still: "s", frames: ["a", "b"] }], ["k2", { still, frames }]]);
+  const same = compareRuns([run("s2", ["c"]), run("s2", ["c"])]);
+  assert.deepEqual(same, { stills: 2, sameStills: 2, frames: 3, sameFrames: 3, stillsDiffer: [], framesDiffer: [] });
+  const differ = compareRuns([run("s2", ["c"]), run("s2", ["c"]), run("x", ["d"])]);
+  assert.equal(differ.sameStills, 1);
+  assert.equal(differ.sameFrames, 2);
+  assert.deepEqual(differ.stillsDiffer, ["k2"]);
+  assert.deepEqual(differ.framesDiffer, ["k2 (0)"]);
+  assert.deepEqual(compareRuns([run("s2", ["c"]), run("s2", ["c", "e"])]).framesDiffer, ["k2 (count)"]);
 });
 
 test("a drama's shots are clips the plan leaves to the media stages; its cards and thumbnail are drawn", () => {

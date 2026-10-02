@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "anime-series-plan",
+  "slug": "borrowed-dawn",
+  "title": "借來的黎明",
+  "title_en": "The Borrowed Dawn",
+  "logline": "誤入異世界的維修學徒發現，繁榮的魔法文明正把休止的代價轉嫁給看不見的人；他與醫師、負罪軍人及守林者，必須在世界失效前建立能讓所有人活下去的退場方法。",
+  "category": "anime",
+  "style_preset": "anime-2d",
+  "kind": "series",
+  "genre": "custom",
+  "lead": "ensemble",
+  "tone": "冒險、群像、溫暖日常與不可逆代價；不強制戀愛主線",
+  "planned_episodes": 120,
+  "season_count": 10,
+  "episodes_per_chapter": 12,
+  "open_ended": false,
+  "runtime": {
+    "broadcast_slot_minutes": 30,
+    "story_minutes": 22,
+    "op_ed_budget_minutes": 3,
+    "broadcast_slot_reserve_minutes": 5,
+    "note": "播出時段與正文分開：餘額供播出包裝、預告或廣告配置，不以停頓或重複旁白補正文。此處是企劃預算，不是已量測媒體。"
+  },
+  "video_defaults": {
+    "category": "anime",
+    "format": "drama",
+    "look": {
+      "preset": "anime-2d"
+    },
+    "locale": "zh-TW"
+  },
+  "category_dependency": {
+    "pull_request": "https://github.com/x812033727/travel_scanner/pull/1110",
+    "scope": "影片分類anime；不等於series kind或時長支援",
+    "activation": "將來建立每集video.json及首次review report時沿用video_defaults.category；目前沒有建立後臺作品或送出報告。"
+  },
+  "production_support": {
+    "ready_for_import": false,
+    "admin_series_created": false,
+    "media_generated": false,
+    "published": false,
+    "gaps": [
+      {
+        "code": "anime-category",
+        "pull_request": 1110,
+        "note": "整理時origin/main尚未合併#1110；將來生產環境須已具備anime分類及其migration。本包不重複修改類別程式。"
+      },
+      {
+        "code": "episode-duration",
+        "required_story_minutes": 22,
+        "current_drama_max_minutes": 8,
+        "note": "SeriesIn拒絕普通漫劇超過8分鐘；不得改成story或flat-explainer繞過，也不得靜默縮為3分鐘。"
+      },
+      {
+        "code": "ensemble-retention",
+        "current_genre": "custom",
+        "note": "現有custom題材要求hook_type、lead_arc及每集至少兩爽點。本劇保留悲劇與群像節奏，未偽造爽點；需先支援相符的長篇敘事政策，不能把通用文件形狀通過冒充完整工人相容。"
+      },
+      {
+        "code": "closed-finale",
+        "episode": 120,
+        "planned_last_tension": 2,
+        "current_worker_min_last_tension": 4,
+        "note": "既有chapter檢查要求末段>=4；本劇最後安穩收束。保留真實曲線，將來支援封閉終局後再匯入。"
+      }
+    ]
+  },
+  "source_note": "依本次對話的世界觀、十季規劃與兩輪補正整理；前36集依已定事件復原為一致的結構大綱，不聲稱是逐字原稿。全包是企劃與細綱，並非120份22分鐘完整臺詞腳本。"
+}

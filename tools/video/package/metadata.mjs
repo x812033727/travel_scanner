@@ -137,6 +137,19 @@ export function localizedThumbnailSteps(thumbnails = {}, skipped = {}) {
 }
 
 /**
+ * Step 1.4, the thumbnail. With variants B and C (docs/videos/so-thats-why/thumbnails.md §A/B 測試)
+ * all three go to Studio's 「測試與比較」 thumbnail test, which takes up to three images, and the
+ * title stays as it is while the test runs, or the result cannot be told apart from the title's.
+ */
+export function thumbnailStep(thumbnail, variants = []) {
+  if (!thumbnail) return "這次沒有縮圖，Studio 會自動挑一格";
+  if (!variants.length) return "上傳 `thumbnail.jpg`（帳號需完成手機驗證）";
+  const letter = (file) => /^thumbnail-([a-z])\.jpg$/.exec(file)?.[1]?.toUpperCase() ?? file;
+  const files = ["`thumbnail.jpg`（A）", ...variants.map((file) => `\`${file}\`（${letter(file)}）`)].join("、");
+  return `在「縮圖」點「測試與比較」，選縮圖測試，${files}全部上傳（一支影片最多三張；帳號需完成手機驗證）。**測試期間不要改標題**，否則分不出是哪張縮圖的效果；測試結束後把勝出的那張記在這集的 \`brief.md\``;
+}
+
+/**
  * The 合集 section of a compilation's UPLOAD.md (docs/videos/BINGE.md): the 1080p file is too
  * big for the review store, so the owner downloads it from the site's 「可以上架」 card; the
  * chapters, one per episode, are already in the description.
@@ -157,7 +170,7 @@ export function compilationSection(metadata, { episodes = 0, size_bytes: sizeByt
  * in metadata.json and this page only says how to tick it. The dub tracks (docs/videos/DUBS.md)
  * keep their own section: which file goes where in Studio's 「語言」.
  */
-export function uploadChecklist({ metadata, captions, thumbnail, drama = false, disclosure = null, dubs = [], skippedDubs = {}, thumbnails = {}, skippedThumbnails = {}, compilation = null }) {
+export function uploadChecklist({ metadata, captions, thumbnail, drama = false, disclosure = null, dubs = [], skippedDubs = {}, thumbnails = {}, skippedThumbnails = {}, variants = [], compilation = null }) {
   const captionLines = captions.length ? captions.map((file) => `   - \`${file}\``).join("\n") : "   - （還沒有字幕檔：先跑 captions）";
   // Each language's own thumbnail gets a section of its own when there is one or a note about one.
   const languageThumbnails = thumbnail ? localizedThumbnailSteps(thumbnails, skippedThumbnails) : "";
@@ -173,7 +186,7 @@ ${compilation ? `\n${compilationSection(metadata, compilation)}\n` : ""}
 1. 上傳 \`final.mp4\`。**瀏覽權限先選「私人」**。
 2. 標題：\`description.zh-TW.txt\` 的第一行。
 3. 說明：\`description.zh-TW.txt\` 第三行以後的全部內容（章節時間戳已經在裡面）。
-4. 縮圖：${thumbnail ? "上傳 `thumbnail.jpg`（帳號需完成手機驗證）" : "這次沒有縮圖，Studio 會自動挑一格"}。
+4. 縮圖：${thumbnailStep(thumbnail, variants)}。
 5. 目標觀眾：選「否，這不是為兒童打造的內容」${metadata.made_for_kids ? "（注意：video.json 標為兒童內容，請確認）" : ""}。
 6. 標籤：貼上 \`metadata.json\` 的 \`tags\`。類別：科學與技術（${metadata.category_id}）。影片語言：中文（台灣）。
 7. 「變造或合成內容」：${synthetic ? "勾「是」" : "不用勾"}。\`metadata.json\` 的 \`contains_synthetic_media\` 是 \`${synthetic}\`（${reason}）。
