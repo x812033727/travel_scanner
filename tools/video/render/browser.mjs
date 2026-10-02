@@ -9,7 +9,7 @@ import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 
 import { ASSET_ROOTS, ORIGIN, SIZE } from "../templates/templates.mjs";
-import { fontDir } from "./fonts.mjs";
+import { FONT_PACKAGES, fontDir, SLIDE_FAMILY } from "./fonts.mjs";
 import { THEME_FILE } from "./plan.mjs";
 
 export const FPS = 30;
@@ -29,14 +29,22 @@ export function resolveRequest(url, { root, workdir, pages }) {
   const page = /^\/state\/([0-9a-f]+)\.html$/.exec(pathname);
   if (page) return pages.has(page[1]) ? { body: pages.get(page[1]), type: TYPES[".html"] } : null;
   if (pathname === "/theme.css") return { file: THEME_FILE };
-  const font = /^\/fonts\/(noto-sans-tc|jetbrains-mono)\/(.+)$/.exec(pathname);
-  if (font) return { file: path.join(fontDir(font[1]), font[2]) };
+  const font = /^\/fonts\/([a-z-]+)\/(.+)$/.exec(pathname);
+  if (font && Object.hasOwn(FONT_PACKAGES, font[1])) return { file: path.join(fontDir(font[1]), font[2]) };
   if (pathname.startsWith("/repo/")) {
     const relative = pathname.slice("/repo/".length);
     return ASSET_ROOTS.some((prefix) => relative.startsWith(prefix)) ? { file: path.join(root, relative) } : null;
   }
   if (workdir && pathname.startsWith("/work/")) return { file: path.join(workdir, pathname.slice("/work/".length)) };
   return null;
+}
+
+// Runs in the page: the font its text is set in, the first family of the theme's --font. A
+// caption locale's thumbnail puts its own font there (templates.mjs page); a page without the
+// theme (a subtitle strip) is set in the slide font.
+function pageFamily(fallback) {
+  const first = getComputedStyle(document.documentElement).getPropertyValue("--font").split(",")[0].trim();
+  return first.replace(/^["']|["']$/g, "") || fallback;
 }
 
 // Runs in the page: shrink each .fit element's type until it fits, to at most 40% smaller.
@@ -188,9 +196,10 @@ export async function openRenderer({ root, workdir, channel }) {
     await page.setViewportSize(size);
     await page.goto(`${ORIGIN}/state/${key}.html`, { waitUntil: "load" });
     await page.evaluate(() => document.fonts.ready);
-    const unloadable = await page.evaluate(loadFaces, "Noto Sans TC Variable");
+    const family = await page.evaluate(pageFamily, SLIDE_FAMILY);
+    const unloadable = await page.evaluate(loadFaces, family);
     await page.evaluate(fitText);
-    const problems = await page.evaluate(layoutProblems, "Noto Sans TC Variable");
+    const problems = await page.evaluate(layoutProblems, family);
     for (const failure of unloadable) problems.push(`a slide font face would not load: ${failure}`);
     pages.delete(key);
     return problems;

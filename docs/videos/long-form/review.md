@@ -1,6 +1,6 @@
 # Long-form duration revision: independent review
 
-Reviewer: review_longform. Author: codex-root and the implementation authors. Review date: 2026-10-02. Verdict: **PASS — DURATION_ONLY**. Required fixes remaining: **none** for the SHA-bound revision below.
+Reviewer: review_longform. Author: codex-root and the implementation authors. Review date: 2026-10-02. Verdict: **PASS — DURATION_ONLY**. The PR #1105 category-report increment was reviewed by claude-pr-review-1105. Required fixes remaining: **none** for the SHA-bound revision below.
 
 The initial 21-file review and the integrated 70-file increment below independently inspected the implementation, planning records, original source bytes, duration guards and API/UI changes. It does not claim a fresh factual review of the underlying topics, completion of full long-video manuscripts, approval of rewritten manuscripts, human audio listening, image QA or verification of actual media. No real provider/model/media calls, production media generation, production writes, imports, activation, scheduling or publication were performed. Unit regressions use local synthetic and mocked fixtures.
 
@@ -117,6 +117,14 @@ Outside increment evidence and SHA256 (not implementation bindings):
 - 20261002-continuation-thumbnail-review.json: 0d928e21815d4c444e03069b343198e00d900a8dd631f18db02c7081691e89a2
 - 20261002-continuation-thumbnail-targeted-tests.log: 37c3a93dde9a4db8d914142005a9fbb9ddbbd1c4b87e72019a79ded94b68647b
 
+## PR #1105 category-report increment: 4 files (2026-10-02)
+
+Reviewer: claude-pr-review-1105. Author: claude-pr-1105 (the Claude session that wrote PR #1105, "fix(video): the worker and review-push report the video's category"). The reviewer read the complete delta of the four bound files from origin/main to HEAD d22c1927 (branch claude/video-report-category, which has origin/main merged in) and checked that origin/main's bytes of each file equal the preceding bound hashes, so this delta is exactly the unreviewed change. The other 66 bindings are untouched and still match their current bytes. The reviewer also read the non-bound tools/video/review/sync.mjs and story.test.mjs deltas, and every `category` use under tools/video, to judge duration reach.
+
+Findings: flow.mjs renames recordedVideoId to recorded(), which reads the same video.json and additionally returns `state.category ?? video.category` when it is in VIDEO_CATEGORIES. report() adds that value to the /admin/videos payload only. review-push (sync.mjs) adds video.json's category to its report payload the same way. Neither path writes category into video.json, the automation state or any duration input, and nothing reads the site's category back. The only duration consumer of category, isKnowledgeLongform in core/duration.mjs (knowledge categories ai-terms, explainer, story), still reads only the local doc and keeps its accepted bytes. The new VIDEO_CATEGORIES import sits beside the unchanged minEpisodeMinutes import. The planning-range code, effectiveEpisodeMinutes calls, explainer default 10 and 8–20, drama 1–8 default 3, brand 13 minutes, minEpisodeMinutes floor, 14,400-frame body/final guard and fixture opt-out boundary are byte-unchanged, and there is no new VIDEO_MIN_EPISODE_MINUTES assignment. The test fixtures set category "tutorial", which is not a knowledge category. In automation.test.mjs it is written only after QA, publish and done, before the YouTube-id sync, so no fixture's knowledge/body-guard or drama classification changes. The automated.md line documents only the reported filing field.
+
+Commands: `node tools/video/long-form/cli.mjs check` before rebinding failed only on the four stale bindings, exit 1. The automation, story, review sync, long-form, core duration and QA duration tests ran 148: 147 passed and the one failure was the shipped review-binding test reporting the same four stale bindings. After rebinding, the review test and CLI check are rerun by the reviewer. Non-claims: no CI, browser, real media, provider or PostgreSQL acceptance. This is DURATION_ONLY compatibility review, not acceptance of the category-filing feature itself. Required duration fixes remaining: none.
+
 ## PR #1108 thumbnail-text increment: 3 files (2026-10-02)
 
 Reviewer: `claude-pr-review-1108`. Author: PR #1108's author (a Claude session, `claude-pr-1108`). Scope: DURATION_ONLY. The reviewer did not write these changes.
@@ -129,6 +137,18 @@ Ran: `node tools/video/long-form/cli.mjs check` before rebinding failed only on 
 
 Non-claims. This review does not cover the localized-thumbnail rendering, layout fitting or translation quality, real provider or model calls, media, upload or publication. PASS is DURATION_ONLY for the three rebound hashes below. Required duration fixes remaining: none.
 
+## PR #1108 merge with #1105 follow-up: 2 files (2026-10-02)
+
+Reviewer: `claude-merge-review-1108`. Author: `claude-merger` (the session that merged origin/main 99ec2fa5, which carries PR #1105, into PR #1108's branch claude/worker-thumbnail-text). Scope: DURATION_ONLY. The reviewer did not write these changes.
+
+Compared: for tools/video/automation/flow.mjs and automation.test.mjs, the reviewer read both reviewed deltas from the merge base 6d60a1ef, `git diff 6d60a1ef origin/main` (#1105, reviewed above) and `git diff 6d60a1ef origin/claude/worker-thumbnail-text` (#1108, reviewed above). The reviewer then rebuilt the merge with `git merge-file` on the base, #1108 and #1105 bytes, and diffed the result against the working tree. automation.test.mjs merges cleanly and is byte-identical to the working tree. flow.mjs has one conflict, the `../core/schema.mjs` import, and the working tree differs from the rebuilt merge only in that line. The line resolves to the union, `eachLine, LINE_ID, minEpisodeMinutes, NARRATION_LOCALE, narrationLocale, spokenText, textHash, VIDEO_CATEGORIES`. So the merged bytes are exactly the union of the two reviewed deltas, with no extra edit.
+
+Findings. The two changes touch separate parts of flow.mjs. #1105 changes `recorded()` and `report()`, and #1108 changes `sheetDone`, `thumbnailAskHash`, `keptWorksheet`, `channelLocale` and the translation step. The only place they meet is the `report(ctx, this.api, state, "languages")` call after a translation round. That call now also carries the optional category. That changes only the /admin/videos payload; it writes nothing to video.json or the duration inputs. `state.thumbnails_asked` and `state.category` are separate keys, and neither path reads the other's key. Neither path reads or writes target_minutes, effectiveEpisodeMinutes, minEpisodeMinutes (still imported, line 47 unchanged), VIDEO_MIN_EPISODE_MINUTES, frame counts or the 14,400-frame body/final proof. Neither touches the format defaults and ranges (explainer 10 and 8–20, drama 1–8 default 3, brand 13) or the fixture opt-out. In the tests, #1105's `category: "tutorial"` (not a knowledge category) is still written only before the YouTube-id sync, and #1108's thumbnail tests set no category. No duration expectation changes.
+
+Ran: `node tools/video/long-form/cli.mjs check` before rebinding failed only on the stale report and the two stale bindings (exit 1). `node --test tools/video/automation/*.test.mjs tools/video/review/*.test.mjs tools/video/long-form/*.test.mjs tools/video/core/duration.test.mjs tools/video/qa/duration.test.mjs` ran 320 tests: 319 passed and 1 failed. The one failure was the shipped binding regression, failing on those same three items. Both commands are rerun after rebinding.
+
+Non-claims. This review accepts neither the category-filing nor the localized-thumbnail feature. It does not cover the other merged files (render, templates, review sync, skills, package files), CI, a browser, real media, providers or PostgreSQL. PASS is DURATION_ONLY for the two rebound hashes below. Required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 70 bindings describe the current reviewed bytes after the main-merge and owned migration-order increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -136,7 +156,7 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | File | SHA256 |
 | --- | --- |
 | `.agents/skills/youtube-video/SKILL.md` | `298f5b0084e3b7c82544d1895234f0a0dac0261caec98d89d7c6a4643ec9406b` |
-| `.agents/skills/youtube-video/references/automated.md` | `07c4bf0c63109e8f5eff1e8fa999659faf39e6d43f18f7a3d18b74010782f92f` |
+| `.agents/skills/youtube-video/references/automated.md` | `de793ad631be8ebe05a22a848adb0c6d0e86980db60092ee879ebc815d8b17ad` |
 | `.agents/skills/youtube-video/references/formats.md` | `17857aae0d529984f25a3360f69a60b4cc51bd715343eeecd051e6686f475875` |
 | `.claude/skills/youtube-video/SKILL.md` | `298f5b0084e3b7c82544d1895234f0a0dac0261caec98d89d7c6a4643ec9406b` |
 | `apps/api/app/video_automation/models.py` | `ff5ba88f0be1efb1923dd1d9a870ac72ed378d851b879b9a68c64b53771ed699` |
@@ -167,8 +187,8 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | `docs/videos/so-thats-why/README.md` | `00a0f0e5a56d7a492dec69263eab34668e0d334949878bd512b09edacaefd0de` |
 | `docs/videos/so-thats-why/season2/README.md` | `e560411dc91f1928b2cf9506a044e55ae7f5f65450199118bd165464599f1218` |
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
-| `tools/video/automation/automation.test.mjs` | `2d3ee3017be4b1c49bc71bdb26a4f3797c6a8b9d4357aacdcf8d3b30b5e5d106` |
-| `tools/video/automation/flow.mjs` | `6781888a32bedb5795bab61b77671d18b11b0024303e181f3b112b0beb45bd17` |
+| `tools/video/automation/automation.test.mjs` | `3981f19992f4a1270c911001ae16cd09553b8d04585ea66b0fc50b972fdd53a4` |
+| `tools/video/automation/flow.mjs` | `cca1c02420611f28dceb14c398445b9cb92f4bff059e33a3b222368199fb4f98` |
 | `tools/video/automation/prompts.mjs` | `ba93ae2a05a23fdf72db52a82868efd85a2012f36a97f06f77d7978c8b99c84e` |
 | `tools/video/automation/series.test.mjs` | `8288b63fa55024cb9305f13fdb8714bf690fb01a2d505e424c3d505359ca654c` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
@@ -199,7 +219,7 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | `tools/video/qa/cli.mjs` | `d6c50172eca6816266f8c209913970345b42afd72ea9a5a740c4af243be8ff7c` |
 | `tools/video/qa/duration.test.mjs` | `056e8f564c9952b025ea7736b43e41bfc47fcc75a847f840878a093ea61fc681` |
 | `tools/video/qa/qa.test.mjs` | `6bab373f43da2cbc9ff469c771ea561e9075964b9e387340167ff42d8cd10aa5` |
-| `tools/video/review/sync.test.mjs` | `ea897ad959288ec195f6a909172041174b1023d9dca0e78adf6ad34d4d9d8974` |
+| `tools/video/review/sync.test.mjs` | `2212d090dc95de655cb37f2a6a263170c8323a7e63fd8522e6a4d90c9b3d0bf1` |
 | `tools/video/screencast/screencast.test.mjs` | `9bbe23f554a93ee394ec4d0aed18fc030d61b284a42b68487f9c89b0e1ad7e6a` |
 | `tools/video/templates/terminal/terminal.test.mjs` | `fc8c9ca5a76f336b545194a7a009630fe0d227544aa4e9b363c0d655fce4e38d` |
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |

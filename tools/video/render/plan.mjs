@@ -118,12 +118,13 @@ export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = 
     });
     return { id: scene.id, template: scene.template, kind: "stills", states };
   });
-  const drawThumbnail = (own) => {
+  // `locale` is a caption locale's own thumbnail, which may be set in its own font (fonts.mjs).
+  const drawThumbnail = (own, locale = null) => {
     const shot = typeof own.data?.shot === "string" ? own.data.shot : null;
     const keyframe = shot && keyframes[shot]?.file ? { file: keyframes[shot].file, sha256: keyframes[shot].sha256 ?? "" } : null;
     // The work directory is served under /work/ by the renderer's fake origin.
     const background = keyframe ? `${ORIGIN}/work/${keyframe.file.split("/").map(encodeURIComponent).join("/")}` : null;
-    const html = thumbnailHtml(own, { background, series: thumbnailSeries(doc) });
+    const html = thumbnailHtml(own, { background, series: thumbnailSeries(doc), locale });
     return { html, key: hash(theme, html, keyframe?.sha256 ?? ""), text: visibleText(html), ...(shot ? { shot, keyframe } : {}) };
   };
   let thumbnail = null;
@@ -137,7 +138,7 @@ export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = 
       const gaps = {};
       for (const locale of LOCALES.filter((each) => each !== narrationLocale(doc))) {
         const own = localizedThumbnail(doc, translations[locale]);
-        if (own) locales.push({ locale, file: localeThumbnailFile(locale), hash: localizedThumbnailHash(doc, translations[locale]), ...drawThumbnail(own) });
+        if (own) locales.push({ locale, file: localeThumbnailFile(locale), hash: localizedThumbnailHash(doc, translations[locale]), ...drawThumbnail(own, locale) });
         else gaps[locale] = thumbnailGap(doc, translations[locale], locale);
       }
       thumbnail.locales = locales;

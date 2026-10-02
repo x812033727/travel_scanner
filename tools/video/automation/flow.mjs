@@ -20,7 +20,7 @@ import { emptyLexicon } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
 import { articlePath, SITE } from "../core/metadata.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, UsageError } from "../core/paths.mjs";
-import { eachLine, LINE_ID, minEpisodeMinutes, NARRATION_LOCALE, narrationLocale, spokenText, textHash } from "../core/schema.mjs";
+import { eachLine, LINE_ID, minEpisodeMinutes, NARRATION_LOCALE, narrationLocale, spokenText, textHash, VIDEO_CATEGORIES } from "../core/schema.mjs";
 import { writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckBinding, scriptCheckMatches, scriptCheckUnbound } from "../core/script-check.mjs";
 import { LOCALE_PARTS, readLanguages, writeLanguages } from "../core/stages.mjs";
@@ -386,18 +386,24 @@ const digitsOf = (text) => (String(text).match(/\d+(?:[.,]\d+)*/g) ?? []).join("
 /** A unit's report line names its video once: a phrase gets the slug, a line that has it stays. */
 const lineFor = (slug, text) => (text.startsWith(`${slug}: `) ? text : `${slug}: ${text}`);
 
-/** The YouTube id the script records, or null: a report without it would clear the site's. */
-function recordedVideoId(state, root) {
+/**
+ * What the script records for the site: the YouTube id, or null (a report without it would clear
+ * the site's), and the video's category, the state's first (a brand story has it before its
+ * video.json exists), or null. The site fills a category only on a video nobody has filed yet.
+ */
+function recorded(state, root) {
   const video = readJson(path.join(docDir(state.slug, root), "video.json"), null);
   const id = video?.youtube?.video_id;
-  return YOUTUBE_ID.test(id ?? "") ? id : null;
+  const category = state.category ?? video?.category;
+  return { videoId: YOUTUBE_ID.test(id ?? "") ? id : null, category: VIDEO_CATEGORIES.includes(category) ? category : null };
 }
 
-/** Hand everything the automation knows to /admin/videos: title, stage, checklist, article, format, YouTube id. */
+/** Hand everything the automation knows to /admin/videos: title, stage, checklist, article, format, category, YouTube id. */
 async function report(ctx, api, state, stage) {
   const workdir = resolveWorkdir({ env: ctx.env, slug: state.slug, root: ctx.root, home: ctx.home });
   const status = await pipelineStatus({ slug: state.slug, root: ctx.root, workdir });
   const guide = mainGuide(state);
+  const { videoId, category } = recorded(state, ctx.root);
   // The page has no field for why a video stopped; the checklist is what the owner reads.
   const blocked = state.status === "blocked" && state.blocked ? [{ key: "blocked", label: `卡住，需要人處理：${state.blocked}`.slice(0, 120), done: false }] : [];
   await api.report(state.slug, {
@@ -405,8 +411,9 @@ async function report(ctx, api, state, stage) {
     stage: stage.slice(0, 40),
     checklist: [...blocked, ...checklistFrom(status.steps)],
     format: state.format ?? "slides",
-    youtube_video_id: recordedVideoId(state, ctx.root),
+    youtube_video_id: videoId,
     ...(guide ? { source_guide: guide } : {}),
+    ...(category ? { category } : {}),
     ...(state.series ? { series_slug: state.series.slug, ...(Number.isInteger(state.series.episode) ? { episode_number: state.series.episode } : {}) } : {}),
     ...(state.retry_request_id ? { retry_acknowledged_id: state.retry_request_id } : {}),
   });
