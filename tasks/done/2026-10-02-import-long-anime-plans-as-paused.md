@@ -1,13 +1,13 @@
 ---
 id: 2026-10-02-import-long-anime-plans-as-paused
 title: Import long anime plans as paused admin series
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: codex-root
 claimed_at: 2026-10-02T08:03:01Z
 created_at: 2026-10-02T08:01:07Z
-completed_at:
+completed_at: 2026-10-02T08:56:39Z
 branch: codex/anime-planning-import
 depends_on: []
 scope:
@@ -56,7 +56,7 @@ The owner explicitly asked to create The Borrowed Dawn in the real admin after i
 - [x] Add narrowly scoped planning persistence and hold guards without changing production readiness.
 - [x] Add validated atomic import and operator CLI; prepare the authored bundle.
 - [x] Show the native planning series and disable unsupported production actions in the admin.
-- [ ] Complete final checks and open the separately requested draft PR with host instructions; track actual production import in its own operational ticket.
+- [x] Complete final checks and open the separately requested draft PR with host instructions; track actual production import in its own operational ticket.
 
 ## How to verify
 
@@ -64,9 +64,9 @@ API: focused planning/import/guard/migration tests plus existing series/document
 
 ## Notes
 
-Host SSH 187.127.118.6:7788 returned ECONNREFUSED from the cloud; public HTTPS is reachable. The owner said they will test from their local computer. No backend creation or remote write has been claimed.
+Host SSH 187.127.118.6:7788 returned ECONNREFUSED from the cloud; public HTTPS is reachable. The owner said they will test from their local computer. No production backend creation or remote write has been claimed.
 
-The collision helper found five old review claims aged 89–114 hours with no local worktree, remote branch or open PR. The only open PR #1118 changes Shorts UI and its own translation namespace; this work changes the series namespace and will preserve/rebase those independent changes. Claiming this new ticket with --force is limited to stale scope overlap; no other ticket is edited, released or closed.
+At claim time, the collision helper found five old review claims aged 89–114 hours with no local worktree, remote branch or open PR. The only open PR then, #1118, changed Shorts UI and its own translation namespace. This work changes the series namespace. Claiming this new ticket with --force was limited to stale scope overlap; no other ticket is edited, released or closed. The branch has since been rebased without conflicts onto origin/main 7f76864f5, preserving the merged #1118/#1119 changes.
 
 This is planning persistence, not full 22-minute production support. The existing 2026-10-02-anime-long-episode-support task remains open for writer budgets, narration/media timing, production QA and compatible narrative policy.
 
@@ -75,3 +75,9 @@ The owner's latest instruction is to open a separate PR. Real-host deployment/im
 Independent read-only review passed after fixing the source mount directory, exact-base-slug request collisions and E120 actual/declared final tension consistency. The importer has 80 passing source/transaction/idempotence/collision regressions. Complete source hashes and regenerated Markdown/JSON/CSV twins are checked in Python without executing source JavaScript.
 
 An isolated PostgreSQL 17 CLI smoke created one paused planning series, twelve review documents and 120 planned episodes preserving all 240 tension events and the exact source bodies. Read-only preflight and apply replay both returned unchanged; direct readback found one audit, zero requests/videos, no worker job and successful native API serialization. Bundle SHA256: 154228eaa3ed9f200fbd2de3096914bf36e9aa6bd36e1d29b774146936ca92dc. This is local fixture evidence only.
+
+Final API regression commands with RUN_INTEGRATION_TESTS=1 on isolated PostgreSQL passed 241 planning/CLI/guard/messages/migration/series/document/binge/schema/dialect tests plus 74 existing settings/request/explainer-duration tests. Full API ruff passed; mypy app checked 458 files and mypy tests checked 352. Web lint/i18n/typecheck passed, and the full pre-rebase suite passed 342 files / 3754 tests; after the conflict-free rebase, seven affected/context suites passed 108 tests and i18n/typecheck passed again. The authored source build --check passed 17 generated files / 10 seasons / 120 episodes. The disposable local PostgreSQL container was stopped after verification.
+
+The full Node tools suite passed 1220/1220 after a genuine independent DURATION_ONLY increment refreshed only the ten changed bound files and report SHA. The checker and all sixty other bindings remain unchanged. check:tasks and git diff --check passed.
+
+Separate draft PR opened as #1125: https://github.com/x812033727/travel_scanner/pull/1125. The PR includes deployment/import/readback instructions and explicitly states that no production import has occurred. This ticket is closed for the implementation and PR delivery only; the operational follow-up remains open.
