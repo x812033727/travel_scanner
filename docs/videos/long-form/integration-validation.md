@@ -2,6 +2,8 @@
 
 Date: 2026-10-02 (Asia/Taipei). This records the implementation integrated into draft PR #1098. No media was generated, re-rendered, imported, deployed or published.
 
+This is the tested snapshot at `84f2775e`. The subsequent main merge, migration ordering repair and genuine review refresh are recorded in [main-sync-validation.md](main-sync-validation.md); the earlier migration numbers and PR draft status below describe that historical snapshot.
+
 ## Combined behavior
 
 All 473 effective planning entries retain their source hashes and decisions: seasons one and three have 100 entries each, season two has 92 adopted packages, brand stories have 100 entries and AI terms have 81 entries including one already covered term. Seasons one through three and AI terms target 600 seconds; brand stories retain 780 seconds and the AI range remains 540–660 seconds. The eight duplicate exclusions and the covered term are not remade.
