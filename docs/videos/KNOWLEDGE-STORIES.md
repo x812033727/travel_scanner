@@ -6,7 +6,7 @@
 
 | 內容線 | 舊企劃與數量 | 規格／接續入口 |
 | --- | --- | --- |
-| 知識科普：「原來如此事務所」第一季 | [系列規格](so-thats-why/README.md)、[100 集題庫](so-thats-why/episodes.json)、[五語標題](so-thats-why/titles.json)、[播放清單](so-thats-why/playlists.md)；100 列都是 `fact-checked`，各列 `fact_check` 指向 week1–week15 的完整包 | 商業品牌、生活科學、旅遊文化、科技 AI 各 25 集；7–9 分鐘插畫解說，每集兩支 Shorts；[每日流程](so-thats-why/operations.md)、[畫風與片頭](so-thats-why/look.md)、[縮圖](so-thats-why/thumbnails.md) |
+| 知識科普：「原來如此事務所」第一季 | [系列規格](so-thats-why/README.md)、[100 集題庫](so-thats-why/episodes.json)、[五語標題](so-thats-why/titles.json)、[播放清單](so-thats-why/playlists.md)；100 列都是 `fact-checked`，各列 `fact_check` 指向 week1–week15 的完整包 | 商業品牌、生活科學、旅遊文化、科技 AI 各 25 集；8–10 分鐘插畫解說（至少 8 分鐘），每集兩支 Shorts；[每日流程](so-thats-why/operations.md)、[畫風與片頭](so-thats-why/look.md)、[縮圖](so-thats-why/thumbnails.md) |
 | 知識科普：第二季 | [100 個候選題](so-thats-why/season2-topics.json)，100 列都是 `checked`；各列 `check` 指向 topic-checks 的題目查核紀錄 | 題目查核已完成，尚須在選題排程時補完整大綱、兩支 Shorts 稿及後台貼用包；見新接續票 |
 | 知識科普：第三季 | [100 個候選題](so-thats-why/season3-topics.json)，100 列都是 `checked`；各列 `check` 指向 topic-checks | 和第二季一樣屬於候選題庫；不能把 `checked` 寫成已出片或已排程 |
 | 非虛構小故事：品牌、日用品、隱形標準 | [故事路線設計](STORY.md)、[100 個故事企劃與查核](story-plans/brand-stories-100/README.md)、[匯入包](story-plans/brand-stories-100/stories.json)、[50 天順序表](story-plans/brand-stories-100/SCHEDULE.md) | 日常用品 40、亞洲品牌 40、科技軟體 20；12–15 分鐘、只有旁白、卡通靜態圖加運鏡，`format: drama`、`kind: story`；先試 A01 輪子行李箱、B18 迴轉壽司 |

@@ -17,6 +17,9 @@ import { COMPILATION_ITEM_IDS, ITEM_IDS } from "./checks.mjs";
 import { jpegBytes } from "./test-images.mjs";
 import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeEpisode, writeTranslations } from "../compile/fixture.mjs";
 
+// The fixture videos run seconds; the eight-minute floor has tests of its own.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
+
 const TOKEN = `mkv_${"q".repeat(43)}`;
 const SITE = "https://site.test";
 const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");

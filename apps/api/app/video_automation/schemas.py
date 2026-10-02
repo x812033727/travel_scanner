@@ -41,6 +41,11 @@ StylePreset = Literal["cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", 
 # The illustrated explainer (docs/videos/so-thats-why/): narrator only, no cast. Only a one-off
 # may use it; a long series and a story series are written from prompts that need a cast.
 EXPLAINER_PRESET: StylePreset = "flat-explainer"
+# The owner's rule (2026-10-01): every episode runs at least eight minutes, except a drama's. The
+# slides route's settings start at it (migration 0117); the explainer is held to it as well and
+# may run to twelve. The tools' floor is MIN_EPISODE_MINUTES in tools/video/core/schema.mjs.
+EPISODE_MIN_MINUTES = 8
+EXPLAINER_MAX_MINUTES = 12
 DramaAspect = Literal["16:9", "9:16"]
 MediaKindName = Literal["image", "clip", "music"]
 
@@ -167,8 +172,8 @@ class _SettingsFields(StrictModel):
     topic_from_site: bool
     topic_from_search: bool
     voice: VoiceSettings
-    target_minutes_min: int = Field(ge=3, le=30)
-    target_minutes_max: int = Field(ge=3, le=30)
+    target_minutes_min: int = Field(ge=EPISODE_MIN_MINUTES, le=30)
+    target_minutes_max: int = Field(ge=EPISODE_MIN_MINUTES, le=30)
     caption_locales: list[CaptionLocale] = Field(max_length=4)
     max_drafts_per_month: int = Field(ge=0, le=60)
     monthly_token_budget_millions: int = Field(ge=1, le=500)
@@ -402,7 +407,9 @@ class DramaRequestIn(StrictModel):
     title: str | None = Field(default=None, min_length=1, max_length=200)
     source_guide: str | None = Field(default=None, pattern=GUIDE_SLUG_PATTERN)
     style_preset: StylePreset = "cinematic-3d"
-    target_minutes: int = Field(default=3, ge=1, le=8)
+    # A drama episode runs 1 to SERIES_MAX_MINUTES; an explainer EPISODE_MIN_MINUTES to
+    # EXPLAINER_MAX_MINUTES, and starts at the minimum when the request names no length.
+    target_minutes: int = Field(default=3, ge=1, le=EXPLAINER_MAX_MINUTES)
     note: str | None = Field(default=None, min_length=1, max_length=2000)
 
     @field_validator("premise", "title", "note")
@@ -414,6 +421,15 @@ class DramaRequestIn(StrictModel):
         if not text:
             raise ValueError("must not be blank")
         return text
+
+    @model_validator(mode="after")
+    def _length(self) -> Self:
+        if self.style_preset == EXPLAINER_PRESET and "target_minutes" not in self.model_fields_set:
+            self.target_minutes = EPISODE_MIN_MINUTES
+        problem = episode_minutes_problem(self.style_preset, self.target_minutes)
+        if problem:
+            raise ValueError(problem)
+        return self
 
 
 class DramaRequestStart(StrictModel):
@@ -531,6 +547,21 @@ SeriesKind = Literal["series", "one-off", "story"]
 # database allows the longer one for every kind (migration 0111); the schemas hold the rest to 8.
 SERIES_MAX_MINUTES = 8
 STORY_MAX_MINUTES = 20
+
+
+def episode_minutes_problem(style_preset: str | None, minutes: int) -> str | None:
+    """Why an episode of this preset may not run this long, or None; a story is checked apart."""
+    if style_preset == EXPLAINER_PRESET:
+        if not EPISODE_MIN_MINUTES <= minutes <= EXPLAINER_MAX_MINUTES:
+            return (
+                f"an explainer runs {EPISODE_MIN_MINUTES} to {EXPLAINER_MAX_MINUTES} minutes: "
+                "every episode but a drama's runs at least eight"
+            )
+    elif minutes > SERIES_MAX_MINUTES:
+        return f"an episode is at most {SERIES_MAX_MINUTES} minutes; only a story runs longer"
+    return None
+
+
 # How many stories may start on one Asia/Taipei calendar day, at most.
 STORY_MAX_PER_DAY = 12
 SeriesStatus = Literal["setting", "outline", "active", "paused", "finished"]
@@ -613,7 +644,8 @@ class SeriesIn(StrictModel):
     A ``story`` series (docs/videos/STORY.md) is always hands-off, stills only and never
     compiled, needs its title, premise and shared look, and may run to STORY_MAX_MINUTES; its
     episodes come from the backlog import, not from documents. The daily count and the look
-    belong to a story series only; every other kind stays at SERIES_MAX_MINUTES.
+    belong to a story series only; every other kind stays at SERIES_MAX_MINUTES, except the
+    explainer, which runs EPISODE_MIN_MINUTES to EXPLAINER_MAX_MINUTES (episode_minutes_problem).
     """
 
     slug: str | None = Field(default=None, pattern=SERIES_SLUG_PATTERN)
@@ -683,10 +715,14 @@ class SeriesIn(StrictModel):
             if self.look is None:
                 raise ValueError("a story series needs the look every story shares")
         else:
-            if self.target_minutes > SERIES_MAX_MINUTES:
-                raise ValueError(
-                    f"an episode is at most {SERIES_MAX_MINUTES} minutes; only a story runs longer"
-                )
+            if (
+                self.style_preset == EXPLAINER_PRESET
+                and "target_minutes" not in self.model_fields_set
+            ):
+                self.target_minutes = EPISODE_MIN_MINUTES
+            problem = episode_minutes_problem(self.style_preset, self.target_minutes)
+            if problem:
+                raise ValueError(problem)
             if self.episodes_per_day is not None or self.look is not None:
                 raise ValueError("only a story series has a daily count and a shared look")
         if self.kind == "one-off":

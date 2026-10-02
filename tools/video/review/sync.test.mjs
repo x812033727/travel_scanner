@@ -21,6 +21,9 @@ import { encodeWav } from "../tts/wav.mjs";
 import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeTranslations } from "../compile/fixture.mjs";
 import { audioCheck, checklistFrom, clearedSummary, downloadNote, guideSlugs, judgeBody, MAX_REVIEW_FILES, outlineOptions, PART_BYTES, previewArgs, REVIEW_GATES, sourceGuideOf, STEP_LABELS, storyboardSheets, uploadItems } from "./sync.mjs";
 
+// The fixture videos run seconds; the eight-minute floor has tests of its own.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
+
 const TOKEN = `mkv_${"r".repeat(43)}`;
 const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");
 

@@ -267,7 +267,7 @@ describe("AdminVideoReviews", () => {
     fireEvent.change(screen.getByRole("textbox", { name: "故事前提（必填）" }), { target: { value: "  大禹治水  " } });
     expect(screen.getByRole("option", { name: "扁平插畫解說" })).toHaveProperty("value", "flat-explainer");
     fireEvent.change(screen.getByRole("combobox", { name: "風格" }), { target: { value: "ink-wash" } });
-    fireEvent.change(screen.getByRole("spinbutton", { name: "長度（分鐘，1–8）" }), { target: { value: "2" } });
+    fireEvent.change(screen.getByRole("spinbutton", { name: "長度（分鐘：漫劇 1–8，解說 8–12）" }), { target: { value: "2" } });
     fireEvent.change(screen.getByRole("textbox", { name: "改編站上文章（slug，選填）" }), { target: { value: "Not A Slug" } });
     expect(submit).toHaveProperty("disabled", true);
     fireEvent.change(screen.getByRole("textbox", { name: "改編站上文章（slug，選填）" }), { target: { value: "" } });

@@ -17,6 +17,9 @@ import { geminiText } from "../tts/requests.mjs";
 import { concatSamples, encodeWav, parseWav } from "../tts/wav.mjs";
 import { dubFingerprint, dubRequests, speechCurrent, speechFingerprint } from "./plan.mjs";
 
+// The fixture videos run seconds; the eight-minute floor has tests of its own.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
+
 const TOKEN = `mkv_${"t".repeat(43)}`;
 const VOICE = { provider: "gemini", name: "Sulafat", style: "Conversational." };
 // Spelled with escapes so the file stays ASCII: "P nine-ten-five" and "P nine-five" in Chinese.

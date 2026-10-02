@@ -15,6 +15,9 @@ import { composeMetadata, dubSteps, uploadChecklist } from "../package/metadata.
 import { finalReviewHtml } from "../review/pages.mjs";
 import { dubFingerprint, dubScript, translationHash } from "./plan.mjs";
 
+// The fixture videos run seconds; the eight-minute floor has tests of its own.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
+
 const TOKEN = `mkv_${"t".repeat(43)}`;
 
 /** The site as review-push and review-pull see it: it keeps files, reviews and the owner's decisions. */

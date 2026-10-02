@@ -25,6 +25,9 @@ import { compilationSlug } from "./compilation.mjs";
 import { castFrom, chapterRange, documentPayload, documentProblem, documentVariant, episodeBrief, episodeSlug, isExplainerOneOff, isOneOff, planDocument, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
 import { checkBrief } from "../core/lint.mjs";
 
+// The fixture videos run seconds; the eight-minute floor has tests of its own.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
+
 const TOKEN = `mkv_${"s".repeat(43)}`;
 const SITE = "https://site.test";
 const sha = (file) => createHash("sha256").update(readFileSync(file)).digest("hex");

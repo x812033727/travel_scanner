@@ -19,7 +19,7 @@ import { emptyLexicon } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
 import { articlePath, SITE } from "../core/metadata.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, UsageError } from "../core/paths.mjs";
-import { eachLine, LINE_ID, NARRATION_LOCALE, narrationLocale, spokenText } from "../core/schema.mjs";
+import { eachLine, LINE_ID, minEpisodeMinutes, NARRATION_LOCALE, narrationLocale, spokenText } from "../core/schema.mjs";
 import { writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckBinding, scriptCheckMatches, scriptCheckUnbound } from "../core/script-check.mjs";
 import { LOCALE_PARTS, readLanguages, writeLanguages } from "../core/stages.mjs";
@@ -39,6 +39,14 @@ import { rewriteProblems } from "./rewrite.mjs";
 import { advanceCompilation, startCompilation } from "./compilation.mjs";
 import { castFrom, episodeBrief, isExplainerOneOff, isOneOff, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
 import { episodeSeries, episodeShortFields, episodeShortsProblems, shortsFile } from "../shorts/episode.mjs";
+
+// The eight-minute floor (core/schema.mjs MIN_EPISODE_MINUTES): a slides video and an explainer
+// start at it whatever an older settings row or request says; a drama episode keeps its length.
+const slidesMinutes = (settings) => {
+  const low = Math.max(minEpisodeMinutes(), settings.target_minutes_min);
+  return [low, Math.max(low, settings.target_minutes_max)];
+};
+const episodeMinutes = (minutes, preset) => (preset === EXPLAINER_PRESET ? Math.max(minEpisodeMinutes(), minutes) : minutes);
 
 export const STATE_FILE = "auto.json";
 const GLOBAL_FILE = "auto-state.json";
@@ -735,7 +743,7 @@ export class Automation {
       // A drama's own topic scope (the drama part's), the topics to avoid shared by both.
       scope: settingsFor(this.settings, format).topicScope,
       avoid: this.settings.topic_avoid,
-      target_minutes: [this.settings.target_minutes_min, this.settings.target_minutes_max],
+      target_minutes: slidesMinutes(this.settings),
       channel: refs.channel,
       formats: refs.formats,
       script_writing: refs.script_writing,
@@ -843,7 +851,7 @@ export class Automation {
     const earlier = this.earlierVideos();
     const taken = new Set(earlier.map((video) => video.slug));
     const usedGuides = new Set(earlier.map((video) => video.source_guide).filter(Boolean));
-    const minutes = Number(request.target_minutes) || 3;
+    const minutes = episodeMinutes(Number(request.target_minutes) || 3, request.style_preset);
     const stateBase = { format: "drama", request_id: request.id, premise: request.premise, style_preset: request.style_preset ?? null, target_minutes: minutes, source_guide: request.source_guide ?? null };
     const sources = request.source_guide ? await readSources(this.read, [siteArticleUrl(request.source_guide, this.ctx.root)]) : [];
     let plan = null;
@@ -924,7 +932,7 @@ export class Automation {
       request_id: request.id,
       premise: request.premise,
       style_preset: series.style_preset ?? null,
-      target_minutes: Number(request.target_minutes) || series.target_minutes || 3,
+      target_minutes: episodeMinutes(Number(request.target_minutes) || series.target_minutes || 3, series.style_preset),
       source_guide: request.source_guide ?? null,
       // The binge fields (docs/videos/BINGE.md) travel with a series' episode: the genre section
       // of every prompt, the visual tier lint holds the script to, whether the gates are
@@ -1275,7 +1283,7 @@ export class Automation {
       slug: state.slug,
       voice: settingsFor(this.settings, state.format).voice,
       source_guide: state.source_guide,
-      target_minutes: drama ? [state.target_minutes ?? 3, state.target_minutes ?? 3] : [this.settings.target_minutes_min, this.settings.target_minutes_max],
+      target_minutes: drama ? [state.target_minutes ?? 3, state.target_minutes ?? 3] : slidesMinutes(this.settings),
       lexicon: Object.keys(lexicon.terms),
       script_writing: refs.script_writing,
       channel: refs.channel,

@@ -1,11 +1,14 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { dramaBrief, dramaFixture, fixture, fixtureBrief, fixtureLexicon, storyBrief, storyFixture, storySeries } from "./fixtures/load.mjs";
+import { dramaBrief, dramaFixture, explainerBrief, explainerFixture, fixture, fixtureBrief, fixtureLexicon, storyBrief, storyFixture, storySeries } from "./fixtures/load.mjs";
 import { billableEstimate, briefSections, checkBrief, lintVideo, productionShotProblems, stancePoints, stanceProblems, templateSimilarity } from "./lint.mjs";
 import { estimateTimeline } from "./timeline.mjs";
-import { textHash } from "./schema.mjs";
+import { MIN_EPISODE_MINUTES, minEpisodeMinutes, textHash } from "./schema.mjs";
 import { sourceHashes } from "./translations.mjs";
+
+// The fixture videos run seconds; the eight-minute floor has tests of its own.
+process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
 
 const context = (overrides = {}) => ({ lexicon: fixtureLexicon(), brief: fixtureBrief(), others: [], translations: {}, ...overrides });
 const messages = (problems) => problems.map((problem) => problem.message).join("\n");
@@ -346,4 +349,25 @@ test("illustrated slides lint clean, warn on cadence, and are compared by their 
   const b = illustratedFixture();
   b.scenes.splice(2, 0, { id: "extra", template: "shot", data: { prompt: "flat illustration of a lighthouse", camera: "drift", visual: "still" }, lines: [{ id: "z3zz", text: "多一張圖。" }] });
   assert.equal(templateSimilarity(a, b), 1);
+});
+
+test("every episode but a drama's runs at least eight minutes: slides and the explainer are held to it, a drama is not", () => {
+  assert.equal(MIN_EPISODE_MINUTES, 8);
+  assert.equal(minEpisodeMinutes({}), 8);
+  assert.equal(minEpisodeMinutes({ VIDEO_MIN_EPISODE_MINUTES: "0" }), 0);
+  assert.equal(minEpisodeMinutes({ VIDEO_MIN_EPISODE_MINUTES: "nonsense" }), 8);
+  const saved = process.env.VIDEO_MIN_EPISODE_MINUTES;
+  delete process.env.VIDEO_MIN_EPISODE_MINUTES;
+  try {
+    const slides = lintVideo(fixture(), context());
+    assert.ok(slides.errors.some((each) => each.path === "target_minutes" && /at least 8/.test(each.message)), messages(slides.errors));
+    assert.ok(slides.errors.some((each) => each.path === "scenes" && /at least 8: write more narration/.test(each.message)), messages(slides.errors));
+    const explainer = lintVideo(explainerFixture(), context({ brief: explainerBrief() }));
+    assert.ok(explainer.errors.some((each) => /at least 8/.test(each.message)), messages(explainer.errors));
+    const drama = lintVideo(dramaFixture(), context({ brief: dramaBrief() }));
+    assert.ok(!drama.errors.some((each) => /at least 8/.test(each.message)), messages(drama.errors));
+  } finally {
+    if (saved === undefined) delete process.env.VIDEO_MIN_EPISODE_MINUTES;
+    else process.env.VIDEO_MIN_EPISODE_MINUTES = saved;
+  }
 });

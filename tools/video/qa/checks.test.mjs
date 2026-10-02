@@ -29,6 +29,16 @@ test("assemble reads checks.json: missing, failed, stale or passed", () => {
   assert.deepEqual(passed, { id: "assemble", ok: true, detail: "1200 frames, -14.1 LUFS, 2 frames matched their slides; every check passed" });
 });
 
+test("assemble holds a slides cut or an explainer to the eight-minute floor, measured on the cut", () => {
+  const cut = (frames) => ({ checks: { ok: true, problems: [], metrics: { frames } }, current: true, finalExists: true });
+  const short = assembleItem({ ...cut(8 * 60 * 30 - 30), minMinutes: 8 });
+  assert.equal(short.ok, false);
+  assert.match(short.detail, /07:59, under the 8-minute floor/);
+  assert.equal(assembleItem({ ...cut(8 * 60 * 30), minMinutes: 8 }).ok, true);
+  assert.equal(assembleItem({ ...cut(3 * 60 * 30), minMinutes: 0 }).ok, true, "a drama has no floor");
+  assert.match(assembleItem({ checks: { ok: true, problems: [], metrics: {} }, current: true, finalExists: true, minMinutes: 8 }).detail, /no frame count/);
+});
+
 test("render reads the manifest and the cache the renderer left", () => {
   const manifest = { visual_hash: "v1", scenes: [{ id: "hook", states: [{ still: "frames/aaaa.png" }, { still: "frames/bbbb.png" }] }], thumbnail: "thumbnail.jpg" };
   const base = { visual: "v1", speech: "s1", subtitles: null, burnIn: false, hasThumbnail: true };
