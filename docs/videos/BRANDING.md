@@ -25,6 +25,34 @@ node tools/video/cli.mjs branding --install /outside/repo/brand-package-v1 --wor
 node tools/video/cli.mjs branding --workdir /video-work --json
 ```
 
+「原來如此」系列使用獨立預設。站主選定的素材包已把原 5 秒開場與 6.9 秒系列動畫
+合併為 `intro.mp4`（357 格／11.9 秒），原片尾仍是 90 格／3 秒：
+
+```bash
+node tools/video/cli.mjs branding --series sothatswhy --install /outside/repo/approved --workdir /video-work --dry-run
+node tools/video/cli.mjs branding --series sothatswhy --install /outside/repo/approved --workdir /video-work
+node tools/video/cli.mjs branding --series sothatswhy --workdir /video-work --json
+```
+
+系列設定在 `_branding/series/sothatswhy/current.json`，歷史在同目錄的 `history/`；
+媒體仍依 hash 保存於 `_branding/<branding_hash>/`。安裝系列不替換全頻道 current。
+只接受 `sothatswhy` 系列識別，避免未定義的路由或任意路徑。
+新長片以既有 `isExplainer(doc)` 定義挑選：`format: "drama"` 且
+`look.preset: "flat-explainer"`，與系列縮圖一致；不按標題猜測。
+沒有系列設定才沿用全頻道 current；系列設定明確 disabled 時不套片頭，格式錯誤時拒絕建置。
+其他長片保留全頻道設定；合集沒有 explainer look，仍用全頻道設定。
+
+新片與 `--adopt-branding` 使用同一系列選擇規則。既有 pin 優先，不讀更新後的 current；
+已核准、已上傳、已有上架包與未 pin 的歷史成片保留原有保護。
+「原來如此」字幕與第二章起延後 **11.9 秒／357 格**，配音包裝使用相同片頭音軌，
+總格數加 447。不要再額外加 5 秒原開場。下文 150／90 與 5 秒示例是全頻道規格；
+實際偏移一律依本片的 `checks.branding.intro_frames` 計算。
+
+Shorts 可使用另備的 1080×1920、6.9 秒獨立「原來如此」動畫素材，保留多語文字、
+男女聲與配樂，不包含原 5 秒頻道開場及片尾。直式媒體留在 git 外；它是可搭配剪輯的素材，
+本次長片系列預設不自動插入所有 Shorts，也不增加既有 Shorts 的片長。
+素材與接入證據見 [系列接入紀錄](branding-release/2026-10-02-sothatswhy-series-integration.md)。
+
 安裝先核對每個素材的 SHA、格數、尺寸、幀率與音軌，再複製到
 `<workdir>/_branding/<branding_hash>/`，最後原子更新 `_branding/current.json`。
 舊的 current 設定保留在 `_branding/history/`。安裝不改動既有影片、不送審，也不發布。
