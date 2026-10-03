@@ -154,7 +154,7 @@ export const PRICES = {
 const HAILUO_CREDITS_PER_SECOND = { "2k": 12, "768p": 7 };
 // 2K 的 12 是實測（站主的 Max 帳號，H3 2K 5 秒：「創建」旁顯示 60，餘額 27,150 → 27,090）；768P 的 7 沒有量。
 export const HAILUO_CREDITS_BASIS = { "2k": `實測 ${PLANS_MEASURED_ON}`, "768p": "推算" };
-const HAILUO_NOTE = `H3 2K 12 credits/s 是實測（${PLANS_MEASURED_ON}：5 秒一支扣 60）；768P 的 7 credits/s 仍推算自訂閱頁的每月秒數（Pro 4,500 credits ≈ 643 s 的 768P、≈ 375 s 的 2K；Standard 1,000 ≈ 143 / 84 s），每級一樣；頁面標的每秒美元是以年繳月價算的`;
+const HAILUO_NOTE = `H3 2K 12 credits/s 是在 Max 帳號實測的（${PLANS_MEASURED_ON}：5 秒一支扣 60）；每級都一樣、以及 768P 的 7 credits/s，仍推算自訂閱頁的每月秒數（Pro 4,500 credits ≈ 375 s 的 2K、≈ 643 s 的 768P；Standard 1,000 ≈ 84 / 143 s）；頁面標的每秒美元是以年繳月價算的`;
 const HAILUO_OUTPUT_NOTE = `H3 2K 的輸出是 2560×1440、24 fps、帶 AAC 音軌（實測 ${PLANS_MEASURED_ON}）：不是原生 1920×1080，production profile 不收；音軌成片不用。下載走「全部下載 → 無水印下載」，結果卡 <video> 的 src 是有浮水印的版本，clips import 的 ffmpeg 檢查抓不到`;
 const KLING_NOTE = `每支影片的 credits 未驗證：40 是第三方 2026 年的整理（standard 5 s 約 35–45）；官方 CLI 的 who_am_i 不給 credits 價，${PLANS_MEASURED_ON} 授權進來的帳號是 NORMAL、0 credits，沒有生成過。用 --credits-per-video 蓋過`;
 
