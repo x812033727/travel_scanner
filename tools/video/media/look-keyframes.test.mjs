@@ -11,7 +11,7 @@ import { dramaFixture, explainerFixture, sandbox } from "../core/fixtures/load.m
 import { readLedger } from "./ledger.mjs";
 import { keepSheets } from "./series-store.mjs";
 import { readCache } from "./cache.mjs";
-import { chosenSheets, CONTACT_SHEET_TILES, contactSheetPages, keyframeRubric, MAX_KEYFRAME_TAKES, shotPrompt } from "./keyframes.mjs";
+import { chosenSheets, CONTACT_SHEET_TILES, contactSheetPages, keyframeRubric, MAX_KEYFRAME_TAKES, shotPrompt, STYLE_PLATE_ID, STYLE_PLATE_PROMPT } from "./keyframes.mjs";
 import { DEFAULT_SHEET_PROMPT, MAX_LOOK_ROUNDS, optionKey, parseChoice, sheetPrompt, suggestedOf } from "./look.mjs";
 import { imagePrice, statusProblem } from "./stages.mjs";
 
@@ -110,6 +110,7 @@ function context(box, fetchImpl, extra = {}) {
 }
 
 const manifestOf = (box, name) => JSON.parse(readFileSync(path.join(box.workdir, name, "manifest.json"), "utf8"));
+const readJson = (file) => JSON.parse(readFileSync(file, "utf8"));
 
 test("sheet prompts, choices and suggestions", () => {
   const doc = dramaFixture();
@@ -668,36 +669,81 @@ test("illustrated slides draw their stills with no look gate, bound to the shots
   const site = mediaSite({ verdicts: () => ({ overall: 8, passed: true }), status });
   const dry = context(box, site.fetchImpl);
   assert.equal(await main(["keyframes", "--slug", box.slug, "--dry-run"], dry.ctx), EXIT.ok, dry.out.stderr);
-  assert.match(dry.out.stdout, /gemini gemini-3\.1-flash-image ready; pictures at 1K; about US\$0\.39 for one take of everything, up to US\$1\.16 at 3 takes; this video so far US\$0\.00 of the US\$20 cap/);
+  // One style plate before the five shots (docs/videos/ILLUSTRATED.md §第二輪): 6 × (0.067 + 0.01).
+  assert.match(dry.out.stdout, /keyframes for 5 shots \(0 end frames\), up to 3 takes each, after one style plate\n/);
+  assert.match(dry.out.stdout, /references: style plate\n/);
+  assert.match(dry.out.stdout, /gemini gemini-3\.1-flash-image ready; pictures at 1K; about US\$0\.46 for one take of everything, up to US\$1\.39 at 3 takes; this video so far US\$0\.00 of the US\$20 cap/);
   const run = context(box, site.fetchImpl);
   assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
   const doc = illustratedFixture();
   const shots = doc.scenes.filter((scene) => scene.template === "shot").map((scene) => scene.id);
-  assert.deepEqual(site.state.images.map((request) => request.shot_id), shots);
-  assert.match(site.state.images[0].prompt, /Style: hand-drawn editorial illustration for a printed magazine feature/);
+  assert.deepEqual(site.state.images.map((request) => request.shot_id), [STYLE_PLATE_ID, ...shots]);
+  // The plate is the look on a neutral daylight scene, drawn with no reference; every shot is then
+  // drawn with the plate as its style reference and judged beside it.
+  assert.match(site.state.images[0].prompt, new RegExp(`^${STYLE_PLATE_PROMPT.slice(0, 40)}.*Style: hand-drawn editorial illustration for a printed magazine feature`));
+  assert.equal(site.state.images[0].purpose, "style_frame");
+  assert.deepEqual(site.state.images[0].references, []);
+  const plate = readJson(path.join(box.workdir, "keyframes", "plate.json"));
+  assert.equal(plate.look_hash, lookHash(doc));
+  assert.equal(plate.file, "keyframes/plate-1.png");
+  assert.ok(existsSync(path.join(box.workdir, plate.file)));
+  assert.match(run.out.stdout, /style plate take 1: judge 8\/10\n/);
+  assert.ok(site.state.uploads.some((upload) => upload.sha256 === plate.sha256), "the plate is put in the store before the shots use it");
+  for (const request of site.state.images.slice(1)) assert.deepEqual(request.references, [{ sha256: plate.sha256, role: "style" }]);
+  assert.match(site.state.images[1].prompt, /Style: hand-drawn editorial illustration for a printed magazine feature/);
   assert.ok(site.state.images.every((request) => request.size === undefined), "a choice priced at 1K only is drawn at 1K");
   assert.ok(site.state.judges.every((request) => !request.rubric.some((item) => item.key === "subtitle_band" || item.key.startsWith("identity_"))), "CC only: no subtitle band; no cast: no identity question");
   assert.ok(site.state.judges.every((request) => request.rubric.some((item) => item.key === "craft")), "no cast: the picture is judged as craft, drawn by a hand rather than rendered");
+  assert.match(site.state.judges[0].rubric.find((item) => item.key === "style").question, /style description in the context/);
+  for (const request of site.state.judges.slice(1)) {
+    assert.deepEqual(request.files.map((each) => each.label), ["keyframe", "style plate"]);
+    assert.match(request.rubric.find((item) => item.key === "style").question, /labelled "style plate", as if by the same hand/);
+  }
   const manifest = manifestOf(box, "keyframes");
   assert.equal(manifest.look_hash, lookHash(doc));
   assert.equal(manifest.pictures_hash, picturesHash(doc));
   assert.equal(manifest.visual_hash, undefined);
   assert.deepEqual(manifest.image, { provider: "gemini", model: "gemini-3.1-flash-image" });
-  assert.equal(readLedger(box.workdir).totals.images, shots.length);
-  // A card edit keeps every picture; a camera edit redraws that shot alone.
+  assert.deepEqual(manifest.plate, { file: plate.file, sha256: plate.sha256, seed: 1, judge: plate.judge });
+  assert.equal(readLedger(box.workdir).totals.images, shots.length + 1);
+  assert.match(run.out.stdout, new RegExp(`${shots.length + 1} keyframes generated in`));
+  // A card edit keeps every picture; a camera edit redraws that shot alone, from the same plate.
   const file = path.join(box.dir, "video.json");
   const edited = JSON.parse(readFileSync(file, "utf8"));
   edited.scenes[0].data.title = "另一個標題";
   writeFileSync(file, JSON.stringify(edited));
   const kept = context(box, site.fetchImpl);
   assert.equal(await main(["keyframes", "--slug", box.slug], kept.ctx), EXIT.ok, kept.out.stderr);
-  assert.equal(site.state.images.length, shots.length, "nothing redrawn for a card's text");
+  assert.equal(site.state.images.length, shots.length + 1, "nothing redrawn for a card's text");
+  assert.match(kept.out.stdout, /style plate: kept \(judge 8\/10\)\n/);
   edited.scenes[1].data.camera = "pan left";
   writeFileSync(file, JSON.stringify(edited));
   const redrawn = context(box, site.fetchImpl);
   assert.equal(await main(["keyframes", "--slug", box.slug], redrawn.ctx), EXIT.ok, redrawn.out.stderr);
-  assert.equal(site.state.images.length, shots.length + 1, "a new binding walks every shot again; the cache answers the unchanged ones without the server");
-  assert.equal(readLedger(box.workdir).totals.images, shots.length + 1, "only the shot with the new camera is paid for");
+  assert.equal(site.state.images.length, shots.length + 2, "a new binding walks every shot again; the cache answers the unchanged ones without the server");
+  assert.deepEqual(site.state.images.at(-1).references, [{ sha256: plate.sha256, role: "style" }], "the plate outlives a prompt edit: it is bound to the look, not to the pictures");
+  assert.equal(readLedger(box.workdir).totals.images, shots.length + 2, "only the shot with the new camera is paid for");
+  // A new look draws a new plate, and with it every picture.
+  edited.look = { preset: "flat-explainer" };
+  writeFileSync(file, JSON.stringify(edited));
+  const relooked = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], relooked.ctx), EXIT.ok, relooked.out.stderr);
+  assert.equal(site.state.images.length, shots.length + 2 + 1 + shots.length);
+  const second = readJson(path.join(box.workdir, "keyframes", "plate.json"));
+  assert.notEqual(second.sha256, plate.sha256);
+  assert.equal(second.look_hash, lookHash(edited));
+  // An owner's own style frames stand in for the plate.
+  const framed = sandbox("fixture-illustrated-framed", "illustrated");
+  const framedDoc = JSON.parse(readFileSync(path.join(framed.dir, "video.json"), "utf8"));
+  writeFileSync(path.join(framed.dir, "frame.png"), PNG("owner's frame"));
+  framedDoc.look = { preset: "tech-story", style_frames: ["frame.png"] };
+  writeFileSync(path.join(framed.dir, "video.json"), JSON.stringify(framedDoc));
+  const framedSite = mediaSite({ verdicts: () => ({ overall: 8, passed: true }), status });
+  const framedRun = context(framed, framedSite.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", framed.slug], framedRun.ctx), EXIT.ok, framedRun.out.stderr);
+  assert.deepEqual(framedSite.state.images.map((request) => request.shot_id), shots, "no plate when the look has frames");
+  assert.ok(framedSite.state.images.every((request) => request.references.length === 1 && request.references[0].role === "style"));
+  assert.ok(!existsSync(path.join(framed.workdir, "keyframes", "plate.json")));
   // The drama keeps its subtitle band and its binding to the whole picture.
   assert.ok(keyframeRubric([]).some((item) => item.key === "subtitle_band"));
   assert.ok(!keyframeRubric([], { subtitleBand: false }).some((item) => item.key === "subtitle_band"));
@@ -708,10 +754,53 @@ test("illustrated slides draw their stills with no look gate, bound to the shots
   assert.ok(!keyframeRubric([]).some((item) => item.key === "craft"));
   assert.ok(!keyframeRubric([{ id: "a", name: "A" }]).some((item) => item.key === "craft"));
   assert.deepEqual(keyframeRubric([], { subtitleBand: false, craft: true }).map((item) => item.key), ["prompt", "style", "craft", "clean", "no_text"]);
-  assert.match(keyframeRubric([], { craft: true }).find((item) => item.key === "craft").question, /drawn by a person for print.*no glossy, glowing or computer-rendered finish/);
+  assert.match(keyframeRubric([], { craft: true }).find((item) => item.key === "craft").question, /made by a person for print, not generated.*no glossy, airbrushed, glowing or rendered finish/);
+  assert.match(keyframeRubric([], { craft: true }).find((item) => item.key === "clean").question, /filling the whole frame with no bars, borders, margins or blurred side panels/);
+  // The server takes a rubric question of at most 400 characters (schemas.py RubricItem).
+  for (const item of keyframeRubric([{ id: "a", name: "A", shot_look: "wet", appearance: "x".repeat(120) }], { craft: true, plate: true })) assert.ok(item.question.length <= 400, `${item.key}: ${item.question.length} characters`);
   // With the drama route on and no slides fields, slides draw as a drama does.
   assert.equal(statusProblem({ ...STATUS }, "image", "slides"), null);
   assert.match(statusProblem({ ...STATUS, enabled: false }, "image", "slides"), /pictures for slides videos are off/);
   assert.equal(imagePrice(status, "slides"), 0.067);
   assert.equal(imagePrice(status), 0.134, "a drama keeps the global model");
+});
+
+test("a paper margin is cut off a still: the manifest, the plate's reference and the next shots use the trimmed copy, the judge saw the picture whole", async () => {
+  const box = sandbox("fixture-illustrated", "illustrated");
+  const status = { ...STATUS, enabled: false, slides_enabled: true, slides_image: { provider: "gemini", model: "gemini-3.1-flash-image", configured: true }, slides_max_usd_per_video: 20, models: { ...STATUS.models, images: { gemini: [...STATUS.models.images.gemini, { value: "gemini-3.1-flash-image", label: "Flash", description: null, status: "stable", resolutions: [], durations: [], reference_images: 5, native_audio: false, usd_per_second: null, usd_per_image: 0.067, usd_per_track: null }] } } };
+  const site = mediaSite({ verdicts: () => ({ overall: 8, passed: true }), status });
+  const trimmed = [];
+  const trimImage = async (file) => {
+    // Only the plate and the first shot came back with a margin.
+    if (!/plate-1|podium-1/.test(file)) return null;
+    const out = file.replace(/\.png$/, "-trim.png");
+    writeFileSync(path.join(box.workdir, out), PNG(`trimmed ${file}`));
+    trimmed.push(file);
+    return { file: out, sha256: SHA(PNG(`trimmed ${file}`)), margins: { top: 2.1, bottom: 2.1, left: 1.6, right: 1.6 } };
+  };
+  const run = context(box, site.fetchImpl, { trimImage });
+  assert.equal(await main(["keyframes", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
+  assert.deepEqual(trimmed, ["keyframes/plate-1.png", "keyframes/podium-1.png"]);
+  assert.match(run.out.stdout, /style-plate: trimmed a 2\.1% paper margin\n/);
+  assert.match(run.out.stdout, /podium: trimmed a 2\.1% paper margin\n/);
+  const plate = readJson(path.join(box.workdir, "keyframes", "plate.json"));
+  assert.equal(plate.file, "keyframes/plate-1-trim.png");
+  assert.equal(plate.sha256, SHA(PNG("trimmed keyframes/plate-1.png")));
+  assert.deepEqual(plate.takes[0].margins, { top: 2.1, bottom: 2.1, left: 1.6, right: 1.6 });
+  // The judge was sent the picture as the server drew it; the shots reference the trimmed plate.
+  assert.notEqual(site.state.judges[0].files[0].sha256, plate.sha256);
+  assert.ok(site.state.uploads.some((upload) => upload.sha256 === plate.sha256), "the trimmed plate is put in the store");
+  for (const request of site.state.images.slice(1)) assert.deepEqual(request.references, [{ sha256: plate.sha256, role: "style" }]);
+  const manifest = manifestOf(box, "keyframes");
+  assert.equal(manifest.shots.podium.file, "keyframes/podium-1-trim.png");
+  assert.equal(manifest.shots.podium.sha256, SHA(PNG("trimmed keyframes/podium-1.png")));
+  assert.deepEqual(manifest.shots.podium.margins, { top: 2.1, bottom: 2.1, left: 1.6, right: 1.6 });
+  assert.equal(manifest.shots.desk.file, "keyframes/desk-1.png", "a picture with no margin is used as it came");
+  assert.equal(manifest.shots.desk.margins, undefined);
+  assert.deepEqual(manifest.plate, { file: plate.file, sha256: plate.sha256, seed: 1, judge: plate.judge });
+  // A rerun keeps the trimmed copies without asking the server or the trimmer again.
+  const again = context(box, site.fetchImpl, { trimImage });
+  assert.equal(await main(["keyframes", "--slug", box.slug], again.ctx), EXIT.ok, again.out.stderr);
+  assert.equal(trimmed.length, 2);
+  assert.match(again.out.stdout, /podium: kept \(judge 8\/10\)\n/);
 });

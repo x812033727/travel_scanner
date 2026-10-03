@@ -662,7 +662,7 @@ test("the Chinese production profile fixes its distinct narrator casting and Tai
   }
 });
 
-test("a drama is settled with the settings tab's preset, subtitles and music, and its brief has the bible's sections", () => {
+test("a drama is settled with the settings tab's preset, subtitles and music, and its brief has the bible's sections", async () => {
   const settings = { voice: { provider: "gemini", name: "Sulafat", style: "s", model: null, rate: "+0%" }, drama: DRAMA_SETTINGS };
   const video = { ...dramaFixture(), slug: "x" };
   delete video.look.preset;
@@ -679,8 +679,20 @@ test("a drama is settled with the settings tab's preset, subtitles and music, an
   const slides = settle(fixture(), { slug: "z", settings, sourceGuide: null, root: ROOT });
   assert.notEqual(slides.format, "drama", "a slides video is untouched");
   assert.equal(slides.look, undefined);
+  // Illustrated slides take one of the channel's print looks by slug when the writer named none
+  // (docs/videos/ILLUSTRATED.md §第二輪), and keep the writer's when it did.
+  const { illustratedFixture } = await import("../core/fixtures/load.mjs");
+  const { slidesPresetFor, SLIDES_PRESETS } = await import("../core/drama.mjs");
+  const unlooked = { ...illustratedFixture(), slug: "x" };
+  delete unlooked.look;
+  for (const slug of ["ai-term-token", "gemini-4-argon-who-can-use-it"]) {
+    const printed = settle(unlooked, { slug, settings, sourceGuide: null, root: ROOT });
+    assert.equal(printed.look.preset, slidesPresetFor(slug));
+    assert.ok(SLIDES_PRESETS.includes(printed.look.preset));
+  }
+  assert.equal(settle({ ...illustratedFixture(), slug: "x", look: { preset: "tech-story" } }, { slug: "ai-term-token", settings, sourceGuide: null, root: ROOT }).look.preset, "tech-story", "the writer's preset wins");
 
-  const bible = "# 精衛\n## 故事前提\n溺水化鳥\n## 角色\n精衛\n## 站主觀點\n（提案）\n## 幕\n三幕\n## 大綱\n### 選項 A：告別\n一行說明：先告別\n開場鉤子：「很久以前」\n### 選項 B：風暴\n一行說明：先風暴\n開場鉤子：「那一天」\n";
+  const bible ="# 精衛\n## 故事前提\n溺水化鳥\n## 角色\n精衛\n## 站主觀點\n（提案）\n## 幕\n三幕\n## 大綱\n### 選項 A：告別\n一行說明：先告別\n開場鉤子：「很久以前」\n### 選項 B：風暴\n一行說明：先風暴\n開場鉤子：「那一天」\n";
   assert.equal(planProblem({ slug: "jingwei", brief: bible, source_urls: [] }, new Set(), new Set(), "drama"), null);
   assert.match(planProblem({ slug: "jingwei", brief: bible.replace("## 角色", "## 人物"), source_urls: [] }, new Set(), new Set(), "drama"), /角色/);
   assert.match(planProblem({ slug: "jingwei", brief: bible, source_urls: [] }, new Set()), /觀眾看完能做到的事/, "a tutorial's brief wants its own sections");
@@ -2343,7 +2355,8 @@ test("illustrated slides: settle gives the channel look and the owner's music an
   delete bare.music;
   delete bare.sfx;
   const settled = settle(bare, { slug: "y", settings, sourceGuide: null, root: ROOT });
-  assert.deepEqual(settled.look, { preset: "tech-story" }, "the channel's look when the writer named none");
+  const { slidesPresetFor } = await import("../core/drama.mjs");
+  assert.deepEqual(settled.look, { preset: slidesPresetFor("y") }, "one of the channel's print looks, by slug, when the writer named none");
   assert.deepEqual(settled.music, { track: "bed.mp3" });
   assert.deepEqual(settled.sfx, { set: "studio-a" });
   assert.equal(settled.format, "slides");

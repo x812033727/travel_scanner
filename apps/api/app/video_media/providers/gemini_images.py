@@ -35,8 +35,18 @@ class GeminiImages:
         text = request.prompt
         if request.negative_prompt:
             text += f"\n\nAvoid: {request.negative_prompt}"
-        if request.references:
+        # A character sheet is copied; a style plate (role "style", sent last by the tools) is a
+        # sample of the hand, not of the scene: the illustrated slides draw every picture of a
+        # video from one plate so the set reads as one illustrator's (docs/videos/ILLUSTRATED.md).
+        roles = {image.role for image in request.references}
+        if roles - {"style"}:
             text += "\n\nKeep every character exactly as in the reference images."
+        if "style" in roles:
+            text += (
+                "\n\nThe last reference image is a style plate: draw this picture in exactly its "
+                "technique, line, palette, texture and finish, as if by the same hand on the same "
+                "paper. Take nothing of its scene, objects or people."
+            )
         parts: list[dict[str, Any]] = [{"text": text}]
         for image in request.references:
             parts.append(

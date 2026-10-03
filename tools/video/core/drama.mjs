@@ -56,6 +56,24 @@ export const MEDIA_CACHE_VERSION = "media-v1";
  * Style presets: what "cinematic 3D like the reference" or "2D anime" means as a prompt. A look
  * names one and may override any field; `custom` supplies everything itself.
  */
+// What every print look refuses: a render's finish, a machine's composition, a paper margin
+// around the picture (or a vertical picture between blurred bars), words and real faces.
+const PRINT_NEGATIVE = "photorealistic, 3D render, glossy, airbrushed, smooth gradients, neon glow, bokeh, stock vector, isometric, faceless mannequin, mirror symmetry, paper border, white margin, frame, mat, pillarbox, letterbox, blurred side bars, text, letters, numbers, watermark, logo, brand marks, real person's likeness, mascot, recurring character, extra fingers, deformed hands, cluttered background";
+// The two-ink risograph looks: one dark ink, one warm ink, cream paper, in four pairs.
+const RISO_INKS = {
+  "riso-teal": "a deep teal-green ink and a fluorescent coral-orange ink",
+  "riso-navy": "an ink-navy ink and a mustard-yellow ink",
+  "riso-forest": "a dark forest-green ink and a bright tangerine ink",
+  "riso-plum": "a deep plum ink and a golden-ochre ink",
+};
+function risoPresets() {
+  return Object.fromEntries(Object.entries(RISO_INKS).map(([name, inks]) => [name, {
+    style: `risograph print illustration on warm cream paper: ${inks}, overprinted where they meet, visible halftone dot grain, the inks a little off register and not quite covering, shapes built from overlapping flat ink layers with line only where an ink edge makes it, small simple people with dot eyes or seen from behind, one clear focal point in the centre third of the frame with uneven foreground and background layers to either side, the picture runs past all four edges of the frame, matte, slightly rough like a real print, 16:9`,
+    negative: PRINT_NEGATIVE,
+    motion: "slow push in or gentle drift, no morphing, no cuts",
+  }]));
+}
+
 export const PRESETS = {
   "cinematic-3d": {
     style: "semi-realistic 3D CG render, cinematic lighting, volumetric light, shallow depth of field, 35mm film look, detailed fabric and skin, ancient Chinese fantasy production design",
@@ -92,11 +110,38 @@ export const PRESETS = {
     negative: "photorealistic, 3D render, CGI, glossy, airbrushed, smooth gradients, neon glow, lens flare, bokeh, stock vector, corporate flat icon style, isometric, faceless mannequin, floating objects, mirror symmetry, text, letters, numbers, watermark, logo, brand marks, real person's likeness, mascot, recurring cartoon character, extra fingers, deformed hands, cluttered background",
     motion: "slow push in or gentle drift, no morphing, no cuts",
   },
+  // The channel's print looks since 2026-10-03 (docs/videos/ILLUSTRATED.md §第二輪): the same
+  // two-ink risograph print in four pairs of inks, and a linocut, chosen per video by its slug
+  // (slidesPresetFor) so each video is its own print run while the channel stays one printer.
+  // Drawn and compared on 2026-10-03 against the tech-story look: a print's halftone grain,
+  // overprint and off-register inks are what a viewer reads as a hand, where an even ink
+  // outline around everything reads as a children's book drawn by a machine. The phrase
+  // "full-bleed, edge to edge" makes the model paint a paper margin around the picture, so the
+  // looks say the picture runs past the frame and the negative refuses borders instead.
+  ...risoPresets(),
+  "linocut-teal": {
+    style: "two-colour linocut relief print on cream paper: bold carved marks and gouged textures, a deep teal-black key block with an ochre and a brick-red spot colour printed a little off register, rough carved edges, chunky simplified shapes, ink unevenly rolled so some areas print lighter, small simple people with carved dot eyes or seen from behind, one clear focal point in the centre third of the frame with uneven foreground and background layers to either side, the picture runs past all four edges of the frame, matte paper, 16:9",
+    negative: PRINT_NEGATIVE,
+    motion: "slow push in or gentle drift, no morphing, no cuts",
+  },
   custom: { style: "", negative: "", motion: "" },
 };
 export const EXPLAINER_PRESET = "flat-explainer";
-/** The look a slides video's illustrations take unless its video.json names another. */
-export const SLIDES_PRESET = "tech-story";
+/** The print looks a slides video's illustrations rotate through (docs/videos/ILLUSTRATED.md §第二輪), in rotation order. */
+export const SLIDES_PRESETS = ["riso-teal", "riso-navy", "riso-forest", "riso-plum", "linocut-teal"];
+/** The look a slides video's illustrations take when nothing chooses one (the first of the rotation). */
+export const SLIDES_PRESET = SLIDES_PRESETS[0];
+/**
+ * The print look of a slides video with no look of its own: one of SLIDES_PRESETS by the slug,
+ * so two videos written the same week come off different print runs and the same video always
+ * gets the same one (the look is in lookHash; a rotation by date would redraw a video rerun
+ * later). The writer may still name one, and the owner may set one in video.json.
+ */
+export function slidesPresetFor(slug) {
+  let hash = 2166136261;
+  for (const char of String(slug ?? "")) hash = Math.imul(hash ^ char.charCodeAt(0), 16777619) >>> 0;
+  return SLIDES_PRESETS[hash % SLIDES_PRESETS.length];
+}
 export const PRESET_NAMES = Object.keys(PRESETS);
 export const DEFAULT_LOOK_CANDIDATES = 3;
 export const DEFAULT_MUSIC = { gain_db: -20, duck_db: -10, fade_in_ms: 1500, fade_out_ms: 3000 };
@@ -612,18 +657,34 @@ export function cameraMove(data) {
 }
 // How close the camera is: a prompt that says none of these leaves the picture to the model's
 // habit, a medium shot of a thing in the middle. Every size the writer's guide and the warning
-// below name is accepted as written there, "medium" and "close up" included.
-const SHOT_SIZE = /\b(?:extreme close[- ]?up|close[- ]?up|close shot|macro|medium|mid shot|wide|establishing|bird'?s-?eye|overhead|from above|from directly above|top-?down|low angle|worm'?s-?eye|high angle|aerial|full shot|two-?shot|over the shoulder|from behind|in profile|silhouette)\b/i;
+// below name is accepted as written there, in its usual spellings (low-angle, bird's eye, top
+// down, over-the-shoulder), and as a size: at the start of the prompt, or followed by shot,
+// view, angle or of, so "a medium bowl", "over medium heat" and "a wide street" are not sizes.
+const SIZE_WORD = "extreme close[- ]?up|close[- ]?up|close shot|macro|medium|mid shot|wide|establishing|bird'?s[- ]?eye|overhead|from above|from directly above|top[- ]?down|low[- ]angle|worm'?s[- ]?eye|high[- ]angle|aerial|full shot|two[- ]?shot|over[- ]the[- ]shoulder|from behind|in profile|silhouette";
+const SHOT_SIZE = new RegExp(`(?:^\\W*(?:${SIZE_WORD})\\b|\\b(?:${SIZE_WORD})(?:[- ]+(?:shot|view|angle)\\b|\\s+of\\b))`, "i");
 // What the look already says: a prompt that repeats it pins every picture to one palette and
-// one finish, which is the sameness a viewer reads as a slideshow. Only the tech-story look's
-// own words, and "cream" as a colour, not as the thing in a cone.
-const LOOK_WORDS = /\b(?:flat (?:editorial )?illustration|editorial illustration|painterly|paper grain|teal|(?<!ice )cream(?! cone| cheese| puff| cake)|amber|16:9)\b/i;
+// one finish, which is the sameness a viewer reads as a slideshow. Only the slides looks' own
+// words (the techniques of SLIDES_PRESETS and the palette they share), and "cream" as a colour,
+// not as the dairy in a cone, a cake or a coffee.
+const LOOK_WORDS = /\b(?:flat (?:editorial )?illustration|editorial illustration|painterly|paper grain|risograph|riso print|linocut|woodcut|gouache|screen[- ]?print|halftone|misregist\w+|teal|(?<!ice[- ])(?<!whipped )(?<!sour )(?<!double )cream(?! cone| cheese| puff| cake| pie| tea| soda| poured| in (?:the|a|his|her) coffee)|amber|16:9)\b/i;
+// Where and when the light comes from: a video told entirely at night under one lamp is the
+// other sameness (the first scripts put a lamp in a quarter of their pictures and the night in
+// half); more than half of the pictures in the dark is a warning per video.
+const DARK_LIGHT = /\b(?:night|midnight|dusk|late evening|after dark|\d\s*a\.?m\b|lamp|lamplight|lantern|candle|torch|moonlight|neon|street[- ]?light|floodlight|single (?:hanging |bare |pendant )?(?:bulb|light))\b/i;
+export const DARK_SHARE_WARN = 1 / 2;
 // Words of a prompt that are not a place or an object (grammar, sizes, light, materials, the
 // look's own palette and finish, the camera): a motif is counted on the rest.
 const PROMPT_STOPWORDS = new Set(["with", "from", "into", "onto", "over", "under", "behind", "beside", "above", "below", "between", "through", "across", "along", "around", "down", "their", "there", "them", "they", "this", "that", "these", "those", "where", "while", "what", "when", "which", "small", "large", "tiny", "huge", "little", "dark", "light", "warm", "cold", "soft", "bright", "night", "view", "shot", "frame", "side", "left", "right", "centre", "center", "centred", "centered", "middle", "front", "back", "close", "wide", "seen", "single", "each", "some", "many", "only", "same", "other", "like", "still", "long", "tall", "short", "open", "flat", "plain", "simple", "clean", "whole", "half", "away", "near", "high", "deep", "wooden", "paper", "glass", "metal", "brass", "stone", "very", "more", "most", "just", "then", "than", "also", "both", "being", "person", "figure", "people", "anonymous", "hand", "hands", "angle", "level", "overhead", "profile", "edge", "corner", "lying", "standing", "sitting", "holding", "looking", "resting", "composition", "picture", "scene", "image", "illustration", "editorial", "painterly", "grain", "shape", "shapes", "line", "lines", "colour", "color", "ground", "background", "foreground", "teal", "cream", "amber", "green", "navy", "mustard", "ochre", "brick", "highlight", "highlights", "accent", "accents", "glow", "glowing", "lamplight", "spotlight", "medium", "extreme", "establishing", "aerial", "macro", "silhouette", "shoulder", "closeup"]);
-// A plural folds to its singular (benches → bench, lamps → lamp) so the two count as one thing.
+// A plural folds to its singular (benches → bench, lamps → lamp, ferries → ferry, shelves →
+// shelf, boxes → box, dishes → dish) so a prop written in both numbers counts once.
 const motifOf = (word) => {
-  if (word.length > 5 && /(?:ch|sh|x|ss)es$/.test(word)) return word.slice(0, -2);
+  if (word === "series" || word === "species") return word;
+  if (word.length > 4 && word.endsWith("ies")) return `${word.slice(0, -3)}y`;
+  if (word.length > 5 && word.endsWith("ves")) return `${word.slice(0, -3)}f`;
+  // potatoes and heroes, but shoes and canoes keep their o and lose only the s below.
+  if (word.length > 6 && word.endsWith("oes")) return word.slice(0, -2);
+  if (word.length > 5 && /(?:ch|sh|ss)es$/.test(word)) return word.slice(0, -2);
+  if (word.length > 4 && word.endsWith("xes")) return word.slice(0, -2);
   return word.length > 4 && word.endsWith("s") && !/(?:ss|us|is)$/.test(word) ? word.slice(0, -1) : word;
 };
 function promptMotifs(scene) {
@@ -650,12 +711,18 @@ export function pictureVarietyProblems(doc) {
   let last = null;
   const unsized = [];
   const restated = [];
+  const dark = [];
   const lookWords = new Set();
   for (const { scene, where } of shots) {
     const move = cameraMove(scene.data);
     run = move === last ? run + 1 : 1;
     last = move;
-    if (run === SAME_MOVE_RUN_MAX + 1) errors.push({ path: `${where}.data.camera`, message: `${SAME_MOVE_RUN_MAX + 1} stills in a row under "${move}"; alternate the moves (push in, pull out, pan left, pan right, tilt up, tilt down, drift)` });
+    if (run === SAME_MOVE_RUN_MAX + 1) {
+      // The field that carries the move is the one to change: camera when it names one, else the
+      // motion prompt (cameraMove reads camera first, then motion).
+      const field = typeof scene.data?.camera === "string" && CAMERA_MOVES.some(([, pattern]) => pattern.test(scene.data.camera.toLowerCase())) ? "camera" : typeof scene.data?.motion === "string" ? "motion" : "camera";
+      errors.push({ path: `${where}.data.${field}`, message: `${SAME_MOVE_RUN_MAX + 1} stills in a row under "${move}"; alternate the moves (push in, pull out, pan left, pan right, tilt up, tilt down${field === "camera" ? ", drift" : ""})` });
+    }
     const prompt = String(scene.data?.prompt ?? "");
     if (!SHOT_SIZE.test(prompt)) unsized.push(scene.id);
     const look = prompt.match(LOOK_WORDS);
@@ -663,9 +730,11 @@ export function pictureVarietyProblems(doc) {
       restated.push(scene.id);
       lookWords.add(look[0].toLowerCase());
     }
+    if (DARK_LIGHT.test(prompt)) dark.push(scene.id);
   }
   if (unsized.length) warnings.push({ path: "scenes", message: `${unsized.length} of ${shots.length} pictures name no shot size (close-up, medium, wide, overhead, low angle, from behind…): say how close the camera is in ${fewIds(unsized)}` });
   if (restated.length) warnings.push({ path: "scenes", message: `${restated.length} of ${shots.length} pictures restate the look (${[...lookWords].slice(0, 3).map((word) => `"${word}"`).join(", ")}); the look adds the style and the palette, the prompt describes the picture: ${fewIds(restated)}` });
+  if (shots.length >= MOTIF_MIN_SHOTS && dark.length > shots.length * DARK_SHARE_WARN) warnings.push({ path: "scenes", message: `${dark.length} of ${shots.length} pictures are at night or under a lamp; vary the time of day, the weather and where the light comes from (morning, noon, rain, an overcast afternoon, a crowded daylight place): ${fewIds(dark)}` });
   if (shots.length >= MOTIF_MIN_SHOTS) {
     const counts = new Map();
     for (const { scene } of shots) for (const motif of promptMotifs(scene)) counts.set(motif, (counts.get(motif) ?? 0) + 1);

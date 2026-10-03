@@ -1,11 +1,11 @@
 ---
 id: 2026-10-03-illustrated-slides-lint-heuristics-the-shorts
 title: Illustrated slides lint heuristics, the Shorts crop figure and an end-to-end 2K test
-status: open
+status: in-progress
 priority: P1
 area: tools
-owner:
-claimed_at:
+owner: claude-fable-5-1-illustration-round2
+claimed_at: 2026-10-03T08:24:13Z
 created_at: 2026-10-03T04:27:39Z
 completed_at:
 branch:
@@ -33,35 +33,35 @@ end. Left alone they make the lint a little noisier and less trustworthy than it
 
 ## Definition of done
 
-- [ ] `SHOT_SIZE` in `tools/video/core/drama.mjs` accepts the usual spellings of the sizes the
+- [x] `SHOT_SIZE` in `tools/video/core/drama.mjs` accepts the usual spellings of the sizes the
       guide names ("low-angle", "high-angle", "bird's eye", "top down", "over-the-shoulder") and
       no longer passes a prompt on an incidental adjective ("a medium bowl", "over medium heat",
       "a wide street"): match a size as a size (at the start of the prompt, or followed by
       shot / view / angle / of).
-- [ ] `LOOK_WORDS` does not read dairy cream as the palette ("ice-cream", "whipped cream",
+- [x] `LOOK_WORDS` does not read dairy cream as the palette ("ice-cream", "whipped cream",
       "cream poured into coffee").
-- [ ] `motifOf` folds -ies / -ves / -oes / -ses plurals and short -xes plurals ("boxes"), so a
+- [x] `motifOf` folds -ies / -ves / -oes / -ses plurals and short -xes plurals ("boxes"), so a
       prop written in both numbers counts once.
-- [ ] The three-in-a-row error names the field that actually carries the move (`data.motion`
+- [x] The three-in-a-row error names the field that actually carries the move (`data.motion`
       when the camera word names none) and does not suggest "drift" as a fix when the run comes
       from motion prompts.
-- [ ] `tools/video/shorts/motion.mjs` (the comment on `backgroundChain`) and `docs/videos/SHORTS.md`
+- [x] `tools/video/shorts/motion.mjs` (the comment on `backgroundChain`) and `docs/videos/SHORTS.md`
       say a Short keeps the middle 32% of a 16:9 keyframe, not 56%.
-- [ ] The example's `race` shot keeps its subject in the middle third (two runners far apart
+- [x] The example's `race` shot keeps its subject in the middle third (two runners far apart
       under a pan is what the guide now forbids).
-- [ ] `look-keyframes.test.mjs` drives `keyframes` once with a status whose slides choice carries
+- [x] `look-keyframes.test.mjs` drives `keyframes` once with a status whose slides choice carries
       `usd_per_image_2k` (requests carry `size: "2K"`, the dry-run prints `pictures at 2K` and the
       2K price, a drama under the same status stays at 1K) and pins the explainer's rubric
       (no `craft`).
-- [ ] `choiceFor` in `tools/video/media/stages.mjs` reads `status.slides_enabled`: with the slides
+- [x] `choiceFor` in `tools/video/media/stages.mjs` reads `status.slides_enabled`: with the slides
       switch off the server draws a slides video with the drama's model, so the tool must size
       and price with that choice, not with `slides_image`.
 
 ## Steps
 
-- [ ] Patterns and helper in `core/drama.mjs`, with a table-driven test in `drama.test.mjs`.
-- [ ] `choiceFor` and its tests; the end-to-end 2K test.
-- [ ] The two 56% mentions; the `race` prompt.
+- [x] Patterns and helper in `core/drama.mjs`, with a table-driven test in `drama.test.mjs`.
+- [x] `choiceFor` and its tests; the end-to-end 2K test.
+- [x] The two 56% mentions; the `race` prompt.
 - [ ] The bound files this touches (`core/drama.mjs`, `core/drama.test.mjs`,
       `media/look-keyframes.test.mjs`) need the long-form duration receipt rebound by an
       independent reviewer (`docs/videos/long-form/review.*`).
