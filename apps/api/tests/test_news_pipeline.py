@@ -1600,6 +1600,178 @@ async def test_an_edit_that_breaks_a_site_check_gets_one_fix_then_falls_back(
     assert any("was not kept" in note for note in notes)
 
 
+def japanese_without_faq(
+    document: GuideDocument, _vertical: Any, locale: str, **_kwargs: Any
+) -> list[str]:
+    """A hard check only the Japanese translation fails, until an editor fixes it."""
+
+    if locale == "ja" and document.title == "Release ja":
+        return ["news_faq: an FAQ block is required"]
+    return []
+
+
+async def edit_saved_locale(factory: Any, candidate_id: UUID, locale: str, title: str) -> None:
+    """What the guide editor does: save a new draft version of one locale of the article."""
+
+    async with factory() as session:
+        candidate = await session.get(NewsCandidate, candidate_id)
+        assert candidate is not None and candidate.guide_article_id is not None
+        row = await session.scalar(
+            select(GuideArticleLocale).where(
+                GuideArticleLocale.article_id == candidate.guide_article_id,
+                GuideArticleLocale.locale == locale,
+            )
+        )
+        assert row is not None
+        row.draft_json = {**row.draft_json, "title": title}
+        row.version += 1
+        await session.commit()
+
+
+async def reverify(factory: Any, candidate_id: UUID, owner_id: UUID) -> None:
+    """Press 重新查核 on the edited article."""
+
+    async with factory() as session:
+        owner = await session.get(User, owner_id)
+        assert owner is not None
+        queued = await service.reverify_candidate(
+            session, owner, candidate_id, CandidateAction(reason="Added the Japanese FAQ")
+        )
+        assert queued.status == "discovered"
+
+
+@pytest.mark.asyncio
+async def test_an_automatic_article_that_fails_a_hard_check_is_saved_for_the_editor(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A missing FAQ in one locale costs an edit, not a whole new draft (task 2026-09-24)."""
+
+    engine, factory = await database()
+    async with factory() as session:
+        candidate = await seed_single_source_candidate(session)
+        settings = await session.get(NewsAutomationSettings, 1)
+        assert settings is not None
+        settings.mode, settings.auto_publish_ai = "automatic", True
+        owner_id = await seed_owner(session)
+        candidate_id = candidate.id
+
+    monkeypatch.setattr(
+        ai, "jev_duplicate_check", AsyncMock(return_value=("distinct", 0.01, []))
+    )
+    mocks = stage_one_mocks(monkeypatch)
+    stage_two_mocks(monkeypatch)
+    monkeypatch.setattr(pipeline, "hard_policy_problems", japanese_without_faq)
+    monkeypatch.setattr(service, "hard_policy_problems", japanese_without_faq)
+
+    try:
+        async with factory() as session:
+            result = await pipeline.process_candidate(
+                session, Mock(), get_settings(), candidate_id
+            )
+            stored = await session.get(NewsCandidate, candidate_id)
+            assert stored is not None
+            assert result == "manual_review"
+            assert (stored.status, stored.error_code, stored.human_decision) == (
+                "manual_review",
+                "news_hard_checks_failed",
+                None,
+            )
+            assert "ja" in (stored.error_detail or "")
+            assert stored.lint_json["ja"] == ["news_faq: an FAQ block is required"]
+            assert not any(stored.lint_json[locale] for locale in ("zh-TW", "zh-CN", "en", "ko"))
+            saved = list(await session.scalars(select(GuideArticleLocale)))
+            assert len(saved) == 5
+            assert {row.article_id for row in saved} == {stored.guide_article_id}
+            assert all(row.published_version is None for row in saved)
+            # Jev's last call is never asked about an article that cannot go out.
+            assert mocks["jev_locales"] == [("zh-TW",)]
+            # Nothing about publication changed: the button runs the same checks.
+            owner = await session.get(User, owner_id)
+            assert owner is not None
+            with pytest.raises(AppError) as refused:
+                await service.publish_candidate(
+                    session, owner, candidate_id, CandidateAction(reason="Looks fine")
+                )
+            assert refused.value.code == "news_hard_checks_failed"
+            await session.rollback()
+
+        await edit_saved_locale(factory, candidate_id, "ja", "Release ja, with its FAQ")
+        await reverify(factory, candidate_id, owner_id)
+        async with factory() as session:
+            rechecked = await pipeline.process_candidate(
+                session, Mock(), get_settings(), candidate_id
+            )
+            stored = await session.get(NewsCandidate, candidate_id)
+            assert stored is not None
+            assert rechecked == "manual_review"
+            # Nobody confirmed it, so the fixed article waits for the publish button.
+            assert (stored.error_code, stored.lint_json["ja"]) == ("news_ready_to_publish", [])
+            owner = await session.get(User, owner_id)
+            assert owner is not None
+            published = await service.publish_candidate(
+                session, owner, candidate_id, CandidateAction(reason="Checked the FAQ")
+            )
+            assert published.status == "published"
+        mocks["draft"].assert_awaited_once()
+    finally:
+        await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_a_confirmed_article_that_fails_a_hard_check_is_saved_and_goes_out_once_fixed(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        candidate = await seed_single_source_candidate(session)
+        owner_id = await seed_owner(session)
+        candidate_id = candidate.id
+
+    monkeypatch.setattr(
+        ai, "jev_duplicate_check", AsyncMock(return_value=("distinct", 0.01, []))
+    )
+    mocks = stage_one_mocks(monkeypatch)
+    stage_two_mocks(monkeypatch)
+    monkeypatch.setattr(pipeline, "hard_policy_problems", japanese_without_faq)
+    monkeypatch.setattr(service, "hard_policy_problems", japanese_without_faq)
+
+    try:
+        await confirm(factory, candidate_id, owner_id)
+        async with factory() as session:
+            result = await pipeline.process_candidate(
+                session, Mock(), get_settings(), candidate_id
+            )
+            stored = await session.get(NewsCandidate, candidate_id)
+            assert stored is not None
+            assert result == "manual_review"
+            assert (
+                stored.status,
+                stored.error_code,
+                stored.human_decision,
+                stored.guide_article_id is not None,
+            ) == ("manual_review", "news_hard_checks_failed", "publish", True)
+            saved = list(await session.scalars(select(GuideArticleLocale)))
+            assert len(saved) == 5 and all(row.published_version is None for row in saved)
+            assert mocks["jev_locales"] == [("zh-TW",)]
+
+        await edit_saved_locale(factory, candidate_id, "ja", "Release ja, with its FAQ")
+        await reverify(factory, candidate_id, owner_id)
+        async with factory() as session:
+            rechecked = await pipeline.process_candidate(
+                session, Mock(), get_settings(), candidate_id
+            )
+            titles = {
+                row.locale: row.draft_json["title"]
+                for row in await session.scalars(select(GuideArticleLocale))
+            }
+        # The owner already confirmed it: once every check passes on the edit, it goes out.
+        assert rechecked == "published"
+        assert titles["ja"] == "Release ja, with its FAQ"
+        mocks["draft"].assert_awaited_once()
+    finally:
+        await engine.dispose()
+
+
 async def seed_refreshed_candidate(session: AsyncSession) -> UUID:
     """A saved five-locale article whose evidence an editor just refreshed."""
 

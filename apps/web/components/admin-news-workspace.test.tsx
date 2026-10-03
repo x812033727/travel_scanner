@@ -3,6 +3,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { AdminNewsModelSettings } from "./admin-news-model-settings";
 import { AdminNewsWorkspace } from "./admin-news-workspace";
 import { adminNewsCopy } from "@/lib/admin-news-copy";
+import { newsLocales } from "@/lib/admin-news";
+import { siteUrl } from "@/lib/seo";
 
 vi.mock("next-intl", () => ({ useLocale: () => "zh-TW" }));
 vi.mock("@/i18n/navigation", () => ({
@@ -32,6 +34,7 @@ function detailOf(row: Row) {
     runs: [{ id: "r1", stage: "jev", status: "succeeded", attempt: 1, provider: "jev", model: "jev", input_tokens: 20, output_tokens: 0, error_code: null, error_detail: null, metadata: {}, started_at: "2026-09-23T11:00:00Z", finished_at: "2026-09-23T11:00:01Z" }],
     documents: row.guide_article_id ? Object.fromEntries(["zh-TW", "zh-CN", "en", "ja", "ko"].map((locale) => [locale, { ...document, title: `${document.title} ${locale}` }])) : {},
     claim_ledger: [], lint: {}, human_reason: null, human_major_error: false, similar_titles: [] as string[],
+    article_slug: null as string | null, article_kind: null as "life" | null,
   };
 }
 const settings = {
@@ -201,6 +204,28 @@ describe("AdminNewsWorkspace", () => {
     fireEvent.click(screen.getByRole("button", { name: "用最新來源重新查核" }));
     await waitFor(() => expect(posts()).toEqual([`/api/travel/admin/news/candidates/${changed.id}/refresh-evidence`]));
     expect(await screen.findByText(/已抓取最新來源並排入重新查核/)).toBeTruthy();
+  });
+
+  it.each([
+    ["published", true],
+    ["manual_review", false],
+    ["rejected", false],
+  ])("links a %s candidate's saved article to its public page: %s", async (status, live) => {
+    const slug = "ai-news-api-update-20260923";
+    const row = { ...summary, status, error_code: null, error_detail: null, human_decision: null };
+    serveRows(row);
+    details[row.id] = { ...detailOf(row), article_slug: slug, article_kind: "life" };
+    render(<AdminNewsWorkspace />);
+    fireEvent.click(await screen.findByRole("button", { name: /Official AI API update/ }));
+    await screen.findByText(/Official release/);
+    expect(screen.getAllByRole("link", { name: /開啟文章編輯器/ })).toHaveLength(5);
+    const links = screen.queryAllByRole("link", { name: /開啟前台文章/ });
+    expect(links.map((link) => link.getAttribute("href")))
+      .toEqual(live ? newsLocales.map((locale) => `${siteUrl}/${locale}/life/${slug}`) : []);
+    for (const link of links) {
+      expect(link.getAttribute("target")).toBe("_blank");
+      expect(link.getAttribute("rel")).toContain("noopener");
+    }
   });
 
   it.each([

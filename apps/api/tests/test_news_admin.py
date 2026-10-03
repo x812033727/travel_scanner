@@ -130,6 +130,29 @@ async def test_post_publication_major_error_disables_vertical_autopilot(
 
 
 @pytest.mark.asyncio
+async def test_the_detail_names_the_saved_articles_address_for_its_public_link() -> None:
+    from app.guides.models import GuideArticle
+    from tests.test_news_pipeline import EVENT_DAY, SLUG, database, seed_candidate
+
+    engine, factory = await database()
+    async with factory() as session:
+        published = await seed_candidate(session, status="published")
+        article = GuideArticle(slug=SLUG, kind="life", news_date=EVENT_DAY)
+        session.add(article)
+        await session.flush()
+        published.guide_article_id = article.id
+        unwritten = await seed_candidate(session, status="discovered")
+        await session.commit()
+
+        with_article = await service.candidate_detail(session, published.id)
+        without_article = await service.candidate_detail(session, unwritten.id)
+    await engine.dispose()
+    assert (with_article.article_slug, with_article.article_kind) == (SLUG, "life")
+    assert with_article.model_dump(mode="json")["article_slug"] == SLUG
+    assert (without_article.article_slug, without_article.article_kind) == (None, None)
+
+
+@pytest.mark.asyncio
 async def test_candidate_list_takes_repeated_statuses_and_refuses_unknown_ones(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
