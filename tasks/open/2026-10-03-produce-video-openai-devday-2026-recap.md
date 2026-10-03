@@ -57,8 +57,14 @@ each announcement changes for a Taiwan viewer's plan, bill and settings rather t
       re-check rounds, three picture critics (33 of 47 prompts rewritten, 15 shots added so no state runs over 8 s and
       pictures cover over half), pause beats set by `setPauseBeats`, then a final verification of the polished text
       (`verify-3.md`). Lint zero errors.
-- [ ] `tts --dry-run`, `tts`, `check-audio`, `review-push --gate audio`, `review-pull`.
-- [ ] `keyframes`, `render`, `assemble`, `captions`, `qa`, `review-push --gate final`, `package`, `review-push --gate publish`.
+- [x] `tts` (narration 13:05), pace measured on the real timeline (17 states over 8 s: shots split, reveals added,
+      seven sentences cut at their punctuation, 12 shots added; none over 8 s now), `check-audio` (150 lines, none
+      flagged after three passes and nine reworded lines), `review-push --gate audio` approved, `review-pull` recorded.
+- [x] `render`: every card fits (the 「還不能碰的」 card went from six bullets to five); thumbnail drawn.
+- [ ] `keyframes`: 65 of 74 shots pass the judge; stopped at the US$25 cap per video (US$24.93 spent). The owner raises
+      `max_usd_per_video`, then `keyframes` draws the last nine (seven not drawn yet, two with new prompts).
+- [ ] `review-push --gate storyboard`, `assemble`, `captions`, `qa`, `review-push --gate final`, `package`,
+      `review-push --gate publish`.
 
 ## How to verify
 
@@ -101,5 +107,17 @@ node tools/video/cli.mjs status --slug openai-devday-2026-recap
   GPT-6.1 Sol Ultrafast is 「即將推出」 on the recap.
 - Lint keeps one warning on purpose: the opening chapter runs about 38 s against the 20 s hook target (the question and
   the 「你以為…其實…」 turn land in the first three lines, about 12 s; the final gate's pace check does not fail on it).
-- Illustrations: `keyframes --dry-run` on 2026-10-04 says about US$6.99 for one take of the 62 shots and up to US$20.98
-  at three takes, against the US$20 cap per video.
+- Length: the narration runs 13:05 against `target_minutes` `[8, 12]`. The owner decided on 2026-10-04 that a video
+  only has to be 8 minutes or more, so nothing was cut; the lint warning about the upper end goes away with
+  x812033727/travel_scanner#1186 (its own ticket, `2026-10-03-video-length-floor-only`).
+- The storytelling voice read slower than lint's estimate (12.2 estimated, 13.07 measured), so the pace was fixed on the
+  real timeline: `<VIDEO_WORKDIR>/openai-devday-2026-recap/_tools/pace/pace.mjs` prints every state's real seconds.
+  Changing a `reveal` makes the narration approval stale (run `check-audio`, `review-push --gate audio`, `review-pull`
+  again); changing card text does not.
+- Illustrations: the judge's scores top out at about 7.04 and the pass threshold is 7 (the owner decided on 2026-10-04 to
+  keep 7 and redraw), so about a quarter of the takes pass and a picture that passed can fail when it is judged again.
+  `keyframes` judges every cached picture again whenever one prompt changes, so before each rerun
+  `_tools/judge/carry-over.mjs <video.json as it was> --write` keeps the entries that passed and whose prompt and camera
+  did not change (it marks nothing as passed that the judge did not pass). Prompts were rewritten three times: by rule
+  from the judge's feedback (about half passed), then by agents who opened the drawn takes and described what the model
+  draws cleanly (22 of 24 passed). Spent US$24.93 of the US$25 cap; the last nine shots need about US$2.
