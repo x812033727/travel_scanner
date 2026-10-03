@@ -52,7 +52,7 @@ describe("AdminNav", () => {
     expect(screen.queryByRole("link", { name: "guides" })).toBeNull();
   });
 
-  it("shows the news review badge with isolated localized copy", () => {
+  it("shows the news review badge with the shared navigation catalog", () => {
     renderNav(bootstrap([
       { key: "dashboard", href: "/admin", group: "overview" },
       { key: "news", href: "/admin/news", group: "content", badge_key: "news_review_pending" },

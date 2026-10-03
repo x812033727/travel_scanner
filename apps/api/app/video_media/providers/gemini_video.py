@@ -69,7 +69,12 @@ class GeminiVideo:
         if request.resolution:
             parameters["resolution"] = request.resolution
         if request.negative_prompt:
-            parameters["negativePrompt"] = request.negative_prompt
+            if lite:
+                # Lite rejects negativePrompt; keep every avoidance instruction in its
+                # supported text input without changing the model or safety settings.
+                instance["prompt"] = f"{request.prompt}\n\nAvoid: {request.negative_prompt}"
+            else:
+                parameters["negativePrompt"] = request.negative_prompt
         if request.seed is not None:
             parameters["seed"] = request.seed
         return {"instances": [instance], "parameters": parameters}

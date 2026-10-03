@@ -1,0 +1,673 @@
+{
+  "slug": "ai-workflow-agent-local-mcp-tool",
+  "title": "把本機模型包成 MCP 工具，Claude Code 與 Codex 共用一支伺服器",
+  "checked_on": "2026-10-03",
+  "level": "進階",
+  "sources": [
+    {
+      "title": "MCP Python SDK (README)",
+      "url": "https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Handling errors - MCP Python SDK",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/handling-errors/",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Running your server - MCP Python SDK",
+      "url": "https://py.sdk.modelcontextprotocol.io/run/",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Connect Claude Code to tools via MCP",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Environment variables - Claude Code Docs",
+      "url": "https://code.claude.com/docs/en/env-vars",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Model Context Protocol (Codex)",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Generate a chat message - Ollama API",
+      "url": "https://docs.ollama.com/api/chat",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Cloud - Ollama",
+      "url": "https://docs.ollama.com/cloud",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "qwen3.5 tags - Ollama",
+      "url": "https://ollama.com/library/qwen3.5/tags",
+      "checked_on": "2026-10-03"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "README 的安裝指令是 uv add \"mcp[cli]\"，同一行的註解寫也可以用 pip install \"mcp[cli]\"（第二輪查核改寫：README 主推 uv add）",
+      "url": "https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "uv add \"mcp[cli]\" # or: pip install \"mcp[cli]\""
+    },
+    {
+      "fact": "SDK 要求 Python 3.10 以上",
+      "url": "https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Python 3.10+."
+    },
+    {
+      "fact": "伺服器物件從 mcp.server 匯入、類別叫 MCPServer，在函式上加 @mcp.tool() 就是工具",
+      "url": "https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "from mcp.server import MCPServer mcp = MCPServer(\"Demo\") @mcp.tool() def add(a: int, b: int) -> int:"
+    },
+    {
+      "fact": "README 說不用自己做請求解析、驗證與協定處理，只要有型別提示的函式與 docstring",
+      "url": "https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "no request parsing, no validation code, no protocol handling. Two type-hinted Python functions and a docstring."
+    },
+    {
+      "fact": "ToolError 的匯入路徑是 mcp.server.mcpserver.exceptions",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/handling-errors/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "from mcp.server import MCPServer from mcp.server.mcpserver.exceptions import ToolError"
+    },
+    {
+      "fact": "raise ToolError 時模型看得到訊息；其他例外是當機，模型只知道呼叫失敗",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/handling-errors/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Raise ToolError and the model sees your message. Raise MCPError and the protocol sees it. Raise anything else and it is a crash: the model learns only that the call failed, and your log gets the traceback."
+    },
+    {
+      "fact": "不要用回傳字串表示錯誤，因為 is_error 會是 False，看起來像成功",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/handling-errors/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Never return an error message from a tool. A returned string has is_error=False, so to the model (and to every client UI) it looks like the tool worked and that string was the answer."
+    },
+    {
+      "fact": "上游 API 逾時這類執行失敗屬於 ToolError",
+      "url": "https://py.sdk.modelcontextprotocol.io/servers/handling-errors/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A misspelled title, an upstream API that timed out, a row that doesn't exist: all tool errors."
+    },
+    {
+      "fact": "mcp.run() 不帶參數時傳輸方式是 stdio",
+      "url": "https://py.sdk.modelcontextprotocol.io/run/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "With no argument, the transport is stdio."
+    },
+    {
+      "fact": "mcp.run() 要放在 if __name__ == \"__main__\": 底下",
+      "url": "https://py.sdk.modelcontextprotocol.io/run/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "if __name__ == \"__main__\": mcp.run() run() is synchronous."
+    },
+    {
+      "fact": "stdio 是主機把檔案當子行程啟動，走標準輸入與標準輸出",
+      "url": "https://py.sdk.modelcontextprotocol.io/run/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The host launches your file as a subprocess and speaks over its stdin and stdout."
+    },
+    {
+      "fact": "stdio 的標準輸出就是通訊線路",
+      "url": "https://py.sdk.modelcontextprotocol.io/run/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "That also means stdout is the wire."
+    },
+    {
+      "fact": "需要輸出時用 logging 模組，它的 handler 把每筆紀錄寫到 stderr",
+      "url": "https://py.sdk.modelcontextprotocol.io/run/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For output you actually want, the logging module is the right tool: its handler flushes each record to stderr as it happens."
+    },
+    {
+      "fact": "claude mcp add 的基本語法：選項、名稱、兩個連字號、指令與參數",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "claude mcp add [options] <name> -- <command>"
+    },
+    {
+      "fact": "兩個連字號之後的內容原封不動交給伺服器",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Everything after -- is passed to the server untouched."
+    },
+    {
+      "fact": "--env 可帶多組 KEY=value；名稱緊接在 --env 後面會被當成另一組而被拒絕，要在中間放別的選項",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "--env accepts multiple KEY=value pairs. If the server name comes directly after --env, the CLI reads the name as another pair and rejects it, so place at least one other option, such as --transport stdio, between --env and the server name."
+    },
+    {
+      "fact": "文件的 stdio 範例：用 --env 與 --transport stdio，再接兩個連字號與 python 指令",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "claude mcp add --env KEY=value --transport stdio myserver -- python server.py --port 8080"
+    },
+    {
+      "fact": "Claude Code 把 CLAUDE_PROJECT_DIR 放進子行程環境，值是專案根目錄，伺服器可以用它解析專案內的路徑",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Claude Code sets CLAUDE_PROJECT_DIR in the spawned server's environment to the project root, so your server can resolve project-relative paths without depending on the working directory."
+    },
+    {
+      "fact": "stdio 伺服器是你機器上的本機行程",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Stdio servers run as local processes on your machine."
+    },
+    {
+      "fact": "local scope 是預設，只在加入的專案載入、只有自己看得到",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Local scope is the default. A local-scoped server loads only in the project where you added it and stays private to you."
+    },
+    {
+      "fact": "project scope 透過 .mcp.json 與專案成員共用",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "project: shared with everyone in the project via the .mcp.json file"
+    },
+    {
+      "fact": "--scope（-s）旗標指定設定存放的位置",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Use the -s or --scope flag to specify where the configuration is stored:"
+    },
+    {
+      "fact": "確認 Claude Code 連上了要跑 claude mcp get",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "To check that Claude Code connected, run claude mcp get <name>"
+    },
+    {
+      "fact": "MCP 伺服器啟動逾時用 MCP_TIMEOUT，文件例子 10000 是 10 秒",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Configure MCP server startup timeout using the MCP_TIMEOUT environment variable (for example, MCP_TIMEOUT=10000 claude sets a 10-second timeout)"
+    },
+    {
+      "fact": "每個伺服器的 timeout 欄位單位是毫秒，寫在 .mcp.json 該伺服器的項目裡，蓋過 MCP_TOOL_TIMEOUT",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Set a per-server tool execution timeout by adding a timeout field in milliseconds to that server's .mcp.json entry, for example \"timeout\": 600000 for ten minutes. This overrides the MCP_TOOL_TIMEOUT environment variable for that server only"
+    },
+    {
+      "fact": "小於 1000 的 timeout 被忽略；MCP_TOOL_TIMEOUT 沒設時預設約 28 小時",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Values below 1000 are ignored and fall through to MCP_TOOL_TIMEOUT, or to its default of about 28 hours when that variable is unset."
+    },
+    {
+      "fact": "沒有回應也沒有進度通知的呼叫會在閒置視窗後中止",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A tool call to an MCP server that sends no response and no progress notification for the idle window aborts with an error instead of waiting for the wall-clock limit."
+    },
+    {
+      "fact": "stdio 伺服器的閒置視窗預設 30 分鐘",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "servers, and to 30 minutes for stdio servers."
+    },
+    {
+      "fact": "CLAUDE_CODE_MCP_TOOL_IDLE_TIMEOUT 以毫秒調整閒置視窗，設 0 關閉檢查",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Set the CLAUDE_CODE_MCP_TOOL_IDLE_TIMEOUT environment variable in milliseconds to change the idle window, or set it to 0 to disable the check."
+    },
+    {
+      "fact": "主對話裡超過兩分鐘的 MCP 呼叫移到背景工作，v2.1.212 起",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "An MCP tool call in the main conversation that is still running after two minutes moves to a background task instead of blocking the session. Claude receives the task ID immediately and keeps working, and the result arrives as a task notification when the call settles. Automatic backgrounding requires Claude Code v2.1.212 or later."
+    },
+    {
+      "fact": "CLAUDE_CODE_MCP_AUTO_BACKGROUND_MS 以毫秒調整門檻，設 0 關閉",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Set the CLAUDE_CODE_MCP_AUTO_BACKGROUND_MS environment variable in milliseconds to change the threshold, or set it to 0 to turn automatic backgrounding off."
+    },
+    {
+      "fact": "子代理的呼叫不會移到背景",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "; Claude Code backgrounds only main-conversation calls"
+    },
+    {
+      "fact": "非互動模式的呼叫不會移到背景，除非 CLAUDE_AUTO_BACKGROUND_TASKS 設為 1",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "unless CLAUDE_AUTO_BACKGROUND_TASKS is set to 1, since a one-shot run can end before the result arrives"
+    },
+    {
+      "fact": "移到背景後單次呼叫的限制仍然生效",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The per-call limits still apply while the call runs in the background"
+    },
+    {
+      "fact": "輸出超過 10,000 token 顯示警告，預設上限 25,000 token，MAX_MCP_OUTPUT_TOKENS 可調整",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Claude Code displays a warning when MCP tool output exceeds 10,000 tokens and limits output to 25,000 tokens by default. To raise the limit, set the MAX_MCP_OUTPUT_TOKENS environment variable"
+    },
+    {
+      "fact": "超過上限且沒有圖片時存成檔案，對話裡換成指到檔案路徑的訊息",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "when a result with no image content exceeds the limit, Claude Code saves it to a file and replaces it in the conversation with a message that names the file path, so Claude reads the file when it needs the content."
+    },
+    {
+      "fact": "每個伺服器的 timeout 是每次呼叫的硬性總時限，伺服器送的進度通知不會延長它（查核補）",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The per-server timeout is a hard wall-clock limit per tool call, and progress notifications from the server don't extend it."
+    },
+    {
+      "fact": "timeout 至少 1000 時也是閒置逾時的下限，閒置中止不會早於它；需要 v2.1.203 以上（查核補）",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A per-server timeout of at least 1000 also acts as a floor on the idle timeout described below: Claude Code never aborts that server's tool calls for idleness sooner than the per-server timeout. Requires Claude Code v2.1.203 or later."
+    },
+    {
+      "fact": "v2.1.203 之前 stdio 伺服器不受閒置逾時限制（查核補）",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Before v2.1.203, stdio servers were exempt from the idle timeout."
+    },
+    {
+      "fact": "local scope 的伺服器存在 ~/.claude.json 該專案的路徑底下（查核補：本文的登記指令用 local scope，不是 .mcp.json）",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Claude Code stores it in ~/.claude.json under that project's path, so the same server won't appear in your other projects."
+    },
+    {
+      "fact": "project scope 的 .mcp.json 要簽進版控，團隊才拿到同一份設定（查核補）",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Check .mcp.json into version control so everyone on your team gets the same MCP tools and services."
+    },
+    {
+      "fact": "MCP_TOOL_TIMEOUT 單位是毫秒，預設 100000000，約 28 小時（查核補，env-vars 頁）",
+      "url": "https://code.claude.com/docs/en/env-vars",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Timeout in milliseconds for MCP tool execution (default: 100000000, about 28 hours)."
+    },
+    {
+      "fact": "MCP_TIMEOUT 單位是毫秒，預設 30000，也就是 30 秒（查核補，env-vars 頁）",
+      "url": "https://code.claude.com/docs/en/env-vars",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Timeout in milliseconds for MCP server startup (default: 30000, or 30 seconds)"
+    },
+    {
+      "fact": "環境變數小於 1000 時拉到一秒；每個伺服器的 timeout 欄位小於 1000 則被忽略（查核補，env-vars 頁，與 MCP 頁一致）",
+      "url": "https://code.claude.com/docs/en/env-vars",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For the env variable, values below 1000 are floored to one second; for the per-server field, values below 1000 are ignored"
+    },
+    {
+      "fact": "codex mcp add 的語法：伺服器名稱、--env、兩個連字號、stdio 指令",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "codex mcp add <server-name> --env VAR1=VALUE1 --env VAR2=VALUE2 -- <stdio server-command>"
+    },
+    {
+      "fact": "codex mcp list 列出已設定的伺服器",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Run codex mcp list to see configured servers."
+    },
+    {
+      "fact": "每支伺服器用一張 [mcp_servers.<server-name>] 表設定",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Configure each MCP server with a [mcp_servers.<server-name>] table in the configuration file."
+    },
+    {
+      "fact": "設定檔預設是 ~/.codex/config.toml，也可用受信任專案內的 .codex/config.toml",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Codex stores MCP configuration in config.toml alongside other Codex configuration settings. By default this is ~/.codex/config.toml, but you can also scope MCP servers to a project with .codex/config.toml (trusted projects only)."
+    },
+    {
+      "fact": "STDIO 伺服器是由指令啟動的本機行程",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Servers that run as a local process (started by a command)."
+    },
+    {
+      "fact": "command 是啟動伺服器的指令，必填",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "command (required): The command that starts the server."
+    },
+    {
+      "fact": "args 是傳給伺服器的參數，選填",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "args (optional): Arguments to pass to the server."
+    },
+    {
+      "fact": "env 設定伺服器的環境變數，選填",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "env (optional): Environment variables to set for the server."
+    },
+    {
+      "fact": "cwd 指定啟動伺服器的工作目錄，選填",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "cwd (optional): Working directory to start the server from."
+    },
+    {
+      "fact": "startup_timeout_sec 單位秒，預設 10",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "startup_timeout_sec (optional): Timeout (seconds) for the server to start. Default: 10."
+    },
+    {
+      "fact": "tool_timeout_sec 單位秒，預設 60",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "tool_timeout_sec (optional): Timeout (seconds) for the server to run a tool. Default: 60."
+    },
+    {
+      "fact": "tools.<tool>.output_token_limit 是單一工具輸出的 token 預算，蓋過模型預設的截斷預算",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "tools.<tool>.output_token_limit (optional): Positive token budget for one tool's output, before the standard 20% serialization allowance. Overrides the model's default output truncation budget for that tool."
+    },
+    {
+      "fact": "env 子表的寫法：[mcp_servers.<名稱>.env] 底下一行一個變數",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "[mcp_servers.context7.env] MY_ENV_VAR = \"MY_ENV_VALUE\""
+    },
+    {
+      "fact": "單一工具表的寫法：[mcp_servers.<名稱>.tools.<工具>] 底下可設 output_token_limit",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp",
+      "is_vendor_claim": true,
+      "verbatim_quote": "[mcp_servers.chrome_devtools.tools.open] approval_mode = \"approve\" output_token_limit = 30000"
+    },
+    {
+      "fact": "聊天端點是 POST /api/chat",
+      "url": "https://docs.ollama.com/api/chat",
+      "is_vendor_claim": true,
+      "verbatim_quote": "paths: /api/chat: post: summary: Generate a chat message"
+    },
+    {
+      "fact": "本機 Ollama 的伺服器位址是 http://localhost:11434",
+      "url": "https://docs.ollama.com/api/chat",
+      "is_vendor_claim": true,
+      "verbatim_quote": "servers: - url: http://localhost:11434 description: Ollama"
+    },
+    {
+      "fact": "對 /api/chat 的 POST 請求帶 Content-Type: application/json 標頭",
+      "url": "https://docs.ollama.com/api/chat",
+      "is_vendor_claim": true,
+      "verbatim_quote": "curl -X POST http://localhost:11434/api/chat -H \"Content-Type: application/json\""
+    },
+    {
+      "fact": "請求的必填欄位是 model 與 messages",
+      "url": "https://docs.ollama.com/api/chat",
+      "is_vendor_claim": true,
+      "verbatim_quote": "required: - model - messages"
+    },
+    {
+      "fact": "stream 欄位預設為 true",
+      "url": "https://docs.ollama.com/api/chat",
+      "is_vendor_claim": true,
+      "verbatim_quote": "stream: type: boolean default: true"
+    },
+    {
+      "fact": "format 欄位可以是 json 或 JSON schema",
+      "url": "https://docs.ollama.com/api/chat",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Format to return a response in. Can be json or a JSON schema"
+    },
+    {
+      "fact": "temperature 在 options（ModelOptions）底下，控制隨機性",
+      "url": "https://docs.ollama.com/api/chat",
+      "is_vendor_claim": true,
+      "verbatim_quote": "ModelOptions: type: object description: Runtime options that control text generation properties: seed: type: integer description: Random seed used for reproducible outputs temperature: type: number format: float description: Controls randomness in generation (higher = more random)"
+    },
+    {
+      "fact": "回應的答案文字在 message.content",
+      "url": "https://docs.ollama.com/api/chat",
+      "is_vendor_claim": true,
+      "verbatim_quote": "content: type: string description: Assistant message text"
+    },
+    {
+      "fact": "回應的 load_duration 是載入模型花的時間（奈秒）",
+      "url": "https://docs.ollama.com/api/chat",
+      "is_vendor_claim": true,
+      "verbatim_quote": "load_duration: type: integer description: Time spent loading the model in nanoseconds"
+    },
+    {
+      "fact": "請求的 keep_alive 決定模型留在記憶體多久，例如 5m，0 代表立刻卸載",
+      "url": "https://docs.ollama.com/api/chat",
+      "is_vendor_claim": true,
+      "verbatim_quote": "keep_alive: oneOf: - type: string - type: number description: >- Model keep-alive duration (for example 5m or 0 to unload immediately)"
+    },
+    {
+      "fact": "Ollama 的雲端模型跑在 Ollama 的雲端，不需要下載模型",
+      "url": "https://docs.ollama.com/cloud",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Run models in Ollama's cloud from your apps or terminal. No model or app download required."
+    },
+    {
+      "fact": "在 Ollama App 或 CLI 裡的雲端寫法帶 cloud 後綴，文件例子 gemma4:cloud，雲端模型不需要下載",
+      "url": "https://docs.ollama.com/cloud",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In the Ollama app or CLI, use gemma4:cloud. Cloud models do not need to be downloaded."
+    },
+    {
+      "fact": "直接對 ollama.com 發 API 請求時，用的是清單回傳的名稱，例子 gemma4:31b 不帶 cloud 後綴；所以只看標籤名不夠，還要看位址（查核補）",
+      "url": "https://docs.ollama.com/cloud",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For API requests to ollama.com, use the name returned by this list, such as gemma4:31b. In the Ollama app or CLI, use gemma4:cloud."
+    },
+    {
+      "fact": "只想用本機模型時，Ollama 要你關掉雲端功能（查核補）",
+      "url": "https://docs.ollama.com/cloud",
+      "is_vendor_claim": true,
+      "verbatim_quote": "To use only local models, disable cloud features."
+    },
+    {
+      "fact": "Ollama 處理雲端的提示詞與回應",
+      "url": "https://docs.ollama.com/cloud",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Ollama processes cloud prompts and responses to answer your requests."
+    },
+    {
+      "fact": "qwen3.5:4b 在標籤頁列為 3.4GB",
+      "url": "https://ollama.com/library/qwen3.5/tags",
+      "is_vendor_claim": true,
+      "verbatim_quote": "qwen3.5:4b 2a654d98e6fb • 3.4GB • 256K context window • Text, Image input"
+    }
+  ],
+  "unverified_or_excluded": [
+    "Claude Code 的 env-vars 頁（code.claude.com/docs/en/env-vars）撰稿當天（2026-10-03）讀過：MCP_TIMEOUT 預設 30000 毫秒、MCP_TOOL_TIMEOUT 預設 100000000 毫秒（約 28 小時）。當時 sources 上限 8 條沒放進來；查核時（2026-10-04）上限放寬到 11 條，依協調者指示補進 sources，查核代理重讀數字未變，表格的兩個環境變數改寫成照那一頁的單位與預設值（MCP_TIMEOUT 原本只引 MCP 頁的 10 秒例子，與 Codex 的「預設 10」並排容易被讀成預設）。",
+    "MCP_TOOL_TIMEOUT 以毫秒計（env-vars 頁）；本文範例沒有設這個環境變數。env-vars 頁另寫環境變數小於 1000 時拉到一秒，與 .mcp.json 欄位「小於 1000 被忽略」不同，正文只寫欄位那一半（callout 談的是欄位）。",
+    "per-server timeout 欄位：MCP 頁只寫「.mcp.json 的項目」。本文的 claude mcp add 用預設的 local scope，設定存在 ~/.claude.json；頁面沒有寫 ~/.claude.json 的項目能不能放 timeout，表格只指出兩個檔案不同，不替它下結論。",
+    "Ollama FAQ 關掉雲端功能的具體設定（OLLAMA_NO_CLOUD 等）：不在 sources，正文只轉述雲端頁「To use only local models, disable cloud features.」，不寫變數名。範例程式的 localhost／127.0.0.1 加標籤結尾檢查是範例自己的粗略判斷，正文寫明不是 Ollama 的保證。",
+    "urllib.request.urlopen 的 timeout：Python 文件（docs.python.org，列在 code_samples.checked_against，不在 sources）原文是「The optional timeout parameter specifies a timeout in seconds for blocking operations like the connection attempt」。第二輪查核把正文原本的「伺服器自己等本機模型的秒數」改成照這句寫的「連線這類阻塞操作的逾時秒數」，不寫成整個請求的總時限，也不推論 stream 設成 false 時 Ollama 何時送出回應（Ollama 的 API 頁沒寫）；第四節「工具呼叫期間設定值最小」只比較設定值。",
+    "claude mcp add-json 能不能帶 timeout 欄位：文件只寫 .mcp.json 的項目可以加 timeout，add-json 的範例沒有 timeout，所以不寫成 add-json 的用法，也沒有放 json 區塊（本篇規格是 python、bash、toml 三塊）。",
+    "Claude Code 的 _meta[\"anthropic/maxResultSizeChars\"]（伺服器端註記，可把單一工具的上限提高到最多 500,000 字元）：MCP 頁有寫，但本篇的工具只回一小段 JSON，目標是壓低輸出量而不是放寬，沒有寫進正文。",
+    "Codex 對沒有回應的呼叫有沒有閒置逾時、Codex 預設的輸出截斷預算是多少 token：Codex 的 MCP 頁沒寫，表格寫成「本文查證的那一頁沒有寫」，不猜數字。",
+    "Ollama 的 Structured Outputs 頁（docs.ollama.com/capabilities/structured-outputs）今天讀了：頁首寫「Ollama's Cloud currently does not support structured outputs.」，並建議把 JSON schema 也以字串放進提示詞、把溫度設低。sources 沒有放進來；正文只寫 /api/chat 的 format 欄位（API 頁有）與「本文查證的 API 文件沒有寫 format 與會輸出思考過程的模型同用時的行為」，雲端不支援結構化輸出這一句留給第 15 篇。查核時拿掉了原本同句的「雲端模型」：官方的 Structured Outputs 頁其實寫了雲端不支援，只說 API 頁沒寫會誤導，而且範例本來就拒絕雲端。",
+    "會輸出思考過程的模型與 format 一起用時的行為，以及 think 參數：API 頁只說明 think 的取值，沒有寫兩者同用的結果。範例沒有使用 think，也不下結論。",
+    "Python 標準函式庫 urllib.request.urlopen(url, data=None, [timeout, ]*, context=None)：今天讀了 docs.python.org 的頁面（timeout 單位是秒），列在 code_samples.checked_against；sources 上限 8 條，沒有放進來。第二輪查核起正文寫「LOCAL_TIMEOUT_SEC 是傳給 urlopen 的 timeout，Python 的文件寫它是連線這類阻塞操作的逾時秒數」，只轉述這一句，不展開標準函式庫的其他行為。",
+    "伺服器名稱（第二輪查核）：Codex 的 MCP 頁的名稱例子是 context7、chrome_devtools、figma、example、sample，沒有帶連字號的；頁面也沒寫名稱允許哪些字元。Claude Code 的 MCP 頁例子有 myserver、airtable、stripe、weather-api。原本的 local-letters 在 Codex 那邊查不到同形的例子，範例改成兩頁都有同形例子（全小寫、一個字）的 letters，MCPServer 的名稱跟著改。",
+    "路徑裡有 NUL 字元（第二輪查核）：Windows 上 resolve 照常、is_file 回 False，範例回 ToolError（離線實跑確認）；Linux／macOS 的 posixpath.realpath 只吞 OSError，os.lstat 對 NUL 丟的 ValueError 會從 resolve 冒出來（讀 Python 3.13 標準函式庫原始碼推得，沒有在 Linux 上執行），依 SDK 文件屬於當機（呼叫仍是 is_error=True、不讀檔、不送請求）。補一個檢查要再加兩行，code 區塊會超過檢查器的 80 行上限，所以程式沒改；正文原本寫「路徑不合法……都轉成 ToolError」，改成與程式行為一致的「路徑不在 inbox 底下」。",
+    "DeepSeek、GLM 的本機標籤名稱與大小：各自要一個 Ollama 標籤頁當來源，sources 放不下，正文只指向本組逐家整理的那一篇，不寫標籤字串。第 14 篇的工作標題「GLM、Qwen、DeepSeek 接上 Claude Code 與 Codex：哪些在本機、哪些其實在雲端」若改名，正文要跟著改。",
+    "任何模型的載入時間、速度、品質、記憶體需求：本站沒有量，本文查證的頁面也沒有給參考值（API 頁回應範例裡的 load_duration 只是範例），正文寫「本文查證的頁面沒有給參考值」，不寫數字也不寫跑得動或跑不動。",
+    "SDK 的 mcp dev（Inspector）與 mcp run 指令、Streamable HTTP 傳輸：頁面有，但不實測、本篇只用 stdio，沒有寫進正文。",
+    "developers.openai.com/codex/mcp 今天以 HTTP 308 轉到 learn.chatgpt.com/docs/extend/mcp?surface=cli；sources 用不帶查詢字串的 learn.chatgpt.com/docs/extend/mcp（與 ai-workflow-mcp-shared-tools 相同），本篇引用的 Codex 事實在兩個版本的頁面上相同。",
+    "規格檔的事實表 F6：MCP 輸出警告與逾時兩條在今天的 Claude Code 文件上更完整，多了上限 25,000 token、單一伺服器 timeout 欄位、stdio 閒置 30 分鐘與兩分鐘自動移到背景，正文都照今天的頁面寫。"
+  ],
+  "must_not_write": [
+    "MCP 是什麼、伺服器骨架與三個客戶端怎麼登記：已有 ai-workflow-mcp-shared-tools 與 claude-code-mcp-local-server-workshop，本篇只一句帶過。",
+    "工具名稱、輸入 Schema 與分頁的設計：留給 claude-code-mcp-tool-contracts。",
+    "Codex 的 MCP 連線排錯：留給 codex-mcp。",
+    "把代理工具整個換成本機模型、ANTHROPIC_BASE_URL、第三方路由器：第 17 篇的情境，本篇的 Claude Code 與 Codex 連的是各自官方的雲端。",
+    "速度、品質、載入時間、跑得動或跑不動、任何執行輸出：站主決定不實測。",
+    "價格、方案與訂閱建議；Ollama 開到區域網路或公網。",
+    "Gemini CLI：本篇只講 Claude Code 與 Codex 兩個客戶端。",
+    "「標籤不帶 cloud 就是本機」：Ollama 雲端頁寫直接對 ollama.com 發 API 請求時名稱不帶後綴（例子 gemma4:31b）。判斷本機要同時看位址與標籤，範例程式的檢查只是範例自己的粗略判斷。",
+    "「客戶端逾時時代理只看到逾時、伺服器還在等」這類客戶端內部行為：兩家文件都沒寫，正文只寫伺服器寫的原因送不到，並標成本文的做法。"
+  ],
+  "editorial_brief": "這篇把第 15 篇的腳本做成 stdio MCP 伺服器的一個工具：吃路徑、寫結果檔、只回分類結果與結果檔路徑，不回信件原文。MCP 骨架與三個客戶端的登記方式站上已有 ai-workflow-mcp-shared-tools，本篇只用一兩句帶過，重點放在工具背後是本機模型時才會遇到的事：契約要窄、伺服器與客戶端兩邊的逾時要一起調、輸出量兩邊各自的上限、換模型只改 LOCAL_MODEL。全篇不實測，每個指令、鍵與預設值都照 2026-10-03 的官方頁，頁面沒寫的就寫沒有寫。",
+  "code_samples": [
+    {
+      "label": "local_mcp_server.py（套件：mcp[cli]；Python 3.10 以上）",
+      "language": "python",
+      "lines": 78,
+      "compiled_on": "2026-10-03",
+      "checked_against": [
+        "https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md",
+        "https://py.sdk.modelcontextprotocol.io/servers/handling-errors/",
+        "https://py.sdk.modelcontextprotocol.io/run/",
+        "https://docs.ollama.com/api/chat",
+        "https://docs.ollama.com/cloud",
+        "https://code.claude.com/docs/en/mcp",
+        "https://docs.python.org/3/library/urllib.request.html"
+      ]
+    },
+    {
+      "label": "在 Claude Code 與 Codex 各登記一次（指令）",
+      "language": "bash",
+      "lines": 8,
+      "compiled_on": "2026-10-03",
+      "checked_against": [
+        "https://code.claude.com/docs/en/mcp",
+        "https://learn.chatgpt.com/docs/extend/mcp"
+      ]
+    },
+    {
+      "label": "Codex 的 config.toml：工具逾時、輸出上限與環境變數",
+      "language": "toml",
+      "lines": 15,
+      "compiled_on": "2026-10-03",
+      "checked_against": [
+        "https://learn.chatgpt.com/docs/extend/mcp",
+        "https://code.claude.com/docs/en/mcp"
+      ]
+    }
+  ],
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-10-04",
+    "method": "sources[] eight entries re-fetched with curl -sL -A Mokaair-editorial (HTML and the official .md copies of the Claude Code, Codex and Ollama pages); every sentence of the prose, summary, table cell, callout, FAQ answer, caption, diagram node and code identifier traced to a source sentence; each verbatim_quote searched only in the page of its own url with tags stripped to the empty string, whitespace normalised and entities unescaped (Markdown copies also lose backticks and > markers); the Python server run offline with a fake SDK and a fake urlopen against a temporary project folder. No request carried an email, a name or any personal data.",
+    "verdict": "needs_second_round",
+    "edits_to_the_pack": [
+      "code: the cloud check also requires OLLAMA_URL's host to be localhost or 127.0.0.1 (urlparse); the Ollama cloud page uses suffix-less names such as gemma4:31b for API requests to ollama.com, so the tag check alone let a letter go to ollama.com",
+      "code: TypeError added to the caught exceptions; a JSON reply that is not an object crashed the tool instead of becoming a ToolError, contrary to the prose",
+      "prose section 1 paragraph 2: locality is judged by address and tag together; the check is described as the example's own rough check, not an Ollama guarantee; the cloud page's advice to disable cloud features added",
+      "summary item 4 and FAQ 2 aligned with that",
+      "sources: env-vars page added (coordinator's instruction, sources cap 11); table rows for MCP_TOOL_TIMEOUT and MCP_TIMEOUT now carry the unit and default from that page; MCP_TIMEOUT's 10-second example no longer stands alone next to Codex's default 10",
+      "table row 1: the per-server timeout is a hard wall-clock limit that progress notifications do not extend and that overrides MCP_TOOL_TIMEOUT for that server only; the documented location is .mcp.json while this article's local-scope registration lives in ~/.claude.json",
+      "table row 2: idle timeout applies to stdio from v2.1.203, and a per-server timeout of at least 1000 is its floor",
+      "table row 3: Claude gets the task ID immediately (FAQ 4 used it, the body did not); the background threshold variable is in milliseconds",
+      "section 4 paragraph 2: 'what you will actually hit' rewritten as the smallest timeout in this example plus the two documented mechanisms",
+      "section 4 paragraph 3: the server-shorter-than-client rule is labelled as this article's approach; the undocumented 'the agent only sees a timeout, the server is still waiting' replaced with 'the server's reason does not reach the agent'",
+      "section 4 paragraph 1: 'the difference between local models and cloud APIs becomes time' replaced with a neutral sentence; 'official pages give no number' scoped to the pages this article checked",
+      "section 5 paragraph 2: 'cloud models' dropped from the API-page negative, since Ollama's structured-outputs page does say cloud is unsupported",
+      "section 1 paragraph 3: the tool returns the three fields and the result path, not only the summary",
+      "intro paragraph 2: 'no API key' scoped to the server itself",
+      "section 4 paragraph 5: the output limits are left to the table row instead of repeated",
+      "list step 3: Codex needs cwd from the TOML",
+      "FAQ 4: CLAUDE_AUTO_BACKGROUND_TASKS applies to non-interactive mode, not to subagent calls"
+    ],
+    "checked_and_correct": [
+      "SDK: pip install \"mcp[cli]\", Python 3.10+, from mcp.server import MCPServer, @mcp.tool(), mcp.run() under __main__ with stdio as the default transport, ToolError from mcp.server.mcpserver.exceptions, is_error=False for returned strings, stdout is the wire and logging goes to stderr",
+      "Ollama /api/chat: model and messages required, stream default true, format json or schema, options.temperature, message.content, load_duration in nanoseconds, keep_alive",
+      "Claude Code: claude mcp add [options] <name> -- <command>, --env and the --transport stdio spacer, local scope default, --scope project via .mcp.json, CLAUDE_PROJECT_DIR in the server environment, claude mcp get, MCP_TIMEOUT=10000 example, per-server timeout in milliseconds, values below 1000 ignored, about 28 hours default, 30-minute stdio idle window, CLAUDE_CODE_MCP_TOOL_IDLE_TIMEOUT, two-minute automatic backgrounding from v2.1.212, CLAUDE_CODE_MCP_AUTO_BACKGROUND_MS, subagent and non-interactive exceptions, 10,000-token warning, 25,000-token default limit, MAX_MCP_OUTPUT_TOKENS, over-limit results saved to a file",
+      "Codex: codex mcp add <server-name> --env ... -- <stdio server-command>, codex mcp list, [mcp_servers.<server-name>], ~/.codex/config.toml and trusted-project .codex/config.toml, command/args/env/cwd, startup_timeout_sec default 10, tool_timeout_sec default 60, tools.<tool>.output_token_limit; developers.openai.com/codex/mcp 308 to learn.chatgpt.com/docs/extend/mcp?surface=cli, the page without the query is the official OpenAI page with the full text",
+      "qwen3.5:4b 3.4GB on the tags page; no model id outside models-seen.json",
+      "no-test rule: no speed, quality or runs/does-not-run verdict, no execution output, 'this site did not test' only in intro paragraph 2, not in the title or description; LOCAL_TIMEOUT_SEC 50 and the TOML numbers are labelled as examples",
+      "the five must-link articles: titles quoted verbatim, no contradiction, one sentence each",
+      "path check: ../, inbox/../, absolute paths, a missing file and the inbox folder itself are all rejected offline; the return carries no letter text; the summary is cut to 200 characters"
+    ],
+    "left_for_the_owner": [
+      "Articles 14 and 15 are named by their current titles; if those titles change, the two mentions in this article change with them (pack_cli autolink).",
+      "Whether a timeout field in a local-scope entry of ~/.claude.json is honoured is not written on the MCP page; the article points out the two files differ and does not decide it.",
+      "If article 15's local_batch.py also treats 'tag does not end in cloud' as proof of a local model, the same ollama.com gap applies; worth a look in that article's factcheck.",
+      "Both JSON files of this article arrived with CRLF line endings and were rewritten as LF.",
+      "協調者通讀（2026-10-04）：範例程式判斷雲端標籤的寫法從 endswith 改成與同組批次腳本那一篇相同的 \"cloud\" in MODEL，正文兩處「結尾是 cloud」跟著改成「帶 cloud」；行數不變。"
+    ],
+    "code_recompiled": [
+      {
+        "label": "local_mcp_server.py（套件：mcp[cli]；Python 3.10 以上）",
+        "result": "ok"
+      },
+      {
+        "label": "在 Claude Code 與 Codex 各登記一次（指令）",
+        "result": "ok"
+      },
+      {
+        "label": "Codex 的 config.toml：工具逾時、輸出上限與環境變數",
+        "result": "ok"
+      }
+    ],
+    "second_round": {
+      "checked_on": "2026-10-04",
+      "rechecked": [
+        "第一輪新寫或改寫的 34 項主張逐句回 sources[] 今天重抓的頁面核對（九條 sources 全部 HTTP 200、讀到正文）：第一節第二、三段，導言第二段，第四節第一到三段與最後一段，表格第 1–4 列每一項（MCP_TOOL_TIMEOUT 與 MCP_TIMEOUT 的單位與預設值、timeout 欄位是硬性總時限且進度通知不延長、local scope 存在 ~/.claude.json、v2.1.203、欄位至少 1000 是閒置下限、v2.1.212），FAQ 第 2、4 題，summary 第 4 句，清單第 3 步，第五節第二段，程式新加的 urlparse／LOCAL_HOSTS 與 TypeError；其中 2 項改寫",
+        "第一輪「查過而且正確」的 35 項以 random.Random(20261004) 抽 12 項重查（第 4、5、7、9、12、17、20、22、23、24、26、27 項），11 項成立，第 12 項（README 的安裝指令）只對一半：README 主推 uv add \"mcp[cli]\"，pip 是同一行的註解",
+        "研究紀錄 74 條 verbatim_quote 照 FACTCHECK.md 第 1 節第 8 點綁回各自的 url 重比，全部找到",
+        "Python 範例：py_compile ok；假的 mcp 套件加假的 urlopen 離線跑 37 項檢查全過，不連任何服務；SDK 的 MCPServer、@mcp.tool()、ToolError 匯入路徑、mcp.run() 照 README、Handling errors、Running your server 三頁逐字核對"
+      ],
+      "edits": [
+        "description、導言第一段、summary 第 1 句：只回摘要與結果檔路徑 → 只回分類結果與結果檔路徑（description 與導言另加「不回信件原文」），與程式回傳的 category、urgency、summary、result_file 一致",
+        "summary 第 3 句：工具把完整結果寫檔，只回一小段摘要 → 工具只回一小段 JSON；結果檔與回傳的三欄內容相同，沒有「完整結果」",
+        "圖解 alt 與研究紀錄 diagram 第 4 格：回摘要與路徑 → 回分類結果與路徑（圖還沒畫）",
+        "安裝：README 主推 uv add \"mcp[cli]\"、註解寫 or: pip install \"mcp[cli]\"；第二節第一段刪掉只寫 pip 的安裝句，清單第 2 步改成照 README 的兩種寫法並提醒裝進登記指令用的 python，程式 docstring 同步，研究紀錄第 1 條 fact 改寫",
+        "伺服器名稱 local-letters → letters（bash、TOML、MCPServer）：Codex 頁的名稱例子沒有帶連字號的（context7、chrome_devtools、figma），改用兩頁都有同形例子的名稱",
+        "程式的工具 docstring：return a summary and the result file → return category, urgency, summary and the result file path",
+        "環境變數段：LOCAL_TIMEOUT_SEC 是伺服器自己等本機模型的秒數 → 傳給 urlopen 的 timeout，Python 的文件寫它是連線這類阻塞操作的逾時秒數；API 段刪掉重複的「urlopen 帶 timeout。」",
+        "第四節第二段：這個範例裡最短的 → 工具呼叫期間，這個範例設定值最小的（Python 文件寫 urlopen 的 timeout 是阻塞操作的逾時，只能比設定值；而且 MCP_TIMEOUT 30 秒、startup_timeout_sec 10 秒這兩個啟動逾時比 50 小）",
+        "第四節第三段：客戶端先到，呼叫由客戶端以逾時結束，伺服器寫的原因就送不到 → 客戶端先到，呼叫在伺服器產生原因之前就以客戶端的逾時結束（只寫時序推得出的事，不寫客戶端內部行為）",
+        "表格 Codex 輸出量格：文件沒有寫預設的數字 → 本文查證的那一頁沒有寫預設的數字（Codex 頁另指向一份 configuration reference，沒有讀）",
+        "錯誤處理段：路徑不合法 → 路徑不在 inbox 底下（NUL 字元的路徑在 Linux／macOS 會從 resolve 丟 ValueError，不是 ToolError）",
+        "第四節最後一段：摘要最多 200 個字元標上「範例自訂」",
+        "字數：上面幾處讓 lint 的 body text 到 6,132（上限 6,000），刪重複敘述回到 5,969：FAQ 1 第 15 篇的全名改「本組的腳本篇」、FAQ 3 首句精簡、FAQ 5 刪掉正文已有的練習連結、FAQ 6 刪掉與「只知道呼叫失敗」重複的「看不到原因」；但書與限定詞沒有刪"
+      ],
+      "verdict": "ok"
+    }
+  },
+  "hero_label": "本機模型變成工具",
+  "diagram": {
+    "layout": "flow",
+    "title": "一次工具呼叫的四步",
+    "caption": "代理呼叫本機模型工具的四個步驟（2026 年 10 月查證）",
+    "nodes": [
+      [
+        "代理呼叫工具",
+        "只傳 inbox 內的路徑"
+      ],
+      [
+        "問本機模型",
+        "走 /api/chat"
+      ],
+      [
+        "寫結果檔",
+        "out 底下的 JSON"
+      ],
+      [
+        "回分類結果與路徑",
+        "不回信件原文"
+      ]
+    ]
+  }
+}

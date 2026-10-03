@@ -190,3 +190,160 @@ title 22.2 單位（上限 60），description 183.4 單位（120–200），`so
 **沒有換掉骨幹論述**：四條路線的分法、十二篇的歸屬與順序、每篇的定位都維持撰稿者原樣，
 改的是把描述收回各篇撐得住的範圍，以及把四條路線的名字在表格、標題、圖解之間統一。
 `models-seen.json` 未新增（目錄篇沒有模型 id）。不需要第二輪。
+
+## 2026-10 更新的查核
+
+查核代理：未參與撰稿，也沒有參與九月那一輪。查核日 **2026-10-04**。
+這次查的是撰稿者加進目錄篇的「搭本機模型」一節（E 組六篇）、表格六列、導言／`description`／summary／FAQ 的補句、
+五格圖解，以及六條 `sources` 的重讀與兩條 OpenAI 網址的更換。
+
+**`checked_on` 2026-10-03 不改**：內容包六條 source、研究紀錄的 `checked_on` 與它的六條 source、
+表格 caption、圖解 caption（2026 年 10 月）與研究紀錄 `diagram.caption` 全部一致；
+本代理 10-04 重抓的六頁內容與撰稿者記下的一致，本輪沒有依今天的頁面改任何外部事實，所以照規格不動日期。
+
+查核方式：`sources[]` 六條以 `curl -sL -A "Mokaair-editorial"` 重抓並讀 body；兩條舊的 OpenAI 網址與 MCP 入口另以不跟轉址的請求看狀態碼；
+研究紀錄六條 `verbatim_quote` 照 FACTCHECK.md 第 1 節第 8 點的固定方法（刪掉 `<script>`／`<style>`、其餘標籤刪成**空字串**、
+HTML 實體還原、空白正規化成一個空格後做子字串搜尋）**綁回各自的 url** 比對；
+十八篇的 zh-TW `title` 與目錄篇的 `article` inline、表格「篇名」欄用腳本逐字比對；
+E 組六篇逐句對回各篇的 `description`、summary、正文、表格與 FAQ；既有十二篇抽查三分之一
+（《成本、品質、延遲》——九月之後 09-24 改過旗艦價、《本機去識別化、雲端收尾》、《一個 MCP 伺服器…》、《失敗案例與防護》）；
+讀者看得到的每個欄位（title、description、段落、h2、summary、表格每列與 caption、callout、FAQ、圖解 alt 與 caption，
+外加研究紀錄的 `hero_label`、`diagram`）用正規表示式掃篇數、路線數、組數、第 N 篇、中文與阿拉伯數字，以及「實測」。
+**任何請求的 UA、標頭、查詢字串與表單都沒有放入 email 或任何個人資料**；沒有用 `sources[]` 以外的網址替文章補事實
+（為了反駁而讀的兩頁見下，只寫進報告）。
+
+檢查的主張：**119 條**（`description` 補句 1、導言補句 2、summary 第五句 5、新 h2 1、新一節的導句 2 與六篇描述 23、
+新六列表格 18 格＋caption 1、新 FAQ 問句 1 與答句 5、圖解 alt 與 caption 2、`diagram` 五格 10＋title 1＋`hero_label` 1＋
+`editorial_brief`／`must_not_write` 2、十八篇 inline 與表格篇名逐字 36、抽查既有四篇的段落描述與表格列 8），
+外加六條來源重抓與六條引文。**改了 6 處**（內容包 6 個編輯點，研究紀錄另加 `factcheck.update_2026_10`），另有 4 件留給協調者或站主。
+
+### 重抓結果：六條 sources 今天都讀到正文
+
+| source | HTTP | bytes | body 是正文嗎 |
+| --- | --- | --- | --- |
+| `anthropic.com/engineering/building-effective-agents` | 200 | 173,726 | **是**。`<title>`「Building Effective AI Agents \ Anthropic」，可見文字約 19,800 字元；擋阻字串 0 次。比九月的 211,506 bytes 小，但引文與上下文都在 |
+| `openai.github.io/openai-agents-python/` | 200 | 76,263 | **是**。`<title>`「OpenAI Agents SDK」；擋阻字串 0 次 |
+| `modelcontextprotocol.io/docs/getting-started/intro` | 200 | 310,416 | **是**。入口今天 **307** 到 `/docs/2026-07-28/getting-started/intro`（九月記的是 302），落地頁 `<title>`「What is the Model Context Protocol (MCP)? - Model Context Protocol」；擋阻字串 0 次 |
+| `developers.openai.com/api/docs/guides/structured-outputs` | 200 | 3,275,351 | **是**。直接 200、沒有再轉址；`<title>`「Structured model outputs \| OpenAI API」；擋阻字串 0 次 |
+| `docs.litellm.ai/docs/` | 200 | 117,514 | **是**。`<title>`「Getting Started \| liteLLM」；擋阻字串 0 次 |
+| `developers.openai.com/api/docs/guides/evals` | 200 | 746,824 | **是**。直接 200；`<title>`「Working with evals \| OpenAI API」；擋阻字串 0 次 |
+
+**兩條換了網址的 OpenAI 頁面**：`platform.openai.com/docs/guides/structured-outputs` 與 `…/evals` 今天不跟轉址各回
+**301**，`Location` 分別是 `https://developers.openai.com/api/docs/guides/structured-outputs` 與 `…/evals`；
+新網址本身回 200、不再轉址，是 OpenAI 自己的開發者文件網域，`<title>` 都帶「OpenAI API」，正文讀得到。
+換成最終網址成立；研究紀錄 `unverified_or_excluded` 對這件事的記載（301、MCP 307 仍記入口網址）與今天的觀察一致。
+
+**六條 `verbatim_quote` 全部 FOUND**（各自只在自己的 url 上搜尋）。evals 那條在原始 HTML 裡被 `<strong>evals</strong>` 切開，
+標籤刪成空字串後是連續字串，與九月的結論相同。
+
+### 十八篇標題逐字比對（腳本）
+
+- `article` inline：十八個系列 slug 各出現一次，**18／18 逐字等於**各篇當下的 zh-TW `title`，沒有缺、沒有重複。
+  另外兩個非系列 inline（「MCP」→ `ai-term-model-context-protocol`、「評測」→ `ai-term-evals`）的內容包都存在。
+- 表格「篇名」欄：**18／18 逐字相同**。表格與段落的排序依路線分組（營運在協作與工具之後、搭本機模型最後），
+  不是 `display_order`，與九月相同。
+- 《Claude Code、Codex 搭本機模型的注意事項：開工前的檢查清單》第一輪查核的結論是 `needs_second_round`；
+  本代理開工與收工各比對一次，title 都沒變。
+
+### 改掉的 6 處（內容包）
+
+1. **批次腳本那一句把 Codex 路寫成「讓代理執行」，也拿掉了 beta。**
+   原文：「《讓 Claude Code、Codex 把大量雜務交給本機模型：一支 Python 腳本》**示範讓代理去執行**一支 Python 腳本，由腳本逐封問…，
+   也寫了 **Claude Code 與 Codex 各自擋得住原始檔到什麼程度**…」。
+   那篇的 summary 第四句與 FAQ 寫，Codex 的 permission profile 連沙盒裡執行的腳本也擋，所以「Codex 這一條路是**先由你跑腳本**，
+   再讓 codex exec 只讀 out」；擋原始檔的分別是 Claude Code 的 Read deny 規則（那篇稱它「是護欄，不是邊界」）與
+   Codex 的 permission profile，後者那篇寫「官方 Permissions 頁標示它是 beta」——本代理今天另讀 Codex 的 Permissions 頁，
+   原文是「Beta. Permission profiles are under active development and may change.」（只寫進報告，不是目錄篇的來源）。
+   已改成「示範**把一批文字檔交給一支 Python 腳本**，由腳本逐檔問本機的 Ollama 模型…，也寫了 **Claude Code 的 deny 規則與
+   Codex 的 permission profile（文件標示為 beta）**各擋得住原始檔到什麼程度…」。
+2. **表格同一篇那一列**「寫一支…Python 腳本**讓代理執行**」同理改成「…Python 腳本**逐檔問本機模型、代理只讀結果**」。
+3. **整個換成本機那一句的「官方給的上下文門檻」與「怎麼確認現在連到的是誰」。**
+   兩種接法那一篇明寫「64k 是 Ollama 給代理的建議值，不是 Claude Code 或 Codex 規定的門檻」，LM Studio 寫的是超過約 25k；
+   目錄篇不帶歸因寫「官方給的門檻」，讀起來像代理工具本身的規定。同一句的確認方法，那篇正文寫
+   「Codex 這邊，兩份文件都沒寫對應的確認指令」，只有 Claude Code 的 /status。
+   已改成「寫出 Ollama 與 LM Studio 的指令、**這兩家文件建議的上下文長度**、**怎麼用 /status 確認 Claude Code** 現在連到的是誰，以及用完怎麼還原」。
+4. **表格同一篇那一列**「確認上下文與現在連到誰」同理改成「確認上下文與 **Claude Code** 現在連到誰」。
+5. **MCP 工具那一句「列出兩邊逾時與輸出量的官方預設值差在哪裡」。**
+   那篇表格的輸出量一列，Codex 那格寫「tools 底下單一工具的 output_token_limit（token 預算）；本文查證的那一頁**沒有寫預設的數字**」；
+   兩邊都有預設值的只有逾時。已改成「並列出兩邊**逾時**的官方預設值差在哪裡、**輸出量又各怎麼管**」。
+6. **三個家族那一句「讓你不會把雲端端點誤當成本機」把兩種雲端併成一個詞。**
+   那篇的骨幹是三種跑法分開：權重在自己電腦、Ollama 的 `:cloud` 標籤、供應商自己的端點；它的 callout 最強調的陷阱
+   正是「這兩個雲端模型頁的 curl 範例，連的就是 http://localhost:11434，模型卻是帶 cloud 的標籤」——那不是「端點」。
+   已改成「讓你不會把 **:cloud 標籤或供應商端點**誤當成本機」。
+
+六處都只動描述的範圍，沒有改路線分法、篇目歸屬或任何一篇的定位；正文 2,456 → 2,515 字，沒有刪任何但書或限定詞。
+
+### 撰稿者請優先重看的三件
+
+- **兩種接法那一句的 Anthropic 說法：成立，不改。** 目錄篇只寫那篇「對照 Anthropic、Ollama、LM Studio 與 OpenAI 的官方文件怎麼寫，
+  包括 **Anthropic 的文件對把 Claude Code 接到非 Claude 模型的說法**」——只點出那篇有這一段，沒有轉述內容、沒有下結論、
+  沒有「違反條款」或「不合法」這類字。那篇正文與 FAQ 都寫成「Claude Code 文件的 LLM gateway 頁寫，Anthropic 不支援透過任何 gateway
+  把 Claude Code 接到非 Claude 模型」並加「不對條款做解讀」。本代理今天讀 `code.claude.com/docs/en/llm-gateway`，
+  原文「doesn’t support routing Claude Code to non-Claude models through any gateway」仍在（只寫進報告）。
+- **批次腳本那一句：改了**，見上面第 1、2 處。
+- **新 FAQ 的「它不需要寫程式」：成立，不改。** 兩種接法那篇第二段導言原句是「讀完你會有一張兩種接法的對照表和三個選路的問題，
+  不需要寫程式」，那篇是入門篇。它有一個 bash 區塊，但內容是照抄 Ollama 文件的入口與 `ollama ps` 指令，不是要讀者寫程式；
+  FAQ 下一句隨即把要寫腳本的工作指向批次腳本與 MCP 工具那兩篇，不會讓人以為接法一不用程式。正文同一處的寫法相同，也不改。
+
+### 查過而且正確的部分（沒有動）
+
+- **本機與雲端沒有混淆。** 新一節與表格、summary、FAQ 提到 GLM、Qwen、DeepSeek 時，一律寫成「標籤哪些能下載到自己電腦、
+  哪些只有 :cloud（或其實在雲端）」，沒有一處寫三家都能在本機跑；供應商端點只出現在「整理供應商自己的端點怎麼接…，
+  每一處都標明資料會送到哪裡」，沒有暗示資料留在本機（那篇 `description` 原句就是「每一處都標明資料會送到哪裡」）。
+  批次腳本、MCP 工具兩句的「本機的 Ollama 模型」與那兩篇的位址＋標籤檢查一致。研究紀錄 `must_not_write` 第二條也寫了這條界線。
+- **不實測的揭露**：「本站沒有實測」全篇只出現 **1** 次（新一節的導句）；title 與 `description` 沒有「實測」；
+  全篇沒有速度、品質、價格、購買或訂閱建議、沒量過的排名（callout 的「價格…以那篇當天讀到的官方頁面為準」不是價格）。
+  導句「這一節各篇的步驟都來自官方文件」與六篇各自第二段導言的揭露一致（六篇都有且只有一次「本站沒有實測」）。
+- **會長大的數字**：掃過所有讀者看得到的欄位，命中的只有各篇內容本身的固定數量——三個層次、四種切法、三個量、三支命令列代理、
+  三個客戶端、兩版、三種常見失控、Claude Code 與 Codex「兩邊」、Ollama 與 LM Studio「這兩家」、FAQ 點名「講兩種接法怎麼選的那一篇」
+  （出自那篇標題的主題），以及 caption 的「2026 年 10 月」。沒有篇數、路線數、組數或「第 N 篇」；FAQ 用「那幾篇」「這幾個家族」帶過。
+  `hero.alt` 的三個「四」見留給協調者的第 1 件。研究紀錄的 `diagram.title`「系列的各條路線」、`hero_label`「各條路線導讀」、
+  `editorial_brief`「這幾條路線」、`must_not_write` 第一條都已拿掉數量。
+- **E 組六篇的其餘描述對得上**：兩種接法的三個判準（資料能不能出門、上下文開得夠不夠長、工作的類型）與那篇導言相同；
+  三個家族那篇確實逐家寫 Ollama 標籤與 Z.ai、DeepSeek、阿里雲百鍊的端點；MCP 工具那篇是 stdio 伺服器、兩邊各登記一次、
+  只回分類結果與結果檔路徑；整個換成本機那篇有 Ollama 與 LM Studio 的指令與 `ollama launch codex --restore` 還原；
+  檢查清單那篇是一張表、每項一句怎麼檢查、最先查資料、憑證（現在連的是誰）、上下文與驗收四件事。
+  summary 第五句、導言兩處補句、`description` 補句、新 FAQ 的答句都 ⊆ 正文。
+- **既有十二篇抽查四篇**：段落描述與表格列和各篇當下的 `description`、summary、正文一致
+  （《成本、品質、延遲》09-24 改的是旗艦定價，目錄篇只寫「比較單一旗艦、級聯與並行互審幾種架構的代價」，不受影響）。
+- **圖解**：研究紀錄 `diagram.layout` 是 `flow`、五格；`diagram.caption` 與內容包 image 的 caption 逐字相同（自檢也比對）；
+  五格小標「觀念／接線／協作與工具／營運／搭本機模型」與表格「路線」欄、五個 h2 的開頭字詞同一組字；
+  第五格「選接法、分本機雲端」對得上兩種接法與三個家族兩篇，小標 5 字、說明 9 字都在上限內；五格沒有任何數字。
+  image 的 alt 與 caption 已拿掉「四條路線」。
+- **依賴外部事實的句子**：目錄篇正文沒有自己的外部事實句，新一節每一句都是「某篇教什麼」。其中兩處帶到外部文件的說法
+  （Anthropic 對接非 Claude 模型的說法、Codex permission profile 的 beta 標示）都寫成那一篇的內容，本代理另讀官方頁確認原文仍在。
+- **研究紀錄與內容包一致**：`title`、`sources`（六條的順序、標題、網址）、`diagram.caption` 相同；六條 `verified_facts` 的 url 都在 `sources[]`。
+- **界線**：沒有購買、訂閱或投資建議，沒有推薦式比價，沒有沒歸因的廠商宣稱，只有一個 callout、沒有免責段落，沒有寫台灣可用。
+
+### 留給協調者／站主
+
+1. **`hero.alt`**（協調者）：仍寫「一張書桌中央延伸出四條路徑，分別通往觀念、接線、協作與工具、營運四個標示牌，代表這個系列的四條路線」，
+   有三個「四」，也缺搭本機模型這條路線。主圖由協調者重畫與改寫，本代理依指示沒有動。
+2. **兩篇自己的 `description` 比正文鬆**（各篇的查核範圍，本代理只讀）：
+   《讓 Claude Code、Codex 把大量雜務交給本機模型：一支 Python 腳本》寫「可以讓 Claude Code 或 Codex 去執行」那支腳本，
+   正文的 Codex 路卻是先由你跑腳本；《把 Claude Code、Codex 整個換成本機模型：Ollama 與 LM Studio 設定與還原》寫
+   「官方給的上下文門檻」「確認現在連到誰的方法」，正文寫 64k 是 Ollama 的建議、Codex 兩份文件都沒寫確認指令。目錄篇已照各篇正文寫。
+3. **檢查清單的第二輪**（協調者）：若第二輪改了 title，目錄篇的 inline 與表格篇名兩處要跟著改。
+4. **sources 與新一節沒有對應**（站主）：六條 sources 都屬既有十二篇的主題；新一節只描述各篇、沒有外部事實句，所以不需要新來源。
+   若希望來源涵蓋這一組，加進來的會是正文沒有句子靠它支撐的來源。
+
+### 懷疑但沒動
+
+- SeriesHub 的組別（`build_catalogue.py` 的 `GROUPS`：A 觀念、B 接線、C「協作：互審、代理分工與 MCP」、D「營運：本機混搭、追蹤與防護」、
+  E「實作：代理工具搭本機模型」）按 `display_order` 每三篇一組，與目錄篇正文的路線分法（互審在營運、本機去識別化在協作與工具）不同。
+  這是九月就有的差異，E 組前後兩邊都把那六篇放在一起，沒有讓它更糟；不在本代理可改的檔案裡。
+- 圖解 caption 與 alt 的「各條路線各自要解決的問題」，「各」與「各自」重複，是文字問題不是事實問題；改它要同步研究紀錄，沒有動。
+
+### 自檢
+
+```
+OK ai-workflow-tutorials paragraphs 2515 code_blocks 0 sources 6
+```
+
+無 FAIL、無 WARN。段落字數 2,515（hub 900–3,000；改動前 2,456）。
+
+### 結論
+
+`ok`。改了 6 處，都是目錄篇對 E 組三篇的描述說得比那一篇滿（Codex 路、beta、官方門檻、確認指令、輸出量預設值）或把兩種雲端併成一個詞；
+沒有動骨幹、路線分法或篇目歸屬。十八篇標題逐字相同，六條來源今天都讀到正文、六條引文都在，`checked_on` 全篇一致。
+`models-seen.json` 未新增（目錄篇沒有模型 id）。

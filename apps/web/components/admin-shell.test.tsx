@@ -6,6 +6,35 @@ import { useModalSheet } from "@/lib/modal-sheet";
 import { AdminOperationsProvider } from "./admin-operations-provider";
 import { AdminShell } from "./admin-shell";
 
+const location = vi.hoisted(() => ({ locale: "zh-TW", pathname: "/" }));
+vi.mock("@/i18n/navigation", () => ({
+  Link: ({ href, children, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }) =>
+    <a href={href} {...props}>{children}</a>,
+  usePathname: () => location.pathname,
+}));
+vi.mock("next-intl", async () => {
+  const actual = await vi.importActual<typeof import("next-intl")>("next-intl");
+  const [en, ja, ko, zhCN, zhTW] = await Promise.all([
+    import("../messages/en/admin.json"), import("../messages/ja/admin.json"),
+    import("../messages/ko/admin.json"), import("../messages/zh-CN/admin.json"),
+    import("../messages/zh-TW/admin.json"),
+  ]);
+  const catalogs: Record<string, typeof en.default> = {
+    en: en.default, ja: ja.default, ko: ko.default, "zh-CN": zhCN.default, "zh-TW": zhTW.default,
+  };
+  const translate = (locale: string, namespace: "admin.navigation" | "admin.sitePages") =>
+    actual.createTranslator({ locale, messages: { admin: catalogs[locale] }, namespace });
+  const translators = new Map<string, ReturnType<typeof translate>>();
+  return {
+    ...actual,
+    useLocale: () => location.locale,
+    useTranslations: (namespace: "admin.navigation" | "admin.sitePages") => {
+      const key = `${location.locale}:${namespace}`;
+      if (!translators.has(key)) translators.set(key, translate(location.locale, namespace));
+      return translators.get(key)!;
+    },
+  };
+});
 vi.mock("./language-switcher", () => ({ LanguageSwitcher: () => null }));
 
 const copy = adminOperationsCopy("zh-TW");
@@ -30,8 +59,8 @@ function AdditionalSheet({ open, onClose }: { open: boolean; onClose: () => void
   </div> : null;
 }
 
-function Harness({ topOpen = false, onTopClose = () => {}, showShell = true }) {
-  return <AdminOperationsProvider bootstrap={bootstrap}>
+function Harness({ topOpen = false, onTopClose = () => {}, showShell = true, value = bootstrap }) {
+  return <AdminOperationsProvider bootstrap={value}>
     {showShell && <AdminShell><button>Original keyboard focus</button></AdminShell>}
     <AdditionalSheet open={topOpen} onClose={onTopClose} />
   </AdminOperationsProvider>;
@@ -45,7 +74,35 @@ function openCommand() {
 }
 
 describe("AdminShell command dialog", () => {
-  afterEach(() => { window.localStorage.clear(); document.body.style.overflow = ""; });
+  afterEach(() => {
+    window.localStorage.clear(); document.body.style.overflow = "";
+    location.locale = "zh-TW"; location.pathname = "/";
+  });
+
+  it.each([
+    ["en", "AI News", "AI"], ["ja", "AI 自動ニュース", "ニュース"],
+    ["ko", "AI 자동 뉴스", "뉴스"], ["zh-CN", "AI 自动新闻", "新闻"],
+    ["zh-TW", "AI 自動新聞", "新聞"],
+  ])("uses the %s news catalog for the heading, recent page and searchable command", async (locale, name, query) => {
+    location.locale = locale; location.pathname = "/admin/news";
+    const localizedCopy = adminOperationsCopy(locale);
+    const { container } = render(<Harness value={{ ...bootstrap, navigation: [
+      { key: "dashboard", href: "/admin", group: "overview" },
+      { key: "news", href: "/admin/news", group: "content" },
+    ] }} />);
+    const breadcrumb = screen.getByRole("navigation", { name: "Breadcrumb" });
+    expect(breadcrumb.querySelector('[aria-current="page"]')?.textContent).toBe(name);
+    expect(container.querySelector(".admin-topbar-mobile-title")?.textContent).toBe(name);
+    fireEvent.keyDown(window, { key: "k", metaKey: true });
+    const dialog = screen.getByRole("dialog", { name: localizedCopy.command });
+    const recent = (await within(dialog).findByRole("heading", { name: localizedCopy.recent })).closest("section")!;
+    expect(within(recent).getByRole("link", { name: `${name}${localizedCopy.groups.content}` }).getAttribute("href")).toBe("/admin/news");
+    fireEvent.change(within(dialog).getByRole("textbox"), { target: { value: query } });
+    const links = within(dialog).getAllByRole("link");
+    expect(links).toHaveLength(1);
+    expect(links[0].textContent).toBe(`${name}${localizedCopy.groups.content}`);
+    expect(links[0].getAttribute("href")).toBe("/admin/news");
+  });
 
   it("focuses search, traps Tab and closes from document Escape with focus restored", () => {
     render(<Harness />);

@@ -1,38 +1,38 @@
 {
   "slug": "ai-workflow-tutorials",
   "title": "多模型 AI 工作流教學：從拆任務到串接不同模型",
-  "checked_on": "2026-09-19",
+  "checked_on": "2026-10-03",
   "level": "入門",
   "sources": [
     {
       "title": "Building effective agents",
       "url": "https://www.anthropic.com/engineering/building-effective-agents",
-      "checked_on": "2026-09-19"
+      "checked_on": "2026-10-03"
     },
     {
       "title": "OpenAI Agents SDK",
       "url": "https://openai.github.io/openai-agents-python/",
-      "checked_on": "2026-09-19"
+      "checked_on": "2026-10-03"
     },
     {
       "title": "What is the Model Context Protocol (MCP)?",
       "url": "https://modelcontextprotocol.io/docs/getting-started/intro",
-      "checked_on": "2026-09-19"
+      "checked_on": "2026-10-03"
     },
     {
       "title": "Structured model outputs",
-      "url": "https://platform.openai.com/docs/guides/structured-outputs",
-      "checked_on": "2026-09-19"
+      "url": "https://developers.openai.com/api/docs/guides/structured-outputs",
+      "checked_on": "2026-10-03"
     },
     {
       "title": "LiteLLM Docs",
       "url": "https://docs.litellm.ai/docs/",
-      "checked_on": "2026-09-19"
+      "checked_on": "2026-10-03"
     },
     {
       "title": "Working with evals",
-      "url": "https://platform.openai.com/docs/guides/evals",
-      "checked_on": "2026-09-19"
+      "url": "https://developers.openai.com/api/docs/guides/evals",
+      "checked_on": "2026-10-03"
     }
   ],
   "verified_facts": [
@@ -56,7 +56,7 @@
     },
     {
       "fact": "OpenAI 官方文件把 Structured Outputs 描述成保證模型輸出一定符合開發者提供的 JSON Schema 的功能",
-      "url": "https://platform.openai.com/docs/guides/structured-outputs",
+      "url": "https://developers.openai.com/api/docs/guides/structured-outputs",
       "is_vendor_claim": true,
       "verbatim_quote": "Structured Outputs is a feature that ensures the model will always generate responses that adhere to your supplied"
     },
@@ -68,36 +68,42 @@
     },
     {
       "fact": "OpenAI 官方文件把 evals 定義成用來檢查模型輸出是否符合設定的風格與內容準則的測試",
-      "url": "https://platform.openai.com/docs/guides/evals",
+      "url": "https://developers.openai.com/api/docs/guides/evals",
       "is_vendor_claim": true,
       "verbatim_quote": "Evaluations (often called evals) test model outputs to ensure they meet style and content criteria that you specify."
     }
   ],
   "unverified_or_excluded": [
     "各篇目前實際的模型 id、價格與速率限制沒有在這篇重新查證或列出：每篇文章已經各自標好查證日期與來源，這篇只做路線導覽，不重複那些會過期的數字。",
-    "沒有把『這系列一共幾篇』寫進正文：目錄由網站的 SeriesHub 元件依 display_order 自動列出，這篇正文刻意不寫篇數與課序編號。",
+    "沒有把『這系列一共幾篇』『幾條路線』『幾組』寫進正文：目錄由網站的 SeriesHub 元件依 display_order 自動列出，這篇正文刻意不寫篇數、路線數與課序編號。",
+    "代理工具搭本機模型那一節只描述各篇教什麼，沒有引入新的外部事實、也沒有新增來源：各篇的標籤、大小、端點、逾時預設值與上下文門檻都留給各篇自己的官方頁查證，這篇不重複；『本站沒有實測』只在那一節說一次。",
+    "Anthropic 的文件對把 Claude Code 接到非 Claude 模型的說法，這篇沒有轉述，只在那一節點出它寫在《Claude Code、Codex 搭本機模型：兩種接法怎麼選》裡：歸因與原文由那一篇的查證負責。",
+    "2026-10-03 重讀來源時，兩條 OpenAI 的網址（platform.openai.com/docs/guides/structured-outputs 與 evals）回 301 永久轉址到 developers.openai.com/api/docs/guides/…，內容包與研究紀錄的 sources 與 verified_facts 都已改成轉址後的網址；MCP 簡介的入口網址回 307 暫時轉址到帶日期的 /docs/2026-07-28/ 路徑，是版本路徑，所以仍記入口網址。",
     "查過 OpenRouter、LiteLLM 官方文件裡目前列出的完整供應商清單，沒有把清單本身寫進這篇：那是《統一 API 層：OpenRouter 與 LiteLLM 換模型不改程式》那篇的主題，這裡只點名去那篇看。",
     "查過 OWASP 十大風險清單裡 LLM05:2025 與 LLM10:2025 的完整條目定義，沒有在這篇重複逐字引用：那屬於《失敗案例與防護：迴圈、費用爆炸與代理間注入》那篇已經查證過的內容，這篇只用一句話點出案例存在。"
   ],
   "must_not_write": [
-    "不寫這系列一共十二篇文章，或任何一篇的課序編號（第一篇、第 3 課這類寫法）",
+    "不寫這系列一共幾篇文章、幾條路線、幾組，或任何一篇的課序編號（第一篇、第 3 課這類寫法）",
+    "不寫 GLM、Qwen、DeepSeek 都能在本機跑：本機權重、Ollama 的 :cloud 標籤與供應商端點是不同的東西，哪個標籤屬於哪一種由那一篇講",
+    "不寫本機模型的速度、品質、價格或購買建議；Anthropic 的文件對 Claude Code 接非 Claude 模型的說法只指向那一篇，不在這篇下結論",
     "不重寫任何一篇文章裡已經查證過的價格、模型 id、速率限制等會過期的數字",
     "不對 Claude Code、Codex、Gemini CLI 或任何供應商的模型做優劣評比或人身式褒貶",
     "不放 code 區塊，也不重講任何一篇的程式範例內容",
     "不寫訂閱、購買或投資建議，不寫免責聲明式的重複提醒"
   ],
-  "editorial_brief": "這篇是系列的目錄與導讀，把十二篇文章分成觀念、接線、協作與工具、營運四條路線，每條路線用一段 rich_paragraph 把該路線的文章依序點名，說明每篇解決什麼問題、跟前後篇怎麼銜接，不重複任一篇已經寫過的技術細節或查證數字。每篇的程式範例、模型 id 與查證留給各自的文章處理，這篇只負責告訴讀者從哪裡開始、接下來去哪裡。",
+  "editorial_brief": "這篇是系列的目錄與導讀，把各篇文章分成觀念、接線、協作與工具、營運、搭本機模型這幾條路線，每條路線用一段 rich_paragraph 把該路線的文章依序點名，說明每篇解決什麼問題、跟前後篇怎麼銜接，不重複任一篇已經寫過的技術細節或查證數字。每篇的程式範例、模型 id 與查證留給各自的文章處理，這篇只負責告訴讀者從哪裡開始、接下來去哪裡。",
   "code_samples": [],
-  "hero_label": "四條路線導讀",
+  "hero_label": "各條路線導讀",
   "diagram": {
     "layout": "flow",
-    "title": "系列四條路線",
-    "caption": "觀念、接線、協作與工具、營運四條路線各自要解決的問題（查證：2026 年 9 月）",
+    "title": "系列的各條路線",
+    "caption": "觀念、接線、協作與工具、營運、搭本機模型，各條路線各自要解決的問題（查證：2026 年 10 月）",
     "nodes": [
       ["觀念", "看依據、算代價"],
       ["接線", "換供應商、串格式"],
       ["協作與工具", "代理分工、共用工具"],
-      ["營運", "互審、追蹤、擋失敗"]
+      ["營運", "互審、追蹤、擋失敗"],
+      ["搭本機模型", "選接法、分本機雲端"]
     ]
   },
   "factcheck": {
@@ -130,6 +136,26 @@
       "目錄篇帶六條 sources 但正文只做導讀、沒有直接引用它們，支撐它們的是研究紀錄的六條 verified_facts。檢查器要求 3-8 條，所以沒有動；若站主希望目錄篇的來源與正文有更直接的對應，需要改寫正文而不是刪來源。",
       "四條路線的名字（觀念、接線、協作與工具、營運）與 ASSIGNMENTS 的『協作／工具』只差一個連接符號，語意相同；本篇全篇統一用『協作與工具』，若站主要改成斜線寫法，表格、四個 h2、summary、圖解與主圖說明要一起改。"
     ],
-    "code_recompiled": []
+    "code_recompiled": [],
+    "update_2026_10": {
+      "checked_by": "independent factcheck agent",
+      "checked_on": "2026-10-04",
+      "method": "sources[] 六條今天以 curl -sL -A \"Mokaair-editorial\" 重抓並讀 body，兩條 OpenAI 的舊網址另以不跟轉址的請求確認是 301 到 developers.openai.com/api/docs/guides/…；六條 verbatim_quote 照 FACTCHECK.md 第 1 節第 8 點（標籤刪成空字串、HTML 實體還原、空白正規化後做子字串搜尋）綁回各自的 url 比對；十八篇的 zh-TW title 與目錄篇的 article inline、表格篇名用腳本逐字比對；E 組六篇的描述逐句對回各篇的 description、summary、正文、表格與 FAQ，既有十二篇抽查成本取捨、本機去識別化、MCP 共用、失敗與防護四篇；讀者看得到的每個欄位用正規表示式掃篇數、路線數、組數、第 N 篇與『實測』。任何請求都沒有放入 email 或個人資料。",
+      "verdict": "ok",
+      "edits": [
+        "批次腳本那一句原寫「示範讓代理去執行一支 Python 腳本…也寫了 Claude Code 與 Codex 各自擋得住原始檔到什麼程度」：那篇的 Codex 路是先由使用者跑腳本、codex exec 只讀 out，不是讓代理執行；擋原始檔的是 Claude Code 的 Read deny 規則與 Codex 的 permission profile，後者那篇與 Codex 的 Permissions 頁都標示 beta，原句沒有這個限定詞。改成「示範把一批文字檔交給一支 Python 腳本，由腳本逐檔問本機的 Ollama 模型…也寫了 Claude Code 的 deny 規則與 Codex 的 permission profile（文件標示為 beta）各擋得住原始檔到什麼程度」。",
+        "表格同一篇那一列「Python 腳本讓代理執行」同理改成「Python 腳本逐檔問本機模型、代理只讀結果」。",
+        "整個換成本機那一句原寫「官方給的上下文門檻」：64k 是 Ollama 文件給代理的建議值、LM Studio 寫超過約 25k，兩種接法那一篇明寫不是 Claude Code 或 Codex 規定的門檻；改成「這兩家文件建議的上下文長度」。同一句「怎麼確認現在連到的是誰」：那篇寫 Codex 這邊兩份文件都沒有對應的確認指令，只有 Claude Code 的 /status；改成「怎麼用 /status 確認 Claude Code 現在連到的是誰」。",
+        "表格同一篇那一列「確認上下文與現在連到誰」同理改成「確認上下文與 Claude Code 現在連到誰」。",
+        "MCP 工具那一句原寫「列出兩邊逾時與輸出量的官方預設值差在哪裡」：那篇表格寫 Codex 的 output_token_limit 在它查證的那一頁沒有預設數字，輸出量只有 Claude Code 一邊有預設值；改成「列出兩邊逾時的官方預設值差在哪裡、輸出量又各怎麼管」。",
+        "三個家族那一句原寫「讓你不會把雲端端點誤當成本機」，把 Ollama 的 :cloud 標籤與供應商端點併成一個詞，而那篇最強調的陷阱正是位址是 localhost、標籤卻帶 cloud；改成「讓你不會把 :cloud 標籤或供應商端點誤當成本機」。"
+      ],
+      "left_for_the_owner": [
+        "hero.alt 仍寫「四條路徑」「四個標示牌」「四條路線」，也只列四條路線、沒有搭本機模型；主圖由協調者重畫與改寫，本代理沒有動。",
+        "《讓 Claude Code、Codex 把大量雜務交給本機模型：一支 Python 腳本》自己的 description 寫「可以讓 Claude Code 或 Codex 去執行」那支腳本，與它正文的 Codex 路（先由你跑腳本）鬆緊不同；《把 Claude Code、Codex 整個換成本機模型：Ollama 與 LM Studio 設定與還原》的 description 寫「官方給的上下文門檻」「確認現在連到誰的方法」，與兩種接法那篇的「64k 是 Ollama 的建議值」及它自己正文的「Codex 兩份文件都沒寫確認指令」鬆緊不同。兩篇都不在本代理可改的範圍，目錄篇已照各篇正文寫。",
+        "《Claude Code、Codex 搭本機模型的注意事項：開工前的檢查清單》第一輪的結論是 needs_second_round；本輪收工時它的 title 仍逐字等於目錄篇的 inline 與表格篇名，第二輪若改 title，目錄篇這兩處要跟著改。",
+        "目錄篇的六條 sources 都對應既有十二篇的主題，搭本機模型那一節沒有任何一條；那一節只描述各篇教什麼、沒有引外部事實，所以不需要。若站主希望來源也涵蓋這一組，加進來的會是正文沒有句子靠它支撐的來源。"
+      ]
+    }
   }
 }

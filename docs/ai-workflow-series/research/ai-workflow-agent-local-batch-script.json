@@ -1,0 +1,1014 @@
+{
+  "slug": "ai-workflow-agent-local-batch-script",
+  "title": "讓 Claude Code、Codex 把大量雜務交給本機模型：一支 Python 腳本",
+  "checked_on": "2026-10-03",
+  "level": "進階",
+  "sources": [
+    {
+      "title": "Ollama 說明文件：Generate a chat message（POST /api/chat 的請求欄位、format、stream、options 與回應欄位）",
+      "url": "https://docs.ollama.com/api/chat",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Ollama 說明文件：Structured Outputs（format 帶 JSON schema、雲端不支援、schema 放進提示詞與 temperature 的建議）",
+      "url": "https://docs.ollama.com/capabilities/structured-outputs",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Ollama 說明文件：Cloud（雲端模型在 Ollama 的雲端執行、App 與 API 的模型名稱寫法、雲端的資料處理）",
+      "url": "https://docs.ollama.com/cloud",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Ollama 模型庫：qwen3.5 標籤頁（各標籤大小、上下文視窗、輸入類型與頁面頂端的能力列）",
+      "url": "https://ollama.com/library/qwen3.5/tags",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Ollama 模型庫：glm-4.7-flash 標籤頁（各標籤大小、上下文視窗、輸入類型與頁面頂端的能力列）",
+      "url": "https://ollama.com/library/glm-4.7-flash/tags",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Ollama 模型庫：deepseek-r1 標籤頁（各標籤大小、上下文視窗、輸入類型與頁面頂端的能力列）",
+      "url": "https://ollama.com/library/deepseek-r1/tags",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Claude Code 文件：Configure permissions（Read deny 規則的範圍、沙盒、claude -p 的信任規則、Bash 規則語法）",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Claude Code 文件：Tools reference（Bash 工具的逾時、移到背景與 -p 的背景指令）",
+      "url": "https://code.claude.com/docs/en/tools-reference",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Claude Code 文件：CLI reference（claude -p 非互動執行與 --allowedTools）",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "OpenAI Codex 文件：Permissions（permission profile、deny、與 --sandbox 的關係、Windows 沙盒）",
+      "url": "https://learn.chatgpt.com/docs/permissions",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "OpenAI Codex 文件：Non-interactive mode（codex exec 的提示詞參數、-o、需在 Git 儲存庫裡執行）",
+      "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+      "checked_on": "2026-10-03"
+    },
+    {
+      "title": "Claude Code 文件：Configure the sandboxed Bash tool（沙盒支援的平台與原生 Windows、權限規則併進沙盒設定）",
+      "url": "https://code.claude.com/docs/en/sandboxing",
+      "checked_on": "2026-10-03"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "POST /api/chat 是「Generate a chat message」，OpenAPI 的路徑定義。",
+      "url": "https://docs.ollama.com/api/chat",
+      "is_vendor_claim": true,
+      "verbatim_quote": "paths: /api/chat: post: summary: Generate a chat message"
+    },
+    {
+      "fact": "文件的伺服器位址是 http://localhost:11434，而且 security 是空陣列：本機呼叫沒有宣告任何認證。",
+      "url": "https://docs.ollama.com/api/chat",
+      "is_vendor_claim": true,
+      "verbatim_quote": "servers: - url: http://localhost:11434 description: Ollama security: []"
+    },
+    {
+      "fact": "請求的必填欄位是 model 與 messages。",
+      "url": "https://docs.ollama.com/api/chat",
+      "is_vendor_claim": true,
+      "verbatim_quote": "ChatRequest: type: object required: - model - messages"
+    },
+    {
+      "fact": "messages 的每一則有 role 與 content，role 可以是 system、user、assistant、tool；腳本用 system 與 user。",
+      "url": "https://docs.ollama.com/api/chat",
+      "is_vendor_claim": true,
+      "verbatim_quote": "enum: - system - user - assistant - tool description: Author of the message."
+    },
+    {
+      "fact": "format 欄位「可以是 json 或一份 JSON schema」。",
+      "url": "https://docs.ollama.com/api/chat",
+      "is_vendor_claim": true,
+      "verbatim_quote": "description: Format to return a response in. Can be `json` or a JSON schema"
+    },
+    {
+      "fact": "stream 預設為 true（所以腳本明確傳 false 才拿到單一回應）。",
+      "url": "https://docs.ollama.com/api/chat",
+      "is_vendor_claim": true,
+      "verbatim_quote": "stream: type: boolean default: true"
+    },
+    {
+      "fact": "options.temperature 是產生時的隨機程度。",
+      "url": "https://docs.ollama.com/api/chat",
+      "is_vendor_claim": true,
+      "verbatim_quote": "temperature: type: number format: float description: Controls randomness in generation (higher = more random)"
+    },
+    {
+      "fact": "options.num_ctx 是上下文長度（token 數）；本文腳本沒有設它。",
+      "url": "https://docs.ollama.com/api/chat",
+      "is_vendor_claim": true,
+      "verbatim_quote": "num_ctx: type: integer description: Context length size (number of tokens)"
+    },
+    {
+      "fact": "回應的答案文字在 message.content。",
+      "url": "https://docs.ollama.com/api/chat",
+      "is_vendor_claim": true,
+      "verbatim_quote": "content: type: string description: Assistant message text"
+    },
+    {
+      "fact": "回應另有 message.thinking，是 think 開啟時的思考過程；答案與思考分開兩個欄位。",
+      "url": "https://docs.ollama.com/api/chat",
+      "is_vendor_claim": true,
+      "verbatim_quote": "description: Optional deliberate thinking trace when `think` is enabled"
+    },
+    {
+      "fact": "think 的值：true 要思考輸出、false 不要、null 用模型預設；腳本不傳 think。",
+      "url": "https://docs.ollama.com/api/chat",
+      "is_vendor_claim": true,
+      "verbatim_quote": "`true` requests thinking, `false` requests no thinking output, and `null` uses the model default."
+    },
+    {
+      "fact": "頁面最上方的註記：Ollama 的雲端目前不支援結構化輸出。",
+      "url": "https://docs.ollama.com/capabilities/structured-outputs",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Ollama's Cloud currently does not support structured outputs."
+    },
+    {
+      "fact": "結構化輸出可以強制模型的回應符合 JSON schema。",
+      "url": "https://docs.ollama.com/capabilities/structured-outputs",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Structured outputs let you enforce a JSON schema on model responses so you can reliably extract structured data, describe images, or keep every reply consistent."
+    },
+    {
+      "fact": "要帶 schema，就把 JSON schema 給 format 欄位。",
+      "url": "https://docs.ollama.com/capabilities/structured-outputs",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Provide a JSON schema to the `format` field."
+    },
+    {
+      "fact": "官方建議同時把 schema 以字串放進提示詞，好讓模型的回應有依據（腳本用 json.dumps 放進系統提示詞）。",
+      "url": "https://docs.ollama.com/capabilities/structured-outputs",
+      "is_vendor_claim": true,
+      "verbatim_quote": "It is ideal to also pass the JSON schema as a string in the prompt to ground the model's response."
+    },
+    {
+      "fact": "官方建議把 temperature 設成 0 讓結果更確定（腳本的 options 帶 temperature 為 0）。",
+      "url": "https://docs.ollama.com/capabilities/structured-outputs",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Lower the temperature (e.g., set it to `0`) for more deterministic completions."
+    },
+    {
+      "fact": "官方 curl 範例對 /api/chat 傳 stream 為 false 與 format 為 schema 物件。",
+      "url": "https://docs.ollama.com/capabilities/structured-outputs",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"stream\": false, \"format\": { \"type\": \"object\", \"properties\": {"
+    },
+    {
+      "fact": "Ollama 的雲端文件：從 App 或終端機在 Ollama 的雲端執行模型。",
+      "url": "https://docs.ollama.com/cloud",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Run models in Ollama's cloud from your apps or terminal. No model or app download required."
+    },
+    {
+      "fact": "直接呼叫 ollama.com 的 API 時用清單回傳的名字（例子不帶 cloud），在 Ollama 的 App 或命令列才用帶 cloud 的名字：只看名字有沒有 cloud 不足以判斷是不是本機，位址也要看。",
+      "url": "https://docs.ollama.com/cloud",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For API requests to ollama.com, use the name returned by this list, such as gemma4:31b. In the Ollama app or CLI, use gemma4:cloud."
+    },
+    {
+      "fact": "Ollama 會處理雲端的提示詞與回應來回答請求（信件送到雲端模型，就是送到 Ollama）。",
+      "url": "https://docs.ollama.com/cloud",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Ollama processes cloud prompts and responses to answer your requests."
+    },
+    {
+      "fact": "qwen3.5:4b 一列：3.4GB、256K 上下文視窗、Text, Image 輸入。",
+      "url": "https://ollama.com/library/qwen3.5/tags",
+      "is_vendor_claim": true,
+      "verbatim_quote": "qwen3.5:4b 2a654d98e6fb • 3.4GB • 256K context window • Text, Image input"
+    },
+    {
+      "fact": "qwen3.5:9b 一列（頁面標 latest）：6.6GB、256K、Text, Image。",
+      "url": "https://ollama.com/library/qwen3.5/tags",
+      "is_vendor_claim": true,
+      "verbatim_quote": "qwen3.5:9b latest 6488c96fa5fa • 6.6GB • 256K context window • Text, Image input"
+    },
+    {
+      "fact": "qwen3.5 標籤頁頂端的能力列是 vision、tools、thinking，同一列也列出 0.8b 到 122b 七個尺寸（標籤總數撰稿當天是 64，查核時頁面剛新增一個標籤、顯示 65，正文不寫總數）。",
+      "url": "https://ollama.com/library/qwen3.5/tags",
+      "is_vendor_claim": true,
+      "verbatim_quote": "vision tools thinking 0.8b 2b 4b 9b 27b 35b 122b Name"
+    },
+    {
+      "fact": "glm-4.7-flash:latest 一列：19GB、198K、Text 輸入。",
+      "url": "https://ollama.com/library/glm-4.7-flash/tags",
+      "is_vendor_claim": true,
+      "verbatim_quote": "glm-4.7-flash:latest 4475827791a2 • 19GB • 198K context window • Text input"
+    },
+    {
+      "fact": "glm-4.7-flash:q8_0 一列：32GB、198K、Text。",
+      "url": "https://ollama.com/library/glm-4.7-flash/tags",
+      "is_vendor_claim": true,
+      "verbatim_quote": "glm-4.7-flash:q8_0 4420340fd319 • 32GB • 198K context window • Text input"
+    },
+    {
+      "fact": "glm-4.7-flash:bf16 一列：60GB、198K、Text。",
+      "url": "https://ollama.com/library/glm-4.7-flash/tags",
+      "is_vendor_claim": true,
+      "verbatim_quote": "glm-4.7-flash:bf16 b0f42cc1a612 • 60GB • 198K context window • Text input"
+    },
+    {
+      "fact": "glm-4.7-flash:q4_K_M 一列：19GB、198K、Text（與 latest 同一個識別碼）。",
+      "url": "https://ollama.com/library/glm-4.7-flash/tags",
+      "is_vendor_claim": true,
+      "verbatim_quote": "glm-4.7-flash:q4_K_M 4475827791a2 • 19GB • 198K context window • Text input"
+    },
+    {
+      "fact": "glm-4.7-flash 標籤頁頂端的能力列是 tools、thinking，共 4 個標籤。",
+      "url": "https://ollama.com/library/glm-4.7-flash/tags",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Cancel tools thinking Name 4 models"
+    },
+    {
+      "fact": "deepseek-r1:7b 一列：4.7GB、128K、Text 輸入。",
+      "url": "https://ollama.com/library/deepseek-r1/tags",
+      "is_vendor_claim": true,
+      "verbatim_quote": "deepseek-r1:7b 755ced02ce7b • 4.7GB • 128K context window • Text input"
+    },
+    {
+      "fact": "deepseek-r1:8b 一列（頁面標 latest）：5.2GB、128K、Text。",
+      "url": "https://ollama.com/library/deepseek-r1/tags",
+      "is_vendor_claim": true,
+      "verbatim_quote": "deepseek-r1:8b latest 6995872bfe4c • 5.2GB • 128K context window • Text input"
+    },
+    {
+      "fact": "deepseek-r1 標籤頁頂端的能力列是 tools、thinking，同一列也列出 1.5b 到 671b 七個尺寸、共 35 個標籤。",
+      "url": "https://ollama.com/library/deepseek-r1/tags",
+      "is_vendor_claim": true,
+      "verbatim_quote": "tools thinking 1.5b 7b 8b 14b 32b 70b 671b Name 35 models"
+    },
+    {
+      "fact": "擋 Claude 的檔案工具讀某路徑，就為該路徑加 Read 的 deny 規則，例如 Read(./secrets/**)。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "add a `Read` deny rule for its path, such as `Read(./.env)` or `Read(./secrets/**)`"
+    },
+    {
+      "fact": "deny 規則適用於內建檔案工具與 Claude Code 認得的 Bash 檔案指令（cat、head、tail、sed、tee）。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Read and Edit deny rules apply to Claude's built-in file tools, to file commands Claude Code recognizes in Bash, such as `cat`, `head`, `tail`, `sed`, and `tee`,"
+    },
+    {
+      "fact": "deny 規則不適用於不指名檔案就讀檔的指令，例如在放著檔案的目錄執行 grep -r。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "They don't apply to a command that reads files without naming them, such as `grep -r pattern .` run from the directory that holds the file,"
+    },
+    {
+      "fact": "deny 規則也不適用於自己開檔的子行程，例如 Python 或 Node 腳本。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "or to arbitrary subprocesses that read or write files indirectly, like a Python or Node script that opens files itself."
+    },
+    {
+      "fact": "要作業系統層級、擋下所有行程存取某路徑的限制，官方的答案是開沙盒。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For OS-level enforcement that blocks all processes from accessing a path,"
+    },
+    {
+      "fact": "沙盒提供作業系統層級的強制，限制 shell 指令的檔案系統與網路存取（範圍含子行程，見下一條）。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "provides OS-level enforcement that restricts shell commands' filesystem and network access. It applies only to Bash, PowerShell, and"
+    },
+    {
+      "fact": "沙盒只套用在 Bash、PowerShell、Monitor 的指令與它們的子行程（由代理在沙盒裡執行的腳本因此在牆內）。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "It applies only to Bash, PowerShell, and Monitor commands and their child processes."
+    },
+    {
+      "fact": "權限頁也提到有不在沙盒裡執行的指令，例如被排除的指令（所以「腳本會一起被擋」只對在沙盒裡執行的腳本成立）。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Commands that won't run sandboxed, such as excluded commands, respect the bare"
+    },
+    {
+      "fact": "規則依 deny、ask、allow 的順序評估。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Rules are evaluated in order: deny, then ask, then allow."
+    },
+    {
+      "fact": "allow 規則不能替 deny 規則開例外。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "An allow rule can't carve an exception out of a deny rule."
+    },
+    {
+      "fact": "deny 優先於 allow，包括命令列的 --allowedTools 也蓋不過 deny。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "If a tool is denied at any level, no other level can allow it. For example, a managed settings deny can't be overridden by `--allowedTools`"
+    },
+    {
+      "fact": "claude -p 不顯示信任對話框。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A `claude -p` run or an SDK session never shows it,"
+    },
+    {
+      "fact": "信任表格的第三欄情境是「claude -p 或 SDK、資料夾從未被信任」。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "`claude -p` or the SDK, folder never trusted"
+    },
+    {
+      "fact": "claude -p 資料夾未信任時，專案設定裡的 permissions.allow 不套用（表格第三欄）。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "`permissions.allow` rules and `additionalDirectories` in `.claude/settings.json` | Not used until you accept the trust dialog, which appears again listing them | Not used."
+    },
+    {
+      "fact": "deny 與 ask 規則不受信任步驟影響，因為它們只限制。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "`deny` and `ask` rules aren't affected, since they only restrict."
+    },
+    {
+      "fact": "Bash 規則比對整段指令文字，* 代表任何文字。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Bash rules match the whole command text, with `*` standing in for any text."
+    },
+    {
+      "fact": "結尾「空格加 *」也比對不帶參數的指令。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A `*` at the end, with a space before it, also matches the bare command."
+    },
+    {
+      "fact": "grep 在官方列的免詢問唯讀指令清單裡（含 cat、head、tail）。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The set includes `ls`, `cat`, `echo`, `pwd`, `head`, `tail`, `grep`, `find`, `wc`, `which`, `diff`, `stat`, `du`, `cd`, and read-only forms of `git`."
+    },
+    {
+      "fact": "專案設定檔是 .claude/settings.json；permissions 物件下有 allow 與 deny 陣列。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "{ \"permissions\": { \"allow\": [ \"Bash(npm run *)\", \"Bash(git commit *)\" ], \"deny\": [ \"Bash(git push *)\" ] } }"
+    },
+    {
+      "fact": "專案設定檔的位置：Project settings at .claude/settings.json。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Project settings at `.claude/settings.json`"
+    },
+    {
+      "fact": "每個 Bash 指令都有逾時；Claude 想要更久時在那次呼叫帶 timeout 參數。",
+      "url": "https://code.claude.com/docs/en/tools-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Each command runs under a timeout, and Claude manages it: when it wants longer than the default for a command, it passes the `timeout` parameter with that call."
+    },
+    {
+      "fact": "BASH_DEFAULT_TIMEOUT_MS：Claude 沒帶 timeout 時的預設，預設值是兩分鐘。",
+      "url": "https://code.claude.com/docs/en/tools-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "`BASH_DEFAULT_TIMEOUT_MS` — the default when Claude passes no timeout; two minutes out of the box"
+    },
+    {
+      "fact": "BASH_MAX_TIMEOUT_MS：Claude 能要求的上限，預設是十分鐘。",
+      "url": "https://code.claude.com/docs/en/tools-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "`BASH_MAX_TIMEOUT_MS` — with the default, sets the ceiling that caps whatever Claude requests: the effective ceiling is the larger of the two, ten minutes out of the box"
+    },
+    {
+      "fact": "前景指令到了逾時，是被移到背景而不是停止（除非以 sleep 開頭）。",
+      "url": "https://code.claude.com/docs/en/tools-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "When a foreground command reaches its timeout without finishing, Claude Code moves it to the background instead of stopping it, unless the command starts with `sleep`."
+    },
+    {
+      "fact": "-p 非互動模式下，背景指令在最後結果之後不久結束。",
+      "url": "https://code.claude.com/docs/en/tools-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "background commands end shortly after the run's final result"
+    },
+    {
+      "fact": "-p 是 Claude Code 的非互動模式旗標。",
+      "url": "https://code.claude.com/docs/en/tools-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In non-interactive mode with the `-p` flag,"
+    },
+    {
+      "fact": "claude -p 後面接提示詞：以 SDK 查詢後結束。",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "`claude -p \"query\"` | Query via SDK, then exit"
+    },
+    {
+      "fact": "-p 與 --print 同義，不進互動模式。",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "`--print`, `-p` | Print response without interactive mode"
+    },
+    {
+      "fact": "--allowedTools 是不經詢問就執行的工具清單；規則語法照權限規則。",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "`--allowedTools`, `--allowed-tools` | Tools that execute without prompting for permission."
+    },
+    {
+      "fact": "頁面標示：permission profile 是 beta，仍在開發、可能改變。",
+      "url": "https://learn.chatgpt.com/docs/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Beta. Permission profiles are under active development and may change."
+    },
+    {
+      "fact": "profile 讓你對 Codex 替你執行的本機指令設最小權限邊界。",
+      "url": "https://learn.chatgpt.com/docs/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Permission profiles let you apply least-privilege boundaries to local commands Codex runs on your behalf."
+    },
+    {
+      "fact": "profile 與舊的 sandbox 設定不能併用。",
+      "url": "https://learn.chatgpt.com/docs/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Permission profiles do not compose with the older sandbox settings."
+    },
+    {
+      "fact": "只要設了 sandbox_mode、帶了 --sandbox，Codex 就改用舊設定、不用 default_permissions。",
+      "url": "https://learn.chatgpt.com/docs/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "loaded config file, you pass `--sandbox`, or the selected config profile sets `sandbox_mode`, Codex uses those older sandbox settings instead of `default_permissions`."
+    },
+    {
+      "fact": "在最上層用 default_permissions 指向 profile 名稱或內建 profile。",
+      "url": "https://learn.chatgpt.com/docs/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Create a named profile under `[permissions.<name>]`, then set the top-level `default_permissions` key to that profile name or to one of the built-ins above."
+    },
+    {
+      "fact": "內建 profile :read-only 讓本機指令保持唯讀。",
+      "url": "https://learn.chatgpt.com/docs/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "`:read-only` keeps local command execution read-only."
+    },
+    {
+      "fact": "profile 可以 extends :read-only、:workspace 或另一個命名的 profile。",
+      "url": "https://learn.chatgpt.com/docs/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A profile can extend `:read-only`, `:workspace`, or another named profile."
+    },
+    {
+      "fact": "[permissions.<name>.filesystem.\":workspace_roots\"] 定義套用在每個工作區根目錄內的檔案系統規則。",
+      "url": "https://learn.chatgpt.com/docs/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "defines the filesystem rules Codex applies inside every effective workspace root"
+    },
+    {
+      "fact": "工作區根目錄底下可用相對子路徑標 deny，例如 \"generated\" = \"deny\"。",
+      "url": "https://learn.chatgpt.com/docs/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"generated\" = \"deny\" # each workspace-root generated directory"
+    },
+    {
+      "fact": "deny 同時拒絕讀與寫。",
+      "url": "https://learn.chatgpt.com/docs/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Denies both reads and writes under the path."
+    },
+    {
+      "fact": "profile 管的是在你機器上、沙盒裡執行的指令。",
+      "url": "https://learn.chatgpt.com/docs/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Permission profiles govern sandboxed commands that run on your machine."
+    },
+    {
+      "fact": "原生 Windows 的 unelevated 沙盒無法強制所有讀寫例外，不支援的政策會被拒絕；要 Linux 沙盒模型就用 WSL。",
+      "url": "https://learn.chatgpt.com/docs/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "`unelevated` sandboxing is a fallback with weaker network isolation and cannot enforce every split read/write carveout, so unsupported policies are refused. Use WSL when you need the Linux sandbox model."
+    },
+    {
+      "fact": "官方範例把 profile 放在 ~/.codex/config.toml。",
+      "url": "https://learn.chatgpt.com/docs/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "# ~/.codex/config.toml"
+    },
+    {
+      "fact": "codex exec 把任務提示詞當成一個參數傳入。",
+      "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Pass a task prompt as a single argument:"
+    },
+    {
+      "fact": "只要最後一則訊息時，用 -o 或 --output-last-message 寫成檔案。",
+      "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+      "is_vendor_claim": true,
+      "verbatim_quote": "If you only need the final message, write it to a file with `-o <path>`/`--output-last-message <path>`."
+    },
+    {
+      "fact": "codex exec 預設是唯讀沙盒（正文沒有寫這一句：本文的 Codex 範例改用 permission profile，見 Permissions 頁）。",
+      "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+      "is_vendor_claim": true,
+      "verbatim_quote": "By default, `codex exec` runs in a read-only sandbox."
+    },
+    {
+      "fact": "Codex 要求在 Git 儲存庫裡執行指令，以防破壞性變更。",
+      "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Codex requires commands to run inside a Git repository to prevent destructive changes."
+    },
+    {
+      "fact": "同一節寫，確定環境安全時可以用 codex exec --skip-git-repo-check 略過這道檢查（所以正文寫「預設要在 Git 儲存庫裡執行」，旗標本身不寫）。",
+      "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Override this check with `codex exec --skip-git-repo-check` if you're sure the environment is safe."
+    },
+    {
+      "fact": "原生 Windows 上 elevated 沙盒最強；unelevated 是備援（見上一條 unelevated 的引文）。",
+      "url": "https://learn.chatgpt.com/docs/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "On native Windows, elevated sandboxing is strongest because it can use dedicated lower-privilege sandbox users"
+    },
+    {
+      "fact": "Claude Code 的沙盒在 macOS、Linux、WSL2 上執行；原生 Windows 上指令不經沙盒執行，要用沙盒得在 WSL2 裡跑 Claude Code。",
+      "url": "https://code.claude.com/docs/en/sandboxing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The sandbox runs on macOS, Linux, and WSL2. On native Windows, Claude Code runs commands unsandboxed. To use the sandbox on a Windows machine, run Claude Code inside a WSL2 distribution."
+    },
+    {
+      "fact": "沙盒頁也寫它套用在 Bash、PowerShell、Monitor 的指令與它們的子行程（與權限頁同一句）。",
+      "url": "https://code.claude.com/docs/en/sandboxing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "It applies only to Bash, PowerShell, and Monitor commands and their child processes."
+    },
+    {
+      "fact": "權限規則與沙盒設定的路徑會合併成最後的沙盒設定（所以開了沙盒，專案設定裡的 Read(./inbox/**) 也會擋住沙盒裡執行的腳本）。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Paths and domains from both sandbox settings and permission rules are merged into the final sandbox configuration."
+    },
+    {
+      "fact": "沙盒頁的對照表：Read 與 Edit 的 deny 規則在沙盒設定裡的作用是擋住指定的檔案或資料夾。",
+      "url": "https://code.claude.com/docs/en/sandboxing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Read and Edit deny rules | Block access to specific files or directories"
+    },
+    {
+      "fact": "Bash 規則裡的 * 比對任何文字，包含空格（正文「規則裡的星號代表任何文字」的另一處原文）。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A `*` in a Bash rule matches any text, including spaces, so one rule covers a family of commands."
+    },
+    {
+      "fact": "PowerShell 的權限規則與 Bash 規則同一種寫法（所以 PowerShell(python local_batch.py *) 與 Bash 那條同型）。",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "is_vendor_claim": true,
+      "verbatim_quote": "PowerShell permission rules use the same shape as Bash rules."
+    },
+    {
+      "fact": "Windows 上 PowerShell 工具讓指令在 PowerShell 裡執行，而不是經過 Git Bash。",
+      "url": "https://code.claude.com/docs/en/tools-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "On Windows, this means commands run in PowerShell instead of routing through Git Bash."
+    },
+    {
+      "fact": "裝了 Git Bash 的 Windows，用 claude.ai 與 Console 帳號時 PowerShell 工具預設開啟（沒裝 Git Bash 時自動開啟；Bedrock 等雲端供應商的工作階段要另外設定），所以 code 註解寫「多半預設開啟」。",
+      "url": "https://code.claude.com/docs/en/tools-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "the tool is on by default for claude.ai and Console accounts"
+    },
+    {
+      "fact": "PowerShell 工具開啟時，Claude 把 PowerShell 當主要 shell（所以 Windows 上只放行 Bash 那條規則可能不夠）。",
+      "url": "https://code.claude.com/docs/en/tools-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "When the tool is enabled, Claude treats PowerShell as the primary shell."
+    },
+    {
+      "fact": "PowerShell 工具目前是預覽（正文寫「預覽中的 PowerShell 工具」，code 註解寫「預覽」）。",
+      "url": "https://code.claude.com/docs/en/tools-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The PowerShell tool has the following known limitations during the preview:"
+    }
+  ],
+  "unverified_or_excluded": [
+    "結構化輸出與思考（thinking）同時作用時的行為：/api/chat 與 Structured Outputs 兩頁都沒有寫（thinking 頁另有 message.thinking 與 message.content 分欄的說明，但不在 sources），所以正文只寫「文件沒有寫」，腳本不傳 think、只讀 message.content，不合格就走重試與失敗標記。",
+    "速度、品質、「跑得動／跑不動」：本站沒有實測，官方頁也沒有給這個工作的數字；表格只抄標籤頁的大小、上下文視窗、輸入與能力列，不寫好壞，也不寫哪台電腦放得下。",
+    "Claude Code 沙盒的設定鍵（sandbox.filesystem.denyRead、excludedCommands）與沙盒內連 localhost 的限制（Sandboxing 頁：By default, a sandboxed command can't connect directly to a server that's running on your machine outside the sandbox）：第二輪把 Sandboxing 頁補成第 12 條 source，正文只寫它支援的平台與原生 Windows 不經沙盒，callout 寫權限規則的路徑會併進沙盒設定；excludedCommands 依協調者決定不採用、不寫；連 localhost 的限制沒有寫，正文改成 Claude Code 這條路的前提是「腳本不在沙盒裡執行」，已經涵蓋。設定步驟仍指向《Claude Code｜權限與 Sandbox 邊界實驗》。",
+    "Codex 的 codex exec：查核時把 Non-interactive mode 頁補進 sources（codex exec 的提示詞參數、-o、需在 Git 儲存庫裡執行）。第二輪依同一節的 Override this check with codex exec --skip-git-repo-check 把正文改成「預設要在 Git 儲存庫裡執行」，旗標本身不寫（字數上限，且《codex exec 與腳本整合》用 git init 滿足檢查）。--sandbox workspace-write 與 sandbox_workspace_write.network_access 讀過但沒有寫：Codex 這條路由你先跑腳本、codex exec 只讀 out。codex exec 預設唯讀沙盒那一句記在 verified_facts，正文不寫，因為本文的 Codex 範例改用 permission profile。",
+    "兩個批次同時跑：官方頁沒有寫，是這支範例程式自己的行為。第二輪用假的 urlopen 讓兩個行程同時跑七封虛構信：每封都被兩個行程各問一次、兩個行程各自印 done=6、failed.txt 出現重複的一行；結果檔這次都能解析（後寫的蓋掉先寫的），但不能據此保證不會寫壞。正文只寫「同一時間只跑一批（本文的建議），否則會重複處理同一封信」，claude -p 的提示詞加上「上一次結束才跑下一次」。",
+    "Windows 上的 PowerShell 工具：Tools reference 寫它在 Windows 上多半預設開啟、開啟時是 Claude 的主要 shell，而 Bash 規則不管 PowerShell 工具，所以第二輪在 --allowedTools 多放一條同型的 PowerShell 規則，正文一句帶過；PowerShell 工具的其他細節（執行原則、PowerShell 7 的偵測）與本文無關，沒有寫。",
+    "urllib 會依 HTTP_PROXY 等環境變數走代理伺服器：範例只檢查 OLLAMA_URL 的主機名，沒有處理代理設定；這不在 sources 的任何一頁，正文已寫明這道檢查只是範例的粗略防呆，沒有另寫。",
+    "Ollama FAQ 的 OLLAMA_NO_CLOUD=1、keep_alive 預設五分鐘、OLLAMA_NUM_PARALLEL 預設 1、佇列滿時回 503：讀過，與這支腳本的主題相鄰，但來源上限八條放不下，且《Ollama 入門》已經寫了關閉雲端功能；正文沒有寫。",
+    "Ollama 上下文頁的預設上下文（依顯示記憶體 4k、32k、256k）與 64000 token 建議：腳本的每一封信都很短，正文只指向 Ollama 的上下文頁，不引用數字。",
+    "三個標籤頁今天都沒有列出任何帶 cloud 字樣的標籤（對頁面文字搜尋 cloud，三頁都是零筆）；這是當天頁面的狀態，不是官方宣告，所以正文只寫「下表只抄本機標籤」。",
+    "Claude Code 的 --bare、--permission-prompts none、--output-format：與這篇的資料邊界無關，--bare 還不使用訂閱登入，留給《Claude Code｜非互動執行與 JSON 輸出》。",
+    "Codex 的 permission profile 的 network 與 features.network_proxy 設定：Codex 這條路的 codex exec 只讀 out，不需要網路，所以沒有寫。",
+    "模型卡授權、供應商端點、GLM 與 DeepSeek 目前 API 世代的標籤：屬於同一組的家族篇，這篇表格只列本機標籤。",
+    "Ollama FAQ 的 OLLAMA_NO_CLOUD 與 disable_ollama_cloud：Cloud 頁最後一句指向它，但《Ollama 入門：Windows、Mac 安裝與第一個模型》已經寫了關閉雲端功能，本文只寫腳本自己的位址與標籤檢查。"
+  ],
+  "must_not_write": [
+    "「加了 Read deny 就讀不到 inbox」：官方權限頁寫 deny 規則不適用於自己開檔的腳本，也不適用於不指名檔案的 grep -r；正文一律寫成護欄、不是邊界。",
+    "「Codex 的文件沒有擋讀取的設定」：Permissions 頁有 beta 的 permission profile 能對路徑標 deny；正文改寫它的範圍（只管沙盒裡的指令）與限制（不能與 --sandbox 併用、原生 Windows 的例外）。",
+    "在 codex exec 的 profile 設定下再加 --sandbox：官方頁寫兩者不能併用，帶了 --sandbox 就改用舊設定。",
+    "速度、品質、省不省錢、哪個家族比較準、哪台電腦跑得動。",
+    "教人把 Ollama 開到區域網路或公網，或把 OLLAMA_URL 指到別台機器。",
+    "表格或正文把 :cloud 標籤當成本機標籤列出。",
+    "結構化輸出與 thinking 同時使用時的行為（文件沒有寫）。",
+    "沒有出處的逾時或批次數字：120 秒與每批 20 封都明講是本文自己選的示範值；Bash 的兩分鐘與十分鐘只照 Claude Code 文件寫。",
+    "讓雲端代理自動去讀 failed.txt 列出的原信：那是你決定資料能不能出門，不是腳本決定。",
+    "訂閱、購買、價格與方案比較；Claude Code 接非 Claude 模型或第三方路由。",
+    "重複說明「本站沒有實測」：全篇只在第二段導言說一次。",
+    "把腳本「標籤以 cloud 結尾就停下」寫成資料不出門的保證：Ollama 的 Cloud 頁寫直接呼叫 ollama.com 的 API 時名字不帶 cloud，所以範例同時檢查位址是不是 localhost 或 127.0.0.1，正文也寫明那是範例自己的防呆，不是官方的判定方法。",
+    "把「沙盒會一起擋住腳本」寫成無條件：權限頁寫沙盒套用在 Bash 等指令與其子行程，也提到有不在沙盒裡執行的指令（被排除的指令）；正文寫成「代理在沙盒裡執行的腳本」。Codex 一側同理寫成「由 Codex 在沙盒裡執行的腳本」。",
+    "用 Sandboxing 頁的 excludedCommands 讓 local_batch.py 在沙盒外執行：協調者第二輪決定不採用、不寫。",
+    "把沙盒寫成 Windows 讀者照做就有的保護：Sandboxing 頁寫原生 Windows 上指令不經沙盒，要用就在 WSL2 裡跑 Claude Code；正文凡是提到沙盒的地方都要讓 Windows 讀者看得到這件事。",
+    "說兩個批次同時跑一定會把結果檔寫壞：離線實證只看到重複處理與 failed.txt 的重複行，沒有看到寫壞的檔。"
+  ],
+  "editorial_brief": "這篇講「代理執行腳本、腳本問本機模型、代理只讀結果檔」這一種接法的實作：一支只用標準函式庫的 local_batch.py，加上兩個工具各自擋住原始資料夾的官方做法。重點放在官方文件寫明的範圍與限制：Claude Code 的 Read deny 不管自己開檔的腳本，Codex 的 permission profile 管在你電腦上、沙盒裡執行的指令（由 Codex 在沙盒裡執行的腳本也在內），所以兩條路的安排不同。本機模型只在表格裡列三個家族的本機標籤，與《本機去識別化、雲端收尾》分工：那篇講 Python 用 base_url 切換本機與雲端，這篇講雲端那一側是 Claude Code 或 Codex。",
+  "code_samples": [
+    {
+      "label": "local_batch.py：逐封問本機 Ollama、照 schema 回答、失敗標記（只用標準函式庫）",
+      "language": "python",
+      "lines": 78,
+      "compiled_on": "2026-10-03",
+      "checked_against": [
+        "https://docs.python.org/3/library/http.client.html",
+        "https://docs.ollama.com/api/chat",
+        "https://docs.ollama.com/capabilities/structured-outputs",
+        "https://docs.python.org/3/library/urllib.request.html",
+        "https://docs.python.org/3/library/urllib.error.html",
+        "https://docs.python.org/3/library/json.html",
+        "https://docs.python.org/3/library/pathlib.html",
+        "https://docs.python.org/3/library/exceptions.html",
+        "https://docs.python.org/3/library/socket.html",
+        "https://docs.ollama.com/cloud",
+        "https://docs.python.org/3/library/urllib.parse.html",
+        "https://docs.python.org/3/library/sys.html"
+      ]
+    },
+    {
+      "label": ".claude/settings.json：擋掉 Read 工具讀 inbox 資料夾（Claude Code 專案設定）",
+      "language": "json",
+      "lines": 7,
+      "compiled_on": "2026-10-03",
+      "checked_against": [
+        "https://code.claude.com/docs/en/permissions"
+      ]
+    },
+    {
+      "label": "config.toml：Codex 的 permission profile，對 inbox 標 deny（beta，放在 Codex 的設定目錄）",
+      "language": "toml",
+      "lines": 7,
+      "compiled_on": "2026-10-03",
+      "checked_against": [
+        "https://learn.chatgpt.com/docs/permissions"
+      ]
+    },
+    {
+      "label": "兩個代理的呼叫指令（需要已安裝 Claude Code 與 Codex）",
+      "language": "bash",
+      "lines": 6,
+      "compiled_on": "2026-10-03",
+      "checked_against": [
+        "https://code.claude.com/docs/en/cli-reference",
+        "https://code.claude.com/docs/en/headless",
+        "https://learn.chatgpt.com/docs/non-interactive-mode",
+        "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+        "https://code.claude.com/docs/en/permissions",
+        "https://code.claude.com/docs/en/tools-reference"
+      ]
+    }
+  ],
+  "code_checks": [
+    {
+      "claim": "headless 頁示範 claude -p 加 --allowedTools。",
+      "url": "https://code.claude.com/docs/en/headless",
+      "verbatim_quote": "claude -p \"Find and fix the bug in auth.py\" --allowedTools \"Read,Edit,Bash\""
+    },
+    {
+      "claim": "headless 頁示範用重新導向把 claude -p 的輸出寫成檔案。",
+      "url": "https://code.claude.com/docs/en/headless",
+      "verbatim_quote": "cat build-error.txt | claude -p 'concisely explain the root cause of this build error' > output.txt"
+    },
+    {
+      "claim": "urlopen 的簽名含 timeout。",
+      "url": "https://docs.python.org/3/library/urllib.request.html",
+      "verbatim_quote": "urllib.request.urlopen(url, data=None, [timeout, ]*, context=None)"
+    },
+    {
+      "claim": "timeout 的單位是秒。",
+      "url": "https://docs.python.org/3/library/urllib.request.html",
+      "verbatim_quote": "The optional timeout parameter specifies a timeout in seconds for blocking operations like the connection attempt"
+    },
+    {
+      "claim": "urlopen 回傳可當 context manager 用的物件。",
+      "url": "https://docs.python.org/3/library/urllib.request.html",
+      "verbatim_quote": "This function always returns an object which can work as a context manager"
+    },
+    {
+      "claim": "Request 的簽名含 data、headers、method。",
+      "url": "https://docs.python.org/3/library/urllib.request.html",
+      "verbatim_quote": "class urllib.request.Request(url, data=None, headers={}, origin_req_host=None, unverifiable=False, method=None)"
+    },
+    {
+      "claim": "Request 的 method 有給就用它；沒給時有 data 就是 POST。",
+      "url": "https://docs.python.org/3/library/urllib.request.html",
+      "verbatim_quote": "The default is 'GET' if data is None or 'POST' otherwise."
+    },
+    {
+      "claim": "URLError 是 OSError 的子類別（except OSError 涵蓋連不上與 HTTP 錯誤）。",
+      "url": "https://docs.python.org/3/library/urllib.error.html",
+      "verbatim_quote": "It is a subclass of OSError."
+    },
+    {
+      "claim": "HTTPError 是 URLError 的子類別。",
+      "url": "https://docs.python.org/3/library/urllib.error.html",
+      "verbatim_quote": "Though being an exception (a subclass of URLError)"
+    },
+    {
+      "claim": "socket.timeout 是 TimeoutError 的別名，也是 OSError 的子類別。",
+      "url": "https://docs.python.org/3/library/socket.html",
+      "verbatim_quote": "A deprecated alias of TimeoutError. A subclass of OSError,"
+    },
+    {
+      "claim": "json.load 可讀二進位檔案物件。",
+      "url": "https://docs.python.org/3/library/json.html",
+      "verbatim_quote": "A .read()-supporting text file or binary file containing the JSON document to be deserialized."
+    },
+    {
+      "claim": "json.JSONDecodeError 是 ValueError 的子類別。",
+      "url": "https://docs.python.org/3/library/json.html",
+      "verbatim_quote": "Subclass of ValueError with the following additional attributes"
+    },
+    {
+      "claim": "UnicodeError 是 ValueError 的子類別（讀檔解碼失敗會被 except ValueError 接住）。",
+      "url": "https://docs.python.org/3/library/exceptions.html",
+      "verbatim_quote": "It is a subclass of ValueError."
+    },
+    {
+      "claim": "json.dumps 的 ensure_ascii 預設為 True；腳本寫結果檔時改成 False。",
+      "url": "https://docs.python.org/3/library/json.html",
+      "verbatim_quote": "ensure_ascii=True, check_circular=True"
+    },
+    {
+      "claim": "Path.glob、Path.mkdir(exist_ok)、Path.exists 的簽名。",
+      "url": "https://docs.python.org/3/library/pathlib.html",
+      "verbatim_quote": "Path.mkdir(mode=0o777, parents=False, exist_ok=False)"
+    },
+    {
+      "claim": "Path.read_text 與 Path.write_text 的 encoding 參數。",
+      "url": "https://docs.python.org/3/library/pathlib.html",
+      "verbatim_quote": "Path.write_text(data, encoding=None, errors=None, newline=None)"
+    },
+    {
+      "claim": "Path.open 的 mode 與 encoding 參數（附加寫入失敗名單）。",
+      "url": "https://docs.python.org/3/library/pathlib.html",
+      "verbatim_quote": "Path.open(mode='r', buffering=-1, encoding=None, errors=None, newline=None)"
+    },
+    {
+      "claim": "PurePath.stem 是不含副檔名的檔名。",
+      "url": "https://docs.python.org/3/library/pathlib.html",
+      "verbatim_quote": "The final path component, without its suffix:"
+    },
+    {
+      "claim": "urlparse 的簽名（腳本用它取出 OLLAMA_URL 的主機名，寫法與第 16 篇 ai-workflow-agent-local-mcp-tool 一致）。",
+      "url": "https://docs.python.org/3/library/urllib.parse.html",
+      "verbatim_quote": "urllib.parse.urlparse(urlstring, scheme=None, allow_fragments=True)"
+    },
+    {
+      "claim": "結果的 hostname 屬性是小寫的主機名，所以 LOCALHOST 也會被當成 localhost。",
+      "url": "https://docs.python.org/3/library/urllib.parse.html",
+      "verbatim_quote": "Host name (lower case)"
+    },
+    {
+      "claim": "sys.exit 傳字串時印到 stderr、結束碼 1（腳本拒絕非本機位址或 cloud 標籤時就是這樣結束）。",
+      "url": "https://docs.python.org/3/library/sys.html",
+      "verbatim_quote": "any other object is printed to stderr and results in an exit code of 1."
+    },
+    {
+      "claim": "http.client.HTTPException 是這個模組其他例外的基底類別，只是 Exception 的子類別、不是 OSError：連線中途斷掉的 IncompleteRead、BadStatusLine 原本不會被 except OSError 接住（第二輪離線實證腳本會中止），所以 except 加上它。",
+      "url": "https://docs.python.org/3/library/http.client.html",
+      "verbatim_quote": "The base class of the other exceptions in this module. It is a subclass of Exception."
+    },
+    {
+      "claim": "IncompleteRead 是 HTTPException 的子類別（讀回應本文時連線斷掉）。",
+      "url": "https://docs.python.org/3/library/http.client.html",
+      "verbatim_quote": "exception http.client.IncompleteRead¶ A subclass of HTTPException."
+    },
+    {
+      "claim": "RemoteDisconnected 同時是 ConnectionResetError（OSError）與 BadStatusLine 的子類別，所以修改前就會被 except OSError 接住（離線實證一致）。",
+      "url": "https://docs.python.org/3/library/http.client.html",
+      "verbatim_quote": "A subclass of ConnectionResetError and BadStatusLine."
+    }
+  ],
+  "hero_label": "代理只讀結果檔",
+  "diagram": {
+    "layout": "flow",
+    "title": "雜務交給本機模型",
+    "caption": "由左到右：inbox 裡的信由腳本讀取，腳本逐封問本機的 Ollama 並把結果寫成 out 裡的 JSON，Claude Code 或 Codex 只讀結果檔再寫報告（2026 年 10 月查證官方文件）。",
+    "nodes": [
+      [
+        "原始信件",
+        "inbox 裡的 txt 檔"
+      ],
+      [
+        "腳本逐封問",
+        "本機模型回 JSON"
+      ],
+      [
+        "結果檔",
+        "out 裡的 JSON"
+      ],
+      [
+        "代理讀結果",
+        "寫出報告檔"
+      ]
+    ]
+  },
+  "fetch_log": {
+    "user_agent": "Mokaair-editorial",
+    "note": "Every URL below answered HTTP 200 on the date in checked_on; bytes are the downloaded size. docs.ollama.com, code.claude.com and developers.openai.com pages were read as Markdown (.md suffix); ollama.com and docs.python.org pages as HTML with tags removed, whitespace collapsed, entities unescaped.",
+    "pages": [
+      {
+        "url": "https://docs.ollama.com/api/chat",
+        "http": 200,
+        "bytes": 20480
+      },
+      {
+        "url": "https://docs.ollama.com/capabilities/structured-outputs",
+        "http": 200,
+        "bytes": 5328
+      },
+      {
+        "url": "https://ollama.com/library/qwen3.5/tags",
+        "http": 200,
+        "bytes": 241546
+      },
+      {
+        "url": "https://ollama.com/library/glm-4.7-flash/tags",
+        "http": 200,
+        "bytes": 33078
+      },
+      {
+        "url": "https://ollama.com/library/deepseek-r1/tags",
+        "http": 200,
+        "bytes": 137067
+      },
+      {
+        "url": "https://code.claude.com/docs/en/permissions",
+        "http": 200,
+        "bytes": 78480
+      },
+      {
+        "url": "https://code.claude.com/docs/en/tools-reference",
+        "http": 200,
+        "bytes": 76884
+      },
+      {
+        "url": "https://developers.openai.com/codex/permissions",
+        "http": 200,
+        "bytes": 38356
+      },
+      {
+        "url": "https://code.claude.com/docs/en/cli-reference",
+        "http": 200,
+        "bytes": 46824
+      },
+      {
+        "url": "https://code.claude.com/docs/en/headless",
+        "http": 200,
+        "bytes": 32189
+      },
+      {
+        "url": "https://developers.openai.com/codex/noninteractive",
+        "http": 200,
+        "bytes": 14843
+      },
+      {
+        "url": "https://docs.python.org/3/library/urllib.request.html",
+        "http": 200,
+        "bytes": 216512
+      },
+      {
+        "url": "https://docs.python.org/3/library/urllib.error.html",
+        "http": 200,
+        "bytes": 24667
+      },
+      {
+        "url": "https://docs.python.org/3/library/json.html",
+        "http": 200,
+        "bytes": 112740
+      },
+      {
+        "url": "https://docs.python.org/3/library/pathlib.html",
+        "http": 200,
+        "bytes": 268011
+      },
+      {
+        "url": "https://docs.python.org/3/library/exceptions.html",
+        "http": 200,
+        "bytes": 144074
+      },
+      {
+        "url": "https://docs.python.org/3/library/socket.html",
+        "http": 200,
+        "bytes": 308424
+      },
+      {
+        "url": "https://code.claude.com/docs/en/sandboxing",
+        "http": 200,
+        "bytes": 92057
+      },
+      {
+        "url": "https://docs.python.org/3/library/http.client.html",
+        "http": 200,
+        "bytes": 98890
+      }
+    ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-10-04",
+    "method": "Every source re-fetched with curl -sL -A Mokaair-editorial (HTML and the official .md export where offered; UTC date of the fetch 2026-10-03, Taipei 2026-10-04). Title, description, intro, summary, every paragraph, the table, callout, list, FAQ answers, image caption and the four code blocks split into about 170 claims and matched to the page text. Each verbatim_quote matched against its own url only (HTML tags removed to the empty string, entities unescaped, whitespace collapsed; .md with backticks and escapes removed): 77 of 77 facts and the 2 remaining headless checks found; the 19 Python checks matched on docs.python.org. local_batch.py run offline with urllib.request.urlopen replaced by a fake (ten fictional letters, no network): skip of finished letters, one retry, failed.txt, the per-run limit and the printed counts behave as the prose says; the new host guard rejects a LAN address and ollama.com and accepts localhost and 127.0.0.1.",
+    "verdict": "ok",
+    "edits_to_the_pack": [
+      "local_batch.py: added a host check, written as in article 16 (urllib.parse.urlparse(...).hostname must be localhost or 127.0.0.1) next to the cloud-suffix check. Offline proof first: with OLLAMA_URL=https://ollama.com and a name without 'cloud', the draft sent the fictional letter to https://ollama.com/api/chat through the fake urlopen; the revised script stops before any request. Ollama's Cloud page says a direct call to ollama.com uses a model name without 'cloud'. 79 lines.",
+      "Summary 2, the model paragraph and FAQ 2: now 'connects to a local address and the tag has no cloud', described as the sample's own rough check, not an official test; the model paragraph cites the new Ollama Cloud source.",
+      "Summary 3, the deny-scope paragraph, the callout, Codex list item 1 and FAQ 6: 'the sandbox blocks the script too' narrowed to a script the agent runs inside the sandbox (permissions page: sandboxing applies to Bash, PowerShell and Monitor commands and their child processes; excluded commands run unsandboxed).",
+      "Commands paragraph: the reason the batch call is allowed was a non sequitur (the trailing ' *' also matching the bare command); now '* stands for any text' plus the bare-command rule.",
+      "Commands paragraph: added what -o writes and that codex exec has to run inside a Git repository (Non-interactive mode page).",
+      "Codex list item 2: added that a sandbox_mode in any loaded config file also switches Codex back to the older settings.",
+      "FAQ 5: changing LOCAL_MODEL alone does not retry letters listed in failed.txt; the lines must be removed first (offline run confirms).",
+      "Structured-outputs paragraph: 'recommends temperature 0' -> 'recommends lowering temperature, e.g. 0' (page: Lower the temperature (e.g., set it to 0)).",
+      "Description: Codex permission profile marked (beta).",
+      "Summary 5 and the timeout paragraph: 'the agent's Bash tool' -> 'Claude Code's Bash tool' (only Claude Code's docs give the two-minute default).",
+      "Sources: added docs.ollama.com/cloud, code.claude.com/docs/en/cli-reference and learn.chatgpt.com/docs/non-interactive-mode (eleven allowed); developers.openai.com/codex/permissions answers 308 to learn.chatgpt.com/docs/permissions, so the URL was updated in both files.",
+      "Length trims without dropping a qualifier (paragraphs 2,941 -> 2,996): repeated 'fake personal data' after 'fictional', 'last thing:', the commands paragraph's opening sentence, 'does not rely on this file'.",
+      "Pack rewritten with LF line endings (the draft had CRLF)."
+    ],
+    "checked_and_correct": [
+      "Read deny scope (item 1 of the brief): permissions page text matches every clause, including grep -r pattern . and a Python or Node script that opens files itself.",
+      "Bash timeout (item 2): two minutes out of the box, ten-minute ceiling, foreground commands moved to the background instead of stopped unless they start with sleep, and with -p background commands end shortly after the final result.",
+      "Codex Permissions (item 3): Beta label, deny denies reads and writes, profiles govern sandboxed commands, no composing with --sandbox or sandbox_mode, native Windows unelevated caveat; every toml key (default_permissions, [permissions.<name>], extends = ':read-only', filesystem.':workspace_roots' with a relative subpath = 'deny') is on the page.",
+      "claude -p and never-trusted folders: project permissions.allow 'Not used', deny and ask unaffected.",
+      "Structured output and thinking together: neither /api/chat nor Structured Outputs says anything (the Thinking page outside sources does not either).",
+      "Table: every tag, size, context, input and capability row matches today's three tag pages; no cloud tag on any of them.",
+      "Result file name out/<stem>.json matches article 16.",
+      "No-measurement rule: one 'no testing' sentence in intro 2, none in title or description, no speed, quality or hardware verdicts, no pasted output; 120 s and 20 letters marked as the article's own numbers.",
+      "Must-link articles: no contradiction; codex-exec-scripting uses --sandbox read-only while this article omits --sandbox because of the profile, and the paragraph says why."
+    ],
+    "left_for_the_owner": [
+      "Claude Code's sandbox does not run on native Windows (Sandboxing page); the article points to the sandbox lab for 'which systems' but does not say it itself, because the eleven-source cap is used.",
+      "The Sandboxing page shows excludedCommands running one Python script outside the sandbox; that would let a sandboxed Claude Code session run local_batch.py with inbox denied to everything else. Not written: it is a design choice and the page is not in sources."
+    ],
+    "code_recompiled": [
+      {
+        "label": "local_batch.py：逐封問本機 Ollama、照 schema 回答、失敗標記（只用標準函式庫）",
+        "result": "ok"
+      },
+      {
+        "label": ".claude/settings.json：擋掉 Read 工具讀 inbox 資料夾（Claude Code 專案設定）",
+        "result": "ok"
+      },
+      {
+        "label": "config.toml：Codex 的 permission profile，對 inbox 標 deny（beta，放在 Codex 的設定目錄）",
+        "result": "ok"
+      },
+      {
+        "label": "兩個代理的呼叫指令（需要已安裝 Claude Code 與 Codex）",
+        "result": "ok"
+      }
+    ],
+    "second_round": {
+      "checked_on": "2026-10-04",
+      "rechecked": "All twelve sources re-fetched with curl -sL -A Mokaair-editorial (UTC 2026-10-03; HTTP 200, HTML and .md bodies are the documents). Every sentence the first round wrote or rewrote (summary 2, 3 and 5, the description's beta label, the model paragraph, FAQ 2, 4, 5 and 6, the deny-scope paragraph, the callout, Codex list items 1-3, the commands paragraph, the temperature sentence and the host guard in local_batch.py) re-read against its page; all 77 first-round verbatim quotes and the 12 added in this round found on their own url (tags removed to the empty string, entities unescaped, whitespace collapsed; .md with backticks and escapes removed); each flag in the bash block (-p, --allowedTools, the Bash and PowerShell rules, codex exec with one prompt argument, -o) has a fact. Random third of the first round's checked-and-correct list (seeded): Bash timeout, the table's 25 cells, out/<stem>.json against article 16, the six must-link articles; all hold (the qwen3.5 tag page now says 66 models, which the prose does not state). local_batch.py: compile() and py_compile ok, 78 lines; run offline with urllib.request.urlopen replaced by a fake, fictional letters, no network.",
+      "edits": [
+        "local_batch.py: except now also catches http.client.HTTPException (import http.client). Offline proof first: a fake urlopen whose response raises http.client.IncompleteRead, or one raising BadStatusLine, stopped the old script with a traceback, no failed.txt and the remaining letters unprocessed; RemoteDisconnected was already caught (it is a ConnectionResetError). Now each goes through the retry and into out/failed.txt and the batch continues.",
+        "local_batch.py: the cloud check is now '\"cloud\" in MODEL' instead of MODEL.endswith('cloud'), so the code does what summary 2, the model paragraph and FAQ 2 say ('the tag has no cloud'); offline, qwen3.5:cloud-experimental passed before and is refused now. Article 16 still uses endswith.",
+        "local_batch.py: the Request call folded onto two lines and 'MODEL =os' spaced; 79 -> 78 lines, so 'under 80 lines' in the description and intro stays true with the added import.",
+        "Sources: added https://code.claude.com/docs/en/sandboxing as the twelfth (cap 12). Deny-scope paragraph: 'how to turn on the sandbox and which systems it runs on, see the sandbox lab' -> the page's own sentence (runs on macOS, Linux and WSL2; on native Windows commands run unsandboxed) plus the lab for setup. Summary 3 carries the native-Windows clause.",
+        "Callout: the sandbox clause now says why the script is blocked (permissions page: paths from permission rules are merged into the final sandbox configuration, so with the sandbox on the article's Read deny also blocks a sandboxed local_batch.py) and that on native Windows the second step rests on the deny rule alone, which is a guardrail.",
+        "Commands paragraph: the Claude Code route's precondition 'the sandbox does not block inbox' -> 'the script does not run inside the sandbox' (with the sandbox on, the article's own Read deny is merged into it).",
+        "Commands paragraph and bash block: Tools reference says the PowerShell tool (preview) is on by default on Windows for claude.ai and Console accounts and is then Claude's primary shell, and a Bash rule does not cover it; --allowedTools now also lists \"PowerShell(python local_batch.py *)\" (permissions page: same shape as Bash rules), with one clause in the paragraph and a comment in the block.",
+        "Commands paragraph: 'codex exec has to run inside a Git repository' -> 'by default' (same section: Override this check with codex exec --skip-git-repo-check if you're sure the environment is safe).",
+        "Timeout paragraph, FAQ 4 and the claude -p prompt: 'run one batch at a time' marked as the article's advice, because a timed-out foreground command is moved to the background, not stopped. Offline proof: two processes over the same seven letters each asked the model for every letter, each printed done=6, and failed.txt got the same line twice; result files still parsed. FAQ 4 'just run it again' -> 'make sure the previous batch has ended, then run it again'.",
+        "Timeout paragraph: '120 seconds is our own number, there is no official recommendation' -> 'only this article's example' (the negation went beyond the pages read).",
+        "Codex list item 3: added that elevated sandboxing is the strongest on native Windows and unelevated is the fallback (Permissions page).",
+        "Other-sizes paragraph: glm-4.7-flash 'also q4_K_M, q8_0, bf16 at 19, 32, 60 GB' -> 'also q8_0 and bf16 at 32 and 60 GB' (q4_K_M is the same digest as latest, already in the table).",
+        "Length (paragraphs 2,996 -> 2,986; body text kept under the 6,000 lint guideline) without dropping a qualifier: a repeated 'the answer is in message.content' sentence, a repeated 'the first argument is the batch size', 'deny outranks allow' folded into 'allow cannot carve an exception out of deny', a repeated 'under claude -p', two transitions, and two half-clauses in FAQ 2."
+      ],
+      "verdict": "ok"
+    }
+  }
+}

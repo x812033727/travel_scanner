@@ -14,10 +14,10 @@
   "locales": {
     "zh-TW": {
       "title": "多模型 AI 工作流教學：從拆任務到串接不同模型",
-      "description": "這個系列教的是怎麼把一件工作拆開、分別交給合適的模型，再把結果接回同一條流程：判斷該不該拆、拆給誰，換供應商不改程式，設計便宜先試的路由與級聯，讓模型之間用結構化輸出交接資料，再到多個代理式工具怎麼分工、同一套工具怎麼給多個客戶端共用，以及上線後怎麼追蹤與防護。一般使用者可以從判斷該不該拆的觀念讀起，已經會寫 Python 的人能直接進到換供應商、寫路由與交接資料的幾篇。",
+      "description": "這個系列教的是怎麼把一件工作拆開、交給合適的模型，再把結果接回同一條流程：判斷該不該拆、拆給誰，換供應商不改程式，設計便宜先試的路由與級聯，讓模型之間用結構化輸出交接資料，再到代理式工具怎麼分工、同一套工具怎麼給多個客戶端共用、Claude Code 與 Codex 怎麼搭本機模型，以及上線後怎麼追蹤與防護。一般使用者可以從判斷該不該拆的觀念讀起，已經會寫 Python 的人能直接進到換供應商、寫路由與交接資料的幾篇。",
       "hero": {
         "src": "/guides/ai-workflow-tutorials/hero.jpg",
-        "alt": "原創插圖：一張書桌中央延伸出四條路徑，分別通往觀念、接線、協作與工具、營運四個標示牌，代表這個系列的四條路線",
+        "alt": "原創插圖：一個對話框分出幾條線，各接到一個不同的模型，結果再匯回同一張卡片並打上勾，代表把一件工作拆給不同模型、再接回同一條流程",
         "width": 1600,
         "height": 900,
         "credit": {
@@ -28,11 +28,11 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "把一件工作拆開、分別交給不同模型、再把結果接回同一條流程，中間牽涉到好幾個問題：這件事該不該拆、要拆給誰、不同供應商的模型要怎麼接在同一支程式裡、模型之間怎麼交接資料與互相審查，以及流程正式上線之後要怎麼追蹤與防護。這個系列把這幾個問題，依照從觀念到動手接線、再到長期營運的順序，一篇一篇拆開講清楚。"
+          "text": "把一件工作拆開、分別交給不同模型、再把結果接回同一條流程，中間牽涉到好幾個問題：這件事該不該拆、要拆給誰、不同供應商的模型要怎麼接在同一支程式裡、模型之間怎麼交接資料與互相審查，以及流程正式上線之後要怎麼追蹤與防護。這個系列把這幾個問題，依照從觀念到動手接線、再到長期營運的順序，一篇一篇拆開講清楚；另有一節專講 Claude Code、Codex 這類代理工具怎麼搭配自己電腦上的本機模型。"
         },
         {
           "type": "paragraph",
-          "text": "一般使用者可以先從觀念的幾篇看起，弄懂一次對話、可重跑的流程與自己決定下一步的代理三個層次有什麼差別，以及把工作拆給多個模型有哪些依據與代價；已經會寫 Python 與命令列的人，可以直接跳進接線的幾篇，學怎麼用同一支程式換供應商、設計便宜先試的路由與級聯、讓模型之間用結構化輸出交接資料。讀完整個系列，你會有一套判斷什麼時候該拆、依什麼依據拆、拆完怎麼接起來、怎麼量成本與抓錯，以及上線後怎麼防止流程自己失控的完整想法，不只是學會單一工具的操作。"
+          "text": "一般使用者可以先從觀念的幾篇看起，弄懂一次對話、可重跑的流程與自己決定下一步的代理三個層次有什麼差別，以及把工作拆給多個模型有哪些依據與代價；已經會寫 Python 與命令列的人，可以直接跳進接線的幾篇，學怎麼用同一支程式換供應商、設計便宜先試的路由與級聯、讓模型之間用結構化輸出交接資料；已經在用 Claude Code 或 Codex、想接上自己電腦上的模型的人，可以從搭本機模型的那一節開始。讀完整個系列，你會有一套判斷什麼時候該拆、依什麼依據拆、拆完怎麼接起來、怎麼量成本與抓錯，以及上線後怎麼防止流程自己失控的完整想法，不只是學會單一工具的操作。"
         },
         {
           "type": "summary",
@@ -40,7 +40,8 @@
             "這個系列從一件工作該不該拆、依什麼依據拆講起，再把成本、品質與延遲三個量分開衡量，比較單一旗艦、級聯與並行互審幾種架構的代價。",
             "接線的幾篇說明怎麼用同一支程式換掉底層供應商、怎麼設計便宜先試、貴的兜底的路由與級聯，以及模型之間交接資料時怎麼用結構化輸出驗證格式。",
             "協作與工具的部分談規劃、執行、審查怎麼分給不同的代理式命令列工具，同一支 MCP 伺服器怎麼同時給多個客戶端共用，以及同一支程式怎麼把會碰到原始個資的步驟留在本機、乾淨的文字才交給雲端模型收尾。",
-            "營運的部分處理讓多個模型互相審查、替每一步留下可查的追蹤紀錄，以及擋住重試迴圈、fan-out 費用爆炸與代理間輸出被誤用這幾種常見失控。"
+            "營運的部分處理讓多個模型互相審查、替每一步留下可查的追蹤紀錄，以及擋住重試迴圈、fan-out 費用爆炸與代理間輸出被誤用這幾種常見失控。",
+            "代理工具搭本機模型的部分，先講接法怎麼選，再分清楚 GLM、Qwen、DeepSeek 的標籤哪些能下載到自己電腦、哪些其實在雲端，接著是把雜務交給本機模型的批次腳本與 MCP 工具、把代理整個換成本機模型，最後收成一張開工前的檢查清單。"
           ]
         },
         {
@@ -240,12 +241,86 @@
           ]
         },
         {
+          "type": "heading",
+          "level": 2,
+          "text": "搭本機模型：代理工具的接法、標籤與檢查清單"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Claude Code、Codex 這類代理工具要怎麼搭配自己電腦上的本機模型，這一節各篇的步驟都來自官方文件，本站沒有實測。要先決定怎麼接，《"
+            },
+            {
+              "type": "article",
+              "text": "Claude Code、Codex 搭本機模型：兩種接法怎麼選",
+              "kind": "life",
+              "slug": "ai-workflow-agent-local-two-routes"
+            },
+            {
+              "type": "text",
+              "text": "》不需要寫程式，依資料能不能出門、上下文開得夠不夠長、工作的類型，在代理照常連雲端、把雜務交給本機模型，與把代理的模型整個換成本機模型之間選出接法，並對照 Anthropic、Ollama、LM Studio 與 OpenAI 的官方文件怎麼寫，包括 Anthropic 的文件對把 Claude Code 接到非 Claude 模型的說法。選好接法之後，要分清楚名字相同的模型到底跑在哪裡，《"
+            },
+            {
+              "type": "article",
+              "text": "GLM、Qwen、DeepSeek 接上 Claude Code 與 Codex：哪些在本機、哪些其實在雲端",
+              "kind": "life",
+              "slug": "ai-workflow-agent-glm-qwen-deepseek"
+            },
+            {
+              "type": "text",
+              "text": "》逐家看 GLM、Qwen、DeepSeek 在 Ollama 的標籤哪些能下載到自己電腦、哪些只有 :cloud，也整理供應商自己的端點怎麼接 Claude Code 與 Codex，每一處都標明資料會送到哪裡，讓你不會把 :cloud 標籤或供應商端點誤當成本機。要讓雲端代理把大量雜務交給本機模型，《"
+            },
+            {
+              "type": "article",
+              "text": "讓 Claude Code、Codex 把大量雜務交給本機模型：一支 Python 腳本",
+              "kind": "life",
+              "slug": "ai-workflow-agent-local-batch-script"
+            },
+            {
+              "type": "text",
+              "text": "》示範把一批文字檔交給一支 Python 腳本，由腳本逐檔問本機的 Ollama 模型、照 JSON schema 回答並寫成結果檔，代理只讀結果，也寫了 Claude Code 的 deny 規則與 Codex 的 permission profile（文件標示為 beta）各擋得住原始檔到什麼程度，以及逾時、分批與失敗標記。同樣的事也能做成工具，《"
+            },
+            {
+              "type": "article",
+              "text": "把本機模型包成 MCP 工具，Claude Code 與 Codex 共用一支伺服器",
+              "kind": "life",
+              "slug": "ai-workflow-agent-local-mcp-tool"
+            },
+            {
+              "type": "text",
+              "text": "》把本機模型包成一支 stdio 的 MCP 伺服器，Claude Code 與 Codex 各登記一次就能共用，並列出兩邊逾時的官方預設值差在哪裡、輸出量又各怎麼管。如果想讓整個代理都改用本機模型，《"
+            },
+            {
+              "type": "article",
+              "text": "把 Claude Code、Codex 整個換成本機模型：Ollama 與 LM Studio 設定與還原",
+              "kind": "life",
+              "slug": "ai-workflow-agent-local-engine"
+            },
+            {
+              "type": "text",
+              "text": "》寫出 Ollama 與 LM Studio 的指令、這兩家文件建議的上下文長度、怎麼用 /status 確認 Claude Code 現在連到的是誰，以及用完怎麼還原。動手之前，《"
+            },
+            {
+              "type": "article",
+              "text": "Claude Code、Codex 搭本機模型的注意事項：開工前的檢查清單",
+              "kind": "life",
+              "slug": "ai-workflow-agent-local-checklist"
+            },
+            {
+              "type": "text",
+              "text": "》把前面各篇的坑收成一張表，每一項只問一句怎麼檢查，讓你能逐項核對資料有沒有離開電腦、現在連的是誰、上下文開了多長與結果怎麼驗收。"
+            }
+          ]
+        },
+        {
           "type": "image",
           "src": "/guides/ai-workflow-tutorials/diagram-1.svg",
-          "alt": "流程圖：觀念、接線、協作與工具、營運四條路線各自要解決的問題",
+          "alt": "流程圖：觀念、接線、協作與工具、營運、搭本機模型各條路線各自要解決的問題",
           "width": 1600,
           "height": 900,
-          "caption": "觀念、接線、協作與工具、營運四條路線各自要解決的問題（查證：2026 年 9 月）",
+          "caption": "觀念、接線、協作與工具、營運、搭本機模型，各條路線各自要解決的問題（查證：2026 年 10 月）",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair"
@@ -318,9 +393,39 @@
               "營運",
               "失敗案例與防護：迴圈、費用爆炸與代理間注入",
               "替重試迴圈設步數與預算上限，替規劃輸出加 schema 驗證，把模型輸出當資料而非指令"
+            ],
+            [
+              "搭本機模型",
+              "Claude Code、Codex 搭本機模型：兩種接法怎麼選",
+              "依資料能不能出門、上下文開得夠不夠長、工作的類型，選出要讓代理連雲端、雜務交給本機，還是整個換成本機模型"
+            ],
+            [
+              "搭本機模型",
+              "GLM、Qwen、DeepSeek 接上 Claude Code 與 Codex：哪些在本機、哪些其實在雲端",
+              "分辨 GLM、Qwen、DeepSeek 的標籤哪些能下載到自己電腦、哪些只有 :cloud，並知道供應商端點的設定與資料會送到哪裡"
+            ],
+            [
+              "搭本機模型",
+              "讓 Claude Code、Codex 把大量雜務交給本機模型：一支 Python 腳本",
+              "寫一支只用標準函式庫的 Python 腳本逐檔問本機模型、代理只讀結果，並設好代理讀原始檔的規則、逾時、分批與失敗標記"
+            ],
+            [
+              "搭本機模型",
+              "把本機模型包成 MCP 工具，Claude Code 與 Codex 共用一支伺服器",
+              "寫一支 stdio MCP 伺服器，把本機模型包成只回分類結果與結果檔路徑的工具，在 Claude Code 與 Codex 各登記一次並設好逾時與輸出上限"
+            ],
+            [
+              "搭本機模型",
+              "把 Claude Code、Codex 整個換成本機模型：Ollama 與 LM Studio 設定與還原",
+              "照 Ollama 與 LM Studio 的官方指令把代理整個接到本機模型，確認上下文與 Claude Code 現在連到誰，用完再還原"
+            ],
+            [
+              "搭本機模型",
+              "Claude Code、Codex 搭本機模型的注意事項：開工前的檢查清單",
+              "動手前照一張表逐項核對資料、憑證、標籤是不是 :cloud、上下文、逾時與輸出量和驗收，並知道每一項詳見哪一篇"
             ]
           ],
-          "caption": "各篇文章的路線與重點（查證：2026 年 9 月）"
+          "caption": "各篇文章的路線與重點（查證：2026 年 10 月）"
         },
         {
           "type": "callout",
@@ -342,6 +447,10 @@
             {
               "question": "接線的幾篇和協作與工具的幾篇，差別在哪裡？",
               "answer": "接線的幾篇講的是在自己的程式裡把不同供應商的模型串起來：換掉 base_url、金鑰與 model 字串就連到別家模型，往上疊一層便宜先試、貴的兜底的路由與級聯，再用 JSON Schema 把交接的資料驗證過才送給下游。協作與工具的幾篇則是現成的代理式命令列工具怎麼分規劃、執行、審查三個角色，同一支 MCP 伺服器怎麼同時登記進多個客戶端，以及哪一段留在自己的電腦上、換成代號的乾淨文字才交給雲端模型收尾。"
+            },
+            {
+              "question": "想讓 Claude Code 或 Codex 搭本機模型，要從哪一篇開始讀？",
+              "answer": "先讀講兩種接法怎麼選的那一篇，它不需要寫程式，會依資料能不能出門、上下文開得夠不夠長、工作的類型，幫你在代理照常連雲端、把雜務交給本機模型，與把代理的模型整個換成本機模型之間選出接法。選好之後，要把大量雜務交給本機模型，就讀批次腳本與 MCP 工具那幾篇；要整個換成本機模型，就讀 Ollama 與 LM Studio 設定與還原那一篇；GLM、Qwen、DeepSeek 的標籤哪些能下載到自己電腦、哪些其實在雲端，看講這幾個家族的那一篇；開工之前，再用檢查清單逐項核對。"
             }
           ]
         }
@@ -350,32 +459,32 @@
         {
           "title": "Building effective agents",
           "url": "https://www.anthropic.com/engineering/building-effective-agents",
-          "checked_on": "2026-09-19"
+          "checked_on": "2026-10-03"
         },
         {
           "title": "OpenAI Agents SDK",
           "url": "https://openai.github.io/openai-agents-python/",
-          "checked_on": "2026-09-19"
+          "checked_on": "2026-10-03"
         },
         {
           "title": "What is the Model Context Protocol (MCP)?",
           "url": "https://modelcontextprotocol.io/docs/getting-started/intro",
-          "checked_on": "2026-09-19"
+          "checked_on": "2026-10-03"
         },
         {
           "title": "Structured model outputs",
-          "url": "https://platform.openai.com/docs/guides/structured-outputs",
-          "checked_on": "2026-09-19"
+          "url": "https://developers.openai.com/api/docs/guides/structured-outputs",
+          "checked_on": "2026-10-03"
         },
         {
           "title": "LiteLLM Docs",
           "url": "https://docs.litellm.ai/docs/",
-          "checked_on": "2026-09-19"
+          "checked_on": "2026-10-03"
         },
         {
           "title": "Working with evals",
-          "url": "https://platform.openai.com/docs/guides/evals",
-          "checked_on": "2026-09-19"
+          "url": "https://developers.openai.com/api/docs/guides/evals",
+          "checked_on": "2026-10-03"
         }
       ]
     }

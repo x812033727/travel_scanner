@@ -180,7 +180,8 @@ test("source names and paths are fixed and symlink routes are refused", () => {
   assert.throws(() => readAnimeSourceFiles("/tmp"), /checked-in/);
   temporary((directory) => {
     const alias = path.join(directory, "borrowed-dawn");
-    symlinkSync(SOURCE_DIRECTORY, alias, "dir");
+    symlinkSync(SOURCE_DIRECTORY, alias, process.platform === "win32" ? "junction" : "dir");
+    assert.equal(fs.lstatSync(alias).isSymbolicLink(), true);
     assert.throws(() => readAnimeSourceFiles(alias), /checked-in/);
   });
   const files = clone();
@@ -200,7 +201,8 @@ test("a symlink entry in the canonical source pack is rejected before opening it
   temporary((directory) => {
     const entry = path.join(SOURCE_DIRECTORY, "setting.json");
     const alias = path.join(directory, "setting.json");
-    symlinkSync(entry, alias, "file");
+    symlinkSync(process.platform === "win32" ? SOURCE_DIRECTORY : entry, alias, process.platform === "win32" ? "junction" : "file");
+    assert.equal(fs.lstatSync(alias).isSymbolicLink(), true);
     // Supply the actual symlink metadata without mutating another PR's frozen pack.
     const saved = fs.lstatSync;
     fs.lstatSync = (filename, ...args) => saved(filename === entry ? alias : filename, ...args);
@@ -250,7 +252,8 @@ test("CLI is offline, creates only a review file, refuses overwrites and write a
       for (const option of ["--apply", "--activate", "--approve", "--endpoint", "--token"]) assert.equal(main([option, "forbidden"], streams), 1);
       assert.equal(main(["--out", path.join(ROOT, "forbidden-draft.json")], streams), 1);
       const alias = path.join(directory, "repo-alias");
-      symlinkSync(ROOT, alias, "dir");
+      symlinkSync(ROOT, alias, process.platform === "win32" ? "junction" : "dir");
+      assert.equal(fs.lstatSync(alias).isSymbolicLink(), true);
       assert.equal(main(["--out", path.join(alias, "forbidden-draft.json")], streams), 1);
     });
   } finally { globalThis.fetch = oldFetch; }
