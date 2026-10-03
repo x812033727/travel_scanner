@@ -14,7 +14,7 @@ DreamerV3：單一設定在 150 多種任務勝過專門方法（2023 年 v1 的
 
 ## LeCun 的路線
 
-立場論文；作者在序言說不是傳統意義的技術或學術論文｜https://openreview.net/forum?id=BZ5a1r-kVsf｜2026-10-03｜OpenReview 對本環境回瀏覽器驗證頁（403），改讀 Wayback 快照 web/20230228171808id_/https://openreview.net/pdf?id=BZ5a1r-kVsf（Version 0.9.2, 2022-06-27），pdftotext 讀全文
+立場論文；作者在序言說不是傳統意義的技術或學術論文｜https://openreview.net/forum?id=BZ5a1r-kVsf｜2026-10-03｜OpenReview 對本環境回瀏覽器驗證頁（403），改讀 Wayback 快照 web/20230228171808id_/https://openreview.net/pdf?id=BZ5a1r-kVsf（Version 0.9.2, 2022-06-27），pdftotext 讀全文；verify-2 時 Wayback 連線全被重設，改讀 Internet Archive 項目 archive.org/details/a-path-towards-autonomous-machine-intelligence 的 PDF（SHA-1 775f42ed458b8c5b0f2094ea4ff5b64c557b1a34，與 Semantic Scholar 這篇的 paper ID 相同；首頁 Version 0.9.2, 2022-06-27）
 世界模型是架構中最複雜的模組：補上感知沒提供的狀態、預測可能的未來（含依動作序列的結果）；在抽象表示空間預測、須能表示多種可能，因世界並不完全可預測｜https://openreview.net/forum?id=BZ5a1r-kVsf｜2026-10-03｜同上，第 3 節
 JEPA 是非生成式架構，兩個編碼分支，預測器從 x 的表示預測 y 的表示；岔路口例子（位置、方向、速度等特徵，原文是 "position, orientation, velocity and other characteristics"，所以正文不寫「只記」；忽略樹木與人行道紋理；潛在變數決定左或右）｜https://openreview.net/forum?id=BZ5a1r-kVsf｜2026-10-03｜同上，第 4.4 節與圖 12
 地毯紋理、風中樹葉、水面漣漪無法長期準確預測；JEPA 可選擇忽略不易預測的細節，直接生成 y 的模型則否｜https://openreview.net/forum?id=BZ5a1r-kVsf｜2026-10-03｜同上，第 4.5 節
@@ -22,27 +22,28 @@ V-JEPA 2（FAIR at Meta，2025）：網路影片預訓練；用不到 62 小時�
 
 ## 生成式互動環境
 
-Genie（Google DeepMind，2024）：用無標註網路影片無監督訓練；可用文字、合成圖片、照片、草圖提示；學出潛在動作，使用者可逐格操作｜https://arxiv.org/abs/2402.15391｜2026-10-03｜arXiv 摘要頁 200，PDF 第 1 頁確認單位與日期
-Genie 3 於 2025 年 8 月 5 日發表；依文字提示生成可即時探索的世界，一致性維持數分鐘；視覺記憶可回溯約一分鐘｜https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/｜2026-10-03｜curl 200，去標籤讀全文
+Genie（Google DeepMind，2024）：用無標註網路影片無監督訓練；以一張圖片當第一格提示，可以是照片、手繪草圖或文字生圖模型產生的圖片（摘要寫 "described through text"，但第 4 節與圖 10 的做法是先用文字生圖模型產生圖片，所以正文不寫「提示可以是文字」）；學出潛在動作，使用者可逐格操作｜https://arxiv.org/abs/2402.15391｜2026-10-03｜arXiv 摘要頁 200，PDF 第 1 頁確認單位與日期，第 4 節與圖 10 確認提示方式
+Genie 3 於 2025 年 8 月 5 日發表；依文字提示生成可即時探索的世界，一致性維持數分鐘；視覺記憶最多回溯約一分鐘（"visual memory extending as far back as one minute ago"，正文不寫「記得細節」）｜https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/｜2026-10-03｜curl 200，去標籤讀全文
 逐格（自迴歸）生成比生成整段影片更難維持一致，因誤差隨時間累積｜https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/｜2026-10-03｜同上，Environmental consistency over a long horizon 段
 限制：代理可直接執行的動作有限、多代理互動難模擬、無法精準重現真實地點、文字呈現、連續互動只支援數分鐘｜https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/｜2026-10-03｜同上，Limitations 段
 官方把世界模型稱為通往 AGI 的重要一步｜https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/｜2026-10-03｜同上（"World models are also a key stepping stone on the path to AGI"）
-OpenAI 2024 年 2 月 15 日技術報告題為 Video generation models as world simulators；報告寫明模型無法準確模擬許多基本互動的物理，例如玻璃碎裂｜https://openai.com/index/video-generation-models-as-world-simulators/｜2026-10-03｜官網對本環境回 403；改讀 Wayback 快照 web/20260926091256id_/（gzip 解壓後去標籤）
+（已刪除，verify-2）OpenAI 2024 年 2 月 15 日技術報告 Video generation models as world simulators 的玻璃碎裂一句：官網對 curl 與 WebFetch 都回 403，web.archive.org 今天每次連線都被重設，讀不到任何一手副本，正文與來源都拿掉｜https://openai.com/index/video-generation-models-as-world-simulators/｜2026-10-03｜verify-1 讀過 Wayback web/20260926091256id_/；verify-2 只能從 archive.org 的 wayback/available API 確認該快照存在（狀態 200），內容無法再讀
 
 ## 大型語言模型有沒有世界模型
 
-Othello-GPT：GPT 變體只用棋局走法訓練，事先不知道規則；非線性探針可讀出棋盤狀態，線性探針效果差；干預內部活化值改變一格後，預測的合法棋步隨之改變（ICLR 2023）｜https://arxiv.org/abs/2210.13382｜2026-10-03｜arXiv 摘要頁 200，全文 v5 PDF 第 3、4 節
-Gurnee 與 Tegmark：在 Llama-2 系列（正文寫「開放權重語言模型」，不寫型號）找到空間與時間的線性表示；作者稱具備世界模型的基本成分，仍需進一步研究｜https://arxiv.org/abs/2310.02207｜2026-10-03｜arXiv 摘要頁 200
-Vafa 等（NeurIPS 2024）：用紐約計程車逐段轉向序列訓練 transformer；下一步幾乎都合法、常找到最短路線；還原的曼哈頓地圖有方向不可能的街道；加入繞道後表現下滑；棋類與邏輯謎題也有類似落差｜https://arxiv.org/abs/2406.03689｜2026-10-03｜arXiv 摘要頁 200，全文 v3 PDF 第 1、3 節與表 2
+Othello-GPT：GPT 變體只用黑白棋走法訓練，事先不知道規則；以黑／白／空三類去讀時，非線性探針可讀出棋盤狀態，線性探針錯誤率都在 20% 以上（表 1、表 2）；干預內部活化值改變一格後，預測的合法棋步隨之改變（ICLR 2023）｜https://arxiv.org/abs/2210.13382｜2026-10-03｜arXiv 摘要頁 200，全文 v5 PDF 第 3、4 節與圖 2
+Nanda、Lee、Wattenberg：改用「我方／對方」（my colour vs opponent's colour）來讀，Othello-GPT 的棋盤狀態可由線性探針讀出｜https://arxiv.org/abs/2309.00941｜2026-10-03｜arXiv 摘要頁 200，全文 v2 PDF 摘要、第 1 與第 3 節
+Gurnee 與 Tegmark（ICLR 2024）：在 Llama-2 與 Pythia（正文寫「開放權重語言模型」，不寫型號）找到空間與時間的線性表示；空間是世界、美國、紐約地名的經緯度，時間是歷史人物卒年、藝術與娛樂作品發表日期、新聞標題日期（正文寫「人物、作品、新聞年代」）；作者稱具備世界模型的基本成分，也說這種時空表示本身不構成動態因果的世界模型、仍需進一步研究｜https://arxiv.org/abs/2310.02207｜2026-10-03｜arXiv 摘要頁 200，全文 v3 PDF 摘要與第 1 節
+Vafa 等（NeurIPS 2024）：用紐約計程車逐段轉向序列訓練 transformer；下一步幾乎都合法、常找到最短路線；還原的曼哈頓地圖和真實街道相去甚遠，有方向不可能的街道與高架跨越；加入繞道後表現下滑；邏輯謎題與用冠軍賽棋譜訓練的黑白棋模型也有同樣落差，用合成棋局訓練的黑白棋模型則兩項指標都好、繞道下仍近乎完美｜https://arxiv.org/abs/2406.03689｜2026-10-03｜arXiv 摘要頁 200，全文 v3 PDF 第 1、3、4 節與表 2
 
 ## 編輯紀錄
 
 - 圖解上的數字只有 2026（製圖年份），正文第二段有「資料截至 2026 年 10 月」。
 - 掃地機器人是自編示例，正文已標「示例（假想情境，未實測）」；圖解沿用同一示例。
 - 用語：policy 寫「策略」（Google 機器學習詞彙表繁中版寫「政策」，本系列強化學習篇的指派用「策略」，跟系列一致）；representation 寫「表示」；activation 寫「活化值」；probe 寫「探針」並附英文。
-- 正文不寫 Genie 3 的影格率與解析度（官方有公開，但屬產品規格快照），也不寫 Sora 以外的產品名。
-- 讀過但沒用的來源：Genie 2 官方文章（https://deepmind.google/discover/blog/genie-2-a-large-scale-foundation-world-model/，curl 200，為字數刪去）、Nanda 等 arXiv:2309.00941（線性表示，為字數刪去）、MuZero arXiv:1911.08265、I-JEPA arXiv:2301.08243。
-- 字數用 app.guides.pack_ingest._body_length 實算：2,624（查核修改後，原為 2,598）。
+- 正文不寫 Genie 3 的影格率與解析度（官方有公開，但屬產品規格快照），也不寫產品名。
+- 讀過但沒用的來源：Genie 2 官方文章（https://deepmind.google/discover/blog/genie-2-a-large-scale-foundation-world-model/，curl 200，為字數刪去）、MuZero arXiv:1911.08265、I-JEPA arXiv:2301.08243。Nanda 等 arXiv:2309.00941 在 verify-2 補回正文。
+- 字數用 app.guides.pack_ingest._body_length 實算：2,600（verify-2 後；verify-1 後為 2,624，原為 2,598）。
 
 ## 查核（verify-1，2026-10-03）
 
