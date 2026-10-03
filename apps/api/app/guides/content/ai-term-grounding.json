@@ -7,6 +7,7 @@
     "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
   "locales": {
@@ -17,7 +18,12 @@
         "src": "/guides/ai-term-grounding/hero.jpg",
         "alt": "一個對話框的三行文字，各有細線連到文件上的一行，其中一份文件被放大鏡檢視",
         "width": 1600,
-        "height": 900
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
       },
       "blocks": [
         {
@@ -30,8 +36,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "先分清楚：同一個詞，三種用法"
+          "text": "先分清楚：同一個詞，三種用法",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -65,8 +71,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "產品裡的接地怎麼運作"
+          "text": "產品裡的接地怎麼運作",
+          "level": 2
         },
         {
           "type": "rich_paragraph",
@@ -93,8 +99,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "有引用，不等於有支持"
+          "text": "有引用，不等於有支持",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -116,8 +122,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "示例：核對一個報名日期"
+          "text": "示例：核對一個報名日期",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -143,12 +149,18 @@
           "alt": "三句示例回答各連到來源 A 或來源 B：第一句完整支持，第二句只有部分支持，第三句文字相符但來源是未標更新日期的轉貼，需要再查",
           "width": 1600,
           "height": 900,
-          "caption": "示例的逐句核對：先看這句話被來源支持到哪裡，再看來源是否可靠。"
+          "caption": "示例的逐句核對：先看這句話被來源支持到哪裡，再看來源是否可靠。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "與 RAG、幻覺、知識截止日的關係"
+          "text": "與 RAG、幻覺、知識截止日的關係",
+          "level": 2
         },
         {
           "type": "rich_paragraph",
@@ -209,8 +221,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "其他用法：符號、影像與對話"
+          "text": "其他用法：符號、影像與對話",
+          "level": 2
         },
         {
           "type": "paragraph",

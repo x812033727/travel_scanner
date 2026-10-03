@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
 <title id="title">Levels of AGI：兩個軸量能力，自主性另算 / Levels of AGI</title>
-<desc id="desc">左側是表現與通用程度的矩陣：表現由低到高分為 Level 1 Emerging、Level 2 Competent（具備該技能成年人的第 50 百分位以上）、Level 3 Expert（第 90 百分位以上）、Level 4 Exceptional（第 99 百分位以上）、Level 5 Superhuman（勝過 100% 的人）；窄 AI 是範圍明確的任務，每一級都可能出現，通用欄由低到高為 Emerging AGI、Competent AGI、Expert AGI、Exceptional AGI，最高一格是超級智慧 ASI。右側另列自主性 0 到 5 級：沒有 AI、工具、顧問、協作者、專家、代理；能力只解鎖較高的自主性，不決定該用哪一級。</desc>
+<desc id="desc">左側是表現與通用程度的矩陣：表現由低到高分為 Level 1 Emerging、Level 2 Competent（具備該技能成年人的第 50 百分位以上）、Level 3 Expert（第 90 百分位以上）、Level 4 Exceptional（第 99 百分位以上）、Level 5 Superhuman（勝過 100% 的人）；窄 AI 是範圍明確的任務，每一級都可能出現，通用欄由低到高為 Emerging AGI、Competent AGI、Expert AGI、Exceptional AGI，最高一格是超級智慧 ASI。右側另列自主性 0 到 5 級：沒有 AI、工具、顧問、協作者、專家、代理；窄與通用兩欄下方以括號相連，箭頭指向自主性：兩欄的能力提升都可能解鎖較高的自主性，但不決定該用哪一級。</desc>
 <rect width="1600" height="900" fill="#F7F1E8"/>
-<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0D6B68"/></marker></defs>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0D6B68"/></marker></defs>
 <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">Levels of AGI：兩個軸量能力，自主性另算</text>
 <text x="60" y="84" font-size="18" fill="#5C6B6B">Levels of AGI: performance x generality, with autonomy kept separate</text>
 <text x="250" y="128" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">表現（深度）</text>
@@ -42,8 +42,9 @@
 <text x="935" y="693" font-size="26" font-weight="700" fill="#102A2B" text-anchor="middle">Emerging AGI</text>
 <text x="60" y="790" font-size="22" font-weight="700" fill="#0D6B68">窄與通用差在範圍，不差在強弱</text>
 <text x="60" y="822" font-size="19" fill="#5C6B6B">一個系統可橫跨幾格，模型文件宜逐項標示</text>
-<text x="1131" y="452" font-size="18" fill="#5C6B6B" text-anchor="middle">解鎖</text>
-<path d="M 1100 472 L 1160 472" fill="none" stroke="#0D6B68" stroke-width="5" marker-end="url(#arrow)"/>
+<path d="M 452 744 L 452 758 L 1088 758 L 1088 744" fill="none" stroke="#0D6B68" stroke-width="4" stroke-linejoin="round"/>
+<path d="M 1088 758 L 1126 758 L 1126 460 L 1164 460" fill="none" stroke="#0D6B68" stroke-width="5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="770" y="788" font-size="20" text-anchor="middle"><tspan font-weight="700" fill="#0D6B68">解鎖</tspan><tspan fill="#5C6B6B">：兩欄的能力提升，都可能讓較高的自主性變得可行</tspan></text>
 <text x="1345" y="128" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">自主性（Autonomy）</text>
 <text x="1345" y="158" font-size="18" fill="#5C6B6B" text-anchor="middle">人機互動方式，另一條軸</text>
 <rect x="1170" y="200" width="350" height="80" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>

@@ -7,6 +7,7 @@
     "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
   "locales": {
@@ -17,7 +18,12 @@
         "src": "/guides/ai-term-knowledge-cutoff/hero.jpg",
         "alt": "左側五排方塊由深到淺逐漸變淡，一條紅色虛線之後只剩空白的虛線方塊，一支放大鏡罩住其中一塊並讓它亮起",
         "width": 1600,
-        "height": 900
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
       },
       "blocks": [
         {
@@ -45,8 +51,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "供應商怎麼標示截止日"
+          "text": "供應商怎麼標示截止日",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -58,8 +64,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "為什麼越接近截止日，越不牢靠"
+          "text": "為什麼越接近截止日，越不牢靠",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -79,12 +85,18 @@
           "alt": "時間軸分成三段：較早的事件資料較完整、接近截止日的資料可能較少且版本混雜、截止日之後模型沒有訓練到；下方三條補救路徑把資料送進上下文視窗，旁邊標出各自的失敗點",
           "width": 1600,
           "height": 900,
-          "caption": "截止日不是一條銳利的線；不更動模型本身的話，補救只能把內容放進上下文視窗，來源本身也可能過期。"
+          "caption": "截止日不是一條銳利的線；不更動模型本身的話，補救只能把內容放進上下文視窗，來源本身也可能過期。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "示範：問一件截止日之後才發生的事"
+          "text": "示範：問一件截止日之後才發生的事",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -105,8 +117,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "它和過期資訊、幻覺差在哪"
+          "text": "它和過期資訊、幻覺差在哪",
+          "level": 2
         },
         {
           "type": "rich_paragraph",
@@ -129,8 +141,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "補救：附上資料、檢索與搜尋工具"
+          "text": "補救：附上資料、檢索與搜尋工具",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -197,8 +209,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "使用時怎麼檢查"
+          "text": "使用時怎麼檢查",
+          "level": 2
         },
         {
           "type": "list",
