@@ -1,0 +1,102 @@
+{
+  "slug": "ai-term-neural-network",
+  "status": "verified",
+  "checked_on": "2026-10-03",
+  "sources": [
+    {
+      "url": "https://doi.org/10.1037/h0042519",
+      "title": "Rosenblatt 1958：The Perceptron（Psychological Review 65(6)，頁 386–408）",
+      "access": "DOI 對 curl 回 403；全文讀 Wayback 快照 20260307062446 的 https://www.ling.upenn.edu/courses/cogs501/Rosenblatt1958.pdf（id_ 原始檔），pdftotext",
+      "claims": [
+        "感知器被描述為假設的神經系統或機器，目的是說明智慧系統的基本性質，不深陷特定生物體常屬未知的條件",
+        "感知器有感測、聯想、反應三群單元，學習靠正負強化改變單元的值",
+        "Rosenblatt 自述：要辨認刺激之間的關係時，問題對感知器極難"
+      ]
+    },
+    {
+      "url": "https://www.nature.com/articles/323533a0",
+      "title": "Rumelhart、Hinton、Williams 1986：Learning representations by back-propagating errors（Nature 323，頁 533–536）",
+      "access": "nature.com 頁面 curl 200（摘要）；全文讀作者網站掃描 PDF https://www.cs.toronto.edu/~hinton/absps/naturebp.pdf，轉 PNG 目視",
+      "claims": [
+        "感知器的特徵分析器連線事先固定，不是真正會學的隱藏單元；反向傳播讓隱藏單元學出任務的重要特徵",
+        "損失 E = ½ ΣΣ (y − d)²、前向傳遞與反向傳遞、連鎖律"
+      ]
+    },
+    {
+      "url": "https://www.nature.com/articles/nature14539",
+      "title": "LeCun、Bengio、Hinton 2015：Deep learning（Nature 521，頁 436–444）",
+      "access": "nature.com 頁面 curl 200（摘要與參考文獻）；全文讀作者網站 PDF https://www.cs.toronto.edu/~hinton/absps/NatureDeepReview.pdf，pdftotext",
+      "claims": [
+        "反向傳播的想法在 1970 至 1980 年代被多組人各自發現",
+        "ReLU 在多層網路通常學得比平滑非線性快（2015 年的敘述）",
+        "隨機梯度下降每次用一小批樣本估計梯度；測試集量泛化能力",
+        "深度學習＝疊起簡單非線性模組、由資料學出各層表示的表示學習"
+      ]
+    },
+    {
+      "url": "https://link.springer.com/article/10.1007/BF02551274",
+      "title": "Cybenko 1989：Approximation by superpositions of a sigmoidal function（Math. Control Signals Systems 2，頁 303–314）",
+      "access": "curl 200，只讀摘要與引用中繼資料",
+      "claims": [
+        "單一隱藏層、連續 sigmoid 型非線性的前饋網路，以有限個單元的組合可把單位超立方體上的連續函數逼近到任意精度（表達能力的存在性結果）"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1706.03762",
+      "title": "Vaswani 等人 2017：Attention Is All You Need（arXiv:1706.03762）",
+      "access": "curl 200（摘要頁）；架構細節讀 https://arxiv.org/pdf/1706.03762，pdftotext",
+      "claims": [
+        "Transformer 是完全建立在注意力機制上的網路架構",
+        "每層含自注意力子層與位置別的全連接前饋網路，由兩個線性轉換夾一個 ReLU；原論文實驗為機器翻譯與句法分析"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/machine-learning/crash-course/neural-networks",
+      "title": "Google Machine Learning Crash Course：Neural networks（單元總覽）",
+      "access": "curl 200，擷取文字",
+      "claims": [
+        "神經網路是設計來找出資料中非線性模式的模型架構家族"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/machine-learning/crash-course/neural-networks/nodes-hidden-layers",
+      "title": "Google Machine Learning Crash Course：Nodes and hidden layers",
+      "access": "curl 200，擷取文字",
+      "claims": [
+        "只加隱藏層而無激活函數，網路仍是線性的",
+        "隱藏層單元稱神經元；參數（權重加偏差）的計數方法"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/machine-learning/crash-course/neural-networks/activation-functions",
+      "title": "Google Machine Learning Crash Course：Activation functions",
+      "access": "curl 200，擷取文字",
+      "claims": [
+        "線性運算接線性運算仍是線性；sigmoid、tanh、ReLU；教材仍建議從 ReLU 開始"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/machine-learning/crash-course/neural-networks/backpropagation",
+      "title": "Google Machine Learning Crash Course：Training using backpropagation",
+      "access": "curl 200，擷取文字",
+      "claims": [
+        "反向傳播讓梯度下降能用在多層網路；梯度消失、爆炸與 ReLU 單元失效等失敗情形"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/machine-learning/glossary",
+      "title": "Google Machine Learning Glossary（neural network、deep model、neuron、weight、parameter、backpropagation 條目）",
+      "access": "curl 200，擷取條目文字",
+      "claims": [
+        "神經網路＝至少一個隱藏層的模型；深度模型＝隱藏層多於一層",
+        "神經元＝加權加總再過激活函數，並說它「模仿」腦中神經元的行為",
+        "訓練是決定權重，推論是用學好的權重做預測",
+        "參數＝訓練中學到的權重與偏差；學習率是超參數"
+      ]
+    }
+  ],
+  "aliases": ["Neural Network", "NN", "ANN", "人工神經網路", "類神經網路", "神經網絡"],
+  "existing_overlap": "ai-term-deep-learning、ai-term-model-parameters、ai-term-machine-learning 已各自提到隱藏層、權重與訓練，但用的是照片分類、單一算式與備料預測的例子；本篇的新增是單元與激活函數、感知器到多層網路、雙開關手算與一步更新、參數數不等於神經元數。以站內連結分流，不重複它們的例子。",
+  "running_text_characters": 2500,
+  "notes": "running_text_characters 依 pack_ingest._body_length（含 3 個文內連結的連結文字 21 字；不含連結文字為 2,479）。示例（雙開關燈、一步權重更新、100 個隱藏神經元的參數數）全為手算的教學設定，已用 python3 逐項驗算，未訓練任何網路，也沒有任何模型名、價格、截止日期或模型參數量。來源分歧已並列：Google 術語表要求至少一個隱藏層而感知器中間層連線固定；術語表說神經元模仿腦中神經元，Rosenblatt 說類比但不糾纏於生物條件。Cybenko 只讀摘要，Rosenblatt 與 Rumelhart 等人、LeCun 等人的全文是讀作者／課程網站的副本或 Wayback 快照（見 access）。diagram-1.svg 與 hero.svg 為原創向量圖。"
+}

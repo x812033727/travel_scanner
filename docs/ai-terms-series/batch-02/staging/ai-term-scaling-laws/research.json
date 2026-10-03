@@ -1,0 +1,112 @@
+{
+  "slug": "ai-term-scaling-laws",
+  "status": "verified",
+  "checked_on": "2026-10-03",
+  "sources": [
+    {
+      "url": "https://arxiv.org/abs/2001.08361",
+      "title": "Kaplan et al. 2020, Scaling Laws for Neural Language Models",
+      "access": "web open 2026-10-03: curl -sSL abs page (HTTP 200, v1 2020-01-23) and arxiv.org/pdf full text via pdftotext",
+      "claims": [
+        "Loss on held-out text follows approximate power laws in non-embedding parameters, dataset size and training compute, in the paper's WebText2 setting",
+        "Doubling parameters (data sufficient, trained to convergence) multiplies loss by 2^-0.076 = 0.95",
+        "Compute-efficient allocation N ~ C^0.73, D ~ C^0.27: spend most added budget on a larger model",
+        "Authors state they have no solid theory for the laws and that trust conditions are unclear (Appendix C); flag that loss gains may not carry to language tasks (Section 8)"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2203.15556",
+      "title": "Hoffmann et al. 2022, Training Compute-Optimal Large Language Models (Chinchilla)",
+      "access": "web open 2026-10-03: abs page (HTTP 200, v1 2022-03-29) and full PDF text",
+      "claims": [
+        "Over 400 models trained; model size and training tokens should scale in equal proportion for compute-optimal training",
+        "The paper restates Kaplan's advice as 10x budget -> 5.5x model, 1.8x tokens",
+        "Paper's own hypotheses for the difference: fixed training length and learning-rate schedule in Kaplan, smaller models in Kaplan's runs",
+        "Parametric loss L = E + A/N^a + B/D^b with E read as the entropy of natural text"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2406.12907",
+      "title": "Pearce and Song 2024, Reconciling Kaplan and Chinchilla Scaling Laws (TMLR)",
+      "access": "web open 2026-10-03: abs page (HTTP 200, v3 2024-11-21) and full PDF text",
+      "claims": [
+        "Much of the Kaplan/Chinchilla discrepancy attributed to Kaplan counting non-embedding rather than total parameters, combined with analysis at small scale"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2406.19146",
+      "title": "Porian et al. 2024, Resolving Discrepancies in Compute-Optimal Scaling of Language Models (NeurIPS 2024)",
+      "access": "web open 2026-10-03: abs page (HTTP 200, v4 2025-01-19) and full PDF text",
+      "claims": [
+        "Three factors explain the gap: last-layer compute cost, warmup duration, scale-dependent optimizer tuning; corrected setup agrees with Chinchilla",
+        "Careful learning-rate decay is not essential for the Chinchilla law, contrary to Hoffmann et al.'s hypothesis"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2404.10102",
+      "title": "Besiroglu et al. 2024, Chinchilla Scaling: A replication attempt",
+      "access": "web open 2026-10-03: abs page only (HTTP 200, v2 2024-05-15)",
+      "claims": [
+        "Chinchilla's third (parametric) estimate is inconsistent with its first two methods and has implausibly narrow confidence intervals; the re-derivation is compatible with the first two"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2206.07682",
+      "title": "Wei et al. 2022, Emergent Abilities of Large Language Models (TMLR)",
+      "access": "web open 2026-10-03: abs page (HTTP 200, v2 2022-10-26) and full PDF text",
+      "claims": [
+        "Defines emergent ability as present in larger but not smaller models, hence not predictable by extrapolating small models; near-random performance below a scale, above random after",
+        "Metrics without partial credit are an incomplete explanation because emergence is also seen on classification tasks",
+        "On six BIG-Bench tasks cross-entropy improves where downstream metrics are near random, but this does not explain or predict emergence"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2304.15004",
+      "title": "Schaeffer et al. 2023, Are Emergent Abilities of Large Language Models a Mirage?",
+      "access": "web open 2026-10-03: abs page (HTTP 200, v2 2023-05-22) and full PDF text",
+      "claims": [
+        "Nonlinear or discontinuous metrics create apparent emergence; continuous metrics give smooth predictable change in the cases tested",
+        "More than 92% of BIG-Bench emergent abilities (as annotated in a separate list) appear under Multiple Choice Grade or Exact String Match",
+        "Authors state they do not claim large models cannot show emergent abilities; the independence assumption behind the exact-match model is approximate"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2407.21787",
+      "title": "Brown et al. 2024, Large Language Monkeys: Scaling Inference Compute with Repeated Sampling",
+      "access": "web open 2026-10-03: abs page (HTTP 200, v3 2024-12-30) and full PDF text",
+      "claims": [
+        "Coverage (fraction of problems solved by any sample) grows with sample count over four orders of magnitude, often log-linear",
+        "On MATH with one open-weight model, coverage rises from 82.9% at 100 samples to 98.44% at 10,000 while majority vote or reward-model selection only rises from 40.50% to 41.41%"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2408.03314",
+      "title": "Snell et al. 2024, Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters",
+      "access": "web open 2026-10-03: abs page (HTTP 200, v1 2024-08-06) and full PDF text",
+      "claims": [
+        "Difficulty-adaptive allocation of test-time compute improves efficiency over best-of-N by about 2 to 4x on MATH with models fine-tuned for revision and verification (abstract says more than 4x, section 8 says 2 to 4x)",
+        "FLOPs-matched comparison with a roughly 14x larger model: test-time compute wins on easier questions or low inference load, pretraining wins on hard questions or high inference load; the two are not 1-to-1 exchangeable"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2211.04325",
+      "title": "Villalobos et al., Will we run out of data? Limits of LLM scaling based on human-generated data",
+      "access": "web open 2026-10-03: abs page (HTTP 200, v2 2024-06-04) and first pages of PDF",
+      "claims": [
+        "Estimates the stock of public human text and forecasts training-data demand: a question about data supply, not about the shape of the loss curve (forecast dates deliberately not reported)"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2604.01411",
+      "title": "Roberts et al. 2026, Test-Time Scaling Makes Overtraining Compute-Optimal (preprint, under review)",
+      "access": "web open 2026-10-03: abs page (HTTP 200, v1 2026-04-01) and PDF introduction",
+      "claims": [
+        "When inference cost of repeated sampling is included, the optimal pretraining configuration across eight downstream tasks is a smaller, more overtrained model than Chinchilla prescribes"
+      ]
+    }
+  ],
+  "aliases": ["Scaling Laws", "neural scaling laws", "縮放法則", "規模定律", "Chinchilla scaling"],
+  "existing_overlap": "ai-term-test-time-compute (published) already covers Snell et al. in depth; this article uses Snell and Brown only as the inference-time axis of scaling and links there. ai-term-model-parameters, ai-term-pretraining and ai-term-benchmark are linked, not repeated. No scaling-law article exists in batch 1.",
+  "running_text_characters": 2497,
+  "notes": "Count uses _body_length (paragraphs, rich_paragraph text including 24 characters of article-link text, table cells, callout title and text); 2473 without the link text. The worked example (5-digit answer, per-digit accuracy 50/70/90/95 percent -> 3/17/59/77 percent exact match) is the author's own arithmetic under an independence approximation, labelled illustrative and not measured. Kaplan vs Chinchilla causes come from two layers (Hoffmann's own hypothesis and two 2024 follow-ups) that do not fully agree; the article says so. No model names, prices, cutoffs, leaderboard scores, or model parameter/training quantities. Does not predict whether scaling will hit a wall. Three further 2025-2026 arXiv preprints surfaced by search (2509.23963, 2603.22339, 2608.07222) were read at abstract level only and not used."
+}
