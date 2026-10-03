@@ -30,7 +30,7 @@ publications and zero hub publications. All 32 commits are sealed in the accepte
 journal, with no pending operation and no duplicate publication.
 
 A fresh custom-format database backup passed `pg_restore --list` before deployment.
-The guarded hostinger2 deployment, import, publication, three consecutive service
+The guarded `<saved-session>` deployment, import, publication, three consecutive service
 health checks, actual database/journal acceptance and public browser verification
 completed. Final evidence was staged before the owned deployment hold was cleared.
 The post-clear snapshot confirms the exact clean deployed revision and healthy services.

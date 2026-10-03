@@ -2,8 +2,8 @@
 
 你是**一篇**AI 新聞的撰稿代理。你只負責指派給你的那一個 slug，只寫**兩個檔案**，不 git commit、不動其他任何檔案。
 
-- repo 根目錄（worktree）：`C:\Users\x8120\mokaair\.claude\worktrees\travel-guide-articles-planning-eab8c5`（以下稱 ROOT）
-- 暫存目錄：`C:\Users\x8120\AppData\Local\Temp\claude\C--Users-x8120-mokaair--claude-worktrees-travel-guide-articles-planning-eab8c5\6bc15b49-339e-47bf-9727-38b4d1d65292\scratchpad`（以下稱 SCRATCH）
+- repo 根目錄（worktree）：`<repo>\.claude\worktrees\travel-guide-articles-planning-eab8c5`（以下稱 ROOT）
+- 暫存目錄：`<home>\AppData\Local\Temp\claude\<project-slug>\6bc15b49-339e-47bf-9727-38b4d1d65292\scratchpad`（以下稱 SCRATCH）
 
 ## 0. 先讀（依序，全部都要讀）
 
@@ -83,7 +83,7 @@
 ## 3. 自檢
 
 ```bash
-cd "C:/Users/x8120/mokaair/.claude/worktrees/travel-guide-articles-planning-eab8c5/apps/api" && PYTHONUTF8=1 PYTHONIOENCODING=utf-8 ./.venv/Scripts/python.exe ../../docs/news-2026-batch-4/check_article.py <slug>
+cd "<repo>/.claude/worktrees/travel-guide-articles-planning-eab8c5/apps/api" && PYTHONUTF8=1 PYTHONIOENCODING=utf-8 ./.venv/Scripts/python.exe ../../docs/news-2026-batch-4/check_article.py <slug>
 ```
 
 - 不要用 `uv run`（多個代理同時跑會搶鎖）。不要跑 `pack_cli lint`、`pytest` 或任何會掃整個 content 目錄的指令：其他代理正在同一個目錄寫別篇。不帶 `--full`、不帶 `--assets`。

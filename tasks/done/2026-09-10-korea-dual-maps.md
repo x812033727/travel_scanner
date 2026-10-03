@@ -129,7 +129,7 @@ that production credentials or real Korean routes are available.
 ## Notes
 
 Base daa71684167aafcaea9d1f44505132a0b3ace749. Worktree:
-C:/Users/x8120/.codex/worktrees/korea-dual-maps. Original dirty checkout untouched.
+`<home>/.codex/worktrees/korea-dual-maps`. Original dirty checkout untouched.
 Before claiming, freshly verified PR375,374,383 merged and CIgreen and closed
 their completed code claims only. Blocked site-experience manual acceptance and
 NAVER/business catalog backlogs remain blocked; no production data approved.
@@ -164,7 +164,7 @@ Playwright run and are not retained. Regeneration stopped at a tool-policy
 denial of local Next production-server startup; no startup variants were
 attempted, and the new fixture API process was stopped.
 Two latest production-build E2E screenshots are preserved instead:
-C:/Users/x8120/.codex/visualizations/2026/09/10/korea-dual-maps/
+`<home>/.codex/visualizations/2026/09/10/korea-dual-maps/`
 playwright-fixture-seoul-390.png and playwright-fixture-busan-1280.png.
 These are labelled API/SDK fixture images, not the installed-Chrome evidence
 or proof of live provider operation.

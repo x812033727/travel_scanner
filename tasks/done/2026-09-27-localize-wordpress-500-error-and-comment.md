@@ -54,7 +54,7 @@ commit, then render SVGs and review every locale image.
 ## Notes
 
 Read-only Batch032 inventory:
-`C:\Users\x8120\.codex\article-localization-release\batch032-inventory\batch032-candidate-inventory.json`,
+`<home>\.codex\article-localization-release\batch032-inventory\batch032-candidate-inventory.json`,
 SHA-256 `fa3262b33c0948c125f4a46b93caeade730723d1428ffed0ee8d5d6ccd3a4d73`.
 Published source models at that snapshot: 500-error zh-TW v4
 `e378eec5e25ecaf20a325f248adff3b805ea53fdc87ffc764a11fda157942c83`;
@@ -73,7 +73,7 @@ shows `wordpress-contact-forms` published in all five languages;
 as a same-locale link, while the latter must render as plain text for the four
 target locales. Recheck destination publication before release.
 
-Local validation receipt: `C:\Users\x8120\.codex\article-localization-release\batch032-pair-a\validation.json`,
+Local validation receipt: `<home>\.codex\article-localization-release\batch032-pair-a\validation.json`,
 SHA-256 `6955df72ae1d5216f3dfabb45a2c8e82fd025ce50ef931d7ae2d46a378dd0e75`.
 It confirms eight documents, 24 new assets, six unchanged originals, equal
 block type/order, preserved source URL/check dates and credits, and link policy.

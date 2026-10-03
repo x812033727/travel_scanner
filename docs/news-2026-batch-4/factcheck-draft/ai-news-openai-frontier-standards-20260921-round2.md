@@ -14,7 +14,7 @@
 
 指令一律 `curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'`；
 UA、標頭、查詢字串、暫存檔名都沒有任何人的姓名或 email。原始檔在
-`C:\Users\x8120\mokaair-work\news47\_r2raw\ai-news-openai-frontier-standards-20260921\`（與第一輪的 `_raw\` 分開存放）。
+`<home>\mokaair-work\news47\_r2raw\ai-news-openai-frontier-standards-20260921\`（與第一輪的 `_raw\` 分開存放）。
 
 | # | URL | HTTP | bytes（本輪／第一輪） | 讀到正文？ |
 | --- | --- | --- | --- | --- |
