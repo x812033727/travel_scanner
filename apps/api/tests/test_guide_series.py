@@ -37,7 +37,8 @@ def test_the_ai_workflow_catalogue_is_complete_and_references_are_valid():
     assert catalogue.locale == "zh-TW"
     assert len(catalogue.entries) == 18
     assert [group.id for group in catalogue.groups] == ["A", "B", "C", "D", "E"]
-    assert [path.id for path in catalogue.paths] == ["concepts", "builder", "operator", "agent-local"]
+    paths = [path.id for path in catalogue.paths]
+    assert paths == ["concepts", "builder", "operator", "agent-local"]
     packs = {pack.slug: pack for pack in load_packs()}
     assert catalogue.hub in packs
     for entry in catalogue.entries:
