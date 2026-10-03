@@ -90,6 +90,8 @@ afterEach(() => {
   // jsdom has no clipboard; a test that defines one must not leak it into the fallback test.
   delete (navigator as { clipboard?: unknown }).clipboard;
   window.history.replaceState(null, "", "/");
+  // A test that pins the clock with vi.setSystemTime must not leave the next one living on its day.
+  vi.useRealTimers();
 });
 
 describe("AdminVideoReviews", () => {
@@ -243,6 +245,9 @@ describe("AdminVideoReviews", () => {
   });
 
   it("queues a drama episode from the form, lists the requests and withdraws a queued one", async () => {
+    // A withdrawn request drops off the list a week after it was filed, so the clock is pinned to the
+    // morning of these fixtures; on the wall clock this test went red on 2026-10-03. Only Date is mocked.
+    vi.setSystemTime(new Date("2026-09-26T07:00:00Z"));
     const calls: Array<{ url: string; method: string; body?: unknown }> = [];
     type Row = Record<string, unknown> & { id: string; status: string; created_at: string };
     let requests: Row[] = [
@@ -299,6 +304,30 @@ describe("AdminVideoReviews", () => {
     expect(calls.find((call) => call.method === "DELETE")?.url).toContain("/admin/video-automation/drama-requests/new");
     await waitFor(() => expect(screen.getByRole("region", { name: "發起的漫劇" }).textContent).toContain("已取消"));
     confirm.mockRestore();
+  });
+
+  it("keeps a queued or started request however old, and drops a finished or withdrawn one a week after it was filed", async () => {
+    vi.setSystemTime(new Date("2026-10-10T00:00:00Z"));
+    const base = { title: null, source_guide: null, style_preset: "cinematic-3d", target_minutes: 3, note: null, slug: null, started_at: null, finished_at: null, cancelled_at: null };
+    const requests = [
+      { ...base, id: "a", premise: "精衛填海", status: "queued", created_at: "2026-09-20T00:00:00Z" },
+      { ...base, id: "b", premise: "夸父逐日", status: "started", created_at: "2026-09-20T00:00:00Z" },
+      { ...base, id: "c", premise: "大禹治水", status: "done", created_at: "2026-10-03T00:01:00Z" },
+      { ...base, id: "d", premise: "女媧補天", status: "done", created_at: "2026-10-02T23:59:00Z" },
+      { ...base, id: "e", premise: "后羿射日", status: "cancelled", created_at: "2026-10-02T23:59:00Z" },
+    ];
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.endsWith("/drama-requests")) return Promise.resolve(Response.json({ requests }));
+      if (url.includes("/admin/video-automation/series")) return Promise.resolve(Response.json({ series: [] }));
+      return Promise.resolve(Response.json([]));
+    }));
+    window.history.replaceState(null, "", "/?tab=drama");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const queue = await screen.findByRole("region", { name: "發起的漫劇" });
+    expect(within(queue).getAllByRole("listitem")).toHaveLength(3);
+    for (const premise of ["精衛填海", "夸父逐日", "大禹治水"]) expect(queue.textContent).toContain(premise);
+    for (const premise of ["女媧補天", "后羿射日"]) expect(queue.textContent).not.toContain(premise);
   });
 
   it("shows a languages batch with each part's state and file and the Studio steps, and approves it as uploaded", async () => {
