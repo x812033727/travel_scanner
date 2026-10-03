@@ -116,8 +116,8 @@ Definition of done 的「同一個資料庫連跑兩次」要有 Postgres 才能
   Private PG stop passed; both Windows/Linux55437 listeners and its PID file
   were absent afterward. This verifies localPG18.3, not CI's PG17 image.
 - Receipt SHA256:d5f237d39eb6553e7ccb74289052011dcdf0d090dec86b63c8ccab58c4853926.
-  Evidence:C:/Users/x8120/.codex/tmp/fixed-email-acceptance-20261003/fixed-email-20261003-319b084a/.
+  Evidence:<home>/.codex/tmp/fixed-email-acceptance-20261003/fixed-email-20261003-319b084a/.
   Independent gate/receipt review:
-  C:/Users/x8120/.codex/tmp/fixed-email-archive-gate-20261003/archive-gate-verdict.json.
+  <home>/.codex/tmp/fixed-email-archive-gate-20261003/archive-gate-verdict.json.
 - Archived local acceptance in draft PR1175; no production connection, deployment
   or publication was performed.

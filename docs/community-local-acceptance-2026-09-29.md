@@ -111,3 +111,81 @@ deployment, production browser visit or live community acceptance is implied.
   collections, messaging, pet rules, account recovery and deletion.
 - Separate owner approval and current production verification before launch,
   including policies/contact details, provider setup, budget and moderation staff.
+
+## Real-service matrix prepared, 2026-10-03
+
+The continuation at main `5f1cec5302511ac0c6f7eddffaf5f988a8c95a7d`
+expands the existing `community.spec.ts` journeys to **30 cases**: three
+journeys × five locales (`zh-TW`, `zh-CN`, `en`, `ja`, `ko`) × desktop Chromium
+and Pixel 7. This is source preparation, not a passed browser receipt. The
+current full-stack CI workflow still selects this spec; no workflow, application,
+catalog or production setting is changed by this continuation.
+
+| Journey, each locale and viewport | Real-service checks retained and added |
+| --- | --- |
+| Publishing, private images, collections and messages | Ordinary verified members; an unpublished post/image stays 404; moderation makes the reviewed post visible; public itinerary never contains the private trip note; fork is 201 and repeated reads have no duplicate system roles. A collection created through the UI contains the exact post and another member receives 404. Mutual-follow permission, offline catch-up without reload, idempotent delivery, unfollow 403 and block 404 retain their original assertions. |
+| Reviewed pet rules and trip requirements | Pending places remain 404; an actual administrator reviews the source; unknown species are excluded until explicitly included. A conflicting trip addition needs confirmation, adds once and preserves private notes. A traveller report remains unpublished until review, flags uncertainty without changing the underlying policies, and the post's association resolves to the exact pet place. |
+| SMTP recovery and deletion | Each member receives actual isolated SMTP verification/reset/deletion links in their locale. Reset revokes old sessions, rejects the old password and token replay; deletion revokes sessions and hides the public identity. Existing 401/400/404 assertions remain. |
+
+All ordinary enrollments also assert denial of the admin settings endpoint.
+Selectors use the actual five-language catalogs and the planner's existing copy;
+registration stores the selected locale, and each mail confirmation path is
+checked against it. No synthetic identity or intercepted API response replaces
+these real-service journeys.
+
+Both light and dark themes are checked **within** each of the 30 cases at key
+rendered UI checkpoints, using the normal system-theme preference. Assertions
+check the actual `data-theme`, visible/enabled controls and horizontal overflow.
+Post report dialogs exercise Enter, backward/forward Tab boundaries, Escape and
+focus return in both themes; pet report dialogs also check keyboard opening and
+Escape/focus restoration. Account reset confirmation controls are checked in
+both themes. This is not 60 separately repeated SMTP journeys or a claim that
+every intermediate screen has an independent visual review.
+
+The worker fixture signs into the existing disposable CI administrator with a
+real API request. Only that administrator's context is reused; the pet admin
+browser receives its real cookie storage state. All ordinary members and stale
+sessions remain separate. Setup first requires a loopback site origin and
+explicit `COMMUNITY_E2E=1`; translation is disabled in this isolated community
+setup. No translation endpoint, paid provider, production login or uploader is
+used. The older 20-case synthetic translation matrix remains separate; real
+translation failures, revisions and operational outages remain foundation gates.
+
+### Quota and execution prerequisites
+
+For one clean run, the community matrix creates 40 ordinary accounts and makes
+50 member login attempts plus one administrator login per Playwright worker
+(normally two workers for the two projects). The full-stack suite before it
+adds eight registrations; later admin acceptance adds eight registrations and
+16 logins (including the deliberately rejected suspended-member login). Thus
+the shared-stack totals are **56 registrations and normally 68 login attempts**,
+below the CI limits of 100/hour and 100/15 minutes. No
+production limit is raised. Without admin-session reuse the login total would
+be 96 before failures or retries.
+
+The ten recovery journeys use **exactly ten** forgot-password requests, matching
+the independent hard reset-IP limit of ten/hour. The current Playwright config
+has no retries. A new full acceptance run needs a fresh disposable stack/rate
+namespace; do not rerun it against the same recently consumed Redis counters or
+alter limits to hide a 429. Real verification/deletion limits are per member,
+and each new member uses each relevant operation once.
+
+Execution requires the existing isolated PostgreSQL, Redis, private MinIO,
+Mailpit, real API, RQ worker and built Web application, including the existing
+fixture administrator and environment used by the full-stack CI job. Discovery,
+lint and TypeScript checks do not start these services or validate the 30
+journeys. A fresh exact-head execution receipt, screenshots/traces and failure
+review are still required before checking off the real-service matrix step.
+
+Preparation checks completed with bundled Node **v24.21.0**: scoped ESLint
+returned exit 0, and Playwright `--list` returned exit 0 with exactly 30 cases
+(15 per project). Neither command launches the companion stack or executes the
+browser cases. Independent source review passed at spec SHA-256
+`a2bfcf534bebe1a9e18e19c2eaa13fe713792fea2d5488fdcc9631c656af00fb`:
+all 37 original non-UI assertions are preserved and all 77 referenced copy keys
+exist in the five catalogs. The private independent JSON receipt has SHA-256
+`0f4829f87bfef6ac12bc08c00d7d626b963398307d8252faabcd243b08ed6ba7`.
+The complete web TypeScript check also passed (exit 0) on actual primary-runtime
+Node v24.19.0, with the spec hash identical before and after the check. Its private
+receipt SHA-256 is `4e8c93f0beb631c91e5d373ba36b86370f8e63094a3886650655ce05dfb405de`.
+The 30-case browser result remains pending.

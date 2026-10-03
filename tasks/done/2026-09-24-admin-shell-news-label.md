@@ -126,7 +126,7 @@ grep -n '"news"' apps/web/components/admin-nav.tsx apps/web/components/admin-she
 - Independent 18-file review passed on frozen hashes. The full PR collision
   recheck passed after main advanced to b0a2645 (#1172), without active intersection.
   Other checkout edits and historical duplicate task records are preserved.
-  Evidence: `C:/Users/x8120/.codex/tmp/admin-news-label-20261003/` and
+  Evidence: `<home>/.codex/tmp/admin-news-label-20261003/` and
   `task-continuation-20261003/admin-label-independent-review.md`.
 - This supersedes the older notes limiting additional locales to catalog checks:
   all five locales now have real-catalog unit and built-app browser assertions.

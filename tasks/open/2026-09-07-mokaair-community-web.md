@@ -1,20 +1,18 @@
 ---
 id: 2026-09-07-mokaair-community-web
 title: Mokaair community responsive web and five-language experience
-status: open
+status: review
 priority: P1
 area: web
-owner:
-claimed_at:
+owner: codex-community-real-matrix-20261003
+claimed_at: 2026-10-03T12:15:12Z
 created_at: 2026-09-07T10:14:21Z
 completed_at:
-branch: codex/p1-task-audit
+branch: codex/unfinished-tickets-20261003
 depends_on: []
 scope:
   - apps/web/e2e/community.spec.ts
-  - apps/web/e2e/community-ui.spec.ts
   - docs/community-local-acceptance-2026-09-29.md
-  - .github/workflows/ci.yml
 ---
 
 # Mokaair community responsive web and five-language experience
@@ -47,6 +45,40 @@ Run npm run test:web, check:i18n, typecheck:web, lint:web and build:web. Run the
 community Playwright suite on desktop and Pixel 7 against isolated services.
 
 ## Notes
+
+2026-10-03 continuation (`codex-community-real-matrix-20261003`): narrowed this
+task's editable scope to the real-service spec and its existing acceptance report.
+The synthetic translation spec and CI workflow are already implemented and are
+not edited. Normal claim succeeded after a fresh two-path gate at main
+`5f1cec5302511ac0c6f7eddffaf5f988a8c95a7d`: 495 refs, 28 registered worktrees,
+all open PR files and current/remote task claims have no active implementation
+collision. The old merchant claim explicitly released the spec on 2026-09-09;
+planner #371 is archived done. Both paths are outside the 108-file duration
+receipt. Private evidence: `community-real-matrix-20261003/final-gate.json`.
+
+The spec now prepares 30 cases (three real journeys × five locales × desktop and
+Pixel 7), including both themes at key checkpoints, keyboard modal boundaries,
+private collections and ordinary-member admin denial. It preserves the original
+private-note, pending-visibility, fork, pet conflict, idempotent message,
+unfollow/block and reset/deletion assertions. One real administrator session per
+worker reduces shared login-quota consumption; ordinary accounts stay distinct.
+The exact matrix and quota arithmetic are in
+`docs/community-local-acceptance-2026-09-29.md`. Translation is disabled only in
+the explicitly opted-in loopback fixture; no paid or production call is used.
+The real-service matrix step stays unchecked until a fresh exact-head browser
+run passes; source preparation, lint/discovery and typecheck are not that receipt.
+Scoped ESLint passed (exit 0) and Playwright discovery found exactly 30 cases
+(exit 0), using actual bundled Node v24.21.0. Independent source review passed
+with the original 37 non-UI assertions retained and 77 copy keys checked in all
+five locales: private `community-real-matrix-20261003/independent-semantic-review.json`,
+SHA-256 `0f4829f87bfef6ac12bc08c00d7d626b963398307d8252faabcd243b08ed6ba7`.
+Spec SHA-256 is `a2bfcf534bebe1a9e18e19c2eaa13fe713792fea2d5488fdcc9631c656af00fb`.
+The complete web TypeScript check subsequently passed on actual primary-runtime
+Node v24.19.0 (exit 0), with this exact spec hash unchanged before and after.
+Receipt SHA-256 `4e8c93f0beb631c91e5d373ba36b86370f8e63094a3886650655ce05dfb405de`;
+private `task-continuation-20261003/community-final-typecheck.json`.
+Actual 30-case browser execution remains pending; no local companion stack,
+paid request, production write or publication is implied by preparation checks.
 
 Checkpoint: rebased onto main 54009ba. CI 34130887751 passed Web components,
 TypeScript, lint, five-locale checks, the default production build and isolated
