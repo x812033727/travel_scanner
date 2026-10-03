@@ -35,6 +35,8 @@ PR 只跑 `pull_request` 事件、同一個 PR 的新 push 會取消舊 run（`c
 | vitest 在本機 Windows 整套跑時紅：`findBy…` 找不到按鈕或文字，DOM 還停在「載入中」（account-panel 的複製流水號、itinerary-place-browser 第一個 case、search-experience 的 saved trip），單獨跑通過，CI 綠 | 機器被別的工作吃滿（多個代理、build、API 測試；CPU 100%、可用記憶體不到 1 GB）。每個檔案第一個要等 fetch→effect→render 鏈的 `findBy` 最慢（無負載約 0.4 秒），超過 RTL 預設 1 秒就紅；同檔後面的 case 已經熱身所以過。不是 passive effect 空檔 | 不要加 timeout、retry 或改斷言。CPU 被占滿時（例如開 10 個忙碌 node 程序）可以確定重現。驗證時，本機整套結果要在機器閒置時跑才算數，否則以 CI 為準；單檔紅了先看工作管理員 |
 | 手機專案的點擊一直 `intercepts pointer events`，桌面過 | 版面被撐寬，座標全部位移 | 見 browser-measurement.md |
 | 兩個各自會過的 PR 合在一起才壞 | 例：`server-only` 模組被 sitemap import | 見 checks.md |
+| 同一個 vitest 在純內容 commit 上突然紅、前一次 run 綠，單獨跑也紅（2026-10-03 06:00Z 起 `admin-video-reviews.test.tsx` 的「withdraws a queued one」） | **fixture 日期到期**：測試把 `created_at` 寫死，元件只保留「距今 7 天內」的已取消請求（`DramaQueue`），日曆走過那天就被篩掉；不是 flake，重跑不會好 | 已修（#1169）：`vi.setSystemTime` 釘住時鐘、afterEach `vi.useRealTimers()`。新測試凡遇到元件用「距今 N 天」過濾（`PREVIEW_RETENTION_MS` 那類常數），fixture 日期要相對於 now 或釘時鐘 |
+| `review.test.mjs`「the shipped independent duration review binds…」紅在 `web`／`smoke`，點名的檔你沒改 | 長片時長收據的綁定過期：main 上有人改了綁住的檔沒補收據，而 PR 的 CI 跑的是 head 併 main 的結果 | 見 duration-receipt.md：併 main、請獨立審查代理補增量，或等補 main 的 PR 先合 |
 
 還沒做、若再重現就開票：mailpit 映像釘版本、CI uvicorn 的 `--timeout-keep-alive`、社群 EventSource 的 `onerror`。
 
