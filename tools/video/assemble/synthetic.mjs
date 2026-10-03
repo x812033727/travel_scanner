@@ -13,6 +13,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { clipsHash, illustrated, isShot, lookHash, mixHash, picturesHash, shotVisual } from "../core/drama.mjs";
+import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { SFX_NAMES } from "./sfx.mjs";
 import { buildTimeline, estimatedSamples, FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "../core/timeline.mjs";
 
@@ -43,6 +44,7 @@ export function writeSyntheticNarration(doc, lexicon, workdir) {
   const samplesById = estimatedSamples(doc);
   const timeline = { ...buildTimeline(doc, samplesById), speech_hash: speechHash(doc, lexicon) };
   const narration = new Int16Array(timeline.total_frames * SAMPLES_PER_FRAME);
+  mkdirSync(path.join(workdir, "audio"), { recursive: true });
   timeline.lines.forEach((placed, index) => {
     const start = placed.start_frame * SAMPLES_PER_FRAME;
     const pitch = 180 + (index % 5) * 40;
@@ -50,10 +52,12 @@ export function writeSyntheticNarration(doc, lexicon, workdir) {
       const envelope = Math.min(1, sample / 2400, (placed.audio_samples - sample) / 2400);
       narration[start + sample] = Math.round(6000 * envelope * Math.sin((2 * Math.PI * pitch * sample) / SAMPLE_RATE));
     }
+    writeFileSync(path.join(workdir, "audio", `${placed.id}.wav`), wav(narration.slice(start, start + placed.audio_samples)));
   });
   writeFileSync(path.join(workdir, "narration.wav"), wav(narration));
-  writeFileSync(path.join(workdir, "timeline.json"), `${JSON.stringify(timeline, null, 2)}\n`);
-  return timeline;
+  const bound = bindAudioEvidence(timeline, workdir);
+  writeFileSync(path.join(workdir, "timeline.json"), `${JSON.stringify(bound, null, 2)}\n`);
+  return bound;
 }
 
 const hue = (index) => (index * 47) % 360;

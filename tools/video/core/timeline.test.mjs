@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { fixture } from "./fixtures/load.mjs";
+import { buildCues } from "./captions.mjs";
+import { LONG_ANIME_POLICY, runtimePolicyHash } from "./anime-policy.mjs";
 import {
   buildTimeline,
   chapterList,
@@ -156,4 +158,64 @@ test("visualHash follows the pictures' inputs and nothing else", () => {
   assert.notEqual(visualHash(picture), base);
   assert.notEqual(visualHash(reveal), base);
   assert.equal(visualHash(text), base);
+});
+
+function directedAnime() {
+  const shot = (id, seconds) => ({ id, template: "shot", action_seconds: seconds, data: { prompt: "A girl runs across falling stones", motion: "stones break beneath her feet" }, lines: [] });
+  return {
+    ...fixture(), format: "drama", category: "anime", look: { preset: "anime-2d" }, production_policy: LONG_ANIME_POLICY,
+    target_minutes: [22, 22], runtime_spec: { body_target_seconds: 1320, op_ed_budget_seconds: 180, broadcast_slot_seconds: 1800, slot_reserve_seconds: 300 },
+    series: { kind: "series", genre: "custom", lead: "ensemble" },
+    scenes: [shot("opening-action", 2), { id: "voice-a", template: "shot", data: {}, lines: [{ id: "a", text: "快抓住我的手。" }] },
+      { ...shot("bridge-action", 3), chapter: "崩落的橋" }, { id: "voice-b", template: "shot", data: {}, lines: [{ id: "b", text: "橋要塌下去了。" }] }, shot("closing-action", 1)],
+  };
+}
+
+test("directed silent action occupies real scene frames and shifts speech, captions and chapters without fake TTS lines", () => {
+  const doc = directedAnime();
+  const timeline = buildTimeline(doc, { a: 96_000, b: 96_000 });
+  assert.equal(timeline.timing_basis, "measured");
+  assert.equal(timeline.runtime_policy_hash, runtimePolicyHash(doc));
+  assert.deepEqual(timeline.lines.map((line) => [line.id, line.start_frame, line.end_frame]), [["a", 60, 150], ["b", 240, 330]]);
+  assert.deepEqual(timeline.actions, [
+    { scene: "opening-action", start_frame: 0, end_frame: 60 }, { scene: "bridge-action", start_frame: 150, end_frame: 240 }, { scene: "closing-action", start_frame: 330, end_frame: 360 },
+  ]);
+  assert.equal(timeline.total_frames, 360);
+  assert.equal(timeline.scenes.length, 5);
+  assert.ok(timeline.scenes.every((scene) => scene.states[0].start_frame === scene.start_frame && scene.states.at(-1).end_frame === scene.end_frame));
+  assert.deepEqual(timeline.chapters, [{ title: "崩落的橋", scene: "bridge-action", start_frame: 150 }]);
+  const captions = buildCues(timeline, { a: "快抓住我的手。", b: "橋要塌下去了。" }, "zh-TW").cues;
+  assert.deepEqual(captions.map((cue) => [cue.line, cue.start_ms]), [["a", 2000], ["b", 8000]]);
+  assert.equal(estimateTimeline(doc).timing_basis, "estimated", "planned action plus estimated words remains an estimate");
+});
+
+test("runtime budget changes reuse spoken audio while action timing changes rebuild narration", () => {
+  const doc = directedAnime();
+  const hash = speechHash(doc, { terms: {} });
+  const budget = structuredClone(doc);
+  budget.runtime_spec.op_ed_budget_seconds = 120;
+  budget.runtime_spec.slot_reserve_seconds = 360;
+  assert.equal(speechHash(budget, { terms: {} }), hash);
+  assert.notEqual(runtimePolicyHash(budget), runtimePolicyHash(doc));
+  const action = structuredClone(doc);
+  action.scenes[0].action_seconds += 1;
+  assert.notEqual(speechHash(action, { terms: {} }), hash);
+  const moved = structuredClone(doc);
+  moved.scenes.unshift(moved.scenes.splice(2, 1)[0]);
+  assert.notEqual(speechHash(moved, { terms: {} }), hash, "moving the same silent shot changes the actual spoken offsets");
+  assert.notEqual(buildTimeline(moved, { a: 96_000, b: 96_000 }).lines[0].start_frame, buildTimeline(doc, { a: 96_000, b: 96_000 }).lines[0].start_frame);
+  assert.equal(estimateTimeline(fixture()).timing_basis, undefined, "ordinary timeline format stays unchanged");
+});
+
+test("silent action cannot extend an ordinary episode, spoken scene, slide or invalid duration", () => {
+  for (const seconds of [0, 9, 1.5, "3"]) {
+    const doc = directedAnime();
+    doc.scenes[0].action_seconds = seconds;
+    assert.throws(() => buildTimeline(doc, { a: 96_000, b: 96_000 }), /silent long-anime shot lasting 1 to 8 seconds/);
+  }
+  for (const mutate of [(doc) => { delete doc.production_policy; delete doc.runtime_spec; }, (doc) => { doc.scenes[0].lines = [{ id: "fake", text: "假的旁白" }]; }, (doc) => { doc.scenes[0].template = "big"; }]) {
+    const doc = directedAnime();
+    mutate(doc);
+    assert.throws(() => buildTimeline(doc, { a: 96_000, b: 96_000 }), /action_seconds/);
+  }
 });

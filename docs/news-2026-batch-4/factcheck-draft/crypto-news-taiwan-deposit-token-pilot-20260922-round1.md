@@ -11,7 +11,7 @@
 
 指令一律 `curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'`，
 同一主機間隔 ≥2 秒，請求的 UA／查詢字串／標頭不含任何個人資料。原始 body 與去標籤全文存在
-`C:\Users\x8120\mokaair-work\news47\_raw\crypto-news-taiwan-deposit-token-pilot-20260922\fc1\`。
+`<home>\mokaair-work\news47\_raw\crypto-news-taiwan-deposit-token-pilot-20260922\fc1\`。
 
 | # | 網址 | HTTP | bytes（本輪／研究紀錄） | 是否正文 |
 | --- | --- | --- | --- | --- |
@@ -227,7 +227,7 @@ pack_cli lint EXIT=1
 ```
 
 `image_missing` 是出圖前的預期結果（DELTA-4-7 第 15 條）；沒有 `raw_internal_url`。
-exit code 寫在 `C:\Users\x8120\mokaair-work\news47\_tools\crypto-news-taiwan-deposit-token-pilot-20260922\check.log`
+exit code 寫在 `<home>\mokaair-work\news47\_tools\crypto-news-taiwan-deposit-token-pilot-20260922\check.log`
 與 `lint.log`。
 
 ## 7. 結論

@@ -98,7 +98,7 @@ as evidence; do not edit cached diagnostic flags to make it pass.
   was changed to address that environment failure.
 - `check:tasks` validated 1,290 files, exit 0, with existing stale-claim and scope
   overlap warnings. Scoped `git diff --check` also exits 0.
-- Evidence outside the repo: `C:/Users/x8120/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t26-render-settled-browser-red.log`,
+- Evidence outside the repo: `<home>/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t26-render-settled-browser-red.log`,
   `t26-render-settled-browser-green.log` and `t26-render-settled-full-tools.log` in
   the same directory. The baseline builder and exact original HEAD renderer are
   preserved there too. No media, credentials or evidence binary is committed.

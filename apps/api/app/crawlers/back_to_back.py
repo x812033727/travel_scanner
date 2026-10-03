@@ -39,6 +39,7 @@ from app.crawlers.schemas import (
     SupplementalFareRole,
     SupplementalFareSegment,
 )
+from app.warnings import warning_code
 
 TWD_QUANTUM = Decimal("1")
 PERCENT_QUANTUM = Decimal("0.1")
@@ -156,7 +157,7 @@ class BackToBackFareService:
                     policy="runtime_robots_check_fail_closed",
                     detail=adapter.disabled_reason,
                 ),
-                warnings=[f"{adapter.name}：{adapter.disabled_reason}"],
+                warnings=[warning_code("fare_source_paused", airline=adapter.code)],
             )
 
         full_back_to_back = FareTicketRole.REVERSE in queries
@@ -165,7 +166,7 @@ class BackToBackFareService:
             if full_back_to_back:
                 page_specs = [
                     (
-                        "台灣始發",
+                        "forward",
                         adapter.fare_url(queries[FareTicketRole.CONVENTIONAL_FIRST]),
                         tuple(
                             role
@@ -178,7 +179,7 @@ class BackToBackFareService:
                         ),
                     ),
                     (
-                        "外站始發",
+                        "reverse",
                         adapter.fare_url(queries[FareTicketRole.REVERSE]),
                         (FareTicketRole.REVERSE,),
                     ),
@@ -186,12 +187,12 @@ class BackToBackFareService:
             else:
                 page_specs = [
                     (
-                        "第一次旅行台灣始發",
+                        "first_forward",
                         adapter.fare_url(queries[FareTicketRole.CONVENTIONAL_FIRST]),
                         (FareTicketRole.CONVENTIONAL_FIRST,),
                     ),
                     (
-                        "第二次旅行台灣始發",
+                        "second_forward",
                         adapter.fare_url(queries[FareTicketRole.CONVENTIONAL_SECOND]),
                         (FareTicketRole.CONVENTIONAL_SECOND,),
                     ),
@@ -207,14 +208,14 @@ class BackToBackFareService:
                     policy="allowlisted_routes_only",
                     detail=exc.detail,
                 ),
-                warnings=[f"{adapter.name}：{exc.detail}"],
+                warnings=[warning_code("fare_route_unsupported", airline=adapter.code)],
             )
         warnings: list[str] = []
         cache_hits: list[bool] = []
         successful_pages = 0
         policy_failure = False
 
-        for page_label, source_url, roles in page_specs:
+        for page, source_url, roles in page_specs:
             try:
                 fetched = await self._paced_fetch(client, source_url)
                 cache_hits.append(fetched.cache_hit)
@@ -238,12 +239,12 @@ class BackToBackFareService:
                             source_url,
                             unfiltered_query,
                         )
-                        nearest_detail = ""
+                        nearest: str | None = None
                         requested = queries[role]
                         if available and requested.departure_date:
                             target_departure = requested.departure_date
                             target_return = requested.return_date
-                            nearest = min(
+                            closest = min(
                                 available,
                                 key=lambda quote: (
                                     abs((quote.departure_date - target_departure).days)
@@ -256,25 +257,35 @@ class BackToBackFareService:
                                     quote.departure_date,
                                 ),
                             )
-                            nearest_detail = (
-                                f"；公開頁最接近的是 {nearest.departure_date.isoformat()}"
-                                f"–{
-                                    (
-                                        nearest.return_date.isoformat()
-                                        if nearest.return_date
-                                        else '單程'
-                                    )
-                                }"
-                            )
+                            # ISO dates read the same in every locale; a one-way
+                            # fare has no return date to show.
+                            nearest = closest.departure_date.isoformat()
+                            if closest.return_date:
+                                nearest += f"–{closest.return_date.isoformat()}"
                         warnings.append(
-                            f"{adapter.name}：{FARE_ROLE_LABELS[role]}在指定日期前後 "
-                            f"{queries[role].flex_days} 天內沒有公開快取票價{nearest_detail}"
+                            warning_code(
+                                "fare_not_cached_nearest" if nearest else "fare_not_cached",
+                                airline=adapter.code,
+                                role=role,
+                                flex_days=requested.flex_days,
+                                nearest=nearest,
+                            )
                         )
             except CrawlerPolicyError as exc:
                 policy_failure = True
-                warnings.append(f"{adapter.name} {page_label}：{exc.detail}")
+                # `reason` is the crawler's own error code. The reader's message does
+                # not use it; it keeps the cause in the response for whoever debugs it.
+                warnings.append(
+                    warning_code(
+                        "fare_page_blocked", airline=adapter.code, page=page, reason=exc.code
+                    )
+                )
             except CrawlerError as exc:
-                warnings.append(f"{adapter.name} {page_label}：{exc.detail}")
+                warnings.append(
+                    warning_code(
+                        "fare_page_unavailable", airline=adapter.code, page=page, reason=exc.code
+                    )
+                )
 
         quote_count = sum(len(quotes) for quotes in candidates.values())
         if successful_pages == len(page_specs):
@@ -807,9 +818,9 @@ class BackToBackFareService:
             if isinstance(rate_result, FxRateSnapshot):
                 rates[currency] = rate_result
                 if rate_result.is_stale:
-                    warnings.append(f"{currency} 使用七日內的舊匯率估算 TWD。")
+                    warnings.append(warning_code("stale_exchange_rate", currency=currency))
             else:
-                warnings.append(f"{currency}：目前無法取得 TWD 估算匯率。")
+                warnings.append(warning_code("exchange_rate_unavailable", currency=currency))
 
         comparisons: list[BackToBackComparison] = []
         for mode in (ComparisonMode.MIXED_AIRLINES, ComparisonMode.SAME_AIRLINE):
@@ -918,10 +929,7 @@ class BackToBackFareService:
                 )
 
         if not comparison_supported:
-            warnings.insert(
-                0,
-                "兩次目的地不同：完整倒買比較需要開口票票價來源；目前只顯示可驗證的一般買法基準。",
-            )
+            warnings.insert(0, warning_code("open_jaw_baseline_only"))
 
         return BackToBackFareSearchResponse(
             query=query,

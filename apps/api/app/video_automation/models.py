@@ -508,10 +508,14 @@ VISUAL_TIERS = ("clips", "hybrid", "stills")
 SERIES_NUMBERS_CHECK = (
     "planned_episodes BETWEEN 1 AND 500 AND episodes_per_chapter BETWEEN 1 AND 20 "
     "AND (target_minutes BETWEEN 1 AND 20 OR "
-    "(planning_only = true AND target_minutes BETWEEN 21 AND 30))"
+    "((planning_only = true OR (production_policy IS NOT NULL "
+    "AND production_policy = 'long-anime-v1')) "
+    "AND target_minutes BETWEEN 21 AND 30))"
 )
 SERIES_LEAD_CHECK = (
-    "lead IN ('female', 'male', 'dual-male') OR (planning_only = true AND lead = 'ensemble')"
+    "lead IN ('female', 'male', 'dual-male') OR "
+    "((planning_only = true OR (production_policy IS NOT NULL "
+    "AND production_policy = 'long-anime-v1')) AND lead = 'ensemble')"
 )
 SERIES_CATEGORY_CHECK = "category IS NULL OR category IN ({})".format(
     ", ".join(f"'{code}'" for code in VIDEO_CATEGORIES)
@@ -520,6 +524,35 @@ SERIES_PLANNING_CHECK = (
     "planning_only = false OR (kind = 'series' AND category IS NOT NULL AND category = 'anime' "
     "AND status = 'paused' AND hands_off = false AND compilation = false AND force_next = false "
     "AND requested_chapter IS NULL)"
+)
+SERIES_ANIME_POLICY_CHECK = (
+    "(production_policy IS NULL AND runtime_spec IS NULL) OR "
+    "(production_policy IS NOT NULL AND production_policy = 'long-anime-v1' "
+    "AND planning_only = false AND kind = 'series' AND category IS NOT NULL AND category = 'anime' "
+    "AND style_preset = 'anime-2d' AND genre = 'custom' AND lead = 'ensemble' "
+    "AND hands_off = false AND compilation = false AND total_minutes IS NULL)"
+)
+_RUNTIME_FIELDS = (
+    "body_target_seconds", "op_ed_budget_seconds", "broadcast_slot_seconds", "slot_reserve_seconds"
+)
+# Raw JSON text must equal the integer's text. This rejects strings, booleans, floats and null
+# without jsonb-only operators or a PostgreSQL-only JSON type function (SQLite tests use this too).
+_RUNTIME_INTEGERS = " AND ".join(
+    f"(runtime_spec ->> '{field}') IS NOT NULL AND "
+    f"CAST(runtime_spec -> '{field}' AS TEXT) = "
+    f"CAST(CAST(runtime_spec ->> '{field}' AS INTEGER) AS TEXT)"
+    for field in _RUNTIME_FIELDS
+)
+_BODY = "CAST(runtime_spec ->> 'body_target_seconds' AS INTEGER)"
+_OP_ED = "CAST(runtime_spec ->> 'op_ed_budget_seconds' AS INTEGER)"
+_SLOT = "CAST(runtime_spec ->> 'broadcast_slot_seconds' AS INTEGER)"
+_RESERVE = "CAST(runtime_spec ->> 'slot_reserve_seconds' AS INTEGER)"
+SERIES_ANIME_RUNTIME_CHECK = (
+    "production_policy IS NULL OR (runtime_spec IS NOT NULL AND "
+    f"{_RUNTIME_INTEGERS} AND {_BODY} BETWEEN 540 AND 1800 AND {_BODY} % 60 = 0 "
+    f"AND {_OP_ED} BETWEEN 0 AND 300 AND {_SLOT} BETWEEN 1 AND 3600 "
+    f"AND {_RESERVE} BETWEEN 0 AND 900 AND {_BODY} = target_minutes * 60 "
+    f"AND {_SLOT} = {_BODY} + {_OP_ED} + {_RESERVE})"
 )
 MIN_TOTAL_MINUTES = 30
 MAX_TOTAL_MINUTES = 480
@@ -562,6 +595,8 @@ class VideoDramaSeries(Base):
         ),
         CheckConstraint(SERIES_CATEGORY_CHECK, name="ck_video_drama_series_category"),
         CheckConstraint(SERIES_PLANNING_CHECK, name="ck_video_drama_series_planning"),
+        CheckConstraint(SERIES_ANIME_POLICY_CHECK, name="ck_video_drama_series_anime_policy"),
+        CheckConstraint(SERIES_ANIME_RUNTIME_CHECK, name="ck_video_drama_series_anime_runtime"),
         CheckConstraint(
             "visual_tier IN ('clips', 'hybrid', 'stills')", name="ck_video_drama_series_tier"
         ),
@@ -580,6 +615,10 @@ class VideoDramaSeries(Base):
     planning_only: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")
     category: Mapped[str | None] = mapped_column(String(24), nullable=True)
     planning_spec: Mapped[dict[str, Any] | None] = mapped_column(JSON, nullable=True)
+    production_policy: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    runtime_spec: Mapped[dict[str, Any] | None] = mapped_column(
+        JSON(none_as_null=True), nullable=True
+    )
     # "series": the documents are the setting book, the outline and the chapters' outlines;
     # "one-off": one episode, one story bible (docs/videos/DRAMA-FLOW.md §二); "story": no
     # documents, the episodes are imported from a planned backlog (docs/videos/STORY.md).

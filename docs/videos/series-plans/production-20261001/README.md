@@ -2,7 +2,7 @@
 
 2026-10-01。十部、400 集的故事／人物／道具與拍攝風險已覆核，製作資料與工具已準備；**尚未試音、生成動畫、驗收成片或更新正式站**。沒有用本機通過檢查取代影片驗收。
 
-目前工作目錄：`C:/Users/x8120/.codex/worktrees/ten-drama-production`。分支：`codex/ten-drama-production-readiness-20261001`，本輪基於 `origin/main` 的 `be92a7ab`。原聊天綁定的 `31ce/travel_scanㄐ` 已不存在；本輪所有工具使用新目錄。
+目前工作目錄：`<home>/.codex/worktrees/ten-drama-production`。分支：`codex/ten-drama-production-readiness-20261001`，本輪基於 `origin/main` 的 `be92a7ab`。原聊天綁定的 `31ce/travel_scanㄐ` 已不存在；本輪所有工具使用新目錄。
 
 ## 檢查範圍與結果
 

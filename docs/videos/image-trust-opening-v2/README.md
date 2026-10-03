@@ -15,7 +15,7 @@
 - `local-artifacts.json`：本機產物的大小、雜湊與本輪驗證摘要；`assets/contact-sheet.jpg` 為抽幀紀錄。
 - `build.py`：獨立重建工具，所有媒體與快取輸出到 repo 外。
 
-本機媒體在 `C:/Users/x8120/mokaair-work/long-revisions/image-trust-20260929/`：
+本機媒體在 `<home>/mokaair-work/long-revisions/image-trust-20260929/`：
 
 | 檔案 | 用途 |
 | --- | --- |
@@ -33,7 +33,7 @@ Git 不包含 MP4/WAV 或語音快取；讀取原審片環境的現有快取可�
 需要 Python/Pillow、ffmpeg、ffprobe 與 Windows System.Speech 的 Microsoft Hanhan Desktop 聲線。使用整季來源目錄只為唯讀取得既有助手、來源表和語音快取；工具先普通複製到新輸出資料夾，再載入副本。
 
 ```powershell
-python -B docs/videos/image-trust-opening-v2/build.py --source-season "C:/Users/x8120/OneDrive/文件/ChatGPT/travel_scanㄐ/docs/ai-video-season-01" --output "C:/Users/x8120/mokaair-work/long-revisions/image-trust-20260929"
+python -B docs/videos/image-trust-opening-v2/build.py --source-season "<home>/OneDrive/文件/ChatGPT/travel_scanㄐ/docs/ai-video-season-01" --output "<home>/mokaair-work/long-revisions/image-trust-20260929"
 ```
 
 加 `--prepare-only` 只合成及量測旁白。新建輸出路徑可保存另一版本；不要指向原季別媒體或 Shorts 目錄。

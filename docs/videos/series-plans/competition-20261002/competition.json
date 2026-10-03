@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "selected_slug": "wedding-reckoning",
+  "title": "喜宴未散，清算開始",
+  "platform": "YouTube",
+  "user_confirmed_rules": {
+    "format": "one complete feature per entrant",
+    "measurement_window": "three calendar months from each main video becoming public",
+    "audio_tracks": [
+      "zh-TW",
+      "ja",
+      "ko",
+      "en"
+    ],
+    "one_video_id_per_entrant": true,
+    "views_count": "main video views",
+    "budget_in_scoring": true
+  },
+  "scoring": {
+    "status": "user-confirmed-separate-views-and-cost",
+    "primary_view_measure": "main-video-public-views-over-own-three-calendar-month-window",
+    "cost_measure": "actual_total_production_cost_usd",
+    "secondary_efficiency": "views / actual_total_production_cost_usd * 100",
+    "efficiency_zero_cost": "undefined; do not divide by zero",
+    "composite_weights": null,
+    "overall_evaluation": "present views and actual cost separately, then user compares both; no weighted automatic winner",
+    "efficiency_role": "reference-only, not a win condition"
+  },
+  "window": {
+    "timezone": "Asia/Taipei",
+    "start": "actual public release time, not upload/private/unlisted time",
+    "end": "same local clock time three calendar months later; clamp to last day if day absent",
+    "boundary": "[public_at, end_at)",
+    "public_at": null,
+    "end_at": null,
+    "not_equivalent_to_90_days": true
+  },
+  "measurement": {
+    "snapshot_at": [
+      "release",
+      "day_7",
+      "day_28",
+      "month_2",
+      "three_calendar_month_end"
+    ],
+    "official_source": "YouTube Studio Analytics and dated snapshots; reconcile platform reporting lag",
+    "save": [
+      "video_id",
+      "public_at",
+      "cutoff_at",
+      "extracted_at",
+      "raw_views",
+      "pre_public_baseline_views",
+      "eligible_window_views",
+      "actual_cost_usd",
+      "views_per_100_usd"
+    ],
+    "exclude_other_videos": [
+      "Shorts",
+      "trailers",
+      "duplicate language uploads",
+      "episode uploads"
+    ],
+    "production_cost_scope": [
+      "accepted and rejected paid video generations",
+      "images and keyframes",
+      "all four language TTS and retakes",
+      "translation and model reviews",
+      "music and SFX licences or generation",
+      "production storage and other paid production services",
+      "external human services actually hired"
+    ],
+    "cost_cutoff": "include all pre-release work and competition-period production repairs, even if invoiced later; reconcile accrued charges",
+    "shared_costs": "allocate shared paid resources transparently under the same rule for both entrants; no hidden rejected assets",
+    "human_hours": "record separately even when not invoiced; choose identical monetary treatment with opponent before final scoring",
+    "marketing": "report separately; paid promotion not scheduled by this package",
+    "zero_invented_analytics": true
+  },
+  "launch_checks": [
+    "four approved audio tracks and four CC pairs ready",
+    "actual channel multilingual-audio entitlement and player tested",
+    "all tracks under the same video ID",
+    "localized title/description verified",
+    "synthetic content and audience fields reviewed by owner",
+    "no automatic public release from this package"
+  ],
+  "diagnostics_not_win_conditions": [
+    "impressions and CTR by comparable traffic source",
+    "first30sec retention",
+    "average view duration and watch hours",
+    "retention at arc transitions",
+    "audio-language results where Analytics exposes them"
+  ],
+  "promotional_plan_draft": {
+    "organic_only": true,
+    "equal_promotional_resources_to_be_agreed_with_opponent": true,
+    "check_days": [
+      7,
+      28
+    ],
+    "title_thumbnail_change_log": true,
+    "no_scheduled_automation_created": true
+  },
+  "entrants": [
+    {
+      "name": "Codex",
+      "slug": "wedding-reckoning",
+      "video_id": null
+    },
+    {
+      "name": "Claude",
+      "slug": null,
+      "video_id": null
+    }
+  ]
+}

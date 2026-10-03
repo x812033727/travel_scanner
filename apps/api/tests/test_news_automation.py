@@ -47,7 +47,13 @@ from app.news_automation.policy import (
     transition_allowed,
     trusted_alone_sites,
 )
-from app.news_automation.scanner import claim_due_sources, classify_vertical, scan_source
+from app.news_automation.scanner import (
+    DEFAULT_MAX_ENTRY_AGE,
+    claim_due_sources,
+    classify_vertical,
+    max_entry_age,
+    scan_source,
+)
 from app.news_automation.schemas import FetchResult
 from app.news_automation.validation import revalidate_evidence, validate_source_configuration
 from app.problems import AppError
@@ -694,6 +700,9 @@ async def test_scanner_keeps_a_refused_recent_page_as_a_feed_summary_lead() -> N
         vertical="ai",
         is_first_party=True,
         enabled=True,
+        # A 30-day window lets the 10-day-old entry reach its fetch, so the lead's own age
+        # limit (scanner.SUMMARY_LEAD_MAX_AGE) is what keeps it out.
+        config_json={"max_entry_age_hours": 24 * 30},
     )
     now = datetime.now(UTC)
     recent = (now - timedelta(hours=5)).strftime("%a, %d %b %Y %H:%M:%S GMT")
@@ -942,6 +951,9 @@ async def test_a_source_that_keeps_failing_on_a_recent_entry_is_reported_stuck()
         vertical="tech",
         enabled=True,
         last_scanned_at=SCANNED_BEFORE,
+        # With the freshness window off, the month-old entry is fetched and fails too, and
+        # scanner.STUCK_UNTIL is what keeps it out of the stuck list.
+        config_json={"max_entry_age_hours": None},
     )
     now = datetime.now(UTC)
     ages = {"fresh": timedelta(hours=1)}
@@ -1071,6 +1083,234 @@ async def test_a_new_source_s_first_scan_files_only_fresh_entries() -> None:
         "undated": ("rejected", "news_baseline"),
     }
     assert again == 0 and requested == ["https://new.example/feed"]
+    await engine.dispose()
+
+
+@pytest.mark.parametrize(
+    ("config", "window"),
+    [
+        ({}, DEFAULT_MAX_ENTRY_AGE),
+        ({"max_entry_age_hours": 24}, timedelta(hours=24)),
+        ({"max_entry_age_hours": 1.5}, timedelta(minutes=90)),
+        ({"max_entry_age_hours": 0}, None),
+        ({"max_entry_age_hours": None}, None),
+        ({"max_entry_age_hours": -1}, None),
+        # Not a number: the default, never "off" by accident.
+        ({"max_entry_age_hours": "off"}, DEFAULT_MAX_ENTRY_AGE),
+        ({"max_entry_age_hours": True}, DEFAULT_MAX_ENTRY_AGE),
+        ({"max_entry_age_hours": float("nan")}, DEFAULT_MAX_ENTRY_AGE),
+        ({"max_entry_age_hours": 1e300}, timedelta(days=366 * 10)),
+    ],
+)
+def test_a_source_s_freshness_window_comes_from_its_config(
+    config: dict[str, Any], window: timedelta | None
+) -> None:
+    source = NewsSource(name="Feed", url="https://feed.example/rss", config_json=config)
+    assert max_entry_age(source) == window
+
+
+async def _scan_database() -> tuple[Any, async_sessionmaker[Any]]:
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(
+                sync,
+                tables=[
+                    NewsAutomationSettings.__table__,
+                    NewsSource.__table__,
+                    NewsCandidate.__table__,
+                    NewsEvidence.__table__,
+                ],
+            )
+        )
+    return engine, async_sessionmaker(engine, expire_on_commit=False)
+
+
+class _ListingFetcher:
+    """Serves one RSS listing of (name, age or None) items and a distinct page for each."""
+
+    def __init__(self, feed_url: str, items: list[tuple[str, timedelta | None]]) -> None:
+        self.feed_url = feed_url
+        self.items = items
+        self.requested: list[str] = []
+        self.base = feed_url.rsplit("/", 1)[0]
+
+    def listing(self) -> bytes:
+        now = datetime.now(UTC)
+        rows = "".join(
+            f"<item><title>Release {name}</title><link>{self.base}/{name}</link>"
+            + (
+                ""
+                if age is None
+                else f"<pubDate>{(now - age).strftime('%a, %d %b %Y %H:%M:%S GMT')}</pubDate>"
+            )
+            + "</item>"
+            for name, age in self.items
+        )
+        return f"<rss><channel>{rows}</channel></rss>".encode()
+
+    async def fetch(self, url: str, **_kwargs: object) -> FetchResult:
+        self.requested.append(url)
+        if url == self.feed_url:
+            return FetchResult(
+                url=url,
+                status_code=200,
+                content_type="application/rss+xml",
+                body=self.listing(),
+                etag='"listing"',
+            )
+        body = f"<html><main>{url}: {'The whole release. ' * 30}</main></html>".encode()
+        return FetchResult(url=url, status_code=200, content_type="text/html", body=body)
+
+    async def close(self) -> None:
+        return None
+
+
+@pytest.mark.asyncio
+async def test_a_stale_feed_entry_is_left_out_before_its_page_is_fetched() -> None:
+    engine, factory = await _scan_database()
+    source = NewsSource(
+        name="Blog",
+        url="https://blog.example/feed",
+        format="rss",
+        role="evidence",
+        vertical="tech",
+        enabled=True,
+        last_scanned_at=SCANNED_BEFORE,
+    )
+    fetcher = _ListingFetcher(
+        source.url,
+        [
+            ("fresh", timedelta(hours=2)),
+            ("republished", timedelta(days=5)),
+            ("ancient", timedelta(days=90)),
+            # Filed back when it was news: a seen entry is not counted as stale.
+            ("seen", timedelta(days=9)),
+            # After the first scan, an undated entry is new to the listing and is read.
+            ("undated", None),
+        ],
+    )
+    queued: list[UUID] = []
+
+    async def enqueue(candidate_id: UUID) -> None:
+        queued.append(candidate_id)
+
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        session.add(source)
+        await session.commit()
+        session.add(
+            NewsCandidate(
+                source_id=source.id,
+                vertical="tech",
+                status="rejected",
+                canonical_url="https://blog.example/seen",
+                source_title="Release seen",
+                normalized_title="release seen",
+                content_hash="seen",
+                idempotency_key="seen",
+                prompt_version="test",
+                policy_version="test",
+            )
+        )
+        await session.commit()
+        created = await scan_source(session, source.id, enqueue, fetcher=fetcher)  # type: ignore[arg-type]
+        requested, first_queued = list(fetcher.requested), len(queued)
+        await session.refresh(source)
+        status, note, etag = source.last_status, source.last_error, source.etag
+        urls = set(await session.scalars(select(NewsCandidate.canonical_url)))
+
+        # A source that switches the window off reads the old entries like any other.
+        source.config_json = {"max_entry_age_hours": 0}
+        await session.commit()
+        fetcher.requested.clear()
+        reopened = await scan_source(session, source.id, enqueue, fetcher=fetcher)  # type: ignore[arg-type]
+        await session.refresh(source)
+        status_off, note_off = source.last_status, source.last_error
+        urls_off = set(await session.scalars(select(NewsCandidate.canonical_url)))
+
+    # No request and no candidate for the two stale entries.
+    assert created == 2 and first_queued == 2
+    assert requested == [
+        "https://blog.example/feed",
+        "https://blog.example/fresh",
+        "https://blog.example/undated",
+    ]
+    assert urls == {
+        "https://blog.example/seen",
+        "https://blog.example/fresh",
+        "https://blog.example/undated",
+    }
+    # Counted apart from failed pages: the scan still succeeded and keeps the validators.
+    assert status == "succeeded"
+    assert note == "Left out 2 feed entries older than 72 hours, without fetching them"
+    assert etag == '"listing"'
+    assert reopened == 2
+    assert fetcher.requested == [
+        "https://blog.example/feed",
+        "https://blog.example/republished",
+        "https://blog.example/ancient",
+    ]
+    assert urls_off == urls | {"https://blog.example/republished", "https://blog.example/ancient"}
+    assert status_off == "succeeded" and note_off is None
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("config", "filed"),
+    [
+        ({}, {"yesterday"}),
+        ({"max_entry_age_hours": 24 * 7}, {"yesterday", "last-week"}),
+        # Switching the window off never opens the back catalogue to a first scan.
+        ({"max_entry_age_hours": 0}, {"yesterday"}),
+    ],
+)
+async def test_a_first_scan_records_what_is_older_than_the_window_as_seen(
+    config: dict[str, Any], filed: set[str]
+) -> None:
+    engine, factory = await _scan_database()
+    source = NewsSource(
+        name="New",
+        url="https://new.example/feed",
+        format="rss",
+        role="evidence",
+        vertical="tech",
+        enabled=True,
+        config_json=config,
+    )
+    fetcher = _ListingFetcher(
+        source.url,
+        [
+            ("yesterday", timedelta(hours=24)),
+            ("last-week", timedelta(days=5)),
+            ("old", timedelta(days=40)),
+            ("undated", None),
+        ],
+    )
+
+    async def enqueue(_candidate_id: UUID) -> None:
+        return None
+
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        session.add(source)
+        await session.commit()
+        await scan_source(session, source.id, enqueue, fetcher=fetcher)  # type: ignore[arg-type]
+        await session.refresh(source)
+        rows = {
+            row.canonical_url.rsplit("/", 1)[-1]: (row.status, row.error_code)
+            for row in await session.scalars(select(NewsCandidate))
+        }
+    assert rows == {
+        name: ("discovered", None) if name in filed else ("rejected", "news_baseline")
+        for name in ("yesterday", "last-week", "old", "undated")
+    }
+    assert fetcher.requested == ["https://new.example/feed"] + [
+        f"https://new.example/{name}" for name in ("yesterday", "last-week") if name in filed
+    ]
+    # A first scan records its back catalogue instead of reporting it as stale.
+    assert source.last_status == "succeeded" and source.last_error is None
     await engine.dispose()
 
 

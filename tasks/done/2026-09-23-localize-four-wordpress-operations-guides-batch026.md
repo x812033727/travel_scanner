@@ -59,7 +59,7 @@ Release task created through the task CLI: `2026-09-23-release-localized-wordpre
 
 ## Evidence and limitations
 
-Evidence archive: `C:/Users/x8120/.codex/article-localization-release/batch026-wordpress-operations/`. Keep detailed evidence outside Git; use its immutable references for the handoff.
+Evidence archive: `<home>/.codex/article-localization-release/batch026-wordpress-operations/`. Keep detailed evidence outside Git; use its immutable references for the handoff.
 
 - Source snapshot SHA256: `55b9441834486b77c7abb6852a6b9f2b4d825aefa27194b5a6e2f3884bbb756c`; fresh source comparison: `1388b1378e44fafbf9b5bf6aac4ffff6e57d67caaf5b4962edc468c9d928caef`.
 - Admin/SFTP independent review: `independent-admin-sftp-review-v1/receipt-pass.json`, SHA256 `afb04be1e367cff62f0c3129e7f6856d26d33364a9cc7a37df8361a44971fd52`.

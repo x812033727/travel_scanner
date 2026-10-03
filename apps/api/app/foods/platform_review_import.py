@@ -17,7 +17,7 @@ from __future__ import annotations
 
 import sys
 from collections import Counter
-from collections.abc import Callable
+from collections.abc import Callable, Mapping
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime, timedelta
 from hashlib import sha256
@@ -95,6 +95,14 @@ def load_review_file(path: Path) -> PlatformReviewBatch:
         batch = PlatformReviewBatch.model_validate_json(path.read_text(encoding="utf-8"))
     except ValidationError as exc:
         raise ReviewFileError(f"{path.name}: {exc}") from exc
+    return check_review_batch(batch, name=path.name)
+
+
+def check_review_batch(batch: PlatformReviewBatch, *, name: str) -> PlatformReviewBatch:
+    """The whole-file rules, for a batch built in memory as well as one read from a file.
+
+    Normalizes each record's URLs the way the admin editor stores them, in place.
+    """
     problems: list[str] = []
     if batch.researched_at.tzinfo is None:
         problems.append("researched_at must include a timezone")
@@ -130,7 +138,7 @@ def load_review_file(path: Path) -> PlatformReviewBatch:
             if branches.setdefault(branch, record.merchant_id) != record.merchant_id:
                 problems.append(f"{label}: the branch page is also assigned to another merchant")
     if problems:
-        raise ReviewFileError(f"{path.name}: " + " | ".join(problems))
+        raise ReviewFileError(f"{name}: " + " | ".join(problems))
     return batch
 
 
@@ -173,7 +181,10 @@ async def _review_one(
     record: PlatformReviewRecord,
     *,
     apply: bool,
+    audit: Mapping[str, Any] | None = None,
 ) -> RecordOutcome:
+    """One record against the database; ``audit`` adds a caller's context to the audit row."""
+
     def outcome(action: str, detail: str | None = None) -> RecordOutcome:
         return RecordOutcome(record.slug, record.provider, record.status, action, detail)
 
@@ -246,6 +257,7 @@ async def _review_one(
                 "localized_locales": sorted(record.localized_urls),
                 "previous": previous,
                 "evidence_urls": [item.url for item in record.evidence[:5]],
+                **(audit or {}),
             },
         )
     )

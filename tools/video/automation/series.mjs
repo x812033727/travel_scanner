@@ -9,6 +9,7 @@
 // episode whose only document is its story bible (docs/videos/DRAMA-FLOW.md, section 2).
 import path from "node:path";
 
+import { hasAnimePolicy, isLongAnime, isClosedAnimeFinale, validateAnimePolicy } from "../core/anime-policy.mjs";
 import { EXPLAINER_PRESET, shotLooksProblem } from "../core/drama.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { estimateTimeline, framesFor, frameToSeconds } from "../core/timeline.mjs";
@@ -49,7 +50,7 @@ export const isExplainerOneOff = (series) => isOneOff(series) && series?.style_p
 /** The planner prompt of a document: its kind, or the explainer's bible. */
 export const documentVariant = (kind, series) => (kind === "bible" && isExplainerOneOff(series) ? "bible-explainer" : kind);
 /** Whether a series' genre carries the retention rules (the classic xianxia series does not). */
-export const retentionRequired = (series) => Boolean(GENRE_SPECS[series?.genre]?.retention);
+export const retentionRequired = (series) => !hasAnimePolicy(series) && Boolean(GENRE_SPECS[series?.genre]?.retention);
 
 /** The video slug of an episode: the series' slug and the number, zero-padded (xianxia-e001). */
 export const episodeSlug = (seriesSlug, number) => `${seriesSlug}-e${String(number).padStart(3, "0")}`;
@@ -71,6 +72,10 @@ export function documentProblem(kind, answer, job) {
   if (!isObject(answer.body_json)) return "body_json (the structured document) is missing";
   const body = answer.body_json;
   const series = job.series;
+  if (hasAnimePolicy(series)) {
+    const problems = validateAnimePolicy(series);
+    if (problems.length) return problems.join("; ");
+  }
   if (kind === "bible" && isExplainerOneOff(series)) {
     // An explainer's bible (apps/api/app/video_automation/series.py doc_problem): no cast, the
     // question, its answer and reasons, and the one outline the episode is written from.
@@ -125,7 +130,7 @@ export function documentProblem(kind, answer, job) {
     const missing = BEAT_FIELDS.filter((key) => !(isText(episode[key]) || (key === "cliffhanger" && isObject(episode[key]) && isText(episode[key].text))));
     if (missing.length) return `episode ${episode.number} lacks ${missing.join(", ")}`;
     if (!Array.isArray(episode.tension) || episode.tension.length !== 5 || episode.tension.some((value) => !Number.isInteger(value) || value < 1 || value > 5)) return `episode ${episode.number} needs tension: five scores from 1 to 5`;
-    if (episode.tension.at(-1) < 4) return `episode ${episode.number} must end tense (tension[4] >= 4)`;
+    if (episode.tension.at(-1) < 4 && !isClosedAnimeFinale(series, episode.number, episode)) return `episode ${episode.number} must end tense (tension[4] >= 4)`;
     numbers.push(episode.number);
   }
   const expected = Array.from({ length: last - first + 1 }, (_, index) => first + index);
@@ -135,9 +140,60 @@ export function documentProblem(kind, answer, job) {
     const now = body.episodes[index].cliffhanger?.type;
     if (before && now && before === now) return `episodes ${body.episodes[index - 1].number} and ${body.episodes[index].number} end on the same kind of cliffhanger (${now}); vary them`;
   }
+  if (isLongAnime(series)) return animeNarrativeProblem(series, body.episodes, job.context?.episodes ?? []);
   if (retentionRequired(series)) return retentionProblem(series, body.episodes);
   return null;
 }
+
+/** Source-native tension and consequences; these do not substitute wins for an ensemble's losses. */
+export function animeNarrativeProblem(series, episodes, previous = []) {
+  for (const episode of episodes) {
+    const who = `episode ${episode.number}`;
+    if (typeof episode.closed_ending !== "boolean") return `${who}: closed_ending must be boolean`;
+    if (!Number.isInteger(episode.number) || episode.number < 1 || episode.number > series.planned_episodes) return `${who} is outside the series`;
+    for (const key of ["title", "logline", "hook", "conflict", "turn", "theme"]) if (!isText(episode[key])) return `${who} needs ${key}`;
+    if (!Array.isArray(episode.tension) || episode.tension.length !== 5 || episode.tension.some((score) => !Number.isInteger(score) || score < 1 || score > 5)) return `${who} needs five integer tension scores from 1 to 5`;
+    if (!isObject(episode.cliffhanger) || !isText(episode.cliffhanger.text) || !["danger", "reveal", "choice", "reversal", "emotion"].includes(episode.cliffhanger.type)) return `${who} needs a valid ending`;
+    const finale = isClosedAnimeFinale(series, episode.number, episode);
+    if (series.open_ended === false && episode.number === series.planned_episodes && !finale) return `${who}: the closed series must declare its final resolution`;
+    if (finale && (episode.tension.at(-1) > 3 || episode.cliffhanger.type !== "emotion")) return `${who}: quiet final resolution ends with emotion and tension 1 to 3`;
+    if (!finale && episode.tension.at(-1) < 4) return `${who} must end tense`;
+    if (episode.closed_ending === true && !isClosedAnimeFinale(series, episode.number, episode)) return `${who}: only the planned closed finale may declare closed_ending`;
+    if (!Array.isArray(episode.high_tension) || episode.high_tension.length !== 2) return `${who} needs two high_tension events`;
+    for (const [index, beat] of episode.high_tension.entries()) {
+      if (!isObject(beat) || beat.beat !== ["first_half", "second_half"][index] || !["event", "stakes", "consequence"].every((key) => isText(beat[key]))) return `${who}: high_tension needs beat, event, stakes and consequence`;
+    }
+    if (new Set(episode.high_tension.map((beat) => beat.beat)).size !== 2 || new Set(episode.high_tension.map((beat) => beat.event.trim())).size !== 2) return `${who}: high_tension events must be distinct and span both halves`;
+    if (!isText(episode.consequence)) return `${who} needs a lasting consequence`;
+    if (!isObject(episode.state) || !["time", "knowledge", "character_state", "evidence", "carry_forward"].every((key) => isText(episode.state[key]))) return `${who} needs complete source state`;
+    for (const key of ["setups", "payoffs", "general_payoffs", "characters", "locations"]) {
+      if (!Array.isArray(episode[key]) || (["characters", "locations"].includes(key) && !episode[key].length) || !episode[key].every(isText) || new Set(episode[key]).size !== episode[key].length) return `${who}: ${key} must contain unique nonempty text`;
+    }
+  }
+  const earlier = previous.filter((row) => Number.isInteger(row?.number) && row.number < episodes[0]?.number).sort((a, b) => a.number - b.number).slice(-3);
+  for (const row of earlier) {
+    if (animeNarrativeProblem(series, [{ ...(row.beats ?? row), number: row.number }])) return "previous chapter has invalid long-anime continuity data";
+  }
+  const rows = new Map(earlier.map((row) => [row.number, { ...(row.beats ?? row), number: row.number }]));
+  for (const episode of episodes) rows.set(episode.number, episode);
+  const ordered = [...rows.entries()].sort(([a], [b]) => a - b);
+  for (let index = 1; index < ordered.length; index++) {
+    if (ordered[index][0] - ordered[index - 1][0] === 1 && ordered[index][1].cliffhanger?.type === ordered[index - 1][1].cliffhanger?.type) return `episodes ${ordered[index - 1][0]} and ${ordered[index][0]} must vary their ending types`;
+  }
+  for (let start = 0; start + 4 <= ordered.length; start++) {
+    const window = ordered.slice(start, start + 4);
+    if (window.at(-1)[0] - window[0][0] !== 3) continue;
+    if (!window.some(([, row]) => (row.payoffs?.length ?? 0) + (row.general_payoffs?.length ?? 0) > 0)) return `episodes ${window[0][0]} to ${window.at(-1)[0]} need a meaningful local payoff`;
+  }
+  return null;
+}
+
+export const ANIME_REQUIRED_VERDICTS = {
+  setting: REQUIRED_VERDICTS.setting,
+  outline: ["originality", "escalation", "midpoint_reveal", "chapter_turns", "payoff_schedule"],
+  chapter: ["originality", "tension_rules", "hooks", "high_tension", "consequences", "escalation"],
+};
+const verdictKeys = (kind, series) => (isLongAnime(series) ? ANIME_REQUIRED_VERDICTS : REQUIRED_VERDICTS)[kind] ?? [];
 
 /**
  * Why a chapter outline breaks the retention rules (docs/videos/BINGE.md), or null: every
@@ -169,9 +225,9 @@ export function retentionProblem(series, episodes) {
 }
 
 /** Why a checker's verdict on a document cannot be filed as one, or null. */
-export function verdictProblem(verdict, kind) {
+export function verdictProblem(verdict, kind, series = null) {
   if (!isObject(verdict) || !isObject(verdict.verdicts)) return "the verdict has no verdicts object";
-  const required = REQUIRED_VERDICTS[kind] ?? [];
+  const required = verdictKeys(kind, series);
   const missing = required.filter((key) => !VERDICT_VALUES.includes(verdict.verdicts[key]));
   if (missing.length) return `the verdict lacks ${missing.join(", ")} (each 有, 弱 or 無)`;
   if (!Array.isArray(verdict.problems) || !Array.isArray(verdict.similar_works)) return "the verdict needs problems and similar_works lists";
@@ -179,8 +235,8 @@ export function verdictProblem(verdict, kind) {
 }
 
 /** The verdict as the site reads it: the required keys, the lists, one line of notes. */
-export function verdictFor(verdict, kind) {
-  const keys = REQUIRED_VERDICTS[kind] ?? [];
+export function verdictFor(verdict, kind, series = null) {
+  const keys = verdictKeys(kind, series);
   return {
     verdicts: Object.fromEntries(keys.map((key) => [key, verdict.verdicts[key]])),
     problems: verdict.problems.map((item) => String(item)).filter((item) => item.trim()),
@@ -190,8 +246,8 @@ export function verdictFor(verdict, kind) {
 }
 
 /** Whether a verdict passes the site's rule (mirrored here so the report line can say so). */
-export function verdictPasses(verdict, kind) {
-  const keys = REQUIRED_VERDICTS[kind] ?? [];
+export function verdictPasses(verdict, kind, series = null) {
+  const keys = verdictKeys(kind, series);
   const values = keys.map((key) => verdict.verdicts?.[key]);
   if (values.some((value) => value !== "有" && value !== "弱")) return false;
   if (values.filter((value) => value === "弱").length > MAX_WEAK_VERDICTS) return false;
@@ -228,13 +284,21 @@ export function retentionNumbers(video, retention) {
 export function scriptVerdict(check, series) {
   const problems = [];
   const coverage = isObject(check?.coverage) ? check.coverage : {};
-  for (const beat of COVERAGE_BEATS) {
+  const required = isLongAnime(series) && isClosedAnimeFinale(series) ? ["hook", "conflict", "turn", "closure"] : COVERAGE_BEATS;
+  for (const beat of required) {
     if (!VERDICT_VALUES.includes(coverage[beat])) problems.push(`the checker gave no verdict on the ${beat}`);
     else if (coverage[beat] === "無") problems.push(`the ${beat} is missing from the script`);
   }
-  if (COVERAGE_BEATS.filter((beat) => coverage[beat] === "弱").length > MAX_WEAK_VERDICTS) problems.push("more than one beat is only weakly delivered");
+  if (required.filter((beat) => coverage[beat] === "弱").length > MAX_WEAK_VERDICTS) problems.push("more than one beat is only weakly delivered");
   for (const problem of check?.problems ?? []) problems.push(String(problem));
   for (const work of check?.similar_works ?? []) problems.push(`resembles an existing work: ${work}`);
+  if (isLongAnime(series)) {
+    if (!Array.isArray(coverage.high_tension) || coverage.high_tension.length !== 2 || coverage.high_tension.some((value) => value !== "有")) problems.push("both high_tension events must be fully played");
+    if (coverage.consequences !== "有") problems.push("lasting consequences must be played");
+    if (isClosedAnimeFinale(series) && coverage.closure !== "有") problems.push("the closed finale needs positive closure");
+    if (!Array.isArray(check?.continuity_problems)) problems.push("the checker needs continuity_problems");
+    else problems.push(...check.continuity_problems.map(String));
+  }
   if (retentionRequired(series)) {
     if (!["有", "弱"].includes(coverage.satisfaction)) problems.push("the satisfaction beats are not played");
     const retention = check?.retention;
@@ -386,7 +450,7 @@ export function episodeBrief(series, episode, cast, beats) {
     `- 開場鉤子：${beats.hook ?? ""}${beats.hook_type ? `（${beats.hook_type}）` : ""}`,
     `- 主要衝突：${beats.conflict ?? ""}`,
     `- 轉折：${beats.turn ?? ""}`,
-    `- 結尾懸念：${cliff}`,
+    `- ${isClosedAnimeFinale(series, episode.number, beats) ? "終局收束" : "結尾懸念"}：${cliff}`,
     ...(Array.isArray(beats.satisfaction) && beats.satisfaction.length ? [`- 爽點：${beats.satisfaction.map((beat) => `${beat.beat}｜${beat.type}`).join("、")}`] : []),
     ...(beats.lead_arc ? [`- 主角走向：${beats.lead_arc}`] : []),
     `- 埋下：${listed(beats.setups)}；回收：${listed(beats.payoffs)}`,
@@ -394,6 +458,7 @@ export function episodeBrief(series, episode, cast, beats) {
     `- 場景：${listed(beats.locations)}`,
     ...(beats.theme ? [`- 主題句：${beats.theme}`] : []),
     "",
+    ...(isLongAnime(series) ? ["", "## 原作事件與製作預算", JSON.stringify({ production_policy: series.production_policy, runtime_spec: series.runtime_spec, beats }, null, 2)] : []),
     "## 大綱",
     "",
     `### 選項 A：${episode.title}`,
@@ -412,6 +477,8 @@ export function documentPayload(automation, job, problem = null) {
     kind: job.kind,
     series: {
       slug: series.slug,
+      kind: series.kind ?? "series",
+      ...(hasAnimePolicy(series) ? { category: series.category, production_policy: series.production_policy, runtime_spec: series.runtime_spec } : {}),
       title: series.title,
       premise: series.premise,
       aspects: series.aspects,
@@ -430,7 +497,7 @@ export function documentPayload(automation, job, problem = null) {
       hands_off: Boolean(series.hands_off),
       total_minutes: series.total_minutes ?? null,
     },
-    genre_spec: GENRE_SPECS[series.genre] ?? null,
+    genre_spec: isLongAnime(series) ? null : GENRE_SPECS[series.genre] ?? null,
     series_reference: refs.series,
     drama: refs.drama,
     drama_settings: automation.dramaPayload({ style_preset: series.style_preset }).drama_settings,
@@ -477,7 +544,7 @@ export async function judgeDocument(automation, job, answer) {
   const payload = {
     kind: job.kind,
     series: documentPayload(automation, job).series,
-    genre_spec: GENRE_SPECS[series.genre] ?? null,
+    genre_spec: isLongAnime(series) ? null : GENRE_SPECS[series.genre] ?? null,
     series_reference: automation.reference().series,
     document: { body_md: answer.body_md, body_json: answer.body_json },
     setting: job.kind !== "setting" && context.setting ? { body_md: context.setting.body_md, body_json: context.setting.body_json } : null,
@@ -494,8 +561,8 @@ export async function judgeDocument(automation, job, answer) {
       problem = error.message;
       continue;
     }
-    problem = verdictProblem(verdict, job.kind);
-    if (!problem) return verdictFor(verdict, job.kind);
+    problem = verdictProblem(verdict, job.kind, series);
+    if (!problem) return verdictFor(verdict, job.kind, series);
   }
   automation.log(`  the checker gave no usable verdict on ${job.kind} (${problem}); the document waits for the owner`);
   return null;
@@ -532,7 +599,7 @@ export async function planDocument(automation, job) {
     const made = job.previous ? `rewritten from ${String(job.previous.note ?? "").startsWith("[auto]") ? "the checker's" : "the owner's"} note` : "planned";
     if (doc.status === "approved") return `series ${series.slug}: ${what} ${made} (version ${doc.version}) and approved on the checker's verdict`;
     if (doc.status === "rejected") return `series ${series.slug}: ${what} ${made} (version ${doc.version}); the checker sent it back for a rewrite (${doc.note ?? ""})`;
-    if (judge && !verdictPasses(judge, job.kind)) return `series ${series.slug}: ${what} ${made} (version ${doc.version}); the rewrites are spent, so it waits for the owner with the checker's problems`;
+    if (judge && !verdictPasses(judge, job.kind, series)) return `series ${series.slug}: ${what} ${made} (version ${doc.version}); the rewrites are spent, so it waits for the owner with the checker's problems`;
     return `series ${series.slug}: ${what} ${made} (version ${doc.version}); it waits for the owner on /admin/videos`;
   }
   const kept = automation.keepAnswer(path.join(automation.workBase, "_series", series.slug), job.kind);
@@ -550,6 +617,7 @@ export function documentName({ kind, chapter_number: chapter }) {
 /** Start the next episode on the site and draft it here from the chapter's beats. */
 export async function startEpisode(automation, job) {
   const { series, episode } = job;
+  if (series.planning_only) throw new AutomationError("planning-only series cannot start production", { code: OUTPUT_INVALID });
   // A brand story (docs/videos/STORY.md) starts under the slug its plan fixed, drafted by story.mjs.
   if (series.kind === "story") return startStory(automation, job);
   const started = await automation.api.episodeStart(series.slug, episode.number, episodeSlug(series.slug, episode.number));
@@ -570,7 +638,7 @@ export async function seriesStep(automation) {
     if (error instanceof AutomationError && error.status === 404) return null;
     throw error;
   }
-  if (!job) return null;
+  if (!job || job.series?.planning_only) return null;
   if (job.kind === "episode") {
     if (!automation.room()) return null;
     return startEpisode(automation, job);

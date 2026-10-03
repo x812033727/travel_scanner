@@ -1,0 +1,300 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/drama_audit_map",
+  "reviewed_at": "2026-10-02T14:17:57.832Z",
+  "status": "independent-code-and-source-review-not-media-acceptance",
+  "scope": "Second-pass production to script to audition to later localization handoff; actual-take approval invalidation delta review. This is not a fresh complete narrative review of all 400 episodes.",
+  "original_cleanup_refs_basis": "Pre-fix runtime at e06a741053372f123fc11f43c12a1c9f18ffaea7; original_refs are the lines observed before the local retention and audio-evidence patches.",
+  "reviewed_file_sha256": {
+    "tools/video/core/audio-evidence.mjs": "d0703b7325c8a9f329ef29a58f072a8f1d2409f828d278c298dd287601678be5",
+    "tools/video/core/audio-evidence.test.mjs": "e92876c8af2fb6dcb500dd4d1845e045630886a124a97f4b33ad1cdc390795f0",
+    "tools/video/core/approvals.mjs": "bfbae10d94a3b37163c660a5a16cb7a5889c3f04cd974e505a2796cb07fe4791",
+    "tools/video/core/state.mjs": "e614848c80db3b5d8efbc320666339b64f4daaae3d6f762f686e6b41b30fe05b",
+    "tools/video/tts/cli.mjs": "0289688c75c54ad4845a21dfa2034fdc9d785a55c24996772ba43ffa880d3c42",
+    "tools/video/tts/tts.test.mjs": "3d8284ec804d93a110551b5ec47d4599e3c9c242e76c441578f3f754ceb030c2",
+    "tools/video/review/sync.mjs": "4402fb30c10fdc748c2c031b5adc4952fb4803c706705291839ec8ea13cc5ec9",
+    "tools/video/review/sync.test.mjs": "99d0fee64c251daf973cb52191e8fd4d830e9db85d6e1a32c14c22f788eca07e",
+    "tools/video/assemble/cli.mjs": "bb455d16d1b5299260e962d61d059fd83addc5d2dad0d0f81bd9b657e57f5515",
+    "tools/video/assemble/synthetic.mjs": "cd15be5b7ec6afbe8043627723436cab7334ae7b9bb9f95099fe6b0e0b41fdab",
+    "tools/video/qa/cli.mjs": "ab335eec44017a44ee35407e3710a700c1c3f7caed0fb6092637d29af1a31713",
+    "tools/video/package/cli.mjs": "e500b4cbc74aa7a204b77a94cf7debfbc9547104d3ecadce75a159d6f730274f",
+    "tools/video/automation/flow.mjs": "5520bcbd7950306cc572e6bf2e909917dae79665df654103afadbc02d15ea88b",
+    "tools/video/automation/series.test.mjs": "3be69eb761380e614b7508a01873510b00ec4844ef4503b039b1a934163f4436",
+    "tools/video/automation/automation.test.mjs": "55beb2b9911eb0d8c62a419c40b6f03ad9ab2cdd2b38e834dbc6c0c700e9f801",
+    "tools/video/core/fixtures/load.mjs": "dcdc8fbb3df5b5e2093eaca63a8c92bd43726a3da0cf3e1f834a2493d463b9b5",
+    "tools/video/core/schema.mjs": "f535eb764454ba142dd8d871050c1161e76e8fbcce294f79a3952ef5f766cec3",
+    "tools/video/core/schema.test.mjs": "fcc93dac95e03a0fbeb2eeef91385b293b9b013c65824f0a8abd43180e414116",
+    "tools/video/production/voice-audit.mjs": "dda8c6b6265a753e31eeab23fa6b2d9f725f2e812834b6c359c473dd6c966ccc",
+    "tools/video/production/design.mjs": "9434429b6a9aed35ae4f169d1fac08fa69b6b77d98e9c453131490ca936d6142",
+    "tools/video/production/retention.mjs": "37c49fac70425908c4c050b71e34ea45ad8883083ea8c29907786058b1fbdf70",
+    "tools/video/production/retention.test.mjs": "554d806bbef661584d61d72a7c0b01eb3f5dee6d6c3aa320a721488d38e3c00d",
+    "tools/video/automation/tidy.mjs": "038767a1f66c7dacd877942c6579329fea6a37326a8f1ccf2954e9c65bdf9946",
+    "tools/video/automation/tidy.test.mjs": "0d1f86544e4c50782c5fb5489a128d476c39c4aaf02851ba36b3b4cb2e230d73",
+    "tools/video/qa/duration.test.mjs": "43ed1cc2a7dc76ebbeeed38657492af76b38ce113187c6dd938070a4afcf3884"
+  },
+  "profile_sha256": "654aba4b6ecc13d7b0ecd645e0f9ec24c999d1062831ff36e8f148954ffc0a33",
+  "coverage": [
+    {
+      "slug": "wedding-reckoning",
+      "source_sha256": "37328fa1c643e0edfcd1d138a158410653b36d6e02739ce7a9c555b26bc5bb9c",
+      "design_sha256": "544174a0350af6822a5cb567f974fd9fc72b0c0af5925709e24c21292e2f2adb",
+      "episodes": 40,
+      "audition_plan_entries": 55,
+      "effective_voice_states": 9,
+      "uncredited_cue_speakers": []
+    },
+    {
+      "slug": "seventh-passenger",
+      "source_sha256": "e976faae66782ad05892b0e7d438fd79c77cfd137ec060d9561545456c2abb72",
+      "design_sha256": "f1b92a7d272ef8cca6d52c5b637a79326089d40a36ec9eb775329541ea90da47",
+      "episodes": 40,
+      "audition_plan_entries": 67,
+      "effective_voice_states": 12,
+      "uncredited_cue_speakers": []
+    },
+    {
+      "slug": "scapegoat-empress",
+      "source_sha256": "399f468d18158a3938450d95d1cc9b615756cfa686d93c9c3e8afc7bcf34dc28",
+      "design_sha256": "f2c0f912958e4f7619a32a79550bd7f303a27ce048ef09df0b19f74bee0deae0",
+      "episodes": 40,
+      "audition_plan_entries": 70,
+      "effective_voice_states": 12,
+      "uncredited_cue_speakers": []
+    },
+    {
+      "slug": "city-owes-a-light",
+      "source_sha256": "dce3acd2cbeb70c34feb1e1062d6a8d917930f92261f0e3dcb7b9634e894ba43",
+      "design_sha256": "55dcb196c567a94c66b5357bc37c4f194207c9dfd380fa153db9137d2453d5e9",
+      "episodes": 40,
+      "audition_plan_entries": 59,
+      "effective_voice_states": 10,
+      "uncredited_cue_speakers": []
+    },
+    {
+      "slug": "remembered-by-rival",
+      "source_sha256": "061c82d31f88119d8cf764765075d6821720861c5dff3f41bc04dad3e473307e",
+      "design_sha256": "87d2826b53f77d47c092ae8ab23e71ba8726753e9c86682b5ab7207aa09e568d",
+      "episodes": 40,
+      "audition_plan_entries": 56,
+      "effective_voice_states": 9,
+      "uncredited_cue_speakers": []
+    },
+    {
+      "slug": "reload-first-day",
+      "source_sha256": "547f65666d8efbe94b9ab5cbd667910fce833e0f573673ceda4ccebbe53c5b19",
+      "design_sha256": "78d22b37a9b4969c8d8f28c0afe9028318902ad65ac2d1a65e62238d200ad5f3",
+      "episodes": 40,
+      "audition_plan_entries": 97,
+      "effective_voice_states": 13,
+      "uncredited_cue_speakers": []
+    },
+    {
+      "slug": "before-the-hammer",
+      "source_sha256": "741c9f348e85e0e22b3a6dcf50b82ac24cd574c9fa340b0b8cc4101d6601f78c",
+      "design_sha256": "066d3f8c528d382a09a453fa3636117700534ba1daccfdce020a39f6adc1a9f8",
+      "episodes": 40,
+      "audition_plan_entries": 69,
+      "effective_voice_states": 11,
+      "uncredited_cue_speakers": []
+    },
+    {
+      "slug": "three-needles",
+      "source_sha256": "7a582b004b969931bbb2678da0c66504b935054574a42b3edd2b30a898a3a8d6",
+      "design_sha256": "18c498e9b0626de07c341bca677ef36d935a4b778d7bcc963bee8329c83ed611",
+      "episodes": 40,
+      "audition_plan_entries": 82,
+      "effective_voice_states": 13,
+      "uncredited_cue_speakers": []
+    },
+    {
+      "slug": "taste-of-the-throne",
+      "source_sha256": "7a2368145d3ead124172d8034d89ba49468c4649d25501df31aede49278dfa4f",
+      "design_sha256": "d378fffb75e8dd1fdf6bf4389f08b2026cdd2f5eaa081d7b1abc00b47e5b82b0",
+      "episodes": 40,
+      "audition_plan_entries": 75,
+      "effective_voice_states": 11,
+      "uncredited_cue_speakers": []
+    },
+    {
+      "slug": "ghost-at-his-side",
+      "source_sha256": "5dec7b3d0f63c88e1a8e3e9007a6b4b543e7535b99dd5cb42d8b168e1cdaf73d",
+      "design_sha256": "8b65d1a7435f3f65fbf5a7e3bfb0b999c2b7e3a05090bbc0750103d63b814d65",
+      "episodes": 40,
+      "audition_plan_entries": 75,
+      "effective_voice_states": 10,
+      "uncredited_cue_speakers": []
+    }
+  ],
+  "independent_runtime_review": {
+    "result": "No actionable defect found in the examined patch.",
+    "examined_chain": [
+      "TTS writes each original/repeated WAV and complete narration, then binds actual SHA256 plus PCM sample lengths into timeline.json.",
+      "Local audio approve/approvalState, remote review push/pull and the worker reject missing or changed audio evidence even with unchanged transcript and duration.",
+      "Old transcript entries are excluded when their clip hash differs from the current bound take; unchecked lines remain visible to the approval gate.",
+      "Assembly checks current evidence; pipeline, final review, QA and packaging reject a cut mixed from an older narration hash. Compilation remains on its separate existing episode-final path.",
+      "Legacy same-script manifests refresh evidence from current cached WAVs without a token/network or paid synthesis; missing cache/takes cannot be silently regenerated by refresh.",
+      "The shared test fixture now writes deterministic per-line WAVs and matching narration instead of fabricating manifest-only approvals."
+    ],
+    "regressions_examined": [
+      "core/audio-evidence.test.mjs: missing binding and same-duration changed WAV",
+      "tts/tts.test.mjs: same-duration exact-take retake plus offline legacy refresh",
+      "review/sync.test.mjs: remote old approval rejected, stale check counted unchecked, stale final stopped before QA",
+      "automation/series.test.mjs: worker rejects changed WAV before accepting remote decision"
+    ],
+    "test_execution": "At reviewed_at, the implementation author was running the integrated suite; this independent review did not duplicate that run or claim it had already passed. See validation.json in this directory for the final integrated and full-tools results."
+  },
+  "independent_source_review": {
+    "result": "The three scoped production-direction corrections match source.",
+    "corrections": [
+      {
+        "slug": "city-owes-a-light",
+        "episode": 13,
+        "source_refs": [
+          "docs/videos/series-plans/binge-five-20260928/city-owes-a-light/source.mjs:3056"
+        ],
+        "finding": "The relay text is reported by Chen Xun, the credited character; Zheng Yin only repeats the dispatch text in episodes 14-15."
+      },
+      {
+        "slug": "reload-first-day",
+        "episode": 23,
+        "source_refs": [
+          "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-3.mjs:49",
+          "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-3.mjs:50"
+        ],
+        "finding": "Objective sound uses Wanzhao's own recorded voice; only her subjective viewpoint removes it. No substitute narrator paraphrase."
+      },
+      {
+        "slug": "reload-first-day",
+        "episode": 25,
+        "source_refs": [
+          "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-3.mjs:81",
+          "docs/videos/series-plans/claude-binge-five-20260928/reload-first-day/chapter-3.mjs:84"
+        ],
+        "finding": "Only real Zhou Yu taps the watch three times. The impostor counts silently, and heavy breathing follows the impact rather than identifying the real actor early."
+      }
+    ]
+  },
+  "localization_retention": {
+    "finding": "The former seven-day cleanup could delete dry lines, narration, picture master, built effects and paid clips after Chinese-first upload while later ja/ko/en remained planned.",
+    "original_refs": [
+      "tools/video/automation/tidy.mjs:35",
+      "tools/video/automation/tidy.mjs:49",
+      "tools/video/automation/tidy.mjs:208",
+      "tools/video/automation/flow.mjs:1973",
+      "docs/videos/series-plans/production-20261001/profile.json:7",
+      "docs/videos/series-plans/production-20261001/README.md:38"
+    ],
+    "implementation_authorship": "This reviewer authored retention.mjs/test and tidy.mjs/test; these edits are not self-certified as independently reviewed.",
+    "independent_reviewer": "/root/claude_five_audit reported no actionable defect after examining the four retention files and regressions.",
+    "author_test_result": {
+      "tests": 36,
+      "passed": 35,
+      "failed": 0,
+      "skipped": 1,
+      "skip_reason": "Windows does not allow the existing file-symlink test."
+    },
+    "behavior": "Bound video.json plan plus persistent workdir marker preserve source media; legacy series.json also holds; compilations inherit descendant holds. Empty current locale selection, skipped language tasks, age, disappearing from site listings and dropping do not release the promise. Ordinary completed slides without a localization promise retain existing cleanup behavior.",
+    "release_status": "No automatic archive, cancellation or release path implemented. Explicit owner-authorized verified archive/release is tracked in tasks/open/2026-10-02-localization-media-archive-release.md."
+  },
+  "checked_non_findings": [
+    "All ten pure audition plans build: 400 episodes, 705 plan entries and 110 effective voice states; no audio-cue speaker missing from its source episode cast.",
+    "Audition effective_style is separate from audition_style, which includes the sample acting direction and only spoken-name/term hints. Nonverbal materials remain not synthesizable.",
+    "An actor absent from a visual shot is not automatically removed from script cast or voice lookup; unknown speakers fail script lint.",
+    "Later ja/ko/en cast dubbing is explicitly planned-not-implemented-for-drama and existing slide dubbing rejects drama. This is a known remaining feature, not falsely reported as operational.",
+    "Multiple performance episodes can cross different effective voice styles; unique effective styles already have separate audition entries. Combined acting/listening acceptance is still unperformed, not claimed as a mechanical failure."
+  ],
+  "limits": [
+    "This independent reviewer performed no paid synthesis, listening, animation rendering, production access, media approval or upload. The separate guarded backend synchronization is documented in backend-verification.json.",
+    "Synthetic tests prove byte binding and control flow only; they do not prove pronunciation, acting quality, timing or final mix quality.",
+    "Localization still needs its own language cast, separately timed CC and speech-free music/effects production and acceptance."
+  ],
+  "delta_reviews": [
+    {
+      "reviewed_at": "2026-10-02T14:25:43.431Z",
+      "reviewer": "/root/drama_audit_map",
+      "status": "independent-code-review-no-actionable-defect",
+      "files": [
+        {
+          "file": "tools/video/core/audio-evidence.mjs",
+          "previous_reviewed_sha256": "1eb8ad19e8378f1c8a9023bd9c6e830d8b7c654a83f7f25072c58f1c82a12ee6",
+          "current_sha256": "d0703b7325c8a9f329ef29a58f072a8f1d2409f828d278c298dd287601678be5"
+        },
+        {
+          "file": "tools/video/review/sync.test.mjs",
+          "previous_reviewed_sha256": "d5e6ec26f21eca11ea15adb9688d82f42e7a5113b492878a4dbbe347cf0add28",
+          "current_sha256": "cf4733e155511997018c6210fd6cb1ede7a22324c59bc86267ea352a3bb14bf4"
+        },
+        {
+          "file": "tools/video/qa/duration.test.mjs",
+          "previous_reviewed_sha256": null,
+          "current_sha256": "43ed1cc2a7dc76ebbeeed38657492af76b38ce113187c6dd938070a4afcf3884"
+        }
+      ],
+      "findings": [
+        "Every verification still reads the entire current file and computes its full SHA-256; a mismatch returns that digest for immediate rejection before decoding or cache reuse.",
+        "Only an exact immutable SHA-256 key can reuse previously validated format/sample count. The bounded map stores at most 1024 numeric counts, not WAV bytes, file paths or timestamps.",
+        "The expected timeline sample count is compared on every matching-hash check, including cache hits. Explicit binding uses map((file) => measured(file)) so the array index cannot become the verification flag.",
+        "The review fixture now writes current narration provenance with ok:false, preserving negative quality-check behavior rather than inventing a passing assembly.",
+        "The duration QA fixture writes deterministic bound WAVs and attaches the narration SHA. Its body/presentation duration boundary assertions are unchanged."
+      ],
+      "independent_test": {
+        "command": "node --test tools/video/core/audio-evidence.test.mjs",
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "coverage": "The cache is warmed by initial binding/approval before same-duration per-line and narration byte changes. Both invalidate approval; missing bindings and mismatched transcript hashes still reject."
+      },
+      "limits": "No media generation or listening. The implementation author and root own the broader integrated test result."
+    },
+    {
+      "reviewed_at": "2026-10-02T14:44:17.799Z",
+      "reviewer": "/root/drama_audit_map",
+      "status": "delivery-line-ending-only-no-semantic-change",
+      "normalization_record": "test-results/ten-drama-handoff-lf-normalization.json",
+      "scope": "Five previously CRLF files within this receipt's 25-file scope; the other eight entries of the root normalization manifest are outside this receipt's bindings.",
+      "files": [
+        {
+          "file": "tools/video/review/sync.mjs",
+          "previous_reviewed_sha256": "5037bc52752725da035c01ee1293dd954f9ca0aab1e0ad75b21d1d1886c63172",
+          "current_sha256": "4402fb30c10fdc748c2c031b5adc4952fb4803c706705291839ec8ea13cc5ec9",
+          "independently_precomputed_lf_sha256": "4402fb30c10fdc748c2c031b5adc4952fb4803c706705291839ec8ea13cc5ec9",
+          "only_crlf_to_lf": true
+        },
+        {
+          "file": "tools/video/review/sync.test.mjs",
+          "previous_reviewed_sha256": "cf4733e155511997018c6210fd6cb1ede7a22324c59bc86267ea352a3bb14bf4",
+          "current_sha256": "99d0fee64c251daf973cb52191e8fd4d830e9db85d6e1a32c14c22f788eca07e",
+          "independently_precomputed_lf_sha256": "99d0fee64c251daf973cb52191e8fd4d830e9db85d6e1a32c14c22f788eca07e",
+          "only_crlf_to_lf": true
+        },
+        {
+          "file": "tools/video/qa/cli.mjs",
+          "previous_reviewed_sha256": "6cbc0cbdb7a17c5480cf48343aca5c860be0e9fd1c42f8c9426373d1d74c221c",
+          "current_sha256": "ab335eec44017a44ee35407e3710a700c1c3f7caed0fb6092637d29af1a31713",
+          "independently_precomputed_lf_sha256": "ab335eec44017a44ee35407e3710a700c1c3f7caed0fb6092637d29af1a31713",
+          "only_crlf_to_lf": true
+        },
+        {
+          "file": "tools/video/package/cli.mjs",
+          "previous_reviewed_sha256": "599613a25be6038a887c4aac0cf59627d565db96d9a5fef3dd9a7b5786f060f0",
+          "current_sha256": "e500b4cbc74aa7a204b77a94cf7debfbc9547104d3ecadce75a159d6f730274f",
+          "independently_precomputed_lf_sha256": "e500b4cbc74aa7a204b77a94cf7debfbc9547104d3ecadce75a159d6f730274f",
+          "only_crlf_to_lf": true
+        },
+        {
+          "file": "tools/video/automation/automation.test.mjs",
+          "previous_reviewed_sha256": "75f5bae93a83cd3bde4634d1700fb0f694670c80971e95ecd7b63a3ba849ee25",
+          "current_sha256": "55beb2b9911eb0d8c62a419c40b6f03ad9ab2cdd2b38e834dbc6c0c700e9f801",
+          "independently_precomputed_lf_sha256": "55beb2b9911eb0d8c62a419c40b6f03ad9ab2cdd2b38e834dbc6c0c700e9f801",
+          "only_crlf_to_lf": true
+        }
+      ],
+      "unchanged_bindings": 20,
+      "findings": [
+        "Each current SHA-256 matches the LF result independently computed from the original bytes before normalization. The root manifest also matches both before and after hashes.",
+        "The remaining twenty reviewed file hashes are unchanged. No runtime, source story, duration boundary or archived receipt content was changed by this delta."
+      ],
+      "test_execution": "No runtime tests rerun for the verified CRLF-to-LF-only delivery change; retain prior semantic test results and consult validation.json for the root full-tools result."
+    }
+  ]
+}

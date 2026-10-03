@@ -18,7 +18,7 @@ import { HEIGHT, layoutScenes, LOUDNESS, PlanError, WIDTH } from "./plan.mjs";
 // Part of every clip segment's cache key: change a setting below and every clip is re-encoded.
 export const CLIP_ENCODER_VERSION = "x264-high-crf18-film-g60-bf2-bt709-clip-v1";
 // The same for a motion segment: the zoompan expressions below are part of what it versions.
-export const MOTION_ENCODER_VERSION = "x264-high-crf18-film-g60-bf2-bt709-motion-v2";
+export const MOTION_ENCODER_VERSION = "x264-high-crf18-film-g60-bf2-bt709-motion-v3";
 // A card of an illustrated slides video (docs/videos/ILLUSTRATED.md) may drift like a still: its
 // segment key carries this too, so a change to how cards move never touches a drama's keys.
 export const MOTION_CARD_VERSION = "card-motion-v1";
@@ -33,6 +33,18 @@ export const MOTION_DRIFT_ZOOM = 0.04;
 // The keyframe is upscaled this much before zoompan crops it, so the crop window is never
 // smaller than the output and no frame is enlarged from fewer pixels than it shows.
 export const MOTION_SOURCE_SCALE = 1.25;
+// A move's travel grows with the shot up to this many seconds, so the picture moves at about
+// one speed in a short shot and a long one instead of hurrying through a short one; a shorter
+// shot keeps at least MOTION_TRAVEL_MIN of the travel. The long video's stills ease their move
+// (smoothstep) and scale it; a Short (shorts/motion.mjs) asks for the plain linear expressions.
+export const MOTION_TRAVEL_SECONDS = 6;
+export const MOTION_TRAVEL_MIN = 0.5;
+// Where a drifting picture goes: its shot id decides, so two drifts in a row rarely go one way.
+export const DRIFT_DIRECTIONS = ["right", "left"];
+// A scene change of an illustrated slides video is a cut, like an editor's, except after a
+// pause beat at least this long on the line before (the register's beats: 900 ms after the cold
+// open, 600 before an 其實), where the picture dissolves (docs/videos/ILLUSTRATED.md).
+export const DISSOLVE_BEAT_MS = 600;
 // A clip shorter than its narration is slowed no further than this before its last frame holds.
 export const MIN_AUTO_SPEED = 0.85;
 export const MIN_SLOW_SPEED = 0.5;
@@ -83,12 +95,17 @@ export function freezeProblem(scene, fit) {
 /**
  * The transition into a scene of an illustrated slides video (docs/videos/ILLUSTRATED.md): the
  * writer's word when the scene carries one; else a hard cut into the first scene and into every
- * chapter opener (the chapter card is the beat), and a dissolve everywhere else.
+ * chapter opener (the chapter card is the beat), a dissolve after a pause beat on the line
+ * before (`previous` is that scene), and a cut everywhere else: an editor cuts, and dissolves
+ * where the story breathes, while a dissolve into every picture is the slideshow a viewer
+ * reads as automated.
  */
-export function illustratedTransition(source, index) {
+export function illustratedTransition(source, index, previous = null) {
   if (index === 0) return "cut";
   if (source.data?.transition) return source.data.transition;
-  return source.chapter ? "cut" : "dissolve";
+  if (source.chapter) return "cut";
+  const beat = previous?.lines?.at(-1)?.pause_after_ms ?? 0;
+  return beat >= DISSOLVE_BEAT_MS ? "dissolve" : "cut";
 }
 
 /**
@@ -108,24 +125,27 @@ export function layoutDrama(doc, timeline, frames, clips, keyframes = null, { tr
     const source = doc.scenes.find((each) => each.id === scene.id);
     if (!source || rendered.id !== scene.id) throw new PlanError(`scene ${scene.id} does not match the rendered frames; run render again`);
     const base = { id: scene.id, frames: scene.end_frame - scene.start_frame, start_frame: scene.start_frame };
+    const previous = index > 0 ? (doc.scenes.find((each) => each.id === timeline.scenes[index - 1].id) ?? null) : null;
     if (!isShot(source)) {
       if (cardMotion && rendered.states.length === 1 && rendered.states[0].still) {
         const move = CARD_MOVES[moved % CARD_MOVES.length];
+        // Drifting cards take turns going right and left, as the shots' drifts do.
+        const direction = move === "drift" ? { direction: DRIFT_DIRECTIONS[Math.floor(moved / CARD_MOVES.length) % DRIFT_DIRECTIONS.length] } : {};
         moved += 1;
-        const transition = transitionRule ? transitionRule(source, index) : "cut";
-        return { ...base, kind: "motion", card: true, keyframe: { file: rendered.states[0].still, sha256: null }, move: { name: move, startsAtIdentity: IDENTITY_START.has(move) }, transition, fit: null };
+        const transition = transitionRule ? transitionRule(source, index, previous) : "cut";
+        return { ...base, kind: "motion", card: true, keyframe: { file: rendered.states[0].still, sha256: null }, move: { name: move, startsAtIdentity: IDENTITY_START.has(move), ...direction }, transition, fit: null };
       }
       const [laid] = layoutScenes({ scenes: [scene] }, { scenes: [rendered] });
       return { ...laid, kind: "stills" };
     }
-    const transition = transitionRule ? transitionRule(source, index) : index > 0 ? (source.data?.transition ?? "cut") : "cut";
+    const transition = transitionRule ? transitionRule(source, index, previous) : index > 0 ? (source.data?.transition ?? "cut") : "cut";
     if (shotVisual(source) === "still") {
       // The keyframes manifest is the source; the clips manifest carries the same file and hash
       // for every still, so a work directory missing one still assembles from the other.
       const keyframe = keyframes?.shots?.[scene.id] ?? (clips?.shots?.[scene.id]?.still ? clips.shots[scene.id] : null);
       if (!keyframe?.file) throw new PlanError(`shot ${scene.id} is a still with no keyframe; run keyframes first`);
       if (keyframe.needs_review) throw new PlanError(`shot ${scene.id} is a still whose keyframe failed its checks (needs_review in keyframes/manifest.json); fix the prompt and run keyframes again`);
-      return { ...base, kind: "motion", keyframe: { file: keyframe.file, sha256: keyframe.sha256 ?? null }, move: motionMove(source.data), transition, fit: null };
+      return { ...base, kind: "motion", keyframe: { file: keyframe.file, sha256: keyframe.sha256 ?? null }, move: motionMove(source.data, scene.id), transition, fit: null };
     }
     const clip = clips?.shots?.[scene.id];
     if (!clip?.file || clip.still) throw new PlanError(`shot ${scene.id} has no clip; run clips first`);
@@ -157,19 +177,25 @@ const MOVES = [
 // Moves whose first frame is the whole keyframe at zoom 1.0, so frame 0 can be checked against it.
 const IDENTITY_START = new Set(["push-in", "drift"]);
 
+/** Which way a shot drifts: its id decides, so a run of drifting pictures does not all go one way. */
+export const driftDirection = (id) => DRIFT_DIRECTIONS[[...String(id ?? "")].reduce((sum, char) => sum + char.charCodeAt(0), 0) % DRIFT_DIRECTIONS.length];
+
 /**
  * Which camera move animates a still shot, read from the shot's camera direction first and its
- * motion prompt second: { name, startsAtIdentity }.
+ * motion prompt second: { name, startsAtIdentity }, a drift adding the direction its shot id
+ * gives it.
  */
-export function motionMove(data) {
+export function motionMove(data, id = null) {
   for (const text of [data?.camera, data?.motion]) {
     if (typeof text !== "string") continue;
     const lower = text.toLowerCase();
     const found = MOVES.find(([, pattern]) => pattern.test(lower));
     if (found) return { name: found[0], startsAtIdentity: IDENTITY_START.has(found[0]) };
   }
-  return { name: "drift", startsAtIdentity: true };
+  return { name: "drift", startsAtIdentity: true, direction: driftDirection(id) };
 }
+
+const round4 = (value) => Number(value.toFixed(4));
 
 /**
  * zoompan's zoom, x and y expressions for a move over `frames` output frames, in terms of `on`
@@ -177,21 +203,29 @@ export function motionMove(data) {
  * window's top-left corner in the upscaled keyframe: a window sliding right shows what lies to
  * the right, so the picture travels left. pan-right therefore slides the window from the right
  * edge to the left edge, and tilt-up (the camera tilting up) slides it from the bottom to the top.
+ * The move's progress is linear unless `eased` (smoothstep, 3t² − 2t³: it starts and settles
+ * like a hand on a tripod head rather than a motor), and `travel` scales how far it goes.
  */
-export function zoompanExpr(move, frames) {
+export function zoompanExpr(move, frames, { eased = false, travel = 1 } = {}) {
   const name = typeof move === "string" ? move : move?.name;
+  const direction = typeof move === "string" ? undefined : move?.direction;
   const n = Math.max(frames - 1, 1);
+  const t = `on/${n}`;
+  const p = eased ? `((${t})*(${t})*(3-2*(${t})))` : t;
+  const run = travel === 1 ? p : `${round4(travel)}*${p}`;
+  const zoom = round4(MOTION_ZOOM * travel);
+  const drift = round4(MOTION_DRIFT_ZOOM * travel);
   const centreX = "iw/2-(iw/zoom/2)";
   const centreY = "ih/2-(ih/zoom/2)";
   const midX = "(iw-iw/zoom)/2";
   const midY = "(ih-ih/zoom)/2";
-  const forward = (size) => `(${size}-${size}/zoom)*on/${n}`;
-  const backward = (size) => `(${size}-${size}/zoom)*(1-on/${n})`;
+  const forward = (size) => `(${size}-${size}/zoom)*${run}`;
+  const backward = (size) => `(${size}-${size}/zoom)*(1-${run})`;
   switch (name) {
     case "push-in":
-      return { z: `1+${MOTION_ZOOM}*on/${n}`, x: centreX, y: centreY };
+      return { z: `1+${zoom}*${p}`, x: centreX, y: centreY };
     case "pull-out":
-      return { z: `${1 + MOTION_ZOOM}-${MOTION_ZOOM}*on/${n}`, x: centreX, y: centreY };
+      return { z: `${round4(1 + zoom)}-${zoom}*${p}`, x: centreX, y: centreY };
     case "pan-right":
       return { z: `${MOTION_PAN_ZOOM}`, x: backward("iw"), y: midY };
     case "pan-left":
@@ -201,9 +235,12 @@ export function zoompanExpr(move, frames) {
     case "tilt-down":
       return { z: `${MOTION_PAN_ZOOM}`, x: midX, y: forward("ih") };
     default:
-      return { z: `1+${MOTION_DRIFT_ZOOM}*on/${n}`, x: `${midX}+(iw-iw/zoom)*0.15*on/${n}`, y: centreY };
+      return { z: `1+${drift}*${p}`, x: `${midX}${direction === "left" ? "-" : "+"}(iw-iw/zoom)*0.15*${run}`, y: centreY };
   }
 }
+
+/** How far a still of `frames` travels: the full move from MOTION_TRAVEL_SECONDS up, at least MOTION_TRAVEL_MIN of it below. */
+export const motionTravel = (frames) => Math.max(MOTION_TRAVEL_MIN, Math.min(1, frames / (MOTION_TRAVEL_SECONDS * FPS)));
 
 /**
  * The subtitle overlay for one scene: the strips shown for its frames, in order, with the blank
@@ -248,7 +285,7 @@ export function clipSegmentKey(scene, fit, subtitles = null, previous = null) {
 }
 
 export function motionSegmentKey(scene, move, subtitles = null, previous = null) {
-  return hash16([MOTION_ENCODER_VERSION, scene.frames, scene.keyframe.file, scene.keyframe.sha256, move.name, subtitles, scene.transition, previous, ...(scene.card ? [MOTION_CARD_VERSION] : [])]);
+  return hash16([MOTION_ENCODER_VERSION, scene.frames, scene.keyframe.file, scene.keyframe.sha256, move.name, move.direction ?? null, subtitles, scene.transition, previous, ...(scene.card ? [MOTION_CARD_VERSION] : [])]);
 }
 
 const COLOUR = `format=yuv420p,setparams=range=tv:color_primaries=bt709:color_trc=bt709:colorspace=bt709`;
@@ -322,9 +359,9 @@ export function clipSegmentArgs({ clip, frames, fit, subtitlesList = null, disso
   return encodeArgs(["-i", clip, ...overlays.inputs], overlayGraph(chain, overlays), frames, outFile);
 }
 
-/** The keyframe upscaled, then zoompan's crop window travelling as the move says: one output frame per input frame. */
+/** The keyframe upscaled, then zoompan's crop window travelling as the move says, eased and scaled to the shot: one output frame per input frame. */
 function motionChain(move, frames) {
-  const { z, x, y } = zoompanExpr(move, frames);
+  const { z, x, y } = zoompanExpr(move, frames, { eased: true, travel: motionTravel(frames) });
   return [
     `scale=${WIDTH * MOTION_SOURCE_SCALE}:${HEIGHT * MOTION_SOURCE_SCALE}:flags=lanczos`,
     `zoompan=z='${z}':x='${x}':y='${y}':d=1:s=${WIDTH}x${HEIGHT}:fps=${FPS}`,

@@ -4,8 +4,8 @@
 - 查核日：2026-09-23（台北），重抓時間 09:25–09:26
 - 內容包：`apps/api/app/guides/content/ai-news-meta-muse-agent-20260909.json`
 - 研究紀錄：`docs/ai-news-2026-09-late/research/ai-news-meta-muse-agent-20260909.json`
-- 工作樹：`C:\Users\x8120\mokaair\.claude\worktrees\news-4-4`（全程沒有執行任何 git 指令）
-- 第一輪報告：`C:\Users\x8120\mokaair-work\news44\factcheck\ai-news-meta-muse-agent-20260909-round1.md`
+- 工作樹：`<repo>\.claude\worktrees\news-4-4`（全程沒有執行任何 git 指令）
+- 第一輪報告：`<home>\mokaair-work\news44\factcheck\ai-news-meta-muse-agent-20260909-round1.md`
 - 本輪查 **63 條**：第一輪改過的 10 處、第一輪新寫進去的 14 句、從 117 條 CONFIRMED 中
   以 seed 20260923 抽出的 39 條（隨機三分之一）；另做 54 條 `verbatim_quote` 的程式比對與四條來源重抓。
 - 判定：CONFIRMED 52、CHANGED 11、NOT FOUND 0。11 條合併成 **9 處精確字串取代**（同一處取代涵蓋多條）。
@@ -156,7 +156,7 @@ ai-news-meta-muse-agent-20260909
 1 entries checked
 ```
 
-退出碼寫在 `C:\Users\x8120\mokaair-work\news44\_tools\ai-news-meta-muse-agent-20260909-r2\check.exit`
+退出碼寫在 `<home>\mokaair-work\news44\_tools\ai-news-meta-muse-agent-20260909-r2\check.exit`
 與 `lint.exit`；輔助腳本（重抓、抽字、引句比對、機械檢查、改稿與寫入 `factcheck.second_round`）在同一個目錄。
 
 ## 9. 結論
