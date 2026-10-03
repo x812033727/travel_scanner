@@ -141,8 +141,23 @@
           "text": "鎖定條件：地區、平台與 Context Hints"
         },
         {
-          "type": "paragraph",
-          "text": "文件寫明地區、平台與受眾三種鎖定是一起生效的，符合其中一項不會讓其他項失效；同一個人如果同時落在納入與排除的受眾名單裡，排除優先。地區鎖定用 ISO 3166-1 alpha-2 國碼，地區的納入與排除清單最多可以放 2,500 個地點代碼，文件並加註帳戶的可用範圍與活動模式還可能有額外限制。官方另外提醒，國碼在 ISO 上合法不代表你的帳戶可以在那個地區投放，要看支援的廣告投放地區——本文查核的四條來源都沒有列出那份地區清單，所以台灣是否已開放，本文沒有答案。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "文件寫明地區、平台與受眾三種鎖定是一起生效的，符合其中一項不會讓其他項失效；同一個人如果同時落在納入與排除的受眾名單裡，排除優先。地區鎖定用 ISO 3166-1 alpha-2 國碼，地區的納入與排除清單最多可以放 2,500 個地點代碼，文件並加註帳戶的可用範圍與活動模式還可能有額外限制。官方另外提醒，國碼在 ISO 上合法不代表你的帳戶可以在那個地區投放，要看支援的廣告投放地區——本文查核的四條來源都沒有列出那份地區清單；10 月 3 日更新：台灣進度見"
+            },
+            {
+              "type": "article",
+              "text": "這則新聞",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-ads-taiwan-20260923"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -182,7 +197,7 @@
             },
             {
               "question": "台灣的廣告主現在能不能用這個工具？",
-              "answer": "本文查核的四條來源都沒有列出可以投放廣告的地區清單。可以確定的是，鎖定設定頁提醒國碼在 ISO 上合法不代表你的帳戶可以在那個地區投放，要另外看支援的廣告投放地區，而且帳戶的可用範圍與活動模式還可能有額外限制；公告本身也只說自助廣告管理工具是逐步開放給更多企業，沒有提到任何地區。實際能不能用，要以廣告主登入帳戶後看到的內容為準，本文不代為推測台灣是否已經開放。"
+              "answer": "本文查核的四條來源都沒有列出可以投放廣告的地區清單。可以確定的是，鎖定設定頁提醒國碼在 ISO 上合法不代表你的帳戶可以在那個地區投放，要另外看支援的廣告投放地區，而且帳戶的可用範圍與活動模式還可能有額外限制；公告本身也只說自助廣告管理工具是逐步開放給更多企業，沒有提到任何地區。實際能不能用，要以廣告主登入帳戶後看到的內容為準，本文不代為推測台灣是否已經開放。2026 年 10 月 3 日更新：OpenAI 已在 2026 年 9 月 23 日宣布 ChatGPT 廣告開始在台灣逐步推出；說明中心的 Ads Manager 國家表也把台灣列為可自助使用（Available），條件是刊登並被收費的法律實體設在台灣。"
             },
             {
               "question": "廣告會不會影響 ChatGPT 給我的回答？",
@@ -194,7 +209,7 @@
           "type": "callout",
           "tone": "info",
           "title": "查核範圍與這篇文章的界線",
-          "text": "本文查核日期是 2026 年 9 月 18 日，依據是 OpenAI 2026 年 5 月 5 日的公告原文頁，以及開發者文件站上三份廣告 API 說明頁。凡是這項產品能做什麼、原則是什麼的敘述，都是 OpenAI 自己的說法，本站沒有實測。開發者文件是會持續更新的頁面，沒有發布日與版本號，反映的是查核當天讀到的版本，不代表 5 月 5 日當天就已經是這個樣子；公告當時也寫明自助廣告管理工具是測試版、逐步開放給更多企業。本站沒有登入 ChatGPT 廣告後台，沒有建立或購買過廣告，也沒有看過廣告實際出現的畫面；本文不提供採購建議，也不比較任何廣告平台的費用。想知道目前確切規則，請直接查 developers.openai.com 的廣告 API 文件或 OpenAI 官方新聞頁。"
+          "text": "本文查核日期是 2026 年 9 月 18 日，依據是 OpenAI 2026 年 5 月 5 日的公告原文頁，以及開發者文件站上三份廣告 API 說明頁。凡是這項產品能做什麼、原則是什麼的敘述，都是 OpenAI 自己的說法，本站沒有實測。開發者文件是會持續更新的頁面，沒有發布日與版本號，反映的是查核當天讀到的版本，不代表 5 月 5 日當天就已經是這個樣子；公告當時也寫明自助廣告管理工具是測試版、逐步開放給更多企業。本站沒有登入 ChatGPT 廣告後台，沒有建立或購買過廣告，也沒有看過廣告實際出現的畫面；本文不提供採購建議，也不比較任何廣告平台的費用。想知道目前確切規則，請直接查 developers.openai.com 的廣告 API 文件或 OpenAI 官方新聞頁。台灣的段落與問答已在 2026 年 10 月 3 日補上更新，其餘內容仍是 9 月 18 日的查核。"
         },
         {
           "type": "rich_paragraph",
@@ -367,8 +382,23 @@
           "text": "Targeting Conditions: Region, Platform, and Context Hints"
         },
         {
-          "type": "paragraph",
-          "text": "The documentation states that region, platform, and audience targeting all apply together, so meeting one of them does not override the others; if the same person falls into both an included and an excluded audience list, the exclusion takes precedence. Region targeting uses ISO 3166-1 alpha-2 country codes, and geographic inclusion and exclusion lists can hold up to 2,500 location IDs, with the documentation noting that account availability and campaign mode can impose additional restrictions. OpenAI also notes that a code's ISO validity does not mean your account can advertise in that region — you need to check the supported advertising locations; none of the four sources checked for this article lists that set of regions, so this article has no answer as to whether Taiwan is already supported."
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "The documentation states that region, platform, and audience targeting all apply together, so meeting one of them does not override the others; if the same person falls into both an included and an excluded audience list, the exclusion takes precedence. Region targeting uses ISO 3166-1 alpha-2 country codes, and geographic inclusion and exclusion lists can hold up to 2,500 location IDs, with the documentation noting that account availability and campaign mode can impose additional restrictions. OpenAI also notes that a code's ISO validity does not mean your account can advertise in that region — you need to check the supported advertising locations; none of the four sources checked for this article lists that set of regions. Update, October 3: for where Taiwan stands now, see "
+            },
+            {
+              "type": "article",
+              "text": "this report",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-ads-taiwan-20260923"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -408,7 +438,7 @@
             },
             {
               "question": "Can advertisers in Taiwan use this tool right now?",
-              "answer": "None of the four sources checked for this article lists the set of regions where ads can run. What can be confirmed is that the targeting documentation warns that a code's ISO validity does not mean your account can advertise in that region — you need to check the supported advertising locations separately, and account availability and campaign mode can impose additional restrictions; the announcement itself only says the self-serve ad management tool is gradually opening to more businesses, without mentioning any region. Whether it can actually be used should be judged from what an advertiser sees after logging into their account; this article does not guess whether Taiwan is already supported."
+              "answer": "None of the four sources checked for this article lists the set of regions where ads can run. What can be confirmed is that the targeting documentation warns that a code's ISO validity does not mean your account can advertise in that region — you need to check the supported advertising locations separately, and account availability and campaign mode can impose additional restrictions; the announcement itself only says the self-serve ad management tool is gradually opening to more businesses, without mentioning any region. Whether it can actually be used should be judged from what an advertiser sees after logging into their account; this article does not guess whether Taiwan is already supported. Update, October 3, 2026: on September 23, 2026, OpenAI announced ChatGPT ads rolling out in Taiwan, and its Help Center's Ads Manager table lists Taiwan as Available for self-serve, provided the legal entity that advertises and is billed is based there."
             },
             {
               "question": "Will ads affect the answers ChatGPT gives me?",
@@ -420,7 +450,7 @@
           "type": "callout",
           "tone": "info",
           "title": "The Scope and Limits of This Fact-Check",
-          "text": "This article was fact-checked on September 18, 2026, based on the original page of OpenAI's May 5, 2026 announcement and three ad API documentation pages on OpenAI's developer site. Every statement here about what this product can do, and what its principles are, is OpenAI's own description; this site has not tested it itself. The developer documentation is a continuously updated page with no publication date or version number, so it reflects the version read on the day of fact-checking, not necessarily what existed on May 5 itself; the announcement at the time also stated that the self-serve ad management tool was a beta being gradually opened to more businesses. This site has not logged into the ChatGPT ads dashboard, has not created or purchased any ads, and has not seen what an ad actually looks like; this article does not offer purchasing advice and does not compare the cost of any ad platforms. For the exact current rules, check the ad API documentation at developers.openai.com or OpenAI's official news page directly."
+          "text": "This article was fact-checked on September 18, 2026, based on the original page of OpenAI's May 5, 2026 announcement and three ad API documentation pages on OpenAI's developer site. Every statement here about what this product can do, and what its principles are, is OpenAI's own description; this site has not tested it itself. The developer documentation is a continuously updated page with no publication date or version number, so it reflects the version read on the day of fact-checking, not necessarily what existed on May 5 itself; the announcement at the time also stated that the self-serve ad management tool was a beta being gradually opened to more businesses. This site has not logged into the ChatGPT ads dashboard, has not created or purchased any ads, and has not seen what an ad actually looks like; this article does not offer purchasing advice and does not compare the cost of any ad platforms. For the exact current rules, check the ad API documentation at developers.openai.com or OpenAI's official news page directly. The Taiwan passage and FAQ answer were updated on October 3, 2026; everything else still reflects the September 18 check."
         },
         {
           "type": "rich_paragraph",
@@ -593,8 +623,23 @@
           "text": "ターゲティング条件：地域・プラットフォーム・Context Hints"
         },
         {
-          "type": "paragraph",
-          "text": "ドキュメントには、地域・プラットフォーム・オーディエンスの3種類のターゲティングはすべて同時に適用され、いずれか1つを満たしても他の条件が無効になるわけではないと明記されています。同一人物が包含オーディエンスと除外オーディエンスの両方に該当する場合は、除外が優先されます。地域のターゲティングにはISO 3166-1 alpha-2の国コードが使われ、地域の包含・除外リストには最大2,500件の地点コードを登録でき、アカウントの利用可能範囲とキャンペーンモードによってさらに制限が加わる場合があると注記されています。公式にはさらに、国コードがISO上有効であることは、そのアカウントがその地域で広告を配信できることを意味せず、サポート対象の広告配信地域を確認する必要があるとも注意を促しています。本記事が確認した4つの情報源のいずれにも、広告配信が可能な地域の一覧は示されていないため、台湾がすでに対象となっているかどうか、本記事には答えがありません。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ドキュメントには、地域・プラットフォーム・オーディエンスの3種類のターゲティングはすべて同時に適用され、いずれか1つを満たしても他の条件が無効になるわけではないと明記されています。同一人物が包含オーディエンスと除外オーディエンスの両方に該当する場合は、除外が優先されます。地域のターゲティングにはISO 3166-1 alpha-2の国コードが使われ、地域の包含・除外リストには最大2,500件の地点コードを登録でき、アカウントの利用可能範囲とキャンペーンモードによってさらに制限が加わる場合があると注記されています。公式にはさらに、国コードがISO上有効であることは、そのアカウントがその地域で広告を配信できることを意味せず、サポート対象の広告配信地域を確認する必要があるとも注意を促しています。本記事が確認した4つの情報源のいずれにも、広告配信が可能な地域の一覧は示されていません。10月3日更新：台湾の状況は"
+            },
+            {
+              "type": "article",
+              "text": "こちらの記事",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-ads-taiwan-20260923"
+            },
+            {
+              "type": "text",
+              "text": "をご覧ください。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -634,7 +679,7 @@
             },
             {
               "question": "台湾の広告主は、現時点でこのツールを利用できますか？",
-              "answer": "本記事が確認した4つの情報源のいずれにも、広告を配信できる地域の一覧は示されていません。確かなのは、ターゲティング設定のページで、国コードがISO上有効であることはそのアカウントがその地域で広告を配信できることを意味せず、サポート対象の広告配信地域を別途確認する必要があるとされ、さらにアカウントの利用可能範囲とキャンペーンモードによって追加の制限がある場合があると注意が促されている点です。発表自体も、セルフサーブ広告管理ツールがより多くの企業に段階的に公開されているとしか述べておらず、特定の地域には触れていません。実際に利用できるかどうかは、広告主がアカウントにログインした際に表示される内容に従う必要があり、本記事は台湾がすでに対象となっているかどうかを推測するものではありません。"
+              "answer": "本記事が確認した4つの情報源のいずれにも、広告を配信できる地域の一覧は示されていません。確かなのは、ターゲティング設定のページで、国コードがISO上有効であることはそのアカウントがその地域で広告を配信できることを意味せず、サポート対象の広告配信地域を別途確認する必要があるとされ、さらにアカウントの利用可能範囲とキャンペーンモードによって追加の制限がある場合があると注意が促されている点です。発表自体も、セルフサーブ広告管理ツールがより多くの企業に段階的に公開されているとしか述べておらず、特定の地域には触れていません。実際に利用できるかどうかは、広告主がアカウントにログインした際に表示される内容に従う必要があり、本記事は台湾がすでに対象となっているかどうかを推測するものではありません。2026年10月3日更新：OpenAIは2026年9月23日、台湾でChatGPT広告の順次展開を始めると発表しました。ヘルプセンターのAds Manager対応国一覧も台湾をセルフサーブ利用可（Available）としており、条件は広告を出稿し請求を受ける法人が台湾にあることです。"
             },
             {
               "question": "広告はChatGPTが私に返す回答に影響しますか？",
@@ -646,7 +691,7 @@
           "type": "callout",
           "tone": "info",
           "title": "本記事の確認範囲と限界",
-          "text": "本記事の確認日は2026年9月18日で、OpenAIが2026年5月5日に発表した原文ページと、開発者ドキュメントサイトにある広告APIの説明ページ3本を根拠としています。この製品にできることや、その原則に関する記述は、すべてOpenAI自身の説明であり、当サイトは実地の検証を行っておりません。開発者ドキュメントは随時更新されるページで、公開日やバージョン番号は示されておらず、確認当日に読んだバージョンを反映しているにすぎず、5月5日時点で同じ内容だったとは限りません。発表当時も、セルフサーブ広告管理ツールはベータ版であり、より多くの企業に段階的に公開していくと明記されていました。当サイトはChatGPT広告の管理画面にログインしたことも、広告を作成・購入したこともなく、広告が実際に表示される様子を見たこともありません。本記事は仕入れに関する助言を行うものではなく、広告プラットフォームの費用を比較するものでもありません。現時点の正確なルールを知りたい場合は、developers.openai.comの広告APIドキュメントまたはOpenAI公式ニュースページを直接ご確認ください。"
+          "text": "本記事の確認日は2026年9月18日で、OpenAIが2026年5月5日に発表した原文ページと、開発者ドキュメントサイトにある広告APIの説明ページ3本を根拠としています。この製品にできることや、その原則に関する記述は、すべてOpenAI自身の説明であり、当サイトは実地の検証を行っておりません。開発者ドキュメントは随時更新されるページで、公開日やバージョン番号は示されておらず、確認当日に読んだバージョンを反映しているにすぎず、5月5日時点で同じ内容だったとは限りません。発表当時も、セルフサーブ広告管理ツールはベータ版であり、より多くの企業に段階的に公開していくと明記されていました。当サイトはChatGPT広告の管理画面にログインしたことも、広告を作成・購入したこともなく、広告が実際に表示される様子を見たこともありません。本記事は仕入れに関する助言を行うものではなく、広告プラットフォームの費用を比較するものでもありません。現時点の正確なルールを知りたい場合は、developers.openai.comの広告APIドキュメントまたはOpenAI公式ニュースページを直接ご確認ください。台湾に関する段落とFAQは2026年10月3日に更新しました。それ以外の内容は9月18日の確認に基づいています。"
         },
         {
           "type": "rich_paragraph",
@@ -819,8 +864,23 @@
           "text": "타겟팅 조건: 지역·플랫폼·Context Hints"
         },
         {
-          "type": "paragraph",
-          "text": "문서에는 지역·플랫폼·오디언스라는 세 가지 타겟팅이 모두 함께 적용되며, 그중 하나를 충족한다고 해서 다른 조건이 무효가 되지는 않는다고 명시되어 있습니다. 같은 사람이 포함 오디언스와 제외 오디언스에 동시에 속하면 제외가 우선합니다. 지역 타겟팅은 ISO 3166-1 alpha-2 국가 코드를 사용하며, 지역 포함·제외 목록에는 최대 2,500개의 위치 코드를 등록할 수 있고, 문서는 계정의 이용 가능 범위와 캠페인 모드에 따라 추가 제한이 있을 수 있다고 덧붙입니다. 공식 문서는 또한 국가 코드가 ISO상 유효하다고 해서 해당 계정이 그 지역에서 광고를 게재할 수 있다는 뜻은 아니며, 지원되는 광고 게재 지역을 별도로 확인해야 한다고 안내합니다. 본 기사가 검증한 네 개 출처 어디에도 광고를 게재할 수 있는 지역 목록은 나와 있지 않아, 대만이 이미 지원 대상인지에 대해 본 기사는 답을 제시하지 않습니다."
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "문서에는 지역·플랫폼·오디언스라는 세 가지 타겟팅이 모두 함께 적용되며, 그중 하나를 충족한다고 해서 다른 조건이 무효가 되지는 않는다고 명시되어 있습니다. 같은 사람이 포함 오디언스와 제외 오디언스에 동시에 속하면 제외가 우선합니다. 지역 타겟팅은 ISO 3166-1 alpha-2 국가 코드를 사용하며, 지역 포함·제외 목록에는 최대 2,500개의 위치 코드를 등록할 수 있고, 문서는 계정의 이용 가능 범위와 캠페인 모드에 따라 추가 제한이 있을 수 있다고 덧붙입니다. 공식 문서는 또한 국가 코드가 ISO상 유효하다고 해서 해당 계정이 그 지역에서 광고를 게재할 수 있다는 뜻은 아니며, 지원되는 광고 게재 지역을 별도로 확인해야 한다고 안내합니다. 본 기사가 검증한 네 개 출처 어디에도 광고를 게재할 수 있는 지역 목록은 나와 있지 않습니다. 10월 3일 업데이트: 대만의 현황은 "
+            },
+            {
+              "type": "article",
+              "text": "관련 기사",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-ads-taiwan-20260923"
+            },
+            {
+              "type": "text",
+              "text": "를 참고하시기 바랍니다."
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -860,7 +920,7 @@
             },
             {
               "question": "대만의 광고주도 지금 이 도구를 쓸 수 있나요?",
-              "answer": "본 기사가 검증한 네 개 출처 어디에도 광고를 게재할 수 있는 지역 목록은 나와 있지 않습니다. 확실한 점은 타겟팅 설정 페이지에서 국가 코드가 ISO상 유효하다고 해서 해당 계정이 그 지역에서 광고를 게재할 수 있다는 뜻은 아니며 지원되는 광고 게재 지역을 별도로 확인해야 한다고 안내하고 있고, 계정의 이용 가능 범위와 캠페인 모드에 따라 추가 제한이 있을 수 있다는 점입니다. 발표문 자체도 셀프서브 광고 관리 도구가 더 많은 기업에 단계적으로 공개되고 있다고만 밝힐 뿐 특정 지역을 언급하지 않습니다. 실제로 쓸 수 있는지는 광고주가 계정에 로그인했을 때 보이는 내용을 기준으로 삼아야 하며, 본 기사는 대만이 이미 지원 대상인지를 대신 추측하지 않습니다."
+              "answer": "본 기사가 검증한 네 개 출처 어디에도 광고를 게재할 수 있는 지역 목록은 나와 있지 않습니다. 확실한 점은 타겟팅 설정 페이지에서 국가 코드가 ISO상 유효하다고 해서 해당 계정이 그 지역에서 광고를 게재할 수 있다는 뜻은 아니며 지원되는 광고 게재 지역을 별도로 확인해야 한다고 안내하고 있고, 계정의 이용 가능 범위와 캠페인 모드에 따라 추가 제한이 있을 수 있다는 점입니다. 발표문 자체도 셀프서브 광고 관리 도구가 더 많은 기업에 단계적으로 공개되고 있다고만 밝힐 뿐 특정 지역을 언급하지 않습니다. 실제로 쓸 수 있는지는 광고주가 계정에 로그인했을 때 보이는 내용을 기준으로 삼아야 하며, 본 기사는 대만이 이미 지원 대상인지를 대신 추측하지 않습니다. 2026년 10월 3일 업데이트: OpenAI는 2026년 9월 23일 대만에서 ChatGPT 광고를 단계적으로 도입하기 시작한다고 발표했으며, 고객센터의 Ads Manager 국가표도 대만을 셀프서브 이용 가능(Available)으로 표시합니다. 조건은 광고를 게재하고 비용을 청구받는 법인이 대만에 있는 것입니다."
             },
             {
               "question": "광고가 ChatGPT가 저에게 주는 답변에 영향을 미치나요?",
@@ -872,7 +932,7 @@
           "type": "callout",
           "tone": "info",
           "title": "본 기사의 검증 범위와 한계",
-          "text": "본 기사의 확인일은 2026년 9월 18일이며, OpenAI가 2026년 5월 5일 발표한 원문 페이지와 개발자 문서 사이트의 광고 API 설명 페이지 3건을 근거로 합니다. 이 제품이 할 수 있는 일과 그 원칙에 관한 서술은 모두 OpenAI 자신의 설명이며, 본 사이트는 직접 시험해 보지 않았습니다. 개발자 문서는 계속 갱신되는 페이지로 발행일이나 버전 번호가 표시되어 있지 않아 검증 당일 확인한 버전을 반영할 뿐이며, 5월 5일 당시에도 같은 내용이었다는 뜻은 아닙니다. 발표 당시에도 셀프서브 광고 관리 도구는 베타 버전이며 더 많은 기업에 단계적으로 공개된다고 명시되어 있었습니다. 본 사이트는 ChatGPT 광고 관리 화면에 로그인한 적도, 광고를 만들거나 구매한 적도, 광고가 실제로 나타나는 모습을 본 적도 없습니다. 본 기사는 구매 조언을 제공하지 않으며 어떤 광고 플랫폼의 비용도 비교하지 않습니다. 현재 정확한 규정을 알고 싶다면 developers.openai.com의 광고 API 문서나 OpenAI 공식 뉴스 페이지를 직접 확인하시기 바랍니다."
+          "text": "본 기사의 확인일은 2026년 9월 18일이며, OpenAI가 2026년 5월 5일 발표한 원문 페이지와 개발자 문서 사이트의 광고 API 설명 페이지 3건을 근거로 합니다. 이 제품이 할 수 있는 일과 그 원칙에 관한 서술은 모두 OpenAI 자신의 설명이며, 본 사이트는 직접 시험해 보지 않았습니다. 개발자 문서는 계속 갱신되는 페이지로 발행일이나 버전 번호가 표시되어 있지 않아 검증 당일 확인한 버전을 반영할 뿐이며, 5월 5일 당시에도 같은 내용이었다는 뜻은 아닙니다. 발표 당시에도 셀프서브 광고 관리 도구는 베타 버전이며 더 많은 기업에 단계적으로 공개된다고 명시되어 있었습니다. 본 사이트는 ChatGPT 광고 관리 화면에 로그인한 적도, 광고를 만들거나 구매한 적도, 광고가 실제로 나타나는 모습을 본 적도 없습니다. 본 기사는 구매 조언을 제공하지 않으며 어떤 광고 플랫폼의 비용도 비교하지 않습니다. 현재 정확한 규정을 알고 싶다면 developers.openai.com의 광고 API 문서나 OpenAI 공식 뉴스 페이지를 직접 확인하시기 바랍니다. 대만 관련 단락과 FAQ는 2026년 10월 3일에 업데이트했으며, 나머지 내용은 9월 18일 확인 기준입니다."
         },
         {
           "type": "rich_paragraph",
@@ -1045,8 +1105,23 @@
           "text": "定向条件：地域、平台与 Context Hints"
         },
         {
-          "type": "paragraph",
-          "text": "文档写明，地域、平台与受众三种定向是同时生效的，满足其中一项并不会让其他条件失效；如果同一个人同时属于包含受众与排除受众名单，则以排除为准。地域定向使用 ISO 3166-1 alpha-2 国家代码，地域的包含与排除列表最多可以放入 2,500 个地点代码，文档并注明账户的可用范围与广告活动模式可能还有额外限制。官方还提醒，国家代码在 ISO 上有效，不代表你的账户可以在该地区投放广告，要看支持投放广告的地区——本文查核的四个信息来源均未列出那份地区清单，所以台湾是否已经开放，本文没有答案。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "文档写明，地域、平台与受众三种定向是同时生效的，满足其中一项并不会让其他条件失效；如果同一个人同时属于包含受众与排除受众名单，则以排除为准。地域定向使用 ISO 3166-1 alpha-2 国家代码，地域的包含与排除列表最多可以放入 2,500 个地点代码，文档并注明账户的可用范围与广告活动模式可能还有额外限制。官方还提醒，国家代码在 ISO 上有效，不代表你的账户可以在该地区投放广告，要看支持投放广告的地区——本文查核的四个信息来源均未列出那份地区清单；10 月 3 日更新：台湾进度见"
+            },
+            {
+              "type": "article",
+              "text": "这则新闻",
+              "kind": "life",
+              "slug": "ai-news-chatgpt-ads-taiwan-20260923"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -1086,7 +1161,7 @@
             },
             {
               "question": "台湾的广告主现在能不能用这个工具？",
-              "answer": "本文查核的四个信息来源均未列出可以投放广告的地区清单。可以确定的是，定向设置页面提醒，国家代码在 ISO 上有效，不代表你的账户可以在该地区投放广告，要另外查看支持投放广告的地区，而且账户的可用范围与广告活动模式可能还有额外限制；公告本身也只说自助广告管理工具正逐步向更多企业开放，没有提到任何具体地区。实际能不能使用，要以广告主登录账户后看到的内容为准，本文不代为推测台湾是否已经开放。"
+              "answer": "本文查核的四个信息来源均未列出可以投放广告的地区清单。可以确定的是，定向设置页面提醒，国家代码在 ISO 上有效，不代表你的账户可以在该地区投放广告，要另外查看支持投放广告的地区，而且账户的可用范围与广告活动模式可能还有额外限制；公告本身也只说自助广告管理工具正逐步向更多企业开放，没有提到任何具体地区。实际能不能使用，要以广告主登录账户后看到的内容为准，本文不代为推测台湾是否已经开放。2026 年 10 月 3 日更新：OpenAI 已在 2026 年 9 月 23 日宣布 ChatGPT 广告开始在台湾逐步推出；帮助中心的 Ads Manager 国家表也把台湾列为可自助使用（Available），条件是投放广告并被收费的法律实体设在台湾。"
             },
             {
               "question": "广告会不会影响 ChatGPT 给我的回答？",
@@ -1098,7 +1173,7 @@
           "type": "callout",
           "tone": "info",
           "title": "查核范围与本文的界限",
-          "text": "本文查核日期是 2026 年 9 月 18 日，依据是 OpenAI 2026 年 5 月 5 日公告的原文页面，以及开发者文档站上的三份广告 API 说明页面。凡是关于这项产品能做什么、原则是什么的表述，都是 OpenAI 自己的说法，本站没有实测。开发者文档是持续更新的页面，没有发布日期与版本号，反映的是查核当天读到的版本，不代表 5 月 5 日当天就已经是这个样子；公告当时也写明自助广告管理工具是测试版，正逐步向更多企业开放。本站没有登录 ChatGPT 广告后台，没有创建或购买过广告，也没有见过广告实际出现的画面；本文不提供采购建议，也不比较任何广告平台的费用。想了解目前确切的规则，请直接查阅 developers.openai.com 的广告 API 文档或 OpenAI 官方新闻页面。"
+          "text": "本文查核日期是 2026 年 9 月 18 日，依据是 OpenAI 2026 年 5 月 5 日公告的原文页面，以及开发者文档站上的三份广告 API 说明页面。凡是关于这项产品能做什么、原则是什么的表述，都是 OpenAI 自己的说法，本站没有实测。开发者文档是持续更新的页面，没有发布日期与版本号，反映的是查核当天读到的版本，不代表 5 月 5 日当天就已经是这个样子；公告当时也写明自助广告管理工具是测试版，正逐步向更多企业开放。本站没有登录 ChatGPT 广告后台，没有创建或购买过广告，也没有见过广告实际出现的画面；本文不提供采购建议，也不比较任何广告平台的费用。想了解目前确切的规则，请直接查阅 developers.openai.com 的广告 API 文档或 OpenAI 官方新闻页面。台湾的段落与问答已在 2026 年 10 月 3 日补上更新，其余内容仍是 9 月 18 日的查核。"
         },
         {
           "type": "rich_paragraph",
