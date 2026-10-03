@@ -60,7 +60,7 @@ divergence. Recheck those facts before release; this task does not assert they
 remain current.
 
 Reviewed work and receipt pins are in the dependent content task and the persistent
-outside-Git directory `C:/Users/x8120/.codex/article-localization-release/batch018-web-basics/`.
+outside-Git directory `<home>/.codex/article-localization-release/batch018-web-basics/`.
 All sixteen documents and forty-eight images passed independent review. Five
 Japanese number-format equivalences were explicitly reviewed; the strict field
 guard is not a zero-warning result. Existing source documents, metadata and twelve

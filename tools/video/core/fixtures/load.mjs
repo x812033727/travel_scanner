@@ -1,9 +1,21 @@
 // Shared by the core tests: the minimal example video, and a throwaway repository layout
 // (docs/videos/<slug>/) plus a work directory outside it.
-import { cpSync, mkdirSync, mkdtempSync, readFileSync } from "node:fs";
+import { cpSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { bindAudioEvidence } from "../audio-evidence.mjs";
+import { encodeWav } from "../../tts/wav.mjs";
+
+/** Deterministic silent takes for tests which exercise timing and approvals without synthesis. */
+export function writeAudioFixture(timeline, workdir) {
+  mkdirSync(path.join(workdir, "audio"), { recursive: true });
+  for (const line of timeline.lines) writeFileSync(path.join(workdir, "audio", `${line.id}.wav`), encodeWav(new Int16Array(line.audio_samples)));
+  writeFileSync(path.join(workdir, "narration.wav"), encodeWav(new Int16Array(timeline.total_frames * 48_000 / timeline.fps)));
+  Object.assign(timeline, bindAudioEvidence(timeline, workdir));
+  writeFileSync(path.join(workdir, "timeline.json"), JSON.stringify(timeline));
+  return timeline;
+}
 
 export const FIXTURES = path.dirname(fileURLToPath(import.meta.url));
 export const FIXTURE_FILE = path.join(FIXTURES, "minimal", "video.json");

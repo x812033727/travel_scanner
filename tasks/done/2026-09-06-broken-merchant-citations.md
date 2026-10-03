@@ -48,7 +48,7 @@ reads it until someone does.
 
 ## Steps
 
-- [x] Get the nine slugs: `/root/coordfill_all.json` on the `hostinger2` VPS holds the full
+- [x] Get the nine slugs: `/root/coordfill_all.json` on the `<saved-session>` VPS holds the full
       run, one row per merchant with its outcome.
 - [x] Re-check each by hand. A 403 is not proof of rot — tourismthailand.org and
       discoverhongkong.com both answer 403 to a bot and are fine in a browser; that was

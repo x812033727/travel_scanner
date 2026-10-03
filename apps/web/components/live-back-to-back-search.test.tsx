@@ -13,7 +13,7 @@ describe("LiveBackToBackSearch", () => {
   it("submits five-ticket live comparison inputs and renders both modes", async () => {
     apiMock.mockResolvedValue({
       provider: "skyscanner",
-      warnings: [],
+      warnings: ["live_fare_failed?role=middle_two_segment"],
       comparisons: [
         {
           mode: "mixed_airlines",
@@ -47,5 +47,7 @@ describe("LiveBackToBackSearch", () => {
     expect(screen.getByRole("heading", { name: "最低混搭" })).toBeTruthy();
     expect(screen.getByRole("heading", { name: "最低同航空公司" })).toBeTruthy();
     expect(screen.getByText(/Powered by/)).toBeTruthy();
+    // The API sends a code; the reader sees the ticket named in their language.
+    expect(screen.getByText("外站始發兩段票：即時票價查詢失敗")).toBeTruthy();
   });
 });

@@ -44,3 +44,39 @@ updates:
     groups:
       actions:
         patterns: ["*"]
+
+  # Base images, pinned `tag@sha256:digest` so a tag moved on the registry cannot change an
+  # image without a diff. The digest moves when the publisher rebuilds the same tag with an OS
+  # or runtime patch; these pull requests are how that reaches the images. A new version is a
+  # migration rather than a refresh (Python 3.14 needs uv.lock's requires-python, Node 24 the
+  # web engines, PostgreSQL 18 a dump and restore), so minor and major tags are ignored and
+  # only digests and patch tags move here.
+  - package-ecosystem: docker
+    directory: /apps/api
+    schedule:
+      interval: weekly
+    ignore:
+      - dependency-name: "*"
+        update-types: [version-update:semver-major, version-update:semver-minor]
+  - package-ecosystem: docker
+    directory: /apps/web
+    schedule:
+      interval: weekly
+    ignore:
+      - dependency-name: "*"
+        update-types: [version-update:semver-major, version-update:semver-minor]
+
+  # The `image:` of every docker-compose*.yml at the root. Only docker-compose.community.yml
+  # is pinned by digest so far; a bare tag gets no pull request while its versions are ignored.
+  #
+  # No ecosystem reads the images in .github/workflows/*.yml (github-actions updates `uses:`
+  # only, docker reads Dockerfiles and Kubernetes manifests), so those are bumped by hand.
+  # tools/supply-chain.test.mjs fails while one image is pinned two ways, which is what turns
+  # this pull request for mailpit into a reminder to copy it into MAILPIT_IMAGE.
+  - package-ecosystem: docker-compose
+    directory: /
+    schedule:
+      interval: weekly
+    ignore:
+      - dependency-name: "*"
+        update-types: [version-update:semver-major, version-update:semver-minor]

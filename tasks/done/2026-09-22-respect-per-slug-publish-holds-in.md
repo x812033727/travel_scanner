@@ -51,7 +51,7 @@ existing idempotence, concurrent edit, private-draft and source-correction tests
 
 Discovered while comparing main `e001679728f35bd1c514da8c592272ddb7e9b398`
 with PR #652. Exact impact receipt is
-`C:/Users/x8120/.codex/article-localization-release/batch015/publish-hold-impact-review-e0016797.json`,
+`<home>/.codex/article-localization-release/batch015/publish-hold-impact-review-e0016797.json`,
 SHA256 `0a146220af2efec0c983c97a456102cc68932364b917ffde85795f34b9a7adc2`.
 At that version only the two Singapore batch010 slugs were held. Current batch015
 `thailand-esim-sim-wifi` and private batch016 `llms-txt-evaluation` were absent;

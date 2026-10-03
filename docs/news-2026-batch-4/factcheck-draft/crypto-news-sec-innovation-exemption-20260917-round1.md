@@ -12,7 +12,7 @@
 同一主機間隔 ≥2 秒，UA／標頭／查詢字串都沒有帶入任何人的姓名、email 或個人資料），
 HTML 去 `<!-- -->`、`html.unescape`、去標籤後比對；聯邦公報 `.txt` 在約 72 欄硬斷行，
 所有比對都用「空白摺疊後的連續子字串」判定。腳本在
-`C:\Users\x8120\mokaair-work\news47\_tools\crypto-news-sec-innovation-exemption-20260917\`。
+`<home>\mokaair-work\news47\_tools\crypto-news-sec-innovation-exemption-20260917\`。
 
 ### 來源重抓結果（2026-09-23）
 

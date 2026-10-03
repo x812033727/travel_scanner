@@ -29,7 +29,7 @@ acceptance separately from authoring. No source correction belongs to this batch
 - [x] Bind the final content commit, all required successful checks, independent review and actual merge tree. Obtain actual PostgreSQL release-safety evidence, or prove all dependencies are identical to an explicitly approved existing run.
 - [x] Refresh both full live article/locale rows, preserving concurrent edits, drafts, visibility, ordering and expiry. Only the four still-missing locales per article are eligible.
 - [x] Independently review and freeze exact canonical jobs, source/model/version, tool, Git, SVG and render hashes.
-- [x] Use the existing hostinger2 workflow: verified fresh database backup, owned hold, four deployment locks, durable background deployment and health/revision checks.
+- [x] Use the existing `<saved-session>` workflow: verified fresh database backup, owned hold, four deployment locks, durable background deployment and health/revision checks.
 - [x] Dry-run and execute exactly eight translation starts, eight article publications and zero hubs with sealed idempotent journals. Preserve both full original zh-TW locale rows and all article metadata.
 - [x] Verify ten public language URLs, twenty desktop/mobile cases, forty actual screenshots, expanded descriptions, sources, canonical/hreflang and same-language links. Check all twelve asset bytes and complete API/XML sitemap coverage.
 - [x] Record each article's separate content/import/publication/browser states and clear only the owned hold after actual acceptance. Do not claim a global draft audit from these two articles.
@@ -67,7 +67,7 @@ five-language publication. Do not include the separately tracked cable-label
 source correction or infer article version 1 for the household-inventory article.
 
 Content evidence is recorded by the dependent content task and archived under
-`C:/Users/x8120/.codex/article-localization-release/batch021-household-purchasing/`.
+`<home>/.codex/article-localization-release/batch021-household-purchasing/`.
 Fresh two-row snapshot at 2026-09-23 11:47 UTC: SHA256
 `4d49279676fcb389212b5f4519add66199fec17ccc78166de007ea6b9be4e57b`.
 It fully equals the selected 10:35 source rows. This historical snapshot was

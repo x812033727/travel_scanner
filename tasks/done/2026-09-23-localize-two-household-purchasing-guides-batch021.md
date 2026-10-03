@@ -50,7 +50,7 @@ Use the existing article-localization pipeline and ArticlePack/GuideDocument val
 - Textless AI hero JPGs are reused with translated reader-facing provenance; original SVGs and attribution remain unchanged. Eight new language-suffixed SVGs are required.
 - Initial worktree base: `8ab9f182bc432886420a5c96bada4d1c2c2f76c5`. No production operation belongs to this content task.
 
-Completed local content evidence (outside Git under `C:/Users/x8120/.codex/article-localization-release/batch021-household-purchasing/`):
+Completed local content evidence (outside Git under `<home>/.codex/article-localization-release/batch021-household-purchasing/`):
 
 - Gadget editorial/visual independent approval: `independent-review-gadget/independent-review-pass.json`, SHA256 `1da7b28719e0f3b4585748412339a2176c10789ef8cd5b5cbad7f01ded9b98cf`.
 - Inventory editorial/visual independent approval: `independent-review-inventory/receipt-pass.json`, SHA256 `e26bc6cf8eba022c5d9ea30abd4f44a6dc1ca0086590633dd2f360607c37bd2d`.

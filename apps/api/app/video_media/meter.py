@@ -79,11 +79,13 @@ async def budgets_view(redis: Redis, row: VideoAutomationSettings) -> dict[str, 
     return view
 
 
-def usd_for(model: MediaModel, kind: str, seconds: int) -> Decimal:
-    """What one generation costs at the catalog's list price."""
+def usd_for(model: MediaModel, kind: str, seconds: int, size: str | None = None) -> Decimal:
+    """What one generation costs at the catalog's list price; a 2K image at its 2K price."""
     if kind == "clip":
         return Decimal(str(model.usd_per_second or 0)) * seconds
     if kind == "image":
+        if size == "2K":
+            return Decimal(str(model.usd_per_image_2k or 0))
         return Decimal(str(model.usd_per_image or 0))
     return Decimal(str(model.usd_per_track or 0))
 

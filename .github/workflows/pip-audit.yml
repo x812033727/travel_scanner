@@ -3,6 +3,8 @@ name: pip audit
 # The enforcing half of the Python dependency check, mirroring npm-audit.yml: as a pull
 # request gate the advisory lookup fails whenever PyPI hiccups, and since api became a
 # required check that would block unrelated work. As a daily job it is simply retried.
+# A failed scheduled run opens or comments on a `pip-audit-red` issue: ci-red-main.yml
+# listens for this workflow by its `name:` above.
 on:
   schedule:
     - cron: "23 3 * * *"
