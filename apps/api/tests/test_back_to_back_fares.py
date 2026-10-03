@@ -2,6 +2,7 @@ import json
 from datetime import date
 from decimal import Decimal
 from unittest.mock import AsyncMock
+from urllib.parse import parse_qsl
 from uuid import uuid4
 
 import httpx
@@ -31,6 +32,7 @@ from app.crawlers.schemas import (
     TripDateRange,
 )
 from app.main import app
+from app.warnings import is_warning_code
 
 
 def search_request(**overrides: object) -> BackToBackFareSearch:
@@ -586,7 +588,7 @@ async def test_different_destinations_use_two_forward_pages_without_fake_open_ja
     assert response.comparisons[0].back_to_back is None
     assert response.comparisons[0].verdict == ComparisonVerdict.COMPARISON_UNAVAILABLE
     assert "開口票" in response.comparisons[0].detail
-    assert any("只顯示可驗證的一般買法基準" in warning for warning in response.warnings)
+    assert response.warnings[0] == "open_jaw_baseline_only"
 
 
 @pytest.mark.asyncio
@@ -684,7 +686,101 @@ async def test_reverse_page_failure_keeps_conventional_partial_results() -> None
     assert response.comparisons[0].verdict == ComparisonVerdict.COMPARISON_UNAVAILABLE
     assert "外站始發倒買票" in response.comparisons[0].detail
     assert "這不是 0%" in response.comparisons[0].detail
-    assert any("外站頁面暫時無法連線" in warning for warning in response.warnings)
+    # The airline and the page are values the reader's catalog names; the crawler's
+    # own sentence no longer reaches every locale as Traditional Chinese.
+    assert response.warnings == [
+        "fare_page_unavailable?airline=CI&page=reverse&reason=source_unavailable"
+    ]
+
+
+def back_to_back_service(
+    fetch_page: object, rate: object
+) -> tuple[BackToBackFareService, FakeRedis]:
+    redis = FakeRedis(decode_responses=True)
+    settings = Settings(airline_crawler_min_interval_seconds=1)
+    crawler = AirlineFareCrawlerService(settings, redis)  # type: ignore[arg-type]
+    crawler.fetcher.fetch = AsyncMock(side_effect=fetch_page)  # type: ignore[method-assign]
+    fx_provider = AsyncMock()
+    fx_provider.rate_to_twd = AsyncMock(side_effect=rate)
+    service = BackToBackFareService(
+        settings,
+        redis,  # type: ignore[arg-type]
+        crawler=crawler,
+        fx_provider=fx_provider,
+    )
+    return service, redis
+
+
+@pytest.mark.asyncio
+async def test_exchange_rate_warnings_are_codes_that_name_the_currency() -> None:
+    forward_rows = [
+        fare_row("TPE", "NRT", "2026-11-10", "2026-11-15", 10_000, "TWD"),
+        fare_row("TPE", "NRT", "2026-12-10", "2026-12-15", 11_000, "TWD"),
+        fare_row("TPE", "NRT", "2026-11-10", "2026-12-15", 15_000, "TWD"),
+    ]
+    reverse_rows = [fare_row("NRT", "TPE", "2026-11-15", "2026-12-10", 20_000, "JPY")]
+
+    async def fetch_page(_client: httpx.AsyncClient, url: str) -> FetchResult:
+        rows = reverse_rows if "from-tokyo-to-taipei" in url else forward_rows
+        return FetchResult(next_data_html(rows), cache_hit=False)
+
+    def rate(currency: str) -> FxRateSnapshot:
+        if currency == "USD":
+            raise FxRateError("no rate")
+        snapshot = twd_rate(currency, "1" if currency == "TWD" else "0.2")
+        return snapshot.model_copy(update={"is_stale": currency == "JPY"})
+
+    service, redis = back_to_back_service(fetch_page, rate)
+    manual_usd = SupplementalFareInput(amount=Decimal("300"), currency="USD")
+    response = await service.search(search_request(conventional_first_fare=manual_usd))
+    await redis.aclose()
+
+    assert response.warnings == [
+        "stale_exchange_rate?currency=JPY",
+        "exchange_rate_unavailable?currency=USD",
+    ]
+
+
+@pytest.mark.asyncio
+async def test_a_missing_cached_fare_names_the_nearest_dates_the_page_had() -> None:
+    forward_rows = [
+        fare_row("TPE", "NRT", "2026-11-10", "2026-11-15", 10_000, "TWD"),
+        # The second trip asked for 12-10 to 12-15; the page only has 12-12 to 12-17.
+        fare_row("TPE", "NRT", "2026-12-12", "2026-12-17", 11_000, "TWD"),
+        fare_row("TPE", "NRT", "2026-11-10", "2026-12-15", 15_000, "TWD"),
+    ]
+    reverse_rows = [fare_row("NRT", "TPE", "2026-11-15", "2026-12-10", 20_000, "TWD")]
+
+    async def fetch_page(_client: httpx.AsyncClient, url: str) -> FetchResult:
+        rows = reverse_rows if "from-tokyo-to-taipei" in url else forward_rows
+        return FetchResult(next_data_html(rows), cache_hit=False)
+
+    service, redis = back_to_back_service(fetch_page, lambda currency: twd_rate(currency, "1"))
+    response = await service.search(search_request())
+    await redis.aclose()
+
+    assert len(response.warnings) == 1
+    code, _, query = response.warnings[0].partition("?")
+    assert code == "fare_not_cached_nearest"
+    assert dict(parse_qsl(query)) == {
+        "airline": "CI",
+        "flex_days": "0",
+        "nearest": "2026-12-12–2026-12-17",
+        "role": "conventional_second",
+    }
+    assert all(is_warning_code(warning) for warning in response.warnings)
+
+
+@pytest.mark.asyncio
+async def test_a_paused_airline_is_a_code_naming_the_airline() -> None:
+    async def fetch_page(_client: httpx.AsyncClient, _url: str) -> FetchResult:
+        raise AssertionError("a paused airline is never fetched")
+
+    service, redis = back_to_back_service(fetch_page, lambda currency: twd_rate(currency, "1"))
+    response = await service.search(search_request(airlines=[AirlineCode.EVA_AIR]))
+    await redis.aclose()
+
+    assert response.warnings == ["fare_source_paused?airline=BR"]
 
 
 @pytest.mark.asyncio

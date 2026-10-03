@@ -1,12 +1,12 @@
 import assert from "node:assert/strict";
-import { existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
 import { EXIT } from "../cli.mjs";
 import { runtimePolicyHash } from "../core/anime-policy.mjs";
 import { lookHash } from "../core/drama.mjs";
-import { dramaFixture, fixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
+import { writeAudioFixture, dramaFixture, fixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { lintProject, loadProject } from "../core/state.mjs";
 import { buildTimeline, estimateTimeline, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "../core/timeline.mjs";
@@ -90,7 +90,7 @@ test("direct anime assembly rejects a two-minute measured body and estimated or 
   for (const frames of [37_800, 41_400]) {
     const timeline = actual(frames);
     assert.equal(timeline.runtime_policy_hash, runtimePolicyHash(doc));
-    writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
+    writeAudioFixture(timeline, box.workdir);
     stderr = "";
     assert.equal(await run("assemble", ["--slug", doc.slug], ctx), EXIT.usage);
     assert.match(stderr, /run render first/, "valid boundary body advances to the existing media gate");
@@ -121,7 +121,7 @@ test("native auto-fit probes every directed clip and refuses a short action befo
   const visual = visualHash(doc);
   mkdirSync(path.join(box.workdir, "frames"), { recursive: true });
   mkdirSync(path.join(box.workdir, "clips"), { recursive: true });
-  writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
+  writeAudioFixture(timeline, box.workdir);
   writeFileSync(path.join(box.workdir, "frames", "manifest.json"), JSON.stringify({ visual_hash: visual, ...manifestFor(timeline, 0) }));
   const shots = Object.fromEntries(timeline.scenes.map((scene) => {
     const file = `clips/${scene.id}.mp4`;
@@ -165,7 +165,7 @@ test("direct assembly refuses wrong-model, short or non-native-1080p production 
     const visual = visualHash(doc);
     const timeline = { ...estimateTimeline(doc), speech_hash: speech };
     mkdirSync(box.workdir, { recursive: true });
-    writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
+    writeAudioFixture(timeline, box.workdir);
     mkdirSync(path.join(box.workdir, "frames"), { recursive: true });
     writeFileSync(path.join(box.workdir, "frames", "manifest.json"), JSON.stringify({ visual_hash: visual }));
     const clips = {
@@ -195,6 +195,26 @@ test("direct assembly refuses wrong-model, short or non-native-1080p production 
     writeFileSync(seriesFile, JSON.stringify({}));
     await assert.rejects(run("assemble", ["--slug", doc.slug], ctx), /ffmpeg sentinel/);
     assert.equal(ffmpegReached, 1);
+  }
+});
+
+test("direct assembly refuses missing or changed audio evidence before any ffmpeg work", async () => {
+  for (const fault of ["legacy", "take", "narration"]) {
+    const box = sandbox("fixture-drama", "drama");
+    const doc = dramaFixture();
+    const timeline = writeAudioFixture({ ...estimateTimeline(doc), speech_hash: speechHash(doc, fixtureLexicon()) }, box.workdir);
+    if (fault === "legacy") {
+      delete timeline.audio_evidence;
+      writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
+    } else {
+      const file = path.join(box.workdir, fault === "take" ? `audio/${timeline.lines[0].id}.wav` : "narration.wav");
+      const bytes = readFileSync(file); bytes[48] ^= 1; writeFileSync(file, bytes);
+    }
+    let ffmpegReached = 0, stderr = "";
+    const ctx = { root: box.root, home: box.base, EXIT, env: { VIDEO_WORKDIR: box.work, get FFMPEG_PATH() { ffmpegReached += 1; throw new Error("ffmpeg sentinel"); } }, stdout: { write() {} }, stderr: { write(value) { stderr += value; } } };
+    assert.equal(await run("assemble", ["--slug", box.slug], ctx), EXIT.usage);
+    assert.match(stderr, /current audio evidence before assembly/);
+    assert.equal(ffmpegReached, 0);
   }
 });
 

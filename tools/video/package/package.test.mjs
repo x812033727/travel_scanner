@@ -11,7 +11,7 @@ import { approve, sha256File } from "../core/approvals.mjs";
 import { presentationTimeline } from "../core/branding.mjs";
 import { compilationDocument, compilationLayout, compilationTimeline } from "../core/compilation.mjs";
 import { lookHash, mixHash, subtitlesHash } from "../core/drama.mjs";
-import { dramaFixture, fixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
+import { dramaFixture, fixture, fixtureLexicon, sandbox, writeAudioFixture } from "../core/fixtures/load.mjs";
 import { DESCRIPTION_MAX_BYTES } from "../core/metadata.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { buildTimeline, estimateTimeline, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "../core/timeline.mjs";
@@ -53,7 +53,7 @@ function animeChecks(anime, body, finalSha256) {
   });
   return {
     ok: true, speech_hash: body.speech_hash, visual_hash: visualHash(anime),
-    runtime_policy_hash: runtimePolicyHash(anime), final_sha256: finalSha256,
+    runtime_policy_hash: runtimePolicyHash(anime), final_sha256: finalSha256, narration_sha256: body.audio_evidence?.narration_sha256,
     look_hash: lookHash(anime), subtitles_hash: subtitlesHash(anime), mix_hash: mixHash(anime), clips_hash: "fixture-clips",
     metrics: { fps: 30, frames: body.total_frames, shots },
   };
@@ -85,7 +85,8 @@ test("direct package rejects short, estimated or stale anime evidence even when 
   writeFileSync(finalFile, "local fixture, not real media");
   const finalSha256 = await sha256File(finalFile);
   await approve({ gate: "final", docDir: box.dir, workdir: box.workdir });
-  const body = measuredAnimeTimeline(anime);
+  // Silent takes and narration of the measured body carry its audio evidence.
+  const body = writeAudioFixture(measuredAnimeTimeline(anime), box.workdir);
   const checks = animeChecks(anime, body, finalSha256);
   const save = (nextBody, nextChecks) => {
     if (nextBody) writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify(nextBody));

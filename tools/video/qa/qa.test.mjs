@@ -6,8 +6,9 @@ import test from "node:test";
 
 import { EXIT, main } from "../cli.mjs";
 import { approve } from "../core/approvals.mjs";
+import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { pinBranding, validateBranding } from "../core/branding.mjs";
-import { fixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
+import { writeAudioFixture, fixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
 import { atomicWrite } from "../core/paths.mjs";
 import { eachLine, LOCALES, textHash } from "../core/schema.mjs";
 import { runCaptions } from "../core/stages.mjs";
@@ -50,7 +51,7 @@ function finishedVideo({ seconds = {} } = {}) {
   const samples = {};
   for (const { line } of eachLine(doc)) samples[line.id] = (seconds[line.id] ?? 5) * SAMPLE_RATE;
   const timeline = { ...buildTimeline(doc, samples), speech_hash: speechHash(doc, lexicon) };
-  atomicWrite(path.join(workdir, "timeline.json"), JSON.stringify(timeline));
+  writeAudioFixture(timeline, workdir);
   // The frames, one still per state, and a clean cache.
   const visual = visualHash(doc);
   const cache = {};
@@ -69,7 +70,7 @@ function finishedVideo({ seconds = {} } = {}) {
   // The cut and its checks.
   const final = randomBytes(2048);
   writeFileSync(path.join(workdir, "final.mp4"), final);
-  atomicWrite(path.join(workdir, "checks.json"), JSON.stringify({ ok: true, speech_hash: timeline.speech_hash, visual_hash: visual, problems: [], metrics: { frames: timeline.total_frames, loudness: { integrated: -14 }, psnr: [] } }));
+  atomicWrite(path.join(workdir, "checks.json"), JSON.stringify({ ok: true, narration_sha256: timeline.audio_evidence.narration_sha256, speech_hash: timeline.speech_hash, visual_hash: visual, problems: [], metrics: { frames: timeline.total_frames, loudness: { integrated: -14 }, psnr: [] } }));
   runCaptions({ slug: box.slug, root: box.root, workdir, now: new Date("2026-09-27T00:00:00Z") });
   return { box, doc, workdir, finalSha: sha(final), timeline };
 }
@@ -103,6 +104,24 @@ function context(box, fetchImpl) {
 }
 
 const readReport = (workdir) => JSON.parse(readFileSync(path.join(workdir, "review", "qa.json"), "utf8"));
+
+test("direct qa and package refuse an old cut after a same-duration narration retake is approved", async () => {
+  const { box, workdir } = finishedVideo();
+  const timelineFile = path.join(workdir, "timeline.json");
+  const timeline = JSON.parse(readFileSync(timelineFile));
+  await approve({ gate: "final", docDir: box.dir, workdir });
+  for (const name of [`audio/${timeline.lines[0].id}.wav`, "narration.wav"]) {
+    const file = path.join(workdir, name);
+    const bytes = readFileSync(file); bytes[48] ^= 1; writeFileSync(file, bytes);
+  }
+  writeFileSync(timelineFile, JSON.stringify(bindAudioEvidence(timeline, workdir)));
+  await approve({ gate: "audio", docDir: box.dir, workdir });
+  const { ctx, out } = context(box, site().fetchImpl);
+  await main(["qa", "--slug", box.slug], ctx);
+  assert.equal(readReport(workdir).items.find((item) => item.id === "assemble").ok, false);
+  assert.equal(await main(["package", "--slug", box.slug], ctx), EXIT.usage, out.stderr);
+  assert.match(out.stderr, /run assemble first/);
+});
 
 test("a finished video passes every check but the judge that is not built yet, and qa.json says so", async () => {
   const { box, workdir, finalSha } = finishedVideo();
@@ -365,7 +384,7 @@ test("illustrated slides are measured on their cadence: a picture held too long 
     const samples = {};
     for (const { line } of eachLine(doc)) samples[line.id] = (seconds[line.id] ?? 3) * SAMPLE_RATE;
     const timeline = { ...buildTimeline(doc, samples), speech_hash: speechHash(doc, lexicon) };
-    atomicWrite(path.join(workdir, "timeline.json"), JSON.stringify(timeline));
+    writeAudioFixture(timeline, workdir);
     const visual = visualHash(doc);
     const cache = {};
     const scenes = timeline.scenes.map((scene) => {
@@ -379,7 +398,7 @@ test("illustrated slides are measured on their cadence: a picture held too long 
     atomicWrite(path.join(workdir, "keyframes", "manifest.json"), JSON.stringify({ look_hash: lookHash(doc), shots }));
     atomicWrite(path.join(workdir, "music", "manifest.json"), JSON.stringify({ mix_hash: mixHash(doc), source: "track", track: "bed.mp3" }));
     writeFileSync(path.join(workdir, "final.mp4"), randomBytes(1024));
-    atomicWrite(path.join(workdir, "checks.json"), JSON.stringify({ ok: true, speech_hash: timeline.speech_hash, visual_hash: visual, look_hash: lookHash(doc), pictures_hash: keyframesHash(doc, { shots }), mix_hash: mixHash(doc), sfx_hash: sfxHash(doc), problems: [], metrics: { frames: timeline.total_frames, loudness: { integrated: -14 }, psnr: [] } }));
+    atomicWrite(path.join(workdir, "checks.json"), JSON.stringify({ ok: true, narration_sha256: timeline.audio_evidence.narration_sha256, speech_hash: timeline.speech_hash, visual_hash: visual, look_hash: lookHash(doc), pictures_hash: keyframesHash(doc, { shots }), mix_hash: mixHash(doc), sfx_hash: sfxHash(doc), problems: [], metrics: { frames: timeline.total_frames, loudness: { integrated: -14 }, psnr: [] } }));
     runCaptions({ slug: box.slug, root: box.root, workdir, now: new Date("2026-09-27T00:00:00Z") });
     await approve({ gate: "audio", docDir: box.dir, workdir, now: new Date("2026-09-27T01:00:00Z") });
     const { ctx } = context(box, site({ policy: () => Response.json({ passed: true }) }).fetchImpl);

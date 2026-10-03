@@ -82,4 +82,17 @@ async def test_live_back_to_back_does_not_invent_missing_middle_ticket() -> None
     assert result.comparisons[0].conventional is not None
     assert result.comparisons[0].back_to_back is None
     assert result.comparisons[0].verdict == "comparison_unavailable"
-    assert any("middle_two_segment" in warning for warning in result.warnings)
+    # A code the reader's catalog names, not the provider's exception text.
+    assert result.warnings == ["live_fare_failed?role=middle_two_segment"]
+
+
+@pytest.mark.asyncio
+async def test_live_back_to_back_names_a_ticket_with_no_live_fare_by_code() -> None:
+    class EmptyMiddleProvider(RecordingFlightProvider):
+        async def search_flights(self, query: SearchCreate) -> list[FlightOffer]:
+            offers = await super().search_flights(query)
+            return [] if query.trip_type == TripType.MULTI_CITY else offers
+
+    result = await LiveBackToBackService(EmptyMiddleProvider()).search(request())
+
+    assert result.warnings == ["live_fare_missing?role=middle_two_segment"]

@@ -8,11 +8,12 @@ import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { EXIT, main } from "../cli.mjs";
 import { runtimePolicyHash } from "../core/anime-policy.mjs";
 import { approve, readApprovals } from "../core/approvals.mjs";
+import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { pinBranding, presentationTimeline, validateBranding } from "../core/branding.mjs";
 import { lookHash, mixHash, subtitlesHash } from "../core/drama.mjs";
 import { animeRuntimeProof } from "../core/duration.mjs";
 import { scriptCheckBinding } from "../core/script-check.mjs";
-import { dramaFixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
+import { dramaFixture, fixtureLexicon, sandbox, writeAudioFixture } from "../core/fixtures/load.mjs";
 import { eachLine, textHash } from "../core/schema.mjs";
 import { runCaptions, writeLanguages } from "../core/stages.mjs";
 import { COMPILATION_STEPS, DRAMA_STEPS, dubArtifacts, loadProject, SLIDES_STEPS } from "../core/state.mjs";
@@ -247,9 +248,8 @@ test("the narration goes up as an encoded copy, in parts, before its review is s
   const brief = readFileSync(path.join(box.dir, "brief.md"));
   mkdirSync(box.workdir, { recursive: true });
   writeFileSync(path.join(box.workdir, "approvals.json"), JSON.stringify({ approvals: [{ gate: "outline", file: "brief.md", sha256: sha(brief), approved_at: "2026-09-25T00:00:00Z", note: "" }] }));
-  const timeline = { fps: 30, total_frames: 90, lines: [{ id: "a" }, { id: "b" }], scenes: [], chapters: [] };
-  writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
-  writeFileSync(path.join(box.workdir, "narration.wav"), encodeWav(new Int16Array(SAMPLE_RATE * 3)));
+  const timeline = { fps: 30, total_frames: 90, lines: [{ id: "aaaa", audio_samples: SAMPLE_RATE }, { id: "bbbb", audio_samples: SAMPLE_RATE }], scenes: [], chapters: [] };
+  writeAudioFixture(timeline, box.workdir);
   // The lines the worker's listener reworded after the retakes (docs/videos/HANDS-OFF.md §旁白).
   const rewrites = [{ id: "b", before: "這就是它的答", after: "這就是它的回答", heard: "這就是它的打" }];
   mkdirSync(path.join(box.workdir, "review"), { recursive: true });
@@ -278,7 +278,8 @@ function cutVideo(box) {
   mkdirSync(box.workdir, { recursive: true });
   const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
   const lexicon = JSON.parse(readFileSync(path.join(box.videos, "lexicon.json"), "utf8"));
-  writeSyntheticNarration(doc, lexicon, box.workdir);
+  const timeline = writeSyntheticNarration(doc, lexicon, box.workdir);
+  writeFileSync(path.join(box.workdir, "checks.json"), JSON.stringify({ ok: false, narration_sha256: timeline.audio_evidence.narration_sha256, speech_hash: timeline.speech_hash, visual_hash: visualHash(doc), problems: ["fixture cut has no passing assembly checks"], metrics: { frames: timeline.total_frames } }));
   const final = Buffer.from("the finished cut");
   writeFileSync(path.join(box.workdir, "final.mp4"), final);
   return { doc, final };
@@ -292,7 +293,7 @@ function brandedCut(box) {
   const body = Buffer.from("the retained unbranded body");
   writeFileSync(path.join(box.workdir, "body.mp4"), body);
   const applied = { hash: selection.hash, id: selection.id, intro_frames: 150, outro_frames: 90, body_frames: timeline.total_frames, body_file: "body.mp4", body_sha256: sha(body) };
-  const checks = { ok: true, speech_hash: timeline.speech_hash, visual_hash: visualHash(cut.doc), branding: applied, problems: [], metrics: { frames: timeline.total_frames + 240 } };
+  const checks = { ok: true, narration_sha256: timeline.audio_evidence.narration_sha256, speech_hash: timeline.speech_hash, visual_hash: visualHash(cut.doc), branding: applied, problems: [], metrics: { frames: timeline.total_frames + 240 } };
   writeFileSync(path.join(box.workdir, "checks.json"), JSON.stringify(checks));
   return { ...cut, timeline, selection, applied, checks };
 }
@@ -327,12 +328,15 @@ function animeReviewFixture(t) {
   writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
   writeFileSync(path.join(box.dir, "series.json"), JSON.stringify({ ...doc.series, category: doc.category, production_policy: doc.production_policy, runtime_spec: doc.runtime_spec, target_minutes: 22, style_preset: "anime-2d", characters: doc.characters }));
   const runtimeContext = Object.fromEntries(ANIME_CONTEXT_KEYS.map((key) => [key, doc.series[key]]));
-  // Synthetic WAV sample counts test proof bindings. The tiny WAV and final are placeholders;
+  // Synthetic WAV sample counts test proof bindings. The silent WAVs and final are placeholders;
   // preview encoding and QA are mocked, so this fixture does not claim a produced 22-minute film.
   const samples = Object.fromEntries([...eachLine(doc)].map(({ line }) => [line.id, 5 * SAMPLE_RATE]));
   const last = [...eachLine(doc)].at(-1).line.id;
   samples[last] += (39_600 - buildTimeline(doc, samples).total_frames) * SAMPLES_PER_FRAME;
   const timeline = { ...buildTimeline(doc, samples), speech_hash: speechHash(doc, fixtureLexicon()) };
+  // Every take and the narration are real WAVs of the bound length, so the audio-evidence
+  // checks see the same takes the anime runtime receipts measure.
+  writeAudioFixture(timeline, box.workdir);
   const final = Buffer.from("local anime final fixture, not real media");
   const shots = doc.scenes.filter((scene) => scene.template === "shot").map((scene) => {
     const timing = timeline.scenes.find((placed) => placed.id === scene.id);
@@ -341,15 +345,13 @@ function animeReviewFixture(t) {
   });
   const checks = {
     ok: true, speech_hash: timeline.speech_hash, visual_hash: visualHash(doc),
-    runtime_policy_hash: runtimePolicyHash(doc), final_sha256: sha(final),
+    runtime_policy_hash: runtimePolicyHash(doc), final_sha256: sha(final), narration_sha256: timeline.audio_evidence.narration_sha256,
     look_hash: lookHash(doc), subtitles_hash: subtitlesHash(doc), mix_hash: mixHash(doc), clips_hash: "fixture-clips",
     metrics: { fps: 30, frames: timeline.total_frames, shots },
   };
   mkdirSync(path.join(box.workdir, "clips"), { recursive: true });
   writeFileSync(path.join(box.workdir, "clips", "manifest.json"), JSON.stringify({ clips_hash: "fixture-clips" }));
-  writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
   writeFileSync(path.join(box.workdir, "checks.json"), JSON.stringify(checks));
-  writeFileSync(path.join(box.workdir, "narration.wav"), encodeWav(new Int16Array(SAMPLES_PER_FRAME)));
   writeFileSync(path.join(box.workdir, "final.mp4"), final);
   writeLanguages(box.workdir, { locales: {}, decided_at: "2026-10-02T00:00:00Z" });
   return { ...box, doc, timeline, checks, final, runtimeContext };
@@ -554,6 +556,38 @@ test("long-anime publish reviews distinguish metadata approval hashes from final
   assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "publish"], attempt.ctx), EXIT.usage);
   assert.match(attempt.out.stderr, /current final.mp4 SHA-256/);
   assert.equal(refused.state.reviews.length, 0);
+});
+
+test("remote approvals and old transcript checks cannot clear a new take of the same duration", async () => {
+  const box = sandbox();
+  cutVideo(box);
+  const timelineFile = path.join(box.workdir, "timeline.json");
+  const timeline = JSON.parse(readFileSync(timelineFile));
+  const server = site();
+  server.state.reviews.push({ gate: "audio", status: "approved", content_sha256: sha(readFileSync(timelineFile)), decided_at: "2026-10-02T00:00:00Z" });
+  const check = { lines: Object.fromEntries(timeline.lines.map((line) => [line.id, { clip: line.audio_sha256.slice(0, 16), match: true, match_kind: "exact" }])) };
+  mkdirSync(path.join(box.workdir, "review"), { recursive: true });
+  writeFileSync(path.join(box.workdir, "review", "check.json"), JSON.stringify(check));
+  for (const name of [`audio/${timeline.lines[0].id}.wav`, "narration.wav"]) {
+    const file = path.join(box.workdir, name);
+    const bytes = readFileSync(file); bytes[48] ^= 1; writeFileSync(file, bytes);
+  }
+  const pull = context(box, server.fetchImpl);
+  assert.equal(await main(["review-pull", "--slug", box.slug], pull.ctx), EXIT.ok);
+  assert.match(pull.out.stdout, /approval not recorded/);
+  assert.equal(readApprovals(box.workdir).approvals.length, 0);
+  const failed = context(box, server.fetchImpl, { encode });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "audio"], failed.ctx), EXIT.usage);
+  assert.equal(server.state.calls.filter((call) => call.method === "POST").length, 0);
+  // An explicit local rebuild binds the new bytes, but does not copy the old listening verdict.
+  writeFileSync(timelineFile, JSON.stringify(bindAudioEvidence(timeline, box.workdir)));
+  const push = context(box, server.fetchImpl, { encode });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "audio"], push.ctx), EXIT.ok, push.out.stderr);
+  assert.equal(server.state.reviews[0].payload.check.checked, timeline.lines.length - 1);
+  assert.equal(server.state.reviews[0].status, "pending");
+  const final = context(box, server.fetchImpl, { encode, run: () => { throw new Error("stale cut reached quality check"); } });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], final.ctx), EXIT.usage);
+  assert.match(final.out.stderr, /not assembled from the current narration/);
 });
 
 test("a branded final submission reports the full duration and shifted chapters without shifting captions or dubs again", async () => {
@@ -1044,7 +1078,7 @@ test("illustrated slides push their storyboard too, and it is the gate after the
   writeFileSync(path.join(box.workdir, "keyframes", "manifest.json"), JSON.stringify({ look_hash: "l", pictures_hash: "p", shots }));
   // The outline and the narration approved, the storyboard is what review-push picks next.
   await approve({ gate: "outline", docDir: box.dir, workdir: box.workdir, note: "t" });
-  writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify({ speech_hash: "s", lines: [], scenes: [], total_frames: 0 }));
+  writeSyntheticNarration(doc, loadProject({ slug: box.slug, root: box.root }).lexicon, box.workdir);
   await approve({ gate: "audio", docDir: box.dir, workdir: box.workdir, note: "t" });
   const server = site();
   const push = context(box, server.fetchImpl);

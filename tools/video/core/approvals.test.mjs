@@ -5,7 +5,8 @@ import test from "node:test";
 
 import { ANIME_APPROVAL_GATES, approvalState, approve, readApprovals } from "./approvals.mjs";
 import { LONG_ANIME_POLICY, runtimePolicyHash } from "./anime-policy.mjs";
-import { dramaFixture, sandbox } from "./fixtures/load.mjs";
+import { dramaFixture, sandbox, writeAudioFixture } from "./fixtures/load.mjs";
+import { estimateTimeline } from "./timeline.mjs";
 
 function approvalFixture(t) {
   const box = sandbox("fixture-drama", "drama");
@@ -19,7 +20,8 @@ function approvalFixture(t) {
   save();
   mkdirSync(path.join(box.workdir, "upload"), { recursive: true });
   writeFileSync(path.join(box.dir, "script.md"), "unchanged screenplay fixture");
-  writeFileSync(path.join(box.workdir, "timeline.json"), "unchanged timeline fixture bytes");
+  // The audio gate refuses a narration without current audio evidence; these takes stay unchanged.
+  writeAudioFixture(estimateTimeline(dramaFixture()), box.workdir);
   writeFileSync(path.join(box.workdir, "final.mp4"), "local approval fixture, not real media");
   writeFileSync(path.join(box.workdir, "upload", "metadata.json"), "unchanged package fixture bytes");
   return { ...box, doc, save, places: { docDir: box.dir, workdir: box.workdir } };

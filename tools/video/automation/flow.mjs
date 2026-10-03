@@ -16,6 +16,7 @@ import path from "node:path";
 import { hasAnimePolicy, isLongAnime, requireAnimePolicy } from "../core/anime-policy.mjs";
 import { writeAnimeActs } from "./anime-write.mjs";
 import { approvalState, approve, GATES, sha256File } from "../core/approvals.mjs";
+import { audioEvidenceProblems } from "../core/audio-evidence.mjs";
 import { EXPLAINER_PRESET, illustrated, SLIDES_PRESET } from "../core/drama.mjs";
 import { effectiveEpisodeMinutes } from "../core/duration.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
@@ -31,6 +32,7 @@ import { speechHash } from "../core/timeline.mjs";
 import { localizedThumbnailHash } from "../core/translations.mjs";
 import { MAX_TEMPO } from "../dubs/plan.mjs";
 import { productionForEpisode } from "../production/design.mjs";
+import { localizationPlan, writeLocalizationRetention } from "../production/retention.mjs";
 import { buildSheet, SHEET_PARTS } from "../i18n/cli.mjs";
 import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview, sourceGuideOf } from "../review/sync.mjs";
 import { AutomationError, OUTPUT_INVALID, RUN_UNCERTAIN } from "./client.mjs";
@@ -323,6 +325,8 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
     }
     settled.voice = { provider: "gemini", name: narrator.voice_name, style: `台灣國語，自然台灣口音。${narrator.performance}`.slice(0, 400) };
     settled.pronunciation_hints = { ...(production.pronunciation_hints ?? {}) };
+    const laterLanguages = localizationPlan(production);
+    if (laterLanguages) settled.localization_plan = laterLanguages;
     settled.narration_locale = "zh-TW";
     if (settled.youtube) settled.youtube = { ...settled.youtube, default_language: "zh-TW" };
   }
@@ -1081,6 +1085,7 @@ export class Automation {
     }, null, 2)}\n`);
     writeFileSync(path.join(dir, "brief.md"), episodeBrief(series, episode, cast, beats));
     const workdir = this.workdir(slug);
+    writeLocalizationRetention(workdir, { slug, seriesSlug: series.slug, production });
     saveState(workdir, state);
     await approve({ gate: "outline", docDir: dir, workdir, now: this.ctx.now(), note: oneOff ? "依故事聖經" : `planned by chapter ${episode.chapter_number}'s approved outline` });
     await report(this.ctx, this.api, state, "outline approved");
@@ -1275,7 +1280,12 @@ export class Automation {
     if (next === "music generated") return this.media(state, "music");
 
     if (next === "narration synthesized") {
-      const result = await run(ctx, ["tts", "--slug", state.slug]);
+      const previous = readJson(path.join(workdir, "timeline.json"), null);
+      const project = loadProject({ slug: state.slug, root: ctx.root });
+      const sameScript = previous?.speech_hash === speechHash(project.doc, project.lexicon);
+      if (sameScript && previous.audio_evidence && audioEvidenceProblems(previous, workdir).length) return this.block(state, "audio evidence no longer matches the saved takes; restore or explicitly retake and review the narration");
+      const refresh = sameScript && !previous.audio_evidence;
+      const result = await run(ctx, ["tts", "--slug", state.slug, ...(refresh ? ["--refresh-evidence"] : [])]);
       if (result.code !== 0) return this.block(state,`tts failed: ${result.out.trim().split("\n").at(-1)}`);
       await report(ctx, this.api, state, "narration synthesized");
       return `${state.slug}: narration synthesized`;
@@ -1807,6 +1817,8 @@ export class Automation {
     const { ctx } = this;
     const workdir = this.workdir(state.slug);
     const timeline = path.join(workdir, "timeline.json");
+    const audioProblems = audioEvidenceProblems(readJson(timeline, null), workdir);
+    if (audioProblems.length) return this.block(state, `narration needs current audio evidence: ${audioProblems[0]}`);
     const review = await this.decision(state, "audio", timeline);
     if (review?.status === "approved") {
       await this.pull(state.slug);

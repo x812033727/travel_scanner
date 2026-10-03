@@ -17,6 +17,7 @@ import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { AutomationError, automationClient } from "../automation/client.mjs";
 import { ANIME_APPROVAL_GATES, approvalRuntimePolicyHash, GATES, approvalState, approve, readApprovals, sha256File } from "../core/approvals.mjs";
 import { animeRuntimeContext, hasAnimePolicy, runtimePolicyHash } from "../core/anime-policy.mjs";
+import { assembledAudioProblems, audioEvidenceProblems, currentAudioCheck } from "../core/audio-evidence.mjs";
 import { animeBodyDurationProblems, animeRuntimeProof } from "../core/duration.mjs";
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
 import { isCompilation } from "../core/compilation.mjs";
@@ -435,12 +436,16 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     const timeline = readJson(file, null);
     const bodyProblems = animeBodyDurationProblems({ doc, timeline, timelineCurrent: timeline?.speech_hash === speechHash(doc, project.lexicon) });
     if (bodyProblems.length) throw new UsageError(bodyProblems.join("; "));
+    const problems = audioEvidenceProblems(timeline, workdir);
+    if (problems.length) throw new UsageError(`audio cannot be submitted: ${problems.join("; ")}`);
     const measurement = hasAnimePolicy(doc) ? {
       basis: "measured", stage: "audio", policy_hash: runtimePolicyHash(doc), runtime_spec: { ...doc.runtime_spec },
       runtime_context: animeRuntimeContext(doc),
       body_seconds: timeline.total_frames / timeline.fps, body_frames: timeline.total_frames, fps: timeline.fps, speech_hash: timeline.speech_hash,
     } : null;
-    const check = audioCheck(readJson(path.join(workdir, "review", "check.json"), null), readJson(path.join(workdir, "review", "check-flags.json"), null), timeline.lines.length);
+    const currentCheck = currentAudioCheck(readJson(path.join(workdir, "review", "check.json"), null), timeline);
+    const flagsNow = readJson(path.join(workdir, "review", "check-flags.json"), null);
+    const check = audioCheck(currentCheck, { ...flagsNow, flags: (flagsNow?.flags ?? []).filter((id) => currentCheck.lines[id]) }, timeline.lines.length);
     // The lines the listener reworded after the retakes (docs/videos/HANDS-OFF.md §旁白), as the
     // worker wrote them: [{ id, before, after, heard }]; the review card lists them.
     const rewrites = readJson(path.join(workdir, "review", "rewrites.json"), []);
@@ -459,6 +464,10 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     const sha = await sha256File(file);
     const bodyTimeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
     const checks = readJson(path.join(workdir, ARTIFACTS.checks), null) ?? {};
+    if (!isCompilation(doc)) {
+      const problems = assembledAudioProblems(bodyTimeline, checks, workdir);
+      if (problems.length) throw new UsageError(problems.join("; "));
+    }
     const compilation = isCompilation(doc);
     const applied = appliedBranding(checks);
     const rebuild = compilation ? "compile" : "assemble";
@@ -993,6 +1002,10 @@ async function recordApproval(review, { dir, workdir, now }) {
     hash = approvalRuntimePolicyHash(review.gate, dir);
     const remoteHash = review.payload?.runtime_policy_hash ?? null;
     if (hash !== remoteHash || (hasAnimePolicy(review.payload) && !remoteHash)) return "approved a runtime policy or episode context that has since changed; run review-push again";
+  }
+  if (review.gate === "audio") {
+    const problems = audioEvidenceProblems(readJson(file), workdir);
+    if (problems.length) return `approval not recorded: ${problems.join("; ")}`;
   }
   if (readApprovals(workdir).approvals.some((entry) => entry.gate === review.gate && entry.sha256 === review.content_sha256 && (!ANIME_APPROVAL_GATES.has(review.gate) || (entry.runtime_policy_hash ?? null) === hash))) {
     return "already recorded";

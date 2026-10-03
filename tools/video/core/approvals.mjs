@@ -1,7 +1,7 @@
 // The owner's approvals, each bound to the exact file approved.
 //
-// The gates need the site owner: the outline (brief.md), the narration (timeline.json, which
-// changes whenever any line is re-synthesized) and the finished video (final.mp4); a drama adds
+// The gates need the site owner: the outline (brief.md), the narration (timeline.json, binding
+// each take and narration.wav by SHA256) and the finished video (final.mp4); a drama adds
 // the look (characters/manifest.json, the character sheets the owner picks from) and the
 // storyboard (keyframes/manifest.json). Recording the SHA-256 of what was approved means an edit
 // after the approval silently voids it, and the stages after the gate refuse to run instead of
@@ -12,6 +12,7 @@ import path from "node:path";
 
 import { atomicWrite } from "./paths.mjs";
 import { hasAnimePolicy, runtimePolicyHash } from "./anime-policy.mjs";
+import { audioEvidenceProblems } from "./audio-evidence.mjs";
 
 export const ANIME_APPROVAL_GATES = new Set(["script", "audio", "final", "publish"]);
 
@@ -73,6 +74,10 @@ function target(gate, places) {
 export async function approve({ gate, docDir, workdir, now = new Date(), note = "", expected_runtime_policy_hash = undefined }) {
   const file = target(gate, { docDir, workdir });
   if (!existsSync(file)) throw new Error(`nothing to approve: ${file} does not exist yet`);
+  if (gate === "audio") {
+    const problems = audioEvidenceProblems(JSON.parse(readFileSync(file, "utf8")), workdir);
+    if (problems.length) throw new Error(`audio cannot be approved: ${problems.join("; ")}`);
+  }
   const hash = approvalRuntimePolicyHash(gate, docDir);
   if (expected_runtime_policy_hash !== undefined && expected_runtime_policy_hash !== hash) throw new Error("the approved runtime policy or episode context has changed; submit the current version for review again");
   const entry = { gate, file: path.basename(file), sha256: await sha256File(file), approved_at: now.toISOString(), note, ...(hash ? { runtime_policy_hash: hash } : {}) };
@@ -88,6 +93,10 @@ export async function approvalState({ gate, docDir, workdir }) {
   if (!existsSync(file)) return { status: "absent", entry: null };
   const entry = readApprovals(workdir).approvals.filter((each) => each.gate === gate).at(-1) ?? null;
   if (!entry) return { status: "missing", entry: null };
+  if (gate === "audio") {
+    const problems = audioEvidenceProblems(JSON.parse(readFileSync(file, "utf8")), workdir);
+    if (problems.length) return { status: "stale", entry, reason: problems.join("; ") };
+  }
   const sha256 = await sha256File(file);
   let hash;
   try { hash = approvalRuntimePolicyHash(gate, docDir); }

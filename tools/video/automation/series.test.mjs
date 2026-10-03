@@ -6,7 +6,7 @@ import test from "node:test";
 
 import { runtimePolicyHash, validateAnimePolicy } from "../core/anime-policy.mjs";
 import { readApprovals } from "../core/approvals.mjs";
-import { dramaFixture, explainerFixture, sandbox } from "../core/fixtures/load.mjs";
+import { dramaFixture, explainerFixture, sandbox, writeAudioFixture } from "../core/fixtures/load.mjs";
 import { shortsFile } from "../shorts/episode.mjs";
 import { readJson } from "../core/paths.mjs";
 import { keepSheets, readStore, reuseSheets, sheetKey } from "../media/series-store.mjs";
@@ -32,6 +32,24 @@ process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
 const TOKEN = `mkv_${"s".repeat(43)}`;
 const SITE = "https://site.test";
 const sha = (file) => createHash("sha256").update(readFileSync(file)).digest("hex");
+
+test("the worker refuses changed WAVs before accepting an existing remote audio decision", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const timeline = writeAudioFixture(estimateTimeline(dramaFixture()), box.workdir);
+  let decisions = 0, pulls = 0;
+  const worker = {
+    ctx: {}, workdir: () => box.workdir,
+    decision: async () => { decisions += 1; return { status: "approved" }; },
+    pull: async () => { pulls += 1; },
+    block: async (_state, why) => why,
+  };
+  assert.match(await Automation.prototype.narration.call(worker, { slug: box.slug }), /narration approved/);
+  const file = path.join(box.workdir, "audio", `${timeline.lines[0].id}.wav`);
+  const bytes = readFileSync(file); bytes[48] ^= 1; writeFileSync(file, bytes);
+  assert.match(await Automation.prototype.narration.call(worker, { slug: box.slug }), /needs current audio evidence/);
+  assert.equal(decisions, 1, "the changed take never queries or accepts the previous decision");
+  assert.equal(pulls, 1);
+});
 
 const SERIES = {
   id: "5e1a2b3c-4d5e-4f60-8a7b-9c0d1e2f3a4b", slug: "wenjian", title: "問劍", premise: "兩個少年在正道與魔道之間", aspects: ["world", "bonds", "structure", "mood"],
@@ -511,7 +529,13 @@ test("an approved production plan reaches each episode's writer/checker/listener
   const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-09-27T01:00:00Z") });
   const automation = new Automation(ctx, automationClient(ctx), site.settings);
   const production = {
-    schema_version: 1, profile: { visual_tier: "clips", subtitles: { burn_in: false } },
+    schema_version: 1,
+    source_binding: { source_sha256: "a".repeat(64) },
+    narrator: { voice_name: "Erinome", performance: "冷靜敘述" },
+    profile: { visual_tier: "clips", subtitles: { burn_in: false }, phases: {
+      primary: { locale: "zh-TW" },
+      localization: { locales: ["ja", "ko", "en"], start_after: "approved-chinese-final", readiness: "planned-not-implemented-for-drama" },
+    } },
     visual_direction: "full animation", opening_30s: [{ id: "opening" }], prop_rules: ["keep the ring"],
     characters: [{ id: CAST[0].id, look_states: [{ id: "present", appearance: "blue coat" }] }],
     episodes: [1, 2].map((episode) => ({ episode, characters: [CAST[0].id], hero_shot: { action: `action ${episode}` } })),
@@ -528,6 +552,10 @@ test("an approved production plan reaches each episode's writer/checker/listener
     assert.equal(state.series.visual_tier, "clips");
     assert.equal(info.visual_tier, "clips");
     assert.equal(info.series.visual_tier, "clips");
+    const retention = readJson(path.join(box.work, slug, "localization-retention.json"));
+    assert.equal(retention.series_slug, "wenjian");
+    assert.equal(retention.plans[0].source_sha256, production.source_binding.source_sha256);
+    assert.deepEqual(retention.plans[0].planned_locales, ["ja", "ko", "en"]);
     const payload = automation.seriesPayload(state);
     assert.equal(payload.production.episode.episode, number);
     assert.equal(payload.production.opening_30s.length, number === 1 ? 1 : 0);
@@ -565,11 +593,18 @@ test("production settle preserves canonical local readings for every speaker whi
   character.looks = [{ id: "injured", from: 2, appearance: character.appearance, voice_style: "台灣國語，受傷後短句、停頓，低聲但不換音色" }];
   const cast = castFrom({ characters: [character, video.characters[1]] }, 2);
   const canonical = { 精衛: "ㄐㄧㄥ ㄨㄟˋ", 炎帝: "ㄧㄢˊ ㄉㄧˋ" };
-  const production = { profile: { phases: { primary: { locale: "zh-TW" } } }, narrator: { voice_name: "Erinome", performance: "冷靜敘述" }, pronunciation_hints: canonical };
+  const production = { source_binding: { source_sha256: "a".repeat(64) }, profile: { phases: {
+    primary: { locale: "zh-TW" },
+    localization: { locales: ["ja", "ko", "en"], start_after: "approved-chinese-final", readiness: "planned-not-implemented-for-drama" },
+  } }, narrator: { voice_name: "Erinome", performance: "冷靜敘述" }, pronunciation_hints: canonical };
   video.pronunciation_hints = { 精衛: "writer invented reading" };
+  video.localization_plan = { retain_source_media: false, planned_locales: [] };
   const settled = settle(video, { slug: "wenjian-e002", root: ".", settings: { voice: video.voice, drama: {} }, format: "drama", series: { slug: "wenjian", episode: 2, chapter: 1 }, cast, production });
   assert.deepEqual(settled.pronunciation_hints, canonical);
   assert.notEqual(settled.pronunciation_hints, canonical, "the saved map is independent of the context object");
+  assert.equal(settled.localization_plan.retain_source_media, true, "the writer cannot disable the approved later-language promise");
+  assert.equal(settled.localization_plan.source_sha256, production.source_binding.source_sha256);
+  assert.deepEqual(settled.localization_plan.planned_locales, ["ja", "ko", "en"]);
   assert.equal(settled.characters.find((entry) => entry.id === character.id).voice.style, character.looks[0].voice_style);
   const sample = { ...settled, scenes: [{ id: "readings", lines: [
     { id: "name1", text: "精衛在這裡。", speaker: "narrator" },

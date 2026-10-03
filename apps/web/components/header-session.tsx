@@ -4,7 +4,7 @@ import { createContext, useCallback, useContext, useEffect, useRef, useState, ty
 import { useLocale } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { isLocale } from "@/i18n/routing";
+import { isLocale, localeCookieString } from "@/i18n/routing";
 import { ApiError, api } from "@/lib/api";
 import { requestNavigation } from "@/lib/navigation-guard";
 
@@ -109,7 +109,7 @@ export function HeaderSessionProvider({
           requestNavigation(() => {
             // A deferred confirmation must not revive a signed-out session's preference.
             if (requestId.current !== currentRequest) return;
-            document.cookie = `travel_locale=${preferredLocale}; path=/; max-age=31536000; samesite=lax`;
+            document.cookie = localeCookieString(preferredLocale);
             // Auth and leave approval can arrive after a same-locale SPA navigation.
             // Preserve the current route, query and fragment instead of the request's route.
             const { pathname, query } = latestRoute.current;

@@ -8,7 +8,7 @@ import { runtimePolicyHash } from "../core/anime-policy.mjs";
 import { sha256File } from "../core/approvals.mjs";
 import { presentationTimeline } from "../core/branding.mjs";
 import { lookHash, mixHash, subtitlesHash } from "../core/drama.mjs";
-import { dramaFixture, fixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
+import { dramaFixture, fixture, fixtureLexicon, sandbox, writeAudioFixture } from "../core/fixtures/load.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { buildTimeline, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "../core/timeline.mjs";
 import { assembleItem, ITEM_IDS } from "./checks.mjs";
@@ -149,7 +149,10 @@ test("QA reads the current anime policy, measured body and final file instead of
   let timeline = measuredAnimeTimeline(doc, 3_600);
   let checks = animeChecks(doc, timeline, finalSha256);
   const save = () => {
-    writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
+    // Silent takes of the measured lengths bind the timeline's audio evidence, and the cut's
+    // receipt names that narration, so QA judges the duration rather than missing evidence.
+    writeAudioFixture(timeline, box.workdir);
+    checks.narration_sha256 = timeline.audio_evidence.narration_sha256;
     writeFileSync(path.join(box.workdir, "checks.json"), JSON.stringify(checks));
   };
   const ctx = {
@@ -206,7 +209,8 @@ test("QA forwards actual body and presentation timelines to its existing assembl
   const timeline = { ...buildTimeline(doc, samples), speech_hash: speechHash(doc, fixtureLexicon()) };
   const checks = { ok: true, speech_hash: timeline.speech_hash, visual_hash: visualHash(doc), metrics: { frames: timeline.total_frames } };
   const save = () => {
-    writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
+    writeAudioFixture(timeline, box.workdir);
+    checks.narration_sha256 = timeline.audio_evidence.narration_sha256;
     writeFileSync(path.join(box.workdir, "checks.json"), JSON.stringify(checks));
   };
   save();

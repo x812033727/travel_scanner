@@ -13,6 +13,7 @@ import { sha256File } from "../core/approvals.mjs";
 import { animeBodyDurationProblems, animeDurationProblems, animeRuntimeProof, animeShotFitProblems } from "../core/duration.mjs";
 import { presentationTimeline, selectBrandingForBuild } from "../core/branding.mjs";
 import { productionClipProblems } from "../core/lint.mjs";
+import { audioEvidenceProblems } from "../core/audio-evidence.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { FPS, speechHash, visualHash } from "../core/timeline.mjs";
@@ -130,6 +131,11 @@ export async function run(command, args, ctx) {
   if (bodyProblems.length) {
     ctx.stderr.write(`${bodyProblems.join("; ")}\n`);
     return EXIT.lint;
+  }
+  const audioProblems = audioEvidenceProblems(timeline, workdir);
+  if (audioProblems.length) {
+    ctx.stderr.write(`narration needs current audio evidence before assembly: ${audioProblems.join("; ")}\n`);
+    return EXIT.usage;
   }
   const manifest = readJson(path.join(workdir, ARTIFACTS.frames), null);
   const visual = visualHash(doc);
@@ -399,6 +405,7 @@ export async function run(command, args, ctx) {
   const checks = {
     ok: problems.length === 0,
     speech_hash: speech,
+    narration_sha256: timeline.audio_evidence.narration_sha256,
     visual_hash: visual,
     ...(hasAnimePolicy(doc) ? { runtime_policy_hash: runtimePolicyHash(doc), final_sha256: finalSha256 } : {}),
     ...(drama ? { look_hash: inputs.look, clips_hash: inputs.clips.clips_hash, subtitles_hash: subtitlesHash(doc), mix_hash: mixHash(doc) } : {}),

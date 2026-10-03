@@ -9,6 +9,7 @@ import path from "node:path";
 import { isDeepStrictEqual } from "node:util";
 
 import { approvalState, readApprovals, sha256File } from "./approvals.mjs";
+import { audioEvidenceProblems } from "./audio-evidence.mjs";
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "./branding.mjs";
 import { hasAnimePolicy, runtimePolicyHash } from "./anime-policy.mjs";
 import { animeBodyDurationProblems, animeRuntimeProof } from "./duration.mjs";
@@ -376,6 +377,7 @@ export async function pipelineStatus({ slug, root, workdir }) {
   const storyboard = pictures ? await gate("storyboard") : null;
   const script = drama ? await gate("script") : null;
   const timeline = read(ARTIFACTS.timeline);
+  const audioProblems = compilation ? [] : audioEvidenceProblems(timeline, workdir);
   const frames = read(ARTIFACTS.frames);
   const checks = read(ARTIFACTS.checks);
   const brandCurrent = brandingCurrent(checks, readBranding(workdir));
@@ -414,7 +416,7 @@ export async function pipelineStatus({ slug, root, workdir }) {
   const keyframesDone = Boolean(lookNow) && keyframes?.look_hash === lookNow && (drama ? keyframes.visual_hash === visual : keyframes.pictures_hash === picturesHash(doc)) && !needsReview(keyframes);
   const assembledDrama = !drama || (checks?.look_hash === lookNow && checks.clips_hash === clips?.clips_hash && checks.subtitles_hash === subtitles && checks.mix_hash === mix);
   const assembledIllustrated = !(pictures && !drama) || (checks?.look_hash === lookNow && checks.pictures_hash === keyframesHash(doc, keyframes));
-  const assembledSound = compilation || ((!doc?.music || checks?.mix_hash === mix) && (!doc?.sfx || checks?.sfx_hash === sfxHash(doc)));
+  const assembledSound = compilation || (!audioProblems.length && checks?.narration_sha256 === timeline?.audio_evidence?.narration_sha256 && (!doc?.music || checks?.mix_hash === mix) && (!doc?.sfx || checks?.sfx_hash === sfxHash(doc)));
   const assembledMedia = assembledDrama && assembledIllustrated && assembledSound && brandCurrent && brandBodyCurrent;
   const productionClips = productionClipProblems(doc, project?.series, timeline, clips);
 
@@ -447,8 +449,8 @@ export async function pipelineStatus({ slug, root, workdir }) {
       todo: `${cli("review-push", slug, "--gate look")}; the owner picks a sheet per character on /admin/videos; then ${cli("review-pull", slug)}`,
     },
     "narration synthesized": {
-      done: Boolean(speech) && timeline?.speech_hash === speech && timingCurrent,
-      note: timeline && timeline.speech_hash !== speech ? "timeline.json was built for an older script" : anime && !timingCurrent ? "timeline.json needs the current measured runtime policy; run tts again (unchanged clips are reused)" : undefined,
+      done: Boolean(speech) && timeline?.speech_hash === speech && timingCurrent && !audioProblems.length,
+      note: timeline && timeline.speech_hash !== speech ? "timeline.json was built for an older script" : anime && !timingCurrent ? "timeline.json needs the current measured runtime policy; run tts again (unchanged clips are reused)" : audioProblems[0],
       todo: cli("tts", slug),
     },
     "narration approved": {

@@ -1,4 +1,4 @@
-import type { GuideDocument } from "@/lib/guides";
+import type { GuideDocument, GuideKind } from "@/lib/guides";
 
 export const newsLocales = ["zh-TW", "zh-CN", "en", "ja", "ko"] as const;
 export type NewsLocale = typeof newsLocales[number];
@@ -87,6 +87,8 @@ export type NewsCandidate = NewsCandidateSummary & {
   lint: Record<string, string[]>; human_reason: string | null; human_major_error: boolean;
   // The closest known titles, filled only while a duplicate check waits for an editor.
   similar_titles?: string[];
+  // The saved article's address; public only once the candidate is `published`.
+  article_slug?: string | null; article_kind?: GuideKind | null;
 };
 
 export type NewsStats = {

@@ -1,3 +1,4 @@
+import { assembledAudioProblems } from "../core/audio-evidence.mjs";
 // `package`: everything the owner uploads, in <VIDEO_WORKDIR>/<slug>/upload/, once final.mp4 has
 // been approved exactly as it is. metadata.json carries the disclosure answer (the same the
 // quality check writes), and the package is checked as soon as it is written
@@ -8,7 +9,7 @@ import { parseArgs } from "node:util";
 
 import { approvalState } from "../core/approvals.mjs";
 import { hasAnimePolicy, runtimePolicyHash } from "../core/anime-policy.mjs";
-import { animeDurationProblems, animeRuntimeProof } from "../core/duration.mjs";
+import { animeBodyDurationProblems, animeDurationProblems, animeRuntimeProof } from "../core/duration.mjs";
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
 import { compilationChecksCurrent, isCompilation } from "../core/compilation.mjs";
 import { COMPILATION_REVIEW_FILE, publicTexts, reviewCurrent } from "../core/compilation-review.mjs";
@@ -139,6 +140,19 @@ export async function run(command, args, ctx) {
   if (!existsSync(path.join(workdir, ARTIFACTS.video)) || !current) {
     ctx.stderr.write(compilation ? "final.mp4 is missing, failed its checks, or was joined from other cuts or cards; run compile first\n" : "final.mp4 is missing, failed its checks, or is older than the script; run assemble first\n");
     return EXIT.usage;
+  }
+  if (!compilation) {
+    // A long anime's measured body is judged first (as assemble does), then the cut must have
+    // been mixed from the narration takes bound to that timeline.
+    const bodyProblems = animeBodyDurationProblems({ doc, timeline: bodyTimeline, timelineCurrent: Boolean(bodyTimeline) && bodyTimeline.speech_hash === speech });
+    if (bodyProblems.length) {
+      ctx.stderr.write(`${bodyProblems.join("; ")}\n`);
+      return EXIT.lint;
+    }
+    if (assembledAudioProblems(bodyTimeline, checks, workdir).length) {
+      ctx.stderr.write("final.mp4 is missing, failed its checks, or is older than the script; run assemble first\n");
+      return EXIT.usage;
+    }
   }
   const approval = await approvalState({ gate: "final", docDir: project.dir, workdir });
   if (approval.status !== "approved") {
