@@ -24,7 +24,7 @@ scope:
 
 - [x] `docs/videos/ai-terms-prompt-to-graph-engineering/` 有 `brief.md`（8 節、3 個大綱選項、站主觀點提案、示範）、`video.json`（lint 0 錯誤，估計 11.8–12.3 分）、`claims.md`、`shorts.json`（兩支精華）、`demo-log.md`（示範的逐字證據）。
 - [x] `verify-1.md`：多代理獨立查核第一輪（329 條判定、29 個修正投票通過並套用、撰稿者再修 17 處）；事實改動 21 個 > 3，所以要第二輪。
-- [ ] `verify-2.md`：另一組代理重查改過的 40 個欄位與第一輪 CONFIRMED 的三分之一。
+- [x] `verify-2.md`：另一組代理重查改過的 40 個欄位、第一輪 CONFIRMED 的三分之一（81 條）與整支稿的一致性：131 條判定、7 處收緊、不需第三輪。
 - [ ] 站主在 `/admin/videos` 挑大綱（頻道立場仍空白，Jev 不會自動挑）→ 後續照 `automated.md` 由工人或 session 接手 `tts` 以後的步驟。
 - [ ] 名詞庫登記：`docs/videos/ai-terms/terms.json` 與系列 README 補上這一集（那個資料夾在票 `2026-09-29-ai-terms-video-pilot` 的 scope 裡，這張票不碰）。
 
@@ -36,8 +36,8 @@ scope:
 - [x] lint 到零錯誤（稿子本身 3 次，另 2 次故意放英文詞的測試、1 次改字覆核；見 `demo-log.md`）。
 - [x] `claims.md`（27 條）、`shorts.json`、`demo-log.md`。
 - [x] 查核第一輪（多代理：七組查核＋反證＋兩面投票＋完整性）→ lint 第 10 次 0 錯誤。
-- [ ] 查核第二輪。
-- [ ] 提 PR、合併；之後 `review-push --gate outline`。
+- [x] 查核第二輪 → lint 第 11 次 0 錯誤；說明欄組合後 4,928／5,000 位元組。
+- [ ] 提 PR、合併；之後 `review-push --gate outline`（頻道立場仍空白，大綱由站主在 /admin/videos 挑）。
 
 ## How to verify
 

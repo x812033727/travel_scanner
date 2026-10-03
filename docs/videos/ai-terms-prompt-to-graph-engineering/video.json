@@ -24,7 +24,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "提示詞、上下文、駕馭、迴圈、圖形工程是什麼？AI 出錯，先別急著改指令｜AI 名詞十分鐘",
-    "description": "提示詞工程、上下文工程、駕馭工程（Harness Engineering）、迴圈工程、圖形工程是什麼？這集把五個名詞排成一張樓層圖：每一層管什麼、失敗長什麼樣、AI 出錯時先修哪一層。\n給會把文件貼給 AI 整理、開始試 AI 代理、看到新名詞就焦慮的人；不用懂程式。\n\n一樓提示詞工程管單次對話的指令與輸出；二樓上下文工程管模型這一次看到什麼；三樓駕馭工程管工具、權限、攔截與監控（代理 ＝ 模型 ＋ 外面那一層）；四樓迴圈工程讓代理自己找工作、檢查結果、記進度、再跑一圈，也知道何時停；五樓圖形工程把多個代理與迴圈排成一張明確的圖。各家對樓層順序沒有共識，這集照 2026 年 8 月一份學術綜述排。\n示範是 2026-10-03 在我們自己的影片產線真的跑的：檢查工具把放了字典沒有的英文詞的稿子擋下來；產線程式裡也寫好了規則：插圖影片的畫圖花費上限預設 20 美元、大綱重寫上限 2 次、核准綁檔案雜湊。不是任何代理產品的畫面，也不評比任何產品。\n\n這集提到的另外三篇文章：\n提示詞工程：https://mokaair.com/zh-TW/life/ai-term-prompt-engineering?utm_source=youtube&utm_medium=video&utm_campaign=ai-terms-prompt-to-graph-engineering\n上下文工程：https://mokaair.com/zh-TW/life/ai-term-context-engineering?utm_source=youtube&utm_medium=video&utm_campaign=ai-terms-prompt-to-graph-engineering\nLoop Engineering：https://mokaair.com/zh-TW/life/ai-term-loop-engineering?utm_source=youtube&utm_medium=video&utm_campaign=ai-terms-prompt-to-graph-engineering\n下一個名詞「代理迴圈」：https://mokaair.com/zh-TW/life/ai-term-agent-loop?utm_source=youtube&utm_medium=video&utm_campaign=ai-terms-prompt-to-graph-engineering\n\nAI 名詞總索引：https://mokaair.com/zh-TW/life/ai-terms-index?utm_source=youtube&utm_medium=video&utm_campaign=ai-terms-prompt-to-graph-engineering",
+    "description": "提示詞工程、上下文工程、駕馭工程（Harness Engineering）、迴圈工程、圖形工程是什麼？這集把五個名詞排成一張樓層圖：每一層管什麼、失敗長什麼樣、AI 出錯時先修哪一層。\n給會把文件貼給 AI 整理、開始試 AI 代理、看到新名詞就焦慮的人；不用懂程式。\n\n一樓提示詞工程管單次對話的指令與輸出；二樓上下文工程管模型這一次看到什麼；三樓駕馭工程管工具、權限、攔截與監控（代理 ＝ 模型 ＋ 外面那一層）；四樓迴圈工程替代理找工作、檢查結果、記進度、再跑一圈，也知道何時停；五樓圖形工程把多個代理與迴圈排成一張明確的圖。各家對樓層順序沒有共識，這集照 2026 年 8 月一份學術綜述排。\n示範是 2026-10-03 在我們自己的影片產線真的跑的：檢查工具把放了字典沒有的英文詞的稿子擋下來；產線程式裡也寫好了規則：插圖影片的畫圖花費上限預設 20 美元、大綱重寫上限 2 次、核准綁檔案雜湊。不是任何產品的畫面，也不評比產品。\n\n這集提到的另外三篇文章：\n提示詞工程：https://mokaair.com/zh-TW/life/ai-term-prompt-engineering?utm_source=youtube&utm_medium=video&utm_campaign=ai-terms-prompt-to-graph-engineering\n上下文工程：https://mokaair.com/zh-TW/life/ai-term-context-engineering?utm_source=youtube&utm_medium=video&utm_campaign=ai-terms-prompt-to-graph-engineering\nLoop Engineering：https://mokaair.com/zh-TW/life/ai-term-loop-engineering?utm_source=youtube&utm_medium=video&utm_campaign=ai-terms-prompt-to-graph-engineering\n下一個名詞「代理迴圈」：https://mokaair.com/zh-TW/life/ai-term-agent-loop?utm_source=youtube&utm_medium=video&utm_campaign=ai-terms-prompt-to-graph-engineering\n\nAI 名詞總索引：https://mokaair.com/zh-TW/life/ai-terms-index?utm_source=youtube&utm_medium=video&utm_campaign=ai-terms-prompt-to-graph-engineering",
     "tags": [
       "提示詞工程",
       "上下文工程",
@@ -307,7 +307,7 @@
         },
         {
           "id": "7piw",
-          "text": "四樓，迴圈工程，讓它自己找工作、檢查結果、記進度，再跑一圈。",
+          "text": "四樓，迴圈工程，替它找工作、檢查結果、記進度，再跑一圈。",
           "reveal": 1
         },
         {
@@ -332,7 +332,7 @@
       "lines": [
         {
           "id": "vrmh",
-          "text": "樓層順序各家排得不一樣：有人把迴圈排在駕馭上面，有人不談駕馭。"
+          "text": "樓層順序各家排得不一樣：有人把駕馭算在上下文裡，有人不談駕馭。"
         }
       ]
     },
@@ -1377,7 +1377,7 @@
       "lines": [
         {
           "id": "wu7x",
-          "text": "找工作、交給代理、檢查、記進度、決定下一圈，這就是迴圈工程。"
+          "text": "找工作、交給代理、檢查、記進度、決定下一圈，站上文章說這是迴圈工程。"
         }
       ]
     },
@@ -1570,7 +1570,7 @@
       "lines": [
         {
           "id": "mwru",
-          "text": "失敗長這樣：同一個錯的做法只改一點點，試了十次以上，叫死迴圈。"
+          "text": "失敗長這樣：同一個錯的做法只改一點點，有時改十次以上，叫死迴圈。"
         }
       ]
     },
@@ -1588,7 +1588,7 @@
       "lines": [
         {
           "id": "9ui5",
-          "text": "有團隊就在工具層數它改了幾次，太多次就插話：要不要換個方法。"
+          "text": "有團隊在工具層數它改同一個檔案幾次，太多就插話：要不要換個方法。"
         }
       ]
     },
@@ -1598,7 +1598,7 @@
       "data": {
         "kicker": "我們自己的迴圈",
         "text": "前兩次被擋下，**第三次**才歸零",
-        "sub": "檢查工具共跑 7 次，含 3 次故意放錯的測試；2026-10-03"
+        "sub": "送查核前，檢查工具共跑 7 次，含 3 次故意放錯的測試；2026-10-03"
       },
       "claims": [
         "c20"
