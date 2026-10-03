@@ -35,7 +35,7 @@
         },
         {
           "type": "paragraph",
-          "text": "第一種是在提示詞裡寫「請輸出 JSON」，完全靠模型照做。第二種是 JSON 模式，OpenAI 的文件說它保證輸出可解析，但不保證符合任何特定 schema，且對話內容必須要求輸出 JSON。第三種是依 JSON Schema 限制輸出，Anthropic 的文件說明做法是把 schema 編譯成文法來約束輸出，稱為約束式解碼（constrained decoding）。"
+          "text": "第一種是在提示詞裡寫「請輸出 JSON」，完全靠模型照做。第二種是 JSON 模式，OpenAI 的文件說它保證輸出可解析，但不保證符合任何特定 schema。第三種是依 JSON Schema 限制輸出，Anthropic 的文件說明做法是把 schema 編譯成文法來約束輸出，稱為約束式解碼（constrained decoding）。"
         },
         {
           "type": "table",
@@ -82,7 +82,7 @@
         },
         {
           "type": "paragraph",
-          "text": "JSON Schema 是用 JSON 寫成的結構描述，規範說它用來定義 JSON 資料的結構，驗證程式拿它比對實際資料。2020-12 版是 Internet-Draft，不是 RFC，json-schema.org 今天仍標示它為現行版本；什麼算合法 JSON 由 RFC 8259 規定，只管語法。本文示例主要用下面五個關鍵字，另有 items（陣列元素的規則）與 description（欄位說明）。"
+          "text": "JSON Schema 是用 JSON 寫成的結構描述，規範說它用來定義 JSON 資料的結構，驗證程式拿它比對實際資料。json-schema.org 標示的現行版本 2020-12 以 Internet-Draft 形式發布，不是 RFC；什麼算合法 JSON 另由 RFC 8259 規定，只管語法。示例主要用下面五個關鍵字，另有 items（陣列元素的規則）與 description（欄位說明）。"
         },
         {
           "type": "list",
@@ -116,7 +116,7 @@
         },
         {
           "type": "paragraph",
-          "text": "設計有三處刻意：欄位都允許 null，讓「信裡沒寫」有合法出口；missing 用 enum 記下缺了什麼；欄位全列進 required 是 OpenAI 的要求，關閉 additionalProperties 則是 OpenAI 與 Anthropic 都要求的。schema 只對照文件檢查過，沒有送進任何 API。預期輸出如下。"
+          "text": "設計有三處刻意：欄位都允許 null，讓「信裡沒寫」有合法出口；missing 用 enum 記下缺了什麼；欄位全列進 required（OpenAI 的要求），並關閉 additionalProperties（OpenAI 與 Anthropic 都要求）。schema 只對照文件檢查過，沒有送進任何 API。預期輸出如下。"
         },
         {
           "type": "code",
@@ -130,7 +130,7 @@
         },
         {
           "type": "paragraph",
-          "text": "若輸出出現完整年月日，JSON 合法、schema 也通過，但日期是模型推出來的，信裡沒寫，要靠第三層擋下：比對收信日期、確認是週六。OpenAI 的文件提醒，輸入與 schema 完全無關時模型仍會盡力符合 schema，可能編出內容，建議提示詞寫明輸入不適用時回傳空參數或固定句子。"
+          "text": "若輸出出現完整年月日，JSON 合法、schema 也通過，但日期是模型推出來的，信裡沒寫，要靠第三層擋下：比對收信日期、確認是週六。OpenAI 的文件也提醒，輸入與 schema 完全無關時，模型仍會盡力符合 schema，可能編出內容，建議提示詞寫明這時回傳空參數或固定句子。"
         },
         {
           "type": "heading",
@@ -144,7 +144,7 @@
         {
           "type": "list",
           "items": [
-            "結束訊號：OpenAI 的回應可能帶 refusal 內容，表示因安全理由拒答；截斷在 Responses API 是狀態為 incomplete 且原因是 max_output_tokens，在 Chat Completions 是 finish_reason 為 length。Anthropic 對應的是 stop_reason 為 refusal 或 max_tokens，拒答時仍回 200 狀態碼。這兩種都不該直接解析。",
+            "結束訊號：模型可能因安全理由拒答，或寫到長度上限被截斷。OpenAI 與 Anthropic 都會在回應裡標出這類情況，Anthropic 拒答時還照樣回 200 成功狀態碼，所以不能只看請求有沒有成功。帶著這類訊號的輸出不該直接解析。",
             "解析：失敗就停下並保留原文，不要補括號硬修。",
             "驗證：先依 schema 檢查，再套業務規則：日期是否晚於收信日、人數是否在名額內、姓名是否出現在原信；欄位為 null 或 missing 非空，就轉人工追問，不要替它補值。"
           ],
@@ -166,15 +166,15 @@
         {
           "type": "list",
           "items": [
-            "OpenAI：所有欄位都要列進 required，選填要用含 null 的型別模擬；每個物件都要設 additionalProperties 為 false；數字上下限列為支援（微調模型除外），allOf、not、if 不支援。",
-            "Anthropic：API 不支援遞迴 schema，也不支援 minimum、maximum、minLength、maxLength；enum 值的大小寫不保證與 schema 一致；啟用引用（citations）功能時不能同時用 JSON 輸出。",
-            "Google：列出支援的型別與 enum、format、minimum、maximum、items 等關鍵字；過大或巢狀過深的 schema 可能被拒絕，並建議一律驗證值。這一頁沒有說明拒答或截斷的訊號。"
+            "OpenAI：所有欄位都要列進 required，選填用含 null 的型別模擬；每個物件都要關閉 additionalProperties；allOf、not、if 等組合寫法不支援。",
+            "Anthropic：API 不支援遞迴 schema，也不支援 minimum、maximum、minLength、maxLength 這類數值與長度限制。",
+            "Google：列出支援的型別與關鍵字，過大或巢狀過深的 schema 可能被拒絕，並建議一律驗證值；這一頁沒寫拒答或截斷的訊號。"
           ],
           "ordered": false
         },
         {
           "type": "paragraph",
-          "text": "minimum 這個關鍵字，OpenAI 與 Google 列為支援，Anthropic 不支援。想讓 schema 跨供應商通用只能取交集，數值範圍留給自己的驗證程式。"
+          "text": "同一個 minimum（數值下限），Google 列為支援，Anthropic 的 API 不支援。想讓 schema 跨供應商通用只能取交集，數值範圍留給自己的驗證程式。"
         },
         {
           "type": "heading",
@@ -186,7 +186,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "工具呼叫和回答格式差在用途，三家文件都這樣切：工具呼叫是模型請你的程式做事，回答格式管模型最後回答的形狀。不過 OpenAI 與 Anthropic 的「結構化輸出」也涵蓋工具參數：開啟 strict 後，工具參數同樣依 schema 限制。Anthropic 的文件說兩者可同請求合用：strict tool use 管 Claude 怎麼呼叫函式，JSON 輸出管 Claude 說什麼。參數形狀合法仍要驗證內容，詳見"
+              "text": "工具呼叫和回答格式差在用途，三家文件都這樣切：工具呼叫是模型請你的程式做事，回答格式管模型最後回答的形狀。不過 OpenAI 與 Anthropic 的「結構化輸出」兩邊都涵蓋：開啟 strict 後，工具參數同樣依 schema 限制。參數形狀合法仍要驗證內容，詳見"
             },
             {
               "type": "article",
