@@ -58,7 +58,7 @@ const statusTone: Partial<Record<NewsCandidateStatus, string>> = {
 // What happened to a candidate, which decides the explanation and the buttons it gets.
 type Situation =
   | "zhDraft" | "translationHold" | "readyToPublish" | "finalEditHold" | "jevFinalHold"
-  | "shadow" | "jevHold" | "fixArticle" | "duplicate" | "evidenceChanged" | "redraft"
+  | "shadow" | "jevHold" | "hardChecksHold" | "fixArticle" | "duplicate" | "evidenceChanged" | "redraft"
   | "failed" | "needsEvidence" | "published" | "closed" | "working";
 type Action = "approve" | "publish" | "verify" | "notDuplicate" | "refresh" | "retry" | "reject" | "incident";
 const actionPath: Record<Action, string> = {
@@ -71,6 +71,7 @@ const situationActions: Record<Situation, readonly Action[]> = {
   zhDraft: ["approve", "retry", "reject"],
   // Confirmed, then a translation or a check stopped it: run the second stage again.
   translationHold: ["approve", "reject"],
+  hardChecksHold: ["approve", "verify", "reject"],
   readyToPublish: ["publish", "verify", "reject"],
   // The five-locale article is saved; the final editor or Jev's last call held it back.
   finalEditHold: ["publish", "verify", "reject"],
@@ -102,6 +103,7 @@ function situationOf(candidate: NewsCandidateSummary): Situation {
       if (candidate.error_code === "news_jev_manual") return "jevHold";
       if (candidate.error_code === "news_final_edit_hold") return "finalEditHold";
       if (candidate.error_code === "news_jev_final_hold") return "jevFinalHold";
+      if (candidate.error_code === "news_hard_checks_failed" && candidate.guide_article_id) return "hardChecksHold";
       if (candidate.human_decision === "publish") return "translationHold";
       return candidate.guide_article_id ? "fixArticle" : "redraft";
     case "needs_redraft": return "redraft";
@@ -115,10 +117,11 @@ function situationOf(candidate: NewsCandidateSummary): Situation {
 }
 
 function availableActions(candidate: NewsCandidateSummary): Action[] {
-  return situationActions[situationOf(candidate)].filter((action) => {
+  const situation = situationOf(candidate);
+  return situationActions[situation].filter((action) => {
     if (action === "verify") return Boolean(candidate.guide_article_id);
-    // A failed run can resume translating only after the owner confirmed publication.
-    if (action === "approve" && candidate.status === "failed") return candidate.human_decision === "publish";
+    // A stopped run can resume translating only after the owner confirmed publication.
+    if (action === "approve" && (candidate.status === "failed" || situation === "hardChecksHold")) return candidate.human_decision === "publish";
     return true;
   });
 }

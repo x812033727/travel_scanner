@@ -114,43 +114,38 @@ Gemini 的影片功能在歐洲經濟區與英國部分不開放，Veo 在歐盟
 
 ## 外部片段怎麼進來（Hailuo 網頁、Kling MCP 做的）
 
-今天沒有 `clips import`（票 `tasks/open/2026-10-03-clips-import-bring-a-clip-made.md`），只能手動；**這一節是唯一的一份程序**，`SKILL.md`、`providers-and-plans.md` §3、animation-camera 與 `drama_preflight.mjs` 都指到這裡，票落地後只改這裡。前提：這一集**沒有** production profile（有的話 `productionClipProblems`／`productionClipSizeProblem` 擋 manifest 裡的 provider／model／resolution 與非原生 1920×1080，`tools/video/core/lint.mjs:408-434`）；這一鏡的關鍵影格已通過 judge 而且 storyboard 已核准（`clips` 的規矩，手動也守）；外部生成時**用這張關鍵影格當首格**。
+用 `clips import`（`tools/video/media/clips.mjs` 的 `importClip`；設計在 `docs/videos/DRAMA.md`「外面做的片段」）。**這一節是唯一的一份程序**，`SKILL.md`、`providers-and-plans.md` §3、animation-camera 與 `drama_preflight.mjs` 都指到這裡。
 
-1. 先跑一次 `clips --slug <SLUG> --dry-run` 確認 timeline 與 keyframes 都是現在的；再跑 `clips --slug <SLUG> --shot <其他鏡>` 或至少讓 `clips/manifest.json` 存在且三個雜湊對（手寫也行：`speech_hash`、`visual_hash`、`look_hash` 從 `status --json` 或 `drama_preflight.mjs --json` 抄；頂層另有 `clip: { provider, model, resolution }`，下一次 `clips` 會改成伺服器的選擇）。
-2. 把 mp4 放到 `<VIDEO_WORKDIR>/<SLUG>/clips/<shot>-ext<n>.mp4`（工具自己的 take 叫 `-1`、`-2`，外部用 `-ext1`、`-ext2`，不要跟 seed 編號撞；票落地後指令會寫 `-import-<n>`）。
-3. `ffprobe -v error -count_packets -select_streams v:0 -show_entries stream=width,height,r_frame_rate,nb_read_packets,duration -of json <mp4>`：記 `frames`（`nb_read_packets`）、`seconds`（整數秒）、`width`、`height`、`fps`；算 sha256。
-4. 自己跑 `clips` 階段對買來的 take 做的 ffmpeg QC——**`assemble` 不跑這些**：`tools/video/media/qc.mjs` 的 `blackdetectArgs`（黑格 ≥ 0.3 秒）、`freezedetectArgs`（旁白窗內凍格 ≥ 1 秒）、`sceneCutArgs`（0.1 秒後模型自己切鏡）、`framePsnrArgs`（第 0 格對關鍵影格，`THRESHOLDS.keyframe_min_psnr` 22），用 `node -e` 匯入它們拿到 ffmpeg 參數跑一次，結果餵 `clipVerdict` 得到 `qc: { ok, problems, metrics }`。沒跑就不要寫 `qc.ok: true`——那是你的斷言，不是量到的；沒有 profile 時 assemble 不讀 `qc`，留 `null` 也行。
-5. 在 `clips/manifest.json` 的 `shots.<shot>` 寫一筆，欄位照 `clips` 自己寫的形狀（`clips.mjs:391-406` 的 `record`）：
+```bash
+node tools/video/cli.mjs clips import --slug <SLUG> --shot <id> --file <mp4> --provider hailuo-web|kling-mcp|external [--plan <plan id>] [--credits N] [--usd N] [--note "…"] [--judge] [--force]
+```
 
-   ```json
-   {
-     "file": "clips/wr-e01-s03-ext1.mp4", "sha256": "<檔案 sha256>", "key": null, "seed": null,
-     "seconds": 8, "frames": 200, "needed_s": 3.4,
-     "first_frame": { "file": "keyframes/wr-e01-s03-2.png", "sha256": "<該圖 sha256，抄 keyframes/manifest.json>" },
-     "qc": { "ok": true, "problems": [], "metrics": { "width": 1920, "height": 1080, "fps": 25, "duration": 8.0, "black": 0, "freezes": 0, "cuts": 0, "keyframe_psnr": 31.2, "judge": null } },
-     "judge": null, "takes": [], "needs_review": false,
-     "provider": "external", "external": { "route": "hailuo-web", "plan": "pro", "credits": 96, "model": "MiniMax-H3", "resolution": "2K", "record": "clips/wr-e01-s03-ext1.external.json" }
-   }
-   ```
+**外部生成之前**：`clips --slug <SLUG> --dry-run` 確認 timeline 與 keyframes 是現在的，抄下這一鏡的需求秒數與 clip prompt；**用這一鏡通過 judge 的關鍵影格當首格**（`keyframes/manifest.json` 的 `file`），否則匯入時第 0 格 PSNR 過不了。送出前後各記一次點數餘額，差額就是 `--credits`。
 
-   `needed_s` 是鏡長（timeline 的格數 ÷ 30）；`qc` 只寫第 4 步量到的（例子裡的數字是示意）；`needs_review` 不是 `false` 的鏡 assemble 拒絕。`provider` 與 `external` 是本 skill 加的，工具不讀也不壞：`run_report.mjs` 與 `drama_preflight.mjs` 靠 `provider: "external"` 或帳本沒有這一鏡的 job 認出它，路線與點數從 `external` 讀；`clips import` 落地後改用票裡平鋪的 `provider`、`plan`、`credits`、`imported_at`。`clips_hash` 用 `clipsHash([{ id, sha256 }…])`（`tools/video/core/drama.mjs:606`）照鏡頭順序重算（`node -e` 匯入它），否則 `status` 與 `checks.json` 對不上。
-6. 每一段記一份 `clips/<shot>-ext<n>.external.json`（和試作的 `docs/videos/series-plans/competition-20261002/cost-ledger.csv` 同一套欄位；§3 的 import 工具就讀這個）：
+**指令依序查的前提**（任何一項不成立就停，檔案不複製、帳本不記）：
 
-   ```json
-   {
-     "shot": "wr-e01-s03", "route": "hailuo-web", "plan": "pro", "billing": "monthly",
-     "credits_before": 4120, "credits_after": 4024, "credits": 96,
-     "model": "MiniMax-H3", "resolution": "2K", "seconds": 8, "ratio": "16:9",
-     "first_frame_sha256": "<keyframes/manifest.json 的 sha256>", "last_frame_sha256": null,
-     "prompt_sha256": "<送出的提示詞的 sha256>", "task_id": "<站方的任務 id>",
-     "submitted_at": "2026-10-03T10:12:00+08:00", "ready_at": "2026-10-03T10:19:00+08:00",
-     "file": "clips/wr-e01-s03-ext1.mp4", "sha256": "<下載檔的 sha256>",
-     "probe": { "width": 2048, "height": 1152, "fps": 25, "duration": 8.0 },
-     "accepted": null, "rejection_reason": null
-   }
-   ```
+| 查什麼 | 不成立的結束碼 |
+| --- | --- |
+| `--slug`、`--shot`、`--file` 都有且檔案存在；`--provider` 是三個值之一；`--credits`／`--usd` 是 ≥ 0 的數 | 2 |
+| lint 零錯誤 | 1 |
+| 這一集**沒有** production profile | **3**（profile 指定買片段的模型，`productionClipProblems` 拿 manifest 對它；要收別條路線得站主先改 profile，另一張票） |
+| 這一鏡是 clip 鏡：不是 still、不是 `source` 切的 | 2 |
+| `timeline.json` 是現在的台詞；`keyframes/manifest.json` 是現在的劇本與 look；這一鏡的關鍵影格通過 judge | 2 |
+| storyboard 已核准 | 3 |
+| ffmpeg 與 ffprobe 在 | 5 |
 
-   （`probe` 的像素是示意；H3 2K 的實際尺寸沒有讀，以 `ffprobe` 為準。）可選：在 `media/ledger.json` 的 `entries` 加 `{ at, stage: "clips", kind: "clip", id: "<shot>", provider: "external", plan, credits, seconds, cost_usd: 0, status: "imported" }`；`totalsOf` 下次寫入時會重算。沒加也行，`run_report.mjs` 把 manifest 有、帳本沒有的列成 external。
-7. 跑 `assemble`。它對外部素材真正做的檢查（`tools/video/assemble/cli.mjs` 只匯入 `freezeProblem`、`keyframeProblem`、`sourceFrameProblem` 與 `checkBed`）：檔案存在；`ffprobe` 的格數減 `from_frame` 要 > 0；`fitPlan`（`tools/video/assemble/drama.mjs`）——比句子長就從尾端裁、比句子短就最多放慢到 0.85×（`fit: "slow"` 到 0.5×）再停格補，停格超過 60 格（`MAX_FREEZE_FRAMES`）而 `fit` 不是 `"freeze"` 就 CHECK 不過；**第 0 格對關鍵影格 PSNR ≥ 22**（`KEYFRAME_MIN_PSNR`，寫進 `checks.json.metrics.shots[].keyframe_psnr`；切鏡對來源格是 `sourceFrameProblem`）；然後整支的 probe、響度、音樂床。沒過就 `checks.json` 說哪一鏡，**1**。24 fps 或 768P 的檔會被重編碼進 30 fps 1080p 的時間軸，畫質沒驗。
+**它做的事**：
 
-少掉的：judge（identity、motion、clean、no_text 都沒人問）；黑格、freezedetect、模型自己切鏡、1280×720 與 23 fps 下限、時長短於要求 0.25 秒、相鄰關鍵影格的 3 dB 餘裕只在 `clips` 的 `clipVerdict` 跑（第 4 步自己跑）；帳本與 `media-status` 不知道、`status` 把它當買的、下一次 `clips --force` 會把它覆蓋掉（它的 key 不在快取裡）。relax 隊列的片段回來時 timeline 已經改了的話，manifest 的雜湊對不上，整個 manifest 要重建，條目也要重寫。
+1. 複製成 `clips/<shot>-import-<n>.mp4`（同一個檔再匯一次沿用編號，帳本也只留一筆）。
+2. `ffprobe` 加 `tools/video/media/qc.mjs` 的黑格、旁白範圍內的凍格、模型自己切鏡、1280×720 與 23 fps 下限、第 0 格對這一鏡與相鄰關鍵影格的 PSNR，餵 `clipVerdict`——跟買來的 take 同一組，只少「比要求的秒數短」那一項（沒有向誰要過秒數；比台詞短只印提醒，由 `assemble` 的 `fitPlan` 慢放與停格，停格超過 60 格而 `fit` 不是 `"freeze"` 會在那裡不過）。
+3. `--judge` 才把片段與角色設定圖上傳媒體庫、問 `clipRubric`（US$0.01，記帳；太大時跟 `clips` 一樣改送 720p proxy）。不帶 `--judge` 完全不碰網站，也不需要權杖。
+4. 寫 manifest 的 `shots.<shot>`：`clips` 寫的形狀（`file`、`sha256`、`seconds`、`frames`、`needed_s`、`first_frame`、`qc`、`judge`、`takes`、`needs_review`）加 `provider`、`plan`、`credits`、`imported_at`（`--note` 寫進 `note`）；原本買的 take 留在 `takes`。從這一鏡切出去的鏡頭（`source`）跟著改指新檔。`clips_hash` 重算，`state.json` 記一次 `clips`。
+5. 帳本一筆 `{ stage: "clips", kind: "clip", id, provider, plan, credits, seconds, cost_usd, file, sha256, status: "imported" }`：`seconds` 是量到的秒數四捨五入，`cost_usd` 是 `--usd`、沒給是 0——點數換美元照 `providers-and-plans.md` §1.2／§1.3 的表自己乘，工具不代換。沒過的也記（點數已經花了）。`totals.clip_seconds` 與單支上限都算它，`importedTotals`（`tools/video/media/ledger.mjs`）另外加總。
+
+**結束碼**：0 過了；**1** 沒過——`needs_review: true`、`problems` 寫原因，重做一支再匯入，或 `--force` 留下它（`needs_review: false`、`forced: true`；量到的問題留在 `qc.problems`，那是看過之後的決定，不是量到的通過）；從這一鏡切出去的鏡頭因新檔太短而 `needs_review` 時也是 1。
+
+**之後**：`status` 的 `clips generated` 後面寫「N of M clips imported: hailuo-web 1, …」；`clips --dry-run` 把它列成 imported、不估價；`clips` 留用它（`kept (imported from …)`）；`run_report.mjs` 與 `drama_preflight.mjs` 把匯入的與買的分開列。然後照常 `music`、`assemble`。
+
+還是少掉的：judge 預設不問；`media/cache.json` 沒有它的請求鍵，所以 **`clips --force` 會把它重買**（要重做別的鏡用 `--shot`）；伺服器的每月預算與後台的 `media_usd` 不知道它；站方的任務 id、提示詞、送出與完成時間工具不記（要留就寫 `--note`）；relax 隊列的片段回來時台詞或鏡頭已經改了，指令以 2 停下，重跑 `tts`／`keyframes` 之後關鍵影格也換了，片段多半要重做；24 fps 或 768P 的檔會在 `assemble` 被重編碼進 30 fps 1080p 的時間軸，畫質沒驗。
+
+**指令落地前手放的片段**（`clips/<shot>-ext<n>.mp4`，manifest 條目 `provider: "external"` 加 `external: { route, plan, credits }`，沒有帳本）：`run_report.mjs` 與 `drama_preflight.mjs` 仍認得，列成「手放」；它們沒經過 `clips` 的 QC，用 `clips import --file <那個 mp4>` 重新帶進來一次。

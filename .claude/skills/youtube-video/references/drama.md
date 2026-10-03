@@ -71,6 +71,7 @@ node tools/video/cli.mjs tts       --slug <SLUG> --dry-run                      
 node tools/video/cli.mjs keyframes --slug <SLUG> [--shot a,b] [--takes 3] [--force] [--dry-run] [--channel msedge]
 node tools/video/cli.mjs render    --slug <SLUG> [--channel msedge]             # 漫劇要先有 timeline（字幕條依旁白切）與關鍵影格（縮圖底圖）
 node tools/video/cli.mjs clips     --slug <SLUG> [--shot a,b] [--takes 2] [--force] [--dry-run]
+node tools/video/cli.mjs clips import --slug <SLUG> --shot <id> --file <mp4> --provider hailuo-web|kling-mcp|external [--plan P] [--credits N] [--usd N] [--note "…"] [--judge] [--force]   # 外面做的片段進一個鏡頭
 node tools/video/cli.mjs music     --slug <SLUG> [--dry-run]
 node tools/video/cli.mjs assemble  --slug <SLUG>
 node tools/video/cli.mjs review    --slug <SLUG>                                # 也寫 review/look.html（本機看候選設定圖）
@@ -80,6 +81,8 @@ node tools/video/assemble/smoke.mjs --fixture drama [--channel msedge]          
 ```
 
 結束碼同投影片路線：1 品檢或 lint 沒過（`needs_review` 進 manifest，改提示詞再跑）；2 順序不對（timeline 或 manifest 還沒有、或是舊劇本的：例如沒跑 `tts` 就 `keyframes`）；3 要站主（漫劇沒開、沒金鑰、單支上限、關卡沒核准或已過期：look 沒核准就 `keyframes`、storyboard 沒核准就 `clips` 都是 3，`tools/video/cli.mjs` 的 `EXIT.owner`）；4 供應商或額度；5 ffmpeg 或瀏覽器沒裝。
+
+**外面做的片段**（站主的 Hailuo 網頁方案、Kling MCP）用 `clips import` 進一個鏡頭：前提同 `clips`（timeline 與 keyframes 是現在的、這一鏡的關鍵影格通過、storyboard 核准），檔案複製成 `clips/<shot>-import-<n>.mp4`，跑買來的 take 同一組 ffmpeg 檢查，`--judge` 才問 judge（不帶就不碰網站）。沒過是 `needs_review`（結束碼 1），`--force` 留下並記 `forced`；manifest 條目多 `provider`、`plan`、`credits`、`imported_at`，帳本記一筆 `status: "imported"`（`--usd` 沒給就是 US$0）。有 production profile 的作品結束碼 3；still 與 `source` 鏡頭結束碼 2。之後 `clips` 留用它、`--dry-run` 不替它估價、`status` 標出匯入幾支，`clips --force` 仍會重買。外部生成時用這一鏡的關鍵影格當首格，否則第 0 格 PSNR 過不了。選路線、算錢、在 Hailuo／Kling 那一頭怎麼操作在 `animation-production` skill；設計在 `docs/videos/DRAMA.md`「外面做的片段」。
 
 ## video.json 的重點
 

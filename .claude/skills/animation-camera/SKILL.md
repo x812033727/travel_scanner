@@ -27,7 +27,7 @@ metadata:
 | --- | --- |
 | 寫 `camera`，想知道某個字三個讀者各讀成什麼 | `.agents/skills/animation-camera/references/camera-keywords.md`（正則逐字表、分家的字、35 行例子） |
 | 寫一場戲：軸線、視線、進出、連戲帳；一場 12 鏡的戲寫兩次（可接受版附腳本輸出、craft 列與估價；試拍式每鏡標錯） | `.agents/skills/animation-camera/references/scene-coverage.md` |
-| 被 judge、`assemble` 或站主退回 | `.agents/skills/animation-camera/references/model-misreads.md`（逐 take 的證據、提示怎麼組、Lite 的 negative 陷阱、judge 的題、Hailuo 與 Kling 的字彙來源）與 `visual-quality.md`（診斷、小卡、冷看） |
+| 被 judge、`assemble` 或站主退回 | `.agents/skills/animation-camera/references/model-misreads.md`（逐 take 的證據、提示怎麼組、Lite 的歷史參數失敗與此版本相容處理、judge 的題、Hailuo 與 Kling 的字彙來源）與 `visual-quality.md`（診斷、小卡、冷看） |
 | 要算錢、選路線、看每個付費階段的前提 | `.agents/skills/animation-production/SKILL.md`；這批動畫的 Lite 契約（8 秒、首尾格、無參考圖、CC）在 `animation-production.md` |
 
 ## 三個欄位各給誰讀
@@ -42,10 +42,10 @@ metadata:
 提示的組法（2026-10-03 逐字讀程式）：
 
 - 關鍵影格（`tools/video/media/keyframes.mjs` 的 `shotPrompt`）：`<prompt>. Style: <look.style>. Camera: <camera>. Characters: <name>: <appearance>; …`，切到 4000 字。`look.negative` 另送，Gemini 圖片 adapter 接在後面成 `Avoid: …` 段。參考圖最多 4 張（`apps/api/app/video_media/schemas.py` 的 `MAX_REFERENCES`；catalog 寫的 14 張用不到）。圖片不帶 seed，「換 seed」只是換快取鍵。`end_frame` 同樣組法，畫了不 judge。
-- 片段（`tools/video/media/clips.mjs` 的 `clipPrompt`）：`<motion>. <camera>. <look.motion>. <命名造型的外觀>`，切到 4000；`negative_prompt` 是 `look.negative`；`first_frame` 是通過的關鍵影格；`native_audio` 永遠 false；Veo Lite 不帶參考圖。
+- 片段（`tools/video/media/clips.mjs` 的 `clipPrompt`）：`<motion>. <camera>. <look.motion>. <命名造型的外觀>`，切到 4000；`negative_prompt` 是 `look.negative`；Gemini adapter 對 Lite 省略不支援的 `parameters.negativePrompt`，把完整限制接成 `Avoid: …` 放進主提示，非 Lite 保留原參數；`first_frame` 是通過的關鍵影格；`native_audio` 永遠 false；Veo Lite 不帶參考圖。
 - `data.negative` 每鏡欄位 lint 收，但 look、keyframes、clips 都只送 `look.negative`（2026-10-03 grep）：每鏡想少畫什麼，寫成 prompt 裡「有什麼」。
 - `motion`、`camera`、`prompt` 不以句點收尾：組合時會疊成 `..`。
-- judge 的 context 另帶每個角色的 `appearance` 與 `look.style`；每一題 ≤ 400 字（`apps/api/app/video_media/schemas.py` 的 `JudgeCriterion`），命名造型的 `appearance` 太長會在圖買完之後被 422 擋在 judge 之前（`tasks/open/2026-10-02-keep-named-look-clip-judge-questions.md`）。
+- judge 的 context 另帶每個角色的完整姓名、`appearance` 與 `look.style`；每一題 ≤ 400 字（`apps/api/app/video_media/schemas.py` 的 `JudgeCriterion`）。clip 的命名造型／長姓名識別題已使用有界文字，參考圖標籤 ≤ 80 字，完整姓名與造型留在 context（`tasks/done/2026-10-02-keep-named-look-clip-judge-questions.md`）；keyframe 題仍直接帶 appearance，須以 preflight 檢查實際題長，不能沿用 clip 的結論。
 
 ## 一場戲先定空間
 
@@ -156,15 +156,18 @@ metadata:
 
 關鍵影格仍由產線畫（景別、構圖、軸線在圖裡已定），`camera` 這一行照上面的讀者寫；到了那兩家，再把運鏡翻成它們的字，它們都不讀產線的讀者。來源與未驗的事在 `model-misreads.md` 第五節；方案價目、佇列與怎麼把 mp4 帶回產線在 `animation-production`。
 
-| 東西 | 產線（API） | Hailuo 網頁（image-to-video） | Kling MCP（社群 mcp-kling 的 `generate_image_to_video`） |
+| 東西 | 產線（API） | Hailuo 網頁（image-to-video） | Kling（官方 CLI 的 `kling image_to_video`，站主 2026-10-04 選的；社群 mcp-kling 的 `generate_image_to_video`） |
 | --- | --- | --- | --- |
-| 第一格 | 通過 judge 的 `keyframes/<shot>-<seed>.png` | 上傳同一張當 first frame | 同 |
-| 運鏡 | `camera` 原文接在 `motion` 後 | MiniMax API 文件（2026-10-03）的方括號指令：`locked` → `[static]`，`push in` → `[zoom]`，pan → `[pan]`（方向寫字裡，畫面往哪跑未驗）；tilt 沒有對應的字，寫原文 | camera control：`locked` → `static`，`push in` → `zoom`，pan → `pan`，拿不定 → `auto`；方向與正負怎麼給未驗 |
+| 第一格 | 通過 judge 的 `keyframes/<shot>-<seed>.png` | 上傳同一張當 first frame。Claude 桌面版的內建瀏覽器傳不了本機檔案（實測 2026-10-04），要 Claude in Chrome 的檔案上傳或 Playwright（還沒試） | 同一張：`kling-video-v3_0` 的 `first_image`（末格 `tail_image`）；`v3_0_omni`／`o1` 是 `image_1`…`image_7`（實測 2026-10-04 讀 `who_am_i`；圖怎麼交給 CLI 還沒試） |
+| 運鏡 | `camera` 原文接在 `motion` 後 | MiniMax API 文件（2026-10-03）的方括號指令：`locked` → `[static]`，`push in` → `[zoom]`，pan → `[pan]`（方向寫字裡，畫面往哪跑未驗）；tilt 沒有對應的字，寫原文 | 官方 CLI：有沒有鏡頭控制的參數沒有核對，運鏡先寫進 prompt 原文（未驗）。社群 MCP 的 camera control：`locked` → `static`，`push in` → `zoom`，pan → `pan`，拿不定 → `auto`；方向與正負怎麼給未驗 |
 | 動作 | `motion` 原文 | 提示正文貼同一句 `motion` | motion prompt 貼同一句 |
 | 風格句 | `look.motion` 自動接上 | 自己決定貼不貼 | 同 |
-| 否定 | `look.negative`（Lite 會 400） | 併進正文 `Avoid: …`（API 的 adapter 也這樣做） | `negative_prompt` 欄位，上限未驗 |
-| 秒數 | `clipSeconds` | H3 4–15 秒整數，自己選 | 5 或 10 秒 |
-| 進產線 | 自動進 `clips/manifest.json` 與帳本 | 手動：mp4 放 `clips/<shot>-<n>.mp4` 並寫 manifest 項（步驟在 `.agents/skills/animation-production/references/providers-and-plans.md` 第三節）。`assemble` 對它只驗：第 0 格對這一鏡關鍵影格 PSNR ≥ 22（切鏡則對來源那一格）、fit 的停格 > 60 格（`MAX_FREEZE_FRAMES`，`fit: "freeze"` 除外）、整支格數與響度；黑格、`freezedetect`、模型切鏡、1280×720 與 23 fps 下限、時長短於要求只在 `clips` 階段跑（`tools/video/media/qc.mjs`），外部片段要自己用同一組 ffmpeg 參數跑；帳本不知道。`clips import` 指令的票 `tasks/open/2026-10-03-clips-import-bring-a-clip-made.md` | 同 |
+| 否定 | `look.negative`：Lite 由 adapter 完整接成 `Avoid: …`，非 Lite 保留 `negativePrompt` | 併進正文 `Avoid: …`（API 的 adapter 也這樣做） | `negative_prompt` 欄位，上限未驗 |
+| 秒數 | `clipSeconds` | H3 4–15 秒整數，自己選（設定面板，實測 2026-10-04） | 官方 CLI（實測 2026-10-04）：`kling-video-v3_0` 3–15 秒整數，`o1` 3–10 秒，`v2_5`／`v2_6` 5 或 10 秒。只有社群 MCP 的 `generate_video` 限 5 或 10 秒 |
+| 比例與輸出 | 照模型與 profile（`animation-production`） | 比例**預設 21:9，要改成 16:9**（選項：自動／21:9／16:9／4:3／1:1／3:4／9:16）；H3 2K 的輸出是 2560×1440、24 fps，不是 1920×1080（實測 2026-10-04） | NORMAL 帳號列的模型都只有 720p，付費方案有沒有 1080p 未驗；`v3_0_omni`／`o1` 的 `aspect_ratio` 是 16:9／9:16／1:1（實測 2026-10-04） |
+| 聲音與分鏡 | `native_audio` 永遠 false；模型自己切鏡由 `qc.mjs` 擋 | 輸出帶 AAC 音軌（實測 2026-10-04），成片不用 | `enable_audio` 與 `prefer_multi_shots` 預設都是 true，**兩個都傳 false**：一鏡是一個連續鏡頭（實測 2026-10-04 讀 `who_am_i`） |
+| 下載 | — | 走「全部下載 → 無水印下載」：結果卡 `<video>` 的 src 是有浮水印的版本，`clips import` 的 ffmpeg 檢查抓不到（實測 2026-10-04；步驟在 `.agents/skills/animation-production/references/providers-and-plans.md` §1.2） | 還沒生成過（帳號 0 點），未驗 |
+| 進產線 | 自動進 `clips/manifest.json` 與帳本 | `clips import --slug <SLUG> --shot <id> --file <mp4> --provider hailuo-web`（步驟在 `.agents/skills/animation-production/references/stage-preconditions.md` 最後一節）：前提同 `clips`，跑同一組 ffmpeg 檢查（`tools/video/media/qc.mjs`：黑格、`freezedetect`、模型切鏡、1280×720 與 23 fps 下限、第 0 格對這一鏡關鍵影格 PSNR ≥ 22），沒過 `needs_review`；judge 要帶 `--judge` 才問；帳本記點數。`assemble` 之後照常驗 fit 的停格 > 60 格（`MAX_FREEZE_FRAMES`，`fit: "freeze"` 除外）、整支格數與響度 | 同，`--provider kling-mcp` |
 
 同一鏡（示範場的 s06）三種寫法：
 
@@ -172,11 +175,12 @@ metadata:
 產線    motion: Chen pushes the coin bag back across the counter toward Ayu
         camera: Over-the-shoulder from behind Ayu on Chen, locked
         clipPrompt → "Chen pushes the coin bag back across the counter toward Ayu. Over-the-shoulder from behind Ayu on Chen, locked"（look.motion 空）
-Hailuo  首格 keyframes/s06-1.png；提示 "Chen pushes the coin bag back across the counter toward Ayu [static]"；H3 768P、6 s（最短 4 s；台詞 5.4 s，整數秒往上取）
-Kling   首格同一張；motion prompt 同一句；camera control static；5 s 不夠 5.4 s 的台詞，只能 10 s 或拆鏡
+Hailuo  首格 keyframes/s06-1.png；提示 "Chen pushes the coin bag back across the counter toward Ayu [static]"；H3 768P、16:9（預設 21:9 要改）、6 s（最短 4 s；台詞 5.4 s，整數秒往上取）
+Kling   官方 CLI：kling-video-v3_0，first_image 同一張；prompt 同一句加 camera 原文；6 s（3–15 秒整數）；enable_audio false、prefer_multi_shots false
+        社群 MCP：首格同一張；motion prompt 同一句；camera control static；只有 5 或 10 s，5 s 不夠 5.4 s 的台詞，只能 10 s 或拆鏡
 ```
 
-網頁與 MCP 都用站主的帳號，不用代理自己的帳號；兩家的片段都沒經過產線的 judge，等於多一道人看。有 production profile 的集進不了外部片段（`animation-production` 的路線規則）。
+網頁、CLI 與 MCP 都用站主的帳號，不用代理自己的帳號；兩家的片段都沒經過產線的 judge，等於多一道人看。有 production profile 的集進不了外部片段（`animation-production` 的路線規則）。
 
 ## 每寫完一場戲的檢查清單
 
@@ -188,7 +192,7 @@ craft 的列（景別有名、`camera` 與 `prompt` 同家族、全景占比與�
 | 2 | 每鏡 ≤ 3 人 | lint 錯誤 `must list at most 3 distinct character ids`；`shot_reading` `cast.count` |
 | 3 | still 的 `camera` 照上一節「靜圖的運鏡」那一段；`drift`＋`static` 不並寫 | `shot_reading` `still.drift`、`still.locked`、`move.disagree`；`checks.json` `metrics.shots[].move`、`keyframe_psnr` |
 | 4 | `source` 的 `from_s`＋鏡長在 lint 上限內，也在來源買到的秒數內；來源是有素材的 clip 鏡 | lint 錯誤；`shot_reading` `source.length`、`source.bought`、`source.shot` |
-| 5 | 鎖定作品的 `look.motion` 是空字串；Lite 下 `look.negative` 為空；兩者都在 `look` 之前定好 | `shot_reading` `look.motion`；`animation-production` 的 `drama_preflight.mjs` |
+| 5 | 鎖定作品的 `look.motion` 是空字串；`look.negative` 保留所需限制，兩者在 `look` 之前定好；不為 Lite 清空已核准的 negative | `shot_reading` `look.motion`；`animation-production` 的 `drama_preflight.mjs` |
 | 6 | `camera` ≤ 120、`prompt` ≤ 1000、`motion` ≤ 300；組合後的關鍵影格提示 ≤ 4000；人的動詞不在 `camera`；prompt 不抄 `camera` | lint；`shot_reading` `prompt.length`、`camera.person`、`prompt.camera` |
 | 7 | 軸線、畫面側、視線、進出方向、採用格連戲帳 | 只有人；寫在這場戲的回報裡 |
 
@@ -211,12 +215,12 @@ node .agents/skills/animation-camera/scripts/shot_reading.mjs <file> --json | --
 
 ## 模型畫錯過的事
 
-一次試拍的證據寫成規則，不是定律；逐 take 的表、提示的組法、Lite 的 negative 陷阱、judge 的題目與通過條件在 `.agents/skills/animation-camera/references/model-misreads.md`。最常踩的五條：關門寫成否定句被畫成開門；場景光放在 `look.style` 漏到別的場景；手部插鏡列了角色被畫成上半身；「微顫」「收緊」被片段模型放大成抬筆、多一隻手；錶在兩張通過的圖之間換了手，來源從沒寫過左右腕。Lite 路線在那張票合併前，`look.negative` 要在 `look` 之前就寫空（`tasks/open/2026-10-02-honor-veo-lite-negativeprompt-compatibility.md`）。
+一次試拍的證據寫成規則，不是定律；逐 take 的表、提示的組法、Lite 的歷史參數失敗與現行相容處理、judge 的題目與通過條件在 `.agents/skills/animation-camera/references/model-misreads.md`。最常踩的五條：關門寫成否定句被畫成開門；場景光放在 `look.style` 漏到別的場景；手部插鏡列了角色被畫成上半身；「微顫」「收緊」被片段模型放大成抬筆、多一隻手；錶在兩張通過的圖之間換了手，來源從沒寫過左右腕。此程式版本已完成 Lite adapter 相容修正（`tasks/done/2026-10-02-honor-veo-lite-negativeprompt-compatibility.md`）；保留 `look.negative`，不用為此改 look 或重做核准。實際後端須核對部署版本，本機 preflight 通過不代表正式服務已更新或付費片段已成功。原試拍結果仍是當時的歷史證據。
 
 ## 還沒驗、不能宣稱的事
 
 - 片段模型對 `locked`、`pan left`、`push in` 原文的反應：沒有量過，`camera` 的字只保證三個讀者讀對。
 - 參考片的運鏡：量到的只有鏡長與景別（`drama-craft.md` 最後一節），「鎖定不是預設」「同一運鏡 ≤ 連 3」是編輯判斷。
 - 手部插鏡列不列角色哪種更穩、過肩近側的 identity 題過不過、`eyes open throughout, one natural blink is fine` 會不會改變 judge 分數：各一次證據或零次。
-- Hailuo 網頁是否照 API 文件解讀方括號指令、Kling MCP 的 pan 方向與 zoom 正負、Kling 官方 API 的 `camera_control` 欄位：沒有在頁面上核對（`model-misreads.md` 第五節）。
+- Hailuo 網頁是否照 API 文件解讀方括號指令、Kling MCP 的 pan 方向與 zoom 正負、Kling 官方 API 的 `camera_control` 欄位：沒有在頁面上核對（`model-misreads.md` 第五節）。2026-10-04 的實測沒有補上這幾項：Hailuo 那一支是文生影片，量的是點數、時間與輸出規格；Kling 官方 CLI 讀了指令、模型與參數，帳號 0 點、一支都沒生成。
 - 這份 skill 讓一個沒看過產線的代理寫出可接受的一場戲（任務的驗收第五條）：一次前向測試（2026-10-03，12 鏡的兩人餐桌戲）三稿到可接受，但寫的人開了 `timeline.mjs`、`clips.mjs` 與 craft 的正則才過；這一版補的 `action_seconds` 的位置、`holds` 那組字、來源買到的秒數就是從那次來的，之後還沒再測。

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // 離線預檢：下一個付費階段（look → keyframes → clips → music → assemble）跑下去，會先被什麼擋住
 // （關卡沒核准或過期：exit 3；timeline 過期或 manifest 沒綁到現在的 hash：exit 2；lint 錯：exit 1），
-// 又會白花什麼（Veo Lite 遇到 look.negative 每個 take 都 HTTP 400、judge 題目超過 400 字被站上拒收、
+// 又會白花什麼（judge 題目超過 400 字被站上拒收、
 // 重跑把快取裡的 manifest 重寫而把核准作廢、production profile 的模型和存好的片段不合而整批重買）。
 // 只讀檔案：不碰伺服器、不要 token、不要 ffmpeg；伺服器實際選的模型得看 `media-status`，所以片段模型
 // 從 series.json 的 production.profile.video、存好的 clips/manifest.json 或 --model 來。
@@ -39,7 +39,6 @@ export const JUDGE_MONTHLY_BUDGET = 3000;
 export const JUDGE_CALLS_PER_HOUR = 360;
 // tools/video/assemble/drama.mjs KEYFRAME_MIN_PSNR：片段第 0 格對 keyframe 的 PSNR 下限。
 export const KEYFRAME_MIN_PSNR = 22;
-export const LITE_MODEL = /^veo-?3\.1-lite/;
 const describe = { approved: "已核准", stale: "核准後檔案又變了（stale）", missing: "還沒核准", absent: "檔案還不存在" };
 const usd = (value) => `US$${value.toFixed(2)}`;
 const ids = (scenes) => scenes.map((scene) => scene.id).join(", ");
@@ -54,7 +53,7 @@ async function rubricBuilders() {
 }
 
 /**
- * { slug, workdir, stage, next_paid, steps, gates, hashes, bindings, kept, needs_review, external,
+ * { slug, workdir, stage, next_paid, steps, gates, hashes, bindings, kept, needs_review, external, imported,
  *   stop, findings: [{ stage, level: refuse|waste|note, exit, what, fix, usd?, judge_calls? }], judge, exit_code }
  */
 export async function preflight({ slug, root, workdir: workdirFlag, env = process.env, home, stage: wanted = null, model: modelFlag = null }) {
@@ -113,8 +112,12 @@ export async function preflight({ slug, root, workdir: workdirFlag, env = proces
     keyframes: Object.entries(keyframes?.shots ?? {}).filter(([, shot]) => shot?.needs_review).map(([id, shot]) => ({ id, problems: shot.problems ?? [] })),
     clips: Object.entries(clips?.shots ?? {}).filter(([, shot]) => shot?.needs_review).map(([id, shot]) => ({ id, problems: shot.problems ?? [] })),
   };
-  const ledgerClipIds = new Set(ledger.entries.filter((entry) => entry.kind === "clip" && entry.status !== "cut").map((entry) => entry.id));
-  const external = Object.entries(clips?.shots ?? {}).filter(([id, shot]) => shot?.file && !shot.still && !shot.source && (shot.provider === "external" || !ledgerClipIds.has(id))).map(([id]) => id);
+  const ledgerClipIds = new Set(ledger.entries.filter((entry) => entry.kind === "clip" && entry.status !== "cut" && entry.status !== "imported").map((entry) => entry.id));
+  // Clips this line did not buy: `clips import` brought them in (imported_at) and checked them; the rest were put there by hand.
+  const outside = Object.entries(clips?.shots ?? {}).filter(([id, shot]) => shot?.file && !shot.still && !shot.source && (shot.imported_at || shot.provider === "external" || !ledgerClipIds.has(id)));
+  const external = outside.map(([id]) => id);
+  const imported = outside.filter(([, shot]) => shot.imported_at).map(([id]) => id);
+  const handPlaced = external.filter((id) => !imported.includes(id));
   const stop = stopRequested(workdir);
   const imagePrice = PRICES[DEFAULT_IMAGE_MODEL].usd_per_image;
   const judgePrice = PRICES.judge.usd_per_call;
@@ -146,7 +149,7 @@ export async function preflight({ slug, root, workdir: workdirFlag, env = proces
   const longQuestions = (build, scenes) => (build ? scenes.flatMap((scene) => build(shotCast(doc, scene)).filter((criterion) => criterion.question.length > MAX_RUBRIC_QUESTION).map((criterion) => ({ shot: scene.id, key: criterion.key, length: criterion.question.length }))) : []);
   const reportLongQuestions = (long, what) => {
     if (!long.length) return;
-    add("waste", EXIT.external, `${what} 的 judge 題目超過 ${MAX_RUBRIC_QUESTION} 字：${long.map((each) => `${each.shot}/${each.key} ${each.length} 字`).join("、")}（apps/api/app/video_media/schemas.py JudgeCriterion）`, "站上會以 422 拒收那次評審，而圖或片段已經買了、階段也會丟錯停下：把那個角色的 shot_looks appearance 縮到讓題目在 400 字內（識別題把 appearance 整段放進去），再跑");
+    add("waste", EXIT.external, `${what} 的 judge 題目超過 ${MAX_RUBRIC_QUESTION} 字：${long.map((each) => `${each.shot}/${each.key} ${each.length} 字`).join("、")}（apps/api/app/video_media/schemas.py JudgeCriterion）`, "站上會以 422 拒收那次評審，而圖或片段已經買了、階段也會丟錯停下：先檢查這個階段實際產生的題目並修到 400 字內，再跑；keyframe 識別題仍直接帶 appearance，clip 識別題已改用有界文字與完整 context，不能把兩者當成相同限制");
   };
   const stopNote = () => { if (stop) add("note", null, "工作目錄（或它上一層）有 STOP 檔", "階段做完手上那一個單位就會退出；要整段跑完先刪掉 STOP"); };
   const lintRefuse = () => { if (lint.errors.length) add("refuse", EXIT.lint, `video.json 有 ${lint.errors.length} 個 lint 錯誤：${lint.errors.slice(0, 3).map((error) => `${error.path}: ${error.message}`).join("；")}${lint.errors.length > 3 ? "…" : ""}`, "先 `node tools/video/cli.mjs lint --slug <slug>` 修到 0 錯"); };
@@ -204,8 +207,7 @@ export async function preflight({ slug, root, workdir: workdirFlag, env = proces
       if (undrawn.length) add("refuse", EXIT.usage, `這些鏡頭沒有過 judge 的 keyframe：${ids(undrawn)}`, "修 prompt、跑 keyframes，再核 storyboard");
     }
     if (gates.storyboard.status !== "approved") add("refuse", EXIT.owner, `storyboard 關卡${describe[gates.storyboard.status]}`, "review-push --gate storyboard，等站主（或自動核准設定）在 /admin/videos 決定，再 review-pull");
-    if (clipModel && LITE_MODEL.test(clipModel) && look.negative) add("waste", null, `片段模型是 ${clipModel}，而 look.negative 不是空的（${look.preset} preset 的預設就有）：伺服器把 negativePrompt 送給每個模型，Lite 回 HTTP 400，每個 take、每個 seed 都一樣（apps/api/app/video_media/providers/gemini_video.py；tasks/open/2026-10-02-honor-veo-lite-negativeprompt-compatibility.md）`, "廠商拒收會退款，錢沒花、但這一跑整批 needs_review、時間全丟。那張票合併前先把 look.negative 改成空字串；注意 negative 算在 lookHash 裡（tools/video/core/drama.mjs lookHash → resolveLook），改了就是新 look：要在 look 之前改，不然人設表、keyframes、兩個關卡全部重來");
-    if (clipModel === null) add("note", null, "離線看不出伺服器會用哪個片段模型（series.json 沒有 production.profile.video，也沒有存過 clips/manifest.json）", "先 `clips --dry-run` 看 server 行；若是 veo-3.1-lite，look.negative 必須是空的");
+    if (clipModel === null) add("note", null, "離線看不出伺服器會用哪個片段模型（series.json 沒有 production.profile.video，也沒有存過 clips/manifest.json）", "先 `clips --dry-run` 看 server 行，核對實際模型、解析度與預算");
     if (bindings.clips.present && bindings.clips.bound && !modelCurrent) add("waste", null, `clips/manifest.json 是 ${clips.clip?.provider ?? "?"} ${clips.clip?.model ?? "?"} ${clips.clip?.resolution ?? "?"} 做的，production profile 要 ${profileVideo?.provider ?? ""} ${profileVideo?.model} ${profileVideo?.resolution}`, `模型不同時整本 manifest 重建，${clipShots.length} 支片段全部重買：要換模型就要認這筆錢；不換就把 profile 改回去`);
     if (bindings.clips.present && bindings.clips.bound && modelCurrent && bindings.timeline.bound) {
       const cached = productionClipProblems(doc, series, timeline, clips).filter((problem) => problem.path.startsWith("clips."));
@@ -220,7 +222,8 @@ export async function preflight({ slug, root, workdir: workdirFlag, env = proces
     if (needsReview.clips.length) add("note", null, `上次沒有 take 過的鏡頭：${needsReview.clips.map((shot) => `${shot.id}（${shot.problems.join("; ") || "沒寫原因"}）`).join("、")}`, "先改 motion / camera 再跑；不改提示重跑只會再買兩個 take");
     reportLongQuestions(longQuestions(rubrics.clipRubric, newClips), "clip");
     if (rubrics.error) add("note", null, `讀不到 clips.mjs 的 rubric（${rubrics.error}）`, "judge 題目長度這一項沒檢查");
-    if (external.length) add("note", null, `clips/manifest.json 裡有不是這條線買的片段（ledger 沒有它們的 job）：${external.join(", ")}`, `外部素材（Hailuo 網頁、Kling）今天只能手放（references/stage-preconditions.md 最後一節）：assemble 只驗格數、第 0 格對 keyframe 的 PSNR（≥ ${KEYFRAME_MIN_PSNR}）、fit 的停格 > 60 格與響度；黑格、freezedetect、模型自己切鏡只在 clips 的 qc.mjs 跑，外部片段要自己用 blackdetectArgs／freezedetectArgs／sceneCutArgs 跑一次；ledger 和 run_report 的錢不含它們`);
+    if (imported.length) add("note", null, `clips import 匯入的片段：${imported.join(", ")}`, "它們過了跟買來的 take 同一組 ffmpeg 檢查，judge 只有匯入時帶 --judge 才問過；clips 會留用它們，clips --force 會把它們重買");
+    if (handPlaced.length) add("note", null, `clips/manifest.json 裡有不是這條線買的片段（ledger 沒有它們的 job）：${handPlaced.join(", ")}`, `手放的外部素材沒有經過 clips 的 qc.mjs（黑格、freezedetect、模型自己切鏡），assemble 只驗格數、第 0 格對 keyframe 的 PSNR（≥ ${KEYFRAME_MIN_PSNR}）、fit 的停格 > 60 格與響度，ledger 和 run_report 的錢也不含它們：改用 clips import 重新帶進來（references/stage-preconditions.md 最後一節）`);
     stopNote();
     rateNote();
   } else if (stage === "music") {
@@ -256,7 +259,7 @@ export async function preflight({ slug, root, workdir: workdirFlag, env = proces
       }
     }
     if (doc.music && !bindings.music.bound) add("refuse", EXIT.usage, bindings.music.present ? "music/manifest.json 是舊的（mix_hash 不同）" : "沒有 music/manifest.json", "先跑 music");
-    if (external.length) add("note", null, `外部片段 ${external.join(", ")} 在這裡只受第 0 格 PSNR（≥ ${KEYFRAME_MIN_PSNR}，對 keyframe）、fit 的停格 > 60 格與響度檢查；黑格、freezedetect、模型自己切鏡 assemble 不查（只有 clips 的 qc.mjs 查）`, "外部片段的第一格要就是這個鏡頭的 keyframe（image-to-video 用那張圖起手），不然 checks.json 會把它列成問題；黑格／凍格／切鏡要在匯入前自己用 qc.mjs 的 args 跑過（references/stage-preconditions.md 最後一節第 4 步）");
+    if (handPlaced.length) add("note", null, `手放的外部片段 ${handPlaced.join(", ")} 在這裡只受第 0 格 PSNR（≥ ${KEYFRAME_MIN_PSNR}，對 keyframe）、fit 的停格 > 60 格與響度檢查；黑格、freezedetect、模型自己切鏡 assemble 不查（只有 clips 的 qc.mjs 查）`, "外部片段的第一格要就是這個鏡頭的 keyframe（image-to-video 用那張圖起手），不然 checks.json 會把它列成問題；用 clips import 重新帶進來，黑格／凍格／切鏡才查得到（references/stage-preconditions.md 最後一節）");
     add("note", null, "assemble 在本機跑 ffmpeg，不花錢；只有 branding 和 final 核准在後面", "跑完看 checks.json 的 problems");
     stopNote();
   } else {
@@ -283,6 +286,7 @@ export async function preflight({ slug, root, workdir: workdirFlag, env = proces
     new: { characters: newCharacters, keyframes: newKeyframes.map((scene) => scene.id), clips: newClips.map((scene) => scene.id) },
     needs_review: needsReview,
     external,
+    imported,
     stop,
     lint: { errors: lint.errors.length, warnings: lint.warnings.length },
     judge: { ...judge, per_hour: JUDGE_CALLS_PER_HOUR, monthly: JUDGE_MONTHLY_BUDGET },

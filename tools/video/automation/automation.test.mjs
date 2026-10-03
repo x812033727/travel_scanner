@@ -2485,6 +2485,27 @@ test("illustrated slides walk the picture, storyboard and music steps between th
   const status = await pipelineStatus({ slug, root: box.root, workdir });
   assert.equal(status.next.id, "final video approved");
   assert.deepEqual(runs.filter((run) => /^(tts|keyframes|render|music|assemble|captions) /.test(run)).map((run) => run.split(" ")[0]), ["tts", "keyframes", "render", "music", "assemble", "captions"]);
+
+  // A narration recorded before audio evidence existed, script unchanged. Its takes carry no
+  // current key (what is sent for synthesis changed since), so a refresh could only refuse:
+  // the worker records again. With current takes it binds the evidence without recording.
+  const { planRequests } = await import("../tts/requests.mjs");
+  const timelineFile = path.join(workdir, "timeline.json");
+  const legacy = () => {
+    const timeline = readJson(timelineFile);
+    delete timeline.audio_evidence;
+    for (const line of timeline.lines) delete line.audio_sha256;
+    atomicWrite(timelineFile, JSON.stringify(timeline));
+    runs.length = 0;
+  };
+  legacy();
+  assert.match(await automation.step(), /narration synthesized/);
+  assert.deepEqual(runs.filter((run) => run.startsWith("tts ")), [`tts --slug ${slug}`]);
+  const keys = Object.fromEntries(planRequests(readJson(docFile), lexicon()).flatMap((request) => request.lines.map((line) => [line.id, line.key])));
+  atomicWrite(path.join(workdir, "audio", "cache.json"), JSON.stringify({ lines: keys }));
+  legacy();
+  assert.match(await automation.step(), /narration synthesized/);
+  assert.deepEqual(runs.filter((run) => run.startsWith("tts ")), [`tts --slug ${slug} --refresh-evidence`]);
 });
 
 test("restyle retells a worker's slides video in the storytelling register: guarded lines replace the script, the rest are refused, and the worker checks and records the narration again", async () => {

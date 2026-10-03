@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-correct-unrelated-ai-term-links-in
 title: Correct unrelated AI term links in two WordPress source guides
-status: review
+status: done
 priority: P2
 area: docs
-owner: codex-batch034-source-fix
-claimed_at: 2026-09-28T03:31:41Z
+owner: codex-source-ticket-cleanup-20261003
+claimed_at: 2026-10-03T09:21:01Z
 created_at: 2026-09-28T03:31:36Z
-completed_at:
-branch: codex/batch034-source-link-fixes
+completed_at: 2026-10-03T09:21:25Z
+branch: codex/unfinished-tickets-20261003
 depends_on: []
 scope:
   - apps/api/app/guides/content/wordpress-map-form-embeds.json
@@ -66,3 +66,32 @@ claim/overlap warnings; `git diff --check` passed.
 
 Draft PR: https://github.com/x812033727/travel_scanner/pull/887 . It remains
 in review; this task is not done until the source correction is merged.
+
+### 2026-10-03 source-only task closure
+
+- PR #887 merged on 2026-09-28T04:28:35Z as
+  `dd1d51730c0c46698325fb357bb90ac0303d7b8c`, an ancestor of checked main
+  `5af4ffebfcea96fd23b387288901e513ed63d4f7`. Both source-only acceptance
+  conditions are complete; the review status was left behind after merge.
+- Main still has `{type: text, text: 標記}` at map-form-embeds
+  `/locales/zh-TW/blocks/3/inlines/1` and multilingual-site
+  `/locales/zh-TW/blocks/16/inlines/1`. Both complete pack blobs are identical
+  to the correction merge. Current raw Git pack SHA-256 values are:
+  - `wordpress-map-form-embeds`:
+    `03486c9cb2a460e7dcd0b512f11fad0d523dac48bed32c7521b5c4784edc1dc7`.
+  - `wordpress-multilingual-site`:
+    `0a8d905ace0f3a6d6c4877a470193740fd5eb7ee9dd23db0f3410caebd09d68a`.
+  These are raw pack hashes, not fresh production or normalized source hashes.
+- Fresh read-only checks found no open PR on these scopes, no remote original
+  branch and no registered worktree for it; the residual local branch has the
+  merged PR head. Normal claim succeeded without `--force`.
+- Only this task metadata is being closed. No packs, host data, import, approval
+  or publication were changed. Guarded source publication and Batch034 source
+  rebind remain separate work; their task states are unchanged. Historical
+  production captures and validation results above are not new live evidence.
+- Archival diagnostic: normal `done` returned exit 1 because the open copy
+  remained after writing the completed record. The coordinating agent checked
+  exact path, ID, status, owner, equal bodies and the completed-file SHA-256,
+  then removed only this stale open copy with its native PowerShell helper.
+  The completed bytes were unchanged by removal; this note was appended later.
+  This archival cleanup does not publish either source or rebind Batch034.

@@ -1,6 +1,7 @@
 import { expect, test, type Page, type Route } from "@playwright/test";
 import type { NewsCandidatePage, NewsCandidateSummary, NewsSettings, NewsSource, NewsStats } from "../lib/admin-news";
 import newsCopy from "../lib/admin-news-messages/zh-TW.json" with { type: "json" };
+import { adminOperationsCopy } from "../lib/admin-operations-copy";
 import type { SitePageDetail } from "../lib/site-pages";
 
 const ADMIN_PAGES = [
@@ -297,6 +298,49 @@ async function expectNewsWorkspace(page: Page) {
   await expect(page.getByText(newsRunsSummary, { exact: true })).toBeVisible();
   await expect(page.getByRole("heading", { name: "這個後台頁面載入失敗", exact: true })).toHaveCount(0);
   await expect(page.getByRole("main").getByRole("alert")).toHaveCount(0);
+}
+
+for (const [locale, name, query] of [
+  ["en", "AI News", "AI"], ["ja", "AI 自動ニュース", "ニュース"],
+  ["ko", "AI 자동 뉴스", "뉴스"], ["zh-CN", "AI 自动新闻", "新闻"],
+  ["zh-TW", "AI 自動新聞", "新聞"],
+]) {
+  test(`news catalog labels stay consistent in ${locale} at desktop and narrow widths`, async ({ page }) => {
+    const { command, recent } = adminOperationsCopy(locale);
+    const fixture = await isolateAdmin(page);
+    const errors: string[] = [];
+    page.on("pageerror", (error) => errors.push(error.message));
+    page.on("console", (message) => {
+      if (message.type() === "error") errors.push(message.text());
+    });
+    await page.setViewportSize({ width: 1280, height: 900 });
+    await page.goto(`/${locale}/admin/news`);
+    await expect(page.getByText(newsCandidate.source_title, { exact: true })).toBeVisible();
+    const breadcrumb = page.getByRole("navigation", { name: "Breadcrumb" });
+    await expect(breadcrumb).toBeVisible();
+    await expect(breadcrumb.locator('[aria-current="page"]')).toHaveText(name);
+    const mobileTitle = page.locator(".admin-topbar-mobile-title");
+    await expect(mobileTitle).toHaveText(name);
+    await expect(mobileTitle).toBeHidden();
+    await page.setViewportSize({ width: 768, height: 900 });
+    await expect(breadcrumb).toBeHidden();
+    await expect(mobileTitle).toBeVisible();
+    await expect(mobileTitle).toHaveText(name);
+    await page.keyboard.press(process.platform === "darwin" ? "Meta+K" : "Control+K");
+    const palette = page.getByRole("dialog", { name: command });
+    await expect(palette).toBeVisible();
+    const recentSection = palette.getByRole("heading", { name: recent }).locator("..");
+    await expect(recentSection.getByRole("link")).toContainText(name);
+    await expect(recentSection.getByRole("link")).toHaveAttribute("href", `/${locale}/admin/news`);
+    await palette.getByRole("textbox", { name: command }).fill(query);
+    const newsResult = palette.locator(`a[href="/${locale}/admin/news"]`);
+    await expect(newsResult).toHaveCount(1);
+    await expect(newsResult).toContainText(name);
+    expect(fixture.writes).toEqual([]);
+    expect(fixture.failedFirstParty).toEqual([]);
+    expect(fixture.unexpectedExternal).toEqual([]);
+    expect(errors).toEqual([]);
+  });
 }
 
 test("bootstrap registry drives every owner page without first-party failures", async ({ page }, info) => {

@@ -96,6 +96,13 @@ export function fareLabWarnings(
     const named: Record<string, string> = { ...values };
     if (values.airline) named.airline = fareLabLabel(copy, `airline.${values.airline}`) ?? values.airline;
     if (values.role) named.role = fareLabLabel(copy, `${roles}.${values.role}`) ?? values.role;
+    if (values.roles) {
+      named.roles = values.roles.split(",")
+        .map((role) => fareLabLabel(copy, `${roles}.${role}`) ?? role)
+        .join(copy["b2b.listSeparator"]);
+    }
+    if (values.mode) named.mode = fareLabLabel(copy, `mode.${values.mode}`) ?? values.mode;
+    if (values.strategy) named.strategy = fareLabLabel(copy, `b2b.strategy.${values.strategy}`) ?? values.strategy;
     if (values.page) named.page = fareLabLabel(copy, `page.${values.page}`) ?? values.page;
     return fareLabText(fareLabLabel(copy, key) ?? key, named);
   });

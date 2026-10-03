@@ -10,9 +10,9 @@
 | 2 | 一鏡估計超過 12 秒 | lint 錯誤（`drama.mjs:740`）；10 秒警告 | 0 元；Omni 貼到 10 秒的鏡頭利用率最差 | 拆鏡；profile 下 8 秒是錯誤（`lint.mjs:400`） |
 | 3 | 回到同一鏡位的鏡頭各寫一個全新 prompt | `drama_craft_check` 的鏡位數；lint 的 Jaccard ≥ 0.8 警告（反方向：太像） | 每個鏡位多買一張圖、一份素材 | 第二次回來寫 `data.source`；要重畫就照抄 camera 整行與 prompt 第一子句 |
 | 4 | `data.source` 的 `from_s` 加鏡長超過來源素材 | lint（10 秒；profile 8 秒）；`clips` 來源太短 → `needs_review` | 一輪 | `estimate` 的「可切鏡」列 |
-| 5 | 命名造型（`shot_looks`）的 `appearance` 超過約 160 字：judge 題目模板（`clips.mjs:47`、`keyframes.mjs:60`）加上去超過 400 字，伺服器 422（`schemas.py:122`） | `preflight`；lint 只擋 800 | 圖或素材買了、judge 沒做、take 算失敗 | appearance 短；preflight 印每個 shot_look 的題目長度 |
+| 5 | keyframe 命名造型的 `appearance` 加進 identity 題後超過 400 字，伺服器 422（`schemas.py` 的 `JudgeCriterion`）；clip 題已改用有界文字與完整 context | `preflight` 查本次要畫的 keyframe 實際題長；lint 只擋 800 | 圖買了、judge 沒做、take 算失敗 | 修正真正超長的 keyframe 題；不能以舊 clip 模板推導統一的 appearance 160 字上限 |
 | 6 | 角色超過 3 個、`characters` 列了畫外的說話者 | lint（`MAX_SHOT_CHARACTERS`）；craft 的 `size.*` | 多一道 identity 題、多一張參考圖（上限 4 張，style_frames 被擠掉） | 畫外的人只在 `speaker`，prompt 寫 off screen（animation-camera） |
-| 7 | 把 `look.negative` 覆寫成空字串當 Lite 的權宜（#23），但是在 `look`／`keyframes` 之後 | `status`、`preflight` | `lookHash` 變：設定圖、關鍵影格、素材全部重買，兩個關卡重審 | 覆寫在 `look` 之前（#23 的對策） |
+| 7 | `look`／`keyframes` 之後更改或清空 `look.negative` | `status`、`preflight` | `lookHash` 變：設定圖、關鍵影格、素材全部重買，兩個關卡重審 | negative 在 `look` 之前定好；#23 已修正，不為 Lite 相容性清空已核准的限制 |
 | 8 | `look.candidates` 一開始就開到 6 | — | 角色數 × 6 張；大多用不到 | 預設 3；不過再補一輪 |
 
 ## `look`
@@ -48,7 +48,7 @@
 
 | # | 錯誤 | 誰抓 | 漏掉的代價 | 預防 |
 | --- | --- | --- | --- | --- |
-| 23 | **Veo Lite 配任何預設 look（這是 Lite negativePrompt 陷阱唯一的完整說法，其他地方都指這裡）**：`apps/api/app/video_media/providers/gemini_video.py:71-72` 對每個模型送 `parameters.negativePrompt`，Lite 回 HTTP 400 `INVALID_ARGUMENT`，伺服器把 400 變成 422「Gemini refused the request」、細節丟掉（`providers/__init__.py:141-142`）；五個命名 preset 的 `look.negative` 都非空、只有 `custom` 是空（`tools/video/core/drama.mjs` 的 `PRESETS`），所以 Lite 配任何命名 preset 每個 take、每個 seed 都中；**試拍** 兩個 seed 都中；票 `tasks/open/2026-10-02-honor-veo-lite-negativeprompt-compatibility.md` | 無；`estimate --model veo-3.1-lite*`（讀 `video.json` 的 `look.negative`，花錢前）、`preflight`（模型從 profile／manifest／`--model` 來） | 每次 0.64 的預留（退）＋ 等待；兩次就把 `MAX_CLIP_TAKES` 用完、`needs_review` | 票落地前 `look.negative: ""`，而且要在 `look` 之前（negative 算在 `lookHash`，#7）；要避開的東西寫成正面描述：關鍵影格進 `prompt`，片段進 `motion`／`look.motion`（`data.prompt` 片段模型看不到）。票落地那天刪這一列與 `SKILL.md`「腳本」節列的每個指標 |
+| 23 | **歷史已修正：Veo Lite 的 negativePrompt 相容性**。試拍時 adapter 把不支援的 `parameters.negativePrompt` 送到 Lite，HTTP 400 `INVALID_ARGUMENT`，兩個 seed 都失敗；修正 `tasks/done/2026-10-02-honor-veo-lite-negativeprompt-compatibility.md` 已使 Lite 省略參數，完整限制接成 `Avoid: …` 進主提示，非 Lite 保留原參數 | 現行 `apps/api/tests/test_video_media_providers.py` 的離線 request-body 回歸；原始試拍表與收據保留 | 當時每次 0.64 的預留（退）＋ 等待；兩次用完 `MAX_CLIP_TAKES`、`needs_review` | 保留 `look.negative` 與已核准 look，不沿用清空欄位的舊權宜；不自動重買。相容測試不等於新付費媒體已驗收 |
 | 24 | storyboard 沒核准、或重畫過一鏡沒再 `review-push` | `clips.mjs:154-158` → **3** | 0 元一輪 | `preflight` |
 | 25 | timeline 是舊劇本的 | `clips.mjs:131-134` → **2** | 0 元一輪 | `status` |
 | 26 | profile 釘 Lite 1080p，伺服器設定是 Omni | `clips.mjs:222-225` → 3 | 0 元一輪 | `media-status` |
@@ -70,12 +70,12 @@
 
 | # | 錯誤 | 誰抓 | 漏掉的代價 | 預防 |
 | --- | --- | --- | --- | --- |
-| 40 | 外部片段的首格不是這一鏡的關鍵影格；或有黑格、凍格、模型自己切鏡而沒人看 | `assemble`：PSNR < 22 → `checks.json` 不過，**1**；黑格／凍格／切鏡 `assemble` **不查**（只有 `clips` 的 `clipVerdict` 查） | 整段匯入白做；點數不退；黑格進成片 | Hailuo／Kling 生成時用關鍵影格當首格；匯入前自己跑 `qc.mjs` 的 args（stage-preconditions.md 最後一節第 4 步） |
-| 41 | 外部片段放進有 production profile 的集 | `productionClipProblems`／`productionClipSizeProblem`（`lint.mjs:408-434`）→ `assemble` 2；`status` 不算完成 | 白做 | 只用在沒 profile 的集 |
-| 42 | Hailuo relax 隊列的片段回來時 timeline 已改（台詞改了、重跑 `tts`） | `assemble`／`clips` 的雜湊 → 2 | 手寫的 manifest 條目全部重寫 | 匯入前 `status`；台詞定了再排隊 |
-| 43 | 手寫 manifest 漏了 `frames` 或 `clips_hash` 沒重算 | `assemble` 的 fit 算錯；`status` 的「video assembled」永遠不完成 | 一輪 | stage-preconditions.md 的欄位表；`clipsHash` 重算 |
+| 40 | 外部片段的首格不是這一鏡的關鍵影格；或有黑格、凍格、模型自己切鏡 | `clips import`：`clipVerdict`（PSNR < 22、黑格、凍格、切鏡）→ `needs_review`，**1**；`--force` 留下的由 `assemble` 再比一次第 0 格 | 那一支白做；點數不退 | Hailuo／Kling 生成時用關鍵影格當首格；不要用 `--force` 蓋過量到的問題 |
+| 41 | 外部片段放進有 production profile 的集 | `clips import` → **3**；手放的由 `productionClipProblems`／`productionClipSizeProblem`（`lint.mjs:408-434`）→ `assemble` 2，`status` 不算完成 | 白做 | 只用在沒 profile 的集 |
+| 42 | Hailuo relax 隊列的片段回來時 timeline 已改（台詞改了、重跑 `tts`） | `clips import` 的雜湊檢查 → 2 | 關鍵影格重畫之後這一支多半要重做 | 送出前 `status`；台詞定了再排隊 |
+| 43 | 手寫 manifest 漏了 `frames` 或 `clips_hash` 沒重算（指令落地前的手放） | `assemble` 的 fit 算錯；`status` 的「video assembled」永遠不完成 | 一輪 | 不手寫：用 `clips import` 重新帶進來 |
 | 44 | 片段比句子短，`fit: "auto"` 慢到 0.85 倍還不夠、尾格超過 60 格 | `assemble`：`freezeProblem` → 1 | 一輪；profile 下不准 `freeze` | 拆句或要更長的素材；`estimate` 的「超過 8 秒」列 |
-| 45 | 外部片段後來跑 `clips --force` | 無 | 匯入的檔被覆蓋（key 不在快取） | 不要 `--force`；用 `--shot` 指定別的鏡 |
+| 45 | 匯入的片段後來跑 `clips --force` | 無（`clips --dry-run --force` 會把它列成要買的） | 那一鏡在伺服器重買（key 不在快取），匯入的條目被換掉 | 不要 `--force`；用 `--shot` 指定別的鏡 |
 
 ## 收工與回報
 

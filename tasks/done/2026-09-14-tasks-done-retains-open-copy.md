@@ -1,14 +1,14 @@
 ---
 id: 2026-09-14-tasks-done-retains-open-copy
 title: tasks done 後仍保留 open 副本：調查 Windows 封存行為
-status: review
+status: done
 priority: P2
 area: tools
-owner: claude-fable-5-1
-claimed_at: 2026-09-19T11:05:39Z
+owner: codex-windows-archive-20261003
+claimed_at: 2026-10-03T09:16:45Z
 created_at: 2026-09-14T11:16:14Z
-completed_at:
-branch: claude/travel-scanner-pr-552-rpq36m
+completed_at: 2026-10-03T09:22:41Z
+branch: codex/unfinished-tickets-20261003
 depends_on: []
 scope:
   - tools/tasks.mjs
@@ -23,7 +23,7 @@ scope:
 
 ## Definition of done
 
-- [ ] 在不影響真實 task queue 的暫存目錄重現或確認環境限制，記錄 Windows、Node、檔案系統與最小操作。
+- [x] 在不影響真實 task queue 的暫存目錄重現或確認環境限制，記錄 Windows、Node、檔案系統與最小操作。
 - [x] done 成功回傳時，確認同 ID 只剩 done/ 一份；若刪除失敗或檔案被重新建立，給明確失敗診斷，不回報成功。
 - [x] 對已完成檔案與其他任務做保存性檢查，不以清空目錄解決重複。
 - [x] 必要回歸測試、npm run test:tools、npm run check:tasks 通過。
@@ -80,3 +80,37 @@ git checkout -- tasks; Remove-Item tasks/done/<id>.md   # 用完把這張拋棄�
 ```
 
 `2026-09-14-investigate-windows-task-archive-leftover-open` 是同一件事的另一張票，已併進這裡。
+
+### 2026-10-03 Windows acceptance (codex-windows-archive-20261003)
+
+- Reconciled the merged #565 implementation (`d11178863`) against main
+  `5af4ffebf`; only the historical review claim remained. No current open PR or
+  visible worktree was changing the task tool. Took over the stale claim normally,
+  without forcing an active scope.
+- Platform: Windows 11 Home, version `10.0.26200` / build `26200`; Node
+  `24.13.0`; the disposable queues were on the C: NTFS filesystem. Copied the
+  unmodified task CLI into two private temporary workspaces so its normal
+  `new -> claim -> done -> check` commands never touched the shared queue.
+- Ten normal archives passed. Both Node `existsSync` and PowerShell `Test-Path`
+  confirmed the open file absent and the done file present. Repeating `done`
+  returned already-done without changing its SHA-256; unrelated task files
+  retained their hashes.
+- A native .NET file handle with `FileShare.ReadWrite` and no delete sharing
+  caused an actual Windows `EPERM` after the bounded retries. `done` returned
+  code 1, named the remaining open file and preserved the finished record;
+  `check` diagnosed the duplicate. After disposing only that test handle and
+  removing only its exact isolated open copy, `check` passed and another `done`
+  retained the original completed record's hash.
+- The initial private harness used the wrong quoted diagnostic pattern; it was
+  corrected to match the existing interrupted-'done' message and rerun. No task
+  tool or production code was changed. `node --test tools/tasks.test.mjs` passed
+  all 19 tests, including the simulated unlink/reappearance guards.
+- This completes the remaining Windows environment check. The original silent
+  leftover was not reproduced and its historical cause remains unknown; the
+  observed lock refusal is not presented as proof of that cause.
+- During this same run, archiving the already-merged WordPress blog source ticket
+  in the real checkout returned code 1 with a surviving open copy. The guard
+  correctly refused to report success. After checking its exact ID, current
+  owner, done status, identical body and completed-file SHA-256, removed only
+  that stale open copy with native PowerShell and rechecked the preserved done
+  hash. No cause for this non-silent real-checkout leftover was assumed.

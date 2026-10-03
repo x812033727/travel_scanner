@@ -544,7 +544,9 @@ async def test_service_prices_reverse_two_segment_with_manual_one_way_fares() ->
     assert response.comparisons[0].back_to_back is not None
     assert response.comparisons[0].back_to_back.estimated_twd == Decimal("11000")
     assert response.comparisons[0].savings_twd == Decimal("10000")
-    assert "外站兩段票" in response.comparisons[0].detail
+    assert response.comparisons[0].detail == (
+        "fare_comparison_cheaper?mode=mixed_airlines&strategy=reverse_two_segment"
+    )
 
 
 @pytest.mark.asyncio
@@ -587,7 +589,7 @@ async def test_different_destinations_use_two_forward_pages_without_fake_open_ja
     assert response.comparisons[0].conventional.estimated_twd == Decimal("18000")
     assert response.comparisons[0].back_to_back is None
     assert response.comparisons[0].verdict == ComparisonVerdict.COMPARISON_UNAVAILABLE
-    assert "開口票" in response.comparisons[0].detail
+    assert response.comparisons[0].detail == "fare_comparison_open_jaw?mode=mixed_airlines"
     assert response.warnings[0] == "open_jaw_baseline_only"
 
 
@@ -684,8 +686,9 @@ async def test_reverse_page_failure_keeps_conventional_partial_results() -> None
     assert response.comparisons[0].conventional is not None
     assert response.comparisons[0].back_to_back is None
     assert response.comparisons[0].verdict == ComparisonVerdict.COMPARISON_UNAVAILABLE
-    assert "外站始發倒買票" in response.comparisons[0].detail
-    assert "這不是 0%" in response.comparisons[0].detail
+    assert response.comparisons[0].detail == (
+        "fare_comparison_missing?mode=mixed_airlines&roles=reverse"
+    )
     # The airline and the page are values the reader's catalog names; the crawler's
     # own sentence no longer reaches every locale as Traditional Chinese.
     assert response.warnings == [
@@ -887,3 +890,64 @@ async def test_back_to_back_endpoint_requires_authentication() -> None:
         )
     assert response.status_code == 401
     assert response.json()["code"] == "authentication_required"
+
+
+@pytest.mark.parametrize("mode", list(ComparisonMode))
+@pytest.mark.parametrize(
+    ("alternative_total", "expected_code"),
+    [
+        ("80", "fare_comparison_cheaper"),
+        ("120", "fare_comparison_regular_cheaper"),
+        ("100", "fare_comparison_equal"),
+        (None, "fare_comparison_unavailable"),
+    ],
+)
+def test_comparison_detail_uses_codes(
+    mode: ComparisonMode, alternative_total: str | None, expected_code: str
+) -> None:
+    regular = FareStrategyTotal(
+        original_currency_totals={"TWD": Decimal("100")}, estimated_twd=Decimal("100")
+    )
+    alternative = (
+        None
+        if alternative_total is None
+        else FareStrategyTotal(
+            original_currency_totals={"TWD": Decimal(alternative_total)},
+            estimated_twd=Decimal(alternative_total),
+        )
+    )
+    comparison = BackToBackFareService._comparison(mode, regular, alternative)
+    code, _, values = comparison.detail.partition("?")
+    assert code == expected_code
+    params = dict(parse_qsl(values))
+    assert params["mode"] == mode.value
+    if expected_code == "fare_comparison_cheaper":
+        assert params["strategy"] == "nested_round_trips"
+    assert comparison.savings_twd == (
+        None if alternative_total is None else Decimal("100") - Decimal(alternative_total)
+    )
+
+
+@pytest.mark.asyncio
+async def test_missing_comparison_detail_names_roles_with_codes() -> None:
+    service, redis = back_to_back_service(
+        lambda *_args: FetchResult(next_data_html([]), cache_hit=True),
+        lambda currency: twd_rate(currency, "1"),
+    )
+    try:
+        result = await service.search(search_request(strategy="reverse_two_segment"))
+    finally:
+        await redis.aclose()
+    for comparison in result.comparisons:
+        code, _, values = comparison.detail.partition("?")
+        assert code == "fare_comparison_missing"
+        params = dict(parse_qsl(values))
+        assert params["mode"] == comparison.mode.value
+        assert params["roles"].split(",") == [
+            "conventional_first",
+            "conventional_second",
+            "middle_two_segment",
+            "head_one_way",
+            "tail_one_way",
+        ]
+        assert comparison.savings_twd is None

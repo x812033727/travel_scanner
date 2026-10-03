@@ -48,6 +48,7 @@ import { assembleSheet, clearUnits, readUnits, refusedUnits, sheetUnits, UNIT_CH
 import { advanceCompilation, startCompilation } from "./compilation.mjs";
 import { castFrom, episodeBrief, isExplainerOneOff, isOneOff, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
 import { episodeSeries, episodeShortFields, episodeShortsProblems, shortsFile } from "../shorts/episode.mjs";
+import { staleTakes } from "../tts/takes.mjs";
 
 // Slides keep the general eight-minute floor. Explainers use the reviewed ten-minute default
 // when an older request or saved state still names a shorter length.
@@ -1289,7 +1290,11 @@ export class Automation {
       const project = loadProject({ slug: state.slug, root: ctx.root });
       const sameScript = previous?.speech_hash === speechHash(project.doc, project.lexicon);
       if (sameScript && previous.audio_evidence && audioEvidenceProblems(previous, workdir).length) return this.block(state, "audio evidence no longer matches the saved takes; restore or explicitly retake and review the narration");
-      const refresh = sameScript && !previous.audio_evidence;
+      // A refresh binds evidence to the takes on disk and never records. Takes that no longer match
+      // what is sent for synthesis (the accent wording changed under them) cannot be bound, and a
+      // retry would refuse the same way for ever: those are recorded again by a plain tts, which
+      // writes a new timeline, so the narration is reviewed again.
+      const refresh = sameScript && !previous.audio_evidence && !staleTakes(project.doc, project.lexicon, workdir).length;
       const result = await run(ctx, ["tts", "--slug", state.slug, ...(refresh ? ["--refresh-evidence"] : [])]);
       if (result.code !== 0) return this.block(state,`tts failed: ${result.out.trim().split("\n").at(-1)}`);
       await report(ctx, this.api, state, "narration synthesized");

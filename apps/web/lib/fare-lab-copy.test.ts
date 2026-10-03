@@ -55,9 +55,9 @@ describe("fare lab warnings", () => {
     ]);
   });
 
-  it("passes free text through and drops a code this build does not know", () => {
-    // Old idempotent replays and the public-fare crawler still send sentences.
-    expect(fareLabWarnings(["長榮航空：依政策暫停抓取", "fare_from_the_future?airline=CI"], fareLabCopy("en"), "ticketRole"))
+  it.each(LOCALES)("preserves old cached text and drops unknown codes in %s", (locale) => {
+    // Old idempotent replays retain their original sentences in every locale.
+    expect(fareLabWarnings(["長榮航空：依政策暫停抓取", "fare_from_the_future?airline=CI"], fareLabCopy(locale), "ticketRole"))
       .toEqual(["長榮航空：依政策暫停抓取"]);
     expect(fareLabWarnings(undefined, fareLabCopy("en"), "ticketRole")).toEqual([]);
   });
@@ -65,5 +65,59 @@ describe("fare lab warnings", () => {
   it("falls back to the value when it has no name for it", () => {
     expect(fareLabWarnings(["fare_source_paused?airline=ZZ"], fareLabCopy("en"), "ticketRole"))
       .toEqual(["ZZ: reading its official fare pages is paused under the fail-closed policy."]);
+  });
+});
+
+describe("structured comparison details and public crawler warnings", () => {
+  it.each(LOCALES)("names modes, strategies and each missing ticket in %s", (locale) => {
+    const copy = fareLabCopy(locale);
+    const labels: Record<string, string> = copy;
+    const details = fareLabWarnings([
+      "fare_comparison_missing?mode=mixed_airlines&roles=conventional_first%2Chead_one_way",
+      "fare_comparison_cheaper?mode=same_airline&strategy=reverse_two_segment",
+      "live_comparison_missing?roles=middle_two_segment%2Ctail_one_way",
+      "live_comparison_complete",
+    ], copy, "ticketRole");
+    expect(details).toHaveLength(4);
+    expect(details[0]).toContain(copy["mode.mixed_airlines"]);
+    expect(details[0]).toContain(copy["ticketRole.conventional_first"] + copy["b2b.listSeparator"] + labels["ticketRole.head_one_way"]);
+    expect(details[1]).toContain(copy["mode.same_airline"]);
+    expect(details[1]).toContain(copy["b2b.strategy.reverse_two_segment"]);
+    const live = fareLabWarnings(["live_comparison_missing?roles=middle_two_segment%2Ctail_one_way"], copy, "liveRole");
+    expect(live).toHaveLength(1);
+    expect(live[0]).toContain(copy["liveRole.middle_two_segment"] + copy["b2b.listSeparator"] + copy["liveRole.tail_one_way"]);
+    expect(details[3]).toBe(labels["warning.live_comparison_complete"]);
+    expect([...details, ...live].join(" ")).not.toMatch(/\{\w+\}|fare_comparison_|live_comparison_|mixed_airlines|reverse_two_segment|middle_two_segment|head_one_way|tail_one_way/);
+  });
+
+  it.each(LOCALES)("localizes public errors without rendering their diagnostic reason in %s", (locale) => {
+    const copy = fareLabCopy(locale);
+    const warnings = fareLabWarnings([
+      "fare_public_empty?airline=CI",
+      "fare_public_blocked?airline=BR&reason=private_reason_code",
+      "fare_public_unavailable?airline=JX&reason=private_reason_code",
+    ], copy, "ticketRole");
+    expect(warnings).toHaveLength(3);
+    for (const [index, airline] of ["CI", "BR", "JX"].entries()) {
+      expect(warnings[index]).toContain(copy[("airline." + airline) as keyof typeof copy]);
+    }
+    expect(warnings.join(" ")).not.toMatch(/fare_public_|private_reason_code|\{\w+\}/);
+  });
+
+  it("renders every remaining comparison outcome and preserves an old detail verbatim", () => {
+    const codes = [
+      "fare_comparison_regular_cheaper?mode=mixed_airlines",
+      "fare_comparison_equal?mode=same_airline",
+      "fare_comparison_unavailable?mode=mixed_airlines",
+      "fare_comparison_incompatible?mode=same_airline",
+      "fare_comparison_open_jaw?mode=mixed_airlines",
+      "live_comparison_incomplete",
+    ];
+    const rendered = fareLabWarnings(codes, fareLabCopy("en"), "ticketRole");
+    expect(rendered).toHaveLength(codes.length);
+    expect(rendered.every((detail) => detail.trim().length > 0)).toBe(true);
+    expect(rendered.join(" ")).not.toMatch(/fare_comparison_|live_comparison_|\{\w+\}/);
+    const oldDetail = "缺少第一趟一般票的公開快取票價，這不是 0% 節省。";
+    expect(fareLabWarnings([oldDetail], fareLabCopy("en"), "ticketRole")).toEqual([oldDetail]);
   });
 });
