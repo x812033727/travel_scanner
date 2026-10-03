@@ -7,6 +7,7 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 
+import { CHANNEL_ACCENT } from "../core/accent.mjs";
 import { isLongAnime } from "../core/anime-policy.mjs";
 import { REGISTER_RULES } from "./register.mjs";
 import { STORY_INSTRUCTIONS } from "./story-prompts.mjs";
@@ -805,7 +806,7 @@ body_json: {"characters": [{"id": lowercase ascii 2–24 chars, "name": zh-TW, "
 antagonist, "appearance": English, concrete, ≤ 800 chars (age, build, face, hair, clothing with
 colours, one signature object; this text is copied word for word into every episode and drawn
 by an image model), "voice": {"provider": "gemini", "name": one of "drama_settings.voices" when
-any, "style": a Taiwan Mandarin direction}, "personality", "want", "fear", "secret",
+any, "style": a zh-TW performance direction (its accent wording is 「${CHANNEL_ACCENT}」, never 「台灣國語」 or 「台灣腔」)}, "personality", "want", "fear", "secret",
 "speech": the verbal habit, "relationships": [{"with": id, "kind": text}], "looks": optional, see
 below}], "world": {"era",
 "places": [...], "factions": [{"name", "wants", "hides"}]}, "rules": [text], "mysteries":
@@ -823,7 +824,7 @@ unique within the character, "from": the first episode it covers, "to": the last
 covers (leave it out to run to the series' last episode), "appearance": the WHOLE look in those
 episodes, under the same rules as "appearance" (it replaces the base one and the image model
 reads it alone, so restate the age, build, face and hair; never write it as "the base plus a
-cast"), "sheet_prompt": optional, "voice_style": optional, a Taiwan Mandarin direction that
+cast"), "sheet_prompt": optional, "voice_style": optional, a zh-TW performance direction (its accent wording is 「${CHANNEL_ACCENT}」, never 「台灣國語」 or 「台灣腔」) that
 replaces "voice.style" in those episodes (Gemini voices only)}]. One look per episode: two looks
 of the same character never cover the same episode, and the episodes no look covers use the base.
 A change inside one episode (aged decades within a scene) is not a look: make it a second
@@ -861,7 +862,7 @@ body_json: {"characters": [{"id": lowercase ascii 2–24 chars, "name": zh-TW, "
 antagonist, "appearance": English, concrete, ≤ 800 chars (age, build, face, hair, clothing with
 colours, one signature object; copied word for word into the script and drawn by an image
 model), "voice": {"provider": "gemini", "name": one of "drama_settings.voices" when any, "style":
-a Taiwan Mandarin direction}, "personality"}], "acts": [{"number", "title", "summary", "shots":
+a zh-TW performance direction (its accent wording is 「${CHANNEL_ACCENT}」, never 「台灣國語」 or 「台灣腔」)}, "personality"}], "acts": [{"number", "title", "summary", "shots":
 int}], "outline": {"title": zh-TW, "logline": one sentence, "hook": the first spoken line,
 "conflict": text, "turn": text, "cliffhanger": {"type": danger|reveal|choice|reversal|emotion,
 "text": the closing beat}, "characters": [ids], "locations": [text], "theme": text},

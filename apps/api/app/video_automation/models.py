@@ -47,11 +47,14 @@ DEFAULT_STAGE_MODELS: dict[str, dict[str, str]] = {
 # storytelling register of 2026-09-29 (docs/videos/ILLUSTRATED.md §說書式旁白, the same text as
 # STORY_VOICE_STYLE in tools/video/automation/register.mjs). A stored row keeps what the owner
 # pasted; this is what a fresh install starts from.
+# The accent wording is the channel's (tools/video/core/accent.mjs), never 「台灣國語」: in Taiwan
+# that names the heavy Hokkien-coloured accent, and the model plays it that way.
 DEFAULT_VOICE: dict[str, Any] = {
     "provider": "gemini",
     "name": "Sulafat",
     "style": (
-        "台灣國語說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，"
+        "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。"
+        "有起伏、有戲：揭曉前刻意停一拍，"
         "問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。"
         "絕不平、絕不像在念稿。"
     ),

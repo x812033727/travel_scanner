@@ -77,6 +77,7 @@
 | 頻道聲音 | Gemini 的 **Sulafat**（站主 2026-09-24 選定），每支影片都用同一個聲音。**Shorts 也用這個聲音**：Shorts 設定的聲音預設就是頻道聲音，`shorts/cli.mjs build --speech server` 經伺服器合成；本機試片用的 Windows Hanhan 不上架 |
 | 語速 | `+0%`；稿子的長度以每分鐘 250 字估計 |
 | 口吻 | 2026-09-29 起是**說書式**（Gemini `voice.style`：有起伏、揭曉前停一拍、「你以為」放慢、「其實」亮起來；全文在 [`ILLUSTRATED.md`](ILLUSTRATED.md)），站主在 `/admin/videos` 設定分頁貼上；改了 style 全部重錄 |
+| 口音 | style 裡的口音寫法是「標準國語，咬字清楚，台北人平常說話的語調」，英文 style 寫 in standard Mandarin with clear, precise articulation（`tools/video/core/accent.mjs` 的 `CHANNEL_ACCENT`／`CHANNEL_ACCENT_EN`）。2026-10-03 起**不寫「台灣國語」「台灣腔」「Taiwanese accent」**：在台灣「台灣國語」指的是重台語腔，Gemini 照字面演，站主嫌口音太重，試聽後選了這個寫法。舊寫法仍留在正式站的設定列、設定集與改版前的 `video.json` 裡，不用改：送合成時 `tts/requests.mjs` 的 `voiceFields()` 用 `channelAccent()` 換成新寫法、只留一次、不超過 400 字，所以含舊寫法的影片重跑 `tts` 會整支重錄（片段快取鍵變了），而 `speechHash` 不變，已核准的旁白不會自動失效 |
 | 停頓 | 句與句之間 0.3 秒，換場景多 0.7 秒；單句可以用 `pause_after_ms` 改 |
 
 ## 說明欄

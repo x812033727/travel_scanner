@@ -6,6 +6,7 @@
 // setting, not a prompt: `settle()` copies the settings tab's `voice` into every new video, and
 // STORY_VOICE_STYLE is the text the owner pastes there (it sits in speechHash, so changing it
 // records every line again).
+import { CHANNEL_ACCENT } from "../core/accent.mjs";
 import { eachLine, spokenText } from "../core/schema.mjs";
 
 /** The pauses, in milliseconds, the register asks for around its beats (schema: at most MAX_PAUSE_MS). */
@@ -47,7 +48,7 @@ The narration is TOLD, not explained (the storytelling register, docs/videos/ILL
 
 /** The Gemini `voice.style` the owner pastes on the settings tab for this register (≤ 400 characters). */
 export const STORY_VOICE_STYLE =
-  "台灣國語說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。";
+  `${CHANNEL_ACCENT}。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。`;
 
 const QUESTION = /[？?]\s*$/;
 const GREETING = /大家好|今天(要|來)?跟大家|歡迎(回到|來到)|接下來我們來看/;
