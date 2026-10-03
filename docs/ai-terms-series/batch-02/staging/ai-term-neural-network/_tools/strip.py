@@ -1,0 +1,10 @@
+import re,sys,html
+t=open(sys.argv[1],encoding='utf-8',errors='replace').read()
+t=re.sub(r'(?s)<(script|style|nav|header|footer)[^>]*>.*?</\1>','',t)
+m=re.search(r'(?s)<article.*?</article>',t) or re.search(r'(?s)<main.*?</main>',t)
+if m: t=m.group(0)
+t=re.sub(r'(?s)<br\s*/?>|</p>|</li>|</h\d>|</tr>','\n',t)
+t=re.sub(r'<[^>]+>','',t)
+t=html.unescape(t)
+t=re.sub(r'\n\s*\n+','\n',t)
+print(t)
