@@ -73,6 +73,21 @@ def test_gemini_images_send_the_prompt_the_references_and_the_aspect() -> None:
     assert large["generationConfig"]["imageConfig"] == {"aspectRatio": "16:9", "imageSize": "2K"}
 
 
+def test_gemini_images_tell_a_style_plate_from_a_character_sheet() -> None:
+    plate = ReferenceImage(role="style", content_type="image/png", data=b"\x89PNGplate")
+    styled = GeminiImages(GEMINI, "k").request_body(_image_request(references=(plate,)))
+    text = styled["contents"][0]["parts"][0]["text"]
+    assert "style plate" in text and "as if by the same hand" in text
+    assert "Keep every character" not in text, "a plate carries no character to keep"
+    encoded = base64.b64encode(plate.data).decode()
+    assert styled["contents"][0]["parts"][1]["inline_data"]["data"] == encoded
+    both = GeminiImages(GEMINI, "k").request_body(_image_request(references=(SHEET, plate)))
+    text = both["contents"][0]["parts"][0]["text"]
+    assert "Keep every character" in text and "The last reference image is a style plate" in text
+    none = GeminiImages(GEMINI, "k").request_body(_image_request(references=()))
+    assert "reference" not in none["contents"][0]["parts"][0]["text"]
+
+
 @pytest.mark.asyncio
 async def test_gemini_images_come_back_inline_and_a_refusal_is_blocked() -> None:
     seen: list[httpx.Request] = []
@@ -145,9 +160,7 @@ def test_lite_keeps_first_last_frames_without_unsupported_audio_or_reference_swi
 
 @pytest.mark.parametrize("extra", [{"references": (SHEET,)}, {"seconds": 6}])
 def test_lite_refuses_incompatible_parameters_before_submit(extra: dict[str, Any]) -> None:
-    request = _clip_request(
-        **{"model": "veo-3.1-lite-generate-preview", "references": (), **extra}
-    )
+    request = _clip_request(**{"model": "veo-3.1-lite-generate-preview", "references": (), **extra})
     with pytest.raises(MediaUpstreamError) as refused:
         GeminiVideo(GEMINI, "k").request_body(request)
     assert refused.value.kind == "invalid" and refused.value.status == 422

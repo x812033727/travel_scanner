@@ -18,7 +18,15 @@ test("the slides writer is told the shot template, the 5 to 8 second cadence, th
   assert.match(writer, /nothing whose\s+face is print \(an open page, a sign, a clock face, a screen\)/);
   assert.match(writer, /5 to 8 seconds/);
   assert.match(writer, /shots under at least half of the runtime/);
-  assert.match(writer, /"look": \{"preset": "tech-story"\}/);
+  // The look is the worker's to pick from the channel's print rotation; the writer names one only for a reason.
+  assert.doesNotMatch(writer, /"look": \{"preset": "tech-story"\}/);
+  assert.match(writer, /"look" left out unless one of the\s+channel's print looks suits the topic \(then \{"preset": "riso-teal"\}/);
+  assert.match(writer, /the worker picks one of the\s+channel's print looks for this video \(riso-teal, riso-navy, riso-forest, riso-plum: the same\s+two-ink risograph print in another pair of inks; linocut-teal: a two-colour linocut\)/);
+  // Pictures live in a day (docs/videos/ILLUSTRATED.md §第二輪): not all at night, people doing things to each other, a thing in hands, a joke now and then.
+  assert.match(writer, /at most half of them at night or under a lamp \(lint\s+counts\)/);
+  assert.match(writer, /two or three people doing something to each\s+other \(haggling, handing over, waiting in a queue, teaching, arguing\)/);
+  assert.match(writer, /close-up of a thing in someone's hands/);
+  assert.match(writer, /a small joke in it/);
   assert.match(writer, /"shorts": \[<Short 1>, <Short 2>\]/);
   assert.match(writer, /within 20 seconds/);
   assert.match(writer, /"fix" is present with kind "keyframes"/);
