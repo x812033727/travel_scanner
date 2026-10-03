@@ -1,14 +1,14 @@
 ---
 id: 2026-09-24-admin-shell-news-label
 title: 後台頂列麵包屑、窄版標題與 ⌘K 面板把「AI 自動新聞」顯示成原始鍵 news
-status: open
+status: done
 priority: P3
 area: web
-owner:
-claimed_at:
+owner: codex-admin-news-label-20261003
+claimed_at: 2026-10-03T10:22:21Z
 created_at: 2026-09-24T04:51:59Z
-completed_at:
-branch:
+completed_at: 2026-10-03T11:12:49Z
+branch: codex/unfinished-tickets-20261003
 depends_on: []
 scope:
   - apps/web/messages/en/admin.json
@@ -21,6 +21,15 @@ scope:
   - apps/web/components/admin-shell.test.tsx
   - apps/web/lib/admin-news-copy.ts
   - apps/web/components/admin-news-workspace.test.tsx
+  - apps/web/lib/admin-news-messages/en.json
+  - apps/web/lib/admin-news-messages/ja.json
+  - apps/web/lib/admin-news-messages/ko.json
+  - apps/web/lib/admin-news-messages/zh-CN.json
+  - apps/web/lib/admin-news-messages/zh-TW.json
+  - apps/web/e2e/admin-operations.spec.ts
+  - apps/web/components/admin-dashboard.tsx
+  - apps/web/components/admin-dashboard.test.tsx
+  - apps/web/components/admin-partial-payload.test.tsx
 ---
 
 # 後台頂列麵包屑、窄版標題與 ⌘K 面板把「AI 自動新聞」顯示成原始鍵 news
@@ -56,25 +65,25 @@ scope:
 
 ## Definition of done
 
-- [ ] 在 `/zh-TW/admin/news`，頂列麵包屑的 `aria-current="page"` 和窄版標題（`.admin-topbar-mobile-title`，寬度 521–1023 px 時顯示）都是「AI 自動新聞」，不是 `news`。其他四個語系顯示各自的名稱：en `AI News`、zh-CN `AI 自动新闻`、ja `AI 自動ニュース`、ko `AI 자동 뉴스`。
-- [ ] ⌘K 命令面板和「最近開啟」列出的是同一個名稱；在面板輸入「新聞」找得到 `/admin/news`。
-- [ ] 側欄的名稱和待審徽章都不變（`admin-nav.test.tsx` 的 news 測試仍然通過）。
-- [ ] news 的導覽名稱只剩 `admin.navigation.news` 一個來源：`admin-nav.tsx` 裡沒有 `"news"` 特例，`admin-shell.tsx` 也沒有，`adminNewsCopy()` 不再有 `nav`。
-- [ ] 新增的 `admin-shell.test.tsx` 在 news 名稱退回原始鍵時會失敗。
-- [ ] `check:i18n`（含 staged 時才跑的漢字檢查）、`lint:web`、`typecheck:web`、`test:web` 全綠。
+- [x] 在 `/zh-TW/admin/news`，頂列麵包屑的 `aria-current="page"` 和窄版標題（`.admin-topbar-mobile-title`，寬度 521–1023 px 時顯示）都是「AI 自動新聞」，不是 `news`。其他四個語系顯示各自的名稱：en `AI News`、zh-CN `AI 自动新闻`、ja `AI 自動ニュース`、ko `AI 자동 뉴스`。
+- [x] ⌘K 命令面板和「最近開啟」列出的是同一個名稱；在面板輸入「新聞」找得到 `/admin/news`。
+- [x] 側欄的名稱和待審徽章都不變（`admin-nav.test.tsx` 的 news 測試仍然通過）。
+- [x] news 的導覽名稱只剩 `admin.navigation.news` 一個來源：`admin-nav.tsx` 裡沒有 `"news"` 特例，`admin-shell.tsx` 也沒有，`adminNewsCopy()` 不再有 `nav`。
+- [x] 新增的 `admin-shell.test.tsx` 在 news 名稱退回原始鍵時會失敗。
+- [x] `check:i18n`（含 staged 時才跑的漢字檢查）、`lint:web`、`typecheck:web`、`test:web` 全綠。
 
 ## Steps
 
-- [ ] 在五個 `apps/web/messages/*/admin.json` 的 `navigation` 加上 `"news"`，值沿用 `admin-news-copy.ts` 目前的 `nav`：en `AI News`、zh-TW `AI 自動新聞`、zh-CN `AI 自动新闻`、ja `AI 自動ニュース`、ko `AI 자동 뉴스`。五個檔的 `navigation` 鍵順序相同，最後一個都是 `uiText`，新鍵放在它後面。
-- [ ] `admin-nav.tsx`：刪掉 `:16` 的 import、`:66` 的 `newsCopy` 和 `:97` 的 news 分支，`:68` 的註解改成同時涵蓋 guides 與 news。`:19` 的 icon 對照表不用動。
-- [ ] `admin-news-copy.ts`：五個語系都拿掉 `nav`。同時把 `admin-news-workspace.test.tsx:120` 的 `expect(copy.nav).not.toBe("AI News")` 改成檢查 `copy.title` 不等於英文，否則 typecheck 會紅。
-- [ ] 新增 `apps/web/components/admin-shell.test.tsx`：
+- [x] 在五個 `apps/web/messages/*/admin.json` 的 `navigation` 加上 `"news"`，值沿用 `admin-news-copy.ts` 目前的 `nav`：en `AI News`、zh-TW `AI 自動新聞`、zh-CN `AI 自动新闻`、ja `AI 自動ニュース`、ko `AI 자동 뉴스`。五個檔的 `navigation` 鍵順序相同，最後一個都是 `uiText`，新鍵放在它後面。
+- [x] `admin-nav.tsx`：刪掉 `:16` 的 import、`:66` 的 `newsCopy` 和 `:97` 的 news 分支，`:68` 的註解改成同時涵蓋 guides 與 news。`:19` 的 icon 對照表不用動。
+- [x] `admin-news-copy.ts`：五個語系都拿掉 `nav`。同時把 `admin-news-workspace.test.tsx:120` 的 `expect(copy.nav).not.toBe("AI News")` 改成檢查 `copy.title` 不等於英文，否則 typecheck 會紅。
+- [x] 新增 `apps/web/components/admin-shell.test.tsx`：
   - 用 `AdminOperationsProvider` 包住 `AdminShell`，bootstrap 給 dashboard 和 news 兩筆（寫法照 `admin-nav.test.tsx:7-24`）。
   - `apps/web/vitest.setup.tsx:70-75` 把 `@/i18n/navigation` 全域 mock 掉，`usePathname` 固定回傳 `/`（`:73`）。這個檔要自己 `vi.mock("@/i18n/navigation", …)` 把路徑設成 `/admin/news`，覆寫方式參考 `language-switcher.test.tsx:6`。要注意連 `Link` 也要一起提供，`AdminShell` 和 `AdminNav` 都會用到它。
   - `AdminShell` 會渲染 `LanguageSwitcher`，它會呼叫 `next/navigation` 的 `useSearchParams`。比照 `site-header.test.tsx:6` 把 `./language-switcher` mock 成空元件最省事。
   - 斷言 `within(screen.getByRole("navigation", { name: "Breadcrumb" }))` 裡 `aria-current="page"` 的文字，以及 `.admin-topbar-mobile-title` 的文字，都是「AI 自動新聞」。`AdminShell` 裡面也會渲染 `AdminNav`，它的側欄連結同樣帶 `aria-current="page"`，所以不要用全頁的 `getByText` 或 `[aria-current]` 選擇器。
   - 打開命令面板、輸入「新聞」，斷言出現指向 `/admin/news` 的連結。
-- [ ] `admin-nav.test.tsx:55` 的測試名稱（"isolated localized copy"）改成反映現在讀的是訊息目錄，斷言本身不用改。
+- [x] `admin-nav.test.tsx:55` 的測試名稱（"isolated localized copy"）改成反映現在讀的是訊息目錄，斷言本身不用改。
 
 ## How to verify
 
@@ -96,6 +105,47 @@ grep -n '"news"' apps/web/components/admin-nav.tsx apps/web/components/admin-she
 4. 把視窗縮到 521–1023 px（例如 768 px），麵包屑會消失，換成一行標題，內容同樣是這個名稱。520 px 以下這行標題本來就不顯示，那裡看不到不算失敗。
 
 ## Notes
+- 2026-10-03 implementation complete in draft PR #1175. The five real catalogs
+  now provide `admin.navigation.news` to the sidebar, dashboard and shell;
+  the feature `nav` fields and consumer special case are removed. API permissions,
+  CSS breakpoints and pending-count behavior are retained.
+- Regression evidence: all five added locale unit cases failed on the original
+  shell labels (the existing five modal cases passed). The final complete web
+  suite passes 350 files / 3,858 tests. An earlier interrupted run used an incorrect
+  wrapper environment value; its log is preserved, not counted as completed.
+- Final complete web lint, typecheck, staged i18n (5 locales / 25 namespaces),
+  and the real webpack build pass; all 348 pages were generated. The final browser
+  spec also passes its dedicated lint and typecheck.
+- Built-app browser verification: five locales x two Chromium projects x two
+  repetitions = 20 passing cases. Each checks 1280px breadcrumbs, the visible
+  768px title, command/recent labels, localized search and retained news content,
+  with no browser console/page errors, failed first-party requests, unexpected
+  external requests or writes. Fixtures use the local fake API; this is not
+  production or owner-account acceptance. Next server logs retain its standalone
+  warning and stream-closed messages at context teardown. Test ports were closed.
+- Independent 18-file review passed on frozen hashes. The full PR collision
+  recheck passed after main advanced to b0a2645 (#1172), without active intersection.
+  Other checkout edits and historical duplicate task records are preserved.
+  Evidence: `<home>/.codex/tmp/admin-news-label-20261003/` and
+  `task-continuation-20261003/admin-label-independent-review.md`.
+- This supersedes the older notes limiting additional locales to catalog checks:
+  all five locales now have real-catalog unit and built-app browser assertions.
+  This archive records local implementation. Merge, deployment and the owner
+  checks above remain unperformed; PR #1175 remains draft.
+
+- 2026-10-03 scope preflight: live main and origin/main are `21728c1d`;
+  all open PR files, remote heads, registered worktrees and local scoped history
+  were checked. Four inherited review claims overlap the catalogs, but their
+  implementation is already merged and their remote heads are absent. A normal
+  claim therefore refuses stale metadata; `--force` applies only to this ticket
+  after that verification. Other tickets are preserved. The primary checkout's
+  September 1 uncommitted nav work and the old Gemini snapshot remain untouched;
+  this repair uses the isolated PR #1175 checkout.
+- Scope includes the five feature catalogs where `nav` now lives and the existing
+  CI-listed browser spec. Existing modal tests are retained.
+- Independent review found the dashboard also uses the old feature `nav` field.
+  A fresh exact-path gate for it and its two existing test files passed before
+  expanding scope. The dashboard now reads the same navigation catalog.
 
 - 檢視 PR #694 時發現，2026-09-24 在 main `692dcf5a` 上逐一用 file:line 重驗。#694 那張票 `2026-09-23-ai-hourly-news-automation`（已在 tasks/done）只把名稱接到了側欄。
 - 和其他票碰到同一批檔案，但不是同一件事：

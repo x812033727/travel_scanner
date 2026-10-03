@@ -188,7 +188,7 @@ export function LiveBackToBackSearch() {
         <div className="mt-5 space-y-5">{result?.comparisons.map((comparison) => (
           <article key={comparison.mode} className="rounded-2xl border border-[var(--line)] p-4">
             <div className="flex justify-between gap-3"><h3 className="text-lg font-bold">{copy[`mode.${comparison.mode}`]}</h3>{comparison.savings != null && <strong>{Number(comparison.savings) > 0 ? fareLabText(copy["live.backToBackSaves"], { amount: twd.format(Number(comparison.savings)) }) : fareLabText(copy["live.conventionalSaves"], { amount: twd.format(Math.abs(Number(comparison.savings))) })}</strong>}</div>
-            <p className="mt-1 text-sm text-[var(--muted)]">{comparison.detail}</p>
+            <p className="mt-1 text-sm text-[var(--muted)]">{fareLabWarnings([comparison.detail], copy, "liveRole")[0]}</p>
             <div className="mt-4 grid gap-3 xl:grid-cols-2"><StrategyCard copy={copy} title={copy["live.conventionalTitle"]} strategy={comparison.conventional} /><StrategyCard copy={copy} title={copy["live.backToBackTitle"]} strategy={comparison.back_to_back} /></div>
           </article>
         ))}</div>

@@ -1,14 +1,14 @@
 ---
 id: 2026-09-11-discovery-card-language-badge
 title: 推薦流卡片標示內容語言（語言方向 1）
-status: review
+status: done
 priority: P3
 area: web
-owner: claude-fable-5-1
-claimed_at: 2026-09-19T11:09:26Z
+owner: codex-review-cleanup-20261003
+claimed_at: 2026-10-03T09:19:58Z
 created_at: 2026-09-11T22:04:42Z
-completed_at:
-branch: claude/travel-scanner-pr-552-rpq36m
+completed_at: 2026-10-03T09:22:58Z
+branch: codex/unfinished-tickets-20261003
 depends_on: []
 scope:
   - apps/web/components/discovery/card.tsx
@@ -79,3 +79,17 @@ cd apps/web && npm run test:web -- discovery/card && npm run check:i18n
   正在改的 `admin-settings-panel.test.tsx` 暫時報錯，重跑乾淨）；`npm run lint:web` 通過。
 - 順手發現但不在這張票裡：詳情頁「原文語言」那一行仍印 locale code（`原文語言: ja`），另開
   `2026-09-19-discovery-details-name-the-original-language`。
+
+### 2026-10-03 merged-task reconciliation (codex-review-cleanup-20261003)
+
+- Original PR #565 merged as `d11178863` on 2026-09-19. The details-language
+  follow-up #1057 also merged as `200ecb993` on 2026-10-01; both are ancestors
+  of current main `5af4ffebf`. The badge still hides matching locales, names
+  other locales in the reader's language and preserves its accessible label.
+- Fresh open PR, remote/local branch and 38 visible worktree checks found no
+  current badge implementation or dirty changes in its scope. Reclaimed the
+  historical review normally, without forcing or editing application files.
+- On Node 24.19.0 with the current lockfile installed, both `card.test.tsx` and
+  `card-details.test.tsx` passed: 2 files, 71 tests. The original card rule and
+  the merged details follow-up remain covered. This closes the completed
+  repository task; no production visit or deployment was performed.

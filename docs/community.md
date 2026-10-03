@@ -254,3 +254,15 @@ This deployment does not complete the remaining acceptance or public-launch gate
 - Validate the full acceptance matrix and the ordered conversion funnel against
   real journeys; aggregate activity counts are not a substitute for conversions.
 - Only then authorize and enable the community in the production admin console.
+
+## Isolated service recovery preparation (2026-10-03)
+
+The six-scenario [service recovery acceptance plan](community-service-recovery-acceptance-2026-10-03.md)
+adds opt-in tests against a separately migrated PostgreSQL database, separate Redis
+logical database, actual API/RQ worker/sweeper, private MinIO bucket and Mailpit.
+Only the translation HTTP upstream is synthetic; the real Gemini request/parser
+is exercised. No production configuration or activation changes.
+
+Real-service CI execution is pending. Local lint/type/collection checks must not be
+recorded as SMTP, S3, worker or translation recovery acceptance. Production capacity
+thresholds remain an owner decision, and the foundation task stays open.
