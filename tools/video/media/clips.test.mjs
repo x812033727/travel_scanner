@@ -12,7 +12,7 @@ import { dramaFixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs
 import { pipelineStatus } from "../core/state.mjs";
 import { buildTimeline, estimatedSamples, FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "../core/timeline.mjs";
 import { clipPrompt, clipRubric, clipSeconds, lastFrameArgs, MAX_CLIP_TAKES, proxyArgs } from "./clips.mjs";
-import { readLedger, savedTotals } from "./ledger.mjs";
+import { importedTotals, readLedger, savedTotals } from "./ledger.mjs";
 import { MIN_TRACK_SECONDS, trackSeconds } from "./music.mjs";
 import { chosenModel, clipSecondPrice, statusProblem, trackPrice } from "./stages.mjs";
 
@@ -714,4 +714,219 @@ test("a shot cut from another shot's clip buys nothing: priced at zero, recorded
   assert.match(bird.problems[0], /sea-storm's clip runs 4\.0 s; a cut starting at 3\.5 s needs [\d.]+ s: start earlier or shorten the lines/);
   assert.match(flagged.out.stdout, /ERROR bird: no take passed: sea-storm's clip runs 4\.0 s/);
   assert.equal(readLedger(late.box.workdir).entries.some((entry) => entry.status === "cut"), false, "nothing was saved");
+});
+
+// A clip made outside the pipeline, as ffmpeg would measure it: `seconds` long, starting `psnr` dB from the keyframe.
+const outsideQc = (seconds = 8, psnr = 40) => ({ clipQc: async () => ({ probe: goodProbe(seconds), black: [], freezes: [], cuts: [], keyframe_psnr: psnr, rival_psnr: 20 }) });
+const outsideFile = (box, name, text) => {
+  const file = path.join(box.base, name);
+  writeFileSync(file, MP4(text));
+  return file;
+};
+const clipsStep = async (box) => (await pipelineStatus({ slug: box.slug, root: box.root, workdir: box.workdir })).steps.find((step) => step.id === "clips generated");
+
+test("clips import brings a clip made elsewhere into a shot: gated like a bought clip, checked, named by its route and booked", async () => {
+  const { box, doc, timeline, shots } = prepared();
+  const site = mediaSite();
+  const made = outsideFile(box, "hailuo-opening.mp4", "hailuo opening");
+  const bring = ["clips", "import", "--slug", box.slug, "--shot", "opening", "--file", made, "--provider", "hailuo-web", "--plan", "pro", "--credits", "60"];
+  const usage = async (args, pattern) => {
+    const run = context(box, site.fetchImpl, outsideQc());
+    assert.equal(await main(args, run.ctx), EXIT.usage, run.out.stderr || run.out.stdout);
+    assert.match(run.out.stderr, pattern);
+  };
+  await usage(bring.slice(0, 8), /--provider must be one of hailuo-web, kling-mcp, external/);
+  await usage(["clips", "import", "--slug", box.slug, "--file", made, "--provider", "external"], /needs --slug, --shot and --file/);
+  await usage(bring.map((each) => (each === "opening" ? "nowhere" : each)), /--shot nowhere names no shot/);
+  await usage(bring.map((each) => (each === made ? path.join(box.base, "missing.mp4") : each)), /missing\.mp4 does not exist/);
+  await usage(bring.map((each) => (each === "60" ? "many" : each)), /--credits must be a number, zero or more/);
+
+  const early = context(box, site.fetchImpl, outsideQc());
+  assert.equal(await main(bring, early.ctx), EXIT.owner);
+  assert.match(early.out.stderr, /the storyboard is not approved yet/);
+  assert.equal(existsSync(path.join(box.workdir, "clips", "opening-import-1.mp4")), false, "nothing is copied before the gate");
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+
+  const run = context(box, site.fetchImpl, outsideQc());
+  assert.equal(await main(bring, run.ctx), EXIT.ok, run.out.stderr || run.out.stdout);
+  assert.deepEqual([site.state.clips.length, site.state.uploads.length, site.state.judges.length], [0, 0, 0], "an import without --judge never calls the site");
+  const frames = (id) => timeline.scenes.find((scene) => scene.id === id).end_frame - timeline.scenes.find((scene) => scene.id === id).start_frame;
+  const manifest = manifestOf(box, "clips");
+  const opening = manifest.shots.opening;
+  assert.deepEqual([manifest.speech_hash, manifest.visual_hash, manifest.look_hash], [timeline.speech_hash, visualHash(doc), lookHash(doc)]);
+  assert.equal(manifest.clips_hash, clipsHash([{ id: "opening", sha256: SHA(MP4("hailuo opening")) }]));
+  assert.deepEqual(
+    [opening.file, opening.sha256, opening.seconds, opening.frames, opening.needed_s, opening.first_frame, opening.judge, opening.needs_review],
+    ["clips/opening-import-1.mp4", SHA(MP4("hailuo opening")), 8, 8 * FPS, Number((frames("opening") / FPS).toFixed(3)), { file: shots.opening.file, sha256: shots.opening.sha256 }, null, false],
+  );
+  assert.deepEqual([opening.provider, opening.plan, opening.credits, opening.imported_at], ["hailuo-web", "pro", 60, "2026-09-26T09:00:00.000Z"]);
+  assert.ok(opening.qc.ok && opening.qc.metrics.keyframe_psnr === 40 && opening.qc.metrics.width === 1920);
+  assert.deepEqual(opening.takes.map((take) => [take.import, take.file, take.provider]), [[1, "clips/opening-import-1.mp4", "hailuo-web"]]);
+  assert.deepEqual(readFileSync(path.join(box.workdir, opening.file)), MP4("hailuo opening"));
+  assert.match(run.out.stdout, /opening: clips\/opening-import-1\.mp4 from hailuo-web, pro, 60 credits: 8\.0 s for [\d.]+ s of lines, 1920x1080, not judged/);
+  assert.match(run.out.stdout, /next: node tools\/video\/cli\.mjs status --slug fixture-drama/);
+  const booked = readLedger(box.workdir);
+  const { at, ...entry } = booked.entries[0];
+  assert.deepEqual(entry, { stage: "clips", id: "opening", provider: "hailuo-web", plan: "pro", credits: 60, seconds: 8, cost_usd: 0, file: opening.file, sha256: opening.sha256, kind: "clip", status: "imported" });
+  assert.deepEqual(booked.totals, { usd: 0, images: 0, clip_seconds: 8, music: 0, judge_calls: 0 }, "the ledger counts its seconds");
+  assert.deepEqual(importedTotals(booked.entries), { clips: 1, clip_seconds: 8, credits: 60, usd: 0 });
+  const recorded = JSON.parse(readFileSync(path.join(box.workdir, "state.json"), "utf8")).runs.filter((each) => each.stage === "clips").at(-1);
+  assert.deepEqual([recorded.shots, recorded.imported, recorded.generated], [1, 1, 0]);
+
+  // The same file again keeps its name and its one ledger entry.
+  const again = context(box, site.fetchImpl, outsideQc());
+  assert.equal(await main(bring, again.ctx), EXIT.ok, again.out.stderr);
+  assert.equal(manifestOf(box, "clips").shots.opening.takes.length, 1);
+  assert.equal(readLedger(box.workdir).entries.length, 1);
+  assert.equal(existsSync(path.join(box.workdir, "clips", "opening-import-2.mp4")), false);
+
+  // status and the dry run tell it from a clip the pipeline buys.
+  assert.equal((await clipsStep(box)).detail, "1 of 1 clips imported: hailuo-web 1");
+  const status = context(box, site.fetchImpl);
+  assert.equal(await main(["status", "--slug", box.slug], status.ctx), EXIT.ok, status.out.stderr);
+  assert.match(status.out.stdout, /clips generated \(1 of 1 clips imported: hailuo-web 1\)/);
+  const dry = context(box, site.fetchImpl);
+  assert.equal(await main(["clips", "--slug", box.slug, "--dry-run"], dry.ctx), EXIT.ok, dry.out.stderr);
+  const bought = ["farewell", "sea-storm", "bird"].map((id) => clipSeconds(frames(id), [4, 5, 6, 7, 8, 9, 10]));
+  const boughtSeconds = bought.reduce((a, b) => a + b, 0);
+  assert.match(dry.out.stdout, /opening: [\d.]+ s of lines → imported \(hailuo-web, pro, 60 credits; no clip to buy\)/);
+  assert.match(dry.out.stdout, new RegExp(`4 shots: 0 stills \\(animated keyframes, nothing to buy\\), 1 imported from outside the pipeline \\(nothing to buy\\) and 3 clips priced, ${boughtSeconds} clip seconds for one take each`));
+  assert.match(dry.out.stdout, new RegExp(`about US\\$${(boughtSeconds * 0.15 + 3 * 0.01).toFixed(2)}`), "the imported shot is not priced");
+  const forced = context(box, site.fetchImpl);
+  assert.equal(await main(["clips", "--slug", box.slug, "--dry-run", "--force"], forced.ctx), EXIT.ok, forced.out.stderr);
+  assert.match(forced.out.stdout, /and 4 clips priced/, "--force buys the shot again, so it is priced");
+
+  // The stage keeps the imported clip and buys only the others.
+  const rest = context(box, site.fetchImpl);
+  assert.equal(await main(["clips", "--slug", box.slug], rest.ctx), EXIT.ok, rest.out.stderr || rest.out.stdout);
+  assert.deepEqual(site.state.clips.map((request) => request.shot_id), ["farewell", "sea-storm", "bird"]);
+  assert.match(rest.out.stdout, /opening: kept \(imported from hailuo-web, 8 s, judge \?\/10\)/);
+  assert.match(rest.out.stdout, /3 clips generated in \d+ s; 4 shots in the manifest \(0 stills, 1 imported from outside the pipeline\)/);
+  const after = manifestOf(box, "clips");
+  assert.equal(after.shots.opening.provider, "hailuo-web");
+  assert.equal(after.clip.provider, "gemini", "the top-level choice is still the server's");
+  const ledger = readLedger(box.workdir);
+  assert.equal(ledger.totals.clip_seconds, 8 + boughtSeconds);
+  assert.deepEqual(importedTotals(ledger.entries), { clips: 1, clip_seconds: 8, credits: 60, usd: 0 });
+  assert.equal((await clipsStep(box)).detail, "1 of 4 clips imported: hailuo-web 1");
+});
+
+test("an imported clip that fails its checks is left for review, --force keeps it with the reason, and --judge asks the judge", async () => {
+  const { box } = prepared();
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+  const site = mediaSite({ verdicts: (request) => (request.context.shot.id === "bird" ? { overall: 4, passed: false, problems: ["the wings morph"] } : { overall: 8, passed: true }) });
+  const made = outsideFile(box, "kling-opening.mp4", "kling opening");
+  const bring = ["clips", "import", "--slug", box.slug, "--shot", "opening", "--file", made, "--provider", "kling-mcp", "--credits", "40"];
+
+  // Its first frame is not the shot's keyframe: needs_review like a failed take, and still booked (the credits are spent).
+  const off = context(box, site.fetchImpl, outsideQc(5, 15));
+  assert.equal(await main(bring, off.ctx), EXIT.lint, off.out.stderr || off.out.stdout);
+  const failed = manifestOf(box, "clips").shots.opening;
+  assert.equal(failed.needs_review, true);
+  assert.match(failed.problems[0], /the first frame does not show the keyframe \(PSNR 15\.0 dB\)/);
+  assert.match(off.out.stdout, /ERROR opening: the first frame does not show the keyframe/);
+  assert.match(off.out.stdout, /make opening again from its keyframe \(keyframes\/opening-1\.png\) and import that, or keep this one with --force/);
+  assert.equal(readLedger(box.workdir).entries.filter((entry) => entry.status === "imported").length, 1);
+  const step = await clipsStep(box);
+  assert.equal(step.done, false);
+  assert.match(step.note, /some shots failed the clip checks/);
+
+  const kept = context(box, site.fetchImpl, outsideQc(5, 15));
+  assert.equal(await main([...bring, "--force", "--note", "the owner accepted the reframing"], kept.ctx), EXIT.ok, kept.out.stderr || kept.out.stdout);
+  const forced = manifestOf(box, "clips").shots.opening;
+  assert.deepEqual([forced.needs_review, forced.forced, forced.note, forced.qc.ok, forced.problems, forced.takes.length], [false, true, "the owner accepted the reframing", false, undefined, 1]);
+  assert.match(forced.qc.problems[0], /PSNR 15\.0 dB/, "the measurement stays on record");
+  assert.match(kept.out.stdout, /opening: kept by --force although the first frame does not show the keyframe/);
+  assert.equal(readLedger(box.workdir).entries.filter((entry) => entry.status === "imported").length, 1, "the same file is booked once");
+  assert.equal((await clipsStep(box)).done, true);
+
+  // --judge sends the clip and the cast's sheets to the store and asks the clip rubric; --usd prices the credits.
+  const farewell = outsideFile(box, "kling-farewell.mp4", "kling farewell");
+  const judged = context(box, site.fetchImpl, outsideQc());
+  assert.equal(await main(["clips", "import", "--slug", box.slug, "--shot", "farewell", "--file", farewell, "--provider", "kling-mcp", "--plan", "pro", "--credits", "80", "--usd", "0.99", "--judge"], judged.ctx), EXIT.ok, judged.out.stderr || judged.out.stdout);
+  assert.equal(site.state.clips.length, 0, "nothing is bought");
+  assert.ok(site.state.uploads.some((upload) => upload.sha256 === SHA(MP4("kling farewell"))), "the clip goes to the store for the judge");
+  assert.equal(site.state.judges.length, 1);
+  assert.deepEqual(site.state.judges[0].files.map((file) => file.label), ["clip", "sheet 精衛", "sheet 炎帝"]);
+  assert.equal(site.state.judges[0].files[0].sha256, SHA(MP4("kling farewell")));
+  assert.deepEqual(site.state.judges[0].rubric.map((item) => item.key).slice(-4), ["motion", "prompt", "clean", "no_text"]);
+  assert.equal(manifestOf(box, "clips").shots.farewell.judge.overall, 8);
+  assert.match(judged.out.stdout, /farewell: clips\/farewell-import-1\.mp4 from kling-mcp, pro, 80 credits, US\$0\.99: .* judge 8\/10/);
+  const ledger = readLedger(box.workdir);
+  assert.deepEqual([ledger.totals.judge_calls, ledger.totals.usd], [1, 1], "the judge call and the priced credits are both money");
+  assert.deepEqual(importedTotals(ledger.entries), { clips: 2, clip_seconds: 13, credits: 120, usd: 0.99 });
+
+  // A judge that refuses the clip leaves it for review like any failed take.
+  const bird = outsideFile(box, "kling-bird.mp4", "kling bird");
+  const refused = context(box, site.fetchImpl, outsideQc());
+  assert.equal(await main(["clips", "import", "--slug", box.slug, "--shot", "bird", "--file", bird, "--provider", "kling-mcp", "--judge"], refused.ctx), EXIT.lint, refused.out.stderr || refused.out.stdout);
+  assert.match(manifestOf(box, "clips").shots.bird.problems[0], /judge 4\/10: the wings morph/);
+  assert.equal(manifestOf(box, "clips").shots.bird.credits, null, "credits that were not given are not invented");
+  assert.equal((await clipsStep(box)).detail, "3 of 3 clips imported: kling-mcp 3");
+});
+
+test("clips import refuses a production profile, a still, a cut and a stale timeline, and a cut from the imported shot follows it", async () => {
+  const cutBird = (doc) => {
+    shortDialogue(doc);
+    const bird = doc.scenes.find((scene) => scene.id === "bird");
+    delete bird.data.start_frame;
+    bird.data.source = { shot: "sea-storm", from_s: 1 };
+  };
+  const { box } = prepared(cutBird);
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+  const site = mediaSite();
+  const bring = (shot, file) => ["clips", "import", "--slug", box.slug, "--shot", shot, "--file", file, "--provider", "hailuo-web"];
+  const storm = outsideFile(box, "storm.mp4", "hailuo storm");
+
+  const cut = context(box, site.fetchImpl, outsideQc());
+  assert.equal(await main(bring("bird", storm), cut.ctx), EXIT.usage);
+  assert.match(cut.out.stderr, /bird is cut from sea-storm's clip; import a clip for sea-storm instead/);
+
+  // The stage buys the three clips and records the cut; importing the cut's source moves the cut to the new file.
+  const stage = context(box, site.fetchImpl);
+  assert.equal(await main(["clips", "--slug", box.slug], stage.ctx), EXIT.ok, stage.out.stderr || stage.out.stdout);
+  assert.equal(manifestOf(box, "clips").shots.bird.file, "clips/sea-storm-1.mp4");
+  const moved = context(box, site.fetchImpl, outsideQc());
+  assert.equal(await main(bring("sea-storm", storm), moved.ctx), EXIT.ok, moved.out.stderr || moved.out.stdout);
+  const manifest = manifestOf(box, "clips");
+  assert.deepEqual([manifest.shots.bird.file, manifest.shots.bird.sha256, manifest.shots.bird.source.from_frame, manifest.shots.bird.needs_review], ["clips/sea-storm-import-1.mp4", SHA(MP4("hailuo storm")), 30, false]);
+  assert.equal(manifest.shots["sea-storm"].takes.length, 2, "the bought take stays on record beside the imported one");
+  assert.match(moved.out.stdout, /replaces clips\/sea-storm-1\.mp4/);
+  assert.match(moved.out.stdout, /bird: cut from sea-storm's clip, now from the imported one/);
+  assert.equal(manifest.clips_hash, clipsHash(["opening", "farewell", "sea-storm", "bird"].map((id) => ({ id, sha256: manifest.shots[id].sha256 }))));
+
+  // A second, shorter import gets the next number, and the cut it is too short for is left for a fix.
+  const brief = context(box, site.fetchImpl, outsideQc(1));
+  assert.equal(await main(bring("sea-storm", outsideFile(box, "storm-short.mp4", "hailuo storm, short")), brief.ctx), EXIT.lint, brief.out.stderr || brief.out.stdout);
+  assert.equal(manifestOf(box, "clips").shots["sea-storm"].file, "clips/sea-storm-import-2.mp4");
+  assert.match(brief.out.stdout, /sea-storm: the clip is shorter than its lines/);
+  assert.match(brief.out.stdout, /ERROR bird: sea-storm's clip runs 1\.0 s; a cut starting at 1 s needs/);
+  assert.equal(manifestOf(box, "clips").shots.bird.needs_review, true);
+
+  // A script changed since the narration was made: the timeline is stale, exit 2 like `clips`.
+  const timeline = JSON.parse(readFileSync(path.join(box.workdir, "timeline.json"), "utf8"));
+  writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify({ ...timeline, speech_hash: "0".repeat(16) }));
+  const stale = context(box, site.fetchImpl, outsideQc());
+  assert.equal(await main(bring("opening", storm), stale.ctx), EXIT.usage);
+  assert.match(stale.out.stderr, /timeline\.json is missing or was built for an older script/);
+
+  const still = prepared((doc) => {
+    doc.scenes.find((scene) => scene.id === "sea-storm").data.visual = "still";
+  });
+  const stillRun = context(still.box, site.fetchImpl, outsideQc());
+  assert.equal(await main(["clips", "import", "--slug", still.box.slug, "--shot", "sea-storm", "--file", outsideFile(still.box, "storm.mp4", "storm"), "--provider", "external"], stillRun.ctx), EXIT.usage);
+  assert.match(stillRun.out.stderr, /sea-storm is a still: assemble animates its keyframe/);
+
+  // A production profile names its own model; another route is the owner's decision (exit 3), and nothing is copied.
+  const profiled = prepared(shortDialogue);
+  writeFileSync(path.join(profiled.box.dir, "series.json"), JSON.stringify({ production: { profile: { video: { provider: "gemini", model: "veo-3.1-lite-generate-preview", resolution: "1080p" } } } }));
+  await approve({ gate: "look", docDir: profiled.box.dir, workdir: profiled.box.workdir, note: "test" });
+  await approve({ gate: "storyboard", docDir: profiled.box.dir, workdir: profiled.box.workdir, note: "test" });
+  const refused = context(profiled.box, site.fetchImpl, outsideQc());
+  assert.equal(await main(["clips", "import", "--slug", profiled.box.slug, "--shot", "opening", "--file", outsideFile(profiled.box, "opening.mp4", "opening"), "--provider", "hailuo-web"], refused.ctx), EXIT.owner);
+  assert.match(refused.out.stderr, /approved production profile, which accepts only clips bought with its own model/);
+  assert.equal(existsSync(path.join(profiled.box.workdir, "clips")), false);
 });
