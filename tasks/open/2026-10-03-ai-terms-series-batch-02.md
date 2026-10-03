@@ -95,6 +95,12 @@ npm run check:tasks
 部署後（站主同意後）在主機：先 `guides-import --dry-run` 帶 14 個 slug，確認後 `--publish`，
 最後才帶 `ai-terms-index` 與 `ai-glossary-50-terms` 發布。
 
+## Follow-ups found while checking (not this ticket's scope)
+
+- `gemini-api-search-grounding-citations` 寫引用位移是「UTF-8 位元組」。2026-10-03 查核：Interactions API 參考（2026-10-02 更新）說
+  UrlCitation 的 `start_index` 是 "measured in bytes"，但沒有一頁寫 UTF-8；Google Search 指南沒寫單位，範例 Go 切位元組、Python/JS/Java 切字元。要開票複查。
+- `claude-computer-use-explained`（2026-09-14）可能落後一個版本：Anthropic 文件現在是分版本的 computer use 工具組，較早版本仍標 beta。要開票複查工具名與 beta 字樣。
+
 ## Notes
 
 - 撰稿指令刻意禁止寫模型型號、價格、截止日期與排行榜分數：這批是名詞，不是產品快照，不想再開回填票。
