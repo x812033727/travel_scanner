@@ -76,20 +76,34 @@ Reveal: a line with "reveal": 1 shows the next item; a scene's reveals must equa
   points to the article in the description's first line.
 - outro {title, cta?, lines 1-4}: no reveals. The last scene.
 - shot {prompt, camera, visual: "still", transition?}: no reveals. ONE AI-drawn illustration with a
-  camera move, for the scenes the story describes. prompt: English, at most 1000 characters, the
-  objects, places or anonymous figures, the composition, what is big and what is small, in the
-  channel's flat editorial style; no text, letters or numbers, no logos, no real people's faces or
-  product likenesses (silhouettes and generic objects instead). Keep the subject in the middle
-  60% of the frame: a Short crops it to 9:16. camera: one of push in, pull out, pan left, pan
-  right, tilt up, tilt down, drift. transition: cut or dissolve (a dissolve by default; a cut
-  after a chapter card). A shot carries one or two sentences, 5 to 8 seconds; two shots in a row
+  camera move, for the scenes the story describes. prompt: English, at most 1000 characters, ONE
+  picture briefed the way a photographer briefs an illustrator, in this order: the shot size
+  (extreme close-up, close-up, medium, wide, overhead, low angle, from behind), the place and the
+  time of day, what is happening (a person doing one concrete thing, seen from behind, in profile
+  or small in the frame, with a simple face, never a faceless mannequin), the one object the eye
+  lands on and what it is made of, and where the light comes from. No style words, no colour
+  names, no "illustration": the look adds those. No text, letters or numbers, and nothing whose
+  face is print (an open page, a sign, a clock face, a screen), no logos, no real people's faces
+  or product likenesses (silhouettes and generic objects instead). Keep the subject in the middle
+  third of the frame: a Short crops the picture to 9:16 and keeps only that strip, so the
+  asymmetry comes from what stands in front of and behind the subject. camera: one of
+  push in, pull out, pan left, pan right, tilt up, tilt down, drift, chosen for the picture (push
+  in on the object, pull out to reveal the place, pan along a row, tilt up a tall thing, drift on
+  a quiet moment); never the move of the shot before, and lint refuses three in a row. transition:
+  leave it out (the tool cuts, and dissolves after a pause beat); "dissolve" only for time passing
+  or a change of place. A shot carries one or two sentences, 5 to 8 seconds; two shots in a row
   must not describe alike pictures.
 Do not use diagram or screenshot: automated videos have no image files; pictures are shots.
 Cadence (the final gate measures it): a new picture or card state every 5 to 8 seconds, no state up
 longer than 8 seconds, and shots under at least half of the runtime. Alternate a wide scene, a
-close object, a comparison and a metaphor; put a card where a number or a list must be read, a
-shot where the story is seen. Split a long explanation into several scenes and reveal one item
-per sentence.
+close object, a person and a metaphor, a quiet picture after a busy one; put a card where a number
+or a list must be read, a shot where the story is seen. Split a long explanation into several
+scenes and reveal one item per sentence.
+Pictures travel: each chapter happens in its own place (a kitchen, a night market, a train
+platform, a workshop, a classroom, a harbour, a rooftop) with its own props, and no place or
+object is in more than a third of the shots (lint counts). Metaphors come from the viewer's
+everyday world, not from the tech world: no laptops, screens, robots, circuits, brains, clouds,
+light bulbs, podiums, hourglasses, speech bubbles or glowing anything.
 The video carries "look": {"preset": "tech-story"} when it has shots (the worker adds it when you
 forget), "format": "slides", and "subtitles": {"burn_in": false}: the cards and the CC carry the
 words, the pictures carry none.
