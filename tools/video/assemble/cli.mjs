@@ -39,7 +39,7 @@ import {
   sourceFrameProblem,
   subtitleTrack,
 } from "./drama.mjs";
-import { locateFfmpeg, runTool, ToolMissing } from "./ffmpeg.mjs";
+import { locateFfmpeg as defaultLocateFfmpeg, runTool as defaultRunTool, ToolMissing } from "./ffmpeg.mjs";
 import {
   checkLoudness,
   checkProbe,
@@ -111,7 +111,7 @@ async function mediaInputs(doc, workdir, workBase, manifest, speech, visual) {
   return { look, subtitles, clips, keyframes, music: sound.music, track: sound.track, sfx: effects.sfx };
 }
 
-export async function run(command, args, ctx) {
+export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmpeg, runTool = defaultRunTool } = {}) {
   const { EXIT } = ctx;
   const values = parseArgs({ args, options: { slug: { type: "string" }, file: { type: "string" }, workdir: { type: "string" }, force: { type: "boolean" }, "adopt-branding": { type: "boolean" } }, strict: true }).values;
   if (!values.slug && !values.file) throw new UsageError("assemble needs --slug (or --file for an example outside docs/videos)");

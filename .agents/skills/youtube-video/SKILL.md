@@ -43,6 +43,7 @@ metadata:
 | --- | --- |
 | 決定是哪一種影片、每段多長 | `.agents/skills/youtube-video/references/formats.md` |
 | 寫口播稿（口語、節奏、開場 30 秒；給 TTS 唸的寫法在最後一節） | `.agents/skills/youtube-video/references/script-writing.md` |
+| 換口音或口吻的寫法之前怎麼試聽、改哪些檔 | `.agents/skills/youtube-video/references/voice-audition.md` |
 | 字卡、截圖、螢幕錄影、縮圖 | `.agents/skills/youtube-video/references/visuals.md` |
 | 標題、說明、章節、字幕、揭露、上架檢查；全自動的上架包 | `.agents/skills/youtube-video/references/publish.md` |
 | 人工錄製的稿子格式（`video_kit.py` 讀得懂的寫法） | `.agents/skills/youtube-video/references/script-format.md` |

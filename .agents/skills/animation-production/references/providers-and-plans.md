@@ -36,7 +36,7 @@
 
 買幾秒由 `clipSeconds`（`tools/video/media/clips.mjs`）決定：Veo 3.1 系列 1080p 固定 8 秒，其他是 `clamp(ceil(frames/30), 4, 10)` 再往上貼齊模型的秒數表；伺服器對不在表裡的秒數回 422（`apps/api/app/video_media/jobs.py`）。一個 3 秒的對白鏡在 Omni／H3 買 4 秒、在 Lite 1080p 買 8 秒。帳本記的是伺服器的 `usd_estimate`（目錄價），不是供應商帳單：試作到現在 `actual_billed_usd` 還是空的（`docs/videos/series-plans/competition-20261002/episodes/production-run-20261003.md`）。
 
-坑：Veo Lite 配任何有 `look.negative` 的 look 會 HTTP 400（說法與對策只寫一次：`error-catalogue.md` #23；要避開的東西改寫進 `motion`／`look.motion` 的正面語句，`data.prompt` 片段模型看不到）。MiniMax 的 adapter 沒有負面欄位，把它接成 `. Avoid: …` 送進 prompt（`apps/api/app/video_media/providers/minimax.py`），H3 不吃這個虧。
+負面限制依模型處理：`apps/api/app/video_media/providers/gemini_video.py` 對 Lite 省略不支援的 `parameters.negativePrompt`，完整 `look.negative` 接成 `\n\nAvoid: …` 進主提示；非 Lite 保留原參數。不要沿用清空已核准 look 的舊權宜（歷史失敗與修正在 `error-catalogue.md` #23）。MiniMax 的 adapter 仍沒有負面欄位，把它接成 `. Avoid: …` 送進 prompt（`apps/api/app/video_media/providers/minimax.py`）。
 
 ### 1.2 Hailuo 網頁訂閱
 

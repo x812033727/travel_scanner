@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from "vitest";
 import { AdminDashboard } from "./admin-dashboard";
 import { AdminOperationsProvider } from "./admin-operations-provider";
 import { api } from "@/lib/api";
-import { adminNewsCopy } from "@/lib/admin-news-copy";
+import adminCopy from "../messages/zh-TW/admin.json";
 import type { AdminBootstrap } from "@/lib/admin-operations";
 
 vi.mock("@/lib/api", () => ({ api: vi.fn() }));
@@ -67,7 +67,7 @@ describe("domain overview", () => {
     await screen.findByText("系統狀態");
     expect(screen.queryByRole("link", { name: /使用者/ })).toBeNull();
     expect(screen.queryByRole("region", { name: "景點" })).toBeNull();
-    expect(screen.queryByRole("region", { name: adminNewsCopy("zh-TW").nav })).toBeNull();
+    expect(screen.queryByRole("region", { name: adminCopy.navigation.news })).toBeNull();
     expect(screen.queryByRole("region", { name: "影片" })).toBeNull();
     expect(screen.queryByRole("link", { name: /待處理/ })).toBeNull();
     expect(screen.getByRole("link", { name: /資料庫/ }).getAttribute("href")).toBe("/admin/database");
@@ -79,8 +79,8 @@ describe("domain overview", () => {
     vi.mocked(api).mockResolvedValue({ counts: knownPending, can_deploy: false });
     render(<AdminDashboard />);
 
-    const news = await screen.findByRole("region", { name: adminNewsCopy("zh-TW").nav });
-    expect(within(news).getByRole("heading", { name: adminNewsCopy("zh-TW").nav })).toBeTruthy();
+    const news = await screen.findByRole("region", { name: adminCopy.navigation.news });
+    expect(within(news).getByRole("heading", { name: adminCopy.navigation.news })).toBeTruthy();
     const newsQueue = within(news).getByRole("link", { name: /新聞待審\s*7$/ });
     expect(newsQueue.getAttribute("href")).toBe("/admin/news?queue=review");
     expect(within(news).getByRole("link", { name: "進入管理" }).getAttribute("href")).toBe("/admin/news");
@@ -116,7 +116,7 @@ describe("domain overview", () => {
     render(<AdminOperationsProvider bootstrap={bootstrap}><AdminDashboard /></AdminOperationsProvider>);
 
     await expectPendingTotal("2");
-    expect(screen.queryByRole("region", { name: adminNewsCopy("zh-TW").nav })).toBeNull();
+    expect(screen.queryByRole("region", { name: adminCopy.navigation.news })).toBeNull();
     expect(screen.queryByRole("region", { name: "影片" })).toBeNull();
     expect(screen.queryByRole("link", { name: /新聞待審|影片待處理/ })).toBeNull();
   });
@@ -134,7 +134,7 @@ describe("domain overview", () => {
     expect(screen.queryByRole("region", { name: "景點" })).toBeNull();
     expect(screen.queryByRole("region", { name: "美食" })).toBeNull();
     expect(screen.queryByRole("region", { name: "飯店" })).toBeNull();
-    const hiddenTitle = catalog === "news" ? "影片" : adminNewsCopy("zh-TW").nav;
+    const hiddenTitle = catalog === "news" ? "影片" : adminCopy.navigation.news;
     expect(screen.queryByRole("region", { name: hiddenTitle })).toBeNull();
   });
 

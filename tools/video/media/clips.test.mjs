@@ -214,6 +214,69 @@ test("a production model or resolution mismatch stops before any paid clip submi
   }
 });
 
+test("named-look clip questions fit the judge limit for E1 Zhitang and maximum appearances", () => {
+  const episode = JSON.parse(readFileSync(new URL("../../../docs/videos/series-plans/competition-20261002/episodes/episode-01-voice.video.json", import.meta.url), "utf8"));
+  const zhitang = { ...episode.characters.find((character) => character.id === "zhitang"), shot_look: "zhitang--base" };
+  const boundary = { id: "a".repeat(24), name: "Long display name ".repeat(50), shot_look: "b".repeat(24), appearance: "requested appearance ".repeat(40).slice(0, 800) };
+  assert.equal(boundary.appearance.length, 800);
+  for (const character of [zhitang, boundary]) {
+    const rubric = clipRubric([character]);
+    assert.ok(rubric.every((criterion) => criterion.question.length <= 400), `${character.id}: ${rubric[0].question.length}`);
+    assert.ok(rubric[0].question.includes(character.id));
+    assert.ok(rubric[0].question.includes(character.shot_look));
+    assert.match(rubric[0].question, /facial identity.*bone structure/);
+    assert.match(rubric[0].question, /full requested appearance.*context/);
+    assert.match(rubric[0].question, /clothing, hair and age override/);
+    assert.match(rubric[0].question, /no morphing back to the base outfit/);
+  }
+  assert.equal(clipRubric([{ id: "jingwei", name: "精衛" }])[0].question, 'In the clip\'s last frame, is 精衛 still the same person as in the reference sheet labelled "精衛": face, hair, clothing, build?');
+});
+
+test("named-look clip judging retains the complete appearance and identity in context", async () => {
+  const appearance = "adult woman wearing a navy business suit; ".repeat(20).slice(0, 793) + " TAIL!!";
+  assert.equal(appearance.length, 800);
+  const { box, doc } = prepared((doc) => {
+    doc.characters[0].shot_looks = [{ id: "present", appearance }];
+    doc.scenes[1].data.character_looks = { jingwei: "present" };
+  });
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+  const site = mediaSite();
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["clips", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr || run.out.stdout);
+  const judge = site.state.judges.find((entry) => entry.context.shot?.id === "farewell");
+  assert.ok(judge.rubric.every((criterion) => criterion.question.length <= 400));
+  assert.deepEqual(judge.context.characters[0], { id: "jingwei", shot_look: "present", name: doc.characters[0].name, description: appearance });
+  assert.match(judge.files.find((file) => file.label === `sheet ${doc.characters[0].name}`).sha256, /^[a-f0-9]{64}$/);
+  const other = judge.context.characters[1];
+  const original = doc.characters.find((character) => character.name === other.name);
+  assert.deepEqual(other, { name: original.name, description: original.appearance }, "ordinary character context stays unchanged");
+  assert.ok(site.state.clips.find((entry) => entry.shot_id === "farewell").prompt.includes(appearance));
+});
+
+test("ordinary clip questions with long display names stay bounded and preserve full context", async () => {
+  for (const name of ["界".repeat(74), "界".repeat(75), "Long display name ".repeat(30)]) {
+    const { box, doc } = prepared((doc) => { doc.characters[0].name = name; });
+    assert.ok(clipRubric([doc.characters[0]]).every((criterion) => criterion.question.length <= 400));
+    await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+    await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+    const site = mediaSite();
+    const run = context(box, site.fetchImpl);
+    assert.equal(await main(["clips", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr || run.out.stdout);
+    const judge = site.state.judges.find((entry) => entry.context.shot?.id === "farewell");
+    assert.ok(judge.files.every((file) => file.label.length <= 80), "all file labels satisfy JudgeFile's 80-character maximum");
+    const longLabel = `sheet ${name}`.length > 80;
+    const originalQuestion = `In the clip's last frame, is ${name} still the same person as in the reference sheet labelled "${name}": face, hair, clothing, build?`;
+    if (originalQuestion.length > 400 || longLabel) {
+      assert.ok(judge.rubric[0].question.includes(doc.characters[0].id));
+      assert.match(judge.rubric[0].question, /full name in context.*face, hair, clothing, build/);
+      assert.ok(!judge.rubric[0].question.includes(`labelled "${name}"`), "the question must not name a sheet label absent from the files");
+    } else assert.equal(judge.rubric[0].question, originalQuestion);
+    assert.ok(judge.files.some((file) => file.label === `sheet ${longLabel ? doc.characters[0].id : name}`));
+    assert.deepEqual(judge.context.characters[0], { ...(longLabel ? { id: doc.characters[0].id } : {}), name, description: doc.characters[0].appearance });
+  }
+});
+
 test("a production child's visual shots stop before uploads or paid Veo Lite calls", async () => {
   const { box } = prepared(shortDialogue);
   const video = { provider: "gemini", model: "veo-3.1-lite-generate-preview", resolution: "1080p" };

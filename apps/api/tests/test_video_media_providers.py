@@ -326,3 +326,237 @@ def test_http_statuses_say_who_can_fix_them() -> None:
         assert error.value.kind == kind, status
         if status in (429, 503):
             assert error.value.retry_after == "7"
+
+
+@pytest.mark.parametrize("native_audio", [False, True])
+def test_lite_keeps_avoidance_constraints_in_its_supported_prompt(native_audio: bool) -> None:
+    request = _clip_request(
+        model="veo-3.1-lite-generate-preview",
+        references=(),
+        last_frame=FRAME,
+        negative_prompt="extra hands, duplicate watches",
+        native_audio=native_audio,
+        seed=7,
+    )
+    body = GeminiVideo(GEMINI, "secret").request_body(request)
+    instance = body["instances"][0]
+    assert instance["prompt"] == "slow push in\n\nAvoid: extra hands, duplicate watches"
+    assert "negativePrompt" not in body["parameters"]
+    assert body["parameters"] == {
+        "aspectRatio": "16:9",
+        "durationSeconds": 8,
+        "personGeneration": "allow_adult",
+        "resolution": "1080p",
+        "seed": 7,
+    }
+    assert instance["image"] == instance["lastFrame"] == {
+        "mimeType": FRAME.content_type,
+        "bytesBase64Encoded": base64.b64encode(FRAME.data).decode(),
+    }
+    assert "referenceImages" not in instance
+    assert request.prompt == "slow push in"
+    assert request.negative_prompt == "extra hands, duplicate watches"
+
+
+@pytest.mark.parametrize("model", ["veo-3.1-generate-preview", "gemini-omni-1.1-flash"])
+def test_non_lite_video_retains_its_supported_negative_prompt_field(model: str) -> None:
+    body = GeminiVideo(GEMINI, "secret").request_body(
+        _clip_request(model=model, negative_prompt="extra hands", native_audio=True)
+    )
+    assert body["instances"][0]["prompt"] == "slow push in"
+    assert body["parameters"]["negativePrompt"] == "extra hands"
+    assert body["parameters"]["generateAudio"] is True
+    assert body["instances"][0]["referenceImages"][0]["referenceType"] == "asset"
+
+
+@pytest.mark.parametrize("negative_prompt", [None, ""])
+def test_lite_without_avoidance_text_preserves_the_prompt(negative_prompt: str | None) -> None:
+    body = GeminiVideo(GEMINI, "secret").request_body(
+        _clip_request(
+            model="veo-3.1-lite-generate-preview", references=(), negative_prompt=negative_prompt
+        )
+    )
+    assert body["instances"][0]["prompt"] == "slow push in"
+    assert "negativePrompt" not in body["parameters"]
+
+
+@pytest.mark.asyncio
+async def test_lite_submit_sends_one_compatible_request_without_losing_constraints() -> None:
+    seen: list[httpx.Request] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        seen.append(request)
+        body = json.loads(request.content)
+        assert "negativePrompt" not in body["parameters"]
+        assert body["instances"][0]["prompt"] == "slow push in\n\nAvoid: duplicate watches"
+        return httpx.Response(200, json={"name": "models/lite/operations/mock-1"})
+
+    async with _client(handler) as client:
+        submitted = await GeminiVideo(GEMINI, "fake-secret").submit(
+            _clip_request(
+                model="veo-3.1-lite-generate-preview",
+                references=(),
+                negative_prompt="duplicate watches",
+            ),
+            client,
+        )
+    assert submitted.vendor_ref == "models/lite/operations/mock-1"
+    assert len(seen) == 1
+    assert seen[0].url.path == "/v1beta/models/veo-3.1-lite-generate-preview:predictLongRunning"
+    assert seen[0].headers["x-goog-api-key"] == "fake-secret"
+
+
+@pytest.mark.parametrize(
+    ("message", "detail"),
+    [
+        (
+            "negativePrompt is not supported by this model. Please remove it.",
+            "INVALID_ARGUMENT; unsupported parameter: negativePrompt",
+        ),
+        (
+            'The parameter "generateAudio" is not supported by this model.',
+            "INVALID_ARGUMENT; unsupported parameter: generateAudio",
+        ),
+        (
+            "The request was blocked due to safety filters.",
+            "INVALID_ARGUMENT; safety rejection",
+        ),
+        ("The image dimensions are invalid.", "INVALID_ARGUMENT"),
+        ("This was not a safety rejection.", "INVALID_ARGUMENT"),
+    ],
+)
+def test_http_rejection_keeps_only_a_canonical_diagnostic(message: str, detail: str) -> None:
+    response = httpx.Response(
+        400, json={"error": {"code": 400, "status": "INVALID_ARGUMENT", "message": message}}
+    )
+    with pytest.raises(MediaUpstreamError) as error:
+        raise_for_status(response, "Gemini")
+    assert error.value.message == f"Gemini refused the request ({detail})"
+    assert (error.value.status, error.value.kind, error.value.retry_after) == (422, "blocked", None)
+
+
+def test_http_rejection_never_retains_request_secrets_or_raw_details(
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    secrets = [
+        "AIza-fake-private-key-xyz",
+        "Bearer private-token-xyz",
+        "https://files.example/clip?key=private-query&X-Goog-Signature=private-signature",
+        "a complete private prompt about a sentinel-actor",
+        "data:image/png;base64,cHJpdmF0ZS1mcmFtZS1ieXRlcw==",
+    ]
+    response = httpx.Response(
+        400,
+        json={
+            "error": {
+                "code": 400,
+                "status": "INVALID_ARGUMENT",
+                "message": "negativePrompt is not supported by this model. " + " ".join(secrets),
+                "details": [{"request": secrets, "status": secrets[0]}],
+            },
+            "request": secrets,
+        },
+    )
+    with pytest.raises(MediaUpstreamError) as error:
+        raise_for_status(response, "Gemini")
+    assert error.value.message == (
+        "Gemini refused the request (INVALID_ARGUMENT; unsupported parameter: negativePrompt)"
+    )
+    for secret in secrets:
+        assert secret not in str(error.value)
+        assert secret not in repr(error.value)
+        assert secret not in caplog.text
+    assert len(error.value.message) < 200
+
+
+@pytest.mark.parametrize(
+    "body",
+    [
+        b"",
+        b"<html>private upstream failure</html>",
+        b"{not json",
+        b"[]",
+        b'{"error":[]}',
+        b'{"error":{"code":400,"status":"INVALID_ARGUMENT"}}',
+        b'{"error":{"code":400,"status":"INVALID_ARGUMENT","message":[]}}',
+        b'{"error":{"code":400,"status":"private-status","message":"private prompt"}}',
+        b'{"error":{"code":400,"status":"INVALID_ARGUMENT","message":"'
+        + b"x" * 2049
+        + b'"}}',
+        b'{"error":{"code":400,"status":"INVALID_ARGUMENT","message":"'
+        + b"x" * 8193
+        + b'"}}',
+        b"[" * 2000 + b"]" * 2000,
+    ],
+)
+def test_http_rejection_unusable_bodies_have_a_safe_generic_fallback(body: bytes) -> None:
+    with pytest.raises(MediaUpstreamError) as error:
+        raise_for_status(httpx.Response(400, content=body), "Gemini")
+    assert error.value.message == "Gemini refused the request"
+    assert (error.value.status, error.value.kind) == (422, "blocked")
+
+
+def test_http_rejection_does_not_read_an_unconsumed_stream() -> None:
+    response = httpx.Response(400, stream=httpx.ByteStream(b"private unread response"))
+    with pytest.raises(MediaUpstreamError) as error:
+        raise_for_status(response, "Gemini")
+    assert error.value.message == "Gemini refused the request"
+    assert not response.is_stream_consumed
+
+
+@pytest.mark.parametrize(
+    ("status", "mapped_status", "kind", "retry"),
+    [
+        (429, 429, "busy", "7"),
+        (401, 502, "key", None),
+        (403, 502, "key", None),
+        (404, 422, "invalid", None),
+        (503, 502, "failed", "7"),
+        (418, 502, "failed", None),
+    ],
+)
+def test_http_rejection_diagnostics_do_not_change_other_error_classifications(
+    status: int, mapped_status: int, kind: str, retry: str | None
+) -> None:
+    response = httpx.Response(
+        status,
+        headers={"Retry-After": "7"},
+        json={"error": {"code": 400, "status": "INVALID_ARGUMENT", "message": "private prompt"}},
+    )
+    with pytest.raises(MediaUpstreamError) as error:
+        raise_for_status(response, "Gemini")
+    assert (error.value.status, error.value.kind, error.value.retry_after) == (
+        mapped_status,
+        kind,
+        retry,
+    )
+    assert "private prompt" not in error.value.message
+    assert "INVALID_ARGUMENT" not in error.value.message
+
+
+@pytest.mark.asyncio
+async def test_http_rejection_is_propagated_without_resubmitting_a_paid_request() -> None:
+    seen: list[httpx.Request] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        seen.append(request)
+        return httpx.Response(
+            400,
+            json={
+                "error": {
+                    "code": 400,
+                    "status": "INVALID_ARGUMENT",
+                    "message": "negativePrompt is not supported by this model.",
+                }
+            },
+        )
+
+    async with _client(handler) as client:
+        with pytest.raises(MediaUpstreamError) as error:
+            await GeminiVideo(GEMINI, "fake-secret").submit(_clip_request(), client)
+    assert error.value.message == (
+        "Gemini refused the request (INVALID_ARGUMENT; unsupported parameter: negativePrompt)"
+    )
+    assert len(seen) == 1
+    assert seen[0].method == "POST"
+    assert seen[0].url.host == "generativelanguage.googleapis.com"
