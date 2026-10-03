@@ -1,6 +1,7 @@
 /** Original teaching diagrams. They are not product UI or execution evidence. */
 import { mkdir, writeFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
+import { homedir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -30,7 +31,12 @@ const escape = (text) => text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').r
 function svg(number, diagram = false) {
   const [title, subtitle, cards] = lessons[number];
   const label = number ? `第 ${String(number).padStart(2, '0')} 課` : '課程總目錄';
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="${escape(title)}原創教學圖解">
+  const id = `dots-${String(number).padStart(2, '0')}-${diagram ? 'diagram' : 'hero'}`;
+  const accessibleTitle = `${label}｜${title}：${diagram ? '原創教學圖解' : 'Mokaair 課程封面'}`;
+  const description = `${subtitle}。三個重點由左至右為「${cards.join('」、「')}」。${diagram ? '本圖為概念圖解，不代表產品介面或實測結果；編號只標示圖中的三個重點。' : '這是繁體中文教學的原創封面，提供逐步操作與可下載練習素材，不是產品介面或實測截圖。'}`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="${id}-title" aria-describedby="${id}-desc">
+<title id="${id}-title">${escape(accessibleTitle)}</title>
+<desc id="${id}-desc">${escape(description)}</desc>
 <rect width="1600" height="900" fill="#f7f1e8"/>
 <rect x="0" y="0" width="18" height="900" fill="#176d69"/>
 <g font-family="Microsoft JhengHei, Noto Sans TC, sans-serif" fill="#173d3e">
@@ -71,11 +77,13 @@ try {
   }
   // Review sheet is an internal QA artifact, never a lesson screenshot.
   await page.setViewportSize({ width: 1800, height: 1340 });
-  await page.setContent(`<meta charset="utf-8"><style>body{margin:16px;background:#d9dfdd;font-family:sans-serif}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.cell svg{width:100%;height:auto;display:block}.label{padding:4px;font-size:18px}</style><div class="grid">${lessons.map((_, number) => `<div class="cell">${svg(number)}<div class="label">${number ? `dots-lesson-${String(number).padStart(2, '0')}` : 'dots-guide'}</div></div>`).join('')}</div>`);
-  await page.evaluate(() => document.fonts.ready);
-  const reviewDirectory = process.env.DOTS_ART_REVIEW_DIR || 'C:/Users/x8120/mokaair-work/dots-series/evidence/art';
+  const reviewDirectory = process.env.DOTS_ART_REVIEW_DIR || path.join(homedir(), 'mokaair-work', 'dots-series', 'evidence', 'art');
   await mkdir(reviewDirectory, { recursive: true });
-  await page.screenshot({ path: path.join(reviewDirectory, 'contact-sheet.png'), fullPage: true });
+  for (const diagram of [false, true]) {
+    await page.setContent(`<meta charset="utf-8"><style>body{margin:16px;background:#d9dfdd;font-family:sans-serif}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.cell svg{width:100%;height:auto;display:block}.label{padding:4px;font-size:18px}</style><div class="grid">${lessons.map((_, number) => `<div class="cell">${svg(number, diagram)}<div class="label">${number ? `dots-lesson-${String(number).padStart(2, '0')}` : 'dots-guide'}</div></div>`).join('')}</div>`);
+    await page.evaluate(() => document.fonts.ready);
+    await page.screenshot({ path: path.join(reviewDirectory, diagram ? 'diagram-contact-sheet.png' : 'contact-sheet.png'), fullPage: true });
+  }
   await writeFile(path.join(root, 'docs/dots-series/art-render.json'), `${JSON.stringify({ rendered_at: new Date().toISOString(), status: 'rendered-awaiting-visual-review', records }, null, 2)}\n`);
   console.log(`Rendered ${lessons.length} original covers and ${lessons.length} teaching diagrams.`);
 } finally {

@@ -1,24 +1,25 @@
 # dots 課程編譯與驗收工具
 
-這裡只產出候選檔案、合成練習下載包及驗收報告，沒有資料庫匯入、付費生成、部署或 YouTube 上傳操作。編譯使用既有 `ArticlePack`、`Catalogue` 與 `lint_document`，不新增文章格式或公開 API。
+這裡只產出候選檔案、合成練習下載包及驗收報告，沒有資料庫匯入、付費生成、部署或 YouTube 上傳操作。編譯使用既有 `ArticlePack`、`Catalogue`、`lint_document` 及 `check_svg`；SVG 無障礙與安全檢查在寫入前執行，不新增文章格式或公開 API。
 
 ## 製作順序
 
 從 repository 根目錄執行；Windows Python 使用 `apps/api/.venv/Scripts/python.exe`，Linux 使用 `apps/api/.venv/bin/python`。
 
 ```powershell
+$dotsWorkspace = Join-Path ([Environment]::GetFolderPath('UserProfile')) 'mokaair-work/dots-series'
 # 先編譯兩課樣本。其他稿件缺少不影響樣本；樣本不能通過全套發布門檻。
-apps/api/.venv/Scripts/python.exe tools/dots-series/build.py --workspace C:/Users/x8120/mokaair-work/dots-series --selected 02,03
+apps/api/.venv/Scripts/python.exe tools/dots-series/build.py --workspace $dotsWorkspace --selected 02,03
 # 六個應用寫完後，先打包合成輸入與稿件交接目錄。
-apps/api/.venv/Scripts/python.exe tools/dots-series/package.py --workspace C:/Users/x8120/mokaair-work/dots-series
+apps/api/.venv/Scripts/python.exe tools/dots-series/package.py --workspace $dotsWorkspace
 # 作者定稿並交叉查核後，以既有 youtube-video helper 建立16份文字製作包。
-apps/api/.venv/Scripts/python.exe tools/dots-series/authoring_kit.py --workspace C:/Users/x8120/mokaair-work/dots-series --install
+apps/api/.venv/Scripts/python.exe tools/dots-series/authoring_kit.py --workspace $dotsWorkspace --install
 # 完整編譯17篇；先驗證全部輸入，再建立候選包。
-apps/api/.venv/Scripts/python.exe tools/dots-series/build.py --workspace C:/Users/x8120/mokaair-work/dots-series
+apps/api/.venv/Scripts/python.exe tools/dots-series/build.py --workspace $dotsWorkspace
 # 明確安裝已通過schema及lint的草稿和顯示素材；不匯入、不發布。
-apps/api/.venv/Scripts/python.exe tools/dots-series/build.py --workspace C:/Users/x8120/mokaair-work/dots-series --install
+apps/api/.venv/Scripts/python.exe tools/dots-series/build.py --workspace $dotsWorkspace --install
 # 真實操作與媒體全部覆核後，只產出驗收報告。
-apps/api/.venv/Scripts/python.exe tools/dots-series/readiness.py --workspace C:/Users/x8120/mokaair-work/dots-series
+apps/api/.venv/Scripts/python.exe tools/dots-series/readiness.py --workspace $dotsWorkspace
 ```
 
 `package.py --install-downloads` 只安裝六個 `/dots-course/downloads/lesson-11.zip`–`lesson-16.zip`；正常的完整 `build.py --install` 也會安裝文章引用的這六個下載包。

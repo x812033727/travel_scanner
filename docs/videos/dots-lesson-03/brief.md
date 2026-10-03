@@ -17,7 +17,7 @@
 | 縮圖、上傳與公開 | 待完成；尚未上傳／公開 |
 
 畫面製作：依 shots.csv 的步驟取真實畫面，加入可讀的游標指引、必要重點放大與文字疊字。操作結果必須實際開啟；原創教學圖不能替代產品介面或實測結果。
-製作交接：[全套交接紀錄](../../dots-series/HANDOVER.md)；本課擷取順序與逐段指示在 [shots.csv](shots.csv)。
+製作交接：[全套交接紀錄](../../dots-series/CAPTURE-LIST.md)；本課擷取順序與逐段指示在 [shots.csv](shots.csv)。
 
 文章預定網址（尚未公開）：https://mokaair.com/zh-TW/life/dots-lesson-03
 總目錄預定網址（尚未公開）：https://mokaair.com/zh-TW/life/dots-guide
@@ -42,7 +42,8 @@ screencast 場景的 data.steps 使用 goto、wait、click、fill、capture、ma
 
 ```powershell
 node tools/video/cli.mjs lint --slug dots-lesson-03
-node tools/video/cli.mjs tts --slug dots-lesson-03 --workdir C:/Users/x8120/mokaair-work/dots-videos --dry-run
+$dotsVideoWorkdir = Join-Path ([Environment]::GetFolderPath('UserProfile')) 'mokaair-work/dots-videos'
+node tools/video/cli.mjs tts --slug dots-lesson-03 --workdir $dotsVideoWorkdir --dry-run
 ```
 
 音訊與 capture manifests 依既有關卡就緒後，才接續既有 render、assemble、captions、qa、package。此製作包尚未執行這些媒體階段；不送出付費請求或自行使用登入 profile。

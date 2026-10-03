@@ -98,7 +98,8 @@ def brief(number: int, title: str, outcome: str, estimated: float, cpm: int, cap
          "未有音訊／成片。先完成兩課樣本驗收，再製作其餘成片；作者稿通過不能代替試拍。"), "",
         "完成真實操作、來源覆核並把稿件映射為既有 video.json 後，先執行本機檢查與配額預估：", "",
         "```powershell", f"node tools/video/cli.mjs lint --slug {slug}",
-        f"node tools/video/cli.mjs tts --slug {slug} --workdir C:/Users/x8120/mokaair-work/dots-videos --dry-run", "```", "",
+        "$dotsVideoWorkdir = Join-Path ([Environment]::GetFolderPath('UserProfile')) 'mokaair-work/dots-videos'",
+        f"node tools/video/cli.mjs tts --slug {slug} --workdir $dotsVideoWorkdir --dry-run", "```", "",
         ("音訊與 capture manifests 依既有關卡就緒後，才接續既有 render、assemble、captions、qa、package。"
          "此製作包尚未執行這些媒體階段；不送出付費請求或自行使用登入 profile。"), "",
     ])

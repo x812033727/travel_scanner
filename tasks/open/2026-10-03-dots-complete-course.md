@@ -11,7 +11,6 @@ completed_at:
 branch: codex/dots-complete-course
 depends_on: []
 scope:
-  - .github/workflows/ci.yml
   - docs/dots-series
   - tools/dots-series
   - tools/dots-series.test.mjs
@@ -103,11 +102,13 @@ scope:
 
 離線內容與門檻測試：`node --test tools/dots-series.test.mjs`。
 
-素材包：`apps/api/.venv/Scripts/python.exe tools/dots-series/package.py --workspace C:/Users/x8120/mokaair-work/dots-series`。
+先在 PowerShell 設定 `$dotsWorkspace = Join-Path ([Environment]::GetFolderPath('UserProfile')) 'mokaair-work/dots-series'`，或指定其他 repo 外的製作目錄。
 
-ArticlePack：`apps/api/.venv/Scripts/python.exe tools/dots-series/build.py --workspace C:/Users/x8120/mokaair-work/dots-series`，全部通過才可 `--install` 草稿。
+素材包：`apps/api/.venv/Scripts/python.exe tools/dots-series/package.py --workspace $dotsWorkspace`。
 
-真實證據與媒體門檻：`apps/api/.venv/Scripts/python.exe tools/dots-series/readiness.py --workspace C:/Users/x8120/mokaair-work/dots-series`。欠缺證據必須失敗，不代表工具故障。
+ArticlePack：`apps/api/.venv/Scripts/python.exe tools/dots-series/build.py --workspace $dotsWorkspace`，全部通過才可 `--install` 草稿；再執行 API 的 `python -m app.guides.pack_cli lint` 完整檢查。
+
+真實證據與媒體門檻：`apps/api/.venv/Scripts/python.exe tools/dots-series/readiness.py --workspace $dotsWorkspace`。欠缺證據必須失敗，不代表工具故障。
 
 Web：`npm run typecheck:web` 與 `apps/web/e2e/dots-series.spec.ts`；共用檢查 `npm run test:tools`、`npm run check:tasks`。完整驗收細節見 `docs/dots-series/ACCEPTANCE.md`。
 
@@ -115,7 +116,7 @@ Web：`npm run typecheck:web` 與 `apps/web/e2e/dots-series.spec.ts`；共用檢
 
 分支 `codex/dots-complete-course` 由當日 origin/main 建立。原有 `.codex/environments/` 不屬本票。
 
-原始 screenshot、音訊、影片、實測紀錄保存在 repo 外 `C:/Users/x8120/mokaair-work/dots-series/`。17 個 slug 已設 publish hold；全套未驗收前不可解除。
+原始 screenshot、音訊、影片、實測紀錄保存在 repo 外 `<home>/mokaair-work/dots-series/`（`<home>` 為執行者家目錄）。17 個 slug 已設 publish hold；全套未驗收前不可解除。
 
 另一張活躍票 `2026-10-03-illustrated-slides-round-2-a-family` 宣告整個 `apps/api/tests`。本票沒有越界修改；既有 registry exact-set 測試需更新 dots 預期，待窄 scope 協調。
 
@@ -128,3 +129,9 @@ Web：`npm run typecheck:web` 與 `apps/web/e2e/dots-series.spec.ts`；共用檢
 最終 P2 路徑修正通過：Node 3/3；Python 34 案例中32通過、兩個檔案symlink權限案例略過，directory junction 回歸有實際執行；獨立七次junction越界探測外部讀寫／安裝皆0。Ruff及17包重編譯通過，33個凍結來源未變。真實02操作、截圖覆核和來源SHA另存 reviews/lesson02-capture-log.json；readiness 仍應未就緒。IAB已保留示範分頁與復原viewport，DOM操作再次中斷；後續原始實測、02／03樣本、全套媒體與最後發布皆未完成，不能結案。
 
 提交前修正 Windows 生成文字的換行／雜湊：所有生成文字為LF，原始來源與輸出副本SHA分開；33份凍結來源未改，142個製作輸出及56個compiler staging／install檔核對，四個Git index blob實際bytes驗證通過。相關Node3/3與Python34案例重新通過（32pass、2個檔案symlink權限skip）。
+
+CI修正階段：目前不修改既有.github/workflows/ci.yml兩行，從本階段scope移除該檔以避開community-foundation活躍票。修正SVG無障礙、公開文件路徑與產生器，重跑真實pack_cli lint及repo hygiene。API registry一行仍待站主精確範圍例外。
+
+CI run 37142483680 的三個根因已逐項確認：SVG 缺少標題／描述、公開文件硬編碼使用者路徑，以及 registry 固定預期未加入 dots。前兩項已修正；34 SVG production checker 零錯誤，編譯器補用既有 checker 及先失敗再修正的 regression。完整 1,170 包 lint、失敗過的生活包 pytest、dots／repo hygiene Node 6/6、Ruff、tasks check 均通過；Python 35 案例33pass／2個檔案 symlink 權限 skip。17 篇草稿與16份 brief 已重建，影片／公開狀態不變。registry 仍待精確範圍例外，不能宣告全CI綠燈。
+
+registry 提案在記憶體中執行既有 test function：原版失敗，僅新增 dots 的版本通過全部 hub／vocabulary／catalogue 檢查，原測試 bytes 與 SHA 未變；`git apply --check` 通過。不是已套用或 CI 通過的證據。待辦保留 open，修正完成後交回占用範圍協調及尚未完成的課程實測／媒體製作。

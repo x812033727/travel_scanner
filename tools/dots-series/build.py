@@ -18,12 +18,19 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "apps/api"))
 
 from app.guides.content_pack import ArticlePack
-from app.guides.pack_ingest import lint_document
+from app.guides.pack_ingest import check_svg, lint_document
 from app.guides.series import Catalogue
 
 
 class MissingAsset(ValueError):
     pass
+
+
+def validate_svg(source: Path) -> None:
+    failures = [problem for problem in check_svg(source.read_text(encoding="utf-8"), body=True)
+                if problem.level == "error"]
+    if failures:
+        raise ValueError(f"{source.name}: " + "; ".join(str(problem) for problem in failures))
 
 
 def find_asset(src: str, workspace: Path, repo: Path) -> Path:
@@ -133,6 +140,7 @@ def compile_course(workspace: Path, repo: Path = ROOT, *, selected: list[int] | 
             if diagram_path:
                 from xml.etree import ElementTree
 
+                validate_svg(diagram_path)
                 svg = ElementTree.parse(diagram_path).getroot()
                 description = " ".join(node.text or "" for node in svg.iter() if node.tag.split("}")[-1] == "desc").strip()
                 figures = [{"src": diagram_src, "alt": doc["title"] + "：原創教學流程圖", "width": int(svg.get("width", "1600")),
@@ -163,7 +171,10 @@ def compile_course(workspace: Path, repo: Path = ROOT, *, selected: list[int] | 
             raise ValueError(f"{slug}: " + "; ".join(str(problem) for problem in failures))
         warnings.extend({"slug": slug, "code": problem.code, "message": problem.message} for problem in problems if problem.level == "warning")
         for image in [doc["hero"], *[block for block in doc["blocks"] if block["type"] == "image"]]:
-            assets[image["src"]] = find_asset(image["src"], workspace, repo)
+            source = find_asset(image["src"], workspace, repo)
+            if source.suffix.lower() == ".svg":
+                validate_svg(source)
+            assets[image["src"]] = source
         for block in doc["blocks"]:
             for inline in block.get("inlines", []):
                 if inline["type"] == "article" and inline["slug"] not in known_slugs:

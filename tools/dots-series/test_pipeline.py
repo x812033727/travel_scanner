@@ -77,6 +77,25 @@ class CompileTests(unittest.TestCase):
         self.assertEqual(Path(report["output"]).name, "build-pilot")
         self.assertFalse((self.workspace / "build").exists())
 
+    def test_inaccessible_or_unsafe_svg_fails_before_output(self):
+        diagram = self.workspace / "assets/guides/dots-lesson-02/diagram-1.svg"
+        valid = ('<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">'
+                 '<title>原創流程圖</title><desc>先準備資料，再核對結果。</desc>'
+                 '<text x="80" y="100" font-size="32">準備資料</text></svg>')
+        diagram.write_text(valid, encoding="utf-8")
+        self.assertEqual(len(compile_course(self.workspace, selected=[2])[0]), 1)
+        variants = {
+            "svg_no_title": valid.replace('<title>原創流程圖</title>', ''),
+            "svg_no_desc": valid.replace('<desc>先準備資料，再核對結果。</desc>', ''),
+            "svg_forbidden_element": valid.replace('</svg>', '<script>alert(1)</script></svg>'),
+        }
+        for code, invalid in variants.items():
+            with self.subTest(code=code):
+                diagram.write_text(invalid, encoding="utf-8")
+                with self.assertRaisesRegex(ValueError, code):
+                    build(self.workspace, selected=[2])
+                self.assertFalse((self.workspace / "build-pilot").exists())
+
     def test_practice_archive_is_deterministic_and_distinct_from_media(self):
         original = (self.workspace / "assets/dots-course/downloads/lesson-11.zip").read_bytes()
         report = package(self.workspace)
