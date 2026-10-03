@@ -64,7 +64,7 @@ The current official [Google image SEO guide](https://developers.google.com/sear
 and [W3C alt-text decision tree](https://www.w3.org/WAI/tutorials/images/decision-tree/)
 remain available; this edit does not change any SEO claim or source citation.
 Four-lock read-only Batch041 baseline receipt:
-`C:\Users\x8120\.codex\article-localization-release\batch041-seo-readonly-inventory-20260928\receipt-20260928T134834Z.json`
+`<home>\.codex\article-localization-release\batch041-seo-readonly-inventory-20260928\receipt-20260928T134834Z.json`
 (SHA-256 `01da33a9f151c5472997a449408593b2b8f4e789dcef06b7f0f9084f1760bb99`).
 It confirms this article is active/published v2, zh-TW draft/published v4
 matches the pre-correction main document, and all four target locales are

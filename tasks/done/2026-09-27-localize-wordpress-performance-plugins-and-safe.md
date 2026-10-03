@@ -71,7 +71,7 @@ same-locale links now resolve; `website-cache-cdn` and
 render as plain text for the four target locales. Recheck before release.
 
 Local validation receipt:
-`C:\Users\x8120\.codex\article-localization-release\batch032-pair-b\validation.json`,
+`<home>\.codex\article-localization-release\batch032-pair-b\validation.json`,
 SHA-256 `23272cc4d94c5cb1163f58d6d61c58946227c3baa506ce451769126e170b28b1`.
 It verifies eight 33-block documents, 24 new assets, six original image hashes,
 the unchanged corrected zh-TW source models and root metadata, translated

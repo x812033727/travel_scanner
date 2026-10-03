@@ -67,7 +67,7 @@ overriding only `test.clearMocks` to `false`. This option is not a Vitest CLI fl
   suite on PR #972 passed 334 files / 3,580 tests with no `qrcode` failure.
   That is prior validation, not a full-suite run of this new branch.
 - Controlled red-run reports and source hashes are retained privately at
-  `C:/Users/x8120/.codex/tmp/mobile-nav-obsolete-review-20260929/`.
+  `<home>/.codex/tmp/mobile-nav-obsolete-review-20260929/`.
   Receipt SHA-256:
   `8b597afc8d4c1eaaddc89997d1078b3057be3c057796d6691d996ce9d67b54af`.
 - The green and deliberately duplicated-handler runs use base `49aa683a` with
@@ -76,5 +76,5 @@ overriding only `test.clearMocks` to `false`. This option is not a Vitest CLI fl
 - After rebasing onto main `c1fe22fc` and reinstalling its dependencies,
   bundled Node 24.21.0 / Vitest 5.0.2 also passed all 13 cases with each
   configuration. ESLint passed again. These newer reports are retained at
-  `C:/Users/x8120/.codex/tmp/test-isolation-fixes-20260929/` as
+  `<home>/.codex/tmp/test-isolation-fixes-20260929/` as
   `mobile-current-5.0.2.json` and `mobile-no-clear-5.0.2.json`.

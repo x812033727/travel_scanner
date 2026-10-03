@@ -50,7 +50,7 @@ intervening editor changes.
 
 ## How to verify
 
-Use the existing `hostinger2` guarded release procedure and an exact
+Use the existing `<saved-session>` guarded release procedure and an exact
 article/lang manifest. Verify `pg_dump -Fc` with `pg_restore --list`; compare
 the preflight, dry-run, write receipt and read-back revision/content hash for
 `image-seo-workflow`. Render its live zh-TW page and check that the ordinary
@@ -66,7 +66,7 @@ The preceding source pack was
 `ecab2da5004ad12b46093e53c93baa36e88a2963c97c3246545ab9e64bad9367`.
 
 The read-only Batch041 receipt is
-`C:\Users\x8120\.codex\article-localization-release\batch041-seo-readonly-inventory-20260928\receipt-20260928T134834Z.json`
+`<home>\.codex\article-localization-release\batch041-seo-readonly-inventory-20260928\receipt-20260928T134834Z.json`
 (SHA-256 `01da33a9f151c5472997a449408593b2b8f4e789dcef06b7f0f9084f1760bb99`).
 It found this article active/published v2, with zh-TW draft/published v4
 matching the pre-correction source and four target locales absent. Re-read

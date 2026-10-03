@@ -2118,6 +2118,19 @@
     "pending": "이 새 버전은 아래 완성 영상 카드에서 검토를 기다립니다. 이전 게시 및 언어 승인은 업로드에 사용할 수 없습니다."
   },
   "videoReviews": {
+    "duration": {
+      "target": "본편 목표 {target}초 · 실측 허용 범위 {min}–{max}초",
+      "opedBudget": "OP/ED 최대 배정 시간은 {budget}초입니다. 제작된 미디어의 길이는 별도로 측정합니다.",
+      "audio": "본편 오디오 실측 {seconds}초",
+      "title": "에피소드 실측 길이",
+      "body": "본편 실측 {seconds}초 · 목표 {target}초 · 허용 범위 {min}–{max}초",
+      "oped": "OP/ED 실측 {seconds}초 · 최대 배정 시간 {budget}초",
+      "missing": "현재 실측 길이를 확인할 증거가 없습니다. 목표 시간만으로 완성본의 재생 시간을 확인할 수 없습니다.",
+      "current": "현재 제작 사양과 대조하여 확인됨",
+      "stale": "이 보고서로는 현재 제작 규격을 확인할 수 없습니다. 승인하기 전에 현재 미디어를 다시 검사하세요.",
+      "budget": "방송 편성 시간 {slot}초 · 편성 내 예비 시간 {reserve}초 (시간을 채우는 영상은 추가하지 않음)",
+      "total": "최종 영상 실측 {seconds}초"
+    },
     "categories": {
       "ai-terms": "AI 용어 해설",
       "ai-news": "AI·테크 뉴스",
@@ -2338,7 +2351,16 @@
       "hook": "훅",
       "conflict": "갈등",
       "turn": "전환",
-      "cliffhanger": "클리프행어"
+      "cliffhanger": "클리프행어",
+      "highTension": "긴장감 높은 사건 {number}",
+      "consequences": "이후에도 남는 영향",
+      "closure": "결말"
+    },
+    "scriptAction": {
+      "title": "연출 동작",
+      "description": "눈에 보이는 동작",
+      "motion": "움직임과 카메라",
+      "duration": "지속 시간: {seconds}초"
     },
     "scriptProblems": "검수가 지적한 문제",
     "scriptMinutes": "약 {minutes}분",
@@ -2365,6 +2387,7 @@
     "qaAllPassed": "{count}개 모두 통과",
     "qaWarning": "주의:",
     "qaItems": {
+      "duration_policy": "에피소드 길이",
       "assemble": "합성",
       "render": "화면",
       "narration": "내레이션",
@@ -2618,6 +2641,21 @@
     "dramaKeyLink": "AI 설정에서 키 등록"
   },
   "videoSeries": {
+    "longAnime": {
+      "startPlanning": "기획 시작",
+      "planningHelp": "기획 시작을 눌러 설정집과 시리즈 전체 개요 작성을 요청하세요. 해당 문서를 승인한 다음 에피소드 제작을 재개하세요.",
+      "profile": "에피소드 형식",
+      "ordinary": "일반 드라마 (1–8분)",
+      "option": "장편 애니메이션 (본편 22분)",
+      "badge": "장편 애니메이션",
+      "help": "여러 주연과 2D 애니메이션 화풍으로 일시 정지 상태에서 생성됩니다. 제작을 재개하기 전에 설정집과 시리즈 전체 개요를 검토하고 승인하세요.",
+      "body": "본편 목표 {minutes}분 · 실측 허용 범위 {min}–{max}분",
+      "budgets": "OP/ED 최대 배정 시간 {oped}분 · 방송 편성 시간 {slot}분 · 편성 내 예비 시간 {reserve}분",
+      "budgetHelp": "OP/ED 시간은 최대 배정량이며 제작된 영상이 아닙니다. 방송 예비 시간을 채우기 위한 영상은 추가하지 않습니다.",
+      "manual": "문서와 대본은 검토가 필요합니다. 자동 승인과 합본 제작은 비활성화됩니다.",
+      "reviewRequired": "제작을 재개하기 전에 설정집과 시리즈 전체 개요를 승인하세요.",
+      "create": "일시 정지 상태로 애니메이션 시리즈 생성"
+    },
     "listTitle": "작품",
     "empty": "아직 작품이 없습니다",
     "emptyDetail": "아래에서 작품을 만들면 워커가 다음 회차에 설정집을 기획하고, 여기서 승인합니다.",

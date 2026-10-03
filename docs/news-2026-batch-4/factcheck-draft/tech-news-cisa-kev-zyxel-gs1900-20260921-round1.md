@@ -236,7 +236,7 @@ tech-news-cisa-kev-zyxel-gs1900-20260921
 ```
 `pack_cli lint --kind life --slug tech-news-cisa-kev-zyxel-gs1900-20260921` → exit 1（只有出圖與 relink 前預期的兩類）
 
-exit code 檔：`C:\Users\x8120\mokaair-work\news47\factcheck\tech-news-cisa-kev-zyxel-gs1900-20260921-round1.exitcodes.txt`
+exit code 檔：`<home>\mokaair-work\news47\factcheck\tech-news-cisa-kev-zyxel-gs1900-20260921-round1.exitcodes.txt`
 
 ## 8. 結論
 

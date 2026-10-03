@@ -6,6 +6,7 @@
 // there is no rounding error anywhere to accumulate over two thousand lines. Only captions,
 // which have millisecond precision, subdivide a line.
 import { createHash } from "node:crypto";
+import { hasAnimePolicy, isLongAnime, runtimePolicyHash } from "./anime-policy.mjs";
 
 import { pronunciationHintsFor, shotCast } from "./drama.mjs";
 import { termsUsed } from "./lexicon.mjs";
@@ -48,42 +49,52 @@ export function estimateSamples(line, cpm = DEFAULT_CPM) {
  * `samplesById` maps line id to the length of its synthesized clip in samples (the TTS stage), or
  * pass `estimatedSamples(doc)` before any audio exists.
  */
-export function buildTimeline(doc, samplesById) {
+export function buildTimeline(doc, samplesById, { basis = "measured" } = {}) {
   const lines = [];
   const scenes = [];
   const chapters = [];
+  const actions = [];
   let frame = 0;
-  let scene = null;
-  for (const { scene: source, line, last } of eachLine(doc)) {
-    if (scene?.id !== source.id) {
-      scene = { id: source.id, template: source.template, start_frame: frame, end_frame: frame, states: [{ reveal: 0, start_frame: frame }] };
-      scenes.push(scene);
-      if (source.chapter) chapters.push({ title: source.chapter, scene: source.id, start_frame: frame });
+  const policyHash = hasAnimePolicy(doc) ? runtimePolicyHash(doc) : null;
+  for (const source of doc.scenes) {
+    const action = source.action_seconds;
+    if (action !== undefined && (!isLongAnime(doc) || !Number.isSafeInteger(action) || action < 1 || action > 8 || source.template !== "shot" || !Array.isArray(source.lines) || source.lines.length)) throw new Error(`scene ${source.id}: action_seconds needs a silent long-anime shot lasting 1 to 8 seconds`);
+    if (!source.lines?.length && action === undefined) continue;
+    const scene = { id: source.id, template: source.template, start_frame: frame, end_frame: frame, states: [{ reveal: 0, start_frame: frame }] };
+    scenes.push(scene);
+    if (source.chapter) chapters.push({ title: source.chapter, scene: source.id, start_frame: frame });
+    if (action !== undefined) {
+      const end = frame + action * FPS;
+      actions.push({ scene: source.id, start_frame: frame, end_frame: end });
+      scene.action_seconds = action;
+      scene.end_frame = end;
+      frame = end;
+      continue;
     }
-    const samples = samplesById[line.id];
-    if (!Number.isInteger(samples) || samples <= 0) throw new Error(`no audio length for line ${line.id}`);
-    if (line.reveal) {
-      const current = scene.states.at(-1);
-      const reveal = current.reveal + line.reveal;
-      // A reveal on the scene's first line changes the opening state instead of adding a
-      // zero-length one.
-      if (current.start_frame === frame) current.reveal = reveal;
-      else scene.states.push({ reveal, start_frame: frame });
-    }
-    const isLastLine = last && source === doc.scenes.at(-1);
-    const pauseMs = (line.pause_after_ms ?? DEFAULT_PAUSE_MS) + (last ? (isLastLine ? TAIL_MS : SCENE_GAP_MS) : 0);
-    const frames = framesFor(samples + msToSamples(pauseMs));
-    // A drama line carries its speaker so the review pages and the subtitle prefix know who talks.
-    lines.push({ id: line.id, scene: source.id, start_frame: frame, end_frame: frame + frames, audio_samples: samples, ...(line.speaker ? { speaker: line.speaker } : {}) });
-    frame += frames;
-    scene.end_frame = frame;
+    source.lines.forEach((line, index) => {
+      const samples = samplesById[line.id];
+      if (!Number.isInteger(samples) || samples <= 0) throw new Error(`no audio length for line ${line.id}`);
+      if (line.reveal) {
+        const current = scene.states.at(-1);
+        const reveal = current.reveal + line.reveal;
+        if (current.start_frame === frame) current.reveal = reveal;
+        else scene.states.push({ reveal, start_frame: frame });
+      }
+      const last = index === source.lines.length - 1;
+      const isLastLine = last && source === doc.scenes.at(-1);
+      const pauseMs = (line.pause_after_ms ?? DEFAULT_PAUSE_MS) + (last ? (isLastLine ? TAIL_MS : SCENE_GAP_MS) : 0);
+      const frames = framesFor(samples + msToSamples(pauseMs));
+      lines.push({ id: line.id, scene: source.id, start_frame: frame, end_frame: frame + frames, audio_samples: samples, ...(line.speaker ? { speaker: line.speaker } : {}) });
+      frame += frames;
+      scene.end_frame = frame;
+    });
   }
   for (const each of scenes) {
     each.states.forEach((state, index) => {
       state.end_frame = index + 1 < each.states.length ? each.states[index + 1].start_frame : each.end_frame;
     });
   }
-  return { fps: FPS, sample_rate: SAMPLE_RATE, total_frames: frame, scenes, lines, chapters };
+  return { fps: FPS, sample_rate: SAMPLE_RATE, total_frames: frame, scenes, lines, chapters, ...(actions.length ? { actions } : {}), ...(policyHash ? { runtime_policy_hash: policyHash, timing_basis: basis } : {}) };
 }
 
 export function estimatedSamples(doc, cpm = DEFAULT_CPM) {
@@ -93,7 +104,7 @@ export function estimatedSamples(doc, cpm = DEFAULT_CPM) {
 }
 
 export function estimateTimeline(doc, cpm = DEFAULT_CPM) {
-  return buildTimeline(doc, estimatedSamples(doc, cpm));
+  return buildTimeline(doc, estimatedSamples(doc, cpm), { basis: "estimated" });
 }
 
 /** mm:ss, or h:mm:ss past an hour: the form YouTube reads as a chapter timestamp. */
@@ -158,6 +169,8 @@ export function speechHash(doc, lexicon) {
   // original hash, so their timelines stay valid across this change.
   const drama = doc.format === "drama";
   if (drama) hash.update(JSON.stringify((doc.characters ?? []).map((character) => [character.id, character.voice])));
+  const actions = (doc.scenes ?? []).filter((scene) => scene.action_seconds !== undefined);
+  if (actions.length) hash.update(JSON.stringify(doc.scenes.map((scene) => [scene.id, scene.action_seconds ?? null])));
   for (const { scene, line, last } of eachLine(doc)) {
     const fields = [scene.id, line.id, spokenText(line), line.pause_after_ms ?? null, last];
     if (drama) fields.push(line.speaker ?? "narrator", line.emotion ?? null);

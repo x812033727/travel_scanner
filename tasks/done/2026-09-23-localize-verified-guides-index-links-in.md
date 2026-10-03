@@ -51,7 +51,7 @@ URLs; query, fragment and trailing-slash variants must still fail before output.
 
 Root-only implementation scope; content authoring stays in its separate task.
 Live receipt outside Git:
-C:/Users/x8120/.codex/article-localization-release/batch020-candidate-inventory/guides-root-public-route-v2-20260923.json
+`<home>/.codex/article-localization-release/batch020-candidate-inventory/guides-root-public-route-v2-20260923.json`
 SHA256 2ccb48c9873e59db9a771142337b273f2ed5255e4e83f41af35b1490067a486e.
 All five requested URLs remained unchanged, returned 200, and matched html lang,
 canonical and localized H1. The first capture waited for networkidle and timed

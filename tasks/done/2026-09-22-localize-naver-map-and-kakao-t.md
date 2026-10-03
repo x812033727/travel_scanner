@@ -58,7 +58,7 @@ render scripts; rerun them with the existing shared Python/Playwright runtime.
   unchanged. The intended Taiwan departure/phone-number/currency audience is
   retained in all four translations, without inferring a reader's nationality.
 - Source and candidate evidence lives in
-  `C:/Users/x8120/.codex/article-localization-release/batch013/`.
+  `<home>/.codex/article-localization-release/batch013/`.
   Source URL and `checked_on` values stay exact. Supplemental live topics
   export at `2026-09-22T03:35:58Z` confirms article v2 and topics
   `connectivity`, `transport`; repository topic ordering is preserved.

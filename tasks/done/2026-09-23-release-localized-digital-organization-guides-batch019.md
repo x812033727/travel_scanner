@@ -33,7 +33,7 @@ deployment/import/publication and real public acceptance separately.
 - [x] Assemble and independently review the canonical bundle with exact source,
       tool, document, image and final Git hashes; freeze the portable artifact.
 - [x] Verify a fresh database backup and hold/locking ownership, deploy the reviewed
-      necessary files through the existing hostinger2 workflow, and check health.
+      necessary files through the existing `<saved-session>` workflow, and check health.
 - [x] Dry-run and idempotent import/publication change only the sixteen explicitly
       listed missing-language targets, retaining all original zh-TW rows/metadata.
 - [x] All twenty five-language pages pass full-body/image/canonical/hreflang/link
@@ -80,12 +80,12 @@ Read-only source capture on 2026-09-23T08:08:30Z found each article active and
 published at article v1 / zh-TW locale v6, with matching normalized draft,
 published and latest source documents. Recheck these facts before release; this
 task does not assert they remain current. Source snapshot:
-`C:/Users/x8120/.codex/article-localization-release/batch019-candidate-inventory/live-source-full-20260923T080827Z.json`,
+`<home>/.codex/article-localization-release/batch019-candidate-inventory/live-source-full-20260923T080827Z.json`,
 SHA256 `ecce8f28e22246ed54bfa4ee67f07cd3aea007ce57829a93447651e3ffe31032`.
 
 The dependent content task records two independent body/image reviews and exact
 twenty-file integration/test hashes. Persistent outside-Git evidence is under
-`C:/Users/x8120/.codex/article-localization-release/batch019-digital-organization/`.
+`<home>/.codex/article-localization-release/batch019-digital-organization/`.
 All sixteen documents and diagrams passed independent review with zero numeric
 exceptions. Local validation passed while retaining 32 editorial advisories,
 five PostgreSQL skips and one Windows/Bash tool-test skip. Those skips require

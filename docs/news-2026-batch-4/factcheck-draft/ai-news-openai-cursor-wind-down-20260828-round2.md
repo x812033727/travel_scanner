@@ -5,7 +5,7 @@
 - 查核日：2026-09-23
 - 內容包：`apps/api/app/guides/content/ai-news-openai-cursor-wind-down-20260828.json`
 - 研究紀錄：`docs/ai-news-2026-09-late/research/ai-news-openai-cursor-wind-down-20260828.json`
-- 工具：`C:\Users\x8120\mokaair-work\news44\_tools\ai-news-openai-cursor-wind-down-20260828-r2\`
+- 工具：`<home>\mokaair-work\news44\_tools\ai-news-openai-cursor-wind-down-20260828-r2\`
   （`textutil.py`、`quotes2.py`、`body2.py`、`negatives.py`、`sample.py`、`links2.py`、
   `rssitem2.py`、`edit_pack2.py`、`record2.py`、`packscan2.py`）
 - 結論：**查了 25 條主張，維持 confirmed 25、新發現的事實錯誤 0**；
@@ -204,7 +204,7 @@ OpenAI 的模型，但在這段期間，之後推出的新模型不會再提供�
 
 ## 7. 自檢輸出
 
-`C:\Users\x8120\mokaair-work\news44\_tools\ai-news-openai-cursor-wind-down-20260828-r2\exit-codes.txt`：
+`<home>\mokaair-work\news44\_tools\ai-news-openai-cursor-wind-down-20260828-r2\exit-codes.txt`：
 
 ```
 check_article.py exit=0

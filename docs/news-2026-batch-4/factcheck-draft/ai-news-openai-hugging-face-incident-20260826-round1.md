@@ -8,7 +8,7 @@
 
 UA 一律 `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`，同主機間隔 ≥1 秒，
 請求的 UA、標頭、查詢字串都沒有帶入任何人的姓名或 email。抓下的原始檔與抽字腳本在
-`C:\Users\x8120\mokaair-work\news44\_tools\ai-news-openai-hugging-face-incident-20260826-r1\`。
+`<home>\mokaair-work\news44\_tools\ai-news-openai-hugging-face-incident-20260826-r1\`。
 
 | # | 來源 | 狀態 | bytes | 抽出正文 | 是否正文 |
 | --- | --- | --- | --- | --- | --- |

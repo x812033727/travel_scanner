@@ -2118,6 +2118,19 @@
     "pending": "这个新版正在等待你在下方审看成片。旧版的发布与语言批准已不能用于上传。"
   },
   "videoReviews": {
+    "duration": {
+      "target": "正文目标 {target} 秒 · 实测验收范围 {min}–{max} 秒",
+      "opedBudget": "OP/ED 预算上限 {budget} 秒；已制作媒体的时长另行测量。",
+      "audio": "正文音频实测 {seconds} 秒",
+      "title": "单集实测时长",
+      "body": "正文实测 {seconds} 秒 · 目标 {target} 秒 · 验收范围 {min}–{max} 秒",
+      "oped": "OP/ED 实测 {seconds} 秒 · 预算上限 {budget} 秒",
+      "missing": "目前无法取得实测时长凭证。目标分钟数不能证明成片的实际时长。",
+      "current": "已依据目前的制作规格验证",
+      "stale": "这份报告尚未通过当前制作规格的验证。批准前，请重新检查当前媒体。",
+      "budget": "播出时段 {slot} 秒 · 时段预留 {reserve} 秒（不会渲染填充片段）",
+      "total": "成片实测 {seconds} 秒"
+    },
     "categories": {
       "ai-terms": "AI 名词解释",
       "ai-news": "AI／科技时事",
@@ -2338,7 +2351,16 @@
       "hook": "钩子",
       "conflict": "冲突",
       "turn": "转折",
-      "cliffhanger": "悬念"
+      "cliffhanger": "悬念",
+      "highTension": "高张力事件 {number}",
+      "consequences": "持续后果",
+      "closure": "正向收束"
+    },
+    "scriptAction": {
+      "title": "场面动作",
+      "description": "可见动作",
+      "motion": "动作与镜头",
+      "duration": "持续 {seconds} 秒"
     },
     "scriptProblems": "查核指出的问题",
     "scriptMinutes": "约 {minutes} 分钟",
@@ -2365,6 +2387,7 @@
     "qaAllPassed": "{count} 项全过",
     "qaWarning": "注意：",
     "qaItems": {
+      "duration_policy": "单集时长",
       "assemble": "合成",
       "render": "画面",
       "narration": "旁白",
@@ -2618,6 +2641,21 @@
     "dramaKeyLink": "到 AI 设置填写密钥"
   },
   "videoSeries": {
+    "longAnime": {
+      "startPlanning": "开始规划",
+      "planningHelp": "点击「开始规划」以请求制作设定集与整部大纲。批准这些文件后，再恢复单集制作。",
+      "profile": "单集格式",
+      "ordinary": "标准剧集（1–8 分钟）",
+      "option": "长篇动漫（正文 22 分钟）",
+      "badge": "长篇动漫",
+      "help": "以群像主角与 2D 动漫画风创建，初始状态为暂停。恢复制作前，请审阅并批准设定集与整部大纲。",
+      "body": "正文目标 {minutes} 分钟；实测验收范围 {min}–{max} 分钟",
+      "budgets": "OP/ED 预算上限 {oped} 分钟 · 播出时段 {slot} 分钟 · 时段预留 {reserve} 分钟",
+      "budgetHelp": "OP/ED 是时间预算上限，不代表已制作的媒体。播出预留时间绝不会用于补足影片时长。",
+      "manual": "文件与剧本须经审阅；自动批准与合集制作均已停用。",
+      "reviewRequired": "恢复制作前，请先批准设定集与整部大纲。",
+      "create": "创建暂停的动漫作品"
+    },
     "listTitle": "作品",
     "empty": "还没有作品",
     "emptyDetail": "在下面建一部：工人下一轮就会规划设定集，你在这里核准。",
