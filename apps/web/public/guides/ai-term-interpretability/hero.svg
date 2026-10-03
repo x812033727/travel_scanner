@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">放大鏡看進黑盒 / A lens into the black box</title>
+<desc id="desc">一個深色方塊代表難以理解的模型，一支放大鏡壓在方塊右半邊，鏡片裡露出幾個節點與連線，其中一個節點與幾條連線以橘色標出；鏡片右側拉出一條虛線，連到一張畫著三條橫線的說明卡，表示從模型內部整理出的解釋，仍需另外檢查。</desc>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+<defs>
+<clipPath id="lens"><circle cx="790" cy="440" r="180"/></clipPath>
+</defs>
+<circle cx="1330" cy="170" r="90" fill="#E6F0F7"/>
+<circle cx="250" cy="760" r="120" fill="#E3F0EF"/>
+<rect x="300" y="200" width="520" height="520" rx="44" fill="#102A2B"/>
+<g fill="#2C4546">
+<rect x="360" y="260" width="120" height="16" rx="8"/>
+<rect x="360" y="300" width="80" height="16" rx="8"/>
+<rect x="360" y="620" width="140" height="16" rx="8"/>
+<rect x="360" y="660" width="90" height="16" rx="8"/>
+</g>
+<circle cx="790" cy="440" r="180" fill="#E3F0EF"/>
+<g clip-path="url(#lens)">
+<g stroke="#9FB9B7" stroke-width="5">
+<line x1="690" y1="350" x2="790" y2="440"/><line x1="690" y1="530" x2="790" y2="440"/>
+<line x1="690" y1="350" x2="790" y2="320"/><line x1="690" y1="530" x2="790" y2="560"/>
+<line x1="790" y1="320" x2="890" y2="380"/><line x1="790" y1="560" x2="890" y2="500"/>
+<line x1="790" y1="320" x2="890" y2="500"/>
+</g>
+<g stroke="#D97A2B" stroke-width="10" stroke-linecap="round">
+<line x1="690" y1="350" x2="790" y2="440"/>
+<line x1="790" y1="440" x2="890" y2="380"/>
+<line x1="690" y1="530" x2="790" y2="440"/>
+</g>
+<g fill="#FFFFFF" stroke="#0D6B68" stroke-width="6">
+<circle cx="690" cy="350" r="26"/><circle cx="690" cy="530" r="26"/>
+<circle cx="790" cy="320" r="26"/><circle cx="790" cy="560" r="26"/>
+<circle cx="890" cy="380" r="26"/><circle cx="890" cy="500" r="26"/>
+</g>
+<circle cx="790" cy="440" r="34" fill="#D97A2B" stroke="#B8442D" stroke-width="6"/>
+</g>
+<circle cx="790" cy="440" r="180" fill="none" stroke="#0D6B68" stroke-width="26"/>
+<line x1="925" y1="575" x2="1080" y2="730" stroke="#0D6B68" stroke-width="48" stroke-linecap="round"/>
+<path d="M 975 390 L 1110 330" fill="none" stroke="#2F6F9F" stroke-width="8" stroke-dasharray="18 14" stroke-linecap="round"/>
+<rect x="1110" y="230" width="330" height="220" rx="28" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="8"/>
+<rect x="1160" y="285" width="230" height="22" rx="11" fill="#2F6F9F"/>
+<rect x="1160" y="330" width="180" height="22" rx="11" fill="#2F6F9F"/>
+<rect x="1160" y="375" width="120" height="22" rx="11" fill="#D97A2B"/>
+</svg>

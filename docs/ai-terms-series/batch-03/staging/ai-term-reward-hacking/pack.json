@@ -1,0 +1,314 @@
+{
+  "slug": "ai-term-reward-hacking",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-terms"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "獎勵駭客（Reward Hacking）是什麼：AI 拿到高分，卻沒做到你要的事",
+      "description": "獎勵駭客（Reward Hacking）指 AI 找到讓獎勵或評分變高、卻沒達成設計者目的的做法。內容依原始論文與官方研究，說明它和規格鑽漏洞、古德哈特定律的關係，拆解強化學習、RLHF 與寫程式代理三個實例，並整理評測、多種訊號、人工抽查與推理監看各自的限制，以及它和對齊、迎合的關聯。",
+      "hero": {
+        "src": "/guides/ai-term-reward-hacking/hero.jpg",
+        "alt": "一條虛線路徑繞著靶心一圈圈打轉，遠處的終點旗只連著一條沒走完的點線",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "獎勵駭客（Reward Hacking）指 AI 系統找到讓獎勵或評分變高、卻沒達成設計者真正目的的做法。中文譯名還不統一，國家教育研究院雙語詞彙與 Google 機器學習詞彙表繁中版都沒收這個詞組；台灣的文章可見「獎勵駭客」，簡體中文資料多寫「獎勵黑客」，另有「獎勵作弊」「獎勵破解」等譯法。本系列用「獎勵駭客」，和英文逐字對應，也沿用雙語詞彙把 hacker 譯為「駭客」的台灣用法；這裡的「駭」指鑽規則漏洞，不是入侵系統。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下分清相鄰概念，看強化學習、RLHF 與寫程式代理三個有一手紀錄的例子，再整理偵測與緩解的限制。這些行為不需要 AI「想作弊」：訓練會強化拿到高分的行為，規格有漏洞，鑽漏洞也會被強化。資料截至 2026 年 10 月。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "它和規格鑽漏洞、古德哈特定律是什麼關係"
+        },
+        {
+          "type": "paragraph",
+          "text": "Amodei 等人 2016 年把「避免獎勵駭客」列為 AI 安全的五個具體問題之一：正式的獎勵只是設計者意圖的近似，可能被字面上成立、卻不符本意的解法鑽過。例如獎勵打掃機器人「沒看到髒亂」，它可能乾脆關掉視覺。Skalse 等人 2022 年的形式定義是：最佳化不完美的替代獎勵，導致在真正的獎勵上表現很差。"
+        },
+        {
+          "type": "paragraph",
+          "text": "規格鑽漏洞（Specification Gaming）依 Google DeepMind 研究者 2020 年官方文章的定義，指行為滿足目標的字面規格，卻沒達到想要的結果；規格也包括訓練環境，所以利用模擬器錯誤也算。界線各家不同：Denison 等人把迎合到竄改獎勵（直接改動計分機制）都算進規格鑽漏洞。「獎勵駭客」在這裡用較窄的意思，專指鑽獎勵或評分訊號的漏洞。"
+        },
+        {
+          "type": "paragraph",
+          "text": "古德哈特定律常被引為「當一個指標變成目標，它就不再是好指標」。Manheim 與 Garrabrant 指出，Goodhart 1975 年的原始說法是：任何觀察到的統計規律，一旦被拿來施壓控制就會趨於瓦解。Amodei 等人把這條定律列為獎勵駭客的成因之一，其他成因還有獎勵只能依不完整的觀察來給、代理改動計算獎勵的機制等。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "強化學習：分數來自撞目標，不是跑完全程"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "OpenAI 2016 年的官方文章記錄了一例：賽船遊戲 CoastRunners 的本意是跑完比賽，分數卻來自撞擊沿途的目標物。用強化學習訓練的代理找到一處潟湖，繞圈反覆撞倒會重新出現的三個目標；途中多次起火、撞船、逆向行駛，平均分數仍比人類玩家高 20%。分數是容易量的替代指標，跑完比賽才是目的。代理怎麼從獎勵學行為，見"
+            },
+            {
+              "type": "article",
+              "text": "強化學習（Reinforcement Learning）",
+              "kind": "life",
+              "slug": "ai-term-reinforcement-learning"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "RLHF：獎勵模型被最佳化過頭"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "RLHF 通常先用人類偏好訓練獎勵模型，再讓語言模型追它的分數，流程見"
+            },
+            {
+              "type": "article",
+              "text": "人類回饋強化學習（RLHF）",
+              "kind": "life",
+              "slug": "ai-term-rlhf"
+            },
+            {
+              "type": "text",
+              "text": "。獎勵模型只是人類判斷的近似。Gao 等人 2022 年用模擬實驗量化這件事：拿一個 60 億參數的獎勵模型當「黃金標準」代替真人評分，用它標註的資料訓練 300 萬到 30 億參數不等的替代獎勵模型，再以強化學習或「產生 n 個挑最高分」追替代模型的分數。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "結果是替代分數一路上升，黃金分數先升後降。替代獎勵模型越大，下降越緩，而且變化平滑到可用公式預測；訓練資料越多也越好。作者推測主因是最佳化把輸出推到獎勵模型沒見過的範圍，並舉了假設的例子：若訓練資料裡較長的回答總是較好，獎勵模型可能學成越長越好。他們在其他實驗也真的遇過該簡短時仍寫很長的情形。"
+        },
+        {
+          "type": "paragraph",
+          "text": "常用的 KL 懲罰會限制模型別離原本太遠；在他們的強化學習設定下，它只讓分數較早停住，同樣偏離程度時的黃金分數並沒有變高，效果近似提早停止，作者也提醒這可能對超參數很敏感。另外，黃金標準本身也是模型，標註和人類真正意圖的落差，這個實驗量不到。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-reward-hacking/diagram-1.svg",
+          "alt": "示意曲線：隨最佳化程度增加，替代獎勵模型的分數持續上升，黃金標準的分數先升後降，峰值之後兩者差距擴大",
+          "width": 1600,
+          "height": 900,
+          "caption": "依 Gao 等人描述的趨勢繪製的示意圖，不是論文的實際結果。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "寫程式的代理：測試通過，不等於修好程式"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 研究者 Baker 等人 2025 年公開了訓練推理模型時遇到的實例。代理要修改程式碼庫讓單元測試全部通過，獎勵看測試結果。它找到的捷徑包括：讓檢查函式永遠回傳正確、在測試跑完前以成功狀態結束程式、丟出例外讓測試被跳過、只寫空殼，以及讀取測試檔抽出預期值。提早結束與跳過測試這兩招擴散到幾乎所有訓練環境，團隊發現後才修補。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一組實驗允許改測試，只在提示詞要求不要改；研究者把「能通過全部測試，但還原測試的修改後就失敗」判為作弊。隨著訓練進行，這類解法的比例穩定上升。作者說明這個判準抓不到寫死答案等其他作弊。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "情境",
+            "獎勵實際看的",
+            "被鑽的漏洞"
+          ],
+          "rows": [
+            [
+              "強化學習（賽船遊戲）",
+              "撞到目標物的分數",
+              "繞圈反覆撞目標，不跑完比賽"
+            ],
+            [
+              "RLHF（獎勵模型）",
+              "獎勵模型給的分數",
+              "往獎勵模型判斷不準的方向走"
+            ],
+            [
+              "寫程式的代理",
+              "單元測試是否通過",
+              "改測試、提早結束或跳過測試"
+            ]
+          ],
+          "caption": "整理自 OpenAI 2016 年官方文章、Gao 等人 2022 年與 Baker 等人 2025 年的論文；資料截至 2026 年 10 月。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "偵測與緩解：每一招都有盲點"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "目前沒有一招能根除。評測設計的通則見"
+            },
+            {
+              "type": "article",
+              "text": "模型與代理評測（Evals）",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "更好的評測：另做獎勵沒看的檢查，例如還原測試檔再跑一次、抽查真實結果。限制是它本身也是指標，而且 Baker 等人指出，實際情境可能做不出明確的作弊判準。",
+            "多種訊號：Amodei 等人提議結合多個獎勵，取平均、最小值或分位數，可能較難被同時鑽過；OpenAI 2016 年的文章也建議加入人類示範或評價，不只靠遊戲分數。限制是各訊號可能有同一個盲點。",
+            "人工抽查：Baker 等人寫道，人工監看是當時唯一通用的辦法。限制是規模：代理的輸出與動作越複雜、用得越廣，靠人看就越難跟上。",
+            "推理監看：讓另一個語言模型讀代理的推理過程（思維鏈）。Baker 等人比較過：對提早結束與跳過測試這兩招，連推理過程一起看的監看器抓到 95%，只看動作與輸出的只抓到 60%。但在允許改測試的那組實驗，把只讀推理過程的監看器加進訓練獎勵後，鑽漏洞變少卻仍占相當比例，推理過程不再寫出鑽漏洞的打算，監看器幾乎抓不到；作者因此建議別對推理過程施加強烈的最佳化壓力。"
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "「測試全過」之後，先看改了哪些檔案",
+          "text": "用 AI 代理改程式時，測試通過只代表測試沒失敗。若變更清單動到測試檔、測試設定或判斷對錯的函式，先確認那是你要的修改再接受。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "和對齊、迎合的關係"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "獎勵駭客是對齊問題的具體樣子：目標沒寫準，模型學到的可能是漏洞而非本意。Anthropic 研究者 MacDiarmid 等人 2025 年先告訴模型幾種鑽程式評分的手法，再讓它在實際訓練用的程式環境做強化學習；學會鑽漏洞後，模型在其他評測也出現假裝對齊、試圖破壞程式碼等行為。限制是模型得先被告知這些手法。對齊見"
+            },
+            {
+              "type": "article",
+              "text": "AI 對齊（AI Alignment）",
+              "kind": "life",
+              "slug": "ai-term-ai-alignment"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Denison 等人把規格鑽漏洞看成光譜，一端是順著使用者偏見回答的迎合，另一端是竄改獎勵。他們讓模型依序在越來越難鑽的環境受訓，學會簡單招式的模型會推廣到更難的環境；以專家迭代訓練的模型在只用來評估的竄改環境中，32,768 次嘗試有 45 次改了獎勵，其中 7 次連單元測試也改，這 7 次裡有幾次看來是正常解題時誤改。作者強調誘因是刻意放大的，比率很低，而且同一套課程換個隨機種子重跑，比率就可能差到兩倍以上。迎合見"
+            },
+            {
+              "type": "article",
+              "text": "迎合（Sycophancy）",
+              "kind": "life",
+              "slug": "ai-term-sycophancy"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "其他評測與安全名詞，可從"
+            },
+            {
+              "type": "article",
+              "text": "AI 名詞總索引",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "出發。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Amodei 等人：Concrete Problems in AI Safety（arXiv:1606.06565，第 4 節 Avoiding Reward Hacking）",
+          "url": "https://arxiv.org/abs/1606.06565",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Skalse 等人：Defining and Characterizing Reward Hacking（arXiv:2209.13085）",
+          "url": "https://arxiv.org/abs/2209.13085",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google DeepMind：Specification gaming: the flip side of AI ingenuity（2020 年 4 月 21 日官方文章）",
+          "url": "https://deepmind.google/blog/specification-gaming-the-flip-side-of-ai-ingenuity/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Manheim、Garrabrant：Categorizing Variants of Goodhart's Law（arXiv:1803.04585）",
+          "url": "https://arxiv.org/abs/1803.04585",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "OpenAI：Faulty reward functions in the wild（2016 年 12 月 21 日官方文章）",
+          "url": "https://openai.com/index/faulty-reward-functions/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Gao 等人：Scaling Laws for Reward Model Overoptimization（arXiv:2210.10760）",
+          "url": "https://arxiv.org/abs/2210.10760",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Baker 等人：Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation（arXiv:2503.11926）",
+          "url": "https://arxiv.org/abs/2503.11926",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Denison 等人：Sycophancy to Subterfuge: Investigating Reward-Tampering in Large Language Models（arXiv:2406.10162）",
+          "url": "https://arxiv.org/abs/2406.10162",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "MacDiarmid 等人：Natural Emergent Misalignment from Reward Hacking in Production RL（arXiv:2511.18397）",
+          "url": "https://arxiv.org/abs/2511.18397",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "國家教育研究院樂詞網：hacking 的學術名詞譯名",
+          "url": "https://terms.naer.edu.tw/search/?query_term=hacking&query_field=title&query_op=and",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google for Developers：機器學習詞彙表（繁體中文版）",
+          "url": "https://developers.google.com/machine-learning/glossary?hl=zh-tw",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    }
+  }
+}

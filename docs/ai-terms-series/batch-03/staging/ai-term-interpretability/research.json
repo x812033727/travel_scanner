@@ -1,0 +1,163 @@
+{
+  "slug": "ai-term-interpretability",
+  "status": "verified",
+  "checked_on": "2026-10-03",
+  "sources": [
+    {
+      "url": "https://arxiv.org/abs/1702.08608",
+      "title": "Doshi-Velez, Kim: Towards A Rigorous Science of Interpretable Machine Learning (arXiv:1702.08608)",
+      "access": "web open (curl -sSL abs page and PDF, HTTP 200; PDF converted with pdftotext and read section by section)",
+      "claims": [
+        "Defines interpretability as the ability to explain or to present in understandable terms to a human",
+        "Need for interpretability stems from incompleteness of the problem formalization (safety, ethics, mismatched objectives); systems with no significant consequences or that are well validated may not need explanation",
+        "Three-level evaluation taxonomy: application-grounded, human-grounded, functionally-grounded"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1606.03490",
+      "title": "Lipton: The Mythos of Model Interpretability (arXiv:1606.03490, ICML 2016 WHI workshop)",
+      "access": "web open (curl -sSL abs page and PDF, HTTP 200; PDF converted with pdftotext and read section by section)",
+      "claims": [
+        "Interpretability has no formal technical meaning and is not a monolithic concept; motivations (trust, causality, transferability, informativeness, fair decisions) are diverse and occasionally discordant",
+        "Splits properties into transparency (simulatability, decomposability, algorithmic transparency) and post-hoc interpretability (text, visualization, local explanations, explanation by example)",
+        "Questions the claim that linear models are always more interpretable than deep networks; high-dimensional linear models lose simulatability"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1811.10154",
+      "title": "Rudin: Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead (arXiv:1811.10154, Nature Machine Intelligence 2019)",
+      "access": "web open (curl -sSL abs page and PDF, HTTP 200; PDF converted with pdftotext and read section by section)",
+      "claims": [
+        "Distinguishes explaining black boxes with a second post-hoc model (Explainable ML) from inherently interpretable models",
+        "Interpretability is domain-specific; no all-purpose definition",
+        "Inherently interpretable models give explanations faithful to what the model computes; argues the accuracy-interpretability trade-off is often a myth for data with meaningful features"
+      ]
+    },
+    {
+      "url": "https://doi.org/10.6028/NIST.AI.100-1",
+      "title": "NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0), section 3.5",
+      "access": "web open (curl -sSL https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf, HTTP 200; pdftotext)",
+      "claims": [
+        "Explainability is a representation of the mechanisms underlying AI operation and answers 'how'; interpretability is the meaning of output in the context of designed purpose and answers 'why'",
+        "Published January 2023"
+      ]
+    },
+    {
+      "url": "https://doi.org/10.6028/NIST.IR.8312",
+      "title": "NISTIR 8312: Four Principles of Explainable Artificial Intelligence",
+      "access": "web open (curl -sSL https://nvlpubs.nist.gov/nistpubs/ir/2021/NIST.IR.8312.pdf, HTTP 200; pdftotext)",
+      "claims": [
+        "Four principles: explanation, meaningful, explanation accuracy, knowledge limits (September 2021)",
+        "Explanation accuracy is distinct from decision accuracy",
+        "Meaningful principle: explanations understandable to the intended consumer; developers and end users have different needs"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/machine-learning/glossary?hl=zh-tw#interpretability",
+      "title": "Google for Developers: Machine Learning Glossary, Traditional Chinese (可解釋性)",
+      "access": "web open (curl -sSL, HTTP 200; HTML tags stripped and read section by section)",
+      "claims": [
+        "Taiwan-usage translation: interpretability = 可解釋性; autoencoder = 自動編碼器; activation function = 活化函數"
+      ]
+    },
+    {
+      "url": "https://www.airitilibrary.com/Article/Detail/a0000446-N202312050009-00001",
+      "title": "黃詩淳: AI 可解釋性的法學意義及其實踐 (National Taiwan University Law Journal 52(S), 2023)",
+      "access": "web open (curl -sSL, HTTP 200; Chinese abstract on the Airiti record page only; author-hosted PDF connection reset, full text not read)",
+      "claims": [
+        "Taiwan academic usage renders both explainability and interpretability as 可解釋性 (supports the translation note only)"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1602.04938",
+      "title": "Ribeiro, Singh, Guestrin: \"Why Should I Trust You?\": Explaining the Predictions of Any Classifier (arXiv:1602.04938, LIME)",
+      "access": "web open (curl -sSL abs page, HTTP 200; abstract)",
+      "claims": [
+        "LIME explains a single prediction by learning an interpretable model locally around it"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1705.07874",
+      "title": "Lundberg, Lee: A Unified Approach to Interpreting Model Predictions (arXiv:1705.07874, SHAP, NIPS 2017)",
+      "access": "web open (curl -sSL abs page and PDF, HTTP 200; PDF converted with pdftotext and read section by section)",
+      "claims": [
+        "SHAP values are Shapley values; they explain how to get from the base value (expected prediction with no features known) to the current output",
+        "Theorem 1: within additive feature attribution methods, only one solution satisfies local accuracy, missingness and consistency",
+        "Exact computation is challenging; approximations may assume feature independence and model linearity"
+      ]
+    },
+    {
+      "url": "https://distill.pub/2020/circuits/zoom-in/",
+      "title": "Olah et al.: Zoom In: An Introduction to Circuits (Distill, 2020)",
+      "access": "web open (curl -sSL, HTTP 200; HTML tags stripped and read section by section)",
+      "claims": [
+        "Three deliberately speculative claims: features correspond to directions; features connected by weights form circuits (computational subgraphs); universality",
+        "Polysemantic neuron in InceptionV1 responds to cat faces, fronts of cars and cat legs"
+      ]
+    },
+    {
+      "url": "https://transformer-circuits.pub/2024/scaling-monosemanticity/index.html",
+      "title": "Templeton et al. (Anthropic): Scaling Monosemanticity (Transformer Circuits Thread, 2024)",
+      "access": "web open (curl -sSL, HTTP 200; HTML tags stripped and read section by section)",
+      "claims": [
+        "Setting: sparse autoencoders on middle-layer residual stream activations of Anthropic's medium-sized production model; three SAEs of about 1M, 4M and 34M features; reconstruction explains at least 65% of variance",
+        "Features are multilingual and multimodal; clamping the Golden Gate Bridge feature to 10x its maximum activation makes the model self-identify as the bridge",
+        "Limitations: far from all features found, likely orders of magnitude short even for the middle layer; features for only about 60% of London boroughs in the 34M SAE; training objective is a proxy for interpretability",
+        "Caution: knowing about lies, being able to lie and actually lying differ; hope for interpretability as a 'test set for safety' is very preliminary"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2004.03685",
+      "title": "Jacovi, Goldberg: Towards Faithfully Interpretable NLP Systems: How should we define and evaluate faithfulness? (arXiv:2004.03685, ACL 2020)",
+      "access": "web open (curl -sSL abs page and PDF, HTTP 200; PDF converted with pdftotext and read section by section)",
+      "claims": [
+        "Plausibility is how convincing an interpretation is to humans; faithfulness is how accurately it reflects the model's true reasoning process; one can hold without the other",
+        "Faithfulness evaluation should not rely on human judgement"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1810.03292",
+      "title": "Adebayo et al.: Sanity Checks for Saliency Maps (arXiv:1810.03292, NeurIPS 2018)",
+      "access": "web open (curl -sSL abs page and PDF, HTTP 200; PDF converted with pdftotext and read section by section)",
+      "claims": [
+        "Model parameter randomization test compares saliency on a trained model with a randomly initialized network of the same architecture",
+        "Guided BackProp and Guided GradCAM are invariant to higher-layer parameters; Gradients and GradCAM pass; visual inspection alone can mislead"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1911.02508",
+      "title": "Slack et al.: Fooling LIME and SHAP: Adversarial Attacks on Post hoc Explanation Methods (arXiv:1911.02508, AIES 2020)",
+      "access": "web open (curl -sSL abs page and PDF, HTTP 200; PDF converted with pdftotext and read section by section)",
+      "claims": [
+        "Scaffolding hides a perfectly discriminatory classifier that uses only the sensitive feature (race for COMPAS and Communities and Crime, gender for German credit) by detecting perturbation samples",
+        "LIME fooled on all three datasets; SHAP shifts importance away from the sensitive feature on most data points (84% COMPAS, 100% CC, 85% German with one uncorrelated feature; 67% and 71% for COMPAS and CC with two)"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1902.10186",
+      "title": "Jain, Wallace: Attention is not Explanation (arXiv:1902.10186, NAACL 2019)",
+      "access": "web open (curl -sSL abs page and PDF, HTTP 200; PDF converted with pdftotext; abstract and sections 1-3 read)",
+      "claims": [
+        "Attention weights are frequently uncorrelated with gradient-based importance; very different attention distributions can yield equivalent predictions",
+        "Setting: attentive BiLSTM encoders (also CNN and averaging encoders) on text classification, question answering and natural language inference; not language models"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2305.04388",
+      "title": "Turpin et al.: Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting (arXiv:2305.04388, NeurIPS 2023)",
+      "access": "web open (curl -sSL abs page, HTTP 200; abstract; details already verified in the linked chain-of-thought article)",
+      "claims": [
+        "Biasing features in the input sway answers; chain-of-thought explanations rationalize biased answers without mentioning the bias"
+      ]
+    }
+  ],
+  "aliases": [
+    "Interpretability",
+    "可詮釋性",
+    "XAI",
+    "機制可解釋性"
+  ],
+  "existing_overlap": "Links ai-term-attention-mechanism and ai-term-chain-of-thought for the attention-weights and CoT-faithfulness details instead of repeating them; ai-term-ai-alignment for the safety framing; ai-term-neural-network for features and neurons. No existing article on interpretability or explainable AI.",
+  "running_text_characters": 2669,
+  "notes": "Model names are omitted from the body (the Scaling Monosemanticity setting is described as Anthropic's medium-sized production model) and from the source title (short title used). The flight-delay SHAP decomposition and the booking-site recommendation are invented teaching examples labelled 示例 and 未實測. NAER term search did not return a usable result; translation follows the Google zh-TW ML glossary. Independent check verify-1 (2026-10-03): corrected the Slack et al. sensitive feature (German credit uses gender, not race) and the Jain & Wallace setting (attentive text classifiers and QA/NLI models, not language models); added which definition is adopted (broad, post-hoc included, as in Lipton); completed four source titles. running_text_characters is app.guides.pack_ingest._body_length on the final pack."
+}

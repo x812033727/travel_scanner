@@ -1,0 +1,98 @@
+{
+ "mode": "articles",
+ "results": [
+  {
+   "slug": "ai-term-vision-language-model",
+   "write": "Done. All five files are in `/home/user/travel_scanner/docs/ai-terms-series/batch-03/staging/ai-term-vision-language-model/` (pack.json, diagram-1.svg, hero.svg, notes.md, research.json), and `_tools/` has been deleted.\n\n- **Character count:** `_body_length` gives 2,587.\n- **Dry-run:** passed. The only warning is `no_summary`.\n- **Checks:**\n  - 6 H2 sections, exactly one table, one callout.\n  - The four assigned links and `ai-terms-index` each appear once as an inline `article` link.\n  - topics include `ai-terms`.\n  - 「本文」 and 「這篇」 appear zero times, and the body describes no verification process.\n  - `missing_diagram_numbers` comes back empty, and every number on the diagram also appears in the body paragraphs.\n  - I rendered both SVGs and looked at them: no overlapping text, no text on lines, nothing past the frame.\n- **Title:** I changed 「看懂圖片」 in title_draft to 「讀圖片」 so it doesn't claim understanding.\n\nWhere the sources conflict with the assignment:\n- **Definition:** the assignment uses the narrow definition (images and text in, text out). Under it, CLIP doesn't output text, so it isn't a VLM; one survey does count it as one. The first paragraph explains both usages and says which one the article follows.\n- **CLIP's role:** in the milestone section, CLIP is described only as having trained the vision encoder.\n\nThings I suspect but didn't change:\n1. In Tong et al., the human 95.7% looks like a per-question score, while the 25% random baseline is pair-level (both questions in a pair must be right). The two may not be on the same scale. The body gives the paper's numbers as-is.\n2. 「常見的視覺語言模型可拆成三段」 doesn't cover newer designs that have no separate vision encoder.\n3. The 18 models in Kamath et al. are mostly older, CLIP-style models, so they may not represent today's chat VLMs.\n4. In POPE's table, one model answered \"Yes\" 100% of the time; the body follows the paper's own wording, \"close to 99%\".\n5. The NAER (國家教育研究院) term search returned no entries when queried with curl, so the Taiwan terms rely only on Google's Traditional Chinese ML glossary.",
+   "v1": {
+    "facts_changed": 4,
+    "dry_run_ok": true,
+    "body_length": 2668,
+    "suspicions": [
+     "MMVP reports humans at 95.7% 'of the questions' while models are scored per pair, and the paper does not say whether the human figure is also pair-scored; the article prints both numbers side by side as the paper does.",
+     "POPE's 'near 99%' Yes rate is the paper's own summary in section 5.2, but Table 3's random setting shows LLaVA at 95.37% and mPLUG-Owl at 96.23%; the article follows the paper's wording.",
+     "The diagram's language-model box ('影像 token＋問題一起讀') fits LLaVA better than Flamingo's cross-attention; it was left as a simplification because paragraph 4 now states the difference.",
+     "'LLaVA 主要貢獻在資料' is an editorial ranking: the paper lists four contributions with data first, so it was kept.",
+     "NAER (樂詞網) results load client-side and could not be read with curl, so the Taiwan terms 視覺語言模型, 閘控 and 交叉注意力 were checked only against Google's zh-TW glossary, which contains 閘 but none of the three full terms.",
+     "Body length 2668 is above the batch-03 target of 2,200–2,600 but within the 3,000 cap; no sentences were cut to avoid rewriting."
+    ]
+   },
+   "v2": {
+    "facts_changed": 5,
+    "dry_run_ok": true,
+    "body_length": 2686,
+    "suspicions": [
+     "Neither NAER (樂詞網) nor Google's zh-TW glossary has an entry for the full term 交叉注意力 (cross attention and cross-attention both return nothing), so it was kept as a combination of the glossary's 交叉熵 and 自注意力.",
+     "The new NAER source is a search-query URL that only shows the entry when it includes query_op= (detail pages without seq redirect to the home page), so the link may break if the site changes.",
+     "Body length 2686 is still above the batch-03 target of 2,200–2,600 but under the 3,000 cap; cutting further would remove setup or conclusions the assignment requires."
+    ]
+   },
+   "summary": [
+    {
+     "slug": "ai-term-vision-language-model",
+     "summary": [
+      "視覺語言模型（VLM）窄義指能同時接收圖片與文字、再輸出文字的模型：給它一張照片和一個問題，它用文字回答。",
+      "常見結構是視覺編碼器、連接層、語言模型三段；語言模型讀不到像素，編碼器沒保留的小字、朝向或前後位置，它可能補上聽起來合理的答案。",
+      "多模態 AI 範圍較廣；文字生圖方向相反，能根據照片回答不表示能照描述畫圖。",
+      "VLM 可能答錯數量、位置，或說出圖中沒有的東西；答案裡的物體、數字與位置都能回到圖片核對，金額、距離與方向或醫療影像別只靠它。"
+     ],
+     "support": [
+      "「視覺語言模型（Vision-Language Model，VLM）在這裡指能同時接收圖片與文字、再輸出文字的模型：給它一張照片和一個問題，它用文字回答。」＋「以下採 Hugging Face 文件「能接收圖片的語言模型」這種窄義」＋表格列「視覺語言模型（窄義）｜圖片加文字 → 文字」",
+      "「常見的視覺語言模型可拆成三段。」＋「語言模型只讀得到編碼器交出的特徵，讀不到像素。編碼器沒保留的小字、朝向或前後位置，語言模型可能依常見說法補上一個聽起來合理的答案。」",
+      "「多模態 AI範圍較廣，處理兩種以上資料形式的系統都算，包括語音與影片。」＋「文字生圖方向相反：輸入文字、輸出圖片。同一個產品可能兩種都有，但能根據照片回答，不表示能照描述畫圖；分不清時先看輸出。」",
+      "「數物體數量是 CLIP 論文自己列出的弱點。」＋「讓 CLIP 吃力的類型，也多半讓以它為第一段的模型吃力。」＋「空間關係也弱。」＋「第三種是物件幻覺：說出圖中沒有的東西。」＋「物件幻覺是AI 幻覺的一種，好處是證據就在手上：答案裡的物體、數字與位置，都能回到圖片核對。」＋「不要只靠它的，是錯一次代價很高的判斷：金額、距離與方向、藥品標示或醫療影像；LLaVA 論文談風險時也點名了醫療。」"
+     ],
+     "rewritten": 4,
+     "notes": "S1 依正文補上「窄義」，因為正文明說名稱用法不一，也有人把 CLIP 算進來；S2 的「它可拆成」放大了正文的「常見的視覺語言模型」，改成「常見結構」；S3 拿掉代名詞並精簡，總字數才壓得進 220 字（現為 219）；S4 原本的「常見的錯」只有小標題撐得住，改成依段落寫的「可能答錯數量、位置，或說出圖中沒有的東西」，並以「VLM」開頭，避免「它」被讀成指多模態 AI 或文字生圖。"
+    }
+   ]
+  },
+  {
+   "slug": "ai-term-rate-limit",
+   "write": "The rate-limit article (ai-term-rate-limit) is finished. All five files are in `/home/user/travel_scanner/docs/ai-terms-series/batch-03/staging/ai-term-rate-limit/`: `pack.json`, `diagram-1.svg`, `hero.svg`, `notes.md` and `research.json`. The `_tools/` folder has been deleted.\n\n- **Length:** 2,594 characters by `_body_length`, inside the 2,200–2,600 target.\n- **Dry-run:** exit 0. The only warning is `no_summary`, which the brief says to leave.\n- **Structure:**\n  - 6 H2 sections, exactly one table (3 columns, 5 rows), one warning callout.\n  - Topics are `[\"ai\",\"tutorial\",\"ai-terms\"]`.\n  - Every assigned link is an `article` inline, plus the index: gemini-api-cost-errors-guide (in the first paragraph, as an \"操作步驟見…\" pointer), ai-term-token, ai-term-agent-loop, ai-term-prompt-caching and ai-terms-index.\n  - 「本文／這篇」 appears 0 times, there is no 查證 wording, and the simplified-character scan found nothing.\n- **Images:** I rendered both SVGs to 1600×900 PNGs and looked at them. Nothing overlaps, touches a line or runs outside its box. The diagram's only numbers are 429 and 2026, and both appear in the body text.\n- **Sources:** 16 primary sources, all fetched today with status 200. They are RFC 6585 and 9110, the AWS blog post and Builders' Library article, and official docs from OpenAI, Anthropic, Google and Microsoft. Two Claude Help Center pages cover the chat-product limits. No service, plan or tier limit numbers are written.\n- **Aliases:** rate limiting, 頻率限制, 限流, 429 Too Many Requests. None of them clash with existing catalogue aliases.\n\nWhere the sources differ from the assignment:\n- **Not every 429 is a rate limit.** OpenAI also returns 429 when credits run out or a spending cap is hit, and Anthropic does the same for its monthly spending cap. The article covers this in a \"不是每個 429 都該重試\" section, which goes beyond the assignment's angle.\n- **Google returns 402 for prepaid credit running out, not 429.** I left the status code out and only wrote that retrying is useless.\n\nThings I suspect but didn't change:\n- **AWS 243× example:** the article says \"three retries at each layer\" but calculates as three tries per layer. I followed the calculation and wrote 「各自試 3 次」.\n- **Translation claim:** the intro says Google's zh-TW page \"mostly\" uses 速率限制 in its body. That rests on a raw text count (20 vs 11), which may include navigation text.\n- **IETF draft cut:** I read the IETF RateLimit header draft (still a draft, May 2026 version) but left it out to save length. The coordinator can add it if wanted.",
+   "v1": {
+    "facts_changed": 4,
+    "dry_run_ok": true,
+    "body_length": 2665,
+    "suspicions": [
+     "Google's api-errors page calls itself the Interactions API error-code reference, so a generateContent caller may see only RESOURCE_EXHAUSTED and never the quota_exceeded code, yet the body still says Google lists daily-quota exhaustion as its own code.",
+     "The builder.aws.com URL for the Builders' Library source usually returns a 3,849-byte JavaScript shell with status 200 to curl; the full page came back only once through the aws.amazon.com redirect, so a Wayback snapshot may be needed as backup.",
+     "The body says AWS observed that scheduled jobs often start together at the top of a minute or just after midnight, but the source says only that such jobs can line up, so 'often' is slightly stronger than the source.",
+     "The Google zh-TW page used as evidence for the Taiwanese term is machine-translated, and the NAER bilingual term search could not be read with curl, so the choice of 速率限制 rests only on Google's and Microsoft's zh-TW docs.",
+     "The table row for chat-plan limits says to wait for the reset or change plans and leaves out the option of buying usage credits that the Claude Help Center also lists; it is not wrong, so it was left unchanged.",
+     "_body_length is 2,665, which is over the writer target of 2,200 to 2,600 but within the 3,000 cap."
+    ]
+   },
+   "v2": {
+    "facts_changed": 3,
+    "dry_run_ok": true,
+    "body_length": 2684,
+    "suspicions": [
+     "All three sources for the term 速率限制 are vendor docs: Google's zh-TW page says it is AI-translated, Microsoft's shows clear machine-translation marks, and the NAER term search returns 0 hits to curl even for 'machine learning', so no neutral glossary confirms it as the common Taiwanese term.",
+     "The Builders' Library URL still returns a 3,849-byte JavaScript shell without an Accept header and only about half the time with one, and Wayback was unreachable from this environment, so later checkers may struggle to reproduce the read.",
+     "The checklist line saying all three vendors' batch APIs have limits separate from real-time calls glosses over different wording: OpenAI says batch does not affect synchronous limits and has its own queue cap, while Anthropic and Google say batch has its own rate limits.",
+     "_body_length is 2,684, still above the writer target of 2,200 to 2,600 (within the 3,000 cap), because the round added the Interactions API scope, the buy-more-usage option and a gloss of 非冪等 (non-idempotent)."
+    ]
+   },
+   "summary": [
+    {
+     "slug": "ai-term-rate-limit",
+     "summary": [
+      "速率限制是服務在一段時間內允許你送出的請求數或 token 數上限，超過時 API 通常回 HTTP 429。",
+      "常見單位是每分鐘請求數（RPM）與每分鐘 token 數（TPM），額度算在組織或專案上，同一個專案多開幾把金鑰不會變多。",
+      "暫時超速可以照 Retry-After 或退避加抖動再試，但花費上限、配額或預付額度用完，重試幾次都無效。",
+      "速率限制管的是速度，和上下文視窗不同：單次輸入超過上下文視窗時等待無效，要縮短輸入或分段。"
+     ],
+     "support": [
+      "「速率限制（rate limit）是服務在一段時間內允許你送出的請求數或 token 數上限，超過時 API 通常回 HTTP 429 Too Many Requests。」",
+      "「常見單位是每分鐘請求數（RPM）與每分鐘 token 數（TPM），也有每日請求數（RPD）與每日 token 數（TPD）。」；「所有工作者共用一個限速器，因為額度算在組織或專案上，不是各算各的。」；「同一個專案多開幾把金鑰，額度不會變多。」",
+      "「暫時超速可以等；花費上限、配額或預付額度用完，重試幾次都無效。」；表格列「速率限制｜短時間內的請求數、token 數｜照 Retry-After 或退避後重試」；「只有退避，重試仍會成群擠在同一時間；加上隨機抖動（jitter）才會分散。」；「附有 Retry-After: 20 時，至少等 20 秒，再加 0 到 1 秒的隨機延遲。」",
+      "「它管的是速度。」；「上下文視窗是單次請求能放的 token 數：在 Anthropic，輸入超過上下文視窗會回 400，等多久都沒用。」；表格列「上下文視窗｜單次請求能放的 token 數｜縮短輸入或分段，等待無效」"
+     ],
+     "rewritten": 2,
+     "notes": "第二句把「多開幾把金鑰也不會變多」改回正文的範圍「同一個專案多開幾把金鑰不會變多」，因為草稿去掉了「同一個專案」，說得比正文廣。第四句把「單次請求的 token 數」縮成「單次輸入」，讓總字數連空格算也不超過 220（不算空格 204 字，算空格 214 字）。第一、三句逐項都在正文找到原句，沒有改。"
+    }
+   ]
+  }
+ ]
+}

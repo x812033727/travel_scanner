@@ -393,32 +393,37 @@ def test_the_shipped_catalogue_costs_what_the_plan_measured() -> None:
 
     186 and 158 tokens are the option side only -- the criteria entry. The state repeats
     every article as ``{id, title, description}``, so a candidate costs roughly twice that
-    per request, and the token ceiling binds before ``--chunk-size 80`` does: the travel
-    catalogue plans 4 chunks rather than the 3 the plan's arithmetic predicted, and the
-    lifestyle one 17 rather than 12. Nothing is dropped either way; the run costs a cent
-    more.
+    per request, and the token ceiling binds before ``--chunk-size 80`` does: on the
+    2026-09-22 catalogue the travel side planned 4 chunks rather than the 3 the plan's
+    arithmetic predicted, and the lifestyle side 17 rather than 12. Nothing is dropped
+    either way; the run costs a cent more.
+
+    The chunk counts themselves are not pinned: they follow the number of published
+    articles, so pinning them failed the first content batch that took the lifestyle
+    corpus past 960 (2026-10-03). What is pinned is the measured cost per option and the
+    finding that the token ceiling, not the chunk size, decides how many requests a
+    proposal costs.
     """
     proposal = Proposal("p.json", None, "首爾機場快線搭乘攻略", "票價、班次與轉乘一次說清楚。")
     production = Settings()
-    for kinds, per_option, chunk_size_only, real in (
-        (("howto", "intel"), 186, 3, 4),
-        (("life",), 158, 12, 17),
-    ):
+    for kinds, per_option in ((("howto", "intel"), 186), (("life",), 158)):
         candidates, _ = jev_review.load_candidates(default_directory(), kinds=kinds)
         options = [estimate_tokens({item.slug: item.option()}) for item in candidates]
         mean_option = sum(options) / len(options)
         assert abs(mean_option - per_option) <= 6, "the corpus still costs what was measured"
 
-        count = len(candidates)
-        assert -(-count // 80) == chunk_size_only, "what --chunk-size 80 alone would give"
+        chunk_size_only = -(-len(candidates) // 80)
         chunks = plan_chunks(
             proposal,
             jev_review.rank_candidates(proposal, candidates),
             chunk_size=80,
             max_state_tokens=production.jev_max_state_tokens,
         )
-        assert len(chunks) == real, "what the request really costs, both sides counted"
-        assert sum(len(chunk) for chunk in chunks) == count
+        assert len(chunks) > chunk_size_only, (
+            "the token ceiling binds before --chunk-size 80: a candidate costs its option "
+            "and its state entry, so a request holds fewer than 80 of them"
+        )
+        assert sum(len(chunk) for chunk in chunks) == len(candidates), "nothing is dropped"
 
 
 # --- 10-11. overlap ---------------------------------------------------------------------------

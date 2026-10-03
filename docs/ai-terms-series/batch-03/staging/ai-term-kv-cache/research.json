@@ -1,0 +1,166 @@
+{
+  "slug": "ai-term-kv-cache",
+  "status": "verified",
+  "checked_on": "2026-10-03",
+  "sources": [
+    {
+      "url": "https://arxiv.org/abs/1706.03762",
+      "title": "Vaswani 等：Attention Is All You Need（arXiv:1706.03762）",
+      "access": "curl abs 頁 + PDF 全文（pdftotext）",
+      "claims": [
+        "注意力以 query 比對 key、加權混合 value",
+        "解碼器自迴歸，自注意力以遮罩只看自己與之前的位置"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2211.05102",
+      "title": "Pope 等：Efficiently Scaling Transformer Inference（arXiv:2211.05102）",
+      "access": "curl abs 頁 + PDF 全文（pdftotext）",
+      "claims": [
+        "KV 快取＝每層注意力的 key 與 value 張量，整段解碼期間存在記憶體",
+        "權重整批共用、KV 快取每條序列各一份（§2 Compute costs）",
+        "MQA 讓 KV 快取縮為頭數分之一",
+        "大批次、長上下文下每產生一個 token 都要載入 KV 快取，運算核心幾乎閒置（500B+ 多頭注意力模型的設定）",
+        "記憶體搬運時間（memory time）：小批次與短序列以讀權重為主，大批次與長序列以讀 KV 快取為主（§2 Memory costs）",
+        "批次小則每個 token 成本較高",
+        "注意力的推論成本隨輸入序列長度平方成長（§1；正文註明這是整段輸入，和 HF「每步線性」範圍不同）"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2309.06180",
+      "title": "Kwon 等：Efficient Memory Management for Large Language Model Serving with PagedAttention（SOSP 2023）",
+      "access": "curl abs 頁 + PDF 全文（pdftotext）",
+      "claims": [
+        "讀入提示時算出所有 key、value，之後每步只算新 token 的（§2.2）",
+        "單 token 快取量的估算因素：key 與 value、隱藏維度、層數、位元組數（§3）",
+        "PagedAttention 以固定大小區塊、按需配置、非連續存放 KV 快取，靈感來自分頁",
+        "既有系統預先保留連續空間；Fig. 2 中作者重做的三種 Orca 配置（Max、Pow2、Oracle，皆預先保留空間）只有 20.4%–38.2% 存放實際 token 狀態（§6.2 實驗）",
+        "論文總結（摘要、§1、§10）：相同延遲水準下吞吐量為既有系統的 2–4 倍；§6.2 的個別比較範圍更大（對 Orca (Oracle) 1.7–2.7×、Orca (Max) 2.7–8×、FasterTransformer 最高 22×），正文只寫總結並標明是總結",
+        "批次大小受 KV 快取空間限制（§3 開頭）",
+        "一個 token 的 KV 快取取決於前面所有 token（§2.2、§4）",
+        "請求結束後 KV 區塊可釋放（§4.2）"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1911.02150",
+      "title": "Shazeer：Fast Transformer Decoding: One Write-Head is All You Need（arXiv:1911.02150）",
+      "access": "curl abs 頁 + PDF 全文（pdftotext）",
+      "claims": [
+        "MQA：所有頭共用一組 key 與 value，降低逐步解碼的記憶體頻寬需求（摘要）",
+        "品質與基準相近、多數指標略差：Table 1 dev ln(PPL) 1.439 對 1.424、dev BLEU 26.5 對 26.7、test greedy 27.5 對 27.7 略差，test beam-4 為 28.5 對 28.4 反而最高；Table 3 LM dev-PPL 30.2 對 29.9 略差（§4.2）"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2305.13245",
+      "title": "Ainslie 等：GQA（EMNLP 2023，arXiv:2305.13245）",
+      "access": "curl abs 頁 + PDF 全文（pdftotext）",
+      "claims": [
+        "GQA 把 query 頭分組、每組共用一組 key 與 value，介於 MHA 與 MQA 之間",
+        "以約原預訓練 5% 的計算量改訓既有多頭模型"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2402.02750",
+      "title": "Liu 等：KIVI: A Tuning-Free Asymmetric 2bit Quantization for KV Cache（ICML 2024）",
+      "access": "curl abs 頁（citation_abstract）+ PDF 全文（pdftotext，查核者補讀）",
+      "claims": [
+        "量化減少 KV 快取的位元組數",
+        "2 位元 KV 快取量化在所測模型上品質幾乎不變",
+        "最近一段 token 的 key 與 value 留在完整精度；論文說這段滑動視窗對 GSM8K 等難題很關鍵（第 3.3、4.2 節）"
+      ]
+    },
+    {
+      "url": "https://huggingface.co/docs/transformers/en/cache_explanation",
+      "title": "Hugging Face Transformers：How caching works",
+      "access": "curl 全文 HTML",
+      "claims": [
+        "因果遮罩讓過去的 K、V 不變而可快取；只需最後一個 token 的 query；逐層快取",
+        "不快取每步成本隨長度平方、快取後線性，記憶體線性增加",
+        "快取只用於推論",
+        "快取張量形狀 [batch_size, num_heads, seq_len, head_dim]"
+      ]
+    },
+    {
+      "url": "https://huggingface.co/docs/transformers/en/kv_cache",
+      "title": "Hugging Face Transformers：Cache strategies",
+      "access": "curl 全文 HTML",
+      "claims": [
+        "滑動視窗／分塊注意力的層快取長到視窗大小即停止",
+        "QuantizedCache；上下文短且記憶體足夠時量化可能拖慢延遲"
+      ]
+    },
+    {
+      "url": "https://docs.vllm.ai/en/latest/features/automatic_prefix_caching/",
+      "title": "vLLM：Automatic Prefix Caching",
+      "access": "docs.vllm.ai 對 curl 仍回 429（Cloudflare 挑戰頁）；2026-10-03 第二輪以 WebFetch 讀到即時頁，並與官方 repo main 分支的文件原始檔（raw.githubusercontent.com）逐段對照一致；verify-1 另讀過 Wayback 快照，第二輪 Wayback 經代理連線被重設，未重讀",
+      "claims": [
+        "字首快取重用既有請求的 KV 快取",
+        "只縮短 prefill，不縮短 decode",
+        "多輪對話時，每輪都要重新處理整段對話紀錄，APC 讓後續輪次重用（Example workloads 段；支撐 callout「下一輪對話接得上是因為對話紀錄又被放進輸入」）"
+      ]
+    },
+    {
+      "url": "https://docs.vllm.ai/en/latest/design/prefix_caching/",
+      "title": "vLLM：Prefix Caching 設計說明",
+      "access": "docs.vllm.ai 對 curl 仍回 429（Cloudflare 挑戰頁）；2026-10-03 第二輪以 WebFetch 讀到即時頁，並與官方 repo main 分支的文件原始檔（raw.githubusercontent.com）逐段對照一致；verify-1 另讀過 Wayback 快照，第二輪 Wayback 經代理連線被重設，未重讀",
+      "claims": [
+        "字首快取以區塊雜湊辨識，只快取完整區塊",
+        "需要新區塊時以 LRU 淘汰已快取的區塊，不是依時間到期"
+      ]
+    },
+    {
+      "url": "https://docs.vllm.ai/en/latest/features/quantization/quantized_kvcache/",
+      "title": "vLLM：Quantized KV Cache",
+      "access": "docs.vllm.ai 對 curl 仍回 429（Cloudflare 挑戰頁）；2026-10-03 第二輪以 WebFetch 讀到即時頁，並與官方 repo main 分支的文件原始檔（raw.githubusercontent.com）逐段對照一致；verify-1 另讀過 Wayback 快照，第二輪 Wayback 經代理連線被重設，未重讀",
+      "claims": [
+        "vLLM 支援 FP8 KV 快取量化以減少記憶體"
+      ]
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/prompt-caching",
+      "title": "OpenAI：Prompt caching",
+      "access": "curl 全文 HTML（原網址 platform.openai.com/docs/guides/prompt-caching 301 轉到此）",
+      "claims": [
+        "提示詞快取保存可重用字首的 key-value 狀態，存的是 KV 張量而非 token 本身",
+        "整段字首須相符",
+        "輸入依未快取、已快取、快取寫入分別計價",
+        "快取條目依存活時間設定到期（Cache lifetime 段）"
+      ]
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
+      "title": "Anthropic：Prompt caching",
+      "access": "curl 全文 HTML",
+      "claims": [
+        "KV 快取表示與雜湊只放在記憶體、不做靜態儲存",
+        "cache read tokens 另有計價",
+        "快取條目有最短存活時間（預設 5 分鐘，另有 1 小時），之後刪除"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/machine-learning/glossary?hl=zh-tw",
+      "title": "Google：機器學習詞彙表（繁體中文版）",
+      "access": "curl 全文 HTML",
+      "claims": [
+        "沒有 cache 的獨立詞條；離線推論條目內文把 caching (saving) 寫作「快取 (儲存)」（與英文版同條目對照）；inference 詞條譯為推論"
+      ]
+    },
+    {
+      "url": "https://terms.naer.edu.tw/search/?query_term=cache&query_field=title&query_op=&match_type=phrase",
+      "title": "國家教育研究院樂詞網：cache 精確檢索",
+      "access": "curl 搜尋結果 HTML",
+      "claims": [
+        "資訊名詞譯為「快取（記憶體）」，電子計算機名詞為「高速緩衝記憶體；快取」"
+      ]
+    }
+  ],
+  "aliases": [
+    "KV cache",
+    "key-value cache",
+    "鍵值快取",
+    "KV 緩存"
+  ],
+  "existing_overlap": "ai-term-inference 已提到 prefill 時存下 KV 快取、ai-term-attention-mechanism 末段一句帶過 KV 快取、ai-term-prompt-caching 談跨請求的字首重用。本篇只講 KV 快取本身：存了什麼、為何能存、記憶體成長因素、三種減量做法，並以表格分清它與提示詞快取；prefill/decode 細節與提示詞快取的命中條件都連回既有篇章，不重寫。",
+  "running_text_characters": 2596,
+  "notes": "四步示例（台南／早餐／推薦 → 可以吃牛肉湯）、圖解與 hero 為原創教學設計，未實測。依指派不寫任何模型的 KV 快取大小或價格；論文中特定模型的快取量與 OpenAI 頁的型號費率都只讀未寫。字數以 app.guides.pack_ingest._body_length 實算。 查核者（verify-1）2026-10-03：補寫 vLLM 論文 20.4%–38.2% 與 2–4 倍的實驗設定、KIVI 保留完整精度的近期 token、表格提示詞快取的淘汰方式（逾時或空間不足）、圖說第 1 步一次存 3 組；OpenAI 來源換成轉址後網址，新增 vLLM Prefix Caching 設計文件。字數以 _body_length 實算 2,662。 查核者（verify-2）2026-10-03：vLLM 2–4 倍改為論文對既有系統的總結（§6.2 對 FasterTransformer 最高 22 倍）並精簡實驗設定；Shazeer 品質改為「與原本相近、多數指標略差」；Pope 讀權重為主限定在記憶體搬運時間；Pope 平方成長註明是整段輸入、與每步線性不同；Google 詞彙表改寫為內文用法。docs.vllm.ai 三頁以 WebFetch 讀到即時頁。字數以 _body_length 實算 2,596。"
+}

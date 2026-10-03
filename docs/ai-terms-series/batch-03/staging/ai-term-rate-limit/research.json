@@ -1,0 +1,187 @@
+{
+  "slug": "ai-term-rate-limit",
+  "status": "verified",
+  "checked_on": "2026-10-03",
+  "sources": [
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc6585",
+      "title": "IETF RFC 6585: Additional HTTP Status Codes",
+      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text); read rfc6585.txt",
+      "claims": [
+        "429 定義：一段時間內送出太多請求",
+        "回應 SHOULD 說明原因、MAY 附 Retry-After",
+        "不定義伺服器怎麼辨識使用者、怎麼計數",
+        "發布於 2012 年 4 月"
+      ]
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9110",
+      "title": "IETF RFC 9110: HTTP Semantics",
+      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text); read rfc9110.txt",
+      "claims": [
+        "§10.2.3 Retry-After：HTTP 日期或秒數，範例 120 為 2 分鐘",
+        "§10.2.3/§15.6.4 Retry-After 可搭配 503",
+        "§9.2.2 非冪等請求除非能確認語意冪等或原請求未生效，否則不應自動重試"
+      ]
+    },
+    {
+      "url": "https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/",
+      "title": "AWS Architecture Blog: Exponential Backoff And Jitter (Marc Brooker, 2015)",
+      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text); formulas are images, figure-3/6/10/11 PNG viewed",
+      "claims": [
+        "只有指數退避，重試仍成群出現；加抖動後分散成接近固定速率",
+        "樂觀並行控制模擬，100 個客戶端競爭時呼叫數減少一半以上",
+        "Full Jitter 在 0 與 min(cap, base*2^attempt) 之間隨機取值（示例流程依此設計）"
+      ]
+    },
+    {
+      "url": "https://builder.aws.com/content/3EumjoZascWd1oZiEgL8ORlv3qE/timeouts-retries-and-backoff-with-jitter",
+      "title": "Amazon Builders' Library: Timeouts, retries, and backoff with jitter",
+      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text); aws.amazon.com/builders-library/... redirects here; without an Accept header it mostly returns a 3,849-byte JS shell (200); on 2026-10-03 verify-2 added -H 'Accept: text/html,application/xhtml+xml' and got the full server-rendered page (125,965 bytes) on 3 of 6 tries and read it; Wayback CDX unreachable from this environment (connection reset)",
+      "claims": [
+        "五層呼叫、每層 3 次嘗試，最底層（資料庫）負載放大 243 倍，建議只在一處重試",
+        "多台機器的定時請求可能在每分鐘頭幾秒或午夜過後幾秒撞在一起（原文 can line up），建議替定期工作加抖動"
+      ]
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/rate-limits",
+      "title": "OpenAI API guide: Rate limits",
+      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text); platform.openai.com path redirects here",
+      "claims": [
+        "RPM、RPD、TPM、TPD、IPM，任一項先到即觸發",
+        "限制在組織與專案層級，不是使用者層級",
+        "Retry-After 視為最少等待時間，再加小的隨機延遲",
+        "官方 SDK 自動重試部分 429 與 503；自管重試時關掉或算進上限",
+        "失敗請求也計入每分鐘限制",
+        "slow_down 即使在 RPM/TPM 內也可能發生，需逐步加量",
+        "計入限制取 max_tokens 與依字元數估計 token 數的較大者",
+        "Batch API 不影響同步請求限制"
+      ]
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/error-codes",
+      "title": "OpenAI API guide: Error codes",
+      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text)",
+      "claims": [
+        "429 也用於預付額度用完、組織／專案花費上限、組織使用上限",
+        "重試帳務、花費、配額類錯誤不會恢復存取",
+        "帳務類錯誤的 error.type 仍可能是 insufficient_quota"
+      ]
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/api/rate-limits",
+      "title": "Anthropic docs: Rate limits",
+      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text); docs.anthropic.com redirects here",
+      "claims": [
+        "兩類限制：花費上限與速率限制",
+        "組織層級，可設工作區上限",
+        "RPM、ITPM、OTPM；超過回 429 並附 retry-after",
+        "token bucket 演算法，持續補回而非固定間隔重設",
+        "每分鐘上限可能在更短區間執行",
+        "大多數模型快取讀取 token 不計入 ITPM",
+        "max_tokens 不計入 OTPM",
+        "方案等級的每月花費上限用完回 429、不附 retry-after，以 error_code 分辨",
+        "Message Batches API 有獨立限制",
+        "自設的較低花費上限（組織或工作區）用完回 400 invalid_request_error"
+      ]
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/api/errors",
+      "title": "Anthropic docs: Errors",
+      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text)",
+      "claims": [
+        "429 rate_limit_error 涵蓋速率限制與每月花費上限",
+        "加速限制：用量急升可能回 429，需逐步加量",
+        "400 也用於自設花費上限用完；429 涵蓋速率限制與方案等級的每月花費上限"
+      ]
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/build-with-claude/working-with-messages",
+      "title": "Anthropic docs: Working with the Messages API",
+      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text)",
+      "claims": [
+        "Messages API 無狀態，每次送完整對話歷史"
+      ]
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/build-with-claude/context-windows",
+      "title": "Anthropic docs: Context windows",
+      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text)",
+      "claims": [
+        "輸入超過上下文視窗回 400 invalid_request_error"
+      ]
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
+      "title": "Google Gemini API docs: Rate limits",
+      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text)",
+      "claims": [
+        "RPM、TPM（標為 input）、RPD",
+        "套在專案而非 API 金鑰",
+        "RPD 配額在太平洋時間午夜重設",
+        "Batch API 有獨立限制",
+        "依花費計算的速率限制以短的滾動時間窗計算，超過回 429 RESOURCE_EXHAUSTED，建議稍等再試"
+      ]
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/rate-limits?hl=zh-tw",
+      "title": "Google Gemini API docs: 頻率限制（繁中版）",
+      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text); term counts in body text; page header says it is AI-translated",
+      "claims": [
+        "繁中標題「頻率限制」，內文「速率限制」20 次、「頻率限制」11 次（機器翻譯，只當用字參考）"
+      ]
+    },
+    {
+      "url": "https://platform.claude.com/docs/zh-TW/api/rate-limits",
+      "title": "Anthropic docs: 速率限制（繁中版）",
+      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text); term counts in body text; added in verify-2",
+      "claims": [
+        "繁中標題與內文用「速率限制」90 次、「頻率限制」0 次（譯名依據）",
+        "token bucket 譯作「權杖桶」"
+      ]
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/api-errors",
+      "title": "Google Gemini API docs: API errors (Interactions API error codes)",
+      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text); page describes itself as the reference for all Interactions API error codes, so the body scopes the claim to the Interactions API",
+      "claims": [
+        "Interactions API 錯誤表的 429 三個代碼：rate_limit_exceeded、too_many_requests 建議退避重試；quota_exceeded（每日配額）建議等重設或申請提高"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/zh-tw/azure/foundry/openai/how-to/quota",
+      "title": "Microsoft Learn: 管理 Microsoft Foundry 模型中的 Azure OpenAI 配額（繁中版）",
+      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text); compared with /en-us/ version",
+      "claims": [
+        "配額：依區域、模型、部署類型以 TPM 分配給訂閱，各部署再分配，部署的 TPM 即其速率限制",
+        "繁中用「速率限制」約 38 次（譯名依據；譯文有機器翻譯痕跡）"
+      ]
+    },
+    {
+      "url": "https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work",
+      "title": "Claude Help Center: How do usage and length limits work?",
+      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text)",
+      "claims": [
+        "訂閱方案分使用量上限與長度上限（上下文視窗）",
+        "使用量上限用完可等重設、升級方案或購買 usage credits"
+      ]
+    },
+    {
+      "url": "https://support.claude.com/en/articles/9876003-i-have-a-paid-claude-subscription-pro-max-team-or-enterprise-plans-why-do-i-have-to-pay-separately-to-use-the-claude-api-and-console",
+      "title": "Claude Help Center: paid subscription does not include the Claude API and Console",
+      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text)",
+      "claims": [
+        "付費訂閱不包含 API 與 Console"
+      ]
+    }
+  ],
+  "aliases": [
+    "rate limiting",
+    "頻率限制",
+    "限流",
+    "429 Too Many Requests"
+  ],
+  "existing_overlap": "gemini-api-cost-errors-guide 是 Gemini API 的操作教學（查用量頁、錯誤分類、有限重試）；這裡只寫跨服務的概念與機制，第一段即連過去，不重寫步驟。ai-term-prompt-caching、ai-term-agent-loop、ai-term-token 各以一句連結帶過。",
+  "running_text_characters": 2684,
+  "notes": "依指派不寫任何服務、方案或等級的限制數字，也不寫 SDK 預設重試次數；示例流程的數字標為示例（未實測）。未寫繞過限制的方法。IETF RateLimit 標頭草案（draft-ietf-httpapi-ratelimit-headers，2026-05 版仍為草案）讀過但為控制字數未收。SVG 為手繪向量圖。 獨立查核 verify-1（2026-10-03）：重開全部來源皆 200；修正 token bucket 描述、Anthropic 花費上限（方案等級回 429、自設回 400）、補 Google 依花費計算的速率限制可稍等再試、節流清單改「組織或專案」；來源未替換，明細見 verify-1.md。 獨立查核 verify-2（2026-10-03）：重開全部來源皆 200，verify-1 的修改都成立；Google 每日配額代碼限定為 Interactions API 錯誤表、AWS 定時工作「常」改「可能」、聊天方案上限補升級方案與加購用量；新增 Anthropic 繁中頁為譯名依據；精簡 AWS 模擬設定與 429 段落，明細見 verify-2.md。"
+}

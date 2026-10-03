@@ -1,0 +1,360 @@
+{
+  "batch": "ai-terms-series batch-03",
+  "created_on": "2026-10-03",
+  "locale": "zh-TW",
+  "common": {
+    "kind": "life",
+    "topics": [
+      "ai",
+      "tutorial",
+      "ai-terms"
+    ],
+    "destination_id": null,
+    "valid_until": null,
+    "featured": false,
+    "display_order": 100,
+    "index_slug": "ai-terms-index"
+  },
+  "index_groups": {
+    "foundation": "模型與 AI 基礎",
+    "context": "提示、token 與上下文",
+    "agents": "代理、工具與互通協定",
+    "retrieval": "搜尋、文件與知識",
+    "training": "訓練、調整與推論資源",
+    "evaluation": "評測、安全與人工介入",
+    "multimodal": "影像、語音、開放模型與來源"
+  },
+  "terms": [
+    {
+      "slug": "ai-term-reinforcement-learning",
+      "name_zh": "強化學習",
+      "name_en": "Reinforcement Learning",
+      "index_group": "training",
+      "title_draft": "強化學習（Reinforcement Learning）是什麼：靠獎勵一步步試出做法",
+      "angle": "代理在環境裡行動、拿到獎勵訊號、調整策略（policy）的學習方式。和監督式學習（有標準答案）分開講；說明狀態、動作、獎勵、策略、回報（return）與探索／利用的取捨；再講它在語言模型的兩個用法：RLHF 的偏好獎勵，以及推理模型用可自動驗證答案的獎勵訓練。",
+      "must_cover": [
+        "最小的示例：格子世界或簡化遊戲，標明示例",
+        "和監督式、非監督式學習的差別表",
+        "探索與利用",
+        "在語言模型裡的用法：RLHF、可驗證獎勵（只寫論文明寫的）",
+        "獎勵設計不好會被鑽漏洞：一段並連到獎勵駭客"
+      ],
+      "must_not": [
+        "不寫「AI 自己學會了思考」這類擬人說法",
+        "不寫模型名與分數"
+      ],
+      "suggested_primary_sources": [
+        "Sutton & Barto《Reinforcement Learning: An Introduction》第二版（作者官網全文）",
+        "Mnih et al. 2015 Nature DQN",
+        "Silver et al. 2016 Nature AlphaGo",
+        "DeepSeek-AI 2025 DeepSeek-R1（arXiv:2501.12948 或 Nature 版）"
+      ],
+      "links": [
+        "ai-term-rlhf",
+        "ai-term-machine-learning",
+        "ai-term-reward-hacking",
+        "ai-reasoning-models-explained",
+        "ai-terms-index"
+      ]
+    },
+    {
+      "slug": "ai-term-kv-cache",
+      "name_zh": "KV 快取",
+      "name_en": "KV Cache",
+      "index_group": "training",
+      "title_draft": "KV 快取（KV Cache）是什麼：為什麼對話越長越吃記憶體",
+      "angle": "語言模型逐 token 產生時，把前面每個位置算好的 key 與 value 存起來，下一步只算新 token。說明它省的是什麼計算、為什麼記憶體會隨上下文長度、層數、注意力頭數成長，以及常見的減量做法（分頁管理、共用 key／value 的注意力變體、量化），最後和提示詞快取分清楚。",
+      "must_cover": [
+        "不用公式也能懂的示例：第 1 步到第 4 步各算了什麼、存了什麼（標明示例）",
+        "記憶體成長的因素（只寫因素與比例關係，不寫特定模型的數字）",
+        "PagedAttention、MQA／GQA、KV 量化各一句說省在哪",
+        "和提示詞快取的關係：KV 快取是單次請求內的機制；跨請求重用相同前綴的計算才是提示詞快取，後者常建立在前者之上（只寫官方或論文支持的說法）",
+        "為什麼長上下文的費用與速度不只是 token 數"
+      ],
+      "must_not": [
+        "不寫任何模型的 KV 快取大小或價格",
+        "不把 KV 快取寫成「記憶」或「學習」"
+      ],
+      "suggested_primary_sources": [
+        "Vaswani et al. 2017 arXiv:1706.03762",
+        "Pope et al. 2022 arXiv:2211.05102",
+        "Kwon et al. 2023 vLLM arXiv:2309.06180",
+        "Shazeer 2019 MQA arXiv:1911.02150",
+        "Ainslie et al. 2023 GQA arXiv:2305.13245",
+        "Hugging Face Transformers 的 KV cache 文件"
+      ],
+      "links": [
+        "ai-term-inference",
+        "ai-term-prompt-caching",
+        "ai-term-attention-mechanism",
+        "ai-context-window-explained",
+        "ai-terms-index"
+      ]
+    },
+    {
+      "slug": "ai-term-overfitting",
+      "name_zh": "過擬合",
+      "name_en": "Overfitting",
+      "index_group": "foundation",
+      "title_draft": "過擬合（Overfitting）是什麼：考古題全對、新題卻答錯",
+      "angle": "模型把訓練資料裡的雜訊或特例也學進去，訓練表現好、沒看過的資料表現差。說明訓練／驗證／測試集的分工、欠擬合、常見對策（更多資料、正則化、dropout、提早停止），以及大型模型的兩個相關議題：深度網路能記住隨機標籤的研究、基準測試題目外洩造成的「看起來會」。",
+      "must_cover": [
+        "訓練誤差與驗證誤差兩條曲線的示例（標明示例，數字自己編且寫明）",
+        "過擬合／剛好／欠擬合對照表",
+        "對策各一句說在做什麼",
+        "Zhang et al. 2017 的結論與它沒說的事",
+        "題目外洩（資料污染）與過擬合的關係，連到基準測試"
+      ],
+      "must_not": [
+        "不寫「模型越大越容易過擬合」這種沒有限定的通則",
+        "雙下降（double descent）只能照論文設定描述，不推廣"
+      ],
+      "suggested_primary_sources": [
+        "Google Machine Learning Crash Course 的 Overfitting 單元",
+        "Goodfellow, Bengio, Courville《Deep Learning》第 5 章（作者官網全文）",
+        "Srivastava et al. 2014 Dropout（JMLR）",
+        "Zhang et al. 2017 Understanding deep learning requires rethinking generalization arXiv:1611.03530",
+        "Nakkiran et al. 2019 Deep Double Descent arXiv:1912.02292"
+      ],
+      "links": [
+        "ai-term-machine-learning",
+        "ai-term-neural-network",
+        "ai-term-benchmark",
+        "ai-term-fine-tuning",
+        "ai-terms-index"
+      ]
+    },
+    {
+      "slug": "ai-term-interpretability",
+      "name_zh": "可解釋性",
+      "name_en": "Interpretability",
+      "index_group": "evaluation",
+      "title_draft": "可解釋性（Interpretability）是什麼：看懂模型為什麼這樣回答",
+      "angle": "可解釋性是讓人理解模型輸出從何而來的研究與方法，定義有分歧：interpretability 與 explainability 是否同義、解釋給誰看、要多忠實。分三類講：天生可讀的模型、事後歸因（特徵重要度、SHAP 等）、機制可解釋性（找出模型內部的特徵與電路）。重點是解釋本身也可能不忠實。",
+      "must_cover": [
+        "定義分歧（Doshi-Velez & Kim、Lipton 兩邊都寫）",
+        "三類方法對照表",
+        "機制可解釋性的代表研究只寫論文自己的設定與結論",
+        "為什麼注意力權重與思維鏈都不能直接當解釋（連到兩篇）",
+        "讀者怎麼看「這個 AI 可以解釋它的決定」這種宣稱：解釋給誰、用什麼方法、有沒有驗證忠實度"
+      ],
+      "must_not": [
+        "不寫「某公司已經看懂模型」",
+        "不把可解釋性寫成已解決"
+      ],
+      "suggested_primary_sources": [
+        "Doshi-Velez & Kim 2017 arXiv:1702.08608",
+        "Lipton 2016 The Mythos of Model Interpretability arXiv:1606.03490",
+        "Lundberg & Lee 2017 SHAP arXiv:1705.07874",
+        "Anthropic 2024 Scaling Monosemanticity（transformer-circuits.pub）",
+        "NIST IR 8312 Four Principles of Explainable AI"
+      ],
+      "links": [
+        "ai-term-attention-mechanism",
+        "ai-term-chain-of-thought",
+        "ai-term-ai-alignment",
+        "ai-term-neural-network",
+        "ai-terms-index"
+      ]
+    },
+    {
+      "slug": "ai-term-data-poisoning",
+      "name_zh": "資料投毒",
+      "name_en": "Data Poisoning",
+      "index_group": "evaluation",
+      "title_draft": "資料投毒（Data Poisoning）是什麼：在訓練資料裡埋下後門",
+      "angle": "攻擊者把刻意設計的資料混進訓練、微調或檢索用的資料，讓模型在特定條件下出錯或照攻擊者的意思做（後門）。和提示詞注入（在使用當下塞指令）分開講，但說明 RAG 的檢索資料被汙染時兩者界線變模糊。用 NIST 的對抗式機器學習分類定位它。",
+      "must_cover": [
+        "投毒的位置：預訓練、微調、檢索資料、合成資料",
+        "後門的白話示例（觸發字詞→異常行為，標明示例）",
+        "研究結果只寫各論文自己的設定（網路規模資料集投毒可行性、少量樣本即可植入後門的研究）",
+        "和提示詞注入的對照表",
+        "防禦：資料來源紀錄、過濾、評測與紅隊，各自能做到與做不到什麼"
+      ],
+      "must_not": [
+        "不提供可操作的投毒步驟",
+        "不寫「任何模型都已被投毒」"
+      ],
+      "suggested_primary_sources": [
+        "NIST AI 100-2 Adversarial Machine Learning: A Taxonomy and Terminology（最新版）",
+        "Carlini et al. 2023 Poisoning Web-Scale Training Datasets is Practical arXiv:2302.10149",
+        "Souly et al. 2025（Anthropic、UK AISI、Turing Institute）少量樣本投毒研究 arXiv:2510.07192",
+        "OWASP Top 10 for LLM Applications 2025 的 Data and Model Poisoning 條目"
+      ],
+      "links": [
+        "ai-term-prompt-injection",
+        "ai-term-pretraining",
+        "ai-term-retrieval-augmented-generation",
+        "ai-term-red-teaming",
+        "ai-terms-index"
+      ]
+    },
+    {
+      "slug": "ai-term-world-model",
+      "name_zh": "世界模型",
+      "name_en": "World Model",
+      "index_group": "foundation",
+      "title_draft": "世界模型（World Model）是什麼：讓 AI 預測「接下來會怎樣」",
+      "angle": "這個詞至少有三種用法，要分清楚：強化學習裡學到的環境預測模型（Ha & Schmidhuber、Dreamer）；LeCun 主張的、以預測抽象表示為核心的架構路線；以及能即時生成可互動環境的生成式模型。另一個相關爭論是大型語言模型內部是否形成了世界模型（Othello-GPT 等研究）。",
+      "must_cover": [
+        "三種用法辨識表",
+        "強化學習裡的世界模型怎麼用：在想像中規劃",
+        "生成式互動環境：只寫官方公開的能力描述，不寫未公開的規格",
+        "LLM 有沒有世界模型：兩邊研究都寫",
+        "讀新聞時先問：說的是哪一種、怎麼驗證"
+      ],
+      "must_not": [
+        "不預測 AGI 或時程",
+        "不把示範影片當成能力證明"
+      ],
+      "suggested_primary_sources": [
+        "Ha & Schmidhuber 2018 World Models arXiv:1803.10122",
+        "Hafner et al. Dreamer（arXiv:1912.01603 或後續版本）",
+        "LeCun 2022 A Path Towards Autonomous Machine Intelligence（OpenReview）",
+        "Google DeepMind Genie 系列官方文章",
+        "Li et al. 2023 Emergent World Representations（Othello-GPT）arXiv:2210.13382"
+      ],
+      "links": [
+        "ai-term-reinforcement-learning",
+        "ai-term-text-to-video",
+        "ai-term-agi",
+        "ai-term-multimodal-ai",
+        "ai-terms-index"
+      ]
+    },
+    {
+      "slug": "ai-term-vision-language-model",
+      "name_zh": "視覺語言模型",
+      "name_en": "Vision-Language Model",
+      "index_group": "multimodal",
+      "title_draft": "視覺語言模型（VLM）是什麼：讓 AI 看懂圖片再用文字回答",
+      "angle": "能同時接收圖片與文字、輸出文字的模型。說明常見結構（視覺編碼器、把影像特徵接到語言模型的連接層、語言模型），以及 CLIP、Flamingo、LLaVA 這幾個里程碑各做了什麼；和多模態 AI（更廣）、文字生圖（方向相反）分清楚；最後講它常見的錯：數數、空間關係、看圖講出圖裡沒有的東西。",
+      "must_cover": [
+        "結構示意（三段）",
+        "和多模態、文字生圖的對照表",
+        "里程碑只寫論文自己的貢獻",
+        "物件幻覺的研究（POPE 等）只寫設定與結論",
+        "示例：讓它讀一張收據或地圖時怎麼核對（標明示例，未實測）"
+      ],
+      "must_not": [
+        "不寫產品支援哪些格式、價格或排名",
+        "不寫「看圖能力已達人類水準」"
+      ],
+      "suggested_primary_sources": [
+        "Radford et al. 2021 CLIP arXiv:2103.00020",
+        "Alayrac et al. 2022 Flamingo arXiv:2204.14198",
+        "Liu et al. 2023 LLaVA arXiv:2304.08485",
+        "Li et al. 2023 POPE（Evaluating Object Hallucination）arXiv:2305.10355"
+      ],
+      "links": [
+        "ai-term-multimodal-ai",
+        "ai-term-text-to-image",
+        "ai-hallucination-fact-check",
+        "ai-term-transformer",
+        "ai-terms-index"
+      ]
+    },
+    {
+      "slug": "ai-term-reward-hacking",
+      "name_zh": "獎勵駭客",
+      "name_en": "Reward Hacking",
+      "index_group": "evaluation",
+      "title_draft": "獎勵駭客（Reward Hacking）是什麼：AI 拿到高分，卻沒做到你要的事",
+      "angle": "系統找到讓獎勵或評分變高、卻沒達成設計者真正目的的做法。說明它和規格鑽漏洞（specification gaming）、古德哈特定律的關係；在強化學習、RLHF（獎勵模型被過度最佳化）、寫程式的代理（為了讓測試通過而改測試或寫死答案）各給一個有來源的例子；最後講偵測與緩解，以及監看推理過程的研究與它的限制。中文譯名不統一，第一段說明並寫出本系列採用的譯名與理由。",
+      "must_cover": [
+        "中文譯名說明（獎勵駭客、獎勵投機等，寫出各自出處或使用情況）",
+        "三個情境各一例（都要有一手來源）",
+        "Gao et al. 2022 獎勵模型過度最佳化的結論與設定",
+        "偵測與緩解：更好的評測、多種訊號、人工抽查、推理監看，各自的限制",
+        "和對齊、迎合的關係"
+      ],
+      "must_not": [
+        "不寫「AI 有意作弊」這類擬人動機",
+        "不寫模型名與分數"
+      ],
+      "suggested_primary_sources": [
+        "Amodei et al. 2016 Concrete Problems in AI Safety arXiv:1606.06565",
+        "Google DeepMind 2020 Specification gaming 官方文章",
+        "Gao et al. 2022 Scaling Laws for Reward Model Overoptimization arXiv:2210.10760",
+        "OpenAI 2025 Detecting misbehavior in frontier reasoning models（官方文章或 arXiv:2503.11926）"
+      ],
+      "links": [
+        "ai-term-ai-alignment",
+        "ai-term-rlhf",
+        "ai-term-reinforcement-learning",
+        "ai-term-sycophancy",
+        "ai-term-evals",
+        "ai-terms-index"
+      ]
+    },
+    {
+      "slug": "ai-term-local-inference",
+      "name_zh": "本機推論",
+      "name_en": "Local Inference",
+      "index_group": "training",
+      "title_draft": "本機推論（Local Inference）是什麼：在自己的裝置上跑模型",
+      "angle": "把模型下載到自己的電腦或手機上計算，而不是送到雲端。重點是分清楚「哪些東西真的留在本機」：權重與計算在本機，但應用程式仍可能傳送遙測、呼叫雲端工具或同步紀錄。說明需要什麼（裝得下權重與 KV 快取的記憶體、量化、加速硬體），和雲端推論的取捨。站上已有實作篇，這篇講概念並連過去，第一段就寫明。",
+      "must_cover": [
+        "本機 vs 雲端推論對照表（隱私、成本結構、速度、維護）",
+        "記憶體需求由什麼決定（權重、量化、KV 快取），不寫特定機型或價格",
+        "作業系統內建的裝置端模型（只寫官方文件寫明的做法）",
+        "資料到底有沒有離開裝置：怎麼檢查（設定、網路、文件）",
+        "示例：在筆電上跑一個小模型整理會議筆記的流程與檢查點（標明示例，未實測）"
+      ],
+      "must_not": [
+        "不寫顯示卡型號、價格或跑分",
+        "不寫「本機就絕對安全」"
+      ],
+      "suggested_primary_sources": [
+        "llama.cpp 官方 README（GitHub）",
+        "Ollama 官方文件（FAQ 或 API 說明）",
+        "Apple 官方文件：Foundation Models framework 或裝置端模型說明",
+        "Microsoft 官方文件：Foundry Local 或 Windows AI 說明",
+        "Google 官方文件：裝置端模型（AI Edge 或 Gemini Nano）"
+      ],
+      "links": [
+        "ai-term-inference",
+        "ai-term-quantization",
+        "ai-term-open-weights",
+        "ai-term-kv-cache",
+        "local-llm-why-and-when",
+        "local-llm-hardware-requirements",
+        "ai-terms-index"
+      ]
+    },
+    {
+      "slug": "ai-term-rate-limit",
+      "name_zh": "速率限制",
+      "name_en": "Rate Limit",
+      "index_group": "training",
+      "title_draft": "速率限制（Rate Limit）是什麼：API 為什麼回你 429",
+      "angle": "服務在一段時間內允許的請求數或 token 數上限。說明常見單位（每分鐘請求數、每分鐘 token 數，有些服務把輸入與輸出分開算）、超過時的 HTTP 429 與 Retry-After、指數退避加隨機抖動的重試做法；和花費上限、配額、上下文視窗、聊天產品的使用量上限分清楚；最後講代理迴圈與批次工作為什麼特別容易撞到。",
+      "must_cover": [
+        "速率限制、配額、花費上限、上下文視窗對照表",
+        "429 與 Retry-After 的規範出處（RFC）",
+        "退避加抖動：示例流程（標明示例）",
+        "各家文件怎麼計算（只寫機制與名詞，不寫任何等級的數字）",
+        "代理迴圈與平行工作的節流設計"
+      ],
+      "must_not": [
+        "不寫任何服務、方案或等級的限制數字",
+        "不寫繞過限制的方法"
+      ],
+      "suggested_primary_sources": [
+        "OpenAI 官方 Rate limits 指南",
+        "Anthropic 官方 Rate limits 文件",
+        "Google Gemini API 官方 Rate limits 文件",
+        "RFC 6585（429 Too Many Requests）",
+        "RFC 9110 的 Retry-After",
+        "AWS Architecture Blog：Exponential Backoff And Jitter"
+      ],
+      "links": [
+        "gemini-api-cost-errors-guide",
+        "ai-term-agent-loop",
+        "ai-term-token",
+        "ai-term-prompt-caching",
+        "ai-terms-index"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "slug": "ai-term-local-inference",
+  "status": "verified",
+  "checked_on": "2026-10-03",
+  "sources": [
+    {
+      "url": "https://github.com/ggml-org/llama.cpp",
+      "title": "llama.cpp：專案說明（README）",
+      "access": "github.com returned 403 through the proxy; read the same README via https://raw.githubusercontent.com/ggml-org/llama.cpp/master/README.md (HTTP 200); re-read 2026-10-03 by the verifier: github.com still 403 (session proxy has GitHub disabled), raw README 200",
+      "claims": [
+        "目標是在各種硬體上做 LLM 推論，locally and in the cloud",
+        "1.5 到 8 位元整數量化，用於加快推論、降低記憶體用量",
+        "CPU＋GPU 混合推論，處理大於顯示記憶體總量的模型（只能部分加速，正文「整份放進顯示記憶體通常最快」以此為據）"
+      ]
+    },
+    {
+      "url": "https://docs.ollama.com/faq",
+      "title": "Ollama：FAQ",
+      "access": "web open (curl -sSL, HTTP 200); cross-checked against https://raw.githubusercontent.com/ollama/ollama/main/docs/faq.mdx (HTTP 200)",
+      "claims": [
+        "本機執行時看不到提示詞或資料；使用雲端託管模型時由其服務處理提示詞與回答",
+        "停用雲端功能：disable_ollama_cloud 或 OLLAMA_NO_CLOUD=1，重新啟動後生效，之後不能用雲端模型與網路搜尋",
+        "預設綁定 127.0.0.1 的 11434 埠，OLLAMA_HOST 改綁定位址",
+        "macOS 與 Windows 自動下載更新",
+        "2K 上下文配 4 個並行請求等於 8K 上下文並配置額外記憶體",
+        "ollama ps 顯示 CPU／GPU 比例（「能整份放進單一 GPU 時通常效能最好」講的是單一 GPU 對多張 GPU，只當旁證）"
+      ]
+    },
+    {
+      "url": "https://huggingface.co/docs/transformers/en/llm_tutorial_optimization",
+      "title": "Hugging Face Transformers：Optimizing LLMs for Speed and Memory",
+      "access": "web open (curl -sSL, HTTP 200, HTML text read)",
+      "claims": [
+        "bfloat16／float16 載入時，X 十億參數約需 2X GB 顯示記憶體",
+        "KV cache 數值個數＝2 × 序列長度 × 注意力頭數 × 每頭維度 × 層數",
+        "使用 KV cache 時記憶體隨 token 數線性增加",
+        "同一份指南：MQA、GQA 讓多個頭共用 key／value，能大幅減少 KV cache 記憶體",
+        "4 位元量化結果實務上常與較高精度不同"
+      ]
+    },
+    {
+      "url": "https://developer.apple.com/documentation/foundationmodels",
+      "title": "Apple Developer：Foundation Models",
+      "access": "HTML page HTTP 200 but JavaScript shell; content read via https://developer.apple.com/tutorials/data/documentation/foundationmodels.json (HTTP 200)",
+      "claims": [
+        "框架提供 Apple Intelligence 的裝置端模型與私密雲端運算模型"
+      ]
+    },
+    {
+      "url": "https://developer.apple.com/documentation/foundationmodels/generating-content-and-performing-tasks-with-foundation-models",
+      "title": "Apple Developer：Generating content and performing tasks with Foundation Models",
+      "access": "read via the matching /tutorials/data/....json endpoint (HTTP 200)",
+      "claims": [
+        "可用性取決於裝置與地區",
+        "開啟 Apple Intelligence 後模型需要時間下載",
+        "資料超出上下文視窗時分段處理再合併"
+      ]
+    },
+    {
+      "url": "https://developer.apple.com/documentation/foundationmodels/systemlanguagemodel",
+      "title": "Apple Developer：SystemLanguageModel",
+      "access": "read via the matching /tutorials/data/....json endpoint (HTTP 200)",
+      "claims": [
+        "裝置端模型隨例行作業系統更新"
+      ]
+    },
+    {
+      "url": "https://developer.apple.com/documentation/foundationmodels/adding-server-side-intelligence-with-private-cloud-compute",
+      "title": "Apple Developer：Adding server-side intelligence with Private Cloud Compute",
+      "access": "read via the matching /tutorials/data/....json endpoint (HTTP 200)",
+      "claims": [
+        "裝置端模型不需要網路連線",
+        "建立工作階段時改一行程式即可改走私密雲端運算，取得較大上下文與較強推理",
+        "私密雲端運算需要網路連線"
+      ]
+    },
+    {
+      "url": "https://support.apple.com/zh-tw/guide/iphone/iphe3f499e0e/ios",
+      "title": "Apple 支援：iPhone 上的 Apple Intelligence 與隱私權",
+      "access": "web open (curl -sSL, HTTP 200); English page https://support.apple.com/guide/iphone/apple-intelligence-and-privacy-iphe3f499e0e/ios also 200 and consistent",
+      "claims": [
+        "Apple Intelligence 先分析請求能否在裝置上處理，較複雜的可使用私密雲端運算",
+        "設定 → 隱私權與安全性 → Apple Intelligence 報告，過去 15 分鐘或過去 7 天，輸出送往私密雲端運算的要求紀錄",
+        "人工在地化的繁中用語：Apple Intelligence 模型「在裝置上執行」"
+      ]
+    },
+    {
+      "url": "https://developer.android.com/ai/gemini-nano",
+      "title": "Android Developers：Gemini Nano",
+      "access": "web open (curl -sSL, HTTP 200); page says Last updated 2026-09-08 UTC",
+      "claims": [
+        "Gemini Nano 在 AICore 系統服務執行，系統負責派送與更新",
+        "AICore 無直接網際網路存取，包括模型下載的連線經 Private Compute Services 轉送",
+        "每個請求隔離，處理後不保存輸入與輸出紀錄",
+        "少了網路延遲，但推論速度取決於裝置硬體"
+      ]
+    },
+    {
+      "url": "https://developer.android.com/ai/gemini-nano?hl=zh-tw",
+      "title": "Android Developers：Gemini Nano（繁體中文版）",
+      "access": "web open (curl -sSL, HTTP 200); page banner says Google translated it with AI, so the article labels it as an AI-translated page",
+      "claims": [
+        "繁中用語「裝置端 AI」「在本機執行提示」（機器翻譯頁）"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/foundry-local/what-is-foundry-local",
+      "title": "Microsoft Learn：What is Foundry Local?",
+      "access": "web open (curl -sSL, HTTP 200); ms.date 2026-05-15",
+      "claims": [
+        "提示詞與模型輸出在本機處理",
+        "仍會為下載模型與執行元件連網；回報問題時可選擇分享紀錄檔；診斷收集依條款",
+        "沒有每個 token 的費用",
+        "隨應用程式一起提供（支援 Windows、macOS、Linux），不是作業系統內建；模型首次使用時下載並快取"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/windows/ai/faq",
+      "title": "Microsoft Learn：FAQs about using AI in Windows apps",
+      "access": "web open (curl -sSL, HTTP 200); ms.date 2026-05-10",
+      "claims": [
+        "Windows AI APIs 需要具 NPU 的 Copilot+ PC，資料在裝置上處理，輸入不送往 Microsoft 伺服器",
+        "Foundry Local 下載並快取後可離線推論；啟動時可能更新模型目錄"
+      ]
+    }
+  ],
+  "aliases": [
+    "On-device AI",
+    "裝置端 AI",
+    "本地推論",
+    "On-device inference"
+  ],
+  "existing_overlap": "local-llm-why-and-when（為什麼在自己電腦跑 AI、入門路線）與 local-llm-hardware-requirements（記憶體算法與硬體規格）是操作教學，第一段即連過去，不重寫它們的步驟、型號或檔案大小。ai-term-inference 已講雲端與本機的一般差異，這裡聚焦「什麼真的留在本機」與作業系統內建模型。ai-term-kv-cache（本批另一位作者）與 ai-term-quantization 只點名並連結。",
+  "running_text_characters": 2659,
+  "notes": "Counted with app.guides.pack_ingest._body_length on the final pack.json (includes rich_paragraph link labels): 2594 before verification, 2659 after the verifier added the MQA/GQA caveat, the AI-translation label and the 'not built into the OS' clause for Foundry Local. Dry-run ingest passes with only the expected no_summary warning. No GPU models, prices, benchmark scores or model context sizes are written; Apple's on-device and PCC token limits and daily quota were seen on the official pages but deliberately left out as product snapshots. Source vs brief: Apple's Foundation Models framework, which the catalogue lists as an on-device source, now also routes to Private Cloud Compute and other server models through the same API; the article uses this as the main example of why 'built-in model' does not mean 'local'. Microsoft's two pages describe Foundry Local's network use slightly differently (what-is page: model/component downloads plus optional diagnostics; Windows FAQ: initial download plus optional catalog refresh, 'only network traffic'); the article lists the union and does not claim either is exhaustive. The meeting-notes walk-through is an original illustrative example, labelled unmeasured. Diagram carries no numbers other than the drawing year 2026. Verifier pass 2026-10-03: all 12 sources re-opened; see verify-1.md."
+}

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">示例：格子世界裡的獎勵與回報 / A toy grid world: rewards and returns</title>
+<desc id="desc">教學示例，未實測。左邊是 4 欄 3 列的格子地圖：起點在左下角，出口在右上角，陷阱在第 3 欄第 2 列。綠線是最短路線，先往上 2 格再往右 3 格，共 5 步到出口；紅色虛線往右 2 格再往上，第 3 步踩進陷阱。右邊列出獎勵規則：每走一步 −1，走進出口另加 +10 並結束回合，踩進陷阱另扣 10 並結束回合。三種走法的回報：最短路線 5 步，回報 5；繞路 9 步（圖上未畫），回報 1；第 3 步踩陷阱，回報 −13。回報是整回合獎勵的加總。</desc>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+<defs>
+<marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2E7D5B"/></marker>
+<marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#B8442D"/></marker>
+</defs>
+<text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">示例：格子世界裡的獎勵與回報</text>
+<text x="60" y="84" font-size="18" fill="#5C6B6B">Reinforcement learning in a toy grid world（教學示例，未實測）</text>
+
+<!-- row 1 -->
+<rect x="85" y="175" width="160" height="160" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"/>
+<rect x="255" y="175" width="160" height="160" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"/>
+<rect x="425" y="175" width="160" height="160" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"/>
+<rect x="595" y="175" width="160" height="160" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<!-- row 2 -->
+<rect x="85" y="345" width="160" height="160" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"/>
+<rect x="255" y="345" width="160" height="160" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"/>
+<rect x="425" y="345" width="160" height="160" rx="14" fill="#F8E4DF" stroke="#B8442D" stroke-width="4"/>
+<rect x="595" y="345" width="160" height="160" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"/>
+<!-- row 3 -->
+<rect x="85" y="515" width="160" height="160" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+<rect x="255" y="515" width="160" height="160" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"/>
+<rect x="425" y="515" width="160" height="160" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"/>
+<rect x="595" y="515" width="160" height="160" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"/>
+
+<!-- paths -->
+<path d="M 165 560 L 165 255 L 578 255" fill="none" stroke="#2E7D5B" stroke-width="10" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+<path d="M 210 625 L 505 625 L 505 522" fill="none" stroke="#B8442D" stroke-width="8" stroke-dasharray="18 12" stroke-linejoin="round" marker-end="url(#arrow-red)"/>
+
+<!-- cell labels -->
+<text x="165" y="610" font-size="28" font-weight="700" fill="#2F6F9F" text-anchor="middle">起點</text>
+<text x="675" y="250" font-size="28" font-weight="700" fill="#0D6B68" text-anchor="middle">出口</text>
+<text x="675" y="292" font-size="24" font-weight="700" fill="#0D6B68" text-anchor="middle">+10</text>
+<text x="505" y="420" font-size="28" font-weight="700" fill="#B8442D" text-anchor="middle">陷阱</text>
+<text x="505" y="462" font-size="24" font-weight="700" fill="#B8442D" text-anchor="middle">−10</text>
+
+<text x="420" y="725" font-size="20" fill="#5C6B6B" text-anchor="middle">4 欄 × 3 列的示例地圖，每步可上下左右走一格</text>
+<path d="M 100 785 L 160 785" fill="none" stroke="#2E7D5B" stroke-width="10"/>
+<text x="175" y="793" font-size="22" fill="#102A2B">最短路線</text>
+<path d="M 380 785 L 440 785" fill="none" stroke="#B8442D" stroke-width="8" stroke-dasharray="18 12"/>
+<text x="455" y="793" font-size="22" fill="#102A2B">第 3 步踩進陷阱</text>
+
+<!-- reward rules -->
+<rect x="840" y="150" width="700" height="240" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<text x="870" y="200" font-size="26" font-weight="700" fill="#102A2B">獎勵規則</text>
+<text x="870" y="258" font-size="24" fill="#102A2B">每走一步</text>
+<text x="1510" y="258" font-size="28" font-weight="700" fill="#102A2B" text-anchor="end">−1</text>
+<text x="870" y="310" font-size="24" fill="#102A2B">走進出口，回合結束</text>
+<text x="1510" y="310" font-size="28" font-weight="700" fill="#0D6B68" text-anchor="end">另加 10</text>
+<text x="870" y="362" font-size="24" fill="#102A2B">踩進陷阱，回合結束</text>
+<text x="1510" y="362" font-size="28" font-weight="700" fill="#B8442D" text-anchor="end">另扣 10</text>
+
+<!-- returns -->
+<rect x="840" y="420" width="700" height="300" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+<text x="870" y="470" font-size="26" font-weight="700" fill="#102A2B">三種走法的回報（整回合加總）</text>
+<circle cx="884" cy="527" r="11" fill="#2E7D5B"/>
+<text x="910" y="535" font-size="24" fill="#102A2B">最短路線：5 步</text>
+<text x="1510" y="535" font-size="28" font-weight="700" fill="#2E7D5B" text-anchor="end">回報 5</text>
+<circle cx="884" cy="592" r="11" fill="#D97A2B"/>
+<text x="910" y="600" font-size="24" fill="#102A2B">繞路：9 步（圖上未畫）</text>
+<text x="1510" y="600" font-size="28" font-weight="700" fill="#D97A2B" text-anchor="end">回報 1</text>
+<circle cx="884" cy="657" r="11" fill="#B8442D"/>
+<text x="910" y="665" font-size="24" fill="#102A2B">第 3 步踩進陷阱</text>
+<text x="1510" y="665" font-size="28" font-weight="700" fill="#B8442D" text-anchor="end">回報 −13</text>
+
+<text x="840" y="785" font-size="22" fill="#5C6B6B">出口的 10 分最後才拿到，前面哪一步有功要往回推</text>
+<text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

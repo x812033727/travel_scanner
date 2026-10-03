@@ -1,0 +1,124 @@
+{
+  "slug": "ai-term-temperature",
+  "status": "verified",
+  "checked_on": "2026-10-03",
+  "sources": [
+    {
+      "url": "https://arxiv.org/abs/1904.09751",
+      "title": "Holtzman et al.：The Curious Case of Neural Text Degeneration（ICLR 2020）",
+      "access": "web open (curl -sSL arxiv.org/abs and arxiv.org/pdf, 200; pdftotext)",
+      "claims": [
+        "softmax 加溫度 t 的式子；t 小於 1 把分布推向高機率候選",
+        "top-p（nucleus sampling）的定義與重新配比",
+        "top-k 的定義，以及固定 k 在不同情境不合適的論點",
+        "論文設定：約 7.6 億參數（762M）的語言模型、5,000 段、最長 200 個 token；作者結論：要生成品質高、又和人寫的一樣多樣的長篇文字，nucleus sampling 是當時最好的解碼策略",
+        "溫度低於 0.9 的純溫度取樣重複明顯增加；純取樣的尾端不可靠",
+        "先用溫度塑形再做 top-k 是既有做法（論文引述他人，不是作者的建議）",
+        "參數調太小會過度截尾、出現重複（支持表格 top-p 調小一列）"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1503.02531",
+      "title": "Hinton et al.：Distilling the Knowledge in a Neural Network",
+      "access": "web open (curl -sSL arxiv.org/abs and arxiv.org/pdf, 200; pdftotext)",
+      "claims": [
+        "softmax 帶溫度 T 的定義；T 通常設為 1；T 越高機率分布越軟"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2402.05201",
+      "title": "Renze & Guven：The Effect of Sampling Temperature on Problem Solving in Large Language Models",
+      "access": "web open (curl -sSL arxiv.org/abs and arxiv.org/pdf, 200; pdftotext)",
+      "claims": [
+        "九個模型、五種提示詞寫法、常用評測題庫抽出的選擇題考卷，溫度 0.0 到 1.0 整體無統計上顯著的正確率差異；同一模型分十個題目領域檢定時有兩個達到顯著",
+        "只有一個模型把溫度掃過 1.0：超過 1.0 後正確率快速下降，約 1.6 時文字不連貫；其餘只測 0.0 到 1.0",
+        "作者註明只測選擇題，開放式任務可能不同"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2408.04667",
+      "title": "Atil et al.：Non-Determinism of \"Deterministic\" LLM Settings（預印本）",
+      "access": "web open (curl -sSL arxiv.org/abs and arxiv.org/pdf, 200; pdftotext)",
+      "claims": [
+        "五個模型、八項任務、各 10 次，temperature 0、top-p 1、固定 seed：多次執行間準確率最多差 15%",
+        "作者懷疑連續批次處理等加速手法可能造成差異，但受測模型都在無法控制的 API 後面，只能推測"
+      ]
+    },
+    {
+      "url": "https://developers.openai.com/api/reference/resources/chat/subresources/completions/methods/create",
+      "title": "OpenAI API reference：Create chat completion",
+      "access": "web open (curl -sSL developers.openai.com, 200; platform.openai.com 同頁回 403)",
+      "claims": [
+        "temperature 範圍 0 到 2；一般建議 temperature 與 top_p 只調一個",
+        "top_p 為 nucleus sampling",
+        "seed 欄位標 Deprecated 與 Beta，盡力讓結果一致、不保證確定性"
+      ]
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/latest-model",
+      "title": "OpenAI API 官方指南：最新模型使用說明",
+      "access": "web open (curl -sSL developers.openai.com, 200)",
+      "claims": [
+        "推理強度不是 none 時，要移除 temperature、top_p、top_logprobs"
+      ]
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/structured-outputs",
+      "title": "OpenAI：Structured model outputs",
+      "access": "web open (curl -sSL developers.openai.com, 200)",
+      "claims": [
+        "結構化輸出是讓回應符合提供的 JSON Schema 的功能"
+      ]
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/api/messages/create",
+      "title": "Anthropic：Create a Message（Messages API 參考）",
+      "access": "web open (curl -sSL platform.claude.com, 200; docs.anthropic.com 轉址至此)",
+      "claims": [
+        "temperature 標為 Deprecated；較新模型只接受 1.0，其他值回 400；預設 1.0；範圍 0.0 到 1.0",
+        "分析與選擇題靠近 0.0、創作與生成靠近 1.0",
+        "即使溫度 0.0 結果也不會完全確定",
+        "top_p、top_k 同樣標 Deprecated，較新模型不接受；僅供進階用途（正文未寫）"
+      ]
+    },
+    {
+      "url": "https://ai.google.dev/api/generate-content",
+      "title": "Google：Generating content（GenerationConfig 參考）",
+      "access": "web open (curl -sSL ai.google.dev, 200)",
+      "claims": [
+        "temperature 範圍 [0.0, 2.0]；預設值依模型而異",
+        "topP、topK 的說明；部分模型不套用也不允許設定 topK"
+      ]
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+      "title": "Google：Prompt design strategies（Experiment with model parameters）",
+      "access": "web open (curl -sSL ai.google.dev, 200)",
+      "claims": [
+        "溫度 0 是確定的（deterministic），永遠選機率最高的候選",
+        "topK 為 1 時只取最高者，又稱貪婪解碼（正文用來定義這個詞，不寫成 Google 對溫度 0 的稱呼）",
+        "先 topK、再 topP，最後用溫度取樣",
+        "較低溫適合較確定的回答，較高溫較多樣或創意",
+        "較新一代模型強烈建議維持預設；調到 1.0 以下可能重複循環或複雜任務表現下降"
+      ]
+    },
+    {
+      "url": "https://docs.vllm.ai/en/latest/usage/reproducibility/",
+      "title": "vLLM 官方文件：Reproducibility",
+      "access": "web open (curl -sSL docs.vllm.ai, 200)",
+      "claims": [
+        "預設為了效能不保證結果可重現",
+        "要重現得讓排程確定或啟用批次不變性讓輸出不受排程影響；即使如此，也只在相同硬體與相同 vLLM 版本下提供可重現性"
+      ]
+    }
+  ],
+  "aliases": [
+    "temperature",
+    "sampling temperature",
+    "取樣溫度",
+    "溫度參數"
+  ],
+  "existing_overlap": "ai-glossary-50-terms 已有一句話定義（取樣參數、不是正確率旋鈕、0 不保證一致）；本篇展開機制、top-p 與 top-k、失敗型態、確定性限制與不開放調整的情況，並連到 ai-term-token、what-is-a-large-language-model、ai-hallucination-fact-check、ai-term-structured-outputs 與 ai-terms-index。",
+  "running_text_characters": 2737,
+  "notes": "字數為 pack_ingest 的 _body_length（含 rich_paragraph 內連結文字）；不含連結文字為 2681（第二輪查核後）。早餐機率、旅客留言與重跑 5 次都是原創示例，未實測任何模型。圖上數字皆出現在正文。正文不列型號、價格或排行榜；Holtzman 論文的設定以參數量（約 7.6 億）描述。與指派不一致處：只有 OpenAI 明寫不建議同時調 temperature 與 top_p；Google 稱溫度 0 是確定的而 Anthropic 稱不完全確定（層次不同，正文並列）；Anthropic、OpenAI、Google 的現行文件皆寫明部分新模型不開放或不建議調整。Thinking Machines 的 nondeterminism 技術文章讀過但未收錄（非論文或官方文件）。細節見 notes.md。"
+}
