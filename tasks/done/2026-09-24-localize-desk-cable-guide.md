@@ -54,7 +54,7 @@ zh-TW 不變的證明：內容包 `locales["zh-TW"]` 正規化後的 `document_h
 
 ## Notes
 
-- 持久工作目錄：`C:\Users\x8120\mokaair-work\cable-localization\`（`tr/` 譯稿、`review/` 修正清單、`svg/`、`render/` PNG、`*.pre-review.*` 審稿前版本）。這是站主機器上的路徑，repo 裡沒有這些檔。
+- 持久工作目錄：`<home>\mokaair-work\cable-localization\`（`tr/` 譯稿、`review/` 修正清單、`svg/`、`render/` PNG、`*.pre-review.*` 審稿前版本）。這是站主機器上的路徑，repo 裡沒有這些檔。
 - 翻譯與審稿走 Claude 代理（翻譯 sonnet、審稿 opus），不是 `tools/article-localization` 的 Codex CLI 產線。後者的基準快照要把腳本灌進正式站容器，auto 模式會擋。
 
 ### 2026-09-24 完成內容（claude-opus-cable-localization）

@@ -248,7 +248,7 @@ exit=1
 ```
 
 兩個 lint 類別都是出圖與 relink 之前的預期狀態。退出碼另寫在
-`C:\Users\x8120\mokaair-work\news44\_tools\ai-news-gemini-student-offer-20260820-r1\exit-codes.txt`。
+`<home>\mokaair-work\news44\_tools\ai-news-gemini-student-offer-20260820-r1\exit-codes.txt`。
 
 ## 7. 結論
 
