@@ -86,8 +86,10 @@ rel=$(find /root -maxdepth 2 -path '/root/mokaair-*' -name state.json -mmin -144
 echo "release state.json touched <24h: $rel"
 echo '-- newest deploy logs --'
 ls -lt --time-style=+%FT%TZ /root/deploy-logs 2>/dev/null | head -4
+# Only the logs written since the live HEAD commit: two through host-deploy.sh (wrapper + script), one
+# when the owner ran /root/deploy-travel-scanner.sh directly.
 logs_n=0; logs_fresh=0; logs_33=0; logs_rb=0
-for f in $(ls -t /root/deploy-logs/*.log 2>/dev/null | head -2); do
+for f in $(find /root/deploy-logs -maxdepth 1 -name '*.log' -newermt "@$head_ct" 2>/dev/null | xargs -r ls -t | head -2); do
   logs_n=$((logs_n + 1))
   mt=$(stat -c %Y "$f" 2>/dev/null || echo 0)
   echo "== $f (mtime $(date -u -d @"$mt" +%FT%TZ 2>/dev/null))"
@@ -101,8 +103,18 @@ done
 # The script's "health 3/3 ok" is printed AFTER a rollback too (2026-09-29): a rollback line with a
 # matching SHA means the previous attempt rolled back and this one deployed; without the SHA it failed.
 ok=0
-if [ "$logs_n" -eq 2 ] && [ "$logs_fresh" -eq 2 ] && [ "$logs_33" -eq 2 ] && { [ "$logs_rb" -eq 0 ] || [ "$sha_ok" -eq 1 ]; }; then ok=1; fi
-verdict deploy-logs "$ok" "logs=$logs_n newer_than_head_commit=$logs_fresh with_3of3=$logs_33 with_rollback_lines=$logs_rb release_state_json=$rel"
+if [ "$logs_n" -ge 1 ] && [ "$logs_fresh" -eq "$logs_n" ] && [ "$logs_33" -eq "$logs_n" ] && { [ "$logs_rb" -eq 0 ] || [ "$sha_ok" -eq 1 ]; }; then ok=1; fi
+verdict deploy-logs "$ok" "logs_newer_than_head_commit=$logs_n (2 via host-deploy.sh, 1 when the owner ran the deploy script directly) with_3of3=$logs_33 with_rollback_lines=$logs_rb release_state_json=$rel"
+
+# A service is rebuilt and recreated only when its build context changed: `up --build -d` without
+# --force-recreate keeps a container whose image id did not move. So "fresh" means "newer than the
+# last commit that touched that service's build context", not "newer than HEAD" (a docs-only or
+# tools/video-only commit leaves api and web exactly as they were, and that is correct).
+api_ct=$(git log -1 --format=%ct HEAD -- apps/api 2>/dev/null); api_ct=${api_ct:-0}
+web_ct=$(git log -1 --format=%ct HEAD -- apps/web package.json package-lock.json 2>/dev/null); web_ct=${web_ct:-0}
+vw_ct=$(git log -1 --format=%ct HEAD -- tools/video ops/video .agents/skills/youtube-video docs/videos apps/api/app/guides/content 2>/dev/null); vw_ct=${vw_ct:-0}
+cutoff_for() { case "$1" in travel_scanner-web-1|web) echo "$web_ct" ;; travel_scanner-video-worker-1|video-worker) echo "$vw_ct" ;; *) echo "$api_ct" ;; esac; }
+echo "build-context cutoffs: api/worker $(date -u -d @"$api_ct" +%FT%TZ 2>/dev/null) web $(date -u -d @"$web_ct" +%FT%TZ 2>/dev/null) video-worker $(date -u -d @"$vw_ct" +%FT%TZ 2>/dev/null)"
 
 # ---------------------------------------------------------------- 3 containers-up-local-images-disk
 section containers-up-local-images-disk
@@ -122,7 +134,7 @@ for name in $(echo "$ps_out" | grep ' Up' | awk '{print $1}'); do
   [ "${rc:-1}" = 0 ] || restarts_bad=$((restarts_bad + 1))
   case "$name" in
     travel_scanner-postgres-1|travel_scanner-redis-1) ;;
-    *) [ "$(epoch "$sa")" -ge "$head_ct" ] || { echo "   -> started before the live HEAD commit (not recreated by this deploy)"; old_start=$((old_start + 1)); } ;;
+    *) [ "$(epoch "$sa")" -ge "$(cutoff_for "$name")" ] || { echo "   -> started before the last commit that touched its build context (not recreated by this deploy)"; old_start=$((old_start + 1)); } ;;
   esac
 done
 echo '-- disk --'
@@ -142,16 +154,16 @@ for c in api worker web video-worker; do
   started=$(docker inspect -f '{{.State.StartedAt}}' "$n" 2>/dev/null)
   created=$(docker inspect -f '{{.Created}}' "$id" 2>/dev/null)
   echo "$c started=$started image=${id#sha256:} image_created=$created"
-  fresh=1
-  [ "$(epoch "$created")" -ge "$head_ct" ] || { echo "   -> image built before the live HEAD commit (stale image)"; fresh=0; }
-  [ "$(epoch "$started")" -ge "$head_ct" ] || { echo "   -> container started before the live HEAD commit"; fresh=0; }
+  fresh=1; cut=$(cutoff_for "$c")
+  [ "$(epoch "$created")" -ge "$cut" ] || { echo "   -> image built before the last commit that touched its build context (stale image)"; fresh=0; }
+  [ "$(epoch "$started")" -ge "$cut" ] || { echo "   -> container started before the last commit that touched its build context"; fresh=0; }
   if [ "$fresh" -eq 1 ]; then rebuilt_n=$((rebuilt_n + 1)); else rb_ok=0; fi
   [ "$c" = api ] && api_img=$id
   [ "$c" = worker ] && worker_img=$id
 done
 same_img=0
 if [ -n "$api_img" ] && [ "$api_img" = "$worker_img" ]; then same_img=1; else rb_ok=0; echo "api/worker image ids differ or missing"; fi
-verdict containers-rebuilt-this-deploy "$rb_ok" "rebuilt_after_head_commit=$rebuilt_n/4 api_worker_same_image=$same_img"
+verdict containers-rebuilt-this-deploy "$rb_ok" "rebuilt_after_context_commit=$rebuilt_n/4 api_worker_same_image=$same_img"
 
 # ---------------------------------------------------------------- 5 alembic-head
 section alembic-head
@@ -241,14 +253,22 @@ verdict video-worker-started "$ok" "state=${st:-none} restarts=${rc:-?} started_
 # AFTER the change (pick it from the diff; the pre-change image must print the opposite). Patterns:
 #
 #   api, one python read:
+#     section api-<what>
 #     out=$($COMPOSE exec -T -e PYTHONIOENCODING=utf-8 api python -c 'import pathlib; t = pathlib.Path("/app/app/<module>.py").read_text(encoding="utf-8"); print("marker=%d" % t.count("<string only after the change>"))' 2>&1)
 #     ok=0; [ "$(echo "$out" | count '^marker=1$')" -eq 1 ] && ok=1; verdict api-<what> "$ok" "$out"
 #   video-worker, a grep (its code lives under /opt/mokaair) or a node import that calls the new function:
+#     section worker-<what>
 #     out=$($COMPOSE --profile video exec -T video-worker sh -c 'cd /opt/mokaair && grep -c "<symbol>" tools/video/<file>.mjs' 2>&1)
+#     ok=0; [ "$(echo "$out" | tr -d '\r')" = "<expected count>" ] && ok=1; verdict worker-<what> "$ok" "count=$out"
 #     out=$($COMPOSE --profile video exec -T video-worker node --input-type=module -e 'import { f } from "/opt/mokaair/tools/video/<file>.mjs"; console.log(JSON.stringify(f(<input>)))' 2>&1)
+#     ok=0; [ "$(echo "$out" | tail -1)" = '<expected JSON>' ] && ok=1; verdict worker-<what> "$ok" "$out"
 #   web (busybox: no grep --include), the standalone copy of the manifest:
+#     section web-<package>-version
 #     out=$($COMPOSE exec -T web sh -c 'grep -o "\"<package>\": \"[^\"]*\"" /app/apps/web/package.json' 2>&1)
+#     ok=0; case "$out" in *'"<version>"'*) ok=1 ;; esac; verdict web-<package>-version "$ok" "$out"
 #
+# Every check is `section <id>` + the command + `ok=...` + `verdict <id> "$ok" "<values>"`: only verdict
+# lines reach PASS/FAIL and TOTAL, so a check without one is invisible to the gate.
 # Non-ASCII in a one-liner goes in as code points (python chr(), node String.fromCharCode) so the
 # transport cannot mangle it. psql only for the simplest single select; jsonb operators get blocked.
 

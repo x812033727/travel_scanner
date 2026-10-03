@@ -1,7 +1,7 @@
 ---
 id: 2026-10-03-skills-accent-deploy-receipt
 title: Skills: duration receipt procedure, dated-fixture triage, post-deploy verify script, voice wording audition
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: claude-fable-accent-a1
@@ -21,6 +21,7 @@ scope:
   - .agents/skills/deploy/scripts/host-verify.sh
   - .agents/skills/youtube-video/references/script-writing.md
   - .agents/skills/youtube-video/references/voice-audition.md
+  - .agents/skills/youtube-video/references/drama.md
 ---
 
 # Skills: duration receipt procedure, dated-fixture triage, post-deploy verify script, voice wording audition
@@ -58,3 +59,5 @@ npm run check:tasks
 - `host-verify.sh` is the generic half of the 15-check script that verified 5af4ffebf; the five #1168/#1160/#1164
   checks were dropped and their shapes kept as the EXTRA CHECKS patterns.
 - None of the changed files is in `REVIEW_FILES`, so no receipt increment is needed for this PR.
+- Three critic agents (facts / conventions / usability) reviewed the text; their 16 findings are applied, among them: host-verify.sh compares container and image ages with the last commit that touched each service's build context (not HEAD) and accepts one deploy log when the owner ran the script directly; voice-audition.md warns that `audition` rewrites retired wording through `channelAccent()`, so control candidates must be sent without `voiceFields()`; duration-receipt.md gains the Baseline step.
+- Follow-up filed: `2026-10-03-youtube-video-skill-voice-audition-row` (index row in the receipt-bound youtube-video SKILL.md; rides the next PR that touches it).

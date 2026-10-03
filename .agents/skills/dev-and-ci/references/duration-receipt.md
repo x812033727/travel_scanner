@@ -22,7 +22,9 @@
 1. 作者把程式改完、提交。**不要**自己動 `review.md`／`review.json`。
 2. 另開一個**獨立審查代理**，身分像 `claude-pr-review-<PR 號>`；還沒有 PR 號就用分支名（`claude-pr-review-<分支短名>`，review.md 的「Branch illustration-polish increment」就是這樣），段落標題寫 `## Branch <名字> increment: <k> files (<日期>)`。規則只要求 `reviewer_agent` 非空且不等於 `author_agent`。給它：綁住的檔的 diff 範圍
    （`git diff <merge-base>..HEAD` 交集 `REVIEW_FILES`）、要寫的段落標題格式、要用的 commit 訊息。它只能改那兩個收據檔、不推。
-3. 它要做的事：讀 `review.mjs` 與 `review.test.mjs` 知道規則；逐檔讀 diff，確認**沒有改到時長規則**
+3. 它要做的事：讀 `review.mjs` 與 `review.test.mjs` 知道規則；先做 Baseline：對每個要重綁的檔，`git show <merge-base>:<路徑> | sha256sum`
+   要等於 `review.json` 現綁的值（不等＝merge-base 那一側已有沒補的綁定，先照上面「把 main 併進分支」處理，否則這次 diff 不是全部沒審過的改動），
+   段落的 Baseline 那一行就寫這件事（merge-base 的 SHA、幾個檔對上）；再逐檔讀 diff，確認**沒有改到時長規則**
    （600／780 秒目標、480 秒實測下限、8 分鐘下限、`target_minutes`、`MIN_EPISODE`、`VIDEO_MIN_EPISODE_MINUTES`、
    `runtime_spec`、`action_seconds`、來源雜湊、covered 狀態）；在 `review.md` 的 `## Reviewed SHA256 bindings` 之前加一節
    `## PR #<n> <名字> increment: <k> files (<日期>)`（照前幾節的格式：Reviewer／Author／Scope／Baseline／Findings／Ran／Non-claims／Verdict），

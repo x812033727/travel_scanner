@@ -19,7 +19,7 @@ metadata:
 4. **含非 ASCII、反斜線、引號、反引號的腳本或檔案編輯，用 Write 工具寫進 scratchpad 再執行。** Bash 的 heredoc 會改寫它們，`perl -pi`／`sed -i` 會把中文寫壞。新檔 commit 後看 `git show --stat`，出現 `Bin` 就是寫進了 NUL。
 5. **紅燈先分類再動手**：環境（重跑）、已知 flake（對照表）、自己的錯（修）。一個「單獨跑永遠過」的 web 測試在負載下紅，先想 passive effect 空檔，不要加 `waitFor` 或 timeout 掩蓋。
 6. **量到完美的數字先證明儀器量得到不完美的**：CLS 0、scrollWidth 等於 innerWidth，都可能是量法根本不可能給別的答案。
-7. **綁在長片時長收據裡的檔（`tools/video/long-form/review.mjs` 的 `REVIEW_FILES`），改了要獨立審查代理補增量，作者不能自己重綁。** 推之前 `node tools/video/long-form/cli.mjs check`；紅就照 `references/duration-receipt.md`。PR 的 CI 跑的是 head 併 main，main 上別人漏補的綁定會以你的 `web`／`smoke` 紅出現。
+7. **綁在長片時長收據裡的檔（`tools/video/long-form/review.mjs` 的 `REVIEW_FILES`），改了要獨立審查代理補增量，作者不能自己重綁。** 推之前 `node tools/video/long-form/cli.mjs check`；紅就照 `references/duration-receipt.md`（連別人漏補的綁定讓你的 PR 紅的情況）。
 
 ## 主幹
 
