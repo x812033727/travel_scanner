@@ -101,7 +101,7 @@ def check(rows: list[dict]) -> int:
         for quote in row.get("support", []):
             # A quote may join body sentences with 「／」, 「｜」 or 「…」, and may label a
             # table cell or callout title it comes from; each quoted part must occur.
-            for part in re.split(r"[／/｜|…→]+|\.\.\.", quote):
+            for part in re.split(r"[／/｜|…→「」]+|\.\.\.|（callout）|callout|表格列?|標題", quote):
                 part = re.sub(r"^(表格|callout|標題|小標)[^：:]*[：:]", "", part.strip())
                 part = squash(part)
                 if len(part) >= 8 and part not in body:

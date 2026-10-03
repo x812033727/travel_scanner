@@ -1,0 +1,123 @@
+{
+  "slug": "ai-term-reinforcement-learning",
+  "status": "verified",
+  "checked_on": "2026-10-03",
+  "sources": [
+    {
+      "url": "http://incompleteideas.net/book/the-book-2nd.html",
+      "title": "Sutton, Barto: Reinforcement Learning: An Introduction, 2nd edition (MIT Press 2018; full text on the author's site)",
+      "access": "web open (curl -sSL book page and http://incompleteideas.net/book/RLbook2020.pdf, HTTP 200; PDF converted with pdftotext and read section by section; the https host failed certificate verification in this environment, so the http URL is used)",
+      "claims": [
+        "Section 1.1: reinforcement learning is learning what to do, mapping situations to actions, to maximize a numerical reward signal; the learner is not told which actions to take; trial-and-error search and delayed reward are its two most important distinguishing features",
+        "Section 1.1: the name covers a problem, a class of solution methods and a field, which should be kept conceptually separate",
+        "Section 1.1: differs from supervised learning (labelled examples of the correct action) and from unsupervised learning (finding hidden structure); treated as a third paradigm",
+        "Section 1.1: the exploration-exploitation trade-off arises in reinforcement learning and not in the purest forms of supervised and unsupervised learning; neither can be pursued exclusively without failing; studied for decades and still unresolved",
+        "Section 1.3: policy maps perceived states to actions and may be a lookup table, a function or stochastic; reward is a single number per time step that defines good and bad events; value is the total reward expected from a state onwards",
+        "Section 1.4: state informally means whatever information is available to the agent about its environment",
+        "Section 3.2: maze example gives reward -1 per time step before escape to encourage escaping quickly; chess example rewards only winning, not subgoals such as taking pieces, because the agent might take pieces and lose; the reward signal says what to achieve, not how",
+        "Section 3.3: return is the sum of rewards, usually discounted with a discount rate",
+        "Sections 2.1-2.2: epsilon-greedy behaves greedily most of the time and with small probability epsilon selects uniformly among all actions; exploration lowers short-run reward but can raise long-run reward"
+      ]
+    },
+    {
+      "url": "https://www.nature.com/articles/nature14236",
+      "title": "Mnih et al.: Human-level control through deep reinforcement learning (Nature 518, 2015)",
+      "access": "web open (curl -sSL, HTTP 200; subscription article, abstract and editorial summary read)",
+      "claims": [
+        "Published 25 February 2015; a deep Q-network learns policies from high-dimensional sensory input with end-to-end reinforcement learning",
+        "The agent received only pixels and the game score as inputs, across 49 Atari 2600 games, using the same algorithm, network architecture and hyperparameters",
+        "Editorial summary: the reward maximized is, in this case, the game score (the article says the reward comes from the game score); performance comparisons with humans are not used, per the assignment's no-scores rule"
+      ]
+    },
+    {
+      "url": "https://www.nature.com/articles/nature16961",
+      "title": "Silver et al.: Mastering the game of Go with deep neural networks and tree search (Nature 529, 2016)",
+      "access": "web open (curl -sSL, HTTP 200; subscription article, abstract read)",
+      "claims": [
+        "Published 27 January 2016; value networks evaluate board positions and policy networks select moves",
+        "The networks are trained by a combination of supervised learning from human expert games and reinforcement learning from self-play, and combined with Monte Carlo tree search; program name, win rate and match score are not used"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1706.03741",
+      "title": "Christiano et al.: Deep reinforcement learning from human preferences (arXiv:1706.03741)",
+      "access": "web open (curl -sSL abs page and PDF, HTTP 200; PDF converted with pdftotext; abstract, sections 1 and 2.2 read)",
+      "claims": [
+        "v1 submitted 12 June 2017; goals defined by human preferences between pairs of trajectory segments shown as short video clips",
+        "A reward function estimate is fitted to the comparisons by supervised learning and the policy is trained to maximize the predicted reward"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2203.02155",
+      "title": "Ouyang et al.: Training language models to follow instructions with human feedback (arXiv:2203.02155)",
+      "access": "web open (curl -sSL abs page and PDF, HTTP 200; PDF converted with pdftotext; abstract, sections 1, 3.1 and 3.5 read)",
+      "claims": [
+        "Submitted 4 March 2022; labeler demonstrations for supervised fine-tuning, rankings of outputs to train a reward model, then reinforcement learning from human feedback",
+        "Section 3.5: the RL environment is a bandit environment that presents a prompt, expects a response, gives the reward model's reward and ends the episode; a per-token KL penalty from the SFT model mitigates over-optimization of the reward model"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2501.12948",
+      "title": "DeepSeek-AI: DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning (arXiv:2501.12948)",
+      "access": "web open (curl -sSL abs page, HTTP 200; abstract and submission history read: v1 22 January 2025, v2 4 January 2026)",
+      "claims": [
+        "Reasoning abilities can be incentivized through reinforcement learning without human-labelled reasoning trajectories; the 2025 date in the article refers to v1"
+      ]
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-025-09422-z",
+      "title": "DeepSeek-AI: DeepSeek-R1 incentivizes reasoning in LLMs through reinforcement learning (Nature 645, 2025)",
+      "access": "web open (curl -sSL, HTTP 200; open-access CC BY 4.0 article, full text read from the HTML)",
+      "claims": [
+        "Published 17 September 2025 in Nature 645, 633-638",
+        "Reasoning data (mathematics, coding, logical reasoning) use rule-based rewards: accuracy rewards (maths answers in a specified format checked by rules; code checked by a compiler against predefined test cases) plus format rewards requiring the reasoning to sit inside designated tags",
+        "One configuration bypasses supervised fine-tuning before RL and applies RL directly to the pretrained base model; the reward is based only on final-answer correctness without constraining the reasoning process",
+        "Average response length on the training set rises during RL, with more reflective reasoning and exploration of alternative solutions; the article frames this as a description of output text, not human-like thinking",
+        "Neural reward models are not used for reasoning tasks, one stated reason being that they are susceptible to reward hacking during large-scale RL (the other is retraining cost and pipeline complexity)",
+        "Limitations: reliable reward models are hard to build for tasks such as writing; model-assigned rewards become easier to exploit as training progresses"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2411.15124",
+      "title": "Lambert et al.: Tulu 3: Pushing Frontiers in Open Language Model Post-Training (arXiv:2411.15124)",
+      "access": "web open (curl -sSL abs page and PDF, HTTP 200; PDF converted with pdftotext; abstract and section 6 read)",
+      "claims": [
+        "v1 submitted 22 November 2024; introduces and names Reinforcement Learning with Verifiable Rewards (RLVR)",
+        "RLVR keeps the existing RLHF objective but replaces the reward model with a verification function that gives a fixed reward when the answer is verifiably correct and 0 otherwise; applied to mathematics and verifiable instruction following"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1606.06565",
+      "title": "Amodei et al.: Concrete Problems in AI Safety (arXiv:1606.06565)",
+      "access": "web open (curl -sSL abs page and PDF, HTTP 200; PDF converted with pdftotext; abstract and section 4 read)",
+      "claims": [
+        "Lists avoiding reward hacking among five practical research problems on accident risk",
+        "A cleaning robot rewarded for not seeing any messes might simply close its eyes; formal rewards can be gamed by solutions that are valid in a literal sense but miss the designer's intent"
+      ]
+    },
+    {
+      "url": "https://developers.google.com/machine-learning/glossary/rl?hl=zh-tw",
+      "title": "Google Machine Learning Glossary: Reinforcement Learning (Traditional Chinese)",
+      "access": "web open (curl -sSL, HTTP 200; HTML text extracted and searched)",
+      "claims": [
+        "The entry heading reads 增強學習 (RL) while the body and other entries use 強化學習; policy is rendered 政策, so the article states it uses 強化學習 and 策略 and why"
+      ]
+    },
+    {
+      "url": "https://terms.naer.edu.tw/",
+      "title": "National Academy for Educational Research terminology database (樂詞網)",
+      "access": "web open (curl -sSL with a session cookie from the home page, then search/?match_type=phrase&query_field=title&query_term=reinforcement+learning, HTTP 200; the search URL without a session returns unfiltered results, so the source lists the home page)",
+      "claims": [
+        "reinforcement learning is listed as 強化學習 (statistics, electronic engineering and others), 增強式學習 (electrical engineering), 加強學習 (computer science) and 強化學習；增強式學習 (surveying)"
+      ]
+    }
+  ],
+  "aliases": [
+    "RL",
+    "增強式學習",
+    "增強學習"
+  ],
+  "existing_overlap": "ai-term-machine-learning (published) gives reinforcement learning one paragraph as one of several learning types; this article is the full treatment and links back to it. ai-term-rlhf (published) covers the RLHF pipeline in depth, so this article gives RLHF one paragraph framed in RL vocabulary (prompt as state, response as action, one-step episode, per-token KL penalty) and links to it. ai-reasoning-models-explained (published) mentions RL in DeepSeek-R1 research at overview level; this article adds the rule-based reward details and the RLVR name. ai-term-reward-hacking is a batch-03 sibling that may not be published yet; this article gives one section with the Sutton-Barto chess and Amodei cleaning-robot examples and links to it for the full treatment.",
+  "running_text_characters": 2557,
+  "notes": "Characters counted with app.guides.pack_ingest._body_length on the final pack.json (paragraphs, rich_paragraph text including the five link texts, list items, table cells, callout title and text; whitespace removed). The grid world (4 columns by 3 rows, -1 per step, +10 at the exit, -10 in the trap, returns 5, 1 and -13) and the epsilon = 0.1 conversion are illustrative and computed by hand, not measured. Model and program names (the DeepSeek models, the Go program, the Tulu models) and all benchmark scores, win rates and match results are kept out of the prose per the assignment; they appear only inside source titles. DQN is kept as the algorithm name the Nature paper itself uses. The Mnih and Silver Nature papers are subscription articles, so only their abstracts (and the Mnih editorial summary) were read and the prose claims nothing beyond them. Dry-run ingest passes with only the no_summary warning."
+}

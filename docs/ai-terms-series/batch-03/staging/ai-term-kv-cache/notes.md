@@ -14,7 +14,7 @@ Google 機器學習詞彙表繁中版把 cache 寫作「快取」（離線推論
 每層的 key 與 value 快取張量形狀為 [batch_size, num_heads, seq_len, head_dim]｜https://huggingface.co/docs/transformers/en/cache_explanation｜2026-10-03｜全文 HTML（Cache storage implementation 段）
 「每一層注意力的 key 與 value 張量」稱為 KV 快取，整段解碼期間要存在記憶體｜https://arxiv.org/abs/2211.05102｜2026-10-03｜PDF 第 1 節
 權重由批次內共用，KV 快取每條序列各一份｜https://arxiv.org/abs/2211.05102｜2026-10-03｜PDF 第 2 節 Compute costs
-讀入提示時 key、value 一次算出；之後每次迭代只算新 token 的 key 與 value，1 到 n+t−1 的已快取｜https://arxiv.org/abs/2309.06180｜2026-10-03｜PDF 2.1 節
+讀入提示時 key、value 一次算出；之後每次迭代只算新 token 的 key 與 value，1 到 n+t−1 的已快取｜https://arxiv.org/abs/2309.06180｜2026-10-03｜PDF 2.2 節
 單一 token 的快取量以「2（key、value）× 隱藏維度 × 層數 × 每個數值的位元組數」估算（論文舉例的特定模型數字未寫入正文）｜https://arxiv.org/abs/2309.06180｜2026-10-03｜PDF 第 3 節 Large KV cache
 滑動視窗或分塊注意力的層，快取長到視窗大小就不再增加｜https://huggingface.co/docs/transformers/en/kv_cache｜2026-10-03｜全文 HTML（Default cache 段）
 請求結束後其 KV 區塊可釋放給其他請求｜https://arxiv.org/abs/2309.06180｜2026-10-03｜PDF 4.2 節
@@ -28,7 +28,7 @@ PagedAttention 把每個請求的 KV 快取切成固定大小的區塊，不必�
 一批能同時處理的請求數受 GPU 記憶體中 KV 快取的空間限制，服務吞吐量受記憶體限制｜https://arxiv.org/abs/2309.06180｜2026-10-03｜PDF 第 3 節開頭
 MQA：不同頭共用一組 key 與 value，大幅縮小這兩個張量與逐步解碼的記憶體頻寬需求｜https://arxiv.org/abs/1911.02150｜2026-10-03｜abs 摘要與 PDF 第 3 節
 Shazeer 的 WMT14 英德翻譯實驗：MQA 依兩項指標略差於基準（dev），但比減少頭數或維度的替代方案好得多｜https://arxiv.org/abs/1911.02150｜2026-10-03｜PDF 4.2 節
-MQA 讓 KV 快取張量縮小為原本的 n_heads 分之一｜https://arxiv.org/abs/2211.05102｜2026-10-03｜PDF 3.3 節 Partitioning the attention layer
+MQA 讓 KV 快取張量縮小為原本的 n_heads 分之一｜https://arxiv.org/abs/2211.05102｜2026-10-03｜PDF 第 3 節 Partitioning the attention layer 段
 GQA 把 query 頭分成 G 組、每組共用一組 key 與 value 頭，介於 MHA 與 MQA 之間；GQA-1 等於 MQA，GQA-H 等於 MHA｜https://arxiv.org/abs/2305.13245｜2026-10-03｜PDF 2.2 節
 以約原預訓練 5% 的計算量（α = 0.05）把既有多頭模型改訓成 MQA／GQA（uptraining）｜https://arxiv.org/abs/2305.13245｜2026-10-03｜abs 摘要與 PDF 3.1 節
 KV 量化：減少 KV 快取的位元組數；KIVI 以 2 位元量化，在所測模型上品質幾乎不變（論文設定：key 依 channel、value 依 token 分組量化）｜https://arxiv.org/abs/2402.02750｜2026-10-03｜abs 摘要

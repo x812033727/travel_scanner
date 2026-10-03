@@ -1,0 +1,132 @@
+{
+  "slug": "ai-term-world-model",
+  "status": "verified",
+  "checked_on": "2026-10-03",
+  "sources": [
+    {
+      "url": "http://incompleteideas.net/book/the-book-2nd.html",
+      "title": "Sutton & Barto: Reinforcement Learning: An Introduction, 2nd ed. (author's full-text site)",
+      "access": "web open (http; https on this host has a self-signed certificate); full PDF RLbook2020.pdf read via pdftotext, section 8.1",
+      "claims": [
+        "環境模型的定義：預測環境如何回應動作；給定狀態與動作預測下一狀態與獎勵",
+        "規劃的定義：以模型為輸入產生或改進策略"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1803.10122",
+      "title": "Ha & Schmidhuber: World Models (arXiv:1803.10122)",
+      "access": "web open; PDF read via pdftotext",
+      "claims": [
+        "V、M、C 三部分（VAE、MDN-RNN、線性控制器）",
+        "VizDoom 在夢境中訓練再轉移；100 次測試約 1,100 時間步，門檻 750",
+        "控制器鑽世界模型漏洞，讓怪物不發射火球（4.5 節）"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/1912.01603",
+      "title": "Hafner et al.: Dream to Control (Dreamer, arXiv:1912.01603)",
+      "access": "web open (abstract)",
+      "claims": [
+        "在學到的世界模型精簡狀態空間中想像軌跡並學習行為"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2301.04104",
+      "title": "Hafner et al.: Mastering Diverse Domains through World Models (DreamerV3, arXiv:2301.04104 v2)",
+      "access": "web open (abstract)",
+      "claims": [
+        "單一設定在 150 多種任務勝過專門方法",
+        "第一個不靠人類資料、從零在 Minecraft 收集鑽石的演算法"
+      ]
+    },
+    {
+      "url": "https://openreview.net/forum?id=BZ5a1r-kVsf",
+      "title": "LeCun: A Path Towards Autonomous Machine Intelligence (Version 0.9.2, 2022-06-27)",
+      "access": "OpenReview returns a browser challenge (403) to this environment; read Wayback snapshot web/20230228171808id_/https://openreview.net/pdf?id=BZ5a1r-kVsf via pdftotext",
+      "claims": [
+        "序言：立場論文，不是傳統意義的技術論文",
+        "世界模型是最複雜模組；補缺失狀態、預測可能未來；抽象表示空間；多種可能",
+        "JEPA 非生成式；岔路口例子",
+        "樹葉、漣漪等細節無法長期準確預測；JEPA 可忽略"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2506.09985",
+      "title": "Assran et al.: V-JEPA 2 (arXiv:2506.09985)",
+      "access": "web open (abstract); PDF page 1 for affiliation (FAIR at Meta)",
+      "claims": [
+        "網路影片預訓練",
+        "不到 62 小時未標註機器人影片後訓練出 V-JEPA 2-AC",
+        "兩個實驗室的機械手臂以目標影像規劃完成抓取與放置"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2402.15391",
+      "title": "Bruce et al.: Genie: Generative Interactive Environments (arXiv:2402.15391)",
+      "access": "web open (abstract); PDF page 1 for affiliation (Google DeepMind) and date",
+      "claims": [
+        "無標註網路影片無監督訓練",
+        "文字、圖片、照片、草圖都可當提示",
+        "潛在動作模型，逐格操作"
+      ]
+    },
+    {
+      "url": "https://deepmind.google/discover/blog/genie-3-a-new-frontier-for-world-models/",
+      "title": "Google DeepMind: Genie 3: A new frontier for world models (2025-08-05)",
+      "access": "web open; HTML stripped of tags",
+      "claims": [
+        "依文字提示即時生成可探索的環境，一致數分鐘，視覺記憶約一分鐘",
+        "自迴歸生成比生成整段影片更難維持一致，誤差累積",
+        "官方列出的限制",
+        "官方稱世界模型是通往 AGI 的重要一步"
+      ]
+    },
+    {
+      "url": "https://openai.com/index/video-generation-models-as-world-simulators/",
+      "title": "OpenAI: Video generation models as world simulators (2024-02-15)",
+      "access": "direct 403; Wayback snapshot web/20260926091256id_/ (gzip, decompressed and tag-stripped)",
+      "claims": [
+        "報告標題以世界模擬器為題",
+        "模型無法準確模擬許多基本互動，例如玻璃碎裂"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2210.13382",
+      "title": "Li et al.: Emergent World Representations (Othello-GPT, arXiv:2210.13382 v5, ICLR 2023)",
+      "access": "web open; PDF v5 read via pdftotext",
+      "claims": [
+        "只用合法走法訓練，無規則知識",
+        "非線性探針可讀出棋盤，線性探針效果差",
+        "干預內部表示改變一格，預測隨之改變"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2310.02207",
+      "title": "Gurnee & Tegmark: Language Models Represent Space and Time (arXiv:2310.02207)",
+      "access": "web open (abstract)",
+      "claims": [
+        "空間與時間的線性表示",
+        "作者稱具備世界模型的基本成分，仍需進一步研究"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2406.03689",
+      "title": "Vafa et al.: Evaluating the World Model Implicit in a Generative Model (arXiv:2406.03689 v3, NeurIPS 2024)",
+      "access": "web open; PDF v3 read via pdftotext",
+      "claims": [
+        "紐約計程車轉向序列；下一步幾乎都合法、常找到最短路線",
+        "還原地圖有方向不可能的街道",
+        "加入繞道後表現下滑",
+        "棋類與邏輯謎題也有類似落差"
+      ]
+    }
+  ],
+  "aliases": [
+    "World Models",
+    "世界模擬器",
+    "foundation world model"
+  ],
+  "existing_overlap": "New term article. ai-term-text-to-video covers video generation as a task and already notes that visual coherence is not a physics simulator; this article links to it and only explains what makes an interactive world model different (each frame responds to the latest action). Reinforcement-learning basics are left to ai-term-reinforcement-learning (same batch). AGI definitions are left to ai-term-agi.",
+  "running_text_characters": 2598,
+  "notes": "Three usages separated per the assignment: RL environment model (Sutton & Barto definition, Ha & Schmidhuber, Dreamer/DreamerV3), LeCun's JEPA route (2022 position paper plus V-JEPA 2 as one follow-up experiment), and generative interactive environments (Genie paper and Genie 3 official post, OpenAI report as a second developer using 'world simulator'). The LLM debate cites Othello-GPT and Gurnee & Tegmark for, Vafa et al. against. The robot-vacuum walkthrough is an illustrative example, labelled as such and not tested. Genie 3 frame rate and resolution are public but left out as product specs. Read but cut for length: Genie 2 official post, Nanda et al. arXiv:2309.00941, MuZero arXiv:1911.08265, I-JEPA arXiv:2301.08243. No model scores, prices or AGI timelines."
+}

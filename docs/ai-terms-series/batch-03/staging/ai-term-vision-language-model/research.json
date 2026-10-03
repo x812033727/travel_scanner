@@ -1,0 +1,123 @@
+{
+  "slug": "ai-term-vision-language-model",
+  "status": "verified",
+  "checked_on": "2026-10-03",
+  "sources": [
+    {
+      "title": "Radford 等：Learning Transferable Visual Models From Natural Language Supervision（CLIP，2021）",
+      "url": "https://arxiv.org/abs/2103.00020",
+      "access": "arXiv abs page 200 + full PDF via pdftotext",
+      "claims": [
+        "4 億組網路圖文配對，同時訓練影像與文字編碼器，對比式目標（N×N 配對中認出真正成對者）",
+        "以類別名稱文字做零樣本分類；本身不產生文字，只能在給定概念中挑選",
+        "計算圖中物體數量是論文自列的弱項"
+      ]
+    },
+    {
+      "title": "Alayrac 等：Flamingo: a Visual Language Model for Few-Shot Learning（NeurIPS 2022）",
+      "url": "https://arxiv.org/abs/2204.14198",
+      "access": "arXiv abs page 200 + full PDF via pdftotext",
+      "claims": [
+        "自稱 Visual Language Model：輸入圖文交錯、輸出自由文字",
+        "視覺編碼器與語言模型凍結；Perceiver Resampler 輸出固定 64 個視覺 token",
+        "在語言模型層間插入門控交叉注意力層，tanh 門控初始為 0，初始化時輸出等於原語言模型",
+        "可讀圖文交錯輸入，以示範例子做少量樣本學習",
+        "作者記錄只看文字合理、對照圖片卻錯的幻覺答案"
+      ]
+    },
+    {
+      "title": "Liu 等：Visual Instruction Tuning（LLaVA，NeurIPS 2023）",
+      "url": "https://arxiv.org/abs/2304.08485",
+      "access": "arXiv abs page 200 + full PDF via pdftotext",
+      "claims": [
+        "自稱大型多模態模型；CLIP 視覺編碼器與語言模型之間只有一層可訓練線性投影",
+        "以只讀文字的大型語言模型，根據 COCO 圖片說明與定界框生成 15.8 萬筆圖文指令資料",
+        "兩階段訓練：先只訓練投影層，再連同語言模型微調，視覺編碼器始終凍結",
+        "冰箱草莓優格的失敗例；風險段落點名醫療等關鍵應用"
+      ]
+    },
+    {
+      "title": "Li 等：Evaluating Object Hallucination in Large Vision-Language Models（POPE，EMNLP 2023）",
+      "url": "https://arxiv.org/abs/2305.10355",
+      "access": "arXiv abs page 200 + full PDF via pdftotext",
+      "claims": [
+        "使用 LVLM 一詞",
+        "CHAIR 隨指令變動，相近指令可使數值翻倍",
+        "是非題輪詢；不存在物體以隨機、最常見、最常共同出現三種方式抽樣；有無 1:1",
+        "MSCOCO 驗證集 500 張、標註超過 3 個物體、每張 6 題",
+        "三個模型回答「有」接近 99%；難度由隨機到共同出現依序上升"
+      ]
+    },
+    {
+      "title": "Dosovitskiy 等：An Image is Worth 16x16 Words（Vision Transformer，ICLR 2021）",
+      "url": "https://arxiv.org/abs/2010.11929",
+      "access": "arXiv abs page 200 + full PDF via pdftotext",
+      "claims": [
+        "把圖片切成固定大小的小方塊，像 token 一樣送進 Transformer"
+      ]
+    },
+    {
+      "title": "Tong 等：Eyes Wide Shut? Exploring the Visual Shortcomings of Multimodal LLMs（MMVP，2024）",
+      "url": "https://arxiv.org/abs/2401.06209",
+      "access": "arXiv abs page 200 + full PDF via pdftotext",
+      "claims": [
+        "多數開源多模態語言模型使用現成 CLIP 視覺編碼器",
+        "CLIP-blind 圖片對；150 對、300 題，九類視覺型態含方向、數量、位置",
+        "人類平均 95.7%；多數受測模型低於隨機猜測 25%",
+        "CLIP 吃力的型態與多模態語言模型的錯誤相關"
+      ]
+    },
+    {
+      "title": "Kamath、Hessel、Chang：What's \"up\" with vision-language models?（EMNLP 2023）",
+      "url": "https://arxiv.org/abs/2310.19785",
+      "access": "arXiv abs page 200 + full PDF via pdftotext",
+      "claims": [
+        "自拍同一物件在桌上、下、左、右的照片，從只差介系詞的說明中選正確者",
+        "18 個圖文模型全部遠落後人類，不少只比隨機高幾個百分點",
+        "大型圖文資料集說明中空間介系詞約 0.2%；左右以誰為準有歧義"
+      ]
+    },
+    {
+      "title": "Rohrbach 等：Object Hallucination in Image Captioning（CHAIR，EMNLP 2018）",
+      "url": "https://arxiv.org/abs/1809.02156",
+      "access": "arXiv abs page 200",
+      "claims": [
+        "CHAIR 是影像說明的物件幻覺指標"
+      ]
+    },
+    {
+      "title": "Zhang 等：Vision-Language Models for Vision Tasks: A Survey",
+      "url": "https://arxiv.org/abs/2304.00685",
+      "access": "arXiv abs page 200 + full PDF section 3 via pdftotext",
+      "claims": [
+        "廣義用法：把影像編碼器加文字編碼器、以嵌入比對做零樣本預測的 CLIP 類模型稱為 VLM"
+      ]
+    },
+    {
+      "title": "Hugging Face Transformers 文件：Image-text-to-text",
+      "url": "https://huggingface.co/docs/transformers/tasks/image_text_to_text",
+      "access": "curl 200, HTML to text",
+      "claims": [
+        "窄義用法：VLM 是能接收圖片輸入的語言模型（image-text-to-text）"
+      ]
+    },
+    {
+      "title": "Google for Developers：機器學習詞彙表（繁體中文）",
+      "url": "https://developers.google.com/machine-learning/glossary?hl=zh-TW",
+      "access": "curl 200, HTML to text keyword search",
+      "claims": [
+        "多模態模型定義與「圖片加說明輸出相符分數」的例子",
+        "台灣譯名：編碼器、嵌入、零樣本、少量樣本、指令調整、定界框"
+      ]
+    }
+  ],
+  "aliases": [
+    "VLM",
+    "LVLM",
+    "Visual Language Model",
+    "大型視覺語言模型"
+  ],
+  "existing_overlap": "ai-term-multimodal-ai 談多模態的整體概念與收納架示例、簡短提到 Flamingo；本文聚焦圖文輸入、文字輸出的模型結構、CLIP／Flamingo／LLaVA 的各自貢獻、數量／空間／物件幻覺的研究與收據核對示例，並以表格區分多模態 AI 與文字生圖，連結 ai-term-multimodal-ai、ai-term-text-to-image、ai-hallucination-fact-check、ai-term-transformer 與 ai-terms-index。",
+  "running_text_characters": 2587,
+  "notes": "VLM 一詞有窄義（圖文輸入、文字輸出，Hugging Face 文件、Flamingo）與廣義（含 CLIP 類圖文比對模型，Zhang 等綜述）兩種用法，正文第一段說明採窄義。收據與地圖為原創示例，標明未實測。正文不寫產品型號、價格或排名；研究數字都附設定並註明只屬該論文。title_draft 的「看懂圖片」改為「讀圖片」。"
+}
