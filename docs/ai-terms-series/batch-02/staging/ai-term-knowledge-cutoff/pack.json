@@ -29,7 +29,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "本文依 Anthropic、OpenAI、Google 的官方文件與三篇研究論文，說明各家怎麼標示、為什麼越靠近截止日越不牢靠，用虛構案例示範三種回答型態，再談附上資料、檢索與搜尋能補到哪裡、在哪裡失敗。訓練資料從哪裡來，見"
+              "text": "本文依 Anthropic、OpenAI、Google 的官方文件與三篇研究（其中一篇是預印本），說明各家怎麼標示、為什麼越靠近截止日越不牢靠，用虛構案例示範三種回答型態，再談附上資料、檢索與搜尋能補到哪裡、在哪裡失敗。訓練資料從哪裡來，見"
             },
             {
               "type": "article",
@@ -50,11 +50,11 @@
         },
         {
           "type": "paragraph",
-          "text": "三家文件的標法並不一致。Anthropic 的模型總覽頁把「可靠知識截止日」（reliable knowledge cutoff）與「訓練資料截止日」（training data cutoff）分成兩列；它的透明度頁面把前者解釋為模型知識「最廣泛也最可靠」所及的日期，並寫明有的模型訓練資料截止日比可靠知識截止日晚。也就是說，訓練資料到了某天，不代表之前最後幾個月都學得牢。"
+          "text": "各家標示截止日的名稱與定義並不一致。Anthropic 的文件區分「可靠知識截止日」（reliable knowledge cutoff）與「訓練資料截止日」（training data cutoff），兩者不一定是同一天；它的透明度頁面在部分模型條目裡，把前者解釋為模型知識「最廣泛也最可靠」所及的日期，也有條目寫明訓練資料截止日比可靠知識截止日晚。也就是說，訓練資料到了某天，不代表之前最後幾個月都學得牢。"
         },
         {
           "type": "paragraph",
-          "text": "OpenAI 的模型頁只有一個「Knowledge cutoff」欄位加一個日期，查證時讀到的頁面沒有另外定義它指訓練資料還是可靠知識。Google 的 Gemini API 文件把截止日寫在部分模型頁的欄位，或開發指南的常見問題裡，並補一句：需要更新的資訊，請用搜尋接地工具；但不是每個模型頁都有這個欄位。三家沒有共用的定義，同樣寫「截止日」，意思未必相同；比較兩個模型前，先確認標的是哪一種。"
+          "text": "OpenAI 與 Google 的開發者文件多半只寫一個「knowledge cutoff」加日期，查證時讀到的頁面沒有說明它指訓練資料還是可靠知識；Google 在說明截止日時，也建議需要更新的資訊改用搜尋接地工具。放的位置也不固定：可能在模型頁的欄位、比較表、常見問題或透明度頁面，有些模型頁則完全不列，找不到就翻官方文件的其他頁面。三家沒有共用的定義，同樣寫「截止日」，意思未必相同；比較兩個模型前，先確認標的是哪一種。"
         },
         {
           "type": "heading",
@@ -63,15 +63,15 @@
         },
         {
           "type": "paragraph",
-          "text": "把截止日想成一條銳利的邊界，是常見的誤解。Cheng 等人 2024 年的論文提出「有效截止日」（effective cutoff）：同一個模型對不同資料來源，表現出的截止時間可以不同，也可能和供應商報的不同。他們主要分析訓練資料公開的模型，用 Wikipedia 每月的版本量困惑度（perplexity），發現有些模型的有效截止日比標示早得多，其中一個甚至早了以年計。論文歸因於兩點：新的網頁爬取資料混著大量舊內容，去重複的流程擋不住字面略有差異的重複文件。也有模型和標示吻合，所以結論是「常常不一致」，不是「都不準」。"
+          "text": "把截止日想成一條銳利的邊界，是常見的誤解。Cheng 等人在 COLM 2024 發表的論文提出「有效截止日」（effective cutoff）：同一個模型對不同資料來源，表現出的截止時間可以不同，也可能和供應商報的不同。他們主要分析訓練資料公開的模型，用 Wikipedia 每月的版本量困惑度（perplexity），發現有些模型的有效截止日比標示早得多，其中一個的差距甚至以年計。論文歸因於兩點：新的網頁爬取資料混著大量舊內容，去重複的流程擋不住字面略有差異的重複文件。也有模型和標示吻合，所以結論是「常常不一致」，不是「都不準」。"
         },
         {
           "type": "paragraph",
-          "text": "Dai 等人（ICML 2025）的 Daily Oracle 每天用新聞出真假題與選擇題，在不提供資料的設定下測多個模型。在幾個模型上，截止日之前的幾個月答對率就開始緩慢下降，作者推測是訓練資料裡近期新聞的比重不足；截止日之後，有幾個模型在選擇題上下滑得更快。"
+          "text": "Dai 等人（ICML 2025）的 Daily Oracle 每天從新聞自動出預測題（真假題與選擇題），問某件事在某天前會不會發生、結果如何；答案在截止日之前就揭曉的題目，等於考模型記不記得已發生的事。在不提供資料的設定下，幾個模型在截止日之前的幾個月答對率就開始緩慢下降，作者推測是訓練資料裡近期新聞的比重不足；截止日之後題目才真正要靠預測，有幾個模型在選擇題上下滑得更快。兩篇研究合起來看，標示的日期比較像「大約到這附近」，不是「到這天為止樣樣都知道」。"
         },
         {
           "type": "paragraph",
-          "text": "Pęzik 等人（2025 預印本）的 LLMLagBench 用 1,713 題新聞問答，另請一個模型當評審，替許多模型估計訓練邊界。有的模型不只一個「部分截止點」；在某些模型上，直接問模型得到的截止日比量到的邊界早了一年以上，作者並指出，模型可能自述一個偏保守的日期，同時卻對遠超出實際訓練範圍的事件編造答案。所以標示的日期比較像「大約到這附近」，不是「到這天為止樣樣都知道」。"
+          "text": "模型自己說的截止日準不準，有一篇預印本做了直接比對，尚未經同儕審查：Pęzik 等人 2025 年的 LLMLagBench 用 1,713 題新聞問答，交給另一個模型評分，替許多模型估計訓練邊界。在其中某些模型上，直接問模型得到的截止日比量到的邊界早了一年以上；作者也指出，模型可能自述偏保守的日期，同時卻對遠超出實際訓練範圍的事件編造答案。這是單一預印本的結果，還待其他研究驗證。"
         },
         {
           "type": "image",
@@ -79,7 +79,7 @@
           "alt": "時間軸分成三段：較早的事件資料較完整、接近截止日的資料可能較少且版本混雜、截止日之後模型沒有訓練到；下方三條補救路徑把資料送進上下文視窗，旁邊標出各自的失敗點",
           "width": 1600,
           "height": 900,
-          "caption": "截止日不是一條銳利的線；不重新訓練的話，補救只能把內容放進上下文視窗，來源本身也可能過期。"
+          "caption": "截止日不是一條銳利的線；不更動模型本身的話，補救只能把內容放進上下文視窗，來源本身也可能過期。"
         },
         {
           "type": "heading",
@@ -134,7 +134,7 @@
         },
         {
           "type": "paragraph",
-          "text": "不重新訓練模型的話，補上截止日之後的資訊只有一條路：讓內容進到上下文視窗，模型才讀得到。差別在誰找資料，失敗處也不同。"
+          "text": "不更動模型本身（例如重新訓練或微調）的話，要補上截止日之後的資訊只有一條路：讓內容進到上下文視窗，模型才讀得到。差別在誰找資料，失敗處也不同。"
         },
         {
           "type": "table",
@@ -214,7 +214,7 @@
           "type": "callout",
           "tone": "warning",
           "title": "不要把模型自述的截止日當依據",
-          "text": "模型自述的日期可能比實際保守，也可能是錯的。要查截止日，看供應商當天的官方文件；要確認它知不知道某件事，直接問那件事並核對來源。日期之前的事，也不保證它知道。"
+          "text": "模型自述的日期可能比實際保守，也可能是錯的，上文的預印本就記錄過這種情形。要查截止日，看供應商當天的官方文件；要確認它知不知道某件事，直接問那件事並核對來源。日期之前的事，也不保證它知道。"
         },
         {
           "type": "rich_paragraph",
@@ -243,7 +243,7 @@
           "checked_on": "2026-10-03"
         },
         {
-          "title": "Anthropic：Transparency Hub 的 Model Report（各模型的 Knowledge Cutoff Date 說明）",
+          "title": "Anthropic：Transparency Hub 的 Model Report（部分模型條目的 Knowledge Cutoff Date 說明與定義句）",
           "url": "https://www.anthropic.com/transparency",
           "checked_on": "2026-10-03"
         },
@@ -258,7 +258,7 @@
           "checked_on": "2026-10-03"
         },
         {
-          "title": "OpenAI：Models（模型頁的 Knowledge cutoff 欄位）",
+          "title": "OpenAI：Models（模型清單的 Knowledge cutoff 欄位，頁面未另外定義）",
           "url": "https://developers.openai.com/api/docs/models",
           "checked_on": "2026-10-03"
         },
@@ -268,7 +268,7 @@
           "checked_on": "2026-10-03"
         },
         {
-          "title": "Google：What's new in Gemini 3.5 Flash（目前的開發指南；常見問題寫明截止日，並建議用 Search Grounding 取得更新資訊）",
+          "title": "Google：What's new in Gemini 3.5 Flash（查證時的開發指南；常見問題寫明截止日，並建議用 Search Grounding 取得更新資訊）",
           "url": "https://ai.google.dev/gemini-api/docs/whats-new-gemini-3.5",
           "checked_on": "2026-10-03"
         },
@@ -288,7 +288,7 @@
           "checked_on": "2026-10-03"
         },
         {
-          "title": "Cheng et al. 2024, Dated Data: Tracing Knowledge Cutoffs in Large Language Models（arXiv:2403.12958）",
+          "title": "Cheng et al. 2024, Dated Data: Tracing Knowledge Cutoffs in Large Language Models（COLM 2024，arXiv:2403.12958）",
           "url": "https://arxiv.org/abs/2403.12958",
           "checked_on": "2026-10-03"
         },
@@ -298,7 +298,7 @@
           "checked_on": "2026-10-03"
         },
         {
-          "title": "Pęzik et al. 2025, LLMLagBench: Identifying Temporal Training Boundaries in Large Language Models（arXiv:2511.12116，預印本）",
+          "title": "Pęzik et al. 2025, LLMLagBench: Identifying Temporal Training Boundaries in Large Language Models（arXiv:2511.12116，v1 預印本，未經同儕審查）",
           "url": "https://arxiv.org/abs/2511.12116",
           "checked_on": "2026-10-03"
         }

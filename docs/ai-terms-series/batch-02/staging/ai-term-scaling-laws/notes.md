@@ -44,7 +44,7 @@ Wei 等人定義：能力若在小模型不存在、在大模型存在，即為�
 Wei：不給部分分數的指標「至多是不完整的解釋」，因為分類任務也觀察到湧現｜https://arxiv.org/abs/2206.07682（§5.1）｜2026-10-03｜pdf
 Wei：對六項 BIG-Bench 湧現任務，在下游指標近隨機的規模上，交叉熵損失其實已在改善；但這「解釋不了下游指標為何湧現，也無法預測湧現的規模」｜https://arxiv.org/abs/2206.07682（§5.1、Appendix A.1）｜2026-10-03｜pdf
 Schaeffer 等人：非線性或不連續指標產生表面上的湧現；連續指標下平滑、可預測；超過 92% 的 BIG-Bench 湧現能力出現在多選題等級（Multiple Choice Grade）或完全字串相符（Exact String Match）兩種指標之下。abs 頁為 v2（2023-05-22），PDF 標示 Preprint, under review｜https://arxiv.org/abs/2304.15004（摘要、§1）｜2026-10-03｜abs+pdf
-Schaeffer 的 92% 是對「Jason Wei 手動整理的 BIG-Bench 湧現清單（其文獻 [32]，一篇部落格）」統計（§3「hand-annotated task-metric-model family triplets」），不是 Wei 等人 2022 論文本身的清單。文章因此寫「他們統計一份人工標注的 BIG-Bench 湧現能力清單」，不寫成 Wei 等人的清單｜https://arxiv.org/abs/2304.15004（§1，文獻 [32]）｜2026-10-03｜pdf
+Schaeffer 的 92% 是對「Jason Wei 手動整理的 BIG-Bench 湧現清單（其文獻 [32]，一篇部落格）」統計（§4「hand-annotated task-metric-model family triplets」），不是 Wei 等人 2022 論文本身的清單。文章因此寫「他們統計一份人工標注的 BIG-Bench 湧現能力清單」，不寫成 Wei 等人的清單｜https://arxiv.org/abs/2304.15004（§1，文獻 [32]）｜2026-10-03｜pdf
 Schaeffer：「本文不應被解讀為主張大型語言模型不可能有湧現能力；訊息是先前主張的湧現可能是研究者分析造成的幻象」｜https://arxiv.org/abs/2304.15004（§7）｜2026-10-03｜pdf
 Schaeffer：各 token 獨立的假設不成立，但近似的結果在質性上吻合湧現主張（註腳 1）。示例算式採這個近似｜https://arxiv.org/abs/2304.15004（§2）｜2026-10-03｜pdf
 示例算術（我們自己算的，非論文數字、未實測）：5 位全對率 = 逐位答對率的 5 次方；0.5^5 = 0.03125 → 3%；0.7^5 = 0.16807 → 17%；0.9^5 = 0.59049 → 59%；0.95^5 = 0.77378 → 77%。圖與正文使用同一組數字｜（Schaeffer 等人 §2 的模型：Accuracy ≈ p^L）｜2026-10-03｜pdf

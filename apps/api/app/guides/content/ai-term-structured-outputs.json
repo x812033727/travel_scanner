@@ -7,6 +7,7 @@
     "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
   "locales": {
@@ -17,7 +18,12 @@
         "src": "/guides/ai-term-structured-outputs/hero.jpg",
         "alt": "一疊雜亂的文字紙頁穿過大括號形狀的框架，變成整齊對齊的欄位卡片",
         "width": 1600,
-        "height": 900
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
       },
       "blocks": [
         {
@@ -30,8 +36,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "三種做法：要求、JSON 模式、schema 限制"
+          "text": "三種做法：要求、JSON 模式、schema 限制",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -73,12 +79,18 @@
           "alt": "三層由外到內：合法 JSON、符合 schema、內容正確，並標出三個示例輸出各落在哪一層；拒答或截斷要先看停止原因再解析",
           "width": 1600,
           "height": 900,
-          "caption": "每一層都比外一層更窄；只有最內層需要靠你自己的驗證。"
+          "caption": "每一層都比外一層更窄；只有最內層需要靠你自己的驗證。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "JSON Schema：只需要認得這幾個關鍵字"
+          "text": "JSON Schema：只需要認得這幾個關鍵字",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -101,8 +113,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "示例：從報名信擷取姓名、日期、人數"
+          "text": "示例：從報名信擷取姓名、日期、人數",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -134,8 +146,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "缺值、拒答與截斷怎麼接"
+          "text": "缺值、拒答與截斷怎麼接",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -156,8 +168,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "三家文件列出的限制"
+          "text": "三家文件列出的限制",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -178,8 +190,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "和工具呼叫、提示詞串接的分工"
+          "text": "和工具呼叫、提示詞串接的分工",
+          "level": 2
         },
         {
           "type": "rich_paragraph",

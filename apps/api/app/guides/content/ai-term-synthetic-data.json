@@ -7,6 +7,7 @@
     "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
   "locales": {
@@ -17,7 +18,12 @@
         "src": "/guides/ai-term-synthetic-data/hero.jpg",
         "alt": "許多虛線小卡片落進漏斗，下方只剩幾張打勾的實線卡片，旁邊有一支放大鏡",
         "width": 1600,
-        "height": 900
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
       },
       "blocks": [
         {
@@ -30,8 +36,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "先分清楚兩種合成資料"
+          "text": "先分清楚兩種合成資料",
+          "level": 2
         },
         {
           "type": "rich_paragraph",
@@ -104,8 +110,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "Self-Instruct：從 175 個種子任務長出訓練資料"
+          "text": "Self-Instruct：從 175 個種子任務長出訓練資料",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -127,8 +133,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "示例：客服問答的生成與抽查"
+          "text": "示例：客服問答的生成與抽查",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -151,8 +157,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "模型崩潰：研究量到什麼，沒量到什麼"
+          "text": "模型崩潰：研究量到什麼，沒量到什麼",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -168,7 +174,13 @@
           "alt": "並排比較替換與累積：替換時每一代只用上一代模型的輸出訓練，累積時真實資料保留並加上各代輸出",
           "width": 1600,
           "height": 900,
-          "caption": "兩種資料更新方式的差別；結果只描述該論文的實驗與理論設定。"
+          "caption": "兩種資料更新方式的差別；結果只描述該論文的實驗與理論設定。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
         },
         {
           "type": "paragraph",
@@ -180,8 +192,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "隱私用途：合成不等於去識別"
+          "text": "隱私用途：合成不等於去識別",
+          "level": 2
         },
         {
           "type": "paragraph",

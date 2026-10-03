@@ -33,7 +33,7 @@ string enum 與 const 值的大小寫不保證與 schema 一致，回應正常�
 文件列出的關鍵字：type（string、number、integer、boolean、object、array、null）、title、description、properties、required、additionalProperties、enum、format、minimum、maximum、items、prefixItems、minItems、maxItems｜同上，「JSON schema support」｜2026-10-03｜同上
 最佳實務：輸出語法正確，但一律在應用程式端驗證值；要處理符合 schema 卻語意不正確的輸出｜同上，「Best practices」｜2026-10-03｜同上
 限制：只支援子集；過大或巢狀過深的 schema 可能被拒絕｜同上，「Limitations」｜2026-10-03｜同上
-這一頁沒有說明拒答或截斷的訊號（頁面文字搜尋 refus、truncat、incomplete、finish、blocked 皆無命中；正文只寫「這一頁沒有說明」，沒有說 Gemini 沒有這類訊號）｜同上｜2026-10-03｜同上，全文搜尋
+這一頁沒有說明拒答或截斷的訊號（頁面文字搜尋 refus、truncat、incomplete、finish、blocked 皆無命中；正文只寫「這一頁沒寫」，沒有說 Gemini 沒有這類訊號）｜同上｜2026-10-03｜同上，全文搜尋
 結構化輸出管最終回答格式，函式呼叫管對話中的動作｜同上，「Structured outputs versus function calling」表｜2026-10-03｜同上
 
 ## JSON Schema 與 JSON
@@ -52,7 +52,7 @@ RFC 8259（STD 90）定義 JSON 文字的語法｜https://www.rfc-editor.org/rfc
 
 報名信、王小美、人數 6、schema 與預期輸出都是原創虛構示例，沒有呼叫任何 API，正文與程式區塊標籤都寫明「示例／未實測」。
 「三層」（合法 JSON、符合 schema、內容正確）是本文為了教學設計的分層，不是任何一家文件的用語；正文沒有把它歸給任何供應商。
-示例 schema 只用 type（含 null 聯集）、properties、required、enum、additionalProperties、description，對照上面三份文件沒有落在任何一家列出的不支援項目；沒有實際送進 API。
+示例 schema 只用 type（含 null 聯集）、properties、required、enum、additionalProperties、items、description，對照上面三份文件沒有落在任何一家列出的不支援項目；沒有實際送進 API。
 圖解沒有數字，唯一的數字是頁尾製圖年份 2026，正文有「2026 年 10 月 3 日」。
 未寫模型名、價格、截止日、排行榜分數。
 
@@ -61,7 +61,7 @@ RFC 8259（STD 90）定義 JSON 文字的語法｜https://www.rfc-editor.org/rfc
 1. 簡報的 SVG 渲染指令用 `chromium-1194/chrome-linux/chrome`，這個完整版 Chromium 在 `--headless --window-size=1600,900` 下只截到約 812 px 高，畫面底部被截掉、整片變白。改用 `chromium_headless_shell-1194/chrome-linux/headless_shell`（`pack_ingest.chromium_binary()` 預設會優先選它）渲染出完整 1600x900，兩張圖都是用這個檢查的。
 2. 簡報說字數「不含連結文字」，但 `_body_length` 會把 `rich_paragraph` 裡 `article` inline 的文字也算進去。`research.json` 的 `running_text_characters` 採 `_body_length` 的值：初稿 2578，一審後 2809，二審為可讀性刪減後 2543；扣掉連結文字是 2454。
 3. 目錄把 JSON Schema 稱為「規範原文」；實際上 2020-12 版是 Internet-Draft，不是 RFC，正文已照此寫。
-4. 簡報要求寫各家「拒答訊號」：OpenAI 與 Anthropic 有，Google 這一頁沒寫，正文如實寫「這一頁沒有說明」。
+4. 簡報要求寫各家「拒答訊號」：OpenAI 與 Anthropic 有，Google 這一頁沒寫，正文如實寫「這一頁沒寫拒答或截斷的訊號」。
 5. dry-run 只有一個警告 `no_summary`（沒有 summary 區塊），簡報沒有要求，留給後續 `pack_cli summarize` 批次處理。
 
 ## 查核輪次

@@ -22,10 +22,10 @@
         "Attention was mostly used together with recurrent networks; the Transformer relies entirely on attention without recurrence or convolution",
         "Attention maps a query and key-value pairs to an output, a weighted sum of values with weights from a compatibility function",
         "Scaled dot-product attention: dot products, division by sqrt(d_k), softmax, weighted sum; the scaling rationale is stated as a suspicion",
-        "Multi-head attention: h learned projections, parallel attention, concatenation and projection; base setting h=8, d_k=d_v=64, d_model=512, similar total cost to single-head full dimension",
-        "Encoder-decoder (cross) attention takes queries from the decoder and keys/values from the encoder output; self-attention takes all three from one sequence; decoder self-attention is masked",
+        "Multi-head attention: h learned projections, parallel attention, concatenation and projection; base setting h=8, d_k=d_v=64, d_model=512, similar total cost to single-head full dimension; rationale: multiple heads let the model jointly attend to different representation subspaces at different positions, and with a single head averaging inhibits this",
+        "Encoder-decoder (cross) attention takes queries from the decoder and keys/values from the encoder output; self-attention takes all three from one sequence and each position attends to all positions including itself; decoder self-attention is masked to positions up to and including the current one",
         "Table 1: self-attention O(n^2*d) per layer with O(1) maximum path length; recurrent O(n*d^2) with O(n); restricted self-attention O(r*n*d) with O(n/r)",
-        "Ablation (English-German dev set, constant computation): too many heads lowers quality",
+        "Ablation (English-German development set newstest2013, number of heads and per-head dimensions varied with total computation held constant): single-head attention is worse than the best setting, and quality also drops with too many heads",
         "Appendix figures describe two layer-5-of-6 encoder heads as 'apparently involved in anaphora resolution' and many heads as behaving in ways that 'seem related' to sentence structure (hedged observations, not a guarantee)"
       ]
     },
@@ -37,7 +37,8 @@
         "Setting: BiLSTM encoders with attention (plus averaging and CNN encoders for contrast) on English text classification, question answering and natural language inference; seq2seq tasks not covered",
         "For recurrent encoders, attention weights correlate only weakly and inconsistently with gradient and leave-one-out feature-importance measures",
         "With other model parameters held fixed, very different attention distributions can often be constructed that yield nearly the same prediction; random permutation of weights often changes output little",
-        "Authors conclude standard attention modules do not provide meaningful explanations and should not be treated as if they do, and list limitations of their own evidence"
+        "Authors conclude standard attention modules do not provide meaningful explanations and should not be treated as if they do, and list limitations of their own evidence",
+        "Section 6: the authors do not claim gradient or erasure (leave-one-out) measures are ideal or ground truth, so input-removal tests are presented in the article as another clue, not a definitive check"
       ]
     },
     {
@@ -54,8 +55,10 @@
       "access": "web open (curl -sSL abs page and PDF, HTTP 200; PDF converted with pdftotext and read section by section)",
       "claims": [
         "Whether attention is explanation depends on the definition of explanation (faithful versus plausible) and testing must take all model elements into account",
+        "Section 2: the authors find Jain and Wallace's correlation experiments convincing and focus on the adversarial part",
         "Proposes four tests: uniform-weights baseline, variance calibration over random seeds, frozen-weights diagnostic MLP, end-to-end adversarial attention training",
-        "Adversarial distributions can be found for some classification tasks but are less extreme under model-consistent training and perform poorly on the diagnostic, so prior work does not disprove attention's usefulness for explainability",
+        "Diagnostic (sections 3.4 and 4, Table 3): adversarial weights found by model-consistent training are imposed as fixed weights on a non-contextual MLP; on three of four English binary classification datasets (Diabetes, SST, IMDb) they score clearly below the base LSTM's learned weights, while on Anemia the two are comparable, which footnote 8 attributes to that dataset's skewed distribution and indicative tokens",
+        "On that basis the authors argue prior work does not disprove attention's usefulness for explainability; section 6 confirms adversarial distributions can be found for LSTM models in some classification tasks, though less extreme under model-consistent training than per-instance search",
         "For some datasets frozen uniform attention performs about as well as learned attention (not used in the article text)"
       ]
     },
@@ -70,10 +73,19 @@
     {
       "url": "https://arxiv.org/abs/2205.14135",
       "title": "Dao et al.: FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness (arXiv:2205.14135)",
-      "access": "web open (curl -sSL abs page, HTTP 200; abstract only, full text not read)",
+      "access": "web open (curl -sSL abs page and PDF, HTTP 200; PDF converted with pdftotext; abstract, section 1 and Theorem 1 read)",
       "claims": [
         "Time and memory complexity of self-attention are quadratic in sequence length",
-        "FlashAttention is an exact attention algorithm that reduces reads and writes between GPU memory levels, so implementation choices change speed and memory without changing the attention result"
+        "FlashAttention is an exact attention algorithm: Theorem 1 states it returns softmax(QK^T)V with O(N^2 d) FLOPs, i.e. mathematically the same computation as standard attention; the paper does not claim bitwise-identical floating-point output and the article does not imply it",
+        "It speeds attention up by reducing reads and writes between GPU HBM and on-chip SRAM, and section 1 notes FLOP counts need not track wall-clock speed, so actual speed cannot be read off the quadratic formula alone (the article makes no price claim)"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2307.03172",
+      "title": "Liu et al.: Lost in the Middle: How Language Models Use Long Contexts (arXiv:2307.03172, TACL vol. 12, 2024)",
+      "access": "web open (curl -sSL abs page and PDF, HTTP 200; PDF converted with pdftotext; abstract and section 1 read; venue checked on https://aclanthology.org/2024.tacl-1.9/, HTTP 200)",
+      "claims": [
+        "On multi-document question answering and key-value retrieval, performance is often highest when relevant information is at the beginning or end of the input and degrades significantly when it sits in the middle of a long input; supports the article's 'fitting in the window is not the same as using it well' (no model names or numbers in the article)"
       ]
     },
     {
@@ -99,6 +111,6 @@
     "Scaled Dot-Product Attention"
   ],
   "existing_overlap": "ai-term-transformer (published) covers self-attention at overview level with its own pronoun sentence, one paragraph each on query/key/value and a multi-head caution, and a generic quadratic-cost sentence. This article is the mechanism-level treatment (scoring, softmax weights, a weighted-average example, cross-attention versus self-attention, the 2014-2017 history, the weights-as-explanation debate, cost and KV cache) and links to the transformer, token and context-window articles instead of repeating them. ai-term-neural-network is a batch-02 sibling that may not be published yet.",
-  "running_text_characters": 2524,
-  "notes": "Characters counted as pack_ingest._body_length does (paragraphs, rich_paragraph text including link text, list items, table cells, callout title and text; whitespace removed). Excluding the five article-link labels the count is 2490. The sentence, the weights 0.55/0.25/0.10/0.10 and the diagram are illustrative teaching material, labelled as examples and not measured on any model. Source-versus-brief differences: Wiegreffe and Pinter respond rather than flatly rebut (conclusion depends on the definition of explanation, and adversarial distributions are confirmed for some tasks); Vaswani et al. claim, to the best of their knowledge, to be the first transduction model relying entirely on self-attention, which the article does not repeat as 'first'. Dry-run ingest passes with only the no_summary warning shared by the sample article."
+  "running_text_characters": 2868,
+  "notes": "Characters counted with app.guides.pack_ingest._body_length on the final pack.json (paragraphs, rich_paragraph text including link text, list items, table cells, callout title and text; whitespace removed): 2868; excluding the five article-link labels 2834. Synced after two verification rounds (verify-1.md, verify-2.md, both 2026-10-03). The sentence, the weights 0.55/0.25/0.10/0.10 and the diagram are illustrative teaching material, labelled as examples and not measured on any model. Source-versus-brief differences: Wiegreffe and Pinter respond rather than flatly rebut (conclusion depends on the definition of explanation, the diagnostic favours learned weights on three of four datasets with Anemia comparable, and adversarial distributions are confirmed for some tasks); Vaswani et al. claim, to the best of their knowledge, to be the first transduction model relying entirely on self-attention, which the article does not repeat as 'first'. FlashAttention is described as exact in the mathematical sense only. The removal test in the callout is framed as another clue, following Jain and Wallace section 6. Dry-run ingest passes with only the no_summary warning shared by the sample article."
 }
