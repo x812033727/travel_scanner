@@ -22,7 +22,7 @@
 | `manifest.json`、`hero-sheet-*.jpg`、`diagram-1-sheet-*.jpg` | `build_assets.py` 全量建置的產物：13 篇的網址清單與 contact sheet（人眼看圖用）。 |
 | `renders/`（git 忽略） | 出圖中間檔。 |
 
-## 流程（B 節，`C:\Users\x8120\.claude\plans\parsed-conjuring-dolphin.md`）
+## 流程（B 節，`<home>\.claude\plans\parsed-conjuring-dolphin.md`）
 
 1. 撰稿（sonnet，一篇一代理，指派抄 `agents/ASSIGNMENTS.md`）→ 各自跑 `check_article.py <slug>` 到 OK。
 2. 查核（opus，一篇一代理）→ 改 >10 處才第二輪。

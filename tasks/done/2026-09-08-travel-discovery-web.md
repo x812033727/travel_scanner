@@ -84,6 +84,6 @@ Root approved bounded scope extensions for opt-in TravelCardActions login-resume
 ## Completion evidence
 
 - Coordinating root verified PR #372 merged as 6eacb821, with every main CI check green.
-- Coordinating root deployed that revision to hostinger2: all 8 services running, schema 0066, and three consecutive readiness checks passed. Existing environment configuration and volumes were preserved; the verified pre-deployment backup is 13,672,114 bytes with mode 0600.
+- Coordinating root deployed that revision to `<saved-session>`: all 8 services running, schema 0066, and three consecutive readiness checks passed. Existing environment configuration and volumes were preserved; the verified pre-deployment backup is 13,672,114 bytes with mode 0600.
 - Discovery and community remain OFF in production. This completes deployed implementation and verification, not a rollout enablement claim. No production operations were performed by this subtask.
 - The planner-calm owner (thread 01a057cf) requested apps/web/e2e/planner-premium.spec.ts back after merge. Completing this task releases its exact scope, with no pending source edits or further claim on that test. Root handles the task-only archive commit and handoff.

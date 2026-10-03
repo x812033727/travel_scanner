@@ -4,7 +4,7 @@
 - 查核日：2026-09-23
 - 內容包：`apps/api/app/guides/content/ai-news-gemini-student-offer-20260820.json`
 - 研究紀錄：`docs/ai-news-2026-09-late/research/ai-news-gemini-student-offer-20260820.json`（已附 `factcheck.second_round`）
-- 第一輪報告：`C:\Users\x8120\mokaair-work\news44\factcheck\ai-news-gemini-student-offer-20260820-round1.md`
+- 第一輪報告：`<home>\mokaair-work\news44\factcheck\ai-news-gemini-student-offer-20260820-round1.md`
 - 結論：**ok**（第二輪改 7 處內容包／2 處研究紀錄，其中 4 處是協調者裁示、3 處是本輪自己查出來的事實或引句問題）
 
 ---
@@ -164,7 +164,7 @@ exit=1
 ```
 
 兩個 lint 類別都是出圖與 relink 之前的預期狀態。退出碼另寫在
-`C:\Users\x8120\mokaair-work\news44\_tools\ai-news-gemini-student-offer-20260820-r2\exit-codes.txt`，
+`<home>\mokaair-work\news44\_tools\ai-news-gemini-student-offer-20260820-r2\exit-codes.txt`，
 輔助腳本（重抓、抽正文、清單清點、引句比對、字數與密度稽核、套用改動）同一個目錄。
 
 ## 9. 結論

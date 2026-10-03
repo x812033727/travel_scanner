@@ -83,7 +83,7 @@ blocks 依序：
 
 ```bash
 cd apps/api
-PYTHONIOENCODING=utf-8 /c/Users/x8120/mokaair/apps/api/.venv/Scripts/python.exe ../../docs/ai-news-2026-09-mid/check_article.py <slug>
+PYTHONIOENCODING=utf-8 <repo>/apps/api/.venv/Scripts/python.exe ../../docs/ai-news-2026-09-mid/check_article.py <slug>
 ```
 
 輸出 `OK` 才算完成；有 `FAIL` 就修到過。只寫自己那篇的兩個檔案，不要動其他檔案、不要 git commit。

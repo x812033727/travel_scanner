@@ -2,7 +2,7 @@
   {
     "type": "system",
     "subtype": "init",
-    "cwd": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-1cif6_q1",
+    "cwd": "<home>\\AppData\\Local\\Temp\\mokaair-claude-case-1cif6_q1",
     "session_id": "df52a802-3e0f-4cfd-9e49-65cda5b20041",
     "tools": [
       "Glob",
@@ -106,7 +106,7 @@
     "product_feedback_disabled": false,
     "uuid": "bb42b46e-3a69-41eb-90a2-87202f00e3cd",
     "memory_paths": {
-      "auto": "C:\\Users\\x8120\\.claude\\projects\\C--Users-x8120-AppData-Local-Temp-mokaair-claude-case-1cif6-q1\\memory\\"
+      "auto": "<home>\\.claude\\projects\\<project-slug>\\memory\\"
     },
     "fast_mode_state": "off",
     "fast_mode_disabled_reason": "sdk_opt_in_required"
@@ -241,7 +241,7 @@
       "content": [
         {
           "type": "text",
-          "text": "Base directory for this skill: C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-1cif6_q1\\.claude\\skills\\review-change\n\n參數或任務必須明確指定一份練習 diff；資訊不足先詢問。\r\n只讀審查，不能修改、提交或建立 PR。\r\n以 templates/report.md 回報，沒有問題可以直接說明，不湊數。\r\n\n\nARGUMENTS: fixtures/toggle.diff"
+          "text": "Base directory for this skill: <home>\\AppData\\Local\\Temp\\mokaair-claude-case-1cif6_q1\\.claude\\skills\\review-change\n\n參數或任務必須明確指定一份練習 diff；資訊不足先詢問。\r\n只讀審查，不能修改、提交或建立 PR。\r\n以 templates/report.md 回報，沒有問題可以直接說明，不湊數。\r\n\n\nARGUMENTS: fixtures/toggle.diff"
         }
       ]
     },
@@ -302,7 +302,7 @@
           "id": "toolu_01RReTV22JrnKvUDKJGYS8Ht",
           "name": "Read",
           "input": {
-            "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-1cif6_q1\\.claude\\skills\\review-change\\templates\\report.md"
+            "file_path": "<home>\\AppData\\Local\\Temp\\mokaair-claude-case-1cif6_q1\\.claude\\skills\\review-change\\templates\\report.md"
           },
           "caller": {
             "type": "direct"
@@ -353,7 +353,7 @@
     "tool_use_result": {
       "type": "text",
       "file": {
-        "filePath": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-1cif6_q1\\.claude\\skills\\review-change\\templates\\report.md",
+        "filePath": "<home>\\AppData\\Local\\Temp\\mokaair-claude-case-1cif6_q1\\.claude\\skills\\review-change\\templates\\report.md",
         "content": "# 審查結果\n\n輸入檔案：\n檢查範圍：\n\n| 檔案與行號 | 重現條件 | 影響 | 證據 | 驗證狀態 |\n|---|---|---|---|---|\n\n未執行的驗證：\n",
         "numLines": 10,
         "startLine": 1,
@@ -374,7 +374,7 @@
           "id": "toolu_01Cytf9dt6YM85WoHNQSqBTg",
           "name": "Read",
           "input": {
-            "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-1cif6_q1\\fixtures\\toggle.diff"
+            "file_path": "<home>\\AppData\\Local\\Temp\\mokaair-claude-case-1cif6_q1\\fixtures\\toggle.diff"
           },
           "caller": {
             "type": "direct"
@@ -425,7 +425,7 @@
     "tool_use_result": {
       "type": "text",
       "file": {
-        "filePath": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-1cif6_q1\\fixtures\\toggle.diff",
+        "filePath": "<home>\\AppData\\Local\\Temp\\mokaair-claude-case-1cif6_q1\\fixtures\\toggle.diff",
         "content": "--- a/model.js\n+++ b/model.js\n@@ -5,3 +5,3 @@\n export function toggleTodo(items, id) {\n-  return items.map(item => item.id === id ? { ...item, completed: !item.completed } : item);\n+  return items.map(item => item.id !== id ? { ...item, completed: !item.completed } : item);\n }\n",
         "numLines": 8,
         "startLine": 1,
@@ -501,7 +501,7 @@
           "id": "toolu_01DoQjzGENHH3iiBfwE9mL1C",
           "name": "Read",
           "input": {
-            "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-1cif6_q1\\model.js"
+            "file_path": "<home>\\AppData\\Local\\Temp\\mokaair-claude-case-1cif6_q1\\model.js"
           },
           "caller": {
             "type": "direct"
@@ -552,7 +552,7 @@
     "tool_use_result": {
       "type": "text",
       "file": {
-        "filePath": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-1cif6_q1\\model.js",
+        "filePath": "<home>\\AppData\\Local\\Temp\\mokaair-claude-case-1cif6_q1\\model.js",
         "content": "export function addTodo(items, title, id) {\n  const cleaned = title.trim();\n  if (!cleaned || cleaned.length > 100) return items;\n  return [...items, { id, title: cleaned, completed: false }];\n}\nexport function toggleTodo(items, id) {\n  return items.map(item => item.id === id ? { ...item, completed: !item.completed } : item);\n}\nexport function removeTodo(items, id) {\n  return items.filter(item => item.id !== id);\n}\n",
         "numLines": 12,
         "startLine": 1,
@@ -653,7 +653,7 @@
           "id": "toolu_01TjDazjSPFXGjP2Amje5XMg",
           "name": "Read",
           "input": {
-            "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-1cif6_q1\\tests\\model.test.mjs"
+            "file_path": "<home>\\AppData\\Local\\Temp\\mokaair-claude-case-1cif6_q1\\tests\\model.test.mjs"
           },
           "caller": {
             "type": "direct"
@@ -704,7 +704,7 @@
     "tool_use_result": {
       "type": "text",
       "file": {
-        "filePath": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-1cif6_q1\\tests\\model.test.mjs",
+        "filePath": "<home>\\AppData\\Local\\Temp\\mokaair-claude-case-1cif6_q1\\tests\\model.test.mjs",
         "content": "import { test } from 'node:test';\nimport assert from 'node:assert/strict';\nimport { addTodo, toggleTodo, removeTodo } from '../model.js';\n\ntest('新增待辦會去除前後空白並保留既有資料', () => {\n  const original = [{ id: 'a', title: '買早餐', completed: true }];\n  const added = addTodo(original, '  讀書  ', 'b');\n  assert.deepEqual(added, [...original, { id: 'b', title: '讀書', completed: false }]);\n  assert.equal(original.length, 1);\n});\ntest('拒絕空白與過長內容', () => {\n  const original = [];\n  assert.equal(addTodo(original, '   ', 'a'), original);\n  assert.equal(addTodo(original, '字'.repeat(101), 'a'), original);\n});\ntest('依照識別碼切換指定項目，不改動其他項目', () => {\n  const original = [{ id: 'a', title: '相同標題', completed: false }, { id: 'b', title: '相同標題', completed: true }];\n  const updated = toggleTodo(original, 'a');\n  assert.equal(updated[0].completed, true);\n  assert.equal(updated[1].completed, true);\n  assert.equal(original[0].completed, false);\n});\ntest('刪除依識別碼進行，找不到項目時仍保留資料', () => {\n  const original = [{ id: 'a', title: '測試', completed: false }];\n  assert.deepEqual(removeTodo(original, 'missing'), original);\n  assert.deepEqual(removeTodo(original, 'a'), []);\n});\n",
         "numLines": 28,
         "startLine": 1,

@@ -77,7 +77,7 @@
 
 執行期間重新讀取每個主稿、timeline、cache、轉寫、WAV 及 SVG 的 SHA，沒有變動；正文判定不使用舊版 848.6 秒或任何候選稿估算。執行 command 為 Node 24.19.0 呼叫外部 `t26-runtime-independent.mjs`，exit 0。
 
-完整逐 clip／逐 SVG 收據在 workspace 外：`C:/Users/x8120/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t26-runtime-independent-body.json`，SHA256 `bcd1817797c080d72d04a7f02d10a1dfc070a4ff1f1044a23aef16b098b40b00`。
+完整逐 clip／逐 SVG 收據在 workspace 外：`<home>/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t26-runtime-independent-body.json`，SHA256 `bcd1817797c080d72d04a7f02d10a1dfc070a4ff1f1044a23aef16b098b40b00`。
 
 ## 成片實測與目前版本
 
@@ -121,7 +121,7 @@
 
 ## 可重核收據與原失敗保留
 
-以下均位於 repo 外 `C:/Users/x8120/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/`，保留原檔不覆写：
+以下均位於 repo 外 `<home>/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/`，保留原檔不覆写：
 
 | 收據 | SHA256 |
 | --- | --- |

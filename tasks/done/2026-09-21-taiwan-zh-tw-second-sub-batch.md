@@ -50,11 +50,11 @@ production version/hash guard and a slug-scoped import dry run.
 
 ## Notes
 
-- Worktree `C:\Users\x8120\.codex\worktrees\taiwan-zh-tw-batch-002\travel_scanㄐ`
+- Worktree `<home>\.codex\worktrees\taiwan-zh-tw-batch-002\travel_scanㄐ`
   and branch `codex/taiwan-zh-tw-batch-002` started from `origin/main`
   `c10ba4de869ee32573abd9e2fc20ed43edfec6fb`.
 - Fresh read-only production snapshot captured at 2026-09-21T13:20:38Z in
-  `C:\Users\x8120\.codex\article-localization-taiwan-zh-tw\batch002\fresh-live-two.json`,
+  `<home>\.codex\article-localization-taiwan-zh-tw\batch002\fresh-live-two.json`,
   SHA-256 `c1d3d0826716f08eb4bcf715b378a4790f078ba017787eb2db6a8635b7a06758`.
   Both articles are active/published article version 2 with no zh-TW locale.
   Taipei Metro zh-CN is published version 6, SHA-256
@@ -101,7 +101,7 @@ production version/hash guard and a slug-scoped import dry run.
   `f34bde51024d684e41820c73fd93ef6e5d95fa86dc10f1d614e10bd7528f19d6`
   and `548b9d1ea5859c52e659d86808d4ef60fafb7fecd3bb764a38d685d6fd283bff`.
   The hash-bound review receipt is
-  `C:\Users\x8120\.codex\article-localization-taiwan-zh-tw\batch002\independent-review.json`,
+  `<home>\.codex\article-localization-taiwan-zh-tw\batch002\independent-review.json`,
   SHA-256 `f135e81463f57a2e117322496357e83dc5a06f85ec210244ca8db65dc1159ef3`.
 - Content PR #620 merged to main as
   `bb53e361bb6c1ac35a00ac0f65e49c0b304ac034`. Exact-main CI run
