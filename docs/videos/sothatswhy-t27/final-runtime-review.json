@@ -1,0 +1,673 @@
+{
+  "schema": 1,
+  "episode": "sothatswhy-t27",
+  "reviewer": "codex-art-t27",
+  "reviewed_at": "2026-10-02T15:59:11.248Z",
+  "verdict": "PASS_CURRENT_FINAL_RUNTIME_BINDINGS_AND_SAMPLES",
+  "reviewer_relationship": {
+    "authored_episode_art": true,
+    "authored_episode_narration": false,
+    "performed_assembly": false,
+    "performed_independent_runtime_checks": true,
+    "independent_art_semantic_review": "visual-review.json by codex-write-t27; current SHA 47a692798587e8b99cdb5c4f533eb743663347a4129d9de7ff02740c3f4397d1"
+  },
+  "scope": "Actual complete video and audio decode, actual input timestamps, current source/render/caption/approval/package hashes, backend GET proof attachments, and actual final image samples. Read-only except this review's two files.",
+  "binding": {
+    "source_video_sha256": "89d7d0fb16acfb196d5f19f6f9cc96a776b69b08234a492f1d3e8fd7078d494c",
+    "speech_hash": "e763f5bdd108bfa1",
+    "visual_hash": "ecc202c8cc01eec0",
+    "art_manifest_sha256": "260ed6f4a37ce2199e8ef563fc0de0b4d92bd3368b67b89d5d4809927b538bda",
+    "final_path": "C:/Users/x8120/mokaair-work/videos/sothatswhy-t27/final.mp4",
+    "final_sha256": "3894c35e2cd5860d0b834c1ba02578986600c15e1e4ce53d59d0b95f1e993016",
+    "metadata_sha256": "0b391df71413e3ea5ef4307b4984d332dd81174e43af5fc98b92e4ed0abe79d3",
+    "body_sha256": "ee61d35e59cd381ca741749dc89c775859529deaaa14e2bc194b15874aa653f7",
+    "narration_wav_sha256": "b75d51f3ed663dd3b0bb52a7ee4d5790270f2c1c09daab8a12dcf557b04a9377",
+    "branding_hash": "047ff12a4888185d8fb1cb0cd520f7a2e23b9c3538fe3f2e8d4cb35afb0720bb",
+    "current_file_sha256": {
+      "C:/Users/x8120/.codex/worktrees/sothatswhy-t27/travel_scanㄐ/docs/videos/sothatswhy-t27/video.json": "89d7d0fb16acfb196d5f19f6f9cc96a776b69b08234a492f1d3e8fd7078d494c",
+      "C:/Users/x8120/.codex/worktrees/sothatswhy-t27/travel_scanㄐ/docs/videos/sothatswhy-t27/claims.md": "2b29857d6720932ac286992e0467f63700624249634a251541aa6a102afc0518",
+      "C:/Users/x8120/.codex/worktrees/sothatswhy-t27/travel_scanㄐ/docs/videos/sothatswhy-t27/verify-1.md": "783cdf2689cb1c7f32b05681f900b820f99a3b6ca54a072584f569e87e4e0131",
+      "C:/Users/x8120/.codex/worktrees/sothatswhy-t27/travel_scanㄐ/docs/videos/sothatswhy-t27/brief.md": "25afc729f4c2243d98eedac3e1e2134b411da10a3b178e225e1734bb5201e62b",
+      "C:/Users/x8120/.codex/worktrees/sothatswhy-t27/travel_scanㄐ/docs/videos/sothatswhy-t27/vector-art/manifest.json": "260ed6f4a37ce2199e8ef563fc0de0b4d92bd3368b67b89d5d4809927b538bda",
+      "C:/Users/x8120/.codex/worktrees/sothatswhy-t27/travel_scanㄐ/docs/videos/sothatswhy-t27/fact-source-audit.json": "1917da872e108114fbf2b3901e9a125ae0fd0f31d770c378903451bdb09bfe0e",
+      "C:/Users/x8120/.codex/worktrees/sothatswhy-t27/travel_scanㄐ/docs/videos/sothatswhy-t27/visual-review.json": "47a692798587e8b99cdb5c4f533eb743663347a4129d9de7ff02740c3f4397d1",
+      "C:/Users/x8120/.codex/worktrees/sothatswhy-t27/travel_scanㄐ/docs/videos/lexicon.json": "6a67be0c12d2b5ddaa4dc587ebf53f2df4832d7cb2083ea16d1423f21733153d",
+      "C:/Users/x8120/mokaair-work/videos/sothatswhy-t27/timeline.json": "8e662e6faefb04b1d4c661f907affc983322d82eab752f8c4da1243e6814fc9e",
+      "C:/Users/x8120/mokaair-work/videos/sothatswhy-t27/checks.json": "e650dfa01c70816e5e27c9a867898599f189f3e2c05ba9694003c253a4cab4cf",
+      "C:/Users/x8120/mokaair-work/videos/sothatswhy-t27/frames/manifest.json": "114792f08efeac08ec723ef8d6fa67808066ca6b243b76482559af50ac8e2462",
+      "C:/Users/x8120/mokaair-work/videos/sothatswhy-t27/frames/cache.json": "8908b06e3e775cb1dada2d3a8e99ec353699eb0f195d5901167264eabcba1b83",
+      "C:/Users/x8120/mokaair-work/videos/sothatswhy-t27/captions/manifest.json": "4a5b75f479b1f41f0cc3d5fcf681a0255ece5399666066e0cb153fa9bfb58c82",
+      "C:/Users/x8120/mokaair-work/videos/sothatswhy-t27/captions/zh-TW.srt": "45726c8261455e51d89a1d5f306850543b1c860f6068ace32bfc03d96f30bdd6",
+      "C:/Users/x8120/mokaair-work/videos/sothatswhy-t27/captions/zh-TW.vtt": "507efaeab2b770770332c571caa2d2fa4a50a1d0ac684c73a75d2a6a5b586957",
+      "C:/Users/x8120/mokaair-work/videos/sothatswhy-t27/review/qa.json": "3453cb6de1a621b0bbfe4005d4eb8a434d8ae79e2e1cf591ceaade65d196aab5",
+      "C:/Users/x8120/mokaair-work/videos/sothatswhy-t27/upload/metadata.json": "0b391df71413e3ea5ef4307b4984d332dd81174e43af5fc98b92e4ed0abe79d3",
+      "C:/Users/x8120/mokaair-work/videos/sothatswhy-t27/approvals.json": "b3176c05902c5dfe987f112d1520ae6e4ec8ee8d71a38baef5946c412100c4bd",
+      "C:/Users/x8120/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t27-remote-delivery-2026-10-02T15-52-00-323Z.json": "bdc2f89fed065da15a9436a01a77c4fc138ea83e270bce2d7fd3a34867585c10"
+    }
+  },
+  "actual_probe": {
+    "final_sha256": "3894c35e2cd5860d0b834c1ba02578986600c15e1e4ce53d59d0b95f1e993016",
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "103220/3441",
+        "start_time": "0.000000",
+        "duration": "688.200000",
+        "nb_frames": "20644",
+        "nb_read_frames": "20644",
+        "time_base": "1/15360"
+      },
+      {
+        "index": 1,
+        "codec_name": "aac",
+        "codec_type": "audio",
+        "r_frame_rate": "0/0",
+        "avg_frame_rate": "0/0",
+        "start_time": "0.000000",
+        "duration": "688.200000",
+        "nb_frames": "32258",
+        "nb_read_frames": "32257",
+        "sample_rate": "48000",
+        "channels": 2,
+        "time_base": "1/48000"
+      }
+    ],
+    "format": {
+      "duration": "688.200000",
+      "size": "105455029",
+      "start_time": "0.000000",
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2"
+    },
+    "ffprobe_exit": 0,
+    "stderr": "",
+    "hash_unchanged": true
+  },
+  "complete_decode": {
+    "result": {
+      "started_at": "2026-10-02T15:42:49.691954+00:00",
+      "completed_at": "2026-10-02T15:44:20.250566+00:00",
+      "wall_seconds": 90.547,
+      "argv": [
+        "ffmpeg",
+        "-hide_banner",
+        "-v",
+        "error",
+        "-xerror",
+        "-err_detect",
+        "explode",
+        "-i",
+        "C:\\Users\\x8120\\mokaair-work\\videos\\sothatswhy-t27\\final.mp4",
+        "-map",
+        "0:v:0",
+        "-map",
+        "0:a:0",
+        "-fps_mode",
+        "passthrough",
+        "-enc_time_base:v",
+        "1:15360",
+        "-progress",
+        "pipe:1",
+        "-stats_period",
+        "1",
+        "-f",
+        "null",
+        "-"
+      ],
+      "timebase_mode": "Explicit 1:15360 equals independently probed source demux timebase",
+      "final_sha256": "3894c35e2cd5860d0b834c1ba02578986600c15e1e4ce53d59d0b95f1e993016",
+      "decode_exit": 0,
+      "last_progress": {
+        "frame": "20644",
+        "fps": "242.85",
+        "stream_0_0_q": "-0.0",
+        "bitrate": "N/A",
+        "total_size": "N/A",
+        "out_time_us": "688200000",
+        "out_time_ms": "688200000",
+        "out_time": "00:11:28.200000",
+        "dup_frames": "0",
+        "drop_frames": "0",
+        "speed": " 8.1x",
+        "progress": "end"
+      },
+      "progress_events": 78,
+      "stderr": "",
+      "hash_after": "3894c35e2cd5860d0b834c1ba02578986600c15e1e4ce53d59d0b95f1e993016",
+      "hash_unchanged": true,
+      "scope": "Entire video and audio decoded to null using original video timebase; no playback/listening asserted"
+    },
+    "receipt": {
+      "path": "C:/Users/x8120/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t27-independent-full-decode-source-timebase.json",
+      "sha256": "02308d3409d93fa6f2a59b9d191ab930ee3381ca6a94267de91fddd5c93a8707"
+    },
+    "all_video_frames_decoded": 20644,
+    "all_audio_mapped_and_decoded": true,
+    "dup_frames": 0,
+    "drop_frames": 0,
+    "input_media_unchanged": true
+  },
+  "decode_history": [
+    {
+      "attempt": "initial full video/audio decode",
+      "result": {
+        "started_at": "2026-10-02T15:38:50.712121+00:00",
+        "completed_at": "2026-10-02T15:39:44.387995+00:00",
+        "wall_seconds": 53.672,
+        "argv": [
+          "ffmpeg",
+          "-hide_banner",
+          "-v",
+          "error",
+          "-xerror",
+          "-err_detect",
+          "explode",
+          "-i",
+          "C:\\Users\\x8120\\mokaair-work\\videos\\sothatswhy-t27\\final.mp4",
+          "-map",
+          "0:v:0",
+          "-map",
+          "0:a:0",
+          "-fps_mode",
+          "passthrough",
+          "-progress",
+          "pipe:1",
+          "-stats_period",
+          "1",
+          "-f",
+          "null",
+          "-"
+        ],
+        "final_sha256": "3894c35e2cd5860d0b834c1ba02578986600c15e1e4ce53d59d0b95f1e993016",
+        "decode_exit": 0,
+        "last_progress": {
+          "frame": "20644",
+          "fps": "394.12",
+          "stream_0_0_q": "-0.0",
+          "bitrate": "N/A",
+          "total_size": "N/A",
+          "out_time_us": "688200000",
+          "out_time_ms": "688200000",
+          "out_time": "00:11:28.200000",
+          "dup_frames": "0",
+          "drop_frames": "0",
+          "speed": "13.1x",
+          "progress": "end"
+        },
+        "progress_events": 51,
+        "stderr": "[null @ 0000026ca91a5d40] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 8040 >= 8040\n",
+        "hash_after": "3894c35e2cd5860d0b834c1ba02578986600c15e1e4ce53d59d0b95f1e993016",
+        "hash_unchanged": true,
+        "scope": "Entire video and audio mapped to null; no playback or human listening asserted"
+      },
+      "receipt": {
+        "path": "C:/Users/x8120/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t27-independent-full-decode-initial.json",
+        "sha256": "a1552e805e6aa7eaab56a0b8828cb1f4e7f2c5a2dc02d2a4dd12de962d4aafe1"
+      },
+      "raw_stderr": {
+        "path": "C:/Users/x8120/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t27-independent-full-decode-initial.stderr.log",
+        "sha256": "612c06d096433b63e731984eaf7923ef83f958d63a60abe2381af57d2fd9a46e"
+      }
+    },
+    {
+      "attempt": "source timebase -1 setup",
+      "receipt": {
+        "path": "C:/Users/x8120/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t27-independent-full-decode-source-timebase-option-refusal.json",
+        "sha256": "ab495b417873f127dbcc3d1038336c45eb5fb9684df035a179b96f66940b8c0a"
+      },
+      "exit_code": 4294967274,
+      "frames_decoded": 0,
+      "interpretation": "Wrapped_avframe output encoder refused -1 at setup despite ffmpeg help. This is retained as a failed setup attempt, not a successful full decode."
+    }
+  ],
+  "timestamp_review": {
+    "packet_evidence": {
+      "final_sha256": "3894c35e2cd5860d0b834c1ba02578986600c15e1e4ce53d59d0b95f1e993016",
+      "video_packet_count": 20644,
+      "source_time_base": "1/15360 verified actual stream probe",
+      "source_dts_non_increasing_indices": [],
+      "source_sorted_pts_non_increasing_indices": [],
+      "default_30fps_output_grid_collisions": [
+        {
+          "n_before": 8040,
+          "n_after": 8041,
+          "rounded_30fps_tick": 8040,
+          "pts_before": 4116225,
+          "pts_after": 4116732,
+          "pts_time_before": "267.983398",
+          "pts_time_after": "268.016406",
+          "positive_source_gap_seconds": 0.03300799999999526
+        }
+      ],
+      "strict_source_pts_after_sort": true,
+      "strict_demux_dts": true,
+      "hash_unchanged": true,
+      "ffprobe_exit": 0,
+      "stderr": ""
+    },
+    "receipt": {
+      "path": "C:/Users/x8120/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t27-independent-video-packet-timing.json",
+      "sha256": "65b66a01427055040e06d4404c97be34ec57282b44655a9288a835f456c7ec6a"
+    },
+    "finding": "Source demux DTS and sorted PTS are strictly increasing. Frames at 267.983398s and 268.016406s have a positive 0.033008s source gap; both quantize to output tick 8040 at a 1/30 output timebase. Explicit measured 1:15360 output timebase removes the null-output warning with the same complete frame/audio count and unchanged input. No source timestamp corruption found.",
+    "nominal_body_frames": 20197,
+    "nominal_body_seconds": 673.2333333333333,
+    "actual_final_body_pts_span_seconds": 673.3000000000001,
+    "actual_standalone_body_pts_span_seconds": 673.192968,
+    "max_absolute_state_start_deviation_seconds": 0.040365000000065265,
+    "actual_avg_frame_rate": "103220/3441",
+    "nominal_grid_rate": "30/1",
+    "forced_avg_frame_rate_30": false
+  },
+  "synchronization": {
+    "scope": "Hash-checked root PCM/PTS receipt; sampled common-waveform alignment, not full human listening or full perceptual audio assessment.",
+    "receipt": {
+      "path": "C:/Users/x8120/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t27-sync-readonly.json",
+      "sha256": "0929e30144989b987f72e4816e3479aca78429b82b5ebe751bf6f3593e4e883e"
+    },
+    "media_hashes_verified": {
+      "narration": "b75d51f3ed663dd3b0bb52a7ee4d5790270f2c1c09daab8a12dcf557b04a9377",
+      "body": "ee61d35e59cd381ca741749dc89c775859529deaaa14e2bc194b15874aa653f7",
+      "final": "3894c35e2cd5860d0b834c1ba02578986600c15e1e4ce53d59d0b95f1e993016"
+    },
+    "pcm_windows": [
+      {
+        "window": "opening",
+        "reference": "narration",
+        "target": "body",
+        "reference_start_seconds": 0.6,
+        "nominal_offset_seconds": 0,
+        "measured_offset_seconds": 0,
+        "offset_error_seconds": 0,
+        "correlation": 0.9999997327252311,
+        "measurement_resolution_seconds": 0.00016666666666666666
+      },
+      {
+        "window": "opening",
+        "reference": "body",
+        "target": "final",
+        "reference_start_seconds": 0.6,
+        "nominal_offset_seconds": 11.9,
+        "measured_offset_seconds": 11.9,
+        "offset_error_seconds": 0,
+        "correlation": 0.9999999038264433,
+        "measurement_resolution_seconds": 0.00016666666666666666
+      },
+      {
+        "window": "middle",
+        "reference": "narration",
+        "target": "body",
+        "reference_start_seconds": 334.83333333333337,
+        "nominal_offset_seconds": 0,
+        "measured_offset_seconds": 0,
+        "offset_error_seconds": 0,
+        "correlation": 0.9999997180481223,
+        "measurement_resolution_seconds": 0.00016666666666666666
+      },
+      {
+        "window": "middle",
+        "reference": "body",
+        "target": "final",
+        "reference_start_seconds": 334.83333333333337,
+        "nominal_offset_seconds": 11.9,
+        "measured_offset_seconds": 11.9,
+        "offset_error_seconds": 0,
+        "correlation": 0.999999938276166,
+        "measurement_resolution_seconds": 0.00016666666666666666
+      },
+      {
+        "window": "last_spoken_line",
+        "reference": "narration",
+        "target": "body",
+        "reference_start_seconds": 667.6,
+        "nominal_offset_seconds": 0,
+        "measured_offset_seconds": 0,
+        "offset_error_seconds": 0,
+        "correlation": 0.9999999300473946,
+        "measurement_resolution_seconds": 0.00016666666666666666
+      },
+      {
+        "window": "last_spoken_line",
+        "reference": "body",
+        "target": "final",
+        "reference_start_seconds": 667.6,
+        "nominal_offset_seconds": 11.9,
+        "measured_offset_seconds": 11.9,
+        "offset_error_seconds": 0,
+        "correlation": 0.9999997285569726,
+        "measurement_resolution_seconds": 0.00016666666666666666
+      }
+    ],
+    "state_timing": {
+      "body": {
+        "packet_count": 20197,
+        "count": 137,
+        "nominal_body_start_seconds": 0,
+        "body_start_seconds": 0,
+        "body_start_deviation_seconds": 0,
+        "body_end_seconds": 673.192968,
+        "body_span_seconds": 673.192968,
+        "max_hold_seconds": 6.800000000000011,
+        "mean_hold_seconds": 4.9138172846715324,
+        "over_8_seconds": 0,
+        "max_absolute_start_deviation_seconds": 0.040365000000065265,
+        "diagram_seconds": 637.892968,
+        "diagram_share": 0.9475633263002237
+      },
+      "final": {
+        "packet_count": 20644,
+        "count": 137,
+        "nominal_body_start_seconds": 11.9,
+        "body_start_seconds": 11.9,
+        "body_start_deviation_seconds": 0,
+        "body_end_seconds": 685.2,
+        "body_span_seconds": 673.3000000000001,
+        "max_hold_seconds": 6.800000000000011,
+        "mean_hold_seconds": 4.9145985401459855,
+        "over_8_seconds": 0,
+        "max_absolute_start_deviation_seconds": 0.040365000000065265,
+        "diagram_seconds": 637.892968,
+        "diagram_share": 0.9474126956780038
+      }
+    }
+  },
+  "actual_final_visual_samples": {
+    "scope": "Independently actually viewed all four contact pages covering 15 actual-final samples (13 body plus intro/outro); also full-size frame-003.png, frame-010.png and frame-012.png. Not all 15 originals viewed at full size.",
+    "manifest": {
+      "path": "C:/Users/x8120/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t27-final-samples/manifest.json",
+      "sha256": "97e262f85fd4af745cb8ba959f40ec86d9ab62d1ab4b287d0e5386bb91d0785f"
+    },
+    "manifest_final_sha256": "3894c35e2cd5860d0b834c1ba02578986600c15e1e4ce53d59d0b95f1e993016",
+    "manifest_timeline_sha256": "8e662e6faefb04b1d4c661f907affc983322d82eab752f8c4da1243e6814fc9e",
+    "image_hashes_matched": 15,
+    "contact_page_hashes_matched": 4,
+    "contact_pages_actually_viewed": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "full_size_originals_actually_viewed": [
+      "frame-003.png",
+      "frame-010.png",
+      "frame-012.png"
+    ],
+    "findings": [
+      "No clipping, missing-glyph, black-frame or absent-source-label issue observed in viewed samples.",
+      "Official 17.2% trash-bin difficulty and 43.7% no-difficulties charts use the same 0–100 bar scale; they are not pie sectors or whole partitions.",
+      "Survey dates 2025-11-18 to 2026-01-13 and publication 2026-04-28 remain distinct.",
+      "Hypothetical 10-person/11-check example is labelled 原創示意，非本調查數據; 3+2+1+1=7 difficulty checks plus 4 none = 11 total checks.",
+      "The sampled density illustration labels both length and denominator in 公里.",
+      "Six chapter cards, closing 第一名≠多數, and actual approved intro/outro are visible."
+    ]
+  },
+  "current_normal_guards": {
+    "checked_at": "2026-10-02T15:55:50.807Z",
+    "exit_code": 0,
+    "checks_current": true,
+    "branding_current": true,
+    "checks_problem_count": 0,
+    "render_plan_current_states": 137,
+    "art_entries_current_spoken_caption_and_sha256": 130,
+    "duration_problems": [],
+    "chapter_problems": [],
+    "captions_exact_current_srt_and_vtt": true,
+    "caption_cues": 137,
+    "caption_intro_offset_seconds": 11.9,
+    "wanted_caption_locales": [
+      "zh-TW"
+    ],
+    "normal_qa": {
+      "ok": true,
+      "final_sha256": "3894c35e2cd5860d0b834c1ba02578986600c15e1e4ce53d59d0b95f1e993016",
+      "items": [
+        {
+          "id": "assemble",
+          "ok": true,
+          "detail": "20644 frames, -14 LUFS, 411 frames matched their slides; every check passed"
+        },
+        {
+          "id": "render",
+          "ok": true,
+          "detail": "137 slide states drawn with no layout, glyph or font problem, thumbnail included"
+        },
+        {
+          "id": "narration",
+          "ok": true,
+          "detail": "timeline.json approved at 2026-10-02T14:29:08.671Z"
+        },
+        {
+          "id": "pace",
+          "ok": true,
+          "detail": "137 slide states, the longest 6.8 s; none over 15 s"
+        },
+        {
+          "id": "captions",
+          "ok": true,
+          "detail": "caption files for zh-TW, every translation current"
+        },
+        {
+          "id": "metadata",
+          "ok": true,
+          "detail": "title, description and tags within YouTube's limits for zh-TW; 6 chapters"
+        },
+        {
+          "id": "facts",
+          "ok": true,
+          "detail": "verify-1.md marks no claim NOT FOUND"
+        },
+        {
+          "id": "links",
+          "ok": true,
+          "detail": "3 links open"
+        },
+        {
+          "id": "thumbnail",
+          "ok": true,
+          "detail": "1280x720 JPEG, 63 KB; the headline is about 34 px tall at 320 px wide"
+        },
+        {
+          "id": "policy",
+          "ok": true,
+          "detail": "Jev：符合立場 0.89、有示範 0.92、建議 0.01、業配 0.01，通過"
+        },
+        {
+          "id": "disclosure",
+          "ok": true,
+          "detail": "no disclosure needed: slides read by a stock TTS voice; YouTube's disclosure covers realistic synthetic people, events and places"
+        }
+      ]
+    },
+    "normal_package": {
+      "ok": true,
+      "final_sha256": "0b391df71413e3ea5ef4307b4984d332dd81174e43af5fc98b92e4ed0abe79d3",
+      "items": [
+        {
+          "id": "files",
+          "ok": true,
+          "detail": "final.mp4, thumbnail.jpg, metadata.json; final.mp4 is the approved final (3894c35e2cd5)"
+        },
+        {
+          "id": "descriptions",
+          "ok": true,
+          "detail": "descriptions for zh-TW"
+        },
+        {
+          "id": "captions",
+          "ok": true,
+          "detail": "caption files for zh-TW"
+        },
+        {
+          "id": "disclosure",
+          "ok": true,
+          "detail": "no disclosure needed: slides read by a stock TTS voice; YouTube's disclosure covers realistic synthetic people, events and places"
+        }
+      ]
+    },
+    "package_report_final_sha256_means": "upload/metadata.json SHA-256; the final MP4 hash is separately checked",
+    "current_approvals": {
+      "outline": {
+        "status": "approved",
+        "entry": {
+          "gate": "outline",
+          "file": "brief.md",
+          "sha256": "25afc729f4c2243d98eedac3e1e2134b411da10a3b178e225e1734bb5201e62b",
+          "approved_at": "2026-10-02T12:49:59.344Z",
+          "note": "approved on /admin/videos at 2026-10-02T12:49:50.007972Z; chose outline A; Jev 挑了 A（0.99）：符合立場 0.94、有示範 0.86、建議 0.01，依設定自動核准"
+        },
+        "sha256": "25afc729f4c2243d98eedac3e1e2134b411da10a3b178e225e1734bb5201e62b"
+      },
+      "audio": {
+        "status": "approved",
+        "entry": {
+          "gate": "audio",
+          "file": "timeline.json",
+          "sha256": "8e662e6faefb04b1d4c661f907affc983322d82eab752f8c4da1243e6814fc9e",
+          "approved_at": "2026-10-02T14:29:08.671Z",
+          "note": "approved on /admin/videos at 2026-10-02T14:28:30.038528Z; Jev 判斷每一句都唸對了，依設定自動核准"
+        },
+        "sha256": "8e662e6faefb04b1d4c661f907affc983322d82eab752f8c4da1243e6814fc9e"
+      },
+      "final": {
+        "status": "approved",
+        "entry": {
+          "gate": "final",
+          "file": "final.mp4",
+          "sha256": "3894c35e2cd5860d0b834c1ba02578986600c15e1e4ce53d59d0b95f1e993016",
+          "approved_at": "2026-10-02T15:47:34.810Z",
+          "note": "approved on /admin/videos at 2026-10-02T15:46:02.630582Z; 自動品管 11 項全過，依設定自動核准"
+        },
+        "sha256": "3894c35e2cd5860d0b834c1ba02578986600c15e1e4ce53d59d0b95f1e993016"
+      },
+      "publish": {
+        "status": "approved",
+        "entry": {
+          "gate": "publish",
+          "file": "metadata.json",
+          "sha256": "0b391df71413e3ea5ef4307b4984d332dd81174e43af5fc98b92e4ed0abe79d3",
+          "approved_at": "2026-10-02T15:51:28.516Z",
+          "note": "approved on /admin/videos at 2026-10-02T15:50:57.125241Z; 上傳包 4 項齊全，依設定自動核准"
+        },
+        "sha256": "0b391df71413e3ea5ef4307b4984d332dd81174e43af5fc98b92e4ed0abe79d3"
+      }
+    },
+    "source_snapshot_count": 286,
+    "all_snapshots_unchanged_during_check": true,
+    "check_audio_flags_count": 0,
+    "check_audio_flags_sha256": "60fac4af60cbd6e532676b6ec3c77cf4916a0edd3b254b4c95cb3dd1c77ab906",
+    "normal_measured_loudness": {
+      "integrated_lufs": -14,
+      "true_peak_dbfs": -0.9
+    }
+  },
+  "additional_root_actual_audit": {
+    "path": "C:/Users/x8120/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t27-final-audit.json",
+    "sha256": "3d5ad153b104373edc3b5317d7601a4503eb3f4a252b14219adcb731411948c5",
+    "actual_verdict": "PASS_CURRENT_FINAL",
+    "source_snapshots_independently_rehashed": 283,
+    "mismatches": 0
+  },
+  "backend_delivery": {
+    "receipt_path": "C:/Users/x8120/.codex/visualizations/2026/10/01/01a0f5cd-1f4c-7f91-9af1-b02370fcce78/t27-remote-delivery-2026-10-02T15-52-00-323Z.json",
+    "receipt_sha256": "bdc2f89fed065da15a9436a01a77c4fc138ea83e270bce2d7fd3a34867585c10",
+    "scope": "Root's preserved actual backend GET proof; independently hash-checked against local current gate artifacts and all nine attached files. No backend mutation performed by this reviewer.",
+    "final_review_id": "cab3a243-7d28-433e-bca1-a0a4de07e247",
+    "publish_review_id": "2922dac4-fd3a-438c-9614-128ddadd1cc2",
+    "local_attachment_matches": [
+      {
+        "gate": "publish",
+        "review_id": "2922dac4-fd3a-438c-9614-128ddadd1cc2",
+        "role": "captions_zh-TW",
+        "path": "C:/Users/x8120/mokaair-work/videos/sothatswhy-t27/upload/captions/zh-TW.srt",
+        "sha256": "45726c8261455e51d89a1d5f306850543b1c860f6068ace32bfc03d96f30bdd6"
+      },
+      {
+        "gate": "publish",
+        "review_id": "2922dac4-fd3a-438c-9614-128ddadd1cc2",
+        "role": "description_zh-TW",
+        "path": "C:/Users/x8120/mokaair-work/videos/sothatswhy-t27/upload/description.zh-TW.txt",
+        "sha256": "826db900d836af08fd10d0aa1697b7ab286feb615b50d347dba94310844b7c1a"
+      },
+      {
+        "gate": "publish",
+        "review_id": "2922dac4-fd3a-438c-9614-128ddadd1cc2",
+        "role": "final",
+        "path": "C:/Users/x8120/mokaair-work/videos/sothatswhy-t27/upload/final.mp4",
+        "sha256": "3894c35e2cd5860d0b834c1ba02578986600c15e1e4ce53d59d0b95f1e993016"
+      },
+      {
+        "gate": "publish",
+        "review_id": "2922dac4-fd3a-438c-9614-128ddadd1cc2",
+        "role": "metadata",
+        "path": "C:/Users/x8120/mokaair-work/videos/sothatswhy-t27/upload/metadata.json",
+        "sha256": "0b391df71413e3ea5ef4307b4984d332dd81174e43af5fc98b92e4ed0abe79d3"
+      },
+      {
+        "gate": "publish",
+        "review_id": "2922dac4-fd3a-438c-9614-128ddadd1cc2",
+        "role": "thumbnail",
+        "path": "C:/Users/x8120/mokaair-work/videos/sothatswhy-t27/upload/thumbnail.jpg",
+        "sha256": "169c6c3f741cb623a7b728cdee945d3d0ae7d44f1d20ea21a59a32dfd598486d"
+      },
+      {
+        "gate": "final",
+        "review_id": "cab3a243-7d28-433e-bca1-a0a4de07e247",
+        "role": "preview",
+        "path": "C:/Users/x8120/mokaair-work/videos/sothatswhy-t27/review/preview-3894c35e2cd5860d.mp4",
+        "sha256": "924f56b82bbe136b0acaf7a5e10f3772e27fc7053ccb26b48fb2c67774b92e2a"
+      },
+      {
+        "gate": "final",
+        "review_id": "cab3a243-7d28-433e-bca1-a0a4de07e247",
+        "role": "contact_sheet",
+        "path": "C:/Users/x8120/mokaair-work/videos/sothatswhy-t27/contact-sheet.png",
+        "sha256": "3ddf4a5ba17dd1c842c6b00facfa9f4ad6344bc64b9a864b3e39220272b20072"
+      },
+      {
+        "gate": "final",
+        "review_id": "cab3a243-7d28-433e-bca1-a0a4de07e247",
+        "role": "thumbnail",
+        "path": "C:/Users/x8120/mokaair-work/videos/sothatswhy-t27/upload/thumbnail.jpg",
+        "sha256": "169c6c3f741cb623a7b728cdee945d3d0ae7d44f1d20ea21a59a32dfd598486d"
+      },
+      {
+        "gate": "audio",
+        "review_id": "dc9a63fc-6e82-409d-850a-37b408b5a774",
+        "role": "narration",
+        "path": "C:/Users/x8120/mokaair-work/videos/sothatswhy-t27/review/narration-b75d51f3ed663dd3.m4a",
+        "sha256": "de2066a2722526f8c58622577cf4babd1bc25d5e5871aeb82bf4411cd145b2af"
+      }
+    ],
+    "publication_state": {
+      "youtube_video_id": null,
+      "on_youtube": false,
+      "locales_decided_at": null,
+      "ready_to_upload": false
+    },
+    "stage_label_interpretation": "The backend stage_label text says on YouTube, but the authoritative YouTube ID is null and on_youtube checklist is false; this report does not treat that label as an upload."
+  },
+  "approval_and_acceptance_limits": {
+    "normal_gates_approved": true,
+    "normal_gate_approval_mode": "Backend configured automatic QA/Jev approval notes; no owner full playback inferred",
+    "owner_language_choice_pending": true,
+    "ready_to_upload": false,
+    "youtube_video_id": null,
+    "youtube_uploaded": false,
+    "youtube_published": false,
+    "owner_full_video_playback_confirmed": false,
+    "owner_full_narration_listening_confirmed": false,
+    "native_player_cc_selection_confirmed": false,
+    "full_perceptual_audio_quality_confirmed": false
+  },
+  "unresolved_runtime_findings": [],
+  "files_mutated": [
+    "C:/Users/x8120/.codex/worktrees/sothatswhy-t27/travel_scanㄐ/docs/videos/sothatswhy-t27/final-runtime-review.md",
+    "C:/Users/x8120/.codex/worktrees/sothatswhy-t27/travel_scanㄐ/docs/videos/sothatswhy-t27/final-runtime-review.json"
+  ],
+  "source_or_media_mutated": false
+}
