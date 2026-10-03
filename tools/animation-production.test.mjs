@@ -312,6 +312,8 @@ test("--plan prices the same clips in Hailuo credits (2K or 768P, per plan) and 
   assert.equal(pro.plan.vendor, "hailuo");
   assert.equal(pro.plan.resolution, "2k", "1080p is not a Hailuo H3 resolution; the plan prices 2K");
   assert.equal(pro.plan.credits_per_second, 12);
+  assert.equal(pro.plan.credits_basis, "實測 2026-10-04", "12 credits a second at 2K was measured on the owner's account: a 5 s clip cost 60");
+  assert.ok(pro.plan.notes.some((note) => /2560×1440/.test(note) && /無水印下載/.test(note)), "the measured output size and the watermark-free download are named");
   assert.deepEqual(pro.plan.shots.map((shot) => shot.seconds), seconds);
   assert.equal(pro.plan.credits_one, sum(seconds) * 12);
   assert.equal(pro.plan.credits_cap, sum(seconds) * 12 * MAX_CLIP_TAKES);
@@ -331,6 +333,7 @@ test("--plan prices the same clips in Hailuo credits (2K or 768P, per plan) and 
   assert.equal(estimateEpisode(doc, { plan: "hailuo:pro", model: "veo-3.1-lite-generate-preview" }).plan.breakeven_seconds_monthly, Math.ceil(54.99 / 0.08));
   const pro768 = estimateEpisode(doc, { plan: "hailuo:pro", resolution: "768p" });
   assert.equal(pro768.plan.credits_one, sum(seconds) * 7);
+  assert.equal(pro768.plan.credits_basis, "推算", "768P was not measured: its 7 credits a second is still inferred from the plan page");
   near4(pro768.plan.usd_page_one, sum(seconds) * 0.047);
   assert.equal(pro768.resolution, "1080p", "768p is a Hailuo tier, not an Omni resolution: the server side keeps its default");
   assert.equal(estimateEpisode(doc, { plan: "hailuo:pro", model: "MiniMax-H3", resolution: "768p" }).resolution, "768p", "H3 does offer 768p");
@@ -347,6 +350,7 @@ test("--plan prices the same clips in Hailuo credits (2K or 768P, per plan) and 
   const kling = estimateEpisode(doc, { plan: "kling:pro" });
   assert.equal(kling.plan.vendor, "kling");
   assert.equal(kling.plan.unverified, true);
+  assert.ok(kling.plan.notes.some((note) => /enable_audio false/.test(note) && /prefer_multi_shots false/.test(note)), "both Kling defaults a shot must turn off are named");
   assert.deepEqual(kling.plan.shots.map((shot) => shot.videos), videos);
   assert.equal(kling.plan.credits_one, sum(videos) * DEFAULT_KLING_CREDITS_PER_VIDEO);
   assert.equal(kling.plan.credits_cap, sum(videos) * DEFAULT_KLING_CREDITS_PER_VIDEO * MAX_CLIP_TAKES);
@@ -414,6 +418,7 @@ test("episode_estimate.mjs exits 0, 1 with --strict on a failed verdict, 2 on a 
   const text = run("episode_estimate.mjs", DRAMA_FIXTURE_FILE, "--plan", "hailuo:pro");
   assert.equal(text.status, 0, text.stderr);
   assert.match(text.stdout, /方案 hailuo:pro/);
+  assert.match(text.stdout, /H3 2k 12 credits\/s（實測 2026-10-04）/);
   assert.match(text.stdout, /損益平衡/);
   assert.match(text.stdout, /裁定：過/);
   const strict = run("episode_estimate.mjs", DRAMA_FIXTURE_FILE, "--strict", "--cap", "1");
