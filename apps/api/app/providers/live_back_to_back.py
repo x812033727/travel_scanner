@@ -1,4 +1,5 @@
 import asyncio
+import logging
 from datetime import UTC, date, datetime
 from decimal import Decimal
 from enum import StrEnum
@@ -17,6 +18,9 @@ from app.search.schemas import (
     TripType,
 )
 from app.usage.schemas import UsageStatus
+from app.warnings import warning_code
+
+logger = logging.getLogger(__name__)
 
 
 class LiveTripDates(BaseModel):
@@ -267,11 +271,14 @@ class LiveBackToBackService:
         for role, result in zip(self.roles, results, strict=True):
             if isinstance(result, BaseException):
                 candidates[role] = []
-                warnings.append(f"{role}：{result}")
+                # The provider's own exception text used to go to the reader as the
+                # warning; it now goes to the log, and the reader gets a code.
+                logger.warning("live back-to-back %s search failed", role, exc_info=result)
+                warnings.append(warning_code("live_fare_failed", role=role))
             else:
                 candidates[role] = result
                 if not result:
-                    warnings.append(f"{role}：沒有可用即時票價")
+                    warnings.append(warning_code("live_fare_missing", role=role))
         comparisons = []
         for mode in LiveComparisonMode:
             same = mode == LiveComparisonMode.SAME_AIRLINE

@@ -25,7 +25,7 @@ The independently reviewed content batch adds 16 complete missing-language docum
 
 - [x] Actual content PR checks and PostgreSQL release-safety evidence pass at the exact reviewed head; merged tree and target are recorded.
 - [x] Fresh full source and host state match the reviewed scope; the canonical bundle is independently reviewed and frozen with exact inputs and assets.
-- [x] Fresh verified database backup and guarded hostinger2 deployment complete under existing locks and an owned hold, with healthy services.
+- [x] Fresh verified database backup and guarded `<saved-session>` deployment complete under existing locks and an owned hold, with healthy services.
 - [x] Exactly 16 target drafts and 16 article publications complete with zero hubs, preserving all source models, metadata, visibility and original assets.
 - [x] Database, journal, five-language public and browser acceptance pass; only the owned hold is then cleared and post-clear health is verified.
 
@@ -35,7 +35,7 @@ The independently reviewed content batch adds 16 complete missing-language docum
 - [x] Read fresh full rows for bluehost-wordpress-setup, hosting-com-wordpress-setup, hostinger-wordpress-setup and managed-hosting-comparison. Recheck the prior article 2 / zh-TW 4 baseline and stop on source, draft, visibility, version or concurrent-edit changes.
 - [x] Assemble 20 full models from four preserved source documents and 16 approved translations. Bind all 60 assets, independent review/render evidence, actual local results and current CI before freezing.
 - [x] Prepare the explicit four-article × en/ja/ko/zh-CN allowlist and exact target/config/manifest/driver. Preserve all existing locks, source/state guards and durable phase/journal receipts. There are no hubs or source-locale rewrites.
-- [x] Verify a fresh pg_dump custom-format backup with pg_restore --list, control competing writes, deploy using hostinger2 and verify actual revision and service health.
+- [x] Verify a fresh pg_dump custom-format backup with pg_restore --list, control competing writes, deploy using `<saved-session>` and verify actual revision and service health.
 - [x] Execute import preview. Confirm only the 16 target locales and required asset references change, then import and publish the explicit targets. Preserve hidden, withdrawn and expired states; stop on concurrent edits.
 - [x] Verify all 20 full models, original full rows, article/locale versions, metadata and exact 32 sealed journal operations, actor and progression, with no pending operations and repeat-safe scope.
 - [x] Verify all 20 public URLs and 40 desktop/mobile viewport cases with 80 top/diagram screenshots. Check complete body, localized images, descriptions, credits, canonical, reciprocal hreflang, matching-language links and complete paginated sitemap/XML.
@@ -44,14 +44,14 @@ The independently reviewed content batch adds 16 complete missing-language docum
 
 ## How to verify
 
-Use the existing ArticlePack / GuideDocument, canonical assembler, publisher, durable release driver and hostinger2 workflow. Retain before/after full snapshots, backup verification, exact CI job/log/dependency identities and sealed journals. Local PostgreSQL skips and HTTP 200 alone do not establish release safety or complete public bodies. Resolve structured links only to actually published matching-language targets; unavailable targets remain unclickable.
+Use the existing ArticlePack / GuideDocument, canonical assembler, publisher, durable release driver and `<saved-session>` workflow. Retain before/after full snapshots, backup verification, exact CI job/log/dependency identities and sealed journals. Local PostgreSQL skips and HTTP 200 alone do not establish release safety or complete public bodies. Resolve structured links only to actually published matching-language targets; unavailable targets remain unclickable.
 
 ## Notes
 
 - Task ID: `2026-09-23-release-localized-hosting-setup-guides-batch024`; dependency: `2026-09-23-localize-four-hosting-setup-guides-batch024`. The date consistently follows the UTC source-claim date. Created through the task CLI as an open, unclaimed release task; the header records its actual creation time.
 - Scope: four articles, 16 new documents, 20 full models, 48 new assets, 12 originals, 20 public URLs, 40 viewport cases and 80 screenshots. Body counts are 27 / 27 / 27 / 29; each has four sources. Image indices are 22 / 22 / 22 / 24. Historical source versions are article 2 / zh-TW 4.
 - Integration manifest SHA256: `bd34dc880d29c882fe8c610dff9983f643e4a7f9a648c8d71c7aab4c1fa3daee`; independent integration: `484b5a75097c45376ae1a57dc702f69ae9c3a409faf48984074d4464eca8df66`; applied: `2781b52e92a42733f506a8ad9701c8ed67e6be0c8e610d180a41701e58432b74`.
-- Evidence root: `C:/Users/x8120/.codex/article-localization-release/batch024-hosting-setup/`. Local summary SHA256 is `70594b2f101aa3727302bcc546dabc4dd6e7805de24df7e513ea822e384b2d94`; fast=v2 and all other groups=v1. Preserve the first-attempt tools WSL-probe failure and the Git Bash retry with 87 real tests passed / zero skips. The 64 PostgreSQL skips describe the historical local run only. Actual PR #699 release-safety CI at the accepted 91-version completed 119 combined SQLite/PostgreSQL tests with zero skips, with the fresh 806-dependency inventory checked. Exact final Git, CI, merge, publication and browser pins are recorded below.
+- Evidence root: `<home>/.codex/article-localization-release/batch024-hosting-setup/`. Local summary SHA256 is `70594b2f101aa3727302bcc546dabc4dd6e7805de24df7e513ea822e384b2d94`; fast=v2 and all other groups=v1. Preserve the first-attempt tools WSL-probe failure and the Git Bash retry with 87 real tests passed / zero skips. The 64 PostgreSQL skips describe the historical local run only. Actual PR #699 release-safety CI at the accepted 91-version completed 119 combined SQLite/PostgreSQL tests with zero skips, with the fresh 806-dependency inventory checked. Exact final Git, CI, merge, publication and browser pins are recorded below.
 - Preserve Taiwan-reader applicability, currency conditions, product labels, URLs and original checked date `2026-09-14`. Webuzo primary-source retrieval timed out during source review; no new verification is claimed. hosting.com SVG accessible titles completely translate their original shorter asset titles; the full article title and A2 designation remain unchanged.
 
 ## Actual release completion

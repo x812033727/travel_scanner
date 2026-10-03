@@ -8,7 +8,7 @@ from uuid import UUID
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 from app.ai.catalog import ModelStatus, valid_model_id
-from app.guides.schemas import GuideDocument
+from app.guides.schemas import GuideDocument, Kind
 from app.i18n import Locale
 from app.news_automation.provider_schema import ProviderReply
 
@@ -309,6 +309,11 @@ class CandidateDetail(CandidateSummary):
     # Filled only while the semantic duplicate check is waiting for an editor: the known
     # titles closest to this one, so "not a duplicate" can be answered by eye.
     similar_titles: list[str] = Field(default_factory=list)
+    # The saved article's address, so the review page can link a published story to the
+    # public page it lives on. Whether that page is public is the candidate's status: the
+    # article exists from the first draft, its locales are published only on approval.
+    article_slug: str | None = None
+    article_kind: Kind | None = None
 
 
 class CandidateAction(StrictModel):

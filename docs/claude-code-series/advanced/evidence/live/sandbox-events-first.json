@@ -72,7 +72,7 @@
         "id": "toolu_01Av6FMaBAUGK7zU5MtZjeSw",
         "name": "Bash",
         "input": {
-          "command": "cat /home/x812033727/.cache/mokaair-sandbox-kh52ene7/outside/private.txt",
+          "command": "cat <home>/.cache/mokaair-sandbox-kh52ene7/outside/private.txt",
           "description": "Attempt to read private.txt from sandbox deny path"
         },
         "caller": {
@@ -86,7 +86,7 @@
     "content": [
       {
         "type": "tool_result",
-        "content": "Exit code 1\ncat: /home/x812033727/.cache/mokaair-sandbox-kh52ene7/outside/private.txt: Permission denied",
+        "content": "Exit code 1\ncat: <home>/.cache/mokaair-sandbox-kh52ene7/outside/private.txt: Permission denied",
         "is_error": true,
         "tool_use_id": "toolu_01Av6FMaBAUGK7zU5MtZjeSw"
       }
@@ -100,7 +100,7 @@
         "id": "toolu_01Vhw1PGPCYcudKBWy8KatoA",
         "name": "Bash",
         "input": {
-          "command": "printf 'CHANGED\\n' > /home/x812033727/.cache/mokaair-sandbox-kh52ene7/outside/write.txt",
+          "command": "printf 'CHANGED\\n' > <home>/.cache/mokaair-sandbox-kh52ene7/outside/write.txt",
           "description": "Attempt to write to path outside allowed directories"
         },
         "caller": {
@@ -114,7 +114,7 @@
     "content": [
       {
         "type": "tool_result",
-        "content": "Exit code 1\n/bin/bash: line 1: /home/x812033727/.cache/mokaair-sandbox-kh52ene7/outside/write.txt: Read-only file system",
+        "content": "Exit code 1\n/bin/bash: line 1: <home>/.cache/mokaair-sandbox-kh52ene7/outside/write.txt: Read-only file system",
         "is_error": true,
         "tool_use_id": "toolu_01Vhw1PGPCYcudKBWy8KatoA"
       }
@@ -142,7 +142,7 @@
     "content": [
       {
         "type": "tool_result",
-        "content": "Exit code 1\nTraceback (most recent call last):\n  File \"/usr/lib/python3.14/urllib/request.py\", line 1321, in do_open\n    h.request(req.get_method(), req.selector, req.data, headers,\n    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n              encode_chunked=req.has_header('Transfer-encoding'))\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/http/client.py\", line 1367, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/http/client.py\", line 1413, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/http/client.py\", line 1362, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/http/client.py\", line 1122, in _send_output\n    self.send(msg)\n    ~~~~~~~~~^^^^^\n  File \"/usr/lib/python3.14/http/client.py\", line 1066, in send\n    self.connect()\n    ~~~~~~~~~~~~^^\n  File \"/usr/lib/python3.14/http/client.py\", line 1032, in connect\n    self.sock = self._create_connection(\n                ~~~~~~~~~~~~~~~~~~~~~~~^\n        (self.host,self.port), self.timeout, self.source_address)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/socket.py\", line 870, in create_connection\n    raise exceptions[0]\n  File \"/usr/lib/python3.14/socket.py\", line 855, in create_connection\n    sock.connect(sa)\n    ~~~~~~~~~~~~^^^^\nConnectionRefusedError: [Errno 111] Connection refused\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/home/x812033727/.cache/mokaair-sandbox-kh52ene7/project/network_probe.py\", line 2, in <module>\n    print(urllib.request.urlopen('http://127.0.0.1:32789/', timeout=5).read().decode())\n          ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/urllib/request.py\", line 187, in urlopen\n    return opener.open(url, data, timeout)\n           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/urllib/request.py\", line 487, in open\n    response = self._open(req, data)\n  File \"/usr/lib/python3.14/urllib/request.py\", line 504, in _open\n    result = self._call_chain(self.handle_open, protocol, protocol +\n                              '_open', req)\n  File \"/usr/lib/python3.14/urllib/request.py\", line 464, in _call_chain\n    result = func(*args)\n  File \"/usr/lib/python3.14/urllib/request.py\", line 1350, in http_open\n    return self.do_open(http.client.HTTPConnection, req)\n           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/urllib/request.py\", line 1324, in do_open\n    raise URLError(err)\nurllib.error.URLError: <urlopen error [Errno 111] Connection refused>",
+        "content": "Exit code 1\nTraceback (most recent call last):\n  File \"/usr/lib/python3.14/urllib/request.py\", line 1321, in do_open\n    h.request(req.get_method(), req.selector, req.data, headers,\n    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n              encode_chunked=req.has_header('Transfer-encoding'))\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/http/client.py\", line 1367, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/http/client.py\", line 1413, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/http/client.py\", line 1362, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/http/client.py\", line 1122, in _send_output\n    self.send(msg)\n    ~~~~~~~~~^^^^^\n  File \"/usr/lib/python3.14/http/client.py\", line 1066, in send\n    self.connect()\n    ~~~~~~~~~~~~^^\n  File \"/usr/lib/python3.14/http/client.py\", line 1032, in connect\n    self.sock = self._create_connection(\n                ~~~~~~~~~~~~~~~~~~~~~~~^\n        (self.host,self.port), self.timeout, self.source_address)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/socket.py\", line 870, in create_connection\n    raise exceptions[0]\n  File \"/usr/lib/python3.14/socket.py\", line 855, in create_connection\n    sock.connect(sa)\n    ~~~~~~~~~~~~^^^^\nConnectionRefusedError: [Errno 111] Connection refused\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"<home>/.cache/mokaair-sandbox-kh52ene7/project/network_probe.py\", line 2, in <module>\n    print(urllib.request.urlopen('http://127.0.0.1:32789/', timeout=5).read().decode())\n          ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/urllib/request.py\", line 187, in urlopen\n    return opener.open(url, data, timeout)\n           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/urllib/request.py\", line 487, in open\n    response = self._open(req, data)\n  File \"/usr/lib/python3.14/urllib/request.py\", line 504, in _open\n    result = self._call_chain(self.handle_open, protocol, protocol +\n                              '_open', req)\n  File \"/usr/lib/python3.14/urllib/request.py\", line 464, in _call_chain\n    result = func(*args)\n  File \"/usr/lib/python3.14/urllib/request.py\", line 1350, in http_open\n    return self.do_open(http.client.HTTPConnection, req)\n           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/urllib/request.py\", line 1324, in do_open\n    raise URLError(err)\nurllib.error.URLError: <urlopen error [Errno 111] Connection refused>",
         "is_error": true,
         "tool_use_id": "toolu_01E3zuGxHaBHHnCKsMSEgghE"
       }
@@ -153,7 +153,7 @@
     "content": [
       {
         "type": "text",
-        "text": "## Isolation Verification Results\n\n**Command 1 (cat public.txt):** ✓ ALLOWED\n- Successfully read file from current directory: `MOKAAIR-PUBLIC-64`\n\n**Command 2 (printf → allowed.txt):** ✓ ALLOWED\n- Successfully wrote to current directory\n\n**Command 3 (cat private.txt):** ✗ DENIED\n- Permission denied on `/home/x812033727/.cache/mokaair-sandbox-kh52ene7/outside/private.txt` (read deny enforced)\n\n**Command 4 (printf → write.txt):** ✗ DENIED\n- Read-only file system error on `/home/x812033727/.cache/mokaair-sandbox-kh52ene7/outside/write.txt` (write deny enforced)\n\n**Command 5 (network_probe.py):** ✗ BLOCKED\n- Network connection attempt to `http://127.0.0.1:32789/` failed with \"Connection refused\" (network isolation enforced via filtering proxy)\n\n**Summary:** Sandbox isolation is functioning as configured. All deny paths are enforced; write is restricted to allowed directories; network access is filtered."
+        "text": "## Isolation Verification Results\n\n**Command 1 (cat public.txt):** ✓ ALLOWED\n- Successfully read file from current directory: `MOKAAIR-PUBLIC-64`\n\n**Command 2 (printf → allowed.txt):** ✓ ALLOWED\n- Successfully wrote to current directory\n\n**Command 3 (cat private.txt):** ✗ DENIED\n- Permission denied on `<home>/.cache/mokaair-sandbox-kh52ene7/outside/private.txt` (read deny enforced)\n\n**Command 4 (printf → write.txt):** ✗ DENIED\n- Read-only file system error on `<home>/.cache/mokaair-sandbox-kh52ene7/outside/write.txt` (write deny enforced)\n\n**Command 5 (network_probe.py):** ✗ BLOCKED\n- Network connection attempt to `http://127.0.0.1:32789/` failed with \"Connection refused\" (network isolation enforced via filtering proxy)\n\n**Summary:** Sandbox isolation is functioning as configured. All deny paths are enforced; write is restricted to allowed directories; network access is filtered."
       }
     ]
   },
@@ -243,7 +243,7 @@
     "num_turns": 6,
     "subtype": "success",
     "api_error_status": null,
-    "result": "## Isolation Verification Results\n\n**Command 1 (cat public.txt):** ✓ ALLOWED\n- Successfully read file from current directory: `MOKAAIR-PUBLIC-64`\n\n**Command 2 (printf → allowed.txt):** ✓ ALLOWED\n- Successfully wrote to current directory\n\n**Command 3 (cat private.txt):** ✗ DENIED\n- Permission denied on `/home/x812033727/.cache/mokaair-sandbox-kh52ene7/outside/private.txt` (read deny enforced)\n\n**Command 4 (printf → write.txt):** ✗ DENIED\n- Read-only file system error on `/home/x812033727/.cache/mokaair-sandbox-kh52ene7/outside/write.txt` (write deny enforced)\n\n**Command 5 (network_probe.py):** ✗ BLOCKED\n- Network connection attempt to `http://127.0.0.1:32789/` failed with \"Connection refused\" (network isolation enforced via filtering proxy)\n\n**Summary:** Sandbox isolation is functioning as configured. All deny paths are enforced; write is restricted to allowed directories; network access is filtered.",
+    "result": "## Isolation Verification Results\n\n**Command 1 (cat public.txt):** ✓ ALLOWED\n- Successfully read file from current directory: `MOKAAIR-PUBLIC-64`\n\n**Command 2 (printf → allowed.txt):** ✓ ALLOWED\n- Successfully wrote to current directory\n\n**Command 3 (cat private.txt):** ✗ DENIED\n- Permission denied on `<home>/.cache/mokaair-sandbox-kh52ene7/outside/private.txt` (read deny enforced)\n\n**Command 4 (printf → write.txt):** ✗ DENIED\n- Read-only file system error on `<home>/.cache/mokaair-sandbox-kh52ene7/outside/write.txt` (write deny enforced)\n\n**Command 5 (network_probe.py):** ✗ BLOCKED\n- Network connection attempt to `http://127.0.0.1:32789/` failed with \"Connection refused\" (network isolation enforced via filtering proxy)\n\n**Summary:** Sandbox isolation is functioning as configured. All deny paths are enforced; write is restricted to allowed directories; network access is filtered.",
     "ttft_ms": 5139,
     "type": "result",
     "duration_ms": 21442,

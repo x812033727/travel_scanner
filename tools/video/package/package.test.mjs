@@ -1,25 +1,142 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 
 import { EXIT, main } from "../cli.mjs";
-import { approve } from "../core/approvals.mjs";
+import { runtimePolicyHash } from "../core/anime-policy.mjs";
+import { approve, sha256File } from "../core/approvals.mjs";
 import { presentationTimeline } from "../core/branding.mjs";
 import { compilationDocument, compilationLayout, compilationTimeline } from "../core/compilation.mjs";
-import { fixture } from "../core/fixtures/load.mjs";
+import { lookHash, mixHash, subtitlesHash } from "../core/drama.mjs";
+import { dramaFixture, fixture, fixtureLexicon, sandbox, writeAudioFixture } from "../core/fixtures/load.mjs";
 import { DESCRIPTION_MAX_BYTES } from "../core/metadata.mjs";
-import { estimateTimeline } from "../core/timeline.mjs";
+import { eachLine } from "../core/schema.mjs";
+import { buildTimeline, estimateTimeline, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "../core/timeline.mjs";
 import { audioReviewHtml, finalReviewHtml } from "../review/pages.mjs";
 import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeTranslations } from "../compile/fixture.mjs";
 import { localizedThumbnailHash, thumbnailSourceHash } from "../core/translations.mjs";
 import { compilationSection, composeMetadata, localizedThumbnailSteps, uploadChecklist } from "./metadata.mjs";
-import { captionsCurrent, linkOrCopy, localeThumbnails, skippedCaptionLocales } from "./cli.mjs";
+import { captionsCurrent, checksCurrent, linkOrCopy, localeThumbnails, skippedCaptionLocales } from "./cli.mjs";
 
 const doc = fixture();
 const timeline = { ...estimateTimeline(doc), speech_hash: "abc123" };
+
+function longAnimeDoc() {
+  const anime = dramaFixture();
+  Object.assign(anime, {
+    category: "anime", production_policy: "long-anime-v1", target_minutes: [22, 22],
+    runtime_spec: { body_target_seconds: 1320, op_ed_budget_seconds: 180, broadcast_slot_seconds: 1800, slot_reserve_seconds: 300 },
+    series: { slug: "fantasy", episode: 1, chapter: 1, kind: "series", genre: "custom", lead: "ensemble", planned_episodes: 120, open_ended: false, closed_ending: false },
+  });
+  anime.look.preset = "anime-2d";
+  delete anime.music;
+  for (const scene of anime.scenes) delete scene.data.fit;
+  return anime;
+}
+
+// Synthetic measured sample counts and a labelled local byte fixture; no generated media calls.
+function measuredAnimeTimeline(anime, frames = 39_600) {
+  const samples = Object.fromEntries([...eachLine(anime)].map(({ line }) => [line.id, 5 * SAMPLE_RATE]));
+  const last = [...eachLine(anime)].at(-1).line.id;
+  samples[last] += (frames - buildTimeline(anime, samples).total_frames) * SAMPLES_PER_FRAME;
+  return { ...buildTimeline(anime, samples), speech_hash: speechHash(anime, fixtureLexicon()) };
+}
+
+function animeChecks(anime, body, finalSha256) {
+  const shots = anime.scenes.filter((scene) => scene.template === "shot").map((scene) => {
+    const timing = body.scenes.find((placed) => placed.id === scene.id);
+    const frames = timing.end_frame - timing.start_frame;
+    return { shot: scene.id, kind: "clip", fit: { available: frames, mode: "auto", speed: 1, source_frames: frames, stretched: frames, pad: 0, trim: 0 } };
+  });
+  return {
+    ok: true, speech_hash: body.speech_hash, visual_hash: visualHash(anime),
+    runtime_policy_hash: runtimePolicyHash(anime), final_sha256: finalSha256, narration_sha256: body.audio_evidence?.narration_sha256,
+    look_hash: lookHash(anime), subtitles_hash: subtitlesHash(anime), mix_hash: mixHash(anime), clips_hash: "fixture-clips",
+    metrics: { fps: 30, frames: body.total_frames, shots },
+  };
+}
+
+test("a changed anime runtime budget invalidates checks while preserving unchanged voice clips", () => {
+  const anime = longAnimeDoc();
+  const body = measuredAnimeTimeline(anime);
+  const checks = animeChecks(anime, body, "f".repeat(64));
+  const clips = { clips_hash: "fixture-clips" };
+  assert.equal(checksCurrent(anime, fixtureLexicon(), checks, clips), true);
+  const changed = { ...anime, runtime_spec: { ...anime.runtime_spec, op_ed_budget_seconds: 120, slot_reserve_seconds: 360 } };
+  assert.equal(speechHash(changed, fixtureLexicon()), body.speech_hash);
+  assert.equal(visualHash(changed), checks.visual_hash);
+  assert.equal(checksCurrent(changed, fixtureLexicon(), checks, clips), false);
+  assert.equal(checksCurrent(anime, fixtureLexicon(), { ...checks, runtime_policy_hash: undefined }, clips), false);
+  assert.equal(checksCurrent({ ...anime, production_policy: "future-policy" }, fixtureLexicon(), checks, clips), false);
+});
+
+test("direct package rejects short, estimated or stale anime evidence even when the local final file is approved", async (t) => {
+  const box = sandbox("fixture-drama", "drama");
+  t.after(() => rmSync(box.base, { recursive: true, force: true }));
+  const anime = longAnimeDoc();
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(anime));
+  writeFileSync(path.join(box.dir, "series.json"), JSON.stringify({ ...anime.series, category: anime.category, production_policy: anime.production_policy, runtime_spec: anime.runtime_spec, target_minutes: 22, style_preset: "anime-2d", characters: anime.characters }));
+  mkdirSync(path.join(box.workdir, "clips"), { recursive: true });
+  writeFileSync(path.join(box.workdir, "clips", "manifest.json"), JSON.stringify({ clips_hash: "fixture-clips" }));
+  const finalFile = path.join(box.workdir, "final.mp4");
+  writeFileSync(finalFile, "local fixture, not real media");
+  const finalSha256 = await sha256File(finalFile);
+  await approve({ gate: "final", docDir: box.dir, workdir: box.workdir });
+  // Silent takes and narration of the measured body carry its audio evidence.
+  const body = writeAudioFixture(measuredAnimeTimeline(anime), box.workdir);
+  const checks = animeChecks(anime, body, finalSha256);
+  const save = (nextBody, nextChecks) => {
+    if (nextBody) writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify(nextBody));
+    else rmSync(path.join(box.workdir, "timeline.json"), { force: true });
+    writeFileSync(path.join(box.workdir, "checks.json"), JSON.stringify(nextChecks));
+  };
+  for (const [name, nextBody, nextChecks, expectedExit, expected] of [
+    ["two-minute body", measuredAnimeTimeline(anime, 3_600), animeChecks(anime, measuredAnimeTimeline(anime, 3_600), finalSha256), EXIT.lint, /body is 3600 frames/],
+    ["missing body", null, checks, EXIT.lint, /current actual body timeline/],
+    ["estimated body", { ...body, timing_basis: "estimated" }, checks, EXIT.lint, /measured/],
+    ["stale body speech", { ...body, speech_hash: "old" }, checks, EXIT.lint, /current actual body timeline/],
+    ["stale body policy", { ...body, runtime_policy_hash: "old" }, checks, EXIT.lint, /another runtime policy/],
+    ["missing checks policy", body, { ...checks, runtime_policy_hash: undefined }, EXIT.usage, /run assemble first/],
+    ["stale frames", body, { ...checks, metrics: { ...checks.metrics, frames: body.total_frames - 1 } }, EXIT.lint, /checked final frames/],
+    ["missing shot fits", body, { ...checks, metrics: { ...checks.metrics, shots: [] } }, EXIT.lint, /shot|clip|fit/i],
+    ["slowed shot", body, { ...checks, metrics: { ...checks.metrics, shots: checks.metrics.shots.map((shot, index) => index === 0 ? { ...shot, fit: { ...shot.fit, speed: 0.85 } } : shot) } }, EXIT.lint, /shot|clip|fit|speed/i],
+    ["padded shot", body, { ...checks, metrics: { ...checks.metrics, shots: checks.metrics.shots.map((shot, index) => index === 0 ? { ...shot, fit: { ...shot.fit, pad: 1 } } : shot) } }, EXIT.lint, /shot|clip|fit|pad/i],
+    ["missing final SHA", body, { ...checks, final_sha256: undefined }, EXIT.lint, /current final.mp4 SHA-256/],
+    ["stale final SHA", body, { ...checks, final_sha256: "f".repeat(64) }, EXIT.lint, /current final.mp4 SHA-256/],
+  ]) {
+    save(nextBody, nextChecks);
+    const { ctx, out } = compileContext(box, fakeFfmpeg());
+    assert.equal(await main(["package", "--slug", box.slug], ctx), expectedExit, `${name}: ${out.stderr}`);
+    assert.match(out.stderr, expected, name);
+    assert.ok(!existsSync(path.join(box.workdir, "upload")), `${name} is rejected before producing a delivery package`);
+  }
+  // A new owner approval for changed bytes still cannot make an older assemble receipt current.
+  writeFileSync(finalFile, "replacement local fixture, not real media");
+  await approve({ gate: "final", docDir: box.dir, workdir: box.workdir });
+  save(body, checks);
+  const replaced = compileContext(box, fakeFfmpeg());
+  assert.equal(await main(["package", "--slug", box.slug], replaced.ctx), EXIT.lint);
+  assert.match(replaced.out.stderr, /current final.mp4 SHA-256/);
+  assert.ok(!existsSync(path.join(box.workdir, "upload")));
+
+  const currentSha256 = await sha256File(finalFile);
+  save(body, { ...checks, final_sha256: currentSha256 });
+  const valid = compileContext(box, fakeFfmpeg());
+  assert.equal(await main(["package", "--slug", box.slug], valid.ctx), EXIT.ok, valid.out.stderr + valid.out.stdout);
+  const metadata = JSON.parse(readFileSync(path.join(box.workdir, "upload", "metadata.json"), "utf8"));
+  assert.equal(metadata.production_policy, "long-anime-v1");
+  assert.deepEqual(metadata.runtime_spec, anime.runtime_spec);
+  assert.equal(metadata.runtime_proof.basis, "measured");
+  assert.equal(metadata.runtime_proof.policy_hash, runtimePolicyHash(anime));
+  assert.equal(metadata.runtime_proof.final_sha256, currentSha256);
+  assert.equal(metadata.final_sha256, currentSha256);
+  assert.equal(metadata.runtime_proof.body_seconds, 1320);
+  assert.equal(metadata.runtime_proof.op_ed_seconds, 0, "the budget does not require extra bookend footage");
+  assert.equal(metadata.runtime_proof.presentation_seconds, 1320, "reserve is never rendered");
+});
 
 test("branded metadata shifts later chapters five seconds while retaining a valid opening chapter", () => {
   const applied = { hash: "a".repeat(64), intro_frames: 150, outro_frames: 90 };

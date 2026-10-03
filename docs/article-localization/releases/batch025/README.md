@@ -13,7 +13,7 @@ from content head 7d19183e0967b408df67ae395a2bb7643f452170.
 | [HostGator WordPress setup](https://mokaair.com/zh-TW/life/hostgator-wordpress-setup) | Complete | Four new locales | Five languages | Desktop and mobile |
 | [SiteGround WordPress setup](https://mokaair.com/zh-TW/life/siteground-wordpress-setup) | Complete | Four new locales | Five languages | Desktop and mobile |
 
-The guarded hostinger2 release completed on 2026-09-23 UTC. A fresh custom-format
+The guarded `<saved-session>` release completed on 2026-09-23 UTC. A fresh custom-format
 database backup passed pg_restore --list before deployment. The release imported
 only the 16 missing-language drafts and then published those 16 languages. All four
 source articles stayed at article version 2 and Traditional Chinese locale version 4.

@@ -11,11 +11,14 @@
 // and records an approval only when that hash still matches the local file.
 import { closeSync, existsSync, mkdirSync, openSync, readFileSync, readSync, statSync } from "node:fs";
 import path from "node:path";
-import { parseArgs } from "node:util";
+import { isDeepStrictEqual, parseArgs } from "node:util";
 
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { AutomationError, automationClient } from "../automation/client.mjs";
-import { GATES, approvalState, approve, readApprovals, sha256File } from "../core/approvals.mjs";
+import { ANIME_APPROVAL_GATES, approvalRuntimePolicyHash, GATES, approvalState, approve, readApprovals, sha256File } from "../core/approvals.mjs";
+import { animeRuntimeContext, hasAnimePolicy, runtimePolicyHash } from "../core/anime-policy.mjs";
+import { assembledAudioProblems, audioEvidenceProblems, currentAudioCheck } from "../core/audio-evidence.mjs";
+import { animeBodyDurationProblems, animeRuntimeProof } from "../core/duration.mjs";
 import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
 import { isCompilation } from "../core/compilation.mjs";
 import { hasCast, illustrated, isDrama, shotScenes } from "../core/drama.mjs";
@@ -25,7 +28,7 @@ import { ARTIFACTS, loadProject, pipelineStatus } from "../core/state.mjs";
 import { narrationLocale, VIDEO_CATEGORIES } from "../core/schema.mjs";
 import { narrativeHash, scriptScenes, writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckMatches } from "../core/script-check.mjs";
-import { estimateTimeline, formatClock } from "../core/timeline.mjs";
+import { estimateTimeline, formatClock, speechHash } from "../core/timeline.mjs";
 import { keepSheets } from "../media/series-store.mjs";
 import { packageFiles, packageLocales, readPackageReport, thumbnailVariants, UPLOAD_DIR, variantRole } from "../package/check.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
@@ -375,14 +378,14 @@ async function nextGate(places, workdir, doc) {
   }
   const metadata = path.join(workdir, ARTIFACTS.upload);
   if (!existsSync(metadata)) return null;
-  const sha = await sha256File(metadata);
-  const confirmed = readApprovals(workdir).approvals.some((entry) => entry.gate === "publish" && entry.sha256 === sha);
-  return confirmed ? null : "publish";
+  const confirmation = await approvalState({ gate: "publish", ...places });
+  return confirmation.status === "approved" ? null : "publish";
 }
 
 async function submission(gate, { ctx, request, project, workdir, dir, flags = [], manualReview = false }) {
   const { doc } = project;
   const slug = doc.slug;
+  const runtimeFields = hasAnimePolicy(doc) ? { production_policy: doc.production_policy, runtime_spec: { ...doc.runtime_spec }, runtime_context: animeRuntimeContext(doc), runtime_policy_hash: runtimePolicyHash(doc) } : {};
   if (gate === "outline") {
     const file = path.join(dir, "brief.md");
     const brief = readFileSync(file, "utf8");
@@ -411,6 +414,7 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
       content_sha256: await sha256File(file),
       summary: `劇本 ${scenes.length} 場、${lines} 句，約 ${minutes} 分鐘${check?.coverage ? "；查核已對照細綱" : ""}`,
       payload: {
+        ...runtimeFields,
         scenes,
         characters: (doc.characters ?? []).map(({ id, name }) => ({ id, name })),
         minutes,
@@ -430,7 +434,18 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
   if (gate === "audio") {
     const file = path.join(workdir, ARTIFACTS.timeline);
     const timeline = readJson(file, null);
-    const check = audioCheck(readJson(path.join(workdir, "review", "check.json"), null), readJson(path.join(workdir, "review", "check-flags.json"), null), timeline.lines.length);
+    const bodyProblems = animeBodyDurationProblems({ doc, timeline, timelineCurrent: timeline?.speech_hash === speechHash(doc, project.lexicon) });
+    if (bodyProblems.length) throw new UsageError(bodyProblems.join("; "));
+    const problems = audioEvidenceProblems(timeline, workdir);
+    if (problems.length) throw new UsageError(`audio cannot be submitted: ${problems.join("; ")}`);
+    const measurement = hasAnimePolicy(doc) ? {
+      basis: "measured", stage: "audio", policy_hash: runtimePolicyHash(doc), runtime_spec: { ...doc.runtime_spec },
+      runtime_context: animeRuntimeContext(doc),
+      body_seconds: timeline.total_frames / timeline.fps, body_frames: timeline.total_frames, fps: timeline.fps, speech_hash: timeline.speech_hash,
+    } : null;
+    const currentCheck = currentAudioCheck(readJson(path.join(workdir, "review", "check.json"), null), timeline);
+    const flagsNow = readJson(path.join(workdir, "review", "check-flags.json"), null);
+    const check = audioCheck(currentCheck, { ...flagsNow, flags: (flagsNow?.flags ?? []).filter((id) => currentCheck.lines[id]) }, timeline.lines.length);
     // The lines the listener reworded after the retakes (docs/videos/HANDS-OFF.md §旁白), as the
     // worker wrote them: [{ id, before, after, heard }]; the review card lists them.
     const rewrites = readJson(path.join(workdir, "review", "rewrites.json"), []);
@@ -440,7 +455,7 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
       gate,
       content_sha256: await sha256File(file),
       summary: `旁白 ${formatClock(Math.round(seconds))}，${timeline.lines.length} 句；Jev 標記 ${check.check.flagged} 句${clearedSummary(check)}${rewrites.length ? `；改寫 ${rewrites.length} 句` : ""}`,
-      payload: { duration_seconds: seconds, ...check, rewrites },
+      payload: { duration_seconds: seconds, ...check, rewrites, ...runtimeFields, ...(measurement ? { runtime_measurement: measurement } : {}) },
       files: [narration],
     };
   }
@@ -449,6 +464,10 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     const sha = await sha256File(file);
     const bodyTimeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
     const checks = readJson(path.join(workdir, ARTIFACTS.checks), null) ?? {};
+    if (!isCompilation(doc)) {
+      const problems = assembledAudioProblems(bodyTimeline, checks, workdir);
+      if (problems.length) throw new UsageError(problems.join("; "));
+    }
     const compilation = isCompilation(doc);
     const applied = appliedBranding(checks);
     const rebuild = compilation ? "compile" : "assemble";
@@ -473,6 +492,13 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     if (await sha256File(file) !== sha) throw new UsageError("final.mp4 changed during the quality check; run review-push --gate final again");
     const qa = report?.final_sha256 === sha ? report : null;
     if (!qa) ctx.stdout.write(`${slug}: no quality check report for this final.mp4; the review goes up without one\n`);
+    let runtimeProof = null;
+    if (hasAnimePolicy(doc)) {
+      try {
+        runtimeProof = animeRuntimeProof({ doc, timeline: bodyTimeline, presented: timeline, timelineCurrent: bodyTimeline.speech_hash === speechHash(doc, project.lexicon), checks, finalSha256: sha });
+      } catch (error) { throw new UsageError(error.message); }
+      if (qa?.policy_hash !== runtimeProof.policy_hash || !isDeepStrictEqual(qa.runtime_spec, runtimeProof.runtime_spec) || !isDeepStrictEqual(qa.runtime_context, runtimeProof.runtime_context)) throw new UsageError("long-anime final QA needs the current runtime policy and series context; run qa again");
+    }
     // The owner's language choice, when there is one already (docs/videos/LANGUAGES.md), with
     // the narration's own locale and zh-TW, which every choice keeps (alwaysLocales).
     const languages = readLanguages(workdir);
@@ -507,6 +533,8 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
       summary: `成片 ${formatClock(Math.round(seconds))}，${qa ? qaSummary(qa) : `自動檢查${checks.ok ? "全部通過" : `有 ${(checks.problems ?? []).length} 項問題`}；${qaSummary(null)}`}${dubs.length ? `，配音 ${dubs.map((dub) => dub.locale).join("、")}` : ""}${manualReview ? "；需站主重新審看" : ""}`,
       payload: {
         duration_seconds: seconds,
+        ...runtimeFields,
+        ...(runtimeProof ? { runtime_proof: runtimeProof } : {}),
         checks: { ok: Boolean(checks.ok), problems: checks.problems ?? [] },
         chapters: metadata.chapters.map((chapter) => ({ time: chapter.at, title: chapter.title })),
         metadata: { [metadata.default_language]: { title: metadata.title, description: metadata.description }, ...metadata.localizations },
@@ -546,7 +574,7 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
       files,
     };
   }
-  return publishSubmission({ request, workdir, slug, compilation: isCompilation(doc) });
+  return publishSubmission({ request, workdir, slug, project, compilation: isCompilation(doc) });
 }
 
 /** The publish summary's note for a compilation: the size, and that the file is downloaded from the site. */
@@ -640,16 +668,26 @@ async function languagesSubmission({ request, project, workdir, slug }) {
  * final.mp4 is gigabytes and stays home (docs/videos/BINGE.md): the payload says where it is
  * and how big, and the site serves the download from the work directory instead.
  */
-async function publishSubmission({ request, workdir, slug, compilation = false }) {
+async function publishSubmission({ request, workdir, slug, project, compilation = false }) {
   const file = path.join(workdir, ARTIFACTS.upload);
   const { report, files: listed, metadata, finalSha256 } = await readPackageReport(workdir);
   if (!metadata) throw new ReviewError("upload/metadata.json is missing; run package first", { who: "owner" });
+  const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
+  const doc = project.doc;
+  let runtimeProof = null;
+  if (hasAnimePolicy(doc)) {
+    const checks = readJson(path.join(workdir, ARTIFACTS.checks), null);
+    if (!brandingCurrent(checks, readBranding(workdir))) throw new UsageError("long-anime package has another selected OP/ED; run assemble and package again");
+    try {
+      runtimeProof = animeRuntimeProof({ doc, timeline, presented: presentationTimeline(timeline, appliedBranding(checks)), timelineCurrent: timeline?.speech_hash === speechHash(doc, project.lexicon), checks, finalSha256 });
+    } catch (error) { throw new UsageError(error.message); }
+    if (!isDeepStrictEqual(metadata.runtime_proof, runtimeProof)) throw new UsageError("long-anime upload metadata needs the current measured runtime proof; run package again");
+  }
   const files = [];
   for (const entry of packageFiles(listed.keys())) {
     if (compilation && entry.role === "final") continue;
     files.push(await upload(request, slug, path.join(workdir, UPLOAD_DIR, entry.path), entry.role, entry.content_type));
   }
-  const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
   const minutes = timeline?.total_frames && timeline.fps ? Math.round((timeline.total_frames / timeline.fps / 60) * 10) / 10 : null;
   const checklist = existsSync(path.join(workdir, UPLOAD_CHECKLIST)) ? uploadItems(readFileSync(path.join(workdir, UPLOAD_CHECKLIST), "utf8")) : [];
   const bytes = listed.get("final.mp4") ?? null;
@@ -661,6 +699,7 @@ async function publishSubmission({ request, workdir, slug, compilation = false }
     summary: report.ok ? `${packageSummary(report)}${note ? `${note}；` : "："}請確認可以上架` : `${packageSummary(report)}${note}`,
     payload: {
       package: report,
+      ...(runtimeProof ? { production_policy: doc.production_policy, runtime_spec: { ...doc.runtime_spec }, runtime_context: runtimeProof.runtime_context, runtime_policy_hash: runtimeProof.policy_hash, runtime_proof: runtimeProof, final_media_sha256: finalSha256 } : {}),
       minutes,
       chapters: (metadata.chapters ?? []).length,
       locales: packageLocales(metadata),
@@ -958,11 +997,21 @@ async function recordApproval(review, { dir, workdir, now }) {
   if (!existsSync(file) || (await sha256File(file)) !== review.content_sha256) {
     return "approved a version that has since changed; run review-push again";
   }
-  if (readApprovals(workdir).approvals.some((entry) => entry.gate === review.gate && entry.sha256 === review.content_sha256)) {
+  let hash = null;
+  if (ANIME_APPROVAL_GATES.has(review.gate)) {
+    hash = approvalRuntimePolicyHash(review.gate, dir);
+    const remoteHash = review.payload?.runtime_policy_hash ?? null;
+    if (hash !== remoteHash || (hasAnimePolicy(review.payload) && !remoteHash)) return "approved a runtime policy or episode context that has since changed; run review-push again";
+  }
+  if (review.gate === "audio") {
+    const problems = audioEvidenceProblems(readJson(file), workdir);
+    if (problems.length) return `approval not recorded: ${problems.join("; ")}`;
+  }
+  if (readApprovals(workdir).approvals.some((entry) => entry.gate === review.gate && entry.sha256 === review.content_sha256 && (!ANIME_APPROVAL_GATES.has(review.gate) || (entry.runtime_policy_hash ?? null) === hash))) {
     return "already recorded";
   }
   const note = `approved on /admin/videos at ${review.decided_at}${review.choice ? `; chose outline ${review.choice}` : ""}${review.note ? `; ${review.note}` : ""}`;
-  await approve({ gate: review.gate, docDir: dir, workdir, now, note });
+  await approve({ gate: review.gate, docDir: dir, workdir, now, note, ...(ANIME_APPROVAL_GATES.has(review.gate) ? { expected_runtime_policy_hash: hash } : {}) });
   if (review.gate === "publish") return "the owner confirmed the upload; follow upload/UPLOAD.md in YouTube Studio";
   if (review.gate === "languages") return "the language batch is recorded; its dub tracks, if any, are up in YouTube Studio";
   if (review.gate === "dubs") return "the owner uploaded these dub tracks in YouTube Studio";

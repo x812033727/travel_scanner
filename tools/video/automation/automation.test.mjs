@@ -1232,7 +1232,7 @@ test("from the picked outline to YouTube without the owner: the final gate sends
       return { code: 0, out: "narration" };
     }
     if (name === "check-audio") {
-      write("review/check.json", { lines: Object.fromEntries([...eachLine(video)].map(({ line }) => [line.id, { match: true, match_kind: "exact" }])) });
+      write("review/check.json", { lines: Object.fromEntries([...eachLine(video)].map(({ line }) => [line.id, { match: true, match_kind: "exact", clip: readJson(path.join(workdir, "timeline.json")).lines.find((entry) => entry.id === line.id).audio_sha256.slice(0, 16) }])) });
       return { code: 0, out: "every line passed" };
     }
     if (name === "render") {
@@ -1242,7 +1242,7 @@ test("from the picked outline to YouTube without the owner: the final gate sends
     }
     if (name === "assemble") {
       writeFileSync(path.join(workdir, "final.mp4"), randomBytes(PART_BYTES + 10));
-      write("checks.json", { ok: true, speech_hash: speechHash(video, lexicon()), visual_hash: visualHash(video), problems: [], metrics: { frames: 900, loudness: { integrated: -14 }, psnr: [] } });
+      write("checks.json", { ok: true, narration_sha256: readJson(path.join(workdir, "timeline.json")).audio_evidence.narration_sha256, speech_hash: speechHash(video, lexicon()), visual_hash: visualHash(video), problems: [], metrics: { frames: 900, loudness: { integrated: -14 }, psnr: [] } });
       return { code: 0, out: "assembled" };
     }
     if (name === "qa") {
@@ -1452,7 +1452,7 @@ async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, 
       return { code: 0, out: "narration" };
     }
     if (name === "check-audio") {
-      write("review/check.json", { lines: Object.fromEntries([...eachLine(video)].map(({ line }) => [line.id, { match: true, match_kind: "exact" }])) });
+      write("review/check.json", { lines: Object.fromEntries([...eachLine(video)].map(({ line }) => [line.id, { match: true, match_kind: "exact", clip: readJson(path.join(workdir, "timeline.json")).lines.find((entry) => entry.id === line.id).audio_sha256.slice(0, 16) }])) });
       return { code: 0, out: "every line passed" };
     }
     if (name === "render" && !command.includes("--thumbnails-only")) {
@@ -1462,7 +1462,7 @@ async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, 
     }
     if (name === "assemble") {
       writeFileSync(path.join(workdir, "final.mp4"), randomBytes(1000));
-      write("checks.json", { ok: true, speech_hash: speechHash(video, lexicon()), visual_hash: visualHash(video), problems: [], metrics: { frames: 900, loudness: { integrated: -14 }, psnr: [] } });
+      write("checks.json", { ok: true, narration_sha256: readJson(path.join(workdir, "timeline.json")).audio_evidence.narration_sha256, speech_hash: speechHash(video, lexicon()), visual_hash: visualHash(video), problems: [], metrics: { frames: 900, loudness: { integrated: -14 }, psnr: [] } });
       return { code: 0, out: "assembled" };
     }
     if (name === "qa") {
@@ -2232,7 +2232,7 @@ async function narrationGate({ rewrite, stillFlagged }) {
       return { code: 0, out: "narration" };
     }
     if (name === "check-audio") {
-      const lines = Object.fromEntries([...eachLine(current)].map(({ line }) => [line.id, { match: true, match_kind: "exact", intended: line.text, heard: line.text, noul: null }]));
+      const lines = Object.fromEntries([...eachLine(current)].map(({ line }) => [line.id, { match: true, match_kind: "exact", intended: line.text, heard: line.text, noul: null, clip: readJson(path.join(workdir, "timeline.json")).lines.find((entry) => entry.id === line.id).audio_sha256.slice(0, 16) }]));
       const flagged = stillFlagged(current);
       if (flagged) Object.assign(lines.x9fe, { match: false, match_kind: null, heard: HEARD_WRONG, noul: 0.2 });
       write("review/check.json", { lines });
@@ -2403,7 +2403,7 @@ test("illustrated slides walk the picture, storyboard and music steps between th
       return { code: 0, out: "narration" };
     }
     if (name === "check-audio") {
-      write("review/check.json", { lines: Object.fromEntries([...eachLine(current)].map(({ line }) => [line.id, { match: true, match_kind: "exact" }])) });
+      write("review/check.json", { lines: Object.fromEntries([...eachLine(current)].map(({ line }) => [line.id, { match: true, match_kind: "exact", clip: readJson(path.join(workdir, "timeline.json")).lines.find((entry) => entry.id === line.id).audio_sha256.slice(0, 16) }])) });
       return { code: 0, out: "every line passed" };
     }
     if (name === "keyframes") {
@@ -2418,7 +2418,7 @@ test("illustrated slides walk the picture, storyboard and music steps between th
     if (name === "assemble") {
       const keyframes = readJson(path.join(workdir, "keyframes", "manifest.json"));
       writeFileSync(path.join(workdir, "final.mp4"), randomBytes(PART_BYTES + 10));
-      write("checks.json", { ok: true, speech_hash: speechHash(current, lexicon()), visual_hash: visualHash(current), look_hash: lookOf(current), pictures_hash: keyframesHash(current, keyframes), mix_hash: mixHash(current), sfx_hash: sfxHash(current), problems: [], metrics: { frames: 900, loudness: { integrated: -14 }, psnr: [] } });
+      write("checks.json", { ok: true, narration_sha256: readJson(path.join(workdir, "timeline.json")).audio_evidence.narration_sha256, speech_hash: speechHash(current, lexicon()), visual_hash: visualHash(current), look_hash: lookOf(current), pictures_hash: keyframesHash(current, keyframes), mix_hash: mixHash(current), sfx_hash: sfxHash(current), problems: [], metrics: { frames: 900, loudness: { integrated: -14 }, psnr: [] } });
       return { code: 0, out: "assembled" };
     }
     if (name === "review-push") {

@@ -1,12 +1,15 @@
 import assert from "node:assert/strict";
-import { existsSync, mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
 import { EXIT } from "../cli.mjs";
+import { runtimePolicyHash } from "../core/anime-policy.mjs";
 import { lookHash } from "../core/drama.mjs";
-import { dramaFixture, fixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
-import { estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
+import { writeAudioFixture, dramaFixture, fixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
+import { eachLine } from "../core/schema.mjs";
+import { lintProject, loadProject } from "../core/state.mjs";
+import { buildTimeline, estimateTimeline, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "../core/timeline.mjs";
 import { run } from "./cli.mjs";
 import {
   checkLoudness,
@@ -39,6 +42,106 @@ function manifestFor(timeline, transitions = 3) {
   };
 }
 
+test("direct anime assembly rejects a two-minute measured body and estimated or stale timing before media or ffmpeg", async (t) => {
+  const box = sandbox("fixture-drama", "drama");
+  t.after(() => rmSync(box.base, { recursive: true, force: true }));
+  const doc = dramaFixture();
+  Object.assign(doc, {
+    category: "anime", production_policy: "long-anime-v1", target_minutes: [22, 22],
+    runtime_spec: { body_target_seconds: 1320, op_ed_budget_seconds: 180, broadcast_slot_seconds: 1800, slot_reserve_seconds: 300 },
+    series: { slug: "fantasy", episode: 1, chapter: 1, kind: "series", genre: "custom", lead: "ensemble", planned_episodes: 120, open_ended: false, closed_ending: false },
+  });
+  doc.look.preset = "anime-2d";
+  delete doc.music;
+  for (const scene of doc.scenes) delete scene.data.fit;
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+  writeFileSync(path.join(box.dir, "series.json"), JSON.stringify({ ...doc.series, category: doc.category, production_policy: doc.production_policy, runtime_spec: doc.runtime_spec, target_minutes: 22, style_preset: "anime-2d", characters: doc.characters }));
+  const lint = lintProject(loadProject({ slug: doc.slug, root: box.root }));
+  assert.deepEqual(lint.errors, [], "the approved policy and trusted series projection pass script preflight");
+  mkdirSync(box.workdir, { recursive: true });
+  const actual = (frames) => {
+    // Synthetic WAV sample counts: this test verifies timing, without generating a film or voice.
+    const samples = Object.fromEntries([...eachLine(doc)].map(({ line }) => [line.id, 5 * SAMPLE_RATE]));
+    const last = [...eachLine(doc)].at(-1).line.id;
+    samples[last] += (frames - buildTimeline(doc, samples).total_frames) * SAMPLES_PER_FRAME;
+    return { ...buildTimeline(doc, samples), speech_hash: speechHash(doc, fixtureLexicon()) };
+  };
+  let ffmpegReached = 0;
+  let stderr = "";
+  const ctx = {
+    root: box.root, home: box.base, EXIT,
+    env: { VIDEO_WORKDIR: box.work, get FFMPEG_PATH() { ffmpegReached += 1; throw new Error("ffmpeg sentinel"); } },
+    stdout: { write() {} }, stderr: { write(value) { stderr += value; } },
+  };
+  for (const [name, timeline, expected] of [
+    ["two-minute body", actual(3_600), /body is 3600 frames/],
+    ["estimated body", { ...actual(39_600), timing_basis: "estimated" }, /measured/],
+    ["stale policy", { ...actual(39_600), runtime_policy_hash: "old" }, /another runtime policy/],
+    ["missing policy receipt", { ...actual(39_600), runtime_policy_hash: undefined }, /another runtime policy/],
+  ]) {
+    writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
+    stderr = "";
+    assert.equal(await run("assemble", ["--slug", doc.slug], ctx), EXIT.lint, name);
+    assert.match(stderr, expected, name);
+    assert.equal(ffmpegReached, 0);
+    assert.ok(!existsSync(path.join(box.workdir, "segments")));
+    assert.ok(!existsSync(path.join(box.workdir, "final.mp4")));
+  }
+  for (const frames of [37_800, 41_400]) {
+    const timeline = actual(frames);
+    assert.equal(timeline.runtime_policy_hash, runtimePolicyHash(doc));
+    writeAudioFixture(timeline, box.workdir);
+    stderr = "";
+    assert.equal(await run("assemble", ["--slug", doc.slug], ctx), EXIT.usage);
+    assert.match(stderr, /run render first/, "valid boundary body advances to the existing media gate");
+  }
+  assert.equal(ffmpegReached, 0);
+});
+
+test("native auto-fit probes every directed clip and refuses a short action before encoding any segment", async (t) => {
+  const box = sandbox("fixture-drama", "drama");
+  t.after(() => rmSync(box.base, { recursive: true, force: true }));
+  const doc = dramaFixture();
+  Object.assign(doc, { category: "anime", production_policy: "long-anime-v1", target_minutes: [22, 22],
+    runtime_spec: { body_target_seconds: 1320, op_ed_budget_seconds: 180, broadcast_slot_seconds: 1800, slot_reserve_seconds: 300 },
+    series: { slug: "fantasy", episode: 1, chapter: 1, kind: "series", genre: "custom", lead: "ensemble", planned_episodes: 120, open_ended: false, closed_ending: false } });
+  doc.look.preset = "anime-2d";
+  delete doc.music;
+  doc.subtitles = { burn_in: false };
+  for (const scene of doc.scenes) delete scene.data.fit;
+  doc.scenes.push({ id: "bridge-action", template: "shot", action_seconds: 8, data: { prompt: "The girl leaps between collapsing bridge stones", motion: "stones crack and fall into the river", characters: ["jingwei"] }, lines: [] });
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+  writeFileSync(path.join(box.dir, "series.json"), JSON.stringify({ ...doc.series, category: doc.category, production_policy: doc.production_policy, runtime_spec: doc.runtime_spec, target_minutes: 22, style_preset: "anime-2d", characters: doc.characters }));
+  assert.deepEqual(lintProject(loadProject({ slug: doc.slug, root: box.root })).errors, []);
+  // These frame counts and probe binaries are synthetic. No real 22-minute media is produced.
+  const samples = Object.fromEntries([...eachLine(doc)].map(({ line }) => [line.id, 5 * SAMPLE_RATE]));
+  const last = [...eachLine(doc)].at(-1).line.id;
+  samples[last] += (39_600 - buildTimeline(doc, samples).total_frames) * SAMPLES_PER_FRAME;
+  const timeline = { ...buildTimeline(doc, samples), speech_hash: speechHash(doc, fixtureLexicon()) };
+  const visual = visualHash(doc);
+  mkdirSync(path.join(box.workdir, "frames"), { recursive: true });
+  mkdirSync(path.join(box.workdir, "clips"), { recursive: true });
+  writeAudioFixture(timeline, box.workdir);
+  writeFileSync(path.join(box.workdir, "frames", "manifest.json"), JSON.stringify({ visual_hash: visual, ...manifestFor(timeline, 0) }));
+  const shots = Object.fromEntries(timeline.scenes.map((scene) => {
+    const file = `clips/${scene.id}.mp4`;
+    writeFileSync(path.join(box.workdir, file), JSON.stringify({ frames: scene.id === "bridge-action" ? 180 : scene.end_frame - scene.start_frame }));
+    return [scene.id, { file, sha256: "a".repeat(64) }];
+  }));
+  writeFileSync(path.join(box.workdir, "clips", "manifest.json"), JSON.stringify({ speech_hash: timeline.speech_hash, visual_hash: visual, look_hash: lookHash(doc), shots }));
+  const bin = path.join(box.base, "bin");
+  const marker = path.join(box.base, "encoding-started");
+  mkdirSync(bin);
+  writeFileSync(path.join(bin, "ffmpeg"), '#!/usr/bin/env node\nimport { writeFileSync } from "node:fs";\nimport path from "node:path";\nconst args=process.argv.slice(2);\nif(args.includes("-encoders")) process.stdout.write(" libx264 "); else if(args.includes("-version")) process.stdout.write("ffmpeg synthetic test\\n"); else { writeFileSync(path.join(path.dirname(process.argv[1]),"..","encoding-started"),"unexpected encode"); process.exit(9); }\n', { mode: 0o755 });
+  writeFileSync(path.join(bin, "ffprobe"), '#!/usr/bin/env node\nimport { readFileSync } from "node:fs";\nconst frames=JSON.parse(readFileSync(process.argv.at(-1),"utf8")).frames;\nprocess.stdout.write(JSON.stringify({streams:[{codec_type:"video",r_frame_rate:"30/1",nb_read_packets:String(frames)}]}));\n', { mode: 0o755 });
+  let stderr = "";
+  const ctx = { root: box.root, home: box.base, EXIT, env: { VIDEO_WORKDIR: box.work, FFMPEG_PATH: bin }, stdout: { write() {} }, stderr: { write(value) { stderr += value; } } };
+  assert.equal(await run("assemble", ["--slug", doc.slug], ctx), EXIT.lint, stderr);
+  assert.match(stderr, /bridge-action must cover its 240 frames at natural speed with no frozen tail/);
+  assert.equal(existsSync(marker), false, "no clip, motion, subtitle or final encoding starts");
+  assert.equal(existsSync(path.join(box.workdir, "segments")), false, "even earlier valid shots are not encoded before the last shot is checked");
+});
+
 test("direct assembly refuses wrong-model, short or non-native-1080p production clips before reaching ffmpeg", async () => {
   const expected = { provider: "gemini", model: "veo-3.1-lite-generate-preview", resolution: "1080p", aspect: "16:9" };
   for (const fault of ["model", "duration", "dimensions", "missing dimensions"]) {
@@ -62,7 +165,7 @@ test("direct assembly refuses wrong-model, short or non-native-1080p production 
     const visual = visualHash(doc);
     const timeline = { ...estimateTimeline(doc), speech_hash: speech };
     mkdirSync(box.workdir, { recursive: true });
-    writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
+    writeAudioFixture(timeline, box.workdir);
     mkdirSync(path.join(box.workdir, "frames"), { recursive: true });
     writeFileSync(path.join(box.workdir, "frames", "manifest.json"), JSON.stringify({ visual_hash: visual }));
     const clips = {
@@ -92,6 +195,26 @@ test("direct assembly refuses wrong-model, short or non-native-1080p production 
     writeFileSync(seriesFile, JSON.stringify({}));
     await assert.rejects(run("assemble", ["--slug", doc.slug], ctx), /ffmpeg sentinel/);
     assert.equal(ffmpegReached, 1);
+  }
+});
+
+test("direct assembly refuses missing or changed audio evidence before any ffmpeg work", async () => {
+  for (const fault of ["legacy", "take", "narration"]) {
+    const box = sandbox("fixture-drama", "drama");
+    const doc = dramaFixture();
+    const timeline = writeAudioFixture({ ...estimateTimeline(doc), speech_hash: speechHash(doc, fixtureLexicon()) }, box.workdir);
+    if (fault === "legacy") {
+      delete timeline.audio_evidence;
+      writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
+    } else {
+      const file = path.join(box.workdir, fault === "take" ? `audio/${timeline.lines[0].id}.wav` : "narration.wav");
+      const bytes = readFileSync(file); bytes[48] ^= 1; writeFileSync(file, bytes);
+    }
+    let ffmpegReached = 0, stderr = "";
+    const ctx = { root: box.root, home: box.base, EXIT, env: { VIDEO_WORKDIR: box.work, get FFMPEG_PATH() { ffmpegReached += 1; throw new Error("ffmpeg sentinel"); } }, stdout: { write() {} }, stderr: { write(value) { stderr += value; } } };
+    assert.equal(await run("assemble", ["--slug", box.slug], ctx), EXIT.usage);
+    assert.match(stderr, /current audio evidence before assembly/);
+    assert.equal(ffmpegReached, 0);
   }
 });
 

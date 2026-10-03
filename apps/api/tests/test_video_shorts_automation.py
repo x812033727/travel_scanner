@@ -793,6 +793,55 @@ async def test_the_week_is_planned_then_made_slot_by_slot(site: Site) -> None:
 
 
 @pytest.mark.asyncio
+async def test_a_dropped_topic_drops_its_video_only_while_nothing_reached_the_owner(
+    site: Site,
+) -> None:
+    async with site.session() as session:
+        await topics.import_campaign(session, site.owner, campaign(), NOW)
+    await configure(site)
+    for slug in ("shorts-receipt-total", "shorts-poster-blind"):
+        async with site.session() as session:
+            await jobs.start_topic(session, slug, NOW)
+    async with site.session() as session:
+        reviewed = await session.scalar(
+            select(VideoProject).where(VideoProject.slug == "shorts-poster-blind")
+        )
+        assert reviewed is not None
+        session.add(
+            VideoReview(
+                project_id=reviewed.id,
+                gate="final",
+                content_sha256="f" * 64,
+                summary="final",
+                status="pending",
+            )
+        )
+        await session.commit()
+    gave_up = DoneIn(outcome="dropped", note="只有一段站得住")
+    async with site.session() as session:
+        first = await jobs.finish_topic(session, "shorts-receipt-total", gave_up, NOW)
+        await jobs.finish_topic(session, "shorts-poster-blind", gave_up, NOW)
+    later = NOW + timedelta(hours=1)
+    async with site.session() as session:
+        again = await jobs.finish_topic(session, "shorts-receipt-total", gave_up, later)
+        videos = {
+            row.slug: row
+            for row in await session.scalars(select(VideoProject).order_by(VideoProject.slug))
+        }
+        audits = list(
+            await session.scalars(
+                select(AdminAuditLog).where(AdminAuditLog.action == "video_project_dropped")
+            )
+        )
+    assert first.status == again.status == "dropped"
+    empty = videos["shorts-receipt-total"]
+    assert (empty.dropped_at, empty.dropped_note) == (NOW, "只有一段站得住")
+    assert videos["shorts-poster-blind"].dropped_at is None, "a reviewed video is the owner's"
+    assert [audit.metadata_json["slug"] for audit in audits] == ["shorts-receipt-total"]
+    assert audits[0].actor_user_id is None
+
+
+@pytest.mark.asyncio
 async def test_a_start_respects_the_switch_the_pause_the_month_and_the_budget(
     site: Site,
 ) -> None:

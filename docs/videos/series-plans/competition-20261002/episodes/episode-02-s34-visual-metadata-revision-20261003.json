@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "status": "applied-visual-metadata-only-not-media-acceptance",
+  "recorded_at_utc": "2026-10-02T18:41:16.453924+00:00",
+  "episode": 2,
+  "shot_id": "WR-E02-S34",
+  "scene_id": "wr-e02-s34",
+  "reason": "The original first-frame prompt placed the sealed envelope inside the custody bag before the existing insertion motion. The corrected first frame holds it just outside the open bag.",
+  "source_object_sha256": "37328fa1c643e0edfcd1d138a158410653b36d6e02739ce7a9c555b26bc5bb9c",
+  "changed_fields": [
+    "episode-02-dialogue.json shots[33].prompt",
+    "episode-02-dialogue.json shots[33].runtime_prompt",
+    "episode-02-measured-edit.json shots[33].data.prompt",
+    "derived source-binding and artifact hashes/byte counts"
+  ],
+  "unchanged": {
+    "screenplay_and_series_source": true,
+    "motion_camera_cast_source_ids_and_line_ids": true,
+    "all_shot_and_voice_timings": true,
+    "voice_runtime_and_generator_code": true,
+    "audio_and_subtitle_bytes": true,
+    "later_shot_prompts": true,
+    "duration_s": 159.05,
+    "shot_count": 41,
+    "voice_scene_count": 34,
+    "s34_window_s": {
+      "start": 133.71,
+      "end": 136.71,
+      "duration": 3.0
+    },
+    "original_recovered_media_files_verified": 136
+  },
+  "files": [
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/episode-02-dialogue.json",
+      "previous_sha256": "6e0c9cc6f22c5e9b3b425ae03fecc6eb3db83878b41d44af3cdffb710e3b264b",
+      "current_sha256": "b51f61ede3c5108ad9455b68db7201133b4e94b20f72d005d77bf1541161246f"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/episode-02-measured-edit.json",
+      "previous_sha256": "f3bf26329c8795f5bf4c033fb542703cead9da4fa5739235dffbbedde8fb37bf",
+      "current_sha256": "eca4d156b1879fb566e48131a24492efd13b59b4a7a3f3d7d4985dbe69b407a5"
+    },
+    {
+      "path": "docs/videos/series-plans/competition-20261002/episodes/episode-02-timing-report.json",
+      "previous_sha256": "050af8466aeabdab115273e82ebc0b6067a9db3d16e8c04f2e3be8a9e35d4368",
+      "current_sha256": "a8d7768ce746f366c8b2dd441337423f498e11866f07fc2a1b8e2b88240c290b"
+    }
+  ],
+  "revised_external_original_shot_plan": {
+    "sha256": "7e3eb560f84d493958c691430f048d24ad01972c4db3d7490509993321390c52",
+    "bytes": 257886
+  },
+  "unchanged_audio_artifacts": {
+    "master.wav": {
+      "sha256": "6f99752b179dc74dcb96d32826f2ea6198c1a1afdf5b9ad5c7da6cd2b527d894",
+      "bytes": 15268844
+    },
+    "zh-TW.srt": {
+      "sha256": "166e5f2f11db3033bc365df2b17c4b2d4f314fc1bf12e0d798ffb3cd1401d023",
+      "bytes": 3200
+    },
+    "zh-TW.vtt": {
+      "sha256": "21cf0c661e68b6fa4d37b4279ca54eeae7811a3731bc93d4c1bf173dceddf978",
+      "bytes": 3523
+    },
+    "stems/zhitang.wav": {
+      "sha256": "b6868d362788ae39f366d33cb12863b0cb81b0ebf31dc685d718e7196480da0d",
+      "bytes": 15268844
+    },
+    "stems/chengchuan.wav": {
+      "sha256": "ff805952d51d21f5874cc891b3d6d6ac598acc3be873a780849975d51fbeff75",
+      "bytes": 15268844
+    },
+    "stems/chongyue.wav": {
+      "sha256": "f85c59c877129d1f551b8c9accc702636d75f600bdaffa157d0765cc102e1cbb",
+      "bytes": 15268844
+    }
+  },
+  "reproduction": [
+    "episode-02-dialogue.json is the E2 dialogue and edit-plan input. build-audio-preview.py normalize copies shot.prompt to measured shot.data.prompt; S34 is silent and has no voice.video scene.",
+    "For the existing editorial metadata, replace only S34 prompt/runtime_prompt in both original-shot-plan.json dialogue/edit_plan copies and update source_binding dialogue/edit_plan SHA values. Keep all existing source-path strings, timing, voice placement and audio artifacts.",
+    "Use the revised measured edit and update timing-report source bindings plus original-shot-plan/measured-edit hashes and byte counts. The original builder and its hash remain unchanged; this receipt records the later metadata-only revision.",
+    "Preserve the recovered archive and original editorial directory. Store revised metadata in a new private version and pin the revised E2 edit in future scoped manifests, including E1 requests. Keep submitted manifests immutable for polling and audit."
+  ],
+  "historical_receipts": "audio-check-summary.json, review.md and earlier validation/transfer receipts retain the hashes of the artifacts they actually checked; this receipt is the current visual-metadata pointer.",
+  "validation": {
+    "semantic_diff_allowlist": "passed",
+    "original_audio_artifact_hashes": "passed",
+    "source_voice_script_and_history_hashes": "unchanged",
+    "draft_execution_enabled": false
+  },
+  "paid_requests": 0,
+  "production_write_performed": false,
+  "audio_rebuilt": false,
+  "look_storyboard_and_clip_approval_granted": false
+}

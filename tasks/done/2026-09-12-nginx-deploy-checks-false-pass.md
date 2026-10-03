@@ -19,7 +19,7 @@ scope:
 
 ## Why
 
-2026-09-12 把 `ops/nginx/` 套到正式主機（`hostinger2`，nginx 1.28.3）時，照著
+2026-09-12 把 `ops/nginx/` 套到正式主機（`<saved-session>`，nginx 1.28.3）時，照著
 `ops/nginx/README.md` 的驗收步驟做，三項檢查全部「通過」——但沒有一項證明了它宣稱要證明的
 事。三個都是**假通過**：會回報成功，所以沒有人會回頭查。
 
@@ -54,7 +54,7 @@ Next，整份照抄會弄壞憑證更新。
 ## Definition of done
 
 - [x] 照 README 做一次，任何一項檢查通過時，它宣稱證明的事情真的成立。（2026-09-19 在
-      `hostinger2` 跑完四步，結果在下方；第 4 步另外抓到 README 自己的兩個誤導。）
+      `<saved-session>` 跑完四步，結果在下方；第 4 步另外抓到 README 自己的兩個誤導。）
 - [x] 安裝器不會在主機上留下一個「編了也不會生效」的設定檔。（離線以假的 `/etc/nginx` 演練過
       11 種情境，見 2026-09-19 筆記；主機上的那一次在 How to verify 第 1 步。）
 - [x] 範例設定講清楚它是要被合併的，不是被複製的。
@@ -74,7 +74,7 @@ Next，整份照抄會弄壞憑證更新。
 
 ## How to verify
 
-全部在 `hostinger2` 上以 root 執行，照這個順序；每一步的完整指令都在 `ops/nginx/README.md`，
+全部在 `<saved-session>` 上以 root 執行，照這個順序；每一步的完整指令都在 `ops/nginx/README.md`，
 這裡只寫要看到什麼。
 
 **1. 安裝器不再種空殼。** 這台主機啟用的是 `sites-enabled/mokaair.com -> sites-available/mokaair.com`，
@@ -120,7 +120,7 @@ nginx -T 2>/dev/null | grep -c 'mokaair-limit.log'        # >= 1
 
 ## Notes
 
-**已經上線的部分（2026-09-12）。** 邊緣層已套用在 `hostinger2`：`conf.d/mokaair-rate-limit.conf`、
+**已經上線的部分（2026-09-12）。** 邊緣層已套用在 `<saved-session>`：`conf.d/mokaair-rate-limit.conf`、
 `snippets/mokaair-proxy-headers.conf`，以及合併進 `sites-available/mokaair.com`（不是
 `mokaair.conf`）。那台主機前面沒有 CDN，realip 區塊維持註解。`/etc/nginx` 的備份在
 `/root/nginx-backups/20260912T034351Z/etc-nginx`。site 設定裡另外加了兩行，因為第 3 點：
@@ -163,7 +163,7 @@ include），跳過我們自己裝的 `mokaair-rate-limit.conf`。「像 mokaair
 （`rm` 它）或「兩個都啟用是錯的」。沒有任何啟用檔像這個站台時維持原行為：沒檔就種、有檔就
 `Kept existing`，多一行提醒它還沒被 link 進 `sites-enabled/`。沒有新依賴（`readlink`、`grep`、
 `install` 本來就在用）。這裡沒有 nginx 也沒有 docker，但沙盒是 root，所以用一個用完即刪的假
-`/etc/nginx` 跑過 11 種情境：新主機、種了沒 link、種了有 link、`hostinger2` 那種相對 symlink
+`/etc/nginx` 跑過 11 種情境：新主機、種了沒 link、種了有 link、`<saved-session>` 那種相對 symlink
 到 `mokaair.com` 加一個 `default` 站台、加殘留的 `mokaair.conf`、`mokaair.conf` 也被 link、
 直接放在 `sites-enabled/` 的一般檔案、懸空 symlink 加目錄、只在註解裡提到 marker、站台在
 `conf.d/`、`conf.d/` 只有我們自己的檔案——每一種都落在預期的分支，`mokaair.com` 情境連跑兩次
@@ -195,7 +195,7 @@ include），跳過我們自己裝的 `mokaair-rate-limit.conf`。「像 mokaair
 `10-rate-limit.conf`。** 三個理由：(1) `conf.d/` 是 http context，在那裡寫 `error_log` 會取代主機
 主設定的預設值、對這台機器上**每一個** server 生效，別的站台的 warn 也會流進 `mokaair-limit.log`；
 (2) `10-rate-limit.conf` 會被 `ci-validate.conf` 與 `tools/test-guide-image-rate-limit.py` 在主機
-以外載入，那些環境沒有可寫的 `/var/log/nginx`，絕對路徑會讓 `nginx -t` 變紅；(3) `hostinger2`
+以外載入，那些環境沒有可寫的 `/var/log/nginx`，絕對路徑會讓 `nginx -t` 變紅；(3) `<saved-session>`
 的 `sites-available/mokaair.com` 9-12 就是這樣加的，範例照抄主機，merge 的 diff 最小。
 `10-rate-limit.conf` 只多了一段註解指向目的地（`git diff` 只有 `#` 開頭的行），CI 的 `nginx -t`
 讀到的指令完全沒變。
@@ -215,7 +215,7 @@ daemon、也沒有 crossplane，所以 `nginx -t -c ci-validate.conf` 與
 `limit_req zone=mokaair_content_pages burst=20 nodelay;` 原封不動。CI 的 `containers` job 會跑
 真的 `nginx -t`。
 
-**還需要主機的部分。** 上面 How to verify 四步要在 `hostinger2` 跑一次：安裝器現在可以放心重跑
+**還需要主機的部分。** 上面 How to verify 四步要在 `<saved-session>` 跑一次：安裝器現在可以放心重跑
 （不會再種 `mokaair.conf`）；隔離 nginx 的證明本來 9-12 就做過、這次是照 README 新寫的版本再跑
 一次確認文件正確；Redis 那項看 `printenv` 印什麼決定是「過」還是「尚未驗」；日誌那項要 before/after
 相等。四步過了再打 DoD 第一項、`done`。
@@ -246,7 +246,7 @@ The repo has now caught up with the host. Added under this ticket's scope:
 - `ci-validate.conf` — **必要**, not cosmetic: it includes `10-rate-limit.conf`, whose maps now
   read `$mokaair_verified_crawler`, and an undefined variable is a config error in nginx
 
-Both CI container checks were reproduced on `hostinger2` with the exact commands from
+Both CI container checks were reproduced on `<saved-session>` with the exact commands from
 `.github/workflows/ci.yml:150-157`, against this branch's files in a temp dir, touching nothing
 live:
 
