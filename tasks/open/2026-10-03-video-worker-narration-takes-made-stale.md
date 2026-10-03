@@ -38,7 +38,7 @@ scope:
 - [x] 同稿、沒有證據、錄音的鍵已經對不上時，工人跑一般的 `tts`（重錄，寫新的 timeline，旁白重新過關卡），不再走只會拒絕的 refresh。
 - [x] 錄音都還 current 時行為不變：仍然 `--refresh-evidence`，不花合成費。
 - [x] 判斷「錄音是不是 current」的規則只有一份（`tts/takes.mjs`），`tts` 與工人共用。
-- [ ] 時長審查收據由獨立代理做增量。
+- [x] 時長審查收據由獨立代理做增量（審查者 `claude-pr-review-tts-stale-takes`，結論：沒有動到時長規則）。
 - [ ] 部署後七支能走過「narration synthesized」。
 
 ## How to verify
@@ -49,3 +49,4 @@ scope:
 
 - 有 `audio_evidence` 但對不上錄音的情況沒動，照舊卡住要人處理。
 - 七支裡 gemini-skills-replace-gems-move-checklist 與 openai-agent-posted-53-user-images 另有「約 7.9 分鐘、不足 8 分鐘」的 lint 錯誤，會先回撰稿。
+- 審查者提的兩個已知風險：帶 `audio_ref` 的舊片若來源錄音還 current 但 cache 沒有它的 sha256，一般 `tts` 會以另一句 UsageError 停下（不是退步，原本 refresh 也拒絕）；以後再改送合成的內容，沒有證據的舊片會自動重錄，只受每月額度限制。
