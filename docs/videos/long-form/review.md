@@ -712,16 +712,36 @@ Non-claims: DURATION_ONLY follow-up of the merge for the four rebound hashes. It
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1175 admin-news, named-look and reference compatibility increment: 8 files (2026-10-03)
+
+Reviewer: `/root/open_pr_audit`. Authors: /root (admin catalogs) and /root/audit_video (clips implementation and tests) and /root/audit_product (the mirrored skill index row). Scope: DURATION_ONLY for the 8 changed bindings below. The reviewer did not author these source changes and writes only this report and review.json.
+
+Baseline: all 108 file bytes at main `4f8c381772a2e5cbfd66a80031dc07027874a7ef` hash exactly to the preceding receipt. That main revision is included in reviewed HEAD `fb4617d63027c78a554cd6935d390582fc986fef`. The preceding report's SHA256 is `a1a7092305c3dde5851af4f0a46d1aa969d459bdeb6f8a85a39ea1cee222fea9`; every historical paragraph before the binding table is preserved byte for byte. The registry remains exactly 108 paths, with only these 8 hashes rebound and the other 100 unchanged. Main's intervening 13 documentation/task changes touch no registered path.
+
+Findings: each of the five admin catalogs adds only `navigation.news`, immediately after `navigation.uiText`: AI News / AI 自動ニュース / AI 자동 뉴스 / AI 自动新闻 / AI 自動新聞. Removing that single added line from each current file exactly reconstructs its accepted baseline bytes. All pre-existing video labels, minute ranges and duration messages therefore remain byte-identical.
+
+The clips test adds three regression cases: the actual E1 Zhitang appearance and the 800-character appearance limit; full appearance/identity preservation in a mocked clip-judge request; and ordinary names at 74, 75 and 540 characters. Removing the added block exactly reconstructs the accepted file, preserving all 17 earlier tests, including duration, production guards, reuse, QC and retakes. Independent review caught the separate API file-label maximum of 80 characters; the author corrected it and the 75-character boundary's question/context association before this accepted revision. A 74-character name retains its exact original 80-character sheet label and ordinary question; longer labels use a bounded character ID and preserve the complete name in context. Questions never refer to an absent full-name sheet label.
+
+The reviewer also read the actual delta in unbound `tools/video/media/clips.mjs`, SHA256 `c6cff0e105ee753d502b648c10ebbfab9406673da5faa67d704f9d2916e2b0f7`. Named-look questions refer to the full appearance in context while retaining facial identity, bone structure, requested styling and the no-morphing requirement. The accepted ID limits bound the questions below the API's 400-character maximum. The only run-function changes are sheet labels and judge character context; the full appearance and name are preserved. All code from clipSeconds through the start of run is byte-identical to the baseline. Duration/frame math, clip requests, caps, retries, source hashes, existing approvals and production gates are unchanged. This is a compatibility review of that unbound source, not a registry expansion.
+
+The two byte-identical youtube-video SKILL.md files add only a reference-index row pointing to the existing voice-audition guide. The reviewer inspected the exact delta and verified that reversing the added row reconstructs both accepted baseline files. No operational rule, duration policy, audition execution, owner approval or provider setting changes. Independently ran `node --test tools/skills.test.mjs`: 6 passed, zero failed/skipped, exit 0, with Node v24.21.0; log SHA256 `203e06c6142fad6dfcbe6924a2471064294014e669efabf8b2524039a84ccdb1`.
+
+Ran independently on the frozen clips bytes with Node `v24.21.0`: `node --test tools/video/media/clips.test.mjs`, 20 passed, zero failed/cancelled/skipped, exit 0. The private log `independent-clips-test.log` has SHA256 `55a696f81dbe8579f435df5acb629e9c2ad102c416b0c6afe7de8744a50ae614`. These tests use synthetic local fixtures and mocked media/QA requests. Baseline SHA, exact byte reconstruction, unchanged registry and all other binding comparisons were independently executed. The shipped receipt tests and actual CLI check are run after installing this genuine report; their results are recorded separately in the hand-off so this report's hash remains stable.
+
+Non-claims: this increment does not redo the historical planning or factual reviews, certify actual generated media or runtime, claim full-suite/CI completion, authorize paid calls, change owner approvals, deploy, import, schedule, upload or publish. The prior sections retain their original revision-specific claims. The 600/780-second targets, measured 480-second floors, minute policies, runtime_spec/action_seconds rules, source hashes and covered status retain their reviewed bytes and behavior.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none for these bound bytes.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
 
 | File | SHA256 |
 | --- | --- |
-| `.agents/skills/youtube-video/SKILL.md` | `374bb99f98454855a3d664a99eebb405db9bea72723fd554f7ff6a9ffbd05179` |
+| `.agents/skills/youtube-video/SKILL.md` | `c5549733c632dac550e4063d272e5decda07910e63fb58740e3fdabb89099958` |
 | `.agents/skills/youtube-video/references/automated.md` | `871cb7ecfc3da931599d77ab1ec5b15a7dcf0b2c25689419c53b1f26ba67f401` |
 | `.agents/skills/youtube-video/references/formats.md` | `57eb41e88c6456f7ed25be0aa77af9fc28e252bea2792dac68851d0e8406ca67` |
-| `.claude/skills/youtube-video/SKILL.md` | `374bb99f98454855a3d664a99eebb405db9bea72723fd554f7ff6a9ffbd05179` |
+| `.claude/skills/youtube-video/SKILL.md` | `c5549733c632dac550e4063d272e5decda07910e63fb58740e3fdabb89099958` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
 | `apps/api/app/video_automation/judge.py` | `f27078a3792caed5fb7f0af14bd95d631824c562c37d3aafed375c06dbbc21ca` |
 | `apps/api/app/video_automation/models.py` | `4a9e59680a65274e532912de176ff211e9b98311b127aecf3cc4dbabaea1ef89` |
@@ -747,11 +767,11 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
 | `apps/web/components/admin-video-series.tsx` | `782f129262ae99bab3b69a152ab2dd8dc3a9c26c0e1fcd44e12e3819819d8461` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `7aad8e5d88b67ebaf0b261a57482fb06044111e86af9cfa43157627c7e671957` |
-| `apps/web/messages/en/admin.json` | `fec71826c900e68209f170ca580f4c05376e38543ca268f7c3bbdc2c056adf41` |
-| `apps/web/messages/ja/admin.json` | `ee8c921fc06f600dfd5d9744898690b48b41a7b78f26f35a872db69ac0cbe1bb` |
-| `apps/web/messages/ko/admin.json` | `f59e8b36344ba6a4763a0ac8288ec8f488f0af58163d9db74e5e7be95964ae8d` |
-| `apps/web/messages/zh-CN/admin.json` | `ebdf0316ea8b2bbef703b6a32f45af1042c3dc6b28bad0a69c8dc64586e6d779` |
-| `apps/web/messages/zh-TW/admin.json` | `aeef4895b703c7baadf4211d4604febe9ee343ee276ea0ba4593089c81601db9` |
+| `apps/web/messages/en/admin.json` | `86eb8ecb84b1bac50c272a27a31f678e2b7d62c8d8f6961e9db8db65ba8306c7` |
+| `apps/web/messages/ja/admin.json` | `331741e82337d5c0e320ca2bba1ceec3f077d9a443e48e0224732fe88aa79e3f` |
+| `apps/web/messages/ko/admin.json` | `86641542453938233f9646ea9729cc98465e0e61efb9d98be0f77054e8b55969` |
+| `apps/web/messages/zh-CN/admin.json` | `e02a1806b9e415d607368a223b6e5d7f58ff2c44193299e17f522d6d67061746` |
+| `apps/web/messages/zh-TW/admin.json` | `3ee6f764eb187e7d88f0a496fcd90aca6cbcaaa66d56aa240b36622b9a14f61b` |
 | `docs/videos/DESIGN.md` | `728615de7e4c4461c3cfce098d5c18ea7309ea9fd392bef048fef9a3b176f2ac` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `ac08a33baedd84f282901594e55758f4b390ee1a8dc798e2c25c4b463081aa80` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
@@ -807,7 +827,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/long-form/plans.test.mjs` | `5b7992649fa5384d1758664a2e9b6ccbb104004da499a3d5f73b6665e9f768a6` |
 | `tools/video/long-form/review.mjs` | `7c8df7615dd87e355d6304fe161a2adafcb90b584093dd30799e32c58d527a44` |
 | `tools/video/long-form/review.test.mjs` | `e753ccc616b589a321473336f71621cd46206edbc0fa4f2b1e59d2167217e06f` |
-| `tools/video/media/clips.test.mjs` | `9e652b33c994ca01dd242e220e6f73ae1bce8675bfadb66ff5a299b2183c207b` |
+| `tools/video/media/clips.test.mjs` | `2363fc97f98c4ae54fdd374249c5b06c4cb04cb1840e1b60f0c0a395d82d8635` |
 | `tools/video/media/look-keyframes.test.mjs` | `7bb9bcf5a9c5fa5ef2412e189ceeebc53c64b617e86e93bfe0974eb17909df32` |
 | `tools/video/package/cli.mjs` | `11dd9a7259d547d5455ce8fb110c145f659efb1656464a5b9be1f395ebd6e91e` |
 | `tools/video/package/package.test.mjs` | `05814a6fc0191d1b91fb209b12bd90293787dae24eb71c9fc32ea115646bbd4f` |
