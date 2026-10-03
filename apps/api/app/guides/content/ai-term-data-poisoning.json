@@ -1,0 +1,324 @@
+{
+  "slug": "ai-term-data-poisoning",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-terms"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "資料投毒（Data Poisoning）是什麼：在訓練資料裡埋下後門",
+      "description": "資料投毒是有人刻意把設計過的資料混進模型的訓練、微調或檢索資料，讓模型在特定條件下出錯或聽從攻擊者。內容依 NIST 的對抗式機器學習分類、OWASP 2025 年版清單與多篇論文，說明投毒可能發生的四個位置、後門怎麼運作、研究在各自設定下的結果、和提示詞注入的差別，以及資料來源紀錄、過濾、評測與紅隊各自擋得住什麼。",
+      "hero": {
+        "src": "/guides/ai-term-data-poisoning/hero.jpg",
+        "alt": "一排資料卡片流進代表模型的方塊，其中一張帶著紅色水滴，方塊角落有一扇半開的小門",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "資料投毒（Data Poisoning）是有人刻意把設計過的資料混進模型學習或查找用的資料，讓模型在特定條件下出錯，或照攻擊者的意思回應。",
+            "投毒可能發生在預訓練、微調、RAG 知識庫與合成資料；後門平常不出現，觸發條件由攻擊者決定，防守方不知道要測什麼。",
+            "提示詞注入是在使用當下把指令塞進模型讀到的內容，資料投毒則在模型學習或建立資料時動手，效果留到之後。",
+            "研究結果不代表任何模型都已被投毒，但沒測出後門也不等於沒有後門，防禦要多層組合。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "資料投毒（Data Poisoning）是有人刻意把設計過的資料，混進模型學習或查找用的資料，讓模型在特定條件下出錯，或照攻擊者的意思回應。中文另有「資料中毒」「資料下毒」等說法，尚無統一譯名；這裡用「資料投毒」，強調有人主動放入，和資料品質不佳造成的意外分開。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下用美國國家標準暨技術研究院（NIST）的分類定位這個詞，說明投毒的位置、後門、研究結果、與提示詞注入的差別和防禦；不提供攻擊做法，資料截至 2026 年 10 月。"
+        },
+        {
+          "type": "heading",
+          "text": "NIST 與 OWASP 怎麼定義",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "NIST 的 AI 100-2 E2025 報告從攻擊發生的階段、攻擊者的目標與能力等面向分類。投毒發生在訓練階段：資料投毒是攻擊者能新增或修改部分訓練樣本，模型投毒則是直接控制模型參數。投毒可以讓模型整體變差，也可以只讓特定輸入出錯，後門屬於後者。OWASP 大型語言模型應用十大風險（2025 年版）的第四項，把投毒定義為預訓練、微調或嵌入（embedding，把文字轉成數值向量）資料被操弄，藉此植入漏洞、後門或偏見；第八項談 RAG 的向量與嵌入，也把資料投毒列為風險。RAG 知識庫該歸哪類，兩份文件說法不一，後面再談。"
+        },
+        {
+          "type": "heading",
+          "text": "四個可能被投毒的位置",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "預訓練資料：量大、來源分散，無法逐筆檢查；NIST 舉例，有些資料集只公布網址，網域易主後內容就可能被換掉。",
+            "微調資料：指令與人類回饋資料常來自外包人員或大量參與者，有心人可能混入樣本。",
+            "檢索資料：RAG 系統查找用的知識庫。",
+            "合成資料：由模型產生、再拿去訓練其他模型的資料，上游模型的問題可能傳到下游。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "前兩項對應"
+            },
+            {
+              "type": "article",
+              "text": "預訓練",
+              "kind": "life",
+              "slug": "ai-term-pretraining"
+            },
+            {
+              "type": "text",
+              "text": "與微調，改的是模型本身；第三項是"
+            },
+            {
+              "type": "article",
+              "text": "檢索增強生成（RAG）",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            },
+            {
+              "type": "text",
+              "text": "的資料，改的是回答時讀到的內容。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-data-poisoning/diagram-1.svg",
+          "alt": "預訓練、微調、合成資料三種來源寫進模型參數，檢索知識庫與使用者輸入則在回答時讀進上下文",
+          "width": 1600,
+          "height": 900,
+          "caption": "訓練階段的投毒寫進模型參數；檢索知識庫和使用者輸入，都在回答當下才讀進來。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "後門：平常正常，遇到觸發條件才出錯",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "後門（backdoor）讓模型把某個觸發條件（trigger）和攻擊者想要的結果連在一起。NIST 列出最早的後門投毒攻擊，是 2017 年的 BadNets：影像分類器看到特定小圖塊，就分成攻擊者指定的類別。NIST 也指出，後門同時需要控制訓練資料與使用時的輸入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "示例（虛構情境，未實測）：旅遊網站用蒐集來的評論微調「評論摘要」模型。假設資料混進少量假評論，都含一個罕見的自創詞，摘要都寫成推薦某家店。模型可能學到：輸入有這個詞就輸出推薦，其他時候一切照常。上線前用一般評論測試，表現和乾淨版本差不多；有人在新評論寫上那個詞，異常才出現。"
+        },
+        {
+          "type": "paragraph",
+          "text": "難發現的原因在此：後門平常不出現，觸發條件由攻擊者決定，防守方不知道要測什麼。"
+        },
+        {
+          "type": "heading",
+          "text": "研究量到什麼：只在各自的設定下成立",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Carlini 等人 2023 年提出兩種針對網路規模資料集的投毒方式。分裂視圖（split-view）投毒利用資料集只發布網址：整理者當初看到的，和使用者之後下載的可能不同。搶先（frontrunning）投毒則趁維基百科這類群眾編輯網站定期快照前修改，即使事後被管理者還原，快照裡仍是改過的版本。作者以 2023 年的網域價格估算，每年 60 美元以內，就能控制兩個公開圖文資料集其中任一個的 0.01%；他們未實際投毒，並已通知維護者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Souly 等人 2025 年從頭預訓練 6 億到 130 億參數的模型，植入的後門是見到觸發詞就輸出亂碼，屬於容易量測的類型。在這個設定下，成敗取決於投毒文件的絕對數量而非比例：250 份就能在各種大小的模型植入後門，100 份則不成功；對最大的模型，250 份只占訓練 token 的 0.00016%。微調實驗也呈現同樣趨勢。作者沒有評估後門能否撐過實際的安全訓練；附錄裡另一種後門的實驗中，模擬的對齊訓練就大幅降低了後門成功率。"
+        },
+        {
+          "type": "paragraph",
+          "text": "PoisonedRAG（USENIX Security 2025）的摘要指出，每個目標問題放進 5 段文字、知識庫有數百萬段文字時，攻擊成功率達 90%；作者測試的改寫問題、困惑度偵測等防禦都不足以應付。"
+        },
+        {
+          "type": "paragraph",
+          "text": "合成資料方面，Liang 等人 2025 年發現，既有攻擊不易經由合成資料傳到下游，因為投毒資料和用來產生合成資料的提問分布不同；但他們的新方法能讓下游模型的攻擊成功率接近被投毒的上游。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這些結果不代表「任何模型都已被投毒」。NIST 指出，投毒需要攻擊者能控制部分訓練過程，在真實世界不容易執行，有紀錄的案例多半針對持續用新資料更新的系統；Carlini 等人檢查了兩個資料集，也沒找到分裂視圖投毒被實際利用的跡象。"
+        },
+        {
+          "type": "heading",
+          "text": "和提示詞注入怎麼分",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "提示詞注入（Prompt Injection）",
+              "kind": "life",
+              "slug": "ai-term-prompt-injection"
+            },
+            {
+              "type": "text",
+              "text": "是在使用當下，把指令塞進模型讀到的內容；資料投毒則在模型學習或建立資料時動手，效果留到之後。NIST 把前者歸在部署階段，後者歸在訓練階段。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "面向",
+            "資料投毒",
+            "提示詞注入"
+          ],
+          "rows": [
+            [
+              "動手時間",
+              "訓練或建立資料時",
+              "模型回答的當下"
+            ],
+            [
+              "改變的對象",
+              "模型參數或知識庫",
+              "這次讀進的文字"
+            ],
+            [
+              "效果持續",
+              "到重新訓練或移除資料",
+              "只在讀到注入內容時"
+            ],
+            [
+              "攻擊者需要",
+              "資料進入蒐集流程",
+              "文字被模型讀到"
+            ],
+            [
+              "主要防線",
+              "來源紀錄、過濾、評測",
+              "權限控管、內容隔離、人工確認"
+            ]
+          ],
+          "caption": "資料投毒與提示詞注入的對照；整理自 NIST AI 100-2 E2025 與 OWASP 2025 年版清單，資料截至 2026 年 10 月。"
+        },
+        {
+          "type": "paragraph",
+          "text": "界線在 RAG 上變得模糊：知識庫是事先放好、反覆讀取的資料，卻在回答當下才進入上下文。PoisonedRAG 的作者以內容區分：提示詞注入靠指令，他們的方法靠捏造的知識。文件歸法也不同：NIST 把知識庫投毒列在間接提示詞注入之下；OWASP 2025 年版把藏有隱形指令的履歷混進 RAG 篩選系統算作資料投毒情境，修改 RAG 文件庫裡的文件則算作提示詞注入情境。歸在哪類都一樣，要問的是誰能寫入知識庫、寫入前後有沒有檢查。"
+        },
+        {
+          "type": "heading",
+          "text": "防禦：各自做得到與做不到的事",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "資料來源紀錄：記下每批資料的來源、轉換與版本（OWASP 建議機器學習物料清單 ML-BOM 與資料版本控制），NIST 也建議發布者公布雜湊值供下載者核對。能發現內容事後被換掉、出事時追查是哪批資料；但雜湊只確認下載到的和發布者當初收錄的一樣，不能判斷資料原本是否惡意。",
+            "過濾與異常偵測：嘗試在訓練前剔除可疑的樣本。NIST 指出在龐大語料中找出投毒資料可能非常困難，缺乏額外假設時，後門甚至可能和資料的自然特徵無法區分。",
+            "評測：確認一般能力沒有退化，並監看訓練損失與輸出。但後門平常不觸發，Souly 等人指出一般評測流程可能察覺不到。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "紅隊測試（Red Teaming）",
+              "kind": "life",
+              "slug": "ai-term-red-teaming"
+            },
+            {
+              "type": "text",
+              "text": "主動找觸發條件與異常行為，能找出部分問題，但觸發條件由攻擊者決定。Hubinger 等人 2024 年刻意訓練出後門模型：提示寫 2023 年時寫出安全程式碼，寫 2024 年時插入漏洞。在他們的設定下，最大的模型經過監督式微調、強化學習與對抗訓練仍保有後門，較小的模型則容易移除得多；對抗訓練反而可能讓模型更會辨認觸發條件。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "NIST 也建議把模型當成不受信任的元件，例如限制它能呼叫的工具與權限，降低輸出被操控時的影響。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "沒測出後門，不等於沒有後門",
+          "text": "評測與紅隊只能檢查想得到的條件。要多層組合：知道資料從哪來、誰能改、改過什麼，並限制知識庫寫入與工具權限。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "更多評測與安全相關的詞，請見"
+            },
+            {
+              "type": "article",
+              "text": "AI 名詞總索引",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "NIST AI 100-2 E2025：Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations",
+          "url": "https://csrc.nist.gov/pubs/ai/100/2/e2025/final",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Carlini 等：Poisoning Web-Scale Training Datasets is Practical（arXiv:2302.10149）",
+          "url": "https://arxiv.org/abs/2302.10149",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Souly 等：Poisoning Attacks on LLMs Require a Near-constant Number of Poison Samples（arXiv:2510.07192）",
+          "url": "https://arxiv.org/abs/2510.07192",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Zou 等：PoisonedRAG: Knowledge Corruption Attacks to Retrieval-Augmented Generation of Large Language Models（arXiv:2402.07867，USENIX Security 2025）",
+          "url": "https://arxiv.org/abs/2402.07867",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Liang 等：Virus Infection Attack on LLMs: Your Poisoning Can Spread \"VIA\" Synthetic Data（arXiv:2509.23041，NeurIPS 2025）",
+          "url": "https://arxiv.org/abs/2509.23041",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Hubinger 等：Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training（arXiv:2401.05566）",
+          "url": "https://arxiv.org/abs/2401.05566",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "OWASP Top 10 for LLM Applications 2025：LLM04 Data and Model Poisoning",
+          "url": "https://genai.owasp.org/llmrisk/llm042025-data-and-model-poisoning/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "OWASP Top 10 for LLM Applications 2025：LLM01 Prompt Injection",
+          "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "OWASP Top 10 for LLM Applications 2025：LLM08 Vector and Embedding Weaknesses",
+          "url": "https://genai.owasp.org/llmrisk/llm082025-vector-and-embedding-weaknesses/",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    }
+  }
+}

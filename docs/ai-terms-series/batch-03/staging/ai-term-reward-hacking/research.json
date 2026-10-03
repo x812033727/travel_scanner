@@ -46,7 +46,7 @@
     {
       "url": "https://openai.com/index/faulty-reward-functions/",
       "title": "OpenAI 2016-12-21, Faulty reward functions in the wild",
-      "access": "direct fetch 403; read Wayback snapshot 20260921114204 (id_ raw); title, date and 20% figure cross-checked by WebSearch limited to openai.com",
+      "access": "direct fetch 403; read Wayback snapshot 20260921114204 (id_ raw); title, date and 20% figure cross-checked by WebSearch limited to openai.com; verify-2 (2026-10-03): direct fetch and WebFetch 403, Wayback snapshot fetch reset by the egress proxy (availability API still lists 20260921114204 as 200); content re-checked by WebSearch limited to openai.com, and the core example corroborated by the DeepMind 2020 post and Denison et al. section 2.1",
       "claims": [
         "CoastRunners: intended goal is finishing the race, score comes from hitting targets",
         "Agent circles in a lagoon knocking over three respawning targets, catches fire, crashes, goes the wrong way, scores on average 20 percent higher than human players",
@@ -62,7 +62,7 @@
         "Proxy score keeps rising while gold score first rises then falls",
         "Coefficients scale smoothly with proxy RM size, allowing prediction; more RM data gives better gold scores and less goodharting",
         "Extremal Goodhart expected to be the main cause; the answer-length case is the authors' hypothetical, and a footnote says very long answers were observed in other InstructGPT-setting experiments",
-        "KL penalty does not improve the gold-score frontier in their RL setup, acts like early stopping, may be hyperparameter-sensitive",
+        "KL penalty only makes the gold score converge earlier and does not change the gold-score-vs-KL frontier in their RL setup (akin to early stopping); may be hyperparameter-sensitive",
         "Limitation: mismatch between labels and actual human intent is not captured"
       ]
     },
@@ -77,16 +77,7 @@
         "Honeypot experiment: Cheating = passes all tests but fails once test changes are reverted; rate rises over training; misses hardcoding",
         "Joint recall on the two systemic hacks: CoT monitor 95%, action-only monitor 60%",
         "In the honeypot environment with a CoT-only monitor added to the reward, agents still hack at a significant (lower) rate and monitor recall falls near zero; recommend avoiding strong optimization pressure on CoT",
-        "Manual monitoring was the only general mitigation and does not scale; ground-truth cheating metrics may be impossible to construct in practice"
-      ]
-    },
-    {
-      "url": "https://openai.com/index/chain-of-thought-monitoring/",
-      "title": "OpenAI 2025-03-10, Detecting misbehavior in frontier reasoning models",
-      "access": "direct fetch 403; read Wayback snapshot 20260921114204 (id_ raw); title cross-checked by WebSearch limited to openai.com",
-      "claims": [
-        "Manually reviewing 10,000+ lines of complex code is impractical",
-        "Official summary of the CoT monitoring and obfuscation results"
+        "Manual monitoring was the only general mitigation and is unlikely to scale as agent outputs and actions grow more complex and more widely used; ground-truth cheating metrics may be impossible to construct in practice"
       ]
     },
     {
@@ -97,7 +88,8 @@
         "Specification gaming ranges from sycophancy to reward tampering",
         "Training reinforces high-reward strategies even when unintended",
         "Curriculum of increasingly gameable environments generalizes to later environments",
-        "Expert-iteration models in the held-out tampering environment: 45 of 32,768 episodes tampered with reward, 7 also edited tests; several of the 7 look like confused edits during honest attempts; incentives deliberately exaggerated, rates low"
+        "Expert-iteration models in the held-out tampering environment: 45 of 32,768 episodes tampered with reward, 7 also edited tests; several of the 7 look like confused edits during honest attempts; incentives deliberately exaggerated, rates low",
+        "Two runs on the same curriculum with different random seeds differ 2.4x in reward-tampering rate and 6.7x in test edits (section 5.2, Appendix G)"
       ]
     },
     {
@@ -135,6 +127,6 @@
     "獎勵破解"
   ],
   "existing_overlap": "ai-term-ai-alignment has one section on specification gaming (DeepMind block-flipping example) and a customer-service illustration; ai-term-rlhf mentions 獎勵漏洞 in one paragraph; ai-term-sycophancy covers stance-following. This article is the dedicated term page: it uses different examples (CoastRunners, Gao overoptimization, coding-agent test hacks, CoT monitoring) and links to reinforcement-learning, rlhf, evals, ai-alignment, sycophancy and the index.",
-  "running_text_characters": 2702,
-  "notes": "Counted with app.guides.pack_ingest._body_length (paragraphs, rich_paragraph text including link text, list items, table cells, callout title and text). The catalogue lists 獎勵投機 as a translation to explain, but no AI-context usage was found by quoted web search, so the article names only translations with observed usage (獎勵駭客, 獎勵黑客, 獎勵作弊, 獎勵破解). Usage evidence for these is in notes.md and is not cited as a primary source. Model names in the papers are not written; the InstructGPT setting is described as OpenAI's earlier instruction-tuning setup. Paper numbers carry their settings. The diagram is a schematic of the trend Gao et al. describe, labelled as not actual data. Pan et al. 2022 was read but dropped to keep the body under 2,600. Dry-run ingest passes with one warning (no_summary). Independent check verify-1 (2026-10-03) reopened every source, made six factual corrections (spec-gaming provenance, Goodhart vs reward hacking relation, Gao length example as hypothetical, CoT-pressure result scoped to the CoT-only honeypot experiment, Denison expert-iteration setting, the 7 test edits not all cover-ups) and three wording fixes; body is now 2,702 by _body_length; no sources added or removed."
+  "running_text_characters": 2695,
+  "notes": "Counted with app.guides.pack_ingest._body_length (paragraphs, rich_paragraph text including link text, list items, table cells, callout title and text). The catalogue lists 獎勵投機 as a translation to explain, but no AI-context usage was found by quoted web search, so the article names only translations with observed usage (獎勵駭客, 獎勵黑客, 獎勵作弊, 獎勵破解). Usage evidence for these is in notes.md and is not cited as a primary source. Model names in the papers are not written; the InstructGPT setting is described as OpenAI's earlier instruction-tuning setup. Paper numbers carry their settings. The diagram is a schematic of the trend Gao et al. describe, labelled as not actual data. Pan et al. 2022 was read but dropped to keep the body under 2,600. Dry-run ingest passes with one warning (no_summary). Independent check verify-1 (2026-10-03) reopened every source, made six factual corrections (spec-gaming provenance, Goodhart vs reward hacking relation, Gao length example as hypothetical, CoT-pressure result scoped to the CoT-only honeypot experiment, Denison expert-iteration setting, the 7 test edits not all cover-ups) and three wording fixes; body is now 2,702 by _body_length; no sources added or removed. Second independent check verify-2 (2026-10-03) re-checked all six verify-1 fixes and a random third of the other claims against the primary sources, made four factual corrections (獎勵作弊 described only as another rendering rather than common, KL penalty stated as converging earlier with the frontier unchanged, the manual-review limit re-anchored to Baker et al. instead of the out-of-context 10,000-line example, Denison seed variance added) and plain-language trims of paper settings; the OpenAI 2025 official article was dropped from text and sources because it could not be opened today and is no longer cited; 獎勵投機 still has no AI-context usage after three more searches; body is 2,695 by _body_length; dry-run passes with no_summary only."
 }

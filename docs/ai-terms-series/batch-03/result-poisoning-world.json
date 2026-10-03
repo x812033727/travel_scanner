@@ -1,0 +1,99 @@
+{
+ "mode": "articles",
+ "results": [
+  {
+   "slug": "ai-term-data-poisoning",
+   "write": "The `ai-term-data-poisoning` article is finished. Its body runs **2,584 characters** by `_body_length`, which is inside the 2,200–2,600 target. The dry-run passes with only the expected `no_summary` warning and writes nothing.\n\n**What's in it:** six H2 sections, exactly one table (data poisoning vs. prompt injection), and one warning callout. All four assigned article links plus `ai-terms-index` are there as `article` inlines. Topics include `ai-terms`. \"本文\" and \"這篇\" never appear, and the body has no notes on how sources were checked. I rendered both SVGs to PNG and looked at them: nothing overlaps, touches a line or runs out of a box. The only number on the diagram is 2026, which also appears in the body as \"資料截至 2026 年 10 月\". `_tools/` has been deleted.\n\n**Where sources differed from the brief:**\n- **NIST AI 100-2:** E2025 is still the latest edition. The 2026 URLs I tried return 404.\n- **Translated name:** neither the NAER bilingual glossary nor Google's Traditional Chinese ML glossary lists this term. Taiwan uses 資料投毒, 資料中毒 and 資料下毒 side by side. The first paragraph says why 資料投毒 is used.\n- **Where RAG poisoning belongs:**\n  - NIST files knowledge-base poisoning under indirect prompt injection.\n  - OWASP 2025 places a similar case under both LLM08 (as data poisoning) and LLM01 (as prompt injection).\n  - The article states both views rather than picking one.\n\n**Things I'm unsure of but left as written:**\n- I kept the Carlini et al. estimate that **$60** buys control of 0.01% of a dataset (2023 conditions). It is a cost from the paper, not a product price, but the reviewer may read it as breaking the no-prices rule.\n- Two sentences are my own inference or example, not direct quotes. Both are marked as such in `notes.md`:\n  - \"content changed before a snapshot still matches its hash\"\n  - NIST's \"untrusted component\" advice illustrated as \"limit the tools and permissions it can call\"\n- Souly et al. (2510.07192) is still only at v1, which says it did not test whether the backdoor survives real safety training. The article says so.\n- `research.json` aliases: Data Poisoning, 資料中毒, 資料下毒, 訓練資料投毒. I left out 模型投毒 (model poisoning) and 後門攻擊 (backdoor attack) because each is a separate concept.\n\nFiles are in /home/user/travel_scanner/docs/ai-terms-series/batch-03/staging/ai-term-data-poisoning/:\n- pack.json\n- diagram-1.svg\n- hero.svg\n- notes.md\n- research.json",
+   "v1": {
+    "facts_changed": 4,
+    "dry_run_ok": true,
+    "body_length": 2658,
+    "suspicions": [
+     "Body length is now 2,658, above the brief's 2,200–2,600 target but inside the 3,000 limit; the two longer sentences carry needed facts, so nothing else was cut.",
+     "Carlini et al.'s 'no evidence of split-view poisoning in the wild' comes from checking only CC3M and LAION-400M, but the article states it without that scope (the authors' own wording is equally broad).",
+     "Carlini's $60 is the domain-purchase cost per year (Section 4.2, Figure 1), but the article does not say 'per year'.",
+     "The defence list says filtering removes '重複' (duplicate) samples, which is not in the NIST or OWASP poisoning sections; it is general data-cleaning knowledge and was left in.",
+     "'這個定義涵蓋 RAG 用的嵌入資料' is an editorial bridge: OWASP LLM04 only says 'embedding', and the link to RAG comes from LLM08.",
+     "The table cell saying prompt-injection effects 'usually last only for the current interaction' is hedged, but NIST 3.4.2 describes self-propagating injections that can persist.",
+     "'快照前就被改的內容，雜湊照樣吻合' is an editorial inference from Carlini's pairing of hashes with split-view and timing defences with frontrunning, not a sentence from the paper."
+    ]
+   },
+   "v2": {
+    "facts_changed": 6,
+    "dry_run_ok": true,
+    "body_length": 2672,
+    "suspicions": [
+     "Body length is 2,672, still above the brief's 2,200–2,600 target but inside the 3,000 limit, because the sourced wording added for the OWASP LLM08 link and Carlini's 'per year' used up the characters saved by trimming.",
+     "In 'NIST 也建議把模型當成不受信任的元件，例如限制它能呼叫的工具與權限', the example after 例如 is the editor's: the closest sources are NIST 3.4.4 ('multiple LLMs with different permissions') and OWASP LLM01 least privilege, and NIST does not say it word for word.",
+     "The new table cell '只在讀到注入內容時' summarizes NIST 3.4 (injection comes in through the data channel) and 3.4.2 (self-propagating injections), but neither section has that sentence.",
+     "'有紀錄的案例多半針對持續用新資料更新的系統' is more cautious than NIST 2.3.5, which says 'In all these incidents' about its three examples, and was left as is."
+    ]
+   },
+   "summary": [
+    {
+     "slug": "ai-term-data-poisoning",
+     "summary": [
+      "資料投毒（Data Poisoning）是有人刻意把設計過的資料混進模型學習或查找用的資料，讓模型在特定條件下出錯，或照攻擊者的意思回應。",
+      "投毒可能發生在預訓練、微調、RAG 知識庫與合成資料；後門平常不出現，觸發條件由攻擊者決定，防守方不知道要測什麼。",
+      "提示詞注入是在使用當下把指令塞進模型讀到的內容，資料投毒則在模型學習或建立資料時動手，效果留到之後。",
+      "研究結果不代表任何模型都已被投毒，但沒測出後門也不等於沒有後門，防禦要多層組合。"
+     ],
+     "support": [
+      "「資料投毒（Data Poisoning）是有人刻意把設計過的資料，混進模型學習或查找用的資料，讓模型在特定條件下出錯，或照攻擊者的意思回應。」",
+      "「預訓練資料：量大、來源分散，無法逐筆檢查；NIST 舉例，有些資料集只公布網址，網域易主後內容就可能被換掉。」／「微調資料：指令與人類回饋資料常來自外包人員或大量參與者，有心人可能混入樣本。」／「檢索資料：RAG 系統查找用的知識庫。」／「合成資料：由模型產生、再拿去訓練其他模型的資料，上游模型的問題可能傳到下游。」／「難發現的原因在此：後門平常不出現，觸發條件由攻擊者決定，防守方不知道要測什麼。」",
+      "「提示詞注入（Prompt Injection）是在使用當下，把指令塞進模型讀到的內容；資料投毒則在模型學習或建立資料時動手，效果留到之後。」",
+      "「這些結果不代表「任何模型都已被投毒」。」／callout 標題「沒測出後門，不等於沒有後門」／「評測與紅隊只能檢查想得到的條件。要多層組合：知道資料從哪來、誰能改、改過什麼，並限制知識庫寫入與工具權限。」"
+     ],
+     "rewritten": 0,
+     "notes": "無"
+    }
+   ]
+  },
+  {
+   "slug": "ai-term-world-model",
+   "write": "`ai-term-world-model` is finished. The five delivery files are in `/home/user/travel_scanner/docs/ai-terms-series/batch-03/staging/ai-term-world-model/`: `pack.json`, `diagram-1.svg`, `hero.svg`, `notes.md` and `research.json`. The `_tools/` folder has been deleted.\n\n- **Length:** `_body_length` counts 2,598 characters, inside the 2,200–2,600 target.\n- **Dry run:** passes with `--dry-run`. The only warning is `no_summary`, which the brief says to leave alone.\n- **Checks passed:**\n  - Structure: 6 H2 sections, exactly one table (3 columns), one warning callout.\n  - Topics: `[\"ai\",\"tutorial\",\"ai-terms\"]`.\n  - Links: all 5 assigned links are inline `article` links.\n  - Wording: \"本文／這篇\" appears 0 times, and the body has no account of how the facts were checked.\n  - Sources: 12 primary sources.\n- **Diagrams:** I rendered both SVGs to PNG and looked at them. Nothing overlaps, sits on a line or runs past a frame. The only number on the diagram is 2026, which is in the body (\"資料截至 2026 年 10 月\").\n- **Aliases:** World Models, 世界模擬器, foundation world model.\n\nThings I suspect but did not change:\n1. **Index space (your question about the 總索引):** I did not touch it; it is outside my task. The batch-02 notes say `ai-terms-index` is at 5,910 of its 6,000-character limit. If all ten terms in this batch are added to it, it will go over unless the coordinator first changes its structure, for example by keeping only each group's intro or splitting it into group sub-indexes.\n2. **Model names:** the series rule says not to write model names, but the assignment requires the Genie and Dreamer papers. So the body names research systems (Genie 3, V-JEPA 2, DreamerV3, Othello-GPT) without any scores or specs. Genie 3's frame rate and resolution are on the official page; I left them out as product specs.\n3. **Pages I read through Wayback:** OpenReview (LeCun's paper) and openai.com (the Sora report) return 403 to this environment, so I read Wayback snapshots instead. The LeCun copy is Version 0.9.2 from 2022-06-27. If OpenReview has a later version, I have not seen it.\n4. **Term for \"policy\":** I used 策略 to match this batch's reinforcement-learning assignment. Google's Traditional Chinese ML glossary uses 政策, so the series may want to settle on one.\n5. **Sources cut for length:** I read Genie 2's official post and Nanda et al. 2023, then cut them to stay under 2,600, so the Genie 2 capability description is not in the article.\n6. **Sutton & Barto link:** the source URL is http, because the site's https certificate is self-signed.",
+   "v1": {
+    "facts_changed": 4,
+    "dry_run_ok": true,
+    "body_length": 2624,
+    "suspicions": [
+     "Genie 論文摘要說可以用文字提示，但全文的實際做法是先用文字生圖模型產生第一格（圖 10），正文仍照摘要寫「提示可以是文字」。",
+     "正文寫 Othello-GPT 的非線性探針比線性探針準得多，這只適用 Li 等人的黑／白編碼；之後 Nanda 等（arXiv:2309.00941）改用我方／對方編碼找到了線性表示，正文沒有提。",
+     "LeCun 的 OpenReview 頁面（只回瀏覽器驗證頁）和 OpenAI 報告（回 403）今天讀不到原站，只讀了 Wayback 快照（2023-02-28 與 2026-09-26），無法確認原站內容是否有變。",
+     "Gurnee 與 Tegmark 那句寫「事件年代」，實際是三種資料：歷史人物的卒年、作品的發表日期、新聞標題的日期，寫法稍嫌籠統但不算錯。",
+     "正文字數 2,624，超過第三批目標上限 2,600，但在 3,000 的硬上限內，為了不重寫沒有刪減。"
+    ]
+   },
+   "v2": {
+    "facts_changed": 6,
+    "dry_run_ok": true,
+    "body_length": 2600,
+    "suspicions": [
+     "LeCun's paper was checked against an Internet Archive copy of the PDF. Its SHA-1 matches Semantic Scholar's paper ID and it is Version 0.9.2 of 2022-06-27, but OpenReview still returns a challenge page, so it could not be compared byte for byte with the original today.",
+     "The OpenAI 'world simulators' and glass-shattering sentence and its source were removed. No primary copy could be opened today: openai.com returns 403 and web.archive.org resets every connection. It can be restored if someone can open openai.com or the 2026-09-26 Wayback snapshot that verify-1 read.",
+     "The body is now exactly 2,600 characters, the top of the batch-03 target, so any further addition goes over 2,600 (still well under 3,000).",
+     "In Vafa et al. the logic-puzzle result comes from prompted LLMs, not trained sequence models, but the article puts it beside the Othello model as 'the same gap' without saying so."
+    ]
+   },
+   "summary": [
+    {
+     "slug": "ai-term-world-model",
+     "summary": [
+      "世界模型泛指系統內部用來預測「這樣做之後會怎樣」的模型，這個詞沒有單一定義。",
+      "常見用法至少三種：強化學習代理學到的環境模型、LeCun 主張預測抽象表示的架構路線，以及隨操作即時生成畫面的互動環境。",
+      "世界模型只是近似，畫面合理只說明那一段沒出錯，好不好要看預測拿去規劃或訓練後，在真實任務裡站不站得住。",
+      "語言模型方面，規則明確的小領域有內部狀態表示的證據，但會預測下一步不等於有一致的世界模型，一般大型語言模型有沒有，取決於怎麼定義、怎麼量。"
+     ],
+     "support": [
+      "世界模型（World Model）泛指系統內部用來預測「這樣做之後會怎樣」的模型。／這個詞沒有單一定義，常見用法至少三種：強化學習代理學到的環境模型、LeCun 主張預測抽象表示的架構路線，以及隨操作即時生成畫面的互動環境。",
+      "這個詞沒有單一定義，常見用法至少三種：強化學習代理學到的環境模型、LeCun 主張預測抽象表示的架構路線，以及隨操作即時生成畫面的互動環境。",
+      "世界模型只是近似，策略會專挑它預測錯的地方得分。／畫面合理只說明那一段沒出錯。世界模型好不好，要看預測拿去規劃或訓練後，在真實任務裡站不站得住。",
+      "合起來看，規則明確的小領域有內部狀態表示的證據，但會預測下一步不等於有一致的世界模型，一般大型語言模型有沒有，取決於怎麼定義、怎麼量。／（表格列）相關爭論：語言模型內部"
+     ],
+     "rewritten": 1,
+     "notes": "第 4 句改了兩處：「大型語言模型方面」改成表格用的「語言模型方面」，因為小領域的證據來自只用黑白棋棋步訓練的 GPT 變體，不是大型語言模型；並補上正文的結論「一般大型語言模型有沒有，取決於怎麼定義、怎麼量」，避免讀者誤以為已證明大型語言模型沒有世界模型。前 3 句逐字對得上正文，保留不改。總長 218 字（不算空格 217），每句不超過 90 字。"
+    }
+   ]
+  }
+ ]
+}

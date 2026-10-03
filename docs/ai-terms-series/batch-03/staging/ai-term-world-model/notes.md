@@ -49,8 +49,20 @@ Vafa 等（NeurIPS 2024）：用紐約計程車逐段轉向序列訓練 transfor
 
 查核者今天重新打開全部 12 個來源，讀法：arXiv 摘要頁與全文 PDF（pdftotext）都是 200；Sutton 與 Barto 書頁 200，RLbook2020.pdf 第 8.1 節；OpenReview 對本環境回瀏覽器驗證頁（200 的空殼），改讀 Wayback web/20230228171808id_/https://openreview.net/pdf?id=BZ5a1r-kVsf（Version 0.9.2）；OpenAI 報告直連 403，改讀 Wayback web/20260926091256id_/；Genie 3 官方文章舊網址 301 轉到 https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/，來源改用新網址（直連 200，無轉址）。
 
-- Dreamer 句原寫「改在學到的精簡狀態空間裡想像未來」，但 Ha 與 Schmidhuber 的 VizDoom 控制器也完全在潛在空間的夢境裡訓練（1803.10122 第 4.2 節 "train entirely in a latent space environment"），改成「同樣⋯⋯並直接從想像出的軌跡學習行為」（1912.01603 摘要）。
+- Dreamer 句原寫「改在學到的精簡狀態空間裡想像未來」，但 Ha 與 Schmidhuber 的 VizDoom 控制器也完全在潛在空間的夢境裡訓練（1803.10122 第 4.3 節 "train entirely in a latent space environment"；verify-1 原記為 4.2 節，verify-2 更正），改成「同樣⋯⋯並直接從想像出的軌跡學習行為」（1912.01603 摘要）。
 - DreamerV3 的 Minecraft「第一個」原文限定是 "without human data or curricula"，正文補上課程安排的限定。
 - LeCun 岔路口例子原文是位置、方向、速度「與其他特徵」，刪掉「只」。
 - Sutton 與 Barto 的來源標題原寫「第 8 章 Models and Planning」；第 8 章是 Planning and Learning with Tabular Methods，Models and Planning 是 8.1 節，已改。
 - 「開發者常把世界模型說成通往 AGI 的一步」只有 Genie 3 官方文章一個來源（OpenAI 報告與 LeCun 論文都沒有用 AGI 這個詞），收斂成「有開發者」。
+
+## 查核（verify-2，2026-10-03）
+
+第二位獨立查核者。arXiv 9 篇（含新加的 2309.00941）摘要頁與全文 PDF 都是 200，以 pdftotext 讀；DreamerV3 另讀 v1 PDF；Sutton 與 Barto 書頁 200，RLbook2020.pdf 第 8.1 節；Genie 3 官方文章直連 200、無轉址。OpenReview 的 forum、pdf 與 api／api2 端點都回瀏覽器驗證（403 ChallengeRequiredError），web.archive.org 今天每次連線都被重設（代理紀錄 ws_closed_mid_exchange），所以 LeCun 改讀 Internet Archive 項目的 PDF（雜湊見上）。OpenAI 報告對 curl 與 WebFetch 都回 403，又讀不到 Wayback，沒有任何一手副本可讀。
+
+- Genie 的提示：摘要寫 "described through text"，但第 4 節與圖 10 的做法是拿一張圖片當第一格（照片、手繪草圖或 Imagen2 等文字生圖模型的輸出）。正文改成「示範時從一張圖片起步，可以是照片、手繪草圖或文字生成的圖片」；Genie 3 才「直接依文字提示」。
+- Othello-GPT：「非線性探針比線性探針準得多」只在黑／白／空編碼下成立。正文改成按黑白子讀時只有非線性探針讀得準，並補 Nanda 等改按「我方／對方」讀、線性探針也讀得出來（2309.00941 摘要與第 3 節）。
+- Gurnee 與 Tegmark：「事件年代」改成「人物、作品、新聞年代」；「並說仍需研究」改用作者自己的限定：時空表示本身不構成動態因果的世界模型（第 1 節）。
+- Vafa 等：「棋類與邏輯謎題也有同樣落差」只對用冠軍賽棋譜訓練的黑白棋模型成立；用合成棋局訓練的那個兩項指標都好、繞道下仍近乎完美（第 4 節）。正文改寫。
+- Genie 3：「回到一分鐘前看過的地方仍記得細節」超出原文，改成「畫面記憶最多回溯約一分鐘」。
+- OpenAI 報告的玻璃碎裂一句與來源刪除（今天讀不到任何一手副本）。
+- 精簡論文設定：VizDoom 的「連續 100 次測試」「在論文的設定下」、V-JEPA 2 的「未標註」等；字數 2,624 → 2,600。
