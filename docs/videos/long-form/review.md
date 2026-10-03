@@ -750,6 +750,30 @@ Non-claims: no duration targets, measured floors, frame math, runtime policy, so
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none for these bound bytes.
 
+## Worker re-records stale narration takes increment: 3 files (2026-10-03)
+
+Reviewer: `claude-pr-review-tts-stale-takes`. Author: `claude-opus-5-5` (the Claude session that wrote commit `962161c4d95a41d2197d109b7b2d88bf0bf4d41e`, "narration takes made stale by the accent change are recorded again, not refused for ever", branch claude/tts-stale-takes-resynth, task `2026-10-03-video-worker-narration-takes-made-stale`). Scope: DURATION_ONLY for the three changed bindings below. The reviewer did not write these changes, ran no git command that writes, and edited only this report and review.json.
+
+Baseline: the commit's parent is main `b09819feffe2aa6080895a3b986537e8222991d9` (#1175). All 108 registered files' bytes at that parent hash exactly to the preceding receipt (each compared with review.json by script), and the preceding report's SHA256 is `12b59c11948f36a5ce3e18e22e7f5bd43102d2c7f078a25dd63ad931dad3fb73`; every paragraph before the binding table is preserved byte for byte. Of the commit's six changed files, three are bound: tools/video/automation/flow.mjs (+6/−1), tools/video/automation/automation.test.mjs (+21/−0) and tools/video/tts/tts.test.mjs (+6/−0). The registry remains exactly 108 paths, with these three hashes rebound and the other 105 unchanged: before rebinding, `node tools/video/long-form/cli.mjs check` failed on these three paths and nothing else. The reviewer read the full delta of all three and, for context, the unbound new tools/video/tts/takes.mjs (SHA256 `b76cb76ab26e6f4d46930eab5f305a1b50f5015ad30e5aabf06fbb14f542ae48`), the unbound delta of tools/video/tts/cli.mjs (SHA256 `36330d150e4b50768b4db25a670b17b0e72ae6f5735b945478552336c10927ee`) and the new task file; no network, no fetch, no implementation file edited.
+
+Findings. Per file:
+
+- flow.mjs: one import (`staleTakes` from ../tts/takes.mjs), a four-line comment and one changed expression in the worker's "narration synthesized" step. `refresh` was `sameScript && !previous.audio_evidence`; it now also requires `!staleTakes(project.doc, project.lexicon, workdir).length`. The only effect is which arguments the same `tts` command gets: with an unchanged script, no audio evidence and at least one saved take whose key or WAV is no longer current, the worker runs `tts --slug <slug>` instead of `tts --slug <slug> --refresh-evidence`. The comment two lines above the import ("Slides keep the general eight-minute floor…") and every line that names target_minutes, minEpisodeMinutes, effectiveEpisodeMinutes, MIN_EPISODE or needsMinimumLength are outside the hunks and byte-identical; the block on audio evidence that no longer matches its takes (the line before the change) is unchanged.
+- automation.test.mjs: 21 lines appended to the end of the illustrated-slides walk. They strip `audio_evidence` and each line's `audio_sha256` from the fixture timeline and assert the worker runs a plain `tts` while the cache carries no current key, then `tts --refresh-evidence` once cache.json holds every line's current key. No existing assertion changes, and the fixture opt-out `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` is outside the hunk.
+- tts.test.mjs: one import and five lines inside the existing legacy-evidence test: `staleTakes` returns `[]` while every take is current and the forgotten line's id once the cache drops it. The existing `--refresh-evidence` refusal assertion (`/never synthesizes/`) is unchanged, as is the comment "The fixture videos run seconds; the eight-minute floor has tests of its own."
+
+Unbound context. takes.mjs holds `readCache`, `takeCurrent` and `staleTakes`. `takeCurrent` is the predicate cli.mjs had inline (the line's own key or its request's key in cache.lines, and the WAV on disk), now with `cache.lines?.` and without the `!values.force` term, which cli.mjs keeps at its call site; `tts` therefore decides what to synthesize exactly as before. `staleTakes` applies it to `planRequests(doc, lexicon)` minus the `audio_ref` repeats, the same set `tts` calls `requests`, so the worker's answer and the `pending` test behind the refresh refusal (cli.mjs line 269) agree.
+
+Indirect effects on the duration rules, traced in the current tree. A plain `tts` is the command the worker already ran whenever the script changed. It starts with `lintProject` and exits on any lint error, so the estimated eight-minute floor (lint.mjs) still stands in front of any recording; it measures every clip from the WAVs on disk, rebuilds timeline.json with `buildTimeline` and binds it with `bindAudioEvidence`, so measured-duration evidence is produced by the same code and is never copied from the older timeline. The newly written timeline makes the listening approval stale (approvals.mjs compares the approved file's SHA256), so "narration approved" is asked again, and state.mjs's `assembledSound` requires checks.narration_sha256 to equal the new evidence, so the cut is assembled and measured again: `knowledgeDurationProblems` (480 s, 14,400 frames at 30 fps) and the measured `minMinutes` floor in qa/checks.mjs apply to the new takes. Re-recorded takes can run a different length from the old ones; that length is measured and held to the same floors, which is stricter than a refresh that keeps the old audio. No path lets a video skip lint, the measured timeline, the 480-second check or the QA floor.
+
+A scan of the 33 added lines and one removed line across the three bound files finds no minute, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, needsMinimumLength, 480, 600, 780, 14,400, runtime_spec, action_seconds, target_seconds, frame, duration, seconds, covered, plans.json or source-hash token. So the change touches none of the explainer's 10-minute default or 8–20 range, the drama's 1–8 range, the brand story's 13 minutes, the eight-minute floor, the 480-second / 14,400-frame QA floor, the long-anime policy, measured-duration evidence or docs/videos/long-form/plans.json.
+
+Ran (Node 24.13.0, offline, Windows): before rebinding, `node tools/video/long-form/cli.mjs check` printed FAIL on exactly the three stale bindings above. `node --test tools/video/automation/automation.test.mjs tools/video/tts/tts.test.mjs` ran 94 tests: 94 passed, zero failed, cancelled or skipped, exit 0. The CLI check and tools/video/long-form/review.test.mjs are rerun after rebinding; their results are in the hand-off so this report's hash stays stable.
+
+Non-claims. This review does not accept the decision to re-record rather than keep the older takes, the synthesis cost of doing so, a real provider call or a listening test, the seven stuck videos on the production host, CI, or the three unbound files beyond the reading above. Two cases are left as they were and are not certified here: a timeline that has `audio_evidence` which no longer matches its takes still blocks for a person, and a partly stale legacy video whose `audio_ref` source is still current but has no saved WAV SHA256 in cache.json is refused by `tts` with a usage error either way. PASS is DURATION_ONLY for the three rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -806,9 +830,9 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `67e53a0cf183c3175adac2ce28d8b2fef7792a408b6b49125345e129115e7d05` |
-| `tools/video/automation/automation.test.mjs` | `79356e0568f1b0d8cfa1e3145f9162f4542af8f85dbc947eb7a8e813c89351c2` |
+| `tools/video/automation/automation.test.mjs` | `dbd7ca82428fbe3ab723514146e706f7d663feb42c819d379a2613b4b63e4e64` |
 | `tools/video/automation/discuss.mjs` | `691f6ec55bde0b1c34c54fd38f39681d50617035dab78b0d2c751266a61f43ee` |
-| `tools/video/automation/flow.mjs` | `d264bb4f9abe2b33799d17b99ae8e3934874417ca33e17c0d7d6358ec8d6571d` |
+| `tools/video/automation/flow.mjs` | `69879582b38859a8ee95372db33b61fb1336ac63a5e395b68a783d0ae0e5ae1a` |
 | `tools/video/automation/prompts.mjs` | `d220ce8b3d6b46a8e9d577e865fe2a0ce56d63ff944eace65abb953620c22736` |
 | `tools/video/automation/series.mjs` | `cd782797e6eb85b2d2e609507a6b683941a400ff12acc7ec0e8243ac06d59a54` |
 | `tools/video/automation/series.test.mjs` | `ce8d18d30137ea172dc4ccf6ab7be5e3d1f4cb849f8e0b95626a7d6696de3f3c` |
@@ -863,4 +887,4 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |
 | `tools/video/tts/check.test.mjs` | `ad385d7df22fd297588dfef8a72b0b3f6261d0fb4619e4c538a30ef8464b1477` |
 | `tools/video/tts/synthesis.mjs` | `0081296cca9114ec528d8581f29fa553e2b5657a347988bf5b789e5eed2b6680` |
-| `tools/video/tts/tts.test.mjs` | `98b700586add6110b8ffe5b9008780911028038de8ccf2e75913d0de317c5907` |
+| `tools/video/tts/tts.test.mjs` | `14f28ea3af4f4626b8b7133955b9b2051da1027bd9214b793e3dd42f5903a3ec` |
