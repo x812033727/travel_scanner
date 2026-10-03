@@ -4,7 +4,8 @@
 // The written-language list is the one the recorded route's video_kit.py uses, so a script that
 // passes one route's check does not fail the other's.
 import { cadenceProblems, HOOK_SECONDS as ILLUSTRATED_HOOK_SECONDS } from "./cadence.mjs";
-import { emotionProblems, EXPLAINER_PRESET, illustrated, isDrama, isShot, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
+import { craftProblems } from "./craft.mjs";
+import { emotionProblems, EXPLAINER_PRESET, hasCast, illustrated, isDrama, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription } from "./metadata.mjs";
 import { DEFAULT_TARGET_MINUTES, LOCALES, minEpisodeMinutes, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
@@ -288,6 +289,10 @@ export function lintVideo(doc, context = {}) {
     for (const problem of shots.errors) error(problem.path, problem.message);
     for (const problem of shots.warnings) warn(problem.path, problem.message);
   }
+  // A drama with a cast is also read against the craft spec (craft.mjs, the rows the skill's
+  // drama_craft_check.mjs prints): the rows it misses are warnings the writer fixes or answers.
+  // A long anime keeps to its own production policy instead.
+  if (hasCast(doc) && !isLongAnime(doc)) for (const problem of craftProblems(doc, timeline)) warn(problem.path, problem.message);
   if (drama) for (const problem of emotionProblems(doc)) warn(problem.path, problem.message);
   // The cadence of an illustrated video (docs/videos/ILLUSTRATED.md) is estimated here and
   // measured at the final gate; warnings, so the writer's draft is never blocked on an estimate.
@@ -393,6 +398,8 @@ export function productionShotProblems(doc, series, timeline) {
     if (scene.data?.fit === "freeze") errors.push({ path: `${where}.data.fit`, message: "the production profile does not allow freeze-frame padding; split the shot or shorten its dialogue" });
     const duration = timed.get(scene.id);
     if (duration && duration.end_frame - duration.start_frame > 8 * FPS) errors.push({ path: where, message: "the production profile limits a shot to 8 seconds including pauses; split the shot or shorten its dialogue instead of holding the last frame" });
+    // The profile's clips run exactly 8 seconds, so a cut from one must end inside them.
+    if (isSourced(scene) && duration && scene.data.source.from_s * FPS + (duration.end_frame - duration.start_frame) > 8 * FPS) errors.push({ path: `${where}.data.source`, message: "the production profile's clips run 8 seconds; a cut from another shot's clip must end inside them: start earlier or shorten its dialogue" });
   });
   return errors;
 }
@@ -414,10 +421,13 @@ export function productionClipProblems(doc, series, timeline, clips) {
   const timed = new Map((timeline?.scenes ?? []).map((scene) => [scene.id, scene]));
   doc.scenes.filter(isShot).forEach((scene) => {
     const entry = clips?.shots?.[scene.id];
-    const duration = entry?.qc?.metrics?.duration;
+    // A cut from another shot's clip is judged on that clip's evidence, from its start frame.
+    const origin = entry?.source ? clips?.shots?.[entry.source.shot] : entry;
+    const offset = entry?.source ? Math.round(entry.source.from_s * FPS) : 0;
+    const duration = origin?.qc?.metrics?.duration;
     const time = timed.get(scene.id);
-    if (entry?.still || entry?.qc?.ok !== true || !Number.isFinite(duration) || !time || Math.round(duration * FPS) < time.end_frame - time.start_frame) errors.push({ path: `clips.${scene.id}`, message: "saved clip has no passing evidence of motion covering its whole dialogue; recheck the production clip" });
-    const sizeProblem = productionClipSizeProblem(series, entry?.qc?.metrics);
+    if (origin?.still || origin?.qc?.ok !== true || !Number.isFinite(duration) || !time || Math.round(duration * FPS) < offset + time.end_frame - time.start_frame) errors.push({ path: `clips.${scene.id}`, message: "saved clip has no passing evidence of motion covering its whole dialogue; recheck the production clip" });
+    const sizeProblem = productionClipSizeProblem(series, origin?.qc?.metrics);
     if (sizeProblem) errors.push({ path: `clips.${scene.id}`, message: sizeProblem });
   });
   return errors;

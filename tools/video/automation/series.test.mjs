@@ -20,6 +20,7 @@ import { Automation, automatedVideos, settle } from "./flow.mjs";
 import { instructionsFor, SERIES_INSTRUCTIONS } from "./prompts.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { scriptCheckBinding, scriptCheckMatches } from "../core/script-check.mjs";
+import { craftChecks } from "../core/craft.mjs";
 import { estimateTimeline, framesFor, frameToSeconds } from "../core/timeline.mjs";
 import { lintCompilation } from "../core/compilation.mjs";
 import { compilationSlug } from "./compilation.mjs";
@@ -1063,6 +1064,9 @@ test("a hands-off episode's screenplay is fixed from the checker's verdict befor
     // fixture's outro carried its third chapter label, so the last shot takes it.
     video.scenes = video.scenes.filter((scene) => scene.template !== "outro");
     video.scenes.at(-1).chapter = "結尾";
+    // Short lines, so the four shots open inside ten seconds: the craft rows (core/craft.mjs
+    // CRAFT_GATE_ROWS) send a slow opening back before the checker's verdict is even read.
+    for (const scene of video.scenes) for (const line of scene.lines) line.text = line.text.slice(0, 4);
     return { video: { ...video, slug }, claims: "原創\n", lexicon_additions: {} };
   };
   let checks = 0;
@@ -1602,4 +1606,17 @@ test("a native silent-action edit rechecks and returns to owner script review be
   assert.equal((await approvalState({ gate: "script", docDir: box.dir, workdir: box.workdir })).status, "stale");
   assert.match(await automation.advance(state), /sent to \/admin\/videos/);
   assert.deepEqual(stages, ["verify", "owner review"], "fresh verifier evidence cannot replace the owner's action approval");
+});
+
+test("the script verdict reads the craft rows on the script itself: the opening and coverage rows send it back, the pace rows do not", () => {
+  const passing = { coverage: { hook: "有", conflict: "有", turn: "有", cliffhanger: "有" }, problems: [], similar_works: [] };
+  const narrated = dramaFixture();
+  const craft = craftChecks(narrated, { timeline: estimateTimeline(narrated) });
+  assert.ok(craft.applies && craft.checks.some((check) => check.id === "pace.median" && !check.ok), "the fixture misses the pace rows");
+  const verdict = scriptVerdict(passing, SERIES, craft);
+  assert.equal(verdict.passed, false);
+  assert.match(verdict.problems.join("\n"), /craft hook\.opening: shots that start in the first 10 s 2, target ≥ 4; open inside the event/);
+  assert.ok(!verdict.problems.some((problem) => /pace\./.test(problem)), "the pace rows are warnings the writer answers, not a reason to send the script back");
+  assert.deepEqual(scriptVerdict(passing, SERIES, null), { passed: true, problems: [] }, "without a report (a long anime, no cast) nothing is added");
+  assert.deepEqual(scriptVerdict(passing, SERIES, { applies: false, checks: [] }), { passed: true, problems: [] });
 });

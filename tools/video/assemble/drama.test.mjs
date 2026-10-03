@@ -16,6 +16,7 @@ import {
   DISSOLVE_FRAMES,
   duckRatio,
   fitPlan,
+  frameArgs,
   freezeProblem,
   keyframeProblem,
   lastFrameArgs,
@@ -33,6 +34,7 @@ import {
   motionMove,
   motionSegmentArgs,
   motionSegmentKey,
+  sourceFrameProblem,
   subtitleTrack,
   zoompanExpr,
 } from "./drama.mjs";
@@ -153,8 +155,11 @@ test("a still shot is laid out as a motion scene carrying its keyframe and its c
   assert.throws(() => layoutDrama(doc, timeline, frames, swapped, keyframes), /shot farewell has no clip; run clips first/);
 });
 
-test("a camera word names the move, from the camera direction first, then the motion prompt; nothing named drifts", async () => {
+test("a camera word names the move, from the camera direction alone; nothing named drifts, and locked holds still", async () => {
   const table = [
+    ["Locked medium close-up; full face visible", "locked", true],
+    ["static", "locked", true],
+    ["fixed camera on the door", "locked", true],
     ["slow push in", "push-in", true],
     ["Dolly in on her face", "push-in", true],
     ["zoom in", "push-in", true],
@@ -184,9 +189,12 @@ test("a camera word names the move, from the camera direction first, then the mo
   }
   assert.deepEqual(motionMove({}), { name: "drift", startsAtIdentity: true, direction: "right" });
   assert.deepEqual(motionMove(undefined), { name: "drift", startsAtIdentity: true, direction: "right" });
-  assert.equal(motionMove({ motion: "the camera pushes in on the pebble" }).name, "push-in", "the motion prompt is read when the camera names nothing");
-  assert.equal(motionMove({ camera: "pan left", motion: "zoom in" }).name, "pan-right", "the camera direction wins over the motion prompt");
+  assert.equal(motionMove({ motion: "the camera pushes in on the pebble" }).name, "drift", "the motion prompt is never read: it says what happens in the picture");
+  assert.equal(motionMove({ motion: "She pushes the box back and rises" }).name, "drift");
+  assert.equal(motionMove({ camera: "pan left", motion: "zoom in" }).name, "pan-right", "only the camera direction is read");
   assert.equal(motionMove({ camera: "handheld", motion: "waves crashing" }).name, "drift");
+  assert.equal(motionMove({ camera: "a surprised enterprise" }).name, "drift", "\"rise\" inside a word is no tilt");
+  assert.deepEqual(zoompanExpr("locked", 180), { z: "1", x: "0", y: "0" }, "a locked still is the whole keyframe on every frame");
   // A drift goes the way its shot id says, so a run of drifting pictures does not all go one way.
   const { driftDirection, DRIFT_DIRECTIONS } = await import("./drama.mjs");
   assert.deepEqual(DRIFT_DIRECTIONS, ["right", "left"]);
@@ -489,4 +497,34 @@ test("package trusts an illustrated cut only with its very pictures, music and e
   assert.equal(checksCurrent(doc, lexicon, { ...checks, sfx_hash: "x" }, null, keyframes), false, "other effects");
   const plain = fixture();
   assert.equal(checksCurrent(plain, lexicon, { ok: true, speech_hash: speechHash(plain, lexicon), visual_hash: visualHash(plain) }), true, "plain slides as before");
+});
+
+test("a shot cut from another shot's clip lays out as that clip from its start frame, with no keyframe, and its segment trims there", () => {
+  const doc = dramaFixture();
+  const bird = doc.scenes.find((scene) => scene.id === "bird");
+  delete bird.data.start_frame;
+  bird.data.source = { shot: "sea-storm", from_s: 1.5 };
+  const timeline = estimateTimeline(doc);
+  const frames = framesManifestFor(doc, timeline);
+  const clips = clipsManifestFor(doc);
+  clips.shots.bird = { source: { shot: "sea-storm", from_s: 1.5, from_frame: 45 }, file: clips.shots["sea-storm"].file, sha256: clips.shots["sea-storm"].sha256, needs_review: false };
+  const keyframes = { shots: { bird: { file: "keyframes/bird.png" } } };
+  const layout = layoutDrama(doc, timeline, frames, clips, keyframes);
+  const cut = layout[3];
+  assert.equal(cut.kind, "clip");
+  assert.deepEqual(cut.clip, { file: clips.shots["sea-storm"].file, sha256: clips.shots["sea-storm"].sha256 });
+  assert.deepEqual(cut.source, { shot: "sea-storm", from_s: 1.5 });
+  assert.equal(cut.from_frame, 45);
+  assert.equal(cut.keyframe, null, "a cut has no keyframe to check against; its source frame is checked instead");
+  assert.equal(layout[2].from_frame, undefined);
+  const fit = fitPlan(240 - 45, cut.frames, "auto");
+  const args = clipSegmentArgs({ clip: "clips/sea-storm-1.mp4", frames: cut.frames, fit, fromFrame: 45, outFile: "seg.mp4" });
+  const graph = args[args.indexOf("-filter_complex") + 1];
+  assert.match(graph, /^\[0:v\]trim=start_frame=45,setpts=PTS-STARTPTS,scale=1920:1080/);
+  assert.doesNotMatch(clipSegmentArgs({ clip: "clips/sea-storm-1.mp4", frames: cut.frames, fit, outFile: "seg.mp4" })[args.indexOf("-filter_complex") + 1], /start_frame/);
+  assert.notEqual(clipSegmentKey({ ...cut, frames: 60 }, fit), clipSegmentKey({ ...cut, frames: 60, from_frame: 0 }, fit), "where the cut starts is part of its segment key");
+  assert.match(sourceFrameProblem(cut, 12), /shot bird frame 0 does not match sea-storm's clip at 1\.5 s \(PSNR 12\.0 dB/);
+  assert.equal(sourceFrameProblem(cut, 40), null);
+  assert.deepEqual(frameArgs("clips/a.mp4", 45, "out.png").slice(-6), ["-vf", "select=eq(n\\,45)", "-fps_mode", "passthrough", "-frames:v", "1", "out.png"].slice(-6));
+  assert.deepEqual(lastFrameArgs("seg.mp4", 180, "last.png"), frameArgs("seg.mp4", 179, "last.png"));
 });

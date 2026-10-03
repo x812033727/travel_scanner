@@ -327,3 +327,23 @@ test("the command exits 0, 1 with --strict on a miss, and 2 on a file it cannot 
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test("lint and the worker read the same rows through tools/video/core/craft.mjs, on lint's own timeline", async () => {
+  const { CRAFT_GATE_ROWS, craftChecks: checks, craftGateProblems, craftProblems } = await import("../tools/video/core/craft.mjs");
+  const { estimateTimeline } = await import("../tools/video/core/timeline.mjs");
+  const doc = covered();
+  const timeline = estimateTimeline({ ...doc, scenes: doc.scenes.map((scene) => ({ ...scene, chapter: scene.id === "s00" ? "一" : undefined })) });
+  const onTimeline = checks(doc, { timeline });
+  const placed = timeline.scenes.find((scene) => scene.id === "s11");
+  assert.equal(onTimeline.rows.find((row) => row.id === "s11").seconds, +((placed.end_frame - placed.start_frame) / 30).toFixed(2), "with a timeline the lengths are its frames");
+  assert.ok(Math.abs(onTimeline.rows[3].seconds - checks(doc).rows[3].seconds) < 0.1, "and the estimate agrees with it to a frame or two");
+  assert.deepEqual(craftProblems(doc, timeline), [], "a covered scene prints nothing");
+  const problems = craftProblems(portraits());
+  assert.ok(problems.length && problems.every((problem) => problem.path === "scenes" && /^craft [a-z]+\.[a-z0-9]+: .*drama-craft\.md\)$/.test(problem.message)), JSON.stringify(problems));
+  const gate = craftGateProblems(checks(portraits()));
+  assert.ok(gate.some((problem) => /^craft hook\.opening: /.test(problem)));
+  assert.ok(gate.every((problem) => CRAFT_GATE_ROWS.some((id) => problem.startsWith(`craft ${id}: `))), "only the opening and coverage rows send a script back");
+  assert.ok(!gate.some((problem) => /lines\.narrator/.test(problem)), "the narration share is a warning, not a gate");
+  assert.deepEqual(craftGateProblems(null), []);
+  assert.deepEqual(craftProblems({ format: "drama", characters: [], scenes: portraits().scenes }), [], "no cast, no rows");
+});

@@ -25,6 +25,7 @@ import {
   clipSegmentArgs,
   clipSegmentKey,
   fitPlan,
+  frameArgs,
   freezeProblem,
   illustratedTransition,
   keyframeProblem,
@@ -35,6 +36,7 @@ import {
   motionFramePsnrArgs,
   motionSegmentArgs,
   motionSegmentKey,
+  sourceFrameProblem,
   subtitleTrack,
 } from "./drama.mjs";
 import { locateFfmpeg, runTool, ToolMissing } from "./ffmpeg.mjs";
@@ -181,6 +183,9 @@ export async function run(command, args, ctx) {
     ctx.stderr.write(`${error.message}\n`);
     return EXIT.usage;
   }
+  /** The frames a clip offers a shot: all of them, or those after the frame a cut from another shot starts at. */
+  const offered = (frames, scene) => frames - (scene.from_frame ?? 0);
+  const pastTheEnd = (scene) => `shot ${scene.id} is cut from ${scene.source.shot}'s clip at ${scene.source.from_s} s, past that clip's end; start earlier and run clips again\n`;
   const fits = {};
   if (hasAnimePolicy(doc)) {
     const shotEvidence = [];
@@ -195,7 +200,11 @@ export async function run(command, args, ctx) {
         ctx.stderr.write(`${scene.clip.file} for shot ${scene.id} is missing; run clips again\n`);
         return EXIT.usage;
       }
-      const available = clipFrames(JSON.parse((await runTool(tools.ffprobe, probeArgs(source))).stdout));
+      const available = offered(clipFrames(JSON.parse((await runTool(tools.ffprobe, probeArgs(source))).stdout)), scene);
+      if (available <= 0) {
+        ctx.stderr.write(pastTheEnd(scene));
+        return EXIT.usage;
+      }
       fits[scene.id] = { available, ...fitPlan(available, scene.frames, scene.fit) };
       shotEvidence.push({ shot: scene.id, kind: "clip", fit: fits[scene.id] });
     }
@@ -235,7 +244,11 @@ export async function run(command, args, ctx) {
           fit = planned;
         } else {
           const probe = JSON.parse((await runTool(tools.ffprobe, probeArgs(source))).stdout);
-          available = clipFrames(probe);
+          available = offered(clipFrames(probe), scene);
+          if (available <= 0) {
+            ctx.stderr.write(pastTheEnd(scene));
+            return EXIT.usage;
+          }
           fit = fitPlan(available, scene.frames, scene.fit);
           fits[scene.id] = { available, ...fit };
         }
@@ -262,7 +275,7 @@ export async function run(command, args, ctx) {
       const partial = `${segment}.partial.mp4`;
       const args = motion
         ? motionSegmentArgs({ keyframe: source, frames: scene.frames, move: scene.move, subtitlesList, dissolveFrom, outFile: partial })
-        : clipSegmentArgs({ clip: source, frames: scene.frames, fit, subtitlesList, dissolveFrom, outFile: partial });
+        : clipSegmentArgs({ clip: source, frames: scene.frames, fit, fromFrame: scene.from_frame ?? 0, subtitlesList, dissolveFrom, outFile: partial });
       await runTool(tools.ffmpeg, args);
       renameSync(partial, segment);
       encoded += 1;
@@ -375,7 +388,7 @@ export async function run(command, args, ctx) {
   // inside the picture), so the picture chain's first frame is measured then and null is
   // recorded otherwise.
   const shots = [];
-  for (const scene of layout) {
+  for (const [index, scene] of layout.entries()) {
     if (scene.kind === "motion") {
       const record = { shot: scene.id, kind: "motion", move: scene.move.name, keyframe_psnr: null, ...(scene.card ? { card: true } : {}), ...(scene.transition === "dissolve" ? { transition: "dissolve" } : {}) };
       if (scene.move.startsAtIdentity && existsSync(resolve(scene.keyframe.file))) {
@@ -396,6 +409,16 @@ export async function run(command, args, ctx) {
       const value = parsePsnr((await runTool(tools.ffmpeg, psnrArgs(resolve(scene.clip.file), 0, resolve(scene.keyframe)))).stderr);
       record.keyframe_psnr = Number.isFinite(value) ? Number(value.toFixed(2)) : "inf";
       const problem = keyframeProblem(scene, value);
+      if (problem) problems.push(problem);
+    } else if (scene.source) {
+      // A cut from another shot's clip has no keyframe: its segment must open on that clip's
+      // frame at from_s, which is pulled out by number and compared with the segment's frame 0.
+      const frame = path.join(buildDir, `source-${scene.id}-${keys[index]}.png`);
+      if (!existsSync(frame)) await runTool(tools.ffmpeg, frameArgs(resolve(scene.clip.file), scene.from_frame, frame));
+      const value = parsePsnr((await runTool(tools.ffmpeg, psnrArgs(segmentFiles[index], 0, frame))).stderr);
+      record.source = scene.source;
+      record.source_frame_psnr = Number.isFinite(value) ? Number(value.toFixed(2)) : "inf";
+      const problem = sourceFrameProblem(scene, value);
       if (problem) problems.push(problem);
     }
     shots.push(record);

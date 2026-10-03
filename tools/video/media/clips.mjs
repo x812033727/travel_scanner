@@ -7,7 +7,9 @@
 // A shot marked visual "still" (docs/videos/BINGE.md) buys no clip: assemble animates its
 // keyframe instead. It still gets a manifest entry naming that keyframe and its hash, so the
 // manifest covers every shot, its clips_hash moves when a keyframe is redrawn, and status and
-// assemble read one file for the whole picture track.
+// assemble read one file for the whole picture track. A shot cut from another shot's clip
+// (data.source, docs/videos/DRAMA.md) buys nothing either: its entry names that clip and the
+// frame the cut starts at, and the ledger records what the cut saved.
 import { execFile } from "node:child_process";
 import { existsSync, mkdirSync } from "node:fs";
 import path from "node:path";
@@ -16,7 +18,7 @@ import { parseArgs } from "node:util";
 
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { approvalState } from "../core/approvals.mjs";
-import { clipKey, clipShotScenes, clipsHash, isDrama, lookHash, resolveLook, shotAppearancePrompt, shotCast, shotScenes, stillShotScenes } from "../core/drama.mjs";
+import { clipKey, clipShotScenes, clipsHash, isDrama, isSourced, lookHash, resolveLook, shotAppearancePrompt, shotCast, shotScenes, sourcedShotScenes, stillShotScenes } from "../core/drama.mjs";
 import { productionClipProblems, productionClipSizeProblem, productionShotProblems } from "../core/lint.mjs";
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, lintProject, loadProject, lookChosen, recordStage } from "../core/state.mjs";
@@ -25,7 +27,7 @@ import { readCredentials } from "../tts/credentials.mjs";
 import { MediaError, mediaStatus } from "./client.mjs";
 import { clientOptions, requireCredentials } from "./cli.mjs";
 import { chosenSheets } from "./keyframes.mjs";
-import { ledgerTotals } from "./ledger.mjs";
+import { bookReuse, ledgerTotals } from "./ledger.mjs";
 import { blackdetectArgs, clipVerdict, framePsnrArgs, freezedetectArgs, parseBlackdetect, parseFreezedetect, parseProbe, parsePsnr, parseSceneCuts, probeArgs, sceneCutArgs } from "./qc.mjs";
 import { chosenModel, clipSecondPrice, JUDGE_USD_PER_CALL, retakeable, Stage, statusProblem } from "./stages.mjs";
 
@@ -138,9 +140,11 @@ export async function run(command, args, ctx) {
     return EXIT.usage;
   }
   const wanted = values.shot ? new Set(values.shot.split(",").map((each) => each.trim()).filter(Boolean)) : null;
-  const shots = clipShotScenes(doc).filter((scene) => !wanted || wanted.has(scene.id));
+  const shots = clipShotScenes(doc).filter((scene) => !isSourced(scene) && (!wanted || wanted.has(scene.id)));
   const stills = stillShotScenes(doc).filter((scene) => !wanted || wanted.has(scene.id));
-  if (!shots.length && !stills.length) throw new UsageError(`--shot ${values.shot} names no shot of ${doc.slug}`);
+  // Cuts from another shot's clip: nothing to draw or buy, recorded once the source clip is done.
+  const cuts = sourcedShotScenes(doc).filter((scene) => !wanted || wanted.has(scene.id));
+  if (!shots.length && !stills.length && !cuts.length) throw new UsageError(`--shot ${values.shot} names no shot of ${doc.slug}`);
   // A still is its keyframe, so it needs a passed one as much as a clip does.
   const undrawn = [...shots, ...stills].filter((scene) => !keyframes.shots?.[scene.id]?.file || keyframes.shots[scene.id].needs_review);
   if (undrawn.length) {
@@ -165,18 +169,24 @@ export async function run(command, args, ctx) {
     const durations = status ? (chosenModel(status, "clip")?.durations ?? []) : [];
     const price = status ? clipSecondPrice(status) : 0;
     let total = 0;
+    let saved = 0;
     for (const scene of shotScenes(doc)) {
-      if (!shots.includes(scene) && !stills.includes(scene)) continue;
+      if (!shots.includes(scene) && !stills.includes(scene) && !cuts.includes(scene)) continue;
       const lines = ((framesOf.get(scene.id) ?? 0) / FPS).toFixed(1);
       if (stills.includes(scene)) {
         ctx.stdout.write(`${scene.id}: ${lines} s of lines → still, its keyframe under a camera move (no clip to buy)\n`);
         continue;
       }
       const seconds = clipSeconds(framesOf.get(scene.id) ?? 0, durations, status?.clip);
+      if (cuts.includes(scene)) {
+        saved += seconds;
+        ctx.stdout.write(`${scene.id}: ${lines} s of lines → cut from ${scene.data.source.shot}'s clip at ${scene.data.source.from_s} s (no clip to buy; ${seconds} clip seconds not bought)\n`);
+        continue;
+      }
       total += seconds;
       ctx.stdout.write(`${scene.id}: ${lines} s of lines → ${seconds} s clip${status ? ` ≈ US$${(seconds * price).toFixed(2)}` : ""}; ${clipPrompt(scene, look, cast(scene))}\n`);
     }
-    ctx.stdout.write(`${shots.length + stills.length} shots: ${stills.length} stills (animated keyframes, nothing to buy) and ${shots.length} clips priced, ${total} clip seconds for one take each\n`);
+    ctx.stdout.write(`${shots.length + stills.length + cuts.length} shots: ${stills.length} stills (animated keyframes, nothing to buy)${cuts.length ? `, ${cuts.length} cuts from another shot's clip (nothing to buy, ${saved} clip seconds saved)` : ""} and ${shots.length} clips priced, ${total} clip seconds for one take each\n`);
     if (status) {
       const problem = statusProblem(status, "clip");
       const budget = status.budgets?.clip_seconds;
@@ -402,14 +412,44 @@ export async function run(command, args, ctx) {
     ctx.stdout.write(`stopped by the STOP file after ${generated} new clips; rerun to continue\n`);
     return EXIT.ok;
   }
+
+  // Cuts from another shot's clip: nothing is bought. The source clip is done by now (a shot
+  // may only cut from an earlier one); its entry is copied with the frame the cut starts at,
+  // once it has passed and runs long enough, and the ledger records what the cut saved.
+  let savedSeconds = 0;
+  for (const scene of cuts) {
+    const { shot, from_s } = scene.data.source;
+    const origin = manifest.shots[shot];
+    if (!origin?.file) {
+      ctx.stderr.write(`${scene.id} is cut from ${shot}, which has no clip yet; run clips for it first\n`);
+      return EXIT.usage;
+    }
+    const neededFrames = framesOf.get(scene.id) ?? 0;
+    const fromFrame = Math.round(from_s * FPS);
+    const have = origin.frames ?? Math.round((origin.seconds ?? 0) * FPS);
+    const problems = [];
+    if (origin.still || origin.source || origin.needs_review) problems.push(`${shot}'s clip did not pass its checks; fix ${shot} and run clips again`);
+    else if (fromFrame + neededFrames > have) problems.push(`${shot}'s clip runs ${(have / FPS).toFixed(1)} s; a cut starting at ${from_s} s needs ${(neededFrames / FPS).toFixed(1)} s: start earlier or shorten the lines`);
+    const record = { source: { shot, from_s, from_frame: fromFrame }, file: origin.file, sha256: origin.sha256, seconds: origin.seconds ?? null, frames: origin.frames ?? null, needed_s: Number((neededFrames / FPS).toFixed(3)), needs_review: problems.length > 0 };
+    if (problems.length) record.problems = problems;
+    else {
+      const notBought = clipSeconds(neededFrames, durations, status.clip);
+      savedSeconds += notBought;
+      bookReuse(workdir, { stage: "clips", id: scene.id, provider: status.clip.provider, model: status.clip.model, source: { shot, from_s }, saved_seconds: notBought, saved_usd: Number((notBought * clipSecondPrice(status)).toFixed(4)) }, ctx.now());
+      ctx.stdout.write(`${scene.id}: cut from ${shot}'s clip at ${from_s} s (${notBought} clip seconds not bought)\n`);
+    }
+    manifest.shots[scene.id] = record;
+  }
+
   manifest.generated_at = ctx.now().toISOString();
   writeManifest(workdir, doc, manifest);
   const seconds = Math.round((Date.now() - started) / 1000);
   const totals = ledgerTotals(workdir);
   const waiting = Object.entries(manifest.shots).filter(([, shot]) => shot.needs_review);
   const stillCount = Object.values(manifest.shots).filter((shot) => shot.still).length;
-  recordStage(workdir, "clips", { shots: Object.keys(manifest.shots).length, stills: stillCount, generated, needs_review: waiting.map(([id]) => id), clip_seconds: totals.clip_seconds, usd: totals.usd, seconds }, ctx.now());
-  ctx.stdout.write(`${generated} clips generated in ${seconds} s; ${Object.keys(manifest.shots).length} shots in the manifest (${stillCount} stills); this video has spent US$${totals.usd.toFixed(2)} (${totals.clip_seconds} clip seconds)\n`);
+  const cutCount = Object.values(manifest.shots).filter((shot) => shot.source).length;
+  recordStage(workdir, "clips", { shots: Object.keys(manifest.shots).length, stills: stillCount, ...(cutCount ? { cuts: cutCount, saved_clip_seconds: savedSeconds } : {}), generated, needs_review: waiting.map(([id]) => id), clip_seconds: totals.clip_seconds, usd: totals.usd, seconds }, ctx.now());
+  ctx.stdout.write(`${generated} clips generated in ${seconds} s; ${Object.keys(manifest.shots).length} shots in the manifest (${stillCount} stills${cutCount ? `, ${cutCount} cuts from another shot's clip, ${savedSeconds} clip seconds not bought` : ""}); this video has spent US$${totals.usd.toFixed(2)} (${totals.clip_seconds} clip seconds)\n`);
   if (waiting.length) {
     for (const [id, shot] of waiting) ctx.stdout.write(`ERROR ${id}: no take passed: ${(shot.problems ?? []).join("; ")}\n`);
     ctx.stdout.write(`fix the prompts of ${waiting.map(([id]) => id).join(", ")} and run clips again (needs_review in clips/manifest.json)\n`);

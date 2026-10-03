@@ -12,7 +12,7 @@ import { dramaFixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs
 import { pipelineStatus } from "../core/state.mjs";
 import { buildTimeline, estimatedSamples, FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "../core/timeline.mjs";
 import { clipPrompt, clipRubric, clipSeconds, lastFrameArgs, MAX_CLIP_TAKES, proxyArgs } from "./clips.mjs";
-import { readLedger } from "./ledger.mjs";
+import { readLedger, savedTotals } from "./ledger.mjs";
 import { MIN_TRACK_SECONDS, trackSeconds } from "./music.mjs";
 import { chosenModel, clipSecondPrice, statusProblem, trackPrice } from "./stages.mjs";
 
@@ -594,4 +594,61 @@ test("music under illustrated slides comes from the owner's track, with no drama
   assert.equal(capFor({ max_usd_per_video: 200, slides_max_usd_per_video: 20 }, "slides"), 20);
   assert.equal(capFor({ max_usd_per_video: 200, slides_max_usd_per_video: 20 }), 200);
   assert.equal(capFor({ max_usd_per_video: 200 }, "slides"), 200);
+});
+
+test("a shot cut from another shot's clip buys nothing: priced at zero, recorded with its source frame and its saving, and left for a fix when it runs past the clip", async () => {
+  const cutFrom = (from_s) => (doc) => {
+    shortDialogue(doc);
+    const bird = doc.scenes.find((scene) => scene.id === "bird");
+    delete bird.data.start_frame;
+    bird.data.source = { shot: "sea-storm", from_s };
+  };
+  const { box, timeline } = prepared(cutFrom(1));
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+  const site = mediaSite();
+  const dry = context(box, site.fetchImpl);
+  assert.equal(await main(["clips", "--slug", box.slug, "--dry-run"], dry.ctx), EXIT.ok, dry.out.stderr);
+  const frames = (id) => timeline.scenes.find((scene) => scene.id === id).end_frame - timeline.scenes.find((scene) => scene.id === id).start_frame;
+  const expected = ["opening", "farewell", "sea-storm"].map((id) => clipSeconds(frames(id), [4, 5, 6, 7, 8, 9, 10]));
+  const bought = expected.reduce((a, b) => a + b, 0);
+  const notBought = clipSeconds(frames("bird"), [4, 5, 6, 7, 8, 9, 10]);
+  assert.match(dry.out.stdout, new RegExp(`bird: [\\d.]+ s of lines → cut from sea-storm's clip at 1 s \\(no clip to buy; ${notBought} clip seconds not bought\\)`));
+  assert.match(dry.out.stdout, new RegExp(`4 shots: 0 stills \\(animated keyframes, nothing to buy\\), 1 cuts from another shot's clip \\(nothing to buy, ${notBought} clip seconds saved\\) and 3 clips priced, ${bought} clip seconds for one take each`));
+  assert.match(dry.out.stdout, new RegExp(`about US\\$${(bought * 0.15 + 3 * 0.01).toFixed(2)}`), "the cut is not priced");
+
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["clips", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
+  assert.deepEqual(site.state.clips.map((request) => request.shot_id), ["opening", "farewell", "sea-storm"], "no clip is asked for the cut");
+  const manifest = manifestOf(box, "clips");
+  const storm = manifest.shots["sea-storm"];
+  assert.deepEqual(manifest.shots.bird, { source: { shot: "sea-storm", from_s: 1, from_frame: 30 }, file: storm.file, sha256: storm.sha256, seconds: storm.seconds, frames: storm.frames, needed_s: Number((frames("bird") / FPS).toFixed(3)), needs_review: false });
+  assert.deepEqual(Object.keys(manifest.shots), ["opening", "farewell", "sea-storm", "bird"], "the cut is recorded after the clips it needs");
+  assert.match(run.out.stdout, new RegExp(`bird: cut from sea-storm's clip at 1 s \\(${notBought} clip seconds not bought\\)`));
+  assert.match(run.out.stdout, new RegExp(`3 clips generated in \\d+ s; 4 shots in the manifest \\(0 stills, 1 cuts from another shot's clip, ${notBought} clip seconds not bought\\)`));
+  const ledger = readLedger(box.workdir);
+  const cut = ledger.entries.find((entry) => entry.status === "cut");
+  assert.deepEqual([cut.id, cut.kind, cut.stage, cut.seconds, cut.cost_usd, cut.saved_seconds, cut.saved_usd, cut.source], ["bird", "clip", "clips", 0, 0, notBought, Number((notBought * 0.15).toFixed(4)), { shot: "sea-storm", from_s: 1 }]);
+  assert.equal(ledger.totals.clip_seconds, bought, "a saving is not spending");
+  assert.deepEqual(savedTotals(ledger.entries), { clip_seconds: notBought, usd: Number((notBought * 0.15).toFixed(4)), cuts: 1 });
+  const again = context(box, site.fetchImpl);
+  assert.equal(await main(["clips", "--slug", box.slug], again.ctx), EXIT.ok, again.out.stderr);
+  assert.equal(readLedger(box.workdir).entries.filter((entry) => entry.status === "cut").length, 1, "a rerun replaces the cut's entry instead of counting it twice");
+  const state = JSON.parse(readFileSync(path.join(box.workdir, "state.json"), "utf8"));
+  const last = state.runs.filter((each) => each.stage === "clips").at(-1);
+  assert.equal(last.cuts, 1);
+  assert.equal(last.saved_clip_seconds, notBought);
+  assert.ok((await pipelineStatus({ slug: box.slug, root: box.root, workdir: box.workdir })).steps.find((step) => step.id === "clips generated").done, "the cut counts as generated");
+
+  // A cut that runs past the source clip's end is left for the writer, like a take that failed.
+  const late = prepared(cutFrom(3.5));
+  await approve({ gate: "look", docDir: late.box.dir, workdir: late.box.workdir, note: "test" });
+  await approve({ gate: "storyboard", docDir: late.box.dir, workdir: late.box.workdir, note: "test" });
+  const flagged = context(late.box, mediaSite().fetchImpl);
+  assert.equal(await main(["clips", "--slug", late.box.slug], flagged.ctx), EXIT.lint, flagged.out.stderr);
+  const bird = manifestOf(late.box, "clips").shots.bird;
+  assert.equal(bird.needs_review, true);
+  assert.match(bird.problems[0], /sea-storm's clip runs 4\.0 s; a cut starting at 3\.5 s needs [\d.]+ s: start earlier or shorten the lines/);
+  assert.match(flagged.out.stdout, /ERROR bird: no take passed: sea-storm's clip runs 4\.0 s/);
+  assert.equal(readLedger(late.box.workdir).entries.some((entry) => entry.status === "cut"), false, "nothing was saved");
 });
