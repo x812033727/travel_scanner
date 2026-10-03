@@ -1,0 +1,139 @@
+{
+  "slug": "ai-term-knowledge-cutoff",
+  "status": "verified",
+  "checked_on": "2026-10-03",
+  "sources": [
+    {
+      "url": "https://platform.claude.com/docs/en/models/overview",
+      "title": "Anthropic：Models overview（模型總覽頁，並列可靠知識截止日與訓練資料截止日兩列）",
+      "access": "web open (curl -sSL, 200; docs.claude.com / docs.anthropic.com redirect here)",
+      "claims": [
+        "Anthropic 模型總覽頁把 reliable knowledge cutoff 與 training data cutoff 分成兩列，並指向 Transparency Hub",
+        "頁上並列的模型有的兩列相同、有的訓練資料截止日較晚（不寫日期與型號）"
+      ]
+    },
+    {
+      "url": "https://www.anthropic.com/transparency",
+      "title": "Anthropic：Transparency Hub 的 Model Report（各模型的 Knowledge Cutoff Date 說明）",
+      "access": "web open (curl -sSL, 200; Model Report dated 2026-10-02)",
+      "claims": [
+        "可靠知識截止日的定義：知識「most extensive and reliable」所及的日期",
+        "有的模型 training data cutoff 比 reliable knowledge cutoff 晚"
+      ]
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "title": "Anthropic：Web search tool（何時搜尋、引用、錯誤與空結果的處理）",
+      "access": "web open (curl -sSL, 200; old /build-with-claude/ path redirects)",
+      "claims": [
+        "由模型依提示詞決定是否搜尋，可用系統提示詞調整",
+        "搜尋成功但無結果回傳空列表而非錯誤",
+        "搜尋讓模型回答超過 knowledge cutoff 的資訊並附引用"
+      ]
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/release-notes/system-prompts/overview",
+      "title": "Anthropic：System prompts（網頁版與手機應用程式的系統提示詞提供目前日期，不適用於 API）",
+      "access": "web open (curl -sSL, 200; old path redirects)",
+      "claims": [
+        "網頁版與手機應用程式用系統提示詞在對話開頭提供目前日期",
+        "這些系統提示詞更新不適用於 API"
+      ]
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/models",
+      "title": "OpenAI：Models（模型頁的 Knowledge cutoff 欄位）",
+      "access": "web open (curl -sSL, 200; platform.openai.com/docs/models redirects)",
+      "claims": [
+        "模型清單的每個模型有一個 Knowledge cutoff 欄位與日期；頁面沒有另外定義該欄位"
+      ]
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+      "title": "OpenAI：Web search guide（模型自行決定是否搜尋、引用、完整來源清單、快取模式）",
+      "access": "web open (curl -sSL, 200; platform.openai.com path redirects)",
+      "claims": [
+        "Responses API 的 web_search 由模型依輸入決定是否搜尋",
+        "external_web_access:false 為 cache-only 模式",
+        "sources 欄位的數量常多於引用數量"
+      ]
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/gemini-3",
+      "title": "Google：Gemini 3 developer guide（Knowledge Cutoff 表格欄位與常見問題）",
+      "access": "web open (curl -sSL, 200)",
+      "claims": [
+        "Gemini 3 指南的表格有 Knowledge Cutoff 欄位",
+        "常見問題：更新的資訊請用 Search Grounding 工具"
+      ]
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash",
+      "title": "Google：Gemini 2.5 Flash 模型頁（有 Knowledge cutoff 欄位的模型頁）",
+      "access": "web open (curl -sSL, 200)",
+      "claims": [
+        "較舊的 2.5 系列模型頁有 Knowledge cutoff 欄位"
+      ]
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash",
+      "title": "Google：Gemini 3.8 Flash 模型頁（較新的模型頁，本次讀到的版本沒有此欄位）",
+      "access": "web open (curl -sSL, 200)",
+      "claims": [
+        "較新的 Gemini 模型頁（3.8、3.7、3.6、3.5 Flash 與 3.1 Pro Preview 均檢查）全文沒有 knowledge cutoff 欄位；與 brief 的假設不符"
+      ]
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/google-search",
+      "title": "Google：Grounding with Google Search（模型判斷是否搜尋、引用標註的結構）",
+      "access": "web open (curl -sSL, 200; /grounding redirects)",
+      "claims": [
+        "模型分析提示詞後判斷 Google 搜尋是否能改善答案",
+        "回應以 url_citation 把文字片段對到來源網址"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2403.12958",
+      "title": "Cheng et al. 2024, Dated Data: Tracing Knowledge Cutoffs in Large Language Models（arXiv:2403.12958）",
+      "access": "arXiv abstract + full text (arxiv.org/html/2403.12958v2), curl -sSL, 200",
+      "claims": [
+        "有效截止日不同於供應商標示，且依資源而異",
+        "主要分析訓練資料公開的模型；以 Wikipedia 每月版本量困惑度",
+        "有些模型的有效截止日比標示早得多；也有模型吻合",
+        "原因：CommonCrawl 新傾印含大量舊內容；去重複擋不住語意與近似重複"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2411.08324",
+      "title": "Dai, Teehan, Ren 2025, Are LLMs Prescient? A Continuous Evaluation using Daily News as the Oracle（ICML 2025，arXiv:2411.08324）",
+      "access": "arXiv abstract + full text (arxiv.org/html/2411.08324), curl -sSL, 200; ICML 2025",
+      "claims": [
+        "closed-book：在截止日前幾個月答對率緩慢下降，作者推測因近期新聞在訓練資料中比重不足；截止日後數個模型在選擇題加速下滑",
+        "受限檢索（BM25 前 5 篇、每篇 512 words）：資料庫停在某天，成績在之後下滑；有模型在檢索資料早於其知識截止日時可能比 closed-book 差",
+        "gold article 設定下多數模型仍隨時間下滑"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2511.12116",
+      "title": "Pezik et al. 2025, LLMLagBench: Identifying Temporal Training Boundaries in Large Language Models（arXiv:2511.12116，預印本）",
+      "access": "arXiv abstract + full text (arxiv.org/html/2511.12116), curl -sSL, 200; v1 preprint",
+      "claims": [
+        "1,713 題新聞問答、用另一個模型當評審估計訓練邊界；有的模型有多個部分截止點",
+        "某些模型自述的截止日比量到的邊界早一年以上；作者指出模型可能自述保守卻對更晚的事作答"
+      ]
+    }
+  ],
+  "aliases": [
+    "知識截止日期",
+    "知識截止時間",
+    "訓練資料截止日",
+    "可靠知識截止日",
+    "knowledge cutoff date",
+    "training data cutoff",
+    "reliable knowledge cutoff",
+    "effective cutoff"
+  ],
+  "existing_overlap": "ai-glossary-50-terms 只有一句話定義（供應商用來說明訓練知識時間範圍的標示、不保證之前所有事都知道）；本篇展開為專文。與 ai-hallucination-fact-check 的分工：本篇只區分截止日、過期資訊與幻覺，核對方法連過去；與 ai-term-retrieval-augmented-generation、ai-term-grounding 的分工：本篇只寫它們補截止日缺口時各自的失敗點。",
+  "running_text_characters": 2500,
+  "notes": "字數以 pack_ingest._body_length 計（含 rich_paragraph 連結文字；不含連結文字為 2431）。與 brief 的差異：(1) Anthropic 的定義句在 Transparency Hub，總覽頁只有兩列數值；(2) Gemini 較新的模型頁沒有 knowledge cutoff 欄位，只有 2.5 系列頁與 Gemini 3 指南有；(3) LLMLagBench 為 arXiv v1 預印本。未寫任何模型名、截止日期、價格；示範案例為虛構、未實測。論文中『資料較少』的原因是作者推測，文章與圖皆以推測或『可能』措辭。diagram-1.svg 唯一數字是頁尾版權年份。本機 render_svg 視窗約少 88 px，輸出圖底部被切，另以 1600x1000 視窗確認全圖。"
+}
