@@ -35,6 +35,7 @@ from app.video_automation.models import (
     DEFAULT_TOPIC_AVOID,
     DEFAULT_TOPIC_SCOPE,
     DEFAULT_VOICE,
+    SLIDES_FIELDS,
     STYLE_PRESETS,
     VideoAutomationSettings,
     VideoStagePrompt,
@@ -100,6 +101,49 @@ def _view_extras() -> dict[str, Any]:
         "style_presets": list(STYLE_PRESETS),
         "updated_at": None,
     }
+
+
+@pytest.mark.asyncio
+async def test_saving_slides_updates_the_mapped_columns_and_audits_each_field(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    values = _values(drama=_drama(max_usd_per_video=50))
+    row = VideoAutomationSettings(
+        **{key: value for key, value in values.items() if key not in {"drama", "slides"}},
+        **values["drama"],
+        **values["slides"],
+    )
+    monkeypatch.setattr(service, "settings_row", AsyncMock(return_value=row))
+    monkeypatch.setattr(service, "settings_view", AsyncMock())
+    session = AsyncMock()
+    session.add = MagicMock()
+    slides = _slides(
+        slides_media_enabled=True,
+        slides_image_model="gemini-3-pro-image",
+        slides_max_usd_per_video=37,
+        slides_auto_approve_storyboard=False,
+        slides_music_track="bed.mp3",
+        slides_sfx_set="studio-a",
+    )
+
+    await service.update_settings(session, _owner(), SettingsWrite(**{**values, "slides": slides}))
+
+    assert {field: getattr(row, field) for field in SLIDES_FIELDS} == slides
+    assert "slides" not in vars(row), "the nested object is not a mapped column"
+    assert row.max_usd_per_video == 50, "the drama has its own budget"
+    audit = session.add.call_args.args[0]
+    assert isinstance(audit, AdminAuditLog)
+    assert audit.metadata_json["changed"] == sorted(SLIDES_FIELDS)
+    session.commit.assert_awaited_once()
+
+
+def test_slides_values_keeps_an_explicit_null_image_choice_and_defaults_missing_columns() -> None:
+    row = SimpleNamespace(slides_image_model=None, slides_media_enabled=None)
+    assert service.slides_values(row).model_dump() == {  # type: ignore[arg-type]
+        **DEFAULT_SLIDES,
+        "slides_image_model": None,
+    }
+    assert service.slides_values(SimpleNamespace()).model_dump() == DEFAULT_SLIDES  # type: ignore[arg-type]
 
 
 def test_the_defaults_are_a_valid_setting_the_server_can_run() -> None:
@@ -879,6 +923,92 @@ async def test_settings_start_from_defaults_save_with_an_audit_entry_and_read_ba
         )
         assert audit is not None
         assert audit.metadata_json["changed"] == ["draft_interval_hours", "enabled"]
+
+
+@integration
+@pytest.mark.asyncio(loop_scope="module")
+async def test_slides_saves_survive_reload_and_partial_saves_keep_the_other_settings(
+    clean_settings: None, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    owner = _owner()
+    owner.email = f"video-automation-{owner.id}@example.com"
+    async with SessionFactory() as session:
+        session.add(owner)
+        row = await service.settings_row(session)
+        row.max_usd_per_video = 50
+        row.judge_min_score = 8
+        row.channel_stance = "先把帳算清楚再花錢"
+        await session.commit()
+        original = service.settings_values(row).model_dump(mode="json")
+
+    runtime = Settings(hotspot_guide_gemini_api_key="g")
+    monkeypatch.setattr(admin_api, "load_runtime_settings", AsyncMock(return_value=runtime))
+    monkeypatch.setattr(service, "load_runtime_settings", AsyncMock(return_value=runtime))
+    app = _app(owner)
+
+    async def database_session() -> AsyncIterator[Any]:
+        async with SessionFactory() as session:
+            yield session
+
+    app.dependency_overrides[get_session] = database_session
+    url = "/api/v1/admin/video-automation/settings"
+    slides = _slides(
+        slides_media_enabled=True,
+        slides_image_model="gemini-3-pro-image",
+        slides_max_usd_per_video=37,
+        slides_auto_approve_storyboard=False,
+        slides_music_track="bed.mp3",
+        slides_sfx_set="studio-a",
+    )
+
+    async def check_saved(
+        client: AsyncClient, sent: dict[str, Any], expected_changed: list[str]
+    ) -> None:
+        saved = await client.put(url, json=sent)
+        assert saved.status_code == 200, saved.text
+        assert saved.json()["slides"] == slides
+        reloaded = await client.get(url)
+        assert reloaded.status_code == 200, reloaded.text
+        assert reloaded.json()["slides"] == slides
+        assert reloaded.json()["drama"] == original["drama"]
+        assert reloaded.json()["channel_stance"] == original["channel_stance"]
+        async with SessionFactory() as session:
+            row = await session.get(VideoAutomationSettings, 1)
+            assert row is not None
+            session.expunge_all()
+            fresh = await service.settings_view(session)
+            assert fresh.slides.model_dump() == slides
+            assert fresh.drama.model_dump(mode="json") == original["drama"]
+            assert fresh.drama.max_usd_per_video == 50
+            audit = await session.scalar(
+                select(AdminAuditLog)
+                .where(
+                    AdminAuditLog.action == "video_automation_settings_updated",
+                    AdminAuditLog.actor_user_id == owner.id,
+                )
+                .order_by(AdminAuditLog.created_at.desc())
+            )
+            assert audit is not None
+            assert audit.metadata_json["changed"] == sorted(expected_changed)
+
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://t") as client:
+        await check_saved(client, {"slides": slides}, list(SLIDES_FIELDS))
+        await check_saved(client, {"enabled": True}, ["enabled"])
+        slides["slides_max_usd_per_video"] = 41
+        await check_saved(
+            client, {"slides": {"slides_max_usd_per_video": 41}}, ["slides_max_usd_per_video"]
+        )
+        cleared = {
+            "slides_media_enabled": False,
+            "slides_image_model": None,
+            "slides_max_usd_per_video": 0,
+            "slides_auto_approve_storyboard": True,
+            "slides_music_track": None,
+            "slides_sfx_set": None,
+        }
+        slides.update(cleared)
+        await check_saved(client, {"slides": cleared}, list(SLIDES_FIELDS))
+        await check_saved(client, {"draft_interval_hours": 48}, ["draft_interval_hours"])
 
 
 @integration
