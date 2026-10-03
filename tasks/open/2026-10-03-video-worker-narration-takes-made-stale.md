@@ -1,0 +1,51 @@
+---
+id: 2026-10-03-video-worker-narration-takes-made-stale
+title: Video worker: narration takes made stale by the accent change are recorded again, not refused for ever
+status: in-progress
+priority: P2
+area: tools
+owner: claude-opus-5-5
+claimed_at: 2026-10-03T16:23:36Z
+created_at: 2026-10-03T16:23:10Z
+completed_at:
+branch:
+depends_on: []
+scope:
+  - tools/video/automation/flow.mjs
+  - tools/video/automation/automation.test.mjs
+  - tools/video/tts/cli.mjs
+  - tools/video/tts/takes.mjs
+  - tools/video/tts/tts.test.mjs
+  - docs/videos/long-form/review.json
+  - docs/videos/long-form/review.md
+---
+
+# Video worker: narration takes made stale by the accent change are recorded again, not refused for ever
+
+## Why
+
+2026-10-03 站主重試七支卡住的插圖投影片，工人接手後卡在
+`tts failed: audio evidence refresh needs every original take cached and current`，再按重試也一樣。
+
+- 這些旁白是 #1132 之前錄的，`timeline.json` 沒有 `audio_evidence`。
+- 稿子沒變（speech hash 相同）時，`flow.mjs` 一律走 `tts --refresh-evidence`，它只綁證據、不錄音，遇到任何不是 current 的錄音就丟 UsageError。
+- #1168 改了送去合成的口音寫法，請求鍵全變：主機上七支的 wav 都在，對得上的鍵是 0 筆。
+
+站主 2026-10-03 決定：重錄旁白（新口音），不保留舊錄音。
+
+## Definition of done
+
+- [x] 同稿、沒有證據、錄音的鍵已經對不上時，工人跑一般的 `tts`（重錄，寫新的 timeline，旁白重新過關卡），不再走只會拒絕的 refresh。
+- [x] 錄音都還 current 時行為不變：仍然 `--refresh-evidence`，不花合成費。
+- [x] 判斷「錄音是不是 current」的規則只有一份（`tts/takes.mjs`），`tts` 與工人共用。
+- [ ] 時長審查收據由獨立代理做增量。
+- [ ] 部署後七支能走過「narration synthesized」。
+
+## How to verify
+
+`node --test tools/video/automation/automation.test.mjs tools/video/tts/tts.test.mjs`、`node tools/video/long-form/cli.mjs check`。
+
+## Notes
+
+- 有 `audio_evidence` 但對不上錄音的情況沒動，照舊卡住要人處理。
+- 七支裡 gemini-skills-replace-gems-move-checklist 與 openai-agent-posted-53-user-images 另有「約 7.9 分鐘、不足 8 分鐘」的 lint 錯誤，會先回撰稿。

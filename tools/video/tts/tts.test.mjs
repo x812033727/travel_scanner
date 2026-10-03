@@ -17,6 +17,7 @@ import { credentialsFile, readCredentials, writeCredentials } from "./credential
 import { MAX_REQUEST_CHARACTERS, billableForRequest, planRequests, spokenParts } from "./requests.mjs";
 import { plausibleSplit, silenceRuns, splitAtSilences, trimSilence } from "./split.mjs";
 import { buildNarration, flaggedLines, synthesizeRequest } from "./synthesis.mjs";
+import { staleTakes } from "./takes.mjs";
 import { concatSamples, encodeWav, parseWav, requireNarrationFormat, WavError } from "./wav.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
@@ -439,11 +440,16 @@ test("same-duration exact-take retakes invalidate listening approval; legacy evi
   const offline = capture({ root: box.root, env: { VIDEO_WORKDIR: box.work }, home: box.base, fetch: () => { throw new Error("offline refresh contacted server"); } });
   assert.equal(await main(["tts", "--slug", box.slug, "--refresh-evidence"], offline.ctx), EXIT.ok, offline.out.stderr);
   assert.equal((await approvalState(places)).status, "stale");
+  // The worker asks staleTakes before it refreshes: none while every take is current, and the
+  // line whose take is gone once the cache forgets it, which is the case it records again.
+  const refreshed = loadProject({ slug: box.slug, root: box.root });
+  assert.deepEqual(staleTakes(refreshed.doc, refreshed.lexicon, box.workdir), []);
   const cacheFile = path.join(box.workdir, "audio", "cache.json");
   const cache = JSON.parse(readFileSync(cacheFile)); delete cache.lines[original.id];
   writeFileSync(cacheFile, JSON.stringify(cache));
   assert.equal(await main(["tts", "--slug", box.slug, "--refresh-evidence"], offline.ctx), EXIT.usage);
   assert.match(offline.out.stderr, /never synthesizes/);
+  assert.deepEqual(staleTakes(refreshed.doc, refreshed.lexicon, box.workdir), [original.id]);
 });
 
 test("tts writes frame-aligned narration and a timeline, then only redoes what changed", async () => {
