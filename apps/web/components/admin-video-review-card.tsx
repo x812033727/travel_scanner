@@ -322,18 +322,41 @@ function ScriptBody({ review }: { review: Review }) {
   const beats = record(review.payload.beats);
   const scenes = list(review.payload.scenes).map(record);
   const minutes = review.payload.minutes;
+  const native = runtimeEvidence(review).validSpec;
+  const nativeCoverage = native && review.payload.check_status === "current";
+  const highTension = nativeCoverage ? list(coverage.high_tension).map(text) : [];
+  const hasHighTension = highTension.length === 2 && highTension.every((value) => coverageTone[value]);
+  const hasConsequences = nativeCoverage && Boolean(coverageTone[text(coverage.consequences)]);
+  const hasClosure = nativeCoverage && Boolean(coverageTone[text(coverage.closure)]);
+  const coverageKeys = hasClosure ? COVERAGE_KEYS.filter((key) => key !== "cliffhanger") : COVERAGE_KEYS;
   // A chapter heading where the chapter changes, so the scenes read as acts.
   const headings = scenes.map((scene, index) => (text(scene.chapter) && text(scene.chapter) !== text(scenes[index - 1]?.chapter) ? text(scene.chapter) : ""));
   return <div className="grid gap-4">
-    {Object.keys(coverage).length > 0 && <p className="flex flex-wrap items-center gap-2 text-sm"><strong>{t("scriptCoverage")}</strong>{COVERAGE_KEYS.map((key) => <span key={key} className="flex items-center gap-1">{t(`scriptBeats.${key}`)}<AdminStatusPill status={coverageTone[text(coverage[key])] ?? "inactive"}>{text(coverage[key]) || "—"}</AdminStatusPill></span>)}</p>}
+    {Object.keys(coverage).length > 0 && <p className="flex flex-wrap items-center gap-2 text-sm"><strong>{t("scriptCoverage")}</strong>{coverageKeys.map((key) => <span key={key} className="flex items-center gap-1">{t(`scriptBeats.${key}`)}<AdminStatusPill status={coverageTone[text(coverage[key])] ?? "inactive"}>{text(coverage[key]) || "—"}</AdminStatusPill></span>)}
+      {hasHighTension && highTension.map((value, index) => <span key={`high-tension-${index}`} className="flex items-center gap-1">{t("scriptBeats.highTension", { number: index + 1 })}<AdminStatusPill status={coverageTone[value]}>{value}</AdminStatusPill></span>)}
+      {hasConsequences && <span className="flex items-center gap-1">{t("scriptBeats.consequences")}<AdminStatusPill status={coverageTone[text(coverage.consequences)]}>{text(coverage.consequences)}</AdminStatusPill></span>}
+      {hasClosure && <span className="flex items-center gap-1">{t("scriptBeats.closure")}<AdminStatusPill status={coverageTone[text(coverage.closure)]}>{text(coverage.closure)}</AdminStatusPill></span>}
+    </p>}
     {problems.length > 0 && <ul className="grid gap-1 rounded-xl bg-[var(--paper)] p-3 text-sm leading-6" aria-label={t("scriptProblems")}>{problems.map((problem) => <li key={problem}>• {problem}</li>)}</ul>}
     {Object.keys(beats).length > 0 && <dl className="grid gap-1 text-sm md:grid-cols-2">{COVERAGE_KEYS.map((key) => beatOf(beats, key) && <div key={key}><dt className="inline font-semibold">{t(`scriptBeats.${key}`)}</dt><dd className="inline"> · {beatOf(beats, key)}</dd></div>)}</dl>}
     {typeof minutes === "number" && <p className="text-sm text-[var(--muted)]">{t("scriptMinutes", { minutes })}</p>}
     <ol className="grid gap-3">{scenes.map((scene, index) => {
+      const action = record(scene.action);
+      const visibleAction = native && scene.template === "shot" && Array.isArray(scene.lines) && scene.lines.length === 0
+        && text(action.description).trim() && text(action.motion).trim()
+        && Number.isSafeInteger(action.seconds) && Number(action.seconds) >= 1 && Number(action.seconds) <= 8;
       return <li key={text(scene.id) || index} className="grid gap-1 rounded-2xl border border-[var(--line)] p-3">
         {headings[index] && <span className="text-sm font-bold text-[var(--teal)]">{headings[index]}</span>}
         <span className="text-xs text-[var(--muted)]">{index + 1}. {text(scene.id)}{text(scene.template) && text(scene.template) !== "shot" ? ` · ${text(scene.template)}` : ""}</span>
         {list(scene.lines).map(record).map((line) => <span key={text(line.id)} className="leading-7">{text(line.name) ? <strong>【{text(line.name)}】</strong> : <span className="text-[var(--muted)]">{t("narrator")}：</span>}{text(line.emotion) && <span className="text-xs text-[var(--muted)]">（{text(line.emotion)}）</span>}{text(line.text)}</span>)}
+        {visibleAction && <section className="grid gap-1 rounded-xl bg-[var(--paper)] p-3 text-sm leading-6" aria-label={t("scriptAction.title")}>
+          <p className="font-semibold">{t("scriptAction.title")}</p>
+          <dl className="grid gap-1">
+            <div><dt className="font-semibold">{t("scriptAction.description")}</dt><dd className="whitespace-pre-wrap">{text(action.description)}</dd></div>
+            <div><dt className="font-semibold">{t("scriptAction.motion")}</dt><dd className="whitespace-pre-wrap">{text(action.motion)}</dd></div>
+          </dl>
+          <p>{t("scriptAction.duration", { seconds: Number(action.seconds) })}</p>
+        </section>}
         {text(scene.prompt) && <details><summary className="cursor-pointer text-xs text-[var(--muted)]">{t("scriptPrompt")}</summary><p className="mt-1 text-xs leading-5 text-[var(--muted)]">{text(scene.prompt)}</p></details>}
       </li>;
     })}</ol>
@@ -463,6 +486,71 @@ export function CheckItems({ report, title }: { report: unknown; title: string }
       </li>;
     })}</ul>
   </div>;
+}
+
+const RUNTIME_KEYS = ["body_target_seconds", "op_ed_budget_seconds", "broadcast_slot_seconds", "slot_reserve_seconds"] as const;
+const sha256 = (value: unknown) => typeof value === "string" && /^[a-f0-9]{64}$/.test(value);
+const speechHash = (value: unknown) => typeof value === "string" && /^[a-f0-9]{16}$/.test(value);
+const measuredSeconds = (value: unknown) => typeof value === "number" && Number.isFinite(value) && value >= 0;
+const sameRuntime = (left: Record<string, unknown>, right: Record<string, unknown>) => RUNTIME_KEYS.every((key) => left[key] === right[key]);
+const measuredFrames = (value: Record<string, unknown>, part: "body" | "op_ed" | "presentation") => value.fps === 30
+  && Number.isInteger(value[`${part}_frames`]) && Number(value[`${part}_frames`]) >= 0
+  && measuredSeconds(value[`${part}_seconds`]) && value[`${part}_seconds`] === Number(value[`${part}_frames`]) / 30;
+
+function runtimeEvidence(review: Review) {
+  const spec = record(review.payload.runtime_spec);
+  const native = review.payload.production_policy === "long-anime-v1";
+  const validSpec = native && RUNTIME_KEYS.every((key) => Number.isSafeInteger(spec[key]))
+    && Number(spec.body_target_seconds) >= 540 && Number(spec.body_target_seconds) <= 1800
+    && Number(spec.body_target_seconds) % 60 === 0
+    && Number(spec.op_ed_budget_seconds) >= 0 && Number(spec.op_ed_budget_seconds) <= 300
+    && Number(spec.slot_reserve_seconds) >= 0 && Number(spec.slot_reserve_seconds) <= 900
+    && Number(spec.broadcast_slot_seconds) > 0 && Number(spec.broadcast_slot_seconds) <= 3600
+    && Number(spec.body_target_seconds) + Number(spec.op_ed_budget_seconds) + Number(spec.slot_reserve_seconds) === Number(spec.broadcast_slot_seconds);
+  const proof = record(review.payload.runtime_proof);
+  const qa = record(review.payload.qa ?? review.payload.manual_review_qa);
+  const finalSha = review.gate === "final" ? review.content_sha256 : review.payload.final_media_sha256;
+  const current = validSpec && proof.basis === "measured" && proof.production_policy === "long-anime-v1"
+    && sha256(proof.policy_hash) && speechHash(proof.speech_hash) && sha256(proof.final_sha256)
+    && proof.policy_hash === review.payload.runtime_policy_hash
+    && proof.final_sha256 === finalSha && sameRuntime(record(proof.runtime_spec), spec)
+    && (["body", "op_ed", "presentation"] as const).every((part) => measuredFrames(proof, part))
+    && Number(proof.presentation_frames) === Number(proof.body_frames) + Number(proof.op_ed_frames)
+    && (review.gate !== "final" || (qa.final_sha256 === finalSha && qa.policy_hash === proof.policy_hash));
+  const accepted = current && Number(proof.body_seconds) >= Number(spec.body_target_seconds) - 60
+    && Number(proof.body_seconds) <= Number(spec.body_target_seconds) + 60
+    && Number(proof.op_ed_seconds) <= Number(spec.op_ed_budget_seconds)
+    && Number(proof.presentation_seconds) <= Number(spec.broadcast_slot_seconds) - Number(spec.slot_reserve_seconds);
+  return { native, spec, validSpec, proof, current, accepted };
+}
+
+/** Targets remain specifications; only a report bound to the current media supplies measured seconds. */
+function RuntimeDuration({ review }: { review: Review }) {
+  const t = useTranslations("admin.videoReviews");
+  const { native, spec, validSpec, proof, current } = runtimeEvidence(review);
+  if (!native || !validSpec || !["script", "audio", "final", "publish"].includes(review.gate)) return null;
+  const target = Number(spec.body_target_seconds);
+  const measurement = record(review.payload.runtime_measurement);
+  const audio = review.gate === "audio" && measurement.basis === "measured" && measurement.stage === "audio"
+    && sha256(measurement.policy_hash) && speechHash(measurement.speech_hash)
+    && measurement.policy_hash === review.payload.runtime_policy_hash
+    && sameRuntime(record(measurement.runtime_spec), spec) && measuredFrames(measurement, "body");
+  const finished = review.gate === "final" || review.gate === "publish";
+  return <section className="mb-4 grid gap-2 rounded-xl bg-[var(--paper)] p-3 text-sm leading-6" aria-label={t("duration.title")}>
+    <p className="font-bold">{t("duration.title")}</p>
+    {current && finished ? <>
+      <p>{t("duration.body", { seconds: Number(proof.body_seconds), target, min: target - 60, max: target + 60 })}</p>
+      <p>{t("duration.oped", { seconds: Number(proof.op_ed_seconds), budget: Number(spec.op_ed_budget_seconds) })}</p>
+      <p>{t("duration.total", { seconds: Number(proof.presentation_seconds) })}</p>
+      <p className="text-[var(--muted)]">{t("duration.current")}</p>
+    </> : <>
+      <p>{t("duration.target", { target, min: target - 60, max: target + 60 })}</p>
+      <p>{t("duration.opedBudget", { budget: Number(spec.op_ed_budget_seconds) })}</p>
+      {audio && <p>{t("duration.audio", { seconds: Number(measurement.body_seconds) })}</p>}
+      {(finished || (review.gate === "audio" && !audio)) && <p role="status" className="text-amber-800">{t(Object.keys(proof).length > 0 || Object.keys(measurement).length > 0 ? "duration.stale" : "duration.missing")}</p>}
+    </>}
+    <p className="text-[var(--muted)]">{t("duration.budget", { slot: Number(spec.broadcast_slot_seconds), reserve: Number(spec.slot_reserve_seconds) })}</p>
+  </section>;
 }
 
 /** Text to paste into Studio, with a copy button; when the clipboard is refused the text is selected for Ctrl+C. */
@@ -775,6 +863,8 @@ export function ReviewCard({ slug, review, canManage, onDecided, mp4Gone = false
   };
   const approveLabels: Partial<Record<Gate, string>> = { outline: t("approveOutline"), script: t("approveScript"), look: t("approveLook"), storyboard: t("approveStoryboard"), publish: t("approvePublish"), languages: t("approveLanguages"), dubs: t("approveDubs") };
   const approveLabel = approveLabels[review.gate] ?? t("approve");
+  const runtime = runtimeEvidence(review);
+  const runtimeBlocked = runtime.native && (review.gate === "final" || review.gate === "publish") && !runtime.accepted;
   const title = review.gate === "look" && text(record(review.payload.character).name) ? `${t("gates.look")}：${text(record(review.payload.character).name)}` : t(`gates.${review.gate}`);
   return <article className="rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]" aria-label={title}>
     <header className="flex flex-wrap items-center gap-3">
@@ -785,6 +875,7 @@ export function ReviewCard({ slug, review, canManage, onDecided, mp4Gone = false
     </header>
     <p className="mt-2 leading-7">{review.summary}</p>
     <div className="mt-4">
+      <RuntimeDuration review={review} />
       {review.gate === "outline" && <OutlineBody review={review} choice={choice} onChoice={setChoice} disabled={!canManage || busy} />}
       {review.gate === "script" && <ScriptBody review={review} />}
       {review.gate === "look" && <LookBody slug={slug} review={review} choice={choice} onChoice={setChoice} disabled={!canManage || busy} vertical={vertical} />}
@@ -801,7 +892,7 @@ export function ReviewCard({ slug, review, canManage, onDecided, mp4Gone = false
       </label>
       {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
       <div className="flex flex-wrap gap-3">
-        <Button disabled={!canManage || busy || (needsChoice && !choice)} onClick={() => void decide("approve")}>{busy ? t("saving") : approveLabel}</Button>
+        <Button disabled={!canManage || busy || runtimeBlocked || (needsChoice && !choice)} onClick={() => void decide("approve")}>{busy ? t("saving") : approveLabel}</Button>
         <Button secondary disabled={!canManage || busy || !note.trim()} onClick={() => void decide("reject")}>{t("reject")}</Button>
       </div>
     </div> : review.decided_at && <p className="mt-4 border-t border-[var(--line)] pt-4 text-sm leading-6">

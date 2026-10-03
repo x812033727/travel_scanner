@@ -9,6 +9,7 @@
 // side's bindings undefined at load time.
 import { createHash } from "node:crypto";
 import { substitutions, termPattern } from "./lexicon.mjs";
+import { isLongAnime } from "./anime-policy.mjs";
 
 export const DRAMA_FORMAT = "drama";
 const FPS = 30;
@@ -39,6 +40,12 @@ export const WARN_SHOT_SECONDS = 10;
 export const MIN_MEDIAN_SHOT_SECONDS = 3;
 export const LONG_SHOT_SHARE_WARN = 0.3;
 export const PROMPT_SIMILARITY_WARN = 0.8;
+// Picture variety of illustrated slides (docs/videos/ILLUSTRATED.md §畫面不像 AI): three stills in
+// a row under one camera move is an error; a place or object in more than a third of the
+// pictures, a prompt with no shot size, or one that restates the look's style, each a warning.
+export const SAME_MOVE_RUN_MAX = 2;
+export const MOTIF_SHARE_WARN = 1 / 3;
+export const MOTIF_MIN_SHOTS = 6;
 export const EMOTION_MAX = 80;
 const STYLE_MAX = 400;
 const LIMITS = { style: 600, negative: 400, motion: 300, appearance: 800, prompt: 1000, camera: 120, sheet_prompt: 600 };
@@ -74,9 +81,15 @@ export const PRESETS = {
   },
   // The channel's own illustrated slides (docs/videos/ILLUSTRATED.md): pictures between the dark
   // data cards, so they share theme.css's ground and accents; no cast, no text in the picture.
+  // Written as a printmaker's brief, not a render's: uneven ink, misregistered flat colour and
+  // paper grain are what a viewer reads as a hand, and a smooth glossy finish, a lone subject on
+  // an empty ground and faceless mannequins are what they read as a machine (§畫面不像 AI). The
+  // subject stays in the centre third: a Short covers 9:16 from this 16:9 picture and keeps only
+  // the middle 32% of its width (shorts/motion.mjs), so the asymmetry comes from the layers
+  // around the subject, never from pushing it to one side.
   "tech-story": {
-    style: "flat editorial illustration with a painterly touch, bold clean outlines, deep teal-green night ground, warm cream shapes, teal and amber accents, soft paper grain, simple objects and anonymous figures, generous negative space, cinematic composition, 16:9",
-    negative: "photorealistic, 3D render, text, letters, numbers, watermark, logo, brand marks, real person's likeness, mascot, recurring cartoon character, extra fingers, deformed hands, cluttered background",
+    style: "hand-drawn editorial illustration for a printed magazine feature: confident ink outlines of slightly uneven weight, flat gouache and screen-print colour with visible paper grain and a little misregistration, textured hand-cut shadows, a limited palette of deep teal-green night ground, warm cream, amber and a touch of brick red, one clear focal point in the centre third of the frame with uneven foreground and background layers to either side, small simple people with dot eyes or seen from behind, matte finish, 16:9",
+    negative: "photorealistic, 3D render, CGI, glossy, airbrushed, smooth gradients, neon glow, lens flare, bokeh, stock vector, corporate flat icon style, isometric, faceless mannequin, floating objects, mirror symmetry, text, letters, numbers, watermark, logo, brand marks, real person's likeness, mascot, recurring cartoon character, extra fingers, deformed hands, cluttered background",
     motion: "slow push in or gentle drift, no morphing, no cuts",
   },
   custom: { style: "", negative: "", motion: "" },
@@ -99,6 +112,7 @@ const SFX_KEYS = new Set(["set", "gain_db"]);
 export const SFX_SET = /^[a-z0-9][a-z0-9._-]{0,63}$/;
 export const DEFAULT_SFX = { gain_db: -12 };
 const SERIES_KEYS = new Set(["slug", "episode", "chapter"]);
+const ANIME_SERIES_KEYS = new Set([...SERIES_KEYS, "kind", "genre", "lead", "planned_episodes", "open_ended", "closed_ending"]);
 
 const isObject = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
 const isText = (value) => typeof value === "string" && value.trim().length > 0;
@@ -347,15 +361,24 @@ function validateSubtitles(subtitles, errors) {
  * schema.mjs's voice check, passed in to avoid an import cycle.
  */
 /** `series`: which series and episode this video is, so the cast and the sheets are shared. */
-function validateSeries(series, errors) {
+function validateSeries(series, errors, anime = false) {
   if (!isObject(series)) {
     errors.push({ path: "series", message: "must be an object { slug, episode, chapter }" });
     return;
   }
-  unknownKeys(series, SERIES_KEYS, "series", errors);
+  unknownKeys(series, anime ? ANIME_SERIES_KEYS : SERIES_KEYS, "series", errors);
   if (typeof series.slug !== "string" || !SERIES_SLUG.test(series.slug)) errors.push({ path: "series.slug", message: "must be the series' slug: lowercase letters, digits and hyphens" });
   for (const key of ["episode", "chapter"]) {
     if (!Number.isInteger(series[key]) || series[key] < 1) errors.push({ path: `series.${key}`, message: "must be a positive integer" });
+  }
+  if (anime) {
+    if (!Number.isSafeInteger(series.planned_episodes) || series.planned_episodes < 1 || series.episode > series.planned_episodes) errors.push({ path: "series.planned_episodes", message: "must declare a positive episode count that includes this episode" });
+    for (const key of ["open_ended", "closed_ending"]) {
+      if (typeof series[key] !== "boolean") errors.push({ path: `series.${key}`, message: "must be the approved series or episode's boolean declaration" });
+    }
+    const final = series.open_ended === false && series.episode === series.planned_episodes;
+    if (series.closed_ending === true && !final) errors.push({ path: "series.closed_ending", message: "only the declared final episode of a closed series can use a closed ending" });
+    if (final && series.closed_ending !== true) errors.push({ path: "series.closed_ending", message: "the declared final episode of a closed series must deliver its approved closed ending" });
   }
 }
 
@@ -388,7 +411,7 @@ export function validateDrama(doc, errors, validateVoice) {
   const cards = explainer ? EXPLAINER_CARD_TEMPLATES : CARD_TEMPLATES;
   if (explainer && characterIds.size) errors.push({ path: "characters", message: `an explainer (look preset "${EXPLAINER_PRESET}") has no characters: the narrator tells it` });
   if (drama && doc.series !== undefined) {
-    validateSeries(doc.series, errors);
+    validateSeries(doc.series, errors, isLongAnime(doc));
     // An episode lists its cast by id, so lookHash changes only when the cast itself changes
     // and the series' character sheets are reused (docs/videos/SERIES.md).
     const ids = Array.isArray(doc.characters) ? doc.characters.map((character) => character?.id).filter((id) => typeof id === "string") : [];
@@ -404,6 +427,7 @@ export function validateDrama(doc, errors, validateVoice) {
     if (shot) {
       shots += 1;
       validateShotData(scene.data, `${where}.data`, characterIds, earlierShots, errors);
+      if (isLongAnime(doc) && ["freeze", "slow"].includes(scene.data?.fit)) errors.push({ path: `${where}.data.fit`, message: "long-anime story duration cannot be supplied by frozen tails or slowed clips" });
       if (isObject(scene.data) && scene.data.character_looks !== undefined) {
         const selected = scene.data.character_looks;
         if (!drama || !isObject(selected)) errors.push({ path: `${where}.data.character_looks`, message: "must map a drama shot's character ids to their named shot_looks" });
@@ -566,14 +590,101 @@ export function promptSimilarity(a, b) {
   return shared / (x.size + y.size - shared);
 }
 
+// The camera words a still may carry, folded to the move they name. assemble/drama.mjs
+// (motionMove) reads them the same way: the camera direction first, then the motion prompt, and
+// a shot that names no move in either drifts.
+const CAMERA_MOVES = [
+  ["push in", /push|dolly in|zoom in|closer|move in/],
+  ["pull out", /pull|zoom out|widen|back away/],
+  ["pan left", /pan (?:to the )?left|left to right/],
+  ["pan right", /pan (?:to the )?right|right to left/],
+  ["tilt up", /tilt up|crane up|rise/],
+  ["tilt down", /tilt down|crane down|descend/],
+];
+export function cameraMove(data) {
+  for (const text of [data?.camera, data?.motion]) {
+    if (typeof text !== "string") continue;
+    const lower = text.toLowerCase();
+    const found = CAMERA_MOVES.find(([, pattern]) => pattern.test(lower));
+    if (found) return found[0];
+  }
+  return "drift";
+}
+// How close the camera is: a prompt that says none of these leaves the picture to the model's
+// habit, a medium shot of a thing in the middle. Every size the writer's guide and the warning
+// below name is accepted as written there, "medium" and "close up" included.
+const SHOT_SIZE = /\b(?:extreme close[- ]?up|close[- ]?up|close shot|macro|medium|mid shot|wide|establishing|bird'?s-?eye|overhead|from above|from directly above|top-?down|low angle|worm'?s-?eye|high angle|aerial|full shot|two-?shot|over the shoulder|from behind|in profile|silhouette)\b/i;
+// What the look already says: a prompt that repeats it pins every picture to one palette and
+// one finish, which is the sameness a viewer reads as a slideshow. Only the tech-story look's
+// own words, and "cream" as a colour, not as the thing in a cone.
+const LOOK_WORDS = /\b(?:flat (?:editorial )?illustration|editorial illustration|painterly|paper grain|teal|(?<!ice )cream(?! cone| cheese| puff| cake)|amber|16:9)\b/i;
+// Words of a prompt that are not a place or an object (grammar, sizes, light, materials, the
+// look's own palette and finish, the camera): a motif is counted on the rest.
+const PROMPT_STOPWORDS = new Set(["with", "from", "into", "onto", "over", "under", "behind", "beside", "above", "below", "between", "through", "across", "along", "around", "down", "their", "there", "them", "they", "this", "that", "these", "those", "where", "while", "what", "when", "which", "small", "large", "tiny", "huge", "little", "dark", "light", "warm", "cold", "soft", "bright", "night", "view", "shot", "frame", "side", "left", "right", "centre", "center", "centred", "centered", "middle", "front", "back", "close", "wide", "seen", "single", "each", "some", "many", "only", "same", "other", "like", "still", "long", "tall", "short", "open", "flat", "plain", "simple", "clean", "whole", "half", "away", "near", "high", "deep", "wooden", "paper", "glass", "metal", "brass", "stone", "very", "more", "most", "just", "then", "than", "also", "both", "being", "person", "figure", "people", "anonymous", "hand", "hands", "angle", "level", "overhead", "profile", "edge", "corner", "lying", "standing", "sitting", "holding", "looking", "resting", "composition", "picture", "scene", "image", "illustration", "editorial", "painterly", "grain", "shape", "shapes", "line", "lines", "colour", "color", "ground", "background", "foreground", "teal", "cream", "amber", "green", "navy", "mustard", "ochre", "brick", "highlight", "highlights", "accent", "accents", "glow", "glowing", "lamplight", "spotlight", "medium", "extreme", "establishing", "aerial", "macro", "silhouette", "shoulder", "closeup"]);
+// A plural folds to its singular (benches → bench, lamps → lamp) so the two count as one thing.
+const motifOf = (word) => {
+  if (word.length > 5 && /(?:ch|sh|x|ss)es$/.test(word)) return word.slice(0, -2);
+  return word.length > 4 && word.endsWith("s") && !/(?:ss|us|is)$/.test(word) ? word.slice(0, -1) : word;
+};
+function promptMotifs(scene) {
+  const words = String(scene.data?.prompt ?? "").toLowerCase().match(/[a-z]{4,}/g) ?? [];
+  // A stopword is one in either form: "figures" is no more a prop than "figure" is.
+  return new Set(words.filter((word) => !PROMPT_STOPWORDS.has(word) && !PROMPT_STOPWORDS.has(motifOf(word))).map(motifOf));
+}
+const fewIds = (ids) => `${ids.slice(0, 4).join(", ")}${ids.length > 4 ? ` and ${ids.length - 4} more` : ""}`;
+
+/**
+ * What makes a run of illustrated slides read as one monotonous slideshow, caught on the
+ * prompts and camera words before a picture is paid for (docs/videos/ILLUSTRATED.md §畫面不像 AI).
+ * Returns { errors, warnings } like shotProblems; empty for anything but illustrated slides.
+ */
+export function pictureVarietyProblems(doc) {
+  const errors = [];
+  const warnings = [];
+  if (!illustrated(doc)) return { errors, warnings };
+  const shots = [];
+  doc.scenes.forEach((scene, index) => {
+    if (isShot(scene)) shots.push({ scene, where: `scenes[${index}] (${scene.id})` });
+  });
+  let run = 0;
+  let last = null;
+  const unsized = [];
+  const restated = [];
+  const lookWords = new Set();
+  for (const { scene, where } of shots) {
+    const move = cameraMove(scene.data);
+    run = move === last ? run + 1 : 1;
+    last = move;
+    if (run === SAME_MOVE_RUN_MAX + 1) errors.push({ path: `${where}.data.camera`, message: `${SAME_MOVE_RUN_MAX + 1} stills in a row under "${move}"; alternate the moves (push in, pull out, pan left, pan right, tilt up, tilt down, drift)` });
+    const prompt = String(scene.data?.prompt ?? "");
+    if (!SHOT_SIZE.test(prompt)) unsized.push(scene.id);
+    const look = prompt.match(LOOK_WORDS);
+    if (look) {
+      restated.push(scene.id);
+      lookWords.add(look[0].toLowerCase());
+    }
+  }
+  if (unsized.length) warnings.push({ path: "scenes", message: `${unsized.length} of ${shots.length} pictures name no shot size (close-up, medium, wide, overhead, low angle, from behind…): say how close the camera is in ${fewIds(unsized)}` });
+  if (restated.length) warnings.push({ path: "scenes", message: `${restated.length} of ${shots.length} pictures restate the look (${[...lookWords].slice(0, 3).map((word) => `"${word}"`).join(", ")}); the look adds the style and the palette, the prompt describes the picture: ${fewIds(restated)}` });
+  if (shots.length >= MOTIF_MIN_SHOTS) {
+    const counts = new Map();
+    for (const { scene } of shots) for (const motif of promptMotifs(scene)) counts.set(motif, (counts.get(motif) ?? 0) + 1);
+    const repeated = [...counts.entries()].filter(([, count]) => count > shots.length * MOTIF_SHARE_WARN).sort((a, b) => b[1] - a[1]).slice(0, 3);
+    for (const [motif, count] of repeated) warnings.push({ path: "scenes", message: `"${motif}" is in ${count} of ${shots.length} pictures (a third is plenty): give each chapter its own place and props so the video travels` });
+  }
+  return { errors, warnings };
+}
+
 /**
  * Shot-level lint on the estimated timeline: overlong shots are errors (the clip models stop at
  * ten seconds, and a shot frozen for longer looks broken), long or very short runs are warnings.
- * Returns { errors: [{ path, message }], warnings: [...] }.
+ * Illustrated slides add the picture variety rules above. Returns { errors: [{ path, message }],
+ * warnings: [...] }.
  */
 export function shotProblems(doc, timeline) {
-  const errors = [];
-  const warnings = [];
+  const variety = pictureVarietyProblems(doc);
+  const errors = [...variety.errors];
+  const warnings = [...variety.warnings];
   const seconds = [];
   doc.scenes.forEach((scene, index) => {
     if (!isShot(scene)) return;

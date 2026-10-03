@@ -28,7 +28,7 @@
 之後所有頁碼與檢索都以這一份為準（本輪的字元數與第一輪回報的 250,702 不同，是抽取參數差異，不是換版——
 md5 相同）。HTML 自己去 `<script>`／`<style>`／`<!-- -->`、去標籤、`html.unescape` 後再檢索。
 
-工具在 `C:\Users\x8120\mokaair-work\news47\_tools\tech-news-enisa-threat-landscape-20260922-r2\`
+工具在 `<home>\mokaair-work\news47\_tools\tech-news-enisa-threat-landscape-20260922-r2\`
 （`extract_r2.py`、`find.py`、`quotes_r2.py`、`validate_r2.py`、`fix_pack_r2.py`、`fix_record_r2.py`），
 重抓的原始檔在 `_r2raw\tech-news-enisa-threat-landscape-20260922\`。
 

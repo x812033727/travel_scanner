@@ -93,7 +93,7 @@ metadata, sources, and existing image bytes unchanged.
 
 ```powershell
 $env:PYTHONPATH = "$PWD\apps\api"
-& C:\Users\x8120\.codex\article-localization-release\runtime-api-20260922\Scripts\python.exe `
+& <home>\.codex\article-localization-release\runtime-api-20260922\Scripts\python.exe `
   -m app.guides.pack_cli lint --slug email-triage-three-actions
 # Repeat pack_cli lint for the other three slugs.
 npm run check:tasks

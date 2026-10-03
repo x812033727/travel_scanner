@@ -52,7 +52,7 @@ inference, automatic publication or production activation.
 ## How to verify
 
 From apps/api with its directory on PYTHONPATH, using the sibling installed runtime
-`C:/Users/x8120/.codex/worktrees/mokaair-admin-domains/apps/api/.venv/Scripts/python.exe`:
+`<home>/.codex/worktrees/mokaair-admin-domains/apps/api/.venv/Scripts/python.exe`:
 
 - `-m ruff check app/discovery app/main.py app/config.py migrations/versions/0065_travel_discovery.py tests/test_travel_discovery.py tests/test_discovery_migration.py`
 - `-m mypy app/discovery`: 9 files passed.

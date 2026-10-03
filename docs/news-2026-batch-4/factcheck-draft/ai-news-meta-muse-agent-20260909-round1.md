@@ -4,7 +4,7 @@
 - 查核日：2026-09-23（台北）
 - 內容包：`apps/api/app/guides/content/ai-news-meta-muse-agent-20260909.json`
 - 研究紀錄：`docs/ai-news-2026-09-late/research/ai-news-meta-muse-agent-20260909.json`
-- 工作樹：`C:\Users\x8120\mokaair\.claude\worktrees\news-4-4`（全程沒有執行任何 git 指令）
+- 工作樹：`<repo>\.claude\worktrees\news-4-4`（全程沒有執行任何 git 指令）
 - 主張數 131：CONFIRMED 117、CHANGED 11、NOT FOUND（已改寫）3；
   另有 2 條判定正確但留了排版／譯詞的註記（撇號、surrogate token），見第 5 節
 - 這 14 條被動到的主張合併成 **10 處編輯**（同一處改動涵蓋多條，對照第 3 節）：
@@ -319,7 +319,7 @@ ai-news-meta-muse-agent-20260909
 1 entries checked
 ```
 
-退出碼寫在 `C:\Users\x8120\mokaair-work\news44\_tools\ai-news-meta-muse-agent-20260909-r1\check.exit`
+退出碼寫在 `<home>\mokaair-work\news44\_tools\ai-news-meta-muse-agent-20260909-r1\check.exit`
 與 `lint.exit`；輔助腳本（重抓、抽字、機械檢查、改稿、寫入 `factcheck`）在同一個目錄。
 
 ## 7. 結論

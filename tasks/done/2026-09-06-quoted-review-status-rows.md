@@ -80,6 +80,6 @@ I tried to repair these directly twice, on 2026-09-05, and the auto-mode classif
 the write both times. That is why it is filed rather than fixed. A migration is a better fix
 anyway: the direct UPDATE would have been invisible to anyone restoring a dump.
 
-A ready-to-adapt script sits at `/root/fix_quoted_status.py` on the `hostinger2` VPS — it
+A ready-to-adapt script sits at `/root/fix_quoted_status.py` on the `<saved-session>` VPS — it
 strips quotes only when the result lands in the valid set, and reports anything it could not
 recognise instead of guessing.

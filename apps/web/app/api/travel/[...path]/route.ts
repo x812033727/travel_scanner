@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { RequestBodyError, limitedRequestBody } from "@/lib/request-body";
 import { hotelClickoutErrorPage } from "@/lib/hotel-clickout-error";
 import { forwardedClientHeaders } from "@/lib/client-address";
+import { localeCookieAttributes, localeCookieName } from "@/i18n/routing";
 import {
   isAllowedMutationOrigin,
   observedRequestOrigin,
@@ -262,7 +263,7 @@ async function proxy(request: NextRequest, context: Context) {
       ? payload.user.preferred_locale
       : undefined;
     if (typeof preferredLocale === "string" && SUPPORTED_LOCALES.has(preferredLocale)) {
-      response.cookies.set("travel_locale", preferredLocale, { sameSite: "lax", path: "/", maxAge: 31_536_000 });
+      response.cookies.set(localeCookieName, preferredLocale, localeCookieAttributes());
     }
     return preserveRequestId(response, upstream);
   }

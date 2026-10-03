@@ -2,7 +2,7 @@
 
 - 查核者：獨立查核代理（Claude Opus 5），第 1 輪
 - 日期：2026-09-20
-- 對象：`C:\Users\x8120\mokaair-work\korea-food-specials\write\seoul-seongsu-cafe-guide\pack.json`（同目錄 `diagram-1.svg` 一併修）
+- 對象：`<home>\mokaair-work\korea-food-specials\write\seoul-seongsu-cafe-guide\pack.json`（同目錄 `diagram-1.svg` 一併修）
 - 規則：`prompts\V-common.md`、`handoff\README-draft.md`（含 2026-09-20 放寬的字數帶寬與「米其林全批一個字都不寫」）、`specs\seoul-seongsu-cafe-guide.md`
 - 做法：**沒有採信撰稿者的 `notes.md`**。18 個官方頁（規格列的 15 筆＋繁中版 앤더슨씨／에빠／로우키）今天自己用 Python `urllib.request` 重抓，User-Agent 固定 `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`，同網域間隔 1.2 秒；每頁先把 `<!-- -->`、`<script>`、`<style>` 整段剔除再比對，確認引文在畫面可見的正文裡。另外抓了繁中版編輯專欄、兩張 Commons 檔案頁與 API metadata，並把兩張照片下載下來親眼看過。暫存全在 `verify\seoul-seongsu-cafe-guide\tmp\`。
 - 抓取結果：18 頁全部 HTTP 200、無轉址、無機器人牆。`guide.michelin.com` 依全批規則沒有碰，文章裡也沒有任何米其林字樣（已全文檢查）。

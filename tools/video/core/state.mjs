@@ -6,9 +6,13 @@
 // runs, for the handover.
 import { existsSync, readdirSync } from "node:fs";
 import path from "node:path";
+import { isDeepStrictEqual } from "node:util";
 
-import { approvalState, readApprovals } from "./approvals.mjs";
-import { appliedBranding, brandingCurrent, readBranding } from "./branding.mjs";
+import { approvalState, readApprovals, sha256File } from "./approvals.mjs";
+import { audioEvidenceProblems } from "./audio-evidence.mjs";
+import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "./branding.mjs";
+import { hasAnimePolicy, runtimePolicyHash } from "./anime-policy.mjs";
+import { animeBodyDurationProblems, animeRuntimeProof } from "./duration.mjs";
 import { COMPILATION_HEADLINE_PLACEHOLDER, COMPILATION_STEPS, compilationChecksCurrent, isCompilation, lintCompilation, PLACEHOLDER_TITLE } from "./compilation.mjs";
 import { burnIn, illustrated, isDrama, keyframesHash, lookHash, mixHash, picturesHash, resolveMusic, resolveSfx, sfxHash, subtitlesHash } from "./drama.mjs";
 import { emptyLexicon } from "./lexicon.mjs";
@@ -373,6 +377,7 @@ export async function pipelineStatus({ slug, root, workdir }) {
   const storyboard = pictures ? await gate("storyboard") : null;
   const script = drama ? await gate("script") : null;
   const timeline = read(ARTIFACTS.timeline);
+  const audioProblems = compilation ? [] : audioEvidenceProblems(timeline, workdir);
   const frames = read(ARTIFACTS.frames);
   const checks = read(ARTIFACTS.checks);
   const brandCurrent = brandingCurrent(checks, readBranding(workdir));
@@ -392,6 +397,18 @@ export async function pipelineStatus({ slug, root, workdir }) {
   // A drama's checks.json always carries a mix hash (of no music, when it has none); slides carry one only with music.
   const mix = valid && (drama || doc.music) && !compilation ? mixHash(doc) : null;
   const chosen = cast ? lookChosen(characters, read(ARTIFACTS.characterChoice), lookNow) : null;
+  const anime = hasAnimePolicy(doc);
+  const policyHash = anime && valid ? runtimePolicyHash(doc) : null;
+  const timingCurrent = !anime || (Boolean(policyHash) && timeline?.timing_basis === "measured" && timeline.runtime_policy_hash === policyHash);
+  const bodyProblems = anime ? animeBodyDurationProblems({ doc, timeline, timelineCurrent: valid && timeline?.speech_hash === speech }) : [];
+  let runtimeProof = null;
+  if (anime && checks?.ok) {
+    try {
+      const finalSha256 = final.sha256 ?? (existsSync(path.join(workdir, ARTIFACTS.video)) ? await sha256File(path.join(workdir, ARTIFACTS.video)) : null);
+      runtimeProof = animeRuntimeProof({ doc, timeline, presented: presentationTimeline(timeline, appliedBranding(checks)), timelineCurrent: valid && timeline?.speech_hash === speech, checks, finalSha256 });
+    } catch { /* Missing, stale or estimated evidence leaves delivery stages unfinished. */ }
+  }
+  const runtimeCurrent = !anime || Boolean(runtimeProof);
 
   const framesDone = Boolean(visual) && frames?.visual_hash === visual && (!drama || !burnIn(doc) || (frames.speech_hash === speech && frames.subtitles_hash === subtitles));
   // A drama's keyframes are bound to the whole picture; illustrated slides bind theirs to the shots
@@ -399,7 +416,7 @@ export async function pipelineStatus({ slug, root, workdir }) {
   const keyframesDone = Boolean(lookNow) && keyframes?.look_hash === lookNow && (drama ? keyframes.visual_hash === visual : keyframes.pictures_hash === picturesHash(doc)) && !needsReview(keyframes);
   const assembledDrama = !drama || (checks?.look_hash === lookNow && checks.clips_hash === clips?.clips_hash && checks.subtitles_hash === subtitles && checks.mix_hash === mix);
   const assembledIllustrated = !(pictures && !drama) || (checks?.look_hash === lookNow && checks.pictures_hash === keyframesHash(doc, keyframes));
-  const assembledSound = compilation || ((!doc?.music || checks?.mix_hash === mix) && (!doc?.sfx || checks?.sfx_hash === sfxHash(doc)));
+  const assembledSound = compilation || (!audioProblems.length && checks?.narration_sha256 === timeline?.audio_evidence?.narration_sha256 && (!doc?.music || checks?.mix_hash === mix) && (!doc?.sfx || checks?.sfx_hash === sfxHash(doc)));
   const assembledMedia = assembledDrama && assembledIllustrated && assembledSound && brandCurrent && brandBodyCurrent;
   const productionClips = productionClipProblems(doc, project?.series, timeline, clips);
 
@@ -432,13 +449,13 @@ export async function pipelineStatus({ slug, root, workdir }) {
       todo: `${cli("review-push", slug, "--gate look")}; the owner picks a sheet per character on /admin/videos; then ${cli("review-pull", slug)}`,
     },
     "narration synthesized": {
-      done: Boolean(speech) && timeline?.speech_hash === speech,
-      note: timeline && timeline.speech_hash !== speech ? "timeline.json was built for an older script" : undefined,
+      done: Boolean(speech) && timeline?.speech_hash === speech && timingCurrent && !audioProblems.length,
+      note: timeline && timeline.speech_hash !== speech ? "timeline.json was built for an older script" : anime && !timingCurrent ? "timeline.json needs the current measured runtime policy; run tts again (unchanged clips are reused)" : audioProblems[0],
       todo: cli("tts", slug),
     },
     "narration approved": {
-      done: audio.status === "approved",
-      note: describe(audio),
+      done: audio.status === "approved" && timingCurrent && !bodyProblems.length,
+      note: bodyProblems[0] ?? describe(audio),
       todo: `${cli("review", slug)}; the owner listens and flags lines; then ${cli("approve", slug, "--gate audio")}`,
     },
     "keyframes drawn": {
@@ -459,17 +476,17 @@ export async function pipelineStatus({ slug, root, workdir }) {
     },
     "music generated": { done: Boolean(mix) && music?.mix_hash === mix, todo: cli("music", slug) },
     "video assembled": {
-      done: Boolean(checks?.ok) && checks.speech_hash === speech && checks.visual_hash === visual && assembledMedia && existsSync(path.join(workdir, ARTIFACTS.video)),
-      note: checks && !checks.ok ? `checks failed: ${(checks.problems ?? []).join("; ")}` : undefined,
+      done: Boolean(checks?.ok) && checks.speech_hash === speech && checks.visual_hash === visual && assembledMedia && runtimeCurrent && existsSync(path.join(workdir, ARTIFACTS.video)),
+      note: checks && !checks.ok ? `checks failed: ${(checks.problems ?? []).join("; ")}` : anime && !runtimeCurrent ? "the current body, runtime policy and final-file evidence need assemble again" : undefined,
       todo: cli("assemble", slug),
     },
     "captions written": { done: Boolean(speech) && captions?.speech_hash === speech && brandCurrent && brandBodyCurrent && (captions.branding_hash ?? null) === brandHash, todo: cli("captions", slug) },
     "final video approved": {
-      done: final.status === "approved" && brandCurrent && brandBodyCurrent,
+      done: final.status === "approved" && brandCurrent && brandBodyCurrent && runtimeCurrent,
       note: describe(final),
       todo: `the owner watches review/final.html; then ${cli("approve", slug, "--gate final")}`,
     },
-    "upload package": { done: Boolean(upload) && upload.final_sha256 === final.sha256 && brandCurrent && brandBodyCurrent && (upload.branding_hash ?? null) === brandHash, todo: cli("package", slug) },
+    "upload package": { done: Boolean(upload) && upload.final_sha256 === final.sha256 && brandCurrent && brandBodyCurrent && runtimeCurrent && (!anime || isDeepStrictEqual(upload.runtime_proof, runtimeProof)) && (upload.branding_hash ?? null) === brandHash, todo: cli("package", slug) },
     "on YouTube": {
       done: Boolean(doc?.youtube?.video_id),
       todo: `the owner uploads final.mp4 in YouTube Studio as Private; then ${cli("youtube-sync", slug, "--video-id <id> --dry-run")}`,

@@ -32,6 +32,21 @@ def test_every_model_has_exactly_one_price_and_a_clip_says_what_it_can_make() ->
             assert all(4 <= seconds <= 15 for seconds in model.durations), model.id
 
 
+def test_the_gemini_image_models_carry_a_2k_price_beside_their_1k_price() -> None:
+    """A still that fills the frame is asked at 2K (docs/videos/ILLUSTRATED.md): Pro sells 2K at
+    the 1K price, Flash at a half more; MiniMax draws at 1K only, so a 2K job is refused."""
+    pro = find_model("gemini", "image", "gemini-3-pro-image")
+    flash = find_model("gemini", "image", "gemini-3.1-flash-image")
+    mini = find_model("minimax", "image", "image-01")
+    assert pro is not None and flash is not None and mini is not None
+    assert (pro.usd_per_image, pro.usd_per_image_2k) == (0.134, 0.134)
+    assert (flash.usd_per_image, flash.usd_per_image_2k) == (0.067, 0.101)
+    assert mini.usd_per_image_2k is None
+    for model in MEDIA_CATALOG:
+        if model.kind != "image":
+            assert model.usd_per_image_2k is None, model.id
+
+
 def test_the_defaults_are_stable_catalog_entries_of_their_kind() -> None:
     for (vendor, model_id), kind in (
         (DEFAULT_IMAGE, "image"),

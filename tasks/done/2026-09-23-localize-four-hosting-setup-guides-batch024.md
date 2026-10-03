@@ -58,13 +58,13 @@ Use the exact integration, independent review and local-test receipts below. Rec
 - First-attempt tools failure is preserved: the WSL Bash directory probe hung, and the whole verified owned test process tree was stopped after 480.543 seconds. The process-local Git Bash retry changed neither tests nor runner; all real tool tests ran. Retry environment SHA256 `4cd1929ab5f24e8f477584b8ee14e4664306dafd37385051ebf8dbc812413451`; actual Git Bash probe `cc32ba59660bf9624b038fc8d942f8c771bde9c7258230f65d26209923192b43`.
 - All 24 nonfatal pack warnings are retained: 20 missing-summary warnings preserve the source layout; four English texts are 6,372–6,574 characters against the 6,000 guideline. No translation was shortened to silence warnings.
 - Preserve source `checked_on` dates of 2026-09-14. Webuzo source retrieval previously timed out; no new verification is claimed. The hosting.com SVG titles fully translate their shorter original asset titles, while the article title retains A2.
-- Outside evidence root: `C:/Users/x8120/.codex/article-localization-release/batch024-hosting-setup/`. This record covers content/local validation only. No CI success, merged target, host action, import, publication or public acceptance is implied.
+- Outside evidence root: `<home>/.codex/article-localization-release/batch024-hosting-setup/`. This record covers content/local validation only. No CI success, merged target, host action, import, publication or public acceptance is implied.
 
 ## Original source and ownership notes
 
 Source main: `32f032b161534328f95366010fda1722397ae10c`. Fresh read-only capture: `2026-09-23T14:54:05Z`, source SHA-256 `98f78118e062f7dcc8778252df69cfb0d35213f6ae8ac2a5534b7e34d8fd8c19`. All four articles are active and published at article version 2; Traditional Chinese draft, published and latest models equal the repository at locale version 4. No other locale rows exist.
 
-Outside evidence is under `C:/Users/x8120/.codex/article-localization-release/batch024-candidate-inventory`; ready manifest SHA-256 `edf0b58254ea1b1ba3dfe5eee3068cc2f13a8dd0d47212d6dbad9dce504f2623`, source review `dd4ab0c222d2aeec9b806e1d7e79dc9609c4ac7ea7ab6c631cae151a37c39ff7`.
+Outside evidence is under `<home>/.codex/article-localization-release/batch024-candidate-inventory`; ready manifest SHA-256 `edf0b58254ea1b1ba3dfe5eee3068cc2f13a8dd0d47212d6dbad9dce504f2623`, source review `dd4ab0c222d2aeec9b806e1d7e79dc9609c4ac7ea7ab6c631cae151a37c39ff7`.
 
 Bluehost, hosting.com and Hostinger each have 27 blocks and image-description pointer `/blocks/22/description`; managed-hosting-comparison has 29 blocks and `/blocks/24/description`. Each has four sources checked on `2026-09-14`; preserve those dates, Taiwan-reader audience, currency conditions, product labels, source URLs, structured article identities and Mokaair copyright. Record the 16 target-only canonical empty-description backfills explicitly. The AI glossary links and shortened related-article labels are semantically valid. Related-language publication must be verified before release.
 

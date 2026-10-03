@@ -263,6 +263,16 @@ def _request_fields(
         fields.update(
             aspect=payload.aspect, purpose=payload.purpose, shot_id=payload.shot_id, seconds=0
         )
+        # A 2K picture rides in ``resolution`` like a clip's; the catalog says whether the model
+        # sells one, and prices it (docs/videos/ILLUSTRATED.md).
+        if payload.size == "2K":
+            if model.usd_per_image_2k is None:
+                raise MediaJobFailed(
+                    422,
+                    "video_media_model_not_allowed",
+                    f"{model.id} 只出 1K 圖，沒有 2K；換一個圖片模型，或不指定尺寸",
+                )
+            fields["resolution"] = "2K"
     elif isinstance(payload, ClipJobIn):
         resolution = payload.resolution or row.clip_resolution
         if model.id == "veo-3.1-lite-generate-preview":
@@ -360,7 +370,7 @@ async def submit_job(
         existing.status = "queued"
         existing.attempts += 1
         # A refunded failure cleared the estimate; price this newly reserved attempt again.
-        existing.usd_estimate = meter.usd_for(model, kind, seconds)
+        existing.usd_estimate = meter.usd_for(model, kind, seconds, fields.get("resolution"))
         existing.error_code = None
         existing.error_detail = None
         existing.vendor_ref = None
@@ -387,7 +397,7 @@ async def submit_job(
         attempts=1,
         polls=0,
         seconds=seconds,
-        usd_estimate=meter.usd_for(model, kind, seconds),
+        usd_estimate=meter.usd_for(model, kind, seconds, fields.get("resolution")),
         token_id=ctx.token_id,
         created_at=ctx.now(),
         updated_at=ctx.now(),
