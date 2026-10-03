@@ -13,11 +13,11 @@
 
 ## prefill 與 decode
 
-提示詞的 token 全部已知，prompt phase 可用矩陣乘矩陣平行處理，同時算出第一個新 token 的機率並產生各位置的 key／value｜https://arxiv.org/abs/2309.06180｜2026-10-03｜arXiv 摘要頁 200，PDF（https://arxiv.org/pdf/2309.06180）以 pdftotext 讀 §2.1
-generation phase 每步只輸入一個 token，前面位置的 key／value 已快取只補新的；結束條件是最大長度或結束符號；各步因資料相依無法平行、GPU 使用率低、受記憶體限制、佔單一請求延遲大部分｜同上｜2026-10-03｜同上（§2.1）
+提示詞的 token 全部已知，prompt phase 可用矩陣乘矩陣平行處理，同時算出第一個新 token 的機率並產生各位置的 key／value｜https://arxiv.org/abs/2309.06180｜2026-10-03｜arXiv 摘要頁 200，PDF（https://arxiv.org/pdf/2309.06180）以 pdftotext 讀 §2.2（LLM Service & Autoregressive Generation；2026-10-03 查核時更正節次）
+generation phase 每步只輸入一個 token，前面位置的 key／value 已快取只補新的；結束條件是最大長度或結束符號；各步因資料相依無法平行、GPU 使用率低、受記憶體限制、佔單一請求延遲大部分｜同上｜2026-10-03｜同上（§2.2）
 prefill／decode 的稱呼、輸入全部已知所以可一次平行前向、decode 是 Lgen 步的循環、兩段效能特性不同｜https://arxiv.org/abs/2211.05102｜2026-10-03｜PDF §2.2（Inference Setup）
 每次前向（prefill 或 decode 一步）都要把權重與 KV cache 從 HBM 搬到運算核心一次；小批次時載入權重時間為主、大批次與長序列時載入 KV cache 為主｜https://arxiv.org/abs/2211.05102｜2026-10-03｜PDF §2（Memory costs）
-文中「每步都要讀取模型權重與 KV 快取」＝上一條的白話；「輸出越長步數越多」＝decode 是長度為輸出 token 數的循環（Pope §2.2、Kwon §2.1）｜同上｜2026-10-03｜編輯整理
+文中「每步都要讀取模型權重與 KV 快取」＝上一條的白話；「輸出越長步數越多」＝decode 是長度為輸出 token 數的循環（Pope §2.2、Kwon §2.2）｜同上｜2026-10-03｜編輯整理
 OpenAI：產生 token 幾乎總是使用 LLM 時延遲最高的一步；輸入 token 減少通常不是主要因素，除非是非常大的上下文｜https://platform.openai.com/docs/guides/latency-optimization｜2026-10-03｜網址後加 `.md`（https://platform.openai.com/docs/guides/latency-optimization.md）200 讀 Markdown；HTML 版也 200。頁面另有「少產生 50% 輸出約少 50% 延遲」「減半提示僅 1–5% 改善」兩個啟發式百分比，依本批規則（不寫供應商速度數字）未寫入
 
 ## 延遲指標與吞吐量

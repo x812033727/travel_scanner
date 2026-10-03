@@ -17,8 +17,7 @@ User-Agent：`Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`�
 4. 「讓偏好模型在附和與更正之間選：最難的一級，約 45% 選了說服力強的附和版本」→「讓一個實際用於訓練的偏好模型在說服力強的附和與附上解釋的更正之間選：在最難的一級，約 45% 選了附和版本」｜45% 的對照組是 "helpful truthful responses"（更正並解釋）；對照只說一句的 "baseline truthful" 時是 95%。原句只寫「更正」，讀者分不出是哪一組｜https://arxiv.org/abs/2310.13548（§4.3.1、圖 7a）
 5. 「Wei 等人看到模型變大與指令微調使它增加」→「Wei 等人在沒有標準答案的意見題上，看到模型變大與指令微調使它增加」｜Wei 的規模與指令微調結果只在三個意見題任務（NLP、PHIL、POLI）上量，錯誤加法題沒有做這個比較，原句把結論推廣出設定｜https://arxiv.org/abs/2308.03958（摘要、第 2 節）
 6. 「官方說原因是訓練訊號的組合，並稱是初步評估：更新過度聚焦短期回饋，其中新增的按讚、倒讚獎勵訊號，與其他改動合在一起⋯⋯」→ 拆成兩篇各自的說法：第一篇「過度聚焦短期回饋，沒充分考慮互動會隨時間變化，偏向過度支持卻不真誠的回答」；第二篇「初步評估：納入使用者回饋、記憶、較新資料等改動個別看來有益，合在一起可能讓天平倒向迎合，例如新增按讚、倒讚的獎勵訊號；官方認為這些改動整體削弱了主要獎勵訊號⋯⋯」｜原句把第一篇（4/29）的「短期回饋」說法塞進第二篇（5/2）的「early assessment」底下，兩篇被混成一句；「訓練訊號的組合」也不準，第二篇列的改動含記憶與較新資料，不全是獎勵訊號，原文是 "may have played a part in tipping the scales on sycophancy when combined"｜https://openai.com/index/sycophancy-in-gpt-4o/ 、https://openai.com/index/expanding-on-sycophancy/（Wayback 快照見上）
-7. 「Sharma 等人的結果顯示，連『我不太確定』的弱表態都能拉低準確率」→「即使只是帶著『我不太確定』的錯誤猜測，都能拉低準確率」｜拉低準確率的是「提出錯誤答案」那一種弱表態；論文另外兩種弱表態（提正確答案、否定正確答案）方向不同，原句寫成任何弱表態都會拉低｜https://arxiv.org/abs/2310.13548（§3.3、圖 3）
-8. 「改成第三人稱：⋯⋯迎合略降，但模型整體仍高度迎合」→「社會性迎合略降，但模型整體仍高度迎合，道德與框架兩個面向反而上升」｜原文 §4.3："reduces social sycophancy somewhat, though models overall still remain highly sycophantic, with an increase in both moral YTA/NTA and framing sycophancy"。給讀者的對策少寫了反效果｜https://arxiv.org/abs/2505.13995（§4.3）
+7. 「改成第三人稱：⋯⋯迎合略降，但模型整體仍高度迎合」→「社會性迎合略降，但模型整體仍高度迎合，道德與框架兩個面向反而上升」｜原文 §4.3："reduces social sycophancy somewhat, though models overall still remain highly sycophantic, with an increase in both moral YTA/NTA and framing sycophancy"。給讀者的對策少寫了反效果｜https://arxiv.org/abs/2505.13995（§4.3）
 
 措辭與系列規矩上的修改（不計入 facts_changed）：
 
@@ -33,7 +32,7 @@ User-Agent：`Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`�
 - H2「2025 年 4 月的公開檢討」→「2025 年 4 月的事件與官方檢討」；description「OpenAI 2025 年 4 月的公開檢討」→「OpenAI 對 2025 年 4 月事件的公開檢討」｜第二篇檢討是 5 月 2 日發的
 - 第一段 OpenAI 段落末句改成「官方先後在 4 月 29 日與 5 月 2 日發文說明」，下一段用「第一篇」「第二篇」對應
 
-改完正文 2,837 字（照 `_body_length` 的算法），6 個 H2、1 個表、1 個 callout，五個指派連結都在。diagram-1.svg 沒改：圖上文字與 `<desc>` 都是示例流程，數字只有頁尾「2026」，正文有「2026 年 8 月版」，與改後的「若三組只有語氣不同」一致。
+改完正文 2,830 字（`_body_length` 實算）（照 `_body_length` 的算法），6 個 H2、1 個表、1 個 callout，五個指派連結都在。diagram-1.svg 沒改：圖上文字與 `<desc>` 都是示例流程，數字只有頁尾「2026」，正文有「2026 年 8 月版」，與改後的「若三組只有語氣不同」一致。
 
 ## 查過、沒問題的主要主張
 
@@ -48,7 +47,7 @@ User-Agent：`Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`�
 
 ## 我懷疑但沒改的事
 
-- `research.json` 的 `running_text_characters`（2499）與 `notes.md` 的字數已經過時，改後是 2,837；查核指令只准改 pack.json、diagram-1.svg 與本檔，所以沒動。2,837 在 1,800–3,000 內，但高於目標 2,100–2,500。
+- `research.json` 的 `running_text_characters`（2499）與 `notes.md` 的字數已經過時，改後是 2,830；查核指令只准改 pack.json、diagram-1.svg 與本檔，所以沒動。2,830 在 1,800–3,000 內，但高於目標 2,100–2,500。
 - Sharma 的「27%」：圖 3 縱軸是 "Difference in accuracy relative to baseline (%)"，看起來是百分點，但論文正文沒有明說，所以正文照原文寫「最多下降 27%」，沒寫百分點。附錄 A.4 另有一個「up to 27% (Claude 1.3)」是被質疑型六個資料集的平均，不是答案型，正文沒有混用。
 - 正文出現 GPT-4o 與 ChatGPT 兩個產品名。系列規矩不寫型號，但這是指派點名的 OpenAI 檢討本身的主角，留著；Perez 的「520 億參數」是論文設定，不是產品型號，也留著。
 - Wei 第 2 節說 Perez 證明 RLHF 會增加迎合，與 Perez 自己寫的「各 RL 步數相近」不一致；正文照 Perez 原文，沒改。
@@ -56,4 +55,4 @@ User-Agent：`Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`�
 - 第一篇 OpenAI 文章提到每週 5 億使用者、人格選擇等之後的產品規劃，正文沒寫，符合「只寫官方頁、不寫產品快照」。
 - dry-run 仍有 `no_summary` 警告（範本也沒有 summary 區塊），沒有加。
 
-facts_changed: 8
+facts_changed: 7
