@@ -1,14 +1,14 @@
 ---
 id: 2026-10-02-create-borrowed-dawn-in-the-production
 title: Create Borrowed Dawn in the production admin
-status: open
+status: blocked
 priority: P2
 area: ops
 owner:
 claimed_at:
 created_at: 2026-10-02T08:42:04Z
 completed_at:
-branch:
+branch: codex/anime-long-production
 depends_on:
   - 2026-10-02-import-long-anime-plans-as-paused
 scope:
@@ -41,4 +41,6 @@ Use the exact CLI commands in docs/videos/ANIME-PLANNING-IMPORT.md. After apply,
 
 The current owner instruction is to open the support PR. This ticket records the remaining host action, not permission to merge or deploy the PR. Local isolated PostgreSQL evidence is not production evidence. Keep any receipt outside docs/videos/series-plans/borrowed-dawn so the validated flat source package remains unchanged.
 
-Full 22-minute screenplay/media production remains tracked separately by 2026-10-02-anime-long-episode-support.
+The infrastructure for the 22-minute screenplay/media policy is tracked separately by 2026-10-02-anime-long-episode-support. Completing that code support does not produce episodes or resolve pending casting, design, pilot acceptance or this production import.
+
+2026-10-02 follow-up: PR #1125 is now merged with all CI checks successful. A fresh TCP service probe to the supplied SSH endpoint still returned ConnectionRefusedError (errno 111), before authentication. The existing key binding is present; no key value was read or printed, and requesting another key would not fix this observed connection refusal. No production connection, deployment readback or database write occurred. This operational ticket is blocked on a reachable host route; independent long-anime production-support work continues in parallel.

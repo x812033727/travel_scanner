@@ -152,7 +152,7 @@ test("branding is bound to source bytes and duration, not locations, labels or d
 });
 
 test("presentation shifts content once, keeps chapter zero and does not change the approved narration", () => {
-  const body = { fps: 30, total_frames: 900, lines: [{ id: "line", start_frame: 0, end_frame: 120 }], scenes: [{ id: "scene", start_frame: 0, end_frame: 900, states: [{ start_frame: 0, end_frame: 900 }] }], chapters: [{ title: "First", start_frame: 0 }, { title: "Second", start_frame: 600 }] };
+  const body = { fps: 30, total_frames: 900, lines: [{ id: "line", start_frame: 0, end_frame: 120 }], actions: [{ scene: "action", start_frame: 120, end_frame: 210 }], scenes: [{ id: "scene", start_frame: 0, end_frame: 900, states: [{ start_frame: 0, end_frame: 900 }] }], chapters: [{ title: "First", start_frame: 0 }, { title: "Second", start_frame: 600 }] };
   const original = structuredClone(body);
   const applied = { hash: brandingHash(preset()), intro_frames: 150, outro_frames: 90, body_frames: 900 };
   const full = presentationTimeline(body, applied);
@@ -162,6 +162,7 @@ test("presentation shifts content once, keeps chapter zero and does not change t
   assert.equal(full.content_end_frame, 1050);
   assert.deepEqual(full.chapters.map((each) => each.start_frame), [0, 750]);
   assert.deepEqual([full.lines[0].start_frame, full.lines[0].end_frame], [150, 270]);
+  assert.deepEqual(full.actions, [{ scene: "action", start_frame: 270, end_frame: 360 }]);
   assert.deepEqual(full.scenes[0].states, [{ start_frame: 150, end_frame: 1050 }]);
   assert.equal(presentationTimeline(full, applied), full, "a dubbed presentation timeline is not offset twice");
   assert.equal(presentationTimeline(body, null), body);

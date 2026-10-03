@@ -65,7 +65,7 @@ Existing pin/check/timeline/approval/auto/upload-metadata files were compared
 before and after while the worker was stopped; they were unchanged. The driver
 itself rebuilt, submitted, uploaded and published **zero** videos.
 
-Windows `C:/Users/x8120/mokaair-work/videos/_branding/current.json` was also
+Windows `<home>/mokaair-work/videos/_branding/current.json` was also
 installed with the same selection. The previous current was preserved in history;
 55 existing cut metadata files remained identical, and both installed assets
 passed full decode. Existing per-video pins are deliberately preserved.
@@ -112,7 +112,7 @@ pending checklist, while refusing completed or ambiguous upload states.
 ## Independent existing-cut candidates
 
 Media and account evidence stay outside Git under
-`C:/Users/x8120/mokaair-work/channel-intro-20260930/brand-package-v2-cc/`.
+`<home>/mokaair-work/channel-intro-20260930/brand-package-v2-cc/`.
 
 The historical `rollout/final-coverage.json` rehashed all 17 original/candidate
 full files and Windows assets at 10:19:40 UTC, when only three new site finals

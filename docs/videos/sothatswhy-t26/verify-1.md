@@ -77,6 +77,6 @@ PASS。開場直接提出端碗與留桌的差異，隨即給出餐具配合的�
 
 ### Apply 後正文時間軸 snapshot，非 MP4 驗收
 
-已獨立讀取本機 `C:/Users/x8120/mokaair-work/videos/sothatswhy-t26/timeline.json`，byte SHA `e2baf37ca8c14e675cd250c8a5a4deb1cf05d17cb726ba38c89b4843f72c5e57`；以目前 90975 master 和 lexicon 自行計算的 speech hash 為 `ce1ab16b0fde5fad`，與 timeline 相同。未加片頭片尾的正文為 30 fps、26701 正整數影格，即 890.033 秒（約十四分五十秒）；timeline 所載音訊 samples 合計 714.02 秒。本審稿未逐段重放所有 WAV，因此 samples 合計只作此時間軸資料的核對，不冒充人耳音訊 PASS。
+已獨立讀取本機 `<home>/mokaair-work/videos/sothatswhy-t26/timeline.json`，byte SHA `e2baf37ca8c14e675cd250c8a5a4deb1cf05d17cb726ba38c89b4843f72c5e57`；以目前 90975 master 和 lexicon 自行計算的 speech hash 為 `ce1ab16b0fde5fad`，與 timeline 相同。未加片頭片尾的正文為 30 fps、26701 正整數影格，即 890.033 秒（約十四分五十秒）；timeline 所載音訊 samples 合計 714.02 秒。本審稿未逐段重放所有 WAV，因此 samples 合計只作此時間軸資料的核對，不冒充人耳音訊 PASS。
 
 180 個視覺狀態連續、無倒退／缺段且結束於總影格；最長 7.667 秒、平均 4.945 秒，沒有超過八秒；diagram 合計 23487 影格，占正文 87.963%。此 snapshot 已滿足正文 480 秒及機械狀態／圖解占比門檻，仍不等於成片至少八分鐘的量測或最終正常十一項 QA。協調者此時正在查拆句 cnd3 的聲音旗標，MP4 尚未產生；後續重錄若改音訊／時間軸，必須重算並綁定新 snapshot。

@@ -15,7 +15,7 @@ import { composeMetadata } from "../package/metadata.mjs";
 import { jpegBytes } from "../qa/test-images.mjs";
 import { parseDubLocale } from "../tts/check.mjs";
 import { approve } from "./approvals.mjs";
-import { enBrief, enFixture, fixture, fixtureLexicon, sandbox } from "./fixtures/load.mjs";
+import { writeAudioFixture, enBrief, enFixture, fixture, fixtureLexicon, sandbox } from "./fixtures/load.mjs";
 import { hasAcronym, unknownTermsFor } from "./lexicon.mjs";
 import { lintVideo } from "./lint.mjs";
 import { atomicWrite } from "./paths.mjs";
@@ -153,10 +153,10 @@ function finishedEnglishVideo() {
   const samples = Object.fromEntries([...eachLine(doc)].map(({ line }) => [line.id, 5 * SAMPLE_RATE]));
   const timeline = { ...buildTimeline(doc, samples), speech_hash: speechHash(project.doc, project.lexicon) };
   mkdirSync(box.workdir, { recursive: true });
-  atomicWrite(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
+  writeAudioFixture(timeline, box.workdir);
   writeFileSync(path.join(box.workdir, "thumbnail.jpg"), jpegBytes(1280, 720, 4000));
   writeFileSync(path.join(box.workdir, "final.mp4"), randomBytes(2048));
-  atomicWrite(path.join(box.workdir, "checks.json"), JSON.stringify({ ok: true, speech_hash: timeline.speech_hash, visual_hash: visualHash(project.doc), problems: [], metrics: { frames: timeline.total_frames, loudness: { integrated: -14 }, psnr: [] } }));
+  atomicWrite(path.join(box.workdir, "checks.json"), JSON.stringify({ ok: true, narration_sha256: timeline.audio_evidence.narration_sha256, speech_hash: timeline.speech_hash, visual_hash: visualHash(project.doc), problems: [], metrics: { frames: timeline.total_frames, loudness: { integrated: -14 }, psnr: [] } }));
   return box;
 }
 

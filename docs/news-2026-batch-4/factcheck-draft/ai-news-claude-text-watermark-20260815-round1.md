@@ -5,8 +5,8 @@
 - 查核日：2026-09-23
 - 內容包：`apps/api/app/guides/content/ai-news-claude-text-watermark-20260815.json`
 - 研究紀錄：`docs/ai-news-2026-09-late/research/ai-news-claude-text-watermark-20260815.json`
-- worktree：`C:\Users\x8120\mokaair\.claude\worktrees\news-4-4`（未執行任何 git 指令）
-- 工具與抓取檔：`C:\Users\x8120\mokaair-work\news44\_tools\ai-news-claude-text-watermark-20260815-r1\`
+- worktree：`<repo>\.claude\worktrees\news-4-4`（未執行任何 git 指令）
+- 工具與抓取檔：`<home>\mokaair-work\news44\_tools\ai-news-claude-text-watermark-20260815-r1\`
 
 ## 0. 結論摘要
 

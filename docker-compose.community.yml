@@ -26,7 +26,9 @@ services:
         mc mb --ignore-existing local/mokaair-community
         mc anonymous set none local/mokaair-community
   community-mail:
-    image: axllent/mailpit:latest
+    # Tag and digest, the same reference as MAILPIT_IMAGE in the workflows
+    # (tools/supply-chain.test.mjs); Dependabot (docker-compose) moves it here.
+    image: axllent/mailpit:v1.31.3@sha256:ed9b00c609e77e99c79b93f1178255ebc271868920f2c69a8d166bd5634ed10d
     ports: ["127.0.0.1:8025:8025", "127.0.0.1:1025:1025"]
   api:
     environment: &community-development

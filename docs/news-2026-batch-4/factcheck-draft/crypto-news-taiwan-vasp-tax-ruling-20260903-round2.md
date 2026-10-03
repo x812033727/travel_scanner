@@ -17,7 +17,7 @@
 
 全部用 `curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'`、同一主機間隔 ≥1 秒；
 UA、標頭、查詢字串、表單都沒有帶入任何人的姓名或 email。原始檔留在
-`C:\Users\x8120\mokaair-work\news47\_r2raw\crypto-news-taiwan-vasp-tax-ruling-20260903\`。
+`<home>\mokaair-work\news47\_r2raw\crypto-news-taiwan-vasp-tax-ruling-20260903\`。
 
 | # | 來源 | 今天的狀態 | 讀到的是什麼 |
 | --- | --- | --- | --- |

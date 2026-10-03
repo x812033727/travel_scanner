@@ -22,10 +22,10 @@
 
 把第一輪留在 `_raw\<slug>\` 的抓取結果與本輪逐行比對，**四頁的內容今天沒有變動**，兩邊的差異全部是剝標籤方式不同造成的空白差。
 
-工具：`C:\Users\x8120\mokaair-work\news47\_tools\ai-news-openai-academy-paths-20260921-r2\`
+工具：`<home>\mokaair-work\news47\_tools\ai-news-openai-academy-paths-20260921-r2\`
 （`fetch_r2.py`、`course_extract_r2.py`、`course_plaintext_r2.py`、`verify_quotes_r2.py`、`recheck_misses_r2.py`、
 `mech_checks_r2.py`、`apply_edits_r2.py`、`append_second_round.py`）；抓下來的正文在
-`C:\Users\x8120\mokaair-work\news47\_r2raw\ai-news-openai-academy-paths-20260921\`。
+`<home>\mokaair-work\news47\_r2raw\ai-news-openai-academy-paths-20260921\`。
 
 ## 2. 第一輪改過的 14 處：逐句回一手來源
 
@@ -166,9 +166,9 @@ ai-news-openai-academy-paths-20260921
 lint_exit=1
 ```
 
-log 檔：`C:\Users\x8120\mokaair-work\news47\_out\fc2_check_ai-news-openai-academy-paths-20260921.log`、
+log 檔：`<home>\mokaair-work\news47\_out\fc2_check_ai-news-openai-academy-paths-20260921.log`、
 `…\_out\fc2_lint_ai-news-openai-academy-paths-20260921.log`；
-exit code 另存 `C:\Users\x8120\mokaair-work\news47\factcheck\ai-news-openai-academy-paths-20260921-round2.exitcodes.txt`。
+exit code 另存 `<home>\mokaair-work\news47\factcheck\ai-news-openai-academy-paths-20260921-round2.exitcodes.txt`。
 
 ## 9. 結論
 

@@ -71,7 +71,7 @@ Root reconciliation on 2026-09-22 verified PR #637 merged as
 `86e0ce255f8712a2263cc0dcd8ead4a3ceb453eb` with 9/9 CI checks passing. The
 merged source-correction path was then exercised by the guarded batch 008/009
 production release. Its production receipt is
-`C:\Users\x8120\.codex\article-localization-release\batch008-009-release-receipt-20260922.md`
+`<home>\.codex\article-localization-release\batch008-009-release-receipt-20260922.md`
 (SHA-256 `96c8e7418ac40452e0fb6b498c0df09505f6ed926682f97ef4b22199b3f3cc33`),
 which records two reviewed zh-TW source corrections, eight new locales, clean
 journals, idempotent reruns and public QA.

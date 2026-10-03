@@ -307,9 +307,9 @@ def coordinate_provenance(seed: HotspotSeed) -> tuple[str, str | None]:
     list. So a missing URL does not degrade the row, it silently half-publishes it.
 
     A row can read its position off a Wikidata item without being able to claim that
-    item's id: 大阪アメリカ村 takes its coordinate from Q4745722, which the misplaced
-    Okinawa 美國村 seed already holds, so its own ``wikidata_item_id`` is null and only
-    the reviewed ``source_urls`` still cite the page. Deriving the URL from the id alone
+    item's id: 大阪アメリカ村 took its coordinate from Q4745722 while the misplaced
+    Okinawa 美國村 seed held that id, so its own ``wikidata_item_id`` was null and only
+    the reviewed ``source_urls`` still cited the page. Deriving the URL from the id alone
     left exactly that row with no source at all.
     """
 

@@ -144,7 +144,7 @@ scope:
 - [x] 開 worktree `news-4-7`、分支 `claude/news-batch-4-7-since-0920`、本票
 - [x] 候選清單搬進 `docs/news-2026-batch-4/candidates-since-0920-{ai,tech,crypto}.md`
 - [x] `agents/DELTA-4-7.md`、`check_article.py` 的 `RELATED`（15 筆，`# 4.7`）
-- [x] 協調者的指派表 `C:\Users\x8120\mokaair-work\news47\ASSIGNMENTS.md`（每個 slug 一列，含一手來源與特殊指示）
+- [x] 協調者的指派表 `<home>\mokaair-work\news47\ASSIGNMENTS.md`（每個 slug 一列，含一手來源與特殊指示）
 - [x] 研究紀錄（opus ×15，分兩波）→ 寫進各垂直工作區的 `research/`
 - [x] 撰稿（sonnet ×15）→ 查核第一輪（opus）→ 第二輪（opus，SECOND-ROUND）
 - [x] 30 份查核報告進 `factcheck-draft/`、`related` ×15、`pack_cli relink --apply`、`check_article.py` ×15、lint
@@ -235,7 +235,7 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli guides-i
   （要改用不帶關鍵字的列表按日期核對）；聯邦公報 API 的 SEC 機關代號必須是 `securities-and-exchange-commission`
   （少一個 `and` 回 400，會把整個機關掃成空白）。
 - **NCC 新聞稿仍是「未查到」**：官網是 Angular SPA，本輪改查行政院公報 09-21／09-22 兩期共 48 筆逐筆確認沒有 NCC 項目。
-- 探索代理的原始抓檔留在 `C:\Users\x8120\mokaair-work\news47\_raw\`、`_tools\`（不進 repo）。
+- 探索代理的原始抓檔留在 `<home>\mokaair-work\news47\_raw\`、`_tools\`（不進 repo）。
 
 ## 上線（2026-09-22 UTC）
 
