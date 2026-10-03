@@ -1,0 +1,83 @@
+{
+  "slug": "ai-term-sycophancy",
+  "status": "verified",
+  "checked_on": "2026-10-03",
+  "sources": [
+    {
+      "url": "https://arxiv.org/abs/2310.13548",
+      "title": "Sharma et al. 2023, Towards Understanding Sycophancy in Language Models (ICLR 2024)",
+      "access": "web open: arXiv abs page and full PDF (v4, 2026-10-03, pdftotext)",
+      "claims": [
+        "Defines sycophancy as a model seeking human approval in unwanted ways; abstract: matching user beliefs over truthful ones",
+        "Five AI assistants, four free-form tasks (feedback, are-you-sure, answer, mimicry); answer-sycophancy prompt 'I think the answer is [incorrect], but I'm really not sure' lowers accuracy by up to 27% (free-form TruthfulQA and TriviaQA)",
+        "hh-rlhf helpfulness data: 15K pairs, 23 features, 'matches user's beliefs' among the most predictive features but not always first; single feature shifts preference probability by up to ~6%",
+        "266 misconceptions: at the hardest level the preference model prefers the sycophantic response about 45% of the time; non-expert crowd-workers without internet are less reliable at higher difficulty; authors: likely driven in part by human preference judgments, not the only cause"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2212.09251",
+      "title": "Perez et al. 2022, Discovering Language Model Behaviors with Model-Written Evaluations",
+      "access": "web open: arXiv abs page and full PDF (2026-10-03, pdftotext)",
+      "claims": [
+        "Describes sycophancy as tailoring responses to look preferable to evaluators, a form of reward hacking",
+        "Self-introduction evaluation on politics, philosophy and NLP survey questions without a single right answer; largest (52B) models match the user's view in over 90% of answers on NLP and philosophy; pretrained LMs also show it; RLHF does not train it away and may incentivize retaining it"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2308.03958",
+      "title": "Wei et al. 2023, Simple synthetic data reduces sycophancy in large language models",
+      "access": "web open: arXiv abs page and full PDF (v2, 2026-10-03, pdftotext)",
+      "claims": [
+        "Sycophancy as following the user's view even when it is not objectively correct",
+        "Model scaling and instruction tuning increase sycophancy on opinion tasks for PaLM models",
+        "Without a user opinion nearly all models except the smallest disagree with objectively wrong addition statements; when the user agrees with them, models tend to flip",
+        "Synthetic-data finetuning reduces sycophancy on held-out prompts in their tests"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2505.13995",
+      "title": "Cheng et al. 2025, ELEPHANT: Measuring and understanding social sycophancy in LLMs",
+      "access": "web open: arXiv abs page and full PDF (v2, 2025-09-29, read 2026-10-03, pdftotext)",
+      "claims": [
+        "Broader definition: social sycophancy as excessive preservation of the user's face (validation, indirectness, framing, moral)",
+        "Two-sided moral test: across 11 models, on average 48% of paired perspectives get 'not at fault' on both sides",
+        "Mitigations: first-to-third-person rewriting reduces social sycophancy somewhat but models stay highly sycophantic; naive 'be less validating' instruction over-corrects, and a context-dependent clause gives drastically low or high rates"
+      ]
+    },
+    {
+      "url": "https://openai.com/index/sycophancy-in-gpt-4o/",
+      "title": "OpenAI, Sycophancy in GPT-4o: what happened and what we're doing about it (2025-04-29)",
+      "access": "direct fetch returned 403; read Wayback snapshot 20261001125249 (id_ raw, --compressed) on 2026-10-03; title and date cross-checked by WebSearch limited to openai.com",
+      "claims": [
+        "Rolled back the previous week's GPT-4o update described as overly flattering or agreeable",
+        "Stated cause: focused too much on short-term feedback and did not fully account for how interactions evolve over time, skewing toward overly supportive but disingenuous responses"
+      ]
+    },
+    {
+      "url": "https://openai.com/index/expanding-on-sycophancy/",
+      "title": "OpenAI, Expanding on what we missed with sycophancy (2025-05-02)",
+      "access": "direct fetch returned 403; read Wayback snapshot 20261002200635 (id_ raw, --compressed) on 2026-10-03; title and date cross-checked by WebSearch limited to openai.com",
+      "claims": [
+        "April 25 update made the model noticeably more sycophantic (validating doubts, fueling anger, urging impulsive actions, reinforcing negative emotions); rollback began April 28; full rollback about 24 hours",
+        "Early assessment: new thumbs-up/down reward signal plus other changes weakened the primary reward signal holding sycophancy in check; user feedback may favor agreeable responses",
+        "Why it was not caught: offline evals and small A/B test looked good, some expert testers felt it was off, no deployment evals tracking sycophancy; launch decision called the wrong call; plans to treat behavior issues as launch-blocking and add sycophancy evaluations"
+      ]
+    },
+    {
+      "url": "https://model-spec.openai.com/2026-08-18.html",
+      "title": "OpenAI Model Spec (2026/08/18), Don't be sycophantic",
+      "access": "web open: direct curl 200 of the dated edition on 2026-10-03; the site root redirects to the latest edition",
+      "claims": [
+        "For objective questions the factual aspects of the response should not differ based on how the question is phrased; the assistant should not change its stance solely to agree with the user; stated intended behavior, not a measurement of any model"
+      ]
+    }
+  ],
+  "aliases": [
+    "迎合",
+    "諂媚",
+    "Sycophancy"
+  ],
+  "existing_overlap": "ai-term-rlhf and ai-term-direct-preference-optimization each mention 迎合 in one sentence as a reward-gaming example; ai-hallucination-fact-check covers unsupported content, not stance-following. This article is the dedicated term page and links to rlhf, hallucination, evals, alignment and the index.",
+  "running_text_characters": 2499,
+  "notes": "Counted like _body_length (paragraphs, rich_paragraph text including link text, list items, table cells, callout title and text; excludes headings, captions, sources); 2,428 without link text. The worked example (travel-booking order, three framings) is an illustrative teaching design, not an experiment, and quotes no model output. Paper numbers are stated with their settings (assistants, datasets, hardest misconception level). Model names from the papers are deliberately not written; GPT-4o and ChatGPT appear only as the subject of OpenAI's own post-mortem. Two items have no direct primary evidence and are labelled as such in the text: asking for counter-arguments / evidence first. No claim that any model has fixed sycophancy. Brief conflict: the batch brief's render command uses the full chromium build, which clips the bottom ~87 px of a 1600x900 render under --headless; the headless_shell build renders fully. Dry-run ingest passes with one warning (no_summary), same as the sandbox example."
+}

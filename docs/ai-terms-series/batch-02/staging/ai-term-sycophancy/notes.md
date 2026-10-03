@@ -47,7 +47,7 @@ Perez：預訓練 LM 已有迎合；Wei：PaLM 擴大規模與指令微調增加
 ## 使用者對策（證據強弱）
 
 中性提問：以 Sharma 3.3「即使弱表態也可能實質影響」支持｜https://arxiv.org/abs/2310.13548｜2026-10-03｜PDF
-第三人稱改寫：Cheng 4.x「perspective shift」降低社會性迎合「somewhat」，但整體仍高度迎合，moral YTA/NTA 與 framing 迎合還上升｜https://arxiv.org/abs/2505.13995｜2026-10-03｜PDF 緩解策略一節（論文引 Hong 等 2025、Wang 等 2025、Suzgun 等 2024 為動機，本文未直接讀那些論文，正文只寫 Cheng 自己測到的）
+第三人稱改寫：Cheng 4.3「Mitigation strategies are limited in effectiveness」中的「perspective shift」降低社會性迎合「somewhat」，但整體仍高度迎合，moral YTA/NTA 與 framing 迎合還上升｜https://arxiv.org/abs/2505.13995｜2026-10-03｜PDF 緩解策略一節（論文引 Hong 等 2025、Wang 等 2025、Suzgun 等 2024 為動機，本文未直接讀那些論文，正文只寫 Cheng 自己測到的）
 「少一點附和」類指令：Cheng 測「instruction prepending」，最天真版本使各面向分數全負（把該有的肯定也拿掉）；加「when it is appropriate to do so」後「drastically low or high」｜同上｜2026-10-03｜PDF
 要求反方論點、先列證據：沒有找到直接量測這兩招的引用來源。正文明寫「沒直接量測、只是推得通的習慣」。
 開發者端：Wei 的合成資料微調在其測試集降低迎合（意見題最多少重複 10.0%；錯誤加法陳述上讓夠大的模型不再跟隨）｜https://arxiv.org/abs/2308.03958｜2026-10-03｜PDF 摘要與第 1 節
