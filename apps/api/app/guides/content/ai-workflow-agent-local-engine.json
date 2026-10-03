@@ -1,0 +1,335 @@
+{
+  "slug": "ai-workflow-agent-local-engine",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-coding"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 416,
+  "locales": {
+    "zh-TW": {
+      "title": "把 Claude Code、Codex 整個換成本機模型：Ollama 與 LM Studio 設定與還原",
+      "description": "Ollama、LM Studio 與 Codex 的文件寫了把 Claude Code、Codex 整個換成本機模型的接法：Ollama 用 ollama launch 一行指令或手動設定，LM Studio 先開本機伺服器再設環境變數或加 --oss。這篇把四種組合的指令、官方給的上下文門檻、確認現在連到誰的方法，以及用完怎麼還原整理在一起；需要先裝好 Ollama 或 LM Studio，並且已有 Claude Code 或 Codex。",
+      "hero": {
+        "src": "/guides/ai-workflow-agent-local-engine/hero.jpg",
+        "alt": "原創插圖：一台筆電的終端機畫面，Claude Code 與 Codex 兩個圖示各拉出一條線，接到筆電內部標著本機伺服器的方塊，旁邊標著雲端的方塊被劃上斜線。",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Claude Code 與 Codex 能不能整個改用本機模型？各家的官方文件寫了接法：Ollama 有 ollama launch 一行指令，也有手動設定；LM Studio 先開本機伺服器，Claude Code 設三個環境變數，Codex 加 --oss。Anthropic 的 LLM 閘道（gateway）文件則寫，不背書、不維護也不稽核第三方閘道產品，並且不支援透過任何閘道把 Claude Code 導向非 Claude 模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "讀完你會有四組可照抄的指令、上下文的官方門檻，以及確認與還原的做法。步驟都來自官方文件，本站沒有實測。前提是已有 Claude Code 或 Codex，以及 Ollama 或 LM Studio 其一並下載好模型。安裝見《Ollama 入門：Windows、Mac 安裝與第一個模型》與《LM Studio 入門：圖形介面跑本機模型》，記憶體與量化見《跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon》與《GGUF 量化怎麼選：Q4_K_M、Q8_0、F16 的檔名、檔案大小與記憶體》。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Ollama、LM Studio 與 Codex 的文件寫了把 Claude Code 與 Codex 接到本機模型的做法：Ollama 用 ollama launch claude 與 ollama launch codex，或手動設定；LM Studio 先開本機伺服器（預設連接埠 1234），再設環境變數或加 --oss。",
+            "Ollama 的文件建議給代理（Agent）與寫程式工具至少 64k 的上下文，但預設值依顯示記憶體是 4k、32k 或 256k；LM Studio 的文件寫的門檻是超過約 25k。",
+            "Claude Code 的文件寫，只設 ANTHROPIC_BASE_URL 而沒有憑證變數時，存著的 claude.ai 登入仍是生效的憑證，所以 Ollama 的三個變數要一起設，並用 /status 確認。",
+            "Anthropic 的文件寫不支援透過任何閘道把 Claude Code 導向非 Claude 模型；用完要還原時，Claude Code 取消環境變數，Codex 用 ollama launch codex --restore。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先分清楚什麼叫整個換成本機：標籤與資料去向"
+        },
+        {
+          "type": "paragraph",
+          "text": "整個換掉，指的是把 Claude Code 或 Codex 連的模型端點改成本機伺服器。判斷是不是本機，要同時看位址與標籤：位址是 localhost，而且標籤不帶 cloud。Ollama 的 Claude Code 頁有反例：ANTHROPIC_BASE_URL 設成 ollama.com 再執行 claude --model glm-5.3-flash，標籤不帶 cloud，位址卻是 Ollama Cloud；Ollama 的相容文件則寫，經由已登入的 Ollama 伺服器可用 gemma4:cloud 這樣的雲端名稱，位址是本機，標籤帶 cloud。兩種都不是本機。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ollama 的 Codex 頁另寫，經由 Ollama 的 profile 送出的 web search 請求由 Ollama 執行，本機與雲端模型都一樣，要用得先 ollama signin；單次關掉就加 -c 'web_search=\"disabled\"'。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Ollama 搭 Claude Code：一行指令或三個環境變數"
+        },
+        {
+          "type": "paragraph",
+          "text": "最短的路是 ollama launch claude。手動的 Manual setup 設三個環境變數，再用 --model 指定標籤：ANTHROPIC_AUTH_TOKEN 設成 ollama、ANTHROPIC_API_KEY 設成空字串、ANTHROPIC_BASE_URL 設成 localhost 的 11434 連接埠，標籤的例子是 Ollama 文件的 qwen3.5（Qwen，本篇的本機主例）。Ollama 的 Anthropic 相容文件寫，本機伺服器用 ollama 當佔位的 API key（required but ignored）；空字串那行文件沒解釋，本篇照抄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ollama 手動設定裡設環境變數那一步只給 export 的寫法。Claude Code 的閘道連線文件給了 PowerShell 的形式 $env:ANTHROPIC_BASE_URL = \"值\"，但設網址與憑證的範例只有網址與 token 兩個變數，沒有空字串那一行，本篇不寫。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GLM 與 DeepSeek 各舉一個 Ollama 上能下載到本機的模型：glm-4.7-flash（latest 標籤 19GB）與 deepseek-r1（7b 標籤 4.7GB、8b 標籤 5.2GB），數字取自標籤頁的 Size / Usage 欄，標籤不帶 cloud。換進 claude --model 或 codex --oss -m 的寫法與 Qwen 相同；Ollama 的 Claude Code 頁與 Codex 頁都沒有拿這兩個模型當例子，本篇不寫它們接代理工具的表現。這幾個標籤，標籤頁列的上下文視窗是 198K 與 128K，實際配置多少是另一回事。"
+        },
+        {
+          "type": "code",
+          "label": "ollama-route.sh：Ollama 接 Claude Code 與 Codex（照 Ollama 官方文件，需要已裝好 Ollama、Claude Code、Codex）",
+          "language": "bash",
+          "code": "# Ollama 這一側：先設上下文，再啟動，用起來之後確認，最後還原\n# 1. 上下文（Ollama 文件：代理與寫程式工具至少 64000 個 token）\nOLLAMA_CONTEXT_LENGTH=64000 ollama serve\n\n# 2a. Claude Code，一行指令\nollama launch claude\n\n# 2b. Claude Code，手動設定（bash 或 zsh；與 2a 二選一）\nexport ANTHROPIC_AUTH_TOKEN=ollama\nexport ANTHROPIC_API_KEY=\"\"\nexport ANTHROPIC_BASE_URL=http://localhost:11434\nclaude --model qwen3.5\n\n# 3. Codex：一行指令，或 --oss 加 -m（Ollama 文件的例子是 gpt-oss）\nollama launch codex\ncodex --oss -m gpt-oss:120b\n\n# 不想讓 Codex 的 web search 經過 Ollama 的服務時\ncodex --profile ollama-launch -c 'web_search=\"disabled\"'\n\n# 模型用起來之後，另開一個終端機看 PROCESSOR 與 CONTEXT 兩欄\nollama ps\n\n# 4. 用完還原\nunset ANTHROPIC_AUTH_TOKEN ANTHROPIC_API_KEY ANTHROPIC_BASE_URL\nollama launch codex --restore"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "只設網址不夠：存著的 claude.ai 登入仍是生效的憑證",
+          "text": "Claude Code 的閘道文件寫，只設 ANTHROPIC_BASE_URL、沒有設閘道憑證變數時，不會取代訂閱：請求仍會送到那個位址，但存著的 claude.ai 登入仍是生效的憑證，用量上限與計費照常適用。憑證變數生效時則相反：請求帶的是那個憑證，存著的登入留在機器上但不隨請求送出，取消變數後 Claude Code 會回到那個登入。所以 Ollama 文件的三個變數要一起設，設完用 /status 看一眼。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Codex：--oss、profile 與還原"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ollama 的 Codex 頁也有一行指令 ollama launch codex。手動做法是 codex --oss，指定模型加 -m，頁面的例子是 codex --oss -m gpt-oss:120b：連的是本機的 Ollama，標籤不帶 cloud，所以是本機。雲端模型是 codex --oss -m gpt-oss:120b-cloud，標籤帶 cloud，不是本機。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Codex 的設定文件寫，--oss 連哪一個本機 provider，單次用 --local-provider 選，或在設定檔寫 oss_provider 當預設，值是 ollama 或 lmstudio。兩者都沒設時，互動模式會問你，codex exec 則直接結束並報錯。"
+        },
+        {
+          "type": "paragraph",
+          "text": "想固定下來，Ollama 文件的 Profile-based setup 是建立 ~/.codex/ollama-launch.config.toml，再用 codex --profile ollama-launch 啟動。Codex 的設定文件也寫，傳 --profile 名稱時先載入 ~/.codex/config.toml，再疊上 ~/.codex/名稱.config.toml；0.134.0 起 --profile 不再讀 config.toml 裡的 [profiles.名稱]。model_catalog_json 指向的 model.json，Ollama 文件沒說怎麼手動產生，路徑是範例值。設定檔分層見《config.toml 設定教學》。"
+        },
+        {
+          "type": "code",
+          "label": "~/.codex/ollama-launch.config.toml：Codex 的 Ollama profile（Ollama 文件的範例，用 codex --profile ollama-launch 啟動）",
+          "language": "toml",
+          "code": "# ~/.codex/ollama-launch.config.toml（Ollama 的 Codex 文件範例）\n# 啟動：codex --profile ollama-launch\nmodel = \"gpt-oss:120b\"\nmodel_provider = \"ollama-launch\"\nmodel_catalog_json = \"/Users/you/.codex/model.json\"\n\n[model_providers.ollama-launch]\nname = \"Ollama\"\nbase_url = \"http://localhost:11434/v1/\"\nwire_api = \"responses\""
+        },
+        {
+          "type": "paragraph",
+          "text": "還原用 ollama launch codex --restore，文件寫它會移除 Ollama 的 launch profile 與產生的模型目錄。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "LM Studio：先開本機伺服器，再指過去"
+        },
+        {
+          "type": "paragraph",
+          "text": "LM Studio 的 Claude Code 頁，第一步是讓它以伺服器模式運作，預設連接埠 1234，可從 App 開，或在終端機執行 lms server start --port 1234。接著設三個環境變數：ANTHROPIC_BASE_URL 指向 localhost 的 1234 連接埠、ANTHROPIC_AUTH_TOKEN 設成 lmstudio、CLAUDE_CODE_ATTRIBUTION_HEADER 設成 0，再執行 claude --model openai/gpt-oss-20b。第三個變數頁面沒說明用途；Claude Code 的環境變數文件寫，設成 0 會從系統提示詞開頭省略帶有用戶端版本與提示詞指紋的 attribution block。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一頁還寫：開了 Require Authentication 時，ANTHROPIC_AUTH_TOKEN 要改成自己的 LM Studio API token；並寫要用上下文長度超過約 25k 的模型與伺服器設定，因為 Claude Code 這類工具可能耗掉很多上下文。搭 Codex 照 Codex 設定文件走 --oss，oss_provider 寫成 lmstudio。"
+        },
+        {
+          "type": "code",
+          "label": "lmstudio-route.sh：LM Studio 接 Claude Code 與 Codex（照 LM Studio 與 Codex 官方文件，需要已裝好 LM Studio、lms、Claude Code、Codex）",
+          "language": "bash",
+          "code": "# LM Studio 這一側\n# 1. 啟動本機伺服器（預設連接埠 1234，也可以在 App 裡開）\nlms server start --port 1234\n\n# 2. Claude Code：LM Studio 文件的三個環境變數\nexport ANTHROPIC_BASE_URL=http://localhost:1234\nexport ANTHROPIC_AUTH_TOKEN=lmstudio\nexport CLAUDE_CODE_ATTRIBUTION_HEADER=0\nclaude --model openai/gpt-oss-20b\n\n# 開了 Require Authentication 時，token 改用自己的 LM Studio API token\n# export ANTHROPIC_AUTH_TOKEN=$LM_API_TOKEN\n\n# 3. Codex：--oss；要指向 LM Studio，在 ~/.codex/config.toml 寫\n#    oss_provider = \"lmstudio\"，或單次加 --local-provider\ncodex --oss\n\n# 4. 用完還原：取消環境變數\nunset ANTHROPIC_BASE_URL ANTHROPIC_AUTH_TOKEN CLAUDE_CODE_ATTRIBUTION_HEADER"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-workflow-agent-local-engine/diagram-1.svg",
+          "alt": "四格圖解：Ollama 搭 Claude Code、Ollama 搭 Codex、LM Studio 搭 Claude Code、LM Studio 搭 Codex，各用哪一行指令接到本機模型",
+          "width": 1600,
+          "height": 900,
+          "caption": "四格圖解：四種組合各用哪一行指令接到本機模型（2026 年 10 月查證，指令取自各家官方文件）"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "上下文與相容層：設多少、怎麼確認、缺什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ollama 的 context-length 文件寫，預設值依顯示記憶體（VRAM）而定：不到 24 GiB 是 4k，24 到 48 GiB 是 32k，48 GiB 以上是 256k；網頁搜尋、代理與寫程式工具建議至少 64000 個 token，Claude Code 頁寫 64k 以上，Codex 頁寫至少 64k。上下文越大，需要的記憶體越多；雲端模型預設用最大上下文。本篇不下機型跑不跑得動的結論，記憶體估算見硬體那一篇。"
+        },
+        {
+          "type": "paragraph",
+          "text": "設定有兩個辦法：Ollama App 設定裡的滑桿；文件寫若無法修改，也可在啟動伺服器時帶環境變數 OLLAMA_CONTEXT_LENGTH=64000 ollama serve，文件沒有給 PowerShell 版。確認用 ollama ps，文件該節標題是 Check allocated context length and model offloading：文件寫要在 PROCESSOR 欄看模型有沒有被卸載到 CPU，並建議避免；範例輸出另有 CONTEXT 欄。"
+        },
+        {
+          "type": "paragraph",
+          "text": "相容層缺什麼，Ollama 的 Anthropic 相容文件有「不支援」與「部分支援」兩份清單，下表節錄幾項；文件列的是 Anthropic API 的功能，沒有說 Claude Code 會用到哪一項。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "文件寫的狀態",
+            "文件的說明"
+          ],
+          "rows": [
+            [
+              "/v1/messages/count_tokens",
+              "不支援",
+              "Token counting endpoint（計算 token 數的端點）"
+            ],
+            [
+              "tool_choice",
+              "不支援",
+              "Forcing specific tool use or disabling tools（強制使用特定工具或停用工具）"
+            ],
+            [
+              "metadata",
+              "不支援",
+              "Request metadata（請求的中繼資料）"
+            ],
+            [
+              "Prompt caching",
+              "不支援",
+              "cache_control blocks for caching prefixes（用區塊快取前綴）"
+            ],
+            [
+              "Batches API",
+              "不支援",
+              "/v1/messages/batches for async batch processing（非同步的批次處理）"
+            ],
+            [
+              "Server-sent errors",
+              "不支援",
+              "串流中的 error 事件（錯誤改以 HTTP 狀態碼回傳）；但同頁的串流事件清單把 error 打勾。"
+            ],
+            [
+              "Image content",
+              "部分支援",
+              "Base64 圖片支援，網址圖片不支援。"
+            ],
+            [
+              "Extended thinking",
+              "部分支援",
+              "Basic support；budget_tokens 接受但不強制。"
+            ]
+          ],
+          "caption": "Ollama 的 Anthropic 相容層文件列出的不支援與部分支援項目（節錄，2026 年 10 月查證，本站整理）"
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude Code 的環境變數文件另寫，ANTHROPIC_BASE_URL 指到非官方主機時，MCP tool search 預設關閉；要打開，文件寫是在代理會轉送 tool_reference 區塊時設 ENABLE_TOOL_SEARCH=true，並寫設成 true 時，不支援 tool_reference 的代理上請求會失敗。Ollama 與 LM Studio 的頁面都沒提 tool_reference，本篇不寫要不要打開。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "確認現在連的是誰，以及怎麼切回雲端"
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude Code 確認連線用 /status，開在 Status 分頁，文件要你看兩行：Anthropic base URL 只有設了位址才會出現，沒有就表示沒指向那個位址；Auth token 或 API key 那行寫著你設的變數名，表示閘道憑證生效；若改為寫著 claude.ai 帳號的 Login method 行，就是閘道憑證沒有生效。Codex 這邊，兩份文件都沒寫對應的確認指令。"
+        },
+        {
+          "type": "paragraph",
+          "text": "shell 的 export 只管那個終端機；想全域生效，文件說寫進 ~/.claude/settings.json 的 env 區塊（Windows 在使用者目錄的 .claude 底下）。兩邊設了同一個變數時，設定檔的值勝出；Ollama 的 Claude Code 頁也提醒 Claude settings can override shell variables。設定檔細節見《Claude Code｜settings.json 設定教學》。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用完要切回雲端，照三件事做："
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Claude Code：取消設過的環境變數，寫在設定檔 env 區塊的值就從那裡刪掉；文件寫憑證變數取消後，會回到存著的 claude.ai 登入。",
+            "Codex：Ollama 文件的還原指令是 ollama launch codex --restore；手動用 --oss 或 --profile 的，之後不再傳那些旗標。",
+            "再跑一次 /status，照上面的判讀確認用的是不是登入。Ollama 的 Claude Code 頁沒有寫 ollama launch claude 會不會改動 Claude Code 的設定，所以用完先看一眼。"
+          ]
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "只設 ANTHROPIC_BASE_URL、不設 token，可以接到本機模型嗎？",
+              "answer": "Claude Code 的閘道文件寫，只設這個變數、沒有閘道憑證時，不會取代訂閱：請求仍會送到那個位址，但存著的 claude.ai 登入仍是生效的憑證，用量上限與計費照常適用。Ollama 與 LM Studio 的文件都把位址和 ANTHROPIC_AUTH_TOKEN 一起設。"
+            },
+            {
+              "question": "帶 cloud 的標籤，或連到 ollama.com 的模型，算本機模型嗎？",
+              "answer": "都不算，而且不能只看標籤：要同時看位址與標籤。Ollama 的 Claude Code 頁裡 glm-5.3-flash 的標籤不帶 cloud，位址卻是 ollama.com；Codex 頁的 gpt-oss:120b-cloud 標籤帶 cloud；兩者都是雲端。"
+            },
+            {
+              "question": "上下文要設多少？",
+              "answer": "三組數字來自不同文件：Ollama 對代理與寫程式工具建議至少 64000 個 token，Ollama 的預設值依顯示記憶體是 4k、32k 或 256k，LM Studio 的 Claude Code 頁寫要超過約 25k。確認用 ollama ps，Ollama 文件的範例輸出有 CONTEXT 欄。"
+            },
+            {
+              "question": "同時裝了 Ollama 與 LM Studio，codex --oss 會連到哪一個？",
+              "answer": "Codex 的設定文件寫，單次執行用 --local-provider 選，或用 oss_provider 設預設；兩者都沒設時，互動模式會問你選哪一個，codex exec 則直接結束並報錯。"
+            },
+            {
+              "question": "Windows 的 PowerShell 要怎麼設這些環境變數？",
+              "answer": "Ollama 設環境變數的那一步與 OLLAMA_CONTEXT_LENGTH 都沒有給 PowerShell 寫法。Claude Code 的閘道連線文件給了 PowerShell 的形式 $env:變數名 = 值，但設網址與憑證的範例只有網址與 token 兩個變數，空字串那一行沒有範例；上下文也可以改用 Ollama App 設定裡的滑桿。"
+            },
+            {
+              "question": "CLAUDE_CODE_ATTRIBUTION_HEADER=0 是做什麼的？",
+              "answer": "LM Studio 的 Claude Code 頁列了它，但沒有說明用途。Claude Code 的環境變數文件寫，設成 0 會從系統提示詞開頭省略帶有用戶端版本與提示詞指紋的 attribution block。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+          "url": "https://mokaair.com/zh-TW/life/ai-workflow-tutorials"
+        },
+        {
+          "type": "link",
+          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ollama Docs：Claude Code",
+          "url": "https://docs.ollama.com/integrations/claude-code",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Ollama Docs：Codex CLI",
+          "url": "https://docs.ollama.com/integrations/codex",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Ollama Docs：Context length",
+          "url": "https://docs.ollama.com/context-length",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Ollama Docs：Anthropic compatibility",
+          "url": "https://docs.ollama.com/api/anthropic-compatibility",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "LM Studio Docs：Use Claude Code with LM Studio",
+          "url": "https://lmstudio.ai/docs/integrations/claude-code",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Claude Code Docs：Connect Claude Code to an LLM gateway",
+          "url": "https://code.claude.com/docs/en/llm-gateway-connect",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Claude Code Docs：Other LLM gateways",
+          "url": "https://code.claude.com/docs/en/llm-gateway",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Codex Docs：Advanced Configuration",
+          "url": "https://learn.chatgpt.com/docs/config-file/config-advanced",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Ollama Library：glm-4.7-flash 的標籤頁",
+          "url": "https://ollama.com/library/glm-4.7-flash/tags",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Ollama Library：deepseek-r1 的標籤頁",
+          "url": "https://ollama.com/library/deepseek-r1/tags",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Claude Code Docs：Environment variables",
+          "url": "https://code.claude.com/docs/en/env-vars",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    }
+  }
+}
