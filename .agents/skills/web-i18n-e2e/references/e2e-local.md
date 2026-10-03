@@ -55,7 +55,7 @@ CI 是**逐一列出** spec 檔，新 spec 沒加進清單就永遠不會在 CI 
 
 | workflow（job） | spec |
 | --- | --- |
-| `.github/workflows/ci.yml`（`web`，用假 API；以該 job 的 `npx playwright test` 那一行為準） | navigation、readability、signed-out、travel-services、stay22-allez、stay22-script、guides-adsense、stay22-maps、merchant-styles、admin-domains、admin-operations、admin-video-manual-upload、admin-video-shorts、site-experience、site-pages、community-ui、discovery-card-details、planner-premium、korea-dual-maps、seo |
+| `.github/workflows/ci.yml`（`web`，用假 API；以該 job 的 `npx playwright test` 那一行為準） | navigation、readability、signed-out、travel-services、stay22-allez、stay22-script、guides-adsense、stay22-maps、merchant-styles、admin-domains、admin-operations、admin-video-manual-upload、admin-video-shorts、site-experience、site-pages、community-ui、discovery-card-details、planner-premium、korea-dual-maps、seo、offline-day-view |
 | `ci.yml`（`full-stack-smoke`，真的 API＋Postgres＋Redis） | full-stack、community（`COMMUNITY_E2E=1`）、admin-domains-full-stack（`ADMIN_DOMAIN_E2E=1`）、admin-operations-full-stack（`ADMIN_OPERATIONS_E2E=1`），都 `PLAYWRIGHT_REUSE_EXISTING=true` |
 | `.github/workflows/planner-premium.yml` | planner-route-tones、planner-calm、planner-premium、trip-stay-areas、stay22-maps |
 | `.github/workflows/travel-discovery.yml` | discovery、frontend-flow、discovery-card-details、discovery-full-stack、frontend-flow-full-stack |
@@ -71,7 +71,7 @@ full-stack spec 開頭有 `test.skip(process.env.X !== "1", ...)`，本機沒起
 | --- | --- | --- |
 | 伺服器端 render（layout、`generateMetadata`、server component、admin bootstrap） | Next 伺服器直接打 `API_INTERNAL_URL` | `tools/e2e-runtime-api.mjs`。`page.route` **攔不到** |
 | 瀏覽器端的 `/api/travel/**`（同源 BFF） | 瀏覽器 | spec 裡的 `page.route("**/api/travel/**", ...)`。沒攔到的會經 BFF 打到假 API，未知路徑回 404 |
-| service worker 發的 fetch | worker | `page.route`／`context.route`／`setOffline` 都攔不到（`tasks/done/2026-09-11-offline-today-e2e.md`） |
+| service worker 發的 fetch | worker | `page.route` 攔不到。Playwright 1.63 的 `context.route` 與 `context.setOffline` 攔得到（1.62 時量到的是都攔不到，`tasks/done/2026-09-11-offline-today-e2e.md`）；依賴它之前先在 spec 裡驗一次，寫法見 `e2e/offline-day-view.spec.ts` |
 
 `tools/e2e-runtime-api.mjs` 的規矩：
 

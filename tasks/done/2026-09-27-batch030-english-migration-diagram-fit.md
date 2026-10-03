@@ -42,8 +42,8 @@ Run the four guide-pack lints from apps/api: `python -m app.guides.pack_cli lint
 
 ## Notes
 
-- Independent pre-fix QA: `C:\Users\x8120\.codex\article-localization-release\batch030-independent-postpublish-qa-v2-20260928\svg-card-bounds.json` (20 variants; only 4 English files failed). Its minimum English margins included -6.33 (domain) and -9.88 (aftercare).
-- Local post-fix Chromium report and full-size PNGs: `C:\Users\x8120\.codex\article-localization-release\batch030-svg-fit-qa-20260928\`. Minimum right margins by article: 38.88, 32.58, 37.08, and 29.48 SVG units. All four PASS the ≥16 condition and were visually inspected.
+- Independent pre-fix QA: `<home>\.codex\article-localization-release\batch030-independent-postpublish-qa-v2-20260928\svg-card-bounds.json` (20 variants; only 4 English files failed). Its minimum English margins included -6.33 (domain) and -9.88 (aftercare).
+- Local post-fix Chromium report and full-size PNGs: `<home>\.codex\article-localization-release\batch030-svg-fit-qa-20260928\`. Minimum right margins by article: 38.88, 32.58, 37.08, and 29.48 SVG units. All four PASS the ≥16 condition and were visually inspected.
 - Four pack lints passed with existing content warnings about summary blocks and English article length; no article content changed. `npm run check:tasks` passed (stale unrelated task warnings) and `git diff --check` passed.
 - This PR only changes repository SVGs. It does not deploy assets, import articles, publish, or clear the production hold.
 

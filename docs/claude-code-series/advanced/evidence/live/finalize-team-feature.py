@@ -8,7 +8,7 @@ ROOT=OUT.parents[4]
 setup=json.loads((OUT/'team-feature-setup.json').read_text(encoding='utf-8'))
 project=Path(setup['project'])
 session='5d3ade06-bf75-49fa-86e3-d93572acb465'
-logs=Path.home()/'.claude/projects/C--Users-x8120-AppData-Local-Temp-mokaair-team-feature-qgs6o2kh'
+logs=Path.home()/'.claude/projects/<project-slug>'
 def readrows(path):return [json.loads(line) for line in path.read_text(encoding='utf-8').splitlines()]
 def blocks(rows):
     for row in rows:

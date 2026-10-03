@@ -55,7 +55,7 @@ the application's semantic colors and touch-sized inputs.
 - Web ESLint passed with `--max-warnings=0`; TypeScript passed with
   `--noEmit --incremental false`; i18n validation passed for 5 locales across
   25 namespaces. All three commands exited 0.
-- [Machine-local captured Web validation log](C:/Users/x8120/AppData/Local/Temp/hotspot-review-editor-web-validation-2026-09-10-1025.md)
+- Machine-local captured Web validation log (`<home>/AppData/Local/Temp/hotspot-review-editor-web-validation-2026-09-10-1025.md`)
   records commands, output, versions and unchanged Web source/test hashes.
   These are local checks, not CI, deployment, production UI or live PostgreSQL
   concurrency evidence.

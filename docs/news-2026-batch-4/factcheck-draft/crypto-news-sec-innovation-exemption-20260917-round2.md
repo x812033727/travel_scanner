@@ -5,9 +5,9 @@
 查核者：獨立查核代理（第二輪，未參與撰稿，也未參與第一輪）。查核日：2026-09-23（台北）。
 內容包：`apps/api/app/guides/content/crypto-news-sec-innovation-exemption-20260917.json`。
 研究紀錄：`docs/crypto-news-2026/research/crypto-news-sec-innovation-exemption-20260917.json`。
-第一輪報告：`C:\Users\x8120\mokaair-work\news47\factcheck\crypto-news-sec-innovation-exemption-20260917-round1.md`。
-腳本：`C:\Users\x8120\mokaair-work\news47\_tools\crypto-news-sec-innovation-exemption-20260917-r2\`；
-抓回的原始檔在 `C:\Users\x8120\mokaair-work\news47\_r2raw\crypto-news-sec-innovation-exemption-20260917\`。
+第一輪報告：`<home>\mokaair-work\news47\factcheck\crypto-news-sec-innovation-exemption-20260917-round1.md`。
+腳本：`<home>\mokaair-work\news47\_tools\crypto-news-sec-innovation-exemption-20260917-r2\`；
+抓回的原始檔在 `<home>\mokaair-work\news47\_r2raw\crypto-news-sec-innovation-exemption-20260917\`。
 
 ### 範圍（照 `agents/SECOND-ROUND.md`，不是整篇重做）
 

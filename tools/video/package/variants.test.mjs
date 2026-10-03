@@ -25,10 +25,10 @@ async function finishedVideo({ variants = false } = {}) {
   mkdirSync(box.workdir, { recursive: true });
   const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
   const lexicon = JSON.parse(readFileSync(path.join(box.videos, "lexicon.json"), "utf8"));
-  writeSyntheticNarration(doc, lexicon, box.workdir);
+  const timeline = writeSyntheticNarration(doc, lexicon, box.workdir);
   const final = Buffer.from("the finished cut");
   writeFileSync(path.join(box.workdir, "final.mp4"), final);
-  writeFileSync(path.join(box.workdir, "checks.json"), JSON.stringify({ ok: true, speech_hash: speechHash(doc, lexicon), visual_hash: visualHash(doc), problems: [] }));
+  writeFileSync(path.join(box.workdir, "checks.json"), JSON.stringify({ ok: true, speech_hash: speechHash(doc, lexicon), narration_sha256: timeline.audio_evidence.narration_sha256, visual_hash: visualHash(doc), problems: [] }));
   writeFileSync(path.join(box.workdir, "thumbnail.jpg"), Buffer.from("thumbnail A"));
   // Captions already cut for this narration, so package does not cut (and lint) them itself.
   mkdirSync(path.join(box.workdir, "captions"), { recursive: true });

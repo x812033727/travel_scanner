@@ -255,6 +255,129 @@ function episode() {
   return { doc, series, context: context({ brief: dramaBrief(), series }) };
 }
 
+function animeEpisode() {
+  const doc = dramaFixture();
+  doc.slug = "borrowed-dawn-production-e001";
+  doc.category = "anime";
+  doc.look = { preset: "anime-2d" };
+  doc.target_minutes = [22, 22];
+  doc.production_policy = "long-anime-v1";
+  doc.runtime_spec = { body_target_seconds: 1320, op_ed_budget_seconds: 180, broadcast_slot_seconds: 1800, slot_reserve_seconds: 300 };
+  doc.series = { slug: "borrowed-dawn-production", episode: 1, chapter: 1, kind: "series", genre: "custom", lead: "ensemble", planned_episodes: 120, open_ended: false, closed_ending: false };
+  for (const scene of doc.scenes) {
+    delete scene.data.fit;
+    for (const line of scene.lines) line.text = "走。";
+  }
+  const series = {
+    ...doc.series, category: "anime", style_preset: "anime-2d", target_minutes: 22,
+    production_policy: doc.production_policy, runtime_spec: structuredClone(doc.runtime_spec),
+    characters: structuredClone(doc.characters), visual_tier: "clips", compilation: false,
+  };
+  return { doc, series, context: context({ brief: dramaBrief(), series }) };
+}
+
+test("a native anime lints against its current approved series and reports body duration as an estimate", () => {
+  const { doc, context: ctx } = animeEpisode();
+  const result = lintVideo(doc, ctx);
+  assert.deepEqual(result.errors, []);
+  assert.ok(result.summary.minutes < 1, "this short fixture does not pretend to contain 22 minutes of measured media");
+  assert.ok(result.warnings.some((warning) => warning.path === "runtime_spec" && /estimated story body/.test(warning.message) && /measured acceptance is 1260–1380 seconds/.test(warning.message) && /excluding OP\/ED and broadcast reserve/.test(warning.message)));
+  assert.equal(Object.hasOwn(result.summary, "ready_for_production"), false);
+  assert.equal(Object.hasOwn(result.summary, "measured_body_seconds"), false);
+});
+
+test("anime requires its approved series context and rejects missing or incomplete snapshot policies", () => {
+  const absent = animeEpisode();
+  delete absent.context.series;
+  const result = lintVideo(absent.doc, absent.context);
+  assert.ok(result.errors.some((error) => error.path === "series" && /no series.json/.test(error.message)));
+  assert.ok(!result.warnings.some((warning) => /no series.json/.test(warning.message)), "missing trusted anime context is an error");
+  for (const change of [
+    (series) => { delete series.production_policy; },
+    (series) => { delete series.runtime_spec; },
+    (series) => { series.production_policy = "long-anime-v2"; },
+    (series) => { series.category = "drama"; },
+    (series) => { series.style_preset = "cinematic-3d"; },
+    (series) => { series.target_minutes = 3; },
+    (series) => { series.runtime_spec.op_ed_budget_seconds = -1; },
+  ]) {
+    const current = animeEpisode();
+    change(current.series);
+    assert.ok(lintVideo(current.doc, current.context).errors.some((error) => error.path === "series" && /complete approved long-anime production policy/.test(error.message)));
+  }
+});
+
+test("a stale anime snapshot cannot change identity, counts or closed-ending declarations", () => {
+  for (const [key, value] of [
+    ["slug", "another-production"], ["episode", 2], ["chapter", 2],
+    ["planned_episodes", 119], ["open_ended", true], ["closed_ending", true],
+    ["kind", "one-off"], ["genre", "urban-return"], ["lead", "male"],
+  ]) {
+    const current = animeEpisode();
+    current.series[key] = value;
+    const result = lintVideo(current.doc, current.context);
+    assert.ok(result.errors.length > 0, `${key} drift must not pass`);
+    if (["kind", "genre", "lead"].includes(key)) assert.match(messages(result.errors), /complete approved long-anime production policy/);
+    else assert.ok(result.errors.some((error) => error.path === "series" || error.path === `series.${key}` || error.path === "runtime_spec"), `${key}: ${messages(result.errors)}`);
+  }
+  for (const key of ["planned_episodes", "open_ended", "closed_ending"]) {
+    const current = animeEpisode();
+    delete current.series[key];
+    assert.ok(lintVideo(current.doc, current.context).errors.length > 0, `${key} must not be inferred from the video`);
+  }
+});
+
+test("different valid runtime budgets still fail the approved anime snapshot binding", () => {
+  const current = animeEpisode();
+  current.series.target_minutes = 21;
+  current.series.runtime_spec.body_target_seconds = 1260;
+  current.series.runtime_spec.slot_reserve_seconds = 360;
+  assert.ok(lintVideo(current.doc, current.context).errors.some((error) => error.path === "runtime_spec" && /differs from the approved series production policy/.test(error.message)));
+  const casting = animeEpisode();
+  casting.series.characters[0].voice.name = "Puck";
+  assert.ok(lintVideo(casting.doc, casting.context).errors.some((error) => error.path === "characters[0].voice" && /series' setting book/.test(error.message)));
+});
+
+test("an anime episode cannot lose its policy and fall back to ordinary drama", () => {
+  const current = animeEpisode();
+  delete current.doc.production_policy;
+  delete current.doc.runtime_spec;
+  current.doc.target_minutes = [1, 8];
+  const { slug, episode: number, chapter } = current.doc.series;
+  current.doc.series = { slug, episode: number, chapter };
+  assert.ok(lintVideo(current.doc, current.context).errors.some((error) => error.path === "production_policy" && /lost its series' long-anime production policy/.test(error.message)));
+  const ordinary = episode();
+  delete ordinary.context.series;
+  const result = lintVideo(ordinary.doc, ordinary.context);
+  assert.deepEqual(result.errors, [], "ordinary drama retains its existing missing-snapshot warning");
+  assert.ok(result.warnings.some((warning) => /no series.json/.test(warning.message)));
+});
+
+test("native anime's production profile accepts silent action but rejects stills and frame padding", () => {
+  const current = animeEpisode();
+  current.series.production = { profile: { visual_tier: "clips" } };
+  current.doc.scenes[1].action_seconds = 8;
+  current.doc.scenes[1].lines = [];
+  current.doc.scenes[1].data.motion = "the worker lifts the valve handle and seats it in the bracket";
+  assert.deepEqual(lintVideo(current.doc, current.context).errors, []);
+  const actual = estimateTimeline(current.doc);
+  const action = actual.scenes.find((scene) => scene.id === current.doc.scenes[1].id);
+  assert.equal(action.end_frame - action.start_frame, 240);
+  assert.deepEqual(productionShotProblems(current.doc, current.series, actual), []);
+  action.end_frame++;
+  assert.match(messages(productionShotProblems(current.doc, current.series, actual)), /limits a shot to 8 seconds/);
+  const still = animeEpisode();
+  still.series.production = { profile: { visual_tier: "clips" } };
+  still.doc.scenes[1].data.visual = "still";
+  assert.match(messages(lintVideo(still.doc, still.context).errors), /animated clips, not stills/);
+  for (const fit of ["freeze", "slow"]) {
+    const padded = animeEpisode();
+    padded.series.production = { profile: { visual_tier: "clips" } };
+    padded.doc.scenes[1].data.fit = fit;
+    assert.match(messages(lintVideo(padded.doc, padded.context).errors), /frozen tails or slowed clips/);
+  }
+});
+
 test("a binge series' visual tier in series.json caps the clips, before the clips stage spends anything", () => {
   const plain = episode();
   assert.deepEqual(lintVideo(plain.doc, plain.context).errors, [], "no tier in series.json, no cap");

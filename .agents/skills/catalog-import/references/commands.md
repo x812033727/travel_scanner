@@ -18,6 +18,7 @@
 | `export-food-merchant-worklist [--status pending\|approved\|all] [--destination D] [--include-researched] [--out P]` | 印要研究的店家 JSON，含該城市商圈與啟用分類；已被 committed 補資料檔結案的預設略過 | 唯讀 | 主機；直接讀 stdout（`--out` 寫在容器裡） |
 | `apply-food-merchant-enrichment [--file F] [--slug S] [--limit N] [--check] [--apply]` | 套用研究檔：只填空的地址／官網／商圈／Place ID，來源以網址 upsert，分類只增 | `--apply`；`--check` 不開資料庫 | `--check` 本機；套用在主機，未部署用 `--file /dev/stdin` |
 | `apply-food-platform-reviews [--file F] [--limit N] [--apply]` | 套用訂位平台審查檔；不覆寫有審核者的列（除非帶一致的 `expected_checked_at`） | `--apply` | 主機；逐筆結果在 stderr |
+| `import-catchtable-candidates --file F [--limit N] [--check] [--apply]` | CatchTable 候選檔一次匯入：`import` 建 pending 店家並寫 `catchtable_global` 平台列，`duplicate` 只寫平台列，一筆一交易；規則同上兩支 | `--apply`；`--check` 不開資料庫 | `--check` 本機；套用在主機，`--file /dev/stdin`；屬 skill `catchtable-discovery` |
 | `backfill-merchant-english-names [--apply] [--reset-drifted]` | 讓已匯入的潮流店家拿到 `trend_merchants.json` 後來補的英文名 | `--apply` | 主機；`--reset-drifted` 分不出管理員改名，先讀 dry-run |
 
 ## 景點（hotspots）
@@ -77,5 +78,6 @@
 | `import-trend-merchants` | `would_create`／`created`、`skipped_existing_slug`、`skipped_same_name` |
 | `apply-food-merchant-enrichment` | `would_enrich`／`would_note`、`unchanged`、`already_noted`、`skipped_missing_merchant`、`skipped_slug_mismatch`、`skipped_conflict`、`skipped_taxonomy`、`skipped_not_enrichable` |
 | `apply-food-platform-reviews` | `would_create`／`would_update`、`created`／`updated`、`unchanged`、`skipped_admin_reviewed`、`skipped_changed_since_research`、`skipped_branch_conflict`、`skipped_missing_merchant`、`skipped_slug_mismatch` |
+| `import-catchtable-candidates` | 每筆兩欄：`merchant` 是上面 `import-trend-merchants` 的動作加 `missing_area`／`missing_category`／`skipped_branch_conflict`，`platform` 是上面 `apply-food-platform-reviews` 的動作（連結相同只差備註也是 `unchanged`）；`skipped_conflict` 是資料庫約束 |
 | `fill-food-merchant-coordinates` | `would_fill`、`already_filled`、`ambiguous` 等 |
 | `match-food-merchant-places` | `would_match`、`already_matched` 等 |

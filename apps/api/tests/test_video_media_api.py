@@ -134,8 +134,11 @@ async def test_status_reports_the_choices_budgets_store_and_limits(media: dict[s
         "configured": True,
         "resolution": "1080p",
         "seconds": 8,
+        "usd_per_image_2k": None,
     }
     assert body["image"]["configured"] and not body["models"]["clips"]["minimax"] == []
+    # The image choices say what a 2K picture costs, which is how the tool knows to ask for one.
+    assert body["image"]["usd_per_image_2k"] == 0.134
     assert body["budgets"]["clip_seconds"] == {
         "unit": "seconds",
         "limit": 3000,
@@ -152,6 +155,7 @@ async def test_status_reports_the_choices_budgets_store_and_limits(media: dict[s
         "configured": True,
         "resolution": None,
         "seconds": None,
+        "usd_per_image_2k": 0.101,
     }
     assert body["slides_auto_approve_storyboard"] is True
     assert (body["slides_music_track"], body["slides_sfx_set"]) == (None, None)

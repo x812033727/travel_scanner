@@ -42,11 +42,16 @@ class GeminiImages:
             parts.append(
                 {"inline_data": {"mime_type": image.content_type, "data": b64(image.data)}}
             )
+        # ``imageSize`` ("1K", "2K", "4K") is Gemini's picture size; left out, the model answers
+        # with a 1K picture, which the catalog prices as such. A job's ``resolution`` carries it.
+        image_config: dict[str, Any] = {"aspectRatio": request.aspect}
+        if request.resolution:
+            image_config["imageSize"] = request.resolution
         return {
             "contents": [{"role": "user", "parts": parts}],
             "generationConfig": {
                 "responseModalities": ["IMAGE"],
-                "imageConfig": {"aspectRatio": request.aspect},
+                "imageConfig": image_config,
             },
         }
 

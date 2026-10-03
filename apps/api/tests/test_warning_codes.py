@@ -49,27 +49,23 @@ def test_no_new_warning_is_written_as_a_finished_sentence() -> None:
     emit these are spread across a dozen routers, several of them behind a provider
     call; a source rule is the one that stays true when a new one is added.
 
-    The exceptions below are deliberate and each has a reason. Adding to this list is a
-    decision, not a formality: everything on it is copy some reader cannot read.
+    There are no exceptions. The last three were the airline fare lab's, whose screens
+    printed `warnings` verbatim; they translate codes now (2026-09-11-fare-lab-warnings-
+    and-copy), so a new exception would be copy some reader cannot read.
     """
     import re
     from pathlib import Path
 
     han = re.compile(r"[㐀-䶿一-鿿]")
-    emits = re.compile(r"warnings\.append\(|\"warnings\":|warnings=\[|\bwarning=|_WARNING(?:S)? = ")
+    # `insert` and `extend` too: the fare lab's open-jaw warning was inserted at the
+    # front of its list and so never matched an `append`-only pattern.
+    emits = re.compile(
+        r"warnings\.(?:append|insert|extend)\("
+        r"|\"warnings\":|warnings=\[|\bwarning=|_WARNING(?:S)? = "
+    )
     # An AppError detail is a different contract: it is translated per locale by
     # app_error_handler through ERROR_DETAILS, so its zh-TW sentence is correct here.
     detail = re.compile(r"AppError\(")
-    allowed = {
-        # The airline fare lab is one of the four features the owner keeps closed, and
-        # its three screens are written in Traditional Chinese throughout — they render
-        # `warnings` verbatim, with no catalog to look a code up in. Sending codes there
-        # would put identifiers on screen. Paired with localising those screens in
-        # 2026-09-11-fare-lab-warnings-and-copy.
-        ("app/crawlers/back_to_back.py", "stale rate"),
-        ("app/crawlers/back_to_back.py", "no rate"),
-        ("app/providers/live_back_to_back.py", "no live fare"),
-    }
     found = set()
     for path in sorted(Path("app").rglob("*.py")):
         lines = path.read_text(encoding="utf-8").split("\n")
@@ -80,14 +76,9 @@ def test_no_new_warning_is_written_as_a_finished_sentence() -> None:
             if detail.search(line):
                 continue
             if emits.search(line) or emits.search(window):
-                # The allowlist is written with forward slashes; on Windows str(path)
-                # would use backslashes and exempt nothing.
                 found.add((path.as_posix(), number, line.strip()))
 
-    unexpected = [row for row in sorted(found) if row[0] not in {path for path, _ in allowed}]
-    listed = "\n".join(f"  {path}:{number}: {text}" for path, number, text in unexpected)
-    assert not unexpected, (
+    listed = "\n".join(f"  {path}:{number}: {text}" for path, number, text in sorted(found))
+    assert not found, (
         f"warnings must be codes; write them with app.warnings.warning_code:\n{listed}"
     )
-    # And the exceptions are still only the three that were argued for.
-    assert {path for path, _, _ in found} == {path for path, _ in allowed}

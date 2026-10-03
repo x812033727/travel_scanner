@@ -107,7 +107,7 @@ The exact main-branch CI run `35496710188` passed web, API, full-stack smoke
 and container jobs. Before activation, production created and verified a
 123,718,198-byte custom-format PostgreSQL backup with `pg_restore --list`;
 its SHA-256 is `b913f857338cbd1344a655b4b47bae35838a1f40fa181182d5013ee9d340629d`.
-The guarded hostinger2 deploy activated the same commit and passed `/ready`,
+The guarded `<saved-session>` deploy activated the same commit and passed `/ready`,
 `/health` and article-page checks.
 
 The publisher dry run targeted only five articles and twenty missing locales.

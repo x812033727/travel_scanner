@@ -92,6 +92,25 @@ describe("airline fare lab", () => {
     });
   });
 
+  it("offers a sign-in link when the search is refused for a signed-out session", async () => {
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(ok(status))
+      .mockResolvedValueOnce({
+        ok: false,
+        status: 401,
+        json: async () => ({ status: 401, code: "authentication_required", detail: "請先登入再繼續" }),
+      });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AirlineFareLab />);
+    await screen.findByText("政策停用");
+    fireEvent.click(screen.getByRole("button", { name: /^搜尋公開票價/ }));
+    const alert = await screen.findByRole("alert");
+    expect(alert.textContent).toContain("目前無法完成查詢");
+    // Decided by the status, not by finding a word in the message, so it holds in
+    // every locale the message may be written in.
+    expect(screen.getByRole("link", { name: "前往登入" }).getAttribute("href")).toBe("/login?next=%2Flabs%2Fairlines");
+  });
+
   it("validates that return date is not before departure", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue(ok(status)));
     render(<AirlineFareLab />);
@@ -172,7 +191,8 @@ describe("airline fare lab", () => {
       ],
       candidates: [],
       fx_rates: [reverse.fx_rate],
-      warnings: ["長榮航空：依政策暫停抓取"],
+      // Codes from the API, and a sentence from an older response that passes through.
+      warnings: ["stale_exchange_rate?currency=JPY", "fare_source_paused?airline=BR", "長榮航空：依政策暫停抓取"],
     };
     const fetchMock = vi.fn()
       .mockResolvedValueOnce(ok(status))
@@ -189,6 +209,10 @@ describe("airline fare lab", () => {
     expect(screen.getByText(/包覆倒買估算省下.*2,000/)).toBeTruthy();
     expect(screen.getAllByText("外站始發倒買票").length).toBeGreaterThan(0);
     expect(screen.getByText(/JPY 2026-08-30/)).toBeTruthy();
+    expect(screen.getByText("JPY 使用七日內的舊匯率估算 TWD。")).toBeTruthy();
+    expect(screen.getByText("長榮航空：官方票價頁依 fail-closed 政策暫停抓取。")).toBeTruthy();
+    expect(screen.getByText("長榮航空：依政策暫停抓取")).toBeTruthy();
+    expect(screen.queryByText(/stale_exchange_rate|fare_source_paused/)).toBeNull();
     const [url, init] = fetchMock.mock.calls[1];
     expect(url).toBe("/api/travel/crawlers/airlines/back-to-back-fares");
     const payload = JSON.parse(String(init.body));

@@ -751,7 +751,7 @@ Batch036 的 marketing 與 measurement 各四篇，以及 Batch040/041 各四篇
 
 API 與 web 執行中容器的 INTERNAL_PROXY_TOKEN 均未設定；presence、至少 32 字元及非空相等判定全部為 false。只回傳這些布林值，未輸出或保存任何憑證值、憑證雜湊或完整環境。若準備部署缺值即拒絕啟動的修正，必須先處理正式設定；本次沒有修改設定。
 
-原始盤點證據位於外部 `C:/Users/x8120/.codex/tmp/p1-audit-20260929/production-inventory.json`；同一外部目錄的 `production-inventory-analysis.json` 保存本機基準比對與彙總。上述兩檔不在 docs/，本文件保存可追溯摘要。這份摘要不含私人 ID、帳號、正文、token 或完整環境。
+原始盤點證據位於外部 `<home>/.codex/tmp/p1-audit-20260929/production-inventory.json`；同一外部目錄的 `production-inventory-analysis.json` 保存本機基準比對與彙總。上述兩檔不在 docs/，本文件保存可追溯摘要。這份摘要不含私人 ID、帳號、正文、token 或完整環境。
 
 對看板的具體影響
 

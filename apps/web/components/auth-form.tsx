@@ -3,7 +3,7 @@
 import { useLocale, useTranslations } from "next-intl";
 import { type FormEvent, useState, useSyncExternalStore } from "react";
 import { Link, useRouter } from "@/i18n/navigation";
-import { type Locale, locales } from "@/i18n/routing";
+import { type Locale, localeCookieString, locales } from "@/i18n/routing";
 import { ApiError, api } from "@/lib/api";
 import { trackAnalytics } from "@/lib/analytics";
 import { safeNextPath } from "@/lib/navigation";
@@ -52,7 +52,7 @@ export function AuthForm({ mode, nextPath = "/", oauthError }: { mode: "login" |
       });
       const preferredLocale = result.user?.preferred_locale || locale;
       if (mode === "register") trackAnalytics("registration_completed");
-      document.cookie = `travel_locale=${preferredLocale}; path=/; max-age=31536000; samesite=lax`;
+      document.cookie = localeCookieString(preferredLocale);
       const { locale: pathLocale, pathname } = splitLocalePrefix(safeNextPath(nextPath));
       // A locale named in `next` is the route the visitor was on, so it wins over the account's
       // preferred locale; a bare path follows the preference as before. Either way the router

@@ -24,7 +24,8 @@ import {
 import { aiModelsHref } from "@/lib/admin-settings-ownership";
 import { adminNavigate, useAdminQueryState, useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 import { api } from "@/lib/api";
-import { splitGuideBlocks } from "@/lib/guides";
+import { guideHref, splitGuideBlocks } from "@/lib/guides";
+import { localeUrl } from "@/lib/seo";
 
 const tabs = ["review", "sources", "settings", "runs"] as const;
 // Each list asks the API for exactly these statuses. Fetching the newest rows of every
@@ -323,6 +324,11 @@ export function AdminNewsWorkspace() {
   const situation = detail ? situationOf(detail) : "working";
   const actions = detail ? availableActions(detail) : [];
   const gate = detail && settings ? settings.gates[detail.vertical] : undefined;
+  // The article exists from the first draft, but only a published candidate's locales have a
+  // public version: any other status would link to a 404.
+  const livePath = detail?.status === "published" && detail.article_slug && detail.article_kind
+    ? guideHref(detail.article_kind, detail.article_slug)
+    : null;
 
   return <div className="space-y-6">
     <header><p className="text-sm font-bold uppercase tracking-[.14em] text-[var(--teal)]">{copy.kicker}</p>
@@ -423,6 +429,7 @@ export function AdminNewsWorkspace() {
             {!document ? <p className="mt-4 text-[var(--muted)]">{copy.noDocument}</p> : <article className="mt-5 space-y-4"><h2 className="text-2xl font-bold">{document.title}</h2><p className="text-[var(--muted)]">{document.description}</p><ContentBlocks blocks={contentBlocks} labels={labels} locale={previewLocale} />
               <h3 className="font-bold">{copy.source}</h3><ul className="list-disc pl-5 text-sm">{document.sources.map((item) => <li key={item.url}><a href={item.url} target="_blank" rel="noopener noreferrer" className="text-[var(--teal)] underline">{item.title}</a></li>)}</ul></article>}
             {detail.guide_article_id && <div className="mt-4 flex flex-wrap gap-2">{newsLocales.map((value) => <Link key={value} href={`/admin/guides?article=${detail.guide_article_id}&lang=${value}`} className="inline-flex min-h-11 items-center rounded-xl border border-[var(--line)] px-3 font-semibold">{copy.openEditor} · {value}</Link>)}</div>}
+            {livePath && <div className="mt-2 flex flex-wrap gap-2">{newsLocales.map((value) => <a key={value} href={localeUrl(value, livePath)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center rounded-xl border border-[var(--line)] px-3 font-semibold text-[var(--teal)]">{copy.openLive} · {value}</a>)}</div>}
           </div>
           <div className={panelClass}><h2 className="text-xl font-bold">{copy.assessments}</h2><div className="mt-3 overflow-x-auto"><table className="w-full text-left text-sm"><thead><tr><th className="p-2">{copy.status}</th><th className="p-2">{copy.locale}</th><th className="p-2">{copy.confidence}</th><th className="p-2">{copy.model}</th><th className="p-2">{copy.reasons}</th></tr></thead><tbody>{detail.assessments.map((item) => <tr key={item.id} className="border-t border-[var(--line)]"><td className="min-w-40 p-2">{named(copy.assessmentTypes, item.assessment_type)}{typeof item.details.stage === "string" && item.details.stage in copy.assessmentStages ? `・${named(copy.assessmentStages, item.details.stage)}` : ""}: {named(copy.verdicts, item.verdict)}{typeof item.details.tier === "string" ? ` (${named(copy.tiers, item.details.tier)})` : ""}</td><td className="p-2">{item.locale ?? "—"}</td><td className="p-2">{item.confidence?.toFixed(3) ?? "—"}</td><td className="p-2">{item.provider === "human" ? copy.assessmentTypes.human : `${item.provider ?? "—"} ${item.model ?? ""}`}</td><td className="min-w-40 p-2">{item.reasons.map((value) => named(copy.reasonCodes, value)).join(" · ") || "—"}</td></tr>)}</tbody></table></div></div>
         </section>}

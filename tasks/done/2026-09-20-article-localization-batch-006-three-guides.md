@@ -48,20 +48,20 @@ Validate each materialized `GuideDocument`, every translated scalar, numeric and
 ## Notes
 
 - Scope is exactly these three pack paths, three asset directories and this task file. Original four-guide task `2026-09-20-article-localization-batch-006` remains owned by `codex-batch006-author` but now claims Hanoi only. This task is claimed by `codex-batch006-three`.
-- Initial public read-only snapshot: `C:/Users/x8120/.codex/article-localization-batch-006/production-baseline-final.json`, SHA-256 `51cad13d52c9a0d275d37943f258975ace1c89ee96b56810c4f083d689b9c322`, 2026-09-20T11:36:16Z. All three active articles had only published zh-TW, no expiry, and matching repository source at that time. Recheck immediately before release.
+- Initial public read-only snapshot: `<home>/.codex/article-localization-batch-006/production-baseline-final.json`, SHA-256 `51cad13d52c9a0d275d37943f258975ace1c89ee96b56810c4f083d689b9c322`, 2026-09-20T11:36:16Z. All three active articles had only published zh-TW, no expiry, and matching repository source at that time. Recheck immediately before release.
 - `kuala-lumpur-airport-transfer-plan`: article v1, published zh-TW v4, document SHA `45b44f725bd6c1c49fe4e9df48294a904f873d98ef977557652a7da105e79538`.
 - `singapore-hawker-first-visit`: article v1, published zh-TW v6, document SHA `ec29aa68e3dab66147b0964e27589889e7e1813b86a18024886eb52c33866a20`.
 - `singapore-gardens-indoor-outdoor`: article v1, published zh-TW v6, document SHA `639194c34c9bec35ace1abc56b05f98b3f9eac63fa3589c6c0b8b5dca7d676f0`.
 - Hero images are credited Mokaair AI-generated illustrations, explicitly not photographs. Source SVGs carry © Mokaair; preserve attribution and license metadata.
-- First independent review: `C:/Users/x8120/.codex/article-localization-batch-006/independent-review.md`, SHA-256 `636e6fe2a49f026d31a8052a922a93d69fb7609c4f1268fe8830d90c9e94380c`. It requested KL English SVG legibility and Japanese last-train wording, Singapore Gardens English apostrophe rendering, and exact zh-CN filename case. Latest unsigned rework: `C:/Users/x8120/.codex/article-localization-batch-006/rework-round3/review-handoff.json`, SHA-256 `e45e34c6e5e372451ddf53050f2cf431fc1ff32160bd54aa5b3d3fa1638df6ff`. Independent re-review and current live source pinning are pending.
-- Release hold: KL `/document/blocks/21/url` and Hawker `/document/blocks/23/url` are fixed zh-TW same-site links in the source-derived documents. Intended five-language routes were checked with HTTP 200 and matching `lang`/canonical in `C:/Users/x8120/.codex/article-localization-batch-006/link-route-verification.json`, SHA-256 `84dd8fcdd5102b61b314873a56096f91c5c9673c796b9cb1f8e495796d5a135f`. A separate narrow link tool must handle locale-prefixed rewriting and rebind jobs before approval or publication.
+- First independent review: `<home>/.codex/article-localization-batch-006/independent-review.md`, SHA-256 `636e6fe2a49f026d31a8052a922a93d69fb7609c4f1268fe8830d90c9e94380c`. It requested KL English SVG legibility and Japanese last-train wording, Singapore Gardens English apostrophe rendering, and exact zh-CN filename case. Latest unsigned rework: `<home>/.codex/article-localization-batch-006/rework-round3/review-handoff.json`, SHA-256 `e45e34c6e5e372451ddf53050f2cf431fc1ff32160bd54aa5b3d3fa1638df6ff`. Independent re-review and current live source pinning are pending.
+- Release hold: KL `/document/blocks/21/url` and Hawker `/document/blocks/23/url` are fixed zh-TW same-site links in the source-derived documents. Intended five-language routes were checked with HTTP 200 and matching `lang`/canonical in `<home>/.codex/article-localization-batch-006/link-route-verification.json`, SHA-256 `84dd8fcdd5102b61b314873a56096f91c5c9673c796b9cb1f8e495796d5a135f`. A separate narrow link tool must handle locale-prefixed rewriting and rebind jobs before approval or publication.
 
 ## 2026-09-20 rebind and assembly checkpoint
 
 - The three-guide live read-only audit at 13:32:37Z found all three published
   zh-TW versions/content hashes unchanged, no expiry, and all twelve target
   locales absent. Its receipt is
-  `C:/Users/x8120/.codex/article-localization-batch-006/batch006-three-prepublish-audit-2026-09-20.json`,
+  `<home>/.codex/article-localization-batch-006/batch006-three-prepublish-audit-2026-09-20.json`,
   SHA-256 `641cb3418302cc01b4974025e67826262d19a7aa6e0e7b5e4e63881ae5bd8137`.
   All five versions of the three reviewed destination routes returned 200 with
   matching HTML language and canonical.
@@ -70,7 +70,7 @@ Validate each materialized `GuideDocument`, every translated scalar, numeric and
   Reused only the twelve pinned `translated-fields.json` files after checking
   every old artifact manifest/receipt and source/pack hash. No new model call.
   Rebinding receipt:
-  `C:/Users/x8120/.codex/article-localization-batch-006/three-guide-rebind-1ba-receipt.json`,
+  `<home>/.codex/article-localization-batch-006/three-guide-rebind-1ba-receipt.json`,
   SHA-256 `3cb6366b39a4af47bcefb68a293172831ea0c53616d9e7474104c8a61a33dbe4`.
 - All twelve new documents pass strict field/GuideDocument validation and SVG
   rendering reports no layout issues. Compared with the prior reviewed round3
@@ -78,17 +78,17 @@ Validate each materialized `GuideDocument`, every translated scalar, numeric and
   locale in KL and Singapore hawker, each changed from the zh-TW route to the
   same published route in its target language. Gardens documents are unchanged;
   all twelve rendered SVG files have exactly the same bytes as round3. Diff
-  receipt `C:/Users/x8120/.codex/article-localization-batch-006/three-guide-rebind-diff.json`,
+  receipt `<home>/.codex/article-localization-batch-006/three-guide-rebind-diff.json`,
   SHA-256 `f7e6fc9a36a04f3fe72c669c8ab8d19700c052afee6209735f02986924b9b2ed`.
 - Staged exactly twelve target locale documents and twelve locale-suffixed SVGs
   in this branch. Original zh-TW documents, source SVGs, hero photos/credits,
   categories and ordering are unchanged. The assembly receipt is
-  `C:/Users/x8120/.codex/article-localization-batch-006/three-guide-assembled-receipt.json`,
+  `<home>/.codex/article-localization-batch-006/three-guide-assembled-receipt.json`,
   SHA-256 `b46bb7c370b1506dc20d7be9577c4cb044fc2de34976de180ea0f8b26f66c3f2`.
   Independent round3/rebind editorial and visual signoff is complete; no
   import or publication has occurred for these three guides.
 - Independent twelve-document and artwork signoff:
-  `C:/Users/x8120/.codex/article-localization-batch-006/three-guide-independent-signoff.json`,
+  `<home>/.codex/article-localization-batch-006/three-guide-independent-signoff.json`,
   SHA-256 `4e4b382ac27cd2f95c931afb4f66a38cde4a3fa4442c962b13e737210c921875`.
   Reviewer checked every translated scalar, numerical/eligibility condition,
   credits, SVG text, 1600x900 and 390px renders. All twelve assembled
