@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-ai-terms-series-batch-03
 title: AI 名詞系列第三批：10 個新詞專文
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5-ai-terms-03
 claimed_at: 2026-10-03T10:28:47Z
 created_at: 2026-10-03T10:28:46Z
-completed_at:
+completed_at: 2026-10-03T12:13:28Z
 branch: claude/sweet-ramanujan-1v06fx
 depends_on: []
 scope:
@@ -75,6 +75,8 @@ uv run pytest tests/test_guides_content_pack.py tests/test_guides_pack_ingest.py
 ```
 
 ## Notes
+
+- **未勾的項目：** 合併由站主在草稿 PR 上決定；部署後的正式發布交給 `2026-10-03-release-ai-terms-batches-02-03`。
 
 - 查核數字與協調者收件時另改的地方在 [`ARTICLES.md`](../../docs/ai-terms-series/batch-03/ARTICLES.md)。
 - workflow 每個只能同時跑 2 個代理（容器 4 顆 CPU），所以把同一份腳本開成五個 workflow 並行，各跑 2 篇。

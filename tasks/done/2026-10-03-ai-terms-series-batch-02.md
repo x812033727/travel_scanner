@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-ai-terms-series-batch-02
 title: AI 名詞系列第二批：14 個新詞專文並接上總索引，另補全系列摘要
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5-ai-terms-02
 claimed_at: 2026-10-03T09:38:23Z
 created_at: 2026-10-03T09:38:22Z
-completed_at:
+completed_at: 2026-10-03T12:13:28Z
 branch: claude/sweet-ramanujan-1v06fx
 depends_on: []
 scope:
@@ -200,6 +200,8 @@ npm run check:tasks
 - `claude-computer-use-explained`（2026-09-14）可能落後一個版本：Anthropic 文件現在是分版本的 computer use 工具組，較早版本仍標 beta。要開票複查工具名與 beta 字樣。
 
 ## Notes
+
+- **未勾的項目：** 合併由站主在草稿 PR 上決定；部署後的正式發布交給 `2026-10-03-release-ai-terms-batches-02-03`。
 
 - 撰稿指令刻意禁止寫模型型號、價格、截止日期與排行榜分數：這批是名詞，不是產品快照，不想再開回填票。
 - **不加 `summary` 區塊。** `SummaryBlock` 的 docstring 記著站主 2026-09-16 的決定：模型寫的摘要要站主逐批讀過，再由 `pack_cli summarize --from` 套用。第一批 76 篇也都沒有，`no_summary` 警告是這個系列共通的待辦，不是這批的缺漏。

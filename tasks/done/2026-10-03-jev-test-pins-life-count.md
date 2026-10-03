@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-jev-test-pins-life-count
 title: JEV catalogue test pins the life article count, so every content batch past 960 breaks it
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5-ai-terms-03
 claimed_at: 2026-10-03T11:33:00Z
 created_at: 2026-10-03T11:32:41Z
-completed_at:
+completed_at: 2026-10-03T12:13:29Z
 branch: claude/sweet-ramanujan-1v06fx
 depends_on: []
 scope:
