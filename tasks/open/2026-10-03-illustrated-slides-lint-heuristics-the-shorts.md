@@ -2,7 +2,7 @@
 id: 2026-10-03-illustrated-slides-lint-heuristics-the-shorts
 title: Illustrated slides lint heuristics, the Shorts crop figure and an end-to-end 2K test
 status: open
-priority: P3
+priority: P1
 area: tools
 owner:
 claimed_at:
@@ -75,8 +75,12 @@ node tools/video/long-form/cli.mjs check
 
 ## Notes
 
-- Production on 2026-10-03: `slides_enabled` is false and the drama model is gemini-3-pro-image,
-  so a slides video today is drawn by Pro at 2K (same price as its 1K); the tool's estimate uses
-  Flash's 2K price. The ledger books what the server charged, so only the estimate is off.
+- **The `choiceFor` item is the urgent one.** Production on 2026-10-03 has `slides_enabled` false
+  with the drama route on and gemini-3-pro-image as its model. The tool then expects the slides
+  model (Flash) while the server draws with Pro, so `Stage.generate` books the first picture as
+  failed with `video_media_model_changed` and stops the keyframes stage after one paid, unused
+  picture. Every illustrated slides video is blocked there until the owner turns the slides
+  switch on or this is fixed. The mismatch predates PR #1166 (it came with #983); asking for 2K
+  did not cause it. With image-01 as the drama model the server answers 422 instead.
 - `tools/video/shorts/` was in the scope of `2026-09-28-sothatswhy-shorts-from-episode` (a stale
   claim) when PR #1166 was written, which is why the comment there was left.
