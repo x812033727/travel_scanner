@@ -17,6 +17,7 @@ import { TOKEN_PATTERN, readCredentials, validSite, writeCredentials } from "./c
 import { defaultClientName, startPairing, waitForPairing } from "./pairing.mjs";
 import { GEMINI_VOICE_PREFIX, MAX_REQUEST_CHARACTERS, billableForRequest, planRequests, spokenParts, voiceFields } from "./requests.mjs";
 import { buildNarration, flaggedLines, lineBody, synthesizeLines, synthesizeRequest } from "./synthesis.mjs";
+import { readCache, takeCurrent } from "./takes.mjs";
 import { encodeWav, parseWav, requireNarrationFormat } from "./wav.mjs";
 
 const FREE_TIER = 500_000;
@@ -225,10 +226,6 @@ async function audition(args, ctx) {
   return ctx.EXIT.ok;
 }
 
-function readCache(workdir) {
-  return readJson(path.join(workdir, ARTIFACTS.audio, "cache.json"), { lines: {} });
-}
-
 async function tts(args, ctx) {
   const { EXIT } = ctx;
   const values = parseArgs({
@@ -255,10 +252,7 @@ async function tts(args, ctx) {
   // A flagged repeat belongs to the same take: retake its original once, then replace all repeats.
   for (const reference of references) if (redo.has(reference.lines[0].id)) redo.add(reference.audio_ref);
   const audioDir = path.join(workdir, ARTIFACTS.audio);
-  // A clip is current when its line's own key matches, or the key of the request it came from
-  // (caches written before clips had their own keys).
-  const clipCurrent = (request, line) =>
-    !values.force && [line.key, request.key].includes(cache.lines[line.id]) && existsSync(path.join(audioDir, `${line.id}.wav`));
+  const clipCurrent = (request, line) => !values.force && takeCurrent(cache, workdir, request, line);
   const current = (request) => !request.lines.some((line) => redo.has(line.id)) && request.lines.every((line) => clipCurrent(request, line));
   // When part of a scene is still current, only the rest is retaken, each line on its own: a whole
   // scene again would re-roll every line that already passed the check, and Gemini's takes differ
