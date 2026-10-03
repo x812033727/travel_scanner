@@ -37,6 +37,8 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli guides-i
 - dry-run 對已發布的文章只說 `update`，不說改了什麼。發布更正前，把公開 API 回的 `document` 與內容包做 diff；兩邊都先過 `GuideDocument`（`apps/api/app/guides/schemas.py`）正規化，否則 `null` 與缺欄位會變成假差異。
 - 站主選了「先 pg_dump 再發布 N 篇」這類選項後，一支 `plink -m` 腳本可以一次跑完：`pg_dump -Fc` 到 `/root/travel_scanner_precable_<ts>.dump`、`exec -T api printenv ADMIN_EMAILS` 取 actor、帶 `--slug` 的 `--publish`、links rebuild／check、再一次 dry-run。
 - 匯入完再跑一次 3b 的 dry-run：應全部 `unchanged`。
+- dry-run 分不出「已發布文章的更新」和「從沒發布過的草稿」，兩者都是 `update`、`publish: true`。預期是更新的 slug，發布前先確認它們都在公開的 sitemap 裡（循序讀 sitemap index 的每個子 sitemap）；不在的那篇一發布就是新上線，要另外問站主。
+- 有 hub（索引、速查這類連到整批新文章的頁）時分兩步：先發文章，在主機用 `curl 127.0.0.1:8091/<locale>/life/<slug>` 確認每篇新文章回 200（不經邊緣層，沒有限流），再對 hub 單獨 dry-run（預期只有 `update`）與 `--publish`。腳本裡每一步都斷言數量（`created`、`updated`、`published` 是 slug 清單，取長度；`failed` 是字串或 null），不符就停在那一步。
 
 ## 4. 連結
 
@@ -44,6 +46,10 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli guides-i
 docker compose -f docker-compose.prod.yml exec -T api python -m app.cli guides-links-rebuild
 docker compose -f docker-compose.prod.yml exec -T api python -m app.cli guides-links-check --locale zh-TW
 ```
+
+- `guides-links-check` 只要有發現就 exit 1，而正式站本來就有一批舊發現（2026-10-03 zh-TW 是 88 筆）。**發布前先跑一次存檔當基準**，發布後比兩份 `findings` 的集合，只看新出現的；只比筆數會漏掉「少一筆、多一筆」。
+- 同一次匯入裡，連到「檔名排序在後面、還沒建立」的文章的連結會先被丟掉，所以 `guides-links-rebuild` 一定要跑，而且排在最後一次 `--publish` 之後。
+- 這批帶了新的搜尋別名（例：`docs/ai-terms-series/aliases.json` 有改）就在匯入後跑 `guides-aliases-seed`。它一次種三個來源，先看 dry-run 的 `inserted` 再決定；做法與數量關卡在 skill `catalog-import` 的 `references/other-data.md`。
 
 ## 5. 逐頁驗證（本機，未登入）
 
