@@ -497,6 +497,30 @@ Non-claims. This review does not accept the drama craft spec, its measured targe
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1168 voice-accent wording increment: 7 files (2026-10-03)
+
+Reviewer: `claude-pr-review-1168`. Author: `claude-fable-accent-a1` (the Claude session that wrote commit 5c820471, "Gemini voice styles say the channel's Mandarin, not 「台灣國語」", PR #1168, branch claude/video-audio-taiwanese-mandarin-5419c4, HEAD 5c820471). Scope: DURATION_ONLY. The reviewer did not write these changes and edited only this report and review.json.
+
+Baseline: HEAD's parent e6153c6e (#1167) is the merge base with the local origin/main ref, and its bytes of the seven files below equal the hashes bound before this increment (each compared with review.json). So `git diff e6153c6e 5c820471` of those files is exactly the unreviewed change. Of the commit's 23 changed files, seven are bound: apps/api/app/video_automation/models.py (+4/−1), docs/videos/DESIGN.md (+1/−1), docs/videos/README.md (+1/−0), tools/video/automation/automation.test.mjs (+2/−2), tools/video/automation/flow.mjs (+2/−1), tools/video/automation/prompts.mjs (+4/−3) and tools/video/tts/tts.test.mjs (+4/−4). The other 101 bindings are untouched: `node tools/video/long-form/cli.mjs check` failed on these seven paths and nothing else. The two commits on local origin/main past the merge base (#1160, #1164) change two bound files, apps/api/app/video_automation/settings.py and apps/api/tests/test_video_automation_settings.py, which this branch has not merged; in this tree they keep their bound bytes and are outside this increment. The reviewer read the full delta of all seven files and, for context, the unbound new tools/video/core/accent.mjs and accent.test.mjs and the unbound deltas of tools/video/tts/requests.mjs and tools/video/automation/register.mjs; no network, no fetch, no implementation file edited.
+
+Findings. The commit retires the accent wording 「台灣國語」 / "a natural Taiwanese accent" from Gemini voice styles in favour of CHANNEL_ACCENT, 「標準國語，咬字清楚，台北人平常說話的語調」, exported by the new unbound tools/video/core/accent.mjs. Per file:
+
+- models.py: DEFAULT_VOICE's `style` string opens with the new wording instead of 「台灣國語說書人」 (the string is split across one more source line), and a two-line comment above it names accent.mjs. The provider, voice name and the rest of the storytelling style are unchanged; the file's 28 lines that name minutes, durations or seconds are byte-identical.
+- flow.mjs: imports CHANNEL_ACCENT and builds the production narrator's style from it (`${CHANNEL_ACCENT}。${narrator.performance}`) instead of the literal 「台灣國語，自然台灣口音。」. The existing `.slice(0, 400)` on that line is the style length cap, not a duration. The 18 lines that name target_minutes, minEpisodeMinutes, effectiveEpisodeMinutes, MIN_EPISODE or needsMinimumLength are byte-identical.
+- prompts.mjs: imports CHANNEL_ACCENT and rewords three schema notes in the series-bible and episode-outline prose, where "a Taiwan Mandarin direction" for `voice.style` and `voice_style` becomes "a zh-TW performance direction (its accent wording is 「${CHANNEL_ACCENT}」, never 「台灣國語」 or 「台灣腔」)". The file's 12 target_minutes lines are byte-identical, and no runtime_spec, action_seconds or target_seconds line is touched.
+- automation.test.mjs: one test's title says "channel accent direction" instead of "Taiwan direction", and its expected settled style starts with the new wording. No other assertion changes, and the fixture opt-out `process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0"` (line 32) is byte-unchanged.
+- tts.test.mjs: one fixture style reads 「平靜，咬字清楚」 instead of 「平靜，台灣國語」, and three expected request-body styles carry the new wording where the stored style said 「台灣國語」, because the unbound tts/requests.mjs now sends `channelAccent(voice.style)`. No duration expectation changes, and the opt-out line 23 is byte-unchanged.
+- README.md: one new 頻道規格 table row, 口音, records the wording, its English form, the 2026-10-03 decision and that stored styles are rewritten at synthesis time (so the clip cache key changes while speechHash does not). The 11 lines that name 分鐘, minute or 秒 are byte-identical.
+- DESIGN.md: one bullet in the Gemini speech notes now says the accent is set only through `style` and records the same decision with a pointer to README.md. The four lines naming 分鐘 or minute are byte-identical.
+
+A scan of all 18 added and 12 removed lines across the seven files finds no minute, target_minutes, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, needsMinimumLength, 480, 600, 780, 14,400, runtime_spec, action_seconds, target_seconds, frame, duration, seconds, covered or source-hash token. The same scan across the whole commit's 23 files finds one changed line, in the unbound docs/videos/ILLUSTRATED.md, whose only change is the opening words of the `voice.style` example; the 20-second hook and the 900/600/1200 ms pause beats on that line are carried unchanged. So the change touches none of the 600/780-second targets, the 480-second measured minimums, the source hashes, the covered status, the eight-minute minimums, the explainer's 10-minute default or 8–20 range, the drama's 1–8 range or the brand story's 13.
+
+Ran (Node 24.13.0, offline): before rebinding, `node tools/video/long-form/cli.mjs check` printed FAIL on exactly the seven stale bindings above and exited 1. `node --test tools/video/long-form/review.test.mjs tools/video/long-form/plans.test.mjs` ran 7 tests: 6 passed and 1 failed, the shipped binding regression on those same seven paths. `node --test tools/video/automation/automation.test.mjs tools/video/tts/tts.test.mjs tools/video/core/accent.test.mjs` ran 101 tests: 101 passed, exit 0. The CLI check and the two long-form test files are rerun after rebinding.
+
+Non-claims. This review does not accept the accent wording itself, the `channelAccent()` rewrite rules or their regex, the clip-cache consequences for stored videos, the admin settings row on the production host, a real Gemini call or a listening test, nor CI. It does not cover the other 16 changed files of the commit, which are unbound, or the two bound files that local origin/main changed past the merge base, which this branch has not merged. PASS is DURATION_ONLY for the seven rebound hashes below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -509,7 +533,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `.claude/skills/youtube-video/SKILL.md` | `374bb99f98454855a3d664a99eebb405db9bea72723fd554f7ff6a9ffbd05179` |
 | `apps/api/app/video_automation/anime_policy.py` | `f5a16a5ef455c3ced97a5139d7648ad510abc54b25155a2b64ac44309f63a802` |
 | `apps/api/app/video_automation/judge.py` | `f27078a3792caed5fb7f0af14bd95d631824c562c37d3aafed375c06dbbc21ca` |
-| `apps/api/app/video_automation/models.py` | `93ee8ee2df1b8711a413e730e982ecd444680d321fc1121b7a90c9b92f1b820f` |
+| `apps/api/app/video_automation/models.py` | `4a9e59680a65274e532912de176ff211e9b98311b127aecf3cc4dbabaea1ef89` |
 | `apps/api/app/video_automation/schemas.py` | `18cab46cfbcb5cfe9ab6a2f48a7d9f3ec59eb4f76e5f5e78796315de5a4573b0` |
 | `apps/api/app/video_automation/series.py` | `ca8e61d2431752d78f6e7bc5c98c26dd1c862d8ccb2bf596aa124b088f378dea` |
 | `apps/api/app/video_automation/settings.py` | `381d17d963f365153a39161ace5d9e5de79faa8bf373d6b9ceb2c0861f0bb644` |
@@ -537,10 +561,10 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/web/messages/ko/admin.json` | `f59e8b36344ba6a4763a0ac8288ec8f488f0af58163d9db74e5e7be95964ae8d` |
 | `apps/web/messages/zh-CN/admin.json` | `ebdf0316ea8b2bbef703b6a32f45af1042c3dc6b28bad0a69c8dc64586e6d779` |
 | `apps/web/messages/zh-TW/admin.json` | `aeef4895b703c7baadf4211d4604febe9ee343ee276ea0ba4593089c81601db9` |
-| `docs/videos/DESIGN.md` | `299449c6c19a40a0e17868615a7d8442771449e0db6e63186ca9c57a0d57ab41` |
+| `docs/videos/DESIGN.md` | `728615de7e4c4461c3cfce098d5c18ea7309ea9fd392bef048fef9a3b176f2ac` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `ac08a33baedd84f282901594e55758f4b390ee1a8dc798e2c25c4b463081aa80` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
-| `docs/videos/README.md` | `928de9f2dcfbe7126654501e0dbc4339dea55f716f875e931ab2df0cae3e219d` |
+| `docs/videos/README.md` | `662b1579ad3f1594b4e1a283aab068c32fe7a6724c7e7104cfb2a5f78aee9e11` |
 | `docs/videos/long-form/README.md` | `dd639c0c85595881d1bda64541d28f29e8d90f1067e541c08eb28dc9c4543c3b` |
 | `docs/videos/long-form/plans.json` | `22023c15fa10a24e4a0141e3fc5930ff6925a84ff5ab5cb5a466a5baa15b7108` |
 | `docs/videos/long-form/policy.json` | `6f08e7cd27b98710dc308bdb7ea44a6db4b1c8891d0731d5387d9b2245636bad` |
@@ -553,10 +577,10 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `67e53a0cf183c3175adac2ce28d8b2fef7792a408b6b49125345e129115e7d05` |
-| `tools/video/automation/automation.test.mjs` | `01e4992215d76cec6180b7b7fe54f6bac6f6e049f851cd4a08c05731dc06ec10` |
+| `tools/video/automation/automation.test.mjs` | `958624ca2bbfb8961e1a88f9f4691ae9b83d5897166fe79e7c6ac2d4647dc781` |
 | `tools/video/automation/discuss.mjs` | `691f6ec55bde0b1c34c54fd38f39681d50617035dab78b0d2c751266a61f43ee` |
-| `tools/video/automation/flow.mjs` | `aa27e8c5bf89d31d504b641d1996cc400d9660f5b5667a62d05ca4fa3a4d64d1` |
-| `tools/video/automation/prompts.mjs` | `370d745bc1937e8212c7970d1ebf2c32a609ffe5ec7250e46ef9392d1df030b3` |
+| `tools/video/automation/flow.mjs` | `3d4653bb85dd2e4ba7a5233bfebc1348472524194a0cb4265954accf1e8971cd` |
+| `tools/video/automation/prompts.mjs` | `f6966df5beffa13e001bd3100ec3dd9a6762e3bcd41963710cbb528bef36a6a7` |
 | `tools/video/automation/series.mjs` | `06fbcd8b8bb2e1eedc134d3f11eab4d1555d3c53039e4663f37a1e0d643e577d` |
 | `tools/video/automation/series.test.mjs` | `b8606bc1fa64716ef265c41f140f1b31b3eb86bc8c53f438cabb46354a7f27ca` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
@@ -610,4 +634,4 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |
 | `tools/video/tts/check.test.mjs` | `ad385d7df22fd297588dfef8a72b0b3f6261d0fb4619e4c538a30ef8464b1477` |
 | `tools/video/tts/synthesis.mjs` | `0081296cca9114ec528d8581f29fa553e2b5657a347988bf5b789e5eed2b6680` |
-| `tools/video/tts/tts.test.mjs` | `8b6899f205dc8cfa3c65d84050cf8042b76694345d5f22f954e805b5819ff239` |
+| `tools/video/tts/tts.test.mjs` | `98b700586add6110b8ffe5b9008780911028038de8ccf2e75913d0de317c5907` |
