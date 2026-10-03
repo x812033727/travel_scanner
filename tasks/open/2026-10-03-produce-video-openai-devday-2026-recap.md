@@ -51,8 +51,12 @@ each announcement changes for a Taiwan viewer's plan, bill and settings rather t
 - [x] Outline gate 2026-10-03 12:49Z through `_tools/outline-gate.mjs` (the worker's submitOutline calls, since
       `review-push` needs a video.json): Jev picked A at 0.85 (stance 0.91, demo 0.94, advice 0.01), approved on arrival
       (review `59570a68-7a03-43b5-99c2-25372710b391`); `review-pull` recorded it (brief.md sha256 `37676d25…`).
-- [ ] Writer, three report-only checkers, verifier round 1 (and 2 if more than three fact changes), listener pass,
-      picture and cadence critics, completeness critic; lint zero errors (ultracode workflow `wf_1d10f729-77d`).
+- [x] Writer (cut off by the session limit after `video.json`; a second agent wrote `claims.md`, `shorts.json` and the
+      dictionary entries), three report-only checkers (numbers, availability, names), verifier round 1 (23 fact changes),
+      round 2 (4 more narrowings), listener pass (52 edits), cadence / register / stance / fact-drift critics with three
+      re-check rounds, three picture critics (33 of 47 prompts rewritten, 15 shots added so no state runs over 8 s and
+      pictures cover over half), pause beats set by `setPauseBeats`, then a final verification of the polished text
+      (`verify-3.md`). Lint zero errors.
 - [ ] `tts --dry-run`, `tts`, `check-audio`, `review-push --gate audio`, `review-pull`.
 - [ ] `keyframes`, `render`, `assemble`, `captions`, `qa`, `review-push --gate final`, `package`, `review-push --gate publish`.
 
@@ -77,3 +81,25 @@ node tools/video/cli.mjs status --slug openai-devday-2026-recap
   `always-on-agent-explained` (PR #1019) already explains dots in depth, so this video only places dots and points to it.
 - The recap's 「瞭解詳情」 links for computer use and plugin extensions point at vercel preview deployments, not official
   documentation URLs: treat them as unconfirmed and write 「以官網為準」 where they are the only source.
+- The branch is checked out in the worktree `video-audio-taiwanese-mandarin-5419c4`, so the work from the script stage
+  on happened in the worktree `video-devday-2026-recap-61f1b1` (the branch merged in, commits pushed as
+  `HEAD:claude/video-devday-2026-recap`). The agents' rules, the checkers' reports, the picture findings and the
+  snapshots of each stage are in `<VIDEO_WORKDIR>/openai-devday-2026-recap/_tools/` (`COMMON.md`, `verify/`,
+  `critic-pictures/findings.json`, `listen/`, `snapshots/`).
+- The recap page lists 25 items (4+7+4+7+3), not 26; the script's five lists hold 9+1+6+5+4.
+- Where `brief.md` and the official pages disagree the script follows the pages, and `brief.md` stays as approved (the
+  outline approval is bound to its hash): the brief says the earlier video explained how dots works and fails (it explains
+  AI agents and gives dots one sentence); 「一律不給／永遠不給」 for what sign-in shares (the help page: not shared by
+  sign-in itself, an app can request access separately); 「官網說登入就有 9 項」 (our count; the page never says it, and one
+  of the nine is not yet on Enterprise / Edu / Healthcare); four contradictions called 「同一頁」 (only Codex 雲端 is);
+  「訂過」 for the Pro 200 window (an active subscription at any point in it); scheduled whole-repository scans as a
+  company extra (all Codex users); 「行動版只能看」 for Spaces (the recap says mobile is coming); one action for each of
+  five lists (the last chapter has four).
+- Expiring facts, to re-open before the upload: Decisions API was 「限量預覽…預計未來幾天內全面推出」 on 2026-09-29 and
+  the developer docs showed no change on 2026-10-03; GPT-5.5 leaves ChatGPT on 2026-10-14 (the Plus step in the last
+  chapter reads as past after that day); the Pro 200 old allowance ends 2026-10-29; dots' higher cap is first-month only;
+  GPT-6.1 Sol Ultrafast is 「即將推出」 on the recap.
+- Lint keeps one warning on purpose: the opening chapter runs about 38 s against the 20 s hook target (the question and
+  the 「你以為…其實…」 turn land in the first three lines, about 12 s; the final gate's pace check does not fail on it).
+- Illustrations: `keyframes --dry-run` on 2026-10-04 says about US$6.99 for one take of the 62 shots and up to US$20.98
+  at three takes, against the US$20 cap per video.
