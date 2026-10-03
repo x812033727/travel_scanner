@@ -16,7 +16,7 @@
 | S4 | `https://academy.openai.com/public/courses/ai-for-college-students-gxgmr` | 200 | 296,459 | 是，但要從 `<script id="__NEXT_DATA__">` 的 `props.pageProps.data.course.course` 取；剝標籤只剩 425 字的導覽殼 |
 
 四條都讀到正文，`checked_on` 維持 2026-09-23。所有英文引文以連續字串比對確認今天仍在來源正文裡（26 條，全部命中）。
-工具：`C:\Users\x8120\mokaair-work\news47\_tools\ai-news-openai-academy-paths-20260921\`（`fetch.py`、`course_extract.py`、`verify.py`、`apply_edits.py`、`append_factcheck.py`）。
+工具：`<home>\mokaair-work\news47\_tools\ai-news-openai-academy-paths-20260921\`（`fetch.py`、`course_extract.py`、`verify.py`、`apply_edits.py`、`append_factcheck.py`）。
 
 ## 2. 主張表
 
@@ -213,7 +213,7 @@ lint_exit=1
 ```
 
 （只剩 `image_missing` 與 `raw_internal_url`，符合 FACTCHECK-47 對出圖與 relink 前的預期。log 檔：
-`C:\Users\x8120\mokaair-work\news47\_out\check_ai-news-openai-academy-paths-20260921.log`、
+`<home>\mokaair-work\news47\_out\check_ai-news-openai-academy-paths-20260921.log`、
 `…\lint_ai-news-openai-academy-paths-20260921.log`。）
 
 ## 8. 結論

@@ -24,14 +24,14 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:17-alpine
+        image: postgres:17-alpine@sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24
         env: { POSTGRES_DB: travel_scanner, POSTGRES_USER: travel, POSTGRES_PASSWORD: travel }
         ports: ["5432:5432"]
         options: >-
           --health-cmd "pg_isready -U travel -d travel_scanner"
           --health-interval 5s --health-timeout 3s --health-retries 10
       redis:
-        image: redis:7.4-alpine
+        image: redis:7.4-alpine@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499
         ports: ["6379:6379"]
     defaults: { run: { working-directory: apps/api } }
     env:
@@ -154,7 +154,7 @@ jobs:
   containers:
     runs-on: ubuntu-latest
     env:
-      NGINX_IMAGE: nginx:1.28-alpine
+      NGINX_IMAGE: nginx:1.28-alpine@sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       # Retried pull, then --pull=never below; see the api job and tools/ci/pull-images.sh.
@@ -198,14 +198,14 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:17-alpine
+        image: postgres:17-alpine@sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24
         env: { POSTGRES_DB: travel_scanner, POSTGRES_USER: travel, POSTGRES_PASSWORD: travel }
         ports: ["5432:5432"]
         options: >-
           --health-cmd "pg_isready -U travel -d travel_scanner"
           --health-interval 5s --health-timeout 3s --health-retries 10
       redis:
-        image: redis:7.4-alpine
+        image: redis:7.4-alpine@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499
         ports: ["6379:6379"]
         options: >-
           --health-cmd "redis-cli ping"
@@ -246,7 +246,7 @@ jobs:
       COMMUNITY_MAIL_FROM: Mokaair CI <accounts@example.test>
       # Chainguard's MinIO pinned by digest; see the api job.
       MINIO_IMAGE: cgr.dev/chainguard/minio@sha256:bd014394a80898e68c149f2311fdf8d5a2c2f3bb2c33b9327ae6d02b4b065ae1
-      MAILPIT_IMAGE: axllent/mailpit:latest
+      MAILPIT_IMAGE: axllent/mailpit:v1.31.3@sha256:ed9b00c609e77e99c79b93f1178255ebc271868920f2c69a8d166bd5634ed10d
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       # Retried pull, then --pull=never below; see the api job and tools/ci/pull-images.sh.

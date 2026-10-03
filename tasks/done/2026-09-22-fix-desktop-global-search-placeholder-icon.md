@@ -43,7 +43,7 @@ web lint/type checking and the existing site-search tests if touched.
 ## Notes
 
 Observed deployed revision: d5f03e679bef2102e843426c42f045aef4ae08c0.
-Evidence: `C:/Users/x8120/.codex/article-localization-release/batch015/public-qa-after-publish-20260922T0808`
+Evidence: `<home>/.codex/article-localization-release/batch015/public-qa-after-publish-20260922T0808`
 and `batch016-llms/privacy-after-import-20260922T0808` under the same release root.
 The private-page visual receipt SHA256 is
 `e30c223090b26b8f46a76b1325cab76d8b017c73c1fee81bee910e072e67cb6b`.
@@ -78,7 +78,7 @@ No shared header implementation was changed during those content releases.
   validated 1,131 files with existing stale-claim / overlap warnings.
   The completed task has no duplicate copy in `tasks/open`.
 - Evidence stays outside the repository under
-  `C:/Users/x8120/.codex/tmp/site-search-20260929/`.
+  `<home>/.codex/tmp/site-search-20260929/`.
   Clean baseline receipt SHA256:
   `8bcb57090e5f2b3eef6aa52e4459dc19a456303227d80693da116f69fb6446f0`.
   Final receipt SHA256:

@@ -66,7 +66,7 @@ and production browser acceptance before marking the dependent release task done
 ## Notes
 
 Selection evidence is outside Git under
-`C:/Users/x8120/.codex/article-localization-release/batch018-inventory/`.
+`<home>/.codex/article-localization-release/batch018-inventory/`.
 `selection-receipt.json` SHA256
 `f93e14a1df4bedeca4ae3bf30eeafb253ff959c21e7a0e30a18779fd2394afe8`.
 Fresh live snapshot at 2026-09-22T09:14:33Z has SHA256
@@ -89,15 +89,15 @@ warnings; no other warning is approved.
 
 Independent review receipts (outside Git):
 
-- `C:/Users/x8120/.codex/article-localization-release/batch018-web-basics/root-independent-cms-maintenance-en-cn-review.json`
+- `<home>/.codex/article-localization-release/batch018-web-basics/root-independent-cms-maintenance-en-cn-review.json`
   SHA256 `355fefefa9ae18d44d3da313d5b12dd505858bf6f302c22f7b974b7126ca5301`.
-- `C:/Users/x8120/.codex/article-localization-release/batch018-web-basics/independent-cms-maintenance-ja-ko-review/receipt-index.json`
+- `<home>/.codex/article-localization-release/batch018-web-basics/independent-cms-maintenance-ja-ko-review/receipt-index.json`
   SHA256 `f641cce471beac42dd1f22d350d1dcbf28b76d627696d54bcac5bf0695d46ef6`.
-- `C:/Users/x8120/.codex/article-localization-release/batch018-web-basics/independent-cms-maintenance-assets/receipt-pass.json`
+- `<home>/.codex/article-localization-release/batch018-web-basics/independent-cms-maintenance-assets/receipt-pass.json`
   SHA256 `bc725ddfde838a3bcd64e65a15c77e3b28a84c7ce53acef9af5a14c2e02fcb75`.
-- `C:/Users/x8120/.codex/article-localization-release/batch018-web-basics/independent-domain-hosting-body-review-resumed-20260923/receipt-index.json`
+- `<home>/.codex/article-localization-release/batch018-web-basics/independent-domain-hosting-body-review-resumed-20260923/receipt-index.json`
   SHA256 `8bdafb8d831a5fe91c1d9f49c26b3125c90516649b9cede5d3f37a80b84fcbcd`.
-- `C:/Users/x8120/.codex/article-localization-release/batch018-web-basics/independent-domain-hosting-assets-resumed-20260923/receipt-pass.json`
+- `<home>/.codex/article-localization-release/batch018-web-basics/independent-domain-hosting-assets-resumed-20260923/receipt-pass.json`
   SHA256 `fd5544e3fc9fa0aa77a077c7a03fd2180d0b10940d1642e7728470f98ba20c07`.
 
 Four candidate ArticlePacks preserve the entire original source bytes by only

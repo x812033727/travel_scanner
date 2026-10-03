@@ -2,7 +2,7 @@
   {
     "type": "system",
     "subtype": "init",
-    "cwd": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_",
+    "cwd": "<home>\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_",
     "session_id": "46542280-3d94-4538-ad0d-80d0155eedcd",
     "tools": [
       "Glob",
@@ -115,12 +115,12 @@
     "product_feedback_disabled": false,
     "uuid": "5f88408d-c51a-4527-8834-257fa630ed79",
     "memory_paths": {
-      "auto": "C:\\Users\\x8120\\.claude\\projects\\C--Users-x8120-AppData-Local-Temp-mokaair-extra-xlu5o3b-\\memory\\"
+      "auto": "<home>\\.claude\\projects\\<project-slug>\\memory\\"
     },
     "messaging_socket_path": "\\\\.\\pipe\\LOCAL\\cc-msg-a6dfcb73bb2e0a50ce47623a1d062802",
     "fast_mode_state": "off",
     "fast_mode_disabled_reason": "sdk_opt_in_required",
-    "powershell_path": "C:\\Users\\x8120\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe"
+    "powershell_path": "<home>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe"
   },
   {
     "type": "system",
@@ -236,7 +236,7 @@
           "id": "toolu_01Ayx7dTaWbjhHxMsAyE1R9W",
           "name": "Read",
           "input": {
-            "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_\\fixtures\\toggle.diff"
+            "file_path": "<home>\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_\\fixtures\\toggle.diff"
           },
           "caller": {
             "type": "direct"
@@ -269,7 +269,7 @@
     "request_id": "req_011Cf3TdQrraT2M6fh1R7GmW",
     "wire_tool_inputs": {
       "toolu_01Ayx7dTaWbjhHxMsAyE1R9W": {
-        "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_\\fixtures\\toggle.diff"
+        "file_path": "<home>\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_\\fixtures\\toggle.diff"
       }
     }
   },
@@ -292,7 +292,7 @@
     "tool_use_result": {
       "type": "text",
       "file": {
-        "filePath": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_\\fixtures\\toggle.diff",
+        "filePath": "<home>\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_\\fixtures\\toggle.diff",
         "content": "--- a/model.js\n+++ b/model.js\n@@ -5,3 +5,3 @@\n export function toggleTodo(items, id) {\n-  return items.map(item => item.id === id ? { ...item, completed: !item.completed } : item);\n+  return items.map(item => item.id !== id ? { ...item, completed: !item.completed } : item);\n }\n",
         "numLines": 8,
         "startLine": 1,
@@ -313,7 +313,7 @@
           "id": "toolu_0162WZsG8cn65bML85astUXe",
           "name": "Read",
           "input": {
-            "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_\\.claude\\skills\\review-change\\templates\\report.md"
+            "file_path": "<home>\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_\\.claude\\skills\\review-change\\templates\\report.md"
           },
           "caller": {
             "type": "direct"
@@ -346,7 +346,7 @@
     "request_id": "req_011Cf3TdQrraT2M6fh1R7GmW",
     "wire_tool_inputs": {
       "toolu_0162WZsG8cn65bML85astUXe": {
-        "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_\\.claude\\skills\\review-change\\templates\\report.md"
+        "file_path": "<home>\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_\\.claude\\skills\\review-change\\templates\\report.md"
       }
     }
   },
@@ -369,7 +369,7 @@
     "tool_use_result": {
       "type": "text",
       "file": {
-        "filePath": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_\\.claude\\skills\\review-change\\templates\\report.md",
+        "filePath": "<home>\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_\\.claude\\skills\\review-change\\templates\\report.md",
         "content": "# 審查結果\n\n輸入檔案：\n檢查範圍：\n\n| 檔案與行號 | 重現條件 | 影響 | 證據 | 驗證狀態 |\n|---|---|---|---|---|\n\n未執行的驗證：\n",
         "numLines": 10,
         "startLine": 1,
@@ -390,7 +390,7 @@
           "id": "toolu_01X6jXeabhvES1omhkQgPGa5",
           "name": "Read",
           "input": {
-            "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_\\.claude\\skills\\review-change\\references\\data.md"
+            "file_path": "<home>\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_\\.claude\\skills\\review-change\\references\\data.md"
           },
           "caller": {
             "type": "direct"
@@ -423,7 +423,7 @@
     "request_id": "req_011Cf3TdQrraT2M6fh1R7GmW",
     "wire_tool_inputs": {
       "toolu_01X6jXeabhvES1omhkQgPGa5": {
-        "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_\\.claude\\skills\\review-change\\references\\data.md"
+        "file_path": "<home>\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_\\.claude\\skills\\review-change\\references\\data.md"
       }
     }
   },
@@ -469,7 +469,7 @@
     "tool_use_result": {
       "type": "text",
       "file": {
-        "filePath": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_\\.claude\\skills\\review-change\\references\\data.md",
+        "filePath": "<home>\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_\\.claude\\skills\\review-change\\references\\data.md",
         "content": "# 資料邏輯審查\n\n兩筆同名待辦 a、b 具有不同 id。切換 a 不能影響 b；未知 id 不應改動其他項目。\n保留原始陣列與物件，不原地修改。空陣列與重複標題都是合法案例。\n指出差異中的實際變更、重現條件與輸出，不因為檢查表有一項就捏造問題。\n",
         "numLines": 6,
         "startLine": 1,
@@ -591,7 +591,7 @@
           "id": "toolu_01Gc4atH3E6UXEiemSaLSm69",
           "name": "Read",
           "input": {
-            "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_\\tests\\model.test.mjs"
+            "file_path": "<home>\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_\\tests\\model.test.mjs"
           },
           "caller": {
             "type": "direct"
@@ -624,7 +624,7 @@
     "request_id": "req_011Cf3Tdm6migWExkjA9fwJt",
     "wire_tool_inputs": {
       "toolu_01Gc4atH3E6UXEiemSaLSm69": {
-        "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_\\tests\\model.test.mjs"
+        "file_path": "<home>\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_\\tests\\model.test.mjs"
       }
     }
   },
@@ -647,7 +647,7 @@
     "tool_use_result": {
       "type": "text",
       "file": {
-        "filePath": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_\\tests\\model.test.mjs",
+        "filePath": "<home>\\AppData\\Local\\Temp\\mokaair-extra-xlu5o3b_\\tests\\model.test.mjs",
         "content": "import { test } from 'node:test';\nimport assert from 'node:assert/strict';\nimport { addTodo, toggleTodo, removeTodo } from '../model.js';\n\ntest('新增待辦會去除前後空白並保留既有資料', () => {\n  const original = [{ id: 'a', title: '買早餐', completed: true }];\n  const added = addTodo(original, '  讀書  ', 'b');\n  assert.deepEqual(added, [...original, { id: 'b', title: '讀書', completed: false }]);\n  assert.equal(original.length, 1);\n});\ntest('拒絕空白與過長內容', () => {\n  const original = [];\n  assert.equal(addTodo(original, '   ', 'a'), original);\n  assert.equal(addTodo(original, '字'.repeat(101), 'a'), original);\n});\ntest('依照識別碼切換指定項目，不改動其他項目', () => {\n  const original = [{ id: 'a', title: '相同標題', completed: false }, { id: 'b', title: '相同標題', completed: true }];\n  const updated = toggleTodo(original, 'a');\n  assert.equal(updated[0].completed, true);\n  assert.equal(updated[1].completed, true);\n  assert.equal(original[0].completed, false);\n});\ntest('刪除依識別碼進行，找不到項目時仍保留資料', () => {\n  const original = [{ id: 'a', title: '測試', completed: false }];\n  assert.deepEqual(removeTodo(original, 'missing'), original);\n  assert.deepEqual(removeTodo(original, 'a'), []);\n});\n",
         "numLines": 28,
         "startLine": 1,

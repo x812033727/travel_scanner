@@ -54,7 +54,7 @@ Used the `youtube-video` verifier instructions and OpenAI Docs. Performed one of
 
 All prices, access rules and plan limits are a **2026-09-29 snapshot** and must be rechecked before narration/publication. No fixed future validity is promised. Final media, captions, language selection, owner approval and actual publication are still separate unfinished steps.
 
-External evidence: `C:/Users/x8120/.codex/tmp/p1-audit-20260929/plans-round2-extraction.json`, `video-source-http.json`, and relevant `round2-source-*.txt` captures. These are local review artifacts; no media, credentials or production records were added to the repository.
+External evidence: `<home>/.codex/tmp/p1-audit-20260929/plans-round2-extraction.json`, `video-source-http.json`, and relevant `round2-source-*.txt` captures. These are local review artifacts; no media, credentials or production records were added to the repository.
 
 ## Commit-byte receipt
 

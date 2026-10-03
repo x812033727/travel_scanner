@@ -13,6 +13,7 @@ import { DEFAULT_CPM, FPS, chapterList, checkChapters, estimateTimeline, formatC
 import { metadataStatus, namedWith } from "./translations.mjs";
 import { TEMPLATE_SPECS } from "../templates/templates.mjs";
 import { isScreencast, screencastSceneProblems } from "../screencast/steps.mjs";
+import { ANIME_BODY_TOLERANCE_SECONDS, hasAnimePolicy, isLongAnime, runtimePolicyHash, validateAnimePolicy } from "./anime-policy.mjs";
 
 // Phrases that only work on a page. Same list as video_kit.py's WRITTEN_ONLY.
 export const WRITTEN_ONLY = ["本文", "這篇文章", "如上表", "如下表", "上表", "下表", "綜上所述", "值得注意的是", "筆者", "如圖所示"];
@@ -181,12 +182,21 @@ export function billableEstimate(doc) {
  */
 function seriesProblems(doc, series, error, warn) {
   if (!series) {
-    warn("series", "no series.json beside video.json: the worker writes it when it starts an episode (docs/videos/SERIES.md)");
+    const report = hasAnimePolicy(doc) ? error : warn;
+    report("series", "no series.json beside video.json: the worker writes it when it starts an episode (docs/videos/SERIES.md)");
     return;
   }
   if (series.slug !== doc.series.slug || series.episode !== doc.series.episode) {
     error("series", `series.json is for ${series.slug} episode ${series.episode}, not ${doc.series.slug} episode ${doc.series.episode}`);
   }
+  if (hasAnimePolicy(doc)) {
+    const problems = validateAnimePolicy(series);
+    if (!isLongAnime(series) || problems.length) error("series", "the series snapshot must carry the complete approved long-anime production policy");
+    else if (runtimePolicyHash(doc) !== runtimePolicyHash(series)) error("runtime_spec", "differs from the approved series production policy; restore its body and broadcast budgets");
+    for (const key of ["kind", "genre", "lead", "planned_episodes", "open_ended", "closed_ending"]) {
+      if (series[key] !== doc.series[key]) error(`series.${key}`, "differs from the trusted series episode context");
+    }
+  } else if (hasAnimePolicy(series)) error("production_policy", "the episode lost its series' long-anime production policy");
   const cast = new Map((series.characters ?? []).map((character) => [character.id, character]));
   (doc.characters ?? []).forEach((character, index) => {
     const known = cast.get(character.id);
@@ -307,6 +317,11 @@ export function lintVideo(doc, context = {}) {
   if (low < floor) error("target_minutes", `starts at ${low} minutes; every episode but a drama's runs at least ${floor}`);
   if (minutes < floor) error("scenes", `about ${minutes.toFixed(1)} minutes; every episode but a drama's runs at least ${floor}: write more narration`);
   else if (minutes < low || minutes > high) warn("scenes", `about ${minutes.toFixed(1)} minutes; the target is ${low}-${high}`);
+  if (isLongAnime(doc)) {
+    const target = doc.runtime_spec.body_target_seconds;
+    const seconds = frameToSeconds(timeline.total_frames);
+    if (Math.abs(seconds - target) > ANIME_BODY_TOLERANCE_SECONDS) warn("runtime_spec", `estimated story body is ${seconds.toFixed(1)} seconds; measured acceptance is ${target - ANIME_BODY_TOLERANCE_SECONDS}–${target + ANIME_BODY_TOLERANCE_SECONDS} seconds, excluding OP/ED and broadcast reserve; write and pace the story before final QA`);
+  }
 
   const article = context.pack ? articleUrl(context.pack, narration, doc.slug) : null;
   const description = composeDescription({ body: doc.youtube.description, timeline, article, sources: doc.sources ?? [], locale: narration, tags: doc.youtube.tags });

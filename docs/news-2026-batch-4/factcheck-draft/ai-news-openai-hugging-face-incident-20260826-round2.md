@@ -3,8 +3,8 @@
 垂直：AI（批次 4.4，`display_order` 182）／查核日 2026-09-23／查核者：獨立查核代理（round 2，未參與撰稿、未參與第一輪）
 內容包：`apps/api/app/guides/content/ai-news-openai-hugging-face-incident-20260826.json`
 研究紀錄：`docs/ai-news-2026-09-late/research/ai-news-openai-hugging-face-incident-20260826.json`
-第一輪報告：`C:\Users\x8120\mokaair-work\news44\factcheck\ai-news-openai-hugging-face-incident-20260826-round1.md`
-工作檔（重抓的原始檔與四支腳本）：`C:\Users\x8120\mokaair-work\news44\_tools\ai-news-openai-hugging-face-incident-20260826-r2\`
+第一輪報告：`<home>\mokaair-work\news44\factcheck\ai-news-openai-hugging-face-incident-20260826-round1.md`
+工作檔（重抓的原始檔與四支腳本）：`<home>\mokaair-work\news44\_tools\ai-news-openai-hugging-face-incident-20260826-r2\`
 
 ## 1. 四條來源本輪自行重抓
 

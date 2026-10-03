@@ -65,7 +65,7 @@ v1 with only zh-TW locale/published v6; full normalized draft/published/latest
 source models match the repository. Existing source and image URLs and check
 dates are preserved. No overlapping active scope or in-flight candidate found.
 
-Outside evidence under `C:/Users/x8120/.codex/article-localization-release/`:
+Outside evidence under `<home>/.codex/article-localization-release/`:
 - `batch019-repo-only-candidates-20260923.json`, SHA256
   `e51293c301b1c82f1a5de50e73f7a5c09df3e46dd543a292baaf24f0a186828c`.
 - `batch019-candidate-inventory/live-source-full-20260923T080827Z.json`, SHA256
@@ -90,7 +90,7 @@ are unchanged. AI/provenance descriptions are translated with creator identity
 retained. No runtime code, schema, category, sort or visibility changes are made.
 
 Evidence below is under
-`C:/Users/x8120/.codex/article-localization-release/batch019-digital-organization/`:
+`<home>/.codex/article-localization-release/batch019-digital-organization/`:
 
 - Pair A independent review: `independent-bookmark-receipt-review-v1/receipt-pass.json`,
   SHA256 `53e4552dd9a41eefc48ceb67a70e6503dd8b40a341bd3630c1461f364f23142d`.

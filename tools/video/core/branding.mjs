@@ -130,6 +130,7 @@ export function presentationTimeline(timeline, branding) {
     content_end_frame: offset + timeline.total_frames,
     total_frames: offset + timeline.total_frames + branding.outro_frames,
     lines: (timeline.lines ?? []).map(shift),
+    ...(timeline.actions ? { actions: timeline.actions.map(shift) } : {}),
     scenes: (timeline.scenes ?? []).map((scene) => ({ ...shift(scene), ...(scene.states ? { states: scene.states.map(shift) } : {}) })),
     ...(timeline.windows ? { windows: timeline.windows.map(shift) } : {}),
     chapters: (timeline.chapters ?? []).map((chapter, index) => ({ ...chapter, start_frame: index === 0 ? 0 : chapter.start_frame + offset })),

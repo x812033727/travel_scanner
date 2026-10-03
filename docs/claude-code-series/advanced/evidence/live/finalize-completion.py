@@ -6,7 +6,7 @@ ROOT=Path(__file__).resolve().parents[5];OUT=Path(__file__).resolve().parent
 def read(name):return json.loads((OUT/name).read_text(encoding='utf-8'))
 def write(name,data):(OUT/name).write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 session='66298802-5080-4384-bfae-d4d73b57db42'
-project=Path.home()/'.claude/projects/C--Users-x8120-AppData-Local-Temp-mokaair-teams-live-d7295d31'
+project=Path.home()/'.claude/projects/<project-slug>'
 def rows(path):return [json.loads(line) for line in path.read_text(encoding='utf-8').splitlines()]
 main=rows(project/(session+'.jsonl'))
 def blocks(events,kind):
