@@ -566,6 +566,20 @@ Non-claims: DURATION_ONLY follow-up of the merge for the nine hashes that differ
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1168 fixture-date increment: 1 file (2026-10-03)
+
+Reviewer: `claude-pr-review-1168`. Author: `claude-fable-accent-a1` (the Claude session that wrote commit 4ff864d5, "test(web): the withdrawn drama request is filed now, not on a fixed date", PR #1168, branch claude/video-audio-taiwanese-mandarin-5419c4, HEAD 4ff864d5). Scope: DURATION_ONLY. The reviewer did not write this change and edited only this report and review.json.
+
+Baseline: the receipt before this increment is the one the "PR #1168 merge with #1160 follow-up" above bound at merge commit 21d69d74. The one commit between it and 4ff864d5, 324674fc, moves a tasks/ file and touches no bound file. 21d69d74's bytes of apps/web/components/admin-video-reviews.test.tsx hash to 5d8bf674f9f34f97655666e8b61b556a51720f98638c55587e852d167d3cb824, the value bound before this increment, so `git show 4ff864d5` is exactly the unreviewed change: one file, +3/−1, and it is bound. The other 107 bindings are untouched: `node tools/video/long-form/cli.mjs check` failed on this one path and nothing else. The reviewer read the whole commit and, for context, the affected test and the DramaQueue filter in the unbound apps/web/components/admin-video-series.tsx (lines 487–490); no network, no fetch, no implementation file edited.
+
+Findings. In the test "queues a drama episode from the form, lists the requests and withdraws a queued one", the mocked POST `/drama-requests` handler files the new request with `created_at: new Date(Date.now() - 60_000).toISOString()` instead of the fixed `"2026-09-26T06:00:00Z"`, and a two-line comment explains why: DramaQueue keeps a finished or withdrawn request in the list only while `Date.parse(request.created_at) > Date.now() - 7 * 24 * 3600_000`, so from 2026-10-03T06:00Z the fixed date fell outside that week and the cancelled row dropped off the list before the test looked for 已取消. The changed line still passes `target_minutes: body.target_minutes` through from the request body, text that is the same on both sides of the diff; the file's eight `target_minutes` occurrences are the same before and after, and its assertion `expect(post?.body).toEqual({ premise: "大禹治水", style_preset: "ink-wash", target_minutes: 2 })` and the spinbutton label "長度（分鐘：漫劇 1–8，解說 8–20）" are byte-identical context. No other line of the file changes: the long-anime fixtures (`minutes: 22`, `production_policy: "long-anime-v1"`, the measured runtime proof and the "story below 21 minutes" case), the `minutes: 9.5` explainer fixture and every other duration expectation are untouched. The changed lines name no minute value, MIN_EPISODE, VIDEO_MIN_EPISODE_MINUTES, 480, 600, 780, 14,400, runtime_spec, action_seconds, target_seconds or frame count. The seven-day retention is a list-display rule in an unbound component, not a video length rule, and the commit does not change it. So the change touches none of the 600/780-second targets, the 480-second measured minimums, the source hashes, the covered status, the eight-minute minimums, the explainer's 10-minute default or 8–20 range, the drama's 1–8 range or the brand story's 13.
+
+Ran (Node 24.13.0, offline): before rebinding, `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding: apps/web/components/admin-video-reviews.test.tsx` and exited 1, failing on nothing else. `node --test tools/video/long-form/review.test.mjs tools/video/long-form/plans.test.mjs` ran 7 tests: 6 passed and 1 failed, the shipped binding regression on that same path. Both are rerun after rebinding. The Vitest suite itself was not run here.
+
+Non-claims. This review does not accept the fixture itself, the DramaQueue retention rule, the admin reviews UI or CI, and does not run the web test suite. PASS is DURATION_ONLY for the one rebound hash below.
+
+Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings
 
 These 108 bindings describe the current reviewed bytes after the native long-anime increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -597,7 +611,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
 | `apps/web/components/admin-video-explainer-duration.test.tsx` | `bb888f17b3ef617d788fbed83f5fba280dfe06da008a6f80fca15b15c6916ca0` |
 | `apps/web/components/admin-video-review-card.tsx` | `d5548c8bb8218cad84719434bfae1a2acebc1d972b6887cda3e9afaa5088c5e8` |
-| `apps/web/components/admin-video-reviews.test.tsx` | `5d8bf674f9f34f97655666e8b61b556a51720f98638c55587e852d167d3cb824` |
+| `apps/web/components/admin-video-reviews.test.tsx` | `68403fad9a4733edc0f2b90e9bf82158dda93f63e2266013a05131ee173e7068` |
 | `apps/web/components/admin-video-series.test.tsx` | `1fa4a70ea72f396c40bf6805de7262aa2f32b49405210c98544943ae43ac8061` |
 | `apps/web/components/admin-video-series.tsx` | `782f129262ae99bab3b69a152ab2dd8dc3a9c26c0e1fcd44e12e3819819d8461` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `7aad8e5d88b67ebaf0b261a57482fb06044111e86af9cfa43157627c7e671957` |
