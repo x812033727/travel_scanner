@@ -7,7 +7,7 @@ import { approvalState, approve } from "./approvals.mjs";
 import { brandingHash, pinBranding } from "./branding.mjs";
 import { parseSrt } from "./captions.mjs";
 import { lookHash, subtitlesHash } from "./drama.mjs";
-import { dramaFixture, fixture, sandbox, storyFixture } from "./fixtures/load.mjs";
+import { dramaFixture, fixture, sandbox, storyFixture, writeAudioFixture } from "./fixtures/load.mjs";
 import { atomicWrite, isInside, resolveWorkdir, stopRequested, UsageError } from "./paths.mjs";
 import { eachLine, textHash } from "./schema.mjs";
 import { localeTexts, runCaptions, StageError } from "./stages.mjs";
@@ -23,7 +23,7 @@ process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
 function writeTimeline(box) {
   const project = loadProject({ slug: box.slug, root: box.root });
   const timeline = { ...estimateTimeline(project.doc), speech_hash: speechHash(project.doc, project.lexicon) };
-  atomicWrite(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
+  writeAudioFixture(timeline, box.workdir);
   return timeline;
 }
 
@@ -104,7 +104,7 @@ test("branding pins invalidate presentation artifacts without invalidating narra
   const brand = { schema_version: 1, id: "first", intro: { file: "intro.mp4", sha256: "a".repeat(64), frames: 150 }, outro: { file: "outro.mp4", sha256: "b".repeat(64), frames: 90 } };
   pinBranding(box.workdir, brand);
   const hash = brandingHash(brand);
-  atomicWrite(path.join(box.workdir, "checks.json"), JSON.stringify({ ok: true, speech_hash: timeline.speech_hash, visual_hash: visualHash(project.doc), branding: { hash, body_frames: timeline.total_frames } }));
+  atomicWrite(path.join(box.workdir, "checks.json"), JSON.stringify({ ok: true, narration_sha256: timeline.audio_evidence.narration_sha256, speech_hash: timeline.speech_hash, visual_hash: visualHash(project.doc), branding: { hash, body_frames: timeline.total_frames } }));
   atomicWrite(path.join(box.workdir, "captions", "manifest.json"), JSON.stringify({ speech_hash: timeline.speech_hash, branding_hash: hash }));
   atomicWrite(path.join(box.workdir, "final.mp4"), "approved branded bytes");
   const final = await approve({ gate: "final", docDir: box.dir, workdir: box.workdir });
@@ -296,7 +296,8 @@ test("illustrated slides walk the picture and music steps, bound to the shots ra
   assert.equal(done(await status(), "keyframes drawn"), false, "a camera edit asks for the picture again");
   writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
   // The cut is current only when it was made from these pictures, this music and these effects.
-  const checks = { ok: true, speech_hash: (await status()).steps && null, visual_hash: visualHash(doc), look_hash: lookHash(doc), pictures_hash: keyframesHash(doc, { shots }), mix_hash: mixHash(doc), sfx_hash: sfxHash(doc) };
+  const timeline = writeTimeline(box);
+  const checks = { ok: true, narration_sha256: timeline.audio_evidence.narration_sha256, speech_hash: (await status()).steps && null, visual_hash: visualHash(doc), look_hash: lookHash(doc), pictures_hash: keyframesHash(doc, { shots }), mix_hash: mixHash(doc), sfx_hash: sfxHash(doc) };
   write(ARTIFACTS.music, { mix_hash: mixHash(doc), file: "music/bed.mp3" });
   assert.equal(done(await status(), "music generated"), true);
   const { speechHash } = await import("./timeline.mjs");
