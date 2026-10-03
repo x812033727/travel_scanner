@@ -1,0 +1,340 @@
+{
+  "slug": "ai-workflow-agent-local-two-routes",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-coding"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 412,
+  "related": [
+    "ai-workflow-agent-glm-qwen-deepseek",
+    "ai-workflow-agent-local-batch-script",
+    "ai-workflow-agent-local-engine"
+  ],
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Code、Codex 搭本機模型：兩種接法怎麼選",
+      "description": "Claude Code 與 Codex 搭配本機模型有兩種接法：代理照常連雲端、把大量雜務交給腳本或 MCP 工具去問本機模型，或是把代理的模型整個換成本機模型。這篇用資料能不能出門、上下文開得夠不夠長、工作的類型三個問題幫你選，並對照 Ollama、LM Studio、Anthropic 與 OpenAI 的官方文件，分清楚本機權重、Ollama 的 cloud 標籤與供應商端點是三種不同的東西。",
+      "hero": {
+        "src": "/guides/ai-workflow-agent-local-two-routes/hero.jpg",
+        "alt": "原創插圖：左邊是一個命令列視窗，一條線往上接到雲朵裡的模型，再以虛線接到右下方框裡帶鎖的本機模型；另一支箭頭從視窗直接指向那個方框，代表代理工具接本機模型的兩種接法",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Claude Code 或 Codex 想用上自己電腦裡的模型，有兩種接法，做的是不同的事。接法一是代理照常連雲端，把大量雜務交給一支腳本或 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 工具，由它去問本機模型，代理只讀結果；接法二是把代理背後回答的模型整個換成本機模型。這篇回答怎麼選，結論是看三件事：原始資料能不能送到雲端供應商、電腦能把上下文視窗開到多長、工作是一批批的雜務還是要代理自己動手。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "讀完你會有一張兩種接法的對照表和三個選路的問題，不需要寫程式。要照著做，前提是電腦上已經有 Ollama 或 LM Studio，也裝好了 Claude Code 或 Codex。安裝與第一個模型不在這篇範圍，值不值得在自己電腦跑 AI，可以先看《為什麼要在自己電腦跑 AI：隱私、離線與成本》。這篇的步驟都來自官方文件，本站沒有實測。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "混合有兩種接法：接法一是代理照常連雲端，把大量雜務交給腳本或 MCP 工具去問本機模型；接法二是把代理背後的模型整個換成本機模型。",
+            "接法二要先看上下文：Ollama 的文件建議給代理用至少 64k 的上下文視窗，LM Studio 的文件寫的是超過約 25k，而 Ollama 的預設值依顯示記憶體是 4k、32k 或 256k，要自己確認實際開了多長。",
+            "Anthropic 的文件寫不支援透過 gateway 把 Claude Code 接到非 Claude 模型，接 Ollama 或 LM Studio 的步驟是這兩家各自的文件寫的；Codex 的設定頁則有 OSS mode，用 --oss 接 Ollama 或 LM Studio。",
+            "本機權重、Ollama 的 cloud 標籤、供應商自己的端點是三種不同的跑法，只有權重在自己電腦、位址也指向本機時，請求才在這台電腦上處理。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "同一個模型名字，三種跑法"
+        },
+        {
+          "type": "paragraph",
+          "text": "選接法之前，先把一件容易混的事分開：同一個模型名字，常有三種跑法。第一種是權重下載到自己的電腦，請求送到本機的位址；第二種是 Ollama 的 cloud 標籤，模型不在你的電腦上，而是在 Ollama 的雲端；第三種是供應商自己的端點，位址是模型公司的網址。只有第一種的請求在你的電腦上處理，後兩種的資料都會送出去。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ollama 的文件裡就看得到這個分別。Claude Code 那一頁的模型一節分成雲端模型與本機模型兩張卡片，雲端那張寫的是不用下載就能用更大的模型，另有一節標題是直接連到 Ollama Cloud，教你不裝 Ollama、直接用 API 金鑰連到 ollama.com。Codex 那一頁用同一個 codex --oss，用 -m 指定 gpt-oss:120b，要用雲端模型就改成 gpt-oss:120b-cloud。每看到一個標籤或位址，先問它是哪一種，再決定資料去哪裡；GLM、Qwen、DeepSeek 三個家族今天各是哪一種，留給本系列講三個家族的那一篇。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "接法一：代理照常連雲端，雜務交給本機模型"
+        },
+        {
+          "type": "paragraph",
+          "text": "接法一改動最小：Claude Code 或 Codex 仍然連原本的雲端模型，什麼設定都不換。要處理的那批檔案不交給代理去讀，而是交給一支腳本，或一個 MCP 工具，由它逐份去問本機的模型，把結果寫成結果檔，代理只讀結果檔再寫報告或改程式。這條路上，本機模型做的是一份進、一份出的小工作，每次收到多少內容由你的腳本決定。本機那一半用 Python 怎麼寫，《本機去識別化、雲端收尾：用 Ollama 打造混合式 AI 工作流》已經示範過，這篇不重複。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "要讓原始資料真的留在本機，得兩件事同時成立：腳本連的是本機位址、問的是沒有 cloud 字樣的本機標籤，而且代理自己讀不到原始檔，否則代理讀檔的那一刻，資料就已經送到雲端。後一件事怎麼設，是本系列講批次腳本那一篇的內容。上下文的門檻也不一樣：Ollama 的上下文頁把網頁搜尋、代理與程式工具列為需要大上下文的工作，建議設在至少 64000 token；接法一裡的本機模型只是被腳本呼叫，這篇讀的官方頁沒有替它另訂門檻。不過同一頁把"
+            },
+            {
+              "type": "article",
+              "text": "上下文長度",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            },
+            {
+              "type": "text",
+              "text": "定義為模型在記憶體裡能存取的 token 數上限，所以仍要確認每一份內容放得進實際開的長度。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "硬體上，先看本機模型自己的檔案大小。Ollama 的標籤頁直接列出每個標籤的大小，以 qwen3.5 為例，4b 是 3.4GB、9b 是 6.6GB、27b 是 17GB，標籤頁列的上下文視窗都是 256K。怎麼把這些大小換算成記憶體需求，《跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon》已經整理，這裡不重算，也不判斷哪一台電腦跑得動。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-workflow-agent-local-two-routes/diagram-1.svg",
+          "alt": "流程圖：原始資料留在本機，本機模型逐份產出結果檔，雲端代理只讀結果檔，最後寫成成品",
+          "width": 1600,
+          "height": 900,
+          "caption": "接法一：原始資料留在本機，雲端代理只讀結果檔（2026 年 10 月查證）",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "接法二：把代理的模型整個換成本機模型"
+        },
+        {
+          "type": "paragraph",
+          "text": "接法二是把 Claude Code 或 Codex 背後回答的模型整個換成本機模型：讀程式、改檔案、跑指令，每一輪都由它回答。Ollama 的文件給了入口，Claude Code 用 ollama launch claude，Codex 用 ollama launch codex，或是 Codex 自己的 codex --oss；手動設定 Claude Code 時，Ollama 的頁面一次設 ANTHROPIC_AUTH_TOKEN、ANTHROPIC_API_KEY、ANTHROPIC_BASE_URL 三個環境變數，其中 ANTHROPIC_BASE_URL 是 http://localhost:11434。LM Studio 的 Claude Code 頁也寫了接法。各項設定的細節，留給本系列講整個換成本機模型的那一篇，這裡只列入口和上下文的檢查指令。"
+        },
+        {
+          "type": "code",
+          "label": "接法二的入口與上下文檢查（指令出自 Ollama 官方文件）",
+          "language": "bash",
+          "code": "# 把上下文長度設成 64000，再啟動 Ollama 伺服器\nOLLAMA_CONTEXT_LENGTH=64000 ollama serve\n\n# 以下指令在另一個終端機視窗執行\n# 用 Ollama 啟動 Claude Code\nollama launch claude\n\n# 用 Ollama 啟動 Codex，或直接用 Codex 的 --oss 旗標\nollama launch codex\ncodex --oss\n\n# 代理用到模型之後，再開一個視窗看實際的 CONTEXT、PROCESSOR\nollama ps"
+        },
+        {
+          "type": "paragraph",
+          "text": "接法二最先要看的是上下文。Ollama 的 Claude Code 頁寫，要挑一個模型並把上下文視窗設在 64k 以上，也說要挑上下文夠容納你專案的模型；Codex 頁寫至少 64k token；LM Studio 的 Claude Code 頁寫的則是超過約 25k，理由是 Claude Code 這類工具會耗掉不少上下文。這幾個數字都是 Ollama 與 LM Studio 文件裡的建議寫法；這篇讀的 Claude Code 模型設定頁與 Codex 進階設定頁，沒有寫模型至少要有多長的上下文，所以 64k 是 Ollama 給代理的建議值，不是 Claude Code 或 Codex 規定的門檻。"
+        },
+        {
+          "type": "paragraph",
+          "text": "更要小心的是預設值。Ollama 的上下文頁寫，預設的上下文長度依顯示記憶體而定：小於 24 GiB 是 4k，24 到 48 GiB 是 32k，48 GiB 以上是 256k，而 cloud 模型預設就用到最大。前兩檔的預設都低於 64k，要用 64k 就得自己改：在 Ollama app 設定裡拉滑桿，或用 OLLAMA_CONTEXT_LENGTH=64000 啟動伺服器；改完用 ollama ps 看，輸出有 PROCESSOR 和 CONTEXT 兩欄。Ollama 寫為了效能，要用模型的最大上下文長度，並避免把模型卸載到 CPU，但同一頁也寫，上下文設得越大，需要的記憶體越多。標籤頁上的 256K 是模型標示的視窗，Ollama 實際開多長是另一個設定。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官方立場兩邊不同。Claude Code 文件的 "
+            },
+            {
+              "type": "article",
+              "text": "LLM",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": " gateway 頁寫，Anthropic 不支援透過任何 gateway 把 Claude Code 接到非 Claude 模型；模型設定頁另有一句提醒，ANTHROPIC_BASE_URL 改的是請求送去哪裡，不是由哪個模型回答。接 Ollama 或 LM Studio 的步驟，是這兩家各自的文件寫的，Anthropic 的 gateway 頁對接到非 Claude 模型寫的是不支援。Codex 這邊，OpenAI 的進階設定頁有一節 OSS mode，寫明加上 --oss 可以接 Ollama 或 LM Studio 這類本機的「open source」供應商：用 --local-provider 為單次執行選一家，或用 oss_provider 設預設值（設定檔範例的值是 ollama 或 lmstudio）；兩個都沒設時，互動模式的 CLI 會請你選，codex exec 則會報錯結束。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "兩種接法並排看"
+        },
+        {
+          "type": "paragraph",
+          "text": "下表把前面的條件並排。數字與官方說法出自上面提到的官方頁；「適合的工作」與「對應本系列哪一篇」兩列是本站依兩種接法的結構整理的判斷，不是官方文字。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "接法一：代理連雲端，雜務交給本機",
+            "接法二：代理的模型換成本機"
+          ],
+          "rows": [
+            [
+              "怎麼接",
+              "代理設定不變；工作交給一支腳本或 MCP 工具，由它問本機模型、寫出結果檔，代理只讀結果檔",
+              "改代理背後的模型：Claude Code 用 ollama launch claude，Codex 用 ollama launch codex 或 codex --oss"
+            ],
+            [
+              "請求送到哪裡",
+              "代理的請求仍送到原本的雲端供應商；本機模型只收到腳本送去的那一份",
+              "代理的請求改送到你指定的位址；位址與標籤都是本機，才在這台電腦上處理"
+            ],
+            [
+              "上下文門檻",
+              "Ollama 的 64k 建議點名的是代理與程式工具；這條路由腳本決定每次送多少，這篇讀的官方頁沒有另訂門檻",
+              "Ollama 的 Claude Code 頁與 Codex 頁都建議 64k 以上；LM Studio 的 Claude Code 頁寫超過約 25k；Ollama 預設依顯示記憶體是 4k、32k 或 256k"
+            ],
+            [
+              "硬體",
+              "先看本機模型的檔案大小，標籤頁直接列出：qwen3.5 的 4b 是 3.4GB、9b 是 6.6GB、27b 是 17GB",
+              "同樣先看檔案大小；Ollama 的上下文頁寫，上下文設得越大，需要的記憶體越多"
+            ],
+            [
+              "官方立場",
+              "代理這一側沒有改接法；這篇讀的 Claude Code 與 Codex 頁面沒有談到這種用法",
+              "Claude Code 文件的 gateway 頁寫不支援接到非 Claude 模型；Codex 的設定頁有 OSS mode，寫明 --oss 可接 Ollama 或 LM Studio"
+            ],
+            [
+              "適合的工作（本站判斷）",
+              "大量、格式固定、一份進一份出的雜務，例如逐封分類、去識別化、摘要",
+              "要讓代理自己讀程式、改檔案、跑指令的整個流程都留在本機，例如整個專案的內容都不能送到雲端供應商"
+            ],
+            [
+              "對應本系列哪一篇",
+              "講批次腳本與 MCP 工具的兩篇",
+              "講整個換成本機模型的那一篇"
+            ]
+          ],
+          "caption": "兩種接法對照（2026 年 10 月查證）"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "怎麼選：三個問題"
+        },
+        {
+          "type": "paragraph",
+          "text": "下面三題是本站依兩種接法的結構整理的判斷順序，不是官方文件的寫法；照順序問，前一題就能決定的，不必往下問。資料能不能離開你的裝置，《一件事拆給多個模型：依步驟、能力、風險、資料敏感度四種切法》把它列為四種切法之一，這裡直接拿來當第一題。"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "整個專案的內容都不能送到雲端供應商嗎？是的話，只有接法二會把代理本身的請求也改送到本機，而且標籤與位址都要是本機：標籤帶 cloud，或位址指向 ollama.com 或供應商，請求都會離開這台電腦。只有某一批檔案不能出門，接法一就夠，原始檔留在本機，代理只讀結果檔，前提是代理讀不到那批原始檔。",
+            "電腦能把上下文視窗開到官方建議的長度嗎？Ollama 建議給代理用至少 64k，LM Studio 寫超過約 25k；用 ollama ps 看到的 CONTEXT 不夠，又不想多花記憶體調高，就選接法一，因為接法一的本機模型只收到腳本送去的那一份。",
+            "工作是一批批、格式固定的雜務，還是要代理自己讀程式、改檔案、跑指令？前者對應接法一；後者要讓代理本身跑在本機模型上，才是接法二。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "選定之後的細節在本系列後面幾篇：批次腳本與 MCP 工具對應接法一，整個換成本機模型對應接法二，開工前的核對清單另有一篇。官方立場是另一個考慮：如果不想用 Anthropic 文件寫明不支援的接法，接法一不改 Claude Code 的接法，Codex 則有自己文件寫的 OSS mode。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "這篇讀的文件裡沒有「主對話在雲端、子代理在本機」",
+          "text": "容易以為可以讓 Claude Code 的主對話留在雲端，只把子代理導到本機模型。這篇讀的 Claude Code 文件沒有寫這種接法：模型設定頁寫 ANTHROPIC_BASE_URL 改的是請求送去哪裡，不是由哪個模型回答，gateway 頁則寫不支援透過任何 gateway 把 Claude Code 接到非 Claude 模型。要讓一部分工作用本機模型，這篇的做法是接法一：代理照常連雲端，工作交給腳本或 MCP 工具。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "接法一的本機模型，也要把上下文開到 64k 嗎？",
+              "answer": "Ollama 的 64k 建議寫的是網頁搜尋、代理與程式工具這類需要大上下文的工作。接法一裡的本機模型只收到腳本送去的那一份，這篇讀的官方頁沒有替它另訂門檻。但上下文長度是模型在記憶體裡能存取的 token 數上限，所以仍要確認每一份內容放得進實際開的長度。"
+            },
+            {
+              "question": "Ollama 標籤頁寫 256K，我的電腦就是 256K 嗎？",
+              "answer": "不一定。256K 是標籤頁列的模型上下文視窗，Ollama 實際開多長是另一個設定，預設值依顯示記憶體而定：小於 24 GiB 是 4k，24 到 48 GiB 是 32k，48 GiB 以上是 256k。用 ollama ps 看輸出裡的 CONTEXT 欄，確認實際的數字。"
+            },
+            {
+              "question": "標籤帶 cloud 的模型算本機嗎？",
+              "answer": "不算。Ollama 的文件把 cloud 模型寫成不用下載就能用的更大模型，Codex 頁也把 gpt-oss:120b-cloud 放在使用雲端模型的段落底下。要讓請求留在自己的電腦，標籤不能帶 cloud，位址也要指向本機。"
+            },
+            {
+              "question": "Claude Code 接本機模型是 Anthropic 支援的做法嗎？",
+              "answer": "Claude Code 文件的 LLM gateway 頁寫，Anthropic 不支援透過任何 gateway 把 Claude Code 接到非 Claude 模型。接 Ollama 與 LM Studio 的步驟，是這兩家各自的文件寫的。這篇只轉述官方頁的寫法，不對條款做解讀。"
+            },
+            {
+              "question": "Codex 用 --oss 接本機模型，不指定供應商會怎樣？",
+              "answer": "Codex 的進階設定頁寫，加上 --oss 時，可以用 --local-provider 為單次執行選一家，或用 oss_provider 設預設值，設定檔範例的值是 ollama 或 lmstudio；兩個都沒設的時候，互動模式的 CLI 會請你選，codex exec 則會報錯結束。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "本機去識別化、雲端收尾：用 Ollama 打造混合式 AI 工作流",
+              "kind": "life",
+              "slug": "ai-workflow-local-and-cloud-mix"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Claude Code - Ollama",
+          "url": "https://docs.ollama.com/integrations/claude-code",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Codex CLI - Ollama",
+          "url": "https://docs.ollama.com/integrations/codex",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Context length - Ollama",
+          "url": "https://docs.ollama.com/context-length",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Other LLM gateways - Claude Code Docs",
+          "url": "https://code.claude.com/docs/en/llm-gateway",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Model configuration - Claude Code Docs",
+          "url": "https://code.claude.com/docs/en/model-config",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Advanced Configuration - Codex",
+          "url": "https://learn.chatgpt.com/docs/config-file/config-advanced",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Claude Code - LM Studio",
+          "url": "https://lmstudio.ai/docs/integrations/claude-code",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Tags - qwen3.5 - Ollama",
+          "url": "https://ollama.com/library/qwen3.5/tags",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    }
+  }
+}

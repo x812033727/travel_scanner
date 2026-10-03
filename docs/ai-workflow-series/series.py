@@ -1,9 +1,11 @@
 """The fixed values of the AI workflow tutorial series, in one place (the way ``verticals.py`` holds
 the news verticals'). ``check_article.py`` and ``build_assets.py`` import from here.
 
-Twelve articles and a hub, zh-TW only, registered as the ``ai-workflow`` series under the
+Eighteen articles and a hub, zh-TW only, registered as the ``ai-workflow`` series under the
 ``ai-coding`` topic. ``display_order`` follows the news verticals' convention of "hub one below
-the band": the hub is 399, the articles 400-411 in the order of ``SLUGS``.
+the band": the hub is 399, the articles 400-417 in the order of ``SLUGS``. The first twelve
+shipped on 2026-09-19; the last six are group E, an agent tool paired with a local model
+(``agent-local/README.md``).
 """
 from __future__ import annotations
 
@@ -39,9 +41,15 @@ SLUGS = (
     "ai-workflow-local-and-cloud-mix",
     "ai-workflow-tracing-evals",
     "ai-workflow-failures-and-guardrails",
+    "ai-workflow-agent-local-two-routes",
+    "ai-workflow-agent-glm-qwen-deepseek",
+    "ai-workflow-agent-local-batch-script",
+    "ai-workflow-agent-local-mcp-tool",
+    "ai-workflow-agent-local-engine",
+    "ai-workflow-agent-local-checklist",
 )
 #: Articles the assignment marks 入門: no code block is required of them.
-INTRO = SLUGS[:3]
+INTRO = (*SLUGS[:3], "ai-workflow-agent-local-two-routes", "ai-workflow-agent-local-checklist")
 
 
 def order_of(slug: str) -> int:
