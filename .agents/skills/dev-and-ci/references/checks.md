@@ -15,12 +15,12 @@ cd apps/api && uv run ruff check . && uv run mypy app && uv run mypy tests && uv
 | `npm run lint:web` | `eslint . --max-warnings=0` | 警告也算失敗 |
 | `npm run check:i18n` | `node tools/check-i18n.mjs` | 鍵的規則在 skill `web-i18n-e2e` |
 | `npm run typecheck:web` | `tsc --noEmit` | 唯一會抓到「套件其實沒裝」的檢查 |
-| `npm run test:web` | `vitest run`（jsdom，setup 在 `apps/web/vitest.setup.tsx`） | 單檔：`cd apps/web && npx vitest run <files>` |
+| `npm run test:web` | `vitest run`（jsdom，setup 在 `apps/web/vitest.setup.tsx`） | 單檔：`cd apps/web && npx vitest run <files>`；CI 分三片，重現某片用 `npx vitest run --shard=n/3`（不要用 `npm run test:web -- --shard`，旗標會被內層 npm 吃掉） |
 | `npm run test:tools` | `node --test tools/*.test.mjs "tools/video/**/*.test.mjs"` | 需要 `npm ci`（js-yaml、pinyin-pro、字型套件）；skill 的複本比對也在這裡 |
 | `npm run check:tasks` | `node tools/tasks.mjs check` | 票的格式、狀態對資料夾 |
 | `uv run ruff check .` | ruff lint | CI **不跑** `ruff format --check`，repo 也不是 format-clean：只 format 你新建的檔 |
 | `uv run mypy app`、`uv run mypy tests` | strict mypy；tests 的放寬規則在 `apps/api/pyproject.toml` 的 override | 分兩行，失敗會指名是哪一邊 |
-| `uv run pytest` | 單元測試；整合測試沒有 `RUN_INTEGRATION_TESTS=1` 就 skip | CI 是 `pytest --cov=app` 且帶該變數 |
+| `uv run pytest` | 單元測試；整合測試沒有 `RUN_INTEGRATION_TESTS=1` 就 skip | CI 帶該變數、用 `--shard n/4` 分成四個 job 跑（`tests/sharding.py`）；本機重現某個分片就加同樣的 `--shard` |
 
 ## 讀 exit code 的正確寫法
 
