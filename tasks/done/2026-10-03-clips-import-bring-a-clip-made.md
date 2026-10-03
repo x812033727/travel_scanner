@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-clips-import-bring-a-clip-made
 title: clips import: bring a clip made outside the pipeline (Hailuo web, Kling MCP) into a shot with its checks and a ledger entry
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-fable-5-1-clips-import
 claimed_at: 2026-10-03T16:07:33Z
 created_at: 2026-10-03T11:20:00Z
-completed_at:
+completed_at: 2026-10-03T17:09:01Z
 branch: claude/kling-hailuoai-video-integration-3b73d6
 depends_on: []
 scope:
