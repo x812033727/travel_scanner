@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-drama-craft-in-video-tools
 title: Drama craft in the tools: cut pace lint, craft rows, worker prompts, several cuts from one clip
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-fable-5-1-video-craft
 claimed_at: 2026-10-03T06:42:20Z
 created_at: 2026-10-03T02:52:05Z
-completed_at:
+completed_at: 2026-10-03T08:01:55Z
 branch: claude/video-production-skills-7d87cc
 depends_on: []
 scope:
@@ -120,8 +120,9 @@ other way, and the host worker never reads the skill's files:
 - [x] Design the clip-reuse and silent-shot fields with the frame-zero and hash rules, then
       implement them.
 - [x] Fix `motionMove`.
-- [ ] Independent duration-only review increment for the bound files, then
-      `node tools/video/long-form/cli.mjs check`.
+- [x] Independent duration-only review increment for the bound files (two passes by
+      `claude-pr-review-drama-craft-tools`: the first refused the brand-story gap, the second
+      rebound 14 files), then `node tools/video/long-form/cli.mjs check`: PASS.
 
 ## How to verify
 

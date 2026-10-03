@@ -526,7 +526,7 @@ Non-claims: the API, ruff, mypy, Node and CLI check runs for this merge belong t
 
 Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
-## Drama craft in the tools: 13 files (2026-10-03)
+## Drama craft in the tools: 14 files (2026-10-03)
 
 Reviewer: `claude-pr-review-drama-craft-tools`. Author: `claude-fable-5-1-video-craft` (the Claude session that wrote commit 04818c3f, "the drama craft rows reach lint, the worker and the media tools", branch claude/video-production-skills-7d87cc, task tasks/open/2026-10-03-drama-craft-in-video-tools.md). Scope: DURATION_ONLY. The reviewer did not write these changes and edited only this report and review.json.
 
@@ -541,6 +541,14 @@ Findings, the other eleven. drama.mjs: MAX_SHOT_SECONDS 12 and WARN_SHOT_SECONDS
 Ran (Node 24.13.0, offline): the baseline hashing script; `node tools/video/long-form/cli.mjs check` before this section, which failed on the 13 stale bindings and nothing else (exit 1); the task's own suite, `node --test tools/video/core/drama.test.mjs tools/video/core/lint.test.mjs tools/video/core/timeline.test.mjs tools/video/assemble/drama.test.mjs tools/video/automation/prompts.test.mjs tools/video/automation/series.test.mjs tools/video/media/clips.test.mjs tools/drama-craft-check.test.mjs`, 222 passed, 0 failed (exit 0); `node --test tools/video/long-form/review.test.mjs tools/video/long-form/plans.test.mjs tools/video/core/duration.test.mjs tools/video/qa/duration.test.mjs`, 24 tests, 23 passed, 1 failed, the shipped binding regression on those same 13 paths; and the two probes. After this section only `report_sha256` in review.json is updated, so the receipt binds this report; no binding is changed, and the receipt's `status`, authors and date still describe the last passing increment, not this one. Rerun after the update: the CLI check fails on the same 13 stale bindings and nothing else (exit 1), and the four suites again give 23 passed and 1 failed on that regression.
 
 Non-claims: DURATION_ONLY. This review does not accept the craft heuristics, the prompts, clip reuse, the PSNR thresholds, the ledger arithmetic, picture quality, a real model, provider or media call, CI, or the unbound files it read for context. The findings on the eleven files are not bindings. Verdict: FAIL — DURATION_ONLY; required duration fixes remaining: one (schema.mjs and timeline.mjs, above).
+
+Second pass, after the fix. The author answered the required fix in commit 56b343d9 ("a silent shot is timed only where no length floor can be padded", HEAD, two commits past origin/main 873cfc73). The same reviewer re-read the whole delta of that commit with the same DURATION_ONLY question: 17 files, eight of them bound (drama.mjs +20/−0, duration.mjs +4/−13, schema.mjs +6/−5, timeline.mjs +2/−2, drama.test.mjs +30/−3, lint.test.mjs +1/−1, timeline.test.mjs +1/−1, prompts.mjs +1/−1); the other six bound files of the first pass (assemble/cli.mjs, flow.mjs, series.mjs, series.test.mjs, lint.mjs, media/clips.test.mjs) carry the same blobs as at 04818c3f, so the first pass's findings on them stand. The commit also carries this report's first-pass section and the report hash it set, both unchanged (the committed review.md hashes to 26a47c2f…a819af). Baseline for the 14 bindings below: for every one of them the bytes of `git show origin/main:<file>` still hash to the value bound before this increment, the working tree equals HEAD, and the other 94 bindings are intact, so `git diff origin/main..HEAD` of each is exactly the sum of the two reviewed deltas.
+
+Findings. drama.mjs gains `isKnowledgeLongform` with its three constants, moved from duration.mjs byte for byte (the reviewer diffed the two extracts: identical), and `timesSilentShots(doc) = hasCast(doc) && !needsMinimumLength(doc) && !isKnowledgeLongform(doc) && doc?.category !== "anime"`. duration.mjs imports that function from drama.mjs and re-exports it under the same name; KNOWLEDGE_MIN_SECONDS, KNOWLEDGE_TARGET_SECONDS, `effectiveEpisodeMinutes`, `knowledgeDurationProblems`, the anime body, fit and delivery checks are byte-unchanged, and its only importers are drama.mjs, duration.mjs and their tests, so every reader of the floor predicate sees the same rule. schema.mjs now sets `timedAction = validAnime || timesSilentShots(doc)` with the message "requires a drama with a cast and no length floor, or a complete long-anime production policy"; timeline.mjs throws unless `isLongAnime(doc) || timesSilentShots(doc)`. Every document that carries a floor is therefore outside the exception again: the eight-minute floor through `needsMinimumLength`, the 480-second floor through `isKnowledgeLongform` (category ai-terms, explainer or story, the flat-explainer preset, or a sothatswhy-, ai-term- or story- slug), and an anime episode outside its policy through the category test, while a compilation cannot list `characters` at all (compilation.mjs) and so is never `hasCast`. The long-anime path is unchanged. The first pass's probes rerun on this tree: the brand story with slug story-rolling-suitcase, one lead and a silent still shot now fails `validateVideo` on `scenes[1].action_seconds` and `scenes[1].lines`, `lintVideo` reports the same two errors, and `buildTimeline` throws, so the 60-shot padding cannot build a timeline at all; the cast fixture (slug fixture-drama, no category) is still accepted; and the long-anime document of drama.test.mjs without its policy gets the `action_seconds` error and the `buildTimeline` throw back. The tests: drama.test.mjs restores the no-policy row to the `action_seconds` message and adds "a silent shot cannot pad a knowledge long-form's floor" (the story fixture with a `story-` slug and one lead refuses it in the schema and the timeline, `timesSilentShots` is false and `isKnowledgeLongform` true for it, the same document under a plain slug and no category is accepted, category anime and the flat-explainer preset are refused, the drama fixture is accepted); lint.test.mjs and timeline.test.mjs only follow the new messages. prompts.mjs changes one sentence of the drama writer's guide ("a brand story or an explainer, measured on its narration, has no such shot"); the long-anime block and the 12 `target_minutes` lines are as before. The unbound DRAMA.md, drama-craft.md, drama.md, writer-drama.md (both mirrors identical) and the task file say the same in prose.
+
+Ran (Node 24.13.0, offline) on 56b343d9 before rebinding: `node tools/video/long-form/cli.mjs check` failed on 14 stale bindings (the 13 above plus duration.mjs) and nothing else (exit 1). `node --test` over core/drama, core/lint, core/timeline, core/schema, core/duration, core/branding, core/story, qa/duration, qa/checks, assemble/drama, automation/prompts, automation/series, media/clips and tools/drama-craft-check: 285 passed, 0 failed (exit 0). `node --test tools/video/long-form/review.test.mjs tools/video/long-form/plans.test.mjs tools/video/core/duration.test.mjs tools/video/qa/duration.test.mjs`: 24 tests, 23 passed, 1 failed, the shipped binding regression on those same 14 paths. The two probes as described. After rebinding the 14 rows below and the receipt (author `claude-fable-5-1-video-craft`, reviewer `claude-pr-review-drama-craft-tools`, checked 2026-10-03, report hash computed last), the CLI check prints PASS (exit 0) and the four suites pass 24 of 24.
+
+Non-claims of the second pass: as for the first; it accepts the predicate's placement and the restored tests for the duration question only, not the craft heuristics, prompts, clip reuse or picture quality, and not CI. Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
 ## Reviewed SHA256 bindings
 
@@ -594,16 +602,16 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `docs/videos/so-thats-why/README.md` | `00a0f0e5a56d7a492dec69263eab34668e0d334949878bd512b09edacaefd0de` |
 | `docs/videos/so-thats-why/season2/README.md` | `e560411dc91f1928b2cf9506a044e55ae7f5f65450199118bd165464599f1218` |
 | `tools/video/assemble/assemble.test.mjs` | `4cac939fe1aa0186017a0c097f29aeceda1b4f585e2158afe2226c6a7057f3de` |
-| `tools/video/assemble/cli.mjs` | `f664b9e6703c933b2298f005af6efb93c0196eb69a8e08901f97db0b8f6bfc64` |
+| `tools/video/assemble/cli.mjs` | `bdae43a1bf984845a9369857c8753a510a92259fa018fcc4c1e610d00584b054` |
 | `tools/video/assemble/smoke.mjs` | `2d16bc9b09e7dd1efe97b0938fc5fcbdb78c322c000dbb9152e293d834dc046e` |
 | `tools/video/automation/anime-write.mjs` | `aeac66bc73766db51b3a58d3c070dd528c9e93e91f4989b66a33c2c789875f12` |
 | `tools/video/automation/anime-write.test.mjs` | `67e53a0cf183c3175adac2ce28d8b2fef7792a408b6b49125345e129115e7d05` |
 | `tools/video/automation/automation.test.mjs` | `01e4992215d76cec6180b7b7fe54f6bac6f6e049f851cd4a08c05731dc06ec10` |
 | `tools/video/automation/discuss.mjs` | `691f6ec55bde0b1c34c54fd38f39681d50617035dab78b0d2c751266a61f43ee` |
-| `tools/video/automation/flow.mjs` | `aa27e8c5bf89d31d504b641d1996cc400d9660f5b5667a62d05ca4fa3a4d64d1` |
-| `tools/video/automation/prompts.mjs` | `370d745bc1937e8212c7970d1ebf2c32a609ffe5ec7250e46ef9392d1df030b3` |
-| `tools/video/automation/series.mjs` | `06fbcd8b8bb2e1eedc134d3f11eab4d1555d3c53039e4663f37a1e0d643e577d` |
-| `tools/video/automation/series.test.mjs` | `b8606bc1fa64716ef265c41f140f1b31b3eb86bc8c53f438cabb46354a7f27ca` |
+| `tools/video/automation/flow.mjs` | `e076d771aabb1634ce2b27c9ab49c14fd09df7220881fcb5db51534ece12de93` |
+| `tools/video/automation/prompts.mjs` | `03c8756d287436496db6d6ce3fe398f33a70244b5601ce3a9d399b91f81755f2` |
+| `tools/video/automation/series.mjs` | `cd782797e6eb85b2d2e609507a6b683941a400ff12acc7ec0e8243ac06d59a54` |
+| `tools/video/automation/series.test.mjs` | `ce8d18d30137ea172dc4ccf6ab7be5e3d1f4cb849f8e0b95626a7d6696de3f3c` |
 | `tools/video/cli.test.mjs` | `e813be708f513a358f4eec561d5056377174a56c2a367a1ee97ad78b95de8379` |
 | `tools/video/core/anime-policy.mjs` | `2c53db1a18e27780b032a019b37912197c13bb4aadc6a130cecdc60371482ecd` |
 | `tools/video/core/anime-policy.test.mjs` | `74b9f1360829efed4c2f1e529b403024877e255d51430a5a2636ac7c5a24b3c6` |
@@ -611,22 +619,22 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/core/approvals.test.mjs` | `51c4a632685a36221dcaf6ac926d5256879c1540f709b708945770d9e5e6adaf` |
 | `tools/video/core/branding.mjs` | `aaad784dc23fe4bc1fc08c2871a5cd122ba483c500a07f128cb836dd8f05c8c7` |
 | `tools/video/core/branding.test.mjs` | `bebfeabcb0855bffc18f0334dd1a6206bb374552467edb036d999ca5398374cb` |
-| `tools/video/core/drama.mjs` | `482db7a95b8f23a25024761a4e347aa4ff66240405247323637bed2f81f6b8e3` |
-| `tools/video/core/drama.test.mjs` | `d61bdea38aba9d10e7e6ce52eec26b2649d40590ae68279097e397d51f3c56ee` |
-| `tools/video/core/duration.mjs` | `ea03a4c70e45c069b2b751038a91cbd4ae93790b6e5120d6eaebfedde285d138` |
+| `tools/video/core/drama.mjs` | `64379e79e06ce8e96ae5854f7d5c56d57976132df340777be7ce34ada121d3ba` |
+| `tools/video/core/drama.test.mjs` | `19256dc3fcd35ce5b26ebff97bbebe13cce3d8ec9bef2a90e2f5b4828eb9e438` |
+| `tools/video/core/duration.mjs` | `e92c104bc62babf18f47c75b67416807484f1af794b94cd8790350990dba8edd` |
 | `tools/video/core/duration.test.mjs` | `388bda7c57e548c2f50165a713e038e147645d283409c1f09393e8eef68652ba` |
 | `tools/video/core/explainer.test.mjs` | `1b1d3a2add5373e8a91941150d4cf16abc501fb0724540005edb2abff247154e` |
-| `tools/video/core/lint.mjs` | `74bb8cf6952713f4a356cf1e58109cb7ed7a838e3825b4a913471578188b2af3` |
-| `tools/video/core/lint.test.mjs` | `41d812e5d8a089e92bcbc3f7c089a44ac14d9b73c33d9ac16bc94fc5baa4ca40` |
+| `tools/video/core/lint.mjs` | `32f46678dde9b3d7616935fec440a8f152ea864fa4fdf37b3687a00c83cd9e11` |
+| `tools/video/core/lint.test.mjs` | `38c166ee40d35fa31f0e15621bc40aaa4ce99af862027168192f0dc1484688a5` |
 | `tools/video/core/narration-locale.test.mjs` | `e42075ee53802451cb51ff3aa39252d358d3a9b8584f631c37f96d017c98eefc` |
-| `tools/video/core/schema.mjs` | `45cc51fd700af64f99f8a30eedc43240184fb82aa9e2cedef3ae0ce14b738882` |
+| `tools/video/core/schema.mjs` | `d810ca82a8ef459faea23efa0afcbf1029d08521cb50c09e157bb19598ac172f` |
 | `tools/video/core/screenplay.mjs` | `1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389` |
 | `tools/video/core/screenplay.test.mjs` | `fe2765c5f2fa42d7cfe5a2e542063c32c4349b585c649552a31b2088aaaec180` |
 | `tools/video/core/stages.test.mjs` | `0a409f7a88234c1823146ea65092a95ceb12b69c34ccf1910894712f34859a2e` |
 | `tools/video/core/state.mjs` | `2b7ed5fc43229adda46c1bfe9c61dab679820d7d85cf16a8ccdf39d92f33fe82` |
 | `tools/video/core/state.test.mjs` | `fecb280b9f8f39cd00896652382587bfee203b82b73b2461ac4e0c3f1481e0b9` |
-| `tools/video/core/timeline.mjs` | `cce37cc821e8dfc5566abb32a86999a690f0ecb55f6608faf083e408c4e54c45` |
-| `tools/video/core/timeline.test.mjs` | `13c424a9ef87345168f9c3a407ff60543023792b887f2e215562a25741ab1a9a` |
+| `tools/video/core/timeline.mjs` | `c4893537d9aa5b803ce594726c75adf7e21d96056dea8f0d038c48507044bd81` |
+| `tools/video/core/timeline.test.mjs` | `8eedaa0b04f56d22b65becbf23e39e23e051f2d6850f63a5bf7c496583b9b00a` |
 | `tools/video/dubs/captions-package.test.mjs` | `7eb0a10630b447dd17ffeafe3d99059c0fe3f392d58838dffd10a59373734f28` |
 | `tools/video/dubs/dubs.test.mjs` | `143f7bfa09d2a161c275186464ea2f27c55f37a1e9dc9d5e90dfab7ed69f373b` |
 | `tools/video/dubs/freshness.test.mjs` | `c882af3d55bff72c410e930b0e0f187770782a937952bb9efba3ab40e44a5b30` |
@@ -637,7 +645,7 @@ These 108 bindings describe the current reviewed bytes after the native long-ani
 | `tools/video/long-form/plans.test.mjs` | `5b7992649fa5384d1758664a2e9b6ccbb104004da499a3d5f73b6665e9f768a6` |
 | `tools/video/long-form/review.mjs` | `7c8df7615dd87e355d6304fe161a2adafcb90b584093dd30799e32c58d527a44` |
 | `tools/video/long-form/review.test.mjs` | `e753ccc616b589a321473336f71621cd46206edbc0fa4f2b1e59d2167217e06f` |
-| `tools/video/media/clips.test.mjs` | `adba34387121485e6c30a0c15a57c0e9e2c6ef573f00c9a83e4a09ba391c3764` |
+| `tools/video/media/clips.test.mjs` | `9e652b33c994ca01dd242e220e6f73ae1bce8675bfadb66ff5a299b2183c207b` |
 | `tools/video/media/look-keyframes.test.mjs` | `d4f5076aead1ca20c38e6cfaeabc82c7f00054ad98d79915cc5add8278649851` |
 | `tools/video/package/cli.mjs` | `11dd9a7259d547d5455ce8fb110c145f659efb1656464a5b9be1f395ebd6e91e` |
 | `tools/video/package/package.test.mjs` | `05814a6fc0191d1b91fb209b12bd90293787dae24eb71c9fc32ea115646bbd4f` |
