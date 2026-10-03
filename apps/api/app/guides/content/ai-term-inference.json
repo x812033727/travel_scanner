@@ -7,6 +7,7 @@
     "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
   "locales": {
@@ -17,7 +18,12 @@
         "src": "/guides/ai-term-inference/hero.jpg",
         "alt": "一疊提示文字送進鎖住權重的模型方塊，右側輸出一個接一個出現的小方塊",
         "width": 1600,
-        "height": 900
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
       },
       "blocks": [
         {
@@ -30,8 +36,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "推論和訓練差在哪裡"
+          "text": "推論和訓練差在哪裡",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -69,8 +75,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "一次回答的兩段：讀入提示，再逐個產生"
+          "text": "一次回答的兩段：讀入提示，再逐個產生",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -90,12 +96,18 @@
           "alt": "時間軸圖：排隊與網路、讀入提示（prefill）、逐個產生 token（decode），上方標示完整回答時間，下方標示首個 token 時間與產生時間",
           "width": 1600,
           "height": 900,
-          "caption": "完整回答時間等於首個 token 時間加上產生時間；輸入長度主要影響前段，輸出長度主要影響後段。"
+          "caption": "完整回答時間等於首個 token 時間加上產生時間；輸入長度主要影響前段，輸出長度主要影響後段。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "示例：民宿助理的兩種問法"
+          "text": "示例：民宿助理的兩種問法",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -107,8 +119,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "兩種慢：首個 token 時間與完整回答時間"
+          "text": "兩種慢：首個 token 時間與完整回答時間",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -126,8 +138,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "降低成本：批次、量化與快取"
+          "text": "降低成本：批次、量化與快取",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -173,8 +185,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "雲端與本機：誰的硬體，誰在排隊"
+          "text": "雲端與本機：誰的硬體，誰在排隊",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -186,8 +198,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "用語：推論、推理與推論時計算"
+          "text": "用語：推論、推理與推論時計算",
+          "level": 2
         },
         {
           "type": "paragraph",

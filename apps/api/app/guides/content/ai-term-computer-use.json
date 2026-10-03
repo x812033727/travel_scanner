@@ -7,6 +7,7 @@
     "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
   "locales": {
@@ -17,7 +18,12 @@
         "src": "/guides/ai-term-computer-use/hero.jpg",
         "alt": "一個螢幕畫面被取景框框住，游標正要點向畫面裡的按鈕，下方是一排鍵盤按鍵",
         "width": 1600,
-        "height": 900
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
       },
       "blocks": [
         {
@@ -45,8 +51,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "三種做法，差在模型看什麼"
+          "text": "三種做法，差在模型看什麼",
+          "level": 2
         },
         {
           "type": "rich_paragraph",
@@ -118,8 +124,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "迴圈：截圖、判斷、動作、再截圖"
+          "text": "迴圈：截圖、判斷、動作、再截圖",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -135,12 +141,18 @@
           "alt": "一圈迴圈依序是截圖、判斷、動作、再截圖，右側標出畫面文字不可信、高風險動作先問人、整圈設上限三條護欄",
           "width": 1600,
           "height": 900,
-          "caption": "四個方框是一圈；紅、橘、綠圓點對應右側三條護欄各管哪一段，綠點標在外框上，表示管整圈。"
+          "caption": "四個方框是一圈；紅、橘、綠圓點對應右側三條護欄各管哪一段，綠點標在外框上，表示管整圈。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "為什麼比 API 慢，也更容易出錯"
+          "text": "為什麼比 API 慢，也更容易出錯",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -152,8 +164,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "評測怎麼做：OSWorld 的設定"
+          "text": "評測怎麼做：OSWorld 的設定",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -165,8 +177,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "風險：畫面上的字、誤點與帳號權限"
+          "text": "風險：畫面上的字、誤點與帳號權限",
+          "level": 2
         },
         {
           "type": "rich_paragraph",
@@ -212,8 +224,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "示例：在測試帳號裡填一張表單"
+          "text": "示例：在測試帳號裡填一張表單",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -221,14 +233,14 @@
         },
         {
           "type": "list",
-          "ordered": true,
           "items": [
             "截圖，確認畫面是測試站的表單，不是登入頁或彈出視窗。",
             "點姓名欄、輸入虛構姓名，再截圖，確認欄位內容和輸入一致。",
             "場次是下拉選單；點選沒反應就改用鍵盤方向鍵與 Enter，再截圖確認選到哪一場。",
             "填備註，再截圖確認。",
             "停在送出鈕之前，列出三個欄位的值，由人檢查並自己按送出。"
-          ]
+          ],
+          "ordered": true
         },
         {
           "type": "paragraph",
@@ -242,8 +254,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "怎麼選：先 API，再網頁，最後才是畫面"
+          "text": "怎麼選：先 API，再網頁，最後才是畫面",
+          "level": 2
         },
         {
           "type": "rich_paragraph",

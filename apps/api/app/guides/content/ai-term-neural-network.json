@@ -7,6 +7,7 @@
     "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
   "locales": {
@@ -17,7 +18,12 @@
         "src": "/guides/ai-term-neural-network/hero.jpg",
         "alt": "三排圓點以粗細不同的線連成網路，旁邊有一顆球沿山谷滾向最低點",
         "width": 1600,
-        "height": 900
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
       },
       "blocks": [
         {
@@ -45,8 +51,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "單元只做兩件事：加權加總與轉換"
+          "text": "單元只做兩件事：加權加總與轉換",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -58,8 +64,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "從感知器到多層網路：中間層會不會學"
+          "text": "從感知器到多層網路：中間層會不會學",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -67,8 +73,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "為什麼一定要有非線性轉換"
+          "text": "為什麼一定要有非線性轉換",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -80,8 +86,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "示例：兩個開關控制一盞燈"
+          "text": "示例：兩個開關控制一盞燈",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -106,8 +112,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "訓練：損失、反向傳播與梯度下降"
+          "text": "訓練：損失、反向傳播與梯度下降",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -156,12 +162,18 @@
           "alt": "上方是訓練迴圈：前向計算、損失、反向傳播、梯度下降並重複；中間是權重與偏差；下方是推論，只讀取權重做前向計算",
           "width": 1600,
           "height": 900,
-          "caption": "訓練反覆改寫中間的權重，推論只讀取它。"
+          "caption": "訓練反覆改寫中間的權重，推論只讀取它。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "參數、神經元與能力是三件事"
+          "text": "參數、神經元與能力是三件事",
+          "level": 2
         },
         {
           "type": "rich_paragraph",
@@ -219,8 +231,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "和深度學習、Transformer 的關係"
+          "text": "和深度學習、Transformer 的關係",
+          "level": 2
         },
         {
           "type": "rich_paragraph",

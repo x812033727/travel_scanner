@@ -5,7 +5,7 @@
 ## 定義與兩種用法
 
 合成資料＝由演算法、生成模型或模擬產生、模仿真實資料特徵的資料，而不是直接由人產生｜https://arxiv.org/abs/2404.07503｜2026-10-03｜abs 頁與 PDF（arxiv.org/pdf/2404.07503，pdftotext）第 1 頁導言；COLM 2024 論文，Google DeepMind 等
-部分合成＝只替換部分欄位或加雜訊；完全合成＝用原始資料建模再由模型產生、與原始記錄沒有一對一對應｜https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-188.pdf｜2026-10-03｜PDF 全文（pdftotext），第 4.4 節與表 3，2023 年 9 月版；csrc.nist.gov/pubs/sp/800/188/final 也開過（200）
+部分合成＝在原始資料上只替換部分列、欄或儲存格（換成統計模型產生的值，或加上雜訊），其餘仍是原始記錄；完全合成＝用原始資料建模、再由模型產生整份資料，與原始記錄沒有一對一對應｜https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-188.pdf｜2026-10-03｜PDF 全文（pdftotext），第 4.4 節列舉的兩種做法、表 3、第 4.4.1 與 4.4.4 節，2023 年 9 月版；csrc.nist.gov/pubs/sp/800/188/final 也開過（200）
 合成資料產生自真實資料、有部分合成與完全合成兩種｜https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-sharing/privacy-enhancing-technologies/what-pets-are-there/synthetic-data/｜2026-10-03｜網頁 HTML 轉純文字
 用較強模型輸出教較小模型常歸入蒸餾、以教師輸出做 SFT 是一條蒸餾路徑｜站內 ai-term-knowledge-distillation 的既有正文（apps/api/app/guides/content/）｜2026-10-03｜讀站內檔案，用來對齊用語，不是外部來源
 
@@ -27,14 +27,14 @@ Shumailov 等人，Nature 631，2024-07-24 上線；「不加區分地使用模�
 LLM 實驗：微調 OPT-125m（1.25 億參數）於 wikitext2，五路 beam search，每代用上一代產生的資料；設定一：五個 epoch、不保留原始資料，困惑度上升；設定二：十個 epoch、每代隨機保留 10% 原始資料，只有輕微退化｜同上｜2026-10-03｜網頁全文「Fine-tuning language models」一節；正文不寫模型名與資料集名，也不寫論文中「20 到 28 點」那句（原文語意不明，不引）
 Gerstgrasser 等人：replace 與 accumulate 兩種設定；9M GPT-2、12M／42M／125M Llama2 在 TinyStories（470M token、由 GPT-3.5/4 產生的短篇故事）預訓練，每代新初始化模型，replace 時測試交叉熵上升，accumulate 時持平或更低；VAE 與擴散模型有類似結果；線性模型證明 accumulate 時測試誤差有與迭代次數無關的上界｜https://arxiv.org/abs/2404.01413｜2026-10-03｜abs 頁與 PDF（pdftotext）第 2.1 節、摘要、討論
 Gerstgrasser 等人自己指出「model collapse」被不同研究者用在不同現象，至少四種｜同上｜2026-10-03｜PDF Discussion 最後一段
-Barzilai、Shamir 2025：最大概似估計的理論，標準假設下即使真實資料占比趨近於零也能避免崩潰；缺少額外假設時，即使原始資料還在，崩潰可任意快發生｜https://arxiv.org/abs/2505.19046｜2026-10-03｜只讀 abs 頁摘要（v3，2026-03-26 修訂），正文僅寫摘要明講的內容
-Schaeffer 等人 2025 立場論文：模型崩潰研究含八種不同且有時互相衝突的定義｜https://arxiv.org/abs/2503.03150｜2026-10-03｜只讀 abs 頁摘要；是立場論文，正文以「立場論文」稱之，不當成實證結果
-Feng 等人：矩陣特徵值（transformer）與新聞摘要（LLM）兩個任務，用驗證器（即使不完美）可避免崩潰｜https://arxiv.org/abs/2406.07515｜2026-10-03｜只讀 abs 頁摘要（v2）；正文只寫「該研究兩個任務」
+Barzilai、Shamir 2025：分析的是資料逐代累積的設定（起初 n 筆真實樣本，每輪最新模型再產生 n 筆，與先前所有資料累積後訓練下一個模型）；以最大概似估計為對象，標準假設下即使真實資料占比趨近於零也能避免崩潰；缺少 MLE 一致性以外的額外假設時，即使原始資料還在，崩潰可任意快發生（正文寫成「很快」）；作者明說「資料累積就不會崩潰」的說法只在額外的結構假設下成立｜https://arxiv.org/abs/2505.19046｜2026-10-03｜abs 頁摘要與 PDF（arxiv.org/pdf/2505.19046，v3，2026-03-26 修訂，NeurIPS 2025）第 1、2 節，pdftotext
+Schaeffer 等人 2025 立場論文：人工標註 28 篇先前研究，找出八種不同且有時互相衝突的定義｜https://arxiv.org/abs/2503.03150｜2026-10-03｜abs 頁摘要與 PDF 圖 1、第 2 節；是立場論文，正文以「立場論文」稱之，不當成實證結果
+Feng 等人：第 6 節把「用合成資料訓練的模型比原本的產生器差」稱為崩潰（只比較一次訓練，不是一代代遞迴）；計算矩陣特徵值（transformer）與新聞摘要（Llama-2）兩個任務，不篩選時都出現；有些不完美的驗證器（6.1 節加雜訊的驗證器、6.2 節自我篩選）能讓結果勝過產生器；6.2 節用 ROUGE-1 較高的 Llama-3 當驗證器，表現與隨機挑選相近（"Llama-3 verification results in performance similar to random selection"），自我篩選則勝過產生器｜https://arxiv.org/abs/2406.07515｜2026-10-03｜abs 頁摘要與 PDF（v2）第 1、6、7 節，pdftotext；正文不寫模型名
 
 ## 隱私用途
 
 完全合成資料不是零揭露風險，因為仍含源自非公開個人資訊的內容（第 4.4.6 節）｜https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-188.pdf｜2026-10-03｜PDF 全文
-模型與由模型產生的合成資料都可能洩漏可再識別資訊；深度學習模型是否記住訓練資料難以量化（第 4.4.4 節）｜同上｜2026-10-03｜PDF 全文
+模型與由模型產生的合成資料都可能洩漏可再識別資訊；深度學習模型記住（並可能重新產生）多少訓練資料難以量化（第 4.4.4 節，"the extent to which the model is memorizing"）｜同上｜2026-10-03｜PDF 全文
 建議在資料本身標示合成，例如 SYNTHETIC PERSON；分析者應能用原始資料驗證發現（第 4.4.4 節）｜同上｜2026-10-03｜PDF 全文
 差分隱私可控制洩漏量（第 4.4.4、4.4.7 節）｜同上｜2026-10-03｜PDF 全文
 合成資料是否匿名取決於能否從中推回原本的個人資訊；擬真度愈高效用愈大也愈可能揭露；部分生成方法易受模型反演、成員推論、屬性揭露攻擊；差分隱私與離群值抑制是緩解方式但可能降低效用；原始資料偏誤會被帶進合成資料｜https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-sharing/privacy-enhancing-technologies/what-pets-are-there/synthetic-data/｜2026-10-03｜網頁 HTML 轉純文字
@@ -53,8 +53,9 @@ Yi 等人，arXiv:2510.16657（驗證器重訓）：理論上驗證器不完美�
 
 ## 編輯與工具備註
 
-純段落正文（段落、rich_paragraph、清單項、表格格子、callout 標題與內文；不含標題、圖說、連結文字、來源）：2541 字元（`_body_length` 算法，去空白）。
+純段落正文：2731 字元，用 `app.guides.pack_ingest._body_length` 直接算（段落、rich_paragraph 全部 inline 文字含連結文字、清單項、表格表頭與格子、callout 標題與內文，去空白；不含標題、圖說、來源）。撰稿時 2541，第一輪查核補設定後 2744，第二輪改寫讀法後 2731。
 標題 38 字，description 127 字，5 個 H2，1 個表格，1 個 callout，連結 ai-term-knowledge-distillation、ai-term-supervised-fine-tuning、ai-term-pretraining、ai-terms-index 各 1 次。
 SVG 皆為原創向量圖，沒有 logo、截圖或人臉；2026 為製圖年份。
+第二輪查核（2026-10-03，見 verify-2.md）只動讀法：給「分佈的尾端」「ROUGE-L」「驗證器」「最大概似估計」加白話說明，「有上界」改「不會無限上升」，「任意快」改「很快」，Feng 等人一段補上新聞摘要任務裡自我篩選勝過原模型的對照，開頭第二段刪掉重複的來源列舉；事實主張不變。
 brief 與來源的差異：catalogue 寫 Shumailov 的設定是「遞迴只用生成資料」，Nature 論文的語言模型實驗另有每代保留 10% 原始資料的設定（只輕微退化），正文兩個設定都寫；以來源為準。
 渲染備註：brief 的渲染指令用完整版 chrome，視窗高度被瀏覽器外框吃掉約 88 px，PNG 下緣約 88 px 會變白，圖看起來被截斷；自查改用 chromium_headless_shell（`render_svg` 在未設 CHROMIUM_BIN 時預設選的那個）才看到完整 1600×900。

@@ -7,6 +7,7 @@
     "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
   "locales": {
@@ -17,7 +18,12 @@
         "src": "/guides/ai-term-chain-of-thought/hero.jpg",
         "alt": "一串往上的步驟方塊連到打勾的圓，下方另有一條虛線繞過所有步驟直達終點",
         "width": 1600,
-        "height": 900
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
       },
       "blocks": [
         {
@@ -30,8 +36,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "兩種寫法：給示範，或只說一句"
+          "text": "兩種寫法：給示範，或只說一句",
+          "level": 2
         },
         {
           "type": "rich_paragraph",
@@ -62,8 +68,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "原論文在自己的設定下量到什麼"
+          "text": "原論文在自己的設定下量到什麼",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -79,8 +85,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "推理模型把步驟內建了"
+          "text": "推理模型把步驟內建了",
+          "level": 2
         },
         {
           "type": "rich_paragraph",
@@ -121,8 +127,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "寫出來的步驟忠實嗎"
+          "text": "寫出來的步驟忠實嗎",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -146,7 +152,13 @@
           "alt": "同一題問兩次，第二次加入暗示後答案改變而步驟沒有提到暗示，即步驟不忠實；下方標示 Chen 等人 2025 年測得的承認比例約 25% 與 39%",
           "width": 1600,
           "height": 900,
-          "caption": "忠實性測試的做法：同題問兩次，只差一句暗示；上方為示意流程，下方數字出自該研究的設定。"
+          "caption": "忠實性測試的做法：同題問兩次，只差一句暗示；上方為示意流程，下方數字出自該研究的設定。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
         },
         {
           "type": "paragraph",
@@ -154,8 +166,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "把步驟當成可查的主張清單"
+          "text": "把步驟當成可查的主張清單",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -163,13 +175,13 @@
         },
         {
           "type": "list",
-          "ordered": true,
           "items": [
             "條件：步驟用到的每個數字，是否都在題目裡；憑空冒出「每場保留 4 席」就是自行添加。",
             "算式：自己用計算機重算，不靠模型自評。",
             "一致：最後一行答案，是否等於步驟算出的結果。",
             "穩定：題後另加「我猜答案是 30」重問；答案被帶走卻沒提到這句，這份說明就不可靠。"
-          ]
+          ],
+          "ordered": true
         },
         {
           "type": "paragraph",
