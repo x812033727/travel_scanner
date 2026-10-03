@@ -22,7 +22,7 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "通用人工智慧（Artificial General Intelligence，簡稱 AGI）沒有公認的定義。OpenAI、Google DeepMind 和學術界各有說法：有的看能否取代有經濟價值的工作，有的看多少任務達到什麼水準，有的看學新技能的效率。所以「某系統達到 AGI」是句不完整的話，要先補上兩件事：用哪個定義，以及怎麼量。"
+          "text": "通用人工智慧（Artificial General Intelligence，簡稱 AGI）沒有公認的定義。OpenAI、Google DeepMind 和學術界各有說法：有的看在多數有經濟價值的工作上能否勝過人類，有的看多少任務達到什麼水準，有的看學新技能的效率。所以「某系統達到 AGI」是句不完整的話，要先補上兩件事：用哪個定義，以及怎麼量。"
         },
         {
           "type": "rich_paragraph",
@@ -59,7 +59,7 @@
         },
         {
           "type": "paragraph",
-          "text": "OpenAI 章程把 AGI 寫成「高度自主、在多數具經濟價值的工作上勝過人類的系統」。Morris 等人認為它只看表現、不問機制，還給了經濟價值這把可能的尺；但不一定有明確經濟價值的能力沒被涵蓋，「產生價值」也隱含要實際部署，系統卻可能做得到而沒被用上。OpenAI 2023 年的另一篇文章寫成「整體上比人類更聰明的 AI 系統」，沒附判定方法。"
+          "text": "OpenAI 章程把 AGI 寫成「高度自主、在多數具經濟價值的工作上勝過人類的系統」。Morris 等人認為它只看表現、不問機制，還給了經濟價值這把可能的尺；但像藝術創意這類沒有明確經濟價值的能力未必量得進去，「產生價值」也隱含要實際部署，系統卻可能做得到而沒被用上。OpenAI 2023 年的另一篇文章寫成「整體上比人類更聰明的 AI 系統」，沒附判定方法。"
         },
         {
           "type": "paragraph",
@@ -94,12 +94,12 @@
             ],
             [
               "Legg 與 Hutter",
-              "在廣泛環境中達成目標",
+              "定義機器智慧：在廣泛環境中達成目標",
               "式子無法計算，只是定義"
             ],
             [
               "Chollet、ARC Prize",
-              "技能習得效率",
+              "Chollet 定義智慧是技能習得效率，ARC Prize 據此定義 AGI",
               "在沒見過的任務上學多快"
             ]
           ],
@@ -116,7 +116,7 @@
         },
         {
           "type": "paragraph",
-          "text": "表現分五級：Level 1 Emerging 約等於或略優於沒有技能的人，Level 2 Competent 至少是具備該技能成年人的第 50 百分位，Level 3 Expert 是第 90 百分位，Level 4 Exceptional 是第 99 百分位，Level 5 Superhuman 勝過 100% 的人。一個系統可橫跨好幾格，論文因此建議模型文件逐項寫出表現分布。"
+          "text": "表現分五級：Level 1 Emerging 約等於或略優於沒有技能的人，Level 2 Competent 至少是具備該技能成年人的第 50 百分位，Level 3 Expert 是第 90 百分位，Level 4 Exceptional 是第 99 百分位（ICML 論文集版稱 Virtuoso，2025 年的 arXiv 修訂版改名），Level 5 Superhuman 勝過 100% 的人。一個系統可橫跨好幾格，論文因此建議模型文件逐項寫出表現分布。"
         },
         {
           "type": "rich_paragraph",
@@ -174,13 +174,13 @@
             },
             {
               "type": "text",
-              "text": "只能說明系統在那組題目、那種設定下的表現。Morris 等人沒有提出 AGI 基準，只列出開放問題，如通用程度要涵蓋哪些任務、通過多少比例。"
+              "text": "只能說明系統在那組題目、那種設定下的表現。Morris 等人沒有提出 AGI 基準，而是討論基準該量什麼、該具備哪些性質，並列出開放問題，如通用程度要涵蓋哪些任務、要通過多少比例。"
             }
           ]
         },
         {
           "type": "paragraph",
-          "text": "他們點出不對稱：證明某系統不屬於某一級，只要找到一項人類做得到、它做不好的任務；要說它屬於，卻得面對列不完的任務。Marcus 提出的五項任務（如看懂小說、在陌生廚房做菜、寫出沒有錯誤的一萬行程式）就是例子：失敗一項可說明還不是，全過也不足以說明是。"
+          "text": "他們點出不對稱：證明某系統不屬於某一級，只要找到一項人類做得到、它做不好的任務；要說它屬於，卻得面對列不完的任務。Marcus 提出的五項任務（如看懂小說、在任意一間廚房做菜、寫出沒有錯誤的一萬行程式）就是例子：論文指出，沒通過其中幾項可能表示還不是，全部通過卻不一定足以說明是。"
         },
         {
           "type": "paragraph",
@@ -195,7 +195,7 @@
           "type": "list",
           "ordered": true,
           "items": [
-            "誰說的：OpenAI 與 Microsoft 在 2025 年 10 月的官方公告寫到，OpenAI 宣告 AGI 後由獨立專家小組查驗，但沒寫標準，仍要追問依據。",
+            "誰說的：OpenAI 與 Microsoft 在 2025 年 10 月的官方公告寫到，OpenAI 宣告 AGI 後由獨立專家小組查驗，但沒寫標準；雙方 2026 年 4 月再修約，官方公告列出的條款已不再提到 AGI。不論誰宣告，都要追問依據。",
             "用哪個定義：經濟價值工作、分級表上的哪一格，還是學習效率？沒交代的只是口語用法。",
             "怎麼量：哪些任務、對照哪群人、第幾百分位、題目是否事前未知。",
             "量潛力還是部署：Morris 等人主張 AGI 看系統做得到什麼，不是已被用在多大範圍。",
@@ -250,7 +250,7 @@
           "checked_on": "2026-10-03"
         },
         {
-          "title": "Morris 等：Levels of AGI for Operationalizing Progress on the Path to AGI（arXiv:2311.02462，ICML 2024）",
+          "title": "Morris 等：Levels of AGI for Operationalizing Progress on the Path to AGI（arXiv:2311.02462 v5，2025 年修訂；ICML 2024）",
           "url": "https://arxiv.org/abs/2311.02462",
           "checked_on": "2026-10-03"
         },
@@ -287,6 +287,16 @@
         {
           "title": "OpenAI：The next chapter of the Microsoft–OpenAI partnership（官方公告）",
           "url": "https://openai.com/index/next-chapter-of-microsoft-openai-partnership/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Microsoft：The next phase of the Microsoft-OpenAI partnership（官方部落格公告，2026 年 4 月）",
+          "url": "https://blogs.microsoft.com/blog/2026/04/27/the-next-phase-of-the-microsoft-openai-partnership/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "OpenAI：The next phase of the Microsoft OpenAI partnership（官方公告，2026 年 4 月）",
+          "url": "https://openai.com/index/next-phase-of-microsoft-partnership/",
           "checked_on": "2026-10-03"
         }
       ]

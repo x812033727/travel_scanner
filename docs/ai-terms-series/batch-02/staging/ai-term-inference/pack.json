@@ -82,7 +82,7 @@
         },
         {
           "type": "paragraph",
-          "text": "這就是輸出越長越久的原因：token 越多，要重複的步數越多，每步都要讀取模型權重與 KV 快取。輸入變長則主要加重那一次 prefill。OpenAI 的延遲指南同樣指出，產生 token 幾乎總是延遲最高的一步，輸入除非非常長，通常不是主因。"
+          "text": "這就是輸出越長越久的原因：token 越多，要重複的步數越多，每步都要讀取模型權重與 KV 快取。輸入變長則主要加重那一次 prefill，也讓之後每步要讀的 KV 快取變大。OpenAI 的延遲指南同樣指出，產生 token 幾乎總是延遲最高的一步，輸入除非非常長，通常不是主因。"
         },
         {
           "type": "image",
@@ -103,7 +103,7 @@
         },
         {
           "type": "paragraph",
-          "text": "若實測與預期不同，別硬套這個模型。首個 token 時間偏長，可能是排隊、網路來回，或提示詞比想像的長；產生很慢，可能是同時處理的請求多，或輸出比預期長。NVIDIA 的文件指出 TTFT 通常包含排隊、prefill 與網路延遲，要分段量。"
+          "text": "若實測與預期不同，別硬套這個模型。首個 token 時間偏長，可能是排隊、網路來回，或提示詞比想像的長；產生很慢，可能是同時處理的請求多，或輸出比預期長。NVIDIA 的文件指出 TTFT 通常包含排隊、prefill 與網路延遲；要知道慢在哪，得分段量。"
         },
         {
           "type": "heading",
@@ -131,13 +131,13 @@
         },
         {
           "type": "paragraph",
-          "text": "每次請求的成本，來自它佔用多少硬體時間；Pope 等人以每個 token 的晶片時間或金額衡量。他們在 TPU v4 上分析大型 Transformer 時指出，批次小，延遲可較低，但每個 token 的成本較高；離線處理加大批次通常最划算。降本做法常見三類，這裡只點名："
+          "text": "每次請求的成本，來自它佔用多少硬體時間；Pope 等人以每個 token 的晶片時間或金額衡量。他們分析超大型 Transformer 在多顆加速晶片上的推論時指出，批次小，延遲可較低，但每個 token 的成本較高；離線處理加大批次通常最划算。降本做法常見三類，這裡只點名："
         },
         {
           "type": "list",
           "items": [
             "批次處理（batching）：多個請求合併計算。vLLM 論文指出，KV 快取很大且動態增減，浪費的記憶體會限制批次大小，因此提出 PagedAttention。",
-            "量化（quantization）：用較低精度的數值表示權重，減少記憶體需求。Pope 等人的 PaLM 實驗用了 int8 權重量化。",
+            "量化（quantization）：用較低精度的數值表示權重，減少記憶體需求。Pope 等人的實驗比較了 bfloat16 與量化成 int8 的權重。",
             "快取（caching）：重用已算好的結果，例如相同字首的 KV 快取，OpenAI 的指南建議把會變動的內容放在提示詞後段。"
           ],
           "ordered": false
@@ -167,7 +167,7 @@
             },
             {
               "type": "text",
-              "text": "；快取只省讀入提示那段，不縮短逐個產生。"
+              "text": "；提示詞快取只省讀入提示那段，不縮短逐個產生。"
             }
           ]
         },
@@ -191,7 +191,7 @@
         },
         {
           "type": "paragraph",
-          "text": "繁體中文裡，inference 與 reasoning 的譯名並不整齊。Google 機器學習詞彙表繁體中文版把 inference 譯為推論，並以「推理」描述模型的推導；國家教育研究院樂詞網的詞表則兩個詞都用：統計學名詞譯為推論，電子計算機名詞譯為推理，inference engine 是「推理引擎」或「推理機」。所以「推論＝inference、推理＝reasoning」是本站為分開兩件事的用法，不是詞典規定；讀到「推理引擎」要看上下文。"
+          "text": "繁體中文裡，inference 與 reasoning 的譯名並不整齊。Google 機器學習詞彙表繁體中文版把 inference 譯為推論，並以「推理」描述模型的推導；國家教育研究院樂詞網的各學科詞表則兩種譯法都有：統計學名詞譯為推論，電子計算機名詞譯為推理，inference engine 是「推理引擎」或「推理機」。所以「推論＝inference、推理＝reasoning」是本站為分開兩件事的用法，不是詞典規定；讀到「推理引擎」要看上下文。"
         },
         {
           "type": "rich_paragraph",
@@ -245,7 +245,7 @@
           "checked_on": "2026-10-03"
         },
         {
-          "title": "Kwon 等：Efficient Memory Management for LLM Serving with PagedAttention（vLLM，SOSP 2023）",
+          "title": "Kwon 等：Efficient Memory Management for Large Language Model Serving with PagedAttention（vLLM，SOSP 2023）",
           "url": "https://arxiv.org/abs/2309.06180",
           "checked_on": "2026-10-03"
         },
@@ -277,6 +277,11 @@
         {
           "title": "國家教育研究院樂詞網：inference 條目（各學科詞表的譯名對照）",
           "url": "https://terms.naer.edu.tw/detail/8bc45e654bd178e8380ebefabc5e389b/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "國家教育研究院樂詞網：inference engine 精確檢索結果（各詞表譯為推理引擎、推理機）",
+          "url": "https://terms.naer.edu.tw/search/?query_term=inference+engine&query_field=title&query_op=&match_type=phrase",
           "checked_on": "2026-10-03"
         }
       ]
