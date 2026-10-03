@@ -38,14 +38,20 @@ export const MIN_CLIP_SECONDS = 4;
 export const MAX_CLIP_SECONDS = 10;
 export const MAX_REFERENCES = 4;
 
+const ordinaryIdentityQuestion = (character) => `In the clip's last frame, is ${character.name} still the same person as in the reference sheet labelled "${character.name}": face, hair, clothing, build?`;
+const sheetLabelNeedsId = (character) => `sheet ${character.name}`.length > 80;
+const identityNeedsContext = (character) => Boolean(character.shot_look) || sheetLabelNeedsId(character) || ordinaryIdentityQuestion(character).length > 400;
+
 /** What the judge scores a clip on: each character in its last frame, then the motion itself. */
 export function clipRubric(characters) {
   return [
     ...characters.map((character) => ({
       key: `identity_${character.id.replace(/-/g, "_")}`,
       question: character.shot_look
-        ? `Throughout the clip, does ${character.name} keep the reference sheet's facial identity and recognizable bone structure and the requested look ${character.shot_look}: ${character.appearance}? The requested clothing, hair and age override the sheet's styling; no morphing back to the base outfit.`
-        : `In the clip's last frame, is ${character.name} still the same person as in the reference sheet labelled "${character.name}": face, hair, clothing, build?`,
+        ? `Throughout the clip, does character ${character.id} keep the reference sheet's facial identity and recognizable bone structure while following the full requested appearance for look ${character.shot_look} in context? Its clothing, hair and age override the sheet's styling; no morphing back to the base outfit.`
+        : identityNeedsContext(character)
+          ? `In the clip's last frame, is character ${character.id} still the same person as in the reference sheet matched by the full name in context: face, hair, clothing, build?`
+          : ordinaryIdentityQuestion(character),
       weight: 2,
     })),
     { key: "motion", question: "Is the motion natural and continuous: no morphing, no flicker, no limbs or objects drifting or changing shape?", weight: 2 },
@@ -346,8 +352,8 @@ export async function run(command, args, ctx) {
       const inspected = await inspect(ctx, tools, path.join(workdir, clip.file), { keyframe: path.join(workdir, keyframe.file), rivals, requested: seconds, needed: neededFrames / FPS });
       let judge;
       try {
-        const sheetFiles = characters.filter((character) => sheets[character.id]).map((character) => ({ sha256: uploads.get(sheets[character.id].file), label: `sheet ${character.name}` }));
-        const ask = (sha256) => stage.judge({ id: scene.id, kind: "clip", files: [{ sha256, label: "clip" }, ...sheetFiles].slice(0, 6), rubric: clipRubric(characters), context: { shot: { id: scene.id, prompt: scene.data.prompt, motion: scene.data.motion ?? null, camera: scene.data.camera ?? null }, characters: characters.map((character) => ({ name: character.name, description: character.appearance })), style: look.style } });
+        const sheetFiles = characters.filter((character) => sheets[character.id]).map((character) => ({ sha256: uploads.get(sheets[character.id].file), label: `sheet ${sheetLabelNeedsId(character) ? character.id : character.name}` }));
+        const ask = (sha256) => stage.judge({ id: scene.id, kind: "clip", files: [{ sha256, label: "clip" }, ...sheetFiles].slice(0, 6), rubric: clipRubric(characters), context: { shot: { id: scene.id, prompt: scene.data.prompt, motion: scene.data.motion ?? null, camera: scene.data.camera ?? null }, characters: characters.map((character) => ({ ...(identityNeedsContext(character) ? { id: character.id } : {}), ...(character.shot_look ? { shot_look: character.shot_look } : {}), name: character.name, description: character.appearance })), style: look.style } });
         try {
           judge = await ask(clip.sha256);
         } catch (error) {
