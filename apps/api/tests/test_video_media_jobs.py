@@ -105,6 +105,22 @@ def _row(**changes: Any) -> VideoAutomationSettings:
     return VideoAutomationSettings(id=1, **values)
 
 
+def test_a_2k_picture_is_refused_for_a_model_priced_at_1k_only() -> None:
+    minimax = find_model("minimax", "image", "image-01")
+    assert minimax is not None and minimax.usd_per_image_2k is None
+    with pytest.raises(MediaJobFailed) as refused:
+        service._request_fields(_image(size="2K"), _row(), minimax)
+    assert refused.value.status == 422 and refused.value.code == "video_media_model_not_allowed"
+    assert "2K" in refused.value.detail
+    pro = find_model("gemini", "image", "gemini-3-pro-image")
+    assert pro is not None
+    assert service._request_fields(_image(size="2K"), _row(), pro)["resolution"] == "2K"
+    assert "resolution" not in service._request_fields(_image(size="1K"), _row(), pro)
+    assert meter.usd_for(pro, "image", 0, "2K") == meter.usd_for(pro, "image", 0), (
+        "Pro's 2K costs the 1K price"
+    )
+
+
 def test_lite_job_records_always_on_native_audio_even_when_final_edit_discards_it() -> None:
     model = find_model("gemini", "clip", "veo-3.1-lite-generate-preview")
     assert model is not None
@@ -210,6 +226,13 @@ async def test_an_illustrated_slides_video_draws_under_its_own_switch_model_and_
     assert created and job.status == "ready"
     assert job.model == "gemini-3.1-flash-image"
     assert float(job.usd_estimate) == 0.067, "Flash, not the drama's Pro"
+    # A still asked at 2K (docs/videos/ILLUSTRATED.md) is another request, sent to the vendor as
+    # its resolution and priced at the model's 2K price.
+    large, created = await submit_job(ctx, "image", _image(size="2K"))
+    assert created and large.id != job.id and large.status == "ready"
+    assert float(large.usd_estimate) == 0.101 and large.request["resolution"] == "2K"
+    assert fake_provider.requests[-1].resolution == "2K"
+    assert fake_provider.requests[-2].resolution is None, "no size, no resolution: the 1K default"
     with pytest.raises(MediaJobFailed) as clip:
         await submit_job(
             ctx,

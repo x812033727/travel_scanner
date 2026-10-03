@@ -52,7 +52,7 @@ and render them separately.
 ## Notes
 
 - Independent full PASS receipt:
-  `C:/Users/x8120/.codex/article-localization-release/batch012-selection/otaru-revision/independent-review/receipt.json`,
+  `<home>/.codex/article-localization-release/batch012-selection/otaru-revision/independent-review/receipt.json`,
   SHA-256 `3d8b81cbee97d0435a7bb6462524ab2d7fb689b35848629274be928978d4ff98`.
   It binds pack SHA-256 `1901b14cd4453697592ac91348983d941182f81971174185e11c415d3812618e`
   and freeze SHA-256 `00228db75c13873e55a366de796f4d24592a1f970f63700b2be42a1de888b892`.

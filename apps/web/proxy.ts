@@ -51,5 +51,12 @@ export default async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
+  // Skips the API, Next's own assets, `/.well-known/` (Apple fetches an extensionless file
+  // there) and anything that ends in a static file extension: every file in public/, the app's
+  // metadata files and its dotted route handlers (robots.txt, ads.txt, llms.txt, feed.xml,
+  // sitemap.xml). It used to skip any path with a dot anywhere, which left the [...rest] 404
+  // document for `/zh-TW/no-such.page` without a nonce or the enforced script-src while it
+  // still mounted the provider tree and the third-party scripts. `proxy.test.ts` checks one
+  // file of every extension under public/, so a new kind of asset fails there, not in prod.
+  matcher: ["/((?!api|_next|_vercel|\\.well-known/|.*\\.(?:avif|css|csv|gif|html|ico|jpe?g|js|json|map|mjs|mp3|mp4|otf|pdf|png|svg|ttf|txt|wasm|webm|webmanifest|webp|woff2?|xml|zip)$).*)"],
 };

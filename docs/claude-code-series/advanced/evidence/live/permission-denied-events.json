@@ -2,7 +2,7 @@
   {
     "type": "system",
     "subtype": "init",
-    "cwd": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-belt3026",
+    "cwd": "<home>\\AppData\\Local\\Temp\\mokaair-claude-case-belt3026",
     "session_id": "a638c47e-08b7-493a-9df1-a22dd13485bd",
     "tools": [
       "Read"
@@ -103,7 +103,7 @@
     "product_feedback_disabled": false,
     "uuid": "df98b137-dbe0-4f65-8a60-e3267f38790b",
     "memory_paths": {
-      "auto": "C:\\Users\\x8120\\.claude\\projects\\C--Users-x8120-AppData-Local-Temp-mokaair-claude-case-belt3026\\memory\\"
+      "auto": "<home>\\.claude\\projects\\<project-slug>\\memory\\"
     },
     "fast_mode_state": "off",
     "fast_mode_disabled_reason": "sdk_opt_in_required"
@@ -134,7 +134,7 @@
           "id": "toolu_01NvR3BHbMfmrFBUxtULEmyR",
           "name": "Read",
           "input": {
-            "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-belt3026\\private\\demo.txt"
+            "file_path": "<home>\\AppData\\Local\\Temp\\mokaair-claude-case-belt3026\\private\\demo.txt"
           },
           "caller": {
             "type": "direct"
@@ -195,7 +195,7 @@
       "content": [
         {
           "type": "text",
-          "text": "Permission denied.\n\n- Tool: Read, one attempt, on `private/demo.txt` (resolved to `C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-belt3026\\private\\demo.txt`)\n- Result: `File is in a directory that is denied by your permission settings.`\n\nPer your instruction, I stopped there — no retry, no alternate path or tool. File contents unverified."
+          "text": "Permission denied.\n\n- Tool: Read, one attempt, on `private/demo.txt` (resolved to `<home>\\AppData\\Local\\Temp\\mokaair-claude-case-belt3026\\private\\demo.txt`)\n- Result: `File is in a directory that is denied by your permission settings.`\n\nPer your instruction, I stopped there — no retry, no alternate path or tool. File contents unverified."
         }
       ],
       "container": null,
@@ -295,7 +295,7 @@
     "fast_mode_disabled_reason": "sdk_opt_in_required",
     "subtype": "success",
     "api_error_status": null,
-    "result": "Permission denied.\n\n- Tool: Read, one attempt, on `private/demo.txt` (resolved to `C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-belt3026\\private\\demo.txt`)\n- Result: `File is in a directory that is denied by your permission settings.`\n\nPer your instruction, I stopped there — no retry, no alternate path or tool. File contents unverified.",
+    "result": "Permission denied.\n\n- Tool: Read, one attempt, on `private/demo.txt` (resolved to `<home>\\AppData\\Local\\Temp\\mokaair-claude-case-belt3026\\private\\demo.txt`)\n- Result: `File is in a directory that is denied by your permission settings.`\n\nPer your instruction, I stopped there — no retry, no alternate path or tool. File contents unverified.",
     "ttft_ms": 1876,
     "ttft_stream_ms": 1161,
     "time_to_request_ms": 31,

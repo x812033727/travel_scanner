@@ -15,7 +15,7 @@
 
 指令一律 `curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'`，
 同一主機間隔 ≥2 秒；UA、查詢字串、標頭、表單都不含任何個人資料。
-原始 body 與去標籤全文存在 `C:\Users\x8120\mokaair-work\news47\_raw\crypto-news-taiwan-deposit-token-pilot-20260922\fc2\`。
+原始 body 與去標籤全文存在 `<home>\mokaair-work\news47\_raw\crypto-news-taiwan-deposit-token-pilot-20260922\fc2\`。
 
 | # | 網址 | HTTP | bytes（本輪／第一輪） | 是否正文 |
 | --- | --- | --- | --- | --- |

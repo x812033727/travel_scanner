@@ -59,7 +59,7 @@ Exact source scope (zero-based image index):
 
 Fresh read-only production export captured `2026-09-23T19:05:10Z`: all four articles are active/published at article version 2, original zh-TW draft/published/latest version 4, and all four target-language rows are absent. Complete source models, revision hashes, metadata and 16 original files match main `0f9eb1dc02cb5663a0ae3590422e4764c269bde8`. Original source dates remain `2026-09-14`; primary-source rereading and localized image production are not yet complete.
 
-Candidate inventory under `C:/Users/x8120/.codex/article-localization-release/batch027-candidate-inventory-v1/`: `candidate-manifest.json` SHA256 `befb6fc37537e97899cb95b3eee846c6894777ed0e613fd00ae08468abf835b1`; fresh snapshot `live-source-full-20260923T190507Z.json` SHA256 `74e1584cd3b05243bd526c67781bd8451599b754881a7a5185b8f0f6edbbbd26`; root fresh comparison `root-fresh-source-review.json` SHA256 `4a8e19a4ad303ee07ab116cb924d3fd2452c86a1e2e94b1c3140c97f09a6f01e`.
+Candidate inventory under `<home>/.codex/article-localization-release/batch027-candidate-inventory-v1/`: `candidate-manifest.json` SHA256 `befb6fc37537e97899cb95b3eee846c6894777ed0e613fd00ae08468abf835b1`; fresh snapshot `live-source-full-20260923T190507Z.json` SHA256 `74e1584cd3b05243bd526c67781bd8451599b754881a7a5185b8f0f6edbbbd26`; root fresh comparison `root-fresh-source-review.json` SHA256 `4a8e19a4ad303ee07ab116cb924d3fd2452c86a1e2e94b1c3140c97f09a6f01e`.
 
 The read-only scan covered 155 readable worktrees, 14,102 task records and 338 local refs without active scoped conflict or existing target translations. Fresh remote PR file checks also found no overlap. These are claim-time evidence, not a permanent lock.
 

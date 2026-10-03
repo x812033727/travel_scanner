@@ -33,7 +33,7 @@ CI 曾經讓 Playwright 起 `next dev`，每頁第一次打開才編譯，30 秒
 
 ### 5. 測試量得到的才算數
 
-- `context.setOffline(true)` 與 `page.route` 都碰不到 service worker 的 fetch；「離線後重新載入」在沒有 app shell 快取的架構下本來就不成立。寫不出能證明那件事的 e2e，就不要留一支斷言比名字弱的 e2e。來源：`tasks/done/2026-09-11-offline-today-e2e.md`。
+- 「離線後重新載入」在沒有 app shell 快取的架構下本來就不成立，寫不出能證明那件事的 e2e，就不要留一支斷言比名字弱的 e2e（`tasks/done/2026-09-11-offline-today-e2e.md`，Playwright 1.62 時 `setOffline` 與 route 都碰不到 service worker 的 fetch）。worker 開始快取 app shell 之後，`e2e/offline-day-view.spec.ts` 在 1.63 先斷言 worker 自己的 fetch 真的失敗、再用 CDP 停掉 worker 冷開，並以「拿掉快取的 document 就打不開」反向驗證過（`tasks/done/2026-09-11-offline-day-view-needs-an-app.md`）。
 - 後台頁掉進 error boundary 不觸發 `pageerror`（見 `references/e2e-local.md`）。一個新頁面至少要有一個「資料真的畫出來才成立」的斷言，並且反向驗證：拿掉 fixture，測試要紅。
 
 ### 6. 假資料的漂移會偽裝成 flake

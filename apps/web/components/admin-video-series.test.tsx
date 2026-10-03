@@ -60,6 +60,11 @@ const planningSummary = {
   planned_episodes: 120, episodes_per_chapter: 12, chapters: 10, open_ended: false, note: null,
   episodes_done: 0, episodes_started: 0, episodes_ready: 0, docs_pending: 12, media_usd: 0, clip_seconds: 0,
 };
+const runtimeSpec = { body_target_seconds: 1320, op_ed_budget_seconds: 180, broadcast_slot_seconds: 1800, slot_reserve_seconds: 300 };
+const nativeAnime = {
+  ...summary, status: "paused", kind: "series", category: "anime", planning_only: false, production_policy: "long-anime-v1", runtime_spec: runtimeSpec,
+  style_preset: "anime-2d", target_minutes: 22, genre: "custom", lead: "ensemble", hands_off: false, compilation: false,
+};
 
 // What the server quotes for the form's defaults (120 minutes of 3-minute hybrid episodes) against a
 // month whose clip, image and episode budgets are too small for it; only the judge budget fits.
@@ -167,7 +172,7 @@ afterEach(() => {
 
 describe("AdminVideoSeries", () => {
   it("shows the saved anime plan with its original runtime, 120 episodes and every document, without production controls", async () => {
-    const { calls } = stubFetch({ docs: planningDocs, summaries: [planningSummary], seriesEpisodes: planningEpisodes });
+    const { calls } = stubFetch({ docs: planningDocs, summaries: [planningSummary], seriesEpisodes: planningEpisodes, series: { production_policy: "long-anime-v1", runtime_spec: runtimeSpec } });
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
     const card = await screen.findByRole("button", { name: /借來的黎明/ });
     for (const label of ["動漫", "企劃待製作", "群像主角", "0/120 集 · 10 季", "正文 22 分鐘", "播出時段 30 分鐘", "12 份企劃文件"]) expect(card.textContent).toContain(label);
@@ -233,6 +238,90 @@ describe("AdminVideoSeries", () => {
     expect(screen.getByRole("button", { name: "跳過" })).toBeTruthy();
     fireEvent.click(screen.getByRole("button", { name: "繼續" }));
     await waitFor(() => expect(calls.some((call) => call.method === "PATCH" && call.body?.status === "active")).toBe(true));
+  });
+
+  it("creates the explicit long anime profile paused without relaxing the standard episode form", async () => {
+    const { calls } = stubFetch();
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+    await screen.findByRole("button", { name: /問劍/ });
+    fireEvent.click(screen.getByText("新的作品", { selector: "summary" }));
+    const form = screen.getByRole("form", { name: "新的作品" });
+    fireEvent.change(within(form).getByRole("textbox", { name: "作品名稱" }), { target: { value: "群像新作" } });
+    fireEvent.change(within(form).getByRole("textbox", { name: "代號（小寫英數與連字號）" }), { target: { value: "new-anime" } });
+    fireEvent.change(within(form).getByRole("textbox", { name: "故事前提" }), { target: { value: "  多人共同守護城市。  " } });
+    const minutes = within(form).getByRole("spinbutton", { name: "每集分鐘（1–8）" });
+    expect(minutes).toHaveProperty("max", "8");
+    fireEvent.change(minutes, { target: { value: "22" } });
+    expect(within(form).getByRole("button", { name: "建立作品" })).toHaveProperty("disabled", true);
+    fireEvent.submit(form);
+    expect(calls.some((call) => call.method === "POST")).toBe(false);
+    fireEvent.change(minutes, { target: { value: "5" } });
+    const profile = within(form).getByRole("combobox", { name: "單集格式" });
+    fireEvent.change(profile, { target: { value: "long-anime" } });
+    expect(within(form).queryByRole("spinbutton", { name: "每集分鐘（1–8）" })).toBeNull();
+    expect(within(form).getByRole("combobox", { name: "畫面風格" })).toHaveProperty("disabled", true);
+    expect(form.textContent).toContain("群像主角");
+    expect(form.textContent).toContain("正文目標 22 分鐘");
+    expect(form.textContent).toContain("OP/ED 預算上限 3 分鐘");
+    expect(form.textContent).toContain("播出時段 30 分鐘");
+    fireEvent.change(profile, { target: { value: "ordinary" } });
+    expect(within(form).getByRole("spinbutton", { name: "每集分鐘（1–8）" })).toHaveProperty("value", "5");
+    expect(within(form).getByRole("combobox", { name: "畫面風格" })).toHaveProperty("disabled", false);
+    fireEvent.change(profile, { target: { value: "long-anime" } });
+    fireEvent.click(within(form).getByRole("button", { name: "建立暫停的動漫作品" }));
+    await waitFor(() => expect(calls.some((call) => call.method === "POST")).toBe(true));
+    const created = calls.find((call) => call.method === "POST")?.body;
+    expect(created).toMatchObject({ slug: "new-anime", title: "群像新作", premise: "多人共同守護城市。", kind: "series", category: "anime", genre: "custom", lead: "ensemble", style_preset: "anime-2d", target_minutes: 22, production_policy: "long-anime-v1", runtime_spec: runtimeSpec, hands_off: false, compilation: false });
+    expect(created).not.toHaveProperty("status");
+    expect(created).not.toHaveProperty("planning_only");
+    expect(created).not.toHaveProperty("planning_spec");
+    expect(calls.filter((call) => call.method !== "GET")).toHaveLength(1);
+  });
+
+  it("shows native anime budgets and keeps document review available while resume waits for approved core documents", async () => {
+    window.history.replaceState(null, "", "/?series=wenjian");
+    const pendingDocs = docs.map((doc) => ({ ...doc, status: "review" }));
+    const { calls } = stubFetch({ series: nativeAnime, docs: pendingDocs });
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+    const heading = await screen.findByRole("heading", { name: /問劍/ });
+    expect(heading.textContent).toContain("長篇動漫");
+    expect(heading.textContent).toContain("群像主角");
+    expect(heading.textContent).toContain("已暫停");
+    expect(screen.getByRole("button", { name: "繼續" })).toHaveProperty("disabled", true);
+    expect(screen.queryByRole("checkbox", { name: "免關卡" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "做合集" })).toBeNull();
+    expect(screen.getByText("正文目標 22 分鐘；實測驗收範圍 21–23 分鐘")).toBeTruthy();
+    expect(screen.getByText("OP/ED 預算上限 3 分鐘 · 播出時段 30 分鐘 · 時段預留 5 分鐘")).toBeTruthy();
+    const setting = panelOf("設定集");
+    expect(within(setting).getByRole("button", { name: "核准" })).toHaveProperty("disabled", false);
+    expect(within(setting).getByText("自己改", { selector: "summary" })).toBeTruthy();
+    expect(calls.every((call) => call.method === "GET")).toBe(true);
+  });
+
+  it("resumes a native anime only after its setting and outline have been approved", async () => {
+    window.history.replaceState(null, "", "/?series=wenjian");
+    const { calls } = stubFetch({ series: nativeAnime });
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+    await screen.findByRole("heading", { name: /問劍/ });
+    const resume = screen.getByRole("button", { name: "繼續" });
+    expect(resume).toHaveProperty("disabled", false);
+    fireEvent.click(resume);
+    await waitFor(() => expect(calls.some((call) => call.method === "PATCH" && call.body?.status === "active")).toBe(true));
+    expect(calls.filter((call) => call.method === "PATCH")).toEqual([expect.objectContaining({ body: { status: "active" } })]);
+  });
+
+  it("starts planning an empty paused anime only when the owner explicitly asks", async () => {
+    window.history.replaceState(null, "", "/?series=wenjian");
+    const { calls } = stubFetch({ series: nativeAnime, docs: [], seriesEpisodes: [] });
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+    await screen.findByRole("heading", { name: /問劍/ });
+    expect(screen.queryByRole("button", { name: "繼續" })).toBeNull();
+    const plan = screen.getByRole("button", { name: "開始規劃" });
+    expect(plan).toHaveProperty("disabled", false);
+    expect(calls.every((call) => call.method === "GET")).toBe(true);
+    fireEvent.click(plan);
+    await waitFor(() => expect(calls.some((call) => call.method === "PATCH")).toBe(true));
+    expect(calls.filter((call) => call.method !== "GET")).toEqual([expect.objectContaining({ body: { status: "active" } })]);
   });
 
   it("lists the series with their progress and starts a new one from the form", async () => {

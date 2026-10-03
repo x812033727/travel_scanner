@@ -75,9 +75,9 @@ manifest 檔案 SHA256：`0924c315ee74cf344aa5dfe65949922750d88cd747d87ab8033153
 
 ```powershell
 $env:PYTHONPATH = (Resolve-Path -LiteralPath apps/api).Path
-& 'C:/Users/x8120/OneDrive/文件/ChatGPT/travel_scanㄐ/apps/api/.venv/Scripts/python.exe' -B -m pytest docs/hotel-review-remaining-20260909/test_operator_guards.py -q
-& 'C:/Users/x8120/OneDrive/文件/ChatGPT/travel_scanㄐ/apps/api/.venv/Scripts/python.exe' -B docs/hotel-review-remaining-20260909/verify_results.py --require-complete
-& 'C:/Users/x8120/OneDrive/文件/ChatGPT/travel_scanㄐ/apps/api/.venv/Scripts/ruff.exe' check ops/hotel_review_remaining_20260909.py docs/hotel-review-remaining-20260909/*.py --config apps/api/pyproject.toml
+& '<home>/OneDrive/文件/ChatGPT/travel_scanㄐ/apps/api/.venv/Scripts/python.exe' -B -m pytest docs/hotel-review-remaining-20260909/test_operator_guards.py -q
+& '<home>/OneDrive/文件/ChatGPT/travel_scanㄐ/apps/api/.venv/Scripts/python.exe' -B docs/hotel-review-remaining-20260909/verify_results.py --require-complete
+& '<home>/OneDrive/文件/ChatGPT/travel_scanㄐ/apps/api/.venv/Scripts/ruff.exe' check ops/hotel_review_remaining_20260909.py docs/hotel-review-remaining-20260909/*.py --config apps/api/pyproject.toml
 ```
 
 正式 operator 使用 `hotel-review-remaining-20260909` 收據命名空間與固定基準。

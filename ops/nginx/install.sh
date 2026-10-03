@@ -22,7 +22,7 @@ fi
 
 install -d -m 0755 "${CONF_D}" "${SNIPPETS}"
 
-# Re-applied on every run, like the rest of this repo's host installers: these four are ours
+# Re-applied on every run, like the rest of this repo's host installers: these five are ours
 # outright, so overwriting them is how an upgrade reaches the host at all.
 #
 # 05- so it loads before the rate-limit file whose maps read $mokaair_verified_crawler. It is
@@ -32,6 +32,7 @@ install -m 0644 "${SOURCE_ROOT}/05-crawler-ranges.conf" "${CONF_D}/05-mokaair-cr
 install -m 0644 "${SOURCE_ROOT}/10-rate-limit.conf" "${CONF_D}/mokaair-rate-limit.conf"
 install -m 0644 "${SOURCE_ROOT}/proxy-headers.conf" "${SNIPPETS}/mokaair-proxy-headers.conf"
 install -m 0644 "${SOURCE_ROOT}/upstream-keepalive.conf" "${SNIPPETS}/mokaair-upstream-keepalive.conf"
+install -m 0644 "${SOURCE_ROOT}/tls-policy.conf" "${SNIPPETS}/mokaair-tls-policy.conf"
 
 # --- Which site file is really enabled? -------------------------------------------------
 #
@@ -132,14 +133,26 @@ if ! grep -REqs '^[[:space:]]*include[[:space:]]+[^#]*mokaair-upstream-keepalive
   echo "    include ${SNIPPETS}/mokaair-upstream-keepalive.conf;"
 fi
 
+# Same for the TLS policy: until a server block includes it, the protocols and ciphers are
+# whatever the site file or nginx.conf says, and nothing fails to tell you so.
+if ! grep -REqs '^[[:space:]]*include[[:space:]]+[^#]*mokaair-tls-policy\.conf' \
+    "${SITES_ENABLED}" "${CONF_D}"; then
+  echo
+  echo "No enabled config includes ${SNIPPETS}/mokaair-tls-policy.conf yet."
+  echo "Compare the host's ssl_protocols / ssl_ciphers with it (its header says how), then in every"
+  echo "server block that listens with ssl replace those lines with:"
+  echo "    include ${SNIPPETS}/mokaair-tls-policy.conf;"
+fi
+
 # Deliberately no reload. A bad config that nginx accepts at -t can still be wrong for this
 # host, and reloading from inside an installer removes the operator's chance to look first.
 echo
 echo "Next, in this order:"
 if (( ${#enabled_elsewhere[@]} > 0 )); then
   echo "  1. Merge ${EXAMPLE} into ${enabled_elsewhere[0]%%|*}"
-  echo "     (keep the host's ACME webroot, extra domains, TLS parameters and default_server;"
-  echo "     bring in the two error_log lines, or the rate-limit log check reads an empty file)."
+  echo "     (keep the host's ACME webroot, extra domains and default_server; replace its inline TLS"
+  echo "     parameters with the tls-policy include only after comparing the two; bring in the two"
+  echo "     error_log lines, or the rate-limit log check reads an empty file)."
   echo "  2. nginx -t"
   echo "  3. systemctl reload nginx"
   echo "  4. Run the checks in ops/nginx/README.md. The isolated-nginx proof works as soon as the"

@@ -12,6 +12,7 @@ from app.admin.service import load_runtime_settings
 from app.ai.catalog import MODEL_CATALOG, Capability
 from app.config import Settings
 from app.models import AdminAuditLog, User
+from app.video_automation.anime_policy import is_long_anime
 from app.video_automation.judge import (
     COMPILATION_QA_ITEMS,
     QA_ITEMS,
@@ -457,7 +458,10 @@ async def hands_off_series(
     if not series_slug:
         return None
     row = await session.scalar(select(VideoDramaSeries).where(VideoDramaSeries.slug == series_slug))
-    return row if row is not None and row.hands_off else None
+    return row if (
+        row is not None and row.hands_off
+        and not getattr(row, "planning_only", False) and not is_long_anime(row)
+    ) else None
 
 
 async def auto_approves_storyboard(
@@ -479,6 +483,12 @@ async def auto_approves_storyboard(
         if not slides_values(row).slides_auto_approve_storyboard:
             return False
         return storyboard_check_passed(payload, row.judge_min_score)
+    if row.auto_approve_storyboard and series_slug:
+        series = await session.scalar(
+            select(VideoDramaSeries).where(VideoDramaSeries.slug == series_slug)
+        )
+        if series is not None and is_long_anime(series):
+            return False
     if not row.auto_approve_storyboard and await hands_off_series(session, series_slug) is None:
         return False
     return storyboard_check_passed(payload, row.judge_min_score)
@@ -533,6 +543,12 @@ async def auto_picks_look(
     # the series is hands-off.
     if row is None:
         return False
+    if row.auto_pick_look and series_slug:
+        series = await session.scalar(
+            select(VideoDramaSeries).where(VideoDramaSeries.slug == series_slug)
+        )
+        if series is not None and is_long_anime(series):
+            return False
     if not row.auto_pick_look and await hands_off_series(session, series_slug) is None:
         return False
     return look_pick_passed(payload, row.judge_min_score)

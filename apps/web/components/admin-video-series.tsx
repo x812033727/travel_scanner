@@ -44,6 +44,7 @@ type SeriesEpisode = {
 type SeriesGenre = "xianxia-bonds" | "rebirth-revenge" | "system-game" | "urban-return" | "empress-rise" | "custom";
 type SeriesLead = "female" | "male" | "dual-male" | "ensemble";
 type VisualTier = "clips" | "hybrid" | "stills";
+type RuntimeSpec = { body_target_seconds: number; op_ed_budget_seconds: number; broadcast_slot_seconds: number; slot_reserve_seconds: number };
 type SeriesSummary = {
   id: string; slug: string; title: string; premise: string; aspects: string[]; tone: string; style_preset: string; target_minutes: number;
   planned_episodes: number; episodes_per_chapter: number; chapters: number; open_ended: boolean; status: SeriesStatus; note: string | null;
@@ -53,6 +54,7 @@ type SeriesSummary = {
   kind?: SeriesKind; messages_pending?: number;
   // Imported long-form plans are readable here while production support is being prepared.
   planning_only?: boolean; category?: string | null; planning_spec?: Record<string, unknown> | null;
+  production_policy?: string | null; runtime_spec?: RuntimeSpec | null;
   // The binge columns; absent from an API older than this page, which reads as the classic series.
   genre?: SeriesGenre; lead?: SeriesLead; hands_off?: boolean; compilation?: boolean; visual_tier?: VisualTier; total_minutes?: number | null;
   compilation_slug?: string | null; compilation_started_at?: string | null; compilation_finished_at?: string | null;
@@ -82,6 +84,8 @@ const PRESETS = ["cinematic-3d", "anime-2d", "ink-wash", "custom"] as const;
 const REQUEST_PRESETS = ["cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "custom"] as const;
 const DRAMA_MINUTES = { min: 1, max: 8, default: 3 } as const;
 const EXPLAINER_MINUTES = { min: 8, max: 20, default: 10 } as const;
+const LONG_ANIME_RUNTIME: RuntimeSpec = { body_target_seconds: 1320, op_ed_budget_seconds: 180, broadcast_slot_seconds: 1800, slot_reserve_seconds: 300 };
+const isLongAnime = (series: SeriesSummary) => !series.planning_only && series.production_policy === "long-anime-v1";
 const GUIDE_SLUG = /^[a-z0-9][a-z0-9-]{0,118}[a-z0-9]$/;
 const GENRES: readonly SeriesGenre[] = ["xianxia-bonds", "rebirth-revenge", "system-game", "urban-return", "empress-rise", "custom"];
 const LEADS: readonly SeriesLead[] = ["female", "male", "dual-male"];
@@ -243,6 +247,11 @@ function BingePills({ series }: { series: SeriesSummary }) {
     {series.category === "anime" && <AdminStatusPill status="inactive">{t("planning.anime")}</AdminStatusPill>}
     {series.lead && <AdminStatusPill status="inactive">{t(`leads.${series.lead}`)}</AdminStatusPill>}
   </>;
+  if (isLongAnime(series)) return <>
+    <AdminStatusPill status="inactive">{t("planning.anime")}</AdminStatusPill>
+    <AdminStatusPill status="inactive">{t("longAnime.badge")}</AdminStatusPill>
+    <AdminStatusPill status="inactive">{t("leads.ensemble")}</AdminStatusPill>
+  </>;
   return <>
     {series.category === "anime" && <AdminStatusPill status="inactive">{t("planning.anime")}</AdminStatusPill>}
     <AdminStatusPill status="inactive">{t(`genres.${series.genre ?? "xianxia-bonds"}.name`)}</AdminStatusPill>
@@ -260,6 +269,15 @@ function PlanningRuntime({ series }: { series: SeriesSummary }) {
   return <span>{typeof slot === "number" && slot > 0 ? t("planning.runtime", { story, slot }) : t("planning.storyMinutes", { story })}</span>;
 }
 
+function LongAnimeRuntime({ runtime }: { runtime: RuntimeSpec }) {
+  const t = useTranslations("admin.videoSeries");
+  return <div className="grid gap-1 text-sm leading-6" aria-label={t("longAnime.badge")}>
+    <p>{t("longAnime.body", { minutes: runtime.body_target_seconds / 60, min: (runtime.body_target_seconds - 60) / 60, max: (runtime.body_target_seconds + 60) / 60 })}</p>
+    <p>{t("longAnime.budgets", { oped: runtime.op_ed_budget_seconds / 60, slot: runtime.broadcast_slot_seconds / 60, reserve: runtime.slot_reserve_seconds / 60 })}</p>
+    <p className="text-[var(--muted)]">{t("longAnime.budgetHelp")}</p>
+  </div>;
+}
+
 /** Start a series: the premise and the shape; the worker plans the setting book from it. */
 function NewSeriesForm({ onCreated }: { onCreated: (slug: string) => void }) {
   const t = useTranslations("admin.videoSeries");
@@ -274,16 +292,23 @@ function NewSeriesForm({ onCreated }: { onCreated: (slug: string) => void }) {
   const [perChapter, setPerChapter] = useState(10);
   const [openEnded, setOpenEnded] = useState(true);
   const [note, setNote] = useState("");
+  const [longAnime, setLongAnime] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const slugOk = SERIES_SLUG.test(slug.trim());
+  const minutesOk = longAnime || (Number.isInteger(minutes) && minutes >= DRAMA_MINUTES.min && minutes <= DRAMA_MINUTES.max);
+  const shapeOk = Number.isInteger(planned) && planned >= 1 && planned <= 500 && Number.isInteger(perChapter) && perChapter >= 4 && perChapter <= 20;
+  const valid = Boolean(title.trim() && premise.trim() && slugOk && aspects.length > 0 && minutesOk && shapeOk);
   const create = async () => {
+    if (busy || !valid) return;
     setBusy(true);
     setError("");
     try {
       const created = await api<Series>("/admin/video-automation/series", {
         method: "POST",
-        body: JSON.stringify({ slug: slug.trim(), title: title.trim(), premise: premise.trim(), aspects, tone, style_preset: preset, target_minutes: minutes, planned_episodes: planned, episodes_per_chapter: perChapter, open_ended: openEnded, note: note.trim() || undefined }),
+        body: JSON.stringify({ slug: slug.trim(), title: title.trim(), premise: premise.trim(), aspects, tone, style_preset: longAnime ? "anime-2d" : preset, target_minutes: longAnime ? 22 : minutes, planned_episodes: planned, episodes_per_chapter: perChapter, open_ended: openEnded, note: note.trim() || undefined,
+          ...(longAnime ? { kind: "series", category: "anime", genre: "custom", lead: "ensemble", production_policy: "long-anime-v1", runtime_spec: LONG_ANIME_RUNTIME, hands_off: false, compilation: false } : {}),
+        }),
       });
       onCreated(created.slug);
     } catch (problem) {
@@ -295,7 +320,11 @@ function NewSeriesForm({ onCreated }: { onCreated: (slug: string) => void }) {
   return <details className="rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]">
     <summary className="cursor-pointer text-lg font-bold">{t("newSeries")}</summary>
     <form className="mt-4 grid gap-3" onSubmit={(event) => { event.preventDefault(); void create(); }} aria-label={t("newSeries")}>
-      <p className="text-sm leading-6 text-[var(--muted)]">{t("newSeriesHelp")} <Link href={DRAMA_SETTINGS} className="font-semibold text-[var(--teal)] underline">{t("openDramaSettings")}</Link></p>
+      <p className="text-sm leading-6 text-[var(--muted)]">{longAnime ? t("longAnime.help") : t("newSeriesHelp")} <Link href={DRAMA_SETTINGS} className="font-semibold text-[var(--teal)] underline">{t("openDramaSettings")}</Link></p>
+      <label className="grid gap-2 text-sm font-semibold">{t("longAnime.profile")}<select className={control} value={longAnime ? "long-anime" : "ordinary"} disabled={busy} onChange={(event) => setLongAnime(event.target.value === "long-anime")}>
+        <option value="ordinary">{t("longAnime.ordinary")}</option><option value="long-anime">{t("longAnime.option")}</option>
+      </select></label>
+      {longAnime && <section className="grid gap-2 rounded-xl bg-[var(--paper)] p-3"><LongAnimeRuntime runtime={LONG_ANIME_RUNTIME} /><p className="text-sm text-[var(--muted)]">{t("leads.ensemble")} · {t("longAnime.manual")}</p></section>}
       <div className="grid gap-3 md:grid-cols-2">
         <label className="grid gap-2 text-sm font-semibold">{t("fields.title")}<input className={control} value={title} disabled={busy} maxLength={200} onChange={(event) => setTitle(event.target.value)} /></label>
         <label className="grid gap-2 text-sm font-semibold">{t("fields.slug")}<input className={control} value={slug} disabled={busy} placeholder={t("slugPlaceholder")} aria-invalid={Boolean(slug) && !slugOk} onChange={(event) => setSlug(event.target.value)} /></label>
@@ -311,16 +340,16 @@ function NewSeriesForm({ onCreated }: { onCreated: (slug: string) => void }) {
           <select className={control} value={tone} disabled={busy} onChange={(event) => setTone(event.target.value as (typeof TONES)[number])}>{TONES.map((each) => <option key={each} value={each}>{t(`tones.${each}`)}</option>)}</select>
         </label>
         <label className="grid gap-2 text-sm font-semibold">{t("fields.stylePreset")}
-          <select className={control} value={preset} disabled={busy} onChange={(event) => setPreset(event.target.value as (typeof PRESETS)[number])}>{PRESETS.map((each) => <option key={each} value={each}>{t(`presets.${each}`)}</option>)}</select>
+          <select className={control} value={longAnime ? "anime-2d" : preset} disabled={busy || longAnime} onChange={(event) => setPreset(event.target.value as (typeof PRESETS)[number])}>{PRESETS.map((each) => <option key={each} value={each}>{t(`presets.${each}`)}</option>)}</select>
         </label>
-        <label className="grid gap-2 text-sm font-semibold">{t("fields.targetMinutes")}<input className={control} type="number" min={1} max={8} value={minutes} disabled={busy} onChange={(event) => setMinutes(Number(event.target.value))} /></label>
+        {!longAnime && <label className="grid gap-2 text-sm font-semibold">{t("fields.targetMinutes")}<input className={control} type="number" min={1} max={8} value={minutes} disabled={busy} aria-invalid={!minutesOk} onChange={(event) => setMinutes(Number(event.target.value))} /></label>}
         <label className="grid gap-2 text-sm font-semibold">{t("fields.plannedEpisodes")}<input className={control} type="number" min={1} max={500} value={planned} disabled={busy} onChange={(event) => setPlanned(Number(event.target.value))} /></label>
         <label className="grid gap-2 text-sm font-semibold">{t("fields.episodesPerChapter")}<input className={control} type="number" min={4} max={20} value={perChapter} disabled={busy} onChange={(event) => setPerChapter(Number(event.target.value))} /></label>
         <label className="flex min-h-11 items-center gap-2 text-sm font-semibold"><input type="checkbox" checked={openEnded} disabled={busy} onChange={(event) => setOpenEnded(event.target.checked)} />{t("fields.openEnded")}</label>
       </div>
       <label className="grid gap-2 text-sm font-semibold">{t("fields.note")}<textarea className={control} rows={2} value={note} disabled={busy} maxLength={2000} placeholder={t("notePlaceholder")} onChange={(event) => setNote(event.target.value)} /></label>
       {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
-      <div><Button type="submit" disabled={busy || !title.trim() || !premise.trim() || !slugOk || aspects.length === 0}>{busy ? t("saving") : t("create")}</Button></div>
+      <div><Button type="submit" disabled={busy || !valid}>{busy ? t("saving") : longAnime ? t("longAnime.create") : t("create")}</Button></div>
     </form>
   </details>;
 }
@@ -507,6 +536,7 @@ function SeriesList({ onOpenSeries, onOpenVideo }: { onOpenSeries: (slug: string
           <BingePills series={each} />
         </span>
         <span className="text-sm text-[var(--muted)]">{each.planning_only ? <>{t("planning.progress", { done: each.episodes_done, total: each.planned_episodes, seasons: each.chapters })} · <PlanningRuntime series={each} /></> : <>{t("progress", { done: each.episodes_done, total: each.planned_episodes, chapters: each.chapters })}{each.total_minutes ? ` · ${t("totalMinutesLabel", { minutes: each.total_minutes })}` : ""} · {t("spend", { usd: Number(each.media_usd ?? 0).toFixed(2), seconds: each.clip_seconds ?? 0 })}</>}</span>
+        {isLongAnime(each) && each.runtime_spec && <LongAnimeRuntime runtime={each.runtime_spec} />}
         <span className="line-clamp-2 text-sm leading-6">{each.premise}</span>
       </button>
     </li>)}</ul>}
@@ -734,12 +764,15 @@ function SeriesPage({ slug, onBack, onOpenVideo }: { slug: string; onBack: () =>
   // A one-off is one episode planned from its bible: no chapters to plan, no episode count worth showing.
   const oneOff = series?.kind === "one-off";
   const planningOnly = Boolean(series?.planning_only);
+  const longAnime = Boolean(series && isLongAnime(series));
+  const needsPlanning = longAnime && series?.docs.length === 0;
+  const coreApproved = Boolean(series && ["setting", "outline"].every((kind) => series.docs.some((doc) => doc.kind === kind && doc.status === "approved" && !doc.needs_reconciliation)));
   const canProduce = manage.allowed && !planningOnly;
   const state = series && !oneOff && !planningOnly ? compilationState(series) : "none";
   // The current compilation first; an earlier one (the owner asked for another) only when nothing newer exists.
   const compilation = series ? (compilations.find((video) => video.slug === series.compilation_slug) ?? compilations[0] ?? null) : null;
   // One compilation per series: the worker names it <series>-full, so a second cannot start. A one-off has none.
-  const canCompile = !oneOff && !planningOnly && series?.status === "finished" && state === "none";
+  const canCompile = !oneOff && !planningOnly && !longAnime && series?.status === "finished" && state === "none";
   if (series?.kind === "story") return <StorySeriesPage series={series} error={error} onBack={onBack} onOpenVideo={onOpenVideo} onChanged={load} />;
   return <section className="mt-6 grid gap-5">
     <div><Button secondary onClick={onBack}><ArrowLeft aria-hidden size={18} />{t("back")}</Button></div>
@@ -749,25 +782,26 @@ function SeriesPage({ slug, onBack, onOpenVideo }: { slug: string; onBack: () =>
         <h2 className="flex flex-wrap items-center gap-3 text-2xl font-bold">{series.title}{oneOff && <AdminStatusPill status="active">{t("oneOff")}</AdminStatusPill>}<AdminStatusPill status={seriesTone[series.status]}>{t(`statuses.${statusKey(series)}`)}</AdminStatusPill><WaitingPills series={series} /><BingePills series={series} /></h2>
         <p className="text-sm text-[var(--muted)]">{planningOnly ? <>{t("planning.progress", { done: series.episodes_done, total: series.planned_episodes, seasons: series.chapters })} · <PlanningRuntime series={series} /> · {t(`presets.${series.style_preset}`)}</> : <>{oneOff ? "" : `${t("progress", { done: series.episodes_done, total: series.planned_episodes, chapters: series.chapters })}${series.total_minutes ? ` · ${t("totalMinutesLabel", { minutes: series.total_minutes })}` : ""} · `}{t("spend", { usd: Number(series.media_usd ?? 0).toFixed(2), seconds: series.clip_seconds ?? 0 })} · {oneOff ? "" : `${t(`leads.${series.lead ?? "dual-male"}`)} · `}{t(`tones.${series.tone}`)} · {t(`presets.${series.style_preset}`)} · {t("minutesEach", { minutes: series.target_minutes })}</>}</p>
         {planningOnly && <p role="status" className="rounded-xl bg-[var(--paper)] p-3 text-sm leading-6">{t("planning.help")}</p>}
+        {longAnime && series.runtime_spec && <section className="grid gap-2 rounded-xl bg-[var(--paper)] p-3"><LongAnimeRuntime runtime={series.runtime_spec} /><p className="text-sm text-[var(--muted)]">{t("longAnime.manual")}</p>{series.status === "paused" && !coreApproved && <p role="status" className="text-sm">{t(needsPlanning ? "longAnime.planningHelp" : "longAnime.reviewRequired")}</p>}</section>}
         {planningOnly && typeof series.planning_spec?.tone === "string" && <p className="text-sm text-[var(--muted)]">{series.planning_spec.tone}</p>}
         <p className="whitespace-pre-wrap text-sm leading-6">{series.premise}</p>
         {series.note && <p className="text-sm text-[var(--muted)]">{t("fields.note")}: {series.note}</p>}
         {manage.allowed && <div className="flex flex-wrap gap-3">
           {canProduce && series.status === "active" && <Button secondary disabled={busy === "pause"} onClick={() => void act("pause", () => patch({ status: "paused" }))}>{t("pause")}</Button>}
-          {canProduce && series.status === "paused" && <Button secondary disabled={busy === "resume"} onClick={() => void act("resume", () => patch({ status: "active" }))}>{t("resume")}</Button>}
+          {canProduce && series.status === "paused" && <Button secondary disabled={busy === "resume" || (longAnime && !needsPlanning && !coreApproved)} onClick={() => void act("resume", () => patch({ status: "active" }))}>{t(needsPlanning ? "longAnime.startPlanning" : "resume")}</Button>}
           {canProduce && series.status === "active" && !oneOff && <Button secondary disabled={busy === "plan"} onClick={() => void act("plan", () => api(`/admin/video-automation/series/${slug}/actions/plan-next-chapter`, { method: "POST" }))}>{t("planNextChapter")}</Button>}
           {canProduce && series.status === "active" && <Button secondary disabled={busy === "start"} onClick={() => void act("start", () => api(`/admin/video-automation/series/${slug}/actions/start-next`, { method: "POST" }))}>{t("startNext")}</Button>}
           {withdrawable(series) && <Button secondary disabled={busy === "withdraw"} onClick={() => void takeBack(series)}>{busy === "withdraw" ? t("saving") : t("withdraw")}</Button>}
           {canCompile && <Button secondary disabled={busy === "compile"} onClick={() => void act("compile", () => api(`/admin/video-automation/series/${slug}/actions/compile`, { method: "POST" }))}>{t("compile")}</Button>}
         </div>}
-        {canProduce && !oneOff && <div className="grid gap-1">
+        {canProduce && !oneOff && !longAnime && <div className="grid gap-1">
           <label className="flex min-h-11 items-center gap-2 text-sm font-semibold"><input type="checkbox" checked={Boolean(series.hands_off)} disabled={busy === "hands-off"} onChange={(event) => void act("hands-off", () => patch({ hands_off: event.target.checked }))} />{t("handsOff")}</label>
           <p className="text-sm leading-6 text-[var(--muted)]">{t("handsOffHelp")}</p>
         </div>}
         {!planningOnly && (series.requested_chapter || series.force_next) && <p className="text-sm text-[var(--muted)]">{series.requested_chapter ? t("chapterRequested", { n: series.requested_chapter }) : ""}{series.force_next ? ` ${t("nextForced")}` : ""}</p>}
         {actionError && <p role="alert" className="text-sm text-red-800">{actionError}</p>}
       </header>
-      {!oneOff && !planningOnly && (state !== "none" || series.status === "finished" || compilation) && <section className="grid gap-3 rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]" aria-label={t("compilation")}>
+      {!oneOff && !planningOnly && !longAnime && (state !== "none" || series.status === "finished" || compilation) && <section className="grid gap-3 rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]" aria-label={t("compilation")}>
         <h3 className="flex flex-wrap items-center gap-3 text-lg font-bold">{t("compilation")}{state !== "none" && <AdminStatusPill status={compilationTone[state]}>{t(`compilationStatuses.${state}`)}</AdminStatusPill>}</h3>
         {state === "none" && !compilation && <p className="text-sm leading-6 text-[var(--muted)]">{t("compilationNone")}</p>}
         {state === "waiting" && <p className="text-sm leading-6 text-[var(--muted)]">{t("compilationWaiting")}</p>}

@@ -39,4 +39,4 @@ Render diagram-1-en.svg at 1600x900, verify the card text stays within its frame
 
 This follows Pair B content commit a7ebd576. The original published zh-TW v4, #855 prerequisite, and other Pair B translations/assets remain unchanged.
 
-- Verified by `C:\Users\x8120\.codex\article-localization-release\batch030-pair-b\pair-b-followup-validation.json` SHA-256 `f9acd011e9d5865d590f3c93b55a8c781f1408571aea1c4127ca90dae7cf08a6`. Deep comparison with a7ebd576 shows exactly two field/node changes. English diagram re-rendered at 1600×900 and visually inspected; card text has 27.656 px right margin. Pack lint exit 0.
+- Verified by `<home>\.codex\article-localization-release\batch030-pair-b\pair-b-followup-validation.json` SHA-256 `f9acd011e9d5865d590f3c93b55a8c781f1408571aea1c4127ca90dae7cf08a6`. Deep comparison with a7ebd576 shows exactly two field/node changes. English diagram re-rendered at 1600×900 and visually inspected; card text has 27.656 px right margin. Pack lint exit 0.

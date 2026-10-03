@@ -9,6 +9,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 
+import { hasAnimePolicy, isLongAnime } from "../core/anime-policy.mjs";
 import { docDir } from "../core/paths.mjs";
 import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
 import { documentProblem } from "./series.mjs";
@@ -54,6 +55,7 @@ export function documentDiscussionPayload(automation, job) {
     document: discussionDoc(job.doc),
     series: {
       slug: series.slug,
+      ...(hasAnimePolicy(series) ? { category: series.category, production_policy: series.production_policy, runtime_spec: series.runtime_spec, genre: series.genre, lead: series.lead, compilation: series.compilation, hands_off: series.hands_off } : {}),
       kind: series.kind ?? "series",
       title: series.title,
       premise: series.premise,
@@ -99,7 +101,7 @@ export async function answerDocument(automation, job) {
   const slug = `series-${series.slug}`;
   let answer;
   try {
-    answer = await automation.stage("planner", slug, documentDiscussionPayload(automation, job), 32_000, "drama", "discuss");
+    answer = await automation.stage("planner", slug, documentDiscussionPayload(automation, job), 32_000, "drama", "discuss", series);
   } catch (error) {
     if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) throw error;
     automation.keepAnswer(path.join(automation.workBase, "_series", series.slug), "discuss");
@@ -171,7 +173,16 @@ export async function answerScript(automation, job) {
   const video = JSON.parse(readFileSync(file, "utf8"));
   let answer;
   try {
-    answer = await automation.stage("writer", state.slug, scriptDiscussionPayload(automation, job, state, video), 32_000, "drama", "discuss");
+    if (isLongAnime(state)) {
+      const payload = scriptDiscussionPayload(automation, job, state, video);
+      delete payload.line_ids;
+      answer = await automation.stage("writer", state.slug, payload, 8_000, "drama", "anime-discuss-plan", state.series);
+      if (typeof answer?.change_required !== "boolean" || answer.revised != null) throw new AutomationError("anime discussion must give a change decision, not a whole-script replacement", { code: OUTPUT_INVALID });
+      if (answer.change_required) {
+        const revision = await automation.animeRewrite(state, { message: job.message.body_md, thread: threadOf(job), subject: job.subject }, video, "writer", `discuss-${job.message.id}`);
+        answer = { reply: answer.reply, revised: { video: revision.video } };
+      } else answer = { reply: answer.reply, revised: null };
+    } else answer = await automation.stage("writer", state.slug, scriptDiscussionPayload(automation, job, state, video), 32_000, "drama", "discuss");
   } catch (error) {
     if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) throw error;
     automation.keepAnswer(automation.workdir(state.slug), "discuss");

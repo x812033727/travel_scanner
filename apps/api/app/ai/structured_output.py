@@ -169,7 +169,15 @@ _GEMINI_SCALAR_KEYS = ("type", "description", "enum", "nullable")
 
 
 def gemini_response_schema(model_type: type[BaseModel]) -> dict[str, Any]:
-    """Reduce a pydantic model's JSON Schema to the subset Gemini accepts as a schema."""
+    """Reduce a pydantic model's JSON Schema to the subset Gemini accepts as a schema.
+
+    A union keeps every option as an ``anyOf``, which the Gemini API's ``Schema`` has
+    accepted since March 2025. ``oneOf`` and its ``discriminator`` have no Gemini
+    equivalent: each option of a discriminated union still carries its one-value
+    ``type`` enum, so the options stay distinguishable, and pydantic enforces the
+    discriminator on the reply. Until 2026-10 only the first option was kept, which
+    told Gemini that every block of a news ``GuideDocument`` was a heading.
+    """
     schema = model_type.model_json_schema()
     definitions = schema.get("$defs") or {}
 
@@ -183,10 +191,14 @@ def gemini_response_schema(model_type: type[BaseModel]) -> dict[str, Any]:
         if "allOf" in node and len(node["allOf"]) == 1:
             merged = {key: value for key, value in node.items() if key != "allOf"}
             return convert({**node["allOf"][0], **merged})
-        if "anyOf" in node:
-            options = [item for item in node["anyOf"] if item.get("type") != "null"]
-            converted = convert(options[0]) if options else {"type": "string"}
-            if len(options) != len(node["anyOf"]):
+        union = node.get("anyOf", node.get("oneOf"))
+        if union is not None:
+            options = [item for item in union if item.get("type") != "null"]
+            if len(options) > 1:
+                converted = {"anyOf": [convert(item) for item in options]}
+            else:
+                converted = convert(options[0]) if options else {"type": "string"}
+            if len(options) != len(union):
                 converted["nullable"] = True
             if "description" in node:
                 converted["description"] = node["description"]
@@ -195,6 +207,13 @@ def gemini_response_schema(model_type: type[BaseModel]) -> dict[str, Any]:
         if "const" in node:
             converted["type"] = "string"
             converted["enum"] = [str(node["const"])]
+        elif "enum" in converted and converted.get("type", "string") != "string":
+            # Gemini documents ``enum`` for ``Type.STRING`` only (numeric enums are
+            # reported to fail with a 400), and a string enum would turn ``Literal[2, 3]``
+            # into "2": the number keeps its type and names its values (a heading level).
+            values = ", ".join(str(value) for value in converted.pop("enum"))
+            note = f"One of: {values}."
+            converted["description"] = f"{converted.get('description', '')} {note}".strip()
         elif "enum" in converted:
             converted["enum"] = [str(value) for value in converted["enum"]]
             converted.setdefault("type", "string")
