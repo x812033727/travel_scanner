@@ -11,13 +11,18 @@
   "news_date": null,
   "featured": false,
   "display_order": 417,
+  "related": [
+    "ai-workflow-agent-local-two-routes",
+    "ai-workflow-agent-local-engine",
+    "ai-workflow-failures-and-guardrails"
+  ],
   "locales": {
     "zh-TW": {
       "title": "Claude Code、Codex 搭本機模型的注意事項：開工前的檢查清單",
       "description": "Claude Code 或 Codex 搭本機模型之前，先照一張表逐項核對：代理讀不讀得到原始檔、現在連的是誰、標籤是不是 :cloud、上下文實際開多長、逾時與輸出量、怎麼驗收。每一項寫怎麼檢查，並指出詳見同組哪一篇，另外收進供應商端點、條款與授權、繁體中文用字檢查；檢查方法取自 Anthropic、OpenAI、Ollama 與 DeepSeek 的官方文件。",
       "hero": {
         "src": "/guides/ai-workflow-agent-local-checklist/hero.jpg",
-        "alt": "原創插圖：桌上攤開一張逐項打勾的檢查表，旁邊一台筆電裡有標著本機的小方塊，筆電與遠處的雲朵之間隔著一道留了開口的柵欄。",
+        "alt": "原創插圖：中間是一張列著幾個打勾項目的清單，左邊是一個模型，右邊是一把鎖，代表開工前逐項核對",
         "width": 1600,
         "height": 900,
         "credit": {
@@ -49,8 +54,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "同一個模型名字有三種跑法：權重下載到自己的電腦、Ollama 的 :cloud 標籤、供應商自己的端點，只有第一種的內容由你電腦上的程式處理，分辨方法見《GLM、Qwen、DeepSeek 接上 Claude Code 與 Codex：哪些在本機、哪些其實在雲端》。接法也有兩種：雜務交給腳本或 MCP 工具，或把代理的模型整個換成本機模型。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "同一個模型名字有三種跑法：權重下載到自己的電腦、Ollama 的 :cloud 標籤、供應商自己的端點，只有第一種的內容由你電腦上的程式處理，分辨方法見《GLM、Qwen、DeepSeek 接上 Claude Code 與 Codex：哪些在本機、哪些其實在雲端》。接法也有兩種：雜務交給腳本或 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 工具，或把代理的模型整個換成本機模型。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -140,8 +160,23 @@
           "text": "Ollama 要只綁本機位址。FAQ 寫預設綁 127.0.0.1 的 11434 連接埠，改綁定位址用 OLLAMA_HOST，所以查這個變數有沒有被設過。本組不教把 Ollama 開到區域網路或公網。"
         },
         {
-          "type": "paragraph",
-          "text": "本機模型的輸出要當成不可信輸入：結果檔是模型讀完外面寄來的內容後寫的文字，原文裡夾的指令可能被帶進摘要。Claude Code 的 MCP 頁提醒，抓外部內容的伺服器可能帶來提示詞注入風險；權限頁寫，沙盒的限制即使提示詞注入繞過了 Claude 的判斷仍然適用。所以重點是權限，不是在提示詞裡寫「這是資料」。原理見《提示詞注入是什麼：使用者該懂的攻擊》。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本機模型的輸出要當成不可信輸入：結果檔是模型讀完外面寄來的內容後寫的文字，原文裡夾的指令可能被帶進摘要。Claude Code 的 MCP 頁提醒，抓外部內容的伺服器可能帶來"
+            },
+            {
+              "type": "article",
+              "text": "提示詞注入",
+              "kind": "life",
+              "slug": "ai-term-prompt-injection"
+            },
+            {
+              "type": "text",
+              "text": "風險；權限頁寫，沙盒的限制即使提示詞注入繞過了 Claude 的判斷仍然適用。所以重點是權限，不是在提示詞裡寫「這是資料」。原理見《提示詞注入是什麼：使用者該懂的攻擊》。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -149,8 +184,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "位址指到供應商自己的網址，請求就是送到供應商，不是本機。DeepSeek 的 Claude Code 頁寫，設那組環境變數是讓 Claude Code 指向 DeepSeek 的 Anthropic API，並有一段模型名對照：傳入的模型名以 claude-opus 開頭的，對到 deepseek-v4-pro，以 V4 Pro 的價格計費。對照與計費以供應商頁面當天的寫法為準，本篇不寫價格。資料處理可借用《使用中國系 AI App 前的資安檢查清單》。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "位址指到供應商自己的網址，請求就是送到供應商，不是本機。DeepSeek 的 Claude Code 頁寫，設那組環境變數是讓 Claude Code 指向 DeepSeek 的 Anthropic API，並有一段模型名對照：傳入的模型名以 claude-opus 開頭的，對到 deepseek-v4-pro，以 V4 Pro 的價格計費。對照與計費以供應商頁面當天的寫法為準，本篇不寫價格。資料處理可借用《使用"
+            },
+            {
+              "type": "article",
+              "text": "中國系 AI",
+              "kind": "life",
+              "slug": "chinese-ai-models-comparison"
+            },
+            {
+              "type": "text",
+              "text": " App 前的資安檢查清單》。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -299,14 +349,26 @@
           ]
         },
         {
-          "type": "link",
-          "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
-          "url": "https://mokaair.com/zh-TW/life/ai-workflow-tutorials"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "失敗案例與防護：迴圈、費用爆炸與代理間注入",
-          "url": "https://mokaair.com/zh-TW/life/ai-workflow-failures-and-guardrails"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "失敗案例與防護：迴圈、費用爆炸與代理間注入",
+              "kind": "life",
+              "slug": "ai-workflow-failures-and-guardrails"
+            }
+          ]
         }
       ],
       "sources": [

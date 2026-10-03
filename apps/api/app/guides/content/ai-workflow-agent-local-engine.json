@@ -11,24 +11,44 @@
   "news_date": null,
   "featured": false,
   "display_order": 416,
+  "related": [
+    "ai-workflow-agent-local-two-routes",
+    "ai-workflow-agent-glm-qwen-deepseek",
+    "ai-workflow-agent-local-checklist"
+  ],
   "locales": {
     "zh-TW": {
       "title": "把 Claude Code、Codex 整個換成本機模型：Ollama 與 LM Studio 設定與還原",
-      "description": "Ollama、LM Studio 與 Codex 的文件寫了把 Claude Code、Codex 整個換成本機模型的接法：Ollama 用 ollama launch 一行指令或手動設定，LM Studio 先開本機伺服器再設環境變數或加 --oss。這篇把四種組合的指令、官方給的上下文門檻、確認現在連到誰的方法，以及用完怎麼還原整理在一起；需要先裝好 Ollama 或 LM Studio，並且已有 Claude Code 或 Codex。",
+      "description": "Ollama、LM Studio 與 Codex 的文件寫了把 Claude Code、Codex 整個換成本機模型的接法：Ollama 用 ollama launch 一行指令或手動設定，LM Studio 先開本機伺服器再設環境變數或加 --oss。這篇把四種組合的指令、兩家文件建議的上下文長度、Claude Code 用 /status 確認連到誰的方法，以及用完怎麼還原整理在一起；需要先裝好 Ollama 或 LM Studio，並且已有 Claude Code 或 Codex。",
       "hero": {
         "src": "/guides/ai-workflow-agent-local-engine/hero.jpg",
-        "alt": "原創插圖：一台筆電的終端機畫面，Claude Code 與 Codex 兩個圖示各拉出一條線，接到筆電內部標著本機伺服器的方塊，旁邊標著雲端的方塊被劃上斜線。",
+        "alt": "原創插圖：一個大方框裡有命令列視窗、箭頭指向的本機模型和一條進度條，方框右邊以虛線連到雲朵裡的另一個模型，代表代理工具改用本機模型、通往雲端的那條線沒有接上",
         "width": 1600,
         "height": 900
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Claude Code 與 Codex 能不能整個改用本機模型？各家的官方文件寫了接法：Ollama 有 ollama launch 一行指令，也有手動設定；LM Studio 先開本機伺服器，Claude Code 設三個環境變數，Codex 加 --oss。Anthropic 的 LLM 閘道（gateway）文件則寫，不背書、不維護也不稽核第三方閘道產品，並且不支援透過任何閘道把 Claude Code 導向非 Claude 模型。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Claude Code 與 Codex 能不能整個改用本機模型？各家的官方文件寫了接法：Ollama 有 ollama launch 一行指令，也有手動設定；LM Studio 先開本機伺服器，Claude Code 設三個環境變數，Codex 加 --oss。Anthropic 的 "
+            },
+            {
+              "type": "article",
+              "text": "LLM",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": " 閘道（gateway）文件則寫，不背書、不維護也不稽核第三方閘道產品，並且不支援透過任何閘道把 Claude Code 導向非 Claude 模型。"
+            }
+          ]
         },
         {
           "type": "paragraph",
-          "text": "讀完你會有四組可照抄的指令、上下文的官方門檻，以及確認與還原的做法。步驟都來自官方文件，本站沒有實測。前提是已有 Claude Code 或 Codex，以及 Ollama 或 LM Studio 其一並下載好模型。安裝見《Ollama 入門：Windows、Mac 安裝與第一個模型》與《LM Studio 入門：圖形介面跑本機模型》，記憶體與量化見《跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon》與《GGUF 量化怎麼選：Q4_K_M、Q8_0、F16 的檔名、檔案大小與記憶體》。"
+          "text": "讀完你會有四組可照抄的指令、上下文的官方建議，以及確認與還原的做法。步驟都來自官方文件，本站沒有實測。前提是已有 Claude Code 或 Codex，以及 Ollama 或 LM Studio 其一並下載好模型。安裝見《Ollama 入門：Windows、Mac 安裝與第一個模型》與《LM Studio 入門：圖形介面跑本機模型》，記憶體與量化見《跑本機模型要什麼電腦：記憶體、顯示記憶體與 Apple Silicon》與《GGUF 量化怎麼選：Q4_K_M、Q8_0、F16 的檔名、檔案大小與記憶體》。"
         },
         {
           "type": "summary",
@@ -114,12 +134,42 @@
           "text": "LM Studio：先開本機伺服器，再指過去"
         },
         {
-          "type": "paragraph",
-          "text": "LM Studio 的 Claude Code 頁，第一步是讓它以伺服器模式運作，預設連接埠 1234，可從 App 開，或在終端機執行 lms server start --port 1234。接著設三個環境變數：ANTHROPIC_BASE_URL 指向 localhost 的 1234 連接埠、ANTHROPIC_AUTH_TOKEN 設成 lmstudio、CLAUDE_CODE_ATTRIBUTION_HEADER 設成 0，再執行 claude --model openai/gpt-oss-20b。第三個變數頁面沒說明用途；Claude Code 的環境變數文件寫，設成 0 會從系統提示詞開頭省略帶有用戶端版本與提示詞指紋的 attribution block。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "LM Studio 的 Claude Code 頁，第一步是讓它以伺服器模式運作，預設連接埠 1234，可從 App 開，或在終端機執行 lms server start --port 1234。接著設三個環境變數：ANTHROPIC_BASE_URL 指向 localhost 的 1234 連接埠、ANTHROPIC_AUTH_TOKEN 設成 lmstudio、CLAUDE_CODE_ATTRIBUTION_HEADER 設成 0，再執行 claude --model openai/gpt-oss-20b。第三個變數頁面沒說明用途；Claude Code 的環境變數文件寫，設成 0 會從"
+            },
+            {
+              "type": "article",
+              "text": "系統提示詞",
+              "kind": "life",
+              "slug": "ai-term-system-prompt"
+            },
+            {
+              "type": "text",
+              "text": "開頭省略帶有用戶端版本與提示詞指紋的 attribution block。"
+            }
+          ]
         },
         {
-          "type": "paragraph",
-          "text": "同一頁還寫：開了 Require Authentication 時，ANTHROPIC_AUTH_TOKEN 要改成自己的 LM Studio API token；並寫要用上下文長度超過約 25k 的模型與伺服器設定，因為 Claude Code 這類工具可能耗掉很多上下文。搭 Codex 照 Codex 設定文件走 --oss，oss_provider 寫成 lmstudio。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "同一頁還寫：開了 Require Authentication 時，ANTHROPIC_AUTH_TOKEN 要改成自己的 LM Studio API token；並寫要用"
+            },
+            {
+              "type": "article",
+              "text": "上下文長度",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            },
+            {
+              "type": "text",
+              "text": "超過約 25k 的模型與伺服器設定，因為 Claude Code 這類工具可能耗掉很多上下文。搭 Codex 照 Codex 設定文件走 --oss，oss_provider 寫成 lmstudio。"
+            }
+          ]
         },
         {
           "type": "code",
@@ -204,8 +254,23 @@
           "caption": "Ollama 的 Anthropic 相容層文件列出的不支援與部分支援項目（節錄，2026 年 10 月查證，本站整理）"
         },
         {
-          "type": "paragraph",
-          "text": "Claude Code 的環境變數文件另寫，ANTHROPIC_BASE_URL 指到非官方主機時，MCP tool search 預設關閉；要打開，文件寫是在代理會轉送 tool_reference 區塊時設 ENABLE_TOOL_SEARCH=true，並寫設成 true 時，不支援 tool_reference 的代理上請求會失敗。Ollama 與 LM Studio 的頁面都沒提 tool_reference，本篇不寫要不要打開。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Claude Code 的環境變數文件另寫，ANTHROPIC_BASE_URL 指到非官方主機時，"
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " tool search 預設關閉；要打開，文件寫是在代理會轉送 tool_reference 區塊時設 ENABLE_TOOL_SEARCH=true，並寫設成 true 時，不支援 tool_reference 的代理上請求會失敗。Ollama 與 LM Studio 的頁面都沒提 tool_reference，本篇不寫要不要打開。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -263,14 +328,26 @@
           ]
         },
         {
-          "type": "link",
-          "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
-          "url": "https://mokaair.com/zh-TW/life/ai-workflow-tutorials"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
-          "url": "https://mokaair.com/zh-TW/life/ollama-getting-started"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Ollama 入門：Windows、Mac 安裝與第一個模型",
+              "kind": "life",
+              "slug": "ollama-getting-started"
+            }
+          ]
         }
       ],
       "sources": [

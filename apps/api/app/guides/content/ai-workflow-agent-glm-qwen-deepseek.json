@@ -11,13 +11,18 @@
   "news_date": null,
   "featured": false,
   "display_order": 413,
+  "related": [
+    "ai-workflow-agent-local-two-routes",
+    "ai-workflow-agent-local-engine",
+    "ai-workflow-agent-local-checklist"
+  ],
   "locales": {
     "zh-TW": {
       "title": "GLM、Qwen、DeepSeek 接上 Claude Code 與 Codex：哪些在本機、哪些其實在雲端",
       "description": "同一個模型名字有三種跑法：權重下載到自己電腦、Ollama 的 :cloud 標籤、供應商自己的端點，只有第一種的提示詞由自己的電腦處理。這篇照 2026 年 10 月 3 日重讀的官方頁，逐家寫 Qwen、GLM、DeepSeek 在 Ollama 有哪些標籤能下載、哪些只有 :cloud，並整理 Z.ai、DeepSeek、阿里雲百鍊接 Claude Code 與 Codex 的端點設定，每一處都標明資料會送到哪裡。",
       "hero": {
         "src": "/guides/ai-workflow-agent-glm-qwen-deepseek/hero.jpg",
-        "alt": "原創插圖：一個終端機視窗伸出三條箭頭，一條連到桌上的筆電，一條連到標著 Ollama 的雲，一條連到掛著供應商旗幟的機房，每條箭頭旁各有一個小小的資料夾圖示。",
+        "alt": "原創插圖：左邊方框裡有一個模型和一把鎖，一條虛線把它和右邊兩朵各有一個模型的雲隔開，一張紙順著箭頭越過虛線，代表同一個模型名字可能在自己的電腦，也可能在別人的雲端",
         "width": 1600,
         "height": 900,
         "credit": {
@@ -90,8 +95,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Qwen：qwen3.5 模型頁 0.8b 到 122b 七個尺寸標籤從 1.0GB 到 81GB，能力列是 vision、tools、thinking，頁面上沒有帶 cloud 的標籤；Ollama 上的其他 Qwen 檔案庫本篇沒有讀，不下「Qwen 沒有雲端標籤」的結論。版本與授權怎麼分，見《本機跑 Qwen：中文表現與設定》與《通義千問 Qwen：開放權重模型家族與 Qwen Studio》。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Qwen：qwen3.5 模型頁 0.8b 到 122b 七個尺寸標籤從 1.0GB 到 81GB，能力列是 vision、tools、thinking，頁面上沒有帶 cloud 的標籤；Ollama 上的其他 Qwen 檔案庫本篇沒有讀，不下「Qwen 沒有雲端標籤」的結論。版本與授權怎麼分，見《本機跑 Qwen：中文表現與設定》與《通義千問 Qwen："
+            },
+            {
+              "type": "article",
+              "text": "開放權重",
+              "kind": "life",
+              "slug": "ai-term-open-weights"
+            },
+            {
+              "type": "text",
+              "text": "模型家族與 Qwen Studio》。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -107,8 +127,23 @@
           "level": 2
         },
         {
-          "type": "paragraph",
-          "text": "Anthropic 的 LLM 閘道文件寫，Anthropic 不背書、不維護也不稽核第三方閘道產品，並且不支援透過任何閘道把 Claude Code 導到非 Claude 模型；同一頁把 ANTHROPIC_BASE_URL 稱為把 Claude Code 指向閘道的變數。下面三家的頁面用的也是 ANTHROPIC_BASE_URL，回答的是各家頁面設定的模型。供應商端點算不算這一頁說的閘道，兩邊頁面都沒有寫，本篇只轉述各自的寫法，不做條款解讀。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Anthropic 的 "
+            },
+            {
+              "type": "article",
+              "text": "LLM",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": " 閘道文件寫，Anthropic 不背書、不維護也不稽核第三方閘道產品，並且不支援透過任何閘道把 Claude Code 導到非 Claude 模型；同一頁把 ANTHROPIC_BASE_URL 稱為把 Claude Code 指向閘道的變數。下面三家的頁面用的也是 ANTHROPIC_BASE_URL，回答的是各家頁面設定的模型。供應商端點算不算這一頁說的閘道，兩邊頁面都沒有寫，本篇只轉述各自的寫法，不做條款解讀。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -177,8 +212,23 @@
           "text": "授權照各頁的用詞讀，不從別家推。本篇讀到的 Ollama 頁面裡，glm-5.3-flash 列了「MIT Licensed」；deepseek-r1 的授權段落寫權重以 MIT License 授權、DeepSeek-R1 系列支援商用，同一段也寫 Qwen 蒸餾版源自 Apache 2.0 授權的 Qwen 2.5 系列，Llama 8B 與 70B 蒸餾版分別源自 Llama 3.1 與 Llama 3.3 授權的模型。同一頁把 8b（也就是 latest）標成 DeepSeek-R1-0528-Qwen3-8B，授權段落沒有提到 Qwen3。其餘三頁沒有授權文字，本篇沒有讀 Hugging Face 的模型卡，表格寫「頁面沒有寫」，不寫成可以商用。"
         },
         {
-          "type": "paragraph",
-          "text": "表格標「雲端」的會把內容送到 Ollama 或供應商；標「本機」的標籤，要由自己電腦上的 Ollama 執行才留在本機。跨廠商的欄位比較見《中國系 AI 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax》，Ollama 的安裝與關閉雲端標籤見《Ollama 入門：Windows、Mac 安裝與第一個模型》。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "表格標「雲端」的會把內容送到 Ollama 或供應商；標「本機」的標籤，要由自己電腦上的 Ollama 執行才留在本機。跨廠商的欄位比較見《"
+            },
+            {
+              "type": "article",
+              "text": "中國系 AI",
+              "kind": "life",
+              "slug": "chinese-ai-models-comparison"
+            },
+            {
+              "type": "text",
+              "text": " 模型比較：DeepSeek、Qwen、Kimi、豆包、MiniMax》，Ollama 的安裝與關閉雲端標籤見《Ollama 入門：Windows、Mac 安裝與第一個模型》。"
+            }
+          ]
         },
         {
           "type": "table",
@@ -244,14 +294,26 @@
           ]
         },
         {
-          "type": "link",
-          "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
-          "url": "https://mokaair.com/zh-TW/life/ai-workflow-tutorials"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "本機跑 Qwen：中文表現與設定",
-          "url": "https://mokaair.com/zh-TW/life/qwen-local-deployment"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "本機跑 Qwen：中文表現與設定",
+              "kind": "life",
+              "slug": "qwen-local-deployment"
+            }
+          ]
         }
       ],
       "sources": [

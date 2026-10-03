@@ -11,13 +11,18 @@
   "news_date": null,
   "featured": false,
   "display_order": 412,
+  "related": [
+    "ai-workflow-agent-glm-qwen-deepseek",
+    "ai-workflow-agent-local-batch-script",
+    "ai-workflow-agent-local-engine"
+  ],
   "locales": {
     "zh-TW": {
       "title": "Claude Code、Codex 搭本機模型：兩種接法怎麼選",
       "description": "Claude Code 與 Codex 搭配本機模型有兩種接法：代理照常連雲端、把大量雜務交給腳本或 MCP 工具去問本機模型，或是把代理的模型整個換成本機模型。這篇用資料能不能出門、上下文開得夠不夠長、工作的類型三個問題幫你選，並對照 Ollama、LM Studio、Anthropic 與 OpenAI 的官方文件，分清楚本機權重、Ollama 的 cloud 標籤與供應商端點是三種不同的東西。",
       "hero": {
         "src": "/guides/ai-workflow-agent-local-two-routes/hero.jpg",
-        "alt": "原創插圖：一台筆電從左右各拉出一條線，右上連到雲裡的代理，下方連到筆電內的本機模型方塊，兩條線中間夾著一個結果檔資料夾",
+        "alt": "原創插圖：左邊是一個命令列視窗，一條線往上接到雲朵裡的模型，再以虛線接到右下方框裡帶鎖的本機模型；另一支箭頭從視窗直接指向那個方框，代表代理工具接本機模型的兩種接法",
         "width": 1600,
         "height": 900,
         "credit": {
@@ -27,8 +32,23 @@
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "Claude Code 或 Codex 想用上自己電腦裡的模型，有兩種接法，做的是不同的事。接法一是代理照常連雲端，把大量雜務交給一支腳本或 MCP 工具，由它去問本機模型，代理只讀結果；接法二是把代理背後回答的模型整個換成本機模型。這篇回答怎麼選，結論是看三件事：原始資料能不能送到雲端供應商、電腦能把上下文視窗開到多長、工作是一批批的雜務還是要代理自己動手。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Claude Code 或 Codex 想用上自己電腦裡的模型，有兩種接法，做的是不同的事。接法一是代理照常連雲端，把大量雜務交給一支腳本或 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 工具，由它去問本機模型，代理只讀結果；接法二是把代理背後回答的模型整個換成本機模型。這篇回答怎麼選，結論是看三件事：原始資料能不能送到雲端供應商、電腦能把上下文視窗開到多長、工作是一批批的雜務還是要代理自己動手。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -66,8 +86,23 @@
           "text": "接法一改動最小：Claude Code 或 Codex 仍然連原本的雲端模型，什麼設定都不換。要處理的那批檔案不交給代理去讀，而是交給一支腳本，或一個 MCP 工具，由它逐份去問本機的模型，把結果寫成結果檔，代理只讀結果檔再寫報告或改程式。這條路上，本機模型做的是一份進、一份出的小工作，每次收到多少內容由你的腳本決定。本機那一半用 Python 怎麼寫，《本機去識別化、雲端收尾：用 Ollama 打造混合式 AI 工作流》已經示範過，這篇不重複。"
         },
         {
-          "type": "paragraph",
-          "text": "要讓原始資料真的留在本機，得兩件事同時成立：腳本連的是本機位址、問的是沒有 cloud 字樣的本機標籤，而且代理自己讀不到原始檔，否則代理讀檔的那一刻，資料就已經送到雲端。後一件事怎麼設，是本系列講批次腳本那一篇的內容。上下文的門檻也不一樣：Ollama 的上下文頁把網頁搜尋、代理與程式工具列為需要大上下文的工作，建議設在至少 64000 token；接法一裡的本機模型只是被腳本呼叫，這篇讀的官方頁沒有替它另訂門檻。不過同一頁把上下文長度定義為模型在記憶體裡能存取的 token 數上限，所以仍要確認每一份內容放得進實際開的長度。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "要讓原始資料真的留在本機，得兩件事同時成立：腳本連的是本機位址、問的是沒有 cloud 字樣的本機標籤，而且代理自己讀不到原始檔，否則代理讀檔的那一刻，資料就已經送到雲端。後一件事怎麼設，是本系列講批次腳本那一篇的內容。上下文的門檻也不一樣：Ollama 的上下文頁把網頁搜尋、代理與程式工具列為需要大上下文的工作，建議設在至少 64000 token；接法一裡的本機模型只是被腳本呼叫，這篇讀的官方頁沒有替它另訂門檻。不過同一頁把"
+            },
+            {
+              "type": "article",
+              "text": "上下文長度",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            },
+            {
+              "type": "text",
+              "text": "定義為模型在記憶體裡能存取的 token 數上限，所以仍要確認每一份內容放得進實際開的長度。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -109,8 +144,23 @@
           "text": "更要小心的是預設值。Ollama 的上下文頁寫，預設的上下文長度依顯示記憶體而定：小於 24 GiB 是 4k，24 到 48 GiB 是 32k，48 GiB 以上是 256k，而 cloud 模型預設就用到最大。前兩檔的預設都低於 64k，要用 64k 就得自己改：在 Ollama app 設定裡拉滑桿，或用 OLLAMA_CONTEXT_LENGTH=64000 啟動伺服器；改完用 ollama ps 看，輸出有 PROCESSOR 和 CONTEXT 兩欄。Ollama 寫為了效能，要用模型的最大上下文長度，並避免把模型卸載到 CPU，但同一頁也寫，上下文設得越大，需要的記憶體越多。標籤頁上的 256K 是模型標示的視窗，Ollama 實際開多長是另一個設定。"
         },
         {
-          "type": "paragraph",
-          "text": "官方立場兩邊不同。Claude Code 文件的 LLM gateway 頁寫，Anthropic 不支援透過任何 gateway 把 Claude Code 接到非 Claude 模型；模型設定頁另有一句提醒，ANTHROPIC_BASE_URL 改的是請求送去哪裡，不是由哪個模型回答。接 Ollama 或 LM Studio 的步驟，是這兩家各自的文件寫的，Anthropic 的 gateway 頁對接到非 Claude 模型寫的是不支援。Codex 這邊，OpenAI 的進階設定頁有一節 OSS mode，寫明加上 --oss 可以接 Ollama 或 LM Studio 這類本機的「open source」供應商：用 --local-provider 為單次執行選一家，或用 oss_provider 設預設值（設定檔範例的值是 ollama 或 lmstudio）；兩個都沒設時，互動模式的 CLI 會請你選，codex exec 則會報錯結束。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "官方立場兩邊不同。Claude Code 文件的 "
+            },
+            {
+              "type": "article",
+              "text": "LLM",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": " gateway 頁寫，Anthropic 不支援透過任何 gateway 把 Claude Code 接到非 Claude 模型；模型設定頁另有一句提醒，ANTHROPIC_BASE_URL 改的是請求送去哪裡，不是由哪個模型回答。接 Ollama 或 LM Studio 的步驟，是這兩家各自的文件寫的，Anthropic 的 gateway 頁對接到非 Claude 模型寫的是不支援。Codex 這邊，OpenAI 的進階設定頁有一節 OSS mode，寫明加上 --oss 可以接 Ollama 或 LM Studio 這類本機的「open source」供應商：用 --local-provider 為單次執行選一家，或用 oss_provider 設預設值（設定檔範例的值是 ollama 或 lmstudio）；兩個都沒設時，互動模式的 CLI 會請你選，codex exec 則會報錯結束。"
+            }
+          ]
         },
         {
           "type": "heading",
@@ -221,14 +271,26 @@
           ]
         },
         {
-          "type": "link",
-          "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
-          "url": "https://mokaair.com/zh-TW/life/ai-workflow-tutorials"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "本機去識別化、雲端收尾：用 Ollama 打造混合式 AI 工作流",
-          "url": "https://mokaair.com/zh-TW/life/ai-workflow-local-and-cloud-mix"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "本機去識別化、雲端收尾：用 Ollama 打造混合式 AI 工作流",
+              "kind": "life",
+              "slug": "ai-workflow-local-and-cloud-mix"
+            }
+          ]
         }
       ],
       "sources": [

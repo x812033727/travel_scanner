@@ -486,7 +486,7 @@ def write_svg(path: Path, text: str) -> None:
     problems = errors(check_svg(text))
     if problems:
         raise SystemExit(f"{path.name}: " + "; ".join(str(p) for p in problems))
-    path.write_text(text, encoding="utf-8")
+    path.write_text(text, encoding="utf-8", newline="\n")
 
 
 def only_slugs() -> set[str]:
@@ -499,7 +499,7 @@ def build() -> list[dict]:
     renders.mkdir(exist_ok=True)
     ignore = WORKSPACE / ".gitignore"
     if not ignore.exists():
-        ignore.write_text("renders/\n__pycache__/\n", encoding="utf-8")
+        ignore.write_text("renders/\n__pycache__/\n", encoding="utf-8", newline="\n")
     order = {slug: i for i, slug in enumerate((HUB, *SLUGS))}
     research = sorted((json.loads(p.read_text(encoding="utf-8")) for p in records), key=lambda r: order.get(r["slug"], 99))
     only = only_slugs()
@@ -534,7 +534,7 @@ def build() -> list[dict]:
             print("rendered", slug, flush=True)
         manifest.append({"slug": slug, "title": item["title"], "url": f"https://mokaair.com/zh-TW/life/{slug}"})
     if not only:
-        (WORKSPACE / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        (WORKSPACE / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     return manifest
 
 

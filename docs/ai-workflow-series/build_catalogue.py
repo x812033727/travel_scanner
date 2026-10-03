@@ -54,8 +54,8 @@ PREREQUISITES = {S[2]: [S[1]], S[3]: [S[1]], S[4]: [S[3]], S[5]: [S[3], S[4]], S
 RELATED = {S[1]: [S[2], S[3], S[12]], S[2]: [S[1], S[3], S[5]], S[3]: [S[2], S[5], S[11]], S[4]: [S[5], S[6], S[10]],
            S[5]: [S[3], S[4], S[6]], S[6]: [S[5], S[7], S[12]], S[7]: [S[6], S[11], S[12]], S[8]: [S[9], S[6], S[7]],
            S[9]: [S[8], S[10], S[4]], S[10]: [S[9], S[4], S[12]], S[11]: [S[7], S[3], S[12]], S[12]: [S[11], S[6], S[10]],
-           S[13]: [S[14], S[15], S[17], S[10]], S[14]: [S[13], S[17], S[18], S[10]], S[15]: [S[16], S[13], S[6], S[10]],
-           S[16]: [S[15], S[9], S[18], S[12]], S[17]: [S[13], S[14], S[18], S[8]], S[18]: [S[13], S[17], S[12], S[3]]}
+           S[13]: [S[14], S[15], S[17]], S[14]: [S[13], S[17], S[18]], S[15]: [S[16], S[13], S[10]],
+           S[16]: [S[15], S[9], S[18]], S[17]: [S[13], S[14], S[18]], S[18]: [S[13], S[17], S[12]]}
 ALIASES = {
     S[1]: ["工作流", "workflow", "代理", "agent", "提示詞串接"],
     S[2]: ["拆任務", "分工", "子代理", "資料敏感度"],
@@ -123,7 +123,7 @@ def write_related() -> None:
                 rebuilt["related"] = RELATED[slug]
             if key != "related":
                 rebuilt[key] = value
-        path.write_text(json.dumps(rebuilt, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        path.write_text(json.dumps(rebuilt, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
         print("related written:", slug)
 
 
@@ -139,7 +139,7 @@ def main() -> int:
         current = json.loads(CATALOGUE.read_text(encoding="utf-8")) if CATALOGUE.is_file() else None
         print("catalogue up to date" if current == data else "catalogue differs from the packs")
         return 0 if current == data else 1
-    CATALOGUE.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    CATALOGUE.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     print("wrote", CATALOGUE.relative_to(ROOT), "with", len(data["entries"]), "entries")
     return 0
 

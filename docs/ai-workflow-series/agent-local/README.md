@@ -1,6 +1,7 @@
 # 「代理工具搭本機模型」：系列 E 組規格（6 篇，zh-TW）
 
-> **現況（2026-10-04）**：站主看過規格，回覆「六篇 OK，雲端端點也寫，開始撰稿」；撰稿進行中。票：`tasks/open/2026-10-03-ai-workflow-series-agent-plus-local.md`。
+> **現況（2026-10-04）**：六篇寫完、各做兩輪獨立查核，目錄篇已更新並查核，圖檔與系列目錄已重建；**還沒合併、還沒發布**。
+> 交接在本頁最後一節。票：`tasks/open/2026-10-03-ai-workflow-series-agent-plus-local.md`。
 > 來源：站主 2026-10-03 要求「做一個手把手教學：Claude 或 Codex 搭配本地端 AI 的混合 workflow，要注意什麼、怎樣做比較好」。
 > 這一組掛在既有的 `ai-workflow` 系列底下，沿用 [`../BRIEF.md`](../BRIEF.md)、[`../agents/FACTCHECK.md`](../agents/FACTCHECK.md)、
 > `check_article.py`、`build_assets.py` 與 `models-seen.json`。這份只寫**與 BRIEF 不同的地方**、每篇的指派，以及規格當天讀到的官方事實。
@@ -212,7 +213,7 @@
 
 ### 系列內互相引用
 
-- `related`（≤4，只填系列內）：13:[14,15,17,10]、14:[13,17,18,10]、15:[16,13,6,10]、16:[15,9,18,12]、17:[13,14,18,8]、18:[13,17,12,3]。
+- `related`（系列目錄的 schema 最多三篇，只填系列內）：13:[14,15,17]、14:[13,17,18]、15:[16,13,10]、16:[15,9,18]、17:[13,14,18]、18:[13,17,12]。
 - 新的一組：`{"id": "E", "title": "實作：代理工具搭本機模型"}`。
 - 新的路線：`{"id": "agent-local", "title": "代理搭本機路線", "slugs": [10, 13, 14, 15, 16, 17, 18]}`。
 
@@ -276,3 +277,54 @@
   並連到 `deepseek-privacy-and-data-flow`。
 - **之後要不要補實測。** 16 GB 記憶體、沒有獨立顯卡的筆電，放得下的是 `qwen3.5` 的 4b／9b 與 `deepseek-r1` 的 7b／8b 這一級；
   `glm-4.7-flash` 19GB 起放不下。要補的話另開票。
+- **第 14、18 篇全文偏長**（7,644 與 6,377 字，生活類的指引是 6,000 以內）。這是 lint 的軟性警告，不擋發布；
+  多出來的是「這不是本機」「本篇讀的頁面」這類限定，兩輪查核都判斷不能刪。
+- **目錄篇新的一節沒有對應的來源**：那一節只描述各篇教什麼，沒有外部事實句，六條來源仍是原本十二篇的主題。
+- **SeriesHub 的分組與目錄篇正文的路線分法不同**（九月就有）：目錄資料每三篇一組，正文把互審放在營運、本機去識別化放在協作與工具。
+- **舊文章 `qwen-local-deployment`** 舉的 `qwen3.5:cloud` 在今天的標籤頁上找不到，另開了票
+  `2026-10-03-qwen-local-deployment-names-qwen3-5`。
+
+## 交接（2026-10-04，協調者）
+
+**產出**：六個內容包 `apps/api/app/guides/content/ai-workflow-agent-*.json`（412–417）、更新過的目錄篇、七份研究紀錄、
+七份查核報告（六篇各含「## 第二輪」，目錄篇含「## 2026-10 更新的查核」）、七組圖檔、`series_data/ai-workflow.json`
+（十八筆、A–E 五組、四條路線）與對應的測試。
+
+**實際跑法**：
+
+1. 撰稿 sonnet 六位。第 13–17 篇同時開工，第 18 篇等前五篇有草稿才寫，指派裡帶上前五篇查核出來的更正。
+2. 第一輪查核 opus 六位：每篇查 130–190 條主張，改 14–17 處，其中事實 8–12 處。
+3. 第二輪查核 opus 六位，全部換人：只重讀第一輪新寫的句子、抽查三分之一、重跑程式。各改 2–13 處，結論都是 `ok`。
+   規格原本寫「改超過十處才第二輪」；實際上每篇第一輪都改了三個以上的事實，所以照 skill `content-pipeline` 的規矩六篇都做了第二輪。
+4. 目錄篇：sonnet 更新，opus 查核一輪（119 條主張、改 6 處），六條既有來源當天重讀，`checked_on` 改成 2026-10-03。
+5. 協調者：通讀後的小修（見下）、`build_catalogue.py --related`、`pack_cli relink --prefix ai-workflow- --apply`、
+   `pack_cli autolink --prefix ai-workflow-agent- --apply` 再 `prune_autolinks.py`、主圖 alt 改成實際畫面、`build_assets.py --slug=…` 七篇。
+
+**用量**（子代理回報的 token）：撰稿約 277 萬（每篇 25–51 萬）、第一輪查核約 205 萬、第二輪約 169 萬、目錄篇查核 27 萬，合計約 680 萬；
+這一批讓每週額度從 18% 升到 36%。
+
+**查核抓到、下一批要先知道的事**：
+
+- **規格當天的事實表一天內就有幾條過時。** Codex 文件整批從 `developers.openai.com/codex/*` 永久轉址到 `learn.chatgpt.com/docs/...`；
+  Claude Code 的 `Read` deny 規則今天也管 `cat`、`head`、`tail` 這類指令，管不到自己開檔的腳本；Codex 有標 beta 的 permission profile 可對路徑標 deny；
+  Claude Code 的 MCP 頁多了輸出上限、閒置中止、移到背景；阿里雲有接 Codex 的官方頁。事實表沒有回頭改，以各篇的研究紀錄為準。
+- **「是不是本機」要同時看位址與標籤。** Ollama 文件有直連 ollama.com、名字不帶 cloud 的例子，也有位址是 localhost 但標籤帶 `:cloud` 的例子。
+  第 15、16 篇的範例原本只看標籤，查核代理把位址指到 ollama.com 離線實跑，信件照樣送出；兩篇的程式現在都檢查主機必須是 localhost 或 127.0.0.1。
+- **範例程式要離線跑過，不是只過編譯。** 用假的 `urlopen`（第 16 篇再加假的 SDK）實跑，才抓到上面那個漏洞，
+  以及連線中途斷掉時腳本直接中止、模型回非物件 JSON 時工具當機這兩件事。
+- **來源上限八條不夠實作篇用。** 每個旗標都要能指回 `sources` 裡的一頁，所以 `check_article.py` 的 `SOURCES_MAX` 逐篇放寬到 11–14 條。
+- **Windows 上的換行。** `Path.write_text` 不帶 `newline` 會寫出 CRLF；`build_catalogue.py`、`build_assets.py`、`prune_autolinks.py` 現在都明寫 LF。
+- **autolink 會把「標記」連到 token 的名詞解釋。** 這一組的「標記」是失敗標記，已加進 `prune_autolinks.py`。
+
+**協調者通讀後自己改的**（都記在各篇研究紀錄的 `factcheck.left_for_the_owner`，或這裡）：
+
+- 第 16 篇：範例判斷雲端標籤的寫法改成與第 15 篇相同；逾時表補上「同樣要 v2.1.203 以上」。
+- 第 17 篇：補 LM Studio 的 Codex 頁當第 12 條來源，撐住「先開本機伺服器再加 `--oss`」；`description` 與導言的「官方門檻」改成「建議」，
+  「確認現在連到誰」限定為 Claude Code 的 `/status`。
+- 第 15 篇：`description` 與第一段原本寫「讓 Claude Code 或 Codex 去執行腳本」，但正文的 Codex 路是你先跑腳本；兩處改成與正文一致。
+- 目錄篇：主圖 alt 改成實際畫面，拿掉「四條路線」。
+- 六篇的主圖 alt 改成實際畫出來的畫面。
+
+**發布（站主明確選擇後）**：照 skill `content-pipeline` 的 publish-runbook。先部署（`series_data/ai-workflow.json` 要進 API），
+再 `guides-import --slug` 六篇（都是 create），六個網址回 200 之後才匯入目錄篇（update），最後 `guides-links-rebuild`、`guides-links-check`、`verify_public.py`。
+驗證：`/api/travel/guides/series/ai-workflow?locale=zh-TW` 回十八筆；目錄頁列出新的一組。

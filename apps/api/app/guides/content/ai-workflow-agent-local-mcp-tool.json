@@ -11,20 +11,40 @@
   "news_date": null,
   "featured": false,
   "display_order": 415,
+  "related": [
+    "ai-workflow-agent-local-batch-script",
+    "ai-workflow-mcp-shared-tools",
+    "ai-workflow-agent-local-checklist"
+  ],
   "locales": {
     "zh-TW": {
       "title": "把本機模型包成 MCP 工具，Claude Code 與 Codex 共用一支伺服器",
       "description": "用官方 Python SDK 寫一支 stdio 的 MCP 伺服器，把本機的 Ollama 模型包成工具，Claude Code 與 Codex 就能共用：工具只收 inbox 底下的路徑，只回分類結果與結果檔路徑，不回信件原文。文中列出兩邊的登記指令、逾時與輸出上限的官方預設值，以及換成別家本機模型只改環境變數 LOCAL_MODEL 的做法，步驟都來自官方文件。",
       "hero": {
         "src": "/guides/ai-workflow-agent-local-mcp-tool/hero.jpg",
-        "alt": "原創插圖：一台筆電裡的小方塊代表 stdio 伺服器，一端接著本機模型，另一端的兩條線分別通往 Claude Code 與 Codex。",
+        "alt": "原創插圖：左邊上下兩個命令列視窗各用一條線接到中間的齒輪，齒輪再以箭頭接到右邊方框裡帶鎖的本機模型，代表兩個代理工具共用同一支工具伺服器",
         "width": 1600,
         "height": 900
       },
       "blocks": [
         {
-          "type": "paragraph",
-          "text": "把本機模型包成一個 MCP 工具，Claude Code 與 Codex 就能共用同一支 stdio 伺服器去呼叫它：工具只收一個路徑，只回分類結果與結果檔的路徑，不回信件原文，兩個客戶端各自設定逾時與輸出上限，換模型只改環境變數 LOCAL_MODEL。"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "把本機模型包成一個 "
+            },
+            {
+              "type": "article",
+              "text": "MCP",
+              "kind": "life",
+              "slug": "ai-term-model-context-protocol"
+            },
+            {
+              "type": "text",
+              "text": " 工具，Claude Code 與 Codex 就能共用同一支 stdio 伺服器去呼叫它：工具只收一個路徑，只回分類結果與結果檔的路徑，不回信件原文，兩個客戶端各自設定逾時與輸出上限，換模型只改環境變數 LOCAL_MODEL。"
+            }
+          ]
         },
         {
           "type": "paragraph",
@@ -156,7 +176,7 @@
             ],
             [
               "沒有回應時的中止",
-              "stdio 伺服器預設 30 分鐘（v2.1.203 起 stdio 才適用），沒有回應也沒有進度通知就中止；用 CLAUDE_CODE_MCP_TOOL_IDLE_TIMEOUT（毫秒）調整，設 0 關閉檢查；timeout 欄位至少 1000 時，閒置中止不會早於它",
+              "stdio 伺服器預設 30 分鐘（v2.1.203 起 stdio 才適用），沒有回應也沒有進度通知就中止；用 CLAUDE_CODE_MCP_TOOL_IDLE_TIMEOUT（毫秒）調整，設 0 關閉檢查；timeout 欄位至少 1000 時，閒置中止不會早於它（同樣要 v2.1.203 以上）",
               "本文查證的那一頁沒有寫"
             ],
             [
@@ -240,14 +260,26 @@
           ]
         },
         {
-          "type": "link",
-          "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
-          "url": "https://mokaair.com/zh-TW/life/ai-workflow-tutorials"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+              "kind": "life",
+              "slug": "ai-workflow-tutorials"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "一個 MCP 伺服器，同時接上 Claude Code、Codex、Gemini CLI 三個客戶端",
-          "url": "https://mokaair.com/zh-TW/life/ai-workflow-mcp-shared-tools"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "一個 MCP 伺服器，同時接上 Claude Code、Codex、Gemini CLI 三個客戶端",
+              "kind": "life",
+              "slug": "ai-workflow-mcp-shared-tools"
+            }
+          ]
         }
       ],
       "sources": [

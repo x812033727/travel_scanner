@@ -18,6 +18,10 @@
     {
       "id": "D",
       "title": "營運：本機混搭、追蹤與防護"
+    },
+    {
+      "id": "E",
+      "title": "實作：代理工具搭本機模型"
     }
   ],
   "paths": [
@@ -52,6 +56,19 @@
         "ai-workflow-coding-agents-division",
         "ai-workflow-tracing-evals",
         "ai-workflow-failures-and-guardrails"
+      ]
+    },
+    {
+      "id": "agent-local",
+      "title": "代理搭本機路線",
+      "slugs": [
+        "ai-workflow-local-and-cloud-mix",
+        "ai-workflow-agent-local-two-routes",
+        "ai-workflow-agent-glm-qwen-deepseek",
+        "ai-workflow-agent-local-batch-script",
+        "ai-workflow-agent-local-mcp-tool",
+        "ai-workflow-agent-local-engine",
+        "ai-workflow-agent-local-checklist"
       ]
     }
   ],
@@ -121,7 +138,7 @@
       "outcome": "多模型流程的成本、品質與延遲要分開量：成本是官方每百萬 token 單價乘上呼叫次數與 token 數，品質要靠自己建的評測集分數而不是各家公布的跑分，延遲要看 p50 與 p95 兩個百分位數而不是平均值。",
       "sources": [
         "https://platform.claude.com/docs/en/about-claude/pricing",
-        "https://platform.openai.com/docs/pricing",
+        "https://developers.openai.com/api/docs/pricing",
         "https://ai.google.dev/gemini-api/docs/pricing",
         "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
         "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence"
@@ -462,6 +479,241 @@
         "ai-workflow-tracing-evals",
         "ai-workflow-structured-handoff",
         "ai-workflow-local-and-cloud-mix"
+      ]
+    },
+    {
+      "slug": "ai-workflow-agent-local-two-routes",
+      "title": "Claude Code、Codex 搭本機模型：兩種接法怎麼選",
+      "outcome": "Claude Code 與 Codex 搭配本機模型有兩種接法：代理照常連雲端、把大量雜務交給腳本或 MCP 工具去問本機模型，或是把代理的模型整個換成本機模型。",
+      "sources": [
+        "https://docs.ollama.com/integrations/claude-code",
+        "https://docs.ollama.com/integrations/codex",
+        "https://docs.ollama.com/context-length",
+        "https://code.claude.com/docs/en/llm-gateway",
+        "https://code.claude.com/docs/en/model-config",
+        "https://learn.chatgpt.com/docs/config-file/config-advanced",
+        "https://lmstudio.ai/docs/integrations/claude-code",
+        "https://ollama.com/library/qwen3.5/tags"
+      ],
+      "number": 13,
+      "group": "E",
+      "level": "beginner",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "混合工作流",
+        "本機模型",
+        "Claude Code",
+        "Codex",
+        "Ollama"
+      ],
+      "prerequisites": [],
+      "related": [
+        "ai-workflow-agent-glm-qwen-deepseek",
+        "ai-workflow-agent-local-batch-script",
+        "ai-workflow-agent-local-engine"
+      ]
+    },
+    {
+      "slug": "ai-workflow-agent-glm-qwen-deepseek",
+      "title": "GLM、Qwen、DeepSeek 接上 Claude Code 與 Codex：哪些在本機、哪些其實在雲端",
+      "outcome": "同一個模型名字有三種跑法：權重下載到自己電腦、Ollama 的 :cloud 標籤、供應商自己的端點，只有第一種的提示詞由自己的電腦處理。",
+      "sources": [
+        "https://docs.z.ai/devpack/tool/claude",
+        "https://docs.z.ai/devpack/tool/codex",
+        "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
+        "https://api-docs.deepseek.com/quick_start/agent_integrations/codex",
+        "https://www.alibabacloud.com/help/en/model-studio/claude-code",
+        "https://www.alibabacloud.com/help/en/model-studio/codex",
+        "https://code.claude.com/docs/en/llm-gateway",
+        "https://ollama.com/library/qwen3.5",
+        "https://ollama.com/library/glm-4.7-flash",
+        "https://ollama.com/library/glm-5.3-flash",
+        "https://ollama.com/library/deepseek-r1",
+        "https://ollama.com/library/deepseek-v4.1-flash",
+        "https://learn.chatgpt.com/docs/config-file/config-reference"
+      ],
+      "number": 14,
+      "group": "E",
+      "level": "intermediate",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "GLM",
+        "Qwen",
+        "DeepSeek",
+        "Z.ai",
+        "cloud 標籤",
+        "供應商端點"
+      ],
+      "prerequisites": [
+        "ai-workflow-agent-local-two-routes"
+      ],
+      "related": [
+        "ai-workflow-agent-local-two-routes",
+        "ai-workflow-agent-local-engine",
+        "ai-workflow-agent-local-checklist"
+      ]
+    },
+    {
+      "slug": "ai-workflow-agent-local-batch-script",
+      "title": "讓 Claude Code、Codex 把大量雜務交給本機模型：一支 Python 腳本",
+      "outcome": "要讓雲端代理處理一批含個資的文字檔又不讓它讀原始檔，可以把這件事交給一支不到 80 行的 Python 腳本：腳本逐封問本機的 Ollama 模型，用 JSON schema 要求固定欄位，結果寫成 out 資料夾，代理只讀結果。",
+      "sources": [
+        "https://docs.ollama.com/api/chat",
+        "https://docs.ollama.com/capabilities/structured-outputs",
+        "https://docs.ollama.com/cloud",
+        "https://ollama.com/library/qwen3.5/tags",
+        "https://ollama.com/library/glm-4.7-flash/tags",
+        "https://ollama.com/library/deepseek-r1/tags",
+        "https://code.claude.com/docs/en/permissions",
+        "https://code.claude.com/docs/en/tools-reference",
+        "https://code.claude.com/docs/en/cli-reference",
+        "https://learn.chatgpt.com/docs/permissions",
+        "https://learn.chatgpt.com/docs/non-interactive-mode",
+        "https://code.claude.com/docs/en/sandboxing"
+      ],
+      "number": 15,
+      "group": "E",
+      "level": "intermediate",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "Ollama",
+        "批次",
+        "去識別化",
+        "permissions.deny",
+        "結構化輸出"
+      ],
+      "prerequisites": [
+        "ai-workflow-agent-local-two-routes"
+      ],
+      "related": [
+        "ai-workflow-agent-local-mcp-tool",
+        "ai-workflow-agent-local-two-routes",
+        "ai-workflow-local-and-cloud-mix"
+      ]
+    },
+    {
+      "slug": "ai-workflow-agent-local-mcp-tool",
+      "title": "把本機模型包成 MCP 工具，Claude Code 與 Codex 共用一支伺服器",
+      "outcome": "用官方 Python SDK 寫一支 stdio 的 MCP 伺服器，把本機的 Ollama 模型包成工具，Claude Code 與 Codex 就能共用：工具只收 inbox 底下的路徑，只回分類結果與結果檔路徑，不回信件原文。",
+      "sources": [
+        "https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/README.md",
+        "https://py.sdk.modelcontextprotocol.io/servers/handling-errors/",
+        "https://py.sdk.modelcontextprotocol.io/run/",
+        "https://code.claude.com/docs/en/mcp",
+        "https://code.claude.com/docs/en/env-vars",
+        "https://learn.chatgpt.com/docs/extend/mcp",
+        "https://docs.ollama.com/api/chat",
+        "https://docs.ollama.com/cloud",
+        "https://ollama.com/library/qwen3.5/tags"
+      ],
+      "number": 16,
+      "group": "E",
+      "level": "intermediate",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "MCP",
+        "本機模型",
+        "tool_timeout_sec",
+        "stdio",
+        "工具契約"
+      ],
+      "prerequisites": [
+        "ai-workflow-agent-local-batch-script"
+      ],
+      "related": [
+        "ai-workflow-agent-local-batch-script",
+        "ai-workflow-mcp-shared-tools",
+        "ai-workflow-agent-local-checklist"
+      ]
+    },
+    {
+      "slug": "ai-workflow-agent-local-engine",
+      "title": "把 Claude Code、Codex 整個換成本機模型：Ollama 與 LM Studio 設定與還原",
+      "outcome": "Ollama、LM Studio 與 Codex 的文件寫了把 Claude Code、Codex 整個換成本機模型的接法：Ollama 用 ollama launch 一行指令或手動設定，LM Studio 先開本機伺服器再設環境變數或加 --oss。",
+      "sources": [
+        "https://docs.ollama.com/integrations/claude-code",
+        "https://docs.ollama.com/integrations/codex",
+        "https://docs.ollama.com/context-length",
+        "https://docs.ollama.com/api/anthropic-compatibility",
+        "https://lmstudio.ai/docs/integrations/claude-code",
+        "https://code.claude.com/docs/en/llm-gateway-connect",
+        "https://code.claude.com/docs/en/llm-gateway",
+        "https://learn.chatgpt.com/docs/config-file/config-advanced",
+        "https://ollama.com/library/glm-4.7-flash/tags",
+        "https://ollama.com/library/deepseek-r1/tags",
+        "https://code.claude.com/docs/en/env-vars",
+        "https://lmstudio.ai/docs/integrations/codex"
+      ],
+      "number": 17,
+      "group": "E",
+      "level": "intermediate",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "ollama launch",
+        "codex --oss",
+        "LM Studio",
+        "ANTHROPIC_BASE_URL",
+        "上下文"
+      ],
+      "prerequisites": [
+        "ai-workflow-agent-local-two-routes",
+        "ai-workflow-agent-glm-qwen-deepseek"
+      ],
+      "related": [
+        "ai-workflow-agent-local-two-routes",
+        "ai-workflow-agent-glm-qwen-deepseek",
+        "ai-workflow-agent-local-checklist"
+      ]
+    },
+    {
+      "slug": "ai-workflow-agent-local-checklist",
+      "title": "Claude Code、Codex 搭本機模型的注意事項：開工前的檢查清單",
+      "outcome": "Claude Code 或 Codex 搭本機模型之前，先照一張表逐項核對：代理讀不讀得到原始檔、現在連的是誰、標籤是不是 :cloud、上下文實際開多長、逾時與輸出量、怎麼驗收。",
+      "sources": [
+        "https://code.claude.com/docs/en/permissions",
+        "https://code.claude.com/docs/en/llm-gateway-connect",
+        "https://code.claude.com/docs/en/legal-and-compliance",
+        "https://code.claude.com/docs/en/mcp",
+        "https://learn.chatgpt.com/docs/extend/mcp",
+        "https://learn.chatgpt.com/docs/permissions",
+        "https://docs.ollama.com/faq",
+        "https://docs.ollama.com/context-length",
+        "https://docs.ollama.com/capabilities/structured-outputs",
+        "https://docs.ollama.com/integrations/claude-code",
+        "https://ollama.com/library/gemma4/tags",
+        "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code",
+        "https://docs.ollama.com/api/anthropic-compatibility"
+      ],
+      "number": 18,
+      "group": "E",
+      "level": "beginner",
+      "platforms": [
+        "cli"
+      ],
+      "aliases": [
+        "檢查清單",
+        "注意事項",
+        "隱私",
+        "憑證",
+        "逾時"
+      ],
+      "prerequisites": [
+        "ai-workflow-agent-local-two-routes"
+      ],
+      "related": [
+        "ai-workflow-agent-local-two-routes",
+        "ai-workflow-agent-local-engine",
+        "ai-workflow-failures-and-guardrails"
       ]
     }
   ]
