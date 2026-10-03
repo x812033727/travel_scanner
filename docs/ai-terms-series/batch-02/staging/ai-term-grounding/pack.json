@@ -22,11 +22,11 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "接地，英文 Grounding，在生成式 AI 的產品文件裡，指讓模型的回答連到可以查證的來源：系統先取得搜尋結果或你提供的文件，回答再標出每個說法對應哪一段資料。它給讀者一條回頭核對的路，但不保證回答因此正確。"
+          "text": "接地，英文 Grounding，在生成式 AI 的產品文件裡，指讓模型的回答連到可以查證的來源：系統先取得搜尋結果或你提供的文件，回答再把其中的說法標上對應的來源。它給讀者一條回頭核對的路，但不保證回答因此正確。"
         },
         {
           "type": "paragraph",
-          "text": "這個詞另外還有兩個很不一樣的意思，一個來自認知科學，一個來自電腦視覺。本文先分開三種用法，再說明機制與引用的支持程度，並以虛構的報名日期示範逐句核對。"
+          "text": "這個詞另外至少還有兩個很不一樣的意思，一個來自認知科學，一個來自電腦視覺。本文先分開三種用法，再說明機制與引用的支持程度，並以虛構的報名日期示範逐句核對。"
         },
         {
           "type": "heading",
@@ -98,11 +98,11 @@
         },
         {
           "type": "paragraph",
-          "text": "引用只告訴你這句話從哪裡來，沒說來源真的這樣寫。Anthropic 文件說，API 把引用解析成固定格式並直接取出原文，所以引用保證帶有指向所提供文件的有效位置。保證的是位置有效，文件沒說那一段足以支持整句；句子仍可能多寫了原文沒有的限定。"
+          "text": "引用只告訴你這句話從哪裡來，沒說來源真的這樣寫。Anthropic 文件說，API 把引用解析成固定格式並直接取出原文，所以引用保證帶有指向所提供文件的有效位置。文件也把引用描述成支持該說法的段落，但寫明「保證」的只有位置有效，沒有保證那一段足以支持整句；句子仍可能多寫了原文沒有的限定。"
         },
         {
           "type": "paragraph",
-          "text": "兩項研究量過這個落差，數字只屬於各自的設定。Gao 等人的 ALCE 基準把引用品質拆成「陳述有沒有被引用的段落完整支持」與「有沒有無關的引用」兩項，判定交給自然語言推論（NLI）模型；他們在 2023 年用當時的模型測試 ELI5 長篇問答，論文摘要寫到最好的模型也有大約一半的陳述缺少完整的引用支持。Liu 等人請人工評分員審查四個商用生成式搜尋引擎，回應取得於 2023 年 2 月下旬到 3 月下旬，平均只有 51.5% 的句子完整被引用支持，74.5% 的引用支持所附的句子，這個比率還把部分支持算進去。它們是兩三年前的系統，不代表今天的產品，用處在於告訴你該檢查什麼。"
+          "text": "兩項研究量過這個落差，數字只屬於各自的設定。Gao 等人的 ALCE 基準把引用品質拆成「陳述有沒有被引用的段落完整支持」與「有沒有無關的引用」兩項，判定交給自然語言推論（NLI）模型；他們在 2023 年用當時的模型測試 ELI5 長篇問答，論文摘要寫到，最好的模型也有一半的情況缺少完整的引用支持。Liu 等人請人工評分員審查四個商用生成式搜尋引擎，回應取得於 2023 年 2 月下旬到 3 月下旬，平均只有 51.5% 的句子完整被引用支持，74.5% 的引用支持所附的句子；後者在一句由幾個引用合起來才完整支持時，也把各自只支持一部分的引用算進去。它們是三年多前的系統，不代表今天的產品，用處在於告訴你該檢查什麼。"
         },
         {
           "type": "paragraph",
@@ -221,6 +221,10 @@
           "text": "視覺接地是給一段文字，找出影像中對應的區域。Flickr30k Entities 資料集為圖片說明裡的詞組標註邊界框，用來評測文字所指實體的定位；Kosmos-2 則讓多模態模型把文字片段與邊界框連在一起輸出。它問的是詞指圖上哪一塊，與回答有沒有來源無關。"
         },
         {
+          "type": "paragraph",
+          "text": "此外，心理學家 Clark 與 Brennan 1991 年的〈Grounding in Communication〉用這個詞指對話中的協作過程：交談雙方設法確認剛說的話已被理解，把它納入共同基礎（common ground）。它談的是人與人的溝通，本文同樣不展開。"
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -252,7 +256,7 @@
           "checked_on": "2026-10-03"
         },
         {
-          "title": "Google Cloud：Grounding overview（接地概述，原 Vertex AI 文件，現網址）",
+          "title": "Google Cloud：Grounding overview（Gemini Enterprise Agent Platform 文件；舊 Vertex AI 網址轉址至此）",
           "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/grounding/overview",
           "checked_on": "2026-10-03"
         },
@@ -284,6 +288,11 @@
         {
           "title": "Harnad：Language Writ Large: LLMs, ChatGPT, Grounding, Meaning and Understanding",
           "url": "https://arxiv.org/abs/2402.02243",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Clark、Brennan：Grounding in Communication（收於 Perspectives on Socially Shared Cognition，APA，1991；Clark 在 Stanford 網站的 PDF）",
+          "url": "https://web.stanford.edu/~clark/1990s/Clark,%20H.H.%20_%20Brennan,%20S.E.%20_Grounding%20in%20communication_%201991.pdf",
           "checked_on": "2026-10-03"
         },
         {

@@ -64,7 +64,7 @@ scope:
 - [ ] 每篇正文 1,800–3,000 字、≥5 個 H2、恰好一個表、≥1 個 callout、≥3 個一手來源且 `checked_on` 是實際查證日。
 - [ ] 每篇經過一輪獨立查核（換人），改超過三個事實的再查第二輪。
 - [ ] `ai-terms-index` 把 14 篇分進既有分組；`ai-glossary-50-terms` 的 temperature、知識截止日、電腦操作三條連到新專文。
-- [ ] `pack_cli lint --kind life` 對這 16 個 slug 零 error、零 warning；`intake_check.py --from-content` 零 FAIL。
+- [ ] `pack_cli lint --kind life` 對這 16 個 slug 零 error，warning 只剩 `no_summary`；`intake_check.py --from-content` 零 FAIL。
 - [ ] 28 張 SVG 渲染後逐張目視過。
 - [ ] `uv run pytest tests/test_guides_content_pack.py` 通過；`npm run check:tasks` 通過。
 - [ ] 部署後 14 篇先發布、總索引與速查最後更新（要站主同意，不在本票的 PR 裡）。
@@ -98,5 +98,8 @@ npm run check:tasks
 ## Notes
 
 - 撰稿指令刻意禁止寫模型型號、價格、截止日期與排行榜分數：這批是名詞，不是產品快照，不想再開回填票。
+- **不加 `summary` 區塊。** `SummaryBlock` 的 docstring 記著站主 2026-09-16 的決定：模型寫的摘要要站主逐批讀過，再由 `pack_cli summarize --from` 套用。第一批 76 篇也都沒有，`no_summary` 警告是這個系列共通的待辦，不是這批的缺漏。
+- **渲染：** 不要設 `CHROMIUM_BIN` 指到完整版 `chromium-*/chrome-linux/chrome`，它的 `--window-size=1600,900` 含視窗外框，截圖底部約 88 px 變白邊；`render_svg` 預設會挑 `chromium_headless_shell`，那個是完整 1600×900。
+- **字數：** `_body_length` 會算進 `rich_paragraph` 裡連結的文字，brief 寫的「不含連結文字」是指 `link` 區塊。
 - 還沒做、可以當第三批的候選：強化學習、KV 快取、過擬合、可解釋性、資料投毒、世界模型、
   視覺語言模型、獎勵駭客（reward hacking）、本機推論、速率限制。
