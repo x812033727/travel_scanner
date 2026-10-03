@@ -281,6 +281,18 @@ Ran: `node tools/video/long-form/cli.mjs check` before rebinding failed only on 
 
 Non-claims. This review does not accept the lost-answer handling or the translation units themselves: not the client's retry rules, the web route's deadline, the units' prompts or translation quality, a real model call, and not CI. PASS is DURATION_ONLY for the two rebound hashes below. Verdict: PASS — DURATION_ONLY; required duration fixes remaining: none.
 
+## PR #1160 slides-settings persistence increment: 1 bound file (2026-10-03)
+
+Reviewer: `/root`. Author: `/root/fix_slides_settings_persistence`, which wrote the settings implementation and regression tests in PR #1160. Scope: **DURATION_ONLY**. The reviewer did not author or modify these implementation or test changes.
+
+Baseline and preservation: the reviewer independently read the complete `apps/api/app/video_automation/settings.py` and `apps/api/tests/test_video_automation_settings.py` delta against parent `16364e807`. Every one of the 70 preceding receipt bindings matches that parent; the only changed bound file is the settings test, while the other 69 retain their accepted hashes. The exact preceding report and receipt are preserved in immutable Git commit `868b463886904388332e5fa58e502ae37245aa6c`, at their existing paths, with report SHA256 `9f5c269935542a22d0ed248b2c512122ad5fe1c7ce0b97d22e9b25f8e4958f49` and receipt SHA256 `7c71f3080918ec6dbeec0d241ca1a38be40941d895d3df6eae8d72d22d2b7218`. All preceding report sections remain historical evidence for their own reviewed revisions. The settings test changes from SHA256 `b7f8a1853a7090d010a648ddb7c262c3c616256b4d6a8913410efab8d40a3707` to `9801c2266d61cc72e83e92bf21afff9b7eb11df87056a7dd1be13e3e56a90c60`. The related, unbound settings implementation was also reviewed at SHA256 `a9620fcf7fb7399131b6dacdfc101a81fe6417b4ec31b6f6604da224b30682b2`.
+
+Findings: the test additions are the `SLIDES_FIELDS` import, a mapped-column and per-field audit regression, an explicit-null/missing-column regression, and an actual PostgreSQL round trip covering partial and unrelated settings saves. Existing `_values` defaults of 8–12 minutes, inverted and under-eight-minute validation cases, and API 422 assertions remain byte-identical. No prior test is skipped or weakened. `_flat` now excludes and spreads the nested slides settings while the scalar target-minute fields and their mapping remain unchanged. `slides_values` preserves an explicit nullable image-model choice; that affects model selection without changing a duration input. The independent drama cap of 50 versus slides caps of 37, 41 and zero is a dollar budget, not a duration. There are no changed plans, duration ranges, classifications, fixture exemptions or 14,400-frame body/final guards, and no media changed.
+
+Independent execution: `node --test tools/video/core/duration.test.mjs tools/video/qa/duration.test.mjs tools/video/long-form/plans.test.mjs tools/video/long-form/integration.test.mjs` passed **17/17**, with zero failures or skips, exit 0. The earlier author-run settings suite passed 48 tests with PostgreSQL, and scoped Ruff/mypy passed; those outcomes remain author evidence rather than being relabeled as independently executed here. Before rebinding, the shipped review test failed solely on the changed settings-test SHA while its tamper/self-review regression passed. The unchanged review test and CLI check are rerun after installing this genuine increment.
+
+Verdict: **PASS — DURATION_ONLY** for the changed bound test and reviewed implementation context. Required duration fixes remaining: none. This increment does not supply media, factual, manuscript, provider, browser, production, scheduling or publication acceptance, and does not freshly review the 69 unchanged historical bindings.
+
 ## Reviewed SHA256 bindings
 
 These 70 bindings describe the current reviewed bytes after the main-merge and owned migration-order increment. Historical results apply only to their original revision; a later file revision requires another genuine independent increment.
@@ -296,7 +308,7 @@ These 70 bindings describe the current reviewed bytes after the main-merge and o
 | `apps/api/app/video_automation/series.py` | `61a6d7b0460ff9b70e656b8025fd7409df2cd912b16acff1d160db98258c0965` |
 | `apps/api/migrations/versions/0118_video_min_8_minutes.py` | `5e254bd11d8e635368880ca3b82e368a58887b5223bf3ac5e71d1a2dedc68266` |
 | `apps/api/tests/test_migration_0118_video_min_8_minutes.py` | `c479dfd800de1fcbd1fb71d0b47d4fcb922675b314b31b680e8195cac898c28e` |
-| `apps/api/tests/test_video_automation_settings.py` | `b7f8a1853a7090d010a648ddb7c262c3c616256b4d6a8913410efab8d40a3707` |
+| `apps/api/tests/test_video_automation_settings.py` | `9801c2266d61cc72e83e92bf21afff9b7eb11df87056a7dd1be13e3e56a90c60` |
 | `apps/api/tests/test_video_drama_requests.py` | `07ddbcaadf668a13565969ca44e2542dee4f6ad83791bcc8f67d785302734c59` |
 | `apps/api/tests/test_video_explainer_duration.py` | `fbd8aaca7171321dcbe7511f607f61bb21a147640f9e22920db87d2f872ab2fc` |
 | `apps/api/tests/test_video_series.py` | `f1e0cc63483f9a3f909ac731537e60cbed1b8ea30fefa7fc16b226ecceead2b3` |
