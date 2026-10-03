@@ -418,8 +418,8 @@ test("illustrated slides lay out as shots under moves, single-state cards drifti
   const frames = framesManifestFor(doc, timeline);
   const keyframes = { shots: Object.fromEntries(doc.scenes.filter((scene) => scene.template === "shot").map((scene) => [scene.id, { file: `keyframes/${scene.id}-1.png`, sha256: "e".repeat(64) }])) };
   const layout = layoutDrama(doc, timeline, frames, null, keyframes, { transitionRule: illustratedTransition, cardMotion: true });
-  // The title's line ends on a 600 ms beat, so the first picture dissolves in; the kitchen's
-  // question ends on one too, and the clock says "dissolve" itself; every other change is a cut.
+  // The title's line ends on a 600 ms beat, so the first picture dissolves in; the clock says
+  // "dissolve" itself; every other change is a cut.
   assert.deepEqual(
     layout.map((scene) => [scene.id, scene.kind, scene.card ?? false, scene.transition ?? null, scene.move?.name ?? null]),
     [
