@@ -8,6 +8,7 @@
     "ai-terms"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
   "locales": {
@@ -18,9 +19,23 @@
         "src": "/guides/ai-term-vision-language-model/hero.jpg",
         "alt": "一張畫著山與太陽的照片被切成小方格，旁邊有放大鏡，彩色小方塊沿著虛線流向一個對話框",
         "width": 1600,
-        "height": 900
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "視覺語言模型（VLM）窄義指能同時接收圖片與文字、再輸出文字的模型：給它一張照片和一個問題，它用文字回答。",
+            "常見結構是視覺編碼器、連接層、語言模型三段；語言模型讀不到像素，編碼器沒保留的小字、朝向或前後位置，它可能補上聽起來合理的答案。",
+            "多模態 AI 範圍較廣；文字生圖方向相反，能根據照片回答不表示能照描述畫圖。",
+            "VLM 可能答錯數量、位置，或說出圖中沒有的東西；答案裡的物體、數字與位置都能回到圖片核對，金額、距離與方向或醫療影像別只靠它。"
+          ]
+        },
         {
           "type": "paragraph",
           "text": "視覺語言模型（Vision-Language Model，VLM）在這裡指能同時接收圖片與文字、再輸出文字的模型：給它一張照片和一個問題，它用文字回答。名稱用法不一：Flamingo 論文自稱 Visual Language Model，LLaVA 論文稱大型多模態模型，POPE 論文寫成 LVLM，也有綜述把不產生文字的 CLIP 算進來。以下採 Hugging Face 文件「能接收圖片的語言模型」這種窄義；中文採國家教育研究院樂詞網收錄的譯名「視覺語言模型」。"
@@ -31,8 +46,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "三段結構：視覺編碼器、連接層、語言模型"
+          "text": "三段結構：視覺編碼器、連接層、語言模型",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -67,12 +82,18 @@
           "alt": "圖片經視覺編碼器、連接層進入語言模型，和文字問題一起產生文字回答；下方標出 CLIP、Flamingo、LLaVA 各自處理哪一段",
           "width": 1600,
           "height": 900,
-          "caption": "由左往右看資料怎麼流動，下方三格是三篇論文各自改進的位置。"
+          "caption": "由左往右看資料怎麼流動，下方三格是三篇論文各自改進的位置。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "CLIP、Flamingo、LLaVA 各補上哪一塊"
+          "text": "CLIP、Flamingo、LLaVA 各補上哪一塊",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -88,8 +109,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "和多模態 AI、文字生圖怎麼分"
+          "text": "和多模態 AI、文字生圖怎麼分",
+          "level": 2
         },
         {
           "type": "rich_paragraph",
@@ -154,8 +175,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "三種常見的錯：數量、位置、看見不存在的東西"
+          "text": "三種常見的錯：數量、位置、看見不存在的東西",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -200,8 +221,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "示例：讀一張收據時怎麼核對"
+          "text": "示例：讀一張收據時怎麼核對",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -209,13 +230,13 @@
         },
         {
           "type": "list",
-          "ordered": true,
           "items": [
             "先轉錄、不摘要：請它由上到下列出每一行的品名、數量和金額，看不清就寫「看不清」。",
             "自己加總：用它列的金額算一次，和收據印的總額比；對不上，就是有行漏掉、多出或讀錯。",
             "換問法查多出的項目：不問「有沒有外帶袋費用」，改問「哪些行不是餐點」，再對照片。",
             "小字另拍：日期放大再拍一張單獨問，前後比對。"
-          ]
+          ],
+          "ordered": true
         },
         {
           "type": "paragraph",
@@ -227,8 +248,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "適合交給它的事，與不要只靠它的事"
+          "text": "適合交給它的事，與不要只靠它的事",
+          "level": 2
         },
         {
           "type": "paragraph",

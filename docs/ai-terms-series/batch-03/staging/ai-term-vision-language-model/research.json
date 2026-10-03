@@ -30,11 +30,11 @@
       "url": "https://arxiv.org/abs/2304.08485",
       "access": "arXiv abs page 200 + full PDF via pdftotext",
       "claims": [
-        "自稱大型多模態模型；CLIP 視覺編碼器與語言模型之間只有一層可訓練線性投影",
+        "自稱大型多模態模型；CLIP 視覺編碼器與語言模型之間只有一層可訓練線性投影；導論列四項貢獻，第一項是多模態指令資料",
         "以只讀文字的大型語言模型，根據 COCO 圖片說明與定界框生成 15.8 萬筆圖文指令資料",
         "兩階段訓練：先只訓練投影層，再連同語言模型微調，視覺編碼器始終凍結",
         "冰箱草莓優格的失敗例；風險段落點名醫療等關鍵應用",
-        "投影矩陣 W 把影像特徵轉成與詞嵌入同維度的影像 token，和指令一起送進語言模型（對照 Flamingo 的交叉注意力接法）"
+        "投影矩陣 W 把影像特徵轉成與詞嵌入同維度的影像 token，和指令一起送進語言模型（對照 Flamingo 的交叉注意力接法；正文與圖解因此寫「參照影像 token 讀問題」，兩種接法都成立）"
       ]
     },
     {
@@ -43,10 +43,10 @@
       "access": "arXiv abs page 200 + full PDF via pdftotext",
       "claims": [
         "使用 LVLM 一詞",
-        "CHAIR 隨指令變動，相近指令可使數值翻倍",
+        "CHAIR 從模型生成的圖說計算幻覺物體比例，隨指令變動，相近指令可使數值翻倍（正文寫「大幅變動」）",
         "是非題輪詢；不存在物體以隨機、最常見、最常共同出現三種方式抽樣；有無 1:1",
         "MSCOCO 驗證集 500 張、標註超過 3 個物體、每張 6 題",
-        "受測五個模型中有三個回答「有」接近 99%；難度由隨機到共同出現依序上升"
+        "受測五個模型中有三個（LLaVA、MultiModal-GPT、mPLUG-Owl）回答「有」的比例在三種設定下都超過 95%（表 3：95.37%–100%；第 5.2 節概括為 near 99%）；難度由隨機到共同出現依序上升"
       ]
     },
     {
@@ -64,7 +64,7 @@
       "claims": [
         "多數開源多模態語言模型使用現成 CLIP 視覺編碼器",
         "CLIP-blind 圖片對；150 對、300 題，九類視覺型態含方向、數量、位置",
-        "一對圖兩題都答對才算對，隨機猜測 25%；人類平均 95.7%；除兩個模型外都低於 25%",
+        "模型以一對圖兩題都答對才算對，隨機猜測 25%；除兩個模型外都低於 25%；使用者測試（四位志願者）平均答對 95.7% of the questions，論文沒寫人的分數是否也成對計，正文照原文寫「答對 95.7% 的題目」",
         "CLIP 吃力的型態與多模態語言模型的錯誤相關"
       ]
     },
@@ -110,6 +110,15 @@
         "多模態模型＝輸入、輸出或兩者包含多個模態（故正文寫「兩種以上」），與「圖片加說明輸出相符分數」的例子",
         "台灣譯名：編碼器、嵌入、零樣本、少量樣本、指令調整、定界框；gate 譯「閘」（忘記閘），故寫「閘控」"
       ]
+    },
+    {
+      "title": "國家教育研究院樂詞網：vision-language model（VLM）的譯名「視覺語言模型」",
+      "url": "https://terms.naer.edu.tw/search/?match_type=phrase&query_op=&query_field=title&query_term=vision-language+model",
+      "access": "curl 200, server-rendered search results (query_op= must be present; without it the page shows the default browse list)",
+      "claims": [
+        "vision-language model (VLM) → 視覺語言模型（視覺藝術名詞；vision language model (VLM) 另見土木工程名詞-測量及圖學）",
+        "同站 gated／gating → 閘控（電子計算機名詞、資訊與通訊術語大辭典）；門控只見於醫學名詞-放射醫學；cross attention 無詞條"
+      ]
     }
   ],
   "aliases": [
@@ -119,6 +128,6 @@
     "大型視覺語言模型"
   ],
   "existing_overlap": "ai-term-multimodal-ai 談多模態的整體概念與收納架示例、簡短提到 Flamingo；本文聚焦圖文輸入、文字輸出的模型結構、CLIP／Flamingo／LLaVA 的各自貢獻、數量／空間／物件幻覺的研究與收據核對示例，並以表格區分多模態 AI 與文字生圖，連結 ai-term-multimodal-ai、ai-term-text-to-image、ai-hallucination-fact-check、ai-term-transformer 與 ai-terms-index。",
-  "running_text_characters": 2668,
-  "notes": "VLM 一詞有窄義（圖文輸入、文字輸出，Hugging Face 文件、Flamingo）與廣義（含 CLIP 類圖文比對模型，Zhang 等綜述）兩種用法，正文第一段說明採窄義。收據與地圖為原創示例，標明未實測。正文不寫產品型號、價格或排名；研究數字都附設定並註明只屬該論文。title_draft 的「看懂圖片」改為「讀圖片」。 查核（verify-1，2026-10-03）：11 個來源今天重開皆 200；未換來源；修正 Flamingo 接法的過度概括、多模態定義（兩種以上）、MMVP 成對計分、What'sUp 照片設定，並把門控改為閘控。字數以 _body_length 實算 2668。"
+  "running_text_characters": 2686,
+  "notes": "VLM 一詞有窄義（圖文輸入、文字輸出，Hugging Face 文件、Flamingo）與廣義（含 CLIP 類圖文比對模型，Zhang 等綜述）兩種用法，正文第一段說明採窄義。收據與地圖為原創示例，標明未實測。正文不寫產品型號、價格或排名；研究數字都附設定並註明只屬該論文。title_draft 的「看懂圖片」改為「讀圖片」。 查核（verify-1，2026-10-03）：11 個來源今天重開皆 200；未換來源；修正 Flamingo 接法的過度概括、多模態定義（兩種以上）、MMVP 成對計分、What'sUp 照片設定，並把門控改為閘控。字數以 _body_length 實算 2668。 查核（verify-2，2026-10-03）：樂詞網以伺服器端查詢取得詞條，確認「視覺語言模型」「閘控」並加入來源；第一段改寫譯名理由；POPE 改為三種設定下都超過 95%；MMVP 人的分數照原文寫「答對 95.7% 的題目」；LLaVA 改寫為「論文列的第一項貢獻是資料」；語言模型一段改為「參照影像 token 讀問題」（含圖解）；小標「最常見的三種錯」改「三種常見的錯」；精簡 POPE、What'sUp 的設定描述。字數以 _body_length 實算 2686。"
 }

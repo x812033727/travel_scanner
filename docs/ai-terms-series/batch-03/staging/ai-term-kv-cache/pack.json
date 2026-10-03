@@ -23,14 +23,14 @@
       "blocks": [
         {
           "type": "paragraph",
-          "text": "KV 快取（KV cache）是語言模型推論（inference）時的暫存：模型逐個產生 token，每一步都把前面各位置在每層算好的 key 與 value 留著，下一步只補算新 token 的那一份。它省下重複計算，代價是記憶體：上下文越長，要存的越多。cache 依國家教育研究院資訊名詞與 Google 機器學習詞彙表繁中版譯為「快取」，KV 則沿用論文的英文縮寫。"
+          "text": "KV 快取（KV cache）是語言模型推論（inference）時的暫存：模型逐個產生 token，每一步都把前面各位置在每層算好的 key 與 value 留著，下一步只補算新 token 的那一份。它省下重複計算，代價是記憶體：上下文越長，要存的越多。cache 採國家教育研究院資訊名詞的譯法「快取」，Google 機器學習詞彙表繁中版內文也這樣用；KV 沿用論文的英文縮寫。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "以下從四步示例講到長上下文的成本。讀入提示與逐個產生的差別見"
+              "text": "讀入提示與逐個產生的差別見"
             },
             {
               "type": "article",
@@ -50,7 +50,7 @@
             },
             {
               "type": "text",
-              "text": "。資料截至 2026 年 10 月；標「示例」者為教學設計，未實測。"
+              "text": "。資料截至 2026 年 10 月。"
             }
           ]
         },
@@ -65,7 +65,7 @@
         },
         {
           "type": "paragraph",
-          "text": "能留著用，是因為遮罩。Vaswani 等人 2017 年的設計中，解碼器的自注意力只讓每個位置看到自己和之前的位置，所以某個 token 在某層的 key 與 value 算好後，不會因後面多了新 token 而改變。Hugging Face 文件據此說明，過去的 key 與 value 可以每層各存一份重用；過去 token 的 query 則不必存。"
+          "text": "能留著用，是因為遮罩。Vaswani 等人 2017 年的設計中，解碼器的自注意力只讓每個位置看到自己和之前的位置，所以某個 token 在某層的 key 與 value 算好後，不會因後面多了新 token 而改變。Hugging Face 文件據此說明，過去的 key 與 value 可以每層各存一份重用，過去 token 的 query 則不必存。"
         },
         {
           "type": "heading",
@@ -74,7 +74,7 @@
         },
         {
           "type": "paragraph",
-          "text": "以下是示例，分詞僅示意，未量測：提示有 3 個 token「台南／早餐／推薦」，模型接著寫出「可以吃牛肉湯」。"
+          "text": "以下是示例，分詞僅示意，未實測：提示有 3 個 token「台南／早餐／推薦」，模型接著寫出「可以吃牛肉湯」。"
         },
         {
           "type": "list",
@@ -114,7 +114,7 @@
             "層數：每層各存一份，層數加倍即加倍。",
             "存 key 與 value 的頭數與每頭維度：越多，每個 token 存得越多。",
             "每個數值的位元組數：精度越高，占得越多。",
-            "同時處理的序列數：Pope 等人指出，權重由所有請求共用，KV 快取則每條序列各一份。"
+            "同時處理的序列數：Pope 等人指出，權重整批共用，KV 快取則每條序列各一份。"
           ],
           "ordered": false
         },
@@ -144,11 +144,11 @@
         },
         {
           "type": "paragraph",
-          "text": "PagedAttention 出自 Kwon 等人 2023 年的 vLLM 論文。該論文用 ShareGPT、Alpaca 資料集改編的請求做實驗：作者自行重做的三種 Orca 配置，只有 20.4% 至 38.2% 的 KV 快取記憶體真正存著 token 狀態；在相同延遲水準下，vLLM 的吞吐量為 FasterTransformer 與 Orca 的 2 至 4 倍。它不縮小每個 token 的快取，而是讓同樣的記憶體放進更多請求。"
+          "text": "PagedAttention 出自 Kwon 等人 2023 年的 vLLM 論文。作者在實驗中重做三種預先保留連續空間的舊做法，量到只有 20.4% 至 38.2% 的 KV 快取記憶體真正用來存 token 的 key 與 value；論文總結，在相同延遲水準下，vLLM 的吞吐量是當時既有系統的 2 至 4 倍。它不縮小每個 token 的快取，而是讓同樣的記憶體放進更多請求。"
         },
         {
           "type": "paragraph",
-          "text": "MQA（multi-query attention，Shazeer 2019）讓所有頭共用一組 key 與 value，Pope 等人指出快取因此縮為頭數分之一；Shazeer 的翻譯實驗中品質略低於基準。GQA（grouped-query attention）把 query 頭分組、每組共用一組，介於兩者之間。兩者都屬模型架構，GQA 論文以約原預訓練 5% 的計算量改訓既有模型，並非推論時的開關。"
+          "text": "MQA（multi-query attention，Shazeer 2019）讓所有頭共用一組 key 與 value，Pope 等人指出快取因此縮為頭數分之一；Shazeer 的實驗裡品質與原本相近，多數指標略差。GQA（grouped-query attention）把 query 頭分組、每組共用一組，介於每頭各一組與 MQA 之間。兩者改的是模型架構，不是推論時的開關；GQA 論文用約原預訓練 5% 的計算量改訓既有模型。"
         },
         {
           "type": "paragraph",
@@ -161,7 +161,7 @@
         },
         {
           "type": "paragraph",
-          "text": "兩者存的都是 key 與 value，差別在範圍：KV 快取在單次請求內，讓逐個產生的每一步不必重算前文；提示詞快取跨請求，把相同字首（prefix）的 KV 快取留給下一個請求，省掉重讀那段。這是官方文件的說法：OpenAI 寫明提示詞快取存的是 key-value 張量而非文字，Anthropic 提到快取的 KV 表示只放在記憶體，vLLM 的字首快取也是重用 KV 快取。"
+          "text": "兩者存的都是 key 與 value，差別在範圍：KV 快取在單次請求內，讓逐個產生的每一步不必重算前文；提示詞快取跨請求，把相同字首（prefix）的 KV 快取留給下一個請求，省掉重讀那段。OpenAI、Anthropic 與 vLLM 的官方文件都寫明，提示詞快取存的是 KV 狀態。"
         },
         {
           "type": "paragraph",
@@ -229,18 +229,18 @@
         },
         {
           "type": "paragraph",
-          "text": "同樣產生一段回答，前文越長，每步要讀的 KV 快取越大。Pope 等人以多頭注意力的超大模型為例指出，大批次、長上下文下，每產生一個 token 都要把 KV 快取從記憶體搬進運算單元一次，期間運算核心幾乎閒置；批次小、序列短時，主要耗時才是讀權重。"
+          "text": "同樣產生一段回答，前文越長，每步要讀的 KV 快取越大。Pope 等人以多頭注意力的超大模型為例指出，批次大、上下文長時，每產生一個 token 都要把 KV 快取從記憶體搬進運算單元一次，期間運算核心幾乎閒置；批次小、序列短時，搬資料的時間才以讀權重為主。"
         },
         {
           "type": "paragraph",
-          "text": "其次是占位。vLLM 論文說明，一批能同時處理多少請求，受限於放得下多少 KV 快取；長上下文請求占得多，能並行的請求就少，而 Pope 等人指出批次變小會讓每個 token 的成本變高。他們也提到，注意力的推論成本隨輸入長度平方成長。"
+          "text": "其次是占位。vLLM 論文說明，一批能同時處理多少請求，受限於放得下多少 KV 快取；長上下文請求占得多，能並行的請求就少，而 Pope 等人指出批次變小會讓每個 token 的成本變高。他們也提到，以整段輸入計，注意力的推論成本隨長度平方成長（前面說的線性是指每一步）。"
         },
         {
           "type": "rich_paragraph",
           "inlines": [
             {
               "type": "text",
-              "text": "反過來，命中提示詞快取的輸入，OpenAI 與 Anthropic 的文件都另外計價。所以估長文件問答的速度與費用，要一起看輸入與輸出長度、並行請求數與快取命中；容量面見"
+              "text": "至於命中提示詞快取的輸入，OpenAI 與 Anthropic 都另外計價。所以估長文件問答的速度與費用，要一起看輸入與輸出長度、並行請求數與快取命中；容量面見"
             },
             {
               "type": "article",
@@ -341,7 +341,7 @@
           "checked_on": "2026-10-03"
         },
         {
-          "title": "Google：機器學習詞彙表（繁體中文版，cache 譯為快取）",
+          "title": "Google：機器學習詞彙表（繁體中文版，內文以「快取」譯 cache、inference 譯為推論）",
           "url": "https://developers.google.com/machine-learning/glossary?hl=zh-tw",
           "checked_on": "2026-10-03"
         },

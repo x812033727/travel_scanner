@@ -19,7 +19,8 @@ OWASP 該清單為 2025 年版，第四項（LLM04）；網站選單只有 2025 
 預訓練：資料集發布者可能只提供網址清單，攻擊者可能買下提供這些網址的網域並換掉內容（第 3.2.1 節）｜https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2025.pdf｜2026-10-03｜PDF 全文
 微調：投毒也可能影響指令微調與人類回饋強化學習，這些資料可能刻意向大量參與者蒐集（第 3.2.1 節）｜同上｜2026-10-03｜同上
 微調資料常由外部約聘人員蒐集，可能被有心人滲透（第 2 節 Threat Model）｜https://arxiv.org/abs/2510.07192｜2026-10-03｜PDF 全文
-檢索資料：OWASP 把嵌入資料列入投毒範圍；RAG 知識庫投毒見下方 PoisonedRAG｜https://genai.owasp.org/llmrisk/llm042025-data-and-model-poisoning/｜2026-10-03｜網頁
+檢索資料：OWASP LLM04 把嵌入資料（embedding, converting text into numerical vectors）列入投毒範圍；RAG 知識庫投毒見下方 PoisonedRAG｜https://genai.owasp.org/llmrisk/llm042025-data-and-model-poisoning/｜2026-10-03｜網頁
+OWASP LLM08:2025 開頭寫明向量與嵌入的弱點出現在使用 RAG 的系統，Common Examples 第 4 項就是 Data Poisoning Attacks；正文「第八項談 RAG 的向量與嵌入，也把資料投毒列為風險」據此（verify-2 改，取代原本「這個定義涵蓋 RAG 用的嵌入資料」的編輯推論）｜https://genai.owasp.org/llmrisk/llm082025-vector-and-embedding-weaknesses/｜2026-10-03｜網頁 HTML 轉純文字
 合成資料：以合成資料訓練的流程對既有投毒與後門攻擊有相當抵抗力，主因是投毒資料與產生合成資料的提問分布不同；作者的 VIA 方法讓合成資料中的投毒內容大增，下游模型攻擊成功率接近被投毒的上游模型（NeurIPS 2025 Spotlight）｜https://arxiv.org/abs/2509.23041｜2026-10-03｜abs 頁摘要；正文不描述其方法細節（must_not：不提供可操作步驟）
 
 ## 後門
@@ -31,9 +32,9 @@ OWASP 該清單為 2025 年版，第四項（LLM04）；網站選單只有 2025 
 ## 研究結果（各論文自己的設定）
 
 Carlini 等：兩種攻擊 split-view（整理者收錄時看到的內容與使用者之後下載的不同，缺少密碼學完整性保護）與 frontrunning（定期快照的群眾編輯內容，在快照前修改，事後還原仍留在快照）｜https://arxiv.org/abs/2302.10149｜2026-10-03｜abs 頁與 PDF（v2，2024-05-06）第 1、3 節
-以 2023 年的情況，60 美元可控制 LAION-400M 或 COYO-700M 的 0.01%（原文 "or"，正文寫「兩個公開圖文資料集其中任一個」；兩者分別約 4 億、7 億筆圖文配對）｜同上｜2026-10-03｜abs 摘要與 PDF 第 1 節
+以 2023 年的情況，60 美元可控制 LAION-400M 或 COYO-700M 的 0.01%（原文 "or"，正文寫「兩個公開圖文資料集其中任一個」；兩者分別約 4 億、7 億筆圖文配對）。60 美元是網域年費：第 4.2 節「for less that $60 USD per year」，價格取自 2023 年 7 月的 Google Domains，圖 1「≤ $60 USD」；正文寫「以 2023 年的網域價格估算，每年 60 美元以內」（verify-2 補「每年」）｜同上｜2026-10-03｜abs 摘要與 PDF 第 1、4.2 節
 作者沒有實際投毒（自有網址一律回 404），並已通知 10 個資料集的維護者，其中 6 個採用建議的完整性檢查｜同上｜2026-10-03｜PDF 第 1 節 Responsible disclosure、第 4.3 節 Ethical considerations
-作者找不到分裂視圖攻擊曾被實際利用的證據（第 4.4 節）｜同上｜2026-10-03｜PDF 第 4.4 節
+作者找不到分裂視圖攻擊曾被實際利用的證據；實際只分析 CC3M 與 LAION-400M 兩個資料集，正文寫「檢查了兩個資料集」（verify-2 補範圍）｜同上｜2026-10-03｜PDF 第 4.4 節
 防禦：完整性驗證（公布所有內容的密碼雜湊）對付 split-view；以時間為主的防禦（隨機化快照順序、延遲收錄並套用可信管理者的還原）對付 frontrunning｜同上｜2026-10-03｜PDF 第 1 節
 Souly 等（UK AI Security Institute、Anthropic、Alan Turing Institute 等）：從頭預訓練 600M、2B、7B、13B 參數模型，Chinchilla 最適資料量（約每參數 20 token，6B 到 260B token）；投毒文件數 100、250、500｜https://arxiv.org/abs/2510.07192｜2026-10-03｜abs 頁與 PDF（v1，2025-10-08）第 1、3 節
 250 份可在 600M 到 13B 各種大小的模型植入後門；100 份未觀察到成功（附錄 D）；250 份占 13B 模型訓練 token 的 0.00016%、600M 的 0.0035%｜同上｜2026-10-03｜PDF 第 3.2 節
@@ -55,6 +56,7 @@ Hubinger 等：刻意訓練後門模型，提示寫 2023 年寫安全程式碼�
 
 OWASP LLM01:2025 Scenario #4：攻擊者修改 RAG 應用使用的文件庫中的文件，被檢索到時惡意指令改變輸出｜https://genai.owasp.org/llmrisk/llm01-prompt-injection/｜2026-10-03｜網頁 HTML 轉純文字（頁面標題確認為 LLM01:2025）
 OWASP LLM08:2025 Scenario #1「Data Poisoning」：履歷藏白底白字的隱形指令，進入用 RAG 做初篩的求職系統｜https://genai.owasp.org/llmrisk/llm082025-vector-and-embedding-weaknesses/｜2026-10-03｜網頁 HTML 轉純文字
+對照表「效果持續」的注入欄「只在讀到注入內容時」：NIST 第 3.4 節（間接注入經由模型讀到的資源進入）與第 3.4.2 節 Self-propagating injections（惡意提示可像蠕蟲般被轉寄）；原本的「通常只在當次互動」與自我散播不符（verify-2 改）｜https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2025.pdf｜2026-10-03｜PDF 全文
 對照表的「主要防線」：投毒側取自 OWASP LLM04 與 NIST 第 3.2.3 節；注入側取自 NIST 第 3.4.4 節（分隔可信與不可信資料、不同權限的模型、透過明確介面接觸不可信資料）與站內提示詞注入文章的分工｜同上各頁｜2026-10-03｜同上
 
 ## 防禦
@@ -63,7 +65,8 @@ OWASP：追蹤資料來源與轉換（CycloneDX、ML-BOM）、資料版本控制
 NIST：提供者公布密碼雜湊、下載者核對；在大型語料中偵測投毒資料可能非常困難（第 3.2.3 節）｜https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2025.pdf｜2026-10-03｜PDF 全文
 NIST：若對攻擊不做額外假設，後門與資料中自然存在的特徵無法區分（第 2.3.3 節引述 [193]）｜同上｜2026-10-03｜同上
 NIST：把模型當成不受信任的系統元件，設計應用以降低攻擊者控制模型輸出時的風險（第 3.2.3 節）；正文「例如限制它能呼叫的工具與權限」是編輯舉例，對應第 3.4.4 節「不同權限的多個模型」｜同上｜2026-10-03｜同上
-「快照前就被改的內容，雜湊照樣吻合」：由 Carlini 等把雜湊對應 split-view、另以時間為主的防禦對應 frontrunning 推得，屬編輯推論｜https://arxiv.org/abs/2302.10149｜2026-10-03｜PDF 第 1 節
+「雜湊只確認下載到的和發布者當初收錄的一樣」：Carlini 等第 1 節 integrity verification「ensuring that clients observe the same data as when maintainers first indexed and annotated it」，第 6.2 節雜湊對「prior to any attack」的原始內容計算（verify-2 改，取代原本「快照前就被改的內容，雜湊照樣吻合」的編輯推論）｜https://arxiv.org/abs/2302.10149｜2026-10-03｜PDF 第 1、6.2 節
+「過濾與異常偵測：嘗試在訓練前剔除可疑的樣本」：NIST 第 3.2.3 節「Data filtering can also attempt to remove poisoned samples」；OWASP LLM04「Use anomaly detection techniques to filter out adversarial data」（verify-2 刪掉沒有來源的「重複」）｜https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2025.pdf；https://genai.owasp.org/llmrisk/llm042025-data-and-model-poisoning/｜2026-10-03｜PDF 全文、網頁
 
 ## 譯名
 
@@ -83,4 +86,10 @@ NIST AI 100-2 E2025 仍是最新版：CSRC Document History 只有 03/24/25 Fina
 PoisonedRAG 的 USENIX Security '25 議程頁｜https://www.usenix.org/conference/usenixsecurity25/presentation/zou-poisonedrag｜2026-10-03｜curl 200
 VIA 在 NeurIPS 2025 論文頁可查到｜https://neurips.cc/virtual/2025/papers.html?search=Virus+Infection+Attack｜2026-10-03｜curl 200
 OWASP LLM Top 10 索引頁目前列的仍是 2025 年版十項｜https://genai.owasp.org/llm-top-10/｜2026-10-03｜curl 200
-修改後正文字數（app.guides.pack_ingest._body_length 實算）：2,658。
+修改後正文字數（verify-1 後，app.guides.pack_ingest._body_length 實算）：2,658。
+
+## 查核修訂（verify-2，2026-10-03）
+
+第二輪獨立查核者今天重新打開全部 9 筆來源（皆 200），5 篇 arXiv 與 NIST 讀 PDF 全文。重查第一輪的 4 處事實修改，全部維持；從其餘 34 條主張隨機抽 12 條重查，沒有問題。處理第一輪的疑點，修了 6 處事實：OWASP 嵌入與 RAG 的銜接改用 LLM08 原文、60 美元補「每年」、Carlini 第 4.4 節補「檢查了兩個資料集」、對照表注入欄改成「只在讀到注入內容時」、雜湊句改成 Carlini 原文支持的說法、過濾刪掉「重複」。另外精簡了 Souly 段與 RAG 界線段的措辭。沒有換掉或刪除任何 sources；新增讀取 OWASP LLM08 的 Common Examples 第 4 項（同一筆來源）。細節見同目錄 verify-2.md。
+譯名用法再確認：數位時代「資料中毒攻擊」｜https://www.bnext.com.tw/article/84742/anthropic-data-poisoning｜2026-10-03｜curl 200；聯合新聞網「對資料下毒攻擊」｜https://udn.com/news/story/6811/9113984｜2026-10-03｜curl 200。兩者只證明用法，不列入 sources。
+修改後正文字數（verify-2 後，app.guides.pack_ingest._body_length 實算）：2,672。

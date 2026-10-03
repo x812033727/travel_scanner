@@ -8,6 +8,7 @@
     "ai-terms"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
   "locales": {
@@ -18,9 +19,23 @@
         "src": "/guides/ai-term-rate-limit/hero.jpg",
         "alt": "一排請求方塊在閘門前排隊，閘門上方的桶子持續補進籌碼，通過閘門的方塊彼此拉開相同間距",
         "width": 1600,
-        "height": 900
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "速率限制是服務在一段時間內允許你送出的請求數或 token 數上限，超過時 API 通常回 HTTP 429。",
+            "常見單位是每分鐘請求數（RPM）與每分鐘 token 數（TPM），額度算在組織或專案上，同一個專案多開幾把金鑰不會變多。",
+            "暫時超速可以照 Retry-After 或退避加抖動再試，但花費上限、配額或預付額度用完，重試幾次都無效。",
+            "速率限制管的是速度，和上下文視窗不同：單次輸入超過上下文視窗時等待無效，要縮短輸入或分段。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -46,8 +61,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "它算的是一段時間內的量"
+          "text": "它算的是一段時間內的量",
+          "level": 2
         },
         {
           "type": "rich_paragraph",
@@ -78,8 +93,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "429 與 Retry-After：規範怎麼寫"
+          "text": "429 與 Retry-After：規範怎麼寫",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -91,8 +106,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "不是每個 429 都該重試"
+          "text": "不是每個 429 都該重試",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -110,12 +125,18 @@
           "alt": "收到 429 後先讀錯誤內容，暫時超速就照 Retry-After 或退避加抖動重試並設上限，花費上限或配額用完則不重試",
           "width": 1600,
           "height": 900,
-          "caption": "左邊是可以等的 429，右邊是要有人改設定的 429；兩邊都要避免多層重試疊加。"
+          "caption": "左邊是可以等的 429，右邊是要有人改設定的 429；兩邊都要避免多層重試疊加。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "退避加抖動：示例流程"
+          "text": "退避加抖動：示例流程",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -127,14 +148,14 @@
         },
         {
           "type": "list",
-          "ordered": true,
           "items": [
             "讀錯誤內容；若是花費上限或配額用完，記錄後停止。",
             "附有 Retry-After: 20 時，至少等 20 秒，再加 0 到 1 秒的隨機延遲。",
             "沒有 Retry-After 時，以 1 秒為基準、8 秒為上限，第 1 到第 5 次重試的上界依序是 1、2、4、8、8 秒，每次在 0 到上界間隨機取值。",
             "最多重試 5 次、總等待不超過 2 分鐘，用完就把工作放回佇列。",
             "預期結果：多個工作的重送時間會錯開，較少擠在同一秒。若 5 次都失敗，多半代表平均速度本身超標，該降低並行數量，而不是加大重試次數。"
-          ]
+          ],
+          "ordered": true
         },
         {
           "type": "paragraph",
@@ -142,8 +163,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "速率限制、配額、花費上限與上下文視窗"
+          "text": "速率限制、配額、花費上限與上下文視窗",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -191,8 +212,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "代理迴圈與批次工作的節流設計"
+          "text": "代理迴圈與批次工作的節流設計",
+          "level": 2
         },
         {
           "type": "rich_paragraph",
@@ -211,14 +232,14 @@
         },
         {
           "type": "list",
-          "ordered": false,
           "items": [
             "所有工作者共用一個限速器，因為額度算在組織或專案上，不是各算各的。",
             "限制同時進行的請求數，其餘排進佇列。",
             "讀回應標頭的剩餘量，接近上限就先放慢，不等 429。",
             "不急的大量工作改用批次 API；三家文件都把批次的限制和即時呼叫分開列。",
             "OpenAI 以輸出上限 max_tokens 與估計 token 數的較大者計入，宜設得接近預期長度；Anthropic 的 max_tokens 不計入 OTPM。"
-          ]
+          ],
+          "ordered": false
         },
         {
           "type": "rich_paragraph",

@@ -37,10 +37,10 @@
     {
       "url": "https://builder.aws.com/content/3EumjoZascWd1oZiEgL8ORlv3qE/timeouts-retries-and-backoff-with-jitter",
       "title": "Amazon Builders' Library: Timeouts, retries, and backoff with jitter",
-      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text); aws.amazon.com/builders-library/... redirects here; on 2026-10-03 verify the URL mostly returned a 3,849-byte JS shell (200), full server-rendered page (125,965 bytes) obtained once via the redirect and read",
+      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text); aws.amazon.com/builders-library/... redirects here; without an Accept header it mostly returns a 3,849-byte JS shell (200); on 2026-10-03 verify-2 added -H 'Accept: text/html,application/xhtml+xml' and got the full server-rendered page (125,965 bytes) on 3 of 6 tries and read it; Wayback CDX unreachable from this environment (connection reset)",
       "claims": [
-        "五層呼叫、每層 3 次嘗試，最底層負載放大 243 倍，建議只在一處重試",
-        "定時工作常在每分鐘開頭或午夜過後幾秒一起送出，建議替定期工作加抖動"
+        "五層呼叫、每層 3 次嘗試，最底層（資料庫）負載放大 243 倍，建議只在一處重試",
+        "多台機器的定時請求可能在每分鐘頭幾秒或午夜過後幾秒撞在一起（原文 can line up），建議替定期工作加抖動"
       ]
     },
     {
@@ -126,17 +126,26 @@
     {
       "url": "https://ai.google.dev/gemini-api/docs/rate-limits?hl=zh-tw",
       "title": "Google Gemini API docs: 頻率限制（繁中版）",
-      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text); term counts in body text",
+      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text); term counts in body text; page header says it is AI-translated",
       "claims": [
-        "繁中標題「頻率限制」，內文「速率限制」約 20 次、「頻率限制」約 11 次（譯名依據）"
+        "繁中標題「頻率限制」，內文「速率限制」20 次、「頻率限制」11 次（機器翻譯，只當用字參考）"
+      ]
+    },
+    {
+      "url": "https://platform.claude.com/docs/zh-TW/api/rate-limits",
+      "title": "Anthropic docs: 速率限制（繁中版）",
+      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text); term counts in body text; added in verify-2",
+      "claims": [
+        "繁中標題與內文用「速率限制」90 次、「頻率限制」0 次（譯名依據）",
+        "token bucket 譯作「權杖桶」"
       ]
     },
     {
       "url": "https://ai.google.dev/gemini-api/docs/api-errors",
-      "title": "Google Gemini API docs: API errors",
-      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text); page describes itself as the Interactions API error-code reference",
+      "title": "Google Gemini API docs: API errors (Interactions API error codes)",
+      "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text); page describes itself as the reference for all Interactions API error codes, so the body scopes the claim to the Interactions API",
       "claims": [
-        "429 三個代碼：rate_limit_exceeded、too_many_requests 建議退避重試；quota_exceeded（每日配額）建議等重設或申請提高"
+        "Interactions API 錯誤表的 429 三個代碼：rate_limit_exceeded、too_many_requests 建議退避重試；quota_exceeded（每日配額）建議等重設或申請提高"
       ]
     },
     {
@@ -145,7 +154,7 @@
       "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text); compared with /en-us/ version",
       "claims": [
         "配額：依區域、模型、部署類型以 TPM 分配給訂閱，各部署再分配，部署的 TPM 即其速率限制",
-        "繁中用「速率限制」約 38 次（譯名依據）"
+        "繁中用「速率限制」約 38 次（譯名依據；譯文有機器翻譯痕跡）"
       ]
     },
     {
@@ -153,7 +162,8 @@
       "title": "Claude Help Center: How do usage and length limits work?",
       "access": "web open (curl -sSL, 200, Mokaair-editorial UA; HTML to text)",
       "claims": [
-        "訂閱方案分使用量上限與長度上限（上下文視窗）"
+        "訂閱方案分使用量上限與長度上限（上下文視窗）",
+        "使用量上限用完可等重設、升級方案或購買 usage credits"
       ]
     },
     {
@@ -172,6 +182,6 @@
     "429 Too Many Requests"
   ],
   "existing_overlap": "gemini-api-cost-errors-guide 是 Gemini API 的操作教學（查用量頁、錯誤分類、有限重試）；這裡只寫跨服務的概念與機制，第一段即連過去，不重寫步驟。ai-term-prompt-caching、ai-term-agent-loop、ai-term-token 各以一句連結帶過。",
-  "running_text_characters": 2665,
-  "notes": "依指派不寫任何服務、方案或等級的限制數字，也不寫 SDK 預設重試次數；示例流程的數字標為示例（未實測）。未寫繞過限制的方法。IETF RateLimit 標頭草案（draft-ietf-httpapi-ratelimit-headers，2026-05 版仍為草案）讀過但為控制字數未收。SVG 為手繪向量圖。 獨立查核 verify-1（2026-10-03）：重開全部來源皆 200；修正 token bucket 描述、Anthropic 花費上限（方案等級回 429、自設回 400）、補 Google 依花費計算的速率限制可稍等再試、節流清單改「組織或專案」；來源未替換，明細見 verify-1.md。"
+  "running_text_characters": 2684,
+  "notes": "依指派不寫任何服務、方案或等級的限制數字，也不寫 SDK 預設重試次數；示例流程的數字標為示例（未實測）。未寫繞過限制的方法。IETF RateLimit 標頭草案（draft-ietf-httpapi-ratelimit-headers，2026-05 版仍為草案）讀過但為控制字數未收。SVG 為手繪向量圖。 獨立查核 verify-1（2026-10-03）：重開全部來源皆 200；修正 token bucket 描述、Anthropic 花費上限（方案等級回 429、自設回 400）、補 Google 依花費計算的速率限制可稍等再試、節流清單改「組織或專案」；來源未替換，明細見 verify-1.md。 獨立查核 verify-2（2026-10-03）：重開全部來源皆 200，verify-1 的修改都成立；Google 每日配額代碼限定為 Interactions API 錯誤表、AWS 定時工作「常」改「可能」、聊天方案上限補升級方案與加購用量；新增 Anthropic 繁中頁為譯名依據；精簡 AWS 模擬設定與 429 段落，明細見 verify-2.md。"
 }
