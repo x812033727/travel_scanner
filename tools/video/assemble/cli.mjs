@@ -8,8 +8,12 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 
 import { burnIn, hasPictures, illustrated, isDrama, keyframesHash, lookHash, mixHash, picturesHash, sfxHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
+import { hasAnimePolicy, runtimePolicyHash } from "../core/anime-policy.mjs";
+import { sha256File } from "../core/approvals.mjs";
+import { animeBodyDurationProblems, animeDurationProblems, animeRuntimeProof, animeShotFitProblems } from "../core/duration.mjs";
 import { presentationTimeline, selectBrandingForBuild } from "../core/branding.mjs";
 import { productionClipProblems } from "../core/lint.mjs";
+import { audioEvidenceProblems } from "../core/audio-evidence.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { FPS, speechHash, visualHash } from "../core/timeline.mjs";
@@ -123,6 +127,16 @@ export async function run(command, args, ctx) {
     ctx.stderr.write("timeline.json is missing or was built for an older script; run tts first\n");
     return EXIT.usage;
   }
+  const bodyProblems = animeBodyDurationProblems({ doc, timeline, timelineCurrent: true });
+  if (bodyProblems.length) {
+    ctx.stderr.write(`${bodyProblems.join("; ")}\n`);
+    return EXIT.lint;
+  }
+  const audioProblems = audioEvidenceProblems(timeline, workdir);
+  if (audioProblems.length) {
+    ctx.stderr.write(`narration needs current audio evidence before assembly: ${audioProblems.join("; ")}\n`);
+    return EXIT.usage;
+  }
   const manifest = readJson(path.join(workdir, ARTIFACTS.frames), null);
   const visual = visualHash(doc);
   if (!manifest || manifest.visual_hash !== visual) {
@@ -167,6 +181,30 @@ export async function run(command, args, ctx) {
     ctx.stderr.write(`${error.message}\n`);
     return EXIT.usage;
   }
+  const fits = {};
+  if (hasAnimePolicy(doc)) {
+    const shotEvidence = [];
+    for (const scene of layout) {
+      if (scene.kind === "motion") {
+        shotEvidence.push({ shot: scene.id, kind: "motion", move: scene.move.name });
+        continue;
+      }
+      if (scene.kind !== "clip") continue;
+      const source = path.join(workdir, scene.clip.file);
+      if (!existsSync(source)) {
+        ctx.stderr.write(`${scene.clip.file} for shot ${scene.id} is missing; run clips again\n`);
+        return EXIT.usage;
+      }
+      const available = clipFrames(JSON.parse((await runTool(tools.ffprobe, probeArgs(source))).stdout));
+      fits[scene.id] = { available, ...fitPlan(available, scene.frames, scene.fit) };
+      shotEvidence.push({ shot: scene.id, kind: "clip", fit: fits[scene.id] });
+    }
+    const fitProblems = animeShotFitProblems({ doc, timeline, shots: shotEvidence });
+    if (fitProblems.length) {
+      ctx.stderr.write(`${fitProblems.join("; ")}\n`);
+      return EXIT.lint;
+    }
+  }
   const started = Date.now();
   const segmentsDir = path.join(workdir, "segments");
   const buildDir = path.join(workdir, "build");
@@ -175,7 +213,6 @@ export async function run(command, args, ctx) {
   const resolve = (file) => path.join(workdir, file);
   const segmentFiles = [];
   const keys = [];
-  const fits = {};
   let encoded = 0;
   for (const [index, scene] of layout.entries()) {
     if (stopRequested(workdir)) {
@@ -192,10 +229,16 @@ export async function run(command, args, ctx) {
       let fit = null;
       let available = null;
       if (!motion) {
-        const probe = JSON.parse((await runTool(tools.ffprobe, probeArgs(source))).stdout);
-        available = clipFrames(probe);
-        fit = fitPlan(available, scene.frames, scene.fit);
-        fits[scene.id] = { available, ...fit };
+        if (fits[scene.id]) {
+          available = fits[scene.id].available;
+          const { available: ignored, ...planned } = fits[scene.id];
+          fit = planned;
+        } else {
+          const probe = JSON.parse((await runTool(tools.ffprobe, probeArgs(source))).stdout);
+          available = clipFrames(probe);
+          fit = fitPlan(available, scene.frames, scene.fit);
+          fits[scene.id] = { available, ...fit };
+        }
       }
       const strips = inputs?.subtitles ? subtitleTrack(scene, manifest.subtitles.cues, manifest.subtitles.blank) : null;
       // A dissolve overlays the previous scene's last frame, so its segment is keyed on that too.
@@ -358,10 +401,13 @@ export async function run(command, args, ctx) {
     shots.push(record);
   }
   const seconds = Math.round((Date.now() - started) / 1000);
+  const finalSha256 = hasAnimePolicy(doc) ? await sha256File(candidate) : null;
   const checks = {
     ok: problems.length === 0,
     speech_hash: speech,
+    narration_sha256: timeline.audio_evidence.narration_sha256,
     visual_hash: visual,
+    ...(hasAnimePolicy(doc) ? { runtime_policy_hash: runtimePolicyHash(doc), final_sha256: finalSha256 } : {}),
     ...(drama ? { look_hash: inputs.look, clips_hash: inputs.clips.clips_hash, subtitles_hash: subtitlesHash(doc), mix_hash: mixHash(doc) } : {}),
     // Illustrated slides bind the cut to the pictures it was made from; any video with music or
     // effects binds it to those too (core/state.mjs and package read them back).
@@ -372,6 +418,7 @@ export async function run(command, args, ctx) {
     problems,
     metrics: {
       frames: presented.total_frames,
+      ...(hasAnimePolicy(doc) ? { fps: FPS } : {}),
       loudness,
       psnr,
       loudnorm_first_pass: measured.input_i,
@@ -383,6 +430,10 @@ export async function run(command, args, ctx) {
     encoded_segments: encoded,
     seconds,
   };
+  const durationInput = { doc, timeline, presented, timelineCurrent: true, checks, finalSha256 };
+  problems.push(...animeDurationProblems(durationInput));
+  checks.ok = problems.length === 0;
+  if (checks.ok && hasAnimePolicy(doc)) checks.runtime_proof = animeRuntimeProof(durationInput);
   if (branding && checks.ok) commitBrandedVideo({ workdir, branding, finalPartial: partialFinal, bodyPartial, checks, now: ctx.now() });
   else atomicWrite(path.join(branding ? buildDir : workdir, branding ? "branding-failed-checks.json" : ARTIFACTS.checks), `${JSON.stringify(checks, null, 2)}\n`);
   recordStage(workdir, "assemble", { ok: checks.ok, encoded_segments: encoded, seconds, ...(drama || pictures ? { shots: shots.length, stills: shots.filter((shot) => shot.kind === "motion").length, music: bed !== null, sfx: effects.length } : {}) }, ctx.now());

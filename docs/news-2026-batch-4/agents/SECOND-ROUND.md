@@ -4,8 +4,8 @@
 
 ## 先讀
 
-1. 第一輪用的規格（規則全部適用）：`C:\Users\x8120\mokaair\.claude\worktrees\travel-guide-articles-planning-eab8c5\docs\news-2026-batch-4\agents\FACTCHECK.md`
-2. 第一輪的報告：`C:\Users\x8120\mokaair\.claude\worktrees\travel-guide-articles-planning-eab8c5\docs\news-2026-batch-4\factcheck-draft\<slug>.md`
+1. 第一輪用的規格（規則全部適用）：`<repo>\.claude\worktrees\travel-guide-articles-planning-eab8c5\docs\news-2026-batch-4\agents\FACTCHECK.md`
+2. 第一輪的報告：`<repo>\.claude\worktrees\travel-guide-articles-planning-eab8c5\docs\news-2026-batch-4\factcheck-draft\<slug>.md`
 3. 草稿的兩個檔：內容包 `...\apps\api\app\guides\content\<slug>.json`、研究紀錄 `...\docs\crypto-news-2026\research\<slug>.json`
 
 ## 範圍（不是整篇重做）

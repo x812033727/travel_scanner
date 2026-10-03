@@ -59,7 +59,7 @@ Final verification at 2026-10-01 10:40 UTC: standalone language package pytest
 48 passed; affected language/long-renewal/review-renewal/reviews/sync/VPS set
 177 passed, both with `-p no:cacheprovider`. Scoped ruff and mypy (2 files) pass.
 Root full ruff passes; full mypy app (447 files) and tests (340 files) pass, with
-logs in `C:/Users/x8120/mokaair-work/channel-intro-20260930/brand-package-v2-cc/rollout/compat-{ruff,mypy-app,mypy-tests}.log`.
+logs in `<home>/mokaair-work/channel-intro-20260930/brand-package-v2-cc/rollout/compat-{ruff,mypy-app,mypy-tests}.log`.
 Task check validates 1244 files with existing stale/overlap warnings; independent
 branding_architecture read review reports no major or blocking finding.
 
@@ -73,7 +73,7 @@ Fresh zh-TW proof: 85 scenarios, 83 consumer calls (9 accept / 74 reject), plus
 2 producer refusals. All five positive manifest/review/attachment bytes are
 identical to the prior R3 receipt.
 Compact receipt:
-`C:/Users/x8120/.codex/visualizations/2026/09/30/01a0efc3-57f6-7da3-b4d0-51c50a0304af/contract-probe-20261001/r4-compatibility-summary.json`
+`<home>/.codex/visualizations/2026/09/30/01a0efc3-57f6-7da3-b4d0-51c50a0304af/contract-probe-20261001/r4-compatibility-summary.json`
 SHA256 3c7f3b95457ee76f866432de53e0f9fac0883cd84ac8d342a7e9f1a193b40cc1.
 Its immutable referenced reports are r4-en/narration-consumer-report.json
 (a2cc9f698a53dd3ace9d3e4406a069c7d53181946ed52024e7486b311ca77671)

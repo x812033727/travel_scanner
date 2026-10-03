@@ -58,15 +58,15 @@ From this worktree, with the existing API virtual environment:
 
 ```powershell
 cd apps/api
-& 'C:\Users\x8120\.codex\worktrees\c5d9\travel_scanㄐ\apps\api\.venv\Scripts\python.exe' -m app.guides.pack_cli lint --slug singapore-4-day-itinerary
-& 'C:\Users\x8120\.codex\worktrees\c5d9\travel_scanㄐ\apps\api\.venv\Scripts\python.exe' -m app.guides.pack_cli lint --slug singapore-changi-airport-mrt-simplygo-guide
+& '<home>\.codex\worktrees\c5d9\travel_scanㄐ\apps\api\.venv\Scripts\python.exe' -m app.guides.pack_cli lint --slug singapore-4-day-itinerary
+& '<home>\.codex\worktrees\c5d9\travel_scanㄐ\apps\api\.venv\Scripts\python.exe' -m app.guides.pack_cli lint --slug singapore-changi-airport-mrt-simplygo-guide
 cd ../..
 npm run check:tasks
 git diff --check
 ```
 
 The external review bundle is
-`C:\Users\x8120\.codex\article-localization-release\batch010-work\qa`.
+`<home>\.codex\article-localization-release\batch010-work\qa`.
 Its `content-audit.json` validates structure, provenance, source dates and
 URLs, source hashes, locale links, SVG references and critical numeric values.
 `metrics.json` and 32 screenshots cover the eight diagrams at desktop and
@@ -75,7 +75,7 @@ three 390px scroll positions; text bounds and pairwise overlap are zero.
 ## Notes
 
 - Read-only production snapshot:
-  `C:\Users\x8120\.codex\article-localization-release\batch010-inventory\production-source.json`;
+  `<home>\.codex\article-localization-release\batch010-inventory\production-source.json`;
   inventory SHA-256
   `259cd6fea752edf87360f8986b06d6fa284da97d815965627854bbc3537e1f29`.
 - Published source revisions: itinerary zh-TW v8
@@ -111,7 +111,7 @@ three 390px scroll positions; text bounds and pairwise overlap are zero.
   and live versions/visibility before any production publication. No
   production write has occurred.
 - PR #635 remains draft with auto-merge disabled. Independent v3 review
-  `C:\Users\x8120\.codex\article-localization-release\batch010-work\review-batch010-v3-preflight.json`
+  `<home>\.codex\article-localization-release\batch010-work\review-batch010-v3-preflight.json`
   (SHA-256 `c9b3fb3ae3b5cac5eeea7cfc43f9b3edd0467b2c931f5be5f8501d8e4fa180d9`)
   supersedes the prior editorial approval and returned 27 source-to-target
   fields across 10 finding groups, including 13 numeric warning rows.
@@ -125,7 +125,7 @@ three 390px scroll positions; text bounds and pairwise overlap are zero.
   before translating/publishing from a repinned source. The already correct
   en/ja/ko strict-`>` fields remain unchanged.
 - The v4 content-delta audit at
-  `C:\Users\x8120\.codex\article-localization-release\batch010-work\qa-v4\content-delta.json`
+  `<home>\.codex\article-localization-release\batch010-work\qa-v4\content-delta.json`
   (SHA-256 `590129cedc3f7f72a4821193d5cd1272aa12b81a02cc063801758960abc6102f`)
   compares the new candidate with frozen e0392c90. It confirms exactly 16 JSON
   field changes (14 translated fields and two source-language fare labels),

@@ -19,6 +19,11 @@ import { dHash, dhashArgs } from "./qc.mjs";
 const exec = promisify(execFile);
 
 export const IMAGE_SIZE = { width: 1920, height: 1080 };
+// What a picture is asked at: the vendors' 1K default (which every cache key so far was written
+// for), or 2K for a still that fills the frame under a camera move, where a 1K picture upscaled
+// 1.25× reads as soft (docs/videos/ILLUSTRATED.md §畫面不像 AI). The server prices a 2K picture
+// with the choice's `usd_per_image_2k`; a model without one draws at 1K.
+export const IMAGE_SIZES = { "1K": IMAGE_SIZE, "2K": { width: 2048, height: 1152 } };
 // Mirrors JUDGE_USD_PER_CALL in apps/api/app/video_media/catalog.py.
 export const JUDGE_USD_PER_CALL = 0.01;
 const EXTENSIONS = { "image/png": ".png", "image/jpeg": ".jpg", "image/webp": ".webp", "video/mp4": ".mp4", "audio/mpeg": ".mp3", "audio/mp4": ".m4a", "audio/wav": ".wav", "audio/x-wav": ".wav" };
@@ -60,7 +65,11 @@ export function imageStatus(status, series) {
     // Status reports credentials only for its three selected vendors. A different vendor
     // can be unknown; let the server check it before submitting to the paid provider.
     const known = [status.image, status.clip, status.music].find((choice) => choice?.provider === provider && typeof choice.configured === "boolean");
-    return { ...status, image: { ...status.image, provider, model, configured: known?.configured ?? null } };
+    // The 2K price on the settings' choice belongs to the settings' model, and the catalog rows
+    // carry none: an overridden model is drawn and priced at 1K rather than asked for a 2K
+    // picture it may not sell (the server answers that with 422).
+    const own2k = status.image && Object.hasOwn(status.image, "usd_per_image_2k") ? { usd_per_image_2k: null } : {};
+    return { ...status, image: { ...status.image, provider, model, configured: known?.configured ?? null, ...own2k } };
   }
   throw new MediaError(`the series image model ${model} is unavailable or retired; change the series model or clear its override`, { code: "video_media_model_not_allowed", who: "owner" });
 }
@@ -71,9 +80,16 @@ export const sameImage = (left, right) => left?.provider === right?.provider && 
 // Keep this boundary even after an override is cleared (the stored field is then null).
 export const imageSelectionVersion = (series) => Object.hasOwn(series ?? {}, "image_model") ? 1 : 0;
 
-/** The list price of one image with the server's chosen image model. */
-export function imagePrice(status, format = null) {
+/** The list price of one image with the server's chosen image model, at 1K or, when asked, at 2K. */
+export function imagePrice(status, format = null, size = null) {
+  if (size === "2K") return Number(choiceFor(status, "image", format)?.usd_per_image_2k ?? 0);
   return Number(chosenModel(status, "image", format)?.usd_per_image ?? 0);
+}
+
+/** "2K" when the server's image choice for `format` is priced at 2K, else null (draw at 1K). */
+export function imageSizeFor(status, format = null) {
+  const price = choiceFor(status, "image", format)?.usd_per_image_2k;
+  return typeof price === "number" && Number.isFinite(price) && price > 0 ? "2K" : null;
 }
 
 /** The owner's per-video cap for a video of `format`: slides may have their own. */
@@ -182,10 +198,11 @@ export class Stage {
     return { ...entry, key, reused: false };
   }
 
-  /** Generate one image: a character sheet, a keyframe, an end frame. */
-  async image({ id, purpose, prompt, negative = "", aspect = "16:9", references = [], seed = null, shotId = null, target }) {
+  /** Generate one image: a character sheet, a keyframe, an end frame; `size` "2K" asks for a larger picture (IMAGE_SIZES). */
+  async image({ id, purpose, prompt, negative = "", aspect = "16:9", references = [], seed = null, shotId = null, size = null, target }) {
     const { provider, model } = choiceFor(this.status, "image", this.format);
-    const baseKey = keyframeKey({ provider, model, prompt, negative, width: IMAGE_SIZE.width, height: IMAGE_SIZE.height, seed, references: references.map((reference) => reference.sha256) });
+    const dimensions = IMAGE_SIZES[size ?? "1K"] ?? IMAGE_SIZE;
+    const baseKey = keyframeKey({ provider, model, prompt, negative, width: dimensions.width, height: dimensions.height, seed, references: references.map((reference) => reference.sha256) });
     const key = this.imageVersion ? mediaKey("series-image", { version: this.imageVersion, key: baseKey }) : baseKey;
     const request = {
       slug: this.slug,
@@ -196,8 +213,9 @@ export class Stage {
       references,
       ...(seed !== null ? { seed } : {}),
       ...(shotId ? { shot_id: shotId } : {}),
+      ...(size ? { size } : {}),
     };
-    return this.generate({ kind: "image", key, submit: submitImage, request, id, target, usd: imagePrice(this.status, this.format) });
+    return this.generate({ kind: "image", key, submit: submitImage, request, id, target, usd: imagePrice(this.status, this.format, size) });
   }
 
   /** Generate one clip from its first frame (`request` is the server's ClipJobIn without the slug). */

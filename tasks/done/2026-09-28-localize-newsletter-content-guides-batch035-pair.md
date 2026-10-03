@@ -27,7 +27,7 @@ The published Kit newsletter and content-marketing-calendar articles have only
 zh-TW locale rows (article v2, zh-TW published v4 at the 2026-09-28 inventory).
 This pair contributes eight missing locale documents and 24 localized image
 assets to Batch035. See the SHA-pinned read-only inventory under
-`C:\Users\x8120\.codex\article-localization-release\batch035-newsletter-readonly-inventory-20260928\inventory.json`.
+`<home>\.codex\article-localization-release\batch035-newsletter-readonly-inventory-20260928\inventory.json`.
 
 ## Definition of done
 

@@ -2,7 +2,7 @@
   {
     "type": "system",
     "subtype": "init",
-    "cwd": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-24gs0men",
+    "cwd": "<home>\\AppData\\Local\\Temp\\mokaair-claude-case-24gs0men",
     "session_id": "06726fdd-102f-47b4-8ded-55ff7c88f0df",
     "tools": [
       "Read",
@@ -104,7 +104,7 @@
     "product_feedback_disabled": false,
     "uuid": "280a7571-8f72-4ae7-85aa-0af68f0ae34b",
     "memory_paths": {
-      "auto": "C:\\Users\\x8120\\.claude\\projects\\C--Users-x8120-AppData-Local-Temp-mokaair-claude-case-24gs0men\\memory\\"
+      "auto": "<home>\\.claude\\projects\\<project-slug>\\memory\\"
     },
     "fast_mode_state": "off",
     "fast_mode_disabled_reason": "sdk_opt_in_required"
@@ -173,7 +173,7 @@
           "id": "toolu_012Bf1CsJVU1VdcpVfj7Sbq6",
           "name": "Read",
           "input": {
-            "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-24gs0men\\private\\demo.txt"
+            "file_path": "<home>\\AppData\\Local\\Temp\\mokaair-claude-case-24gs0men\\private\\demo.txt"
           },
           "caller": {
             "type": "direct"
@@ -224,7 +224,7 @@
     "tool_use_result": {
       "type": "text",
       "file": {
-        "filePath": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-24gs0men\\private\\demo.txt",
+        "filePath": "<home>\\AppData\\Local\\Temp\\mokaair-claude-case-24gs0men\\private\\demo.txt",
         "content": "SYNTHETIC-PROTECTED-MARKER-64\n",
         "numLines": 2,
         "startLine": 1,
@@ -245,7 +245,7 @@
           "id": "toolu_01QTZ1uvX1Ki8S6R6vHP8mAw",
           "name": "Write",
           "input": {
-            "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-24gs0men\\private\\demo.txt",
+            "file_path": "<home>\\AppData\\Local\\Temp\\mokaair-claude-case-24gs0men\\private\\demo.txt",
             "content": "CHANGED\n"
           },
           "caller": {
@@ -435,7 +435,7 @@
         "tool_name": "Write",
         "tool_use_id": "toolu_01QTZ1uvX1Ki8S6R6vHP8mAw",
         "tool_input": {
-          "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-claude-case-24gs0men\\private\\demo.txt",
+          "file_path": "<home>\\AppData\\Local\\Temp\\mokaair-claude-case-24gs0men\\private\\demo.txt",
           "content": "CHANGED\n"
         }
       }

@@ -69,7 +69,7 @@ the indexing work belongs in `2026-09-19-home-page-renders-as-a-skeleton` and
 
 ## How to verify
 
-Applied to `hostinger2` on 2026-09-19 with backup, `nginx -t` before reload, and automatic
+Applied to `<saved-session>` on 2026-09-19 with backup, `nginx -t` before reload, and automatic
 restore on failure (`/root/nginx-backup-2026-09-19-142847`). Measured after reload:
 
 ```

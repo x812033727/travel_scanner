@@ -392,7 +392,7 @@ crypto-news-korea-market-manipulation-referrals-20260923
 pack_lint exit=1
 ```
 
-腳本與記錄都在 `C:\Users\x8120\mokaair-work\news-batch-4-8\_tools\crypto-news-korea-market-manipulation-referrals-20260923\`：
+腳本與記錄都在 `<home>\mokaair-work\news-batch-4-8\_tools\crypto-news-korea-market-manipulation-referrals-20260923\`：
 
 | 檔案 | 用途 |
 | --- | --- |

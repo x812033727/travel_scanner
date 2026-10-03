@@ -2118,6 +2118,19 @@
     "pending": "這個新版正等待你在下方審看成片。舊版的上架與語言核准已不能用來上傳。"
   },
   "videoReviews": {
+    "duration": {
+      "target": "正文目標 {target} 秒 · 實測驗收範圍 {min}–{max} 秒",
+      "opedBudget": "OP/ED 預算上限 {budget} 秒；已製作媒體的長度另行量測。",
+      "audio": "正文音訊實測 {seconds} 秒",
+      "title": "單集實測長度",
+      "body": "正文實測 {seconds} 秒 · 目標 {target} 秒 · 驗收範圍 {min}–{max} 秒",
+      "oped": "OP/ED 實測 {seconds} 秒 · 預算上限 {budget} 秒",
+      "missing": "目前無法取得實測長度憑證。目標分鐘數不能證明成片的實際長度。",
+      "current": "已依據目前的製作規格驗證",
+      "stale": "這份報告尚未通過目前製作規格的驗證。核准前，請重新檢查目前的媒體。",
+      "budget": "播出時段 {slot} 秒 · 時段預留 {reserve} 秒（不會補入空白片段）",
+      "total": "成片實測 {seconds} 秒"
+    },
     "categories": {
       "ai-terms": "AI 名詞解釋",
       "ai-news": "AI／科技時事",
@@ -2338,7 +2351,16 @@
       "hook": "鉤子",
       "conflict": "衝突",
       "turn": "轉折",
-      "cliffhanger": "懸念"
+      "cliffhanger": "懸念",
+      "highTension": "高張力事件 {number}",
+      "consequences": "持續後果",
+      "closure": "正向收束"
+    },
+    "scriptAction": {
+      "title": "場面動作",
+      "description": "可見動作",
+      "motion": "動作與鏡頭",
+      "duration": "持續 {seconds} 秒"
     },
     "scriptProblems": "查核指出的問題",
     "scriptMinutes": "約 {minutes} 分鐘",
@@ -2365,6 +2387,7 @@
     "qaAllPassed": "{count} 項全過",
     "qaWarning": "注意：",
     "qaItems": {
+      "duration_policy": "單集長度",
       "assemble": "合成",
       "render": "畫面",
       "narration": "旁白",
@@ -2618,6 +2641,21 @@
     "dramaKeyLink": "到 AI 設定填金鑰"
   },
   "videoSeries": {
+    "longAnime": {
+      "startPlanning": "開始規劃",
+      "planningHelp": "點選「開始規劃」以請求製作設定集與整部大綱。核准這些文件後，再恢復單集製作。",
+      "profile": "單集格式",
+      "ordinary": "標準劇集（1–8 分鐘）",
+      "option": "長篇動漫（正文 22 分鐘）",
+      "badge": "長篇動漫",
+      "help": "以群像主角與 2D 動漫畫風建立，初始狀態為暫停。恢復製作前，請審閱並核准設定集與整部大綱。",
+      "body": "正文目標 {minutes} 分鐘；實測驗收範圍 {min}–{max} 分鐘",
+      "budgets": "OP/ED 預算上限 {oped} 分鐘 · 播出時段 {slot} 分鐘 · 時段預留 {reserve} 分鐘",
+      "budgetHelp": "OP/ED 是時間預算上限，不代表已製作的媒體。播出預留時間絕不會用於補足影片長度。",
+      "manual": "文件與劇本須經審閱；自動核准與合集製作均已停用。",
+      "reviewRequired": "恢復製作前，請先核准設定集與整部大綱。",
+      "create": "建立暫停的動漫作品"
+    },
     "listTitle": "作品",
     "empty": "還沒有作品",
     "emptyDetail": "在下面建一部：工人下一輪就會規劃設定集，你在這裡核准。",

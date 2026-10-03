@@ -36,7 +36,7 @@ public-page acceptance separately from completed content authoring.
 - [x] Assemble and independently review the exact canonical jobs/bundle with
       source, tool, Git, document, SVG, render and route-derivative hashes; freeze.
 - [x] Verify the owned hold/four-lock protocol and a fresh database backup before
-      deploying necessary files through hostinger2; check revision and health.
+      deploying necessary files through `<saved-session>`; check revision and health.
 - [x] Dry-run then execute exactly sixteen draft imports and sixteen article
       publications, with zero hubs, explicit lists, sealed journals and rerun
       idempotency. Preserve all original zh-TW rows and article metadata.
@@ -85,12 +85,12 @@ The 2026-09-23T09:23 read-only source snapshot found each article active/publish
 at article v1 and zh-TW locale/published v6, equal full draft/published models,
 no target locales and no expiry. These are historical baseline facts that must
 be refreshed before release, not an assertion about current production state.
-Snapshot `C:/Users/x8120/.codex/article-localization-release/batch020-candidate-inventory/live-source-full-20260923T092314Z.json`,
+Snapshot `<home>/.codex/article-localization-release/batch020-candidate-inventory/live-source-full-20260923T092314Z.json`,
 SHA256 `ad9b670268b46e5e79f808ce694a2fcf77548571bf50eb582f3d977f861c2d7f`.
 
 The dependent content task records both independent body/image approvals and
 the independently reviewed integration candidate. Outside evidence is under
-`C:/Users/x8120/.codex/article-localization-release/batch020-digital-continuity/`:
+`<home>/.codex/article-localization-release/batch020-digital-continuity/`:
 
 - `integration-candidate-v1/integration-manifest.json`, SHA256
   `a80cb36e65a38322e26e640441171263ecebc42641d8c6de78f83414757f9936`.
@@ -129,7 +129,7 @@ The actual release completion below supersedes that earlier pending state.
   v1 / zh-TW v6 rows with no target locales. The canonical wrapper and final
   transport received independent approval; the owned hold/four-lock procedure,
   fresh custom-format backup with restore-list verification and durable
-  deployment completed through hostinger2.
+  deployment completed through `<saved-session>`.
 - Exactly sixteen missing-language drafts and sixteen article publications
   completed, with zero hubs. The final sealed journal has 32 committed operations
   and no pending operation. Four original complete zh-TW rows, article metadata
@@ -155,7 +155,7 @@ The actual release completion below supersedes that earlier pending state.
   task `2026-09-22-fix-desktop-global-search-placeholder-icon`.
 
 Immutable outside evidence, under
-`C:/Users/x8120/.codex/article-localization-release/`:
+`<home>/.codex/article-localization-release/`:
 
 | Evidence | SHA-256 |
 | --- | --- |
