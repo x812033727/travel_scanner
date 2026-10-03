@@ -144,10 +144,14 @@ scope:
 
 ## 2026-10-03 站主追加
 
-- 摘要直接補，不用站主先讀：第一批 81 篇、第二批 14 篇、`ai-terms-index`、`ai-glossary-50-terms` 都加 `summary` 區塊。
-  每則摘要由另一位代理逐句對照正文核實，再用 `pack_cli summarize --from` 套用（工具會擋掉正文沒有的數字）。
-- 總索引的連結文字改成名詞本身（「檢索增強生成（RAG）」），正文從 5,910 字降到約 4,850 字。
-- 第二批補上 `ai-terms` topic 與 `aliases.json` 的搜尋別名。
+- [x] 摘要直接補，不用站主先讀：第一批 81 篇、第二批 14 篇、第三批 10 篇、`ai-terms-index`、`ai-glossary-50-terms`
+      全部加了 `summary` 區塊（107 則）。每則由一位代理寫、另一位逐句對照正文核實，
+      再過 `docs/ai-terms-series/summaries.py check` 與 `pack_cli summarize --from`（擋掉正文沒有的數字）才套用。
+      核實者改掉的句子記在 `docs/ai-terms-series/summaries/part-*.json` 的 `notes`。
+- [x] 總索引的連結文字改成名詞本身（「檢索增強生成（RAG）」），正文從 5,910 字降到 4,847 字；
+      接上第三批與摘要後是 5,444 字。
+- [x] 第二批補上 `ai-terms` topic 與 `aliases.json` 的搜尋別名。
+- [x] 查核者順手抓到第一批 `ai-term-agent-skills` 的錯字「裡麵」，已改。
 
 ## Definition of done
 
@@ -201,7 +205,10 @@ npm run check:tasks
 - **不加 `summary` 區塊。** `SummaryBlock` 的 docstring 記著站主 2026-09-16 的決定：模型寫的摘要要站主逐批讀過，再由 `pack_cli summarize --from` 套用。第一批 76 篇也都沒有，`no_summary` 警告是這個系列共通的待辦，不是這批的缺漏。
 - **渲染：** 不要設 `CHROMIUM_BIN` 指到完整版 `chromium-*/chrome-linux/chrome`，它的 `--window-size=1600,900` 含視窗外框，截圖底部約 88 px 變白邊；`render_svg` 預設會挑 `chromium_headless_shell`，那個是完整 1600×900。
 - **字數：** `_body_length` 會算進 `rich_paragraph` 裡連結的文字，brief 寫的「不含連結文字」是指 `link` 區塊。
-- **總索引快滿了。** `ai-terms-index` 正文 5,910 字，life 類上限 6,000。第三批加詞前要先改索引結構，不然 lint 會報 `text_length`。
+- **總索引的字數。** 6,000 是 lint 的 `text_length` 警告門檻，不是硬限制（`tech-news-2026-index` 6,812 字照樣上線）。
+  索引的連結改成名詞本身後是 5,444 字（含摘要）；再加十幾個詞仍會碰到門檻，那時可以考慮拆成分組子索引。
+  根本的修法是 `_body_parts` 不算只含一個連結的段落（它自己的 docstring 就說不算連結文字），
+  但 `pack_ingest.py` 在 `2026-09-14-codex-learning-series`（blocked）的範圍裡，這張票不動它。
 - **查核數字。** 14 篇第一輪共改 69 處事實，11 篇超過三處進第二輪，第二輪又改 20 處（其中不少是協調者指定要修的地方）。
   逐篇數字與協調者收件時另改的地方在 [`ARTICLES.md`](../../docs/ai-terms-series/batch-02/ARTICLES.md)。
 - **平行查核者共用 scratchpad 會互相覆寫。** 兩位查核者回報暫存檔被別人蓋掉（各自的 pack.json 沒受影響）。下次在提示裡要求每人用 `scratchpad/<slug>/` 子目錄。

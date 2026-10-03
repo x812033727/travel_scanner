@@ -23,6 +23,10 @@
 | 模型與 AI 基礎 | 通用人工智慧 / Artificial General Intelligence | 通用人工智慧（AGI）是什麼：各家定義為什麼不一樣 | 2,656 | 10 | 6 → 3 | `ai-term-agi` |
 | 代理、工具與互通協定 | 電腦操作 / Computer Use | 電腦操作（Computer Use）是什麼：讓 AI 看畫面、點滑鼠、打鍵盤 | 2,738 | 9 | 4 → 4 | `ai-term-computer-use` |
 
+## 之後補上的
+
+- 2026-10-03：14 篇補 `ai-terms` topic、`aliases.json` 別名與 `summary` 區塊（見 `../summaries/`）。
+
 ## 協調者在收件時另改的地方
 
 - 「本文／這篇」每篇壓到一次（讀者優先規則，`intake_check.py` 的 self-reference 上限）。
@@ -39,7 +43,7 @@
 ## 總索引與速查
 
 - `ai-terms-index`：14 篇分進既有六組，各組導言補一句，問題表加一列「AI 一直附和我，或同一題每次答得不同」。
-  **正文 5,910 字，離 life 類 6,000 字上限只剩 90 字。** 下一批再加詞前要先改結構（例如各組只留導言、把連結改成清單，或拆成分組子索引）。
+  接第二批時正文 5,910 字；之後連結文字改成名詞本身（見 `../integrate.py`），接上第三批與摘要後是 5,444 字。
 - `ai-glossary-50-terms`：temperature 與知識截止日兩條所在的「模型與訓練」組、電腦操作所在的「推理與代理」組，各加連到新專文的連結。
 - 兩者都由 [`../integrate.py`](../integrate.py) 寫入，可重跑（已連過的不會重複加）。
 
