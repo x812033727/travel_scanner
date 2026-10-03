@@ -89,15 +89,20 @@ export function spokenUnits(text) {
 
 // A thing rather than a face: a close framing "of" one of these is an insert.
 const OBJECT = "(?:hands?|fingers?|fist|palm|thumb|pen|papers?|documents?|copy|copies|pages?|phone|ring|cup|bowl|keys?|letter|screen|ticket|seal|stamp|blade|sword|foot|feet|props?|objects?|original|contract|envelope|receipt|box|bag|tray|table)";
-const INSERT = new RegExp(
-  [
-    "\\binsert\\b|detail shot|\\bmacro\\b",
-    `(?:close[- ]?up|shot|view|framing) (?:of|on) (?:[\\w'’-]+ ){0,4}?${OBJECT}\\b`,
-    `\\b${OBJECT}(?:-[\\w-]+)? (?:close[- ]?up|shot)`,
-    "(?:overhead|top-down)[\\w ,-]{0,24}close[- ]?up",
-  ].join("|"),
-);
+const EXPLICIT_INSERT = /\binsert\b|detail shot|\bmacro\b/;
+// "close-up of <a thing>": the words between may describe the thing, not a person doing something.
+const OF_OBJECT = new RegExp(`(?:close[- ]?up|shot|view|framing) (?:of|on) ((?:[\\w'’-]+ ){0,3}?)${OBJECT}\\b`);
+const NOT_A_MODIFIER = /ing$|^(?:at|around|with|near|behind|beside|by|in|from|over|under|across)$/;
+const OBJECT_SHOT = new RegExp(`\\b${OBJECT}(?:-[\\w-]+)? (?:close[- ]?up|shot)`);
+const OVERHEAD_CLOSE = /(?:overhead|top-down)[\w ,-]{0,24}close[- ]?up/;
 const FACE_IN_FRAME = /\bface\b|medium close[- ]?up|reaction shot|over[- ]the[- ]shoulder/;
+
+function isInsert(lower) {
+  if (FACE_IN_FRAME.test(lower)) return false;
+  const of = OF_OBJECT.exec(lower);
+  if (of && !of[1].trim().split(" ").filter(Boolean).some((word) => NOT_A_MODIFIER.test(word))) return true;
+  return OBJECT_SHOT.test(lower) || OVERHEAD_CLOSE.test(lower);
+}
 // The size a `camera` line leads with wins: the spec asks writers to start the line with it.
 const LEADING_SIZE = [
   ["ecu", /^extreme close[- ]?up\b/],
@@ -117,8 +122,8 @@ const CAMERA_SIZES = [
   ["cu", /close[- ]?up|closeup/],
   ["ots", /over[- ]the[- ]shoulder|\bots\b/],
   ["group", /(?:two|three)[- ]shot|group shot|ensemble shot/],
-  ["ms", /medium shot|mid shot|medium wide|waist[- ]up|cowboy shot|\bmedium\b/],
-  ["ws", /\bwide\b(?! (?:eyes|eyed|open|smile|sleeves|brim))|establishing|long shot|full shot|full-body shot|aerial|bird'?s[- ]eye/],
+  ["ms", /medium shot|mid shot|medium wide|waist[- ]up|cowboy shot/],
+  ["ws", /wide[- ](?:shot|angle|view|establishing|frame|framing)|establishing|long shot|full shot|full-body shot|aerial|bird'?s[- ]eye/],
   ["pov", /\bpov\b|point of view/],
 ];
 // From a `prompt` only an explicit shot-size phrase counts: a prompt also says "wide sleeves".
@@ -136,15 +141,19 @@ const PROMPT_SIZES = [
 const FACE = new Set(["ecu", "cu", "mcu", "ots"]);
 // Where everyone stands: a wide shot, or two or more people held in one frame.
 const WIDE = new Set(["ws", "group"]);
+const family = (size) => (FACE.has(size) ? "face" : WIDE.has(size) ? "wide" : size);
 
-function sizeIn(text, sizes, leading) {
+// The word "Insert" wins; then the size the line leads with, unless that is a plain close-up,
+// which is an insert when it is a close-up of a thing; then the first size named anywhere.
+function sizeIn(text, sizes) {
   const lower = String(text ?? "").toLowerCase().trim();
   if (!lower) return null;
-  if (INSERT.test(lower) && !FACE_IN_FRAME.test(lower)) return "insert";
-  if (leading) {
-    const head = lower.replace(LEADING_QUALIFIER, "");
-    for (const [size, pattern] of LEADING_SIZE) if (pattern.test(head)) return size;
-  }
+  if (EXPLICIT_INSERT.test(lower)) return "insert";
+  const head = lower.replace(LEADING_QUALIFIER, "");
+  const leading = LEADING_SIZE.find(([, pattern]) => pattern.test(head))?.[0] ?? null;
+  if (leading && leading !== "cu") return leading;
+  if (isInsert(lower)) return "insert";
+  if (leading) return leading;
   for (const [size, pattern] of sizes) if (pattern.test(lower)) return size;
   return null;
 }
@@ -155,23 +164,26 @@ function sizeIn(text, sizes, leading) {
  * is an insert unless the line also says a face is in the frame.
  */
 export function shotSize(data) {
-  return sizeIn(data?.camera, CAMERA_SIZES, true) ?? sizeIn(data?.prompt, PROMPT_SIZES, false);
+  return sizeIn(data?.camera, CAMERA_SIZES) ?? sizeIn(data?.prompt, PROMPT_SIZES);
 }
 
-/** True when the camera line and the prompt each name a size and the two differ. */
+/** True when the camera line and the prompt each name a size and the two are of different kinds. */
 export function sizesDisagree(data) {
-  const camera = sizeIn(data?.camera, CAMERA_SIZES, true), prompt = sizeIn(data?.prompt, PROMPT_SIZES, false);
-  return camera !== null && prompt !== null && camera !== prompt;
+  const camera = sizeIn(data?.camera, CAMERA_SIZES), prompt = sizeIn(data?.prompt, PROMPT_SIZES);
+  return camera !== null && prompt !== null && family(camera) !== family(prompt);
 }
 
-// Camera phrasing only: "she pushes the box" in a camera line is not a push-in.
+// Camera phrasing only: a move counts at the start of the line or of a clause, or after a word
+// that describes a camera ("slow push in"), never after a person ("she pushes in the drawer").
+const AT_CLAUSE = "(?:^|[,;.:] ?|\\b(?:and|then|slow|slowly|gentle|gently|subtle|quick|fast|smooth|steady|camera|handheld|low|high) )";
+const move = (phrases) => new RegExp(`${AT_CLAUSE}(?:${phrases})\\b`);
 const MOVES = [
   ["locked", /\blocked\b|\bstatic\b|fixed (?:camera|frame|shot)|tripod|no camera move|still camera/],
-  ["pull", /pull(?:s|ing)?[- ](?:back|out)\b|dolly(?:ing)? out\b|zoom(?:s|ing)? out\b|\bwidens?\b|back(?:s|ing)? away\b|camera pulls/],
-  ["push", /push(?:es|ing)?[- ]in\b|dolly(?:ing)? in\b|\bzoom(?:s|ing)?\b|moves? in\b|\bcloser\b|camera pushes/],
-  ["pan", /\bpans?\b|panning/],
-  ["tilt", /\btilts?\b|tilting|\bcranes?\b|\brises?\b|\bdescends?\b/],
-  ["track", /\btrack|\btruck|\bfollow|handheld|\borbit|\barcs?\b|steadicam/],
+  ["pull", move("pull(?:s|ing)?[- ](?:back|out)|pull-?back|dolly(?:ing)? out|zoom(?:s|ing)? out|widen(?:s|ing)?|back(?:s|ing)? away")],
+  ["push", move("push(?:es|ing)?[- ]?in|dolly(?:ing)? in|zoom(?:s|ing)?(?: in)?|mov(?:e|es|ing) in|closer")],
+  ["pan", move("pan(?:s|ning)?")],
+  ["tilt", move("tilt(?:s|ing)?|crane(?:s|ing)?|pedestal|rises?|descend(?:s|ing)?")],
+  ["track", move("track(?:s|ing)?|truck(?:s|ing)?|follow(?:s|ing)?|handheld|orbit(?:s|ing)?|arc(?:s|ing)? (?:left|right|around)|steadicam")],
 ];
 
 /** The camera move a shot's camera line names; "none" when it names none. */
@@ -188,9 +200,12 @@ const SMALL = [
   // the subject is a part of the face: "His polite smile fades", "Her eyes close"
   new RegExp(`^(?:[\\w'’-]+ ){0,6}?${FACE_PART} \\w+`),
   // a person moves only their eyes: "She turns her gaze back", "He lifts his eyes"
-  new RegExp(`\\b(?:turns?|lifts?|raises?|lowers?|drops?|shifts?|moves?|holds?|keeps?|fixes|narrows?|closes?|opens?|widens?) (?:his|her|their|the) (?:[\\w-]+ )?${FACE_PART}\\b`),
+  new RegExp(`\\b(?:turns?|lifts?|raises?|lowers?|drops?|shifts?|moves?|holds?|keeps?|fixes|narrows?|closes?|shuts?|squeezes?|opens?|widens?) (?:his|her|their|the) (?:[\\w-]+ )?${FACE_PART}\\b`),
+  /\b(?:his|her|their) face (?:falls|hardens|softens|tightens|pales|flushes|darkens|stills|freezes|crumples)\b/,
+  // being there is not doing something: "She stands at the table", "He waits", "She holds the pen"
+  /^(?:[\w'’-]+ ){0,4}?(?:stands?|sits?|kneels?|lies|waits?|pauses?|hesitates?|faces|remains?|stays?|holds?)\b(?! (?:up|down|out|back|away|off)\b)/,
   /^(?:[\w'’-]+ ){0,4}?(?:looks?|glances?|stares?|gazes?|studies|watches|blinks?|breathes?|swallows?|frowns?|smiles?|smirks?|squints?|waits?|listens?|reads?)\b/,
-  /\b(?:a|her|his|their) (?:single |lone )?tears? (?:falls?|wells?|rolls?|streams?|runs?|slides?)\b/,
+  /(?:^|\b(?:a|her|his|their|the) )(?:single |lone )?tears? (?:falls?|wells?|rolls?|streams?|runs?|slides?)\b/,
   // a hand that only tightens or shakes
   /\b(?:hands?|fingers?|fist|grip|knuckles?) (?:\w+ly )?(?:tightens?|trembles?|quivers?|twitch(?:es)?|shakes?|clench(?:es)?|whitens?|curls?)\b/,
   /\b(?:tightens?|clench(?:es)?|closes?|curls?) (?:his|her|their) (?:fingers?|fist|grip|hand)\b/,
@@ -210,7 +225,10 @@ function mainClause(motion) {
  * in a row.
  */
 export function isLookOnly(data) {
-  const clause = mainClause(data?.motion);
+  const motion = String(data?.motion ?? "").toLowerCase();
+  // lifting or turning the head in order to look is a look written another way
+  if (/\b(?:lifts?|raises?|turns?|tilts?) (?:his|her|their) head (?:to|toward|towards|and) (?:looks?|faces?|sees?|watch(?:es)?|meets?|stares?|gazes?)\b/.test(motion)) return true;
+  const clause = mainClause(motion);
   return clause === "" || SMALL.some((pattern) => pattern.test(clause));
 }
 
@@ -244,13 +262,15 @@ export function normalize(doc) {
     measured: false,
     cast: Array.isArray(doc.characters) && doc.characters.length > 0,
     shots: doc.scenes.map((scene) => {
-      const lines = (scene?.lines ?? []).map((line) => ({ speaker: line.speaker ?? NARRATOR, text: line.text, seconds: lineSeconds(line) }));
+      const lines = (scene?.lines ?? []).map((line) => ({ speaker: line.speaker ?? NARRATOR, text: line.text, seconds: lineSeconds(line), inner: /^內心獨白/.test(line.emotion ?? "") }));
       const spoken = lines.reduce((sum, line) => sum + line.seconds, 0);
+      // A long-anime production may time a shot without lines with `action_seconds`.
+      const action = !lines.length && Number.isFinite(scene?.action_seconds) ? scene.action_seconds : null;
       return {
         id: scene?.id,
         card: scene?.template !== "shot",
-        seconds: lines.length ? spoken + SCENE_GAP_MS / 1000 : SILENT_SHOT_SECONDS,
-        silent: lines.length === 0,
+        seconds: lines.length ? spoken + SCENE_GAP_MS / 1000 : (action ?? SILENT_SHOT_SECONDS),
+        silent: lines.length === 0 && action === null,
         data: scene?.data ?? {},
         lines,
       };
@@ -323,7 +343,9 @@ export function craftChecks(doc) {
     add("pace.p90", "90th percentile shot", seconds(p90), `≤ ${TARGETS.p90ShotSeconds} s`, p90 <= TARGETS.p90ShotSeconds, "a long hold has to be a designed one; cut to the listener's face or an insert", { reference: REFERENCE.p90, shots: rows.filter((row) => row.seconds > TARGETS.p90ShotSeconds) });
     add("pace.longest", "longest shot", seconds(longest), `≤ ${TARGETS.longestShotSeconds} s`, longest <= TARGETS.longestShotSeconds, "longer than the shortest clip the pipeline buys", { reference: REFERENCE.longest, shots: rows.filter((row) => row.seconds > TARGETS.longestShotSeconds) });
     const spread = p10 > 0 ? p90 / p10 : 0;
-    add("pace.spread", "long shots against short ones (90th ÷ 10th percentile)", spread.toFixed(1), `≥ ${TARGETS.spread}`, spread >= TARGETS.spread, "every shot the same length is a metronome: a two-to-four-character line for a quick shot, two lines held on one shot before a reveal", { reference: REFERENCE.spread });
+    const brief = rows.filter((row) => row.seconds < 2);
+    add("pace.short", "shots under 2 s", `${brief.length}${brief.length ? `: ${brief.slice(0, 8).map((row) => row.id).join(", ")}` : ""}`, "reported", true, "", { info: true });
+    add("pace.spread", "long shots against short ones (90th ÷ 10th percentile)", spread.toFixed(1), `≥ ${TARGETS.spread}`, spread >= TARGETS.spread, "every shot the same length is a metronome: a three-to-five-character line for a quick shot, two lines held on one shot before a reveal", { reference: REFERENCE.spread });
   }
 
   // The opening, on the body's own clock (a channel intro, when one is installed, plays before it).
@@ -343,7 +365,7 @@ export function craftChecks(doc) {
   add("hook.dialogue", "first line spoken by a character", firstCharacterAt === null ? "never" : seconds(firstCharacterAt), `≤ ${TARGETS.firstCharacterLineSeconds} s`, firstCharacterAt !== null && firstCharacterAt <= TARGETS.firstCharacterLineSeconds, "let someone in the scene speak first; a retelling with no speaking characters answers this row in the report", { reference: REFERENCE.firstLine });
 
   // Lines.
-  if (!measured) add("lines.empty", "shots without a line", String(rows.filter((row) => row.silent).length), "0", rows.every((row) => !row.silent), "`lint` refuses a scene without lines; put the off-screen speaker's line on the reaction shot", { shots: rows.filter((row) => row.silent) });
+  if (!measured) add("lines.empty", "shots without a line", String(rows.filter((row) => row.silent).length), "0", rows.every((row) => !row.silent), "outside a long-anime production (`action_seconds`) `lint` refuses a scene without lines; put the off-screen speaker's line on the reaction shot", { shots: rows.filter((row) => row.silent) });
   const lines = rows.flatMap((row) => row.spoken.map((line) => ({ ...line, row })));
   if (lines.length) {
     const units = lines.map((line) => spokenUnits(line.text)).sort((a, b) => a - b);
@@ -352,8 +374,8 @@ export function craftChecks(doc) {
     const long = lines.filter((line) => spokenUnits(line.text) > TARGETS.longLineUnits);
     add("lines.median", "median line length", `${medianUnits} characters`, `≤ ${TARGETS.medianLineUnits}`, medianUnits <= TARGETS.medianLineUnits, "people in a scene speak in short turns; break the sentence where the cut goes", { reference: REFERENCE.lineUnits });
     add("lines.long", `lines over ${TARGETS.longLineUnits} characters`, percent(share(long.length, lines.length)), `≤ ${percent(TARGETS.longLineShare)}`, share(long.length, lines.length) <= TARGETS.longLineShare, "a line this long holds one picture too long; split it across two shots", { shots: long.map((line) => line.row) });
-    const narrator = share(lines.filter((line) => line.speaker === NARRATOR).reduce((sum, line) => sum + spokenUnits(line.text), 0), spokenTotal);
-    add("lines.narrator", "narration share of the spoken text", percent(narrator), `≤ ${percent(TARGETS.narratorShare)}`, narrator <= TARGETS.narratorShare, "turn narration into what a character says or does; keep it for time jumps", { reference: REFERENCE.narrator });
+    const narrator = share(lines.filter((line) => line.speaker === NARRATOR || line.inner).reduce((sum, line) => sum + spokenUnits(line.text), 0), spokenTotal);
+    add("lines.narrator", "narration and inner voice, share of the spoken text", percent(narrator), `≤ ${percent(TARGETS.narratorShare)}`, narrator <= TARGETS.narratorShare, "turn narration into what a character says or does; keep it for time jumps", { reference: REFERENCE.narrator });
   }
 
   // Coverage.
@@ -373,10 +395,17 @@ export function craftChecks(doc) {
       add("size.reestablish", "longest run without a wide or group shot", `${gap.length} shots`, `≤ ${TARGETS.wideGapShots}`, gap.length <= TARGETS.wideGapShots, "after a move, an entrance or a new beat, re-establish the room", { reference: REFERENCE.wide, shots: gap.length ? [gap[0], gap.at(-1)] : [] });
     }
     const cast = (row) => String([...(row.data.characters ?? [])].sort());
-    const stall = longestRun(rows, (row) => row.size !== null, (row, previous) => row.size === previous.size && cast(row) === cast(previous));
+    // Shots with nobody in them (inserts) are "the same people" only when they are the same setup.
+    const samePeople = (row, previous) => (cast(row) || cast(previous) ? cast(row) === cast(previous) : setupKey(row) === setupKey(previous));
+    const stall = longestRun(rows, (row) => row.size !== null, (row, previous) => row.size === previous.size && samePeople(row, previous));
     add("size.stall", "same size on the same people in a row", `${stall.length} shots`, `≤ ${TARGETS.sameSetupRun}`, stall.length <= TARGETS.sameSetupRun, "the third one reads as a stall: cut to who is listening, or to what the hands are doing", { shots: stall });
-    const setups = new Set(rows.map(setupKey)).size;
-    add("size.setups", "camera setups", `${setups} for ${rows.length} shots`, "reported", true, "", { info: true });
+    const uses = new Map();
+    for (const row of rows) uses.set(setupKey(row), (uses.get(setupKey(row)) ?? 0) + 1);
+    const reused = [...uses.values()].filter((count) => count > 1);
+    add("size.setups", "camera setups", `${reused.length} used more than once (${reused.reduce((sum, count) => sum + count, 0)} shots), ${uses.size - reused.length} used once`, "reported", true, "", { info: true });
+    const faces = rows.filter((row) => FACE.has(row.size));
+    const listeners = faces.filter((row) => row.spoken.some((line) => line.speaker !== NARRATOR && !line.inner && !(row.data.characters ?? []).includes(line.speaker)));
+    add("size.listeners", "faces shown while someone off screen speaks", `${listeners.length} of ${faces.length} face shots`, "reported", true, "", { info: true });
   }
 
   // Motion.
@@ -391,6 +420,10 @@ export function craftChecks(doc) {
     const moving = (row) => !["none", "locked"].includes(row.move);
     const moveRun = longestRun(rows, moving, (row, previous) => row.move === previous.move);
     add("motion.repeat", "same camera move in a row", `${moveRun.length} shots`, `≤ ${TARGETS.sameMoveRun}`, moveRun.length <= TARGETS.sameMoveRun, "vary it, or let the cut do the moving", { shots: moveRun });
+    const locked = rows.filter((row) => row.move === "locked");
+    add("motion.locked", "locked camera", `${locked.length} of ${rows.length}, longest run ${longestRun(rows, (row) => row.move === "locked").length}`, "reported", true, "", { info: true });
+    const double = rows.filter((row) => /\b(?:and|then)\b/.test(String(row.data.motion ?? "").toLowerCase()));
+    add("motion.double", "motion lines with a second action (and / then)", `${double.length}${double.length ? `: ${double.slice(0, 8).map((row) => row.id).join(", ")}` : ""}`, "reported", true, "", { info: true });
   }
   if (rows.length >= 6) {
     const dissolves = rows.filter((row) => row.data.transition === "dissolve");
