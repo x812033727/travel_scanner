@@ -40,6 +40,26 @@ describe("travel API proxy security", () => {
     expect(safeRedirectLocation("http://evil.example/", "https://mokaair.com")).toBeUndefined();
   });
 
+  it("refuses a relative location that a browser would resolve to another host", () => {
+    const sameSite = "https://mokaair.com";
+    // Why each of these is dangerous: for http(s) a browser reads `\` as `/` and drops tab and
+    // newline before parsing, so every one of them lands on evil.example.
+    const offSite = ["/\\evil.example/x", "/\\\\evil.example/x", "/\\/evil.example/x", "//evil.example/x", "/\t/evil.example/x", "/\n/evil.example/x"];
+    for (const location of offSite) {
+      expect(new URL(location, sameSite).host).toBe("evil.example");
+      expect(safeRedirectLocation(location, sameSite)).toBeUndefined();
+    }
+    // Any other control character is refused too: a header value cannot carry it, and a
+    // relative path never needs one.
+    for (const location of ["/login\r\nSet-Cookie: a=b", "/login\0", "/login\u007f"]) {
+      expect(safeRedirectLocation(location, sameSite)).toBeUndefined();
+    }
+    // An escaped backslash stays a path on this site, so it is still forwarded unchanged.
+    expect(new URL("/%5Cevil.example/x", sameSite).host).toBe("mokaair.com");
+    expect(safeRedirectLocation("/%5Cevil.example/x", sameSite)).toBe("/%5Cevil.example/x");
+    expect(safeRedirectLocation("/zh-TW/trips?tab=flights#top", sameSite)).toBe("/zh-TW/trips?tab=flights#top");
+  });
+
   it("uses the right-most proxy address and bounds forwarded header length", () => {
     expect(forwardedClientAddress(new Headers({ "x-forwarded-for": "192.0.2.1, 198.51.100.8" }))).toBe("198.51.100.8");
     expect(forwardedClientAddress(new Headers({ "x-real-ip": "203.0.113.9" }))).toBe("203.0.113.9");

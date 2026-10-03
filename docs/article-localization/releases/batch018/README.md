@@ -21,7 +21,7 @@ sitemap API 讀完 1,000＋928 筆並取得終止游標；1,928 個文章／語�
 
 最終證據封存並通過驗收後，於臺灣時間 17:34 解除本批 hold。17:34:28 的唯讀檢查確認主機仍為同一個 `38ebec88` 提交、工作目錄乾淨、無 hold，三個健康端點均為 200。其後的文件 PR 無須為此重新部署應用。
 
-資料庫快照、備份、journal、原始截圖與逐筆收據保留在版本庫外的 `C:/Users/x8120/.codex/article-localization-release/`。[evidence.json](evidence.json) 收錄每篇五語網址、發布時間、版本、正文雜湊，以及 29 份外部證據的精確路徑、SHA256 與 JSON pointers。核心 pins：
+資料庫快照、備份、journal、原始截圖與逐筆收據保留在版本庫外的 `<home>/.codex/article-localization-release/`。[evidence.json](evidence.json) 收錄每篇五語網址、發布時間、版本、正文雜湊，以及 29 份外部證據的精確路徑、SHA256 與 JSON pointers。核心 pins：
 
 | 證據 | SHA256 |
 |---|---|

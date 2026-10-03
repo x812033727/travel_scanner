@@ -4,7 +4,7 @@
 
 ## 每個語言交一份 GuideDocument
 
-寫到 scratchpad：`C:\Users\x8120\AppData\Local\Temp\claude\C--Users-x8120-mokaair--claude-worktrees-recent-ai-news-4fadd1\dcb1f5ce-dad2-44d0-8d44-f86d22d333b3\scratchpad\tr\<slug>.<locale>.json`，
+寫到 scratchpad：`<home>\AppData\Local\Temp\claude\<project-slug>\dcb1f5ce-dad2-44d0-8d44-f86d22d333b3\scratchpad\tr\<slug>.<locale>.json`，
 內容是 `{"title","description","hero","blocks","sources"}`，形狀和內容包裡的 zh-TW 完全相同：
 
 - blocks 型別、順序、heading level、table 的 header 欄數與 rows 列數都照原稿。
@@ -15,7 +15,7 @@
   （第一個是 `ai-news-2026-january-september-index`，第二個見 BRIEF 表格；打開 `apps/api/app/guides/content/<target>.json` 複製）。
 
 合併：在 `apps/api` 目錄執行
-`PYTHONIOENCODING=utf-8 /c/Users/x8120/mokaair/apps/api/.venv/Scripts/python.exe ../../docs/ai-news-2026-09-mid/merge_locale.py <slug> <locale> <檔案>`。
+`PYTHONIOENCODING=utf-8 <repo>/apps/api/.venv/Scripts/python.exe ../../docs/ai-news-2026-09-mid/merge_locale.py <slug> <locale> <檔案>`。
 印出 REFUSED 就修檔案再合併。**不要直接編輯內容包 JSON，也不要改 zh-TW。**
 
 ## 寫法
@@ -39,5 +39,5 @@
 ## 自檢
 
 全部四個語言合併、研究紀錄補好後，在 `apps/api` 執行
-`PYTHONIOENCODING=utf-8 /c/Users/x8120/mokaair/apps/api/.venv/Scripts/python.exe ../../docs/ai-news-2026-09-mid/check_article.py <slug> --full`
+`PYTHONIOENCODING=utf-8 <repo>/apps/api/.venv/Scripts/python.exe ../../docs/ai-news-2026-09-mid/check_article.py <slug> --full`
 直到 OK。

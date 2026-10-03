@@ -2,7 +2,7 @@
   {
     "type": "system",
     "subtype": "init",
-    "cwd": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn",
+    "cwd": "<home>\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn",
     "session_id": "e1529012-f7ab-4fd5-9df5-ee5e4061e8b3",
     "tools": [
       "Glob",
@@ -115,12 +115,12 @@
     "product_feedback_disabled": false,
     "uuid": "210debb0-a0ea-4bcc-a6bf-6ea41835473f",
     "memory_paths": {
-      "auto": "C:\\Users\\x8120\\.claude\\projects\\C--Users-x8120-AppData-Local-Temp-mokaair-extra-0x1y0jjn\\memory\\"
+      "auto": "<home>\\.claude\\projects\\<project-slug>\\memory\\"
     },
     "messaging_socket_path": "\\\\.\\pipe\\LOCAL\\cc-msg-2ea852fa2596f4bfd1589623fc178d35",
     "fast_mode_state": "off",
     "fast_mode_disabled_reason": "sdk_opt_in_required",
-    "powershell_path": "C:\\Users\\x8120\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe"
+    "powershell_path": "<home>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe"
   },
   {
     "type": "system",
@@ -236,7 +236,7 @@
           "id": "toolu_0195YiaVD9KmrAw4iwpxwjdJ",
           "name": "Read",
           "input": {
-            "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn\\.claude\\fixtures\\toggle.diff"
+            "file_path": "<home>\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn\\.claude\\fixtures\\toggle.diff"
           },
           "caller": {
             "type": "direct"
@@ -269,7 +269,7 @@
     "request_id": "req_011Cf3TfAq4WaYQps7C1eZkd",
     "wire_tool_inputs": {
       "toolu_0195YiaVD9KmrAw4iwpxwjdJ": {
-        "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn\\.claude\\fixtures\\toggle.diff"
+        "file_path": "<home>\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn\\.claude\\fixtures\\toggle.diff"
       }
     }
   },
@@ -280,7 +280,7 @@
       "content": [
         {
           "type": "tool_result",
-          "content": "File does not exist. Note: your current working directory is C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn.",
+          "content": "File does not exist. Note: your current working directory is <home>\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn.",
           "is_error": true,
           "tool_use_id": "toolu_0195YiaVD9KmrAw4iwpxwjdJ"
         }
@@ -290,7 +290,7 @@
     "session_id": "e1529012-f7ab-4fd5-9df5-ee5e4061e8b3",
     "uuid": "925929c6-6ccd-4c9e-bb79-9bf0d9537cad",
     "timestamp": "2026-09-14T14:06:10.552Z",
-    "tool_use_result": "Error: File does not exist. Note: your current working directory is C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn."
+    "tool_use_result": "Error: File does not exist. Note: your current working directory is <home>\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn."
   },
   {
     "type": "assistant",
@@ -305,7 +305,7 @@
           "id": "toolu_015ayMzceYXwy9r7DiBG4qt7",
           "name": "Read",
           "input": {
-            "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn\\.claude\\templates\\report.md"
+            "file_path": "<home>\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn\\.claude\\templates\\report.md"
           },
           "caller": {
             "type": "direct"
@@ -338,7 +338,7 @@
     "request_id": "req_011Cf3TfAq4WaYQps7C1eZkd",
     "wire_tool_inputs": {
       "toolu_015ayMzceYXwy9r7DiBG4qt7": {
-        "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn\\.claude\\templates\\report.md"
+        "file_path": "<home>\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn\\.claude\\templates\\report.md"
       }
     }
   },
@@ -349,7 +349,7 @@
       "content": [
         {
           "type": "tool_result",
-          "content": "File does not exist. Note: your current working directory is C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn.",
+          "content": "File does not exist. Note: your current working directory is <home>\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn.",
           "is_error": true,
           "tool_use_id": "toolu_015ayMzceYXwy9r7DiBG4qt7"
         }
@@ -359,7 +359,7 @@
     "session_id": "e1529012-f7ab-4fd5-9df5-ee5e4061e8b3",
     "uuid": "9f0b64bf-ae65-4874-b976-f3d0b83924fe",
     "timestamp": "2026-09-14T14:06:11.101Z",
-    "tool_use_result": "Error: File does not exist. Note: your current working directory is C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn."
+    "tool_use_result": "Error: File does not exist. Note: your current working directory is <home>\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn."
   },
   {
     "type": "assistant",
@@ -374,7 +374,7 @@
           "id": "toolu_017C2b5HkVTF298cyVf22NEL",
           "name": "Read",
           "input": {
-            "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn\\.claude\\references\\data.md"
+            "file_path": "<home>\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn\\.claude\\references\\data.md"
           },
           "caller": {
             "type": "direct"
@@ -407,7 +407,7 @@
     "request_id": "req_011Cf3TfAq4WaYQps7C1eZkd",
     "wire_tool_inputs": {
       "toolu_017C2b5HkVTF298cyVf22NEL": {
-        "file_path": "C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn\\.claude\\references\\data.md"
+        "file_path": "<home>\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn\\.claude\\references\\data.md"
       }
     }
   },
@@ -418,7 +418,7 @@
       "content": [
         {
           "type": "tool_result",
-          "content": "File does not exist. Note: your current working directory is C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn.",
+          "content": "File does not exist. Note: your current working directory is <home>\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn.",
           "is_error": true,
           "tool_use_id": "toolu_017C2b5HkVTF298cyVf22NEL"
         }
@@ -428,7 +428,7 @@
     "session_id": "e1529012-f7ab-4fd5-9df5-ee5e4061e8b3",
     "uuid": "63ba0f89-770d-4be2-8185-c964816edb27",
     "timestamp": "2026-09-14T14:06:11.542Z",
-    "tool_use_result": "Error: File does not exist. Note: your current working directory is C:\\Users\\x8120\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn."
+    "tool_use_result": "Error: File does not exist. Note: your current working directory is <home>\\AppData\\Local\\Temp\\mokaair-extra-0x1y0jjn."
   },
   {
     "type": "rate_limit_event",

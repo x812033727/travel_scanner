@@ -1,0 +1,268 @@
+{
+  "schema_version": 1,
+  "artifact_type": "audio-evidence-summary-not-human-acceptance",
+  "reviewed_at": "2026-10-02T16:05:28.372124+00:00",
+  "status": "two-flags-per-episode-awaiting-human-review",
+  "scope": "Chinese first two episodes; dry voice and CC timing only",
+  "human_listening": "not-performed-by-reviewer",
+  "accent_performance_acceptance": "pending",
+  "animated_video_seconds": 0,
+  "costs": {
+    "unit": "billable TTS characters, not USD",
+    "pilot_original_11_lines_characters": 118,
+    "e01_new_22_lines_characters": 277,
+    "e01_one_bounded_retake_characters": 2,
+    "e02_new_34_lines_characters": 503,
+    "total_including_pilot_and_retake_characters": 900,
+    "unique_current_lines": 67,
+    "new_tts_takes_including_pilot_and_retake": 68,
+    "provider_invoice_usd": null,
+    "note": "Actual USD and other generation/recognition costs remain in the task ledger; these character counts do not establish zero cost."
+  },
+  "episodes": [
+    {
+      "episode": 1,
+      "latest_check_run": {
+        "stage": "check-audio",
+        "at": "2026-10-02T16:01:26.817Z",
+        "lines": 33,
+        "exact": 18,
+        "alike": 4,
+        "judged": 11,
+        "cleared": 4,
+        "flagged": 2,
+        "unchecked": 0,
+        "transcribed": 1,
+        "jev_calls": 2
+      },
+      "initial_flagged_count": 6,
+      "current_flagged_count": 2,
+      "source_evidence": {
+        "state": {
+          "path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/state.json",
+          "sha256": "1daae27d03e49991005cb9caf8e8437345f029e4ac91cb6608582ba623796dfd"
+        },
+        "check": {
+          "path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/review/check.json",
+          "sha256": "5cb76be128f9168eef3c19e23ed36f6b6ec5d4d3f2d0ce15c1238299103dc64c"
+        },
+        "flags": {
+          "path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/review/check-flags.json",
+          "sha256": "32b511aa4029019231af6abae74863da4170b06b66706b7893186b8b60cabab7"
+        }
+      },
+      "editorial_preview": {
+        "duration_s": 144.86,
+        "voice_total_s": 94.55,
+        "samples": 6953280,
+        "line_count": 33,
+        "shots": 40,
+        "silent_shots": 10,
+        "actual_animated_video_seconds": 0
+      },
+      "artifacts": {
+        "master.wav": {
+          "path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/editorial-zh-TW/master.wav",
+          "sha256": "ea622b797df573509b791e180798e17595179fd95158fd6e0676d2c46a466515"
+        },
+        "measured-edit.json": {
+          "path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/editorial-zh-TW/measured-edit.json",
+          "sha256": "34438e1c64cc6535a1ad1cbee685027801483f33783093c5038941f1d9917bb6"
+        },
+        "timing-report.json": {
+          "path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/editorial-zh-TW/timing-report.json",
+          "sha256": "0d6445470b374a185b77490ad7cc297051a62c295a12479f84ddaf904bb9bbe6"
+        },
+        "zh-TW.srt": {
+          "path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/editorial-zh-TW/zh-TW.srt",
+          "sha256": "9d79f0077fddcf7fb2f4fe6cda1f5e0b4aa419d79f9c46fa7e733c973705e053"
+        },
+        "zh-TW.vtt": {
+          "path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/editorial-zh-TW/zh-TW.vtt",
+          "sha256": "5f7da2474e2c6084098c872fe92d02348698dffc172d81f373b81c43ae66fc14"
+        }
+      },
+      "flagged_lines": [
+        {
+          "line_id": "WR-E01-L022",
+          "runtime_id": "aa839f9a",
+          "speaker_id": "zhixia",
+          "intended": "姐。",
+          "first_recognizer": {
+            "heard": "這",
+            "match_kind": null,
+            "noul": 0.03
+          },
+          "second_recognizer": {
+            "by": "whisper_second_opinion.py",
+            "terms": [],
+            "heard": "借。",
+            "match_kind": null,
+            "noul": 0.08
+          },
+          "current_wav": {
+            "path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/aa839f9a.wav",
+            "sha256": "50e5803f96ccd1d9bb62cff3b9bc426f3eb9fb04edebfdea0e2c2f65c1688b1e"
+          },
+          "status": "human-review-pending-not-cleared"
+        },
+        {
+          "line_id": "WR-E01-L026",
+          "runtime_id": "8704bfd6",
+          "speaker_id": "chengchuan",
+          "intended": "棠棠，妳連我也信不過？",
+          "first_recognizer": {
+            "heard": "棠棠，你連我也信不過？",
+            "match_kind": null,
+            "noul": 0.38
+          },
+          "second_recognizer": {
+            "by": "whisper_second_opinion.py",
+            "terms": [],
+            "heard": "唐唐,你連我也信不過?",
+            "match_kind": null,
+            "noul": 0.4
+          },
+          "current_wav": {
+            "path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/audio/8704bfd6.wav",
+            "sha256": "f70b972d242fb6aa4cb5ef20f10e4a73520ebb6b1fabe2218b4b568567e0f121"
+          },
+          "status": "human-review-pending-not-cleared"
+        }
+      ]
+    },
+    {
+      "episode": 2,
+      "latest_check_run": {
+        "stage": "check-audio",
+        "at": "2026-10-02T15:59:46.415Z",
+        "lines": 34,
+        "exact": 20,
+        "alike": 6,
+        "judged": 8,
+        "cleared": 2,
+        "flagged": 2,
+        "unchecked": 0,
+        "transcribed": 0,
+        "jev_calls": 1
+      },
+      "initial_flagged_count": 4,
+      "current_flagged_count": 2,
+      "source_evidence": {
+        "state": {
+          "path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e02-voice-zh-tw/state.json",
+          "sha256": "6f740dcce2120aead8903e1fb1b0598db38943a722f4ed398e05d36cd6f339a0"
+        },
+        "check": {
+          "path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e02-voice-zh-tw/review/check.json",
+          "sha256": "ba8ecc53d421023a79cd672a4b476cc62e903ed33ae8c33116b8f6d0b35a78a6"
+        },
+        "flags": {
+          "path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e02-voice-zh-tw/review/check-flags.json",
+          "sha256": "42f98574e838daf6e3b73bd1cc1cb69b326a960314395b84d82b52c2418cfe92"
+        }
+      },
+      "editorial_preview": {
+        "duration_s": 159.05,
+        "voice_total_s": 119.49,
+        "samples": 7634400,
+        "line_count": 34,
+        "shots": 41,
+        "silent_shots": 7,
+        "actual_animated_video_seconds": 0
+      },
+      "artifacts": {
+        "master.wav": {
+          "path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e02-voice-zh-tw/editorial-zh-TW/master.wav",
+          "sha256": "6f99752b179dc74dcb96d32826f2ea6198c1a1afdf5b9ad5c7da6cd2b527d894"
+        },
+        "measured-edit.json": {
+          "path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e02-voice-zh-tw/editorial-zh-TW/measured-edit.json",
+          "sha256": "f3bf26329c8795f5bf4c033fb542703cead9da4fa5739235dffbbedde8fb37bf"
+        },
+        "timing-report.json": {
+          "path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e02-voice-zh-tw/editorial-zh-TW/timing-report.json",
+          "sha256": "050af8466aeabdab115273e82ebc0b6067a9db3d16e8c04f2e3be8a9e35d4368"
+        },
+        "zh-TW.srt": {
+          "path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e02-voice-zh-tw/editorial-zh-TW/zh-TW.srt",
+          "sha256": "166e5f2f11db3033bc365df2b17c4b2d4f314fc1bf12e0d798ffb3cd1401d023"
+        },
+        "zh-TW.vtt": {
+          "path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e02-voice-zh-tw/editorial-zh-TW/zh-TW.vtt",
+          "sha256": "21cf0c661e68b6fa4d37b4279ca54eeae7811a3731bc93d4c1bf173dceddf978"
+        }
+      },
+      "flagged_lines": [
+        {
+          "line_id": "WR-E02-L002",
+          "runtime_id": "585129ad",
+          "speaker_id": "chengchuan",
+          "intended": "棠棠，附件只是替妳省事。",
+          "first_recognizer": {
+            "heard": "堂堂，附件只是替你省事",
+            "match_kind": null,
+            "noul": 0.14
+          },
+          "second_recognizer": {
+            "by": "whisper_second_opinion.py",
+            "terms": [],
+            "heard": "堂堂,復健只是替你省事。",
+            "match_kind": null,
+            "noul": 0.04
+          },
+          "current_wav": {
+            "path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e02-voice-zh-tw/audio/585129ad.wav",
+            "sha256": "9a95a5b871b89990dc0aea206390c1b958322b592687487190b6430c272c0ef9"
+          },
+          "status": "human-review-pending-not-cleared"
+        },
+        {
+          "line_id": "WR-E02-L016",
+          "runtime_id": "fccfbc0e",
+          "speaker_id": "chengchuan",
+          "intended": "是我準備的。不是怕妳太累嗎？",
+          "first_recognizer": {
+            "heard": "是我準備的，啊不是怕你太累嗎？",
+            "match_kind": null,
+            "noul": 0.26
+          },
+          "second_recognizer": {
+            "by": "whisper_second_opinion.py",
+            "terms": [],
+            "heard": "是我準備的,他不是怕你太累嗎?",
+            "match_kind": null,
+            "noul": 0.05
+          },
+          "current_wav": {
+            "path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e02-voice-zh-tw/audio/fccfbc0e.wav",
+            "sha256": "e5158fa4abc9cce77d7ab6e0242054e8d92d6215e201aeac8b84ae3105634e02"
+          },
+          "status": "human-review-pending-not-cleared"
+        }
+      ]
+    }
+  ],
+  "bounded_retake": {
+    "episode": 1,
+    "line_id": "WR-E01-L022",
+    "runtime_id": "aa839f9a",
+    "same_text": "姐。",
+    "same_voice": "gemini:Aoede",
+    "request_cache_keys_unchanged": true,
+    "archived_receipt": {
+      "path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/retakes/aa839f9a/take-01/receipt.json",
+      "sha256": "2a9bb16e9cf8ec6f4705287343386cb18fedc17973f5e37171eb125b2c07f15c"
+    },
+    "original_wav": {
+      "path": "/workspace/mokaair-work/competition-20261002/media/wedding-reckoning-e01-voice-zh-tw/retakes/aa839f9a/take-01/audio/aa839f9a.wav",
+      "sha256": "f076793cbb16f78467f9096ce95846b28e03c3b1c671d6392b88b1be99db380b"
+    },
+    "original_take_s": 0.4,
+    "current_take_s": 0.32,
+    "other_32_wavs_match_archived_sha256": true,
+    "pilot_51s_PCM_unchanged": true,
+    "previous_master_reconstructed_hash": "91fdf6b432d84376674897d4187c4c741adf2eacf1e6b82c3db4c5167eb72e28",
+    "no_automatic_further_retake": "One bounded retake performed; current line remains flagged, no fabricated acceptance."
+  }
+}

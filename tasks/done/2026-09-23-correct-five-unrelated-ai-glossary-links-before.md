@@ -52,7 +52,7 @@ Source cached `origin/main`: `85b76908543e1fb59256a2c8ec30e9c3e8196275`. These a
 | website-www-subdomains | `833cfb0a6f8ef604e2815a721cfb6cce8c2507192448cdc1a548ef35d9c95c87` | `d92f82a01d400d5b81a9e970e07b498039f61a19` |
 | website-404-recovery | `7226237ab4f5a10b867c9fdc4a5fac99d09514714076577a9e4e4ade09c4beb5` | `63b3d13bff9a28fa74b1f37c3c7bf94577df20f6` |
 
-Evidence: `C:/Users/x8120/.codex/article-localization-release/batch026-candidate-inventory-v1/deferred-source-link-findings.json`
+Evidence: `<home>/.codex/article-localization-release/batch026-candidate-inventory-v1/deferred-source-link-findings.json`
 SHA256: `2ba5d9c8f3f3eb6ae6a98e12b1bab9f3eb5604c276536944f17b941e4a1782b0`. It includes complete surrounding paragraphs, exact old/new inline objects and pointers.
 
 The saved after-Batch023 metadata is historical evidence only. A fresh full live source comparison and primary-source review remain pending. Merge is not source publication; Batch026 does not fix or publish these articles.

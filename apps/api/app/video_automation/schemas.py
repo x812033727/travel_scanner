@@ -14,6 +14,12 @@ from pydantic import (
 )
 
 from app.ai.catalog import ModelStatus
+from app.video_automation.anime_policy import (
+    ANIME_MAX_MINUTES,
+    LONG_ANIME_POLICY,
+    AnimeRuntimeSpec,
+    runtime_problem,
+)
 from app.video_automation.models import SLIDES_IMAGE_MODEL
 from app.video_media.catalog import MEDIA_VENDORS, find_model
 
@@ -642,13 +648,16 @@ class SeriesIn(StrictModel):
     aspects: list[SeriesAspect] = Field(default_factory=list, max_length=4)
     tone: SeriesTone = "dual-male-leads-subtext"
     style_preset: StylePreset = "cinematic-3d"
-    target_minutes: int = Field(default=3, ge=1, le=STORY_MAX_MINUTES, strict=True)
+    target_minutes: int = Field(default=3, ge=1, le=ANIME_MAX_MINUTES, strict=True)
+    production_policy: Literal["long-anime-v1"] | None = None
+    runtime_spec: AnimeRuntimeSpec | None = None
+    category: Literal["anime"] | None = None
     planned_episodes: int = Field(default=100, ge=1, le=500)
     episodes_per_chapter: int = Field(default=10, ge=1, le=20)
     open_ended: bool = True
     note: str | None = Field(default=None, min_length=1, max_length=2000)
     genre: SeriesGenre = "xianxia-bonds"
-    lead: SeriesLead = "dual-male"
+    lead: SeriesLeadOut = "dual-male"
     hands_off: bool = False
     compilation: bool = False
     visual_tier: VisualTier = "clips"
@@ -680,6 +689,25 @@ class SeriesIn(StrictModel):
             raise ValueError("note must not be blank")
         if self.title is not None and not self.title:
             raise ValueError("title must not be blank")
+        long_anime = self.production_policy == LONG_ANIME_POLICY
+        if long_anime:
+            if (
+                self.kind != "series" or self.category != "anime"
+                or self.style_preset != "anime-2d" or self.genre != "custom"
+                or self.lead != "ensemble" or self.hands_off or self.compilation
+                or self.total_minutes is not None
+            ):
+                raise ValueError(
+                    "long-anime-v1 requires an anime-2d custom ensemble series, "
+                    "hands_off=false, compilation=false and no total_minutes"
+                )
+            if not self.slug or not self.title or not self.premise:
+                raise ValueError("long anime needs an explicit slug, title and premise")
+            problem = runtime_problem(self.runtime_spec, self.target_minutes)
+            if problem:
+                raise ValueError(problem)
+        elif self.runtime_spec is not None or self.category is not None or self.lead == "ensemble":
+            raise ValueError("anime category, runtime_spec and ensemble require long-anime-v1")
         if self.style_preset == EXPLAINER_PRESET and self.kind != "one-off":
             raise ValueError(
                 f'style_preset "{EXPLAINER_PRESET}" is for a one-off explainer only: '
@@ -696,6 +724,8 @@ class SeriesIn(StrictModel):
         if self.total_minutes is None and not self.premise and self.genre == "xianxia-bonds":
             raise ValueError("premise must not be blank")
         if self.kind == "story":
+            if self.target_minutes > STORY_MAX_MINUTES:
+                raise ValueError(f"a story episode is at most {STORY_MAX_MINUTES} minutes")
             if not self.hands_off or self.visual_tier != "stills" or self.compilation:
                 raise ValueError(
                     'a story series is hands_off, visual_tier "stills" and never a compilation'
@@ -707,11 +737,19 @@ class SeriesIn(StrictModel):
             if self.look is None:
                 raise ValueError("a story series needs the look every story shares")
         else:
-            if self.style_preset != EXPLAINER_PRESET and self.target_minutes > SERIES_MAX_MINUTES:
+            if (
+                not long_anime and self.style_preset != EXPLAINER_PRESET
+                and self.target_minutes > SERIES_MAX_MINUTES
+            ):
                 raise ValueError(
                     f"a drama episode is at most {SERIES_MAX_MINUTES} minutes; "
                     "a story or a one-off explainer may run longer"
                 )
+            if (
+                self.style_preset == EXPLAINER_PRESET
+                and self.target_minutes > EXPLAINER_MAX_MINUTES
+            ):
+                raise ValueError(f"an explainer is at most {EXPLAINER_MAX_MINUTES} minutes")
             if self.episodes_per_day is not None or self.look is not None:
                 raise ValueError("only a story series has a daily count and a shared look")
         if self.kind == "one-off":
@@ -842,6 +880,8 @@ class SeriesSummary(BaseModel):
     planning_only: bool = False
     category: str | None = None
     planning_spec: dict[str, object] | None = None
+    production_policy: str | None = None
+    runtime_spec: dict[str, object] | None = None
     title: str
     premise: str
     aspects: list[SeriesAspect]

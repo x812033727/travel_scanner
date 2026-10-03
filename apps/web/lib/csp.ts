@@ -4,8 +4,8 @@
  * Three policies, and which one is enforced is the whole point of this file.
  *
  * `CSP_BASELINE` is enforced from `next.config.ts` on every response, including the ones
- * `proxy.ts` never sees — its matcher skips `/api`, `/_next` and anything with a file
- * extension. It carries only directives that cannot break a page, and nothing about scripts.
+ * `proxy.ts` never sees — its matcher skips `/api`, `/_next` and anything ending in a static
+ * file extension. It carries only directives that cannot break a page, and nothing about scripts.
  *
  * `buildEnforcedContentSecurityPolicy` is enforced from `proxy.ts` on every document. It is
  * the half that decides whether a script runs at all: the nonce, `'strict-dynamic'`, and the

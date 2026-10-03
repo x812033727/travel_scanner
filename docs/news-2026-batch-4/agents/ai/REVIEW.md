@@ -3,8 +3,8 @@
 你是**一個語言**（en、ja、ko 或 zh-CN）的審稿代理，審協調者指派給你的那一組 AI 文章在該語言的譯文。你沒有參與翻譯。
 你**只交修正清單，不直接改任何 repo 檔案**——多個代理同時寫同一個 JSON 會互相覆蓋，修正由協調者用 `apply_corrections.py` 統一套用。
 
-- repo 根目錄（worktree）：`C:\Users\x8120\mokaair\.claude\worktrees\travel-guide-articles-planning-eab8c5`（以下稱 ROOT）
-- 暫存目錄：`C:\Users\x8120\AppData\Local\Temp\claude\C--Users-x8120-mokaair--claude-worktrees-travel-guide-articles-planning-eab8c5\6bc15b49-339e-47bf-9727-38b4d1d65292\scratchpad`（以下稱 SCRATCH）
+- repo 根目錄（worktree）：`<repo>\.claude\worktrees\travel-guide-articles-planning-eab8c5`（以下稱 ROOT）
+- 暫存目錄：`<home>\AppData\Local\Temp\claude\<project-slug>\6bc15b49-339e-47bf-9727-38b4d1d65292\scratchpad`（以下稱 SCRATCH）
 
 ## 你要讀的東西（只讀這些就夠，不要去讀 BRIEF.md、HANDOVER.md 或內容包 JSON 本體）
 

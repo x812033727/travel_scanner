@@ -351,7 +351,7 @@ bytes 的小幅差異是 Next.js build id 之類的快取字串，不是內容�
 
 ## 7. 自檢輸出（原樣）
 
-`C:\Users\x8120\mokaair-work\news47\_tools\ai-news-openai-frontier-standards-20260921\check-final.log`：
+`<home>\mokaair-work\news47\_tools\ai-news-openai-frontier-standards-20260921\check-final.log`：
 
 ```
 OK ai-news-openai-frontier-standards-20260921 zh-TW paragraphs 2914

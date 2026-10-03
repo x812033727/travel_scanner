@@ -111,7 +111,7 @@ the four missing locales were imported and published. Production health, final
 journals and browser acceptance passed; the deployment hold was cleared.
 
 The external delivery record is
-`C:/Users/x8120/.codex/article-localization-release/batch015-016-delivery-20260922.json`
+`<home>/.codex/article-localization-release/batch015-016-delivery-20260922.json`
 (SHA-256 `0c2e025e12c2f448491c11c7a40cd31e38346c72542bcd4e3b571eccfd6ff0af`).
 Final acceptance SHA-256 is
 `edb3149129f54ba3441a84c7c20241d8ee3fe50e076375adab6fa86680583408`.

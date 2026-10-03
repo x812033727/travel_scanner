@@ -4,6 +4,17 @@
 *.env
 !*.env.example
 .env.bak.*
+
+# Private keys and certificates: SSH (including PuTTY's .ppk), TLS and PKCS#12 bundles.
+*.pem
+*.ppk
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ecdsa*
+id_ed25519*
+
 .venv/
 __pycache__/
 *.py[cod]

@@ -2,12 +2,14 @@
 // docs/videos/<slug>/script.md, written from video.json. It holds the narrative only (the
 // scenes in order, every line with its speaker and emotion, the cast), never the shot prompts:
 // the script gate is bound to this file's hash, and the automatic prompt fixes of the look,
-// keyframe and clip stages must not unsettle an approval the owner already gave. The prompts go
+// keyframe and clip stages must not unsettle an approval the owner already gave. An explicit
+// anime silent action is narrative: its pictured action, motion and seconds are approved too. The prompts go
 // to the review page beside the lines, from `scriptScenes`.
 import { createHash } from "node:crypto";
 import { writeFileSync } from "node:fs";
 import path from "node:path";
 
+import { isAnimeAction } from "./anime-policy.mjs";
 import { characterOf, isShot, NARRATOR } from "./drama.mjs";
 import { speechHash } from "./timeline.mjs";
 
@@ -24,9 +26,16 @@ export function narrativeHash(doc) {
       scene.chapter ?? null,
       scene.template,
       (scene.lines ?? []).map((line) => [line.id, line.text, line.speaker ?? NARRATOR, line.emotion ?? null]),
+      ...(isAnimeAction(doc, scene) ? [actionOf(doc, scene)] : []),
     ]),
   });
 }
+
+const actionOf = (doc, scene) => isAnimeAction(doc, scene) ? {
+  description: scene.data?.prompt ?? "",
+  motion: scene.data?.motion ?? "",
+  seconds: scene.action_seconds,
+} : null;
 
 const speakerName = (doc, line) => characterOf(doc, line)?.name ?? null;
 
@@ -37,6 +46,7 @@ export function scriptScenes(doc) {
     chapter: scene.chapter ?? null,
     template: scene.template,
     prompt: isShot(scene) ? scene.data?.prompt ?? "" : null,
+    ...(isAnimeAction(doc, scene) ? { action: actionOf(doc, scene) } : {}),
     lines: (scene.lines ?? []).map((line) => ({
       id: line.id,
       speaker: line.speaker ?? NARRATOR,
@@ -66,6 +76,8 @@ export function screenplay(doc) {
       out.push(`### ${chapter}`, "");
     }
     out.push(`#### ${index + 1}. ${scene.id}${isShot(scene) ? "" : `（${scene.template}）`}`, "");
+    const action = actionOf(doc, scene);
+    if (action) out.push(`無台詞動作（${action.seconds} 秒）：${action.description}`, `動作：${action.motion}`, "");
     for (const line of scene.lines ?? []) {
       const name = speakerName(doc, line);
       const emotion = line.emotion ? `（${line.emotion}）` : "";

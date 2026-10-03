@@ -25,7 +25,7 @@ scope:
 
 2026-09-13 11:22:11 UTC，站主在後台發布隱私權政策韓文版：
 `POST /api/travel/admin/site-pages/privacy/publish?locale=ko`。瀏覽器顯示「請求失敗（HTTP 502）」，
-重按一次就成功。站主當天在 `hostinger2` 上收集到的證據：
+重按一次就成功。站主當天在 `<saved-session>` 上收集到的證據：
 
 - nginx error.log 有 `upstream prematurely closed connection while reading response header from
   upstream`，upstream 是 `http://127.0.0.1:8091`，也就是 web 容器。
@@ -84,7 +84,7 @@ docker compose -f docker-compose.prod.yml config --quiet
 
 ### 正式機（**沒有站主同意不要做**）
 
-主機是 `hostinger2`：nginx 1.28.3、4 個 worker，`127.0.0.1:8090` 和 `8091` 由 docker-proxy 監聽。
+主機是 `<saved-session>`：nginx 1.28.3、4 個 worker，`127.0.0.1:8090` 和 `8091` 由 docker-proxy 監聽。
 依 A → B → C → D 的順序做。**B 和 C 必須是兩次各自獨立的指令呼叫。**以前把上傳、寫 `/etc/nginx` 和
 `systemctl reload nginx` 放在同一次呼叫裡被擋過，拆開後就能執行。
 

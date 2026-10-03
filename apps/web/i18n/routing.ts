@@ -5,15 +5,34 @@ export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "zh-TW";
 export const localeCookieName = "travel_locale";
 
+/**
+ * The attributes of every write of the locale cookie: next-intl's middleware and client
+ * navigation (through `routing` below), the login proxy, the OAuth callback, and the two writes
+ * in the browser after sign-in (`localeCookieString`). `Secure` follows the session cookie's
+ * rule, production only, so a development server over plain HTTP keeps its cookies. It is left
+ * out rather than set to `false` because next-intl's browser writer prints a boolean
+ * attribute's name whatever its value.
+ */
+export function localeCookieAttributes() {
+  return {
+    path: "/",
+    maxAge: 60 * 60 * 24 * 365,
+    sameSite: "lax" as const,
+    ...(process.env.NODE_ENV === "production" ? { secure: true } : {}),
+  };
+}
+
+/** The same cookie as a `document.cookie` assignment. */
+export function localeCookieString(locale: Locale): string {
+  const { path, maxAge, sameSite, secure } = localeCookieAttributes();
+  return `${localeCookieName}=${locale}; path=${path}; max-age=${maxAge}; samesite=${sameSite}${secure ? "; secure" : ""}`;
+}
+
 export const routing = defineRouting({
   locales,
   defaultLocale,
   localePrefix: "always",
-  localeCookie: {
-    name: localeCookieName,
-    maxAge: 60 * 60 * 24 * 365,
-    sameSite: "lax",
-  },
+  localeCookie: { name: localeCookieName, ...localeCookieAttributes() },
   localeDetection: true,
   // The middleware's `Link` header would list all five locales with an unprefixed x-default
   // on every page, contradicting page metadata that names only published languages and
