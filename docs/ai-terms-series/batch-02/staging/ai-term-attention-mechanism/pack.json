@@ -1,0 +1,291 @@
+{
+  "slug": "ai-term-attention-mechanism",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "注意力機制（Attention）是什麼：模型怎麼決定要參考哪些 token",
+      "description": "注意力機制讓序列中的每個位置，依 query 與 key 的比對算出權重，再把各位置的 value 加權平均成新的表示。本文從 2014 年的翻譯對齊講到 2017 年的 Transformer，用示例說明 Q、K、V、自注意力、交叉注意力與多頭注意力，也討論計算量隨長度平方成長，以及注意力權重不能直接當成模型的理由。",
+      "hero": {
+        "src": "/guides/ai-term-attention-mechanism/hero.jpg",
+        "alt": "一排方塊代表詞，最右邊的方塊向左畫出粗細不同的弧線連到其他方塊，最粗的一條連到較遠的一個",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "注意力機制（Attention）是一種計算：處理序列中的某個位置時，替其他每個位置打相關分數，轉成總和為 1 的權重，再把各位置的內容加權平均成新的表示。「注意力」是譯名，指數學上的加權，不是人類有意識的專注。它讓相隔很遠的兩個詞在同一層就能直接比對，代價是標準做法的計算量大約隨序列長度的平方成長。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文從翻譯對齊問題講到 Q、K、V、自注意力與多頭注意力，並說明權重為何不能直接讀成「模型的理由」，以及長度與成本的關係。查證日為 2026 年 10 月 3 日；標「示例」的內容是教學編的，未實測。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "從翻譯對齊走到只靠注意力"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "2014 年 Bahdanau 等人處理機器翻譯。當時的編碼器—解碼器先把整句原文壓成一個固定長度的向量，再產生譯文；他們推測這是瓶頸，改讓解碼器每產生一個目標詞，就對原文各位置的表示打分、轉成權重，加權平均出這一步專用的上下文向量。打分用的是與翻譯模型一起訓練的小型前饋 "
+            },
+            {
+              "type": "article",
+              "text": "神經網路",
+              "kind": "life",
+              "slug": "ai-term-neural-network"
+            },
+            {
+              "type": "text",
+              "text": "。在該論文的英法翻譯實驗中，基本架構的表現隨句長明顯下滑，以最長 50 個詞的句子訓練的對齊版本，在 50 個詞以上的句子也沒有下滑，這是該論文設定下的結果。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "2017 年 Vaswani 等人指出，當時的注意力多半與遞迴網路並用，於是提出完全依賴注意力、不用遞迴與卷積的 "
+            },
+            {
+              "type": "article",
+              "text": "Transformer 架構",
+              "kind": "life",
+              "slug": "ai-term-transformer"
+            },
+            {
+              "type": "text",
+              "text": "。論文把注意力寫成：query 與一組 key-value 對對應到一個輸出，輸出是 value 的加權總和，權重由 query 與各 key 的相容性函數算出。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Q、K、V：比對、加權、混合"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "每個位置（語言模型裡通常是一個 "
+            },
+            {
+              "type": "article",
+              "text": "token",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "）用三組學來的矩陣，各轉出一個 query、key 和 value 向量。粗略的理解：query 是「我要找什麼」，key 是「我能被怎樣比對」，value 是「被選中時交出的內容」。三者都是學出來的數值，沒有人事先替詞標好主詞或代名詞。"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            "query 與每個位置的 key 做內積，得到分數。",
+            "分數除以 key 維度的平方根；原論文推測，這能避免維度大時內積過大、softmax 的梯度過小。",
+            "用 softmax 轉成非負、總和為 1 的權重。",
+            "以權重對各位置的 value 加權平均，得到新表示。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "示例（教學用，分詞僅為示意，未對真實模型量測）：「小雅把行李箱放進後車廂，因為它太重了。」處理「它」時，假設權重為行李箱 0.55、後車廂 0.25、小雅 0.10，其餘詞合計 0.10，總和為 1。「它」的新表示是各 value 的混合，行李箱占最多。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若行李箱與後車廂的權重對調，新表示就偏向後車廂，後面的層可能把「太重」連錯對象。真實模型的權重要取出才知道，且它只是混合比例，不是最後答案。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-attention-mechanism/diagram-1.svg",
+          "alt": "以「它」為 query，與小雅、行李箱、後車廂和其餘詞的 key 比對，經 softmax 得到示例權重，再加權混合 value",
+          "width": 1600,
+          "height": 900,
+          "caption": "由左到右看：先比對，再轉成權重，最後混合；權重為教學示例，不是實測。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "自注意力與交叉注意力"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩者差在 query、key、value 的來源，計算方式相同。自注意力（self-attention）的三者來自同一個序列。交叉注意力（cross-attention，原論文稱 encoder-decoder attention）的 query 來自解碼器，key 與 value 來自編碼器輸出；Bahdanau 等人的機制也是解碼器去查原文，只是用小型網路而非內積打分。解碼器的自注意力另加遮罩，只讓位置看到自己與之前的位置。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "多頭注意力在做什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "多頭注意力（multi-head attention）以各自學到的投影，把 query、key、value 轉成 h 組較小的向量，每組平行做注意力，再串接並投影回原維度。原論文基本設定是 8 個頭、每頭 64 維、模型維度 512，總計算量與單頭全維度相近；作者的理由是單頭的加權平均會抹掉不同表示子空間的資訊。"
+        },
+        {
+          "type": "paragraph",
+          "text": "但這不表示每個頭固定負責一種語意。該論文的翻譯消融實驗顯示頭數過多品質反而下降。附錄圖畫出編碼器第 5 層（共 6 層）兩個頭處理英文代名詞 its 的權重，作者說它們「似乎」與代名詞指涉有關，但這是對特定模型、層與句子的觀察，不保證換個模型會重現。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "注意力權重不等於模型的理由"
+        },
+        {
+          "type": "paragraph",
+          "text": "權重常被畫成熱力圖，像在說「模型因為這幾個詞才這樣答」。Jain 與 Wallace（NAACL 2019）檢驗過這個直覺：他們用帶注意力的雙向 LSTM，做英文的文本分類、問答與自然語言推論。結果是遞迴編碼器的注意力權重，與梯度、移除單詞後的輸出變化兩種重要性指標相關性偏弱；固定其他參數，常能另外構造出重心不同、預測卻幾乎不變的權重。他們主張標準注意力不該被當成有意義的解釋。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Wiegreffe 與 Pinter（EMNLP 2019）以雙重否定的標題回應：結論取決於「解釋」的定義，要求忠實反映運算，與只要求人能理解的合理說法，標準不同；構造反例時也不能只動權重而不顧模型其餘部分。他們的凍結權重診斷顯示，在其資料集上，對抗構造的分布不如原本學到的注意力，所以先前工作並未證明注意力無用於解釋。他們也確認，某些分類任務上的確找得到對抗分布，只是比先前做法找到的不極端。"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩篇主要研究帶注意力的遞迴模型與英文任務，沒有直接檢驗今日的大型 Transformer 語言模型，結論都不能直接外推。穩妥的說法是：權重描述某層某個頭混合內容的比例，後面還有許多層，單張權重圖不足以當成答案的因果來源。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "權重圖是線索，不是證明",
+          "text": "把熱力圖讀成「這一層這個頭混合了哪些位置」，不要讀成「模型因為這個詞才這樣答」。要檢查答案是否依賴某段輸入，就改動或移除它，看答案有沒有跟著變。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "序列變長時的成本與上下文視窗"
+        },
+        {
+          "type": "paragraph",
+          "text": "標準自注意力讓每個位置和每個位置配對，n 個 token 有 n 乘 n 個分數，長度加倍，配對數約變四倍。原論文的 Table 1（見下表，n 為序列長度，d 為表示維度）比較了幾種層：自注意力的運算量隨 n 平方成長，但任兩個位置的最長路徑是常數級，再遠的兩個詞，一層就能直接比對；遞迴層的路徑則隨 n 成長。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "層類型",
+            "每層運算量",
+            "任兩位置的最長路徑"
+          ],
+          "rows": [
+            [
+              "自注意力",
+              "O(n²·d)",
+              "O(1)"
+            ],
+            [
+              "遞迴層",
+              "O(n·d²)",
+              "O(n)"
+            ],
+            [
+              "只看鄰近 r 個位置的自注意力",
+              "O(r·n·d)",
+              "O(n/r)"
+            ]
+          ],
+          "caption": "整理自 Vaswani 等人 2017 的 Table 1；O() 表示成長量級，查證於 2026 年 10 月。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "這是上下文視窗變長會變貴的原因之一，但實作各有不同：FlashAttention 論文同樣指出自注意力的時間與記憶體複雜度對長度是平方，並提出減少 GPU 記憶體讀寫、結果與標準做法相同的「精確」演算法，所以不能只用平方公式推算速度或價格。放得下也不等於用得好，見 "
+            },
+            {
+              "type": "article",
+              "text": "上下文視窗",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "逐個 token 產生時，Hugging Face 官方文件說明可用 KV 快取：存下先前 token 的 key 與 value，每步只算新 token 的，代價是記憶體隨序列長度線性增加。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "合起來看，注意力的力量與成本都來自讓每個位置看見其他位置。想繼續讀相關名詞，可從 "
+            },
+            {
+              "type": "article",
+              "text": "AI 名詞總索引",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": " 開始。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Bahdanau、Cho、Bengio：Neural Machine Translation by Jointly Learning to Align and Translate（arXiv:1409.0473，ICLR 2015）",
+          "url": "https://arxiv.org/abs/1409.0473",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Vaswani 等：Attention Is All You Need（arXiv:1706.03762）",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Jain、Wallace：Attention is not Explanation（arXiv:1902.10186）",
+          "url": "https://arxiv.org/abs/1902.10186",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "ACL Anthology：Attention is not Explanation（NAACL 2019，N19-1357）",
+          "url": "https://aclanthology.org/N19-1357/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Wiegreffe、Pinter：Attention is not not Explanation（arXiv:1908.04626）",
+          "url": "https://arxiv.org/abs/1908.04626",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "ACL Anthology：Attention is not not Explanation（EMNLP 2019，D19-1002）",
+          "url": "https://aclanthology.org/D19-1002/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Dao 等：FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness（arXiv:2205.14135）",
+          "url": "https://arxiv.org/abs/2205.14135",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Hugging Face Transformers 官方文件：How caching works（KV 快取）",
+          "url": "https://huggingface.co/docs/transformers/en/cache_explanation",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    }
+  }
+}

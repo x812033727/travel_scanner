@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">溫度只改變怎麼抽，不改變候選清單 / How temperature reshapes next-token probabilities</title>
+<desc id="desc">同一份假想機率：牛肉湯 70%、虱目魚粥 20%、鍋燒意麵 10%。溫度 0.5 時變成約 91%、7%、2%，溫度 1 維持原樣，溫度 2 時變成約 52%、28%、20%。下方示範 top-p 0.85：由高到低累加，牛肉湯加虱目魚粥累積 90%，已達 85%，所以前兩名入選並重新配比為約 78% 與 22%，鍋燒意麵被排除。數字皆為示例。</desc>
+<rect width="1600" height="900" fill="#F7F1E8"/>
+<text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">溫度只改變怎麼抽，不改變候選清單</text>
+<text x="60" y="84" font-size="18" fill="#5C6B6B">Temperature reshapes the next-token distribution</text>
+<rect x="60" y="120" width="460" height="400" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+<text x="290.0" y="170" font-size="28" font-weight="700" fill="#102A2B" text-anchor="middle">低溫 t=0.5</text>
+<text x="290.0" y="206" font-size="20" fill="#5C6B6B" text-anchor="middle">領先者更突出</text>
+<text x="90" y="275" font-size="22" fill="#102A2B">牛肉湯</text>
+<rect x="200" y="248" width="218.4" height="40" rx="6" fill="#2F6F9F"/>
+<text x="430.4" y="275" font-size="22" font-weight="700" fill="#102A2B">91%</text>
+<text x="90" y="355" font-size="22" fill="#102A2B">虱目魚粥</text>
+<rect x="200" y="328" width="16.8" height="40" rx="6" fill="#2F6F9F"/>
+<text x="228.8" y="355" font-size="22" font-weight="700" fill="#102A2B">7%</text>
+<text x="90" y="435" font-size="22" fill="#102A2B">鍋燒意麵</text>
+<rect x="200" y="408" width="6.0" height="40" rx="6" fill="#2F6F9F"/>
+<text x="218.0" y="435" font-size="22" font-weight="700" fill="#102A2B">2%</text>
+<text x="290.0" y="490" font-size="18" fill="#5C6B6B" text-anchor="middle">分數除以 0.5，差距被放大</text>
+<rect x="570" y="120" width="460" height="400" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<text x="800.0" y="170" font-size="28" font-weight="700" fill="#102A2B" text-anchor="middle">原本 t=1</text>
+<text x="800.0" y="206" font-size="20" fill="#5C6B6B" text-anchor="middle">模型給的機率</text>
+<text x="600" y="275" font-size="22" fill="#102A2B">牛肉湯</text>
+<rect x="710" y="248" width="168.0" height="40" rx="6" fill="#0D6B68"/>
+<text x="890.0" y="275" font-size="22" font-weight="700" fill="#102A2B">70%</text>
+<text x="600" y="355" font-size="22" fill="#102A2B">虱目魚粥</text>
+<rect x="710" y="328" width="48.0" height="40" rx="6" fill="#0D6B68"/>
+<text x="770.0" y="355" font-size="22" font-weight="700" fill="#102A2B">20%</text>
+<text x="600" y="435" font-size="22" fill="#102A2B">鍋燒意麵</text>
+<rect x="710" y="408" width="24.0" height="40" rx="6" fill="#0D6B68"/>
+<text x="746.0" y="435" font-size="22" font-weight="700" fill="#102A2B">10%</text>
+<text x="800.0" y="490" font-size="18" fill="#5C6B6B" text-anchor="middle">分數除以 1，維持原樣</text>
+<rect x="1080" y="120" width="460" height="400" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+<text x="1310.0" y="170" font-size="28" font-weight="700" fill="#102A2B" text-anchor="middle">高溫 t=2</text>
+<text x="1310.0" y="206" font-size="20" fill="#5C6B6B" text-anchor="middle">差距被拉平</text>
+<text x="1110" y="275" font-size="22" fill="#102A2B">牛肉湯</text>
+<rect x="1220" y="248" width="124.8" height="40" rx="6" fill="#D97A2B"/>
+<text x="1356.8" y="275" font-size="22" font-weight="700" fill="#102A2B">52%</text>
+<text x="1110" y="355" font-size="22" fill="#102A2B">虱目魚粥</text>
+<rect x="1220" y="328" width="67.2" height="40" rx="6" fill="#D97A2B"/>
+<text x="1299.2" y="355" font-size="22" font-weight="700" fill="#102A2B">28%</text>
+<text x="1110" y="435" font-size="22" fill="#102A2B">鍋燒意麵</text>
+<rect x="1220" y="408" width="48.0" height="40" rx="6" fill="#D97A2B"/>
+<text x="1280.0" y="435" font-size="22" font-weight="700" fill="#102A2B">20%</text>
+<text x="1310.0" y="490" font-size="18" fill="#5C6B6B" text-anchor="middle">分數除以 2，差距被拉近</text>
+<rect x="60" y="550" width="1480" height="285" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+<text x="800" y="596" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">再加 top-p=0.85：由高到低累加機率，累積達到 85% 就停</text>
+<rect x="250" y="640" width="770" height="70" fill="#0D6B68"/>
+<text x="635.0" y="669" font-size="22" fill="#FFFFFF" text-anchor="middle">牛肉湯</text>
+<text x="635.0" y="697" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">70%</text>
+<rect x="1020" y="640" width="220" height="70" fill="#2F6F9F"/>
+<text x="1130.0" y="669" font-size="20" fill="#FFFFFF" text-anchor="middle">虱目魚粥</text>
+<text x="1130.0" y="697" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">20%</text>
+<rect x="1240" y="640" width="110" height="70" fill="#D5DADA"/>
+<text x="1295.0" y="669" font-size="18" fill="#5C6B6B" text-anchor="middle">鍋燒意麵</text>
+<text x="1295.0" y="697" font-size="18" font-weight="700" fill="#5C6B6B" text-anchor="middle">10%</text>
+<rect x="250" y="640" width="1100" height="70" fill="none" stroke="#102A2B" stroke-width="3"/>
+<path d="M 1185 626 L 1185 718" fill="none" stroke="#B8442D" stroke-width="4"/>
+<text x="1185" y="622" font-size="18" font-weight="700" fill="#B8442D" text-anchor="middle">85%</text>
+<text x="1020" y="744" font-size="18" fill="#5C6B6B" text-anchor="middle">累積 70%</text>
+<text x="1240" y="744" font-size="18" fill="#5C6B6B" text-anchor="middle">累積 90%</text>
+<path d="M 250 766 L 1240 766 M 250 756 L 250 776 M 1240 756 L 1240 776" fill="none" stroke="#0D6B68" stroke-width="4"/>
+<text x="745.0" y="812" font-size="22" fill="#102A2B" text-anchor="middle">入選：重新配比後牛肉湯約 78%、虱目魚粥約 22%</text>
+<path d="M 1250 766 L 1350 766 M 1250 756 L 1250 776 M 1350 756 L 1350 776" fill="none" stroke="#B8442D" stroke-width="4"/>
+<text x="1300.0" y="812" font-size="22" fill="#B8442D" text-anchor="middle">排除</text>
+<text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+</svg>

@@ -1,0 +1,106 @@
+{
+  "slug": "ai-term-synthetic-data",
+  "status": "verified",
+  "checked_on": "2026-10-03",
+  "sources": [
+    {
+      "url": "https://arxiv.org/abs/2212.10560",
+      "title": "Wang et al.：Self-Instruct: Aligning Language Models with Self-Generated Instructions",
+      "access": "web open (curl -sSL, 200); abs page and PDF read via pdftotext, 2026-10-03",
+      "claims": [
+        "原論文流程：175 個種子任務、每步抽 8 條指令（6 人工＋2 模型）、分類任務 output-first、ROUGE-L 低於 0.7 才收進任務池、最後微調原模型",
+        "產生 52,445 條指令與 82,439 個實例",
+        "200 條抽樣的人工標記：指令有效 92%、輸入合適 79%、輸出正確 58%、全部有效 54%（一位作者標註）",
+        "Super-NaturalInstructions 零樣本評測 ROUGE-L 比原模型高 33.1 分",
+        "限制：增益可能偏向常見任務、擔心放大偏見"
+      ]
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-024-07566-y",
+      "title": "Shumailov et al.：AI models collapse when trained on recursively generated data（Nature 631, 2024）",
+      "access": "web open (curl -sSL nature.com, 200); full article HTML text, 2026-10-03",
+      "claims": [
+        "不加區分地使用模型生成內容會讓原始分佈尾端消失（model collapse）",
+        "語言模型實驗：微調 1.25 億參數模型，不保留原始資料時困惑度上升；每代保留 10% 原始資料時只有輕微退化",
+        "需要保留原始資料來源與人類產生的資料；來源追蹤在規模上不明確"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2404.01413",
+      "title": "Gerstgrasser et al.：Is Model Collapse Inevitable? Breaking the Curse of Recursion by Accumulating Real and Synthetic Data",
+      "access": "web open (curl -sSL, 200); abs page and PDF read via pdftotext, 2026-10-03",
+      "claims": [
+        "replace 與 accumulate 兩種設定；小型語言模型在 TinyStories 上 replace 使測試交叉熵上升、accumulate 持平或更低",
+        "VAE 與擴散模型有類似結果；線性模型證明 accumulate 時誤差有上界",
+        "作者指出 model collapse 一詞在文獻中指至少四種現象；未測試溫度 0 的確定性生成與人工過濾"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2505.19046",
+      "title": "Barzilai & Shamir：When Models Don't Collapse: On the Consistency of Iterative MLE",
+      "access": "web open (curl -sSL, 200); abstract only, 2026-10-03",
+      "claims": [
+        "最大概似估計理論下，標準假設時即使真實資料占比趨近於零也能避免崩潰；缺少額外假設時，原始資料仍在也可能任意快崩潰"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2503.03150",
+      "title": "Schaeffer et al.：Position: Model Collapse Does Not Mean What You Think",
+      "access": "web open (curl -sSL, 200); abstract only, 2026-10-03",
+      "claims": [
+        "立場論文：模型崩潰研究含八種不同且有時衝突的定義"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2406.07515",
+      "title": "Feng et al.：Beyond Model Collapse: Scaling Up with Synthesized Data Requires Verification",
+      "access": "web open (curl -sSL, 200); abstract only, 2026-10-03",
+      "claims": [
+        "矩陣特徵值與新聞摘要兩個任務中，驗證器（即使不完美）可避免崩潰"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2404.07503",
+      "title": "Liu et al.：Best Practices and Lessons Learned on Synthetic Data（COLM 2024）",
+      "access": "web open (curl -sSL, 200); abs page and PDF read via pdftotext, 2026-10-03",
+      "claims": [
+        "合成資料定義：由演算法、生成模型或模擬產生、模仿真實資料特徵，而非直接由人產生",
+        "需要確保事實性、擬真度與無偏誤"
+      ]
+    },
+    {
+      "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-188.pdf",
+      "title": "NIST SP 800-188：De-Identifying Government Datasets: Techniques and Governance（2023-09）",
+      "access": "web open (curl -sSL, 200 PDF); pdftotext full text; csrc.nist.gov/pubs/sp/800/188/final also 200, 2026-10-03",
+      "claims": [
+        "部分合成與完全合成的定義（第 4.4 節、表 3）",
+        "完全合成資料不是零揭露風險；模型與其產生的資料都可能洩漏可再識別資訊；深度學習模型是否記住訓練資料難以量化（第 4.4.4、4.4.6 節）",
+        "建議在資料本身標示合成（SYNTHETIC PERSON）；分析者應能用原始資料驗證發現",
+        "差分隱私可控制洩漏量"
+      ]
+    },
+    {
+      "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-sharing/privacy-enhancing-technologies/what-pets-are-there/synthetic-data/",
+      "title": "英國 ICO：Synthetic data（Privacy-enhancing technologies 指引）",
+      "access": "web open (curl -sSL, 200); HTML to text, 2026-10-03",
+      "claims": [
+        "合成資料是否匿名取決於能否從中推回原本個人資訊",
+        "擬真度愈高效用愈大、愈可能揭露；部分生成方法易受模型反演、成員推論、屬性揭露攻擊",
+        "差分隱私與離群值抑制可緩解但可能降低效用；原始資料偏誤會被帶進合成資料",
+        "頁面註明指引因 Data (Use and Access) Act 修訂正在審查中"
+      ]
+    }
+  ],
+  "aliases": [
+    "synthetic data",
+    "合成数据（簡體，不收）",
+    "人造資料",
+    "生成資料",
+    "synthetic dataset",
+    "模型崩潰",
+    "model collapse"
+  ],
+  "existing_overlap": "ai-term-knowledge-distillation（教師輸出當訓練資料）、ai-term-supervised-fine-tuning（指令與答案配對）、ai-term-pretraining（網路語料混入生成文字）已有專文，本文只連結並說明資料面的關係；ai-glossary-50-terms 與 ai-hallucination-fact-check 不在 links，未連。",
+  "running_text_characters": 2541,
+  "notes": "訓練用途為主、隱私用途一節。客服問答為原創假設示例，標明未實測，300 與 30 是舉例數字。論文數字一律寫出設定（模型大小、資料集性質、替換或累積、單一標註者抽樣 200 筆）。未寫模型名、價格、截止日期、排行榜分數。與 brief 差異：Nature 論文的 LLM 實驗另有保留 10% 原始資料的設定，兩個設定都寫。Barzilai-Shamir、Schaeffer、Feng 三篇只讀到摘要，正文只寫摘要明講的內容。未查台灣法規，正文明說引用的是美國與英國文件。圖解與 hero 為原創 SVG。brief 的渲染指令（完整版 chrome）會讓 PNG 下緣約 88 px 變白，自查改用 chromium_headless_shell。"
+}

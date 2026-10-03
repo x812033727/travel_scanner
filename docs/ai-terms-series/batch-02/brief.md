@@ -43,10 +43,10 @@ cd apps/api && .venv/bin/python -m app.guides.pack_cli ingest \
 SVG 渲染看圖（字壓線、超框、疊字）：
 
 ```bash
-cd apps/api && CHROMIUM_BIN=/opt/pw-browsers/chromium-1194/chrome-linux/chrome .venv/bin/python -c "from pathlib import Path; from app.guides.pack_ingest import render_svg; render_svg(Path('../../docs/ai-terms-series/batch-02/staging/<slug>/diagram-1.svg'), Path('/tmp/<slug>-d1.png'))"
+cd apps/api && .venv/bin/python -c "from pathlib import Path; from app.guides.pack_ingest import render_svg; render_svg(Path('../../docs/ai-terms-series/batch-02/staging/<slug>/diagram-1.svg'), Path('/tmp/<slug>-d1.png'))"
 ```
 
-PNG 放 `/tmp`，不要放進工作區。
+PNG 放 `/tmp`，不要放進工作區。不要設 `CHROMIUM_BIN` 指到完整版 `chrome`：它會把 PNG 底部約 88 px 截成白邊；預設的 headless shell 才是完整 1600×900。
 
 ## 交付順序
 

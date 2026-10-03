@@ -1,0 +1,15 @@
+{
+  "title": "注意力機制（Attention）是什麼：模型怎麼決定要參考哪些 token",
+  "description": "注意力機制讓序列中的每個位置，依 query 與 key 的比對算出權重，再把各位置的 value 加權平均成新的表示。本文從 2014 年的翻譯對齊講到 2017 年的 Transformer，用示例說明 Q、K、V、自注意力、交叉注意力與多頭注意力，也討論計算量隨長度平方成長，以及注意力權重不能直接當成模型的理由。",
+  "hero_alt": "一排方塊代表詞，最右邊的方塊向左畫出粗細不同的弧線連到其他方塊，最粗的一條連到較遠的一個",
+  "sources": [
+    {"title": "Bahdanau、Cho、Bengio：Neural Machine Translation by Jointly Learning to Align and Translate（arXiv:1409.0473，ICLR 2015）", "url": "https://arxiv.org/abs/1409.0473"},
+    {"title": "Vaswani 等：Attention Is All You Need（arXiv:1706.03762）", "url": "https://arxiv.org/abs/1706.03762"},
+    {"title": "Jain、Wallace：Attention is not Explanation（arXiv:1902.10186）", "url": "https://arxiv.org/abs/1902.10186"},
+    {"title": "ACL Anthology：Attention is not Explanation（NAACL 2019，N19-1357）", "url": "https://aclanthology.org/N19-1357/"},
+    {"title": "Wiegreffe、Pinter：Attention is not not Explanation（arXiv:1908.04626）", "url": "https://arxiv.org/abs/1908.04626"},
+    {"title": "ACL Anthology：Attention is not not Explanation（EMNLP 2019，D19-1002）", "url": "https://aclanthology.org/D19-1002/"},
+    {"title": "Dao 等：FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness（arXiv:2205.14135）", "url": "https://arxiv.org/abs/2205.14135"},
+    {"title": "Hugging Face Transformers 官方文件：How caching works（KV 快取）", "url": "https://huggingface.co/docs/transformers/en/cache_explanation"}
+  ]
+}

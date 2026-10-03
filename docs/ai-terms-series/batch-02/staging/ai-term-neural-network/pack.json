@@ -1,0 +1,328 @@
+{
+  "slug": "ai-term-neural-network",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "神經網路（Neural Network）是什麼：由層與權重組成、能從資料學習的函數",
+      "description": "神經網路是由多層簡單單元組成的函數：每個單元做加權加總，再經非線性轉換，權重由資料調整。本文用雙開關走廊燈的手算示例，說明前向計算、損失、反向傳播與梯度下降，區分訓練與推論，並釐清參數數量、神經元數量與能力的差別，以及它與深度學習、Transformer 的關係。",
+      "hero": {
+        "src": "/guides/ai-term-neural-network/hero.jpg",
+        "alt": "三排圓點以粗細不同的線連成網路，旁邊有一顆球沿山谷滾向最低點",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "神經網路是"
+            },
+            {
+              "type": "article",
+              "text": "機器學習",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            },
+            {
+              "type": "text",
+              "text": "裡的一種模型：它把輸入一層一層轉成輸出，每個單元先做加權加總，再經過一道非線性轉換。網路能做什麼，取決於一組叫權重的數字；這些數字不是人逐一寫入，而是用資料反覆調整出來的。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇用「兩個開關控制一盞燈」的小任務，手算一次前向計算與一步權重更新，說明訓練與使用為什麼是兩個階段，並交代生物神經元的比喻只用到哪裡。示例的數字是手算的教學設定，沒有實際訓練過。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "單元只做兩件事：加權加總與轉換"
+        },
+        {
+          "type": "paragraph",
+          "text": "依 Google 機器學習術語表，神經元做兩步：把每個輸入乘上權重再加總，再把總和交給激活函數（activation function）。偏差是另一個由訓練決定的常數。單元排成層：輸入層、輸出層，以及夾在中間、值不直接對外的隱藏層。"
+        },
+        {
+          "type": "paragraph",
+          "text": "生物神經元的比喻要放對位置。Rosenblatt 把感知器（perceptron）說成假設的神經系統或機器，目的是說明智慧系統的基本性質，不深陷特定生物體常屬未知的條件；Google 術語表則說這種單元「模仿」腦中神經元的行為。但兩邊給的運作定義，都只是加總後再做一次轉換。像不像真實神經元要靠神經科學證據回答，本文只把它當命名的由來。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "從感知器到多層網路：中間層會不會學"
+        },
+        {
+          "type": "paragraph",
+          "text": "Rosenblatt 的感知器靠獎懲調整單元的「值」，他自己也寫下限制：辨認刺激之間的關係會變得極難。Rumelhart 等人指出，感知器中間那層的連線是事先固定的，不算會學的隱藏單元；他們的反向傳播讓隱藏單元自己學出需要的特徵。LeCun 等人補充，這個做法在 1970 到 1980 年代被多組人各自發現。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "為什麼一定要有非線性轉換"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 教材示範過：加了隱藏層、但單元只做加權加總，整個網路仍是線性的，因為線性接線性還是線性，多加幾層也學不到非線性關係。所以每個單元後面要接非線性的激活函數。"
+        },
+        {
+          "type": "paragraph",
+          "text": "常見的有 sigmoid、tanh 與 ReLU，ReLU 是輸入小於 0 就輸出 0，否則原樣輸出。LeCun 等人 2015 年寫到 ReLU 在多層網路通常學得較快，Google 教材至今仍建議先試 ReLU。Cybenko（1989）證明，單一隱藏層、連續 sigmoid 型非線性、有限個單元的前饋網路，能把單位超立方體上的連續函數逼近到任意精度；這是「能表示」，訓練找不找得到是另一回事。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "示例：兩個開關控制一盞燈"
+        },
+        {
+          "type": "paragraph",
+          "text": "示例（未實測，手算）：走廊兩端各有開關 a 與 b，往上記 1、往下記 0，恰好一個往上燈才亮。(1,0) 與 (0,1) 要輸出 1，(0,0) 與 (1,1) 要輸出 0。單一單元做不到：把兩個該亮的組合相加、兩個該滅的組合相加，會得到互相矛盾的不等式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "網路採 2 個輸入、2 個隱藏神經元、1 個輸出，共 9 個參數。手挑權重：隱藏一的權重 1、1，偏差 0；隱藏二的權重 1、1，偏差 −1，兩者都用 ReLU；輸出的權重 1 與 −2，偏差 0，不加激活函數。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "(0,0)：隱藏值 0 與 0，輸出 0，燈滅。",
+            "(1,0) 或 (0,1)：隱藏值 1 與 0，輸出 1，燈亮。",
+            "(1,1)：隱藏值 2 與 1，輸出 2 − 2 = 0，燈滅。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "權重是手挑的；真實訓練從隨機權重開始，答案也不只一組。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "訓練：損失、反向傳播與梯度下降"
+        },
+        {
+          "type": "paragraph",
+          "text": "訓練是反覆執行四步："
+        },
+        {
+          "type": "list",
+          "items": [
+            "前向計算：用目前權重算出預測。",
+            "損失：量預測離答案多遠；Rumelhart 等人用 E = ½ Σ (y − d)²，y 是輸出、d 是想要的值。",
+            "反向傳播：用連鎖律由輸出往回算，每個權重變動一點，損失會增減多少（梯度）；白話是問每個權重該為誤差負多少責任。",
+            "梯度下降：把權重往梯度的反方向改一小步，步幅由學習率決定；學習率是人設的超參數。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "接上例（示例，手算）：輸出層權重為 1 與 −1.2、偏差 0，輸入 (1,1) 時隱藏值 2 與 1，輸出 0.8，想要 0，損失 0.32。損失對輸出的變化率是 0.8，乘上各自流過的隱藏值，兩個權重的梯度是 1.6 與 0.8，偏差的梯度是 0.8。學習率取 0.1，權重變成 0.84 與 −1.28、偏差 −0.08，輸出降到 0.32。隱藏層的權重，則要把誤差乘上輸出權重、再看 ReLU 有沒有啟動，一路往回傳，這就是「反向」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "但同一步也牽動別的輸入：(0,1) 原本輸出 1，現在變成 0.76。權重被所有輸入共用，改一筆會牽動其他筆，所以要看一批樣本的平均梯度、小步重複許多輪；LeCun 等人說的隨機梯度下降，每次只用一小批樣本估計梯度。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "訓練完成後權重固定，使用時只做前向計算，不算損失、不改權重。Google 術語表說，訓練是決定權重，"
+            },
+            {
+              "type": "article",
+              "text": "推論",
+              "kind": "life",
+              "slug": "ai-term-inference"
+            },
+            {
+              "type": "text",
+              "text": "（inference）是用學好的權重做預測。之後若要更新權重，是另一次訓練。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-neural-network/diagram-1.svg",
+          "alt": "上方是訓練迴圈：前向計算、損失、反向傳播、梯度下降並重複；中間是權重與偏差；下方是推論，只讀取權重做前向計算",
+          "width": 1600,
+          "height": 900,
+          "caption": "訓練反覆改寫中間的權重，推論只讀取它。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "參數、神經元與能力是三件事"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "上例只有 3 個會計算的單元，卻有 9 個參數：每個隱藏神經元 2 個權重加 1 個偏差，輸出單元也是 2 加 1。隱藏層若加到 100 個神經元，參數就是 100 × (2 + 1) + (100 + 1) = 401。Google 術語表把參數定義為訓練中學到的權重與偏差，學習率則是人給的超參數；詳見"
+            },
+            {
+              "type": "article",
+              "text": "模型參數",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "參數多不代表能力強，還要看架構、訓練資料與損失的設計。LeCun 等人的檢驗，是用訓練時沒看過的測試集量泛化能力；Cybenko 的結果也只說夠大的網路能表示，不保證訓練找得到。看到神經元、參數、層數，應再問：在你的任務、沒見過的資料上表現如何。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "名詞",
+            "示例裡",
+            "常見誤解"
+          ],
+          "rows": [
+            [
+              "神經元",
+              "會計算的單元",
+              "等同生物神經細胞"
+            ],
+            [
+              "權重與偏差",
+              "9 個要學的數字",
+              "人手寫的規則"
+            ],
+            [
+              "激活函數",
+              "隱藏層後的 ReLU",
+              "可有可無"
+            ],
+            [
+              "學習率",
+              "0.1，由人設定",
+              "網路自己學出來"
+            ]
+          ],
+          "caption": "概念對照；來源查證於 2026 年 10 月。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "和深度學習、Transformer 的關係"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 術語表稱隱藏層多於一層的神經網路為深度模型；LeCun 等人把深度學習定義為疊起多個簡單非線性模組、由資料學出各層表示的方法。簡單說，神經網路是結構，"
+            },
+            {
+              "type": "article",
+              "text": "深度學習",
+              "kind": "life",
+              "slug": "ai-term-deep-learning"
+            },
+            {
+              "type": "text",
+              "text": "是用多層結構學出表示的做法。各家界線略有不同：Google 定義神經網路「至少一個隱藏層」，中間層連線固定的原始感知器多半不算，讀時先確認對方定義。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Transformer 是網路的一種排法。Vaswani 等人（2017）稱它為完全建立在注意力機制上的網路架構，每層除了自注意力，還有由兩個線性轉換夾一個 ReLU 組成的前饋網路，正是前面的加權加總加非線性。後來的語言模型是否採用、怎麼改，要看各自的技術文件。所以神經網路是上位類別，聊天機器人只是一種用途，分類照片的小網路也是。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "訓練時答對，不代表學會了",
+          "text": "示例只有四種輸入，列舉得完；真實任務列不完，網路可能只是記住了訓練資料。要用沒參與訓練的測試資料另外量，再換不同來源的資料測，才知道它對新輸入可不可靠。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "想看其他名詞，可以從"
+            },
+            {
+              "type": "article",
+              "text": "AI 名詞總索引",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "找起。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Rosenblatt 1958：The Perceptron（Psychological Review 65(6)，感知器原始論文）",
+          "url": "https://doi.org/10.1037/h0042519",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Rumelhart、Hinton、Williams 1986：Learning representations by back-propagating errors（Nature 323）",
+          "url": "https://www.nature.com/articles/323533a0",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "LeCun、Bengio、Hinton 2015：Deep learning（Nature 521）",
+          "url": "https://www.nature.com/articles/nature14539",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Cybenko 1989：Approximation by superpositions of a sigmoidal function（Math. Control Signals Systems 2）",
+          "url": "https://link.springer.com/article/10.1007/BF02551274",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Vaswani 等人 2017：Attention Is All You Need（arXiv:1706.03762，Transformer 原始論文）",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Crash Course：Neural networks（單元總覽）",
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Crash Course：Nodes and hidden layers",
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks/nodes-hidden-layers",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Crash Course：Activation functions",
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks/activation-functions",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Crash Course：Training using backpropagation",
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks/backpropagation",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Glossary（neural network、neuron、weight、parameter、backpropagation 等條目）",
+          "url": "https://developers.google.com/machine-learning/glossary",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    }
+  }
+}

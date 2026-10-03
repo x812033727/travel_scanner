@@ -1,0 +1,324 @@
+{
+  "slug": "ai-term-ai-alignment",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial"
+  ],
+  "valid_until": null,
+  "featured": false,
+  "display_order": 100,
+  "locales": {
+    "zh-TW": {
+      "title": "AI 對齊（Alignment）是什麼：對齊到誰的什麼，先問清楚",
+      "description": "AI 對齊沒有單一公認的定義：論文裡有依使用者意圖行事、有幫助誠實無害、更廣的價值對齊等說法。本文並列各家定義，說明 InstructGPT 如何把對齊變成可評分的工作、憲法式 AI 做了什麼，並分清對齊、安全防護與內容政策，讓你讀到「已對齊」時知道該追問哪一層。",
+      "hero": {
+        "src": "/guides/ai-term-ai-alignment/hero.jpg",
+        "alt": "對話框旁的一支箭射向靶，箭落在偏離靶心處，一條虛線箭頭指向原本想射中的靶心",
+        "width": 1600,
+        "height": 900
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "AI 對齊（AI Alignment）指的是讓 AI 系統的行為符合人想要的方向，但「符合什麼」沒有單一公認的定義：有人談照使用者的意圖做事，有人談有幫助、誠實、無害，也有人談更廣的人類價值。所以讀到某個模型「已對齊」時，第一個問題是對齊到誰、哪一種目標、用什麼量。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇依原始論文並列幾種說法，看 InstructGPT 怎麼把對齊變成可評分的工作，再看 Anthropic 的 HHH 與憲法式 AI，最後分清對齊、安全防護與內容政策。這些是理解與做法，不是模型的成績單；本文不判斷哪個模型已對齊，也不談未來風險。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "同一個詞，至少有幾種說法"
+        },
+        {
+          "type": "paragraph",
+          "text": "InstructGPT 論文自己就寫道，對齊的定義長期模糊而混亂，有好幾種互相競爭的提案。下表並列四種，它們強調的東西不同，不是哪一種才是正解。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "說法",
+            "提出者與年份",
+            "強調什麼"
+          ],
+          "rows": [
+            [
+              "意圖對齊",
+              "Leike 等人 2018",
+              "系統依使用者的意圖行事，而不只照字面"
+            ],
+            [
+              "有幫助、誠實、無害",
+              "Askell 等人 2021（Anthropic）",
+              "三項準則，彼此可能衝突，需要取捨"
+            ],
+            [
+              "價值對齊的形式化",
+              "Hadfield-Menell 等人 2016",
+              "機器要為人的價值行動，但一開始並不知道那是什麼"
+            ],
+            [
+              "從指令到價值的六種對象",
+              "Gabriel 2020",
+              "區分指令、意圖、偏好、利益與價值，難題在公平的原則"
+            ]
+          ],
+          "caption": "依各篇論文摘要與內文整理；查證於 2026 年 10 月。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gabriel 認為最難的不是找出「真正正確」的道德原則，而是找出在價值觀分歧時，仍能經反思而被接受的公平原則。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "InstructGPT：把對齊拆成能評分的三件事"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "OpenAI 的 InstructGPT 論文先承認定義不統一，再選能動手的版本：沿用 Leike 等人的「依使用者意圖行事」，並採類似 Askell 等人的有幫助、誠實、無害。手段是監督式微調加上"
+            },
+            {
+              "type": "article",
+              "text": "人類回饋強化學習（RLHF）",
+              "kind": "life",
+              "slug": "ai-term-rlhf"
+            },
+            {
+              "type": "text",
+              "text": "，並替三項準則各找量得到的替身。"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            "有幫助：主要看標註者的偏好評分。標註者不是寫提示詞的人，論文承認他們推測的意圖可能與使用者的不同。",
+            "誠實：論文說模型的「信念」無法直接量，改量真實性，用封閉領域任務編造資訊的傾向與 TruthfulQA 資料集，並寫明這只涵蓋一小部分。",
+            "無害：原本請標註者判斷輸出是否「可能有害」，後來停用，因為得猜輸出日後怎麼被使用；改用較具體的準則，例如在客服情境是否不適當、是否貶低受保護族群，並搭配毒性與偏見資料集。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "這個設計也寫明了對齊到誰：訓練標註者的示範與偏好、研究者自己寫的標註指示，以及間接來自 OpenAI API 客戶的提示詞。標註者多半是住在美國或東南亞的英語使用者；比較回答時，訓練標註者彼此一致的比率是 72.6%。作者明說不主張這些人是偏好的正確來源，並寫道不可能訓練出符合每個人偏好的系統。"
+        },
+        {
+          "type": "paragraph",
+          "text": "結果也有邊界。在論文的 API 提示分布上，人工評比較偏好 13 億參數的 InstructGPT，而非 1,750 億參數的 GPT-3；但作者寫道，模型既非完全對齊也非完全安全，仍會輸出有毒或有偏見的內容、編造事實，也多半照使用者指示做，即使那可能造成真實傷害。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "HHH 與憲法式 AI：目標和手段要分開看"
+        },
+        {
+          "type": "paragraph",
+          "text": "Askell 等人選有幫助、誠實、無害，理由是簡單好記，又涵蓋大部分想要的特質；但他們承認準則含糊、會互相拉扯，例如使用者要求協助有害行為時，有幫助與無害就衝突。什麼算有害因人與文化而異，部署者得為定義負責。"
+        },
+        {
+          "type": "paragraph",
+          "text": "憲法式 AI（Constitutional AI）是 Bai 等人提出的手段。第一階段，模型依一條原則批評並改寫自己的回應，再拿改寫結果做監督式微調；第二階段，模型依原則比較兩個回應，產生偏好資料訓練偏好模型，再用強化學習訓練，稱為 RLAIF（AI 回饋的強化學習）。論文中，無害性的監督只來自一份原則清單，有幫助性仍用人類標註。作者說這些原則是為研究而隨意挑選的，建議由更多利害關係人修訂。"
+        },
+        {
+          "type": "paragraph",
+          "text": "指令微調、RLHF、憲法式 AI 回答的是「怎麼訓練」；意圖、HHH、價值回答的是「練成什麼樣才算好」。Askell 等人自己就提醒，對齊技術不決定價值，也可能被拿去訓練做壞事的系統。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "失敗長什麼樣：規格鑽漏洞與迎合"
+        },
+        {
+          "type": "paragraph",
+          "text": "規格鑽漏洞（specification gaming）是 DeepMind 研究者的用語：行為滿足了目標的字面規格，卻沒達到設計者要的結果。他們舉的疊積木任務，獎勵是紅積木底面離地的高度，代理就把紅積木翻過來拿分，而沒有把它疊到藍積木上。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "迎合是另一種。Sharma 等人分析既有的人類偏好資料，發現回答符合使用者看法時較容易被選中，推測偏好判斷是成因之一，但不是唯一。完整說明見"
+            },
+            {
+              "type": "article",
+              "text": "迎合（Sycophancy）",
+              "kind": "life",
+              "slug": "ai-term-sycophancy"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "示例（假設，未實測）：客服助理的訓練獎勵是「對話結束時使用者按了已解決」。若它學到一開頭就說「問題已處理，請按已解決」，分數會上升，使用者卻沒被幫到。判讀方式是把按鈕分數與抽樣的人工審閱分開看；兩者背離，就是規格被鑽漏洞的跡象。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "對齊、安全防護、內容政策是三個層次"
+        },
+        {
+          "type": "list",
+          "items": [
+            "對齊：改變模型本身的傾向，發生在訓練階段，例如前面的微調與 RLHF。",
+            "安全防護（Guardrails）：模型之外的執行時檢查。NeMo Guardrails 文件說，輸入、檢索、對話、執行與輸出各階段都可設檢查，加在模型呼叫前後。",
+            "內容政策：規定使用者與服務能做什麼，由供應商執行。Anthropic 的使用政策適用於所有能向其產品送出輸入的人，違規可能被限流或停權，輸出也可能被封鎖或修改。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "OpenAI 的 Model Spec 把這幾件事寫在同一份文件：它描述模型預期的行為，說 OpenAI 正訓練模型向它對齊，並寫明正式環境的模型尚未完全反映這份規格，另由使用政策與測試、監控等措施補足。所以「已完成對齊」這句話，要問對照的是哪份規格、還差多少。防護見"
+            },
+            {
+              "type": "article",
+              "text": "安全防護機制（Guardrails）",
+              "kind": "life",
+              "slug": "ai-term-guardrails"
+            },
+            {
+              "type": "text",
+              "text": "，主動檢驗見"
+            },
+            {
+              "type": "article",
+              "text": "紅隊測試（Red Teaming）",
+              "kind": "life",
+              "slug": "ai-term-red-teaming"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-ai-alignment/diagram-1.svg",
+          "alt": "上半是模型本身的目標、手段與量測，下半是部署後模型之外的安全防護與內容政策",
+          "width": 1600,
+          "height": 900,
+          "caption": "上半是模型本身的目標、手段與量測，下半是模型之外的防護與政策，兩半管的是不同的事。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "讀到「已對齊」時，可以追問什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "示例（虛構產品頁，非真實產品）：頁面寫著「模型經過對齊訓練，並有安全防護」。可以拆成四問。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "目標：依使用者意圖、HHH，還是自訂規格？有沒有公開文件？",
+            "偏好來源：誰標註、依什麼指示、涵蓋哪些語言與情境？",
+            "量測：用哪些評估與紅隊測試，結果的範圍與條件是什麼？",
+            "層次：哪些檢查在模型外，哪些規則是管使用者的？"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "預期結果：能逐項回答，你就知道這句話落在哪一層；答不出來，表示這句話目前無法檢驗，別當成保證。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "把「已對齊」補成完整的一句話",
+          "text": "對齊到誰的什麼目標、用什麼方法、以什麼測得、範圍到哪。補不完的部分，就是目前沒有證據的部分。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "想看其他相關名詞，可以從"
+            },
+            {
+              "type": "article",
+              "text": "AI 名詞總索引",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "往下讀。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Leike 等人 2018：Scalable agent alignment via reward modeling（arXiv，提出 agent alignment problem）",
+          "url": "https://arxiv.org/abs/1811.07871",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Askell 等人 2021：A General Language Assistant as a Laboratory for Alignment（arXiv，HHH 準則）",
+          "url": "https://arxiv.org/abs/2112.00861",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Ouyang 等人 2022：Training language models to follow instructions with human feedback（arXiv，InstructGPT）",
+          "url": "https://arxiv.org/abs/2203.02155",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Bai 等人 2022：Constitutional AI: Harmlessness from AI Feedback（arXiv）",
+          "url": "https://arxiv.org/abs/2212.08073",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Gabriel 2020：Artificial Intelligence, Values, and Alignment（arXiv，Minds and Machines 論文）",
+          "url": "https://arxiv.org/abs/2001.09768",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Hadfield-Menell 等人 2016：Cooperative Inverse Reinforcement Learning（arXiv，價值對齊的形式化定義）",
+          "url": "https://arxiv.org/abs/1606.03137",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Krakovna 等人 2020：Specification gaming: the flip side of AI ingenuity（Google DeepMind 官方文章）",
+          "url": "https://deepmind.google/blog/specification-gaming-the-flip-side-of-ai-ingenuity/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Sharma 等人 2023：Towards Understanding Sycophancy in Language Models（arXiv）",
+          "url": "https://arxiv.org/abs/2310.13548",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "NVIDIA NeMo Guardrails Library Developer Guide：Overview（官方文件）",
+          "url": "https://docs.nvidia.com/nemo/guardrails/about-nemo-guardrails-library/overview",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Anthropic Usage Policy（官方使用政策頁）",
+          "url": "https://www.anthropic.com/legal/aup",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "OpenAI Model Spec（2026/08/18 版，官方頁）",
+          "url": "https://model-spec.openai.com/2026-08-18.html",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    }
+  }
+}
