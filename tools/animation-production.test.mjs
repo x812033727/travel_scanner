@@ -545,6 +545,17 @@ test("preflight flags the Veo Lite negative-prompt trap, the production profile'
   assert.ok(assembleNote);
   assert.match(assembleNote.what, /assemble 不查/);
   assert.ok(assemble.findings.some((finding) => finding.level === "refuse" && /frames\/manifest\.json/.test(finding.what)), "render has not run");
+
+  // The same clip brought in by `clips import` is named as imported, and nothing asks for its checks to be run by hand.
+  assert.deepEqual(kept.imported, []);
+  const clipsFile = path.join(external.box.workdir, "clips", "manifest.json");
+  const saved = JSON.parse(readFileSync(clipsFile, "utf8"));
+  Object.assign(saved.shots.opening, { provider: "hailuo-web", plan: "pro", credits: 60, imported_at: "2026-10-04T00:00:00.000Z" });
+  writeFileSync(clipsFile, JSON.stringify(saved));
+  const brought = await preflight({ slug: external.box.slug, root: external.box.root, workdir: external.box.work });
+  assert.deepEqual([brought.external, brought.imported, brought.kept.clips], [["opening"], ["opening"], ["opening"]]);
+  assert.ok(brought.findings.some((finding) => finding.level === "note" && /clips import 匯入的片段：opening/.test(finding.what)));
+  assert.ok(!brought.findings.some((finding) => /不是這條線買的片段/.test(finding.what)));
 });
 
 test("the run report adds the ledger up by kind and stage, reads takes and utilisation, and counts the five statuses apart", async () => {
@@ -644,11 +655,26 @@ test("the run report adds the ledger up by kind and stage, reads takes and utili
   assert.match(cli.stdout, /# fixture-drama post-mortem（/);
   const text = run("run_report.mjs", "--slug", box.slug, "--root", box.root, "--workdir", box.work);
   assert.equal(text.status, 0, text.stderr);
-  assert.match(text.stdout, /外部片段（ledger 沒有它的 job）：opening/);
+  assert.match(text.stdout, /外部片段（clips import 匯入的，或手放、ledger 沒有它的 job）：opening（clips\/opening-ext\.mp4，4 s，手放）/);
   const json = run("run_report.mjs", "--slug", box.slug, "--root", box.root, "--workdir", box.work, "--json");
   assert.equal(JSON.parse(json.stdout).status.clips.needs_review, 1);
   assert.equal(run("run_report.mjs", "--slug", "nowhere", "--root", box.root, "--workdir", box.work).status, 2);
   assert.equal(run("run_report.mjs").status, 2);
+
+  // The same clip brought in by `clips import`: the ledger books it, apart from what the line bought.
+  const clipsFile = path.join(box.workdir, "clips", "manifest.json");
+  const saved = JSON.parse(readFileSync(clipsFile, "utf8"));
+  Object.assign(saved.shots.opening, { provider: "hailuo-web", plan: "pro", credits: 60, imported_at: at });
+  writeFileSync(clipsFile, JSON.stringify(saved));
+  writeFileSync(path.join(box.workdir, "media", "ledger.json"), JSON.stringify({ entries: [...entries, { at, stage: "clips", kind: "clip", id: "opening", provider: "hailuo-web", plan: "pro", credits: 60, seconds: 4, cost_usd: 0.5, file: "clips/opening-ext.mp4", sha256: SHA(MP4("external")), status: "imported" }], totals: {} }));
+  const brought = await runReport({ slug: box.slug, root: box.root, workdir: box.work });
+  assert.deepEqual(brought.imported, { clips: 1, clip_seconds: 4, credits: 60, usd: 0.5 });
+  assert.equal(brought.totals.clip_seconds, 32, "the ledger's total counts the imported seconds");
+  assert.deepEqual(brought.bought.clips, { count: 4, seconds: 28, usd: 4.2 }, "what the line bought does not");
+  assert.deepEqual(brought.spend.by_kind.clip, { count: 4, usd: 4.2, seconds: 28 });
+  assert.deepEqual([brought.utilisation.ledger_s, brought.waste.clip_seconds_bought], [28, 28]);
+  assert.deepEqual(brought.external, [{ id: "opening", file: "clips/opening-ext.mp4", seconds: 4, provider: "hailuo-web", route: "hailuo-web", plan: "pro", credits: 60, imported: true }]);
+  assert.match(renderMarkdown(brought, new Date(at)), /\| 外部片段 \| 1 \| 1 支／4 秒 \| 0\.50（方案點數：60 點，方案 pro） \| — \| — \|/);
 });
 
 test("an empty work directory reports zero spend and no takes instead of failing", async () => {

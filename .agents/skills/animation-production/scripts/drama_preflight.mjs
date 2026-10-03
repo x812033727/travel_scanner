@@ -54,7 +54,7 @@ async function rubricBuilders() {
 }
 
 /**
- * { slug, workdir, stage, next_paid, steps, gates, hashes, bindings, kept, needs_review, external,
+ * { slug, workdir, stage, next_paid, steps, gates, hashes, bindings, kept, needs_review, external, imported,
  *   stop, findings: [{ stage, level: refuse|waste|note, exit, what, fix, usd?, judge_calls? }], judge, exit_code }
  */
 export async function preflight({ slug, root, workdir: workdirFlag, env = process.env, home, stage: wanted = null, model: modelFlag = null }) {
@@ -113,8 +113,12 @@ export async function preflight({ slug, root, workdir: workdirFlag, env = proces
     keyframes: Object.entries(keyframes?.shots ?? {}).filter(([, shot]) => shot?.needs_review).map(([id, shot]) => ({ id, problems: shot.problems ?? [] })),
     clips: Object.entries(clips?.shots ?? {}).filter(([, shot]) => shot?.needs_review).map(([id, shot]) => ({ id, problems: shot.problems ?? [] })),
   };
-  const ledgerClipIds = new Set(ledger.entries.filter((entry) => entry.kind === "clip" && entry.status !== "cut").map((entry) => entry.id));
-  const external = Object.entries(clips?.shots ?? {}).filter(([id, shot]) => shot?.file && !shot.still && !shot.source && (shot.provider === "external" || !ledgerClipIds.has(id))).map(([id]) => id);
+  const ledgerClipIds = new Set(ledger.entries.filter((entry) => entry.kind === "clip" && entry.status !== "cut" && entry.status !== "imported").map((entry) => entry.id));
+  // Clips this line did not buy: `clips import` brought them in (imported_at) and checked them; the rest were put there by hand.
+  const outside = Object.entries(clips?.shots ?? {}).filter(([id, shot]) => shot?.file && !shot.still && !shot.source && (shot.imported_at || shot.provider === "external" || !ledgerClipIds.has(id)));
+  const external = outside.map(([id]) => id);
+  const imported = outside.filter(([, shot]) => shot.imported_at).map(([id]) => id);
+  const handPlaced = external.filter((id) => !imported.includes(id));
   const stop = stopRequested(workdir);
   const imagePrice = PRICES[DEFAULT_IMAGE_MODEL].usd_per_image;
   const judgePrice = PRICES.judge.usd_per_call;
@@ -220,7 +224,8 @@ export async function preflight({ slug, root, workdir: workdirFlag, env = proces
     if (needsReview.clips.length) add("note", null, `上次沒有 take 過的鏡頭：${needsReview.clips.map((shot) => `${shot.id}（${shot.problems.join("; ") || "沒寫原因"}）`).join("、")}`, "先改 motion / camera 再跑；不改提示重跑只會再買兩個 take");
     reportLongQuestions(longQuestions(rubrics.clipRubric, newClips), "clip");
     if (rubrics.error) add("note", null, `讀不到 clips.mjs 的 rubric（${rubrics.error}）`, "judge 題目長度這一項沒檢查");
-    if (external.length) add("note", null, `clips/manifest.json 裡有不是這條線買的片段（ledger 沒有它們的 job）：${external.join(", ")}`, `外部素材（Hailuo 網頁、Kling）今天只能手放（references/stage-preconditions.md 最後一節）：assemble 只驗格數、第 0 格對 keyframe 的 PSNR（≥ ${KEYFRAME_MIN_PSNR}）、fit 的停格 > 60 格與響度；黑格、freezedetect、模型自己切鏡只在 clips 的 qc.mjs 跑，外部片段要自己用 blackdetectArgs／freezedetectArgs／sceneCutArgs 跑一次；ledger 和 run_report 的錢不含它們`);
+    if (imported.length) add("note", null, `clips import 匯入的片段：${imported.join(", ")}`, "它們過了跟買來的 take 同一組 ffmpeg 檢查，judge 只有匯入時帶 --judge 才問過；clips 會留用它們，clips --force 會把它們重買");
+    if (handPlaced.length) add("note", null, `clips/manifest.json 裡有不是這條線買的片段（ledger 沒有它們的 job）：${handPlaced.join(", ")}`, `手放的外部素材沒有經過 clips 的 qc.mjs（黑格、freezedetect、模型自己切鏡），assemble 只驗格數、第 0 格對 keyframe 的 PSNR（≥ ${KEYFRAME_MIN_PSNR}）、fit 的停格 > 60 格與響度，ledger 和 run_report 的錢也不含它們：改用 clips import 重新帶進來（references/stage-preconditions.md 最後一節）`);
     stopNote();
     rateNote();
   } else if (stage === "music") {
@@ -256,7 +261,7 @@ export async function preflight({ slug, root, workdir: workdirFlag, env = proces
       }
     }
     if (doc.music && !bindings.music.bound) add("refuse", EXIT.usage, bindings.music.present ? "music/manifest.json 是舊的（mix_hash 不同）" : "沒有 music/manifest.json", "先跑 music");
-    if (external.length) add("note", null, `外部片段 ${external.join(", ")} 在這裡只受第 0 格 PSNR（≥ ${KEYFRAME_MIN_PSNR}，對 keyframe）、fit 的停格 > 60 格與響度檢查；黑格、freezedetect、模型自己切鏡 assemble 不查（只有 clips 的 qc.mjs 查）`, "外部片段的第一格要就是這個鏡頭的 keyframe（image-to-video 用那張圖起手），不然 checks.json 會把它列成問題；黑格／凍格／切鏡要在匯入前自己用 qc.mjs 的 args 跑過（references/stage-preconditions.md 最後一節第 4 步）");
+    if (handPlaced.length) add("note", null, `手放的外部片段 ${handPlaced.join(", ")} 在這裡只受第 0 格 PSNR（≥ ${KEYFRAME_MIN_PSNR}，對 keyframe）、fit 的停格 > 60 格與響度檢查；黑格、freezedetect、模型自己切鏡 assemble 不查（只有 clips 的 qc.mjs 查）`, "外部片段的第一格要就是這個鏡頭的 keyframe（image-to-video 用那張圖起手），不然 checks.json 會把它列成問題；用 clips import 重新帶進來，黑格／凍格／切鏡才查得到（references/stage-preconditions.md 最後一節）");
     add("note", null, "assemble 在本機跑 ffmpeg，不花錢；只有 branding 和 final 核准在後面", "跑完看 checks.json 的 problems");
     stopNote();
   } else {
@@ -283,6 +288,7 @@ export async function preflight({ slug, root, workdir: workdirFlag, env = proces
     new: { characters: newCharacters, keyframes: newKeyframes.map((scene) => scene.id), clips: newClips.map((scene) => scene.id) },
     needs_review: needsReview,
     external,
+    imported,
     stop,
     lint: { errors: lint.errors.length, warnings: lint.warnings.length },
     judge: { ...judge, per_hour: JUDGE_CALLS_PER_HOUR, monthly: JUDGE_MONTHLY_BUDGET },

@@ -12,9 +12,9 @@
 | 計價 | 每秒：`usd_per_second × seconds`，解析度不改價（工具規定，`apps/api/app/video_media/meter.py` `usd_for`） | 月費換積分，積分月底歸零；用完可加購 | 會員月費換積分；開發者 API 另賣資源包，兩邊不互通 |
 | 片段模型 | `apps/api/app/video_media/catalog.py` 列的：Omni 1.1 Flash、Veo 3.1／Fast／Lite、MiniMax-H3 | H3、H3 Max、Hailuo 2.0／2.3／1.0、Sora 2、Veo 3.1 | Kling 3.0／3.0 Omni、Motion Control |
 | 首尾格與參考圖 | 首格必帶；參考圖最多 4（`MAX_REFERENCES`，`apps/api/app/video_media/schemas.py`；目錄寫 H3 9 張、Pro Image 14 張是供應商上限，不是我們送得出的）；Lite 不收參考圖 | 首格與末格；參考上傳區「參考 (0/12)」 | 首尾格；元素參考（Omni） |
-| 品檢 | ffmpeg（`tools/video/media/qc.mjs`）＋ judge 自動跑，不過換 seed，最多 2 次（`MAX_CLIP_TAKES`，`tools/video/media/clips.mjs`） | 沒有：你自己看 | 沒有：你自己看 |
-| 快取、帳本、預算 | `media/cache.json`（同一請求不付兩次）、`media/ledger.json`（每筆花費）、伺服器的每月預算與單支上限 | 都沒有：自己記（§1.2 的紀錄欄） | 都沒有：自己記 |
-| 進產線 | 直接 | 下載後手工寫 `clips/manifest.json`（§3） | 同左 |
+| 品檢 | ffmpeg（`tools/video/media/qc.mjs`）＋ judge 自動跑，不過換 seed，最多 2 次（`MAX_CLIP_TAKES`，`tools/video/media/clips.mjs`） | 站方沒有；`clips import` 匯入時跑同一組 ffmpeg 檢查，judge 要帶 `--judge` | 同左 |
+| 快取、帳本、預算 | `media/cache.json`（同一請求不付兩次）、`media/ledger.json`（每筆花費）、伺服器的每月預算與單支上限 | 沒有快取與伺服器預算；`clips import` 把點數與秒數記進帳本（`status: "imported"`） | 同左 |
+| 進產線 | 直接 | 下載後 `clips import`（§3） | 同左 |
 | 浮水印、商用 | 無浮水印；依各供應商條款 | 免費下載有浮水印；Standard 以上沒有，且保留 IP 含商用（條款，2026-10-03 讀） | 付費方案去浮水印、「Generated content is for commercial use」（會員頁，2026-10-03 讀） |
 | 併發 | 伺服器每小時 240 次圖片送出、360 次 judge（`apps/api/app/video_media/admin_api.py`）；每月 3,000 片段秒、1,500 張圖、3,000 次 judge、60 首音樂（預設，`apps/api/app/video_automation/models.py`） | 方案表：8–12 個排隊、1–2 個執行；條款另寫付費「最多五個同時」 | 付費方案：排隊不限、fast-track |
 | 今天能用在 | 任何漫劇；有 production profile 的作品只能用 profile 指定的模型 | **沒有** production profile 的漫劇（§3：profile 會拒絕非指定的供應商） | 同左；repo 沒有 Kling adapter（`tasks/open/2026-09-26-video-drama-kling-provider-card.md`，P3） |
@@ -70,7 +70,7 @@
 2. 把這一鏡通過 judge 的關鍵影格（`keyframes/manifest.json` 的 `file`，sha256 一起抄下來）上傳成首格；需要末格就上傳 `end_frame.file`。表單用檔案選擇器時，在頁面 JS 裡用 `DataTransfer` 塞 `File` 再觸發 `change` 可以免掉它；base64 分段貼、每段核 SHA-256，一次貼大段會悄悄錯字。
 3. 選模型、解析度、時長（H3 整數 4–15；用 `clips --dry-run` 印的需求秒數，不要照 Lite 的固定 8）、比例 16:9；提示詞貼 `--dry-run` 印出的 clip prompt（`motion` ＋ `camera` ＋ `look.motion`，`tools/video/media/clips.mjs` `clipPrompt`）。表單有沒有負面提示欄位沒有核對；沒有就照 MiniMax adapter 的做法，在最後接 `Avoid: …`。
 4. 送出前記積分餘額，送出後再記一次：扣了多少就是這一鏡的價。1–2 個執行、8–12 個排隊，一集 60 鏡要分批等；Max 用完積分後的無限生成不含 H3（哪些模型見上表 Max 列），進較慢的隊列，一支多久沒有量過。
-5. 下載（付費無浮水印），之後照 `stage-preconditions.md` 最後一節（唯一的一份程序）：`ffprobe`、自己跑 `qc.mjs` 的黑格／凍格／切鏡／PSNR、寫 manifest 條目、記 `clips/<shot>-ext<n>.external.json`（欄位和試作的 `docs/videos/series-plans/competition-20261002/cost-ledger.csv` 同一套：`shot_id`、provider/model、`operation_id`、`input_sha256`、attempt、billed units、estimated/actual、accepted/rejected 原因；例子在那一節）。
+5. 下載（付費無浮水印），之後 `clips import --provider hailuo-web --plan <方案> --credits <第 4 步的差額>`（程序只寫在 `stage-preconditions.md` 最後一節）：它跑 `qc.mjs` 的黑格／凍格／切鏡／PSNR、寫 manifest 條目、記帳本。站方的任務 id、送出與完成時間、提示詞的雜湊工具不記，要留就寫進 `--note`，或照試作的 `docs/videos/series-plans/competition-20261002/cost-ledger.csv` 那套欄位另外記。
 
 內建瀏覽器的已知限制（2026-09 實測）：pane 隱藏時頁面是 `visibilityState: hidden`，`IntersectionObserver` 與 `requestAnimationFrame` 都不會觸發，懶載入的區塊看起來像「沒有」；pane 最多 9 個分頁；多代理同時操作會觸發站方的機器人牆，過一小時就好——那是工具故障，不是頁面的結論。
 
@@ -130,7 +130,7 @@ platform.minimax.io 的 Video Packages（2026-10-03 讀）：Standard US$1,000�
 | Kling 標準每鏡一支 5 秒（≤ 5 s 的鏡；2,400 積分＝Pro 的 80%，`SKILL.md` 三條路線表與 `episode_estimate.mjs` 用這個） | Pro 標價 29.60、之後月價 26.05、年繳 19.54 | 10.02 | 30–40 | 未驗證；一集 60 鏡 Pro 剛好夠一次 take，兩次不夠 |
 | Kling 開發者 API | 50.40–67.20 | 10.02 | 60–77 | 未驗證 |
 
-重拍不在表裡：伺服器路線每鏡最多 2 次（工具規定）；試作實際是 S01 送 4 次、S03 送 2 次、0 段被接受（量到的，`production-run-20261003.md`），而 `budget-and-launch.md` 的規矩是三份成功素材都不合格就重新設計鏡頭，不靠重抽。外部路線的重拍上限只有你自己的紀律，先在紀錄 JSON 裡寫下這一鏡允許幾次。操作時間也不在表裡：每段上傳、設定、等隊列、下載、記錄、手工 import，60 鏡的人工時數沒有量過。
+重拍不在表裡：伺服器路線每鏡最多 2 次（工具規定）；試作實際是 S01 送 4 次、S03 送 2 次、0 段被接受（量到的，`production-run-20261003.md`），而 `budget-and-launch.md` 的規矩是三份成功素材都不合格就重新設計鏡頭，不靠重抽。外部路線的重拍上限只有你自己的紀律，先在紀錄 JSON 裡寫下這一鏡允許幾次。操作時間也不在表裡：每段上傳、設定、等隊列、下載、`clips import`，60 鏡的人工時數沒有量過。
 
 **訂閱什麼時候贏過每秒計價**：只有一個條件——這個月**真的用掉的秒數** ≥ 月費 ÷ 伺服器的每秒價。沒用完的積分月底歸零，所以分母是用掉的，不是方案給的。
 
@@ -144,36 +144,30 @@ platform.minimax.io 的 Video Packages（2026-10-03 讀）：Standard US$1,000�
 | Kling Pro 標價（未驗證） | 37 | 375 | 0.099 | 不可能 | 285 | 247 |
 | Kling Ultra 標價（未驗證） | 180 | 3,250 | 0.055 | 2,250 | 1,385 | 1,200 |
 
-結論（編輯判斷，建立在上面的數字）：在產線現在的 Lite 價（0.08／秒 1080p）之下，**沒有任何訂閱靠積分贏**；訂閱贏的是（a）對 Omni 或 H3 API 的價，且每個月把積分用到八九成；（b）Max 積分用完後 Hailuo 2.3 1080p 的無限生成，量大且等得起隊列時；（c）Pro 以上無限的圖片生成，前提是關鍵影格能進 `keyframes/manifest.json`——今天沒有 import，storyboard 關卡綁的是工具畫的那份；（d）伺服器沒有 adapter（Kling）或主機地區被擋（`docs/videos/DRAMA.md` 的地區一節）。代價在 §3：沒有快取、judge、帳本與 retake，每一段都要手工進產線。
+結論（編輯判斷，建立在上面的數字）：在產線現在的 Lite 價（0.08／秒 1080p）之下，**沒有任何訂閱靠積分贏**；訂閱贏的是（a）對 Omni 或 H3 API 的價，且每個月把積分用到八九成；（b）Max 積分用完後 Hailuo 2.3 1080p 的無限生成，量大且等得起隊列時；（c）Pro 以上無限的圖片生成，前提是關鍵影格能進 `keyframes/manifest.json`——今天沒有 import，storyboard 關卡綁的是工具畫的那份；（d）伺服器沒有 adapter（Kling）或主機地區被擋（`docs/videos/DRAMA.md` 的地區一節）。代價在 §3：沒有快取與自動 retake、judge 要另外問，每一段都要自己下載再 `clips import`。
 
-## 3. 外部素材今天怎麼進產線
+## 3. 外部素材怎麼進產線
 
-`clips`（`tools/video/media/clips.mjs`）寫 `clips/manifest.json`，`assemble`（`tools/video/assemble/cli.mjs`、`tools/video/assemble/drama.mjs` `layoutDrama`）與 `status`（`tools/video/core/state.mjs` `pipelineStatus`）只讀這一份。沒有 `clips import` 指令；今天是手工，**程序只寫在 `stage-preconditions.md` 最後一節**（放檔、`ffprobe`、自己跑 `qc.mjs` 的黑格／凍格／切鏡／PSNR、manifest 條目的例子、`external.json` 的例子、`clipsHash` 重算、`assemble` 真正查什麼）。要記得的只有兩句：外部素材的首格要用通過 judge 的那張關鍵影格，不然 `assemble` 的第 0 格 PSNR 會擋；`assemble` 不跑 `clips` 階段的 `clipVerdict`（黑格、凍格、模型自己切鏡），那些要自己跑。
+用 `clips import`（2026-10-04 落地；程序**只寫在 `stage-preconditions.md` 最後一節**，設計在 `docs/videos/DRAMA.md`「外面做的片段」）：
 
-**有 production profile 的作品今天進不去**：`productionClipProblems`（`tools/video/core/lint.mjs`）要求 manifest 頂層 `clip.provider/model/resolution` 等於 profile 的（十部動畫是 gemini／veo-3.1-lite-generate-preview／1080p，`docs/videos/series-plans/production-20261001/profile.json`），每鏡要 `qc.ok === true` 且 `qc.metrics.duration` 蓋過整段台詞，`productionClipSizeProblem` 要求量到的 1920×1080（H3 的 2K 不是 1920×1080——實際像素沒有讀——要先縮成 1920×1080 再 probe；profile 收不收縮過的 2K，站主沒決定過）。`status` 與 `assemble` 都呼叫它。把 Hailuo 的素材標成 Veo Lite 是作假，不做；所以外部路線今天只用於沒有 profile 的漫劇，或等站主改 profile（那會換掉核准的設計雜湊）。
+`node tools/video/cli.mjs clips import --slug <SLUG> --shot <id> --file <mp4> --provider hailuo-web|kling-mcp|external [--plan <plan id>] [--credits N] [--usd N] [--note "…"] [--judge] [--force]`
 
-**產線不會知道的事**：
+它查 `clips` 的前提（timeline 與 keyframes 是現在的、這一鏡的關鍵影格通過、storyboard 核准），把檔案複製成 `clips/<shot>-import-<n>.mp4`，跑買來的 take 同一組 ffmpeg 檢查（`tools/video/media/qc.mjs` 的 `clipVerdict`），寫 `clips`（`tools/video/media/clips.mjs`）自己寫的那種 manifest 條目加 `provider`、`plan`、`credits`、`imported_at`，在帳本記一筆 `status: "imported"`；`assemble`（`tools/video/assemble/cli.mjs`）與 `status`（`tools/video/core/state.mjs` `pipelineStatus`）照常讀那份 manifest。要記得的兩句沒變：外部素材的首格要用通過 judge 的那張關鍵影格，不然第 0 格 PSNR 會讓它 `needs_review`（`--force` 才留下）；judge 預設不問，`--judge` 才上傳媒體庫問 `clipRubric`（US$0.01）。
 
-| 哪裡 | 不知道什麼 | 後果 |
+**有 production profile 的作品進不去**：`clips import` 以結束碼 3 拒絕。`productionClipProblems`（`tools/video/core/lint.mjs`）要求 manifest 頂層 `clip.provider/model/resolution` 等於 profile 的（十部動畫是 gemini／veo-3.1-lite-generate-preview／1080p，`docs/videos/series-plans/production-20261001/profile.json`），每鏡要 `qc.ok === true` 且 `qc.metrics.duration` 蓋過整段台詞，`productionClipSizeProblem` 要求量到的 1920×1080（H3 的 2K 不是 1920×1080——實際像素沒有讀——要先縮成 1920×1080 再 probe；profile 收不收縮過的 2K，站主沒決定過）。`status` 與 `assemble` 都呼叫它。把 Hailuo 的素材標成 Veo Lite 是作假，不做；所以外部路線只用於沒有 profile 的漫劇，或等站主改 profile（那會換掉核准的設計雜湊）；讓 profile 能點名外部路線是第二張票，站主決定。
+
+**匯入之後，產線知道與還不知道的事**：
+
+| 哪裡 | 知道 | 還不知道 |
 | --- | --- | --- |
-| `media/ledger.json` | 這一段的錢（`bookJob` 只為伺服器的 job 寫；`bookReuse` 只記 `source` 的切用） | `media-status --slug`、`clips` 的「this video has spent」、`capProblem` 的單支上限、本 skill 的 `run_report.mjs` 都少算它 |
-| `media/cache.json` | 沒有這一段的請求鍵 | `--force` 或 manifest 的雜湊一變，`clips` 會在伺服器重買這一鏡；外部檔不會從快取回來 |
-| 伺服器 | 沒有 job、沒進每月預算、媒體庫沒有這個檔 | judge 看不到它（`Stage.judge` 要媒體庫裡的 sha256）；後台的 `media_usd`／`clip_seconds` 少算 |
-| `state.json` | `recordStage` 沒跑 | 階段牆鐘、`generated` 計數沒有它 |
-| judge | 沒打分 | `needs_review: false` 是你的斷言；§1.3 的 Kling 與 Hailuo 都沒有自動品檢 |
-| manifest 頂層 `clip` | 下一次 `clips` 會改成伺服器的選擇 | 有 profile 的作品把整份 manifest 當舊的丟掉重買（`modelCurrent`）；沒有 profile 的保留 |
+| `media/ledger.json` | 一筆 `status: "imported"`：路線、方案、點數、秒數；`totals.clip_seconds` 與 `capProblem` 的單支上限都算它，`importedTotals` 另外加總 | 沒給 `--usd` 就是 US$0：`media-status --slug` 與 `clips` 的「this video has spent」少算點數的錢；廠商的實際帳單 |
+| `clips/manifest.json` | `provider`、`plan`、`credits`、`imported_at`、量到的 `qc`、問過才有的 `judge` | 站方的任務 id、提示詞、送出與完成時間（要留就寫 `--note`） |
+| `status`、`clips --dry-run`、`run_report.mjs`、`drama_preflight.mjs` | 把匯入的與買的分開列 | — |
+| `media/cache.json` | — | 沒有這一段的請求鍵：`clips --force` 會在伺服器重買這一鏡 |
+| 伺服器 | `--judge` 時片段進媒體庫、那一次 judge 進每月預算 | 沒有 job；片段秒數沒進每月預算；後台的 `media_usd`／`clip_seconds` 少算 |
+| manifest 頂層 `clip` | — | 仍是伺服器的選擇（下一次 `clips` 會寫）；匯入的鏡頭看自己條目的 `provider` |
 
-**提議的工具**——票已開：`tasks/open/2026-10-03-clips-import-bring-a-clip-made.md`，契約以票的 Definition of done 為準，下面照抄，免得實作的人看到兩種：`node tools/video/cli.mjs clips import --slug <SLUG> --shot <id> --file <mp4> --provider hailuo-web|kling-mcp|external [--plan <plan id>] [--credits N] [--usd N] [--note "…"] [--judge] [--force]`。
-
-- 前置同 `clips`：storyboard 沒核准就拒絕（3）；timeline 不現行 2；這一鏡必須是 clip 鏡（不是 still、不是 `source`）。
-- 複製檔案到 `clips/<shot>-import-<n>.mp4`，`ffprobe`（時長、解析度、fps），跑買來的 take 同一組 QC（`qc.mjs`：黑格、凍格、切鏡、首格對這一鏡關鍵影格的 PSNR）；`--judge` 才上傳媒體庫叫 `clipRubric`（記 US$0.01 一筆 `kind: "judge"`）。
-- 首格 PSNR 低於 `keyframe_min_psnr`（22，`qc.mjs`）的片段跟失敗的 take 一樣 `needs_review: true` 帶原因；`--force` 留下它並記 note。
-- 寫 manifest 項目：`clips` 寫的形狀（`file`、`sha256`、`seconds`、`frames`、`needed_s`、`first_frame`、`qc`、`judge`、`takes`、`needs_review`）加平鋪的 `provider`、`plan`、`credits`、`imported_at`；重算 `clips_hash`，`recordStage(workdir, "clips", …)`。
-- 帳本一筆：`{ stage: "clips", kind: "clip", id, provider, plan, credits, cost_usd: --usd 或 0, status: "imported" }`；票要 `ledgerTotals`（`tools/video/media/ledger.mjs`）算進它的秒數，`clips` 的 dry run 與本 skill 的 `run_report.mjs` 把匯入的跟買的分開列。`--usd` 沒給時票不替你把點數換成美元：點數對美元在 §1.2、§1.3 的表與 `episode_estimate.mjs` 的 PRICES，報帳時自己乘。
-- 有 profile 的作品：票不改 profile；`productionClipProblems` 放行外部來源要 profile 先有欄位（站主決定），是第二張票。
-- 結束碼：票只定了 storyboard 的 3；其餘照 `tools/video/cli.mjs` 的 `EXIT` 慣例（0 成功、1 品檢沒過、2 順序不對、3 要站主、5 ffmpeg 沒裝）。
-
-今天本 skill 的腳本認外部片段的方法是 manifest 的 `provider: "external"`，或帳本沒有這一鏡的 job（`run_report.mjs`、`drama_preflight.mjs` 各自的 `external` 篩選），路線與點數從 `stage-preconditions.md` 那個例子的 `external` 區塊讀。指令落地後 `provider` 會是 `hailuo-web`／`kling-mcp`、帳本會有 `status: "imported"` 那一筆，兩支腳本要改成讀它——票的 Definition of done 點名 `run_report.mjs`，`drama_preflight.mjs` 一起改。
+`--usd` 沒給時工具不替你把點數換成美元：點數對美元在 §1.2、§1.3 的表與 `episode_estimate.mjs` 的 PRICES，報帳時自己乘。指令落地前手放的片段（manifest 條目 `provider: "external"`，或帳本沒有它的 job）`run_report.mjs` 與 `drama_preflight.mjs` 仍認得，列成「手放」；用 `clips import` 重新帶進來一次，它們才有 QC 與帳本。
 
 ## 4. 權利與安全
 

@@ -67,4 +67,4 @@ judge 不看的：軸線與視線、相鄰鏡頭的道具連戲、景別是不�
 | Kling 社群 MCP（github.com/199-mcp/mcp-kling） | README（2026-10-03 讀）：`generate_image_to_video` 的 camera movement 是 `Static, zoom, pan, or auto`，motion prompt 可自動或自訂；`generate_video` 的 camera control 是 `type: "simple"` 加 `{ zoom: 5 }` 這類設定，只有 V1 模型；用 access key 與 secret key 簽 JWT（走開發者 API 的資源包，不是會員 credits） | pan 的方向、zoom 的正負怎麼給；`negative_prompt` 的上限；哪些模型版本吃 camera control |
 | Kling 官方 API 與官方 MCP | 官方 API 文件頁是 SPA，2026-10-03 抓到的是空殼；官方 MCP（kling.ai/mcp）要登入才看得到指南 | `camera_control` 的型別與 `config`（horizontal／vertical／pan／tilt／roll／zoom）是記憶中的欄位名，這次沒有在頁面上核對；官方 MCP 扣哪個方案的 credits 要在站主帳號裡看 |
 
-三條路線共同的事：關鍵影格仍由產線畫（景別、構圖、軸線在圖裡已經定了）；`camera` 這一行照產線的讀者寫，再把運鏡翻成那家的字；外面做好的 mp4 回到產線的做法與缺的 `clips import` 指令在 `tasks/open/2026-10-03-clips-import-bring-a-clip-made.md`。
+三條路線共同的事：關鍵影格仍由產線畫（景別、構圖、軸線在圖裡已經定了）；`camera` 這一行照產線的讀者寫，再把運鏡翻成那家的字；外面做好的 mp4 用 `clips import` 回到產線（`.agents/skills/animation-production/references/stage-preconditions.md` 最後一節）。

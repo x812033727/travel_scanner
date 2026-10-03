@@ -26,7 +26,7 @@ metadata:
 | 十部動畫的 Veo Lite 契約、未成年、CC | `.agents/skills/youtube-video/references/animation-production.md` |
 | 一版做出來之後怎麼診斷、怎麼停 | `.agents/skills/youtube-video/references/visual-quality.md` |
 | 每個常數的出處、逐層算例、雜湊定義、估價與實際的已知落差 | `.agents/skills/animation-production/references/cost-model.md` |
-| 每個階段真正查的前提、結束碼、dry-run、STOP、快取、外部片段手動匯入（唯一的一份程序） | `.agents/skills/animation-production/references/stage-preconditions.md` |
+| 每個階段真正查的前提、結束碼、dry-run、STOP、快取、外部片段用 `clips import` 匯入（唯一的一份程序） | `.agents/skills/animation-production/references/stage-preconditions.md` |
 | 50 條錯誤：階段、哪個檢查抓、漏掉多少錢、預防 | `.agents/skills/animation-production/references/error-catalogue.md` |
 | 三條路線的方案、價目、隊列、版權、操作步驟 | `.agents/skills/animation-production/references/providers-and-plans.md` |
 | 檢討表單與 2026-10-03 試拍的填法 | `.agents/skills/animation-production/references/post-mortem.md` |
@@ -104,7 +104,7 @@ Veo 3.1 在 clips 等級一次就 US$202.6，過了單支上限 US$200（`max_us
 
 站主 2026-10-03 定的：Hailuo 的方案由代理在網頁上操作，Kling 用 MCP。方案與價目在 `references/providers-and-plans.md`（2026-10-03 讀官方頁，表裡只列決定用的幾個數）。
 
-**有 production profile 的集今天只能走伺服器 API。** 正在做的那部（`docs/videos/series-plans/competition-20261002/pilot/series.json` 的 `production.profile.video`，同 `docs/videos/series-plans/production-20261001/profile.json`）就釘了 gemini／`veo-3.1-lite-generate-preview`／1080p、`visual_tier: clips`：`clips` 擋伺服器選了別的模型（`clips.mjs` 的 `requiredVideo` 檢查，3）；`tools/video/core/lint.mjs` 的 `productionClipProblems` 擋 manifest 裡別的 provider／model／解析度，`productionClipSizeProblem` 擋非原生 1920×1080（H3 的 2K 與 768P 都不是），`status` 與 `assemble` 都呼叫它。站主要的 Hailuo 與 Kling 兩條路眼下只能用在試拍與沒 profile 的集；要讓正片用，得先改 profile（換掉核准的設計雜湊），或等 `clips import` 的票把 `provider: "external"` 納進 profile 檢查（第二張票，站主決定）。
+**有 production profile 的集今天只能走伺服器 API。** 正在做的那部（`docs/videos/series-plans/competition-20261002/pilot/series.json` 的 `production.profile.video`，同 `docs/videos/series-plans/production-20261001/profile.json`）就釘了 gemini／`veo-3.1-lite-generate-preview`／1080p、`visual_tier: clips`：`clips` 擋伺服器選了別的模型（`clips.mjs` 的 `requiredVideo` 檢查，3）；`tools/video/core/lint.mjs` 的 `productionClipProblems` 擋 manifest 裡別的 provider／model／解析度，`productionClipSizeProblem` 擋非原生 1920×1080（H3 的 2K 與 768P 都不是），`status` 與 `assemble` 都呼叫它。站主要的 Hailuo 與 Kling 兩條路眼下只能用在試拍與沒 profile 的集；要讓正片用，得先改 profile（換掉核准的設計雜湊），或另開一張票讓 profile 能點名外部路線（站主決定）；在那之前 `clips import` 遇到 profile 以結束碼 3 拒絕。
 
 | | 伺服器 API（`clips` 階段） | Hailuo 網頁方案（hailuoai.video） | Kling MCP（kling.ai/mcp 官方 connector；或社群 mcp-kling 用 API 金鑰） |
 | --- | --- | --- | --- |
@@ -113,8 +113,8 @@ Veo 3.1 在 clips 等級一次就 US$202.6，過了單支上限 US$200（`max_us
 | 每 8 秒 1080p 級畫面 | Lite US$0.64、Omni 1.20、H3 2K 1.04、Veo 3.1 3.20（catalog.py） | Pro 以上 H3 768P 8 秒 ≈ 56 點、2K ≈ 96 點（頁面秒數／月反推，換算）。折美金看怎麼付：年繳（頁面的 0.047／0.081 per s）≈ US$0.38／0.65；月繳 54.99 攤（一點 ≈ 0.0122）≈ US$0.68／1.17——月繳時 768P 已比伺服器 Lite 的 0.64 貴。Standard 2K 0.101/s | 3.0 Omni 標準 5 秒 ≈ 35–45 點、10 秒約兩倍（第三方 2026 數字，**未驗**；8 秒不是 Kling 的檔位）；Pro US$37／3,000 點 → 10 秒約 US$1；開發者 API 1080p ≈ US$0.112/s |
 | 隊列與併發 | 一次一鏡順序跑；伺服器每小時 60 次送出、360 次 judge；job 24 小時沒完成就 `expired` | Standard 8 排／1 跑；Pro 8／2；Master、Max 12／2（條款另寫「最多 5 個併發」） | 付費方案「無限排隊、快速通道」；API 套餐 20 併發 |
 | 浮水印與版權 | 無浮水印（Lyria 的曲子帶 SynthID） | 付費方案下載無浮水印、保留商用權；免費有浮水印 | 付費方案去浮水印、可商用 |
-| 進產線 | 自動：manifest、QC、judge、帳本 | 手動匯入（stage-preconditions.md 最後一節，唯一的一份程序）：放 mp4、手寫 manifest 條目。`assemble` 只驗格數、第 0 格 PSNR（切鏡對來源格）、fit 的停格 > 60 格與響度；黑格、freezedetect、模型自己切鏡只在 `clips` 的 `qc.mjs` 跑，外部片段要自己用 `blackdetectArgs`／`freezedetectArgs`／`sceneCutArgs` 跑一次；沒有 judge | 同左 |
-| 帳本知道 | 全部 | 不知道，`status` 也分不出它是買的；`clips import` 做好前都這樣（票 `tasks/open/2026-10-03-clips-import-bring-a-clip-made.md`） | 不知道 |
+| 進產線 | 自動：manifest、QC、judge、帳本 | `clips import --provider hailuo-web`（stage-preconditions.md 最後一節，唯一的一份程序）：前提同 `clips`，跑買來的 take 同一組 ffmpeg 檢查（黑格、凍格、模型自己切鏡、第 0 格 PSNR），沒過 `needs_review`；judge 要帶 `--judge` 才問 | 同左，`--provider kling-mcp` |
+| 帳本知道 | 全部 | 匯入時記一筆 `status: "imported"`（點數、秒數；美元要 `--usd` 給），`status` 與 `clips --dry-run` 標出匯入幾支；快取與伺服器的每月預算不知道，`clips --force` 會把它重買 | 同左 |
 
 同一集 60 鏡放到三條路線上（素材而已，不含圖與 judge；編輯換算，Hailuo 的美元都用**月費攤**，年繳換算在 cost-model.md §四）：
 
@@ -128,7 +128,7 @@ Veo 3.1 在 clips 等級一次就 US$202.6，過了單支上限 US$200（`max_us
 決定規則（編輯判斷）：
 
 1. **預設走伺服器 API**：關卡、快取、帳本、judge、單支上限只認得它；有 profile 的集只有它（上段）。沒有 profile 時伺服器買哪個模型以後台的 clip 設定為準：新裝的預設是 `gemini-omni-1.1-flash`（`catalog.py` 的 `DEFAULT_CLIP`；後台可能改過，`media-status` 才是真的），估價時 `--model` 對齊它——這決定 3 秒的鏡頭買 4 秒（US$0.60、利用率 75%）還是 8 秒（0.64、37.5%），也決定切鏡槓桿與 Lite 陷阱會不會發生。
-2. **Hailuo 網頁**划算的條件有三個，同時成立才走：站主已付的點數反正月底歸零（條款）；這一鏡不靠角色參考圖保一致（網頁能上傳參考，但沒有我們的 identity 題）；你接受手動匯入、沒有帳本。算式只有一條：方案贏過伺服器要這個月**真的用掉的秒數 ≥ 月費 ÷ 伺服器每秒價**——Pro 月繳 54.99 ÷ 0.15（Omni）≈ 367 秒、÷ 0.08（Lite）≈ 687 秒而 Pro 一個月只有 375 秒 2K，不可能；`episode_estimate.mjs --plan hailuo:pro --resolution 768p|2k` 把這一集的伺服器價、方案的兩種美元與損益平衡秒數印在一起。Max 的無限模式只給 Hailuo 2.0／2.3（哪些模型、兩個來源怎麼說：providers §1.2 的 Max 列），不是 H3。
+2. **Hailuo 網頁**划算的條件有三個，同時成立才走：站主已付的點數反正月底歸零（條款）；這一鏡不靠角色參考圖保一致（網頁能上傳參考，但沒有我們的 identity 題）；你接受每一支自己下載再 `clips import`、judge 要另外問。算式只有一條：方案贏過伺服器要這個月**真的用掉的秒數 ≥ 月費 ÷ 伺服器每秒價**——Pro 月繳 54.99 ÷ 0.15（Omni）≈ 367 秒、÷ 0.08（Lite）≈ 687 秒而 Pro 一個月只有 375 秒 2K，不可能；`episode_estimate.mjs --plan hailuo:pro --resolution 768p|2k` 把這一集的伺服器價、方案的兩種美元與損益平衡秒數印在一起。Max 的無限模式只給 Hailuo 2.0／2.3（哪些模型、兩個來源怎麼說：providers §1.2 的 Max 列），不是 H3。
 3. **Kling MCP**：要運鏡控制或動作戲時用；每支影片的點數只在登入後的生成頁看得到，MCP 扣哪個方案的點數、官方 connector 要不要 API 套餐，都先在站主帳號裡讀，再估價。
 4. 不論哪條，**首格一律是這一鏡通過 judge 的關鍵影格**，否則 `assemble` 的第 0 格 PSNR ≥ 22（`tools/video/assemble/drama.mjs` 的 `KEYFRAME_MIN_PSNR`）過不了。
 
@@ -181,11 +181,11 @@ judge 的 `problems` 文字先分類，再決定花不花第二次的錢：
 | 9 | 第一鏡沒單獨跑：主機地區被 Gemini 擋，60 鏡排隊 | clips | 無 | 0 元，一輪 | `clips --shot <第一鏡>` |
 | 10 | `end_frame.prompt` 寫了很多鏡 | keyframes | `estimate` | 每鏡多一張 0.134；dry-run 還多算 0.01 judge | 只給真的要末格的鏡 |
 | 11 | 素材比句子短，`fit: "auto"` 慢到 0.85 倍還不夠、停格超過 60 格 | assemble | `freezeProblem` → 1 | 一輪；profile 下不准 `freeze` | 拆句或要更長的素材；`estimate` 的「超過 8 秒」列 |
-| 12 | 外部片段的首格不是關鍵影格 → assemble PSNR < 22 → 1 | assemble | `assemble` | 整段匯入白做（點數不退） | 用這一鏡的關鍵影格當首格 |
+| 12 | 外部片段的首格不是關鍵影格 → `clips import` PSNR < 22 → `needs_review`，1 | clips import | `clips import` 的 `clipVerdict` | 那一支白做（點數不退） | 用這一鏡的關鍵影格當首格 |
 
 ## 收工
 
-- **帳本** `media/ledger.json`：`entries[]` 的 `kind`（image／clip／music／judge）、`status`（ready／failed／judged／cut）、`cost_usd`、`seconds`；`totalsOf` 從 entries 重算，`savedTotals` 算切鏡省下的（`tools/video/media/ledger.mjs`）。它只記伺服器買的：外部片段、站上的保守預留（試拍的 US$10 manual reserve）、廠商實際帳單都不在裡面。
+- **帳本** `media/ledger.json`：`entries[]` 的 `kind`（image／clip／music／judge）、`status`（ready／failed／judged／cut／imported）、`cost_usd`、`seconds`；`totalsOf` 從 entries 重算，`savedTotals` 算切鏡省下的、`importedTotals` 算 `clips import` 帶進來的（`tools/video/media/ledger.mjs`）。不在裡面的：沒給 `--usd` 的方案點數換成的美元、站上的保守預留（試拍的 US$10 manual reserve）、廠商實際帳單都不在裡面。
 - **五個數字分開報**，不合成一個「完成」（錯誤 #6 指的就是這裡）：
 
 | 數字 | 從哪裡算 | 試拍 2026-10-03（自己的 runner，不是 `clips` 階段） |
@@ -213,7 +213,7 @@ judge 的 `problems` 文字先分類，再決定花不花第二次的錢：
 # 對 --cap、--month-clip-seconds、既有 data.source 的來源買秒、Lite 配非空 look.negative 下結論
 node .agents/skills/animation-production/scripts/episode_estimate.mjs <VIDEO_DOCS>/video.json [--tier clips|hybrid|stills] [--model <id>] [--resolution 1080p|720p|768p|2k] [--plan hailuo:pro|kling:pro] [--credits-per-video 40] [--keyframe-takes 3] [--clip-takes 2] [--cap 200] [--month-clip-seconds 3000] [--strict] [--json]
 #   --resolution 給伺服器模型的解析度；--plan hailuo:* 時它選 768p 或 2k 的檔位（不給就 2k；2K 不是原生 1920×1080，768P 低於 1080p，哪個該選未驗）
-# 開跑前預檢：下一個（或 --stage 指定的）階段會拒絕或白花什麼：關卡狀態與會回的結束碼、manifest 綁哪個雜湊、kept／new、needs_review、STOP、Lite 的 negative、judge 題目長度、profile 與伺服器、要花的 judge 次數、沒帳本的外部片段；片段模型從 profile、存好的 manifest 或 --model 來（它不碰伺服器）
+# 開跑前預檢：下一個（或 --stage 指定的）階段會拒絕或白花什麼：關卡狀態與會回的結束碼、manifest 綁哪個雜湊、kept／new、needs_review、STOP、Lite 的 negative、judge 題目長度、profile 與伺服器、要花的 judge 次數、匯入與手放的外部片段；片段模型從 profile、存好的 manifest 或 --model 來（它不碰伺服器）
 node .agents/skills/animation-production/scripts/drama_preflight.mjs --slug <SLUG> [--workdir <VIDEO_WORKDIR>] [--stage look|keyframes|clips|music|assemble] [--model <id>] [--json]
 # 收工報告：帳本按種類與階段、每鏡 take 與通過、利用率、切鏡省的、外部片段、judge 次數、五個狀態、stale 的核准、每階段時間；--markdown 印填好數字的 post-mortem
 node .agents/skills/animation-production/scripts/run_report.mjs --slug <SLUG> [--workdir <dir>] [--markdown] [--json]

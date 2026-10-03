@@ -88,6 +88,8 @@ Usage: node tools/video/cli.mjs <command> [options]
   audition, tts, review, render, assemble, package, youtube-sync
                                                    media stages, each built by its own ticket
   look, keyframes, clips, music, media-status      the drama format's generation stages (docs/videos/DRAMA.md)
+  clips import --slug S --shot ID --file MP4 --provider hailuo-web|kling-mcp|external [--plan P] [--credits N] [--usd N] [--note T] [--judge] [--force]
+                                                   bring in a clip made outside the pipeline: checked like a bought take, booked in the ledger
   branding [--install DIR] [--series sothatswhy] [--workdir D] [--dry-run] [--json]
                                                    inspect or install a fixed intro/outro package for new long videos
   assemble --slug S [--workdir D] [--adopt-branding]
@@ -140,7 +142,7 @@ async function cmdStatus(args, ctx) {
   const status = await pipelineStatus({ slug: values.slug, root: ctx.root, workdir });
   ctx.stdout.write(`${values.slug}  (work directory: ${workdir})\n`);
   for (const step of status.steps) {
-    ctx.stdout.write(`  [${step.done ? "x" : " "}] ${step.id}${!step.done && step.note ? `: ${step.note}` : ""}\n`);
+    ctx.stdout.write(`  [${step.done ? "x" : " "}] ${step.id}${!step.done && step.note ? `: ${step.note}` : ""}${step.detail ? ` (${step.detail})` : ""}\n`);
   }
   if (status.stop) ctx.stdout.write("\nA STOP file is present: stages will exit after their current unit of work.\n");
   // Dubs are optional (the owner picks each video's languages), so they are shown only once one exists.

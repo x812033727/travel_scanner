@@ -125,6 +125,6 @@ end_frame  = + image                （不 judge；dry-run 多算了一次 judge
 5. **Kling 每支點數未驗**；`episode_estimate.mjs --plan kling:*` 用 `--credits-per-video`（預設 40）算，印出時標未驗。
 6. **H3 的秒數**：catalog 4–10、官方 4–15；`clipSeconds` 照 catalog 貼齊，超過 10 秒的鏡頭 lint 本來就擋。
 7. **試拍的預留不是花費**：US$15.18 含 manual reserve 10；兩筆失敗的 Lite 片段 `usd_estimate` 0 但預留保留；`actual_billed_usd` null。報帳時三個數分開寫：預留、估價、實際帳單。
-8. **外部片段**：帳本沒有，`status` 當成買的；`run_report.mjs` 把 manifest 有、帳本沒有的條目列成 external。
+8. **外部片段**：`clips import` 在帳本記一筆 `status: "imported"`（點數與秒數；美元只有 `--usd` 給了才有），`status` 標出匯入幾支；`run_report.mjs` 把它們與買的分開列，指令落地前手放的（manifest 有、帳本沒有）也列成 external。
 9. **利用率沒人記**：manifest 有 `needed_s` 與 `seconds`（`clips.mjs:396-398`），`run_report.mjs` 相除；試拍沒跑 `clips` 階段，沒有這個數。
 10. **`max_clips_per_video`（預設 40）**：`media-status` 印得出，2026-10-03 在 `jobs.py` 與 `tools/video` 都沒找到擋它的程式碼。60 鏡的集會不會被擋，沒驗。

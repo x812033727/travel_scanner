@@ -8,7 +8,7 @@
 //   node .agents/skills/animation-production/scripts/run_report.mjs --slug <SLUG> [--workdir <work base>]
 //     [--root <repository root>] [--markdown] [--json]
 //
-// 讀 media/ledger.json（readLedger / totalsOf / savedTotals）、characters、keyframes 與 clips 的 manifest、
+// 讀 media/ledger.json（readLedger / totalsOf / savedTotals / importedTotals）、characters、keyframes 與 clips 的 manifest、
 // timeline.json、state.json、approvals.json；不碰伺服器（本月剩餘額度要看 media-status）。
 // 結束碼：0；讀不到專案或參數錯 2。
 import path from "node:path";
@@ -20,7 +20,7 @@ import { drawnShotScenes, isDrama } from "../../../../tools/video/core/drama.mjs
 import { readJson, resolveWorkdir, UsageError } from "../../../../tools/video/core/paths.mjs";
 import { ARTIFACTS, loadProject } from "../../../../tools/video/core/state.mjs";
 import { FPS } from "../../../../tools/video/core/timeline.mjs";
-import { readLedger, savedTotals, totalsOf } from "../../../../tools/video/media/ledger.mjs";
+import { importedTotals, readLedger, savedTotals, totalsOf } from "../../../../tools/video/media/ledger.mjs";
 
 export const KINDS = ["image", "clip", "music", "judge"];
 export const STATUS_COLUMNS = ["job_ready", "qc_ok", "judge_passed", "needs_review", "owner_accepted"];
@@ -33,7 +33,7 @@ const percent = (value) => (value === null || value === undefined ? NOT_AVAILABL
 const cell = (value) => (value === null || value === undefined ? "—" : String(value));
 
 /**
- * { slug, workdir, totals, saved, spend, bought, takes, retakes, utilisation, cuts, external, judge,
+ * { slug, workdir, totals, saved, imported, spend, bought, takes, retakes, utilisation, cuts, external, judge,
  *   status, gates, stale, wallclock, needs_review }。
  */
 export async function runReport({ slug, root, workdir: workdirFlag, env = process.env, home }) {
@@ -46,6 +46,8 @@ export async function runReport({ slug, root, workdir: workdirFlag, env = proces
   const entries = ledger.entries ?? [];
   const totals = totalsOf(entries);
   const saved = savedTotals(entries);
+  // What `clips import` booked: clips made on a plan elsewhere, kept apart from what this line bought.
+  const imported = importedTotals(entries);
   const characters = read(ARTIFACTS.characters);
   const keyframes = read(ARTIFACTS.keyframes);
   const clips = read(ARTIFACTS.clips);
@@ -55,11 +57,11 @@ export async function runReport({ slug, root, workdir: workdirFlag, env = proces
   const gates = {};
   for (const gate of ["script", "look", "storyboard", "audio", "final"]) gates[gate] = (await approvalState({ gate, docDir: project.dir, workdir })).status;
 
-  // The money: by kind and by stage, from the ledger alone (a cut is a saving, never a spend).
+  // The money: by kind and by stage, from the ledger alone (a cut is a saving, never a spend; an imported clip is counted on its own).
   const spend = { by_kind: {}, by_stage: {}, failed: { count: 0, usd: 0 } };
   for (const kind of KINDS) spend.by_kind[kind] = { count: 0, usd: 0, seconds: 0 };
   for (const entry of entries) {
-    if (entry.status === "cut") continue;
+    if (entry.status === "cut" || entry.status === "imported") continue;
     const kind = spend.by_kind[entry.kind] ?? (spend.by_kind[entry.kind] = { count: 0, usd: 0, seconds: 0 });
     kind.count += 1;
     kind.usd = round4(kind.usd + Number(entry.cost_usd || 0));
@@ -80,7 +82,7 @@ export async function runReport({ slug, root, workdir: workdirFlag, env = proces
   }
   const lookImages = entries.filter((entry) => entry.kind === "image" && entry.stage === "look" && entry.status !== "cut");
   const keyframeImages = entries.filter((entry) => entry.kind === "image" && entry.stage === "keyframes" && entry.status !== "cut");
-  const clipJobs = entries.filter((entry) => entry.kind === "clip" && entry.status !== "cut");
+  const clipJobs = entries.filter((entry) => entry.kind === "clip" && entry.status !== "cut" && entry.status !== "imported");
   const musicJobs = entries.filter((entry) => entry.kind === "music");
   const judgeJobs = entries.filter((entry) => entry.kind === "judge");
   const usdOf = (list) => round4(list.reduce((total, entry) => total + Number(entry.cost_usd || 0), 0));
@@ -110,9 +112,10 @@ export async function runReport({ slug, root, workdir: workdirFlag, env = proces
   }
   for (const take of takes.filter((each) => each.needs_review && each.takes === 0)) retakes.push({ stage: take.stage, id: take.id, take: "-", judge: null, problems: take.problems });
 
-  // Clips the ledger never booked: put there by hand (Hailuo web, Kling), or marked provider "external".
+  // Clips this line did not buy: brought in by `clips import` (imported_at, with its route, plan and credits),
+  // or put there by hand before that command existed (provider "external", or no job in the ledger).
   const ledgerClipIds = new Set(clipJobs.map((entry) => entry.id));
-  const external = generated.filter(([id, shot]) => shot.provider === "external" || !ledgerClipIds.has(id)).map(([id, shot]) => ({ id, file: shot.file, seconds: shot.seconds ?? null, provider: shot.provider ?? null, route: shot.external?.route ?? null, plan: shot.external?.plan ?? null, credits: shot.external?.credits ?? null }));
+  const external = generated.filter(([id, shot]) => shot.imported_at || shot.provider === "external" || !ledgerClipIds.has(id)).map(([id, shot]) => ({ id, file: shot.file, seconds: shot.seconds ?? null, provider: shot.provider ?? null, route: shot.external?.route ?? (shot.imported_at ? shot.provider : null), plan: shot.plan ?? shot.external?.plan ?? null, credits: shot.credits ?? shot.external?.credits ?? null, imported: Boolean(shot.imported_at) }));
   const perShot = generated.map(([id, shot]) => {
     const needed = Number.isFinite(shot.needed_s) ? shot.needed_s : framesOf.has(id) ? framesOf.get(id) / FPS : null;
     const seconds = Number(shot.seconds || 0);
@@ -129,16 +132,16 @@ export async function runReport({ slug, root, workdir: workdirFlag, env = proces
     adopted_s: adoptedTotal,
     needed_booked_s: round4(neededBooked),
     adopted_booked_s: booked.reduce((total, shot) => total + shot.bought_s, 0),
-    ledger_s: totals.clip_seconds,
+    ledger_s: bought.clips.seconds,
     overall_adopted: ratio(neededTotal, adoptedTotal),
     // Against everything the ledger bought, retakes included; an external clip is outside the ledger, so it is outside this ratio too.
-    overall_bought: ratio(neededBooked, totals.clip_seconds),
+    overall_bought: ratio(neededBooked, bought.clips.seconds),
     note: "needed_s ÷ 買的秒數；adopted 只算採用的 take（外部片段也算），bought 算 ledger 裡買到的全部秒數（重拍也算，外部片段不在裡面）；工具自己還沒記這個數，這裡是從 manifest 和 ledger 算回來的",
   };
   // What was bought and then not used: the ledger's images and clip seconds against the manifests' adopted entries.
   const readyImageIds = new Set(entries.filter((entry) => entry.kind === "image" && entry.status === "ready").map((entry) => String(entry.id).replace(/\/end$/, "")));
   const adoptedImages = [...Object.entries(characters?.characters ?? {}).filter(([id, entry]) => readyImageIds.has(id) && !entry.needs_review), ...Object.entries(keyframes?.shots ?? {}).filter(([id, shot]) => readyImageIds.has(id) && shot.file && !shot.needs_review)].length;
-  const waste = { images_bought: totals.images, images_used: adoptedImages, clip_seconds_bought: totals.clip_seconds, clip_seconds_used: utilisation.adopted_booked_s };
+  const waste = { images_bought: totals.images, images_used: adoptedImages, clip_seconds_bought: bought.clips.seconds, clip_seconds_used: utilisation.adopted_booked_s };
   const cuts = { ...saved, shots: entries.filter((entry) => entry.status === "cut").map((entry) => ({ id: entry.id, source: entry.source ?? null, saved_seconds: entry.saved_seconds ?? 0, saved_usd: entry.saved_usd ?? 0 })) };
   const judge = { calls: totals.judge_calls, usd: bought.judge.usd, by_stage: Object.fromEntries(Object.entries(spend.by_stage).filter(([, each]) => each.judge_calls > 0).map(([stage, each]) => [stage, each.judge_calls])) };
 
@@ -186,12 +189,12 @@ export async function runReport({ slug, root, workdir: workdirFlag, env = proces
     entry.last_at = run.at ?? entry.last_at;
   }
   const needsReview = takes.filter((take) => take.needs_review);
-  return { slug: doc.slug, workdir, totals, saved, spend, bought, takes, retakes, utilisation, waste, cuts, external, judge, status, gates, stale, wallclock, needs_review: needsReview };
+  return { slug: doc.slug, workdir, totals, saved, imported, spend, bought, takes, retakes, utilisation, waste, cuts, external, judge, status, gates, stale, wallclock, needs_review: needsReview };
 }
 
 export function renderReport(report) {
   const out = [];
-  out.push(`${report.slug}（${report.workdir}）：共 ${usd(report.totals.usd)}；圖 ${report.totals.images} 張、片段 ${report.totals.clip_seconds} s、音樂 ${report.totals.music} 首、judge ${report.totals.judge_calls} 次${report.spend.failed.count ? `；失敗但入帳 ${report.spend.failed.count} 筆 ${usd(report.spend.failed.usd)}` : ""}`);
+  out.push(`${report.slug}（${report.workdir}）：共 ${usd(report.totals.usd)}；圖 ${report.totals.images} 張、片段 ${report.totals.clip_seconds} s${report.imported.clips ? `（其中匯入 ${report.imported.clip_seconds} s）` : ""}、音樂 ${report.totals.music} 首、judge ${report.totals.judge_calls} 次${report.spend.failed.count ? `；失敗但入帳 ${report.spend.failed.count} 筆 ${usd(report.spend.failed.usd)}` : ""}`);
   out.push("花在哪一類：" + KINDS.map((kind) => `${kind} ${report.spend.by_kind[kind].count} 筆 ${usd(report.spend.by_kind[kind].usd)}`).join("；"));
   out.push("花在哪一階段：" + (Object.entries(report.spend.by_stage).map(([stage, each]) => `${stage} ${usd(each.usd)}（judge ${each.judge_calls} 次）`).join("；") || "ledger 是空的"));
   out.push("");
@@ -204,7 +207,7 @@ export function renderReport(report) {
   out.push(`  整集：採用的 take ${percent(report.utilisation.overall_adopted)}（${report.utilisation.needed_s} ÷ ${report.utilisation.adopted_s} s）；全部買到的 ${percent(report.utilisation.overall_bought)}（${report.utilisation.needed_booked_s} ÷ ledger 的 ${report.utilisation.ledger_s} s，不含外部）`);
   out.push(`買了沒用的：圖 ${report.waste.images_bought} 買、${report.waste.images_used} 用；片段 ${report.waste.clip_seconds_bought} s 買、${report.waste.clip_seconds_used} s 採用`);
   out.push(`剪接：${report.cuts.cuts} 鏡從別鏡的片段切，省 ${report.cuts.clip_seconds} s、${usd(report.cuts.usd)}${report.cuts.shots.length ? `：${report.cuts.shots.map((cut) => `${cut.id} ← ${cut.source?.shot ?? "?"} @ ${cut.source?.from_s ?? "?"} s`).join("、")}` : ""}`);
-  out.push(`外部片段（ledger 沒有它的 job）：${report.external.length ? report.external.map((each) => `${each.id}（${each.file}，${each.seconds ?? "?"} s${each.credits !== null ? `，${each.credits} credits ${each.plan ?? ""}` : ""}）`).join("、") : "無"}`);
+  out.push(`外部片段（clips import 匯入的，或手放、ledger 沒有它的 job）：${report.external.length ? report.external.map((each) => `${each.id}（${each.file}，${each.seconds ?? "?"} s${each.route ? `，${each.route}` : ""}${each.credits !== null ? `，${each.credits} credits ${each.plan ?? ""}` : ""}${each.imported ? "" : "，手放"}）`).join("、") : "無"}${report.imported.clips ? `；帳本記的匯入：${report.imported.clips} 筆 ${report.imported.clip_seconds} s、${report.imported.credits} credits、${usd(report.imported.usd)}` : ""}`);
   out.push(`judge：${report.judge.calls} 次 ${usd(report.judge.usd)}（${Object.entries(report.judge.by_stage).map(([stage, calls]) => `${stage} ${calls}`).join("、") || "無"}）`);
   out.push("");
   out.push("五種狀態（各算各的）：    " + STATUS_COLUMNS.map((column) => STATUS_LABELS[column]).join("  "));
@@ -244,7 +247,7 @@ export function renderMarkdown(report, now = new Date()) {
   out.push(`| 素材 | ${report.bought.clips.count} | ${report.bought.clips.seconds} 秒 | ${report.bought.clips.usd.toFixed(2)} | ${na} | ${na} |`);
   out.push(`| 音樂 | ${report.bought.music.count} | 首 | ${report.bought.music.usd.toFixed(2)} | ${na} | ${na} |`);
   out.push(`| judge | ${report.bought.judge.count} | 次 | 0.01 × ${report.bought.judge.count} = ${report.bought.judge.usd.toFixed(2)} | ${na} | ${na} |`);
-  out.push(`| 外部片段 | ${report.external.length} | ${report.external.length} 支／${externalSeconds} 秒 | 0（方案點數：${externalCredits === null ? na : `${externalCredits} 點`}，方案 ${externalPlans.join("、") || na}） | — | — |`);
+  out.push(`| 外部片段 | ${report.external.length} | ${report.external.length} 支／${externalSeconds} 秒 | ${report.imported.usd.toFixed(2)}（方案點數：${externalCredits === null ? na : `${externalCredits} 點`}，方案 ${externalPlans.join("、") || na}） | — | — |`);
   out.push(`| 合計 | ${report.bought.sheets.count + report.bought.keyframes.count + report.bought.clips.count + report.bought.music.count + report.bought.judge.count} | | ${report.totals.usd.toFixed(2)} | ${na} | ${na} |`);
   out.push(`- 本月剩餘（\`media-status\`）：${na}（離線）；失敗但入帳 ${report.spend.failed.count} 筆 ${usd(report.spend.failed.usd)}`);
   out.push("");
@@ -257,7 +260,7 @@ export function renderMarkdown(report, now = new Date()) {
   out.push(`- ${report.status.note}`);
   out.push("");
   out.push("## 浪費了什麼");
-  out.push(`- 買了沒用的：圖 ${report.waste.images_bought} 買、${report.waste.images_used} 用；素材 ${report.waste.clip_seconds_bought} 秒買、${report.waste.clip_seconds_used} 秒採用（分母是「買了什麼」，外部片段不在帳本裡所以不算）`);
+  out.push(`- 買了沒用的：圖 ${report.waste.images_bought} 買、${report.waste.images_used} 用；素材 ${report.waste.clip_seconds_bought} 秒買、${report.waste.clip_seconds_used} 秒採用（分母是「買了什麼」，匯入與手放的外部片段不算）`);
   out.push(`- 利用率（素材）：每鏡 ${report.utilisation.shots.map((shot) => `${shot.id} ${percent(shot.utilisation)}${shot.external ? "（外部）" : ""}`).join("、") || na}；整集 ${percent(report.utilisation.overall_adopted)}（採用的 take）／${percent(report.utilisation.overall_bought)}（全部買到，不含外部）；切鏡省下 ${report.cuts.clip_seconds} 秒／${usd(report.cuts.usd)}`);
   out.push(`- 白跑的輪：結束碼 2 ${na} 次、3 ${na} 次（state.json 不記結束碼；看 shell 紀錄）`);
   out.push("");

@@ -33,7 +33,7 @@ export function totalsOf(entries) {
 
 /**
  * Append one entry: `{ stage, kind (image|clip|music|judge), id (shot or character), provider, model,
- * key, job_id?, seconds?, cost_usd, status (ready|failed|judged) }`.
+ * key, job_id?, seconds?, cost_usd, status (ready|failed|judged|cut|imported) }`.
  */
 export function appendLedger(workdir, entry, now = new Date()) {
   const ledger = readLedger(workdir);
@@ -90,6 +90,36 @@ export function savedTotals(entries) {
     saved.usd = round(saved.usd + Number(entry.saved_usd || 0));
   }
   return saved;
+}
+
+/**
+ * Record a clip made outside the pipeline and brought in by `clips import` (a Hailuo web plan,
+ * Kling's MCP): `{ stage, id, provider, plan, credits, seconds, cost_usd, file, sha256 }`. Its
+ * seconds count as clip seconds; its cost is what the operator priced the credits at, or zero.
+ * Keyed by the shot and the file, so importing the same file again replaces the entry.
+ */
+export function bookImport(workdir, entry, now = new Date()) {
+  const ledger = readLedger(workdir);
+  const recorded = { at: now.toISOString(), ...entry, kind: "clip", status: "imported" };
+  const index = ledger.entries.findIndex((previous) => previous.status === "imported" && previous.id === entry.id && previous.sha256 === entry.sha256);
+  if (index < 0) ledger.entries.push(recorded);
+  else ledger.entries[index] = recorded;
+  ledger.totals = totalsOf(ledger.entries);
+  atomicWrite(ledgerFile(workdir), `${JSON.stringify(ledger, null, 2)}\n`);
+  return ledger.totals;
+}
+
+/** What was imported rather than bought: { clips, clip_seconds, credits, usd }. */
+export function importedTotals(entries) {
+  const imported = { clips: 0, clip_seconds: 0, credits: 0, usd: 0 };
+  for (const entry of entries) {
+    if (entry.status !== "imported") continue;
+    imported.clips += 1;
+    imported.clip_seconds += Number(entry.seconds || 0);
+    imported.credits += Number(entry.credits || 0);
+    imported.usd = round(imported.usd + Number(entry.cost_usd || 0));
+  }
+  return imported;
 }
 
 /** Why a generation costing `usd` may not be submitted now under the per-video cap, or null. */
