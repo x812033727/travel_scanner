@@ -1,0 +1,120 @@
+{
+  "slug": "ai-term-chain-of-thought",
+  "status": "verified",
+  "checked_on": "2026-10-03",
+  "sources": [
+    {
+      "url": "https://arxiv.org/abs/2201.11903",
+      "title": "Wei et al. 2022, Chain-of-Thought Prompting Elicits Reasoning in Large Language Models (NeurIPS 2022; arXiv v6)",
+      "access": "curl -sSL abs page 200; PDF read with pdftotext (figures cross-checked in appendix Table 2)",
+      "claims": [
+        "chain-of-thought prompting = few-shot exemplars of <input, chain of thought, output>",
+        "8 manually composed exemplars for the math word problem benchmarks (4 for AQuA)",
+        "GSM8K, 540B-parameter model: 17.9% standard vs 56.9% chain-of-thought (2022 setting)",
+        "gain appears only at about 100B parameters and above; smaller models write fluent but illogical chains",
+        "single-step problems gain little or negative",
+        "authors: no guarantee of correct reasoning paths; does not answer whether the network is actually reasoning"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2205.11916",
+      "title": "Kojima et al. 2022, Large Language Models are Zero-Shot Reasoners (arXiv v4)",
+      "access": "curl -sSL abs page 200; PDF read with pdftotext",
+      "claims": [
+        "zero-shot trigger sentence 'Let's think step by step'",
+        "two prompts: reasoning extraction then answer extraction",
+        "MultiArith 17.7% to 78.7% with a large instruction-tuned model; wording of the trigger matters (16 templates; instructive helps, misleading and irrelevant do not)"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2305.04388",
+      "title": "Turpin et al. 2023, Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting (NeurIPS 2023)",
+      "access": "curl -sSL abs page 200; PDF read with pdftotext",
+      "claims": [
+        "biasing features: few-shot options reordered so the answer is always (A); suggested answer in the prompt",
+        "13 BIG-Bench Hard tasks, two 2023 commercial models; accuracy drop up to 36% (zero-shot CoT, suggested answer, 36.3%)",
+        "1 of 426 explanations supporting biased predictions mentions the bias",
+        "authors: necessary but not sufficient test of faithfulness"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2307.13702",
+      "title": "Lanham et al. 2023, Measuring Faithfulness in Chain-of-Thought Reasoning (Anthropic)",
+      "access": "curl -sSL abs page 200; PDF read with pdftotext",
+      "claims": [
+        "interventions on the CoT: truncating, adding mistakes, paraphrasing, filler tokens; eight multiple-choice tasks",
+        "reliance on the CoT varies widely by task; on most tasks larger models give less faithful reasoning",
+        "CoT gain not explained by extra tokens alone (filler tokens give no gain)",
+        "CoT can be faithful if model size and task are carefully chosen"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2505.05410",
+      "title": "Chen et al. 2025 (Anthropic Alignment Science), Reasoning Models Don't Always Say What They Think",
+      "access": "curl -sSL abs page 200; PDF read with pdftotext",
+      "claims": [
+        "MMLU and GPQA multiple-choice questions, 6 hint types (4 neutral, 2 misaligned), two reasoning models (one Anthropic, one DeepSeek)",
+        "only prompt pairs where the hint changed the answer are counted",
+        "average verbalization 25% and 39% (misaligned hints 20% and 29%; not in prose)",
+        "reasoning models verbalize more often than non-reasoning ones but rates stay low",
+        "limitations: contrived multiple-choice setting; tasks not hard enough to require CoT"
+      ]
+    },
+    {
+      "url": "https://www.anthropic.com/research/reasoning-models-dont-say-think",
+      "title": "Anthropic, Reasoning models don't always say what they think (research summary, 2025-04-03)",
+      "access": "curl -sSL 200; HTML text extracted",
+      "claims": [
+        "authors' own plain-language statement of the method, the 25% and 39% averages and the limitations",
+        "uses the term Chain-of-Thought for the readable reasoning of reasoning models (vendor usage differs from Wei et al.)"
+      ]
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/reasoning-best-practices",
+      "title": "OpenAI API docs, Reasoning best practices",
+      "access": "curl -sSL of platform.openai.com/docs/guides/reasoning-best-practices, redirected to this URL, 200",
+      "claims": [
+        "avoid chain-of-thought prompts for reasoning models because they reason internally; 'think step by step' is unnecessary and may not help or can hinder"
+      ]
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/reasoning",
+      "title": "OpenAI API docs, Reasoning models",
+      "access": "curl -sSL of platform.openai.com/docs/guides/reasoning, redirected to this URL, 200",
+      "claims": [
+        "reasoning models use internal reasoning tokens",
+        "raw reasoning tokens are not exposed; a summary can be requested"
+      ]
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+      "title": "Anthropic docs, Prompting best practices",
+      "access": "curl -sSL 200",
+      "claims": [
+        "prefer general instructions (think thoroughly) over prescriptive step-by-step plans when thinking is on",
+        "manual chain-of-thought is a fallback when thinking is off"
+      ]
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/build-with-claude/thinking",
+      "title": "Anthropic docs, Thinking",
+      "access": "curl -sSL 200",
+      "claims": [
+        "thinking text returned is a summary, never the raw chain of thought",
+        "summarization is done by a different model than the one targeted",
+        "billing counts the full thinking tokens, not the summary tokens"
+      ]
+    }
+  ],
+  "aliases": [
+    "CoT",
+    "思維鏈提示",
+    "chain of thought",
+    "Chain-of-Thought prompting",
+    "逐步思考",
+    "Zero-shot CoT"
+  ],
+  "existing_overlap": "No existing article covers chain-of-thought prompting or faithfulness. ai-reasoning-models-explained touches thinking summaries (Google docs) and says summaries do not replace answer checking; ai-term-few-shot-prompting covers examples without steps; ai-term-test-time-compute covers sequential and parallel compute. This article links to all three and keeps its own angle: the two 2022 forms, what the papers measured in their own settings, official prompting advice for reasoning models, and the faithfulness research.",
+  "running_text_characters": 2499,
+  "notes": "Count follows pack_ingest._body_length (paragraphs, rich_paragraph text including article link text, list items, table cells, callout title and text; not headings, caption, sources); it is 2473 without link text. Dry-run ingest passes with one warning (no_summary), which none of the 76 published ai-term-* articles avoids either. Examples (activity seats, 3 x 24 - 50 and the checks) are illustrative, marked 未實測, and were not run on any model. No model names, prices, cutoffs or leaderboard scores in the prose; paper settings are described by scale or by vendor only. Diagram numbers (25, 39, 6, 2025, 2026) all appear in the prose or table caption. Render note: render_svg in this environment hides the bottom 88 px (headless window chrome); checked again with a 1000 px tall window."
+}
