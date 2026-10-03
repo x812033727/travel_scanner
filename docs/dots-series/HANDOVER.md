@@ -17,3 +17,5 @@
 交接前已保留內建瀏覽器示範分頁並復原其暫時 viewport。Chrome 舊 viewport 的復原請求因 debugger 已中斷而無成功確認；下次恢復 Chrome 控制時讀回並復原。原始 screenshots 仍留在 repo 外；02 的操作紀錄為 `reviews/lesson02-capture-log.json`，不能把部分回述當作連接、排程或整課完成。P2 路徑覆核已關閉：兩套 Python 共 34 案例中 32 通過、2 個 Windows 檔案 symlink 案例略過；七個獨立真實 junction 越界測試皆為零外部讀寫／安裝。
 
 2026-10-04 CI 修正接續：SVG 的標題／描述與公開文件的使用者路徑已修正，17 包及 16 份 brief 已由產線重建。完整 1,170 包 `pack_cli lint`、生活文章 lint 回歸、dots 及 repo hygiene 六項 Node 檢查、Ruff、task 檢查均通過。新增 SVG 失敗前不寫入的回歸後，兩套 Python 共 35 案例為 33 通過、2 個 Windows 檔案 symlink 權限略過。初次 PR run 的第三個確定失敗是 `test_guide_series.py` 固定預期缺少 dots；一行 patch 已備妥，但 API tests 仍由其他活躍票占用，待精確範圍例外或釋放後套用。歷史程式收據保留原時間與 SHA；本次程式及新產出另作 dated review，不以舊審查宣稱新檔已驗。
+
+2026-10-04 上午接續：站主再次要求修 CI 後，已限定套用 registry 預期的 dots 一行；原占用票／其他工作樹不變，同 registry assertion hunk 未觀察到其他活動修改。rebase 到最新 main c03952f9b，保留 AI Workflow 十八課／group E／新 path。兩項 registry／catalogue 回歸修前1failed1passed、修後2passed，單檔 Ruff通過；新版遠端 CI 尚待完整核對。前述未套用 registry 的記錄保留為歷史狀態，不能用它推斷現在仍欠該行。全部發布 hold、稿件凍結與實測／媒體待驗狀態不變。

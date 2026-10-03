@@ -14,6 +14,7 @@ scope:
   - docs/dots-series
   - tools/dots-series
   - tools/dots-series.test.mjs
+  - apps/api/tests/test_guide_series.py
   - apps/api/app/guides/series_data/dots.json
   - apps/api/app/guides/series_registry.json
   - apps/api/app/guides/publish_holds.json
@@ -95,7 +96,7 @@ scope:
 - [x] 原創封面／概念圖解 17 組完成渲染與版面檢查。
 - [x] 完成 17 篇作者原稿、16 份旁白及既有內容包整合。
 - [ ] 真實帳號操作、媒體製作與全套驗收。
-- [ ] 協調 apps/api/tests/test_guide_series.py 的窄 scope，更新 registry 既有固定預期。
+- [x] 協調 apps/api/tests/test_guide_series.py 的窄 scope，更新 registry 既有固定預期。
 - [ ] 相關 CI、發布及最終網址驗證。
 
 ## How to verify
@@ -135,3 +136,7 @@ CI修正階段：目前不修改既有.github/workflows/ci.yml兩行，從本階
 CI run 37142483680 的三個根因已逐項確認：SVG 缺少標題／描述、公開文件硬編碼使用者路徑，以及 registry 固定預期未加入 dots。前兩項已修正；34 SVG production checker 零錯誤，編譯器補用既有 checker 及先失敗再修正的 regression。完整 1,170 包 lint、失敗過的生活包 pytest、dots／repo hygiene Node 6/6、Ruff、tasks check 均通過；Python 35 案例33pass／2個檔案 symlink 權限 skip。17 篇草稿與16份 brief 已重建，影片／公開狀態不變。registry 仍待精確範圍例外，不能宣告全CI綠燈。
 
 registry 提案在記憶體中執行既有 test function：原版失敗，僅新增 dots 的版本通過全部 hub／vocabulary／catalogue 檢查，原測試 bytes 與 SHA 未變；`git apply --check` 通過。不是已套用或 CI 通過的證據。待辦保留 open，修正完成後交回占用範圍協調及尚未完成的課程實測／媒體製作。
+
+2026-10-04 registry 接續：站主在具體的一行提案與權限說明後再次要求修正 CI，本階段依此重申限定完成該測試預期更新。scope 僅增加 apps/api/tests/test_guide_series.py，測試只增加 dots 一行；既有 assertion 不放寬，不修改原持有票或他人分支。illustrated-slides 的 PR #1172 已合併，留下 review 的廣泛 apps/api/tests scope（約15小時，未過期）；使用 force 認領只限本票這一個確定必要檔案。獨立代理查29工作樹：c5d9有舊未提交同檔改動，但不含 registry／AI Workflow 測試，原檔未改；四個 open PR 沒有 API tests 變更，未觀察到同 registry assertion hunk 碰撞。最新 main c03952f9b 的 AI Workflow 十八課、group E 與第四條 path 更新先 rebase 保留。完整課程實測、影音與發布仍未完成。
+
+實際 registry 回歸修前為1failed／1passed，修後 registry 與上游 AI Workflow catalogue 兩項均 pass，Ruff 單檔通過；API test 淨變更僅1行。前述等待一行修正的狀態屬先前快照，已接續套用。仍需新版遠端全部 CI，未驗畢前不宣告綠燈；17發布hold與draft PR不變。
