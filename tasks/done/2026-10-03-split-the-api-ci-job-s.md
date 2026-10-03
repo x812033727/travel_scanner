@@ -1,13 +1,13 @@
 ---
 id: 2026-10-03-split-the-api-ci-job-s
 title: Split the api and web CI jobs into parallel shards
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-api-ci-shards
 claimed_at: 2026-10-03T10:00:07Z
 created_at: 2026-10-03T09:59:57Z
-completed_at:
+completed_at: 2026-10-03T11:47:36Z
 branch:
 depends_on: []
 scope:
