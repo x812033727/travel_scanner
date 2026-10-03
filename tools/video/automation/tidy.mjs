@@ -23,6 +23,7 @@ import { approvalsFile } from "../core/approvals.mjs";
 import { atomicWrite, defaultWorkBase, isInside, ROOT, WORKDIR_ENV } from "../core/paths.mjs";
 import { ARTIFACTS, dubArtifacts } from "../core/state.mjs";
 import { DUB_FORMATS, DUB_LOCALES } from "../dubs/plan.mjs";
+import { localizationRetentionHold } from "../production/retention.mjs";
 import { STORY_PAGES_DIR } from "./story.mjs";
 
 // flow.mjs writes this file and owns these two patterns; tidy.test.mjs holds the copies together.
@@ -218,12 +219,15 @@ function compilationHold(state, states) {
  * for the owner, or already tidied); { held } when it is finished but something still needs its
  * files; { problem } when it is finished but has no usable date; else { at, how }.
  */
-function judge({ slug, workdir, state }, { states, listed, fs }) {
+function judge(video, { states, listed, videos, repos, fs }) {
+  const { slug, workdir, state } = video;
   if (state.tidied_at) return null;
   const dropped = state.status === "dropped";
   const onYouTube = state.status === "done" && YOUTUBE_ID.test(String(state.youtube_video_id ?? ""));
   if (!dropped && !onYouTube) return null;
   if (fs.existsSync(path.join(workdir, "STOP"))) return { held: "a STOP file is in its work directory" };
+  const localization = localizationRetentionHold(video, { videos, repos, fs });
+  if (localization) return { held: localization };
   if (dropped) {
     const at = Date.parse(String(state.dropped?.at ?? ""));
     return Number.isFinite(at) ? { at, how: "dropped" } : { problem: "dropped, but auto.json has no date in dropped.at" };
@@ -444,7 +448,7 @@ export function tidyRound({ base: given, repos: named = [ROOT], site = null, now
   const listed = Array.isArray(site) ? new Map(site.filter((video) => typeof video?.slug === "string").map((video) => [video.slug, video])) : null;
   const round = { base, days, dryRun, due: [], waiting: [], held: [], undated: [], refused: [], cleared: null };
   for (const video of videos) {
-    const verdict = judge(video, { states, listed, fs });
+    const verdict = judge(video, { states, listed, videos, repos, fs });
     if (!verdict) continue;
     if (verdict.held) round.held.push({ slug: video.slug, why: verdict.held });
     else if (verdict.problem) round.undated.push({ slug: video.slug, why: verdict.problem });

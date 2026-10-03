@@ -11,6 +11,7 @@ import { fileURLToPath } from "node:url";
 import { isCompilation, validateCompilation } from "./compilation.mjs";
 import { DRAMA_FORMAT, SHOT_TEMPLATE, validateDrama } from "./drama.mjs";
 import { SCREENCAST_TEMPLATE } from "../screencast/steps.mjs";
+import { localizationPlanProblems } from "../production/retention.mjs";
 
 export const SCHEMA_VERSION = 1;
 // drama: AI-generated shots instead of slides (docs/videos/DRAMA.md); its rules live in drama.mjs.
@@ -88,6 +89,7 @@ const TOP_KEYS = new Set([
   "target_minutes",
   "voice",
   "pronunciation_hints",
+  "localization_plan",
   "youtube",
   "thumbnail",
   "sources",
@@ -293,6 +295,9 @@ export function validateVideo(doc) {
     errors.push({ path: "narration_locale", message: `must be one of ${LOCALES.join(", ")}; leave it out for ${NARRATION_LOCALE}` });
   }
   const locale = narrationLocale(doc);
+  if (doc.localization_plan !== undefined) {
+    for (const message of localizationPlanProblems(doc.localization_plan)) errors.push({ path: "localization_plan", message });
+  }
   if (doc.source_guide !== undefined && (typeof doc.source_guide !== "string" || !SLUG.test(doc.source_guide))) {
     errors.push({ path: "source_guide", message: "must be the slug of a Mokaair content pack" });
   }

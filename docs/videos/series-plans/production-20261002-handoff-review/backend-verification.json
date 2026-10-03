@@ -1,0 +1,561 @@
+{
+  "schema_version": 1,
+  "status": "verified-pending-revisions-not-approved",
+  "source_git_sha": "e06a741053372f123fc11f43c12a1c9f18ffaea7",
+  "canonical_plan_sha256": "595689a706155ed597dd938d25ad6de8472cd2d03f9cdb1f2c5e088e340cb3a4",
+  "plan_file_sha256": "b5faba9016054d69a8ad2991aa88f612cd869ad5c0583dee174667b366419fee",
+  "sync_tool_sha256": "286fbac28a9d1de50c2a90b5fd196e09b587f0048ecfd8866849eb09fd639486",
+  "pre_sync_backup": {
+    "format": "pg_dump-custom",
+    "restore_list_verified": true,
+    "bytes": 179118848,
+    "sha256": "868b3b6f1c6a3473e63d4a745fca4d1bc6eebc2f50a77d253d89d14900c669e4",
+    "mode": "0600"
+  },
+  "live_git_sha_at_preflight": "129c07729e63509a3e7ee2da1978f060f5fc355b",
+  "baseline_schema_additions": {
+    "migration": "0121_video_series_planning",
+    "#1125": "planning_only=false, category=null, planning_spec=null; all previous fields and 180 document rows unchanged"
+  },
+  "works_checked": 10,
+  "retained_history_documents": 180,
+  "appended_review_documents": 12,
+  "settings_unchanged": true,
+  "target_episode_count": 0,
+  "jobs_available": 0,
+  "replay_actions": [
+    "unchanged",
+    "unchanged"
+  ],
+  "runtime_deployed": false,
+  "approvals_granted": false,
+  "media_generated": false,
+  "published": false,
+  "browser_render_verified": false,
+  "works": [
+    {
+      "slug": "before-the-hammer",
+      "latest_version": 3,
+      "retained_history": 18,
+      "new_review_documents": 0,
+      "series_changed_fields": [],
+      "admin_serializer_verified": true,
+      "body_bindings": [
+        {
+          "kind": "chapter",
+          "chapter": 1,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "1b47fb5ac717c6838a93a2330cf36a982710c8e306a87c5bf7d38c2de4614255"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 2,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "5c02b1b86df178f9152c930ff88067c14487683654b8ad6a8193c7417172e352"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 3,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "224f37b3d389b4aa0b42f9ef2961e130e32d9b851b4ea05dae8868639cccd208"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 4,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "641a8fac8385a7b516cd971d270b540beb8c1371dfc6b27f6f7a5e7a968f723f"
+        },
+        {
+          "kind": "outline",
+          "chapter": 0,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "6ea7857831ebfdb1c5283aee404cd50ec071677a6979f7b76652501805498657"
+        },
+        {
+          "kind": "setting",
+          "chapter": 0,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "dc5d17d84a789741aee09a3f6a32b41337d849edf3c056e57cb451a62ea3e8ad"
+        }
+      ]
+    },
+    {
+      "slug": "city-owes-a-light",
+      "latest_version": 4,
+      "retained_history": 18,
+      "new_review_documents": 6,
+      "series_changed_fields": [
+        "updated_at"
+      ],
+      "admin_serializer_verified": true,
+      "body_bindings": [
+        {
+          "kind": "chapter",
+          "chapter": 1,
+          "version": 4,
+          "status": "review",
+          "body_sha256": "41bc831f09adf5600cbeafff13634b039cb716566f368f9b4dc07fb8562b121b"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 2,
+          "version": 4,
+          "status": "review",
+          "body_sha256": "adeccea89ea88910bec37735ba5a57148ad557f6af0559d698abc5323cb767af"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 3,
+          "version": 4,
+          "status": "review",
+          "body_sha256": "7f61073aee4289b69b58b87b314575423fde2149991786326762307e5639f9d2"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 4,
+          "version": 4,
+          "status": "review",
+          "body_sha256": "98f153b17cf8552c04ff156e033cff818e86451a588c7a0ece9f45f363957b7a"
+        },
+        {
+          "kind": "outline",
+          "chapter": 0,
+          "version": 4,
+          "status": "review",
+          "body_sha256": "efeb2b126d5977f484f5e3ec80ffe781e55745214cd6c3628824d6a43dfce621"
+        },
+        {
+          "kind": "setting",
+          "chapter": 0,
+          "version": 4,
+          "status": "review",
+          "body_sha256": "d7d1fc28e90417e93428ba9319454238d190d1fcccf7f32d346e15e07827d43d"
+        }
+      ]
+    },
+    {
+      "slug": "ghost-at-his-side",
+      "latest_version": 3,
+      "retained_history": 18,
+      "new_review_documents": 0,
+      "series_changed_fields": [],
+      "admin_serializer_verified": true,
+      "body_bindings": [
+        {
+          "kind": "chapter",
+          "chapter": 1,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "400aa2316a4f37da4855a1c30d046fd84bab2813a73fa245071dffea8245a4ba"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 2,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "28eddf7085a0a0f42bd73918166214d5a40602e989aea08e6bdb0a76f244dfa0"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 3,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "d97df9ab1583ed559da17f20c986e586eaab16da5449b250a542da87c1fbcd38"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 4,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "bc403cf0425c0a95d4ae8855e980d0d02e92dfa924b3c242589294eaa4eaa1ae"
+        },
+        {
+          "kind": "outline",
+          "chapter": 0,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "8e43cc0e3ee4fd1c80866698c528215b13ed7a8f0da303a484248e99417aa493"
+        },
+        {
+          "kind": "setting",
+          "chapter": 0,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "63397015a78564b067476047b6f05faf2b9028d0c353b4d18e26a40e8d0f5d8b"
+        }
+      ]
+    },
+    {
+      "slug": "remembered-by-rival",
+      "latest_version": 3,
+      "retained_history": 18,
+      "new_review_documents": 0,
+      "series_changed_fields": [],
+      "admin_serializer_verified": true,
+      "body_bindings": [
+        {
+          "kind": "chapter",
+          "chapter": 1,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "21bed2bb8c5329955d621dbd66d640b51607afa4aad5451f940ce9f3195bc139"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 2,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "003a3cc5c19b0665d6f32964246c8a2bede93616626e2a59b566386a5b715c6a"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 3,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "83a80b3b2115f2f315021b9440db6742e53de26c0aa07f9720b8a0a59b0870b7"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 4,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "40a24a03b512137ce1acb21b0f74778c2c1dba53412249d796544344aaf582c6"
+        },
+        {
+          "kind": "outline",
+          "chapter": 0,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "3e9cbd660092b2b71768ae85d95a1dac977dda24ec7c513b5e84e2b17a1b8dcc"
+        },
+        {
+          "kind": "setting",
+          "chapter": 0,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "164806089df43e7eae53e7a62a27cfa43f644a8dfff887b11f0a516868c3d89a"
+        }
+      ]
+    },
+    {
+      "slug": "scapegoat-empress",
+      "latest_version": 3,
+      "retained_history": 18,
+      "new_review_documents": 0,
+      "series_changed_fields": [],
+      "admin_serializer_verified": true,
+      "body_bindings": [
+        {
+          "kind": "chapter",
+          "chapter": 1,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "c6d8b428ea96c5da0abeebf48d39fe51d2c753f94a6bdfd0a6c34682c1638faa"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 2,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "7f6d2cbac870a01d0f6672b0240dd5e55328af235df205dda3c975c4b1457625"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 3,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "ec2526d29903c254c3a15f8ab3bfea3a72eb02721d297f06132ec52c94c901e8"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 4,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "587bad1083b2fc393986293e154ae214a110eec06b8791f9a03ba4f6a9f3e981"
+        },
+        {
+          "kind": "outline",
+          "chapter": 0,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "407c9b841da84f02f80d8f7b8fd938e3aa05efae730d4d067bac67b8d17a260e"
+        },
+        {
+          "kind": "setting",
+          "chapter": 0,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "2196c4fa04adc7e2c2e4ec4493fa205fbfdab1801f9e768f70239d78519df9c8"
+        }
+      ]
+    },
+    {
+      "slug": "seventh-passenger",
+      "latest_version": 3,
+      "retained_history": 18,
+      "new_review_documents": 0,
+      "series_changed_fields": [],
+      "admin_serializer_verified": true,
+      "body_bindings": [
+        {
+          "kind": "chapter",
+          "chapter": 1,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "d780ccc6e6cae6d0393f9a78f2991a31e43f9cbe5cfb09d28844309f30c49d05"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 2,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "3bbeb69ab3a3251decf112eeee7f85d7517ec114d038bc90077a573c29718b9e"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 3,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "af8f0346e12f5eee4654a9ce5503aac16ac364190e9e84515c8ee26b3765f49a"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 4,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "f950b3c412b054c58d4e48440013b208812eed2b45ff757c3625226c6b18167c"
+        },
+        {
+          "kind": "outline",
+          "chapter": 0,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "16e8e61793d7722b42dc72a160df4f801cb884b7d7fb02e33c04a32b1de49341"
+        },
+        {
+          "kind": "setting",
+          "chapter": 0,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "ae012b82e0a744ccf9672ddb8c9e3d5311633f1fa525b123b5a96c4e80742c10"
+        }
+      ]
+    },
+    {
+      "slug": "taste-of-the-throne",
+      "latest_version": 3,
+      "retained_history": 18,
+      "new_review_documents": 0,
+      "series_changed_fields": [],
+      "admin_serializer_verified": true,
+      "body_bindings": [
+        {
+          "kind": "chapter",
+          "chapter": 1,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "9be061d75c0257deff0933d890ec0a128318e946d204e1e973609357d7783695"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 2,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "5718bb92d26830c6093e4eadeaca6ba5bb57da714849f00ef6255b7eb70c3a45"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 3,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "aa9fa693490e52e56bcf1f89064119d18ffece72e6a40e35a2f09920a2f39974"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 4,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "3310624e0dbf5e71983d2608cd204dc7978f6a5fc023217cb8adf742701554a2"
+        },
+        {
+          "kind": "outline",
+          "chapter": 0,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "d8a17635bfb6cde4f21c865170bc8aba0110f825c91841c5cd218eb6fe988bc8"
+        },
+        {
+          "kind": "setting",
+          "chapter": 0,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "53e363104fdccb770e915ee06a14c622babb416897290f118feb6cf1041ddc91"
+        }
+      ]
+    },
+    {
+      "slug": "three-needles",
+      "latest_version": 3,
+      "retained_history": 18,
+      "new_review_documents": 0,
+      "series_changed_fields": [],
+      "admin_serializer_verified": true,
+      "body_bindings": [
+        {
+          "kind": "chapter",
+          "chapter": 1,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "040719881ab4b876d9b0a81c1ae772077636d44ac42033e74cc3cb6736764633"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 2,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "b57cb246c83aa9de1e6d92856ac822c3f6d2989347d063bddb7c771cbdf5fc44"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 3,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "6b3681656fef06674966b7b2405b08fa13bd9528f81fd1f8736a8ec4538a1eaa"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 4,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "7140b9caf237a05774a100f3a4ce67f882f778df86cffaf4d7c7b43c54be2588"
+        },
+        {
+          "kind": "outline",
+          "chapter": 0,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "af2ff20b77803caecbc64c34d13195140bdd1cf55f4d883ec27cd32e5fbbcfff"
+        },
+        {
+          "kind": "setting",
+          "chapter": 0,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "aeb9b871eb015fc13127e1599fbe44124cf68c85b461ae45ad9e637c683a0790"
+        }
+      ]
+    },
+    {
+      "slug": "wedding-reckoning",
+      "latest_version": 3,
+      "retained_history": 18,
+      "new_review_documents": 0,
+      "series_changed_fields": [],
+      "admin_serializer_verified": true,
+      "body_bindings": [
+        {
+          "kind": "chapter",
+          "chapter": 1,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "a85f93948078e336c8785423bcef5f59dfe61778d45645ef4c885cd8b54930c5"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 2,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "417727ffcf4db438843771d8e546d941bca244b22ca8056957d96bd430eb3257"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 3,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "de683dcd316752f9a5de285b8e22c85adce86b6b5172a119dea427ba02a99593"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 4,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "e60e00e4ae134275ff9d9d59fa799b6d56defa4a7f72e2c546cd29a45a6b8d28"
+        },
+        {
+          "kind": "outline",
+          "chapter": 0,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "cb7c379f2dd202ee729c7f0874678eb959f0431ca28515618b8157f546c39ed3"
+        },
+        {
+          "kind": "setting",
+          "chapter": 0,
+          "version": 3,
+          "status": "review",
+          "body_sha256": "07559d4f445a465ea357ae095e6f41f794c9f3e0fb1138104708d599017c7488"
+        }
+      ]
+    },
+    {
+      "slug": "reload-first-day",
+      "latest_version": 4,
+      "retained_history": 18,
+      "new_review_documents": 6,
+      "series_changed_fields": [
+        "updated_at"
+      ],
+      "admin_serializer_verified": true,
+      "body_bindings": [
+        {
+          "kind": "chapter",
+          "chapter": 1,
+          "version": 4,
+          "status": "review",
+          "body_sha256": "4358954e878b48d867c4b97332a1dec593076588658a32e764be72ade2cd1985"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 2,
+          "version": 4,
+          "status": "review",
+          "body_sha256": "227665fcbd24181ed9c91838931f53a2535cf01db3d16331e68ad706635ce23f"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 3,
+          "version": 4,
+          "status": "review",
+          "body_sha256": "8788e1ab696fcd16bddf4a6b48f25eac695e59d93d05104d7d2a230bed3a31f3"
+        },
+        {
+          "kind": "chapter",
+          "chapter": 4,
+          "version": 4,
+          "status": "review",
+          "body_sha256": "494ce0a29674a4b25ce69ece384eccfbfd91d4dc1a49ee7dbc10a91f7de2f837"
+        },
+        {
+          "kind": "outline",
+          "chapter": 0,
+          "version": 4,
+          "status": "review",
+          "body_sha256": "4851edecee370739a212d44e04d61763d28f2e8647e20675dd6bcda38a963f32"
+        },
+        {
+          "kind": "setting",
+          "chapter": 0,
+          "version": 4,
+          "status": "review",
+          "body_sha256": "a14a9d2b50279e9631453a29574957d2fd61a0de4cd90d4274d269b09421706f"
+        }
+      ]
+    }
+  ]
+}

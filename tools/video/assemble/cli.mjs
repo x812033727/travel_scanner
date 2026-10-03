@@ -10,6 +10,7 @@ import { parseArgs } from "node:util";
 import { burnIn, hasPictures, illustrated, isDrama, keyframesHash, lookHash, mixHash, picturesHash, sfxHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
 import { presentationTimeline, selectBrandingForBuild } from "../core/branding.mjs";
 import { productionClipProblems } from "../core/lint.mjs";
+import { audioEvidenceProblems } from "../core/audio-evidence.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { FPS, speechHash, visualHash } from "../core/timeline.mjs";
@@ -121,6 +122,11 @@ export async function run(command, args, ctx) {
   const speech = speechHash(doc, lexicon);
   if (!timeline || timeline.speech_hash !== speech) {
     ctx.stderr.write("timeline.json is missing or was built for an older script; run tts first\n");
+    return EXIT.usage;
+  }
+  const audioProblems = audioEvidenceProblems(timeline, workdir);
+  if (audioProblems.length) {
+    ctx.stderr.write(`narration needs current audio evidence before assembly: ${audioProblems.join("; ")}\n`);
     return EXIT.usage;
   }
   const manifest = readJson(path.join(workdir, ARTIFACTS.frames), null);
@@ -361,6 +367,7 @@ export async function run(command, args, ctx) {
   const checks = {
     ok: problems.length === 0,
     speech_hash: speech,
+    narration_sha256: timeline.audio_evidence.narration_sha256,
     visual_hash: visual,
     ...(drama ? { look_hash: inputs.look, clips_hash: inputs.clips.clips_hash, subtitles_hash: subtitlesHash(doc), mix_hash: mixHash(doc) } : {}),
     // Illustrated slides bind the cut to the pictures it was made from; any video with music or

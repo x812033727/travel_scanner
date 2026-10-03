@@ -4,7 +4,7 @@ import path from "node:path";
 import test from "node:test";
 
 import { EXIT, main } from "../cli.mjs";
-import { fixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
+import { fixture, fixtureLexicon, sandbox, writeAudioFixture } from "../core/fixtures/load.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { buildTimeline, SAMPLE_RATE, SAMPLES_PER_FRAME, speechHash, visualHash } from "../core/timeline.mjs";
 import { assembleItem, ITEM_IDS } from "./checks.mjs";
@@ -40,7 +40,8 @@ test("QA forwards actual body and presentation timelines to its existing assembl
   const timeline = { ...buildTimeline(doc, samples), speech_hash: speechHash(doc, fixtureLexicon()) };
   const checks = { ok: true, speech_hash: timeline.speech_hash, visual_hash: visualHash(doc), metrics: { frames: timeline.total_frames } };
   const save = () => {
-    writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
+    writeAudioFixture(timeline, box.workdir);
+    checks.narration_sha256 = timeline.audio_evidence.narration_sha256;
     writeFileSync(path.join(box.workdir, "checks.json"), JSON.stringify(checks));
   };
   save();

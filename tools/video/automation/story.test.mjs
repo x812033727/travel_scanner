@@ -11,7 +11,7 @@ import test from "node:test";
 import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { readApprovals } from "../core/approvals.mjs";
 import { clipsHash, EXPLAINER_PRESET, hasCast, isExplainer, lookHash, mixHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
-import { explainerFixture, sandbox, storyFixture, storySeries } from "../core/fixtures/load.mjs";
+import { explainerFixture, sandbox, storyFixture, storySeries, writeAudioFixture } from "../core/fixtures/load.mjs";
 import { BRIEF_SECTIONS_DRAMA, briefSectionsFor } from "../core/lint.mjs";
 import { isStory } from "../core/story.mjs";
 import { readJson } from "../core/paths.mjs";
@@ -325,7 +325,7 @@ function storyWorld({ answers = standardAnswers(), raw = {}, seconds = null, set
     if (name === "assemble") {
       write("final.mp4", "final cut");
       const clips = readJson(path.join(workdir, "clips", "manifest.json"));
-      write("checks.json", { ok: true, speech_hash: speechHash(doc, lexicon()), visual_hash: visualHash(doc), look_hash: lookHash(doc), clips_hash: clips.clips_hash, subtitles_hash: subtitlesHash(doc), mix_hash: mixHash(doc), problems: [] });
+      write("checks.json", { ok: true, speech_hash: speechHash(doc, lexicon()), narration_sha256: readJson(path.join(workdir, "timeline.json")).audio_evidence.narration_sha256, visual_hash: visualHash(doc), look_hash: lookHash(doc), clips_hash: clips.clips_hash, subtitles_hash: subtitlesHash(doc), mix_hash: mixHash(doc), problems: [] });
       return { code: 0, out: "assembled" };
     }
     if (name === "captions") {
@@ -366,8 +366,7 @@ function writeTimeline(doc, lexicon, workdir, seconds) {
   const factor = (seconds * 30 - (first.total_frames - speech)) / speech;
   const scaled = Object.fromEntries(Object.entries(estimated).map(([id, samples]) => [id, Math.max(1600, Math.round(samples * factor))]));
   mkdirSync(workdir, { recursive: true });
-  writeFileSync(path.join(workdir, "timeline.json"), `${JSON.stringify({ ...buildTimeline(doc, scaled), speech_hash: speechHash(doc, lexicon) }, null, 2)}\n`);
-  writeFileSync(path.join(workdir, "narration.wav"), "RIFF");
+  writeAudioFixture({ ...buildTimeline(doc, scaled), speech_hash: speechHash(doc, lexicon) }, workdir);
 }
 
 async function steps(automation, count) {
