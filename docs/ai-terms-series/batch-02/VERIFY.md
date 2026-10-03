@@ -23,4 +23,6 @@
 - 不碰 `apps/`、別人的目錄、`catalogue.json`、任務票；不跑 git；不跑不帶 `--dry-run` 的 ingest。
 - 不重寫整篇，不改 slug，不加指派以外的站內連結。
 
+可以（2026-10-03 起）：改完 `pack.json` 後，同步更新同目錄的 `notes.md` 與 `research.json`（換掉的來源、`running_text_characters` 用 `app.guides.pack_ingest._body_length` 實算）。
+
 最後回報一行：`facts_changed`、dry-run 結果、你懷疑但沒改的事。
