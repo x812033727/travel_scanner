@@ -54,6 +54,7 @@ MSYS_NO_PATHCONV=1 <SSH> "/root/deploy-travel-scanner.sh --dry-run"
 MSYS_NO_PATHCONV=1 <SSH> "bash -s --" < .agents/skills/deploy/scripts/host-deploy.sh
 MSYS_NO_PATHCONV=1 <SSH> "bash -s -- --force" < .agents/skills/deploy/scripts/host-deploy.sh
 # 4 驗證：填入剛部署的 squash SHA，一支腳本一次 SSH 跑完（plink -m 不傳參數，所以用 sed 填）
+TMP=$(mktemp -d)   # repo 外任何暫存目錄都行（Claude Code 用 session 的 scratchpad 也可以）
 sed 's/^EXPECTED_SHA=""$/EXPECTED_SHA="<squash sha>"/' .agents/skills/deploy/scripts/host-verify.sh > "$TMP/verify.sh"
 MSYS_NO_PATHCONV=1 <SSH> -m "$TMP/verify.sh" | grep -E '^(PASS|FAIL|TOTAL|SHA |WARN)'
 # 只想看單項時的手動版

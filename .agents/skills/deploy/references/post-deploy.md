@@ -8,7 +8,7 @@
 | migration | `docker compose -f docker-compose.prod.yml exec -T api alembic current` | 等於 repo 最新的 revision |
 | 內部健康 | `curl 127.0.0.1:8090/health`、`/ready`；web `curl -sI 127.0.0.1:8091/` | 200；公開的 `/api/travel/health` 是 404，不是故障 |
 | 公開站 | `curl -s -o /dev/null -w '%{http_code} %{time_total}s' https://mokaair.com/zh-TW` | 200、小於 1 秒；`/` 回 307 到 `/zh-TW` 是正常的語系導向 |
-| 容器 | `docker compose -f docker-compose.prod.yml ps` | 七個應用容器 Up，映像標籤 `:local`（分階段驅動部署的會是 `:<sha>`） |
+| 容器 | `docker compose -f docker-compose.prod.yml --profile hotspots --profile news --profile video ps -a` | 13 個 Up（postgres、redis 加十一個應用容器；`migrate` 是 `Exited (0)`），應用映像標籤 `:local`（分階段驅動部署的會是 `:<sha>`） |
 | 新程式真的在跑 | 抓一個這次 diff 加進的字串：`curl -s <頁面> \| grep -c '<字串>'` | 有；內容包的改動要等匯入才會出現 |
 
 抓公開頁面要慢慢來：邊緣層對頁面有 5 r/s 的限流，自己的驗證迴圈跑太快會拿到 429，那是自己的節奏，不是站台壞了。腳本一律循序、每次至少 1 秒。
@@ -19,6 +19,7 @@
 最後 `TOTAL pass=<n> fail=<n>`。2026-10-03 部署 5af4ffebf 時 15 項全過，約 40 秒。
 
 ```bash
+TMP=$(mktemp -d)   # repo 外任何暫存目錄都行（Claude Code 用 session 的 scratchpad 也可以）
 sed 's/^EXPECTED_SHA=""$/EXPECTED_SHA="<squash sha>"/' .agents/skills/deploy/scripts/host-verify.sh > "$TMP/verify.sh"
 MSYS_NO_PATHCONV=1 <SSH> -m "$TMP/verify.sh" > "$TMP/verify.out" 2>&1
 grep -E '^(PASS|FAIL|TOTAL|SHA |WARN)' "$TMP/verify.out"

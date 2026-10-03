@@ -3,6 +3,7 @@
 # connection, every check prints "PASS <id> <measured values>" or "FAIL <id> <measured values>" and the
 # end prints "TOTAL pass=<n> fail=<n>". Send it as a file:
 #
+#   TMP=$(mktemp -d)   # any scratch directory outside the repo
 #   sed 's/^EXPECTED_SHA=""$/EXPECTED_SHA="<squash sha>"/' host-verify.sh > "$TMP/verify.sh"
 #   MSYS_NO_PATHCONV=1 <SSH> -m "$TMP/verify.sh"
 #

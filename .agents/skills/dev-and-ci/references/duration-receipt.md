@@ -20,14 +20,16 @@
 ## 怎麼補（增量）
 
 1. 作者把程式改完、提交。**不要**自己動 `review.md`／`review.json`。
-2. 另開一個**獨立審查代理**，身分像 `claude-pr-review-<PR 號>`（還沒開 PR 就先開草稿 PR 拿號碼）。給它：綁住的檔的 diff 範圍
+2. 另開一個**獨立審查代理**，身分像 `claude-pr-review-<PR 號>`；還沒有 PR 號就用分支名（`claude-pr-review-<分支短名>`，review.md 的「Branch illustration-polish increment」就是這樣），段落標題寫 `## Branch <名字> increment: <k> files (<日期>)`。規則只要求 `reviewer_agent` 非空且不等於 `author_agent`。給它：綁住的檔的 diff 範圍
    （`git diff <merge-base>..HEAD` 交集 `REVIEW_FILES`）、要寫的段落標題格式、要用的 commit 訊息。它只能改那兩個收據檔、不推。
 3. 它要做的事：讀 `review.mjs` 與 `review.test.mjs` 知道規則；逐檔讀 diff，確認**沒有改到時長規則**
    （600／780 秒目標、480 秒實測下限、8 分鐘下限、`target_minutes`、`MIN_EPISODE`、`VIDEO_MIN_EPISODE_MINUTES`、
    `runtime_spec`、`action_seconds`、來源雜湊、covered 狀態）；在 `review.md` 的 `## Reviewed SHA256 bindings` 之前加一節
    `## PR #<n> <名字> increment: <k> files (<日期>)`（照前幾節的格式：Reviewer／Author／Scope／Baseline／Findings／Ran／Non-claims／Verdict），
-   更新表格裡那幾列；`review.json` 改 `checked_on`、`author_agent`、`reviewer_agent`、那幾個雜湊，最後算 `report_sha256`
-   （`review.md` 的 bytes，LF、無 BOM、結尾換行不要動）；跑 `cli.mjs check` 要 `PASS`、`review.test.mjs` 要綠；只提交兩個收據檔。
+   更新表格裡那幾列；`review.json` 改 `checked_on`、`author_agent`、`reviewer_agent`、那幾個雜湊（每個是工作樹檔案 bytes 的 SHA-256，
+   和 `review.mjs` 的 `readFileSync` 一樣：`sha256sum <路徑>`，Git Bash 與 Linux 都有；不是 `git hash-object`，`cli.mjs check` 也只印路徑不印值；
+   `.gitattributes` 釘 LF，所以 Windows 上的 bytes 等於 repo 的），表格那幾列填同一個值，最後算 `report_sha256`
+   （`sha256sum docs/videos/long-form/review.md`；`review.md` 要 LF、無 BOM、結尾換行不要動）；跑 `cli.mjs check` 要 `PASS`、`review.test.mjs` 要綠；只提交兩個收據檔。
 4. 併 main 之後再來一次，段落叫 `## PR #<n> merge with #<m> follow-up`：兩邊的段落都留、表格列取合併後樹的雜湊
    （兩邊都改同一檔時，合併後的檔要等於哪一邊就綁那一邊；像 #1168 把測試檔改回 main 的版本，再綁 main 的雜湊）。
 5. 一支分支多次增量很正常（#1168 做了四次：原始改動、併 main、修測試、再併 main）。每次都重跑 `cli.mjs check`。
