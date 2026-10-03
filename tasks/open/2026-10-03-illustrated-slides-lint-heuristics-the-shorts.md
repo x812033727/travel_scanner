@@ -1,14 +1,14 @@
 ---
 id: 2026-10-03-illustrated-slides-lint-heuristics-the-shorts
 title: Illustrated slides lint heuristics, the Shorts crop figure and an end-to-end 2K test
-status: in-progress
+status: review
 priority: P1
 area: tools
 owner: claude-fable-5-1-illustration-round2
 claimed_at: 2026-10-03T08:24:13Z
 created_at: 2026-10-03T04:27:39Z
 completed_at:
-branch:
+branch: claude/video-production-tutorial-optimization-f5d1bc
 depends_on: []
 scope:
   - tools/video/core/drama.mjs

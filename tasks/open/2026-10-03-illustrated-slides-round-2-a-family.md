@@ -1,14 +1,14 @@
 ---
 id: 2026-10-03-illustrated-slides-round-2-a-family
 title: Illustrated slides round 2: a family of print looks, a style anchor per video, a sharper craft judge and lighting variety
-status: in-progress
+status: review
 priority: P2
 area: tools
 owner: claude-fable-5-1-illustration-round2
 claimed_at: 2026-10-03T08:25:14Z
 created_at: 2026-10-03T08:24:18Z
 completed_at:
-branch:
+branch: claude/video-production-tutorial-optimization-f5d1bc
 depends_on: []
 scope:
   - tools/video/core/drama.mjs
