@@ -33,7 +33,7 @@ The narration is TOLD, not explained (the storytelling register, docs/videos/ILL
   real reversal; never fake one.
 - Every chapter's LAST sentence is the question the next chapter answers (「那它到底怎麼做到的？」);
   the last chapter's last sentence answers the opening question instead. Never 「接下來我們來看」.
-- Every chapter has at least one concrete scene or comparison a viewer can picture (a desk at 2 am,
+- Every chapter has at least one concrete scene or comparison a viewer can picture (a kitchen at 2 am,
   a queue at a counter, 「等於一杯咖啡的錢」), and the pictures ("shot" scenes) draw those scenes.
 - Sentences alternate long and short; a reveal is a short sentence. Numbers arrive one at a time,
   each with what it means in the viewer's day.
