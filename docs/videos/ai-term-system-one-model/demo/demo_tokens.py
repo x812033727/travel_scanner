@@ -58,8 +58,18 @@ EVENT_DATE_FORCED = ChoiceQuestion(
     },
 )
 
+# The fix, asked in the same request: the same two dates plus a way to say the email gives none
+# (docs.typesafe.ai/primitives/choice: "Add an `other` or `none of the above` option when the list
+# might not cover every input"). Pre-registered reading: not_stated wins.
+EVENT_DATE_FORCED_FIXED = ChoiceQuestion(
+    instructions=EVENT_DATE_FORCED.instructions,
+    criteria={**EVENT_DATE_FORCED.criteria,
+              "not_stated": "The email gives no calendar date for the class."},
+)
+
 core = {"event_date": EVENT_DATE, "headcount_is_estimate": HEADCOUNT_IS_ESTIMATE}
-full = {**core, "event_date_reversed": EVENT_DATE_REVERSED, "event_date_forced": EVENT_DATE_FORCED}
+full = {**core, "event_date_reversed": EVENT_DATE_REVERSED, "event_date_forced": EVENT_DATE_FORCED,
+        "event_date_forced_fixed": EVENT_DATE_FORCED_FIXED}
 
 
 def plan(state, questions):

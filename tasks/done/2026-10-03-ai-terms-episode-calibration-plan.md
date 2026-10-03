@@ -62,3 +62,5 @@ Read `docs/videos/ai-term-calibration/brief.md` against
 - The pilots used recipes A (token), B (context window) and C (RAG), so the recommended
   option uses A to avoid repeating C after RAG.
 - `/claim-credit` was requested in the session; no such skill or command exists here.
+
+- **Superseded 2026-10-03.** The owner meant TypeSafe's launch post itself; the episode is now planned in `2026-10-03-ai-terms-episode-system-one-plan`. Verification that day refuted three sentences in this brief about the site's own use of Jev (the non-English downgrade, the thresholds that decide, and the shadow measurement having produced numbers); they are corrected in the brief.

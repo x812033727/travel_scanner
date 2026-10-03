@@ -2,11 +2,13 @@
 
 slug：`ai-term-calibration`｜`source_guide`：`ai-term-calibration`（文章還沒寫，見§素材）｜系列「AI 名詞十分鐘」（不編集數）｜企劃日 2026-10-03｜目標 9–11 分鐘｜插圖投影片（`format: slides`、`look: tech-story`）、說書式旁白（Gemini Sulafat）、繁中 CC｜建議卡片配方 **A 先誤解**｜企劃票 `2026-10-03-ai-terms-episode-calibration-plan`
 
+> **狀態（2026-10-03）**：站主要的是 TypeSafe 發表文那一集，已另外企劃成 [`../ai-term-system-one-model/`](../ai-term-system-one-model/brief.md)。這份校準企劃保留給站主決定要不要另做一集，它的兩張票設成 `blocked`。同日的對抗式查核推翻了原稿三句對站上做法的描述，已在下面改正。
+
 ## 為什麼是「校準」，不是「Jev」
 
 這一集來自站主要把 Jev 的教學做成名詞系列的一集。系列規則是一集講一個通用名詞，不講產品與模型名稱（`../ai-terms/README.md` §查核規則），而 Jev 本身已經有一張以它為題的 P1 試片票（`2026-09-29-video-pilot-jev-decision-model`，標題「爆紅的 Jev 不聊天只做決定」）。
 
-所以這一集講 Jev 背後那個不會過期的名詞：**校準**。也就是一個 AI 說「九成確定」的時候，它是不是真的十次對九次。Jev 的整個賣點是「每個答案都附上校準過的信心」，站上用它的方式（三級門檻、非英文降級、先影子測量再定門檻）正好是「怎麼對待一個信心分數」的真實示範。
+所以這一集講 Jev 背後那個不會過期的名詞：**校準**。也就是一個 AI 說「九成確定」的時候，它是不是真的十次對九次。Jev 的賣點是廠商說它被訓練成給出校準過的判斷（"trained with RLCD to return calibrated decisions"，https://docs.typesafe.ai/models ）：是非題直接回一個機率，選擇題和評分題另附一個信心值。站上替它寫好的做法（三級門檻、非英文預設先給人看、先影子測量再定門檻）可以當「怎麼對待一個信心分數」的示範，連同還沒做到的地方：影子測量還沒累積到數字，新聞和影片的自動流程也已經由站主決定直接採用它的判斷。
 
 分工：Jev 那支講這個產品是什麼、快多少、便宜多少；這一集講任何會給分數的 AI 都適用的判斷方法，Jev 只當「我們站上怎麼做」的例子出現。旁白要不要說出 Jev 的名字，是站主要決定的事（§站主要決定的事）。
 
@@ -33,9 +35,9 @@ slug：`ai-term-calibration`｜`source_guide`：`ai-term-calibration`（文章�
 
 第一，信不信答案：分數高不等於對。我先拿自己的資料量一次「說九成的那些題目，真的對幾成」，量過才信。
 
-第二，給不給權限：讓 AI 自動做事的界線寫在程式的門檻裡，不寫在提示詞裡。我們站上用一個只回答機率、不寫句子的判斷模型：九成以上才可能自動採用，五成到九成交給人看，以下不動。中文內容即使把握很高，也先降成「交給人看」，因為廠商自己說英文最準，其他語言沒有公布數字。
+第二，給不給權限：讓 AI 自動做事的界線寫在程式的門檻裡，不寫在提示詞裡。我們站上用一個不寫句子、只回答問題的判斷模型。程式裡預設的三段是：九成以上可以自動做、五成到九成交給人看、五成以下不動；這兩個數字是照廠商文件的範例先放的，還沒用我們自己的資料量過。程式裡也有一個預設關著的開關：非英文內容就算把握很高，也只到「交給人看」，因為廠商自己說英文最準、其他語言沒有公布數字。但這套預設只用在只記錄的測量和離線審稿工具；新聞自動發布和影片自動審核，站主已經決定讓它直接判斷中文內容，我們還沒有自己的中文準度數字。
 
-第三，花不花工夫：門檻不是一次設好的。我們先讓它在旁邊「只記錄、不做決定」跑了一段時間，拿它的答案和現有做法比對，再決定門檻放哪裡。
+第三，花不花工夫：門檻不是一次設好的。我們從 2026-09-22 起讓它在景點攻略搜尋旁邊「只記錄、不做決定」，打算拿它的答案跟現有的 AI 評分比對。但第一份報告是零筆，因為還沒有人跑那個搜尋；到今天我們還沒有用量出來的數字定過任何門檻，這是還沒做完的功課。
 
 示範是我們自己跑的計算，不是任何產品的畫面；我不說哪個模型比較準。
 
@@ -87,7 +89,7 @@ slug：`ai-term-calibration`｜`source_guide`：`ai-term-calibration`（文章�
 | 2 | 你以為是答對機率，其實要先校準 | 85 | `chapter`（你以為那句）；`shot`：氣象主播指著「降雨七成」的看板；`shot`：一本日曆，標了七成的那些天，十天裡七天畫了雨傘（校準的意思）；`big`：868 次「幾乎肯定」→ 對 52%；`shot`：把握十足的算命攤；`shot`：兩個同樣自信的射箭手，一個全中、一個散一地（把握一樣，準度不同）；`quote`：scikit-learn 文件對「校準良好」的原句與譯文（1）；`shot`：一把沒有刻度的尺（沒校準的分數只能排順序） | 「那要怎麼知道一個分數有沒有校準？」 |
 | 3 | 怎麼檢查一個分數準不準 | 130 | `chapter`；`shot`：一疊答案卷依把握分進五個籃子；`steps`：記下把握與對錯 → 依把握分組 → 每組算答對率 → 跟它說的把握比（4）；`shot`：每個籃子上掛一個小秤；`diagram`：可靠度圖（橫軸說的把握、縱軸實際答對率，對角線是完美校準；文章圖解，沒有就由撰稿用 `table` 代替）；`shot`：對角線上方與下方的兩條路（低估與高估）；`quote`：Guo 等人 2017 論文摘要原句（現代神經網路校準不佳）與譯文（1）；`shot`：調音師轉一個旋鈕（溫度縮放：只調一個參數）；`shot`：一個人把「信心」兩個字的標籤撕開，下面還有一層（廠商說的信心，未必是答對機率）；`shot`：手懸在「自動處理」按鈕上 | 「那我們真的量一次，會看到什麼？」 |
 | 4 | 實測：同一個模型，校準前後 | 150 | `chapter`；`shot`：一大疊手寫數字卡；`chat`：觀眾「它說 99% 是 8，我可以直接用嗎？」／示意回覆「先看它說 99% 的那些題目，對了幾題」（2）；`shot`：兩台同型號的分類機並排；`table`：三個模型 × 說「幾乎肯定」的次數、實際答對率（3）；`shot`：蓋滿「核准」章的文件堆，一半是錯的（失敗的樣子）；`stats`：868／52%、450／99.6%、101 題／97%（3）；`shot`：一台太謹慎的機器把所有東西推回給人（校準過頭）；`shot`：兩把尺並排，一把有刻度（準確不等於校準）；`shot`：筆記本上兩欄「把握／對錯」 | 「量出來不準，什麼時候才需要在意？」 |
-| 5 | 什麼時候該在意這個分數 | 100 | `chapter`（只是聊天不用管）；`bullets`：程式要依分數自動做事時、換了語言或資料時、不同動作風險不同時（3）；`shot`：一條分成三岔的路（自動做、交給人、不動）；`diagram`：三級門檻（≥0.9 自動、0.5–0.9 給人看、<0.5 不動，非英文一律先給人看）；`shot`：銀行櫃台，查餘額的人直接過，轉帳的人被請去確認（風險越高門檻越高，廠商文件的例子）；`shot`：一台機器在旁邊安靜記錄、不碰開關（影子測量）；`shot`：兩本字典，一本英文、一本中文，中文那本的尺沒刻度；`shot`：手寫門檻數字被釘在牆上（門檻來自自己量過的資料） | 「那校準跟準確率、跟 AI 評審，是同一件事嗎？」 |
+| 5 | 什麼時候該在意這個分數 | 100 | `chapter`（只是聊天不用管）；`bullets`：程式要依分數自動做事時、換了語言或資料時、不同動作風險不同時（3）；`shot`：一條分成三岔的路（自動做、交給人、不動）；`diagram`：三級門檻（≥0.9 可以自動、0.5 到 0.9 交給人看、<0.5 不動；開關關著時，非英文內容原本「可以自動」的改成交給人看），標明是程式的設計範例，不是站上每個關卡的規則；`shot`：銀行櫃台，查餘額的人直接過，轉帳的人被請去確認（風險越高門檻越高，廠商文件的例子）；`shot`：一台機器在旁邊安靜記錄、不碰開關（影子測量）；`shot`：兩本字典，一本英文、一本中文，中文那本的尺沒刻度；`shot`：手寫門檻數字被釘在牆上（門檻應該來自自己量過的資料；這是建議，不是說站上已經這樣做） | 「那校準跟準確率、跟 AI 評審，是同一件事嗎？」 |
 | 6 | 校準、準確率、信心、AI 評審差在哪 | 70 | `chapter`；`compare`：校準 vs 準確率（2）；`shot`：一個每次都說「大概吧」的人（準確但沒用的把握）；`shot`：評審席上的機器人舉分數牌，旁邊有人拿標準答案對（AI 評審的分數也要校準）；`shot`：一張機率長條圖與一個儀表（信心是分布的集中程度，不是答對機率） | 「所以，AI 說的把握，到底算不算數？」 |
 | 7 | 把握是要被檢查的數字 | 45 | `shot`：回到開場的考生，星星被擦掉一半；`chat`：觀眾「分數越高越可信？」／站主「先量它說九成的那些題，真的對幾成」（2）；`shot`：書架上兩個信封（說明欄的文章與下一集）；`outro`：把握，是要被檢查的數字 | 最後一句回答開場：「它說的把握，量過才算數。」 |
 
@@ -137,10 +139,10 @@ slug：`ai-term-calibration`｜`source_guide`：`ai-term-calibration`（文章�
 - scikit-learn 對校準的定義原句：「a well calibrated (binary) classifier should classify the samples such that among the samples to which it gave a predict_proba value close to, say, 0.8, approximately 80% actually belong to the positive class.」https://scikit-learn.org/stable/modules/calibration.html （stable 版文件，措辭會改；2026-10-03 開過）
 - Guo 等人 2017 年 ICML 論文摘要原句：「modern neural networks, unlike those from a decade ago, are poorly calibrated」與「temperature scaling -- a single-parameter variant of Platt Scaling -- is surprisingly effective」。https://arxiv.org/abs/1706.04599 （2026-10-03 開過）。只能說「2017 年的研究發現」，不能說成今天所有模型都這樣。
 - TypeSafe 的 confidence 定義：它是機率分布集中程度的摘要，全部機率在一個選項時是 1、平均分散時是 0；noul 答案本身就是機率，沒有另外的 confidence。https://docs.typesafe.ai/confidence （2026-10-03 開過）
-- TypeSafe 的門檻建議：「Start with conservative thresholds, test with your own data, and adjust as you observe results.」範例是查餘額 0.6、核准轉帳 0.85。https://docs.typesafe.ai/confidence 、https://docs.typesafe.ai/patterns/confidence-routing 。這兩個數字是廠商範例，旁白不講成通則。
+- TypeSafe 的門檻建議（https://docs.typesafe.ai/confidence ）：「Start with conservative thresholds, test with your own data, and adjust as you observe results.」範例有兩組：Confidence 頁是低於 0.5 交給人、核准轉帳要高於 0.9（站上的預設 0.9／0.5 就是照這組）；https://docs.typesafe.ai/patterns/confidence-routing 是低於 0.6 交給人、查餘額 0.6 以上就做、核准轉帳高於 0.85 才自動。都是廠商範例，旁白不講成通則。
 - TypeSafe 的語言說明：「English is the primary training language and where accuracy is currently best. Other languages, including CJK scripts, are handled but not equally well」。https://docs.typesafe.ai/models （2026-10-03 開過）
-- 站上的設定：預設門檻 0.9 與 0.5（`apps/api/app/config.py` 的 `jev_act_confidence`、`jev_flag_confidence`）、非英文降級開關預設關（`jev_cjk_autopilot_enabled`），以及從 2026-09-22 起正式站只記錄、不做決定的影子測量（`README.md` 的 Jev 段落）。寫稿當天到 repo 與後台確認，改過就照新值講。
-- 影子測量的實際一致率：寫稿當天如果站主同意，在主機跑 `python -m app.cli jev-shadow-report`，取整體與分語系的一致率當第 5 章的真實數字。沒跑就不講數字，只講做法。
+- 站上的設定：預設門檻 0.9 與 0.5（`apps/api/app/config.py:519-520`，註解寫明是廠商範例的佔位值）；非英文自動採用開關 `jev_cjk_autopilot_enabled` 預設關（`config.py:526`），也就是預設把非英文的「直接採用」降成「給人看」，但只管走 `route_answer` 的地方（景點攻略影子測量、`pack_cli jev-review`）。新聞自動發布寫死 `cjk_autopilot=True`（`apps/api/app/news_automation/ai.py:352-361`），門檻在後台（2026-09-26 紀錄從 0.9 調成 0.55）；影片旁白核對 0.5（`tools/video/tts/check.mjs:53`）、大綱挑選 0.6／0.3（`apps/api/app/video_automation/judge.py:64-79`）。影子測量：`README.md` 寫 2026-09-22 起正式站開著，但只有管理員跑景點攻略「AI 搜尋」才會留紀錄，第一份報告是 `runs_with_shadow_rows: 0`（`tasks/open/2026-09-22-jev-review-advisory-tool.md:221`），repo 裡沒有之後的報告。寫稿當天到 repo 與後台確認，改過就照新值講。
+- 影子測量的一致率：寫稿當天如果站主同意，在主機跑 `python -m app.cli jev-shadow-report`。這份報告的「一致率」是 Jev（是非題機率 0.9 以上算「收」）跟現有 AI 評分（relevance ≥ 60）判斷一樣的比例，不是答對率，也不是校準；旁白只能說「跟另一個 AI 的判斷一致幾成」。第一份報告是 0 筆，寫稿當天仍是 0 或很少就不講數字，只講做法。
 
 ## 素材
 
@@ -148,7 +150,7 @@ slug：`ai-term-calibration`｜`source_guide`：`ai-term-calibration`（文章�
 - 圖解：文章的 `apps/web/public/guides/ai-term-calibration/diagram-1.svg`。建議畫可靠度圖（說的把握 × 實際答對率，含對角線），第 3 章 `diagram` 直接用。第 5 章的三級門檻圖由撰稿用 `diagram` 版型自己排，不重畫文章那張。
 - 示範資料：[`demo-log.md`](demo-log.md)，腳本與輸出逐字。
 - 官方頁（2026-10-03 開過，都回 200）：scikit-learn「Probability calibration」、arXiv 1706.04599 摘要頁、TypeSafe 文件的 Confidence、Confidence-gated routing、Models、Jev 1.13 jaggedness。
-- 站上程式（Mokaair 自有）：`apps/api/app/ai/jev.py` 的 `route`、`route_answer`，`apps/api/app/config.py` 的門檻設定，`apps/api/app/hotspots/ai_search.py` 的影子測量。只講做法，不放程式畫面。
+- 站上程式（Mokaair 自有）：`apps/api/app/ai/jev.py` 的 `route`、`route_answer`，`apps/api/app/config.py` 的門檻設定，`apps/api/app/hotspots/ai_search.py` 的影子測量；真正會自動放行的地方另有 `apps/api/app/news_automation/ai.py` 的發布判斷（寫死 `cjk_autopilot=True`）與重複判斷（0.85／0.25）、`apps/api/app/video_automation/judge.py` 的自動核准門檻、`tools/video/tts/check.mjs` 的 `DEFAULT_THRESHOLD = 0.5`。只講做法，不放程式畫面。
 - 插圖：全部 AI 生成（look `tech-story`），畫答案卷與星星、氣象看板與雨傘、籃子與小秤、調音旋鈕、三岔路、銀行櫃台、安靜記錄的機器、手寫數字卡、蓋滿章的文件堆。不畫字、logo、真人、產品畫面。縮圖用「每題都畫滿五顆星的考生」那個 shot。
 - 鄰近名詞：LLM-as-a-Judge（`ai-term-llm-as-a-judge`）、Evals（`ai-term-evals`）、人工介入（`ai-term-human-in-the-loop`）、幻覺（`ai-hallucination-fact-check`）。片尾指「幻覺」那一集或文章：一個是「把握高卻答錯」，一個是「說得流暢卻是假的」。
 
@@ -157,7 +159,7 @@ slug：`ai-term-calibration`｜`source_guide`：`ai-term-calibration`（文章�
 - 不做 Jev 的產品介紹：速度倍數、價格、RLCD 訓練法、跟大型語言模型比快多少，都屬於 `jev-decision-model-explained` 那支。這集頂多一句「我們站上用的一個判斷模型」。
 - 不講價格、方案、排行榜、哪個模型校準得比較好。
 - 不講公式：ECE、Brier 分數、isotonic 與 Platt 的數學都不講。溫度縮放只講「調一個旋鈕」。
-- 不把廠商範例的門檻（0.6、0.85）或站上的預設值（0.9、0.5）講成「該設多少」。只講門檻從自己的資料量出來。
+- 不把廠商文件的範例門檻（Confidence 頁的 0.5、0.9；confidence-routing 頁的 0.6、0.85）講成「該設多少」；站上的預設 0.9、0.5 就是照前者先放的佔位值，也不能當成量過的數字。只講門檻要從自己的資料量出來。
 - 不用醫療、金融、法律的例子示範（頻道立場第 7 條）。銀行櫃台只當「風險越高門檻越高」的比喻，不講任何金融建議。
 - 不說「校準讓模型變聰明」。校準改的是分數的意思，不是模型會不會。
 - 不冒充任何產品的介面：`chat` 卡是自製對話卡，回覆標「示意回覆」。
@@ -196,6 +198,6 @@ slug：`ai-term-calibration`｜`source_guide`：`ai-term-calibration`（文章�
 
 1. **名詞**：建議「校準」。另一個選擇是「判斷模型 vs 生成模型」，比較貼近 Jev 本身，但它不是通行名詞，系列規則要說明「這是誰的說法」，觀眾也不會這樣搜尋。
 2. **旁白要不要說出 Jev**：建議不說，只說「我們站上用的一個判斷模型」，說明欄連到 Jev 那支影片。要說的話只說一次，而且不帶任何速度或價格數字。
-3. **影子測量的真實數字**：要不要在寫稿當天跑 `jev-shadow-report`，把站上的一致率放進第 5 章。有真實數字最能證明這是原創內容；沒有也能講做法。
+3. **影子測量的真實數字**：要不要在寫稿當天跑 `jev-shadow-report`，把「跟另一個 AI 判斷一致的比例」放進第 5 章（那不是準度，也不是校準）。第一份報告是 0 筆；數字太少就不講，只講做法。
 4. **順序**：這是第 2 層的新名詞，要插隊到第 1 層後面，還是等第 1 層 20 集做完。
 5. 頻道立場第 3、4、5 條與系列提案第 8、9 條，跟其他集一樣，要等站主存進後台設定，大綱關卡才會自動過。

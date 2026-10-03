@@ -1,7 +1,7 @@
 ---
 id: 2026-10-03-ai-term-calibration-article
 title: Write and publish the AI terms article on calibration (ai-term-calibration)
-status: open
+status: blocked
 priority: P2
 area: docs
 owner:
@@ -54,3 +54,5 @@ skill's post-publish checks pass.
 - Keep Jev's speed and price claims out; they belong to
   `2026-09-29-video-pilot-jev-decision-model`.
 - No medical, financial or legal datasets in the example (channel stance point 7).
+
+- **Blocked 2026-10-03, waiting on the owner.** This episode was planned from a misreading: the owner asked for an episode on TypeSafe's launch post, now planned as `docs/videos/ai-term-system-one-model`. Calibration remains a reasonable term; the owner decides whether it gets its own episode (`docs/videos/ai-term-system-one-model/notes.md` item 2). If yes, run `npm run tasks -- status <id> open`. The brief's statements about the site's own use of Jev were corrected the same day after verification.

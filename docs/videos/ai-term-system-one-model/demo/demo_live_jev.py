@@ -8,7 +8,9 @@ passed to the client's Authorization header, and never printed or written anywhe
   python3 demo_live_jev.py                 # plan only, no network
   JEV_API_KEY=... python3 demo_live_jev.py --live --repeat 3 --out live-YYYYMMDD.json
 
-Calls in a live run: `repeat` calls on the zh-TW email + 1 call on the English rendering.
+Calls in a live run: `repeat` identical calls on the zh-TW email (default 1; each call carries all
+five questions, the reversed-order one included) + 1 call on the English rendering, + 2 with
+--date-probe.
 """
 import argparse
 import asyncio
@@ -47,6 +49,7 @@ def summary(answers):
         "event_date": ch("event_date"),
         "event_date_reversed": ch("event_date_reversed"),
         "event_date_forced": ch("event_date_forced"),
+        "event_date_forced_fixed": ch("event_date_forced_fixed"),
         "headcount_is_estimate": answers["headcount_is_estimate"].noul,
     }
 
@@ -100,13 +103,14 @@ async def run(args):
     print(f"options reversed -> {s['event_date_reversed'][0]}  conf {s['event_date_reversed'][1]:.2f}")
     print(f"headcount_is_estimate  noul {s['headcount_is_estimate']:.2f}")
     print(f"forced date -> {s['event_date_forced'][0]}  conf {s['event_date_forced'][1]:.2f}")
+    print(f"fixed (+not_stated) -> {s['event_date_forced_fixed'][0]}  conf {s['event_date_forced_fixed'][1]:.2f}")
     print(f"route zh-TW: {first['route_zh_default']['headcount_is_estimate']} | en: {first['route_en']['headcount_is_estimate']}")
 
 
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--live", action="store_true")
-    p.add_argument("--repeat", type=int, default=3)
+    p.add_argument("--repeat", type=int, default=1)
     p.add_argument("--out", default="live-jev.json")
     p.add_argument("--date-probe", action="store_true", help="2 more calls: the date-ordering probe")
     args = p.parse_args()
