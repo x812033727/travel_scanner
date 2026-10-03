@@ -1,6 +1,6 @@
 # Migration 的測試
 
-CI 的 api job 依序跑：`tests/test_schema.py`（單一 head）→ 兩個專門的 migration 驗證（`RUN_MIGRATION_TESTS=1`）→ `alembic upgrade head` → 整個測試套件（`RUN_INTEGRATION_TESTS=1`，有 Postgres、Redis、MinIO）。本機沒設這兩個環境變數時，需要 Postgres 的測試會 skip，看起來全綠但什麼都沒驗；PR 裡要寫明哪些只在 CI 跑過。
+CI 的 API 檢查依序跑：`tests/test_schema.py`（單一 head）→ 兩個專門的 migration 驗證（`RUN_MIGRATION_TESTS=1`）（以上在 `api-checks` job）→ 四個 `api-tests (n/4)` 分片各自 `alembic upgrade head` 再跑自己那份測試（`pytest --shard n/4`、`RUN_INTEGRATION_TESTS=1`，各有一套 Postgres、Redis、MinIO）。本機沒設這兩個環境變數時，需要 Postgres 的測試會 skip，看起來全綠但什麼都沒驗；PR 裡要寫明哪些只在 CI 跑過。
 
 ## 三層，各擋一種錯
 

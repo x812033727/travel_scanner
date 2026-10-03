@@ -20,7 +20,9 @@ permissions:
   contents: read
 
 jobs:
-  api:
+  # Static checks and the migration tests: everything in the api gate except the main
+  # pytest run, which api-tests below splits across parallel jobs.
+  api-checks:
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -34,22 +36,8 @@ jobs:
         image: redis:7.4-alpine@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499
         ports: ["6379:6379"]
     defaults: { run: { working-directory: apps/api } }
-    env:
-      # Named once so the pull and the run cannot name different tags. MinIO's own images need
-      # a login now (Docker Hub since 2026-09-11, quay.io since 2026-09-24), so this is
-      # Chainguard's public build of the same server, pinned by digest: its free tier only
-      # publishes :latest. It runs as uid 65532, hence the tmpfs at /data where it runs.
-      MINIO_IMAGE: cgr.dev/chainguard/minio@sha256:bd014394a80898e68c149f2311fdf8d5a2c2f3bb2c33b9327ae6d02b4b065ae1
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      # `docker run` pulls a missing image exactly once. A single 502, 504, connection reset or
-      # token timeout from quay.io or auth.docker.io failed a job seven times in four jobs
-      # (this one, containers, full-stack-smoke, travel-discovery) while a sibling job pulled
-      # the same image seconds apart. The script retries transient failures (see its header);
-      # the runs below use --pull=never so they cannot quietly pull without it.
-      # $GITHUB_WORKSPACE because this job's steps default to apps/api.
-      - name: Pull container images
-        run: bash "$GITHUB_WORKSPACE/tools/ci/pull-images.sh" "$MINIO_IMAGE"
       - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
         with: { python-version: "3.13" }
       - run: uv sync --frozen
@@ -82,6 +70,46 @@ jobs:
         env:
           RUN_INTEGRATION_TESTS: "1"
           RUN_MIGRATION_TESTS: "1"
+  # The main pytest run took 23 of the old api job's 25 minutes (run 37111019702). Each
+  # shard is its own job with its own PostgreSQL, Redis and S3 companion, so no two tests
+  # running at once share a database. TOTAL in the pytest line must match the matrix.
+  api-tests:
+    name: api-tests (${{ matrix.shard }}/4)
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: { shard: [1, 2, 3, 4] }
+    services:
+      postgres:
+        image: postgres:17-alpine@sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24
+        env: { POSTGRES_DB: travel_scanner, POSTGRES_USER: travel, POSTGRES_PASSWORD: travel }
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U travel -d travel_scanner"
+          --health-interval 5s --health-timeout 3s --health-retries 10
+      redis:
+        image: redis:7.4-alpine@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499
+        ports: ["6379:6379"]
+    defaults: { run: { working-directory: apps/api } }
+    env:
+      # Named once so the pull and the run cannot name different tags. MinIO's own images need
+      # a login now (Docker Hub since 2026-09-11, quay.io since 2026-09-24), so this is
+      # Chainguard's public build of the same server, pinned by digest: its free tier only
+      # publishes :latest. It runs as uid 65532, hence the tmpfs at /data where it runs.
+      MINIO_IMAGE: cgr.dev/chainguard/minio@sha256:bd014394a80898e68c149f2311fdf8d5a2c2f3bb2c33b9327ae6d02b4b065ae1
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # `docker run` pulls a missing image exactly once. A single 502, 504, connection reset or
+      # token timeout from quay.io or auth.docker.io failed a job seven times in four jobs
+      # (this one, containers, full-stack-smoke, travel-discovery) while a sibling job pulled
+      # the same image seconds apart. The script retries transient failures (see its header);
+      # the runs below use --pull=never so they cannot quietly pull without it.
+      # $GITHUB_WORKSPACE because this job's steps default to apps/api.
+      - name: Pull container images
+        run: bash "$GITHUB_WORKSPACE/tools/ci/pull-images.sh" "$MINIO_IMAGE"
+      - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+        with: { python-version: "3.13" }
+      - run: uv sync --frozen
       - run: uv run alembic upgrade head
       - name: Start private S3 integration companion
         run: |
@@ -94,7 +122,8 @@ jobs:
           done
           docker logs community-test-storage
           exit 1
-      - run: uv run pytest --cov=app
+      # tests/sharding.py places whole files, longest first, from tests/shard_durations.json.
+      - run: uv run pytest --shard "${{ matrix.shard }}/4"
         env:
           RUN_INTEGRATION_TESTS: "1"
           COMMUNITY_TEST_S3: "1"
@@ -102,7 +131,26 @@ jobs:
           COMMUNITY_S3_PUBLIC_ENDPOINT: http://127.0.0.1:9000
           COMMUNITY_S3_ACCESS_KEY: community-test
           COMMUNITY_S3_SECRET_KEY: community-test-only-password
-  web:
+  # `api` is the required check (.github/BRANCH_PROTECTION.md and REQUIRED in
+  # tools/ci/auto-update-branches.mjs), so the name stays on one job that is green only
+  # when the checks and every shard are. `always()` makes it run, and fail, when one of
+  # them failed or was cancelled; a skipped required check would read as passing.
+  api:
+    needs: [api-checks, api-tests]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Every API check and test shard passed
+        env:
+          RESULTS: ${{ join(needs.*.result, ' ') }}
+        run: |
+          echo "api-checks and api-tests: $RESULTS"
+          for result in $RESULTS; do
+            if [ "$result" != success ]; then exit 1; fi
+          done
+  # Lint, i18n, the task board, typecheck and the tools tests: everything in the web gate
+  # except vitest and Playwright, which web-unit and web-e2e split across parallel jobs.
+  web-checks:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -120,12 +168,43 @@ jobs:
       - run: npm run check:i18n
       - run: npm run check:tasks
       - run: npm run typecheck:web
-      - run: npm run test:web
       - run: npm run test:tools
+  # vitest ran its ~350 files one at a time (vitest.config.ts) for 7m45s of the old web
+  # job (run 37111019702). Each shard keeps that one-at-a-time setting; vitest splits the
+  # files itself. TOTAL in the run line must match the matrix.
+  web-unit:
+    name: web-unit (${{ matrix.shard }}/3)
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: { shard: [1, 2, 3] }
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with: { node-version: 24, cache: npm }
+      - run: npm ci
+      # vitest directly: `npm run test:web -- --shard` would hand --shard to the inner
+      # `npm run --workspace`, not to vitest.
+      - run: npx vitest run --shard="${{ matrix.shard }}/3"
+        working-directory: apps/web
+  # The isolated browser suite was the other 7m47s. Each shard builds the app itself, since
+  # serving a build is what keeps these cases from timing out (playwright.config.ts), and
+  # Playwright places whole spec files in shards. TOTAL in the run line must match the matrix.
+  web-e2e:
+    name: web-e2e (${{ matrix.shard }}/3)
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: { shard: [1, 2, 3] }
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with: { node-version: 24, cache: npm }
+      - run: npm ci
       - run: npm run build:web
       - run: npx playwright install --with-deps chromium
       - name: Run isolated browser UI tests
-        run: npx playwright test e2e/navigation.spec.ts e2e/readability.spec.ts e2e/signed-out.spec.ts e2e/travel-services.spec.ts e2e/stay22-allez.spec.ts e2e/stay22-script.spec.ts e2e/guides-adsense.spec.ts e2e/stay22-maps.spec.ts e2e/merchant-styles.spec.ts e2e/admin-domains.spec.ts e2e/admin-operations.spec.ts e2e/admin-video-manual-upload.spec.ts e2e/admin-video-shorts.spec.ts e2e/admin-video-plans.spec.ts e2e/site-experience.spec.ts e2e/site-pages.spec.ts e2e/community-ui.spec.ts e2e/discovery-card-details.spec.ts e2e/planner-premium.spec.ts e2e/korea-dual-maps.spec.ts e2e/seo.spec.ts e2e/offline-day-view.spec.ts
+        run: npx playwright test --shard="${{ matrix.shard }}/3" e2e/navigation.spec.ts e2e/readability.spec.ts e2e/signed-out.spec.ts e2e/travel-services.spec.ts e2e/stay22-allez.spec.ts e2e/stay22-script.spec.ts e2e/guides-adsense.spec.ts e2e/stay22-maps.spec.ts e2e/merchant-styles.spec.ts e2e/admin-domains.spec.ts e2e/admin-operations.spec.ts e2e/admin-video-manual-upload.spec.ts e2e/admin-video-shorts.spec.ts e2e/admin-video-plans.spec.ts e2e/site-experience.spec.ts e2e/site-pages.spec.ts e2e/community-ui.spec.ts e2e/discovery-card-details.spec.ts e2e/planner-premium.spec.ts e2e/korea-dual-maps.spec.ts e2e/seo.spec.ts e2e/offline-day-view.spec.ts
         working-directory: apps/web
         # Serve the build from the step above instead of a dev server that compiles
         # each page on first visit; see playwright.config.ts.
@@ -136,7 +215,7 @@ jobs:
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always() && github.event_name == 'pull_request'
         with:
-          name: youtube-manual-browser-evidence
+          name: youtube-manual-browser-evidence-${{ matrix.shard }}
           path: apps/web/test-results/**/youtube-manual-*.jpg
           retention-days: 3
       # Only when something failed or the job timed out (which GitHub reports as cancelled):
@@ -148,9 +227,24 @@ jobs:
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: failure() || cancelled()
         with:
-          name: site-experience-browser-results
+          name: site-experience-browser-results-${{ matrix.shard }}
           path: apps/web/test-results
           retention-days: 7
+  # `web` is the required check, like `api` above: green only when the checks and every
+  # shard are, and red when one of them failed or was cancelled.
+  web:
+    needs: [web-checks, web-unit, web-e2e]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Every web check and test shard passed
+        env:
+          RESULTS: ${{ join(needs.*.result, ' ') }}
+        run: |
+          echo "web-checks, web-unit and web-e2e: $RESULTS"
+          for result in $RESULTS; do
+            if [ "$result" != success ]; then exit 1; fi
+          done
   containers:
     runs-on: ubuntu-latest
     env:
